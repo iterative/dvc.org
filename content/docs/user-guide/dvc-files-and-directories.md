@@ -5,7 +5,7 @@ directory (`.dvc/`) with the
 [internal directories and files](#internal-directories-and-files) needed for DVC
 operation.
 
-Additionally, there are two special kind of files created by certain
+Additionally, there are a few special kind of files created by certain
 [DVC commands](/doc/command-reference):
 
 - Files ending with the `.dvc` extension are placeholders to version data files
@@ -15,6 +15,9 @@ Additionally, there are two special kind of files created by certain
 - The [`dvc.yaml` file](#dvcyaml-file) or _pipeline(s) file_ specifies stages
   that form the pipeline(s) of a project, and their connections (_dependency
   graph_ or DAG).
+
+  These come with a matching [`dvc.lock` file](#dvclock-file) to track the
+  latest file versions.
 
 Both use human-friendly YAML schemas, described below. We encourage you to get
 familiar with them so you may edit them freely, as needed. Both type of files
@@ -92,7 +95,10 @@ file is overwritten by `dvc add`,`dvc import`, or `dvc import-url`.
 When you add commands to a pipeline with `dvc run`, the `dvc.yaml` file is
 created or updated. `dvc.yaml` files describe data pipelines, similar to how
 [Makefiles](https://www.gnu.org/software/make/manual/make.html#Introduction)
-work for building software. Here's a simple example:
+work for building software. Additionally, a [`dvc.lock`](#dvclock-file) file is
+also created to record the latest file versions.
+
+Here's a full `dvc.yaml` example:
 
 ```yaml
 stages:
@@ -148,6 +154,56 @@ the possible following fields:
   can be meaningful for user processes that read or write `.dvc` files directly.
 
 `dvc.yaml` files also support `# comments`.
+
+> Note that unlike `.dvc` files, `dvc.yaml` doesn't store any `md5` hash values,
+> making it extra easy to edit manually. These are kept in `dvc.lock` instead.
+
+### dvc.lock file
+
+The purpose of `dvc.lock` is to track the latest version of all files involved
+in the pipeline(s).
+
+Here's an example `dvc.lock` based on the one in [`dvc.yaml`](#dvcyaml-file)
+above:
+
+```yaml
+stages:
+  features:
+    cmd: jupyter nbconvert --execute featurize.ipynb
+    deps:
+      - path: data/clean
+        md5: d8b874c5fa18c32b2d67f73606a1be60
+    params:
+      params.yaml:
+        levels.no: 5
+    outs:
+      - path: features
+        md5: 2119f7661d49546288b73b5730d76485
+    metrics:
+      - performance.json
+  ...
+    plots:
+      - logs.csv:
+          x: epoch
+          x_label: Epoch
+```
+
+It replicates the structure of `dvc.yaml`, but with some key differences and
+additions to <abbr>dependency</abbr> and <abbr>output</abbr> fields:
+
+- `deps`: Each item of the list becomes an object with 2 properties:
+  - `path`: Same as the `deps` value from `dvc.yaml`
+  - `md5`: The hash value of the file
+  - `etag`: Strong ETag response header (only HTTP <abbr>external
+    dependencies</abbr>)
+- `params`: List of [parameters files](/doc/command-reference/params#examples)
+  (typically only `params.yaml`), as well as sub-lists of the specific
+  parameters tracked by this stage (per params file), and their latest value.
+- `outs`: Each item of the list becomes an object with 2 properties:
+  - `path`: Same as the `deps` value from `dvc.yaml`
+  - `md5`: The hash value of the file
+- `metrics`: List of [metric files](/doc/command-reference/metrics)
+- `plots`: List of [plot metrics](/doc/command-reference/plots)
 
 ## Internal directories and files
 
