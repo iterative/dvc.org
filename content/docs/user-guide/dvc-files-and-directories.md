@@ -49,6 +49,9 @@ meta:
 - `deps`: List of <abbr>dependency</abbr> entries for this stage, only present
   when `dvc import` and `dvc import-url` are used. Typically there is only one
   (but several can be added manually).
+- `wdir` (optional): Working directory for the stage command to run in (relative
+  to the file's location). If this field is not present explicitly, it defaults
+  to `.` (the file's location).
 - `meta` (optional): Arbitrary metadata can be added manually with this field.
   Any YAML contents is supported. `meta` contents are ignored by DVC, but they
   can be meaningful for user processes that read `.dvc` files.
@@ -56,14 +59,15 @@ meta:
 An _output entry_ can consist of these fields:
 
 - `md5`: Hash value for the file or directory being tracked with DVC
-- `path`: Path to the file or directory, relative to the location of the `.dvc`
-  file
+- `path`: Path to the file or directory (relative to `wdir` which defaults to
+  the file's location)
 - `cache`: Whether or not DVC should cache the file or directory. `true` by
   default
 
 A _dependency entry_ consists of a these possible fields:
 
-- `path`: Path to the dependency, relative to the `wdir` path (always present)
+- `path`: Path to the dependency (relative to `wdir` which defaults to the
+  file's location)
 - `md5`: MD5 hash for the dependency (most [stages](/doc/command-reference/run))
 - `etag`: Strong ETag response header (only HTTP <abbr>external
   dependencies</abbr> created with `dvc import-url`)
@@ -86,7 +90,9 @@ file is overwritten by `dvc add`,`dvc import`, or `dvc import-url`.
 ## dvc.yaml files
 
 When you add commands to a pipeline with `dvc run`, the `dvc.yaml` file is
-created or updated. Here's a simple example:
+created or updated. `dvc.yaml` files describe data pipelines, similar to how
+[Makefiles](https://www.gnu.org/software/make/manual/make.html#Introduction)
+work for building software. Here's a simple example:
 
 ```yaml
 stages:
@@ -120,11 +126,16 @@ by the user with the `--name` (`-n`) option of `dvc run`. Each stage can contain
 the possible following fields:
 
 - `cmd` (always present): Executable command defined in this stage
+- `wdir`: Working directory for the stage command to run in (relative to the
+  file's location). If this field is not present explicitly, it defaults to `.`
+  (the file's location).
 - `deps`: List of <abbr>dependency</abbr> file or directory paths of this stage
+  (relative to `wdir` which defaults to the file's location)
 - `params`: List of [parameter dependencies](/doc/command-reference/params).
   These are key paths referring to a YAML or JSON file (`params.yaml` by
   default).
 - `outs`: List of <abbr>output</abbr> file or directory paths of this stage
+  (relative to `wdir` which defaults to the file's location)
 - `metrics`: List of [metric files](/doc/command-reference/metrics)
 - `plots`: List of [plot metrics](/doc/command-reference/plots) and optionally,
   their default configuration (subfields matching the options of
