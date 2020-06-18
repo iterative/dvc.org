@@ -249,11 +249,6 @@ Metrics and plots files have specific formats (JSON, YAML, CSV, or TSV) and
 allow for managing data science experiments by different display and comparison
 alternatives.
 
-> Note that regular stage outputs cannot become parameter dependencies of other
-> stages, and outputting a parameters file doesn't connect a stage to the one(s)
-> that uses the params. Metrics and plots outputs can be dependencies of other
-> stages normally, though.
-
 ## Options
 
 - `-n <stage>`, `--name <stage>` (required) - specify a name for the stage
