@@ -145,11 +145,12 @@ exists in [`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvcyaml-files),
 and its outputs correspond to the <abbr>cached</abbr> files (hash values are
 compared), then `dvc run` does not execute the `command`.
 
-Note that `dvc repro` provides an interface to check the state, and reproduce
-pipelines created with `dvc repro` by executing (again) the necessary stages.
-This concept is similar to the one of [Make](https://www.gnu.org/software/make/)
-in software build automation, but DVC captures data and caches relevant
-<abbr>data artifacts</abbr> along the way.
+Note that `dvc repro` provides an interface to check the
+[status](/doc/command-reference/status), and reproduce pipelines created with
+`dvc repro` by executing (again) the necessary stages. This concept is similar
+to the one of [Make](https://www.gnu.org/software/make/) in software build
+automation, but DVC captures data and caches relevant <abbr>data
+artifacts</abbr> along the way.
 
 > See [this tutorial](/doc/tutorials/pipelines) to learn more and try creating a
 > pipeline.
@@ -164,14 +165,83 @@ so on. This graph can be restored by DVC later to modify or
 [reproduce](/doc/command-reference/repro) the full
 [pipeline](/doc/command-reference/pipeline).
 
-`dvc run` checks the dependency graph integrity before creating a new stage. For
-example, for every output there should be only one stage that explicitly
-specifies it, there should be no cycles, etc.
+Let's see an illustrative pipeline with 3 stages, for example:
+
+```dvc
+$ dvc run -n printer -d write.sh -o pages/raw ./write.sh
+$ dvc run -n signer -d sign.sh -d pages/raw -o pages/sgn ./sign.sh
+$ dvc run -n scanner -d read.sh -d pages/sgn -o signed.pdf ./read.sh
+```
+
+<details>
+
+### Expand to see how this pipeline looks
+
+The resulting `dvc.yaml` structure looks like this:
+
+```yaml
+stages:
+  printer:
+    cmd: ./write.sh
+    deps:
+      - write.sh
+    outs:
+      - pages/raw
+  signer:
+    cmd: ./sign.sh
+    deps:
+      - pages/raw
+      - sign.sh
+    outs:
+      - pages/sgn
+  scanner:
+    cmd: ./read.sh
+    deps:
+      - pages/sgn
+      - read.sh
+    outs:
+      - signed.pdf
+```
+
+To visualize how these stages are connected into a pipeline (given their outputs
+and dependencies), we can use `dvc dag`:
+
+```dvc
+$ dvc dag
++---------+
+| printer |
++---------+
+      *
+      *
+      *
++--------+
+| signer |
++--------+
+      *
+      *
+      *
++---------+
+| scanner |
++---------+
+```
+
+</details>
+
+Note that `dvc run` checks the dependency graph integrity before creating a new
+stage. For example: two stage cannot explicitly specify the same output, there
+should be no cycles, etc.
+
+Also note that outputs are deleted from the <abbr>workspace</abbr> by `dvc run`
+before executing the command, so the program or script should be able to
+recreate any directories marked as outputs.
+
+### For experiment management
 
 A special type of key/value dependencies,
 [parameters](/doc/command-reference/params) (`-p` option), is supported.
 Multiple parameter dependencies can be specified from one or more YAML or JSON
-parameters files (`params.yaml` by default).
+parameters files (`params.yaml` by default). This allows controlling
+experimental hyperparameters easily.
 
 Special types of output files, [metrics](/doc/command-reference/metrics) (`-m`
 and `-M` options) and [plots](/doc/command-reference/plots), are also supported.
