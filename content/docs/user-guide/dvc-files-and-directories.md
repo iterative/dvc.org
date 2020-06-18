@@ -20,7 +20,7 @@ Both use human-friendly YAML schemas, described below. We encourage you to get
 familiar with them so you may edit them freely, as needed. Both type of files
 should be versioned with Git (for Git-enabled <abbr>repositories</abbr>).
 
-## .dvc file
+## .dvc files
 
 When you add a file or directory to a <abbr>DVC project</abbr> with `dvc add` or
 `dvc import`, a `.dvc` file is created based on the data file name (e.g.
@@ -87,7 +87,7 @@ Note that comments can be added to `.dvc` files and `dvc.yaml` using the
 executions of the `dvc repro` and `dvc commit` commands, but not when a `.dvc`
 file is overwritten by `dvc add`,`dvc import`, or `dvc import-url`.
 
-## dvc.yaml files
+## dvc.yaml file
 
 When you add commands to a pipeline with `dvc run`, the `dvc.yaml` file is
 created or updated. `dvc.yaml` files describe data pipelines, similar to how
