@@ -162,13 +162,10 @@ the possible following fields:
 
 `dvc.yaml` files also support `# comments`.
 
-> Note that unlike `.dvc` files, `dvc.yaml` doesn't store any `md5` hash values,
-> making it extra easy to edit manually. These are kept in `dvc.lock` instead.
-
 ### dvc.lock file
 
-The purpose of `dvc.lock` is to track the latest version of all files involved
-in the pipeline(s).
+The purpose of `dvc.lock` is to lock the exact contents of all files involved in
+the pipeline(s) at the time that `dvc.yaml` was last updated.
 
 Here's an example `dvc.lock` based on the one in [`dvc.yaml`](#dvcyaml-file)
 above:
