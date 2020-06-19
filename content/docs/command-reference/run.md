@@ -162,8 +162,11 @@ $ dvc run -n signer -d sign.sh -d pages/raw -o pages/sgn ./sign.sh
 $ dvc run -n scanner -d read.sh -d pages/sgn -o signed.pdf ./read.sh
 ```
 
-See also this detailed
-[stage chaining example](#example-using-granular-parameter-dependencies).
+> See also this
+> [stage chaining example](#example-using-granular-parameter-dependencies).
+
+Note that DVC doesn't feed dependency files to the command being run. The
+program will have to read by itself the files specified with `-d`.
 
 <details>
 
@@ -234,6 +237,10 @@ A special type of key/value dependencies,
 Multiple parameter dependencies can be specified from one or more YAML or JSON
 parameters files (`params.yaml` by default). This allows controlling
 experimental hyperparameters easily.
+
+> Note that DVC doesn't pass the parameter values to the command being run. The
+> program will have to open and parse `params.yaml`, and use the params
+> specified with `-p` (`seed`, `train.lr`, and `train.epochs`).
 
 Special types of output files, [metrics](/doc/command-reference/metrics) (`-m`
 and `-M` options) and [plots](/doc/command-reference/plots), are also supported.
@@ -475,9 +482,3 @@ $ dvc run -n train \
 DVC will keep an eye on these param values (same as with the regular dependency
 files) and know that the stage should be reproduced if/when they change. See
 `dvc params` for more details.
-
-> Note that DVC doesn't pass the parameter values to the command being run, just
-> like it doesn't feed dependency files either. The program (`train_model.py` in
-> this case) will have to read dependency files, as well as opening and parsing
-> `params.yaml` by itself, and use the params specified with `-p` (`seed`,
-> `train.lr`, and `train.epochs`).
