@@ -76,14 +76,14 @@ changes from the data source later, using `dvc update`.
 source `repo`, and `path` (under `deps`):
 
 ```diff
-+deps:
-+- path: get-started/data.xml
-+  repo:
-+    url: https://github.com/iterative/dataset-registry
-+    rev_lock: f31f5c4cdae787b4bdeb97a717687d44667d9e62
-outs:
-- md5: a304afb96060aad90176268345e10355
-  path: data.xml
++ deps:
++ - path: get-started/data.xml
++   repo:
++     url: https://github.com/iterative/dataset-registry
++     rev_lock: f31f5c4cdae787b4bdeb97a717687d44667d9e62
+ outs:
+ - md5: a304afb96060aad90176268345e10355
+   path: data.xml
 ```
 
 The `url` and `rev_lock` subfields under `repo` are used to save the origin and
