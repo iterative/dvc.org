@@ -47,6 +47,7 @@ module.exports = [
   'fetch',
   'diff',
   'destroy',
+  'dag',
   'config',
   'commit',
   'checkout',

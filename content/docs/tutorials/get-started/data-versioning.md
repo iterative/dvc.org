@@ -1,6 +1,6 @@
 # Data Versioning
 
-How cool would it be to make Git handle arbitraty large files and directories
+How cool would it be to make Git handle arbitrary large files and directories
 with the same performance as with small code files? Imagine you can do a
 `git clone` and see data files and ML model files in the workspace. Or do
 `git checkout` and switch to a different version of a 100Gb size file in a less
@@ -43,7 +43,7 @@ easily versioned like source code with Git, as a placeholder for the original
 data (which gets listed in `.gitignore`):
 
 ```dvc
-$ git add .gitignore datadir.dvc
+$ git add .gitignore data/data.xml.dvc
 $ git commit -m "Add raw data"
 ```
 
@@ -197,7 +197,7 @@ $ dvc push
 
 ## Switching between versions
 
-The regular worfklow is to use `git checkout` first to switch a branch, checkout
+The regular workflow is to use `git checkout` first to switch a branch, checkout
 a commit, or a revision of a `.dvc` file, and then run `dvc checkout` to sync
 data:
 

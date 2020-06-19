@@ -2,38 +2,23 @@
 
 Versioning large data files and directories for data science is great, but not
 enough. How is data filtered, transformed, or used to train ML models? DVC
-introduces a mechanism to capture _data pipelines_ — **series of data
-processes** that produce a final result.
+introduces a mechanism to capture _data pipelines_ — series of data processes
+that produce a final result.
 
 DVC pipelines and their data can also be easily versioned (using Git). This
 allows you to better organize your project, and reproduce your workflow and
 results later exactly as they were built originally!
 
-<details>
-
-### 👉 Expand to prepare the project
-
-Get the sample project from Github with:
-
-```dvc
-$ git clone https://github.com/iterative/example-get-started
-$ cd example-get-started
-$ git checkout '4-update-data'
-$ dvc pull
-```
-
-</details>
-
 ## Pipeline stages
 
 Use `dvc run` to create _stages_. These represent processes (source code tracked
-with Git) that form the **steps of a pipeline**. Staged also connect such code
-to its data input and output. Let's transform a Python script into a
+with Git) that form the steps of a pipeline. Stages also connect code to its
+data input and output. Let's transform a Python script into a
 [stage](/doc/command-reference/run):
 
 <details>
 
-### 👉 Expand to download example code
+### ⚙️ Expand to download example code
 
 Get the sample code like this:
 
@@ -61,10 +46,11 @@ Please also add or commit the source code directory with Git at this point.
 </details>
 
 ```dvc
-$ dvc run -f prepare.dvc \
+$ dvc run -n prepare \
+          -p prepare.seed,prepare.split \
           -d src/prepare.py -d data/data.xml \
           -o data/prepared \
-          python src/prepare.py data/data.xml data/prepared
+          python src/prepare.py data/data.xml
 ```
 
 A [`dvc.yaml` file](/doc/user-guide/dvc-files-and-directories#dvcyaml-file) is
@@ -74,12 +60,24 @@ generated. It includes information about the command we ran
 
 <details>
 
-### Expand to see what happened internally
+### 💡 Expand to see what happens under the hood
 
 The command options used above mean the following:
 
-- `-f prepare.dvc` specifies a name for the stage file. It's optional but we
-  recommend using it to make your project structure more readable.
+- `-n prepare` specifies a name for the stage. If open the `dvc.yaml` file you
+  will see a section named `prepare`.
+
+- `p prepare.seed,prepare.split` is a special type of dependencies -
+  [parameters](/doc/command-reference/params). We'll get to them later in the
+  [Experiments](/doc/tutorials/get-started/experiments) section, but the idea is
+  that stage can depend on field values from a parameters file (`params.yaml` by
+  default):
+
+  ```yaml
+  prepare:
+    split: 0.20
+    seed: 20170428
+  ```
 
 - `-d src/prepare.py` and `-d data/data.xml` mean that the stage depends on
   these files to work. Notice that the source code itself is marked as a
@@ -97,7 +95,9 @@ The command options used above mean the following:
   +   │   └── prepared
   +   │       ├── test.tsv
   +   │       └── train.tsv
-  +   ├── prepare.dvc
+  +   ├── dvc.yaml
+  +   ├── dvc.lock
+      ├── params.yaml
       └── src
           ├── ...
   ```
@@ -105,24 +105,24 @@ The command options used above mean the following:
 - The last line, `python src/prepare.py ...`, is the command to run in this
   stage, and it's saved to the stage file, as shown below.
 
-The resulting import stage `prepare.dvc` contains all of the information above:
+The resulting `prepare` stage in the `dvc.yaml` contains all of the information
+above:
 
 ```yaml
-cmd: python src/prepare.py data/data.xml data/prepared
-deps:
-  - md5: 1a18704abffac804adf2d5c4549f00f7
-    path: src/prepare.py
-  - md5: a304afb96060aad90176268345e10355
-    path: data/data.xml
-outs:
-  - md5: 6836f797f3924fb46fcfd6b9f6aa6416.dir
-    path: data/prepared
-    cache: true
+stages:
+  prepare:
+    cmd: python src/prepare.py data/data.xml
+    deps:
+      - data/data.xml
+      - src/prepare.py
+    params:
+      - prepare.seed
+      - prepare.split
+    outs:
+      - data/prepared
 ```
 
 </details>
-
-### Tracking and versioning stages
 
 There's no need to use `dvc add` for DVC to track stage outputs (`data/prepared`
 in this case); `dvc run` already took care of this. You only need to run
@@ -137,59 +137,164 @@ stage as <abbr>dependencies</abbr> of another one, we can describe a sequence of
 commands that gets to a desired result. This is what we call a _data pipeline_
 or [_dependency graph_](https://en.wikipedia.org/wiki/Directed_acyclic_graph).
 
-Let's create a second stage chained to the outputs of `prepare.dvc`, to perform
-feature extraction. And a third one for training a machine learning model, based
-on the features:
+Let's create a second stage chained to the outputs of `prepare`, to perform
+feature extraction:
 
 ```dvc
-$ dvc run -f featurize.dvc \
+$ dvc run -n featurize \
+          -p featurize.max_features,featurize.ngrams \
           -d src/featurization.py -d data/prepared \
           -o data/features \
           python src/featurization.py data/prepared data/features
+```
 
-$ dvc run -f train.dvc \
+The `dvc.yaml` file is updated automatically and should include two stages now.
+
+<details>
+
+### 💡 Expand to see what happens under the hood
+
+The changes to the `dvc.yaml` should look like this:
+
+```diff
+stages:
+  prepare:
+    cmd: python src/prepare.py data/data.xml
+    deps:
+    - data/data.xml
+    - src/prepare.py
+    params:
+    - prepare.seed
+    - prepare.split
+    outs:
+    - data/prepared
++  featurize:
++    cmd: python src/featurization.py data/prepared data/features
++    deps:
++    - data/prepared
++    - src/featurization.py
++    params:
++    - featurize.max_features
++    - featurize.ngrams
++    outs:
++    - data/features
+```
+
+</details>
+
+<details>
+
+### ⚙️ Expand to add more stages
+
+Let's add the training itself. Nothing new this time, the same `dvc run` command
+with the same set of options:
+
+```dvc
+$ dvc run -n train \
+          -p train.seed,train.n_estimators \
           -d src/train.py -d data/features \
           -o model.pkl \
           python src/train.py data/features model.pkl
 ```
 
-This would be a good point to commit the changes with Git. This includes any
-`.gitignore` files, and `dvc.yaml` — which describes our pipeline.
-
-> 📖 See also the `dvc pipeline` command.
-
-## Reproduce
-
-Imagine you're just cloning the <abbr>repository</abbr> created so far, in
-another computer. It's extremely easy for anyone to reproduce the result
-end-to-end, by using `dvc repro`.
-
-<details>
-
-### 👉 Expand to simulate a fresh clone of this repo
-
-Move to another location in your file system and do this:
-
-```dvc
-$ git clone https://github.com/iterative/example-get-started
-$ cd example-get-started
-$ git checkout 7-train
-```
+Please check the `dvc.yaml` again, it should have one more stage now.
 
 </details>
 
+This should be a good point to commit the changes with Git. This include
+`.gitignore`, `dvc.lock`, and `dvc.yaml` — which describe our pipeline.
+
+## Reproduce
+
+The whole point of creating this `dvc.yaml` pipeline file is an ability to
+reproduce the pipeline:
+
 ```dvc
-$ dvc repro train.dvc
+$ dvc repro
 ```
 
-`train.dvc` is used because it's the last stage file so far; It describes what
-code and data to use to regenerate a final result (ML model). For stages that
-<abbr>output</abbr> any of its <abbr>dependencies</abbr>, we can in turn get the
-same info, and so on.
+<details>
 
-`dvc repro` rebuilds this [dependency graph](#dependency-graphs-dags) and
-executes the necessary commands to rebuild all the pipeline
-<abbr>artifacts</abbr>.
+### ⚙️ Expand to make some fun with it
+
+Let's try to play a little bit with it. First, let's try to change one of the
+parameters for the training stage:
+
+```dvc
+$ vim params.yaml
+```
+
+Change `n_estimators` to `100` and run `dvc repro`, you should see:
+
+```dvc
+$ dvc repro
+Stage 'prepare' didn't change, skipping
+Stage 'featurize' didn't change, skipping
+Running stage 'train' with command: ...
+```
+
+DVC detected that only `train` should be run, and skipped everything else! All
+the intermediate results are being reused.
+
+Now, let's change it back to `50` and run `dvc repro` again:
+
+```dvc
+$ dvc repro
+Stage 'prepare' didn't change, skipping
+Stage 'featurize' didn't change, skipping
+Restored stage 'train' from run-cache
+```
+
+Same as before, no need to run `prepare`, `featurize`, etc ... but, it doesn't
+run even `train` again this time either! It cached the previous run with the
+same set of inputs (parameters + data) and reused it.
+
+</details>
+
+<details>
+
+### 💡 Expand to see what happens under the hood
+
+`dvc repro` relies on the DAG definition that it reads from `dvc.yaml`, and uses
+`dvc.lock` to determine what exactly needs to be run.
+
+`dvc.lock` file is similar to `.dvc` files and captures hashes (in most cases
+`md5`s) of the dependencies, values of the parameters that were used, it can be
+considered a _state_ of the pipeline:
+
+```yaml
+prepare:
+  cmd: python src/prepare.py data/data.xml
+  deps:
+    - path: data/data.xml
+      md5: a304afb96060aad90176268345e10355
+    - path: src/prepare.py
+      md5: 77e2041452ffabc457e37e54674fc8a5
+  params:
+    params.yaml:
+      prepare.seed: 20170428
+      prepare.split: 0.2
+```
+
+> `dvc status` command can be used to compare this state with an actual state of
+> the workspace.
+
+</details>
+
+DVC pipelines (`dvc.yaml` file, `dvc run`, and `dvc repro` commands) solve a few
+important problems:
+
+- _Automation_ - run sequence of steps in a "smart" way that makes iterating on
+  the project faster. It automatically determines which parts of a project need
+  to be run, it caches "runs" and results — all to avoid running the same stage
+  again.
+- _Reproducibility_ - it can describe and capture what data should be used and
+  what commands to run to produce an ML model, for example. It's described and
+  captured in way that is easy to put into Git. It means that it's easy to
+  version and share.
+- _Continuous Delivery and Continuous Integration (CI/CD) for ML_ - describing
+  project in way that it can be reproduced (built) is the fist necessary step
+  before introducing CI/CD systems.
 
 ## Visualize
 
@@ -198,30 +303,29 @@ Seeing a graph of connected stage files would help. DVC lets you do just that,
 without leaving the terminal!
 
 ```dvc
-$ dvc pipeline show --ascii train.dvc
-     +-------------------+
-     | data/data.xml.dvc |
-     +-------------------+
-               *
-               *
-               *
-        +-------------+
-        | prepare.dvc |
-        +-------------+
-               *
-               *
-               *
-       +---------------+
-       | featurize.dvc |
-       +---------------+
-               *
-               *
-               *
-         +-----------+
-         | train.dvc |
-         +-----------+
+$ dvc dag
+         +---------+
+         | prepare |
+         +---------+
+              *
+              *
+              *
+        +-----------+
+        | featurize |
+        +-----------+
+         **        **
+       **            *
+      *               **
++-------+               *
+| train |             **
++-------+            *
+         **        **
+           **    **
+             *  *
+        +----------+
+        | evaluate |
+        +----------+
 ```
 
-> We are using the `--ascii` option above to better illustrate this pipeline.
-> Please, refer to `dvc pipeline show` to explore other options this command
-> supports.
+> Refer to `dvc dag` to explore other ways this command can visualize a
+> pipeline.
