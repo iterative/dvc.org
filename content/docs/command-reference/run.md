@@ -444,7 +444,7 @@ $ dvc run -n parse \
           Rscript parsingxml.R data/Posts.xml data/Posts.csv
 ```
 
-## Example: Using granular parameter dependencies
+## Example: Using parameter dependencies
 
 To use specific values inside a parameters file as dependencies, create a simple
 YAML file named `params.yaml` (default params file name, see `dvc params` to
