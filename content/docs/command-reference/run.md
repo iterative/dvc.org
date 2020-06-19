@@ -378,53 +378,53 @@ alternatives.
 
 ## Examples
 
-A first example to play with is to try the different command options, to see
-what they do. No pre-existing data or source code is needed, as we can use
-placeholders and in-line commands directly in `dvc run`:
+Let's see a few introductory examples to try the different command options and
+see what they do.
+
+Create a <abbr>DVC project</abbr> and a stage that writes a JSON file as output:
 
 ```dvc
 $ mkdir example && cd example
 $ git init
 $ dvc init
 $ mkdir data
-$ dvc run -d data -o metric -f metric.dvc \
-    "echo '{ \"AUC\": 0.86252 }' >> metric"
-Running command:
-    echo '{ "AUC": 0.86252 }' >> metric
-WARNING: 'data' is empty.
-
-To track the changes with git, run:
-
-	git add .gitignore metric.dvc
+$ dvc run -n json_struct -d data -o struct.json \
+          "echo '{\"a_number\": 0.75}' >> struct.json"
+Running stage 'json_struct' with command:
+        echo '{"a_number": 0.75}' >> struct.json
+Creating 'dvc.yaml'
+Adding stage 'json_struct' in 'dvc.yaml'
+Generating lock file 'dvc.lock'
 ```
 
-Execute a Python script as a DVC [pipeline](/doc/command-reference/pipeline)
-stage. The stage file name is not specified, so a `model.p.dvc` file is created
-by default based on the registered output (`-o):
+The following stage runs a Python script that trains an ML model on the training
+dataset (`20180226` is a seed value):
 
 ```dvc
-# Train ML model on the training dataset. 20180226 is a seed value.
-$ dvc run -d matrix-train.p -d train_model.py \
+$ dvc run -n train \
+          -d matrix-train.p -d train_model.py \
           -o model.p \
           python train_model.py matrix-train.p 20180226 model.p
 ```
 
-Place the stage file in a subdirectory:
+Move to a subdirectory and create a stage there. This generates a separate
+`dvc.yaml` file in that location. The stage command itself counts the lines in
+`test.txt` and writes the number to `result.out`.
 
 ```dvc
-$ dvc run -d test.txt -f stages/test.dvc -o result.out \
-  "cat test.txt | wc -l > result.out"
-
-$ tree .
-
+$ cd stages/
+$ dvc run -n test \
+          -d test.txt -o result.out \
+          "cat test.txt | wc -l > result.out"
+$ tree
 .
+├── dvc.lock
+├── dvc.yaml
 ├── result.out
-├── stages
-│   └── test.dvc
 └── test.txt
 ```
 
-## Example: Using granular hyperparameter dependencies
+## Example: Using granular parameter dependencies
 
 To use specific values inside a parameters file as dependencies, create a simple
 YAML file named `params.yaml` (default params file name, see `dvc params` to
