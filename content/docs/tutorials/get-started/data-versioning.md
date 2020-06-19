@@ -179,7 +179,7 @@ pretend that we got more data from some external source):
 
 ```dvc
 $ cp data/data.xml /tmp/data.xml
-$ cat /tmp/data.xml >> data/data/xml
+$ cat /tmp/data.xml >> data/data.xml
 ```
 
 </details>
