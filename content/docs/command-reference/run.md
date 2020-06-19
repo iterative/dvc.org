@@ -284,7 +284,7 @@ alternatives.
 
 - `-p [<path>:]<params_list>`, `--params [<path>:]<params_list>` - specify a set
   of [parameter dependencies](/doc/command-reference/params) the stage depends
-  on, from a parameters file. This is done by sending a coma separated list as
+  on, from a parameters file. This is done by sending a comma separated list as
   argument, e.g. `-p learning_rate,epochs`. The default parameters file name is
   `params.yaml`, but this can be redefined with a prefix in the argument sent to
   this option, e.g. `-p parse_params.yaml:threshold`. See `dvc params` to learn
