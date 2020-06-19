@@ -183,13 +183,10 @@ stages:
     outs:
       - path: features
         md5: 2119f7661d49546288b73b5730d76485
-    metrics:
-      - performance.json
-  ...
-    plots:
-      - logs.csv:
-          x: epoch
-          x_label: Epoch
+      - path: performance.json
+        md5: ea46c1139d771bfeba7942d1fbb5981e
+      - path: logs.csv
+        md5: f99aac37e383b422adc76f5f1fb45004
 ```
 
 It replicates the structure of `dvc.yaml`, but with some key differences and
