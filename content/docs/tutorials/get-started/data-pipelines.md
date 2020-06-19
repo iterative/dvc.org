@@ -60,7 +60,7 @@ generated. It includes information about the command we ran
 
 <details>
 
-### 💡Expand to see what happens under the hood
+### 💡 Expand to see what happens under the hood
 
 The command options used above mean the following:
 
@@ -70,8 +70,8 @@ The command options used above mean the following:
 - `p prepare.seed,prepare.split` is a special type of dependencies -
   [parameters](/doc/command-reference/params). We'll get to them later in the
   [Experiments](/doc/tutorials/get-started/experiments) section, but the idea is
-  that stage can depend on field values from the parameters file (`params.yaml`
-  default name and format for this file):
+  that stage can depend on field values from a parameters file (`params.yaml`
+  by default):
 
   ```yaml
   prepare:
@@ -105,7 +105,7 @@ The command options used above mean the following:
 - The last line, `python src/prepare.py ...`, is the command to run in this
   stage, and it's saved to the stage file, as shown below.
 
-The resulting stage `prepare` in the `dvc.yaml` contains all of the information
+The resulting `prepare` stage in the `dvc.yaml` contains all of the information
 above:
 
 ```yaml
@@ -149,13 +149,12 @@ $ dvc run -n featurize \
                  data/prepared data/features
 ```
 
-The `dvc.yaml` is updated automatically and should include two stages now.
-
-And should look like this:
+The `dvc.yaml` file is updated automatically and should include two stages
+now.
 
 <details>
 
-### 💡Expand to see what happens under the hood
+### 💡 Expand to see what happens under the hood
 
 The changes to the `dvc.yaml` should look like this:
 
@@ -200,17 +199,17 @@ $ dvc run -n train \
           python src/train.py data/features model.pkl
 ```
 
-Please, check the `dvc.yaml` again, it should have plus one stage now.
+Please check the `dvc.yaml` again, it should have one more stage now.
 
 </details>
 
 This should be a good point to commit the changes with Git. This include
-`.gitignore`, `dvc.lock`, and `dvc.yaml` — which describes our pipeline.
+`.gitignore`, `dvc.lock`, and `dvc.yaml` — which describe our pipeline.
 
 ## Reproduce
 
 The whole point of creating this `dvc.yaml` pipeline file is an ability to
-reproduce it:
+reproduce the pipeline:
 
 ```dvc
 $ dvc repro
@@ -236,7 +235,7 @@ Stage 'featurize' didn't change, skipping
 Running stage 'train' with command: ...
 ```
 
-It's detected that only training should be run and skipped everything else! All
+DVC detected that only `train` should be run, and skipped everything else! All
 the intermediate results are being reused.
 
 Now, let's change it back to `50` and run `dvc repro` again:
@@ -249,8 +248,8 @@ Restored stage 'train' from run-cache
 ```
 
 Same as before, no need to run `prepare`, `featurize`, etc ... but, it doesn't
-run even `train` again this time! It cached the previous run with the same set
-of inputs (parameters + data) and reused it now!
+run even `train` again this time either! It cached the previous run with the same set
+of inputs (parameters + data) and reused it.
 
 </details>
 
@@ -258,8 +257,8 @@ of inputs (parameters + data) and reused it now!
 
 ### 💡Expand to see what happens under the hood
 
-`dvc.repro` relies on the DAG definition that it reads from the `dvc.yaml` file
-and also on the `dvc.lock` file to determine what exactly needs to be run.
+`dvc repro` relies on the DAG definition that it reads from `dvc.yaml`,
+and uses `dvc.lock` to determine what exactly needs to be run.
 
 `dvc.lock` file is similar to `.dvc` files and captures hashes (in most cases
 `md5`s) of the dependencies, values of the parameters that were used, it can be
@@ -284,12 +283,12 @@ prepare:
 
 </details>
 
-DVC pipelines - `dvc.yaml` file and `dvc.repro`, `dvc run` commands - solve a
+DVC pipelines (`dvc.yaml` file, `dvc run`, and `dvc repro` commands) solve a
 few important problems:
 
 - _Automation_ - run sequence of steps in a "smart" way that makes iterating on
   the project faster. It automatically determines which parts of a project need
-  to be run, it caches "runs" and results - all to avoid running the same stage
+  to be run, it caches "runs" and results — all to avoid running the same stage
   again.
 - _Reproducibility_ - it can describe and capture what data should be used and
   what commands to run to produce an ML model, for example. It's described and
