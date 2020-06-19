@@ -59,17 +59,6 @@ the `-f` (`--force`) option is needed:
 $ dvc run -n hello_world -f echo "Hello world"
 ```
 
-For longer `dvc run` usage (which is typical), its recommended to use new line
-continuation (`\`) for readability. For example:
-
-```dvc
-$ dvc run -n my_stage \
-          -d my_script.sh -d input.dat \
-          -o output.dat \
-          -M metrics.json \
-          ./my_script.sh input.dat
-```
-
 ### Stage commands
 
 The `command` argument should be the very last part of the full `dvc run ...`
@@ -138,12 +127,12 @@ pipeline (e.g. random numbers, time functions, hardware dependencies, etc.)
 
 ### Stage execution
 
-`dvc run` executes the given `command` in order to check its validity and so the
-defined outputs are written, unless the same `dvc run` has already happened in
-this <abbr>workspace</abbr>. Put in other words, if an identical stage already
-exists in [`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvcyaml-files),
-and its outputs correspond to the <abbr>cached</abbr> files (hash values are
-compared), then `dvc run` does not execute the `command`.
+`dvc run` executes the given `command` so the defined outputs are written,
+unless the same `dvc run` has already happened in this <abbr>workspace</abbr>.
+Put in other words, if an identical stage already exists in
+[`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvcyaml-files), and its
+outputs correspond to the <abbr>cached</abbr> files (hash values are compared),
+then `dvc run` does not execute the `command`.
 
 Note that `dvc repro` provides an interface to check the
 [status](/doc/command-reference/status), and reproduce pipelines created with
@@ -483,9 +472,12 @@ $ dvc run -n train \
           python train_model.py matrix-train.p model.p
 ```
 
-Note that DVC doesn't pass the parameter values to the command being run. The
-program (`train_model.py` in this case) will have to open and parse
-`params.yaml` by itself and use the params specified above
-(`seed,train.lr,train.epochs`). DVC will keep an eye on these param values (as
-well as on the regular dependency files) and know that the stage should be
-reproduced if/when they change. See `dvc params` for more details.
+DVC will keep an eye on these param values (same as with the regular dependency
+files) and know that the stage should be reproduced if/when they change. See
+`dvc params` for more details.
+
+> Note that DVC doesn't pass the parameter values to the command being run, just
+> like it doesn't feed dependency files either. The program (`train_model.py` in
+> this case) will have to read dependency files, as well as opening and parsing
+> `params.yaml` by itself, and use the params specified with `-p` (`seed`,
+> `train.lr`, and `train.epochs`).
