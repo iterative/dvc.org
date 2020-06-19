@@ -38,8 +38,8 @@
         },
         "children": [
           "data-versioning",
-          "data-pipelines",
           "data-access",
+          "data-pipelines",
           "experiments"
         ]
       },
