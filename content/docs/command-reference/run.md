@@ -60,11 +60,11 @@ $ dvc run -n hello_world -f echo "Hello world"
 ```
 
 For longer `dvc run` usage (which is typical), its recommended to use new line
-continuation (`\`) for readability:
+continuation (`\`) for readability. For example:
 
 ```dvc
 $ dvc run -n my_stage \
-          -d input.dat \
+          -d my_script.sh -d input.dat \
           -o output.dat \
           -M metrics.json \
           ./my_script.sh input.dat
@@ -120,7 +120,7 @@ these rules:
 - Read/write exclusively from/to the specified <abbr>dependencies</abbr> and
   <abbr>outputs</abbr> (including parameters files, metrics, and plots).
 
-- Completely rewrite outputs (i.e. do not append or edit).
+- Completely rewrite outputs. Do not append or edit (e.g. avoid `>>`).
 
   ⚠️ Note that DVC removes cached outputs before running the stages that produce
   them (including at `dvc repro`).
@@ -172,6 +172,9 @@ $ dvc run -n printer -d write.sh -o pages/raw ./write.sh
 $ dvc run -n signer -d sign.sh -d pages/raw -o pages/sgn ./sign.sh
 $ dvc run -n scanner -d read.sh -d pages/sgn -o signed.pdf ./read.sh
 ```
+
+See also this detailed
+[stage chaining example](#example-using-granular-parameter-dependencies).
 
 <details>
 
@@ -389,9 +392,9 @@ $ git init
 $ dvc init
 $ mkdir data
 $ dvc run -n json_struct -d data -o struct.json \
-          "echo '{\"a_number\": 0.75}' >> struct.json"
+          "echo '{\"a_number\": 0.75}' > struct.json"
 Running stage 'json_struct' with command:
-        echo '{"a_number": 0.75}' >> struct.json
+        echo '{"a_number": 0.75}' > struct.json
 Creating 'dvc.yaml'
 Adding stage 'json_struct' in 'dvc.yaml'
 Generating lock file 'dvc.lock'
@@ -414,7 +417,8 @@ Move to a subdirectory and create a stage there. This generates a separate
 ```dvc
 $ cd stages/
 $ dvc run -n test \
-          -d test.txt -o result.out \
+          -d test.txt \
+          -o result.out \
           "cat test.txt | wc -l > result.out"
 $ tree
 .
@@ -422,6 +426,33 @@ $ tree
 ├── dvc.yaml
 ├── result.out
 └── test.txt
+```
+
+## Example: chaining stages (build a pipeline)
+
+DVC [pipelines](/doc/command-reference/pipeline) are constructed by connecting
+the outputs of a stage to the dependencies of the following one(s).
+
+Extract an XML file from an archive to the `data/` folder:
+
+```dvc
+$ mkdir data
+$ dvc run -n extract \
+          -d Posts.xml.zip \
+          -o data/Posts.xml \
+          unzip Posts.xml.zip -d data/
+```
+
+> Note that the last `-d` applies to the stage's command (`unzip`), not to
+> `dvc run`.
+
+Execute an R script that parses the XML file:
+
+```dvc
+$ dvc run -n parse \
+          -d parsingxml.R -d data/Posts.xml \
+          -o data/Posts.csv \
+          Rscript parsingxml.R data/Posts.xml data/Posts.csv
 ```
 
 ## Example: Using granular parameter dependencies
@@ -443,10 +474,11 @@ processing:
   bow_size: 15000
 ```
 
-Define a stage with both regular and parameter dependencies:
+Define a stage with both regular dependencies as well as parameter dependencies:
 
 ```dvc
-$ dvc run -d matrix-train.p -d train_model.py -o model.p \
+$ dvc run -n train \
+          -d matrix-train.p -d train_model.py -o model.p \
           -p seed,train.lr,train.epochs
           python train_model.py matrix-train.p model.p
 ```
@@ -457,26 +489,3 @@ program (`train_model.py` in this case) will have to open and parse
 (`seed,train.lr,train.epochs`). DVC will keep an eye on these param values (as
 well as on the regular dependency files) and know that the stage should be
 reproduced if/when they change. See `dvc params` for more details.
-
-## Example: chaining stages (build a pipeline)
-
-DVC [pipelines](/doc/command-reference/pipeline) are constructed by connecting
-one stage outputs to the next's dependencies:
-
-Extract an XML file from an archive to the `data/` folder:
-
-```dvc
-$ mkdir data
-$ dvc run -d Posts.xml.zip \
-          -o data/Posts.xml \
-          -f extract.dvc \
-          unzip Posts.xml.zip -d data/
-```
-
-Execute an R script:
-
-```dvc
-$ dvc run -d parsingxml.R -d data/Posts.xml \
-          -o data/Posts.csv \
-          Rscript parsingxml.R data/Posts.xml data/Posts.csv
-```
