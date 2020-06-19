@@ -128,7 +128,7 @@ There's no need to use `dvc add` for DVC to track stage outputs (`data/prepared`
 in this case); `dvc run` already took care of this. You only need to run
 `dvc push` if you want to save them to
 [remote storage](/doc/tutorials/get-started/data-versioning#storing-and-sharing),
-(usually along with `git commit` to version the stage file itself):
+(usually along with `git commit` to version the stage file itself).
 
 ## Dependency graphs (DAGs)
 
@@ -145,8 +145,7 @@ $ dvc run -n featurize \
           -p featurize.max_features,featurize.ngrams \
           -d src/featurization.py -d data/prepared \
           -o data/features \
-          python src/featurization.py \
-                 data/prepared data/features
+          python src/featurization.py data/prepared data/features
 ```
 
 The `dvc.yaml` file is updated automatically and should include two stages now.
@@ -254,7 +253,7 @@ same set of inputs (parameters + data) and reused it.
 
 <details>
 
-### 💡Expand to see what happens under the hood
+### 💡 Expand to see what happens under the hood
 
 `dvc repro` relies on the DAG definition that it reads from `dvc.yaml`, and uses
 `dvc.lock` to determine what exactly needs to be run.
