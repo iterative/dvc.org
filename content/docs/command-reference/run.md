@@ -250,9 +250,6 @@ the necessary stages.
 - `--external` - allow outputs that are outside of the DVC repository. See
   [Managing External Data](/doc/user-guide/managing-external-data).
 
-- `--file <path>` - specify name of the YAML file this command will generate or
-  update instead of the default `dvc.yaml`.
-
 - `-w <path>`, `--wdir <path>` - specifies a working directory for the `command`
   to run in (uses the `wdir` field in `dvc.yaml`). Dependency and output files
   (including metrics and plots) should be specified relative to this directory.
