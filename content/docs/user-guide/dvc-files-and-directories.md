@@ -164,8 +164,19 @@ the possible following fields:
 
 ### dvc.lock file
 
-The purpose of `dvc.lock` is to lock the exact contents of all files involved in
-the pipeline(s) at the time that `dvc.yaml` was last updated.
+For every `dvc.yaml` file, a corresponding `dvc.lock` (YAML) file is created or
+updated by DVC as well. Its purpose is to lock the exact contents of all files
+involved in the pipeline(s) at the time that `dvc.yaml` was last updated.
+
+This means that regular <abbr>dependencies</abbr> and all <abbr>outputs</abbr>
+(including [metrics](/doc/command-reference/metrics) and
+[plots](/doc/command-reference/plots) files) are also listed in `dvc.lock`, but
+with additional fields that store the `md5` hash value (or `etag` for HTTP
+<abbr>external dependencies</abbr>) of each file or directory tracked by DVC.
+
+[parameter](/doc/command-reference/params#examples) key/value pairs are listed
+separately under `params`, grouped by parameters file. (No hash value is needed
+to lock params files, as these are not tracked as a whole.)
 
 Here's an example `dvc.lock` based on the one in [`dvc.yaml`](#dvcyaml-file)
 above:
@@ -188,26 +199,6 @@ stages:
       - path: logs.csv
         md5: f99aac37e383b422adc76f5f1fb45004
 ```
-
-It replicates the structure of `dvc.yaml`, but with some key differences and
-additions to <abbr>dependency</abbr> and <abbr>output</abbr> fields:
-
-- `deps`: Each item of the list becomes an object with 2 properties:
-  - `path`: Same as the `deps` value from `dvc.yaml`
-  - `md5`: The hash value of the file
-  - `etag`: Strong ETag response header (only HTTP <abbr>external
-    dependencies</abbr>)
-- `params`: List of [parameters files](/doc/command-reference/params#examples)
-  (typically only `params.yaml`), as well as sub-lists of the specific
-  parameters tracked by this stage (per params file), and their latest value.
-- `outs`: Each item of the list becomes an object with 2 properties:
-
-  - `path`: Same as the `deps` value from `dvc.yaml`
-  - `md5`: The hash value of the file
-
-  This includes any [metrics files](/doc/command-reference/metrics) or
-  [plots file](/doc/command-reference/plots) specified in the `metrics` and
-  `plots` fields of `dvc.yaml`.
 
 ## Internal directories and files
 
