@@ -5,8 +5,9 @@ Enjoy working with DVC faster and with fewer typos!
 Shell completion is automatically enabled when DVC is installed on MacOS
 [with Homebrew](/doc/install/macos#install-with-brew), or on Linux
 [from **deb** or **rpm** repositories](/doc/install/linux#install-from-repository)
-or via [**snap**](/doc/install/linux#install-with-snap). Please follow the
-instructions below for other DVC installation methods.
+or via [**snap**](/doc/install/linux#install-with-snap).
+
+Please follow the instructions below for other DVC installation methods.
 
 ## How it works
 
@@ -16,11 +17,11 @@ For example:
 
 ```dvc
 $ dvc r # Press [tab] key
- -- dvc commands --
-remote  -- Manage remote storage configuration.
-remove  -- Remove outputs of DVC-file.
-repro   -- Check for changes and reproduce DVC-file and dependencies.
-root    -- Relative path to project's directory.
+Completing dvc commands
+remote  -- Set up and manage data remotes.
+remove  -- Remove stage entry and unprotect outputs
+repro   -- Reproduce complete or partial pipelines by executing their stages.
+root    -- Return the relative path to the root of the DVC project.
 run     -- Generate a stage file from a command and execute the command.
 ```
 
@@ -49,17 +50,14 @@ install and configure shell completion.
    $ brew install bash-completion
    ```
 
-2. Then download the
-   [DVC completion script](https://github.com/iterative/dvc/blob/master/scripts/completion/dvc.bash)
-   and save it on `/usr/local/etc/bash_completion.d/`:
+2. Edit `~/.bash_completion` (create it if it doesn't exist) and add this line
+   to make sure that completions are refreshed when a new terminal is opened:
 
    ```dvc
-   $ sudo wget \
-       -O /usr/local/etc/bash_completion.d/dvc \
-       https://raw.githubusercontent.com/iterative/dvc/master/scripts/completion/dvc.bash
+   eval "$(dvc completion -s bash)"
    ```
 
-3. Edit `~/.bash_profile` and make sure that these lines are there:
+3. Edit `~/.bash_profile` and make sure that these lines appear:
 
    ```bash
    if [ -f $(brew --prefix)/etc/bash_completion ]; then
@@ -77,17 +75,14 @@ install and configure shell completion.
    $ sudo apt install --reinstall bash-completion
    ```
 
-2. Then download the
-   [DVC completion script](https://github.com/iterative/dvc/blob/master/scripts/completion/dvc.bash)
-   and save it on `/etc/bash_completion.d/`:
+2. Edit `~/.bash_completion` (create it if it doesn't exist) and add this line
+   to make sure that completions are refreshed when a new terminal is opened:
 
    ```dvc
-   $ sudo wget \
-       -O /etc/bash_completion.d/dvc \
-       https://raw.githubusercontent.com/iterative/dvc/master/scripts/completion/dvc.bash
+   eval "$(dvc completion -s bash)"
    ```
 
-3. Edit `~/.bashrc` and make sure that these lines are there:
+3. Edit `~/.bashrc` and make sure that these lines appear:
 
    ```bash
    # enable bash completion in interactive shells
@@ -100,39 +95,36 @@ install and configure shell completion.
    fi
    ```
 
-4. Finally, `source ~/.bashrc` or open a new terminal to activate it.
+4. Finally, `source ~/.bashrc` or open a new terminal to activate completions.
 
 ## Zsh completion
 
-The DVC specific completion script is located in this path of our main
-repository:
-[dvc/scripts/completion/dvc.zsh](https://github.com/iterative/dvc/blob/master/scripts/completion/dvc.zsh)
+Place the completion script in a directory included in `$fpath`. Zsh expects
+the file name to be `_dvc`.
 
-Place the completion script in a directory included in `$fpath`, the file name
-should be `_dvc`.
+A nice way to ensure completions are always up-to-date is to refresh them
+whenever a new terminal is opened.
 
-For example:
+1. Edit `~/.zshrc` and add the following lines to the top of the file:
 
-```dvc
-$ sudo wget \
-    -O /usr/local/share/zsh/site-functions/_dvc \
-    https://raw.githubusercontent.com/iterative/dvc/master/scripts/completion/dvc.zsh
-```
+   ```dvc
+   mkdir -p ~/.local/completions
+   fpath=($fpath ~/.local/completions)
+   dvc completion -s zsh > ~/.local/completions/_dvc
+   ```
 
-Make sure `compinit` is loaded or do it by adding in `~/.zshrc`:
+2. Make sure that these lines appear in `~/.zshrc` to load `compinit`:
 
-```dvc
-$ autoload -Uz compinit && compinit -i
-```
+   ```dvc
+   # Use modern completion system
+   autoload -Uz compinit
+   compinit
+   ```
 
-Then reload your shell:
+3. Finally, `exec $SHELL -l` or open a new terminal to activate completions.
 
-```dvc
-$ exec $SHELL -l
-```
-
-This step is optional but will make the DVC output look much nicer, by adding
-more colors to it. Add the following to your `~/.zshrc`:
+4. This step is optional but will make the DVC output look much nicer, by adding
+   more colors to it. Add the following to `~/.zshrc`:
 
 ```bash
 # Case insensitive match
