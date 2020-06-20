@@ -65,7 +65,8 @@ install and configure shell completion.
    fi
    ```
 
-4. Finally, `source ~/.bash_profile` or launch a new terminal to activate it.
+4. Finally, `source ~/.bash_profile` or launch a new terminal to activate
+   completions.
 
 ## Bash completion on Debian/Ubuntu
 
@@ -123,8 +124,8 @@ whenever a new terminal is opened.
 
 3. Finally, `exec $SHELL -l` or open a new terminal to activate completions.
 
-4. This step is optional but will make the DVC output look much nicer, by adding
-   more colors to it. Add the following to `~/.zshrc`:
+4. Optionally, make completion output look much nicer by adding color hints. Add
+   the following to `~/.zshrc`:
 
 ```bash
 # Case insensitive match
