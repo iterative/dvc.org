@@ -129,7 +129,7 @@ from the external data source.
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
-- `--no-exec` - Only create stage file without actually download it.
+- `--no-exec` - Only create DVC-file without actually downloading it.
 
 ## Examples
 
