@@ -11,7 +11,7 @@ changes in the remote data source. Creates a
 ## Synopsis
 
 ```usage
-usage: dvc import-url [-h] [-q | -v] [--file <filename>] url [out]
+usage: dvc import-url [-h] [-q | -v] [--no-exec] [--file <filename>] url [out]
 
 positional arguments:
   url                   (See supported URLs in the description.)
@@ -128,6 +128,8 @@ from the external data source.
   problems arise, otherwise 1.
 
 - `-v`, `--verbose` - displays detailed tracing information.
+
+- `--no-exec` - Only create stage file without actually download it.
 
 ## Examples
 
