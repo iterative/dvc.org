@@ -5,16 +5,17 @@ version them with Git, next question is how can we _use_ these artifacts outside
 of the project? How do I download a model to deploy it? How do I download a
 specific version of a model? How do I reuse datasets across different projects?
 
-> These questions tend to come up when you browse the files that DVC saves
-> to remote storage, e.g.
+> These questions tend to come up when you browse the files that DVC saves to
+> remote storage, e.g.
 > `s3://dvc-public/remote/get-started/fb/89904ef053f04d64eafcc3d70db673` 😱
 > instead of the original files, name such as `model.pkl` or `data.xml`.
 
-Remember those `.dvc` files `dvc add` generates? Or the `dvc.yaml` and `dvc.lock`
-pipeline files produced by `dvc run`? They (and their versions in Git) contain all the information
-needed to access any version of all the datasets or models in remote storage. All
-you need is to have access to the <abbr>DVC repository</abbr>. Practically, it
-means a URL to a Git repo that you have access to.
+Remember those `.dvc` files `dvc add` generates? Or the `dvc.yaml` and
+`dvc.lock` pipeline files produced by `dvc run`? They (and their versions in
+Git) contain all the information needed to access any version of all the
+datasets or models in remote storage. All you need is to have access to the
+<abbr>DVC repository</abbr>. Practically, it means a URL to a Git repo that you
+have access to.
 
 ## Find a file or directory
 
@@ -50,8 +51,8 @@ the data came from or whether new versions are available.
 
 ## Import file or directory
 
-`dvc import` also downloads any file or directory, while also
-creating a `.dvc` file that can be saved in the project:
+`dvc import` also downloads any file or directory, while also creating a `.dvc`
+file that can be saved in the project:
 
 ```dvc
 $ dvc import https://github.com/iterative/dataset-registry \
