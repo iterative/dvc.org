@@ -46,8 +46,8 @@ stage.
 
 Using parameter dependencies prevents situations where several
 [pipeline](/doc/command-reference/pipeline) stages share a (configuration) file
-as a common dependency, and any change in this dependency invalidates all the
-stages and causes the reproduction those stages unnecessarily.
+as a common dependency, and any change in this dependency invalidates all these
+stages and causes their reproduction unnecessarily.
 
 The YAML or JSON parameters files needed for the project have to be manually
 written, or generated, and these can be versioned directly with Git. You can
@@ -57,6 +57,11 @@ dependencies for your pipeline's stages (instead of or in addition to regular
 [DVC-file format](/doc/user-guide/dvc-files-and-directories)). These values will
 be compared to the ones in the params files to determine if the stage is
 invalidated upon pipeline [reproduction](/doc/command-reference/repro).
+
+Note that DVC doesn't pass the parameter values to the command being run. The
+associated stage command executed by `dvc run` or `dvc repro` will have to open
+and parse the parameters file, and use the params specified with `-p` (`seed`,
+`train.lr`, and `train.epochs`).
 
 `dvc params diff` is available to show changes in parameters, displaying the
 param names as well as their current and previous values.
