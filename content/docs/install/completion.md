@@ -50,14 +50,7 @@ install and configure shell completion.
    $ brew install bash-completion
    ```
 
-2. Edit `~/.bash_completion` (create it if it doesn't exist) and add this line
-   to make sure that completions are refreshed when a new terminal is opened:
-
-   ```dvc
-   eval "$(dvc completion -s bash)"
-   ```
-
-3. Edit `~/.bash_profile` and make sure that these lines appear:
+   then edit `~/.bash_profile` and make sure that these lines appear:
 
    ```bash
    if [ -f $(brew --prefix)/etc/bash_completion ]; then
@@ -65,7 +58,15 @@ install and configure shell completion.
    fi
    ```
 
-4. Finally, `source ~/.bash_profile` or launch a new terminal to activate
+2. Run these commands to install DVC completions:
+
+   ```dvc
+   $ DVC_BIN="$(which dvc)"
+   $ echo 'which "'$DVC_BIN'" && eval "$("'$DVC_BIN'" completion -s bash)"' \
+       >> ~/.bash_completion
+   ```
+
+3. Finally, `source ~/.bash_profile` or open a new terminal to activate
    completions.
 
 ## Bash completion on Debian/Ubuntu
@@ -76,14 +77,7 @@ install and configure shell completion.
    $ sudo apt install --reinstall bash-completion
    ```
 
-2. Edit `~/.bash_completion` (create it if it doesn't exist) and add this line
-   to make sure that completions are refreshed when a new terminal is opened:
-
-   ```dvc
-   eval "$(dvc completion -s bash)"
-   ```
-
-3. Edit `~/.bashrc` and make sure that these lines appear:
+   then edit `~/.bashrc` and make sure that these lines appear:
 
    ```bash
    # enable bash completion in interactive shells
@@ -96,7 +90,15 @@ install and configure shell completion.
    fi
    ```
 
-4. Finally, `source ~/.bashrc` or open a new terminal to activate completions.
+2. Run these commands to install DVC completions:
+
+   ```dvc
+   $ DVC_BIN="$(which dvc)"
+   $ echo 'which "'$DVC_BIN'" && eval "$("'$DVC_BIN'" completion -s bash)"' \
+       >> ~/.bash_completion
+   ```
+
+3. Finally, `source ~/.bashrc` or open a new terminal to activate completions.
 
 ## Zsh completion
 
@@ -106,25 +108,30 @@ file name to be `_dvc`.
 A nice way to ensure completions are always up-to-date is to refresh them
 whenever a new terminal is opened.
 
-1. Edit `~/.zshrc` and add the following lines to the top of the file:
+1. First, check if Zsh completion support is installed. Make sure that these
+   lines appear in `~/.zshrc` to load `compinit`:
 
-   ```dvc
-   mkdir -p ~/.local/completions
-   fpath=($fpath ~/.local/completions)
-   dvc completion -s zsh > ~/.local/completions/_dvc
-   ```
-
-2. Make sure that these lines appear in `~/.zshrc` to load `compinit`:
-
-   ```dvc
+   ```bash
    # Use modern completion system
    autoload -Uz compinit
    compinit
    ```
 
-3. Finally, `exec $SHELL -l` or open a new terminal to activate completions.
+2. Find out where DVC is installed by running `which dvc`
 
-4. Optionally, make completion output look much nicer by adding color hints. Add
+3. Edit `~/.zshrc` and add the following lines to the top of the file, replacing
+   `PATH_TO_DVC` with the output of `which dvc`:
+
+   ```bash
+   mkdir -p ~/.local/completions
+   fpath=($fpath ~/.local/completions)
+   which "PATH_TO_DVC" && "PATH_TO_DVC" completion -s zsh \
+     > ~/.local/completions/_dvc
+   ```
+
+4. Finally, `exec $SHELL -l` or open a new terminal to activate completions.
+
+5. Optionally, make completion output look much nicer by adding color hints. Add
    the following to `~/.zshrc`:
 
 ```bash
