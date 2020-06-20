@@ -239,7 +239,7 @@ parameters files (`params.yaml` by default). This allows controlling
 experimental hyperparameters easily.
 
 > Note that DVC doesn't pass the parameter values to the command being run. The
-> program will have to open and parse `params.yaml`, and use the params
+> program will have to open and parse the parameters file, and use the params
 > specified with `-p` (`seed`, `train.lr`, and `train.epochs`).
 
 Special types of output files, [metrics](/doc/command-reference/metrics) (`-m`
