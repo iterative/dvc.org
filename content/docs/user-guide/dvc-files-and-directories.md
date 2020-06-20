@@ -166,7 +166,8 @@ the possible following fields:
 
 For every `dvc.yaml` file, a corresponding `dvc.lock` (YAML) file is created or
 updated by DVC as well. Its purpose is to lock the exact contents of all files
-involved in the pipeline(s) at the time that `dvc.yaml` was last updated.
+involved in the pipeline(s) at the time that the pipeline was last committed
+(after using `dvc add`, `dvc run`, `dvc repro`, or `dvc commit`, for example).
 
 This means that regular <abbr>dependencies</abbr> and all <abbr>outputs</abbr>
 (including [metrics](/doc/command-reference/metrics) and
