@@ -28,6 +28,11 @@ can then be executed in the correct order, reproducing pipeline results.
 > Pipeline stages are typically defined using the `dvc run` command, while
 > initial data dependencies can be registered by the `dvc add` command.
 
+This command is similar to [Make](https://www.gnu.org/software/make/) in
+software build automation, but DVC captures build requirements
+([dependencies and outputs](/doc/command-reference/run#dependencies-and-outputs))
+and caches relevant <abbr>data artifacts</abbr> along the way.
+
 💡 For convenience, a Git hook is available to remind you to `dvc repro` when
 needed after a `git commit`. See `dvc install` for more details.
 

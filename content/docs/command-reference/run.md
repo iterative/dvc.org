@@ -28,8 +28,8 @@ individual data processes, including their input and resulting outputs. They are
 defined in a
 [`dvc.yaml` file](/doc/user-guide/dvc-files-and-directories#dvcyaml-files),
 which gets created or updated in the current working directory. This command
-[executes](#stage-execution) stage upon creating or updating then, unless the
-`--no-exec` option is used.
+[executes](#stage-execution-and-reproduction) stage upon creating or updating
+then, unless the `--no-exec` option is used.
 
 A stage name is required and can be provided using the `-n` (`--name`) option.
 The other available [options](#options) are mainly meant to describe stage
@@ -41,7 +41,7 @@ The remaining terminal input provided to `dvc run` after the command options
 minimal stage definition is:
 
 ```dvc
-$ dvc run --name hello_world echo Hi
+$ dvc run -n hello_world echo Howdy
 ```
 
 This results in the following stage entry in `dvc.yaml`:
@@ -49,53 +49,88 @@ This results in the following stage entry in `dvc.yaml`:
 ```yaml
 stages:
   hello_world:
-    cmd: echo Hi
+    cmd: echo Howdy
 ```
 
-Note that in order to update a stage that is already defined in this `dvc.yaml`,
-the `-f` (`--force`) option is needed:
+### Dependencies and outputs
+
+By specifying lists of <abbr>dependencies</abbr> (`-d` option) and/or
+<abbr>outputs</abbr> (`-o` and `-O` options) for each stage, we can outline a
+_dependency graph_ ([DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph))
+that connects them, i.e. the output of a stage becomes the input of another, and
+so on. This graph can be restored by DVC later to modify or
+[reproduce](/doc/command-reference/repro) the full pipeline. For example:
 
 ```dvc
-$ dvc run -n hello_world -f echo "Hello world"
+$ dvc run -n printer -d write.sh -o pages ./write.sh
+$ dvc run -n scanner -d read.sh -d pages -o signed.pdf ./read.sh
 ```
+
+Relevant notes:
+
+- Any scripts being run, are included among the specified `-d` dependencies.
+  This ensures that when the source code changes, DVC knows that the stage needs
+  to be reproduced.
+
+- `dvc run` checks the dependency graph integrity before creating a new stage.
+  For example: two stage cannot explicitly specify the same output, there should
+  be no cycles, etc.
+
+- Outputs are deleted from the <abbr>workspace</abbr> by `dvc run` before
+  executing the command, so the program or script should be able to recreate any
+  directories marked as outputs.
+
+- DVC does not feed dependency files to the command being run. The program will
+  have to read by itself the files specified with `-d`.
+
+> See another
+> [stage chaining example](#example-using-granular-parameter-dependencies).
+
+### Parameters, metrics, and plots for experiment management
+
+[parameters](/doc/command-reference/params) (`-p`/`--params` option) are a
+special type of key/value dependencies. Multiple parameter dependencies can be
+specified from one or more parameters files (YAML or JSON, `params.yaml` is
+assumed by default). This allows controlling experimental hyperparameters
+easily.
+
+> Note that DVC does not pass the parameter values to the command being run. The
+> program will have to open and parse the parameters file, and use the params
+> specified with `-p`.
+
+Special types of output files, [metrics](/doc/command-reference/metrics) (`-m`
+and `-M` options) and [plots](/doc/command-reference/plots) (`--plots` and
+`--plots-no-cache` options), are also supported. Metrics and plots files have
+specific formats (JSON, YAML, CSV, or TSV) and allow displaying and comparing
+data science experiments.
 
 ### Stage commands
 
-The `command` argument should be the very last part of the full `dvc run ...`
-line(s) written to the system terminal. It can be anything your terminal would
-accept and run directly, for example a shell built-in, expression, or binary
-found in `PATH`. Any flags sent after the command are interpreted by the command
-itself, not by `dvc run`. Some illustrative examples:
+The `command` argument can be anything your terminal would accept and run
+directly, for example a shell built-in, expression, or binary found in `PATH`.
+Please remember that any flags sent after the `command` are interpreted by the
+command itself, not by `dvc run`. Some illustrative examples:
 
 ```dvc
 $ dvc run -n remove_word -d words.txt sed 's/word//' words.txt
-$ dvc run -n my_sh-stage -d my_script.sh ./my_script.sh
-$ dvc run -n my_py-stage -d my_script.py python my_script.py
-$ dvc run -n my_py-maxsize python -c 'import sys; print(sys.maxsize)'
+$ dvc run -n my_stage -d my_script.sh ./my_script.sh
+$ dvc run -n my_stage -f -d my_script.py python my_script.py
+$ dvc run -n py_maxsize python -c 'import sys; print(sys.maxsize)'
 ```
 
-> Note how files needed for the command, including any scripts being run, are
-> marked as [dependencies](#dependencies-and-outputs) with `-d`.
+⚠️ Note that while DVC is platform-agnostic, the commands defined in your
+[pipeline](/doc/command-reference/pipeline) stages may only work on some
+operating systems and require certain software packages to be installed.
 
 Wrap the command with double quotes `"` if there are special characters in it
 like `|` (pipe) or `<`, `>` (redirection), otherwise they would apply to
-`dvc run` as a whole. For example:
+`dvc run` as a whole. Use single quotes `'` instead if there are environment
+variables in it that should be evaluated dynamically. Examples:
 
 ```dvc
 $ dvc run -n my_stage "./my_script.sh > /dev/null 2>&1"
-```
-
-Use single quotes `'` instead if there are environment variables in it that
-should be evaluated dynamically, for example:
-
-```dvc
 $ dvc run -n my_stage './my_script.sh $MYENVVAR'
 ```
-
-⚠️Note that while DVC is platform-agnostic, the commands defined in your
-[pipeline](/doc/command-reference/pipeline) stages may only work on specific
-operating systems and require certain software packages to be installed on the
-machine where they are executed. (This affects `dvc repro`.)
 
 <details>
 
@@ -109,23 +144,23 @@ these rules:
 - Read/write exclusively from/to the specified <abbr>dependencies</abbr> and
   <abbr>outputs</abbr> (including parameters files, metrics, and plots).
 
-- Completely rewrite outputs. Do not append or edit (e.g. avoid `>>`).
+- Completely rewrite outputs. Do not append or edit.
 
-  ⚠️ Note that DVC removes cached outputs before running the stages that produce
-  them (including at `dvc repro`).
+  ⚠️ Note that DVC deletes any outputs that already exist in the
+  <abbr>workspace</abbr> before executing the stages (including `dvc repro`).
 
 - Stop reading and writing files when the `command` exits.
 
 Also, if your pipeline reproducibility goals include consistent output data, its
 code should be
 [deterministic](https://en.wikipedia.org/wiki/Deterministic_algorithm) (produce
-the same output for any given input). For this, avoid code that brings
-[entropy](https://en.wikipedia.org/wiki/Software_entropy) into your data
-pipeline (e.g. random numbers, time functions, hardware dependencies, etc.)
+the same output for any given input): avoid code that increases
+[entropy](https://en.wikipedia.org/wiki/Software_entropy) (e.g. random numbers,
+time functions, hardware dependencies, etc.)
 
 </details>
 
-### Stage execution
+### Stage execution and reproduction
 
 `dvc run` executes the given `command` so the defined outputs are written,
 unless the same `dvc run` has already happened in this <abbr>workspace</abbr>.
@@ -134,125 +169,15 @@ Put in other words, if an identical stage already exists in
 outputs correspond to the <abbr>cached</abbr> files (hash values are compared),
 then `dvc run` does not execute the `command`.
 
-Note that `dvc repro` provides an interface to check the
-[status](/doc/command-reference/status), and reproduce pipelines created with
-`dvc repro` by executing (again) the necessary stages. This concept is similar
-to the one of [Make](https://www.gnu.org/software/make/) in software build
-automation, but DVC captures data and caches relevant <abbr>data
-artifacts</abbr> along the way.
-
-> See [this tutorial](/doc/tutorials/pipelines) to learn more and try creating a
-> pipeline.
-
-## Dependencies and outputs
-
-By specifying lists of <abbr>dependencies</abbr> (`-d` option) and/or
-<abbr>outputs</abbr> (`-o` and `-O` options) for each stage, we can outline a
-_dependency graph_ ([DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph))
-that connects them, i.e. the output of a stage becomes the input of another, and
-so on. This graph can be restored by DVC later to modify or
-[reproduce](/doc/command-reference/repro) the full
-[pipeline](/doc/command-reference/pipeline).
-
-Let's see an illustrative pipeline with 3 stages, for example:
-
-```dvc
-$ dvc run -n printer -d write.sh -o pages/raw ./write.sh
-$ dvc run -n signer -d sign.sh -d pages/raw -o pages/sgn ./sign.sh
-$ dvc run -n scanner -d read.sh -d pages/sgn -o signed.pdf ./read.sh
-```
-
-> See also this
-> [stage chaining example](#example-using-granular-parameter-dependencies).
-
-Note that DVC doesn't feed dependency files to the command being run. The
-program will have to read by itself the files specified with `-d`.
-
-<details>
-
-### Expand to see how this pipeline looks
-
-The resulting `dvc.yaml` structure looks like this:
-
-```yaml
-stages:
-  printer:
-    cmd: ./write.sh
-    deps:
-      - write.sh
-    outs:
-      - pages/raw
-  signer:
-    cmd: ./sign.sh
-    deps:
-      - pages/raw
-      - sign.sh
-    outs:
-      - pages/sgn
-  scanner:
-    cmd: ./read.sh
-    deps:
-      - pages/sgn
-      - read.sh
-    outs:
-      - signed.pdf
-```
-
-To visualize how these stages are connected into a pipeline (given their outputs
-and dependencies), we can use `dvc dag`:
-
-```dvc
-$ dvc dag
-+---------+
-| printer |
-+---------+
-      *
-      *
-      *
-+--------+
-| signer |
-+--------+
-      *
-      *
-      *
-+---------+
-| scanner |
-+---------+
-```
-
-</details>
-
-Note that `dvc run` checks the dependency graph integrity before creating a new
-stage. For example: two stage cannot explicitly specify the same output, there
-should be no cycles, etc.
-
-Also note that outputs are deleted from the <abbr>workspace</abbr> by `dvc run`
-before executing the command, so the program or script should be able to
-recreate any directories marked as outputs.
-
-### For experiment management
-
-A special type of key/value dependencies,
-[parameters](/doc/command-reference/params) (`-p` option), is supported.
-Multiple parameter dependencies can be specified from one or more YAML or JSON
-parameters files (`params.yaml` by default). This allows controlling
-experimental hyperparameters easily.
-
-> Note that DVC doesn't pass the parameter values to the command being run. The
-> program will have to open and parse the parameters file, and use the params
-> specified with `-p` (`seed`, `train.lr`, and `train.epochs`).
-
-Special types of output files, [metrics](/doc/command-reference/metrics) (`-m`
-and `-M` options) and [plots](/doc/command-reference/plots), are also supported.
-Metrics and plots files have specific formats (JSON, YAML, CSV, or TSV) and
-allow for managing data science experiments by different display and comparison
-alternatives.
+`dvc repro` provides an interface to check the status (see also `dvc status`),
+and reproduce stages and pipelines created with `dvc run` by executing (again)
+the necessary stages.
 
 ## Options
 
 - `-n <stage>`, `--name <stage>` (required) - specify a name for the stage
   generated by this command (e.g. `-n train`). Stage names can only contain
-  letters, numbers, `-` and `_`.
+  letters, numbers, dash `-` and underscore `_`.
 
 - `-d <path>`, `--deps <path>` - specify a file or a directory the stage depends
   on. Multiple dependencies can be specified like this:
@@ -387,13 +312,25 @@ $ mkdir example && cd example
 $ git init
 $ dvc init
 $ mkdir data
-$ dvc run -n json_struct -d data -o struct.json \
+$ dvc run --name json_struct -d data -o struct.json \
           "echo '{\"a_number\": 0.75}' > struct.json"
 Running stage 'json_struct' with command:
         echo '{"a_number": 0.75}' > struct.json
 Creating 'dvc.yaml'
 Adding stage 'json_struct' in 'dvc.yaml'
 Generating lock file 'dvc.lock'
+```
+
+This results in the following stage entry in `dvc.yaml`:
+
+```yaml
+stages:
+  json_struct:
+    cmd: 'echo ''{"a_number": 0.75}'' > struct.json'
+    deps:
+      - data
+    outs:
+      - struct.json
 ```
 
 The following stage runs a Python script that trains an ML model on the training
@@ -404,6 +341,14 @@ $ dvc run -n train \
           -d matrix-train.p -d train_model.py \
           -o model.p \
           python train_model.py matrix-train.p 20180226 model.p
+```
+
+Note that in order to update a stage that is already defined, the `-f`
+(`--force`) option is needed. Let's update the seed for the `train` stage:
+
+```dvc
+$ dvc run -n train -f -d matrix-train.p -d train_model.py -o model.p \
+          python train_model.py matrix-train.p 18494003 model.p
 ```
 
 Move to a subdirectory and create a stage there. This generates a separate
@@ -449,6 +394,22 @@ $ dvc run -n parse \
           -d parsingxml.R -d data/Posts.xml \
           -o data/Posts.csv \
           Rscript parsingxml.R data/Posts.xml data/Posts.csv
+```
+
+To visualize how these stages are connected into a pipeline (given their outputs
+and dependencies), we can use `dvc dag`:
+
+```dvc
+$ dvc dag
++---------+
+| extract |
++---------+
+      *
+      *
+      *
++---------+
+|  parse  |
++---------+
 ```
 
 ## Example: Using parameter dependencies
