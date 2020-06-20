@@ -140,19 +140,14 @@ in the [Get Started](/doc/tutorials/get-started).
 
 Start by cloning our example repo if you don't already have it. Then move into
 the repo and checkout the
-[2-remote](https://github.com/iterative/example-get-started/releases/tag/2-remote)
-tag, corresponding to the [Configure](/doc/tutorials/get-started#configure)
-section of the _Get Started_:
+[3-config-remote](https://github.com/iterative/example-get-started/releases/tag/3-config-remote)
+tag, section of the _Get Started_:
 
 ```dvc
 $ git clone https://github.com/iterative/example-get-started
 $ cd example-get-started
-$ git checkout 2-remote
-$ mkdir data
+$ git checkout 3-config-remote
 ```
-
-You should now have a blank <abbr>workspace</abbr>, just before
-[Versioning Basics](/doc/tutorials/get-started/data-versioning).
 
 </details>
 
@@ -172,20 +167,17 @@ To track the changes with git, run:
 	git add data.xml.dvc data/.gitignore
 ```
 
-Let's take a look at the resulting stage file (`.dvc` file) `data.xml.dvc`:
+Let's take a look at the changes to the `data.xml.dvc`:
 
-```yaml
-md5: 61e80c38c1ce04ed2e11e331258e6d0d
-wdir: .
-deps:
-  - etag: '"f432e270cd634c51296ecd2bc2f5e752-5"'
-    path: https://data.dvc.org/get-started/data.xml
-outs:
-  - md5: a304afb96060aad90176268345e10355
-    path: data/data.xml
-    cache: true
-    metric: false
-    persist: false
+```diff
++md5: c4d6740ee09950bb532d418b8ae0b52e
++frozen: true
++deps:
++- etag: '"f432e270cd634c51296ecd2bc2f5e752-5"'
++  path: https://data.dvc.org/get-started/data.xml
+ outs:
+ - md5: a304afb96060aad90176268345e10355
+   path: data.xml
 ```
 
 The `etag` field in the `.dvc` file contains the
@@ -233,17 +225,14 @@ Importing '../../../tmp/dvc-import-url-example/data.xml' -> 'data/data.xml'
 Check `data.xml.dvc`:
 
 ```yaml
-md5: eca0a296d67781cc488c6ffd1cc63b8e
-wdir: .
+md5: fceb2bc076fabe99b483729c3ea2a897
+frozen: true
 deps:
   - md5: a304afb96060aad90176268345e10355
     path: /tmp/dvc-import-url-example/data.xml
 outs:
   - md5: a304afb96060aad90176268345e10355
-    path: data/data.xml
-    cache: true
-    metric: false
-    persist: false
+    path: data.xml
 ```
 
 The `.dvc` file is nearly the same as in the previous example. The difference is
@@ -279,30 +268,34 @@ $ pip install -r src/requirements.txt
 </details>
 
 ```dvc
-$ dvc run --file prepare.dvc \
+$ dvc run -n prepare \
           -d src/prepare.py -d data/data.xml \
           -o data/prepared \
           python src/prepare.py data/data.xml
 Running command:
 	python src/prepare.py data/data.xml
 ...
+```
+
+```dvc
 $ tree
 .
+├── README.md
 ├── data
 │   ├── data.xml
+│   ├── data.xml.dvc
 │   └── prepared
 │       ├── test.tsv
 │       └── train.tsv
-├── data.xml.dvc
-├── prepare.dvc
-├── requirements.txt
+├── dvc.lock
+├── dvc.yaml
+├── params.yaml
 └── src
     ├── evaluate.py
     ├── featurization.py
     ├── prepare.py
+    ├── requirements.txt
     └── train.py
-
-3 directories, 10 files
 ```
 
 At this point, DVC considers everything being up to date:
@@ -319,7 +312,6 @@ do so, we can run `dvc update` to make sure the import stage is up to date:
 
 ```dvc
 $ dvc update data.xml.dvc
-...
 Importing '.../tmp/dvc-import-url-example/data.xml' -> 'data/data.xml'
 ```
 
@@ -328,20 +320,7 @@ DVC notices the "external" data source has changed, and updates the import stage
 remaining pipeline results are also regenerated:
 
 ```dvc
-$ dvc status
-prepare.dvc:
-	changed deps:
-		modified:           data/data.xml
-
-$ dvc repro prepare.dvc
-...
-Reproducing 'prepare.dvc'
-...
-
-$ dvc status
-Data and pipelines are up to date.
+$ dvc repro
+Running stage 'prepare' with command:
+	python src/prepare.py data/data.xml
 ```
-
-`dvc repro` executes the command defined in the given `prepare.dvc` stage after
-noticing that its dependency `data/data.xml` has changed. `dvc status` should
-report "Data and pipelines are up to date" after this.
