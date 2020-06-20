@@ -125,7 +125,8 @@ from the external data source.
 
 - `--no-exec` - create `.dvc` file without actually downloading `url`. E.g. if
   file or directory already exist it can be used to skip download.
-  `dvc commit <out>.dvc` can be used to actually update it and save data.
+  `dvc commit <out>.dvc` should be used to calculate URL and data hash, update
+  generated .`dvc` files and save existing data to the DVC cache.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
