@@ -13,8 +13,8 @@ specific version of a model? How do I reuse datasets across different projects?
 Remember those `.dvc` files `dvc add` generates? Or the `dvc.yaml` and
 `dvc.lock` pipeline files produced by `dvc run`? Those files, their history in
 Git, DVC remote storage config saved in Git contain all the information needed
-to access and download any version of all the datasets or models. It means that
-Git repository with DVC files becomes and entry point and can be used instead of
+to access and download any version of datasets, files, and models. It means that
+Git repository with DVC files becomes an entry point and can be used instead of
 accessing files directly.
 
 ## Find a file or directory
