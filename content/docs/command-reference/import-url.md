@@ -11,7 +11,8 @@ changes in the remote data source. Creates a
 ## Synopsis
 
 ```usage
-usage: dvc import-url [-h] [-q | -v] [--no-exec] [--file <filename>] url [out]
+usage: dvc import-url [-h] [-q | -v] [--file <filename>] [--no-exec]
+                      url [out]
 
 positional arguments:
   url                   (See supported URLs in the description.)
@@ -122,14 +123,16 @@ from the external data source.
   default file name: `<file>.dvc`, where `<file>` is the desired file name of
   the imported data (`out`).
 
+- `--no-exec` - create `.dvc` file without actually downloading `url`. E.g. if
+  file or directory already exist it can be used to skip download.
+  `dvc commit <out>.dvc` can be used to actually update it and save data.
+
 - `-h`, `--help` - prints the usage/help message, and exit.
 
 - `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if no
   problems arise, otherwise 1.
 
 - `-v`, `--verbose` - displays detailed tracing information.
-
-- `--no-exec` - Only create DVC-file without actually downloading it.
 
 ## Examples
 
