@@ -99,8 +99,8 @@ install and configure shell completion.
 
 ## Zsh completion
 
-Place the completion script in a directory included in `$fpath`. Zsh expects
-the file name to be `_dvc`.
+Place the completion script in a directory included in `$fpath`. Zsh expects the
+file name to be `_dvc`.
 
 A nice way to ensure completions are always up-to-date is to refresh them
 whenever a new terminal is opened.
