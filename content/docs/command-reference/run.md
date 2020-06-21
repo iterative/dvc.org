@@ -22,35 +22,20 @@ positional arguments:
 
 ## Description
 
-`dvc run` provides an interface to describe
-[pipelines](/doc/command-reference/pipeline), stage by stage. _Stages_ represent
-individual data processes, including their input and resulting outputs. They are
-defined in a
-[`dvc.yaml` file](/doc/user-guide/dvc-files-and-directories#dvcyaml-files),
-which gets created or updated in the current working directory. This command
-[executes](#stage-execution-and-reproduction) stage upon creating or updating
-then, unless the `--no-exec` option is used.
+`dvc run` is a helper for creating or updating
+[pipelines](/doc/command-reference/pipeline) stages in a
+[`dvc.yaml` file](/doc/user-guide/dvc-files-and-directories#dvcyaml-files)
+(located in the current working directory). _Stages_ represent individual data
+processes, including their input and resulting outputs.
 
 A stage name is required and can be provided using the `-n` (`--name`) option.
-The other available [options](#options) are mainly meant to describe stage
-[dependencies and outputs](#dependencies-and-outputs), which are explained
-further down).
+The other available [options](#options) are mostly meant to describe different
+kinds of stage [dependencies and outputs](#dependencies-and-outputs). The
+remaining terminal input provided to `dvc run` after `-`/`--` flags will become
+the required [`command` argument](#the-command-argument).
 
-The remaining terminal input provided to `dvc run` after the options (`-`/`--`
-flags) will become the required `command` argument. For example, a minimal stage
-definition is:
-
-```dvc
-$ dvc run -n hello_world echo Howdy
-```
-
-This results in the following stage entry in `dvc.yaml`:
-
-```yaml
-stages:
-  hello_world:
-    cmd: echo Howdy
-```
+As suggested in its name, `dvc run` executes stage commands when used, unless
+the `--no-exec` option is used.
 
 ### Dependencies and outputs
 
@@ -81,12 +66,11 @@ Relevant notes:
   have to read by itself the files specified with `-d`.
 
 - Outputs are deleted from the <abbr>workspace</abbr> before executing the
-  command, so the program or script should be able to recreate any directories
-  marked as outputs.
+  command, so it should be able to recreate any directories marked as outputs.
 
 > See another [stage chaining example](#example-chaining-stages) below.
 
-### Parameters, metrics, and plots for experiment management
+### Displaying and comparing data science experiments
 
 [parameters](/doc/command-reference/params) (`-p`/`--params` option) are a
 special type of key/value dependencies. Multiple parameter dependencies can be
