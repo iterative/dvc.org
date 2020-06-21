@@ -148,6 +148,22 @@ time functions, hardware dependencies, etc.)
 
 </details>
 
+### Stage execution and reproduction
+
+`dvc run` executes the given `command` so the defined outputs are written,
+unless the same `dvc run` has already happened in this <abbr>workspace</abbr>.
+Put in other words, if an identical stage already exists in
+[`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvcyaml-files), and its
+outputs correspond to the <abbr>cached</abbr> files (hash values are compared),
+then `dvc run` does not execute the `command`.
+
+`dvc repro` provides an interface to check the status (see also `dvc status`),
+and reproduce stages and pipelines created with `dvc run` by executing (again)
+the necessary stages.
+
+> Note that stages without dependencies are considered always changed, so
+> `dvc repro` always executes them.
+
 ## Options
 
 - `-n <stage>`, `--name <stage>` (required) - specify a name for the stage
