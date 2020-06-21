@@ -62,7 +62,7 @@ outs:
 ```
 
 This YAML structure contains the target's `path`, and it's file hash value
-(`md5`). We call the top level `outs` because this `dvc` file can be used to
+(`md5`). We call the top level `outs` because this `.dvc` file can be used to
 "output" `fivemegs.dat` again if deleted, or in copies of the
 <abbr>project</abbr>. The concept of <abbr>outputs</abbr> will be the basis for
 tracking data throughout DVC!
