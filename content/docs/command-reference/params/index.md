@@ -87,48 +87,48 @@ Define a [stage](/doc/command-reference/run) that depends on params `lr`,
 specify `layers` and `epochs` from the `train` group:
 
 ```dvc
-$ dvc run -d users.csv -o model.pkl \
-        -p lr,train.epochs,train.layers \
-        python train.py
+$ dvc run -n train -d users.csv -o model.pkl \
+          -p lr,train.epochs,train.layers \
+          python train.py
 ```
 
 > Note that we could use the same parameter addressing with JSON parameters
 > files.
 
+You can find that each parameter and it's value were saved to
+[`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvcyaml-file). These
+values will be compared to the ones in the parameters files whenever `dvc repro`
+is used, to determine if dependency to the params file is invalidated:
+
+````yaml
+stages:
+  train:
+    cmd: python train.py
+    deps:
+      - users.csv
+    params:
+      - lr
+      - train
+    outs:
+      - model.pkl```
+````
+
 Alternatively, the entire group of parameters `train` can be referenced, instead
 of specifying each of the group parameters separately:
 
 ```dvc
-$ dvc run -d users.csv -o model.pkl \
-        -p lr,train \
-        python train.py
-```
-
-You can find that each parameter and it's value were saved in the
-[DVC-file](/doc/user-guide/dvc-files-and-directories). These values will be
-compared to the ones in the parameters files whenever `dvc repro` is used, to
-determine if dependency to the params file is invalidated:
-
-```yaml
-md5: 05d178cfa0d1474b6c5800aa1e1b34ac
-cmd: python train.py
-deps:
-  - md5: 3aec0a6cf36720a1e9b0995a01016242
-    path: users.csv
-  - path: params.yaml
-    params:
-      lr: 0.0041
-      train.epochs: 70
-      train.layers: 9
+$ dvc run -n train -d users.csv -o model.pkl \
+          -p lr,train \
+          python train.py
 ```
 
 In the examples above, the default parameters file name `params.yaml` was used.
 This file name can be redefined with a prefix in the `-p` argument:
 
 ```dvc
-$ dvc run -d logs/ -o users.csv \
-        -p parse_params.yaml:threshold,classes_num \
-        python train.py
+$ dvc run -n train -d logs/ -o users.csv \
+          -p parse_params.yaml:threshold,classes_num \
+          python train.py
 ```
 
 ## Examples: Print all parameter values in the workspace
@@ -138,12 +138,12 @@ available param values:
 
 ```dvc
 $ dvc params diff
-   Path          Param       Old     New
-params.yaml   lr             None   0.0041
-params.yaml   process.bow    None   15000
-params.yaml   process.thresh None   0.98
-params.yaml   train.layers   None   9
-params.yaml   train.epochs   None   70
+Path         Param           Old    New
+params.yaml  lr              None   0.0041
+params.yaml  process.bow     None   15000
+params.yaml  process.thresh  None   0.98
+params.yaml  train.epochs    None   70
+params.yaml  train.layers    None   9
 ```
 
 This command shows the difference in parameters between the workspace and the
