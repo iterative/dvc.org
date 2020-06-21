@@ -1,27 +1,38 @@
-# Get Started with DVC!
+# Get Started
 
-Data Version Control is a data version control, pipeline management, and
-experiment management tool that brings existing engineering toolset and
-practices to data science and machine learning. In this guide we will introduce
-the basic features and concepts of DVC step by step.
+Assuming DVC is already [installed](/doc/install), let's initialize it by
+running `dvc init` inside a Git project:
 
-## Initialize
+<details>
 
-Move into the directory you want to use as <abbr>workspace</abbr>, and use
-`dvc init` inside to create a <abbr>DVC project</abbr>. It can contain existing
-project files. At initialization, a new `.dvc/` directory is created for the
-internal [files and directories](/doc/user-guide/dvc-files-and-directories):
+### ⚙️ Expand to prepare the project
+
+In expandable sections that start with the ⚙️ emoji, we'll be providing more
+information for those trying to run the commands. It's up to you to pick the
+best way to read the material - read the text (skip sections like this, and it
+should be enough to understand the idea of DVC), or try to run them and get the
+fist hand experience.
+
+We'll be building an NLP project from scratch together. The end result is
+published on [Github](https://github.com/iterative/example-get-started).
+
+Let's start with `git init`:
+
+```dvc
+$ mkdir example-get-started
+$ cd example-get-started
+$ git init
+```
+
+</details>
 
 ```dvc
 $ dvc init
-$ ls .dvc/
-config  plots/  tmp/
 ```
 
-DVC is typically initialized on top of Git, which is needed for the
-[versioning](/doc/tutorials/get-started/data-versioning) features. The `.dvc/`
-directory is automatically staged with Git by `dvc init`, so it can be committed
-right away:
+A few
+[directories and files](/doc/user-guide/dvc-files-and-directories#internal-directories-and-files)
+are created that should be added to Git:
 
 ```dvc
 $ git status
@@ -29,23 +40,21 @@ Changes to be committed:
         new file:   .dvc/.gitignore
         new file:   .dvc/config
         ...
-$ git commit -m "Initialize DVC repo"
+$ git commit -m "Initialize DVC"
 ```
 
-## What's ahead?
+DVC functionality can be split into layers and we'll explore them one by one in
+the next few sections:
 
-DVC functionality can be split into layers. Each one can be used independently,
-but together they form a robust framework to capture and navigate machine
-learning development.
+- [**Data management**](/doc/tutorials/get-started/data-pipelines) is the core
+  part of DVC for large files, datasets, ML models versioning and efficient
+  sharing. We'll show how to use a regular Git workflow, without storing large
+  files with Git. Think "Git for data".
 
-- [Data **versioning**](/doc/tutorials/get-started/data-versioning) is the basic
-  foundation for storing and sharing **evolving datasets** and ML models. We
-  work on a regular Git workflow, without storing **large files** with Git.
+- [**Data pipelines**](/doc/tutorials/get-started/data-pipelines) describe how
+  models and other data artifacts are built, and provide an efficient way to
+  reproduce them. Think "Makefiles for data and ML projects" done right.
 
-- [Data **pipelines**](/doc/tutorials/get-started/data-pipelines) let you
-  register data modeling **workflows** that can be managed and **reproduced**
-  easily by you or others.
-
-- [**Experiments**](/doc/tutorials/get-started/experiments) are a natural part
-  of data science, or any R&D process. DVC provides special tools to define,
-  manage, tune, and **compare them** through _parameters_ and _metrics_.
+- [**Experiments**](/doc/tutorials/get-started/experiments) attach parameters,
+  metrics, plots. You can capture and navigate experiments not leaving Git.
+  Think "Git for ML".

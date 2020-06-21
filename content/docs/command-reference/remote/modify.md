@@ -9,7 +9,7 @@ Modify the configuration of a [data remote](/doc/command-reference/remote).
 ## Synopsis
 
 ```usage
-usage: dvc remote modify [-h] [--global] [--system] [--local]
+usage: dvc remote modify [-h] [--global | --system | --local]
                          [-q | -v] [-u]
                          name option [value]
 
@@ -62,7 +62,8 @@ The following config options are available for all remote types:
   DVC will recalculate the file hashes upon download (e.g. `dvc pull`) to make
   sure that these haven't been modified, or corrupted during download. It may
   slow down the aforementioned commands. The calculated hash is compared to the
-  value saved in the corresponding [DVC-file](/doc/user-guide/dvc-file-format).
+  value saved in the corresponding
+  [DVC-file](/doc/user-guide/dvc-files-and-directories).
 
   > Note that this option is enabled on **Google Drive** remotes by default.
 

@@ -9,13 +9,15 @@ usage: dvc metrics show [-h] [-q | -v] [-a] [-T] [--all-commits] [-R]
                         [--show-json] [targets [targets ...]]
 
 positional arguments:
-  targets               Metric files (see -R) to show
+  targets               Limit command scope to these metric files.
+                        Using -R, directories to search metric files
+                        in can also be given.
 ```
 
 ## Description
 
 Finds and prints all metrics in the <abbr>project</abbr> by examining all of its
-[DVC-files](/doc/user-guide/dvc-file-format).
+[DVC-files](/doc/user-guide/dvc-files-and-directories).
 
 > This kind of metrics can be defined with the `-m` (`--metrics`) and `-M`
 > (`--metrics-no-cache`) options of `dvc run`.
@@ -61,8 +63,8 @@ compares them with a previous version.
 ## Examples
 
 > This example is based on the `evaluate.dvc` stage file of our
-> [Get Started](/doc/tutorials/get-started/metrics), where you can find the
-> actual source code.
+> [Get Started](/doc/tutorials/get-started/experiments#project-metrics), where
+> you can find the actual source code.
 
 The basic use case shows the values in the current workspace:
 

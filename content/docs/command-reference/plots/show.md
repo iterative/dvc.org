@@ -5,49 +5,55 @@ Generate [plot](/doc/command-reference/plots) from a metrics file.
 ## Synopsis
 
 ```usage
-usage: dvc plots show [-h] [-q | -v] [-t <path>] [-o <path>]
-                      [-x <field>] [-y <field>] [--no-csv-header]
-                      [--show-vega] [--title <text>]
-                      [--x-label <text>] [--y-label <text>]
-                      targets [targets ...]
+usage: dvc plots show [-h] [-q | -v] [-t <name_or_path>] [-x <field>]
+                      [-y <field>] [--no-header] [--title <text>]
+                      [--x-label <text>] [--y-label <text>] [-o <path>]
+                      [--show-vega]
+                      [targets [targets ...]]
 
 positional arguments:
   targets               Metric files to visualize.
+                        Shows all plots by default.
 ```
 
 ## Description
 
 This command provides a quick way to visualize metrics such as loss functions,
-AUC curves, confusion matrices, etc.
+AUC curves, confusion matrices, etc. All plots defined in `dvc.yaml` are used by
+default.
 
-The required metric file `targets` should be <abbd>outputs</abbr> of one of the
-[DVC pipeline](/doc/command-reference/pipeline) stages (see the `--plots` option
-of `dvc run`), listed in a
-[`dvc.yaml`](/doc/user-guide/dvc-files-and-directories) file.
+Optionally, specific metric file `targets` to show are accepted. These must be
+listed in a [`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvcyaml-file)
+file (see the `--plots` option of `dvc run`).
 
 The plot style can be customized with
 [plot templates](/doc/command-reference/plots#plot-templates), using the
 `--template` option. To learn more about metric file formats and templates
 please see `dvc plots`.
 
-## Options
+> Note that the default behavior of this command can be modified per metrics
+> file with `dvc plots modify`.
 
-- `-t <path>, --template <path>` -
-  [plot template](/doc/command-reference/plots#plot-templates) to be injected
-  with data. The default template is `.dvc/plots/default.json`. See more details
-  in `dvc plots`.
+## Options
 
 - `-o <path>, --out <path>` - name of the generated file. By default, the output
   file name is equal to the input filename with a `.html` file extension (or
   `.json` when using `--show-vega`).
 
+- `-t <name_or_path>, --template <name_or_path>` -
+  [plot template](/doc/command-reference/plots#plot-templates) to be injected
+  with data. The default template is `.dvc/plots/default.json`. See more details
+  in `dvc plots`.
+
 - `-x <field>` - field name from which the X axis data comes from. An
   auto-generated `index` field is used by default. See
   [Custom templates](/doc/command-reference/plots#custom-templates) for more
-  information on this `index` field.
+  information on this `index` field. Column names or numbers are expected for
+  tabular metric files.
 
 - `-y <field>` - field name from which the Y axis data comes from. The last
-  column or field found in the `targets` is used by default.
+  field found in the `targets` is used by default. Column names or numbers are
+  expected for tabular metric files.
 
 - `--x-label <text>` - X axis label. The X field name is the default.
 
@@ -59,8 +65,8 @@ please see `dvc plots`.
   [Vega specification](https://vega.github.io/vega/docs/specification/) file
   instead of HTML. See `dvc plots` for more info.
 
-- `--no-csv-header` - lets DVC know that CSV or TSV `targets` do not have a
-  header.
+- `--no-header` - lets DVC know that CSV or TSV `targets` do not have a header.
+  A 0-based numeric index can be used to identify each column instead of names.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -69,7 +75,7 @@ please see `dvc plots`.
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
-## Example: Hierarchical data (JSON)
+## Example: Hierarchical data
 
 We'll use tabular metrics file `train.json` for this example:
 
@@ -88,7 +94,7 @@ We'll use tabular metrics file `train.json` for this example:
 ```
 
 DVC identifies and plots JSON objects from the first JSON array found in the
-file:
+file (`train`):
 
 ```dvc
 $ dvc plots show train.json
@@ -97,7 +103,9 @@ file:///Users/usr/src/plots/train.json.html
 
 ![](/img/plots_show_json.svg)
 
-Same as with tabular data, use the `-y` option to change the field to plot:
+> Note that only the last field name (`loss`) is used for the plot by default.
+
+Use the `-y` option to change the field to plot:
 
 ```dvc
 $ dvc plots show -y accuracy train.json
@@ -142,12 +150,11 @@ file:///Users/usr/src/plots/logs.csv.html
 
 ### Headerless tables
 
-A tabular data file without headers can be plotted with `--no-csv-header`
-option. A field or column can be specified with `-y` by it's numeric position
-(starting with `0`):
+A tabular data file without headers can be plotted with `--no-header` option. A
+column can be specified with `-y` by it's numeric position (starting with `0`):
 
 ```dvc
-$ dvc plots show --no-csv-header logs.csv -y 2
+$ dvc plots show --no-header logs.csv -y 2
 file:///Users/usr/src/plots/logs.csv.html
 ```
 
