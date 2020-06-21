@@ -68,9 +68,10 @@ $ dvc run -n scanner -d read.sh -d pages -o signed.pdf ./read.sh
 
 Relevant notes:
 
-- Any scripts being run, are included among the specified `-d` dependencies.
-  This ensures that when the source code changes, DVC knows that the stage needs
-  to be reproduced.
+- Typically, scripts being run (or a directory containing the source code) are
+  included among the specified `-d` dependencies. This ensures that when the
+  source code changes, DVC knows that the stage needs to be reproduced. (You can
+  chose whether to do this.)
 
 - `dvc run` checks the dependency graph integrity before creating a new stage.
   For example: two stage cannot explicitly specify the same output, there should
@@ -83,9 +84,7 @@ Relevant notes:
   command, so the program or script should be able to recreate any directories
   marked as outputs.
 
-> See another
-> [stage chaining example](#example-using-granular-parameter-dependencies)
-> below.
+> See another [stage chaining example](#example-chaining-stages) below.
 
 ### Parameters, metrics, and plots for experiment management
 
@@ -148,22 +147,6 @@ the same output for any given input): avoid code that increases
 time functions, hardware dependencies, etc.)
 
 </details>
-
-### Stage execution and reproduction
-
-`dvc run` executes the given `command` so the defined outputs are written,
-unless the same `dvc run` has already happened in this <abbr>workspace</abbr>.
-Put in other words, if an identical stage already exists in
-[`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvcyaml-files), and its
-outputs correspond to the <abbr>cached</abbr> files (hash values are compared),
-then `dvc run` does not execute the `command`.
-
-`dvc repro` provides an interface to check the status (see also `dvc status`),
-and reproduce stages and pipelines created with `dvc run` by executing (again)
-the necessary stages.
-
-> Note that stages without dependencies are considered always changed, so
-> `dvc repro` always executes them.
 
 ## Options
 
@@ -353,7 +336,7 @@ $ tree
 └── test.txt
 ```
 
-## Example: chaining stages (build a pipeline)
+## Example: Chaining stages
 
 DVC [pipelines](/doc/command-reference/pipeline) are constructed by connecting
 the outputs of a stage to the dependencies of the following one(s).
@@ -422,6 +405,19 @@ $ dvc run -n train \
           -d matrix-train.p -d train_model.py -o model.p \
           -p seed,train.lr,train.epochs
           python train_model.py matrix-train.p model.p
+```
+
+`train_model.py` will include some code to open and parse the parameters:
+
+```py
+import yaml
+
+with open("params.yaml", 'r') as fd:
+    params = yaml.safe_load(fd)
+
+seed = params['seed']
+lr = params['train']['lr']
+epochs = params['train']['epochs']
 ```
 
 DVC will keep an eye on these param values (same as with the regular dependency
