@@ -95,6 +95,20 @@ $ dvc run -n train -d users.csv -o model.pkl \
 > Note that we could use the same parameter addressing with JSON parameters
 > files.
 
+The `train.py` script will have some code to parse the needed parameters. For
+example:
+
+```py
+import yaml
+
+with open("params.yaml", 'r') as fd:
+    params = yaml.safe_load(fd)
+
+lr = params['lr']
+epochs = params['train']['epochs']
+layers = params['train']['layers']
+```
+
 You can find that each parameter and it's value were saved to
 [`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvcyaml-file). These
 values will be compared to the ones in the parameters files whenever `dvc repro`
