@@ -37,10 +37,14 @@ itself does not ascribe any specific meaning for these values. They are
 user-defined, and serve as a way to generalize and parametrize an machine
 learning algorithms or data processing code.
 
-DVC saves the param names and values in the stage file (see
-[DVC-file format](/doc/user-guide/dvc-files-and-directories)). These values will
-be compared to the ones in the params files to determine if the stage is
-invalidated upon pipeline [reproduction](/doc/command-reference/repro).
+DVC saves the param names and their latest values in the
+[`dvc.yaml` file](/doc/user-guide/dvc-files-and-directories#dvcyaml-file). These
+values will be compared to the ones in the params files to determine if the
+stage is invalidated upon pipeline [reproduction](/doc/command-reference/repro).
+
+> Note that DVC does not pass the parameter values to stage commands. The
+> associated command executed by `dvc run` or `dvc repro` will have to open and
+> parse the parameters file by itself, and use the params specified with `-p`.
 
 The parameters concept helps to define [stage](/doc/command-reference/run)
 dependencies more granularly. A particular parameter or set of parameters will
@@ -49,10 +53,6 @@ Changes to other parts of the dependency file will not affect the stage. This
 prevents situations where several stages share a (configuration) file as a
 common dependency, and any change in this dependency invalidates all these
 stages and causes their reproduction unnecessarily.
-
-> Note that DVC does not pass the parameter values to stage commands. The
-> associated command executed by `dvc run` or `dvc repro` will have to open and
-> parse the parameters file by itself, and use the params specified with `-p`.
 
 `dvc params diff` is available to show changes in parameters, displaying the
 param names as well as their current and previous values.
