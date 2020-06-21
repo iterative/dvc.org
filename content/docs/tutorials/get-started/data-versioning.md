@@ -62,8 +62,8 @@ $ tree .dvc/cache
 ```
 
 The hash value of the `data.xml` file we just added (`a304afb...`) determines
-the cache path shown above. And if you check `data/data.dvc`, you will find it
-there too:
+the cache path shown above. And if you check `data/data.xml.dvc`, you will find
+it there too:
 
 ```yaml
 outs:
