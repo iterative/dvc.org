@@ -219,7 +219,7 @@ directory tracked by DVC:
 > Refer to [External Dependencies](/doc/user-guide/external-dependencies) for
 > more information.
 
-[parameter](/doc/command-reference/params#examples) key/value pairs are listed
+[Parameter](/doc/command-reference/params#examples) key/value pairs are listed
 separately under `params`, grouped by parameters file. (No hash value is needed
 to lock params files, as these are not tracked as a whole.)
 
