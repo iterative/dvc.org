@@ -1,7 +1,7 @@
 # checkout
 
 Update data files and directories in the <abbr>workspace</abbr> based on current
-DVC-files.
+`.dvc` and `dvc.lock` files.
 
 ## Synopsis
 
@@ -17,14 +17,14 @@ positional arguments:
 
 ## Description
 
-[DVC-files](/doc/user-guide/dvc-files-and-directories) act as pointers to
-specific version of data files or directories tracked by DVC. This command
-synchronizes the workspace data with the versions specified in the current
-DVC-files.
+`.dvc` and `dvc.lock` [files](/doc/user-guide/dvc-files-and-directories) act as
+pointers to specific version of data files or directories tracked by DVC. This
+command synchronizes the workspace data with the versions specified in the
+current `.dvc` and `dvc.lock` files.
 
 `dvc checkout` is useful, for example, when using Git in the
 <abbr>project</abbr>, after `git clone`, `git checkout`, or any other operation
-that changes the DVC-files in the workspace.
+that changes the DVC files in the workspace.
 
 💡 For convenience, a Git hook is available to automate running `dvc checkout`
 after `git checkout`. See the
@@ -33,11 +33,11 @@ for more details.
 
 The execution of `dvc checkout` does the following:
 
-- Scans the DVC-files to compare against the data files or directories in the
-  <abbr>workspace</abbr>. DVC knows which data (<abbr>outputs</abbr>) match
-  because the corresponding hash values are saved in the `outs` fields in the
-  DVC-files. Scanning is limited to the given `targets` (if any). See also
-  options `--with-deps` and `--recursive` below.
+- Scans the `.dvc` and `dvc.lock` files to compare against the data files or
+  directories in the <abbr>workspace</abbr>. DVC knows which data
+  (<abbr>outputs</abbr>) match because the corresponding hash values are saved
+  in the `outs` fields in those files. Scanning is limited to the given
+  `targets` (if any). See also options `--with-deps` and `--recursive` below.
 
 - Missing data files or directories are restored from the <abbr>cache</abbr>.
   Those that don't match with any DVC-file are removed. See options `--force`
@@ -132,14 +132,20 @@ The workspace looks something like this:
 
 ```dvc
 .
+├── README.md
 ├── data
 │   └── data.xml.dvc
-├── evaluate.dvc
-├── featurize.dvc
-├── prepare.dvc
-├── src
-│   └── ...
-└── train.dvc
+├── dvc.lock
+├── dvc.yaml
+├── params.yaml
+├── prc.json
+├── scores.json
+└── src
+    ├── evaluate.py
+    ├── featurization.py
+    ├── prepare.py
+    ├── requirements.txt
+    └── train.py
 ```
 
 This repository includes the following tags, that represent different variants
@@ -154,14 +160,14 @@ bigrams-experiment      <- Uses bigrams to improve the model
 
 We can now just run `dvc checkout` that will update the most recent `model.pkl`,
 `data.xml`, and other files that are tracked by DVC. The model file hash
-`662eb7f64216d9c2c1088d0a5e2c6951` will be used in the `train.dvc`
-[stage file](/doc/command-reference/run):
+`ab349c2b5fa2a0f66d6f33f94424aebe` is defined in the `dvc.lock` file for the
+`train` stage from the `dvc.yaml`:
 
 ```dvc
 $ dvc checkout
 
 $ md5 model.pkl
-MD5 (model.pkl) = 662eb7f64216d9c2c1088d0a5e2c6951
+MD5 (model.pkl) = ab349c2b5fa2a0f66d6f33f94424aebe
 ```
 
 What if we want to "rewind history", so to speak? The `git checkout` command
@@ -173,11 +179,11 @@ deleting files as necessary.
 $ git checkout baseline-experiment  # Stage where model is first created
 ```
 
-Let's check the hash value of `model.pkl` in `train.dvc` now:
+Let's check the hash value of `model.pkl` in `dvc.lock` now:
 
 ```yaml
 outs:
-  - md5: 43630cce66a2432dcecddc9dd006d0a7
+  - md5: 98af33933679a75c2a51b953d3ab50aa
     path: model.pkl
 ```
 
@@ -185,12 +191,12 @@ But if you check `model.pkl`, the file hash is still the same:
 
 ```dvc
 $ md5 model.pkl
-MD5 (model.pkl) = 662eb7f64216d9c2c1088d0a5e2c6951
+MD5 (model.pkl) = ab349c2b5fa2a0f66d6f33f94424aebe
 ```
 
-This is because `git checkout` changed `featurize.dvc`, `train.dvc`, and other
-DVC-files. But it did nothing with the `model.pkl` and `matrix.pkl` files. Git
-doesn't track those files; DVC does, so we must do this:
+This is because `git checkout` changed `dvc.yaml` and `dvc.lock`. But it did
+nothing with the `model.pkl` and `matrix.pkl` files. Git doesn't track those
+files; DVC does, so we must do this:
 
 ```dvc
 $ dvc checkout
@@ -198,7 +204,7 @@ M       model.pkl
 M       data\features\
 
 $ md5 model.pkl
-MD5 (model.pkl) = 43630cce66a2432dcecddc9dd006d0a7
+MD5 (model.pkl) = 98af33933679a75c2a51b953d3ab50aa
 ```
 
 What happened is that DVC went through the DVC-files and adjusted the current
@@ -225,7 +231,7 @@ again:
 $ git checkout bigrams-experiment  # Has the latest model version
 
 $ md5 model.pkl
-MD5 (model.pkl) = 662eb7f64216d9c2c1088d0a5e2c6951
+MD5 (model.pkl) = 98af33933679a75c2a51b953d3ab50aa
 ```
 
 Previously this took two commands, `git checkout` followed by `dvc checkout`. We
