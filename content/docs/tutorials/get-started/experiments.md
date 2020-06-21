@@ -1,173 +1,217 @@
 # Experiments
 
-Each stage in a pipeline is like a specialized machine in a production line.
-Data scientists tend to tweak and configure them along the way, to improve the
-final results. DVC provide ways to control these experiments with
+DVC makes it easy to iterate on your project using Git commits, tags, or
+branches. It provides a way to try different ideas fast by tuning
 [parameters](/doc/command-reference/params), compare their performance with
-[metrics](#project-metrics), and switch between them easily with Git.
+[metrics](/doc/command-reference/metrics), visualize with
+[plots](/doc/command-reference/plots), and switch between them easily with Git.
+
+## Collecting metrics
+
+First, let's see what is the mechanism to capture values for these ML experiment
+attributes. Let's add a final evaluation stage to our
+[pipeline](/doc/tutorials/get-started/data-pipelines#dependency-graphs-dags):
+
+```dvc
+$ dvc run -n evaluate \
+          -d src/evaluate.py -d model.pkl -d data/features \
+          -M scores.json \
+          --plots-no-cache prc.json \
+          python src/evaluate.py model.pkl \
+                 data/features scores.json prc.json
+```
 
 <details>
 
-### 👉 Expand to prepare the project
+### 💡 Expand to see what happens under the hood
 
-Get the sample project from Github with:
+It's pretty much the same as before, it generates a new stage in the `dvc.yaml`
+file:
+
+```yaml
+evaluate:
+  cmd: python src/evaluate.py model.pkl data/features scores.json prc.json
+  deps:
+    - data/features
+    - model.pkl
+    - src/evaluate.py
+  metrics:
+    - scores.json:
+        cache: false
+  plots:
+    - prc.json:
+        cache: false
+```
+
+The biggest difference is that we see two new sections `metrics` and `plots`
+that are used to mark certain files containing experiment "telemetry". Metric
+files contain scalars (e.g. `AUC`) and plots contain matrices and arrays of
+numbers that are supposed to be visualized to compare or make sense of them.
+
+`cache: false` means that those file are small enough and versioned directly
+with Git.
+
+</details>
+
+DVC expects `evaluate.py` to
+[write](https://github.com/iterative/example-get-started/blob/master/src/evaluate.py#L35)
+model
+[AUC](https://towardsdatascience.com/understanding-auc-roc-curve-68b2303cc9c5)
+value to the `scores.json` file which is marked as a metrics file with `-M`:
+
+```json
+{ "auc": 0.57313829 }
+```
+
+And it
+[writes](https://github.com/iterative/example-get-started/blob/master/src/evaluate.py#L31)
+`precision`, `recall`, `thresholds` arrays it gets with the
+[`precision_recall_curve`](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_recall_curve.html)
+call into the `prc.json`:
+
+```json
+{
+  "prc": [
+    { "precision": 0.021473008227975116, "recall": 1.0, "threshold": 0.0 },
+    ...{ "precision": 1.0, "recall": 0.009345794392523364, "threshold": 0.64 }
+  ]
+}
+```
+
+> DVC doesn't force you to use any specific file names, or even format or
+> structure of a metrics or plots file - it's pretty much user and case defined,
+> please, refer to `dvc metrics` and `dvc plots` documentation for more details.
+
+Let's save this experiment to compare it later using DVC comparison commands:
 
 ```dvc
-$ git clone https://github.com/iterative/example-get-started
-$ cd example-get-started
-$ git checkout '7-ml-pipeline'
-$ dvc pull
+$ git add scores.json prc.json
+$ git commit -a -m "Create evaluation stage"
+```
+
+We've managed to capture metrics that experiment has, and later we will see how
+this information can be used to compare different experiment iterations,
+visualize them (e.g. `ROC` or model loss plots). Let's see how can we capture
+another important piece of information that will be important to compare
+experiments - experiment parameters.
+
+## Defining parameters
+
+It's pretty common for data processing pipelines to use a separate YAML or JSON
+config file that defines adjustable parameters you use to train a model, do
+pre-processing, etc. DVC provides a mechanism for a stage to depend on values
+from such a config file. That's how stage is defined in the `dvc.yaml` file:
+
+<details>
+
+### 💡 Expand to recall how it was generated
+
+As a reminder, the `featurize` stage was created with this command. No need to
+run it again, but pay more attention to the `-p` option this time:
+
+```dvc
+$ dvc run -n featurize \
+          -p featurize.max_features,featurize.ngrams \
+          -d src/featurization.py -d data/prepared \
+          -o data/features \
+          python src/featurization.py data/prepared data/features
 ```
 
 </details>
 
-## Tuning parameters
-
-Let's say we want to try a modified feature extraction. The
-`src/featurization.py` script used to
-[create the pipeline](/doc/tutorials/get-started/data-pipelines#dependency-graphs-dags)
-actually accepts an optional third argument with the path to a YAML _parameters
-file_ to load values to tune its vectorization. Let's generate it:
-
-```dvc
-$ echo "max_features: 6000" > params.yaml
-$ echo "ngram_range:" >> params.yaml
-$ echo "  lo: 1" >> params.yaml
-$ echo "  hi: 2" >> params.yaml
-$ git add params.yaml
+```yaml
+featurize:
+  cmd: python src/featurization.py data/prepared data/features
+  deps:
+    - data/prepared
+    - src/featurization.py
+  params:
+    - featurize.max_features
+    - featurize.ngrams
+  outs:
+    - data/features
 ```
 
-> Notice that we're versioning our parameters file with Git, in case we want to
-> change its contents for further experiments.
+`params` section (and the corresponding `-p` `dvc run` option) is an example of
+the [parameters](/doc/command-reference/params) dependency. By default DVC reads
+those values (`featurize.max_features` and `featurize.ngrams`) from the
+`params.yaml`. But as in the case with metrics and plots files, file name and
+structure are user and case defined for these configuration files. This is how
+`params.yaml` file looks like in our case:
 
-Let's now redefine the featurization stage so that DVC knows that it depends on
-the specific values of `max_features` and `ngram_range`. For this we use the
-`-p` (`--params`) option of `dvc run`. `params.yaml` is the default parameters
-file name in DVC, so there's no need to specify this:
+```yaml
+prepare:
+  split: 0.20
+  seed: 20170428
 
-```dvc
-$ dvc run -y -f featurize.dvc \
-          -d src/featurization.py -d data/prepared \
-          -p max_features,ngram_range.lo,ngram_range.hi \
-          -o data/features \
-          python src/featurization.py \
-                 data/prepared data/features params.yaml
+featurize:
+  max_features: 500
+  ngrams: 1
 
-$ git add featurize.dvc
-$ git commit -m "Update featurization stage"
+train:
+  seed: 20170428
+  n_estimators: 50
 ```
 
-> Please refer to `dvc params` for more information.
+## Tuning and running experiments
 
-### Run the experiment
+We are definitely not happy with the `AUC` value, we got so far! Let's now tune
+and run the new experiment. Edit the `params.yaml` file to use bigrams and
+increase number of features:
 
-Let's [reproduce](/doc/tutorials/get-started/data-pipelines#reproduce) our
-pipeline up to the model training now:
-
-```dvc
-$ dvc repro train.dvc
-$ git commit -am "Reproduce model using bigrams"
+```diff
+ featurize:
+-  max_features: 500
+-  ngrams: 1
++  max_features: 1500
++  ngrams: 2
 ```
 
-> Notice that `git commit -a` stages all the changes produced by `dvc repro`
-> before committing them with Git. Refer to the
-> [command reference](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt--a)
-> for more details.
-
----
-
-Now, we have a new `model.pkl` captured and saved. To get back to the initial
-version, we run `git checkout` along with `dvc checkout` command:
+And the beauty of the `dvc.yaml` file is that all you need to do now is to run:
 
 ```dvc
-$ git checkout 'baseline-experiment'
-$ dvc checkout
+$ dvc repro
 ```
 
-DVC is designed to checkout large data files (no matter how large they are) into
-your <abbr>workspace</abbr> almost instantly on almost all modern operating
-systems with file links. See
-[Large Dataset Optimization](/doc/user-guide/large-dataset-optimization) for
-more information.
+It'll analyze changes, will analyze existing cache of previous runs and will run
+only commands that are needed to get the new result (model, metrics, plots).
 
-## Project metrics
+The same logic applies to other possible experiment adjustments - edit source
+code, edit or update dataset - you do the changes, run `dvc repro` and it runs
+what needs to be run.
 
-DVC metrics allow us to mark process outputs as files containing metrics to
-track. They are defined using the `-m` (`--metrics`) option of `dvc run`.
+## Comparing experiments
 
-Let's add a final evaluation stage to our
-[pipeline](/doc/tutorials/get-started/data-pipelines#dependency-graphs-dags):
+Finally, we are now ready to compare experiments. DVC has a few commands to see
+metrics and parameter changes, visualize plots for one or more experiments.
+Let's compare the last "bigrams" run with the last committed "baseline"
+iteration:
 
 ```dvc
-$ dvc run -f evaluate.dvc \
-          -d src/evaluate.py -d model.pkl -d data/features \
-          -M auc.json \
-          python src/evaluate.py model.pkl \
-                 data/features auc.json
+$ dvc params diff
+Path         Param                   Old    New
+params.yaml  featurize.max_features  500    1500
+params.yaml  featurize.ngrams        1      2
 ```
 
-`evaluate.py` reads features from the `features/test.pkl` file and calculates
-the model's
-[AUC](https://towardsdatascience.com/understanding-auc-roc-curve-68b2303cc9c5)
-value. This metric is written to the `auc.json` file. We use the `-M` option in
-the command above to mark the file as a metric in the stage file.
-
-> Please, refer to `dvc run` and `dvc metrics` documentation for more details.
-
-Let's save the updates:
+`dvc params diff` can show how params differ in the workspace vs the last
+commit. `dvc metrics diff` does the same for metrics:
 
 ```dvc
-$ git add evaluate.dvc auc.json
-$ git commit -m "Model evaluation stage"
+$ dvc metrics diff
+Path         Metric    Value    Change
+scores.json  auc       0.61314  0.07139
 ```
 
-> Notice that we are versioning `auc.json` with Git directly.
-
-Let's also assign a Git tag. It will serve as a checkpoint for us to compare
-experiments later:
+And finally, we can compare `ROC` curves with a single command!
 
 ```dvc
-$ git tag -a "baseline-experiment" -m "Baseline experiment evaluation"
+$ dvc plots diff
+file:///Users/dvc/example-get-started/plots.html
 ```
 
-## Compare experiments
+![](/img/plots_roc_get_started.svg)
 
-DVC makes it easy to iterate on your project using Git commits with tags or Git
-branches. It provides a way to try different ideas, keep track of them, switch
-back and forth. To find the best-performing experiment or track the progress,
-[project metrics](/doc/command-reference/metrics) are supported in DVC (as
-described in one of the previous sections).
-
-Let's run evaluate for the latest `bigrams` experiment we created earlier. It
-mostly takes just running the `dvc repro`:
-
-```dvc
-$ git checkout master
-$ dvc checkout
-$ dvc repro evaluate.dvc
-```
-
-`git checkout master` and `dvc checkout` commands ensure that we have the latest
-experiment code and data respectively. And `dvc repro` is a way to run all the
-necessary commands to build the model and measure its performance.
-
-```dvc
-$ git commit -am "Evaluate bigrams model"
-$ git tag -a "bigrams-experiment" -m "Bigrams experiment evaluation"
-```
-
-Now, we can use `-T` option of the `dvc metrics show` command to see the
-difference between the `baseline` and `bigrams` experiments:
-
-```dvc
-$ dvc metrics show -T
-
-baseline-experiment:
-      auc.json: {"AUC": 0.588426}
-bigrams-experiment:
-      auc.json: {"AUC": 0.602818}
-```
-
-DVC provides built-in support to track and navigate `JSON` or `YAML` metric
-files if you want to track additional information. See `dvc metrics` to learn
-more.
+All these commands also accept Git revisions to compare - tags, commits, branch
+names and together provide a powerful mechanism to navigate your experiments to
+see the history, to pick the best, etc.
