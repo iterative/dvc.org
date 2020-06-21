@@ -34,8 +34,9 @@ kinds of stage [dependencies and outputs](#dependencies-and-outputs). The
 remaining terminal input provided to `dvc run` after `-`/`--` flags will become
 the required [`command` argument](#the-command-argument).
 
-As suggested in its name, `dvc run` executes stage commands when used, unless
-the `--no-exec` option is used.
+As suggested in its name, `dvc run`
+[executes stages](#stage-execution-and-reproduction) when used, unless the
+`--no-exec` option is used.
 
 ### Dependencies and outputs
 
