@@ -43,7 +43,7 @@ easily versioned like source code with Git, as a placeholder for the original
 data (which gets listed in `.gitignore`):
 
 ```dvc
-$ git add .gitignore data/data.xml.dvc
+$ git add data/.gitignore data/data.xml.dvc
 $ git commit -m "Add raw data"
 ```
 
