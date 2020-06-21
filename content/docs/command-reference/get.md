@@ -96,9 +96,9 @@ model.pkl
 
 Note that the `model.pkl` file doesn't actually exist in the
 [root directory](https://github.com/iterative/example-get-started/tree/master/)
-of the external Git repo. Instead, the corresponding `.dvc` file
-[train.dvc](https://github.com/iterative/example-get-started/blob/master/train.dvc)
-is found, that contains `model.pkl` (in the `outs` field). DVC then
+of the external Git repo. Instead, it's exported in the
+[`dvc.yaml`](https://github.com/iterative/example-get-started/blob/master/dvc.yaml)
+file as an output of the `train` stage (in the `outs` field). DVC then
 [pulls](/doc/command-reference/pull) the file from the default
 [remote](/doc/command-reference/remote) of the external DVC project (found in
 its
