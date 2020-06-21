@@ -23,7 +23,7 @@ positional arguments:
 ## Description
 
 `dvc run` is a helper for creating or updating
-[pipelines](/doc/command-reference/pipeline) stages in a
+[pipeline](/doc/command-reference/pipeline) stages in a
 [`dvc.yaml` file](/doc/user-guide/dvc-files-and-directories#dvcyaml-files)
 (located in the current working directory). _Stages_ represent individual data
 processes, including their input and resulting outputs.
@@ -34,8 +34,33 @@ kinds of stage [dependencies and outputs](#dependencies-and-outputs). The
 remaining terminal input provided to `dvc run` after `-`/`--` flags will become
 the required [`command` argument](#the-command-argument).
 
-As suggested in its name, `dvc run` executes stage commands when used, unless
-the `--no-exec` option is used.
+`dvc run` executes stage commands when used, unless the `--no-exec` option is
+used.
+
+<details>
+
+### 💡 Avoiding unexpected behavior
+
+We don't want to tell anyone how to write their code or what programs to use!
+However, please be aware that in order to prevent unexpected results when DVC
+reproduces pipeline stages, the underlying code should ideally follow these
+rules:
+
+- Read/write exclusively from/to the specified <abbr>dependencies</abbr> and
+  <abbr>outputs</abbr> (including parameters files, metrics, and plots).
+
+- Completely rewrite outputs. Do not append or edit.
+
+- Stop reading and writing files when the `command` exits.
+
+Also, if your pipeline reproducibility goals include consistent output data, its
+code should be
+[deterministic](https://en.wikipedia.org/wiki/Deterministic_algorithm) (produce
+the same output for any given input): avoid code that increases
+[entropy](https://en.wikipedia.org/wiki/Software_entropy) (e.g. random numbers,
+time functions, hardware dependencies, etc.)
+
+</details>
 
 ### Dependencies and outputs
 
@@ -66,11 +91,10 @@ Relevant notes:
   have to read by itself the files specified with `-d`.
 
 - Outputs are deleted from the <abbr>workspace</abbr> before executing the
-  command, so it should be able to recreate any directories marked as outputs.
+  command (including at `dvc repro`), so it should be able to recreate any
+  directories marked as outputs.
 
-> See another [stage chaining example](#example-chaining-stages) below.
-
-### Displaying and comparing data science experiments
+### For displaying and comparing data science experiments
 
 [parameters](/doc/command-reference/params) (`-p`/`--params` option) are a
 special type of key/value dependencies. Multiple parameter dependencies can be
@@ -88,7 +112,7 @@ data science experiments.
 The `command` sent to `dvc run` can be anything your terminal would accept and
 run directly, for example a shell built-in, expression, or binary found in
 `PATH`. Please remember that any flags sent after the `command` are interpreted
-by the command itself, not by `dvc run`. Some illustrative examples:
+by the command itself, not by `dvc run`.
 
 ⚠️ Note that while DVC is platform-agnostic, the commands defined in your
 [pipeline](/doc/command-reference/pipeline) stages may only work on some
@@ -103,34 +127,6 @@ variables in it that should be evaluated dynamically. Examples:
 $ dvc run -n my_stage "./my_script.sh > /dev/null 2>&1"
 $ dvc run -n my_stage './my_script.sh $MYENVVAR'
 ```
-
-<details>
-
-### 💡 Avoiding unexpected behavior
-
-We don't want to tell anyone how to write their code or what programs to use!
-However, please be aware that in order to prevent unexpected results when DVC
-reproduce pipeline stages, the underlying implementation should ideally follow
-these rules:
-
-- Read/write exclusively from/to the specified <abbr>dependencies</abbr> and
-  <abbr>outputs</abbr> (including parameters files, metrics, and plots).
-
-- Completely rewrite outputs. Do not append or edit.
-
-  ⚠️ Note that DVC deletes any outputs that already exist in the
-  <abbr>workspace</abbr> before executing the stages (including `dvc repro`).
-
-- Stop reading and writing files when the `command` exits.
-
-Also, if your pipeline reproducibility goals include consistent output data, its
-code should be
-[deterministic](https://en.wikipedia.org/wiki/Deterministic_algorithm) (produce
-the same output for any given input): avoid code that increases
-[entropy](https://en.wikipedia.org/wiki/Software_entropy) (e.g. random numbers,
-time functions, hardware dependencies, etc.)
-
-</details>
 
 ## Options
 
