@@ -17,48 +17,42 @@ positional arguments:
 ## Description
 
 In order to track parameters and hyperparameters associated to machine learning
-experiments in <abbr>DVC projects</abbr>, DVC provides a special type of
-<abbr>dependencies</abbr>: _parameters_. Parameter values are specific to a
-version of the project, and defined (using `dvc run`) with simple names like
-`epochs`, `learning-rate`, `batch_size`, etc.
+experiments in <abbr>DVC projects</abbr>, DVC provides a different type of
+dependencies: _parameters_. Parameters are defined using the the `-p`
+(`--params`) option of `dvc run`, using simple names like `epochs`,
+`learning-rate`, `batch_size`, etc.
 
-In contrast to a regular text file dependency, a parameter dependency consists
-of a YAML or JSON _parameters file_ and a parameter name (key to find inside the
-parameters file). Multiple parameter dependencies can be specified from one or
-more parameters files.
-
-### Benefits and workflow
-
-The parameters concept helps to define [stage](/doc/command-reference/run)
-<abbr>dependencies</abbr> more granularly. A particular parameter or set of
-parameters will be required for the stage invalidation (see `dvc status` and
-`dvc repro`). Changes to other parts of the dependency file will not affect the
-stage. This prevents situations where several stages share a (configuration)
-file as a common dependency, and any change in this dependency invalidates all
-these stages and causes their reproduction unnecessarily.
-
-The YAML or JSON parameters files needed for the project have to be manually
-written, or generated, and these can be versioned directly with Git. You can
-then use `dvc run` with the `-p` (`--params`) option to specify parameter
-dependencies for your pipeline's stages (instead of or in addition to regular
-`-d` deps). DVC saves the param names and values in the stage file (see
-[DVC-file format](/doc/user-guide/dvc-files-and-directories)). These values will
-be compared to the ones in the params files to determine if the stage is
-invalidated upon pipeline [reproduction](/doc/command-reference/repro).
+In contrast to a regular <abbr>dependency</abbr>, a parameter is not a file (or
+directory). Instead, it consists of a _parameter name_ (or key) to find inside a
+YAML or JSON _parameters file_. Multiple parameter dependencies can be specified
+from one or more parameters files.
 
 The default parameters file name is `params.yaml`. Parameters should be
-organized as a tree hierarchy in it, as DVC will locate param names by their
-tree path.
+organized as a tree hierarchy inside, as DVC will locate param names by their
+tree path. parameters files have to be manually written, or generated, and these
+can be versioned directly with Git.
 
 Supported parameter _value_ types are: string, integer, float, and arrays. DVC
 itself does not ascribe any specific meaning for these values. They are
 user-defined, and serve as a way to generalize and parametrize an machine
 learning algorithms or data processing code.
 
-Note that DVC doesn't pass the parameter values to the command being run. The
-associated stage command executed by `dvc run` or `dvc repro` will have to open
-and parse the parameters file, and use the params specified with `-p` (`seed`,
-`train.lr`, and `train.epochs`).
+DVC saves the param names and values in the stage file (see
+[DVC-file format](/doc/user-guide/dvc-files-and-directories)). These values will
+be compared to the ones in the params files to determine if the stage is
+invalidated upon pipeline [reproduction](/doc/command-reference/repro).
+
+The parameters concept helps to define [stage](/doc/command-reference/run)
+dependencies more granularly. A particular parameter or set of parameters will
+be required for the stage invalidation (see `dvc status` and `dvc repro`).
+Changes to other parts of the dependency file will not affect the stage. This
+prevents situations where several stages share a (configuration) file as a
+common dependency, and any change in this dependency invalidates all these
+stages and causes their reproduction unnecessarily.
+
+> Note that DVC does not pass the parameter values to stage commands. The
+> associated command executed by `dvc run` or `dvc repro` will have to open and
+> parse the parameters file by itself, and use the params specified with `-p`.
 
 `dvc params diff` is available to show changes in parameters, displaying the
 param names as well as their current and previous values.
