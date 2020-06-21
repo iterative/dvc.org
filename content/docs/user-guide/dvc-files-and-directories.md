@@ -98,7 +98,7 @@ created or updated. `dvc.yaml` files describe data pipelines, similar to how
 work for building software. Additionally, a [`dvc.lock`](#dvclock-file) file is
 also created to record the latest file versions.
 
-Here's a full `dvc.yaml` example:
+Here's a comprehensive `dvc.yaml` example:
 
 ```yaml
 stages:
@@ -171,30 +171,14 @@ several purposes:
 
 - Basic tracking of intermediate and final results of a pipeline (similar to
   [`.dvc` files](#dvc-files))
-- Allow DVC to detect changes in stage dependencies (`dvc status`, `dvc repro`).
+- Allow DVC to detect when stage definitions, or their dependencies have
+  changed. Such conditions invalidate states, requiring their reproduction (see
+  `dvc status`, `dvc repro`).
 - Provides a mapping of file and directory paths tracked in the
   <abbr>project</abbr> to their locations in the <abbr>cache</abbr> or
   [remote storage](/doc/command-reference/remote). This is needed internally by
   certain DVC commands to operate, such as `dvc checkout`, `dvc get`, and
   `dvc import`.
-
-Regular <abbr>dependencies</abbr> and all kinds of <abbr>outputs</abbr>
-(including [metrics](/doc/command-reference/metrics) and
-[plots](/doc/command-reference/plots) files) are also listed per stage in
-`dvc.lock`, but with an additional field to store the hash value of each file or
-directory tracked by DVC:
-
-- `md5` is the most common type of file hash, used for local file system
-  dependencies, as well as SSH <abbr>external dependencies</abbr>.
-- `etag` is used for HTTP, S3, Azure, and Google Cloud external dependencies.
-- `checksum` is only used for HDFS external dependencies.
-
-> Refer to [External Dependencies](/doc/user-guide/external-dependencies) for
-> more information.
-
-[parameter](/doc/command-reference/params#examples) key/value pairs are listed
-separately under `params`, grouped by parameters file. (No hash value is needed
-to lock params files, as these are not tracked as a whole.)
 
 Here's an example `dvc.lock` based on the one in [`dvc.yaml`](#dvcyaml-file)
 above:
@@ -217,6 +201,27 @@ stages:
       - path: logs.csv
         md5: f99aac37e383b422adc76f5f1fb45004
 ```
+
+Stage commands are listed again in `dvc.lock`, in order to know when their
+definitions change in the `dvc.yaml` file.
+
+Regular <abbr>dependencies</abbr> and all kinds of <abbr>outputs</abbr>
+(including [metrics](/doc/command-reference/metrics) and
+[plots](/doc/command-reference/plots) files) are also listed (per stage) in
+`dvc.lock`, but with an additional field to store the hash value of each file or
+directory tracked by DVC:
+
+- `md5` is the most common type of file hash, used for local file system
+  dependencies, as well as SSH <abbr>external dependencies</abbr>.
+- `etag` is used for HTTP, S3, Azure, and Google Cloud external dependencies.
+- `checksum` is only used for HDFS external dependencies.
+
+> Refer to [External Dependencies](/doc/user-guide/external-dependencies) for
+> more information.
+
+[parameter](/doc/command-reference/params#examples) key/value pairs are listed
+separately under `params`, grouped by parameters file. (No hash value is needed
+to lock params files, as these are not tracked as a whole.)
 
 ## Internal directories and files
 
