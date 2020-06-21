@@ -27,8 +27,8 @@ $ wget https://code.dvc.org/get-started/code.zip
 $ unzip code.zip
 $ rm -f code.zip
 $ ls src
-cleanup.py  evaluate.py  featurization.py
-prepare.py  requirements.txt  train.py
+evaluate.py  featurization.py  prepare.py
+requirements.txt  train.py
 ```
 
 Now let's install the requirements:
@@ -64,10 +64,10 @@ generated. It includes information about the command we ran
 
 The command options used above mean the following:
 
-- `-n prepare` specifies a name for the stage. If open the `dvc.yaml` file you
-  will see a section named `prepare`.
+- `-n prepare` specifies a name for the stage. If you open the `dvc.yaml` file
+  you will see a section named `prepare`.
 
-- `p prepare.seed,prepare.split` is a special type of dependencies -
+- `-p prepare.seed,prepare.split` is a special type of dependencies -
   [parameters](/doc/command-reference/params). We'll get to them later in the
   [Experiments](/doc/tutorials/get-started/experiments) section, but the idea is
   that stage can depend on field values from a parameters file (`params.yaml` by
