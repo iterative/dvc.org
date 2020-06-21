@@ -10,7 +10,7 @@ and execute the command.
 usage: dvc run [-h] [-q | -v] [-d <path>] [-n <name>] [-o <path>]
                [-O <path>] [-p [<path>:]<params_list>] [-m <path>]
                [-M <path>] [--plots <path>] [--plots-no-cache <path>]
-               [--file <path>] [-w <path>] [--no-exec] [-f]
+               [-w <path>] [--no-exec] [-f]
                [--no-run-cache] [--no-commit]
                [--outs-persist <path>] [--outs-persist-no-cache <path>]
                [--always-changed] [--external]
@@ -36,9 +36,9 @@ The other available [options](#options) are mainly meant to describe stage
 [dependencies and outputs](#dependencies-and-outputs), which are explained
 further down).
 
-The remaining terminal input provided to `dvc run` after the command options
-(`-`/`--` flags) will become the required `command` argument. For example, a
-minimal stage definition is:
+The remaining terminal input provided to `dvc run` after the options (`-`/`--`
+flags) will become the required `command` argument. For example, a minimal stage
+definition is:
 
 ```dvc
 $ dvc run -n hello_world echo Howdy
@@ -76,27 +76,23 @@ Relevant notes:
   For example: two stage cannot explicitly specify the same output, there should
   be no cycles, etc.
 
-- Outputs are deleted from the <abbr>workspace</abbr> by `dvc run` before
-  executing the command, so the program or script should be able to recreate any
-  directories marked as outputs.
-
 - DVC does not feed dependency files to the command being run. The program will
   have to read by itself the files specified with `-d`.
 
+- Outputs are deleted from the <abbr>workspace</abbr> before executing the
+  command, so the program or script should be able to recreate any directories
+  marked as outputs.
+
 > See another
-> [stage chaining example](#example-using-granular-parameter-dependencies).
+> [stage chaining example](#example-using-granular-parameter-dependencies)
+> below.
 
 ### Parameters, metrics, and plots for experiment management
 
 [parameters](/doc/command-reference/params) (`-p`/`--params` option) are a
 special type of key/value dependencies. Multiple parameter dependencies can be
-specified from one or more parameters files (YAML or JSON, `params.yaml` is
-assumed by default). This allows controlling experimental hyperparameters
-easily.
-
-> Note that DVC does not pass the parameter values to the command being run. The
-> program will have to open and parse the parameters file, and use the params
-> specified with `-p`.
+specified from within one or more YAML or JSON parameters files (e.g.
+`params.yaml`). This allows tracking experimental hyperparameters easily.
 
 Special types of output files, [metrics](/doc/command-reference/metrics) (`-m`
 and `-M` options) and [plots](/doc/command-reference/plots) (`--plots` and
@@ -104,19 +100,12 @@ and `-M` options) and [plots](/doc/command-reference/plots) (`--plots` and
 specific formats (JSON, YAML, CSV, or TSV) and allow displaying and comparing
 data science experiments.
 
-### Stage commands
+### The `command` argument
 
-The `command` argument can be anything your terminal would accept and run
-directly, for example a shell built-in, expression, or binary found in `PATH`.
-Please remember that any flags sent after the `command` are interpreted by the
-command itself, not by `dvc run`. Some illustrative examples:
-
-```dvc
-$ dvc run -n remove_word -d words.txt sed 's/word//' words.txt
-$ dvc run -n my_stage -d my_script.sh ./my_script.sh
-$ dvc run -n my_stage -f -d my_script.py python my_script.py
-$ dvc run -n py_maxsize python -c 'import sys; print(sys.maxsize)'
-```
+The `command` sent to `dvc run` can be anything your terminal would accept and
+run directly, for example a shell built-in, expression, or binary found in
+`PATH`. Please remember that any flags sent after the `command` are interpreted
+by the command itself, not by `dvc run`. Some illustrative examples:
 
 ⚠️ Note that while DVC is platform-agnostic, the commands defined in your
 [pipeline](/doc/command-reference/pipeline) stages may only work on some
@@ -173,6 +162,9 @@ then `dvc run` does not execute the `command`.
 and reproduce stages and pipelines created with `dvc run` by executing (again)
 the necessary stages.
 
+> Note that stages without dependencies are considered always changed, so
+> `dvc repro` always executes them.
+
 ## Options
 
 - `-n <stage>`, `--name <stage>` (required) - specify a name for the stage
@@ -185,14 +177,9 @@ the necessary stages.
   with data, or a code file, or a configuration file. DVC also supports certain
   [external dependencies](/doc/user-guide/external-dependencies).
 
-  DVC builds a dependency graph ([pipeline](/doc/command-reference/pipeline))
-  connecting different stages with each other. When you use `dvc repro`, the
-  list of dependencies helps DVC analyze whether any dependencies have changed
-  and thus executing stages as required to regenerate their output. A special
-  case is when no dependencies are specified.
-
-  > Note that staged without dependencies are considered always changed, so
-  > `dvc repro` always executes them.
+  When you use `dvc repro`, the list of dependencies helps DVC analyze whether
+  any dependencies have changed and thus executing stages required to regenerate
+  their outputs.
 
 - `-o <path>`, `--outs <path>` - specify a file or directory that is the result
   of running the `command`. Multiple outputs can be specified:
@@ -340,8 +327,8 @@ $ dvc run -n train \
           python train_model.py matrix-train.p 20180226 model.p
 ```
 
-Note that in order to update a stage that is already defined, the `-f`
-(`--force`) option is needed. Let's update the seed for the `train` stage:
+To update a stage that is already defined, the `-f` (`--force`) option is
+needed. Let's update the seed for the `train` stage:
 
 ```dvc
 $ dvc run -n train -f -d matrix-train.p -d train_model.py -o model.p \

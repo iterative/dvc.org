@@ -48,8 +48,11 @@ files, intermediate or final results.
 
 By default, this command recursively searches in pipeline stages, starting from
 the `targets`, to determine which ones have changed. Then it executes the
-corresponding commands.<br/> Note that DVC removes cached <abbr>outputs</abbr>
-before running the stages that produce them.
+corresponding commands. <abbr>Outputs</abbr> are deleted from the
+<abbr>workspace</abbr> before executing the stages command that produces them.
+
+> Note that stages without dependencies are considered _always changed_, so
+> `dvc repro` always executes them.
 
 It saves all the data files, intermediate or final results into the <abbr>DVC
 cache</abbr> (unless the `--no-commit` option is used), and updates the hash
