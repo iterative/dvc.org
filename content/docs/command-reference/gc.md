@@ -28,11 +28,11 @@ corresponds to keeping the data for the current workspace, and for a certain set
 of commits (determined by reading the DVC-files in them). See the
 [Options](#options) section for more details.
 
-> Please note that `dvc gc` pulls `.dir` <!-- prettier-ignore -->
-> [cache](doc/user-guide/dvc-files-and-directories#structure-of-cache-directory)
+> Please note that `dvc gc` pulls
+> [`.dir` cache](/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory)
 > files for corresponding directories from remote. It pulls them when they are
-> missing and referenced in the commits `gc` analyzed in `.dvc` or `dvc.yaml`
-> files.
+> missing and referenced in the commits that `gc` analyzed in `.dvc` or
+> `dvc.yaml` files.
 
 Unless the `--cloud` option is used, `dvc gc` does not remove data files from
 any remote. This means that any files collected from the local cache can be
