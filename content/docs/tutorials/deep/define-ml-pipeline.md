@@ -343,9 +343,6 @@ Reproducing 'Dvcfile':
     python code/evaluate.py
 ```
 
-> Note that using `-f Dvcfile` with `dvc run` above isn't necessary as the
-> default stage file name is `Dvcfile` when there are no outputs (option `-o`).
-
 The model evaluation stage is the last one for this tutorial. To help in the
 pipeline's reproducibility, we use stage file name `Dvcfile`. (This will be
 discussed in more detail in the next chapter.)

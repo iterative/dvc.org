@@ -27,8 +27,7 @@ defined in the <abbr>project</abbr>: There's nothing to reproduce.
 $ dvc repro model.p.dvc
 ```
 
-> By default, `dvc repro` tries to read the DVC-file with name `Dvcfile`, like
-> the one we define in the previous chapter.
+> By default, `dvc repro` tries to read all stages available.
 
 ```dvc
 $ dvc repro
