@@ -34,7 +34,7 @@
         "slug": "get-started",
         "source": "get-started/index.md",
         "tutorials": {
-          "katacoda": "https://katacoda.com/dvc/courses/get-started/initialize"
+          "katacoda": "https://katacoda.com/dvc/courses/get-started"
         },
         "children": [
           "data-versioning",
@@ -56,18 +56,12 @@
       },
       {
         "slug": "pipelines",
-        "label": "Stages and Pipelines",
-        "tutorials": {
-          "katacoda": "https://katacoda.com/dvc/courses/tutorials/pipelines"
-        }
+        "label": "Stages and Pipelines"
       },
       {
         "slug": "deep",
         "label": "Deep Dive Tutorial",
         "source": "deep/index.md",
-        "tutorials": {
-          "katacoda": "https://katacoda.com/dvc/courses/tutorials/pipelines"
-        },
         "children": [
           "preparation",
           {
