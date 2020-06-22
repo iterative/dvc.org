@@ -7,14 +7,14 @@
 
   {
     label: "Add Files or Directories",
-    path: "/doc/tutorials/get-started/add-files",
-    source: "/docs/tutorials/get-started/add-files.md",
-    prev: "/doc/tutorials/get-started/configure",
-    next: "/doc/tutorials/get-started/share-data",
+    path: "/doc/start/add-files",
+    source: "/doc/start/add-files.md",
+    prev: "/doc/start/configure",
+    next: "/doc/start/share-data",
     icon: "house",
     style: "customClass",
     tutorials: {
-      katacoda: "https://www.katacoda.com/dvc/courses/get-started/initialize"
+      katacoda: "https://www.katacoda.com/dvc/courses/get-started"
     }
     children: []
   }
