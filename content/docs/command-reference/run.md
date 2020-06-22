@@ -215,9 +215,8 @@ $ dvc run -n my_stage './my_script.sh $MYENVVAR'
   This is useful if, for example, you need to build a pipeline quickly first,
   and run it all at once later.
 
-- `-f`, `--force` - overwrite an existing `dvc.yaml` file (or the file name
-  determined by the logic described in the `--file` option) without asking for
-  confirmation.
+- `-f`, `--force` - overwrite an existing stage in `dvc.yaml` file without
+  asking for confirmation.
 
 - `--no-run-cache` - forcefully execute the `command` again, even if the same
   `dvc run` command has already been run in this workspace. Useful if the
