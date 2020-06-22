@@ -1,40 +1,35 @@
 ---
-title: Optimizing DVC Remotes
+title: Optimization Improvements in DVC 1.0
 date: 2020-06-29
 description: |
-  An overview of how syncing data to and from remote storage is optimized in DVC.
-picture: 2020-05-04/owl.png
+  An overview of how data synchronization to and from remote storage is optimized in DVC 1.0.
 author: peter_rowlands
 ---
 
 One of the key features provided by DVC is the ability to efficiently sync
 versioned datasets between a user's local machine and
 [remote storage](https://dvc.org/doc/command-reference/remote), and version 1.0
-includes several performance optimizations related to syncing data with remotes.
-This post provides an overview of some of the ways in which remote performance
-has been optimized in DVC.
+includes several performance optimizations related to synchronizing data with
+remotes. This post provides an overview of some of the ways in which remote
+performance has been optimized in DVC.
 
-In order to sync data between a local machine and remote storage, a tool must
-first do the following (equivalent to
-[status](https://dvc.org/doc/command-reference/status) with `-c/--cloud` in
-DVC), before data can actually be uploaded or downloaded to or from the remote:
+In order to sync data between a local machine and remote storage, we must first
+do the following (equivalent to the `dvc status` command with option `-c`
+(`--cloud`)), before data can actually be uploaded or downloaded to or from the
+remote:
 
-1. Determine which files are present locally (i.e. in the DVC local cache)
-2. Determine which files are present in the remote
-3. Determine the difference between the two sets of files
+1. Determine which files are present locally (i.e. in the DVC cache).
+2. Determine which files are present in the remote.
+3. Determine the difference between the two sets of files.
 
 Commonly used cloud sync utilities, such as [rclone](https://rclone.org/), must
-be generalized to support any arbitrary file structure, which can come at the
-cost of potential performance, especially when dealing with large datasets
-containing potentially millions of files (or more). In DVC, since we have
+be generalized to support any file structure, which can come at the cost of
+performance, especially when dealing with large datasets. In DVC, since we have
 control over the structure of both our local cache and our remote storage, we
 leverage this structure to optimize this "status" step in all remote storage
-operations (i.e. `status -c`,
-[push](https://dvc.org/doc/command-reference/push),
-[pull](https://dvc.org/doc/command-reference/pull),
-[fetch](https://dvc.org/doc/command-reference/fetch)). In DVC version 1.0, these
-optimizations have significantly improved performance compared to older versions
-of DVC and tools like rclone.
+operations (i.e. `dvc status -c`, `dvc push`, `dvc pull`, `dvc fetch`). In DVC
+version 1.0, these optimizations have significantly improved performance
+compared to older versions of DVC and tools like rclone.
 
 ![benchmarks](https://raw.githubusercontent.com/gist/pmrowla/338d9645bd05df966f8aba8366cab308/raw/37f64e28e8c2e963aff0d320f6e0cea0724342a5/remote-benchmarks.svg)
 _Note: benchmark details can be found
