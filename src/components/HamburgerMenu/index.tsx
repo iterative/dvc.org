@@ -216,7 +216,7 @@ const HamburgerMenu: React.FC = () => {
           </li>
         </ul>
         <Link
-          href="/doc/tutorials/get-started"
+          href="/doc/start"
           className={styles.linkButton}
           onClick={itemClick('get-started')}
         >

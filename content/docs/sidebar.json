@@ -27,22 +27,23 @@
     ]
   },
   {
+    "slug": "start",
+    "label": "Get Started",
+    "source": "start/index.md",
+    "tutorials": {
+      "katacoda": "https://katacoda.com/dvc/courses/get-started"
+    },
+    "children": [
+      "data-versioning",
+      "data-access",
+      "data-pipelines",
+      "experiments"
+    ]
+  },
+  {
     "slug": "tutorials",
     "source": "tutorials/index.md",
     "children": [
-      {
-        "slug": "get-started",
-        "source": "get-started/index.md",
-        "tutorials": {
-          "katacoda": "https://katacoda.com/dvc/courses/get-started"
-        },
-        "children": [
-          "data-versioning",
-          "data-access",
-          "data-pipelines",
-          "experiments"
-        ]
-      },
       {
         "slug": "interactive",
         "label": "Interactive Tutorials"
