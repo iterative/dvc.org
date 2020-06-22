@@ -41,51 +41,14 @@
     ]
   },
   {
-    "slug": "tutorials",
-    "source": "tutorials/index.md",
-    "children": [
-      {
-        "slug": "interactive",
-        "label": "Interactive Tutorials"
-      },
-      {
-        "slug": "versioning",
-        "label": "Data Versioning",
-        "tutorials": {
-          "katacoda": "https://katacoda.com/dvc/courses/tutorials/versioning"
-        }
-      },
-      {
-        "slug": "pipelines",
-        "label": "Stages and Pipelines"
-      },
-      {
-        "slug": "deep",
-        "label": "Deep Dive Tutorial",
-        "source": "deep/index.md",
-        "children": [
-          "preparation",
-          {
-            "label": "Define ML Pipeline",
-            "slug": "define-ml-pipeline"
-          },
-          "reproducibility",
-          "sharing-data"
-        ]
-      },
-      {
-        "slug": "community",
-        "label": "Community Tutorials"
-      }
-    ]
-  },
-  {
     "slug": "use-cases",
     "source": "use-cases/index.md",
     "children": [
       {
         "label": "Versioning Data & Model Files",
-        "slug": "versioning-data-and-model-files"
+        "slug": "versioning-data-and-model-files",
+        "source": "versioning-data-and-model-files/index.md",
+        "children": ["tutorial"]
       },
       {
         "label": "Sharing Data & Model Files",
