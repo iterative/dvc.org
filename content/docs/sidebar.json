@@ -99,6 +99,16 @@
     "source": "user-guide/index.md",
     "children": [
       {
+        "slug": "what-is-dvc",
+        "label": "What is DVC?",
+        "source": "what-is-dvc/index.md",
+        "children": [
+          "collaboration-issues",
+          "core-features",
+          "related-technologies"
+        ]
+      },
+      {
         "label": "DVC Files and Directories",
         "slug": "dvc-files-and-directories"
       },
@@ -390,23 +400,6 @@
         "slug": "read",
         "label": "read()"
       }
-    ]
-  },
-  {
-    "slug": "understanding-dvc",
-    "label": "Understanding DVC",
-    "source": false,
-    "children": [
-      "collaboration-issues",
-      "existing-tools",
-      {
-        "label": "What is DVC?",
-        "slug": "what-is-dvc"
-      },
-      "core-features",
-      "how-it-works",
-      "related-technologies",
-      "resources"
     ]
   },
   {
