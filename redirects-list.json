@@ -1,8 +1,8 @@
 [
   "^https://(?:www\\.)?dataversioncontrol\\.com(.*)?                                      https://dvc.org$1",
   "^https://discuss\\.dataversioncontrol\\.com(.*)?                                       https://discuss.dvc.org$1",
-  "^https://blog\\.dataversioncontrol\\.com/data-version-control-tutorial-9146715eda46    https://dvc.org/doc/tutorials",
-  "^https://blog\\.dataversioncontrol\\.com/data-version-control-beta-release-iterative-machine-learning-a7faf7c8be67 https://dvc.org/doc/tutorials",
+  "^https://blog\\.dataversioncontrol\\.com/data-version-control-tutorial-9146715eda46    https://dvc.org/doc/start",
+  "^https://blog\\.dataversioncontrol\\.com/data-version-control-beta-release-iterative-machine-learning-a7faf7c8be67 https://dvc.org/doc/start",
   "^https://blog\\.dataversioncontrol\\.com/dvc-heartbeat-6301aebf5c96                    https://dvc.org/blog/march-19-dvc-heartbeat",
   "^https://blog\\.dataversioncontrol\\.com/april19-dvc-heartbeat-296c71a59be4            https://dvc.org/blog/april-19-dvc-heartbeat",
   "^https://blog\\.dataversioncontrol\\.com/dvc-0-8-5-release-f66ef3b10684                https://github.com/iterative/dvc/releases",
@@ -21,11 +21,10 @@
   "^/(?:docs|documentation)(/.*)?$                                                        /doc$1",
 
   "^/doc/get-started(/.*)?$                                                               /doc/start",
-  "^/doc/tutorial(/.*)?                                                                   /doc/start",
+  "^/doc/tutorial(/.*)?$                                                                  /doc/start",
   "^/doc/tutorials/get-started(/.*)?$                                                     /doc/start",
-  "^/doc/tutorials/deep(/.*)?$                                                            /doc/start",
-  "^/doc/tutorials/pipelines(/.*)?$                                                       /doc/start",
   "^/doc/tutorials/versioning(/.*)?$                                                      /doc/use-cases/versioning-data-and-model-files/tutorial",
+  "^/doc/tutorials(/.*)?                                                                  /doc/start",
 
   "^/doc/use-cases/data-and-model-files-versioning/?$                                     /doc/use-cases/versioning-data-and-model-files",
   "^/doc/user-guide/dvc-file-format$                                                      /doc/user-guide/dvc-files-and-directories",
