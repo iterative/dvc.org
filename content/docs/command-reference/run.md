@@ -240,6 +240,9 @@ $ dvc run -n my_stage './my_script.sh $MYENVVAR'
   > Note that DVC-files without dependencies are automatically considered
   > "always changed", so this option has no effect in those cases.
 
+- `--external` - allow outputs that are outside of the DVC repository. See
+  [Managing External Data](/doc/user-guide/managing-external-data).
+
 - `-h`, `--help` - prints the usage/help message, and exit.
 
 - `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if no

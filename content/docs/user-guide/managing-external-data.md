@@ -52,8 +52,9 @@ The default local cache location is `.dvc/cache`, so there is no need to specify
 it explicitly.
 
 ```dvc
-$ dvc add /home/shared/mydata
+$ dvc add /home/shared/mydata --external
 $ dvc run -d data.txt \
+          --external \
           -o /home/shared/data.txt \
           cp data.txt /home/shared/data.txt
 ```
@@ -68,10 +69,11 @@ $ dvc remote add sshcache ssh://user@example.com:/cache
 $ dvc config cache.ssh sshcache
 
 # Add data on SSH directly
-$ dvc add ssh://user@example.com:/mydata
+$ dvc add ssh://user@example.com:/mydata --external
 
 # Create the stage with external SSH output
 $ dvc run -d data.txt \
+          --external \
           -o ssh://user@example.com:/home/shared/data.txt \
           scp data.txt user@example.com:/home/shared/data.txt
 ```
@@ -86,10 +88,11 @@ $ dvc remote add s3cache s3://mybucket/cache
 $ dvc config cache.s3 s3cache
 
 # Add data on S3 directly
-$ dvc add s3://mybucket/mydata
+$ dvc add s3://mybucket/mydata --external
 
 # Create the stage with external S3 output
 $ dvc run -d data.txt \
+          --external \
           -o s3://mybucket/data.txt \
           aws s3 cp data.txt s3://mybucket/data.txt
 ```
@@ -104,10 +107,11 @@ $ dvc remote add gscache gs://mybucket/cache
 $ dvc config cache.gs gscache
 
 # Add data on GS directly
-$ dvc add gs://mybucket/mydata
+$ dvc add gs://mybucket/mydata --external
 
 # Create the stage with external GS output
 $ dvc run -d data.txt \
+          --external \
           -o gs://mybucket/data.txt \
           gsutil cp data.txt gs://mybucket/data.txt
 ```
@@ -122,10 +126,11 @@ $ dvc remote add hdfscache hdfs://user@example.com/cache
 $ dvc config cache.hdfs hdfscache
 
 # Add data on HDFS directly
-$ dvc add hdfs://user@example.com/mydata
+$ dvc add hdfs://user@example.com/mydata --external
 
 # Create the stage with external HDFS output
 $ dvc run -d data.txt \
+          --external \
           -o hdfs://user@example.com/home/shared/data.txt \
           hdfs fs -copyFromLocal \
                             data.txt \
