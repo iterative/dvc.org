@@ -61,7 +61,7 @@ install and configure shell completion.
 2. Run this command to install DVC completions:
 
    ```dvc
-   $ dvc completion -s bash | sudo tee /usr/local/etc/bash_completion.d/dvc
+   $ dvc completion -s bash | sudo tee "$(brew --prefix)"/etc/bash_completion.d/dvc
    ```
 
 3. Finally, open a new terminal to activate completions.
