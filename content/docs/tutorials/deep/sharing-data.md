@@ -56,11 +56,11 @@ $ dvc pull data/data.xml.dvc prepare.dvc
 ```
 
 After running `dvc pull` above, all the data files related to the
-['prepare' stage](https://github.com/iterative/example-get-started/blob/master/prepare.dvc)
+['prepare' stage](https://github.com/iterative/example-get-started/blob/master/dvc.yaml)
 in that repo should be in the right place. You can confirm this by trying to
 reproduce the default goal:
 
 ```dvc
-$ dvc repro prepare.dvc
+$ dvc repro prepare
 Data and pipelines are up to date.
 ```
