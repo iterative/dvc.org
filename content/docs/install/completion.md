@@ -53,8 +53,8 @@ install and configure shell completion.
    then edit `~/.bash_profile` and make sure that these lines appear:
 
    ```bash
-   if [ -f $(brew --prefix)/etc/bash_completion ]; then
-       . $(brew --prefix)/etc/bash_completion
+   if [ -f "$(brew --prefix)"/etc/bash_completion ]; then
+       . "$(brew --prefix)"/etc/bash_completion
    fi
    ```
 
