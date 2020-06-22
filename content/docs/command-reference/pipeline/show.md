@@ -2,7 +2,7 @@
 
 Show [stages](/doc/command-reference/run) in a pipeline that lead to the
 specified stage. By default it lists
-[DVC-files](/doc/user-guide/dvc-file-format).
+[DVC-files](/doc/user-guide/dvc-files-and-directories).
 
 ## Synopsis
 
@@ -19,7 +19,7 @@ positional arguments:
 ## Description
 
 `dvc show` displays the stages of a pipeline up to one or more target DVC-files
-(stage files). If specific `targets` are omitted, `Dvcfile` will be assumed. The
+(stage files). All stages are shown unless specific `targets` are specified. The
 `-c` and `-o` options allow to list the corresponding commands or data file flow
 instead of stages.
 
@@ -43,7 +43,7 @@ instead of stages.
 
 - `--tree` - list dependencies tree like recursive directory listing.
 
-- `-l`, `--locked` - print locked stages only. See `dvc lock`.
+- `-l`, `--locked` - print frozen stages only. See `dvc freeze`.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 

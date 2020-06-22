@@ -22,10 +22,11 @@ etc.) doesn't have DVC initialized (no `.dvc/` directory present).
 Namely:
 
 **Checkout**: For any commit hash, branch or tag, `git checkout` retrieves the
-[DVC-files](/doc/user-guide/dvc-file-format) corresponding to that version. The
-project's DVC-files in turn refer to data stored in <abbr>cache</abbr>, but not
-necessarily in the <abbr>workspace</abbr>. Normally, it would be necessary to
-use `dvc checkout` to synchronize workspace and DVC-files.
+[DVC-files](/doc/user-guide/dvc-files-and-directories) corresponding to that
+version. The project's DVC-files in turn refer to data stored in
+<abbr>cache</abbr>, but not necessarily in the <abbr>workspace</abbr>. Normally,
+it would be necessary to use `dvc checkout` to synchronize workspace and
+DVC-files.
 
 This hook automates `dvc checkout` after `git checkout`.
 
@@ -153,7 +154,7 @@ $ dvc pull --all-branches --all-tags
 ## Example: Checkout both Git and DVC
 
 Switching from one Git commit to another (with `git checkout`) may change the
-set of [DVC-files](/doc/user-guide/dvc-file-format) in the
+set of [DVC-files](/doc/user-guide/dvc-files-and-directories) in the
 <abbr>workspace</abbr>. This would mean that the currently present data files
 and directories no longer matches project's version (which can be fixed with
 `dvc checkout`).
@@ -162,17 +163,17 @@ Let's first list the available tags in the _Get Started_ repo:
 
 ```dvc
 $ git tag
-0-empty
-1-initialize
-2-remote
-3-add-file
-4-sources
-5-preparation
-6-featurization
-7-train
-8-evaluation
-9-bigrams-model
-10-bigrams-experiment
+0-git-init
+1-dvc-init
+10-bigrams-model
+11-bigrams-experiment
+2-track-data
+3-config-remote
+4-import-data
+5-source-code
+6-prep-stage
+8-ml-pipeline
+9-evaluation
 ...
 ```
 
@@ -181,16 +182,16 @@ document specific experiments conducted in it. To take a look at one, we
 checkout the `6-featurization` tag:
 
 ```dvc
-$ git checkout 6-featurization
-Note: checking out '6-featurization'.
+$ git checkout 8-ml-pipeline
+Note: checking out '8-ml-pipeline'.
 
 You are in 'detached HEAD' state...
 
 $ dvc status
-featurize.dvc:
-    changed outs:
-        modified:           data/features
-
+featurize:
+	changed outs:
+		modified:           data/features
+...
 $ dvc checkout
 
 $ dvc status
@@ -205,14 +206,14 @@ We also see that the first `dvc status` tells us about differences between the
 project's <abbr>cache</abbr> and the data files currently in the workspace. Git
 changed the DVC-files in the workspace, which changed references to data files.
 `dvc status` first informed us that the data files in the workspace no longer
-matched the hash values in the corresponding
-[DVC-files](/doc/user-guide/dvc-file-format). Running `dvc checkout` then brings
-them up to date, and a second `dvc status` tells us that the data files now do
-match the DVC-files.
+matched the hash values in the corresponding `.dvc` and `dvc.lock`
+[files](/doc/user-guide/dvc-files-and-directories). Running `dvc checkout` then
+brings them up to date, and a second `dvc status` tells us that the data files
+now do match the DVC files.
 
 ```dvc
 $ git checkout master
-Previous HEAD position was d13ba9a add featurization stage
+Previous HEAD position was 6666298 Create ML pipeline stages
 Switched to branch 'master'
 Your branch is up to date with 'origin/master'.
 
@@ -241,12 +242,10 @@ is the `post-checkout` script that runs after `git checkout`.
 We can now repeat the command run earlier, to see the difference.
 
 ```dvc
-$ git checkout 6-featurization
-Note: checking out '6-featurization'.
-
-You are in 'detached HEAD' state...
-
-HEAD is now at d13ba9a add featurization stage
+$ git checkout 8-ml-pipeline
+HEAD is now at 6666298 Create ML pipeline stages
+M       model.pkl
+M	data/features/
 
 $ dvc status
 
@@ -255,7 +254,7 @@ Data and pipelines are up to date.
 
 Look carefully at this output and it is clear that the `dvc checkout` command
 has indeed been run. As a result the workspace is up to date with the data files
-matching what is referenced by the DVC-files.
+matching what is referenced by the DVC files.
 
 ## Example: Showing DVC status when committing with Git
 
@@ -267,9 +266,9 @@ If we simply edit one of the code files:
 ```dvc
 $ vi src/featurization.py
 
-$ git commit -a -m "Modified featurization"
+$ git commit -a -m "modified featurization"
 
-featurize.dvc:
+featurize:
     changed deps:
         modified:           src/featurization.py
 [master 1116ddc] modified featurization
@@ -282,21 +281,16 @@ informs us that the workspace is out of sync. Therefore, we can conclude that
 the `dvc repro` command is needed now:
 
 ```dvc
-$ dvc repro evaluate.dvc
+$ dvc repro
 ...
 To track the changes with git run:
 
-    git add featurize.dvc train.dvc evaluate.dvc
+    git add dvc.lock
 
 $ git status -s
- M auc.metric
- M evaluate.dvc
- M featurize.dvc
- M src/featurization.py
- M train.dvc
+M dvc.lock
 
 $ git commit -a -m "updated data after modified featurization"
-
 Data and pipelines are up to date.
 
 [master 78d0c44] modified featurization

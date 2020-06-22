@@ -13,8 +13,9 @@ match:
   ]
 ---
 
-Initialized by running `dvc init` in the **workspace** (typically in a Git
+Initialized by running `dvc init` in the **workspace** (typically a Git
 repository). It will contain the
-[`.dvc/` directory](/doc/user-guide/dvc-files-and-directories) and
-[DVC-files](/doc/user-guide/dvc-file-format) created with commands such as
-`dvc add` or `dvc run`.
+[`.dvc/` directory](/doc/user-guide/dvc-files-and-directories), as well as
+[`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvcyaml-file) and
+[`.dvc`](/doc/user-guide/dvc-files-and-directories#dvc-files) files created with
+commands such as `dvc add` or `dvc run`.

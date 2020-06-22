@@ -11,7 +11,7 @@ modifying some of the code during this tutorial to improve the model.
 > We have tested our tutorials and examples with Python 3. We don't recommend
 > using earlier versions.
 
-You'll need [Git](https://git-scm.com) to run the commands in this tutorial.
+You'll need [Git](https://git-scm.com/) to run the commands in this tutorial.
 Also, if DVC is not installed, please follow these [instructions](/doc/install)
 to do so.
 
@@ -32,6 +32,10 @@ Windows doesn't include the `wget` utility by default, but you can use the
 browser to download `code.zip`. (Right-click
 [this link](https://code.dvc.org/tutorial/nlp/code.zip) and select
 `Save Link As...` (Chrome). Save it into the project directory.
+
+> 💡 Please also review
+> [Running DVC on Windows](/doc/user-guide/running-dvc-on-windows) for important
+> tips to improve your experience using DVC on Windows.
 
 </details>
 
@@ -63,9 +67,9 @@ with:
 
 At DVC initialization, a new `.dvc/` directory is created for internal
 configuration and <abbr>cache</abbr>
-[files and directories](/doc/user-guide/dvc-files-and-directories), that are
-hidden from the user. This directory is automatically staged with `git add`, so
-it can be easily committed with Git:
+[files and directories](/doc/user-guide/dvc-files-and-directories#internal-directories-and-files),
+that are hidden from the user. This directory is automatically staged with
+`git add`, so it can be easily committed with Git:
 
 ```dvc
 $ dvc init
@@ -87,5 +91,4 @@ The <abbr>cache directory</abbr>, one of the most important parts of any
 explained in more detail in the next chapter.) Note that it won't be tracked by
 Git — It's a local-only directory, and you cannot push it to a Git remote.
 
-For more information refer to
-[DVC Files and Directories](/doc/user-guide/dvc-files-and-directories).
+For more information refer to `dvc init`.

@@ -13,21 +13,6 @@ $ du -sh data/*
  41M data/Posts.xml.zip
 ```
 
-<details>
-
-### Expand to learn how to download on Windows
-
-Windows doesn't include the `wget` utility by default, but you can use the
-browser to download `data.xml`. (Right-click
-[this link](https://data.dvc.org/tutorial/ver/data.zip) and select
-`Save Link As...` (Chrome). Save it into the `data/` subdirectory.
-
-> Please also review
-> [Running DVC on Windows](/doc/user-guide/running-dvc-on-windows) for important
-> tips to improve your experience using DVC on Windows.
-
-</details>
-
 At this time, `data/Posts.xml.zip` is a regular (untracked) file. We can track
 it with DVC using `dvc add` (see below). After executing the command you will
 see a new file `data/Posts.xml.zip.dvc` and a change in `data/.gitignore`. Both
@@ -66,11 +51,11 @@ or move it, you can use `dvc move`.
 
 ## Data file internals
 
-If you take a look at the [DVC-file](/doc/user-guide/dvc-file-format) created by
-`dvc add`, you will see that <abbr>outputs</abbr> are tracked in the `outs`
-field. In this file, only one output is specified. The output contains the data
-file path in the repository and its MD5 hash. This hash value determines the
-location of the actual content file in the
+If you take a look at the [DVC-file](/doc/user-guide/dvc-files-and-directories)
+created by `dvc add`, you will see that <abbr>outputs</abbr> are tracked in the
+`outs` field. In this file, only one output is specified. The output contains
+the data file path in the repository and its MD5 hash. This hash value
+determines the location of the actual content file in the
 [cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory),
 `.dvc/cache`.
 
@@ -154,8 +139,8 @@ files written to by the command, if any.
 
 - `-o out.dat` (lower case o) specifies an output data file. DVC will track this
   data file by creating a corresponding
-  [DVC-file](/doc/user-guide/dvc-file-format) (as if running `dvc add out.dat`
-  after `dvc run` instead).
+  [DVC-file](/doc/user-guide/dvc-files-and-directories) (as if running
+  `dvc add out.dat` after `dvc run` instead).
 
 - `-O tmp.dat` (upper case O) specifies a simple output file (not to be added to
   DVC).
@@ -201,8 +186,8 @@ command and does some additional work if the command was successful:
 
 2. For reproducibility purposes, `dvc run` creates the `Posts.xml.dvc` stage
    file in the <abbr>project</abbr> with information about this pipeline stage.
-   (See [DVC-File Format](/doc/user-guide/dvc-file-format)). Note that the name
-   of this file could be specified by using the `-f` option, for example
+   (See [DVC Files](/doc/user-guide/dvc-files-and-directories)). Note that the
+   name of this file could be specified by using the `-f` option, for example
    `-f extract.dvc`.
 
 Let's take a look at the resulting stage file created by `dvc run` above:
@@ -357,9 +342,6 @@ $ dvc run -d data/model.p -d data/matrix-test.p \
 Reproducing 'Dvcfile':
     python code/evaluate.py
 ```
-
-> Note that using `-f Dvcfile` with `dvc run` above isn't necessary as the
-> default stage file name is `Dvcfile` when there are no outputs (option `-o`).
 
 The model evaluation stage is the last one for this tutorial. To help in the
 pipeline's reproducibility, we use stage file name `Dvcfile`. (This will be

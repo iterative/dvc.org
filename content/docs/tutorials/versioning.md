@@ -29,7 +29,7 @@ model file.
 > We have tested our tutorials and examples with Python 3. We don't recommend
 > using earlier versions.
 
-You'll need [Git](https://git-scm.com) to run the commands in this tutorial.
+You'll need [Git](https://git-scm.com/) to run the commands in this tutorial.
 Also, if DVC is not installed, please follow these [instructions](/doc/install)
 to do so.
 
@@ -83,13 +83,13 @@ $ unzip -q data.zip
 $ rm -f data.zip
 ```
 
-> `dvc get` can use any <abbr>DVC repository</abbr> to find the appropriate
-> [remote storage](/doc/command-reference/remote) and download <abbr>data
-> artifacts</abbr> from it (analogous to `wget`, but for repositories). In this
-> case we use [dataset-registry](https://github.com/iterative/dataset-registry))
-> as the source repo. (Refer to
-> [Data Registries](/doc/use-cases/data-registries) for more info about this
-> setup.)
+> `dvc get` can download any <abbr>data artifact</abbr> tracked in a <abbr>DVC
+> repository</abbr>, using the appropriate
+> [remote storage](/doc/command-reference/remote). It's like `wget`, but for DVC
+> or Git repos. In this case we use our
+> [dataset registry](https://github.com/iterative/dataset-registry) repo as the
+> data source (refer to [Data Registries](/doc/use-cases/data-registries) for
+> more info.)
 
 This command downloads and extracts our raw dataset, consisting of 1000 labeled
 images for training and 800 labeled images for validation. In total, it's a 43
@@ -132,8 +132,8 @@ the <abbr>cache</abbr> (while keeping a
 [file link](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
 to it in the <abbr>workspace</abbr>, so you can continue working the same way as
 before). This is achieved by creating a simple human-readable
-[DVC-file](/doc/user-guide/dvc-file-format) that serves as a pointer to the
-cache.
+[DVC-file](/doc/user-guide/dvc-files-and-directories) that serves as a pointer
+to the cache.
 
 Next, we train our first model with `train.py`. Because of the small dataset,
 this training process should be small enough to run on most computers in a
@@ -168,8 +168,8 @@ As we mentioned briefly, DVC does not commit the `data/` directory and
 then `git commit` DVC-files that contain file hashes that point to cached data.
 
 In this case we created `data.dvc` and `model.h5.dvc`. Refer to
-[DVC-File Format](/doc/user-guide/dvc-file-format) to learn more about how these
-files work.
+[DVC Files](/doc/user-guide/dvc-files-and-directories) to learn more about how
+these files work.
 
 </details>
 
@@ -283,9 +283,9 @@ the `v2.0` tag.
 As we have learned already, DVC keeps data files out of Git (by adjusting
 `.gitignore`) and puts them into the <abbr>cache</abbr> (usually it's a
 `.dvc/cache` directory inside the repository). Instead, DVC creates
-[DVC-files](/doc/user-guide/dvc-file-format). These text files serve as data
-placeholders that point to the cached files, and they can be easily version
-controlled with Git.
+[DVC-files](/doc/user-guide/dvc-files-and-directories). These text files serve
+as data placeholders that point to the cached files, and they can be easily
+version controlled with Git.
 
 When we run `git checkout` we restore pointers (DVC-files) first. Then, when we
 run `dvc checkout`, we use these pointers to put the right data in the right
@@ -325,11 +325,11 @@ $ dvc run -f Dvcfile \
 ```
 
 Similar to `dvc add`, `dvc run` creates a
-[DVC-file](/doc/user-guide/dvc-file-format) named `Dvcfile` (specified using the
-`-f` option). It tracks all outputs (`-o`) the same way as `dvc add` does.
-Unlike `dvc add`, `dvc run` also tracks dependencies (`-d`) and the command
-(`python train.py`) that was run to produce the result. We call such a DVC-file
-a "stage file".
+[DVC-file](/doc/user-guide/dvc-files-and-directories) named `Dvcfile` (specified
+using the `-f` option). It tracks all outputs (`-o`) the same way as `dvc add`
+does. Unlike `dvc add`, `dvc run` also tracks dependencies (`-d`) and the
+command (`python train.py`) that was run to produce the result. We call such a
+DVC-file a "stage file".
 
 > At this point you could run `git add .` and `git commit` to save the `Dvcfile`
 > stage file and its changed outputs to the repository.
@@ -370,5 +370,6 @@ Another detail we only brushed upon here is the way we captured the
 `metrics.csv` metric file with the `-M` option of `dvc run`. Marking this
 <abbr>output</abbr> as a metric enables us to compare its values across Git tags
 or branches (for example, representing different experiments). See `dvc metrics`
-and [Compare Experiments](/doc/tutorials/get-started/compare-experiments) to
-learn more about managing metrics with DVC.
+and
+[Compare Experiments](/doc/tutorials/get-started/experiments#compare-experiments)
+to learn more about managing metrics with DVC.

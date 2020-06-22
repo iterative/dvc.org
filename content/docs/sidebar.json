@@ -27,39 +27,23 @@
     ]
   },
   {
+    "slug": "start",
+    "label": "Get Started",
+    "source": "start/index.md",
+    "tutorials": {
+      "katacoda": "https://katacoda.com/dvc/courses/get-started"
+    },
+    "children": [
+      "data-versioning",
+      "data-access",
+      "data-pipelines",
+      "experiments"
+    ]
+  },
+  {
     "slug": "tutorials",
     "source": "tutorials/index.md",
     "children": [
-      {
-        "slug": "get-started",
-        "source": false,
-        "tutorials": {
-          "katacoda": "https://katacoda.com/dvc/courses/get-started/initialize"
-        },
-        "children": [
-          "agenda",
-          "initialize",
-          "configure",
-          "add-files",
-          "store-data",
-          "retrieve-data",
-          "import-data",
-          {
-            "label": "Connect with Code",
-            "slug": "connect-code-and-data"
-          },
-          "pipeline",
-          "visualize",
-          "reproduce",
-          "metrics",
-          "experiments",
-          "compare-experiments",
-          {
-            "label": "Get Older Files",
-            "slug": "older-versions"
-          }
-        ]
-      },
       {
         "slug": "interactive",
         "label": "Interactive Tutorials"
@@ -73,18 +57,12 @@
       },
       {
         "slug": "pipelines",
-        "label": "Stages and Pipelines",
-        "tutorials": {
-          "katacoda": "https://katacoda.com/dvc/courses/tutorials/pipelines"
-        }
+        "label": "Stages and Pipelines"
       },
       {
         "slug": "deep",
         "label": "Deep Dive Tutorial",
         "source": "deep/index.md",
-        "tutorials": {
-          "katacoda": "https://katacoda.com/dvc/courses/tutorials/pipelines"
-        },
         "children": [
           "preparation",
           {
@@ -122,12 +100,18 @@
     "source": "user-guide/index.md",
     "children": [
       {
-        "label": "Files and Directories",
-        "slug": "dvc-files-and-directories"
+        "slug": "what-is-dvc",
+        "label": "What is DVC?",
+        "source": "what-is-dvc/index.md",
+        "children": [
+          "collaboration-issues",
+          "core-features",
+          "related-technologies"
+        ]
       },
       {
-        "label": "File Format (.dvc)",
-        "slug": "dvc-file-format"
+        "label": "DVC Files and Directories",
+        "slug": "dvc-files-and-directories"
       },
       {
         "slug": "dvcignore",
@@ -224,6 +208,10 @@
         }
       },
       {
+        "label": "freeze",
+        "slug": "freeze"
+      },
+      {
         "label": "gc",
         "slug": "gc"
       },
@@ -254,10 +242,6 @@
       {
         "label": "list",
         "slug": "list"
-      },
-      {
-        "label": "lock",
-        "slug": "lock"
       },
       {
         "label": "metrics",
@@ -316,6 +300,10 @@
           {
             "label": "plots diff",
             "slug": "diff"
+          },
+          {
+            "label": "plots modify",
+            "slug": "modify"
           }
         ]
       },
@@ -379,8 +367,8 @@
         "slug": "status"
       },
       {
-        "label": "unlock",
-        "slug": "unlock"
+        "label": "unfreeze",
+        "slug": "unfreeze"
       },
       {
         "label": "unprotect",
@@ -413,23 +401,6 @@
         "slug": "read",
         "label": "read()"
       }
-    ]
-  },
-  {
-    "slug": "understanding-dvc",
-    "label": "Understanding DVC",
-    "source": false,
-    "children": [
-      "collaboration-issues",
-      "existing-tools",
-      {
-        "label": "What is DVC?",
-        "slug": "what-is-dvc"
-      },
-      "core-features",
-      "how-it-works",
-      "related-technologies",
-      "resources"
     ]
   },
   {

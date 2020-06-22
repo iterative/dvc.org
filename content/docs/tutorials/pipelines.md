@@ -29,7 +29,7 @@ and reproducible way.
 > We have tested our tutorials and examples with Python 3. We don't recommend
 > using earlier versions.
 
-You'll need [Git](https://git-scm.com) to run the commands in this tutorial.
+You'll need [Git](https://git-scm.com/) to run the commands in this tutorial.
 Also, if DVC is not installed, please follow these [instructions](/doc/install)
 to do so.
 
@@ -50,13 +50,13 @@ $ git add code/
 $ git commit -m "Download and add code to new Git repo"
 ```
 
-> `dvc get` can use any <abbr>DVC repository</abbr> to find the appropriate
-> [remote storage](/doc/command-reference/remote) and download <abbr>data
-> artifacts</abbr> from it (analogous to `wget`, but for repositories). In this
-> case we use [dataset-registry](https://github.com/iterative/dataset-registry))
-> as the source repo. (Refer to
-> [Data Registries](/doc/use-cases/data-registries) for more info about this
-> setup.)
+> `dvc get` can download any <abbr>data artifact</abbr> tracked in a <abbr>DVC
+> repository</abbr>, using the appropriate
+> [remote storage](/doc/command-reference/remote). It's like `wget`, but for DVC
+> or Git repos. In this case we use our
+> [dataset registry](https://github.com/iterative/dataset-registry) repo as the
+> data source (refer to [Data Registries](/doc/use-cases/data-registries) for
+> more info.)
 
 Now let's install the requirements. But before we do that, we **strongly**
 recommend creating a
@@ -70,8 +70,9 @@ $ pip install -r code/requirements.txt
 ```
 
 Next, we will create a [pipeline](/doc/command-reference/pipeline) step-by-step,
-utilizing the same set of commands that are described in earlier
-[Get Started](/doc/tutorials/get-started) chapters.
+utilizing the same set of commands that are described in the
+[Data Pipelines](/doc/tutorials/get-started/data-pipelines) page of the _Get
+Started_.
 
 > Note that its possible to define more than one pipeline in each DVC project.
 > This will be determined by the interdependencies between DVC-files, mentioned
@@ -96,7 +97,7 @@ $ dvc add data/Posts.xml.zip
 ```
 
 When we run `dvc add` `Posts.xml.zip`, DVC creates a
-[DVC-file](/doc/user-guide/dvc-file-format).
+[DVC-file](/doc/user-guide/dvc-files-and-directories).
 
 <details>
 
@@ -104,12 +105,12 @@ When we run `dvc add` `Posts.xml.zip`, DVC creates a
 
 At DVC initialization, a new `.dvc/` directory is created for internal
 configuration and <abbr>cache</abbr>
-[files and directories](/doc/user-guide/dvc-files-and-directories) that are
-hidden from the user. This directory is automatically staged with `git add`, so
-it can be easily committed with Git.
+[files and directories](/doc/user-guide/dvc-files-and-directories#internal-directories-and-files)
+that are hidden from the user. This directory is automatically staged with
+`git add`, so it can be easily committed with Git.
 
 Note that the DVC-file created by `dvc add` has no dependencies, a.k.a. an
-_orphan_ [stage file](/doc/command-reference/run):
+_orphan stage_ (see `dvc add`):
 
 ```yaml
 md5: c183f094869ef359e87e68d2264b6cdd
@@ -367,7 +368,7 @@ Once that's done, check the AUC metric again for an improvement:
 
 ```dvc
 $ dvc metrics show -a
-working tree:
+workspace:
 	auc.metric: AUC: 0.648462
 master:
 	auc.metric: AUC: 0.587951

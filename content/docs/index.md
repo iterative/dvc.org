@@ -1,34 +1,26 @@
 # DVC Documentation
 
-Welcome! In here you may find all the guiding material and technical documents
-needed to learn about DVC: how to use it, how it works, and where to go for
-additional resources.
+Data Version Control, or DVC, is a data and ML experiments management tool that
+takes advantage of the existing engineering toolset that you're already familiar
+with (Git, CI/CD, etc.)
 
 <cards>
 
-<card href="/doc/tutorials/get-started" heading="Get Started">
+  <card href="/doc/tutorials/get-started" heading="Get Started">
+    A step-by-step introduction into basic DVC features
+  </card>
 
-A step-by-step introduction into basic DVC features
+  <card href="/doc/user-guide" heading="User Guide">
+    Study the detailed inner-workings of DVC in its user guide.
+  </card>
 
-</card>
+  <card href="/doc/use-cases" heading="Use Cases">
+    Non-exhaustive list of scenarios DVC can help with
+  </card>
 
-<card href="/doc/user-guide" heading="User Guide">
-
-Study the detailed inner-workings of DVC in its user guide.
-
-</card>
-
-<card href="/doc/use-cases" heading="Use Cases">
-
-Non-exhaustive list of scenarios DVC can help with
-
-</card>
-
-<card href="/doc/command-reference" heading="Command Reference">
-
-See all of DVC's commands.
-
-</card>
+  <card href="/doc/command-reference" heading="Command Reference">
+    See all of DVC's commands.
+  </card>
 
 </cards>
 

@@ -9,13 +9,15 @@ usage: dvc metrics show [-h] [-q | -v] [-a] [-T] [--all-commits] [-R]
                         [--show-json] [targets [targets ...]]
 
 positional arguments:
-  targets               Metric files (see -R) to show
+  targets               Limit command scope to these metric files.
+                        Using -R, directories to search metric files
+                        in can also be given.
 ```
 
 ## Description
 
 Finds and prints all metrics in the <abbr>project</abbr> by examining all of its
-[DVC-files](/doc/user-guide/dvc-file-format).
+[DVC-files](/doc/user-guide/dvc-files-and-directories).
 
 > This kind of metrics can be defined with the `-m` (`--metrics`) and `-M`
 > (`--metrics-no-cache`) options of `dvc run`.
@@ -61,8 +63,8 @@ compares them with a previous version.
 ## Examples
 
 > This example is based on the `evaluate.dvc` stage file of our
-> [Get Started](/doc/tutorials/get-started/metrics), where you can find the
-> actual source code.
+> [Get Started](/doc/tutorials/get-started/experiments#project-metrics), where
+> you can find the actual source code.
 
 The basic use case shows the values in the current workspace:
 
@@ -79,7 +81,7 @@ history use `--all-commits` option:
 
 ```dvc
 $ dvc metrics show --all-commits
-working tree:
+workspace:
         eval.json:
                 AUC: 0.66729
                 error: 0.16982
@@ -100,7 +102,7 @@ Metrics from different branches can be shown by `--all-branches` (`-a`) option:
 
 ```dvc
 $ dvc metrics show -a
-working tree:
+workspace:
         eval.json:
                 AUC: 0.66729
                 error: 0.16982
@@ -117,6 +119,7 @@ increase_bow:
                 TP: 521
 ```
 
-The [Compare Experiments](/doc/tutorials/get-started/compare-experiments)
+The
+[Compare Experiments](/doc/tutorials/get-started/experiments#compare-experiments)
 chapter of our _Get Started_ covers the `-a` option to collect and print a
 metric file value across all Git branches.
