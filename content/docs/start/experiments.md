@@ -157,9 +157,9 @@ train:
 
 ## Tuning and running experiments
 
-We are definitely not happy with the `AUC` value, we got so far! Let's now tune
-and run the new experiment. Edit the `params.yaml` file to use bigrams and
-increase number of features:
+We are definitely not happy with the `AUC` value we got so far (`0.573`)! Let's
+now tune and run the new experiment. Edit the `params.yaml` file to use bigrams
+and increase the number of features:
 
 ```diff
  featurize:
@@ -169,25 +169,25 @@ increase number of features:
 +  ngrams: 2
 ```
 
-And the beauty of the `dvc.yaml` file is that all you need to do now is to run:
+And the beauty of `dvc.yaml` is that all you need to do now is to run:
 
 ```dvc
 $ dvc repro
 ```
 
-It'll analyze changes, will analyze existing cache of previous runs and will run
-only commands that are needed to get the new result (model, metrics, plots).
+It'll analyze the changes, use existing cache of previous runs, and execute only
+the commands that are needed to get the new results (model, metrics, plots).
 
-The same logic applies to other possible experiment adjustments - edit source
-code, edit or update dataset - you do the changes, run `dvc repro` and it runs
-what needs to be run.
+The same logic applies to other possible experiment adjustments — edit source
+code, update datasets — you do the changes, use `dvc repro`, and DVC runs what
+needs to be run.
 
 ## Comparing experiments
 
-Finally, we are now ready to compare experiments. DVC has a few commands to see
-metrics and parameter changes, visualize plots for one or more experiments.
-Let's compare the last "bigrams" run with the last committed "baseline"
-iteration:
+Finally, we are now ready to compare results. DVC has a few commands to see
+metrics and parameter changes, and to visualize plots, for one or more
+experiments. Let's compare the current "bigrams" run with the last committed
+"baseline" iteration:
 
 ```dvc
 $ dvc params diff
@@ -196,8 +196,10 @@ params.yaml  featurize.max_features  500    1500
 params.yaml  featurize.ngrams        1      2
 ```
 
-`dvc params diff` can show how params differ in the workspace vs the last
-commit. `dvc metrics diff` does the same for metrics:
+`dvc params diff` can show how params in the workspace differ vs. the last
+commit.
+
+`dvc metrics diff` does the same for metrics:
 
 ```dvc
 $ dvc metrics diff
@@ -214,6 +216,7 @@ file:///Users/dvc/example-get-started/plots.html
 
 ![](/img/plots_roc_get_started.svg)
 
-All these commands also accept Git revisions to compare - tags, commits, branch
-names and together provide a powerful mechanism to navigate your experiments to
-see the history, to pick the best, etc.
+All these commands also accept
+[Git revisions](https://git-scm.com/docs/gitrevisions) (commits, tags, branch
+names) to compare. This is a powerful mechanism for navigating experiments to
+see the history, to pick the best ones, etc.
