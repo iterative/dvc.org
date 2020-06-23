@@ -44,51 +44,50 @@ First, let's create a simple DVC-file:
 ```dvc
 $ echo foo > foo
 $ dvc add foo
-Saving information ...
+Adding ...
 
-$ dvc run -d foo -o bar cp foo bar
-Running command:
+$ dvc run -d foo -o bar -n make_copy cp foo bar
+Running stage 'make_copy' with command:
   cp foo bar
 ...
 ```
 
-Then, let's change the file `foo` that the stage described in `bar.dvc` depends
-on:
+Then, let's change the file `foo` that the stage `make_copy` depends on:
 
 ```dvc
 $ rm foo
 $ echo foo1 > foo
 $ dvc status
 
-bar.dvc
-        deps
-                changed:  foo
-foo.dvc
-        outs
-                changed:  foo
+make_copy:
+	changed deps:
+		modified:           foo
+foo.dvc:
+	changed outs:
+		modified:           foo
 ```
 
-Now, let's freeze the `bar` stage:
+Now, let's freeze the `make_copy` stage:
 
 ```dvc
-$ dvc freeze bar.dvc
+$ dvc freeze make_copy
 $ dvc status
 
-  foo.dvc
-          outs
-                  changed:  foo
+foo.dvc:
+	changed outs:
+		modified:           foo
 ```
 
 Run `dvc unfreeze` to unfreeze it back:
 
 ```dvc
-$ dvc unfreeze bar.dvc
+$ dvc unfreeze make_copy
 $ dvc status
 
-  bar.dvc
-          deps
-                  changed:  foo
-  foo.dvc
-          outs
-                  changed:  foo
+make_copy:
+	changed deps:
+		modified:           foo
+foo.dvc:
+	changed outs:
+		modified:           foo
 ```
