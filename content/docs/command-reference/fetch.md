@@ -7,7 +7,9 @@ Get tracked files or directories from
 
 ```usage
 usage: dvc fetch [-h] [-q | -v] [-j <number>]
-                 [-r <name>] [-a] [-T] [-d] [-R] [--all-commits]
+                 [-r <name>] [-a] [-T]
+                 [--all-commits] [-d] [-R]
+                 [--run-cache]
                  [targets [targets ...]]
 
 positional arguments:
@@ -76,6 +78,9 @@ or `-T` options are used).
 - `-r <name>`, `--remote <name>` - name of the
   [remote storage](/doc/command-reference/remote) to fetch from (see
   `dvc remote list`).
+
+- `--run-cache` - downloads all available history of stage runs from the remote
+  repository.
 
 - `-d`, `--with-deps` - determines files to download by tracking dependencies to
   the `targets`. If none are provided, this option is ignored. By traversing all

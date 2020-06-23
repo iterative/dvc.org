@@ -95,6 +95,9 @@ reflinks or hardlinks to put it in the workspace without copying. See
   [remote storage](/doc/command-reference/remote) to pull from (see
   `dvc remote list`).
 
+- `--run-cache` - downloads all available history of stage runs from the remote
+  repository.
+
 - `-j <number>`, `--jobs <number>` - number of threads to run simultaneously to
   handle the downloading of files from the remote. The default value is
   `4 * cpu_count()`. For SSH remotes, the default is just `4`. Using more jobs
