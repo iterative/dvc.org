@@ -70,7 +70,8 @@ into plots file `prc.json`:
 {
   "prc": [
     { "precision": 0.021473008227975116, "recall": 1.0, "threshold": 0.0 },
-    ...{ "precision": 1.0, "recall": 0.009345794392523364, "threshold": 0.64 }
+    ...
+    { "precision": 1.0, "recall": 0.009345794392523364, "threshold": 0.64 }
   ]
 }
 ```
