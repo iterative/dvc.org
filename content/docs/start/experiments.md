@@ -23,7 +23,7 @@ $ dvc run -n evaluate \
 
 <details>
 
-### 💡 Expand to see what happens under the hood
+### 💡 Expand to see what happens under the hood.
 
 DVC generates a new stage in the `dvc.yaml` file:
 
@@ -79,43 +79,27 @@ into plots file `prc.json`:
 > structure of a metrics or plots file - it's pretty much user and case defined.
 > Please refer to `dvc metrics` and `dvc plots` for more details.
 
-Let's save this experiment (so we can compare it later):
+Let's save this experiment, so we can compare it later:
 
 ```dvc
 $ git add scores.json prc.json
 $ git commit -a -m "Create evaluation stage"
 ```
 
-So far we've managed to capture metrics from an experiment. Later we we will see
-how these and other can be used to compare and visualize different experiment
-iterations.
-
-For now, let's see how can we capture another important piece of information
-that will be useful to compare experiments: experiment parameters.
+Later we we will see how these and other can be used to compare and visualize
+different experiment iterations. For now, let's see how can we capture another
+important piece of information that will be useful to compare experiments:
+parameters.
 
 ## Defining parameters
 
-It's pretty common for data processing pipelines to use a separate YAML or JSON
-config file that defines adjustable parameters you use to train a model, do
-pre-processing, etc. DVC provides a mechanism for a stage to depend on values
-from such a config file. That's how stage is defined in the `dvc.yaml` file:
+It's pretty common for data science pipelines to include configuration files
+that defines adjustable parameters to train a model, do pre-processing, etc. DVC
+provides a mechanism for stages to depend on the values of specific sections of
+such a config file (YAML or JSON formats are supported).
 
-<details>
-
-### 💡 Expand to recall how it was generated
-
-As a reminder, the `featurize` stage was created with this command. No need to
-run it again, but pay more attention to the `-p` option this time:
-
-```dvc
-$ dvc run -n featurize \
-          -p featurize.max_features,featurize.ngrams \
-          -d src/featurization.py -d data/prepared \
-          -o data/features \
-          python src/featurization.py data/prepared data/features
-```
-
-</details>
+Luckily, we should already have a stage with
+[parameters](/doc/command-reference/params) in `dvc.yaml`:
 
 ```yaml
 featurize:
@@ -130,12 +114,32 @@ featurize:
     - data/features
 ```
 
-`params` section (and the corresponding `-p` `dvc run` option) is an example of
-the [parameters](/doc/command-reference/params) dependency. By default DVC reads
-those values (`featurize.max_features` and `featurize.ngrams`) from the
-`params.yaml`. But as in the case with metrics and plots files, file name and
-structure are user and case defined for these configuration files. This is how
-`params.yaml` file looks like in our case:
+<details>
+
+### 💡 Expand to recall how it was generated.
+
+The `featurize` stage
+[was created](/doc/start/data-pipelines#dependency-graphs-dags) with this
+`dvc run` command. Notice the argument sent to the `-p` option (short for
+`--params`):
+
+```dvc
+$ dvc run -n featurize \
+          -p featurize.max_features,featurize.ngrams \
+          -d src/featurization.py -d data/prepared \
+          -o data/features \
+          python src/featurization.py data/prepared data/features
+```
+
+</details>
+
+The `params` section defines the [parameter](/doc/command-reference/params)
+dependencies of the `featurize` stage. By default DVC reads those values
+(`featurize.max_features` and `featurize.ngrams`) from a `params.yaml` file. But
+as with metrics and plots, parameter file names and structure can also be user
+and case defined.
+
+This is how our `params.yaml` file looks like:
 
 ```yaml
 prepare:
