@@ -18,7 +18,7 @@ data input and output. Let's transform a Python script into a
 
 <details>
 
-### ⚙️ Expand to download example code
+### ⚙️ Expand to download example code.
 
 Get the sample code like this:
 
@@ -60,7 +60,7 @@ generated. It includes information about the command we ran
 
 <details>
 
-### 💡 Expand to see what happens under the hood
+### 💡 Expand to see what happens under the hood.
 
 The command options used above mean the following:
 
@@ -152,7 +152,7 @@ The `dvc.yaml` file is updated automatically and should include two stages now.
 
 <details>
 
-### 💡 Expand to see what happens under the hood
+### 💡 Expand to see what happens under the hood.
 
 The changes to the `dvc.yaml` should look like this:
 
@@ -184,7 +184,7 @@ stages:
 
 <details>
 
-### ⚙️ Expand to add more stages
+### ⚙️ Expand to add more stages.
 
 Let's add the training itself. Nothing new this time, the same `dvc run` command
 with the same set of options:
@@ -215,7 +215,7 @@ $ dvc repro
 
 <details>
 
-### ⚙️ Expand to make some fun with it
+### ⚙️ Expand to make some fun with it.
 
 Let's try to play a little bit with it. First, let's try to change one of the
 parameters for the training stage:
@@ -253,7 +253,7 @@ same set of inputs (parameters + data) and reused it.
 
 <details>
 
-### 💡 Expand to see what happens under the hood
+### 💡 Expand to see what happens under the hood.
 
 `dvc repro` relies on the DAG definition that it reads from `dvc.yaml`, and uses
 `dvc.lock` to determine what exactly needs to be run.

@@ -5,7 +5,7 @@ running `dvc init` inside a Git project:
 
 <details>
 
-### ⚙️ Expand to prepare the project
+### ⚙️ Expand to prepare the project.
 
 In expandable sections that start with the ⚙️ emoji, we'll be providing more
 information for those trying to run the commands. It's up to you to pick the

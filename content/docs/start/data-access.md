@@ -67,7 +67,7 @@ changes from the data source later, using `dvc update`.
 
 <details>
 
-#### 💡 Expand to see what happens under the hood
+#### 💡 Expand to see what happens under the hood.
 
 > Note that the
 > [dataset registry](https://github.com/iterative/dataset-registry) repository
