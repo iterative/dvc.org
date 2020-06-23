@@ -68,7 +68,7 @@ variable. For example, the following command will replace the default pager with
 [`more`](<https://en.wikipedia.org/wiki/More_(command)>), for a single run:
 
 ```dvc
-$ DVC_PAGER=more dvc dag my-pipeline.dvc
+$ DVC_PAGER=more dvc dag
 ```
 
 For a persistent change, define `DVC_PAGER` in the shell configuration. For
@@ -83,44 +83,26 @@ export DVC_PAGER=more
 Visualize DVC pipeline:
 
 ```dvc
-$ dvc dag eval.txt.dvc
-          .------------------------.
-          | data/Posts.xml.zip.dvc |
-          `------------------------'
-                      *
-                      *
-                      *
-              .---------------.
-              | Posts.xml.dvc |
-              `---------------'
-                      *
-                      *
-                      *
-              .---------------.
-              | Posts.tsv.dvc |
-              `---------------'
-                      *
-                      *
-                      *
-            .---------------------.
-            | Posts-train.tsv.dvc |
-            `---------------------'
-                      *
-                      *
-                      *
-            .--------------------.
-            | matrix-train.p.dvc |
-            `--------------------'
-              ***             ***
-            **                   ***
-          **                        **
-.-------------.                       **
-| model.p.dvc |                     **
-`-------------'                  ***
-              ***             ***
-                **         **
-                  **     **
-              .--------------.
-              | eval.txt.dvc |
-              `--------------'
+$ dvc dag
+         +---------+
+         | prepare |
+         +---------+
+              *
+              *
+              *
+        +-----------+
+        | featurize |
+        +-----------+
+         **        **
+       **            *
+      *               **
++-------+               *
+| train |             **
++-------+            *
+         **        **
+           **    **
+             *  *
+        +----------+
+        | evaluate |
+        +----------+
 ```
