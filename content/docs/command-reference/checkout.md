@@ -65,8 +65,8 @@ progress made by the checkout.
 
 There are two methods to restore a file missing from the cache, depending on the
 situation. In some cases a pipeline must be reproduced (using `dvc repro`) to
-regenerate its outputs (see also `dvc pipeline`). In other cases the cache can
-be pulled from remote storage using `dvc pull`.
+regenerate its outputs (see also `dvc dag`). In other cases the cache can be
+pulled from remote storage using `dvc pull`.
 
 ## Options
 

@@ -129,8 +129,8 @@ only execute the final stage.
   The stage is only executed if the user types "y".
 
 - `-p`, `--pipeline` - reproduce the entire pipelines that the stage file
-  `targets` belong to. Use `dvc pipeline show <target>.dvc` to show the parent
-  pipeline of a target stage.
+  `targets` belong to. Use `dvc dag <target>` to show the parent pipeline of a
+  target stage.
 
 - `-P`, `--all-pipelines` - reproduce all pipelines, for all the stage files
   present in `DVC` repository.

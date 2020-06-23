@@ -61,9 +61,8 @@ sub-projects to mitigate the issues of initializing in the Git repository root:
   download files and directories, to reproduce <abbr>pipelines</abbr>, etc. It
   can be expensive in the large repositories with a lot of projects.
 
-- Not enough isolation/granularity - commands like `dvc metrics diff`,
-  `dvc pipeline show` and others by default dump all the metrics, all the
-  pipelines, etc.
+- Not enough isolation/granularity - commands like `dvc metrics diff`, `dvc dag`
+  and others by default dump all the metrics, all the pipelines, etc.
 
 #### How does it affect DVC commands?
 
