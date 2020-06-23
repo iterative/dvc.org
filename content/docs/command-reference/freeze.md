@@ -44,8 +44,6 @@ First, let's create a simple DVC-file:
 ```dvc
 $ echo foo > foo
 $ dvc add foo
-Adding ...
-
 $ dvc run -d foo -o bar -n make_copy cp foo bar
 Running stage 'make_copy' with command:
   cp foo bar
