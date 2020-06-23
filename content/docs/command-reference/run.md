@@ -197,9 +197,6 @@ $ dvc run -n my_stage './my_script.sh $MYENVVAR'
   up to the user to save and version control it. See also the difference between
   `-o` and `-O`.
 
-- `--external` - allow outputs that are outside of the DVC repository. See
-  [Managing External Data](/doc/user-guide/managing-external-data).
-
 - `-w <path>`, `--wdir <path>` - specifies a working directory for the `command`
   to run in (uses the `wdir` field in `dvc.yaml`). Dependency and output files
   (including metrics and plots) should be specified relative to this directory.
