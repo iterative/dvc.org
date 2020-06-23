@@ -1,17 +1,28 @@
 ---
-title: Optimization Improvements in DVC 1.0
+title: Remote Optimization Improvements in DVC 1.0
 date: 2020-06-29
 description: |
   An overview of how data synchronization to and from remote storage is optimized in DVC 1.0.
+picture: ''
 author: peter_rowlands
 ---
 
-One of the key features provided by DVC is the ability to efficiently sync
-versioned datasets between a user's local machine and
-[remote storage](https://dvc.org/doc/command-reference/remote), and version 1.0
-includes several performance optimizations related to synchronizing data with
-remotes. This post provides an overview of some of the ways in which remote
-performance has been optimized in DVC.
+One of the key features provided by DVC is the ability to efficiently
+synchronize versioned datasets between a user's local machine and
+[remote storage](https://dvc.org/doc/command-reference/remote), and our users
+have frequently shown the need for us to optimize this process wherever
+possible.
+
+![](/uploads/images/2020-06-29/optimization_screenshot.png '=600')
+
+DVC 1.0 includes several performance improvements with regard to how DVC
+synchronizes data to and from remotes. In particular, for this release we
+focused on optimizing performance in situations where users with must regularly
+`dvc push` (relatively) small modifications made to large datasets versioned
+with DVC. This post provides an overview of some of the ways in which remote
+performance has been optimized in DVC 1.0.
+
+## Overview
 
 In order to sync data between a local machine and remote storage, we must first
 do the following (equivalent to the `dvc status` command with option `-c`
@@ -109,16 +120,16 @@ deprecated) `no_traverse` remote configuration option. However, it is possible
 to automatically determine which method would be optimal, as long as the sync
 tool can estimate the approximate total size of the remote.
 
-Consider a case where a dataset being synced contains 100 files. Checking if
-each file exists in the remote individually would take 100 API calls. If we know
-that the API returns 1000 files per page, we can say that if the remote contains
-less than `1000 * 100 = 100,000` files, fetching the full remote listing will be
-faster than checking each file individually, since it will take less than 100
-API calls to complete. If the remote contains more files than this `100,000`
-threshold, it will be faster to check our 100 files individually. _(In terms of
-real world performance, there are other considerations that apply, such as
-different API calls taking different amounts of time to complete, and the amount
-of time it takes to run list comparison operations.)_
+Consider a case where a dataset being synchronized contains 100 files. Checking
+if each file exists in the remote individually would take 100 API calls. If we
+know that the API returns 1000 files per page, we can say that if the remote
+contains less than `1000 * 100 = 100,000` files, fetching the full remote
+listing will be faster than checking each file individually, since it will take
+less than 100 API calls to complete. If the remote contains more files than this
+`100,000` threshold, it will be faster to check our 100 files individually. _(In
+terms of real world performance, there are other considerations that apply, such
+as different API calls taking different amounts of time to complete, and the
+amount of time it takes to run list comparison operations.)_
 
 In DVC 1.0, we take advantage of the DVC remote structure to estimate the remote
 size, and automatically determine which method to use when running data sync
@@ -167,3 +178,16 @@ reduced.
 _Note that this optimization only applies to DVC versioned directories.
 Individually versioned files (including those added with `dvc add -R`) are not
 indexed in DVC 1.0)_
+
+## Conclusion
+
+DVC performance is an important issue that affects all of our users. We hope
+that these new optimizations will provide an improved user experience in DVC
+1.0, and look forward to working on further
+[performance optimizations](https://github.com/iterative/dvc/labels/performance)
+in the future - across all areas in DVC, not just remotes.
+
+As always, if you have any questions, comments or suggestions regarding DVC
+performance, please feel free to connect with the DVC community on
+[Discourse](https://discuss.dvc.org/), [Discord](https://dvc.org/chat) and
+[GitHub](https://github.com/iterative/dvc).
