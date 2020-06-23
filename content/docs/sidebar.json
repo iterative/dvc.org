@@ -27,61 +27,17 @@
     ]
   },
   {
-    "slug": "tutorials",
-    "source": "tutorials/index.md",
+    "slug": "start",
+    "label": "Get Started",
+    "source": "start/index.md",
+    "tutorials": {
+      "katacoda": "https://katacoda.com/dvc/courses/get-started"
+    },
     "children": [
-      {
-        "slug": "get-started",
-        "source": "get-started/index.md",
-        "tutorials": {
-          "katacoda": "https://katacoda.com/dvc/courses/get-started/initialize"
-        },
-        "children": [
-          "data-versioning",
-          "data-access",
-          "data-pipelines",
-          "experiments"
-        ]
-      },
-      {
-        "slug": "interactive",
-        "label": "Interactive Tutorials"
-      },
-      {
-        "slug": "versioning",
-        "label": "Data Versioning",
-        "tutorials": {
-          "katacoda": "https://katacoda.com/dvc/courses/tutorials/versioning"
-        }
-      },
-      {
-        "slug": "pipelines",
-        "label": "Stages and Pipelines",
-        "tutorials": {
-          "katacoda": "https://katacoda.com/dvc/courses/tutorials/pipelines"
-        }
-      },
-      {
-        "slug": "deep",
-        "label": "Deep Dive Tutorial",
-        "source": "deep/index.md",
-        "tutorials": {
-          "katacoda": "https://katacoda.com/dvc/courses/tutorials/pipelines"
-        },
-        "children": [
-          "preparation",
-          {
-            "label": "Define ML Pipeline",
-            "slug": "define-ml-pipeline"
-          },
-          "reproducibility",
-          "sharing-data"
-        ]
-      },
-      {
-        "slug": "community",
-        "label": "Community Tutorials"
-      }
+      "data-versioning",
+      "data-access",
+      "data-pipelines",
+      "experiments"
     ]
   },
   {
@@ -90,7 +46,9 @@
     "children": [
       {
         "label": "Versioning Data & Model Files",
-        "slug": "versioning-data-and-model-files"
+        "slug": "versioning-data-and-model-files",
+        "source": "versioning-data-and-model-files/index.md",
+        "children": ["tutorial"]
       },
       {
         "label": "Sharing Data & Model Files",
@@ -104,6 +62,16 @@
     "slug": "user-guide",
     "source": "user-guide/index.md",
     "children": [
+      {
+        "slug": "what-is-dvc",
+        "label": "What is DVC?",
+        "source": "what-is-dvc/index.md",
+        "children": [
+          "collaboration-issues",
+          "core-features",
+          "related-technologies"
+        ]
+      },
       {
         "label": "DVC Files and Directories",
         "slug": "dvc-files-and-directories"
@@ -396,23 +364,6 @@
         "slug": "read",
         "label": "read()"
       }
-    ]
-  },
-  {
-    "slug": "understanding-dvc",
-    "label": "Understanding DVC",
-    "source": false,
-    "children": [
-      "collaboration-issues",
-      "existing-tools",
-      {
-        "label": "What is DVC?",
-        "slug": "what-is-dvc"
-      },
-      "core-features",
-      "how-it-works",
-      "related-technologies",
-      "resources"
     ]
   },
   {

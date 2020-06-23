@@ -106,13 +106,13 @@ $ dvc diff
 ### Click and expand to setup the example
 
 Let's checkout the
-[3-add-file](https://github.com/iterative/example-get-started/releases/tag/3-add-file)
+[2-track-data](https://github.com/iterative/example-get-started/releases/tag/2-track-data)
 tag, corresponding to the
 [tracking data](/doc/tutorials/get-started/data-versioning#tracking-data) _Get
 Started_ chapter, right after we added `data.xml` file with DVC:
 
 ```dvc
-$ git checkout 3-add-file
+$ git checkout 2-track-data
 $ dvc pull
 ```
 
@@ -153,13 +153,12 @@ $ dvc checkout
 ```dvc
 $ dvc diff baseline-experiment bigrams-experiment
 Modified:
-    auc.metric
     data/features/
-    data/features/test.pkl
-    data/features/train.pkl
     model.pkl
+    prc.json
+    scores.json
 
-files summary: 0 added, 0 deleted, 4 modified
+files summary: 0 added, 0 deleted, 3 modified
 ```
 
 The output from this command confirms that there's a difference in 4 files

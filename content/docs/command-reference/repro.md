@@ -28,6 +28,11 @@ can then be executed in the correct order, reproducing pipeline results.
 > Pipeline stages are typically defined using the `dvc run` command, while
 > initial data dependencies can be registered by the `dvc add` command.
 
+This command is similar to [Make](https://www.gnu.org/software/make/) in
+software build automation, but DVC captures build requirements
+([dependencies and outputs](/doc/command-reference/run#dependencies-and-outputs))
+and caches relevant <abbr>data artifacts</abbr> along the way.
+
 💡 For convenience, a Git hook is available to remind you to `dvc repro` when
 needed after a `git commit`. See `dvc install` for more details.
 
@@ -43,8 +48,11 @@ files, intermediate or final results.
 
 By default, this command recursively searches in pipeline stages, starting from
 the `targets`, to determine which ones have changed. Then it executes the
-corresponding commands.<br/> Note that DVC removes cached <abbr>outputs</abbr>
-before running the stages that produce them.
+corresponding commands. <abbr>Outputs</abbr> are deleted from the
+<abbr>workspace</abbr> before executing the stages command that produces them.
+
+> Note that stages without dependencies are considered _always changed_, so
+> `dvc repro` always executes them.
 
 It saves all the data files, intermediate or final results into the <abbr>DVC
 cache</abbr> (unless the `--no-commit` option is used), and updates the hash

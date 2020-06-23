@@ -6,8 +6,8 @@ Upload tracked files or directories to
 ## Synopsis
 
 ```usage
-usage: dvc push [-h] [-q | -v] [-j <number>]
-                [-r <name>] [-a] [-T] [-d] [-R] [--all-commits]
+usage: dvc push [-h] [-q | -v] [-j <number>] [-r <name>] [-a] [-T]
+                [--all-commits] [-d] [-R] [--run-cache]
                 [targets [targets ...]]
 
 positional arguments:
@@ -101,6 +101,9 @@ the target [stage files](/doc/command-reference/run), through the corresponding
 - `-r <name>`, `--remote <name>` - name of the
   [remote storage](/doc/command-reference/remote) to push from (see
   `dvc remote list`).
+
+- `--run-cache` - uploads all available history of stage runs to the remote
+  repository.
 
 - `-j <number>`, `--jobs <number>` - number of threads to run simultaneously to
   handle the uploading of files from the remote. The default value is

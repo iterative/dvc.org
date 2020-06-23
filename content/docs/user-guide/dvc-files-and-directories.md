@@ -49,6 +49,8 @@ meta:
 - `deps`: List of <abbr>dependency</abbr> entries for this stage, only present
   when `dvc import` and `dvc import-url` are used. Typically there is only one
   (but several can be added manually).
+- `wdir` (optional): Working directory for the stage command to run in. If this
+  field is not present explicitly, its value defaults to the file's location.
 - `meta` (optional): Arbitrary metadata can be added manually with this field.
   Any YAML contents is supported. `meta` contents are ignored by DVC, but they
   can be meaningful for user processes that read `.dvc` files.
@@ -56,14 +58,13 @@ meta:
 An _output entry_ can consist of these fields:
 
 - `md5`: Hash value for the file or directory being tracked with DVC
-- `path`: Path to the file or directory, relative to the location of the `.dvc`
-  file
+- `path`: Path to the file or directory (relative to `wdir`)
 - `cache`: Whether or not DVC should cache the file or directory. `true` by
   default
 
 A _dependency entry_ consists of a these possible fields:
 
-- `path`: Path to the dependency, relative to the `wdir` path (always present)
+- `path`: Path to the dependency (relative to `wdir`)
 - `md5`: MD5 hash for the dependency (most [stages](/doc/command-reference/run))
 - `etag`: Strong ETag response header (only HTTP <abbr>external
   dependencies</abbr> created with `dvc import-url`)
@@ -78,10 +79,10 @@ A _dependency entry_ consists of a these possible fields:
   - `rev_lock`: Git commit hash of the external <abbr>DVC repository</abbr> at
     the time of importing or updating the dependency (with `dvc update`)
 
-Note that comments can be added to `.dvc` files and `dvc.yaml` using the
-`# comment` syntax. `meta` fields and `#` comments are preserved among
-executions of the `dvc repro` and `dvc commit` commands, but not when a `.dvc`
-file is overwritten by `dvc add`,`dvc import`, or `dvc import-url`.
+Note that comments can be added to `.dvc` files using the `# comment` syntax.
+`meta` fields and `#` comments are preserved among executions of the `dvc repro`
+and `dvc commit` commands, but not when a `.dvc` file is overwritten by
+`dvc add`,`dvc import`, or `dvc import-url`.
 
 ## dvc.yaml file
 
@@ -121,14 +122,18 @@ the possible following fields:
 
 - `cmd` (always present): Executable command defined in this stage
 - `deps`: List of <abbr>dependency</abbr> file or directory paths of this stage
+  (relative to `wdir`)
 - `params`: List of [parameter dependencies](/doc/command-reference/params).
   These are key paths referring to a YAML or JSON file (`params.yaml` by
   default).
 - `outs`: List of <abbr>output</abbr> file or directory paths of this stage
+  (relative to `wdir`)
 - `metrics`: List of [metric files](/doc/command-reference/metrics)
 - `plots`: List of [plot metrics](/doc/command-reference/plots) and optionally,
   their default configuration (subfields matching the options of
   `dvc plots modify`)
+- `wdir`: Working directory for the stage command to run in. If this field is
+  not present explicitly, its value defaults to the file's location.
 - `frozen`: Whether or not this stage is frozen from reproduction
 - `always_changed`: Whether or not this stage is considered as changed by
   commands such as `dvc status` and `dvc repro`. `false` by default

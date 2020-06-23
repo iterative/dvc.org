@@ -87,8 +87,7 @@ describe('SidebarMenu/helper', () => {
         {
           slug: 'item-name',
           tutorials: {
-            katacoda:
-              'https://www.katacoda.com/dvc/courses/get-started/initialize'
+            katacoda: 'https://www.katacoda.com/dvc/courses/get-started'
           }
         }
       ]
@@ -98,8 +97,7 @@ describe('SidebarMenu/helper', () => {
           path: '/doc/item-name',
           source: '/docs/item-name.md',
           tutorials: {
-            katacoda:
-              'https://www.katacoda.com/dvc/courses/get-started/initialize'
+            katacoda: 'https://www.katacoda.com/dvc/courses/get-started'
           },
           prev: undefined,
           next: undefined
