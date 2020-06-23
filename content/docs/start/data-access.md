@@ -57,7 +57,7 @@ file that can be saved in the project:
 
 ```dvc
 $ dvc import https://github.com/iterative/dataset-registry \
-             get-started/data/data.xml -o data/data.xml
+             get-started/data.xml -o data/data.xml
 ```
 
 This is similar to `dvc get` + `dvc add`, but the resulting
@@ -103,7 +103,7 @@ directly from within an application at runtime. For example:
 import dvc.api
 
 with dvc.api.open(
-        'get-started/data/data.xml',
+        'get-started/data.xml',
         repo='https://github.com/iterative/dataset-registry'
         ) as fd:
     # ... fd is a file descriptor that can be processed normally.
