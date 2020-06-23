@@ -45,9 +45,6 @@ First, let's create a simple DVC-file:
 $ echo foo > foo
 $ dvc add foo
 $ dvc run -d foo -o bar -n make_copy cp foo bar
-Running stage 'make_copy' with command:
-  cp foo bar
-...
 ```
 
 Then, let's change the file `foo` that the stage `make_copy` depends on:
