@@ -39,13 +39,15 @@ using `dvc repro` on a pipeline that needs their outputs.
 
 ## Examples
 
-First, let's create a simple DVC-file:
+First, let's create a dummy stage that copies `foo` to `bar`:
 
 ```dvc
 $ echo foo > foo
 $ dvc add foo
-$ dvc run -d foo -o bar -n make_copy cp foo bar
+$ dvc run -n make_copy -d foo -o bar cp foo bar
 ```
+
+> See `dvc run` for more details.
 
 Then, let's change the file `foo` that the stage `make_copy` depends on:
 
@@ -53,7 +55,6 @@ Then, let's change the file `foo` that the stage `make_copy` depends on:
 $ rm foo
 $ echo foo1 > foo
 $ dvc status
-
 make_copy:
 	changed deps:
 		modified:           foo
@@ -62,23 +63,24 @@ foo.dvc:
 		modified:           foo
 ```
 
-Now, let's freeze the `make_copy` stage:
+`dvc status` notices that `foo` has changed. Let's now freeze the `make_copy`
+stage and see what's the project status after that:
 
 ```dvc
 $ dvc freeze make_copy
 $ dvc status
-
 foo.dvc:
 	changed outs:
 		modified:           foo
 ```
 
-Run `dvc unfreeze` to unfreeze it back:
+DVC notices that `foo` changed due to the `foo.dvc` file that tracks this file
+(as `outs`), but the `make_copy` stage no longer records the change among it's
+`deps`. Run `dvc unfreeze` to go back to the regular project status:
 
 ```dvc
 $ dvc unfreeze make_copy
 $ dvc status
-
 make_copy:
 	changed deps:
 		modified:           foo
