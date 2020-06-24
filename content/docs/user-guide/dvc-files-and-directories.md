@@ -16,8 +16,8 @@ Additionally, there are a few special kind of files created by certain
   that form the pipeline(s) of a project, and their connections (_dependency
   graph_ or DAG).
 
-  These come with a matching [`dvc.lock` file](#dvclock-file) to record the
-  pipeline state.
+  These typically come with a matching [`dvc.lock` file](#dvclock-file) to
+  record the pipeline state.
 
 Both `.dvc` files and `dvc.yaml` use human-friendly YAML schemas, described
 below. We encourage you to get familiar with them so you may create, generate,
@@ -170,13 +170,12 @@ the possible following fields:
 
 ### dvc.lock file
 
-For every `dvc.yaml` file, a corresponding `dvc.lock` (YAML) file is created or
-updated by certain DVC commands (`dvc run`, `dvc repro`, `dvc commit`). It
-describes the latest contents of the files involved in the pipeline(s). It has
-several purposes:
+For every `dvc.yaml` file, a matching `dvc.lock` (YAML) file usually exists.
+It's created or updated by DVC commands such as `dvc run` and `dvc repro`.
+`dvc.lock` describes the latest pipeline state. It has several purposes:
 
-- Basic tracking of intermediate and final results of a pipeline (similar to
-  [`.dvc` files](#dvc-files))
+- Tracking of intermediate and final results of a pipeline (files and
+  directories) — similar to [`.dvc` files](#dvc-files)
 - Allow DVC to detect when stage definitions, or their dependencies have
   changed. Such conditions invalidate states, requiring their reproduction (see
   `dvc status`, `dvc repro`).
