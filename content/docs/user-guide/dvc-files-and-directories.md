@@ -175,9 +175,7 @@ It's created or updated by DVC commands such as `dvc run` and `dvc repro`.
 `dvc.lock` describes the latest pipeline state. It has several purposes:
 
 - Tracking of intermediate and final results of a pipeline — similar to
-  [`.dvc` files](#dvc-files). This is done with a mapping of file and directory
-  paths in the <abbr>project</abbr> to their locations (hash values) in the
-  <abbr>cache</abbr> or [remote storage](/doc/command-reference/remote).
+  [`.dvc` files](#dvc-files).
 - Allow DVC to detect when stage definitions, or their dependencies have
   changed. Such conditions invalidate states, requiring their reproduction (see
   `dvc status`, `dvc repro`).
@@ -213,15 +211,9 @@ Regular <abbr>dependencies</abbr> and all kinds of <abbr>outputs</abbr>
 (including [metrics](/doc/command-reference/metrics) and
 [plots](/doc/command-reference/plots) files) are also listed (per stage) in
 `dvc.lock`, but with an additional field to store the hash value of each file or
-directory tracked by DVC:
-
-- `md5` is the most common type of file hash, used for local file system
-  dependencies, as well as SSH <abbr>external dependencies</abbr>.
-- `etag` is used for HTTP, S3, Azure, and Google Cloud external dependencies.
-- `checksum` is only used for HDFS external dependencies.
-
-> Refer to [External Dependencies](/doc/user-guide/external-dependencies) for
-> more information.
+directory tracked by DVC: `md5` for local file system dependencies and SSH
+<abbr>external dependencies</abbr>, `etag` for HTTP, S3, Azure, and Google
+Cloud, and `checksum` for HDFS.
 
 [Parameter](/doc/command-reference/params#examples) key/value pairs are listed
 separately under `params`, grouped by parameters file.
