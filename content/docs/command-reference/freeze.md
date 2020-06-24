@@ -1,7 +1,7 @@
 # freeze
 
-Freeze a [stage](/doc/command-reference/run). Use `dvc unfreeze` to unfreeze the
-stage.
+Fix the status of one or more [stages](/doc/command-reference/run) to _not
+changed_ until `dvc unfreeze` is used on it.
 
 ## Synopsis
 
@@ -9,24 +9,24 @@ stage.
 usage: dvc freeze [-h] [-q | -v] targets [targets ...]
 
 positional arguments:
-  targets        stages to freeze.
+  targets        Stages or .dvc files to freeze
 ```
 
 ## Description
 
-`dvc freeze` causes any stage to be considered _not changed_ by `dvc status` and
-`dvc repro`. Stage reproduction will not regenerate <abbr>outputs</abbr> of
-frozen stages, even if some dependencies have changed, and even if `--force` is
-provided.
+`dvc freeze` causes the [stages](/doc/command-reference/run) indicated as
+`targets` to be considered _not changed_ by `dvc status` and `dvc repro`. Stage
+reproduction will not regenerate <abbr>outputs</abbr> of frozen stages, even if
+their <abbr>dependencies</abbr> have changed, and even if `--force` is used.
 
 Freezing a stage is useful to avoid syncing data from the top of its
 [pipeline](/doc/command-reference/pipeline), and keep iterating on the last
-(unfrozen) stages only.
+(non-frozen) stages only.
 
-Note that <abbr>import stages</abbr> are considered always frozen. Use
-`dvc update` to update the corresponding <abbr>data artifacts</abbr> from the
-external data source. [Unfreeze](/doc/command-reference/unfreeze) them before
-using `dvc repro` on a pipeline that needs their outputs.
+Note that <abbr>import stages</abbr> are frozen by default. Use `dvc update` to
+update the corresponding <abbr>data artifacts</abbr> from the external data
+source. [Unfreeze](/doc/command-reference/unfreeze) them before using
+`dvc repro` on a pipeline that needs their outputs.
 
 ## Options
 
