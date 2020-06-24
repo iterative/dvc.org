@@ -17,13 +17,13 @@ Additionally, there are a few special kind of files created by certain
   graph_ or DAG).
 
   These typically come with a matching [`dvc.lock` file](#dvclock-file) to
-  record the pipeline state.
+  record the pipeline state and track its <abbr>data artifacts</abbr>.
 
 Both `.dvc` files and `dvc.yaml` use human-friendly YAML schemas, described
 below. We encourage you to get familiar with them so you may create, generate,
 and edit them on your own.
 
-All these should be versioned with Git (for Git-enabled
+All these should be versioned with Git (in Git-enabled
 <abbr>repositories</abbr>).
 
 ## .dvc files
