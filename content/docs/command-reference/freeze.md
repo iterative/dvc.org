@@ -44,7 +44,7 @@ First, let's create a simple DVC-file:
 ```dvc
 $ echo foo > foo
 $ dvc add foo
-$ dvc run -d foo -o bar -n make_copy cp foo bar
+$ dvc run -n make_copy -d foo -o bar cp foo bar
 ```
 
 Then, let's change the file `foo` that the stage `make_copy` depends on:
@@ -77,12 +77,4 @@ Run `dvc unfreeze` to unfreeze it back:
 
 ```dvc
 $ dvc unfreeze make_copy
-$ dvc status
-
-make_copy:
-	changed deps:
-		modified:           foo
-foo.dvc:
-	changed outs:
-		modified:           foo
 ```
