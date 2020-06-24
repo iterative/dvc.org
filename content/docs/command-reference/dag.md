@@ -1,8 +1,7 @@
 # dag
 
-Show [stages](/doc/command-reference/run) in a pipeline that lead to the
-specified stage. By default it lists
-[DVC-files](/doc/user-guide/dvc-files-and-directories).
+Display connected [stages](/doc/command-reference/run) in the pipelines that
+contains them.
 
 ## Synopsis
 
@@ -10,8 +9,8 @@ specified stage. By default it lists
 usage: dvc dag [-h] [-q | -v] [--dot] [--full] [target]
 
 positional arguments:
-  targets         Stage or output to show pipeline for (optional)
-                  Finds all stages in the workspace by default.
+  target          Stage or output to show pipeline for (optional)
+                  Uses all stages in the workspace by default.
 ```
 
 ## Description
@@ -19,30 +18,31 @@ positional arguments:
 A data pipeline, in general, is a series of data processing
 [stages](/doc/command-reference/run) (for example console commands that take an
 input and produce an <abbr>output</abbr>). A pipeline may produce intermediate
-data, and has a final result. Machine learning (ML) pipelines typically start a
-with large raw datasets, include intermediate featurization and training stages,
-and produce a final model, as well as accuracy
-[metrics](/doc/command-reference/metrics).
+data, and has a final result.
+
+Machine learning (ML) pipelines typically start a with large raw datasets,
+include intermediate featurization and training stages, and produce a final
+model, as well as accuracy [metrics](/doc/command-reference/metrics).
 
 In DVC, pipeline stages and commands, their data I/O, interdependencies, and
-results (intermediate or final) are specified with `dvc add` and `dvc run`,
-among other commands. This allows DVC to restore one or more pipelines of stages
-interconnected by their dependencies and outputs later. (See `dvc repro`.)
+results (intermediate or final) are specified in `dvc.yaml`, which can be
+written manually or built using the helper command `dvc run`. This allows DVC to
+restore one or more pipelines later (see `dvc repro`).
 
 > DVC builds a dependency graph
 > ([DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph)) to do this.
 
-`dvc dag` displays the stages of a pipeline up to the target stage. If `target`
-is omitted, it will show the full project DAG.
+`dvc dag` command displays the stages of a pipeline up to the target stage. If
+`target` is omitted, it will show the full project DAG.
 
 ## Options
+
+- `--full` - show full DAG that the `target` stage belongs too, instead of
+  showing only its ancestors.
 
 - `--dot` - show DAG in
   [DOT](<https://en.wikipedia.org/wiki/DOT_(graph_description_language)>)
   format. It can be passed to third party visualization utilities.
-
-- `--full` - show full DAG that the `target` belongs too, instead of showing the
-  part that consists only of the target ancestors.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
