@@ -38,56 +38,38 @@ source. [Unfreeze](/doc/command-reference/unfreeze) them before using
 
 ## Examples
 
-First, let's create a simple DVC-file:
+First, let's create a dummy stage that copies `foo` to `bar`:
 
 ```dvc
 $ echo foo > foo
 $ dvc add foo
-Saving information ...
-
-$ dvc run -d foo -o bar cp foo bar
-Running command:
-  cp foo bar
-...
+$ dvc run -n make_copy -d foo -o bar cp foo bar
 ```
 
-Then, let's change the file `foo` that the stage described in `bar.dvc` depends
-on:
+> See `dvc run` for more details.
+
+Then, let's change the file `foo` that the stage `make_copy` depends on, and
+freeze stage as well, to see what's the project status after that:
 
 ```dvc
-$ rm foo
-$ echo foo1 > foo
+$ dvc freeze make_copy
 $ dvc status
-
-bar.dvc
-        deps
-                changed:  foo
-foo.dvc
-        outs
-                changed:  foo
+foo.dvc:
+	changed outs:
+		modified:           foo
 ```
 
-Now, let's freeze the `bar` stage:
+DVC notices that `foo` changed due to the `foo.dvc` file that tracks this file
+(as `outs`), but the `make_copy` stage doesn't records the change among it's
+dependencies. Run `dvc unfreeze` to get the regular/full project status:
 
 ```dvc
-$ dvc freeze bar.dvc
+$ dvc unfreeze make_copy
 $ dvc status
-
-  foo.dvc
-          outs
-                  changed:  foo
-```
-
-Run `dvc unfreeze` to unfreeze it back:
-
-```dvc
-$ dvc unfreeze bar.dvc
-$ dvc status
-
-  bar.dvc
-          deps
-                  changed:  foo
-  foo.dvc
-          outs
-                  changed:  foo
+make_copy:
+	changed deps:
+		modified:           foo
+foo.dvc:
+	changed outs:
+		modified:           foo
 ```

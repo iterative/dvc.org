@@ -53,7 +53,7 @@ Then, let's change the file `foo` that the stage `make_copy` depends on:
 
 ```dvc
 $ rm foo
-$ echo foo1 > foo
+$ echo foo > foo
 $ dvc status
 make_copy:
 	changed deps:
@@ -76,15 +76,6 @@ foo.dvc:
 
 DVC notices that `foo` changed due to the `foo.dvc` file that tracks this file
 (as `outs`), but the `make_copy` stage no longer records the change among it's
-`deps`. Run `dvc unfreeze` to go back to the regular project status:
+`deps`.
 
-```dvc
-$ dvc unfreeze make_copy
-$ dvc status
-make_copy:
-	changed deps:
-		modified:           foo
-foo.dvc:
-	changed outs:
-		modified:           foo
-```
+> You can use `dvc unfreeze` to go back to the regular project status.
