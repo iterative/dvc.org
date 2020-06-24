@@ -52,6 +52,7 @@ Then, let's change the file `foo` that the stage `make_copy` depends on, and
 freeze stage as well, to see what's the project status after that:
 
 ```dvc
+$ echo zoo > foo
 $ dvc freeze make_copy
 $ dvc status
 foo.dvc:

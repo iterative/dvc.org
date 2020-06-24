@@ -52,8 +52,7 @@ $ dvc run -n make_copy -d foo -o bar cp foo bar
 Then, let's change the file `foo` that the stage `make_copy` depends on:
 
 ```dvc
-$ rm foo
-$ echo foo > foo
+$ echo zoo > foo
 $ dvc status
 make_copy:
 	changed deps:
