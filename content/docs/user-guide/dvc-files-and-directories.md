@@ -174,16 +174,15 @@ For every `dvc.yaml` file, a matching `dvc.lock` (YAML) file usually exists.
 It's created or updated by DVC commands such as `dvc run` and `dvc repro`.
 `dvc.lock` describes the latest pipeline state. It has several purposes:
 
-- Tracking of intermediate and final results of a pipeline (files and
-  directories) — similar to [`.dvc` files](#dvc-files)
+- Tracking of intermediate and final results of a pipeline — similar to
+  [`.dvc` files](#dvc-files). This is done with a mapping of file and directory
+  paths in the <abbr>project</abbr> to their locations (hash values) in the
+  <abbr>cache</abbr> or [remote storage](/doc/command-reference/remote).
 - Allow DVC to detect when stage definitions, or their dependencies have
   changed. Such conditions invalidate states, requiring their reproduction (see
   `dvc status`, `dvc repro`).
-- Provides a mapping of file and directory paths tracked in the
-  <abbr>project</abbr> to their locations in the <abbr>cache</abbr> or
-  [remote storage](/doc/command-reference/remote). This is needed internally by
-  certain DVC commands to operate, such as `dvc checkout`, `dvc get`, and
-  `dvc import`.
+- `dvc.lock` is needed internally for several DVC commands to operate, such as
+  `dvc checkout`, `dvc get`, and `dvc import`.
 
 Here's an example `dvc.lock` based on the one in [`dvc.yaml`](#dvcyaml-file)
 above:
