@@ -224,8 +224,7 @@ directory tracked by DVC:
 > more information.
 
 [Parameter](/doc/command-reference/params#examples) key/value pairs are listed
-separately under `params`, grouped by parameters file. (No hash value is needed
-to lock params files, as these are not tracked as a whole.)
+separately under `params`, grouped by parameters file.
 
 ## Internal directories and files
 
