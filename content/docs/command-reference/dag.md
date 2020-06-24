@@ -1,7 +1,7 @@
 # dag
 
 Display connected [stages](/doc/command-reference/run) in the pipelines that
-contains them.
+contain them.
 
 ## Synopsis
 
