@@ -1,7 +1,7 @@
 # freeze
 
-Fix the status of one or more [stages](/doc/command-reference/run) to _not
-changed_ until `dvc unfreeze` is used on it.
+Freeze [stages](/doc/command-reference/run) until `dvc unfreeze` is used on
+them. Frozen stages are never executed by `dvc repro`.
 
 ## Synopsis
 
