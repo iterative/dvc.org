@@ -1,19 +1,24 @@
 # What Is DVC?
 
-Data Version Control, or DVC, is **a new type of experiment management
-software** built on top of the existing engineering toolset that you're already
-used to, and particularly on a source code management (Git). DVC reduces the gap
-between existing tools and data science needs, allowing users to take advantage
-of experiment management while reusing existing skills and intuition.
+Today the data science community is still lacking good practices for organizing
+their projects and effectively collaborating. ML algorithms and methods are no
+longer simple tribal knowledge but are still difficult to implement, manage and
+reuse.
+
+> One of the biggest challenges in reusing, and hence the managing of ML
+> projects, is its reproducibility.
+
+Data Version Control, or DVC, is a new type of experiment management software
+built on top of Git. DVC reduces the gap between existing tools and data science
+needs, allowing users to take advantage of experiment management while reusing
+existing skills and intuition.
+
+![](/img/reproducibility.png)_DVC codifies data and ML experiments_
 
 Leveraging an underlying source code management system eliminates the need to
-use external services. Data science experiment sharing and collaboration can be
+use 3rd-party services. Data science experiment sharing and collaboration can be
 done through regular Git features (commit messages, merges, pull requests, etc)
 the same way it works for software engineers.
-
-DVC implements a **Git experimentation methodology** where each experiment
-exists with its code as well as data, and can be represented as a separate Git
-branch or commit.
 
 DVC uses a few core concepts:
 
@@ -54,3 +59,10 @@ DVC uses a few core concepts:
 - **Cloud storage** support: available complement to the core DVC features. This
   is how a data scientist transfers large data files or shares a GPU-trained
   model with those without GPUs available.
+
+DVC streamlines large data files and binary models into a single Git environment
+and this approach will not require storing binary files in your Git repository.
+The diagram below describes all the DVC commands and relationships between a
+local cache and remote storage:
+
+![](/img/flow-large.png)_DVC data management_

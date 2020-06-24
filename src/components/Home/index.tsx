@@ -31,11 +31,7 @@ const Home: React.FC = () => {
       <PromoSection
         title="For data scientists, by data scientists"
         buttons={[
-          <Link
-            href="/doc/tutorials/get-started"
-            onClick={goToDocGetStarted}
-            key="get-started"
-          >
+          <Link href="/doc/start" onClick={goToDocGetStarted} key="get-started">
             Get Started
           </Link>,
           <Link href="/features" onClick={goToFeatures} key="features">

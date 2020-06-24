@@ -27,60 +27,36 @@
     ]
   },
   {
-    "slug": "tutorials",
-    "source": "tutorials/index.md",
+    "slug": "start",
+    "label": "Get Started",
+    "source": "start/index.md",
+    "tutorials": {
+      "katacoda": "https://katacoda.com/dvc/courses/get-started"
+    },
     "children": [
       {
-        "slug": "get-started",
-        "source": "get-started/index.md",
+        "slug": "data-versioning",
         "tutorials": {
-          "katacoda": "https://katacoda.com/dvc/courses/get-started/initialize"
-        },
-        "children": [
-          "data-versioning",
-          "data-pipelines",
-          "data-access",
-          "experiments"
-        ]
-      },
-      {
-        "slug": "interactive",
-        "label": "Interactive Tutorials"
-      },
-      {
-        "slug": "versioning",
-        "label": "Data Versioning",
-        "tutorials": {
-          "katacoda": "https://katacoda.com/dvc/courses/tutorials/versioning"
+          "katacoda": "https://katacoda.com/dvc/courses/get-started"
         }
       },
       {
-        "slug": "pipelines",
-        "label": "Stages and Pipelines",
+        "slug": "data-access",
         "tutorials": {
-          "katacoda": "https://katacoda.com/dvc/courses/tutorials/pipelines"
+          "katacoda": "https://katacoda.com/dvc/courses/get-started"
         }
       },
       {
-        "slug": "deep",
-        "label": "Deep Dive Tutorial",
-        "source": "deep/index.md",
+        "slug": "data-pipelines",
         "tutorials": {
-          "katacoda": "https://katacoda.com/dvc/courses/tutorials/pipelines"
-        },
-        "children": [
-          "preparation",
-          {
-            "label": "Define ML Pipeline",
-            "slug": "define-ml-pipeline"
-          },
-          "reproducibility",
-          "sharing-data"
-        ]
+          "katacoda": "https://katacoda.com/dvc/courses/get-started"
+        }
       },
       {
-        "slug": "community",
-        "label": "Community Tutorials"
+        "slug": "experiments",
+        "tutorials": {
+          "katacoda": "https://katacoda.com/dvc/courses/get-started"
+        }
       }
     ]
   },
@@ -90,7 +66,9 @@
     "children": [
       {
         "label": "Versioning Data & Model Files",
-        "slug": "versioning-data-and-model-files"
+        "slug": "versioning-data-and-model-files",
+        "source": "versioning-data-and-model-files/index.md",
+        "children": ["tutorial"]
       },
       {
         "label": "Sharing Data & Model Files",
@@ -104,6 +82,16 @@
     "slug": "user-guide",
     "source": "user-guide/index.md",
     "children": [
+      {
+        "slug": "what-is-dvc",
+        "label": "What is DVC?",
+        "source": "what-is-dvc/index.md",
+        "children": [
+          "collaboration-issues",
+          "core-features",
+          "related-technologies"
+        ]
+      },
       {
         "label": "DVC Files and Directories",
         "slug": "dvc-files-and-directories"
@@ -188,6 +176,10 @@
         "slug": "config"
       },
       {
+        "label": "dag",
+        "slug": "dag"
+      },
+      {
         "label": "destroy",
         "slug": "destroy"
       },
@@ -265,21 +257,6 @@
           {
             "label": "params diff",
             "slug": "diff"
-          }
-        ]
-      },
-      {
-        "label": "pipeline",
-        "slug": "pipeline",
-        "source": "pipeline/index.md",
-        "children": [
-          {
-            "label": "pipeline list",
-            "slug": "list"
-          },
-          {
-            "label": "pipeline show",
-            "slug": "show"
           }
         ]
       },
@@ -396,23 +373,6 @@
         "slug": "read",
         "label": "read()"
       }
-    ]
-  },
-  {
-    "slug": "understanding-dvc",
-    "label": "Understanding DVC",
-    "source": false,
-    "children": [
-      "collaboration-issues",
-      "existing-tools",
-      {
-        "label": "What is DVC?",
-        "slug": "what-is-dvc"
-      },
-      "core-features",
-      "how-it-works",
-      "related-technologies",
-      "resources"
     ]
   },
   {

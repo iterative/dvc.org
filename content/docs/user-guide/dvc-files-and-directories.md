@@ -88,10 +88,10 @@ A _dependency entry_ consists of a these possible fields:
   - `rev_lock`: Git commit hash of the external <abbr>DVC repository</abbr> at
     the time of importing or updating the dependency (with `dvc update`)
 
-Note that comments can be added to `.dvc` files and `dvc.yaml` using the
-`# comment` syntax. `meta` fields and `#` comments are preserved among
-executions of the `dvc repro` and `dvc commit` commands, but not when a `.dvc`
-file is overwritten by `dvc add`,`dvc import`, or `dvc import-url`.
+Note that comments can be added to `.dvc` files using the `# comment` syntax.
+`meta` fields and `#` comments are preserved among executions of the `dvc repro`
+and `dvc commit` commands, but not when a `.dvc` file is overwritten by
+`dvc add`,`dvc import`, or `dvc import-url`.
 
 ## dvc.yaml file
 

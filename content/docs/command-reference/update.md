@@ -35,7 +35,7 @@ fixed to a commit hash (`rev` field in the `.dvc` file). Use the `--rev` option
 to update an imported artifact to a different revision.
 
 ```dvc
-dvc update --rev master
+$ dvc update --rev master
 ```
 
 ## Options

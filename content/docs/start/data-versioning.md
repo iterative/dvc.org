@@ -1,6 +1,6 @@
 # Data Versioning
 
-How cool would it be to make Git handle arbitraty large files and directories
+How cool would it be to make Git handle arbitrary large files and directories
 with the same performance as with small code files? Imagine you can do a
 `git clone` and see data files and ML model files in the workspace. Or do
 `git checkout` and switch to a different version of a 100Gb size file in a less
@@ -43,7 +43,7 @@ easily versioned like source code with Git, as a placeholder for the original
 data (which gets listed in `.gitignore`):
 
 ```dvc
-$ git add .gitignore datadir.dvc
+$ git add data/.gitignore data/data.xml.dvc
 $ git commit -m "Add raw data"
 ```
 
@@ -62,8 +62,8 @@ $ tree .dvc/cache
 ```
 
 The hash value of the `data.xml` file we just added (`a304afb...`) determines
-the cache path shown above. And if you check `data/data.dvc`, you will find it
-there too:
+the cache path shown above. And if you check `data/data.xml.dvc`, you will find
+it there too:
 
 ```yaml
 outs:
@@ -131,6 +131,9 @@ with:
 
 ```dvc
 $ ls -R /tmp/dvc-storage
+/tmp/dvc-storage/:
+a3
+
 /tmp/dvc-storage/a3:
 04afb96060aad90176268345e10355
 ```
@@ -179,7 +182,7 @@ pretend that we got more data from some external source):
 
 ```dvc
 $ cp data/data.xml /tmp/data.xml
-$ cat /tmp/data.xml >> data/data/xml
+$ cat /tmp/data.xml >> data/data.xml
 ```
 
 </details>
@@ -197,7 +200,7 @@ $ dvc push
 
 ## Switching between versions
 
-The regular worfklow is to use `git checkout` first to switch a branch, checkout
+The regular workflow is to use `git checkout` first to switch a branch, checkout
 a commit, or a revision of a `.dvc` file, and then run `dvc checkout` to sync
 data:
 

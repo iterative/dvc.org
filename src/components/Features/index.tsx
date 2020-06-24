@@ -158,7 +158,7 @@ const FeaturesPage: React.FC = () => (
     <PromoSection
       title="Ready to give it a try?"
       buttons={[
-        <Link href="/doc/tutorials/get-started" key="get-started">
+        <Link href="/doc/start" key="get-started">
           Get Started
         </Link>
       ]}

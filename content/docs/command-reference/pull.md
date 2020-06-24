@@ -9,8 +9,8 @@ Download tracked files or directories from
 ## Synopsis
 
 ```usage
-usage: dvc pull [-h] [-q | -v] [-j <number>]
-                [-r <name>] [-a] [-T] [-d] [-f] [-R] [--all-commits]
+usage: dvc pull [-h] [-q | -v] [-j <number>] [-r <name>] [-a] [-T]
+                [-d] [-f] [-R] [--all-commits] [--run-cache]
                 [targets [targets ...]]
 
 positional arguments:
@@ -94,6 +94,9 @@ reflinks or hardlinks to put it in the workspace without copying. See
 - `-r <name>`, `--remote <name>` - name of the
   [remote storage](/doc/command-reference/remote) to pull from (see
   `dvc remote list`).
+
+- `--run-cache` - downloads all available history of stage runs from the remote
+  repository.
 
 - `-j <number>`, `--jobs <number>` - number of threads to run simultaneously to
   handle the downloading of files from the remote. The default value is

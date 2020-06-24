@@ -50,7 +50,7 @@ const LayoutFooter: React.FC<Required<ILayoutModifiable>> = ({ modifiers }) => (
               </Link>
             </li>
             <li className={styles.linkItem}>
-              <Link href="/doc/tutorials/get-started" className={styles.link}>
+              <Link href="/doc/start" className={styles.link}>
                 Get started
               </Link>
             </li>

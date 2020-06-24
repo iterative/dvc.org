@@ -61,8 +61,7 @@ Luigi, etc.
 
   - The DAG or dependency graph is defined implicitly by the connections between
     [DVC-files](/doc/user-guide/dvc-files-and-directories) (with file names
-    `<file>.dvc` or `Dvcfile`), based on their dependencies and
-    <abbr>outputs</abbr>.
+    `<file>.dvc`), based on their dependencies and <abbr>outputs</abbr>.
 
   - Each DVC-file defines one node in the DAG. All DVC-files in a repository
     make up a single pipeline (think a single Makefile). All DVC-files (and
