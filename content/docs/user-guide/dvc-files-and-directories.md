@@ -8,7 +8,7 @@ operation.
 Additionally, there are a few special kind of files created by certain
 [DVC commands](/doc/command-reference):
 
-- Files ending with the `.dvc` extension are placeholders to version data files
+- Files ending with the `.dvc` extension are placeholders to track data files
   and directories. A <abbr>DVC project</abbr> usually has one
   [`.dvc` file](#dvc-files) per large data file or dataset directory being
   tracked.
@@ -16,12 +16,15 @@ Additionally, there are a few special kind of files created by certain
   that form the pipeline(s) of a project, and their connections (_dependency
   graph_ or DAG).
 
-  These come with a matching [`dvc.lock` file](#dvclock-file) to track the
-  latest file versions.
+  These come with a matching [`dvc.lock` file](#dvclock-file) to record the
+  pipeline state.
 
-Both use human-friendly YAML schemas, described below. We encourage you to get
-familiar with them so you may edit them freely, as needed. Both type of files
-should be versioned with Git (for Git-enabled <abbr>repositories</abbr>).
+Both `.dvc` files and `dvc.yaml` use human-friendly YAML schemas, described
+below. We encourage you to get familiar with them so you may create, generate,
+and edit them on your own.
+
+All these should be versioned with Git (for Git-enabled
+<abbr>repositories</abbr>).
 
 ## .dvc files
 
