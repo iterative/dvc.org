@@ -28,11 +28,12 @@ corresponds to keeping the data for the current workspace, and for a certain set
 of commits (determined by reading the DVC-files in them). See the
 [Options](#options) section for more details.
 
-> Please note that `dvc gc` pulls
-> [`.dir` cache](/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory)
-> files for corresponding directories from remote. It pulls them when they are
-> missing and referenced in the commits that `gc` analyzed in `.dvc` or
-> `dvc.yaml` files.
+> Note that `dvc gc` tries to fetch any missing
+> [`.dir` files](/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory)
+> from [remote storage](/doc/command-reference/remote) to the local
+> <abbr>cache</abbr>, in order to know which files should exist inside cached
+> directories. These files may be missing if the cache directory was previously
+> garbage collected, in a newly cloned copy of the repo, etc.
 
 Unless the `--cloud` option is used, `dvc gc` does not remove data files from
 any remote. This means that any files collected from the local cache can be
