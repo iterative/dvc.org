@@ -1,7 +1,8 @@
 # dag
 
-Display connected [stages](/doc/command-reference/run) in the pipelines that
-contains them.
+Visualize the pipeline(s) in
+[`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvclock-file) as a graph
+of connected [stages](/doc/command-reference/run).
 
 ## Synopsis
 
@@ -20,7 +21,7 @@ A data pipeline, in general, is a series of data processing
 input and produce an <abbr>output</abbr>). A pipeline may produce intermediate
 data, and has a final result.
 
-Machine learning (ML) pipelines typically start a with large raw datasets,
+Data processing or ML pipelines typically start a with large raw datasets,
 include intermediate featurization and training stages, and produce a final
 model, as well as accuracy [metrics](/doc/command-reference/metrics).
 
