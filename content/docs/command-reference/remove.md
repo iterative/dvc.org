@@ -1,6 +1,6 @@
 # remove
 
-Remove stage entry, remove `.gitignore` entry and unprotect outputs.
+Remove stage, `.gitignore` entry, and unprotect outputs.
 
 ## Synopsis
 
