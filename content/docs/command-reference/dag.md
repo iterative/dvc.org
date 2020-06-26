@@ -2,8 +2,7 @@
 
 Visualize the pipeline(s) in
 [`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvclock-file) as one or
-more [DAGs](https://en.wikipedia.org/wiki/Directed_acyclic_graph) of connected
-[stages](/doc/command-reference/run).
+more graph(s) of connected [stages](/doc/command-reference/run).
 
 ## Synopsis
 
