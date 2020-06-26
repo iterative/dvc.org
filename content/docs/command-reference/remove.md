@@ -41,26 +41,29 @@ how it can be used to replace or modify files that are tracked by DVC.
 
 ## Examples
 
-Let's imagine we have a `data.csv` file t is that already [tracked](link to dvc
-add cmd ref please) with DVC:
+Let's imagine we have `foo.csv` and `bar.csv` files that are already [tracked](/doc/command-reference/add)
+with DVC:
 
 ```dvc
-$ dvc add data.csv
-$ ls data.csv*
-data.csv
-data.csv.dvc
+$ ls *.csv*
+bar.csv
+bar.csv.dvc
+foo.csv
+foo.csv.dvc
 $ cat .gitignore
-/data.csv
+/bar.csv
+/foo.csv
 ```
 
-Remove the `data.csv.dvc` file, and check that the data file is gone from
+Remove the `foo.csv.dvc` file, and check that the data file is gone from
 `.gitignore`:
 
 ```dvc
-$ dvc remove data.csv.dvc
-$ ls data.csv*
-data.csv
-$ cat .gitignore | wc -l
-
-0
+$ dvc remove foo.csv.dvc
+$ ls *.csv*
+bar.csv
+bar.csv.dvc
+foo.csv
+$ cat .gitignore
+/bar.csv
 ```
