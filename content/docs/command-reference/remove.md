@@ -30,7 +30,7 @@ how it can be used to replace or modify files that are tracked by DVC.
 
 ## Options
 
-- `--outs` - remove outputs as well.
+- `--outs` - remove the outputs described in the given `targets` as well.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
