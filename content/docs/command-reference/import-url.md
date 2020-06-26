@@ -186,7 +186,7 @@ Let's take a look at the changes to the `data.xml.dvc`:
 The `etag` field in the `.dvc` file contains the
 [ETag](https://en.wikipedia.org/wiki/HTTP_ETag) recorded from the HTTP request.
 If the remote file changes, its ETag will be different. This metadata allows DVC
-to determine whether it is necessary to download it again.
+to determine whether it's necessary to download it again.
 
 > See [`.dvc` files](/doc/user-guide/dvc-files-and-directories#dvc-files) for
 > more details on the format above.
