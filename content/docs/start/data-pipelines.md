@@ -201,7 +201,7 @@ Please check the `dvc.yaml` again, it should have one more stage now.
 
 </details>
 
-This should be a good point to commit the changes with Git. This include
+This should be a good point to commit the changes with Git. These include
 `.gitignore`, `dvc.lock`, and `dvc.yaml` — which describe our pipeline.
 
 ## Reproduce
