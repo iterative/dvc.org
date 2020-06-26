@@ -9,8 +9,8 @@ Download tracked files or directories from
 ## Synopsis
 
 ```usage
-usage: dvc pull [-h] [-q | -v] [-j <number>]
-                [-r <name>] [-a] [-T] [-d] [-f] [-R] [--all-commits]
+usage: dvc pull [-h] [-q | -v] [-j <number>] [-r <name>] [-a] [-T]
+                [-d] [-f] [-R] [--all-commits] [--run-cache]
                 [targets [targets ...]]
 
 positional arguments:

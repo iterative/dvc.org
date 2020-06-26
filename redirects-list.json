@@ -33,6 +33,9 @@
   "^/doc/command-reference/plot$                                                          /doc/command-reference/plots",
   "^/doc/command-reference/lock$                                                          /doc/command-reference/freeze",
   "^/doc/command-reference/unlock$                                                        /doc/command-reference/unfreeze",
+  "^/doc/command-reference/pipeline$                                                      /doc/command-reference/dag",
+  "^/doc/command-reference/pipeline/show$                                                 /doc/command-reference/dag",
+  "^/doc/command-reference/pipeline/list$                                                 /doc/command-reference/dag",
 
   "^/(.+)/$                                                                               /$1"
 ]

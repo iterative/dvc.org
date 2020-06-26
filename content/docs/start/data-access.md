@@ -10,12 +10,11 @@ specific version of a model? How do I reuse datasets across different projects?
 > `s3://dvc-public/remote/get-started/fb/89904ef053f04d64eafcc3d70db673` 😱
 > instead of the original files, name such as `model.pkl` or `data.xml`.
 
-Remember those `.dvc` files `dvc add` generates? Or the `dvc.yaml` and
-`dvc.lock` pipeline files produced by `dvc run`? Those files, their history in
-Git, DVC remote storage config saved in Git contain all the information needed
-to access and download any version of datasets, files, and models. It means that
-Git repository with DVC files becomes an entry point and can be used instead of
-accessing files directly.
+Remember those `.dvc` files `dvc add` generates? Those files (and `dvc.lock`
+that we'll cover later), their history in Git, DVC remote storage config saved
+in Git contain all the information needed to access and download any version of
+datasets, files, and models. It means that Git repository with DVC files becomes
+an entry point and can be used instead of accessing files directly.
 
 ## Find a file or directory
 
@@ -57,7 +56,7 @@ file that can be saved in the project:
 
 ```dvc
 $ dvc import https://github.com/iterative/dataset-registry \
-             get-started/data/data.xml -o data/data.xml
+             get-started/data.xml -o data/data.xml
 ```
 
 This is similar to `dvc get` + `dvc add`, but the resulting
@@ -103,7 +102,7 @@ directly from within an application at runtime. For example:
 import dvc.api
 
 with dvc.api.open(
-        'get-started/data/data.xml',
+        'get-started/data.xml',
         repo='https://github.com/iterative/dataset-registry'
         ) as fd:
     # ... fd is a file descriptor that can be processed normally.

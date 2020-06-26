@@ -197,9 +197,6 @@ $ dvc run -n my_stage './my_script.sh $MYENVVAR'
   up to the user to save and version control it. See also the difference between
   `-o` and `-O`.
 
-- `--external` - allow outputs that are outside of the DVC repository. See
-  [Managing External Data](/doc/user-guide/managing-external-data).
-
 - `-w <path>`, `--wdir <path>` - specifies a working directory for the `command`
   to run in (uses the `wdir` field in `dvc.yaml`). Dependency and output files
   (including metrics and plots) should be specified relative to this directory.
@@ -251,36 +248,45 @@ $ dvc run -n my_stage './my_script.sh $MYENVVAR'
 
 ## Examples
 
-Let's see a few introductory examples to try the different command options and
-see what they do.
-
-Create a <abbr>DVC project</abbr> and a stage that writes a JSON file as output:
+Let's create a <abbr>DVC project</abbr> and a stage (that counts the number of
+lines in a `test.txt` file):
 
 ```dvc
 $ mkdir example && cd example
 $ git init
 $ dvc init
 $ mkdir data
-$ dvc run --name json_struct -d data -o struct.json \
-          "echo '{\"a_number\": 0.75}' > struct.json"
-Running stage 'json_struct' with command:
-        echo '{"a_number": 0.75}' > struct.json
+$ dvc run -n count \
+          -d test.txt \
+          -o lines \
+          "cat test.txt | wc -l > lines"
+Running stage 'test' with command:
+        cat test.txt | wc -l > lines
 Creating 'dvc.yaml'
-Adding stage 'json_struct' in 'dvc.yaml'
+Adding stage 'count' in 'dvc.yaml'
 Generating lock file 'dvc.lock'
+
+$ tree
+.
+├── dvc.lock
+├── dvc.yaml
+├── lines
+└── test.txt
 ```
 
 This results in the following stage entry in `dvc.yaml`:
 
 ```yaml
 stages:
-  json_struct:
-    cmd: 'echo ''{"a_number": 0.75}'' > struct.json'
+  count:
+    cmd: 'cat test.txt | wc -l > lines'
     deps:
-      - data
+      - test.txt
     outs:
-      - struct.json
+      - lines
 ```
+
+## Example: Overwrite an existing stage
 
 The following stage runs a Python script that trains an ML model on the training
 dataset (`20180226` is a seed value):
@@ -300,22 +306,29 @@ $ dvc run -n train -f -d matrix-train.p -d train_model.py -o model.p \
           python train_model.py matrix-train.p 18494003 model.p
 ```
 
-Move to a subdirectory and create a stage there. This generates a separate
+## Example: Separate stages in a subdirectory
+
+Let's move to a subdirectory and create a stage there. This generates a separate
 `dvc.yaml` file in that location. The stage command itself counts the lines in
-`test.txt` and writes the number to `result.out`.
+`test.txt` and writes the number to `lines`.
 
 ```dvc
-$ cd stages/
-$ dvc run -n test \
-          -d test.txt \
+$ cd more_stages/
+$ dvc run -n process_data \
+          -d data.in \
           -o result.out \
-          "cat test.txt | wc -l > result.out"
-$ tree
+          ./my_script.sh data.in result.out
+$ tree ..
 .
-├── dvc.lock
 ├── dvc.yaml
-├── result.out
-└── test.txt
+├── dvc.lock
+├── file1
+├── ...
+└── more_stages/
+    ├── data.in
+    ├── dvc.lock
+    ├── dvc.yaml
+    └── result.out
 ```
 
 ## Example: Chaining stages

@@ -6,10 +6,8 @@ Get tracked files or directories from
 ## Synopsis
 
 ```usage
-usage: dvc fetch [-h] [-q | -v] [-j <number>]
-                 [-r <name>] [-a] [-T]
-                 [--all-commits] [-d] [-R]
-                 [--run-cache]
+usage: dvc fetch [-h] [-q | -v] [-j <number>] [-r <name>] [-a] [-T]
+                  [--all-commits] [-d] [-R] [--run-cache]
                  [targets [targets ...]]
 
 positional arguments:

@@ -34,10 +34,30 @@
       "katacoda": "https://katacoda.com/dvc/courses/get-started"
     },
     "children": [
-      "data-versioning",
-      "data-access",
-      "data-pipelines",
-      "experiments"
+      {
+        "slug": "data-versioning",
+        "tutorials": {
+          "katacoda": "https://katacoda.com/dvc/courses/get-started"
+        }
+      },
+      {
+        "slug": "data-access",
+        "tutorials": {
+          "katacoda": "https://katacoda.com/dvc/courses/get-started"
+        }
+      },
+      {
+        "slug": "data-pipelines",
+        "tutorials": {
+          "katacoda": "https://katacoda.com/dvc/courses/get-started"
+        }
+      },
+      {
+        "slug": "experiments",
+        "tutorials": {
+          "katacoda": "https://katacoda.com/dvc/courses/get-started"
+        }
+      }
     ]
   },
   {
@@ -156,6 +176,10 @@
         "slug": "config"
       },
       {
+        "label": "dag",
+        "slug": "dag"
+      },
+      {
         "label": "destroy",
         "slug": "destroy"
       },
@@ -233,21 +257,6 @@
           {
             "label": "params diff",
             "slug": "diff"
-          }
-        ]
-      },
-      {
-        "label": "pipeline",
-        "slug": "pipeline",
-        "source": "pipeline/index.md",
-        "children": [
-          {
-            "label": "pipeline list",
-            "slug": "list"
-          },
-          {
-            "label": "pipeline show",
-            "slug": "show"
           }
         ]
       },
