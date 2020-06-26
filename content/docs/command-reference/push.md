@@ -158,7 +158,6 @@ a [pipeline](/doc/command-reference/pipeline) has been setup with these
 
 ```dvc
 $ dvc pipeline show
-
 data/Posts.xml.zip.dvc
 Posts.xml.dvc
 Posts.tsv.dvc
