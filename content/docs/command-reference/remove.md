@@ -41,8 +41,8 @@ how it can be used to replace or modify files that are tracked by DVC.
 
 ## Examples
 
-Let's imagine we have `foo.csv` and `bar.csv` files that are already [tracked](/doc/command-reference/add)
-with DVC:
+Let's imagine we have `foo.csv` and `bar.csv` files that are already
+[tracked](/doc/command-reference/add) with DVC:
 
 ```dvc
 $ ls *.csv*
