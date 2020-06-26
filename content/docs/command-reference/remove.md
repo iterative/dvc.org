@@ -13,9 +13,11 @@ positional arguments:
 
 ## Description
 
-This command safely removes stages from [dvc.yaml](/doc/user-guide/dvc-files-and-directories#dvcyaml-file), their `.gitignore` entries, and optionally
-removes from the <abbr>workspace</abbr> files or directories that are tracked by
-DVC. It takes one or more stage names (see `-n` option of `dvc run`) or
+This command safely removes stages from
+[dvc.yaml](/doc/user-guide/dvc-files-and-directories#dvcyaml-file), their
+`.gitignore` entries, and optionally removes from the <abbr>workspace</abbr>
+files or directories that are tracked by DVC. It takes one or more stage names
+(see `-n` option of `dvc run`) or
 [`.dvc` files](/doc/user-guide/dvc-files-and-directories#dvc-files) as target,
 removes it, and optionally removes all of its outputs (`outs` field).
 
@@ -39,7 +41,8 @@ how it can be used to replace or modify files that are tracked by DVC.
 
 ## Examples
 
-Let's imagine we have a `data.csv` file t is that already [tracked](link to dvc add cmd ref please) with DVC:
+Let's imagine we have a `data.csv` file t is that already [tracked](link to dvc
+add cmd ref please) with DVC:
 
 ```dvc
 $ dvc add data.csv
@@ -50,7 +53,8 @@ $ cat .gitignore
 /data.csv
 ```
 
-Remove the `data.csv.dvc` file, and check that the data file is gone from `.gitignore`:
+Remove the `data.csv.dvc` file, and check that the data file is gone from
+`.gitignore`:
 
 ```dvc
 $ dvc remove data.csv.dvc
