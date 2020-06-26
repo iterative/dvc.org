@@ -70,7 +70,7 @@ into plots file `prc.json`:
 {
   "prc": [
     { "precision": 0.021473008227975116, "recall": 1.0, "threshold": 0.0 },
-    ...
+    ...,
     { "precision": 1.0, "recall": 0.009345794392523364, "threshold": 0.64 }
   ]
 }
@@ -95,7 +95,7 @@ parameters.
 ## Defining parameters
 
 It's pretty common for data science pipelines to include configuration files
-that defines adjustable parameters to train a model, do pre-processing, etc. DVC
+that define adjustable parameters to train a model, do pre-processing, etc. DVC
 provides a mechanism for stages to depend on the values of specific sections of
 such a config file (YAML or JSON formats are supported).
 
@@ -158,9 +158,9 @@ train:
 
 ## Tuning and running experiments
 
-We are definitely not happy with the `AUC` value we got so far (`0.573`)! Let's
-now tune and run the new experiment. Edit the `params.yaml` file to use bigrams
-and increase the number of features:
+We are definitely not happy with the `AUC` value we got so far! Let's now tune
+and run the new experiment. Edit the `params.yaml` file to use bigrams and
+increase the number of features:
 
 ```diff
  featurize:
@@ -185,7 +185,7 @@ needs to be run.
 
 ## Comparing experiments
 
-Finally, we are now ready to compare results. DVC has a few commands to see
+Finally, we are now ready to compare everything! DVC has a few commands to see
 metrics and parameter changes, and to visualize plots, for one or more
 experiments. Let's compare the current "bigrams" run with the last committed
 "baseline" iteration:
