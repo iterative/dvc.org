@@ -191,9 +191,6 @@ to determine whether it's necessary to download it again.
 > See [`.dvc` files](/doc/user-guide/dvc-files-and-directories#dvc-files) for
 > more details on the format above.
 
-You may want to get out of and remove the `example-get-started/` directory after
-trying this example (especially if trying out the following one).
-
 ## Example: Detecting remote file changes
 
 What if that remote file is updated regularly? The project goals might include
