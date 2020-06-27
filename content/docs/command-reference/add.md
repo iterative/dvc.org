@@ -158,8 +158,8 @@ outs:
     path: data.xml
 ```
 
-This is a standard `.dvc` file with only one output (`outs` field). The hash value (`md5` field)
-corresponds to a file path in the <abbr>cache</abbr>.
+This is a standard `.dvc` file with only one output (`outs` field). The hash
+value (`md5` field) corresponds to a file path in the <abbr>cache</abbr>.
 
 ```dvc
 $ file .dvc/cache/d8/acabbfd4ee51c95da5d7628c7ef74b
