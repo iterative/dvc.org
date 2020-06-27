@@ -51,7 +51,7 @@ corresponding local path in the <abbr>workspace</abbr>. It records enough
 metadata about the imported data to enable DVC efficiently determining whether
 the local copy is out of date.
 
-`dvc repro` doesn't check and/or update generated `.dvc` files, use `dvc update`
+`dvc repro` doesn't check and/or update generated `.dvc` files. Use `dvc update`
 on them to bring the import up to date from the external data source.
 
 DVC supports several types of (local or) remote locations (protocols):
@@ -88,6 +88,15 @@ Specific explanations:
   running. DVC automatically expands this URL into a regular S3, SSH, GS, etc
   URL by appending `/path/to/file` to the `myremote`'s configured base path.
 
+The `deps` field in the generated `.dvc` file contains a hash value along with
+the `path` to track changes in the remote file/directory. The hash type depends
+on the type of remote location (protocol) being tracked. For instance,
+files/directories tracked from HTTP(s)/S3/Azure/GS remote locations will have an
+[ETag](https://en.wikipedia.org/wiki/HTTP_ETag) value in the `deps` field, while
+files/directories tracked from SSH/local locations will have an `md5` hash
+value. Files from HDFS remote locations use a `checksum` key in the `deps`
+field.
+
 Another way to understand the `dvc import-url` command is as a shortcut for
 generating a pipeline stage with and external dependency. This is discussed in
 the [External Dependencies](/doc/user-guide/external-dependencies)
@@ -109,8 +118,8 @@ $ dvc run -n download_data \
 ```
 
 `dvc import-url` generates an import stage
-[`.dvc` file](/doc/user-guide/dvc-files-and-directories#dvc-files) and `dvc run`
-a regular stage (in
+[`.dvc` file](/doc/user-guide/dvc-files-and-directories#dvc-files), and
+`dvc run` generates a regular stage (in
 [`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvcyaml-file)).
 
 ## Options
@@ -123,7 +132,7 @@ a regular stage (in
 - `--no-exec` - create `.dvc` file without actually downloading `url`. E.g. if
   file or directory already exists `--no-exec` can be used to skip download. In
   this case, `dvc commit <out>.dvc` should be used to calculate URL and data
-  hash, update generated .`dvc` file and save existing data into the DVC cache.
+  hash, update generated `.dvc` file and save existing data into the DVC cache.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
