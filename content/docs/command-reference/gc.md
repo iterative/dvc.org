@@ -20,13 +20,20 @@ DVC cache but are no longer needed. With `--cloud` it also removes data in
 To avoid accidentally deleting data, it raises an error and doesn't touch any
 files if no scope options are provided. It means it's user's responsibility to
 explicitly provide the right set of options to specify what data is still needed
-(so that DVC can figure out what fils can be safely deleted).
+(so that DVC can figure out what files can be safely deleted).
 
 One of the scope options (`--workspace`, `--all-branches`, `--all-tags`,
 `--all-commits`) or a combination of them must be provided. Each of them
 corresponds to keeping the data for the current workspace, and for a certain set
 of commits (determined by reading the DVC-files in them). See the
 [Options](#options) section for more details.
+
+> Note that `dvc gc` tries to fetch any missing
+> [`.dir` files](/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory)
+> from [remote storage](/doc/command-reference/remote) to the local
+> <abbr>cache</abbr>, in order to know which files should exist inside cached
+> directories. These files may be missing if the cache directory was previously
+> garbage collected, in a newly cloned copy of the repo, etc.
 
 Unless the `--cloud` option is used, `dvc gc` does not remove data files from
 any remote. This means that any files collected from the local cache can be

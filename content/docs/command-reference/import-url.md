@@ -130,9 +130,9 @@ $ dvc run -n download_data \
   the imported data (`out`).
 
 - `--no-exec` - create `.dvc` file without actually downloading `url`. E.g. if
-  file or directory already exists `--no-exec` can be used to skip download. In
-  this case, `dvc commit <out>.dvc` should be used to calculate URL and data
-  hash, update generated `.dvc` file and save existing data into the DVC cache.
+  the file or directory already exist it can be used to skip download.
+  `dvc commit <out>.dvc` should be used to calculate the URL and data hash,
+  update the `.dvc` files, and save existing data to the cache.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 

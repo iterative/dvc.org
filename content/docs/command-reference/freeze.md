@@ -1,7 +1,7 @@
 # freeze
 
-Freeze a [stage](/doc/command-reference/run). Use `dvc unfreeze` to unfreeze the
-stage.
+Freeze [stages](/doc/command-reference/run) until `dvc unfreeze` is used on
+them. Frozen stages are never executed by `dvc repro`.
 
 ## Synopsis
 
@@ -9,24 +9,24 @@ stage.
 usage: dvc freeze [-h] [-q | -v] targets [targets ...]
 
 positional arguments:
-  targets        stages to freeze.
+  targets        Stages or .dvc files to freeze
 ```
 
 ## Description
 
-`dvc freeze` causes any stage to be considered _not changed_ by `dvc status` and
-`dvc repro`. Stage reproduction will not regenerate <abbr>outputs</abbr> of
-frozen stages, even if some dependencies have changed, and even if `--force` is
-provided.
+`dvc freeze` causes the [stages](/doc/command-reference/run) indicated as
+`targets` to be considered _not changed_ by `dvc status` and `dvc repro`. Stage
+reproduction will not regenerate <abbr>outputs</abbr> of frozen stages, even if
+their <abbr>dependencies</abbr> have changed, and even if `--force` is used.
 
 Freezing a stage is useful to avoid syncing data from the top of its
 [pipeline](/doc/command-reference/pipeline), and keep iterating on the last
-(unfrozen) stages only.
+(non-frozen) stages only.
 
-Note that <abbr>import stages</abbr> are considered always frozen. Use
-`dvc update` to update the corresponding <abbr>data artifacts</abbr> from the
-external data source. [Unfreeze](/doc/command-reference/unfreeze) them before
-using `dvc repro` on a pipeline that needs their outputs.
+Note that <abbr>import stages</abbr> are frozen by default. Use `dvc update` to
+update the corresponding <abbr>data artifacts</abbr> from the external data
+source. [Unfreeze](/doc/command-reference/unfreeze) them before using
+`dvc repro` on a pipeline that needs their outputs.
 
 ## Options
 
@@ -39,21 +39,21 @@ using `dvc repro` on a pipeline that needs their outputs.
 
 ## Examples
 
-First, let's create a simple DVC-file:
+First, let's create a dummy stage that copies `foo` to `bar`:
 
 ```dvc
 $ echo foo > foo
 $ dvc add foo
-$ dvc run -d foo -o bar -n make_copy cp foo bar
+$ dvc run -n make_copy -d foo -o bar cp foo bar
 ```
+
+> See `dvc run` for more details.
 
 Then, let's change the file `foo` that the stage `make_copy` depends on:
 
 ```dvc
-$ rm foo
-$ echo foo1 > foo
+$ echo zoo > foo
 $ dvc status
-
 make_copy:
 	changed deps:
 		modified:           foo
@@ -62,27 +62,19 @@ foo.dvc:
 		modified:           foo
 ```
 
-Now, let's freeze the `make_copy` stage:
+`dvc status` notices that `foo` has changed. Let's now freeze the `make_copy`
+stage and see what's the project status after that:
 
 ```dvc
 $ dvc freeze make_copy
 $ dvc status
-
 foo.dvc:
 	changed outs:
 		modified:           foo
 ```
 
-Run `dvc unfreeze` to unfreeze it back:
+DVC notices that `foo` changed due to the `foo.dvc` file that tracks this file
+(as `outs`), but the `make_copy` stage no longer records the change among it's
+`deps`.
 
-```dvc
-$ dvc unfreeze make_copy
-$ dvc status
-
-make_copy:
-	changed deps:
-		modified:           foo
-foo.dvc:
-	changed outs:
-		modified:           foo
-```
+> You can use `dvc unfreeze` to go back to the regular project status.

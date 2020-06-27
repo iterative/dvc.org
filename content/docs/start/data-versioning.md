@@ -12,7 +12,7 @@ use `dvc add`:
 
 <details>
 
-### ⚙️ Expand to get an example dataset
+### ⚙️ Expand to get an example dataset.
 
 Having initialized a project in the previous section, get the data file we will
 be using later like this:
@@ -49,7 +49,7 @@ $ git commit -m "Add raw data"
 
 <details>
 
-### 💡 Expand to see what happens under the hood
+### 💡 Expand to see what happens under the hood.
 
 `dvc add` moved the data to the project's <abbr>cache</abbr>, and linked\* it
 back to the <abbr>workspace</abbr>.
@@ -123,7 +123,7 @@ Usually, we also want to `git commit` and `git push` the corresponding
 
 <details>
 
-### 💡 Expand to see what happens under the hood
+### 💡 Expand to see what happens under the hood.
 
 `dvc push` copied the data <abbr>cached</abbr> locally to the remote storage we
 set up earlier. You can check that the data has been stored in the DVC remote
@@ -148,7 +148,7 @@ after `git clone` and `git pull`.
 
 <details>
 
-### ⚙️ Expand to explode 💣 the project
+### ⚙️ Expand to explode the project 💣
 
 If you've run `dvc push`, you can delete the cache (`.dvc/cache`) and
 `data/data.xml` to experiment with `dvc pull`:
@@ -175,7 +175,7 @@ latest version:
 
 <details>
 
-### ⚙️ Expand to make some changes
+### ⚙️ Expand to make some changes.
 
 For the sake of simplicity let's just double the dataset artificially (and
 pretend that we got more data from some external source):
@@ -211,7 +211,7 @@ $ dvc checkout
 
 <details>
 
-### ⚙️ Expand to get the previous version of the dataset
+### ⚙️ Expand to get the previous version of the dataset.
 
 Let's cleanup the previous artificial changes we made and get the previous :
 
