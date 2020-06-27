@@ -60,7 +60,7 @@ Remove the `foo.csv.dvc` file, and check that the data file is gone from
 
 ```dvc
 $ dvc remove foo.csv.dvc
-$ ls *.csv*
+$ ls
 bar.csv
 bar.csv.dvc
 foo.csv
