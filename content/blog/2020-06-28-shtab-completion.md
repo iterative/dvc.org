@@ -20,9 +20,9 @@ author: casperdcl
 > - Finally: 1-Click Tab Completion for [`argparse`], [`docopt`] and [`argopt`]
 > - A [`shtab`] in the dark at completing your ~~sentences~~ commands
 
-Command line tools are powerful. Things like [`make`] have manual pages spanning,
-well, pages, while just the list of [`git`] subcommands is longer than can fit on
-a standard `80 x 24` terminal screen.
+Command line tools are powerful. Things like [`make`] have manual pages
+spanning, well, pages, while just the list of [`git`] subcommands is longer than
+can fit on a standard `80 x 24` terminal screen.
 
 ```bash
 $ git <TAB>
@@ -49,10 +49,10 @@ repositories, as well as tracking machine learning experiments. As you can
 imagine, supporting that many buzzwords means it also has a large number of
 subcommands and options.
 
-*Every time a new feature is added, maintainers and contributors have to update
+_Every time a new feature is added, maintainers and contributors have to update
 tab completion scripts for multiple supported shells. At best, it's a pain, and
 at worst, error-prone. If you've worked on maintaining CLI applications, you'll
-sympathise.*
+sympathise._
 
 Surely the parser code you've written is informative enough to automate tab
 completion? Surely you shouldn't have to maintain and synchronise separate tab
@@ -140,10 +140,9 @@ if __name__ == "__main__":
 
 ### Try it out
 
-There are many more options and features.
-The [documentation][`shtab`] includes examples of working with custom file
-completions and providing a `completion` subcommand when integrating more
-tightly with existing applications.
+There are many more options and features. The [documentation][`shtab`] includes
+examples of working with custom file completions and providing a `completion`
+subcommand when integrating more tightly with existing applications.
 
 Try it out with `pip install -U shtab` or `conda install -c conda-forge shtab`!
 
