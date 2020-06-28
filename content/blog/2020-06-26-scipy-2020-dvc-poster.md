@@ -9,7 +9,7 @@ descriptionLong: |
 
 picture: 2020-06-26/SciPy_2020.png
 author: elle_obrien
-commentsUrl: https://discuss.dvc.org/t/dvc-1-0-release/412
+commentsUrl: https://discuss.dvc.org/t/packaging-data-and-machine-learning-models-for-sharing/423
 tags:
   - Import
   - SciPy
