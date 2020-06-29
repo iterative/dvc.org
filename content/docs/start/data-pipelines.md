@@ -73,11 +73,11 @@ The command options used above mean the following:
   that stage can depend on field values from a parameters file (`params.yaml` by
   default):
 
-  ```yaml
-  prepare:
-    split: 0.20
-    seed: 20170428
-  ```
+```yaml
+prepare:
+  split: 0.20
+  seed: 20170428
+```
 
 - `-d src/prepare.py` and `-d data/data.xml` mean that the stage depends on
   these files to work. Notice that the source code itself is marked as a
