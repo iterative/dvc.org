@@ -75,8 +75,8 @@ The command options used above mean the following:
 
   ```yaml
   prepare:
-      split: 0.20
-      seed: 20170428
+    split: 0.20
+    seed: 20170428
   ```
 
 - `-d src/prepare.py` and `-d data/data.xml` mean that the stage depends on
