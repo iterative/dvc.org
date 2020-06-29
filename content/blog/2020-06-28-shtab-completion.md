@@ -8,8 +8,10 @@ description: |
 descriptionLong: |
   We've made a painless tab-completion script generator for Python applications!
   It's called `shtab` and it currently works with `argparse`, `docopt`, and
-  `docopt` to produce `bash` and `zsh` completion scripts. DVC itself uses it.
-  Find out how to take advantage of it in this blog post.
+  `docopt` to produce `bash` and `zsh` completion scripts.
+  This tool was originally created to help `dvc`, but we realised it could be made
+  more generic and valuable to the world's entire ecosystem of Python CLI
+  applications. Find out how to take advantage of it in this blog post.
 
 author: casperdcl
 ---
@@ -43,8 +45,9 @@ Tab completion is an indispensable part of writing anything on the command-line.
 Personally, I can't imaging trying to `git co` (aliased to `git checkout`) a
 branch without `<TAB>` to do the heavy lifting.
 
-Now there's a tool called [`dvc`] which is like a cross-platform combination of
-[`git`] and [`make`] designed for handling big data and multiple cloud storage
+Now there's a tool called [`dvc`] which is like Git for data
+(<https://dvc.org>). It can be viewed as a cross-platform combination of [`git`]
+and [`make`] designed for handling big data and multiple cloud storage
 repositories, as well as tracking machine learning experiments. As you can
 imagine, supporting that many buzzwords means it also has a large number of
 subcommands and options.
@@ -101,11 +104,11 @@ shtab --shell=zsh hello.main.get_main_parser \
 Handily you can install `shtab`'s own completions by following the above
 examples replacing `hello` with `shtab`.
 
-### `docopt` example
+### Integrating library example
 
-Feeling minimal? How about adding `import shtab` to your code for a cleaner user
-interface? And let's use `argopt` to convert `docopt`'s syntax to `argparse`
-while we're at it.
+Feeling minimal? How about adding `import shtab` to your application itself for
+a cleaner user interface? And let's use `argopt` to convert `docopt`'s syntax to
+`argparse` while we're at it.
 
 ```python
 """Greetings and partings.
