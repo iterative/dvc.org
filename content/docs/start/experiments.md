@@ -48,10 +48,15 @@ experiment "telemetry". Metrics files contain simple numeric values (e.g. `AUC`)
 and plots files contain matrices and data series (e.g. `ROC` or model loss
 plots) that are meant to be visualizing and compared.
 
-The `-M` flag specifies a metrics file produced by this stage that is not tracked by DVC. In this case, we can version the file using Git and so we choose to ignore it in DVC.  
-The `--plots-no-cache` flag specifies a plot metrics file produced by this stage, which is not cached by DVC. If you want DVC to track the metrics and the plot metrics file produced, simply use `-m` and `--plots` respectively.
+The `-M` flag specifies a metrics file produced by this stage that is not
+tracked by DVC. In this case, we can version the file using Git and so we choose
+to ignore it in DVC.  
+The `--plots-no-cache` flag specifies a plot metrics file produced by this
+stage, which is not cached by DVC. If you want DVC to track the metrics and the
+plot metrics file produced, simply use `-m` and `--plots` respectively.
 
-> With cache: false, DVC skips caching the output as we want "scores.json" to be versioned by Git.
+> With cache: false, DVC skips caching the output as we want "scores.json" to be
+> versioned by Git.
 
 </details>
 
