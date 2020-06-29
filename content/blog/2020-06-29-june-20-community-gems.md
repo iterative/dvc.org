@@ -38,15 +38,31 @@ https://media.giphy.com/media/JYpTAnhT0EI2Q/giphy.gif
 
 _Just like this but with technical documentation._
 
-### Q: After I pushed my local data to remote S3 storage, I noticed the file names are different in S3- they're hash values. [Can I make them more meaningful names?](https://discord.com/channels/485586884165107732/563406153334128681/717737163122540585)
+### Q: After I pushed my local data to remote storage, I noticed the file names are different in my storage repository- they're hash values. [Can I make them more meaningful names?](https://discord.com/channels/485586884165107732/563406153334128681/717737163122540585)
 
-Unfortunately, no. What you're seeing are cached files, and they're stored in a
-special format that makes DVC versioning and addressing possible. You can
-[read more about the format in our docs](https://dvc.org/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory).
+No, but for a good reason! What you're seeing are cached files, and they're
+stored in a special format that makes DVC versioning and addressing possible-
+these file names are how DVC deduplicates data (to avoid keeping multiple copies
+of the same file version) and ensures that each unique version of a file is
+immutable. If you manually overwrote those filenames you would risk breaking Git
+version control. You can
+[read more about how DVC uses this file format in our docs](https://dvc.org/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory).
 
-If you want to see a human-readable list of files that are currently tracked by
-DVC, we recommend the `dvc list` command-
-[read up on it here](https://dvc.org/doc/command-reference/list).
+It sounds like you're looking for ways to interact with DVC-tracked objects at a
+high level of abstraction, meaning that you want to interface with the original
+filenames and not the machine-generated hashes used by DVC. There are a few
+secure and recommended ways to do this:
+
+- If you want to see a human-readable list of files that are currently tracked
+  by DVC, try the `dvc list`
+  command-[read up on it here](https://dvc.org/doc/command-reference/list).
+- Check out our
+  [data registry tutorial](https://dvc.org/doc/use-cases/data-registries#data-registries)
+  to see how the commands `dvc get` and `dvc import` are used to download and
+  share DVC-tracked artifacts. The syntax is built for an experience like using
+  a package manager.
+- The [DVC Python API](https://dvc.org/doc/api-reference) gives you programmatic
+  access to DVC-tracked artifacts, using human-readable filenames.
 
 ### Q: [Is it better practice to `dvc add` data files individually, or to add a directory containing multiple data files?](https://discord.com/channels/485586884165107732/563406153334128681/722141190312689675)
 
@@ -60,9 +76,9 @@ level. Otherwise, add files one-by-one. You can
 We don't have any tutorials for this use case exactly, but it's a very
 straightforward modification from
 [our basic use cases](https://dvc.org/doc/use-cases). The key difference when
-using MinIO or a similar API (like DigitalOcean Spaces or IBM Cloud Object
-Storage) is that in addition to setting remote data storage, you must set the
-`endpointurl` too. For example:
+using MinIO or a similar S3-compatible storage (like DigitalOcean Spaces or IBM
+Cloud Object Storage) is that in addition to setting remote data storage, you
+must set the `endpointurl` too. For example:
 
 ```dvc
 $ dvc remote add -d myremote s3://mybucket/path/to/dir
@@ -119,7 +135,7 @@ and outputs a model `model.pkl`. To create a DVC pipeline stage corresponding to
 this process, you could do so like this:
 
 ```dvc
-dvc run -f train.dvc
+$ dvc run -n train
         -d train.py -d data
         -o model.pkl
         python train.py
@@ -130,9 +146,9 @@ not necessarily desirable if you have recently run it, the process is time
 consuming, and the dependencies and outputs haven't changed. You can use the
 `--no-exec` flag to get around this:
 
-```
-dvc run --no-exec
-        -f train.dvc
+```dvc
+$ dvc run --no-exec
+        -n train
         -d train.py -d data
         -o model.pkl
         python train.py
@@ -142,3 +158,7 @@ This flag can also be useful when you want to define the pipeline on your local
 machine but plan to run it later on a different machine (perhaps an instance in
 the cloud).
 [Read more about the `--no-exec` flag in our docs.](https://dvc.org/doc/command-reference/run)
+
+One other approach worth mentioning is that you can manually edit your
+`dvc.yaml` file to add a stage. If you add a stage this way, pipeline commands
+won't be executed until you run `dvc repro`.
