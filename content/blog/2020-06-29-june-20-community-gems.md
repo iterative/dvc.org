@@ -41,7 +41,7 @@ _Just like this but with technical documentation._
 ### Q: After I pushed my local data to remote storage, I noticed the file names are different in my storage repository- they're hash values. [Can I make them more meaningful names?](https://discord.com/channels/485586884165107732/563406153334128681/717737163122540585)
 
 No, but for a good reason! What you're seeing are cached files, and they're
-stored in a special format that makes DVC versioning and addressing possible-
+stored with a special naming convention that makes DVC versioning and addressing possible-
 these file names are how DVC deduplicates data (to avoid keeping multiple copies
 of the same file version) and ensures that each unique version of a file is
 immutable. If you manually overwrote those filenames you would risk breaking Git
