@@ -7,40 +7,26 @@ picture: ''
 author: peter_rowlands
 ---
 
-DVC is a version control system for machine learning projects and offers a wide
-range of [features](/features) designed to improve ML project workflows, but at
-its core, DVC is a data management tool. And as a data management tool, DVC must
-provide support for one requirement common to any typical ML project: handling
-large amounts of data.
+At its core, [DVC](/) is simply a data management tool. While DVC does include
+many additional [features](/features) for machine learning (ML) workflows, DVC
+can be used track and version files and directories in any context, even in
+scenarios involving large amounts of data (both in terms of file size and file
+count).
 
-ML projects require storing and processing a lot of data. As new iterations or
-experiments are added to a project, the amount of data associated with the
-project will continue to grow. A typical DVC repository may contain millions of
-files or more in one revision of a dataset. On top of that, the number of files
-we need to handle in DVC multiplies with each version of a dataset.
-
-In order to work with this much data, ML projects often rely on cloud storage,
-whether it is to address local storage space limitations, enable collaboration
-between users or function as a backup solution. So naturally, as a data
-management tool for ML, DVC includes platform agnostic support for cloud
-storage.
-
-One of the key features provided by DVC is the ability to efficiently
-synchronize versioned datasets between a user's local machine and
-[remote storage](https://dvc.org/doc/command-reference/remote), and our users
-have frequently shown the need for us to optimize this process wherever
-possible. In addition to simply being frustrating for a user, slow runtimes for
-data synchronization operations will have a negative impact on how quickly new
-iterations of an ML project can be made.
+One of the key data management features provided by DVC is the ability to
+efficiently synchronize versioned datasets between a user's local machine and
+(platform agnostic) [cloud (remote) storage](/doc/command-reference/remote). Our
+users have frequently stressed the need for us to optimize these synchronization
+operations wherever possible, and one of our key goals while developing DVC 1.0
+was to improve performance in this area.
 
 ![](/uploads/images/2020-06-29/optimization_screenshot.png '=600')
 
-While developing DVC, we identified one particular performance bottleneck which
-affects all cloud sync tools - remote (cloud) status queries. Any data sync tool
-will be restricted by certain limits imposed by cloud storage APIs - namely, the
-actual API methods available for querying file status. Using one method over
-another could mean the difference between a given sync operation taking seconds
-rather than hours to complete.
+In particular, we identified one bottleneck which affects all cloud sync tools -
+remote status queries. Any data sync tool will be restricted by certain limits
+imposed by cloud storage APIs - namely, the actual API methods available for
+querying file status. Using one method over another could mean the difference
+between a given sync operation taking seconds rather than hours to complete.
 
 And with the release of version 1.0, DVC now includes several performance
 enhancements to address this issue, ensuring that we always optimize requests
@@ -58,9 +44,8 @@ the cloud and a user's local machine. Many general-use tools are available for
 synchronizing data to and from cloud storage, some widely used options are
 [rsync](https://rsync.samba.org/), [rclone](https://rclone.org/) and
 [aws sync](https://docs.aws.amazon.com/cli/latest/reference/s3/sync.html), each
-with their own advantages and disadvantages. Likewise, DVC provides a solution
-geared specifically towards effectively handling
-[data-management scenarios](/doc/use-cases) common to ML projects.
+with their own advantages and disadvantages. Likewise, in DVC we provide sync
+functionality through our [remote](/doc/command-reference/remote) commands.
 
 Regardless of use case, any data sync tool must solve one particular issue:
 
@@ -233,16 +218,17 @@ should be used._
 
 As we demonstrated earlier, neither method can be configured as a
 one-size-fits-all solution. For DVC, the number of files we need to sync (and
-query) can vary wildly between ML project revisions. Likewise, the total number
-of files in a remote will continually grow over time, as new iterations of the
-project are pushed into cloud storage. As a result, selecting the optimal query
-method must really be on a case-by-case basis per each sync operation. Default
-(or user configured) behavior cannot be relied upon in this situation.
+query) can vary wildly project revisions. Likewise, the total number of files in
+a remote will continually grow over time, as new iterations of a project are
+versioned and pushed into cloud storage. As a result, selecting the optimal
+query method must really be done on a case-by-case basis per each sync
+operation. Default (or user configured) behavior cannot be relied upon in this
+situation.
 
-However, DVC is a specialized tool designed specifically for ML. In DVC, we are
-synchronizing different versions of ML project datasets. This means that we have
-contextual information about both the contents and structure of local and cloud
-storage, which would normally be unavailable to general use tools.
+However, since in DVC we synchronize different revisions of a versioned dataset,
+we have access to certain contextual information about both the contents and
+structure of local and cloud storage, which would normally be unavailable to
+general use tools.
 
 In DVC 1.0, we leverage this information to provide improved performance over
 other data sync tools (including prior DVC releases). In version 1.0, we are now
@@ -322,10 +308,10 @@ individually, we can run up to 256 sets of sequential queries at once._
 
 A common DVC use case is
 [versioning](/doc/use-cases/versioning-data-and-model-files) the contents of a
-large directory. As new iterations of an ML project are created, the contents of
-that directory will be modified with each version, and DVC will be used to push
-each version into cloud storage. In many cases, only a small number of files
-within that directory will be modified between project iterations.
+large directory. As the contents of the directory changes over time, DVC will be
+used to push each updated version of the directory into cloud storage. In many
+cases, only a small number of files within that directory will be modified
+between project iterations.
 
 So after the first version of a project is pushed into cloud storage, for
 subsequent versions, only the small subset of changed files actually needs to be
