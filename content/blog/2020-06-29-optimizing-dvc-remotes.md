@@ -75,10 +75,37 @@ over rclone by 20x or more in certain scenarios.
 
 ### DVC 1.0 vs DVC 0.91 vs rclone performance
 
-![benchmarks](https://raw.githubusercontent.com/gist/pmrowla/338d9645bd05df966f8aba8366cab308/raw/37f64e28e8c2e963aff0d320f6e0cea0724342a5/remote-benchmarks.svg 'DVC 1.0 performance comparison')
-_Note: Benchmark details can be found
-[here](https://gist.github.com/pmrowla/338d9645bd05df966f8aba8366cab308#benchmarks)
-(rclone run with default configuration)._
+![benchmarks](/uploads/images/2020-06-29/dvc_rclone_bench.svg 'DVC 1.0 vs rclone performance comparison')
+
+The above chart shows status query runtimes in DVC 1.0, DVC 0.91 and rclone for
+synchronizing a local directory to an S3 bucket. The local directory contains
+100,000 files, and the S3 bucket contains approximately 1 million files. 1 file
+in the local directory has been modified since the directory was last
+synchronized with the S3 bucket.
+
+In this example, we are testing the length of time it takes DVC or rclone to
+determine (and report to the user) that only the one modified file is missing
+from the S3 bucket and needs to be uploaded.
+
+This simulates a typical DVC use case in which a user uses DVC to track a
+directory containing a (relatively) large number of files and pushes the
+directory into cloud storage. The user then continually repeats a process of:
+
+1. Modify a small subset of files in the directory.
+2. Push the updated version of the directory into cloud storage.
+
+_Note: Benchmark runtimes are for status query only (using `dvc status` in DVC
+and `--dry-run` in rclone), no file data was transferred to S3._
+
+_Benchmark command usage:_
+
+```dvc
+time dvc status -c -r remote
+time rclone copy --dry-run --progress --exclude "**/**.unpacked/" .dvc/cache remote:...
+```
+
+_Benchmark platform: Python 3.7, MacOS Catalina, DVC installed from pip,
+dual-core 3.1GHz i7 cpu_
 
 ## How we query file status via cloud storage APIs
 
