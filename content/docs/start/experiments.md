@@ -25,6 +25,11 @@ $ dvc run -n evaluate \
 
 ### 💡 Expand to see what happens under the hood.
 
+The `-M` flag here specifies a metrics file, while the `--plots-no-cache` flag
+specifies a plot metrics file produced by this stage that will not tracked by
+DVC. You can choose whether to ignore the files in DVC or cache them. See
+[`dvc run`](/doc/command-reference/run#options) for use cases.
+
 DVC generates a new stage in the `dvc.yaml` file:
 
 ```yaml
@@ -46,17 +51,10 @@ The biggest difference to previous stages in our pipeline is in two new
 sections: `metrics` and `plots`. These are used to mark certain files containing
 experiment "telemetry". Metrics files contain simple numeric values (e.g. `AUC`)
 and plots files contain matrices and data series (e.g. `ROC` or model loss
-plots) that are meant to be visualizing and compared.
+plots) that are meant to be visualized and compared.
 
-The `-M` flag specifies a metrics file produced by this stage that is not
-tracked by DVC. In this case, we can version the file using Git and so we choose
-to ignore it in DVC.  
-The `--plots-no-cache` flag specifies a plot metrics file produced by this
-stage, which is not cached by DVC. If you want DVC to track the metrics and the
-plot metrics file produced, use `-m` and `--plots` instead respectively.
-
-> With cache: false, DVC skips caching the output as we want "scores.json" to be
-> versioned by Git.
+> With `cache: false`, DVC skips caching the output as we want `scores.json` and
+> `prc.json` to be versioned by Git.
 
 </details>
 
