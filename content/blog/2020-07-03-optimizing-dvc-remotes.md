@@ -1,6 +1,6 @@
 ---
 title: Remote Optimization Improvements in DVC 1.0
-date: 2020-06-29
+date: 2020-07-03
 description: |
   An overview of how data synchronization to and from remote storage is optimized in DVC 1.0.
 picture: ''
@@ -20,7 +20,7 @@ users have frequently stressed the need for us to optimize these synchronization
 operations wherever possible, and one of our key goals while developing DVC 1.0
 was to improve performance in this area.
 
-![](/uploads/images/2020-06-29/optimization_screenshot.png '=600')
+![](/uploads/images/2020-07-03/optimization_screenshot.png '=600')
 
 In particular, we identified one bottleneck which affects all cloud sync tools -
 remote status queries. Any data sync tool will be restricted by certain limits
@@ -75,7 +75,7 @@ over rclone by 20x or more in certain scenarios.
 
 ### DVC 1.0 vs DVC 0.91 vs rclone performance
 
-![benchmarks](/uploads/images/2020-06-29/dvc_rclone_bench.svg 'DVC 1.0 vs rclone performance comparison')
+![benchmarks](/uploads/images/2020-07-03/dvc_rclone_bench.svg 'DVC 1.0 vs rclone performance comparison')
 
 The above chart shows status query runtimes in DVC 1.0, DVC 0.91 and rclone for
 synchronizing a local directory to an S3 bucket. The local directory contains
