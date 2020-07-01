@@ -224,9 +224,16 @@ file:///Users/dvc/example-get-started/plots.html
 
 ### 💡 Expand to see what plots modify does under the hood
 
-[`dvc plots`](https://dvc.org/doc/command-reference/plots#plots) is a flexible visualisation tool for your continuous metrics. [`dvc plots modify`](https://dvc.org/doc/command-reference/plots/modify), in the example above, sets what to use as an X-axis what to plot on Y-axis of a visualisation when you run `dvc plots diff` later on.
+[`dvc plots`](https://dvc.org/doc/command-reference/plots#plots) is a flexible
+visualisation tool for your continuous metrics.
+[`dvc plots modify`](https://dvc.org/doc/command-reference/plots/modify), in the
+example above, sets what to use as an X-axis what to plot on Y-axis of a
+visualisation when you run `dvc plots diff` later on.
 
-The plot format will be saved into `dvc.yaml`, and you will have to commit the changes before `dvc plots diff can work with them. Otherwise, you'll see a warning and the changes won't be applied.
+The plot format will be saved into `dvc.yaml`, and you will have to commit the
+changes before `dvc plots diff can work with them. Otherwise, you'll see a
+warning and the changes won't be applied.
+
  </details>
  
 All these commands also accept
@@ -457,9 +464,16 @@ file:///Users/dvc/example-get-started/plots.html
 
 ### 💡 Expand to see what plots modify does under the hood
 
-[`dvc plots`](https://dvc.org/doc/command-reference/plots#plots) is a flexible visualisation tool for your continuous metrics. [`dvc plots modify`](https://dvc.org/doc/command-reference/plots/modify), in the example above, sets what to use as an X-axis what to plot on Y-axis of a visualisation when you run `dvc plots diff` later on.
+[`dvc plots`](https://dvc.org/doc/command-reference/plots#plots) is a flexible
+visualisation tool for your continuous metrics.
+[`dvc plots modify`](https://dvc.org/doc/command-reference/plots/modify), in the
+example above, sets what to use as an X-axis what to plot on Y-axis of a
+visualisation when you run `dvc plots diff` later on.
 
-The plot format will be saved into `dvc.yaml`, and you will have to commit the changes before `dvc plots diff can work with them. Otherwise, you'll see a warning and the changes won't be applied.
+The plot format will be saved into `dvc.yaml`, and you will have to commit the
+changes before `dvc plots diff can work with them. Otherwise, you'll see a
+warning and the changes won't be applied.
+
  </details>
  
 All these commands also accept
