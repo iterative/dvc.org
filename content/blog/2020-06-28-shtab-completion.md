@@ -13,7 +13,7 @@ descriptionLong: |
   more generic and valuable to the world's entire ecosystem of Python CLI
   applications. Find out how to take advantage of it in this blog post.
 
-author: casperdcl
+author: casper_dcl
 ---
 
 > Other potential titles:
