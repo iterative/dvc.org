@@ -24,8 +24,6 @@ the dependency graph (a
 by the [stage files](/doc/command-reference/run) (DVC-files with dependencies)
 that are found in the <abbr>project</abbr>. The commands defined in these stages
 can then be executed in the correct order, reproducing pipeline results.
-`dvc repro` relies on the DAG definition that it reads from `dvc.yaml`, and uses
-`dvc.lock` to determine what exactly needs to be run.
 
 > Pipeline stages are typically defined using the `dvc run` command, while
 > initial data dependencies can be registered by the `dvc add` command.
