@@ -99,16 +99,18 @@ const SidebarMenuItem: React.FC<ISidebarMenuItemProps> = ({
     <>
       {parentElement}
       {children && (
-        <Collapse isOpened={!!isActive}>
-          {children.map(item => (
-            <SidebarMenuItem
-              key={item.path}
-              activePaths={activePaths}
-              onClick={onClick}
-              {...item}
-            />
-          ))}
-        </Collapse>
+        <span hidden={!isActive}>
+          <Collapse isOpened={!!isActive}>
+            {children.map(item => (
+              <SidebarMenuItem
+                key={item.path}
+                activePaths={activePaths}
+                onClick={onClick}
+                {...item}
+              />
+            ))}
+          </Collapse>
+        </span>
       )}
     </>
   )

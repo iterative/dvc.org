@@ -89,7 +89,9 @@ const Section: React.FC<ICommunitySection> = ({
       {background && <img className={styles.picture} src={background} alt="" />}
 
       {isTablet ? (
-        <Collapse isOpened={isContentVisible}>{children}</Collapse>
+        <span hidden={!isContentVisible}>
+          <Collapse isOpened={isContentVisible}>{children}</Collapse>
+        </span>
       ) : (
         children
       )}
