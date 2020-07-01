@@ -250,7 +250,7 @@ Updating lock file 'dvc.lock'
 ```
 
 You can now check that `dvc.lock` and `count.txt` have been updated with the new
-information and updated dependency/output file hash values, and a new result,
+information: updated dependency/output file hash values, and a new result,
 respectively.
 
 ## Example: Downstream
