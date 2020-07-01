@@ -46,15 +46,19 @@ $ git commit -m "Initialize DVC"
 DVC functionality can be split into layers and we'll explore them one by one in
 the next few sections:
 
-- [**Data management**](/doc/tutorials/get-started/data-pipelines) is the core
-  part of DVC for large files, datasets, ML models versioning and efficient
-  sharing. We'll show how to use a regular Git workflow, without storing large
-  files with Git. Think "Git for data".
+- [**Data versioning**](/doc/start/data-versioning) is the core part of DVC for
+  large files, datasets, ML models versioning and efficient sharing. We'll show
+  how to use a regular Git workflow, without storing large files with Git. Think
+  "Git for data".
 
-- [**Data pipelines**](/doc/tutorials/get-started/data-pipelines) describe how
-  models and other data artifacts are built, and provide an efficient way to
-  reproduce them. Think "Makefiles for data and ML projects" done right.
+- [**Data access**](/doc/start/data-access) shows how to use data artifacts from
+  outside of the project and how to import data artifacts from another DVC
+  projects. This can help to download a specific version of an ML model to a
+  deployment server or import a model to another project.
 
-- [**Experiments**](/doc/tutorials/get-started/experiments) attach parameters,
-  metrics, plots. You can capture and navigate experiments not leaving Git.
-  Think "Git for ML".
+- [**Data pipelines**](/doc/start/data-pipelines) describe how models and other
+  data artifacts are built, and provide an efficient way to reproduce them.
+  Think "Makefiles for data and ML projects" done right.
+
+- [**Experiments**](/doc/start/experiments) attach parameters, metrics, plots.
+  You can capture and navigate experiments not leaving Git. Think "Git for ML".
