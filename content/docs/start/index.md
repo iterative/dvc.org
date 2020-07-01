@@ -56,7 +56,7 @@ the next few sections:
   projects. This can help to download a specific version of an ML model to a
   deployment server or import a model to another project.
 
-- [**Data pipelines**](/doc//start/data-pipelines) describe how models and other
+- [**Data pipelines**](/doc/start/data-pipelines) describe how models and other
   data artifacts are built, and provide an efficient way to reproduce them.
   Think "Makefiles for data and ML projects" done right.
 
