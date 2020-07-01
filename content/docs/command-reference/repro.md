@@ -273,12 +273,10 @@ $ dvc repro --downstream
 Data and pipelines are up to date.
 ```
 
-The reason being that the `text.txt` file is a dependency in the last
-stage of the pipeline (used by default by `dvc repro`),
-This last `count` stage is
+The reason being that the `text.txt` file is a dependency in the last stage of
+the pipeline (used by default by `dvc repro`), This last `count` stage is
 dependent on `filter` stage, which happens first in this pipeline (shown in the
 following figure):
-
 ```dvc
 $ dvc dag
 
