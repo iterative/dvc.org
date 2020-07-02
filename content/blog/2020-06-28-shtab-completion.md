@@ -13,8 +13,8 @@ descriptionLong: |
   more generic and valuable to the world's entire ecosystem of Python CLI
   applications. Find out how to take advantage of it in this blog post.
 
-picture: https://imgs.xkcd.com/comics/is_it_worth_the_time.png
-pictureComment: xkcd#1205
+picture: 2020-06-28/dvc.gif
+pictureComment: `shtab`-driven `dvc` completion in `bash` and `zsh`
 author: casper_dcl
 ---
 
@@ -108,11 +108,29 @@ shtab --shell=zsh hello.main.get_main_parser \
 Handily you can install `shtab`'s own completions by following the above
 examples replacing `hello` with `shtab`.
 
+Using `shtab`, here's what [`dvc`]'s completion looks like when installed:
+
+```dvc
+% dvc <TAB>
+Completing dvc commands
+add         -- Track data files or directories with DVC.
+cache       -- Manage cache settings.
+checkout    -- Checkout data files from cache.
+commit      -- Save changed data to cache and update DVC-files.
+completion  -- Prints out shell tab completion scripts.
+At Top: Hit TAB for more, or the character to insert
+```
+
+All completion suggestions guaranteed in-sync with the code!
+
+You might notice one of the subcommands provided by `dvc` is `completion`.
+Here's a quick example of how to provide such convenience for users:
+
 ### Integrating library example
 
 Feeling minimal? How about adding `import shtab` to your application itself for
-a cleaner user interface? And let's use `argopt` to convert `docopt`'s syntax to
-`argparse` while we're at it.
+a cleaner user interface? And let's use `argopt` to convert `docopt`'s neat
+syntax to `argparse` while we're at it.
 
 ```python
 """Greetings and partings.
