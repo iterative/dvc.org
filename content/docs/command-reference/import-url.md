@@ -108,7 +108,7 @@ Instead of:
 $ dvc import-url https://data.dvc.org/get-started/data.xml data.xml
 ```
 
-it is possible to use `dvc run`, for example (HTTP URL):
+It is possible to use `dvc run`, for example (HTTP URL):
 
 ```dvc
 $ dvc run -n download_data \

@@ -212,8 +212,8 @@ Regular <abbr>dependencies</abbr> and all kinds of <abbr>outputs</abbr>
 [plots](/doc/command-reference/plots) files) are also listed (per stage) in
 `dvc.lock`, but with an additional field to store the hash value of each file or
 directory tracked by DVC: `md5` for local file system dependencies and SSH
-<abbr>external dependencies</abbr>, `etag` for HTTP, S3, Azure, and Google
-Cloud, and `checksum` for HDFS.
+<abbr>external dependencies</abbr>; `etag` for HTTP, S3, Azure, and Google
+Cloud; and `checksum` for HDFS.
 
 [Parameter](/doc/command-reference/params#examples) key/value pairs are listed
 separately under `params`, grouped by parameters file.
