@@ -25,12 +25,10 @@ $ dvc run -n evaluate \
 
 ### 💡 Expand to see what happens under the hood.
 
-The `-M` flag here specifies a metrics file, while the `--plots-no-cache` flag
-specifies a plot metrics file produced by this stage that will not tracked by
-DVC. You can choose whether to ignore the files in DVC or cache them. See
-[`dvc run`](/doc/command-reference/run#options) for use cases.
-
-DVC generates a new stage in the `dvc.yaml` file:
+The `-M` option here specifies a metrics file, while the `--plots-no-cache`
+option specifies a plots file produced by this stage that will not be
+<abbr>cached</abbr> by DVC. `dvc run` generates a new stage in the `dvc.yaml`
+file:
 
 ```yaml
 evaluate:
