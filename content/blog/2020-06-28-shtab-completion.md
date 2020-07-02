@@ -8,7 +8,7 @@ description: |
 descriptionLong: |
   We've made a painless tab-completion script generator for Python applications!
   It's called `shtab` and it currently works with `argparse`, `docopt`, and
-  `docopt` to produce `bash` and `zsh` completion scripts.
+  `argopt` to produce `bash` and `zsh` completion scripts.
   This tool was originally created to help `dvc`, but we realised it could be made
   more generic and valuable to the world's entire ecosystem of Python CLI
   applications. Find out how to take advantage of it in this blog post.
@@ -28,7 +28,7 @@ Command line tools are powerful. Things like [`make`] have manual pages
 spanning, well, pages, while just the list of [`git`] subcommands is longer than
 can fit on a standard `80 x 24` terminal screen.
 
-```bash
+```dvc
 $ git <TAB>
 add                  filter-branch        rebase
 am                   format-patch         reflog
@@ -77,9 +77,11 @@ import argparse
 
 def get_main_parser():
     parser = argparse.ArgumentParser(prog="hello")
-    parser.add_argument("who", help="a good question", nargs="?", default="world")
-    parser.add_argument("--what", help="a better question", default="hello",
-                        choices=["hello", "goodbye"])
+    parser.add_argument(
+        "who", help="good question", nargs="?", default="world")
+    parser.add_argument(
+        "--what", help="a better question", default="hello",
+        choices=["hello", "goodbye"])
     return parser
 
 if __name__ == "__main__":
