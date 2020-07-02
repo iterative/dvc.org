@@ -26,16 +26,18 @@ Get the sample code like this:
 $ wget https://code.dvc.org/get-started/code.zip
 $ unzip code.zip
 $ rm -f code.zip
-$ ls -R .
-params.yaml  src/
+$ tree
+.
+├── params.yaml
+└── src
+    ├── evaluate.py
+    ├── featurization.py
+    ├── prepare.py
+    ├── requirements.txt
+    └── train.py
 
-./src:
-evaluate.py       featurization.py  prepare.py        requirements.txt  train.py
+1 directory, 6 files
 ```
-
-`params.yaml` contains training and evaluation parameters, we'll cover them later in the guide. 
-
-`src` contains the python code we'll use in this guide. 
 
 Now let's install the requirements:
 
