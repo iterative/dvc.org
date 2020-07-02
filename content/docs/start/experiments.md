@@ -222,6 +222,6 @@ All these commands also accept
 names) to compare. This is a powerful mechanism for navigating experiments to
 see the history, to pick the best ones, etc.
 
-If you report more than one metric to the `plots` file, you can provide 
-metric names to `dvc plots diff` command with `-x` and `-y` options.
-See more here: [`dvc plots diff` options](https://dvc.org/doc/command-reference/plots/diff#options).
+If you report more than one metric to the `plots` file, you can provide metric
+names to `dvc plots diff` command with `-x` and `-y` options. See more here:
+[`dvc plots diff` options](https://dvc.org/doc/command-reference/plots/diff#options).
