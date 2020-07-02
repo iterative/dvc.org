@@ -13,8 +13,8 @@ descriptionLong: |
   more generic and valuable to the world's entire ecosystem of Python CLI
   applications. Find out how to take advantage of it in this blog post.
 
-picture: 2020-06-28/dvc.gif
-pictureComment: `shtab`-driven `dvc` completion in `bash` and `zsh`
+picture: https://imgs.xkcd.com/comics/is_it_worth_the_time.png
+pictureComment: xkcd#1205
 author: casper_dcl
 ---
 
@@ -107,6 +107,8 @@ shtab --shell=zsh hello.main.get_main_parser \
 
 Handily you can install `shtab`'s own completions by following the above
 examples replacing `hello` with `shtab`.
+
+![`shtab`-driven `dvc` completion in `bash` and `zsh`](/uploads/images/2020-06-28/dvc.gif)
 
 Using `shtab`, here's what [`dvc`]'s completion looks like when installed:
 
