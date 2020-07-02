@@ -35,8 +35,6 @@ $ tree
     ├── prepare.py
     ├── requirements.txt
     └── train.py
-
-1 directory, 6 files
 ```
 
 Now let's install the requirements:
