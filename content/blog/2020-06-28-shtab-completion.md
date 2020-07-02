@@ -173,6 +173,13 @@ subcommand when integrating more tightly with existing applications.
 
 Try it out with `pip install -U shtab` or `conda install -c conda-forge shtab`!
 
+Is it worth the time?
+
+[![xkcd#1205](https://imgs.xkcd.com/comics/is_it_worth_the_time.png)](https://xkcd.com/1205)
+
+`shtab` would be on the second row, far left (maybe even off grid). It's worth
+spending days to get right yet only takes seconds to install.
+
 [`argopt`]: https://pypi.org/project/argopt
 [`argparse`]: https://docs.python.org/library/argparse
 [`docopt`]: https://pypi.org/project/docopt
