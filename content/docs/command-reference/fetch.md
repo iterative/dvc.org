@@ -120,8 +120,8 @@ or `-T` options are used).
 
 ## Examples
 
-Let's employ a simple <abbr>workspace</abbr> with some data, code, ML models,
-pipeline stages, such as the <abbr>DVC project</abbr> created for the
+Let's employ a <abbr>workspace</abbr> with some data, code, ML models, pipeline
+stages, such as the <abbr>DVC project</abbr> created for the
 [Get Started](/doc/tutorials/get-started). Then we can see what happens with
 `dvc fetch` as we switch from tag to tag.
 
@@ -166,8 +166,8 @@ bigrams-experiment      <- use bigrams to improve the model
 ## Example: Default behavior
 
 This project comes with a predefined HTTP
-[remote storage](/doc/command-reference/remote). We can now just run `dvc fetch`
-to download the most recent `model.pkl`, `data.xml`, and other DVC-tracked files
+[remote storage](/doc/command-reference/remote). We can now run `dvc fetch` to
+download the most recent `model.pkl`, `data.xml`, and other DVC-tracked files
 into our local <abbr>cache</abbr>.
 
 ```dvc
@@ -256,8 +256,8 @@ $ dvc status -c
     deleted:            data/data.xml
 ```
 
-One could do a simple `dvc fetch` to get all the data, but what if you only want
-to retrieve the data up to our third stage, `train.dvc`? We can use the
+One could do a `dvc fetch` to get all the data, but what if you only want to
+retrieve the data up to our third stage, `train.dvc`? We can use the
 `--with-deps` (or `-d`) option:
 
 ```dvc

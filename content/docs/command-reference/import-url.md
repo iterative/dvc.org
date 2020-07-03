@@ -31,7 +31,7 @@ external data source changes. Example scenarios:
 - A shared dataset on a remote storage that is managed and updated outside DVC.
 
 > Note that `dvc get-url` corresponds to the first step this command performs
-> (just download the file or directory).
+> (just downloads the file or directory).
 
 The `dvc import-url` command helps the user create such an external data
 dependency without having to manually copying files from the supported remote

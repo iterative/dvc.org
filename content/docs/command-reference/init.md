@@ -125,7 +125,7 @@ include:
 
 - SCM other than Git is being used. Even though there are DVC features that
   require DVC to be run in the Git repo, DVC can work well with other version
-  control systems. Since DVC relies on simple
+  control systems. Since DVC relies on
   [`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvcyaml-file) files to
   manage <abbr>pipelines</abbr>, data, etc, they can be added into any SCM thus
   providing large data files and directories versioning.

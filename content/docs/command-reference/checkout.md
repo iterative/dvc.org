@@ -158,7 +158,7 @@ baseline-experiment     <- First simple version of the model
 bigrams-experiment      <- Uses bigrams to improve the model
 ```
 
-We can now just run `dvc checkout` that will update the most recent `model.pkl`,
+We can now run `dvc checkout` that will update the most recent `model.pkl`,
 `data.xml`, and other files that are tracked by DVC. The model file hash is
 defined in the `dvc.lock` file, and in the `data.xml.dvc` file for the
 `data.xml`:

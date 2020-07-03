@@ -181,7 +181,7 @@ the
 best
 ```
 
-And runs a few simple transformations to filter and count numbers:
+And runs a few transformations to filter and count numbers:
 
 ```dvc
 $ dvc run -f filter.dvc -d text.txt -o numbers.txt \
@@ -196,8 +196,7 @@ $ dvc run -f Dvcfile -d numbers.txt -d process.py -M count.txt \
 > example because that's the default stage file name `dvc repro` will read
 > without having to provide any `targets`.
 
-Where `process.py` is a script that, for simplicity, just prints the number of
-lines:
+Where `process.py` is a script that, for simplicity, prints the number of lines:
 
 ```python
 import sys

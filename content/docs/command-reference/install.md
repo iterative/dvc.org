@@ -39,7 +39,7 @@ project's results (which implicitly commits them to DVC as well).
 This hook automates `dvc status` before `git commit` when needed, to remind the
 user to employ either `dvc commit` or `dvc repro`.
 
-**Push**: While publishing changes to the Git remote with `git push`, its easy
+**Push**: While publishing changes to the Git remote with `git push`, it's easy
 to forget that the `dvc push` command is necessary to upload new or updated data
 files and directories tracked by DVC to
 [remote storage](/doc/command-reference/remote).
@@ -117,8 +117,8 @@ repos:
 
 ## Examples
 
-Let's employ a simple <abbr>workspace</abbr> with some data, code, ML models,
-pipeline stages, such as the <abbr>DVC project</abbr> created in our
+Let's employ a <abbr>workspace</abbr> with some data, code, ML models, pipeline
+stages, such as the <abbr>DVC project</abbr> created in our
 [Get Started](/doc/tutorials/get-started) section. Then we can see what happens
 with `dvc install` in different situations.
 
@@ -261,7 +261,7 @@ matching what is referenced by the DVC files.
 To follow this example, start with the same workspace as before, making sure it
 is not in a _detached HEAD_ state by running `git checkout master`.
 
-If we simply edit one of the code files:
+If we edit one of the code files:
 
 ```dvc
 $ vi src/featurization.py

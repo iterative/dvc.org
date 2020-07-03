@@ -29,7 +29,7 @@ updating the import later, if it has changed in its data source. (See
 `dvc update`.)
 
 > Note that `dvc get` corresponds to the first step this command performs (just
-> download the data).
+> downloads the data).
 
 > See `dvc list` for a way to browse repository contents to find files or
 > directories to import.
@@ -102,7 +102,7 @@ from the source repo.
 
 ## Examples
 
-A simple case for this command is to import a dataset from an external <abbr>DVC
+A case for this command is to import a dataset from an external <abbr>DVC
 repository</abbr>, such as our
 [get started example repo](https://github.com/iterative/example-get-started).
 
@@ -170,10 +170,10 @@ deps:
 
 If `rev` is a Git branch or tag (where the underlying commit changes), the data
 source may have updates at a later time. To bring it up to date if so (and
-update `rev_lock` in the `.dvc` file), simply use `dvc update <stage>.dvc`. If
-`rev` is a specific commit hash (does not change), `dvc update` without options
-will not have an effect on the import stage. You may force-update it to a
-different commit with `dvc update --rev`:
+update `rev_lock` in the `.dvc` file), use `dvc update <stage>.dvc`. If `rev` is
+a specific commit hash (does not change), `dvc update` without options will not
+have an effect on the import stage. You may force-update it to a different
+commit with `dvc update --rev`:
 
 ```dvc
 $ dvc update --rev cats-dogs-v2
@@ -189,9 +189,8 @@ If you take a look at our
 <abbr>project</abbr>, you'll see that it's organized into different directories
 such as `tutorial/ver` and `use-cases/`, and these contain
 [`.dvc` files](/doc/user-guide/dvc-files-and-directories#dvc-files) that track
-different datasets. Given this simple structure, its data files can be easily
-shared among several other projects using `dvc get` and `dvc import`. For
-example:
+different datasets. Given this structure, its data files can be easily shared
+among several other projects using `dvc get` and `dvc import`. For example:
 
 ```dvc
 $ dvc get https://github.com/iterative/dataset-registry \

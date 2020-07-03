@@ -37,11 +37,11 @@ The default remote is used (see `dvc config core.remote`) unless the `--remote`
 option is used. See `dvc remote` for more information on how to configure a
 remote.
 
-With no arguments, just `dvc pull` or `dvc pull --remote <name>`, it downloads
-only the files (or directories) missing from the workspace by searching all
-stages in [`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvcyaml-file)
-or [`.dvc`](/doc/user-guide/dvc-files-and-directories#dvc-files) files currently
-in the <abbr>project</abbr>. It will not download files associated with earlier
+With no arguments, `dvc pull` or `dvc pull --remote <name>`, it downloads only
+the files (or directories) missing from the workspace by searching all stages in
+[`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvcyaml-file) or
+[`.dvc`](/doc/user-guide/dvc-files-and-directories#dvc-files) files currently in
+the <abbr>project</abbr>. It will not download files associated with earlier
 commits in the <abbr>repository</abbr> (if using Git), nor will it download
 files that have not changed.
 
@@ -113,8 +113,8 @@ reflinks or hardlinks to put it in the workspace without copying. See
 
 ## Examples
 
-Let's employ a simple <abbr>workspace</abbr> with some data, code, ML models,
-pipeline stages, such as the <abbr>DVC project</abbr> created for the
+Let's employ a <abbr>workspace</abbr> with some data, code, ML models, pipeline
+stages, such as the <abbr>DVC project</abbr> created for the
 [Get Started](/doc/tutorials/get-started). Then we can see what happens with
 `dvc pull`.
 
@@ -193,8 +193,8 @@ $ dvc status -c
     ...
 ```
 
-One could do a simple `dvc pull` to get all the data, but what if you only want
-to retrieve part of the data?
+One could do a `dvc pull` to get all the data, but what if you only want to
+retrieve part of the data?
 
 ```dvc
 $ dvc pull --with-deps featurize.dvc

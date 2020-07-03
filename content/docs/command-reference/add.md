@@ -93,7 +93,7 @@ files, even when the directory is added as a whole. Examples: `dvc push`,
 
 As a rarely needed alternative, the `--recursive` option causes every file in
 the hierarchy to be added individually. A corresponding `.dvc` file will be
-generated for each file in he same location. This may be helpful to save time
+generated for each file in the same location. This may be helpful to save time
 adding several data files grouped in a structural directory, but it's
 undesirable for data directories with a large number of files.
 
@@ -186,7 +186,7 @@ pics
     └── dogs [more image files]
 ```
 
-Tracking a directory with DVC as simple as with a single file:
+Tracking a directory with DVC is as simple as it is with a single file:
 
 ```dvc
 $ dvc add pics
