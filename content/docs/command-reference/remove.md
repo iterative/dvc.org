@@ -21,7 +21,10 @@ files or directories that are tracked by DVC. It takes one or more stage names
 [`.dvc` files](/doc/user-guide/dvc-files-and-directories#dvc-files) as target,
 removes it, and optionally removes all of its outputs (`outs` field).
 
-Note that it does not remove files from the DVC cache or remote storage (see
+Note that in the case of `.dvc` file `targets`, the tracked files or directories
+(`outs` in the `.dvc` file) are removed by default by this command.
+
+`dvc remove` does not remove files from the DVC cache or remote storage (see
 `dvc gc`). However, remember to run `dvc push` to save the files you actually
 want to use or share in the future.
 
@@ -30,7 +33,8 @@ how it can be used to replace or modify files that are tracked by DVC.
 
 ## Options
 
-- `--outs` - remove the outputs described in the given `targets` as well.
+- `--outs` - remove the outputs of any stage `targets` as well. This is always
+  applied automatically for `.dvc` file targets.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -46,13 +50,10 @@ Let's imagine we have `foo.csv` and `bar.csv` files, that are already
 
 ```dvc
 $ ls *.csv*
-bar.csv
-bar.csv.dvc
-foo.csv
-foo.csv.dvc
+bar.csv  bar.csv.dvc  foo.csv  foo.csv.dvc
 $ cat .gitignore
-/bar.csv
 /foo.csv
+/bar.csv
 ```
 
 This removed the `foo.csv.dvc` file, and lists `.gitignore` to double check that
@@ -61,9 +62,7 @@ the corresponding entry is gone from there:
 ```dvc
 $ dvc remove foo.csv.dvc
 $ ls
-bar.csv
-bar.csv.dvc
-foo.csv
+bar.csv  bar.csv.dvc  foo.csv
 $ cat .gitignore
 /bar.csv
 ```
