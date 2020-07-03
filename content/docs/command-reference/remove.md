@@ -77,28 +77,28 @@ Let's imagine we have a stage named `train` in our
 corresponding files in the <abbr>workspace</abbr>:
 
 ```yaml
-train:
+test:
+  cmd: python train.py data.py
   deps:
-    - foo.csv
+    - data.csv
+    - train.py
   outs:
     - model
 ```
 
 ```dvc
 $ ls
-dvc.yaml dvc.lock
-... foo.csv model
+dvc.lock  dvc.yaml  foo.csv  foo.csv.dvc  model  train.py
 ```
 
-Running `dvc remove` on the stage name will remove this entire entry from
-`dvc.yaml`, and delete its outputs:
+Running `dvc remove` on the stage name will remove that entry from `dvc.yaml`,
+and remove its outputs from `.gitignore`. With the `--outs` option, the outputs
+itself (just `model` in this example) are also removed:
 
 ```dvc
-$ dvc remove train
+$ dvc remove train --outs
 $ ls
-dvc.yaml dvc.lock
-... foo.csv
+dvc.lock  dvc.yaml  foo.csv  foo.csv.dvc  train.py
 ```
 
-Notice that the dependency `foo.csv` is not removed, since it may be the output
-of a previous stage.
+Notice that the dependencies (`data.csv` and `train.py`) are not removed.
