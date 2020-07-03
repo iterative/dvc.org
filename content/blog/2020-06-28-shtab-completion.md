@@ -12,8 +12,6 @@ descriptionLong: |
   This tool was originally created to help `dvc`, but we realised it could be made
   more generic and valuable to the world's entire ecosystem of Python CLI
   applications. Find out how to take advantage of it in this blog post.
-picture: https://imgs.xkcd.com/comics/is_it_worth_the_time.png
-pictureComment: xkcd#1205
 author: casper_dcl
 ---
 
