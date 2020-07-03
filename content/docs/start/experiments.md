@@ -51,7 +51,7 @@ experiment "telemetry". Metrics files contain simple numeric values (e.g. `AUC`)
 and plots files contain matrices and data series (e.g. `ROC` or model loss
 plots) that are meant to be visualized and compared.
 
-> With `cache: false`, DVC skips caching the output as we want `scores.json` and
+> With `cache: false`, DVC skips caching the output, as we want `scores.json` and
 > `prc.json` to be versioned by Git.
 
 </details>
