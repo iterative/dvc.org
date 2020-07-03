@@ -25,7 +25,10 @@ $ dvc run -n evaluate \
 
 ### 💡 Expand to see what happens under the hood.
 
-DVC generates a new stage in the `dvc.yaml` file:
+The `-M` option here specifies a metrics file, while `--plots-no-cache`
+specifies a plots file produced by this stage that will not be
+<abbr>cached</abbr> by DVC. `dvc run` generates a new stage in the `dvc.yaml`
+file:
 
 ```yaml
 evaluate:
@@ -46,10 +49,10 @@ The biggest difference to previous stages in our pipeline is in two new
 sections: `metrics` and `plots`. These are used to mark certain files containing
 experiment "telemetry". Metrics files contain simple numeric values (e.g. `AUC`)
 and plots files contain matrices and data series (e.g. `ROC` or model loss
-plots) that meant to be visualizing and compared.
+plots) that are meant to be visualized and compared.
 
-> `cache: false` means that those file are small enough and versioned directly
-> with Git.
+> With `cache: false`, DVC skips caching the output, as we want `scores.json`
+> and `prc.json` to be versioned by Git.
 
 </details>
 
