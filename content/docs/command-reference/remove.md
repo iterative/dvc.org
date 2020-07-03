@@ -39,10 +39,10 @@ how it can be used to replace or modify files that are tracked by DVC.
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
-## Examples
+## Example: remove a tracked file (or directory)
 
-Let's imagine we have `foo.csv` and `bar.csv` files that are already
-[tracked](/doc/command-reference/add) with DVC:
+Let's imagine we have `foo.csv` and `bar.csv` files, that are already
+[tracked](/doc/command-reference/add) by DVC:
 
 ```dvc
 $ ls *.csv*
@@ -55,8 +55,8 @@ $ cat .gitignore
 /foo.csv
 ```
 
-Remove the `foo.csv.dvc` file, and check that the data file is gone from
-`.gitignore`:
+This removed the `foo.csv.dvc` file, and lists `.gitignore` to double check that
+the corresponding entry is gone from there:
 
 ```dvc
 $ dvc remove foo.csv.dvc
@@ -67,3 +67,38 @@ foo.csv
 $ cat .gitignore
 /bar.csv
 ```
+
+> The same procedure applies to tracked directories.
+
+## Example: remove a stage
+
+Let's imagine we have a stage named `train` in our
+[`dvc.yaml` file](/doc/user-guide/dvc-files-and-directories#dvcyaml-file), and
+corresponding files in the <abbr>workspace</abbr>:
+
+```yaml
+train:
+  deps:
+    - foo.csv
+  outs:
+    - model
+```
+
+```dvc
+$ ls
+dvc.yaml dvc.lock
+... foo.csv model
+```
+
+Running `dvc remove` on the stage name will remove this entire entry from
+`dvc.yaml`, and delete its outputs:
+
+```dvc
+$ dvc remove train
+$ ls
+dvc.yaml dvc.lock
+... foo.csv
+```
+
+Notice that the dependency `foo.csv` is not removed, since it may be the output
+of a previous stage.
