@@ -22,8 +22,10 @@ author: casper_dcl
 > - A [`shtab`] in the dark at completing your ~~sentences~~ commands
 
 Command line tools are powerful. Things like [`make`] have manual pages
-spanning, well, pages, while just the list of [`git`] subcommands is longer than
-can fit on a standard `80 x 24` terminal screen.
+spanning, well,
+[pages](https://www.gnu.org/software/make/manual/make.html#Options-Summary),
+while just the list of [`git`] subcommands is longer than can fit on a standard
+`80 x 24` terminal screen.
 
 ```dvc
 $ git <TAB>
@@ -66,7 +68,10 @@ have tab completion for free!
 
 Simply hand your parser object to `shtab` (either via the CLI or the Python
 API), and a tab completion script will be generated for your preferred shell.
-It's as easy as `eval "$(shtab --shell=bash myprogram.main_parser)"`.
+It's as easy as:
+
+- CLI: `shtab --shell=bash myprogram.main.parser`, or
+- Python API: `import shtab; print(shtab.complete(parser, shell="bash"))`.
 
 ### `argparse` example
 
@@ -127,8 +132,9 @@ At Top: Hit TAB for more, or the character to insert
 
 All completion suggestions guaranteed in-sync with the code!
 
-You might notice one of the subcommands provided by `dvc` is `completion`.
-Here's a quick example of how to provide such convenience for users:
+You might notice one of the subcommands provided by `dvc` is
+[`completion`](https://dvc.org/doc/install/completion). Here's a quick example
+of how to provide such convenience for users:
 
 ### Integrating library example
 
