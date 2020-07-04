@@ -49,12 +49,12 @@ meta:
 
 `.dvc` files can contain the following fields:
 
-- `outs` (always present): List of <abbr>output</abbr> entries that represent
-  the files or directories tracked with DVC. Typically there is only one per
-  `.dvc` file (but several can be added or combined manually).
-- `deps`: List of <abbr>dependency</abbr> entries for this stage, only present
-  when `dvc import` and `dvc import-url` are used. Typically there is only one
-  (but several can be added manually).
+- `outs` (always present): List of <abbr>output</abbr> entries (details below)
+  that represent the files or directories tracked with DVC. Typically there is
+  only one per `.dvc` file (but several can be added or combined manually).
+- `deps`: List of <abbr>dependency</abbr> entries (details below) for this
+  stage, only present when `dvc import` and `dvc import-url` are used. Typically
+  there is only one (but several can be added manually).
 - `wdir` (optional): Working directory for the stage command to run in (relative
   to the file's location). If this field is not present explicitly, it defaults
   to `.` (the file's location).
@@ -62,21 +62,25 @@ meta:
   Any YAML contents is supported. `meta` contents are ignored by DVC, but they
   can be meaningful for user processes that read `.dvc` files.
 
-An _output entry_ can consist of these fields:
+An _output entry_ (`outs`) consists of these fields:
 
-- `md5`: Hash value for the file or directory being tracked with DVC
 - `path`: Path to the file or directory (relative to `wdir` which defaults to
   the file's location)
+- `md5`: Hash value for the file or directory being tracked with DVC
 - `cache`: Whether or not this file or directory is <abbr>cached</abbr> (`true`
   by default, if not present). See the `--no-commit` option of `dvc add`.
 
-A _dependency entry_ consists of a these possible fields:
+A _dependency entry_ (`deps`) consists of these fields:
 
 - `path`: Path to the dependency (relative to `wdir` which defaults to the
   file's location)
-- `md5`: MD5 hash for the dependency (most [stages](/doc/command-reference/run))
-- `etag`: Strong ETag response header (only HTTP <abbr>external
-  dependencies</abbr> created with `dvc import-url`)
+- `md5`: Hash value for the file or directory being tracked with DVC, or
+- `etag`:
+  [Strong ETag](https://en.wikipedia.org/wiki/HTTP_ETag#Strong_and_weak_validation)
+  hash value (instead of `md5`) for HTTP, S3, or Azure <abbr>external
+  dependencies</abbr> created with `dvc import-url`, or
+- `checksum`: Special hash value (instead of `md5`) for HDFS external
+  dependencies created with `dvc import-url`
 - `repo`: This entry is only for external dependencies created with
   `dvc import`, and can contains the following fields:
 
@@ -177,7 +181,7 @@ It's created or updated by DVC commands such as `dvc run` and `dvc repro`.
 - Tracking of intermediate and final results of a pipeline — similar to
   [`.dvc` files](#dvc-files).
 - Allow DVC to detect when stage definitions, or their dependencies have
-  changed. Such conditions invalidate states, requiring their reproduction (see
+  changed. Such conditions invalidate stages, requiring their reproduction (see
   `dvc status`, `dvc repro`).
 - `dvc.lock` is needed internally for several DVC commands to operate, such as
   `dvc checkout`, `dvc get`, and `dvc import`.
@@ -211,9 +215,8 @@ Regular <abbr>dependencies</abbr> and all kinds of <abbr>outputs</abbr>
 (including [metrics](/doc/command-reference/metrics) and
 [plots](/doc/command-reference/plots) files) are also listed (per stage) in
 `dvc.lock`, but with an additional field to store the hash value of each file or
-directory tracked by DVC: `md5` for local file system dependencies, as well as
-SSH and Google Cloud <abbr>external dependencies</abbr>, `etag` for HTTP, S3,
-Azure, and `checksum` for HDFS.
+directory tracked by DVC. Specifically: `md5`, `etag`, or `checksum` (same as in
+`deps` entries of [`.dvc` files](#dvc-files)).
 
 [Parameter](/doc/command-reference/params#examples) key/value pairs are listed
 separately under `params`, grouped by parameters file.
