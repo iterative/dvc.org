@@ -44,12 +44,11 @@ Tab completion is an indispensable part of writing anything on the command-line.
 Personally, I can't imaging trying to `git co` (aliased to `git checkout`) a
 branch without `<TAB>` to do the heavy lifting.
 
-Now there's a tool called [`dvc`] which is like Git for data
-(<https://dvc.org>). It can be viewed as a cross-platform combination of [`git`]
-and [`make`] designed for handling big data and multiple cloud storage
-repositories, as well as tracking machine learning experiments. As you can
-imagine, supporting that many buzzwords means it also has a large number of
-subcommands and options.
+Now there's a tool called [`dvc`] which is like [Git for data](https://dvc.org).
+It can be viewed as a cross-platform combination of [`git`] and [`make`]
+designed for handling big data and multiple cloud storage repositories, as well
+as tracking machine learning experiments. As you can imagine, supporting that
+many buzzwords means it also has a large number of subcommands and options.
 
 _Every time a new feature is added, maintainers and contributors have to update
 tab completion scripts for multiple supported shells. At best, it's a pain, and
@@ -64,6 +63,10 @@ Good news: [`shtab`] is a new tool which magically does all of this work.
 
 Any Python CLI application using [`argparse`], [`docopt`], or [`argopt`] can
 have tab completion for free!
+
+Simply hand your parser object to `shtab` (either via the CLI or the Python
+API), and a tab completion script will be generated for your preferred shell.
+It's as easy as `eval "$(shtab --shell=bash myprogram.main_parser)"`.
 
 ### `argparse` example
 
@@ -107,7 +110,9 @@ examples replacing `hello` with `shtab`.
 
 ![`shtab`-driven `dvc` completion in `bash` and `zsh`](/uploads/images/2020-06-28/dvc.gif)
 
-Using `shtab`, here's what [`dvc`]'s completion looks like when installed:
+Using `shtab`, here's what
+[`dvc`'s completion](https://dvc.org/doc/install/completion) looks like when
+installed:
 
 ```dvc
 % dvc <TAB>
@@ -128,7 +133,7 @@ Here's a quick example of how to provide such convenience for users:
 ### Integrating library example
 
 Feeling minimal? How about adding `import shtab` to your application itself for
-a cleaner user interface? And let's use `argopt` to convert `docopt`'s neat
+a cleaner user interface? And let's use [`argopt`] to convert [`docopt`]'s neat
 syntax to `argparse` while we're at it.
 
 ```python
@@ -174,7 +179,7 @@ Is it worth the time?
 
 [![xkcd#1205](https://imgs.xkcd.com/comics/is_it_worth_the_time.png)](https://xkcd.com/1205)
 
-`shtab` would be on the second row, far left (maybe even off grid). It's worth
+[`shtab`] would be on the second row, far left (maybe even off grid). It's worth
 spending days to get right yet only takes seconds to install.
 
 [`argopt`]: https://pypi.org/project/argopt
