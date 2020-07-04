@@ -317,26 +317,25 @@ When you have a script that takes some data as an input and produces other data
 > ```
 
 ```dvc
-$ dvc run -f Dvcfile \
+$ dvc run -n train \
           -d train.py -d data \
           -M metrics.csv \
           -o model.h5 -o bottleneck_features_train.npy -o bottleneck_features_validation.npy \
           python train.py
 ```
 
-Similar to `dvc add`, `dvc run` creates a
-[DVC-file](/doc/user-guide/dvc-files-and-directories) named `Dvcfile` (specified
-using the `-f` option). It tracks all outputs (`-o`) the same way as `dvc add`
-does. Unlike `dvc add`, `dvc run` also tracks dependencies (`-d`) and the
-command (`python train.py`) that was run to produce the result. We call such a
-DVC-file a "stage file".
+`dvc run` creates a pipeline stage named `train` (specified using the `-n`
+option) in [`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvcyaml-file)
+file. It tracks all outputs (`-o`) the same way as `dvc add` does. Unlike `dvc
+add`, `dvc run` also tracks dependencies (`-d`) and the command (`python
+train.py`) that was run to produce the result.
 
-> At this point you could run `git add .` and `git commit` to save the `Dvcfile`
-> stage file and its changed outputs to the repository.
+> At this point you could run `git add .` and `git commit` to save the updated
+> stage and its changed outputs to the repository.
 
-`dvc repro` will run `Dvcfile` if any of its dependencies (`-d`) changed. For
-example, when we added new images to built the second version of our model, that
-was a dependency change. It also updates outputs and puts them into the
+`dvc repro` will run `train` stage if any of its dependencies (`-d`) changed.
+For example, when we added new images to built the second version of our model,
+that was a dependency change. It also updates outputs and puts them into the
 <abbr>cache</abbr>.
 
 To make things a little simpler: if `dvc add` and `dvc checkout` provide a basic
