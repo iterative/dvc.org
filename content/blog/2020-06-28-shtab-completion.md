@@ -46,7 +46,7 @@ Tab completion is an indispensable part of writing anything on the command-line.
 Personally, I can't imaging trying to `git co` (aliased to `git checkout`) a
 branch without `<TAB>` to do the heavy lifting.
 
-Now there's a tool called [`dvc`] which is like [Git for data](https://dvc.org).
+Now there's a tool called `dvc` which is like [Git for data](https://dvc.org).
 It can be viewed as a cross-platform combination of [`git`] and [`make`]
 designed for handling big data and multiple cloud storage repositories, as well
 as tracking machine learning experiments. As you can imagine, supporting that
