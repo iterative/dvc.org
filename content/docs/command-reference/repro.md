@@ -13,7 +13,7 @@ usage: dvc repro [-h] [-q | -v] [-f] [-s] [-c <path>] [-m] [--dry] [-i]
                  [--no-commit] [--downstream] [targets [targets ...]]
 
 positional arguments:
-  targets        Stage to reproduce.
+  targets        Stage or .dvc file to reproduce
 ```
 
 ## Description
@@ -186,9 +186,6 @@ $ dvc run -n filter -d text.txt -o numbers.txt \
 $ dvc run -n count -d numbers.txt -d process.py -M count.txt \
            "python process.py numbers.txt > count.txt"
 ```
-
-> Note that a stage name is required when executing `dvc run`. It can be
-> specified with `-n` (`--name`) option as we did above.
 
 Where `process.py` is a script that, for simplicity, just prints the number of
 lines:
