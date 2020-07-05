@@ -90,12 +90,9 @@ Specific explanations:
 
 The `deps` field in the generated `.dvc` file contains a hash value along with
 the `path` to track changes in the remote file/directory. The hash type depends
-on the type of remote location (protocol) being tracked. For instance,
-files/directories tracked from HTTP(s)/S3/Azure/GS remote locations will have an
-[ETag](https://en.wikipedia.org/wiki/HTTP_ETag) value in the `deps` field, while
-files/directories tracked from SSH/local locations will have an `md5` hash
-value. Files from HDFS remote locations use a `checksum` key in the `deps`
-field.
+on the type of remote location (protocol) being tracked. See
+[`dvc.lock` file](/doc/user-guide/dvc-files-and-directories#dvclock-file) for
+info on hash types for specific remote location types.
 
 Another way to understand the `dvc import-url` command is as a shortcut for
 generating a pipeline stage with and external dependency. This is discussed in
@@ -199,6 +196,9 @@ to determine whether it's necessary to download it again.
 
 > See [`.dvc` files](/doc/user-guide/dvc-files-and-directories#dvc-files) for
 > more details on the format above.
+
+You may want to get out of and remove the `example-get-started/` directory after
+trying this example (especially if trying out the following one).
 
 ## Example: Detecting remote file changes
 
