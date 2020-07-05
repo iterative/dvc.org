@@ -214,7 +214,7 @@ scores.json  auc       0.61314  0.07139
 And finally, we can compare `ROC` curves with a single command!
 
 ```dvc
-$ dvc plots diff
+$ dvc plots diff -x recall -y precision
 file:///Users/dvc/example-get-started/plots.html
 ```
 
@@ -224,3 +224,6 @@ All these commands also accept
 [Git revisions](https://git-scm.com/docs/gitrevisions) (commits, tags, branch
 names) to compare. This is a powerful mechanism for navigating experiments to
 see the history, to pick the best ones, etc.
+
+> See `dvc plots diff` for more info on its options, such as `-x` and `-y` used
+> above.

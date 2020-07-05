@@ -26,9 +26,15 @@ Get the sample code like this:
 $ wget https://code.dvc.org/get-started/code.zip
 $ unzip code.zip
 $ rm -f code.zip
-$ ls src
-evaluate.py  featurization.py  prepare.py
-requirements.txt  train.py
+$ tree
+.
+├── params.yaml
+└── src
+    ├── evaluate.py
+    ├── featurization.py
+    ├── prepare.py
+    ├── requirements.txt
+    └── train.py
 ```
 
 Now let's install the requirements:
