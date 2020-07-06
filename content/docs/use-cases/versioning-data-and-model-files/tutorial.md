@@ -332,7 +332,7 @@ file. It tracks all outputs (`-o`) the same way as `dvc add` does. Unlike
 > At this point you could run `git add .` and `git commit` to save the `train`
 > stage and its outputs to the repository.
 
-`dvc repro` will run `train` stage if any of its dependencies (`-d`) changed.
+`dvc repro` will run the `train` stage if any of its dependencies (`-d`) changed.
 For example, when we added new images to built the second version of our model,
 that was a dependency change. It also updates outputs and puts them into the
 <abbr>cache</abbr>.
