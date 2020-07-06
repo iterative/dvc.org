@@ -28,7 +28,8 @@ more complicated. For example, in a
 I wanted to understand how hair style (particularly size!) changed over the
 years. There were a lot of moving parts:
 
-- A public dataset of yearbook photos released and maintained by Ginosar et al.
+- A public dataset of yearbook photos released and maintained by
+  [Ginosar et al.](https://people.eecs.berkeley.edu/~shiry/projects/yearbooks/yearbooks.html)
 - A deep learning model I trained to segment the hair in yearbook photos
 - A derivative dataset of "hair maps" for each photo in the original datasetr
 - All the code to train the deep learning model and analyse the derivative
@@ -224,6 +225,6 @@ comment, reach out on Twitter, or send an email.
 
 ## Further reading
 
-\_Check out our
+_Check out our
 [tutorial about creating a data registry](https://dvc.org/doc/use-cases/data-registries)
-for more code examples.
+for more code examples._
