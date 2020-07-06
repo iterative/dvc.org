@@ -329,8 +329,8 @@ file. It tracks all outputs (`-o`) the same way as `dvc add` does. Unlike
 `dvc add`, `dvc run` also tracks dependencies (`-d`) and the command
 (`python train.py`) that was run to produce the result.
 
-> At this point you could run `git add .` and `git commit` to save the updated
-> stage and its changed outputs to the repository.
+> At this point you could run `git add .` and `git commit` to save the `train`
+> stage and its outputs to the repository.
 
 `dvc repro` will run `train` stage if any of its dependencies (`-d`) changed.
 For example, when we added new images to built the second version of our model,
