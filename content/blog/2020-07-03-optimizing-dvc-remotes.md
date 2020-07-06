@@ -385,14 +385,15 @@ versioned files (including those added with `dvc add -R`) are not indexed in DVC
 
 ## Conclusion
 
-By selecting the optimal status query method, and optimizing the queries
-themselves by reducing the amount of files to query, we were able to
-significantly improve performance for data sync operations in DVC 1.0. Whether
-you are upgrading from a prior DVC release, or trying DVC for the first time, we
-hope that all of our users are able to benefit from these new optimizations.
+By utilizing a storage structure that allows for optimized status queries, DVC
+makes data synchronization incredibly fast. Coupled with the ability to quickly
+identify which files remain unchanged between sync operations, DVC 1.0 is a
+powerful data management tool.
 
-DVC performance is an important issue, and our team is looking forward to
-working on further
+Whether you are upgrading from a prior DVC release, or trying DVC for the first
+time, we hope that all of our users are able to benefit from these new
+optimizations. DVC performance is an important issue, and our team is looking
+forward to working on further
 [performance optimizations](https://github.com/iterative/dvc/labels/performance)
 in the future - across all areas in DVC, not just remotes.
 
