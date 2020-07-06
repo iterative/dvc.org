@@ -325,9 +325,9 @@ $ dvc run -n train -d train.py -d data \
 
 `dvc run` writes a pipeline stage named `train` (specified using the `-n`
 option) in [`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvcyaml-file).
-It tracks all outputs (`-o`) the same way as `dvc add` does. Unlike
-`dvc add`, `dvc run` also tracks dependencies (`-d`) and the command
-(`python train.py`) that was run to produce the result.
+It tracks all outputs (`-o`) the same way as `dvc add` does. Unlike `dvc add`,
+`dvc run` also tracks dependencies (`-d`) and the command (`python train.py`)
+that was run to produce the result.
 
 > At this point you could run `git add .` and `git commit` to save the `train`
 > stage and its outputs to the repository.
