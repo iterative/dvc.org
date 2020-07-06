@@ -317,9 +317,7 @@ When you have a script that takes some data as an input and produces other data
 > ```
 
 ```dvc
-$ dvc run -n train \
-          -d train.py -d data \
-          -M metrics.csv \
+$ dvc run -n train -d train.py -d data \
           -o model.h5 \
           -o bottleneck_features_train.npy \
           -o bottleneck_features_validation.npy \
