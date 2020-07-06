@@ -12,7 +12,7 @@ descriptionLong: |
   practices of CI/CD to AI and ML teams. CML helps to organize MLOps
   infrastructure on top of the traditional software engineering stack.
 
-picture: 2020-06-22/release.png
+picture: 2020-07-07/cover.png
 pictureComment: CML release
 author: dmitry_petrov
 commentsUrl: https://discuss.dvc.org/t/dvc-1-0-release/412
@@ -161,7 +161,7 @@ clean && \ rm -rf /var/lib/apt/lists/*
 ```
 
 Examples of docker images can be found in the
-[CML repository](https://github.com/iterative/cml/).
+[CML repository](https://github.com/iterative/cml).
 
 CML is based on the assumption that MLOps can work with traditional engineering
 tools. It shouldn't require an entirely separate platform. We're excited about a
@@ -176,8 +176,8 @@ a new web site: https://cml.dev. The source code and issue tracker is on GitHub:
 https://github.com/iterative/cml
 
 For support and communications, the DVC Discord server is still the place to go:
-https://dvc.org/chat. We've made a new `#cml` channel there to discuss CML,
-CI/CD for ML and other MLOps related questions.
+https://dvc.org/chat We've made a new `#cml` channel there to discuss CML, CI/CD
+for ML and other MLOps related questions.
 
 ## 5. Conclusion
 
