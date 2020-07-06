@@ -192,7 +192,7 @@ Note that both data files are displayed as modified. Create a `.dvcignore` file
 and insert pattern matching one of the files:
 
 ```dvc
-$ echo dir1/* >> .dvcignore
+$ echo 'dir1/*' >> .dvcignore
 ```
 
 Check status again:
