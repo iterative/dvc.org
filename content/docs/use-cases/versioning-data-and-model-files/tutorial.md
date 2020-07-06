@@ -323,9 +323,9 @@ $ dvc run -n train -d train.py -d data \
           python train.py
 ```
 
-`dvc run` creates a pipeline stage named `train` (specified using the `-n`
-option) in [`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvcyaml-file)
-file. It tracks all outputs (`-o`) the same way as `dvc add` does. Unlike
+`dvc run` writes a pipeline stage named `train` (specified using the `-n`
+option) in [`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvcyaml-file).
+It tracks all outputs (`-o`) the same way as `dvc add` does. Unlike
 `dvc add`, `dvc run` also tracks dependencies (`-d`) and the command
 (`python train.py`) that was run to produce the result.
 
