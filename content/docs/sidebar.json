@@ -37,13 +37,13 @@
       {
         "slug": "data-versioning",
         "tutorials": {
-          "katacoda": "https://katacoda.com/dvc/courses/get-started"
+          "katacoda": "https://katacoda.com/dvc/courses/get-started/versioning"
         }
       },
       {
         "slug": "data-access",
         "tutorials": {
-          "katacoda": "https://katacoda.com/dvc/courses/get-started"
+          "katacoda": "https://katacoda.com/dvc/courses/get-started/accessing"
         }
       },
       {
