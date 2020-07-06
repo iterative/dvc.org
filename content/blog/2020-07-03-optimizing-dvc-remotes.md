@@ -194,6 +194,8 @@ So, choosing the optimal method actually depends on both:
 - The number of files that we need to query.
 - The total number of files in the remote.
 
+![API calls](/uploads/images/2020-07-03/api_calls_100_local.svg 'API calls required to query 100 local files from S3')
+
 _Note: In terms of real world performance, there are other considerations that
 DVC must account for, such as different API calls taking different amounts of
 time to complete, parallelization, and the amount of time it takes to run list
@@ -361,6 +363,13 @@ As we established earlier:
 
 > In simple terms, by reducing the size of our query set as much as possible, we
 > can also improve performance.
+
+![API calls](/uploads/images/2020-07-03/api_calls_1m_s3.svg 'API calls required to query S3 bucket containing 1M files')
+
+In an example case for an S3 remote containing 1 million files, the optimal
+situation would be for us to keep the size of our query set beneath the 1000
+file threshold. And from there, the further we reduce the size of the query set,
+the more our runtime would improve.
 
 In DVC 1.0, we are now able to reduce the size of our query set by keeping an
 index of directories which have already been versioned and pushed into remote
