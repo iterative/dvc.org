@@ -332,10 +332,10 @@ file. It tracks all outputs (`-o`) the same way as `dvc add` does. Unlike
 > At this point you could run `git add .` and `git commit` to save the `train`
 > stage and its outputs to the repository.
 
-`dvc repro` will run the `train` stage if any of its dependencies (`-d`) changed.
-For example, when we added new images to built the second version of our model,
-that was a dependency change. It also updates outputs and puts them into the
-<abbr>cache</abbr>.
+`dvc repro` will run the `train` stage if any of its dependencies (`-d`)
+changed. For example, when we added new images to built the second version of
+our model, that was a dependency change. It also updates outputs and puts them
+into the <abbr>cache</abbr>.
 
 To make things a little simpler: if `dvc add` and `dvc checkout` provide a basic
 mechanism to version control large data files or models, `dvc run` and
