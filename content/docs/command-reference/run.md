@@ -1,13 +1,13 @@
 # run
 
-Create a pipeline _stage_ in
-[`dvc.yaml`](/doc/user-guide/dvc-files-and-directories) from a given command,
-and execute the command.
+Helper command to create or update _stages_ in
+[`dvc.yaml`](/doc/user-guide/dvc-files-and-directories). Requires a name and a
+command.
 
 ## Synopsis
 
 ```usage
-usage: dvc run [-h] [-q | -v] [-d <path>] [-n <name>] [-o <path>]
+usage: dvc run [-h] [-q | -v] -n <name> [-d <path>] [-o <path>]
                [-O <path>] [-p [<path>:]<params_list>] [-m <path>]
                [-M <path>] [--plots <path>] [--plots-no-cache <path>]
                [-w <path>] [--no-exec] [-f]
@@ -17,7 +17,7 @@ usage: dvc run [-h] [-q | -v] [-d <path>] [-n <name>] [-o <path>]
                command
 
 positional arguments:
-  command               Command to execute.
+  command               Command for the stage. Executed by default
 ```
 
 ## Description
