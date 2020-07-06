@@ -23,8 +23,8 @@ sharing (cleaning up code, adding documentation), the process was
 straightforward: upload everything to the repo!
 
 But when I started working on deep learning projects, things got considerably
-more complicated. For example, in a data journalism project I did with The
-Pudding, I wanted to understand how hair style (particularly size!) changed over
+more complicated. For example, in a [data journalism project I did with The
+Pudding](https://pudding.cool/2019/11/big-hair/), I wanted to understand how hair style (particularly size!) changed over
 the years. There were a lot of moving parts:
 
 - A public dataset of yearbook photos released and maintained by Ginosar et al.
@@ -57,11 +57,11 @@ Let's look at a few methods.
 When you work with big models and datasets, you often can't host them in a
 GitHub repo. But you can put them in cloud storage, and then provide a script in
 your GitHub repo to download them. For example, in the fantastic `gpt-2-simple`
-project by Max Woolf, Max stores huge GPT-2 models in Google Drive and provides
+[project by Max Woolf](https://github.com/minimaxir/gpt-2-simple), Max stores huge GPT-2 models in Google Drive and provides
 a script to download a specified model to a user's local workspace if it isn't
 already there.
 
-Likewise, the Nvidia StyleGAN release provides a hardcoded URL to their model in
+Likewise, the [Nvidia StyleGAN release](https://github.com/NVlabs/stylegan) provides a hardcoded URL to their model in
 Google Drive storage. Both the `gpt-2-simple` and StyleGAN projects have custom
 scripts to handle these big downloads, and largely thanks to the work of the
 project maintainers, users only interact with the downloading process at a very
@@ -98,7 +98,7 @@ programmatically downloading artifacts.
 
 # Method Three: Packaging with DVC
 
-DVC, or Data Version Control, is a Python project for extending Git version
+[DVC](https://dvc.org), or Data Version Control, is a Python project for extending Git version
 control to large project artifacts like datasets and models. It's not a
 replacement for Git- DVC works _with_ Git!
 
@@ -220,3 +220,6 @@ it's impossible to be scientific.
 Thanks for stopping by our virtual poster! I'm happy to take questions or
 comments about how version control fits into the scientific workflow. Leave a
 comment, reach out on Twitter, or send an email.
+
+## Further reading
+_Check out our [tutorial about creating a data registry](https://dvc.org/doc/use-cases/data-registries) for more code examples. 
