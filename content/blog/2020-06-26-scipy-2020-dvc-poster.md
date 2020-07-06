@@ -224,6 +224,6 @@ comment, reach out on Twitter, or send an email.
 
 ## Further reading
 
-\_Check out our
+_Check out our
 [tutorial about creating a data registry](https://dvc.org/doc/use-cases/data-registries)
-for more code examples.
+for more code examples._
