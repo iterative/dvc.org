@@ -145,28 +145,13 @@ the CML commands for the reporting and graphs:
 npm i @dvcorg/cml
 ```
 
-Graphs and image commands might require additional packages like `vega-cli` or
-image file convertors. This is how the original CML docker image installs all
-the important the dependencies:
+Examples of docker images can be found in `docker` directory of the CML the
+repository: [CML repository](https://github.com/iterative/cml).
 
-```yaml
-# Install update pip and nodejs, install dvc and cml
-ADD "./" "/cml" RUN wget https://dvc.org/deb/dvc.list -O
-/etc/apt/sources.list.d/dvc.list && \ apt update && \ apt -y install dvc && \
-apt -y install build-essential libcairo2-dev libpango1.0-dev libjpeg-dev
-libgif-dev librsvg2-dev && \ npm config set user 0 && \ npm config set
-unsafe-perm true && \ npm install -g /cml && \ npm install -g vega-cli && \ npm
-install -g vega-lite && \ apt-get install -y libfontconfig-dev && \ apt-get
-clean && \ rm -rf /var/lib/apt/lists/*
-```
-
-Examples of docker images can be found in the
-[CML repository](https://github.com/iterative/cml).
-
-CML is based on the assumption that MLOps can work with traditional engineering
-tools. It shouldn't require an entirely separate platform. We're excited about a
-world where DevOps practitioners can work fluently on both software and ML
-aspects of a project.
+As you can see, CML is based on the assumption that MLOps can work with
+traditional engineering tools. It shouldn't require an entirely separate
+platform. We're excited about a world where DevOps practitioners can work
+fluently on both software and ML aspects of a project.
 
 ## 4. The relationship between CML and DVC
 
