@@ -45,14 +45,15 @@ directory will be placed inside.
 
 [`.dvc` files](/doc/user-guide/dvc-files-and-directories#dvc-files) support
 references to data in an external location, see
-[External Dependencies](/doc/user-guide/external-dependencies). In such a `.dvc`
-file, the `deps` field stores the remote URL, and the `outs` field contains the
-corresponding local path in the <abbr>workspace</abbr>. It records enough
-metadata about the imported data to enable DVC efficiently determining whether
-the local copy is out of date.
+[External Dependencies](/doc/user-guide/external-dependencies). In such an
+import `.dvc` file, the `deps` field stores the remote URL, and the `outs` field
+contains the corresponding local path in the <abbr>workspace</abbr>. It records
+enough metadata about the imported data to enable DVC efficiently determining
+whether the local copy is out of date.
 
-`dvc repro` doesn't check or update generated `.dvc` files, use `dvc update` on
-them to bring the import up to date from the external data source.
+Note that `dvc repro` doesn't check or update import `.dvc` files, use
+`dvc update` on them to bring the import up to date from the external data
+source.
 
 DVC supports several types of (local or) remote locations (protocols):
 
@@ -88,11 +89,8 @@ Specific explanations:
   running. DVC automatically expands this URL into a regular S3, SSH, GS, etc
   URL by appending `/path/to/file` to the `myremote`'s configured base path.
 
-The `deps` field in the generated `.dvc` file contains a hash value along with
-the `path` to track changes in the remote file/directory. The hash type depends
-on the type of remote location (protocol) being tracked. See
-[`dvc.lock` file](/doc/user-guide/dvc-files-and-directories#dvclock-file) for
-info on hash types for specific remote location types.
+See [`dvc.lock` file](/doc/user-guide/dvc-files-and-directories#dvclock-file)
+for info on hash types for specific remote location types.
 
 Another way to understand the `dvc import-url` command is as a shortcut for
 generating a pipeline stage with and external dependency. This is discussed in
