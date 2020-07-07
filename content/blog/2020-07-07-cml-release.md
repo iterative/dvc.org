@@ -2,15 +2,15 @@
 title: 'New Release: Continuous Machine Learning (CML) is CI/CD for ML'
 date: 2020-07-07
 description: |
-  The DVC team is releasing a new open-source project called Continuous Machine
-  Learning. CML helps to organize MLOps infrastructure on top of the traditional
-  software engineering stack.
+  Today we're launching Continuous Machine Learning (CML), a new open-source
+  project for CI/CD with ML. Let's bring the power of DevOps to ML or MLOps.
 
 descriptionLong: |
-  Today, the DVC team is releasing a new open-source project called Continuous
-  Machine Learning, or CML (https://cml.dev) to mainstream the best engineering
-  practices of CI/CD to AI and ML teams. CML helps to organize MLOps
-  infrastructure on top of the traditional software engineering stack.
+  Today we're launching Continuous Machine Learning (CML), a new open-source
+  project for CI/CD with ML. Use it to automate parts of your ML workflow,
+  including model training and evaluation, comparing ML experiments across your
+  project history, and monitoring changing datasets. Let's bring the power of
+  DevOps to ML or MLOps.
 
 picture: 2020-07-07/cover.png
 pictureComment: CML release
@@ -23,7 +23,13 @@ tags:
   - DataOps
 ---
 
-## 1. CI/CD for machine learning problems
+## CI/CD for machine learning
+
+Today, the DVC team is releasing a new open-source project called Continuous
+Machine Learning, or CML (https://cml.dev) to mainstream the best engineering
+practices of CI/CD to AI and ML teams. CML helps to organize MLOps
+infrastructure on top of the traditional software engineering stack instead of
+creating separate AI platforms.
 
 Continuous integration and continuous delivery (CI/CD) is a widely-used software
 engineering practice. It's a validated approach to increasing the agility of
@@ -46,7 +52,7 @@ machine learning projects:
    then is typical to have in CI/CD runners. CI/CD must be connected with cloud
    computing instances or Kubernetes clusters for ML training.
 
-## 2. CI/CD for ML is the next step for DVC team
+## CI/CD for ML is the next step for the DVC team
 
 Since the beginning, our motivation has been helping ML teams benefit from
 DevOps. We started DVC because we knew that data management would be a crucial
@@ -79,15 +85,15 @@ Over the last 3 years, we've reached some big milestones:
    - 4000+ regular users of DVC
 
 Now that DVC is maturing, we're ready to take the next step: we want to
-revolutionize ML development processes. We want ML experiments to have greater
-visibility to teammates, shorter feedback loops, and more reproducibility. We
-want teams to spend less time managing their computing resources and
-experiments, and more time building value. The goal is to extend the amazing
-results of DevOps from software development to ML and MLOps.
+revolutionize the ML development processes. We want ML experiments to have
+greater visibility to teammates, shorter feedback loops, and more
+reproducibility. We want teams to spend less time managing their computing
+resources and experiments, and more time building value. The goal is to extend
+the amazing results of DevOps from software development to ML and MLOps.
 
-## 3. Continuous Machine Learning release
+## _Continuous Machine Learning_ release
 
-Today, we're releasing an open-source project https://CML.DEV to close the gap
+Today, we're releasing an open-source project https://cml.dev to close the gap
 between machine learning and software development practices.
 
 CML is a library of functions used inside CI/CD runners to make ML compatible
@@ -96,9 +102,10 @@ with **GitHub Actions** and **GitLab CI**. We've created functions to:
 1. Generate informative reports on every Pull/Merge Request with metrics, plots,
    and hyperparameters changes.
 2. Provision GPU\CPU resources from cloud service providers (**AWS, GCP, Azure,
-   Ali**) and deploy CI runners using **docker-machine**.
-3. Bring datasets from cloud storage to runners for model training (using
-   **DVC**), as well as save the resulting model in cloud storage.
+   Ali**) and deploy CI runners using
+   [Docker Machine](https://github.com/docker/machine).
+3. Bring datasets from cloud storage to runners (using **DVC**) for model
+   trainin, as well as save the resulting model in cloud storage.
 
 ![Auto-generated metrics-driven report in GitLab Merge Request](/uploads/images/2020-07-07/cml-report-metrics.png)
 
@@ -153,7 +160,7 @@ traditional engineering tools. It shouldn't require an entirely separate
 platform. We're excited about a world where DevOps practitioners can work
 fluently on both software and ML aspects of a project.
 
-## 4. The relationship between CML and DVC
+## The relationship between CML and DVC
 
 CML and DVC are related projects under the umbrella of the same team, but will
 have separate websites and independent development. The CML project is hosted on
@@ -164,7 +171,7 @@ For support and communications, the DVC Discord server is still the place to go:
 https://dvc.org/chat We've made a new `#cml` channel there to discuss CML, CI/CD
 for ML and other MLOps related questions.
 
-## 5. Conclusion
+## Conclusion
 
 With the rise of AI/ML teams and ML platforms in addition to the software
 engineering stack, we believe that the industry needs a single technology stack
