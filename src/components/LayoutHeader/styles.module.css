@@ -59,3 +59,19 @@
   display: block;
   padding-top: 2px;
 }
+
+.alert {
+  height: 30px;
+  line-height: 30px;
+  font-size: 14px;
+  text-align: center;
+  width: 100%;
+  background-color: #dee;
+  transition: 0.5s all;
+  overflow: hidden;
+
+  &.collapsed {
+    height: 0;
+    transform: translateY(-100%);
+  }
+}
