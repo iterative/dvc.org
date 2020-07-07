@@ -28,6 +28,13 @@ const LayoutHeader: React.FC<Required<ILayoutModifiable>> = ({ modifiers }) => {
         )}
       />
       <div className={styles.header}>
+        <div className={cn(styles.alert, collapsed && styles.collapsed)}>
+          <span role="img" aria-label="rocket">
+            🚀
+          </span>
+          Check out the newest tool,
+          <Link href="https://cml.dev">CML</Link>!
+        </div>
         <LayoutWidthContainer
           className={cn(styles.container, collapsed && styles.collapsed)}
           wide={includes(modifiers, LayoutModifiers.Wide)}
