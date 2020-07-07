@@ -45,14 +45,15 @@ directory will be placed inside.
 
 [`.dvc` files](/doc/user-guide/dvc-files-and-directories#dvc-files) support
 references to data in an external location, see
-[External Dependencies](/doc/user-guide/external-dependencies). In such a `.dvc`
-file, the `deps` field stores the remote URL, and the `outs` field contains the
-corresponding local path in the <abbr>workspace</abbr>. It records enough
-metadata about the imported data to enable DVC efficiently determining whether
-the local copy is out of date.
+[External Dependencies](/doc/user-guide/external-dependencies). In such an
+import `.dvc` file, the `deps` field stores the remote URL, and the `outs` field
+contains the corresponding local path in the <abbr>workspace</abbr>. It records
+enough metadata about the imported data to enable DVC efficiently determining
+whether the local copy is out of date.
 
-`dvc repro` doesn't check and/or update generated `.dvc` files, use `dvc update`
-on them to bring the import up to date from the external data source.
+Note that `dvc repro` doesn't check or update import `.dvc` files, use
+`dvc update` on them to bring the import up to date from the external data
+source.
 
 DVC supports several types of (local or) remote locations (protocols):
 
@@ -99,7 +100,7 @@ Instead of:
 $ dvc import-url https://data.dvc.org/get-started/data.xml data.xml
 ```
 
-it is possible to use `dvc run`, for example (HTTP URL):
+It is possible to use `dvc run`, for example (HTTP URL):
 
 ```dvc
 $ dvc run -n download_data \
@@ -123,7 +124,7 @@ a regular stage (in
 - `--no-exec` - create `.dvc` file without actually downloading `url`. E.g. if
   the file or directory already exist it can be used to skip download.
   `dvc commit <out>.dvc` should be used to calculate the URL and data hash,
-  update the .`dvc` files, and save existing data to the cache.
+  update the `.dvc` files, and save existing data to the cache.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -186,7 +187,7 @@ Let's take a look at the changes to the `data.xml.dvc`:
 The `etag` field in the `.dvc` file contains the
 [ETag](https://en.wikipedia.org/wiki/HTTP_ETag) recorded from the HTTP request.
 If the remote file changes, its ETag will be different. This metadata allows DVC
-to determine whether its necessary to download it again.
+to determine whether it's necessary to download it again.
 
 > See [`.dvc` files](/doc/user-guide/dvc-files-and-directories#dvc-files) for
 > more details on the format above.
