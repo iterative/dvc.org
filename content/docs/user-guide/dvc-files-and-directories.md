@@ -66,7 +66,12 @@ An _output entry_ (`outs`) consists of these fields:
 
 - `path`: Path to the file or directory (relative to `wdir` which defaults to
   the file's location)
-- `md5`: Hash value for the file or directory being tracked with DVC
+- `md5`, `etag`, or `checksum`: Hash value for the file or directory being
+  tracked with DVC. MD5 is used for most locations (local file system and SSH);
+  [strong ETag](https://en.wikipedia.org/wiki/HTTP_ETag#Strong_and_weak_validation)
+  for HTTP, S3, or Azure
+  [external outputs](/doc/user-guide/managing-external-data); and a special
+  _checksum_ for HDFS.
 - `cache`: Whether or not this file or directory is <abbr>cached</abbr> (`true`
   by default, if not present). See the `--no-commit` option of `dvc add`.
 
@@ -74,13 +79,11 @@ A _dependency entry_ (`deps`) consists of these fields:
 
 - `path`: Path to the dependency (relative to `wdir` which defaults to the
   file's location)
-- `md5`: Hash value for the file or directory being tracked with DVC, or
-- `etag`:
-  [Strong ETag](https://en.wikipedia.org/wiki/HTTP_ETag#Strong_and_weak_validation)
-  hash value (instead of `md5`) for HTTP, S3, or Azure <abbr>external
-  dependencies</abbr> created with `dvc import-url`, or
-- `checksum`: Special hash value (instead of `md5`) for HDFS external
-  dependencies created with `dvc import-url`
+- `md5`, `etag`, or `checksum`: Hash value for the file or directory being
+  tracked with DVC. MD5 is used for most locations (local file system and SSH);
+  [strong ETag](https://en.wikipedia.org/wiki/HTTP_ETag#Strong_and_weak_validation)
+  for HTTP, S3, or Azure <abbr>external dependencies</abbr>; and a special
+  _checksum_ for HDFS. See `dvc import-url` for more information.
 - `repo`: This entry is only for external dependencies created with
   `dvc import`, and can contains the following fields:
 
@@ -216,7 +219,7 @@ Regular <abbr>dependencies</abbr> and all kinds of <abbr>outputs</abbr>
 [plots](/doc/command-reference/plots) files) are also listed (per stage) in
 `dvc.lock`, but with an additional field to store the hash value of each file or
 directory tracked by DVC. Specifically: `md5`, `etag`, or `checksum` (same as in
-`deps` entries of [`.dvc` files](#dvc-files)).
+`deps` and `outs` entries of [`.dvc` files](#dvc-files)).
 
 [Parameter](/doc/command-reference/params#examples) key/value pairs are listed
 separately under `params`, grouped by parameters file.
