@@ -15,7 +15,7 @@ descriptionLong: |
 picture: 2020-07-07/cover.png
 pictureComment: CML release
 author: dmitry_petrov
-commentsUrl: https://discuss.dvc.org/t/dvc-1-0-release/412
+commentsUrl: https://discuss.dvc.org/t/continuous-machine-learning-release/429
 tags:
   - Release
   - CI/CD for ML
