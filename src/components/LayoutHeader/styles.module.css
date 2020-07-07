@@ -61,9 +61,9 @@
 }
 
 .alert {
-  height: 30px;
-  line-height: 30px;
-  font-size: 14px;
+  height: 35px;
+  line-height: 35px;
+  font-size: 18px;
   text-align: center;
   width: 100%;
   background-color: #dee;
