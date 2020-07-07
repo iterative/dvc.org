@@ -29,7 +29,7 @@ const LayoutHeader: React.FC<Required<ILayoutModifiable>> = ({ modifiers }) => {
       />
       <div className={styles.header}>
         <div className={cn(styles.alert, collapsed && styles.collapsed)}>
-          Check out the newest tool from Iterative,{' '}
+          🚀 Check out the newest tool, {' '}
           <Link href="https://cml.dev">CML</Link>!
         </div>
         <LayoutWidthContainer
