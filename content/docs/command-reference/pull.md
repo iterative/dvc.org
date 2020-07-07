@@ -96,7 +96,8 @@ reflinks or hardlinks to put it in the workspace without copying. See
   `dvc remote list`).
 
 - `--run-cache` - downloads all available history of stage runs from the remote
-  repository.
+  repository into the local run cache. A `dvc repro <stage_name>` is necessary
+  to checkout these files into the workspace and update the `dvc.lock` file.
 
 - `-j <number>`, `--jobs <number>` - number of threads to run simultaneously to
   handle the downloading of files from the remote. The default value is
