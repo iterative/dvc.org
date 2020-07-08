@@ -111,7 +111,8 @@ file:///Users/usr/src/plots/logs.csv.html
 
 ![](/img/plots_diff.svg)
 
-> When you're specifying multiple `--targets` options with multiple `revisions`:
+> Please note that when you're specifying `--targets` options with multiple
+> `revisions`:
 >
 > ```dvc
 > $ dvc plots diff --targets t1.json t2.csv HEAD v1 v2
