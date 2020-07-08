@@ -41,7 +41,7 @@
   transition: 0.5s all;
 
   &.expanded {
-    top: 55px;
+    top: 60px;
   }
 
   @media (--xs-scr) {

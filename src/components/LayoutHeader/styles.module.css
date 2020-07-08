@@ -75,3 +75,12 @@
     transform: translateY(-100%);
   }
 }
+
+.gitHubAlertLink {
+  vertical-align: middle;
+  margin-left: 0.1em;
+
+  svg {
+    color: inherit;
+  }
+}
