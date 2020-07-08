@@ -53,7 +53,7 @@ the next few sections:
 
 - [**Data access**](/doc/start/data-access) shows how to use data artifacts from
   outside of the project and how to import data artifacts from another DVC
-  projects. This can help to download a specific version of an ML model to a
+  project. This can help to download a specific version of an ML model to a
   deployment server or import a model to another project.
 
 - [**Data pipelines**](/doc/start/data-pipelines) describe how models and other
