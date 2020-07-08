@@ -105,11 +105,20 @@ file:///Users/dmitry/src/plots/logs.html
 Compare two specific versions (commit hashes, tags, or branches):
 
 ```dvc
-$ dvc plots diff --targets logs.csv HEAD 0135527
+$ dvc plots diff HEAD 0135527 --targets logs.csv
 file:///Users/usr/src/plots/logs.csv.html
 ```
 
 ![](/img/plots_diff.svg)
+
+> Alternatively, you can also run above statement as:
+>
+> ```dvc
+> $ dvc plots diff --targets logs.csv -- HEAD 0135527
+> ```
+>
+> When you're specifying multiple revisions after `--targets`, use `--` so that
+> argument parser doesn't confuse them as options for `--targets` argument.
 
 ## Example: Confusion matrix
 

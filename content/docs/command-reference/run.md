@@ -17,7 +17,7 @@ usage: dvc run [-h] [-q | -v] -n <name> [-d <path>] [-o <path>]
                command
 
 positional arguments:
-  command               Command for the stage. Executed by default
+  command               Command for the stage. Executed by default.
 ```
 
 ## Description
