@@ -21,10 +21,10 @@ positional arguments:
 ## Description
 
 `dvc status` searches for changes in the existing pipelines, either showing
-which [stages](/doc/command-reference/run) have changed in the workspace (not
-yet tracked by DVC) and must be added again (with `dvc add`) or reproduced (with
-`dvc repro`); or differences between <abbr>cache</abbr> vs. remote storage
-(meaning `dvc push` or `dvc pull` should be run to synchronize them). The two
+which tracked files or directories have changed in the <abbr>workspace</abbr>,
+and must be added or reproduced again (with `dvc add` or `dvc repro`,
+respectively); or differences between <abbr>cache</abbr> vs. remote storage
+(implying `dvc push` or `dvc pull` should be run to synchronize them). The two
 modes, _local_ and _cloud_ are triggered by using the `--cloud` or `--remote`
 options:
 
@@ -68,22 +68,22 @@ stage with differences, the changes in <abbr>dependencies</abbr> and/or
 file name or hash is shown, and additionally a status word is shown describing
 the changes (described below).
 
-- _changed checksum_ means that the stage (in `dvc.yaml`) or `.dvc` file hash
-  has changed (e.g. someone manually edited the file).
+- _changed checksum_ means that the stage file hash (in
+  [`dvc.lock`](/doc/user-guide/dvc-files-and-directories#dvcyaml-file)) has
+  changed (e.g. someone manually edited the file).
 
-- _always changed_ means that this is a `.dvc` file with no dependencies (an
-  _orphan stage_ (see [`dvc add`](/doc/command-reference/add)) or that the stage
-  in `dvc.yaml` has the `always_changed: true` value set (see `--always-changed`
-  option in `dvc run`).
+- _always changed_ means that this is a `.dvc` file with no dependencies (see
+  `dvc add`) or that the stage in
+  [`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvcyaml-file) has the
+  `always_changed: true` value set (see `--always-changed` option in `dvc run`).
 
 - _changed deps_ or _changed outs_ means that there are changes in dependencies
-  or outputs tracked by the stage in `dvc.yaml` or `.dvc` file. Depending on the
+  or outputs tracked by the stage in `dvc.lock` or `.dvc` file. Depending on the
   use case, commands like `dvc commit`, `dvc repro`, or `dvc run` can be used to
   update the file. Possible states are:
 
   - _new_: An <abbr>output</abbr> is found in the workspace, but there is no
-    corresponding file hash saved in the
-    [`dvc.lock`](/doc/user-guide/dvc-files-and-directories#dvcyaml-file) or
+    corresponding file hash saved in the `dvc.lock` or
     [`.dvc`](/doc/user-guide/dvc-files-and-directories#dvc-files) file yet.
   - _modified_: An output or <abbr>dependency</abbr> is found in the workspace,
     but the corresponding file hash in the `dvc.lock` or `.dvc` file is not up
@@ -94,8 +94,8 @@ the changes (described below).
     file hash in the `dvc.lock` or `.dvc` file is up to date, but there is no
     corresponding <abbr>cache</abbr> file or directory.
 
-- _update available_ means that <abbr>import stages</abbr> are outdated. The
-  original file or directory has changed. The imported data can be moved to its
+- _update available_ means that an <abbr>import stage</abbr> is outdated (the
+  original data source has changed). The imported data can be brought to its
   latest version by using `dvc update`.
 
 **For comparison against remote storage:**
