@@ -50,7 +50,7 @@ const LandingHero: React.FC<ILandingHeroProps> = ({ scrollToRef }) => {
           <ShowOnly on="mobile">
             <Link
               className={cn(styles.actionButton, styles.getStartedButton)}
-              href="/doc/tutorials/get-started"
+              href="/doc/start"
             >
               Get started
             </Link>

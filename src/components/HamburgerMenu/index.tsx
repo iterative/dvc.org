@@ -9,6 +9,7 @@ import { getFirstPage } from '../../utils/shared/sidebar'
 import { ReactComponent as LogoSVG } from '../../../static/img/logo-white.svg'
 import { ReactComponent as TwitterIcon } from '../SocialIcon/twitter.svg'
 import { ReactComponent as GithubIcon } from '../SocialIcon/github.svg'
+import { useHeaderIsScrolled } from '../../utils/front/scroll'
 
 import styles from './styles.module.css'
 
@@ -16,6 +17,7 @@ const docsPage = getFirstPage()
 
 const HamburgerMenu: React.FC = () => {
   const [isOpened, setOpened] = useState(false)
+  const collapsed = useHeaderIsScrolled()
 
   const toggleMobileMenu = useCallback(() => setOpened(!isOpened), [isOpened])
   const openOnEnterKey = useCallback(e => {
@@ -42,7 +44,7 @@ const HamburgerMenu: React.FC = () => {
   return (
     <div>
       <button
-        className={styles.toggleButton}
+        className={cn(styles.toggleButton, collapsed || styles.expanded)}
         onClick={toggleMobileMenu}
         onKeyDown={openOnEnterKey}
         aria-label="Toggle Mobile Menu"
@@ -216,7 +218,7 @@ const HamburgerMenu: React.FC = () => {
           </li>
         </ul>
         <Link
-          href="/doc/tutorials/get-started"
+          href="/doc/start"
           className={styles.linkButton}
           onClick={itemClick('get-started')}
         >

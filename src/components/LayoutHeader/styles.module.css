@@ -59,3 +59,28 @@
   display: block;
   padding-top: 2px;
 }
+
+.alert {
+  height: 35px;
+  line-height: 35px;
+  font-size: 18px;
+  text-align: center;
+  width: 100%;
+  background-color: #dee;
+  transition: 0.5s all;
+  overflow: hidden;
+
+  &.collapsed {
+    height: 0;
+    transform: translateY(-100%);
+  }
+}
+
+.gitHubAlertLink {
+  vertical-align: middle;
+  margin-left: 0.1em;
+
+  svg {
+    color: inherit;
+  }
+}

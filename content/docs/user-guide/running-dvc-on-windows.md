@@ -16,12 +16,12 @@ perfect solution, bu here are some ideas:
   [Git for Windows](https://gitforwindows.org/)\* (Git Bash) among other
   [shell options](https://github.com/cmderdev/cmder/blob/master/README.md#access-to-multiple-shells-in-one-window-using-tabs).
 - [Anaconda Prompt](https://docs.anaconda.com/anaconda/user-guide/getting-started/#open-prompt-win)
-  is another recommendation, but it may not support all the desired CLI features
-  (e.g. `\` line continuation).
+  is another recommendation.
 - Consider enabling and using
   [WSL](https://blogs.windows.com/windowsdeveloper/2016/03/30/run-bash-on-ubuntu-on-windows/)
   ([Windows Terminal](https://devblogs.microsoft.com/commandline/) also
-  recommended). But it has major
+  recommended) which supports the most CLI features (e.g. `\` line
+  continuation). But it has major
   [I/O performance issues](https://www.phoronix.com/scan.php?page=article&item=windows10-okt-wsl&num=2)
   and is [unable to access GPUs](https://github.com/Microsoft/WSL/issues/829),
   et al.\*
@@ -70,9 +70,9 @@ directory, as explained in
 ## Enabling paging with `less`
 
 By default, DVC tries to use [Less](<https://en.wikipedia.org/wiki/Less_(Unix)>)
-as pager for the output of `dvc pipeline show`. Windows doesn't have the less
-command available however. Fortunately, there is a easy way of installing `less`
-via [Chocolatey](https://chocolatey.org/) (please install the tool first):
+as pager for the output of `dvc dag`. Windows doesn't have the `less` command
+available however. Fortunately, there is a easy way of installing it via
+[Chocolatey](https://chocolatey.org/) (please install the tool first):
 
 ```dvc
 $ choco install less

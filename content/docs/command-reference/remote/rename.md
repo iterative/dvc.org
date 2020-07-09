@@ -1,17 +1,12 @@
 # remote rename
 
-Rename a data remote. The remote's URL is not changed by this command.
-
-See also [add](/doc/command-reference/remote/add),
-[default](/doc/command-reference/remote/default),
-[list](/doc/command-reference/remote/list),
-[modify](/doc/command-reference/remote/modify), and
-[remove](/doc/command-reference/remote/remove) commands to manage data remotes.
+Rename a [data remote](/doc/command-reference/remote). The remote's URL is not
+changed by this command.
 
 ## Synopsis
 
 ```usage
-usage: dvc remote rename [-h] [--global] [--system] [--local]
+usage: dvc remote rename [-h] [--global | --system | --local]
                          [-q | -v] name new
 
 positional arguments:

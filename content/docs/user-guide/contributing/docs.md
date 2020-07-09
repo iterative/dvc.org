@@ -31,7 +31,7 @@ to update the docs and redeploy the website.
 
 In case of a minor change, you can use the **Edit on GitHub** button (found to
 the right of each page) to fork the repository, edit it in place (with the
-source code file **Edit** button in GitHub), and create a pull request (PR).
+source code file **Edit** button in Github), and create a pull request (PR).
 
 Otherwise, please refer to the following procedure:
 
@@ -169,8 +169,8 @@ is installed when `yarn` runs (see [dev env](#development-environment)).
   `dvc`, `yaml`, or `diff` custom languages. `usage` is employed to show the
   `dvc --help` output for each command reference. `dvc` can be used to show
   examples of commands and their output in a terminal session. `yaml` is used to
-  show [DVC-file](/doc/user-guide/dvc-file-format) contents or other YAML data.
-  `diff` is used mainly for examples of `git diff` output.
+  show [DVC-file](/doc/user-guide/dvc-files-and-directories) contents or other
+  YAML data. `diff` is used mainly for examples of `git diff` output.
 
 > Check out the `.md` source code of any command reference to get a better idea,
 > for example in
@@ -197,9 +197,10 @@ We use **bold** text for emphasis, and _italics_ for special terms.
 
 We also use "emoji" symbols sparingly for visibility on certain notes. Mainly:
 
+- 📖 For notes that link to other related documentation
 - ⚠️ Warnings about possible problems related to DVC usage (similar to **Note!**
   and "Note that..." notes)
 - 💡 Useful tips related to external tools/integrations
 
-> Some other emojis currently in use here and there: ⚡🙏🐛⭐❗✅ (We're not
-> limited to these.)
+> Some other emojis currently in use here and there: ⚡✅🙏🐛⭐❗ (among
+> others).

@@ -3,18 +3,19 @@
 Download tracked files or directories from
 [remote storage](/doc/command-reference/remote) to the <abbr>cache</abbr> and
 <abbr>workspace</abbr>, based on the current
-[DVC-files](/doc/user-guide/dvc-file-format).
+[`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvcyaml-file) and
+[`.dvc`](/doc/user-guide/dvc-files-and-directories#dvc-files) files.
 
 ## Synopsis
 
 ```usage
-usage: dvc pull [-h] [-q | -v] [-j <number>]
-                [-r <name>] [-a] [-T] [-d] [-f] [-R] [--all-commits]
+usage: dvc pull [-h] [-q | -v] [-j <number>] [-r <name>] [-a] [-T]
+                [-d] [-f] [-R] [--all-commits] [--run-cache]
                 [targets [targets ...]]
 
 positional arguments:
-  targets        Limit command scope to these DVC-files or files/directories
-                 tracked by DVC. Using -R, directories to search DVC-files in
+  targets        Limit command scope to these stages or .dvc files.
+                 Using -R, directories to search for stages or .dvc files
                  can also be given.
 ```
 
@@ -38,20 +39,21 @@ remote.
 
 With no arguments, just `dvc pull` or `dvc pull --remote <name>`, it downloads
 only the files (or directories) missing from the workspace by searching all
-[DVC-files](/doc/user-guide/dvc-file-format) currently in the
-<abbr>project</abbr>. It will not download files associated with earlier commits
-in the <abbr>repository</abbr> (if using Git), nor will it download files that
-have not changed.
+stages in [`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvcyaml-file)
+or [`.dvc`](/doc/user-guide/dvc-files-and-directories#dvc-files) files currently
+in the <abbr>project</abbr>. It will not download files associated with earlier
+commits in the <abbr>repository</abbr> (if using Git), nor will it download
+files that have not changed.
 
-The command `dvc status -c` can list files referenced in current DVC-files, but
-missing in the <abbr>cache</abbr>. It can be used to see what files `dvc pull`
-would download.
+The command `dvc status -c` can list files referenced in current stages (in
+`dvc.yaml`) or `.dvc` files, but missing from the <abbr>cache</abbr>. It can be
+used to see what files `dvc pull` would download.
 
 If one or more `targets` are specified, DVC only considers the files associated
-with those DVC-files. Using the `--with-deps` option, DVC tracks dependencies
-backward from the target [stage files](/doc/command-reference/run), through the
-corresponding [pipelines](/doc/command-reference/pipeline), to find data files
-to pull.
+with those stages or `.dvc` files. Using the `--with-deps` option, DVC tracks
+dependencies backward from the target [stage files](/doc/command-reference/run),
+through the corresponding [pipelines](/doc/command-reference/pipeline), to find
+data files to pull.
 
 If `targets` are files/directories tracked by DVC, DVC will download cache for
 them, skipping the rest.
@@ -63,10 +65,10 @@ reflinks or hardlinks to put it in the workspace without copying. See
 ## Options
 
 - `-a`, `--all-branches` - determines the files to download by examining
-  DVC-files in all Git branches instead of just those present in the current
-  workspace. It's useful if branches are used to track experiments or project
-  checkpoints. Note that this can be combined with `-T` below, for example using
-  the `-aT` flag.
+  `dvc.yaml` and `.dvc` files in all Git branches instead of just those present
+  in the current workspace. It's useful if branches are used to track
+  experiments or project checkpoints. Note that this can be combined with `-T`
+  below, for example using the `-aT` flag.
 
 - `-T`, `--all-tags` - same as `-a` above, but applies to Git tags as well as
   the workspace. Useful if tags are used to track "checkpoints" of an experiment
@@ -78,23 +80,27 @@ reflinks or hardlinks to put it in the workspace without copying. See
   entire existing commit history of the project.
 
 - `-d`, `--with-deps` - determines files to download by tracking dependencies to
-  the target DVC-files (stages). If no `targets` are provided, this option is
-  ignored. By traversing all stage dependencies, DVC searches backward from the
-  target stages in the corresponding pipelines. This means DVC will not pull
-  files referenced in later stages than the `targets`.
+  the `targets`. If none are provided, this option is ignored. By traversing all
+  stage dependencies, DVC searches backward from the target stages in the
+  corresponding pipelines. This means DVC will not pull files referenced in
+  later stages than the `targets`.
 
 - `-R`, `--recursive` - determines the files to pull by searching each target
-  directory and its subdirectories for DVC-files to inspect. If there are no
-  directories among the `targets`, this option is ignored.
+  directory and its subdirectories for `dvc.yaml` and `.dvc` files to inspect.
+  If there are no directories among the `targets`, this option is ignored.
 
 - `-f`, `--force` - does not prompt when removing workspace files, which occurs
-  when these file no longer match the current DVC-file references. This option
-  surfaces behavior from the `dvc fetch` and `dvc checkout` commands because
-  `dvc pull` in effect performs those 2 functions in a single command.
+  when these files no longer match the current stages or `.dvc` files. This
+  option surfaces behavior from the `dvc fetch` and `dvc checkout` commands
+  because `dvc pull` in effect performs those 2 functions in a single command.
 
 - `-r <name>`, `--remote <name>` - name of the
   [remote storage](/doc/command-reference/remote) to pull from (see
   `dvc remote list`).
+
+- `--run-cache` - downloads all available history of stage runs from the remote
+  repository into the local run cache. A `dvc repro <stage_name>` is necessary
+  to checkout these files into the workspace and update the `dvc.lock` file.
 
 - `-j <number>`, `--jobs <number>` - number of threads to run simultaneously to
   handle the downloading of files from the remote. The default value is

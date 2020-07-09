@@ -38,6 +38,11 @@
   padding: 0;
   border: none;
   background: transparent;
+  transition: 0.5s all;
+
+  &.expanded {
+    top: 60px;
+  }
 
   @media (--xs-scr) {
     display: block;

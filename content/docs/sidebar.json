@@ -27,77 +27,36 @@
     ]
   },
   {
-    "slug": "tutorials",
-    "source": "tutorials/index.md",
+    "slug": "start",
+    "label": "Get Started",
+    "source": "start/index.md",
+    "tutorials": {
+      "katacoda": "https://katacoda.com/dvc/courses/get-started"
+    },
     "children": [
       {
-        "slug": "get-started",
-        "source": false,
+        "slug": "data-versioning",
         "tutorials": {
-          "katacoda": "https://katacoda.com/dvc/courses/get-started/initialize"
-        },
-        "children": [
-          "agenda",
-          "initialize",
-          "configure",
-          "add-files",
-          "store-data",
-          "retrieve-data",
-          "import-data",
-          {
-            "label": "Connect with Code",
-            "slug": "connect-code-and-data"
-          },
-          "pipeline",
-          "visualize",
-          "reproduce",
-          "metrics",
-          "experiments",
-          "compare-experiments",
-          {
-            "label": "Get Older Files",
-            "slug": "older-versions"
-          }
-        ]
-      },
-      {
-        "slug": "interactive",
-        "label": "Interactive Tutorials"
-      },
-      {
-        "slug": "versioning",
-        "label": "Data Versioning",
-        "tutorials": {
-          "katacoda": "https://katacoda.com/dvc/courses/tutorials/versioning"
+          "katacoda": "https://katacoda.com/dvc/courses/get-started/versioning"
         }
       },
       {
-        "slug": "pipelines",
-        "label": "Stages and Pipelines",
+        "slug": "data-access",
         "tutorials": {
-          "katacoda": "https://katacoda.com/dvc/courses/tutorials/pipelines"
+          "katacoda": "https://katacoda.com/dvc/courses/get-started/accessing"
         }
       },
       {
-        "slug": "deep",
-        "label": "Deep Dive Tutorial",
-        "source": "deep/index.md",
+        "slug": "data-pipelines",
         "tutorials": {
-          "katacoda": "https://katacoda.com/dvc/courses/tutorials/pipelines"
-        },
-        "children": [
-          "preparation",
-          {
-            "label": "Define ML Pipeline",
-            "slug": "define-ml-pipeline"
-          },
-          "reproducibility",
-          "sharing-data"
-        ]
+          "katacoda": "https://katacoda.com/dvc/courses/get-started"
+        }
       },
       {
-        "slug": "community",
-        "label": "Community Tutorials"
+        "slug": "experiments",
+        "tutorials": {
+          "katacoda": "https://katacoda.com/dvc/courses/get-started"
+        }
       }
     ]
   },
@@ -107,7 +66,9 @@
     "children": [
       {
         "label": "Versioning Data & Model Files",
-        "slug": "versioning-data-and-model-files"
+        "slug": "versioning-data-and-model-files",
+        "source": "versioning-data-and-model-files/index.md",
+        "children": ["tutorial"]
       },
       {
         "label": "Sharing Data & Model Files",
@@ -122,12 +83,18 @@
     "source": "user-guide/index.md",
     "children": [
       {
-        "label": "Files and Directories",
-        "slug": "dvc-files-and-directories"
+        "slug": "what-is-dvc",
+        "label": "What is DVC?",
+        "source": "what-is-dvc/index.md",
+        "children": [
+          "collaboration-issues",
+          "core-features",
+          "related-technologies"
+        ]
       },
       {
-        "label": "File Format (.dvc)",
-        "slug": "dvc-file-format"
+        "label": "DVC Files and Directories",
+        "slug": "dvc-files-and-directories"
       },
       {
         "slug": "dvcignore",
@@ -209,6 +176,10 @@
         "slug": "config"
       },
       {
+        "label": "dag",
+        "slug": "dag"
+      },
+      {
         "label": "destroy",
         "slug": "destroy"
       },
@@ -222,6 +193,10 @@
         "tutorials": {
           "katacoda": "https://katacoda.com/dvc/courses/examples/fetch"
         }
+      },
+      {
+        "label": "freeze",
+        "slug": "freeze"
       },
       {
         "label": "gc",
@@ -256,22 +231,10 @@
         "slug": "list"
       },
       {
-        "label": "lock",
-        "slug": "lock"
-      },
-      {
         "label": "metrics",
         "slug": "metrics",
         "source": "metrics/index.md",
         "children": [
-          {
-            "label": "metrics add",
-            "slug": "add"
-          },
-          {
-            "label": "metrics modify",
-            "slug": "modify"
-          },
           {
             "label": "metrics show",
             "slug": "show"
@@ -279,10 +242,6 @@
           {
             "label": "metrics diff",
             "slug": "diff"
-          },
-          {
-            "label": "metrics remove",
-            "slug": "remove"
           }
         ]
       },
@@ -302,21 +261,6 @@
         ]
       },
       {
-        "label": "pipeline",
-        "slug": "pipeline",
-        "source": "pipeline/index.md",
-        "children": [
-          {
-            "label": "pipeline list",
-            "slug": "list"
-          },
-          {
-            "label": "pipeline show",
-            "slug": "show"
-          }
-        ]
-      },
-      {
         "label": "plots",
         "slug": "plots",
         "source": "plots/index.md",
@@ -328,6 +272,10 @@
           {
             "label": "plots diff",
             "slug": "diff"
+          },
+          {
+            "label": "plots modify",
+            "slug": "modify"
           }
         ]
       },
@@ -391,8 +339,8 @@
         "slug": "status"
       },
       {
-        "label": "unlock",
-        "slug": "unlock"
+        "label": "unfreeze",
+        "slug": "unfreeze"
       },
       {
         "label": "unprotect",
@@ -425,23 +373,6 @@
         "slug": "read",
         "label": "read()"
       }
-    ]
-  },
-  {
-    "slug": "understanding-dvc",
-    "label": "Understanding DVC",
-    "source": false,
-    "children": [
-      "collaboration-issues",
-      "existing-tools",
-      {
-        "label": "What is DVC?",
-        "slug": "what-is-dvc"
-      },
-      "core-features",
-      "how-it-works",
-      "related-technologies",
-      "resources"
     ]
   },
   {

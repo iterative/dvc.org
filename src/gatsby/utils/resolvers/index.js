@@ -29,6 +29,9 @@ function sourcePathResolver({
   return async function resolveBySourcePath(source, args, context, info) {
     const fieldValue = context.defaultFieldResolver(source, args, context, info)
 
+    // Bail out early with null if no value was provided
+    if (!fieldValue) return null
+
     // Allow for callers to provide a function that modifies the field value into
     // the actual relative path of a file.
     const sourcePath = resolvePath ? resolvePath(fieldValue) : fieldValue

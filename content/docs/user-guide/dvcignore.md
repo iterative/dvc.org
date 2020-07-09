@@ -80,7 +80,7 @@ $ tree .dvc/cache
     └── c3d3797971f12c7f5e1d106dd5cee2
 ```
 
-Only the checksums of a directory (`data/`) and one files have been
+Only the hash values of a directory (`data/`) and one file have been
 <abbr>cached</abbr>. This means that `dvc add` ignored one of the files
 (`data1`).
 
@@ -192,7 +192,7 @@ Note that both data files are displayed as modified. Create a `.dvcignore` file
 and insert pattern matching one of the files:
 
 ```dvc
-$ echo dir1/* >> .dvcignore
+$ echo 'dir1/*' >> .dvcignore
 ```
 
 Check status again:
