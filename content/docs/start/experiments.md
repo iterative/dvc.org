@@ -211,14 +211,14 @@ Path         Metric    Value    Change
 scores.json  auc       0.61314  0.07139
 ```
 
-And finally, we can compare `ROC` curves with a single command!
+And finally, we can compare `precision recall` curves with a single command!
 
 ```dvc
 $ dvc plots diff -x recall -y precision
 file:///Users/dvc/example-get-started/plots.html
 ```
 
-![](/img/plots_roc_get_started.svg)
+![](/img/plots_prc_get_started.svg)
 
 All these commands also accept
 [Git revisions](https://git-scm.com/docs/gitrevisions) (commits, tags, branch
