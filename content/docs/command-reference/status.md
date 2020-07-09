@@ -49,7 +49,7 @@ In the remote mode, if `targets` are files/directories tracked by DVC, DVC will
 only compare the cache for them, skipping the rest.
 
 In the local mode, changes are detected through the hash value of every file
-listed in every stage (in `dvc.yaml` or `.dvc` files) in question against the
+listed in every stage (in `dvc.yaml`) or `.dvc` files in question against the
 corresponding file in the file system. The command output indicates the detected
 changes, if any. If no differences are detected, `dvc status` prints this
 message:
