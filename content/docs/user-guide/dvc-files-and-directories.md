@@ -52,12 +52,12 @@ meta:
 - `outs` (always present): List of <abbr>output</abbr> entries (details below)
   that represent the files or directories tracked with DVC. Typically there is
   only one (but several can be added or combined manually).
-- `deps`: List of <abbr>external dependency</abbr> entries (details below). Only
-  present when `dvc import` and `dvc import-url` are used to generate this
-  `.dvc` file. Typically there is only one (but several can be added manually).
-- `wdir` (optional): Working directory for the `outs` and `deps` paths (relative
-  to the `.dvc` file's location). If this field is not present explicitly, it
-  defaults to `.` (the `.dvc` file's location).
+- `deps`: List of <abbr>dependency</abbr> entries (details below). Only present
+  when `dvc import` and `dvc import-url` are used to generate this `.dvc` file.
+  Typically there is only one (but several can be added manually).
+- `wdir`: Working directory for the `outs` and `deps` paths (relative to the
+  `.dvc` file's location). If this field is not present explicitly, it defaults
+  to `.` (the `.dvc` file's location).
 - `meta` (optional): Arbitrary metadata can be added manually with this field.
   Any YAML contents is supported. `meta` contents are ignored by DVC, but they
   can be meaningful for user processes that read `.dvc` files.
