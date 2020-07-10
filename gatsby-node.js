@@ -1,5 +1,4 @@
 require('dotenv').config()
-const pruneCache = require('./src/gatsby/prune-cache')
 
 const {
   setPageContext,
@@ -44,6 +43,4 @@ exports.onCreateWebpackConfig = ({ stage, actions, getConfig }) => {
   }
 }
 
-exports.onPostBuild = api => {
-  return Promise.all([callOnModels(models, 'onPostBuild', api), pruneCache])
-}
+exports.onPostBuild = api => callOnModels(models, 'onPostBuild', api)

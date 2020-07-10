@@ -1,5 +1,5 @@
 const fs = require('fs')
-const crawlPageData = require('../utils/shared/crawlPageData')
+const crawlPageData = require('../../../utils/shared/crawlPageData.js')
 
 async function removeFile(filePath) {
   return new Promise((resolve, reject) =>
@@ -15,7 +15,7 @@ async function removeFile(filePath) {
   )
 }
 
-module.exports = async function pruneStalePageCache({ graphql }) {
+exports.onPostBuild = async function pruneStalePageCache({ graphql }) {
   // Remove stale page-data from cache in production
 
   // Bail out early if we're in dev mode.
