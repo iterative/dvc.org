@@ -68,6 +68,9 @@ stage with differences, the changes in <abbr>dependencies</abbr> and/or
 file name or hash is shown, and additionally a status word is shown describing
 the changes (described below).
 
+- _changed checksum_ means that the `.dvc` file hash has changed (e.g. someone
+  manually edited it).
+
 - _always changed_ means that this is a
   [`.dvc` file](/doc/user-guide/dvc-files-and-directories#dvc-files) with no
   dependencies (see `dvc add`) or that the stage in
