@@ -38,6 +38,8 @@ Now let's install the requirements:
 > first.
 
 ```dvc
+$ python3 -m venv .env
+$ source .env/bin/activate
 $ pip install -r src/requirements.txt
 ```
 
