@@ -40,7 +40,7 @@ $ tree
 Now let's install the requirements:
 
 > We **strongly** recommend creating a
-> [virtual environment](https://packaging.python.org/tutorials/installing-packages/#creating-virtual-environments)
+> [virtual environment](https://python.readthedocs.io/en/stable/library/venv.html)
 > first.
 
 ```dvc
