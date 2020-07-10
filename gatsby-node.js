@@ -13,6 +13,7 @@ exports.createSchemaCustomization = api =>
 exports.sourceNodes = api => callOnModels(models, 'sourceNodes', api)
 exports.onCreateNode = api => callOnModels(models, 'onCreateNode', api)
 exports.createPages = api => callOnModels(models, 'createPages', api)
+exports.onPostBuild = api => callOnModels(models, 'onPostBuild', api)
 
 exports.onCreatePage = ({ page, actions }) => {
   setPageContext(page, actions)
@@ -42,5 +43,3 @@ exports.onCreateWebpackConfig = ({ stage, actions, getConfig }) => {
     actions.replaceWebpackConfig(config)
   }
 }
-
-exports.onPostBuild = api => callOnModels(models, 'onPostBuild', api)
