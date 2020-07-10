@@ -11,9 +11,9 @@ usage: dvc push [-h] [-q | -v] [-j <number>] [-r <name>] [-a] [-T]
                 [targets [targets ...]]
 
 positional arguments:
-  targets        Limit command scope to these stages or .dvc files.
-                 Using -R, directories to search for stages or .dvc files
-                 can also be given.
+  targets       Limit command scope to these tracked files/directories,
+                .dvc files, or stage names. Using -R, directories to
+                search for .dvc files or stages can also be given.
 ```
 
 ## Description
@@ -66,13 +66,10 @@ The `dvc status -c` command can list files tracked by DVC that are new in the
 cache (compared to the default remote.) It can be used to see what files
 `dvc push` would upload.
 
-If one or more `targets` are specified, DVC only considers the files associated
-with them. Using the `--with-deps` option, DVC tracks dependencies backward from
-the target [stage files](/doc/command-reference/run), through the corresponding
-[pipelines](/doc/command-reference/pipeline), to find data files to push.
-
-If `targets` are files/directories tracked by DVC, DVC will download cache for
-them skipping the rest.
+If one or more `targets` are specified, DVC only considers the corresponding
+files. Note that DVC supports granularity as well: the targets may be files or
+directories found inside a directory that is
+[tracked as a whole](/doc/command-reference/add#example-directory).
 
 ## Options
 

@@ -14,9 +14,9 @@ usage: dvc pull [-h] [-q | -v] [-j <number>] [-r <name>] [-a] [-T]
                 [targets [targets ...]]
 
 positional arguments:
-  targets        Limit command scope to these stages or .dvc files.
-                 Using -R, directories to search for stages or .dvc files
-                 can also be given.
+  targets       Limit command scope to these tracked files/directories,
+                .dvc files, or stage names. Using -R, directories to
+                search for .dvc files or stages can also be given.
 ```
 
 ## Description
@@ -49,17 +49,13 @@ The command `dvc status -c` can list files referenced in current stages (in
 `dvc.yaml`) or `.dvc` files, but missing from the <abbr>cache</abbr>. It can be
 used to see what files `dvc pull` would download.
 
-If one or more `targets` are specified, DVC only considers the files associated
-with those stages or `.dvc` files. Using the `--with-deps` option, DVC tracks
-dependencies backward from the target [stage files](/doc/command-reference/run),
-through the corresponding [pipelines](/doc/command-reference/pipeline), to find
-data files to pull.
+If one or more `targets` are specified, DVC only considers the corresponding
+files. Note that DVC supports granularity as well: the targets may be files or
+directories found inside a directory that is
+[tracked as a whole](/doc/command-reference/add#example-directory).
 
-If `targets` are files/directories tracked by DVC, DVC will download cache for
-them, skipping the rest.
-
-After a data file is in cache, `dvc pull` can use OS-specific mechanisms like
-reflinks or hardlinks to put it in the workspace without copying. See
+After the data is in the cache, `dvc pull` uses OS-specific mechanisms like
+reflinks or hardlinks to put it in the workspace, trying to avoid copying. See
 `dvc checkout` for more details.
 
 ## Options
