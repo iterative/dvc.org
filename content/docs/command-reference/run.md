@@ -17,7 +17,7 @@ usage: dvc run [-h] [-q | -v] -n <name> [-d <path>] [-o <path>]
                command
 
 positional arguments:
-  command               Command for the stage. Executed by default.
+  command               Command for the stage.
 ```
 
 ## Description
@@ -34,8 +34,7 @@ kinds of stage [dependencies and outputs](#dependencies-and-outputs). The
 remaining terminal input provided to `dvc run` after `-`/`--` flags will become
 the required [`command` argument](#the-command-argument).
 
-`dvc run` executes stage commands when used, unless the `--no-exec` option is
-used.
+`dvc run` executes stage commands, unless the `--no-exec` option is used.
 
 <details>
 
