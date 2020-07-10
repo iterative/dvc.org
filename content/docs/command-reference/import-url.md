@@ -261,10 +261,10 @@ $ rm -f code.zip
 
 Let's install the requirements. But before we do that, we **strongly** recommend
 creating a
-[virtual environment](https://packaging.python.org/tutorials/installing-packages/#creating-virtual-environments):
+[virtual environment](https://python.readthedocs.io/en/stable/library/venv.html):
 
 ```dvc
-$ virtualenv -p python3 .env
+$ python3 -m venv .env
 $ source .env/bin/activate
 $ pip install -r src/requirements.txt
 ```
