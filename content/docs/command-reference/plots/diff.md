@@ -47,7 +47,21 @@ please see `dvc plots`.
 
 - `--targets <path>` - specific metric files to visualize. These must be listed
   in a [`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvcyaml-file) file
-  (see the `--plots` option of `dvc run`).
+  (see the `--plots` option of `dvc run`). When you are specifying multiple
+  arguments for `--targets` and `revisions`, use `--` after all the arguments
+  for `--targets`:
+
+  ```dvc
+  $ dvc plots diff --targets t1.json t2.csv -- HEAD v1 v2
+  ```
+
+  Without `--`. this statement will show an error as argument parser confuses
+  `revisions` as arguments for `--targets` option. Alternatively, you can also
+  run above statement as:
+
+  ```dvc
+  $ dvc plots diff HEAD v1 v2 --targets t1.json t2.csv
+  ```
 
 - `-o <path>, --out <path>` - name of the generated file. By default, the output
   file name is equal to the input filename with a `.html` file extension (or
@@ -105,32 +119,11 @@ file:///Users/dmitry/src/plots/logs.html
 Compare two specific versions (commit hashes, tags, or branches):
 
 ```dvc
-$ dvc plots diff --targets logs.csv -- HEAD 0135527
+$ dvc plots diff HEAD 0135527 --targets logs.csv
 file:///Users/usr/src/plots/logs.csv.html
 ```
 
 ![](/img/plots_diff.svg)
-
-> Please note that when you're specifying `--targets` options with multiple
-> `revisions`:
->
-> ```dvc
-> $ dvc plots diff --targets t1.json t2.csv HEAD v1 v2
-> ```
->
-> This statement will show an error because argument parser confuses `revisions`
-> as arguments for `--targets` option. To avoid this error use `--` after all
-> the arguments for `--targets`:
->
-> ```dvc
-> $ dvc plots diff --targets t1.json t2.csv -- HEAD v1 v2
-> ```
->
-> Alternatively, you can also run above statement as:
->
-> ```dvc
-> $ dvc plots diff HEAD v1 v2 --targets t1.json t2.csv
-> ```
 
 ## Example: Confusion matrix
 
