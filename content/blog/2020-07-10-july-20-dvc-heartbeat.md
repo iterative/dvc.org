@@ -55,8 +55,8 @@ migrating (don't worry, 1.0 is backwards compatible).
 ### Virtual meetup!
 
 In May, we had our
-[first every virtual meetup](http://localhost:8000/blog/may-20-dvc-heartbeat). We
-had amazing talks from [Dean Pleban](https://twitter.com/DeanPlbn) and
+[first every virtual meetup](http://localhost:8000/blog/may-20-dvc-heartbeat).
+We had amazing talks from [Dean Pleban](https://twitter.com/DeanPlbn) and
 [Elizabeth Hutton](https://github.com/ehutt), plus time for Q&A with the DVC
 team- you can
 [watch the recording](https://www.youtube.com/watch?v=19GMtrFykSU&list=PLVeJCYrrCemiOc1SS_PIB3Tb3HX0Aqw3j)
