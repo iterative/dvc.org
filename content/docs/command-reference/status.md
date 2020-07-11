@@ -137,7 +137,7 @@ workspace) is different from remote storage. Bringing the two into sync requires
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
-## Example: Simple usage
+## Examples
 
 ```dvc
 $ dvc status
@@ -159,6 +159,24 @@ prepare.dvc
 This shows that for stage `bar.dvc`, the dependency `foo` and the
 <abbr>output</abbr> `bar` have changed. Likewise for `foo.dvc`, the dependency
 `foo` has changed, but no output has changed.
+
+## Example: Specific targets
+
+`dvc status` supports granularity for files found in tracked directories, for
+example:
+
+```dvc
+$ tree data
+data
+├── raw
+│   ├── partition.1.dat
+│   ├── ...
+│   └── partition.n.dat
+└── raw.dvc              # data/raw/ is tracked as a whole.
+
+$ dvc status -r local data/raw/partition.1.dat
+new:                data/raw
+```
 
 ## Example: Dependencies
 
@@ -201,22 +219,6 @@ new:      data/matrix-test.p
 
 The output shows where the location of the remote storage is, as well as any
 differences between the <abbr>cache</abbr> and `storage` remote.
-
-Note that `dvc status` supports granularity for files found in tracked
-directories, for example:
-
-```dvc
-$ tree data
-data
-├── raw
-│   ├── partition.1.dat
-│   ├── ...
-│   └── partition.n.dat
-└── raw.dvc              # data/raw/ is tracked as a whole.
-
-$ dvc status -r local data/raw/partition.1.dat
-new:                data/raw
-```
 
 ## Example: Import stage needs update
 
