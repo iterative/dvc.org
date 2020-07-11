@@ -19,13 +19,12 @@ positional arguments:
 
 ## Description
 
-`dvc status` searches for changes in the existing pipelines, either showing
-which tracked files or directories have changed in the <abbr>workspace</abbr>,
-and must be added or reproduced again (with `dvc add` or `dvc repro`,
-respectively); or differences between <abbr>cache</abbr> vs. remote storage
-(implying `dvc push` or `dvc pull` should be run to synchronize them). The two
-modes, _local_ and _cloud_ are triggered by using the `--cloud` or `--remote`
-options:
+`dvc status` searches for changes in the existing tracked data and pipelines,
+either showing which files or directories have changed in the
+<abbr>workspace</abbr> and must be added or reproduced again (with `dvc add` or
+`dvc repro`); or differences between <abbr>cache</abbr> vs. remote storage
+(implying `dvc push` or `dvc pull` should be run to synchronize them). The
+_remote_ mode is triggered by using the `--cloud` or `--remote` options:
 
 | Mode   | Command option | Description                                                                                                                 |
 | ------ | -------------- | --------------------------------------------------------------------------------------------------------------------------- |
@@ -33,32 +32,22 @@ options:
 | remote | `--remote`     | Comparisons are made between the cache, and the given remote. Remote storage is defined using the `dvc remote` command.     |
 | remote | `--cloud`      | Comparisons are made between the cache, and the default remote (typically defined with `dvc remote --default`).             |
 
-DVC determines which data and code files to compare by analyzing all stages (in
-[`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvcyaml-file) and
-[`.dvc` files](/doc/user-guide/dvc-files-and-directories#dvc-files) in the
+This command scans all `dvc.lock` and `.dvc` files to compare the hash values
+saved in their `outs` fields against the actual data files or directories in the
 <abbr>workspace</abbr> (the `--all-branches` and `--all-tags` options compare
-multiple workspace versions).
+multiple workspace versions). Scanning is limited to the given `targets` (if
+any). See also options `--with-deps` and `--recursive` below.
 
-The comparison can be limited to certain stages (in `dvc.yaml`) or `.dvc` files
-specifically, by listing them as `targets`. Changes are reported only against
-these.
-
-In the remote mode, files and directories tracked by DVC are accepted as
-`targets` as well. DVC will only compare the cache for these, skipping the rest.
 DVC supports granularity as well: the targets may be files or directories found
 inside a directory that is
 [tracked as a whole](/doc/command-reference/add#example-directory).
 
-Changes are detected by checking the hash value of the files listed in all
-target stages and `.dvc` files, against the actual file in the workspace. If no
-differences are detected, `dvc status` prints
-`Data and pipelines are up to date.`
-
-If differences are detected by `dvc status`, the command output indicates those
-changes. For each stage with differences, the changes in
-<abbr>dependencies</abbr> and/or <abbr>outputs</abbr> that differ are listed.
-For each item listed, either the file name or hash is shown, along with a _state
-description_, as detailed below:
+If no differences are detected, `dvc status` prints
+`Data and pipelines are up to date.` If differences are detected by
+`dvc status`, the command output indicates the changes. For each stage with
+differences, the changes in <abbr>dependencies</abbr> and/or
+<abbr>outputs</abbr> that differ are listed. For each item listed, either the
+file name or hash is shown, along with a _state description_, as detailed below:
 
 - _changed checksum_ means that the `.dvc` file hash has changed (e.g. someone
   manually edited it).
