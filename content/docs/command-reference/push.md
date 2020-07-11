@@ -12,8 +12,7 @@ usage: dvc push [-h] [-q | -v] [-j <number>] [-r <name>] [-a] [-T]
 
 positional arguments:
   targets       Limit command scope to these tracked files/directories,
-                .dvc files, or stage names. Using -R, directories to
-                search for .dvc files or stages can also be given.
+                .dvc files, or stage names.
 ```
 
 ## Description

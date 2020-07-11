@@ -11,9 +11,8 @@ usage: dvc fetch [-h] [-q | -v] [-j <number>] [-r <name>] [-a] [-T]
                  [targets [targets ...]]
 
 positional arguments:
-  targets        Limit command scope to these stages or .dvc files.
-                 Using -R, directories to search for stages or .dvc
-                 files can also be given.
+  targets       Limit command scope to these tracked files/directories,
+                .dvc files, or stage names.
 ```
 
 ## Description
