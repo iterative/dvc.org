@@ -38,10 +38,6 @@ saved in their `outs` fields against the actual data files or directories in the
 multiple workspace versions). Scanning is limited to the given `targets` (if
 any). See also options `--with-deps` and `--recursive` below.
 
-DVC supports granularity as well: the targets may be files or directories found
-inside a directory that is
-[tracked as a whole](/doc/command-reference/add#example-directory).
-
 If no differences are detected, `dvc status` prints
 `Data and pipelines are up to date.` If differences are detected by
 `dvc status`, the command output indicates the changes. For each stage with
@@ -206,8 +202,8 @@ new:      data/matrix-test.p
 The output shows where the location of the remote storage is, as well as any
 differences between the <abbr>cache</abbr> and `storage` remote.
 
-Note that when comparing against remote storage, `dvc status` supports
-granularity for files found in tracked directories, for example:
+Note that `dvc status` supports granularity for files found in tracked
+directories, for example:
 
 ```dvc
 $ tree data
