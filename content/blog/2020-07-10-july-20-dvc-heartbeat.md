@@ -98,22 +98,23 @@ shortage of speaking engagements. Here's a recap.
 
 https://www.youtube.com/watch?v=EWcpALbzZRg
 
--Dmitry appeared on the [MLOps.community](https://mlops.community/) meetup to
+- Dmitry appeared on the [MLOps.community](https://mlops.community/) meetup to
 chat with host [Demetrios Brinkmann](https://www.linkedin.com/in/dpbrinkm/).
 They talked about the open source ecosystem, the difference between tools and
 platforms, and what it means to codify data.
 
 https://www.youtube.com/watch?v=ojV1tK9jXH8&t=2295s
 
--I (Elle) gave a talk at the
+- I (Elle) gave a talk at the
 [MLOps Production & Engineering World](https://mlopsworld.com/) meeting, called
 "Adapting continuous integration and continuous delivery for ML". I shared an
 approach to using GitHub Actions with ML projects. Video coming soon!
 
 https://twitter.com/TMLS_TO/status/1273693487104503808
 
-- Extremely early the next morning, I co-led a workshop with clinician-scientist
-  [Cris Lanting](https://www.linkedin.com/in/crislanting/?originalSubdomain=nl)
+- Extremely early the next morning, clinician-scientist
+  [Cris Lanting](https://www.linkedin.com/in/crislanting/?originalSubdomain=nl) and I 
+  co-led a workshop 
   about developing strong computational infrastructure and practices in research
   as part of the
   [Virtual Conference on Computational Audiology](https://computationalaudiology.com/).
