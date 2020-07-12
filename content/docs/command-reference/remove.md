@@ -21,6 +21,13 @@ files or directories that are tracked by DVC. It takes one or more stage names
 [`.dvc` files](/doc/user-guide/dvc-files-and-directories#dvc-files) as target,
 removes it, and optionally removes all of its outputs (`outs` field).
 
+If there are no stages left in
+[dvc.yaml](/doc/user-guide/dvc-files-and-directories#dvcyaml-file) after stage
+removal then both
+[dvc.yaml](/doc/user-guide/dvc-files-and-directories#dvcyaml-file) and
+[dvc.lock](/doc/user-guide/dvc-files-and-directories#dvclock-file) are removed
+from the workspace.
+
 Note that in the case of `.dvc` file `targets`, the tracked files or directories
 (`outs` in the `.dvc` file) are removed by default by this command.
 
