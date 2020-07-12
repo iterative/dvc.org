@@ -39,7 +39,7 @@ each one:
 1. Calculate the file hash.
 2. Move the file contents to the cache (by default in `.dvc/cache`), using the
    file hash to form the cached file path. (See
-   [Structure of cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory)
+   [Structure of cache directory](/   doc/user-guide/dvc-files-and-directories#structure-of-cache-directory)
    for more details.)
 3. Attempt to replace the file with a link to the cached data (more details on
    file linking further down).
@@ -136,7 +136,7 @@ $ dvc add data.xml
 
 To track the changes with git, run:
 
-        git add .gitignore data.xml.dvc
+        git add data.xml.dvc .gitignore
 ```
 
 As indicated above, a
