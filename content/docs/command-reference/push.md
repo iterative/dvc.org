@@ -164,7 +164,6 @@ Posts.tsv.dvc
 Posts-test.tsv.dvc
 matrix-train.p.dvc
 model.p.dvc
-Dvcfile
 ```
 
 Imagine the <abbr>projects</abbr> has been modified such that the
