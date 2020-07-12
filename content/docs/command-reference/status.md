@@ -165,12 +165,12 @@ This shows that for stage `bar.dvc`, the dependency `foo` and the
 `dvc status` only checks the tracked data corresponding to any given `targets`:
 
 ```dvc
-$ dvc status foo.dvc bar
+$ dvc status foo.dvc dobar
 foo.dvc
   changed outs:
           deleted:      foo
   changed checksum
-bar
+dobar
   changed deps:
           modified:      bar
   changed outs:
@@ -178,7 +178,7 @@ bar
 ```
 
 > In this case, the target `foo.dvc` is a `.dvc` file to track the `foo` file,
-> while `bar` is the name of a stage defined in `dvc.yaml`.
+> while `dobar` is the name of a stage defined in `dvc.yaml`.
 
 Note that DVC commands support granularity for files found in tracked
 directories, for example:
