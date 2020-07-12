@@ -54,8 +54,8 @@ and are required to
 corresponding [pipeline](/doc/command-reference/pipeline).
 
 If no `targets` are specified, the set of data files to fetch is determined by
-scanning all `dvc.yaml` and `.dvc` files in the workspace (the
-`--all-branches`and `--all-tags` options compare multiple workspace versions).
+scanning all `dvc.yaml` and `.dvc` files in the workspace (the `--all-branches`
+and `--all-tags` options compare multiple workspace versions).
 
 The default remote is used (see `dvc config core.remote`) unless the `--remote`
 option is used.
@@ -71,43 +71,43 @@ or `-T` options are used).
 
 ## Options
 
-- `-r <name>`, `--remote <name>`- name of the
-  [remote storage](/doc/command-reference/remote) to fetch from
-  (see`dvc remote list`).
+- `-r <name>`, `--remote <name>` - name of the
+  [remote storage](/doc/command-reference/remote) to fetch from (see
+  `dvc remote list`).
 
 - `--run-cache` - downloads all available history of stage runs from the remote
   repository.
 
-- `-d`, `--with-deps`- determines files to download by tracking dependencies to
-  the`targets`. If none are provided, this option is ignored. By traversing all
+- `-d`, `--with-deps` - determines files to download by tracking dependencies to
+  the `targets`. If none are provided, this option is ignored. By traversing all
   stage dependencies, DVC searches backward from the target stages in the
   corresponding pipelines. This means DVC will not fetch files referenced in
-  later stages than the`targets`.
+  later stages than the `targets`.
 
-- `-R`, `--recursive`- determines the files to fetch by searching each target
-  directory and its subdirectories for`dvc.yaml`and`.dvc`files to inspect. If
-  there are no directories among the`targets`, this option is ignored.
+- `-R`, `--recursive` - determines the files to fetch by searching each target
+  directory and its subdirectories for `dvc.yaml` and `.dvc` files to inspect.
+  If there are no directories among the `targets`, this option is ignored.
 
-- `-j <number>`, `--jobs <number>`- number of threads to run simultaneously to
-  handle the downloading of files from the remote. The default value
-  is`4 \* cpu_count()`. For SSH remotes, the default is just`4`. Using more jobs
+- `-j <number>`, `--jobs <number>` - number of threads to run simultaneously to
+  handle the downloading of files from the remote. The default value is
+  `4 \* cpu_count()`. For SSH remotes, the default is just `4`. Using more jobs
   may improve the total download speed if a combination of small and large files
   are being fetched.
 
-- `-a`, `--all-branches`- fetch cache for all Git branches instead of just the
+- `-a`, `--all-branches` - fetch cache for all Git branches instead of just the
   current workspace. This means DVC may download files needed to reproduce
-  different versions of a`.dvc`file
+  different versions of a `.dvc` file
   ([experiments](/doc/tutorials/get-started/experiments)), not just the ones
-  currently in the workspace. Note that this can be combined with`-T`below, for
-  example using the`-aT` flag.
+  currently in the workspace. Note that this can be combined with `-T` below,
+  for example using the `-aT` flag.
 
-- `-T`, `--all-tags`- same as`-a`above, but applies to Git tags as well as the
-  workspace. Note that both options can be combined, for example using the`-aT`
-  flag.
+- `-T`, `--all-tags` - same as `-a` above, but applies to Git tags as well as
+  the workspace. Note that both options can be combined, for example using the
+  `-aT` flag.
 
-- `--all-commits`- same as`-a`or`-T` above, but applies to _all_ Git commits as
-  well as the workspace. Useful for downloading all the data used in the entire
-  existing commit history of the project.
+- `--all-commits` - same as `-a` or `-T` above, but applies to _all_ Git commits
+  as well as the workspace. Useful for downloading all the data used in the
+  entire existing commit history of the project.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -120,8 +120,8 @@ or `-T` options are used).
 
 Let's employ a simple <abbr>workspace</abbr> with some data, code, ML models,
 pipeline stages, such as the <abbr>DVC project</abbr> created for the
-[Get Started](/doc/tutorials/get-started). Then we can see what happens with
-`dvc fetch` as we switch from tag to tag.
+[Get Started](/doc/tutorials/get-started). Then we can see what `dvc fetch` does
+in different scenarios.
 
 <details>
 
@@ -253,7 +253,7 @@ $ dvc status -c
 
 One could do a simple `dvc fetch` to get all the data, but what if you only want
 to retrieve the data up to our third stage, `train.dvc`? We can use the
-`--with-deps`(or`-d`) option:
+`--with-deps` (or `-d`) option:
 
 ```dvc
 $ dvc fetch --with-deps train.dvc
@@ -278,13 +278,13 @@ $ tree .dvc/cache
     └── a9c512fda11293cfee7617b66648dc
 ```
 
-Fetching using `--with-deps`starts with the target
-[`.dvc`file](/doc/user-guide/dvc-files-and-directories#dvc-files) (`train.dvc`)
+Fetching using `--with-deps` starts with the target
+[`.dvc` file](/doc/user-guide/dvc-files-and-directories#dvc-files) (`train.dvc`)
 and searches backwards through its pipeline for data to download into the
 project's cache. All the data for the second and third stages ("featurize" and
-"train") has now been downloaded to the cache. We could now use`dvc checkout`to
-get the data files needed to reproduce this pipeline up to the third stage into
-the workspace (with`dvc repro train.dvc`).
+"train") has now been downloaded to the cache. We could now use `dvc checkout`
+to get the data files needed to reproduce this pipeline up to the third stage
+into the workspace (with `dvc repro train.dvc`).
 
 > Note that in this example project, the last stage file `evaluate.dvc` doesn't
 > add any more data files than those form previous stages, so at this point all

@@ -59,9 +59,9 @@ Summarizing, the result is that the target data is replaced by small
 [`.dvc` files](/doc/user-guide/dvc-files-and-directories#dvc-files) that can be
 easily tracked with Git.
 
-> Note that `.dvc` files can be considered don't have <abbr>dependencies</abbr>,
-> only outputs. These are treated as _always changed_ by `dvc status` and
-> `dvc repro`, which always executes them.
+> Note that `.dvc` files don't have <abbr>dependencies</abbr>, only outputs.
+> These are treated as _always changed_ by `dvc status` and `dvc repro`, which
+> always executes them.
 
 To avoid adding files inside a directory accidentally, you can add the
 corresponding [patterns](/doc/user-guide/dvcignore) in a `.dvcignore` file.
