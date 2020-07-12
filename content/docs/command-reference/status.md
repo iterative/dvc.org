@@ -162,8 +162,26 @@ This shows that for stage `bar.dvc`, the dependency `foo` and the
 
 ## Example: Specific targets
 
-`dvc status` supports granularity for files found in tracked directories, for
-example:
+`dvc status` only checks the tracked data corresponding to any given `targets`:
+
+```dvc
+$ dvc status foo.dvc bar
+foo.dvc
+  changed outs:
+          deleted:      foo
+  changed checksum
+bar
+  changed deps:
+          modified:      bar
+  changed outs:
+          not in cache:      foo
+```
+
+> In this case, the target `foo.dvc` is a `.dvc` file to track the `foo` file,
+> while `bar` is the name of a stage defined in `dvc.yaml`.
+
+Note that DVC commands support granularity for files found in tracked
+directories, for example:
 
 ```dvc
 $ tree data
@@ -174,7 +192,7 @@ data
 │   └── partition.n.dat
 └── raw.dvc              # data/raw/ is tracked as a whole.
 
-$ dvc status -r local data/raw/partition.1.dat
+$ dvc fetch data/raw/partition.1.dat
 new:                data/raw
 ```
 
