@@ -136,17 +136,17 @@ $ cd example-get-started
 
 </details>
 
-The workspace looks almost like in this
-[pipeline setup](/doc/tutorials/pipelines):
+The workspace looks like this:
 
 ```dvc
 .
 ├── data
 │   └── data.xml.dvc
-├── evaluate.dvc
-├── featurize.dvc
-├── prepare.dvc
-├── train.dvc
+├── dvc.lock
+├── dvc.yaml
+├── params.yaml
+├── prc.json
+├── scores.json
 └── src
     └── <code files here>
 ```
@@ -159,21 +159,18 @@ into our local <abbr>cache</abbr>.
 ```dvc
 $ dvc status --cloud
 ...
-        deleted:            data/features/train.pkl
-        deleted:            model.pkl
+  deleted:            data/features/train.pkl
+  deleted:            model.pkl
 
 $ dvc fetch
+
+$ tree .dvc/cache
+.dvc/cache
+├── 38
+│   └── 63d0e317dee0a55c4e59d2ec0eef33
+├── 42
+│   └── c7025fc0edeb174069280d17add2d4.dir
 ...
-$ tree .dvc
-.dvc
-├── cache
-│   ├── 38
-│   │   └── 63d0e317dee0a55c4e59d2ec0eef33
-│   ├── 42
-│   │   └── c7025fc0edeb174069280d17add2d4.dir
-│   ├── ...
-├── config
-├── ...
 ```
 
 > `dvc status --cloud` compares the cache contents against the default remote.
@@ -189,9 +186,8 @@ Used without arguments (as above), `dvc fetch` downloads all files and
 directories needed by all
 [`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvcyaml-file) and
 [`.dvc`](/doc/user-guide/dvc-files-and-directories#dvc-files) files in the
-current branch. The hash values `3863d0e317dee0a55c4e59d2ec0eef33` and
-`42c7025fc0edeb174069280d17add2d4` correspond to the `model.pkl` file and
-`data/features/` directory, respectively.
+current branch. For example, the hash values `3863d0e...` and `42c7025...`
+correspond to the `model.pkl` file and `data/features/` directory, respectively.
 
 Let's now link files from the cache to the workspace with:
 
