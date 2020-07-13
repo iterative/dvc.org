@@ -22,10 +22,9 @@ pointers to the <abbr>cached</abbr> contents of data tracked by DVC. This
 command synchronizes the workspace data with the tracked file contents specified
 in the current `.dvc` and `dvc.lock` files.
 
-`dvc checkout` is useful, for example, after `git clone`, `git checkout`, or any
-other operation that changes the DVC files in the <abbr>workspace</abbr> (when
-using Git in the <abbr>project</abbr>). This allows to restore different
-versions of DVC-tracked files and directories.
+`dvc checkout` is useful, for example, when using Git in the
+<abbr>project</abbr>, after `git clone`, `git checkout`, or any other operation
+that changes the DVC files in the workspace.
 
 💡 For convenience, a Git hook is available to automate running `dvc checkout`
 after `git checkout`. See the
