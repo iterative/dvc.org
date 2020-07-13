@@ -43,6 +43,11 @@ The execution of `dvc checkout` does the following:
   don't match with any DVC-file are removed. See options `--force` and
   `--relink`. A list of the changes done is printed.
 
+> Note that `dvc checkout` supports granularity for files found in tracked
+> directories (see the
+> [Specific targets](/doc/command-reference/status#example-specific-targets)
+> example).
+
 By default, this command tries not make copies of cached files in the workspace,
 using reflinks instead when supported by the file system (refer to
 [File link types](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)).
@@ -215,7 +220,7 @@ $ git checkout baseline-experiment -- dvc.lock
 $ dvc checkout model.pkl  # Get previous model file only.
 ```
 
-Note that DVC commands support granularity for files found in tracked
+Note that `dvc checkout` support granularity for files found in tracked
 directories. For example, the `featurize` stage has one directory output
 (`data/features`, which is tracked as a whole):
 

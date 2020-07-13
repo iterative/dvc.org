@@ -53,6 +53,11 @@ and are required to
 [reproduce](/doc/tutorials/get-started/data-pipelines#reproduce) the
 corresponding [pipeline](/doc/command-reference/pipeline).
 
+> Note that `dvc fetch` supports granularity for files found in tracked
+> directories (see the
+> [Specific targets](/doc/command-reference/status#example-specific-targets)
+> example).
+
 If no `targets` are specified, the set of data files to fetch is determined by
 scanning all `dvc.yaml` and `.dvc` files in the workspace (the `--all-branches`
 and `--all-tags` options compare multiple workspace versions).
@@ -220,7 +225,7 @@ Cache entries for the `data/prepared` directory, as well as the actual
 `test.tsv` and `train.tsv` files, were downloaded. Their hash values are shown
 above.
 
-Note that DVC commands support granularity for files found in tracked
+Note that `dvc fetch` support granularity for files found in tracked
 directories. For example, the `featurize` stage has one directory output
 (`data/features`, which is tracked as a whole):
 
