@@ -114,7 +114,7 @@ You can find that each parameter and it's value were saved to
 values will be compared to the ones in the parameters files whenever `dvc repro`
 is used, to determine if dependency to the params file is invalidated:
 
-````yaml
+```yaml
 stages:
   train:
     cmd: python train.py
@@ -124,8 +124,8 @@ stages:
       - lr
       - train
     outs:
-      - model.pkl```
-````
+      - model.pkl
+```
 
 Alternatively, the entire group of parameters `train` can be referenced, instead
 of specifying each of the group parameters separately:
