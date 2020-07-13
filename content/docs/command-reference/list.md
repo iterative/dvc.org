@@ -49,7 +49,7 @@ such as `ls` or `aws s3 ls`. And similar to the former, `-R` option might be
 used to list files recursively.
 
 > Note that `dvc list` supports `path` granularity for directories nested inside
-> tracked directories
+> directories
 > [tracked as a whole](/doc/command-reference/add#example-directory).
 
 Please note that `dvc list` doesn't check whether the listed data (tracked by

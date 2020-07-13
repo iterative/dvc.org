@@ -44,6 +44,10 @@ that DVC-tracked targets should be found in a
 [`.dvc`](/doc/user-guide/dvc-files-and-directories#dvc-files) file of the
 project.
 
+> Note that `dvc list` supports `path` granularity for directories nested inside
+> directories
+> [tracked as a whole](/doc/command-reference/add#example-directory).
+
 ⚠️ The project should have a default
 [DVC remote](/doc/command-reference/remote), containing the actual data for this
 command to work.
