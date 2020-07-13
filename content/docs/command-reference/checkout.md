@@ -24,7 +24,8 @@ in the current `.dvc` and `dvc.lock` files.
 
 `dvc checkout` is useful, for example, after `git clone`, `git checkout`, or any
 other operation that changes the DVC files in the <abbr>workspace</abbr> (when
-using Git in the <abbr>project</abbr>).
+using Git in the <abbr>project</abbr>). This allows to restore different
+versions of DVC-tracked files and directories.
 
 💡 For convenience, a Git hook is available to automate running `dvc checkout`
 after `git checkout`. See the
@@ -131,7 +132,6 @@ The workspace looks like this:
 
 ```dvc
 .
-├── README.md
 ├── data
 │   └── data.xml.dvc
 ├── dvc.lock
@@ -140,15 +140,11 @@ The workspace looks like this:
 ├── prc.json
 ├── scores.json
 └── src
-    ├── evaluate.py
-    ├── featurization.py
-    ├── prepare.py
-    ├── requirements.txt
-    └── train.py
+    └── <code files here>
 ```
 
-This repository includes the following tags, that represent different variants
-of the resulting model:
+Note that this repository includes the following tags, that represent different
+variants of the resulting model:
 
 ```dvc
 $ git tag
@@ -157,10 +153,11 @@ baseline-experiment     <- First simple version of the model
 bigrams-experiment      <- Uses bigrams to improve the model
 ```
 
-We can now just run `dvc checkout` that will update the most recent `model.pkl`,
-`data.xml`, and other files that are tracked by DVC. The model file hash is
-defined in the `dvc.lock` file, and in the `data.xml.dvc` file for the
-`data.xml`:
+We can now run `dvc checkout` to update the most recent `model.pkl`, `data.xml`,
+and any other files tracked by DVC. The model file hash, `ab349c2...`, is saved
+in the
+[`dvc.lock` file](/doc/user-guide/dvc-files-and-directories#dvclock-file), for
+example, so it can be confirmed with:
 
 ```dvc
 $ dvc checkout
@@ -169,13 +166,15 @@ $ md5 model.pkl
 MD5 (data.xml) = ab349c2b5fa2a0f66d6f33f94424aebe
 ```
 
+## Example: switch versions
+
 What if we want to "rewind history", so to speak? The `git checkout` command
-lets us restore any point in the repository history, including any tags. It
-automatically adjusts the files, by replacing file content and adding or
-deleting files as necessary.
+lets us restore any commit in the repository history (including tags). It
+automatically adjusts the repo files, by replacing, adding, or deleting them as
+necessary.
 
 ```dvc
-$ git checkout baseline-experiment  # Stage where model is first created
+$ git checkout baseline-experiment  # Commit where model was created
 ```
 
 Let's check the hash value of `model.pkl` in `dvc.lock` now:
@@ -186,16 +185,10 @@ outs:
     md5: 98af33933679a75c2a51b953d3ab50aa
 ```
 
-But if you check `model.pkl`, the file hash is still the same:
-
-```dvc
-$ md5 model.pkl
-MD5 (model.pkl) = ab349c2b5fa2a0f66d6f33f94424aebe
-```
-
-This is because `git checkout` changed `dvc.lock` and other DVC files. But it
-did nothing with the `model.pkl` and `matrix.pkl` files. Git doesn't track those
-files; DVC does, so we must do this:
+But if you check the MD5 of `model.pkl`, the file hash is still the same
+(`ab349c2...`). This is because `git checkout` changed `dvc.lock` and other DVC
+files, but it did nothing with `model.pkl`. Git doesn't track this file, DVC
+does, so we must do this instead:
 
 ```dvc
 $ dvc checkout
@@ -206,8 +199,29 @@ $ md5 model.pkl
 MD5 (model.pkl) = 98af33933679a75c2a51b953d3ab50aa
 ```
 
-What happened is that DVC went through the DVC-files and adjusted the current
-set of <abbr>output</abbr> files to match the `outs` in them.
+DVC went through `dvc.lock` and adjusted the current set of <abbr>outputs</abbr>
+to match the `outs` in it.
+
+## Example: Specific targets
+
+`dvc checkout` only affects the tracked data corresponding to any given
+`targets`:
+
+```dvc
+$ git checkout master
+$ dvc checkout            # Start with latest version of everything.
+
+$ git checkout baseline-experiment -- dvc.lock
+$ dvc checkout model.pkl  # Get previous model file only.
+```
+
+Note that DVC commands support granularity for files found in tracked
+directories. For example, the `featurize` stage has one directory output
+(`data/features`, which is tracked as a whole):
+
+```dvc
+$ dvc checkout data/features/test.pkl
+```
 
 ## Example: Automating DVC checkout
 
