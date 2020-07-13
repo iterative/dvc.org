@@ -18,12 +18,15 @@ positional arguments:
 
 ## Description
 
-`dvc repro` provides an way to regenerate data pipeline results, by restoring
-the dependency graph (a
-[DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph)) implicitly defined
-by the [stage files](/doc/command-reference/run) (DVC-files with dependencies)
-that are found in the <abbr>project</abbr>. The commands defined in these stages
-can then be executed in the correct order, reproducing pipeline results.
+`dvc repro` provides a way to regenerate data pipeline results, by restoring the
+dependency graph ( a [DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph)
+) implicitly defined by the [stage files](/doc/command-reference/run) (DVC-files
+with dependencies) that are found in the <abbr>project</abbr>. The commands
+defined in these stages can then be executed in the correct order, reproducing
+pipeline results.
+
+`dvc repro` relies on the DAG definition that it reads from `dvc.yaml` file and
+uses `dvc.lock` file to determine what exactly needs to be run.
 
 > Pipeline stages are typically defined using the `dvc run` command, while
 > initial data dependencies can be registered by the `dvc add` command.
