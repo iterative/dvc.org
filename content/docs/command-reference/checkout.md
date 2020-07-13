@@ -33,8 +33,8 @@ for more details.
 
 The execution of `dvc checkout` does the following:
 
-- Scans all `dvc.lock` and `.dvc` files to compare the hash values saved in
-  their `outs` fields against the actual data files or directories in the
+- Scans all `dvc.lock` and `.dvc` files to compare the hash values of its
+  <abbr>outputs</abbr> against the actual data files or directories in the
   workspace (similar to `dvc status`). Scanning is limited to the given
   `targets` (if any). See also options `--with-deps` and `--recursive` below.
 
