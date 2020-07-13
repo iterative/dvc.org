@@ -128,8 +128,8 @@ only execute the final stage.
 - `-i`, `--interactive` - ask for confirmation before reproducing each stage.
   The stage is only executed if the user types "y".
 
-- `-p`, `--pipeline` - reproduce the entire pipelines that the `targets`
-  belong to. Use `dvc dag <target>` to show the parent pipeline of a target.
+- `-p`, `--pipeline` - reproduce the entire pipelines that the `targets` belong
+  to. Use `dvc dag <target>` to show the parent pipeline of a target.
 
 - `-P`, `--all-pipelines` - reproduce all pipelines, for all the stages present
   in `DVC` repository.
