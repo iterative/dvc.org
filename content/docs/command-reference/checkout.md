@@ -16,14 +16,15 @@ positional arguments:
 
 ## Description
 
-`.dvc` and `dvc.lock` [files](/doc/user-guide/dvc-files-and-directories) act as
-pointers to specific version of data files or directories tracked by DVC. This
-command synchronizes the workspace data with the versions specified in the
-current `.dvc` and `dvc.lock` files.
+[`dvc.lock`](/doc/user-guide/dvc-files-and-directories#dvclock-file) and
+[`.dvc`](/doc/user-guide/dvc-files-and-directories#dvc-files) files act as
+pointers to the <abbr>cached</abbr> contents of data tracked by DVC. This
+command synchronizes the workspace data with the tracked file contents specified
+in the current `.dvc` and `dvc.lock` files.
 
-`dvc checkout` is useful, for example, when using Git in the
-<abbr>project</abbr>, after `git clone`, `git checkout`, or any other operation
-that changes the DVC files in the workspace.
+`dvc checkout` is useful, for example, after `git clone`, `git checkout`, or any
+other operation that changes the DVC files in the <abbr>workspace</abbr> (when
+using Git in the <abbr>project</abbr>).
 
 💡 For convenience, a Git hook is available to automate running `dvc checkout`
 after `git checkout`. See the
@@ -32,15 +33,14 @@ for more details.
 
 The execution of `dvc checkout` does the following:
 
-- Scans the `.dvc` and `dvc.lock` files to compare against the data files or
-  directories in the <abbr>workspace</abbr>. DVC knows which data
-  (<abbr>outputs</abbr>) match because the corresponding hash values are saved
-  in the `outs` fields in those files. Scanning is limited to the given
+- Scans all `dvc.lock` and `.dvc` files to compare the hash values saved in
+  their `outs` fields against the actual data files or directories in the
+  workspace (similar to `dvc status`). Scanning is limited to the given
   `targets` (if any). See also options `--with-deps` and `--recursive` below.
 
-- Missing data files or directories are restored from the <abbr>cache</abbr>.
-  Those that don't match with any DVC-file are removed. See options `--force`
-  and `--relink`. A list of the changes done is printed.
+- Missing data files or directories are restored from the cache. Those that
+  don't match with any DVC-file are removed. See options `--force` and
+  `--relink`. A list of the changes done is printed.
 
 By default, this command tries not make copies of cached files in the workspace,
 using reflinks instead when supported by the file system (refer to
@@ -129,7 +129,7 @@ below.
 
 The workspace looks like this:
 
-````dvc
+```dvc
 .
 ├── README.md
 ├── data
@@ -144,8 +144,8 @@ The workspace looks like this:
     ├── featurization.py
     ├── prepare.py
     ├── requirements.txt
-    └── train.py```
-````
+    └── train.py
+```
 
 This repository includes the following tags, that represent different variants
 of the resulting model:
