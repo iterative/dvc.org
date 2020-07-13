@@ -15,7 +15,7 @@ descriptionLong: |
   the next DVC meetup!
 picture: 2020-07-10/july_20_heartbeat_header.png
 author: elle_obrien
-commentsUrl: https://discuss.dvc.org/t/june-20-heartbeat/404
+commentsUrl: https://discuss.dvc.org/t/july-20-dvc-heartbeat/439
 tags:
   - Heartbeat
   - CI/CD
