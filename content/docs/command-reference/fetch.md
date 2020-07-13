@@ -227,7 +227,8 @@ above.
 
 Note that `dvc fetch` support granularity for files found in tracked
 directories. For example, the `featurize` stage has one directory output
-(`data/features`, which is tracked as a whole):
+(`data/features`, which is
+[tracked as a whole](/doc/command-reference/add#example-directory)):
 
 ```dvc
 $ dvc fetch data/features/test.pkl

@@ -195,11 +195,16 @@ data
 │   ├── partition.1.dat
 │   ├── ...
 │   └── partition.n.dat
-└── raw.dvc              # data/raw/ is tracked as a whole.
+└── raw.dvc
 
 $ dvc fetch data/raw/partition.1.dat
 new:                data/raw
 ```
+
+While `data/raw/`
+[tracked as a whole](/doc/command-reference/add#example-directory) (thus the
+existence of `raw.dvc`), a specific file inside can be fetched
+(`data/raw/partition.1.dat`).
 
 ## Example: Dependencies
 
