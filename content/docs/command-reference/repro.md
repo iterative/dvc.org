@@ -56,7 +56,8 @@ corresponding commands. <abbr>Outputs</abbr> are deleted from the
 
 It saves all the data files, intermediate or final results into the <abbr>DVC
 cache</abbr> (unless the `--no-commit` option is used), and updates the hash
-values of changed dependencies and outputs in the corresponding stages.
+values of changed dependencies and outputs in the corresponding stages (or
+`.dvc` files).
 
 ### Parallel stage execution
 
