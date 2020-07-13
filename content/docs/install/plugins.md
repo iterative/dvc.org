@@ -14,7 +14,7 @@ In order to recognize `.dvc` files as YAML in Vim, you should add:
 
 ```vim
 " DVC
-autocmd! BufNewFile,BufRead Dvcfile,*.dvc setfiletype yaml
+autocmd! BufNewFile,BufRead *.dvc setfiletype yaml
 ```
 
 to your `~/.vimrc`(to be created if it doesn't exist).
