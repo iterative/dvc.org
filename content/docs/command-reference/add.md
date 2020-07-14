@@ -81,9 +81,10 @@ in the directory tree. Instead, the single `.dvc` file references a special JSON
 file in the cache (with `.dir` extension), that in turn points to the added
 files.
 
-Note that DVC commands that use tracked files support granular targeting of
-files, even when the directory is added as a whole. Examples: `dvc push`,
-`dvc pull`, `dvc get`, `dvc import`, etc.
+Note that DVC commands that use tracked files or directories support targeting
+them granularly, even inside a directory that is
+[added as a whole](#example-directory). Examples: `dvc status`, `dvc push`,
+`dvc pull`, among others.
 
 As a rarely needed alternative, the `--recursive` option causes every file in
 the hierarchy to be added individually. A corresponding `.dvc` file will be
