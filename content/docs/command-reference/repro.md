@@ -20,14 +20,17 @@ positional arguments:
 
 `dvc repro` provides a way to regenerate data pipeline results, by restoring the
 dependency graph (a [DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph))
-implicitly defined by the [stages](/doc/command-reference/run) listed in
+implicitly defined by the [stages](/doc/command-reference/run) listed in the
 [`dvc.yaml` file](/doc/user-guide/dvc-files-and-directories#dvcyaml-file). The
 commands defined in these stages can then be executed in the correct order,
 reproducing pipeline results. `dvc repro` relies on the DAG definition that it
 reads from `dvc.yaml` file.
 
-> Pipeline stages are typically defined using the `dvc run` command, while
-> initial data dependencies can be registered by the `dvc add` command.
+> Pipeline stages are typically defined by manually adding or manipulating them
+> in the
+> [`dvc.yaml` file](/doc/user-guide/dvc-files-and-directories#dvcyaml-file) or
+> by using `dvc run` helper command, while initial data dependencies can be
+> registered by the `dvc add` command.
 
 This command is similar to [Make](https://www.gnu.org/software/make/) in
 software build automation, but DVC captures build requirements
@@ -108,8 +111,8 @@ only execute the final stage.
   independent unit.
 
 - `-R`, `--recursive` - determines the stages to reproduce by searching each
-  target directory and its subdirectories for DVC-files to inspect. If there are
-  no directories among the `targets`, this option is ignored.
+  target directory and its subdirectories. If there are no directories among the
+  `targets`, this option is ignored.
 
 - `--no-commit` - do not save outputs to cache. A DVC-file is created and an
   entry is added to `.dvc/state`, while nothing is added to the cache.
