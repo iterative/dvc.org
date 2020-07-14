@@ -39,8 +39,7 @@ downloading, DVC will try to copy the target data from its <abbr>cache</abbr>).
 The `path` argument is used to specify the location of the target to be
 downloaded within the source repository at `url`. `path` can specify any file or
 directory in the source repo, including those tracked by DVC, or by Git. Note
-that DVC-tracked targets should be found in a
-[`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvcyaml-file) or
+that DVC-tracked targets should be found in a `dvc.yaml` or
 [`.dvc`](/doc/user-guide/dvc-files-and-directories#dvc-files) file of the
 project.
 
@@ -96,9 +95,8 @@ model.pkl
 
 Note that the `model.pkl` file doesn't actually exist in the
 [root directory](https://github.com/iterative/example-get-started/tree/master/)
-of the source Git repo. Instead, it's exported in the
-[`dvc.yaml`](https://github.com/iterative/example-get-started/blob/master/dvc.yaml)
-file as an output of the `train` stage (in the `outs` field). DVC then
+of the source Git repo. Instead, it's exported in the `dvc.yaml` file as an
+output of the `train` stage (in the `outs` field). DVC then
 [pulls](/doc/command-reference/pull) the file from the default
 [remote](/doc/command-reference/remote) of the source DVC project (found in its
 [config file](https://github.com/iterative/example-get-started/blob/master/.dvc/config)).

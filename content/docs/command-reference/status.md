@@ -35,7 +35,7 @@ options:
 | remote | `--cloud`      | Comparisons are made between the cache, and the default remote, typically defined with `dvc remote --default`.              |
 
 DVC determines which data and code files to compare by analyzing all stages (in
-[`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvcyaml-file) and
+`dvc.yaml` and
 [`.dvc` files](/doc/user-guide/dvc-files-and-directories#dvc-files) in the
 <abbr>workspace</abbr> (the `--all-branches` and `--all-tags` options compare
 multiple workspace versions).

@@ -2,8 +2,7 @@
 
 Download tracked files or directories from
 [remote storage](/doc/command-reference/remote) to the <abbr>cache</abbr> and
-<abbr>workspace</abbr>, based on the current
-[`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvcyaml-file) and
+<abbr>workspace</abbr>, based on the current `dvc.yaml` and
 [`.dvc`](/doc/user-guide/dvc-files-and-directories#dvc-files) files.
 
 ## Synopsis
@@ -39,9 +38,9 @@ remote.
 
 With no arguments, just `dvc pull` or `dvc pull --remote <name>`, it downloads
 only the files (or directories) missing from the workspace by searching all
-stages in [`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvcyaml-file)
-or [`.dvc`](/doc/user-guide/dvc-files-and-directories#dvc-files) files currently
-in the <abbr>project</abbr>. It will not download files associated with earlier
+stages in `dvc.yaml` or
+[`.dvc`](/doc/user-guide/dvc-files-and-directories#dvc-files) files currently in
+the <abbr>project</abbr>. It will not download files associated with earlier
 commits in the <abbr>repository</abbr> (if using Git), nor will it download
 files that have not changed.
 

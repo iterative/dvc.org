@@ -78,8 +78,7 @@ $ cat .gitignore
 
 ## Example: remove a stage
 
-Let's imagine we have a stage named `train` in our
-[`dvc.yaml` file](/doc/user-guide/dvc-files-and-directories#dvcyaml-file), and
+Let's imagine we have a stage named `train` in our `dvc.yaml` file, and
 corresponding files in the <abbr>workspace</abbr>:
 
 ```yaml

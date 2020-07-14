@@ -19,8 +19,7 @@ positional arguments:
 DVC, by effectively replacing data files, models, directories with `.dvc` files
 (`.dvc`), hides actual locations and names. This means that you don't see data
 files when you browse a <abbr>DVC repository</abbr> on Git hosting (e.g.
-Github), you just see the
-[`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvcyaml-file) and
+Github), you just see the `dvc.yaml` and
 [`.dvc`](/doc/user-guide/dvc-files-and-directories#dvc-files) files. This makes
 it hard to navigate the project to find <abbr>data artifacts</abbr> for use with
 `dvc get`, `dvc import`, or `dvc.api`.
@@ -96,9 +95,8 @@ src
 If you open the
 [example-get-started](https://github.com/iterative/example-get-started)
 project's page, you will see a similar list but the `model.pkl` file. It's
-tracked by DVC and not visible to Git. It's exported in the
-[`dvc.yaml`](https://github.com/iterative/example-get-started/blob/master/dvc.yaml)
-file as an output of the `train` stage (in the `outs` field).
+tracked by DVC and not visible to Git. It's exported in the `dvc.yaml` file as
+an output of the `train` stage (in the `outs` field).
 
 We can now, for example, download the model file with:
 

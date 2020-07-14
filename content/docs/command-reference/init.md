@@ -55,8 +55,7 @@ sub-projects to mitigate the issues of initializing in the Git repository root:
   different remote storages, for example, for different sub-projects, etc.
 
 - Not enough isolation/granularity - commands like `dvc pull`, `dvc checkout`,
-  and others analyze the whole repository to look for
-  [`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvcyaml-file) or
+  and others analyze the whole repository to look for `dvc.yaml` or
   [`.dvc`](/doc/user-guide/dvc-files-and-directories#dvc-files) files to
   download files and directories, to reproduce <abbr>pipelines</abbr>, etc. It
   can be expensive in the large repositories with a lot of projects.
@@ -125,9 +124,8 @@ include:
 
 - SCM other than Git is being used. Even though there are DVC features that
   require DVC to be run in the Git repo, DVC can work well with other version
-  control systems. Since DVC relies on simple
-  [`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvcyaml-file) files to
-  manage <abbr>pipelines</abbr>, data, etc, they can be added into any SCM thus
+  control systems. Since DVC relies on simple `dvc.yaml` files to manage
+  <abbr>pipelines</abbr>, data, etc, they can be added into any SCM thus
   providing large data files and directories versioning.
 
 - There is no need to keep the history at all, e.g. having a deployment

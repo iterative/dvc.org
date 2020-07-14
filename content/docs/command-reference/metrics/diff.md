@@ -32,8 +32,7 @@ The differences shown by this command include the new value, and numeric
 difference (delta) from the previous value of metrics (rounded to 5 digits
 precision). They're calculated between two commits (hash, branch, tag, or any
 [Git revision](https://git-scm.com/docs/revisions)) for all metrics in the
-<abbr>project</abbr>, found by examining all of the
-[`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvcyaml-file) and
+<abbr>project</abbr>, found by examining all of the `dvc.yaml` and
 [`.dvc`](/doc/user-guide/dvc-files-and-directories#dvc-files) files in both
 versions.
 

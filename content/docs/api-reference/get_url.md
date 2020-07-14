@@ -29,9 +29,8 @@ Returns the URL string of the storage location (in a
 specified by its `path` in a `repo` (<abbr>DVC project</abbr>), is stored.
 
 The URL is formed by reading the project's
-[remote configuration](/doc/command-reference/config#remote) and the
-[`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvcyaml-file) or
-[`.dvc` file](/doc/user-guide/dvc-files-and-directories#dvc-files) where the
+[remote configuration](/doc/command-reference/config#remote) and the `dvc.yaml`
+or [`.dvc` file](/doc/user-guide/dvc-files-and-directories#dvc-files) where the
 given `path` is found (`outs` field). The schema of the URL returned depends on
 the [type](/doc/command-reference/remote/add#supported-storage-types) of the
 `remote` used (see the [Parameters](#parameters) section).

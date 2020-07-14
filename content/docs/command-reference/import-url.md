@@ -111,8 +111,7 @@ $ dvc run -n download_data \
 
 `dvc import-url` generates an import stage
 [`.dvc` file](/doc/user-guide/dvc-files-and-directories#dvc-files) and `dvc run`
-a regular stage (in
-[`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvcyaml-file)).
+a regular stage (in `dvc.yaml`).
 
 ## Options
 
