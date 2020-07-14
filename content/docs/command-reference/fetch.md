@@ -20,9 +20,10 @@ positional arguments:
 `dvc fetch` downloads DVC-tracked files from remote storage into the cache of
 the project (without placing them in the <abbr>workspace</abbr>). This makes the
 data files available for linking (or copying) into the workspace (refer to
-[dvc config cache.type](/doc/command-reference/config#cache)). Along with
-`dvc checkout`, it's performed automatically by `dvc pull` when the `targets`
-are not already in the cache:
+[dvc config cache.type](/doc/command-reference/config#cache)).
+
+Along with `dvc checkout`, fetching performed automatically by `dvc pull` (when
+the data is not already in the cache):
 
 ```
 Controlled files             Commands
@@ -46,10 +47,11 @@ example, to get any files tracked by DVC that already exist in remote storage
 (see `dvc push`) to the local <abbr>cache</abbr>. Refer to `dvc remote` for more
 information on DVC remotes.
 
-`dvc fetch` ensures that the files needed for a
-[stage](/doc/command-reference/run) or `.dvc` file exist in the cache. These
-data files, datasets, or models are listed as <abbr>outputs</abbr> in a target,
-and are required to
+`dvc fetch` ensures that the files needed for the target stages (in
+[`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvcyaml-file)) or
+[`.dvc` files](/doc/user-guide/dvc-files-and-directories#dvc-files) exist in the
+cache. These data files, datasets, or models are listed as <abbr>outputs</abbr>
+in the `targets` (all stages and `.dvc` files by default), and are required to
 [reproduce](/doc/tutorials/get-started/data-pipelines#reproduce) the
 corresponding [pipeline](/doc/command-reference/pipeline).
 
