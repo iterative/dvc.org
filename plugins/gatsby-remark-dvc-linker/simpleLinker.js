@@ -2,12 +2,7 @@
 
 const { createLinkNode } = require('./helpers')
 
-const entries = [
-  {
-    matches: 'dvc.yaml',
-    url: '/doc/user-guide/dvc-files-and-directories#dvcyaml-file'
-  }
-]
+const entries = require('../../content/linked-terms')
 
 const useMatcher = (matcher, item) => {
   switch (typeof matcher) {
