@@ -6,7 +6,7 @@ Get tracked files or directories from
 ## Synopsis
 
 ```usage
-usage: dvc fetch [-h] [-q │ -v] [-j <number>] [-r <name>] [-a] [-T]
+usage: dvc fetch [-h] [-q | -v] [-j <number>] [-r <name>] [-a] [-T]
                   [--all-commits] [-d] [-R] [--run-cache]
                  [targets [targets ...]]
 
@@ -30,13 +30,13 @@ Controlled files             Commands
 
 remote storage
      +
-     │         +------------+
-     │ - - - - │ dvc fetch  │ ++
+     |         +------------+
+     | - - - - | dvc fetch  | ++
      v         +------------+   +   +----------+
-project's cache                  ++ │ dvc pull │
+project's cache                  ++ | dvc pull |
      +         +------------+   +   +----------+
-     │ - - - - │dvc checkout│ ++
-     │         +------------+
+     | - - - - |dvc checkout| ++
+     |         +------------+
      v
  workspace
 ```
