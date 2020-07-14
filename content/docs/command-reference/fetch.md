@@ -198,7 +198,7 @@ Let's now link files from the cache to the workspace with:
 $ dvc checkout
 ```
 
-## Example: Specific targets
+## Example: Specific files or directories
 
 > If you tried the previous example, please delete the `.dvc/cache` directory
 > first (e.g. `rm -Rf .dvc/cache`) to follow this one.

@@ -163,7 +163,7 @@ This shows that for stage `bar.dvc`, the dependency `foo` and the
 <abbr>output</abbr> `bar` have changed. Likewise for `foo.dvc`, the dependency
 `foo` has changed, but no output has changed.
 
-## Example: Specific targets
+## Example: Specific files or directories
 
 `dvc status` only checks the tracked data corresponding to any given `targets`:
 
