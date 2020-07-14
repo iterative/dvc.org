@@ -29,26 +29,26 @@ following:
 3. Compute the difference between the two sets of files.
 
 Once this file status has been determined, the necessary files can then be
-copied to or from cloud storage. Files which have been added or modified
-locally must be uploaded. Likewise, files which have been modified or added
-in cloud storage must be downloaded.
+copied to or from cloud storage. Files which have been added or modified locally
+must be uploaded. Likewise, files which have been modified or added in cloud
+storage must be downloaded.
 
 While this may seem like a simple problem, it actually represents a significant
-performance bottleneck for data synchronization, particularly because of step #2.
-When querying a cloud storage API, a data sync tool must make some number of API
-calls which will scale relative to the total number of files in both local and
-cloud storage. For large datasets, this can translate into a significant amount
-of runtime which must be spent on these status queries.
+performance bottleneck for data synchronization, particularly because of step
+#2. When querying a cloud storage API, a data sync tool must make some number of
+API calls which will scale relative to the total number of files in both local
+and cloud storage. For large datasets, this can translate into a significant
+amount of runtime which must be spent on these status queries.
 
 However, with new optimizations in DVC 1.0, we are now able to work around these
 limitations and provide substantial performance benefits over older DVC releases
 and general data sync tools. In fact, DVC 1.0 offers improved runtimes over
 rclone by 20x or more in certain scenarios.
 
-In this post, we will outline the general methods used to query file status
-from cloud storage, and investigate their effects on performance by comparing
-benchmark results from DVC and rclone. We will then conclude further
-explanation of how we were able to implement certain optimizations in DVC 1.0.
+In this post, we will outline the general methods used to query file status from
+cloud storage, and investigate their effects on performance by comparing
+benchmark results from DVC and rclone. We will then conclude further explanation
+of how we were able to implement certain optimizations in DVC 1.0.
 
 _Note: "Cloud storage" and "remote storage" will be used interchangeably
 throughout this post. When discussing dataset size in this post, we mean size in
@@ -130,7 +130,7 @@ So, choosing the optimal method actually depends on both:
 - The number of files that we need to query.
 - The total number of files in the remote.
 
-__Total API calls required to query 100 local files from S3__
+**Total API calls required to query 100 local files from S3**
 ![API calls](/uploads/images/2020-07-03/api_calls_100_local.svg 'API calls required to query 100 local files from S3')
 
 _Note: In terms of real world performance, there are other considerations that
@@ -173,12 +173,41 @@ actual file data transfer. In all of these examples, even if both local and
 cloud storage are up to date (meaning no files actually need to be uploaded or
 downloaded), the status queries will still take the same amount of time.
 
-### DVC 1.0 vs DVC 0.91 vs rclone performance
+## DVC 1.0 vs DVC 0.91 vs rclone performance
 
 The following charts show DVC and rclone status query runtimes for various
-scenarios in which a local directory is synchronized to an S3 bucket.
+scenarios in which a local directory is synchronized to an S3 bucket. The
+runtimes in each case are for status queries only (using `dvc status -c` in DVC
+and `--dry-run` in rclone). No file data was transferred to or from S3 in any of
+these scenarios. For these benchmarks we are only interested in the amount of
+time required to determine file status, without the additional time it would
+take to upload or download any changed files.
 
-__Local directory w/100k total files, S3 bucket w/1M total files (1 file modified since last sync)__
+In each of these examples, we are simulating use cases for which a user tracks a
+local directory containing some number of files using DVC, and then wishes to
+synchronize the DVC-tracked files to cloud storage. In DVC, we sync files
+between the DVC local
+[cache](https://dvc.org/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory)
+and DVC remote storage. So in order to get the equivalent behavior using rclone,
+you would use `rclone sync` or `rclone copy` to move files between the DVC cache
+directory and cloud storage.
+
+Keep in mind that for DVC's purposes, we are most interested in optimizing
+performance for scenarios which are normally very slow to complete. If you
+consider an operation which previously took several hours to complete, improving
+that runtime down to a few minutes will have a much greater impact for our users
+versus shaving a few seconds off of an operation which previously took under a
+minute to run.
+
+_Note: In these examples, the local file count refers to the number of files
+inside the original tracked directory. The number of files present in the DVC
+cache will differ slightly, since the DVC cache will contain an additional file
+representing the tracked directory itself, but the end result is that both DVC
+and rclone will both need to query for the same number of files (i.e. the number
+of files in the cache directory)._
+
+**Local directory w/100k total files, S3 bucket w/1M total files (1 file
+modified since last sync)**
 ![benchmarks](/uploads/images/2020-07-03/dvc_rclone_bench.svg 'DVC 1.0 vs rclone performance comparison')
 
 In this example, the local directory contains 100,000 files, and the S3 bucket
@@ -199,13 +228,19 @@ This scenario illustrates DVC's performance advantage over rclone with regard to
 synchronizing iterations of a versioned dataset over time, as well as the DVC
 1.0 performance improvements over prior releases.
 
-__Local directory w/1 file, S3 bucket w/1M total files__
+**Local directory w/1 file, S3 bucket w/1M total files**
 ![benchmarks](/uploads/images/2020-07-03/dvc_rclone_bench2.svg 'DVC 1.0 vs rclone performance comparison')
 
 In this example, we are testing a simple scenario in which the local directory
 contains 1 file and the S3 bucket contains approximately 1 million files.
 
-__Local directory w/1M files, Empty S3 bucket__
+_Note: We are unsure of the reason for the rclone runtime difference with and
+without `--no-traverse` for this scenario, but rclone does do some computation
+to determine whether or not to default to `no-traverse` behavior for small query
+sets. It's likely that specifying `--no-traverse` allows rclone to skip that
+overhead entirely in this case._
+
+**Local directory w/1M files, Empty S3 bucket**
 ![benchmarks](/uploads/images/2020-07-03/dvc_rclone_bench3.svg 'DVC 1.0 vs rclone performance comparison')
 _Note: DVC 0.91 and rclone with `--no-traverse` both take multiple hours to
 complete in this scenario and continue off of the chart._
@@ -215,16 +250,25 @@ contains approximately 1 million files and the S3 bucket is empty.
 
 The difference in rclone runtime with or without `--no-traverse` in this
 scenario shows the performance impact of selecting the optimal query method for
-a given situation, which will be discussed in more detail later in this post.
+a given situation.
 
-This scenario also indicates that rclone outperforms DVC with regard to
-collecting the list of local files during a sync operation, but as shown in the
-first scenario, we make up for this gap by optimizing DVC performance in
-situations where the cloud remote contains a large number of files.
+This scenario also shows that rclone can outperform DVC with regard to
+collecting the list of local files during certain types of sync operations. In
+this case, rclone simply iterates over whatever files exist in the local
+directory without doing any additional steps, since our benchmark uses a one-way
+`rclone copy` operation.
 
-_Note: Benchmark runtimes are for status queries only (using `dvc status -c` in
-DVC and `--dry-run` in rclone), no file data was transferred to S3 in any
-scenario._
+However, in DVC, we have to add extra overhead for this step, since we collect
+the list of files expected to be present in the current DVC repository revision,
+and then verify that those files are present locally. We would then check to see
+if any missing files are available to be downloaded from remote storage.
+
+It should also be noted that in common use cases where the number of files in
+cloud storage continues to grow over time (such as in backup solutions or in
+dataset versioning), rclone's advantage in this case would only apply for this
+initial sync operation. Once the local dataset has been pushed to cloud storage,
+DVC's advantage in synchronizing modifications to existing datasets would become
+more apparent (as shown in the first example).
 
 _Benchmark command usage:_
 
@@ -262,22 +306,22 @@ situation.
 However, since in DVC we synchronize different revisions of a versioned dataset,
 we have access to certain contextual information about both the contents and
 structure of local and cloud storage, which would normally be unavailable to
-general use tools. One smiple example of this is that in DVC we are
-able to parallelize our queries for the full listing of files in a remote.
+general use tools. One smiple example of this is that in DVC we are able to
+parallelize our queries for the full listing of files in a remote.
 
 As explained previously, normally these queries must be run sequentially.
-However, most cloud storage APIs allow us to request the list of files
-contained in a specific subdirectory (as opposed to requesting the list of
-every file in every directory in cloud storage). So, if we knew that files in
-cloud storage were divided into two subdirectories, we could run two sets of
-sequential queries at the same time - one for each subdirectory. For general
-data sync tools, which must support any possible file structure, this is
-usually not an option, but it is something that we can take advantage of in
-DVC, since we control the directory structure used in our cloud remotes.
+However, most cloud storage APIs allow us to request the list of files contained
+in a specific subdirectory (as opposed to requesting the list of every file in
+every directory in cloud storage). So, if we knew that files in cloud storage
+were divided into two subdirectories, we could run two sets of sequential
+queries at the same time - one for each subdirectory. For general data sync
+tools, which must support any possible file structure, this is usually not an
+option, but it is something that we can take advantage of in DVC, since we
+control the directory structure used in our cloud remotes.
 
 In DVC 1.0, we leverage this kind of contextual information to provide improved
-performance over other data sync tools (including prior DVC releases) in
-other ways as well. In version 1.0, we are now able to automatically select the
+performance over other data sync tools (including prior DVC releases) in other
+ways as well. In version 1.0, we are now able to automatically select the
 optimal query method each time we run a data sync operation. Additionally, in
 certain cases, we can now reduce the number of files we need to query in data
 sync operations.
@@ -378,7 +422,7 @@ As we established earlier:
 > In simple terms, by reducing the size of our query set as much as possible, we
 > can also improve performance.
 
-__Total API calls required to query S3 bucket containing 1M files__
+**Total API calls required to query S3 bucket containing 1M files**
 ![API calls](/uploads/images/2020-07-03/api_calls_1m_s3.svg 'API calls required to query S3 bucket containing 1M files')
 
 In an example case for an S3 remote containing 1 million files, the optimal
