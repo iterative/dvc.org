@@ -48,13 +48,13 @@ lists all the current metrics without comparisons.
   arguments, e.g.:
 
   ```dvc
-  $ dvc metrics diff --targets t1.json t2.csv -- HEAD v1
+  $ dvc metrics diff --targets t1.json t2.json -- HEAD v1
   ```
 
   Alternatively, you can also run above statement as:
 
   ```dvc
-  $ dvc metrics diff HEAD v1 --targets t1.json t2.csv
+  $ dvc metrics diff HEAD v1 --targets t1.json t2.json
   ```
 
 - `-R`, `--recursive` - determines the metric files to use by searching each
