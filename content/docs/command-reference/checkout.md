@@ -42,7 +42,7 @@ The execution of `dvc checkout` does the following:
   don't match with any DVC-file are removed. See options `--force` and
   `--relink`. A list of the changes done is printed.
 
-> Note that `dvc checkout` support granular targeting of files inside
+> Note that `dvc checkout` supports granular targeting of files inside
 > directories that are
 > [tracked as a whole](/doc/command-reference/add#example-directory).
 
@@ -169,7 +169,7 @@ $ md5 model.pkl
 MD5 (data.xml) = ab349c2b5fa2a0f66d6f33f94424aebe
 ```
 
-## Example: switch versions
+## Example: Switch versions
 
 What if we want to "rewind history", so to speak? The `git checkout` command
 lets us restore any commit in the repository history (including tags). It
@@ -205,7 +205,7 @@ MD5 (model.pkl) = 98af33933679a75c2a51b953d3ab50aa
 DVC went through `dvc.lock` and adjusted the current set of <abbr>outputs</abbr>
 to match the `outs` in it.
 
-## Example: Specific targets
+## Example: Specific files or directories
 
 `dvc checkout` only affects the tracked data corresponding to any given
 `targets`:
@@ -218,10 +218,9 @@ $ git checkout baseline-experiment -- dvc.lock
 $ dvc checkout model.pkl  # Get previous model file only.
 ```
 
-Note that `dvc checkout` support granular targeting of files inside directories
-that are [tracked as a whole](/doc/command-reference/add#example-directory). For
-example, the `featurize` stage has one directory output (`data/features`) and we
-can do:
+Note that `dvc checkout` supports granular targeting of files inside directories
+that are tracked as a whole. For example, the `featurize` stage has a directory
+output (`data/features`) and we can do:
 
 ```dvc
 $ dvc checkout data/features/test.pkl
