@@ -38,10 +38,8 @@ saved in their `outs` fields against the actual data files or directories in the
 multiple workspace versions). Scanning is limited to the given `targets` (if
 any). See also options `--with-deps` and `--recursive` below.
 
-> Note that `dvc status` supports granularity for files found in tracked
-> directories (see the
-> [Specific targets](/doc/command-reference/status#example-specific-targets)
-> example).
+> Note that `dvc status` supports granular targeting of files inside directories
+> that are [tracked as a whole](/doc/command-reference/add#example-directory).
 
 If no differences are detected, `dvc status` prints
 `Data and pipelines are up to date.` If differences are detected by
@@ -185,8 +183,8 @@ dobar
 > In this case, the target `foo.dvc` is a `.dvc` file to track the `foo` file,
 > while `dobar` is the name of a stage defined in `dvc.yaml`.
 
-Note that `dvc status` supports granularity for files found in tracked
-directories, for example:
+Note that `dvc fetch` supports granular targeting of files inside directories
+that are tracked as a whole. For example:
 
 ```dvc
 $ tree data
