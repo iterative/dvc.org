@@ -36,15 +36,13 @@ The execution of `dvc checkout` does the following:
 - Scans all `dvc.lock` and `.dvc` files to compare the hash values of its
   <abbr>outputs</abbr> against the actual data files or directories in the
   workspace (similar to `dvc status`). Scanning is limited to the given
-  `targets` (if any). See also options `--with-deps` and `--recursive` below.
+  `targets`, if any (granular files inside directories
+  [tracked as a whole](/doc/command-reference/add#example-directory) are
+  supported). See also options `--with-deps` and `--recursive` below.
 
 - Missing data files or directories are restored from the cache. Those that
   don't match with any DVC-file are removed. See options `--force` and
   `--relink`. A list of the changes done is printed.
-
-> Note that `dvc checkout` supports granular targeting of files inside
-> directories that are
-> [tracked as a whole](/doc/command-reference/add#example-directory).
 
 By default, this command tries not make copies of cached files in the workspace,
 using reflinks instead when supported by the file system (refer to
@@ -218,9 +216,9 @@ $ git checkout baseline-experiment -- dvc.lock
 $ dvc checkout model.pkl  # Get previous model file only.
 ```
 
-Note that `dvc checkout` supports granular targeting of files inside directories
-that are tracked as a whole. For example, the `featurize` stage has a directory
-output (`data/features`) and we can do:
+Note that granular files inside directories tracked as a whole are supported.
+For example, the `featurize` stage has the `data/features` directory output, but
+we can do:
 
 ```dvc
 $ dvc checkout data/features/test.pkl
