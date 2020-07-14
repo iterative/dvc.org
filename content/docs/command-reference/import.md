@@ -41,16 +41,13 @@ to an "offline" repo (if it's a DVC repo without a default remote, instead of
 downloading, DVC will try to copy the target data from its <abbr>cache</abbr>).
 
 The `path` argument is used to specify the location of the target to be
-downloaded within the source repository at `url`. `path` can specify any file or
-directory in the source repo, including those tracked by DVC, or by Git. Note
-that DVC-tracked targets should be found in a
+downloaded within the source repository at `url`, including those nested inside
+directories [tracked as a whole](/doc/command-reference/add#example-directory).
+`path` can specify any file or directory in the source repo, including those
+tracked by DVC, or by Git. Note that DVC-tracked targets should be found in a
 [`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvcyaml-file) or
 [`.dvc`](/doc/user-guide/dvc-files-and-directories#dvc-files) file of the
 project.
-
-> Note that `dvc list` supports `path` granularity for directories nested inside
-> directories
-> [tracked as a whole](/doc/command-reference/add#example-directory).
 
 ⚠️ The project should have a default
 [DVC remote](/doc/command-reference/remote), containing the actual data for this

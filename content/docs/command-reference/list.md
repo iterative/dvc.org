@@ -44,13 +44,10 @@ data source. Both HTTP and SSH protocols are supported for online repos (e.g.
 "offline" Git repo.
 
 The optional `path` argument is used to specify directory to list within the
-source repository at `url`. It's similar to providing a path to list to commands
-such as `ls` or `aws s3 ls`. And similar to the former, `-R` option might be
-used to list files recursively.
-
-> Note that `dvc list` supports `path` granularity for directories nested inside
-> directories
-> [tracked as a whole](/doc/command-reference/add#example-directory).
+source repository at `url`, including those nested inside directories
+[tracked as a whole](/doc/command-reference/add#example-directory). It's similar
+to providing a path to list to commands such as `ls` or `aws s3 ls`. And similar
+to the former, `-R` option might be used to list files recursively.
 
 Please note that `dvc list` doesn't check whether the listed data (tracked by
 DVC) actually exists in remote storage, so it's not guaranteed whether it can be
