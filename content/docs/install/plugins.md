@@ -1,9 +1,8 @@
 # IDE Plugins and Syntax Highlighting
 
-When you add a file or a stage to your pipeline, DVC creates a special
-[`.dvc`](/doc/user-guide/dvc-files-and-directories#dvc-files) or `dvc.yaml` file
-(respectively) that contains all the needed information to track your data and
-transformations.
+When you add a file or a stage to your pipeline, DVC creates a special `.dvc` or
+`dvc.yaml` file (respectively) that contains all the needed information to track
+your data and transformations.
 
 The file itself is in a simple YAML format.
 

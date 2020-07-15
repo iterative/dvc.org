@@ -118,8 +118,8 @@ $ git commit .dvc/config -m "Configure local remote"
 $ dvc push
 ```
 
-Usually, we also want to `git commit` and `git push` the corresponding
-[`.dvc` files](/doc/user-guide/dvc-files-and-directories#dvc-files).
+Usually, we also want to `git commit` and `git push` the corresponding `.dvc`
+files.
 
 <details>
 

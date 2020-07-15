@@ -2,8 +2,7 @@
 
 Download a file or directory from a supported URL (for example `s3://`,
 `ssh://`, and other protocols) into the <abbr>workspace</abbr>, and track
-changes in the remote data source. Creates a
-[`.dvc` file](/doc/user-guide/dvc-files-and-directories#dvc-files).
+changes in the remote data source. Creates a `.dvc` file.
 
 > See `dvc import` to download and tack data/model files or directories from
 > other <abbr>DVC repositories</abbr> (e.g. hosted on Github).
@@ -43,8 +42,7 @@ while `out` can be used to specify the directory and/or file name desired for
 the downloaded data. If an existing directory is specified, the file or
 directory will be placed inside.
 
-[`.dvc` files](/doc/user-guide/dvc-files-and-directories#dvc-files) support
-references to data in an external location, see
+`.dvc` files support references to data in an external location, see
 [External Dependencies](/doc/user-guide/external-dependencies). In such an
 import `.dvc` file, the `deps` field stores the remote URL, and the `outs` field
 contains the corresponding local path in the <abbr>workspace</abbr>. It records
@@ -109,9 +107,8 @@ $ dvc run -n download_data \
           wget https://data.dvc.org/get-started/data.xml -O data.xml
 ```
 
-`dvc import-url` generates an import stage
-[`.dvc` file](/doc/user-guide/dvc-files-and-directories#dvc-files) and `dvc run`
-a regular stage (in `dvc.yaml`).
+`dvc import-url` generates an import stage `.dvc` file and `dvc run` a regular
+stage (in `dvc.yaml`).
 
 ## Options
 
@@ -188,8 +185,7 @@ The `etag` field in the `.dvc` file contains the
 If the remote file changes, its ETag will be different. This metadata allows DVC
 to determine whether it's necessary to download it again.
 
-> See [`.dvc` files](/doc/user-guide/dvc-files-and-directories#dvc-files) for
-> more details on the format above.
+> See `.dvc` files for more details on the format above.
 
 You may want to get out of and remove the `example-get-started/` directory after
 trying this example (especially if trying out the following one).

@@ -39,8 +39,7 @@ downloading, DVC will try to copy the target data from its <abbr>cache</abbr>).
 The `path` argument is used to specify the location of the target to be
 downloaded within the source repository at `url`. `path` can specify any file or
 directory in the source repo, including those tracked by DVC, or by Git. Note
-that DVC-tracked targets should be found in a `dvc.yaml` or
-[`.dvc`](/doc/user-guide/dvc-files-and-directories#dvc-files) file of the
+that DVC-tracked targets should be found in a `dvc.yaml` or `.dvc` file of the
 project.
 
 ⚠️ The project should have a default
@@ -180,10 +179,8 @@ The `model.monograms.pkl` file now contains the older version of the model. To
 get the most recent one, we use a similar command, but with
 `-o model.bigrams.pkl` and `--rev bigrams-experiment` (or even without `--rev`
 since that tag has the latest model version anyway). In fact, in this case using
-`dvc pull` with the corresponding
-[`.dvc` files](/doc/user-guide/dvc-files-and-directories#dvc-files) should
-suffice, downloading the file as just `model.pkl`. We can then rename it to make
-its variant explicit:
+`dvc pull` with the corresponding `.dvc` files should suffice, downloading the
+file as just `model.pkl`. We can then rename it to make its variant explicit:
 
 ```dvc
 $ dvc pull train.dvc

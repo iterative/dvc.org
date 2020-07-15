@@ -17,9 +17,8 @@ This command safely removes stages from
 [dvc.yaml](/doc/user-guide/dvc-files-and-directories#dvcyaml-file), their
 `.gitignore` entries, and optionally removes from the <abbr>workspace</abbr>
 files or directories that are tracked by DVC. It takes one or more stage names
-(see `-n` option of `dvc run`) or
-[`.dvc` files](/doc/user-guide/dvc-files-and-directories#dvc-files) as target,
-removes it, and optionally removes all of its outputs (`outs` field).
+(see `-n` option of `dvc run`) or `.dvc` files as target, removes it, and
+optionally removes all of its outputs (`outs` field).
 
 If there are no stages left in
 [dvc.yaml](/doc/user-guide/dvc-files-and-directories#dvcyaml-file) after stage
