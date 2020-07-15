@@ -41,9 +41,7 @@ downloaded within the source repository at `url`, including those nested inside
 directories [tracked as a whole](/doc/command-reference/add#example-directory).
 `path` can specify any file or directory in the source repo, including those
 tracked by DVC, or by Git. Note that DVC-tracked targets should be found in a
-[`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvcyaml-file) or
-[`.dvc`](/doc/user-guide/dvc-files-and-directories#dvc-files) file of the
-project.
+`dvc.yaml` or `.dvc` file of the project.
 
 ⚠️ The project should have a default
 [DVC remote](/doc/command-reference/remote), containing the actual data for this
@@ -97,9 +95,8 @@ model.pkl
 
 Note that the `model.pkl` file doesn't actually exist in the
 [root directory](https://github.com/iterative/example-get-started/tree/master/)
-of the source Git repo. Instead, it's exported in the
-[`dvc.yaml`](https://github.com/iterative/example-get-started/blob/master/dvc.yaml)
-file as an output of the `train` stage (in the `outs` field). DVC then
+of the source Git repo. Instead, it's exported in the `dvc.yaml` file as an
+output of the `train` stage (in the `outs` field). DVC then
 [pulls](/doc/command-reference/pull) the file from the default
 [remote](/doc/command-reference/remote) of the source DVC project (found in its
 [config file](https://github.com/iterative/example-get-started/blob/master/.dvc/config)).
@@ -183,10 +180,8 @@ The `model.monograms.pkl` file now contains the older version of the model. To
 get the most recent one, we use a similar command, but with
 `-o model.bigrams.pkl` and `--rev bigrams-experiment` (or even without `--rev`
 since that tag has the latest model version anyway). In fact, in this case using
-`dvc pull` with the corresponding
-[`.dvc` files](/doc/user-guide/dvc-files-and-directories#dvc-files) should
-suffice, downloading the file as just `model.pkl`. We can then rename it to make
-its variant explicit:
+`dvc pull` with the corresponding `.dvc` files should suffice, downloading the
+file as just `model.pkl`. We can then rename it to make its variant explicit:
 
 ```dvc
 $ dvc pull train.dvc

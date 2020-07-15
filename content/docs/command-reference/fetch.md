@@ -185,11 +185,9 @@ Note that the `.dvc/cache` directory was created and populated.
 > for more info.
 
 Used without arguments (as above), `dvc fetch` downloads all files and
-directories needed by all
-[`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvcyaml-file) and
-[`.dvc`](/doc/user-guide/dvc-files-and-directories#dvc-files) files in the
-current branch. For example, the hash values `3863d0e...` and `42c7025...`
-correspond to the `model.pkl` file and `data/features/` directory, respectively.
+directories needed by all `dvc.yaml` and `.dvc` files in the current branch. For
+example, the hash values `3863d0e...` and `42c7025...` correspond to the
+`model.pkl` file and `data/features/` directory, respectively.
 
 Let's now link files from the cache to the workspace with:
 
@@ -218,9 +216,9 @@ $ tree .dvc/cache
     └── 597d341ceb7d8fbbe88859a892ef81
 ```
 
-Cache entries for the `data/prepared` directory, as well as the actual
-`test.tsv` and `train.tsv` files, were downloaded. Their hash values are shown
-above.
+Cache entries for the `data/prepared` directory (<abbr>output</abbr> of the
+`prepare` target), as well as the actual `test.tsv` and `train.tsv` files, were
+downloaded. Their hash values are shown above.
 
 Note that granular files inside directories tracked as a whole are supported.
 For example, the `featurize` stage has the `data/features` directory as output,
@@ -276,8 +274,7 @@ $ tree .dvc/cache
     └── a9c512fda11293cfee7617b66648dc
 ```
 
-Fetching using `--with-deps` starts with the target
-[`.dvc` file](/doc/user-guide/dvc-files-and-directories#dvc-files) (`train.dvc`)
+Fetching using `--with-deps` starts with the target `.dvc` file (`train.dvc`)
 and searches backwards through its pipeline for data to download into the
 project's cache. All the data for the second and third stages ("featurize" and
 "train") has now been downloaded to the cache. We could now use `dvc checkout`

@@ -46,8 +46,19 @@ please see `dvc plots`.
 ## Options
 
 - `--targets <path>` - specific metric files to visualize. These must be listed
-  in a [`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvcyaml-file) file
-  (see the `--plots` option of `dvc run`).
+  in a `dvc.yaml` file (see the `--plots` option of `dvc run`). When specifying
+  multiple `--targets` and `revisions`, you may use `--` after this option's
+  arguments, e.g.:
+
+  ```dvc
+  $ dvc plots diff --targets t1.json t2.csv -- HEAD v1 v2
+  ```
+
+  Alternatively, you can also run above statement as:
+
+  ```dvc
+  $ dvc plots diff HEAD v1 v2 --targets t1.json t2.csv
+  ```
 
 - `-o <path>, --out <path>` - name of the generated file. By default, the output
   file name is equal to the input filename with a `.html` file extension (or
@@ -110,15 +121,6 @@ file:///Users/usr/src/plots/logs.csv.html
 ```
 
 ![](/img/plots_diff.svg)
-
-> Alternatively, you can also run above statement as:
->
-> ```dvc
-> $ dvc plots diff --targets logs.csv -- HEAD 0135527
-> ```
->
-> When you're specifying multiple revisions after `--targets`, use `--` so that
-> argument parser doesn't confuse them as options for `--targets` argument.
 
 ## Example: Confusion matrix
 

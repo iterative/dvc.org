@@ -49,10 +49,10 @@ that will train the model.
 
 Let's now install the requirements. But before we do that, we **strongly**
 recommend creating a
-[virtual environment](https://packaging.python.org/tutorials/installing-packages/#creating-virtual-environments):
+[virtual environment](https://python.readthedocs.io/en/stable/library/venv.html):
 
 ```dvc
-$ virtualenv -p python3 .env
+$ python3 -m venv .env
 $ source .env/bin/activate
 $ pip install -r requirements.txt
 ```
@@ -324,10 +324,9 @@ $ dvc run -n train -d train.py -d data \
 ```
 
 `dvc run` writes a pipeline stage named `train` (specified using the `-n`
-option) in [`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvcyaml-file).
-It tracks all outputs (`-o`) the same way as `dvc add` does. Unlike `dvc add`,
-`dvc run` also tracks dependencies (`-d`) and the command (`python train.py`)
-that was run to produce the result.
+option) in `dvc.yaml`. It tracks all outputs (`-o`) the same way as `dvc add`
+does. Unlike `dvc add`, `dvc run` also tracks dependencies (`-d`) and the
+command (`python train.py`) that was run to produce the result.
 
 > At this point you could run `git add .` and `git commit` to save the `train`
 > stage and its outputs to the repository.

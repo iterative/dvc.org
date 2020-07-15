@@ -59,8 +59,7 @@ $ dvc run -n prepare \
           python src/prepare.py data/data.xml
 ```
 
-A [`dvc.yaml` file](/doc/user-guide/dvc-files-and-directories#dvcyaml-file) is
-generated. It includes information about the command we ran
+A `dvc.yaml` file is generated. It includes information about the command we ran
 (`python src/prepare.py`), its <abbr>dependencies</abbr>, and
 <abbr>outputs</abbr>.
 
