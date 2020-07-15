@@ -2,7 +2,7 @@
 
 Rename a file or a directory and modify the corresponding `.dvc` file (see
 `dvc add`) to reflect the change. If the file or directory has the same name as
-the corresponding `.dvc` file, it also renames it.
+the `.dvc` file, it also renames it.
 
 ## Synopsis
 
