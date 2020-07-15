@@ -47,16 +47,13 @@ example, to get any files tracked by DVC that already exist in remote storage
 (see `dvc push`) to the local <abbr>cache</abbr>. Refer to `dvc remote` for more
 information on DVC remotes.
 
-`dvc fetch` ensures that the files needed for the target stages (in
-[`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvcyaml-file)) or
+`dvc fetch` ensures that the files needed for all the stages (in
+[`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvcyaml-file)) and
 [`.dvc` files](/doc/user-guide/dvc-files-and-directories#dvc-files) exist in the
-cache. These data files, datasets, or models are listed as <abbr>outputs</abbr>
-in the `targets` (all stages and `.dvc` files by default), and are required to
-[reproduce](/doc/tutorials/get-started/data-pipelines#reproduce) the
-corresponding [pipeline](/doc/command-reference/pipeline).
-
-> Note that `dvc fetch` supports granular targeting of files inside directories
-> that are [tracked as a whole](/doc/command-reference/add#example-directory).
+cache. It can be limited to any given `targets` (files inside directories
+[tracked as a whole](/doc/command-reference/add#example-directory) are
+supported). These data files, datasets, or models are listed as
+<abbr>outputs</abbr>.
 
 If no `targets` are specified, the set of data files to fetch is determined by
 scanning all `dvc.yaml` and `.dvc` files in the workspace (the `--all-branches`
@@ -225,9 +222,9 @@ Cache entries for the `data/prepared` directory, as well as the actual
 `test.tsv` and `train.tsv` files, were downloaded. Their hash values are shown
 above.
 
-Note that `dvc fetch` supports granular targeting of files inside directories
-that are tracked as a whole. For example, the `featurize` stage has a directory
-output (`data/features`) and we can do:
+Note that granular files inside directories tracked as a whole are supported.
+For example, the `featurize` stage has the `data/features` directory as output,
+and we can do:
 
 ```dvc
 $ dvc fetch data/features/test.pkl

@@ -35,8 +35,8 @@ The execution of `dvc checkout` does the following:
 
 - Scans all `dvc.lock` and `.dvc` files to compare the hash values of its
   <abbr>outputs</abbr> against the actual data files or directories in the
-  workspace (similar to `dvc status`). Scanning is limited to the given
-  `targets`, if any (granular files inside directories
+  workspace (similar to `dvc status`). Scanning is limited to any given
+  `targets` (files inside directories
   [tracked as a whole](/doc/command-reference/add#example-directory) are
   supported). See also options `--with-deps` and `--recursive` below.
 
@@ -217,8 +217,8 @@ $ dvc checkout model.pkl  # Get previous model file only.
 ```
 
 Note that granular files inside directories tracked as a whole are supported.
-For example, the `featurize` stage has the `data/features` directory output, but
-we can do:
+For example, the `featurize` stage has the `data/features` directory as output,
+and we can do:
 
 ```dvc
 $ dvc checkout data/features/test.pkl

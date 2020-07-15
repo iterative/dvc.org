@@ -49,9 +49,9 @@ The command `dvc status -c` can list files referenced in current stages (in
 used to see what files `dvc pull` would download.
 
 If one or more `targets` are specified, DVC only considers the corresponding
-files. Note that `dvc pull` supports granularity as well: the targets may be
-files or directories found inside a directory that is
-[tracked as a whole](/doc/command-reference/add#example-directory).
+files. Note that files inside directories
+[tracked as a whole](/doc/command-reference/add#example-directory) are
+supported.
 
 After the data is in the cache, `dvc pull` uses OS-specific mechanisms like
 reflinks or hardlinks to put it in the workspace, trying to avoid copying. See

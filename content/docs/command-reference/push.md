@@ -66,9 +66,9 @@ cache (compared to the default remote.) It can be used to see what files
 `dvc push` would upload.
 
 If one or more `targets` are specified, DVC only considers the corresponding
-files. Note that `dvc push` supports granularity as well: the targets may be
-files or directories found inside a directory that is
-[tracked as a whole](/doc/command-reference/add#example-directory).
+files. Note that files inside directories
+[tracked as a whole](/doc/command-reference/add#example-directory) are
+supported.
 
 ## Options
 

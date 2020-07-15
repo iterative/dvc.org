@@ -35,11 +35,10 @@ _remote_ mode is triggered by using the `--cloud` or `--remote` options:
 This command scans all `dvc.lock` and `.dvc` files to compare the hash values
 saved in their `outs` fields against the actual data files or directories in the
 <abbr>workspace</abbr> (the `--all-branches` and `--all-tags` options compare
-multiple workspace versions). Scanning is limited to the given `targets` (if
-any). See also options `--with-deps` and `--recursive` below.
-
-> Note that `dvc status` supports granular targeting of files inside directories
-> that are [tracked as a whole](/doc/command-reference/add#example-directory).
+multiple workspace versions). Scanning is limited to any given `targets` (files
+inside directories
+[tracked as a whole](/doc/command-reference/add#example-directory) are
+supported). See also options `--with-deps` and `--recursive` below.
 
 If no differences are detected, `dvc status` prints
 `Data and pipelines are up to date.` If differences are detected by
@@ -183,8 +182,8 @@ dobar
 > In this case, the target `foo.dvc` is a `.dvc` file to track the `foo` file,
 > while `dobar` is the name of a stage defined in `dvc.yaml`.
 
-Note that `dvc fetch` supports granular targeting of files inside directories
-that are tracked as a whole. For example:
+Note that granular files inside directories tracked as a whole are supported.
+For example:
 
 ```dvc
 $ tree data
@@ -198,11 +197,6 @@ data
 $ dvc fetch data/raw/partition.1.dat
 new:                data/raw
 ```
-
-While `data/raw/`
-[tracked as a whole](/doc/command-reference/add#example-directory) (thus the
-existence of `raw.dvc`), a specific file inside can be fetched
-(`data/raw/partition.1.dat`).
 
 ## Example: Dependencies
 
