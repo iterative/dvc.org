@@ -46,9 +46,9 @@ please see `dvc plots`.
 ## Options
 
 - `--targets <path>` - specific metric files to visualize. These must be listed
-  in a [`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvcyaml-file) file
-  (see the `--plots` option of `dvc run`). When specifying multiple `--targets`
-  and `revisions`, you may use `--` after this option's arguments, e.g.:
+  in a `dvc.yaml` file (see the `--plots` option of `dvc run`). When specifying
+  multiple `--targets` and `revisions`, you may use `--` after this option's
+  arguments, e.g.:
 
   ```dvc
   $ dvc plots diff --targets t1.json t2.csv -- HEAD v1 v2

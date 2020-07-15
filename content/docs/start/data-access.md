@@ -59,10 +59,9 @@ $ dvc import https://github.com/iterative/dataset-registry \
              get-started/data.xml -o data/data.xml
 ```
 
-This is similar to `dvc get` + `dvc add`, but the resulting
-[`.dvc` files](/doc/user-guide/dvc-files-and-directories#dvc-files) includes
-metadata to track changes in the source repository. This allows you to bring in
-changes from the data source later, using `dvc update`.
+This is similar to `dvc get` + `dvc add`, but the resulting `.dvc` files
+includes metadata to track changes in the source repository. This allows you to
+bring in changes from the data source later, using `dvc update`.
 
 <details>
 
