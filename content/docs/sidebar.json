@@ -86,7 +86,7 @@
         "slug": "what-is-dvc",
         "label": "What is DVC?",
         "source": "what-is-dvc/index.md",
-        "children": ["questions", "core-features", "related-technologies"]
+        "children": ["core-features", "related-technologies"]
       },
       {
         "label": "DVC Files and Directories",
@@ -137,6 +137,16 @@
       {
         "label": "Privacy Policy (Google APIs)",
         "slug": "privacy"
+      }
+    ]
+  },
+  {
+    "slug": "how-to",
+    "source": false,
+    "children": [
+      {
+        "slug": "best-practices",
+        "source": "how-to/best-practices.md"
       }
     ]
   },

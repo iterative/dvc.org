@@ -1,9 +1,9 @@
-# Common DVC Questions
+# Best Practices
 
-Some of these questions are easy to answer individually. Data scientists,
-engineers, or managers may already knows or can easily find answers to some of
-them. However, the variety of answers and approaches makes data science
-collaboration a nightmare. **A systematic approach is required.**
+Data scientists, engineers, or managers may already know or can easily find
+answers to some of these questions. However, the variety of answers and
+approaches makes data science collaboration a nightmare. **A systematic approach
+is required.**
 
 ## Source code and data versioning
 
