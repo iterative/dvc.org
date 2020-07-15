@@ -89,9 +89,6 @@ Specific explanations:
   running. DVC automatically expands this URL into a regular S3, SSH, GS, etc
   URL by appending `/path/to/file` to the `myremote`'s configured base path.
 
-See [`dvc.lock` file](/doc/user-guide/dvc-files-and-directories#dvclock-file)
-for info on hash types for specific remote location types.
-
 Another way to understand the `dvc import-url` command is as a shortcut for
 generating a pipeline stage with and external dependency. This is discussed in
 the [External Dependencies](/doc/user-guide/external-dependencies)
@@ -264,10 +261,10 @@ $ rm -f code.zip
 
 Let's install the requirements. But before we do that, we **strongly** recommend
 creating a
-[virtual environment](https://packaging.python.org/tutorials/installing-packages/#creating-virtual-environments):
+[virtual environment](https://python.readthedocs.io/en/stable/library/venv.html):
 
 ```dvc
-$ virtualenv -p python3 .env
+$ python3 -m venv .env
 $ source .env/bin/activate
 $ pip install -r src/requirements.txt
 ```

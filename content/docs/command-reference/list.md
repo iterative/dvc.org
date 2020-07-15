@@ -79,7 +79,7 @@ other commands like `dvc get` or `dvc import` to reuse any file or directory
 found in it. This includes files tracked by Git as well as <abbr>data
 artifacts</abbr> tracked by DVC-tracked:
 
-````dvc
+```dvc
 $ dvc list https://github.com/iterative/example-get-started
 .gitignore
 README.md
@@ -90,7 +90,8 @@ model.pkl
 params.yaml
 prc.json
 scores.json
-src```
+src
+```
 
 If you open the
 [example-get-started](https://github.com/iterative/example-get-started)
@@ -103,7 +104,7 @@ We can now, for example, download the model file with:
 
 ```dvc
 $ dvc get https://github.com/iterative/example-get-started model.pkl
-````
+```
 
 ## Example: List all files and directories in a data registry
 

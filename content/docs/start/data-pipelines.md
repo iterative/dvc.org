@@ -26,15 +26,21 @@ Get the sample code like this:
 $ wget https://code.dvc.org/get-started/code.zip
 $ unzip code.zip
 $ rm -f code.zip
-$ ls src
-evaluate.py  featurization.py  prepare.py
-requirements.txt  train.py
+$ tree
+.
+├── params.yaml
+└── src
+    ├── evaluate.py
+    ├── featurization.py
+    ├── prepare.py
+    ├── requirements.txt
+    └── train.py
 ```
 
 Now let's install the requirements:
 
 > We **strongly** recommend creating a
-> [virtual environment](https://packaging.python.org/tutorials/installing-packages/#creating-virtual-environments)
+> [virtual environment](https://python.readthedocs.io/en/stable/library/venv.html)
 > first.
 
 ```dvc
@@ -73,11 +79,11 @@ The command options used above mean the following:
   that stage can depend on field values from a parameters file (`params.yaml` by
   default):
 
-  ```yaml
-  prepare:
-    split: 0.20
-    seed: 20170428
-  ```
+```yaml
+prepare:
+  split: 0.20
+  seed: 20170428
+```
 
 - `-d src/prepare.py` and `-d data/data.xml` mean that the stage depends on
   these files to work. Notice that the source code itself is marked as a
