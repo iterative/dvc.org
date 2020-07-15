@@ -86,11 +86,7 @@
         "slug": "what-is-dvc",
         "label": "What is DVC?",
         "source": "what-is-dvc/index.md",
-        "children": [
-          "collaboration-issues",
-          "core-features",
-          "related-technologies"
-        ]
+        "children": ["questions", "core-features", "related-technologies"]
       },
       {
         "label": "DVC Files and Directories",
