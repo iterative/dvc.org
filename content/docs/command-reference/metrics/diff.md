@@ -48,7 +48,7 @@ lists all the current metrics without comparisons.
   option's arguments, e.g.:
 
   ```dvc
-  $ dvc metrics diff --targets t1.json t2.json -- HEAD v1
+  $ dvc metrics diff --targets t1.json t2.yaml -- HEAD v1
   ```
 
   Without `--`, this statement will show an error as argument parser confuses
