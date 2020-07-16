@@ -34,3 +34,5 @@ https://www.youtube.com/embed/$
 http://user@example.com/path
 http://www.reddit.com/r/MachineLearning
 https://github.com/elle/myproject
+https://towardsdatascience.com/why-git-and-how-to-use-git-as-a-data-scientist-4fa2d3bdc197
+https://www.amazon.com/DevOps-Handbook-World-Class-Reliability-Organizations-ebook/dp/B01M9ASFQ3 

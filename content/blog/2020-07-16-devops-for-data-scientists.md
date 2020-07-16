@@ -2,12 +2,16 @@
 title: What data scientists need to know about DevOps
 date: 2020-07-16
 description: |
-  A philosophical and practical guide to using continuous integration (via GitHub Actions) to build an automatic model training system.
+  A philosophical and practical guide to using continuous integration 
+  (via GitHub Actions) to build an automatic model training system.
 picture: 2020-07-16/unicorn_floatie.jpg
 pictureComment: |
-  The unicorn! A mythical data scientist who can code, write unit tests AND resist the lure of a deep neural network when logistic regression will do.
+  The unicorn! A mythical data scientist who can code, write unit tests 
+  AND resist the lure of a deep neural network when logistic regression 
+  will do.
 
-  Photo by [James Lee](https://unsplash.com/@picsbyjameslee) via [Unsplash](https://unsplash.com/photos/qSf_4bNsoWc).
+  Photo by [James Lee](https://unsplash.com/@picsbyjameslee) via 
+  [Unsplash](https://unsplash.com/photos/qSf_4bNsoWc).
 author: elle_obrien
 commentsUrl: https://discuss.dvc.org/t/what-data-scientists-need-to-know-about-devops/447
 tags:
