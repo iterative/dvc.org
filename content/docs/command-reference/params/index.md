@@ -37,8 +37,7 @@ itself does not ascribe any specific meaning for these values. They are
 user-defined, and serve as a way to generalize and parametrize an machine
 learning algorithms or data processing code.
 
-DVC saves the param names and their latest values in the
-[`dvc.yaml` file](/doc/user-guide/dvc-files-and-directories#dvcyaml-file). These
+DVC saves the param names and their latest values in the `dvc.yaml` file. These
 values will be compared to the ones in the params files to determine if the
 stage is invalidated upon pipeline [reproduction](/doc/command-reference/repro).
 
@@ -109,8 +108,7 @@ epochs = params['train']['epochs']
 layers = params['train']['layers']
 ```
 
-You can find that each parameter and it's value were saved to
-[`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvcyaml-file). These
+You can find that each parameter and it's value were saved to `dvc.yaml`. These
 values will be compared to the ones in the parameters files whenever `dvc repro`
 is used, to determine if dependency to the params file is invalidated:
 

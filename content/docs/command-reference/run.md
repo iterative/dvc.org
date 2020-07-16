@@ -1,7 +1,6 @@
 # run
 
-Helper command to create or update _stages_ in
-[`dvc.yaml`](/doc/user-guide/dvc-files-and-directories). Requires a name and a
+Helper command to create or update _stages_ in `dvc.yaml`. Requires a name and a
 command.
 
 ## Synopsis
@@ -23,10 +22,9 @@ positional arguments:
 ## Description
 
 `dvc run` is a helper for creating or updating
-[pipeline](/doc/command-reference/pipeline) stages in a
-[`dvc.yaml` file](/doc/user-guide/dvc-files-and-directories#dvcyaml-files)
-(located in the current working directory). _Stages_ represent individual data
-processes, including their input and resulting outputs.
+[pipeline](/doc/command-reference/pipeline) stages in a `dvc.yaml` file (located
+in the current working directory). _Stages_ represent individual data processes,
+including their input and resulting outputs.
 
 A stage name is required and can be provided using the `-n` (`--name`) option.
 The other available [options](#options) are mostly meant to describe different

@@ -35,10 +35,8 @@ options:
 | remote | `--cloud`      | Comparisons are made between the cache, and the default remote, typically defined with `dvc remote --default`.              |
 
 DVC determines which data and code files to compare by analyzing all stages (in
-[`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvcyaml-file) and
-[`.dvc` files](/doc/user-guide/dvc-files-and-directories#dvc-files) in the
-<abbr>workspace</abbr> (the `--all-branches` and `--all-tags` options compare
-multiple workspace versions).
+`dvc.yaml` and `.dvc` files in the <abbr>workspace</abbr> (the `--all-branches`
+and `--all-tags` options compare multiple workspace versions).
 
 The comparison can be limited to certain stages (in `dvc.yaml`) or `.dvc` files
 only, by listing them as `targets`. (Changes are reported only against these.)
@@ -79,9 +77,7 @@ the changes (described below).
   update the file. Possible states are:
 
   - _new_: An <abbr>output</abbr> is found in the workspace, but there is no
-    corresponding file hash saved in the
-    [`dvc.lock`](/doc/user-guide/dvc-files-and-directories#dvcyaml-file) or
-    [`.dvc`](/doc/user-guide/dvc-files-and-directories#dvc-files) file yet.
+    corresponding file hash saved in the `dvc.lock` or `.dvc` file yet.
   - _modified_: An output or <abbr>dependency</abbr> is found in the workspace,
     but the corresponding file hash in the `dvc.lock` or `.dvc` file is not up
     to date.
