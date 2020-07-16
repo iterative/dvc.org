@@ -29,8 +29,8 @@ The `targets` are the files or directories to add, which are turned into
 <abbr>cache</abbr> by default (use the `--no-commit` option to avoid this, and
 `dvc commit` to finish the process when needed).
 
-> See also `dvc run` for more advanced ways to version intermediate and final
-> results (like ML models).
+> See also <abbr>dvc run</abbr> for more advanced ways to version intermediate
+> and final results (like ML models).
 
 After checking that each `target` file (or directory) hasn't been added before
 (or tracked with other DVC commands), a few actions are taken under the hood for
@@ -209,7 +209,7 @@ outs:
 
 This allows us to treat the entire directory structure as a single <abbr>data
 artifact</abbr>. For example, you can pass the whole directory tree as a
-<abbr>dependency</abbr> to a `dvc run` stage definition:
+<abbr>dependency</abbr> to a <abbr>dvc run<abbr> stage definition:
 
 ```dvc
 $ dvc run -n train \
@@ -247,7 +247,7 @@ pics
 
 Note that no top-level `.dvc` file is generated, which is typically less
 convenient. For example, we cannot use the directory structure as one unit with
-`dvc run` or other commands.
+<abbr>dvc run</abbr> or other commands.
 
 ## Example: Dvcignore
 
