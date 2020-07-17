@@ -166,7 +166,7 @@ only execute the final stage.
 
 For simplicity, let's build a pipeline defined below. (If you want get your
 hands-on something more real, see this short
-[pipeline tutorial](/doc/tutorials/dags)). It takes this `text.txt` file:
+[pipeline tutorial](/doc/start/data-pipelines)). It takes this `text.txt` file:
 
 ```
 dvc

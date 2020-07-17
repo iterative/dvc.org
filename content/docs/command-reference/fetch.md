@@ -136,7 +136,8 @@ $ cd example-get-started
 
 </details>
 
-The workspace looks almost like in this [pipeline setup](/doc/tutorials/dags):
+The workspace looks almost like in this
+[pipeline setup](/doc/start/data-pipelines):
 
 ```dvc
 .
