@@ -127,7 +127,7 @@ Metric files committed with Git can be compared by referencing the commits (any
 two [revisions](https://git-scm.com/docs/revisions)):
 
 ```dvc
-$ dvc metrics diff --targets metrics.json HEAD c7bef55
+$ dvc metrics diff --targets metrics.json -- HEAD c7bef55
 Path       Metric    Value    Change
 eval.json  ACU       0.66729  0.01614
 eval.json  TP        516      -12
