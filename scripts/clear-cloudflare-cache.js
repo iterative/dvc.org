@@ -34,12 +34,12 @@ async function main() {
     }
   )
 
-  const body = await res.text()
+  const body = await res.json()
+  console.log('Temporary cache debug logging: ', body)
 
   if (!res.ok) {
     throw new Error('Error response received from CloudFlare: ' + body)
   }
-
   console.log('Cleared cache successfully')
 }
 
