@@ -1,10 +1,9 @@
 # import
 
 Download a file or directory tracked by DVC or by Git into the
-<abbr>workspace</abbr>. It also creates a
-[`.dvc` file](/doc/user-guide/dvc-files-and-directories#dvc-files) with
-information about the data source, which can later be used to
-[update](/doc/command-reference/update) the import.
+<abbr>workspace</abbr>. It also creates a `.dvc` file with information about the
+data source, which can later be used to [update](/doc/command-reference/update)
+the import.
 
 > See also our `dvc.api.open()` Python API function.
 
@@ -43,9 +42,7 @@ downloading, DVC will try to copy the target data from its <abbr>cache</abbr>).
 The `path` argument is used to specify the location of the target to be
 downloaded within the source repository at `url`. `path` can specify any file or
 directory in the source repo, including those tracked by DVC, or by Git. Note
-that DVC-tracked targets should be found in a
-[`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvcyaml-file) or
-[`.dvc`](/doc/user-guide/dvc-files-and-directories#dvc-files) file of the
+that DVC-tracked targets should be found in a `dvc.yaml` or `.dvc` file of the
 project.
 
 ⚠️ The project should have a default
@@ -114,11 +111,9 @@ Importing 'data/data.xml (git@github.com:iterative/example-get-started)'
 ```
 
 In contrast with `dvc get`, this command doesn't just download the data file,
-but it also creates an import stage
-([`.dvc` file](/doc/user-guide/dvc-files-and-directories#dvc-files)) with a link
-to the data source (as explained in the description above). (This import stage
-can later be used to [update](/doc/command-reference/update) the import.) Check
-`data.xml.dvc`:
+but it also creates an import stage (`.dvc` file) with a link to the data source
+(as explained in the description above). (This import stage can later be used to
+[update](/doc/command-reference/update) the import.) Check `data.xml.dvc`:
 
 ```yaml
 md5: 7de90e7de7b432ad972095bc1f2ec0f8
@@ -155,9 +150,8 @@ Importing
 -> 'cats-dogs'
 ```
 
-When using this option, the import stage
-([`.dvc` file](/doc/user-guide/dvc-files-and-directories#dvc-files)) will also
-have a `rev` subfield under `repo`:
+When using this option, the import stage (`.dvc` file) will also have a `rev`
+subfield under `repo`:
 
 ```yaml
 deps:
@@ -187,10 +181,9 @@ $ dvc update --rev cats-dogs-v2
 If you take a look at our
 [dataset registry](https://github.com/iterative/dataset-registry)
 <abbr>project</abbr>, you'll see that it's organized into different directories
-such as `tutorial/ver` and `use-cases/`, and these contain
-[`.dvc` files](/doc/user-guide/dvc-files-and-directories#dvc-files) that track
-different datasets. Given this simple structure, its data files can be easily
-shared among several other projects using `dvc get` and `dvc import`. For
+such as `tutorial/ver` and `use-cases/`, and these contain `.dvc` files that
+track different datasets. Given this simple structure, its data files can be
+easily shared among several other projects using `dvc get` and `dvc import`. For
 example:
 
 ```dvc
@@ -245,9 +238,8 @@ Importing ...
 
 > Note that Git-tracked files can be imported from DVC repos as well.
 
-The file is imported, and along with it, an import stage
-([`.dvc` file](/doc/user-guide/dvc-files-and-directories#dvc-files)) is created.
-Check `it-standards.csv.dvc`:
+The file is imported, and along with it, an import stage (`.dvc` file) is
+created. Check `it-standards.csv.dvc`:
 
 ```yaml
 deps:

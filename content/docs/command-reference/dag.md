@@ -1,8 +1,7 @@
 # dag
 
-Visualize the pipeline(s) in
-[`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvclock-file) as one or
-more graph(s) of connected [stages](/doc/command-reference/run).
+Visualize the pipeline(s) in `dvc.yaml` as one or more graph(s) of connected
+[stages](/doc/command-reference/run).
 
 ## Synopsis
 
