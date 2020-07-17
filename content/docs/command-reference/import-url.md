@@ -194,8 +194,8 @@ trying this example (especially if trying out the following one).
 
 What if that remote file is updated regularly? The project goals might include
 regenerating some results based on the updated data source.
-[Pipeline](/doc/command-reference/pipeline) reproduction can be triggered based
-on a changed external dependency.
+[Pipeline](/doc/command-reference/dag) reproduction can be triggered based on a
+changed external dependency.
 
 Let's use the [Get Started](/doc/tutorials/get-started) project again,
 simulating an updated external data source. (Remember to prepare the
