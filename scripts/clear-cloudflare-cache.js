@@ -17,7 +17,7 @@
 
 const fetch = require('isomorphic-fetch')
 
-module.exports = async function purgeCloudflareCache() {
+module.exports = async function () {
   const { CLOUDFLARE_TOKEN, CLOUDFLARE_ZONE_ID, CONTEXT } = process.env
 
   if (CONTEXT !== 'production') {

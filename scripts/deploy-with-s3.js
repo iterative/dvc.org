@@ -5,6 +5,7 @@ const path = require('path')
 const PRODUCTION_PREFIX = 'dvc-org-prod'
 
 const { DEPLOY_OPTIONS } = process.env
+const clearCloudflareCache = require('./clear-cloudflare-cache')
 
 // Generate deploy options from a comma separated string in the DEPLOY_OPTIONS
 // env var. If DEPLOY_OPTIONS isn't set, use a default setting.
@@ -21,7 +22,7 @@ const deployOptions = DEPLOY_OPTIONS
       build: true,
       upload: true,
       clean: true,
-      purgeCloudflareCache: true
+      clearCloudflareCache: true
     }
 
 if (deployOptions.logSteps) {
@@ -131,8 +132,8 @@ async function main() {
     await cleanAllLocal()
   }
 
-  if (deployOptions.purgeCloudflareCache) {
-    await purgeCloudflareCache()
+  if (deployOptions.clearCloudflareCache) {
+    await clearCloudflareCache()
   }
 }
 
