@@ -44,16 +44,14 @@ lists all the current metrics without comparisons.
 
 - `--targets <paths>` - limit command scope to these metric files. Using -R,
   directories to search metric files in can also be given. When specifying
-  arguments for `--targets` before `revisions`, you may use `--` after this
+  arguments for `--targets` before `revisions`, you should use `--` after this
   option's arguments, e.g.:
 
   ```dvc
   $ dvc metrics diff --targets t1.json t2.yaml -- HEAD v1
   ```
 
-  Without `--`, this statement will show an error as argument parser confuses
-  `revisions` as arguments for `--targets` option. Alternatively, you can also
-  run above statement as:
+  Alternatively, you can also run the above statement as:
 
   ```dvc
   $ dvc metrics diff HEAD v1 --targets t1.json t2.json
