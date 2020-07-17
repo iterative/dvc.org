@@ -1,13 +1,13 @@
-#!/usr/bin/env node
-/* global process */
-
-// This script runs just before the app starts. If we are running the
-// production heroku app (the only one with the below env variables)
-// the cache gets cleared.
+// This script is run inside the S3 deploy script, after everything else, to
+// clear the CloudFlare cache of stale page data programmatically.
 //
 // To clear the cache yourself, you can use the button in the
-// cloudflare dashboard ("Caching tab > Purge everything"), or run
-// this script with the required environment variables:
+// cloudflare dashboard ("Caching tab > Purge everything")
+//
+// This module requires three environment variables to run:
+//
+// - CONTEXT: The exported function will immediately return without doing
+// anything if this variable is not set to "production"
 //
 // - CLOUDFLARE_TOKEN: a token with the "Zone.Cache Purge" permission.
 // You can generate this token in "My Profile > API Tokens"
@@ -17,9 +17,23 @@
 
 const fetch = require('isomorphic-fetch')
 
-const { CLOUDFLARE_TOKEN, CLOUDFLARE_ZONE_ID, CONTEXT } = process.env
+module.exports = async function purgeCloudflareCache() {
+  const { CLOUDFLARE_TOKEN, CLOUDFLARE_ZONE_ID, CONTEXT } = process.env
 
-async function main() {
+  if (CONTEXT !== 'production') {
+    console.log(
+      'Skipping CloudFlare cache purge because CONTEXT is not set to production.'
+    )
+    return
+  }
+
+  if (!(CLOUDFLARE_TOKEN && CLOUDFLARE_ZONE_ID)) {
+    console.error(
+      'Skipping CloudFlare cache purge because CLOUDFLARE_TOKEN and/or CLOUDFLARE_ZONE_ID are not set.'
+    )
+    return
+  }
+
   const res = await fetch(
     `https://api.cloudflare.com/client/v4/zones/${CLOUDFLARE_ZONE_ID}/purge_cache`,
     {
@@ -51,19 +65,4 @@ async function main() {
   }
 
   console.log('Cleared CloudFlare cache successfully')
-}
-
-if (CONTEXT === 'production') {
-  if (!(CLOUDFLARE_TOKEN && CLOUDFLARE_ZONE_ID)) {
-    console.error(
-      'scripts/clear-cloudflare-cache.js: ' +
-        'needs CLOUDFLARE_TOKEN and CLOUDFLARE_ZONE_ID environment variables set.'
-    )
-    process.exit(1)
-  }
-
-  main().catch(e => {
-    console.error(e)
-    process.exit(1)
-  })
 }

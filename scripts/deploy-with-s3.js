@@ -20,7 +20,8 @@ const deployOptions = DEPLOY_OPTIONS
       download: true,
       build: true,
       upload: true,
-      clean: true
+      clean: true,
+      purgeCloudflareCache: true
     }
 
 if (deployOptions.logSteps) {
@@ -128,6 +129,10 @@ async function main() {
   if (deployOptions.clean) {
     console.log('Cleaning all local cache!')
     await cleanAllLocal()
+  }
+
+  if (deployOptions.purgeCloudflareCache) {
+    await purgeCloudflareCache()
   }
 }
 
