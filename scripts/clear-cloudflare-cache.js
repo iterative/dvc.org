@@ -35,19 +35,29 @@ async function main() {
   )
 
   const body = await res.json()
-  console.log('Temporary cache debug logging: ', body)
 
-  if (!res.ok) {
-    throw new Error('Error response received from CloudFlare: ' + body)
+  if (!res.ok || !body.success) {
+    throw new Error(
+      'CloudFlare cache clear failed! ' +
+        JSON.stringify(
+          {
+            status: res.status,
+            errors: body.errors
+          },
+          undefined,
+          2
+        )
+    )
   }
-  console.log('Cleared cache successfully')
+
+  console.log('Cleared CloudFlare cache successfully')
 }
 
 if (CONTEXT === 'production') {
   if (!(CLOUDFLARE_TOKEN && CLOUDFLARE_ZONE_ID)) {
     console.error(
       'scripts/clear-cloudflare-cache.js: ' +
-        'need CLOUDFLARE_TOKEN and CLOUDFLARE_ZONE_ID environment variables.'
+        'needs CLOUDFLARE_TOKEN and CLOUDFLARE_ZONE_ID environment variables set.'
     )
     process.exit(1)
   }
