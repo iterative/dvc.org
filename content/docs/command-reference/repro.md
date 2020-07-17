@@ -111,8 +111,7 @@ only execute the final stage.
   independent unit.
 
 - `-R`, `--recursive` - determines the stages to reproduce by searching each
-  target directory and its subdirectories. If there are no directories among the
-  `targets`, this option is ignored.
+  target directory (if any) and their subdirectories.
 
 - `--no-commit` - do not save outputs to cache. A DVC-file is created and an
   entry is added to `.dvc/state`, while nothing is added to the cache.
