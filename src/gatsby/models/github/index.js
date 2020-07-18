@@ -5,7 +5,7 @@
    gatsby-plugin-github-api. If no GITHUB_TOKEN is specified, this node will be
    filled with default dummy data instead of throwing like using the plugin
    alone does.
-*/
+ */
 
 async function createStaticGithubDataNode(api, fieldData = {}) {
   const {
@@ -52,16 +52,17 @@ module.exports = {
         staticGithubData: {
           type: 'StaticGithubData',
           async resolve(source, args, context) {
-            const node = await context.nodeModel.runQuery({
-              query: {},
-              type: 'GithubData',
-              firstOnly: true
+            const nodes = await context.nodeModel.getAllNodes({
+              type: 'GithubData'
             })
-            return {
-              stars: node
-                ? node.rawResult.data.repository.stargazers.totalCount
-                : null
-            }
+            const node = nodes[0]
+            return node
+              ? {
+                  stars: node.rawResult.data.repository.stargazers.totalCount
+                }
+              : {
+                  stars: 8888
+                }
           }
         }
       }
