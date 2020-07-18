@@ -130,7 +130,10 @@ completion  -- Prints out shell tab completion scripts.
 At Top: Hit TAB for more, or the character to insert
 ```
 
-All completion suggestions guaranteed in-sync with the code!
+All completion suggestions guaranteed in-sync with the code! The maintainers at
+`dvc` were very surprised to find no less than
+[84 commits](https://github.com/iterative/dvc/commits/master/scripts/completion)
+touching their old completion scripts. Such churn is now a thing of the past!
 
 You might notice one of the subcommands provided by `dvc` is
 [`completion`](https://dvc.org/doc/install/completion). Here's a quick example
