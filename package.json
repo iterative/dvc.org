@@ -55,7 +55,7 @@
     "github-markdown-css": "^4.0.0",
     "iso-url": "^0.4.7",
     "isomorphic-fetch": "^2.2.1",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "moment": "^2.25.3",
     "nanoid": "^3.0.2",
     "node-cache": "^5.1.0",

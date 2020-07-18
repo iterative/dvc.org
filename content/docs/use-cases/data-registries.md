@@ -8,7 +8,7 @@ with commands such as `dvc add`. With the aim to enable reusability of these
 depend on data from an external DVC repository, **similar to package management
 systems, but for data science projects**.
 
-![](/img/data-registry.png) _Data and models as code_
+![DVC Data and Model Registry](/img/data-registry.png)_Data and models as code_
 
 Keeping this in mind, we could build a <abbr>DVC project</abbr> dedicated to
 tracking and versioning _datasets_ (or any large data, even ML models). This way
