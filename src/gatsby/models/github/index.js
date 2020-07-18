@@ -36,17 +36,35 @@ async function createStaticGithubDataNode(api, fieldData = {}) {
 }
 
 module.exports = {
-  sourceNodes: createStaticGithubDataNode,
-  async onCreateNode(api) {
-    const {
-      node,
-      actions: { createParentChildLink }
-    } = api
-    if (node.internal.type !== 'GithubData') return
-    const child = await createStaticGithubDataNode(api, {
-      parent: node.id,
-      stars: node.rawResult.data.repository.stargazers.totalCount
+  async createSchemaCustomization({ actions: { createTypes }, schema }) {
+    createTypes(
+      schema.buildObjectType({
+        name: 'StaticGithubData',
+        fields: {
+          stars: 'String'
+        }
+      })
+    )
+  },
+  async createResolvers({ createResolvers }) {
+    createResolvers({
+      Query: {
+        staticGithubData: {
+          type: 'StaticGithubData',
+          async resolve(source, args, context) {
+            const node = await context.nodeModel.runQuery({
+              query: {},
+              type: 'GithubData',
+              firstOnly: true
+            })
+            return {
+              stars: node
+                ? node.rawResult.data.repository.stargazers.totalCount
+                : null
+            }
+          }
+        }
+      }
     })
-    await createParentChildLink({ child, parent: node })
   }
 }
