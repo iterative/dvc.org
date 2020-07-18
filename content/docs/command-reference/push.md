@@ -155,14 +155,28 @@ a [pipeline](/doc/command-reference/pipeline) has been setup with these
 [stages](/doc/command-reference/run):
 
 ```dvc
-$ dvc pipeline show
-data/Posts.xml.zip.dvc
-Posts.xml.dvc
-Posts.tsv.dvc
-Posts-test.tsv.dvc
-matrix-train.p.dvc
-model.p.dvc
-Dvcfile
+$ dvc dag
+             +-------------+
+             | prepare.dvc |
+             +-------------+
+                    *
+                    *
+                    *
+            +---------------+
+            | featurize.dvc |
+            +---------------+
+             **            **
+           **                **
+         **                    **
++-----------+                    **
+| train.dvc |                  **
++-----------+                **
+             **            **
+               **        **
+                 **    **
+            +--------------+
+            | evaluate.dvc |
+            +--------------+
 ```
 
 Imagine the <abbr>projects</abbr> has been modified such that the
@@ -170,22 +184,22 @@ Imagine the <abbr>projects</abbr> has been modified such that the
 [remote storage](/doc/command-reference/remote).
 
 ```dvc
-$ dvc status --cloud
-
-  new:            data/model.p
-  new:            data/matrix-test.p
-  new:            data/matrix-train.p
+$ dvc status -c
+    deleted:            data/features/test.pkl
+    deleted:            data/features/train.pkl
+    deleted:            model.pkl
+    ...
 ```
 
 One could do a simple `dvc push` to share all the data, but what if you only
 want to upload part of the data?
 
 ```dvc
-$ dvc push --with-deps matrix-train.p.dvc
+$ dvc push --with-deps featurize.dvc
 
 ... Do some work based on the partial update
 
-$ dvc push --with-deps model.p.dvc
+$ dvc push --with-deps evaluate.dvc
 
 ... Push the rest of the data
 
@@ -194,11 +208,11 @@ $ dvc status --cloud
 Data and pipelines are up to date.
 ```
 
-We specified a stage in the middle of this pipeline (`matrix-train.p.dvc`) with
-the first push. `--with-deps` caused DVC to start with that `.dvc` file, and
-search backwards through the pipeline for data files to upload.
+We specified a stage in the middle of this pipeline (`featurize.dvc`) with the
+first push. `--with-deps` caused DVC to start with that `.dvc` file, and search
+backwards through the pipeline for data files to upload.
 
-Because the `model.p.dvc` stage occurs later (it's the last one), its data was
+Because the `evaluate.dvc` stage occurs later (it's the last one), its data was
 not pushed. However, we then specified it in the second push, so all remaining
 data was uploaded.
 
