@@ -156,27 +156,27 @@ a [pipeline](/doc/command-reference/pipeline) has been setup with these
 
 ```dvc
 $ dvc dag
-             +-------------+
-             | prepare.dvc |
-             +-------------+
-                    *
-                    *
-                    *
-            +---------------+
-            | featurize.dvc |
-            +---------------+
-             **            **
-           **                **
-         **                    **
-+-----------+                    **
-| train.dvc |                  **
-+-----------+                **
-             **            **
-               **        **
-                 **    **
-            +--------------+
-            | evaluate.dvc |
-            +--------------+
+         +---------+
+         | prepare |
+         +---------+
+              *
+              *
+              *
+        +-----------+
+        | featurize |
+        +-----------+
+         **        **
+       **            *
+      *               **
++-------+               *
+| train |             **
++-------+            *
+         **        **
+           **    **
+             *  *
+        +----------+
+        | evaluate |
+        +----------+
 ```
 
 Imagine the <abbr>projects</abbr> has been modified such that the
@@ -185,21 +185,21 @@ Imagine the <abbr>projects</abbr> has been modified such that the
 
 ```dvc
 $ dvc status -c
-    deleted:            data/features/test.pkl
-    deleted:            data/features/train.pkl
-    deleted:            model.pkl
-    ...
+    new:            data/featurize/train.pkl
+    new:            data/featurize/train.pkl
+    new:            data/prepared/train.tsv
+    new:            data/prepared/test.tsv
 ```
 
 One could do a simple `dvc push` to share all the data, but what if you only
 want to upload part of the data?
 
 ```dvc
-$ dvc push --with-deps featurize.dvc
+$ dvc push --with-deps featurize
 
 ... Do some work based on the partial update
 
-$ dvc push --with-deps evaluate.dvc
+$ dvc push --with-deps evaluate
 
 ... Push the rest of the data
 
@@ -208,13 +208,13 @@ $ dvc status --cloud
 Data and pipelines are up to date.
 ```
 
-We specified a stage in the middle of this pipeline (`featurize.dvc`) with the
-first push. `--with-deps` caused DVC to start with that `.dvc` file, and search
-backwards through the pipeline for data files to upload.
+We specified a stage in the middle of this pipeline (`featurize`) with the first
+push. `--with-deps` caused DVC to start with this stage, and search backwards
+through the pipeline for data files to upload.
 
-Because the `evaluate.dvc` stage occurs later (it's the last one), its data was
-not pushed. However, we then specified it in the second push, so all remaining
-data was uploaded.
+Because the `evaluate` stage occurs later (it's the last one), its data was not
+pushed. However, we then specified it in the second push, so all remaining data
+was uploaded.
 
 Finally, we used `dvc status` to double check that all data had been uploaded.
 
