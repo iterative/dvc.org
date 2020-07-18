@@ -119,7 +119,6 @@ these settings, you could use the following options:
   ```dvc
   $ dvc remote modify myremote secret_access_key my-secret_access_key
   ```
-  
 - `url` - remote location URL
 
   ```dvc
