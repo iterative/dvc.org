@@ -114,7 +114,7 @@ these settings, you could use the following options:
   $ dvc remote modify myremote access_key_id my-access-key-id
   ```
 
-- `secret_access_key` - AWS secret access key to use to access S3:
+- `secret_access_key` - AWS Secret Access Key:
 
   ```dvc
   $ dvc remote modify myremote secret_access_key my-secret_access_key
