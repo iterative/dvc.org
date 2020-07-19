@@ -108,13 +108,13 @@ these settings, you could use the following options:
   $ dvc remote modify myremote endpointurl https://myendpoint.com
   ```
 
-- `access_key_id` - AWS Access Key ID:
+- `access_key_id` - AWS Access Key ID. Optional, overrides credentials from `credentialpath`:
 
   ```dvc
   $ dvc remote modify myremote access_key_id my-access-key-id
   ```
 
-- `secret_access_key` - AWS Secret Access Key:
+- `secret_access_key` - AWS Secret Access Key. Optional, Overrides credentials from `credentialpath`:
 
   ```dvc
   $ dvc remote modify myremote secret_access_key my-secret_access_key
