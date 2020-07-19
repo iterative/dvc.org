@@ -108,7 +108,7 @@ these settings, you could use the following options:
   $ dvc remote modify myremote endpointurl https://myendpoint.com
   ```
 
-- `access_key_id` - AWS access key id to use to access S3:
+- `access_key_id` - AWS Access Key ID:
 
   ```dvc
   $ dvc remote modify myremote access_key_id my-access-key-id
