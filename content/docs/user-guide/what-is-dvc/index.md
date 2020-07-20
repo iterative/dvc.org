@@ -43,7 +43,7 @@ DVC uses a few core concepts:
   (<abbr>dependencies</abbr>) and <abbr>outputs</abbr>. Pipelines are defined by
   special [stage files](/doc/command-reference/run) (similar to
   [Makefiles](https://www.gnu.org/software/make/manual/make.html#Introduction)).
-  Refer to [pipeline](/doc/command-reference/pipeline) for more information.
+  Refer to [pipeline](/doc/command-reference/dag) for more information.
 
 - **Workflow**: Set of experiments and relationships among them. Workflow
   corresponds to the entire Git repository.

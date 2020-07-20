@@ -91,7 +91,7 @@ Your colleagues can [checkout](/doc/command-reference/checkout) the
 <abbr>project</abbr> data (from the shared <abbr>cache</abbr>), and have both
 `raw` and `clean` data files appear in their workspace without moving anything
 manually. After this, they could decide to continue building this
-[pipeline](/doc/command-reference/pipeline) and process the clean data:
+[pipeline](/doc/command-reference/dag) and process the clean data:
 
 ```dvc
 $ git pull

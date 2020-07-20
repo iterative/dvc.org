@@ -29,8 +29,8 @@ DVC-handled directories.
 
 **It is crucial to understand, that DVC might remove ignored files upon
 `dvc run` or `dvc repro`. If they are not produced by a
-[pipeline](/doc/command-reference/pipeline) [stage](/doc/command-reference/run),
-they can be deleted permanently.**
+[pipeline](/doc/command-reference/dag) [stage](/doc/command-reference/run), they
+can be deleted permanently.**
 
 Keep in mind, that when you add to `.dvcignore` entries that affect one of the
 existing <abbr>outputs</abbr>, its status will change and DVC will behave as if
