@@ -114,13 +114,13 @@ describe('getRedirects', () => {
 
     itRedirects(
       'https://error.dvc.org/',
-      'https://dvc.org/doc/user-guide/troubleshooting#',
+      'https://dvc.org/doc/user-guide/how-to/troubleshooting#',
       303
     )
 
     itRedirects(
       'https://error.dvc.org/foo',
-      'https://dvc.org/doc/user-guide/troubleshooting#foo',
+      'https://dvc.org/doc/user-guide/how-to/troubleshooting#foo',
       303
     )
 
