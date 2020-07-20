@@ -34,8 +34,8 @@ software!
   to be integrated into a Git repository history and never needs to recompute
   the results after a successful merge.
 
-- **Experiment state** or state: Equivalent to a Git snapshot (all committed
-  files). A Git commit hash, branch or tag name, etc. can be used as a
+- **Experiment State**: Equivalent to a Git snapshot (all committed files). A
+  Git commit hash, branch or tag name, etc. can be used as a
   [reference](https://git-scm.com/book/en/v2/Git-Internals-Git-References) to an
   experiment state.
 
@@ -51,34 +51,33 @@ software!
   [DVC-files](/doc/user-guide/dvc-files-and-directories) describing that data
   are stored in Git for DVC needs (to maintain pipelines and reproducibility).
 
-- **Cloud storage** support: available complement to the core DVC features. This
-  is how a data scientist transfers large data files or shares a GPU-trained
-  model with those without GPUs available.
+- **Cloud storage**: Available addon to the core DVC features. Multiple
+  providers are supported (Amazon S3, Microsoft Azure Blob Storage, Google Cloud
+  Storage, etc.). This is how a data scientist transfers large data files or
+  shares a GPU-trained model with others.
+
+  > This complement is separate from DVC itself, and never required.
 
 ## Core Features
 
+- **Large data file tracking** is enabled, by creating special files that point
+  to the original data (in the <abbr>cache</abbr>). These can be easily
+  versioned with Git.
+
 - DVC works **on top of Git repositories** and has a similar command line
-  interface and Git workflow.
+  interface and flow as Git. DVC can also work stand-alone, but without
+  versioning capabilities.
 
-- It makes data science projects **reproducible** by creating lightweight
-  [pipelines](/doc/command-reference/pipeline) using implicit dependency graphs.
+- DVC makes data science projects **reproducible** by creating lightweight
+  [pipelines](/doc/command-reference/pipeline), using implicit dependency
+  graphs.
 
-- **Large data file versioning** works by creating special files in your Git
-  repository that point to the <abbr>cache</abbr>, typically stored on a local
-  hard drive.
+- DVC is **platform agnostic**: It runs on all major operating systems (Linux,
+  MacOS, and Windows), and works independently of the programming languages
+  (Python, R, Julia, shell scripts, etc.) or ML libraries (Keras, Tensorflow,
+  PyTorch, Scipy, etc.) used in the <abbr>project</abbr>.
 
-- DVC is **Programming language agnostic**: Python, R, Julia, shell scripts,
-  etc. as well as ML library agnostic: Keras, Tensorflow, PyTorch, Scipy, etc.
-
-- It's **Open-source** and **Self-serve**: DVC is free and doesn't require any
+- **Open-source** and **Self-serve**: DVC is free and doesn't require any
   additional services.
 
-- DVC supports cloud storage (Amazon S3, Microsoft Azure Blob Storage, Google
-  Cloud Storage, etc.) for **data sources and pre-trained model sharing**.
-
-DVC streamlines large data files and binary models into a single Git environment
-and this approach will not require storing binary files in your Git repository.
-The diagram below describes all the DVC commands and relationships between a
-local cache and remote storage:
-
-![](/img/flow-large.png) _DVC data management_
+  > Cloud storage providers are supported, however.
