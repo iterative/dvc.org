@@ -1,24 +1,80 @@
-# Comparison to Existing Technologies
+# Comparison with Related Technologies
 
-DVC takes a novel approach, and it may be easier to understand DVC in comparison
-to existing technologies and tools.
-
-DVC combines a number of existing ideas into a single product, with the goal of
-bringing best practices from software engineering into the data science field.
-
-## Differences with related tools
+DVC combines a number of existing ideas into a single tool, with the goal of
+bringing best practices from software engineering into the data science field
+(refer to [What is DVC?](/doc/user-guide/what-is-dvc) for more details).
 
 ### Git
 
-- DVC extends Git by introducing the concept of _data files_ – large files that
-  should NOT be stored in a Git repository but still need to be tracked and
-  versioned.
+DVC builds upon Git by introducing the concept of
+[data files](/doc/user-guide/basic-concepts#data-files) – large files that
+should not be stored in a Git repository, but still need to be tracked and
+versioned. It also leverages teh versioning features of Git to enable managing
+different versions of data itself, data pipelines, and experiments.
+
+### Git-LFS (Large File Storage)
+
+- DVC does not require special Git servers like Git-LFS demands. Any cloud
+  storage like S3, GCS, or an on-premises SSH server can be used as a backend
+  for datasets and models. No additional databases, servers, or infrastructure
+  are required.
+
+- DVC is not fundamentally bound to Git, and users have the option of using DVC
+  without Git.
+
+- DVC does not add any hooks to the Git repo by default. To checkout data files,
+  the `dvc checkout` command has to be run after each `git checkout` and
+  `git clone` command. It gives more granularity on managing data and code
+  separately. Hooks could be configured to make workflows simpler.
+
+- DVC attempts to use reflinks\* and has other
+  [file linking options](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache).
+  This way the `dvc checkout` command does not actually copy data files from
+  <abbr>cache</abbr> to the <abbr>workspace</abbr>, as copying files is a heavy
+  operation for large files (30 GB+).
+
+- `git-lfs` was not made with data science scenarios in mind, so it does not
+  provide related features (e.g. pipelines,
+  [metrics](/doc/command-reference/metrics)), and thus Github has a limit of 2
+  GB per repository.
+
+### Git-annex
+
+- DVC uses the idea of storing the content of large files (that you don't want
+  to see in your Git repository) in a local key-value store and uses file
+  symlinks instead of the actual files.
+
+- DVC can use reflinks\* or hardlinks (depending on the system) instead of
+  symlinks to improve performance and the user experience.
+
+- DVC optimizes file hash calculation.
+
+- Git-annex is a datafile-centric system whereas DVC is focused on providing a
+  workflow for machine learning and reproducible experiments. When a DVC or
+  Git-annex repository is cloned via `git clone`, data files won't be copied to
+  the local machine, as file contents are stored in separate
+  [remotes](/doc/command-reference/remote). With DVC,
+  [DVC-files](/doc/user-guide/dvc-files-and-directories), which provide the
+  reproducible workflow, are always included in the Git repository. Hence, they
+  can be executed locally with minimal effort.
+
+- DVC is not fundamentally bound to Git, and users have the option of using DVC
+  without Git.
+
+### Git workflows/methodologies such as Gitflow
+
+- DVC supports a new experimentation methodology that integrates easily with Git
+  workflows. A separate branch can be created for each experiment, with a
+  subsequent merge of the branch if the experiment was successful.
+
+- DVC innovates by giving experimenters the ability to easily navigate through
+  past experiments without recomputing them each time.
 
 ### Workflow management tools
 
 Pipelines and dependency graphs
-([DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph)) such as Airflow,
-Luigi, etc.
+([DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph)) such as _Airflow_,
+_Luigi_, etc.
 
 - DVC is focused on data science and modeling. As a result, DVC pipelines are
   lightweight and easy to create and modify. However, DVC lacks pipeline
@@ -41,15 +97,6 @@ Luigi, etc.
   [files and directories](/doc/user-guide/dvc-files-and-directories) (including
   the <abbr>cache</abbr> directory) have a human-readable format and can be
   easily reused by external tools.
-
-### Git workflows/methodologies such as Gitflow
-
-- DVC supports a new experimentation methodology that integrates easily with a
-  Git workflow. A separate branch can be created for each experiment, with a
-  subsequent merge of the branch if the experiment was successful.
-
-- DVC innovates by giving experimenters the ability to easily navigate through
-  past experiments without recomputing them each time.
 
 ### Build automation tools
 
@@ -82,55 +129,6 @@ Luigi, etc.
   - DVC uses file timestamps and inodes for optimization. This allows DVC to
     avoid recomputing all dependency file hashes, which would be highly
     problematic when working with large files (10 GB+).
-
-### Git-annex
-
-- DVC uses the idea of storing the content of large files (that you don't want
-  to see in your Git repository) in a local key-value store and uses file
-  symlinks instead of the actual files.
-
-- DVC can use reflinks\* or hardlinks (depending on the system) instead of
-  symlinks to improve performance and the user experience.
-
-- DVC optimizes file hash calculation.
-
-- Git-annex is a datafile-centric system whereas DVC is focused on providing a
-  workflow for machine learning and reproducible experiments. When a DVC or
-  Git-annex repository is cloned via `git clone`, data files won't be copied to
-  the local machine, as file contents are stored in separate
-  [remotes](/doc/command-reference/remote). With DVC,
-  [DVC-files](/doc/user-guide/dvc-files-and-directories), which provide the
-  reproducible workflow, are always included in the Git repository. Hence, they
-  can be executed locally with minimal effort.
-
-- DVC is not fundamentally bound to Git, and users have the option of using DVC
-  without Git.
-
-### Git-LFS (Large File Storage)
-
-- DVC does not require special Git servers like Git-LFS demands. Any cloud
-  storage like S3, GCS, or an on-premises SSH server can be used as a backend
-  for datasets and models. No additional databases, servers, or infrastructure
-  are required.
-
-- DVC is not fundamentally bound to Git, and users have the option of using DVC
-  without Git.
-
-- DVC does not add any hooks to the Git repo by default. To checkout data files,
-  the `dvc checkout` command has to be run after each `git checkout` and
-  `git clone` command. It gives more granularity on managing data and code
-  separately. Hooks could be configured to make workflows simpler.
-
-- DVC attempts to use reflinks\* and has other
-  [file linking options](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache).
-  This way the `dvc checkout` command does not actually copy data files from
-  <abbr>cache</abbr> to the <abbr>workspace</abbr>, as copying files is a heavy
-  operation for large files (30 GB+).
-
-- `git-lfs` was not made with data science scenarios in mind, so it does not
-  provide related features (e.g. pipelines,
-  [metrics](/doc/command-reference/metrics)), and thus Github has a limit of 2
-  GB per repository.
 
 ---
 
