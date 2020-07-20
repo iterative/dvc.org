@@ -8,7 +8,7 @@ more parts of DVC, to more advanced and specific things you can do. We also
 include a few guides related to contributing to
 [this open-source project](https://github.com/iterative/dvc).
 
-## What is DVC?
+## Why DVC?
 
 Even with all the success we've seen today in machine learning (ML),
 specifically deep learning and its applications in business, the data science
@@ -16,6 +16,14 @@ community still lacks good practices for organizing their projects and
 collaborating effectively. This is a critical challenge: we need to evolve
 towards ML algorithms and methods no longer being tribal knowledge and making
 them easy to implement, reuse, and manage.
+
+Today the data science community is still lacking good practices for organizing
+their projects and effectively collaborating. ML algorithms and methods are no
+longer simple tribal knowledge but are still difficult to implement, manage and
+reuse.
+
+> One of the biggest challenges in reusing, and hence the managing of ML
+> projects, is its reproducibility.
 
 ---
 
