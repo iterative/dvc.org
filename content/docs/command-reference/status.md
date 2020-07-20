@@ -237,7 +237,7 @@ new:      data/matrix-test.p
 The output shows where the location of the remote storage is, as well as any
 differences between the <abbr>cache</abbr> and `storage` remote.
 
-## Example: Import stage needs update
+## Example: Imported data needs update
 
 Let's import a data file (`data.csv`) from a different <abbr>DVC repository
 </abbr> into our current project using `dvc import`.
