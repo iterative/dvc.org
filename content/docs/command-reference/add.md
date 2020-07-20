@@ -128,7 +128,7 @@ Track a file with DVC:
 
 ```dvc
 $ dvc add data.xml
-...
+100% Add|██████████████████████████████████████████████|1/1 [00:00,  4.42file/s]
 
 To track the changes with git, run:
 
