@@ -1,13 +1,13 @@
-// This script is run inside the S3 deploy script, after everything else, to
-// clear the CloudFlare cache of stale page data programmatically.
+#!/usr/bin/env node
+/* global process */
+
+// This script runs just before the app starts. If we are running the
+// production heroku app (the only one with the below env variables)
+// the cache gets cleared.
 //
 // To clear the cache yourself, you can use the button in the
-// cloudflare dashboard ("Caching tab > Purge everything")
-//
-// This module requires three environment variables to run:
-//
-// - CONTEXT: The exported function will immediately return without doing
-// anything if this variable is not set to "production"
+// cloudflare dashboard ("Caching tab > Purge everything"), or run
+// this script with the required environment variables:
 //
 // - CLOUDFLARE_TOKEN: a token with the "Zone.Cache Purge" permission.
 // You can generate this token in "My Profile > API Tokens"
@@ -17,23 +17,9 @@
 
 const fetch = require('isomorphic-fetch')
 
-module.exports = async function () {
-  const { CLOUDFLARE_TOKEN, CLOUDFLARE_ZONE_ID, CONTEXT } = process.env
+const { CLOUDFLARE_TOKEN, CLOUDFLARE_ZONE_ID, CONTEXT } = process.env
 
-  if (CONTEXT !== 'production') {
-    console.log(
-      'Skipping CloudFlare cache purge because CONTEXT is not set to production.'
-    )
-    return
-  }
-
-  if (!(CLOUDFLARE_TOKEN && CLOUDFLARE_ZONE_ID)) {
-    console.error(
-      'Skipping CloudFlare cache purge because CLOUDFLARE_TOKEN and/or CLOUDFLARE_ZONE_ID are not set.'
-    )
-    return
-  }
-
+async function main() {
   const res = await fetch(
     `https://api.cloudflare.com/client/v4/zones/${CLOUDFLARE_ZONE_ID}/purge_cache`,
     {
@@ -48,21 +34,26 @@ module.exports = async function () {
     }
   )
 
-  const body = await res.json()
+  const body = await res.text()
 
-  if (!res.ok || !body.success) {
-    throw new Error(
-      'CloudFlare cache clear failed! ' +
-        JSON.stringify(
-          {
-            status: res.status,
-            errors: body.errors
-          },
-          undefined,
-          2
-        )
-    )
+  if (!res.ok) {
+    throw new Error('Error response received from CloudFlare: ' + body)
   }
 
-  console.log('Cleared CloudFlare cache successfully')
+  console.log('Cleared cache successfully')
+}
+
+if (CONTEXT === 'production') {
+  if (!(CLOUDFLARE_TOKEN && CLOUDFLARE_ZONE_ID)) {
+    console.error(
+      'scripts/clear-cloudflare-cache.js: ' +
+        'need CLOUDFLARE_TOKEN and CLOUDFLARE_ZONE_ID environment variables.'
+    )
+    process.exit(1)
+  }
+
+  main().catch(e => {
+    console.error(e)
+    process.exit(1)
+  })
 }
