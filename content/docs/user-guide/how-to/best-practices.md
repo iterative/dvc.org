@@ -1,4 +1,4 @@
-# Best Practices
+# Best Practices for DVC Projects
 
 Data scientists, engineers, or managers may already know or can easily find
 answers to some of these questions. However, the variety of answers and

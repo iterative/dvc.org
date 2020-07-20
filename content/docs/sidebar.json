@@ -99,6 +99,7 @@
         }
       },
       {
+        "label": "How To ...",
         "slug": "how-to",
         "source": false,
         "children": [
