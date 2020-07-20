@@ -13,7 +13,9 @@
   "^https://blog\\.dvc\\.org(.*)?$                                                        https://dvc.org/blog$1",
   "^https://www\\.dvc\\.org(.*)?                                                          https://dvc.org$1",
   "^https://man\\.dvc\\.org(.*)?                                                          https://dvc.org/doc/command-reference$1 303",
-  "^https://error\\.dvc\\.org/(.*)?                                                       https://dvc.org/doc/user-guide/troubleshooting#$1 303",
+  "^https://error\\.dvc\\.org/(.*)?                                                       https://dvc.org/doc/user-guide/how-to/troubleshooting#$1 303",
+  "^https://dvc.org/doc/user-guide/troubleshooting                                        https://dvc.org/doc/user-guide/how-to/troubleshooting 303",
+  "^https://dvc.org/doc/user-guide/troubleshooting#(.*)?                                  https://dvc.org/doc/user-guide/how-to/troubleshooting#$1 303",
   "^https://(code|data|remote)\\.dvc\\.org/(.+)                                           https://s3-us-east-2.amazonaws.com/dvc-public/$1/$2 303",
 
   "^/((?:deb|rpm)/.+)                                                                     https://s3-us-east-2.amazonaws.com/dvc-s3-repo/$1 303",
