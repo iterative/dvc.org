@@ -49,6 +49,8 @@ differences, the changes in <abbr>dependencies</abbr> and/or
 <abbr>outputs</abbr> that differ are listed. For each item listed, either the
 file name or hash is shown, along with a _state description_, as detailed below:
 
+### Local workspace status
+
 - _changed checksum_ means that the `.dvc` file hash has changed (e.g. someone
   manually edited it).
 
@@ -77,7 +79,7 @@ file name or hash is shown, along with a _state description_, as detailed below:
   original data source has changed). The imported data can be brought to its
   latest version by using `dvc update`.
 
-**For comparison against remote storage:**
+### Comparison against remote storage
 
 - _new_ means that the file/directory exists in the cache but not in remote
   storage.
