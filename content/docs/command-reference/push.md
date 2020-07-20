@@ -63,10 +63,10 @@ The `dvc status -c` command can list files tracked by DVC that are new in the
 cache (compared to the default remote.) It can be used to see what files
 `dvc push` would upload.
 
-If one or more `targets` are specified, DVC only considers the corresponding
-files. Note that files inside directories
-[tracked as a whole](/doc/command-reference/add#example-directory) are
-supported.
+The `targets` given to this command (if any) limit what to push. It accepts
+paths to tracked files or directories (even if such paths are within a directory
+[tracked as a whole](/doc/command-reference/add#tracking-directories)), `.dvc`
+files, or stage names (found in `dvc.lock`).
 
 ## Options
 

@@ -45,10 +45,10 @@ The command `dvc status -c` can list files referenced in current stages (in
 `dvc.yaml`) or `.dvc` files, but missing from the <abbr>cache</abbr>. It can be
 used to see what files `dvc pull` would download.
 
-If one or more `targets` are specified, DVC only considers the corresponding
-files. Note that files inside directories
-[tracked as a whole](/doc/command-reference/add#example-directory) are
-supported.
+The `targets` given to this command (if any) limit what to pull. It accepts
+paths to tracked files or directories (even if such paths are within a directory
+[tracked as a whole](/doc/command-reference/add#tracking-directories)), `.dvc`
+files, or stage names (found in `dvc.lock`).
 
 After the data is in the cache, `dvc pull` uses OS-specific mechanisms like
 reflinks or hardlinks to put it in the workspace, trying to avoid copying. See
