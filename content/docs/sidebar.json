@@ -98,7 +98,17 @@
           "katacoda": "https://katacoda.com/dvc/courses/examples/dvcignore"
         }
       },
-      "updating-tracked-files",
+      {
+        "slug": "how-to",
+        "source": false,
+        "children": [
+          {
+            "slug": "best-practices",
+            "source": "how-to/best-practices.md"
+          },
+          "update-tracked-files"
+        ]
+      },
       "setup-google-drive-remote",
       "large-dataset-optimization",
       "external-dependencies",
@@ -137,16 +147,6 @@
       {
         "label": "Privacy Policy (Google APIs)",
         "slug": "privacy"
-      }
-    ]
-  },
-  {
-    "slug": "how-to",
-    "source": false,
-    "children": [
-      {
-        "slug": "best-practices",
-        "source": "how-to/best-practices.md"
       }
     ]
   },
