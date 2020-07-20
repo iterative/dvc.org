@@ -168,7 +168,7 @@ Our [pipeline](/doc/command-reference/dag) has been setup with these
 [stages](/doc/command-reference/run):
 
 ```dvc
-$ dvc pipeline show evaluate.dvc
+$ dvc dag evaluate.dvc
 data/data.xml.dvc
 prepare.dvc
 featurize.dvc

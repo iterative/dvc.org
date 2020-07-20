@@ -155,7 +155,7 @@ a [pipeline](/doc/command-reference/dag) has been setup with these
 [stages](/doc/command-reference/run):
 
 ```dvc
-$ dvc pipeline show
+$ dvc dag
 data/Posts.xml.zip.dvc
 Posts.xml.dvc
 Posts.tsv.dvc
