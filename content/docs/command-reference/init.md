@@ -35,13 +35,13 @@ repository. DVC still expects to find the Git repository (will check all
 directories up to the root to find `.git`). This options does not affect any
 config files, `.dvc` directory is created the same way as in the default mode.
 This way multiple DVC projects (including nested ones) could be initialized in a
-single Git repository providing isolation and granular project management.
+single Git repository providing isolation and independent project management.
 
 #### When is this useful?
 
 `--subdir` is mostly used in the scenario of a
 [monorepo](https://en.wikipedia.org/wiki/Monorepo), but also can be used in
-other workflows when such isolation and/or advanced granularity is needed.
+other workflows when such pattern is needed.
 
 Let's imagine we have an existing Git repository that is split into sub-projects
 (monorepo). In this case `dvc init --subdir` can be run in one or many
