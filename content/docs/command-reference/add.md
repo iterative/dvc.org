@@ -68,20 +68,20 @@ large files. DVC also supports other link types for use on file systems without
 
 ### Tracking directories
 
-A `dvc add` target can be an individual file or a directory. In the latter case,
-a `.dvc` file is created for the top of the directory (with default name
-`<dir_name>.dvc`).
+A `dvc add` target can be either a file or a directory. In the latter case, a
+`.dvc` file is created for the top of the hierarchy (with default name
+`<dir_name>.dvc`). Every file inside is added to the cache (unless the
+`--no-commit` option is used), but DVC does not produce individual `.dvc` files
+for each file in the entire tree. Instead, the single `.dvc` file references a
+special `.dir` file
+[in the cache](/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory),
+that in turn lists all the added files.
 
-Every file in the hierarchy is added to the cache (unless the `--no-commit`
-option is used), but DVC does not produce individual `.dvc` files for each file
-in the directory tree. Instead, the single `.dvc` file references a special JSON
-file in the cache (with `.dir` extension), that in turn points to the added
-files.
-
-Note that DVC commands that use tracked files or directories support targeting
-them granularly, even inside a directory that is
-[added as a whole](#example-directory). Examples: `dvc status`, `dvc push`,
-`dvc pull`, among others.
+Note that even though a directory is added as a whole and a single `.dvc` file
+is generated for it, individual files or subdirectories can still be used
+separately by other DVC commands. For example, `dvc pull dir_name/path/to/file`
+would [download](/doc/command-reference/pull) that specific file only. This also
+applies to `dvc push`, `dvc checkout`, `dvc import`, among others.
 
 As a rarely needed alternative, the `--recursive` option causes every file in
 the hierarchy to be added individually. A corresponding `.dvc` file will be
@@ -177,7 +177,8 @@ pics
     └── dogs [more image files]
 ```
 
-Tracking a directory with DVC as simple as with a single file:
+[Tracking a directory](#tracking-directories) with DVC as simple as with a
+single file:
 
 ```dvc
 $ dvc add pics
