@@ -7,7 +7,7 @@
     "develop": "gatsby develop",
     "dev": "gatsby develop",
     "build": "gatsby build",
-    "start": "./src/server/index.js",
+    "start": "node ./src/server/index.js",
     "heroku-postbuild": "./scripts/deploy-with-s3.js",
     "test": "jest",
     "format-staged": "pretty-quick --staged --no-restage --bail",
