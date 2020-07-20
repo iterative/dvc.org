@@ -19,40 +19,40 @@ positional arguments:
 ## Description
 
 The `dvc pull` and `dvc push` commands are the means for uploading and
-downloading data to and from remote storage. These commands are analogous to
-`git pull` and `git push`, respectively.
+downloading data to and from remote storage (S3, SSH, GCS, etc.). These commands
+are similar to `git pull` and `git push`, respectively.
+
 [Data sharing](/doc/use-cases/sharing-data-and-model-files) across environments
 and preserving data versions (input datasets, intermediate results, models,
-[metrics](/doc/command-reference/metrics), etc) remotely (S3, SSH, GCS, etc.)
-are the most common use cases for these commands.
+[metrics](/doc/command-reference/metrics), etc.) remotely are the most common
+use cases for these commands.
 
-The `dvc pull` command allows one to retrieve data from remote storage.
-`dvc pull` has the same effect as running `dvc fetch` and `dvc checkout`
-immediately after that.
+The `dvc pull` command allows us to download data from
+[remote storage](/doc/command-reference/remote) and place it in the
+<abbr>workspace</abbr>. `dvc pull` has the same effect as running `dvc fetch`
+and `dvc checkout` immediately after that.
 
-The default remote is used (see `dvc config core.remote`) unless the `--remote`
-option is used. See `dvc remote` for more information on how to configure a
-remote.
+Without arguments, it downloads all files and directories missing from the
+workspace, found as <abbr>outputs</abbr> in the stages (in `dvc.lock`) or `.dvc`
+files present in the workspace (the `--all-branches` and `--all-tags` enable
+using multiple workspace versions).
 
-With no arguments, just `dvc pull` or `dvc pull --remote <name>`, it downloads
-only the files (or directories) missing from the workspace by searching all
-stages in `dvc.yaml` or `.dvc` files currently in the <abbr>project</abbr>. It
-will not download files associated with earlier commits in the
-<abbr>repository</abbr> (if using Git), nor will it download files that have not
-changed.
+The `targets` given to this command (if any) limit what to pull. It accepts
+paths to tracked files or directories (even if such paths are within a directory
+[tracked as a whole](/doc/command-reference/add#tracking-directories)), `.dvc`
+files, or stage names (found in `dvc.lock`).
 
-The command `dvc status -c` can list files referenced in current stages (in
-`dvc.yaml`) or `.dvc` files, but missing from the <abbr>cache</abbr>. It can be
-used to see what files `dvc pull` would download.
-
-If one or more `targets` are specified, DVC only considers the corresponding
-files. Note that files inside directories
-[tracked as a whole](/doc/command-reference/add#example-directory) are
-supported.
+The `dvc pull` command requires a remote storage. The default remote is used
+(see `dvc config core.remote`) unless the `--remote` option is used. See
+`dvc remote` for more information on how to configure a remote.
 
 After the data is in the cache, `dvc pull` uses OS-specific mechanisms like
 reflinks or hardlinks to put it in the workspace, trying to avoid copying. See
 `dvc checkout` for more details.
+
+Note that the command `dvc status -c` can list files referenced in current
+stages (in `dvc.yaml`) or `.dvc` files, but missing from the <abbr>cache</abbr>.
+It can be used to see what files `dvc pull` would download.
 
 ## Options
 
