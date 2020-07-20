@@ -99,6 +99,12 @@ option of `dvc plots show` and `dvc plots diff`. For templates in the
 `.dvc/plots/` directory, the path and the json extension are not required: you
 can specify only the base name e.g. `--template scatter`.
 
+DVC has built-in following plot types:
+- `default` - linear plot 
+- `scatter` - scatter plot
+- `smooth` - linear plot with LOESS smoothing, see [example](/doc/command-reference/plots#example-smooth-plot)
+- `confusion` - confusion matrix, see [example](/doc/command-reference/plots#example-confusion-matrix)
+
 ### Custom templates
 
 Plot template files are
@@ -197,6 +203,27 @@ file:///Users/usr/src/plots/logs.html
 ```
 
 ![](/img/plots_show_field.svg)
+
+## Example: Smooth plot
+
+In some cases we would like to smooth our plot. In this example we will use plot
+with 1000 data points:
+
+```dvc
+$ dvc plots show data.csv
+file:///Users/usr/src/plots/plots.html
+```
+
+![](/img/plots_show_no_smooth.svg)
+
+We can use `-t` option and `smooth` template to make it less noisy:
+
+```dvc
+$ dvc plots show -t smooth data.csv
+file:///Users/usr/src/plots/plots.html
+```
+
+![](/img/plots_show_smooth.svg)
 
 ## Example: Confusion matrix
 
