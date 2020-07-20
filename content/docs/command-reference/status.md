@@ -26,19 +26,21 @@ either showing which files or directories have changed in the
 (implying `dvc push` or `dvc pull` should be run to synchronize them). The
 _remote_ mode is triggered by using the `--cloud` or `--remote` options:
 
-| Mode   | Command option | Description                                                                                                                 |
-| ------ | -------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| local  | _none_         | Comparisons are made between data files in the workspace and corresponding files in the cache directory (e.g. `.dvc/cache`) |
-| remote | `--remote`     | Comparisons are made between the cache, and the given remote. Remote storage is defined using the `dvc remote` command.     |
-| remote | `--cloud`      | Comparisons are made between the cache, and the default remote (typically defined with `dvc remote --default`).             |
+| Mode   | Option     | Description                                                                                                                 |
+| ------ | ---------- | --------------------------------------------------------------------------------------------------------------------------- |
+| local  | _none_     | Comparisons are made between data files in the workspace and corresponding files in the cache directory (e.g. `.dvc/cache`) |
+| remote | `--remote` | Comparisons are made between the cache, and the given remote. Remote storage is defined using the `dvc remote` command.     |
+| remote | `--cloud`  | Comparisons are made between the cache, and the default remote (typically defined with `dvc remote --default`).             |
 
-This command scans all `dvc.lock` and `.dvc` files to compare the hash values
-saved in their `outs` fields against the actual data files or directories in the
-<abbr>workspace</abbr> (the `--all-branches` and `--all-tags` options compare
-multiple workspace versions). Scanning is limited to any given `targets` (files
-inside directories
-[tracked as a whole](/doc/command-reference/add#example-directory) are
-supported). See also options `--with-deps` and `--recursive` below.
+Without arguments, this command scans all `dvc.lock` and `.dvc` files to compare
+the hash values of their <abbr>outputs</abbr> against the actual data files or
+directories in the workspace (the `--all-branches` and `--all-tags` options
+enable using multiple workspace versions).
+
+The `targets` given to this command (if any) limit what to check. It accepts
+paths to tracked files or directories (even if such paths are within a directory
+[tracked as a whole](/doc/command-reference/add#tracking-directories)), `.dvc`
+files, or stage names (found in `dvc.lock`).
 
 If no differences are detected, `dvc status` prints
 `Data and pipelines are up to date.` If differences are detected by
@@ -59,8 +61,9 @@ file name or hash is shown, along with a _state description_, as detailed below:
   use case, commands like `dvc commit`, `dvc repro`, or `dvc run` can be used to
   update the file. Possible states are:
 
-  - _new_: An <abbr>output</abbr> is found in the workspace, but there is no
-    corresponding file hash saved in the `dvc.lock` or `.dvc` file yet.
+  - _new_: An <abbr>output</abbr> is found in the <abbr>workspace</abbr>, but
+    there is no corresponding file hash saved in the `dvc.lock` or `.dvc` file
+    yet.
   - _modified_: An output or <abbr>dependency</abbr> is found in the workspace,
     but the corresponding file hash in the `dvc.lock` or `.dvc` file is not up
     to date.

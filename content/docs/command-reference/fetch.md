@@ -26,9 +26,8 @@ Without arguments, this ensures that all the files needed for all stages (in
 `dvc.lock`) and `.dvc` files in the workspace exist in the cache (the
 `--all-branches` and `--all-tags` enable using multiple workspace versions).
 
-The `targets` given to this command (if any) limit which files to fetch. It
-accepts paths to tracked files or directories (even if such paths are within a
-directory
+The `targets` given to this command (if any) limit what to fetch. It accepts
+paths to tracked files or directories (even if such paths are within a directory
 [tracked as a whole](/doc/command-reference/add#tracking-directories)), `.dvc`
 files, or stage names (found in `dvc.lock`).
 
