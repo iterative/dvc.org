@@ -18,12 +18,22 @@ positional arguments:
 ## Description
 
 `dvc fetch` downloads DVC-tracked files from remote storage into the cache of
-the project (without placing them in the <abbr>workspace</abbr>). This makes the
-data files available for linking (or copying) into the workspace (refer to
+the project (without placing them in the <abbr>workspace</abbr>). This makes
+them available for linking (or copying) into the workspace (refer to
 [dvc config cache.type](/doc/command-reference/config#cache)).
 
+Without arguments, this ensures that all the files needed for all stages (in
+`dvc.lock`) and `.dvc` files in the workspace exist in the cache (the
+`--all-branches` and `--all-tags` enable using multiple workspace versions).
+
+The `targets` given to this command (if any) limit which files to fetch. It
+accepts paths to tracked files or directories (even if such paths are within a
+directory
+[tracked as a whole](/doc/command-reference/add#tracking-directories)), `.dvc`
+files, or stage names (found in `dvc.lock`).
+
 Along with `dvc checkout`, fetching performed automatically by `dvc pull` (when
-the data is not already in the cache):
+the data is not already in the <abbr>cache</abbr>):
 
 ```
 Controlled files             Commands
@@ -44,19 +54,8 @@ project's cache                  ++ | dvc pull |
 
 Fetching is useful when first checking out a <abbr>DVC project</abbr> for
 example, to get any files tracked by DVC that already exist in remote storage
-(see `dvc push`) to the local <abbr>cache</abbr>. Refer to `dvc remote` for more
-information on DVC remotes.
-
-`dvc fetch` ensures that the files needed for all the stages (in `dvc.yaml`) and
-`.dvc` files exist in the cache. It can be limited to any given `targets` (files
-inside directories
-[tracked as a whole](/doc/command-reference/add#example-directory) are
-supported). These data files, datasets, or models are listed as
-<abbr>outputs</abbr>.
-
-If no `targets` are specified, the set of data files to fetch is determined by
-scanning all `dvc.lock` and `.dvc` files in the <abbr>workspace</abbr> (the
-`--all-branches` and `--all-tags` options compare multiple workspace versions).
+(see `dvc push`) to the local cache. Refer to `dvc remote` for more information
+on DVC remotes.
 
 The default remote is used (see `dvc config core.remote`) unless the `--remote`
 option is used.
