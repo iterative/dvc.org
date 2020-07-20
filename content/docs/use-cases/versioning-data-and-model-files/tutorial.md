@@ -354,7 +354,7 @@ a monolithic way. It uses the `save_bottleneck_feature` function to
 pre-calculate the bottom, "frozen" part of the net every time it is run.
 Features are written into files. The intention was probably that the
 `save_bottleneck_feature` can be commented out after the first run, but it's not
-very convenient having to remember to do si it every time the dataset changes.
+very convenient having to remember to do it every time the dataset changes.
 
 Here's where the [pipelines](/doc/command-reference/dag) feature of DVC comes in
 handy. We touched on it briefly when we described `dvc run` and `dvc repro`. The
