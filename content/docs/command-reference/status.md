@@ -182,8 +182,8 @@ dobar
 > In this case, the target `foo.dvc` is a `.dvc` file to track the `foo` file,
 > while `dobar` is the name of a stage defined in `dvc.yaml`.
 
-Note that granular files inside directories tracked as a whole are supported.
-For example:
+Note that you can check data within directories tracked as a whole, such as the
+`data/raw` directory (tracked with `data/raw.dvc`):
 
 ```dvc
 $ tree data

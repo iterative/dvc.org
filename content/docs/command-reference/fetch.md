@@ -217,9 +217,9 @@ Cache entries for the `data/prepared` directory (<abbr>output</abbr> of the
 `prepare` target), as well as the actual `test.tsv` and `train.tsv` files, were
 downloaded. Their hash values are shown above.
 
-Note that granular files inside directories tracked as a whole are supported.
-For example, the `featurize` stage has the `data/features` directory as output,
-and we can do:
+Note that you can fetch data within directories tracked as a whole. For example,
+the `featurize` stage has the entire `data/features` directory as output, but we
+can just get this:
 
 ```dvc
 $ dvc fetch data/features/test.pkl
