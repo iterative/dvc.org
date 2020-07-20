@@ -128,7 +128,7 @@ $ dvc add data.xml
 
 To track the changes with git, run:
 
-        git add .gitignore data.xml.dvc
+        git add data.xml.dvc .gitignore
 ```
 
 As indicated above, a `.dvc` file has been created for `data.xml`. Let's explore
