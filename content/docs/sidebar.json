@@ -102,10 +102,6 @@
         "slug": "how-to",
         "source": false,
         "children": [
-          {
-            "slug": "best-practices",
-            "source": "how-to/best-practices.md"
-          },
           "update-tracked-files"
         ]
       },
