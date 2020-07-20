@@ -14,7 +14,7 @@ should be enough to understand the idea of DVC), or try to run them and get the
 fist hand experience.
 
 We'll be building an NLP project from scratch together. The end result is
-published on [Github](https://github.com/iterative/example-get-started).
+published on [GitHub](https://github.com/iterative/example-get-started).
 
 Let's start with `git init`:
 

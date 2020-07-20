@@ -41,7 +41,19 @@ lists all the current metrics without comparisons.
 ## Options
 
 - `--targets <paths>` - limit command scope to these metric files. Using -R,
-  directories to search metric files in can also be given.
+  directories to search metric files in can also be given. When specifying
+  arguments for `--targets` before `revisions`, you should use `--` after this
+  option's arguments, e.g.:
+
+  ```dvc
+  $ dvc metrics diff --targets t1.json t2.yaml -- HEAD v1
+  ```
+
+  Alternatively, you can also run the above statement as:
+
+  ```dvc
+  $ dvc metrics diff HEAD v1 --targets t1.json t2.json
+  ```
 
 - `-R`, `--recursive` - determines the metric files to use by searching each
   target directory and its subdirectories for DVC-files to inspect. If there are
@@ -115,7 +127,7 @@ Metric files committed with Git can be compared by referencing the commits (any
 two [revisions](https://git-scm.com/docs/revisions)):
 
 ```dvc
-$ dvc metrics diff HEAD c7bef55
+$ dvc metrics diff --targets metrics.json -- HEAD c7bef55
 Path       Metric    Value    Change
 eval.json  ACU       0.66729  0.01614
 eval.json  TP        516      -12
