@@ -16,15 +16,20 @@ positional arguments:
 
 ## Description
 
-[`dvc.lock`](/doc/user-guide/dvc-files-and-directories#dvclock-file) and
-[`.dvc`](/doc/user-guide/dvc-files-and-directories#dvc-files) files act as
-pointers to the <abbr>cached</abbr> contents of data tracked by DVC. This
-command synchronizes the workspace data with the tracked file contents specified
-in the current `.dvc` and `dvc.lock` files.
+Synchronizes the workspace data with all the
+[tracked](/doc/command-reference/add) files and directories specified in the
+present `dvc.lock` and `.dvc` files, which act as pointers to corresponding
+<abbr>cached</abbr> data contents.
+
+The `targets` given to this command (if any) limit which files to checkout. It
+accepts paths to tracked files or directories (even if such paths are within a
+directory
+[tracked as a whole](/doc/command-reference/add#tracking-directories)), `.dvc`
+files, or stage names (found in `dvc.lock`).
 
 `dvc checkout` is useful, for example, when using Git in the
 <abbr>project</abbr>, after `git clone`, `git checkout`, or any other operation
-that changes the DVC files in the workspace.
+that changes the DVC files in the <abbr>workspace</abbr>.
 
 💡 For convenience, a Git hook is available to automate running `dvc checkout`
 after `git checkout`. See the
@@ -33,12 +38,9 @@ for more details.
 
 The execution of `dvc checkout` does the following:
 
-- Scans all `dvc.lock` and `.dvc` files to compare the hash values of its
-  <abbr>outputs</abbr> against the actual data files or directories in the
-  workspace (similar to `dvc status`). Scanning is limited to any given
-  `targets` (files inside directories
-  [tracked as a whole](/doc/command-reference/add#example-directory) are
-  supported). See also options `--with-deps` and `--recursive` below.
+- Scans the appropriate `dvc.lock` and `.dvc` files, to compare the hash values
+  of their <abbr>outputs</abbr> against the actual files or directories in the
+  workspace (similar to `dvc status`).
 
 - Missing data files or directories are restored from the cache. Those that
   don't match with any DVC-file are removed. See options `--force` and
@@ -216,9 +218,9 @@ $ git checkout baseline-experiment -- dvc.lock
 $ dvc checkout model.pkl  # Get previous model file only.
 ```
 
-Note that granular files inside directories tracked as a whole are supported.
-For example, the `featurize` stage has the `data/features` directory as output,
-and we can do:
+Note that you can checkout data within directories tracked as a whole. For
+example, the `featurize` stage has the entire `data/features` directory as
+output, but we can just get this:
 
 ```dvc
 $ dvc checkout data/features/test.pkl
