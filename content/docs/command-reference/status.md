@@ -50,24 +50,21 @@ file name or hash is shown, along with a _state description_, as detailed below:
 - _changed checksum_ means that the `.dvc` file hash has changed (e.g. someone
   manually edited it).
 
-- _always changed_ means that this is a
-  [`.dvc` file](/doc/user-guide/dvc-files-and-directories#dvc-files) with no
-  dependencies (see `dvc add`) or that the stage in
-  [`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvcyaml-file) has the
-  `always_changed: true` value set (see `--always-changed` option in `dvc run`).
+- _always changed_ means that this is a `.dvc` file with no dependencies (see
+  `dvc add`) or that the stage in `dvc.yaml` has the `always_changed: true`
+  value set (see `--always-changed` option in `dvc run`).
 
 - _changed deps_ or _changed outs_ means that there are changes in dependencies
-  or outputs tracked by the stage in
-  [`dvc.lock`](/doc/user-guide/dvc-files-and-directories#dvcyaml-file)) or
-  `.dvc` file. Depending on the use case, commands like `dvc commit`,
-  `dvc repro`, or `dvc run` can be used to update the file. Possible states are:
+  or outputs tracked by the stage in `dvc.lock` or `.dvc` file. Depending on the
+  use case, commands like `dvc commit`, `dvc repro`, or `dvc run` can be used to
+  update the file. Possible states are:
 
   - _new_: An <abbr>output</abbr> is found in the workspace, but there is no
     corresponding file hash saved in the `dvc.lock` or `.dvc` file yet.
   - _modified_: An output or <abbr>dependency</abbr> is found in the workspace,
     but the corresponding file hash in the `dvc.lock` or `.dvc` file is not up
     to date.
-  - _deleted_: The output or dependency is referenced in a `dvc.yaml` or `.dvc`
+  - _deleted_: The output or dependency is referenced in a `dvc.lock` or `.dvc`
     file, but does not exist in the workspace.
   - _not in cache_: An output exists in the workspace, and the corresponding
     file hash in the `dvc.lock` or `.dvc` file is up to date, but there is no

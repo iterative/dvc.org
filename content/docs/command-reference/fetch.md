@@ -47,17 +47,16 @@ example, to get any files tracked by DVC that already exist in remote storage
 (see `dvc push`) to the local <abbr>cache</abbr>. Refer to `dvc remote` for more
 information on DVC remotes.
 
-`dvc fetch` ensures that the files needed for all the stages (in
-[`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvcyaml-file)) and
-[`.dvc` files](/doc/user-guide/dvc-files-and-directories#dvc-files) exist in the
-cache. It can be limited to any given `targets` (files inside directories
+`dvc fetch` ensures that the files needed for all the stages (in `dvc.yaml`) and
+`.dvc` files exist in the cache. It can be limited to any given `targets` (files
+inside directories
 [tracked as a whole](/doc/command-reference/add#example-directory) are
 supported). These data files, datasets, or models are listed as
 <abbr>outputs</abbr>.
 
 If no `targets` are specified, the set of data files to fetch is determined by
-scanning all `dvc.yaml` and `.dvc` files in the workspace (the `--all-branches`
-and `--all-tags` options compare multiple workspace versions).
+scanning all `dvc.lock` and `.dvc` files in the <abbr>workspace</abbr> (the
+`--all-branches` and `--all-tags` options compare multiple workspace versions).
 
 The default remote is used (see `dvc config core.remote`) unless the `--remote`
 option is used.
@@ -66,10 +65,10 @@ option is used.
 perform data synchronization among local and remote storage. The specific way in
 which the set of files to push/fetch/pull is determined begins with calculating
 file hashes when these are [added](/doc/command-reference/add) with DVC. File
-hash values are stored in the corresponding `dvc.yaml` or `.dvc` files
-(typically versioned with Git). Only the hash specified in `dvc.yaml` or `.dvc`
-files currently in the workspace are considered by `dvc fetch` (unless the `-a`
-or `-T` options are used).
+hash values are stored in the corresponding `dvc.lock` or `.dvc` files
+(typically versioned with Git). Only `dvc.lock` or `.dvc` files currently in the
+workspace are considered by `dvc fetch` (unless the `-a` or `-T` options are
+used).
 
 ## Options
 

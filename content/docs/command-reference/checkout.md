@@ -158,9 +158,7 @@ bigrams-experiment      <- Uses bigrams to improve the model
 
 We can now run `dvc checkout` to update the most recent `model.pkl`, `data.xml`,
 and any other files tracked by DVC. The model file hash, `ab349c2...`, is saved
-in the
-[`dvc.lock` file](/doc/user-guide/dvc-files-and-directories#dvclock-file), for
-example, so it can be confirmed with:
+in the `dvc.lock` file, for example, so it can be confirmed with:
 
 ```dvc
 $ dvc checkout
