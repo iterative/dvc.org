@@ -107,7 +107,7 @@ To compare uncommitted changes of a metrics file and its last committed version:
 
 ```dvc
 $ dvc plots diff --targets logs.csv --x-label x
-file:///Users/dmitry/src/plots/logs.html
+file:///Users/usr/src/plots/logs.html
 ```
 
 ![](/img/plots_auc.svg)
