@@ -122,7 +122,7 @@ these settings, you could use the following options:
   $ dvc remote modify myremote secret_access_key my-secret_access_key
   ```
 
-- `url` - remote location URL
+- `url` - remote location URL:
 
   ```dvc
   $ dvc remote modify myremote url s3://bucket/remote
