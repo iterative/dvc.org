@@ -83,10 +83,9 @@
     "source": "user-guide/index.md",
     "children": [
       {
-        "slug": "what-is-dvc",
         "label": "What is DVC?",
-        "source": "what-is-dvc/index.md",
-        "children": ["core-features", "related-technologies"]
+        "slug": "what-is-dvc",
+        "source": "what-is-dvc.md"
       },
       {
         "label": "DVC Files and Directories",
@@ -140,6 +139,7 @@
         "label": "Running DVC on Windows",
         "slug": "running-dvc-on-windows"
       },
+      "related-technologies",
       {
         "label": "Anonymized Usage Analytics",
         "slug": "analytics"
