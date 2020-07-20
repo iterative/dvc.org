@@ -1,31 +1,21 @@
 # User Guide
 
-Our guides describe the main DVC concepts and features comprehensively,
-explaining when and how to use them, as well as connections between them. These
-guides don't focus on specific scenarios, but have a general scope – like a
-_user manual_. Their topics range from more technical foundations, impacting
-more parts of DVC, to more advanced and specific things you can do. We also
-include a few guides related to contributing to
-[this open-source project](https://github.com/iterative/dvc).
+Our guides describe the major concepts and features of DVC comprehensively,
+explaining when and how to use them, as well as relationship between these. We
+don't focus on specific scenarios in this section, but rather on a general scope
+– think _User Manual_. The topics here range from more foundational, impacting
+more parts of DVC, to more technical and advanced things you can do. We also
+include a few misc. guides, for example related to
+[contributing to DVC](/doc/user-guide/contributing/core) itself.
 
 ## Why DVC?
 
-Even with all the success we've seen today in machine learning (ML),
-specifically deep learning and its applications in business, the data science
-community still lacks good practices for organizing their projects and
-collaborating effectively. This is a critical challenge: we need to evolve
-towards ML algorithms and methods no longer being tribal knowledge and making
-them easy to implement, reuse, and manage.
-
-Today the data science community is still lacking good practices for organizing
-their projects and effectively collaborating. ML algorithms and methods are no
-longer simple tribal knowledge but are still difficult to implement, manage and
-reuse.
-
-> One of the biggest challenges in reusing, and hence the managing of ML
-> projects, is its reproducibility.
-
----
+Even with all the success we've seen today in machine learning (ML), especially
+with deep learning and its applications in business, the data science community
+still lacks good practices for organizing their projects and collaborating
+effectively. This is a critical challenge: while ML algorithms and methods are
+no longer tribal knowledge, they are still difficult to implement, reuse, and
+manage.
 
 Please choose from the navigation sidebar to the left, or click the `Next`
 button below ↘
