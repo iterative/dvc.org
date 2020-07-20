@@ -1,13 +1,5 @@
 # What Is DVC?
 
-Today the data science community is still lacking good practices for organizing
-their projects and effectively collaborating. ML algorithms and methods are no
-longer simple tribal knowledge but are still difficult to implement, manage and
-reuse.
-
-> One of the biggest challenges in reusing, and hence the managing of ML
-> projects, is its reproducibility.
-
 Data Version Control, or DVC, is a new type of experiment management software
 built on top of Git. DVC reduces the gap between existing tools and data science
 needs, allowing users to take advantage of experiment management while reusing
@@ -20,7 +12,7 @@ use 3rd-party services. Data science experiment sharing and collaboration can be
 done through regular Git features (commit messages, merges, pull requests, etc)
 the same way it works for software engineers.
 
-DVC uses a few core concepts:
+DVC uses a few core principles:
 
 - **Experiment**: Equivalent to a
   [Git revision](https://git-scm.com/docs/revisions). Each experiment (extract
