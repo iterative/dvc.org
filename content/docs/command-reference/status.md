@@ -204,17 +204,17 @@ new:                data/raw
 $ vi code/featurization.py
 ... edit the code
 
-$ dvc status model.p.dvc
+$ dvc status model.p
 Data and pipelines are up to date.
 
-$ dvc status model.p.dvc --with-deps
-matrix-train.p.dvc
+$ dvc status model.p --with-deps
+matrix-train.p
     changed deps:
             modified:  code/featurization.py
 ```
 
-If the `dvc status` command is limited to a target that had no changes, but by
-adding `--with-deps`, any upstream change will be found (in a preceding stage).
+The `dvc status` command may be limited to a target that had no changes, but by
+adding `--with-deps`, any change in a preceding stage will be found.
 
 ## Example: Remote comparisons
 
