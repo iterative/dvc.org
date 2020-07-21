@@ -283,14 +283,14 @@ a full guide on using Google Drive as DVC remote storage.
   Also requires using `gdrive_client_secret`.
 
   ```dvc
-  $ dvc remote modify --local myremote gdrive_client_id <client ID>
+  $ dvc remote modify myremote gdrive_client_id <client ID>
   ```
 
 - `gdrive_client_secret` - Client secret for authentication with OAuth 2.0 when
   using a custom Google Client project. Also requires using `gdrive_client_id`.
 
   ```dvc
-  $ dvc remote modify --local myremote gdrive_client_secret <client secret>
+  $ dvc remote modify myremote gdrive_client_secret <client secret>
   ```
 
 - `gdrive_user_credentials_file` - path where DVC stores OAuth credentials to
@@ -301,9 +301,9 @@ a full guide on using Google Drive as DVC remote storage.
                       .dvc/tmp/myremote-credentials.json
   ```
 
-> The client ID and secret, and credentials file path contain sensitive user
-> info. Therefore, it's safer to add them with the `--local` option, so they're
-> written to a Git-ignored config file.
+> The credentials file path may contain sensitive user info. Therefore, it's
+> safer to add it with the `--local` option, so it's written to a Git-ignored
+> config file.
 
 See [Authorization](/doc/user-guide/setup-google-drive-remote#authorization) for
 more details.
@@ -384,11 +384,8 @@ more information.
   not set.
 
   ```dvc
-  $ dvc remote modify --local myremote projectname myproject
+  $ dvc remote modify myremote projectname myproject
   ```
-
-> The project name may contain sensitive user info. Therefore, it's safer to add
-> it with the `--local` option, so it's written to a Git-ignored config file.
 
 **For service accounts:**
 
