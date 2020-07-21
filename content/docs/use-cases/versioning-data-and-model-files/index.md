@@ -40,7 +40,7 @@ To start using DVC we need to [initialize](/doc/command-reference/init) a
 $ dvc init
 ```
 
-Start tracking the models and images directory with `dvc add`:
+Start tracking the images and the model directory with `dvc add`:
 
 ```dvc
 $ dvc add images
