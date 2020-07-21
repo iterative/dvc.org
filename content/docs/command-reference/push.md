@@ -155,35 +155,40 @@ a [pipeline](/doc/command-reference/pipeline) has been setup with these
 [stages](/doc/command-reference/run):
 
 ```dvc
-$ dvc dag
-           +------------------------+
-           | data/Posts.xml.zip.dvc |
-           +------------------------+
-                        *
-                        *
-                        *
-                  +-----------+
-                  | Posts-xml |
-                  +-----------+
-                        *
-                        *
-                        *
-                  +-----------+
-                  | Posts-tsv |
-                  +-----------+
-                ***           ***
-              **                 ***
-            **                      **
-+----------------+                    **
-| Posts-test-tsv |                  **
-+----------------+               ***
-                ***           ***
-                   **       **
-                     **   **
-                +--------------+
-                | matrix-train |
-                +--------------+
-
+$ cat dvc.yaml
+stages:
+  Posts-xml:
+    cmd: unzip data/Posts.xml.zip -d data/
+    deps:
+    - data/Posts.xml.zip
+    outs:
+    - data/Posts.xml
+  Posts-tsv:
+    cmd: python3 src/Posts.py
+    deps:
+    - data/Posts.xml
+    - src/Posts.py
+    outs:
+    - Posts.tsv
+  Posts-test-tsv:
+    cmd: python3 src/Posts-test.py
+    deps:
+    - Posts.tsv
+    - src/Posts-test.py
+    outs:
+    - Posts-test.tsv
+  matrix-train:
+    cmd: python3 src/matrix-train.py
+    deps:
+    - Posts-test.tsv
+    - Posts.tsv
+    - src/matrix-train.py
+    outs:
+    - data/matrix-test.p
+    - data/matrix-train.p
+    - data/model.p
+    params:
+    - matrix-train.train
 ```
 
 Imagine the <abbr>projects</abbr> has been modified such that the
