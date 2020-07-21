@@ -250,16 +250,15 @@ For more information about the variables DVC supports, please visit
 - `connection_string` - connection string.
 
   ```dvc
-  $ dvc remote modify myremote connection_string "my-connection-string" --local
+  $ dvc remote modify --local myremote connection_string "my-connection-string"
   ```
+
+> The connection string contains sensitive user info. Therefore, it's safer to
+> add it with the `--local` option, so it's written to a Git-ignored config
+> file.
 
 For more information on configuring Azure Storage connection strings, visit
 [here](https://docs.microsoft.com/en-us/azure/storage/common/storage-configure-connection-string).
-
-> The connection string contains access to data and is inserted into the
-> `.dvc/config file.` Therefore, it is safer to add the connection string with
-> the `--local` command option, enforcing it to be written to a Git-ignored
-> config file.
 
 </details>
 
@@ -267,7 +266,7 @@ For more information on configuring Azure Storage connection strings, visit
 
 ### Click for Google Drive
 
-Please check out
+Please see
 [Setup a Google Drive DVC Remote](/doc/user-guide/setup-google-drive-remote) for
 a full guide on using Google Drive as DVC remote storage.
 
@@ -279,33 +278,35 @@ a full guide on using Google Drive as DVC remote storage.
                       url gdrive://0AIac4JZqHhKmUk9PDA/dvcstore
   ```
 
-- `gdrive_client_id` - **Client ID** for authentication with OAuth 2.0 when
-  using a
+- `gdrive_client_id` - Client ID for authentication with OAuth 2.0 when using a
   [custom Google Client project](/doc/user-guide/setup-google-drive-remote#using-a-custom-google-cloud-project).
   Also requires using `gdrive_client_secret`.
 
   ```dvc
-  $ dvc remote modify myremote gdrive_client_id <client ID>
+  $ dvc remote modify --local myremote gdrive_client_id <client ID>
   ```
 
-- `gdrive_client_secret` - **Client secret** for authentication with OAuth 2.0
-  when using a custom Google Client project. Also requires using
-  `gdrive_client_id`.
+- `gdrive_client_secret` - Client secret for authentication with OAuth 2.0 when
+  using a custom Google Client project. Also requires using `gdrive_client_id`.
 
   ```dvc
-  $ dvc remote modify myremote gdrive_client_secret <client secret>
+  $ dvc remote modify --local myremote gdrive_client_secret <client secret>
   ```
 
 - `gdrive_user_credentials_file` - path where DVC stores OAuth credentials to
   access Google Drive data. `.dvc/tmp/gdrive-user-credentials.json` by default.
 
   ```dvc
-  $ dvc remote modify myremote gdrive_user_credentials_file \
+  $ dvc remote modify --local myremote gdrive_user_credentials_file \
                       .dvc/tmp/myremote-credentials.json
   ```
 
-  See [Authorization](/doc/user-guide/setup-google-drive-remote#authorization)
-  for more details.
+> The client ID and secret, and credentials file path contain sensitive user
+> info. Therefore, it's safer to add them with the `--local` option, so they're
+> written to a Git-ignored config file.
+
+See [Authorization](/doc/user-guide/setup-google-drive-remote#authorization) for
+more details.
 
 - `gdrive_trash_only` - configures `dvc gc` to move remote files to
   [trash](https://developers.google.com/drive/api/v2/reference/files/trash)
@@ -340,7 +341,7 @@ more information.
   `gdrive_service_account_p12_file_path`.
 
   ```dvc
-  $ dvc remote modify myremote \
+  $ dvc remote modify --local myremote \
                       gdrive_service_account_email <service acct email>
   ```
 
@@ -349,7 +350,7 @@ more information.
   `gdrive_service_account_email`.
 
   ```dvc
-  $ dvc remote modify myremote \
+  $ dvc remote modify --local myremote \
                       gdrive_service_account_p12_file_path \
                       path/to/file.p12
   ```
@@ -359,9 +360,13 @@ more information.
   with the service account. Optional when `gdrive_use_service_account` is on.
 
   ```dvc
-  $ dvc remote modify myremote \
+  $ dvc remote modify --local myremote \
                       gdrive_service_account_user_email <user email>
   ```
+
+> The email addresses and `.p12` file path (may) contain sensitive user info.
+> Therefore, it's safer to add them with the `--local` option, so they're
+> written to a Git-ignored config file.
 
 </details>
 
@@ -379,8 +384,11 @@ more information.
   not set.
 
   ```dvc
-  $ dvc remote modify myremote projectname myproject
+  $ dvc remote modify --local myremote projectname myproject
   ```
+
+> The project name may contain sensitive user info. Therefore, it's safer to add
+> it with the `--local` option, so it's written to a Git-ignored config file.
 
 **For service accounts:**
 
@@ -411,7 +419,14 @@ more information.
 
 ### Click for Aliyun OSS
 
-- `oss_key_id` - OSS key id to use to access a remote.
+- `oss_endpoint endpoint` - OSS endpoint values for accessing the remote
+  container.
+
+  ```dvc
+  $ dvc remote modify myremote oss_endpoint endpoint
+  ```
+
+- `oss_key_id` - OSS key ID to use to access a remote.
 
   ```dvc
   $ dvc remote modify myremote --local oss_key_id my-key-id
@@ -423,11 +438,9 @@ more information.
   $ dvc remote modify myremote --local oss_key_secret my-key-secret
   ```
 
-- `oss_endpoint endpoint` - OSS endpoint values for accessing remote container.
-
-  ```dvc
-  $ dvc remote modify myremote oss_endpoint endpoint
-  ```
+> The key ID and secret key contain sensitive user info. Therefore, it's safer
+> to add them with the `--local` option, so they're written to a Git-ignored
+> config file.
 
 </details>
 
@@ -450,7 +463,7 @@ more information.
   4. current user;
 
   ```dvc
-  $ dvc remote modify myremote user myuser
+  $ dvc remote modify --local myremote user myuser
   ```
 
 - `port` - port to use to access a remote. The order in which dvc searches for
@@ -462,21 +475,25 @@ more information.
   4. default ssh port 22;
 
   ```dvc
-  $ dvc remote modify myremote port 2222
+  $ dvc remote modify --local myremote port 2222
   ```
 
 - `keyfile` - path to private key to use to access a remote.
 
   ```dvc
-  $ dvc remote modify myremote keyfile /path/to/keyfile
+  $ dvc remote modify --local myremote keyfile /path/to/keyfile
   ```
 
 - `password` - a private key passphrase or a password to use to use when
   accessing a remote.
 
   ```dvc
-  $ dvc remote modify myremote password mypassword
+  $ dvc remote modify --local myremote password mypassword
   ```
+
+> The username, port, private key path, and password (may) contain sensitive
+> user info. Therefore, it's safer to add them with the `--local` option, so
+> they're written to a Git-ignored config file.
 
 - `ask_password` - ask for a private key passphrase or a password to use when
   accessing a remote.
@@ -506,8 +523,11 @@ more information.
 - `user` - username to use to access a remote.
 
   ```dvc
-  $ dvc remote modify myremote user myuser
+  $ dvc remote modify --local myremote user myuser
   ```
+
+> The username may contain sensitive user info. Therefore, it's safer to add it
+> with the `--local` option, so it's written to a Git-ignored config file.
 
 </details>
 
@@ -548,7 +568,7 @@ more information.
   2. `user` specified in the url(e.g. `http://user@example.com/path`);
 
   ```dvc
-  $ dvc remote modify myremote user myuser
+  $ dvc remote modify --local myremote user myuser
   ```
 
 - `password` - password to use for any `auth` method.
@@ -557,10 +577,9 @@ more information.
   $ dvc remote modify myremote --local password mypassword
   ```
 
-  > Note that the specified password will be inserted into the `.dvc/config`
-  > file. Therefore, it's recommended to configure it using the `--local`
-  > command option, which writes it to a Git-ignored config file. (Or use the
-  > `ask_password` parameter instead.)
+> The username and password (may) contain sensitive user info. Therefore, it's
+> safer to add them with the `--local` option, so they're written to a
+> Git-ignored config file.
 
 - `ask_password` - ask each time for the password to use for any `auth` method.
 
