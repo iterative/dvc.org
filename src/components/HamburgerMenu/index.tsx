@@ -1,9 +1,15 @@
 import cn from 'classnames'
-import React, { MouseEvent, KeyboardEvent } from 'react'
+import React, {
+  useEffect,
+  useState,
+  useCallback,
+  MouseEvent,
+  KeyboardEvent
+} from 'react'
 
 import HamburgerIcon from '../HamburgerIcon'
-import { HamburgerHelpers } from '../../utils/front/hamburgerMenu'
 import Link from '../Link'
+import { logEvent } from '../../utils/front/ga'
 
 import { getFirstPage } from '../../utils/shared/sidebar'
 import { ReactComponent as LogoSVG } from '../../../static/img/logo-white.svg'
@@ -13,6 +19,49 @@ import { ReactComponent as GithubIcon } from '../SocialIcon/github.svg'
 import styles from './styles.module.css'
 
 const docsPage = getFirstPage()
+
+export type HamburgerHelpers = {
+  opened: boolean
+  setOpened: (newState: boolean) => void
+  handleToggle: () => void
+  handleKeyDown: (e: KeyboardEvent) => void
+  handleClose: () => void
+  handleItemClick: (name: string) => (e: MouseEvent) => void
+}
+
+export const useHamburgerMenu: () => HamburgerHelpers = () => {
+  const [opened, setOpened] = useState(false)
+
+  const handleToggle = useCallback(() => setOpened(!opened), [opened])
+  const handleKeyDown = useCallback(e => {
+    if (e.which === 13) {
+      handleToggle()
+    }
+  }, [])
+
+  const handleClose = useCallback(() => setOpened(false), [opened])
+  const handleItemClick = useCallback(
+    item => (): void => {
+      close()
+      logEvent('hamburger', item)
+    },
+    []
+  )
+
+  useEffect(() => {
+    const method = opened ? 'add' : 'remove'
+    document.body.classList[method](styles.hiddenScrollbar)
+  }, [opened])
+
+  return {
+    opened,
+    setOpened,
+    handleToggle,
+    handleKeyDown,
+    handleClose,
+    handleItemClick
+  }
+}
 
 export const HamburgerMenu: React.FC<
   Pick<

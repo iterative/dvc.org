@@ -6,13 +6,15 @@ import { LayoutModifiers, ILayoutModifiable } from '../MainLayout'
 import LayoutWidthContainer from '../LayoutWidthContainer'
 import Link from '../Link'
 import Nav from './Nav'
-import { HamburgerMenu, HamburgerButton } from '../HamburgerMenu'
+import {
+  HamburgerMenu,
+  HamburgerButton,
+  useHamburgerMenu
+} from '../HamburgerMenu'
 
 import { useHeaderIsScrolled } from '../../utils/front/scroll'
 import { ReactComponent as LogoSVG } from '../../../static/img/logo.svg'
 import styles from './styles.module.css'
-
-import { useHamburgerMenu } from '../../utils/front/hamburgerMenu'
 
 import LayoutAlert from './alert'
 
