@@ -33,7 +33,7 @@ data source.
 </details>
 
 ```dvc
-$ dvc add data/data.xml
+$ dvc add data/data.xml data/.gitignore
 ```
 
 DVC stores information about the added file (or a directory) in a special `.dvc`
@@ -43,7 +43,7 @@ easily versioned like source code with Git, as a placeholder for the original
 data (which gets listed in `.gitignore`):
 
 ```dvc
-$ git add data/.gitignore data/data.xml.dvc
+$ git add data/data.xml.dvc data/.gitignore
 $ git commit -m "Add raw data"
 ```
 
