@@ -59,11 +59,6 @@ $ ls -lh
 -rw-r--r--  1 10576022 Nov 27 13:30 Posts.xml.zip
 
 $ dvc add Posts.xml.zip
-Saving information to 'Posts.xml.zip.dvc'.
-
-To track the changes with git run:
-
-	git add .gitignore data.xml.dvc
 ```
 
 Check that file is a read-only link (@ sign means a link):

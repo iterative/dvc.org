@@ -153,7 +153,7 @@ $ dvc add model.h5
 Let's commit the current state:
 
 ```dvc
-$ git add .gitignore model.h5.dvc data.dvc metrics.csv
+$ git add data.dvc model.h5.dvc metrics.csv .gitignore
 $ git commit -m "First model, trained with 1000 images"
 $ git tag -a "v1.0" -m "model v1.0, 1000 images"
 ```
@@ -232,7 +232,7 @@ $ dvc add model.h5
 Let's commit the second version:
 
 ```dvc
-$ git add model.h5.dvc data.dvc metrics.csv
+$ git add data.dvc model.h5.dvc metrics.csv
 $ git commit -m "Second model, trained with 2000 images"
 $ git tag -a "v2.0" -m "model v2.0, 2000 images"
 ```

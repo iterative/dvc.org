@@ -3,61 +3,74 @@ import React from 'react'
 import includes from 'lodash/includes'
 
 import { LayoutModifiers, ILayoutModifiable } from '../MainLayout'
-import { ReactComponent as GitHubIcon } from '../SocialIcon/github.svg'
 import LayoutWidthContainer from '../LayoutWidthContainer'
 import Link from '../Link'
 import Nav from './Nav'
+import {
+  HamburgerMenu,
+  HamburgerButton,
+  useHamburgerMenu
+} from '../HamburgerMenu'
 
 import { useHeaderIsScrolled } from '../../utils/front/scroll'
 import { ReactComponent as LogoSVG } from '../../../static/img/logo.svg'
 import styles from './styles.module.css'
 
+import LayoutAlert from './alert'
+
 const LayoutHeader: React.FC<Required<ILayoutModifiable>> = ({ modifiers }) => {
+  const {
+    opened,
+    handleToggle,
+    handleKeyDown,
+    handleItemClick
+  } = useHamburgerMenu()
+  const scrolled = useHeaderIsScrolled()
   const hasCollapsedModifier = includes(modifiers, LayoutModifiers.Collapsed)
-  const collapsed = hasCollapsedModifier || useHeaderIsScrolled()
+  const collapsed = opened || hasCollapsedModifier || scrolled
 
   return (
-    <header
-      className={styles.wrapper}
-      id="header"
-      data-collapsed={hasCollapsedModifier}
-    >
-      <div
-        className={cn(
-          styles.placeholder,
-          hasCollapsedModifier && styles.collapsed
-        )}
-      />
-      <div className={styles.header}>
-        <div className={cn(styles.alert, collapsed && styles.collapsed)}>
-          <span role="img" aria-label="rocket">
-            🚀
-          </span>{' '}
-          Check out our newest tool, <Link href="https://cml.dev">CML</Link>!{' '}
-          <Link
-            className={styles.gitHubAlertLink}
-            href="https://github.com/iterative/cml"
-            title="Star us on GitHub!"
+    <>
+      <header className={styles.wrapper} id="header" data-collapsed={collapsed}>
+        <div
+          className={cn(
+            styles.placeholder,
+            collapsed && styles.collapsed,
+            LayoutAlert && styles.withAlert
+          )}
+        />
+        <div className={styles.header}>
+          {LayoutAlert && <LayoutAlert collapsed={collapsed} />}
+          <LayoutWidthContainer
+            className={cn(styles.container, collapsed && styles.collapsed)}
+            wide={includes(modifiers, LayoutModifiers.Wide)}
           >
-            <GitHubIcon width="1em" height="1em" viewBox="5 5 30 30" />
-          </Link>
+            <Link
+              href="/"
+              className={styles.logoLink}
+              title="DVC"
+              aria-label="DVC"
+            >
+              <LogoSVG className={styles.logo} />
+            </Link>
+            <Nav />
+          </LayoutWidthContainer>
         </div>
-        <LayoutWidthContainer
-          className={cn(styles.container, collapsed && styles.collapsed)}
-          wide={includes(modifiers, LayoutModifiers.Wide)}
-        >
-          <Link
-            href="/"
-            className={styles.logoLink}
-            title="DVC"
-            aria-label="DVC"
-          >
-            <LogoSVG className={styles.logo} />
-          </Link>
-          <Nav />
-        </LayoutWidthContainer>
-      </div>
-    </header>
+      </header>
+      <HamburgerMenu
+        opened={opened}
+        collapsed={collapsed}
+        handleToggle={handleToggle}
+        handleKeyDown={handleKeyDown}
+        handleItemClick={handleItemClick}
+      />
+      <HamburgerButton
+        opened={opened}
+        collapsed={collapsed}
+        handleClick={handleToggle}
+        handleKeyDown={handleKeyDown}
+      />
+    </>
   )
 }
 
