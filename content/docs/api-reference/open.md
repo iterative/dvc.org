@@ -176,7 +176,7 @@ providing a `remote` argument:
 ```py
 import dvc.api
 
-with open(
+with dvc.api.open(
         'activity.log',
         repo='location/of/dvc/project',
         remote='my-s3-bucket'

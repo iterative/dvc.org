@@ -23,6 +23,7 @@
   --layout-width-wide: 1200px;
   --layout-header-height: 98px;
   --layout-header-height-collapsed: 78px;
+  --layout-alert-height: 35px;
 }
 
 html {

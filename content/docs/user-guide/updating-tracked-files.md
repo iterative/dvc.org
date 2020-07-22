@@ -49,7 +49,7 @@ And start tracking it again:
 
 ```dvc
 $ dvc add train.tsv
-$ git add train.tsv.dvc
+$ git add train.tsv.dvc .gitignore
 $ git commit -m "new train data"
 ```
 

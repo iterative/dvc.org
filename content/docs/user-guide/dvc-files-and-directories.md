@@ -303,7 +303,6 @@ data/images/
 └── index.jpeg
 
 $ dvc add data/images
-...
 ```
 
 When running `dvc add` on this directory of images, a `data/images.dvc`
@@ -311,11 +310,9 @@ When running `dvc add` on this directory of images, a `data/images.dvc`
 hash value of the directory:
 
 ```yaml
-md5: 77e511dafe2178d936e54331d5d6288f
 outs:
   - md5: 196a322c107c2572335158503c64bfba.dir
     path: data/images
-    # ...
 ```
 
 The directory in cache is stored as a JSON file (with `.dir` file extension)

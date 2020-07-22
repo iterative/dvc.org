@@ -60,7 +60,7 @@ Untracked files:
     images.dvc
     model.pkl.dvc
 
-$ git add .gitignore images.dvc model.pkl.dvc
+$ git add images.dvc model.pkl.dvc .gitignore
 $ git commit -m "Track images and model with DVC"
 ```
 

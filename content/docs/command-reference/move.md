@@ -40,10 +40,8 @@ The `dvc add` command would create a `data.csv.dvc` `.dvc` file with the
 following content:
 
 ```yaml
-md5: 3d1a3e5a5b662490e198d6a6ae84984b
 outs:
-  - cache: true
-    md5: c8263e8422925b0872ee1fb7c953742a
+  - md5: c8263e8422925b0872ee1fb7c953742a
     path: data.csv
 ```
 
