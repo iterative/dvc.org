@@ -155,40 +155,14 @@ a [pipeline](/doc/command-reference/pipeline) has been setup with these
 [stages](/doc/command-reference/run):
 
 ```dvc
-$ cat dvc.yaml
-stages:
-  Posts-xml:
-    cmd: unzip data/Posts.xml.zip -d data/
-    deps:
-    - data/Posts.xml.zip
-    outs:
-    - data/Posts.xml
-  Posts-tsv:
-    cmd: python3 src/Posts.py
-    deps:
-    - data/Posts.xml
-    - src/Posts.py
-    outs:
-    - Posts.tsv
-  Posts-test-tsv:
-    cmd: python3 src/Posts-test.py
-    deps:
-    - Posts.tsv
-    - src/Posts-test.py
-    outs:
-    - Posts-test.tsv
-  matrix-train:
-    cmd: python3 src/matrix-train.py
-    deps:
-    - Posts-test.tsv
-    - Posts.tsv
-    - src/matrix-train.py
-    outs:
-    - data/matrix-test.p
-    - data/matrix-train.p
-    - data/model.p
-    params:
-    - matrix-train.train
+$ dvc pipeline show
+data/Posts.xml.zip.dvc
+Posts.xml.dvc
+Posts.tsv.dvc
+Posts-test.tsv.dvc
+matrix-train.p.dvc
+model.p.dvc
+Dvcfile
 ```
 
 Imagine the <abbr>projects</abbr> has been modified such that the
@@ -207,7 +181,7 @@ One could do a simple `dvc push` to share all the data, but what if you only
 want to upload part of the data?
 
 ```dvc
-$ dvc push --with-deps Posts-tsv
+$ dvc push --with-deps test-posts
 
 ... Do some work based on the partial update
 
@@ -220,9 +194,9 @@ $ dvc status --cloud
 Data and pipelines are up to date.
 ```
 
-We specified a stage in the middle of this pipeline (`Posts-tsv`) with the first
-push. `--with-deps` caused DVC to start with that stage, and search backwards
-through the pipeline for data files to upload.
+We specified a stage in the middle of this pipeline (`test-posts`) with the
+first push. `--with-deps` caused DVC to start with that `.dvc` file, and search
+backwards through the pipeline for data files to upload.
 
 Because the `matrix-train` stage occurs later (it's the last one), its data was
 not pushed. However, we then specified it in the second push, so all remaining
