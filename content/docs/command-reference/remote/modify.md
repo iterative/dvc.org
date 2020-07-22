@@ -297,13 +297,9 @@ a full guide on using Google Drive as DVC remote storage.
   access Google Drive data. `.dvc/tmp/gdrive-user-credentials.json` by default.
 
   ```dvc
-  $ dvc remote modify --local myremote gdrive_user_credentials_file \
+  $ dvc remote modify myremote gdrive_user_credentials_file \
                       .dvc/tmp/myremote-credentials.json
   ```
-
-> The credentials file path may contain sensitive user info. Therefore, it's
-> safer to add it with the `--local` option, so it's written to a Git-ignored
-> config file.
 
 See [Authorization](/doc/user-guide/setup-google-drive-remote#authorization) for
 more details.
@@ -341,7 +337,7 @@ more information.
   `gdrive_service_account_p12_file_path`.
 
   ```dvc
-  $ dvc remote modify --local myremote \
+  $ dvc remote modify myremote \
                       gdrive_service_account_email <service acct email>
   ```
 
@@ -350,7 +346,7 @@ more information.
   `gdrive_service_account_email`.
 
   ```dvc
-  $ dvc remote modify --local myremote \
+  $ dvc remote modify myremote \
                       gdrive_service_account_p12_file_path \
                       path/to/file.p12
   ```
@@ -360,13 +356,9 @@ more information.
   with the service account. Optional when `gdrive_use_service_account` is on.
 
   ```dvc
-  $ dvc remote modify --local myremote \
+  $ dvc remote modify myremote \
                       gdrive_service_account_user_email <user email>
   ```
-
-> The email addresses and `.p12` file path (may) contain sensitive user info.
-> Therefore, it's safer to add them with the `--local` option, so they're
-> written to a Git-ignored config file.
 
 </details>
 
@@ -478,7 +470,7 @@ more information.
 - `keyfile` - path to private key to use to access a remote.
 
   ```dvc
-  $ dvc remote modify --local myremote keyfile /path/to/keyfile
+  $ dvc remote modify myremote keyfile /path/to/keyfile
   ```
 
 - `password` - a private key passphrase or a password to use to use when
@@ -488,9 +480,9 @@ more information.
   $ dvc remote modify --local myremote password mypassword
   ```
 
-> The username, port, private key path, and password (may) contain sensitive
-> user info. Therefore, it's safer to add them with the `--local` option, so
-> they're written to a Git-ignored config file.
+> The username, port, and password (may) contain sensitive user info. Therefore,
+> it's safer to add them with the `--local` option, so they're written to a
+> Git-ignored config file.
 
 - `ask_password` - ask for a private key passphrase or a password to use when
   accessing a remote.
