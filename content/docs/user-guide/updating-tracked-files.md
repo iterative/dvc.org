@@ -12,7 +12,7 @@ link types.)
 > [issue #599](https://github.com/iterative/dvc/issues/599) in our Github
 > repository.
 
-Assume `train.tsv` is tracked by dvc and you want to update it. Here updating
+Assume `train.tsv` is tracked by DVC and you want to update it. Here updating
 may mean either replacing `train.tsv` with a new file having the same name or
 editing the content of the file.
 
