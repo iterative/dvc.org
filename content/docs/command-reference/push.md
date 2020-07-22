@@ -211,8 +211,8 @@ as you run an experiment locally and push data to remote storage. To set the
 example consider having created a <abbr>workspace</abbr> that contains some code
 and data, and having set up a remote.
 
-Some work has been performed in the workspace, and it contains new data to
-upload onto the [remote](/doc/command-reference/remote). `dvc status --cloud`
+Some work has been performed in the workspace, and new data is ready for
+uploading to the [remote](/doc/command-reference/remote). `dvc status --cloud`
 will list several files in `new` state. We can see exactly what that means by
 looking in the project's <abbr>cache</abbr>:
 

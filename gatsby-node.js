@@ -13,6 +13,7 @@ exports.createSchemaCustomization = api =>
 exports.sourceNodes = api => callOnModels(models, 'sourceNodes', api)
 exports.onCreateNode = api => callOnModels(models, 'onCreateNode', api)
 exports.createPages = api => callOnModels(models, 'createPages', api)
+exports.createResolvers = api => callOnModels(models, 'createResolvers', api)
 exports.onPostBuild = api => callOnModels(models, 'onPostBuild', api)
 
 exports.onCreatePage = ({ page, actions }) => {
