@@ -99,7 +99,8 @@ option of `dvc plots show` and `dvc plots diff`. For templates in the
 `.dvc/plots/` directory, the path and the json extension are not required: you
 can specify only the base name e.g. `--template scatter`.
 
-DVC has built-in following plot types:
+DVC has the following built-in plot templates:
+
 - `default` - linear plot 
 - `scatter` - scatter plot
 - `smooth` - linear plot with LOESS smoothing, see [example](/doc/command-reference/plots#example-smooth-plot)
