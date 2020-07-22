@@ -151,7 +151,7 @@ the possible following fields:
 - `deps`: List of <abbr>dependency</abbr> file or directory paths of this stage
   (relative to `wdir` which defaults to the file's location)
 - `params`: List of [parameter dependencies](/doc/command-reference/params).
-  These are key paths referring to a YAML or JSON file (`params.yaml` by
+  These are key paths referring to a YAML, JSON or TOML file (`params.yaml` by
   default).
 - `outs`: List of <abbr>output</abbr> file or directory paths of this stage
   (relative to `wdir` which defaults to the file's location), and optionally,
