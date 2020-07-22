@@ -144,10 +144,6 @@
       {
         "label": "Anonymized Usage Analytics",
         "slug": "analytics"
-      },
-      {
-        "label": "Privacy Policy (Google APIs)",
-        "slug": "privacy"
       }
     ]
   },
