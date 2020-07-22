@@ -25,7 +25,7 @@ The `targets` given to this command (if any) limit which files to checkout. It
 accepts paths to tracked files or directories (even if such paths are within a
 directory
 [tracked as a whole](/doc/command-reference/add#tracking-directories)), `.dvc`
-files, or stage names (found in `dvc.lock`).
+files, or stage names (found in `dvc.yaml`).
 
 `dvc checkout` is useful, for example, when using Git in the
 <abbr>project</abbr>, after `git clone`, `git checkout`, or any other operation
@@ -38,9 +38,12 @@ for more details.
 
 The execution of `dvc checkout` does the following:
 
-- Scans the appropriate `dvc.lock` and `.dvc` files, to compare the hash values
-  of their <abbr>outputs</abbr> against the actual files or directories in the
+- Uses the appropriate `dvc.lock` and `.dvc` files to compare the hash values of
+  their <abbr>outputs</abbr> against the actual files or directories in the
   workspace (similar to `dvc status`).
+
+  > Outputs found in `dvc.yaml` but not in `dvc.lock` will be skipped, with a
+  > warning.
 
 - Missing data files or directories are restored from the cache. Those that
   don't match with any DVC-file are removed. See options `--force` and
@@ -200,8 +203,8 @@ $ md5 model.pkl
 MD5 (model.pkl) = 98af33933679a75c2a51b953d3ab50aa
 ```
 
-DVC went through `dvc.lock` and adjusted the current set of <abbr>outputs</abbr>
-to match the `outs` in it.
+DVC went through the stages (in `dvc.yaml`) and adjusted the current set of
+<abbr>outputs</abbr> to match the `outs` in the corresponding `dvc.lock`.
 
 ## Example: Specific files or directories
 

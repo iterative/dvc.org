@@ -32,15 +32,16 @@ _remote_ mode is triggered by using the `--cloud` or `--remote` options:
 | remote | `--remote` | Comparisons are made between the cache, and the given remote. Remote storage is defined using the `dvc remote` command.     |
 | remote | `--cloud`  | Comparisons are made between the cache, and the default remote (typically defined with `dvc remote --default`).             |
 
-Without arguments, this command scans all `dvc.lock` and `.dvc` files to compare
-the hash values of their <abbr>outputs</abbr> against the actual data files or
-directories in the workspace (the `--all-branches` and `--all-tags` options
-enable using multiple workspace versions).
+Without arguments, this command checks all stages (in `dvc.yaml` and `dvc.lock`)
+and `.dvc` files to compare the hash values of their <abbr>outputs</abbr>
+against the actual data files or directories in the workspace (the
+`--all-branches` and `--all-tags` options enable using multiple workspace
+versions).
 
 The `targets` given to this command (if any) limit what to check. It accepts
 paths to tracked files or directories (even if such paths are within a directory
 [tracked as a whole](/doc/command-reference/add#tracking-directories)), `.dvc`
-files, or stage names (found in `dvc.lock`).
+files, or stage names (found in `dvc.yaml`).
 
 If no differences are detected, `dvc status` prints
 `Data and pipelines are up to date.` If differences are detected by
@@ -57,9 +58,9 @@ file name or hash is shown, along with a _state description_, as detailed below:
   value set (see `--always-changed` option in `dvc run`).
 
 - _changed deps_ or _changed outs_ means that there are changes in dependencies
-  or outputs tracked by the stage in `dvc.lock` or `.dvc` file. Depending on the
-  use case, commands like `dvc commit`, `dvc repro`, or `dvc run` can be used to
-  update the file. Possible states are:
+  or outputs tracked by the stage or `.dvc` file. Depending on the use case,
+  commands like `dvc commit`, `dvc repro`, or `dvc run` can be used to update
+  the file. Possible states are:
 
   - _new_: An <abbr>output</abbr> is found in the <abbr>workspace</abbr>, but
     there is no corresponding file hash saved in the `dvc.lock` or `.dvc` file

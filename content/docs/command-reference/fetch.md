@@ -22,14 +22,15 @@ the project (without placing them in the <abbr>workspace</abbr>). This makes
 them available for linking (or copying) into the workspace (refer to
 [dvc config cache.type](/doc/command-reference/config#cache)).
 
-Without arguments, this ensures that all the files needed for all stages (in
-`dvc.lock`) and `.dvc` files in the workspace exist in the cache (the
-`--all-branches` and `--all-tags` enable using multiple workspace versions).
+Without arguments, this ensures that all the files needed for all `.dvc` files
+and stages (in `dvc.yaml` and `dvc.lock`) in the workspace exist in the cache
+(the `--all-branches` and `--all-tags` enable using multiple workspace
+versions).
 
 The `targets` given to this command (if any) limit what to fetch. It accepts
 paths to tracked files or directories (even if such paths are within a directory
 [tracked as a whole](/doc/command-reference/add#tracking-directories)), `.dvc`
-files, or stage names (found in `dvc.lock`).
+files, or stage names (found in `dvc.yaml`).
 
 Along with `dvc checkout`, fetching performed automatically by `dvc pull` (when
 the data is not already in the <abbr>cache</abbr>):
@@ -64,8 +65,8 @@ perform data synchronization among local and remote storage. The specific way in
 which the set of files to push/fetch/pull is determined begins with calculating
 file hashes when these are [added](/doc/command-reference/add) with DVC. File
 hash values are stored in the corresponding `dvc.lock` or `.dvc` files
-(typically versioned with Git). Only `dvc.lock` or `.dvc` files currently in the
-workspace are considered by `dvc fetch` (unless the `-a` or `-T` options are
+(typically versioned with Git). Only `dvc.yaml` and `.dvc` files currently in
+the workspace are used by `dvc fetch` (unless the `-a` or `-T` options are
 used).
 
 ## Options

@@ -35,11 +35,11 @@ option is used. See `dvc remote` for more information on how to configure a
 remote.
 
 With no arguments, just `dvc pull` or `dvc pull --remote <name>`, it downloads
-only the files (or directories) missing from the workspace by searching all
-stages in `dvc.yaml` or `.dvc` files currently in the <abbr>project</abbr>. It
-will not download files associated with earlier commits in the
-<abbr>repository</abbr> (if using Git), nor will it download files that have not
-changed.
+only the files (or directories) missing from the workspace by checking all
+`.dvc` files and stages (in `dvc.yaml` and `dvc.lock`) currently in the
+<abbr>project</abbr>. It will not download files associated with earlier commits
+in the <abbr>repository</abbr> (if using Git), nor will it download files that
+have not changed.
 
 The command `dvc status -c` can list files referenced in current stages (in
 `dvc.yaml`) or `.dvc` files, but missing from the <abbr>cache</abbr>. It can be
@@ -48,7 +48,7 @@ used to see what files `dvc pull` would download.
 The `targets` given to this command (if any) limit what to pull. It accepts
 paths to tracked files or directories (even if such paths are within a directory
 [tracked as a whole](/doc/command-reference/add#tracking-directories)), `.dvc`
-files, or stage names (found in `dvc.lock`).
+files, or stage names (found in `dvc.yaml`).
 
 After the data is in the cache, `dvc pull` uses OS-specific mechanisms like
 reflinks or hardlinks to put it in the workspace, trying to avoid copying. See
