@@ -480,7 +480,7 @@ more information.
   $ dvc remote modify --local myremote password mypassword
   ```
 
-> The username, and password (may) contain sensitive user info. Therefore, it's
+> The username and password (may) contain sensitive user info. Therefore, it's
 > safer to add them with the `--local` option, so they're written to a
 > Git-ignored config file.
 
