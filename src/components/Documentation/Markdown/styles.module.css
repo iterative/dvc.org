@@ -62,6 +62,10 @@
       content: url(/img/external-link.svg);
     }
 
+    :global(a.gatsby-resp-image-link)::after {
+      content: unset;
+    }
+
     .anchor {
       margin-left: -24px;
     }
