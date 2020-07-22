@@ -207,7 +207,7 @@ file:///Users/usr/src/plots/logs.html
 
 ## Example: Smooth plot
 
-In some cases we would like to smooth our plot. In this example we will use plot
+In some cases we would like to smooth our plot. In this example we will use a plot
 with 1000 data points:
 
 ```dvc
