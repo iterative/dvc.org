@@ -1,11 +1,22 @@
 .placeholder {
+  transition: height 0.2s linear;
   height: var(--layout-header-height);
 
-  &.collapsed {
-    height: var(--layout-header-height-collapsed);
+  &.withAlert {
+    height: calc(var(--layout-header-height) + var(--layout-alert-height));
   }
 
   @media (--xs-scr) {
+    height: var(--layout-header-height-collapsed);
+
+    &.withAlert {
+      height: calc(
+        var(--layout-header-height-collapsed) + var(--layout-alert-height)
+      );
+    }
+  }
+
+  &.collapsed {
     height: var(--layout-header-height-collapsed);
   }
 }
@@ -61,8 +72,8 @@
 }
 
 .alert {
-  height: 35px;
-  line-height: 35px;
+  height: var(--layout-alert-height);
+  line-height: var(--layout-alert-height);
   font-size: 18px;
   text-align: center;
   width: 100%;
