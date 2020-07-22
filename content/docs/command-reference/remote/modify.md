@@ -464,7 +464,7 @@ more information.
   4. default ssh port 22;
 
   ```dvc
-  $ dvc remote modify --local myremote port 2222
+  $ dvc remote modify myremote port 2222
   ```
 
 - `keyfile` - path to private key to use to access a remote.
@@ -480,8 +480,8 @@ more information.
   $ dvc remote modify --local myremote password mypassword
   ```
 
-> The username, port, and password (may) contain sensitive user info. Therefore,
-> it's safer to add them with the `--local` option, so they're written to a
+> The username, and password (may) contain sensitive user info. Therefore, it's
+> safer to add them with the `--local` option, so they're written to a
 > Git-ignored config file.
 
 - `ask_password` - ask for a private key passphrase or a password to use when
