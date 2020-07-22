@@ -101,10 +101,12 @@ can specify only the base name e.g. `--template scatter`.
 
 DVC has the following built-in plot templates:
 
-- `default` - linear plot 
+- `default` - linear plot
 - `scatter` - scatter plot
-- `smooth` - linear plot with LOESS smoothing, see [example](/doc/command-reference/plots#example-smooth-plot)
-- `confusion` - confusion matrix, see [example](/doc/command-reference/plots#example-confusion-matrix)
+- `smooth` - linear plot with LOESS smoothing, see
+  [example](/doc/command-reference/plots#example-smooth-plot)
+- `confusion` - confusion matrix, see
+  [example](/doc/command-reference/plots#example-confusion-matrix)
 
 ### Custom templates
 
@@ -207,8 +209,8 @@ file:///Users/usr/src/plots/logs.html
 
 ## Example: Smooth plot
 
-In some cases we would like to smooth our plot. In this example we will use a plot
-with 1000 data points:
+In some cases we would like to smooth our plot. In this example we will use a
+plot with 1000 data points:
 
 ```dvc
 $ dvc plots show data.csv
