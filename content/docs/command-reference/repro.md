@@ -164,9 +164,8 @@ only execute the final stage.
 
 ## Examples
 
-For simplicity, let's build a pipeline defined below. (If you want get your
-hands-on something more real, see this short
-[pipeline tutorial](/doc/tutorials/pipelines)). It takes this `text.txt` file:
+For simplicity, let's build a pipeline defined below. It takes this `text.txt`
+file:
 
 ```
 dvc
@@ -215,7 +214,7 @@ $ tree
 You may want to check the contents of `dvc.lock` and `count.txt` for later
 reference.
 
-Ok, now, let's run the `dvc repro` command:
+Ok, now let's run `dvc repro`:
 
 ```dvc
 $ dvc repro
@@ -250,6 +249,8 @@ respectively.
 
 ## Example: Downstream
 
+> This example continues the previous one.
+
 The `--downstream` option allows us to only reproduce results from commands
 after a specific stage in a pipeline. To demonstrate how it works, let's make a
 change in `text.txt` (the input of our first stage, created in the previous
@@ -268,14 +269,13 @@ $ dvc repro --downstream
 Data and pipelines are up to date.
 ```
 
-The reason being that the `text.txt` file is a dependency in the last stage of
-the pipeline (used by default by `dvc repro`), This last `count` stage is
-dependent on `filter` stage, which happens first in this pipeline (shown in the
-following figure):
+The reason being that the `text.txt` file is not a dependency in the last stage
+of the pipeline, used as the default target by `dvc repro`. `text.txt` is a
+dependency of the `filter` stage, which happens earlier (shown in the figure
+below), so it's skipped given the `--downstream` option.
 
 ```dvc
 $ dvc dag
-
     .------------.
     |   filter   |
     `------------'
@@ -286,3 +286,7 @@ $ dvc dag
       |  count  |
       `---------'
 ```
+
+> Note that using `dvc repro --downstream` without a target will always have a
+> similar effect, where all previous stages are ignored — only if the last stage
+> is changed will it have any effect.
