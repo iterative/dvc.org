@@ -582,6 +582,65 @@ more information.
 
 </details>
 
+<details>
+
+### Click for WebDAV
+
+- `token` - token for WebDAV server, can be empty in case of using
+  `user/password` authentication.
+
+- `user` - username for WebDAV server, can be empty in case of using `token`
+  authentication. The order in which DVC searches for username:
+
+  1. `user` specified in one of the DVC configs;
+  2. `user` specified in the url(e.g. `webdav://user@example.com/path`);
+
+  ```dvc
+  $ dvc remote modify --local myremote user myuser
+  ```
+
+- `password` - password for WebDAV server, can be empty in case of using `token`
+  authentication.
+
+  ```dvc
+  $ dvc remote modify myremote --local password mypassword
+  ```
+
+> The username and password (may) contain sensitive user info. Therefore, it's
+> safer to add them with the `--local` option, so they're written to a
+> Git-ignored config file.
+
+- `ask_password` - ask each time for the password to use for `user/password`
+  authentication.
+
+  ```dvc
+  $ dvc remote modify myremote ask_password true
+  ```
+
+  > Note that the `password` parameter takes precedence over `ask_password`. If
+  > `password` is specified, DVC will not prompt the user to enter a password
+  > for this remote.
+
+- `cert_path` - path to certificate used for WebDAV server authentication.
+
+  ```dvc
+  $ dvc remote modify myremote cert_path /path/to/cert
+  ```
+
+- `key_path` - path to private key to use to access a remote.
+
+  ```dvc
+  $ dvc remote modify myremote key_path /path/to/key
+  ```
+
+- `timeout` - connection timeout to use for WebDAV.
+
+  ```dvc
+  $ dvc remote modify myremote timeout timeoutseconds
+  ```
+
+</details>
+
 ## Example: Customize an S3 remote
 
 Let's first set up a _default_ S3 remote.
