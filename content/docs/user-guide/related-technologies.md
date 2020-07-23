@@ -9,34 +9,27 @@ bringing best practices from software engineering into the data science field
 DVC builds upon Git by introducing the concept of
 [data files](/doc/user-guide/basic-concepts#data-files) – large files that
 should not be stored in a Git repository, but still need to be tracked and
-versioned. It also leverages teh versioning features of Git to enable managing
-different versions of data itself, data pipelines, and experiments.
+versioned. It leverages Git's features to enable managing different versions of
+data itself, data pipelines, and experiments.
 
 ### Git-LFS (Large File Storage)
 
-- DVC does not require special Git servers like Git-LFS demands. Any cloud
-  storage like S3, GCS, or an on-premises SSH server can be used as a backend
-  for datasets and models. No additional databases, servers, or infrastructure
-  are required.
+- DVC is not fundamentally bound to Git, and can work without it (except any
+  versioning-related features).
 
-- DVC is not fundamentally bound to Git, and users have the option of using DVC
-  without Git.
+- DVC does not require special servers like Git-LFS demands. Any cloud storage
+  like S3, Google Cloud Storage, or even an SSH server can be used as a
+  [remote storage](/doc/command-reference/remote). No additional databases,
+  servers, or infrastructure are required.
 
-- DVC does not add any hooks to the Git repo by default. To checkout data files,
-  the `dvc checkout` command has to be run after each `git checkout` and
-  `git clone` command. It gives more granularity on managing data and code
-  separately. Hooks could be configured to make workflows simpler.
+- DVC does not add any hooks to the Git repo by default (although they are
+  [available](/doc/command-reference/install)).
 
-- DVC attempts to use reflinks\* and has other
-  [file linking options](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache).
-  This way the `dvc checkout` command does not actually copy data files from
-  <abbr>cache</abbr> to the <abbr>workspace</abbr>, as copying files is a heavy
-  operation for large files (30 GB+).
+- Git-LFS was not made with data science in mind, so it doesn't provide related
+  features (e.g. [pipelines](/doc/user-guide/basic-concepts#data-pipeline),
+  [metrics](/doc/command-reference/metrics), etc.).
 
-- `git-lfs` was not made with data science scenarios in mind, so it does not
-  provide related features (e.g. pipelines,
-  [metrics](/doc/command-reference/metrics)), and thus Github has a limit of 2
-  GB per repository.
+- Github (most common Git hosting service) has a limit of 2 GB per repository.
 
 ### Git-annex
 

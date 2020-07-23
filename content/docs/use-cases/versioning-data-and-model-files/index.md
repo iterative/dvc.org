@@ -14,10 +14,10 @@ This allows easily saving and sharing data alongside code.
 
 ![](/img/model-versioning-diagram.png)
 
-In this basic scenario, DVC is a better replacement for `git-lfs` (see
+In this basic scenario, DVC is a better replacement for Git-LFS (see
 [Related Technologies](/doc/understanding-dvc/related-technologies)) and for
 ad-hoc scripts on top of Amazon S3 (or any other cloud) used to manage ML
-<abbr>data artifacts</abbr> like raw data, models, etc. Unlike `git-lfs`, DVC
+<abbr>data artifacts</abbr> like raw data, models, etc. Unlike Git-LFS, DVC
 doesn't require installing a dedicated server; It can be used on-premises (e.g.
 SSH, NAS) or with any major cloud storage provider (Amazon S3, Microsoft Azure
 Blob Storage, Google Drive, Google Cloud Storage, etc).
