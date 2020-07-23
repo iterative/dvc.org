@@ -4,8 +4,6 @@ DVC streamlines large data files and binary models into a single Git
 environment. This approach will not require storing binary files in your Git
 repository.
 
-![](/img/flow-large.png) _DVC data management_
-
 ### Data Files
 
 Large files (or directories) that are tracked and cached by DVC. Data files are
