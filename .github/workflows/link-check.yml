@@ -21,11 +21,11 @@ jobs:
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         name: Link Check
-        conclusion: "Pass"
+        conclusion: success
 
     - uses: LouisBrunner/checks-action@v0.1.0
       if: failure()
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         name: Link Check
-        conclusion: "Fail"
+        conclusion: failure
