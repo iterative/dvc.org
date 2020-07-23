@@ -589,6 +589,10 @@ more information.
 - `token` - token for WebDAV server, can be empty in case of using
   `user/password` authentication.
 
+  ```dvc
+  $ dvc remote modify --local myremote token mytoken
+  ```
+
 - `user` - username for WebDAV server, can be empty in case of using `token`
   authentication. The order in which DVC searches for username:
 
@@ -603,11 +607,11 @@ more information.
   authentication.
 
   ```dvc
-  $ dvc remote modify myremote --local password mypassword
+  $ dvc remote modify --local myremote password mypassword
   ```
 
-> The username and password (may) contain sensitive user info. Therefore, it's
-> safer to add them with the `--local` option, so they're written to a
+> The username, password and token (may) contain sensitive user info. Therefore,
+> it's safer to add them with the `--local` option, so they're written to a
 > Git-ignored config file.
 
 - `ask_password` - ask each time for the password to use for `user/password`
