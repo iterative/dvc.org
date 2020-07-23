@@ -8,11 +8,6 @@ jobs:
     if: github.event.deployment_status.state == 'success'
 
     steps:
-    - uses: LouisBrunner/checks-action@v0.1.0
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        name: Link Check
-        status: in_progress
 
     - uses: actions/checkout@v2
 
@@ -26,6 +21,7 @@ jobs:
       if: success()
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
+        name: Link Check
         status: completed
         conclusion: success
 
@@ -33,5 +29,6 @@ jobs:
       if: failure()
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
+        name: Link Check
         status: completed
         conclusion: failure
