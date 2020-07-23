@@ -3,8 +3,9 @@ on: deployment_status
 
 jobs:
   run:
+    name: Run Link Checker
     runs-on: ubuntu-latest
-    if: github.event.state == 'success'
+    if: github.event.deployment_status.state == 'success'
 
     steps:
     - uses: actions/checkout@v2
@@ -13,7 +14,7 @@ jobs:
       id: check
       run: "./scripts/link-check-git-diff.sh"
       env:
-        CHECK_LINKS_RELATIVE_URL: ${{ github.event.target_url }}
+        CHECK_LINKS_RELATIVE_URL: ${{ github.event.deployment_status.target_url }}
 
     - uses: LouisBrunner/checks-action@v0.1.0
       if: always()
