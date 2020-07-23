@@ -102,13 +102,7 @@
         "label": "How To ...",
         "slug": "how-to",
         "source": false,
-        "children": [
-          "update-tracked-files",
-          {
-            "label": "Troubleshoot Common Issues",
-            "slug": "troubleshooting"
-          }
-        ]
+        "children": ["update-tracked-files"]
       },
       "setup-google-drive-remote",
       "large-dataset-optimization",
@@ -140,6 +134,7 @@
         "label": "Running DVC on Windows",
         "slug": "running-dvc-on-windows"
       },
+      "troubleshooting",
       "related-technologies",
       {
         "label": "Anonymized Usage Analytics",
