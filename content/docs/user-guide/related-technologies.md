@@ -6,16 +6,17 @@ bringing best practices from software engineering into the data science field
 
 ### Git
 
-DVC builds upon Git by introducing the concept of
-[data files](/doc/user-guide/basic-concepts#data-files) – large files that
-should not be stored in a Git repository, but still need to be tracked and
-versioned. It leverages Git's features to enable managing different versions of
-data itself, data pipelines, and experiments.
+- DVC builds upon Git by introducing the concept of
+  [data files](/doc/user-guide/basic-concepts#data-files) – large files that
+  should not be stored in a Git repository, but still need to be tracked and
+  versioned. It leverages Git's features to enable managing different versions
+  of data itself, data pipelines, and experiments.
+
+- DVC is not fundamentally bound to Git, and can work without it (except
+  versioning-related features). This also applies to Git-LFS and Git-annex,
+  below.
 
 ### Git-LFS (Large File Storage)
-
-- DVC is not fundamentally bound to Git, and can work without it (except any
-  versioning-related features).
 
 - DVC does not require special servers like Git-LFS demands. Any cloud storage
   like S3, Google Cloud Storage, or even an SSH server can be used as a
@@ -33,35 +34,34 @@ data itself, data pipelines, and experiments.
 
 ### Git-annex
 
-- DVC uses the idea of storing the content of large files (that you don't want
-  to see in your Git repository) in a local key-value store and uses file
-  symlinks instead of the actual files.
-
 - DVC can use reflinks\* or hardlinks (depending on the system) instead of
   symlinks to improve performance and the user experience.
 
-- DVC optimizes file hash calculation.
-
-- Git-annex is a datafile-centric system whereas DVC is focused on providing a
+- Git-annex is a datafile-centric system whereas DVC focuses on providing a
   workflow for machine learning and reproducible experiments. When a DVC or
   Git-annex repository is cloned via `git clone`, data files won't be copied to
   the local machine, as file contents are stored in separate
-  [remotes](/doc/command-reference/remote). With DVC,
-  [DVC-files](/doc/user-guide/dvc-files-and-directories), which provide the
-  reproducible workflow, are always included in the Git repository. Hence, they
-  can be executed locally with minimal effort.
+  [remotes](/doc/command-reference/remote). With DVC however, `.dvc` files,
+  which provide the reproducible workflow, are always included in the Git
+  repository. Hence, they can be executed locally with minimal effort.
 
-- DVC is not fundamentally bound to Git, and users have the option of using DVC
-  without Git.
+- DVC optimizes file hash calculation.
+
+> \* **copy-on-write links or "reflinks"** are a relatively new way to link
+> files in UNIX-style file systems. Unlike hardlinks or symlinks, they support
+> transparent [copy on write](https://en.wikipedia.org/wiki/Copy-on-write). This
+> means that editing a reflinked file is always safe as all the other links to
+> the file will reflect the changes.
 
 ### Git workflows/methodologies such as Gitflow
 
-- DVC supports a new experimentation methodology that integrates easily with Git
-  workflows. A separate branch can be created for each experiment, with a
-  subsequent merge of the branch if the experiment was successful.
+- DVC enables a new experimentation methodology that integrates easily with
+  existing Git workflows. For example, a separate branch can be created for each
+  experiment, with a subsequent merge of the branch if the experiment is
+  successful.
 
-- DVC innovates by giving experimenters the ability to easily navigate through
-  past experiments without recomputing them each time.
+- DVC innovates by giving users the ability to easily navigate through past
+  experiments without recomputing them each time.
 
 ### Workflow management tools
 
@@ -122,11 +122,3 @@ _Luigi_, etc.
   - DVC uses file timestamps and inodes for optimization. This allows DVC to
     avoid recomputing all dependency file hashes, which would be highly
     problematic when working with large files (10 GB+).
-
----
-
-> \* **copy-on-write links or "reflinks"** are a relatively new way to link
-> files in UNIX-style file systems. Unlike hardlinks or symlinks, they support
-> transparent [copy on write](https://en.wikipedia.org/wiki/Copy-on-write). This
-> means that editing a reflinked file is always safe as all the other links to
-> the file will reflect the changes.
