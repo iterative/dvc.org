@@ -1,0 +1,23 @@
+name: DVC Link Check
+on: deployment_status
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    if: deployment_status.state == 'success'
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Run the link checker
+      id: check
+      run: "./scripts/link-check-git-diff.sh"
+      env:
+        CHECK_LINKS_RELATIVE_URL: ${{ deployment_status.target_url }}
+
+    - uses: LouisBrunner/checks-action@v0.1.0
+      if: always()
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        name: Link Check
+        conclusion: ${{ job }}
