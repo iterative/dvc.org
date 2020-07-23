@@ -169,6 +169,12 @@ Our [pipeline](/doc/command-reference/dag) has been setup with these
 
 ```dvc
 $ dvc dag evaluate
+        +-------------------+
+    | data/data.xml.dvc |
+    +-------------------+
+              *
+              *
+              *
          +---------+
          | prepare |
          +---------+
