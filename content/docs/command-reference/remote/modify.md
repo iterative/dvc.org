@@ -593,7 +593,7 @@ more information.
   authentication. The order in which DVC searches for username:
 
   1. `user` specified in one of the DVC configs;
-  2. `user` specified in the url(e.g. `webdav://user@example.com/path`);
+  2. `user` specified in the url (e.g. `webdav://user@example.com/path`)
 
   ```dvc
   $ dvc remote modify --local myremote user myuser
