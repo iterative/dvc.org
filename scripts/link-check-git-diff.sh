@@ -4,6 +4,8 @@ set -euo pipefail
 source "$(dirname "$0")"/utils.sh
 pushd "$repo"
 
+git fetch origin master
+
 differ="git diff $(git merge-base HEAD origin/master)"
 changed="$($differ --name-only -- '*.css' '*.js' '*.jsx' '*.md' '*.tsx' '*.ts' '*.json' ':!redirects-list.json' ':!*.test.js')"
 

@@ -17,8 +17,15 @@ jobs:
         CHECK_LINKS_RELATIVE_URL: ${{ github.event.deployment_status.target_url }}
 
     - uses: LouisBrunner/checks-action@v0.1.0
-      if: always()
+      if: success()
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         name: Link Check
-        conclusion: ${{ job }}
+        conclusion: "Pass"
+
+    - uses: LouisBrunner/checks-action@v0.1.0
+      if: failure()
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        name: Link Check
+        conclusion: "Fail"
