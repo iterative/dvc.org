@@ -1,7 +1,7 @@
 # checkout
 
 Update data files and directories in the <abbr>workspace</abbr> based on current
-DVC-files.
+`dvc.lock` and `.dvc` files.
 
 ## Synopsis
 
@@ -16,20 +16,17 @@ positional arguments:
 
 ## Description
 
-Synchronizes the workspace data with all the
-[tracked](/doc/command-reference/add) files and directories specified in the
-present `dvc.lock` and `.dvc` files, which act as pointers to corresponding
-<abbr>cached</abbr> data contents.
+Synchronizes the workspace data files (and directories) with the current version
+of the project. This is typically needed after `git clone` and `git checkout`
+because `dvc.lock` and `.dvc` files (which point to the <abbr>cached</abbr> data
+tracked by DVC) are added, updated, or removed. This command makes sure that the
+corresponding data files are found in the workspace.
 
 The `targets` given to this command (if any) limit which files to checkout. It
 accepts paths to tracked files or directories (even if such paths are within a
 directory
 [tracked as a whole](/doc/command-reference/add#tracking-directories)), `.dvc`
 files, or stage names (found in `dvc.yaml`).
-
-`dvc checkout` is useful, for example, when using Git in the
-<abbr>project</abbr>, after `git clone`, `git checkout`, or any other operation
-that changes the DVC files in the <abbr>workspace</abbr>.
 
 💡 For convenience, a Git hook is available to automate running `dvc checkout`
 after `git checkout`. See the
@@ -38,16 +35,16 @@ for more details.
 
 The execution of `dvc checkout` does the following:
 
-- Uses the appropriate `dvc.lock` and `.dvc` files to compare the hash values of
-  their <abbr>outputs</abbr> against the actual files or directories in the
-  workspace (similar to `dvc status`).
+- Checks `dvc.lock` and `.dvc` files to compare the hash values of their
+  <abbr>outputs</abbr> against the actual files or directories in the workspace
+  (similar to `dvc status`).
 
   > Outputs found in `dvc.yaml` but not in `dvc.lock` will be skipped, with a
   > warning.
 
 - Missing data files or directories are restored from the cache. Those that
-  don't match with any DVC-file are removed. See options `--force` and
-  `--relink`. A list of the changes done is printed.
+  don't match with `dvc.lock` or `.dvc` files are removed. See options `--force`
+  and `--relink`. A list of the changes done is printed.
 
 By default, this command tries not make copies of cached files in the workspace,
 using reflinks instead when supported by the file system (refer to
