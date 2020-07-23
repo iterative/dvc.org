@@ -168,10 +168,28 @@ Our [pipeline](/doc/command-reference/dag) has been setup with these
 [stages](/doc/command-reference/run):
 
 ```dvc
-$ dvc dag src/evaluate.py.dvc
-+---------------------+
-| src/evaluate.py.dvc |
-+---------------------+
+$ dvc dag evaluate
+         +---------+
+         | prepare |
+         +---------+
+              *
+              *
+              *
+        +-----------+
+        | featurize |
+        +-----------+
+         **        **
+       **            *
+      *               **
++-------+               *
+| train |             **
++-------+            *
+         **        **
+           **    **
+             *  *
+        +----------+
+        | evaluate |
+        +----------+
 ```
 
 Imagine the [remote storage](/doc/command-reference/remote) has been modified

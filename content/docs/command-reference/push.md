@@ -155,17 +155,11 @@ a [pipeline](/doc/command-reference/dag) has been setup with these
 [stages](/doc/command-reference/run):
 
 ```dvc
-$ dvc dag
-data/Posts.xml.zip.dvc
-Posts.xml.dvc
-Posts.tsv.dvc
-Posts-test.tsv.dvc
-matrix-train.p.dvc
-model.p.dvc
-Dvcfile
+test-posts
+matrix-train
 ```
 
-Imagine the <abbr>projects</abbr> has been modified such that the
+Imagine the <abbr>project</abbr> has been modified such that the
 <abbr>outputs</abbr> of some of these stages need to be uploaded to
 [remote storage](/doc/command-reference/remote).
 
