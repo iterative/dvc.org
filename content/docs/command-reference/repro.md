@@ -54,8 +54,7 @@ other options.
 
 It saves all the data files, intermediate or final results into the <abbr>DVC
 cache</abbr> (unless the `--no-commit` option is used), and updates the hash
-values of changed dependencies and outputs in the DVC files (`dvc.lock` and
-`.dvc`).
+values of changed dependencies and outputs in the `dvc.lock` and `.dvc` files.
 
 ### Parallel stage execution
 
@@ -83,11 +82,12 @@ $ dvc dag
 ```
 
 This pipeline consists of two parallel branches (`A` and `B`), and the final
-"result" stage, where the branches merge. To reproduce both branches at the same
-time, you could run `dvc repro A2` and `dvc repro B2` at the same time (e.g. in
-separate terminals). After both finish successfully, you can then run
-`dvc repro train`: DVC will know that both branches are already up-to-date and
-only execute the final stage.
+"result" stage, where the branches merge. If you run `dvc repro` at this point,
+it would reproduce the complete pipeline with all stages executing sequentially.
+To reproduce both branches at the same time, you could run `dvc repro A2` and
+`dvc repro B2` at the same time (e.g. in separate terminals). After both finish
+successfully, you can then run `dvc repro train`: DVC will know that both
+branches are already up-to-date and only execute the final stage.
 
 ## Options
 
@@ -151,7 +151,8 @@ only execute the final stage.
   each execution, meaning the cache cannot be trusted for such stages.
 
 - `--downstream` - only execute the stages after the given `targets` in their
-  corresponding pipelines, including the target stages themselves.
+  corresponding pipelines, including the target stages themselves. This option
+  doesn't have any effect if no `targets` are provided.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -262,31 +263,41 @@ The answer to universe is 42
 - The Hitchhiker's Guide to the  Galaxy
 ```
 
-Now, using the `--downstream` option results in the following output:
+And add a new stage to the pipeline:
 
 ```dvc
-$ dvc repro --downstream
+$ dvc run -n final -d count.txt -o alphabet.txt \
+            "cat count.txt | egrep -o '[a-zA-Z]+' > alphabet.txt"
+```
+
+Now, using the `--downstream` option with `count` as a target stage results in
+the following output:
+
+```dvc
+$ dvc repro --downstream count
 Data and pipelines are up to date.
 ```
 
-The reason being that the `text.txt` file is not a dependency in the last stage
-of the pipeline, used as the default target by `dvc repro`. `text.txt` is a
-dependency of the `filter` stage, which happens earlier (shown in the figure
-below), so it's skipped given the `--downstream` option.
+The reason being that the `text.txt` file is a dependency in the `filter` stage
+of the pipeline which happens before the `count` stage (shown in the following
+figure) and hence did not get updated.
 
 ```dvc
 $ dvc dag
-    .------------.
-    |   filter   |
-    `------------'
-           *
-           *
-           *
-      .---------.
-      |  count  |
-      `---------'
-```
 
-> Note that using `dvc repro --downstream` without a target will always have a
-> similar effect, where all previous stages are ignored — only if the last stage
-> is changed will it have any effect.
+  +--------+
+  | filter |
+  +--------+
+      *
+      *
+      *
+  +-------+
+  | count |
+  +-------+
+      *
+      *
+      *
+  +-------+
+  | final |
+  +-------+
+```
