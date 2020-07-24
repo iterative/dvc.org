@@ -154,10 +154,7 @@ Demonstrating the `--with-deps` option requires a larger example. First, assume
 a [pipeline](/doc/command-reference/dag) has been setup with these
 [stages](/doc/command-reference/run):
 
-```dvc
-test-posts
-matrix-train
-```
+model-posts post-features test-posts matrix-train
 
 Imagine the <abbr>project</abbr> has been modified such that the
 <abbr>outputs</abbr> of some of these stages need to be uploaded to
@@ -165,7 +162,6 @@ Imagine the <abbr>project</abbr> has been modified such that the
 
 ```dvc
 $ dvc status --cloud
-
   new:            data/model.p
   new:            data/matrix-test.p
   new:            data/matrix-train.p
@@ -185,7 +181,6 @@ $ dvc push --with-deps model.p.dvc
 
 $ dvc status --cloud
 
-Data and pipelines are up to date.
 ```
 
 We specified a stage in the middle of this pipeline (`matrix-train.p.dvc`) with
