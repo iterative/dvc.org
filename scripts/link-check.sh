@@ -6,7 +6,7 @@
 #     link-check.sh [<files>]
 set -euo pipefail
 
-source "$(dirname "$0")"/utils.sh
+source ./scripts/utils.sh
 
 checker(){  # expects list of urls
   errors=0
