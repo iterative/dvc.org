@@ -1,7 +1,7 @@
 # checkout
 
-Update data files and directories in the <abbr>workspace</abbr> based on current
-`dvc.lock` and `.dvc` files.
+Update DVC-tracked files and directories in the <abbr>workspace</abbr> based on
+current `dvc.lock` and `.dvc` files.
 
 ## Synopsis
 
@@ -16,22 +16,15 @@ positional arguments:
 
 ## Description
 
-Synchronizes the workspace data files (and directories) with the current version
-of the project. This is typically needed after `git clone` and `git checkout`
-because `dvc.lock` and `.dvc` files (which point to the <abbr>cached</abbr> data
-tracked by DVC) are added, updated, or removed. This command makes sure that the
-corresponding data files are found in the workspace.
+This command is usually needed after `git checkout`, `git clone`, or any other
+operation that changes the `dvc.lock` or `.dvc` in the workspace. It restores
+the corresponding versions of the DVC-tracked files and directories from the
+<abbr>cache</abbr>.
 
-The `targets` given to this command (if any) limit which files to checkout. It
-accepts paths to tracked files or directories (even if such paths are within a
-directory
+The `targets` given to this command (if any) limit what to checkout. It accepts
+paths to tracked files or directories (even if such paths are within a directory
 [tracked as a whole](/doc/command-reference/add#tracking-directories)), `.dvc`
 files, or stage names (found in `dvc.yaml`).
-
-💡 For convenience, a Git hook is available to automate running `dvc checkout`
-after `git checkout`. See the
-[Automating example](#example-automating-dvc-checkout) below or `dvc install`
-for more details.
 
 The execution of `dvc checkout` does the following:
 
@@ -45,6 +38,11 @@ The execution of `dvc checkout` does the following:
 - Missing data files or directories are restored from the cache. Those that
   don't match with `dvc.lock` or `.dvc` files are removed. See options `--force`
   and `--relink`. A list of the changes done is printed.
+
+💡 For convenience, a Git hook is available to automate running `dvc checkout`
+after `git checkout`. See the
+[Automating example](#example-automating-dvc-checkout) below or `dvc install`
+for more details.
 
 By default, this command tries not make copies of cached files in the workspace,
 using reflinks instead when supported by the file system (refer to
@@ -67,9 +65,9 @@ such a case, `dvc checkout` prints a warning message. It also lists the partial
 progress made by the checkout.
 
 There are two methods to restore a file missing from the cache, depending on the
-situation. In some cases a pipeline must be reproduced (using `dvc repro`) to
-regenerate its outputs (see also `dvc dag`). In other cases the cache can be
-pulled from remote storage using `dvc pull`.
+situation. In some cases the cache can be pulled from
+[remote storage](/doc/command-reference/remote) using `dvc pull`. In other cases
+the pipeline must be reproduced (using `dvc repro`) to regenerate its outputs.
 
 ## Options
 
