@@ -247,5 +247,5 @@ MD5 (model.pkl) = ab349c2b5fa2a0f66d6f33f94424aebe
 ```
 
 Previously this took two commands, `git checkout` followed by `dvc checkout`. We
-can now skip the second one, which is automatically run for us. The workspace is
-automatically synchronized accordingly.
+can now skip the second one, which is automatically run for us. The workspace
+files are automatically updated accordingly.
