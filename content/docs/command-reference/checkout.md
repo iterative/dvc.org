@@ -155,8 +155,8 @@ bigrams-experiment      <- Uses bigrams to improve the model
 ```
 
 We can now run `dvc checkout` to update the most recent `model.pkl`, `data.xml`,
-and any other files tracked by DVC. The model file hash, `ab349c2...`, is saved
-in the `dvc.lock` file, for example, so it can be confirmed with:
+and any other files tracked by DVC. The model file hash (`ab349c2...`) is saved
+in `dvc.lock`, and it can be confirmed with:
 
 ```dvc
 $ dvc checkout
@@ -173,7 +173,7 @@ automatically adjusts the repo files, by replacing, adding, or deleting them as
 necessary.
 
 ```dvc
-$ git checkout baseline-experiment  # Commit where model was created
+$ git checkout baseline-experiment  # Git commit where model was created
 ```
 
 Let's check the hash value of `model.pkl` in `dvc.lock` now:
