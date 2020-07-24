@@ -84,7 +84,7 @@ $ dvc dag
 This pipeline consists of two parallel branches (`A` and `B`), and the final
 `train` stage, where the branches merge. If you run `dvc repro` at this point,
 it would reproduce the complete pipeline with all stages executing sequentially.
-To reproduce both branches at the same time, you could run `dvc repro A2` and
+To reproduce both branches simultaneously, you could run `dvc repro A2` and
 `dvc repro B2` at the same time (e.g. in separate terminals). After both finish
 successfully, you can then run `dvc repro train`: DVC will know that both
 branches are already up-to-date and only execute the final stage.
