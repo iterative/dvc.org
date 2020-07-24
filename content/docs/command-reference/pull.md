@@ -165,12 +165,8 @@ $ dvc pull train.dvc
 > follow this example if you tried the previous ones.
 
 Our [pipeline](/doc/command-reference/dag) has been setup with these
-[stages](/doc/command-reference/run):
-
-> prepare  
-> featurize  
-> train  
-> evaluate
+[stages](/doc/command-reference/run): `prepare`, `featurize`, `train`,
+`evaluate`.
 
 Imagine the [remote storage](/doc/command-reference/remote) has been modified
 such that the data in some of these stages should be updated in the
