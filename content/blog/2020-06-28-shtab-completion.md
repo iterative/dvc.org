@@ -45,6 +45,11 @@ Ah, the joy of shell tab completion.
 Tab completion is an indispensable part of writing anything on the command-line.
 Personally, I can't imaging trying to `git co` (aliased to `git checkout`) a
 branch without `<TAB>` to do the heavy lifting.
+[They say](https://en.wikipedia.org/wiki/Letter_frequency) "E" is the most
+common vowel, and "T" the most common consonant. My keyboard use probably looks
+more like this:
+
+![My key usage](/uploads/images/2020-06-28/key-frequencies.png)
 
 Now there's a tool called `dvc` which is like [Git for data](https://dvc.org).
 It can be viewed as a cross-platform combination of [`git`] and [`make`]
