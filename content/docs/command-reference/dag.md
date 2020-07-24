@@ -15,25 +15,26 @@ positional arguments:
 
 ## Description
 
-A data pipeline, in general, is a series of data processing
-[stages](/doc/command-reference/run) (for example console commands that take an
-input and produce an <abbr>output</abbr>). A pipeline may produce intermediate
-data, and has a final result.
+A Data pipeline refers to a series of [stages](/doc/command-reference/run)
+through which our data moves. Each stage of a pipeline takes some input and
+produces some output. This output is then passed onto the next stage of a
+pipeline. This process continues until we reach the final stage which produces
+the final results. A pipeline works the same way as a compiler works, it takes
+some data as an input and produces an output.
 
-Data processing or ML pipelines typically start a with large raw datasets,
-include intermediate featurization and training stages, and produce a final
-model, as well as accuracy [metrics](/doc/command-reference/metrics).
+You can create multiple pipelines and each pipeline would be considered as an
+experiment. After completing one experiment, you can commit the changes and add
+a tag to your experiment. A tag is a name that you give to your experiment.
 
-In DVC, pipeline stages and commands, their data I/O, interdependencies, and
-results (intermediate or final) are specified in `dvc.yaml`, which can be
-written manually or built using the helper command `dvc run`. This allows DVC to
-restore one or more pipelines later (see `dvc repro`).
+Using DVC, you can create a metafile `data.dvc` which allows us to reproduce
+each stage of a pipeline using `dvc repro`. At the end of every pipeline, you
+can save your output in a metrics file using `dvc metrics` command. This file
+will help you in comparing the results of every experiment.
 
-> DVC builds a dependency graph
-> ([DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph)) to do this.
-
-`dvc dag` command displays the stages of a pipeline up to the target stage. If
-`target` is omitted, it will show the full project DAG.
+DVC provides a `dvc dag` command which creates a direct acyclic graph
+([DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph)) that gives a
+pictorial view of a pipeline. It also tells you in which stage of a pipeline you
+are currently in.
 
 ## Options
 
