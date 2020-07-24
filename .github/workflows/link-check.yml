@@ -13,7 +13,7 @@ jobs:
 
     - name: Run the link checker
       id: check
-      run: "./scripts/link-check-git-diff.sh"
+      run: "./scripts/link-check-action.sh"
       env:
         CHECK_LINKS_RELATIVE_URL: ${{ github.event.deployment_status.target_url }}
 
