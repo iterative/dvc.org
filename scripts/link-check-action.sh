@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-source "$(dirname "$0")"/utils.sh
+source ./scripts/utils.sh
 
 git fetch origin master >/dev/null 2>&1
 
@@ -11,10 +11,10 @@ code=0
 
 echo "$changed" | while read -r file ; do
   # check whole file
-  # "$(dirname "$0")"/link-check.sh "$file"
+  # ./scripts/link-check.sh "$file"
   # check just changed lines
   echo -n "$file:"
-  "$(dirname "$0")"/link-check.sh <($differ -U0 -- "$file" | grep '^\+')
+  ./scripts/link-check.sh <($differ -U0 -- "$file" | grep '^\+')
   if [ $? -ne 0 ] ; then
      code=1
   fi
