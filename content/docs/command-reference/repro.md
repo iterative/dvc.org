@@ -152,7 +152,7 @@ branches are already up-to-date and only execute the final stage.
 
 - `--downstream` - only execute the stages after the given `targets` in their
   corresponding pipelines, including the target stages themselves. This option
-  doesn't have any effect if no `targets` are provided.
+  has no effect if no `targets` are provided.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
