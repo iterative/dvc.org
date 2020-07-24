@@ -9,7 +9,7 @@ workarounds that can help avoid these potential problems:
 
 The regular Command Prompt (`cmd`) in Windows will most likely not help you use
 DVC effectively, or follow the examples in our docs. Please avoid it. There's no
-perfect solution, bu here are some ideas:
+perfect solution, but here are some ideas:
 
 - The full [Cmder](https://cmder.net/) console emulator combines several useful
   tools like [ConEmu](https://conemu.github.io/), and
