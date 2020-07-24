@@ -16,11 +16,11 @@ positional arguments:
 ## Description
 
 A data pipeline, in general, is a series of data processing
-[stages](/doc/command-reference/run) (for example console commands that take an
+[stages](/doc/command-reference/run) (for example, console commands that take an
 input and produce an <abbr>output</abbr>). A pipeline may produce intermediate
 data, and has a final result.
 
-Data processing or ML pipelines typically start a with large raw datasets,
+Data processing or ML pipelines typically start with large raw datasets,
 include intermediate featurization and training stages, and produce a final
 model, as well as accuracy [metrics](/doc/command-reference/metrics).
 
