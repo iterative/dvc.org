@@ -83,11 +83,11 @@ $ dvc dag
 
 This pipeline consists of two parallel branches (`A` and `B`), and the final
 `train` stage, where the branches merge. If you run `dvc repro` at this point,
-it would reproduce the complete pipeline with all stages executing sequentially.
-To reproduce both branches simultaneously, you could run `dvc repro A2` and
-`dvc repro B2` at the same time (e.g. in separate terminals). After both finish
-successfully, you can then run `dvc repro train`: DVC will know that both
-branches are already up-to-date and only execute the final stage.
+it would reproduce each branch sequentially before train. To reproduce both
+branches simultaneously, you could run `dvc repro A2` and `dvc repro B2` at the
+same time (e.g. in separate terminals). After both finish successfully, you can
+then run `dvc repro train`: DVC will know that both branches are already
+up-to-date and only execute the final stage.
 
 ## Options
 
@@ -152,7 +152,7 @@ branches are already up-to-date and only execute the final stage.
 
 - `--downstream` - only execute the stages after the given `targets` in their
   corresponding pipelines, including the target stages themselves. This option
-  has no effect if no `targets` are provided.
+  has no effect if `targets` are not provided.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -263,19 +263,26 @@ The answer to universe is 42
 - The Hitchhiker's Guide to the  Galaxy
 ```
 
-And add a new stage to the pipeline:
+And update the `process.py` file to count the number of digits.
 
-```dvc
-$ dvc run -n final -d count.txt -o alphabet.txt \
-            "cat count.txt | egrep -o '[a-zA-Z]+' > alphabet.txt"
+```python
+import sys
+num_digits = 0
+with open(sys.argv[1], 'r') as f:
+    for number in f:
+        num_digits += len(number) - 1
+print("Number of digits:",end=" ")
+print(num_digits)
 ```
 
-Now, using the `--downstream` option with `count` as a target stage results in
+Now, using the `--downstream` option with `count` as a target stage, results in
 the following output:
 
 ```dvc
 $ dvc repro --downstream count
-Data and pipelines are up to date.
+Running stage 'count' with command:
+        python3 process.py numbers.txt > count.txt
+Updating lock file 'dvc.lock'
 ```
 
 The reason being that the `text.txt` file is a dependency in the `filter` stage
@@ -293,11 +300,5 @@ $ dvc dag
       *
   +-------+
   | count |
-  +-------+
-      *
-      *
-      *
-  +-------+
-  | final |
   +-------+
 ```
