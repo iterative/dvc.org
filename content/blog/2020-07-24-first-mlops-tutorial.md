@@ -25,6 +25,8 @@ DevOps practices (like continuous integration) as a regular fixture of machine
 learning and data science projects. But there are plenty of challenges ahead,
 and a big one is _literacy_.
 
+[Relative broken link](/not/a/real/path)
+
 So many data scientists, like developers, are self-taught. Data science degrees
 have only recently emerged on the scene, which means if you polled a handful of
 senior-level data scientists, there'd almost certainly be no universal training
