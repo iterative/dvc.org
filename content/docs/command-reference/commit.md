@@ -169,11 +169,11 @@ First verification:
 ```dvc
 $ dvc status
 featurize:
-	  changed outs:
-		    not in cache:       data/features
+	changed outs:
+	  not in cache:       data/features
 train:
-	  changed outs:
-		    not in cache:       model.pkl
+	changed outs:
+		not in cache:       model.pkl
 ```
 
 Now we can look in the cache directory to see if the new version of `model.pkl`
