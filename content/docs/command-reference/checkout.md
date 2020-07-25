@@ -130,7 +130,7 @@ below.
 
 The workspace looks like this:
 
-````dvc
+```dvc
 .
 ├── README.md
 ├── data
@@ -145,8 +145,8 @@ The workspace looks like this:
     ├── featurization.py
     ├── prepare.py
     ├── requirements.txt
-    └── train.py```
-````
+    └── train.py
+```
 
 This repository includes the following tags, that represent different variants
 of the resulting model:
