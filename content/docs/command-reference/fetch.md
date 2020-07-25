@@ -239,7 +239,7 @@ Their hash values are shown above.
 ## Example: With dependencies
 
 After following the previous example (**Specific stages**), only the files
-associated with the `prepare` stage file have been fetched. Several
+associated with the `prepare` stage have been fetched. Several
 dependencies/outputs of other pipeline stages are still missing from the cache:
 
 ```dvc
