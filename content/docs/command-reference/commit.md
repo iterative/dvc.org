@@ -140,75 +140,75 @@ stage with `dvc run --no-commit`, or reproduce an entire pipeline using
 development of the stage is finished, `dvc commit` can be used to store data
 files in the cache.
 
-In the `featurize.dvc` stage, `src/featurize.py` is executed. A useful change to
-make is adjusting a parameter to `CountVectorizer` in that script. Namely,
-adjusting the `max_features` value in the line below changes the resulting
-model:
+In the `featurize` stage, `src/featurization.py` is executed. A useful change to
+make is adjusting the `max_features` parameter to `CountVectorizer` in that
+script. The parameters are defined in `params.yaml` file. Updating the value of
+`max_features` to 6000 in `params.yaml` changes the resulting model:
 
-```python
-bag_of_words = CountVectorizer(stop_words='english',
-            max_features=6000, ngram_range=(1, 2))
+```
+featurize:
+  max_features: 6000
+  ngrams: 2
 ```
 
-This edit introduces a change that would cause the `featurize.dvc`, `train.dvc`
-and `evaluate.dvc` stages to execute if we ran `dvc repro`. But if we want to
-try several values for `max_features` and save only the best result to the
-cache, we can run it like this:
+This edit introduces a change that would cause the `featurize`, `train` and
+`evaluate` stages to execute if we ran `dvc repro`. But if we want to try
+several values for `max_features` and save only the best result to the cache, we
+can run it like this:
 
 ```dvc
-$ dvc repro --no-commit evaluate.dvc
+$ dvc repro --no-commit evaluate
 ```
 
-We can run this command as many times as we like, editing `featurize.py` any way
-we like, and so long as we use `--no-commit`, the data does not get saved to the
-cache. Let's verify that's the case:
+We can run this command as many times as we like, editing `featurization.py` any
+way we like, and so long as we use `--no-commit`, the data does not get saved to
+the cache. Let's verify that's the case:
 
 First verification:
 
 ```dvc
 $ dvc status
-
-evaluate.dvc:
-    changed deps:
-        modified:           data/features
-        modified:           model.pkl
-train.dvc:
-    changed outs:
-        not in cache:       model.pkl
+featurize:
+	  changed outs:
+		    not in cache:       data/features
+train:
+	  changed outs:
+		    not in cache:       model.pkl
 ```
 
 Now we can look in the cache directory to see if the new version of `model.pkl`
-is indeed _not in cache_ as claimed. Look at `train.dvc` first:
+is indeed _not in cache_ as claimed. Let's look at the latest state of `train`
+in `dvc.lock` first:
 
 ```yaml
-cmd: python src/train.py data/features model.pkl
-deps:
-  - md5: d05e0201a3fb47c878defea65bd85e4d
-    path: src/train.py
-  - md5: b7a357ba7fa6b726e615dd62b34190b4.dir
-    path: data/features
-md5: b91b22bfd8d9e5af13e8f48523e80250
-outs:
-  - cache: true
-    md5: 70599f166c2098d7ffca91a369a78b0d
-    metric: false
-    path: model.pkl
-    persist: false
-wdir: .
+train:
+  cmd: python src/train.py data/features model.pkl
+  deps:
+    - path: data/features
+      md5: de03a7e34e003e54dde0d40582c6acf4.dir
+    - path: src/train.py
+      md5: ad8e71b2cca4334a7d3bb6495645068c
+  params:
+    params.yaml:
+      train.n_estimators: 100
+      train.seed: 20170428
+  outs:
+    - path: model.pkl
+      md5: 9aba000ba83b341a423a81eed8ff9238
 ```
 
 To verify this instance of `model.pkl` is not in the cache, we must know the
 path to the cached file. In the cache directory, the first two characters of the
 hash value are used as a subdirectory name, and the remaining characters are the
 file name. Therefore, had the file been committed to the cache, it would appear
-in the directory `.dvc/cache/70`. Let's check:
+in the directory `.dvc/cache/9a`. Let's check:
 
 ```dvc
-$ ls .dvc/cache/70
-ls: .dvc/cache/70: No such file or directory
+$ ls .dvc/cache/9a
+ls: .dvc/cache/9a: No such file or directory
 ```
 
-If we've determined the changes to `featurize.py` were successful, we can
+If we've determined the changes to `featurization.py` were successful, we can
 execute this set of commands:
 
 ```dvc
@@ -216,7 +216,7 @@ $ dvc commit
 $ dvc status
 Data and pipelines are up to date.
 $ ls .dvc/cache/70
-599f166c2098d7ffca91a369a78b0d
+ba000ba83b341a423a81eed8ff9238
 ```
 
 We've verified that `dvc commit` has saved the changes into the cache, and that
@@ -226,8 +226,7 @@ the new instance of `model.pkl` is there.
 
 It is also possible to execute the commands that are executed by `dvc repro` by
 hand. You won't have DVC helping you, but you have the freedom to run any
-command you like, even ones not defined in a
-[DVC-file](/doc/user-guide/dvc-files-and-directories). For example:
+command you like, even ones not defined in a `dvc.yaml`. For example:
 
 ```dvc
 $ python src/featurization.py data/prepared data/features
