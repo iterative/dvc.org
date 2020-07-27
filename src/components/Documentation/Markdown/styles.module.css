@@ -52,14 +52,22 @@
       text-align: center;
     }
 
-    a[target='_blank']::after {
-      position: relative;
-      top: 1px;
-      right: 0;
-      width: 12px;
-      height: 12px;
-      margin-left: 1px;
-      content: url(/img/external-link.svg);
+    a[target='_blank'] {
+      white-space: nowrap;
+
+      &::after {
+        position: relative;
+        top: 1px;
+        right: 0;
+        width: 12px;
+        height: 12px;
+        margin-left: 1px;
+        content: url(/img/external-link.svg);
+      }
+    }
+
+    :global(a.gatsby-resp-image-link)::after {
+      content: unset;
     }
 
     .anchor {
