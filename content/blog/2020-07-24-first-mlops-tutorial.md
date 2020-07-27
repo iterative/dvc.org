@@ -19,6 +19,8 @@ tags:
   - CML
 ---
 
+[AUC value](https://towardsdatascience.com/understanding-auc-roc-curve-68b2303cc9c5)
+
 Earlier this month, we launched [CML](https;//cml.dev), our latest open-source
 project in the MLOps space. We think it's a step towards establishing powerful
 DevOps practices (like continuous integration) as a regular fixture of machine
