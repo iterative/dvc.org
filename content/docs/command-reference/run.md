@@ -95,7 +95,7 @@ Relevant notes:
 
 [parameters](/doc/command-reference/params) (`-p`/`--params` option) are a
 special type of key/value dependencies. Multiple parameter dependencies can be
-specified from within one or more YAML or JSON parameters files (e.g.
+specified from within one or more YAML, JSON or TOML parameters files (e.g.
 `params.yaml`). This allows tracking experimental hyperparameters easily.
 
 Special types of output files, [metrics](/doc/command-reference/metrics) (`-m`
