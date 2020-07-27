@@ -12,7 +12,7 @@ descriptionLong: |
   This tool was originally created to help `dvc`, but we realised it could be made
   more generic and valuable to the world's entire ecosystem of Python CLI
   applications. Find out how to take advantage of it in this blog post.
-picture: 2020-06-28/key-frequencies.png
+picture: 2020-06-28/tab-py.jpg
 pictureComment: My key usage
 author: casper_dcl
 ---
@@ -51,7 +51,7 @@ branch without `<TAB>` to do the heavy lifting.
 common vowel, and "T" the most common consonant. My keyboard use probably looks
 more like this:
 
-![](/uploads/images/2020-06-28/key-frequencies.png 'My key usage =100%')
+![](/uploads/images/2020-06-28/key-frequencies.png 'My key usage =500')
 
 Now there's a tool called `dvc` which is like [Git for data](https://dvc.org).
 It can be viewed as a cross-platform combination of [`git`] and [`make`]
