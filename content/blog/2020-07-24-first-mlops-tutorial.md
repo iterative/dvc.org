@@ -19,7 +19,12 @@ tags:
   - CML
 ---
 
-[AUC value](https://towardsdatascience.com/understanding-auc-roc-curve-68b2303cc9c5)
+[working absolute](https://www.google.com)
+[broken absolute on existing site](https://example.com/not/a/real/page)
+[non-existent site](https://thisisnotarealsiteandihopenobodyregistersit.us)
+[good relative](/doc) [broken relative](/a/page/that/doesnt/exist)
+[TDS 405 test](https://towardsdatascience.com/understanding-auc-roc-curve-68b2303cc9c5)
+[casual link with no protocol](google.com) [excluded](https://myendpoint.com)
 
 Earlier this month, we launched [CML](https;//cml.dev), our latest open-source
 project in the MLOps space. We think it's a step towards establishing powerful
