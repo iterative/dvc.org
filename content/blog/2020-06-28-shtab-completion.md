@@ -13,15 +13,9 @@ descriptionLong: |
   more generic and valuable to the world's entire ecosystem of Python CLI
   applications. Find out how to take advantage of it in this blog post.
 picture: 2020-06-28/tab-py.jpg
-pictureComment: My key usage
+pictureComment: Zero Effort Tab Completion for Python Applications
 author: casper_dcl
 ---
-
-> Other potential titles:
->
-> - Zero Effort Tab Completion for Python Applications
-> - Finally: 1-Click Tab Completion for [`argparse`], [`docopt`] and [`argopt`]
-> - A [`shtab`] in the dark at completing your ~~sentences~~ commands
 
 Command line tools are powerful. Things like [`make`] have manual pages
 spanning, well,
@@ -51,7 +45,8 @@ branch without `<TAB>` to do the heavy lifting.
 common vowel, and "T" the most common consonant. My keyboard use probably looks
 more like this:
 
-![](/uploads/images/2020-06-28/key-frequencies.png 'My key usage =500')
+![](/uploads/images/2020-06-28/key-frequencies.png 'Yes, I use vim =500')_My
+key usage
 
 Now there's a tool called `dvc` which is like [Git for data](https://dvc.org).
 It can be viewed as a cross-platform combination of [`git`] and [`make`]
@@ -120,7 +115,8 @@ shtab --shell=zsh hello.main.get_main_parser \
 Handily you can install `shtab`'s own completions by following the above
 examples replacing `hello` with `shtab`.
 
-![`shtab`-driven `dvc` completion in `bash` and `zsh`](/uploads/images/2020-06-28/dvc.gif)
+![](/uploads/images/2020-06-28/dvc.gif)_`shtab`-driven `dvc` completion in
+`bash` and `zsh`
 
 Using `shtab`, here's what
 [`dvc`'s completion](https://dvc.org/doc/install/completion) looks like when
@@ -137,7 +133,7 @@ completion  -- Prints out shell tab completion scripts.
 At Top: Hit TAB for more, or the character to insert
 ```
 
-All completion suggestions guaranteed in-sync with the code! The maintainers at
+All completion suggestions guaranteed in-sync with the code! The maintainers of
 `dvc` were very surprised to find no less than
 [84 commits](https://github.com/iterative/dvc/commits/master/scripts/completion)
 touching their old completion scripts. Such churn is now a thing of the past!
@@ -193,7 +189,8 @@ Try it out with `pip install -U shtab` or `conda install -c conda-forge shtab`!
 
 Is it worth the time?
 
-[![xkcd#1205](https://imgs.xkcd.com/comics/is_it_worth_the_time.png)](https://xkcd.com/1205)
+![](https://imgs.xkcd.com/comics/is_it_worth_the_time.png)_It's worth it
+[xkcd#1205](https://xkcd.com/1205)
 
 [`shtab`] would be on the second row, far left (maybe even off grid). It's worth
 spending days to get right yet only takes seconds to install.
