@@ -46,7 +46,7 @@ common vowel, and "T" the most common consonant. My keyboard use probably looks
 more like this:
 
 ![](/uploads/images/2020-06-28/key-frequencies.png 'Yes, I use vim =500')_My
-key usage
+key usage_
 
 Now there's a tool called `dvc` which is like [Git for data](https://dvc.org).
 It can be viewed as a cross-platform combination of [`git`] and [`make`]
@@ -116,7 +116,7 @@ Handily you can install `shtab`'s own completions by following the above
 examples replacing `hello` with `shtab`.
 
 ![](/uploads/images/2020-06-28/dvc.gif)_`shtab`-driven `dvc` completion in
-`bash` and `zsh`
+`bash` and `zsh`_
 
 Using `shtab`, here's what
 [`dvc`'s completion](https://dvc.org/doc/install/completion) looks like when
@@ -190,7 +190,7 @@ Try it out with `pip install -U shtab` or `conda install -c conda-forge shtab`!
 Is it worth the time?
 
 ![](https://imgs.xkcd.com/comics/is_it_worth_the_time.png)_It's worth it
-[xkcd#1205](https://xkcd.com/1205)
+[xkcd#1205](https://xkcd.com/1205)_
 
 [`shtab`] would be on the second row, far left (maybe even off grid). It's worth
 spending days to get right yet only takes seconds to install.
