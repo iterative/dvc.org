@@ -143,14 +143,6 @@ $ dvc run -n train -d logs/ -o users.csv \
           python train.py
 ```
 
-Alternatively, JSON or TOML can be used to specify the parameters file:
-
-```dvc
-$ dvc run -n train -d logs/ -o users.csv \
-          -p params.toml:threshold,classes_num \
-          python train.py
-```
-
 ## Examples: Print all parameter values in the workspace
 
 Following the previous example, we can use `dvc params diff` to list all of the
