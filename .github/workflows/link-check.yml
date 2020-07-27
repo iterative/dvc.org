@@ -14,7 +14,7 @@ jobs:
     - name: Run the link checker
       id: check
       uses: "./scripts/link-check/action.yml"
-      inputs:
+      with:
         baseURL: "${{ github.event.deployment_status.target_url }}"
 
     - uses: LouisBrunner/checks-action@v0.1.0
