@@ -15,7 +15,7 @@ jobs:
       id: check
       uses: "rogermparent/dvc-github-actions-link-checker@rc2"
       with:
-        baseURL: "${{ github.event.deployment_status.url }}"
+        baseURL: "${{ github.event.deployment.url }}"
 
     - uses: LouisBrunner/checks-action@v0.1.0
       with:
