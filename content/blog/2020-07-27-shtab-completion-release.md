@@ -1,6 +1,6 @@
 ---
 title: '(Tab) Complete Any Python Application in 1 Minute or Less'
-date: 2020-06-28
+date: 2020-07-27
 description: |
   We've made a painless tab-completion script generator for Python applications!
   Find out how to take advantage of it in this blog post.
@@ -12,7 +12,7 @@ descriptionLong: |
   This tool was originally created to help `dvc`, but we realised it could be made
   more generic and valuable to the world's entire ecosystem of Python CLI
   applications. Find out how to take advantage of it in this blog post.
-picture: 2020-06-28/tab-py.jpg
+picture: 2020-07-27/tab-py.jpg
 pictureComment: Zero Effort Tab Completion for Python Applications
 author: casper_dcl
 ---
@@ -45,7 +45,7 @@ branch without `<TAB>` to do the heavy lifting.
 common vowel, and "T" the most common consonant. My keyboard use probably looks
 more like this:
 
-![](/uploads/images/2020-06-28/key-frequencies.png 'Yes, I use vim =500')_My key
+![](/uploads/images/2020-07-27/key-frequencies.png 'Yes, I use vim =500')_My key
 usage_
 
 Now there's a tool called `dvc` which is like [Git for data](https://dvc.org).
@@ -115,7 +115,7 @@ shtab --shell=zsh hello.main.get_main_parser \
 Handily you can install `shtab`'s own completions by following the above
 examples replacing `hello` with `shtab`.
 
-![](/uploads/images/2020-06-28/dvc.gif)_`shtab`-driven `dvc` completion in
+![](/uploads/images/2020-07-27/dvc.gif)_`shtab`-driven `dvc` completion in
 `bash` and `zsh`_
 
 Using `shtab`, here's what
