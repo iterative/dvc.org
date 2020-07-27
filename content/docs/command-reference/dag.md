@@ -15,7 +15,7 @@ positional arguments:
 
 ## Description
 
-A Data pipeline refers to a series of [stages](/doc/command-reference/run)
+A data pipeline refers to a series of [stages](/doc/command-reference/run)
 through which our data moves. Each stage of a pipeline takes some input and
 produces some output. This output is then passed onto the next stage of a
 pipeline. This process continues until we reach the final stage which produces
