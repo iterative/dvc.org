@@ -45,8 +45,8 @@ branch without `<TAB>` to do the heavy lifting.
 common vowel, and "T" the most common consonant. My keyboard use probably looks
 more like this:
 
-![](/uploads/images/2020-06-28/key-frequencies.png 'Yes, I use vim =500')_My
-key usage_
+![](/uploads/images/2020-06-28/key-frequencies.png 'Yes, I use vim =500')_My key
+usage_
 
 Now there's a tool called `dvc` which is like [Git for data](https://dvc.org).
 It can be viewed as a cross-platform combination of [`git`] and [`make`]
