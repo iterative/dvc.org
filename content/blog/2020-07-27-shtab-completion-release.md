@@ -15,6 +15,14 @@ descriptionLong: |
 picture: 2020-07-27/tab-py.jpg
 pictureComment: Zero Effort Tab Completion for Python Applications
 author: casper_dcl
+commentsUrl: https://discuss.dvc.org/t/tab-complete-any-python-application-in-1-minute-or-less/455
+tags:
+  - shtab
+  - Release
+  - CLI
+  - Autocomplete
+  - Tab
+  - Completion
 ---
 
 Command line tools are powerful. Things like [`make`] have manual pages
