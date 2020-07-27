@@ -18,8 +18,6 @@ try {
       core.setOutput('summary', 'All new links passed the check!')
       core.setOutput('conclusion', 'success')
     }
-
-    core.setOutput('check', report)
   })
 } catch (e) {
   core.setFailed(`Link checker had an error! (${e.message})`)

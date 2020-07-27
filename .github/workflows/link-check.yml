@@ -13,11 +13,9 @@ jobs:
 
     - name: Run the link checker
       id: check
+      uses: "./scripts/link-check/action.yml"
       inputs:
         baseURL: "${{ github.event.deployment_status.target_url }}"
-      runs:
-        using: 'node12'
-        main: 'scripts/link-check/action.js'
 
     - uses: LouisBrunner/checks-action@v0.1.0
       with:

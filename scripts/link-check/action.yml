@@ -1,0 +1,18 @@
+name: 'Link Check'
+description:
+  'Check that links added to master by the current branch all respond properly'
+inputs:
+  baseURL:
+    description: 'The base URL that relative links will be resolved with'
+    required: true
+    default: 'https://dvc.org'
+outputs:
+  summary:
+    description: 'A one-line description of the test report'
+  details:
+    description: 'A multi-line report of all failed link checks, if any'
+  conclusion:
+    description: 'A GitHub Checks-compatible conclusion of the report'
+runs:
+  using: 'node12'
+  main: 'scripts/link-check/action.js'
