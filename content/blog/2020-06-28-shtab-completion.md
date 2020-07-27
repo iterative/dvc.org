@@ -1,6 +1,6 @@
 ---
 title: '(Tab) Complete Any Python Application in 1 Minute or Less'
-date: 2020-06-28
+date: 2020-07-27
 description: |
   We've made a painless tab-completion script generator for Python applications!
   Find out how to take advantage of it in this blog post.
