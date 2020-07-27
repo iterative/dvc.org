@@ -25,8 +25,6 @@ tags:
 
 ## CI/CD for machine learning
 
-[This link doesn't exist](https://example.com/link/that/surely/doesnotexist)
-
 Today, the DVC team is releasing a new open-source project called Continuous
 Machine Learning, or CML (https://cml.dev) to mainstream the best engineering
 practices of CI/CD to AI and ML teams. CML helps to organize MLOps
