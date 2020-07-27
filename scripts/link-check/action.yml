@@ -14,4 +14,4 @@ outputs:
     description: 'A GitHub Checks-compatible conclusion of the report'
 runs:
   using: 'node12'
-  main: 'scripts/link-check/action.js'
+  main: 'action.js'
