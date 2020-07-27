@@ -13,7 +13,7 @@ jobs:
 
     - name: Run the link checker
       id: check
-      uses: "./scripts/link-check"
+      uses: "rogermparent/dvc-github-actions-link-checker"
       with:
         baseURL: "${{ github.event.deployment_status.target_url }}"
 
