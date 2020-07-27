@@ -6,7 +6,8 @@ const excludeList = String(
 )
   .split(/[ \t\r\n]+/)
   .filter(Boolean)
-const isExcluded = subject => micromatch.isMatch(subject, excludeList)
+const isExcluded = subject =>
+  micromatch.isMatch(subject, excludeList, { bash: true })
 
 module.exports = {
   excludeList,

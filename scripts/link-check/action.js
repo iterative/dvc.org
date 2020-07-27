@@ -3,7 +3,7 @@ const { getFailingAddedLinks } = require('./link-check-git-diff.js')
 const { formatErrors } = require('./formatting.js')
 
 try {
-  getFailingAddedLinks.then(failedChecks => {
+  getFailingAddedLinks(core.getInput('baseURL')).then(failedChecks => {
     // Return either a success message or a report of all failed checks
     if (failedChecks) {
       core.setOutput('summary', 'Some new links failed the check.')

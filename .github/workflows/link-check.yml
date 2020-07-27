@@ -13,13 +13,18 @@ jobs:
 
     - name: Run the link checker
       id: check
-      run: "./scripts/link-check-action.sh"
-      env:
-        CHECK_LINKS_RELATIVE_URL: ${{ github.event.deployment_status.target_url }}
+      inputs:
+        baseURL: "${{ github.event.deployment_status.target_url }}"
+      runs:
+        using: 'node12'
+        main: 'scripts/link-check/action.js'
 
     - uses: LouisBrunner/checks-action@v0.1.0
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         name: Link Check
         status: completed
-        conclusion: ${{ steps.check.conclusion }}
+        conclusion: ${{ steps.check.outputs.conclusion }}
+        output:
+          summary: ${{ steps.check.outputs.summary }}
+          text_description: ${{ steps.check.outputs.description }}

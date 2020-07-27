@@ -1,11 +1,13 @@
 const path = require('path')
 const { exec } = require('child_process')
+const mm = require('micromatch')
 
 const { uniq, flatten } = require('lodash')
 
 const linkCheck = require('./link-check.js')
 
 const DEFAULT_BASE_URL = 'https://dvc.org'
+const INCLUDED_FILES = ['content/*']
 
 const matchFirstGroups = (input, regex) =>
   Array.from(input.matchAll(regex), x => x[1])
@@ -63,6 +65,7 @@ const scrapeLinks = (filePath, content) => {
 const getAddedLinks = async () =>
   (await getAddedLines())
     .map(({ filePath, additions }) => {
+      if (!mm.isMatch(filePath, INCLUDED_FILES, { bash: true })) return null
       const foundLinks = flatten(
         additions.map(line => scrapeLinks(filePath, line))
       )

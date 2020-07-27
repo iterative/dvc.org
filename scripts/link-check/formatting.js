@@ -3,7 +3,12 @@ const formatErrors = errorsByFile =>
     .map(
       ({ filePath, links }) =>
         `* ${filePath}:\n${links
-          .map(({ link, result }) => ` - ${link} => ${result}`)
+          .map(
+            ({ link, href, result }) =>
+              ` - ${link}${
+                href && href !== link ? ` (${href})` : ''
+              } => ${result}`
+          )
           .join('\n')}`
     )
     .join('\n')

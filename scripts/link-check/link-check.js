@@ -48,11 +48,21 @@ const buildLinkCheckObject = async (link, baseURL) => {
     }
   } else {
     const { href } = getURL(link, baseURL)
-    const { status, ok } = await memoizedFetch(href)
-    return {
-      link,
-      result: status,
-      ok
+    try {
+      const { status, ok } = await memoizedFetch(href)
+      return {
+        link,
+        href,
+        result: status,
+        ok
+      }
+    } catch (e) {
+      return {
+        link,
+        href,
+        result: e.code,
+        ok: false
+      }
     }
   }
 }
