@@ -6,16 +6,22 @@ try {
   getFailingAddedLinks(core.getInput('baseURL')).then(failedChecks => {
     // Return either a success message or a report of all failed checks
     if (failedChecks) {
-      core.setOutput('summary', 'Some new links failed the check.')
       core.setOutput(
-        'details',
-        `The following links failed the link check:\n${formatErrors(
-          failedChecks
-        )}`
+        'output',
+        JSON.stringify({
+          summary: 'Some new links failed the check.',
+          // eslint-disable-next-line @typescript-eslint/camelcase
+          text_description: `The following links failed the link check:\n${formatErrors(
+            failedChecks
+          )}`
+        })
       )
       core.setOutput('conclusion', 'failure')
     } else {
-      core.setOutput('summary', 'All new links passed the check!')
+      core.setOutput(
+        'output',
+        JSON.stringify({ summary: 'All new links passed the check!' })
+      )
       core.setOutput('conclusion', 'success')
     }
   })

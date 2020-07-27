@@ -7,10 +7,9 @@ inputs:
     required: true
     default: 'https://dvc.org'
 outputs:
-  summary:
-    description: 'A one-line description of the test report'
-  details:
-    description: 'A multi-line report of all failed link checks, if any'
+  output:
+    description:
+      'A JSON string with the test output to be handed to the Check Run'
   conclusion:
     description: 'A GitHub Checks-compatible conclusion of the report'
 runs:

@@ -23,6 +23,4 @@ jobs:
         name: Link Check
         status: completed
         conclusion: ${{ steps.check.outputs.conclusion }}
-        output:
-          summary: ${{ steps.check.outputs.summary }}
-          text_description: ${{ steps.check.outputs.description }}
+        output: ${{ steps.check.outputs.output }}
