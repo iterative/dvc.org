@@ -7,6 +7,7 @@ const jsonFiles = require('./models/json-files')
 const communityPage = require('./models/community')
 const glossary = require('./models/glossary')
 const github = require('./models/github')
+const pruneCache = require('./models/prune-cache')
 
 const models = [
   markdownContent,
@@ -17,7 +18,8 @@ const models = [
   jsonFiles,
   communityPage,
   glossary,
-  github
+  github,
+  pruneCache
 ]
 
 module.exports = models

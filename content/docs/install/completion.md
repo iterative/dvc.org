@@ -20,7 +20,7 @@ $ dvc r # Press [tab] key
 Completing dvc commands
 remote  -- Set up and manage data remotes.
 remove  -- Remove stage entry and unprotect outputs
-repro   -- Reproduce complete or partial pipelines by executing their stages.
+repro   -- Reproduce complete or partial pipelines by executing their stages
 root    -- Return the relative path to the root of the DVC project.
 run     -- Generate a stage file from a command and execute the command.
 ```

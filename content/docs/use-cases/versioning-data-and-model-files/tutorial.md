@@ -49,10 +49,10 @@ that will train the model.
 
 Let's now install the requirements. But before we do that, we **strongly**
 recommend creating a
-[virtual environment](https://packaging.python.org/tutorials/installing-packages/#creating-virtual-environments):
+[virtual environment](https://python.readthedocs.io/en/stable/library/venv.html):
 
 ```dvc
-$ virtualenv -p python3 .env
+$ python3 -m venv .env
 $ source .env/bin/activate
 $ pip install -r requirements.txt
 ```
@@ -153,7 +153,7 @@ $ dvc add model.h5
 Let's commit the current state:
 
 ```dvc
-$ git add .gitignore model.h5.dvc data.dvc metrics.csv
+$ git add data.dvc model.h5.dvc metrics.csv .gitignore
 $ git commit -m "First model, trained with 1000 images"
 $ git tag -a "v1.0" -m "model v1.0, 1000 images"
 ```
@@ -232,7 +232,7 @@ $ dvc add model.h5
 Let's commit the second version:
 
 ```dvc
-$ git add model.h5.dvc data.dvc metrics.csv
+$ git add data.dvc model.h5.dvc metrics.csv
 $ git commit -m "Second model, trained with 2000 images"
 $ git tag -a "v2.0" -m "model v2.0, 2000 images"
 ```
@@ -317,27 +317,24 @@ When you have a script that takes some data as an input and produces other data
 > ```
 
 ```dvc
-$ dvc run -f Dvcfile \
-          -d train.py -d data \
-          -M metrics.csv \
-          -o model.h5 -o bottleneck_features_train.npy -o bottleneck_features_validation.npy \
+$ dvc run -n train -d train.py -d data \
+          -o model.h5 -o bottleneck_features_train.npy \
+          -o bottleneck_features_validation.npy -M metrics.csv \
           python train.py
 ```
 
-Similar to `dvc add`, `dvc run` creates a
-[DVC-file](/doc/user-guide/dvc-files-and-directories) named `Dvcfile` (specified
-using the `-f` option). It tracks all outputs (`-o`) the same way as `dvc add`
+`dvc run` writes a pipeline stage named `train` (specified using the `-n`
+option) in `dvc.yaml`. It tracks all outputs (`-o`) the same way as `dvc add`
 does. Unlike `dvc add`, `dvc run` also tracks dependencies (`-d`) and the
-command (`python train.py`) that was run to produce the result. We call such a
-DVC-file a "stage file".
+command (`python train.py`) that was run to produce the result.
 
-> At this point you could run `git add .` and `git commit` to save the `Dvcfile`
-> stage file and its changed outputs to the repository.
+> At this point you could run `git add .` and `git commit` to save the `train`
+> stage and its outputs to the repository.
 
-`dvc repro` will run `Dvcfile` if any of its dependencies (`-d`) changed. For
-example, when we added new images to built the second version of our model, that
-was a dependency change. It also updates outputs and puts them into the
-<abbr>cache</abbr>.
+`dvc repro` will run the `train` stage if any of its dependencies (`-d`)
+changed. For example, when we added new images to built the second version of
+our model, that was a dependency change. It also updates outputs and puts them
+into the <abbr>cache</abbr>.
 
 To make things a little simpler: if `dvc add` and `dvc checkout` provide a basic
 mechanism to version control large data files or models, `dvc run` and

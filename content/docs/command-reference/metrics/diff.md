@@ -32,10 +32,8 @@ The differences shown by this command include the new value, and numeric
 difference (delta) from the previous value of metrics (rounded to 5 digits
 precision). They're calculated between two commits (hash, branch, tag, or any
 [Git revision](https://git-scm.com/docs/revisions)) for all metrics in the
-<abbr>project</abbr>, found by examining all of the
-[`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvcyaml-file) and
-[`.dvc`](/doc/user-guide/dvc-files-and-directories#dvc-files) files in both
-versions.
+<abbr>project</abbr>, found by examining all of the `dvc.yaml` and `.dvc` files
+in both versions.
 
 Another way to display metrics is the `dvc metrics show` command, which just
 lists all the current metrics without comparisons.
@@ -43,7 +41,19 @@ lists all the current metrics without comparisons.
 ## Options
 
 - `--targets <paths>` - limit command scope to these metric files. Using -R,
-  directories to search metric files in can also be given.
+  directories to search metric files in can also be given. When specifying
+  arguments for `--targets` before `revisions`, you should use `--` after this
+  option's arguments, e.g.:
+
+  ```dvc
+  $ dvc metrics diff --targets t1.json t2.yaml -- HEAD v1
+  ```
+
+  Alternatively, you can also run the above statement as:
+
+  ```dvc
+  $ dvc metrics diff HEAD v1 --targets t1.json t2.json
+  ```
 
 - `-R`, `--recursive` - determines the metric files to use by searching each
   target directory and its subdirectories for DVC-files to inspect. If there are
@@ -117,7 +127,7 @@ Metric files committed with Git can be compared by referencing the commits (any
 two [revisions](https://git-scm.com/docs/revisions)):
 
 ```dvc
-$ dvc metrics diff HEAD c7bef55
+$ dvc metrics diff --targets metrics.json -- HEAD c7bef55
 Path       Metric    Value    Change
 eval.json  ACU       0.66729  0.01614
 eval.json  TP        516      -12

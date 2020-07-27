@@ -2,8 +2,7 @@
 
 Download a file or directory from a supported URL (for example `s3://`,
 `ssh://`, and other protocols) into the <abbr>workspace</abbr>, and track
-changes in the remote data source. Creates a
-[`.dvc` file](/doc/user-guide/dvc-files-and-directories#dvc-files).
+changes in the remote data source. Creates a `.dvc` file.
 
 > See `dvc import` to download and tack data/model files or directories from
 > other <abbr>DVC repositories</abbr> (e.g. hosted on Github).
@@ -43,16 +42,16 @@ while `out` can be used to specify the directory and/or file name desired for
 the downloaded data. If an existing directory is specified, the file or
 directory will be placed inside.
 
-[`.dvc` files](/doc/user-guide/dvc-files-and-directories#dvc-files) support
-references to data in an external location, see
-[External Dependencies](/doc/user-guide/external-dependencies). In such a `.dvc`
-file, the `deps` field stores the remote URL, and the `outs` field contains the
-corresponding local path in the <abbr>workspace</abbr>. It records enough
-metadata about the imported data to enable DVC efficiently determining whether
-the local copy is out of date.
+`.dvc` files support references to data in an external location, see
+[External Dependencies](/doc/user-guide/external-dependencies). In such an
+import `.dvc` file, the `deps` field stores the remote URL, and the `outs` field
+contains the corresponding local path in the <abbr>workspace</abbr>. It records
+enough metadata about the imported data to enable DVC efficiently determining
+whether the local copy is out of date.
 
-`dvc repro` doesn't check and/or update generated `.dvc` files, use `dvc update`
-on them to bring the import up to date from the external data source.
+Note that `dvc repro` doesn't check or update import `.dvc` files, use
+`dvc update` on them to bring the import up to date from the external data
+source.
 
 DVC supports several types of (local or) remote locations (protocols):
 
@@ -99,7 +98,7 @@ Instead of:
 $ dvc import-url https://data.dvc.org/get-started/data.xml data.xml
 ```
 
-it is possible to use `dvc run`, for example (HTTP URL):
+It is possible to use `dvc run`, for example (HTTP URL):
 
 ```dvc
 $ dvc run -n download_data \
@@ -108,10 +107,8 @@ $ dvc run -n download_data \
           wget https://data.dvc.org/get-started/data.xml -O data.xml
 ```
 
-`dvc import-url` generates an import stage
-[`.dvc` file](/doc/user-guide/dvc-files-and-directories#dvc-files) and `dvc run`
-a regular stage (in
-[`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvcyaml-file)).
+`dvc import-url` generates an import stage `.dvc` file and `dvc run` a regular
+stage (in `dvc.yaml`).
 
 ## Options
 
@@ -123,7 +120,7 @@ a regular stage (in
 - `--no-exec` - create `.dvc` file without actually downloading `url`. E.g. if
   the file or directory already exist it can be used to skip download.
   `dvc commit <out>.dvc` should be used to calculate the URL and data hash,
-  update the .`dvc` files, and save existing data to the cache.
+  update the `.dvc` files, and save existing data to the cache.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -186,10 +183,9 @@ Let's take a look at the changes to the `data.xml.dvc`:
 The `etag` field in the `.dvc` file contains the
 [ETag](https://en.wikipedia.org/wiki/HTTP_ETag) recorded from the HTTP request.
 If the remote file changes, its ETag will be different. This metadata allows DVC
-to determine whether its necessary to download it again.
+to determine whether it's necessary to download it again.
 
-> See [`.dvc` files](/doc/user-guide/dvc-files-and-directories#dvc-files) for
-> more details on the format above.
+> See `.dvc` files for more details on the format above.
 
 You may want to get out of and remove the `example-get-started/` directory after
 trying this example (especially if trying out the following one).
@@ -260,10 +256,10 @@ $ rm -f code.zip
 
 Let's install the requirements. But before we do that, we **strongly** recommend
 creating a
-[virtual environment](https://packaging.python.org/tutorials/installing-packages/#creating-virtual-environments):
+[virtual environment](https://python.readthedocs.io/en/stable/library/venv.html):
 
 ```dvc
-$ virtualenv -p python3 .env
+$ python3 -m venv .env
 $ source .env/bin/activate
 $ pip install -r src/requirements.txt
 ```

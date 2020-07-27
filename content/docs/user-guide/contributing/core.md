@@ -49,11 +49,11 @@ Python. For Windows, we recommend an official
 
 Install DVC in editable mode with `pip install -e ".[all,tests]"`. But before we
 do that, we **strongly** recommend creating a
-[virtual environment](https://packaging.python.org/tutorials/installing-packages/#creating-virtual-environments):
+[virtual environment](https://python.readthedocs.io/en/stable/library/venv.html):
 
 ```dvc
 $ cd dvc
-$ virtualenv --python python3 .env
+$ python3 -m venv .env
 $ source .env/bin/activate
 $ pip install -e ".[all,tests]"
 ```

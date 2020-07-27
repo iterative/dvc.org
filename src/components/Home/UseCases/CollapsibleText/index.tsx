@@ -31,7 +31,9 @@ const CollapsibleText: React.FC<ICollapsibleTextProps> = ({
       tabIndex={0}
     >
       {header}
-      <Collapse isOpened={isOpened}>{children}</Collapse>
+      <span hidden={!isOpened}>
+        <Collapse isOpened={isOpened}>{children}</Collapse>
+      </span>
       {!isOpened && <div className={styles.moreText}>More...</div>}
     </div>
   )

@@ -1,13 +1,12 @@
 # run
 
-Create a pipeline _stage_ in
-[`dvc.yaml`](/doc/user-guide/dvc-files-and-directories) from a given command,
-and execute the command.
+Helper command to create or update _stages_ in `dvc.yaml`. Requires a name and a
+command.
 
 ## Synopsis
 
 ```usage
-usage: dvc run [-h] [-q | -v] [-d <path>] [-n <name>] [-o <path>]
+usage: dvc run [-h] [-q | -v] -n <name> [-d <path>] [-o <path>]
                [-O <path>] [-p [<path>:]<params_list>] [-m <path>]
                [-M <path>] [--plots <path>] [--plots-no-cache <path>]
                [-w <path>] [--no-exec] [-f]
@@ -17,16 +16,15 @@ usage: dvc run [-h] [-q | -v] [-d <path>] [-n <name>] [-o <path>]
                command
 
 positional arguments:
-  command               Command to execute.
+  command               Command for the stage.
 ```
 
 ## Description
 
 `dvc run` is a helper for creating or updating
-[pipeline](/doc/command-reference/pipeline) stages in a
-[`dvc.yaml` file](/doc/user-guide/dvc-files-and-directories#dvcyaml-files)
-(located in the current working directory). _Stages_ represent individual data
-processes, including their input and resulting outputs.
+[pipeline](/doc/command-reference/pipeline) stages in a `dvc.yaml` file (located
+in the current working directory). _Stages_ represent individual data processes,
+including their input and resulting outputs.
 
 A stage name is required and can be provided using the `-n` (`--name`) option.
 The other available [options](#options) are mostly meant to describe different
@@ -34,8 +32,7 @@ kinds of stage [dependencies and outputs](#dependencies-and-outputs). The
 remaining terminal input provided to `dvc run` after `-`/`--` flags will become
 the required [`command` argument](#the-command-argument).
 
-`dvc run` executes stage commands when used, unless the `--no-exec` option is
-used.
+`dvc run` executes stage commands, unless the `--no-exec` option is used.
 
 <details>
 
@@ -98,7 +95,7 @@ Relevant notes:
 
 [parameters](/doc/command-reference/params) (`-p`/`--params` option) are a
 special type of key/value dependencies. Multiple parameter dependencies can be
-specified from within one or more YAML or JSON parameters files (e.g.
+specified from within one or more YAML, JSON or TOML parameters files (e.g.
 `params.yaml`). This allows tracking experimental hyperparameters easily.
 
 Special types of output files, [metrics](/doc/command-reference/metrics) (`-m`

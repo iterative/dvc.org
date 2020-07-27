@@ -26,15 +26,21 @@ Get the sample code like this:
 $ wget https://code.dvc.org/get-started/code.zip
 $ unzip code.zip
 $ rm -f code.zip
-$ ls src
-evaluate.py  featurization.py  prepare.py
-requirements.txt  train.py
+$ tree
+.
+├── params.yaml
+└── src
+    ├── evaluate.py
+    ├── featurization.py
+    ├── prepare.py
+    ├── requirements.txt
+    └── train.py
 ```
 
 Now let's install the requirements:
 
 > We **strongly** recommend creating a
-> [virtual environment](https://packaging.python.org/tutorials/installing-packages/#creating-virtual-environments)
+> [virtual environment](https://python.readthedocs.io/en/stable/library/venv.html)
 > first.
 
 ```dvc
@@ -53,8 +59,7 @@ $ dvc run -n prepare \
           python src/prepare.py data/data.xml
 ```
 
-A [`dvc.yaml` file](/doc/user-guide/dvc-files-and-directories#dvcyaml-file) is
-generated. It includes information about the command we ran
+A `dvc.yaml` file is generated. It includes information about the command we ran
 (`python src/prepare.py`), its <abbr>dependencies</abbr>, and
 <abbr>outputs</abbr>.
 
@@ -73,11 +78,11 @@ The command options used above mean the following:
   that stage can depend on field values from a parameters file (`params.yaml` by
   default):
 
-  ```yaml
-  prepare:
-    split: 0.20
-    seed: 20170428
-  ```
+```yaml
+prepare:
+  split: 0.20
+  seed: 20170428
+```
 
 - `-d src/prepare.py` and `-d data/data.xml` mean that the stage depends on
   these files to work. Notice that the source code itself is marked as a
@@ -201,7 +206,7 @@ Please check the `dvc.yaml` again, it should have one more stage now.
 
 </details>
 
-This should be a good point to commit the changes with Git. This include
+This should be a good point to commit the changes with Git. These include
 `.gitignore`, `dvc.lock`, and `dvc.yaml` — which describe our pipeline.
 
 ## Reproduce
@@ -269,11 +274,14 @@ prepare:
     - path: data/data.xml
       md5: a304afb96060aad90176268345e10355
     - path: src/prepare.py
-      md5: 77e2041452ffabc457e37e54674fc8a5
+      md5: 285af85d794bb57e5d09ace7209f3519
   params:
     params.yaml:
       prepare.seed: 20170428
       prepare.split: 0.2
+  outs:
+    - path: data/prepared
+      md5: 20b786b6e6f80e2b3fcf17827ad18597.dir
 ```
 
 > `dvc status` command can be used to compare this state with an actual state of

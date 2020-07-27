@@ -7,11 +7,10 @@
 DVC allows versioning data files and directories, intermediate results, and ML
 models using Git, but without storing the file contents in the Git repository.
 It's useful when dealing with files that are too large for Git to handle
-properly in general. DVC saves information about your data in special
-[`.dvc` files](/doc/user-guide/dvc-files-and-directories#dvc-files), and these
-files can be used for versioning. To actually store the data, DVC supports
-various types of [remote storage](/doc/command-reference/remote). This allows
-easily saving and sharing data alongside code.
+properly in general. DVC saves information about your data in special `.dvc`
+files, and these files can be used for versioning. To actually store the data,
+DVC supports various types of [remote storage](/doc/command-reference/remote).
+This allows easily saving and sharing data alongside code.
 
 ![](/img/model-versioning-diagram.png)
 
@@ -41,7 +40,7 @@ To start using DVC we need to [initialize](/doc/command-reference/init) a
 $ dvc init
 ```
 
-Start tracking the models and images directory with `dvc add`:
+Start tracking the images directory and the model with `dvc add`:
 
 ```dvc
 $ dvc add images
@@ -61,7 +60,7 @@ Untracked files:
     images.dvc
     model.pkl.dvc
 
-$ git add .gitignore images.dvc model.pkl.dvc
+$ git add images.dvc model.pkl.dvc .gitignore
 $ git commit -m "Track images and model with DVC"
 ```
 

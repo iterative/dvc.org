@@ -2,9 +2,7 @@
 
 Download tracked files or directories from
 [remote storage](/doc/command-reference/remote) to the <abbr>cache</abbr> and
-<abbr>workspace</abbr>, based on the current
-[`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvcyaml-file) and
-[`.dvc`](/doc/user-guide/dvc-files-and-directories#dvc-files) files.
+<abbr>workspace</abbr>, based on the current `dvc.yaml` and `.dvc` files.
 
 ## Synopsis
 
@@ -39,11 +37,10 @@ remote.
 
 With no arguments, just `dvc pull` or `dvc pull --remote <name>`, it downloads
 only the files (or directories) missing from the workspace by searching all
-stages in [`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvcyaml-file)
-or [`.dvc`](/doc/user-guide/dvc-files-and-directories#dvc-files) files currently
-in the <abbr>project</abbr>. It will not download files associated with earlier
-commits in the <abbr>repository</abbr> (if using Git), nor will it download
-files that have not changed.
+stages in `dvc.yaml` or `.dvc` files currently in the <abbr>project</abbr>. It
+will not download files associated with earlier commits in the
+<abbr>repository</abbr> (if using Git), nor will it download files that have not
+changed.
 
 The command `dvc status -c` can list files referenced in current stages (in
 `dvc.yaml`) or `.dvc` files, but missing from the <abbr>cache</abbr>. It can be
@@ -96,7 +93,8 @@ reflinks or hardlinks to put it in the workspace without copying. See
   `dvc remote list`).
 
 - `--run-cache` - downloads all available history of stage runs from the remote
-  repository.
+  repository into the local run cache. A `dvc repro <stage_name>` is necessary
+  to checkout these files into the workspace and update the `dvc.lock` file.
 
 - `-j <number>`, `--jobs <number>` - number of threads to run simultaneously to
   handle the downloading of files from the remote. The default value is

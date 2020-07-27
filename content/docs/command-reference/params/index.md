@@ -24,8 +24,8 @@ dependencies: _parameters_. Parameters are defined using the the `-p`
 
 In contrast to a regular <abbr>dependency</abbr>, a parameter is not a file (or
 directory). Instead, it consists of a _parameter name_ (or key) to find inside a
-YAML or JSON _parameters file_. Multiple parameter dependencies can be specified
-from one or more parameters files.
+YAML, JSON, or TOML _parameters file_. Multiple parameter dependencies can be
+specified from one or more parameters files.
 
 The default parameters file name is `params.yaml`. Parameters should be
 organized as a tree hierarchy inside, as DVC will locate param names by their
@@ -37,8 +37,7 @@ itself does not ascribe any specific meaning for these values. They are
 user-defined, and serve as a way to generalize and parametrize an machine
 learning algorithms or data processing code.
 
-DVC saves the param names and their latest values in the
-[`dvc.yaml` file](/doc/user-guide/dvc-files-and-directories#dvcyaml-file). These
+DVC saves the param names and their latest values in the `dvc.yaml` file. These
 values will be compared to the ones in the params files to determine if the
 stage is invalidated upon pipeline [reproduction](/doc/command-reference/repro).
 
@@ -92,8 +91,8 @@ $ dvc run -n train -d users.csv -o model.pkl \
           python train.py
 ```
 
-> Note that we could use the same parameter addressing with JSON parameters
-> files.
+> Note that we could use the same parameter addressing with JSON or TOML
+> parameters files.
 
 The `train.py` script will have some code to parse the needed parameters. For
 example:
@@ -109,12 +108,11 @@ epochs = params['train']['epochs']
 layers = params['train']['layers']
 ```
 
-You can find that each parameter and it's value were saved to
-[`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvcyaml-file). These
+You can find that each parameter and it's value were saved to `dvc.yaml`. These
 values will be compared to the ones in the parameters files whenever `dvc repro`
 is used, to determine if dependency to the params file is invalidated:
 
-````yaml
+```yaml
 stages:
   train:
     cmd: python train.py
@@ -124,8 +122,8 @@ stages:
       - lr
       - train
     outs:
-      - model.pkl```
-````
+      - model.pkl
+```
 
 Alternatively, the entire group of parameters `train` can be referenced, instead
 of specifying each of the group parameters separately:

@@ -43,7 +43,7 @@ easily versioned like source code with Git, as a placeholder for the original
 data (which gets listed in `.gitignore`):
 
 ```dvc
-$ git add data/.gitignore data/data.xml.dvc
+$ git add data/data.xml.dvc data/.gitignore
 $ git commit -m "Add raw data"
 ```
 
@@ -118,8 +118,8 @@ $ git commit .dvc/config -m "Configure local remote"
 $ dvc push
 ```
 
-Usually, we also want to `git commit` and `git push` the corresponding
-[`.dvc` files](/doc/user-guide/dvc-files-and-directories#dvc-files).
+Usually, we also want to `git commit` and `git push` the corresponding `.dvc`
+files.
 
 <details>
 

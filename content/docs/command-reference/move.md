@@ -1,9 +1,8 @@
 # move
 
-Rename a file or a directory and modify the corresponding
-[`.dvc` file](/doc/user-guide/dvc-files-and-directories#dvc-files) (see
+Rename a file or a directory and modify the corresponding `.dvc` file (see
 `dvc add`) to reflect the change. If the file or directory has the same name as
-the corresponding `.dvc` file, it also renames it.
+the `.dvc` file, it also renames it.
 
 ## Synopsis
 
@@ -18,10 +17,9 @@ positional arguments:
 ## Description
 
 `dvc move` is useful when a `src` file or directory has previously been added to
-the <abbr>project</abbr> with `dvc add`, creating a
-[`.dvc` file](/doc/user-guide/dvc-files-and-directories#dvc-files) (with `src`
-as a dependency). `dvc move` behaves like `mv src dst`, moving `src` to the
-given `dst` path, but it also renames and updates the corresponding `.dvc` file
+the <abbr>project</abbr> with `dvc add`, creating a `.dvc` file (with `src` as a
+dependency). `dvc move` behaves like `mv src dst`, moving `src` to the given
+`dst` path, but it also renames and updates the corresponding `.dvc` file
 appropriately.
 
 > Note that `src` may be a copy or a
@@ -42,10 +40,8 @@ The `dvc add` command would create a `data.csv.dvc` `.dvc` file with the
 following content:
 
 ```yaml
-md5: 3d1a3e5a5b662490e198d6a6ae84984b
 outs:
-  - cache: true
-    md5: c8263e8422925b0872ee1fb7c953742a
+  - md5: c8263e8422925b0872ee1fb7c953742a
     path: data.csv
 ```
 
@@ -107,9 +103,8 @@ $ tree
 
 We use `dvc add` to track a file with DVC, then we use `dvc move` to change its
 location. If target path already exists and is a directory, data file is moved
-with unchanged name into this folder. Note that the `data.csv.dvc`
-[`.dvc` file](/doc/user-guide/dvc-files-and-directories#dvc-files) is also
-moved.
+with unchanged name into this folder. Note that the `data.csv.dvc` `.dvc` file
+is also moved.
 
 ```dvc
 $ tree

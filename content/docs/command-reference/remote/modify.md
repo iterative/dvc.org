@@ -108,7 +108,21 @@ these settings, you could use the following options:
   $ dvc remote modify myremote endpointurl https://myendpoint.com
   ```
 
-- `url` - remote location URL
+- `access_key_id` - AWS Access Key ID. May be used (along with
+  `secret_access_key`) instead of `credentialpath`:
+
+  ```dvc
+  $ dvc remote modify myremote access_key_id my-access-key-id
+  ```
+
+- `secret_access_key` - AWS Secret Access Key. May be used (along with
+  `access_key_id`) instead of `credentialpath`:
+
+  ```dvc
+  $ dvc remote modify myremote secret_access_key my-secret_access_key
+  ```
+
+- `url` - remote location URL:
 
   ```dvc
   $ dvc remote modify myremote url s3://bucket/remote
@@ -236,16 +250,15 @@ For more information about the variables DVC supports, please visit
 - `connection_string` - connection string.
 
   ```dvc
-  $ dvc remote modify myremote connection_string "my-connection-string" --local
+  $ dvc remote modify --local myremote connection_string "my-connection-string"
   ```
+
+> The connection string contains sensitive user info. Therefore, it's safer to
+> add it with the `--local` option, so it's written to a Git-ignored config
+> file.
 
 For more information on configuring Azure Storage connection strings, visit
 [here](https://docs.microsoft.com/en-us/azure/storage/common/storage-configure-connection-string).
-
-> The connection string contains access to data and is inserted into the
-> `.dvc/config file.` Therefore, it is safer to add the connection string with
-> the `--local` command option, enforcing it to be written to a Git-ignored
-> config file.
 
 </details>
 
@@ -253,7 +266,7 @@ For more information on configuring Azure Storage connection strings, visit
 
 ### Click for Google Drive
 
-Please check out
+Please see
 [Setup a Google Drive DVC Remote](/doc/user-guide/setup-google-drive-remote) for
 a full guide on using Google Drive as DVC remote storage.
 
@@ -265,8 +278,7 @@ a full guide on using Google Drive as DVC remote storage.
                       url gdrive://0AIac4JZqHhKmUk9PDA/dvcstore
   ```
 
-- `gdrive_client_id` - **Client ID** for authentication with OAuth 2.0 when
-  using a
+- `gdrive_client_id` - Client ID for authentication with OAuth 2.0 when using a
   [custom Google Client project](/doc/user-guide/setup-google-drive-remote#using-a-custom-google-cloud-project).
   Also requires using `gdrive_client_secret`.
 
@@ -274,9 +286,8 @@ a full guide on using Google Drive as DVC remote storage.
   $ dvc remote modify myremote gdrive_client_id <client ID>
   ```
 
-- `gdrive_client_secret` - **Client secret** for authentication with OAuth 2.0
-  when using a custom Google Client project. Also requires using
-  `gdrive_client_id`.
+- `gdrive_client_secret` - Client secret for authentication with OAuth 2.0 when
+  using a custom Google Client project. Also requires using `gdrive_client_id`.
 
   ```dvc
   $ dvc remote modify myremote gdrive_client_secret <client secret>
@@ -290,8 +301,8 @@ a full guide on using Google Drive as DVC remote storage.
                       .dvc/tmp/myremote-credentials.json
   ```
 
-  See [Authorization](/doc/user-guide/setup-google-drive-remote#authorization)
-  for more details.
+See [Authorization](/doc/user-guide/setup-google-drive-remote#authorization) for
+more details.
 
 - `gdrive_trash_only` - configures `dvc gc` to move remote files to
   [trash](https://developers.google.com/drive/api/v2/reference/files/trash)
@@ -397,7 +408,14 @@ more information.
 
 ### Click for Aliyun OSS
 
-- `oss_key_id` - OSS key id to use to access a remote.
+- `oss_endpoint endpoint` - OSS endpoint values for accessing the remote
+  container.
+
+  ```dvc
+  $ dvc remote modify myremote oss_endpoint endpoint
+  ```
+
+- `oss_key_id` - OSS key ID to use to access a remote.
 
   ```dvc
   $ dvc remote modify myremote --local oss_key_id my-key-id
@@ -409,11 +427,9 @@ more information.
   $ dvc remote modify myremote --local oss_key_secret my-key-secret
   ```
 
-- `oss_endpoint endpoint` - OSS endpoint values for accessing remote container.
-
-  ```dvc
-  $ dvc remote modify myremote oss_endpoint endpoint
-  ```
+> The key ID and secret key contain sensitive user info. Therefore, it's safer
+> to add them with the `--local` option, so they're written to a Git-ignored
+> config file.
 
 </details>
 
@@ -436,7 +452,7 @@ more information.
   4. current user;
 
   ```dvc
-  $ dvc remote modify myremote user myuser
+  $ dvc remote modify --local myremote user myuser
   ```
 
 - `port` - port to use to access a remote. The order in which dvc searches for
@@ -461,8 +477,12 @@ more information.
   accessing a remote.
 
   ```dvc
-  $ dvc remote modify myremote password mypassword
+  $ dvc remote modify --local myremote password mypassword
   ```
+
+> The username and password (may) contain sensitive user info. Therefore, it's
+> safer to add them with the `--local` option, so they're written to a
+> Git-ignored config file.
 
 - `ask_password` - ask for a private key passphrase or a password to use when
   accessing a remote.
@@ -492,8 +512,11 @@ more information.
 - `user` - username to use to access a remote.
 
   ```dvc
-  $ dvc remote modify myremote user myuser
+  $ dvc remote modify --local myremote user myuser
   ```
+
+> The username may contain sensitive user info. Therefore, it's safer to add it
+> with the `--local` option, so it's written to a Git-ignored config file.
 
 </details>
 
@@ -534,7 +557,7 @@ more information.
   2. `user` specified in the url(e.g. `http://user@example.com/path`);
 
   ```dvc
-  $ dvc remote modify myremote user myuser
+  $ dvc remote modify --local myremote user myuser
   ```
 
 - `password` - password to use for any `auth` method.
@@ -543,10 +566,9 @@ more information.
   $ dvc remote modify myremote --local password mypassword
   ```
 
-  > Note that the specified password will be inserted into the `.dvc/config`
-  > file. Therefore, it's recommended to configure it using the `--local`
-  > command option, which writes it to a Git-ignored config file. (Or use the
-  > `ask_password` parameter instead.)
+> The username and password (may) contain sensitive user info. Therefore, it's
+> safer to add them with the `--local` option, so they're written to a
+> Git-ignored config file.
 
 - `ask_password` - ask each time for the password to use for any `auth` method.
 

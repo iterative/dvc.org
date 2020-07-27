@@ -1,8 +1,7 @@
 # dag
 
-Visualize the pipeline(s) in
-[`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvclock-file) as one or
-more graph(s) of connected [stages](/doc/command-reference/run).
+Visualize the pipeline(s) in `dvc.yaml` as one or more graph(s) of connected
+[stages](/doc/command-reference/run).
 
 ## Synopsis
 
@@ -17,13 +16,13 @@ positional arguments:
 ## Description
 
 A data pipeline, in general, is a series of data processing
-[stages](/doc/command-reference/run) (for example console commands that take an
+[stages](/doc/command-reference/run) (for example, console commands that take an
 input and produce an <abbr>output</abbr>). A pipeline may produce intermediate
 data, and has a final result.
 
-Data processing or ML pipelines typically start a with large raw datasets,
-include intermediate featurization and training stages, and produce a final
-model, as well as accuracy [metrics](/doc/command-reference/metrics).
+Data processing or ML pipelines typically start with large raw datasets, include
+intermediate featurization and training stages, and produce a final model, as
+well as accuracy [metrics](/doc/command-reference/metrics).
 
 In DVC, pipeline stages and commands, their data I/O, interdependencies, and
 results (intermediate or final) are specified in `dvc.yaml`, which can be

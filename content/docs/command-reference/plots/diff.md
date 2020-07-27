@@ -47,7 +47,19 @@ please see `dvc plots`.
 
 - `--targets <path>` - specific metric files to visualize. These must be listed
   in a [`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvcyaml-file) file
-  (see the `--plots` option of `dvc run`).
+  (see the `--plots` option of `dvc run`). When specifying arguments for
+  `--targets` before `revisions`, you should use `--` after this option's
+  arguments, e.g.:
+
+  ```dvc
+  $ dvc plots diff --targets t1.json t2.csv -- HEAD v1 v2
+  ```
+
+  Alternatively, you can also run the above statement as:
+
+  ```dvc
+  $ dvc plots diff HEAD v1 v2 --targets t1.json t2.csv
+  ```
 
 - `-o <path>, --out <path>` - name of the generated file. By default, the output
   file name is equal to the input filename with a `.html` file extension (or
@@ -95,7 +107,7 @@ To compare uncommitted changes of a metrics file and its last committed version:
 
 ```dvc
 $ dvc plots diff --targets logs.csv --x-label x
-file:///Users/dmitry/src/plots/logs.html
+file:///Users/usr/src/plots/logs.html
 ```
 
 ![](/img/plots_auc.svg)
@@ -105,7 +117,7 @@ file:///Users/dmitry/src/plots/logs.html
 Compare two specific versions (commit hashes, tags, or branches):
 
 ```dvc
-$ dvc plots diff --targets logs.csv HEAD 0135527
+$ dvc plots diff HEAD 0135527 --targets logs.csv
 file:///Users/usr/src/plots/logs.csv.html
 ```
 

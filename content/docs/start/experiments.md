@@ -25,7 +25,10 @@ $ dvc run -n evaluate \
 
 ### 💡 Expand to see what happens under the hood.
 
-DVC generates a new stage in the `dvc.yaml` file:
+The `-M` option here specifies a metrics file, while `--plots-no-cache`
+specifies a plots file produced by this stage that will not be
+<abbr>cached</abbr> by DVC. `dvc run` generates a new stage in the `dvc.yaml`
+file:
 
 ```yaml
 evaluate:
@@ -46,10 +49,10 @@ The biggest difference to previous stages in our pipeline is in two new
 sections: `metrics` and `plots`. These are used to mark certain files containing
 experiment "telemetry". Metrics files contain simple numeric values (e.g. `AUC`)
 and plots files contain matrices and data series (e.g. `ROC` or model loss
-plots) that meant to be visualizing and compared.
+plots) that are meant to be visualized and compared.
 
-> `cache: false` means that those file are small enough and versioned directly
-> with Git.
+> With `cache: false`, DVC skips caching the output, as we want `scores.json`
+> and `prc.json` to be versioned by Git.
 
 </details>
 
@@ -97,7 +100,7 @@ parameters.
 It's pretty common for data science pipelines to include configuration files
 that define adjustable parameters to train a model, do pre-processing, etc. DVC
 provides a mechanism for stages to depend on the values of specific sections of
-such a config file (YAML or JSON formats are supported).
+such a config file (YAML, JSON and TOML formats are supported).
 
 Luckily, we should already have a stage with
 [parameters](/doc/command-reference/params) in `dvc.yaml`:
@@ -208,16 +211,19 @@ Path         Metric    Value    Change
 scores.json  auc       0.61314  0.07139
 ```
 
-And finally, we can compare `ROC` curves with a single command!
+And finally, we can compare `precision recall` curves with a single command!
 
 ```dvc
-$ dvc plots diff
+$ dvc plots diff -x recall -y precision
 file:///Users/dvc/example-get-started/plots.html
 ```
 
-![](/img/plots_roc_get_started.svg)
+![](/img/plots_prc_get_started.svg)
 
 All these commands also accept
 [Git revisions](https://git-scm.com/docs/gitrevisions) (commits, tags, branch
 names) to compare. This is a powerful mechanism for navigating experiments to
 see the history, to pick the best ones, etc.
+
+> See `dvc plots diff` for more info on its options, such as `-x` and `-y` used
+> above.
