@@ -25,6 +25,7 @@ tags:
 [good relative](/doc) [broken relative](/a/page/that/doesnt/exist)
 [TDS 405 test](https://towardsdatascience.com/understanding-auc-roc-curve-68b2303cc9c5)
 [casual link with no protocol](google.com) [excluded](https://myendpoint.com)
+[broken absolute on existing site 2](https://example.com/not/a/real/page)
 
 Earlier this month, we launched [CML](https;//cml.dev), our latest open-source
 project in the MLOps space. We think it's a step towards establishing powerful
