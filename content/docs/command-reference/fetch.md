@@ -143,9 +143,10 @@ The workspace looks almost like in this
 .
 ├── data
 │   └── data.xml.dvc
-├── dvc.lock
-├── dvc.yaml
-├── params.yaml
+├── evaluate.dvc
+├── featurize.dvc
+├── prepare.dvc
+├── train.dvc
 └── src
     └── <code files here>
 ```
@@ -213,10 +214,10 @@ $ dvc checkout
 > follow this example if you tried the previous one (**Default behavior**).
 
 `dvc fetch` only downloads the data files of a specific stage when the
-corresponding stage or `.dvc` file (command target) is specified:
+corresponding `.dvc` file (command target) is specified:
 
 ```dvc
-$ dvc fetch prepare
+$ dvc fetch prepare.dvc
 
 $ tree .dvc/cache
 .dvc/cache
@@ -230,7 +231,7 @@ $ tree .dvc/cache
     └── 603888ec04a6e75a560df8678317fb
 ```
 
-> Note that `prepare` is the first stage in our example's pipeline.
+> Note that `prepare.dvc` is the first stage in our example's pipeline.
 
 Cache entries for the necessary directories, as well as the actual
 `data/prepared/test.tsv` and `data/prepared/train.tsv` files were downloaded.
@@ -239,7 +240,7 @@ Their hash values are shown above.
 ## Example: With dependencies
 
 After following the previous example (**Specific stages**), only the files
-associated with the `prepare` stage have been fetched. Several
+associated with the `prepare.dvc` stage file have been fetched. Several
 dependencies/outputs of other pipeline stages are still missing from the cache:
 
 ```dvc
@@ -248,14 +249,15 @@ $ dvc status -c
     deleted:            model.pkl
     deleted:            data/features/test.pkl
     deleted:            data/features/train.pkl
+    deleted:            data/data.xml
 ```
 
 One could do a simple `dvc fetch` to get all the data, but what if you only want
-to retrieve the data up to our third stage, `train`? We can use the
+to retrieve the data up to our third stage, `train.dvc`? We can use the
 `--with-deps` (or `-d`) option:
 
 ```dvc
-$ dvc fetch --with-deps train
+$ dvc fetch --with-deps train.dvc
 
 $ tree .dvc/cache
 .dvc/cache
@@ -277,14 +279,14 @@ $ tree .dvc/cache
     └── a9c512fda11293cfee7617b66648dc
 ```
 
-Fetching using `--with-deps` starts with the target stage (`train`) and searches
-backwards through its pipeline for data to download into the project's cache.
-All the data for the second and third stages (`featurize` and `train`) has now
-been downloaded to the cache. We could now use `dvc checkout` to get the data
-files needed to reproduce this pipeline up to the third stage into the workspace
-(with `dvc repro train`).
+Fetching using `--with-deps` starts with the target `.dvc` file (`train.dvc`)
+and searches backwards through its pipeline for data to download into the
+project's cache. All the data for the second and third stages ("featurize" and
+"train") has now been downloaded to the cache. We could now use `dvc checkout`
+to get the data files needed to reproduce this pipeline up to the third stage
+into the workspace (with `dvc repro train.dvc`).
 
-> Note that in this example project, the last stage file `evaluate` doesn't add
-> any more data files than those form previous stages, so at this point all of
-> the data for this pipeline is cached and `dvc status -c` would output
+> Note that in this example project, the last stage file `evaluate.dvc` doesn't
+> add any more data files than those form previous stages, so at this point all
+> of the data for this pipeline is cached and `dvc status -c` would output
 > `Data and pipelines are up to date.`
