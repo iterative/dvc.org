@@ -240,7 +240,7 @@ If we now run `dvc repro`, we should see this:
 $ dvc repro
 Stage 'filter' didn't change, skipping
 Running stage 'count' with command:
-        python3 process.py numbers.txt > count.txt
+        python process.py numbers.txt > count.txt
 Updating lock file 'dvc.lock'
 ```
 
@@ -263,16 +263,12 @@ The answer to universe is 42
 - The Hitchhiker's Guide to the  Galaxy
 ```
 
-And update the `process.py` file to count the number of digits.
+Let's say we want to print the filename also in the description and so we update
+the `process.py` as:
 
 ```python
-import sys
-num_digits = 0
-with open(sys.argv[1], 'r') as f:
-    for number in f:
-        num_digits += len(number) - 1
-print("Number of digits:",end=" ")
-print(num_digits)
+print('Number of lines in %s:'%(sys.argv[1]))
+print(num_lines)
 ```
 
 Now, using the `--downstream` option with `count` as a target stage, results in
@@ -281,13 +277,14 @@ the following output:
 ```dvc
 $ dvc repro --downstream count
 Running stage 'count' with command:
-        python3 process.py numbers.txt > count.txt
+        python process.py numbers.txt > count.txt
 Updating lock file 'dvc.lock'
 ```
 
-The reason being that the `text.txt` file is a dependency in the `filter` stage
-of the pipeline which happens before the `count` stage (shown in the following
-figure) and hence did not get updated.
+The change in the `text.txt` file is ignored as it is a dependency in the
+`filter` stage which did not get updated in the above command. This is because
+the `filter` stage happens before the `count` stage in the pipeline (shown in
+the following figure).
 
 ```dvc
 $ dvc dag
