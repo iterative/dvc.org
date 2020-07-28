@@ -58,6 +58,10 @@
     color: var(--color-gray);
   }
 
+  img + em {
+    margin-top: 5px;
+  }
+
   :global(.gatsby-resp-image-wrapper) + em {
     @media (--md-scr) {
       margin-top: -30px;
