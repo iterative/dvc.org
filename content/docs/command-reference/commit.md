@@ -1,8 +1,8 @@
 # commit
 
-Record changes to DVC-tracked files in the <abbr>project</abbr>, by updating
-dependencies and outputs of the corresponding stages (or `.dvc` files) and
-saving <abbr>outputs</abbr> to the <abbr>cache</abbr>.
+Record changes to DVC-tracked files in the <abbr>project</abbr>, by updating the
+[stages](/doc/command-reference/run) (or `.dvc` files) and saving
+<abbr>outputs</abbr> to the <abbr>cache</abbr>.
 
 ## Synopsis
 
