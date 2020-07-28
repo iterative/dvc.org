@@ -184,7 +184,7 @@ One could do a simple `dvc pull` to get all the data, but what if you only want
 to retrieve part of the data?
 
 ```dvc
-$ dvc pull --with-deps featurize.dvc
+$ dvc pull --with-deps featurize
 
 ... Use the partial update, then pull the remaining data:
 

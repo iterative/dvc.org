@@ -179,7 +179,7 @@ $ dvc push --with-deps model.p.dvc
 ... Push the rest of the data
 
 $ dvc status --cloud
-
+Data and pipelines are up to date.
 ```
 
 We specified a stage in the middle of this pipeline (`matrix-train.p.dvc`) with
