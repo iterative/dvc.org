@@ -5,7 +5,8 @@ Used for debugging `.dvcignore` / exclude files.
 ## Synopsis
 
 ```usage
-usage: usage: dvc check-ignore [-h] [-q | -v] [-d] [-n] targets [targets ...]
+usage: usage: dvc check-ignore [-h] [-q | -v] [-d] [-n]
+                               targets [targets ...]
 
 positional arguments:
   targets        Input files/directories to check ignore patterns.
