@@ -33,7 +33,7 @@ This hook automates `dvc checkout` after `git checkout`.
 **Commit/Reproduce**: Before committing DVC changes with Git, it may be
 necessary using `dvc commit` to store new data files not yet in cache. Or the
 changes might require reproducing the corresponding
-[pipeline](/doc/command-reference/pipeline) (with `dvc repro`) to regenerate the
+[pipeline](/doc/command-reference/dag) (with `dvc repro`) to regenerate the
 project's results (which implicitly commits them to DVC as well).
 
 This hook automates `dvc status` before `git commit` when needed, to remind the

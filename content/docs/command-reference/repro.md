@@ -1,6 +1,6 @@
 # repro
 
-Reproduce complete or partial [pipelines](/doc/command-reference/pipeline) by
+Reproduce complete or partial [pipelines](/doc/command-reference/dag) by
 executing commands defined in their [stages](/doc/command-reference/run) in the
 correct order. The commands to be executed are determined by recursively
 analyzing dependencies and <abbr>outputs</abbr> of the target stages.
@@ -168,7 +168,7 @@ only execute the final stage.
 
 For simplicity, let's build a pipeline defined below. (If you want get your
 hands-on something more real, see this short
-[pipeline tutorial](/doc/tutorials/pipelines)). It takes this `text.txt` file:
+[pipeline tutorial](/doc/start/data-pipelines)). It takes this `text.txt` file:
 
 ```
 dvc
