@@ -22,8 +22,8 @@ positional arguments:
 ## Description
 
 `dvc run` is a helper for creating or updating
-[pipeline](/doc/command-reference/pipeline) stages in a `dvc.yaml` file (located
-in the current working directory). _Stages_ represent individual data processes,
+[pipeline](/doc/command-reference/dag) stages in a `dvc.yaml` file (located in
+the current working directory). _Stages_ represent individual data processes,
 including their input and resulting outputs.
 
 A stage name is required and can be provided using the `-n` (`--name`) option.
@@ -95,7 +95,7 @@ Relevant notes:
 
 [parameters](/doc/command-reference/params) (`-p`/`--params` option) are a
 special type of key/value dependencies. Multiple parameter dependencies can be
-specified from within one or more YAML or JSON parameters files (e.g.
+specified from within one or more YAML, JSON or TOML parameters files (e.g.
 `params.yaml`). This allows tracking experimental hyperparameters easily.
 
 Special types of output files, [metrics](/doc/command-reference/metrics) (`-m`
@@ -112,8 +112,8 @@ run directly, for example a shell built-in, expression, or binary found in
 by the command itself, not by `dvc run`.
 
 ⚠️ Note that while DVC is platform-agnostic, the commands defined in your
-[pipeline](/doc/command-reference/pipeline) stages may only work on some
-operating systems and require certain software packages to be installed.
+[pipeline](/doc/command-reference/dag) stages may only work on some operating
+systems and require certain software packages to be installed.
 
 Wrap the command with double quotes `"` if there are special characters in it
 like `|` (pipe) or `<`, `>` (redirection), otherwise they would apply to
@@ -330,8 +330,8 @@ $ tree ..
 
 ## Example: Chaining stages
 
-DVC [pipelines](/doc/command-reference/pipeline) are constructed by connecting
-the outputs of a stage to the dependencies of the following one(s).
+DVC [pipelines](/doc/command-reference/dag) are constructed by connecting the
+outputs of a stage to the dependencies of the following one(s).
 
 Extract an XML file from an archive to the `data/` folder:
 
