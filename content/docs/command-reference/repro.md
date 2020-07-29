@@ -267,7 +267,7 @@ Let's say we want to print the filename also in the description and so we update
 the `process.py` as:
 
 ```python
-print('Number of lines in %s:'%(sys.argv[1]))
+print(f'Number of lines in {sys.argv[1]}:')
 print(num_lines)
 ```
 
@@ -281,10 +281,11 @@ Running stage 'count' with command:
 Updating lock file 'dvc.lock'
 ```
 
-The change in the `text.txt` file is ignored as it is a dependency in the
-`filter` stage which did not get updated in the above command. This is because
-the `filter` stage happens before the `count` stage in the pipeline (shown in
-the following figure).
+The change in the `text.txt` file is ignored because that file is a dependency
+in the `filter` stage, which did not get updated in the above command. This is
+because `filter` happens before `count` in the pipeline (shown below) and the
+`--downstream` option only execute the stages after a given target stage
+(`count` in this case), including the target stage itself.
 
 ```dvc
 $ dvc dag
