@@ -28,8 +28,8 @@ by `.dvcignore` output the path if it is excluded.
 
 - `-d`, `--details` - show the exclude pattern together with each target path.
 
-- `-n`, `--non-matching` - Show given paths which don’t match any pattern. Only
-                      used when --details is enabled.
+- `-n`, `--non-matching` - show the target paths which don’t match any pattern.
+  Only usable when `--details` is also employed
 
 ## Examples
 
