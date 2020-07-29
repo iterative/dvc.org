@@ -299,3 +299,5 @@ $ dvc dag
   | count |
   +-------+
 ```
+
+> Refer to `dvc dag` for more details on that command.
