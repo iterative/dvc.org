@@ -10,11 +10,15 @@ usage: dvc root [-h] [-q | -v]
 
 ## Description
 
-This command returns the path to the root directory of the <abbr>DVC
-project</abbr>, relative to the current working directory. It can be used to
-build a path to a dependency, script, or <abbr>data artifact</abbr>, for
-example. Useful when working in a subdirectory of the project, and needing to
-refer to a file in another directory.
+The `dvc root` command returns the path to the root directory of the <abbr>DVC
+project</abbr>, relative to the current working directory.
+
+Using `dvc root`, you can build a path to a dependency, script, or <abbr>data
+artifact</abbr> using `dvc run` from any subdirectory of a <abbr>DVC
+project</abbr>.
+
+You can also use `dvc root` to simplify other commands when working in a
+<abbr>DVC project</abbr>.
 
 ## Options
 
@@ -40,6 +44,9 @@ $ dvc root
 
 ## Example: Referencing files
 
+Use `dvc root` to simplify file references when working in a subdirectory of a
+<abbr>DVC project</abbr>.
+
 ```dvc
 $ dvc root
 
@@ -47,4 +54,62 @@ $ dvc root
 
 $ dvc run -d $(dvc root)/data/file.cvs ... \
     python $(dvc root)/scripts/something.py
+```
+
+## Example: Output references
+
+Use `dvc root` to simplify output file or directory references.
+
+```dvc
+$ dvc root
+
+../../../
+
+$ dvc get -o $(dvc root)/root-model.pkl \
+    https://github.com/iterative/example-get-started model.pkl
+```
+
+## Example: Other commands
+
+Use `dvc root` to simplify other commands when working in a <abbr>DVC
+project</abbr>.
+
+```dvc
+$ dvc root
+
+../..
+
+$ tree $(dvc root)/data/
+../../data/
+├── data.xml
+├── data.xml.dvc
+...
+└── prepared
+    ├── test.tsv
+    └── train.tsv
+```
+
+## Example: Build reusable paths
+
+Use `dvc root` to build reusable paths to dependencies, scripts, or <abbr>data
+artifacts</abbr> from separate stages and subdirectories.
+
+```dvc
+$ cd more_stages/
+$ dvc run -n process_data \
+          -d data.in \
+          -d $(dvc root)/process_data.py \
+          -o result.out \
+          python process_data.py data.in result.out
+$ tree ..
+.
+├── dvc.yaml
+├── dvc.lock
+├── process_data.py
+├── ...
+└── more_stages/
+    ├── data.in
+    ├── dvc.lock
+    ├── dvc.yaml
+    └── result.out
 ```
