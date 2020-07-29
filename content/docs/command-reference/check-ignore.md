@@ -47,7 +47,7 @@ $ ls
 file1  file2 other
 ```
 
-Then, let's check if they were excluded by `.dvcignore`
+Then, let's check if these files would be excluded given our `.dvcignore` file:
 
 ```dvc
 $ dvc check-ignore file1
