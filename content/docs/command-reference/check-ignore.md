@@ -74,9 +74,9 @@ $ dvc check-ignore -d file*
 .dvcignore:2:!file2	file2
 ```
 
-If `--non-matching` is specified, non-matching pathnames will also be 
-output, in which case all fields in each output record except for 
-<pathname> will be empty
+With the `--non-matching` option, non-matching `targets` will also be 
+included in the list. All fields in each line, except for `<target path>`, will
+be empty.
 
 ```dvc
 $ dvc check-ignore -d -n other
