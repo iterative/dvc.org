@@ -26,7 +26,7 @@ by `.dvcignore` output the path if it is excluded.
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
-- `-d`, `--details` - Show the exclude pattern together with the path.
+- `-d`, `--details` - show the exclude pattern together with the path.
 
 - `-n`, `--non-matching` - Show given paths which don’t match any pattern. Only
                       used when --details is enabled.
