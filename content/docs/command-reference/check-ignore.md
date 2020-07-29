@@ -34,7 +34,7 @@ by `.dvcignore` output the path if it is excluded.
 ## Examples
 
 First, let's create a `.dvcignore` file with some patterns in it, and some files
-to check.
+to check against it.
 
 ```dvc
 $ echo "file*\n\!file2" >> .dvcignore
