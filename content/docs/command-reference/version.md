@@ -110,27 +110,25 @@ Inside a DVC project:
 
 ```dvc
 $ dvc version
+DVC version: 1.0.1+753efe
+---------------------------------
 
-DVC version: 0.41.3+f36162
-Python version: 3.7.1
-Platform: Linux-4.15.0-50-generic-x86_64-with-debian-buster-sid
-Binary: False
-Cache: reflink - False, hardlink - True, symlink - True
-Supported remotes: azure, gdrive, gs, hdfs, http, https, s3, ssh, oss
-Filesystem type (cache directory): ('ext4', '/dev/sdb3')
+Platform: Python 3.8.2 on Linux-5.7.8-x86_64-with-glibc2.29
+Supports: All remotes
+Cache types: hardlink, symlink
+Cache directory: ext4 on /dev/sda7
+Workspace directory: ext4 on /dev/sda7
 Repo: dvc, git
-Filesystem type (workspace): ('ext4', '/dev/sdb3')
 ```
 
 Outside a DVC project:
 
 ```dvc
 $ dvc version
+DVC version: 1.0.1+753efe
+---------------------------------
 
-DVC version: 0.41.3+f36162
-Python version: 3.7.1
-Platform: Linux-4.15.0-50-generic-x86_64-with-debian-buster-sid
-Binary: False
-Supported remotes: azure, gdrive, gs, hdfs, http, https, s3, ssh, oss
-Filesystem type (workspace): ('ext4', '/dev/sdb3')
+Platform: Python 3.8.2 on Linux-5.7.8-x86_64-with-glibc2.29
+Supports: All remotes
+Workspace directory: ext4 on /dev/sda7
 ```
