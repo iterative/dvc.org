@@ -60,7 +60,7 @@ file1
 file2 
 ```
 
-If `--details` is specified, the output is a series of lines of the form:
+If the `--details` option is used, a series of lines are printed using this format:
 `<source> <COLON> <linenum> <COLON> <pattern> <HT> <pathname>`
 
 ```dvc
