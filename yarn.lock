@@ -5617,6 +5617,15 @@ duplexify@^3.4.2, duplexify@^3.6.0:
     readable-stream "^2.0.0"
     stream-shift "^1.0.0"
 
+dvc-github-actions-link-checker@^0.0.4:
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/dvc-github-actions-link-checker/-/dvc-github-actions-link-checker-0.0.4.tgz#4141b19ae00d5ad92891fcba0e37e695da8db436"
+  integrity sha512-QvWRnmSglt47Jtqxf70KQxXGPrO8pkflh9Xe/aRfJNJ4PYeAQyd1nbBn3Hzza6aehBVEgFIa0lrhdfeQ9n8v5A==
+  dependencies:
+    lodash "^4.17.19"
+    micromatch "^4.0.2"
+    node-fetch "^2.6.0"
+
 ease-component@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/ease-component/-/ease-component-1.0.0.tgz#b375726db0b5b04595b77440396fec7daa5d77c9"
