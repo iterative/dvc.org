@@ -170,11 +170,11 @@ One could do a simple `dvc push` to share all the data, but what if you only
 want to upload part of the data?
 
 ```dvc
-$ dvc push --with-deps matrix-train.p.dvc
+$ dvc push --with-deps test-posts
 
 ... Do some work based on the partial update
 
-$ dvc push --with-deps model.p.dvc
+$ dvc push --with-deps matrix-train
 
 ... Push the rest of the data
 
@@ -182,11 +182,11 @@ $ dvc status --cloud
 Data and pipelines are up to date.
 ```
 
-We specified a stage in the middle of this pipeline (`matrix-train.p.dvc`) with
-the first push. `--with-deps` caused DVC to start with that `.dvc` file, and
-search backwards through the pipeline for data files to upload.
+We specified a stage in the middle of this pipeline (`test-posts`) with the
+first push. `--with-deps` caused DVC to start with that `.dvc` file, and search
+backwards through the pipeline for data files to upload.
 
-Because the `model.p.dvc` stage occurs later (it's the last one), its data was
+Because the `matrix-train` stage occurs later (it's the last one), its data was
 not pushed. However, we then specified it in the second push, so all remaining
 data was uploaded.
 
