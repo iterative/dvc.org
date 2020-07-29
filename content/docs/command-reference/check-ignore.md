@@ -1,6 +1,7 @@
 # check-ignore
 
-Used for debugging `.dvcignore` / exclude files.
+Check whether any given files or directories are excluded from DVC
+due to the patterns found in [`.dvcignore`](/doc/user-guide/dvcignore).
 
 ## Synopsis
 
