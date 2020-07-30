@@ -5617,10 +5617,10 @@ duplexify@^3.4.2, duplexify@^3.6.0:
     readable-stream "^2.0.0"
     stream-shift "^1.0.0"
 
-dvc-github-actions-link-checker@^0.0.5:
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/dvc-github-actions-link-checker/-/dvc-github-actions-link-checker-0.0.5.tgz#cad2d8b8bf8e56105092bc2fa16c6fd653c5b458"
-  integrity sha512-dgZeHOUe4aKcyZTlOtm3KrERJK3eIY4HLBF3NoFfOdgAs8OsGPgJr9oVP2pi4UsS+8VBVFEMJnOoxKgAioXG9w==
+dvc-github-actions-link-checker@^0.0.8:
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/dvc-github-actions-link-checker/-/dvc-github-actions-link-checker-0.0.8.tgz#47471bdcd5e178b5b3a807636596001a78f2a660"
+  integrity sha512-SZKGuKE2/RcYUrQRguipAMC3WN4hKvwL1EjJOW13NZx+2Ceo0CpFk/eW/tI1ZdlsKs1UVAgoXa22Rifjvrc6ag==
   dependencies:
     lodash "^4.17.19"
     micromatch "^4.0.2"
