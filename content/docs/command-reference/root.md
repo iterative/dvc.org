@@ -40,8 +40,8 @@ $ dvc root
 
 ## Example: Referencing files
 
-Use `dvc root` to simplify file references when working in a subdirectory of a
-<abbr>DVC project</abbr>.
+Simplify file references when working in a subdirectory of a <abbr>DVC
+project</abbr>.
 
 ```dvc
 $ dvc root
@@ -54,7 +54,7 @@ $ dvc run -d $(dvc root)/data/file.cvs ... \
 
 ## Example: Output references
 
-Use `dvc root` to simplify output file or directory references.
+Simplify output file or directory references.
 
 ```dvc
 $ dvc root
@@ -67,8 +67,7 @@ $ dvc get -o $(dvc root)/root-model.pkl \
 
 ## Example: Other commands
 
-Use `dvc root` to simplify other commands when working in a <abbr>DVC
-project</abbr>.
+Simplify other commands when working in a <abbr>DVC project</abbr>.
 
 ```dvc
 $ dvc root
@@ -87,8 +86,8 @@ $ tree $(dvc root)/data/
 
 ## Example: Build reusable paths
 
-Use `dvc root` to build reusable paths to dependencies, scripts, or <abbr>data
-artifacts</abbr> from separate stages and subdirectories.
+Build reusable paths to dependencies, scripts, or <abbr>data artifacts</abbr>
+from separate stages and subdirectories.
 
 ```dvc
 $ cd more_stages/
