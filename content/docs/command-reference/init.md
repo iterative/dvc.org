@@ -18,7 +18,7 @@ The command [options](#options) can be used to start an alternative workflow for
 advanced scenarios:
 
 - [Initializing DVC in subdirectories](#initializing-dvc-in-subdirectories) -
-  support for monorepos, nested <abbr>DVC projects</abbr>, etc.
+  support for monorepos and nested <abbr>DVC projects</abbr>.
 - [Initializing DVC without Git](#initializing-dvc-without-git) - support for
   SCM other than Git, deployment automation cases, etc.
 
@@ -32,10 +32,10 @@ that are hidden from the user. This directory is automatically staged with
 
 `--subdir` must be provided to initialize DVC in a subdirectory of a Git
 repository. DVC still expects to find the Git repository (will check all
-directories up to the root to find `.git`). This options does not affect any
-config files, `.dvc` directory is created the same way as in the default mode.
-This way multiple DVC projects (including nested ones) could be initialized in a
-single Git repository providing isolation and granular project management.
+directories up to the system root to find `.git`). This options does not affect
+any config files, `.dvc/` directory is created the same way as in the default
+mode. This way multiple <abbr>DVC projects</abbr> can be initialized in a single
+Git repository, providing isolation and granular project management.
 
 #### When is this useful?
 
@@ -47,7 +47,7 @@ Let's imagine we have an existing Git repository that is split into sub-projects
 (monorepo). In this case `dvc init --subdir` can be run in one or many
 sub-projects to mitigate the issues of initializing in the Git repository root:
 
-- Repository maintainers might not allow extra `.dvc` top level directory,
+- Repository maintainers might not allow extra `.dvc/` top level directory,
   especially if DVC is being used by a small number of sub-projects.
 
 - Not enough isolation/granularity - DVC config, cache, and other files are
@@ -64,16 +64,15 @@ sub-projects to mitigate the issues of initializing in the Git repository root:
 
 #### How does it affect DVC commands?
 
-No matter what mode is used, DVC looks for the `.dvc` directory when it starts
-(from the current working directory and up). Location of the found `.dvc`
-directory determines the root of the DVC project. (In case of `--subdir` it
-might happen that Git repository root is located at different path than the DVC
-project root.)
+No matter what mode is used, DVC looks for the `.dvc/` directory when it starts
+(from the current working directory and up). Its location determines the root of
+the <abbr>DVC projects</abbr>. With `--subdir`, it might happen that the Git
+repository root is in a different location than the DVC project root.
 
-DVC project root defines the scope for most DVC commands. Mostly meaning that
+The project root defines the scope for most DVC commands. Mostly meaning that
 all `dvc.yaml` and `.dvc` files under the root path are being analyzed.
 
-If there are multiple DVC sub-projects but they _are not_ nested, e.g.:
+If there are multiple DVC sub-projects, but they are not nested, e.g.:
 
 ```
 .
@@ -87,12 +86,12 @@ If there are multiple DVC sub-projects but they _are not_ nested, e.g.:
 │   ...
 ```
 
-DVC considers them a two separate DVC projects. Any DVC command that is being
-run in the `project-A` is not aware about DVC `project-B`. DVC does not consider
-Git repository root an initialized DVC project in this case and commands that
-require DVC project will raise an error.
+DVC considers them separate DVC projects. Any DVC command that is being run in
+`project-A` is not aware about `project-B`. DVC does not consider the Git
+repository root a DVC project in this case, and commands that require an
+initialized project will produce an error.
 
-On the other hand, if there _are_ nested DVC projects, e.g.:
+On the other hand, if there are nested DVC projects, e.g.:
 
 ```
 project-A
@@ -105,8 +104,8 @@ project-A
     │   ...
 ```
 
-Nothing changes for the `project-B`. But for any DVC command being run in the
-`project-A` ignores the whole directory `project-B/`, meaning for example:
+Nothing changes for `project-B`. But any DVC command being run in `project-A`
+ignores the whole directory `project-B/`. For example
 
 ```dvc
 $ cd project-A
