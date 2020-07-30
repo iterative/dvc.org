@@ -11,10 +11,11 @@ usage: dvc root [-h] [-q | -v]
 ## Description
 
 Returns the path to the root directory of the <abbr>DVC project</abbr>, relative
-to the current working directory. Useful when working in a subdirectory of the
-project, and you need to refer to a file in another directory. Use it in files
-and commands to build a path to a dependency, script, or <abbr>data
-artifact</abbr>.
+to the current working directory. Useful for referencing a file in another
+directory when working in a subdirectory of the project.
+
+Use `dvc root` to build reusable paths to dependencies, scripts, or <abbr>data
+artifacts</abbr>.
 
 ## Options
 
