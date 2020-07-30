@@ -35,13 +35,13 @@ repository. DVC still expects to find the Git repository (will check all
 directories up to the system root to find `.git`). This options does not affect
 any config files, `.dvc/` directory is created the same way as in the default
 mode. This way multiple <abbr>DVC projects</abbr> can be initialized in a single
-Git repository, providing isolation and granular project management.
+Git repository, providing isolation between projects.
 
 #### When is this useful?
 
 `--subdir` is mostly used in the scenario of a
 [monorepo](https://en.wikipedia.org/wiki/Monorepo), but also can be used in
-other workflows when such isolation and/or advanced granularity is needed.
+other workflows when such isolation is needed.
 
 Let's imagine we have an existing Git repository that is split into sub-projects
 (monorepo). In this case `dvc init --subdir` can be run in one or many
@@ -50,17 +50,17 @@ sub-projects to mitigate the issues of initializing in the Git repository root:
 - Repository maintainers might not allow extra `.dvc/` top level directory,
   especially if DVC is being used by a small number of sub-projects.
 
-- Not enough isolation/granularity - DVC config, cache, and other files are
-  shared across different sub-projects. Means that it's not easy to use
-  different remote storages, for example, for different sub-projects, etc.
+- Not enough isolation - DVC config, cache, and other files are shared across
+  different sub-projects. Means that it's not easy to use different remote
+  storages, for example, for different sub-projects, etc.
 
-- Not enough isolation/granularity - commands like `dvc pull`, `dvc checkout`,
-  and others analyze the whole repository to look for `dvc.yaml` or `.dvc` files
-  to download files and directories, to reproduce <abbr>pipelines</abbr>, etc.
-  It can be expensive in the large repositories with a lot of projects.
+- Not enough isolation - commands like `dvc pull`, `dvc checkout`, and others
+  analyze the whole repository to look for `dvc.yaml` or `.dvc` files to
+  download files and directories, to reproduce <abbr>pipelines</abbr>, etc. It
+  can be expensive in the large repositories with a lot of projects.
 
-- Not enough isolation/granularity - commands like `dvc metrics diff`, `dvc dag`
-  and others by default dump all the metrics, all the pipelines, etc.
+- Not enough isolation - commands like `dvc metrics diff`, `dvc dag` and others
+  by default dump all the metrics, all the pipelines, etc.
 
 #### How does it affect DVC commands?
 
