@@ -30,12 +30,10 @@ artifacts</abbr>.
 
 ```dvc
 $ dvc root
-
 .
 
 $ cd subdir
 $ dvc root
-
 ..
 ```
 
@@ -46,7 +44,6 @@ project</abbr>.
 
 ```dvc
 $ dvc root
-
 ../../../
 
 $ dvc run -d $(dvc root)/data/file.cvs ... \
@@ -59,7 +56,6 @@ Simplify output file or directory references.
 
 ```dvc
 $ dvc root
-
 ../../../
 
 $ dvc get -o $(dvc root)/root-model.pkl \
@@ -72,7 +68,6 @@ Simplify other commands when working in a <abbr>DVC project</abbr>.
 
 ```dvc
 $ dvc root
-
 ../..
 
 $ tree $(dvc root)/data/
@@ -97,6 +92,7 @@ $ dvc run -n process_data \
           -d $(dvc root)/process_data.py \
           -o result.out \
           python process_data.py data.in result.out
+
 $ tree ..
 .
 ├── dvc.yaml
