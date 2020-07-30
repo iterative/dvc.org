@@ -271,8 +271,8 @@ print(f'Number of lines in {sys.argv[1]}:')
 print(num_lines)
 ```
 
-Now, using the `--downstream` option with `count` as a target stage, results in
-the following output:
+Now, using the `--downstream` option with `dvc repro`, results in the execution
+of stages after the target stage (`count` in this case) in the pipeline.
 
 ```dvc
 $ dvc repro --downstream count
@@ -281,11 +281,9 @@ Running stage 'count' with command:
 Updating lock file 'dvc.lock'
 ```
 
-The change in the `text.txt` file is ignored because that file is a dependency
-in the `filter` stage, which did not get updated in the above command. This is
-because `filter` happens before `count` in the pipeline (shown below) and the
-`--downstream` option only execute the stages after a given target stage
-(`count` in this case), including the target stage itself.
+The change in `text.txt` is ignored because that file is a dependency in the
+`filter` stage, which did not get updated in the above command. This is because
+`filter` happens before `count` in the pipeline (shown below).
 
 ```dvc
 $ dvc dag
