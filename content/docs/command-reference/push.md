@@ -67,7 +67,7 @@ cache (compared to the default remote.) It can be used to see what files
 If one or more `targets` are specified, DVC only considers the files associated
 with them. Using the `--with-deps` option, DVC tracks dependencies backward from
 the target [stage files](/doc/command-reference/run), through the corresponding
-[pipelines](/doc/command-reference/pipeline), to find data files to push.
+[pipelines](/doc/command-reference/dag), to find data files to push.
 
 ## Options
 
@@ -151,27 +151,16 @@ $ dvc push data.zip.dvc
 ## Example: With dependencies
 
 Demonstrating the `--with-deps` option requires a larger example. First, assume
-a [pipeline](/doc/command-reference/pipeline) has been setup with these
-[stages](/doc/command-reference/run):
+a [pipeline](/doc/command-reference/dag) has been setup with these
+[stages](/doc/command-reference/run): `clean-posts`, `featurize`, `test-posts`,
+`matrix-train`
 
-```dvc
-$ dvc pipeline show
-data/Posts.xml.zip.dvc
-Posts.xml.dvc
-Posts.tsv.dvc
-Posts-test.tsv.dvc
-matrix-train.p.dvc
-model.p.dvc
-Dvcfile
-```
-
-Imagine the <abbr>projects</abbr> has been modified such that the
+Imagine the <abbr>project</abbr> has been modified such that the
 <abbr>outputs</abbr> of some of these stages need to be uploaded to
 [remote storage](/doc/command-reference/remote).
 
 ```dvc
 $ dvc status --cloud
-
   new:            data/model.p
   new:            data/matrix-test.p
   new:            data/matrix-train.p
@@ -181,24 +170,23 @@ One could do a simple `dvc push` to share all the data, but what if you only
 want to upload part of the data?
 
 ```dvc
-$ dvc push --with-deps matrix-train.p.dvc
+$ dvc push --with-deps test-posts
 
 ... Do some work based on the partial update
 
-$ dvc push --with-deps model.p.dvc
+$ dvc push --with-deps matrix-train
 
 ... Push the rest of the data
 
 $ dvc status --cloud
-
 Data and pipelines are up to date.
 ```
 
-We specified a stage in the middle of this pipeline (`matrix-train.p.dvc`) with
-the first push. `--with-deps` caused DVC to start with that `.dvc` file, and
-search backwards through the pipeline for data files to upload.
+We specified a stage in the middle of this pipeline (`test-posts`) with the
+first push. `--with-deps` caused DVC to start with that `.dvc` file, and search
+backwards through the pipeline for data files to upload.
 
-Because the `model.p.dvc` stage occurs later (it's the last one), its data was
+Because the `matrix-train` stage occurs later (it's the last one), its data was
 not pushed. However, we then specified it in the second push, so all remaining
 data was uploaded.
 

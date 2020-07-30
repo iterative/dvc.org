@@ -49,7 +49,7 @@ on DVC remotes.) These necessary data or model files are listed as
 <abbr>dependencies</abbr> or <abbr>outputs</abbr> in a target
 [stage](/doc/command-reference/run) (in `dvc.yaml`) or `.dvc` file, so they are
 required to [reproduce](/doc/tutorials/get-started/data-pipelines#reproduce) the
-corresponding [pipeline](/doc/command-reference/pipeline).
+corresponding [pipeline](/doc/command-reference/dag).
 
 `dvc fetch` ensures that the files needed for a stage or `.dvc` file to be
 [reproduced](/doc/tutorials/get-started/data-pipelines#reproduce) exist in
@@ -135,9 +135,6 @@ $ cd example-get-started
 ```
 
 </details>
-
-The workspace looks almost like in this
-[pipeline setup](/doc/tutorials/pipelines):
 
 ```dvc
 .
