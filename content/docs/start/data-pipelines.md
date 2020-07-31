@@ -292,14 +292,13 @@ prepare:
 DVC pipelines (`dvc.yaml` file, `dvc run`, and `dvc repro` commands) solve a few
 important problems:
 
-- _Automation_ - run a sequence of steps in a "smart" way that makes iterating on
-  your project faster. DVC automatically determines which parts of a project
+- _Automation_ - run a sequence of steps in a "smart" way that makes iterating
+  on your project faster. DVC automatically determines which parts of a project
   need to be run, and it caches "runs" and their results, to avoid unnecessary
   re-runs.
 - _Reproducibility_ - `dvc.yaml` and `dvc.lock` files describe what data to use
-  and which commands will generate the pipeline results (such as an ML
-  model). Storing these
-  files in Git makes it easy to version and share.
+  and which commands will generate the pipeline results (such as an ML model).
+  Storing these files in Git makes it easy to version and share.
 - _Continuous Delivery and Continuous Integration (CI/CD) for ML_ - describing
   projects in way that it can be reproduced (built) is the fist necessary step
   before introducing CI/CD systems.
