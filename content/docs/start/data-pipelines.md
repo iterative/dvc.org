@@ -300,8 +300,7 @@ important problems:
   data to use and what commands to run to produce an ML model. Storing these
   files in Git makes it easy to version and share.
 - _Continuous Delivery and Continuous Integration (CI/CD) for ML_ - reproducible
-  ML pipelines allow CI/CD systems to retrain
-  ([repro](https://dvc.org/doc/command-reference/repro)) models on fresh
+  ML pipelines allow CI/CD systems to retrain models on fresh
   datasets with identical preprocessing and training stages, version upstream
   models and datasets, and easily
   [compare](https://dvc.org/doc/start/experiments#comparing-experiments) metrics
