@@ -37,7 +37,7 @@ $ dvc root
 ..
 ```
 
-## Example: Referencing files
+## Example: Referencing fixed paths for `dvc run`
 
 Simplify file references when working in a subdirectory of a <abbr>DVC
 project</abbr>.
