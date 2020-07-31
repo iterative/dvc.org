@@ -9,11 +9,11 @@ picture: 2020-07-31/Gems_July_20.png
 author: elle_obrien
 commentsUrl: https://discuss.dvc.org/t/july-20-community-gems/460
 tags:
+  - Discord
+  - Gems
   - CML
-  - Bitbucket
   - GCP
-  - global remote
-  - cache
+  - DVC 1.0
 ---
 
 Here are some of our top Q&A's from around the community. With the launch of
@@ -25,8 +25,8 @@ Here are some of our top Q&A's from around the community. With the launch of
 
 When you
 [create a global DVC remote](https://dvc.org/doc/command-reference/remote/list#options),
-a config file will be created in `~/.config/dvc/config` instead of in your
-project directory (i.e., `.dvc/config`).
+a config file will be created in `~/.config/dvc/config` instead of your project
+directory (i.e., `.dvc/config`). Note that on Windows,
 
 ### [Q: I'm working on a collaborative project, and I use `dvc pull` to sync my local workspace with the project repository. Then, I try running `dvc repro`, but get an error: `dvc.yaml does not exist`. No one else on my team is having this issue. Any ideas?](https://discordapp.com/channels/485586884165107732/485596304961962003/731188065078345799)
 
@@ -39,8 +39,10 @@ version 1.0 or later. You can check by running
 $ dvc version
 ```
 
-The best solution is for your whole team to upgrade to the latest version. If
-for some reason this won't work for your team, you can either downgrade to a
+The best solution is for your whole team to upgrade to the latest version- and
+there's an easy
+[migration script to help you make the move](https://towardsdatascience.com/automatically-migrate-your-project-from-dvc-0-94-to-dvc-1-x-416a5b9e837b).
+If for some reason this won't work for your team, you can either downgrade to a
 previous version, or use a workaround:
 
 ```dvc
@@ -86,9 +88,10 @@ file in your remote within a Python environment.
 
 ### [Q: By default, each DVC project has its own cache in the project repository. To save space, I'm thinking about locally creating a single cache folder and letting multiple project repositories point there. Will this work?](https://discordapp.com/channels/485586884165107732/563406153334128681/736164141701791815)
 
-Yes, we hear from many users who have created a shared cache. Because of the way
-DVC uses content-addressable filenames, you won't encounter issues like
-accidentally overwriting files from one project with another.
+Yes, we hear from many users who have created a
+[shared cache](https://dvc.org/doc/use-cases/shared-development-server#configure-the-external-shared-cache).
+Because of the way DVC uses content-addressable filenames, you won't encounter
+issues like accidentally overwriting files from one project with another.
 
 A possible issue is that a shared cache will grant all teammates working on a
 given project access to the data from all other projects using that cache. If
