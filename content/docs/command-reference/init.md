@@ -70,8 +70,7 @@ the scope of DVC commands run here is constrained to this project alone, even if
 there are more DVC-related files elsewhere in the repo. Similarly, DVC commands
 run outside this project root will ignore its contents.
 
-**Simple structures**: multiple `--subdir` projects, but they are not nested,
-e.g.:
+**Simple structures**: multiple `--subdir` projects, not nested, e.g.:
 
 ```dvc
 .
@@ -84,10 +83,10 @@ e.g.:
 │   ...
 ```
 
-DVC considers them separate projects. Any DVC command run in `project-A` is not
+DVC considers these separate projects. Any DVC command run in `project-A` is not
 aware of `project-B`. However, commands that involve versioning (like
 `dvc checkout`) can access the commit history from the Git root (`.`), when run
-in `project-A`.
+in `--subdir` projects.
 
 > `.` is not a DVC project in this case, so most DVC commands can't be run
 > there.
