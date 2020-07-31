@@ -11,10 +11,10 @@ usage: dvc root [-h] [-q | -v]
 ## Description
 
 Returns the path to the root directory of the <abbr>DVC project</abbr>, relative
-to the current working directory. `dvc root` is useful for referencing a file
-in another directory when working in a subdirectory of the project.
+to the current working directory. `dvc root` is useful for referencing a file in
+another directory when working in a subdirectory of the project.
 
-Use this command to build reusable paths to dependencies, scripts, or
+Use this command to build scripts using fixed paths to dependencies, files, or
 <abbr>data artifacts</abbr>.
 
 ## Options
@@ -32,6 +32,7 @@ Use this command to build reusable paths to dependencies, scripts, or
 $ dvc root
 .
 
+$ mkdir subdir
 $ cd subdir
 $ dvc root
 ..
@@ -39,8 +40,8 @@ $ dvc root
 
 ## Example: Referencing fixed paths for `dvc run`
 
-Simplify file references when working in a subdirectory of a <abbr>DVC
-project</abbr>.
+When working in a subdirectory of a <abbr>DVC project</abbr>, simplify file
+references by making all paths relative to the root directory.
 
 ```dvc
 $ dvc root
@@ -50,21 +51,10 @@ $ dvc run -d $(dvc root)/data/file.cvs ... \
     python $(dvc root)/scripts/something.py
 ```
 
-## Example: Output references
+## Example: Referencing fixed paths for other commands
 
-Simplify output file or directory references.
-
-```dvc
-$ dvc root
-../../../
-
-$ dvc get -o $(dvc root)/root-model.pkl \
-    https://github.com/iterative/example-get-started model.pkl
-```
-
-## Example: Other commands
-
-Simplify other commands when working in a <abbr>DVC project</abbr>.
+When working in a subdirectory of a <abbr>DVC project</abbr>, simplify file
+references in other commands by using paths relative to the root directory.
 
 ```dvc
 $ dvc root
@@ -78,30 +68,4 @@ $ tree $(dvc root)/data/
 └── prepared
     ├── test.tsv
     └── train.tsv
-```
-
-## Example: Build reusable paths
-
-Build reusable paths to dependencies, scripts, or <abbr>data artifacts</abbr>
-from separate stages and subdirectories.
-
-```dvc
-$ cd more_stages/
-$ dvc run -n process_data \
-          -d data.in \
-          -d $(dvc root)/process_data.py \
-          -o result.out \
-          python process_data.py data.in result.out
-
-$ tree ..
-.
-├── dvc.yaml
-├── dvc.lock
-├── process_data.py
-├── ...
-└── more_stages/
-    ├── data.in
-    ├── dvc.lock
-    ├── dvc.yaml
-    └── result.out
 ```
