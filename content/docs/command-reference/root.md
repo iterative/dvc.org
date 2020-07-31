@@ -32,7 +32,6 @@ files programmatically or with the `dvc run` helper.
 ```dvc
 $ dvc root
 .
-
 $ mkdir subdir
 $ cd subdir
 $ dvc root
