@@ -13,7 +13,7 @@ jobs:
 
     - name: Run the link checker
       id: check
-      uses: "rogermparent/dvc-github-actions-link-checker.dist@master"
+      uses: "iterative/dvc.org-link-check-diff.action@master"
       with:
         baseURL: "${{ github.event.deployment.payload.web_url }}"
 
