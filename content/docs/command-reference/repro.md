@@ -282,8 +282,8 @@ Updating lock file 'dvc.lock'
 ```
 
 The change in `text.txt` is ignored because that file is a dependency in the
-`filter` stage, which did not get updated in the above command. This is because
-`filter` happens before `count` in the pipeline (shown below).
+`filter` stage, which wasn't executed by the `dvc repro` above. This is because
+`filter` happens before the target (`count`) in the pipeline, as shown below:
 
 ```dvc
 $ dvc dag
