@@ -5,6 +5,10 @@ description: |
   A roundup of technical Q&A's from the DVC community. This month, we discuss 
   getting started with CML, configuring your DVC cache, and how to request a 
   tutorial video.
+descriptionLong: |
+  A roundup of technical Q&A's from the DVC community. This month, we discuss 
+  getting started with CML, configuring your DVC cache, and how to request a 
+  tutorial video.
 picture: 2020-07-31/Gems_July_20.png
 author: elle_obrien
 commentsUrl: https://discuss.dvc.org/t/july-20-community-gems/460
@@ -26,7 +30,7 @@ Here are some of our top Q&A's from around the community. With the launch of
 When you
 [create a global DVC remote](https://dvc.org/doc/command-reference/remote/list#options),
 a config file will be created in `~/.config/dvc/config` instead of your project
-directory (i.e., `.dvc/config`). Note that on Windows,
+directory (i.e., `.dvc/config`).
 
 ### [Q: I'm working on a collaborative project, and I use `dvc pull` to sync my local workspace with the project repository. Then, I try running `dvc repro`, but get an error: `dvc.yaml does not exist`. No one else on my team is having this issue. Any ideas?](https://discordapp.com/channels/485586884165107732/485596304961962003/731188065078345799)
 
