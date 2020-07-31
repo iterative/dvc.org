@@ -271,8 +271,8 @@ print(f'Number of lines in {sys.argv[1]}:')
 print(num_lines)
 ```
 
-Now, using the `--downstream` option with `dvc repro`, results in the execution
-of stages after the target stage (`count` in this case) in the pipeline.
+Now, using the `--downstream` option with `dvc repro` results in the execution
+only of stages after the target (`count`).
 
 ```dvc
 $ dvc repro --downstream count
