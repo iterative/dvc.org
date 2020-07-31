@@ -65,7 +65,4 @@ $ tree $(dvc root)/data/
 ├── data.xml
 ├── data.xml.dvc
 ...
-└── prepared
-    ├── test.tsv
-    └── train.tsv
 ```
