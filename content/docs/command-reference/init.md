@@ -59,12 +59,15 @@ DVC in the Git repository root:
 
 #### How does it affect DVC commands?
 
-The <abbr>project</abbr> root defines the possible scope of action for most DVC
+The <abbr>project</abbr> root is found by DVC by looking for `.dvc/` from the
+current working directory, up. It defines the scope of action for most DVC
 commands (e.g. `dvc repro`, `dvc pull`, `dvc metrics diff`), meaning that only
-`dvc.yaml`, `dvc.lock`, and `.dvc` files under that location are usable by the
-commands. To determine the root of the project, DVC looks for `.dvc/` from the
-current working directory, up. With `--subdir`, the project root will be found
-before the Git repo root, reducing this scope.
+`dvc.yaml`, `dvc.lock`, and `.dvc` files inside the project are usable by the
+commands.
+
+With `--subdir`, the project root will be found before the Git repo root, making
+sure the scope of DVC commands is constrained to this project alone, and not any
+other that may be found in the repo.
 
 If there are multiple `--subdir` projects, but they are not nested, e.g.:
 
@@ -121,10 +124,9 @@ project-A
 
 > This is a questionable Git practice though, unless employing submodules.
 
-In these cases all projects are also isolated from each other and commands run
-in one or the other only affects itself. Inner ones wouldn't search for
-data/pipelines above them anyway, and outer ones know to ignore sub-repos by
-default.
+In these cases all projects are also isolated from each other, and commands run
+in one or the other only affects themselves. Inner ones wouldn't search for
+data/pipelines above them anyway, and outer ones ignore sub-repos by default.
 
 ### Initializing DVC without Git
 
