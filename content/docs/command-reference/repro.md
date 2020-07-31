@@ -127,8 +127,8 @@ only execute the final stage.
 - `-p`, `--pipeline` - reproduce the entire pipelines that the `targets` belong
   to. Use `dvc dag <target>` to show the parent pipeline of a target.
 
-- `-P`, `--all-pipelines` - reproduce all pipelines for all the `dvc.yaml` files
-  in present the DVC repository (there can be one in every directory).
+- `-P`, `--all-pipelines` - reproduce all pipelines for all `dvc.yaml` files
+  present in the DVC project.
 
 - `--no-run-cache` - execute stage commands even if they have already been run
   with the same command/dependencies/outputs/etc before.
