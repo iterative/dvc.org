@@ -35,8 +35,8 @@ directory.
 ## Examples
 
 As examples, let's take a look at a [stage](/doc/command-reference/run) that
-simply moves a local file from an external location, producing a `data.txt.dvc`
-stage file (DVC-file).
+simply downloads a file from an external location, adding a `download_file`
+stage to your list of stages in dvc.yaml.
 
 > Note that some of these commands use the `/home/shared` directory, typical in
 > Linux distributions.
@@ -44,7 +44,8 @@ stage file (DVC-file).
 ### Local file system path
 
 ```dvc
-$ dvc run -d /home/shared/data.txt \
+$ dvc run -n download_file
+          -d /home/shared/data.txt \
           -o data.txt \
           cp /home/shared/data.txt data.txt
 ```
@@ -52,7 +53,8 @@ $ dvc run -d /home/shared/data.txt \
 ### SSH
 
 ```dvc
-$ dvc run -d ssh://user@example.com:/home/shared/data.txt \
+$ dvc run -n download_file
+          -d ssh://user@example.com:/home/shared/data.txt \
           -o data.txt \
           scp user@example.com:/home/shared/data.txt data.txt
 ```
@@ -60,7 +62,8 @@ $ dvc run -d ssh://user@example.com:/home/shared/data.txt \
 ### Amazon S3
 
 ```dvc
-$ dvc run -d s3://mybucket/data.txt \
+$ dvc run -n download_file
+          -d s3://mybucket/data.txt \
           -o data.txt \
           aws s3 cp s3://mybucket/data.txt data.txt
 ```
@@ -68,7 +71,8 @@ $ dvc run -d s3://mybucket/data.txt \
 ### Microsoft Azure Blob Storage
 
 ```dvc
-$ dvc run -d azure://my-container-name/data.txt \
+$ dvc run -n download_file
+          -d azure://my-container-name/data.txt \
           -o data.txt \
           az storage copy \
                      -d data.json \
@@ -80,7 +84,8 @@ $ dvc run -d azure://my-container-name/data.txt \
 ### Google Cloud Storage
 
 ```dvc
-$ dvc run -d gs://mybucket/data.txt \
+$ dvc run -n download_file
+          -d gs://mybucket/data.txt \
           -o data.txt \
           gsutil cp gs://mybucket/data.txt data.txt
 ```
@@ -88,7 +93,8 @@ $ dvc run -d gs://mybucket/data.txt \
 ### HDFS
 
 ```dvc
-$ dvc run -d hdfs://user@example.com/home/shared/data.txt \
+$ dvc run -n download_file
+          -d hdfs://user@example.com/home/shared/data.txt \
           -o data.txt \
           hdfs fs -copyToLocal \
                   hdfs://user@example.com/home/shared/data.txt \
@@ -100,7 +106,8 @@ $ dvc run -d hdfs://user@example.com/home/shared/data.txt \
 > Including HTTPs
 
 ```dvc
-$ dvc run -d https://example.com/data.txt \
+$ dvc run -n download_file
+          -d https://example.com/data.txt \
           -o data.txt \
           wget https://example.com/data.txt -O data.txt
 ```
@@ -117,7 +124,8 @@ For example, for an HTTPs remote/dependency:
 
 ```dvc
 $ dvc remote add example https://example.com
-$ dvc run -d remote://example/data.txt \
+$ dvc run -n download_file
+          -d remote://example/data.txt \
           -o data.txt \
           wget https://example.com/data.txt -O data.txt
 ```
