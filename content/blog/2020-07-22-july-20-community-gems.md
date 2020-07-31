@@ -1,20 +1,19 @@
 ---
 title: July '20 Community Gems
-date: 2020-07-22
+date: 2020-07-31
 description: |
   A roundup of technical Q&A's from the DVC community. This month, we discuss 
-  migrating to DVC 1.0, the new pipeline format, and our Python API.
-descriptionLong: |
-  A roundup of technical Q&A's from the DVC community. This month, we discuss 
-  migrating to DVC 1.0, the new pipeline format, and our Python API.
-picture: 2020-06-29/Gems_June_20.png
+  getting started with CML, configuring your DVC cache, and how to request a 
+  tutorial video.
+picture: 2020-07-31/Gems_July_20.png
 author: elle_obrien
-commentsUrl: https://discuss.dvc.org/t/june-20-community-gems/426
+commentsUrl: https://discuss.dvc.org/t/july-20-community-gems/460
 tags:
   - CML
   - Bitbucket
   - GCP
   - global remote
+  - cache
 ---
 
 Here are some of our top Q&A's from around the community. With the launch of
@@ -37,7 +36,7 @@ this means your teammates are using DVC version 0.94 or earlier, before the
 version 1.0 or later. You can check by running
 
 ```dvc
-$ dvc --version
+$ dvc version
 ```
 
 The best solution is for your whole team to upgrade to the latest version. If
@@ -50,6 +49,13 @@ $ dvc repro <.dvc stage file>
 
 substituting the appropriate `.dvc` file for your pipeline. DVC 1.0 is backwards
 compatible, so pipelines created with previous versions will still run.
+
+### [Q: Does the DVC installer for Windows also include the dependencies for using cloud storage, like S3 and GCP?](https://discordapp.com/channels/485586884165107732/485596304961962003/715717911574216735)
+
+If you're installing DVC from binary-such as the `dvc.exe`
+[downloadable on the DVC homepage](https://dvc.org/)- all the standard
+dependencies are included. You shouldn't need to use `pip` to install extra
+packages (like `boto` for S3 storage).
 
 ### [Q: Is there a way to setup my DVC remote so I can manually download files from it without going through DVC?](https://discordapp.com/channels/485586884165107732/563406153334128681/717458695709130764)
 
@@ -78,13 +84,27 @@ functinality is also part of our Python API, so you can locate the path to a
 file in your remote within a Python environment.
 [Check out our API docs!](https://dvc.org/doc/api-reference/get_url)
 
+### [Q: By default, each DVC project has its own cache in the project repository. To save space, I'm thinking about locally creating a single cache folder and letting multiple project repositories point there. Will this work?](https://discordapp.com/channels/485586884165107732/563406153334128681/736164141701791815)
+
+Yes, we hear from many users who have created a shared cache. Because of the way
+DVC uses content-addressable filenames, you won't encounter issues like
+accidentally overwriting files from one project with another.
+
+A possible issue is that a shared cache will grant all teammates working on a
+given project access to the data from all other projects using that cache. If
+you have sensitive data, you can create different caches for projects involving
+private and public data.
+
+To learn more about setting your cache directory location,
+[see our docs](https://dvc.org/doc/command-reference/cache/dir).
+
 ## CML questions
 
 ### Q: I use Bitbucket. Will CML work for me?
 
 The first release of CML is compatible with GitHub and GitLab. We've seen
 [many requests for Bitbucket support](https://github.com/iterative/cml/issues/140),
-and we're making it a development priority for an upcoming release. Stay tuned.
+and we're actively investigating how to add this. Stay tuned.
 
 ### [Q: I have on-premise GPUs. Can CML use them to execute pipelines?](https://discordapp.com/channels/485586884165107732/728693131557732403/730070747388706867)
 
@@ -97,60 +117,13 @@ and setup instructions.
 ### [Q: I'm building a workflow that deploys a GCP Compute Engine instance, but I can only find examples with AWS EC2 in the CML docs. What do I do?](https://discordapp.com/channels/485586884165107732/728693131557732403/730688592787275806)
 
 There is a slight difference in the way CML handles credentials for AWS and GCP,
-and that means you'll have to modify your workflow file slightly. We've added
-this example to our
-[project README](https://github.com/iterative/cml#allocating-cloud-resources-with-cml):
+and that means you'll have to modify your workflow file slightly. We've added an
+example workflow for GCP to our
+[project README](https://github.com/iterative/cml#allocating-cloud-resources-with-cml).
 
-```yaml
-deploy-gce:
-  runs-on: [ubuntu-latest]
-  container: docker://dvcorg/cml-cloud-runner
-
-  steps:
-    - name: deploy
-      shell: bash
-      env:
-        repo_token: ${{ secrets.REPO_TOKEN }}
-        GOOGLE_APPLICATION_CREDENTIALS_DATA:
-          ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS_DATA }}
-      run: |
-
-        echo '${{ secrets.GOOGLE_APPLICATION_CREDENTIALS_DATA }}' > gce-credentials.json
-        export GOOGLE_APPLICATION_CREDENTIALS='gce-credentials.json'
-
-        RUNNER_LABELS="gce"
-        RUNNER_REPO="https://github.com/${GITHUB_REPOSITORY}"
-        MACHINE="cml$(date +%s)"
-
-        docker-machine create --driver google \
-          --google-machine-type <machine-type> \
-          --google-project <project-id> \
-          $MACHINE
-
-        eval "$(docker-machine env --shell sh $MACHINE)"
-
-        (
-        docker-machine ssh $MACHINE "sudo mkdir -p /docker_machine && sudo chmod 777 /docker_machine" && \
-        docker-machine scp -r -q ~/.docker/machine/ $MACHINE:/docker_machine && \
-        docker-machine scp -q gce-credentials.json $MACHINE:/docker_machine/gce-credentials.json && \
-
-        eval "$(docker-machine env --shell sh $MACHINE)" && \
-        docker run --name runner -d \
-          -v /docker_machine/gce-credentials.json:/gce-credentials.json \
-          -e GOOGLE_APPLICATION_CREDENTIALS='/gce-credentials.json' \
-          -v /docker_machine/machine:/root/.docker/machine \
-          -e DOCKER_MACHINE=$MACHINE \
-          -e repo_token=$repo_token \
-          -e RUNNER_LABELS=$RUNNER_LABELS \
-          -e RUNNER_REPO=$RUNNER_REPO \
-          -e RUNNER_IDLE_TIMEOUT=120 \
-          dvcorg/cml-cloud-runner:latest && \
-        sleep 20 && echo "Deployed $MACHINE"
-        ) || (docker-machine rm -f $MACHINE && exit 1)
-```
-
-We've also added an example for deploying GCP runners with GPUs to our
-[cloud compute use case repository docs](https://github.com/iterative/cml_cloud_case#using-a-different-cloud-service).
+We've updated our
+[cloud compute use case repository docs](https://github.com/iterative/cml_cloud_case#using-a-different-cloud-service)
+to cover a GCP example.
 
 Note that for Azure, the workflow will be the same as for AWS. You'll only have
 to change the arguments to `docker-machine`.
@@ -167,3 +140,44 @@ CI pipeline, you can add CML to your image via npm:
 ```bash
 $ npm i -g @dvcorg/cml
 ```
+
+### [Q: Can I use CML with MLFlow?](https://www.youtube.com/watch?v=9BgIDqAzfuA&lc=Ugw-VxQqAaqi9hmqB3t4AaABAg)
+
+CML is designed to integrate with lots of tools that ML teams are already
+familiar with. For example, we set up a wrapper to use CML with Tensorboard, so
+you get a link to your Tensorboard in a PR whenever your model is training
+([check out the use case](https://github.com/iterative/cml_tensorboard_case/pull/3)).
+
+While we haven't yet tried to create a use case with MLFlow in particular, we
+think a similar approach could work. We could imagine using MLFlow for
+hyperparameter searching, for example, and then checking in your best model with
+Git to a CI system for evaluation in a production-like environment. CML could
+help you orchestrate compute resources for model evaluation in your custom
+environment, pulling the model and any validation data from cloud storage, and
+reporting the results in a PR.
+
+If this is something you're interested in, make an issue on our project
+repository to tell us more about your project and needs- that lets us know it's
+a priority in the community.
+
+### Q: Are there more tutorial videos coming?
+
+Yes! We recently launched
+[our first CML tutorial video](https://dvc.org/blog/first-mlops-tutorial), and a
+lot of folks let us know they want more. We're aiming to release a new video
+every week or so in the coming months. Topics will include:
+
+- Using DVC to push and pull data from cloud storage to your CI system
+- Using CML with your on-premise hardware
+- Building a data dashboard in GitHub & GitLab for monitoring changes in dynamic
+  datasets
+- Provisioning cloud compute from your CI system
+- Creating a custom Docker container for testing models in a production-like
+  environment
+
+We really want to know what use cases, questions, and issues are most important
+to you. This will help us make videos that are most relevant to the community!
+If you have a suggestion or idea, no matter how small, we want to know. Leave a
+[comment on our videos](https://youtu.be/9BgIDqAzfuA),
+[reach out on Twitter](https://twitter.com/dvcorg), or
+[ping us in Discord](https://discord.gg/bzA6uY7).
