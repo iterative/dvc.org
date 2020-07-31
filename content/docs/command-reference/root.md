@@ -51,10 +51,7 @@ $ dvc run -d $(dvc root)/data/file.cvs ... \
     python $(dvc root)/scripts/something.py
 ```
 
-## Example: Referencing fixed paths for other commands
-
-When working in a subdirectory of a <abbr>DVC project</abbr>, simplify file
-references in other commands by using paths relative to the root directory.
+The same can be applied to non-DVC commands:
 
 ```dvc
 $ dvc root
