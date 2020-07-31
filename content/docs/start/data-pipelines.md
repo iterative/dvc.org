@@ -296,8 +296,9 @@ important problems:
   your project faster. DVC caches "runs" and results in stages and automatically
   determines which parts of a project need to be run to avoid unnecessary
   re-runs.
-- _Reproducibility_ - `dvc.yaml` and `dvc.lock` files describe and capture what
-  data to use and what commands to run to produce an ML model. Storing these
+- _Reproducibility_ - `dvc.yaml` and `dvc.lock` files describe what data to use
+  and which commands will generate the pipeline results (such as an ML
+  model). Storing these
   files in Git makes it easy to version and share.
 - _Continuous Delivery and Continuous Integration (CI/CD) for ML_ - reproducible
   ML pipelines allow CI/CD systems to retrain models on fresh
