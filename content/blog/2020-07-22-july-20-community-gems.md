@@ -32,6 +32,9 @@ When you
 a config file will be created in `~/.config/dvc/config` instead of your project
 directory (i.e., `.dvc/config`).
 
+Note that on a Windows system, the config file will be created at
+`C:\Users\<username>\AppData\Local\iterative\dvc\config`.
+
 ### [Q: I'm working on a collaborative project, and I use `dvc pull` to sync my local workspace with the project repository. Then, I try running `dvc repro`, but get an error: `dvc.yaml does not exist`. No one else on my team is having this issue. Any ideas?](https://discordapp.com/channels/485586884165107732/485596304961962003/731188065078345799)
 
 This error suggests there is no `dvc.yaml` file in your project. Most likely,
