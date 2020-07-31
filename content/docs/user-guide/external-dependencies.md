@@ -50,6 +50,9 @@ $ dvc run -n download_file
           cp /home/shared/data.txt data.txt
 ```
 
+> Note in this case it's not necessarily a "download", since a simple `cp` is
+> used.
+
 ### SSH
 
 ```dvc
