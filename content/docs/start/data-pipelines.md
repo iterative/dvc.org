@@ -302,7 +302,8 @@ important problems:
   files in Git makes it easy to version and share.
 - _Continuous Delivery and Continuous Integration (CI/CD) for ML_ - reproducible
   ML pipelines allow CI/CD systems to retrain models on fresh
-  datasets with identical training, and save the results.
+  datasets with identical training, save the results, and even produce reports
+  about the whole process. See [CML.dev](https://cml.dev/) for some examples.
 
 ## Visualize
 
