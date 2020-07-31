@@ -263,7 +263,7 @@ The answer to universe is 42
 - The Hitchhiker's Guide to the  Galaxy
 ```
 
-Let's say we want to print the filename also in the description and so we update
+Let's say we also want to print the filename in the description, and so we update
 the `process.py` as:
 
 ```python
