@@ -292,7 +292,7 @@ prepare:
 DVC pipelines (`dvc.yaml` file, `dvc run`, and `dvc repro` commands) solve a few
 important problems:
 
-- _Automation_ - run a sequence of steps in a "smart" way to make iterating on
+- _Automation_ - run a sequence of steps in a "smart" way that makes iterating on
   your project faster. DVC caches "runs" and results in stages and automatically
   determines which parts of a project need to be run to avoid unnecessary
   re-runs.
