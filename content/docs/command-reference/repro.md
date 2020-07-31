@@ -272,7 +272,7 @@ print(num_lines)
 ```
 
 Now, using the `--downstream` option with `dvc repro` results in the execution
-only of stages after the target (`count`).
+only of stages after the target (`count`):
 
 ```dvc
 $ dvc repro --downstream count
