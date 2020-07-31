@@ -14,8 +14,9 @@ Returns the path to the root directory of the <abbr>DVC project</abbr>, relative
 to the current working directory. `dvc root` is useful for referencing a file in
 another directory when working in a subdirectory of the project.
 
-Use this command to build scripts using fixed paths to dependencies, files, or
-<abbr>data artifacts</abbr>.
+Use this command to build fixed paths to dependencies, files, or <abbr>data
+artifacts</abbr>. Useful when creating shell scripts that generate `dvc.yaml`
+files programmatically or with the `dvc run` helper.
 
 ## Options
 
