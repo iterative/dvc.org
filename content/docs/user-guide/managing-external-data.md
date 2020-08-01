@@ -66,20 +66,22 @@ $ dvc run -d data.txt \
 
 ```dvc
 # Add SSH remote to be used as cache location for SSH files
-$ dvc remote add sshcache ssh://user@example.com:/cache
+$ dvc remote add sshcache ssh://user@example.com/home/.../cache
 
 # Tell DVC to use the 'sshcache' remote as SSH cache location
 $ dvc config cache.ssh sshcache
 
 # Add data on SSH directly
-$ dvc add --external ssh://user@example.com:/mydata
+$ dvc add --external ssh://user@example.com/home/.../mydata
 
 # Create the stage with an external SSH output
 $ dvc run -d data.txt \
           --external \
-          -o ssh://user@example.com:/home/shared/data.txt \
-          scp data.txt user@example.com:/home/shared/data.txt
+          -o ssh://user@example.com/home/shared/data.txt \
+          scp data.txt user@example.com/home/shared/data.txt
 ```
+
+> Please notice `/home/...` are absolute paths from the remote system's root.
 
 ### Amazon S3
 
@@ -123,13 +125,13 @@ $ dvc run -d data.txt \
 
 ```dvc
 # Add HDFS remote to be used as cache location for HDFS files
-$ dvc remote add hdfscache hdfs://user@example.com/cache
+$ dvc remote add hdfscache hdfs://user@example.com/home/.../cache
 
 # Tell DVC to use the 'hdfscache' remote as HDFS cache location
 $ dvc config cache.hdfs hdfscache
 
 # Add data on HDFS directly
-$ dvc add --external hdfs://user@example.com/mydata
+$ dvc add --external hdfs://user@example.com/home/.../mydata
 
 # Create the stage with an external HDFS output
 $ dvc run -d data.txt \
@@ -139,6 +141,8 @@ $ dvc run -d data.txt \
                             data.txt \
                             hdfs://user@example.com/home/shared/data.txt
 ```
+
+> Please notice `/home/...` are absolute paths from the remote system's root.
 
 Note that as long as there is a `hdfs://...` path for your data, DVC can handle
 it. So systems like Hadoop, Hive, and HBase are supported!

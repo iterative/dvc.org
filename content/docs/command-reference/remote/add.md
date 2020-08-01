@@ -300,7 +300,7 @@ $ export OSS_ACCESS_KEY_SECRET='AccessKeySecret'
 ### Click for SSH
 
 ```dvc
-$ dvc remote add -d myremote ssh://user@example.com/path/to/dir
+$ dvc remote add -d myremote ssh://user@example.com/absolute/path
 ```
 
 > See also `dvc remote modify` for a full list of SSH parameters.
@@ -323,7 +323,7 @@ like `ssh` and `sftp` (GNU/Linux).
 ### Click for HDFS
 
 ```dvc
-$ dvc remote add -d myremote hdfs://user@example.com/path/to/dir
+$ dvc remote add -d myremote hdfs://user@example.com/absolute/path
 ```
 
 > See also `dvc remote modify` for a full list of HDFS parameters.

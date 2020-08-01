@@ -440,7 +440,7 @@ more information.
 - `url` - remote location URL.
 
   ```dvc
-  $ dvc remote modify myremote url ssh://user@example.com:1234/path/to/remote
+  $ dvc remote modify myremote url ssh://user@example.com:1234/absolute/path
   ```
 
 - `user` - username to use to access a remote. The order in which dvc searches

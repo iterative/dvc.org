@@ -54,10 +54,12 @@ $ dvc run -n download_file
 
 ```dvc
 $ dvc run -n download_file
-          -d ssh://user@example.com:/home/shared/data.txt \
+          -d ssh://user@example.com/home/shared/data.txt \
           -o data.txt \
-          scp user@example.com:/home/shared/data.txt data.txt
+          scp user@example.com/home/shared/data.txt data.txt
 ```
+
+> Please notice `/home/...` is an absolute path from the remote system's root.
 
 ### Amazon S3
 
@@ -100,6 +102,8 @@ $ dvc run -n download_file
                   hdfs://user@example.com/home/shared/data.txt \
                   data.txt
 ```
+
+> Please notice `/home/...` is an absolute path from the remote system's root.
 
 ### HTTP
 
