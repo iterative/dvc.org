@@ -53,6 +53,7 @@
     "github-markdown-css": "^4.0.0",
     "iso-url": "^0.4.7",
     "isomorphic-fetch": "^2.2.1",
+    "link-check-git-diff": "^0.0.9",
     "lodash": "^4.17.19",
     "moment": "^2.25.3",
     "nanoid": "^3.0.2",
