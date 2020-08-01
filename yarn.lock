@@ -10526,10 +10526,10 @@ lines-and-columns@^1.1.6:
   resolved "https://registry.yarnpkg.com/lines-and-columns/-/lines-and-columns-1.1.6.tgz#1c00c743b433cd0a4e80758f7b64a57440d9ff00"
   integrity sha1-HADHQ7QzzQpOgHWPe2SldEDZ/wA=
 
-link-check-git-diff@^0.0.11:
-  version "0.0.11"
-  resolved "https://registry.yarnpkg.com/link-check-git-diff/-/link-check-git-diff-0.0.11.tgz#a2511fe56b7f36a4b2938f96334af0a72ca6673c"
-  integrity sha512-ItaNB6sEOy73fPs9t35D/JBAuBZvffEY7CcsUQWNWn183CBjRT9bQ3ngpWUPoYYLpiCqX5WWx/w8f8h4EQYeXw==
+link-check-git-diff@^0.0.12:
+  version "0.0.12"
+  resolved "https://registry.yarnpkg.com/link-check-git-diff/-/link-check-git-diff-0.0.12.tgz#164b28d184f0e3826e091754833b5a414c581aac"
+  integrity sha512-BEaEWrqkgQjJYgD/2bim/S2FTazu9rF1sUfv+vaEMtpcrmpg4bxFG8QNnSp3hlMzabmBQ8I6Izusx4cotxS6cw==
   dependencies:
     lodash "^4.17.19"
     micromatch "^4.0.2"
