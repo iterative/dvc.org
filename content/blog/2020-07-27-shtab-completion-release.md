@@ -27,7 +27,8 @@ tags:
 
 [Broken](https://notareeeealsite.com)
 [404](https://google.com/asdfasdffffsdfasdfasdf)
-[Excluded](https://example.com/file.csv)
+[Excluded](https://example.com/file.csv) [200](https://google.com)
+[Local 200](/doc) [Local 404](/thisisjustnotapageman)
 
 Command line tools are powerful. Things like [`make`] have manual pages
 spanning, well,
