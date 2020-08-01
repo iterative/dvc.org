@@ -16,7 +16,7 @@ jobs:
       uses: "iterative/link-check-git-diff.action@master"
       with:
         rootURL: "${{ github.event.deployment.payload.web_url }}"
-        exclusionsFile: "./scripts/exclude-links.txt"
+        exclusionFile: "./scripts/exclude-links.txt"
         fileFilter: "content/*"
 
     - uses: LouisBrunner/checks-action@v0.1.0
