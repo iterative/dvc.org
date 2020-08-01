@@ -165,15 +165,15 @@ Let's first list the available tags in the _Get Started_ repo:
 $ git tag
 0-git-init
 1-dvc-init
-10-bigrams-model
-11-bigrams-experiment
 2-track-data
 3-config-remote
 4-import-data
 5-source-code
-6-prep-stage
-8-ml-pipeline
-9-evaluation
+6-prepare-stage
+7-ml-pipeline
+8-evaluation
+9-bigrams-model
+10-bigrams-experiment
 ...
 ```
 
@@ -182,8 +182,8 @@ document specific experiments conducted in it. To take a look at one, we
 checkout the `6-featurization` tag:
 
 ```dvc
-$ git checkout 8-ml-pipeline
-Note: checking out '8-ml-pipeline'.
+$ git checkout 7-ml-pipeline
+Note: checking out '7-ml-pipeline'.
 
 You are in 'detached HEAD' state...
 
@@ -242,7 +242,7 @@ is the `post-checkout` script that runs after `git checkout`.
 We can now repeat the command run earlier, to see the difference.
 
 ```dvc
-$ git checkout 8-ml-pipeline
+$ git checkout 7-ml-pipeline
 HEAD is now at 6666298 Create ML pipeline stages
 M       model.pkl
 M	data/features/
