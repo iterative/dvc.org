@@ -13,9 +13,10 @@ jobs:
 
     - name: Run the link checker
       id: check
-      uses: "iterative/dvc.org-link-check-diff.action@master"
+      uses: "iterative/link-check-git-diff.action@master"
       with:
-        baseURL: "${{ github.event.deployment.payload.web_url }}"
+        rootURL: "${{ github.event.deployment.payload.web_url }}"
+        exclusionsFile: "./scripts/exclude-links.txt"
 
     - uses: LouisBrunner/checks-action@v0.1.0
       with:
