@@ -15,7 +15,8 @@
     "format-all": "prettier --write '**/*.{js,jsx,md,tsx,ts,json}'",
     "format": "prettier --write",
     "lint-ts": "tsc --noEmit --skipLibCheck && eslint --ext .json,.js,.ts,.tsx .",
-    "lint-css": "stylelint \"src/**/*.css\""
+    "lint-css": "stylelint \"src/**/*.css\"",
+    "link-check": "LINK_CHECK_EXCLUSIONS_FILE='./scripts/exclude-links.txt' LINK_CHECK_FILE_FILTER='content/*' yarn run link-check-git-diff"
   },
   "repository": {
     "type": "git",
@@ -155,7 +156,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn format-staged && yarn lint-staged && yarn run link-check-git-diff"
+      "pre-commit": "yarn format-staged && yarn lint-staged && yarn run link-check"
     }
   },
   "lint-staged": {
