@@ -52,10 +52,20 @@ project's cache                  ++ | dvc pull |
  workspace
 ```
 
-Fetching is useful when first checking out a <abbr>DVC project</abbr> for
-example, to get any files tracked by DVC that already exist in remote storage
-(see `dvc push`) to the local cache. Refer to `dvc remote` for more information
-on DVC remotes.
+Fetching could be useful when first checking out a <abbr>DVC project</abbr>,
+since files tracked by DVC should already exist in remote storage, but won't be
+in the project's <abbr>cache</abbr>. (Refer to `dvc remote` for more information
+on DVC remotes.) These necessary data or model files are listed as
+<abbr>dependencies</abbr> or <abbr>outputs</abbr> in a target
+[stage](/doc/command-reference/run) (in `dvc.yaml`) or `.dvc` file, so they are
+required to [reproduce](/doc/tutorials/get-started/data-pipelines#reproduce) the
+corresponding [pipeline](/doc/command-reference/dag).
+
+`dvc fetch` ensures that the files needed for a stage or `.dvc` file to be
+[reproduced](/doc/tutorials/get-started/data-pipelines#reproduce) exist in
+cache. If no `targets` are specified, the set of data files to fetch is
+determined by analyzing all `dvc.yaml` and `.dvc` files in the current branch,
+unless `--all-branches` or `--all-tags` is specified.
 
 The default remote is used (see `dvc config core.remote`) unless the `--remote`
 option is used.

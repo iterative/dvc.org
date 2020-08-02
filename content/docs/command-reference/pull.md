@@ -127,9 +127,6 @@ $ cd example-get-started
 
 </details>
 
-The workspace looks almost like in this
-[pipeline setup](/doc/tutorials/pipelines):
-
 ```dvc
 .
 ├── data
@@ -165,17 +162,9 @@ $ dvc pull train.dvc
 > Please delete the `.dvc/cache` directory first (with `rm -Rf .dvc/cache`) to
 > follow this example if you tried the previous ones.
 
-Our [pipeline](/doc/command-reference/pipeline) has been setup with these
-[stages](/doc/command-reference/run):
-
-```dvc
-$ dvc pipeline show evaluate.dvc
-data/data.xml.dvc
-prepare.dvc
-featurize.dvc
-train.dvc
-evaluate.dvc
-```
+Our [pipeline](/doc/command-reference/dag) has been setup with these
+[stages](/doc/command-reference/run): `prepare`, `featurize`, `train`,
+`evaluate`.
 
 Imagine the [remote storage](/doc/command-reference/remote) has been modified
 such that the data in some of these stages should be updated in the
@@ -193,7 +182,7 @@ One could do a simple `dvc pull` to get all the data, but what if you only want
 to retrieve part of the data?
 
 ```dvc
-$ dvc pull --with-deps featurize.dvc
+$ dvc pull --with-deps featurize
 
 ... Use the partial update, then pull the remaining data:
 
