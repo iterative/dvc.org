@@ -42,8 +42,8 @@ data source. Both HTTP and SSH protocols are supported for online repos (e.g.
 "offline" Git repo.
 
 The optional `path` argument is used to specify a directory to list within the
-source repository at `url`, including those nested inside
-[tracked directories](/doc/command-reference/add#tracking-directories). It's
+source repository at `url` (including those nested inside other
+[tracked directories](/doc/command-reference/add#tracking-directories)). It's
 similar to providing a path to list to commands such as `ls` or `aws s3 ls`, and
 similar to the former, the `-R` option might be used to list files recursively.
 
