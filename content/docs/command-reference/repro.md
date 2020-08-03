@@ -82,11 +82,12 @@ $ dvc dag
 ```
 
 This pipeline consists of two parallel branches (`A` and `B`), and the final
-"result" stage, where the branches merge. To reproduce both branches at the same
-time, you could run `dvc repro A2` and `dvc repro B2` at the same time (e.g. in
-separate terminals). After both finish successfully, you can then run
-`dvc repro train`: DVC will know that both branches are already up-to-date and
-only execute the final stage.
+`train` stage, where the branches merge. If you run `dvc repro` at this point,
+it would reproduce each branch sequentially before `train`. To reproduce both
+branches simultaneously, you could run `dvc repro A2` and `dvc repro B2` at the
+same time (e.g. in separate terminals). After both finish successfully, you can
+then run `dvc repro train`: DVC will know that both branches are already
+up-to-date and only execute the final stage.
 
 ## Options
 
@@ -150,7 +151,8 @@ only execute the final stage.
   each execution, meaning the cache cannot be trusted for such stages.
 
 - `--downstream` - only execute the stages after the given `targets` in their
-  corresponding pipelines, including the target stages themselves.
+  corresponding pipelines, including the target stages themselves. This option
+  has no effect if `targets` are not provided.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -239,7 +241,7 @@ If we now run `dvc repro`, we should see this:
 $ dvc repro
 Stage 'filter' didn't change, skipping
 Running stage 'count' with command:
-        python3 process.py numbers.txt > count.txt
+        python process.py numbers.txt > count.txt
 Updating lock file 'dvc.lock'
 ```
 
@@ -262,31 +264,40 @@ The answer to universe is 42
 - The Hitchhiker's Guide to the  Galaxy
 ```
 
-Now, using the `--downstream` option results in the following output:
+Let's say we also want to print the filename in the description, and so we
+update the `process.py` as:
 
-```dvc
-$ dvc repro --downstream
-Data and pipelines are up to date.
+```python
+print(f'Number of lines in {sys.argv[1]}:')
+print(num_lines)
 ```
 
-The reason being that the `text.txt` file is not a dependency in the last stage
-of the pipeline, used as the default target by `dvc repro`. `text.txt` is a
-dependency of the `filter` stage, which happens earlier (shown in the figure
-below), so it's skipped given the `--downstream` option.
+Now, using the `--downstream` option with `dvc repro` results in the execution
+only of the target stage, and following ones (none in this case):
+
+```dvc
+$ dvc repro --downstream count
+Running stage 'count' with command:
+        python process.py numbers.txt > count.txt
+Updating lock file 'dvc.lock'
+```
+
+The change in `text.txt` is ignored because that file is a dependency in the
+`filter` stage, which wasn't executed by the `dvc repro` above. This is because
+`filter` happens before the target (`count`) in the pipeline, as shown below:
 
 ```dvc
 $ dvc dag
-    .------------.
-    |   filter   |
-    `------------'
-           *
-           *
-           *
-      .---------.
-      |  count  |
-      `---------'
+
+  +--------+
+  | filter |
+  +--------+
+      *
+      *
+      *
+  +-------+
+  | count |
+  +-------+
 ```
 
-> Note that using `dvc repro --downstream` without a target will always have a
-> similar effect, where all previous stages are ignored — only if the last stage
-> is changed will it have any effect.
+> Refer to `dvc dag` for more details on that command.
