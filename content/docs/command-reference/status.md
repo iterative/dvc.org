@@ -144,7 +144,8 @@ workspace) is different from remote storage. Bringing the two into sync requires
 
 - `-j <number>`, `--jobs <number>` - specifies the number of jobs DVC can use to
   retrieve information from remote servers. This only applies when the `--cloud`
-  option is used or a remote is given.
+  option is used or a remote is given. The default value is `4 * cpu_count()`.
+  For SSH remotes, the default is just `4`.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
