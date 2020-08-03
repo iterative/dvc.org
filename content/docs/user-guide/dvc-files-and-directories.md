@@ -176,7 +176,7 @@ the possible following fields:
 `dvc.yaml` files also support `# comments`.
 
 We have published the
-[jsonschema for `dvc.yaml`](https://github.com/iterative/pipeline-schema) files
+[JSON Schema](https://github.com/iterative/pipeline-schema) for `dvc.yaml` files
 that helps code editors and IDEs to provide auto-completion and
 validation/linting and to verify proper structure of `dvc.yaml` locally and/or
 in CI.
