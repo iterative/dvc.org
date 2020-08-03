@@ -49,8 +49,8 @@ used to see what files `dvc pull` would download.
 If one or more `targets` are specified, DVC only considers the files associated
 with those stages or `.dvc` files. Using the `--with-deps` option, DVC tracks
 dependencies backward from the target [stage files](/doc/command-reference/run),
-through the corresponding [pipelines](/doc/command-reference/pipeline), to find
-data files to pull.
+through the corresponding [pipelines](/doc/command-reference/dag), to find data
+files to pull.
 
 After a data file is in cache, `dvc pull` can use OS-specific mechanisms like
 reflinks or hardlinks to put it in the workspace without copying. See
@@ -129,9 +129,6 @@ $ cd example-get-started
 
 </details>
 
-The workspace looks almost like in this
-[pipeline setup](/doc/tutorials/pipelines):
-
 ```dvc
 .
 ├── data
@@ -167,17 +164,9 @@ $ dvc pull train.dvc
 > Please delete the `.dvc/cache` directory first (with `rm -Rf .dvc/cache`) to
 > follow this example if you tried the previous ones.
 
-Our [pipeline](/doc/command-reference/pipeline) has been setup with these
-[stages](/doc/command-reference/run):
-
-```dvc
-$ dvc pipeline show evaluate.dvc
-data/data.xml.dvc
-prepare.dvc
-featurize.dvc
-train.dvc
-evaluate.dvc
-```
+Our [pipeline](/doc/command-reference/dag) has been setup with these
+[stages](/doc/command-reference/run): `prepare`, `featurize`, `train`,
+`evaluate`.
 
 Imagine the [remote storage](/doc/command-reference/remote) has been modified
 such that the data in some of these stages should be updated in the
@@ -195,7 +184,7 @@ One could do a simple `dvc pull` to get all the data, but what if you only want
 to retrieve part of the data?
 
 ```dvc
-$ dvc pull --with-deps featurize.dvc
+$ dvc pull --with-deps featurize
 
 ... Use the partial update, then pull the remaining data:
 
