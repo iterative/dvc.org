@@ -17,23 +17,23 @@ positional arguments:
 
 ## Description
 
-`dvc fetch` downloads DVC-tracked files from remote storage into the cache of
-the project (without placing them in the <abbr>workspace</abbr>). This makes
-them available for linking (or copying) into the workspace (refer to
-[dvc config cache.type](/doc/command-reference/config#cache)).
+Downloads DVC-tracked files from remote storage into the cache of the project
+(without placing them in the <abbr>workspace</abbr>, like `dvc pull` would).
+This makes them available for linking (or copying) into the workspace (refer to
+[`dvc config cache.type`](/doc/command-reference/config#cache)).
 
-Without arguments, this ensures that all the files needed for all `.dvc` files
-and stages (in `dvc.yaml` and `dvc.lock`) in the workspace exist in the cache
-(the `--all-branches` and `--all-tags` enable using multiple workspace
-versions).
+Without arguments, `dvc fetch` ensures that the files specified in all
+`dvc.lock` and `.dvc` files in the workspace exist in the cache. The
+`--all-branches`, `--all-tags`, and `--all-commits` options enable fetching data
+for multiple versions, not just the current branch.
 
 The `targets` given to this command (if any) limit what to fetch. It accepts
-paths to tracked files or directories (even if such paths are within a directory
-[tracked as a whole](/doc/command-reference/add#tracking-directories)), `.dvc`
+paths to tracked files or directories (even if such paths are inside a
+[tracked directory](/doc/command-reference/add#tracking-directories)), `.dvc`
 files, or stage names (found in `dvc.yaml`).
 
-Along with `dvc checkout`, fetching performed automatically by `dvc pull` (when
-the data is not already in the <abbr>cache</abbr>):
+Fetching is performed automatically by `dvc pull` (when the data is not already
+in the <abbr>cache</abbr>), along with `dvc checkout`:
 
 ```
 Controlled files             Commands
@@ -52,32 +52,18 @@ project's cache                  ++ | dvc pull |
  workspace
 ```
 
-Fetching could be useful when first checking out a <abbr>DVC project</abbr>,
-since files tracked by DVC should already exist in remote storage, but won't be
-in the project's <abbr>cache</abbr>. (Refer to `dvc remote` for more information
-on DVC remotes.) These necessary data or model files are listed as
-<abbr>dependencies</abbr> or <abbr>outputs</abbr> in a target
-[stage](/doc/command-reference/run) (in `dvc.yaml`) or `.dvc` file, so they are
-required to [reproduce](/doc/tutorials/get-started/data-pipelines#reproduce) the
-corresponding [pipeline](/doc/command-reference/dag).
+Here are some scenarios in which `dvc fetch` is useful, instead of pulling:
 
-`dvc fetch` ensures that the files needed for a stage or `.dvc` file to be
-[reproduced](/doc/tutorials/get-started/data-pipelines#reproduce) exist in
-cache. If no `targets` are specified, the set of data files to fetch is
-determined by analyzing all `dvc.yaml` and `.dvc` files in the current branch,
-unless `--all-branches` or `--all-tags` is specified.
+- After checking out a fresh copy of a <abbr>DVC repository</abbr>, to get
+  DVC-tracked data from different project versions into your machine before
+  deciding which one you'll need.
+- To use comparison commands across different Git commits, for example
+  `dvc metrics show` with the `--all-branches` option.
+- If you want to keep the <abbr>workspace</abbr> clean for any other reason.
 
-The default remote is used (see `dvc config core.remote`) unless the `--remote`
-option is used.
-
-`dvc fetch`, `dvc pull`, and `dvc push` are related in that these 3 commands
-perform data synchronization among local and remote storage. The specific way in
-which the set of files to push/fetch/pull is determined begins with calculating
-file hashes when these are [added](/doc/command-reference/add) with DVC. File
-hash values are stored in the corresponding `dvc.lock` or `.dvc` files
-(typically versioned with Git). Only `dvc.yaml` and `.dvc` files currently in
-the workspace are used by `dvc fetch` (unless the `-a` or `-T` options are
-used).
+The default remote is used (see
+[`dvc config core.remote`](/doc/command-reference/config#core)) unless the
+`--remote` option is used.
 
 ## Options
 

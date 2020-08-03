@@ -34,13 +34,13 @@ _remote_ mode is triggered by using the `--cloud` or `--remote` options:
 
 Without arguments, this command checks all stages (in `dvc.yaml` and `dvc.lock`)
 and `.dvc` files to compare the hash values of their <abbr>outputs</abbr>
-against the actual data files or directories in the workspace (the
-`--all-branches` and `--all-tags` options enable using multiple workspace
-versions).
+against the actual data files or directories in the workspace. The
+`--all-branches`, `--all-tags`, and `--all-commits` options enable checking data
+for multiple versions, not just the current branch.
 
 The `targets` given to this command (if any) limit what to check. It accepts
-paths to tracked files or directories (even if such paths are within a directory
-[tracked as a whole](/doc/command-reference/add#tracking-directories)), `.dvc`
+paths to tracked files or directories (even if such paths are inside a
+[tracked directory](/doc/command-reference/add#tracking-directories)), `.dvc`
 files, or stage names (found in `dvc.yaml`).
 
 If no differences are detected, `dvc status` prints

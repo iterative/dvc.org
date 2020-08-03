@@ -28,7 +28,7 @@ are the most common use cases for these commands.
 
 The `dvc pull` command allows one to retrieve data from remote storage.
 `dvc pull` has the same effect as running `dvc fetch` and `dvc checkout`
-immediately after that.
+immediately after.
 
 The default remote is used (see `dvc config core.remote`) unless the `--remote`
 option is used. See `dvc remote` for more information on how to configure a
@@ -46,8 +46,8 @@ The command `dvc status -c` can list files referenced in current stages (in
 used to see what files `dvc pull` would download.
 
 The `targets` given to this command (if any) limit what to pull. It accepts
-paths to tracked files or directories (even if such paths are within a directory
-[tracked as a whole](/doc/command-reference/add#tracking-directories)), `.dvc`
+paths to tracked files or directories (even if such paths are inside a
+[tracked directory](/doc/command-reference/add#tracking-directories)), `.dvc`
 files, or stage names (found in `dvc.yaml`).
 
 After the data is in the cache, `dvc pull` uses OS-specific mechanisms like

@@ -22,8 +22,8 @@ the corresponding versions of the DVC-tracked files and directories from the
 <abbr>cache</abbr>.
 
 The `targets` given to this command (if any) limit what to checkout. It accepts
-paths to tracked files or directories (even if such paths are within a directory
-[tracked as a whole](/doc/command-reference/add#tracking-directories)), `.dvc`
+paths to tracked files or directories (even if such paths are inside a
+[tracked directory](/doc/command-reference/add#tracking-directories)), `.dvc`
 files, or stage names (found in `dvc.yaml`).
 
 The execution of `dvc checkout` does the following:
