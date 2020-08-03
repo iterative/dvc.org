@@ -98,9 +98,9 @@ reflinks or hardlinks to put it in the workspace without copying. See
 
 - `-j <number>`, `--jobs <number>` - number of threads to run simultaneously to
   handle the downloading of files from the remote. The default value is
-  `4 * cpu_count()`. For SSH remotes, the default is just `4`. Using more jobs
-  may improve the total download speed if a combination of small and large files
-  are being fetched.
+  `4 * cpu_count()`. For SSH remotes, the default is `4`. Using more jobs may
+  improve the total download speed if a combination of small and large files are
+  being fetched.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
