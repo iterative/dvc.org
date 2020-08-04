@@ -13,11 +13,9 @@ author: david_g_ortega
 commentsUrl: https://discuss.dvc.org/t/cml-self-hosted-runners-on-demand-with-gpus/462
 tags:
   - CML
+  - Continuous Machine Learning
   - GPUs
   - Self-hosted Runner
-  - Continuous Machine Learning
-  - Github
-  - Gitlab
   - Reproducibility
   - Tutorial
 ---
