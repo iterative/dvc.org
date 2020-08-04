@@ -177,8 +177,8 @@ the possible following fields:
 We have published the
 [JSON Schema](https://github.com/iterative/pipeline-schema) for `dvc.yaml` files
 that helps code editors and IDEs to provide auto-completion and
-validation/linting, and to verify the proper structure of `dvc.yaml` locally and/or
-in CI.
+validation/linting, and to verify the proper structure of `dvc.yaml` locally
+and/or in CI.
 
 ### dvc.lock file
 
