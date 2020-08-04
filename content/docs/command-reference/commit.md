@@ -175,8 +175,8 @@ train:
 ```
 
 Now we can look in the cache directory to see if the new version of `model.pkl`
-is indeed _not in cache_ as claimed. Let's look at the latest state of `train`
-in `dvc.lock` first:
+is _not in cache_ indeed. Let's look at the latest state of `train` in
+`dvc.lock` first:
 
 ```yaml
 train:
