@@ -28,9 +28,8 @@ Without arguments, `dvc fetch` ensures that the files specified in all
 for multiple workspace versions.
 
 The `targets` given to this command (if any) limit what to fetch. It accepts
-paths to tracked files or directories (even if such paths are inside a
-[tracked directory](/doc/command-reference/add#tracking-directories)), `.dvc`
-files, or stage names (found in `dvc.yaml`).
+paths to tracked files or directories (including paths inside tracked
+directories), `.dvc` files, or stage names (found in `dvc.yaml`).
 
 Fetching is performed automatically by `dvc pull` (when the data is not already
 in the <abbr>cache</abbr>), along with `dvc checkout`:

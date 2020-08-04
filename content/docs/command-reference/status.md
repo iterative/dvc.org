@@ -39,9 +39,8 @@ against the actual data files or directories in the workspace. The
 for multiple versions, not just the current branch.
 
 The `targets` given to this command (if any) limit what to check. It accepts
-paths to tracked files or directories (even if such paths are inside a
-[tracked directory](/doc/command-reference/add#tracking-directories)), `.dvc`
-files, or stage names (found in `dvc.yaml`).
+paths to tracked files or directories (including paths inside tracked
+directories), `.dvc` files, or stage names (found in `dvc.yaml`).
 
 If no differences are detected, `dvc status` prints
 `Data and pipelines are up to date.` If differences are detected by

@@ -46,9 +46,8 @@ The command `dvc status -c` can list files referenced in current stages (in
 used to see what files `dvc pull` would download.
 
 The `targets` given to this command (if any) limit what to pull. It accepts
-paths to tracked files or directories (even if such paths are inside a
-[tracked directory](/doc/command-reference/add#tracking-directories)), `.dvc`
-files, or stage names (found in `dvc.yaml`).
+paths to tracked files or directories (including paths inside tracked
+directories), `.dvc` files, or stage names (found in `dvc.yaml`).
 
 After the data is in the cache, `dvc pull` uses OS-specific mechanisms like
 reflinks or hardlinks to put it in the workspace, trying to avoid copying. See

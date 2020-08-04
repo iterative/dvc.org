@@ -64,9 +64,8 @@ cache (compared to the default remote.) It can be used to see what files
 `dvc push` would upload.
 
 The `targets` given to this command (if any) limit what to push. It accepts
-paths to tracked files or directories (even if such paths are inside a
-[tracked directory](/doc/command-reference/add#tracking-directories)), `.dvc`
-files, or stage names (found in `dvc.yaml`).
+paths to tracked files or directories (including paths inside tracked
+directories), `.dvc` files, or stage names (found in `dvc.yaml`).
 
 ## Options
 
