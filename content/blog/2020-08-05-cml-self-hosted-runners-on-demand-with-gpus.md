@@ -184,7 +184,7 @@ jobs:
 There are still some limitations to be solved at this stage: Github Actions
 [can’t run a workflow longer than 72 hours](https://docs.github.com/en/actions/getting-started-with-github-actions/about-github-actions#usage-limits).
 
-Self-hosted runners don’t behave well when they disconnect from the repo,
+Self-hosted runners [don’t behave well when they disconnect from the repo](https://gitlab.com/gitlab-org/gitlab/-/issues/229851#note_390371734),
 limiting the possibilities with preemptible instances (also known as spot
 instances).
 
