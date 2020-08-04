@@ -213,9 +213,9 @@ $ git checkout baseline-experiment -- dvc.lock
 $ dvc checkout model.pkl  # Get previous model file only.
 ```
 
-Note that you can checkout data within directories tracked as a whole. For
-example, the `featurize` stage has the entire `data/features` directory as
-output, but we can just get this:
+Note that you can checkout data within directories tracked. For example, the
+`featurize` stage has the entire `data/features` directory as output, but we can
+just get this:
 
 ```dvc
 $ dvc checkout data/features/test.pkl

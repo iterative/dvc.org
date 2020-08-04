@@ -77,11 +77,12 @@ special `.dir` file
 [in the cache](/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory),
 that in turn lists all the added files.
 
-Note that even though a directory is added as a whole and a single `.dvc` file
-is generated for it, individual files or subdirectories can still be used
-separately by other DVC commands. For example, `dvc pull dir_name/path/to/file`
-would [download](/doc/command-reference/pull) that specific file only. This also
-applies to `dvc push`, `dvc checkout`, `dvc import`, among others.
+Note that even when an entire directory is added, and a single `.dvc` file is
+generated, individual files or subdirectories inside can still be used
+individually by other DVC commands. For example,
+`dvc pull dir_name/path/to/file` would [download](/doc/command-reference/pull)
+that specific file only. This also applies to `dvc push`, `dvc checkout`,
+`dvc import`, among others.
 
 As a rarely needed alternative, the `--recursive` option causes every file in
 the hierarchy to be added individually. A corresponding `.dvc` file will be
