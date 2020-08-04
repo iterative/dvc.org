@@ -32,8 +32,8 @@ _remote_ mode is triggered by using the `--cloud` or `--remote` options:
 | remote | `--remote` | Comparisons are made between the cache, and the given remote. Remote storage is defined using the `dvc remote` command.     |
 | remote | `--cloud`  | Comparisons are made between the cache, and the default remote (typically defined with `dvc remote --default`).             |
 
-Without arguments, this command checks all stages (in `dvc.yaml` and `dvc.lock`)
-and `.dvc` files to compare the hash values of their <abbr>outputs</abbr>
+Without arguments, this command checks all stages (in `dvc.yaml`) and `.dvc`
+files to compare the hash values of their <abbr>outputs</abbr> (in `dvc.lock`)
 against the actual data files or directories in the workspace. The
 `--all-branches`, `--all-tags`, and `--all-commits` options enable checking data
 for multiple versions, not just the current branch.
