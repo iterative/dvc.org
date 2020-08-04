@@ -2,7 +2,7 @@
 title: CML self-hosted runners on demand with GPUs
 date: 2020-08-05
 description: |
-  How to setup your CML self-hosted runners with GPUs in Github or Gitlab.
+  Bring reproducibilty and GPUs to your ML projects in Github or Gitlab pipelines with CML self-hosted runners.
 descriptionLong: |
   When we train our models we usually need special hardware like big memory or GPUs. 
   How can we provide our CI/CD pipeline with such hardware?
@@ -184,7 +184,8 @@ jobs:
 There are still some limitations to be solved at this stage: Github Actions
 [can’t run a workflow longer than 72 hours](https://docs.github.com/en/actions/getting-started-with-github-actions/about-github-actions#usage-limits).
 
-Self-hosted runners [don’t behave well when they disconnect from the repo](https://gitlab.com/gitlab-org/gitlab/-/issues/229851#note_390371734),
+Self-hosted runners
+[don’t behave well when they disconnect from the repo](https://gitlab.com/gitlab-org/gitlab/-/issues/229851#note_390371734),
 limiting the possibilities with preemptible instances (also known as spot
 instances).
 
