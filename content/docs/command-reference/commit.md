@@ -78,7 +78,7 @@ force-update the DVC-tracked files and save data to cache. They are still useful
   commit files referenced in later stages than the `targets`.
 
 - `-R`, `--recursive` - determines the files to commit by searching each target
-  directory and its subdirectories for stages (or `.dvc` files) to inspect. If
+  directory and its subdirectories for stages or `.dvc` files to inspect. If
   there are no directories among the `targets`, this option is ignored.
 
 - `-f`, `--force` - commit data even if hash values for dependencies or outputs
