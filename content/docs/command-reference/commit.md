@@ -72,7 +72,7 @@ force-update the DVC-tracked files and save data to cache. They are still useful
 ## Options
 
 - `-d`, `--with-deps` - determines files to commit by tracking dependencies to
-  the target stages (or `.dvc` files). If no `targets` are provided, this option
+  the target stages or `.dvc` files. If no `targets` are provided, this option
   is ignored. By traversing all stage dependencies, DVC searches backward from
   the target stages in the corresponding pipelines. This means DVC will not
   commit files referenced in later stages than the `targets`.
