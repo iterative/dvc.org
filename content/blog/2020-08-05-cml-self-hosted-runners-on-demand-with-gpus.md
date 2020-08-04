@@ -2,22 +2,25 @@
 title: CML self-hosted runners on demand with GPUs
 date: 2020-08-05
 description: |
-  A tutorial on how to setup your own self-hosted runners with GPUs using CML cloud-runners in your CML workflow in Github or Gitlab.
+  How to setup your CML self-hosted runners with GPUs in Github or Gitlab.
+descriptionLong: |
+  When we train our models we usually need special hardware like big memory or GPUs. 
+  How can we provide our CI/CD pipeline with such hardware?
+  Even more, how could we ensure the reproducibility of the experiment? 
+  Find out how to set up your own self-hosted runners on demand with GPUs for fast training and ensuring reproducibility in this blog post!
 picture: 2020-08-05/header.png
 author: david_g_ortega
-commentsUrl: https://discuss.dvc.org/t/cml-self-hosted-runners-on-demand-with-gpus/??
+commentsUrl: https://discuss.dvc.org/t/cml-self-hosted-runners-on-demand-with-gpus/462
 tags:
   - CML
   - GPUs
-  - Self-hosted runner
+  - Self-hosted Runner
   - Continuous Machine Learning
   - Github
   - Gitlab
-  - Technical debt
+  - Reproducibility
   - Tutorial
 ---
-
-# CML self-hosted runners on demand with GPUs
 
 Normally, CI/CD workflows are set up as a collection of jobs that are picked and
 executed by runners hosted by your vendor (like GitHub or GitLab). When you
@@ -94,19 +97,18 @@ Benefits of using CML cloud runner:
 ### 1) Install nvidia drivers and nvidia-docker in your machine (ubuntu 18.04)
 
 ```sh
-# recipe for ubuntu 18.04
-curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add - && \
-curl -s -L https://nvidia.github.io/nvidia-docker/ubuntu18.04/nvidia-docker.list | sudo tee /etc/apt/sources.list.d/nvidia-docker.list && \
-sudo apt update && sudo apt install -y ubuntu-drivers-common  && \
-sudo ubuntu-drivers autoinstall  && \
-sudo apt install -y nvidia-container-toolkit && \
-sudo systemctl restart docker
+$ curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add - && \
+  curl -s -L https://nvidia.github.io/nvidia-docker/ubuntu18.04/nvidia-docker.list | sudo tee /etc/apt/sources.list.d/nvidia-docker.list && \
+  sudo apt update && sudo apt install -y ubuntu-drivers-common  && \
+  sudo ubuntu-drivers autoinstall  && \
+  sudo apt install -y nvidia-container-toolkit && \
+  sudo systemctl restart docker
 ```
 
 You can test that your gpus are up and running with the following command:
 
 ```sh
-docker run --gpus all dvcorg/cml-gpu-py3-cloud-runner nvidia-smi
+$ docker run --gpus all dvcorg/cml-gpu-py3-cloud-runner nvidia-smi
 ```
 
 We should see something like this:
@@ -115,7 +117,7 @@ We should see something like this:
 ### 2) Start your self-hosted runner
 
 ```sh
-docker run --name myrunner -d --gpus all \
+$ docker run --name myrunner -d --gpus all \
     -e RUNNER_IDLE_TIMEOUT=1800 \
     -e RUNNER_LABELS=cml,gpu \
     -e RUNNER_REPO=$my_repo_url \
