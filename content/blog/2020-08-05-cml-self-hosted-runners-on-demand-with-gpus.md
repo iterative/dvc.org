@@ -96,7 +96,7 @@ Benefits of using CML cloud runner:
 
 ### 1) Install nvidia drivers and nvidia-docker in your machine (ubuntu 18.04)
 
-```sh
+```dvc
 $ curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add - && \
   curl -s -L https://nvidia.github.io/nvidia-docker/ubuntu18.04/nvidia-docker.list | sudo tee /etc/apt/sources.list.d/nvidia-docker.list && \
   sudo apt update && sudo apt install -y ubuntu-drivers-common  && \
@@ -107,7 +107,7 @@ $ curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add - 
 
 You can test that your gpus are up and running with the following command:
 
-```sh
+```dvc
 $ docker run --gpus all dvcorg/cml-gpu-py3-cloud-runner nvidia-smi
 ```
 
@@ -116,7 +116,7 @@ We should see something like this:
 
 ### 2) Start your self-hosted runner
 
-```sh
+```dvc
 $ docker run --name myrunner -d --gpus all \
     -e RUNNER_IDLE_TIMEOUT=1800 \
     -e RUNNER_LABELS=cml,gpu \
