@@ -4,14 +4,45 @@ DVC streamlines large data files and binary models into a single Git
 environment. This approach will not require storing binary files in your Git
 repository.
 
+### DVC Project
+
+Initialized by running `dvc init` in a directory, it will contain all the
+[DVC files and directories](/doc/user-guide/dvc-files-and-directories),
+including the <abbr>cache</abbr>, `dvc.yaml` and `.dvc` files, etc. Any other
+files referenced from special DVC files are also considered part of the project
+(for example [metrics files](/doc/command-reference/metrics)).
+
+> `dvc destroy` can be used to remove all DVC-specific files from the directory,
+> in effect deleting the DVC project.
+
+### DVC repository
+
+<abbr>DVC project</abbr> initialized in a Git repository. This enables the
+versioning features of DVC (recommended). Files tracked by Git are considered
+part of the DVC project when referenced from special DVC files such as
+`dvc.lock`, for example source code that is used as a stage
+<abbr>dependency</abbr>.
+
 ### Data Files
 
 Large files (or directories) that are tracked and <abbr>cached</abbr> by DVC.
-Data files are stored outside of the Git repository, on a local/shared hard
-drive, and/or remote storage. `.dvc` files describing the data are put into Git
-as placeholders, for DVC needs (to maintain pipelines and reproducibility).
+Data files are too large to be added to a Git repository. DVC stores them on a
+local/shared hard drive, and/or _remote storage_. `dvc.lock` or `.dvc` files
+describing the data are put in the <abbr>project</abbr> as placeholders for DVC
+needs (to maintain pipelines and reproducibility). These can be committed to Git
+instead of the data files themselves.
+
+Examples of data files are raw datasets, extracted features, ML models,
+performance data, etc.
 
 > A.k.a. <abbr>data artifacts</abbr> and <abbr>outputs</abbr>
+
+### Workspace
+
+It's comprised by the non-internal <abbr>project</abbr> files, as well as the
+currently present set of _data files_ and directories (see `dvc checkout`).
+Similar to the
+[working tree](https://git-scm.com/docs/gitglossary#def_working_tree) in Git.
 
 ### DVC Cache
 
@@ -19,6 +50,11 @@ A DVC project's <abbr>cache</abbr> is an
 [internal directory](/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory)
 used to store all data files outside of the Git repository. It's a local hard
 drive or external location. See `dvc cache dir`.
+
+### Remote Storage
+
+Storage location external to the DVC project, which is used to backup all or
+parts of the <abbr>cache</abbr>. See `dvc remote` for more details.
 
 ### Processing Stage
 
