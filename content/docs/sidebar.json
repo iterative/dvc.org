@@ -99,7 +99,7 @@
         }
       },
       {
-        "label": "How To ...",
+        "label": "How To",
         "slug": "how-to",
         "source": false,
         "children": ["update-tracked-files"]
