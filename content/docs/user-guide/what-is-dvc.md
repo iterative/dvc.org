@@ -14,36 +14,6 @@ software engineers.
 
 [`dvc`](/doc/command-reference) is a command line tool, similar to `git`.
 
-## Core Principles
-
-- **Workflow**: Set of experiments and relationships among them. Corresponds to
-  the entire <abbr>project</abbr> and may contain several
-  [data pipelines](/doc/user-guide/basic-concepts#data-pipelines).
-
-- **Experiment**: An attempt at a data science task. Each one can be performed
-  in a separate Git branch or tag, and its states identified by different
-  [revisions](https://git-scm.com/docs/revisions). Examples: add a new data
-  source, extract new features, change model hyperparameters, etc. DVC doesn't
-  need to recompute the results after a successful merge that integrates an
-  experiment into the <abbr>repository</abbr> history.
-
-  See [Experiments](/doc/start/experiments) for a hands-on explanation.
-
-- **Reproducibility**: Action to reproduce an experiment state. This regenerates
-  output files (or directories) based on a set of input files and source code.
-  This action usually changes experiment state.
-
-  > This is one of the biggest challenges in reusing, and hence managing ML
-  > projects.
-
-- **Cloud storage**: Available addon to the core DVC features. Multiple
-  providers are supported (Amazon S3, Microsoft Azure Blob Storage, Google Cloud
-  Storage, etc.). This is how a data scientist transfers large data files or
-  shares a GPU-trained model with others. Implemented as
-  [remote storage](/doc/command-reference/remote).
-
-  > This complement is separate from DVC itself, and never required.
-
 ## Core Features
 
 - DVC works **on top of Git repositories** and has a similar command line
@@ -69,3 +39,11 @@ software engineers.
 
   > Git servers, as well as SSH and cloud storage providers are supported,
   > however.
+
+- **Cloud storage**: Available addon to the core DVC features. Multiple
+  providers are supported (Amazon S3, Microsoft Azure Blob Storage, Google Cloud
+  Storage, etc.). This is how a data scientist transfers large data files or
+  shares a GPU-trained model with others. Implemented as
+  [remote storage](/doc/command-reference/remote).
+
+  > This complement is separate from DVC itself, and never required.
