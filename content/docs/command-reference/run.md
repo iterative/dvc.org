@@ -94,7 +94,7 @@ Relevant notes:
 
 - Entire directories can be tracked as outputs, which produces a single `.dir`
   entry in the cache (refer to
-  [Structure of cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory)
+  [Structure of cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-the-cache-directory)
   for more info.)
 
 - Outputs are deleted from the <abbr>workspace</abbr> before executing the
