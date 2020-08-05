@@ -82,11 +82,10 @@ The default remote is used (see
   directory and its subdirectories for `dvc.yaml` and `.dvc` files to inspect.
   If there are no directories among the `targets`, this option is ignored.
 
-- `-j <number>`, `--jobs <number>` - number of threads to run simultaneously to
-  handle the downloading of files from the remote. The default value is
-  `4 * cpu_count()`. For SSH remotes, the default is just `4`. Using more jobs
-  may improve the total download speed if a combination of small and large files
-  are being fetched.
+- `-j <number>`, `--jobs <number>` - parallelism level for DVC to download data
+  from remote storage. This only applies when the `--cloud` option is used, or a
+  `--remote` is given. The default value is `4 * cpu_count()`. For SSH remotes,
+  the default is `4`. Using more jobs may improve the overall transfer speed.
 
 - `-a`, `--all-branches` - fetch cache for all Git branches instead of just the
   current workspace. This means DVC may download files needed to reproduce
@@ -173,7 +172,7 @@ $ tree .dvc/cache
 Note that the `.dvc/cache` directory was created and populated.
 
 > Refer to
-> [Structure of cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory)
+> [Structure of cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-the-cache-directory)
 > for more info.
 
 Used without arguments (as above), `dvc fetch` downloads all files and

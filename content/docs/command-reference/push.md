@@ -101,11 +101,10 @@ directories), `.dvc` files, or stage names (found in `dvc.yaml`).
 - `--run-cache` - uploads all available history of stage runs to the remote
   repository.
 
-- `-j <number>`, `--jobs <number>` - number of threads to run simultaneously to
-  handle the uploading of files from the remote. The default value is
-  `4 * cpu_count()`. For SSH remotes, the default is just `4`. Using more jobs
-  may improve the total download speed if a combination of small and large files
-  are being fetched.
+- `-j <number>`, `--jobs <number>` - parallelism level for DVC to upload data
+  from remote storage. This only applies when the `--cloud` option is used, or a
+  `--remote` is given. The default value is `4 * cpu_count()`. For SSH remotes,
+  the default is `4`. Using more jobs may improve the overall transfer speed.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -193,7 +192,7 @@ Finally, we used `dvc status` to double check that all data had been uploaded.
 ## Example: What happens in the cache?
 
 Let's take a detailed look at what happens to the
-[cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory)
+[cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-the-cache-directory)
 as you run an experiment locally and push data to remote storage. To set the
 example consider having created a <abbr>workspace</abbr> that contains some code
 and data, and having set up a remote.
@@ -241,7 +240,7 @@ the cache having more files in it than the remote – which is what the `new`
 state means.
 
 > Refer to
-> [Structure of cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory)
+> [Structure of cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-the-cache-directory)
 > for more info.
 
 Next we can copy the remaining data from the cache to the remote using

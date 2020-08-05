@@ -6,9 +6,10 @@ Show changes in [metrics](/doc/command-reference/metrics) between commits in the
 ## Synopsis
 
 ```usage
-usage: dvc metrics diff [-h] [-q | -v] [--targets [<paths> [<paths> ...]]] [-R]
-                        [--all] [--show-json] [--show-md] [--no-path] [--old]
-                        [--precision <n>]
+usage: dvc metrics diff [-h] [-q | -v]
+                        [--targets [<paths> [<paths> ...]]] [-R]
+                        [--all] [--show-json] [--show-md] [--no-path]
+                        [--old] [--precision <n>]
                         [a_rev] [b_rev]
 
 positional arguments:

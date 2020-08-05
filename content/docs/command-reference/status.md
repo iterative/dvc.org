@@ -128,9 +128,11 @@ workspace) is different from remote storage. Bringing the two into sync requires
 - `-r <name>`, `--remote <name>` - specifies which remote storage (see
   `dvc remote list`) to compare against. Implies `--cloud`.
 
-- `-j <number>`, `--jobs <number>` - specifies the number of jobs DVC can use to
-  retrieve information from remote servers. This only applies when the `--cloud`
-  option is used or a remote is given.
+- `-j <number>`, `--jobs <number>` - parallelism level for DVC to retrieve
+  information from remote storage. This only applies when the `--cloud` option
+  is used, or a `--remote` is given. The default value is `4 * cpu_count()`. For
+  SSH remotes, the default is `4`. Using more jobs may improve the overall
+  transfer speed.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 

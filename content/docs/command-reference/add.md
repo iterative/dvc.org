@@ -38,7 +38,7 @@ each one:
 1. Calculate the file hash.
 2. Move the file contents to the cache (by default in `.dvc/cache`), using the
    file hash to form the cached file path. (See
-   [Structure of cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory)
+   [Structure of cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-the-cache-directory)
    for more details.)
 3. Attempt to replace the file with a link to the cached data (more details on
    file linking further down).
@@ -66,23 +66,25 @@ large files. DVC also supports other link types for use on file systems without
 `reflink` support, but they have to be specified manually. Refer to the
 `cache.type` config option in `dvc config cache` for more information.
 
-### Tracking directories
+### Adding entire directories
 
-A `dvc add` target can be either a file or a directory. In the latter case, a
-`.dvc` file is created for the top of the hierarchy (with default name
-`<dir_name>.dvc`). Every file inside is added to the cache (unless the
-`--no-commit` option is used), but DVC does not produce individual `.dvc` files
-for each file in the entire tree. Instead, the single `.dvc` file references a
-special `.dir` file
-[in the cache](/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory),
-that in turn lists all the added files.
+A `dvc add` target can be an individual file or a directory. In the latter case,
+a `.dvc` file is created for the top of the directory (with default name
+`<dir_name>.dvc`).
 
-Note that even when an entire directory is added, and a single `.dvc` file is
-generated, individual files or subdirectories inside can still be used
-individually by other DVC commands. For example,
-`dvc pull dir_name/path/to/file` would [download](/doc/command-reference/pull)
-that specific file only. This also applies to `dvc push`, `dvc checkout`,
-`dvc import`, among others.
+Every file in the hierarchy is added to the cache (unless the `--no-commit`
+option is used), but DVC does not produce individual `.dvc` files for each file
+in the directory tree. Instead, the single `.dvc` file references a special JSON
+file in the cache (with `.dir` extension), that in turn points to the added
+files.
+
+> Refer to
+> [Structure of cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-the-cache-directory)
+> for more info. on `.dir` cache entries.
+
+Note that DVC commands that use tracked data support granular targeting of files
+and directories, even when contained in a parent directory added as a whole.
+Examples: `dvc push`, `dvc pull`, `dvc get`, `dvc import`, etc.
 
 As a rarely needed alternative, the `--recursive` option causes every file in
 the hierarchy to be added individually. A corresponding `.dvc` file will be
@@ -190,9 +192,8 @@ outs:
     path: pics
 ```
 
-> Refer to
-> [Structure of cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory)
-> for more info.
+> Refer to [Adding entire directories](#adding-entire-directories) for more
+> info.
 
 This allows us to treat the entire directory structure as a single <abbr>data
 artifact</abbr>. For example, you can pass the whole directory tree as a
