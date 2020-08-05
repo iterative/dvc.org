@@ -29,9 +29,9 @@ advanced scenarios:
   for very simple projects, SCM other than Git, deployment automation, among
   other uses
 
-> Note that <abbr>DVC repositories</abbr> nested inside other DVC repos (for
-> example when using Git submodules) are isolated from the outer ones, and vice
-> versa. This is because each one has their own Git root.
+> Note that Git-enabled <abbr>DVC repositories</abbr> nested inside parent DVC
+> repositories (for example when using Git submodules) are isolated from the
+> parent, and vice versa. This is because each one has their own Git root.
 
 ### Initializing DVC in subdirectories
 
