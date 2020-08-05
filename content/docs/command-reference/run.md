@@ -73,10 +73,10 @@ $ dvc run -n printer -d write.sh -o pages ./write.sh
 $ dvc run -n scanner -d read.sh -d pages -o signed.pdf ./read.sh
 ```
 
-Stage dependencies can be any file in the workspace, either untracked, or much
-more commonly, tracked by DVC or Git. Outputs will be tracked and
-<abbr>cached</abbr> by DVC when the stage is run. Every output version will be
-cached when the stage is reproduced (see also `dvc gc`).
+Stage dependencies can be any file or directory, either untracked, or more
+commonly tracked by DVC or Git. Outputs will be tracked and <abbr>cached</abbr>
+by DVC when the stage is run. Every output version will be cached when the stage
+is reproduced (see also `dvc gc`).
 
 Relevant notes:
 
@@ -97,10 +97,14 @@ Relevant notes:
   [Structure of cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-the-cache-directory)
   for more info.)
 
-- Outputs are deleted from the <abbr>workspace</abbr> before executing the
-  command (including at `dvc repro`) if their paths are found as existing
-  files/directories. This also means that the stage command needs to recreate
-  any directory structures defined as outputs every time its executed by DVC.
+- [external dependencies](/doc/user-guide/external-dependencies) and
+  [external outputs](/doc/user-guide/managing-external-data) (outside of the
+  <abbr>workspace</abbr>) are also supported.
+
+- Outputs are deleted from the workspace before executing the command (including
+  at `dvc repro`) if their paths are found as existing files/directories. This
+  also means that the stage command needs to recreate any directory structures
+  defined as outputs every time its executed by DVC.
 
 ### For displaying and comparing data science experiments
 
