@@ -89,16 +89,16 @@ If there are multiple `--subdir` projects, but not nested, e.g.:
 
 DVC considers A and B separate projects. Any DVC command run in `project-A` is
 not aware of `project-B`. However, commands that involve versioning (like
-`dvc checkout`) access the commit history from the Git root (`.`).
+`dvc diff`, among others) access the commit history from the Git root (`.`).
 
 > `.` is not a DVC project in this case, so most DVC commands can't be run
 > there.
 
-If there are nested `--subdir`projects e.g.:
+If there are nested `--subdir` projects e.g.:
 
 ```dvc
-project-A       # full DVC + Git repo
-├── .dvc
+project-A
+├── .dvc        # full DVC + Git repo
 ├── .git
 ├── dvc.yaml
 ├── ...
