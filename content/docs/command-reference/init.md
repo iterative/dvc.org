@@ -72,8 +72,43 @@ With `--subdir`, the project root will be found before the Git root, making sure
 the scope of DVC commands run here is constrained to this project alone, even if
 there are more DVC-related files elsewhere in the repo.
 
-Similarly, DVC commands run outside this project root (if nested inside another
-DVC project, for example) will ignore this project's contents completely.
+If there are multiple `--subdir` projects, but not nested, e.g.:
+
+```dvc
+.           # git init
+├── .git
+├── project-A
+│   ├── .dvc    # dvc init --subdir
+│   ...
+├── project-B
+│   ├── .dvc    # dvc init --subdir
+│   ...
+```
+
+DVC considers A and B separate projects. Any DVC command run in `project-A` is
+not aware of `project-B`. However, commands that involve versioning (like
+`dvc diff`, among others) access the commit history from the Git root (`.`).
+
+> `.` is not a DVC project in this case, so most DVC commands can't be run
+> there.
+
+If there are nested `--subdir` projects e.g.:
+
+```dvc
+project-A
+├── .dvc        # git init && dvc init
+├── .git
+├── dvc.yaml
+├── ...
+├── project-B
+│   ├── .dvc        # dvc init --subdir
+│   ├── data-B.dvc
+│   ...
+```
+
+Nothing changes for the inner projects. And any DVC command run in the outer one
+actively ignores the nested project directories. For example, using `dvc pull`
+in `project-A` wouldn't download data for the `data-B.dvc` file.
 
 ### Initializing DVC without Git
 
