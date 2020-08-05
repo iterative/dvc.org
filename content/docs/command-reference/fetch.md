@@ -189,7 +189,7 @@ $ tree .dvc
 Note that the `.dvc/cache` directory was created and populated.
 
 > Refer to
-> [Structure of cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory)
+> [Structure of cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-the-cache-directory)
 > for more info.
 
 Used without arguments (as above), `dvc fetch` downloads all assets needed by

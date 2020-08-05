@@ -29,7 +29,7 @@ of commits (determined by reading the DVC-files in them). See the
 [Options](#options) section for more details.
 
 > Note that `dvc gc` tries to fetch any missing
-> [`.dir` files](/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory)
+> [`.dir` files](/doc/user-guide/dvc-files-and-directories#structure-of-the-cache-directory)
 > from [remote storage](/doc/command-reference/remote) to the local
 > <abbr>cache</abbr>, in order to know which files should exist inside cached
 > directories. These files may be missing if the cache directory was previously

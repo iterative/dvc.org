@@ -85,7 +85,7 @@ Only the hash values of a directory (`data/`) and one file have been
 (`data1`).
 
 > Refer to
-> [Structure of cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory)
+> [Structure of cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-the-cache-directory)
 > for more info.
 
 Now, let's modify file `data1` and see if it affects `dvc status`.
