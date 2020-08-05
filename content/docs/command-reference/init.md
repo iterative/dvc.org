@@ -60,7 +60,8 @@ DVC in the Git repo root:
 
 - By default, DVC commands like `dvc checkout` and `dvc repro` explore the whole
   <abbr>DVC repository</abbr> to find DVC-tracked data and pipelines to work
-  with. This can be undesirable and inefficient for large monorepos.
+  with. This can produce undesirable results and/or be inefficient for large
+  monorepos.
 
 #### How does it affect DVC commands?
 
