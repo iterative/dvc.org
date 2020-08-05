@@ -135,16 +135,6 @@ DVC sets the `core.no_scm` config option value to `true` in the DVC
 that even if the project is tracked by Git, or if Git is initialized in it
 later, DVC will keep operating detached from Git in this project.
 
-### Nested DVC projects and repositories
-
-> Note that Git-enabled <abbr>DVC repositories</abbr> nested inside parent DVC
-> repositories (for example when using Git submodules) are isolated from the
-> parent, and vice versa. This is because each one has their own Git root.
-
-> Note that like with nested <abbr>repositories</abbr> and `--subdir` projects,
-> `--no-scm` projects inside regular <abbr>projects</abbr> are ignored by any
-> parent DVC projects, and vice versa.
-
 ## Options
 
 - `-f`, `--force` - remove `.dvc/` if it exists before initialization. Will
