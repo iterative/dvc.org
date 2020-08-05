@@ -610,9 +610,9 @@ more information.
   $ dvc remote modify --local myremote password mypassword
   ```
 
-> The username, password and token (may) contain sensitive user info. Therefore,
-> it's safer to add them with the `--local` option, so they're written to a
-> Git-ignored config file.
+> The username, password, and token (may) contain sensitive user info.
+> Therefore, it's safer to add them with the `--local` option, so they're
+> written to a Git-ignored config file.
 
 - `ask_password` - ask each time for the password to use for `user/password`
   authentication.
