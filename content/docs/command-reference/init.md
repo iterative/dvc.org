@@ -77,7 +77,7 @@ run outside this project root will ignore its contents.
 If there are multiple `--subdir` projects, but not nested, e.g.:
 
 ```dvc
-.           # plain Git repo
+.           # git init
 ├── .git
 ├── project-A
 │   ├── .dvc    # dvc init --subdir
@@ -98,7 +98,7 @@ If there are nested `--subdir` projects e.g.:
 
 ```dvc
 project-A
-├── .dvc        # full DVC + Git repo
+├── .dvc        # git init && dvc init
 ├── .git
 ├── dvc.yaml
 ├── ...
