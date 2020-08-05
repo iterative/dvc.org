@@ -92,8 +92,8 @@ Relevant notes:
 - DVC does not feed dependency files to the command being run. The program will
   have to read by itself the files specified with `-d`.
 
-- Entire directories can be tracked as outputs, which produces a single `.dir`
-  entry in the cache (refer to
+- Entire directories produced by the stage can be tracked as outputs by DVC,
+  which generates a single `.dir` entry in the cache (refer to
   [Structure of cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-the-cache-directory)
   for more info.)
 
