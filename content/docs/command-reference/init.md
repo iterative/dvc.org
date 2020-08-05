@@ -74,7 +74,7 @@ the scope of DVC commands run here is constrained to this project alone, even if
 there are more DVC-related files elsewhere in the repo. Similarly, DVC commands
 run outside this project root will ignore its contents.
 
-**Simple structures**: multiple `--subdir` projects, not nested, e.g.:
+If there are multiple `--subdir` projects, but not nested, e.g.:
 
 ```dvc
 .           # plain Git repo
@@ -94,7 +94,7 @@ not aware of `project-B`. However, commands that involve versioning (like
 > `.` is not a DVC project in this case, so most DVC commands can't be run
 > there.
 
-**Nested structures**: If there are nested `--subdir`projects e.g.:
+If there are nested `--subdir`projects e.g.:
 
 ```dvc
 project-A       # full DVC + Git repo
