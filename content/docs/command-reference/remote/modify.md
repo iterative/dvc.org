@@ -640,7 +640,7 @@ more information.
 - `timeout` - connection timeout (in seconds) for WebDAV server.
 
   ```dvc
-  $ dvc remote modify myremote timeout timeoutseconds
+  $ dvc remote modify myremote timeout 120
   ```
 
 </details>
