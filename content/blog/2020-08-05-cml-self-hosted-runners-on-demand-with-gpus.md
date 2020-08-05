@@ -2,7 +2,7 @@
 title: CML self-hosted runners on demand with GPUs
 date: 2020-08-05
 description: |
-  Bring reproducibilty and GPUs to your ML projects in Github or Gitlab pipelines with CML self-hosted runners.
+  Bring reproducibility and GPUs to your ML projects in Github or Gitlab pipelines with CML self-hosted runners.
 descriptionLong: |
   When we train our models we usually need special hardware like big memory or GPUs. 
   How can we provide our CI/CD pipeline with such hardware?
@@ -20,75 +20,43 @@ tags:
   - Tutorial
 ---
 
-Normally, CI/CD workflows are set up as a collection of jobs that are picked and
-executed by runners hosted by your vendor (like GitHub or GitLab). When you
-commit to your repo, a CI/CD system responds by starting a workflow and
-assigning the job(s) to runners.
-
-Sounds perfect! But you might find that your vendor doesn’t support certain
-computing capabilities like GPU, high memory, big processors... capabilities
-that really matter in some machine learning (ML) problems (you know what I’m
-talking about if you’ve ever tried to do SVD on a gigantic matrix without enough
-RAM, or train a deep neural network without a GPU). That makes building a
-continuous ML workflow simply impossible without addressing special hardware
-needs.
+When setting your CI/CD workflow for your machine learning (ML) project you
+might find that not Github nor Gitlab provides certain computing capabilities
+like GPU, high memory, big processors... capabilities that really matter in some
+machine learning (ML) problems.
 
 To overcome this hardware hurdle, one practical approach is to use self-hosted
 runners: runners that you manage, but are accessible to your CI/CD system for
-executing jobs. It could be an EC2 instance or the GPU under your desk. Both
-GitHub and GitLab provide support and official docs for using self-hosted
-runners.
-
-In our recently-released project, Continuous Machine Learning (CML), we’re
-creating ways to adapt tools you already know (like GitHub Actions & GitLab CI)
-to ML. To specifically address this hardware issue, we’ve introduced a tool
-called cloud-runner. It acts as a thin wrapper over GitLab and GitHub runners,
-adding some extra capabilities to help you use self-hosted runners for ML
-workflows.
-
-With CML docker images launching your own self-hosted runner is very easy. They
-comes in two flavours, depending if you need python 2 or 3:
-
-- dvcorg/cml:latest
-- dvcorg/cml-py3:latest
-
-These images have CML and DVC preinstalled (among other perks), plus CUDA
-drivers and Python 2.7. The cml-py3 image comes with Python 3.X as well. That's
-all- you can clone these images and add your own dependencies to better mimic
-your own production environment.
-
-Using these runners will not only allow us to access special computing
-capabilities as stated, will also help us with:
-
-1.  Optimize resource usage. Using the CI/CD with our GPU hardware you can just
-    focus on experimenting, not turning machines on and off. When your workflow
-    automatically provisions runners, you maximize time and resources by only
-    using compute time when you’re training.
-
-2.  Get out of dependency hell. As data scientists, we tend to install packages
-    (on top of packages, on top of packages…) while we‘re experimenting with
-    models. In ML in particular, we can be dependent on drivers AND libraries,
-    and sometimes precise versions of them (CUDA and TensorFlow, anyone?). This
-    complexity makes it difficult to maintain a reproducible training
-    environment that’s easy to rebuild on a moment’s notice and compare to your
-    eventual production environment. Using a CI system that codifies
-
-3.  Always know what you did. One of the biggest technical debts in the ML space
-    is reproducibility. A few weeks post-experiment, we often discover that
-    trying to put your model back in shape is a pain. Looking at our repo, it’s
-    not obvious what data or training infrastructure or dependencies went into a
-    given result. Having a record that an experiment happened isn’t the same as
-    being able to recreate it. But just moving your ML experiments into a CI/CD
-    system constrains the environment and hardware used for your experiment-the
-    workflow is perfectly isolated by the containerised runner and perfectly
-    reproducible by yourself in the future or even other peers.
+executing jobs. It could be an EC2 instance or the GPU under your desk. In our
+recently-released project, Continuous Machine Learning (CML), we’ve introduced a
+tool called cloud-runner. It's a docker container that acts as a thin wrapper
+over GitLab and GitHub runners, adding some extra capabilities.
 
 Benefits of using CML cloud runner:
 
-- Easy to install or use. Working the same way for both vendors.
-- Maximise the use of your resources using the CI/CD.
-- Reproducibility of your ML experiments. Resolving dependencies issues and
-  tainted environments.
+1.  Easy to use. Working the same way for both Gitlab and Github.
+
+2.  Get out of dependency hell. We tend to install packages (on top of packages,
+    on top of packages…) while we‘re experimenting with models. In ML in
+    particular, we can be dependent on drivers AND libraries, and sometimes
+    precise versions of them (CUDA and TensorFlow, anyone?). Your CI workflow
+    will install all the dependencies in the containerised runner leaving your
+    machine always clean.
+
+3.  Security. If your repo is public your runners could be accesed by anyone
+    that could add
+    [scripts that exploits your machine](https://docs.github.com/en/actions/hosting-your-own-runners/about-self-hosted-runners#self-hosted-runner-security-with-public-repositories).
+    With the containerised runner you are restrifying the access to your real
+    machine.
+
+4.  Gain reproducibility. One of the biggest technical debts in the ML space is
+    reproducibility. A few weeks post-experiment, we often discover that trying
+    to put your model back in shape is a pain. Looking at our repo, it’s not
+    obvious what data or training infrastructure or dependencies went into a
+    given result. When you move your ML experiments into a CI/CD system you are
+    making a contract of the dependencies and hardware used for your experiment.
+    Having that contract isolated by the containerised runner, your experiment
+    is perfectly reproducible by anyone in the future.
 
 ## Hands on GPU Self-hosted runners 101
 
@@ -106,13 +74,24 @@ $ curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add - 
 You can test that your gpus are up and running with the following command:
 
 ```dvc
-$ docker run --gpus all dvcorg/cml-gpu-py3-cloud-runner nvidia-smi
+$ docker run --gpus all dvcorg/cml-py3 nvidia-smi
 ```
 
 We should see something like this:
 ![](/uploads/images/2020-08-05/nvidia-smi-output.png)
 
 ### 2) Start your self-hosted runner
+
+With CML docker images launching your own self-hosted runner is very easy. They
+comes in two flavours, depending if you need python 2 or 3:
+
+- dvcorg/cml:latest
+- dvcorg/cml-py3:latest
+
+These images have CML and DVC preinstalled (among other perks), plus CUDA
+drivers and Python 2.7. The cml-py3 image comes with Python 3.X as well. That's
+all. You can clone these images and add your own dependencies to better mimic
+your own production environment.
 
 ```dvc
 $ docker run --name myrunner -d --gpus all \
@@ -136,7 +115,7 @@ workflow that the jobs will wait for.
 personal token generated for your Github or Gitlab repo. Note that for Github
 you must check `workflow` along with `repo`.
 
-If everything went fine we should see a runner registered in our repo correctly.
+If everything went fine we should see a runner registered in our repo.
 
 ![](/uploads/images/2020-08-05/registered-cml-runner-github.png)
 
@@ -176,6 +155,9 @@ jobs:
           echo 'Hi from CML!' >> report.md
           cml-send-comment report.md
 ```
+
+Congrats! At this point you have done all the steps to have your GPUs up and
+running with CML.
 
 # Limitations and future directions
 
