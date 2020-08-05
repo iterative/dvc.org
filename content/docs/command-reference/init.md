@@ -58,10 +58,12 @@ DVC in the Git repo root:
   them to use the same DVC settings and
   [remote storage](/doc/command-reference/remote).
 
-- By default, DVC commands like `dvc checkout` and `dvc repro` explore the whole
+- By default, DVC commands like `dvc pull` and `dvc repro` explore the whole
   <abbr>DVC repository</abbr> to find DVC-tracked data and pipelines to work
-  with. This can produce undesirable results and/or be inefficient for large
-  monorepos.
+  with. This can be inefficient for large monorepos.
+
+- Other commands such as `dvc status` and `dvc metrics show` would produce
+  unexpected results if not constrained to a single project scope.
 
 #### How does it affect DVC commands?
 
