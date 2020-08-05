@@ -96,11 +96,10 @@ reflinks or hardlinks to put it in the workspace without copying. See
   repository into the local run cache. A `dvc repro <stage_name>` is necessary
   to checkout these files into the workspace and update the `dvc.lock` file.
 
-- `-j <number>`, `--jobs <number>` - number of threads to run simultaneously to
-  handle the downloading of files from the remote. The default value is
-  `4 * cpu_count()`. For SSH remotes, the default is `4`. Using more jobs may
-  improve the total download speed if a combination of small and large files are
-  being fetched.
+- `-j <number>`, `--jobs <number>` - parallelism level for DVC to download data
+  from remote storage. This only applies when the `--cloud` option is used, or a
+  `--remote` is given. The default value is `4 * cpu_count()`. For SSH remotes,
+  the default is `4`.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 

@@ -89,8 +89,10 @@ The default remote is cleaned (see `dvc config core.remote`) unless the
   [remote storage](/doc/command-reference/remote) to collect unused objects from
   if `-c` option is specified (see `dvc remote list`).
 
-- `-j <number>`, `--jobs <number>` - garbage collector parallelism level. The
-  default `JOBS` argument is `4 * cpu_count()`. For SSH remotes default is 4.
+- `-j <number>`, `--jobs <number>` - parallelism level for DVC to access data
+  from remote storage. This only applies when the `--cloud` option is used, or a
+  `--remote` is given. The default value is `4 * cpu_count()`. For SSH remotes,
+  the default is `4`.
 
   > For now only some phases of garbage collection are parallel.
 
