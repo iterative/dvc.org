@@ -29,10 +29,6 @@ advanced scenarios:
   for very simple projects, SCM other than Git, deployment automation, among
   other uses
 
-> Note that Git-enabled <abbr>DVC repositories</abbr> nested inside parent DVC
-> repositories (for example when using Git submodules) are isolated from the
-> parent, and vice versa. This is because each one has their own Git root.
-
 ### Initializing DVC in subdirectories
 
 `--subdir` must be provided to initialize DVC in a subdirectory of a Git
@@ -74,46 +70,10 @@ commands (e.g. `dvc repro`, `dvc pull`, `dvc metrics diff`), meaning that only
 
 With `--subdir`, the project root will be found before the Git root, making sure
 the scope of DVC commands run here is constrained to this project alone, even if
-there are more DVC-related files elsewhere in the repo. Similarly, DVC commands
-run outside this project root will ignore its contents.
+there are more DVC-related files elsewhere in the repo.
 
-If there are multiple `--subdir` projects, but not nested, e.g.:
-
-```dvc
-.           # git init
-├── .git
-├── project-A
-│   ├── .dvc    # dvc init --subdir
-│   ...
-├── project-B
-│   ├── .dvc    # dvc init --subdir
-│   ...
-```
-
-DVC considers A and B separate projects. Any DVC command run in `project-A` is
-not aware of `project-B`. However, commands that involve versioning (like
-`dvc diff`, among others) access the commit history from the Git root (`.`).
-
-> `.` is not a DVC project in this case, so most DVC commands can't be run
-> there.
-
-If there are nested `--subdir` projects e.g.:
-
-```dvc
-project-A
-├── .dvc        # git init && dvc init
-├── .git
-├── dvc.yaml
-├── ...
-├── project-B
-│   ├── .dvc        # dvc init --subdir
-│   ├── data-B.dvc
-│   ...
-```
-
-Nothing changes for the inner projects. And any DVC command run in the outer one
-actively ignores the nested project directories. For example, using `dvc pull`
-in `project-A` wouldn't download data for the `data-B.dvc` file.
+Similarly, DVC commands run outside this project root (if nested inside another
+DVC project, for example) will ignore this project's contents completely.
 
 ### Initializing DVC without Git
 
@@ -139,10 +99,6 @@ DVC sets the `core.no_scm` config option value to `true` in the DVC
 [config](/doc/command-reference/config) when initialized this way. This means
 that even if the project is tracked by Git, or if Git is initialized in it
 later, DVC will keep operating detached from Git in this project.
-
-> Note that like with nested <abbr>repositories</abbr> and `--subdir` projects,
-> `--no-scm` projects inside regular <abbr>projects</abbr> are ignored by any
-> parent DVC projects, and vice versa.
 
 ## Options
 
