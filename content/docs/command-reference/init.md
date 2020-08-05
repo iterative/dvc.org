@@ -49,14 +49,14 @@ DVC in the Git repo root:
 - Repository maintainers might not allow a top level `.dvc/` directory,
   especially if DVC is being used by several sub-projects (monorepo).
 
-- DVC config file, cache directory,
-  [etc.](/doc/user-guide/dvc-files-and-directories) are shared across different
-  sub-projects. This makes it difficult to use different DVC settings,
-  [remote storage](/doc/command-reference/remote) locations, etc.
+- DVC [internals](/doc/user-guide/dvc-files-and-directories) (config file, cache
+  directory, etc.) are shared across different sub-projects. This forces all of
+  them to use the same DVC settings and
+  [remote storage](/doc/command-reference/remote).
 
-- Many DVC commands can explore the whole <abbr>DVC repository</abbr> to find
-  DVC-tracked data and pipelines to work with. This can be undesirable and
-  inefficient for large monorepos.
+- By default, DVC commands like `dvc checkout` and `dvc repro` explore the whole
+  <abbr>DVC repository</abbr> to find DVC-tracked data and pipelines to work
+  with. This can be undesirable and inefficient for large monorepos.
 
 #### How does it affect DVC commands?
 
