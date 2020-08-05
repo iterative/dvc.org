@@ -637,7 +637,7 @@ more information.
   $ dvc remote modify myremote key_path /path/to/key
   ```
 
-- `timeout` - connection timeout to use for WebDAV.
+- `timeout` - connection timeout for WebDAV server.
 
   ```dvc
   $ dvc remote modify myremote timeout timeoutseconds
