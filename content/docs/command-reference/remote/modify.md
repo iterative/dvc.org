@@ -586,6 +586,24 @@ more information.
 
 ### Click for WebDAV
 
+- `url` - remote location URL.
+
+  ```dvc
+  $ dvc remote modify myremote \
+        url webdavs://example.com/public.php/webdav
+  ```
+
+  > Note that the location of the WebDAV API endpoint `/public.php/webdav` might
+  > be different for your server.
+
+  If your remote is located in a subfolder of your WebDAV server e.g.
+  `/path/to/dir`, this may be appended to the general `url`:
+
+  ```dvc
+  $ dvc remote modify myremote \
+        url webdavs://example.com/public.php/webdav/path/to/dir
+  ```
+
 - `token` - token for WebDAV server, can be empty in case of using
   `user/password` authentication.
 
