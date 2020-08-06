@@ -131,7 +131,8 @@ For example:
 
 ```dvc
 $ dvc remote add -d myremote s3://mybucket/path/to/dir
-$ dvc remote modify myremote endpointurl https://object-storage.example.com
+$ dvc remote modify myremote endpointurl \
+                    https://object-storage.example.com
 ```
 
 > See `dvc remote modify` for a full list of S3 API parameters.
