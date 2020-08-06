@@ -652,8 +652,8 @@ more information.
   $ dvc remote modify myremote cert_path /path/to/cert
   ```
 
-- `key_path` - path to private key to use to access a remote. Only has an
-  effect in combination with `cert_path`.
+- `key_path` - path to private key to use to access a remote. Only has an effect
+  in combination with `cert_path`.
 
   ```dvc
   $ dvc remote modify myremote key_path /path/to/key
