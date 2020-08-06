@@ -11,9 +11,8 @@ usage: dvc push [-h] [-q | -v] [-j <number>] [-r <name>] [-a] [-T]
                 [targets [targets ...]]
 
 positional arguments:
-  targets        Limit command scope to these stages or .dvc files.
-                 Using -R, directories to search for stages or .dvc files
-                 can also be given.
+  targets       Limit command scope to these tracked files/directories,
+                .dvc files, or stage names.
 ```
 
 ## Description
@@ -38,9 +37,9 @@ with `git commit` and `git push`).
 
 Under the hood a few actions are taken:
 
-- The push command by default uses all `dvc.yaml` and `.dvc` files in the
-  <abbr>workspace</abbr>. The command options listed below will either limit or
-  expand the set of stages (in dvc.yaml) or `.dvc` files to consult.
+- The push command by default uses all stages (in `dvc.yaml` and `dvc.lock`) and
+  `.dvc` files in the <abbr>workspace</abbr>. The command options will either
+  limit or expand the set of stages or `.dvc` files to consult.
 
 - For each <abbr>output</abbr> referenced in every selected stage or `.dvc`
   file, DVC finds a corresponding file or directory in the <abbr>cache</abbr>.
@@ -64,10 +63,9 @@ The `dvc status -c` command can list files tracked by DVC that are new in the
 cache (compared to the default remote.) It can be used to see what files
 `dvc push` would upload.
 
-If one or more `targets` are specified, DVC only considers the files associated
-with them. Using the `--with-deps` option, DVC tracks dependencies backward from
-the target [stage files](/doc/command-reference/run), through the corresponding
-[pipelines](/doc/command-reference/dag), to find data files to push.
+The `targets` given to this command (if any) limit what to push. It accepts
+paths to tracked files or directories (including paths inside tracked
+directories), `.dvc` files, or stage names (found in `dvc.yaml`).
 
 ## Options
 

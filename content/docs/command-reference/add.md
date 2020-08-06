@@ -56,13 +56,8 @@ each one:
 Summarizing, the result is that the target data is replaced by small `.dvc`
 files that can be easily tracked with Git.
 
-> Note that `.dvc` files can be considered _orphan stages_, because they have no
-> <abbr>dependencies</abbr>, only outputs. These are treated as _always changed_
-> by `dvc status` and `dvc repro`, which always executes them. See `dvc.yaml` to
-> learn more about stages.
-
-To avoid adding files inside a directory accidentally, you can add the
-corresponding [patterns](/doc/user-guide/dvcignore) in a `.dvcignore` file.
+It's possible to prevent files or directories from being added by DVC by adding
+the corresponding patterns in a [`.dvcignore`](/doc/user-guide/dvcignore) file.
 
 By default, DVC tries to use reflinks (see
 [File link types](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
@@ -73,15 +68,14 @@ large files. DVC also supports other link types for use on file systems without
 
 ### Adding entire directories
 
-A `dvc add` target can be an individual file or a directory. In the latter case,
-a `.dvc` file is created for the top of the directory (with default name
+A `dvc add` target can be either a file or a directory. In the latter case, a
+`.dvc` file is created for the top of the hierarchy (with default name
 `<dir_name>.dvc`).
 
-Every file in the hierarchy is added to the cache (unless the `--no-commit`
-option is used), but DVC does not produce individual `.dvc` files for each file
-in the directory tree. Instead, the single `.dvc` file references a special JSON
-file in the cache (with `.dir` extension), that in turn points to the added
-files.
+Every file inside is added to the cache (unless the `--no-commit` option is
+used), but DVC does not produce individual `.dvc` files for each file in the
+entire tree. Instead, the single `.dvc` file references a special JSON file in
+the cache (with `.dir` extension), that in turn points to the added files.
 
 > Refer to
 > [Structure of cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-the-cache-directory)
@@ -96,6 +90,9 @@ the hierarchy to be added individually. A corresponding `.dvc` file will be
 generated for each file in he same location. This may be helpful to save time
 adding several data files grouped in a structural directory, but it's
 undesirable for data directories with a large number of files.
+
+To avoid adding files inside a directory accidentally, you can add the
+corresponding [patterns](/doc/user-guide/dvcignore) to `.dvcignore`.
 
 ## Options
 
@@ -180,7 +177,8 @@ pics
     └── dogs [more image files]
 ```
 
-Tracking a directory with DVC as simple as with a single file:
+[Tracking a directory](#tracking-directories) with DVC as simple as with a
+single file:
 
 ```dvc
 $ dvc add pics
