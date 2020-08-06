@@ -594,14 +594,16 @@ more information.
   ```
 
 - `user` - username for WebDAV server, can be empty in case of using `token`
-  authentication. The order in which DVC searches for username is:
-
-  1. `user` specified in one of the DVC configs;
-  2. `user` specified in the url (e.g. `webdav://user@example.com/path`)
+  authentication.
 
   ```dvc
   $ dvc remote modify --local myremote user myuser
   ```
+
+  The order in which DVC searches for username is:
+
+  1. `user` specified in one of the DVC configs;
+  2. `user` specified in the url (e.g. `webdav://user@example.com/path`)
 
 - `password` - password for WebDAV server, can be empty in case of using `token`
   authentication.
