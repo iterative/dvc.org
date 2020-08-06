@@ -608,7 +608,7 @@ more information.
   `user/password` authentication.
 
   ```dvc
-  $ dvc remote modify --local myremote token 'mytoken'
+  $ dvc remote modify --local myremote token '<mytoken>'
   ```
 
 - `user` - username for WebDAV server, can be empty in case of using `token`
