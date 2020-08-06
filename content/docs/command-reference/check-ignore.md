@@ -15,8 +15,9 @@ positional arguments:
 
 ## Description
 
-For each pathname given via the command-line , check whether the file is excluded 
-by `.dvcignore` output the path if it is excluded.
+This helper command checks whether the given `targets` are ignored by DVC
+according to the [`.dvcignore` file](/doc/user-guide/dvcignore) (if any). The
+ones that are indeed ignores are printed back.
 
 ## Options
 
