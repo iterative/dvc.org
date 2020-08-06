@@ -16,7 +16,7 @@ similar to `.gitignore` in Git.
 - You need to create the `.dvcignore` file. It can be placed in the root of the
   project or inside any subdirectory (see also [remarks](#Remarks) below).
 - Populate it with [patterns](https://git-scm.com/docs/gitignore) that you would
-  like to ignore. You can find useful file templates
+  like to ignore. You can find useful templates
   [here](https://github.com/github/gitignore).
 - Each line should contain only one pattern.
 - During execution of commands that traverse directories, DVC will ignore
