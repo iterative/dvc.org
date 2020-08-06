@@ -645,14 +645,6 @@ more information.
   $ dvc remote modify myremote ask_password true
   ```
 
-  > Note that the `password` parameter takes precedence over `ask_password`. If
-  > `password` is specified, DVC will not prompt the user to enter a password
-  > for this remote.
-
-  > Note that `token` authentication does not require a `password`. If `token`
-  > is specified, `ask_password` is ignored and DVC will not prompt the user to
-  > enter a password for this remote.
-
 - `cert_path` - path to certificate used for WebDAV server authentication, if
   you need to use local client side certificates.
 
