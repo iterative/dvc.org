@@ -614,6 +614,10 @@ more information.
 > Therefore, it's safer to add them with the `--local` option, so they're
 > written to a Git-ignored config file.
 
+> Note that `user/password` and `token` authentication are incompatible. You
+> should authenticate against yout WebDAV remote by either `user/password` or
+> `token`.
+
 - `ask_password` - ask each time for the password to use for `user/password`
   authentication.
 
@@ -624,6 +628,10 @@ more information.
   > Note that the `password` parameter takes precedence over `ask_password`. If
   > `password` is specified, DVC will not prompt the user to enter a password
   > for this remote.
+
+  > Note that `token` authentication does not require a `password`. If `token`
+  > is specified, `ask_password` is ignored and DVC will not prompt the user to
+  > enter a password for this remote.
 
 - `cert_path` - path to certificate used for WebDAV server authentication.
 
