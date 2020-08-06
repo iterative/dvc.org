@@ -2,12 +2,9 @@
 title: CML self-hosted runners on demand with GPUs
 date: 2020-08-05
 description: |
-  Bring reproducibility and GPUs to your ML projects in Github or Gitlab pipelines with CML self-hosted runners.
+  Use your own GPUs with GitHub Actions & GitLab CI for automated machine learning.
 descriptionLong: |
-  When we train our models we usually need special hardware like big memory or GPUs. 
-  How can we provide our CI/CD pipeline with such hardware?
-  Even more, how could we ensure the reproducibility of the experiment? 
-  Find out how to set up your own self-hosted runners on demand with GPUs for fast training and ensuring reproducibility in this blog post!
+  Training models often requires special hardware, like extra memory or GPUs. How can we provide a CI/CD pipeline with this hardware? Find out how to setup your own self-hosted runners on-demand with GPUs for fast training.
 picture: 2020-08-05/header.png
 author: david_g_ortega
 commentsUrl: https://discuss.dvc.org/t/cml-self-hosted-runners-on-demand-with-gpus/462
@@ -20,21 +17,20 @@ tags:
   - Tutorial
 ---
 
-When setting your CI/CD workflow for your machine learning (ML) project you
-might find that not Github nor Gitlab provides certain computing capabilities
-like GPU, high memory, big processors... capabilities that really matter in some
-machine learning (ML) problems.
+When creating your CI/CD workflow for a machine learning (ML) project,
+you might find that by default, neither GitHub Actions nor GitLab CI provides 
+the computing capabilities you need- like GPUs, high memory instances, 
+or multiple cores.
 
 To overcome this hardware hurdle, one practical approach is to use self-hosted
 runners: runners that you manage, but are accessible to your CI/CD system for
 executing jobs. It could be an EC2 instance or the GPU under your desk. In our
-recently-released project, Continuous Machine Learning (CML), we’ve introduced a
-tool called cloud-runner. It's a docker container that acts as a thin wrapper
+[recently-released project](https://dvc.org/blog/cml-release), Continuous Machine Learning (CML), our Docker image acts as a thin wrapper
 over GitLab and GitHub runners, adding some extra capabilities.
 
-Benefits of using CML cloud runner:
+Here are some benefits of using CML as a self-hosted runner:
 
-1.  Easy to use. Working the same way for both Gitlab and Github.
+1.  Easy to use. Working the same way for both GitLab and GitHub.
 
 2.  Get out of dependency hell. We tend to install packages (on top of packages,
     on top of packages…) while we‘re experimenting with models. In ML in
@@ -45,7 +41,7 @@ Benefits of using CML cloud runner:
 
 3.  Security. If your repo is public your runners could be accesed by anyone
     that could add
-    [scripts that exploits your machine](https://docs.github.com/en/actions/hosting-your-own-runners/about-self-hosted-runners#self-hosted-runner-security-with-public-repositories).
+    [scripts that exploits your machine](https://docs.GitHub.com/en/actions/hosting-your-own-runners/about-self-hosted-runners#self-hosted-runner-security-with-public-repositories).
     With the containerised runner you are restrifying the access to your real
     machine.
 
@@ -63,8 +59,8 @@ Benefits of using CML cloud runner:
 ### 1) Install nvidia drivers and nvidia-docker in your machine (ubuntu 18.04)
 
 ```dvc
-$ curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add - && \
-  curl -s -L https://nvidia.github.io/nvidia-docker/ubuntu18.04/nvidia-docker.list | sudo tee /etc/apt/sources.list.d/nvidia-docker.list && \
+$ curl -s -L https://nvidia.GitHub.io/nvidia-docker/gpgkey | sudo apt-key add - && \
+  curl -s -L https://nvidia.GitHub.io/nvidia-docker/ubuntu18.04/nvidia-docker.list | sudo tee /etc/apt/sources.list.d/nvidia-docker.list && \
   sudo apt update && sudo apt install -y ubuntu-drivers-common  && \
   sudo ubuntu-drivers autoinstall  && \
   sudo apt install -y nvidia-container-toolkit && \
@@ -111,19 +107,19 @@ unregisters from your repo.
 `RUNNER_LABELS` a comma delimited list of labels that we are setting in our
 workflow that the jobs will wait for.
 
-`RUNNER_REPO` is the url of your Gitlab or Github repo. repo_token is the
-personal token generated for your Github or Gitlab repo. Note that for Github
+`RUNNER_REPO` is the url of your GitLab or GitHub repo. repo_token is the
+personal token generated for your GitHub or GitLab repo. Note that for GitHub
 you must check `workflow` along with `repo`.
 
 If everything went fine we should see a runner registered in our repo.
 
-![](/uploads/images/2020-08-05/registered-cml-runner-github.png)
+![](/uploads/images/2020-08-05/registered-cml-runner-GitHub.png)
 
-![](/uploads/images/2020-08-05/registered-cml-runner-gitlab.png)
+![](/uploads/images/2020-08-05/registered-cml-runner-GitLab.png)
 
-### 3) Setup your Github Actions or Gitlab workflow yaml file to use the runner and commit your changes.
+### 3) Setup your GitHub Actions or GitLab workflow yaml file to use the runner and commit your changes.
 
-Gitlab
+GitLab
 
 ```yaml
 train:
@@ -136,7 +132,7 @@ train:
     - cml-send-comment report.md
 ```
 
-Github
+GitHub
 
 ```yaml
 name: train-my-model
@@ -161,13 +157,12 @@ running with CML.
 
 # Limitations and future directions
 
-There are still some limitations to be solved at this stage: Github Actions
-[can’t run a workflow longer than 72 hours](https://docs.github.com/en/actions/getting-started-with-github-actions/about-github-actions#usage-limits).
+There are still some limitations to be solved at this stage: 
 
-Self-hosted runners
-[don’t behave well when they disconnect from the repo](https://gitlab.com/gitlab-org/gitlab/-/issues/229851#note_390371734),
-limiting the possibilities with preemptible instances (also known as spot
-instances).
+ - GitHub Actions [can’t run a workflow longer than 72 hours](https://docs.GitHub.com/en/actions/getting-started-with-GitHub-actions/about-GitHub-actions#usage-limits).
+
+ - Self-hosted runners [don’t behave well when they disconnect from the repo](https://GitLab.com/GitLab-org/GitLab/-/issues/229851#note_390371734),
+limiting the possibilities with preemptible instances (also known as spot instances).
 
 We’re working on both these issues both in terms of CML and DVC capabilities. So
 keep watching this space for updates!
