@@ -637,7 +637,7 @@ more information.
   $ dvc remote modify myremote key_path /path/to/key
   ```
 
-- `timeout` - connection timeout (in seconds) for WebDAV server (default: 30 seconds).
+- `timeout` - connection timeout (in seconds) for WebDAV server (default: 30).
 
   ```dvc
   $ dvc remote modify myremote timeout 120
