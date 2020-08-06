@@ -352,6 +352,9 @@ $ dvc remote add -d myremote webdavs://example.com/public.php/webdav
 
 > See also `dvc remote modify` for a full list of WebDAV parameters.
 
+> Note that the location of the WebDAV API endpoint `/public.php/webdav` might
+> be different for your server.
+
 </details>
 
 <details>
