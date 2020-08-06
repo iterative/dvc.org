@@ -347,7 +347,7 @@ $ dvc remote add -d myremote https://example.com/path/to/dir
 ### Click for WebDAV
 
 ```dvc
-$ dvc remote add -d myremote webdavs://example.com/path/to/dir
+$ dvc remote add -d myremote webdavs://example.com/public.php/webdav
 ```
 
 > See also `dvc remote modify` for a full list of WebDAV parameters.
