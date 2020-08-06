@@ -17,9 +17,9 @@ positional arguments:
 ## Description
 
 This command is usually needed after `git checkout`, `git clone`, or any other
-operation that changes the `dvc.lock` or `.dvc` in the workspace. It restores
-the corresponding versions of the DVC-tracked files and directories from the
-<abbr>cache</abbr>.
+operation that changes the current `dvc.lock` or `.dvc` files. It restores the
+corresponding versions of the DVC-tracked files and directories from the
+<abbr>cache</abbr> to the workspace.
 
 The `targets` given to this command (if any) limit what to checkout. It accepts
 paths to tracked files or directories (including paths inside tracked
@@ -28,11 +28,11 @@ directories), `.dvc` files, or stage names (found in `dvc.yaml`).
 The execution of `dvc checkout` does the following:
 
 - Checks `dvc.lock` and `.dvc` files to compare the hash values of their
-  <abbr>outputs</abbr> against the actual files or directories in the workspace
-  (similar to `dvc status`).
+  <abbr>outputs</abbr> against the actual files or directories in the
+  <abbr>workspace</abbr> (similar to `dvc status`).
 
-  > Outputs found in `dvc.yaml` but not in `dvc.lock` will be skipped, with a
-  > warning.
+  > Stage outputs should be defined in `dvc.yaml`. If found there but not in
+  > `dvc.lock`, they'll be skipped, with a warning.
 
 - Missing data files or directories are restored from the cache. Those that
   don't match with `dvc.lock` or `.dvc` files are removed. See options `--force`
