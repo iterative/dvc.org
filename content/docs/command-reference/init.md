@@ -32,48 +32,54 @@ advanced scenarios:
 ### Initializing DVC in subdirectories
 
 `--subdir` must be provided to initialize DVC in a subdirectory of a Git
-repository. DVC still expects to find the Git repository (will check all
-directories up to the system root to find `.git/`). This options does not affect
-any config files, `.dvc/` directory is created the same way as in the default
-mode. This way multiple <abbr>DVC projects</abbr> can be initialized in a single
-Git repository, providing isolation between projects.
+repository. DVC still expects to find a Git root (will check all directories up
+to the system root to find `.git/`). This options does not affect any config
+files, `.dvc/` directory is created the same way as in the default mode. This
+way multiple <abbr>DVC projects</abbr> can be initialized in a single Git
+repository, providing isolation between projects.
 
 #### When is this useful?
 
 This option is mostly useful in the scenario of a
-[monorepo](https://en.wikipedia.org/wiki/Monorepo) (Git repository split into
-several project directories), but can also be used with other patterns when such
-isolation is needed. `dvc init --subdir` mitigates the issues of initializing
-DVC in the Git repo root:
+[monorepo](https://en.wikipedia.org/wiki/Monorepo) (Git repo split into several
+project directories), but can also be used with other patterns when such
+isolation is needed. `dvc init --subdir` mitigates possible limitations of
+initializing DVC in the Git root:
 
 - Repository maintainers might not allow a top level `.dvc/` directory,
-  especially if DVC is being used by several sub-projects (monorepo).
+  especially if DVC is already being used by several sub-projects (monorepo).
 
 - DVC [internals](/doc/user-guide/dvc-files-and-directories) (config file, cache
-  directory, etc.) are shared across different sub-projects. This forces all of
-  them to use the same DVC settings and
+  directory, etc.) would be shared across different subdirectories. This forces
+  all of them to use the same DVC settings and
   [remote storage](/doc/command-reference/remote).
 
 - By default, DVC commands like `dvc pull` and `dvc repro` explore the whole
   <abbr>DVC repository</abbr> to find DVC-tracked data and pipelines to work
   with. This can be inefficient for large monorepos.
 
-- Other commands such as `dvc status` and `dvc metrics show` would produce
-  unexpected results if not constrained to a single project scope.
+- Commands such as `dvc status` and `dvc metrics show` would produce unexpected
+  results if not constrained to a single project scope.
 
 #### How does it affect DVC commands?
 
 The <abbr>project</abbr> root is found by DVC by looking for `.dvc/` from the
 current working directory, up. It defines the scope of action for most DVC
-commands (e.g. `dvc repro`, `dvc pull`, `dvc metrics diff`), meaning that only
-`dvc.yaml`, `.dvc` files, etc. inside the project are usable by the commands.
+commands (e.g. `dvc repro`, `dvc pull`, `dvc metrics diff`, etc.), meaning that
+only `dvc.yaml` and `.dvc` files inside the project are usable by these
+commands.
 
-With `--subdir`, the project root will be found before the Git root, making sure
-the scope of DVC commands run here is constrained to this project alone, even if
-there are more DVC-related files elsewhere in the repo.
+With `--subdir`, the project root will be found before the Git root, causing the
+scope of DVC commands run here is constrained to this project alone. DVC-related
+files elsewhere in the repo are ignored by them. Similarly, DVC commands run
+outside this project root (if nested inside another DVC project) will ignore
+this project's contents completely.
 
-Similarly, DVC commands run outside this project root (if nested inside another
-DVC project, for example) will ignore this project's contents completely.
+The only thing shared among nested `--subdir` projects and parent repository is
+the Git history itself.
+
+> Note that nested DVC projects are always isolated from their parents, and vice
+> versa, whether using `--subdir` or not.
 
 ### Initializing DVC without Git
 
@@ -99,54 +105,6 @@ DVC sets the `core.no_scm` config option value to `true` in the DVC
 [config](/doc/command-reference/config) when initialized this way. This means
 that even if the project is tracked by Git, or if Git is initialized in it
 later, DVC will keep operating detached from Git in this project.
-
-### Nested DVC projects and repositories
-
-> Note that Git-enabled <abbr>DVC repositories</abbr> nested inside parent DVC
-> repositories (for example when using Git submodules) are isolated from the
-> parent, and vice versa. This is because each one has their own Git root.
-
-If there are multiple `--subdir` projects, but not nested, e.g.:
-
-```dvc
-.           # git init
-├── .git
-├── project-A
-│   ├── .dvc    # dvc init --subdir
-│   ...
-├── project-B
-│   ├── .dvc    # dvc init --subdir
-│   ...
-```
-
-DVC considers A and B separate projects. Any DVC command run in `project-A` is
-not aware of `project-B`. However, commands that involve versioning (like
-`dvc diff`, among others) access the commit history from the Git root (`.`).
-
-> `.` is not a DVC project in this case, so most DVC commands can't be run
-> there.
-
-If there are nested `--subdir` projects e.g.:
-
-```dvc
-project-A
-├── .dvc        # git init && dvc init
-├── .git
-├── dvc.yaml
-├── ...
-├── project-B
-│   ├── .dvc        # dvc init --subdir
-│   ├── data-B.dvc
-│   ...
-```
-
-Nothing changes for the inner projects. And any DVC command run in the outer one
-actively ignores the nested project directories. For example, using `dvc pull`
-in `project-A` wouldn't download data for the `data-B.dvc` file.
-
-> Note that like with nested <abbr>repositories</abbr> and `--subdir` projects,
-> `--no-scm` projects inside regular <abbr>projects</abbr> are ignored by any
-> parent DVC projects, and vice versa.
 
 ## Options
 
