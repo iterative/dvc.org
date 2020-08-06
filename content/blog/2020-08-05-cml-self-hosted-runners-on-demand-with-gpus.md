@@ -17,16 +17,17 @@ tags:
   - Tutorial
 ---
 
-When creating your CI/CD workflow for a machine learning (ML) project,
-you might find that by default, neither GitHub Actions nor GitLab CI provides 
-the computing capabilities you need- like GPUs, high memory instances, 
-or multiple cores.
+When creating your CI/CD workflow for a machine learning (ML) project, you might
+find that by default, neither GitHub Actions nor GitLab CI provides the
+computing capabilities you need- like GPUs, high memory instances, or multiple
+cores.
 
 To overcome this hardware hurdle, one practical approach is to use self-hosted
 runners: runners that you manage, but are accessible to your CI/CD system for
 executing jobs. It could be an EC2 instance or the GPU under your desk. In our
-[recently-released project](https://dvc.org/blog/cml-release), Continuous Machine Learning (CML), our Docker image acts as a thin wrapper
-over GitLab and GitHub runners, adding some extra capabilities.
+[recently-released project](https://dvc.org/blog/cml-release), Continuous
+Machine Learning (CML), our Docker image acts as a thin wrapper over GitLab and
+GitHub runners, adding some extra capabilities.
 
 Here are some benefits of using CML as a self-hosted runner:
 
@@ -157,12 +158,15 @@ running with CML.
 
 # Limitations and future directions
 
-There are still some limitations to be solved at this stage: 
+There are still some limitations to be solved at this stage:
 
- - GitHub Actions [can’t run a workflow longer than 72 hours](https://docs.GitHub.com/en/actions/getting-started-with-GitHub-actions/about-GitHub-actions#usage-limits).
+- GitHub Actions
+  [can’t run a workflow longer than 72 hours](https://docs.GitHub.com/en/actions/getting-started-with-GitHub-actions/about-GitHub-actions#usage-limits).
 
- - Self-hosted runners [don’t behave well when they disconnect from the repo](https://GitLab.com/GitLab-org/GitLab/-/issues/229851#note_390371734),
-limiting the possibilities with preemptible instances (also known as spot instances).
+- Self-hosted runners
+  [don’t behave well when they disconnect from the repo](https://GitLab.com/GitLab-org/GitLab/-/issues/229851#note_390371734),
+  limiting the possibilities with preemptible instances (also known as spot
+  instances).
 
 We’re working on both these issues both in terms of CML and DVC capabilities. So
 keep watching this space for updates!
