@@ -168,8 +168,11 @@ There are still some limitations to be solved at this stage:
   limiting the possibilities with preemptible instances (also known as spot
   instances).
 
-We’re working on both these issues ([#161](https://github.com/iterative/cml/issues/161) [#174](https://github.com/iterative/cml/issues/174) [#208](https://github.com/iterative/cml/issues/208)) both in terms of CML and DVC capabilities. So
-keep watching this space for updates!
+We’re working on both these issues
+([#161](https://github.com/iterative/cml/issues/161)
+[#174](https://github.com/iterative/cml/issues/174)
+[#208](https://github.com/iterative/cml/issues/208)) both in terms of CML and
+DVC capabilities. So keep watching this space for updates!
 
 We started CML to help teams deal with the complexity of ML more effectively-
 continuous integration is a proven approach to keeping projects agile even as

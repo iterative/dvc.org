@@ -5,4 +5,4 @@ links:
   - https://github.com/DavidGOrtega
 ---
 
-Founder; Techstars Alumni; Software Engineer; Machine learning engineer;
+Founder; Techstars Alumni; Software Engineer; Machine Learning Engineer;
