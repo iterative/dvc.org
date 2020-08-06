@@ -25,7 +25,7 @@ This makes them available for linking (or copying) into the workspace (refer to
 Without arguments, `dvc fetch` ensures that the files specified in all
 `dvc.lock` and `.dvc` files in the workspace exist in the cache. The
 `--all-branches`, `--all-tags`, and `--all-commits` options enable fetching data
-for `dvc.lock`/`.dvc` files in multiple Git commits.
+for multiple Git commits.
 
 The `targets` given to this command (if any) limit what to fetch. It accepts
 paths to tracked files or directories (including paths inside tracked
