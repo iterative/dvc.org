@@ -25,7 +25,7 @@ This makes them available for linking (or copying) into the workspace (refer to
 Without arguments, `dvc fetch` ensures that the files specified in all
 `dvc.lock` and `.dvc` files in the workspace exist in the cache. The
 `--all-branches`, `--all-tags`, and `--all-commits` options enable fetching data
-for multiple workspace versions.
+for `dvc.lock`/`.dvc` files in multiple Git commits.
 
 The `targets` given to this command (if any) limit what to fetch. It accepts
 paths to tracked files or directories (including paths inside tracked
@@ -56,8 +56,10 @@ Here are some scenarios in which `dvc fetch` is useful, instead of pulling:
 - After checking out a fresh copy of a <abbr>DVC repository</abbr>, to get
   DVC-tracked data from multiple project branches or tags into your machine.
 - To use comparison commands across different Git commits, for example
-  `dvc metrics show` with the `--all-branches` option.
-- If you want to keep the <abbr>workspace</abbr> clean for any other reason.
+  `dvc metrics show` with its `--all-branches` option.
+- If you want to avoid [linking](/doc/user-guide/large-dataset-optimization)
+  files from the cache, or keep the <abbr>workspace</abbr> clean for any other
+  reason.
 
 The default remote is used (see
 [`dvc config core.remote`](/doc/command-reference/config#core)) unless the
