@@ -620,8 +620,8 @@ more information.
 
   The order in which DVC searches for username is:
 
-  1. `user` specified in one of the DVC configs;
-  2. `user` specified in the url (e.g. `webdav://user@example.com/path`)
+  1. `user` parameter set with this command (found in `.dvc/config`);
+  2. User defined in the URL (e.g. `webdav://user@example.com/path`)
 
 - `password` - password for WebDAV server, can be empty in case of using `token`
   authentication.
