@@ -76,7 +76,7 @@ outside this project root (if nested inside another DVC project) will ignore
 this project's contents completely.
 
 The only thing shared among nested `--subdir` projects and parent repository is
-the Git history itself.
+the Git history.
 
 > Note that nested DVC projects are always isolated from their parents, and vice
 > versa, whether using `--subdir` or not.
