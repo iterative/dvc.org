@@ -652,15 +652,15 @@ more information.
   $ dvc remote modify myremote cert_path /path/to/cert
   ```
 
-- `key_path` - path to private key to use to access a remote.
+- `key_path` - path to private key to use to access a remote. Only has an
+  effect in combination with `cert_path`.
 
   ```dvc
   $ dvc remote modify myremote key_path /path/to/key
   ```
 
-  > Note that the `key_path` option is only valid in combination with
-  > `cert_path` option. However, the certificate might already contain the
-  > private key.
+  > Note that the certificate in `cert_path` might already contain the private
+  > key.
 
 - `timeout` - connection timeout (in seconds) for WebDAV server (default: 30).
 
