@@ -21,17 +21,17 @@ ones that are indeed ignores are printed back.
 
 ## Options
 
+- `-d`, `--details` - show the exclude pattern together with each target path.
+
+- `-n`, `--non-matching` - show the target paths which don’t match any pattern.
+  Only usable when `--details` is also employed
+
 - `-h`, `--help` - prints the usage/help message, and exit.
 
 - `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if no
   problems arise, otherwise 1.
 
 - `-v`, `--verbose` - displays detailed tracing information.
-
-- `-d`, `--details` - show the exclude pattern together with each target path.
-
-- `-n`, `--non-matching` - show the target paths which don’t match any pattern.
-  Only usable when `--details` is also employed
 
 ## Examples
 
