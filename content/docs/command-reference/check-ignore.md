@@ -57,6 +57,7 @@ $ dvc check-ignore file1 file2
 file1
 file2
 $ dvc check-ignore other
+  # There's no command output, meaning `other` is not excluded.
 $ dvc check-ignore file*
 file1
 file2 
