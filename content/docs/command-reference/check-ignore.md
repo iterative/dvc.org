@@ -10,7 +10,7 @@ usage: usage: dvc check-ignore [-h] [-q | -v] [-d] [-n]
                                targets [targets ...]
 
 positional arguments:
-  targets        Input files/directories to check ignore patterns.
+  targets        File or directory paths, or ignore patterns to check
 ```
 
 ## Description
