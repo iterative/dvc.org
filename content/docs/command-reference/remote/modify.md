@@ -639,7 +639,7 @@ more information.
 > `token`.
 
 - `ask_password` - ask each time for the password to use for `user/password`
-  authentication.
+  authentication. This has no effect if `password` or `token` are set.
 
   ```dvc
   $ dvc remote modify myremote ask_password true
