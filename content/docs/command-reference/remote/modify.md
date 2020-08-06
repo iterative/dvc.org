@@ -635,7 +635,8 @@ more information.
   > is specified, `ask_password` is ignored and DVC will not prompt the user to
   > enter a password for this remote.
 
-- `cert_path` - path to certificate used for WebDAV server authentication.
+- `cert_path` - path to certificate used for WebDAV server authentication, if
+  you need to use local client side certificates.
 
   ```dvc
   $ dvc remote modify myremote cert_path /path/to/cert
@@ -646,6 +647,10 @@ more information.
   ```dvc
   $ dvc remote modify myremote key_path /path/to/key
   ```
+
+  > Note that the `key_path` option is only valid in combination with
+  > `cert_path` option. However, the certificate might already contain the
+  > private key.
 
 - `timeout` - connection timeout (in seconds) for WebDAV server (default: 30).
 
