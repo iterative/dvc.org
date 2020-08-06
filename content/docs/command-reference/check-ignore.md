@@ -53,7 +53,8 @@ Then, let's check if these files would be excluded given our `.dvcignore` file:
 ```dvc
 $ dvc check-ignore file1
 file1
-$ dvc check-ignore file2
+$ dvc check-ignore file1 file2
+file1
 file2
 $ dvc check-ignore other
 $ dvc check-ignore file*
