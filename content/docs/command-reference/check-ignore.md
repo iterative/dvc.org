@@ -96,8 +96,9 @@ $ dvc check-ignore -d -a file2
 .dvcignore:2:!file2	file2
 ```
 
-With the `--non-matching` option, non-matching `targets` will also be included
-in the list. All fields in each line, except for `<target path>`, will be empty.
+With the `--non-matching` (`-n`) option, non-matching `targets` will also be
+included in the list. All fields in each line, except for `<target_path>`, will
+be empty.
 
 ```dvc
 $ dvc check-ignore -d -n other
