@@ -10,14 +10,18 @@ usage: usage: dvc check-ignore [-h] [-q | -v] [-d] [-n]
                                targets [targets ...]
 
 positional arguments:
-  targets        File or directory paths, or ignore patterns to check
+  targets        File or directory paths to check (wildcards supported)
 ```
 
 ## Description
 
 This helper command checks whether the given `targets` are ignored by DVC
 according to the [`.dvcignore` file](/doc/user-guide/dvcignore) (if any). The
-ones that are indeed ignores are printed back.
+ones that are ignored indeed are printed back.
+
+> Note that your shell may support path wildcards such as `dir/file*` and these
+> can be fed as `targets` to `dvc check-ignore`, as shown in the
+> [examples](#examples).
 
 ## Options
 
