@@ -87,8 +87,8 @@ $ dvc check-ignore -d file*
 .dvcignore:2:!file2	file2
 ```
 
-By default, only the last pattern matched would be shown, if we want to see all
-of the patterns matched, `--all` option would help you.
+By default, only the last pattern matched would be shown To see all the patterns
+matched, use `--all` (`-a`).
 
 ```dvc
 $ dvc check-ignore -d -a file2
