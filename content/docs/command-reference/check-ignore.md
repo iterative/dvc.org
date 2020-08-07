@@ -105,8 +105,9 @@ $ dvc check-ignore -d -n other
 ::	other
 ```
 
-At last `--stdin` provides an interactive cmd line tool for our pattern 
-debugging.
+## Example: Check paths interactively
+
+The `--stdin` option provides an interactive way to debug `.dvcignore` patterns:
 
 ```dvc
 $ dvc check-ignore --stdin
