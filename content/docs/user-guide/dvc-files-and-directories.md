@@ -151,7 +151,7 @@ the possible following fields:
 - `deps`: List of <abbr>dependency</abbr> file or directory paths of this stage
   (relative to `wdir` which defaults to the file's location)
 - `params`: List of [parameter dependencies](/doc/command-reference/params).
-  These are key paths referring to a YAML or JSON file (`params.yaml` by
+  These are key paths referring to a YAML, JSON or TOML file (`params.yaml` by
   default).
 - `outs`: List of <abbr>output</abbr> file or directory paths of this stage
   (relative to `wdir` which defaults to the file's location), and optionally,
@@ -236,7 +236,7 @@ separately under `params`, grouped by parameters file.
   hand or with the command `dvc config --local`.
 
 - `.dvc/cache`: The <abbr>cache</abbr> directory will store your data in a
-  special [structure](#structure-of-cache-directory). The data files and
+  special [structure](#structure-of-the-cache-directory). The data files and
   directories in the <abbr>workspace</abbr> will only contain links to the data
   files in the cache. (Refer to
   [Large Dataset Optimization](/doc/user-guide/large-dataset-optimization). See
@@ -277,7 +277,7 @@ separately under `params`, grouped by parameters file.
   dependencies and outputs, to allow safely running multiple DVC commands in
   parallel
 
-## Structure of cache directory
+## Structure of the cache directory
 
 There are two ways in which the data is stored in <abbr>cache</abbr>: As a
 single file (eg. `data.csv`), or a directory of files.

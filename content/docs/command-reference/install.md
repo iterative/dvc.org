@@ -25,15 +25,14 @@ Namely:
 [DVC-files](/doc/user-guide/dvc-files-and-directories) corresponding to that
 version. The project's DVC-files in turn refer to data stored in
 <abbr>cache</abbr>, but not necessarily in the <abbr>workspace</abbr>. Normally,
-it would be necessary to use `dvc checkout` to synchronize workspace and
-DVC-files.
+it would be necessary to use `dvc checkout` to update the workspace accordingly.
 
 This hook automates `dvc checkout` after `git checkout`.
 
 **Commit/Reproduce**: Before committing DVC changes with Git, it may be
 necessary using `dvc commit` to store new data files not yet in cache. Or the
 changes might require reproducing the corresponding
-[pipeline](/doc/command-reference/pipeline) (with `dvc repro`) to regenerate the
+[pipeline](/doc/command-reference/dag) (with `dvc repro`) to regenerate the
 project's results (which implicitly commits them to DVC as well).
 
 This hook automates `dvc status` before `git commit` when needed, to remind the
@@ -49,7 +48,7 @@ This hook automates `dvc push` before `git push`.
 ## Installed Git hooks
 
 - A `post-checkout` hook executes `dvc checkout` after `git checkout` to
-  automatically synchronize the data files with the new workspace state.
+  automatically update the workspace with the correct data file versions.
 - A `pre-commit` hook executes `dvc status` before `git commit` to inform the
   user about the differences between cache and workspace.
 - A `pre-push` hook executes `dvc push` before `git push` to upload files and
@@ -165,15 +164,15 @@ Let's first list the available tags in the _Get Started_ repo:
 $ git tag
 0-git-init
 1-dvc-init
-10-bigrams-model
-11-bigrams-experiment
 2-track-data
 3-config-remote
 4-import-data
 5-source-code
-6-prep-stage
-8-ml-pipeline
-9-evaluation
+6-prepare-stage
+7-ml-pipeline
+8-evaluation
+9-bigrams-model
+10-bigrams-experiment
 ...
 ```
 
@@ -182,8 +181,8 @@ document specific experiments conducted in it. To take a look at one, we
 checkout the `6-featurization` tag:
 
 ```dvc
-$ git checkout 8-ml-pipeline
-Note: checking out '8-ml-pipeline'.
+$ git checkout 7-ml-pipeline
+Note: checking out '7-ml-pipeline'.
 
 You are in 'detached HEAD' state...
 
@@ -242,7 +241,7 @@ is the `post-checkout` script that runs after `git checkout`.
 We can now repeat the command run earlier, to see the difference.
 
 ```dvc
-$ git checkout 8-ml-pipeline
+$ git checkout 7-ml-pipeline
 HEAD is now at 6666298 Create ML pipeline stages
 M       model.pkl
 M	data/features/
@@ -300,5 +299,5 @@ Data and pipelines are up to date.
 After reproducing this pipeline up to the "evaluate" stage, the data files are
 in sync with the code/config files, but we must now commit the changes with Git.
 Looking closely we see that `dvc status` is used again, informing us that the
-data files are synchronized with the `Data and pipelines are up to date.`
+data files have been updated, with the `Data and pipelines are up to date.`
 message.

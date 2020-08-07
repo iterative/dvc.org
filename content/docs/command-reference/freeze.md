@@ -20,7 +20,7 @@ reproduction will not regenerate <abbr>outputs</abbr> of frozen stages, even if
 their <abbr>dependencies</abbr> have changed, and even if `--force` is used.
 
 Freezing a stage is useful to avoid syncing data from the top of its
-[pipeline](/doc/command-reference/pipeline), and keep iterating on the last
+[pipeline](/doc/command-reference/dag), and keep iterating on the last
 (non-frozen) stages only.
 
 Note that <abbr>import stages</abbr> are frozen by default. Use `dvc update` to

@@ -12,9 +12,8 @@ usage: dvc pull [-h] [-q | -v] [-j <number>] [-r <name>] [-a] [-T]
                 [targets [targets ...]]
 
 positional arguments:
-  targets        Limit command scope to these stages or .dvc files.
-                 Using -R, directories to search for stages or .dvc files
-                 can also be given.
+  targets       Limit command scope to these tracked files/directories,
+                .dvc files, or stage names.
 ```
 
 ## Description
@@ -29,31 +28,29 @@ are the most common use cases for these commands.
 
 The `dvc pull` command allows one to retrieve data from remote storage.
 `dvc pull` has the same effect as running `dvc fetch` and `dvc checkout`
-immediately after that.
+immediately after.
 
 The default remote is used (see `dvc config core.remote`) unless the `--remote`
 option is used. See `dvc remote` for more information on how to configure a
 remote.
 
 With no arguments, just `dvc pull` or `dvc pull --remote <name>`, it downloads
-only the files (or directories) missing from the workspace by searching all
-stages in `dvc.yaml` or `.dvc` files currently in the <abbr>project</abbr>. It
-will not download files associated with earlier commits in the
-<abbr>repository</abbr> (if using Git), nor will it download files that have not
-changed.
+only the files (or directories) missing from the workspace by checking all
+`.dvc` files and stages (in `dvc.yaml` and `dvc.lock`) currently in the
+<abbr>project</abbr>. It will not download files associated with earlier commits
+in the <abbr>repository</abbr> (if using Git), nor will it download files that
+have not changed.
 
 The command `dvc status -c` can list files referenced in current stages (in
 `dvc.yaml`) or `.dvc` files, but missing from the <abbr>cache</abbr>. It can be
 used to see what files `dvc pull` would download.
 
-If one or more `targets` are specified, DVC only considers the files associated
-with those stages or `.dvc` files. Using the `--with-deps` option, DVC tracks
-dependencies backward from the target [stage files](/doc/command-reference/run),
-through the corresponding [pipelines](/doc/command-reference/pipeline), to find
-data files to pull.
+The `targets` given to this command (if any) limit what to pull. It accepts
+paths to tracked files or directories (including paths inside tracked
+directories), `.dvc` files, or stage names (found in `dvc.yaml`).
 
-After a data file is in cache, `dvc pull` can use OS-specific mechanisms like
-reflinks or hardlinks to put it in the workspace without copying. See
+After the data is in the cache, `dvc pull` uses OS-specific mechanisms like
+reflinks or hardlinks to put it in the workspace, trying to avoid copying. See
 `dvc checkout` for more details.
 
 ## Options
@@ -96,11 +93,10 @@ reflinks or hardlinks to put it in the workspace without copying. See
   repository into the local run cache. A `dvc repro <stage_name>` is necessary
   to checkout these files into the workspace and update the `dvc.lock` file.
 
-- `-j <number>`, `--jobs <number>` - number of threads to run simultaneously to
-  handle the downloading of files from the remote. The default value is
-  `4 * cpu_count()`. For SSH remotes, the default is just `4`. Using more jobs
-  may improve the total download speed if a combination of small and large files
-  are being fetched.
+- `-j <number>`, `--jobs <number>` - parallelism level for DVC to download data
+  from remote storage. This only applies when the `--cloud` option is used, or a
+  `--remote` is given. The default value is `4 * cpu_count()`. For SSH remotes,
+  the default is `4`. Using more jobs may improve the overall transfer speed.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -128,9 +124,6 @@ $ cd example-get-started
 ```
 
 </details>
-
-The workspace looks almost like in this
-[pipeline setup](/doc/tutorials/pipelines):
 
 ```dvc
 .
@@ -167,17 +160,9 @@ $ dvc pull train.dvc
 > Please delete the `.dvc/cache` directory first (with `rm -Rf .dvc/cache`) to
 > follow this example if you tried the previous ones.
 
-Our [pipeline](/doc/command-reference/pipeline) has been setup with these
-[stages](/doc/command-reference/run):
-
-```dvc
-$ dvc pipeline show evaluate.dvc
-data/data.xml.dvc
-prepare.dvc
-featurize.dvc
-train.dvc
-evaluate.dvc
-```
+Our [pipeline](/doc/command-reference/dag) has been setup with these
+[stages](/doc/command-reference/run): `prepare`, `featurize`, `train`,
+`evaluate`.
 
 Imagine the [remote storage](/doc/command-reference/remote) has been modified
 such that the data in some of these stages should be updated in the
@@ -195,7 +180,7 @@ One could do a simple `dvc pull` to get all the data, but what if you only want
 to retrieve part of the data?
 
 ```dvc
-$ dvc pull --with-deps featurize.dvc
+$ dvc pull --with-deps featurize
 
 ... Use the partial update, then pull the remaining data:
 

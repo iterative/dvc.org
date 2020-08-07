@@ -11,9 +11,8 @@ usage: dvc push [-h] [-q | -v] [-j <number>] [-r <name>] [-a] [-T]
                 [targets [targets ...]]
 
 positional arguments:
-  targets        Limit command scope to these stages or .dvc files.
-                 Using -R, directories to search for stages or .dvc files
-                 can also be given.
+  targets       Limit command scope to these tracked files/directories,
+                .dvc files, or stage names.
 ```
 
 ## Description
@@ -38,9 +37,9 @@ with `git commit` and `git push`).
 
 Under the hood a few actions are taken:
 
-- The push command by default uses all `dvc.yaml` and `.dvc` files in the
-  <abbr>workspace</abbr>. The command options listed below will either limit or
-  expand the set of stages (in dvc.yaml) or `.dvc` files to consult.
+- The push command by default uses all stages (in `dvc.yaml` and `dvc.lock`) and
+  `.dvc` files in the <abbr>workspace</abbr>. The command options will either
+  limit or expand the set of stages or `.dvc` files to consult.
 
 - For each <abbr>output</abbr> referenced in every selected stage or `.dvc`
   file, DVC finds a corresponding file or directory in the <abbr>cache</abbr>.
@@ -64,10 +63,9 @@ The `dvc status -c` command can list files tracked by DVC that are new in the
 cache (compared to the default remote.) It can be used to see what files
 `dvc push` would upload.
 
-If one or more `targets` are specified, DVC only considers the files associated
-with them. Using the `--with-deps` option, DVC tracks dependencies backward from
-the target [stage files](/doc/command-reference/run), through the corresponding
-[pipelines](/doc/command-reference/pipeline), to find data files to push.
+The `targets` given to this command (if any) limit what to push. It accepts
+paths to tracked files or directories (including paths inside tracked
+directories), `.dvc` files, or stage names (found in `dvc.yaml`).
 
 ## Options
 
@@ -103,11 +101,10 @@ the target [stage files](/doc/command-reference/run), through the corresponding
 - `--run-cache` - uploads all available history of stage runs to the remote
   repository.
 
-- `-j <number>`, `--jobs <number>` - number of threads to run simultaneously to
-  handle the uploading of files from the remote. The default value is
-  `4 * cpu_count()`. For SSH remotes, the default is just `4`. Using more jobs
-  may improve the total download speed if a combination of small and large files
-  are being fetched.
+- `-j <number>`, `--jobs <number>` - parallelism level for DVC to upload data
+  from remote storage. This only applies when the `--cloud` option is used, or a
+  `--remote` is given. The default value is `4 * cpu_count()`. For SSH remotes,
+  the default is `4`. Using more jobs may improve the overall transfer speed.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -151,27 +148,16 @@ $ dvc push data.zip.dvc
 ## Example: With dependencies
 
 Demonstrating the `--with-deps` option requires a larger example. First, assume
-a [pipeline](/doc/command-reference/pipeline) has been setup with these
-[stages](/doc/command-reference/run):
+a [pipeline](/doc/command-reference/dag) has been setup with these
+[stages](/doc/command-reference/run): `clean-posts`, `featurize`, `test-posts`,
+`matrix-train`
 
-```dvc
-$ dvc pipeline show
-data/Posts.xml.zip.dvc
-Posts.xml.dvc
-Posts.tsv.dvc
-Posts-test.tsv.dvc
-matrix-train.p.dvc
-model.p.dvc
-Dvcfile
-```
-
-Imagine the <abbr>projects</abbr> has been modified such that the
+Imagine the <abbr>project</abbr> has been modified such that the
 <abbr>outputs</abbr> of some of these stages need to be uploaded to
 [remote storage](/doc/command-reference/remote).
 
 ```dvc
 $ dvc status --cloud
-
   new:            data/model.p
   new:            data/matrix-test.p
   new:            data/matrix-train.p
@@ -181,24 +167,23 @@ One could do a simple `dvc push` to share all the data, but what if you only
 want to upload part of the data?
 
 ```dvc
-$ dvc push --with-deps matrix-train.p.dvc
+$ dvc push --with-deps test-posts
 
 ... Do some work based on the partial update
 
-$ dvc push --with-deps model.p.dvc
+$ dvc push --with-deps matrix-train
 
 ... Push the rest of the data
 
 $ dvc status --cloud
-
 Data and pipelines are up to date.
 ```
 
-We specified a stage in the middle of this pipeline (`matrix-train.p.dvc`) with
-the first push. `--with-deps` caused DVC to start with that `.dvc` file, and
-search backwards through the pipeline for data files to upload.
+We specified a stage in the middle of this pipeline (`test-posts`) with the
+first push. `--with-deps` caused DVC to start with that `.dvc` file, and search
+backwards through the pipeline for data files to upload.
 
-Because the `model.p.dvc` stage occurs later (it's the last one), its data was
+Because the `matrix-train` stage occurs later (it's the last one), its data was
 not pushed. However, we then specified it in the second push, so all remaining
 data was uploaded.
 
@@ -207,7 +192,7 @@ Finally, we used `dvc status` to double check that all data had been uploaded.
 ## Example: What happens in the cache?
 
 Let's take a detailed look at what happens to the
-[cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory)
+[cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-the-cache-directory)
 as you run an experiment locally and push data to remote storage. To set the
 example consider having created a <abbr>workspace</abbr> that contains some code
 and data, and having set up a remote.
@@ -255,7 +240,7 @@ the cache having more files in it than the remote – which is what the `new`
 state means.
 
 > Refer to
-> [Structure of cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory)
+> [Structure of cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-the-cache-directory)
 > for more info.
 
 Next we can copy the remaining data from the cache to the remote using

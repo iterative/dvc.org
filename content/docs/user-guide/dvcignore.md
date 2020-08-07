@@ -16,7 +16,8 @@ similar to `.gitignore` in Git.
 - You need to create the `.dvcignore` file. It can be placed in the root of the
   project or inside any subdirectory (see also [remarks](#Remarks) below).
 - Populate it with [patterns](https://git-scm.com/docs/gitignore) that you would
-  like to ignore.
+  like to ignore. You can find useful templates
+  [here](https://github.com/github/gitignore).
 - Each line should contain only one pattern.
 - During execution of commands that traverse directories, DVC will ignore
   matching paths.
@@ -29,8 +30,8 @@ DVC-handled directories.
 
 **It is crucial to understand, that DVC might remove ignored files upon
 `dvc run` or `dvc repro`. If they are not produced by a
-[pipeline](/doc/command-reference/pipeline) [stage](/doc/command-reference/run),
-they can be deleted permanently.**
+[pipeline](/doc/command-reference/dag) [stage](/doc/command-reference/run), they
+can be deleted permanently.**
 
 Keep in mind, that when you add to `.dvcignore` entries that affect one of the
 existing <abbr>outputs</abbr>, its status will change and DVC will behave as if
@@ -85,7 +86,7 @@ Only the hash values of a directory (`data/`) and one file have been
 (`data1`).
 
 > Refer to
-> [Structure of cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory)
+> [Structure of cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-the-cache-directory)
 > for more info.
 
 Now, let's modify file `data1` and see if it affects `dvc status`.

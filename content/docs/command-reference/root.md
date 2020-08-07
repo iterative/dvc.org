@@ -1,6 +1,6 @@
 # root
 
-Return the relative path to the root of the <abbr>DVC project</abbr>.
+Return the relative path to the root directory of the <abbr>DVC project</abbr>.
 
 ## Synopsis
 
@@ -10,11 +10,13 @@ usage: dvc root [-h] [-q | -v]
 
 ## Description
 
-This command returns the path to the root directory of the <abbr>DVC
-project</abbr>, relative to the current working directory. It can be used to
-build a path to a dependency, script, or <abbr>data artifact</abbr>, for
-example. Useful when working in a subdirectory of the project, and needing to
-refer to a file in another directory.
+Returns the path to the root directory of the <abbr>DVC project</abbr>, relative
+to the current working directory. `dvc root` is useful for referencing a file in
+another directory when working in a subdirectory of the project.
+
+Use this command to build fixed paths to dependencies, files, or <abbr>data
+artifacts</abbr>. This is useful when creating shell scripts that generate
+`dvc.yaml` files programmatically or with the `dvc run` helper.
 
 ## Options
 
@@ -29,22 +31,35 @@ refer to a file in another directory.
 
 ```dvc
 $ dvc root
-
 .
-
+$ mkdir subdir
 $ cd subdir
 $ dvc root
-
 ..
 ```
 
-## Example: Referencing files
+## Example: Referencing fixed paths in other commands
+
+When working in a subdirectory of a <abbr>DVC project</abbr>, simplify file
+references by making all paths relative to the root directory.
 
 ```dvc
 $ dvc root
-
 ../../../
 
 $ dvc run -d $(dvc root)/data/file.cvs ... \
     python $(dvc root)/scripts/something.py
+```
+
+The same can be applied to non-DVC commands:
+
+```dvc
+$ dvc root
+../..
+
+$ tree $(dvc root)/data/
+../../data/
+├── data.xml
+├── data.xml.dvc
+...
 ```

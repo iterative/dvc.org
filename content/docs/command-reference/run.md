@@ -22,8 +22,8 @@ positional arguments:
 ## Description
 
 `dvc run` is a helper for creating or updating
-[pipeline](/doc/command-reference/pipeline) stages in a `dvc.yaml` file (located
-in the current working directory). _Stages_ represent individual data processes,
+[pipeline](/doc/command-reference/dag) stages in a `dvc.yaml` file (located in
+the current working directory). _Stages_ represent individual data processes,
 including their input and resulting outputs.
 
 A stage name is required and can be provided using the `-n` (`--name`) option.
@@ -73,29 +73,44 @@ $ dvc run -n printer -d write.sh -o pages ./write.sh
 $ dvc run -n scanner -d read.sh -d pages -o signed.pdf ./read.sh
 ```
 
+Stage dependencies can be any file or directory, either untracked, or more
+commonly tracked by DVC or Git. Outputs will be tracked and <abbr>cached</abbr>
+by DVC when the stage is run. Every output version will be cached when the stage
+is reproduced (see also `dvc gc`).
+
 Relevant notes:
 
-- Typically, scripts being run (or a directory containing the source code) are
-  included among the specified `-d` dependencies. This ensures that when the
-  source code changes, DVC knows that the stage needs to be reproduced. (You can
-  chose whether to do this.)
+- Typically, scripts being run (or possibly a directory containing the source
+  code) are included among the specified `-d` dependencies. This ensures that
+  when the source code changes, DVC knows that the stage needs to be reproduced.
+  (You can chose whether to do this.)
 
 - `dvc run` checks the dependency graph integrity before creating a new stage.
-  For example: two stage cannot explicitly specify the same output, there should
-  be no cycles, etc.
+  For example: two stage cannot specify the same output or overlapping output
+  paths, there should be no cycles, etc.
 
 - DVC does not feed dependency files to the command being run. The program will
   have to read by itself the files specified with `-d`.
 
-- Outputs are deleted from the <abbr>workspace</abbr> before executing the
-  command (including at `dvc repro`), so it should be able to recreate any
-  directories marked as outputs.
+- Entire directories produced by the stage can be tracked as outputs by DVC,
+  which generates a single `.dir` entry in the cache (refer to
+  [Structure of cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-the-cache-directory)
+  for more info.)
+
+- [external dependencies](/doc/user-guide/external-dependencies) and
+  [external outputs](/doc/user-guide/managing-external-data) (outside of the
+  <abbr>workspace</abbr>) are also supported.
+
+- Outputs are deleted from the workspace before executing the command (including
+  at `dvc repro`) if their paths are found as existing files/directories. This
+  also means that the stage command needs to recreate any directory structures
+  defined as outputs every time its executed by DVC.
 
 ### For displaying and comparing data science experiments
 
 [parameters](/doc/command-reference/params) (`-p`/`--params` option) are a
 special type of key/value dependencies. Multiple parameter dependencies can be
-specified from within one or more YAML or JSON parameters files (e.g.
+specified from within one or more YAML, JSON or TOML parameters files (e.g.
 `params.yaml`). This allows tracking experimental hyperparameters easily.
 
 Special types of output files, [metrics](/doc/command-reference/metrics) (`-m`
@@ -112,12 +127,12 @@ run directly, for example a shell built-in, expression, or binary found in
 by the command itself, not by `dvc run`.
 
 ⚠️ Note that while DVC is platform-agnostic, the commands defined in your
-[pipeline](/doc/command-reference/pipeline) stages may only work on some
-operating systems and require certain software packages to be installed.
+[pipeline](/doc/command-reference/dag) stages may only work on some operating
+systems and require certain software packages to be installed.
 
 Wrap the command with double quotes `"` if there are special characters in it
 like `|` (pipe) or `<`, `>` (redirection), otherwise they would apply to
-`dvc run` as a whole. Use single quotes `'` instead if there are environment
+`dvc run` itself. Use single quotes `'` instead if there are environment
 variables in it that should be evaluated dynamically. Examples:
 
 ```dvc
@@ -330,8 +345,8 @@ $ tree ..
 
 ## Example: Chaining stages
 
-DVC [pipelines](/doc/command-reference/pipeline) are constructed by connecting
-the outputs of a stage to the dependencies of the following one(s).
+DVC [pipelines](/doc/command-reference/dag) are constructed by connecting the
+outputs of a stage to the dependencies of the following one(s).
 
 Extract an XML file from an archive to the `data/` folder:
 
