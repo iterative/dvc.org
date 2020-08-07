@@ -55,11 +55,9 @@ name.
 
 ## Options
 
-- `-o <path>`, `--out <path>` - specify a path (directory and/or file name) to
-  the desired location to place the download file in. The default value (when
-  this option isn't used) is the current working directory (`.`) and original
-  file name. If an existing directory is specified, then the target data will be
-  placed inside.
+- `-o <path>`, `--out <path>` - specify a path to the desired location to place
+  the imported file in the workspace (instead of using the current working
+  directory). Directories specified in the path will be created by this command.
 
 - `--rev <commit>` - commit hash, branch or tag name, etc. (any
   [Git revision](https://git-scm.com/docs/revisions)) of the repository to
