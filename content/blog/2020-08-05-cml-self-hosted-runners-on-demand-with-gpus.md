@@ -114,9 +114,9 @@ you must check `workflow` along with `repo`.
 
 If everything went fine we should see a runner registered in our repo.
 
-![](/uploads/images/2020-08-05/registered-cml-runner-GitHub.png)
+![](/uploads/images/2020-08-05/registered-cml-runner-gitHub.png)
 
-![](/uploads/images/2020-08-05/registered-cml-runner-GitLab.png)
+![](/uploads/images/2020-08-05/registered-cml-runner-gitLab.png)
 
 ### 3) Setup your GitHub Actions or GitLab workflow yaml file to use the runner and commit your changes.
 
