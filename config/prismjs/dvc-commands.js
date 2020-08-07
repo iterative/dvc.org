@@ -48,6 +48,7 @@ module.exports = [
   'config',
   'commit',
   'checkout',
+  'check-ignore',
   'cache dir',
   'cache',
   'add'
