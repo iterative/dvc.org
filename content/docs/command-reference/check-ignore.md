@@ -10,7 +10,7 @@ usage: usage: dvc check-ignore [-h] [-q | -v] [-d] [-n]
                                targets [targets ...]
 
 positional arguments:
-  targets        File or directory paths to check (wildcards supported)
+  targets        File or directory paths to check
 ```
 
 ## Description
@@ -19,16 +19,15 @@ This helper command checks whether the given `targets` are ignored by DVC
 according to the [`.dvcignore` file](/doc/user-guide/dvcignore) (if any). The
 ones that are ignored indeed are printed back.
 
-> Note that your shell may support path wildcards such as `dir/file*` and these
-> can be fed as `targets` to `dvc check-ignore`, as shown in the
-> [examples](#examples).
-
 ## Options
 
-- `-d`, `--details` - show the exclude pattern together with each target path.
+- `-d`, `--details` - show the exclude patterns along with each target path. A
+  series of lines are printed in this format:
+  `<path/to/.dvcignore>:<line_num>:<pattern> | <target_path>`
 
-- `-n`, `--non-matching` - show the target paths which don’t match any pattern.
-  Only usable when `--details` is also employed
+- `-n`, `--non-matching` - show the target paths which don’t match any pattern
+  in a `--details` list. All fields in each line, except for `<target path>`,
+  will be empty. Has no effect without `--details`.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -40,13 +39,14 @@ ones that are ignored indeed are printed back.
 ## Examples
 
 First, let's create a `.dvcignore` file with some patterns in it, and some files
-to check against it.
+to check against it:
 
 ```dvc
 $ echo "file*\n\!file2" >> .dvcignore
 $ cat .dvcignore
 file*
 !file2
+
 $ touch file1 file2 other
 $ ls
 file1  file2 other
@@ -58,31 +58,33 @@ given our `.dvcignore` file:
 ```dvc
 $ dvc check-ignore file1
 file1
+
 $ dvc check-ignore file1 file2
 file1
 file2
+
 $ dvc check-ignore other
   # There's no command output, meaning `other` is not excluded.
+
 $ dvc check-ignore file*
 file1
 file2
 ```
 
-If the `--details` option is used, a series of lines are printed using this
-format: `<path/to/.dvcignore>:<line_num>:<pattern> | <target_path>`
+With `--details` (`-d`), we get a detailed report of all the matches:
 
 ```dvc
 $ dvc check-ignore -d file1 file2
 .dvcignore:1:file*	file1
 .dvcignore:2:!file2	file2
-$ dvc check-ignore -d other
+
 $ dvc check-ignore -d file*
 .dvcignore:1:file*	file1
 .dvcignore:2:!file2	file2
 ```
 
-With the `--non-matching` option, non-matching `targets` will also be included
-in the list. All fields in each line, except for `<target path>`, will be empty.
+With the `--non-matching` (`-n`) option, non-matching `targets` will also be
+included in the details list:
 
 ```dvc
 $ dvc check-ignore -d -n other
