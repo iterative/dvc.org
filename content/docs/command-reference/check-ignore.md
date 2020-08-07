@@ -64,7 +64,7 @@ file2
 ```
 
 If the `--details` option is used, a series of lines are printed using this format:
-`<source> <COLON> <linenum> <COLON> <pattern> <HT> <pathname>`
+`<path/to/.dvcignore>:<line_num>:<pattern> | <target_path>`
 
 ```dvc
 $ dvc check-ignore -d file1 file2
