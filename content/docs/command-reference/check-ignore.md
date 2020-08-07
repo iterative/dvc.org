@@ -105,7 +105,7 @@ $ dvc check-ignore -d -n other
 ::	other
 ```
 
-## Example: Check paths interactively
+## Example: Check paths interactively or programmatically
 
 The `--stdin` option provides an interactive way to debug `.dvcignore` patterns:
 
