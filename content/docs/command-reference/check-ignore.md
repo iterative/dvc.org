@@ -23,11 +23,11 @@ ones that are ignored indeed are printed back.
 
 - `-d`, `--details` - show the exclude patterns along with each target path. A
   series of lines are printed in this format:
-  `<path/to/.dvcignore>:<line_num>:<pattern> | <target_path>`
+  `<path/to/.dvcignore>:<line_num>:<pattern> <target_path>`
 
-- `-n`, `--non-matching` - show the target paths which don’t match any pattern
-  in a `--details` list. All fields in each line, except for `<target path>`,
-  will be empty. Has no effect without `--details`.
+- `-n`, `--non-matching` - include the target paths which don’t match any
+  pattern in the `--details` list. All fields in each line, except for
+  `<target_path>`, will be empty. Has no effect without `--details`.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
