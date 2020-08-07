@@ -6,7 +6,7 @@ patterns found in [`.dvcignore`](/doc/user-guide/dvcignore).
 ## Synopsis
 
 ```usage
-usage: usage: dvc check-ignore [-h] [-q | -v] [-d] [-n] [--stdin] [-a]
+usage: usage: dvc check-ignore [-h] [-q | -v] [-d] [-a] [-n] [--stdin]
                                targets [targets ...]
 
 positional arguments:
@@ -120,4 +120,3 @@ It can also be used in a Unix pipeline as a component.
 ```dvc
 cat file_list | dvc check-ignore --stdin 
 ```
-
