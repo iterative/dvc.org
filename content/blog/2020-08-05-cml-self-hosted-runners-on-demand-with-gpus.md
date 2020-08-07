@@ -89,9 +89,8 @@ comes in two flavours, depending if you need python 2 or 3:
 - dvcorg/cml-py3:latest
 
 These images have CML and DVC preinstalled (among other perks), plus CUDA
-drivers and Python 2.7. The cml-py3 image comes with Python 3.X as well. That's
-all. You can clone these images and add your own dependencies to better mimic
-your own production environment.
+drivers. That's all. You can clone these images and add your own dependencies to
+better mimic your own production environment.
 
 ```dvc
 $ docker run --name myrunner -d --gpus all \
