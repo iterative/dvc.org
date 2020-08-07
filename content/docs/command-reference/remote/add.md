@@ -345,6 +345,21 @@ $ dvc remote add -d myremote https://example.com/path/to/dir
 
 <details>
 
+### Click for WebDAV
+
+```dvc
+$ dvc remote add -d myremote webdavs://example.com/public.php/webdav
+```
+
+> See also `dvc remote modify` for a full list of WebDAV parameters.
+
+> Note that the location of the WebDAV API endpoint `/public.php/webdav` might
+> be different for your server.
+
+</details>
+
+<details>
+
 ### Click for local remote
 
 A "local remote" is a directory in the machine's file system.

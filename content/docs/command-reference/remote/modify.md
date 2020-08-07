@@ -592,6 +592,94 @@ more information.
 
 </details>
 
+<details>
+
+### Click for WebDAV
+
+- `url` - remote location URL.
+
+  ```dvc
+  $ dvc remote modify myremote \
+        url webdavs://example.com/public.php/webdav
+  ```
+
+  > Note that the location of the WebDAV API endpoint `/public.php/webdav` might
+  > be different for your server.
+
+  If your remote is located in a subfolder of your WebDAV server e.g.
+  `/path/to/dir`, this may be appended to the general `url`:
+
+  ```dvc
+  $ dvc remote modify myremote \
+        url webdavs://example.com/public.php/webdav/path/to/dir
+  ```
+
+- `token` - token for WebDAV server, can be empty in case of using
+  `user/password` authentication.
+
+  ```dvc
+  $ dvc remote modify --local myremote token '<mytoken>'
+  ```
+
+- `user` - username for WebDAV server, can be empty in case of using `token`
+  authentication.
+
+  ```dvc
+  $ dvc remote modify --local myremote user myuser
+  ```
+
+  The order in which DVC searches for username is:
+
+  1. `user` parameter set with this command (found in `.dvc/config`);
+  2. User defined in the URL (e.g. `webdav://user@example.com/path`)
+
+- `password` - password for WebDAV server, can be empty in case of using `token`
+  authentication.
+
+  ```dvc
+  $ dvc remote modify --local myremote password mypassword
+  ```
+
+> The username, password, and token (may) contain sensitive user info.
+> Therefore, it's safer to add them with the `--local` option, so they're
+> written to a Git-ignored config file.
+
+> Note that `user/password` and `token` authentication are incompatible. You
+> should authenticate against yout WebDAV remote by either `user/password` or
+> `token`.
+
+- `ask_password` - ask each time for the password to use for `user/password`
+  authentication. This has no effect if `password` or `token` are set.
+
+  ```dvc
+  $ dvc remote modify myremote ask_password true
+  ```
+
+- `cert_path` - path to certificate used for WebDAV server authentication, if
+  you need to use local client side certificates.
+
+  ```dvc
+  $ dvc remote modify myremote cert_path /path/to/cert
+  ```
+
+- `key_path` - path to private key to use to access a remote. Only has an effect
+  in combination with `cert_path`.
+
+  ```dvc
+  $ dvc remote modify myremote key_path /path/to/key
+  ```
+
+  > Note that the certificate in `cert_path` might already contain the private
+  > key.
+
+- `timeout` - connection timeout (in seconds) for WebDAV server (default: 30).
+
+  ```dvc
+  $ dvc remote modify myremote timeout 120
+  ```
+
+</details>
+
 ## Example: Customize an S3 remote
 
 Let's first set up a _default_ S3 remote.
