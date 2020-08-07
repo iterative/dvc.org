@@ -40,8 +40,8 @@ ones that are ignored indeed are printed back.
 - `--stdin` - read paths interactively from standard input instead of providing
   `targets`. Exit with `Ctrl+C`.
   
-- `-a`, `--all` - show all of the patterns match the target paths. Only
-  usable when `--details` is also employed
+- `-a`, `--all` - show all the patterns that match each target path. Only usable
+  when `--details` is also employed
 
 ## Examples
 
