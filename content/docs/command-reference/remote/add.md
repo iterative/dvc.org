@@ -24,8 +24,8 @@ or even a directory in the local file system. (See all the supported remote
 storage types in the examples below.) If `url` is a relative path, it will be
 resolved against the current working directory, but saved **relative to the
 config file location** (see LOCAL example below). Whenever possible, DVC will
-create a remote directory if it doesn't exists yet. (It won't create an S3
-bucket though, and will rely on default access settings.)
+create a remote directory if it doesn't exist yet. (It won't create an S3 bucket
+though, and will rely on default access settings.)
 
 > If you installed DVC via `pip` and plan to use cloud services as remote
 > storage, you might need to install these optional dependencies: `[s3]`,
@@ -131,7 +131,8 @@ For example:
 
 ```dvc
 $ dvc remote add -d myremote s3://mybucket/path/to/dir
-$ dvc remote modify myremote endpointurl https://object-storage.example.com
+$ dvc remote modify myremote endpointurl \
+                    https://object-storage.example.com
 ```
 
 > See `dvc remote modify` for a full list of S3 API parameters.
@@ -339,6 +340,21 @@ $ dvc remote add -d myremote https://example.com/path/to/dir
 ```
 
 > See also `dvc remote modify` for a full list of HTTP parameters.
+
+</details>
+
+<details>
+
+### Click for WebDAV
+
+```dvc
+$ dvc remote add -d myremote webdavs://example.com/public.php/webdav
+```
+
+> See also `dvc remote modify` for a full list of WebDAV parameters.
+
+> Note that the location of the WebDAV API endpoint `/public.php/webdav` might
+> be different for your server.
 
 </details>
 
