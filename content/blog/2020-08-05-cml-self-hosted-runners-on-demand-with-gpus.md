@@ -174,6 +174,8 @@ We’re working on both these issues
 [#208](https://github.com/iterative/cml/issues/208)) both in terms of CML and
 DVC capabilities. So keep watching this space for updates!
 
+<hr />
+
 We started CML to help teams deal with the complexity of ML more effectively-
 continuous integration is a proven approach to keeping projects agile even as
 the team size, number of experiments, and number of dependencies increase.
@@ -181,5 +183,3 @@ Treating experiments like potential new features in a software project opens up
 many possibilities for improving our engineering practices. We’re looking
 forward to an era when ML experiments can be created, logged, and merged into
 production-ready code in minutes, not days or weeks.
-
-<hr />
