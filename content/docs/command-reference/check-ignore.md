@@ -37,8 +37,9 @@ ones that are ignored indeed are printed back.
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
-- `--stdin` - Read pathnames from the standard input, one per line,
-  instead of from the command-line.
+- `--stdin` - Read paths interactively from standard input instead of providing
+  `targets`. Exit with `Ctrl+C`.
+  
 - `-a`, `--all` - Show all of the patterns match the target paths. Only
   usable when `--details` is also employed
 
