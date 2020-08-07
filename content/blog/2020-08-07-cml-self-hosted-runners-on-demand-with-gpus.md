@@ -1,6 +1,6 @@
 ---
 title: CML self-hosted runners on demand with GPUs
-date: 2020-08-05
+date: 2020-08-07
 description: |
   Use your own GPUs with GitHub Actions & GitLab for continuous machine learning.
 descriptionLong: |
