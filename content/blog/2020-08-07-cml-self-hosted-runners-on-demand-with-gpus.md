@@ -1,14 +1,14 @@
 ---
 title: CML self-hosted runners on demand with GPUs
-date: 2020-08-05
+date: 2020-08-07
 description: |
   Use your own GPUs with GitHub Actions & GitLab for continuous machine learning.
 descriptionLong: |
   Training models often requires special hardware, like extra memory or GPUs. 
-  How can we provide a CI/CD pipeline with this hardware? 
-  Find out how to setup your own self-hosted runners on-demand with GPUs for fast 
+  How can we make a CI/CD pipeline with this hardware? 
+  Find out how to set up your own self-hosted runners on-demand with GPUs for fast 
   training.
-picture: 2020-08-05/header.png
+picture: 2020-08-07/header.png
 author: david_g_ortega
 commentsUrl: https://discuss.dvc.org/t/cml-self-hosted-runners-on-demand-with-gpus/462
 tags:
@@ -32,27 +32,27 @@ executing jobs. It could be an EC2 instance or the GPU under your desk. In our
 Machine Learning (CML), our Docker image acts as a thin wrapper over GitLab and
 GitHub runners, adding some extra capabilities.
 
-Here are some benefits of using CML as a self-hosted runner:
+Here are some benefits of using CML with a self-hosted runner:
 
-1.  Easy to use. Working the same way for both GitLab and GitHub.
+1.  **Easy to use.** Working the same way for both GitLab and GitHub.
 
-2.  Get out of dependency hell. We tend to install packages (on top of packages,
-    on top of packages…) while we‘re experimenting with models. In ML in
-    particular, we can be dependent on drivers AND libraries, and sometimes
+2.  **Get out of dependency hell.** We tend to install packages (on top of
+    packages, on top of packages…) while we‘re experimenting with models. In ML
+    in particular, we can be dependent on drivers AND libraries, and sometimes
     precise versions of them (CUDA and TensorFlow, anyone?). Your CI workflow
     will install all the dependencies in the containerised runner leaving your
     machine always clean.
 
-3.  Security. If your repo is public your runners could be accesed by anyone
+3.  **Security.** If your repo is public your runners could be accesed by anyone
     that could add
     [scripts that exploits your machine](https://docs.GitHub.com/en/actions/hosting-your-own-runners/about-self-hosted-runners#self-hosted-runner-security-with-public-repositories).
     With the containerised runner you are restricting the access to your real
     machine.
 
-4.  Gain reproducibility. One of the biggest technical debts in the ML space is
-    reproducibility. A few weeks post-experiment, we often discover that trying
-    to put your model back in shape is a pain. Looking at our repo, it’s not
-    obvious what data or training infrastructure or dependencies went into a
+4.  **Gain reproducibility.** One of the biggest technical debts in the ML space
+    is reproducibility. A few weeks post-experiment, we often discover that
+    trying to put your model back in shape is a pain. Looking at our repo, it’s
+    not obvious what data or training infrastructure or dependencies went into a
     given result. When you move your ML experiments into a CI/CD system you are
     making a contract of the dependencies and hardware used for your experiment.
     Having that contract isolated by the containerised runner, your experiment
@@ -78,7 +78,7 @@ $ docker run --gpus all dvcorg/cml-py3 nvidia-smi
 ```
 
 We should see something like this:
-![](/uploads/images/2020-08-05/nvidia-smi-output.png)
+![](/uploads/images/2020-08-07/nvidia-smi-output.png)
 
 ### 2) Start your self-hosted runner
 
@@ -116,9 +116,9 @@ you must check `workflow` along with `repo`.
 
 If everything went fine we should see a runner registered in our repo.
 
-![](/uploads/images/2020-08-05/registered-cml-runner-github.png)
+![](/uploads/images/2020-08-07/registered-cml-runner-github.png)
 
-![](/uploads/images/2020-08-05/registered-cml-runner-gitlab.png)
+![](/uploads/images/2020-08-07/registered-cml-runner-gitlab.png)
 
 ### 3) Setup your GitHub Actions or GitLab workflow yaml file to use the runner and commit your changes.
 
@@ -170,9 +170,9 @@ There are still some limitations to be solved at this stage:
   limiting the possibilities with preemptible instances (also known as spot
   instances).
 
-We’re working on both these issues
-([#161](https://github.com/iterative/cml/issues/161)
-[#174](https://github.com/iterative/cml/issues/174)
+We’re working on these issues (see issues
+[#161](https://github.com/iterative/cml/issues/161),
+[#174](https://github.com/iterative/cml/issues/174), and
 [#208](https://github.com/iterative/cml/issues/208)) both in terms of CML and
 DVC capabilities. So keep watching this space for updates!
 
