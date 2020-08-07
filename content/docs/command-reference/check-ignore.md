@@ -118,7 +118,7 @@ file1
 file2
 ```
 
-It can also be used in a Unix pipeline as a component. 
+It can also be used as a component of a POSIX pipe:
 
 ```dvc
 cat file_list | dvc check-ignore --stdin 
