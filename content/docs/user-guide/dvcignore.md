@@ -13,11 +13,10 @@ similar to `.gitignore` in Git.
 
 ## How does it work?
 
-- You need to create the `.dvcignore` file. It can be placed in the root of the
-  project or inside any subdirectory (see also [remarks](#Remarks) below).
-- Populate it with [patterns](https://git-scm.com/docs/gitignore) that you would
-  like to ignore. You can find useful templates
-  [here](https://github.com/github/gitignore).
+- You need to create a `.dvcignore` file. These can be placed in the root of the
+  project, or in any subdirectory (see the [remarks](#Remarks) below).
+- Populate it with [.gitignore patterns](https://git-scm.com/docs/gitignore).
+  You can find useful templates [here](https://github.com/github/gitignore).
 - Each line should contain only one pattern.
 - During execution of commands that traverse directories, DVC will ignore
   matching paths.
@@ -28,87 +27,95 @@ Ignored files will not be saved in <abbr>cache</abbr>, they will be non-existent
 for DVC. It's worth to remember that, especially when ignoring files inside
 DVC-handled directories.
 
-**It is crucial to understand, that DVC might remove ignored files upon
-`dvc run` or `dvc repro`. If they are not produced by a
-[pipeline](/doc/command-reference/dag) [stage](/doc/command-reference/run), they
-can be deleted permanently.**
+⚠️ Important! Note that `dvc run` and `dvc repro` might remove ignored files. If
+they are not produced by a pipeline [stage](/doc/command-reference/run), they
+can be lost permanently.
 
-Keep in mind, that when you add to `.dvcignore` entries that affect one of the
-existing <abbr>outputs</abbr>, its status will change and DVC will behave as if
-that affected files were deleted.
+Keep in mind, that when you add `.dvcignore` patterns that affect an existing
+<abbr>output</abbr>, its status will change and DVC will behave as if that
+affected files were deleted.
+
+💡 Note that you can use the `dvc check-ignore` command to check whether given
+files or directories are ignored by the patterns in a `.dvcignore` file.
 
 If DVC finds a `.dvcignore` file inside a dependency or output directory, it
 raises an error. Ignoring files inside such directories should be handled from a
 `.dvcignore` in higher levels of the project tree.
 
-## Syntax
-
-The same as for [`.gitignore`](https://git-scm.com/docs/gitignore).
-
 ## Examples
 
-Let's see what happens when we add a file to `.dvcignore`.
+Let's see what happens when we add a file to `.dvcignore`:
 
 ```dvc
 $ mkdir data
-$ echo data1 >> data/data1
-$ echo data2 >> data/data2
-$ tree .
-
+$ echo 1 > data/data1
+$ echo 2 > data/data2
+$ tree
 .
 └── data
     ├── data1
     └── data2
 ```
 
-We created the `data/` directory with two files. Let's ignore one of them, and
-track the directory with DVC.
+We created the `data/` directory with two data files. Let's ignore one of them,
+and double check that it's being ignored by DVC:
 
 ```dvc
 $ echo data/data1 >> .dvcignore
 $ cat .dvcignore
-
 data/data1
-
-$ dvc add data
-
-$ tree .dvc/cache
-
-.dvc/cache
-├── 54
-│   └── 40cb5e4c57ab54af68127492334a23.dir
-└── ed
-    └── c3d3797971f12c7f5e1d106dd5cee2
+$ dvc check-ignore data/*
+data/data1
 ```
 
-Only the hash values of a directory (`data/`) and one file have been
-<abbr>cached</abbr>. This means that `dvc add` ignored one of the files
-(`data1`).
+> Refer to `dvc check-ignore` for more details on that command.
+
+## Example: Skip specific files when adding directories
+
+Let's now track the directory with `dvc add`, and see what happens in the
+<abbr>cache</abbr>:
+
+```dvc
+$ dvc add data
+...
+$ tree .dvc/cache
+.dvc/cache
+├── 26
+│   └── ab0db90d72e28ad0ba1e22ee510510
+└── ad
+    └── 8b0ddcf133a6e5833002ce28f97c5a.dir
+$ md5 data/*
+b026324c6904b2a9cb4b88d6d61c81d1  data/data1
+26ab0db90d72e28ad0ba1e22ee510510  data/data2
+```
+
+Only the cache entries of the `data/` directory itself and one file have been
+stored. Checking the hash value of the data files manually, we can see that
+`data2` was cached. This means that `dvc add` did ignore `data1`.
 
 > Refer to
 > [Structure of cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-the-cache-directory)
 > for more info.
 
+## Example: Ignore file state changes
+
 Now, let's modify file `data1` and see if it affects `dvc status`.
 
 ```dvc
 $ dvc status
-
 Data and pipelines are up to date.
 
-$ echo "123" >> data/data1
+$ echo "2345" >> data/data1
 $ dvc status
-
 Data and pipelines are up to date.
 ```
 
-`dvc status` also ignores `data1`. The same modification on a tracked file will
-produce a different output:
+`dvc status` ignores `data1`. Modifications on a tracked file produce a
+different output:
 
 ```dvc
-$ echo "123" >> data/data2
+$ echo "345" >> data/data2
 $ dvc status
-
 data.dvc:
 	changed outs:
 		modified:           data
