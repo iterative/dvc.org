@@ -162,6 +162,10 @@
         ]
       },
       {
+        "label": "check-ignore",
+        "slug": "check-ignore"
+      },
+      {
         "label": "checkout",
         "slug": "checkout"
       },
