@@ -224,7 +224,7 @@ must explicitly set the `endpointurl` in the configuration:
 For example:
 
 ```dvc
-$ dvc remote add myremote s3://path/to/dir
+$ dvc remote add -d myremote s3://path/to/dir
 $ dvc remote modify myremote endpointurl \
                     https://object-storage.example.com
 ```
@@ -232,9 +232,9 @@ $ dvc remote modify myremote endpointurl \
 S3 remotes can also be configured entirely via environment variables:
 
 ```dvc
-$ export AWS_ACCESS_KEY_ID="<my-access-key>"
-$ export AWS_SECRET_ACCESS_KEY="<my-secret-key>"
-$ dvc remote add myremote "s3://bucket/myremote"
+$ export AWS_ACCESS_KEY_ID='<my-access-key>'
+$ export AWS_SECRET_ACCESS_KEY='<my-secret-key>'
+$ dvc remote add -d myremote 's3://bucket/myremote'
 ```
 
 For more information about the variables DVC supports, please visit
@@ -249,14 +249,14 @@ For more information about the variables DVC supports, please visit
 - `url` - remote location URL.
 
   ```dvc
-  $ dvc remote modify myremote url "azure://my-container-name/path"
+  $ dvc remote modify myremote url 'azure://my-container-name/path'
   ```
 
 - `connection_string` - connection string.
 
   ```dvc
   $ dvc remote modify --local myremote connection_string \
-                              "my-connection-string"
+                              'my-connection-string'
   ```
 
 > The connection string contains sensitive user info. Therefore, it's safer to
@@ -399,13 +399,13 @@ more information.
 
   ```dvc
   $ dvc remote modify \
-        myremote credentialpath "/home/.../project-XXXXXXX.json"
+        myremote credentialpath '/home/.../project-XXXXXXX.json'
   ```
 
   Alternatively, the `GOOGLE_APPLICATION_CREDENTIALS` env var can be set:
 
   ```dvc
-  $ export GOOGLE_APPLICATION_CREDENTIALS=".../project-XXXXXXX.json"
+  $ export GOOGLE_APPLICATION_CREDENTIALS='.../project-XXXXXXX.json'
   ```
 
 </details>
