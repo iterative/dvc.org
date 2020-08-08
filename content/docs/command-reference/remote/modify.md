@@ -58,6 +58,19 @@ manual editing could be used to change the configuration.
 
 The following config options are available for all remote types:
 
+- `url` - The remote location URL can always be modified. This is how DVC
+  determines what type of remote it is, and thus which other parameters can be
+  modified. Here are some examples:
+
+  ```dvc
+  $ dvc remote modify s3remote url s3://bucket/key
+  $ dvc remote modify gdremote url \
+                      gdrive://0AIac4JZqHhKmUk9PDA/dvcstore
+  $ dvc remote modify shremote url \
+                      ssh://user@example.com:1234/absolute/path
+  $ dvc remote modify fsremote url /home/users/me/dvcstore
+  ```
+
 - `verify` - upon downloading <abbr>cache</abbr> files (`dvc pull`, `dvc fetch`)
   DVC will recalculate the file hashes upon download (e.g. `dvc pull`) to make
   sure that these haven't been modified, or corrupted during download. It may
@@ -120,12 +133,6 @@ these settings, you could use the following options:
 
   ```dvc
   $ dvc remote modify myremote secret_access_key my-secret_access_key
-  ```
-
-- `url` - remote location URL:
-
-  ```dvc
-  $ dvc remote modify myremote url s3://bucket/remote
   ```
 
 - `use_ssl` - whether or not to use SSL. By default, SSL is used
@@ -246,12 +253,6 @@ For more information about the variables DVC supports, please visit
 
 ### Click for Microsoft Azure Blob Storage
 
-- `url` - remote location URL.
-
-  ```dvc
-  $ dvc remote modify myremote url 'azure://my-container-name/path'
-  ```
-
 - `connection_string` - connection string.
 
   ```dvc
@@ -275,14 +276,6 @@ For more information on configuring Azure Storage connection strings, visit
 Please see
 [Setup a Google Drive DVC Remote](/doc/user-guide/setup-google-drive-remote) for
 a full guide on using Google Drive as DVC remote storage.
-
-- `url` - remote location URL. See the
-  [possible formats](/doc/user-guide/setup-google-drive-remote#url-format).
-
-  ```dvc
-  $ dvc remote modify myremote url \
-                      gdrive://0AIac4JZqHhKmUk9PDA/dvcstore
-  ```
 
 - `gdrive_client_id` - Client ID for authentication with OAuth 2.0 when using a
   [custom Google Client project](/doc/user-guide/setup-google-drive-remote#using-a-custom-google-cloud-project).
@@ -372,12 +365,6 @@ more information.
 
 ### Click for Google Cloud Storage
 
-- `url` - remote location URL.
-
-  ```dvc
-  $ dvc remote modify myremote url gs://bucket/remote
-  ```
-
 - `projectname` - override or provide a project name to use, if a default one is
   not set.
 
@@ -442,13 +429,6 @@ more information.
 <details>
 
 ### Click for SSH
-
-- `url` - remote location URL.
-
-  ```dvc
-  $ dvc remote modify myremote url \
-                      ssh://user@example.com:1234/absolute/path
-  ```
 
 - `user` - username to access the remote.
 
@@ -595,24 +575,6 @@ more information.
 <details>
 
 ### Click for WebDAV
-
-- `url` - remote location URL.
-
-  ```dvc
-  $ dvc remote modify myremote \
-        url webdavs://example.com/public.php/webdav
-  ```
-
-  > Note that the location of the WebDAV API endpoint `/public.php/webdav` might
-  > be different for your server.
-
-  If your remote is located in a subfolder of your WebDAV server e.g.
-  `/path/to/dir`, this may be appended to the general `url`:
-
-  ```dvc
-  $ dvc remote modify myremote \
-        url webdavs://example.com/public.php/webdav/path/to/dir
-  ```
 
 - `token` - token for WebDAV server, can be empty in case of using
   `user/password` authentication.
