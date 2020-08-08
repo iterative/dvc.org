@@ -13,7 +13,8 @@ usage: dvc remote add [-h] [--global | --system | --local] [-q | -v]
 
 positional arguments:
   name           Name of the remote
-  url            URL (see supported URLs in the examples below.)
+  url            Remote location.
+                 See full list of supported URLs below.
 ```
 
 ## Description
