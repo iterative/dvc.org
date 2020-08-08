@@ -24,27 +24,26 @@ are similar to `git pull` and `git push`, respectively.
 
 [Data sharing](/doc/use-cases/sharing-data-and-model-files) across environments
 and preserving data versions (input datasets, intermediate results, models,
-[metrics](/doc/command-reference/metrics), etc.) remotely are the most common
-use cases for these commands.
+[metrics](/doc/command-reference/metrics), etc) remotely are the most common use
+cases for these commands.
 
 The `dvc pull` command allows us to download data from
 [remote storage](/doc/command-reference/remote) and place it in the
 <abbr>workspace</abbr>. `dvc pull` has the same effect as running `dvc fetch`
-and `dvc checkout` immediately after that.
+and `dvc checkout`.
+
+The default remote is used (see `dvc config core.remote`) unless the `--remote`
+option is used. See `dvc remote` for more information on how to configure a
+remote.
 
 Without arguments, it downloads all files and directories missing from the
-workspace, found as <abbr>outputs</abbr> in the stages (in `dvc.lock`) or `.dvc`
+project, found as <abbr>outputs</abbr> in the stages (in `dvc.lock`) or `.dvc`
 files present in the workspace (the `--all-branches` and `--all-tags` enable
 using multiple workspace versions).
 
 The `targets` given to this command (if any) limit what to pull. It accepts
-paths to tracked files or directories (even if such paths are within a directory
-[tracked as a whole](/doc/command-reference/add#tracking-directories)), `.dvc`
-files, or stage names (found in `dvc.lock`).
-
-The `dvc pull` command requires a remote storage. The default remote is used
-(see `dvc config core.remote`) unless the `--remote` option is used. See
-`dvc remote` for more information on how to configure a remote.
+paths to tracked files or directories (including paths inside tracked
+directories), `.dvc` files, or stage names (found in `dvc.yaml`).
 
 After the data is in the cache, `dvc pull` uses OS-specific mechanisms like
 reflinks or hardlinks to put it in the workspace, trying to avoid copying. See
@@ -94,11 +93,10 @@ It can be used to see what files `dvc pull` would download.
   repository into the local run cache. A `dvc repro <stage_name>` is necessary
   to checkout these files into the workspace and update the `dvc.lock` file.
 
-- `-j <number>`, `--jobs <number>` - number of threads to run simultaneously to
-  handle the downloading of files from the remote. The default value is
-  `4 * cpu_count()`. For SSH remotes, the default is just `4`. Using more jobs
-  may improve the total download speed if a combination of small and large files
-  are being fetched.
+- `-j <number>`, `--jobs <number>` - parallelism level for DVC to download data
+  from remote storage. This only applies when the `--cloud` option is used, or a
+  `--remote` is given. The default value is `4 * cpu_count()`. For SSH remotes,
+  the default is `4`. Using more jobs may improve the overall transfer speed.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -126,9 +124,6 @@ $ cd example-get-started
 ```
 
 </details>
-
-The workspace looks almost like in this
-[pipeline setup](/doc/tutorials/pipelines):
 
 ```dvc
 .
@@ -165,17 +160,9 @@ $ dvc pull train.dvc
 > Please delete the `.dvc/cache` directory first (with `rm -Rf .dvc/cache`) to
 > follow this example if you tried the previous ones.
 
-Our [pipeline](/doc/command-reference/pipeline) has been setup with these
-[stages](/doc/command-reference/run):
-
-```dvc
-$ dvc pipeline show evaluate.dvc
-data/data.xml.dvc
-prepare.dvc
-featurize.dvc
-train.dvc
-evaluate.dvc
-```
+Our [pipeline](/doc/command-reference/dag) has been setup with these
+[stages](/doc/command-reference/run): `prepare`, `featurize`, `train`,
+`evaluate`.
 
 Imagine the [remote storage](/doc/command-reference/remote) has been modified
 such that the data in some of these stages should be updated in the
@@ -193,7 +180,7 @@ One could do a simple `dvc pull` to get all the data, but what if you only want
 to retrieve part of the data?
 
 ```dvc
-$ dvc pull --with-deps featurize.dvc
+$ dvc pull --with-deps featurize
 
 ... Use the partial update, then pull the remaining data:
 

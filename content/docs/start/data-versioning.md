@@ -43,7 +43,7 @@ easily versioned like source code with Git, as a placeholder for the original
 data (which gets listed in `.gitignore`):
 
 ```dvc
-$ git add data/.gitignore data/data.xml.dvc
+$ git add data/data.xml.dvc data/.gitignore
 $ git commit -m "Add raw data"
 ```
 
@@ -232,7 +232,7 @@ $ git commit data/data.xml.dvc -m "Revert dataset updates"
 Yes, DVC is technically even not a version control system! `.dvc` files content
 defines data file versions. Git itself serves as the version control system. DVC
 in turn creates these `.dvc` files, updates them, and synchronizes DVC-tracked
-data in the workspace efficiently to match them.
+data in the <abbr>workspace</abbr> efficiently to match them.
 
 ## Large datasets versioning
 

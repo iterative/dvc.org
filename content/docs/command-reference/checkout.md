@@ -1,7 +1,7 @@
 # checkout
 
-Update data files and directories in the <abbr>workspace</abbr> based on current
-DVC-files.
+Update DVC-tracked files and directories in the <abbr>workspace</abbr> based on
+current `dvc.lock` and `.dvc` files.
 
 ## Synopsis
 
@@ -16,35 +16,32 @@ positional arguments:
 
 ## Description
 
-Synchronizes the workspace data with all the
-[tracked](/doc/command-reference/add) files and directories specified in the
-present `dvc.lock` and `.dvc` files, which act as pointers to corresponding
-<abbr>cached</abbr> data contents.
+This command is usually needed after `git checkout`, `git clone`, or any other
+operation that changes the current `dvc.lock` or `.dvc` files. It restores the
+corresponding versions of the DVC-tracked files and directories from the
+<abbr>cache</abbr> to the workspace.
 
-The `targets` given to this command (if any) limit which files to checkout. It
-accepts paths to tracked files or directories (even if such paths are within a
-directory
-[tracked as a whole](/doc/command-reference/add#tracking-directories)), `.dvc`
-files, or stage names (found in `dvc.lock`).
+The `targets` given to this command (if any) limit what to checkout. It accepts
+paths to tracked files or directories (including paths inside tracked
+directories), `.dvc` files, or stage names (found in `dvc.yaml`).
 
-`dvc checkout` is useful, for example, when using Git in the
-<abbr>project</abbr>, after `git clone`, `git checkout`, or any other operation
-that changes the DVC files in the <abbr>workspace</abbr>.
+The execution of `dvc checkout` does the following:
+
+- Checks `dvc.lock` and `.dvc` files to compare the hash values of their
+  <abbr>outputs</abbr> against the actual files or directories in the
+  <abbr>workspace</abbr> (similar to `dvc status`).
+
+  > Stage outputs should be defined in `dvc.yaml`. If found there but not in
+  > `dvc.lock`, they'll be skipped, with a warning.
+
+- Missing data files or directories are restored from the cache. Those that
+  don't match with `dvc.lock` or `.dvc` files are removed. See options `--force`
+  and `--relink`. A list of the changes done is printed.
 
 💡 For convenience, a Git hook is available to automate running `dvc checkout`
 after `git checkout`. See the
 [Automating example](#example-automating-dvc-checkout) below or `dvc install`
 for more details.
-
-The execution of `dvc checkout` does the following:
-
-- Scans the appropriate `dvc.lock` and `.dvc` files, to compare the hash values
-  of their <abbr>outputs</abbr> against the actual files or directories in the
-  workspace (similar to `dvc status`).
-
-- Missing data files or directories are restored from the cache. Those that
-  don't match with any DVC-file are removed. See options `--force` and
-  `--relink`. A list of the changes done is printed.
 
 By default, this command tries not make copies of cached files in the workspace,
 using reflinks instead when supported by the file system (refer to
@@ -67,9 +64,9 @@ such a case, `dvc checkout` prints a warning message. It also lists the partial
 progress made by the checkout.
 
 There are two methods to restore a file missing from the cache, depending on the
-situation. In some cases a pipeline must be reproduced (using `dvc repro`) to
-regenerate its outputs (see also `dvc dag`). In other cases the cache can be
-pulled from remote storage using `dvc pull`.
+situation. In some cases the cache can be pulled from
+[remote storage](/doc/command-reference/remote) using `dvc pull`. In other cases
+the pipeline must be reproduced (using `dvc repro`) to regenerate its outputs.
 
 ## Options
 
@@ -157,8 +154,8 @@ bigrams-experiment      <- Uses bigrams to improve the model
 ```
 
 We can now run `dvc checkout` to update the most recent `model.pkl`, `data.xml`,
-and any other files tracked by DVC. The model file hash, `ab349c2...`, is saved
-in the `dvc.lock` file, for example, so it can be confirmed with:
+and any other files tracked by DVC. The model file hash (`ab349c2...`) is saved
+in `dvc.lock`, and it can be confirmed with:
 
 ```dvc
 $ dvc checkout
@@ -175,7 +172,7 @@ automatically adjusts the repo files, by replacing, adding, or deleting them as
 necessary.
 
 ```dvc
-$ git checkout baseline-experiment  # Commit where model was created
+$ git checkout baseline-experiment  # Git commit where model was created
 ```
 
 Let's check the hash value of `model.pkl` in `dvc.lock` now:
@@ -188,8 +185,8 @@ outs:
 
 But if you check the MD5 of `model.pkl`, the file hash is still the same
 (`ab349c2...`). This is because `git checkout` changed `dvc.lock` and other DVC
-files, but it did nothing with `model.pkl`. Git doesn't track this file, DVC
-does, so we must do this instead:
+files, but it did nothing with `model.pkl`, or any other DVC-tracked files/dirs.
+Since Git doesn't track them, we must do this:
 
 ```dvc
 $ dvc checkout
@@ -200,8 +197,8 @@ $ md5 model.pkl
 MD5 (model.pkl) = 98af33933679a75c2a51b953d3ab50aa
 ```
 
-DVC went through `dvc.lock` and adjusted the current set of <abbr>outputs</abbr>
-to match the `outs` in it.
+DVC went through the stages (in `dvc.yaml`) and adjusted the current set of
+<abbr>outputs</abbr> to match the `outs` in the corresponding `dvc.lock`.
 
 ## Example: Specific files or directories
 
@@ -216,9 +213,9 @@ $ git checkout baseline-experiment -- dvc.lock
 $ dvc checkout model.pkl  # Get previous model file only.
 ```
 
-Note that you can checkout data within directories tracked as a whole. For
-example, the `featurize` stage has the entire `data/features` directory as
-output, but we can just get this:
+Note that you can checkout data within directories tracked. For example, the
+`featurize` stage has the entire `data/features` directory as output, but we can
+just get this:
 
 ```dvc
 $ dvc checkout data/features/test.pkl
@@ -249,5 +246,5 @@ MD5 (model.pkl) = ab349c2b5fa2a0f66d6f33f94424aebe
 ```
 
 Previously this took two commands, `git checkout` followed by `dvc checkout`. We
-can now skip the second one, which is automatically run for us. The workspace is
-automatically synchronized accordingly.
+can now skip the second one, which is automatically run for us. The workspace
+files are automatically updated accordingly.

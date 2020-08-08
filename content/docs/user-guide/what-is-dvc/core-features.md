@@ -4,7 +4,7 @@
   interface and Git workflow.
 
 - It makes data science projects **reproducible** by creating lightweight
-  [pipelines](/doc/command-reference/pipeline) using implicit dependency graphs.
+  [pipelines](/doc/command-reference/dag) using implicit dependency graphs.
 
 - **Large data file versioning** works by creating special files in your Git
   repository that point to the <abbr>cache</abbr>, typically stored on a local

@@ -82,7 +82,7 @@ Let's say you are cleaning up raw data for later stages:
 $ dvc add raw
 $ dvc run -n clean_data -d raw -o clean ./cleanup.py raw clean
   # The data is cached in the shared location.
-$ git add raw.dvc dvc.yaml dvc.lock
+$ git add raw.dvc dvc.yaml dvc.lock .gitignore
 $ git commit -m "cleanup raw data"
 $ git push
 ```
@@ -91,7 +91,7 @@ Your colleagues can [checkout](/doc/command-reference/checkout) the
 <abbr>project</abbr> data (from the shared <abbr>cache</abbr>), and have both
 `raw` and `clean` data files appear in their workspace without moving anything
 manually. After this, they could decide to continue building this
-[pipeline](/doc/command-reference/pipeline) and process the clean data:
+[pipeline](/doc/command-reference/dag) and process the clean data:
 
 ```dvc
 $ git pull

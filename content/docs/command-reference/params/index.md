@@ -24,8 +24,8 @@ dependencies: _parameters_. Parameters are defined using the the `-p`
 
 In contrast to a regular <abbr>dependency</abbr>, a parameter is not a file (or
 directory). Instead, it consists of a _parameter name_ (or key) to find inside a
-YAML or JSON _parameters file_. Multiple parameter dependencies can be specified
-from one or more parameters files.
+YAML, JSON, or TOML _parameters file_. Multiple parameter dependencies can be
+specified from one or more parameters files.
 
 The default parameters file name is `params.yaml`. Parameters should be
 organized as a tree hierarchy inside, as DVC will locate param names by their
@@ -91,8 +91,8 @@ $ dvc run -n train -d users.csv -o model.pkl \
           python train.py
 ```
 
-> Note that we could use the same parameter addressing with JSON parameters
-> files.
+> Note that we could use the same parameter addressing with JSON or TOML
+> parameters files.
 
 The `train.py` script will have some code to parse the needed parameters. For
 example:

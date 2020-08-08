@@ -38,7 +38,7 @@ each one:
 1. Calculate the file hash.
 2. Move the file contents to the cache (by default in `.dvc/cache`), using the
    file hash to form the cached file path. (See
-   [Structure of cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory)
+   [Structure of cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-the-cache-directory)
    for more details.)
 3. Attempt to replace the file with a link to the cached data (more details on
    file linking further down).
@@ -56,8 +56,8 @@ each one:
 Summarizing, the result is that the target data is replaced by small `.dvc`
 files that can be easily tracked with Git.
 
-To avoid adding files inside a directory accidentally, you can add the
-corresponding [patterns](/doc/user-guide/dvcignore) in a `.dvcignore` file.
+It's possible to prevent files or directories from being added by DVC by adding
+the corresponding patterns in a [`.dvcignore`](/doc/user-guide/dvcignore) file.
 
 By default, DVC tries to use reflinks (see
 [File link types](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
@@ -66,28 +66,33 @@ large files. DVC also supports other link types for use on file systems without
 `reflink` support, but they have to be specified manually. Refer to the
 `cache.type` config option in `dvc config cache` for more information.
 
-### Tracking directories
+### Adding entire directories
 
 A `dvc add` target can be either a file or a directory. In the latter case, a
 `.dvc` file is created for the top of the hierarchy (with default name
-`<dir_name>.dvc`). Every file inside is added to the cache (unless the
-`--no-commit` option is used), but DVC does not produce individual `.dvc` files
-for each file in the entire tree. Instead, the single `.dvc` file references a
-special `.dir` file
-[in the cache](/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory),
-that in turn lists all the added files.
+`<dir_name>.dvc`).
 
-Note that even though a directory is added as a whole and a single `.dvc` file
-is generated for it, individual files or subdirectories can still be used
-separately by other DVC commands. For example, `dvc pull dir_name/path/to/file`
-would [download](/doc/command-reference/pull) that specific file only. This also
-applies to `dvc push`, `dvc checkout`, `dvc import`, among others.
+Every file inside is added to the cache (unless the `--no-commit` option is
+used), but DVC does not produce individual `.dvc` files for each file in the
+entire tree. Instead, the single `.dvc` file references a special JSON file in
+the cache (with `.dir` extension), that in turn points to the added files.
+
+> Refer to
+> [Structure of cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-the-cache-directory)
+> for more info. on `.dir` cache entries.
+
+Note that DVC commands that use tracked data support granular targeting of files
+and directories, even when contained in a parent directory added as a whole.
+Examples: `dvc push`, `dvc pull`, `dvc get`, `dvc import`, etc.
 
 As a rarely needed alternative, the `--recursive` option causes every file in
 the hierarchy to be added individually. A corresponding `.dvc` file will be
 generated for each file in he same location. This may be helpful to save time
 adding several data files grouped in a structural directory, but it's
 undesirable for data directories with a large number of files.
+
+To avoid adding files inside a directory accidentally, you can add the
+corresponding [patterns](/doc/user-guide/dvcignore) to `.dvcignore`.
 
 ## Options
 
@@ -124,11 +129,6 @@ Track a file with DVC:
 
 ```dvc
 $ dvc add data.xml
-...
-
-To track the changes with git, run:
-
-        git add data.xml.dvc .gitignore
 ```
 
 As indicated above, a `.dvc` file has been created for `data.xml`. Let's explore
@@ -194,9 +194,8 @@ outs:
     path: pics
 ```
 
-> Refer to
-> [Structure of cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory)
-> for more info.
+> Refer to [Adding entire directories](#adding-entire-directories) for more
+> info.
 
 This allows us to treat the entire directory structure as a single <abbr>data
 artifact</abbr>. For example, you can pass the whole directory tree as a

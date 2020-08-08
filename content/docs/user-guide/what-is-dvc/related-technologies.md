@@ -118,7 +118,7 @@ Luigi, etc.
 
 - DVC does not add any hooks to the Git repo by default. To checkout data files,
   the `dvc checkout` command has to be run after each `git checkout` and
-  `git clone` command. It gives more independence on managing data and code
+  `git clone` command. It gives more independence for managing data and code
   separately. Hooks could be configured to make workflows simpler.
 
 - DVC attempts to use reflinks\* and has other

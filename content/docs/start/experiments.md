@@ -100,7 +100,7 @@ parameters.
 It's pretty common for data science pipelines to include configuration files
 that define adjustable parameters to train a model, do pre-processing, etc. DVC
 provides a mechanism for stages to depend on the values of specific sections of
-such a config file (YAML or JSON formats are supported).
+such a config file (YAML, JSON and TOML formats are supported).
 
 Luckily, we should already have a stage with
 [parameters](/doc/command-reference/params) in `dvc.yaml`:

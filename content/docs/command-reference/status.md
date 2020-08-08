@@ -1,7 +1,7 @@
 # status
 
 Show changes in the <abbr>project</abbr>
-[pipelines](/doc/command-reference/pipeline), as well as file mismatches either
+[pipelines](/doc/command-reference/dag), as well as file mismatches either
 between the <abbr>cache</abbr> and <abbr>workspace</abbr>, or between the cache
 and remote storage.
 
@@ -32,15 +32,15 @@ _remote_ mode is triggered by using the `--cloud` or `--remote` options:
 | remote | `--remote` | Comparisons are made between the cache, and the given remote. Remote storage is defined using the `dvc remote` command.     |
 | remote | `--cloud`  | Comparisons are made between the cache, and the default remote (typically defined with `dvc remote --default`).             |
 
-Without arguments, this command scans all `dvc.lock` and `.dvc` files to compare
-the hash values of their <abbr>outputs</abbr> against the actual data files or
-directories in the workspace (the `--all-branches` and `--all-tags` options
-enable using multiple workspace versions).
+Without arguments, this command checks all stages (defined in `dvc.yaml`) and
+`.dvc` files, and compares the hash values of their <abbr>outputs</abbr> (found
+in `dvc.lock` for stages) against the actual data files or directories in the
+workspace. The `--all-branches`, `--all-tags`, and `--all-commits` options
+enable checking data for multiple Git commits.
 
-The `targets` given to this command (if any) limit what to check. It accepts
-paths to tracked files or directories (even if such paths are within a directory
-[tracked as a whole](/doc/command-reference/add#tracking-directories)), `.dvc`
-files, or stage names (found in `dvc.lock`).
+The `targets` given to this command (if any) limit what to check. Paths to
+tracked files or directories (including paths inside tracked directories),
+`.dvc` files, or stage names (found in `dvc.yaml`) are accepted.
 
 If no differences are detected, `dvc status` prints
 `Data and pipelines are up to date.` If differences are detected by
@@ -59,9 +59,9 @@ file name or hash is shown, along with a _state description_, as detailed below:
   value set (see `--always-changed` option in `dvc run`).
 
 - _changed deps_ or _changed outs_ means that there are changes in dependencies
-  or outputs tracked by the stage in `dvc.lock` or `.dvc` file. Depending on the
-  use case, commands like `dvc commit`, `dvc repro`, or `dvc run` can be used to
-  update the file. Possible states are:
+  or outputs tracked by the stage or `.dvc` file. Depending on the use case,
+  commands like `dvc commit`, `dvc repro`, or `dvc run` can be used to update
+  the file. Possible states are:
 
   - _new_: An <abbr>output</abbr> is found in the <abbr>workspace</abbr>, but
     there is no corresponding file hash saved in the `dvc.lock` or `.dvc` file
@@ -130,9 +130,11 @@ workspace) is different from remote storage. Bringing the two into sync requires
 - `-r <name>`, `--remote <name>` - specifies which remote storage (see
   `dvc remote list`) to compare against. Implies `--cloud`.
 
-- `-j <number>`, `--jobs <number>` - specifies the number of jobs DVC can use to
-  retrieve information from remote servers. This only applies when the `--cloud`
-  option is used or a remote is given.
+- `-j <number>`, `--jobs <number>` - parallelism level for DVC to retrieve
+  information from remote storage. This only applies when the `--cloud` option
+  is used, or a `--remote` is given. The default value is `4 * cpu_count()`. For
+  SSH remotes, the default is `4`. Using more jobs may improve the overall
+  transfer speed.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -184,8 +186,8 @@ dobar
 > In this case, the target `foo.dvc` is a `.dvc` file to track the `foo` file,
 > while `dobar` is the name of a stage defined in `dvc.yaml`.
 
-Note that you can check data within directories tracked as a whole, such as the
-`data/raw` directory (tracked with `data/raw.dvc`):
+Note that you can check data within directories tracked, such as the `data/raw`
+directory (tracked with `data/raw.dvc`):
 
 ```dvc
 $ tree data
@@ -242,7 +244,7 @@ new:      data/matrix-test.p
 The output shows where the location of the remote storage is, as well as any
 differences between the <abbr>cache</abbr> and `storage` remote.
 
-## Example: Imported data needs update
+## Example: Check imported data
 
 Let's import a data file (`data.csv`) from a different <abbr>DVC repository
 </abbr> into our current project using `dvc import`.

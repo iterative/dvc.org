@@ -17,22 +17,22 @@ positional arguments:
 
 ## Description
 
-`dvc fetch` downloads DVC-tracked files from remote storage into the cache of
-the project (without placing them in the <abbr>workspace</abbr>). This makes
-them available for linking (or copying) into the workspace (refer to
-[dvc config cache.type](/doc/command-reference/config#cache)).
+Downloads DVC-tracked files from remote storage into the cache of the project
+(without placing them in the <abbr>workspace</abbr>, like `dvc pull` would).
+This makes them available for linking (or copying) into the workspace (refer to
+[`dvc config cache.type`](/doc/command-reference/config#cache)).
 
-Without arguments, this ensures that all the files needed for all stages (in
-`dvc.lock`) and `.dvc` files in the workspace exist in the cache (the
-`--all-branches` and `--all-tags` enable using multiple workspace versions).
+Without arguments, `dvc fetch` ensures that the files specified in all
+`dvc.lock` and `.dvc` files in the workspace exist in the cache. The
+`--all-branches`, `--all-tags`, and `--all-commits` options enable fetching data
+for multiple Git commits.
 
 The `targets` given to this command (if any) limit what to fetch. It accepts
-paths to tracked files or directories (even if such paths are within a directory
-[tracked as a whole](/doc/command-reference/add#tracking-directories)), `.dvc`
-files, or stage names (found in `dvc.lock`).
+paths to tracked files or directories (including paths inside tracked
+directories), `.dvc` files, or stage names (found in `dvc.yaml`).
 
-Along with `dvc checkout`, fetching performed automatically by `dvc pull` (when
-the data is not already in the <abbr>cache</abbr>):
+Fetching is performed automatically by `dvc pull` (when the data is not already
+in the <abbr>cache</abbr>), along with `dvc checkout`:
 
 ```
 Controlled files             Commands
@@ -51,22 +51,19 @@ project's cache                  ++ | dvc pull |
  workspace
 ```
 
-Fetching is useful when first checking out a <abbr>DVC project</abbr> for
-example, to get any files tracked by DVC that already exist in remote storage
-(see `dvc push`) to the local cache. Refer to `dvc remote` for more information
-on DVC remotes.
+Here are some scenarios in which `dvc fetch` is useful, instead of pulling:
 
-The default remote is used (see `dvc config core.remote`) unless the `--remote`
-option is used.
+- After checking out a fresh copy of a <abbr>DVC repository</abbr>, to get
+  DVC-tracked data from multiple project branches or tags into your machine.
+- To use comparison commands across different Git commits, for example
+  `dvc metrics show` with its `--all-branches` option.
+- If you want to avoid [linking](/doc/user-guide/large-dataset-optimization)
+  files from the cache, or keep the <abbr>workspace</abbr> clean for any other
+  reason.
 
-`dvc fetch`, `dvc pull`, and `dvc push` are related in that these 3 commands
-perform data synchronization among local and remote storage. The specific way in
-which the set of files to push/fetch/pull is determined begins with calculating
-file hashes when these are [added](/doc/command-reference/add) with DVC. File
-hash values are stored in the corresponding `dvc.lock` or `.dvc` files
-(typically versioned with Git). Only `dvc.lock` or `.dvc` files currently in the
-workspace are considered by `dvc fetch` (unless the `-a` or `-T` options are
-used).
+The default remote is used (see
+[`dvc config core.remote`](/doc/command-reference/config#core)) unless the
+`--remote` option is used.
 
 ## Options
 
@@ -87,11 +84,10 @@ used).
   directory and its subdirectories for `dvc.yaml` and `.dvc` files to inspect.
   If there are no directories among the `targets`, this option is ignored.
 
-- `-j <number>`, `--jobs <number>` - number of threads to run simultaneously to
-  handle the downloading of files from the remote. The default value is
-  `4 * cpu_count()`. For SSH remotes, the default is just `4`. Using more jobs
-  may improve the total download speed if a combination of small and large files
-  are being fetched.
+- `-j <number>`, `--jobs <number>` - parallelism level for DVC to download data
+  from remote storage. This only applies when the `--cloud` option is used, or a
+  `--remote` is given. The default value is `4 * cpu_count()`. For SSH remotes,
+  the default is `4`. Using more jobs may improve the overall transfer speed.
 
 - `-a`, `--all-branches` - fetch cache for all Git branches instead of just the
   current workspace. This means DVC may download files needed to reproduce
@@ -178,7 +174,7 @@ $ tree .dvc/cache
 Note that the `.dvc/cache` directory was created and populated.
 
 > Refer to
-> [Structure of cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory)
+> [Structure of cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-the-cache-directory)
 > for more info.
 
 Used without arguments (as above), `dvc fetch` downloads all files and
@@ -217,9 +213,9 @@ Cache entries for the `data/prepared` directory (<abbr>output</abbr> of the
 `prepare` target), as well as the actual `test.tsv` and `train.tsv` files, were
 downloaded. Their hash values are shown above.
 
-Note that you can fetch data within directories tracked as a whole. For example,
-the `featurize` stage has the entire `data/features` directory as output, but we
-can just get this:
+Note that you can fetch data within directories tracked. For example, the
+`featurize` stage has the entire `data/features` directory as output, but we can
+just get this:
 
 ```dvc
 $ dvc fetch data/features/test.pkl

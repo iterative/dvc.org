@@ -153,7 +153,7 @@ $ dvc add model.h5
 Let's commit the current state:
 
 ```dvc
-$ git add .gitignore model.h5.dvc data.dvc metrics.csv
+$ git add data.dvc model.h5.dvc metrics.csv .gitignore
 $ git commit -m "First model, trained with 1000 images"
 $ git tag -a "v1.0" -m "model v1.0, 1000 images"
 ```
@@ -232,7 +232,7 @@ $ dvc add model.h5
 Let's commit the second version:
 
 ```dvc
-$ git add model.h5.dvc data.dvc metrics.csv
+$ git add data.dvc model.h5.dvc metrics.csv
 $ git commit -m "Second model, trained with 2000 images"
 $ git tag -a "v2.0" -m "model v2.0, 2000 images"
 ```
@@ -309,11 +309,13 @@ When you have a script that takes some data as an input and produces other data
 
 > If you tried the commands in the
 > [Switching between workspace versions](#switching-between-workspace-versions)
-> section, go back to the master branch code and data with:
+> section, go back to the master branch code and data, and remove the
+> `model.h5.dvc` file with:
 >
 > ```dvc
 > $ git checkout master
 > $ dvc checkout
+> $ dvc remove model.h5.dvc
 > ```
 
 ```dvc
@@ -354,14 +356,14 @@ a monolithic way. It uses the `save_bottleneck_feature` function to
 pre-calculate the bottom, "frozen" part of the net every time it is run.
 Features are written into files. The intention was probably that the
 `save_bottleneck_feature` can be commented out after the first run, but it's not
-very convenient having to remember to do si it every time the dataset changes.
+very convenient having to remember to do so every time the dataset changes.
 
-Here's where the [pipelines](/doc/command-reference/pipeline) feature of DVC
-comes in handy. We touched on it briefly when we described `dvc run` and
-`dvc repro`. The next step would be splitting the script into two parts and
-utilizing pipelines. See [this example](/doc/tutorials/pipelines) to get
-hands-on experience with pipelines, and try to apply it here. Don't hesitate to
-join our [community](/chat) and ask any questions!
+Here's where the [pipelines](/doc/command-reference/dag) feature of DVC comes in
+handy. We touched on it briefly when we described `dvc run` and `dvc repro`. The
+next step would be splitting the script into two parts and utilizing pipelines.
+See [Data Pipelines](/doc/start/data-pipelines) to get hands-on experience with
+pipelines, and try to apply it here. Don't hesitate to join our
+[community](/chat) and ask any questions!
 
 Another detail we only brushed upon here is the way we captured the
 `metrics.csv` metric file with the `-M` option of `dvc run`. Marking this

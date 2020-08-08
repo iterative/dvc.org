@@ -40,7 +40,7 @@ To start using DVC we need to [initialize](/doc/command-reference/init) a
 $ dvc init
 ```
 
-Start tracking the models and images directory with `dvc add`:
+Start tracking the images directory and the model with `dvc add`:
 
 ```dvc
 $ dvc add images
@@ -60,7 +60,7 @@ Untracked files:
     images.dvc
     model.pkl.dvc
 
-$ git add .gitignore images.dvc model.pkl.dvc
+$ git add images.dvc model.pkl.dvc .gitignore
 $ git commit -m "Track images and model with DVC"
 ```
 
