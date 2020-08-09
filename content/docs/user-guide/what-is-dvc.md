@@ -21,9 +21,9 @@ software engineers.
   versioning capabilities.
 
 - **Large [data file](/doc/user-guide/basic-concepts#data-files) versioning** is
-  enabled by creating special files that point to the original data or ML models
-  (stored in the <abbr>cache</abbr> or _remote storage_). These can be easily
-  versioned with Git.
+  enabled by replacing the data with small metafiles (easy to manage with Git).
+  These placeholders point to the original data files, directories, ML models,
+  etc. which can now be stored outside the project (e.g. in cloud storage).
 
 - DVC makes data science projects **reproducible** by creating lightweight
   [pipelines](/doc/user-guide/basic-concepts#data-pipelines) using implicit
