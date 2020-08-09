@@ -51,7 +51,7 @@ changes experiment state.
 An attempt at a data science task. Each one can be performed in a separate Git
 branch or tag, and its states identified by different
 [revisions](https://git-scm.com/docs/revisions). Examples: add a new data
-source, extract new features, change model hyperparameters, etc. DVC doesn't
+source, extract data features, change model hyperparameters, etc. DVC doesn't
 need to recompute the results after a successful merge that integrates an
 experiment into the <abbr>repository</abbr> history.
 
