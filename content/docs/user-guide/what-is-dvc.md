@@ -21,12 +21,21 @@ software engineers.
   versioning capabilities.
 
 - **Large [data file](/doc/user-guide/basic-concepts#data-files) tracking** is
-  enabled, by creating special files that point to the original data (in the
-  <abbr>cache</abbr>). These can be easily versioned with Git.
+  enabled, by creating special files that point to the original data (stored in
+  the <abbr>cache</abbr>). These can be easily versioned with Git.
 
 - DVC makes data science projects **reproducible** by creating lightweight
   [pipelines](/doc/user-guide/basic-concepts#data-pipelines), using implicit
   dependency graphs.
+
+- **Remote storage**: DVC separates the project's code and pipeline
+  configuration (typically in a Git repo) from the data it needs and produces.
+  Multiple providers are supported to push and distribute the cached data
+  [remotely](/doc/command-reference/remote) (Amazon S3, Microsoft Azure Blob
+  Storage, Google Cloud Storage, etc.) This is how data scientists transfer
+  large data files or share a GPU-trained model with others.
+
+  > Remote storage is complementary from the basic features, and never required.
 
 - DVC is **platform agnostic**: It runs on all major operating systems (Linux,
   MacOS, and Windows), and works independently of the programming languages
@@ -39,11 +48,3 @@ software engineers.
 
   > Git servers, as well as SSH and cloud storage providers are supported,
   > however.
-
-- **Cloud storage**: Available addon to the core DVC features. Multiple
-  providers are supported (Amazon S3, Microsoft Azure Blob Storage, Google Cloud
-  Storage, etc.). This is how a data scientist transfers large data files or
-  shares a GPU-trained model with others. Implemented as
-  [remote storage](/doc/command-reference/remote).
-
-  > This complement is separate from DVC itself, and never required.
