@@ -20,13 +20,14 @@ software engineers.
   interface and flow as Git. DVC can also work stand-alone, but without
   versioning capabilities.
 
-- **Large [data file](/doc/user-guide/basic-concepts#data-files) tracking** is
-  enabled, by creating special files that point to the original data (stored in
-  the <abbr>cache</abbr>). These can be easily versioned with Git.
+- **Large [data file](/doc/user-guide/basic-concepts#data-files) versioning** is
+  enabled by creating special files that point to the original data or ML models
+  (stored in the <abbr>cache</abbr> or _remote storage_). These can be easily
+  versioned with Git.
 
 - DVC makes data science projects **reproducible** by creating lightweight
-  [pipelines](/doc/user-guide/basic-concepts#data-pipelines), using implicit
-  dependency graphs.
+  [pipelines](/doc/user-guide/basic-concepts#data-pipelines) using implicit
+  dependency graphs,and codifying the data and artifacts involved.
 
 - **Remote storage**: DVC separates the project's code and pipeline
   configuration (typically in a Git repo) from the data it needs and produces.
@@ -42,9 +43,10 @@ software engineers.
   (Python, R, Julia, shell scripts, etc.) or ML libraries (Keras, Tensorflow,
   PyTorch, Scipy, etc.) used in the <abbr>project</abbr>.
 
-- **Open-source** and **Self-serve**: DVC is
-  [free](https://github.com/iterative/dvc/blob/master/LICENSE) and doesn't
-  require any additional servers or services.
+- **Free** and **Easy to use**: DVC is
+  [open-source](https://github.com/iterative/dvc/blob/master/LICENSE), quick to
+  [install](/doc/install), and doesn't require special infrastructure, nor does
+  it depend on APIS or external services. It's a stand-alone CLI tool.
 
   > Git servers, as well as SSH and cloud storage providers are supported,
   > however.
