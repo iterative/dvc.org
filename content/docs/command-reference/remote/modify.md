@@ -90,19 +90,19 @@ these settings, you could use the following options:
   $ dvc remote modify myremote region us-east-2
   ```
 
-- `profile` - credentials profile name to use to access S3:
+- `profile` - credentials profile name to access S3:
 
   ```dvc
   $ dvc remote modify myremote profile myprofile
   ```
 
-- `credentialpath` - credentials path to use to access S3:
+- `credentialpath` - credentials path to access S3:
 
   ```dvc
   $ dvc remote modify myremote credentialpath /path/to/my/creds
   ```
 
-- `endpointurl` - endpoint URL to use to access S3:
+- `endpointurl` - endpoint URL to access S3:
 
   ```dvc
   $ dvc remote modify myremote endpointurl https://myendpoint.com
@@ -168,21 +168,24 @@ these settings, you could use the following options:
   for specific grantees\*\*. Grantee can read object and its metadata.
 
   ```dvc
-  $ dvc remote modify myremote grant_read id=aws-canonical-user-id,id=another-aws-canonical-user-id
+  $ dvc remote modify myremote grant_read \
+          id=aws-canonical-user-id,id=another-aws-canonical-user-id
   ```
 
 - `grant_read_acp`\* - grants `READ_ACP` permissions at object level access
   control list for specific grantees\*\*. Grantee can read the object's ACP.
 
   ```dvc
-  $ dvc remote modify myremote grant_read_acp id=aws-canonical-user-id,id=another-aws-canonical-user-id
+  $ dvc remote modify myremote grant_read_acp \
+          id=aws-canonical-user-id,id=another-aws-canonical-user-id
   ```
 
 - `grant_write_acp`\* - grants `WRITE_ACP` permissions at object level access
   control list for specific grantees\*\*. Grantee can modify the object's ACP.
 
   ```dvc
-  $ dvc remote modify myremote grant_write_acp id=aws-canonical-user-id,id=another-aws-canonical-user-id
+  $ dvc remote modify myremote grant_write_acp \
+          id=aws-canonical-user-id,id=another-aws-canonical-user-id
   ```
 
 - `grant_full_control`\* - grants `FULL_CONTROL` permissions at object level
@@ -190,7 +193,8 @@ these settings, you could use the following options:
   grant_read_acp + grant_write_acp
 
   ```dvc
-  $ dvc remote modify myremote grant_full_control id=aws-canonical-user-id,id=another-aws-canonical-user-id
+  $ dvc remote modify myremote grant_full_control \
+          id=aws-canonical-user-id,id=another-aws-canonical-user-id
   ```
 
   > \* `grant_read`, `grant_read_acp`, `grant_write_acp` and
@@ -220,16 +224,17 @@ must explicitly set the `endpointurl` in the configuration:
 For example:
 
 ```dvc
-$ dvc remote add myremote s3://path/to/dir
-$ dvc remote modify myremote endpointurl https://object-storage.example.com
+$ dvc remote add -d myremote s3://path/to/dir
+$ dvc remote modify myremote endpointurl \
+                    https://object-storage.example.com
 ```
 
 S3 remotes can also be configured entirely via environment variables:
 
 ```dvc
-$ export AWS_ACCESS_KEY_ID="<my-access-key>"
-$ export AWS_SECRET_ACCESS_KEY="<my-secret-key>"
-$ dvc remote add myremote "s3://bucket/myremote"
+$ export AWS_ACCESS_KEY_ID='<my-access-key>'
+$ export AWS_SECRET_ACCESS_KEY='<my-secret-key>'
+$ dvc remote add -d myremote 's3://bucket/myremote'
 ```
 
 For more information about the variables DVC supports, please visit
@@ -244,13 +249,14 @@ For more information about the variables DVC supports, please visit
 - `url` - remote location URL.
 
   ```dvc
-  $ dvc remote modify myremote url "azure://my-container-name/path"
+  $ dvc remote modify myremote url 'azure://my-container-name/path'
   ```
 
 - `connection_string` - connection string.
 
   ```dvc
-  $ dvc remote modify --local myremote connection_string "my-connection-string"
+  $ dvc remote modify --local myremote connection_string \
+                              'my-connection-string'
   ```
 
 > The connection string contains sensitive user info. Therefore, it's safer to
@@ -274,8 +280,8 @@ a full guide on using Google Drive as DVC remote storage.
   [possible formats](/doc/user-guide/setup-google-drive-remote#url-format).
 
   ```dvc
-  $ dvc remote modify myremote \
-                      url gdrive://0AIac4JZqHhKmUk9PDA/dvcstore
+  $ dvc remote modify myremote url \
+                      gdrive://0AIac4JZqHhKmUk9PDA/dvcstore
   ```
 
 - `gdrive_client_id` - Client ID for authentication with OAuth 2.0 when using a
@@ -393,13 +399,13 @@ more information.
 
   ```dvc
   $ dvc remote modify \
-        myremote credentialpath "/home/.../project-XXXXXXX.json"
+        myremote credentialpath '/home/.../project-XXXXXXX.json'
   ```
 
   Alternatively, the `GOOGLE_APPLICATION_CREDENTIALS` env var can be set:
 
   ```dvc
-  $ export GOOGLE_APPLICATION_CREDENTIALS=".../project-XXXXXXX.json"
+  $ export GOOGLE_APPLICATION_CREDENTIALS='.../project-XXXXXXX.json'
   ```
 
 </details>
@@ -415,13 +421,13 @@ more information.
   $ dvc remote modify myremote oss_endpoint endpoint
   ```
 
-- `oss_key_id` - OSS key ID to use to access a remote.
+- `oss_key_id` - OSS key ID to access the remote.
 
   ```dvc
   $ dvc remote modify myremote --local oss_key_id my-key-id
   ```
 
-- `oss_key_secret` - OSS secret key for authorizing access into a remote.
+- `oss_key_secret` - OSS secret key for authorizing access into the remote.
 
   ```dvc
   $ dvc remote modify myremote --local oss_key_secret my-key-secret
@@ -440,41 +446,43 @@ more information.
 - `url` - remote location URL.
 
   ```dvc
-  $ dvc remote modify myremote url ssh://user@example.com:1234/path/to/remote
+  $ dvc remote modify myremote url \
+                      ssh://user@example.com:1234/absolute/path
   ```
 
-- `user` - username to use to access a remote. The order in which dvc searches
-  for username:
-
-  1. `user` specified in one of the dvc configs;
-  2. `user` specified in the url(e.g. `ssh://user@example.com/path`);
-  3. `user` specified in `~/.ssh/config` for remote host;
-  4. current user;
+- `user` - username to access the remote.
 
   ```dvc
   $ dvc remote modify --local myremote user myuser
   ```
 
-- `port` - port to use to access a remote. The order in which dvc searches for
-  port:
+  The order in which DVC picks the username:
 
-  1. `port` specified in one of the dvc configs;
-  2. `port` specified in the url(e.g. `ssh://example.com:1234/path`);
-  3. `port` specified in `~/.ssh/config` for remote host;
-  4. default ssh port 22;
+  1. `user` parameter set with this command (found in `.dvc/config`);
+  2. User defined in the URL (e.g. `ssh://user@example.com/path`);
+  3. User defined in `~/.ssh/config` for this host (URL);
+  4. Current user
+
+- `port` - port to access the remote.
 
   ```dvc
   $ dvc remote modify myremote port 2222
   ```
 
-- `keyfile` - path to private key to use to access a remote.
+  The order in which DVC decide the port number:
+
+  1. `port` parameter set with this command (found in `.dvc/config`);
+  2. Port defined in the URL (e.g. `ssh://example.com:1234/path`);
+  3. Port defined in `~/.ssh/config` for this host (URL);
+  4. Default SSH port 22
+
+- `keyfile` - path to private key to access the remote.
 
   ```dvc
   $ dvc remote modify myremote keyfile /path/to/keyfile
   ```
 
-- `password` - a private key passphrase or a password to use to use when
-  accessing a remote.
+- `password` - a private key passphrase or a password to access the remote.
 
   ```dvc
   $ dvc remote modify --local myremote password mypassword
@@ -484,8 +492,8 @@ more information.
 > safer to add them with the `--local` option, so they're written to a
 > Git-ignored config file.
 
-- `ask_password` - ask for a private key passphrase or a password to use when
-  accessing a remote.
+- `ask_password` - ask for a private key passphrase or a password to access the
+  remote.
 
   ```dvc
   $ dvc remote modify myremote ask_password true
@@ -509,7 +517,7 @@ more information.
 
 ### Click for HDFS
 
-- `user` - username to use to access a remote.
+- `user` - username to access the remote.
 
   ```dvc
   $ dvc remote modify --local myremote user myuser
@@ -524,7 +532,7 @@ more information.
 
 ### Click for HTTP
 
-- `auth` - authentication method to use when accessing a remote. The accepted
+- `auth` - authentication method to use when accessing the remote. The accepted
   values are:
 
   - `basic` -
@@ -551,14 +559,16 @@ more information.
   ```
 
 - `user` - username to use when the `auth` parameter is set to `basic` or
-  `digest`. The order in which DVC searches for username:
-
-  1. `user` specified in one of the DVC configs;
-  2. `user` specified in the url(e.g. `http://user@example.com/path`);
+  `digest`.
 
   ```dvc
   $ dvc remote modify --local myremote user myuser
   ```
+
+  The order in which DVC picks the username:
+
+  1. `user` parameter set with this command (found in `.dvc/config`);
+  2. User defined in the URL (e.g. `http://user@example.com/path`);
 
 - `password` - password to use for any `auth` method.
 
@@ -579,6 +589,94 @@ more information.
   > Note that the `password` parameter takes precedence over `ask_password`. If
   > `password` is specified, DVC will not prompt the user to enter a password
   > for this remote.
+
+</details>
+
+<details>
+
+### Click for WebDAV
+
+- `url` - remote location URL.
+
+  ```dvc
+  $ dvc remote modify myremote \
+        url webdavs://example.com/public.php/webdav
+  ```
+
+  > Note that the location of the WebDAV API endpoint `/public.php/webdav` might
+  > be different for your server.
+
+  If your remote is located in a subfolder of your WebDAV server e.g.
+  `/path/to/dir`, this may be appended to the general `url`:
+
+  ```dvc
+  $ dvc remote modify myremote \
+        url webdavs://example.com/public.php/webdav/path/to/dir
+  ```
+
+- `token` - token for WebDAV server, can be empty in case of using
+  `user/password` authentication.
+
+  ```dvc
+  $ dvc remote modify --local myremote token '<mytoken>'
+  ```
+
+- `user` - username for WebDAV server, can be empty in case of using `token`
+  authentication.
+
+  ```dvc
+  $ dvc remote modify --local myremote user myuser
+  ```
+
+  The order in which DVC searches for username is:
+
+  1. `user` parameter set with this command (found in `.dvc/config`);
+  2. User defined in the URL (e.g. `webdav://user@example.com/path`)
+
+- `password` - password for WebDAV server, can be empty in case of using `token`
+  authentication.
+
+  ```dvc
+  $ dvc remote modify --local myremote password mypassword
+  ```
+
+> The username, password, and token (may) contain sensitive user info.
+> Therefore, it's safer to add them with the `--local` option, so they're
+> written to a Git-ignored config file.
+
+> Note that `user/password` and `token` authentication are incompatible. You
+> should authenticate against yout WebDAV remote by either `user/password` or
+> `token`.
+
+- `ask_password` - ask each time for the password to use for `user/password`
+  authentication. This has no effect if `password` or `token` are set.
+
+  ```dvc
+  $ dvc remote modify myremote ask_password true
+  ```
+
+- `cert_path` - path to certificate used for WebDAV server authentication, if
+  you need to use local client side certificates.
+
+  ```dvc
+  $ dvc remote modify myremote cert_path /path/to/cert
+  ```
+
+- `key_path` - path to private key to use to access a remote. Only has an effect
+  in combination with `cert_path`.
+
+  ```dvc
+  $ dvc remote modify myremote key_path /path/to/key
+  ```
+
+  > Note that the certificate in `cert_path` might already contain the private
+  > key.
+
+- `timeout` - connection timeout (in seconds) for WebDAV server (default: 30).
+
+  ```dvc
+  $ dvc remote modify myremote timeout 120
+  ```
 
 </details>
 

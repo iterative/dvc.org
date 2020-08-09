@@ -234,7 +234,7 @@ separately under `params`, grouped by parameters file.
   hand or with the command `dvc config --local`.
 
 - `.dvc/cache`: The <abbr>cache</abbr> directory will store your data in a
-  special [structure](#structure-of-cache-directory). The data files and
+  special [structure](#structure-of-the-cache-directory). The data files and
   directories in the <abbr>workspace</abbr> will only contain links to the data
   files in the cache. (Refer to
   [Large Dataset Optimization](/doc/user-guide/large-dataset-optimization). See
@@ -275,7 +275,7 @@ separately under `params`, grouped by parameters file.
   dependencies and outputs, to allow safely running multiple DVC commands in
   parallel
 
-## Structure of cache directory
+## Structure of the cache directory
 
 There are two ways in which the data is stored in <abbr>cache</abbr>: As a
 single file (eg. `data.csv`), or a directory of files.
