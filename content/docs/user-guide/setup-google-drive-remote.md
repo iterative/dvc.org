@@ -18,10 +18,13 @@ to establish GDrive remote connections (e.g. CI/CD).
 ## Quick start
 
 To start using a Google Drive remote, you only need to add it with a
-[valid URL format](#url-format). Then use any DVC command that needs it (e.g.
-`dvc pull`, `dvc fetch`, `dvc push`). For example:
+[valid URL format](#url-format). Then use any DVC command that needs to connect
+to it (e.g. `dvc pull` or `dvc push` once there's tracked data to synchronize).
+For example:
 
 ```dvc
+$ dvc add data
+...
 $ dvc remote add --default myremote \
                            gdrive://0AIac4JZqHhKmUk9PDA/dvcstore
 $ dvc push
@@ -192,9 +195,10 @@ authentication is needed.
 ## Authorization
 
 On the first usage of a GDrive [remote](/doc/command-reference/remote), for
-example when trying to `dvc push` for the first time after adding the remote
-with a [valid URL](#url-format), DVC will prompt you to visit a special Google
-authentication web page. There you'll need to sign into your Google account. The
+example when trying to `dvc push` tracked data for the first time, DVC will
+prompt you to visit a special Google authentication web page. There you'll need
+to sign into a Google account with the needed access to the GDrive
+[URL](#url-format) in question. The
 [auth process](https://developers.google.com/drive/api/v2/about-auth) will ask
 you to grant DVC the necessary permissions, and produce a verification code
 needed for DVC to complete the connection. On success, the necessary credentials

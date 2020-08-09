@@ -29,7 +29,7 @@ of commits (determined by reading the DVC-files in them). See the
 [Options](#options) section for more details.
 
 > Note that `dvc gc` tries to fetch any missing
-> [`.dir` files](/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory)
+> [`.dir` files](/doc/user-guide/dvc-files-and-directories#structure-of-the-cache-directory)
 > from [remote storage](/doc/command-reference/remote) to the local
 > <abbr>cache</abbr>, in order to know which files should exist inside cached
 > directories. These files may be missing if the cache directory was previously
@@ -89,8 +89,10 @@ The default remote is cleaned (see `dvc config core.remote`) unless the
   [remote storage](/doc/command-reference/remote) to collect unused objects from
   if `-c` option is specified (see `dvc remote list`).
 
-- `-j <number>`, `--jobs <number>` - garbage collector parallelism level. The
-  default `JOBS` argument is `4 * cpu_count()`. For SSH remotes default is 4.
+- `-j <number>`, `--jobs <number>` - parallelism level for DVC to access data
+  from remote storage. This only applies when the `--cloud` option is used, or a
+  `--remote` is given. The default value is `4 * cpu_count()`. For SSH remotes,
+  the default is `4`. Using more jobs may improve the overall transfer speed.
 
   > For now only some phases of garbage collection are parallel.
 
