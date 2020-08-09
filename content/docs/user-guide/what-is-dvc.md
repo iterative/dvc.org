@@ -4,12 +4,12 @@
 experiment management software, that builds upon [Git](https://git-scm.com/)
 (although it can work stand-alone). DVC reduces the gap between established
 engineering tool sets and data science needs, allowing users to take advantage
-of [new features](#core-features) while reusing existing skills and intuition.
+of new [features](#core-features) while reusing existing skills and intuition.
 
 ![](/img/reproducibility.png) _DVC codifies data and ML experiments_
 
-Data science experiment sharing and collaboration can be done through regular
-Git flows (commits, branching, pull requests, etc.), the same way it works for
+Data science experiment sharing and collaboration can be done through a regular
+Git flow (commits, branching, pull requests, etc.), the same way it works for
 software engineers.
 
 [`dvc`](/doc/command-reference) is a command line tool, similar to `git`.
