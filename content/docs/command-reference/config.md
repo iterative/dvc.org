@@ -87,8 +87,9 @@ This is the main section with the general config options:
   and `false` (default). Set with the `--no-scm` option of `dvc init`
   ([more details](/doc/command-reference/init#initializing-dvc-without-git)).
 
-- `core.check_update` - used to enable/disable dvc checking for update and
-  notifying user. Accepts values `true` (default) and `false`.
+- `core.check_update` - disable/enable DVC's automatic update checks, which
+  notify the user when a new version is available. Accepts values `true` (default)
+  and `false`.
 
 ### remote
 
