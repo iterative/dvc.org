@@ -2,18 +2,18 @@
 
 In order to track the data files and directories added with `dvc add` or
 `dvc run`, DVC moves all these files to the <abbr>cache</abbr>. A
-<abbr>project</abbr>'s cache is the hidden storage (by default located in
-`.dvc/cache`) for files that are tracked by DVC, and their different versions.
-(See `dvc cache` and
+<abbr>project</abbr>'s cache is the hidden storage for files that are tracked by
+DVC (by default located in `.dvc/cache`), and their different versions. (See
+`dvc cache` and
 [DVC Files and Directories](/doc/user-guide/dvc-files-and-directories) for more
 details.)
 
 However, the versions of the tracked files that
 [match the current code](/doc/tutorials/get-started/data-pipelines) are also
-needed in the <abbr>workspace</abbr>, so a subset of the cached files can be
-kept in the working directory (using `dvc checkout`). Does this mean that some
-files will be duplicated between the workspace and the cache? **That would not
-be efficient!** Especially with large files (several Gigabytes or larger).
+needed in the <abbr>workspace</abbr>, so a subset of the cached files should be
+kept in the project (using `dvc checkout`). Does this mean that some files will
+be duplicated between the workspace and the cache? **That would not be
+efficient!** Especially with large files (several Gigabytes or larger).
 
 In order to have the files present in both directories without duplication, DVC
 can automatically create **file links** to the cached data in the workspace. In
