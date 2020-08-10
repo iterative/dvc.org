@@ -87,7 +87,6 @@
         "slug": "what-is-dvc",
         "source": "what-is-dvc.md"
       },
-      "basic-concepts",
       {
         "label": "DVC Files and Directories",
         "slug": "dvc-files-and-directories"

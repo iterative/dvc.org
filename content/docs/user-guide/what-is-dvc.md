@@ -21,8 +21,7 @@ software engineers.
   interface and flow as Git. DVC can also work stand-alone, but without
   versioning capabilities.
 
-- **Data versioning** is enabled by replacing
-  [large files](/doc/user-guide/basic-concepts#data-files), dataset directories,
+- **Data versioning** is enabled by replacing large files], dataset directories,
   ML models, etc. with small
   [metafiles](/doc/user-guide/dvc-files-and-directories) (easy to handle with
   Git). These placeholders point to the original data, which is decoupled from
@@ -33,8 +32,8 @@ software engineers.
   transfer large datasets or share a GPU-trained model with others.
 
 - DVC makes data science projects **reproducible** by creating lightweight
-  [pipelines](/doc/user-guide/basic-concepts#data-pipelines) using implicit
-  dependency graphs,and codifying the data and artifacts involved.
+  [pipelines](/doc/command-reference/dag) using implicit dependency graphs,and
+  codifying the data and artifacts involved.
 
 - DVC is **platform agnostic**: It runs on all major operating systems (Linux,
   MacOS, and Windows), and works independently of the programming languages
