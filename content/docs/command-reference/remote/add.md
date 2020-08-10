@@ -18,14 +18,21 @@ positional arguments:
 
 ## Description
 
-`name` and `url` are required. `url` specifies a location to store your data. It
-can represent a cloud storage service, an SSH server, network-attached storage,
-or even a directory in the local file system. (See all the supported remote
-storage types in the examples below.) If `url` is a relative path, it will be
-resolved against the current working directory, but saved **relative to the
-config file location** (see LOCAL example below). Whenever possible, DVC will
-create a remote directory if it doesn't exist yet. (It won't create an S3 bucket
-though, and will rely on default access settings.)
+`name` and `url` are required. The `name` is used to identify the remote and
+must be unique for the project.
+
+`url` specifies a location to store your data. It can represent a cloud storage
+service, an SSH server, network-attached storage, or even a directory in the
+local file system. (See all the supported remote storage types in the examples
+below.) If `url` is a relative path, it will be resolved against the current
+working directory, but saved **relative to the config file location** (see LOCAL
+example below). Whenever possible, DVC will create a remote directory if it
+doesn't exist yet. (It won't create an S3 bucket though, and will rely on
+default access settings.)
+
+DVC will determine the [type of remote](#supported-storage-types) based on the
+`url` provided. This may affect which parameters you can access later via
+`dvc remote modify` (note that the `url` itself can be modified).
 
 > If you installed DVC via `pip` and plan to use cloud services as remote
 > storage, you might need to install these optional dependencies: `[s3]`,
@@ -44,9 +51,9 @@ url = /tmp/dvc-storage
 remote = myremote
 ```
 
-DVC supports the concept of a _default remote_. For the commands that accept a
-`--remote` option (`dvc pull`, `dvc push`, `dvc status`, `dvc gc`, `dvc fetch`),
-the default remote is used if that option is not used.
+For commands that accept a `--remote` option (`dvc pull`, `dvc push`,
+`dvc status`, `dvc gc`, `dvc fetch`), the default remote is used if that option
+is not used.
 
 Use `dvc config` to unset/change the default remote as so:
 `dvc config -u core.remote`.
