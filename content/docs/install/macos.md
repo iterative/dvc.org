@@ -17,9 +17,9 @@ Get the PKG (binary) from the big "Download" button on the [home page](/), or
 from the [release page](https://github.com/iterative/dvc/releases/) on Github.
 
 > Note that currently, in order to open the PKG file, you must go to the
-> Downloads directory in Finder and use
+> **Downloads** directory in Finder and do a
 > [secondary click](https://support.apple.com/en-us/HT207700) on it, then select
-> "Open With" > **Installer.app**, and choose the **Open** button.
+> "Open With" > **Installer.app**, and click the **Open** button.
 
 > You may try [these instructions](https://stackoverflow.com/a/42120328/761963)
 > to uninstall the MacOS package.

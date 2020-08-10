@@ -140,7 +140,7 @@ is installed when `yarn` runs (see [dev env](#development-environment)).
 
 - No trailing white spaces are allowed.
 
-- Content must be properly formatted at 80 symbols width.
+- Text content must be properly formatted at 80 symbols width.
 
   > 💡 We recommend using Visual Studio Code with the
   > [Rewrap](https://marketplace.visualstudio.com/items?itemName=stkb.rewrap)

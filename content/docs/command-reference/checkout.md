@@ -186,7 +186,7 @@ outs:
 But if you check the MD5 of `model.pkl`, the file hash is still the same
 (`ab349c2...`). This is because `git checkout` changed `dvc.lock` and other DVC
 files, but it did nothing with `model.pkl`, or any other DVC-tracked files/dirs.
-Since Git doesn't track them, we must do this:
+Since Git doesn't track them, to get them we can do this:
 
 ```dvc
 $ dvc checkout

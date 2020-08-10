@@ -10,7 +10,7 @@ details.)
 
 However, the versions of the tracked files that
 [match the current code](/doc/tutorials/get-started/data-pipelines) are also
-needed in the <abbr>workspace</abbr>, so a subset of the cached files must be
+needed in the <abbr>workspace</abbr>, so a subset of the cached files can be
 kept in the working directory (using `dvc checkout`). Does this mean that some
 files will be duplicated between the workspace and the cache? **That would not
 be efficient!** Especially with large files (several Gigabytes or larger).
