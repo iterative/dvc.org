@@ -320,7 +320,7 @@ Format:
 
 (long description)
 
-Fixes #(Github issue id).
+Fixes #(GitHub issue id).
 ```
 
 Message types:
@@ -329,7 +329,7 @@ Message types:
 - _short description_: Short description of the patch
 - _long description_: If needed, longer message describing the patch in more
   details
-- _github issue id_: ID of the Github issue that this patch is addressing
+- _github issue id_: ID of the GitHub issue that this patch is addressing
 
 Example:
 

@@ -29,7 +29,7 @@ bringing best practices from software engineering into the data science field
   features (e.g. [pipelines](/doc/command-reference/dag),
   [metrics](/doc/command-reference/metrics), etc.).
 
-- Github (most common Git hosting service) has a limit of 2 GB per repository.
+- GitHub (most common Git hosting service) has a limit of 2 GB per repository.
 
 ## Git-annex
 

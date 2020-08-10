@@ -9,7 +9,7 @@ corruption when the DVC config option `cache.type` is set to `hardlink` or/and
 link types.)
 
 > For an example of the cache corruption problem see
-> [issue #599](https://github.com/iterative/dvc/issues/599) in our Github
+> [issue #599](https://github.com/iterative/dvc/issues/599) in our GitHub
 > repository.
 
 Assume `train.tsv` is tracked by DVC and you want to update it. Here updating

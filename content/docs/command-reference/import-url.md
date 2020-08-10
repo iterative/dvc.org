@@ -5,7 +5,7 @@ Download a file or directory from a supported URL (for example `s3://`,
 changes in the remote data source. Creates a `.dvc` file.
 
 > See `dvc import` to download and tack data/model files or directories from
-> other <abbr>DVC repositories</abbr> (e.g. hosted on Github).
+> other <abbr>DVC repositories</abbr> (e.g. hosted on GitHub).
 
 ## Synopsis
 
