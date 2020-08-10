@@ -31,7 +31,7 @@ remote = myremote
 ```
 
 `name` and `url` are required. The `name` is used to identify the remote and
-should be unique for the project.
+must be unique for the project.
 
 `url` specifies a location to store your data. It can represent a cloud storage
 service, an SSH server, network-attached storage, or even a directory in the
