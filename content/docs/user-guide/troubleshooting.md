@@ -1,7 +1,6 @@
-# Troubleshooting Common DVC Issues
+# Troubleshooting
 
-Here we provide help for some of the problems that DVC user might stumble upon,
-based on frequent support questions (FAQ).
+Here we provide help for some of the problems that DVC user might stumble upon.
 
 <!--
 This file uses a special engine feature for the following headers, so that a
