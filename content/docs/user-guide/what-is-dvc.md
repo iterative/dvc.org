@@ -12,9 +12,10 @@ Data science experiment sharing and collaboration can be done through a regular
 Git flow (commits, branching, pull requests, etc.), the same way it works for
 software engineers.
 
-[`dvc`](/doc/command-reference) is a command line tool, similar to `git`.
-
 ## Core Features
+
+- DVC is a [free](https://github.com/iterative/dvc/blob/master/LICENSE),
+  open-source [command line](/doc/command-reference) tool.
 
 - DVC works **on top of Git repositories** and has a similar command line
   interface and flow as Git. DVC can also work stand-alone, but without
@@ -27,12 +28,9 @@ software engineers.
   Git). These placeholders point to the original data, which is decoupled from
   source code management.
 
-- **Data storage**: On-premise or cloud storage can be used to store the
+- **Data storage**: On-premises or cloud storage can be used to store the
   project's data separate from its code base. This is how data scientists can
   transfer large datasets or share a GPU-trained model with others.
-
-  > Note that [remote storage](/doc/command-reference/remote) is complementary
-  > from the basic features, and never required by DVC.
 
 - DVC makes data science projects **reproducible** by creating lightweight
   [pipelines](/doc/user-guide/basic-concepts#data-pipelines) using implicit
@@ -43,10 +41,9 @@ software engineers.
   (Python, R, Julia, shell scripts, etc.) or ML libraries (Keras, Tensorflow,
   PyTorch, Scipy, etc.) used in the <abbr>project</abbr>.
 
-- **Free** and **easy to use**: DVC is
-  [open-source](https://github.com/iterative/dvc/blob/master/LICENSE), quick to
-  [install](/doc/install), and doesn't require special infrastructure, nor does
-  it depend on APIS or external services. It's a stand-alone CLI tool.
+- **Easy to use**: DVC is quick to [install](/doc/install) and doesn't require
+  special infrastructure, nor does it depend on APIS or external services. It's
+  a stand-alone CLI tool.
 
   > Git servers, as well as SSH and cloud storage providers are supported,
   > however.

@@ -18,8 +18,8 @@ In this basic scenario, DVC is a better replacement for Git-LFS (see
 [Related Technologies](/doc/user-guide/related-technologies)) and for ad-hoc
 scripts on top of Amazon S3 (or any other cloud) used to manage ML <abbr>data
 artifacts</abbr> like raw data, models, etc. Unlike Git-LFS, DVC doesn't require
-installing a dedicated server; It can be used on-premise (e.g. SSH, NAS) or with
-any major cloud storage provider (Amazon S3, Microsoft Azure Blob Storage,
+installing a dedicated server; It can be used on-premises (e.g. SSH, NAS) or
+with any major cloud storage provider (Amazon S3, Microsoft Azure Blob Storage,
 Google Drive, Google Cloud Storage, etc).
 
 Let's say you already have a Git repository and put a bunch of images in the
