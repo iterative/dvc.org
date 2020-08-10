@@ -39,7 +39,7 @@ ones that are ignored indeed are printed back.
 
 - `--stdin` - read paths from standard input instead of providing `targets`.
   Useful for interactive debugging and POSIX pipes.
-  
+
 - `-a`, `--all` - include all the patterns that match each target path in the
   `--details` list. Has no effect without `--details`.
 
@@ -121,5 +121,5 @@ file2
 It can also be used as a component of a POSIX pipe:
 
 ```dvc
-cat file_list | dvc check-ignore --stdin 
+cat file_list | dvc check-ignore --stdin
 ```
