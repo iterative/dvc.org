@@ -4,7 +4,7 @@ DVC combines a number of existing ideas into a single tool, with the goal of
 bringing best practices from software engineering into the data science field
 (refer to [What is DVC?](/doc/user-guide/what-is-dvc) for more details).
 
-### Git
+## Git
 
 - DVC builds upon Git by introducing the concept of
   [data files](/doc/user-guide/basic-concepts#data-files) – large files that
@@ -16,7 +16,7 @@ bringing best practices from software engineering into the data science field
   versioning-related features). This also applies to Git-LFS and Git-annex,
   below.
 
-### Git-LFS (Large File Storage)
+## Git-LFS (Large File Storage)
 
 - DVC does not require special servers like Git-LFS demands. Any cloud storage
   like S3, Google Cloud Storage, or even an SSH server can be used as a
@@ -32,7 +32,7 @@ bringing best practices from software engineering into the data science field
 
 - Github (most common Git hosting service) has a limit of 2 GB per repository.
 
-### Git-annex
+## Git-annex
 
 - DVC can use reflinks\* or hardlinks (depending on the system) instead of
   symlinks to improve performance and the user experience.
@@ -53,7 +53,7 @@ bringing best practices from software engineering into the data science field
 > means that editing a reflinked file is always safe as all the other links to
 > the file will reflect the changes.
 
-### Git workflows/methodologies such as Gitflow
+## Git workflows/methodologies such as Gitflow
 
 - DVC enables a new experimentation methodology that integrates easily with
   existing Git workflows. For example, a separate branch can be created for each
@@ -63,7 +63,7 @@ bringing best practices from software engineering into the data science field
 - DVC innovates by giving users the ability to easily navigate through past
   experiments without recomputing them each time.
 
-### Workflow management tools
+## Workflow management systems
 
 Pipelines and dependency graphs
 ([DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph)) such as _Airflow_,
@@ -81,7 +81,7 @@ _Luigi_, etc.
 - See also our sister project, [CML](https://cml.dev/), that helps fill some of
   these gaps.
 
-### Experiment management software
+## Experiment management software
 
 - DVC uses Git as the underlying layer for data, pipelines, an experiment
   versioning, instead of a custom web application.
@@ -96,7 +96,7 @@ _Luigi_, etc.
   [internal files and directories](/doc/user-guide/dvc-files-and-directories)
   have a human-readable format and can be easily reused by external tools.
 
-### Build automation tools
+## Build automation tools
 
 [_Make_](https://www.gnu.org/software/make/) and others.
 
