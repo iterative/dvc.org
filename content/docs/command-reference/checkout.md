@@ -31,8 +31,8 @@ The execution of `dvc checkout` does the following:
   <abbr>outputs</abbr> against the actual files or directories in the
   <abbr>workspace</abbr> (similar to `dvc status`).
 
-  > Stage outputs should be defined in `dvc.yaml`. If found there but not in
-  > `dvc.lock`, they'll be skipped, with a warning.
+  > Stage outputs must be defined in `dvc.yaml`. If found there but not in
+  > `dvc.lock`, they'll be skipped with a warning.
 
 - Missing data files or directories are restored from the cache. Those that
   don't match with `dvc.lock` or `.dvc` files are removed. See options `--force`
