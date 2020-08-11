@@ -16,7 +16,28 @@ the ability to efficiently sync versioned datasets to and from cloud storage
 through a git-like push and pull
 [interface](/doc/use-cases/sharing-data-and-model-files).
 
-Regardless of use case, any data sync tool must solve one particular issue:
+Given that transferring data over a network to and from cloud storage is an
+inherently slow operation, it is important for data sync tools to optimize
+performance wherever possible. While the data transfer itself may be the most
+apparent performance bottleneck in the data sync process, here we will cover a
+less obvious performance issue: How to optimize certain requests which must be
+made to the cloud storage provider before any file data can be transferred.
+
+### Outline
+
+- [Overview](#overview)
+- [How we query file status via cloud storage APIs](#how-we-query-file-status-via-cloud-storage-apis)
+- [How to select the optimal query method](#how-to-select-the-optimal-query-method)
+- [DVC vs rclone performance](#dvc-vs-rclone-performance)
+- [DVC's advantage over general-use tools](#dvcs-advantage-over-general-use-tools)
+- [How DVC 1.0 reduces the number of files to query](#how-dvc-10-reduces-the-number-of-files-to-query)
+- [Conclusion](#conclusion)
+
+## Overview
+
+Before we get into any details, let's examine why this is a significant problem
+in the first place. Regardless of use case, any data sync tool must solve one
+particular issue:
 
 **Determining which files to upload or download during a sync operation.**
 
@@ -29,16 +50,22 @@ following:
 3. Compute the difference between the two sets of files.
 
 Once this file status has been determined, the necessary files can then be
-copied to or from cloud storage. Files which have been added or modified locally
-must be uploaded. Likewise, files which have been modified or added in cloud
-storage must be downloaded.
+copied to or from cloud storage ("file status" meaning file existence as well as
+other potential status information, such as modification time). Files which have
+been added or modified locally must be uploaded. Likewise, files which have been
+modified or added in cloud storage must be downloaded.
 
-While this may seem like a simple problem, it actually represents a significant
+While this may seem like a simple problem, it actually represents a substantial
 performance bottleneck for data synchronization, particularly because of step
-#2. When querying a cloud storage API, a data sync tool must make some number of
-API calls which will scale relative to the total number of files in both local
-and cloud storage. For large datasets, this can translate into a significant
-amount of runtime which must be spent on these status queries.
+\#2.
+
+When querying a cloud storage API, a data sync tool must make some number of API
+calls which will scale relative to the total number of files in both local and
+cloud storage. For large datasets, this can translate into a significant amount
+of runtime which must be spent querying file status from cloud storage.
+
+_Note: The term "file status query" will be used throughout this post when
+referring to this type of cloud storage API query._
 
 However, with new optimizations in DVC 1.0, we are now able to work around these
 limitations and provide substantial performance benefits over older DVC releases
@@ -104,7 +131,7 @@ ordering, and API calls must be made sequentially, until the full list has been
 retrieved. So we cannot make two simultaneous requests for both "files 1-999"
 and "files 1000-1999".
 
-### Selecting the optimal query method
+## How to select the optimal query method
 
 Choosing the ideal method from these two options will have a significant impact
 on performance in a data sync operation. In general, when querying for a small
@@ -112,68 +139,57 @@ number of files, the first method will be faster. When querying for a large
 number of files, the second method will be faster. However, this is not a hard
 rule, especially in the case of very large remotes.
 
-Consider a case where a dataset being synchronized contains 100 local files, and
-we need to check which of those files exist in cloud storage. For the purposes
-of this example, we will also assume that all individual API calls take the same
-amount of time to complete, and that we are not running any tasks in parallel.
+Consider an example scenario where a dataset being synchronized contains 100
+local files, and we need to check which of those files exist in cloud storage.
+For the purposes of this example, we will also assume that all individual API
+calls take the same amount of time to complete, and that we are not running any
+tasks in parallel. Additionally, let's say that our example cloud storage API
+returns 1000 files per page when using query method 2.
 
-Checking if each file exists in the remote individually (method 1) would take
-100 API calls. If we know that the API returns 1000 files per page, we can say
-that if the remote contains less than `1000 * 100 = 100,000` files, fetching the
-full remote listing (method 2) will be faster than checking each file
-individually, since it will take less than 100 API calls to complete. If the
-remote contains more files than this `100,000` threshold, it will be faster to
-check our 100 files individually.
+In this situation, we know that the first query method will always take a fixed
+number of API calls to complete (100).
 
-So, choosing the optimal method actually depends on both:
+For the case where our remote is completely empty, it would take a single API
+call for method 2 to return the empty result - meaning that method 2 should be
+preferred over method 1.
 
-- The number of files that we need to query.
-- The total number of files in the remote.
+But what happens when the remote is not empty? In this case, we just need to
+determine what remote size would cause method 2 to require more than the 100 API
+calls needed for method 1.
+
+Since we know that the API returns 1000 results per API call, we can say that if
+the remote contains less than `1000 * 100 = 100,000` files, fetching the full
+remote listing (method 2) will be faster than checking each file individually,
+since it will take less than 100 API calls to complete. If the remote contains
+more files than this `100,000` threshold, it will be faster to check our 100
+files individually.
 
 **Total API calls required to query 100 local files from S3**
 ![API calls](/uploads/images/2020-07-03/api_calls_100_local.svg 'API calls required to query 100 local files from S3')
+
+This example illustrates an important point. Given a (relatively) small query
+set and a sufficiently large remote, method 1 will always be faster than
+method 2.
+
+Thinking about it from a different perspective, what happens if we have the
+ability to reduce the size of a (relatively) large query set?
+
+Once our query set is smaller than a certain threshold, we will be able to use
+method 1 rather than method 2. On top of that, we know that the runtime of
+method 1 scales with query set size. In simple terms, by reducing the size of
+our query set as much as possible, we can also improve performance.
+
+So, as we have shown, choosing the optimal method depends on both:
+
+- The number of files that we need to query.
+- The total number of files in the remote.
 
 _Note: In terms of real world performance, there are other considerations that
 DVC must account for, such as different API calls taking different amounts of
 time to complete, parallelization, and the amount of time it takes to run list
 comparison operations in Python._
 
-## How query method selection affects performance
-
-To understand the effect that this can have on performance, consider an example
-where we have a data sync tool which is hard coded to always query files
-individually (using method 1). Let's say that we need to query for some set of
-files in an S3 bucket, and that it will take 1 minute to complete the query via
-method 1.
-
-Now let's say that the S3 bucket contains several billions of files, and that
-completing a full listing query (method 2) would take hours to complete. Luckily
-for us, our data sync tool has been hard coded to use the first method, and it
-only takes a flat 1 minute to run our query, saving us several hours of runtime
-compared to the alternative.
-
-But what if the S3 bucket was actually empty instead? Our data sync tool will
-still take 1 minute to complete the query. However, if we had used the second
-method here instead, our query would have finished almost instantly, since it
-would only take a single API call for the list query to return the empty result.
-In this case, our hard coded behavior costs us almost one minute of unnecessary
-runtime.
-
-This second example also illustrates another important point. Given a
-(relatively) small query set and a sufficiently large remote, method 1 will
-always be faster than method 2. Thinking about it from a different perspective,
-if we have the ability to reduce the size of a (relatively) large query set,
-once we pass a certain threshold we will be able to use method 1 rather than
-method 2. On top of that, we know that the runtime of method 1 scales with query
-set size. So in simple terms, by reducing the size of our query set as much as
-possible, we can also improve performance.
-
-Finally, we also need to remember that status queries are separate from any
-actual file data transfer. In all of these examples, even if both local and
-cloud storage are up to date (meaning no files actually need to be uploaded or
-downloaded), the status queries will still take the same amount of time.
-
-## DVC 1.0 vs DVC 0.91 vs rclone performance
+## DVC vs rclone performance
 
 The following charts show DVC and rclone status query runtimes for various
 scenarios in which a local directory is synchronized to an S3 bucket. The
@@ -183,21 +199,30 @@ these scenarios. For these benchmarks we are only interested in the amount of
 time required to determine file status, without the additional time it would
 take to upload or download any changed files.
 
-In each of these examples, we are simulating use cases for which a user tracks a
-local directory containing some number of files using DVC, and then wishes to
-synchronize the DVC-tracked files to cloud storage. In DVC, we sync files
-between the DVC local
-[cache](https://dvc.org/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory)
-and DVC remote storage. So in order to get the equivalent behavior using rclone,
-you would use `rclone sync` or `rclone copy` to move files between the DVC cache
-directory and cloud storage.
-
 Keep in mind that for DVC's purposes, we are most interested in optimizing
 performance for scenarios which are normally very slow to complete. If you
 consider an operation which previously took several hours to complete, improving
 that runtime down to a few minutes will have a much greater impact for our users
 versus shaving a few seconds off of an operation which previously took under a
 minute to run.
+
+**Local directory w/100k total files, S3 bucket w/1M total files (1 file
+modified since last sync)**
+![benchmarks](/uploads/images/2020-07-03/dvc_rclone_bench.svg 'DVC 1.0 vs rclone performance comparison')
+
+In our example benchmark scenarios, we are simulating the typical DVC use case
+in which a user tracks a local directory containing some number of files using
+DVC, and then synchronizes the the DVC-tracked directory to cloud storage. The
+user will then continually repeat a process of:
+
+1. Modify a small subset of files in the directory.
+2. Push the updated version of the directory into cloud storage.
+
+In DVC, we sync files between the DVC local
+[cache](https://dvc.org/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory)
+and DVC remote storage. In order to get the equivalent behavior using rclone,
+you would use `rclone sync` or `rclone copy` to move files between the DVC cache
+directory and cloud storage.
 
 _Note: In these examples, the local file count refers to the number of files
 inside the original tracked directory. The number of files present in the DVC
@@ -206,25 +231,15 @@ representing the tracked directory itself, but the end result is that both DVC
 and rclone will both need to query for the same number of files (i.e. the number
 of files in the cache directory)._
 
-**Local directory w/100k total files, S3 bucket w/1M total files (1 file
-modified since last sync)**
-![benchmarks](/uploads/images/2020-07-03/dvc_rclone_bench.svg 'DVC 1.0 vs rclone performance comparison')
+The previous chart contains benchmarks for a scenario in which the local
+directory contains 100,000 files, and the S3 bucket contains approximately 1
+million files. One file in the local directory has been modified since the
+directory was last synchronized with the S3 bucket. This scenario tests the
+length of time it takes DVC or rclone to determine (and report to the user) that
+only the one modified file is missing from the S3 bucket and needs to be
+uploaded.
 
-In this example, the local directory contains 100,000 files, and the S3 bucket
-contains approximately 1 million files. One file in the local directory has been
-modified since the directory was last synchronized with the S3 bucket. This
-scenario tests the length of time it takes DVC or rclone to determine (and
-report to the user) that only the one modified file is missing from the S3
-bucket and needs to be uploaded.
-
-This simulates a typical DVC use case in which a user uses DVC to track a
-directory containing a (relatively) large number of files and pushes the
-directory into cloud storage. The user then continually repeats a process of:
-
-1. Modify a small subset of files in the directory.
-2. Push the updated version of the directory into cloud storage.
-
-This scenario illustrates DVC's performance advantage over rclone with regard to
+This illustrates DVC's performance advantage over rclone with regard to
 synchronizing iterations of a versioned dataset over time, as well as the DVC
 1.0 performance improvements over prior releases.
 
@@ -284,55 +299,11 @@ dual-core 3.1GHz i7 cpu_
 
 ## DVC's advantage over general-use tools
 
-Tools like rclone, must be generalized to support any file structure (both
-locally and in cloud storage), which can come at the cost of performance,
-especially when dealing with large datasets. A generic tool has no way of
-determining which of the two previously described methods would be optimal for a
-given sync operation. These tools must either rely on the user to choose the
-correct method, or simply fall back to a default choice.
-
-_For example, in rclone the `--no-traverse` option specifies which behavior
-should be used._
-
-As we demonstrated earlier, neither method can be configured as a
-one-size-fits-all solution. For DVC, the number of files we need to sync (and
-query) can vary wildly project revisions. Likewise, the total number of files in
-a remote will continually grow over time, as new iterations of a project are
-versioned and pushed into cloud storage. As a result, selecting the optimal
-query method must really be done on a case-by-case basis per each sync
-operation. Default (or user configured) behavior cannot be relied upon in this
-situation.
-
-However, since in DVC we synchronize different revisions of a versioned dataset,
-we have access to certain contextual information about both the contents and
-structure of local and cloud storage, which would normally be unavailable to
-general use tools. One smiple example of this is that in DVC we are able to
-parallelize our queries for the full listing of files in a remote.
-
-As explained previously, normally these queries must be run sequentially.
-However, most cloud storage APIs allow us to request the list of files contained
-in a specific subdirectory (as opposed to requesting the list of every file in
-every directory in cloud storage). So, if we knew that files in cloud storage
-were divided into two subdirectories, we could run two sets of sequential
-queries at the same time - one for each subdirectory. For general data sync
-tools, which must support any possible file structure, this is usually not an
-option, but it is something that we can take advantage of in DVC, since we
-control the directory structure used in our cloud remotes.
-
-In DVC 1.0, we leverage this kind of contextual information to provide improved
-performance over other data sync tools (including prior DVC releases) in other
-ways as well. In version 1.0, we are now able to automatically select the
-optimal query method each time we run a data sync operation. Additionally, in
-certain cases, we can now reduce the number of files we need to query in data
-sync operations.
-
-## Interlude: DVC cache/remote structure
-
 Before continuing, it will be helpful for the reader to understand a few things
 about the DVC cache and remote storage structure.
 
 ```
-.dvc/cache
+.
 ├── 00
 │   ├── 411460f7c92d2124a67ea0f4cb5f85
 │   ├── 6f52e9102a8d3be2fe5614f42ba989
@@ -344,19 +315,49 @@ about the DVC cache and remote storage structure.
 └── ff
 ```
 
-_Example DVC cache_
+_Example DVC cache/remote structure_
 
-- Files versioned by DVC are identified and stored according to their
-  [MD5](https://en.wikipedia.org/wiki/MD5) hash. The cache is organized into 256
-  subdirectories (from `00` to `ff`), where each subdirectory is the first 2
-  characters in an MD5 hash string.
+- Files versioned by DVC are identified and stored in subdirectories according
+  to their [MD5](https://en.wikipedia.org/wiki/MD5) hash.
 - MD5 is an
   [evenly distributed](https://michiel.buddingh.eu/distribution-of-hash-values)
-  hash function, so the DVC cache will be evenly distributed (i.e. given a large
-  enough dataset, each cache subdirectory will contain an approximately equal
-  number of files)
-- DVC remote storage structure mirrors the DVC local cache structure, so a DVC
-  remote will also be evenly distributed
+  hash function, so the DVC cache (and DVC remote storage) will be evenly
+  distributed (i.e. given a large enough dataset, each remote subdirectory will
+  contain an approximately equal number of files)
+
+As we demonstrated earlier, neither file status query method is a
+one-size-fits-all solution. Rather, selecting the ideal query method should be
+done on a case-by-case basis per each sync operation. Default (or user
+configured) behavior cannot be relied upon to always produce an optimal result.
+
+Tools like rclone, must be generalized, and in most cases general tools have no
+way of programmatically determining which of the two previously described
+methods would be optimal for a given sync operation. These tools must either
+rely on the user to choose the correct method, or simply fall back to a default
+choice.
+
+_For example, in rclone the `--no-traverse` option specifies which behavior
+should be used._
+
+However, in DVC we have access to certain contextual information about both the
+contents and structure of our local and cloud storage. By leveraging this
+information, we can provide performance optimizations which would normally be
+unavailable to general use tools.
+
+One simple example of this is that in DVC we are able to parallelize our queries
+for the full listing of files in a remote (query method 2). Since we know the
+directory structure of our remote storage, we can run simultaneous queries for
+the list of files in each remote storage subdirectory (as opposed to a single
+query for the top level list of files in the entire remote). For general data
+sync tools, which must support any possible remote file structure, this is
+usually not an option.
+
+In DVC 1.0, we leverage this kind of contextual information to provide improved
+performance over other data sync tools (including prior DVC releases) in other
+ways as well. In version 1.0, we are now able to automatically select the
+optimal query method each time we run a data sync operation. Additionally, in
+certain cases, we can now reduce the number of files we need to query in data
+sync operations.
 
 ## How DVC 1.0 automatic selects a query method
 
@@ -389,10 +390,6 @@ continue to fetch the full listing for the rest of the remote.
 
 By estimating remote size in DVC 1.0, we can ensure that we always use the
 optimal method when querying remote status.
-
-_Note: The DVC remote structure also allows us to parallelize the second query
-method described earlier. By fetching the contents of each subdirectory
-individually, we can run up to 256 sets of sequential queries at once._
 
 ## How DVC 1.0 reduces the number of files to query
 
