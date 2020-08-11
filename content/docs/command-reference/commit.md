@@ -142,8 +142,8 @@ files in the cache.
 
 In the `featurize` stage, `src/featurization.py` is executed. A useful change to
 make is adjusting the parameters for that script. The parameters are defined in
-the `params.yaml` file. Updating the value of `max_features` to 6000 in
-`params.yaml` changes the resulting model:
+the `params.yaml` file. Updating the value of the `max_features` param to
+6000 changes the resulting model:
 
 ```yaml
 featurize:
