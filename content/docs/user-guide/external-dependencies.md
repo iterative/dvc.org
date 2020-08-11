@@ -54,12 +54,13 @@ $ dvc run -n download_file
 
 ```dvc
 $ dvc run -n download_file
-          -d ssh://user@example.com/home/shared/data.txt \
+          -d ssh://user@example.com/abs/path/to/data.txt \
           -o data.txt \
-          scp user@example.com/home/shared/data.txt data.txt
+          scp user@example.com/abs/path/to/data.txt data.txt
 ```
 
-> Please notice `/home/...` is an absolute path from the remote system's root.
+> ⚠️ Please notice `/abs/path/to/data` is an absolute path from the SFTP root
+> (not always configured to be the system root).
 
 ### Amazon S3
 
@@ -96,14 +97,11 @@ $ dvc run -n download_file
 
 ```dvc
 $ dvc run -n download_file
-          -d hdfs://user@example.com/home/shared/data.txt \
+          -d hdfs://user@example.com/abs/path/to/data.txt \
           -o data.txt \
           hdfs fs -copyToLocal \
-                  hdfs://user@example.com/home/shared/data.txt \
-                  data.txt
+                  hdfs://user@example.com/abs/path/to/data.txt data.txt
 ```
-
-> Please notice `/home/...` is an absolute path from the remote system's root.
 
 ### HTTP
 
