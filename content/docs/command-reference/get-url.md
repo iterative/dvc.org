@@ -98,7 +98,7 @@ By default, DVC expects that AWS CLI is already
 [configured](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html).
 
 DVC will use the AWS credentials file to access S3. To override the
-configuration, you can the parameters described in `dvc remote modify`.
+configuration, you can use the parameters described in `dvc remote modify`.
 
 > We use the `boto3` library to and communicate with AWS. The following API
 > methods may be performed:

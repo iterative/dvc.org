@@ -23,7 +23,7 @@ Finds and prints all metrics in the <abbr>project</abbr> by examining all of its
 > (`--metrics-no-cache`) options of `dvc run`.
 
 If `targets` are provided, it will show those specific metric files instead.
-With the `-a` or`-T` options, this command shows the different metrics values
+With the `-a` or `-T` options, this command shows the different metrics values
 across all Git branches or tags, respectively. With the `-R` option, some of the
 target can even be directories, so that DVC recursively shows all metric files
 inside.

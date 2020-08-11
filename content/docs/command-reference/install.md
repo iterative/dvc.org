@@ -25,8 +25,7 @@ Namely:
 [DVC-files](/doc/user-guide/dvc-files-and-directories) corresponding to that
 version. The project's DVC-files in turn refer to data stored in
 <abbr>cache</abbr>, but not necessarily in the <abbr>workspace</abbr>. Normally,
-it would be necessary to use `dvc checkout` to synchronize workspace and
-DVC-files.
+it would be necessary to use `dvc checkout` to update the workspace accordingly.
 
 This hook automates `dvc checkout` after `git checkout`.
 
@@ -49,7 +48,7 @@ This hook automates `dvc push` before `git push`.
 ## Installed Git hooks
 
 - A `post-checkout` hook executes `dvc checkout` after `git checkout` to
-  automatically synchronize the data files with the new workspace state.
+  automatically update the workspace with the correct data file versions.
 - A `pre-commit` hook executes `dvc status` before `git commit` to inform the
   user about the differences between cache and workspace.
 - A `pre-push` hook executes `dvc push` before `git push` to upload files and
@@ -300,5 +299,5 @@ Data and pipelines are up to date.
 After reproducing this pipeline up to the "evaluate" stage, the data files are
 in sync with the code/config files, but we must now commit the changes with Git.
 Looking closely we see that `dvc status` is used again, informing us that the
-data files are synchronized with the `Data and pipelines are up to date.`
+data files have been updated, with the `Data and pipelines are up to date.`
 message.

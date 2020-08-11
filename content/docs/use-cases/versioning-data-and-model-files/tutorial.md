@@ -309,11 +309,13 @@ When you have a script that takes some data as an input and produces other data
 
 > If you tried the commands in the
 > [Switching between workspace versions](#switching-between-workspace-versions)
-> section, go back to the master branch code and data with:
+> section, go back to the master branch code and data, and remove the
+> `model.h5.dvc` file with:
 >
 > ```dvc
 > $ git checkout master
 > $ dvc checkout
+> $ dvc remove model.h5.dvc
 > ```
 
 ```dvc

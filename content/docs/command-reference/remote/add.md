@@ -24,8 +24,8 @@ or even a directory in the local file system. (See all the supported remote
 storage types in the examples below.) If `url` is a relative path, it will be
 resolved against the current working directory, but saved **relative to the
 config file location** (see LOCAL example below). Whenever possible, DVC will
-create a remote directory if it doesn't exists yet. (It won't create an S3
-bucket though, and will rely on default access settings.)
+create a remote directory if it doesn't exist yet. (It won't create an S3 bucket
+though, and will rely on default access settings.)
 
 > If you installed DVC via `pip` and plan to use cloud services as remote
 > storage, you might need to install these optional dependencies: `[s3]`,
@@ -131,7 +131,8 @@ For example:
 
 ```dvc
 $ dvc remote add -d myremote s3://mybucket/path/to/dir
-$ dvc remote modify myremote endpointurl https://object-storage.example.com
+$ dvc remote modify myremote endpointurl \
+                    https://object-storage.example.com
 ```
 
 > See `dvc remote modify` for a full list of S3 API parameters.
@@ -154,23 +155,22 @@ For more information about the variables DVC supports, please visit
 ### Click for Microsoft Azure Blob Storage
 
 ```dvc
-$ dvc remote add --local myremote azure://my-container-name/path
+$ dvc remote add -d myremote azure://my-container-name/path
 $ dvc remote modify --local myremote connection_string \
-                            "my-connection-string"
+                            'my-connection-string'
 ```
 
-> The connection string contains access to data and is inserted into the
-> `.dvc/config` file. Therefore, it is safer to add the remote with the
-> `--local` option, enforcing it to be written to a Git-ignored config file. See
-> `dvc remote modify` for a full list of Azure storage parameters.
+> The connection string contains sensitive user info. Therefore, it's safer to
+> add it with the `--local` option, so it's written to a Git-ignored config
+> file. See `dvc remote modify` for a full list of Azure storage parameters.
 
 The Azure Blob Storage remote can also be configured globally via environment
 variables:
 
 ```dvc
-$ export AZURE_STORAGE_CONNECTION_STRING="<my-connection-string>"
-$ export AZURE_STORAGE_CONTAINER_NAME="my-container-name"
-$ dvc remote add -d myremote "azure://"
+$ export AZURE_STORAGE_CONNECTION_STRING='<my-connection-string>'
+$ export AZURE_STORAGE_CONTAINER_NAME='my-container-name'
+$ dvc remote add -d myremote 'azure://'
 ```
 
 > For more information on configuring Azure Storage connection strings, visit
@@ -180,7 +180,7 @@ $ dvc remote add -d myremote "azure://"
   Storage Account. If you don't already have a storage account, you can create
   one following
   [these instructions](https://docs.microsoft.com/en-us/azure/storage/common/storage-create-storage-account).
-  The connection string can be found in the "Access Keys" pane of your Storage
+  The connection string can be found in the **Access Keys** pane of your Storage
   Account resource in the Azure portal.
 
   > 💡 Make sure the value is quoted so its processed correctly by the console.
@@ -197,13 +197,12 @@ $ dvc remote add -d myremote "azure://"
 
 To start using a GDrive remote, first add it with a
 [valid URL format](/doc/user-guide/setup-google-drive-remote#url-format). Then
-simply use any DVC command that needs it (e.g. `dvc pull`, `dvc fetch`,
-`dvc push`), and follow the instructions to connect your Google Drive with DVC.
-For example:
+use any DVC command that needs to connect to it (e.g. `dvc pull` or `dvc push`
+once there's tracked data to synchronize). For example:
 
 ```dvc
 $ dvc remote add -d myremote gdrive://0AIac4JZqHhKmUk9PDA/dvcstore
-$ dvc push
+$ dvc push  # Assuming there's data to push
 
 Go to the following link in your browser:
 
@@ -261,18 +260,18 @@ To set key id, key secret and endpoint (or any other OSS parameter), use
 option to avoid committing your secrets with Git:
 
 ```dvc
+$ dvc remote modify myremote oss_endpoint <endpoint>
 $ dvc remote modify myremote --local oss_key_id my-key-id
 $ dvc remote modify myremote --local oss_key_secret my-key-secret
-$ dvc remote modify myremote oss_endpoint endpoint
 ```
 
 You can also set environment variables and use them later, to set environment
 variables use following environment variables:
 
 ```dvc
-$ export OSS_ACCESS_KEY_ID="my-key-id"
-$ export OSS_ACCESS_KEY_SECRET="my-key-secret"
-$ export OSS_ENDPOINT="endpoint"
+$ export OSS_ACCESS_KEY_ID='my-key-id'
+$ export OSS_ACCESS_KEY_SECRET='my-key-secret'
+$ export OSS_ENDPOINT='endpoint'
 ```
 
 **Testing your OSS storage using docker**
@@ -344,9 +343,22 @@ $ dvc remote add -d myremote https://example.com/path/to/dir
 
 <details>
 
+### Click for WebDAV
+
+```dvc
+$ dvc remote add -d myremote webdavs://example.com/public.php/webdav
+```
+
+> See also `dvc remote modify` for a full list of WebDAV parameters.
+
+</details>
+
+<details>
+
 ### Click for local remote
 
-A "local remote" is a directory in the machine's file system.
+A "local remote" is a directory in the machine's file system. Not to be confused
+with the `--local` option of `dvc remote` commands!
 
 > While the term may seem contradictory, it doesn't have to be. The "local" part
 > refers to the type of location where the storage is: another directory in the
@@ -369,7 +381,7 @@ $ cat .dvc/config
 Using a relative path:
 
 ```dvc
-$ dvc remote add myremote ../my-dvc-storage
+$ dvc remote add -d myremote ../my-dvc-storage
 $ cat .dvc/config
   ...
   ['remote "myremote"']

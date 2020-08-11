@@ -87,6 +87,10 @@ This is the main section with the general config options:
   and `false` (default). Set with the `--no-scm` option of `dvc init`
   ([more details](/doc/command-reference/init#initializing-dvc-without-git)).
 
+- `core.check_update` - disable/enable DVC's automatic update checks, which
+  notify the user when a new version is available. Accepts values `true`
+  (default) and `false`.
+
 ### remote
 
 These are sections in the config file that describe particular remotes. They
@@ -99,7 +103,7 @@ remote. See `dvc remote` for more information.
 A DVC project <abbr>cache</abbr> is the hidden storage (by default located in
 the `.dvc/cache` directory) for files that are tracked by DVC, and their
 different versions. (See `dvc cache` and
-[DVC Files and Directories](/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory)
+[DVC Files and Directories](/doc/user-guide/dvc-files-and-directories#structure-of-the-cache-directory)
 for more details.) This section contains the following options:
 
 - `cache.dir` - set/unset cache directory location. A correct value must be
