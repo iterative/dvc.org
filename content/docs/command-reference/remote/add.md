@@ -36,8 +36,7 @@ must be unique for the project.
 `url` specifies a location to store your data. It can represent a cloud storage
 service, an SSH server, network-attached storage, or even a directory in the
 local file system (see all the supported remote storage types in the examples
-below). Whenever possible, DVC will create a remote directory if it doesn't
-exist yet (it won't create an S3 bucket though, for example).
+below).
 
 DVC will determine the [type of remote](#supported-storage-types) based on the
 `url` provided. This may affect which parameters you can access later via
