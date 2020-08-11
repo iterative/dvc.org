@@ -81,8 +81,8 @@ $ dvc run -d data.txt \
           scp data.txt user@example.com:/abs/path/to/data.txt
 ```
 
-> ⚠️ Please notice `/abs/path/to/...` are absolute paths from the SFTP root (not
-> always configured to be the system root).
+> ⚠️ Please notice `/abs/path/to/...` are paths relative to the SFTP root
+> (typically the system root, in which case they're absolute paths).
 
 ### Amazon S3
 

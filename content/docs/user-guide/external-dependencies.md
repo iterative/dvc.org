@@ -59,8 +59,8 @@ $ dvc run -n download_file
           scp user@example.com:/abs/path/to/data.txt data.txt
 ```
 
-> ⚠️ Please notice `/abs/path/to/data` is an absolute path from the SFTP root
-> (not always configured to be the system root).
+> ⚠️ Please notice `/abs/path/to/data` is a path relative to the SFTP root
+> (typically the system root, in which case it's an absolute path).
 
 ### Amazon S3
 
