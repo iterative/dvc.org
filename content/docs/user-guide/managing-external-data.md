@@ -78,7 +78,7 @@ $ dvc add --external ssh://user@example.com/abs/path/to/mydata
 $ dvc run -d data.txt \
           --external \
           -o ssh://user@example.com/abs/path/to/data.txt \
-          scp data.txt user@example.com/abs/path/to/data.txt
+          scp data.txt user@example.com:/abs/path/to/data.txt
 ```
 
 > ⚠️ Please notice `/abs/path/to/...` are absolute paths from the SFTP root (not

@@ -56,7 +56,7 @@ $ dvc run -n download_file
 $ dvc run -n download_file
           -d ssh://user@example.com/abs/path/to/data.txt \
           -o data.txt \
-          scp user@example.com/abs/path/to/data.txt data.txt
+          scp user@example.com:/abs/path/to/data.txt data.txt
 ```
 
 > ⚠️ Please notice `/abs/path/to/data` is an absolute path from the SFTP root
