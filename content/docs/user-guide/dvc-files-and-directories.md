@@ -150,9 +150,9 @@ the possible following fields:
   (the file's location).
 - `deps`: List of <abbr>dependency</abbr> file or directory paths of this stage
   (relative to `wdir` which defaults to the file's location)
-- `params`: List of <abbr>parameter<abbr> dependencies. Contains subfields that
-  specify key/value pairs that are read from an arbitrary YAML, JSON, or TOML
-  file (`params.yaml` by default).
+- `params`: List of <abbr>parameter<abbr> dependencies. They are key/value pairs
+  that are read from an arbitrary YAML, JSON, or TOML file (`params.yaml` by
+  default).
 - `outs`: List of <abbr>output</abbr> file or directory paths of this stage
   (relative to `wdir` which defaults to the file's location), and optionally,
   whether or not this file or directory is <abbr>cached</abbr> (`true` by
