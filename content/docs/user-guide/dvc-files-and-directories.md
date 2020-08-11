@@ -176,10 +176,10 @@ the possible following fields:
 `dvc.yaml` files also support `# comments`.
 
 💡 We maintain a `dvc.yaml`
-[schema](https://github.com/iterative/dvcyaml-schema) that can be used
-by editors like [VSCode](/doc/install/plugins#vscode) or
-[PyCharm](/doc/install/plugins#pycharm) to enable automatic syntax
-checks and auto-completion.
+[schema](https://github.com/iterative/dvcyaml-schema) that can be used by
+editors like [VSCode](/doc/install/plugins#vscode) or
+[PyCharm](/doc/install/plugins#pycharm) to enable automatic syntax checks and
+auto-completion.
 
 ### dvc.lock file
 
