@@ -75,11 +75,10 @@ from the source repo.
 
 ## Options
 
-- `-o <path>`, `--out <path>` - specify a path (directory and/or file name) to
-  the desired location to place the imported file in (instead of using the
-  current working directory). If an existing directory is specified, the target
-  data will be placed inside. If `path` contains a parent directory which does
-  not exist, this command will fail.
+- `-o <path>`, `--out <path>` - specify a path to the desired location in the
+  workspace to place the downloaded file or directory (instead of using the
+  current working directory). Directories specified in the path should already
+  exist, otherwise this command will fail.
 
 - `--rev <commit>` - commit hash, branch or tag name, etc. (any
   [Git revision](https://git-scm.com/docs/revisions)) of the repository to
