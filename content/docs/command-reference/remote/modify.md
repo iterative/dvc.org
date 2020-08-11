@@ -58,17 +58,13 @@ manual editing could be used to change the configuration.
 
 The following config options are available for all remote types:
 
-- `url` - The remote location URL can always be modified. This is how DVC
-  determines what type of remote it is, and thus which other parameters can be
-  modified. Here are some examples:
+- `url` - the remote location can always be modified. This is how DVC determines
+  what type of remote it is, and thus which other config options can be modified
+  (see each type in the next section for more details). Here's a _local remote_
+  example:
 
   ```dvc
-  $ dvc remote modify s3remote url s3://bucket/key
-  $ dvc remote modify gdremote url \
-                      gdrive://0AIac4JZqHhKmUk9PDA/dvcstore
-  $ dvc remote modify shremote url \
-                      ssh://user@example.com:1234/absolute/path
-  $ dvc remote modify fsremote url /home/users/me/dvcstore
+  $ dvc remote modify myremote url /home/user/dvcstore
   ```
 
 - `verify` - upon downloading <abbr>cache</abbr> files (`dvc pull`, `dvc fetch`)
@@ -86,7 +82,8 @@ The following config options are available for all remote types:
 
 ## Available parameters per storage type
 
-The following are the customizable types of remote storage (protocols):
+The following are the types of remote storage (protocols) and their config
+options:
 
 <details>
 
@@ -95,7 +92,13 @@ The following are the customizable types of remote storage (protocols):
 By default, DVC expects your AWS CLI is already
 [configured](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html).
 DVC will be using default AWS credentials file to access S3. To override some of
-these settings, you could use the following options:
+these settings, you could use the following options.
+
+- `url` - remote location, in the `s3://<bucket>/<key>` format:
+
+  ```dvc
+  $ dvc remote modify myremote url s3://my-bucket/my/key
+  ```
 
 - `region` - change S3 remote region:
 
@@ -135,7 +138,7 @@ these settings, you could use the following options:
   $ dvc remote modify myremote secret_access_key my-secret_access_key
   ```
 
-- `use_ssl` - whether or not to use SSL. By default, SSL is used
+- `use_ssl` - whether or not to use SSL. By default, SSL is used.
 
   ```dvc
   $ dvc remote modify myremote use_ssl false
@@ -226,12 +229,10 @@ To communicate with a remote object storage that supports an S3 compatible API
 (e.g. [Minio](https://min.io/),
 [DigitalOcean Spaces](https://www.digitalocean.com/products/spaces/),
 [IBM Cloud Object Storage](https://www.ibm.com/cloud/object-storage) etc.) you
-must explicitly set the `endpointurl` in the configuration:
-
-For example:
+must explicitly configure the `endpointurl`:
 
 ```dvc
-$ dvc remote add -d myremote s3://path/to/dir
+$ dvc remote add -d myremote s3://my-bucket/path/to/dir
 $ dvc remote modify myremote endpointurl \
                     https://object-storage.example.com
 ```
@@ -241,7 +242,7 @@ S3 remotes can also be configured entirely via environment variables:
 ```dvc
 $ export AWS_ACCESS_KEY_ID='<my-access-key>'
 $ export AWS_SECRET_ACCESS_KEY='<my-secret-key>'
-$ dvc remote add -d myremote 's3://bucket/myremote'
+$ dvc remote add -d myremote s3://my-bucket/my/key
 ```
 
 For more information about the variables DVC supports, please visit
@@ -253,7 +254,13 @@ For more information about the variables DVC supports, please visit
 
 ### Click for Microsoft Azure Blob Storage
 
-- `connection_string` - connection string.
+- `url` - remote location:
+
+  ```dvc
+  $ dvc remote modify myremote url azure://my-container-name/path
+  ```
+
+- `connection_string` - connection string:
 
   ```dvc
   $ dvc remote modify --local myremote connection_string \
@@ -276,6 +283,14 @@ For more information on configuring Azure Storage connection strings, visit
 Please see
 [Setup a Google Drive DVC Remote](/doc/user-guide/setup-google-drive-remote) for
 a full guide on using Google Drive as DVC remote storage.
+
+- `url` - remote location. See
+  [valid URL format](/doc/user-guide/setup-google-drive-remote#url-format).
+
+  ```dvc
+  $ dvc remote modify myremote url \
+                      gdrive://0AIac4JZqHhKmUk9PDA/dvcstore
+  ```
 
 - `gdrive_client_id` - Client ID for authentication with OAuth 2.0 when using a
   [custom Google Client project](/doc/user-guide/setup-google-drive-remote#using-a-custom-google-cloud-project).
@@ -365,6 +380,12 @@ more information.
 
 ### Click for Google Cloud Storage
 
+- `url` - remote location:
+
+  ```dvc
+  $ dvc remote modify myremote url gs://bucket/path
+  ```
+
 - `projectname` - override or provide a project name to use, if a default one is
   not set.
 
@@ -401,8 +422,13 @@ more information.
 
 ### Click for Aliyun OSS
 
-- `oss_endpoint endpoint` - OSS endpoint values for accessing the remote
-  container.
+- `url` - remote location:
+
+  ```dvc
+  $ dvc remote modify myremote url oss://my-bucket/path
+  ```
+
+- `oss_endpoint` - OSS endpoint values for accessing the remote container.
 
   ```dvc
   $ dvc remote modify myremote oss_endpoint endpoint
@@ -429,6 +455,13 @@ more information.
 <details>
 
 ### Click for SSH
+
+- `url` - remote location:
+
+  ```dvc
+  $ dvc remote modify myremote url \
+                      ssh://user@example.com:1234/absolute/path
+  ```
 
 - `user` - username to access the remote.
 
@@ -497,6 +530,13 @@ more information.
 
 ### Click for HDFS
 
+- `url` - remote location:
+
+  ```dvc
+  $ dvc remote modify myremote url \
+                      hdfs://user@example.com/absolute/path
+  ```
+
 - `user` - username to access the remote.
 
   ```dvc
@@ -511,6 +551,12 @@ more information.
 <details>
 
 ### Click for HTTP
+
+- `url` - remote location:
+
+  ```dvc
+  $ dvc remote modify myremote url https://example.com/path/to/dir
+  ```
 
 - `auth` - authentication method to use when accessing the remote. The accepted
   values are:
@@ -575,6 +621,13 @@ more information.
 <details>
 
 ### Click for WebDAV
+
+- `url` - remote location:
+
+  ```dvc
+  $ dvc remote modify myremote url \
+        webdavs://example.com/public.php/webdav/path/to/dir
+  ```
 
 - `token` - token for WebDAV server, can be empty in case of using
   `user/password` authentication.

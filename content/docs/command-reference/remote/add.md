@@ -95,7 +95,7 @@ The following are the types of remote storage (protocols) supported:
 > [Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html).
 
 ```dvc
-$ dvc remote add -d myremote s3://bucket/path
+$ dvc remote add -d s3remote url s3://my-bucket/my-key
 ```
 
 By default, DVC expects your AWS CLI is already
@@ -130,12 +130,12 @@ To communicate with a remote object storage that supports an S3 compatible API
 (e.g. [Minio](https://min.io/),
 [DigitalOcean Spaces](https://www.digitalocean.com/products/spaces/),
 [IBM Cloud Object Storage](https://www.ibm.com/cloud/object-storage) etc.) you
-must explicitly set the `endpointurl` in the configuration:
+must explicitly configure the `endpointurl`:
 
 For example:
 
 ```dvc
-$ dvc remote add -d myremote s3://mybucket/path/to/dir
+$ dvc remote add -d myremote s3://my-bucket/path/to/dir
 $ dvc remote modify myremote endpointurl \
                     https://object-storage.example.com
 ```
@@ -147,7 +147,7 @@ S3 remotes can also be configured entirely via environment variables:
 ```dvc
 $ export AWS_ACCESS_KEY_ID="<my-access-key>"
 $ export AWS_SECRET_ACCESS_KEY="<my-secret-key>"
-$ dvc remote add -d myremote "s3://bucket/myremote"
+$ dvc remote add -d myremote s3://my-bucket/my/key
 ```
 
 For more information about the variables DVC supports, please visit
@@ -252,12 +252,12 @@ settings, use the parameters described in `dvc remote modify`.
 
 ### Click for Aliyun OSS
 
-First you need to setup OSS storage on Aliyun Cloud and then use an S3 style URL
-for OSS storage and make the endpoint value configurable. An example is shown
-below:
+First you need to setup OSS storage on Aliyun Cloud. Then, use an S3 style URL
+for OSS storage, and configure the endpoint:
 
 ```dvc
 $ dvc remote add -d myremote oss://my-bucket/path
+$ dvc remote modify myremote oss_endpoint oss-accelerate.aliyuncs.com
 ```
 
 To set key id, key secret and endpoint (or any other OSS parameter), use
@@ -265,7 +265,6 @@ To set key id, key secret and endpoint (or any other OSS parameter), use
 option to avoid committing your secrets with Git:
 
 ```dvc
-$ dvc remote modify myremote oss_endpoint <endpoint>
 $ dvc remote modify myremote --local oss_key_id my-key-id
 $ dvc remote modify myremote --local oss_key_secret my-key-secret
 ```
