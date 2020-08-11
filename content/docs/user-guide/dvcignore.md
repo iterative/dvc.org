@@ -33,7 +33,7 @@ DVC-handled directories.
 they are not produced by a pipeline [stage](/doc/command-reference/run), they
 can be lost permanently.
 
-Keep in mind, that when you add `.dvcignore` patterns that affect an existing
+Keep in mind that when you add `.dvcignore` patterns that affect an existing
 <abbr>output</abbr>, its status will change and DVC will behave as if that
 affected files were deleted.
 
