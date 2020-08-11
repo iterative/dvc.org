@@ -1,8 +1,7 @@
 # commit
 
-Record changes to DVC-tracked files in the <abbr>project</abbr>, by updating the
-`dvc.lock` or `.dvc` files and saving <abbr>outputs</abbr> to the
-<abbr>cache</abbr>.
+Record changes to DVC-tracked files in the <abbr>project</abbr>, by saving them
+to the <abbr>cache</abbr> and updating the `dvc.lock` or `.dvc` files.
 
 ## Synopsis
 
@@ -22,7 +21,7 @@ The `dvc commit` command is useful for several scenarios, when data already
 tracked by DVC changes: when a [stage](/doc/command-reference/run) or
 [pipeline](/doc/command-reference/dag) is in development/experimentation; when
 manually editing or generating DVC <abbr>outputs</abbr>; or to force the
-`dvc.lock` or `.dvc` updates without reproducing stages or pipelines. These
+`dvc.lock` or the `.dvc` updates without reproducing stages or pipelines. These
 scenarios are further detailed below.
 
 - Code or data for a stage is under active development, with multiple iterations
@@ -45,13 +44,12 @@ scenarios are further detailed below.
   other change that doesn't cause changed stage outputs. However, DVC will
   notice that some <abbr>dependencies</abbr> have changed, and expect you to
   reproduce the whole pipeline. If you're sure no pipeline results would change,
-  just use `dvc commit` to force update the `dvc.lock` or the related `.dvc`
-  file and cache.
+  use `dvc commit` to force update the `dvc.lock` or `.dvc` files and cache.
 
 Let's take a look at what is happening in the first scenario closely. Normally
 DVC commands like `dvc add`, `dvc repro` or `dvc run` commit the data to the
-<abbr>cache</abbr> after creating or updating the `dvc.lock` or `.dvc` file.
-What _commit_ means is that DVC:
+<abbr>cache</abbr> after creating or updating a `dvc.lock` or `.dvc` file. What
+_commit_ means is that DVC:
 
 - Computes a hash for the file/directory.
 - Enters the hash value and file name in the `dvc.lock` or `.dvc` file.
@@ -144,7 +142,7 @@ files in the cache.
 
 In the `featurize` stage, `src/featurization.py` is executed. A useful change to
 make is adjusting the parameters for that script. The parameters are defined in
-the `params.yaml` file. Updating the value of `max_features` to 6000 in the
+the `params.yaml` file. Updating the value of `max_features` to 6000 in
 `params.yaml` changes the resulting model:
 
 ```yaml
@@ -162,9 +160,9 @@ can run it like this:
 $ dvc repro --no-commit evaluate
 ```
 
-We can run this command as many times as we like, editing the `params.yaml` any
-way we like, and so long as we use `--no-commit`, the data does not get saved to
-the cache. Let's verify that's the case:
+We can run this command as many times as we like, editing `params.yaml` any way
+we like, and so long as we use `--no-commit`, the data does not get saved to the
+cache. Let's verify that's the case:
 
 First verification:
 
