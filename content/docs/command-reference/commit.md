@@ -20,8 +20,8 @@ positional arguments:
 The `dvc commit` command is useful for several scenarios, when data already
 tracked by DVC changes: when a [stage](/doc/command-reference/run) or
 [pipeline](/doc/command-reference/dag) is in development/experimentation; when
-manually editing or generating DVC <abbr>outputs</abbr>; or to force the
-`dvc.lock` or the `.dvc` updates without reproducing stages or pipelines. These
+manually editing or generating DVC <abbr>outputs</abbr>; or to force update the
+`dvc.lock` or `.dvc` files without reproducing stages or pipelines. These
 scenarios are further detailed below.
 
 - Code or data for a stage is under active development, with multiple iterations
@@ -142,8 +142,8 @@ files in the cache.
 
 In the `featurize` stage, `src/featurization.py` is executed. A useful change to
 make is adjusting the parameters for that script. The parameters are defined in
-the `params.yaml` file. Updating the value of the `max_features` param to
-6000 changes the resulting model:
+the `params.yaml` file. Updating the value of the `max_features` param to 6000
+changes the resulting model:
 
 ```yaml
 featurize:
@@ -151,13 +151,13 @@ featurize:
   ngrams: 2
 ```
 
-This edit introduces a change that would cause the `featurize`, `train` and
-`evaluate` stages to execute if we ran `dvc repro`. But if we want to try
-several values for `max_features` and save only the best result to the cache, we
-can run it like this:
+This edit introduces a change that would cause the `featurize` and `train`
+stages to execute if we ran `dvc repro`. But if we want to try several values
+for `max_features` and save only the best result to the cache, we can run it
+like this:
 
 ```dvc
-$ dvc repro --no-commit evaluate
+$ dvc repro --no-commit
 ```
 
 We can run this command as many times as we like, editing `params.yaml` any way
