@@ -60,11 +60,19 @@ The following config options are available for all remote types:
 
 - `url` - the remote location can always be modified. This is how DVC determines
   what type of remote it is, and thus which other config options can be modified
-  (see each type in the next section for more details). Here's a _local remote_
-  example:
+  (see each type in the next section for more details).
+
+  For example, for an Amazon S3 remote (see more details in the S3 section
+  below):
 
   ```dvc
-  $ dvc remote modify myremote url /home/user/dvcstore
+  $ dvc remote modify s3remote url s3://my-bucket/my/key
+  ```
+
+  Or a _local remote_ (a directory in the file system):
+
+  ```dvc
+  $ dvc remote modify localremote url /home/user/dvcstore
   ```
 
 - `verify` - upon downloading <abbr>cache</abbr> files (`dvc pull`, `dvc fetch`)
@@ -254,7 +262,7 @@ For more information about the variables DVC supports, please visit
 
 ### Click for Microsoft Azure Blob Storage
 
-- `url` - remote location:
+- `url` - remote location, in the `azure://<container>/<object>` format:
 
   ```dvc
   $ dvc remote modify myremote url azure://my-container-name/path
@@ -380,10 +388,10 @@ more information.
 
 ### Click for Google Cloud Storage
 
-- `url` - remote location:
+- `url` - remote location, in the `gs://<bucket>/<object>` format:
 
   ```dvc
-  $ dvc remote modify myremote url gs://bucket/path
+  $ dvc remote modify myremote url gs://my-bucket/path
   ```
 
 - `projectname` - override or provide a project name to use, if a default one is
@@ -422,7 +430,7 @@ more information.
 
 ### Click for Aliyun OSS
 
-- `url` - remote location:
+- `url` - remote location, in the `oss://<bucket>/<object>` format:
 
   ```dvc
   $ dvc remote modify myremote url oss://my-bucket/path
@@ -456,7 +464,8 @@ more information.
 
 ### Click for SSH
 
-- `url` - remote location:
+- `url` - remote location, in a regular
+  [SSH format](https://tools.ietf.org/id/draft-salowey-secsh-uri-00.html#sshsyntax):
 
   ```dvc
   $ dvc remote modify myremote url \

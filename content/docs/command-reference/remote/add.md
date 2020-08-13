@@ -237,7 +237,7 @@ modified.
 > [Create a storage bucket](https://cloud.google.com/storage/docs/creating-buckets).
 
 ```dvc
-$ dvc remote add -d myremote gs://bucket/path
+$ dvc remote add -d myremote gs://my-bucket/path
 ```
 
 By default, DVC expects your GCP CLI is already
