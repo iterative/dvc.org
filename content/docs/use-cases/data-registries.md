@@ -82,7 +82,7 @@ The actual data is stored in the project's <abbr>cache</abbr> and can be
 be accessed from other locations or by other people:
 
 ```dvc
-$ dvc remote add -d myremote s3://bucket/path
+$ dvc remote add -d myremote s3://bucket/key
 $ dvc push
 ```
 

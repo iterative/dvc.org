@@ -205,7 +205,7 @@ to learn more about the state file (database) that is used for optimization.
 > [Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html).
 
 ```dvc
-$ dvc remote add myremote s3://bucket/path
+$ dvc remote add myremote s3://bucket/key
 $ dvc config core.remote myremote
 ```
 

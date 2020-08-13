@@ -36,8 +36,8 @@ DVC supports several types of (local or) remote locations (protocols):
 | Type    | Description    | `url` format                               |
 | ------- | -------------- | ------------------------------------------ |
 | `local` | Local path     | `/path/to/local/data`                      |
-| `s3`    | Amazon S3      | `s3://mybucket/data`                       |
-| `gs`    | Google Storage | `gs://mybucket/data`                       |
+| `s3`    | Amazon S3      | `s3://bucket/key`                          |
+| `gs`    | Google Storage | `gs://bucket/data`                         |
 | `ssh`   | SSH server     | `ssh://user@example.com:/path/to/data`     |
 | `hdfs`  | HDFS to file\* | `hdfs://user@example.com/path/to/data.csv` |
 | `http`  | HTTP to file\* | `https://example.com/path/to/data.csv`     |
@@ -91,7 +91,7 @@ This command will copy an S3 object into the current working directory with the
 same file name:
 
 ```dvc
-$ dvc get-url s3://bucket/path
+$ dvc get-url s3://bucket/key
 ```
 
 By default, DVC expects that AWS CLI is already

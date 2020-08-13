@@ -93,7 +93,7 @@ The following are the types of remote storage (protocols) supported:
 > [Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html).
 
 ```dvc
-$ dvc remote add -d s3remote url s3://my-bucket/my-key
+$ dvc remote add -d s3remote url s3://mybucket/mykey
 ```
 
 By default, DVC expects your AWS CLI is already
@@ -133,7 +133,7 @@ must explicitly configure the `endpointurl`:
 For example:
 
 ```dvc
-$ dvc remote add -d myremote s3://my-bucket/path/to/dir
+$ dvc remote add -d myremote s3://mybucket/path/to/dir
 $ dvc remote modify myremote endpointurl \
                     https://object-storage.example.com
 ```
@@ -145,7 +145,7 @@ S3 remotes can also be configured entirely via environment variables:
 ```dvc
 $ export AWS_ACCESS_KEY_ID="<my-access-key>"
 $ export AWS_SECRET_ACCESS_KEY="<my-secret-key>"
-$ dvc remote add -d myremote s3://my-bucket/my/key
+$ dvc remote add -d myremote s3://mybucket/my/key
 ```
 
 For more information about the variables DVC supports, please visit
@@ -414,7 +414,7 @@ region.
 > [Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html).
 
 ```dvc
-$ dvc remote add -d myremote s3://mybucket/myproject
+$ dvc remote add -d myremote s3://mybucket/mykey
 Setting 'myremote' as a default remote.
 
 $ dvc remote modify myremote region us-east-2
@@ -424,7 +424,7 @@ The <abbr>project</abbr>'s config file (`.dvc/config`) now looks like this:
 
 ```ini
 ['remote "myremote"']
-url = s3://mybucket/myproject
+url = s3://mybucket/mykey
 region = us-east-2
 [core]
 remote = myremote
@@ -434,13 +434,13 @@ The list of remotes should now be:
 
 ```dvc
 $ dvc remote list
-myremote	s3://mybucket/myproject
+myremote	s3://mybucket/mykey
 ```
 
 You can overwrite existing remotes using `-f` with `dvc remote add`:
 
 ```dvc
-$ dvc remote add -f myremote s3://mybucket/mynewproject
+$ dvc remote add -f myremote s3://mybucket/another-key
 ```
 
 List remotes again to view the updated remote:
@@ -448,5 +448,5 @@ List remotes again to view the updated remote:
 ```dvc
 $ dvc remote list
 
-myremote	s3://mybucket/mynewproject
+myremote	s3://mybucket/another-key
 ```

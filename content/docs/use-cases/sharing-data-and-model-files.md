@@ -31,7 +31,7 @@ to the bucket where the data should be stored to the `dvc remote add` command.
 For example:
 
 ```dvc
-$ dvc remote add -d myremote s3://mybucket/myproject
+$ dvc remote add -d myremote s3://mybucket/mykey
 Setting 'myremote' as a default remote.
 ```
 
@@ -43,7 +43,7 @@ remote section for it:
 
 ```dvc
 ['remote "myremote"']
-url = s3://mybucket/myproject
+url = s3://mybucket/mykey
 [core]
 remote = myremote
 ```
