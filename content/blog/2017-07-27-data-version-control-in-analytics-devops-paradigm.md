@@ -124,7 +124,7 @@ One of the ‘juicy’ features of DVC is ability to support multiple technology
 stacks. Whether you prefer R or use promising Python-based implementations for
 your industrial data products, DVC will be able to support your pipeline
 properly. You can see it in action for both
-[Python-based](https://blog.dvc.org/how-a-data-scientist-can-improve-their-productivity)
+[Python-based](https://blog.dvc.org/how-data-scientists-can-improve-their-productivity)
 and
 [R-based](https://blog.dvc.org/r-code-and-reproducible-model-development-with-dvc)
 technical stacks.
