@@ -27,13 +27,13 @@ reading in the MLOps world!
 
 ### CML release
 
-At the beginning of July, we went live with a new project: Continuous Machine
-Learning, or CML for short. If you hadven't heard, CML is an open-source toolkit
-for adapting popular continuous integration systems like GitHub Actions and
-GitLab CI for machine learning and data science. This release marks a new stage
-for our organization: while CML can work with DVC, and both are built around
-Git, CML is designed for standalone use. That means we're supporting TWO
-projects now!
+At the beginning of July, we went live with a new project:
+[Continuous Machine Learning, or CML](https://cml.dev) for short. If you
+hadven't heard, CML is an open-source toolkit for adapting popular continuous
+integration systems like GitHub Actions and GitLab CI for machine learning and
+data science. This release marks a new stage for our organization: while CML can
+work with DVC, and both are built around Git, CML is designed for standalone
+use. That means we're supporting TWO projects now!
 
 https://media.giphy.com/media/X5i2BoQeD9kWY/giphy.gif
 
@@ -182,9 +182,10 @@ image="/uploads/images/2020-08-10/vaithy.jpg"/>
 - [Ryan Gross](https://www.linkedin.com/in/ryan-w-gross/), a VP at Pariveda
   Solutions, blogged about the future of data governance and the lessons from
   DevOps that might save the day. Honestly, you should probably start reading
-  for this cover image alone. ![](/uploads/images/2020-08-10/dataops.png)
-  _DataOps is accurately depicted as a badass flaming eagle._ Check out the blog
-  here:
+  for this cover image alone.
+
+  ![](/uploads/images/2020-08-10/dataops.png) _DataOps is accurately depicted as
+  a badass flaming eagle._ Check out the blog here:
 
 <external-link
 href="https://towardsdatascience.com/the-rise-of-dataops-from-the-ashes-of-data-governance-da3e0c3ac2c4"
