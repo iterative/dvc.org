@@ -12,8 +12,9 @@ Download a file or directory from a supported URL (for example `s3://`,
 usage: dvc get-url [-h] [-q | -v] url [out]
 
 positional arguments:
-  url            (See supported URLs in the description.)
-  out            Destination path to put files in.
+  url                   Location of the data to download.
+                        See supported URLs below.
+  out                   Destination path to put files in
 ```
 
 ## Description

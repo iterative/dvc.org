@@ -39,9 +39,8 @@ performance when the user has over 300K files in a single directory.
 
 Windows 10 includes the
 [Windows Security](https://support.microsoft.com/en-us/help/4013263/windows-10-stay-protected-with-windows-security)
-antivirus features. If user wants to avoid antivirus scans on specific folders
-or files to improve the performance, then whitelist them in Windows Security as
-per
+antivirus. If user wants to avoid antivirus scans on specific folders or files
+to improve the performance, then whitelist them in Windows Security as per
 [this](https://support.microsoft.com/en-in/help/4028485/windows-10-add-an-exclusion-to-windows-security)
 guide. For example, we can whitelist DVC binary files on Windows to speed up the
 processes.

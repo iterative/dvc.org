@@ -150,9 +150,8 @@ the possible following fields:
   (the file's location).
 - `deps`: List of <abbr>dependency</abbr> file or directory paths of this stage
   (relative to `wdir` which defaults to the file's location)
-- `params`: List of [parameter dependencies](/doc/command-reference/params).
-  These are key paths referring to a YAML, JSON or TOML file (`params.yaml` by
-  default).
+- `params`: List of <abbr>parameter<abbr> dependency keys (field names) that are
+  read from a YAML, JSON, or TOML file (`params.yaml` by default).
 - `outs`: List of <abbr>output</abbr> file or directory paths of this stage
   (relative to `wdir` which defaults to the file's location), and optionally,
   whether or not this file or directory is <abbr>cached</abbr> (`true` by
@@ -214,15 +213,15 @@ stages:
 Stage commands are listed again in `dvc.lock`, in order to know when their
 definitions change in the `dvc.yaml` file.
 
-Regular <abbr>dependencies</abbr> and all kinds of <abbr>outputs</abbr>
+Regular <abbr>dependencies</abbr> and all types of <abbr>outputs</abbr>
 (including [metrics](/doc/command-reference/metrics) and
 [plots](/doc/command-reference/plots) files) are also listed (per stage) in
 `dvc.lock`, but with an additional field to store the hash value of each file or
 directory tracked by DVC. Specifically: `md5`, `etag`, or `checksum` (same as in
 `deps` and `outs` entries of [`.dvc` files](#dvc-files)).
 
-[Parameter](/doc/command-reference/params#examples) key/value pairs are listed
-separately under `params`, grouped by parameters file.
+Full <abbr>parameters</abbr> (key and value) are listed separately under
+`params`, grouped by parameters file.
 
 ## Internal directories and files
 

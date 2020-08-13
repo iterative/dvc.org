@@ -43,8 +43,8 @@ Changes to be committed:
 $ git commit -m "Initialize DVC"
 ```
 
-DVC functionality can be split into layers and we'll explore them one by one in
-the next few sections:
+DVC features can be grouped into layers. We'll explore them one by one in the
+next few sections:
 
 - [**Data versioning**](/doc/start/data-versioning) is the core part of DVC for
   large files, datasets, ML models versioning and efficient sharing. We'll show
