@@ -41,24 +41,6 @@ stage to your list of stages in dvc.yaml.
 > Note that some of these commands use the `/home/shared` directory, typical in
 > Linux distributions.
 
-### Local file system path
-
-```dvc
-$ dvc run -n download_file
-          -d /home/shared/data.txt \
-          -o data.txt \
-          cp /home/shared/data.txt data.txt
-```
-
-### SSH
-
-```dvc
-$ dvc run -n download_file
-          -d ssh://user@example.com:/home/shared/data.txt \
-          -o data.txt \
-          scp user@example.com:/home/shared/data.txt data.txt
-```
-
 ### Amazon S3
 
 ```dvc
@@ -90,6 +72,15 @@ $ dvc run -n download_file
           gsutil cp gs://mybucket/data.txt data.txt
 ```
 
+### SSH
+
+```dvc
+$ dvc run -n download_file
+          -d ssh://user@example.com:/home/shared/data.txt \
+          -o data.txt \
+          scp user@example.com:/home/shared/data.txt data.txt
+```
+
 ### HDFS
 
 ```dvc
@@ -110,6 +101,15 @@ $ dvc run -n download_file
           -d https://example.com/data.txt \
           -o data.txt \
           wget https://example.com/data.txt -O data.txt
+```
+
+### Local file system path
+
+```dvc
+$ dvc run -n download_file
+          -d /home/shared/data.txt \
+          -o data.txt \
+          cp /home/shared/data.txt data.txt
 ```
 
 ## Example: DVC remote aliases
