@@ -5,26 +5,24 @@ directory (`.dvc/`) with the
 [internal directories and files](#internal-directories-and-files) needed for DVC
 operation.
 
-Additionally, there are a few special kind of files created by certain
-[DVC commands](/doc/command-reference):
+Additionally, there are a few special kinds of files that support DVC's
+features:
 
 - Files ending with the `.dvc` extension are placeholders to track data files
-  and directories. A <abbr>DVC project</abbr> usually has one
-  [`.dvc` file](#dvc-files) per large data file or dataset directory being
-  tracked.
-- The [`dvc.yaml` file](#dvcyaml-file) or _pipeline(s) file_ specifies stages
-  that form the pipeline(s) of a project, and their connections (_dependency
-  graph_ or DAG).
+  and directories. A <abbr>DVC project</abbr> usually has one `.dvc` file per
+  large data file or dataset directory being tracked.
+- `dvc.yaml` files (or _pipelines files_) specify stages that form the
+  pipeline(s) of a project, and how they connect (_dependency graph_ or DAG).
 
-  These typically come with a matching `dvc.lock` file to record the pipeline
-  state and track its <abbr>data artifacts</abbr>.
+  These typically have a matching `dvc.lock` file to record the pipeline state
+  and track its <abbr>data artifacts</abbr>.
 
 Both `.dvc` files and `dvc.yaml` use human-friendly YAML schemas, described
 below. We encourage you to get familiar with them so you may create, generate,
 and edit them on your own.
 
-All these should be versioned with Git (in Git-enabled
-<abbr>repositories</abbr>).
+Both the internal directory and these special files should be versioned with Git
+(in Git-enabled <abbr>repositories</abbr>).
 
 ## .dvc files
 
@@ -150,8 +148,9 @@ the possible following fields:
   (the file's location).
 - `deps`: List of <abbr>dependency</abbr> file or directory paths of this stage
   (relative to `wdir` which defaults to the file's location)
-- `params`: List of <abbr>parameter</abbr> dependency keys (field names) that
-  are read from a YAML, JSON, or TOML file (`params.yaml` by default).
+- `params`: List of [parameter dependencies](/doc/command-reference/params).
+  These are key paths referring to a YAML, JSON or TOML file (`params.yaml` by
+  default).
 - `outs`: List of <abbr>output</abbr> file or directory paths of this stage
   (relative to `wdir` which defaults to the file's location), and optionally,
   whether or not this file or directory is <abbr>cached</abbr> (`true` by
@@ -213,15 +212,15 @@ stages:
 Stage commands are listed again in `dvc.lock`, in order to know when their
 definitions change in the `dvc.yaml` file.
 
-Regular <abbr>dependencies</abbr> and all types of <abbr>outputs</abbr>
+Regular <abbr>dependencies</abbr> and all kinds of <abbr>outputs</abbr>
 (including [metrics](/doc/command-reference/metrics) and
 [plots](/doc/command-reference/plots) files) are also listed (per stage) in
 `dvc.lock`, but with an additional field to store the hash value of each file or
 directory tracked by DVC. Specifically: `md5`, `etag`, or `checksum` (same as in
 `deps` and `outs` entries of [`.dvc` files](#dvc-files)).
 
-Full <abbr>parameters</abbr> (key and value) are listed separately under
-`params`, grouped by parameters file.
+[Parameter](/doc/command-reference/params#examples) key/value pairs are listed
+separately under `params`, grouped by parameters file.
 
 ## Internal directories and files
 
