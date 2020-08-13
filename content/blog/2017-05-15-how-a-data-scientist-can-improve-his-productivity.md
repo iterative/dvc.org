@@ -1,5 +1,5 @@
 ---
-title: How A Data Scientist Can Improve His Productivity
+title: How A Data Scientist Can Improve Their Productivity
 date: 2017-05-15
 description: |
   Data science and machine learning are iterative processes. It is never
