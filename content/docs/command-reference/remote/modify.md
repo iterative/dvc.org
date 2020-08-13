@@ -265,7 +265,7 @@ For more information about the variables DVC supports, please visit
 - `url` - remote location, in the `azure://<container>/<object>` format:
 
   ```dvc
-  $ dvc remote modify myremote url azure://my-container-name/path
+  $ dvc remote modify myremote url azure://mycontainer/path
   ```
 
 - `connection_string` - connection string:

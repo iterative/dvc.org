@@ -54,12 +54,12 @@ $ dvc run -n download_file
 
 ```dvc
 $ dvc run -n download_file
-          -d azure://my-container-name/data.txt \
+          -d azure://mycontainer/data.txt \
           -o data.txt \
           az storage copy \
                      -d data.json \
                      --source-account-name my-account \
-                     --source-container my-container-name \
+                     --source-container mycontainer \
                      --source-blob data.txt
 ```
 

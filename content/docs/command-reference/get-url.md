@@ -33,14 +33,18 @@ directory will be placed inside.
 
 DVC supports several types of (local or) remote locations (protocols):
 
-| Type    | Description    | `url` format                               |
-| ------- | -------------- | ------------------------------------------ |
-| `local` | Local path     | `/path/to/local/data`                      |
-| `s3`    | Amazon S3      | `s3://bucket/key`                          |
-| `gs`    | Google Storage | `gs://bucket/data`                         |
-| `ssh`   | SSH server     | `ssh://user@example.com:/path/to/data`     |
-| `hdfs`  | HDFS to file\* | `hdfs://user@example.com/path/to/data.csv` |
-| `http`  | HTTP to file\* | `https://example.com/path/to/data.csv`     |
+| Type     | Description                  | `url` format example                                   |
+| -------- | ---------------------------- | ------------------------------------------------------ |
+| `s3`     | Amazon S3                    | `s3://bucket/key/to/data`                              |
+| `azure`  | Microsoft Azure Blob Storage | `azure://container/path/to/data`                       |
+| `gdrive` | Google Drive                 | `gdrive://<folder-id>/data`                            |
+| `gs`     | Google Cloud Storage         | `gs://bucket/path/to/data`                             |
+| `ssh`    | SSH server                   | `ssh://user@example.com:/path/to/data`                 |
+| `hdfs`   | HDFS to file\*               | `hdfs://user@example.com/path/to/data.csv`             |
+| `http`   | HTTP to file\*               | `https://example.com/path/to/data.csv`                 |
+| `webdav` | WebDav to file\*             | `webdavs://example.com/public.php/webdav/path/to/data` |
+| `local`  | Local path                   | `/path/to/local/data`                                  |
+| `remote` | Remote path\*                | `remote://remote-name/path/to/data`                    |
 
 > If you installed DVC via `pip` and plan to use cloud services as remote
 > storage, you might need to install these optional dependencies: `[s3]`,
@@ -48,8 +52,15 @@ DVC supports several types of (local or) remote locations (protocols):
 > include them all. The command should look like this: `pip install "dvc[s3]"`.
 > (This example installs `boto3` library along with DVC to support S3 storage.)
 
-\* HDFS and HTTP **do not** support downloading entire directories, only single
-files.
+\* Notes on remote locations:
+
+- HDFS, HTTP, and WebDav **do not** support downloading entire directories, only
+  single files.
+
+- `remote://myremote/path/to/file` notation just means that a DVC
+  [remote](/doc/command-reference/remote) `myremote` is defined and when DVC is
+  running. DVC automatically expands this URL into a regular S3, SSH, GS, etc
+  URL by appending `/path/to/file` to the `myremote`'s configured base path.
 
 Another way to understand the `dvc get-url` command is as a tool for downloading
 data files. On GNU/Linux systems for example, instead of `dvc get-url` with
@@ -69,19 +80,6 @@ $ wget https://example.com/path/to/data.csv
 - `-v`, `--verbose` - displays detailed tracing information.
 
 ## Examples
-
-<details>
-
-### Click and expand for a local example
-
-```dvc
-$ dvc get-url /local/path/to/data
-```
-
-The above command will copy the `/local/path/to/data` file or directory into
-`./dir`.
-
-</details>
 
 <details>
 
@@ -156,3 +154,16 @@ $ dvc get-url https://example.com/path/to/file
 ```
 
 </details>
+
+### Click and expand for a local example
+
+```dvc
+$ dvc get-url /local/path/to/data
+```
+
+The above command will copy the `/local/path/to/data` file or directory into
+`./dir`.
+
+</details>
+
+<details>
