@@ -322,7 +322,7 @@ like `ssh` and `sftp` (GNU/Linux).
 ### Click for HDFS
 
 ```dvc
-$ dvc remote add -d myremote hdfs://user@example.com/absolute/path
+$ dvc remote add -d myremote hdfs://user@example.com/path/to/dir
 ```
 
 > See also `dvc remote modify` for a full list of HDFS parameters.

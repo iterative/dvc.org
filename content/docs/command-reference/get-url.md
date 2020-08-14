@@ -33,14 +33,14 @@ directory will be placed inside.
 
 DVC supports several types of (local or) remote locations (protocols):
 
-| Type    | Description    | `url` format                                        |
-| ------- | -------------- | --------------------------------------------------- |
-| `local` | Local path     | `/path/to/local/data`                               |
-| `s3`    | Amazon S3      | `s3://mybucket/data`                                |
-| `gs`    | Google Storage | `gs://mybucket/data`                                |
-| `ssh`   | SSH server     | `ssh://user@example.com/path/from/sftp/root`        |
-| `hdfs`  | HDFS to file\* | `hdfs://user@example.com/absolute/path/to/data.csv` |
-| `http`  | HTTP to file\* | `https://example.com/path/to/data.csv`              |
+| Type    | Description    | `url` format                                 |
+| ------- | -------------- | -------------------------------------------- |
+| `local` | Local path     | `/path/to/local/data`                        |
+| `s3`    | Amazon S3      | `s3://mybucket/data`                         |
+| `gs`    | Google Storage | `gs://mybucket/data`                         |
+| `ssh`   | SSH server     | `ssh://user@example.com/path/from/sftp/root` |
+| `hdfs`  | HDFS to file\* | `hdfs://user@example.com/path/to/data.csv`   |
+| `http`  | HTTP to file\* | `https://example.com/path/to/data.csv`       |
 
 > If you installed DVC via `pip` and plan to use cloud services as remote
 > storage, you might need to install these optional dependencies: `[s3]`,

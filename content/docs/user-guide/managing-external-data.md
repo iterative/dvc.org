@@ -113,21 +113,21 @@ $ dvc run -d data \
 ```dvc
 # Add HDFS remote to be used as cache location for HDFS files
 $ dvc remote add hdfscache \
-                 hdfs://user@example.com/absolute/path/to/cache
+                 hdfs://user@example.com/cache
 
 # Tell DVC to use the 'hdfscache' remote as HDFS cache location
 $ dvc config cache.hdfs hdfscache
 
 # Add data on HDFS directly
-$ dvc add --external hdfs://user@example.com/absolute/path/to/mydata
+$ dvc add --external hdfs://user@example.com/mydata
 
 # Create the stage with an external HDFS output
 $ dvc run -d data \
           --external \
-          -o hdfs://user@example.com/absolute/path/to/data \
+          -o hdfs://user@example.com/data \
           hdfs fs -copyFromLocal \
                   data \
-                  hdfs://user@example.com/absolute/path/to/data
+                  hdfs://user@example.com/data
 ```
 
 Note that as long as there is a `hdfs://...` URL for your data, DVC can handle

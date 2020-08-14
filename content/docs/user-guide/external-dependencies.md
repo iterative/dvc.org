@@ -88,10 +88,10 @@ $ dvc run -n download_file
 
 ```dvc
 $ dvc run -n download_file
-          -d hdfs://user@example.com/absolute/path/to/data \
+          -d hdfs://user@example.com/data \
           -o data \
           hdfs fs -copyToLocal \
-                  hdfs://user@example.com/absolute/path/to/data data
+                  hdfs://user@example.com/data data
 ```
 
 ### HTTP
