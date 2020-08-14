@@ -43,46 +43,8 @@ in the same external/remote file system first.
 ## Examples
 
 For the examples, let's take a look at a [stage](/doc/command-reference/run)
-that simply moves local file to an external location, producing a `data.txt.dvc`
+that simply moves local file to an external location, producing a `data.dvc`
 DVC-file.
-
-### Local file system path
-
-The default local cache location is `.dvc/cache`, so there is no need to specify
-it explicitly.
-
-```dvc
-# Add data on an external location directly
-$ dvc add --external /home/shared/mydata
-
-# Create the stage with an external location output
-$ dvc run -d data.txt \
-          --external \
-          -o /home/shared/data.txt \
-          cp data.txt /home/shared/data.txt
-```
-
-### SSH
-
-```dvc
-# Add SSH remote to be used as cache location for SSH files
-$ dvc remote add sshcache ssh://user@example.com/abs/path/to/cache
-
-# Tell DVC to use the 'sshcache' remote as SSH cache location
-$ dvc config cache.ssh sshcache
-
-# Add data on SSH directly
-$ dvc add --external ssh://user@example.com/abs/path/to/mydata
-
-# Create the stage with an external SSH output
-$ dvc run -d data.txt \
-          --external \
-          -o ssh://user@example.com/abs/path/to/data.txt \
-          scp data.txt user@example.com:/abs/path/to/data.txt
-```
-
-> ⚠️ Please notice `/abs/path/to/...` are paths relative to the SFTP root
-> (typically the system root, in which case they're absolute paths).
 
 ### Amazon S3
 
@@ -97,10 +59,10 @@ $ dvc config cache.s3 s3cache
 $ dvc add --external s3://mybucket/mydata
 
 # Create the stage with an external S3 output
-$ dvc run -d data.txt \
+$ dvc run -d data \
           --external \
-          -o s3://mybucket/data.txt \
-          aws s3 cp data.txt s3://mybucket/data.txt
+          -o s3://mybucket/data \
+          aws s3 cp data s3://mybucket/data
 ```
 
 ### Google Cloud Storage
@@ -116,32 +78,73 @@ $ dvc config cache.gs gscache
 $ dvc add --external gs://mybucket/mydata
 
 # Create the stage with an external GS output
-$ dvc run -d data.txt \
+$ dvc run -d data \
           --external \
-          -o gs://mybucket/data.txt \
-          gsutil cp data.txt gs://mybucket/data.txt
+          -o gs://mybucket/data \
+          gsutil cp data gs://mybucket/data
 ```
+
+### SSH
+
+```dvc
+# Add SSH remote to be used as cache location for SSH files
+$ dvc remote add sshcache \
+                 ssh://user@example.com/path/from/sftp/root/to/cache
+
+# Tell DVC to use the 'sshcache' remote as SSH cache location
+$ dvc config cache.ssh sshcache
+
+# Add data on SSH directly
+$ dvc add --external \
+          ssh://user@example.com/path/from/sftp/root/to/mydata
+
+# Create the stage with an external SSH output
+$ dvc run -d data \
+          --external \
+          -o ssh://user@example.com/path/from/sftp/root/to/data \
+          scp data user@example.com:/path/from/sftp/root/to/data
+```
+
+> ⚠️ Please notice the SFTP root typically is the system root, but doesn't have
+> to be.
 
 ### HDFS
 
 ```dvc
 # Add HDFS remote to be used as cache location for HDFS files
-$ dvc remote add hdfscache hdfs://user@example.com/abs/path/to/cache
+$ dvc remote add hdfscache \
+                 hdfs://user@example.com/absolute/path/to/cache
 
 # Tell DVC to use the 'hdfscache' remote as HDFS cache location
 $ dvc config cache.hdfs hdfscache
 
 # Add data on HDFS directly
-$ dvc add --external hdfs://user@example.com/abs/path/to/mydata
+$ dvc add --external hdfs://user@example.com/absolute/path/to/mydata
 
 # Create the stage with an external HDFS output
-$ dvc run -d data.txt \
+$ dvc run -d data \
           --external \
-          -o hdfs://user@example.com/abs/path/to/data.txt \
+          -o hdfs://user@example.com/absolute/path/to/data \
           hdfs fs -copyFromLocal \
-                  data.txt \
-                  hdfs://user@example.com/abs/path/to/data.txt
+                  data \
+                  hdfs://user@example.com/absolute/path/to/data
 ```
 
 Note that as long as there is a `hdfs://...` URL for your data, DVC can handle
 it. So systems like Hadoop, Hive, and HBase are supported!
+
+### Local file system path
+
+The default local cache location is `.dvc/cache`, so there is no need to specify
+it explicitly.
+
+```dvc
+# Add data on an external location directly
+$ dvc add --external /home/shared/mydata
+
+# Create the stage with an external location output
+$ dvc run -d data \
+          --external \
+          -o /home/shared/data \
+          cp data /home/shared/data
+```
