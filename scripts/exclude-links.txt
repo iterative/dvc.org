@@ -1,5 +1,5 @@
-http://127.0.0.1:10000/devstoreaccount1;
-http://localhost:8000/
+**127.0.0.1**
+http://localhost:8000**
 http://millionsongdataset.com/pages/getting-dataset/
 http://s3-external-1.amazonaws.com/bucket/path
 https://accounts.google.com/o/oauth2/auth
@@ -7,13 +7,8 @@ https://circleci.com/gh/iterative/dvc.org
 https://drive.google.com/drive/folders/0AIac4JZqHhKmUk9PDA
 https://dvc.org/img/<filename>.gif
 https://dvc.org/uploads/images/2020-02-10/image.png
-https://example.com/data.txt
-https://example.com/file.csv
-https://example.com/path/to/data.csv
-https://example.com/path/to/dir
-https://example.com/path/to/file
-https://github.com/example/project.git
-https://github.com/example/registry
+https://example.com**
+https://github.com/example**
 https://github.com/user/proj
 https://marketplace.visualstudio.com/items?itemName=stkb.rewrap
 https://myendpoint.com
@@ -29,4 +24,4 @@ http://user@example.com/path
 http://www.reddit.com/r/MachineLearning
 https://github.com/elle/myproject
 https://www.amazon.com/DevOps-Handbook-World-Class-Reliability-Organizations-ebook/dp/B01M9ASFQ3
-
+**linkedin.com/in/**
