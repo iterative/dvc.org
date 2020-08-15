@@ -34,8 +34,8 @@ which requires that you authenticate yourself as a specific Google user and
 authorize these actions.
 
 DVC can help you get a token by guiding you through the OAuth flow in the
-browser. From there you can allow the _DVC_ Application to operate on your
-behalf. The OAuth consent screen will describe the scope of what is being
+browser. There you must consent to allow the _DVC_ Application to operate on
+your behalf. The OAuth consent screen will describe the scope of what is being
 authorized e.g. it will name the target API(s) and whether you are authorizing
 “read only” or “read and write” access.
 
@@ -78,7 +78,7 @@ your application must accurately represent itself when authenticating to Google
 API services.
 
 If you use DVC inside another package or application that executes its own logic
-— as opposed to code in DVC or by the user — you should communicate this clearly
+— as opposed to code in DVC or by the user — you must communicate this clearly
 to the user. Do not use credentials from the _DVC_ Application; instead, use
 credentials associated with your project or user.
 
