@@ -236,8 +236,8 @@ these settings, you could use the following options.
 To communicate with a remote object storage that supports an S3 compatible API
 (e.g. [Minio](https://min.io/),
 [DigitalOcean Spaces](https://www.digitalocean.com/products/spaces/),
-[IBM Cloud Object Storage](https://www.ibm.com/cloud/object-storage) etc.)
-please explicitly configure the `endpointurl`:
+[IBM Cloud Object Storage](https://www.ibm.com/cloud/object-storage) etc.),
+configure the remote's `endpointurl` explicitly:
 
 ```dvc
 $ dvc remote add -d myremote s3://my-bucket/path/to/dir
