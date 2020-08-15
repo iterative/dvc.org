@@ -27,8 +27,8 @@ and preserving data versions (input datasets, intermediate results, models,
 [metrics](/doc/command-reference/metrics), etc) remotely are the most common use
 cases for these commands.
 
-The `dvc pull` command allows us to download data from
-[remote storage](/doc/command-reference/remote) and place it in the
+The `dvc pull` command downloads data from
+[remote storage](/doc/command-reference/remote) and places it in the
 <abbr>workspace</abbr>. `dvc pull` has the same effect as running `dvc fetch`
 and `dvc checkout`.
 
@@ -43,7 +43,7 @@ using multiple workspace versions).
 
 The `targets` given to this command (if any) limit what to pull. It accepts
 paths to tracked files or directories (including paths inside tracked
-directories), `.dvc` files, or stage names (found in `dvc.yaml`).
+directories), `.dvc` files, and stage names (found in `dvc.yaml`).
 
 After the data is in the cache, `dvc pull` uses OS-specific mechanisms like
 reflinks or hardlinks to put it in the workspace, trying to avoid copying. See

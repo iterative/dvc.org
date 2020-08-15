@@ -26,7 +26,7 @@ and preserving data versions (input datasets, intermediate results, models,
 [metrics](/doc/command-reference/metrics), etc.) remotely are the most common
 use cases for these commands.
 
-The `dvc push` command allows us to upload data to
+The `dvc push` command uploads data to
 [remote storage](/doc/command-reference/remote). It doesn't save any changes to
 the code, `dvc.yaml`, or `.dvc` files (that should be saved with `git commit`
 and `git push`).
@@ -42,7 +42,7 @@ using multiple workspace versions).
 
 The `targets` given to this command (if any) limit what to push. It accepts
 paths to tracked files or directories (including paths inside tracked
-directories), `.dvc` files, or stage names (found in `dvc.yaml`).
+directories), `.dvc` files, and stage names (found in `dvc.yaml`).
 
 💡 For convenience, a Git hook is available to automate running `dvc push` after
 `git push`. See `dvc install` for more details.

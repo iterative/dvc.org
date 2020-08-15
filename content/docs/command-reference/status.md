@@ -38,9 +38,9 @@ in `dvc.lock` for stages) against the actual data files or directories in the
 workspace. The `--all-branches`, `--all-tags`, and `--all-commits` options
 enable checking data for multiple Git commits.
 
-The `targets` given to this command (if any) limit what to check. Paths to
-tracked files or directories (including paths inside tracked directories),
-`.dvc` files, or stage names (found in `dvc.yaml`) are accepted.
+The `targets` given to this command (if any) limit what to check. It accepts
+paths to tracked files or directories (including paths inside tracked
+directories), `.dvc` files, and stage names (found in `dvc.yaml`).
 
 If no differences are detected, `dvc status` prints
 `Data and pipelines are up to date.` If differences are detected by
