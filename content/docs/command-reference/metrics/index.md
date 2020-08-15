@@ -109,7 +109,7 @@ First, let's imagine we have a simple [stage](/doc/command-reference/run) that
 produces a `eval.json` metrics file:
 
 ```dvc
-$ dvc run -d code/evaluate.py -M eval.json \
+$ dvc run -n evaluate -d code/evaluate.py -M eval.json \
           python code/evaluate.py
 ```
 

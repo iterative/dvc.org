@@ -71,14 +71,14 @@ you experience any problems, please don't hesitate to ping us in our
 
 ## Writing tests
 
-We have unit tests and functional ones in `tests/unit/` and `tests/func/`
-correspondingly. Consider writing the former to ensure complicated functions and
-classes behave as expected.
+We have unit tests in `tests/unit/` and functional tests in `tests/func/`.
+Consider writing the former to ensure complicated functions and classes behave
+as expected.
 
-To test a specific functionality you will need to use functional tests alongside
-some [pytest](https://docs.pytest.org/en/latest/) fixtures to create a temporary
-directory, Git and/or DVC repo and bootstrap some files. See a
-[dir_helpers module](https://github.com/iterative/dvc/blob/master/tests/dir_helpers.py)
+For specific functionality, you will need to use functional tests alongside
+[pytest](https://docs.pytest.org/en/latest/) fixtures to create a temporary
+directory, Git and/or DVC repo, and bootstrap some files. See the
+[`dir_helpers` module](https://github.com/iterative/dvc/blob/master/tests/dir_helpers.py)
 docstring for some usage examples.
 
 ## Running tests

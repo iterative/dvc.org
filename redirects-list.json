@@ -8,6 +8,7 @@
   "^https://blog\\.dataversioncontrol\\.com/dvc-0-8-5-release-f66ef3b10684                https://github.com/iterative/dvc/releases",
   "^https://blog\\.dataversioncontrol\\.com(.+)-[a-z0-9]{12}$                             https://dvc.org/blog$1",
   "^https://blog\\.dataversioncontrol.com(.*)?                                            https://dvc.org/blog$1",
+  "/blog/how-a-data-scientist-can-improve-his-productivity                                /blog/how-data-scientists-can-improve-their-productivity",
 
   "^https://blog\\.dvc\\.org/blog/(.*)?$                                                  https://dvc.org/blog/$1",
   "^https://blog\\.dvc\\.org(.*)?$                                                        https://dvc.org/blog$1",
