@@ -1,5 +1,5 @@
 ---
-title: How A Data Scientist Can Improve His Productivity
+title: How Data Scientists Can Improve Their Productivity
 date: 2017-05-15
 description: |
   Data science and machine learning are iterative processes. It is never
@@ -20,7 +20,7 @@ tags:
 
 Data science and machine learning are iterative processes. It is never possible
 to successfully complete a data science project in a single pass. A data
-scientist constantly tries new ideas and changes steps of his pipeline:
+scientist constantly tries new ideas and changes steps of her pipeline:
 
 1. extract new features and accidentally find noise in the data;
 
