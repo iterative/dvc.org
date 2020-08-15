@@ -19,26 +19,6 @@ positional arguments:
 
 ## Description
 
-`name` and `url` are required. The `name` is used to identify the remote and
-must be unique for the project.
-
-`url` specifies a location to store your data. It can represent a cloud storage
-service, an SSH server, network-attached storage, or even a directory in the
-local file system (see all the supported remote storage types in the examples
-below). If `url` is a relative path, it will be resolved against the current
-working directory, but saved **relative to the config file location** (see LOCAL
-example below).
-
-DVC will determine the [type of remote](#supported-storage-types) based on the
-`url` provided. This may affect which parameters you can access later via
-`dvc remote modify` (note that the `url` itself can be modified).
-
-> If you installed DVC via `pip` and plan to use cloud services as remote
-> storage, you might need to install these optional dependencies: `[s3]`,
-> `[azure]`, `[gdrive]`, `[gs]`, `[oss]`, `[ssh]`. Alternatively, use `[all]` to
-> include them all. The command should look like this: `pip install "dvc[s3]"`.
-> (This example installs `boto3` library along with DVC to support S3 storage.)
-
 This command creates a `remote` section in the <abbr>DVC project</abbr>'s
 [config file](/doc/command-reference/config) and optionally assigns a default
 remote in the `core` section, if the `--default` option is used:
@@ -50,9 +30,27 @@ url = /tmp/dvc-storage
 remote = myremote
 ```
 
-For commands that accept a `--remote` option (`dvc pull`, `dvc push`,
-`dvc status`, `dvc gc`, `dvc fetch`), the default remote is used if that option
-is not used.
+`name` and `url` are required. The `name` is used to identify the remote and
+must be unique for the project.
+
+`url` specifies a location to store your data. It can represent a cloud storage
+service, an SSH server, network-attached storage, or even a directory in the
+local file system (see all the supported remote storage types in the examples
+below).
+
+DVC will determine the [type of remote](#supported-storage-types) based on the
+`url` provided. This may affect which parameters you can access later via
+`dvc remote modify` (note that the `url` itself can be modified).
+
+> If you installed DVC via `pip` and plan to use cloud services as remote
+> storage, you might need to install these optional dependencies: `[s3]`,
+> `[azure]`, `[gdrive]`, `[gs]`, `[oss]`, `[ssh]`. Alternatively, use `[all]` to
+> include them all. The command should look like this: `pip install "dvc[s3]"`.
+> (This example installs `boto3` library along with DVC to support S3 storage.)
+
+DVC supports the concept of a _default remote_. For the commands that accept a
+`--remote` option (`dvc pull`, `dvc push`, `dvc status`, `dvc gc`, `dvc fetch`),
+the default remote is used if that option is not used.
 
 Use `dvc config` to unset/change the default remote as so:
 `dvc config -u core.remote`.
