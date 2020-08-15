@@ -26,7 +26,7 @@ positional arguments:
 
 What is data remote?
 
-The same way as Github provides storage hosting for Git repositories, DVC
+The same way as GitHub provides storage hosting for Git repositories, DVC
 remotes provide a central place to keep and share data and model files. With
 this remote storage, you can pull models and data files created by colleagues
 without spending time and resources to build or process them locally. It also

@@ -12,30 +12,16 @@ usage: dvc remote add [-h] [--global | --system | --local] [-q | -v]
                       [-d] [-f] name url
 
 positional arguments:
-  name           Name of the remote.
-  url            URL. (See supported URLs in the examples below.)
+  name           Name of the remote
+  url            Remote location.
+                 See full list of supported URLs below.
 ```
 
 ## Description
 
-`name` and `url` are required. `url` specifies a location to store your data. It
-can represent a cloud storage service, an SSH server, network-attached storage,
-or even a directory in the local file system. (See all the supported remote
-storage types in the examples below.) If `url` is a relative path, it will be
-resolved against the current working directory, but saved **relative to the
-config file location** (see LOCAL example below). Whenever possible, DVC will
-create a remote directory if it doesn't exist yet. (It won't create an S3 bucket
-though, and will rely on default access settings.)
-
-> If you installed DVC via `pip` and plan to use cloud services as remote
-> storage, you might need to install these optional dependencies: `[s3]`,
-> `[azure]`, `[gdrive]`, `[gs]`, `[oss]`, `[ssh]`. Alternatively, use `[all]` to
-> include them all. The command should look like this: `pip install "dvc[s3]"`.
-> (This example installs `boto3` library along with DVC to support S3 storage.)
-
-This command creates a section in the <abbr>DVC project</abbr>'s
+This command creates a `remote` section in the <abbr>DVC project</abbr>'s
 [config file](/doc/command-reference/config) and optionally assigns a default
-remote in the core section if the `--default` option is used:
+remote in the `core` section, if the `--default` option is used:
 
 ```ini
 ['remote "myremote"']
@@ -43,6 +29,24 @@ url = /tmp/dvc-storage
 [core]
 remote = myremote
 ```
+
+`name` and `url` are required. The `name` is used to identify the remote and
+must be unique for the project.
+
+`url` specifies a location to store your data. It can represent a cloud storage
+service, an SSH server, network-attached storage, or even a directory in the
+local file system (see all the supported remote storage types in the examples
+below).
+
+DVC will determine the [type of remote](#supported-storage-types) based on the
+`url` provided. This may affect which parameters you can access later via
+`dvc remote modify` (note that the `url` itself can be modified).
+
+> If you installed DVC via `pip` and plan to use cloud services as remote
+> storage, you might need to install these optional dependencies: `[s3]`,
+> `[azure]`, `[gdrive]`, `[gs]`, `[oss]`, `[ssh]`. Alternatively, use `[all]` to
+> include them all. The command should look like this: `pip install "dvc[s3]"`.
+> (This example installs `boto3` library along with DVC to support S3 storage.)
 
 DVC supports the concept of a _default remote_. For the commands that accept a
 `--remote` option (`dvc pull`, `dvc push`, `dvc status`, `dvc gc`, `dvc fetch`),
@@ -90,7 +94,7 @@ The following are the types of remote storage (protocols) supported:
 > [Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html).
 
 ```dvc
-$ dvc remote add -d myremote s3://bucket/path
+$ dvc remote add -d s3remote url s3://my-bucket/my-key
 ```
 
 By default, DVC expects your AWS CLI is already
@@ -125,12 +129,12 @@ To communicate with a remote object storage that supports an S3 compatible API
 (e.g. [Minio](https://min.io/),
 [DigitalOcean Spaces](https://www.digitalocean.com/products/spaces/),
 [IBM Cloud Object Storage](https://www.ibm.com/cloud/object-storage) etc.) you
-must explicitly set the `endpointurl` in the configuration:
+must explicitly configure the `endpointurl`:
 
 For example:
 
 ```dvc
-$ dvc remote add -d myremote s3://mybucket/path/to/dir
+$ dvc remote add -d myremote s3://my-bucket/path/to/dir
 $ dvc remote modify myremote endpointurl \
                     https://object-storage.example.com
 ```
@@ -142,7 +146,7 @@ S3 remotes can also be configured entirely via environment variables:
 ```dvc
 $ export AWS_ACCESS_KEY_ID="<my-access-key>"
 $ export AWS_SECRET_ACCESS_KEY="<my-secret-key>"
-$ dvc remote add -d myremote "s3://bucket/myremote"
+$ dvc remote add -d myremote s3://my-bucket/my/key
 ```
 
 For more information about the variables DVC supports, please visit
@@ -233,7 +237,7 @@ modified.
 > [Create a storage bucket](https://cloud.google.com/storage/docs/creating-buckets).
 
 ```dvc
-$ dvc remote add -d myremote gs://bucket/path
+$ dvc remote add -d myremote gs://my-bucket/path
 ```
 
 By default, DVC expects your GCP CLI is already
@@ -247,12 +251,12 @@ settings, use the parameters described in `dvc remote modify`.
 
 ### Click for Aliyun OSS
 
-First you need to setup OSS storage on Aliyun Cloud and then use an S3 style URL
-for OSS storage and make the endpoint value configurable. An example is shown
-below:
+First you need to setup OSS storage on Aliyun Cloud. Then, use an S3 style URL
+for OSS storage, and configure the endpoint:
 
 ```dvc
 $ dvc remote add -d myremote oss://my-bucket/path
+$ dvc remote modify myremote oss_endpoint oss-accelerate.aliyuncs.com
 ```
 
 To set key id, key secret and endpoint (or any other OSS parameter), use
@@ -260,7 +264,6 @@ To set key id, key secret and endpoint (or any other OSS parameter), use
 option to avoid committing your secrets with Git:
 
 ```dvc
-$ dvc remote modify myremote oss_endpoint <endpoint>
 $ dvc remote modify myremote --local oss_key_id my-key-id
 $ dvc remote modify myremote --local oss_key_secret my-key-secret
 ```
@@ -349,6 +352,14 @@ $ dvc remote add -d myremote https://example.com/path/to/dir
 $ dvc remote add -d myremote webdavs://example.com/public.php/webdav
 ```
 
+If your remote is located in a subfolder of your WebDAV server e.g.
+`/path/to/dir`, this may be appended to the base URL:
+
+```dvc
+$ dvc remote add -d myremote \
+                    webdavs://example.com/public.php/webdav/path/to/dir
+```
+
 > See also `dvc remote modify` for a full list of WebDAV parameters.
 
 </details>
@@ -378,7 +389,8 @@ $ cat .dvc/config
 
 > Note that the absolute path `/tmp/my-dvc-storage` is saved as is.
 
-Using a relative path:
+Using a relative path. It will be resolved against the current working
+directory, but saved **relative to the config file location**:
 
 ```dvc
 $ dvc remote add -d myremote ../my-dvc-storage
