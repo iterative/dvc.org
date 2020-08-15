@@ -47,14 +47,10 @@ directories), `.dvc` files, and stage names (found in `dvc.yaml`).
 💡 For convenience, a Git hook is available to automate running `dvc push` after
 `git push`. See `dvc install` for more details.
 
-Under the hood, a few actions are taken:
-
-- The push command checks the appropriate `dvc.lock` and `.dvc` files in the
-  <abbr>workspace</abbr>.
-- For each <abbr>output</abbr> referenced in each stage or `.dvc` file, DVC
-  finds a corresponding file or directory in the <abbr>cache</abbr>. DVC then
-  gathers a list of files missing from the remote storage.
-- The cached files missing from remote storage, if any, are uploaded.
+For all <abbr>outputs</abbr> referenced in each target, DVC finds the
+corresponding files and directories in the <abbr>cache</abbr> (identified by
+hash values saved in `dvc.yaml` and `.dvc` files). DVC then gathers a list of
+files missing from the remote storage, and uploads them.
 
 Note that the `dvc status -c` command can list files tracked by DVC that are new
 in the cache (compared to the default remote.) It can be used to see what files
