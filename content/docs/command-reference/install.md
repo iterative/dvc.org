@@ -276,8 +276,8 @@ featurize:
 
 We see that the output of `dvc status` has appeared in the `git commit`
 interaction. This new behavior corresponds to the Git hook installed, and it
-informs us that the workspace is out of sync. Therefore, we know that
-`dvc repro` command is needed:
+informs us that the workspace is out of sync. Therefore, we can conclude that
+the `dvc repro` command is needed now:
 
 ```dvc
 $ dvc repro
@@ -296,7 +296,8 @@ Data and pipelines are up to date.
  5 files changed, 12 insertions(+), 12 deletions(-)
 ```
 
-After reproducing the pipeline, the data files should be in sync with the code
-and configuration, and we want to commit the changes with Git. In doing so,
-`dvc status` is run automatically again, informing us that the data files have
-been updated indeed, with the `Data and pipelines are up to date.` message.
+After reproducing this pipeline up to the "evaluate" stage, the data files are
+in sync with the code/config files, but we must now commit the changes with Git.
+Looking closely we see that `dvc status` is used again, informing us that the
+data files have been updated, with the `Data and pipelines are up to date.`
+message.
