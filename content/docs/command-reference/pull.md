@@ -18,21 +18,23 @@ positional arguments:
 
 ## Description
 
-The `dvc pull` and `dvc push` commands are the means for uploading and
+The `dvc push` and `dvc pull` commands are the means for uploading and
 downloading data to and from remote storage (S3, SSH, GCS, etc.). These commands
-are similar to `git pull` and `git push`, respectively.
-
+are similar to `git push` and `git pull`, respectively.
 [Data sharing](/doc/use-cases/sharing-data-and-model-files) across environments
 and preserving data versions (input datasets, intermediate results, models,
-[metrics](/doc/command-reference/metrics), etc) remotely are the most common use
-cases for these commands.
+[metrics](/doc/command-reference/metrics), etc.) remotely are the most common
+use cases for these commands.
 
-The `dvc pull` command downloads data from
-[remote storage](/doc/command-reference/remote) and places it in the
-<abbr>workspace</abbr>. `dvc pull` has the same effect as running `dvc fetch`
-and `dvc checkout`.
+`dvc pull` downloads data from [remote storage](/doc/command-reference/remote)
+and places it in the <abbr>workspace</abbr>. It has the same effect as running
+`dvc fetch` and `dvc checkout`.
 
-The default remote is used (see `dvc config core.remote`) unless the `--remote`
+> Note that pulling data does not change any `dvc.yaml` or `.dvc` files, nor
+> does it save any changes to the code, `dvc.lock`, or `.dvc` files (that should
+> be saved with `git commit` and `git push`).
+
+The default remote is used (see `dvc remote default`) unless the `--remote`
 option is used. See `dvc remote` for more information on how to configure a
 remote.
 
@@ -45,13 +47,13 @@ The `targets` given to this command (if any) limit what to pull. It accepts
 paths to tracked files or directories (including paths inside tracked
 directories), `.dvc` files, and stage names (found in `dvc.yaml`).
 
-After the data is in the cache, `dvc pull` uses OS-specific mechanisms like
-reflinks or hardlinks to put it in the workspace, trying to avoid copying. See
-`dvc checkout` for more details.
+After the data is in the <abbr>cache</abbr>, `dvc pull` uses OS-specific
+mechanisms like reflinks or hardlinks to put it in the workspace, trying to
+avoid copying. See `dvc checkout` for more details.
 
 Note that the command `dvc status -c` can list files referenced in current
-stages (in `dvc.yaml`) or `.dvc` files, but missing from the <abbr>cache</abbr>.
-It can be used to see what files `dvc pull` would download.
+stages (in `dvc.yaml`) or `.dvc` files, but missing from the cache. It can be
+used to see what files `dvc pull` would download.
 
 ## Options
 
