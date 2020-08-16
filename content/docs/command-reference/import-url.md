@@ -14,8 +14,9 @@ usage: dvc import-url [-h] [-q | -v] [--file <filename>] [--no-exec]
                       url [out]
 
 positional arguments:
-  url                   (See supported URLs in the description.)
-  out                   Destination path to put files in.
+  url                   Location of the data to import.
+                        See supported URLs below.
+  out                   Destination path to put files in
 ```
 
 ## Description
