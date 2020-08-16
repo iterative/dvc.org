@@ -11,8 +11,8 @@ We also provide a [schema](https://github.com/iterative/dvcyaml-schema) for
 
 ## Visual Studio Code
 
-To make `.dvc` files and `dvc.lock` files as YAML, you should add following in
-the settings:
+To make `dvc.lock` and `.dvc` files recognized as YAML, add the following in
+`settings.json`:
 
 ```json
 "files.associations": {
