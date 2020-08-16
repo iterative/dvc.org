@@ -49,7 +49,7 @@ directories), `.dvc` files, and stage names (found in `dvc.yaml`).
 
 For all <abbr>outputs</abbr> referenced in each target, DVC finds the
 corresponding files and directories in the <abbr>cache</abbr> (identified by
-hash values saved in `dvc.yaml` and `.dvc` files). DVC then gathers a list of
+hash values saved in `dvc.lock` and `.dvc` files). DVC then gathers a list of
 files missing from the remote storage, and uploads them.
 
 Note that the `dvc status -c` command can list files tracked by DVC that are new
