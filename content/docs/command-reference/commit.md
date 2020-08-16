@@ -151,10 +151,10 @@ featurize:
   ngrams: 2
 ```
 
-This edit introduces a change that would cause the `featurize` and `train`
-stages to execute if we ran `dvc repro`. But if we want to try several values
-for `max_features` and save only the best result to the cache, we can run it
-like this:
+This edit introduces a change that would cause the `featurize`, `train` and
+`evaluate` stages to execute if we ran `dvc repro`. But if we want to try
+several values for `max_features` and save only the best result to the cache, we
+can run it like this:
 
 ```dvc
 $ dvc repro --no-commit
