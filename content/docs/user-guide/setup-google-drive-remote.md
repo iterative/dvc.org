@@ -211,16 +211,13 @@ these credentials with others**. Each team member should go through this process
 individually.
 
 If you use multiple GDrive remotes, by default they will be sharing the same
-`.dvc/tmp/gdrive-user-credentials.json` credentials file. It can be overridden
-with the `gdrive_user_credentials_file` setting:
+`.dvc/tmp/gdrive-user-credentials.json` file. It can be overridden with the
+`gdrive_user_credentials_file` setting:
 
 ```dvc
 $ dvc remote modify myremote gdrive_user_credentials_file \
                     .dvc/tmp/myremote-credentials.json
 ```
-
-> If you edit the config file manually, value must be either an absolute path or
-> a path **relative to the config file location**.
 
 ⚠️ In order to prevent unauthorized access to your Google Drive, **never
 commit** this file with Git. Instead, add it into `.gitignore` and never share

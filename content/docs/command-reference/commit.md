@@ -34,7 +34,7 @@ detailed below.
   `dvc commit` when needed. See `dvc install` for more details.
 
 - It's always possible to manually execute the source code used in a stage
-  without DVC (outputs should be unprotected or removed first in certain cases,
+  without DVC (outputs must be unprotected or removed first in certain cases,
   see `dvc unprotect`). Once a desirable result is reached, use `dvc add` or
   `dvc commit` as appropriate to update DVC-files and store changed data to the
   cache.
