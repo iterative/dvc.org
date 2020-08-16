@@ -21,9 +21,10 @@ To make `dvc.lock` and `.dvc` files recognized as YAML, add the following in
 }
 ```
 
-To get auto-completion and syntax checks, you can install
-[YAML extension](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml)
-that provides auto-completion and syntax checks for `dvc.yaml` files.
+Enable enhanced
+[IntelliSense](https://code.visualstudio.com/docs/editor/intellisense),
+on `dvc.yaml` files by installing the
+[YAML extension](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml).
 
 ## Pycharm/Intellij
 
