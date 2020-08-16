@@ -21,8 +21,8 @@ positional arguments:
 
 `dvc status` searches for changes in the existing tracked data and pipelines,
 either showing which files or directories have changed in the
-<abbr>workspace</abbr> and must be added or reproduced again (with `dvc add` or
-`dvc repro`); or differences between <abbr>cache</abbr> vs. remote storage
+<abbr>workspace</abbr> and should be added or reproduced again (with `dvc add`
+or `dvc repro`); or differences between <abbr>cache</abbr> vs. remote storage
 (implying `dvc push` or `dvc pull` should be run to synchronize them). The
 _remote_ mode is triggered by using the `--cloud` or `--remote` options:
 

@@ -80,7 +80,7 @@ API services.
 If you use DVC inside another package or application that executes its own logic
 — as opposed to code in DVC or by the user — you must communicate this clearly
 to the user. Do not use credentials from the _DVC_ Application; instead, use
-credentials associated with your project or your user.
+credentials associated with your project or user.
 
 ## Acknowledgments
 
