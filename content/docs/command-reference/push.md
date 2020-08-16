@@ -36,9 +36,9 @@ option is used. See `dvc remote` for more information on how to configure a
 remote.
 
 Without arguments, it uploads all files and directories missing from remote
-storage, found as <abbr>outputs</abbr> in the stages (in `dvc.lock`) or `.dvc`
-files present in the workspace (the `--all-branches` and `--all-tags` enable
-using multiple workspace versions).
+storage, found as <abbr>outputs</abbr> of the stages or `.dvc` files present in
+the workspace (the `--all-branches` and `--all-tags` enable using multiple
+workspace versions).
 
 The `targets` given to this command (if any) limit what to push. It accepts
 paths to tracked files or directories (including paths inside tracked
