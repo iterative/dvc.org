@@ -6,8 +6,8 @@ your data and transformations.
 
 The file itself is in a simple YAML format.
 
-We also provide a [schema](https://github.com/iterative/dvcyaml-schema) for
-`dvc.yaml` that enables automatic syntax checks and auto-completion.
+We maintain a [schema](https://github.com/iterative/dvcyaml-schema) for
+`dvc.yaml` that can enable IDE syntax checks and auto-completion.
 
 ## Visual Studio Code
 
