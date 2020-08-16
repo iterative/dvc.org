@@ -28,9 +28,9 @@ on `dvc.yaml` files by installing the
 
 ## PyCharm/IntelliJ
 
-Pycharm/Intellij should ask how to associate file types for `.dvc` and
-`dvc.lock` files when you first open them. If not, follow
-[Pycharm's guide](https://www.jetbrains.com/help/pycharm/creating-and-registering-file-types.html)
+The IDE should ask how to associate file types for `dvc.lock` and `.dvc` files
+when you first open one of them. If not, follow
+[this guide](https://www.jetbrains.com/help/pycharm/creating-and-registering-file-types.html)
 to set them manually.
 
 Pycharm, by default, provides auto-completion and syntax checks for `dvc.yaml`
