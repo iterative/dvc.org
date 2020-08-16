@@ -33,9 +33,9 @@ when you first open one of them. If not, follow
 [this guide](https://www.jetbrains.com/help/pycharm/creating-and-registering-file-types.html)
 to set them manually.
 
-Pycharm, by default, provides auto-completion and syntax checks for `dvc.yaml`
-files. If not, refer to the
-[usage instructions for installing schema](https://github.com/iterative/dvcyaml-schema).
+PyCharm should provide auto-completion and syntax checks for `dvc.yaml` files
+out-of-box. If not, refer to
+[these instructions](https://github.com/iterative/dvcyaml-schema).
 
 ## Vim
 
