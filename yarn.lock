@@ -14397,10 +14397,10 @@ replace-ext@^1.0.0:
   resolved "https://registry.yarnpkg.com/replace-ext/-/replace-ext-1.0.1.tgz#2d6d996d04a15855d967443631dd5f77825b016a"
   integrity sha512-yD5BHCe7quCgBph4rMQ+0KkIRKwWCrHDOX1p1Gp6HwjPM5kVoCdKGNhN7ydqqsX6lJEnQDKZ/tFMiEdQ1dvPEw==
 
-repo-link-check@^0.0.5:
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/repo-link-check/-/repo-link-check-0.0.5.tgz#a5bd47157c358b67b2c8393d79f14a56ca9b001f"
-  integrity sha512-raAF7/79BdnjMvM1Zj5U8i1tY/1iRHF08368sF78ITvBHYQUH0XZvBZWPOM+JnERtHVSmSZN03+h9bY7nuRSIQ==
+repo-link-check@^0.0.6:
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/repo-link-check/-/repo-link-check-0.0.6.tgz#39cf9270def4a096352502b2c8315603e43e4023"
+  integrity sha512-+MlbKc57BmzeN0hoy2VGWmfYe11IWp6oK4rEPfS1nZ4fzq9mDA2gJXyRkVM9OzWWt1gX+TaXOMrOHMaS+FGW0Q==
   dependencies:
     fast-glob "^3.2.4"
     micromatch "^4.0.2"

@@ -26,6 +26,9 @@ tags:
 
 [Fail](/itsabadlink.com)
 
+[linkedin in page that always gives 999](https://www.linkedin.com/in/shouldbefiltered)
+[linkedin home which is fine and not selected by the glob](https://www.linkedin.com)
+
 Welcome to our August roundup of cool news, new releases, and recommended
 reading in the MLOps world!
 
