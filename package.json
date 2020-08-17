@@ -16,7 +16,7 @@
     "format": "prettier --write",
     "lint-ts": "tsc --noEmit --skipLibCheck && eslint --ext .json,.js,.ts,.tsx .",
     "lint-css": "stylelint \"src/**/*.css\"",
-    "link-check": "LINK_CHECK_EXCLUSION_FILE='./scripts/exclude-links.txt' LINK_CHECK_FILE_FILTER='content/*' LINK_CHECK_ROOT_URL='https://dvc.org' yarn run link-check-git-diff"
+    "link-check": "repo-link-check --rootURL='https://www.dvc.org' --fileIncludePattern='**' --linkExcludeFile='scripts/exclude-links.txt' --always-exit-zero"
   },
   "repository": {
     "type": "git",
@@ -53,7 +53,6 @@
     "github-markdown-css": "^4.0.0",
     "iso-url": "^0.4.7",
     "isomorphic-fetch": "^2.2.1",
-    "link-check-git-diff": "^0.0.12",
     "lodash": "^4.17.19",
     "moment": "^2.25.3",
     "nanoid": "^3.0.2",
@@ -74,6 +73,7 @@
     "react-slick": "^0.25.2",
     "react-use": "^14.0.0",
     "rehype-react": "^5.0.1",
+    "repo-link-check": "^0.0.4",
     "reset-css": "^5.0.1",
     "s3-client": "^4.4.2",
     "scroll": "^3.0.1",

@@ -20,6 +20,12 @@ tags:
   - Meetup
 ---
 
+[Google](https://www.google.com)
+
+[Blog](/blog)
+
+[Fail](/itsabadlink.com)
+
 Welcome to our August roundup of cool news, new releases, and recommended
 reading in the MLOps world!
 
