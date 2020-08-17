@@ -25,3 +25,5 @@ http://www.reddit.com/r/MachineLearning
 https://github.com/elle/myproject
 https://www.amazon.com/DevOps-Handbook-World-Class-Reliability-Organizations-ebook/dp/B01M9ASFQ3
 **linkedin.com/in/**
+link
+/img/<filename>.gif
