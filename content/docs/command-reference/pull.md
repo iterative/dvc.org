@@ -1,8 +1,8 @@
 # pull
 
 Download tracked files or directories from
-[remote storage](/doc/command-reference/remote) to the <abbr>cache</abbr> and
-<abbr>workspace</abbr>, based on the current `dvc.yaml` and `.dvc` files.
+[remote storage](/doc/command-reference/remote) based on the current `dvc.yaml`
+and `.dvc` files, and make them visible in the <abbr>workspace</abbr>.
 
 ## Synopsis
 
@@ -26,22 +26,42 @@ and preserving data versions (input datasets, intermediate results, models,
 [metrics](/doc/command-reference/metrics), etc.) remotely are the most common
 use cases for these commands.
 
-`dvc pull` downloads data from [remote storage](/doc/command-reference/remote)
-and places it in the <abbr>workspace</abbr>. It has the same effect as running
-`dvc fetch` and `dvc checkout`.
+`dvc pull` downloads tracked data from
+[remote storage](/doc/command-reference/remote) to the <abbr>cache</abbr>, and
+links (or copies) the files or directories to the <abbr>workspace</abbr> (refer
+to `dvc config cache.type`).
 
-> Note that pulling data does not change any `dvc.yaml` or `.dvc` files, nor
-> does it save any changes to the code, `dvc.lock`, or `.dvc` files (that should
-> be saved with `git commit` and `git push`).
+> Note that pulling data does not affect code, `dvc.yaml`, or `.dvc` files.
+> Those should be downloaded with `git pull`.
+
+It has the same effect as running `dvc fetch` and `dvc checkout`:
+
+```
+Controlled files             Commands
+---------------- ---------------------------------
+
+remote storage
+     +
+     |         +------------+
+     | - - - - | dvc fetch  | ++
+     v         +------------+   +   +----------+
+project's cache                  ++ | dvc pull |
+     +         +------------+   +   +----------+
+     | - - - - |dvc checkout| ++
+     |         +------------+
+     v
+ workspace
+```
 
 The default remote is used (see `dvc remote default`) unless the `--remote`
 option is used. See `dvc remote` for more information on how to configure a
 remote.
 
 Without arguments, it downloads all files and directories missing from the
-project, found as <abbr>outputs</abbr> of the stages or `.dvc` files present in
-the workspace (the `--all-branches` and `--all-tags` enable using multiple
-workspace versions).
+project, found as <abbr>outputs</abbr> of the
+[stages](/doc/command-reference/run) or `.dvc` files present in the workspace.
+The `--all-branches`, `--all-tags`, and `--all-commits` options enable pulling
+multiple Git commits.
 
 The `targets` given to this command (if any) limit what to pull. It accepts
 paths to tracked files or directories (including paths inside tracked

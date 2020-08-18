@@ -1,7 +1,8 @@
 # push
 
 Upload tracked files or directories to
-[remote storage](/doc/command-reference/remote).
+[remote storage](/doc/command-reference/remote) based on the current `dvc.yaml`
+and `.dvc` files.
 
 ## Synopsis
 
@@ -25,20 +26,21 @@ and preserving data versions (input datasets, intermediate results, models,
 [metrics](/doc/command-reference/metrics), etc.) remotely are the most common
 use cases for these commands.
 
-`dvc push` uploads data to [remote storage](/doc/command-reference/remote).
+`dvc push` uploads data from the <abbr>cache</abbr> to
+[remote storage](/doc/command-reference/remote).
 
-> Note that pushing data does not change any `dvc.yaml` or `.dvc` files, nor
-> does it save any changes to the code, `dvc.lock`, or `.dvc` files (that should
-> be saved with `git commit` and `git push`).
+> Note that pushing data does not affect code, `dvc.yaml`, or `.dvc` files.
+> Those should be uploaded with `git push`.
 
 The default remote is used (see `dvc remote default`) unless the `--remote`
 option is used. See `dvc remote` for more information on how to configure a
 remote.
 
 Without arguments, it uploads all files and directories missing from remote
-storage, found as <abbr>outputs</abbr> of the stages or `.dvc` files present in
-the workspace (the `--all-branches` and `--all-tags` enable using multiple
-workspace versions).
+storage, found as <abbr>outputs</abbr> of the
+[stages](/doc/command-reference/run) or `.dvc` files present in the workspace.
+The `--all-branches`, `--all-tags`, and `--all-commits` options enable pushing
+multiple Git commits.
 
 The `targets` given to this command (if any) limit what to push. It accepts
 paths to tracked files or directories (including paths inside tracked
