@@ -39,7 +39,7 @@ out-of-box. If not, refer to
 
 ## Vim
 
-In order to recognize `.dvc` and `dvc.lock` files as YAML in Vim, you should
+In order to recognize `dvc.lock` and `.dvc` files as YAML in Vim, you should
 add:
 
 ```vim
