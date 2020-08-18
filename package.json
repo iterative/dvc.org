@@ -16,8 +16,8 @@
     "format": "prettier --write",
     "lint-ts": "tsc --noEmit --skipLibCheck && eslint --ext .json,.js,.ts,.tsx .",
     "lint-css": "stylelint \"src/**/*.css\"",
-    "link-check": "repo-link-check --rootURL='https://www.dvc.org' --file-include-pattern='{.github,content,src}/**/*.{css,js,jsx,md,tsx,ts,json}' --link-exclude-file='./scripts/exclude-links.txt' --file-exclude-pattern='content/docs/user-guide/contributing/blog.md' --always-exit-zero",
-    "link-check-all": "repo-link-check --rootURL='https://www.dvc.org' --file-include-pattern='{.github,content,src}/**/*.{css,js,jsx,md,tsx,ts,json}' --link-exclude-file='./scripts/exclude-links.txt' --file-exclude-pattern='content/docs/user-guide/contributing/blog.md' --always-exit-zero --source=filesystem --report-unused-patterns"
+    "link-check": "repo-link-check --rootURL='https://www.dvc.org' --file-exclude-pattern='**/*.test.js' --file-include-pattern='{.github,content,src}/**/*.{css,js,jsx,md,tsx,ts,json}' --link-exclude-file='./scripts/exclude-links.txt' --always-exit-zero",
+    "link-check-all": "repo-link-check --rootURL='https://www.dvc.org' --file-exclude-pattern='**/*.test.js' --file-include-pattern='{.github,content,src}/**/*.{css,js,jsx,md,tsx,ts,json}' --link-exclude-file='./scripts/exclude-links.txt' --always-exit-zero --source=filesystem --report-unused-patterns"
   },
   "repository": {
     "type": "git",
@@ -74,7 +74,7 @@
     "react-slick": "^0.25.2",
     "react-use": "^14.0.0",
     "rehype-react": "^5.0.1",
-    "repo-link-check": "^0.0.10",
+    "repo-link-check": "^0.0.13",
     "reset-css": "^5.0.1",
     "s3-client": "^4.4.2",
     "scroll": "^3.0.1",
