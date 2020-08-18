@@ -1,6 +1,6 @@
 **127.0.0.1**
 http://localhost:8000**
-http://millionsongdataset.com/pages/getting-dataset/
+http://millionsongdataset.com/pages/getting-dataset/#subset
 http://s3-external-1.amazonaws.com/bucket/path
 https://accounts.google.com/o/oauth2/auth
 https://circleci.com/gh/iterative/dvc.org
