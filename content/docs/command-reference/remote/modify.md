@@ -548,8 +548,7 @@ more information.
 - `url` - remote location:
 
   ```dvc
-  $ dvc remote modify myremote url \
-                      hdfs://user@example.com/absolute/path
+  $ dvc remote modify myremote url hdfs://user@example.com/path/to/dir
   ```
 
 - `user` - username to access the remote.
