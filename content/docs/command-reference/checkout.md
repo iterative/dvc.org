@@ -23,7 +23,7 @@ corresponding versions of the DVC-tracked files and directories from the
 
 The `targets` given to this command (if any) limit what to checkout. It accepts
 paths to tracked files or directories (including paths inside tracked
-directories), `.dvc` files, or stage names (found in `dvc.yaml`).
+directories), `.dvc` files, and stage names (found in `dvc.yaml`).
 
 The execution of `dvc checkout` does the following:
 

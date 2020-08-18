@@ -38,9 +38,9 @@ in `dvc.lock` for stages) against the actual data files or directories in the
 workspace. The `--all-branches`, `--all-tags`, and `--all-commits` options
 enable checking data for multiple Git commits.
 
-The `targets` given to this command (if any) limit what to check. Paths to
-tracked files or directories (including paths inside tracked directories),
-`.dvc` files, or stage names (found in `dvc.yaml`) are accepted.
+The `targets` given to this command (if any) limit what to check. It accepts
+paths to tracked files or directories (including paths inside tracked
+directories), `.dvc` files, and stage names (found in `dvc.yaml`).
 
 If no differences are detected, `dvc status` prints
 `Data and pipelines are up to date.` If differences are detected by
@@ -48,6 +48,8 @@ If no differences are detected, `dvc status` prints
 differences, the changes in <abbr>dependencies</abbr> and/or
 <abbr>outputs</abbr> that differ are listed. For each item listed, either the
 file name or hash is shown, along with a _state description_, as detailed below:
+
+### Local workspace status
 
 - _changed checksum_ means that the `.dvc` file hash has changed (e.g. someone
   manually edited it).
@@ -77,7 +79,7 @@ file name or hash is shown, along with a _state description_, as detailed below:
   original data source has changed). The imported data can be brought to its
   latest version by using `dvc update`.
 
-**For comparison against remote storage:**
+### Comparison against remote storage
 
 - _new_ means that the file/directory exists in the cache but not in remote
   storage.
