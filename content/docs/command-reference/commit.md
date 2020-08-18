@@ -226,7 +226,7 @@ the new instance of `model.pkl` is there.
 
 It is also possible to execute the commands that are executed by `dvc repro` by
 hand. You won't have DVC helping you, but you have the freedom to run any
-command you like, even ones not defined in `dvc.yaml`. For example:
+command you like, even ones not defined in `dvc.yaml` stages. For example:
 
 ```dvc
 $ python src/featurization.py data/prepared data/features
