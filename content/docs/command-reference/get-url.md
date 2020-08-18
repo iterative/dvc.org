@@ -4,7 +4,7 @@ Download a file or directory from a supported URL (for example `s3://`,
 `ssh://`, and other protocols) into the local file system.
 
 > See `dvc get` to download data/model files or directories from other <abbr>DVC
-> repositories</abbr> (e.g. hosted on Github).
+> repositories</abbr> (e.g. hosted on GitHub).
 
 ## Synopsis
 
@@ -12,8 +12,9 @@ Download a file or directory from a supported URL (for example `s3://`,
 usage: dvc get-url [-h] [-q | -v] url [out]
 
 positional arguments:
-  url            (See supported URLs in the description.)
-  out            Destination path to put files in.
+  url                   Location of the data to download.
+                        See supported URLs below.
+  out                   Destination path to put files in
 ```
 
 ## Description

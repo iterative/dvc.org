@@ -7,8 +7,8 @@ run `dvc init`.
 ## Motivation
 
 Analytics help us to decide on how best to design future features and prioritize
-current work. Anonymous aggregate user analytics allow us to prioritize fixes
-and features based on how, where and when people use DVC. For example:
+current work. Anonymous aggregates of user analytics allow us to prioritize
+fixes and improvements based on how, where and when people use DVC. For example:
 
 - If reflinks (depends on a file system type) are supported for most users, we
   can keep cache protected mode off by default (see `dvc unprotect`).

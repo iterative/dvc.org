@@ -20,7 +20,7 @@ After creating <abbr>import stages</abbr> (`.dvc` files) with `dvc import` or
 `dvc import-url`, the data source can change. Use `dvc update` to bring these
 imported file, directory, or <abbr>data artifact</abbr> up to date.
 
-To indicate which import stages to update, we must specify the corresponding
+To indicate which import stages to update, we can specify the corresponding
 `.dvc` file `targets` as command arguments.
 
 Note that import stages are considered always frozen, meaning that if you run

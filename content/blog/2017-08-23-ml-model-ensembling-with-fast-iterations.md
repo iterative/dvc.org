@@ -208,7 +208,7 @@ In this blog post, we worked through the process of building an ensemble
 prediction pipeline using DVC. The essential key features of that pipeline were
 as follows
 
-- **_reproducibility_** — everybody on a team can run it on his/her premise
+- **_reproducibility_** — everybody on a team can run it on their premise
 
 - **_separation of data and code_** — this ensured everyone always runs the
   latest versions of the pipeline jobs with the most up-to-date ‘golden copy’ of
