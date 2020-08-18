@@ -43,7 +43,7 @@ in the same external/remote file system first.
 ## Examples
 
 For the examples, let's take a look at a [stage](/doc/command-reference/run)
-that simply moves local file to an external location, producing a `data.dvc`
+that simply moves local file to an external location, producing a `data.txt.dvc`
 DVC-file.
 
 ### Amazon S3
@@ -59,10 +59,10 @@ $ dvc config cache.s3 s3cache
 $ dvc add --external s3://mybucket/mydata
 
 # Create the stage with an external S3 output
-$ dvc run -d data \
+$ dvc run -d data.txt \
           --external \
-          -o s3://mybucket/data \
-          aws s3 cp data s3://mybucket/data
+          -o s3://mybucket/data.txt \
+          aws s3 cp data.txt s3://mybucket/data.txt
 ```
 
 ### Google Cloud Storage
@@ -78,10 +78,10 @@ $ dvc config cache.gs gscache
 $ dvc add --external gs://mybucket/mydata
 
 # Create the stage with an external GS output
-$ dvc run -d data \
+$ dvc run -d data.txt \
           --external \
-          -o gs://mybucket/data \
-          gsutil cp data gs://mybucket/data
+          -o gs://mybucket/data.txt \
+          gsutil cp data.txt gs://mybucket/data.txt
 ```
 
 ### SSH
@@ -97,10 +97,10 @@ $ dvc config cache.ssh sshcache
 $ dvc add --external ssh://user@example.com/mydata
 
 # Create the stage with an external SSH output
-$ dvc run -d data \
+$ dvc run -d data.txt \
           --external \
-          -o ssh://user@example.com/data \
-          scp data user@example.com:/data
+          -o ssh://user@example.com/data.txt \
+          scp data.txt user@example.com:/data.txt
 ```
 
 ⚠️ DVC requires both SSH and SFTP access to work with remote SSH locations.
@@ -123,12 +123,12 @@ $ dvc config cache.hdfs hdfscache
 $ dvc add --external hdfs://user@example.com/mydata
 
 # Create the stage with an external HDFS output
-$ dvc run -d data \
+$ dvc run -d data.txt \
           --external \
-          -o hdfs://user@example.com/data \
+          -o hdfs://user@example.com/data.txt \
           hdfs fs -copyFromLocal \
-                  data \
-                  hdfs://user@example.com/data
+                  data.txt \
+                  hdfs://user@example.com/data.txt
 ```
 
 Note that as long as there is a `hdfs://...` URL for your data, DVC can handle
@@ -144,8 +144,8 @@ it explicitly.
 $ dvc add --external /home/shared/mydata
 
 # Create the stage with an external location output
-$ dvc run -d data \
+$ dvc run -d data.txt \
           --external \
-          -o /home/shared/data \
-          cp data /home/shared/data
+          -o /home/shared/data.txt \
+          cp data.txt /home/shared/data.txt
 ```

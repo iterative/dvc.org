@@ -45,40 +45,40 @@ stage to your list of stages in dvc.yaml.
 
 ```dvc
 $ dvc run -n download_file
-          -d s3://mybucket/data \
-          -o data \
-          aws s3 cp s3://mybucket/data data
+          -d s3://mybucket/data.txt \
+          -o data.txt \
+          aws s3 cp s3://mybucket/data.txt data.txt
 ```
 
 ### Microsoft Azure Blob Storage
 
 ```dvc
 $ dvc run -n download_file
-          -d azure://my-container-name/data \
-          -o data \
+          -d azure://my-container-name/data.txt \
+          -o data.txt \
           az storage copy \
                      -d data.json \
                      --source-account-name my-account \
                      --source-container my-container-name \
-                     --source-blob data
+                     --source-blob data.txt
 ```
 
 ### Google Cloud Storage
 
 ```dvc
 $ dvc run -n download_file
-          -d gs://mybucket/data \
-          -o data \
-          gsutil cp gs://mybucket/data data
+          -d gs://mybucket/data.txt \
+          -o data.txt \
+          gsutil cp gs://mybucket/data.txt data.txt
 ```
 
 ### SSH
 
 ```dvc
 $ dvc run -n download_file
-          -d ssh://user@example.com/path/to/data \
-          -o data \
-          scp user@example.com:/path/to/data data
+          -d ssh://user@example.com/path/to/data.txt \
+          -o data.txt \
+          scp user@example.com:/path/to/data.txt data.txt
 ```
 
 ⚠️ DVC requires both SSH and SFTP access to work with remote SSH locations.
@@ -91,10 +91,10 @@ Please check that you are able to connect both ways with tools like `ssh` and
 
 ```dvc
 $ dvc run -n download_file
-          -d hdfs://user@example.com/data \
-          -o data \
+          -d hdfs://user@example.com/data.txt \
+          -o data.txt \
           hdfs fs -copyToLocal \
-                  hdfs://user@example.com/data data
+                  hdfs://user@example.com/data.txt data.txt
 ```
 
 ### HTTP
@@ -103,18 +103,18 @@ $ dvc run -n download_file
 
 ```dvc
 $ dvc run -n download_file
-          -d https://example.com/data \
-          -o data \
-          wget https://example.com/data -O data
+          -d https://example.com/data.txt \
+          -o data.txt \
+          wget https://example.com/data.txt -O data.txt
 ```
 
 ### Local file system path
 
 ```dvc
 $ dvc run -n download_file
-          -d /home/shared/data \
-          -o data \
-          cp /home/shared/data data
+          -d /home/shared/data.txt \
+          -o data.txt \
+          cp /home/shared/data.txt data.txt
 ```
 
 ## Example: DVC remote aliases
@@ -130,9 +130,9 @@ For example, for an HTTPs remote/dependency:
 ```dvc
 $ dvc remote add example https://example.com
 $ dvc run -n download_file
-          -d remote://example/data \
-          -o data \
-          wget https://example.com/data -O data
+          -d remote://example/data.txt \
+          -o data.txt \
+          wget https://example.com/data.txt -O data.txt
 ```
 
 Please refer to `dvc remote add` for more details like setting up access
