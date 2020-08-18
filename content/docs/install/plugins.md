@@ -28,8 +28,8 @@ on `dvc.yaml` files by installing the
 
 ## JetBrain IDEs (PyCharm, Intellij IDEA, et al.)
 
-The IDE should ask how to associate file types for `dvc.lock` and `.dvc` files
-when you first open one of them. If not, follow
+These IDEs should ask how to associate file types for `dvc.lock` and `.dvc`
+files when you first open one of them. If not, follow
 [this guide](https://www.jetbrains.com/help/pycharm/creating-and-registering-file-types.html)
 to set them manually.
 
