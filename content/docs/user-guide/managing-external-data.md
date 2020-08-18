@@ -88,21 +88,19 @@ $ dvc run -d data \
 
 ```dvc
 # Add SSH remote to be used as cache location for SSH files
-$ dvc remote add sshcache \
-                 ssh://user@example.com/path/from/sftp/root/to/cache
+$ dvc remote add sshcache ssh://user@example.com/cache
 
 # Tell DVC to use the 'sshcache' remote as SSH cache location
 $ dvc config cache.ssh sshcache
 
 # Add data on SSH directly
-$ dvc add --external \
-          ssh://user@example.com/path/from/sftp/root/to/mydata
+$ dvc add --external ssh://user@example.com/mydata
 
 # Create the stage with an external SSH output
 $ dvc run -d data \
           --external \
-          -o ssh://user@example.com/path/from/sftp/root/to/data \
-          scp data user@example.com:/path/from/sftp/root/to/data
+          -o ssh://user@example.com/data \
+          scp data user@example.com:/data
 ```
 
 ⚠️ DVC requires both SSH and SFTP access to work with remote SSH locations.
