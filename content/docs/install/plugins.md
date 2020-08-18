@@ -34,7 +34,7 @@ files when you first open one of them. If not, follow
 to set them manually.
 
 PyCharm should provide auto-completion and syntax checks for `dvc.yaml` files
-out-of-the-box. If not, refer to
+out of the box. If not, refer to
 [these instructions](https://github.com/iterative/dvcyaml-schema).
 
 ## Vim
