@@ -76,9 +76,9 @@ $ dvc run -n download_file
 
 ```dvc
 $ dvc run -n download_file
-          -d ssh://user@example.com/path/from/sftp/root/to/data \
+          -d ssh://user@example.com/path/to/data \
           -o data \
-          scp user@example.com:/path/from/sftp/root/to/data data
+          scp user@example.com:/path/to/data data
 ```
 
 ⚠️ DVC requires both SSH and SFTP access to work with remote SSH locations.

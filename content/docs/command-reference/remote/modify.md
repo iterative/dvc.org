@@ -469,7 +469,7 @@ more information.
 
   ```dvc
   $ dvc remote modify myremote url \
-                      ssh://user@example.com:1234/path/from/sftp/root
+                      ssh://user@example.com:1234/path/to/dir
   ```
 
   ⚠️ DVC requires both SSH and SFTP access to work with remote SSH locations.

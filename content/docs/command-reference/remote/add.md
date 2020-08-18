@@ -302,7 +302,7 @@ $ export OSS_ACCESS_KEY_SECRET='AccessKeySecret'
 ### Click for SSH
 
 ```dvc
-$ dvc remote add -d myremote ssh://user@example.com/path/from/sftp/root
+$ dvc remote add -d myremote ssh://user@example.com/path/to/dir
 ```
 
 > See also `dvc remote modify` for a full list of SSH parameters.
