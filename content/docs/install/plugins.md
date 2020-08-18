@@ -22,8 +22,8 @@ To make `dvc.lock` and `.dvc` files recognized as YAML, add the following in
 ```
 
 Enable enhanced
-[IntelliSense](https://code.visualstudio.com/docs/editor/intellisense),
-on `dvc.yaml` files by installing the
+[IntelliSense](https://code.visualstudio.com/docs/editor/intellisense), on
+`dvc.yaml` files by installing the
 [YAML extension](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml).
 
 ## JetBrain IDEs (PyCharm, Intellij IDEA, et al.)
