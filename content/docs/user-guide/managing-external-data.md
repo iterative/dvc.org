@@ -113,8 +113,7 @@ Please check that you are able to connect both ways with tools like `ssh` and
 
 ```dvc
 # Add HDFS remote to be used as cache location for HDFS files
-$ dvc remote add hdfscache \
-                 hdfs://user@example.com/cache
+$ dvc remote add hdfscache hdfs://user@example.com/cache
 
 # Tell DVC to use the 'hdfscache' remote as HDFS cache location
 $ dvc config cache.hdfs hdfscache
