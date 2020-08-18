@@ -73,7 +73,7 @@ resulting merged file/directory.
 #### Append-only directories
 
 If you have an "append-only" dataset, where people only add new
-files/directories to, dvc provides a so-called
+files/directories to, DVC provides a so-called
 [merge-driver](https://git-scm.com/docs/git-merge#Documentation/git-merge.txt-mergeltdrivergtname)
 that can automatically resolve merge conflicts for you. To set it up, first add
 it to your git config with:
