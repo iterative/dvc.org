@@ -81,7 +81,7 @@ Let's imagine we have a stage named `train` in our `dvc.yaml` file, and
 corresponding files in the <abbr>workspace</abbr>:
 
 ```yaml
-test:
+train:
   cmd: python train.py data.py
   deps:
     - data.csv
