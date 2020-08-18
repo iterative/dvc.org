@@ -81,8 +81,11 @@ $ dvc run -n download_file
           scp user@example.com:/path/from/sftp/root/to/data data
 ```
 
-> ⚠️ Please notice that the SFTP root typically is the system root, but doesn't
-> have to be.
+⚠️ DVC requires both SSH and SFTP access to work with remote SSH locations.
+Please check that you are able to connect both ways with tools like `ssh` and
+`sftp` (GNU/Linux).
+
+> Note that your server's SFTP root might differ from its physical root (`/`).
 
 ### HDFS
 

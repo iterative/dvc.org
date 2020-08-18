@@ -469,8 +469,14 @@ more information.
 
   ```dvc
   $ dvc remote modify myremote url \
-                      ssh://user@example.com:1234/absolute/path
+                      ssh://user@example.com:1234/path/from/sftp/root
   ```
+
+  ⚠️ DVC requires both SSH and SFTP access to work with remote SSH locations.
+  Please check that you are able to connect both ways with tools like `ssh` and
+  `sftp` (GNU/Linux).
+
+  > Note that your server's SFTP root might differ from its physical root (`/`).
 
 - `user` - username to access the remote.
 
