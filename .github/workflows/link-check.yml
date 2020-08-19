@@ -13,7 +13,7 @@ jobs:
 
     - name: Run the link checker
       id: check
-      uses: "iterative/link-check.action@master"
+      uses: "iterative/link-check.action@v0.1.3"
       with:
         rootURL: "${{ github.event.deployment.payload.web_url }}"
         linkExcludePatternFiles: "./scripts/exclude-links.txt"
