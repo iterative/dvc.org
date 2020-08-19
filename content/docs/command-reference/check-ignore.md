@@ -28,7 +28,13 @@ ones that are ignored indeed are printed back.
 - `-d`, `--details` - show the exclude pattern together with each target path.
 
 - `-n`, `--non-matching` - show the target paths which don’t match any pattern.
-  Only usable when `--details` is also employed
+  Only usable along with `--details`.
+
+- `-a`, `--all` - include all the patterns that match each target path in the
+  `--details` list. Only usable along with `--details`.
+
+- `--stdin` - read target paths from standard input instead of using the
+  `targets` arguments. Useful for interactive debugging and POSIX pipes.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -36,12 +42,6 @@ ones that are ignored indeed are printed back.
   problems arise, otherwise 1.
 
 - `-v`, `--verbose` - displays detailed tracing information.
-
-- `--stdin` - read paths from standard input instead of providing `targets`.
-  Useful for interactive debugging and POSIX pipes.
-  
-- `-a`, `--all` - include all the patterns that match each target path in the
-  `--details` list. Has no effect without `--details`.
 
 ## Examples
 
@@ -121,5 +121,5 @@ file2
 It can also be used as a component of a POSIX pipe:
 
 ```dvc
-cat file_list | dvc check-ignore --stdin 
+cat file_list | dvc check-ignore --stdin
 ```
