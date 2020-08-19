@@ -14402,10 +14402,10 @@ replace-ext@^1.0.0:
   resolved "https://registry.yarnpkg.com/replace-ext/-/replace-ext-1.0.1.tgz#2d6d996d04a15855d967443631dd5f77825b016a"
   integrity sha512-yD5BHCe7quCgBph4rMQ+0KkIRKwWCrHDOX1p1Gp6HwjPM5kVoCdKGNhN7ydqqsX6lJEnQDKZ/tFMiEdQ1dvPEw==
 
-repo-link-check@^0.0.15:
-  version "0.0.15"
-  resolved "https://registry.yarnpkg.com/repo-link-check/-/repo-link-check-0.0.15.tgz#9ab075cd8260d9941c693e75351f145313d88ab5"
-  integrity sha512-1bpeHS0/RhDhhvfgWieogWJBVspj1PoU4jaHX2zihep6HyLctXMJd3G4xt1SS5BiqbxEjVIGeOSHw5ixkypkJw==
+repo-link-check@^0.0.16:
+  version "0.0.16"
+  resolved "https://registry.yarnpkg.com/repo-link-check/-/repo-link-check-0.0.16.tgz#aacb21449f0947d4cfa55c8bd738f0fe65e384db"
+  integrity sha512-HWJF5oeMM9GAS/wtQbm5oaZH3Q5xwrnHOE21d2uA4sc3qqdB3WWM0tYGgZ1O4t/QZO5c02x9uyC62QNXgS+itA==
   dependencies:
     bottleneck "^2.19.5"
     fast-glob "^3.2.4"
