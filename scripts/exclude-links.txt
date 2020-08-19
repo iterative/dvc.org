@@ -29,3 +29,4 @@ link
 /img/<filename>.gif
 /uploads/images/2020-02-10/image.png
 https://portal.aws.amazon.com/gp/aws/developer/registration/index.html
+https://github.com/iterative/dvc/releases/download/
