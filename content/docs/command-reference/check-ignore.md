@@ -6,7 +6,7 @@ patterns found in [`.dvcignore`](/doc/user-guide/dvcignore).
 ## Synopsis
 
 ```usage
-usage: usage: dvc check-ignore [-h] [-q | -v] [-d] [-n]
+usage: usage: dvc check-ignore [-h] [-q | -v] [-d] [-a] [-n] [--stdin]
                                targets [targets ...]
 
 positional arguments:
@@ -25,9 +25,15 @@ ones that are ignored indeed are printed back.
   series of lines are printed in this format:
   `<path/to/.dvcignore>:<line_num>:<pattern> <target_path>`
 
+- `-a`, `--all` - include all the patterns that match each target path in the
+  `--details` list. Has no effect without `--details`.
+
 - `-n`, `--non-matching` - include the target paths which don’t match any
   pattern in the `--details` list. All fields in each line, except for
   `<target_path>`, will be empty. Has no effect without `--details`.
+
+- `--stdin` - read target paths from standard input instead of using the
+  `targets` arguments. Useful for interactive debugging and POSIX pipes.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -83,10 +89,38 @@ $ dvc check-ignore -d file*
 .dvcignore:2:!file2	file2
 ```
 
+By default, only the last pattern matched would be shown. To see all the
+patterns matched, use `--all` (`-a`).
+
+```dvc
+$ dvc check-ignore -d -a file2
+.dvcignore:1:file*	file2
+.dvcignore:2:!file2	file2
+```
+
 With the `--non-matching` (`-n`) option, non-matching `targets` will also be
 included in the details list:
 
 ```dvc
 $ dvc check-ignore -d -n other
 ::	other
+```
+
+## Example: Check paths interactively or programmatically
+
+The `--stdin` option provides an interactive way to debug `.dvcignore` patterns:
+
+```dvc
+$ dvc check-ignore --stdin
+> file1
+file1
+> other
+> file2
+file2
+```
+
+It can also be used as a component of a POSIX pipe:
+
+```dvc
+cat file_list | dvc check-ignore --stdin
 ```
