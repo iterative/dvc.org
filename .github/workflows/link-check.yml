@@ -17,7 +17,8 @@ jobs:
       with:
         rootURL: "${{ github.event.deployment.payload.web_url }}"
         linkExcludePatternFiles: "./scripts/exclude-links.txt"
-        fileIncludePatterns: "**"
+        fileExcludePatternFiles: "./scripts/exclude-files.txt"
+        fileIncludePatterns: "{.github,content,src}/**/*.{css,js,jsx,md,tsx,ts,json}"
 
     - uses: LouisBrunner/checks-action@v0.1.0
       with:
