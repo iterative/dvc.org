@@ -39,8 +39,8 @@ downloading, DVC will try to copy the target data from its <abbr>cache</abbr>).
 The `path` argument is used to specify the location of the target to download
 within the source repository at `url`. `path` can specify any file or directory
 in the source repo, either tracked by DVC (including paths inside tracked
-directories) or by Git. Note that DVC-tracked targets should be found in a
-`dvc.yaml` or `.dvc` file of the project.
+directories) or by Git. Note that DVC-tracked targets must be found in a
+`dvc.yaml` or `.dvc` file of the repo.
 
 ⚠️ The project should have a default
 [DVC remote](/doc/command-reference/remote), containing the actual data for this
@@ -55,11 +55,10 @@ name.
 
 ## Options
 
-- `-o <path>`, `--out <path>` - specify a path (directory and/or file name) to
-  the desired location to place the download file in. The default value (when
-  this option isn't used) is the current working directory (`.`) and original
-  file name. If an existing directory is specified, then the target data will be
-  placed inside.
+- `-o <path>`, `--out <path>` - specify a path to the desired location in the
+  workspace to place the downloaded file or directory (instead of using the
+  current working directory). Directories specified in the path will be created
+  by this command.
 
 - `--rev <commit>` - commit hash, branch or tag name, etc. (any
   [Git revision](https://git-scm.com/docs/revisions)) of the repository to

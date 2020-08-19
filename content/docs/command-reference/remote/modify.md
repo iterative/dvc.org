@@ -58,6 +58,23 @@ manual editing could be used to change the configuration.
 
 The following config options are available for all remote types:
 
+- `url` - the remote location can always be modified. This is how DVC determines
+  what type of remote it is, and thus which other config options can be modified
+  (see each type in the next section for more details).
+
+  For example, for an Amazon S3 remote (see more details in the S3 section
+  below):
+
+  ```dvc
+  $ dvc remote modify s3remote url s3://my-bucket/my/key
+  ```
+
+  Or a _local remote_ (a directory in the file system):
+
+  ```dvc
+  $ dvc remote modify localremote url /home/user/dvcstore
+  ```
+
 - `verify` - upon downloading <abbr>cache</abbr> files (`dvc pull`, `dvc fetch`)
   DVC will recalculate the file hashes upon download (e.g. `dvc pull`) to make
   sure that these haven't been modified, or corrupted during download. It may
@@ -73,7 +90,8 @@ The following config options are available for all remote types:
 
 ## Available parameters per storage type
 
-The following are the customizable types of remote storage (protocols):
+The following are the types of remote storage (protocols) and their config
+options:
 
 <details>
 
@@ -82,7 +100,13 @@ The following are the customizable types of remote storage (protocols):
 By default, DVC expects your AWS CLI is already
 [configured](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html).
 DVC will be using default AWS credentials file to access S3. To override some of
-these settings, you could use the following options:
+these settings, you could use the following options.
+
+- `url` - remote location, in the `s3://<bucket>/<key>` format:
+
+  ```dvc
+  $ dvc remote modify myremote url s3://my-bucket/my/key
+  ```
 
 - `region` - change S3 remote region:
 
@@ -122,13 +146,7 @@ these settings, you could use the following options:
   $ dvc remote modify myremote secret_access_key my-secret_access_key
   ```
 
-- `url` - remote location URL:
-
-  ```dvc
-  $ dvc remote modify myremote url s3://bucket/remote
-  ```
-
-- `use_ssl` - whether or not to use SSL. By default, SSL is used
+- `use_ssl` - whether or not to use SSL. By default, SSL is used.
 
   ```dvc
   $ dvc remote modify myremote use_ssl false
@@ -218,13 +236,11 @@ these settings, you could use the following options:
 To communicate with a remote object storage that supports an S3 compatible API
 (e.g. [Minio](https://min.io/),
 [DigitalOcean Spaces](https://www.digitalocean.com/products/spaces/),
-[IBM Cloud Object Storage](https://www.ibm.com/cloud/object-storage) etc.) you
-must explicitly set the `endpointurl` in the configuration:
-
-For example:
+[IBM Cloud Object Storage](https://www.ibm.com/cloud/object-storage) etc.),
+configure the remote's `endpointurl` explicitly:
 
 ```dvc
-$ dvc remote add myremote s3://path/to/dir
+$ dvc remote add -d myremote s3://my-bucket/path/to/dir
 $ dvc remote modify myremote endpointurl \
                     https://object-storage.example.com
 ```
@@ -232,9 +248,9 @@ $ dvc remote modify myremote endpointurl \
 S3 remotes can also be configured entirely via environment variables:
 
 ```dvc
-$ export AWS_ACCESS_KEY_ID="<my-access-key>"
-$ export AWS_SECRET_ACCESS_KEY="<my-secret-key>"
-$ dvc remote add myremote "s3://bucket/myremote"
+$ export AWS_ACCESS_KEY_ID='<my-access-key>'
+$ export AWS_SECRET_ACCESS_KEY='<my-secret-key>'
+$ dvc remote add -d myremote s3://my-bucket/my/key
 ```
 
 For more information about the variables DVC supports, please visit
@@ -246,17 +262,17 @@ For more information about the variables DVC supports, please visit
 
 ### Click for Microsoft Azure Blob Storage
 
-- `url` - remote location URL.
+- `url` - remote location, in the `azure://<container>/<object>` format:
 
   ```dvc
-  $ dvc remote modify myremote url "azure://my-container-name/path"
+  $ dvc remote modify myremote url azure://my-container-name/path
   ```
 
-- `connection_string` - connection string.
+- `connection_string` - connection string:
 
   ```dvc
   $ dvc remote modify --local myremote connection_string \
-                              "my-connection-string"
+                              'my-connection-string'
   ```
 
 > The connection string contains sensitive user info. Therefore, it's safer to
@@ -276,8 +292,8 @@ Please see
 [Setup a Google Drive DVC Remote](/doc/user-guide/setup-google-drive-remote) for
 a full guide on using Google Drive as DVC remote storage.
 
-- `url` - remote location URL. See the
-  [possible formats](/doc/user-guide/setup-google-drive-remote#url-format).
+- `url` - remote location. See
+  [valid URL format](/doc/user-guide/setup-google-drive-remote#url-format).
 
   ```dvc
   $ dvc remote modify myremote url \
@@ -372,10 +388,10 @@ more information.
 
 ### Click for Google Cloud Storage
 
-- `url` - remote location URL.
+- `url` - remote location, in the `gs://<bucket>/<object>` format:
 
   ```dvc
-  $ dvc remote modify myremote url gs://bucket/remote
+  $ dvc remote modify myremote url gs://my-bucket/path
   ```
 
 - `projectname` - override or provide a project name to use, if a default one is
@@ -399,13 +415,13 @@ more information.
 
   ```dvc
   $ dvc remote modify \
-        myremote credentialpath "/home/.../project-XXXXXXX.json"
+        myremote credentialpath '/home/.../project-XXXXXXX.json'
   ```
 
   Alternatively, the `GOOGLE_APPLICATION_CREDENTIALS` env var can be set:
 
   ```dvc
-  $ export GOOGLE_APPLICATION_CREDENTIALS=".../project-XXXXXXX.json"
+  $ export GOOGLE_APPLICATION_CREDENTIALS='.../project-XXXXXXX.json'
   ```
 
 </details>
@@ -414,8 +430,13 @@ more information.
 
 ### Click for Aliyun OSS
 
-- `oss_endpoint endpoint` - OSS endpoint values for accessing the remote
-  container.
+- `url` - remote location, in the `oss://<bucket>/<object>` format:
+
+  ```dvc
+  $ dvc remote modify myremote url oss://my-bucket/path
+  ```
+
+- `oss_endpoint` - OSS endpoint values for accessing the remote container.
 
   ```dvc
   $ dvc remote modify myremote oss_endpoint endpoint
@@ -443,7 +464,8 @@ more information.
 
 ### Click for SSH
 
-- `url` - remote location URL.
+- `url` - remote location, in a regular
+  [SSH format](https://tools.ietf.org/id/draft-salowey-secsh-uri-00.html#sshsyntax):
 
   ```dvc
   $ dvc remote modify myremote url \
@@ -517,6 +539,13 @@ more information.
 
 ### Click for HDFS
 
+- `url` - remote location:
+
+  ```dvc
+  $ dvc remote modify myremote url \
+                      hdfs://user@example.com/absolute/path
+  ```
+
 - `user` - username to access the remote.
 
   ```dvc
@@ -531,6 +560,12 @@ more information.
 <details>
 
 ### Click for HTTP
+
+- `url` - remote location:
+
+  ```dvc
+  $ dvc remote modify myremote url https://example.com/path/to/dir
+  ```
 
 - `auth` - authentication method to use when accessing the remote. The accepted
   values are:
@@ -596,22 +631,11 @@ more information.
 
 ### Click for WebDAV
 
-- `url` - remote location URL.
+- `url` - remote location:
 
   ```dvc
-  $ dvc remote modify myremote \
-        url webdavs://example.com/public.php/webdav
-  ```
-
-  > Note that the location of the WebDAV API endpoint `/public.php/webdav` might
-  > be different for your server.
-
-  If your remote is located in a subfolder of your WebDAV server e.g.
-  `/path/to/dir`, this may be appended to the general `url`:
-
-  ```dvc
-  $ dvc remote modify myremote \
-        url webdavs://example.com/public.php/webdav/path/to/dir
+  $ dvc remote modify myremote url \
+        webdavs://example.com/public.php/webdav/path/to/dir
   ```
 
 - `token` - token for WebDAV server, can be empty in case of using
