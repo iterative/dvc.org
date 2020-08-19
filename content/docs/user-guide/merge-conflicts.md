@@ -134,4 +134,4 @@ outs:
   - path: data.xml
 ```
 
-And then run `dvc repro`.
+And then `dvc update` the `.dvc` file.
