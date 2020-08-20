@@ -76,20 +76,25 @@ $ dvc run -n download_file
 
 ```dvc
 $ dvc run -n download_file
-          -d ssh://user@example.com:/home/shared/data.txt \
+          -d ssh://user@example.com/path/to/data.txt \
           -o data.txt \
-          scp user@example.com:/home/shared/data.txt data.txt
+          scp user@example.com:/path/to/data.txt data.txt
 ```
+
+⚠️ DVC requires both SSH and SFTP access to work with remote SSH locations.
+Please check that you are able to connect both ways with tools like `ssh` and
+`sftp` (GNU/Linux).
+
+> Note that your server's SFTP root might differ from its physical root (`/`).
 
 ### HDFS
 
 ```dvc
 $ dvc run -n download_file
-          -d hdfs://user@example.com/home/shared/data.txt \
+          -d hdfs://user@example.com/data.txt \
           -o data.txt \
           hdfs fs -copyToLocal \
-                  hdfs://user@example.com/home/shared/data.txt \
-                  data.txt
+                  hdfs://user@example.com/data.txt data.txt
 ```
 
 ### HTTP

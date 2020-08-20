@@ -1,7 +1,8 @@
 # push
 
 Upload tracked files or directories to
-[remote storage](/doc/command-reference/remote).
+[remote storage](/doc/command-reference/remote) based on the current `dvc.yaml`
+and `.dvc` files.
 
 ## Synopsis
 
@@ -17,55 +18,45 @@ positional arguments:
 
 ## Description
 
-The `dvc pull` and `dvc push` commands are the means for uploading and
-downloading data to and from remote storage. These commands are similar to
-`git pull` and `git push`, respectively (with some key differences given the
-nature of DVC, see details below).
-
+The `dvc push` and `dvc pull` commands are the means for uploading and
+downloading data to and from remote storage (S3, SSH, GCS, etc.). These commands
+are similar to `git push` and `git pull`, respectively.
 [Data sharing](/doc/use-cases/sharing-data-and-model-files) across environments,
 and preserving data versions (input datasets, intermediate results, models,
-[metrics](/doc/command-reference/metrics), etc.)
-[remotely](/doc/command-reference/remote) are the two most common use cases for
-these commands.
+[metrics](/doc/command-reference/metrics), etc.) remotely are the most common
+use cases for these commands.
 
-The `dvc push` command allows us to upload data to remote storage. It doesn't
-save any changes to the code, `dvc.yaml`, or `.dvc` files (those should be saved
-with `git commit` and `git push`).
+`dvc push` uploads data from the <abbr>cache</abbr> to
+[remote storage](/doc/command-reference/remote).
+
+> Note that pushing data does not affect code, `dvc.yaml`, or `.dvc` files.
+> Those should be uploaded with `git push`.
+
+The default remote is used (see `dvc remote default`) unless the `--remote`
+option is used. See `dvc remote` for more information on how to configure a
+remote.
+
+Without arguments, it uploads all files and directories missing from remote
+storage, found as <abbr>outputs</abbr> of the
+[stages](/doc/command-reference/run) or `.dvc` files present in the workspace.
+The `--all-branches`, `--all-tags`, and `--all-commits` options enable pushing
+multiple Git commits.
+
+The `targets` given to this command (if any) limit what to push. It accepts
+paths to tracked files or directories (including paths inside tracked
+directories), `.dvc` files, and stage names (found in `dvc.yaml`).
 
 💡 For convenience, a Git hook is available to automate running `dvc push` after
 `git push`. See `dvc install` for more details.
 
-Under the hood a few actions are taken:
+For all <abbr>outputs</abbr> referenced in each target, DVC finds the
+corresponding files and directories in the <abbr>cache</abbr> (identified by
+hash values saved in `dvc.lock` and `.dvc` files). DVC then gathers a list of
+files missing from the remote storage, and uploads them.
 
-- The push command by default uses all stages (in `dvc.yaml` and `dvc.lock`) and
-  `.dvc` files in the <abbr>workspace</abbr>. The command options will either
-  limit or expand the set of stages or `.dvc` files to consult.
-
-- For each <abbr>output</abbr> referenced in every selected stage or `.dvc`
-  file, DVC finds a corresponding file or directory in the <abbr>cache</abbr>.
-  DVC then checks whether it exists in the remote. From this, DVC gathers a list
-  of files missing from the remote storage.
-
-- Upload the cache files missing from remote storage, if any, to the remote.
-
-The DVC `push` command always works with a remote storage, and it is an error if
-none are specified on the command line nor in the configuration. The default
-remote is used (see `dvc config core.remote`) unless the `--remote` option is
-used. See `dvc remote` for more information on how to configure a remote.
-
-With no arguments, just `dvc push` or `dvc push --remote REMOTE`, it uploads
-only the files (or directories) that are new in the local repository to remote
-storage. It will not upload files associated with earlier commits in the
-<abbr>repository</abbr> (if using Git), nor will it upload files that have not
-changed.
-
-The `dvc status -c` command can list files tracked by DVC that are new in the
-cache (compared to the default remote.) It can be used to see what files
+Note that the `dvc status -c` command can list files tracked by DVC that are new
+in the cache (compared to the default remote.) It can be used to see what files
 `dvc push` would upload.
-
-The `targets` given to this command (if any) limit what to push. It accepts
-paths to tracked files or directories (including paths inside tracked
-directories), `.dvc` files, or stage names (found in `dvc.yaml`).
 
 ## Options
 

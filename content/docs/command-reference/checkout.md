@@ -23,7 +23,7 @@ corresponding versions of the DVC-tracked files and directories from the
 
 The `targets` given to this command (if any) limit what to checkout. It accepts
 paths to tracked files or directories (including paths inside tracked
-directories), `.dvc` files, or stage names (found in `dvc.yaml`).
+directories), `.dvc` files, and stage names (found in `dvc.yaml`).
 
 The execution of `dvc checkout` does the following:
 
@@ -31,8 +31,8 @@ The execution of `dvc checkout` does the following:
   <abbr>outputs</abbr> against the actual files or directories in the
   <abbr>workspace</abbr> (similar to `dvc status`).
 
-  > Stage outputs should be defined in `dvc.yaml`. If found there but not in
-  > `dvc.lock`, they'll be skipped, with a warning.
+  > Stage outputs must be defined in `dvc.yaml`. If found there but not in
+  > `dvc.lock`, they'll be skipped with a warning.
 
 - Missing data files or directories are restored from the cache. Those that
   don't match with `dvc.lock` or `.dvc` files are removed. See options `--force`
@@ -186,7 +186,7 @@ outs:
 But if you check the MD5 of `model.pkl`, the file hash is still the same
 (`ab349c2...`). This is because `git checkout` changed `dvc.lock` and other DVC
 files, but it did nothing with `model.pkl`, or any other DVC-tracked files/dirs.
-Since Git doesn't track them, we must do this:
+Since Git doesn't track them, to get them we can do this:
 
 ```dvc
 $ dvc checkout

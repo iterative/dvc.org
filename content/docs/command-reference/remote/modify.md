@@ -236,8 +236,8 @@ these settings, you could use the following options.
 To communicate with a remote object storage that supports an S3 compatible API
 (e.g. [Minio](https://min.io/),
 [DigitalOcean Spaces](https://www.digitalocean.com/products/spaces/),
-[IBM Cloud Object Storage](https://www.ibm.com/cloud/object-storage) etc.) you
-must explicitly configure the `endpointurl`:
+[IBM Cloud Object Storage](https://www.ibm.com/cloud/object-storage) etc.),
+configure the remote's `endpointurl` explicitly:
 
 ```dvc
 $ dvc remote add -d myremote s3://mybucket/path/to/dir
@@ -469,8 +469,14 @@ more information.
 
   ```dvc
   $ dvc remote modify myremote url \
-                      ssh://user@example.com:1234/absolute/path
+                      ssh://user@example.com:1234/path/to/dir
   ```
+
+  ⚠️ DVC requires both SSH and SFTP access to work with remote SSH locations.
+  Please check that you are able to connect both ways with tools like `ssh` and
+  `sftp` (GNU/Linux).
+
+  > Note that your server's SFTP root might differ from its physical root (`/`).
 
 - `user` - username to access the remote.
 
@@ -542,8 +548,7 @@ more information.
 - `url` - remote location:
 
   ```dvc
-  $ dvc remote modify myremote url \
-                      hdfs://user@example.com/absolute/path
+  $ dvc remote modify myremote url hdfs://user@example.com/path/to/dir
   ```
 
 - `user` - username to access the remote.
