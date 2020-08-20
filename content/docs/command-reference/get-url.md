@@ -39,7 +39,7 @@ DVC supports several types of (local or) remote locations (protocols):
 | `local` | Local path     | `/path/to/local/data`                      |
 | `s3`    | Amazon S3      | `s3://mybucket/data`                       |
 | `gs`    | Google Storage | `gs://mybucket/data`                       |
-| `ssh`   | SSH server     | `ssh://user@example.com:/path/to/data`     |
+| `ssh`   | SSH server     | `ssh://user@example.com/path/to/data`      |
 | `hdfs`  | HDFS to file\* | `hdfs://user@example.com/path/to/data.csv` |
 | `http`  | HTTP to file\* | `https://example.com/path/to/data.csv`     |
 

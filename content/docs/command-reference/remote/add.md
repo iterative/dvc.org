@@ -307,16 +307,11 @@ $ dvc remote add -d myremote ssh://user@example.com/path/to/dir
 
 > See also `dvc remote modify` for a full list of SSH parameters.
 
-⚠️ DVC requires both SSH and SFTP access to work with SSH remote storage. Please
-check that you are able to connect both ways to the remote location, with tools
-like `ssh` and `sftp` (GNU/Linux).
+⚠️ DVC requires both SSH and SFTP access to work with remote SSH locations.
+Please check that you are able to connect both ways with tools like `ssh` and
+`sftp` (GNU/Linux).
 
-> Note that your server's SFTP root might differ from its physical root (`/`).
-> (On Linux, see the `ChrootDirectory` setting in `/etc/ssh/sshd_config`.) In
-> these cases, the path component in the SSH URL (e.g. `/path/to/dir` above)
-> should be specified relative to the SFTP root instead. For example, on some
-> Sinology NAS drives, the SFTP root might be in directory `/volume1`, in which
-> case you should use path `/path/to/dir` instead of `/volume1/path/to/dir`.
+> Note that the server's SFTP root might differ from its physical root (`/`).
 
 </details>
 
