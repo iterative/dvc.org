@@ -28,12 +28,6 @@ commands:
             git reset --hard origin/master
             git checkout -
 
-      - run:
-          name: apt dependencies
-          command: |
-            sudo apt-get update
-            sudo apt-get install pcregrep
-
       # Download cached dependencies.
       - restore_cache:
           keys:
