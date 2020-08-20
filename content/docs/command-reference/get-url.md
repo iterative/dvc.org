@@ -88,7 +88,7 @@ This command will copy an S3 object into the current working directory with the
 same file name:
 
 ```dvc
-$ dvc get-url s3://bucket/key
+$ dvc get-url s3://bucket/path
 ```
 
 By default, DVC expects that AWS CLI is already

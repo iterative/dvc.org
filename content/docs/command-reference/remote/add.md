@@ -145,7 +145,7 @@ S3 remotes can also be configured entirely via environment variables:
 ```dvc
 $ export AWS_ACCESS_KEY_ID="<my-access-key>"
 $ export AWS_SECRET_ACCESS_KEY="<my-secret-key>"
-$ dvc remote add -d myremote s3://mybucket/my/key
+$ dvc remote add -d myremote s3://mybucket/my/path
 ```
 
 For more information about the variables DVC supports, please visit
