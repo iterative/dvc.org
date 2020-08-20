@@ -58,6 +58,7 @@ jobs:
       - run: yarn lint-css
       - run: yarn lint-ts
       - run: yarn format-check
+      - run: yarn link-check-exclude
 
   test_full:
     <<: *defaults
@@ -67,6 +68,8 @@ jobs:
       - run: yarn lint-css
       - run: yarn lint-ts
       - run: yarn format-check
+      - run: yarn link-check
+      - run: yarn link-check-exclude
 
 workflows:
   version: 2
