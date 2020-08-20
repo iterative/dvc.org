@@ -16,10 +16,10 @@
     "format": "prettier --write",
     "lint-ts": "tsc --noEmit --skipLibCheck && eslint --ext .json,.js,.ts,.tsx .",
     "lint-css": "stylelint \"src/**/*.css\"",
-    "link-check": "repo-link-check -r='https://www.dvc.org' --fi='{.github,content,src}/**/*.{css,js,jsx,md,tsx,ts,json}' --fef='./scripts/exclude-files.txt' --lef='./scripts/exclude-links.txt' -s=filesystem -u",
-    "link-check-diff": "repo-link-check -r='https://www.dvc.org' --fi='{.github,content,src}/**/*.{css,js,jsx,md,tsx,ts,json}' --fef='./scripts/exclude-files.txt' --lef='./scripts/exclude-links.txt'",
-    "link-check-dev-server": "repo-link-check -r='http://localhost:3000' --fi='{.github,content,src}/**/*.{css,js,jsx,md,tsx,ts,json}' --fef='./scripts/exclude-files.txt' --lef='./scripts/exclude-links.txt'",
-    "link-check-exclude": "repo-link-check -r='https://www.dvc.org' --fi='{.github,content,src}/**/*.{css,js,jsx,md,tsx,ts,json}' --fef='./scripts/exclude-files.txt' --lef='./scripts/exclude-links.txt' -s=filesystem -u='only'"
+    "link-check": "npx repo-link-check -r='https://www.dvc.org' --fi='{.github,content,src}/**/*.{css,js,jsx,md,tsx,ts,json}' --fef='./scripts/exclude-files.txt' --lef='./scripts/exclude-links.txt' -s=filesystem -u",
+    "link-check-diff": "npx repo-link-check -r='https://www.dvc.org' --fi='{.github,content,src}/**/*.{css,js,jsx,md,tsx,ts,json}' --fef='./scripts/exclude-files.txt' --lef='./scripts/exclude-links.txt'",
+    "link-check-dev-server": "npx repo-link-check -r='http://localhost:3000' --fi='{.github,content,src}/**/*.{css,js,jsx,md,tsx,ts,json}' --fef='./scripts/exclude-files.txt' --lef='./scripts/exclude-links.txt'",
+    "link-check-exclude": "npx repo-link-check -r='https://www.dvc.org' --fi='{.github,content,src}/**/*.{css,js,jsx,md,tsx,ts,json}' --fef='./scripts/exclude-files.txt' --lef='./scripts/exclude-links.txt' -s=filesystem -u='only'"
   },
   "repository": {
     "type": "git",
