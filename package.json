@@ -160,7 +160,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn format-staged && yarn lint-staged && yarn link-check-diff -z"
+      "pre-commit": "yarn format-staged && yarn lint-staged"
     }
   },
   "lint-staged": {
