@@ -18,7 +18,30 @@ commands:
   install:
     steps:
       - checkout
+
+      # CircleCI breaks master branch which affects format check below. See
+      # https://discuss.circleci.com/t/checkout-script-adds-commits-to-master-from-circle-branch/14194
+      - run:
+          name: restore master
+          command: |
+            git checkout master
+            git reset --hard origin/master
+            git checkout -
+
+      # Download cached dependencies.
+      - restore_cache:
+          keys:
+            - v2-dependencies-{{ checksum "yarn.lock" }}
+            # Fallback to using the latest cache if no exact match is found.
+            - v2-dependencies-
+
       - run: yarn
+
+      # Upload dependencies cache.
+      - save_cache:
+          paths:
+            - node_modules
+          key: v2-dependencies-{{ checksum "yarn.lock" }}
 
 jobs:
   test:
