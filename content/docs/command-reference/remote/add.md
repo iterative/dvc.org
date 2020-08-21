@@ -12,9 +12,8 @@ usage: dvc remote add [-h] [--global | --system | --local] [-q | -v]
                       [-d] [-f] name url
 
 positional arguments:
-  name           Name of the remote
-  url            Remote location.
-                 See full list of supported URLs below.
+  name           Name of the remote.
+  url            (See supported URLs in the examples below.)
 ```
 
 ## Description
@@ -94,7 +93,7 @@ The following are the types of remote storage (protocols) supported:
 > [Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html).
 
 ```dvc
-$ dvc remote add -d s3remote url s3://my-bucket/my-key
+$ dvc remote add -d s3remote url s3://mybucket/path
 ```
 
 By default, DVC expects your AWS CLI is already
@@ -134,7 +133,7 @@ configure the remote's `endpointurl` explicitly:
 For example:
 
 ```dvc
-$ dvc remote add -d myremote s3://my-bucket/path/to/dir
+$ dvc remote add -d myremote s3://mybucket/path/to/dir
 $ dvc remote modify myremote endpointurl \
                     https://object-storage.example.com
 ```
@@ -146,7 +145,7 @@ S3 remotes can also be configured entirely via environment variables:
 ```dvc
 $ export AWS_ACCESS_KEY_ID="<my-access-key>"
 $ export AWS_SECRET_ACCESS_KEY="<my-secret-key>"
-$ dvc remote add -d myremote s3://my-bucket/my/key
+$ dvc remote add -d myremote s3://mybucket/my/path
 ```
 
 For more information about the variables DVC supports, please visit
@@ -159,7 +158,7 @@ For more information about the variables DVC supports, please visit
 ### Click for Microsoft Azure Blob Storage
 
 ```dvc
-$ dvc remote add -d myremote azure://my-container-name/path
+$ dvc remote add -d myremote azure://mycontainer/path
 $ dvc remote modify --local myremote connection_string \
                             'my-connection-string'
 ```
@@ -173,7 +172,7 @@ variables:
 
 ```dvc
 $ export AZURE_STORAGE_CONNECTION_STRING='<my-connection-string>'
-$ export AZURE_STORAGE_CONTAINER_NAME='my-container-name'
+$ export AZURE_STORAGE_CONTAINER_NAME='mycontainer'
 $ dvc remote add -d myremote 'azure://'
 ```
 
@@ -410,7 +409,7 @@ region.
 > [Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html).
 
 ```dvc
-$ dvc remote add -d myremote s3://mybucket/myproject
+$ dvc remote add -d myremote s3://mybucket/path
 Setting 'myremote' as a default remote.
 
 $ dvc remote modify myremote region us-east-2
@@ -420,7 +419,7 @@ The <abbr>project</abbr>'s config file (`.dvc/config`) now looks like this:
 
 ```ini
 ['remote "myremote"']
-url = s3://mybucket/myproject
+url = s3://mybucket/path
 region = us-east-2
 [core]
 remote = myremote
@@ -430,13 +429,13 @@ The list of remotes should now be:
 
 ```dvc
 $ dvc remote list
-myremote	s3://mybucket/myproject
+myremote	s3://mybucket/path
 ```
 
 You can overwrite existing remotes using `-f` with `dvc remote add`:
 
 ```dvc
-$ dvc remote add -f myremote s3://mybucket/mynewproject
+$ dvc remote add -f myremote s3://mybucket/another-path
 ```
 
 List remotes again to view the updated remote:
@@ -444,5 +443,5 @@ List remotes again to view the updated remote:
 ```dvc
 $ dvc remote list
 
-myremote	s3://mybucket/mynewproject
+myremote	s3://mybucket/another-path
 ```

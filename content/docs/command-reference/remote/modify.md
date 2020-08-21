@@ -66,7 +66,7 @@ The following config options are available for all remote types:
   below):
 
   ```dvc
-  $ dvc remote modify s3remote url s3://my-bucket/my/key
+  $ dvc remote modify s3remote url s3://mybucket/path
   ```
 
   Or a _local remote_ (a directory in the file system):
@@ -105,7 +105,7 @@ these settings, you could use the following options.
 - `url` - remote location, in the `s3://<bucket>/<key>` format:
 
   ```dvc
-  $ dvc remote modify myremote url s3://my-bucket/my/key
+  $ dvc remote modify myremote url s3://mybucket/my/path
   ```
 
 - `region` - change S3 remote region:
@@ -240,7 +240,7 @@ To communicate with a remote object storage that supports an S3 compatible API
 configure the remote's `endpointurl` explicitly:
 
 ```dvc
-$ dvc remote add -d myremote s3://my-bucket/path/to/dir
+$ dvc remote add -d myremote s3://mybucket/path/to/dir
 $ dvc remote modify myremote endpointurl \
                     https://object-storage.example.com
 ```
@@ -250,7 +250,7 @@ S3 remotes can also be configured entirely via environment variables:
 ```dvc
 $ export AWS_ACCESS_KEY_ID='<my-access-key>'
 $ export AWS_SECRET_ACCESS_KEY='<my-secret-key>'
-$ dvc remote add -d myremote s3://my-bucket/my/key
+$ dvc remote add -d myremote s3://mybucket/my/path
 ```
 
 For more information about the variables DVC supports, please visit
@@ -265,7 +265,7 @@ For more information about the variables DVC supports, please visit
 - `url` - remote location, in the `azure://<container>/<object>` format:
 
   ```dvc
-  $ dvc remote modify myremote url azure://my-container-name/path
+  $ dvc remote modify myremote url azure://mycontainer/path
   ```
 
 - `connection_string` - connection string:
@@ -717,7 +717,7 @@ Let's first set up a _default_ S3 remote.
 > [Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html).
 
 ```dvc
-$ dvc remote add -d myremote s3://mybucket/myproject
+$ dvc remote add -d myremote s3://mybucket/path
 Setting 'myremote' as a default remote.
 ```
 
@@ -731,7 +731,7 @@ Now the project config file should look like this:
 
 ```ini
 ['remote "myremote"']
-url = s3://mybucket/storage
+url = s3://mybucket/path
 profile = myusername
 [core]
 remote = myremote
