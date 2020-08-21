@@ -1,6 +1,6 @@
 # Merge Conflicts
 
-Sometimes multiple members of a team might worn on the the same DVC-tracked
+Sometimes multiple members of a team might work on the the same DVC-tracked
 data. And when the time comes to combine their changes, merge conflicts can
 arise in Git, which need to be resolved.
 
