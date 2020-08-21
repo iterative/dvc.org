@@ -86,7 +86,7 @@ retrieved on other environments later with `dvc pull`. First, we need to setup a
 storage:
 
 ```dvc
-$ dvc remote add -d storage s3://mybucket/dvc-storage
+$ dvc remote add -d storage s3://my-bucket/dvc-storage
 $ git commit .dvc/config -m "Configure remote storage"
 ```
 
