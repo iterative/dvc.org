@@ -1,4 +1,4 @@
-name: DVC Link Check
+name: Link Check Exclude
 on: deployment
 
 jobs:
