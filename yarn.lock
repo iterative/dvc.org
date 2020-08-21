@@ -10803,6 +10803,11 @@ lodash@^4.11.1, lodash@^4.15.0, lodash@^4.17.11, lodash@^4.17.13, lodash@^4.17.1
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.19.tgz#e48ddedbe30b3321783c5b4301fbd353bc1e4a4b"
   integrity sha512-JNvd8XER9GQX0v2qJgsaN/mzFCNA5BRe/j8JN9d+tWyGLSodKQHKFicdwNYzWwI3wjRnaKPsGj1XkBjx/F96DQ==
 
+lodash@^4.17.20:
+  version "4.17.20"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.20.tgz#b44a9b6297bcb698f1c51a3545a2b3b368d59c52"
+  integrity sha512-PlhdFcillOINfeV7Ni6oF1TAEayyZBoZ8bcshTHqOYJYlrqzRK5hagpagky5o4HfCzzd1TRkXPMFq6cKk9rGmA==
+
 log-symbols@^2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/log-symbols/-/log-symbols-2.2.0.tgz#5740e1c5d6f0dfda4ad9323b5332107ef6b4c40a"
@@ -14402,13 +14407,14 @@ replace-ext@^1.0.0:
   resolved "https://registry.yarnpkg.com/replace-ext/-/replace-ext-1.0.1.tgz#2d6d996d04a15855d967443631dd5f77825b016a"
   integrity sha512-yD5BHCe7quCgBph4rMQ+0KkIRKwWCrHDOX1p1Gp6HwjPM5kVoCdKGNhN7ydqqsX6lJEnQDKZ/tFMiEdQ1dvPEw==
 
-repo-link-check@^0.1.4:
-  version "0.1.4"
-  resolved "https://registry.yarnpkg.com/repo-link-check/-/repo-link-check-0.1.4.tgz#fd34cf3c695a48c9527ffa87fbd11d01c2f63c5f"
-  integrity sha512-hezH75OOz/kdlLb0AqASFx+rM8cVv+Mc+9Xwx6eifzCZfkxfmfkYYpLfAdlwNrrImsw+/x1qUqp3h1W+g5mFUg==
+repo-link-check@^0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/repo-link-check/-/repo-link-check-0.2.1.tgz#a197fe1e1219e93af11a0e4e43358168e1f1bc7e"
+  integrity sha512-ekfFEnXdIue+kGOP4nFggVhoHaRU0aPY8v1jE1Fqnq94bUrb4NhyGWJ0Cuhnz78pVaC66LRAERlzH2bGVNCDQA==
   dependencies:
     bottleneck "^2.19.5"
     fast-glob "^3.2.4"
+    lodash "^4.17.20"
     micromatch "^4.0.2"
     minimist "^1.2.5"
     node-fetch "^2.6.0"

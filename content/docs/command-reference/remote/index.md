@@ -103,7 +103,7 @@ remote = myremote
 > [Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html).
 
 ```dvc
-$ dvc remote add newremote s3://mybucket/myproject
+$ dvc remote add newremote s3://mybucket/path
 $ dvc remote modify newremote endpointurl https://object-storage.example.com
 ```
 
@@ -115,7 +115,7 @@ url = /path/to/remote
 [core]
 remote = myremote
 ['remote "newremote"']
-url = s3://mybucket/myproject
+url = s3://mybucket/path
 endpointurl = https://object-storage.example.com
 ```
 
@@ -124,7 +124,7 @@ endpointurl = https://object-storage.example.com
 ```dvc
 $ dvc remote list
 myremote	/path/to/remote
-newremote	s3://mybucket/myproject
+newremote	s3://mybucket/path
 ```
 
 ## Example: Change the name of a remote

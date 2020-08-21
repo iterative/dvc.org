@@ -227,7 +227,7 @@ what files we have generated but haven't pushed to the remote yet:
 
 ```dvc
 $ dvc remote list
-storage	s3://dvc-remote
+storage	s3://bucket/path
 ```
 
 And would like to check what files we have generated but haven't pushed to the
