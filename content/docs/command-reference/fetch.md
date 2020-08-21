@@ -29,7 +29,7 @@ for multiple Git commits.
 
 The `targets` given to this command (if any) limit what to fetch. It accepts
 paths to tracked files or directories (including paths inside tracked
-directories), `.dvc` files, or stage names (found in `dvc.yaml`).
+directories), `.dvc` files, and stage names (found in `dvc.yaml`).
 
 Fetching is performed automatically by `dvc pull` (when the data is not already
 in the <abbr>cache</abbr>), along with `dvc checkout`:

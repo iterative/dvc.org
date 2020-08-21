@@ -31,7 +31,7 @@ to update the docs and redeploy the website.
 
 In case of a minor change, you can use the **Edit on GitHub** button (found to
 the right of each page) to fork the repository, edit it in place (with the
-source code file **Edit** button in Github), and create a pull request (PR).
+source code file **Edit** button in GitHub), and create a pull request (PR).
 
 Otherwise, please refer to the following procedure:
 
@@ -140,7 +140,7 @@ is installed when `yarn` runs (see [dev env](#development-environment)).
 
 - No trailing white spaces are allowed.
 
-- Content must be properly formatted at 80 symbols width.
+- Text content must be properly formatted at 80 symbols width.
 
   > 💡 We recommend using Visual Studio Code with the
   > [Rewrap](https://marketplace.visualstudio.com/items?itemName=stkb.rewrap)

@@ -62,7 +62,7 @@ file (in `.dvc/config` by default), and they support the options below:
 
 This is the main section with the general config options:
 
-- `core.remote` - name of the remote storage that should be used by default.
+- `core.remote` - name of the remote storage to use by default.
 
 - `core.interactive` - whether to always ask for confirmation before reproducing
   each [stage](/doc/command-reference/run) in `dvc repro`. (Normally, this
@@ -87,6 +87,10 @@ This is the main section with the general config options:
   and `false` (default). Set with the `--no-scm` option of `dvc init`
   ([more details](/doc/command-reference/init#initializing-dvc-without-git)).
 
+- `core.check_update` - disable/enable DVC's automatic update checks, which
+  notify the user when a new version is available. Accepts values `true`
+  (default) and `false`.
+
 ### remote
 
 These are sections in the config file that describe particular remotes. They
@@ -102,12 +106,12 @@ different versions. (See `dvc cache` and
 [DVC Files and Directories](/doc/user-guide/dvc-files-and-directories#structure-of-the-cache-directory)
 for more details.) This section contains the following options:
 
-- `cache.dir` - set/unset cache directory location. A correct value must be
-  either an absolute path or a path **relative to the config file location**.
-  The default value is `cache`, that resolves to `.dvc/cache` (relative to the
-  project config file location).
+- `cache.dir` - set/unset cache directory location. A correct value is either an
+  absolute path, or a path **relative to the config file location**. The default
+  value is `cache`, that resolves to `.dvc/cache` (relative to the project
+  config file location).
 
-  > See also helper command `dvc cache dir` to intuitively set this config
+  > See also the helper command `dvc cache dir` to intuitively set this config
   > option, properly transforming paths relative to the current working
   > directory into paths relative to the config file location.
 

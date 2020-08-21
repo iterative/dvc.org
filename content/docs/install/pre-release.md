@@ -1,7 +1,7 @@
 # Install Pre-release Version
 
 If you want to test the latest stable version of DVC, ahead of official
-releases, you can install it from our code repository Github.
+releases, you can install it from our code repository GitHub.
 
 > We **strongly** recommend creating a
 > [virtual environment](https://python.readthedocs.io/en/stable/library/venv.html)

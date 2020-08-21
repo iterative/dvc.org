@@ -26,7 +26,7 @@ positional arguments:
 
 What is data remote?
 
-The same way as Github provides storage hosting for Git repositories, DVC
+The same way as GitHub provides storage hosting for Git repositories, DVC
 remotes provide a central place to keep and share data and model files. With
 this remote storage, you can pull models and data files created by colleagues
 without spending time and resources to build or process them locally. It also
@@ -103,7 +103,7 @@ remote = myremote
 > [Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html).
 
 ```dvc
-$ dvc remote add newremote s3://mybucket/myproject
+$ dvc remote add newremote s3://mybucket/path
 $ dvc remote modify newremote endpointurl https://object-storage.example.com
 ```
 
@@ -115,7 +115,7 @@ url = /path/to/remote
 [core]
 remote = myremote
 ['remote "newremote"']
-url = s3://mybucket/myproject
+url = s3://mybucket/path
 endpointurl = https://object-storage.example.com
 ```
 
@@ -124,7 +124,7 @@ endpointurl = https://object-storage.example.com
 ```dvc
 $ dvc remote list
 myremote	/path/to/remote
-newremote	s3://mybucket/myproject
+newremote	s3://mybucket/path
 ```
 
 ## Example: Change the name of a remote
