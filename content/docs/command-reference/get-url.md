@@ -154,6 +154,8 @@ $ dvc get-url https://example.com/path/to/file
 
 </details>
 
+<details>
+
 ### Click and expand for a local example
 
 ```dvc
@@ -164,5 +166,3 @@ The above command will copy the `/local/path/to/data` file or directory into
 `./dir`.
 
 </details>
-
-<details>
