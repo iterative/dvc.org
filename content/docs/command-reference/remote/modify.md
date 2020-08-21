@@ -66,7 +66,7 @@ The following config options are available for all remote types:
   below):
 
   ```dvc
-  $ dvc remote modify s3remote url s3://mybucket/mykey
+  $ dvc remote modify s3remote url s3://mybucket/path
   ```
 
   Or a _local remote_ (a directory in the file system):
@@ -717,7 +717,7 @@ Let's first set up a _default_ S3 remote.
 > [Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html).
 
 ```dvc
-$ dvc remote add -d myremote s3://mybucket/mykey
+$ dvc remote add -d myremote s3://mybucket/path
 Setting 'myremote' as a default remote.
 ```
 
@@ -731,7 +731,7 @@ Now the project config file should look like this:
 
 ```ini
 ['remote "myremote"']
-url = s3://mybucket/mykey
+url = s3://mybucket/path
 profile = myuser
 [core]
 remote = myremote

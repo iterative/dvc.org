@@ -46,7 +46,7 @@ The `name` argument is required.
 Add Amazon S3 remote:
 
 ```dvc
-$ dvc remote add myremote s3://mybucket/mykey
+$ dvc remote add myremote s3://mybucket/path
 ```
 
 Remove it:

@@ -93,7 +93,7 @@ The following are the types of remote storage (protocols) supported:
 > [Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html).
 
 ```dvc
-$ dvc remote add -d s3remote url s3://mybucket/mykey
+$ dvc remote add -d s3remote url s3://mybucket/path
 ```
 
 By default, DVC expects your AWS CLI is already
@@ -409,7 +409,7 @@ region.
 > [Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html).
 
 ```dvc
-$ dvc remote add -d myremote s3://mybucket/mykey
+$ dvc remote add -d myremote s3://mybucket/path
 Setting 'myremote' as a default remote.
 
 $ dvc remote modify myremote region us-east-2
@@ -419,7 +419,7 @@ The <abbr>project</abbr>'s config file (`.dvc/config`) now looks like this:
 
 ```ini
 ['remote "myremote"']
-url = s3://mybucket/mykey
+url = s3://mybucket/path
 region = us-east-2
 [core]
 remote = myremote
@@ -429,13 +429,13 @@ The list of remotes should now be:
 
 ```dvc
 $ dvc remote list
-myremote	s3://mybucket/mykey
+myremote	s3://mybucket/path
 ```
 
 You can overwrite existing remotes using `-f` with `dvc remote add`:
 
 ```dvc
-$ dvc remote add -f myremote s3://mybucket/another-key
+$ dvc remote add -f myremote s3://mybucket/another-path
 ```
 
 List remotes again to view the updated remote:
@@ -443,5 +443,5 @@ List remotes again to view the updated remote:
 ```dvc
 $ dvc remote list
 
-myremote	s3://mybucket/another-key
+myremote	s3://mybucket/another-path
 ```
