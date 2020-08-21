@@ -3,7 +3,7 @@ on: deployment_status
 
 jobs:
   run:
-    name: Run Link Checker
+    name: Link Check Deploy
     runs-on: ubuntu-latest
     if: github.event.deployment_status.state == 'success'
 
@@ -11,7 +11,7 @@ jobs:
 
     - uses: actions/checkout@v2
 
-    - name: Run the link checker
+    - name: Run the link check script
       id: check
       uses: "iterative/link-check.action@master"
       with:
@@ -21,7 +21,7 @@ jobs:
     - uses: LouisBrunner/checks-action@v0.1.0
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
-        name: Link Check
+        name: Link Check Deploy
         status: completed
         conclusion: ${{ steps.check.outputs.conclusion }}
         output: ${{ steps.check.outputs.output }}

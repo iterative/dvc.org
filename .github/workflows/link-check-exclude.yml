@@ -10,10 +10,11 @@ jobs:
 
     - uses: actions/checkout@v2
 
-    - name: Check that all patterns are used.
+    - name: Run the link check script
       id: check
       uses: "iterative/link-check.action@master"
       with:
+        source: "filesystem"
         configFile: "./.linkcheckrc.json"
         reportUnusedPatterns: "only"
 
