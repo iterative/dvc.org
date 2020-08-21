@@ -21,6 +21,7 @@ https://github.com/iterative/dvc.org/blob/master/content$
 https://github.com/iterative/dvc/releases/download/$
 https://github.com/user/proj
 https://marketplace.visualstudio.com/items?itemName=stkb.rewrap
+https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml
 https://myendpoint.com
 https://object-storage.example.com
 https://remote.dvc.org/dataset-registry
