@@ -724,7 +724,7 @@ Setting 'myremote' as a default remote.
 Modify its access profile:
 
 ```dvc
-$ dvc remote modify myremote profile myuser
+$ dvc remote modify myremote profile myusername
 ```
 
 Now the project config file should look like this:
@@ -732,7 +732,7 @@ Now the project config file should look like this:
 ```ini
 ['remote "myremote"']
 url = s3://mybucket/path
-profile = myuser
+profile = myusername
 [core]
 remote = myremote
 ```
