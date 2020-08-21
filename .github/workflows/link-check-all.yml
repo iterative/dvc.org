@@ -1,11 +1,12 @@
-name: Link Check Deploy
-on: deployment_status
+name: Link Check All
+on:
+  schedule:
+    - cron: '0 0 * * *'
 
 jobs:
   run:
-    name: Link Check Deploy Job
+    name: Link Check All Job
     runs-on: ubuntu-latest
-    if: github.event.deployment_status.state == 'success'
 
     steps:
 
@@ -15,13 +16,13 @@ jobs:
       id: check
       uses: "iterative/link-check.action@master"
       with:
+        source: "filesystem"
         configFile: "./.linkcheckrc.json"
-        rootURL: "${{ github.event.deployment.payload.web_url }}"
 
     - uses: LouisBrunner/checks-action@v0.1.0
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
-        name: Link Check Deploy Check
+        name: Link Check All Check
         status: completed
         conclusion: ${{ steps.check.outputs.conclusion }}
         output: ${{ steps.check.outputs.output }}
