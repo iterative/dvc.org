@@ -1,0 +1,8 @@
+{
+  "rootURL": "https://dvc.org",
+  "fileIncludePatterns": [
+    "{.github,content,src}/**/*.{css,js,jsx,md,tsx,ts,json}"
+  ],
+  "fileExcludePatternFiles": ["./scripts/exclude-files.txt"],
+  "linkExcludePatternFiles": ["./scripts/exclude-links.txt"]
+}

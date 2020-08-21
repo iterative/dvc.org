@@ -1,0 +1,26 @@
+name: DVC Link Check
+on: deployment
+
+jobs:
+  run:
+    name: Link Check Exclude
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - uses: actions/checkout@v2
+
+    - name: Check that all patterns are used.
+      id: check
+      uses: "iterative/link-check.action@master"
+      with:
+        configFile: "./.linkcheckrc.yml"
+        reportUnusedPatterns: "only"
+
+    - uses: LouisBrunner/checks-action@v0.1.0
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        name: Link Check Exclude
+        status: completed
+        conclusion: ${{ steps.check.outputs.conclusion }}
+        output: ${{ steps.check.outputs.output }}
