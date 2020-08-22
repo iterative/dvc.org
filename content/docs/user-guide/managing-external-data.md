@@ -135,8 +135,8 @@ it. So systems like Hadoop, Hive, and HBase are supported!
 
 ### Local file system path
 
-The default local cache location is `.dvc/cache`, so there is no need to specify
-it explicitly.
+The default cache location is `.dvc/cache`, so there is no need to move it for
+local paths outside of your project.
 
 ```dvc
 # Add data on an external location directly
