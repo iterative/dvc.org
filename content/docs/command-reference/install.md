@@ -276,8 +276,8 @@ featurize:
 
 We see that the output of `dvc status` has appeared in the `git commit`
 interaction. This new behavior corresponds to the Git hook installed, and it
-informs us that the workspace is out of sync. Therefore, we can conclude that
-the `dvc repro` command is needed now:
+informs us that the workspace is out of sync. Therefore, we know that
+`dvc repro` command is needed:
 
 ```dvc
 $ dvc repro

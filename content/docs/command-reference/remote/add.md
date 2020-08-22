@@ -20,7 +20,7 @@ positional arguments:
 
 This command creates a `remote` section in the <abbr>DVC project</abbr>'s
 [config file](/doc/command-reference/config) and optionally assigns a default
-remote in the `core` section, if the `--default` option is used:
+`remote` in the `core` section, if the `--default` option is used:
 
 ```ini
 ['remote "myremote"']
