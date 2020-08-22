@@ -3,7 +3,7 @@ on: deployment
 
 jobs:
   run:
-    name: Link Check Exclude
+    name: Link Check Exclude Job
     runs-on: ubuntu-latest
 
     steps:
@@ -21,7 +21,7 @@ jobs:
     - uses: LouisBrunner/checks-action@v0.1.0
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
-        name: Link Check Exclude
+        name: Link Check Exclude Check
         status: completed
         conclusion: ${{ steps.check.outputs.conclusion }}
         output: ${{ steps.check.outputs.output }}
