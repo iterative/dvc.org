@@ -1,10 +1,8 @@
 # IDE Plugins and Syntax Highlighting
 
-When you add a file or a stage to your pipeline, DVC creates a special `.dvc` or
-`dvc.yaml` file (respectively) that contains all the needed information to track
-your data and transformations.
-
-The file itself is in a simple YAML format.
+When files or directories are added to the project, or stages to a pipeline,
+[DVC metafiles](/doc/user-guide/dvc-files-and-directories) are created. These
+use a simple YAML format.
 
 We maintain a [schema](https://github.com/iterative/dvcyaml-schema) for
 `dvc.yaml` that can enable IDE syntax checks and auto-completion.
