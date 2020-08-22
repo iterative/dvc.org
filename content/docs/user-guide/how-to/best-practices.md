@@ -13,6 +13,11 @@ is required.**
   [revisions](https://git-scm.com/docs/revisions) of source code and versions of
   data files, when the data cannot fit into a traditional repository?
 
+### Experiments
+
+- How do you document progress of training different types of models on your
+  data files in the same project?
+
 ### Experiment time log
 
 - How do you track which of your
