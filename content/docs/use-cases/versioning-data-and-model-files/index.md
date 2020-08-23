@@ -1,18 +1,17 @@
 # Versioning Data and Model Files
 
-> This document provides an overview the file versioning workflow with DVC. To
-> get more hands-on experience on this, we recommend following along the
-> [versioning tutorial](/doc/tutorials/versioning).
-
 DVC enables versioning large files and directories such as datasets, data
 science features, and machine learning models with Git, without storing the file
 contents in Git. DVC saves information about your data in special
 [metafiles](/doc/user-guide/dvc-files-and-directories) that replace the data in
-the repository. These can versioned with regular Git workflows (commits,
+the repository. These can be versioned with regular Git workflows (commits,
 branches, pull requests, etc.) To actually store the data, DVC uses a built-in
 <abbr>cache</abbr>, and supports synchronizing it with various types of
 [remote storage](/doc/command-reference/remote). This allows easily storing and
 sharing data alongside code.
+
+> To get more hands-on experience on this, we recommend following along the
+> [versioning tutorial](/doc/tutorials/versioning).
 
 ![](/img/model-versioning-diagram.png) _Code and data flows in DVC_
 
@@ -22,12 +21,33 @@ of cloud storage that are used to manage ML <abbr>artifacts</abbr> like training
 data, models, etc. DVC doesn't depend on 3rd party services and can leverage
 on-premises storage (e.g. SSH, NAS) as well as any major cloud storage provider
 (Amazon S3, Microsoft Azure, Google Drive,
-[among others](/doc/command-reference/remote/add#supported-storage-types)).
+[among others](/doc/command-reference/remote/add#supported-storage-types)) that
+you manage separately.
+
+## DVC is not Git!
+
+DVC metafiles such as `dvc.yaml` and `.dvc` files serve various purposes. They
+work as placeholders to track data files and directories needed by your project.
+DVC also provides basic versioning by storing file hash values inside them,
+corresponding to specific data contents (versions).
+
+However, we don't aim to reinvent the wheel. Git is a mature and well known
+[version control](https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control)
+tool that provides multiple ways to manage a commit history: branches and tags,
+merging or rebasing, etc. Widely used hosting services on op of Git enhance the
+experience even further (GitHub, GitLab) — you can keep all of these
+capabilities when using DVC.
+
+Git is however, designed for source code management (SCM), and thus ill-equipped
+to support data science needs. That's where DVC comes in: implementing a
+built-in data <abbr>cache</abbr>, allowing reproducible
+[pipelines](/doc/start/data-pipelines), among several other novel feature layers
+(please see [Get Started](/doc/start/) for more info.)
+
+## Track and version data and models
 
 Let's say you already have a Git repo and put a bunch of images in the `images/`
-directory, Then you build a `model.pkl` using them.
-
-## Track data (DVC) and version it (Git)
+directory. Then you build a `model.pkl` based on them.
 
 ```dvc
 $ ls images
@@ -37,22 +57,19 @@ $ ls
 model.pkl
 ```
 
-To start using DVC, we need to [initialize](/doc/command-reference/init) a
-<abbr>DVC project</abbr> in the existing repo:
+To start using DVC, [initialize](/doc/command-reference/init) a <abbr>DVC
+project</abbr> in the existing repo:
 
 ```dvc
 $ dvc init
 ```
 
-Start tracking the data directory and the model with `dvc add`:
+Start tracking the data directory and the model file with `dvc add`:
 
 ```dvc
-$ dvc add images
+$ dvc add images/
 $ dvc add model.pkl
 ```
-
-> See [Data Pipelines](/doc/start/data-pipelines) for more advanced ways to
-> version ML projects.
 
 This generates `.dvc` files, and puts the originals in `.gitignore`. Commit this
 project's version:
@@ -69,6 +86,9 @@ $ git add images.dvc model.pkl.dvc .gitignore
 $ git commit -m "Track images and model with DVC."
 $ git tag -a "v1.0" -m "images and model 1.0"
 ```
+
+> See [Data Pipelines](/doc/start/data-pipelines) for more advanced ways to
+> version ML projects.
 
 ## Switching versions
 
