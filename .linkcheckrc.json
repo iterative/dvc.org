@@ -4,5 +4,15 @@
     "{.github,content,src}/**/*.{css,js,jsx,md,tsx,ts,json}"
   ],
   "fileExcludePatternFiles": ["./scripts/exclude-files.txt"],
-  "linkExcludePatternFiles": ["./scripts/exclude-links.txt"]
+  "linkExcludePatternFiles": ["./scripts/exclude-links.txt"],
+  "bottlenecks": {
+    "*.wikipedia.org": {
+      "minTime": 2000,
+      "maxConcurrent": 1
+    },
+    "*.github.com": {
+      "minTime": 1000,
+      "maxConcurrent": 1
+    }
+  }
 }
