@@ -5,7 +5,7 @@ links:
   - https://twitter.com/mribeirodantas
 ---
 
-Early Stage Researcher at [Institut Curie](https://intstitut-curie.org) with
+Early Stage Researcher at [Institut Curie](https://institut-curie.org/) with
 over 10 years of experience in the field of biomedical engineering and health
 informatics. Areas of interest include Causal Inference, Artificial
 Intelligence, and Data Science. Degrees in Computer and Automation Engineering
@@ -13,4 +13,4 @@ Intelligence, and Data Science. Degrees in Computer and Automation Engineering
 Ph.D. at EDITE (Sorbonne Université).
 
 Twitter: [@mribeirodantas](https://twitter.com/mribeirodantas) Website:
-[mribeirodantas.me](https://mribeirodantas.me)
+[mribeirodantas.me](http://mribeirodantas.me)

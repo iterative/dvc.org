@@ -37,7 +37,7 @@ biggest contributors, [Vít Novotný](https://github.com/witiko), and
 
 ![](/uploads/images/2020-01-17/odd_with_deevee.png)_Vera (center, flashing a
 peace sign) thanked us with this lovely picture of DeeVee and her team,
-[Odd Industries](https://odd.co/en/). They are making some extremely neat tools
+[Odd Industries](https://odd.co). They are making some extremely neat tools
 for construction teams using computer vision._
 
 **We were at PyData LA!** Our fearless leader
