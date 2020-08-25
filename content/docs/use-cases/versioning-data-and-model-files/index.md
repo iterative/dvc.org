@@ -44,7 +44,7 @@ built-in data <abbr>cache</abbr>, allowing reproducible
 [pipelines](/doc/start/data-pipelines), among several other novel feature layers
 (please see [Get Started](/doc/start/) for more info.)
 
-## Track and version data and models
+## Track data and models for versioning
 
 Let's say you already have a Git repo and put a bunch of images in the `images/`
 directory. Then you build a `model.pkl` based on them.
@@ -84,11 +84,48 @@ Untracked files:
 
 $ git add images.dvc model.pkl.dvc .gitignore
 $ git commit -m "Track images and model with DVC."
-$ git tag -a "v1.0" -m "images and model 1.0"
+$ git tag -a "v1.0a" -m "First images and model"
 ```
 
-> See [Data Pipelines](/doc/start/data-pipelines) for more advanced ways to
-> version ML projects.
+## Track pipeline artifacts for versioning
+
+In the example above, the process to build the model file is omitted for
+simplicity. But in fact some of DVC's most important features allow for defining
+one or many such processes in simple `dvc.yaml` files, in order to run them and
+reproduce them later.
+
+> See [Data Pipelines](/doc/start/data-pipelines) for more information.
+
+Instead of training the model file on your own and adding the `model.pkl` to DVC
+manually, we can add only the images directory as a previous step, and then use
+this `dvc.yaml`:
+
+```yaml
+stages:
+  train:
+    cmd: python train.py images/
+    deps:
+      - images
+    outs:
+      - model.pkl
+```
+
+> Note that `dvc.yaml` can have multiple stages, forming a pipeline.
+
+DVC can now execute the above pipeline for you (see `dvc run` and `dvc repro`)
+and track all of its outputs (`outs`) automatically. These get listed in
+`.gitignore`. This project version can be committed like this:
+
+```dvc
+$ dvc repro
+Running stage 'train' with command:
+        python train.py images/
+Updating lock file 'dvc.lock'
+...
+$ git add dvc.yaml dvc.lock .gitignore
+$ git commit -m "Train model via DVC."
+$ git tag -a "v1.0b" -m "Fist model"
+```
 
 ## Switching versions
 
