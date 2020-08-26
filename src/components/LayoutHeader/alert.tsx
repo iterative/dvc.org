@@ -1,7 +1,6 @@
 import cn from 'classnames'
 import React from 'react'
 
-import { ReactComponent as GitHubIcon } from '../SocialIcon/github.svg'
 import Link from '../Link'
 
 import styles from './styles.module.css'
