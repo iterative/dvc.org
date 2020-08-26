@@ -110,6 +110,11 @@ $ dvc run -n download_file
 
 ### Local file system path
 
+For local paths outside of your project:
+
+> This includes different storage devices or partitions mounted on the same file
+> system, e.g. `/mnt/raid/data`.
+
 ```dvc
 $ dvc run -n download_file
           -d /home/shared/data.txt \
