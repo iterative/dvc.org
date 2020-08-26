@@ -43,7 +43,8 @@ The `path` argument is used to specify the location of the target to download
 within the source repository at `url`. `path` can specify any file or directory
 in the source repo, either tracked by DVC (including paths inside tracked
 directories) or by Git. Note that DVC-tracked targets must be found in a
-`dvc.yaml` or `.dvc` file of the repo.
+`dvc.yaml` or `.dvc` file of the repo. Chained imports (importing data that was
+imported into the source repo at `url`) are not supported, however.
 
 ⚠️ The project should have a default
 [DVC remote](/doc/command-reference/remote), containing the actual data for this
