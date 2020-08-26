@@ -12,13 +12,6 @@ const LayoutAlert: React.FC<{ collapsed: boolean }> = ({ collapsed }) => (
       🚀
     </span>{' '}
     Join <Link href="https://viewer.iterative.ai/">DVC UI</Link> beta program!{' '}
-    <Link
-      className={styles.gitHubAlertLink}
-      href="https://github.com/iterative/cml"
-      title="Star us on GitHub!"
-    >
-      <GitHubIcon width="1em" height="1em" viewBox="5 5 30 30" />
-    </Link>
   </div>
 )
 
