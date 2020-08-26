@@ -640,7 +640,7 @@ more information.
 
   ```dvc
   $ dvc remote modify myremote url \
-        webdavs://example.com/public.php/webdav/path/to/dir
+        webdavs://example.com/nextcloud/remote.php/dav/files/USERNAME/
   ```
 
 - `token` - token for WebDAV server, can be empty in case of using
@@ -660,7 +660,7 @@ more information.
   The order in which DVC searches for username is:
 
   1. `user` parameter set with this command (found in `.dvc/config`);
-  2. User defined in the URL (e.g. `webdav://user@example.com/path`)
+  2. User defined in the URL (e.g. `webdavs://user@example.com/endpoint/path`)
 
 - `password` - password for WebDAV server, can be empty in case of using `token`
   authentication.

@@ -343,7 +343,8 @@ $ dvc remote add -d myremote https://example.com/path/to/dir
 ### Click for WebDAV
 
 ```dvc
-$ dvc remote add -d myremote webdavs://example.com/public.php/webdav
+$ dvc remote add -d myremote \
+                    webdavs://example.com/owncloud/remote.php/dav
 ```
 
 If your remote is located in a subfolder of your WebDAV server e.g.
@@ -351,7 +352,7 @@ If your remote is located in a subfolder of your WebDAV server e.g.
 
 ```dvc
 $ dvc remote add -d myremote \
-                    webdavs://example.com/public.php/webdav/path/to/dir
+      webdavs://example.com/owncloud/remote.php/dav/files/USERNAME/
 ```
 
 > See also `dvc remote modify` for a full list of WebDAV parameters.

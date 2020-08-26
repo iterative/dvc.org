@@ -27,10 +27,10 @@ learning training or data processing:
 
 ## Description
 
-In order to track the basic performance of machine learning experiments, DVC has
-the ability to mark a certain stage <abbr>outputs</abbr> as metrics. These
-metrics are project-specific floating-point or integer values e.g. AUC, ROC,
-false positives, etc.
+In order to follow the performance of machine learning experiments, DVC has the
+ability to mark a certain stage <abbr>outputs</abbr> as metrics. These metrics
+are project-specific floating-point or integer values e.g. AUC, ROC, false
+positives, etc.
 
 This kind of metrics can be defined with the `-m` (`--metrics`) and `-M`
 (`--metrics-no-cache`) options of `dvc run`.

@@ -24,10 +24,10 @@ navigate the project to find <abbr>data artifacts</abbr> for use with `dvc get`,
 `dvc import`, or `dvc.api`.
 
 `dvc list` prints a virtual view of a DVC repository, as if files and
-directories [tracked by DVC](/doc/use-cases/versioning-data-and-model-files)
-were found directly in the remote Git repo. Only the root directory is listed by
-default. The output of this command is equivalent to actually cloning the repo
-and [pulling](/doc/command-reference/pull) its data like this:
+directories tracked by DVC were found directly in the remote Git repo. Only the
+root directory is listed by default. The output of this command is equivalent to
+actually cloning the repo and [pulling](/doc/command-reference/pull) its data
+like this:
 
 ```dvc
 $ git clone <url> example
