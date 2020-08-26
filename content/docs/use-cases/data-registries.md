@@ -4,7 +4,7 @@ One of the main uses of <abbr>DVC repositories</abbr> is the
 [versioning of data and model files](/doc/use-cases/data-and-model-files-versioning),
 with commands such as `dvc add`. With the aim to enable reusability of these
 <abbr>data artifacts</abbr> between different projects, DVC also provides
-commands like `dvc import` and `dvc get`. This means that you projects can
+commands like `dvc import` and `dvc get`. This means that your projects can
 depend on data from other DVC repositories, **similar to a package management
 systems for data science**.
 
