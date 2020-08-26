@@ -25,7 +25,7 @@ on-premises storage (e.g. SSH, NAS) as well as any major cloud storage provider
 [among others](/doc/command-reference/remote/add#supported-storage-types)).
 
 > For hands-on experience, we recommend following the
-> [versioning tutorial](/doc/tutorials/versioning).
+> [versioning tutorial](/doc/use-cases/versioning-data-and-model-files).
 
 ## DVC is not Git!
 

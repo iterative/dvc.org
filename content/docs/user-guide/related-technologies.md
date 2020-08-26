@@ -9,11 +9,11 @@ bringing best practices from software engineering into the data science field
 - DVC builds upon Git by introducing the concept of data files – large files
   that should not be stored in a Git repository, but still need to be tracked
   and versioned. It leverages Git's features to enable managing different
-  versions of data itself, data pipelines, and experiments.
+  versions of data, data pipelines, and experiments.
 
 - DVC is not fundamentally bound to Git, and can work without it (except
-  versioning-related features). This also applies to Git-LFS and Git-annex,
-  below.
+  [versioning-related](/doc/use-cases/versioning-data-and-model-files)
+  features).
 
 ## Git-LFS (Large File Storage)
 
