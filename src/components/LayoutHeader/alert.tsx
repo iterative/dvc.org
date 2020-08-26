@@ -11,7 +11,7 @@ const LayoutAlert: React.FC<{ collapsed: boolean }> = ({ collapsed }) => (
     <span role="img" aria-label="rocket">
       🚀
     </span>{' '}
-    Check out our newest tool, <Link href="https://cml.dev">CML</Link>!{' '}
+    Join <Link href="https://viewer.iterative.ai/">DVC UI</Link> beta program!{' '}
     <Link
       className={styles.gitHubAlertLink}
       href="https://github.com/iterative/cml"
