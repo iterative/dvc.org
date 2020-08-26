@@ -222,7 +222,7 @@ $ dvc checkout
 ```
 
 Let's commit it (no need to do `dvc push` this time since the previous version
-of this dataset was save before):
+of this dataset was saved before):
 
 ```dvc
 $ git commit data/data.xml.dvc -m "Revert dataset updates"
