@@ -31,8 +31,7 @@ on Windows. Otherwise, please try using a lower `JOBS` value.
 
 ## Unable to find credentials {#no-credentials}
 
-Make sure that you have your AWS credentials setup either
-through
+Make sure that you have your AWS credentials setup either through
 [usual AWS configuration](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html)
 or using [DVC configs](/doc/command-reference/remote/modify).
 
