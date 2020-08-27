@@ -16,7 +16,7 @@ usage: dvc destroy [-h] [-q | -v] [-f]
 directory from the <abbr>workspace</abbr>.
 
 Note that the <abbr>cache directory</abbr> will be removed as well, unless it's
-[set to an external location](/doc/use-cases/shared-development-server#configure-the-external-shared-cache)
+[set to an external location](/doc/use-cases/shared-development-server#configure-the-shared-cache)
 (by default a local cache is located in `.dvc/cache`). If you were using
 [symlinks for linking](/doc/user-guide/large-dataset-optimization) data from the
 cache, DVC will replace them with the latest versions of the actual files and

@@ -31,12 +31,12 @@ can write to it, and can read cached files owned by others.
 
 > E.g. make all users members of a group that owns the shared cache directory.
 
-You can skip this part if you are setting up a new DVC project where the local
-<abbr>cache directory</abbr> (`.dvc/cache` by default), hasn't been used.
+## Transfer existing cache (if any)
 
-If you did work on the <abbr>DVC projects</abbr> previously and wish to transfer
-its existing cache to the shared cache directory, you will simply need to move
-its contents from the old location to the new one:
+> Not needed for new DVC projects where the local cache hasn't been used.
+
+For existing DVC projects to work on a new shared cache directory, first you'll
+need to move their cache contents from the old location:
 
 ```dvc
 $ mv .dvc/cache/* /home/shared/dvc-cache
@@ -52,26 +52,32 @@ $ sudo find /home/shared/dvc-cache -type f -exec chmod 0664 {} \;
 $ sudo chown -R myuser:ourgroup /home/shared/dvc-cache/
 ```
 
-## Configure the external shared cache
+## Configure the shared cache
 
-Tell DVC to use the directory we've set up above as the <abbr>cache</abbr> for
-your <abbr>project</abbr>:
+Tell DVC to use the directory we've set up above as _external
+<abbr>cache</abbr>_ for your <abbr>project</abbr>:
 
 ```dvc
 $ dvc cache dir /home/shared/dvc-cache
 ```
 
-And tell DVC to set group permissions on newly created or downloaded cache
-files:
+And configure DVC to set group permissions on cached assets, and to enable all
+[link types](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache):
 
 ```dvc
 $ dvc config cache.shared group
+$ dvc config cache.type 'reflink,symlink,hardlink,copy'
 ```
 
-> See `dvc cache dir` and `dvc config cache` for more information.
+⚠️ Note that you can't manually modify tracked data with the above `cache.type`
+value. Soft/hard links are disabled by default for this reason, but are needed
+for a reliable shared cache.
 
-If you're using Git, commit changes to your project's config file (`.dvc/config`
-by default):
+> See `dvc cache dir` and `dvc config cache` for more details on the above
+> steps.
+
+If using Git, commit the changes to your project's configuration (in
+`.dvc/config` by default):
 
 ```dvc
 $ git add .dvc/config
