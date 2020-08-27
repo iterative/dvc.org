@@ -19,7 +19,7 @@ projects with DVC more efficiently using the practices listed here:
 
   You can make use of Git branches to document progress of training different
   types of models on your data files in the same project. Create a branch for
-  each of the model and then utilise DVC features while working on that branch.
+  each of the models and then utilise DVC features while working on that branch.
 
 - Experiment time log
 
