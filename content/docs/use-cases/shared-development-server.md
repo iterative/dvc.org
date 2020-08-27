@@ -1,29 +1,35 @@
 # Shared Development Server
 
-Some teams may prefer using one single shared machine to run their experiments.
-This allows better resource utilization, such as the ability to use multiple
-GPUs, centralized data storage, etc. With DVC, you can easily setup shared data
-storage on a server accessed by several users or for any other reason, in a way
-that enables almost instantaneous <abbr>workspace</abbr> restoration/switching
-speed for everyone – similar to `git checkout` for your code.
+Some teams may prefer using a single shared machine to run their experiments.
+This allows better resource utilization, such as GPU access, centralized data
+storage, etc. With DVC, you can easily setup shared data storage on a server
+with multiple users or processes. This enables near-instantaneous
+<abbr>workspace</abbr> restoration and switching speeds for everyone – a
+**checkout for data**.
 
-![](/img/shared-server.png)
+![](/img/shared-server.png) _Shared DVC project data_
+
+Not only can several users share a single cache for a project, but in fact
+multiple projects can use the same cache. This is useful when the datasets of
+these projects overlap, since DVC detects and eliminates data storage redundancy
+automatically.
+
+> Note that `dvc gc` can be dangerous in this scenario. See it's `--projects`
+> option.
 
 ## Preparation
 
-Create a directory external to your <abbr>DVC projects</abbr> to be used as a
-shared <abbr>cache</abbr> location for everyone's projects:
+Create a directory outside your <abbr>DVC projects</abbr> to be used as a shared
+<abbr>cache</abbr> location:
 
 ```dvc
 $ mkdir -p /home/shared/dvc-cache
 ```
 
 Make sure that the directory has proper permissions, so that all your colleagues
-can write to it, and can read cached files written by others. The most
-straightforward way to do this is to make all users members of the same group,
-and have the shared cache directory owned by that group.
+can write to it, and can read cached files owned by others.
 
-## Transfer existing cache (optional)
+> E.g. make all users members of a group that owns the shared cache directory.
 
 You can skip this part if you are setting up a new DVC project where the local
 <abbr>cache directory</abbr> (`.dvc/cache` by default), hasn't been used.
