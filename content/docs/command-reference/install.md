@@ -296,8 +296,7 @@ Data and pipelines are up to date.
  5 files changed, 12 insertions(+), 12 deletions(-)
 ```
 
-After reproducing this pipeline up to the "evaluate" stage, the data files are
-in sync with the code/config files, but we must now commit the changes with Git.
-Looking closely we see that `dvc status` is used again, informing us that the
-data files have been updated, with the `Data and pipelines are up to date.`
-message.
+After reproducing the pipeline, the data files should be in sync with the code
+and configuration, and we want to commit the changes with Git. In doing so,
+`dvc status` is run automatically again, informing us that the data files have
+been updated indeed, with the `Data and pipelines are up to date.` message.
