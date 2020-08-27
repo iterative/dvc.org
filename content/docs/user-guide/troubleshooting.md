@@ -43,7 +43,6 @@ Make sure you are online and able to access your
 
 ## Bucket does not exist {#no-bucket}
 
-Make sure
-[your bucket exists](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/create-bucket.html)
-in the correct
-[`region` and/or `endpointurl`](/doc/command-reference/remote/modify).
+Make sure your bucket
+[exists](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/create-bucket.html)
+in the correct `region` and/or `endpointurl` (see `dvc remote modify`).
