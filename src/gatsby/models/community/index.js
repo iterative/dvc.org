@@ -5,12 +5,21 @@ const { childNodeCreator } = require('../../utils/models/nodes.js')
 function expiredNodesLog(typeName, nodes) {
   if (nodes.length > 0) {
     return `${nodes.length} ${typeName}:\n${nodes
-      .map(({ sourceIndex, expires }) => `- #${sourceIndex} expired ${expires}`)
+      .map(
+        ({ sourceIndex, title, expires }) =>
+          `- #${sourceIndex}:${title ? ` "${title}"` : ''} expired ${expires}`
+      )
       .join('\n')}\n`
   }
 }
 
-const expirationFields = {
+const expirableFields = {
+  date: {
+    type: 'Date',
+    extensions: {
+      dateformat: {}
+    }
+  },
   expires: {
     type: 'Date',
     extensions: {
@@ -30,26 +39,24 @@ module.exports = {
         name: 'CommunityHero',
         interfaces: ['Node'],
         fields: {
-          date: 'Date',
           url: 'String',
           sourceIndex: 'Int',
           pictureDesktop: 'String',
           pictureMobile: 'String',
-          ...expirationFields
+          ...expirableFields
         }
       }),
       buildObjectType({
         name: 'CommunityEvent',
         interfaces: ['Node'],
         fields: {
-          date: 'Date',
           title: 'String',
           url: 'String',
           description: 'String',
           sourceIndex: 'Int',
           city: 'String',
           pictureUrl: 'String',
-          ...expirationFields
+          ...expirableFields
         }
       }),
       buildObjectType({
@@ -140,6 +147,7 @@ module.exports = {
           nodes {
             expires(formatString: "YYYY-MM-DD")
             sourceIndex
+            title
           }
         }
         heroes: allCommunityHero(
