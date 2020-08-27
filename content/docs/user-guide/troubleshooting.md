@@ -33,7 +33,7 @@ on Windows. Otherwise, please try using a lower `JOBS` value.
 
 Make sure that you have your AWS credentials setup either through
 [usual AWS configuration](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html)
-or using [DVC configs](/doc/command-reference/remote/modify).
+or by setting `access_key_id` and `secret_access_key` with `dvc remote modify`.
 
 ## Unable to connect {#connection-error}
 
