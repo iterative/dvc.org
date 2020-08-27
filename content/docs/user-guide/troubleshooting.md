@@ -38,9 +38,8 @@ or by setting `access_key_id` and `secret_access_key` with `dvc remote modify`.
 ## Unable to connect {#connection-error}
 
 Make sure you are online and able to access your
-[AWS S3 endpoint](https://docs.aws.amazon.com/general/latest/gr/s3.html) or, if
-[explicitly configured](/doc/command-reference/remote/modify), your
-`endpointurl`.
+[AWS S3 endpoint](https://docs.aws.amazon.com/general/latest/gr/s3.html), or
+`endpointurl` if explicitly set with `dvc remote modify`.
 
 ## Bucket does not exist {#no-bucket}
 
