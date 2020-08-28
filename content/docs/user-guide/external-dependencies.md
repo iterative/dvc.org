@@ -4,7 +4,7 @@ There are cases when data is so large, or its processing is organized in a way
 that you would like to avoid moving it out of its external/remote location. For
 example from a network attached storage (NAS) drive, processing data on HDFS,
 running [Dask](https://dask.org/) via SSH, or having a script that streams data
-from S3 to process it. A mechanism for external dependencies and
+from S3 to process it. A mechanism for external <abbr>dependencies</abbr> and
 [external outputs](/doc/user-guide/managing-external-data) provides a way for
 DVC to track data outside of the <abbr>project</abbr>.
 
@@ -28,9 +28,9 @@ supported:
 > Note that these are a subset of the remote storage types supported by
 > `dvc remote`.
 
-In order to specify an external dependency for your stage, use the usual `-d`
-option in `dvc run` with the external path or URL to your desired file or
-directory.
+In order to specify an external <abbr>dependency</abbr> for your stage, use the
+usual `-d` option in `dvc run` with the external path or URL to your desired
+file or directory.
 
 ## Examples
 
@@ -149,12 +149,12 @@ $ dvc import-url https://data.dvc.org/get-started/data.xml
 Importing 'https://data.dvc.org/get-started/data.xml' -> 'data.xml'
 ```
 
-The command above creates the <abbr>import stage</abbr> (DVC-file)
-`data.xml.dvc`, that uses an external dependency (in this case an HTTPs URL).
+The command above creates the import `.dvc` file `data.xml.dvc`, that contains
+an external dependency (in this case an HTTPs URL).
 
 <details>
 
-### Expand to see resulting DVC-file
+### Expand to see resulting `.dvc` file
 
 ```yaml
 # ...
@@ -180,7 +180,7 @@ determine whether the source has changed and we need to download the file again.
 
 `dvc import` can download a <abbr>data artifact</abbr> from any <abbr>DVC
 project</abbr> or Git repository. It also creates an external dependency in its
-<abbr>import stage</abbr> (DVC-file).
+import `.dvc` file.
 
 ```dvc
 $ dvc import git@github.com:iterative/example-get-started model.pkl
@@ -193,7 +193,7 @@ specified (with the `repo` field).
 
 <details>
 
-### Expand to see resulting DVC-file
+### Expand to see resulting `.dvc` file
 
 ```yaml
 # ...

@@ -4,16 +4,16 @@ There are cases when data is so large, or its processing is organized in a way
 that you would like to avoid moving it out of its external/remote location. For
 example from a network attached storage (NAS) drive, processing data on HDFS,
 running [Dask](https://dask.org/) via SSH, or having a script that streams data
-from S3 to process it. External outputs and
+from S3 to process it. External <abbr>outputs</abbr> and
 [external dependencies](/doc/user-guide/external-dependencies) provide a way for
 DVC to track data outside of the <abbr>project</abbr>.
 
 ## Description
 
 DVC can track files on an external location with `dvc add` or specify external
-files or directories as <abbr>outputs</abbr> for `dvc.yaml` files. External
-outputs are considered part of the (extended) DVC project: DVC will track
-changes in them, and reflect this in `dvc status` for example.
+files or directories as outputs for `dvc.yaml` files. External outputs are
+considered part of the (extended) DVC project: DVC will track changes in them,
+and reflect this in `dvc status` for example.
 
 Currently, the following types (protocols) of external outputs (and
 <abbr>cache</abbr>) are supported:
@@ -27,10 +27,10 @@ Currently, the following types (protocols) of external outputs (and
 > Note that these are a subset of the remote storage types supported by
 > `dvc remote`.
 
-In order to specify an external output for a stage file, add them to the stage
-in `dvc.yaml` normally (for example with the usual `-o` or `-O` options of
-`dvc run`) but with the external path or URL to the file in question. For cached
-external outputs (`-o`), you will need to
+In order to specify an external <abbr>output</abbr> for a stage file, add them
+to the stage in `dvc.yaml` normally (for example with the usual `-o` or `-O`
+options of `dvc run`) but with the external path or URL to the file in question.
+For cached external outputs (`-o`), you will need to
 [setup an external cache](/doc/use-cases/shared-development-server#configure-the-external-shared-cache)
 in the same external/remote file system first.
 
@@ -45,8 +45,8 @@ etc. options of `dvc run`).
 ## Examples
 
 For the examples, let's take a look at a [stage](/doc/command-reference/run)
-that simply moves local file to an external location, producing a `data.txt.dvc`
-DVC-file.
+that simply moves local file to an external location, producing the `.dvc` file
+`data.txt.dvc`, that contains an external <abbr>output</abbr>.
 
 ### Amazon S3
 
