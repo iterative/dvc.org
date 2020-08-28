@@ -1,4 +1,10 @@
-import React, { useCallback, useEffect, useRef } from 'react'
+import React, {
+  useCallback,
+  useEffect,
+  useRef,
+  ReactNode,
+  ReactElement
+} from 'react'
 import cn from 'classnames'
 import { navigate } from '@reach/router'
 import rehypeReact from 'rehype-react'
@@ -12,6 +18,8 @@ import { getPathWithSource } from '../../../utils/shared/sidebar'
 import 'github-markdown-css/github-markdown.css'
 import sharedStyles from '../styles.module.css'
 import styles from './styles.module.css'
+
+import util from 'util'
 
 const isInsideCodeBlock = (node: Element): boolean => {
   while (node?.parentNode) {
@@ -30,17 +38,31 @@ const isInsideCodeBlock = (node: Element): boolean => {
 }
 
 const Details: React.FC<{
-  children: Array<{ props: { children: Array<string> } } | string>
+  children: Array<{ props: { children: ReactNode } } | string>
 }> = ({ children }) => {
   const filteredChildren = children.filter(child => child !== '\n')
 
   if (!filteredChildren.length) return null
   if (typeof filteredChildren[0] === 'string') return null
 
-  const text = filteredChildren[0].props.children[0]
+  const headingChildren: ReactNode[] = filteredChildren[0].props
+    .children as ReactNode[]
+
+  // Remove header auto-link if present
+  const finalHeadingChild = headingChildren[headingChildren.length - 1]! as {
+    props: {
+      className: string
+    }
+  }
+
+  const triggerChildren: unknown =
+    finalHeadingChild.props !== undefined &&
+    finalHeadingChild.props.className === 'anchor after'
+      ? headingChildren.slice(0, headingChildren.length - 1)
+      : headingChildren
 
   return (
-    <Collapsible trigger={text} transitionTime={200}>
+    <Collapsible trigger={triggerChildren as ReactElement} transitionTime={200}>
       {filteredChildren.slice(1)}
     </Collapsible>
   )
