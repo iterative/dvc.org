@@ -6,20 +6,19 @@ example from a network attached storage (NAS) drive, processing data on HDFS,
 running [Dask](https://dask.org/) via SSH, or having a script that streams data
 from S3 to process it. External outputs and
 [external dependencies](/doc/user-guide/external-dependencies) provide a way for
-DVC to control data outside of the <abbr>project</abbr> directory.
+DVC to track data outside of the <abbr>project</abbr>.
 
 ## Description
 
-DVC can track files on an external storage with `dvc add` or specify external
-files as <abbr>outputs</abbr> for
-[DVC-files](/doc/user-guide/dvc-files-and-directories) created by `dvc run`
-(stage files). External outputs are considered part of the DVC project. DVC will
-track changes in them and reflect this in the output of `dvc status`.
+DVC can track files on an external location with `dvc add` or specify external
+files or directories as <abbr>outputs</abbr> for `dvc.yaml` files. External
+outputs are considered part of the (extended) DVC project: DVC will track
+changes in them, and reflect this in `dvc status` for example.
 
 Currently, the following types (protocols) of external outputs (and
 <abbr>cache</abbr>) are supported:
 
-- Local files and directories outside of your <abbr>workspace</abbr>
+- Local files and directories outside the <abbr>workspace</abbr>
 - SSH
 - Amazon S3
 - Google Cloud Storage
@@ -28,17 +27,20 @@ Currently, the following types (protocols) of external outputs (and
 > Note that these are a subset of the remote storage types supported by
 > `dvc remote`.
 
-In order to specify an external output for a stage file, use the usual `-o` or
-`-O` options of `dvc run`, but with the external path or URL to the file in
-question. For <abbr>cached</abbr> external outputs (`-o`) you will need to
+In order to specify an external output for a stage file, add them to the stage
+in `dvc.yaml` normally (for example with the usual `-o` or `-O` options of
+`dvc run`) but with the external path or URL to the file in question. For cached
+external outputs (`-o`), you will need to
 [setup an external cache](/doc/use-cases/shared-development-server#configure-the-external-shared-cache)
 in the same external/remote file system first.
 
-> Avoid using the same location of the
-> [remote storage](/doc/command-reference/remote) that you have for `dvc push`
-> and `dvc pull` for external outputs or as external cache, because it may cause
-> file hash overlaps: The hash value of a data file in external storage could
-> collide with the one generated locally for another file.
+Please note that there is no support for external metrics or plots (`-m`, `-p`,
+etc. options of `dvc run`).
+
+> Avoid using the same [DVC remote](/doc/command-reference/remote) (used for
+> `dvc push`, `dvc pull`, etc.) for external outputs, because it may cause file
+> hash overlaps: the hash of an external output could collide with a hash
+> generated locally for another file with different content.
 
 ## Examples
 
@@ -103,6 +105,11 @@ $ dvc run -d data.txt \
           scp data.txt user@example.com:/data.txt
 ```
 
+> Please note that to use password authentication, it's necessary to set the
+> `password` or `ask_password` SSH remote options first (see
+> `dvc remote modify`), and use the special URL in:
+> `dvc add --external remote://sshcache/mydata`.
+
 ⚠️ DVC requires both SSH and SFTP access to work with remote SSH locations.
 Please check that you are able to connect both ways with tools like `ssh` and
 `sftp` (GNU/Linux).
@@ -137,6 +144,12 @@ it. So systems like Hadoop, Hive, and HBase are supported!
 
 The default cache location is `.dvc/cache`, so there is no need to move it for
 local paths outside of your project.
+
+> Except for external data on different storage devices or partitions mounted on
+> the same file system (e.g. `/mnt/raid/data`). In that case please setup an
+> external cache in that same drive to enable
+> [file links](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
+> and avoid copying data.
 
 ```dvc
 # Add data on an external location directly
