@@ -154,9 +154,9 @@ $ dvc checkout
 $ dvc diff baseline-experiment bigrams-experiment
 Modified:
     data/features/
-    model.pkl
     prc.json
     scores.json
+    model.pkl
 
 files summary: 0 added, 0 deleted, 3 modified
 ```
