@@ -18,11 +18,11 @@ and reflect this in `dvc status` for example.
 Currently, the following types (protocols) of external outputs (and
 <abbr>cache</abbr>) are supported:
 
-- Local files and directories outside the <abbr>workspace</abbr>
-- SSH
 - Amazon S3
 - Google Cloud Storage
+- SSH
 - HDFS
+- Local files and directories outside the <abbr>workspace</abbr>
 
 > Note that these are a subset of the remote storage types supported by
 > `dvc remote`.

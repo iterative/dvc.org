@@ -17,13 +17,12 @@ stages. DVC will track changes in them and reflect this in the output of
 Currently, the following types (protocols) of external dependencies are
 supported:
 
-- Local files and directories outside of your <abbr>workspace</abbr>
-- SSH
 - Amazon S3
 - Microsoft Azure Blob Storage
 - Google Cloud Storage
+- SSH
 - HDFS
-- HTTP
+- Local files and directories outside the <abbr>workspace</abbr>
 
 > Note that these are a subset of the remote storage types supported by
 > `dvc remote`.
@@ -154,7 +153,7 @@ an external dependency (in this case an HTTPs URL).
 
 <details>
 
-### Expand to see resulting `.dvc` file
+### Expand to see resulting .dvc file
 
 ```yaml
 # ...
@@ -193,7 +192,7 @@ specified (with the `repo` field).
 
 <details>
 
-### Expand to see resulting `.dvc` file
+### Expand to see resulting .dvc file
 
 ```yaml
 # ...
