@@ -19,8 +19,9 @@ positional arguments:
 ## Description
 
 This command creates a `remote` section in the <abbr>DVC project</abbr>'s
-[config file](/doc/command-reference/config) and optionally assigns a default
-`remote` in the `core` section, if the `--default` option is used:
+[config file](/doc/command-reference/config) and optionally assigns a _default
+remote_ in the `core` section, if the `--default` option is used (recommended
+for the first remote):
 
 ```ini
 ['remote "myremote"']
@@ -28,6 +29,10 @@ url = /tmp/dvc-storage
 [core]
 remote = myremote
 ```
+
+> 💡 Default remotes are expected by commands that accept a `-r`/`--remote`
+> option (`dvc pull`, `dvc push`, `dvc status`, `dvc gc`, `dvc fetch`) when that
+> option is omitted.
 
 `name` and `url` are required. The `name` is used to identify the remote and
 must be unique for the project.
