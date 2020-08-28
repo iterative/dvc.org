@@ -19,8 +19,6 @@ import 'github-markdown-css/github-markdown.css'
 import sharedStyles from '../styles.module.css'
 import styles from './styles.module.css'
 
-import util from 'util'
-
 const isInsideCodeBlock = (node: Element): boolean => {
   while (node?.parentNode) {
     if (node.tagName === 'PRE') {
@@ -49,7 +47,7 @@ const Details: React.FC<{
     .children as ReactNode[]
 
   // Remove header auto-link if present
-  const finalHeadingChild = headingChildren[headingChildren.length - 1]! as {
+  const finalHeadingChild = headingChildren[headingChildren.length - 1] as {
     props: {
       className: string
     }
