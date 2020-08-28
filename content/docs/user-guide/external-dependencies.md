@@ -6,7 +6,7 @@ example from a network attached storage (NAS) drive, processing data on HDFS,
 running [Dask](https://dask.org/) via SSH, or having a script that streams data
 from S3 to process it. A mechanism for external dependencies and
 [external outputs](/doc/user-guide/managing-external-data) provides a way for
-DVC to control data externally.
+DVC to track data outside of the <abbr>project</abbr>.
 
 ## Description
 
