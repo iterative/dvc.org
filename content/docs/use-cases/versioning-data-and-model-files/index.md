@@ -88,7 +88,7 @@ dataset or model files.
 
 On the other hand, if we want to keep the current version of code and go back to
 the previous dataset only, we can do something like this (make sure that you
-don't have uncommitted changes in the `data.dvc`):
+don't have uncommitted changes in the `images.dvc`):
 
 ```dvc
 $ git checkout v1.0 images.dvc
