@@ -84,9 +84,9 @@ the entire 147 GB of your ML project, with all of its data sources, intermediate
 data files, and models with others if they are stored on
 [remote storage](doc/command-reference/remote/add#supported-storage-types).
 Using this you can share models trained in a GPU environment with colleagues who
-don't have access to a GPU. Have a look at this
+don't have access to a GPU. You can check this
 [example](doc/command-reference/pull#example-download-from-specific-remote-storage)
-to see how this works.
+to see how to download data from remote storage.
 
 ## Manually editing dvc.yaml or .dvc files
 
