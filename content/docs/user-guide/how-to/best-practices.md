@@ -20,8 +20,8 @@ $ git checkout 95485f   # Git commit of required data version
 $ dvc checkout
 ```
 
-If your dataset consist of multiple files like images, etc. then the best way to
-track whole directory is with single `.dvc` file. You can use `dvc add` with
+If your dataset consist of multiple files like images, etc., then the best way
+to track whole directory is with single `.dvc` file. You can use `dvc add` with
 relative path to directory:
 
 ```dvc
