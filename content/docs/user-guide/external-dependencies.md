@@ -22,6 +22,7 @@ supported:
 - Google Cloud Storage
 - SSH
 - HDFS
+- HTTP
 - Local files and directories outside the <abbr>workspace</abbr>
 
 > Note that these are a subset of the remote storage types supported by

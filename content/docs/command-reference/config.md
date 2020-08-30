@@ -156,6 +156,15 @@ for more details.) This section contains the following options:
   `dvc remote` for more information on "local remotes".) This will overwrite the
   value provided to `dvc config cache.dir` or `dvc cache dir`.
 
+- `cache.s3` - name of an
+  [Amazon S3 remote to use as external cache](/doc/user-guide/managing-external-data#amazon-s-3).
+
+- `cache.azure` - name of a Microsoft Azure Blob Storage remote to use as
+  [external cache](/doc/user-guide/managing-external-data).
+
+- `cache.gs` - name of a
+  [Google Cloud Storage remote to use as external cache](/doc/user-guide/managing-external-data#google-cloud-storage).
+
 - `cache.ssh` - name of an SSH remote to use
   [as external cache](/doc/user-guide/managing-external-data#ssh).
 
@@ -164,17 +173,8 @@ for more details.) This section contains the following options:
   > hash overlaps: the hash of an external <abbr>output</abbr> could collide
   > with a hash generated locally for another file with different content.
 
-- `cache.s3` - name of an
-  [Amazon S3 remote to use as external cache](/doc/user-guide/managing-external-data#amazon-s-3).
-
-- `cache.gs` - name of a
-  [Google Cloud Storage remote to use as external cache](/doc/user-guide/managing-external-data#google-cloud-storage).
-
 - `cache.hdfs` - name of an
   [HDFS remote to use as external cache](/doc/user-guide/managing-external-data#hdfs).
-
-- `cache.azure` - name of a Microsoft Azure Blob Storage remote to use as
-  [external cache](/doc/user-guide/managing-external-data).
 
 ### state
 
