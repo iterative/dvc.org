@@ -202,5 +202,10 @@ $ git status -s
  M .gitignore
  M dvc.yaml
  M train.py
-$ dvc repro
+$ dvc commit --force # save the changes and update the lock file
+$ git status -s
+ M .gitignore
+ M dvc.lock
+ M dvc.yaml
+ M train.py
 ```
