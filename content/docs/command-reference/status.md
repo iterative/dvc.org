@@ -85,11 +85,17 @@ file name or hash is shown, along with a _state description_, as detailed below:
   storage.
 - _deleted_ means that the file/directory doesn't exist in the cache, but exists
   in remote storage.
+- _missing_ means that the file/directory doesn't exist neither in cache,
+  neither in remote storage.
 
 For either _new_ and _deleted_ data, the cache (subset determined by the current
 workspace) is different from remote storage. Bringing the two into sync requires
 `dvc pull` or `dvc push`. For the typical process to update the workspace, see
 [Sharing Data And Model Files](/doc/use-cases/sharing-data-and-model-files).
+
+For _missing_ data both cache and remote storage are out of date. Probably
+someone on another machine didn't execute `dvc push` after adding new data. You
+should run `dvc add` or `dvc repro` to rid off _missing_ state.
 
 ## Options
 
@@ -116,9 +122,9 @@ workspace) is different from remote storage. Bringing the two into sync requires
 - `--show-json` - prints the command's output in easily parsable JSON format,
   instead of a human-readable table.
 
-- `--all-commits` - same as `-a` or `-T` above, but applies to _all_ Git  
-  commits as well as the workspace. Useful for comparing cache content for the
-  entire existing commit history of the project.
+- `--all-commits` - same as `-a` or `-T` above, but applies to _all_ Git commits
+  as well as the workspace. Useful for comparing cache content for the entire
+  existing commit history of the project.
 
 - `-d`, `--with-deps` - determines files to check by tracking dependencies to
   the `targets`. If none are provided, this option is ignored. By traversing all
@@ -260,8 +266,8 @@ original file or directory changes later, `dvc status` will show
 ```dvc
 $ dvc status
 data.csv.dvc:
-	changed deps:
-		update available:   data.csv (different/repo/location)
+        changed deps:
+                update available:   data.csv (different/repo/location)
 ```
 
 The imported data can be brought to its latest version by using `dvc update`.
