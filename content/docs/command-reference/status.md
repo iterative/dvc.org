@@ -88,8 +88,8 @@ file name or hash is shown, along with a _state description_, as detailed below:
 - _missing_ means that the file/directory doesn't exist neither in cache,
   nor in remote storage.
 
-For _new_ and _deleted_ data, the cache (subset determined by the current
-workspace) is different from remote storage. Bringing the two into sync requires
+For _new_ and _deleted_ data, the cache is different from remote storage.
+Bringing the two into sync requires
 `dvc pull` or `dvc push`. For the typical process to update the workspace, see
 [Sharing Data And Model Files](/doc/use-cases/sharing-data-and-model-files).
 
