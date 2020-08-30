@@ -54,7 +54,6 @@ $ ls images/
 0001.jpg 0002.jpg 0003.jpg 0004.jpg ...
 
 $ dvc add images/
-...
 
 $ git add images.dvc .gitignore
 $ git commit -m "Track images dataset with DVC."
