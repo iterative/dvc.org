@@ -266,8 +266,8 @@ original file or directory changes later, `dvc status` will show
 ```dvc
 $ dvc status
 data.csv.dvc:
-        changed deps:
-                update available:   data.csv (different/repo/location)
+	changed deps:
+		update available:   data.csv (different/repo/location)
 ```
 
 The imported data can be brought to its latest version by using `dvc update`.
