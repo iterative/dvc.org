@@ -44,58 +44,43 @@ several other novel features (see [Get Started](/doc/start/) for a primer.)
 
 ## Track data and models for versioning
 
-Let's say you already have a <abbr>DVC repository</abbr> and put a bunch of
-images in the `images/` directory. Then you build a `model.pkl` based on them.
+Let's say you have an empty <abbr>DVC repository</abbr> and put a dataset of
+images in the `images/` directory. You can start tracking it with `dvc add`.
+This generate a `.dvc` file, which can be committed to Git in order to save the
+project's version:
 
 ```dvc
 $ ls images/
 0001.jpg 0002.jpg 0003.jpg 0004.jpg ...
-$ ls
-images model.pkl
-```
 
-Start tracking the dataset and the model file with `dvc add`:
-
-```dvc
 $ dvc add images/
-$ dvc add model.pkl
+...
+
+$ git add images.dvc .gitignore
+$ git commit -m "Track images dataset with DVC."
 ```
 
-This generates `.dvc` files, and puts the originals in `.gitignore`. Commit this
-project's version:
+DVC's also allows to define the processes that build artifacts based on tracked
+data, such as an ML model, by writing a simple `dvc.yaml` file that connects the
+pieces together:
 
-```dvc
-$ git add images.dvc model.pkl.dvc .gitignore
-$ git commit -m "Track images and model with DVC."
-```
-
-## Track pipeline artifacts for versioning
-
-Some of DVC's most important features allow for defining the processes to build
-artifacts such as ML models in a simple `dvc.yaml` file, in order to run and
-reproduce them later.
-
-> See [Data Pipelines](/doc/start/data-pipelines) for more information.
-
-Instead of training the model file on your own and adding the `model.pkl` to DVC
-manually, we can add only the images dataset in the previous step, and use this
-`dvc.yaml`:
+> `dvc.yaml` files can be written manually or generated with `dvc run`.
 
 ```yaml
 stages:
   train:
     cmd: python train.py images/
     deps:
-      - images # Already tracked by DVC
+      - images
     outs:
       - model.pkl
 ```
 
-> The file can be written manually or generated with `dvc run`.
+> See [Data Pipelines](/doc/start/data-pipelines) for a comprehensive intro to
+> this feature.
 
-`dvc repro` can now execute the above stage for you. DVC will track all of its
-outputs (`outs`) automatically, which get listed in `.gitignore`. Let's do that,
-and commit this project version:
+`dvc repro` can now execute the `train` stage for you. DVC will track all of its
+outputs (`outs`) automatically. Let's do that, and commit this project version:
 
 ```dvc
 $ dvc repro
@@ -106,16 +91,23 @@ Updating lock file 'dvc.lock'
 
 $ git add dvc.yaml dvc.lock .gitignore
 $ git commit -m "Train model via DVC."
-$ git tag -a "v1.0" -m "Fist model via DVC" # We'll use this soon ;)
+$ git tag -a "v1.0" -m "Fist model"   # We'll use this soon ;)
 ```
 
 > See also `dvc.lock`.
 
 ## Switching versions
 
-After iterating on this process and producing several versions, there are two
-ways to get previous version of data or models using `dvc checkout`: either a
-full or a partial <abbr>project</abbr> checkout.
+After iterating on this process and producing several versions, you can combine
+`git checkout` and `dvc checkout` to perform full or partial
+<abbr>workspace</abbr> restorations.
+
+![](/img/versioning.png) _Code and data checkout_
+
+> Note that `dvc install` enables auto-checkouts of data after `git checkout`.
+
+A full checkout brings the whole <abbr>project</abbr> back to a previous version
+— code, dataset and model files all match each other:
 
 ```dvc
 $ git checkout v1.0
@@ -124,18 +116,8 @@ M       images
 M       model.pkl
 ```
 
-These commands will restore the full <abbr>workspace</abbr> to the first
-snapshot we made — code, dataset and model files all match each other. DVC
-[optimizes](/doc/user-guide/large-dataset-optimization) this operation by
-avoiding copying files each time, so checking out data is quick even if you have
-large data files.
-
-![](/img/versioning.png) _Code and data checkout_
-
-> See also `dvc install` to auto-checkout data after `git checkout`.
-
-On the other hand, if we want to keep the latest source code and model, but
-rewind to the previous dataset only, we can do a partial checkout like this:
+However, we can checkout certain parts only, for example if we want to keep the
+latest source code and model but rewind to the previous dataset only:
 
 ```dvc
 $ git checkout v1.0 images.dvc
@@ -143,7 +125,6 @@ $ dvc checkout images.dvc
 M       images
 ```
 
----
-
-A typical next step is
-[Sharing Data and Model Files](/doc/use-cases/sharing-data-and-model-files).
+DVC [optimizes](/doc/user-guide/large-dataset-optimization) this operation by
+avoiding copying files each time, so checking out data is quick even if you have
+large data files.

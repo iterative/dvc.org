@@ -29,7 +29,7 @@ The `targets` are the files or directories to add, which are turned into
 <abbr>cache</abbr> by default (use the `--no-commit` option to avoid this, and
 `dvc commit` to finish the process when needed).
 
-> See also `dvc.yaml` and `dvc run` for more advanced ways to track & version
+> See also `dvc.yaml` and `dvc run` for more advanced ways to track and version
 > intermediate and final results (like ML models).
 
 After checking that each `target` file (or directory) hasn't been added before
