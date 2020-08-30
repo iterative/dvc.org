@@ -1,24 +1,33 @@
 # Managing External Data
 
 There are cases when data is so large, or its processing is organized in a way
-that you would like to avoid moving it out of its external/remote location. For
-example from a network attached storage (NAS) drive, processing data on HDFS,
-running [Dask](https://dask.org/) via SSH, or having a script that streams data
-from S3 to process it. External <abbr>outputs</abbr> and
-[external dependencies](/doc/user-guide/external-dependencies) provide a way for
-DVC to track data outside of the <abbr>project</abbr>.
+such that its preferable to avoid moving it from its external/remote location.
+For example data on a network attached storage (NAS) drive, processing data on
+HDFS, running [Dask](https://dask.org/) via SSH, or having a script that streams
+data from S3 to process it.
 
-## Description
+External <abbr>outputs</abbr> and
+[external dependencies](/doc/user-guide/external-dependencies) provide ways to
+track data outside of the <abbr>project</abbr>.
 
-DVC can track files on an external location with `dvc add` or specify external
-files or directories as outputs for `dvc.yaml` files. External outputs are
-considered part of the (extended) DVC project: DVC will track changes in them,
-and reflect this in `dvc status` for example.
+## How external outputs work
+
+DVC can track existing files or directories on an external location with
+`dvc add` (`out` field). It can also create external files or directories as
+outputs for `dvc.yaml` files (only `outs` field, not metrics or plots).
+
+External outputs are considered part of the (extended) DVC project: DVC will
+track changes in them, and reflect this in `dvc status` reports, for example.
+
+For cached external outputs (e.g. `dvc add`, `dvc run -o`), you will need to
+[setup an external cache](/doc/use-cases/shared-development-server#configure-the-external-shared-cache)
+in the same external/remote file system first.
 
 Currently, the following types (protocols) of external outputs (and
 <abbr>cache</abbr>) are supported:
 
 - Amazon S3
+- Microsoft Azure Blob Storage
 - Google Cloud Storage
 - SSH
 - HDFS
@@ -27,16 +36,6 @@ Currently, the following types (protocols) of external outputs (and
 > Note that these are a subset of the remote storage types supported by
 > `dvc remote`.
 
-In order to specify an external <abbr>output</abbr> for a stage file, add them
-to the stage in `dvc.yaml` normally (for example with the usual `-o` or `-O`
-options of `dvc run`) but with the external path or URL to the file in question.
-For cached external outputs (`-o`), you will need to
-[setup an external cache](/doc/use-cases/shared-development-server#configure-the-external-shared-cache)
-in the same external/remote file system first.
-
-Please note that there is no support for external metrics or plots (`-m`, `-p`,
-etc. options of `dvc run`).
-
 > Avoid using the same [DVC remote](/doc/command-reference/remote) (used for
 > `dvc push`, `dvc pull`, etc.) for external outputs, because it may cause file
 > hash overlaps: the hash of an external output could collide with a hash
@@ -44,42 +43,52 @@ etc. options of `dvc run`).
 
 ## Examples
 
-For the examples, let's take a look at a [stage](/doc/command-reference/run)
-that simply moves local file to an external location, producing the `.dvc` file
-`data.txt.dvc`, that contains an external <abbr>output</abbr>.
+For the examples, let's take a look at
+
+1. Adding a `dvc remote` to use as cache for data in the external location, and
+   configure it as external <abbr>cache</abbr> with `dvc config`.
+2. Tracking existing data on an external location with `dvc add` (this doesn't
+   download it). This produces a `.dvc` file with an external output.
+3. Creating a simple [stage](/doc/command-reference/run) that moves a local file
+   to the external location. This produces a stage with another external output
+   in `dvc.yaml`.
 
 ### Amazon S3
 
 ```dvc
-# Add S3 remote to be used as cache location for S3 files
 $ dvc remote add s3cache s3://mybucket/cache
-
-# Tell DVC to use the 's3cache' remote as S3 cache location
 $ dvc config cache.s3 s3cache
 
-# Add data on S3 directly
-$ dvc add --external s3://mybucket/mydata
+$ dvc add --external s3://mybucket/existing-data
 
-# Create the stage with an external S3 output
 $ dvc run -d data.txt \
           --external \
           -o s3://mybucket/data.txt \
           aws s3 cp data.txt s3://mybucket/data.txt
 ```
 
+### Microsoft Azure Blob Storage
+
+```dvc
+$ dvc remote add azurecache azure://mycontainer/cache
+$ dvc config cache.azure azurecache
+
+$ dvc add --external azure://mycontainer/existing-data
+
+$ dvc run -d data.txt \
+          --external \
+          -o azure://mycontainer/data.txt \
+          az storage blob upload -f data.txt -c mycontainer -n data.txt
+```
+
 ### Google Cloud Storage
 
 ```dvc
-# Add GS remote to be used as cache location for GS files
 $ dvc remote add gscache gs://mybucket/cache
-
-# Tell DVC to use the 'gscache' remote as GS cache location
 $ dvc config cache.gs gscache
 
-# Add data on GS directly
-$ dvc add --external gs://mybucket/mydata
+$ dvc add --external gs://mybucket/existing-data
 
-# Create the stage with an external GS output
 $ dvc run -d data.txt \
           --external \
           -o gs://mybucket/data.txt \
@@ -89,16 +98,11 @@ $ dvc run -d data.txt \
 ### SSH
 
 ```dvc
-# Add SSH remote to be used as cache location for SSH files
 $ dvc remote add sshcache ssh://user@example.com/cache
-
-# Tell DVC to use the 'sshcache' remote as SSH cache location
 $ dvc config cache.ssh sshcache
 
-# Add data on SSH directly
-$ dvc add --external ssh://user@example.com/mydata
+$ dvc add --external ssh://user@example.com/existing-data
 
-# Create the stage with an external SSH output
 $ dvc run -d data.txt \
           --external \
           -o ssh://user@example.com/data.txt \
@@ -107,8 +111,8 @@ $ dvc run -d data.txt \
 
 > Please note that to use password authentication, it's necessary to set the
 > `password` or `ask_password` SSH remote options first (see
-> `dvc remote modify`), and use the special URL in:
-> `dvc add --external remote://sshcache/mydata`.
+> `dvc remote modify`), and use a special `remote://` URL in step 2:
+> `dvc add --external remote://sshcache/existing-data`.
 
 ⚠️ DVC requires both SSH and SFTP access to work with remote SSH locations.
 Please check that you are able to connect both ways with tools like `ssh` and
@@ -119,16 +123,11 @@ Please check that you are able to connect both ways with tools like `ssh` and
 ### HDFS
 
 ```dvc
-# Add HDFS remote to be used as cache location for HDFS files
 $ dvc remote add hdfscache hdfs://user@example.com/cache
-
-# Tell DVC to use the 'hdfscache' remote as HDFS cache location
 $ dvc config cache.hdfs hdfscache
 
-# Add data on HDFS directly
-$ dvc add --external hdfs://user@example.com/mydata
+$ dvc add --external hdfs://user@example.com/existing-data
 
-# Create the stage with an external HDFS output
 $ dvc run -d data.txt \
           --external \
           -o hdfs://user@example.com/data.txt \
@@ -142,8 +141,8 @@ it. So systems like Hadoop, Hive, and HBase are supported!
 
 ### Local file system path
 
-The default cache location is `.dvc/cache`, so there is no need to move it for
-local paths outside of your project.
+The default <abbr>cache</abbr> is in `.dvc/cache`, so there is no need to set a
+custom cache location for local paths outside of your project.
 
 > Except for external data on different storage devices or partitions mounted on
 > the same file system (e.g. `/mnt/raid/data`). In that case please setup an
@@ -152,10 +151,8 @@ local paths outside of your project.
 > and avoid copying data.
 
 ```dvc
-# Add data on an external location directly
-$ dvc add --external /home/shared/mydata
+$ dvc add --external /home/shared/existing-data
 
-# Create the stage with an external location output
 $ dvc run -d data.txt \
           --external \
           -o /home/shared/data.txt \

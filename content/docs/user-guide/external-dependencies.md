@@ -1,16 +1,18 @@
 # External Dependencies
 
 There are cases when data is so large, or its processing is organized in a way
-that you would like to avoid moving it out of its external/remote location. For
-example from a network attached storage (NAS) drive, processing data on HDFS,
-running [Dask](https://dask.org/) via SSH, or having a script that streams data
-from S3 to process it. A mechanism for external <abbr>dependencies</abbr> and
-[external outputs](/doc/user-guide/managing-external-data) provides a way for
-DVC to track data outside of the <abbr>project</abbr>.
+such that you would like to avoid moving it out of its external/remote location.
+For example from a network attached storage (NAS) drive, processing data on
+HDFS, running [Dask](https://dask.org/) via SSH, or having a script that streams
+data from S3 to process it.
 
-## Description
+External <abbr>dependencies</abbr> and
+[external outputs](/doc/user-guide/managing-external-data) provide ways to track
+data outside of the <abbr>project</abbr>.
 
-With DVC, you can specify external files as dependencies for your pipeline
+## How it works
+
+You can specify external files or directories as dependencies for your pipeline
 stages. DVC will track changes in them and reflect this in the output of
 `dvc status`.
 
