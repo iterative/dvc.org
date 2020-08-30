@@ -85,18 +85,19 @@ file name or hash is shown, along with a _state description_, as detailed below:
   storage.
 - _deleted_ means that the file/directory doesn't exist in the cache, but exists
   in remote storage.
-- _missing_ means that the file/directory doesn't exist neither in cache,
-  nor in remote storage.
+- _missing_ means that the file/directory doesn't exist neither in cache, nor in
+  remote storage.
 
 For _new_ and _deleted_ data, the cache is different from remote storage.
-Bringing the two into sync requires
-`dvc pull` or `dvc push`. For the typical process to update the workspace, see
+Bringing the two into sync requires `dvc pull` or `dvc push`. For the typical
+process to update the workspace, see
 [Sharing Data And Model Files](/doc/use-cases/sharing-data-and-model-files).
 
 For _missing_ data, there's nothing to retrieve from storage. This can happen
 for example in fresh <abbr>DVC repository</abbr> clones if the data wasn't
 uploaded from the original repo, or after certain uses of `dvc gc`. You can try
-`dvc repro` to regenerate the output locally, and `dvc push` remotely after that.
+`dvc repro` to regenerate the output locally, and `dvc push` remotely after
+that.
 
 ## Options
 
