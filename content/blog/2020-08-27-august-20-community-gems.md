@@ -16,9 +16,9 @@ tags:
   - Discord
   - Gems
   - CML
-  - hyperparameters
-  - LFS
-  - pipeline
+  - Hyperparameters
+  - Git LFS
+  - Pipeline
 ---
 
 Here are some of our top Q&A's from around the community. With the launch of
@@ -26,49 +26,62 @@ Here are some of our top Q&A's from around the community. With the launch of
 
 ## DVC questions
 
-### [Q: What's the relationship between your DVC remote and cache? If I have an external cache, do I really need a DVC remote](https://discordapp.com/channels/485586884165107732/563406153334128681/747588572479094866)
+### [Q: What's the relationship between your DVC remote and cache? If I have an external cache, do I really need a DVC remote?](https://discordapp.com/channels/485586884165107732/563406153334128681/747588572479094866)
 
-You can think of your DVC remote similar to your Git remote- it's a place to
-backup and share artifacts, like datasets and models, and it gives you methods
-to push and pull those artifacts to and from your team.
+You can think of your DVC remote similar to your Git remote, but for data and
+model artifacts- it's a place to backup and share artifacts, like datasets and
+models, and it gives you methods to push and pull those artifacts to and from
+your team.
 
-By default, `.dvc/cache` is also similar to your `.git` cache. They're both
-_local_ caches that optimize access to files (data and models for DVC cache, and
-code for Git cache).
+Your DVC cache (by default, it's located in `.dvc/cache`) serves a similar
+purpose to a `.git` cache. They're both _local_ caches that optimize access to
+files (data and models for DVC cache, and code for Git cache).
 
-Your DVC remote is a superset of `.dvc/cache`- everything in your cache is a
-copy of something in your remote (though there may be files in your DVC remote
-that are not in your cache, if you have never attempted to `push` or `pull` them
-locally).
+Usually, your DVC remote is a superset of `.dvc/cache`- everything in your cache
+is a copy of something in your remote (though there may be files in your DVC
+remote that are not in your cache (and vice versa) if you have never attempted
+to `push` or `pull` them locally).
 
 In theory, if you are using an
-[external cache](https://dvc.org/doc/command-reference/destroy#example-external-cache-directory)
-(such as an S3 bucket), and all your projects and all your teammates use that
-external cache, and you _know_ that the storage is highly reliable, you don't
-need to also have a DVC remote. If you have any doubts about access to your
-external cache or its reliability, we'd recommend also keeping a remote.
+[external cache](https://dvc.org/doc/command-reference/destroy#example-external-cache-directory),
+and all your projects and all your teammates use that external cache, and you
+_know_ that the storage is highly reliable, you don't need to also have a DVC
+remote. If you have any doubts about access to your external cache or its
+reliability, we'd recommend also keeping a remote.
 
 ### [Q: One of my files is an output of a DVC pipeline, and I want to track this file with Git and store it in my Git repository since it isn't very big. How can I make this work?](https://discordapp.com/channels/485586884165107732/563406153334128681/732308317627613235)
 
-If a file (call it `myfile`) is the output of a DVC pipeline, DVC takes several
-steps to remove it from Git tracking. If you remove it from the `.gitignore` and
-do `git add myfile`, you'll get an error when you try to reproduce your pipeline
-with `dvc repro` (`myfile is already trakced by SCM`).
+When you create a pipeline stage that outputs a file (call it `myfile`), DVC
+takes several steps to remove `myfile` from Git tracking. As a consequence, even
+if you remove `myfile` from your `.gitignore` and try to `git add` it, you'll
+get an error next time you try to reproduce your pipeline with `dvc repro`
+(`myfile is already trakced by SCM`).
 
-To get around this, you need to specify that DVC should not cache the outputs of
-your pipeline]. When you declare a pipeline stage with `dvc run`, instead of
-using the `-o` flag, use `-O`. This is shorthand for `--outs-no-cache` ([see
-docs for `dvc run` and its flags
-[here](https://dvc.org/doc/command-reference/run#options)).
-
-In your `dvc.yaml` file, if you prefer to manually edit, you'll add a field for
-`cache`:
+To get around this, you need to specify that DVC should not cache the pipeline
+output `myfile`. If you've already created the pipeline stage outputting
+`myfile`, go into your `dvc.yaml` and add a field `cache: false` as follows:
 
 ```yaml
 outs:
   - myfile:
       cache: false
 ```
+
+If you're declaring a new pipeline stage with `dvc run`, you'll want to use a
+special flag (`-O`, shorthand for `--outs-no-cache`):
+
+```dvc
+$ dvc run -n <stage name> -d <dependency> -O myfile
+```
+
+For more about declaring pipelines and electing not to cache outputs,
+[see here here](https://dvc.org/doc/command-reference/run#options)).
+
+Please note one special case: if you previously enabled hardlinks or symlinks in
+DVC via `dvc config cache`, you may need to run `dvc unprotect myfile` to fully
+unlink `myfile` from your DVC cache. If you haven't enabled these types of file
+links (and if you're not sure, _you probably didn't!_), this step is unncessary.
+[See our docs for more.](https://dvc.org/doc/command-reference/unprotect)
 
 ### [Q: Can I change my `params.yaml` file to a `.json`?](https://discordapp.com/channels/485586884165107732/563406153334128681/730614265051873370)
 
@@ -78,6 +91,9 @@ your workspace, and then use it in `dvc run`:
 ```dvc
 $ dvc run -p params.json:myparam ...
 ```
+
+Alternately, if your pipeline stage has already been created, you can manually
+edit your `dvc.yaml` file to replace `params.yaml` with `params.json`.
 
 For more about the `params.yaml` file,
 [see our docs](https://dvc.org/doc/start/experiments#defining-parameters).
@@ -106,8 +122,8 @@ downsides to using a confidential validation dataset with someone else's code
 (be sure nothing in their code could expose your data!). But, there are ways to
 implement this if you're sure about it.
 
-We'd recommend creating a separate "data registry" repository using a private
-cloud bucket to store your validation dataset
+One possible approach is to create a separate "data registry" repository using a
+private cloud bucket to store your validation dataset
 ([see our docs about the why and how of data registries](https://dvc.org/doc/use-cases/data-registries#data-registries)).
 Your CI system can be setup to have access to the data registry via secrets
 (called "variables" in GitLab). Then when you run validation via
