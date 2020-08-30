@@ -93,9 +93,10 @@ Bringing the two into sync requires
 `dvc pull` or `dvc push`. For the typical process to update the workspace, see
 [Sharing Data And Model Files](/doc/use-cases/sharing-data-and-model-files).
 
-For _missing_ data both cache and remote storage are out of date. Probably
-someone on another machine didn't execute `dvc push` after adding new data. You
-should run `dvc add` or `dvc repro` to rid off _missing_ state.
+For _missing_ data, there's nothing to retrieve from storage. This can happen
+for example in fresh <abbr>DVC repository</abbr> clones if the data wasn't
+uploaded from the original repo, or after certain uses of `dvc gc`. You can try
+`dvc repro` to regenerate the output locally, and `dvc push` remotely after that.
 
 ## Options
 
