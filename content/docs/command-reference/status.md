@@ -86,7 +86,7 @@ file name or hash is shown, along with a _state description_, as detailed below:
 - _deleted_ means that the file/directory doesn't exist in the cache, but exists
   in remote storage.
 - _missing_ means that the file/directory doesn't exist neither in cache,
-  neither in remote storage.
+  nor in remote storage.
 
 For either _new_ and _deleted_ data, the cache (subset determined by the current
 workspace) is different from remote storage. Bringing the two into sync requires
