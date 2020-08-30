@@ -4,6 +4,10 @@ Rename a file or a directory and modify the corresponding `.dvc` file (see
 `dvc add`) to reflect the change. If the file or directory has the same name as
 the `.dvc` file, it also renames it.
 
+Renaming is supported only for data source files and directories (creaded by
+`dvc add` and `dvc import`), not for outputs of pipelines (`dvc run`). The
+pipeline outputs can be renamed only manualy.
+
 ## Synopsis
 
 ```usage
@@ -160,4 +164,43 @@ $ tree
     │   ├── bar
     │   └── foo
     └── data3.dvc
+```
+
+## Example: manual renaming of a pipeline output
+
+The command does not support renaming of pipeline outputs. This example shows
+how the renaming can be done manualy. An alternative approach - remove an entire
+stage and recreate it again.
+
+```dvc
+$ tree
+.
+├── dvc.lock
+├── dvc.yaml
+├── keras.h5
+├── params.yaml
+├── train.py
+├── users.csv
+└── users.csv.dvc
+$ vi train.py # change model file name in code to model.h5
+$ cat dvc.yaml
+stages:
+  train:
+    cmd: python train.py
+    deps:
+    - users.csv
+    - train.py
+    params:
+    - epochs
+    - opt
+    outs:
+    - keras.h5
+$ vi dvc.yaml # change output name keras.h5 to model.h5
+$ vi .gitignore # change output name /keras.h5 to /model.h5
+$ mv keras.h5 model.h6
+$ git status -s
+ M .gitignore
+ M dvc.yaml
+ M train.py
+$ dvc repro
 ```
