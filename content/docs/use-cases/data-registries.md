@@ -40,31 +40,21 @@ Advantages of data registries:
 
 ## Building registries
 
-A good way to organize <abbr>DVC repositories</abbr> into data registries is to
-use directories to group similar data, e.g. `images/`, `natural-language/`, etc.
-For example, our
-[dataset registry](https://github.com/iterative/dataset-registry) has
-directories like `get-started/` and `use-cases/`, matching parts of this
-website.
-
 Adding datasets to a registry can be as simple as placing the data file or
 directory in question inside the <abbr>workspace</abbr>, and track it with
-`dvc add`. For example:
-
-```dvc
-$ mkdir -p music/songs
-$ cp ~/Downloads/millionsongsubset_full music/songs
-$ dvc add music/songs/
-```
+`dvc add`. A regular Git workflow can be followed with the `.dvc` files that
+substitute the actual data (e.g. `music/songs.dvc` below). This enables team
+collaboration on data at the same level as with source code:
 
 > This sample dataset actually
 > [exists](http://millionsongdataset.com/pages/getting-dataset/#subset).
 
-A regular Git workflow can be followed with the tiny `.dvc` file that substitute
-the actual data (e.g. `music/songs.dvc`). This enables team collaboration on
-data at the same level as with source code:
-
 ```dvc
+$ mkdir -p music/songs
+$ cp ~/Downloads/millionsongsubset_full music/songs
+
+$ dvc add music/songs/
+
 $ git add music/songs.dvc music/.gitignore
 $ git commit -m "Track 1.8 GB 10,000 song dataset in music/"
 ```
@@ -78,6 +68,13 @@ accessed from other locations and by other people:
 $ dvc remote add -d myremote s3://my-bucket/dvc-storage
 $ dvc push
 ```
+
+> 💡 A good way to organize <abbr>DVC repositories</abbr> into data registries
+> is to use directories to group similar data, e.g. `images/`,
+> `natural-language/`, etc. For example, our
+> [dataset registry](https://github.com/iterative/dataset-registry) has
+> directories like `get-started/` and `use-cases/`, matching parts of this
+> website.
 
 ## Using registries
 
@@ -104,7 +101,7 @@ images/dvc-logo-outlines.png
 
 Both Git-tracked files and DVC-tracked data (or models, etc.) are listed.
 
-### Simple downloads
+### Data downloads
 
 `dvc get` is analogous to using direct download tools like `wget` (HTTP),
 `aws s3 cp` (S3), etc. To get a dataset from a DVC repo, we can run something
@@ -118,16 +115,9 @@ This downloads `music/songs` from the <abbr>project</abbr>'s
 [default remote](/doc/command-reference/remote/default) and places it in the
 current working directory.
 
-> Note that this command and `dvc import` have a `--rev` option to download data
-> from a specific [commit](https://git-scm.com/docs/revisions) of the source
-> <abbr>repository</abbr>.
-
-### Import workflow
+### Data import workflow
 
 `dvc import` uses the same syntax as `dvc get`:
-
-> Note that unlike `dvc get`, `dvc import` needs to operate in an existing DVC
-> project.
 
 ```dvc
 $ dvc import https://github.com/example/registry images/faces
@@ -136,16 +126,21 @@ $ dvc import https://github.com/example/registry images/faces
 Besides downloading the data, importing saves the information about the
 dependency from the local project to the data source (registry repo). This is
 achieved by generating a special import `.dvc` file, which contains this
-metadata, and can be committed with Git.
+metadata.
 
-We can easily bring data up to date in with `dvc update` whenever the the
-dataset changes in the registry. This downloads new and changed files, and
-removes deleted ones, based on the latest commit in the source repo. It also
-updates the dependency metadata in the `.dvc` file:
+Whenever the the dataset changes in the registry, we can bring data up to date
+in with `dvc update`:
 
 ```dvc
 $ dvc update faces.dvc
 ```
+
+This downloads new and changed files, and removes deleted ones, based on the
+latest commit in the source repo; And it updates the `.dvc` file accordingly.
+
+> Note that `dvc get`, `dvc import`, and `dvc update` have a `--rev` option to
+> download data from a specific [commit](https://git-scm.com/docs/revisions) of
+> the source <abbr>repository</abbr>.
 
 ### Using DVC data from Python code
 
