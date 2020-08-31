@@ -1,11 +1,11 @@
 # Data Registries
 
 One of the main uses of <abbr>DVC repositories</abbr> is the
-[versioning of data and model files](/doc/use-cases/data-and-model-files-versioning),
-with tools like the `dvc add` command and `dvc.yaml` files. DVC also enables
-cross-project reusability of these <abbr>data artifacts</abbr> (see
-`dvc import`, `dvc get`). This means that your projects can depend on data from
-other DVC repositories — like a **package management system for data science**.
+[versioning of data and model files](/doc/use-cases/data-and-model-files-versioning).
+DVC also enables cross-project [reusability](/doc/start/data-access) of these
+<abbr>data artifacts</abbr>. This means that your projects can depend on data
+from other DVC repositories — like a **package management system for data
+science**.
 
 ![](/img/data-registry.png) _Data and models as code_
 
