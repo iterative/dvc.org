@@ -28,7 +28,8 @@
       { "prefixWithI": "always" }
     ],
     "no-tabs": "error",
-    "react/prop-types": "off"
+    "react/prop-types": "off",
+    "@typescript-eslint/no-unused-vars": "error"
   },
   "overrides": [
     {
