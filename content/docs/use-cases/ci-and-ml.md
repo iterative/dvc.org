@@ -6,14 +6,13 @@ ML engineers and data scientists face many unique challenges. Some of these
 challenges can be solved by adopting first-citizen concepts from traditional
 software engineering and development. Probably the most common adoption is
 versioning control. Some other, unfortunately less common, could be unit testing
-data processing steps of a pipeline.
-
-Here is a non exhaustive list of unique challenges:
+data processing steps of a pipeline. Here is a non exhaustive list of a few
+other unique challenges:
 
 - Automatically re-train models upon changes.
 - Compare (and report) performance of different versions of a model.
 - Test data correctness when new data is introduced.
-- Model training is computationally intensive.
+- Handle a model training that is computationally intensive.
 
 Combining a version control tool (like `git`) together with `dvc` and `cml`
 opens a wide spectrum of possibilities that can help building better and smarter
@@ -24,7 +23,7 @@ learn about a few CI use cases utilizing `dvc` and `cml`.
 
 _Remarks:_ The code snippets in this article are for demonstration purposes and
 not actually running snippets. Furthermore, it is assumed that the `git`
-repository is hosted on `GitHUb`; the same ideas can be implemented when using
+repository is hosted on `GitHub`; the same ideas can be implemented when using
 `GitLab` or any other hosting solution that suports CI.
 
 ## Automatic model training
@@ -34,12 +33,13 @@ much desired to re-train whenever new data is available and/or changes were made
 to the model itself. Similarly, a test suite of a project is very involved and
 complex. CI is used to perform the testing; let it be on various platforms and
 environments, or simply move the testing load from a developer’s local machine
-to a dedicated testing platform.
+to a dedicated testing platform. Just like CI helps when it comes to runing
+complex test suite, it can also help when the need for training arises.
 
 ![](/img/ci_for_ml_retrain_model.jpg) _Model training flow_
 
 Assuming that in a project’s repository a `dvc` pipeline is defined for training
-a model. You can ask your CI tool to call `dvc pull` and, voilà, it is now has
+a model. You can ask your CI tool to call `dvc pull` and, voilà, it now has
 access to the _right_ data needed for training. The reproducing pipeline can be
 arbitrary complicated and comprise of many steps; regardless of all, `dvc repro`
 will yield a newly trained model. This new model will be tracked and pushed to
@@ -93,7 +93,7 @@ GPU).
 ![](/img/ci_for_ml_evaluate_models.jpg) _Evaluating different models against the
 same validation dataset_
 
-An integral part of a prediction model’s quality, except its underlying code
+An fundamental part of a prediction model’s quality, except its underlying code
 that can and should be tested, is its performance. Just like you wouldn’t merge
 code that fails tests into your `master` branch, you would not want to adopt a
 model that under-performs in comparison to the one you already have deemed
@@ -150,9 +150,9 @@ into the discussion in the pull request.
 
 ### Bonus
 
-This use case can be combined with the one described above. In addition, you can
-set up the workflow to fail and in turn block a merge, if the performance of the
-new model is worse than those yielded by the model in master.
+In addition, you can set up the workflow to fail and in turn block a merge, if
+the performance of the new model is worse than those yielded by the model in
+master. Or, as discussed before, use the flow to train the model itself.
 
 ## What’s next?
 
