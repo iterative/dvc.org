@@ -53,14 +53,17 @@ const Details: React.FC<{
     }
   }
 
-  const triggerChildren: unknown =
+  const triggerChildren: ReactNode =
     finalHeadingChild.props !== undefined &&
     finalHeadingChild.props.className === 'anchor after'
       ? headingChildren.slice(0, headingChildren.length - 1)
       : headingChildren
 
   return (
-    <Collapsible trigger={triggerChildren as ReactElement} transitionTime={200}>
+    <Collapsible
+      trigger={(triggerChildren as unknown) as ReactElement}
+      transitionTime={200}
+    >
       {filteredChildren.slice(1)}
     </Collapsible>
   )
