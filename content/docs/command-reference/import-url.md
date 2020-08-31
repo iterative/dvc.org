@@ -55,18 +55,18 @@ source.
 
 DVC supports several types of (local or) remote locations (protocols):
 
-| Type     | Description                       | `url` format example                                       |
-| -------- | --------------------------------- | ---------------------------------------------------------- |
-| `s3`     | Amazon S3                         | `s3://bucket/data`                                         |
-| `azure`  | Microsoft Azure Blob Storage      | `azure://container/data`                                   |
-| `gdrive` | Google Drive                      | `gdrive://<folder-id>/data`                                |
-| `gs`     | Google Cloud Storage              | `gs://bucket/data`                                         |
-| `ssh`    | SSH server                        | `ssh://user@example.com/path/to/data`                      |
-| `hdfs`   | HDFS to file\*                    | `hdfs://user@example.com/path/to/data.csv`                 |
-| `http`   | HTTP to file with _strong ETag_\* | `https://example.com/path/to/data.csv`                     |
-| `webdav` | WebDav to file\*                  | `webdavs://example.com/public.php/webdav/path/to/data.csv` |
-| `local`  | Local path                        | `/path/to/local/data`                                      |
-| `remote` | Remote path\*                     | `remote://remote-name/data`                                |
+| Type     | Description                       | `url` format example                       |
+| -------- | --------------------------------- | ------------------------------------------ |
+| `s3`     | Amazon S3                         | `s3://bucket/data`                         |
+| `azure`  | Microsoft Azure Blob Storage      | `azure://container/data`                   |
+| `gdrive` | Google Drive                      | `gdrive://<folder-id>/data`                |
+| `gs`     | Google Cloud Storage              | `gs://bucket/data`                         |
+| `ssh`    | SSH server                        | `ssh://user@example.com/path/to/data`      |
+| `hdfs`   | HDFS to file\*                    | `hdfs://user@example.com/path/to/data.csv` |
+| `http`   | HTTP to file with _strong ETag_\* | `https://example.com/path/to/data.csv`     |
+| `webdav` | WebDav to file\*                  | `webdavs://example.com/endpoint/path`      |
+| `local`  | Local path                        | `/path/to/local/data`                      |
+| `remote` | Remote path\*                     | `remote://remote-name/data`                |
 
 > If you installed DVC via `pip` and plan to use cloud services as remote
 > storage, you might need to install these optional dependencies: `[s3]`,

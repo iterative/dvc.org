@@ -38,7 +38,7 @@ $ dvc add data/data.xml
 ```
 
 DVC stores information about the added file (or a directory) in a special `.dvc`
-file named `data/data.dvc`, a small text file with a human-readable
+file named `data/data.xml.dvc`, a small text file with a human-readable
 [format](/doc/user-guide/dvc-files-and-directories#dvc-files). This file can be
 easily versioned like source code with Git, as a placeholder for the original
 data (which gets listed in `.gitignore`):
@@ -222,7 +222,7 @@ $ dvc checkout
 ```
 
 Let's commit it (no need to do `dvc push` this time since the previous version
-of this dataset was save before):
+of this dataset was saved before):
 
 ```dvc
 $ git commit data/data.xml.dvc -m "Revert dataset updates"

@@ -44,12 +44,17 @@
     }
 
     img + em,
+    :global(.gatsby-resp-image-wrapper) + em,
     .gatsby-highlight + p > em:only-child {
       color: #6a737d;
       font-size: 0.9em;
       display: block;
       margin-top: -6px;
       text-align: center;
+    }
+
+    :global(.gatsby-resp-image-wrapper) + em {
+      margin-top: 0;
     }
 
     a[target='_blank'] {

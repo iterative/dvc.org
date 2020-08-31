@@ -82,7 +82,7 @@ reference them like this:
 To add a subtitle:
 
 ```md
-![](/uploads/images/2020-02-10/image.png)_subtitle [with a link](link)_
+![](/uploads/images/2020-02-10/image.png) _subtitle [with a link](link)_
 ```
 
 To set the image size and text wrap:
