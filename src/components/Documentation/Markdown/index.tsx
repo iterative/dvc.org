@@ -51,8 +51,8 @@ const Details: React.FC<{
      which we currently have as an external package.
    */
   const triggerChildren: ReactNode[] = firstChild.props.children.slice(
-    1,
-    firstChild.props.children.length
+    0,
+    firstChild.props.children.length - 1
   ) as ReactNode[]
 
   /*
