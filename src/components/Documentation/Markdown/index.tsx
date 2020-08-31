@@ -44,14 +44,18 @@ const Details: React.FC<{
   const triggerChildren: ReactNode[] = firstChild.props.children as ReactNode[]
 
   /*
-     As an adaptation to auto-linked headings, the last child of any heading
-     nodes must be removed. The only way around this is the change the
-     autolinker, which we currently have as an external package
+     To work around auto-linked headings, the last child of any heading node
+     must be removed. The only way around this is the change the autolinker,
+     which we currently have as an external package.
    */
-  if (/h./.test(firstChild.type)) {
+  if (/^h.$/.test(firstChild.type)) {
     triggerChildren.pop()
   }
 
+  /*
+     Collapsible's trigger type wants ReactElement, so we force a TS cast from
+     ReactNode here.
+   */
   return (
     <Collapsible
       trigger={(triggerChildren as unknown) as ReactElement}
