@@ -156,7 +156,7 @@ an external dependency (in this case an HTTPs URL).
 
 <details>
 
-### Expand to see resulting .dvc file
+### Expand to see resulting `.dvc` file
 
 ```yaml
 # ...
@@ -195,7 +195,7 @@ specified (with the `repo` field).
 
 <details>
 
-### Expand to see resulting .dvc file
+### Expand to see resulting `.dvc` file
 
 ```yaml
 # ...
