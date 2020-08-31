@@ -58,7 +58,13 @@ const plugins = [
         {
           resolve: 'gatsby-remark-prismjs',
           options: {
-            noInlineHighlight: true
+            noInlineHighlight: true,
+            languageExtensions: [
+              {
+                language: 'text',
+                definition: {}
+              }
+            ]
           }
         },
         {

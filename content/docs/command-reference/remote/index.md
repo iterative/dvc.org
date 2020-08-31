@@ -27,12 +27,16 @@ positional arguments:
 What is data remote?
 
 The same way as GitHub provides storage hosting for Git repositories, DVC
-remotes provide a central place to keep and share data and model files. With
-this remote storage, you can pull models and data files created by colleagues
-without spending time and resources to build or process them locally. It also
-saves space on your local environment – DVC can
-[fetch](/doc/command-reference/fetch) into the <abbr>cache directory</abbr> only
-the data you need for a specific branch/commit.
+remotes provide a location to store and share data and models. You can pull data
+assets created by colleagues from DVC remotes without spending time and
+resources to build or process them locally. Remote storage can also save space
+on your local environment – DVC can [fetch](/doc/command-reference/fetch) into
+the <abbr>cache directory</abbr> only the data you need for a specific
+branch/commit.
+
+Using DVC with remote storage is optional. DVC commands use the local cache
+(usually in dir `.dvc/cache`) as data storage by default. This enables the main
+DVC usage scenarios out of the box.
 
 DVC supports several types of remote storage: local file system, SSH, Amazon S3,
 Google Cloud Storage, HTTP, HDFS, among others. Refer to `dvc remote add` for
@@ -44,21 +48,20 @@ more details.
 > include them all. The command should look like this: `pip install "dvc[s3]"`.
 > (This example installs `boto3` library along with DVC to support S3 storage.)
 
-Using DVC with remote storage is optional. Most DVC commands use the local cache
-(usually in dir `.dvc/cache`) as data storage only. This enables basic DVC usage
-scenarios out of the box.
+### Managing remote storage
 
-[Add](/doc/command-reference/remote/add),
+> For the typical process to share the <abbr>project</abbr> via remote, see
+> [Sharing Data And Model Files](/doc/use-cases/sharing-data-and-model-files).
+
+The [add](/doc/command-reference/remote/add),
 [default](/doc/command-reference/remote/default),
 [list](/doc/command-reference/remote/list),
 [modify](/doc/command-reference/remote/modify),
 [remove](/doc/command-reference/remote/remove), and
-[rename](/doc/command-reference/remote/rename) commands read or modify DVC
-[config files](/doc/command-reference/config). Alternatively, `dvc config` can
-be used or these files could be edited manually.
-
-For the typical process to share the <abbr>project</abbr> via remote, see
-[Sharing Data And Model Files](/doc/use-cases/sharing-data-and-model-files).
+[rename](/doc/command-reference/remote/rename) subcommands read or modify DVC
+[config files](/doc/command-reference/config), where DVC remotes are setup.
+Alternatively, `dvc config` can be used, or the config files can be edited
+manually.
 
 ## Options
 
