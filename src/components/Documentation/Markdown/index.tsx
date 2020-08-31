@@ -39,25 +39,18 @@ const Details: React.FC<{
   children: Array<{ props: { children: ReactNode } } | string>
 }> = ({ children }) => {
   const filteredChildren = children.filter(child => child !== '\n')
+  const firstChild = filteredChildren[0]
 
-  if (!filteredChildren.length) return null
-  if (typeof filteredChildren[0] === 'string') return null
+  const triggerChildren: ReactNode[] = firstChild.props.children as ReactNode[]
 
-  const headingChildren: ReactNode[] = filteredChildren[0].props
-    .children as ReactNode[]
-
-  // Remove header auto-link if present
-  const finalHeadingChild = headingChildren[headingChildren.length - 1] as {
-    props: {
-      className: string
-    }
+  /*
+     As an adaptation to auto-linked headings, the last child of any heading
+     nodes must be removed. The only way around this is the change the
+     autolinker, which we currently have as an external package
+   */
+  if (/h./.test(firstChild.type)) {
+    triggerChildren.pop()
   }
-
-  const triggerChildren: ReactNode =
-    finalHeadingChild.props !== undefined &&
-    finalHeadingChild.props.className === 'anchor after'
-      ? headingChildren.slice(0, headingChildren.length - 1)
-      : headingChildren
 
   return (
     <Collapsible
