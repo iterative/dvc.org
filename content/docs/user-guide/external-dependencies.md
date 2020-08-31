@@ -154,7 +154,7 @@ The command above creates the <abbr>import stage</abbr> (DVC-file)
 
 <details>
 
-### Expand to see resulting DVC-file
+### Expand to see resulting `.dvc` file
 
 ```yaml
 # ...
@@ -193,7 +193,7 @@ specified (with the `repo` field).
 
 <details>
 
-### Expand to see resulting DVC-file
+### Expand to see resulting `.dvc` file
 
 ```yaml
 # ...
