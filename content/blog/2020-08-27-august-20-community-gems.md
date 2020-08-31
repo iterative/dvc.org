@@ -3,12 +3,12 @@ title: August '20 Community Gems
 date: 2020-08-27
 description: |
   A roundup of technical Q&A's from the DVC community. This month, we discuss 
-  using CI/CD to validate models, advanced DVC pipeline scenarios, and how CML adds pictures
-  to your GitHub and GitLab comments.
+  using CI/CD to validate models, advanced DVC pipeline scenarios, and how CML
+  adds pictures to your GitHub and GitLab comments.
 descriptionLong: |
   A roundup of technical Q&A's from the DVC community. This month, we discuss 
-  using CI/CD to validate models, advanced DVC pipeline scenarios, and how CML adds pictures
-  to your GitHub and GitLab comments.
+  using CI/CD to validate models, advanced DVC pipeline scenarios, and how CML
+  adds pictures to your GitHub and GitLab comments.
 picture: 2020-08-27/Gems_Aug_20.png
 author: elle_obrien
 commentsUrl: https://discuss.dvc.org/t/august-20-community-gems/477
@@ -29,13 +29,15 @@ Here are some of our top Q&A's from around the community. With the launch of
 ### [Q: What's the relationship between your DVC remote and cache? If I have an external cache, do I really need a DVC remote?](https://discordapp.com/channels/485586884165107732/563406153334128681/747588572479094866)
 
 You can think of your DVC remote similar to your Git remote, but for data and
-model artifacts- it's a place to backup and share artifacts, like datasets and
-models, and it gives you methods to push and pull those artifacts to and from
-your team.
+model artifacts- it's a place to backup and share artifacts. It also gives you
+methods to push and pull those artifacts to and from your team.
 
 Your DVC cache (by default, it's located in `.dvc/cache`) serves a similar
-purpose to a `.git` cache. They're both _local_ caches that optimize access to
-files (data and models for DVC cache, and code for Git cache).
+purpose to your Git objects database (which is by default located in
+`.git/objects`). They're both _local_ caches that store files (including various
+versions of them) in a content-addressable format, which helps you quickly
+checkout different versions to your local workspace. The difference is that
+`.dvc/cache` is for data/model artifacts, and `.git/objects` is for code.
 
 Usually, your DVC remote is a superset of `.dvc/cache`- everything in your cache
 is a copy of something in your remote (though there may be files in your DVC
@@ -43,39 +45,37 @@ remote that are not in your cache (and vice versa) if you have never attempted
 to `push` or `pull` them locally).
 
 In theory, if you are using an
-[external cache](https://dvc.org/doc/command-reference/destroy#example-external-cache-directory),
-and all your projects and all your teammates use that external cache, and you
-_know_ that the storage is highly reliable, you don't need to also have a DVC
-remote. If you have any doubts about access to your external cache or its
-reliability, we'd recommend also keeping a remote.
+[external cache](https://dvc.org/doc/command-reference/destroy#example-external-cache-directory)-
+meaning a DVC cache configured on a separate volume (like NAS, large HDD, etc.)
+outside your project path- and all your projects and all your teammates use that
+external cache, and you _know_ that the storage is highly reliable, you don't
+need to also have a DVC remote. If you have any doubts about access to your
+external cache or its reliability, we'd recommend also keeping a remote.
 
 ### [Q: One of my files is an output of a DVC pipeline, and I want to track this file with Git and store it in my Git repository since it isn't very big. How can I make this work?](https://discordapp.com/channels/485586884165107732/563406153334128681/732308317627613235)
 
-When you create a pipeline stage that outputs a file (call it `myfile`), DVC
-takes several steps to remove `myfile` from Git tracking. As a consequence, even
-if you remove `myfile` from your `.gitignore` and try to `git add` it, you'll
-get an error next time you try to reproduce your pipeline with `dvc repro`
-(`myfile is already trakced by SCM`).
+Yes! There are two approaches. We'll be assuming you have a pipeline stage that
+outputs a file, `myfile`.
 
-To get around this, you need to specify that DVC should not cache the pipeline
-output `myfile`. If you've already created the pipeline stage outputting
-`myfile`, go into your `dvc.yaml` and add a field `cache: false` as follows:
+1. If you haven't declared the pipeline stage with `dvc run` yet, then you'll do
+   it like this:
+
+```dvc
+$ dvc run -n <stage name> -d <dependency> -O myfile
+```
+
+Note that instead of using the flag `-o` for specifying the output `myfile`,
+we're using `-O`- it's shorthand for `--outs-no-cache`. You can
+[read about this flag in our docs](https://dvc.org/doc/command-reference/run#options).
+
+2. If you've already created your pipeline stage, go into your `dvc.yaml` and
+   manually add the field `cache: false` to the stage as follows:
 
 ```yaml
 outs:
   - myfile:
       cache: false
 ```
-
-If you're declaring a new pipeline stage with `dvc run`, you'll want to use a
-special flag (`-O`, shorthand for `--outs-no-cache`):
-
-```dvc
-$ dvc run -n <stage name> -d <dependency> -O myfile
-```
-
-For more about declaring pipelines and electing not to cache outputs,
-[see here here](https://dvc.org/doc/command-reference/run#options)).
 
 Please note one special case: if you previously enabled hardlinks or symlinks in
 DVC via `dvc config cache`, you may need to run `dvc unprotect myfile` to fully
@@ -136,7 +136,7 @@ shuts down.
 
 ## CML questions
 
-### Q: Sometimes when I make a commit on a branch, my CI workflow isn't triggered. What's going on?
+### [Q: Sometimes when I make a commit on a branch, my CI workflow isn't triggered. What's going on?](https://www.youtube.com/watch?v=9BgIDqAzfuA&lc=UgwKIYsCo194AErdeBJ4AaABAg)
 
 If your workflow is set to trigger on a push (as in the CML use cases), it isn't
 enough to `git commit` locally- you need to push to your GitHub or GitLab
