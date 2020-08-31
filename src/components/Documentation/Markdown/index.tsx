@@ -38,8 +38,8 @@ const isInsideCodeBlock = (node: Element): boolean => {
 const Details: React.FC<{
   children: Array<{ props: { children: ReactNode } } | string>
 }> = ({ children }) => {
-  const filteredChildren = children.filter(child => child !== '\n')
-  const firstChild = filteredChildren[0]
+  const filteredChildren: ReactNode[] = children.filter(child => child !== '\n')
+  const firstChild = filteredChildren[0] as JSX.Element
 
   const triggerChildren: ReactNode[] = firstChild.props.children as ReactNode[]
 
