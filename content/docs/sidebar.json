@@ -75,7 +75,11 @@
         "slug": "sharing-data-and-model-files"
       },
       "shared-development-server",
-      "data-registries"
+      "data-registries",
+      {
+        "label": "CI and ML",
+        "slug": "ci-and-ml"
+      }
     ]
   },
   {
