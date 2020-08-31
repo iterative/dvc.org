@@ -41,16 +41,19 @@ const Details: React.FC<{
   const filteredChildren: ReactNode[] = children.filter(child => child !== '\n')
   const firstChild = filteredChildren[0] as JSX.Element
 
-  const triggerChildren: ReactNode[] = firstChild.props.children as ReactNode[]
+  if (!/^h.$/.test(firstChild.type)) {
+    throw new Error('The first child of a details element must be a heading!')
+  }
 
   /*
-     To work around auto-linked headings, the last child of any heading node
+     To work around auto-linked headings, the last child of the heading node
      must be removed. The only way around this is the change the autolinker,
      which we currently have as an external package.
    */
-  if (/^h.$/.test(firstChild.type)) {
-    triggerChildren.pop()
-  }
+  const triggerChildren: ReactNode[] = firstChild.props.children.slice(
+    1,
+    firstChild.props.children.length
+  ) as ReactNode[]
 
   /*
      Collapsible's trigger type wants ReactElement, so we force a TS cast from
