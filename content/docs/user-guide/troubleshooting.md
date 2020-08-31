@@ -28,3 +28,21 @@ To solve this, it's often possible to increase the open file descriptors limit,
 with `ulimit` on UNIX-like system (for example `ulimit -n 1024`), or
 [increasing Handles limit](https://blogs.technet.microsoft.com/markrussinovich/2009/09/29/pushing-the-limits-of-windows-handles/)
 on Windows. Otherwise, please try using a lower `JOBS` value.
+
+## Unable to find credentials {#no-credentials}
+
+Make sure that you have your AWS credentials setup either through
+[usual AWS configuration](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html)
+or by setting `access_key_id` and `secret_access_key` with `dvc remote modify`.
+
+## Unable to connect {#connection-error}
+
+Make sure you are online and able to access your
+[AWS S3 endpoint](https://docs.aws.amazon.com/general/latest/gr/s3.html), or
+`endpointurl` if explicitly set with `dvc remote modify`.
+
+## Bucket does not exist {#no-bucket}
+
+Make sure your bucket
+[exists](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/create-bucket.html)
+in the correct `region` and/or `endpointurl` (see `dvc remote modify`).

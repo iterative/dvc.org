@@ -46,7 +46,7 @@ stage to your list of stages in dvc.yaml.
 ### Amazon S3
 
 ```dvc
-$ dvc run -n download_file
+$ dvc run -n download_file \
           -d s3://mybucket/data.txt \
           -o data.txt \
           aws s3 cp s3://mybucket/data.txt data.txt
@@ -55,7 +55,7 @@ $ dvc run -n download_file
 ### Microsoft Azure Blob Storage
 
 ```dvc
-$ dvc run -n download_file
+$ dvc run -n download_file \
           -d azure://mycontainer/data.txt \
           -o data.txt \
           az storage copy \
@@ -68,7 +68,7 @@ $ dvc run -n download_file
 ### Google Cloud Storage
 
 ```dvc
-$ dvc run -n download_file
+$ dvc run -n download_file \
           -d gs://mybucket/data.txt \
           -o data.txt \
           gsutil cp gs://mybucket/data.txt data.txt
@@ -77,7 +77,7 @@ $ dvc run -n download_file
 ### SSH
 
 ```dvc
-$ dvc run -n download_file
+$ dvc run -n download_file \
           -d ssh://user@example.com/path/to/data.txt \
           -o data.txt \
           scp user@example.com:/path/to/data.txt data.txt
@@ -92,7 +92,7 @@ Please check that you are able to connect both ways with tools like `ssh` and
 ### HDFS
 
 ```dvc
-$ dvc run -n download_file
+$ dvc run -n download_file \
           -d hdfs://user@example.com/data.txt \
           -o data.txt \
           hdfs fs -copyToLocal \
@@ -104,7 +104,7 @@ $ dvc run -n download_file
 > Including HTTPs
 
 ```dvc
-$ dvc run -n download_file
+$ dvc run -n download_file \
           -d https://example.com/data.txt \
           -o data.txt \
           wget https://example.com/data.txt -O data.txt
@@ -113,7 +113,7 @@ $ dvc run -n download_file
 ### Local file system path
 
 ```dvc
-$ dvc run -n download_file
+$ dvc run -n download_file \
           -d /home/shared/data.txt \
           -o data.txt \
           cp /home/shared/data.txt data.txt
@@ -131,7 +131,7 @@ For example, for an HTTPs remote/dependency:
 
 ```dvc
 $ dvc remote add example https://example.com
-$ dvc run -n download_file
+$ dvc run -n download_file \
           -d remote://example/data.txt \
           -o data.txt \
           wget https://example.com/data.txt -O data.txt
