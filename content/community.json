@@ -69,24 +69,7 @@
       "pictureUrl": "/img/community/ugc/codecentric.png"
     }
   ],
-  "events": [
-    {
-      "url": "https://www.widsconference.org/",
-      "title": "Women in Data Science San Diego",
-      "description": "Elle O'Brien is talking about how to share data science projects.",
-      "city": "Virtual event",
-      "date": "2020-06-09",
-      "pictureUrl": "/img/community/events/WiDS_logo.jpg"
-    },
-    {
-      "url": "https://mlopsworld.com/",
-      "title": "MLOps: Production and Engineering World",
-      "description": "Elle O'Brien is speaking about adapting CI/CD to ML.",
-      "city": "Virtual event",
-      "date": "2020-06-17",
-      "pictureUrl": "/img/community/events/toronto_ml.jpg"
-    }
-  ],
+  "events": [],
   "stats": {
     "users": "1800+",
     "messages": "50K+"

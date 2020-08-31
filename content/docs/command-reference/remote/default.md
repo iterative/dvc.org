@@ -17,7 +17,7 @@ positional arguments:
 
 ## Description
 
-You can query/set/replace/unset default remote using the options of this
+You can query/set/replace/unset the _default remote_ using the options of this
 command. If the `name` of the remote is not provided and `--unset` is not
 specified, this command returns the name of the default remote.
 
@@ -33,9 +33,9 @@ This command assigns the default remote in the core section of the DVC
 remote = myremote
 ```
 
-For the commands that accept a `--remote` option (`dvc pull`, `dvc push`,
-`dvc status`, `dvc gc`, `dvc fetch`), the default remote is used if that option
-is not used.
+Default remotes are expected by commands that accept a `-r`/`--remote` option
+(`dvc pull`, `dvc push`, `dvc status`, `dvc gc`, `dvc fetch`) when that option
+is omitted.
 
 You can also use `dvc config`, `dvc remote add` and `dvc remote modify` commands
 to set/unset/change the default remote configurations.

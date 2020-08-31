@@ -19,8 +19,9 @@ positional arguments:
 ## Description
 
 This command creates a `remote` section in the <abbr>DVC project</abbr>'s
-[config file](/doc/command-reference/config) and optionally assigns a default
-`remote` in the `core` section, if the `--default` option is used:
+[config file](/doc/command-reference/config) and optionally assigns a _default
+remote_ in the `core` section, if the `--default` option is used (recommended
+for the first remote):
 
 ```ini
 ['remote "myremote"']
@@ -28,6 +29,10 @@ url = /tmp/dvc-storage
 [core]
 remote = myremote
 ```
+
+> 💡 Default remotes are expected by commands that accept a `-r`/`--remote`
+> option (`dvc pull`, `dvc push`, `dvc status`, `dvc gc`, `dvc fetch`) when that
+> option is omitted.
 
 `name` and `url` are required. The `name` is used to identify the remote and
 must be unique for the project.
@@ -47,13 +52,6 @@ DVC will determine the [type of remote](#supported-storage-types) based on the
 > include them all. The command should look like this: `pip install "dvc[s3]"`.
 > (This example installs `boto3` library along with DVC to support S3 storage.)
 
-DVC supports the concept of a _default remote_. For the commands that accept a
-`--remote` option (`dvc pull`, `dvc push`, `dvc status`, `dvc gc`, `dvc fetch`),
-the default remote is used if that option is not used.
-
-Use `dvc config` to unset/change the default remote as so:
-`dvc config -u core.remote`.
-
 ## Options
 
 - `--global` - save remote configuration to the global config (e.g.
@@ -71,6 +69,9 @@ Use `dvc config` to unset/change the default remote as so:
 - `-d`, `--default` - commands that require a remote (such as `dvc pull`,
   `dvc push`, `dvc fetch`) will be using this remote by default to upload or
   download data (unless their `-r` option is used).
+
+  Use `dvc remote default` to unset/change the default remote, for example:
+  `dvc remote default --unset` (equivalent to `dvc config -u core.remote`).
 
 - `-f`, `--force` - overwrite existing remote with new `url` value.
 
@@ -343,7 +344,8 @@ $ dvc remote add -d myremote https://example.com/path/to/dir
 ### Click for WebDAV
 
 ```dvc
-$ dvc remote add -d myremote webdavs://example.com/public.php/webdav
+$ dvc remote add -d myremote \
+                    webdavs://example.com/owncloud/remote.php/dav
 ```
 
 If your remote is located in a subfolder of your WebDAV server e.g.
@@ -351,7 +353,7 @@ If your remote is located in a subfolder of your WebDAV server e.g.
 
 ```dvc
 $ dvc remote add -d myremote \
-                    webdavs://example.com/public.php/webdav/path/to/dir
+      webdavs://example.com/owncloud/remote.php/dav/files/USERNAME/
 ```
 
 > See also `dvc remote modify` for a full list of WebDAV parameters.

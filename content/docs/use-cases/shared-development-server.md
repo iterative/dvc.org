@@ -42,7 +42,7 @@ members of the same group):
 
 ```dvc
 $ sudo find /home/shared/dvc-cache -type d -exec chmod 0775 {} \;
-$ sudo find /home/shared/dvc-cache -type f -exec chmod 0664 {} \;
+$ sudo find /home/shared/dvc-cache -type f -exec chmod 0444 {} \;
 $ sudo chown -R myuser:ourgroup /home/shared/dvc-cache/
 ```
 

@@ -34,6 +34,9 @@ There's no need to resolve lockfile conflicts manually. You can safely delete
 this file and then use `dvc repro` after merging `dvc.yaml` to regenerate this
 file.
 
+> `dvc commit` can also be a good option, but only for the specific case where
+> the `HEAD` version is chosen.
+
 ## .dvc files
 
 There are three three main variations in the structure of these files, that
