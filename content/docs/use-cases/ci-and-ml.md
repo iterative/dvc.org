@@ -5,9 +5,9 @@
 ML engineers and data scientists face many unique challenges. Some of these
 challenges can be solved by adopting well-established concepts from traditional
 software engineering and development. Probably the most common adoption is
-versioning control. Another adoption, unfortunately less common though, could be unit testing
-the various stages of a data processing pipeline. Here is a non exhaustive list of a few
-other unique challenges:
+versioning control. Another adoption, unfortunately less common though, could be
+unit testing the various stages of a data processing pipeline. Here is a non
+exhaustive list of a few other unique challenges:
 
 - Automatically re-train models upon changes.
 - Systematically compare (and report) performance of different versions of a
