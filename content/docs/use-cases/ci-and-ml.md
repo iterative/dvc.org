@@ -3,15 +3,16 @@
 ## Motivation
 
 ML engineers and data scientists face many unique challenges. Some of these
-challenges can be solved by adopting first-citizen concepts from traditional
+challenges can be solved by adopting well-established concepts from traditional
 software engineering and development. Probably the most common adoption is
 versioning control. Some other, unfortunately less common, could be unit testing
 data processing steps of a pipeline. Here is a non exhaustive list of a few
 other unique challenges:
 
 - Automatically re-train models upon changes.
-- Compare (and report) performance of different versions of a model.
-- Test data correctness when new data is introduced.
+- Systematically compare (and report) performance of different versions of a
+  model.
+- Test data correctness when new datasets are introduced.
 - Handle a model training that is computationally intensive.
 
 Combining a version control tool (like `git`) together with `dvc` and `cml`
