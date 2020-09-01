@@ -2,9 +2,9 @@
 
 There are cases when data is so large, or its processing is organized in a way
 such that you would like to avoid moving it out of its external/remote location.
-For example from a network attached storage (NAS) drive, processing data on
-HDFS, running [Dask](https://dask.org/) via SSH, or having a script that streams
-data from S3 to process it.
+For example from a network attached storage (NAS), processing data on HDFS,
+running [Dask](https://dask.org/) via SSH, or having a script that streams data
+from S3 to process it.
 
 External <abbr>dependencies</abbr> and
 [external outputs](/doc/user-guide/managing-external-data) provide ways to track
