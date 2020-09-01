@@ -38,6 +38,6 @@ https://github.com/elle/myproject
 https://towardsdatascience.com/why-git-and-how-to-use-git-as-a-data-scientist-4fa2d3bdc197
 https://towardsdatascience.com/understanding-auc-roc-curve-68b2303cc9c5
 https://www.amazon.com/DevOps-Handbook-World-Class-Reliability-Organizations-ebook/dp/B01M9ASFQ3
-https://asset.cml.devstoreaccount1
+https://asset.cml.dev
 https://timheuer.com/blog/skipping-ci-github-actions-workflows/
 
