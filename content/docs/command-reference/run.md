@@ -99,7 +99,7 @@ Relevant notes:
 
 - [external dependencies](/doc/user-guide/external-dependencies) and
   [external outputs](/doc/user-guide/managing-external-data) (outside of the
-  <abbr>workspace</abbr>) are also supported.
+  <abbr>workspace</abbr>) are also supported (except metrics and plots).
 
 - Outputs are deleted from the workspace before executing the command (including
   at `dvc repro`) if their paths are found as existing files/directories. This
