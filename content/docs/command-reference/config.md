@@ -156,26 +156,25 @@ for more details.) This section contains the following options:
   `dvc remote` for more information on "local remotes".) This will overwrite the
   value provided to `dvc config cache.dir` or `dvc cache dir`.
 
-- `cache.ssh` - name of an
-  [SSH remote to use as external cache](/doc/user-guide/managing-external-data#ssh).
-
-  > Avoid using the same remote location that you are using for `dvc push`,
-  > `dvc pull`, `dvc fetch` as external cache for your external outputs, because
-  > it may cause possible file hash overlaps: the hash of a data file in
-  > external storage could collide with a hash generated locally for another
-  > file with a different content.
-
 - `cache.s3` - name of an
   [Amazon S3 remote to use as external cache](/doc/user-guide/managing-external-data#amazon-s-3).
+
+- `cache.azure` - name of a Microsoft Azure Blob Storage remote to use as
+  [external cache](/doc/user-guide/managing-external-data).
 
 - `cache.gs` - name of a
   [Google Cloud Storage remote to use as external cache](/doc/user-guide/managing-external-data#google-cloud-storage).
 
+- `cache.ssh` - name of an SSH remote to use
+  [as external cache](/doc/user-guide/managing-external-data#ssh).
+
+  > Avoid using the same [DVC remote](/doc/command-reference/remote) (used for
+  > `dvc push`, `dvc pull`, etc.) as external cache, because it may cause file
+  > hash overlaps: the hash of an external <abbr>output</abbr> could collide
+  > with a hash generated locally for another file with different content.
+
 - `cache.hdfs` - name of an
   [HDFS remote to use as external cache](/doc/user-guide/managing-external-data#hdfs).
-
-- `cache.azure` - name of a Microsoft Azure Blob Storage remote to use as
-  [external cache](/doc/user-guide/managing-external-data).
 
 ### state
 

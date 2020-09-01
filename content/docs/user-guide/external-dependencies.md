@@ -1,36 +1,38 @@
 # External Dependencies
 
 There are cases when data is so large, or its processing is organized in a way
-that you would like to avoid moving it out of its external/remote location. For
-example from a network attached storage (NAS) drive, processing data on HDFS,
+such that you would like to avoid moving it out of its external/remote location.
+For example from a network attached storage (NAS), processing data on HDFS,
 running [Dask](https://dask.org/) via SSH, or having a script that streams data
-from S3 to process it. A mechanism for external dependencies and
-[external outputs](/doc/user-guide/managing-external-data) provides a way for
-DVC to control data externally.
+from S3 to process it.
 
-## Description
+External <abbr>dependencies</abbr> and
+[external outputs](/doc/user-guide/managing-external-data) provide ways to track
+data outside of the <abbr>project</abbr>.
 
-With DVC, you can specify external files as dependencies for your pipeline
+## How it works
+
+You can specify external files or directories as dependencies for your pipeline
 stages. DVC will track changes in them and reflect this in the output of
 `dvc status`.
 
 Currently, the following types (protocols) of external dependencies are
 supported:
 
-- Local files and directories outside of your <abbr>workspace</abbr>
-- SSH
 - Amazon S3
 - Microsoft Azure Blob Storage
 - Google Cloud Storage
+- SSH
 - HDFS
 - HTTP
+- Local files and directories outside the <abbr>workspace</abbr>
 
 > Note that these are a subset of the remote storage types supported by
 > `dvc remote`.
 
-In order to specify an external dependency for your stage, use the usual `-d`
-option in `dvc run` with the external path or URL to your desired file or
-directory.
+In order to specify an external <abbr>dependency</abbr> for your stage, use the
+usual `-d` option in `dvc run` with the external path or URL to your desired
+file or directory.
 
 ## Examples
 
@@ -149,12 +151,12 @@ $ dvc import-url https://data.dvc.org/get-started/data.xml
 Importing 'https://data.dvc.org/get-started/data.xml' -> 'data.xml'
 ```
 
-The command above creates the <abbr>import stage</abbr> (DVC-file)
-`data.xml.dvc`, that uses an external dependency (in this case an HTTPs URL).
+The command above creates the import `.dvc` file `data.xml.dvc`, that contains
+an external dependency (in this case an HTTPs URL).
 
 <details>
 
-### Expand to see resulting DVC-file
+### Expand to see resulting `.dvc` file
 
 ```yaml
 # ...
@@ -180,7 +182,7 @@ determine whether the source has changed and we need to download the file again.
 
 `dvc import` can download a <abbr>data artifact</abbr> from any <abbr>DVC
 project</abbr> or Git repository. It also creates an external dependency in its
-<abbr>import stage</abbr> (DVC-file).
+import `.dvc` file.
 
 ```dvc
 $ dvc import git@github.com:iterative/example-get-started model.pkl
@@ -193,7 +195,7 @@ specified (with the `repo` field).
 
 <details>
 
-### Expand to see resulting DVC-file
+### Expand to see resulting `.dvc` file
 
 ```yaml
 # ...
