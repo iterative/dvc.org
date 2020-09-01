@@ -91,6 +91,7 @@
         "label": "DVC Files and Directories",
         "slug": "dvc-files-and-directories"
       },
+      "best-practices",
       "merge-conflicts",
       {
         "slug": "dvcignore",

@@ -66,6 +66,10 @@ $ dvc checkout
 Followed by `dvc checkout` to update DVC-tracked files and directories in your
 workspace.
 
+If you are training different models on your data files in the same project,
+using Git commits, tags, or branches makes it easy to manage the project. Have a
+look at this [example]() to see how this works.
+
 ## Reproducibility
 
 You can run a model's evaluation process again without actually retraining the
