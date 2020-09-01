@@ -169,7 +169,7 @@ $ tree
 ## Example: manually renaming stage outputs
 
 `dvc move` doesn't support renaming of <abbr>outputs</abbr> in a stage, you will
-have to do that manually. Let's look at our sample workspace and `dvc.yaml:
+have to do that manually. Let's look at our sample workspace and `dvc.yaml`:
 
 ```dvc
 $ tree
@@ -195,15 +195,16 @@ stages:
 ```
 
 In this example we have to rename `keras.h5` as `model.h5`. First change the
-name of model file in code (`train.py`). Next change output name in train stage
-of `dvc.yaml`. After this change `/keras.h5` to `/model.h5` in `.gitignore`
-file. Lastly, rename the existing model file:
+name of model file in code (`train.py`). Next change output name in `train`
+stage of `dvc.yaml`. After this change `/keras.h5` to `/model.h5` in
+`.gitignore` file. Lastly, rename the existing model file:
 
 ```dvc
 $ mv keras.h5 model.h5
 ```
 
-In final step run `dvc commit` to save the changes and update the lock file:
+In final step run `dvc commit` to save the changes and update the `dvc.lock`
+file:
 
 ```dvc
 $ dvc commit -f
