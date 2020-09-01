@@ -1,12 +1,12 @@
-# CI for ML
+# CI and ML
 
 ## Motivation
 
 ML engineers and data scientists face many unique challenges. Some of these
 challenges can be solved by adopting well-established concepts from traditional
 software engineering and development. Probably the most common adoption is
-versioning control. Some other, unfortunately less common, could be unit testing
-data processing steps of a pipeline. Here is a non exhaustive list of a few
+versioning control. Another adoption, unfortunately less common though, could be unit testing
+the various stages of a data processing pipeline. Here is a non exhaustive list of a few
 other unique challenges:
 
 - Automatically re-train models upon changes.
@@ -80,7 +80,7 @@ jobs:
           git add model.pkl.dvc
           git commit -m "Model retrained upon sync to PR"
           git push
-          dvc phsh
+          dvc push
 ```
 
 ### Bonus
