@@ -4,10 +4,6 @@ Rename a file or a directory and modify the corresponding `.dvc` file (see
 `dvc add`) to reflect the change. If the file or directory has the same name as
 the `.dvc` file, it also renames it.
 
-Renaming is supported only for data source files and directories (creaded by
-`dvc add` and `dvc import`), not for outputs of pipelines (`dvc run`). The
-pipeline outputs can be renamed only manualy.
-
 ## Synopsis
 
 ```usage
@@ -33,6 +29,10 @@ appropriately.
 If the destination path (`dst`) already exists and is a directory, the source
 code file or directory (`src`) is moved unchanged into this folder along with
 the corresponding `.dvc` file.
+
+`dvc move` doesn't support renaming outputs of pipeline stages (`dvc run`), it
+only renames data source files and directories (added using `dvc add` and
+`dvc import`). The pipeline outputs have to be renamed manually.
 
 Let's imagine the following scenario:
 
@@ -166,11 +166,10 @@ $ tree
     └── data3.dvc
 ```
 
-## Example: manual renaming of a pipeline output
+## Example: manually renaming stage outputs
 
-The command does not support renaming of pipeline outputs. This example shows
-how the renaming can be done manualy. An alternative approach - remove an entire
-stage and recreate it again.
+`dvc move` doesn't support renaming of <abbr>outputs</abbr> in a stage, you will
+have to do that manually. Let's look at our sample workspace and `dvc.yaml:
 
 ```dvc
 $ tree
@@ -178,34 +177,44 @@ $ tree
 ├── dvc.lock
 ├── dvc.yaml
 ├── keras.h5
-├── params.yaml
 ├── train.py
-├── users.csv
-└── users.csv.dvc
-$ vi train.py # change model file name in code to model.h5
+└── ...
+
 $ cat dvc.yaml
 stages:
   train:
     cmd: python train.py
     deps:
-    - users.csv
+    - data.csv
     - train.py
     params:
     - epochs
-    - opt
+    - lr
     outs:
     - keras.h5
-$ vi dvc.yaml # change output name keras.h5 to model.h5
-$ vi .gitignore # change output name /keras.h5 to /model.h5
-$ mv keras.h5 model.h6
-$ git status -s
- M .gitignore
- M dvc.yaml
- M train.py
-$ dvc commit --force # save the changes and update the lock file
-$ git status -s
- M .gitignore
- M dvc.lock
- M dvc.yaml
- M train.py
+```
+
+In this example we have to rename `keras.h5` as `model.h5`. First change the
+name of model file in code (`train.py`). Next change output name in train stage
+of `dvc.yaml`. After this change `/keras.h5` to `/model.h5` in `.gitignore`
+file. Lastly, rename the existing model file:
+
+```dvc
+$ mv keras.h5 model.h5
+```
+
+In final step run `dvc commit` to save the changes and update the lock file:
+
+```dvc
+$ dvc commit -f
+```
+
+Alternatively, you can also use `dvc run -f` to overwrite the changes in the
+stage in `dvc.yaml`:
+
+```dvc
+$ dvc run -f -n train \
+          -d data.csv -d train.py -o model.h5 \
+          -p train.epochs,train.lr \
+          python train.py
 ```
