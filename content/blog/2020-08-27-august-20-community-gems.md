@@ -26,7 +26,7 @@ Here are some of our top Q&A's from around the community. With the launch of
 
 ## DVC questions
 
-### [Q: What's the relationship between your DVC remote and cache? If I have an external cache, do I really need a DVC remote?](https://discordapp.com/channels/485586884165107732/563406153334128681/747588572479094866)
+### [Q: What's the relationship between the DVC remote and cache? If I have an external cache, do I really need a DVC remote?](https://discordapp.com/channels/485586884165107732/563406153334128681/747588572479094866)
 
 You can think of your DVC remote similar to your Git remote, but for data and
 model artifacts- it's a place to backup and share artifacts. It also gives you
@@ -45,7 +45,7 @@ remote that are not in your cache (and vice versa) if you have never attempted
 to `push` or `pull` them locally).
 
 In theory, if you are using an
-[external cache](https://dvc.org/doc/command-reference/destroy#example-external-cache-directory)-
+[external cache](https://dvc.org/doc/use-cases/shared-development-server)-
 meaning a DVC cache configured on a separate volume (like NAS, large HDD, etc.)
 outside your project path- and all your projects and all your teammates use that
 external cache, and you _know_ that the storage is highly reliable, you don't
@@ -57,8 +57,8 @@ external cache or its reliability, we'd recommend also keeping a remote.
 Yes! There are two approaches. We'll be assuming you have a pipeline stage that
 outputs a file, `myfile`.
 
-1. If you haven't declared the pipeline stage with `dvc run` yet, then you'll do
-   it like this:
+- If you haven't declared the pipeline stage with `dvc run` yet, then you'll do
+  it like this:
 
 ```dvc
 $ dvc run -n <stage name> -d <dependency> -O myfile
@@ -68,8 +68,8 @@ Note that instead of using the flag `-o` for specifying the output `myfile`,
 we're using `-O`- it's shorthand for `--outs-no-cache`. You can
 [read about this flag in our docs](https://dvc.org/doc/command-reference/run#options).
 
-2. If you've already created your pipeline stage, go into your `dvc.yaml` and
-   manually add the field `cache: false` to the stage as follows:
+- If you've already created your pipeline stage, go into your `dvc.yaml` and
+  manually add the field `cache: false` to the stage as follows:
 
 ```yaml
 outs:
