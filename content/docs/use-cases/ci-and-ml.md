@@ -145,9 +145,9 @@ jobs:
 
 In this example, `dvc pull` will assert that the evaluation of the model is
 using the predefined validation dataset. Next, `dvc repro` will evaluate the
-model (and if needed will also train the model). Lastly, CML will help
-integrating the results of the comparison into the discussion in the pull
-request.
+model (and if needed will also train the model). Lastly,
+[CML](https://github.com/iterative/cml#using-cml-with-dvc) will help integrating
+the results of the comparison into the discussion in the pull request.
 
 ![](/img/ci_for_ml_long_report.png) _Performance report_
 
