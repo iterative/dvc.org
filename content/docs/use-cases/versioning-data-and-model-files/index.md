@@ -1,26 +1,32 @@
 # Versioning Data and Model Files
 
-[Version control](https://en.wikipedia.org/wiki/Version_control) was a
-disruptive introduction to software development because it allows effective
-collaboration on source code. This means keeping a change history, going back
-and forth, working on features in parallel (branching), enforcing peer-reviews,
-assisted merging of divergent versions, tagging key revisions, etc. Imagine if
-we could use the same tools for data modeling!
+[Version control](https://en.wikipedia.org/wiki/Version_control) has become a
+staple in software engineering because it allows effective collaboration on
+source code. This means having a change history to go back to (commits),
+developing features in parallel (branching), assisted merging, peer-reviews
+(pull requests), tagging key revisions, etc. Imagine if we could use these
+features for data modeling!
 
-Unfortunately, versioning tools like [Git](https://git-scm.com/) are designed
-for small text files (code). While other assets can exist in the repo, storage
-itself is a side-effect — limited by Git hosting services
-[like-GitHub](https://docs.github.com/en/github/managing-large-files/what-is-my-disk-quota).
-Traditional storage solutions like hard drives or NAS, as well as cloud services
-like Amazon S3 or Google Drive, are much better options for storing large files
-and folders.
+Unfortunately, versioning tools like [Git](https://git-scm.com/) are designed to
+handle small text files. While other assets can exist in the repository, storage
+itself is not the goal, and is limited by Git hosting services
+[such as GitHub](https://docs.github.com/en/github/managing-large-files/what-is-my-disk-quota).
+Traditional storage solutions like hard drives or NAS, or cloud services like
+Amazon S3 or Google Drive, are much better options for saving and transferring
+large files.
 
 What if we could **combine effective data storage with robust versioning
 features**?
 
 ![](/img/model-versioning-diagram.png) _DVC's hybrid versioned storage model_
 
-... why DVC is the way to go (sell philosophy)
+DVC brings the best of both worlds together by replacing the data in the repo
+with small, human-readable
+[metafiles](/doc/user-guide/dvc-files-and-directories). Tracked data is
+<abbr>cache</abbr> locally outside the Git repo, and can easily be synchronized
+with on-premises or cloud storage. Unlike other alternatives (like Git-LFS),
+[remote storage](/doc/command-reference/remote) is optional — no server setup or
+special services are required.
 
 ## How it looks
 
