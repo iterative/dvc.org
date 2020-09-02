@@ -47,7 +47,6 @@ Make sure your bucket
 [exists](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/create-bucket.html)
 in the correct `region` and/or `endpointurl` (see `dvc remote modify`).
 
-## Unable to detect cache type {#unable-to-detect-cache-type}
+## Unable to detect cache type {#no-dvc-cache}
 
 Unable to detect supported link types, as cache directory `.dvc/cache` doesn't exist. It is usually auto-created by commands such as `dvc add/fetch/pull/run/import`, but you could create it manually to enable this check.
-
