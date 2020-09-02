@@ -13,7 +13,8 @@ of a few other unique challenges:
 - Systematically compare (and report) performance of different versions of a
   model
 - Test data correctness when new datasets are introduced
-- Train a model which computationally intensive or requires special environment (e.g. GPU)
+- Train a model which is computationally intensive or requires special
+  environment (e.g. GPU)
 
 Combining a version control tool (like Git) together with DVC and
 [CML](http://www.cml.dev) opens a wide spectrum of possibilities that can help
