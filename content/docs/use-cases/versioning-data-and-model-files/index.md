@@ -1,28 +1,32 @@
 # Versioning Data and Model Files
 
-SCM or _version control_ was a disruptive introduction to software development
-because it allows effective collaboration on source code by all the stakeholders
-of a project. In [Git](https://git-scm.com/), this means commits, branches and
-tags, merging or rebasing, etc.
+[Version control](https://en.wikipedia.org/wiki/Version_control) was a
+disruptive introduction to software development because it allows effective
+collaboration on source code. This means keeping a change history, going back
+and forth, working on features in parallel (branching), enforcing peer-reviews,
+assisted merging of divergent versions, tagging key revisions, etc. Imagine if
+we could use the same tools for data modeling!
 
-Source code versioning features require storing text files and other small
-assets in the code repository, but **storage itself** is not the goal of SCM. In
-fact, having large and binary files in code repos can be considered a
-side-effect, and its severely limited by Git hosting
-([e.g. GitHub](https://docs.github.com/en/github/managing-large-files/what-is-my-disk-quota)).
+Unfortunately, versioning tools like [Git](https://git-scm.com/) are designed
+for small text files (code). While other assets can exist in the repo, storage
+itself is a side-effect — limited by Git hosting services
+[like-GitHub](https://docs.github.com/en/github/managing-large-files/what-is-my-disk-quota).
+Traditional storage solutions like hard drives or NAS, as well as cloud services
+like Amazon S3 or Google Drive, are much better options for storing large files
+and folders.
 
-Traditional storage solutions like hard drives or NAS, as well as cloud storage
-services like Amazon S3 and Google Drive, are much more optimal platforms for
-storing big data files and folders. So what if we could combine their advantages
-with the versioning capabilities of Git?
+What if we could **combine effective data storage with robust versioning
+features**?
 
 ![](/img/model-versioning-diagram.png) _DVC's hybrid versioned storage model_
 
-...
+... why DVC is the way to go (sell philosophy)
 
-## How it Looks
+## How it looks
 
-...
+... reference to a problem (exemplify why to version data)
+
+... demo DVC's look&feel (more philosophy?)
 
 > For hands-on experience, we recommend following the
 > [versioning tutorial](/doc/use-cases/versioning-data-and-model-files).
@@ -37,7 +41,9 @@ versions out-of-the-box.
 Full-fledged
 [version control](https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control)
 is left for Git and its hosting platforms (e.g. GitHub, GitLab) to handle. These
-are designed for source code management (SCM) however, and thus ill-equipped to
+are designed for source code versioning however, and thus ill-equipped to
 support data science needs. That's where DVC comes in: with its built-in data
 <abbr>cache</abbr>, reproducible [pipelines](/doc/start/data-pipelines), among
 several other novel features (see [Get Started](/doc/start/) for a primer.)
+
+... connect with other cases
