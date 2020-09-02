@@ -1,31 +1,27 @@
 # CI and ML
 
-## Motivation
-
 ML engineers and data scientists face many unique challenges. Some of these
-challenges can be solved by adopting well-established concepts from traditional
-software engineering and development. Probably the most common adoption is
-versioning control. Another adoption, unfortunately less common though, could be
-unit testing the various stages of a data processing pipeline. Here is a non
+can be solved by adopting well-established concepts from traditional
+software engineering and development. A good example is using version control both for the code and for the [data](/doc/use-cases/versioning-data-and-model-files). A less common adoption is
+[unit testing](https://en.wikipedia.org/wiki/Software_testing#Testing_levels) the various stages of a data processing pipeline. Here is a non
 exhaustive list of a few other unique challenges:
 
 - automatically re-train models upon changes
-- systematically compare (and report) performance of different versions of a
+- systematically compare (and report on) the performance of different versions of a
   model
-- test data correctness when new datasets are introduced
+- test data correctness when datasets change or new ones are introduced
 - handle a model training that is computationally intensive
 
-Combining a version control tool (like `git`) together with `dvc` and `cml`
-opens a wide spectrum of possibilities that can help building better and smarter
-data products. Adding [CI](https://en.wikipedia.org/wiki/Continuous_integration)
-concepts to this triple allows the bulding and **coding** of flows that can help
-tackling the aforementioned problems and many others. In this article, you will
-learn about a few CI use cases utilizing `dvc` and `cml`.
+Combining a version control tool (like Git) together with DVC and [CML](http://www.cml.dev) opens a wide spectrum of
+possibilities that can help building better and smarter data products. Adding continuous integration
+([CI](https://en.wikipedia.org/wiki/Continuous_integration)) concepts to this triple allows the bulding and **coding**
+of
+flows that can help tackling the aforementioned problems and many others.
 
-_Remarks:_ The code snippets in this article are for demonstration purposes and
-not actually running snippets. Furthermore, it is assumed that the `git`
-repository is hosted on `GitHub`; the same ideas can be implemented when using
-`GitLab` or any other hosting solution that suports CI.
+> The following code snippets are for demonstration purposes. Note that we use GitHub Actions and [workflow
+> files](https://docs.github.com/en/actions/configuring-and-managing-workflows/configuring-a-workflow#creating-a-workflow-file)
+> in the following examples; the same ideas can be implemented also when using other hosting solution that suports CI
+> (e.g. GitLab).
 
 ## Automatic model training
 
@@ -39,7 +35,7 @@ complex test suite, it can also help when the need for training arises.
 
 ![](/img/ci_for_ml_retrain_model.jpg) _Model training flow_
 
-Assuming that in a project’s repository a `dvc` pipeline is defined for training
+Assuming that in a project’s repository a DVC pipeline is defined for training
 a model. You can ask your CI tool to call `dvc pull` and, voilà, it now has
 access to the _right_ data needed for training. The reproducing pipeline can be
 arbitrary complicated and comprise of many steps; regardless of all, `dvc repro`
@@ -144,7 +140,7 @@ jobs:
 In this example, `dvc pull` will assert that the evaluation of the model is
 using the predefined validation dataset. Next, `dvc repro` will evaluate the
 model (and if needed will also train the model). Lastly,
-[`cml`](http://www.cml.dev) will help integrating the results of the comparison
+CML will help integrating the results of the comparison
 into the discussion in the pull request.
 
 ![](/img/ci_for_ml_long_report.png) _Performance report_
@@ -157,16 +153,12 @@ master. Or, as discussed before, use the flow to train the model itself.
 
 ## What’s next?
 
-As you can see, the duo `dvc` and `cml` fits perfectly to the CI world. This
+As you can see, the duo DVC and CML fits perfectly to the CI world. This
 combination introduces a vast horizon of possibilities and opportunities for
 developing robust and flexible workflows that will help you maintain the highest
 quality of your ML and data products.
-
 For example, data integrity can be validated inside your
 [data registry](/doc/use-cases/data-registries). By adding a a CI flow that
 pulls the new data, using `dvc pull` and running all needed validations on the
 newly obtained data, you can improve the quality of the data used across all
 your projects.
-
-It is now your turn to build even better products! Good luck and reach out to
-our community if you need anything.
