@@ -18,7 +18,7 @@ large files.
 What if we could **combine effective data storage with robust versioning
 features**?
 
-![](/img/model-versioning-diagram.png) _DVC's hybrid versioned storage model_
+![](/img/model-versioning-diagram.png) _DVC's hybrid versioned storage_
 
 DVC brings the best of both worlds together by replacing the data with small,
 human-readable [metafiles](/doc/user-guide/dvc-files-and-directories) that Git
@@ -29,14 +29,14 @@ other options (like
 [remote storage](/doc/command-reference/remote) is optional: no server setup or
 special services are needed, just the `dvc` command.
 
-## Why bother?
+## How it looks
 
-Working on data processing code, it's easy to overlook that the initial data may
-also change along the way. If something goes wrong (or for any other reason), it
-may be easy to revisit previous versions of the code with Git. But its behavior
+Working on data processing code, it's easy to overlook that the initial data
+also changes along the way. If something goes wrong (or for any other reason),
+it's easy to revisit previous versions of the code with Git. But its behavior
 may still be different with the latest data!
 
-To eliminate this variable and achieve full
+To "eliminate this variable" and achieve full
 [reproducibility](/doc/start/data-pipelines), we can use `dvc add` to capture
 data snapshots that match code checkpoints:
 
@@ -46,7 +46,7 @@ $ dvc add data/raw
 ...
 $ git add data/raw.dvc data/.gitignore
 
-$ git commit -m 'Data cleanup v1'
+$ git commit -m 'Data cleanup v1.0'
 ```
 
 Now that Git is tracking the code (including a `.dvc` file), and DVC is tracking
@@ -54,10 +54,12 @@ the data, we can repeat the procedure to generate more commits. Use
 `dvc checkout` to go back:
 
 ```dvc
-$ git checkout v1
+$ git checkout v1.0
 $ dvc checkout
 M       data\raw
 ```
+
+![](/img/versioning.png) _Full project restoration_
 
 > For more hands-on experience, we recommend following the
 > [versioning tutorial](/doc/use-cases/versioning-data-and-model-files).
