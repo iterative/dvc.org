@@ -19,7 +19,7 @@ software engineers.
 
 - DVC works **on top of Git repositories** and has a similar command line
   interface and flow as Git. DVC can also work stand-alone, but without
-  versioning capabilities.
+  [versioning](/doc/use-cases/versioning-data-and-model-files) capabilities.
 
 - **Data versioning** is enabled by replacing large files], dataset directories,
   ML models, etc. with small

@@ -66,7 +66,7 @@ path in the <abbr>workspace</abbr>. It records enough metadata about the
 imported data to enable DVC efficiently determining whether the local copy is
 out of date.
 
-To actually [track the data](/doc/tutorials/get-started/data-versioning),
+To actually [version the data](/doc/tutorials/get-started/data-versioning),
 `git add` (and `git commit`) the import stage.
 
 Note that import stages are considered always
@@ -192,7 +192,8 @@ $ dvc get https://github.com/iterative/dataset-registry \
           tutorial/ver/data.zip
 ```
 
-> Used in our [versioning tutorial](/doc/tutorials/versioning)
+> Used in our
+> [versioning tutorial](/doc/use-cases/versioning-data-and-model-files/tutorial)
 
 Or
 

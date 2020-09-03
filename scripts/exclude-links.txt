@@ -14,3 +14,5 @@ link
 https://portal.aws.amazon.com/gp/aws/developer/registration/index.html
 https://github.com/iterative/dvc/releases/download/
 https://www.kaggle.com/kurianbenoy/introduction-to-data-version-control-dvc
+https://asset.cml.dev
+https://timheuer.com/blog/skipping-ci-github-actions-workflows/

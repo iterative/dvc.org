@@ -4,6 +4,8 @@ const { createLinkNode } = require('./helpers')
 
 const entries = require('../../content/linked-terms')
 
+const excludedParentTypes = ['link', 'heading']
+
 const useMatcher = (matcher, item) => {
   switch (typeof matcher) {
     case 'string':
@@ -21,7 +23,7 @@ module.exports = astNode => {
   const node = astNode[0]
   const parent = astNode[2]
 
-  if (parent.type !== 'link') {
+  if (!excludedParentTypes.includes(parent.type)) {
     const entry = entries.find(({ matches }) => useMatcher(matches, node.value))
     if (entry) {
       createLinkNode(entry.url, astNode)

@@ -19,17 +19,18 @@ The `dvc add` command is analogous to `git add`, in that it makes DVC aware of
 the target data, in order to start versioning it. It creates a `.dvc` file to
 track the added data.
 
-This command can be used to
-[version control](/doc/use-cases/versioning-data-and-model-files) large files,
-models, dataset directories, etc. that are too big for Git.
+This command can be used to track large files, models, dataset directories, etc.
+that are too big for Git to handle directly. This enables
+[versioning](/doc/use-cases/versioning-data-and-model-files) them indirectly
+with Git.
 
 The `targets` are the files or directories to add, which are turned into
 <abbr>data artifacts</abbr> of the <abbr>project</abbr>. These are stored in the
 <abbr>cache</abbr> by default (use the `--no-commit` option to avoid this, and
 `dvc commit` to finish the process when needed).
 
-> See also `dvc run` for more advanced ways to version intermediate and final
-> results (like ML models).
+> See also `dvc.yaml` and `dvc run` for more advanced ways to track and version
+> intermediate and final results (like ML models).
 
 After checking that each `target` file (or directory) hasn't been added before
 (or tracked with other DVC commands), a few actions are taken under the hood for
@@ -208,7 +209,8 @@ $ dvc run -n train \
           python train.py
 ```
 
-> To try this example, see the [Versioning](/doc/tutorials/versioning) tutorial.
+> To try this example, see the
+> [versioning tutorial](/doc/use-cases/versioning-data-and-model-files/tutorial).
 
 If instead we use the `--recursive` (`-R`) option, the output looks like this:
 

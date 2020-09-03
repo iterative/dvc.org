@@ -1,4 +1,10 @@
-import React, { useCallback, useEffect, useRef } from 'react'
+import React, {
+  useCallback,
+  useEffect,
+  useRef,
+  ReactNode,
+  ReactElement
+} from 'react'
 import cn from 'classnames'
 import { navigate } from '@reach/router'
 import rehypeReact from 'rehype-react'
@@ -30,17 +36,34 @@ const isInsideCodeBlock = (node: Element): boolean => {
 }
 
 const Details: React.FC<{
-  children: Array<{ props: { children: Array<string> } } | string>
+  children: Array<{ props: { children: ReactNode } } | string>
 }> = ({ children }) => {
-  const filteredChildren = children.filter(child => child !== '\n')
+  const filteredChildren: ReactNode[] = children.filter(child => child !== '\n')
+  const firstChild = filteredChildren[0] as JSX.Element
 
-  if (!filteredChildren.length) return null
-  if (typeof filteredChildren[0] === 'string') return null
+  if (!/^h.$/.test(firstChild.type)) {
+    throw new Error('The first child of a details element must be a heading!')
+  }
 
-  const text = filteredChildren[0].props.children[0]
+  /*
+     To work around auto-linked headings, the last child of the heading node
+     must be removed. The only way around this is the change the autolinker,
+     which we currently have as an external package.
+   */
+  const triggerChildren: ReactNode[] = firstChild.props.children.slice(
+    0,
+    firstChild.props.children.length - 1
+  ) as ReactNode[]
 
+  /*
+     Collapsible's trigger type wants ReactElement, so we force a TS cast from
+     ReactNode here.
+   */
   return (
-    <Collapsible trigger={text} transitionTime={200}>
+    <Collapsible
+      trigger={(triggerChildren as unknown) as ReactElement}
+      transitionTime={200}
+    >
       {filteredChildren.slice(1)}
     </Collapsible>
   )

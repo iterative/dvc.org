@@ -1,15 +1,9 @@
 # Use Cases
 
 We provide short articles on common ML workflow or data management scenarios
-that DVC can help with or improve. These include a motivation (usually from
-real-life cases), and approaches which combine several features of DVC. Use
-cases are not written to be run end-to-end like tutorials. For more general,
-hands-on experience with DVC, please see our
-[Get Started](/doc/tutorials/get-started) instead.
-
-> We keep reviewing our docs and will include interesting scenarios that surface
-> in the community. Please, [contact us](/support) if you need help or have
-> suggestions!
+that DVC can help with or improve. Our use cases are not written to be run
+end-to-end like tutorials. For more general, hands-on experience with DVC,
+please see our [Get Started](/doc/tutorials/get-started) instead.
 
 ## Why DVC?
 
@@ -29,12 +23,13 @@ learning models, and you want to
 - track and switch between different versions of data or models easily;
 - understand how data or models were built in the first place;
 - be able to compare models and metrics to each other;
-- bring software engineering best practices to your data science team;
-- among other [use cases](/doc/use-cases)
+- bring software engineering best practices to your data science team
 
 DVC is for you!
 
----
+> We keep reviewing our docs and will include interesting scenarios that surface
+> in the community. Please, [contact us](/support) if you need help or have
+> suggestions!
 
-Our use case pages range from basic to more advanced. Please choose from the
-navigation sidebar to the left, or click the `Next` button below ↘
+Please choose from the navigation sidebar to the left, or click the `Next`
+button below ↘
