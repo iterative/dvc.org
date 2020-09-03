@@ -13,3 +13,4 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
         name: Link Check Deploy Check
         status: in_progress
+        conclusion: neutral
