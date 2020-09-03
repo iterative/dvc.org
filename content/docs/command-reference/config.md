@@ -152,29 +152,30 @@ for more details.) This section contains the following options:
   directories, which is useful when you are using a a
   [shared development server](/doc/use-cases/shared-development-server).
 
-- `cache.local` - name of a local remote to use as cache directory. (Refer to
-  `dvc remote` for more information on "local remotes".) This will overwrite the
-  value provided to `dvc config cache.dir` or `dvc cache dir`.
+- `cache.local` - name of a _local remote_ to use as a
+  [custom cache](/doc/user-guide/managing-external-data#examples) directory.
+  (Refer to `dvc remote` for more information on "local remotes".) This will
+  overwrite the value provided to `dvc config cache.dir` or `dvc cache dir`.
 
-- `cache.s3` - name of an
-  [Amazon S3 remote to use as external cache](/doc/user-guide/managing-external-data#examples).
+- `cache.s3` - name of an Amazon S3 remote to use as
+  [external cache](/doc/user-guide/managing-external-data#examples).
 
 - `cache.azure` - name of a Microsoft Azure Blob Storage remote to use as
   [external cache](/doc/user-guide/managing-external-data).
 
-- `cache.gs` - name of a
-  [Google Cloud Storage remote to use as external cache](/doc/user-guide/managing-external-data#examples).
+- `cache.gs` - name of a Google Cloud Storage remote to use as
+  [external cache](/doc/user-guide/managing-external-data#examples).
 
-- `cache.ssh` - name of an SSH remote to use
-  [as external cache](/doc/user-guide/managing-external-data#examples).
+- `cache.ssh` - name of an SSH remote to use as
+  [external cache](/doc/user-guide/managing-external-data#examples).
 
-  > Avoid using the same [DVC remote](/doc/command-reference/remote) (used for
-  > `dvc push`, `dvc pull`, etc.) as external cache, because it may cause file
-  > hash overlaps: the hash of an external <abbr>output</abbr> could collide
-  > with a hash generated locally for another file with different content.
+- `cache.hdfs` - name of an HDFS remote to use as
+  [external cache](/doc/user-guide/managing-external-data#examples).
 
-- `cache.hdfs` - name of an
-  [HDFS remote to use as external cache](/doc/user-guide/managing-external-data#examples).
+> Avoid using the same [DVC remote](/doc/command-reference/remote) (used for
+> `dvc push`, `dvc pull`, etc.) as external cache, because it may cause file
+> hash overlaps: the hash of an external <abbr>output</abbr> could collide with
+> a hash generated locally for another file with different content.
 
 ### state
 
