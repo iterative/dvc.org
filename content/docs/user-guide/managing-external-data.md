@@ -43,7 +43,7 @@ Currently, the following types (protocols) of external outputs (and
 
 ## Examples
 
-For the examples, let's take a look at
+Let's take a look at:
 
 1. Adding a `dvc remote` to use as cache for data in the external location, and
    configure it as external <abbr>cache</abbr> with `dvc config`.
@@ -53,7 +53,9 @@ For the examples, let's take a look at
    to the external location. This produces a stage with another external output
    in `dvc.yaml`.
 
-### Amazon S3
+<details>
+
+### Click for Amazon S3
 
 ```dvc
 $ dvc remote add s3cache s3://mybucket/cache
@@ -67,7 +69,11 @@ $ dvc run -d data.txt \
           aws s3 cp data.txt s3://mybucket/data.txt
 ```
 
-### Microsoft Azure Blob Storage
+</details>
+
+<details>
+
+### Click for Microsoft Azure Blob Storage
 
 ```dvc
 $ dvc remote add azurecache azure://mycontainer/cache
@@ -81,7 +87,11 @@ $ dvc run -d data.txt \
           az storage blob upload -f data.txt -c mycontainer -n data.txt
 ```
 
-### Google Cloud Storage
+</details>
+
+<details>
+
+### Click for Google Cloud Storage
 
 ```dvc
 $ dvc remote add gscache gs://mybucket/cache
@@ -95,7 +105,11 @@ $ dvc run -d data.txt \
           gsutil cp data.txt gs://mybucket/data.txt
 ```
 
-### SSH
+</details>
+
+<details>
+
+### Click for SSH
 
 ```dvc
 $ dvc remote add sshcache ssh://user@example.com/cache
@@ -120,7 +134,11 @@ Please check that you are able to connect both ways with tools like `ssh` and
 
 > Note that your server's SFTP root might differ from its physical root (`/`).
 
-### HDFS
+</details>
+
+<details>
+
+### Click for HDFS
 
 ```dvc
 $ dvc remote add hdfscache hdfs://user@example.com/cache
@@ -139,7 +157,11 @@ $ dvc run -d data.txt \
 Note that as long as there is a `hdfs://...` URL for your data, DVC can handle
 it. So systems like Hadoop, Hive, and HBase are supported!
 
-### Local file system path
+</details>
+
+<details>
+
+### Click for local file system paths
 
 The default <abbr>cache</abbr> is in `.dvc/cache`, so there is no need to set a
 custom cache location for local paths outside of your project.
@@ -158,3 +180,5 @@ $ dvc run -d data.txt \
           -o /home/shared/data.txt \
           cp data.txt /home/shared/data.txt
 ```
+
+</details>
