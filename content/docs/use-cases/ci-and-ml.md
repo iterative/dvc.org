@@ -16,12 +16,16 @@ of a few other unique challenges:
 - Train a model which is computationally intensive or requires special
   environment (e.g. GPU)
 
-Combining a version control tool (like Git) together with DVC and
-[CML](http://www.cml.dev) opens a wide spectrum of possibilities that can help
-building better and smarter data products. Adding continuous integration
-([CI](https://en.wikipedia.org/wiki/Continuous_integration)) concepts to this
-triple allows the bulding and **coding** of flows that can help tackling the
-aforementioned problems and many others.
+[CI](https://en.wikipedia.org/wiki/Continuous_integration) is a core principal
+of nowadays software development in general and DevOps in particular. In a
+nutshell, it is aimed at frequent code, data, and model check-ins, automatic
+testing, and fast feedback. DVC provides a solid basis for automating model
+training and testing with constructs like pipelines and metrics. To streamline
+DVC into CI tools we've built a complementary tool, Continuous Machine Learning
+([CML](http://www.cml.dev)). Putting these tools together allows the bulding and
+**coding** of flows that can help tackling the aforementioned problems and many
+others. We will next dive a little deeper and outline how to harness these tools
+into CI flows that tackle the first two challenges.
 
 > The following code snippets are for demonstration purposes. Note that we use
 > GitHub Actions and
@@ -31,13 +35,15 @@ aforementioned problems and many others.
 
 ## Automatic model training
 
-Training a model is often a very demanding process. Nevertheless, it is very
-much desired to re-train whenever new data is available and/or changes were made
-to the model itself. Similarly, a test suite of a project is very involved and
-complex. CI is used to perform the testing; let it be on various platforms and
-environments, or simply move the testing load from a developer’s local machine
-to a dedicated testing platform. Just like CI helps when it comes to runing
-complex test suite, it can also help when the need for training arises.
+Due to the complexity of the computations or special requirements of the
+training environment, for example, a training process can be very demanding.
+Nevertheless, it is very much desired to re-train whenever new data is available
+and/or changes were made to the model itself. Similarly, a test suite of a
+project is very involved and complex. CI is used to perform the testing; let it
+be on various platforms and environments, or simply move the testing load from a
+developer’s local machine to a dedicated testing platform. Just like CI helps
+when it comes to runing complex test suite, it can also help when the need for
+training arises.
 
 ![](/img/ci_for_ml_retrain_model.jpg) _Model training flow_
 
