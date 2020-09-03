@@ -17,7 +17,7 @@ jobs:
       with:
         configFile: "./.linkcheckrc.json"
         rootURL: "${{ github.event.deployment.payload.web_url }}"
-        output: checkOutput
+        output: checkAction
 
     - uses: LouisBrunner/checks-action@v0.1.0
       with:

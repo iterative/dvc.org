@@ -1,6 +1,5 @@
 name: Link Check All
 on:
-  deployment:
   workflow_dispatch:
   schedule:
     - cron: '0 0 * * *'
