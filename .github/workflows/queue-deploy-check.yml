@@ -1,4 +1,4 @@
-name: Queue Link Check Deploy
+name: Link Check Deploy
 on: deployment
 
 jobs:
