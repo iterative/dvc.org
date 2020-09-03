@@ -2,16 +2,16 @@
 
 [Version control](https://en.wikipedia.org/wiki/Version_control) has become a
 staple in software engineering because it allows effective collaboration on
-source code. This means having a change history to go back to (commits),
-developing features in parallel (branching), assisted merging, peer-reviews
-(pull requests), tagging key revisions, etc. Imagine if we could use these
-features for data modeling!
+source code. This means having a change history to go back (commits), developing
+features in parallel (branching), assisted merging, peer-reviews (pull
+requests), tagging key revisions, etc. Imagine if we could use these features
+for data modeling!
 
 Unfortunately, versioning tools like [Git](https://git-scm.com/) are designed to
 handle small text files. While other assets can exist in the repository, storage
-itself is not the goal, and is limited by Git hosting services
-[such as GitHub](https://docs.github.com/en/github/managing-large-files/what-is-my-disk-quota).
-Traditional storage solutions like hard drives or NAS, or cloud services like
+itself is not the goal, and its limited by Git hosting services
+[like GitHub](https://docs.github.com/en/github/managing-large-files/what-is-my-disk-quota).
+Traditional storage solutions such as hard drives or NAS, or cloud services like
 Amazon S3 or Google Drive, are much better options for saving and transferring
 large files.
 
@@ -24,15 +24,39 @@ DVC brings the best of both worlds together by replacing the data in the repo
 with small, human-readable
 [metafiles](/doc/user-guide/dvc-files-and-directories). Tracked data is
 <abbr>cache</abbr> locally outside the Git repo, and can easily be synchronized
-with on-premises or cloud storage. Unlike other alternatives (like Git-LFS),
+with on-premises or cloud storage. But unlike other alternatives (like Git-LFS),
 [remote storage](/doc/command-reference/remote) is optional — no server setup or
 special services are required.
 
-## How it looks
+## Why bother?
 
-... reference to a problem (exemplify why to version data)
+Working on data processing code, it's easy to overlook that the initial data may
+also change along the way. If something goes wrong (or for any reason), it may
+be easy to revisit previous versions of the code with Git. But its behavior may
+still be different with the latest data!
 
-... demo DVC's look&feel (more philosophy?)
+To eliminate this variable and achieve full
+[reproducibility](/doc/start/data-pipelines), we can use DVC to capture data
+snapshots that match code checkpoints:
+
+```dvc
+$ git add cleanup.c
+$ dvc add data/raw
+...
+$ git add data/raw.dvc data/.gitignore
+
+$ git commit -m 'Data cleanup v1'
+```
+
+Now that Git is tracking the code (including a tiny `raw.dvc` `.dvc` file), and
+DVC is tracking the data, we can repeat the procedure to generate more commits.
+And to go back:
+
+```dvc
+$ git checkout v1
+$ dvc checkout
+M       data\raw
+```
 
 > For hands-on experience, we recommend following the
 > [versioning tutorial](/doc/use-cases/versioning-data-and-model-files).
