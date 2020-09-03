@@ -20,24 +20,25 @@ features**?
 
 ![](/img/model-versioning-diagram.png) _DVC's hybrid versioned storage model_
 
-DVC brings the best of both worlds together by replacing the data in the repo
-with small, human-readable
-[metafiles](/doc/user-guide/dvc-files-and-directories). Tracked data is
-<abbr>cache</abbr> locally outside the Git repo, and can easily be synchronized
-with on-premises or cloud storage. But unlike other alternatives (like Git-LFS),
-[remote storage](/doc/command-reference/remote) is optional — no server setup or
-special services are required.
+DVC brings the best of both worlds together by replacing the data with small,
+human-readable [metafiles](/doc/user-guide/dvc-files-and-directories) that Git
+can handle. The data itself is <abbr>cached</abbr> locally outside the Git repo,
+and can easily be synchronized with on-premises or cloud storage. But unlike
+other options (like
+[Git-LFS](/doc/user-guide/related-technologies#git-lfs-large-file-storage)),
+[remote storage](/doc/command-reference/remote) is optional: no server setup or
+special services are needed, just the `dvc` command.
 
 ## Why bother?
 
 Working on data processing code, it's easy to overlook that the initial data may
-also change along the way. If something goes wrong (or for any reason), it may
-be easy to revisit previous versions of the code with Git. But its behavior may
-still be different with the latest data!
+also change along the way. If something goes wrong (or for any other reason), it
+may be easy to revisit previous versions of the code with Git. But its behavior
+may still be different with the latest data!
 
 To eliminate this variable and achieve full
-[reproducibility](/doc/start/data-pipelines), we can use DVC to capture data
-snapshots that match code checkpoints:
+[reproducibility](/doc/start/data-pipelines), we can use `dvc add` to capture
+data snapshots that match code checkpoints:
 
 ```dvc
 $ git add cleanup.c
@@ -48,9 +49,9 @@ $ git add data/raw.dvc data/.gitignore
 $ git commit -m 'Data cleanup v1'
 ```
 
-Now that Git is tracking the code (including a tiny `raw.dvc` `.dvc` file), and
-DVC is tracking the data, we can repeat the procedure to generate more commits.
-And to go back:
+Now that Git is tracking the code (including a `.dvc` file), and DVC is tracking
+the data, we can repeat the procedure to generate more commits. Use
+`dvc checkout` to go back:
 
 ```dvc
 $ git checkout v1
@@ -58,7 +59,7 @@ $ dvc checkout
 M       data\raw
 ```
 
-> For hands-on experience, we recommend following the
+> For more hands-on experience, we recommend following the
 > [versioning tutorial](/doc/use-cases/versioning-data-and-model-files).
 
 ## DVC is not Git!
@@ -75,5 +76,3 @@ are designed for source code versioning however, and thus ill-equipped to
 support data science needs. That's where DVC comes in: with its built-in data
 <abbr>cache</abbr>, reproducible [pipelines](/doc/start/data-pipelines), among
 several other novel features (see [Get Started](/doc/start/) for a primer.)
-
-... connect with other cases
