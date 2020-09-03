@@ -14,16 +14,10 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Run the link check script
-      id: check
-      uses: "iterative/link-check.action@v0.3.0"
+      uses: "iterative/link-check.action@v0.4"
       with:
         source: "filesystem"
         configFile: "./.linkcheckrc.json"
-
-    - uses: LouisBrunner/checks-action@v0.1.0
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        name: Link Check All Check
-        status: completed
-        conclusion: ${{ steps.check.outputs.conclusion }}
-        output: ${{ steps.check.outputs.output }}
+        reportUnusedPatterns: true
+        output: >-
+          ["consoleLog", "exitCode"]
