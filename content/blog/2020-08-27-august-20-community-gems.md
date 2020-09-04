@@ -21,6 +21,11 @@ tags:
   - Pipeline
 ---
 
+[Nonexistent site](https://www.notarealsite.co.uk)
+[404](https://www.google.com/thisisnotarealpage) [relative pass](/doc)
+[relative 404](/notdocsnotanything)
+[filtered](https://github.com/iterative/dvc/releases/download/)
+
 Here are some of our top Q&A's from around the community. With the launch of
 [CML](https://cml.dev) earlier in the month, we've got some new ground to cover!
 
