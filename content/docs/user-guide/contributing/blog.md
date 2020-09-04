@@ -20,7 +20,7 @@ automatically.
 
 Write front matter in the following format:
 
-```yml
+```yaml
 ---
 title: Hello World
 date: 2015-05-01
@@ -131,7 +131,7 @@ Create `.md` file in the `content/authors` folder.
 
 Write front matter in the following format:
 
-```yml
+```yaml
 name: John Doe
 avatar: avatar.jpeg
 link: https://www.twitter.com/johndoe

@@ -100,10 +100,10 @@ Optionally, follow these steps to create your own Google Cloud project and
 generate OAuth credentials for your GDrive remotes to connect to Google Drive.
 We highly recommend this for heavy use and advanced needs because:
 
-- you control your Google API usage limits, being able to request Google for an
+- You control your Google API usage limits, being able to request Google for an
   increase if needed.
-- it ensures optimal data transfer performance when you need it.
-- [using a service account](#using-service-accounts) for automation tasks (e.g.
+- It ensures optimal data transfer performance when you need it.
+- [Using a service account](#using-service-accounts) for automation tasks (e.g.
   CI/CD) is only possible this way.
 
 DVC uses the [Google Drive API](https://developers.google.com/drive) to connect

@@ -23,7 +23,7 @@ and edit them on your own.
 Both the internal directory and these metafiles should be versioned with Git (in
 Git-enabled <abbr>repositories</abbr>).
 
-## .dvc files
+## `.dvc` files
 
 When you add a file or directory to a <abbr>DVC project</abbr> with `dvc add` or
 `dvc import`, a `.dvc` file is created based on the data file name (e.g.
@@ -97,7 +97,7 @@ Note that comments can be added to `.dvc` files using the `# comment` syntax.
 and `dvc commit` commands, but not when a `.dvc` file is overwritten by
 `dvc add`,`dvc import`, or `dvc import-url`.
 
-## dvc.yaml file
+## `dvc.yaml` file
 
 `dvc.yaml` files describe data pipelines, similar to how
 [Makefiles](https://www.gnu.org/software/make/manual/make.html#Introduction)
@@ -177,7 +177,7 @@ editors like [VSCode](/doc/install/plugins#visual-studio-code) or
 [PyCharm](/doc/install/plugins#pycharmintellij) to enable automatic syntax
 checks and auto-completion.
 
-### dvc.lock file
+### `dvc.lock` file
 
 For every `dvc.yaml` file, a matching `dvc.lock` (YAML) file usually exists.
 It's created or updated by DVC commands such as `dvc run` and `dvc repro`.

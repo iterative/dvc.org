@@ -5,7 +5,7 @@ data. And when the time comes to combine their changes, merge conflicts can
 arise in Git-tracked [metafiles](/doc/user-guide/dvc-files-and-directories),
 which need to be resolved.
 
-## dvc.yaml
+## `dvc.yaml`
 
 Conflicts here are no different from what we would see in source code. See
 [Git Merging](https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging).
@@ -28,7 +28,7 @@ stages:
     - data/prepared
 ```
 
-## dvc.lock
+## `dvc.lock`
 
 There's no need to resolve lockfile conflicts manually. You can safely delete
 this file and then use `dvc repro` after merging `dvc.yaml` to regenerate this
@@ -37,7 +37,7 @@ file.
 > `dvc commit` can also be a good option, but only for the specific case where
 > the `HEAD` version is chosen.
 
-## .dvc files
+## `.dvc` files
 
 There are three three main variations in the structure of these files, that
 differ by the command that has generated them:
