@@ -33,6 +33,14 @@ sections below for more details.
 `dvc diff` does not have an effect when the repository is not tracked by Git,
 for example when `dvc init` was used with the `--no-scm` option.
 
+By default, when comparing the current workspace to a Git commit, `dvc diff`
+includes a `not in cache` status for DVC-tracked files and directories which are
+neither in the workspace nor the local cache (indicating that they most likely
+need to be `dvc pull`ed into the workspace). The `--hide-missing` option can be
+used to suppress this status and only print files and directories which have
+been expliclity added, modified or deleted in the workspace. This status will be
+automatically suppressed when comparing two Git commits.
+
 > Note that current `dvc diff` implementation does not show the line-to-line
 > comparison among the files in each revision, like `git diff` or
 > [GNU `diff`](https://www.gnu.org/software/diffutils/) can. This is because the
@@ -51,6 +59,8 @@ for example when `dvc init` was used with the `--no-scm` option.
 
 - `--show-md` - print the list of files and directories with their status in the
   Markdown table format.
+
+- `--hide-missing` - suppress missing cache file status.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
