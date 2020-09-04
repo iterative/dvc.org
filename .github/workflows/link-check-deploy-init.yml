@@ -11,3 +11,4 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
         name: Check
         status: in_progress
+        conclusion:
