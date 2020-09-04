@@ -16,10 +16,10 @@
     "format": "prettier --write",
     "lint-ts": "tsc --noEmit --skipLibCheck && eslint --ext .json,.js,.ts,.tsx .",
     "lint-css": "stylelint \"src/**/*.css\"",
-    "link-check": "repo-link-check -c ./config/link-check.json -s filesystem -u",
-    "link-check-diff": "repo-link-check -c ./config/link-check.json",
-    "link-check-dev-server": "repo-link-check -c ./config/link-check.json -r http://localhost:3000",
-    "link-check-exclude": "repo-link-check -c ./config/link-check.json -s filesystem -u only"
+    "link-check": "repo-link-check -c ./config/link-check/config.json -s filesystem -u",
+    "link-check-diff": "repo-link-check -c ./config/link-check/config.json",
+    "link-check-dev-server": "repo-link-check -c ./config/link-check/config.json -r http://localhost:3000",
+    "link-check-exclude": "repo-link-check -c ./config/link-check/config.json -s filesystem -u only"
   },
   "repository": {
     "type": "git",
