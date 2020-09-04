@@ -91,9 +91,9 @@ jobs:
           dvc push
 ```
 
-**Bonus (⚡️):** It might be that the training needs a tailored environment.
-This can be achieved by defining a runner that accommodates the required
-environment (for example a GPU).
+**Bonus ⚡️:** It might be that the training needs a tailored environment. This
+can be achieved by defining a runner that accommodates the required environment
+(for example a GPU).
 
 ## Seamless model evaluation
 
@@ -155,7 +155,7 @@ the results of the comparison into the discussion in the pull request.
 
 ![](/img/ci_for_ml_long_report.png) _Performance report_
 
-**Bonus (⚡️):** In addition, you can set up the workflow to fail and in turn
+**Bonus ⚡️:** In addition, you can set up the workflow to fail and in turn
 block a merge, if the performance of the new model is worse than those yielded
 by the model in master. Or, as discussed before, use the flow to train the model
 itself.
