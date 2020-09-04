@@ -17,7 +17,7 @@ jobs:
       uses: "iterative/link-check.action@master"
       with:
         source: "filesystem"
-        configFile: "./.linkcheckrc.json"
+        configFile: "./config/link-check/config.json"
         reportUnusedPatterns: true
         output: >-
           ["consoleLog", "exitCode"]
