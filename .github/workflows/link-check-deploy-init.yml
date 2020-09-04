@@ -2,7 +2,8 @@ name: Link Check Deploy
 on: deployment
 
 jobs:
-  _:
+  run:
+    name: Initialize
     runs-on: ubuntu-latest
     steps:
     - uses: LouisBrunner/checks-action@v0.1.0

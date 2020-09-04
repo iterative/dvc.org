@@ -6,14 +6,14 @@ on:
 
 jobs:
   run:
-    name: Link Check All Job
+    name: Link Check All
     runs-on: ubuntu-latest
 
     steps:
 
     - uses: actions/checkout@v2
 
-    - name: Run the link check script
+    - name: Run Link Check
       uses: "iterative/link-check.action@master"
       with:
         source: "filesystem"

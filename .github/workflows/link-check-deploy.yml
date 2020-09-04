@@ -2,7 +2,8 @@ name: Link Check Deploy
 on: deployment_status
 
 jobs:
-  _:
+  run:
+    name: Check
     runs-on: ubuntu-latest
     if: github.event.deployment_status.state == 'success'
 
