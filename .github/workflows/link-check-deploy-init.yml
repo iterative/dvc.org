@@ -11,4 +11,6 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
         name: Check
         status: in_progress
-        conclusion:
+        conclusion: neutral
+        output: >-
+          {"summary": "Waiting for deploy to finish"}
