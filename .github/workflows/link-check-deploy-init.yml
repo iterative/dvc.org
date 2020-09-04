@@ -9,6 +9,6 @@ jobs:
     - uses: LouisBrunner/checks-action@v0.1.0
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
-        name: Link Check Deploy
+        name: Check
         status: in_progress
         conclusion: neutral
