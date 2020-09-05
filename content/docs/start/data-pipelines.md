@@ -93,18 +93,18 @@ prepare:
   two files in it. This is how the <abbr>workspace</abbr> should look like now:
 
   ```diff
-      .
-      ├── data
-      │   ├── data.xml
-      │   ├── data.xml.dvc
+        .
+        ├── data
+        │   ├── data.xml
+        │   ├── data.xml.dvc
   +   │   └── prepared
   +   │       ├── test.tsv
   +   │       └── train.tsv
   +   ├── dvc.yaml
   +   ├── dvc.lock
-      ├── params.yaml
-      └── src
-          ├── ...
+        ├── params.yaml
+        └── src
+            ├── ...
   ```
 
 - The last line, `python src/prepare.py ...`, is the command to run in this
