@@ -69,10 +69,10 @@ stages:
 
 ### Supported file formats
 
-Metrics can be organized as tree hierarchies in JSON or YAML files. DVC
-addresses specific metrics by the tree path. In the JSON example below, five
-metrics are presented: `train.accuracy`, `train.loss`, `train.TN`, `train.FP`
-and `time_real`.
+Metrics can be organized as tree hierarchies in JSON or YAML files (specifically
+in YAML 1.2 format). DVC addresses specific metrics by the tree path. In the
+JSON example below, five metrics are presented: `train.accuracy`, `train.loss`,
+`train.TN`, `train.FP` and `time_real`.
 
 ```json
 {

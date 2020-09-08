@@ -32,6 +32,9 @@ organized as a tree hierarchy inside, as DVC will locate param names by their
 tree path. parameters files have to be manually written, or generated, and these
 can be versioned directly with Git.
 
+> Note that YAML files including `params.yaml` are expected to be in YAML 1.2
+> format.
+
 Supported parameter _value_ types are: string, integer, float, and arrays. DVC
 itself does not ascribe any specific meaning for these values. They are
 user-defined, and serve as a way to generalize and parametrize an machine
