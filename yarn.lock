@@ -10266,7 +10266,7 @@ js-tokens@^3.0.2:
   resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-3.0.2.tgz#9866df395102130e38f7f996bceb65443209c25b"
   integrity sha1-mGbfOVECEw449/mWvOtlRDIJwls=
 
-js-yaml@^3.10.0, js-yaml@^3.11.0, js-yaml@^3.13.1:
+js-yaml@^3.10.0, js-yaml@^3.11.0, js-yaml@^3.13.1, js-yaml@^3.14.0:
   version "3.14.0"
   resolved "https://registry.yarnpkg.com/js-yaml/-/js-yaml-3.14.0.tgz#a7a34170f26a21bb162424d8adacb4113a69e482"
   integrity sha512-/4IbIeHcD9VMHFqDR/gQ7EdZdLimOvW2DdcxFjdyyZ9NsbS+ccrXqVWDtab/lRl5AlUqmpBx8EhPaWR+OtY17A==
@@ -14407,13 +14407,14 @@ replace-ext@^1.0.0:
   resolved "https://registry.yarnpkg.com/replace-ext/-/replace-ext-1.0.1.tgz#2d6d996d04a15855d967443631dd5f77825b016a"
   integrity sha512-yD5BHCe7quCgBph4rMQ+0KkIRKwWCrHDOX1p1Gp6HwjPM5kVoCdKGNhN7ydqqsX6lJEnQDKZ/tFMiEdQ1dvPEw==
 
-repo-link-check@^0.4.4:
-  version "0.4.4"
-  resolved "https://registry.yarnpkg.com/repo-link-check/-/repo-link-check-0.4.4.tgz#6b844e56b565d60c4209a5e18f9dfda79ae8936c"
-  integrity sha512-2VnOVi1Ffx+G5cGUBa0/URDd0CKYt28NAMqz/L7Abh90HXexInjKk0dvOtqAvazSn0LCwkTvevyOUKy8IGsLKg==
+repo-link-check@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/repo-link-check/-/repo-link-check-0.5.0.tgz#e5626a1e0a6b672bb42939cd40235ef96983b5d6"
+  integrity sha512-lQuEUqJbNiUakpqN607dyTb0MntR+HcNt6hdqS3Fd8jK3B9YU6lwmumM6vMzPgaxxWm6FtpBzNrvOR2q9mT2VQ==
   dependencies:
     bottleneck "^2.19.5"
     fast-glob "^3.2.4"
+    js-yaml "^3.14.0"
     lodash "^4.17.20"
     micromatch "^4.0.2"
     minimist "^1.2.5"

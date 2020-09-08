@@ -16,10 +16,10 @@
     "format": "prettier --write",
     "lint-ts": "tsc --noEmit --skipLibCheck && eslint --ext .json,.js,.ts,.tsx .",
     "lint-css": "stylelint \"src/**/*.css\"",
-    "link-check": "repo-link-check -c ./config/link-check/config.json -s filesystem -u",
-    "link-check-diff": "repo-link-check -c ./config/link-check/config.json",
-    "link-check-dev-server": "repo-link-check -c ./config/link-check/config.json -r http://localhost:3000",
-    "link-check-exclude": "repo-link-check -c ./config/link-check/config.json -s filesystem -u only"
+    "link-check": "repo-link-check -c config/link-check/config.yml -s filesystem -u",
+    "link-check-diff": "repo-link-check -c config/link-check/config.yml",
+    "link-check-dev-server": "repo-link-check -c config/link-check/config.yml -r http://localhost:3000",
+    "link-check-exclude": "repo-link-check -c config/link-check/config.yml -s filesystem -u only"
   },
   "repository": {
     "type": "git",
@@ -76,7 +76,7 @@
     "react-slick": "^0.25.2",
     "react-use": "^14.0.0",
     "rehype-react": "^5.0.1",
-    "repo-link-check": "^0.4.4",
+    "repo-link-check": "^0.5.0",
     "reset-css": "^5.0.1",
     "s3-client": "^4.4.2",
     "scroll": "^3.0.1",

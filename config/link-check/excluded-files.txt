@@ -1,4 +1,0 @@
-src/consts.js
-**/*.test.js
-src/server/**/*
-.github/workflows/**/*
