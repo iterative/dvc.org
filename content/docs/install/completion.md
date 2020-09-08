@@ -31,8 +31,8 @@ Depending on what you typed on the command line so far, it completes:
 - Options (flags) that are available for a particular command.
 - File names that make sense in a given context, such as using them as a target
   for some commands.
-- Values for certain command arguments. For example, `dvc repro` completes with
-  stage files to reproduce.
+- Values for certain command arguments. For example, `dvc metrics` completes
+  with `diff`, `modify`, and `show`.
 
 ## What shell do you have?
 
