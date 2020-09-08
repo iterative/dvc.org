@@ -52,4 +52,4 @@ in the correct `region` and/or `endpointurl` (see `dvc remote modify`).
 Unable to detect supported link types, as the
 [cache directory](/doc/command-reference/config#cache) doesn't exist. It is
 usually created automatically by DVC commands that need it, but you can create
-it manually (e.g. ` mkdir .dvc/cache`) to enable this check.
+it manually (e.g. `mkdir .dvc/cache`) to enable this check.
