@@ -36,14 +36,15 @@ file or directory.
 
 ## Examples
 
-As examples, let's take a look at a [stage](/doc/command-reference/run) that
-simply downloads a file from an external location, adding a `download_file`
-stage to your list of stages in dvc.yaml.
+Let's take a look at a `download_file` [stage](/doc/command-reference/run) that
+simply downloads a file from an external location.
 
 > Note that some of these commands use the `/home/shared` directory, typical in
 > Linux distributions.
 
-### Amazon S3
+<details>
+
+### Click for Amazon S3
 
 ```dvc
 $ dvc run -n download_file \
@@ -52,7 +53,11 @@ $ dvc run -n download_file \
           aws s3 cp s3://mybucket/data.txt data.txt
 ```
 
-### Microsoft Azure Blob Storage
+</details>
+
+<details>
+
+### Click for Microsoft Azure Blob Storage
 
 ```dvc
 $ dvc run -n download_file \
@@ -65,7 +70,11 @@ $ dvc run -n download_file \
                      --source-blob data.txt
 ```
 
-### Google Cloud Storage
+</details>
+
+<details>
+
+### Click for Google Cloud Storage
 
 ```dvc
 $ dvc run -n download_file \
@@ -74,7 +83,11 @@ $ dvc run -n download_file \
           gsutil cp gs://mybucket/data.txt data.txt
 ```
 
-### SSH
+</details>
+
+<details>
+
+### Click for SSH
 
 ```dvc
 $ dvc run -n download_file \
@@ -89,7 +102,11 @@ Please check that you are able to connect both ways with tools like `ssh` and
 
 > Note that your server's SFTP root might differ from its physical root (`/`).
 
-### HDFS
+</details>
+
+<details>
+
+### Click for HDFS
 
 ```dvc
 $ dvc run -n download_file \
@@ -99,7 +116,11 @@ $ dvc run -n download_file \
                   hdfs://user@example.com/data.txt data.txt
 ```
 
-### HTTP
+</details>
+
+<details>
+
+### Click for HTTP
 
 > Including HTTPs
 
@@ -110,7 +131,11 @@ $ dvc run -n download_file \
           wget https://example.com/data.txt -O data.txt
 ```
 
-### Local file system path
+</details>
+
+<details>
+
+### Click for local file system paths
 
 ```dvc
 $ dvc run -n download_file \
@@ -118,6 +143,8 @@ $ dvc run -n download_file \
           -o data.txt \
           cp /home/shared/data.txt data.txt
 ```
+
+</details>
 
 ## Example: DVC remote aliases
 
