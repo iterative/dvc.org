@@ -84,8 +84,6 @@ streamed, which optimizes memory usage.
 
 - `dvc.exceptions.PathMissingError` - `path` cannot be found in `repo`.
 
-- `dvc.api.UrlNotDvcRepoError` - `repo` is not a DVC project.
-
 - `dvc.exceptions.NoRemoteError` - no `remote` is found.
 
 ## Example: Use data or models from DVC repos
