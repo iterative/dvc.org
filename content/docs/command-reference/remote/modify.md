@@ -572,7 +572,8 @@ more information.
   $ dvc remote modify myremote url https://example.com/path/to/dir
   ```
 
-  > The url can include query parameters that will be preserved.
+  > The URL can include a query string, which will be preserved (e.g.
+  > `example.com?loc=path%2Fto%2Fdir`)
 
 - `auth` - authentication method to use when accessing the remote. The accepted
   values are:
