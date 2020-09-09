@@ -571,6 +571,7 @@ more information.
   ```dvc
   $ dvc remote modify myremote url https://example.com/path/to/dir
   ```
+  > The url can include query parameters that will be preserved.
 
 - `auth` - authentication method to use when accessing the remote. The accepted
   values are:
@@ -629,6 +630,12 @@ more information.
   > Note that the `password` parameter takes precedence over `ask_password`. If
   > `password` is specified, DVC will not prompt the user to enter a password
   > for this remote.
+  
+- `ssl_verify` - allows to disable ssl verification. It is enabled by default.
+
+  ```dvc
+  $ dvc remote modify myremote ssl_verify false
+  ```
 
 </details>
 
