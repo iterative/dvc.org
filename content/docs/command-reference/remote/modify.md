@@ -571,6 +571,7 @@ more information.
   ```dvc
   $ dvc remote modify myremote url https://example.com/path/to/dir
   ```
+  
   > The url can include query parameters that will be preserved.
 
 - `auth` - authentication method to use when accessing the remote. The accepted
