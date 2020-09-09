@@ -589,6 +589,7 @@ more information.
     to the remote in the form: `custom_auth_header: password`.
     `custom_auth_header` and `password` (or `ask_password`) parameters should
     also be configured.
+  - `method` - override the HTTP method to use for file uploads (ex. PUT). Default: POST
 
   ```dvc
   $ dvc remote modify myremote auth basic
