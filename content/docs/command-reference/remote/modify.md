@@ -633,7 +633,8 @@ more information.
   > `password` is specified, DVC will not prompt the user to enter a password
   > for this remote.
 
-- `ssl_verify` - allows to disable SSH verification, which is enabled by default.
+- `ssl_verify` - allows to disable SSH verification, which is enabled by
+  default.
 
   ```dvc
   $ dvc remote modify myremote ssl_verify false
