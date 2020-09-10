@@ -590,8 +590,8 @@ more information.
     `custom_auth_header` and `password` (or `ask_password`) parameters should
     also be configured.
   - `method` - override the
-    [HTTP method](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods)
-    to use for file uploads (e.g. `PUT`/`POST`). By default, `POST` is used.
+    [HTTP method](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods) to
+    use for file uploads (e.g. `PUT`/`POST`). By default, `POST` is used.
 
   ```dvc
   $ dvc remote modify myremote auth basic
