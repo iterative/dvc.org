@@ -591,7 +591,9 @@ more information.
     also be configured.
   - `method` - override the
     [HTTP method](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods) to
-    use for file uploads (e.g. `PUT`/`POST`). By default, `POST` is used.
+    use for file uploads (e.g. `PUT` should be used for
+    [Artifactory](https://www.jfrog.com/confluence/display/JFROG/Artifactory+REST+API)).
+    By default, `POST` is used.
 
   ```dvc
   $ dvc remote modify myremote auth basic
