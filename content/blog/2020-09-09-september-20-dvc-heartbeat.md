@@ -21,8 +21,6 @@ tags:
   - Videos
 ---
 
-Welcome to our September roundup of cool news, new releases, and recommended
-reading!
 
 ## News
 
@@ -32,7 +30,7 @@ Our CEO Dmitry Petrov was interviewed on the much-beloved Software Engineering
 Daily podcast! Host [Jeff Meyerson](https://twitter.com/the_prion) kicked off
 the discussion:
 
-> Code is version controlled through git, the version control system originally
+> Code is version controlled through Git, the version control system originally
 > built to manage the Linux codebase. For decades, software has been developed
 > using git for version control. More recently, data engineering has become an
 > unavoidable facet of software development. It is reasonable to ask–why are we
