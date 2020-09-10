@@ -12,7 +12,7 @@ jobs:
     - uses: actions/checkout@v2
 
     - uses: rogermparent/checks-action@master
-      with: &checksWith
+      with:
         token: ${{ secrets.GITHUB_TOKEN }}
         name: Check
         status: in_progress
@@ -30,7 +30,8 @@ jobs:
     - uses: rogermparent/checks-action@master
       if: ${{ success() }}
       with:
-        <<: *checksWith
+        token: ${{ secrets.GITHUB_TOKEN }}
+        name: Check
         status: completed
         conclusion: ${{ steps.check.outputs.conclusion }}
         output: ${{ steps.check.outputs.output }}
@@ -38,6 +39,8 @@ jobs:
     - uses: rogermparent/checks-action@master
       if: ${{ failure() }}
       with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        name: Check
         status: completed
         conclusion: failure
         output: >-
