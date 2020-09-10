@@ -27,12 +27,13 @@ run     -- Generate a stage file from a command and execute the command.
 
 Depending on what you typed on the command line so far, it completes:
 
-- Available DVC commands.
+- Available DVC commands and subcommands. For example, `dvc plots` completes
+  with `diff`, `modify`, and `show`.
 - Options (flags) that are available for a particular command.
 - File names that make sense in a given context, such as using them as a target
   for some commands.
-- Values for certain command arguments and subcommands. For example, `dvc plots`
-  completes with `diff`, `modify`, and `show`.
+- Values for certain command arguments. For example, `dvc repro` completes with
+  stages or `.dvc` files to reproduce.
 
 ## What shell do you have?
 
