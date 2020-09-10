@@ -1,6 +1,6 @@
 # dag
 
-Visualize the pipeline(s) in `dvc.yaml` as one or more graph(s) of connected
+Visualize the pipeline(s) in `.dvc` files as one or more graph(s) of connected
 [stages](/doc/command-reference/run).
 
 ## Synopsis
@@ -25,7 +25,7 @@ intermediate featurization and training stages, and produce a final model, as
 well as accuracy [metrics](/doc/command-reference/metrics).
 
 In DVC, pipeline stages and commands, their data I/O, interdependencies, and
-results (intermediate or final) are specified in `dvc.yaml`, which can be
+results (intermediate or final) are specified in `.dvc` files, which can be
 written manually or built using the helper command `dvc run`. This allows DVC to
 restore one or more pipelines later (see `dvc repro`).
 
