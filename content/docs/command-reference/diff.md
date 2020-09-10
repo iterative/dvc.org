@@ -26,20 +26,12 @@ name, Git commit hash, etc.
 It defaults to comparing the current workspace and the last commit (`HEAD`), if
 arguments `a_rev` and `b_rev` are not specified.
 
-Options `--show-json` and `--show-hash` can be used to modify format and details
-of the output produced. See the [Options](#options) and [Examples](#examples)
-sections below for more details.
+Options `--show-json`, `--show-hash` and `--hide-missing` can be used to modify
+format and details of the output produced. See the [Options](#options) and
+[Examples](#examples) sections below for more details.
 
 `dvc diff` does not have an effect when the repository is not tracked by Git,
 for example when `dvc init` was used with the `--no-scm` option.
-
-By default, when comparing the current workspace to a Git commit, `dvc diff`
-includes a `not in cache` status for DVC-tracked files and directories which are
-neither in the workspace nor the local cache (indicating that they most likely
-need to be `dvc pull`ed into the workspace). The `--hide-missing` option can be
-used to suppress this status and only print files and directories which have
-been expliclity added, modified or deleted in the workspace. This status will be
-automatically suppressed when comparing two Git commits.
 
 > Note that current `dvc diff` implementation does not show the line-to-line
 > comparison among the files in each revision, like `git diff` or
@@ -60,7 +52,12 @@ automatically suppressed when comparing two Git commits.
 - `--show-md` - print the list of files and directories with their status in the
   Markdown table format.
 
-- `--hide-missing` - suppress missing cache file status.
+- `--hide-missing` - do not print information about missing files. By default,
+  when comparing the current workspace to a Git commit, `dvc diff` includes a
+  list of dvc-tracked files which are missing in both the workspace and local
+  cache. This option can be used to suppress this information and only print
+  files and directories which have been expliclity added, modified or deleted in
+  the workspace. This option does nothing when comparing two Git commits.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
