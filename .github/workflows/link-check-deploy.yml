@@ -26,7 +26,7 @@ jobs:
       with:
         configFile: "config/link-check/config.yml"
         rootURL: "${{ github.event.deployment.payload.web_url }}"
-        output: checkAction
+        output: checksAction
 
     - uses: LouisBrunner/checks-action@v0.1.0
       if: ${{ success() }}
