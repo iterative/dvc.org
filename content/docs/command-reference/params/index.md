@@ -24,16 +24,14 @@ dependencies: _parameters_. Parameters are defined using the the `-p`
 
 In contrast to a regular <abbr>dependency</abbr>, a parameter is not a file (or
 directory). Instead, it consists of a _parameter name_ (or key) to find inside a
-YAML, JSON, or TOML _parameters file_. Multiple parameter dependencies can be
-specified from one or more parameters files.
+YAML (specifically in YAML 1.2 format), JSON, or TOML _parameters file_.
+Multiple parameter dependencies can be specified from one or more parameters
+files.
 
 The default parameters file name is `params.yaml`. Parameters should be
 organized as a tree hierarchy inside, as DVC will locate param names by their
 tree path. parameters files have to be manually written, or generated, and these
 can be versioned directly with Git.
-
-> Note that YAML files including `params.yaml` are expected to be in YAML 1.2
-> format.
 
 Supported parameter _value_ types are: string, integer, float, and arrays. DVC
 itself does not ascribe any specific meaning for these values. They are
