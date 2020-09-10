@@ -60,7 +60,10 @@ https://youtu.be/jUYSTERXxWg
 
 We've released several new videos to our growing
 [YouTube channel](https://www.youtube.com/channel/UC37rp97Go-xIX3aNFVHhXfQ)- and
-cool news, we passed 1,000 subscribers!
+cool news, we passed 1,000 subscribers! The support has been surprising in the
+best way possible. We're seeing a lot of repeat commenters and folks from the
+DVC meetups! It's been so rewarding to get positive feedback from the community
+and we're planning to build our YouTube presence even more.
 
 https://media.giphy.com/media/ZE0JppdERv8t4jVCAt/giphy.gif
 
@@ -98,7 +101,7 @@ href="https://mribeirodantas.xyz/blog/index.php/2020/08/10/continuous-machine-le
 title="Continuous Machine Learning - Part I"
 description="by Marcel Ribeiro-Dantas"
 link="mribeirodantas.xyz"
-image="/uploads/images/2020-09-09/MLOPs.png"/>
+image="/uploads/images/2020-09-09/MLOps.png"/>
 
 In Part II, Marcel takes a deeper dive into Docker. He explains how to create a
 your own Docker image and test it. This case should be helpful for folks who
