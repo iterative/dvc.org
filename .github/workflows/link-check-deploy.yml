@@ -12,11 +12,10 @@ jobs:
     - uses: actions/checkout@v2
 
     - uses: rogermparent/checks-action@master
-      with:
+      with: &checksWith
         token: ${{ secrets.GITHUB_TOKEN }}
         name: Check
         status: in_progress
-        conclusion: neutral
         output: >-
           {"summary": "Running master diff Link Check on ${{ github.event.deployment.payload.web_url }}"}
 
@@ -31,8 +30,7 @@ jobs:
     - uses: rogermparent/checks-action@master
       if: ${{ success() }}
       with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        name: Check
+        <<: *checksWith
         status: completed
         conclusion: ${{ steps.check.outputs.conclusion }}
         output: ${{ steps.check.outputs.output }}
@@ -40,8 +38,6 @@ jobs:
     - uses: rogermparent/checks-action@master
       if: ${{ failure() }}
       with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        name: Check
         status: completed
         conclusion: failure
         output: >-
