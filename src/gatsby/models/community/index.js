@@ -2,6 +2,8 @@ const moment = require('moment')
 const { getExpirationFields } = require('../../../utils/shared/expiration.js')
 const { childNodeCreator } = require('../../utils/models/nodes.js')
 
+const restIDSeed = `DVCCommunityRest`
+
 function expiredNodesLog(typeName, nodes) {
   if (nodes.length > 0) {
     return `${nodes.length} ${typeName}:\n${nodes
@@ -30,6 +32,9 @@ const expirableFields = {
 }
 
 module.exports = {
+  async sourceNodes({ actions: { touchNode }, createNodeId }) {
+    touchNode({ nodeId: createNodeId(restIDSeed) })
+  },
   async createSchemaCustomization({
     actions: { createTypes },
     schema: { buildObjectType }
@@ -127,7 +132,7 @@ module.exports = {
        data before updating all Community components.
     */
     const restPromise = createChildNode({
-      id: createNodeId(`DVCCommunityRest`),
+      id: createNodeId(restIDSeed),
       content: rest,
       internal: {
         type: 'CommunityRest',
