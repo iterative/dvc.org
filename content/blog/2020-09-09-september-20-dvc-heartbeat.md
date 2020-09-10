@@ -21,7 +21,6 @@ tags:
   - Videos
 ---
 
-
 ## News
 
 ### Dmitry on Software Engineering Daily
