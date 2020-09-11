@@ -22,8 +22,7 @@ jobs:
   check:
     needs: initialize
     runs-on: ubuntu-latest
-    if:
-      ${{ github.event_name == 'deployment_status' && github.event.deployment_status.state == 'success' }}
+    if: github.event.deployment_status.state == 'success'
 
     steps:
       - uses: actions/checkout@v2
