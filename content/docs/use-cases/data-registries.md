@@ -89,7 +89,7 @@ But first, you may want to explore its contents.
 
 ### Listing data
 
-To explore the contents of a data DVC repo in search for the right data, use he
+To explore the contents of a data DVC repo in search for the right data, use the
 `dvc list` command (analogous to `ls`, or 3rd party tools like `aws s3 ls`):
 
 ```dvc
