@@ -1,13 +1,16 @@
 name: Link Check Deploy
 on:
-  - deployment
-  - deployment_status
+  deployment_status:
+  check_suite:
+    types:
+      - requested
+      - rerequested
 
 jobs:
   initialize:
     name: Initialize Link Check Deploy
     runs-on: ubuntu-latest
-    if: github.event_name == 'deployment'
+    if: github.event_name == 'check_suite'
 
     steps:
       - uses: rogermparent/checks-action@master
