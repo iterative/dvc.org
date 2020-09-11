@@ -25,6 +25,8 @@ tags:
 
 ### Dmitry on Software Engineering Daily
 
+[test link](/doc)
+
 Our CEO Dmitry Petrov was interviewed on the much-beloved Software Engineering
 Daily podcast! Host [Jeff Meyerson](https://twitter.com/the_prion) kicked off
 the discussion:
