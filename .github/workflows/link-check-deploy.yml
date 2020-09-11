@@ -2,8 +2,21 @@ name: Link Check Deploy
 on: deployment_status
 
 jobs:
-  run:
-    name: Check
+  init:
+    name: Initialize Deploy Check
+    runs-on: ubuntu-latest
+    if: github.event.action == 'created'
+
+    steps:
+
+    - uses: rogermparent/checks-action@master
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        name: Deploy Check
+        status: queued
+
+  check:
+    name: Deploy Check
     runs-on: ubuntu-latest
     if: github.event.deployment_status.state == 'success'
 
@@ -14,7 +27,7 @@ jobs:
     - uses: rogermparent/checks-action@master
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
-        name: Check
+        name: Deploy Check
         status: in_progress
         output: >-
           {"summary": "Running master diff Link Check on ${{ github.event.deployment.payload.web_url }}"}
@@ -31,7 +44,7 @@ jobs:
       if: ${{ success() }}
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
-        name: Check
+        name: Deploy Check
         status: completed
         conclusion: ${{ steps.check.outputs.conclusion }}
         output: ${{ steps.check.outputs.output }}
@@ -40,7 +53,7 @@ jobs:
       if: ${{ failure() }}
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
-        name: Check
+        name: Deploy Check
         status: completed
         conclusion: failure
         output: >-
