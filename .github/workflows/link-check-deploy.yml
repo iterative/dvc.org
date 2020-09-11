@@ -6,6 +6,7 @@ on:
 jobs:
   initialize:
     name: Initialize Link Check Deploy
+    runs-on: ubuntu-latest
     if: github.event_name == 'deployment'
 
     steps:
