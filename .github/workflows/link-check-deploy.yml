@@ -1,12 +1,9 @@
 name: Link Check Deploy
-on:
-  - deployment
-  - deployment_status
+on: deployment_status
 
 jobs:
   initialize:
     runs-on: ubuntu-latest
-    if: github.event_name == 'deployment'
 
     outputs:
       check_id: ${{ steps.check.outputs.check_id }}
@@ -22,6 +19,8 @@ jobs:
   check:
     needs: initialize
     runs-on: ubuntu-latest
+    if: github.event.deployment_status.state == 'success'
+    continue-on-error: true
 
     steps:
       - uses: actions/checkout@v2
