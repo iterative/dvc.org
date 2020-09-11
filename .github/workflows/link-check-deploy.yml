@@ -12,8 +12,12 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event_name == 'check_suite'
 
+    outputs:
+      check_id: ${{ steps.check.outputs.check_id }}
+
     steps:
-      - uses: rogermparent/checks-action@master
+      - id: check
+        uses: rogermparent/checks-action@master
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           name: Link Check Deploy
@@ -21,6 +25,7 @@ jobs:
 
   check:
     name: Link Check Deploy
+    needs: initialize
     runs-on: ubuntu-latest
     if:
       github.event_name == 'deployment_status' &&
@@ -32,7 +37,7 @@ jobs:
       - uses: rogermparent/checks-action@master
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          name: Link Check Deploy
+          check_id: ${{ needs.initialize.outputs.check_id }}
           status: in_progress
           output: >-
             {"summary": "Running master diff Link Check on ${{
@@ -50,7 +55,7 @@ jobs:
         if: ${{ success() }}
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          name: Link Check Deploy
+          check_id: ${{ needs.initialize.outputs.check_id }}
           status: completed
           conclusion: ${{ steps.check.outputs.conclusion }}
           output: ${{ steps.check.outputs.output }}
@@ -59,7 +64,7 @@ jobs:
         if: ${{ failure() }}
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          name: Link Check Deploy
+          check_id: ${{ needs.initialize.outputs.check_id }}
           status: completed
           conclusion: failure
           output: >-
