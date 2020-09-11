@@ -3,9 +3,6 @@ on:
   - deployment
   - deployment_status
 
-defaults:
-  runs-on: ubuntu-latest
-
 jobs:
   initialize:
     name: Initialize Link Check Deploy
@@ -20,6 +17,7 @@ jobs:
 
   check:
     name: Link Check Deploy
+    runs-on: ubuntu-latest
     if:
       github.event_name == 'deployment_status' &&
       github.event.deployment_status.state == 'success'
