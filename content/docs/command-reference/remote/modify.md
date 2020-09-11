@@ -589,15 +589,16 @@ more information.
     to the remote in the form: `custom_auth_header: password`.
     `custom_auth_header` and `password` (or `ask_password`) parameters should
     also be configured.
-  - `method` - override the
-    [HTTP method](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods) to
-    use for file uploads (e.g. `PUT` should be used for
-    [Artifactory](https://www.jfrog.com/confluence/display/JFROG/Artifactory+REST+API)).
-    By default, `POST` is used.
 
   ```dvc
   $ dvc remote modify myremote auth basic
   ```
+
+- `method` - override the
+  [HTTP method](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods) to
+  use for file uploads (e.g. `PUT` should be used for
+  [Artifactory](https://www.jfrog.com/confluence/display/JFROG/Artifactory+REST+API)).
+  By default, `POST` is used.
 
 - `custom_auth_header` - HTTP header field name to use when the `auth` parameter
   is set to `custom`.
