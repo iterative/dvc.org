@@ -1,14 +1,13 @@
 name: Link Check Deploy
 on:
+  deployment:
   deployment_status:
-  pull_request:
-    types: [opened, edited]
 
 jobs:
   initialize:
     name: Initialize Link Check Deploy
     runs-on: ubuntu-latest
-    if: ${{ github.event_name == 'pull_request' }}
+    if: ${{ github.event_name == 'deployment' }}
 
     steps:
 
