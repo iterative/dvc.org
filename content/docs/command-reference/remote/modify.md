@@ -603,6 +603,7 @@ more information.
   ```dvc
   $ dvc remote modify myremote method PUT
   ```
+
 - `custom_auth_header` - HTTP header field name to use when the `auth` parameter
   is set to `custom`.
 
