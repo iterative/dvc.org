@@ -1,16 +1,13 @@
 name: Link Check Deploy
 on:
+  deployment:
   deployment_status:
-  check_suite:
-    types:
-      - requested
-      - rerequested
 
 jobs:
   initialize:
     name: Initialize Link Check Deploy
     runs-on: ubuntu-latest
-    if: github.event_name == 'check_suite'
+    if: github.event_name == 'deployment'
 
     outputs:
       check_id: ${{ steps.check.outputs.check_id }}
