@@ -4,37 +4,19 @@ on:
   - deployment_status
 
 jobs:
-  initialize:
+  check:
     runs-on: ubuntu-latest
-    if: github.event_name == 'deployment'
-
-    outputs:
-      check_id: ${{ steps.check.outputs.check_id }}
 
     steps:
-      - id: check
+      - uses: actions/checkout@v2
+
+      - id: init
+        if: github.event_name == 'deployment'
         uses: rogermparent/checks-action@master
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           name: Link Check Deploy
           status: queued
-
-  check:
-    needs: initialize
-    runs-on: ubuntu-latest
-    if: github.event_name == 'deployment_status'
-
-    steps:
-      - uses: actions/checkout@v2
-
-      - uses: rogermparent/checks-action@master
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          check_id: ${{ needs.initialize.outputs.check_id }}
-          status: in_progress
-          output: >-
-            {"summary": "Running master diff Link Check on ${{
-            github.event.deployment.payload.web_url }}"}
 
       - name: Run Link Check
         id: check
@@ -48,7 +30,7 @@ jobs:
         if: ${{ success() }}
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          check_id: ${{ needs.initialize.outputs.check_id }}
+          check_id: ${{ steps.init.outputs.check_id }}
           status: completed
           conclusion: ${{ steps.check.outputs.conclusion }}
           output: ${{ steps.check.outputs.output }}
@@ -57,7 +39,7 @@ jobs:
         if: ${{ failure() }}
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          check_id: ${{ needs.initialize.outputs.check_id }}
+          check_id: ${{ steps.init.outputs.check_id }}
           status: completed
           conclusion: failure
           output: >-
