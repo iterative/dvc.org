@@ -102,7 +102,7 @@
         "label": "How To",
         "slug": "how-to",
         "source": false,
-        "children": ["best-practices", "update-tracked-files"]
+        "children": ["update-tracked-files"]
       },
       "setup-google-drive-remote",
       "large-dataset-optimization",
