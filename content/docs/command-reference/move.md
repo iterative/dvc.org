@@ -17,22 +17,20 @@ positional arguments:
 ## Description
 
 `dvc move` is useful when a `src` file or directory has previously been added to
-the <abbr>project</abbr> with `dvc add`, creating a `.dvc` file (with `src` as a
-dependency). `dvc move` behaves like `mv src dst`, moving `src` to the given
-`dst` path, but it also renames and updates the corresponding `.dvc` file
-appropriately.
+the <abbr>project</abbr> with `dvc add` or `dvc import`, creating a `.dvc` file
+(with `src` as a dependency). `dvc move` doesn't support renaming stage
+<abbr>outputs</abbr> (see `dvc run`), they have to be renamed manually.
 
-> Note that `src` may be a copy or a
+> Note that `src` may be either a
 > [link](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
-> to a file in cache. The cached file is not changed by this command.
+> or a copy to the corresponding data in the cache. The cached file is not
+> changed by this command.
 
-If the destination path (`dst`) already exists and is a directory, the source
-code file or directory (`src`) is moved unchanged into this folder along with
-the corresponding `.dvc` file.
-
-`dvc move` doesn't support renaming outputs of pipeline stages (`dvc run`), it
-only renames data source files and directories (added using `dvc add` and
-`dvc import`). The pipeline outputs have to be renamed manually.
+`dvc move` behaves like `mv src dst`, moving `src` to the given `dst` path, but
+it also renames and updates the corresponding `.dvc` file appropriately. If the
+destination path (`dst`) already exists and is a directory, the source code file
+or directory (`src`) is moved unchanged into this folder along with the
+corresponding `.dvc` file.
 
 Let's imagine the following scenario:
 
@@ -40,8 +38,8 @@ Let's imagine the following scenario:
 $ dvc add data.csv
 ```
 
-The `dvc add` command would create a `data.csv.dvc` `.dvc` file with the
-following content:
+The `dvc add` command would create a `.dvc` file named as `data.csv.dvc` with
+the following content:
 
 ```yaml
 outs:
@@ -71,6 +69,46 @@ outs:
   - cache: true
     md5: c8263e8422925b0872ee1fb7c953742a
     path: other.csv
+```
+
+### Manually renaming stage outputs
+
+In this example, let's rename stage output `keras.h5` to `model.h5`:
+
+```dvc
+$ cat dvc.yaml
+stages:
+  train:
+    cmd: python train.py
+    ...
+    outs:
+    - keras.h5
+```
+
+First we need to change the name of model file in code (`train.py`). Next we
+change the output name in the `train` stage of `dvc.yaml`. After this we change
+`/keras.h5` to `/model.h5` in the `.gitignore` file. Lastly, we rename the
+existing model file:
+
+```dvc
+$ mv keras.h5 model.h5
+```
+
+In the final step we run `dvc commit` with `-f` option to force save the
+changes:
+
+```dvc
+$ dvc commit -f
+```
+
+Alternatively, we can also use `dvc run` with `-f` to overwrite the stage
+changes in `dvc.yaml`:
+
+```dvc
+$ dvc run -f -n train \
+          -d data.csv -d train.py -o model.h5 \
+          -p train.epochs,train.lr \
+          python train.py
 ```
 
 ## Options
@@ -107,8 +145,8 @@ $ tree
 
 We use `dvc add` to track a file with DVC, then we use `dvc move` to change its
 location. If target path already exists and is a directory, data file is moved
-with unchanged name into this folder. Note that the `data.csv.dvc` `.dvc` file
-is also moved.
+with unchanged name into this folder. Note that the corresponding `.dvc` file
+`data.csv.dvc` is also moved.
 
 ```dvc
 $ tree
@@ -164,58 +202,4 @@ $ tree
     │   ├── bar
     │   └── foo
     └── data3.dvc
-```
-
-## Example: manually renaming stage outputs
-
-`dvc move` doesn't support renaming of <abbr>outputs</abbr> in a stage, you will
-have to do that manually. Let's look at our sample workspace and `dvc.yaml`:
-
-```dvc
-$ tree
-.
-├── dvc.lock
-├── dvc.yaml
-├── keras.h5
-├── train.py
-└── ...
-
-$ cat dvc.yaml
-stages:
-  train:
-    cmd: python train.py
-    deps:
-    - data.csv
-    - train.py
-    params:
-    - epochs
-    - lr
-    outs:
-    - keras.h5
-```
-
-In this example we have to rename `keras.h5` as `model.h5`. First change the
-name of model file in code (`train.py`). Next change output name in `train`
-stage of `dvc.yaml`. After this change `/keras.h5` to `/model.h5` in
-`.gitignore` file. Lastly, rename the existing model file:
-
-```dvc
-$ mv keras.h5 model.h5
-```
-
-In final step run `dvc commit` to save the changes and update the `dvc.lock`
-file:
-
-```dvc
-$ dvc commit -f
-```
-
-Alternatively, you can also use `dvc run -f` to overwrite the changes in the
-stage in `dvc.yaml`:
-
-```dvc
-$ dvc run -f -n train \
-          -d data.csv -d train.py -o model.h5 \
-          -p train.epochs,train.lr \
-          python train.py
 ```
