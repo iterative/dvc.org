@@ -49,7 +49,7 @@ $ dvc run -n make_copy -d foo -o bar cp foo bar
 > See `dvc run` for more details.
 
 Then, let's change the file `foo` that the stage `make_copy` depends on, and
-freeze stage as well, to see what's the project status after that:
+freeze the stage as well, to see what's the project status after that:
 
 ```dvc
 $ echo zoo > foo
@@ -61,7 +61,7 @@ foo.dvc:
 ```
 
 DVC notices that `foo` changed due to the `foo.dvc` file that tracks this file
-(as `outs`), but the `make_copy` stage doesn't records the change among it's
+(as `outs`), but the `make_copy` stage doesn't record the change among its
 dependencies. Run `dvc unfreeze` to get the regular/full project status:
 
 ```dvc
