@@ -37,7 +37,7 @@ restore one or more pipelines later (see `dvc repro`).
 
 ## Options
 
-- `--full` - show full DAG that the `target` stage belongs too, instead of
+- `--full` - show full DAG that the `target` stage belongs to, instead of
   showing only its ancestors.
 
 - `--dot` - show DAG in
