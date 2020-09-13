@@ -61,7 +61,7 @@ foo.dvc:
 ```
 
 DVC notices that `foo` changed due to the `foo.dvc` file that tracks this file
-(as `outs`), but the `make_copy` stage no longer records the change among its
+(as `outs`), but the `make_copy` stage doesn't record the change among its
 dependencies. Run `dvc unfreeze` to get the regular/full project status:
 
 ```dvc
