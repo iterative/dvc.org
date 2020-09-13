@@ -28,7 +28,7 @@ the <abbr>project</abbr> with `dvc add` or `dvc import`, creating a `.dvc` file
 
 `dvc move` behaves like `mv src dst`, moving `src` to the given `dst` path, but
 it also renames and updates the corresponding `.dvc` file appropriately. If the
-destination path (`dst`) already exists and is a directory, the source code file
+destination path (`dst`) is a directory and already exists, the source code file
 or directory (`src`) is moved unchanged into this folder along with the
 corresponding `.dvc` file.
 
