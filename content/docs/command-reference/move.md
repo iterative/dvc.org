@@ -19,7 +19,7 @@ positional arguments:
 `dvc move` is useful when a `src` file or directory has previously been added to
 the <abbr>project</abbr> with `dvc add` or `dvc import`, creating a `.dvc` file
 (with `src` as a dependency). `dvc move` doesn't support renaming stage
-<abbr>outputs</abbr> (see `dvc run`), they have to be renamed manually.
+<abbr>outputs</abbr> (see `dvc.yaml`), they have to be renamed manually.
 
 > Note that `src` may be either a
 > [link](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
