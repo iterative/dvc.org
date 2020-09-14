@@ -1,11 +1,11 @@
 name: Link Check Deploy
 on:
-  - deployment
   - deployment_status
 
 jobs:
   check:
     runs-on: ubuntu-latest
+    if: github.event.deployment_status.state == 'success'
 
     steps:
       - uses: actions/checkout@v2
