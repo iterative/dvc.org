@@ -145,8 +145,8 @@ $ tree
 
 We use `dvc add` to track a file with DVC, then we use `dvc move` to change its
 location. If the target path already exists and is a directory, data file is
-moved with unchanged name into this folder. Note that the corresponding
-`.dvc` file, `data.csv.dvc` is also moved.
+moved with unchanged name into this folder. Note that the corresponding `.dvc`
+file, `data.csv.dvc` is also moved.
 
 ```dvc
 $ tree
