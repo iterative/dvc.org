@@ -92,7 +92,7 @@ prepare:
 - `-o data/prepared` specifies an output directory for this script, which writes
   two files in it. This is how the <abbr>workspace</abbr> should look like now:
 
-  ```diff
+  ```
         .
         ├── data
         │   ├── data.xml
