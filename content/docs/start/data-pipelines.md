@@ -102,9 +102,9 @@ prepare:
 +      │       └── train.tsv
 +      ├── dvc.yaml
 +      ├── dvc.lock
-        ├── params.yaml
-        └── src
-            ├── ...
+       ├── params.yaml
+       └── src
+           ├── ...
   ```
 
 - The last line, `python src/prepare.py ...`, is the command to run in this
