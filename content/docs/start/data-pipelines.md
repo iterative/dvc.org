@@ -97,11 +97,11 @@ prepare:
        ├── data
        │   ├── data.xml
        │   ├── data.xml.dvc
-  +   │   └── prepared
-  +   │       ├── test.tsv
-  +   │       └── train.tsv
-  +   ├── dvc.yaml
-  +   ├── dvc.lock
++      │   └── prepared
++      │       ├── test.tsv
++      │       └── train.tsv
++      ├── dvc.yaml
++      ├── dvc.lock
         ├── params.yaml
         └── src
             ├── ...
