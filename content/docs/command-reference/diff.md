@@ -27,7 +27,7 @@ It defaults to comparing the current workspace and the last commit (`HEAD`), if
 arguments `a_rev` and `b_rev` are not specified.
 
 Options `--show-json`, `--show-hash` and `--hide-missing` can be used to modify
-format and details of the output produced. See the [Options](#options) and
+the format and details of the output produced. See the [Options](#options) and
 [Examples](#examples) sections below for more details.
 
 `dvc diff` does not have an effect when the repository is not tracked by Git,
