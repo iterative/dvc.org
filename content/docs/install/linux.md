@@ -51,8 +51,6 @@ $ conda install -c conda-forge dvc
 
 > Requires [snapd](https://snapcraft.io/docs/installing-snapd).
 
-To install the latest stable version of `dvc`:
-
 ```dvc
 $ snap install --classic dvc
 ```

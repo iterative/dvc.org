@@ -3,7 +3,7 @@
 Returns the contents of a tracked file.
 
 ```py
-def open(path: str,
+def read(path: str,
          repo: str = None,
          rev: str = None,
          remote: str = None,
