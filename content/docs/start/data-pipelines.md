@@ -93,10 +93,10 @@ prepare:
   two files in it. This is how the <abbr>workspace</abbr> should look like now:
 
   ```
-        .
-        ├── data
-        │   ├── data.xml
-        │   ├── data.xml.dvc
+       .
+       ├── data
+       │   ├── data.xml
+       │   ├── data.xml.dvc
   +   │   └── prepared
   +   │       ├── test.tsv
   +   │       └── train.tsv
