@@ -68,8 +68,6 @@ or
 
 ## Exceptions
 
-- `dvc.api.UrlNotDvcRepoError` - `repo` is not a DVC project.
-
 - `dvc.exceptions.NoRemoteError` - no `remote` is found.
 
 ## Example: Getting the URL to a DVC-tracked file
