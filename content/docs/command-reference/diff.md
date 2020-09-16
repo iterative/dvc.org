@@ -1,6 +1,6 @@
 # diff
 
-Show added, modified, or deleted DVC-tracked files and directories between
+Show added, modified, or deleted DVC-tracked files and directories between two
 commits in the <abbr>DVC repository</abbr>, or between a commit and the
 workspace.
 
