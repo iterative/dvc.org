@@ -228,8 +228,8 @@ Full <abbr>parameters</abbr> (key and value) are listed separately under
 
 ### Renaming stage outputs
 
-Let's take the following scenario and rename stage <abbr>output</abbr>
-`keras.h5` to `model.h5` for the `train` stage:
+Stage <abbr>outputs</abbr> can be renamed manually. Let's imagine a scenario
+where we rename the output `keras.h5` to `model.h5` for the `train` stage:
 
 ```yaml
 $ cat dvc.yaml
@@ -240,9 +240,9 @@ stages:
     - keras.h5
 ```
 
-First, we change the name of the model file in code (`train.py`). Next, change
-the output name in the `train` stage of `dvc.yaml` and update `/keras.h5` to
-`/model.h5` in `.gitignore` file. In the next step, we rename the existing model
+First, we change the name of the model file in code (`train.py`). In the next
+step, we change the output name in the `train` stage of `dvc.yaml` and update
+`/keras.h5` to `/model.h5` in `.gitignore` file. Next, rename the existing model
 file:
 
 ```yaml
