@@ -226,6 +226,35 @@ directory tracked by DVC. Specifically: `md5`, `etag`, or `checksum` (same as in
 Full <abbr>parameters</abbr> (key and value) are listed separately under
 `params`, grouped by parameters file.
 
+### Renaming stage outputs
+
+Let's take the following scenario and rename stage <abbr>output</abbr>
+`keras.h5` to `model.h5` for the `train` stage:
+
+```yaml
+$ cat dvc.yaml
+stages:
+  train:
+    ...
+    outs:
+    - keras.h5
+```
+
+First, we change the name of the model file in code (`train.py`). Next, change
+the output name in the `train` stage of `dvc.yaml` and update `/keras.h5` to
+`/model.h5` in `.gitignore` file. In the next step, we rename the existing model
+file:
+
+```yaml
+$ mv keras.h5 model.h5
+```
+
+Finally, we run `dvc commit` with the `-f` option to force save the changes:
+
+```dvc
+$ dvc commit -f
+```
+
 ## Internal directories and files
 
 - `.dvc/config`: This is a configuration file. The config file can be edited by
