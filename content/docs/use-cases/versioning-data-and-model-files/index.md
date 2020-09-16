@@ -8,23 +8,22 @@ requests), tagging key revisions, etc. Imagine if we could use these features
 for data modeling!
 
 Unfortunately, versioning tools like [Git](https://git-scm.com/) are designed to
-handle small text files. While other assets can exist in the repository, storage
-itself is not the goal, and its limited by Git hosting services
+handle small text files. While other assets can exist in the repository, file
+storage itself is a side effect, and it's limited by hosting services
 [like GitHub](https://docs.github.com/en/github/managing-large-files/what-is-my-disk-quota).
-Traditional storage solutions such as hard drives or NAS, or cloud services like
-Amazon S3 or Google Drive, are much better options for saving and transferring
+Traditional storage solutions such as hard drives or NAS, and cloud services
+like Amazon S3 or Google Drive are much better options for saving and sharing
 large files.
 
-What if we could **combine effective data storage with robust versioning
-features**?
+What if we could **combine big data storage with versioning features**?
 
 ![](/img/model-versioning-diagram.png) _DVC's hybrid versioned storage_
 
 DVC brings the best of both worlds together by replacing the data with small,
 human-readable [metafiles](/doc/user-guide/dvc-files-and-directories) that Git
-can handle. The data itself is <abbr>cached</abbr> locally outside the Git repo,
-and can easily be synchronized with on-premises or cloud storage. But unlike
-other options (like
+can handle. The data itself is <abbr>cached</abbr> locally, outside of the Git
+repo, and can be easily synchronized with on-premises or cloud storage. But
+unlike other solutions (like
 [Git-LFS](/doc/user-guide/related-technologies#git-lfs-large-file-storage)),
 [remote storage](/doc/command-reference/remote) is optional: no server setup or
 special services are needed, just the `dvc` command.
@@ -69,12 +68,6 @@ M       data\raw
 DVC metafiles such as `dvc.yaml` and `.dvc` files serve as placeholders to track
 data files and directories (among other purposes). They point to specific data
 contents in the <abbr>cache</abbr>, providing the ability to store multiple data
-versions out-of-the-box.
-
-Full-fledged
+versions out-of-the-box. Full-fledged
 [version control](https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control)
-is left for Git and its hosting platforms (e.g. GitHub, GitLab) to handle. These
-are designed for source code versioning however, and thus ill-equipped to
-support data science needs. That's where DVC comes in: with its built-in data
-<abbr>cache</abbr>, reproducible [pipelines](/doc/start/data-pipelines), among
-several other novel features (see [Get Started](/doc/start/) for a primer.)
+is left for Git to handle, however.
