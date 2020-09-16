@@ -1,77 +1,112 @@
 # Versioning Data and Model Files
 
-> This document provides an overview the file versioning workflow with DVC. To
-> get more hands-on experience on this, we recommend following along the
-> [Versioning](/doc/tutorials/versioning) tutorial.
+DVC enables versioning large files and directories such as datasets, data
+science features, and machine learning models using Git, but without storing the
+contents in Git.
 
-DVC allows versioning data files and directories, intermediate results, and ML
-models using Git, but without storing the file contents in the Git repository.
-It's useful when dealing with files that are too large for Git to handle
-properly in general. DVC saves information about your data in special `.dvc`
-files, and these files can be used for versioning. To actually store the data,
-DVC supports various types of [remote storage](/doc/command-reference/remote).
-This allows easily saving and sharing data alongside code.
+This is achieved by saving information about the data in special
+[metafiles](/doc/user-guide/dvc-files-and-directories) that replace the data in
+the repository. These can be versioned with regular Git workflows (branches,
+pull requests, etc.)
 
-![](/img/model-versioning-diagram.png)
+To actually store the data, DVC uses a built-in <abbr>cache</abbr>, and supports
+synchronizing it with various types of
+[remote storage](/doc/command-reference/remote). This allows storing and sharing
+data easily, and alongside code.
 
-In this basic scenario, DVC is a better replacement for Git-LFS (see
-[Related Technologies](/doc/user-guide/related-technologies)) and for ad-hoc
-scripts on top of Amazon S3 (or any other cloud) used to manage ML <abbr>data
-artifacts</abbr> like raw data, models, etc. Unlike Git-LFS, DVC doesn't require
-installing a dedicated server; It can be used on-premises (e.g. SSH, NAS) or
-with any major cloud storage provider (Amazon S3, Microsoft Azure Blob Storage,
-Google Drive, Google Cloud Storage, etc).
+![](/img/model-versioning-diagram.png) _Code and data flows in DVC_
 
-Let's say you already have a Git repository and put a bunch of images in the
-`images/` directory, and build a `model.pkl` ML model file using them.
+In this basic use case, DVC is a better alternative to
+[Git-LFS / Git-annex](/doc/user-guide/related-technologies) and to ad-hoc
+scripts used to manage ML <abbr>artifacts</abbr> (training data, models, etc.)
+on cloud storage. DVC doesn't require special services, and works with
+on-premises storage (e.g. SSH, NAS) as well as any major cloud storage provider
+(Amazon S3, Microsoft Azure, Google Drive,
+[among others](/doc/command-reference/remote/add#supported-storage-types)).
+
+> For hands-on experience, we recommend following the
+> [versioning tutorial](/doc/use-cases/versioning-data-and-model-files).
+
+## DVC is not Git!
+
+DVC metafiles such as `dvc.yaml` and `.dvc` files serve as placeholders to track
+data files and directories (among other purposes). They point to specific data
+contents in the <abbr>cache</abbr>, providing the ability to store multiple data
+versions out-of-the-box.
+
+Full-fledged
+[version control](https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control)
+is left for Git and its hosting platforms (e.g. GitHub, GitLab) to handle. These
+are designed for source code management (SCM) however, and thus ill-equipped to
+support data science needs. That's where DVC comes in: with its built-in data
+<abbr>cache</abbr>, reproducible [pipelines](/doc/start/data-pipelines), among
+several other novel features (see [Get Started](/doc/start/) for a primer.)
+
+## Track data and models for versioning
+
+Let's say you have an empty <abbr>DVC repository</abbr> and put a dataset of
+images in the `images/` directory. You can start tracking it with `dvc add`.
+This generate a `.dvc` file, which can be committed to Git in order to save the
+project's version:
 
 ```dvc
-$ ls images
+$ ls images/
 0001.jpg 0002.jpg 0003.jpg 0004.jpg ...
 
-$ ls
-model.pkl
+$ dvc add images/
+
+$ git add images.dvc .gitignore
+$ git commit -m "Track images dataset with DVC."
 ```
 
-To start using DVC we need to [initialize](/doc/command-reference/init) a
-<abbr>DVC project</abbr> on top of the existing Git repo:
+DVC's also allows to define the processes that build artifacts based on tracked
+data, such as an ML model, by writing a simple `dvc.yaml` file that connects the
+pieces together:
 
-```dvc
-$ dvc init
+> `dvc.yaml` files can be written manually or generated with `dvc run`.
+
+```yaml
+stages:
+  train:
+    cmd: python train.py images/
+    deps:
+      - images
+    outs:
+      - model.pkl
 ```
 
-Start tracking the images directory and the model with `dvc add`:
+> See [Data Pipelines](/doc/start/data-pipelines) for a comprehensive intro to
+> this feature.
+
+`dvc repro` can now execute the `train` stage for you. DVC will track all of its
+outputs (`outs`) automatically. Let's do that, and commit this project version:
 
 ```dvc
-$ dvc add images
-$ dvc add model.pkl
-```
-
-> Refer also to `dvc run` for more advanced ways to version data and data
-> processes.
-
-Commit your changes:
-
-```dvc
-$ git status
+$ dvc repro
+Running stage 'train' with command:
+        python train.py images/
+Updating lock file 'dvc.lock'
 ...
-Untracked files:
-    .gitignore
-    images.dvc
-    model.pkl.dvc
 
-$ git add images.dvc model.pkl.dvc .gitignore
-$ git commit -m "Track images and model with DVC"
+$ git add dvc.yaml dvc.lock .gitignore
+$ git commit -m "Train model via DVC."
+$ git tag -a "v1.0" -m "Fist model"   # We'll use this soon ;)
 ```
 
-There are two ways to get to the previous version of the dataset or model: a
-full <abbr>workspace</abbr> checkout, or checkout of a specific data or model
-file. Let's consider the full checkout first. It's quite straightforward:
+> See also `dvc.lock`.
 
-> `v1.0` below is a Git tag that identifies the dataset version you are
-> interested in. Any
-> [Git reference](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
-> (for example `HEAD^` or a commit hash) can be used instead.
+## Switching versions
+
+After iterating on this process and producing several versions, you can combine
+`git checkout` and `dvc checkout` to perform full or partial
+<abbr>workspace</abbr> restorations.
+
+![](/img/versioning.png) _Code and data checkout_
+
+> Note that `dvc install` enables auto-checkouts of data after `git checkout`.
+
+A full checkout brings the whole <abbr>project</abbr> back to a previous version
+— code, dataset and model files all match each other:
 
 ```dvc
 $ git checkout v1.0
@@ -80,15 +115,8 @@ M       images
 M       model.pkl
 ```
 
-These commands will restore the workspace to the first snapshot we made - code,
-dataset and model files all matching each other. DVC can
-[optimize](/doc/user-guide/large-dataset-optimization) this operation to avoid
-copying files each time, so `dvc checkout` is quick even if you have large
-dataset or model files.
-
-On the other hand, if we want to keep the current version of code and go back to
-the previous dataset only, we can do something like this (make sure that you
-don't have uncommitted changes in the `images.dvc`):
+However, we can checkout certain parts only, for example if we want to keep the
+latest source code and model but rewind to the previous dataset only:
 
 ```dvc
 $ git checkout v1.0 images.dvc
@@ -96,16 +124,6 @@ $ dvc checkout images.dvc
 M       images
 ```
 
-If you run `git status` you will see that `data.dvc` is modified and currently
-points to the `v1.0` version of the <abbr>cached</abbr> data. Meanwhile, code
-and model files are their latest versions.
-
-![](/img/versioning.png)
-
-To share your data with others you need to setup a
-[data storage](/doc/command-reference/remote). See the
-[Sharing Data And Model Files](/doc/use-cases/sharing-data-and-model-files) use
-case to get an overview on how to do this.
-
-Please also don't forget to see the [Versioning](/doc/tutorials/versioning)
-example to get a hands-on experience with datasets and models versioning.
+DVC [optimizes](/doc/user-guide/large-dataset-optimization) this operation by
+avoiding copying files each time, so checking out data is quick even if you have
+large data files.

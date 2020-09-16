@@ -572,6 +572,9 @@ more information.
   $ dvc remote modify myremote url https://example.com/path/to/dir
   ```
 
+  > The URL can include a query string, which will be preserved (e.g.
+  > `example.com?loc=path%2Fto%2Fdir`)
+
 - `auth` - authentication method to use when accessing the remote. The accepted
   values are:
 
@@ -589,6 +592,16 @@ more information.
 
   ```dvc
   $ dvc remote modify myremote auth basic
+  ```
+
+- `method` - override the
+  [HTTP method](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods) to
+  use for file uploads (e.g. `PUT` should be used for
+  [Artifactory](https://www.jfrog.com/confluence/display/JFROG/Artifactory+REST+API)).
+  By default, `POST` is used.
+
+  ```dvc
+  $ dvc remote modify myremote method PUT
   ```
 
 - `custom_auth_header` - HTTP header field name to use when the `auth` parameter
@@ -629,6 +642,13 @@ more information.
   > Note that the `password` parameter takes precedence over `ask_password`. If
   > `password` is specified, DVC will not prompt the user to enter a password
   > for this remote.
+
+- `ssl_verify` - allows to disable SSH verification, which is enabled by
+  default.
+
+  ```dvc
+  $ dvc remote modify myremote ssl_verify false
+  ```
 
 </details>
 

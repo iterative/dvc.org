@@ -178,7 +178,7 @@ $ git tag
 
 These tags are used to mark points in the development of the project, and to
 document specific experiments conducted in it. To take a look at one, we
-checkout the `6-featurization` tag:
+checkout the `7-ml-pipeline` tag:
 
 ```dvc
 $ git checkout 7-ml-pipeline

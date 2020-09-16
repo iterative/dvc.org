@@ -52,6 +52,11 @@ for example when `dvc init` was used with the `--no-scm` option.
 - `--show-md` - print the list of files and directories with their status in the
   Markdown table format.
 
+- `--hide-missing` - do not list data missing from both workspace and cache
+  (`not in cache`). Only list files and directories which have been expliclity
+  added, modified, or deleted. This option does nothing when comparing two Git
+  commits.
+
 - `-h`, `--help` - prints the usage/help message, and exit.
 
 - `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if no
