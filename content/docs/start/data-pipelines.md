@@ -92,19 +92,19 @@ prepare:
 - `-o data/prepared` specifies an output directory for this script, which writes
   two files in it. This is how the <abbr>workspace</abbr> should look like now:
 
-  ```diff
-      .
-      ├── data
-      │   ├── data.xml
-      │   ├── data.xml.dvc
-  +   │   └── prepared
-  +   │       ├── test.tsv
-  +   │       └── train.tsv
-  +   ├── dvc.yaml
-  +   ├── dvc.lock
-      ├── params.yaml
-      └── src
-          ├── ...
+  ```git
+   .
+   ├── data
+   │   ├── data.xml
+   │   ├── data.xml.dvc
+  +│   └── prepared
+  +│       ├── test.tsv
+  +│       └── train.tsv
+  +├── dvc.yaml
+  +├── dvc.lock
+   ├── params.yaml
+   └── src
+       ├── ...
   ```
 
 - The last line, `python src/prepare.py ...`, is the command to run in this
