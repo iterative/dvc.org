@@ -25,10 +25,10 @@ DVC brings the best of both worlds together by replacing the data with small,
 human-readable [metafiles](/doc/user-guide/dvc-files-and-directories) that Git
 can handle. The data itself is <abbr>cached</abbr> locally, outside of the Git
 repo, and can be easily synchronized with on-premises or cloud storage for
-sharing. Unlike other solutions (like
-[Git-LFS](/doc/user-guide/related-technologies#git-lfs-large-file-storage))
-though, [remote storage](/doc/command-reference/remote) is optional in DVC: no
-server setup or special services are needed, just the `dvc` command.
+sharing.
+
+> Note that [remote storage](/doc/command-reference/remote) is optional in DVC:
+> no server setup or special services are needed, just the `dvc` command.
 
 ## Summary of advantages
 
