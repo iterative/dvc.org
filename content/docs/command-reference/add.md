@@ -33,8 +33,7 @@ The `targets` are the files or directories to add, which are turned into
 > intermediate and final results (like ML models).
 
 After checking that each `target` file (or directory) hasn't been added before
-(or tracked with other DVC commands), a few actions are taken under the hood for
-each one:
+(or tracked with other DVC commands), a few actions are taken under the hood:
 
 1. Calculate the file hash.
 2. Move the file contents to the cache (by default in `.dvc/cache`), using the
