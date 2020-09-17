@@ -51,8 +51,8 @@ each one:
 5. Add the `targets` to `.gitignore` in order to prevent them from being
    committed to the Git repository (unless `dvc init --no-scm` was used when
    initializing the DVC project).
-6. Instructions are printed showing `git` commands for staging `.dvc` files
-  (or they are staged automatically if
+6. Instructions are printed showing `git` commands for staging `.dvc` files (or
+   they are staged automatically if
    [`core.autostage`](/doc/command-reference/config#core) is set).
 
 Summarizing, the result is that the target data is replaced by small `.dvc`
