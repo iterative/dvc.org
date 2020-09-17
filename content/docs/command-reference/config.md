@@ -91,6 +91,11 @@ This is the main section with the general config options:
   notify the user when a new version is available. Accepts values `true`
   (default) and `false`.
 
+- `core.autostage` - if enabled, DVC will automatically stage (`git add`)
+  [DVC Metafiles](/doc/user-guide/dvc-files-and-directories) created or modified
+  by DVC commands (`dvc add`, `dvc run`, etc.) The files will not be committed.
+  Accepts values `true` and `false` (default).
+
 ### remote
 
 These are sections in the config file that describe particular remotes. They
