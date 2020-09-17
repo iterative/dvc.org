@@ -93,7 +93,7 @@ This is the main section with the general config options:
 
 - `core.autostage` - if enabled, DVC will automatically stage (`git add`)
   [DVC Metafiles](/doc/user-guide/dvc-files-and-directories) created or modified
-  by [DVC commands](/doc/command-reference). The files will not be commited.
+  by DVC commands (`dvc add`, `dvc run`, etc.) The files will not be committed.
   Accepts values `true` and `false` (default).
 
 ### remote
