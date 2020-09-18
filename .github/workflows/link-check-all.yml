@@ -15,8 +15,5 @@ jobs:
       - name: Run Link Check
         uses: 'iterative/link-check.action@master'
         with:
-          source: 'filesystem'
           configFile: 'config/link-check/config.yml'
-          reportUnusedPatterns: true
-          output: >-
-            ["consoleLog", "exitCode"]
+          output: consoleLog

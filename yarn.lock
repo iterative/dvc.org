@@ -4329,6 +4329,11 @@ commander@^5.1.0:
   resolved "https://registry.yarnpkg.com/commander/-/commander-5.1.0.tgz#46abbd1652f8e059bddaef99bbdcb2ad9cf179ae"
   integrity sha512-P0CysNDQ7rtVw4QIQtm+MRxV66vKFSvlsQvGYXZWR3qFU0jlMKHZZZgw8e+8DSah4UDKMqnknRDQz+xuQXQ/Zg==
 
+commander@^6.1.0:
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/commander/-/commander-6.1.0.tgz#f8d722b78103141006b66f4c7ba1e97315ba75bc"
+  integrity sha512-wl7PNrYWd2y5mp1OK/LhTlv8Ff4kQJQRXXAvF+uU/TPNiVJUxZLRYGj/B0y/lPGAVcSbJqH2Za/cvHmrPMC8mA==
+
 commander@~2.8.1:
   version "2.8.1"
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.8.1.tgz#06be367febfda0c330aa1e2a072d3dc9762425d4"
@@ -14407,17 +14412,17 @@ replace-ext@^1.0.0:
   resolved "https://registry.yarnpkg.com/replace-ext/-/replace-ext-1.0.1.tgz#2d6d996d04a15855d967443631dd5f77825b016a"
   integrity sha512-yD5BHCe7quCgBph4rMQ+0KkIRKwWCrHDOX1p1Gp6HwjPM5kVoCdKGNhN7ydqqsX6lJEnQDKZ/tFMiEdQ1dvPEw==
 
-repo-link-check@^0.5.0:
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/repo-link-check/-/repo-link-check-0.5.0.tgz#e5626a1e0a6b672bb42939cd40235ef96983b5d6"
-  integrity sha512-lQuEUqJbNiUakpqN607dyTb0MntR+HcNt6hdqS3Fd8jK3B9YU6lwmumM6vMzPgaxxWm6FtpBzNrvOR2q9mT2VQ==
+repo-link-check@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/repo-link-check/-/repo-link-check-0.6.0.tgz#2ae67c44d725658beeaa3acf7d7de5e71175bbd1"
+  integrity sha512-7y05N70Nju6AQBWiYv/pXubn56dklS/Jfc5MDX4rED74DPMeqilKfBtjkV4kAg9cCfTwsnePPuuWgQGbN6cfRw==
   dependencies:
     bottleneck "^2.19.5"
+    commander "^6.1.0"
     fast-glob "^3.2.4"
     js-yaml "^3.14.0"
     lodash "^4.17.20"
     micromatch "^4.0.2"
-    minimist "^1.2.5"
     node-fetch "^2.6.0"
 
 request-promise-core@1.1.3:
