@@ -1,11 +1,13 @@
-name: Link Check Deploy
+name: Check new links against deployment
+# This workflow "triggers" and skips on deployment because GitHub Actions /
+# Checks refuses to show the check on deployment_status
 on:
-  - pull_request
+  - deployment
   - deployment_status
 
 jobs:
   run:
-    name: Run
+    name: Initialize
     runs-on: ubuntu-latest
     if: github.event.deployment_status.state == 'success'
 
