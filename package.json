@@ -105,7 +105,6 @@
     "babel-jest": "^26.0.1",
     "babel-plugin-transform-define": "^2.0.0",
     "babel-plugin-transform-object-assign": "^6.22.0",
-    "dvc-github-actions-link-checker": "^0.0.8",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.1",
     "eslint-plugin-json": "^2.1.1",
