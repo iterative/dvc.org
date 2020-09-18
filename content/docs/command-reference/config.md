@@ -30,12 +30,12 @@ information (passwords, SSH keys, etc). Use the `--local` command option (flag)
 instead, to set (or override) secrets. `--global` and `--system` are also
 available to set config options for multiple projects and users, respectively.
 
-| Option     | Priority | Linux/Mac location     | Windows location                                          |
-| ---------- | -------- | ---------------------- | --------------------------------------------------------- |
-| `--local`  | 1        | `.dvc/config.local`    | `.dvc/config.local`                                       |
-| None       | 2        | `.dvc/config`          | `.dvc/config`                                             |
-| `--global` | 3        | `~/.config/dvc/config` | `%LocalAppData%/iterative/dvc/config`                     |
-| `--system` | 4        | `/etc/dvc.config`      | `%AllUsersProfile%/Application Data/iterative/dvc/config` |
+| Command option | Priority | Linux location         | Windows location                                          |
+| -------------- | -------- | ---------------------- | --------------------------------------------------------- |
+| `--local`      | 1        | `.dvc/config.local`    | `.dvc/config.local`                                       |
+| None (default) | 2        | `.dvc/config`          | `.dvc/config`                                             |
+| `--global`     | 3        | `~/.config/dvc/config` | `%LocalAppData%/iterative/dvc/config`                     |
+| `--system`     | 4        | `/etc/dvc.config`      | `%AllUsersProfile%/Application Data/iterative/dvc/config` |
 
 ## Command options (flags)
 
