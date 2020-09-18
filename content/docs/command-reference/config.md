@@ -30,12 +30,12 @@ information (passwords, SSH keys, etc). Use the `--local` command option (flag)
 instead, to set (or override) secrets. `--global` and `--system` are also
 available to set config options for multiple projects and users, respectively.
 
-| Command option | Priority | Linux location         | Windows location                                          |
-| -------------- | -------- | ---------------------- | --------------------------------------------------------- |
-| `--local`      | 1        | `.dvc/config.local`    | `.dvc/config.local`                                       |
-| None (default) | 2        | `.dvc/config`          | `.dvc/config`                                             |
-| `--global`     | 3        | `~/.config/dvc/config` | `%LocalAppData%/iterative/dvc/config`                     |
-| `--system`     | 4        | `/etc/dvc.config`      | `%AllUsersProfile%/Application Data/iterative/dvc/config` |
+| Flag                                                | Priority | Mac location                            | Linux location             | Windows location                                          |
+| --------------------------------------------------- | -------- | --------------------------------------- | -------------------------- | --------------------------------------------------------- |
+| <span style="white-space: nowrap">`--local`</span>  | 1        | `.dvc/config.local`                     | Same                       | Same                                                      |
+| None (default)                                      | 2        | `.dvc/config`                           | Same                       | Same                                                      |
+| <span style="white-space: nowrap">`--global`</span> | 3        | `$HOME/Library/Application Support/dvc` | `$HOME/.config/dvc/config` | `%LocalAppData%/iterative/dvc/config`                     |
+| <span style="white-space: nowrap">`--system`</span> | 4        | `/Library/Application Support/dvc`      | `/etc/dvc.config`          | `%AllUsersProfile%/Application Data/iterative/dvc/config` |
 
 ## Command options (flags)
 
