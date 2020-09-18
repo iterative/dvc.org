@@ -27,13 +27,18 @@ This command reads and updates the DVC configuration files. By default, the
 regular project's config file in `.dvc/config` is read or modified. This file is
 meant to be tracked by Git and should not contain sensitive and/or user-specific
 information (passwords, SSH keys, etc). Use the `--local` command option (flag)
-instead, to set (or override) secrets. `--global` and `--system` are also
-available to set config options for multiple projects and users, respectively.
+instead, to set (or override) secrets:
+
+| Flag           | Priority | Config file location |
+| -------------- | -------- | -------------------- |
+| `--local`      | 1        | `.dvc/config.local`  |
+| None (default) | 2        | `.dvc/config`        |
+
+The `--global` and `--system` flags are also available to set config options for
+multiple projects and users, respectively:
 
 | Flag                                                | Priority | Mac location                            | Linux location             | Windows location                                          |
 | --------------------------------------------------- | -------- | --------------------------------------- | -------------------------- | --------------------------------------------------------- |
-| <span style="white-space: nowrap">`--local`</span>  | 1        | `.dvc/config.local`                     | Same                       | Same                                                      |
-| None (default)                                      | 2        | `.dvc/config`                           | Same                       | Same                                                      |
 | <span style="white-space: nowrap">`--global`</span> | 3        | `$HOME/Library/Application Support/dvc` | `$HOME/.config/dvc/config` | `%LocalAppData%/iterative/dvc/config`                     |
 | <span style="white-space: nowrap">`--system`</span> | 4        | `/Library/Application Support/dvc`      | `/etc/dvc.config`          | `%AllUsersProfile%/Application Data/iterative/dvc/config` |
 
