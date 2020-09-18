@@ -33,8 +33,7 @@ The `targets` are the files or directories to add, which are turned into
 > intermediate and final results (like ML models).
 
 After checking that each `target` file (or directory) hasn't been added before
-(or tracked with other DVC commands), a few actions are taken under the hood for
-each one:
+(or tracked with other DVC commands), a few actions are taken under the hood:
 
 1. Calculate the file hash.
 2. Move the file contents to the cache (by default in `.dvc/cache`), using the
@@ -51,8 +50,9 @@ each one:
 5. Add the `targets` to `.gitignore` in order to prevent them from being
    committed to the Git repository (unless `dvc init --no-scm` was used when
    initializing the DVC project).
-6. Instructions are printed showing `git` commands for adding the files, if
-   appropriate.
+6. Instructions are printed showing `git` commands for staging `.dvc` files (or
+   they are staged automatically if
+   [`core.autostage`](/doc/command-reference/config#core) is set).
 
 Summarizing, the result is that the target data is replaced by small `.dvc`
 files that can be easily tracked with Git.

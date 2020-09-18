@@ -74,7 +74,7 @@ foo.dvc:
 ```
 
 DVC notices that `foo` changed due to the `foo.dvc` file that tracks this file
-(as `outs`), but the `make_copy` stage no longer records the change among it's
+(as `outs`), but the `make_copy` stage no longer records the change among its
 `deps`.
 
 > You can use `dvc unfreeze` to go back to the regular project status.

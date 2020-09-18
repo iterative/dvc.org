@@ -1,6 +1,6 @@
 # version
 
-Display the DVC version and system/environment information.
+Display the DVC version along with environment and project information.
 
 ## Synopsis
 
@@ -24,8 +24,8 @@ usage: dvc version [-h] [-q | -v]
 | `Filesystem type`                           | Shows the filesystem type (eg. ext4, FAT, etc.) and mount point of the cache and <abbr>workspace</abbr> directories                                                   |
 | `Repo`                                      | Shows whether we are in a DVC repo and/or Git repo                                                                                                                    |
 
-> If `dvc version` is executed outside a DVC project, no `Cache` is output and
-> the `Filesystem type` output is of the current working directory.
+> If `dvc version` is executed outside a DVC project, no `Cache` info is
+> printed, and the `Filesystem type` output is of the current working directory.
 
 > Note that if you've installed DVC using `pip`, you will need to install
 > `psutil` manually with `pip install psutil` in order for `dvc version` to
