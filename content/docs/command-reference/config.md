@@ -37,10 +37,17 @@ instead, to set (or override) secrets:
 The `--global` and `--system` flags are also available to set config options for
 multiple projects and users, respectively:
 
-| Flag                                                | Priority | Mac location                            | Linux location             | Windows location                                          |
-| --------------------------------------------------- | -------- | --------------------------------------- | -------------------------- | --------------------------------------------------------- |
-| <span style="white-space: nowrap">`--global`</span> | 3        | `$HOME/Library/Application Support/dvc` | `$HOME/.config/dvc/config` | `%LocalAppData%/iterative/dvc/config`                     |
-| <span style="white-space: nowrap">`--system`</span> | 4        | `/Library/Application Support/dvc`      | `/etc/dvc.config`          | `%AllUsersProfile%/Application Data/iterative/dvc/config` |
+| Flag       | Priority | Mac location                            | Linux location             | Windows location                                          |
+| ---------- | -------- | --------------------------------------- | -------------------------- | --------------------------------------------------------- |
+| `--global` | 3        | `$HOME/Library/Application Support/dvc` | `$HOME/.config/dvc/config` | `%LocalAppData%/iterative/dvc/config`                     |
+| `--system` | 4        | `/Library/Application Support/dvc`      | `/etc/dvc.config`          | `%AllUsersProfile%/Application Data/iterative/dvc/config` |
+
+<!-- Avoids new lines in the Flag column (above). -->
+<style>
+  #markdown-root td:first-child code {
+    white-space: nowrap;
+  }
+</style>
 
 ## Command options (flags)
 
