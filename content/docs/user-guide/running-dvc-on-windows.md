@@ -28,12 +28,18 @@ perfect solution, but here are some ideas:
 - Install an actual Linux distro (e.g. Ubuntu) on a virtual machine, or in a HD
   partition (dual boot).
 
-## Disable short-file name generation
+## Enable symbolic links
 
-With NTFS, users may want to disable `8dot3` as per
-[this article](https://support.microsoft.com/en-us/help/121007/how-to-disable-8-3-file-name-creation-on-ntfs-partitions)
-to disable the short-file name generation. It is important to do so for better
-performance when the user has over 300K files in a single directory.
+A major feature of DVC requires file links for
+[optimization](/doc/user-guide/large-dataset-optimization) purposes. In Windows,
+symlinks are available but the
+[Create symbolic links](<https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn221947(v=ws.11)>)
+privilege has to be enabled (using the _Local Security Policy_ console, for
+example). It's enabled for the _Administrators_ group by default, so running
+`dvc` in a terminal as an admin should do the trick for occasional use.
+
+> Note that DVC's Windows [installer](/doc/install/windows) enables symlink
+> permissions automatically by default.
 
 ## Whitelist in Windows Security
 
@@ -60,24 +66,18 @@ Search Indexing can also slow down file I/O operations on Windows. Try
 [disabling](https://winaero.com/blog/disable-search-indexing-windows-10/) this
 feature if you don't need it.
 
+## Disable short-file name generation
+
+With NTFS, users may want to disable `8dot3` as per
+[this article](https://support.microsoft.com/en-us/help/121007/how-to-disable-8-3-file-name-creation-on-ntfs-partitions)
+to disable the short-file name generation. It is important to do so for better
+performance when the user has over 300K files in a single directory.
+
 ## Avoid directories with large number of files
 
 The performance of NTFS degrades while handling large volumes of files in a
 directory, as explained in
 [this issue](https://stackoverflow.com/questions/197162/ntfs-performance-and-large-volumes-of-files-and-directories).
-
-## Enable symbolic links
-
-A major feature of DVC implies using file links for
-[optimization](/doc/user-guide/large-dataset-optimization) purposes. In Windows,
-symlinks are available but the
-[Create symbolic links](<https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn221947(v=ws.11)>)
-privilege has to be enabled (using the _Local Security Policy_ console, for
-example). It's enabled for the _Administrators_ group by default, so running
-`dvc` in a terminal as an admin should do the trick for occasional use.
-
-> Note that DVC's Windows [installer](/doc/install/windows) enables symlink
-> permissions automatically by default.
 
 ## Enabling paging with `less`
 
