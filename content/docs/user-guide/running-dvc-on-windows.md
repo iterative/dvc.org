@@ -30,16 +30,16 @@ perfect solution, but here are some ideas:
 
 ## Enable symbolic links
 
-A major feature of DVC requires file links for
+> This is done automatically by the DVC's Windows
+> [installer](/doc/install/windows) (requires log off and on again).
+
+Major features of DVC require file links for
 [optimization](/doc/user-guide/large-dataset-optimization) purposes. In Windows,
 symlinks are available but the
 [Create symbolic links](<https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn221947(v=ws.11)>)
-privilege has to be enabled (using the _Local Security Policy_ console, for
-example). It's enabled for the _Administrators_ group by default, so running
-`dvc` in a terminal as an admin should do the trick for occasional use.
-
-> Note that DVC's Windows [installer](/doc/install/windows) enables symlink
-> permissions automatically by default.
+user privilege is needed. It's granted to the _Administrators_ group by default,
+so running `dvc` in a terminal as an admin is an option, for occasional use. For
+regular users, it can be granted using the _Local Security Policy_ console.
 
 ## Whitelist in Windows Security
 
