@@ -64,7 +64,10 @@ is available from the big "Download" button on the [home page](/). You can also
 get it from the [release page](https://github.com/iterative/dvc/releases/) on
 GitHub.
 
-> You'll need to download the installer each time to update DVC.
+You'll need to download and run the installer again each time you want to update
+DVC. You may use Windows Uninstaller to
+[remove the program](https://support.microsoft.com/en-us/help/4028054/windows-10-repair-or-remove-programs).
 
-> You may use Windows Uninstaller to
-> [remove the program](https://support.microsoft.com/en-us/help/4028054/windows-10-repair-or-remove-programs).
+> Note that this method by default enables symlink permissions for all users, so
+> they can use them to
+> [optimize DVC](/doc/user-guide/large-dataset-optimization) operations.

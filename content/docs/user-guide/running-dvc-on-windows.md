@@ -66,6 +66,19 @@ The performance of NTFS degrades while handling large volumes of files in a
 directory, as explained in
 [this issue](https://stackoverflow.com/questions/197162/ntfs-performance-and-large-volumes-of-files-and-directories).
 
+## Enable symbolic links
+
+A major feature of DVC implies using file links for
+[optimization](/doc/user-guide/large-dataset-optimization) purposes. In Windows,
+symlinks are available but the
+[Create symbolic links](<https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn221947(v=ws.11)>)
+privilege has to be enabled (using the _Local Security Policy_ console, for
+example). It's enabled for the _Administrators_ group by default, so running
+`dvc` in a terminal as an admin should do the trick for occasional use.
+
+> Note that DVC's Windows [installer](/doc/install/windows) enables symlink
+> permissions automatically by default.
+
 ## Enabling paging with `less`
 
 By default, DVC tries to use [Less](<https://en.wikipedia.org/wiki/Less_(Unix)>)
