@@ -104,7 +104,7 @@ from the source repo.
 ## Backup Mode
 
 To avoid duplicating large files, `dvc import` does not push imported files to
-any configured remotes for your project by default. This means that when
+any [remotes](/doc/command-reference/remote) by default. This means that when
 `dvc pull/fetch` is run, DVC retrieves imports from their source instead of from
 your remote. It also means that if the source of the import is deleted then the
 files are not backed up in your remote, and data may be lost.
