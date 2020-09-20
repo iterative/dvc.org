@@ -73,7 +73,8 @@ An _output entry_ (`outs`) consists of these fields:
   by default, if not present). See the `--no-commit` option of `dvc add`.
 - `backup`: Whether or not this file or directory is backed-up to project
   remotes. (`true` by default for all `outs` except imports, where it is `false`
-  by default).
+  by default). Mostly relevant for imports in
+  [backup mode](/doc/user-guide/import#backup-mode).
 
 A _dependency entry_ (`deps`) consists of these fields:
 

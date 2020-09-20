@@ -87,6 +87,10 @@ data imports to remote storage. This also means that `dvc pull/fetch` no longer
 needs to access import sources, so these imports can be restored from remote
 storage like typical data tracked with `dvc add`.
 
+Imports using _backup mode_ have a flag in their `.dvc` file `outs` section:
+`backup: true`. To revert to normal import behaviour, remove this flag or set it
+to `false`.
+
 ## Options
 
 - `-o <path>`, `--out <path>` - specify a path to the desired location in the
