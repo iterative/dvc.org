@@ -95,7 +95,7 @@ A _dependency entry_ (`deps`) consists of these fields:
 Note that comments can be added to `.dvc` files using the `# comment` syntax.
 `meta` fields and `#` comments are preserved among executions of the `dvc repro`
 and `dvc commit` commands, but not when a `.dvc` file is overwritten by
-`dvc add`,`dvc import`, or `dvc import-url`.
+`dvc add`, `dvc move`, `dvc import`, or `dvc import-url`.
 
 ## dvc.yaml file
 
@@ -225,35 +225,6 @@ directory tracked by DVC. Specifically: `md5`, `etag`, or `checksum` (same as in
 
 Full <abbr>parameters</abbr> (key and value) are listed separately under
 `params`, grouped by parameters file.
-
-### Renaming stage outputs
-
-Stage <abbr>outputs</abbr> can be renamed manually. Let's imagine a scenario
-where we rename the output `keras.h5` to `model.h5` for the `train` stage:
-
-```yaml
-$ cat dvc.yaml
-stages:
-  train:
-    ...
-    outs:
-    - keras.h5
-```
-
-First, we change the name of the model file in code (`train.py`). In the next
-step, we change the output name in the `train` stage of `dvc.yaml` and update
-`/keras.h5` to `/model.h5` in `.gitignore` file. Next, rename the existing model
-file:
-
-```yaml
-$ mv keras.h5 model.h5
-```
-
-Finally, we run `dvc commit` with the `-f` option to force save the changes:
-
-```dvc
-$ dvc commit -f
-```
 
 ## Internal directories and files
 
