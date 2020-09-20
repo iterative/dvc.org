@@ -45,7 +45,7 @@ They are done in a separate background process and fail fast to avoid delaying
 any execution. They will fail immediately and silently if you have no network
 connection.
 
-DVC's analytics are sent throughout DVC's proxy to Google Analytics over HTTPS.
+DVC's analytics are sent through DVC's proxy to Google Analytics over HTTPS.
 
 ## Opting out
 
