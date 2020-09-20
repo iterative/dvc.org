@@ -111,9 +111,9 @@ files are not backed up in your remote, and data may be lost.
 
 To prevent this, you can use the `--backup` option to request DVC to backup the
 data imports to remote storage. This also means that `dvc pull/fetch` no
-longer needs to access import sources, so interacts only with the DVC remote,
-and that backed-up imports can be restored just like files that were
-`dvc add`ed.
+longer needs to access import sources, so
+these imports can be restored from remote storage like typical
+data tracked with `dvc add`.
 
 To update backed-up imports, use `dvc update` like usual.
 
