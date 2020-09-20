@@ -1,96 +1,44 @@
 # Best Practices for DVC Projects
 
 DVC provides a systematic approach towards managing and collaborating on data
-science projects. You can manage your projects with DVC more efficiently using
-the practices listed here:
+science projects. Here are a few recommended practices to organize your workflow
+and project structure effectively:
 
-## Source code and data versioning
+> See also these quick [tips & tricks](/doc/user-guide/tips-and-tricks).
 
-You can use DVC to avoid discrepancies between
+## Matching source code to data
+
+One of DVC's basic uses is to avoid a disconnection between
 [revisions](https://git-scm.com/docs/revisions) of source code and
-[versions](/doc/use-cases/versioning-data-and-model-files) of data files. DVC
-replaces all large data files, models, etc. with small
-[metafiles](doc/user-guide/dvc-files-and-directories) (tracked by Git). These
-files point to the original data, which you can access by first checking out the
-required `revision` using Git followed by `dvc checkout` to update DVC tracked
-data files/dir:
+[versions](/doc/use-cases/versioning-data-and-model-files) of data. DVC replaces
+large data files and directories, models, etc. with small
+[metafiles](/doc/user-guide/dvc-files-and-directories), which you can track with
+Git, along with the corresponding code.
+
+These metafiles point to the original data, which is <abbr>cached</abbr>
+automatically. You can access it later by restoring that Git working tree (e.g.
+with `git checkout`) and using `dvc checkout` to update DVC tracked data
+files/dir:
 
 ```dvc
-$ git checkout 95485f   # Git commit of required data version
+$ git checkout 95485f  # Git commit of a desired project version
 $ dvc checkout
 ```
+
+> See
+> [Versioning Data and Model Files](/doc/use-cases/versioning-data-and-model-files)
+> for more details.
+
+## Using directories as single data units
 
 If your dataset consist of multiple files like images, etc. then the best way to
-track whole directory is with single `.dvc` file. You can use `dvc add` with
-relative path to directory:
+track it is
+[as a directory](/doc/command-reference/add#adding-entire-directories), with a
+single `.dvc` file:
 
 ```dvc
-$ dvc add data/images
+$ dvc add data/images/
 ```
-
-## Experiments and tracking parameters
-
-You can use DVC for tuning [parameters](doc/command-reference/params), improving
-target [metrics](doc/command-reference/metrics) and visualizing the changes with
-[plots](doc/command-reference/plots). In the first step tune parameters in
-default `params.yaml` file and reproduce the pipeline:
-
-```dvc
-$ dvc repro        # Reproducing pipeline
-$ git add -am "Epoch Experiment"
-```
-
-Commit the new changes in files using Git. Next step is to compare the
-experiments. Use `dvc metrics` to find difference in target metric between two
-commits:
-
-```dvc
-$ dvc metrics diff rev1 rev2
-```
-
-And finally you can plot target metrics using `dvc plots`:
-
-```dvc
-$ dvc plots diff -x recall -y precision rev1 rev2
-```
-
-If you want to recover a model from last week without wasting time required for
-the model to retrain you can use DVC to navigate through your experiments. First
-you can checkout the required `revision` using Git:
-
-```dvc
-$ git checkout baseline-experiment   # Git commit, tag or branch
-$ dvc checkout
-```
-
-Followed by `dvc checkout` to update DVC-tracked files and directories in your
-workspace.
-
-If you are training different models on your data files in the same project,
-using Git commits, tags, or branches makes it easy to manage the project. Have a
-look at this [example]() to see how this works.
-
-## Reproducibility
-
-You can run a model's evaluation process again without actually retraining the
-model and preprocessing a raw dataset. DVC provides a way to reproduce pipelines
-partially. You can use `dvc repro` to execute evaluation stage without
-reproducing complete pipeline:
-
-```dvc
-$ dvc repro evaluate
-```
-
-## Managing and sharing large data files
-
-Cloud or local storage can be used to store the project's data. You can share
-the entire 147 GB of your ML project, with all of its data sources, intermediate
-data files, and models with others if they are stored on
-[remote storage](doc/command-reference/remote/add#supported-storage-types).
-Using this you can share models trained in a GPU environment with colleagues who
-don't have access to a GPU. Have a look at this
-[example](doc/command-reference/pull#example-download-from-specific-remote-storage)
-to see how this works.
 
 ## Manually editing dvc.yaml or .dvc files
 
@@ -112,24 +60,74 @@ You can manually edit all the fields present in `dvc.yaml`. However, in `.dvc`
 files please remember not to change the `md5` or `checksum` fields as they
 contain hash values which DVC uses to track the file or directory.
 
-## Never store credentials in project config
+## Managing and sharing large data
 
-Do not store any user credentials in project config file. This file can be found
-by default in `.dvc/config`. Use `--local`, `--global`, or `--system` command
-options with `dvc config` for storing sensitive, or user-specific settings:
+Traditional or cloud storage can be used to store the project's data. You can
+share the entire 147 GB of your ML project, with all of its data sources,
+intermediate data files, and models with others by setting up DVC
+[remote storage](doc/command-reference/remote) (optional).
+
+This way you can share models trained in a GPU environment with colleagues who
+don't have access to GPUs.
+
+## Never store secrets in the shared config file
+
+Do not put user credentials in the default config file (`.dvc/config`), which is
+tracked by Git. Use the `--local`, `--global`, or `--system` options of
+`dvc config` to provide sensitive or user-specific settings:
 
 ```dvc
-$ dvc config --system remote.username [password]
+$ dvc config --local remote.password mypassword  # just here
+$ dvc config --global core.checksum_jobs 16      # all my projest
+$ dvc config --system core.check_update false    # all users
 ```
 
-## Tracking <abbr>outputs</abbr> by Git
+## Tracking experiments with Git
 
-If your `output` files are small in size and you want to track them with Git
-then you can use `--outs-no-cache` option to define outputs while creating or
-modifying a stage. DVC will not track will not track outputs in this case:
+If you are training different models on your data files in the same project,
+using Git commits, tags, or branches makes it easy to manage the project.
+
+<!-- TODO: needs much elaboration! -->
+
+## Basic experimentation flow
+
+Use DVC for [reproducing](/doc/command-reference/repro) experiments after tuning
+their [parameters](/doc/command-reference/params), tracking resulting
+[metrics](/doc/command-reference/metrics), and visualizing their evolution with
+[plots](/doc/command-reference/plots).
+
+For example, let's first setup some parameters in `params.yaml` and reproduce
+the pipeline:
+
+<!-- TODO: sample params file -->
 
 ```dvc
-$ dvc run -n train -d src/train.py -d data/features \
-          ---outs-no-cache model.p \
-          python src/train.py data/features model.pkl
+$ dvc repro
+```
+
+<!-- TODO: what about the command output above? -->
+
+Commit the changes using Git. Having some commits allows us to compare the
+experiments using `dvc metrics diff`:
+
+```dvc
+$ dvc metrics diff rev1 rev2
+```
+
+<!-- TODO: command output above? -->
+
+Finally, you can see how certain metrics evolved using `dvc plots diff`:
+
+```dvc
+$ dvc plots diff -x recall -y precision rev1 rev2
+```
+
+<!-- TODO: insert plot img -->
+
+If you want to recover a model from last week without wasting time required to
+retrain the model, you can use Git and DVC to navigate through your experiments:
+
+```dvc
+$ git checkout baseline-experiment   # Git commit, tag or branch
+$ dvc checkout
 ```
