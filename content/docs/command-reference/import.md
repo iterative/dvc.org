@@ -91,7 +91,8 @@ from the source repo.
   > [Importing and updating fixed revisions](#example-importing-and-updating-fixed-revisions)
   > example below).
 
-- `-b`, `--backup` - imports files in "backup mode": see Backup Mode section for details. 
+- `-b`, `--backup` - imports files in "backup mode": see Backup Mode section for
+  details.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -103,18 +104,18 @@ from the source repo.
 ## Backup Mode
 
 To avoid duplicating large files, `dvc import` does not push imported files to
-any configured remotes for your project by default. This means that when 
-`dvc pull/fetch` is run, DVC retrieves imports from their source instead of from your
-remote. It also means that if the source of the import is deleted then the files
-are not backed up in your remote, and data may be lost. 
+any configured remotes for your project by default. This means that when
+`dvc pull/fetch` is run, DVC retrieves imports from their source instead of from
+your remote. It also means that if the source of the import is deleted then the
+files are not backed up in your remote, and data may be lost.
 
 To prevent this, you can use the `--backup` option to request DVC to backup the
 data imports to your project's remote. This also means that `dvc pull/fetch` no
 longer needs to access import sources, so interacts only with the DVC remote,
-and that backed-up imports can be restored just like files that were 
-`dvc add`ed. 
+and that backed-up imports can be restored just like files that were
+`dvc add`ed.
 
-To update backed-up imports, use `dvc update` like usual. 
+To update backed-up imports, use `dvc update` like usual.
 
 ## Examples
 
