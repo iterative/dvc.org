@@ -101,7 +101,7 @@ from the source repo.
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
-## Backup Mode
+## Backup mode
 
 To avoid duplicating large files, `dvc import` does not push imported files to
 any [remotes](/doc/command-reference/remote) by default. This means that when
