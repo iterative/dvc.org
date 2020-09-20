@@ -115,8 +115,6 @@ longer needs to access import sources, so
 these imports can be restored from remote storage like typical
 data tracked with `dvc add`.
 
-To update backed-up imports, use `dvc update` like usual.
-
 ## Examples
 
 A simple case for this command is to import a dataset from an external <abbr>DVC
