@@ -74,7 +74,7 @@ An _output entry_ (`outs`) consists of these fields:
 - `backup`: Whether or not this file or directory is backed-up to project
   remotes. (`true` by default for all `outs` except imports, where it is `false`
   by default). Mostly relevant for imports in
-  [backup mode](/doc/user-guide/import#backup-mode).
+  [backup mode](/doc/command-reference/import#backup-mode).
 
 A _dependency entry_ (`deps`) consists of these fields:
 
