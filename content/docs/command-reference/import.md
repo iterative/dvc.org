@@ -91,8 +91,8 @@ from the source repo.
   > [Importing and updating fixed revisions](#example-importing-and-updating-fixed-revisions)
   > example below).
 
-- `-b`, `--backup` - imports files in "backup mode": see Backup Mode section for
-  details.
+- `-b`, `--backup` - turns _backup mode_ on for this import, so it can be pushed
+  to remote storage (see [Backup mode](#backup-mode) for details).
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
