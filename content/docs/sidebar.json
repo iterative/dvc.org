@@ -102,13 +102,7 @@
         "label": "How To",
         "slug": "how-to",
         "source": false,
-        "children": [
-          {
-            "label": "Undo dvc add",
-            "slug": "undo-dvc-add"
-          },
-          "update-tracked-files"
-        ]
+        "children": ["undo-adding-data", "update-tracked-files"]
       },
       "setup-google-drive-remote",
       "large-dataset-optimization",
