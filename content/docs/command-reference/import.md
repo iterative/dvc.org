@@ -10,7 +10,7 @@ the import.
 ## Synopsis
 
 ```usage
-usage: dvc import [-h] [-q | -v] [-o <path>] [--rev <commit>] url path
+usage: dvc import [-h] [-q | -v] [-o <path>] [--rev <commit>] [--backup] url path
 
 positional arguments:
   url              Location of DVC or Git repository to download from
@@ -91,12 +91,30 @@ from the source repo.
   > [Importing and updating fixed revisions](#example-importing-and-updating-fixed-revisions)
   > example below).
 
+- `-b`, `--backup` - imports files in "backup mode": see Backup Mode section for details. 
+
 - `-h`, `--help` - prints the usage/help message, and exit.
 
 - `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if no
   problems arise, otherwise 1.
 
 - `-v`, `--verbose` - displays detailed tracing information.
+
+## Backup Mode
+
+To avoid duplicating large files, `dvc import` does not push imported files to
+any configured remotes for your project by default. This means that when 
+`dvc pull/fetch` is run, DVC retrieves imports from their source instead of from your
+remote. It also means that if the source of the import is deleted then the files
+are not backed up in your remote, and data may be lost. 
+
+To prevent this, you can use the `--backup` option to request DVC to backup the
+data imports to your project's remote. This also means that `dvc pull/fetch` no
+longer needs to access import sources, so interacts only with the DVC remote,
+and that backed-up imports can be restored just like files that were 
+`dvc add`ed. 
+
+To update backed-up imports, use `dvc update` like usual. 
 
 ## Examples
 

@@ -71,6 +71,8 @@ An _output entry_ (`outs`) consists of these fields:
   _checksum_ for HDFS.
 - `cache`: Whether or not this file or directory is <abbr>cached</abbr> (`true`
   by default, if not present). See the `--no-commit` option of `dvc add`.
+- `backup`: Whether or not this file or directory is backed-up to project remotes.
+  (`true` by default for all `outs` except imports, where it is `false` by default).
 
 A _dependency entry_ (`deps`) consists of these fields:
 
