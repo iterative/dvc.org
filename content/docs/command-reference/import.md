@@ -110,7 +110,7 @@ So if the original source of an import is deleted, then the
 files are not backed up in your remote, and data may be lost.
 
 To prevent this, you can use the `--backup` option to request DVC to backup the
-data imports to your project's remote. This also means that `dvc pull/fetch` no
+data imports to remote storage. This also means that `dvc pull/fetch` no
 longer needs to access import sources, so interacts only with the DVC remote,
 and that backed-up imports can be restored just like files that were
 `dvc add`ed.
