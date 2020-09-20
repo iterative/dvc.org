@@ -95,7 +95,7 @@ A _dependency entry_ (`deps`) consists of these fields:
 Note that comments can be added to `.dvc` files using the `# comment` syntax.
 `meta` fields and `#` comments are preserved among executions of the `dvc repro`
 and `dvc commit` commands, but not when a `.dvc` file is overwritten by
-`dvc add`,`dvc import`, or `dvc import-url`.
+`dvc add`, `dvc move`, `dvc import`, or `dvc import-url`.
 
 ## `dvc.yaml` file
 
