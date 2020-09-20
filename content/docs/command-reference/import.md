@@ -74,6 +74,19 @@ Note that import stages are considered always
 they won't be updated. Use `dvc update` to update the downloaded data artifact
 from the source repo.
 
+### Backup mode
+
+To avoid duplicating large files, `dvc import` does not push imported files to
+any [remotes](/doc/command-reference/remote) by default. This means that when
+`dvc pull/fetch` is run, DVC retrieves imports from their source. So if the
+original source of an import is deleted, then the files are not backed up in
+your remote, and data may be lost.
+
+To prevent this, you can use the `--backup` option to request DVC to backup the
+data imports to remote storage. This also means that `dvc pull/fetch` no longer
+needs to access import sources, so these imports can be restored from remote
+storage like typical data tracked with `dvc add`.
+
 ## Options
 
 - `-o <path>`, `--out <path>` - specify a path to the desired location in the
@@ -100,20 +113,6 @@ from the source repo.
   problems arise, otherwise 1.
 
 - `-v`, `--verbose` - displays detailed tracing information.
-
-## Backup mode
-
-To avoid duplicating large files, `dvc import` does not push imported files to
-any [remotes](/doc/command-reference/remote) by default. This means that when
-`dvc pull/fetch` is run, DVC retrieves imports from their source.
-So if the original source of an import is deleted, then the
-files are not backed up in your remote, and data may be lost.
-
-To prevent this, you can use the `--backup` option to request DVC to backup the
-data imports to remote storage. This also means that `dvc pull/fetch` no
-longer needs to access import sources, so
-these imports can be restored from remote storage like typical
-data tracked with `dvc add`.
 
 ## Examples
 
