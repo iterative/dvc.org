@@ -71,7 +71,7 @@ An _output entry_ (`outs`) consists of these fields:
   _checksum_ for HDFS.
 - `cache`: Whether or not this file or directory is <abbr>cached</abbr> (`true`
   by default, if not present). See the `--no-commit` option of `dvc add`.
-- `backup`: Whether or not this file or directory is pushed to
+- `backup`: Whether or not this file or directory is pushed and pulled to/from
   [remote storage](/doc/command-reference/remote) (`true` by default for
   all outputs except for imports, where it is `false` by default). See
   [import backup mode](/doc/command-reference/import#backup-mode).
