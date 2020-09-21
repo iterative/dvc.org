@@ -85,9 +85,8 @@ anywhere, and data may be lost.
 
 To prevent this, you can use the `--backup` option to mark the imports to be
 pushed to a DVC remote when `dvc push` is run.  This also means that
-`dvc pull/fetch/repro`
-no longer needs to access import sources, so these imports can be restored from
-the remote like regular data tracked with `dvc add`.
+`dvc pull/fetch/repro` no longer access import sources, so these imports
+can be restored from the remote like regular data tracked with `dvc add`.
 
 Backup mode is enabled with a `backup: true` key/value pair in the `outs`
 section of the import `.dvc` file. To switch to regular import behavior, set
