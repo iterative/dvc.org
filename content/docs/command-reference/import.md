@@ -79,8 +79,8 @@ from the source repo.
 To avoid duplicating large files, `dvc import` does not push imported files to
 any [remotes](/doc/command-reference/remote) by default. This means that
 `dvc pull`, `dvc fetch`, and `dvc repro` retrieve imports from their source. So if
-the original source of an import is deleted, then the files are not backed up in
-your remote, and data may be lost.
+the original source of an import is deleted, then the files are not backed up
+anywhere, and data may be lost.
 
 To prevent this, you can use the `--backup` option to request DVC to backup the
 data imports to remote storage. This also means that `dvc pull` or `dvc fetch`
