@@ -108,8 +108,8 @@ to `false`.
   > [Importing and updating fixed revisions](#example-importing-and-updating-fixed-revisions)
   > example below).
 
-- `-b`, `--backup` - turns _backup mode_ on for this import, so it can be pushed
-  to remote storage (see [Backup mode](#backup-mode) for details).
+- `-b`, `--backup` - turns [backup mode](#backup-mode) on for the import,
+  so it can be pushed to remote storage.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
