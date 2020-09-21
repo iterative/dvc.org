@@ -84,8 +84,8 @@ the original source of an import is deleted, then the files are not backed up
 anywhere, and data may be lost.
 
 To prevent this, you can use the `--backup` option to mark the imports to be
-pushed to the remote when `dvc push` is run. 
-This also means that `dvc pull/fetch/repro`
+pushed to a DVC remote when `dvc push` is run.  This also means that
+`dvc pull/fetch/repro`
 no longer needs to access import sources, so these imports can be restored from
 the remote like regular data tracked with `dvc add`.
 
