@@ -82,9 +82,10 @@ To avoid duplicating large files, `dvc import` does not push imported files to
 the original source of an import is deleted, then the files are not backed up
 anywhere, and data may be lost.
 
-To prevent this, you can use the `--backup` option to request DVC to backup the
-data imports to a remote. This also means that `dvc pull/fetch/repro`
-no longer need to access import sources, so these imports can be restored from
+To prevent this, you can use the `--backup` option to mark the imports to be
+pushed to the remote when `dvc push` is run. 
+This also means that `dvc pull/fetch/repro`
+no longer needs to access import sources, so these imports can be restored from
 the remote like regular data tracked with `dvc add`.
 
 Backup mode is enabled with a `backup: true` key/value pair in the `outs`
