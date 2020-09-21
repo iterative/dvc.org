@@ -87,9 +87,9 @@ data imports to a remote. This also means that `dvc pull/fetch/repro`
 no longer need to access import sources, so these imports can be restored from
 the remote like regular data tracked with `dvc add`.
 
-Imports using _backup mode_ have a flag in their `.dvc` file `outs` section:
-`backup: true`. To revert to normal import behaviour, remove this flag or set it
-to `false`.
+Backup mode is enabled with a `backup: true` key/value pair in the `outs`
+section of the import `.dvc` file. To switch to regular import behavior, set
+its value to `false` (or remove the field altogether).
 
 ## Options
 
