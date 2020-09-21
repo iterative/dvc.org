@@ -83,7 +83,7 @@ the original source of an import is deleted, then the files are not backed up
 anywhere, and data may be lost.
 
 To prevent this, you can use the `--backup` option to request DVC to backup the
-data imports to a remote. This also means that `dvc pull` or `dvc fetch`
+data imports to a remote. This also means that `dvc pull/fetch/repro`
 no longer need to access import sources, so these imports can be restored from
 remote storage like typical data tracked with `dvc add`.
 
