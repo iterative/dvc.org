@@ -109,7 +109,7 @@ its value to `false` (or remove the field altogether).
   > example below).
 
 - `-b`, `--backup` - turns [backup mode](#backup-mode) on for the import,
-  so it can be pushed to remote storage.
+  so it can be pushed to remote storage (in case the original source is lost).
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
