@@ -79,19 +79,19 @@ from the source repo.
 To avoid duplicating large files, imported data is not pushed to
 [remote storage](/doc/command-reference/remote) by default (see `dvc push`).
 This means that `dvc pull`, `dvc fetch`, and `dvc repro` retrieve imports from
-their source (found in the `deps` field of the `.dvc` file). So if
-the original source of an import is deleted, then the files are not backed up
-anywhere, and data may be lost.
+their source (found in the `deps` field of the `.dvc` file). So if the original
+source of an import is deleted, then the files are not backed up anywhere, and
+data may be lost.
 
-As an alternative, you can use the `--backup` option so the import is
-pushed to a DVC remote when `dvc push` is run. This also means that
-`dvc pull/fetch/repro` no longer access import sources, going to the remote
-instead, like with regular project data tracked with `dvc add`. You can still
-use `dvc update` to get the latest data from its import source.
+As an alternative, you can use the `--backup` option so the import is pushed to
+a DVC remote when `dvc push` is run. This also means that `dvc pull/fetch/repro`
+no longer access import sources, going to the remote instead, like with regular
+project data tracked with `dvc add`. You can still use `dvc update` to get the
+latest data from its import source.
 
 Backup mode is enabled with a `backup: true` key/value pair in the `outs`
-section of the import `.dvc` file. To switch to regular import behavior, set
-its value to `false`, or re-import the data without using the `--backup` option.
+section of the import `.dvc` file. To switch to regular import behavior, set its
+value to `false`, or re-import the data without using the `--backup` option.
 
 ## Options
 
@@ -110,8 +110,8 @@ its value to `false`, or re-import the data without using the `--backup` option.
   > [Importing and updating fixed revisions](#example-importing-and-updating-fixed-revisions)
   > example below).
 
-- `-b`, `--backup` - turns [backup mode](#backup-mode) on for the import,
-  so it can be pushed to remote storage (in case the original source is lost).
+- `-b`, `--backup` - turns [backup mode](#backup-mode) on for the import, so it
+  can be pushed to remote storage (in case the original source is lost).
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
