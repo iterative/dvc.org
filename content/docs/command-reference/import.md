@@ -83,7 +83,7 @@ their source (found in the `deps` field of the `.dvc` file). So if
 the original source of an import is deleted, then the files are not backed up
 anywhere, and data may be lost.
 
-To prevent this, you can use the `--backup` option to mark the imports to be
+As an alternative, you can use the `--backup` option so the import is
 pushed to a DVC remote when `dvc push` is run. This also means that
 `dvc pull/fetch/repro` no longer access import sources, going to the remote
 instead, like with regular project data tracked with `dvc add`. Use
