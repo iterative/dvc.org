@@ -56,6 +56,9 @@ lists all the current metrics without comparisons.
   $ dvc metrics diff HEAD v1 --targets t1.json t2.json
   ```
 
+  Note, that when using `--targets` it is possible to `diff` files that are not
+  specifically marked as metrics.
+
 - `-R`, `--recursive` - determines the metric files to use by searching each
   target directory and its subdirectories for DVC-files to inspect. If there are
   no directories among the `targets`, this option is ignored.
