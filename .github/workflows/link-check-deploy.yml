@@ -2,12 +2,8 @@ name: Check new links against deployment
 # This workflow "triggers" and skips on deployment because GitHub Actions /
 # Checks refuses to show the check on deployment_status
 on:
-  deployment:
-    branches-ignore:
-      - master
-  deployment_status:
-    branches-ignore:
-      - master
+  - deployment
+  - deployment_status
 
 jobs:
   run:
