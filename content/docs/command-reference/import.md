@@ -91,7 +91,7 @@ use `dvc update` to get the latest data from its import source.
 
 Backup mode is enabled with a `backup: true` key/value pair in the `outs`
 section of the import `.dvc` file. To switch to regular import behavior, set
-its value to `false` (or remove the field altogether).
+its value to `false`, or re-import the data without using the `--backup` option.
 
 ## Options
 
