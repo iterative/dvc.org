@@ -2,14 +2,18 @@ name: Check new links against deployment
 # This workflow "triggers" and skips on deployment because GitHub Actions /
 # Checks refuses to show the check on deployment_status
 on:
-  - deployment
-  - deployment_status
+  deployment:
+    branches-ignore:
+      - master
+  deployment_status:
+    branches-ignore:
+      - master
 
 jobs:
   run:
     name: Initialize
     runs-on: ubuntu-latest
-    if: github.ref != 'master' && github.event.deployment_status.state == 'success'
+    if: github.event.deployment_status.state == 'success'
 
     steps:
       - uses: actions/checkout@v2
