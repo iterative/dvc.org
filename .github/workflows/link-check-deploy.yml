@@ -9,7 +9,7 @@ jobs:
   run:
     name: Initialize
     runs-on: ubuntu-latest
-    if: github.ref != 'master' && github.event.deployment_status.state == 'success' 
+    if: github.ref != 'master' && github.event.deployment_status.state == 'success'
 
     steps:
       - uses: actions/checkout@v2
