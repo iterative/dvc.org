@@ -86,8 +86,8 @@ anywhere, and data may be lost.
 As an alternative, you can use the `--backup` option so the import is
 pushed to a DVC remote when `dvc push` is run. This also means that
 `dvc pull/fetch/repro` no longer access import sources, going to the remote
-instead, like with regular project data tracked with `dvc add`. Use
-`dvc update` to get the (latest) data from its import source.
+instead, like with regular project data tracked with `dvc add`. You can still
+use `dvc update` to get the latest data from its import source.
 
 Backup mode is enabled with a `backup: true` key/value pair in the `outs`
 section of the import `.dvc` file. To switch to regular import behavior, set
