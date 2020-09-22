@@ -21,7 +21,8 @@ positional arguments:
 
 This command is a way to visualize the "difference" between metrics among
 experiments in the <abbr>repository</abbr> history, by plotting multiple
-versions of the metrics. All plots defined in `dvc.yaml` are used by default.
+versions of the metrics. All plots defined in `dvc.yaml` are used by default. If
+`targets` are specified, they do not have to be defined in `dvc.yaml`.
 
 > Note that unlike `dvc metrics diff`, this command does not calculate numeric
 > differences between metrics file values.
@@ -48,11 +49,9 @@ all the current plots, without comparisons.
 
 ## Options
 
-- `--targets <path>` - specific metrics files to visualize. These must be listed
-  in a [`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvcyaml-file) file
-  (see the `--plots` option of `dvc run`). When specifying arguments for
-  `--targets` before `revisions`, you should use `--` after this option's
-  arguments, e.g.:
+- `--targets <path>` - specific metrics files to visualize. When specifying
+  arguments for `--targets` before `revisions`, you should use `--` after this
+  option's arguments, e.g.:
 
   ```dvc
   $ dvc plots diff --targets t1.json t2.csv -- HEAD v1 v2
