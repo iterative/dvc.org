@@ -109,7 +109,7 @@ $ dvc commit -f
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
-## Example: change the file name
+## Example: Change the file name
 
 We first use `dvc add` to track file with DVC. Then, we change its name using
 `dvc move`.
@@ -130,7 +130,7 @@ $ tree
 └── other.csv.dvc
 ```
 
-## Example: change the location
+## Example: Change a file location
 
 We use `dvc add` to track a file with DVC, then we use `dvc move` to change its
 location. If the target path is a directory and already exists, the data file is
@@ -166,7 +166,7 @@ $ tree
         └── foo.dvc
 ```
 
-## Example: change an imported directory name and location
+## Example: Move a directory
 
 Let's try the same with an entire directory imported from an external <abbr>DVC
 repository</abbr> with `dvc import`. Note that, as in the previous cases, the
