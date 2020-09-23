@@ -50,6 +50,9 @@ folder i.e. `gdrive://<base>/path/to/folder`. The base can be one of:
    and [shared drives](https://support.google.com/a/users/answer/9310351)\*
    (these two can only be referenced by ID).
 
+   > ⚠️ The folder in question should be shared to specific users (or groups) so
+   > they can use it with DVC. "Anyone with a link" is not guaranteed to work.
+
    ```dvc
    $ dvc remote add myremote gdrive://0AIac4JZqHhKmUk9PDA
    ```
