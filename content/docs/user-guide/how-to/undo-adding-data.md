@@ -12,7 +12,7 @@ $ ls
 data.csv    data.csv.dvc
 ```
 
-Now let's reverse this action.
+Now let's reverse this action:
 
 > Note,if you are using `symlink` or `hardlink` as
 > [link](doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
