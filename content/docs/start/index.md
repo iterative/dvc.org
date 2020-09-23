@@ -1,4 +1,5 @@
 ---
+title: 'Get Started | DVC'
 description: 'Get started with DVC!'
 ---
 
