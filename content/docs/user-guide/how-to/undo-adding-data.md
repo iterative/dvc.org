@@ -4,7 +4,7 @@ There are situations where you `dvc add` a data file and want DVC to stop
 tracking that file. Follow the steps listed here to undo `dvc add`.
 
 Let's first add a data file into an example <abbr>project</abbr> using
-`dvc add`, which creates a `.dvc` file to track the added data:
+`dvc add`, which creates a `.dvc` file to track the data:
 
 ```dvc
 $ dvc add data.csv
