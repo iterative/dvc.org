@@ -1,3 +1,7 @@
+---
+description: 'Get started with DVC!'
+---
+
 # Get Started
 
 Assuming DVC is already [installed](/doc/install), let's initialize it by

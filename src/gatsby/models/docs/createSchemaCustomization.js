@@ -11,7 +11,9 @@ async function createSchemaCustomization(api) {
       interfaces: ['Node'],
       fields: {
         ...markdownParentFields,
-        template: 'String'
+        template: 'String',
+        title: 'String',
+        description: 'String'
       }
     })
   ]

@@ -11,6 +11,8 @@ interface IDocPageProps {
   data: {
     page: {
       htmlAst: Node
+      title?: string
+      description?: string
     }
   }
   pageContext: {
@@ -24,14 +26,16 @@ const DocPage: React.FC<IDocPageProps> = ({
   pageContext: { slug, headings }
 }) => {
   const {
-    page: { htmlAst }
+    page: { htmlAst, title, description }
   } = data
 
   const { label } = getItemByPath(slug)
 
+  console.log({ title, description })
+
   return (
     <>
-      <SEO title={label} />
+      <SEO title={title || label} description={description} />
       <Documentation htmlAst={htmlAst} path={slug} headings={headings} />
     </>
   )
@@ -42,6 +46,8 @@ export default DocPage
 export const pageQuery = graphql`
   query DocPage($id: String!) {
     page: docsPage(id: { eq: $id }) {
+      title
+      description
       htmlAst
     }
   }
