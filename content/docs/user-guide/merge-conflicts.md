@@ -139,4 +139,4 @@ outs:
   - path: data.xml
 ```
 
-And then `dvc update` the `.dvc` file.
+And then `dvc pull` the import (`dvc.xml` in the example above).

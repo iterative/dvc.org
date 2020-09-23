@@ -21,7 +21,7 @@ DVC, by effectively replacing data files, models, directories with `.dvc` files
 files when you browse a <abbr>DVC repository</abbr> on Git hosting (e.g.
 GitHub), you just see the `dvc.yaml` and `.dvc` files. This makes it hard to
 navigate the project to find <abbr>data artifacts</abbr> for use with `dvc get`,
-`dvc import`, or `dvc.api`.
+`dvc import`, or `dvc.api` functions.
 
 `dvc list` prints a virtual view of a DVC repository, as if files and
 directories tracked by DVC were found directly in the remote Git repo. Only the

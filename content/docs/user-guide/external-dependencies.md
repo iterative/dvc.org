@@ -151,7 +151,7 @@ $ dvc run -n download_file \
 If instead of a URL you'd like to use an alias that can be managed
 independently, or if the external dependency location requires access
 credentials, you may use `dvc remote add` to define this location as a DVC
-Remote, and then use a special URL with format `remote://{remote_name}/{path}`
+remote, and then use a special URL with format `remote://{remote_name}/{path}`
 to define an external dependency.
 
 For example, for an HTTPs remote/dependency:
@@ -180,6 +180,9 @@ Importing 'https://data.dvc.org/get-started/data.xml' -> 'data.xml'
 
 The command above creates the import `.dvc` file `data.xml.dvc`, that contains
 an external dependency (in this case an HTTPs URL).
+
+The only difference is that `dvc fetch` and `dvc pull` won't look in
+[remote-storage]() for the data, but in it's original source.
 
 <details>
 
