@@ -192,6 +192,7 @@ such that the data in some of these stages should be updated in the
 
 ```dvc
 $ dvc status -c
+...
     deleted:            data/features/test.pkl
     deleted:            data/features/train.pkl
     deleted:            model.pkl

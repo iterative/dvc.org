@@ -149,12 +149,10 @@ adding new file:
 
 ```dvc
 $ dvc status
-
 Data and pipelines are up to date.
 
 $ mv data/data1 data/data3
 $ dvc status
-
 data.dvc:
 	changed outs:
 		modified:           data
