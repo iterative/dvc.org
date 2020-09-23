@@ -31,8 +31,6 @@ const DocPage: React.FC<IDocPageProps> = ({
 
   const { label } = getItemByPath(slug)
 
-  console.log({ title, description })
-
   return (
     <>
       <SEO title={title || label} description={description} />
