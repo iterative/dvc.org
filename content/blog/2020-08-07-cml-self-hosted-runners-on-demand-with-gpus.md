@@ -45,7 +45,7 @@ Here are some benefits of using CML with a self-hosted runner:
 
 3.  **Security.** If your repo is public your runners could be accesed by anyone
     that could add
-    [scripts that exploits your machine](https://docs.GitHub.com/en/actions/hosting-your-own-runners/about-self-hosted-runners#self-hosted-runner-security-with-public-repositories).
+    [scripts that exploits your machine](https://docs.github.com/en/actions/hosting-your-own-runners/about-self-hosted-runners#self-hosted-runner-security-with-public-repositories).
     With the containerised runner you are restricting the access to your real
     machine.
 
@@ -163,7 +163,7 @@ running with CML.
 There are still some limitations to be solved at this stage:
 
 - GitHub Actions
-  [can’t run a workflow longer than 72 hours](https://docs.GitHub.com/en/actions/getting-started-with-GitHub-actions/about-GitHub-actions#usage-limits).
+  [can’t run a workflow longer than 72 hours](https://docs.github.com/en/actions/getting-started-with-github-actions/about-github-actions#usage-limits).
 
 - Self-hosted runners
   [don’t behave well when they disconnect from the repo](https://GitLab.com/GitLab-org/GitLab/-/issues/229851#note_390371734),

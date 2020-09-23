@@ -179,7 +179,7 @@ a goldmine for ways to pitch in. For example:
 
 ![](/uploads/images/2020-01-17/odd_with_deevee.png 'Vera and team =500')_Vera
 (center, flashing a peace sign) thanked us with this lovely picture of DeeVee
-and her team, [Odd Industries](https://odd.co/en/)._
+and her team, [Odd Industries](https://odd.co)._
 
 If any of this sounds fun to you, please be in touch over
 [email](mailto:info@dvc.org) (and you can also reach us on
