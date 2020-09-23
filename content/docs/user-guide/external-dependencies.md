@@ -146,27 +146,6 @@ $ dvc run -n download_file \
 
 </details>
 
-## Example: DVC remote aliases
-
-If instead of a URL you'd like to use an alias that can be managed
-independently, or if the external dependency location requires access
-credentials, you may use `dvc remote add` to define this location as a DVC
-remote, and then use a special URL with format `remote://{remote_name}/{path}`
-to define an external dependency.
-
-For example, for an HTTPs remote/dependency:
-
-```dvc
-$ dvc remote add example https://example.com
-$ dvc run -n download_file \
-          -d remote://example/data.txt \
-          -o data.txt \
-          wget https://example.com/data.txt -O data.txt
-```
-
-Please refer to `dvc remote add` for more details like setting up access
-credentials for the different remotes.
-
 ## Example: `import-url` command
 
 In the previous examples, special downloading tools were used: `scp`,
@@ -181,8 +160,9 @@ Importing 'https://data.dvc.org/get-started/data.xml' -> 'data.xml'
 The command above creates the import `.dvc` file `data.xml.dvc`, that contains
 an external dependency (in this case an HTTPs URL).
 
-The only difference is that `dvc fetch` and `dvc pull` won't look in
-[remote-storage]() for the data, but in it's original source.
+⚠️ DVC won't push or pull imported data to
+[remote storage](/doc/command-reference/remote), it will rely on it's original
+source.
 
 <details>
 
@@ -208,11 +188,11 @@ determine whether the source has changed and we need to download the file again.
 
 </details>
 
-## Example: Using import
+## Example: Imports
 
 `dvc import` can download a <abbr>data artifact</abbr> from any <abbr>DVC
-project</abbr> or Git repository. It also creates an external dependency in its
-import `.dvc` file.
+project</abbr>, or any file from a Git repository. It also creates an external
+dependency in its import `.dvc` file.
 
 ```dvc
 $ dvc import git@github.com:iterative/example-get-started model.pkl
@@ -222,6 +202,10 @@ Importing 'model.pkl (git@github.com:iterative/example-get-started)'
 
 The command above creates `model.pkl.dvc`, where the external dependency is
 specified (with the `repo` field).
+
+⚠️ DVC won't push or pull imported data to
+[remote storage](/doc/command-reference/remote), it will rely on it's original
+source.
 
 <details>
 
@@ -246,3 +230,24 @@ The `url` and `rev_lock` subfields under `repo` are used to save the origin and
 [version](https://git-scm.com/docs/revisions) of the dependency, respectively.
 
 </details>
+
+## Example: DVC remote aliases
+
+If instead of a URL you'd like to use an alias that can be managed
+independently, or if the external dependency location requires access
+credentials, you may use `dvc remote add` to define this location as a DVC
+remote, and then use a special URL with format `remote://{remote_name}/{path}`
+to define an external dependency.
+
+For example, for an HTTPs remote/dependency:
+
+```dvc
+$ dvc remote add example https://example.com
+$ dvc run -n download_file \
+          -d remote://example/data.txt \
+          -o data.txt \
+          wget https://example.com/data.txt -O data.txt
+```
+
+Please refer to `dvc remote add` for more details like setting up access
+credentials for the different remotes.

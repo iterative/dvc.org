@@ -39,16 +39,16 @@ the data source. Both HTTP and SSH protocols are supported for online repos
 to an "offline" repo (if it's a DVC repo without a default remote, instead of
 downloading, DVC will try to copy the target data from its <abbr>cache</abbr>).
 
+⚠️ Online repos should have a default
+[DVC remote](/doc/command-reference/remote) containing the actual data for this
+command to work.
+
 The `path` argument is used to specify the location of the target to download
 within the source repository at `url`. `path` can specify any file or directory
 in the source repo, either tracked by DVC (including paths inside tracked
 directories) or by Git. Note that DVC-tracked targets must be found in a
 `dvc.yaml` or `.dvc` file of the repo. Chained imports (importing data that was
 imported into the source repo at `url`) are not supported, however.
-
-⚠️ The project should have a default
-[DVC remote](/doc/command-reference/remote), containing the actual data for this
-command to work.
 
 > See `dvc import-url` to download and track data from other supported locations
 > such as S3, SSH, HTTP, etc.
@@ -65,6 +65,10 @@ a Git server). In such a `.dvc` file, the `deps` field specifies the remote
 path in the <abbr>workspace</abbr>. It records enough metadata about the
 imported data to enable DVC efficiently determining whether the local copy is
 out of date.
+
+⚠️ DVC won't push or pull imported data to
+[remote storage](/doc/command-reference/remote), it will rely on it's original
+source.
 
 To actually [version the data](/doc/tutorials/get-started/data-versioning),
 `git add` (and `git commit`) the import stage.
