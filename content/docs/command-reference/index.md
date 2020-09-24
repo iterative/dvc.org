@@ -19,7 +19,7 @@ The typical DVC workflow goes as follows:
   input data or source code change.
 
 > 💡 To run any DVC command in a different directory, use
-> `dvc -C <path> command`.
+> `dvc --cd <path> command`.
 
 These command references provide a precise specification, complete description,
 and isolated usage examples for the `dvc` CLI tool. These are our most technical
