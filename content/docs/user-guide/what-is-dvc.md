@@ -1,10 +1,11 @@
 # What Is DVC?
 
-**Data Version Control** is a new type of data versioning, workflow and
-experiment management software, that builds upon [Git](https://git-scm.com/)
-(although it can work stand-alone). DVC reduces the gap between established
-engineering tool sets and data science needs, allowing users to take advantage
-of new [features](#core-features) while reusing existing skills and intuition.
+**Data Version Control** is a new type of data versioning, workflow and machine
+learning experiment management software, that builds upon
+[Git](https://git-scm.com/) (although it can work stand-alone). DVC reduces the
+gap between established engineering tool sets and data science needs, allowing
+users to take advantage of new [features](#core-features) while reusing existing
+skills and intuition.
 
 ![](/img/reproducibility.png) _DVC codifies data and ML experiments_
 
