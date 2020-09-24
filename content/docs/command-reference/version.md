@@ -14,7 +14,7 @@ usage: dvc version [-h] [-q | -v]
 
 | Line                                        | Detail                                                                                                                                                                |
 | ------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [`DVC version`](#components-of-dvc-version) | Version of DVC (along with a Git commit hash in case of a development version)                                                                                        |
+| [`DVC version`](#components-of-dvc-version) | Version of DVC (along with a Git commit hash if running a development version)                                                                                        |
 | `Python version`                            | Version of Python used in the environment where DVC is initialized                                                                                                    |
 | `Platform`                                  | Information about the operating system of the machine                                                                                                                 |
 | [`Binary`](#what-we-mean-by-binary)         | Shows whether DVC was installed from a package or from a binary release                                                                                               |
@@ -43,6 +43,8 @@ The detail of DVC version depends upon the way of installing DVC.
   constant
   [in our core repo](https://github.com/iterative/dvc/blob/master/dvc/version.py).
   For example `0.40.2`.
+
+  > 💡 To only get this number, use `dvc -V`.
 
 - **Development version**: `pip install git+git://github.com/iterative/dvc` will
   install DVC using the `master` branch of DVC's repository. Another way of
