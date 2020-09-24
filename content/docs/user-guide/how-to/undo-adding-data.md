@@ -38,8 +38,8 @@ $ git status
         data.csv
 ```
 
-You can run `dvc gc` with the `-w` option to remove the data from the cache that
-isn't referenced in the current workspace:
+You can run `dvc gc` with the `-w` option to remove the data that isn't
+referenced in the current workspace from the cache:
 
 ```dvc
 $ dvc gc -w
