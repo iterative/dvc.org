@@ -14,11 +14,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Dump GitHub context
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: echo "$GITHUB_CONTEXT"
-
       - id: build_check
         uses: LouisBrunner/checks-action@v1.0.0
         with:
