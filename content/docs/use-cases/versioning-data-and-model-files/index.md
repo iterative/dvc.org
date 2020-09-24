@@ -11,8 +11,8 @@ pull requests, etc.)
 
 To actually store the data, DVC uses a built-in <abbr>cache</abbr>, and supports
 synchronizing it with various types of
-[remote storage](/doc/command-reference/remote). This allows storing and sharing
-data easily, and alongside code.
+[remote storage](/doc/command-reference/remote). This allows for easy data and
+model versioning, storage, and sharing — right alongside code.
 
 ![](/img/model-versioning-diagram.png) _Code and data flows in DVC_
 
@@ -30,9 +30,9 @@ on-premises storage (e.g. SSH, NAS) as well as any major cloud storage provider
 ## DVC is not Git!
 
 DVC metafiles such as `dvc.yaml` and `.dvc` files serve as placeholders to track
-data files and directories (among other purposes). They point to specific data
-contents in the <abbr>cache</abbr>, providing the ability to store multiple data
-versions out-of-the-box.
+the version of data files and directories (among other purposes). They point to
+specific data contents in the <abbr>cache</abbr>, providing the ability to store
+multiple data versions out-of-the-box.
 
 Full-fledged
 [version control](https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control)
@@ -46,7 +46,7 @@ several other novel features (see [Get Started](/doc/start/) for a primer.)
 
 Let's say you have an empty <abbr>DVC repository</abbr> and put a dataset of
 images in the `images/` directory. You can start tracking it with `dvc add`.
-This generate a `.dvc` file, which can be committed to Git in order to save the
+This generates a `.dvc` file, which can be committed to Git in order to save the
 project's version:
 
 ```dvc
@@ -116,7 +116,8 @@ M       model.pkl
 ```
 
 However, we can checkout certain parts only, for example if we want to keep the
-latest source code and model but rewind to the previous dataset only:
+latest source code and model versions, but rewind to the previous version of the
+dataset:
 
 ```dvc
 $ git checkout v1.0 images.dvc
@@ -125,5 +126,5 @@ M       images
 ```
 
 DVC [optimizes](/doc/user-guide/large-dataset-optimization) this operation by
-avoiding copying files each time, so checking out data is quick even if you have
-large data files.
+avoiding copying files each time, so checking out data is quick even if you are
+versioning large data files.
