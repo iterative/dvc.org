@@ -136,8 +136,8 @@ API connections, and its
    the **Save** (scroll to bottom).
 
 5. From the left sidebar, select **Credentials**, and click the **Create
-   credentials** dropdown to select **OAuth client ID**. Chose **Other** and
-   click **Create** to proceed with a default client name.
+   credentials** dropdown to select **OAuth client ID**. Chose **Desktop app**
+   and click **Create** to proceed with a default client name.
 
    ![](/img/gdrive-create-credentials.png)
 
