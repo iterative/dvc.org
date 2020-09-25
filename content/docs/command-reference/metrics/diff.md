@@ -41,7 +41,7 @@ lists all the current metrics without comparisons.
 
 ## Options
 
-- `--targets <paths>` - limit command scope to these metric files. Using -R,
+- `--targets <paths>` - limit command scope to these metrics files (supports any file, even when not found as `metrics` in `dvc.yaml`). Using `-R`,
   directories to search metric files in can also be given. When specifying
   arguments for `--targets` before `revisions`, you should use `--` after this
   option's arguments, e.g.:
@@ -55,9 +55,6 @@ lists all the current metrics without comparisons.
   ```dvc
   $ dvc metrics diff HEAD v1 --targets t1.json t2.json
   ```
-
-  Note, that when using `--targets` it is possible to `diff` files that are not
-  specifically marked as metrics.
 
 - `-R`, `--recursive` - determines the metric files to use by searching each
   target directory and its subdirectories for DVC-files to inspect. If there are
