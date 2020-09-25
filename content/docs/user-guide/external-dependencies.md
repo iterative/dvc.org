@@ -160,10 +160,6 @@ Importing 'https://data.dvc.org/get-started/data.xml' -> 'data.xml'
 The command above creates the import `.dvc` file `data.xml.dvc`, that contains
 an external dependency (in this case an HTTPs URL).
 
-⚠️ DVC won't push or pull imported data to
-[remote storage](/doc/command-reference/remote), it will rely on it's original
-source.
-
 <details>
 
 ### Expand to see resulting `.dvc` file
@@ -202,10 +198,6 @@ Importing 'model.pkl (git@github.com:iterative/example-get-started)'
 
 The command above creates `model.pkl.dvc`, where the external dependency is
 specified (with the `repo` field).
-
-⚠️ DVC won't push or pull imported data to
-[remote storage](/doc/command-reference/remote), it will rely on it's original
-source.
 
 <details>
 
