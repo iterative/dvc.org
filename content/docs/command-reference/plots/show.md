@@ -22,8 +22,8 @@ This command provides a quick way to visualize metrics such as loss functions,
 AUC curves, confusion matrices, etc. All plots defined in `dvc.yaml` are used by
 default.
 
-Optionally, specific metric file `targets` to show are accepted. They do not not have to be specified as `plots`
-in `dvc.yaml`.
+Optionally, specific metric file `targets` to show are accepted. They do not not
+have to be specified as `plots` in `dvc.yaml`.
 
 The plot style can be customized with
 [plot templates](/doc/command-reference/plots#plot-templates), using the

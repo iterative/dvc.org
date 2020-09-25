@@ -45,8 +45,8 @@ please see `dvc plots`.
 
 ## Options
 
-- `--targets <path>` - specific metric files to visualize (supports any file, even when not found as `plots` in `dvc.yaml`).
-  When specifying arguments for
+- `--targets <path>` - specific metric files to visualize (supports any file,
+  even when not found as `plots` in `dvc.yaml`). When specifying arguments for
   `--targets` before `revisions`, you should use `--` after this option's
   arguments, e.g.:
 
