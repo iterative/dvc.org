@@ -12,9 +12,7 @@ $ ls
 data.csv    data.csv.dvc
 ```
 
-Now let's reverse this action:
-
-> Note,if you are using `symlink` or `hardlink` as
+> Note, if you are using `symlink` or `hardlink` as
 > [link](doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
 > type for DVC <abbr>cache</abbr>, you will have to unprotect the tracked file
 > first (see `dvc unprotect`):
@@ -23,8 +21,8 @@ Now let's reverse this action:
 > $ dvc unprotect data.csv
 > ```
 
-You'll need to remove the corresponding `.dvc` file and `.gitignore` entry using
-`dvc remove`:
+Now let's reverse `dvc add`. You'll need to remove the corresponding `.dvc` file
+and `.gitignore` entry using `dvc remove`:
 
 ```dvc
 $ dvc remove data.csv.dvc
