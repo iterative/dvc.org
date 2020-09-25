@@ -1,8 +1,8 @@
-# Tutorial: Data Versioning
+# Tutorial: Data & Model Versioning
 
 The goal of this example is to give you some hands-on experience with a basic
-machine learning version control scenario: working with multiple versions of
-datasets and ML models using DVC commands. We'll work with a
+machine learning version control scenario: managing multiple dataset and ML
+model versions using DVC commands. We'll work with a
 [tutorial](https://blog.keras.io/building-powerful-image-classification-models-using-very-little-data.html)
 that [François Chollet](https://twitter.com/fchollet) put together to show how
 to build a powerful image classifier using a pretty small dataset.
@@ -237,9 +237,9 @@ $ git commit -m "Second model, trained with 2000 images"
 $ git tag -a "v2.0" -m "model v2.0, 2000 images"
 ```
 
-That's it! We have tracked a second dataset, model, and metrics versioned DVC,
-and the DVC-files that point to them committed with Git. Let's now look at how
-DVC can help us go back to the previous version if we need to.
+That's it! We've tracked the second version of the dataset, model, and metrics
+in DVC and committed the DVC-files that point to them with Git. Now let's look
+at how DVC can help us go back to the previous version if we need to.
 
 ## Switching between workspace versions
 
@@ -338,15 +338,15 @@ changed. For example, when we added new images to built the second version of
 our model, that was a dependency change. It also updates outputs and puts them
 into the <abbr>cache</abbr>.
 
-To make things a little simpler: if `dvc add` and `dvc checkout` provide a basic
-mechanism to version control large data files or models, `dvc run` and
-`dvc repro` provide a build system for ML models, which is similar to
+To make things a little simpler: `dvc add` and `dvc checkout` provide a basic
+mechanism for model and large dataset versioning. `dvc run` and `dvc repro`
+provide a build system for machine learning models, which is similar to
 [Make](https://www.gnu.org/software/make/) in software build automation.
 
 ## What's next?
 
-In this example, our focus was on giving you hands-on experience with versioning
-ML models and datasets. We specifically looked at the `dvc add` and
+In this example, our focus was on giving you hands-on experience with dataset
+and ML model versioning. We specifically looked at the `dvc add` and
 `dvc checkout` commands. We'd also like to outline some topics and ideas you
 might be interested to try next to learn more about DVC and how it makes
 managing ML projects simpler.
