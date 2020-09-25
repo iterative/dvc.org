@@ -62,16 +62,16 @@ Another very relevant talk was from Anna Petrovicheva, CEO of
 and gave a clear overivew of how they use DVC.
 
 **DVC on the airwaves.** In early March, Elle was interviewed on an episode of
-[The Data Stream podcast](https://open.spotify.com/show/5w4sAKB0fT6lGCELZAMIBh)
-about a DVC data science project,
+[The Data Stream podcast](https://www.interviewquery.com/tag/podcast/) about a
+DVC data science project,
 [building a public dataset of posts](https://dvc.org/blog/a-public-reddit-dataset)
 from the "Am I the Asshole?" subreddit.
 
 <external-link
-href="https://open.spotify.com/episode/5JzIZLqnTF5aDh2B6UTemo?si=6LTQxq4xSDe0vhTpSLs1Jw"
+href="https://www.interviewquery.com/blog-who-is-the-asshole/"
 title="The Data Stream #3 - Who is the A-hole? With Elle"
 description="Ever wonder if it's possible to train a model to discover whether your friends are assholes or not? Today Elle comes on the show to talk about her project building a classifier to predict the results from reddit's hottest advice community: Am I the Asshole (or AITA for short)."
-link="spotify.com"
+link="interviewquery.com"
 image="/uploads/images/2020-04-06/data_stream.png"/>
 
 ## New releases
