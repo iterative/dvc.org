@@ -10,9 +10,9 @@ skills and intuition.
 ![](/img/reproducibility.png) _DVC codifies data and machine learning
 experiments_
 
-Using DVC, data scientists can apply a regular Git flow to ML project sharing
-and collaboration (commits, branching, pull requests, etc.), the same way it
-works for software engineers.
+Using DVC, data scientists can apply a regular Git flow to project sharing and
+collaboration (commits, branching, pull requests, etc.), the same way it works
+for software engineers.
 
 ## Core Features
 
