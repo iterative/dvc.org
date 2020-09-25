@@ -36,10 +36,9 @@ $ dvc pull
 $ ls <path>
 ```
 
-The `url` argument specifies the address of the Git repository containing the
-data source. Both HTTP and SSH protocols are supported for online repos (e.g.
-`[user@]server:project.git`). `url` can also be a local file system path to an
-"offline" Git repo.
+The `url` argument specifies the address of the DVC or Git repository containing
+the data source. Both HTTP and SSH protocols are supported (e.g.
+`[user@]server:project.git`). `url` can also be a local file system path.
 
 The optional `path` argument is used to specify a directory to list within the
 source repository at `url` (including paths inside tracked directories). It's
