@@ -106,6 +106,10 @@ up-to-date and only execute the final stage.
   subdirectories containing a separate pipeline that can either be reproduced as
   part of the pipeline in the parent directory, or as an independent unit.
 
+  > 💡 This feature is now supported for any DVC command with the `dvc --cd`
+  > flag. Use of `dvc repro -c` is deprecated and this option may be removed in
+  > future versions.
+
 - `-R`, `--recursive` - determines the stages to reproduce by searching each
   target directory (if any) and their subdirectories.
 
