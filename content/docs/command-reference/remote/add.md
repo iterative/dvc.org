@@ -159,11 +159,11 @@ For more information about the variables DVC supports, please visit
 ### Click for Microsoft Azure Blob Storage
 
 ```dvc
-$ dvc remote add -d myremote azure://mycontainer/path
+$ dvc remote add -d myremote azure://mycontainername
 $ dvc remote modify --local myremote connection_string \
                             'my-connection-string'
 ```
-
+> `mycontainername` is the name of the storage container created on azure.
 > The connection string contains sensitive user info. Therefore, it's safer to
 > add it with the `--local` option, so it's written to a Git-ignored config
 > file. See `dvc remote modify` for a full list of Azure storage parameters.
