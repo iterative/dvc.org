@@ -539,6 +539,15 @@ more information.
   $ dvc remote modify myremote gss_auth true
   ```
 
+- `allow_agent` - whether to connect to the SSH agent (default is true). Please
+  refer to
+  [Paramiko's documentation](http://docs.paramiko.org/en/stable/api/client.html?highlight=allow_agent#paramiko.client.SSHClient.connect)
+  for more information.
+
+  ```dvc
+  $ dvc remote modify myremote allow_agent true
+  ```
+
 </details>
 
 <details>
