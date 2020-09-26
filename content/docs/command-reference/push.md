@@ -149,9 +149,10 @@ Imagine the <abbr>project</abbr> has been modified such that the
 
 ```dvc
 $ dvc status --cloud
-  new:            data/model.p
-  new:            data/matrix-test.p
-  new:            data/matrix-train.p
+...
+    new:            data/model.p
+    new:            data/matrix-test.p
+    new:            data/matrix-train.p
 ```
 
 One could do a simple `dvc push` to share all the data, but what if you only
@@ -258,7 +259,6 @@ $ tree ~/vault/recursive
 10 directories, 10 files
 
 $ dvc status --cloud
-
 Data and pipelines are up to date.
 ```
 

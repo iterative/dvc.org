@@ -41,7 +41,7 @@ lists all the current metrics without comparisons.
 
 ## Options
 
-- `--targets <paths>` - limit command scope to these metric files. Using -R,
+- `--targets <paths>` - limit command scope to these metric files. Using `-R`,
   directories to search metric files in can also be given. When specifying
   arguments for `--targets` before `revisions`, you should use `--` after this
   option's arguments, e.g.:

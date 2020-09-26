@@ -34,21 +34,19 @@ updating the import later, if it has changed in its data source. (See
 > directories to import.
 
 The `url` argument specifies the address of the DVC or Git repository containing
-the data source. Both HTTP and SSH protocols are supported for online repos
-(e.g. `[user@]server:project.git`). `url` can also be a local file system path
-to an "offline" repo (if it's a DVC repo without a default remote, instead of
-downloading, DVC will try to copy the target data from its <abbr>cache</abbr>).
+the data source. Both HTTP and SSH protocols are supported (e.g.
+`[user@]server:project.git`). `url` can also be a local file system path.
 
 The `path` argument is used to specify the location of the target to download
 within the source repository at `url`. `path` can specify any file or directory
-in the source repo, either tracked by DVC (including paths inside tracked
-directories) or by Git. Note that DVC-tracked targets must be found in a
-`dvc.yaml` or `.dvc` file of the repo. Chained imports (importing data that was
-imported into the source repo at `url`) are not supported, however.
+tracked by either Git or DVC (including paths inside tracked directories). Note
+that DVC-tracked targets must be found in a `dvc.yaml` or `.dvc` file of the
+repo.
 
-⚠️ The project should have a default
-[DVC remote](/doc/command-reference/remote), containing the actual data for this
-command to work.
+⚠️ DVC repos should have a default [DVC remote](/doc/command-reference/remote)
+containing the target actual for this command to work. The only exception is for
+local repos, where DVC will try to copy the data from its <abbr>cache</abbr>
+first.
 
 > See `dvc import-url` to download and track data from other supported locations
 > such as S3, SSH, HTTP, etc.
@@ -66,6 +64,10 @@ path in the <abbr>workspace</abbr>. It records enough metadata about the
 imported data to enable DVC efficiently determining whether the local copy is
 out of date.
 
+⚠️ DVC won't push or pull imported data to/from
+[remote storage](/doc/command-reference/remote), it will rely on it's original
+source.
+
 To actually [version the data](/doc/tutorials/get-started/data-versioning),
 `git add` (and `git commit`) the import stage.
 
@@ -73,6 +75,9 @@ Note that import stages are considered always
 [frozen](/doc/command-reference/freeze), meaning that if you run `dvc repro`,
 they won't be updated. Use `dvc update` to update the downloaded data artifact
 from the source repo.
+
+Also note that chained imports (importing data that was imported into the source
+repo at `url`) are not supported.
 
 ## Options
 
@@ -112,9 +117,10 @@ Importing 'data/data.xml (git@github.com:iterative/example-get-started)'
 ```
 
 In contrast with `dvc get`, this command doesn't just download the data file,
-but it also creates an import stage (`.dvc` file) with a link to the data source
-(as explained in the description above). (This import stage can later be used to
-[update](/doc/command-reference/update) the import.) Check `data.xml.dvc`:
+but it also creates an <abbr>import stage</abbr> (`.dvc` file) with a link to
+the data source (as explained in the description above). (This import stage can
+later be used to [update](/doc/command-reference/update) the import.) Check
+`data.xml.dvc`:
 
 ```yaml
 md5: 7de90e7de7b432ad972095bc1f2ec0f8

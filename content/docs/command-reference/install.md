@@ -247,7 +247,6 @@ M       model.pkl
 M	data/features/
 
 $ dvc status
-
 Data and pipelines are up to date.
 ```
 
