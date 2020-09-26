@@ -146,6 +146,30 @@ $ dvc run -n download_file \
 
 </details>
 
+## Example: Using DVC remote aliases
+
+You may want to encapsulate external locations as configurable entities that can
+be managed independently. This is useful if multiple dependencies (or stages)
+reuse the same location, or if the location is likely to change in the future.
+And if the location requires authentication, you need a way to configuring it in
+order to access the data.
+
+[DVC remotes](/doc/command-reference/remote) can do just this. You may use
+`dvc remote add` to define them, and then use a special URL with format
+`remote://{remote_name}/{path}` (remote alias) to define the external
+dependency. For example (HTTPs location):
+
+```dvc
+$ dvc remote add example https://example.com
+$ dvc run -n download_file \
+          -d remote://example/data.txt \
+          -o data.txt \
+          wget https://example.com/data.txt -O data.txt
+```
+
+> Please refer to `dvc remote add` for more details like setting up access
+> credentials for the different remotes.
+
 ## Example: `import-url` command
 
 In the previous examples, special downloading tools were used: `scp`,
@@ -222,24 +246,3 @@ The `url` and `rev_lock` subfields under `repo` are used to save the origin and
 [version](https://git-scm.com/docs/revisions) of the dependency, respectively.
 
 </details>
-
-## Example: DVC remote aliases
-
-If instead of a URL you'd like to use an alias that can be managed
-independently, or if the external dependency location requires access
-credentials, you may use `dvc remote add` to define this location as a DVC
-remote, and then use a special URL with format `remote://{remote_name}/{path}`
-to define an external dependency.
-
-For example, for an HTTPs remote/dependency:
-
-```dvc
-$ dvc remote add example https://example.com
-$ dvc run -n download_file \
-          -d remote://example/data.txt \
-          -o data.txt \
-          wget https://example.com/data.txt -O data.txt
-```
-
-Please refer to `dvc remote add` for more details like setting up access
-credentials for the different remotes.
