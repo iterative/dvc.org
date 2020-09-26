@@ -150,9 +150,9 @@ $ dvc run -n download_file \
 
 You may want to encapsulate external locations as configurable entities that can
 be managed independently. This is useful if multiple dependencies (or stages)
-reuse the same location, or if the location is likely to change in the future.
-And if the location requires authentication, you need a way to configuring it in
-order to access the data.
+reuse the same location, or if its likely to change in the future. And if the
+location requires authentication, you need a way to configuring it in order to
+access the data.
 
 [DVC remotes](/doc/command-reference/remote) can do just this. You may use
 `dvc remote add` to define them, and then use a special URL with format
