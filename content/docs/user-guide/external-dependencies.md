@@ -151,24 +151,33 @@ $ dvc run -n download_file \
 You may want to encapsulate external locations as configurable entities that can
 be managed independently. This is useful if multiple dependencies (or stages)
 reuse the same location, or if its likely to change in the future. And if the
-location requires authentication, you need a way to configuring it in order to
-access the data.
+location requires authentication, you need a way to configure it in order to
+connect.
 
 [DVC remotes](/doc/command-reference/remote) can do just this. You may use
 `dvc remote add` to define them, and then use a special URL with format
 `remote://{remote_name}/{path}` (remote alias) to define the external
-dependency. For example (HTTPs location):
+dependency.
+
+Let's see an example using SSH. First, register and configure the remote:
 
 ```dvc
-$ dvc remote add example https://example.com
-$ dvc run -n download_file \
-          -d remote://example/data.txt \
-          -o data.txt \
-          wget https://example.com/data.txt -O data.txt
+$ dvc remote add myssh ssh://myserver.com
+$ dvc remote modify --local myssh user myuser
+$ dvc remote modify --local myssh password mypassword
 ```
 
 > Please refer to `dvc remote add` for more details like setting up access
-> credentials for the different remotes.
+> credentials for the different remote types.
+
+Now, use an alias to this remote when defining the stage:
+
+```dvc
+$ dvc run -n download_file \
+          -d remote://myssh/path/to/data.txt \
+          -o data.txt \
+          wget https://example.com/data.txt -O data.txt
+```
 
 ## Example: `import-url` command
 
