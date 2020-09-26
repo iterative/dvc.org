@@ -545,7 +545,7 @@ more information.
   for more information.
 
   ```dvc
-  $ dvc remote modify myremote allow_agent true
+  $ dvc remote modify myremote allow_agent false
   ```
 
 </details>
