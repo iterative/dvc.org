@@ -64,7 +64,7 @@ path in the <abbr>workspace</abbr>. It records enough metadata about the
 imported data to enable DVC efficiently determining whether the local copy is
 out of date.
 
-⚠️ DVC won't push or pull imported data to
+⚠️ DVC won't push or pull imported data to/from
 [remote storage](/doc/command-reference/remote), it will rely on it's original
 source.
 

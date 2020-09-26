@@ -112,7 +112,7 @@ $ dvc run -n download_data \
 `dvc import-url` generates an <abbr>import stage</abbr> `.dvc` file and
 `dvc run` a regular stage (in `dvc.yaml`).
 
-⚠️ DVC won't push or pull imported data to
+⚠️ DVC won't push or pull imported data to/from
 [remote storage](/doc/command-reference/remote), it will rely on it's original
 source.
 
