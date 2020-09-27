@@ -10,7 +10,9 @@ the import.
 ## Synopsis
 
 ```usage
-usage: dvc import [-h] [-q | -v] [-o <path>] [--file <filename>] [--rev <commit>] url path
+usage: dvc import [-h] [-q | -v]
+                  [-o <path>] [--file <filename>] [--rev <commit>]
+                  url path
 
 positional arguments:
   url              Location of DVC or Git repository to download from
