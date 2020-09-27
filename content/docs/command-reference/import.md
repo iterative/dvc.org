@@ -10,7 +10,9 @@ the import.
 ## Synopsis
 
 ```usage
-usage: dvc import [-h] [-q | -v] [-o <path>] [--rev <commit>] url path
+usage: dvc import [-h] [-q | -v]
+                  [-o <path>] [--file <filename>] [--rev <commit>]
+                  url path
 
 positional arguments:
   url              Location of DVC or Git repository to download from
@@ -85,6 +87,11 @@ repo at `url`) are not supported.
   workspace to place the downloaded file or directory (instead of using the
   current working directory). Directories specified in the path must already
   exist, otherwise this command will fail.
+
+- `--file <filename>` - specify a path and/or file name for the `.dvc` file
+  created by this command (e.g. `--file stages/stage.dvc`). This overrides the
+  default file name: `<file>.dvc`, where `<file>` is the desired file name of
+  the imported data (`out`).
 
 - `--rev <commit>` - commit hash, branch or tag name, etc. (any
   [Git revision](https://git-scm.com/docs/revisions)) of the repository to
