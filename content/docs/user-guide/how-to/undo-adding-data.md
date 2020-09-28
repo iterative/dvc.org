@@ -21,8 +21,8 @@ data.csv    data.csv.dvc
 > $ dvc unprotect data.csv
 > ```
 
-Now let's reverse `dvc add`. You'll need to remove the corresponding `.dvc` file
-and `.gitignore` entry using `dvc remove`:
+Now let's reverse `dvc add` by removing the corresponding `.dvc` file and
+`.gitignore` entry using `dvc remove`:
 
 ```dvc
 $ dvc remove data.csv.dvc
