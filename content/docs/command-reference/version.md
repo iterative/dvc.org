@@ -40,7 +40,7 @@ The detail of DVC version depends upon the way of installing DVC.
   reported with the official build can be traced using the `_BASE_VERSION`
   constant
   [in our core repo](https://github.com/iterative/dvc/blob/master/dvc/version.py).
-  For example `1.7.2`.
+  For example `1.7.4`.
 
   > 💡 To only get this number, use `dvc -V`.
 
