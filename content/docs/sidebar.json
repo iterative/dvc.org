@@ -98,7 +98,12 @@
           "katacoda": "https://katacoda.com/dvc/courses/examples/dvcignore"
         }
       },
-      "updating-tracked-files",
+      {
+        "label": "How To",
+        "slug": "how-to",
+        "source": false,
+        "children": ["undo-adding-data", "update-tracked-files"]
+      },
       "setup-google-drive-remote",
       "large-dataset-optimization",
       "external-dependencies",

@@ -60,6 +60,9 @@ files that can be easily tracked with Git.
 It's possible to prevent files or directories from being added by DVC by adding
 the corresponding patterns in a [`.dvcignore`](/doc/user-guide/dvcignore) file.
 
+You can also [undo `dvc add`](/docs/user-guide/how-to/undo-adding-data) to stop
+tracking files or directories.
+
 By default, DVC tries to use reflinks (see
 [File link types](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
 to avoid copying any file contents and to optimize `.dvc` file operations for
