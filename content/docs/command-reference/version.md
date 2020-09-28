@@ -53,7 +53,7 @@ The detail of DVC version depends upon the way of installing DVC.
   to publish yet. Therefore, installing with this method might result in usage
   issues. To trace any error reported with this setup, we need to know exactly
   which version is being used. For this we rely on a Git commit hash that is
-  displayed in the output of `dvc version` like this: `1.7.2+292cab.mod`. The
+  displayed in the output of `dvc version` like this: `1.7.4+292cab.mod`. The
   part before `+` is the `_BASE_VERSION`, and the following part is the commit
   hash of the tip of the `master` branch. The optional suffix `.mod` means that
   code is modified.
