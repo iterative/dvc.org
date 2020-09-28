@@ -142,5 +142,5 @@ outs:
 And then `dvc update` the `.dvc` file to download the latest data from its
 original source.
 
-> Note that updating will bring in the latest version of the data found in its
+> Note that updating will bring in the latest version of the data from its
 > source, which may not correspond with any of the hashes that was removed.
