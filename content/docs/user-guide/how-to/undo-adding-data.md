@@ -13,9 +13,9 @@ data.csv    data.csv.dvc
 ```
 
 > Note, if you are using `symlink` or `hardlink` as
-> [link](doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
-> type for DVC <abbr>cache</abbr>, you will have to unprotect the tracked file
-> first (see `dvc unprotect`):
+> [link type](doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
+> for DVC <abbr>cache</abbr>, you will have to unprotect the tracked file first
+> (see `dvc unprotect`):
 >
 > ```dvc
 > $ dvc unprotect data.csv
