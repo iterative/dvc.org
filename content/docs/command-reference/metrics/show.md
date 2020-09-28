@@ -22,11 +22,11 @@ Finds and prints all metrics in the <abbr>project</abbr> by examining all of its
 > This kind of metrics can be defined with the `-m` (`--metrics`) and `-M`
 > (`--metrics-no-cache`) options of `dvc run`.
 
-If `targets` are provided, it will show those specific files instead, even if
-they are not marked as `metric` type in `dvc.yaml`. With the `-a` or `-T`
-options, this command shows the different metrics values across all Git branches
-or tags, respectively. With the `-R` option, some of the target can even be
-directories, so that DVC recursively shows all metric files inside.
+If `targets` are provided, it will show those specific files instead (supports
+any valid metrics, even when not found as `metrics` in `dvc.yaml`). With the
+`-a` or `-T` options, this command shows the different metrics values across all
+Git branches or tags, respectively. Using `-R`, directories to search for
+metrics files can also be given.
 
 An alternative way to display metrics is the `dvc metrics diff` command, which
 compares them with a previous version.
