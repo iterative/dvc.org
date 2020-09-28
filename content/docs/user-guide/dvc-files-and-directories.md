@@ -25,13 +25,13 @@ Git-enabled <abbr>repositories</abbr>).
 
 ## `.dvc` files
 
-When you add a file or directory to a <abbr>DVC project</abbr> with `dvc add` or
-`dvc import`, a `.dvc` file is created based on the data file name (e.g.
-`data.xml.dvc`). These files contain the information needed to track the data
-with DVC.
+When you add a file or directory to a <abbr>DVC project</abbr> with `dvc add`,
+`dvc import`, or `dvc import-url`, a `.dvc` file is created based on the data
+file name (e.g. `data.xml.dvc`). These files contain the information needed to
+track the data with DVC.
 
 They use a simple [YAML](https://yaml.org/) format, meant to be easy to read,
-edit, or even created manually by users. Here is a full sample:
+edit, or even created manually. Here is a sample:
 
 ```yaml
 outs:
@@ -50,11 +50,13 @@ meta:
   that represent the files or directories tracked with DVC. Typically there is
   only one (but several can be added or combined manually).
 - `deps`: List of <abbr>dependency</abbr> entries (details below). Only present
-  when `dvc import` and `dvc import-url` are used to generate this `.dvc` file.
+  when `dvc import` or `dvc import-url` are used to generate this `.dvc` file.
   Typically there is only one (but several can be added manually).
 - `wdir`: Working directory for the `outs` and `deps` paths (relative to the
   `.dvc` file's location). If this field is not present explicitly, it defaults
   to `.` (the `.dvc` file's location).
+- `md5`: (only for <abbr>imports</abbr>) MD5 hash of the import `.dvc` file
+  itself.
 - `meta` (optional): Arbitrary metadata can be added manually with this field.
   Any YAML contents is supported. `meta` contents are ignored by DVC, but they
   can be meaningful for user processes that read `.dvc` files.
