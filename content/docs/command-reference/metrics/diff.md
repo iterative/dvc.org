@@ -43,7 +43,7 @@ lists all the current metrics without comparisons.
 
 - `--targets <paths>` - limit command scope to these files (supports any valid
   metrics, even when not found as `metrics` in `dvc.yaml`). Using `-R`,
-  directories to search for metrics files can also be given.
+  directories to search for metrics can also be given.
   
   When specifying arguments for `--targets` before `revisions`, you should use
   `--` after this option's arguments, e.g.:
