@@ -15,7 +15,7 @@ usage: dvc version [-h] [-q | -v]
 | Line                                        | Detail                                                                                                                                                                |
 | ------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [`DVC version`](#components-of-dvc-version) | Version of DVC (along with a Git commit hash in case of a development version) and name of the package manager (`pip`, `conda`, etc.) or binary used to install DVC   |
-| `Platform`                                  | Version of Python used in the environment where DVC is initialized and information about the operating system of the machine                                          |
+| `Platform`                                  | Version of Python in the environment where DVC is initialized, and information about the operating system                                                             |
 | `Supports`                                  | Shows remote types that have all needed dependencies installed                                                                                                        |
 | `Cache types`                               | [Type of links](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache) supported between the <abbr>workspace</abbr> and the <abbr>cache</abbr> |
 | `Cache directory`                           | Shows the filesystem type (eg. ext4, FAT, etc.) and mount point of the <abbr>cache</abbr> directory                                                                   |
