@@ -12,15 +12,15 @@ usage: dvc version [-h] [-q | -v]
 
 `dvc version` outputs the following information about the system/environment:
 
-| Line                                        | Detail                                                                                                                                                                |
-| ------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [`DVC version`](#components-of-dvc-version) | Version of DVC (along with a Git commit hash in case of a development version) and name of the package manager (`pip`, `conda`, etc.) or binary used to install DVC   |
-| `Platform`                                  | Version of Python in the environment where DVC is initialized, and information about the operating system                                                             |
-| `Supports`                                  | Shows remote types that have all needed dependencies installed                                                                                                        |
-| `Cache types`                               | [Type of links](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache) supported (between <abbr>workspace</abbr> and <abbr>cache</abbr>        |
-| `Cache directory`                           | Shows the filesystem type (eg. ext4, FAT, etc.) and mount point of the <abbr>cache</abbr> directory                                                                   |
-| `Workspace directory`                       | Shows the filesystem type and mount point of the <abbr>workspace</abbr> directory                                                                                     |
-| `Repo`                                      | Shows whether we are in a DVC repo and/or Git repo                                                                                                                    |
+| Line                                        | Detail                                                                                                                                                              |
+| ------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [`DVC version`](#components-of-dvc-version) | Version of DVC (along with a Git commit hash in case of a development version) and name of the package manager (`pip`, `conda`, etc.) or binary used to install DVC |
+| `Platform`                                  | Version of Python in the environment where DVC is initialized, and information about the operating system                                                           |
+| `Supports`                                  | Shows remote types that have all needed dependencies installed                                                                                                      |
+| `Cache types`                               | [Type of links](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache) supported (between <abbr>workspace</abbr> and <abbr>cache</abbr>      |
+| `Cache directory`                           | Shows the filesystem type (eg. ext4, FAT, etc.) and mount point of the <abbr>cache</abbr> directory                                                                 |
+| `Workspace directory`                       | Shows the filesystem type and mount point of the <abbr>workspace</abbr> directory                                                                                   |
+| `Repo`                                      | Shows whether we are in a DVC repo and/or Git repo                                                                                                                  |
 
 > If `dvc version` is executed outside a DVC project, neither `Cache` nor
 > `Workspace` info is printed.
