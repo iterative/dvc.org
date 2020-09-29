@@ -125,8 +125,8 @@ that.
   instead of a human-readable table.
 
 - `--all-commits` - same as `-a` or `-T` above, but applies to _all_ Git commits
-  as well as the workspace. Useful for comparing cache content for the entire
-  existing commit history of the project.
+  as well as the workspace. This compares the cache content for the entire
+  commit history of the project.
 
 - `-d`, `--with-deps` - determines files to check by tracking dependencies to
   the `targets`. If none are provided, this option is ignored. By traversing all

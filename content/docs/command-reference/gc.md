@@ -66,8 +66,8 @@ The default remote is cleaned (see `dvc config core.remote`) unless the
   example using the `-aT` flag.
 
 - `--all-commits` - same as `-a` or `-T` above, but applies to _all_ Git commits
-  as well as the workspace (implies `-w`). Useful for keeping all the data used
-  in the entire existing commit history of the project.
+  as well as the workspace (implies `-w`). This keeps all the data used in the
+  entire commit history of the project.
 
   A use case for this option is to safely delete all temporary data `dvc run`
   and/or `dvc repro` cache when used without committing changes (see the `-O` or

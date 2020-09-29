@@ -89,8 +89,8 @@ used to see what files `dvc pull` would download.
   `-aT` flag.
 
 - `--all-commits` - same as `-a` or `-T` above, but applies to _all_ Git commits
-  as well as the workspace. Useful for downloading all the data used in the
-  entire existing commit history of the project.
+  as well as the workspace. This downloads tracked data for the entire commit
+  history of the project.
 
 - `-d`, `--with-deps` - determines files to download by tracking dependencies to
   the `targets`. If none are provided, this option is ignored. By traversing all
