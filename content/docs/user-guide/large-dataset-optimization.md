@@ -100,8 +100,8 @@ efficiency:
 
 > DVC avoids `symlink` and `hardlink` types by default to protect user from
 > accidental cache corruption. Refer to the
-> [Update a Tracked File](/doc/user-guide/updating-tracked-files) guide to learn
-> more.
+> [Update a Tracked File](/doc/user-guide/how-to/updated-tracked-files) guide to
+> learn more.
 
 ## Configuring DVC cache file link type
 
@@ -117,9 +117,9 @@ $ dvc config cache.type hardlink,symlink
 > Refer to `dvc config cache` for more details.
 
 Note that with this `cache.type`, your workspace files will be in read-only mode
-in order to protect the cache from corruption. Please refer to the
-[Update a Tracked File](/doc/user-guide/updating-tracked-files) on how to manage
-tracked files under these cache configurations.
+in order to protect the cache from corruption. Please refer to
+[Update a Tracked File](/doc/user-guide/how-to/updated-tracked-files) on how to
+manage tracked files under these cache configurations.
 
 To make sure that the data files in the workspace are consistent with the
 <abbr>project</abbr>'s `cache.type` config value, you may use

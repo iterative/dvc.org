@@ -34,8 +34,8 @@ Note that in the case of `.dvc` file `targets`, the tracked files or directories
 `dvc gc`). However, remember to run `dvc push` to save the files you actually
 want to use or share in the future.
 
-Refer to [Updating Tracked Files](/doc/user-guide/updating-tracked-files) to see
-how it can be used to replace or modify files that are tracked by DVC.
+Refer to [Updating Tracked Files](/doc/user-guide/how-to/updated-tracked-files)
+to see how it can be used to replace or modify files that are tracked by DVC.
 
 ## Options
 
