@@ -11,7 +11,7 @@ specific version of a model? How do I reuse datasets across different projects?
 > instead of the original files, name such as `model.pkl` or `data.xml`.
 
 Remember those `.dvc` files `dvc add` generates? Those files (and `dvc.lock`
-that we'll cover later), their history in Git, DVC remote storage config saved
+that we'll cover later), have their history in Git, DVC remote storage config saved
 in Git contain all the information needed to access and download any version of
 datasets, files, and models. It means that Git repository with DVC files becomes
 an entry point and can be used instead of accessing files directly.
