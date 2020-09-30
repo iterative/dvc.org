@@ -143,10 +143,10 @@ $ dvc run -n train -d logs/ -o users.csv \
           python train.py
 ```
 
-## Examples: Print all parameter values in the workspace
+## Examples: Print all parameters
 
 Following the previous example, we can use `dvc params diff` to list all of the
-available param values:
+param values available in the <abbr>workspace</abbr>:
 
 ```dvc
 $ dvc params diff
@@ -159,6 +159,5 @@ params.yaml  train.layers    None   9
 ```
 
 This command shows the difference in parameters between the workspace and the
-last committed version of the `params.yaml` file. In our example, there's no
-previous version, which is why all `Old` values are `None`. See `params diff` to
-learn more about the `diff` command.
+last committed version of the `params.yaml` file. In our example there's no
+previous version, which is why all `Old` values are `None`.

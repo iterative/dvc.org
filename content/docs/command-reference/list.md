@@ -21,7 +21,7 @@ DVC, by effectively replacing data files, models, directories with `.dvc` files
 files when you browse a <abbr>DVC repository</abbr> on Git hosting (e.g.
 GitHub), you just see the `dvc.yaml` and `.dvc` files. This makes it hard to
 navigate the project to find <abbr>data artifacts</abbr> for use with `dvc get`,
-`dvc import`, or `dvc.api`.
+`dvc import`, or `dvc.api` functions.
 
 `dvc list` prints a virtual view of a DVC repository, as if files and
 directories tracked by DVC were found directly in the remote Git repo. Only the
@@ -36,10 +36,9 @@ $ dvc pull
 $ ls <path>
 ```
 
-The `url` argument specifies the address of the Git repository containing the
-data source. Both HTTP and SSH protocols are supported for online repos (e.g.
-`[user@]server:project.git`). `url` can also be a local file system path to an
-"offline" Git repo.
+The `url` argument specifies the address of the DVC or Git repository containing
+the data source. Both HTTP and SSH protocols are supported (e.g.
+`[user@]server:project.git`). `url` can also be a local file system path.
 
 The optional `path` argument is used to specify a directory to list within the
 source repository at `url` (including paths inside tracked directories). It's

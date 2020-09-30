@@ -101,8 +101,8 @@ The default remote is used (see
   `-aT` flag.
 
 - `--all-commits` - same as `-a` or `-T` above, but applies to _all_ Git commits
-  as well as the workspace. Useful for downloading all the data used in the
-  entire existing commit history of the project.
+  as well as the workspace. This downloads tracked data for the entire commit
+  history of the project.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -154,8 +154,8 @@ into our local <abbr>cache</abbr>.
 ```dvc
 $ dvc status --cloud
 ...
-  deleted:            data/features/train.pkl
-  deleted:            model.pkl
+    deleted:            data/features/train.pkl
+    deleted:            model.pkl
 
 $ dvc fetch
 

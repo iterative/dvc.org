@@ -109,8 +109,12 @@ $ dvc run -n download_data \
           wget https://data.dvc.org/get-started/data.xml -O data.xml
 ```
 
-`dvc import-url` generates an import stage `.dvc` file and `dvc run` a regular
-stage (in `dvc.yaml`).
+`dvc import-url` generates an <abbr>import stage</abbr> `.dvc` file and
+`dvc run` a regular stage (in `dvc.yaml`).
+
+⚠️ DVC won't push or pull imported data to/from
+[remote storage](/doc/command-reference/remote), it will rely on it's original
+source.
 
 ## Options
 

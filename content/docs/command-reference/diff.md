@@ -1,6 +1,6 @@
 # diff
 
-Show added, modified, or deleted DVC-tracked files and directories between
+Show added, modified, or deleted DVC-tracked files and directories between two
 commits in the <abbr>DVC repository</abbr>, or between a commit and the
 workspace.
 
@@ -26,8 +26,8 @@ name, Git commit hash, etc.
 It defaults to comparing the current workspace and the last commit (`HEAD`), if
 arguments `a_rev` and `b_rev` are not specified.
 
-Options `--show-json` and `--show-hash` can be used to modify format and details
-of the output produced. See the [Options](#options) and [Examples](#examples)
+Options `--show-json` and `--show-hash` can be used to modify format of the
+output of this command. See the [Options](#options) and [Examples](#examples)
 sections below for more details.
 
 `dvc diff` does not have an effect when the repository is not tracked by Git,
@@ -43,14 +43,13 @@ for example when `dvc init` was used with the `--no-scm` option.
 
 ## Options
 
-- `--show-json` - generate output in JSON format. Usually needed to integrate
-  DVC into scripts.
+- `--show-json` - prints the command's output in easily parsable JSON format,
+  instead of a human-readable table.
+
+- `--show-md` - prints the command's output in Markdown table format.
 
 - `--show-hash` - print file and directory hash values along with their path.
   Useful for debug purposes.
-
-- `--show-md` - print the list of files and directories with their status in the
-  Markdown table format.
 
 - `--hide-missing` - do not list data missing from both workspace and cache
   (`not in cache`). Only list files and directories which have been expliclity

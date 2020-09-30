@@ -159,7 +159,7 @@ these settings, you could use the following options.
   $ dvc remote modify myremote listobjects true
   ```
 
-- `sse` - server-side encryption algorithm to use (e.g., AES256, aws:kms). By
+- `sse` - server-side encryption algorithm to use (e.g. AES256, aws:kms). By
   default, no encryption is used.
 
   ```dvc
@@ -537,6 +537,14 @@ more information.
 
   ```dvc
   $ dvc remote modify myremote gss_auth true
+  ```
+
+- `allow_agent` - whether to use [SSH agents](https://www.ssh.com/ssh/agent)
+  (`true` by default). Setting this to `false` is useful when `ssh-agent` is
+  causing problems, such as a "No existing session" error:
+
+  ```dvc
+  $ dvc remote modify myremote allow_agent false
   ```
 
 </details>

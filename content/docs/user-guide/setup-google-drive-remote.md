@@ -50,6 +50,9 @@ folder i.e. `gdrive://<base>/path/to/folder`. The base can be one of:
    and [shared drives](https://support.google.com/a/users/answer/9310351)\*
    (these two can only be referenced by ID).
 
+   > ⚠️ The folder in question should be shared to specific users (or groups) so
+   > they can use it with DVC. "Anyone with a link" is not guaranteed to work.
+
    ```dvc
    $ dvc remote add myremote gdrive://0AIac4JZqHhKmUk9PDA
    ```
@@ -133,8 +136,8 @@ API connections, and its
    the **Save** (scroll to bottom).
 
 5. From the left sidebar, select **Credentials**, and click the **Create
-   credentials** dropdown to select **OAuth client ID**. Chose **Other** and
-   click **Create** to proceed with a default client name.
+   credentials** dropdown to select **OAuth client ID**. Chose **Desktop app**
+   and click **Create** to proceed with a default client name.
 
    ![](/img/gdrive-create-credentials.png)
 

@@ -125,8 +125,8 @@ that.
   instead of a human-readable table.
 
 - `--all-commits` - same as `-a` or `-T` above, but applies to _all_ Git commits
-  as well as the workspace. Useful for comparing cache content for the entire
-  existing commit history of the project.
+  as well as the workspace. This compares the cache content for the entire
+  commit history of the project.
 
 - `-d`, `--with-deps` - determines files to check by tracking dependencies to
   the `targets`. If none are provided, this option is ignored. By traversing all
@@ -160,11 +160,11 @@ bar.dvc:
                 modified:      bar
         changed outs:
                 not in cache:      foo
-foo.dvc
+foo.dvc:
         changed outs:
                 deleted:      foo
         changed checksum
-prepare.dvc
+prepare.dvc:
         changed outs:
                 new:      bar
         always changed
@@ -180,11 +180,11 @@ This shows that for stage `bar.dvc`, the dependency `foo` and the
 
 ```dvc
 $ dvc status foo.dvc dobar
-foo.dvc
+foo.dvc:
   changed outs:
           deleted:      foo
   changed checksum
-dobar
+dobar:
   changed deps:
           modified:      bar
   changed outs:
@@ -220,7 +220,7 @@ $ dvc status model.p
 Data and pipelines are up to date.
 
 $ dvc status model.p --with-deps
-matrix-train.p
+matrix-train.p:
     changed deps:
             modified:  code/featurization.py
 ```
@@ -243,10 +243,11 @@ remote yet:
 
 ```dvc
 $ dvc status --remote storage
-new:      data/model.p
-new:      data/eval.txt
-new:      data/matrix-train.p
-new:      data/matrix-test.p
+...
+  new:      data/model.p
+  new:      data/eval.txt
+  new:      data/matrix-train.p
+  new:      data/matrix-test.p
 ```
 
 The output shows where the location of the remote storage is, as well as any
