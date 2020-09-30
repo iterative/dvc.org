@@ -18,8 +18,8 @@ usage: dvc version [-h] [-q | -v]
 | `Platform`                                  | Version of Python in the environment where DVC is initialized, and information about the operating system                                                            |
 | `Supports`                                  | Type of [remote storages](/doc/command-reference/remote/add#supported-storage-types) that are supported (their required dependencies are installed)                  |
 | `Cache types`                               | [Type of links](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache) supported (between <abbr>workspace</abbr> and <abbr>cache</abbr>)      |
-| `Cache directory`                           | Filesystem type (e.g., ext4, FAT, etc.) and drive on which the <abbr>cache</abbr> directory is mounted                                                               |
-| `Workspace directory`                       | Filesystem type (e.g., ext4, FAT, etc.) and drive on which the <abbr>workspace</abbr> directory is mounted                                                           |
+| `Cache directory`                           | Filesystem type (e.g. ext4, FAT, etc.) and drive on which the <abbr>cache</abbr> directory is mounted                                                               |
+| `Workspace directory`                       | Filesystem type (e.g. ext4, FAT, etc.) and drive on which the <abbr>workspace</abbr> directory is mounted                                                           |
 | `Repo`                                      | Shows whether we are in a DVC repo and/or Git repo                                                                                                                   |
 
 > If `dvc version` is executed outside a DVC project, neither `Cache` nor
