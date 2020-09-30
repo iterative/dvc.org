@@ -23,7 +23,7 @@ jobs:
 
       - name: Run Link Check
         id: check
-        uses: 'iterative/link-check.action@v0.6'
+        uses: 'iterative/link-check.action@v0.7'
         with:
           diff: true
           configFile: 'config/link-check/config.yml'
