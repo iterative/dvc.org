@@ -11,11 +11,15 @@ Unfortunately, versioning tools like [Git](https://git-scm.com/) are designed to
 handle small text files. DVC begins by enabling the [tracking](#how-it-looks) of
 large datasets and other <abbr>data artifacts</abbr> by replacing them with
 small, human-readable [metafiles](/doc/user-guide/dvc-files-and-directories)
-that `git` can handle. The data itself is <abbr>cached</abbr> locally, outside
-of Git.
+that `git` can handle. The data itself is <abbr>cached</abbr> outside of Git.
+Other features of DVC build upon this foundation to tackle hurdles specific to
+data science.
 
-Another limitation of source code management is that, while other assets can
-exist in the Git repository, storage is limited by hosting services
+> 💡 Please see [Get Started](/doc/start) for a primer on all of DVC's features.
+
+Another limitation of source code management is storage. While some data and
+binary assets can exist in the Git repository, it's not usually recommended. And
+storage is severely limited by hosting services
 [like GitHub](https://docs.github.com/en/github/managing-large-files/what-is-my-disk-quota).
 DVC addresses this problem by integrating with
 [dedicated storage](#versioned-storage) platforms.
