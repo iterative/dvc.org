@@ -16,8 +16,10 @@ repository would have all the metadata and history of changes in the different
 datasets. We could see who updated what and when, and use pull requests to
 update data, the same way we do with code.
 
-This is what we call a **data registry** — a kind of data management
-_middleware_ between ML projects and cloud storage. Here are its advantages:
+That's a **data registry**: a data management _middleware_ between ML projects
+and cloud storage.
+
+## Summary of advantages
 
 - Reusability: reproduce and organize _feature stores_ with a simple CLI
   (`dvc get` and `dvc import` commands, similar to software package management
