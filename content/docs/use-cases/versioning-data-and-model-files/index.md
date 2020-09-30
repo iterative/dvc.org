@@ -4,10 +4,10 @@
 
 [Version control](https://en.wikipedia.org/wiki/Version_control) has become a
 staple in software engineering because it allows effective collaboration on
-source code. This means having a change history to go back (commits), developing
-features in parallel (branching), assisted merging, peer-reviews (pull
-requests), tagging key revisions, etc. Imagine if we could use these features in
-data modeling!
+source code. This means having a change history to traverse (commits),
+developing parallel features (branching and merging), peer-reviews (pull
+requests), release management, etc. Imagine using these features for data
+engineering and machine learning!
 
 Unfortunately, versioning tools like [Git](https://git-scm.com/) are designed to
 handle small text files. And while other assets can exist in the repository,
