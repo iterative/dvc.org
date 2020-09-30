@@ -11,24 +11,10 @@ engineering and machine learning!
 
 Unfortunately, versioning tools like [Git](https://git-scm.com/) are designed to
 handle small text files. And while other assets can exist in the repository,
-storage is limited by hosting services
+[storage](#versioned-storage) is limited by hosting services
 [like GitHub](https://docs.github.com/en/github/managing-large-files/what-is-my-disk-quota).
 
-What if we could **combine versioning features with data storage** like
-traditional hard drives, NAS, or cloud services like Amazon S3 and Google Drive?
-
-![](/img/model-versioning-diagram.png) _DVC's hybrid versioned storage_
-
 <!-- Why DVC -->
-
-DVC brings the best of both worlds together by replacing the data with small,
-human-readable [metafiles](/doc/user-guide/dvc-files-and-directories) that Git
-can handle. The data itself is <abbr>cached</abbr> locally, outside of the Git
-repo, and can be easily synchronized with on-premises or cloud storage for
-sharing.
-
-> Note that [remote storage](/doc/command-reference/remote) is optional in DVC:
-> no server setup or special services are needed, just the `dvc` command.
 
 ## Summary of advantages
 
@@ -49,6 +35,22 @@ sharing.
   [DVC metafiles](/doc/user-guide/dvc-files-and-directories) allows us to audit
   data changes. And using cloud storage, data access control can be setup per
   user or project.
+
+## Versioned storage
+
+What if we could **combine versioning features with data storage** like
+traditional hard drives, NAS, or cloud services like Amazon S3 and Google Drive?
+DVC brings together the best of both worlds by replacing data with small,
+human-readable [metafiles](/doc/user-guide/dvc-files-and-directories) that Git
+can handle. The data itself is <abbr>cached</abbr> locally, outside of the Git
+repo, and can be easily synchronized with on-premises or cloud storage for
+sharing.
+
+![](/img/model-versioning-diagram.png) _DVC's hybrid versioned storage_
+
+> Note that [remote storage](/doc/command-reference/remote) is optional in DVC:
+> no server setup or special services are needed, just the `dvc` command-line
+> tool.
 
 ## How it looks
 
