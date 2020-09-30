@@ -1,7 +1,5 @@
 # Versioning Data and Model Files
 
-<!-- Motivation -->
-
 [Version control](https://en.wikipedia.org/wiki/Version_control) has become a
 staple in software engineering because it allows effective collaboration on
 source code. This means having a change history to traverse (commits),
@@ -10,11 +8,17 @@ requests), release management, etc. Imagine using these features for data
 engineering and machine learning!
 
 Unfortunately, versioning tools like [Git](https://git-scm.com/) are designed to
-handle small text files. And while other assets can exist in the repository,
-[storage](#versioned-storage) is limited by hosting services
-[like GitHub](https://docs.github.com/en/github/managing-large-files/what-is-my-disk-quota).
+handle small text files. DVC begins by enabling the [tracking](#how-it-looks) of
+large datasets and other <abbr>data artifacts</abbr> by replacing them with
+small, human-readable [metafiles](/doc/user-guide/dvc-files-and-directories)
+that `git` can handle. The data itself is <abbr>cached</abbr> locally, outside
+of Git.
 
-<!-- Why DVC -->
+Another limitation of source code management is that, while other assets can
+exist in the Git repository, storage is limited by hosting services
+[like GitHub](https://docs.github.com/en/github/managing-large-files/what-is-my-disk-quota).
+DVC addresses this problem by integrating with
+[dedicated storage](#versioned-storage) platforms.
 
 ## Summary of advantages
 
@@ -29,35 +33,28 @@ handle small text files. And while other assets can exist in the repository,
   cloud storage, but without ad-hoc conventions.
 - Debugging: trace problems using the exact data that was used during
   development.
-- Releasing: Manage data and model releases like you do with code. Employ
-  semantic versioning, connect branches to automatic deployment, etc.
+- Releasing: Tag stable data and models like you do with code. Employ semantic
+  versioning, connect branches to automatic deployment, etc.
 - Security: Git versioning of
   [DVC metafiles](/doc/user-guide/dvc-files-and-directories) allows us to audit
   data changes. And using cloud storage, data access control can be setup per
   user or project.
 
-## Versioned storage
-
-What if we could **combine versioning features with data storage** like
-traditional hard drives, NAS, or cloud services like Amazon S3 and Google Drive?
-DVC brings together the best of both worlds by replacing data with small,
-human-readable [metafiles](/doc/user-guide/dvc-files-and-directories) that Git
-can handle. The data itself is <abbr>cached</abbr> locally, outside of the Git
-repo, and can be easily synchronized with on-premises or cloud storage for
-sharing.
-
-![](/img/model-versioning-diagram.png) _DVC's hybrid versioned storage_
-
-> Note that [remote storage](/doc/command-reference/remote) is optional in DVC:
-> no server setup or special services are needed, just the `dvc` command-line
-> tool.
+> ## ⚠️ DVC is not Git!
+>
+> DVC metafiles such as `dvc.yaml` and `.dvc` files serve as placeholders to
+> track data files and directories (among other purposes). They point to
+> specific data contents in the <abbr>cache</abbr>, providing the ability to
+> store multiple data versions out-of-the-box. Full-fledged
+> [version control](https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control)
+> itself is left for Git to handle, however.
 
 ## How it looks
 
 Working on data processing code, it's easy to overlook that the initial data
 also changes along the way. If something goes wrong (or for any other reason),
 it's easy to revisit previous versions of the code with Git. But the results may
-still be different with the latest data!
+still be different if using the latest data.
 
 To "eliminate this variable" and achieve full
 [reproducibility](/doc/start/data-pipelines), we can use `dvc add` to capture
@@ -87,11 +84,16 @@ M       data\raw
 > For more hands-on experience, we recommend following the
 > [versioning tutorial](/doc/use-cases/versioning-data-and-model-files).
 
-## DVC is not Git!
+## Versioned storage
 
-DVC metafiles such as `dvc.yaml` and `.dvc` files serve as placeholders to track
-data files and directories (among other purposes). They point to specific data
-contents in the <abbr>cache</abbr>, providing the ability to store multiple data
-versions out-of-the-box. Full-fledged
-[version control](https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control)
-is left for Git to handle, however.
+What if we could **combine versioning features with data storage** like
+traditional hard drives, NAS, or cloud services like Amazon S3 and Google Drive?
+DVC brings together the best of both worlds by implementing easy synchronization
+between the data <abbr>cache</abbr> and on-premises or cloud storage for
+sharing.
+
+![](/img/model-versioning-diagram.png) _DVC's hybrid versioned storage_
+
+> Note that [remote storage](/doc/command-reference/remote) is optional in DVC:
+> no server setup or special services are needed, just the `dvc` command-line
+> tool.
