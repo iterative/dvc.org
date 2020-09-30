@@ -159,7 +159,7 @@ these settings, you could use the following options.
   $ dvc remote modify myremote listobjects true
   ```
 
-- `sse` - server-side encryption algorithm to use (e.g., AES256, aws:kms). By
+- `sse` - server-side encryption algorithm to use (e.g. AES256, aws:kms). By
   default, no encryption is used.
 
   ```dvc
