@@ -13,7 +13,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Run Link Check
-        uses: 'iterative/link-check.action@v0.6'
+        uses: 'iterative/link-check.action@v0.7'
         with:
           configFile: 'config/link-check/config.yml'
           output: consoleLog
