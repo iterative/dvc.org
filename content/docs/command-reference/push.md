@@ -71,9 +71,9 @@ in the cache (compared to the default remote.) It can be used to see what files
   or project. Note that both options can be combined, for example using the
   `-aT` flag.
 
-- `--all-commits` - same as `-a` or `-T` above, but applies to _all_ Git  
-  commits as well as the workspace. Useful for uploading all the data used in
-  the entire existing commit history of the project.
+- `--all-commits` - same as `-a` or `-T` above, but applies to _all_ Git commits
+  as well as the workspace. This uploads tracked data for the entire commit
+  history of the project.
 
 - `-d`, `--with-deps` - determines files to upload by tracking dependencies to
   the `targets`. If none are provided, this option is ignored. By traversing all
