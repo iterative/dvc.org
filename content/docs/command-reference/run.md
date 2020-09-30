@@ -55,7 +55,7 @@ code should be
 [deterministic](https://en.wikipedia.org/wiki/Deterministic_algorithm) (produce
 the same output for any given input): avoid code that increases
 [entropy](https://en.wikipedia.org/wiki/Software_entropy) (e.g. random numbers,
-time functions, hardware dependencies, etc.)
+time functions, hardware dependencies, etc.).
 
 </details>
 
