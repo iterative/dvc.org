@@ -35,7 +35,7 @@ usage: dvc version [-h] [-q | -v]
 The detail of DVC version depends upon the way of installing DVC.
 
 - **Official release**: is a stable version of DVC (for example `1.7.4`), that
-  can be [installed](<(/doc/install)>) using the official package stored in
+  can be [installed](/doc/install) using the official package stored in
   [Python Packaging Authority](https://www.pypa.io/) or with a binary. These
   releases are marked with tags in the DVC repository (see
   [changelog](https://github.com/iterative/dvc/releases) for release history).
