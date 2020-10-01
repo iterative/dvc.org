@@ -65,4 +65,4 @@ to retreive it when `dvc pull` or `dvc fetch` is called. This error means that
 the file is not already in the local cache, so dvc cannot find it. You must
 provide the file locally since it is not tracked on dvc-managed remote storage.
 
-See [import store mode](/doc/command-reference/import#store-mode).
+See [import storage](/doc/command-reference/import#enabling-remote-storage).
