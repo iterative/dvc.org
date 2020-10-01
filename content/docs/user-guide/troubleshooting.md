@@ -53,3 +53,16 @@ Unable to detect supported link types, as the
 [cache directory](/doc/command-reference/config#cache) doesn't exist. It is
 usually created automatically by DVC commands that need it, but you can create
 it manually (e.g. `mkdir .dvc/cache`) to enable this check.
+
+## Checkout failed with `store: false` files {#checkout-failed-no-store}
+
+Unable to checkout this output since it is not present in the cache and has been
+marked to not be stored on remotes.
+
+If `store: false` is added to the `outs` section of a `.dvc` file, that output
+will not be stored on remotes when `dvc push` is used, and dvc will not attempt
+to retreive it when `dvc pull` or `dvc fetch` is called. This error means that
+the file is not already in the local cache, so dvc cannot find it. You must
+provide the file locally since it is not tracked on dvc-managed remote storage.
+
+See [import store mode](/doc/command-reference/import#store-mode).
