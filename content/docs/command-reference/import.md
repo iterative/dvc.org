@@ -92,8 +92,8 @@ project data tracked with `dvc add`. You can still use `dvc update` to get the
 latest import data from its source.
 
 Remote storage is enabled with a `store: true` key/value pair in the `outs`
-section of the import `.dvc` file. To switch to regular import behavior, set its
-value to `false`, or re-import the data without using the `--store` option.
+section of the import `.dvc` file. To switch to regular import behavior, change
+its value to `false` manually, or re-import the data without the `--store` option.
 
 ## Options
 
