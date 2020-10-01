@@ -112,8 +112,8 @@ its value to `false` manually, or re-import the data without the `--store` optio
   > [Importing and updating fixed revisions](#example-importing-and-updating-fixed-revisions)
   > example below).
 
-- `-s`, `--store` - [enables remote storage](#enabling-remote-storage) on for
-  the import, so it can be pushed (e.g. in case the original source is lost).
+- `-s`, `--store` - [enables remote storage](#enabling-remote-storage) for the
+  import, so it can be pushed (e.g. in case the original source is lost).
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
