@@ -91,9 +91,9 @@ no longer access import sources, going to the remote instead, like with regular
 project data tracked with `dvc add`. You can still use `dvc update` to get the
 latest data from its import source.
 
-Store mode is enabled with a `store: true` key/value pair in the `outs` section
-of the import `.dvc` file. To switch to regular import behavior, set its value
-to `false`, or re-import the data without using the `--store` option.
+Remote storage is enabled with a `store: true` key/value pair in the `outs`
+section of the import `.dvc` file. To switch to regular import behavior, set its
+value to `false`, or re-import the data without using the `--store` option.
 
 ## Options
 
