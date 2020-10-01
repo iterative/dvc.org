@@ -99,16 +99,15 @@ up-to-date and only execute the final stage.
   recursive search for changed dependencies. Multiple stages are executed
   (non-recursively) if multiple stage names are given as `targets`.
 
-- `-c <path>`, `--cwd <path>` - directory within the project to reproduce from.
-  `targets` will be searched relative to this path. Instead of using `--cwd`,
-  one can alternately specify a target in a subdirectory as
-  `path/to/target.dvc`. This option can be useful for example with
-  subdirectories containing a separate pipeline that can either be reproduced as
-  part of the pipeline in the parent directory, or as an independent unit.
+- `-c <path>`, `--cwd <path>` - (**deprecated**) this is now supported for any
+  command with the global [`dvc --cd <path>`](/doc/command-reference) option.
 
-  > 💡 This feature is now supported for any DVC command with the `dvc --cd`
-  > flag. Use of `dvc repro -c` is deprecated and this option may be removed in
-  > future versions.
+  Directory within the project to reproduce from. `targets` will be searched
+  relative to this path. Instead of using `--cwd`, one can alternately specify a
+  target in a subdirectory as `path/to/target.dvc`. This option can be useful
+  for example with subdirectories containing a separate pipeline that can either
+  be reproduced as part of the pipeline in the parent directory, or as an
+  independent unit.
 
 - `-R`, `--recursive` - determines the stages to reproduce by searching each
   target directory (if any) and their subdirectories.
