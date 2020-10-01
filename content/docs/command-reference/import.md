@@ -76,7 +76,7 @@ Note that import stages are considered always
 they won't be updated. Use `dvc update` to update the downloaded data artifact
 from the source repo.
 
-### Store mode
+### Enabling remote storage
 
 To avoid duplicating large files, imported data is not pushed to
 [remote storage](/doc/command-reference/remote) by default (see `dvc push`).
