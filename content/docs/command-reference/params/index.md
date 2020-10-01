@@ -232,3 +232,4 @@ params.yaml  train.layers    None   9
 This command shows the difference in parameters between the workspace and the
 last committed version of the `params.yaml` file. In our example there's no
 previous version, which is why all `Old` values are `None`.
+````
