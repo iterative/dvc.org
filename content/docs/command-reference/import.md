@@ -89,7 +89,7 @@ As an alternative, you can use the `--store` option so the import is pushed to a
 DVC remote when `dvc push` is run. This also means that `dvc pull/fetch/repro`
 no longer access import sources, going to the remote instead, like with regular
 project data tracked with `dvc add`. You can still use `dvc update` to get the
-latest data from its import source.
+latest import data from its source.
 
 Remote storage is enabled with a `store: true` key/value pair in the `outs`
 section of the import `.dvc` file. To switch to regular import behavior, set its
