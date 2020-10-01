@@ -17,7 +17,7 @@ tags:
   - Gems
   - CML
   - Hyperparameters
-  - External
+  - External Data
   - SSH
   - Vega
 ---
@@ -86,36 +86,34 @@ $ vl2svg vega.json
 
 ### [Q: I'm confused about external dependencies and outputs. What's the difference?](https://discordapp.com/channels/485586884165107732/485596304961962003/752478399326453840)
 
-First, let's talk about **external outputs**. You might use an external output
-when you have a dataset in storage that is so large, you can't reasonably
-transfer it to your local workspace to start DVC-tracking it. For example, if
-you have a TB of data in S3 storage, you want to treat it as an external output
-so DVC can version it without resorting to time-consuming data transfer
-operations.
+In short, external outputs and dependencies are files or directories that are
+tracked by DVC, but physically reside outside of the local workspace. This could
+happen for a few reasons:
 
-External outputs are configured using using `dvc add --external`
-([there are plenty more details and tips about managing external data in our docs](https://dvc.org/doc/user-guide/managing-external-data)).
+- You want to version a dataset in cloud storage that is too large to transfer
+  to your local workspace efficiently
+- Your DVC pipeline writes directly to cloud storage
+- Your DVC pipeline depends on a dataset or other file in cloud storage
 
-One useful note: when you use an external output, you'll want to set up an
+An **external output** is declared in two ways: for example, if you have a file
+`data.csv` in S3 storage, you can use
+`dvc add --external s3://mybucket/data.csv` to begin DVC tracking the file
+([there are plenty more details and tips about managing external data in our docs](https://dvc.org/doc/user-guide/managing-external-data))).
+You can also declare `data.csv` as an output of a DVC pipeline with
+`dvc run -o s3://mybucket/data.csv`.
+
+An **external dependency** is a dependency of a DVC pipeline that resides in
+cloud storage. It's declared with the syntax
+`dvc run -d s3://mybucket/data.csv`.
+
+One other difference to note: DVC doesn't cache external dependencies; it merely
+checks if they have changed when you run `dvc repro`. On the other hand, DVC
+_does_ cache external outputs. You'll want to set up an
 [external cache](https://dvc.org/doc/use-cases/shared-development-server#configure-the-external-shared-cache)
-in the same remote location. This is because the default cache location (in your
-local workspace) no longer makes sense when the dataset never "visits" your
-local workspace! An external cache works largely the same as a typical cache in
-your workspace- DVC will try to use the cache/link type you set up in the remote
-location where the external data and cache are.
-
-Now, let's talk about **external dependencies**. An external dependency might
-come into play when you run a DVC pipeline stage that depends on a file or
-directory in a remote location. For example, a pipeline stage could depend on a
-`data.csv` file in your S3 bucket:
-
-```dvc
-$ dvc run -d s3://mybucket/data.csv
-```
-
-DVC connects to the remote location (here, your S3 bucket) to check whether or
-not the indicated file (`data.csv`) has changed since the last time `dvc repro`
-was run, but that's it. There's no caching involved.
+in the same remote location where your files are stored. This is because the
+default cache location (in your local workspace) no longer makes sense when the
+dataset never "visits" your local workspace! An external cache works largely the
+same as a typical cache in your workspace.
 
 ## CML questions
 
@@ -152,11 +150,16 @@ for how to do this in GitHub Actions and GitLab CI.
 
 ### [Q: After running a GitHub Action workflow that runs a DVC pipeline, I want to save the output of the pipeline. Why doesn't CML automatically save the output?](https://discordapp.com/channels/485586884165107732/728693131557732403/757686601953312988)
 
-What you're talking about sounds like an auto-commit: a `git commit` at the end
-of your CI workflow to commit any new artifacts to your Git repository. However,
-auto-commits have a lot of downsides- they don't make sense for a lot of users,
-and generally, it's better to re-create outputs as needed than save them forever
-in your Git repo.
+By design, artifacts generated in a CI workflow aren't saved anywhere- they
+disappear as soon as the runner shuts down. So a DVC pipeline executed in your
+CI system might produce outputs, like transformed datasets and model files, that
+will be lost at the end of the run. If you want to save them, there are a few
+methods.
+
+One approach is with auto-commits: a `git commit` at the end of your CI workflow
+to commit any new artifacts to your Git repository. However, auto-commits have a
+lot of downsides- they don't make sense for a lot of users, and generally, it's
+better to re-create outputs as needed than save them forever in your Git repo.
 
 We created the DVC `run-cache` in part
 [to solve this issue](https://stackoverflow.com/questions/61245284/is-it-necessary-to-commit-dvc-files-from-our-ci-pipelines).
@@ -174,8 +177,13 @@ $ dvc push --run-cache
 
 When you use this design, any artifacts of `dvc repro`, such as models or
 transformed datasets, will be saved in DVC storage and indexed by the pipeline
-version that generated them. You can access them via `dvc checkout` in your
-local workspace.
+version that generated them. You can access them in your local workspace by
+running
+
+```dvc
+$ dvc pull --run-cache
+$ dvc repro
+```
 
 While we think this is ideal for typical data science and machine learning
 workflows, there are other approaches too- if you want to go deeper exploring
