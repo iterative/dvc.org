@@ -113,7 +113,8 @@ its value to `false` manually, or re-import the data without the `--store` optio
   > example below).
 
 - `-s`, `--store` - [enables remote storage](#enabling-remote-storage) for the
-  import, so it can be pushed (e.g. in case the original source is lost).
+  import, so it can be pushed and pulled like regular project data (e.g. in
+  case the original source is lost).
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
