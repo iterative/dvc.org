@@ -54,7 +54,7 @@ Unable to detect supported link types, as the
 usually created automatically by DVC commands that need it, but you can create
 it manually (e.g. `mkdir .dvc/cache`) to enable this check.
 
-## Checkout failed with `store: false` files {#checkout-failed-no-store}
+## Checkout failed with `store: false` outputs {#checkout-no-store}
 
 Unable to checkout this output since it is not present in the cache and has been
 marked to not be stored on remotes.
