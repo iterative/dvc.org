@@ -62,8 +62,8 @@ DVC is unable to checkout any output that is not present in the
 is used in a `.dvc` file, `dvc pull` and `dvc fetch` won't attempt to retrieve the
 data from a DVC remote.
 
-This error means that
-the file is not already in the local cache, so dvc cannot find it. You must
-provide the file locally since it is not tracked on dvc-managed remote storage.
+To solve this, you must provide the file locally.
 
-See [import storage](/doc/command-reference/import#enabling-remote-storage).
+See also
+[Enabling remote storage](/doc/command-reference/import#enabling-remote-storage)
+for imports.
