@@ -31,6 +31,24 @@ const Contribute: React.FC<{ theme: ICommunitySectionTheme }> = ({ theme }) => {
         background="/img/community/contribute_bg.jpg"
         color={theme.color}
         description={description}
+        codeContrib={
+          <Link
+            className={sharedStyles.button}
+            style={theme}
+            href="https://dvc.org/doc/user-guide/contributing/core"
+          >
+            Contribute to Code
+          </Link>
+        }
+        docContrib={
+          <Link
+            className={sharedStyles.button}
+            style={theme}
+            href="https://dvc.org/doc/user-guide/contributing/docs"
+          >
+            Contribute to Docs
+          </Link>
+        }
         icon="/img/community/contribute.svg"
         mobileDescription={mobileDescription}
         title={title}

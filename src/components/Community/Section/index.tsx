@@ -19,6 +19,8 @@ export interface ICommunitySection {
   icon: string
   mobileDescription: string
   title: string
+  codeContrib?: React.ReactNode
+  docContrib?: React.ReactNode
 }
 
 const Section: React.FC<ICommunitySection> = ({
@@ -30,7 +32,9 @@ const Section: React.FC<ICommunitySection> = ({
   description,
   icon,
   mobileDescription,
-  title
+  title,
+  codeContrib,
+  docContrib
 }) => {
   const [isTablet, setIsTablet] = useState(false)
   const [isContentVisible, setIsContentVisible] = useState(contentVisible)
@@ -81,6 +85,8 @@ const Section: React.FC<ICommunitySection> = ({
             {title}
           </div>
           <div className={styles.description}>{description}</div>
+          <div>{codeContrib}</div> <br></br>
+          <div>{docContrib}</div>
           <div className={cn(styles.description, styles.mobile)}>
             {mobileDescription}
           </div>
