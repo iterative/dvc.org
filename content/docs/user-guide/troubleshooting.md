@@ -56,12 +56,13 @@ it manually (e.g. `mkdir .dvc/cache`) to enable this check.
 
 ## Checkout failed with `store: false` outputs {#checkout-no-store}
 
-Unable to checkout this output since it is not present in the cache and has been
-marked to not be stored on remotes.
+DVC is unable to checkout any output that is not present in the
+<abbr>cache</abbr>.This can usually be solved by fetching from
+[import storage](/doc/command-reference/remote). However, If `store: false`
+is used in a `.dvc` file, `dvc pull` and `dvc fetch` won't attempt to retrieve the
+data from a DVC remote.
 
-If `store: false` is added to the `outs` section of a `.dvc` file, that output
-will not be stored on remotes when `dvc push` is used, and dvc will not attempt
-to retreive it when `dvc pull` or `dvc fetch` is called. This error means that
+This error means that
 the file is not already in the local cache, so dvc cannot find it. You must
 provide the file locally since it is not tracked on dvc-managed remote storage.
 
