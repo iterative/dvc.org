@@ -71,9 +71,11 @@ An _output entry_ (`outs`) consists of these fields:
   _checksum_ for HDFS.
 - `cache`: Whether or not this file or directory is <abbr>cached</abbr> (`true`
   by default, if not present). See the `--no-commit` option of `dvc add`.
-- `store`: Whether or not this file or directory is pushed and pulled to/from
-  [remote storage](/doc/command-reference/remote) (`true` by default for all
-  outputs except for imports, where it is `false` by default). See
+- `store`: Whether this file or directory can be
+  [pushed](/doc/command-reference/push) and
+  [pulled](/doc/command-reference/pull) to/from
+  [remote storage](/doc/command-reference/remote) (`true` by default for
+  all outputs except for imports, where it is `false` by default). See
   [import storage](/doc/command-reference/import#enabling-remote-storage).
 
 A _dependency entry_ (`deps`) consists of these fields:
