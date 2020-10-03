@@ -9,8 +9,8 @@ like tutorials. For more general, hands-on experience with DVC, please see
 
 Even with all the success we've seen today in machine learning (ML), especially
 with deep learning and its applications in business, data scientists still lack
-good tools for organizing their projects and collaborating effectively. This is
-a critical challenge: while ML algorithms and methods are no longer tribal
+best practices for organizing their projects and collaborating effectively. This
+is a critical challenge: while ML algorithms and methods are no longer tribal
 knowledge, they are still difficult to implement, reuse, and manage.
 
 ## Basic uses of DVC
@@ -21,9 +21,9 @@ learning models, and you want to
 - capture and save <abbr>data artifacts</abbr> the same way you capture code;
 - track, control, and switch between different versions of data or models
   easily;
-- understand how machine learning models were built in the first place;
-- compare ML models and metrics to each other;
-- bring software engineering best practices to your data science team
+- understand how data or ML models were built in the first place;
+- compare machine learning models and metrics to each other;
+- bring software engineering best practices and tools to your data science team
 
 DVC is for you!
 
