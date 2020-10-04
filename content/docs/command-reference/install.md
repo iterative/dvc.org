@@ -99,7 +99,7 @@ repos:
         stages:
           - post-checkout
     repo: https://github.com/iterative/dvc
-    rev: master
+    rev: master  # use a specific version (e.g. 1.8.1) instead if you don't want to use the upstream version
 ```
 
 ## Options
