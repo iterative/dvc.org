@@ -10,7 +10,8 @@ analyzing dependencies and <abbr>outputs</abbr> of the target stages.
 ```usage
 usage: dvc repro [-h] [-q | -v] [-f] [-s] [-c <path>] [-m] [--dry] [-i]
                  [-p] [-P] [-R] [--no-run-cache] [--force-downstream]
-                 [--no-commit] [--downstream] [targets [targets ...]]
+                 [--no-commit] [--downstream] [--pull]
+                 [targets [targets ...]]
 
 positional arguments:
   targets        Stage or .dvc file to reproduce
@@ -153,6 +154,9 @@ up-to-date and only execute the final stage.
 - `--downstream` - only execute the stages after the given `targets` in their
   corresponding pipelines, including the target stages themselves. This option
   has no effect if `targets` are not provided.
+
+- `--pull` - try automatically pulling cached outputs if they are not present in
+  the local cache.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
