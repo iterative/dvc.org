@@ -4,7 +4,7 @@ There are situations where you might have forgotten to specify one of the
 <abbr>outputs</abbr> for a stage while creating it, and then later want to add
 an output to that stage.
 
-Running a stage to specify additional output is an expensive step as, it
+Running a stage to specify additional output is an expensive step, as it
 requires time and resources to execute the command. Follow the steps listed
 below to add an output to the stage without running it again.
 
