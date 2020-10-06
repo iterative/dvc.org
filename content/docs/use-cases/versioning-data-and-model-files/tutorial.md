@@ -1,7 +1,7 @@
 # Tutorial: Data & Model Versioning
 
 The goal of this example is to give you some hands-on experience with a basic
-machine learning version control scenario: managing multiple dataset and ML
+machine learning version control scenario: managing multiple datasets and ML
 model versions using DVC commands. We'll work with a
 [tutorial](https://blog.keras.io/building-powerful-image-classification-models-using-very-little-data.html)
 that [François Chollet](https://twitter.com/fchollet) put together to show how
@@ -237,9 +237,9 @@ $ git commit -m "Second model, trained with 2000 images"
 $ git tag -a "v2.0" -m "model v2.0, 2000 images"
 ```
 
-That's it! We've tracked the second version of the dataset, model, and metrics
-in DVC and committed the DVC-files that point to them with Git. Now let's look
-at how DVC can help us go back to the previous version if we need to.
+That's it! We've tracked a second version of the dataset, model, and metrics in
+DVC and committed the DVC-files that point to them with Git. Let's now look at
+how DVC can help us go back to the previous version if we need to.
 
 ## Switching between workspace versions
 
