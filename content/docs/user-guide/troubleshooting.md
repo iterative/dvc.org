@@ -53,3 +53,21 @@ Unable to detect supported link types, as the
 [cache directory](/doc/command-reference/config#cache) doesn't exist. It is
 usually created automatically by DVC commands that need it, but you can create
 it manually (e.g. `mkdir .dvc/cache`) to enable this check.
+
+## Lock issue when running DVC on network filesystem {#lock-issue}
+
+Users may encounter following lock error when running DVC on some network
+filesystem (NFS, Lustre, etc.)
+
+```
+ERROR: cannot perform the command because another DVC process seems to be
+running on this project. If that is not the case, manually remove
+.dvc/tmp/lock and try again.
+```
+
+The solution is to enable `core.hardlink_lock` which can be done by running
+following command:
+
+```
+dvc config core.hardlink_lock true
+```
