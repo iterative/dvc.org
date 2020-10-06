@@ -24,8 +24,8 @@ dependencies: _parameters_. Parameters are defined using the the `-p`
 
 In contrast to a regular <abbr>dependency</abbr>, a parameter is not a file (or
 directory). Instead, it consists of a _parameter name_ (or key) to find inside a
-YAML, JSON, or TOML _parameters file_. Multiple parameter dependencies can be
-specified from one or more parameters files.
+YAML, JSON, TOML, or Python _parameters file_. Multiple parameter dependencies
+can be specified from one or more parameters files.
 
 The default parameters file name is `params.yaml`. Parameters should be
 organized as a tree hierarchy inside, as DVC will locate param names by their
@@ -91,8 +91,8 @@ $ dvc run -n train -d users.csv -o model.pkl \
           python train.py
 ```
 
-> Note that we could use the same parameter addressing with JSON or TOML
-> parameters files.
+> Note that we could use the same parameter addressing with JSON, TOML, or
+> Python parameters files.
 
 The `train.py` script will have some code to parse the needed parameters. For
 example:
@@ -140,6 +140,98 @@ This file name can be redefined with a prefix in the `-p` argument:
 ```dvc
 $ dvc run -n train -d logs/ -o users.csv \
           -p parse_params.yaml:threshold,classes_num \
+          python train.py
+```
+
+## Examples: Python parameters file
+
+Consider this parameters file in Python format, named `params.py`:
+
+```python
+IS_BOOL: bool = True
+CONST = 5
+
+# All standard variable types are supported
+FLOAT = 0.001
+STR = 'abc'
+DICT = {
+    "a": 1,
+    "b": 2
+}
+LIST = [1, 2, 3]
+SET = {4, 5, 6}
+TUPLE = (10, 100)
+NONE = None
+
+
+# It is possible to retrieve either class constants
+# or own variables defined in __init__
+class TrainConfig:
+    EPOCHS = 70
+
+    def __init__(self):
+        # TrainConfig.layers param will be 9
+        self.layers = 5
+        self.layers = 9
+        # TrainConfig.foo will NOT be found because the complex expression
+        self.foo = 1 + 2
+        # TrainConfig.bar will NOT be found
+        bar = 1
+
+
+class TestConfig:
+    TEST_DIR = "path"
+    METRICS = ["metric"]
+```
+
+The following [stage](/doc/command-reference/run) depends on params `IS_BOOL`,
+`CONST`, as well as `TrainConfig`'s `EPOCHS` and `layers`:
+
+```dvc
+$ dvc run -n train -d users.csv -o model.pkl \
+          -p params.py:IS_BOOL,CONST,TrainConfig.EPOCHS,TrainConfig.layers \
+          python train.py
+```
+
+Resulting `dvc.yaml` and `dvc.lock` files (notice the `params` list):
+
+```yaml
+stages:
+  train:
+    cmd: python train.py
+    deps:
+      - users.csv
+    params:
+      - IS_BOOL
+      - CONST
+      - TrainConfig.EPOCHS
+      - TrainConfig.layers
+    outs:
+      - model.pkl
+```
+
+```yaml
+train:
+  cmd: python train.py
+  deps:
+    - path: users.csv
+      md5: 23be4307b23dcd740763d5fc67993f11
+  params:
+    CONST: 5
+    IS_BOOL: true
+    TrainConfig.EPOCHS: 70
+    TrainConfig.layers: 9
+  outs:
+    - path: model.pkl
+      md5: 1c06b4756f08203cc496e4061b1e7d67
+```
+
+Alternatively, the entire `TestConfig` group can be referenced (also a
+dictionary), instead of the parameters in it:
+
+```dvc
+$ dvc run -n train -d users.csv -o model.pkl \
+          -p params.py:IS_BOOL,CONST,TestConfig \
           python train.py
 ```
 
