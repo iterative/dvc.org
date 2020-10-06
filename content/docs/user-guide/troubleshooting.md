@@ -56,8 +56,8 @@ it manually (e.g. `mkdir .dvc/cache`) to enable this check.
 
 ## Lock issue on network file system {#lock-issue}
 
-Users may encounter following lock error when running DVC on some network
-filesystem (NFS, Lustre, etc.)
+You may encounter the following lockfile error when running DVC on some
+network filesystem (NFS, Lustre, etc.):
 
 ```
 ERROR: cannot perform the command because another DVC process seems to be
