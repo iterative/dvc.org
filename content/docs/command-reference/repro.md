@@ -155,8 +155,8 @@ up-to-date and only execute the final stage.
   corresponding pipelines, including the target stages themselves. This option
   has no effect if `targets` are not provided.
 
-- `--pull` - try automatically pulling cached outputs if they are not present in
-  the local cache.
+- `--pull` - try automatically [pulling](/doc/command-reference/pull) missing
+  cache for outputs restored from run-cache.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
