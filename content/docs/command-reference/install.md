@@ -89,6 +89,8 @@ repos:
         stages:
           - commit
       - id: dvc-pre-push
+        # use s3/gs/etc instead of all to only install specific cloud support
+        additional_dependencies: ['.[all]']
         language_version: python3
         stages:
           - push
@@ -98,6 +100,8 @@ repos:
         stages:
           - post-checkout
     repo: https://github.com/iterative/dvc
+    # use a specific version (e.g. 1.8.1) instead of master if you don't want
+    # to use the upstream version
     rev: master
 ```
 
