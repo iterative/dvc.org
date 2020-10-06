@@ -30,7 +30,7 @@ on-premises storage (e.g. SSH, NAS) as well as any major cloud storage provider
 ## DVC is not Git!
 
 DVC metafiles such as `dvc.yaml` and `.dvc` files serve as placeholders to track
-the version of data files and directories (among other purposes). They point to
+data files and directories for versioning (among other purposes). They point to
 specific data contents in the <abbr>cache</abbr>, providing the ability to store
 multiple data versions out-of-the-box.
 
