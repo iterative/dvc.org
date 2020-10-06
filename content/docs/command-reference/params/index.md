@@ -243,13 +243,13 @@ param values available in the <abbr>workspace</abbr>:
 ```dvc
 $ dvc params diff
 Path         Param           Old    New
-params.yaml  lr              None   0.0041
-params.yaml  process.bow     None   15000
-params.yaml  process.thresh  None   0.98
-params.yaml  train.epochs    None   70
-params.yaml  train.layers    None   9
+params.yaml  lr              —      0.0041
+params.yaml  process.bow     —      15000
+params.yaml  process.thresh  —      0.98
+params.yaml  train.epochs    —      70
+params.yaml  train.layers    —      9
 ```
 
 This command shows the difference in parameters between the workspace and the
 last committed version of the `params.yaml` file. In our example there's no
-previous version, which is why all `Old` values are `None`.
+previous version, which is why all `Old` values are `—`.
