@@ -54,7 +54,7 @@ Unable to detect supported link types, as the
 usually created automatically by DVC commands that need it, but you can create
 it manually (e.g. `mkdir .dvc/cache`) to enable this check.
 
-## Lock issue when running DVC on network filesystem {#lock-issue}
+## Lock issue on network file system {#lock-issue}
 
 Users may encounter following lock error when running DVC on some network
 filesystem (NFS, Lustre, etc.)
