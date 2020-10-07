@@ -60,8 +60,8 @@ You may encounter error message saying `Unable to acquire lock` if you have
 another DVC process running in the project. If that is not the case, manually
 removing lockfile `.dvc/tmp/lock` should resolve the issue. If the issue still
 persists then it may be the case that you are running DVC on some network
-filesystem like NFS, Lustre, etc. If that is the case, the solution is to
-enable `core.hardlink_lock` which can be done by running following command:
+filesystem like NFS, Lustre, etc. If that is the case, the solution is to enable
+`core.hardlink_lock` which can be done by running following command:
 
 ```
 dvc config core.hardlink_lock true
