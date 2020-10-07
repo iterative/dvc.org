@@ -47,7 +47,7 @@ $ dvc metrics diff
 summary.json   AUC      0.801807   0.037826
 ```
 
-`dvc metrics` subcommands by default use the metric files specified in
+`dvc metrics` subcommands by default use the metrics files specified in
 `dvc.yaml` (if any), for example `summary.json` below:
 
 ```yaml
@@ -64,7 +64,7 @@ stages:
 ```
 
 > `cache: false` above specifies that `summary.json` is not tracked or
-> <abbr>cached</abbr> by DVC (`-M` option of `dvc run`). These metric files are
+> <abbr>cached</abbr> by DVC (`-M` option of `dvc run`). These metrics files are
 > normally committed with Git instead. See `dvc.yaml` for more information on
 > the file format above.
 
@@ -114,12 +114,12 @@ $ dvc run -n evaluate -d code/evaluate.py -M eval.json \
           python code/evaluate.py
 ```
 
-> `-M` (`--metrics-no-cache`) tells DVC to mark `eval.json` as a metric file,
+> `-M` (`--metrics-no-cache`) tells DVC to mark `eval.json` as a metrics file,
 > without tracking it directly (You can track it with Git). See `dvc run` for
 > more info.
 
-Now let's print metric values that we are tracking in this <abbr>project</abbr>,
-using `dvc metrics show`:
+Now let's print metrics values that we are tracking in this
+<abbr>project</abbr>, using `dvc metrics show`:
 
 ```dvc
 $ dvc metrics show
@@ -129,7 +129,7 @@ $ dvc metrics show
                 TP: 516
 ```
 
-When there are metric file changes (before committing them with Git), the
+When there are metrics file changes (before committing them with Git), the
 `dvc metrics diff` command shows the difference between metrics values:
 
 ```dvc

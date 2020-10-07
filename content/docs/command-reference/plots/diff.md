@@ -37,7 +37,7 @@ shows all of them in a single image.
 
 The plot style can be customized with
 [plot templates](/doc/command-reference/plots#plot-templates), using the
-`--template` option. To learn more about metric file formats and templates
+`--template` option. To learn more about metrics file formats and templates
 please see `dvc plots`.
 
 > Note that the default behavior of this command can be modified per metrics
@@ -48,7 +48,7 @@ all the current plots, without comparisons.
 
 ## Options
 
-- `--targets <path>` - specific metric files to visualize. These must be listed
+- `--targets <path>` - specific metrics files to visualize. These must be listed
   in a [`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvcyaml-file) file
   (see the `--plots` option of `dvc run`). When specifying arguments for
   `--targets` before `revisions`, you should use `--` after this option's
@@ -77,11 +77,11 @@ all the current plots, without comparisons.
   auto-generated `index` field is used by default. See
   [Custom templates](/doc/command-reference/plots#custom-templates) for more
   information on this `index` field. Column names or numbers are expected for
-  tabular metric files.
+  tabular metrics files.
 
 - `-y <field>` - field name from which the Y axis data comes from. The last
   field found in the `--targets` is used by default. Column names or numbers are
-  expected for tabular metric files.
+  expected for tabular metrics files.
 
 - `--x-label <text>` - X axis label. The X field name is the default.
 
@@ -146,7 +146,7 @@ cat,turtle
 
 The predefined confusion matrix
 [template](/doc/command-reference/plots#plot-templates) (in
-`.dvc/plots/confusion.json`) shows how metric comparisons can be faceted by
+`.dvc/plots/confusion.json`) shows how metrics comparisons can be faceted by
 separate plots. It can be enabled with `-t` (`--template`):
 
 ```dvc

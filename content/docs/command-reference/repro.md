@@ -116,7 +116,7 @@ up-to-date and only execute the final stage.
   data repeatedly when running multiple experiments.
 
 - `-m`, `--metrics` - show metrics after reproduction. The target pipelines must
-  have at least one metric file defined either with the `dvc metrics` command,
+  have at least one metrics file defined either with the `dvc metrics` command,
   or by the `-M` or `-m` options of the `dvc run` command.
 
 - `--dry` - only print the commands that would be executed without actually

@@ -120,7 +120,7 @@ You can create a custom template from scratch, or modify an existing one from
 
 💡 Note that custom templates can be safely added to the template directory.
 
-All metric files given to `dvc plots show` and `dvc plots diff` as input are
+All metrics files given to `dvc plots show` and `dvc plots diff` as input are
 combined together into a single data array for injection into a template file.
 There are two important fields that DVC adds to the plot data:
 
@@ -131,12 +131,12 @@ There are two important fields that DVC adds to the plot data:
   distinguish between different versions when using the `dvc plots diff`
   command.
 
-Note that in the case of CSV/TSV metric files, column names from the table
+Note that in the case of CSV/TSV metrics files, column names from the table
 header (first row) are equivalent to field names.
 
 ### DVC template anchors
 
-- `<DVC_METRIC_DATA>` (**required**) - the plot data from any kind of metric
+- `<DVC_METRIC_DATA>` (**required**) - the plot data from any kind of metrics
   files is converted to a single JSON array internally, and injected instead of
   this anchor. Two additional fields will be added: `index` and `rev` (explained
   above).
