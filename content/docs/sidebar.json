@@ -87,10 +87,7 @@
         "slug": "what-is-dvc",
         "source": "what-is-dvc.md"
       },
-      {
-        "label": "DVC Files and Directories",
-        "slug": "dvc-files-and-directories"
-      },
+      "dvc-files-and-directories",
       "merge-conflicts",
       {
         "slug": "dvcignore",
@@ -130,10 +127,7 @@
           }
         ]
       },
-      {
-        "label": "Running DVC on Windows",
-        "slug": "running-dvc-on-windows"
-      },
+      "running-dvc-on-windows",
       "troubleshooting",
       "related-technologies",
       {
