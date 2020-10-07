@@ -21,7 +21,7 @@ positional arguments:
 
 This command is a way to visualize the "difference" between metrics among
 experiments in the <abbr>repository</abbr> history, by plotting multiple
-versions of them. All plots defined in `dvc.yaml` are used by default.
+versions of the metrics. All plots defined in `dvc.yaml` are used by default.
 
 > Note that unlike `dvc metrics diff`, this command does not calculate numeric
 > differences between metrics file values.
