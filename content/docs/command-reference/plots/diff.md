@@ -1,7 +1,7 @@
 # plots diff
 
 Show multiple versions of [plot metrics](/doc/command-reference/plots) by
-plotting them in a single image. This allows to easily compare them.
+overlaying them in a single plot. This allows to compare them easily.
 
 ## Synopsis
 
@@ -21,10 +21,10 @@ positional arguments:
 
 This command is a way to visualize the "difference" between metrics among
 experiments in the <abbr>repository</abbr> history, by plotting multiple
-versions of the metrics. All plots defined in `dvc.yaml` are used by default.
+versions of them. All plots defined in `dvc.yaml` are used by default.
 
 > Note that unlike `dvc metrics diff`, this command does not calculate numeric
-> differences between metric file values.
+> differences between metrics file values.
 
 `revisions` are Git commit hashes, tag, or branch names. If none are specified,
 `dvc plots diff` compares targets currently present in the
@@ -33,7 +33,7 @@ versions (required). A single specified revision results in comparing the
 workspace and that version.
 
 Note that any number of `revisions` can be provided, and the resulting plot
-shows all of them in a single output.
+shows all of them in a single image.
 
 The plot style can be customized with
 [plot templates](/doc/command-reference/plots#plot-templates), using the
@@ -42,6 +42,9 @@ please see `dvc plots`.
 
 > Note that the default behavior of this command can be modified per metrics
 > file with `dvc plots modify`.
+
+Another way to display plots is the `dvc plots show` command, which just lists
+all the current plots, without comparisons.
 
 ## Options
 

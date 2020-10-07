@@ -1,6 +1,6 @@
 # metrics diff
 
-Show changes in [metrics](/doc/command-reference/metrics) between commits in the
+Compare [metrics](/doc/command-reference/metrics) between two commits in the
 <abbr>DVC repository</abbr>, or between a commit and the <abbr>workspace</abbr>.
 
 ## Synopsis
@@ -21,23 +21,18 @@ positional arguments:
 ## Description
 
 This command provides a quick way to compare metrics among experiments in the
-repository history. It requires that Git is being used to version the metrics.
+repository history. All metrics defined in `dvc.yaml` are used by default. The
+differences shown by this command include the new value, and numeric difference
+(delta) from the previous value of metrics (rounded to 5 digits precision).
 
-> This kind of metrics can be defined with the `-m` (`--metrics`) and `-M`
-> (`--metrics-no-cache`) options of `dvc run`.
-
-Run without arguments, this command compares metrics currently present in the
-<abbr>workspace</abbr> uncommitted changes) with the latest committed version.
-
-The differences shown by this command include the new value, and numeric
-difference (delta) from the previous value of metrics (rounded to 5 digits
-precision). They're calculated between two commits (hash, branch, tag, or any
-[Git revision](https://git-scm.com/docs/revisions)) for all metrics in the
-<abbr>project</abbr>, found by examining all of the `dvc.yaml` and `.dvc` files
-in both versions.
+`a_rev` and `b_rev` are Git commit hashes, tag, or branch names. If none are
+specified, `dvc metrics diff` compares metrics currently present in the
+<abbr>workspace</abbr> (uncommitted changes) with the latest committed versions
+(required). A single specified revision results in comparing the workspace and
+that version.
 
 Another way to display metrics is the `dvc metrics show` command, which just
-lists all the current metrics without comparisons.
+lists all the current metrics, without comparisons.
 
 ## Options
 

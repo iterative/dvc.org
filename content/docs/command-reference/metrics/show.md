@@ -19,9 +19,6 @@ positional arguments:
 Finds and prints all metrics in the <abbr>project</abbr> by examining all of its
 [DVC-files](/doc/user-guide/dvc-files-and-directories).
 
-> This kind of metrics can be defined with the `-m` (`--metrics`) and `-M`
-> (`--metrics-no-cache`) options of `dvc run`.
-
 If `targets` are provided, it will show those specific metric files instead.
 With the `-a` or `-T` options, this command shows the different metrics values
 across all Git branches or tags, respectively. With the `-R` option, some of the
