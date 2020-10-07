@@ -22,7 +22,7 @@ positional arguments:
 
 This command provides a quick way to compare metrics among experiments in the
 repository history. All metrics defined in `dvc.yaml` are used by default. The
-comparison shown by this command includes the old and new value, and the
+comparison shown by this command includes the new value, and the
 numeric difference (delta, rounded to 5 digits precision).
 
 `a_rev` and `b_rev` are Git commit hashes, tag, or branch names. If none are
