@@ -71,6 +71,10 @@ force-update the `dvc.lock` or `.dvc` files and save data to cache. They are
 still useful, but keep in mind that DVC can't guarantee reproducibility in those
 cases.
 
+We can [add outputs to a stage](/docs/user-guide/how-to/add-output-to-stage)
+without re-running it, and `dvc commit` is used to save the newly specified
+output to the cache and update `dvc.lock`.
+
 ## Options
 
 - `-d`, `--with-deps` - determines files to commit by tracking dependencies to

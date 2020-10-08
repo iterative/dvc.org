@@ -144,6 +144,10 @@ $ dvc run -n my_stage "./my_script.sh > /dev/null 2>&1"
 $ dvc run -n my_stage './my_script.sh $MYENVVAR'
 ```
 
+Using `dvc run` with the `--no-exec` option doesn't execute `command` and can be
+used to [add output to a stage](/docs/user-guide/how-to/add-output-to-stage)
+without re-running it.
+
 ## Options
 
 - `-n <stage>`, `--name <stage>` (**required**) - specify a name for the stage
