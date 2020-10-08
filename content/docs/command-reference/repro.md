@@ -10,7 +10,8 @@ analyzing dependencies and <abbr>outputs</abbr> of the target stages.
 ```usage
 usage: dvc repro [-h] [-q | -v] [-f] [-s] [-c <path>] [-m] [--dry] [-i]
                  [-p] [-P] [-R] [--no-run-cache] [--force-downstream]
-                 [--no-commit] [--downstream] [targets [targets ...]]
+                 [--no-commit] [--downstream] [--pull]
+                 [targets [targets ...]]
 
 positional arguments:
   targets        Stage or .dvc file to reproduce
@@ -99,12 +100,14 @@ up-to-date and only execute the final stage.
   recursive search for changed dependencies. Multiple stages are executed
   (non-recursively) if multiple stage names are given as `targets`.
 
-- `-c <path>`, `--cwd <path>` - directory within the project to reproduce from.
-  `targets` will be searched relative to this path. Instead of using `--cwd`,
-  one can alternately specify a target in a subdirectory as
-  `path/to/target.dvc`. This option can be useful for example with
-  subdirectories containing a separate pipeline that can either be reproduced as
-  part of the pipeline in the parent directory, or as an independent unit.
+- `-c <path>`, `--cwd <path>` - (**deprecated**) this is now supported for any
+  command with the global [`dvc --cd <path>`](/doc/command-reference) option.
+
+  Directory within the project to reproduce from. `targets` will be searched
+  relative to this path. Instead of using `--cwd`, one can alternately specify a
+  target in a subdirectory as `path/to/target.dvc`. This option can be useful
+  for example with subdirectories containing a separate pipeline that can be
+  reproduced independently.
 
 - `-R`, `--recursive` - determines the stages to reproduce by searching each
   target directory (if any) and their subdirectories.
@@ -153,6 +156,9 @@ up-to-date and only execute the final stage.
 - `--downstream` - only execute the stages after the given `targets` in their
   corresponding pipelines, including the target stages themselves. This option
   has no effect if `targets` are not provided.
+
+- `--pull` - try automatically [pulling](/doc/command-reference/pull) missing
+  cache for outputs restored from run-cache.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 

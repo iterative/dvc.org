@@ -20,12 +20,16 @@
   }
 */
 
-const startCase = require('lodash/startCase')
+const { titleCase } = require('title-case')
 const sidebar = require('../../../content/docs/sidebar.json')
 
 const PATH_ROOT = '/doc'
 const FILE_ROOT = '/docs/'
 const FILE_EXTENSION = '.md'
+
+function dvcTitleCase(slug) {
+  return titleCase(slug.replace(/dvc/g, 'DVC').replace(/-/g, ' '))
+}
 
 function validateRawItem({ slug, source, children, type, url }) {
   const isSourceDisabled = source === false
@@ -109,7 +113,7 @@ function normalizeItem({ rawItem, parentPath, resultRef, prevRef }) {
       return {
         path: relativePath ? `${PATH_ROOT}/${relativePath}` : PATH_ROOT,
         source: source === false ? false : sourcePath,
-        label: label ? label : startCase(slug),
+        label: label ? label : dvcTitleCase(slug),
         tutorials: tutorials || {},
         prev,
         next: undefined,

@@ -55,7 +55,7 @@ code should be
 [deterministic](https://en.wikipedia.org/wiki/Deterministic_algorithm) (produce
 the same output for any given input): avoid code that increases
 [entropy](https://en.wikipedia.org/wiki/Software_entropy) (e.g. random numbers,
-time functions, hardware dependencies, etc.)
+time functions, hardware dependencies, etc.).
 
 </details>
 
@@ -114,8 +114,8 @@ Relevant notes:
 
 [parameters](/doc/command-reference/params) (`-p`/`--params` option) are a
 special type of key/value dependencies. Multiple parameter dependencies can be
-specified from within one or more YAML, JSON or TOML parameters files (e.g.
-`params.yaml`). This allows tracking experimental hyperparameters easily.
+specified from within one or more YAML, JSON, TOML, or Python parameters files
+(e.g. `params.yaml`). This allows tracking experimental hyperparameters easily.
 
 Special types of output files, [metrics](/doc/command-reference/metrics) (`-m`
 and `-M` options) and [plots](/doc/command-reference/plots) (`--plots` and
