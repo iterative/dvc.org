@@ -100,10 +100,7 @@
         "slug": "how-to",
         "source": false,
         "children": [
-          {
-            "label": "Add Output to Stage",
-            "slug": "add-output-to-stage"
-          },
+          "add-output-to-stage",
           "undo-adding-data",
           "update-tracked-files"
         ]
