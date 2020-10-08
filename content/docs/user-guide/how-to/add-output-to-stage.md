@@ -1,23 +1,16 @@
 # Add Output to Stage
 
-There are situations where you might have forgotten to specify one of the
-<abbr>outputs</abbr> for a stage while creating it, and then later want to add
-an output to that stage.
+There are situations where we run a stage without specifying all the
+<abbr>outputs</abbr>, and then later want to add more outputs to that stage. If
+we use `dvc run` to add outputs, it will re-run the stage.
 
-Running a stage to specify additional output is an expensive step, as it
-requires time and resources to execute the command. Follow the steps listed
-below to add an output to the stage without running it again.
+Running a stage is an expensive step, as it requires time and resources to
+execute the command. Follow the steps listed below to add an output to the stage
+without running it again.
 
-Let's first create a stage for the example <abbr>project</abbr>:
-
-```dvc
-$ dvc run -n prepare \
-          -d src/prepare.py \
-          -o data/train \
-          python src/prepare.py
-```
-
-You can check stage entry in `dvc.yaml`:
+We have an example stage `prepare` defined in `dvc.yaml`. To add another output
+`data/test` to this stage, we can edit `dvc.yaml`. This is how it looks after
+the change:
 
 ```dvc
 $ cat dvc.yaml
@@ -28,42 +21,30 @@ stages:
     - src/prepare.py
     outs:
     - data/train
++   - data/test
 ```
 
-Now to add an output to the `prepare` stage, you need to use `dvc run` with the
-`-f` and `--no-exec` options:
+That's it, the new output has been added to the `prepare` stage.
 
-```dvc
-$ dvc run -f --no-exec \
-          -n prepare
-          -d src/prepare.py \
-          -o data/train \
-          -o data/test \
-          python src/prepare.py
-```
+> Note that you can also use `dvc run` with the `-f` and `--no-exec` options to
+> add another output to the stage:
+>
+> ```dvc
+> $ dvc run -f --no-exec \
+>           -n prepare \
+>           -d src/prepare.py \
+>           -o data/train \
+>           -o data/test \
+>           python src/prepare.py
+> ```
+>
+> The `-f` option is used to overwrite an existing stage in the `dvc.yaml`, and
+> the `--no-exec` option is used to create or update a stage without executing
+> the command.
 
-The `-f` option is used to overwrite an existing stage in the `dvc.yaml`, and
-the `--no-exec` option is used to create or update a stage without executing the
-command defined in it.
-
-Let's check `dvc.yaml` again:
-
-```dvc
-$ cat dvc.yaml
-stages:
-  prepare:
-    ...
-    outs:
-    - data/test
-    - data/train
-```
-
-As you can see, the new output has been added to the `train` stage in
-`dvc.yaml`. Now you need to run `dvc commit` to update `dvc.lock` and save data
-to the <abbr>cache</abbr>:
+Finally, we need to run `dvc commit`. It saves the newly specified outputs to
+the <abbr>cache</abbr> and updates their hash values in `dvc.lock`:
 
 ```dvc
 $ dvc commit
 ```
-
-Finally, the output has been added to the stage without running it again.
