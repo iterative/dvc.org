@@ -27,13 +27,13 @@ DVC addresses this problem by integrating with
 ## Summary of advantages
 
 - Reproducibility: match code commits with the corresponding data so you can
-  always go back to different versions of the full project (code, data, and
-  effects).
-- Snapshots: track and organize data and ML model versions with a simple CLI
-  (`dvc add` and `dvc checkout`, similar to basic Git commands) and `.dvc`
-  files.
+  always go back to different versions of the full project (code, data, models,
+  etc.).
+- Snapshots: track and organize data and machine learning model versions with a
+  simple CLI (`dvc add` and `dvc checkout`, similar to basic Git commands) and
+  `.dvc` files.
 - Data as code: leverage Git workflow such as commits, branching, pull requests,
-  reviews, and even CI/CD for your data and models lifecycle. Think Git for
+  reviews, and even CI/CD for your data and ML models lifecycle. Think Git for
   cloud storage, but without ad-hoc conventions.
 - Debugging: trace problems using the exact data that was used during
   development.
@@ -47,9 +47,9 @@ DVC addresses this problem by integrating with
 > ## ⚠️ DVC is not Git!
 >
 > DVC metafiles such as `dvc.yaml` and `.dvc` files serve as placeholders to
-> track data files and directories (among other purposes). They point to
-> specific data contents in the <abbr>cache</abbr>, providing the ability to
-> store multiple data versions out-of-the-box. Full-fledged
+> track large data files and directories for versioning (among other purposes).
+> They point to specific data contents in the <abbr>cache</abbr>, providing the
+> ability to store multiple data versions out-of-the-box. Full-fledged
 > [version control](https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control)
 > itself is left for Git to handle, however.
 
@@ -90,11 +90,11 @@ M       data\raw
 
 ## Versioned storage
 
-What if we could **combine versioning features with data storage** like
-traditional hard drives, NAS, or cloud services like Amazon S3 and Google Drive?
-DVC brings together the best of both worlds by implementing easy synchronization
-between the data <abbr>cache</abbr> and on-premises or cloud storage for
-sharing.
+What if we could **combine data and ML model versioning features with large file
+storage** solutions like traditional hard drives, NAS, or cloud services such as
+Amazon S3 and Google Drive? DVC brings together the best of both worlds by
+implementing easy synchronization between the data <abbr>cache</abbr> and
+on-premises or cloud storage for sharing.
 
 ![](/img/model-versioning-diagram.png) _DVC's hybrid versioned storage_
 
