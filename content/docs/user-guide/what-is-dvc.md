@@ -47,3 +47,12 @@ can version experiments, manage large datasets, and make projects reproducible.
 
   > Git servers, as well as SSH and cloud storage providers are supported,
   > however.
+
+## DVC is not Git!
+
+DVC metafiles such as `dvc.yaml` and `.dvc` files serve as placeholders to track
+large data files and directories for versioning (among other purposes). They
+provide the ability to store multiple data versions out-of-the-box, but this
+does not replace any SCM features. Full-fledged
+[version control](https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control)
+is left for Git to handle, however.

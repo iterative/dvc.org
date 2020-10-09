@@ -46,15 +46,6 @@ DVC addresses this problem by integrating with
   auditing data changes. And data access controls can be setup via cloud storage
   platforms.
 
-> ## ⚠️ DVC is not Git!
->
-> DVC metafiles such as `dvc.yaml` and `.dvc` files serve as placeholders to
-> track large data files and directories for versioning (among other purposes).
-> They point to specific data contents in the <abbr>cache</abbr>, providing the
-> ability to store multiple data versions out-of-the-box. Full-fledged
-> [version control](https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control)
-> itself is left for Git to handle, however.
-
 ## How it looks
 
 Working on data processing code, it's easy to overlook that the initial data
