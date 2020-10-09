@@ -32,9 +32,9 @@ and cloud storage.
   centralized in a single location (with the ability to create distributed
   copies on other remotes). This simplifies data management and optimizes space
   requirements.
-- Data as code: leverage Git workflow such as commits, branching, pull requests,
-  reviews, and even CI/CD for your data and models lifecycle. Think Git for
-  cloud storage, but without ad-hoc conventions.
+- Treat data as code: leverage Git workflow such as commits, branching, pull
+  requests, reviews, and even CI/CD for your data and models lifecycle. Think
+  Git for cloud storage.
 - Security: registries can be setup to have read-only remote storage (e.g. an
   HTTP location). Git versioning of
   [DVC metafiles](/doc/user-guide/dvc-files-and-directories) allows us to audit

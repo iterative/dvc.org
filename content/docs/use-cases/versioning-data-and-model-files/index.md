@@ -2,10 +2,16 @@
 
 [Version control](https://en.wikipedia.org/wiki/Version_control) has become a
 staple in software engineering because it allows effective collaboration on
-source code. This means having a change history to traverse (commits),
-developing parallel features (branching and merging), peer-reviews (pull
-requests), release management, etc. Imagine using these features for data
-engineering and machine learning!
+source code. This means having a change history to traverse (commits), clean
+parallel work (branching and merging), peer-reviews (pull requests), release
+management, etc.
+
+Imagine leveraging similar features in data science! Track different versions of
+datasets and machine learning models easily; Codify data artifacts and data
+processes so they can be developed using proven best practices; Make your data
+pipelines fully reproducible by yourself and others.
+
+![](/img/404) _Data versioning in a nutshell_
 
 Unfortunately, versioning tools like [Git](https://git-scm.com/) are designed to
 handle small text files. DVC begins by enabling the [tracking](#how-it-looks) of
@@ -28,12 +34,12 @@ DVC addresses this problem by integrating with
 - Reproducibility: match code commits with the corresponding data so you can
   always go back to different versions of the full project (code, data, models,
   etc.).
-- Snapshots: track and organize data and machine learning model versions with a
-  simple CLI (`dvc add` and `dvc checkout`, similar to basic Git commands) and
-  `.dvc` files.
-- Data as code: leverage Git workflow such as commits, branching, pull requests,
-  reviews, and even CI/CD for your data and ML models lifecycle. Think Git for
-  cloud storage, but without ad-hoc conventions.
+- Snapshots: track and organize data and machine learning models as they evolve
+  without ad-hoc conventions, using a simple CLI (`dvc add`, `dvc checkout`, and
+  other commands similar to `git` basics).
+- Treat data as code: leverage Git workflow such as commits, branching, pull
+  requests, reviews, and even CI/CD for your data and ML models lifecycle. Think
+  Git for cloud storage.
 - Debugging: trace problems using the exact data that was used during
   development.
 - Releasing: Tag stable data and models like you do with code. Employ semantic
