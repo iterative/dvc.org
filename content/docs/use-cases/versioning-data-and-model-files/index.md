@@ -31,23 +31,20 @@ DVC addresses this problem by integrating with
 
 ## Summary of advantages
 
-- Reproducibility: match code commits with the corresponding data so you can
-  always go back to different versions of the full project (code, data, models,
-  etc.).
-- Snapshots: track and organize data and machine learning models as they evolve
-  without ad-hoc conventions, using a simple CLI (`dvc add`, `dvc checkout`, and
-  other commands similar to `git` basics).
-- Treat data as code: leverage Git workflow such as commits, branching, pull
-  requests, reviews, and even CI/CD for your data and ML models lifecycle. Think
-  Git for cloud storage.
+- Reproducibility: match code commits with the corresponding data, machine
+  learning models, etc. so you can always recover previous processes.
+- Simple CLI: track data and ML models as they evolve without ad-hoc
+  conventions, with simple commands like `dvc add` or `dvc repro` (similar to
+  `git`).
+- Treat data as code: leverage Git workflow such as branching, pull requests,
+  and even CI/CD for your data lifecycle.
 - Debugging: trace problems using the exact data that was used during
   development.
-- Releasing: Tag stable data and models like you do with code. Employ semantic
-  versioning, connect branches to automatic deployment, etc.
-- Security: Git versioning of
-  [DVC metafiles](/doc/user-guide/dvc-files-and-directories) allows us to audit
-  data changes. And using cloud storage, data access control can be setup per
-  user or project.
+- Releasing: Tag stable data and models like code, using semantic versioning or
+  other standards.
+- Security: [DVC metafiles](/doc/user-guide/dvc-files-and-directories) enable
+  auditing data changes. And data access controls can be setup via cloud storage
+  platforms.
 
 > ## ⚠️ DVC is not Git!
 >

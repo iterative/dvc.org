@@ -17,7 +17,7 @@ datasets. We could see who updated what and when, and use pull requests to
 update data, the same way we do with code.
 
 That's a **data registry**: a data management _middleware_ between ML projects
-and cloud storage.
+and large file storage. Think Git for cloud storage.
 
 ## Summary of advantages
 
@@ -27,18 +27,15 @@ and cloud storage.
 - Persistence: [remote storage](/doc/command-reference/remote) (e.g. an S3
   bucket) controlled by the DVC registry improves data security. There are less
   chances someone can delete or rewrite a model, for example.
-- Storage optimization: track data
-  [shared](/doc/use-cases/sharing-data-and-model-files) by multiple projects
-  centralized in a single location (with the ability to create distributed
-  copies on other remotes). This simplifies data management and optimizes space
-  requirements.
-- Treat data as code: leverage Git workflow such as commits, branching, pull
-  requests, reviews, and even CI/CD for your data and models lifecycle. Think
-  Git for cloud storage.
-- Security: registries can be setup to have read-only remote storage (e.g. an
-  HTTP location). Git versioning of
-  [DVC metafiles](/doc/user-guide/dvc-files-and-directories) allows us to audit
-  data changes.
+- Storage optimization: centralize data
+  [shared](/doc/use-cases/sharing-data-and-model-files) by multiple projects in
+  a single location (distributed copies are possible too). This simplifies data
+  management and optimizes space requirements.
+- Treat data as code: leverage Git workflow such as branching, pull requests,
+  and even CI/CD for your data lifecycle.
+- Security: registries can be setup with read-only remote storage (e.g. an HTTP
+  server). And [DVC metafiles](/doc/user-guide/dvc-files-and-directories) enable
+  auditing data changes.
 
 ## Building registries
 
