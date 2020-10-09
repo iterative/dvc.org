@@ -13,21 +13,21 @@ pipelines fully reproducible by yourself and others.
 
 ![](/img/404) _Data versioning in a nutshell_
 
-Unfortunately, versioning tools like [Git](https://git-scm.com/) are designed to
-handle small text files. DVC begins by enabling the [tracking](#how-it-looks) of
-large datasets and other <abbr>data artifacts</abbr> by replacing them with
-small, human-readable [metafiles](/doc/user-guide/dvc-files-and-directories)
-that `git` can handle. The data itself is <abbr>cached</abbr> outside of Git.
-Other features of DVC build upon this foundation to tackle hurdles specific to
-data science.
+Unfortunately, SCM tools like [Git](https://git-scm.com/) are designed to handle
+small text files, so data scientists can only use them to control part of their
+assets. Storage itself is also severely limited by code hosting services
+[like GitHub](https://docs.github.com/en/github/managing-large-files/what-is-my-disk-quota),
+so transferring and managing a separate data storage is a constant issue.
 
-> 💡 Please see [Get Started](/doc/start) for a primer on all of DVC's features.
+DVC enables [tracking](#how-it-looks) large datasets and other <abbr>data
+artifacts</abbr> by replacing them with small, human-readable
+[metafiles](/doc/user-guide/dvc-files-and-directories) that Git can handle. The
+data itself is <abbr>cached</abbr> outside of Git, and can be synchronized
+automatically with [dedicated storage](#versioned-storage). Other features of
+DVC build upon this foundation to address several other needs of data
+scientists.
 
-Another constraint of source code management is storage, which is severely
-limited by hosting services
-[like GitHub](https://docs.github.com/en/github/managing-large-files/what-is-my-disk-quota).
-DVC addresses this problem by integrating with
-[dedicated storage](#versioned-storage) platforms.
+> 💡 Please see [Get Started](/doc/start) for a primer on DVC's features.
 
 ## Advantages
 
