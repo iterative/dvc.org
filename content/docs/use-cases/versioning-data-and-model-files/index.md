@@ -29,7 +29,7 @@ limited by hosting services
 DVC addresses this problem by integrating with
 [dedicated storage](#versioned-storage) platforms.
 
-## Summary of advantages
+## Advantages
 
 - Reproducibility: match code commits with the corresponding data, machine
   learning models, etc. so you can always recover previous processes.

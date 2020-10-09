@@ -19,7 +19,7 @@ update data, the same way we do with code.
 That's a **data registry**: a data management _middleware_ between ML projects
 and large file storage. Think Git for cloud storage.
 
-## Summary of advantages
+## Advantages
 
 - Reusability: reproduce and organize _feature stores_ with a simple CLI
   (`dvc get` and `dvc import` commands, similar to software package management
