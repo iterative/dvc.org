@@ -23,7 +23,7 @@ data science.
 
 > 💡 Please see [Get Started](/doc/start) for a primer on all of DVC's features.
 
-Another limitation of source code management is storage, which is severely
+Another constraint of source code management is storage, which is severely
 limited by hosting services
 [like GitHub](https://docs.github.com/en/github/managing-large-files/what-is-my-disk-quota).
 DVC addresses this problem by integrating with
