@@ -7,8 +7,11 @@ with the same performance as with small code files? Imagine you can do a
 than a second?
 
 The core part of DVC is a few commands that you can run along with Git to track
-a large file, ML model or a directory. To start tracking a file or directory,
-use `dvc add`:
+a large file, ML model or a directory. Read on, or watch our video docs!
+
+https://youtu.be/kLKBcPonMYw
+
+To start tracking a file or directory, use `dvc add`:
 
 <details>
 
