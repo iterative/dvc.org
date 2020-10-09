@@ -112,7 +112,7 @@ $ dvc version
 DVC version: 1.7.4 (pip)
 ---------------------------------
 Platform: Python 3.8.3 on Linux-5.4.0-47-generic-x86_64-with-debian-buster-sid
-Supports: All remotes
+Supports: gs, hdfs, http, https, s3
 Cache types: hardlink, symlink
 Cache directory: ext4 on /dev/sda1
 Workspace directory: ext4 on /dev/sda1
