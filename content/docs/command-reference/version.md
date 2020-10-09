@@ -127,8 +127,5 @@ $ dvc version
 DVC version: 1.7.4 (pip)
 ---------------------------------
 Platform: Python 3.8.3 on Linux-5.4.0-47-generic-x86_64-with-debian-buster-sid
-Supports: gs, hdfs, http, https, s3
+Supports: All remotes
 ```
-
-> Notice that in the above instance of DVC only four types of remotes are
-> supported this is because only their dependencies are installed.
