@@ -16,7 +16,7 @@ usage: dvc version [-h] [-q | -v]
 | ------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [`DVC version`](#components-of-dvc-version) | Version of DVC, and name of the binary or package manager (`pip`, `conda`, etc.) used to install DVC (along with a Git commit hash in case of a development version) |
 | `Platform`                                  | Version of Python in the environment where DVC is initialized, and information about the operating system                                                            |
-| `Supports`                                  | Types of [remote storages](/doc/command-reference/remote/add#supported-storage-types) supported by current DVC setup (their required dependencies are installed)     |
+| `Supports`                                  | Types of [remote storage](/doc/command-reference/remote/add#supported-storage-types) supported by the current DVC setup (their required dependencies are installed)  |
 | `Cache types`                               | [Types of links](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache) supported (between <abbr>workspace</abbr> and <abbr>cache</abbr>)     |
 | `Cache directory`                           | Filesystem type (e.g. ext4, FAT, etc.) and drive on which the <abbr>cache</abbr> directory is mounted                                                                |
 | `Workspace directory`                       | Filesystem type (e.g. ext4, FAT, etc.) and drive on which the <abbr>workspace</abbr> is mounted                                                                      |
@@ -43,19 +43,18 @@ The detail of DVC version depends upon the way of installing DVC.
   If there are any issues reported with the official build, they can be traced
   using the official version number.
 
-- **Development version**: is a pre-release version of DVC (for example
-  `1.7.4+292cab`). It can be
-  [installed](/doc/user-guide/contributing/core#development-environment) using
-  the master branch of DVC's repository. This version contains all the changes
-  done in the master branch after the latest official release.
+- **Development version**: contains all the changes done to the `master` branch
+  of DVC's repository, following the latest official release (for example
+  `1.7.4+292cab.mod`) . It can be
+  [installed](/doc/user-guide/contributing/core#development-environment) after
+  cloning DVC's repo. Running this setup may result in usage issues, as it
+  contains changes that might not be ready to release yet.
 
-  Installing development version may result in usage issues, as it contains
-  changes that might not be ready to publish yet. Any error reported with this
-  setup can be traced using Git commit hash displayed in the output of
-  `dvc version` like this: `1.7.4+292cab.mod`. The part before `+` is the
-  official version number, and the following part is the commit hash of the tip
-  of the `master` branch. The optional suffix `.mod` means that code is
-  modified.
+  Any errors reported with the development version can be traced using the Git
+  commit hash displayed in the output of `dvc version` like this:
+  `1.7.4+292cab.mod`. The part before `+` is the official version number, and
+  the following part is the commit hash of the tip of the `master` branch. The
+  optional suffix `.mod` means that code is modified.
 
 - **Binary or Package manager**: shows how DVC was downloaded and
   [installed](/doc/install).
