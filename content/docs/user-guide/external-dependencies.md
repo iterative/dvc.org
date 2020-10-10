@@ -210,8 +210,8 @@ outs:
     persist: false
 ```
 
-DVC checks the headers returned by the server, looking for a strong
-[ETag](https://en.wikipedia.org/wiki/HTTP_ETag) or a
+DVC checks the headers returned by the server, looking for an
+[HTTP ETag](https://en.wikipedia.org/wiki/HTTP_ETag) or a
 [Content-MD5](https://tools.ietf.org/html/rfc1864) header, and uses it to
 determine whether the source has changed and we need to download the file again.
 
