@@ -57,11 +57,12 @@ it manually (e.g. `mkdir .dvc/cache`) to enable this check.
 ## Unable to acquire lock {#lock-issue}
 
 You may encounter error message saying `Unable to acquire lock` if you have
-another DVC process running in the project. If that is not the case, manually
-removing lockfile `.dvc/tmp/lock` should resolve the issue. If the issue still
-persists then it may be the case that you are running DVC on some network
-filesystem like NFS, Lustre, etc. If that is the case, the solution is to enable
-`core.hardlink_lock` which can be done by running following command:
+another DVC process running in the project. If that is not the case, it usually
+means that DVC was terminated abruptly and manually removing lockfile
+`.dvc/tmp/lock` should resolve the issue. If the issue still persists then it
+may be the case that you are running DVC on some network filesystem like NFS,
+Lustre, etc. If that is the case, the solution is to enable `core.hardlink_lock`
+which can be done by running following command:
 
 ```
 dvc config core.hardlink_lock true
