@@ -56,7 +56,7 @@ it manually (e.g. `mkdir .dvc/cache`) to enable this check.
 
 ## Unable to acquire lock {#lock-issue}
 
-You may encounter error message saying `Unable to acquire lock` if you have
+You may encounter an error message saying `Unable to acquire lock` if you have
 another DVC process running in the project. If that is not the case, it usually
 means that DVC was terminated abruptly and manually removing lockfile
 `.dvc/tmp/lock` should resolve the issue. If the issue still persists then it
