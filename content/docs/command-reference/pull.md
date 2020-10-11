@@ -112,7 +112,7 @@ used to see what files `dvc pull` would download.
   `dvc remote list`).
 
 - `--run-cache` - downloads all available history of stage runs from the remote
-  repository into the local run cache. A `dvc repro <stage_name>` is necessary
+  repository into the local run-cache. A `dvc repro <stage_name>` is necessary
   to checkout these files into the workspace and update the `dvc.lock` file.
 
 - `-j <number>`, `--jobs <number>` - parallelism level for DVC to download data
