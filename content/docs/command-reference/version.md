@@ -44,8 +44,7 @@ The detail of DVC version depends upon the way of installing DVC.
   using the official version number.
 
 - **Development version**: contains all the changes done to the `master` branch
-  of DVC's repository, following the latest official release (for example
-  `1.7.4+292cab.mod`) . It can be
+  of DVC's repository, following the latest official release. It can be
   [installed](/doc/user-guide/contributing/core#development-environment) after
   cloning DVC's repo. Running this setup may result in usage issues, as it
   contains changes that might not be ready to release yet.
