@@ -366,7 +366,7 @@ pipelines, and try to apply it here. Don't hesitate to join our
 [community](/chat) and ask any questions!
 
 Another detail we only brushed upon here is the way we captured the
-`metrics.csv` metric file with the `-M` option of `dvc run`. Marking this
+`metrics.csv` metrics file with the `-M` option of `dvc run`. Marking this
 <abbr>output</abbr> as a metric enables us to compare its values across Git tags
 or branches (for example, representing different experiments). See `dvc metrics`
 and

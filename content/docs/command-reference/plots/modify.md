@@ -12,7 +12,7 @@ usage: dvc plots modify [-h] [-q | -v] [-t <name_or_path>] [-x <field>]
                         target
 
 positional arguments:
-  target                Metric file to set properties to
+  target                Metrics file to set properties to
 ```
 
 ## Description
