@@ -1,3 +1,8 @@
+---
+description: |
+  Get started with data versioning in DVC. Learn how to use a regular Git workflow for large files, datasets, and ML models, without storing large files in Git.
+---
+
 # Data Versioning
 
 How cool would it be to make Git handle arbitrary large files and directories
@@ -7,7 +12,8 @@ with the same performance as with small code files? Imagine you can do a
 than a second?
 
 The core part of DVC is a few commands that you can run along with Git to track
-a large file, ML model or a directory. Read on, or watch our video docs!
+a large file, ML model or a directory. Read on or watch our video docs to learn
+about versioning data with DVC!
 
 https://youtu.be/kLKBcPonMYw
 
