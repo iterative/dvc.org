@@ -50,7 +50,7 @@ The detail of DVC version depends upon the way of installing DVC.
   contains changes that might not be ready to release yet.
 
   Any errors reported with the development version can be traced using the Git
-  commit hash displayed in the output of `dvc version` like this:
+  commit hash displayed in the output of `dvc version`, for example:
   `1.7.4+292cab.mod`. The part before `+` is the official version number, and
   the following part is the commit hash of the tip of the `master` branch. The
   optional suffix `.mod` means that code is modified.
