@@ -1,3 +1,8 @@
+---
+description: |
+  Learn how DVC data pipelines can help you organize, version, and efficiently reproduce your data science or machine learning project.
+---
+
 # Data Pipelines
 
 Versioning large data files and directories for data science is great, but not
@@ -5,9 +10,14 @@ enough. How is data filtered, transformed, or used to train ML models? DVC
 introduces a mechanism to capture _data pipelines_ — series of data processes
 that produce a final result.
 
-DVC pipelines and their data can also be easily versioned (using Git). This
-allows you to better organize your project, and reproduce your workflow and
-results later exactly as they were built originally!
+A DVC pipeline uses stages to describe how models and other data artifacts are
+built, and provides an efficient way to reproduce them. This allows you to
+capture simple data workflows, organize data science projects, or build detailed
+machine learning pipelines (to name a few use cases).
+
+You can easily version DVC pipelines and their data (using Git). This allows you
+to better organize your project and reproduce your workflow and results later —
+exactly as they were built originally!
 
 ## Pipeline stages
 
