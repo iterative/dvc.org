@@ -1,7 +1,8 @@
 ---
 title: 'Tutorial: Data & Model Versioning'
-description: |
-  Get experience with data versioning in a basic machine learning version control scenario: managing multiple datasets and ML model versions using DVC commands.
+description: 'Get experience with data versioning in a basic machine learning
+version control scenario: managing multiple datasets and ML model versions using
+DVC commands.'
 ---
 
 # Tutorial: Data & Model Versioning
