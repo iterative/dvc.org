@@ -46,27 +46,100 @@ advanced features of DVC build upon this foundation.
 
 ## How it looks
 
-Working on data processing code, it's easy to overlook that the initial data
-also changes along the way. If something goes wrong (or for any other reason),
-it's easy to revisit previous versions of the code with Git. But the results may
-still be different if using the latest data.
+It's easy to revisit previous versions of the code with Git, but the data also
+changes along the way. With DVC, we can achieve true
+[reproducibility](/doc/start/data-pipelines) by matching code commits with
+snapshots of the data used at the time. DVC [commands](/doc/command-reference)
+and metafiles aim to make this intuitive.
 
-To "eliminate this variable" and achieve full
-[reproducibility](/doc/start/data-pipelines), we can use `dvc add` to capture
-data snapshots that match code checkpoints:
+### Basics of tracking and caching data
+
+The following project directory contains a couple of large data files in
+subdirectories of `data/`, along with some source code to process it:
 
 ```dvc
-$ git add cleanup.c
-$ dvc add data/raw
+.
+├── data
+│   ├── labels.csv        # Many MB of labeled data here
+│   └── transactions.csv  # Several GB of raw historic data
+├── training.py
+```
+
+The `dvc add` command captures the essence of existing files or directories in
+the <abbr>workspace</abbr> as `.dvc` files, tiny placeholders for the data that
+can be put in Git. Similarly, `dvc.lock` files can also refer to any data
+<abbr>output</abbr> by running the project's code (see `dvc repro` and
+`dvc run`). All tracked data contents are saved to the <abbr>DVC cache</abbr>,
+and linked\* back to their original location:
+
+> \* See
+> [Large Dataset Optimization](/doc/user-guide/large-dataset-optimization) and
+> `dvc config cache` for more info on file linking.
+
+```git
+ .
++├── .dvc     # Hidden DVC internals
++│   ├── cache
++│   │   ├── b6...  # data/ contents moved here
++│   │   └── ed...  # model.pkl moved here
++│   ...
+ ├── data           # Now a link to the cache
+ │   ├── labels.csv
+ │   └── transactions.csv
+ ...
++├── data.dvc   # Points to data/
++├── dvc.lock   # Points to model.h5
++├── dvc.yaml   # Wrapper for running training.py
++├── model.h5   # Final result (also a link to the cache)
+ ├── training.py
+```
+
+> See also `dvc.yaml`.
+
+The `data.dvc` and `dvc.lock` metafiles connect workspace and cache. Let's see
+their contents:
+
+```yaml
+outs:
+  - md5: b6e29fb8740486c7e64a240e45505e41.dir
+    path: data
+```
+
+```yaml
+stages:
+  train_model:
+    cmd: python training.py data/ model.h5
+    deps:
+      - path: data
+        md5: b6e29fb8740486c7e64a240e45505e41.dir
+    outs:
+      - path: model.h5
+        md5: ede2872bedbfe10342bb1c416e2f049f
+```
+
+These metafiles, along with your code, can safely be put into a Git repo. The
+tracked data in the workspace and the cache are separated by DVC (via
+`.gitignore`).
+
+### Version control
+
+DVC doesn't replace Git. Having codified datasets, data pipelines, and their
+outputs, use regular `git` commands to create versions (commits, tags, branches,
+etc.):
+
+```dvc
+$ git add cleanup.sh
+$ dvc add data/
 ...
-$ git add data/raw.dvc data/.gitignore
+$ git add data.dvc data/.gitignore
 
 $ git commit -m 'Data cleanup v1.0'
 ```
 
-Now that Git is tracking the code (including a `.dvc` file created by DVC), and
-DVC is tracking the data, we can repeat the procedure to generate more commits.
-Use `dvc checkout` to go back:
+Now that Git is tracking the code (including
+[DVC metafiles](/doc/user-guide/dvc-files-and-directories)), and DVC is tracking
+the data, we can repeat the procedure to generate more commits. Use
+`dvc checkout` to go back:
 
 ```dvc
 $ git checkout v1.0
