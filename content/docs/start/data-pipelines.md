@@ -1,6 +1,6 @@
 ---
-description: |
-  Learn how DVC data pipelines can help you organize, version, and efficiently reproduce your data science or machine learning project.
+description: 'Learn how DVC data pipelines can help you organize, version, and
+efficiently reproduce your data science or machine learning project.'
 ---
 
 # Data Pipelines
