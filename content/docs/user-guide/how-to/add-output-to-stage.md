@@ -43,7 +43,7 @@ That's it, the new output has been added to the `prepare` stage.
 > the command.
 
 Finally, we need to run `dvc commit`. It saves the newly specified outputs to
-the <abbr>cache</abbr> and updates their hash values in `dvc.lock`:
+the <abbr>cache</abbr> (and updates their hash values in `dvc.lock`):
 
 ```dvc
 $ dvc commit
