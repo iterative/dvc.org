@@ -159,9 +159,9 @@ file:///Users/usr/src/plots/logs.csv.html
 
 ## Example: Vega specification file
 
-In many automation scenarios (like CI/CD for ML), it is convenient to have the
+In many automation scenarios (like CI/CD for ML), it is convenient to output the
 [Vega specification](https://vega.github.io/vega/docs/specification/) file
-instead of a rendered HTML plot file. For example, to generating another image
+instead of rendering an HTML plot. For example, to generating another image
 format like PNG or JPEG, or to include it differently into a web/mobile app. The
 `--show-vega` option prevents wrapping this plot spec in HTML. Note that the
 resulting file is JSON:
