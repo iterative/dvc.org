@@ -6,7 +6,8 @@ Print [metrics](/doc/command-reference/metrics), with optional formatting.
 
 ```usage
 usage: dvc metrics show [-h] [-q | -v] [-a] [-T] [--all-commits] [-R]
-                        [--show-json] [targets [targets ...]]
+                        [--show-json]
+                        [targets [targets ...]]
 
 positional arguments:
   targets               Limit command scope to these metrics files.

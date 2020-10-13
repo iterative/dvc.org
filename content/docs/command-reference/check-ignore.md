@@ -6,8 +6,8 @@ patterns found in [`.dvcignore`](/doc/user-guide/dvcignore).
 ## Synopsis
 
 ```usage
-usage: usage: dvc check-ignore [-h] [-q | -v] [-d] [-a] [-n] [--stdin]
-                               targets [targets ...]
+usage: dvc check-ignore [-h] [-q | -v] [-d] [-a] [-n] [--stdin]
+                        targets [targets ...]
 
 positional arguments:
   targets        File or directory paths to check
