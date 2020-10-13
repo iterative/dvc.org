@@ -7,7 +7,8 @@ current `dvc.lock` and `.dvc` files.
 
 ```usage
 usage: dvc checkout [-h] [-q | -v] [--summary] [-d] [-R] [-f]
-                    [--relink] [targets [targets ...]]
+                    [--relink]
+                    [targets [targets ...]]
 
 positional arguments:
   targets       Limit command scope to these tracked files/directories,

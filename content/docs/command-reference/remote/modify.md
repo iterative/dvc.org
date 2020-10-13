@@ -9,8 +9,8 @@ Modify the configuration of a [data remote](/doc/command-reference/remote).
 ## Synopsis
 
 ```usage
-usage: dvc remote modify [-h] [--global | --system | --local]
-                         [-q | -v] [-u]
+usage: dvc remote modify [-h] [--global | --system | --local] [-q | -v]
+                         [-u]
                          name option [value]
 
 positional arguments:
