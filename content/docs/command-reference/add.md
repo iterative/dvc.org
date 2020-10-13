@@ -7,7 +7,8 @@ file.
 
 ```usage
 usage: dvc add [-h] [-q | -v] [-R] [--no-commit] [--external]
-               [--file <filename>] targets [targets ...]
+               [--file <filename>]
+               targets [targets ...]
 
 positional arguments:
   targets               Files or directories to add
