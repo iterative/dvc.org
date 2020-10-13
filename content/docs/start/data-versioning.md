@@ -1,6 +1,6 @@
 ---
 description: 'Get started with data versioning in DVC. Learn how to use a
-regular Git workflow for datasets, and ML models, without storing large files in
+regular Git workflow for datasets and ML models, without storing large files in
 Git.'
 ---
 
