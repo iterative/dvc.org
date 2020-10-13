@@ -29,7 +29,7 @@ advanced features of DVC build upon this foundation.
 
 > 💡 Please see [Get Started](/doc/start) for a primer on DVC's features.
 
-## Advantages
+## Advantages of versioning data with DVC
 
 - Simple CLI: track data and ML models as they evolve without ad-hoc
   conventions, with simple commands like `dvc add` or `dvc repro` (similar to
