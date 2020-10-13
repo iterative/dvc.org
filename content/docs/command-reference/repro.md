@@ -14,7 +14,7 @@ usage: dvc repro [-h] [-q | -v] [-f] [-s] [-c <path>] [-m] [--dry] [-i]
                  [targets [targets ...]]
 
 positional arguments:
-  targets        Stage or .dvc file to reproduce
+  targets        Stage, path to dvc.yaml or .dvc file to reproduce
 ```
 
 ## Description
@@ -255,14 +255,41 @@ You can now check that `dvc.lock` and `count.txt` have been updated with the new
 information: updated dependency/output file hash values, and a new result,
 respectively.
 
+## Example: Specific stage
+
+> This example continues the previous one.
+
+We can use `dvc repro` to reproduce a pipeline partially till a specific stage.
+Let's add this line to `text.txt` (the input of our first stage, created in the
+previous example):
+
+```
+...
+4321
+```
+
+Now, specify the `count` stage as a `target` with `dvc repro`. This results in
+the execution of `count`, and all the preceding stages in the pipeline (only
+`filter` in this example):
+
+```dvc
+$ dvc repro count
+Running stage 'filter' with command:
+      cat text.txt | egrep '[0-9]+' > numbers.txt
+Updating lock file 'dvc.lock'
+
+Running stage 'count' with command:
+	    python process.py numbers.txt > count.txt
+Updating lock file 'dvc.lock'
+```
+
 ## Example: Downstream
 
 > This example continues the previous one.
 
 The `--downstream` option allows us to only reproduce results from commands
 after a specific stage in a pipeline. To demonstrate how it works, let's make a
-change in `text.txt` (the input of our first stage, created in the previous
-example):
+change in `text.txt`:
 
 ```
 ...
