@@ -1,6 +1,7 @@
 ---
-description: |
-  Get started with data versioning in DVC. Learn how to use a regular Git workflow for large files, datasets, and ML models, without storing large files in Git.
+description: 'Get started with data versioning in DVC. Learn how to use a
+regular Git workflow for large files, datasets, and ML models, without storing
+large files in Git.'
 ---
 
 # Data Versioning
