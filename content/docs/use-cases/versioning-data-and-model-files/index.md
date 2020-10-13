@@ -4,35 +4,33 @@
 staple in software engineering because it allows effective collaboration on
 source code. This means having a change history to traverse (commits), clean
 parallel work (branching and merging), peer-reviews (pull requests), release
-management, etc.
+management, etc. Imagine enjoying similar capabilities in data science!
 
-Imagine leveraging similar features in data science! Track different versions of
-datasets and machine learning models easily; Codify data artifacts and data
-processes so they can be developed using proven best practices; Make your data
-pipelines fully reproducible by yourself and others.
+- Organize and share different versions of datasets and machine learning models
+  easily.
+- Codify data artifacts and processes to manage them with existing tools and
+  best practices.
+- Make data pipelines fully reproducible by yourself and others.
 
 ![](/img/404) _Data versioning in a nutshell_
 
 Unfortunately, SCM tools like [Git](https://git-scm.com/) are designed to handle
-small text files, so data scientists can only use them to control part of their
-assets. Storage itself is also severely limited by code hosting services
+small text files, so data scientists can only control part of their assets that
+way. Storage itself is also severely limited by code hosting services
 [like GitHub](https://docs.github.com/en/github/managing-large-files/what-is-my-disk-quota),
-so transferring and managing a separate data storage is a constant issue.
+so transferring and managing data storage separately is a constant hurdle.
 
 DVC enables [tracking](#how-it-looks) large datasets and other <abbr>data
-artifacts</abbr> by replacing them with small, human-readable
-[metafiles](/doc/user-guide/dvc-files-and-directories) that Git can handle. The
-data itself is <abbr>cached</abbr> outside of Git, and can be synchronized
-automatically with [dedicated storage](#versioned-storage). Other features of
-DVC build upon this foundation to address several other needs of data
-scientists.
+artifacts</abbr> in Git by replacing them with small, human-readable
+[metafiles](/doc/user-guide/dvc-files-and-directories). The data itself is
+<abbr>cached</abbr> outside of Git (locally or externally), and can be
+synchronized automatically with [dedicated storage](#versioned-storage). More
+advanced features of DVC build upon this foundation.
 
 > 💡 Please see [Get Started](/doc/start) for a primer on DVC's features.
 
 ## Advantages
 
-- Reproducibility: match code commits with the corresponding data, machine
-  learning models, etc. so you can always recover previous processes.
 - Simple CLI: track data and ML models as they evolve without ad-hoc
   conventions, with simple commands like `dvc add` or `dvc repro` (similar to
   `git`).
