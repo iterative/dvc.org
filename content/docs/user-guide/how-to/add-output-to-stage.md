@@ -5,7 +5,7 @@ There are situations where we run a stage without specifying all the
 we use `dvc run` to add outputs, it will re-run the stage.
 
 Running a stage is an expensive step, as it requires time and resources to
-execute the command. Follow the steps listed below to add an output to the stage
+execute the command. Follow the steps below to add an output to the stage
 without running it again.
 
 We have an example stage `prepare` defined in `dvc.yaml`. To add another output
