@@ -6,15 +6,17 @@ Git.'
 
 # Data Versioning
 
-How cool would it be to make Git handle arbitrary large files and directories
-with the same performance as with small code files? Imagine you can do a
-`git clone` and see data files and ML model files in the workspace. Or do
-`git checkout` and switch to a different version of a 100Gb size file in a less
-than a second?
-
 The core part of DVC is a few commands that you can run along with Git to track
-a large file, ML model or a directory. Read on or watch our video docs to learn
-about versioning data with DVC!
+a large file, ML model, or a directory. Think "Git for data". For example, you
+can use DVC and Git to:
+
+- Track large files and directories in Git with the same performance as small
+  code files.
+- See data files and ML model files next to code in your workspace with
+  `git clone`.
+- Switch between versions of a 100GB dataset instantly with `git checkout`.
+
+Read on or watch our video docs to learn about versioning data with DVC!
 
 https://youtu.be/kLKBcPonMYw
 
