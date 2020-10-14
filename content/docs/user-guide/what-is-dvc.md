@@ -51,8 +51,14 @@ can version experiments, manage large datasets, and make projects reproducible.
 ## DVC is not Git!
 
 DVC metafiles such as `dvc.yaml` and `.dvc` files serve as placeholders to track
-large data files and directories for versioning (among other purposes). They
-provide the ability to store multiple data versions out-of-the-box, but this
-does not replace any SCM features. Full-fledged
+large data files and directories for versioning (among other
+[purposes](/doc/user-guide/dvc-files-and-directories)). These metafiles change
+along with your data, and you can use Git to place them under
 [version control](https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control)
-is left for Git to handle, however.
+as a proxy to the actual data versions, which are stored in the <abbr>DVC
+cache</abbr> (outside of Git). This does not replace features of Git.
+
+DVC does, however, provide several commands that are somewhat analogous to their
+Git counterparts, and that interact with the underlying Git repo (if one is
+being used, which is not required). For example: `dvc init`, `dvc add`,
+`dvc checkout`, `dvc push`, among others.
