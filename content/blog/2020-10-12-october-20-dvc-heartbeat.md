@@ -2,10 +2,12 @@
 title: October '20 Heartbeat
 date: 2020-10-12
 description: |
-  This month, hear about our international talks, new video docs, 
+  This month, hear about our international talks, 
+  new video docs on our YouTube channel, 
   and the best tutorials from our community.
 descriptionLong: |
-  This month, hear about our international talks, new video docs, 
+  This month, hear about our international talks, 
+  new video docs on our YouTube channel, 
   and the best tutorials from our community.
 picture: 2020-10-12/cover.png
 pictureComment:
@@ -16,8 +18,10 @@ tags:
   - Heartbeat
   - CML
   - DVC
-  - Google Drive
-  - Tutorials
+  - Tutorial
+  - Conference
+  - Meetup
+  - YouTube
 ---
 
 ## News
@@ -48,7 +52,7 @@ thanks to the magic of the internet :)
 <external-link
 href="https://www.meetup.com/Data-Engineering-Melbourne/"
 title="Data Engineering Melbourne"
-description=""
+description="Dmitry Petrov presents on DataOps and automation."
 link="meetup.com"
 image="/uploads/images/2020-10-12/Meetup_Logo.png"/>
 
@@ -73,9 +77,10 @@ so please consider joining!
 ### DVC at DataFest
 
 DVC Ambassador Mikhail Rozhkov co-hosted the Machine Learning REPA
-(Reproducibility, Experiments and Pipelines Automation) track of DataFest 2020,
-and DVC showed up in full force! There were talks from Dmitry, ambassador Marcel
-Ribeiro-Dantas, and myself about all aspects of MLOps and automation.
+(Reproducibility, Experiments and Pipelines Automation) track of
+[DataFest 2020](https://datafest.ru/), and DVC showed up in full force! There
+were talks from Dmitry, ambassador Marcel Ribeiro-Dantas, and myself about all
+aspects of MLOps and automation.
 
 DataFest is over (until next year, anyway), but
 [visit the ML-REPA community](http://ml-repa.ru/en#about) for ongoing content
