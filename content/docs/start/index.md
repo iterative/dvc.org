@@ -1,3 +1,9 @@
+---
+description: 'A step-by-step introduction: Learn how to use DVC to organize,
+version, and efficiently reproduce your data science or machine learning
+project.'
+---
+
 # Get Started
 
 Assuming DVC is already [installed](/doc/install), let's initialize it by
@@ -11,7 +17,7 @@ In expandable sections that start with the ⚙️ emoji, we'll be providing more
 information for those trying to run the commands. It's up to you to pick the
 best way to read the material - read the text (skip sections like this, and it
 should be enough to understand the idea of DVC), or try to run them and get the
-fist hand experience.
+first hand experience.
 
 We'll be building an NLP project from scratch together. The end result is
 published on [GitHub](https://github.com/iterative/example-get-started).
@@ -53,12 +59,13 @@ next few sections:
 
 - [**Data access**](/doc/start/data-access) shows how to use data artifacts from
   outside of the project and how to import data artifacts from another DVC
-  project. This can help to download a specific version of an ML model to a
-  deployment server or import a model to another project.
+  project. This can help to download a specific version of a machine learning
+  model to a deployment server or import a model to another project.
 
 - [**Data pipelines**](/doc/start/data-pipelines) describe how models and other
   data artifacts are built, and provide an efficient way to reproduce them.
   Think "Makefiles for data and ML projects" done right.
 
 - [**Experiments**](/doc/start/experiments) attach parameters, metrics, plots.
-  You can capture and navigate experiments not leaving Git. Think "Git for ML".
+  You can capture and navigate experiments without leaving Git. Think "Git for
+  machine learning".
