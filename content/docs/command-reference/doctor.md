@@ -1,6 +1,7 @@
 # doctor
 
-Alias for `dvc version`. Display the DVC version along with environment and project information.
+Alias for `dvc version`. Display the DVC version along with environment and
+project information.
 
 ## Synopsis
 
