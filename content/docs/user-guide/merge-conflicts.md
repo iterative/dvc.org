@@ -30,7 +30,7 @@ stages:
 
 ## `dvc.lock`
 
-There's no need to resolve lockfile conflicts manually. You can safely delete
+There's no need to resolve lock file conflicts manually. You can safely delete
 this file and then use `dvc repro` after merging `dvc.yaml` to regenerate this
 file.
 

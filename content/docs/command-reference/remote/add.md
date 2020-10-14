@@ -9,7 +9,8 @@ Add a new [data remote](/doc/command-reference/remote).
 
 ```usage
 usage: dvc remote add [-h] [--global | --system | --local] [-q | -v]
-                      [-d] [-f] name url
+                      [-d] [-f]
+                      name url
 
 positional arguments:
   name           Name of the remote.

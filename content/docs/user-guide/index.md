@@ -1,6 +1,6 @@
 # User Guide
 
-Our guides describe the major features and concepts of DVC comprehensively,
+Our guides describe the major concepts in DVC and how it works comprehensively,
 explaining when and how to use them, as well as relationship between these. We
 don't focus on specific scenarios in this section, but rather on a general
 scope. The topics here range from more foundational, impacting more parts of
