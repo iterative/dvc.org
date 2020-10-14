@@ -52,7 +52,7 @@ thanks to the magic of the internet :)
 <external-link
 href="https://www.meetup.com/Data-Engineering-Melbourne/"
 title="Data Engineering Melbourne"
-description="Dmitry Petrov presents on DataOps and automation."
+description="Dmitry Petrov presents on DataOps and versioning."
 link="meetup.com"
 image="/uploads/images/2020-10-12/Meetup_Logo.png"/>
 
