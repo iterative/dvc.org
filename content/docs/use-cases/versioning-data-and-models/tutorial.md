@@ -1,4 +1,4 @@
-# Tutorial: Data & Model Versioning
+# Tutorial: Data and Model Versioning
 
 The goal of this example is to give you some hands-on experience with a basic
 machine learning version control scenario: managing multiple datasets and ML

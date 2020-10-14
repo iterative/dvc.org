@@ -65,9 +65,8 @@
     "source": "use-cases/index.md",
     "children": [
       {
-        "label": "Versioning Data & Model Files",
-        "slug": "versioning-data-and-model-files",
-        "source": "versioning-data-and-model-files/index.md",
+        "slug": "versioning-data-and-models",
+        "source": "versioning-data-and-models/index.md",
         "children": ["tutorial"]
       },
       {

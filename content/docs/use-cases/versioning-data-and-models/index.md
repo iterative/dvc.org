@@ -1,4 +1,4 @@
-# Versioning Data and Model Files
+# Versioning Data and Models
 
 [Version control](https://en.wikipedia.org/wiki/Version_control) has become a
 staple in software engineering because it allows effective collaboration on
