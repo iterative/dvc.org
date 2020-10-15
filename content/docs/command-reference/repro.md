@@ -261,7 +261,7 @@ respectively.
 > This example continues the previous one.
 
 We can use `dvc repro` to reproduce a pipeline partially till a specific stage.
-Let's add this line to `text.txt`:
+Let's add a line to `text.txt` , for example:
 
 ```
 ...
