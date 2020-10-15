@@ -106,6 +106,10 @@ Relevant notes:
   also means that the stage command needs to recreate any directory structures
   defined as outputs every time its executed by DVC.
 
+- Missing outputs can be
+  [added to an existing stage](/docs/user-guide/how-to/add-output-to-stage)
+  without running it again.
+
 - Renaming dependencies or outputs requires a
   [manual process](/doc/command-reference/move#renaming-stage-outputs) to update
   `dvc.yaml` and the project's cache accordingly.
@@ -143,11 +147,6 @@ variables in it that should be evaluated dynamically. Examples:
 $ dvc run -n my_stage "./my_script.sh > /dev/null 2>&1"
 $ dvc run -n my_stage './my_script.sh $MYENVVAR'
 ```
-
-Using `dvc run` with the `--no-exec` option doesn't execute the `command` and
-can be used to
-[add output to a stage](/docs/user-guide/how-to/add-output-to-stage) without
-re-running it.
 
 ## Options
 

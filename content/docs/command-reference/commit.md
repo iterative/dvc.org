@@ -34,9 +34,11 @@ scenarios are further detailed below.
 
 - It's always possible to manually execute the source code used in a stage
   without DVC (outputs must be unprotected or removed first in certain cases,
-  see `dvc unprotect`). Once a desirable result is reached, use `dvc add` or
-  `dvc commit` as appropriate to update the `dvc.lock` or `.dvc` files and store
-  changed data to the cache.
+  see `dvc unprotect`). We can also
+  [add outputs to an existing stage](/docs/user-guide/how-to/add-output-to-stage)
+  without executing it again. Once a desirable result is reached, use `dvc add`
+  or `dvc commit` as appropriate to update the `dvc.lock` or `.dvc` files and
+  store changed data to the cache.
 
 - Sometimes we want to edit source code, config, or data files in a way that
   doesn't cause changes in the results of their data pipeline. We might write
@@ -70,10 +72,6 @@ Note that it's best to avoid the last two scenarios. They essentially
 force-update the `dvc.lock` or `.dvc` files and save data to cache. They are
 still useful, but keep in mind that DVC can't guarantee reproducibility in those
 cases.
-
-We can [add outputs to a stage](/docs/user-guide/how-to/add-output-to-stage)
-without re-running it, and `dvc commit` is used to save the newly specified
-output to the cache and update `dvc.lock`.
 
 ## Options
 
