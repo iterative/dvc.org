@@ -9,8 +9,7 @@ as it requires time and resources. Follow the steps below to add an output to
 the stage without executing it again.
 
 We start with an example `prepare` stage in `dvc.yaml`, which has a single
-output. To add a missing output `data/validate` to this stage, we can edit the
-file like this:
+output. To add a missing output to this stage, we can edit `dvc.yaml` like this:
 
 ```git
  stages:
@@ -22,6 +21,8 @@ file like this:
      - data/train
 +    - data/validate
 ```
+
+We have added `data/validate` as an output to the `prepare` stage.
 
 > Note that you can also use `dvc run` with the `-f` and `--no-exec` options to
 > add another output to the stage:
