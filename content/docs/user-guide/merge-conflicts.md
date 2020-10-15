@@ -39,8 +39,8 @@ file.
 
 ## `.dvc` files
 
-There are three three main variations in the structure of these files, that
-differ by the command that has generated them:
+There are three main variations in the structure of these files, that differ by
+the command that has generated them:
 
 ### Simple tracking (add)
 
@@ -74,7 +74,7 @@ versions, then you can follow this process:
 3. Merge it by-hand;
 4. Finally, run `dvc add data.xml` to overwrite the conflicted `.dvc` file.
 
-#### Append-only directories
+### Append-only directories
 
 If you have an "append-only" dataset, where people only add new
 files/directories, DVC provides a so-called
