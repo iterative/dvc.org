@@ -16,10 +16,9 @@ repository would have all the metadata and history of changes in the different
 datasets. We could see who updated what and when, and use pull requests to
 update data, the same way we do with code.
 
-That's a **data registry**: a data management _middleware_ between ML projects
-and large file storage. Think Git for cloud storage.
-
-## Advantages
+That's what we call a **data registry**: a data management _middleware_ between
+ML projects and large file storage. Think Git for cloud storage. Here are some
+of it's advantages:
 
 - Reusability: reproduce and organize _feature stores_ with a simple CLI
   (`dvc get` and `dvc import` commands, similar to software package management
@@ -32,7 +31,7 @@ and large file storage. Think Git for cloud storage.
   a single location (distributed copies are possible too). This simplifies data
   management and optimizes space requirements.
 - Treat data as code: leverage Git workflow such as branching, pull requests,
-  and even CI/CD for your data lifecycle.
+  release management, and even CI/CD for your data lifecycle.
 - Security: registries can be setup with read-only remote storage (e.g. an HTTP
   server). And [DVC metafiles](/doc/user-guide/dvc-files-and-directories) enable
   auditing data changes.

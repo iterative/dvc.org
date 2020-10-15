@@ -77,7 +77,7 @@ outs:
 
 > \* See
 > [Large Dataset Optimization](/doc/user-guide/large-dataset-optimization) and
-> `dvc config cache` for more info on file linking.
+> `dvc config cache` for more info. on file linking.
 
 </details>
 
