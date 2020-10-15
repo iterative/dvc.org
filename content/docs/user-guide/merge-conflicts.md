@@ -39,8 +39,8 @@ file.
 
 ## `.dvc` files
 
-There are three main variations in the structure of these files, that
-differ by the command that has generated them:
+There are three main variations in the structure of these files, that differ by
+the command that has generated them:
 
 ### Simple tracking (add)
 
