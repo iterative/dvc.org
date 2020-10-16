@@ -227,7 +227,6 @@ these settings, you could use the following options.
   > - [ACL Overview - Permissions](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#permissions)
   > - [Put Object ACL](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObjectAcl.html)
 
-
 S3 remotes can also be configured entirely via environment variables:
 
 ```dvc
@@ -257,13 +256,13 @@ $ dvc remote modify myremote endpointurl \
                     https://object-storage.example.com
 ```
 
-Besides that, any settings that are available for AWS S3 and described above, are
-available for an S3 compatible storage if it supports them.
+Besides that, any settings that are available for AWS S3 and described above,
+are available for an S3 compatible storage if it supports them.
 
 For example, the
 [tutorial for DigitalOcean spaces](https://www.digitalocean.com/community/tutorials/how-to-create-a-digitalocean-space-and-api-key)
-creates a space (equivalent to an AWS bucket) called `example-name` in the `nyc3`
-region. Your remote settings would be set like this: 
+creates a space (equivalent to an AWS bucket) called `example-name` in the
+`nyc3` region. Your remote settings would be set like this:
 
 ```dvc
 $ dvc remote add -d myremote s3://example-name/path/to/use
