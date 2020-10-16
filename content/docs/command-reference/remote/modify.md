@@ -245,6 +245,8 @@ $ dvc remote modify myremote endpointurl \
                     https://object-storage.example.com
 ```
 
+For example, the [tutorial for DigitalOcean spaces](https://www.digitalocean.com/community/tutorials/how-to-create-a-digitalocean-space-and-api-key) creates a space (equivalent to an AWS bucket) called `example-name` in the nyc3 region. Your remote url would be set with `dvc remote add -d myremote s3://example-name` or `dvc remote add -d myremote s3://example-name/path/to/use` and the endpointurl with `dvc remote modify myremote https://nyc3.digitaloceanspaces.com`
+
 S3 remotes can also be configured entirely via environment variables:
 
 ```dvc
