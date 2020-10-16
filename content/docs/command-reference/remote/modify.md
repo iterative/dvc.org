@@ -227,6 +227,18 @@ these settings, you could use the following options.
   > - [ACL Overview - Permissions](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#permissions)
   > - [Put Object ACL](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObjectAcl.html)
 
+
+S3 remotes can also be configured entirely via environment variables:
+
+```dvc
+$ export AWS_ACCESS_KEY_ID='<my-access-key>'
+$ export AWS_SECRET_ACCESS_KEY='<my-secret-key>'
+$ dvc remote add -d myremote s3://mybucket/my/path
+```
+
+For more information about the variables DVC supports, please visit
+[boto3 documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/configuration.html#environment-variable-configuration)
+
 </details>
 
 <details>
@@ -245,18 +257,18 @@ $ dvc remote modify myremote endpointurl \
                     https://object-storage.example.com
 ```
 
-For example, the [tutorial for DigitalOcean spaces](https://www.digitalocean.com/community/tutorials/how-to-create-a-digitalocean-space-and-api-key) creates a space (equivalent to an AWS bucket) called `example-name` in the nyc3 region. Your remote url would be set with `dvc remote add -d myremote s3://example-name` or `dvc remote add -d myremote s3://example-name/path/to/use` and the endpointurl with `dvc remote modify myremote https://nyc3.digitaloceanspaces.com`
+Besides that, any settings that are available for AWS S3 and described above, are
+available for an S3 compatible storage if it supports them.
 
-S3 remotes can also be configured entirely via environment variables:
+For example, the
+[tutorial for DigitalOcean spaces](https://www.digitalocean.com/community/tutorials/how-to-create-a-digitalocean-space-and-api-key)
+creates a space (equivalent to an AWS bucket) called `example-name` in the `nyc3`
+region. Your remote settings would be set like this: 
 
 ```dvc
-$ export AWS_ACCESS_KEY_ID='<my-access-key>'
-$ export AWS_SECRET_ACCESS_KEY='<my-secret-key>'
-$ dvc remote add -d myremote s3://mybucket/my/path
+$ dvc remote add -d myremote s3://example-name/path/to/use
+$ dvc remote modify myremote https://nyc3.digitaloceanspaces.com
 ```
-
-For more information about the variables DVC supports, please visit
-[boto3 documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/configuration.html#environment-variable-configuration)
 
 </details>
 
