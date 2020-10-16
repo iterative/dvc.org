@@ -12,4 +12,4 @@ usage: dvc doctor [-h] [-q | -v]
 
 ## Description
 
-For full details, see [`version`](/doc/command-reference/version).
+Refer to `dvc version` for details.
