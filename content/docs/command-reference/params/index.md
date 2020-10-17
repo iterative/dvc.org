@@ -149,27 +149,27 @@ $ dvc run -n train -d logs/ -o users.csv \
 Consider this Python parameters file named `params.py`:
 
 ```python
-# All standard types are supported
 BOOL = True
 INT = 5
 STR = 'abc'
-DICT = { 'a': 1, 'b': 2}
+DICT = {'a': 1, 'b': 2}
 # etc.
-
 
 # DVC can retrieve class constants and variables defined in __init__
 class TrainConfig:
+
     EPOCHS = 70
 
     def __init__(self):
         self.layers = 5
-        self.layers = 9     # TrainConfig.layers param will be 9
-        self.sum = 1 + 2    # Will NOT be found due to the expression
+        self.layers = 9  # TrainConfig.layers param will be 9
+        self.sum = 1 + 2  # Will NOT be found due to the expression
 
 
 class TestConfig:
-    TEST_DIR = "path"
-    METRICS = ["metric"]
+
+    TEST_DIR = 'path'
+    METRICS = ['metric']
 ```
 
 The following [stage](/doc/command-reference/run) depends on params `BOOL`,
