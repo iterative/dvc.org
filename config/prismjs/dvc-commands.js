@@ -42,6 +42,7 @@ module.exports = [
   'gc',
   'freeze',
   'fetch',
+  'doctor',
   'diff',
   'destroy',
   'dag',

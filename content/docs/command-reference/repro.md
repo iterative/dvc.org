@@ -232,8 +232,8 @@ Stage 'count' didn't change, skipping
 Data and pipelines are up to date.
 ```
 
-It makes sense, since we haven't changed neither of the dependencies this
-pipeline has: `text.txt` or `process.py`. Now, let's imagine we want to print a
+It makes sense, since we haven't changed any of the dependencies of this
+pipeline (`text.txt` and `process.py`). Now, let's imagine we want to print a
 description and we add this line to the `process.py`:
 
 ```python

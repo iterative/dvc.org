@@ -184,6 +184,10 @@
         "slug": "diff"
       },
       {
+        "label": "doctor",
+        "slug": "doctor"
+      },
+      {
         "label": "fetch",
         "slug": "fetch",
         "tutorials": {
