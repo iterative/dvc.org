@@ -149,7 +149,7 @@ $ dvc run -n train -d logs/ -o users.csv \
 Consider this Python parameters file named `params.py`:
 
 ```python
-# All standard variable types are supported
+# All standard variable types are supported.
 BOOL = True
 INT = 5
 STR = 'abc'
