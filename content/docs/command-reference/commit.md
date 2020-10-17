@@ -20,9 +20,10 @@ positional arguments:
 The `dvc commit` command is useful for several scenarios, when data already
 tracked by DVC changes: when a [stage](/doc/command-reference/run) or
 [pipeline](/doc/command-reference/dag) is in development/experimentation; when
-manually editing or generating DVC <abbr>outputs</abbr>; or to force update the
-`dvc.lock` or `.dvc` files without reproducing stages or pipelines. These
-scenarios are further detailed below.
+force updating the `dvc.lock` or `.dvc` files without reproducing stages or
+pipelines; when adding already existing <abbr>outputs</abbr> to a stage that
+missing from `dvc.yaml`; or when manually editing or generating DVC outputs.
+These scenarios are further detailed below.
 
 - Code or data for a stage is under active development, with multiple iterations
   (experiments) in code, configuration, or data. Use the `--no-commit` option of
@@ -32,14 +33,6 @@ scenarios are further detailed below.
   💡 For convenience, a pre-commit Git hook is available to remind you to
   `dvc commit` when needed. See `dvc install` for more details.
 
-- It's always possible to manually execute the source code used in a stage
-  without DVC (outputs must be unprotected or removed first in certain cases,
-  see `dvc unprotect`). We can also
-  [add outputs to an existing stage](/docs/user-guide/how-to/add-output-to-stage)
-  without executing it again. Once a desirable result is reached, use `dvc add`
-  or `dvc commit` as appropriate to update the `dvc.lock` or `.dvc` files and
-  store changed data to the cache.
-
 - Sometimes we want to edit source code, config, or data files in a way that
   doesn't cause changes in the results of their data pipeline. We might write
   add code comments, change indentation, remove some debugging printouts, or any
@@ -47,6 +40,19 @@ scenarios are further detailed below.
   notice that some <abbr>dependencies</abbr> have changed, and expect you to
   reproduce the whole pipeline. If you're sure no pipeline results would change,
   use `dvc commit` to force update the `dvc.lock` or `.dvc` files and cache.
+
+- Sometimes we execute a stage (either writing `dvc.yaml` manually and using
+  `dvc repro`, or with `dvc run`) but later notice that output(s) which already
+  exist in workspace are missing in `dvc.yaml`. We can
+  [add missing outputs to an existing stage](/docs/user-guide/how-to/add-output-to-stage)
+  without having to execute it again. Use `dvc commit` to update the `dvc.lock`
+  file and save outputs to the cache.
+
+- It's always possible to manually execute the terminal command or source code
+  used in a stage without DVC (outputs must be unprotected or removed first in
+  certain cases, see `dvc unprotect`). Once a desirable result is reached, use
+  `dvc add` or `dvc commit` as appropriate to update the `dvc.lock` or `.dvc`
+  files and store changed data to the cache.
 
 Let's take a look at what is happening in the first scenario closely. Normally
 DVC commands like `dvc add`, `dvc repro` or `dvc run` commit the data to the
