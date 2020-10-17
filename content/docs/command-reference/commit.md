@@ -41,9 +41,9 @@ These scenarios are further detailed below.
   reproduce the whole pipeline. If you're sure no pipeline results would change,
   use `dvc commit` to force update the `dvc.lock` or `.dvc` files and cache.
 
-- Sometimes we execute a stage (either writing `dvc.yaml` manually and using
-  `dvc repro`, or with `dvc run`) but later notice that output(s) which already
-  exist in workspace are missing in `dvc.yaml`. We can
+- Sometimes we have executed a stage (either by writing `dvc.yaml` manually and
+  using `dvc repro`, or with `dvc run`), and later notice that output(s) which
+  already exist in workspace are missing in `dvc.yaml`. We can
   [add missing outputs to an existing stage](/docs/user-guide/how-to/add-output-to-stage)
   without having to execute it again. Use `dvc commit` to update the `dvc.lock`
   file and save outputs to the cache.
@@ -74,7 +74,7 @@ computed and added to the `dvc.lock` or `.dvc` file, but the actual data file is
 not saved in the cache. This is where the `dvc commit` command comes into play.
 It performs that last step (saving the data in cache).
 
-Note that it's best to avoid the last two scenarios. They essentially
+Note that it's best to avoid the last three scenarios. They essentially
 force-update the `dvc.lock` or `.dvc` files and save data to cache. They are
 still useful, but keep in mind that DVC can't guarantee reproducibility in those
 cases.

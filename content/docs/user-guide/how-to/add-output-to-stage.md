@@ -1,15 +1,15 @@
 # Add Output to Stage
 
-There are situations where we execute a stage without specifying all the
-<abbr>outputs</abbr> in `dvc.yaml` (either via `dvc run` or manually), and then
-later want to add more outputs to that stage.
-
-Re-executing a stage using `dvc run -f` to add an output is an expensive step,
-as it requires time and resources. Follow the steps below to add an output to
-the stage without executing it again.
+There are situations where we have executed a stage (either by writing
+`dvc.yaml` manually and using `dvc repro`, or with `dvc run`), but later notice
+that output(s) already existing in workspace are missing from `dvc.yaml`.
+Re-executing a stage to specify all the outputs is an expensive step, as it
+requires time and resources. Follow the steps below to add already existing
+output(s) to a stage without executing it again.
 
 We start with an example `prepare` stage in `dvc.yaml`, which has a single
-output. To add a missing output to this stage, we can edit `dvc.yaml` like this:
+output. To add a missing output `data/validate` to this stage, we can edit
+`dvc.yaml` like this:
 
 ```git
  stages:
@@ -21,8 +21,6 @@ output. To add a missing output to this stage, we can edit `dvc.yaml` like this:
      - data/train
 +    - data/validate
 ```
-
-We have added `data/validate` as an output to the `prepare` stage.
 
 > Note that you can also use `dvc run` with the `-f` and `--no-exec` options to
 > add another output to the stage:
@@ -39,8 +37,9 @@ We have added `data/validate` as an output to the `prepare` stage.
 > The `-f` option overwrites the stage in `dvc.yaml`, and the `--no-exec` option
 > updates the stage without executing it.
 
-Finally, we need to run `dvc commit`. It saves the newly specified outputs to
-the <abbr>cache</abbr> (and updates their hash values in `dvc.lock`):
+Finally, we need to run `dvc commit` to save the newly specified output(s) to
+the <abbr>cache</abbr> (and to update the corresponding hash values in
+`dvc.lock`):
 
 ```dvc
 $ dvc commit
