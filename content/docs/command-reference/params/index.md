@@ -152,9 +152,13 @@ Consider this Python parameters file named `params.py`:
 # All standard variable types are supported.
 BOOL = True
 INT = 5
+FLOAT = 0.001
 STR = 'abc'
 DICT = {'a': 1, 'b': 2}
-# etc.
+LIST = [1, 2, 3]
+SET = {4, 5, 6}
+TUPLE = (10, 100)
+NONE = None
 
 # DVC can retrieve class constants and variables defined in __init__
 class TrainConfig:
