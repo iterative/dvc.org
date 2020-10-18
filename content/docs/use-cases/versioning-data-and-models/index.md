@@ -1,29 +1,30 @@
 # Versioning Data and Models
 
-Taking the leap from conceptual to applied data science invariably requires
-answering the questions around data management. How to track the evolution of
-datasets and machine learning models? Where to store data artifacts for easy
-access and sharing?
+Taking data science from conceptual to applied requires answering data
+management questions around dataset and machine learning model versioning. How
+to track the evolution of data and ML models? How to organize and store the
+revisions of these data artifacts for easy access and sharing?
 
-It turns out that we can find some answers in software engineering, notably
+It turns out that we can find some answers in software engineering, like
 [version control](https://en.wikipedia.org/wiki/Version_control). This means
-having a change history to traverse (commits), allowing for parallel work
-(branching), peer-reviews (pull requests), etc. What if we could do the same
-with data?
+adopting a standard file storage structure (cache) and keeping a change history
+(commits), as well as further benefits like enabling parallel teamwork
+(branching), peer-reviews (pull requests), etc. Imagine if we could do the same
+with data!
 
 ![](/img/404) _Data as code_
 
 Some advantages:
 
-- Logistics: Manage and share different versions of datasets and ML models
-  easily, maintaining complete visibility .
-- Adopt a standard: Codifying data and its processes enable Git workflow such as
-  branching, pull requests, release management, and even CI/CD for your data
-  lifecycle.
-- Reproducibility: Guarantee sure that yourself and others can rewind data
-  pipelines exactly as they were created originally.
-- Simple CLI: track data and models as they evolve with simple commands like
-  `dvc add` or `dvc repro` (similar to `git`).
+- Manage and share multiple versions of datasets and ML models easily,
+  maintaining visibility over them.
+- Codifying <abbr>data artifacts</abbr> (and processes) enables proven Git
+  workflows such as branching, pull requests, release management, and even CI/CD
+  for your data lifecycle.
+- Reproducibility: Guarantee that anyone can rewind data pipelines exactly as
+  they were created originally.
+- Simple CLI: work with simple terminal commands like `dvc add` or
+  `dvc checkout` (similar to familiar `git` commands).
 - Security: [DVC metafiles](/doc/user-guide/dvc-files-and-directories) enable
   auditing data changes. And data access controls can be setup via storage
   integrations.
