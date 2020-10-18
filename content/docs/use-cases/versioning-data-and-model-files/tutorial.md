@@ -1,15 +1,15 @@
 ---
 title: 'Tutorial: Data & Model Versioning'
-description: 'Get experience with data versioning in a basic machine learning
-version control scenario: managing multiple datasets and ML model versions using
-DVC commands.'
+description: 'Get hands-on experience with data versioning in a basic machine
+learning version control scenario: managing multiple datasets and ML models
+using DVC.'
 ---
 
 # Tutorial: Data & Model Versioning
 
 The goal of this example is to give you some hands-on experience with a basic
 machine learning version control scenario: managing multiple datasets and ML
-model versions using DVC commands. We'll work with a
+models using DVC. We'll work with a
 [tutorial](https://blog.keras.io/building-powerful-image-classification-models-using-very-little-data.html)
 that [François Chollet](https://twitter.com/fchollet) put together to show how
 to build a powerful image classifier using a pretty small dataset.
