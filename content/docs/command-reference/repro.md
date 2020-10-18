@@ -260,10 +260,10 @@ respectively.
 
 > This example continues the previous one.
 
-The `--downstream` option allows us to only reproduce results from commands
-after a specific `target` stage in a pipeline. To demonstrate how it works,
-let's make a change in `text.txt` (the input of our first stage, created in the
-previous example):
+The `--downstream` option when used with a stage `target` allows us to only
+reproduce results from commands after that specific stage in a pipeline. To
+demonstrate how it works, let's make a change in `text.txt` (the input of our
+first stage, created in the previous example):
 
 ```
 ...
@@ -280,7 +280,7 @@ print(num_lines)
 ```
 
 Now, using the `--downstream` option with `dvc repro` results in the execution
-of only the target stage `count`, and following ones (none in this case):
+of only the `target` stage `count`, and following ones (none in this case):
 
 ```dvc
 $ dvc repro --downstream count
