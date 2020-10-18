@@ -1,8 +1,14 @@
 # Using DVC Commands
 
-DVC is a command line tool. For a listing of commands run `dvc -h`.
+DVC is a command line tool. Here we provide the specifications, complete
+descriptions, and comprehensive usage examples for `dvc` commands. For a list of
+commands, type `dvc -h`.
 
-The typical DVC workflow goes as follows:
+💡 To execute any DVC command in a different directory, use
+`dvc --cd <path> ...` before the actual command and it's options/arguments (this
+does not change directories in your terminal).
+
+## Typical DVC workflow
 
 - In an existing Git repository, initialize a <abbr>DVC project</abbr> with
   `dvc init`.
@@ -17,11 +23,3 @@ The typical DVC workflow goes as follows:
   `dvc push` to share this cache (data tracked by DVC).
 - Use `dvc repro` to automatically reproduce your full pipeline iteratively as
   input data or source code change.
-
-> 💡 To run any DVC command in a different directory, use
-> `dvc --cd <path> command`.
-
-These command references provide a precise specification, complete description,
-and isolated usage examples for the `dvc` CLI tool. These are our most technical
-documentation pages, similar to
-[man-pages](https://www.kernel.org/doc/man-pages/) in Linux.

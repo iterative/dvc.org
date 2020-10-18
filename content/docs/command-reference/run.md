@@ -188,7 +188,7 @@ $ dvc run -n my_stage './my_script.sh $MYENVVAR'
   this option, e.g. `-p parse_params.yaml:threshold`. See `dvc params` to learn
   more about parameters.
 
-- `-m <path>`, `--metrics <path>` - specify a metrics file produces by this
+- `-m <path>`, `--metrics <path>` - specify a metrics file produced by this
   stage. This option behaves like `-o` but registers the file in a `metrics`
   field inside the `dvc.yaml` stage. Metrics are usually small, human readable
   files (JSON or YAML) with scalar numbers or other simple information that

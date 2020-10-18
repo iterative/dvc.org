@@ -12,20 +12,18 @@ usage: dvc version [-h] [-q | -v]
 
 `dvc version` outputs the following information about the system/environment:
 
-| Line                                        | Detail                                                                                                                                                                |
-| ------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [`DVC version`](#components-of-dvc-version) | Version of DVC (along with a Git commit hash if running a development version)                                                                                        |
-| `Python version`                            | Version of Python used in the environment where DVC is initialized                                                                                                    |
-| `Platform`                                  | Information about the operating system of the machine                                                                                                                 |
-| [`Binary`](#what-we-mean-by-binary)         | Shows whether DVC was installed from a package or from a binary release                                                                                               |
-| `Package`                                   | Name of the package manager used to install DVC if any (`pip`, `conda`, etc)                                                                                          |
-| `Supported remotes`                         | Remote types that have all needed dependencies installed for                                                                                                          |
-| `Cache`                                     | [Type of links](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache) supported between the <abbr>workspace</abbr> and the <abbr>cache</abbr> |
-| `Filesystem type`                           | Shows the filesystem type (eg. ext4, FAT, etc.) and mount point of the cache and <abbr>workspace</abbr> directories                                                   |
-| `Repo`                                      | Shows whether we are in a DVC repo and/or Git repo                                                                                                                    |
+| Line                                        | Detail                                                                                                                                                               |
+| ------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [`DVC version`](#components-of-dvc-version) | Version of DVC, and name of the binary or package manager (`pip`, `conda`, etc.) used to install DVC (along with a Git commit hash in case of a development version) |
+| `Platform`                                  | Version of Python in the environment where DVC is initialized, and information about the operating system                                                            |
+| `Supports`                                  | Types of [remote storage](/doc/command-reference/remote/add#supported-storage-types) supported by the current DVC setup (their required dependencies are installed)  |
+| `Cache types`                               | [Types of links](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache) supported (between <abbr>workspace</abbr> and <abbr>cache</abbr>)     |
+| `Cache directory`                           | Filesystem type (e.g. ext4, FAT, etc.) and drive on which the <abbr>cache</abbr> directory is mounted                                                                |
+| `Workspace directory`                       | Filesystem type (e.g. ext4, FAT, etc.) and drive on which the <abbr>workspace</abbr> is mounted                                                                      |
+| `Repo`                                      | Shows whether we are in a DVC repo and/or Git repo                                                                                                                   |
 
-> If `dvc version` is executed outside a DVC project, no `Cache` info is
-> printed, and the `Filesystem type` output is of the current working directory.
+> No info about `Cache` or `Workspace directory` is printed if `dvc version` is
+> used outside a DVC project.
 
 > Note that if you've installed DVC using `pip`, you will need to install
 > `psutil` manually with `pip install psutil` in order for `dvc version` to
@@ -36,36 +34,31 @@ usage: dvc version [-h] [-q | -v]
 
 The detail of DVC version depends upon the way of installing DVC.
 
-- **Official release**: [These instructions](/doc/install) include ways to
-  install DVC using the official package stored in Python Packaging Authority.
-  We mark these official releases with tags on DVC's repository. Any issues
-  reported with the official build can be traced using the `_BASE_VERSION`
-  constant
-  [in our core repo](https://github.com/iterative/dvc/blob/master/dvc/version.py).
-  For example `0.40.2`.
+- **Official release**: a stable version of DVC (for example `1.7.4`), that can
+  be [installed](/doc/install) using the official package stored in
+  [Python Packaging Authority](https://www.pypa.io/) or with a binary. These
+  releases are tagged in the DVC repository (see
+  [changelog](https://github.com/iterative/dvc/releases) for release history).
 
-  > 💡 To only get this number, use `dvc -V`.
+  If there are any issues reported with the official build, they can be traced
+  using the official version number.
 
-- **Development version**: `pip install git+git://github.com/iterative/dvc` will
-  install DVC using the `master` branch of DVC's repository. Another way of
-  setting up the development version is to clone the repository and run
-  `pip install .`.
+- **Development version**: contains all the changes done to the `master` branch
+  of DVC's repository, following the latest official release. It can be
+  [installed](/doc/user-guide/contributing/core#development-environment) after
+  cloning DVC's repo. Running this setup may result in usage issues, as it
+  contains changes that might not be ready to release yet.
 
-  The master branch is constantly updated with changes that might not be ready
-  to publish yet. Therefore, installing with this method might result in usage
-  issues. To trace any error reported with this setup, we need to know exactly
-  which version is being used. For this we rely on a Git commit hash that is
-  displayed in the output of `dvc version` like this: `0.40.2+292cab.mod`. The
-  part before `+` is the `_BASE_VERSION`, and the following part is the commit
-  hash of the tip of the `master` branch. The optional suffix `.mod` means that
-  code is modified.
+  Any errors reported with the development version can be traced using the Git
+  commit hash displayed in the output of `dvc version`, for example:
+  `1.7.4+292cab.mod`. The part before `+` is the official version number, and
+  the following part is the commit hash of the tip of the `master` branch. The
+  optional suffix `.mod` means that code is modified.
 
-### What we mean by "Binary"
+- **Binary or Package manager**: shows how DVC was downloaded and
+  [installed](/doc/install).
 
-The detail of `Binary` depends on the way DVC was downloaded and
-[installed](/doc/install).
-
-- **`Binary: True`** - displayed when DVC is downloaded/installed as one of:
+  DVC can be installed from one of the binary releases:
 
   - Debian package (`.deb`) - file used to install packages in several Linux
     distributions, like Ubuntu
@@ -77,11 +70,12 @@ The detail of `Binary` depends on the way DVC was downloaded and
   These downloads are available from our [home page](/). They ultimately contain
   a binary bundle, which is the executable file of a software application,
   meaning that it will run natively on a specific platform (Linux, Windows,
-  MacOS). In our case, we use
-  [PyInstaller](https://pythonhosted.org/PyInstaller/) to bundle our source code
-  into the binary package app.
+  MacOS).
 
-- **`Binary: False`** - shown when DVC is downloaded and installed from:
+  > We use [PyInstaller](https://pythonhosted.org/PyInstaller/) to bundle our
+  > source code into the binary package app.
+
+  DVC can also be downloaded and installed using a package manager:
 
   - [DVC's GitHub repository](https://github.com/iterative/dvc) - where core
     source code is hosted
@@ -113,15 +107,14 @@ Inside a DVC project:
 ```dvc
 $ dvc version
 
-DVC version: 0.41.3+f36162
-Python version: 3.7.1
-Platform: Linux-4.15.0-50-generic-x86_64-with-debian-buster-sid
-Binary: False
-Cache: reflink - False, hardlink - True, symlink - True
-Supported remotes: azure, gdrive, gs, hdfs, http, https, s3, ssh, oss
-Filesystem type (cache directory): ('ext4', '/dev/sdb3')
+DVC version: 1.7.4 (pip)
+---------------------------------
+Platform: Python 3.8.3 on Linux-5.4.0-47-generic-x86_64-with-debian-buster-sid
+Supports: gs, hdfs, http, https, s3
+Cache types: hardlink, symlink
+Cache directory: ext4 on /dev/sda1
+Workspace directory: ext4 on /dev/sda1
 Repo: dvc, git
-Filesystem type (workspace): ('ext4', '/dev/sdb3')
 ```
 
 Outside a DVC project:
@@ -129,10 +122,8 @@ Outside a DVC project:
 ```dvc
 $ dvc version
 
-DVC version: 0.41.3+f36162
-Python version: 3.7.1
-Platform: Linux-4.15.0-50-generic-x86_64-with-debian-buster-sid
-Binary: False
-Supported remotes: azure, gdrive, gs, hdfs, http, https, s3, ssh, oss
-Filesystem type (workspace): ('ext4', '/dev/sdb3')
+DVC version: 1.7.4 (pip)
+---------------------------------
+Platform: Python 3.8.3 on Linux-5.4.0-47-generic-x86_64-with-debian-buster-sid
+Supports: All remotes
 ```

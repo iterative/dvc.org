@@ -247,7 +247,6 @@ Now, let's change it back to `50` and run `dvc repro` again:
 $ dvc repro
 Stage 'prepare' didn't change, skipping
 Stage 'featurize' didn't change, skipping
-Restored stage 'train' from run-cache
 ```
 
 Same as before, no need to run `prepare`, `featurize`, etc ... but, it doesn't

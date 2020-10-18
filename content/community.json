@@ -69,7 +69,24 @@
       "pictureUrl": "/img/community/ugc/codecentric.png"
     }
   ],
-  "events": [],
+  "events": [
+    {
+      "url": "https://dssconf.pl/",
+      "title": "Data Science Summit",
+      "description": "Paweł Redzyński will talk about Continuous Machine Learning.",
+      "city": "Virtual",
+      "date": "2020-10-16",
+      "pictureUrl": "/img/community/events/dssp.png"
+    },
+    {
+      "url": "https://global.pydata.org/talks/devops-for-science-using-continuous-integration-for-rigorous-and-reproducible-analysis",
+      "title": "PyData Global",
+      "description": "Elle O'Brien presents 'DevOps for science: using continuous integration for rigorous and reproducible analysis'",
+      "city": "Virtual",
+      "date": "2020-11-14",
+      "pictureUrl": "/img/community/events/pydata.png"
+    }
+  ],
   "stats": {
     "users": "1800+",
     "messages": "50K+"

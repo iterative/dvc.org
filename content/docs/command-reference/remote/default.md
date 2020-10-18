@@ -9,7 +9,8 @@ Set/unset the default [data remote](/doc/command-reference/remote).
 
 ```usage
 usage: dvc remote default [-h] [--global | --system | --local]
-                          [-q | -v] [-u] [name]
+                          [-q | -v] [-u]
+                          [name]
 
 positional arguments:
   name           Name of the remote.
