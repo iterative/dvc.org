@@ -14,7 +14,7 @@ usage: dvc repro [-h] [-q | -v] [-f] [-s] [-c <path>] [-m] [--dry] [-i]
                  [targets [targets ...]]
 
 positional arguments:
-  targets        Stage, path to dvc.yaml or .dvc file to reproduce
+  targets        Stage or path to dvc.yaml or .dvc file to reproduce
 ```
 
 ## Description
@@ -110,8 +110,8 @@ up-to-date and only execute the final stage.
   reproduced independently.
 
 - `-R`, `--recursive` - determines the stages to reproduce by searching each
-  directory and their subdirectories. These directories can be given as
-  `targets`.
+  target directory and its subdirectories. This option only has an effect if a
+  directory is given as one of the `targets`.
 
 - `--no-commit` - do not save outputs to cache. A DVC-file is created and an
   entry is added to `.dvc/state`, while nothing is added to the cache.
@@ -256,40 +256,14 @@ You can now check that `dvc.lock` and `count.txt` have been updated with the new
 information: updated dependency/output file hash values, and a new result,
 respectively.
 
-## Example: Specific stage
-
-> This example continues the previous one.
-
-We can use `dvc repro` to reproduce a pipeline partially till a specific stage.
-Let's add a line to `text.txt` , for example:
-
-```
-...
-4321
-```
-
-Now, specify the `count` stage as a `target` with `dvc repro`. This results in
-the execution of `count`, and all the preceding stages in the pipeline (only
-`filter` in this example):
-
-```dvc
-$ dvc repro count
-Running stage 'filter' with command:
-      cat text.txt | egrep '[0-9]+' > numbers.txt
-Updating lock file 'dvc.lock'
-
-Running stage 'count' with command:
-	    python process.py numbers.txt > count.txt
-Updating lock file 'dvc.lock'
-```
-
-## Example: Downstream
+## Example: Downstream from a target stage
 
 > This example continues the previous one.
 
 The `--downstream` option allows us to only reproduce results from commands
-after a specific stage in a pipeline. To demonstrate how it works, let's make a
-change in `text.txt`:
+after a specific `target` stage in a pipeline. To demonstrate how it works,
+let's make a change in `text.txt` (the input of our first stage, created in the
+previous example):
 
 ```
 ...
@@ -306,7 +280,7 @@ print(num_lines)
 ```
 
 Now, using the `--downstream` option with `dvc repro` results in the execution
-only of the target stage, and following ones (none in this case):
+of only the target stage `count`, and following ones (none in this case):
 
 ```dvc
 $ dvc repro --downstream count
