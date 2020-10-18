@@ -90,7 +90,7 @@ $ git add scores.json prc.json
 $ git commit -a -m "Create evaluation stage"
 ```
 
-Later we we will see how these and other can be used to compare and visualize
+Later we will see how these and other can be used to compare and visualize
 different experiment iterations. For now, let's see how can we capture another
 important piece of information that will be useful to compare experiments:
 parameters.

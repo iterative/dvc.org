@@ -1,0 +1,7 @@
+{
+  "name": "community-page-plugin",
+  "version": "0.1.0",
+  "main": "gatsby-node.js",
+  "author": "RMP",
+  "license": "MIT"
+}
