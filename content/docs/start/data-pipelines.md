@@ -1,9 +1,11 @@
 ---
-description: 'Learn how DVC data pipelines can help you organize, version, and
-efficiently reproduce your data science or machine learning project.'
+title: 'Get Started: Data Pipelines'
+description: 'Get started with pipelines in DVC. Learn how to build data
+pipelines to organize, version, and reproduce your data science and machine
+learning processes.'
 ---
 
-# Data Pipelines
+# Get Started: Data Pipelines
 
 Versioning large data files and directories for data science is great, but not
 enough. How is data filtered, transformed, or used to train ML models? DVC
