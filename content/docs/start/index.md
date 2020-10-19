@@ -1,7 +1,7 @@
 ---
 description: 'Learn how you can use DVC to manage data science and machine
-learning projects: version data, manage data access, build data pipelines, and
-capture experiments.'
+learning projects: version data, access it anywhere, capture data pipelines, and
+manage experiments.'
 ---
 
 # Get Started
