@@ -43,7 +43,7 @@ paths to tracked files or directories (including paths inside tracked
 directories), `.dvc` files, and stage names (found in `dvc.yaml`).
 
 If no differences are detected, `dvc status` prints
-`Data and pipelines are up to date.` or `Cache and remote '{remote}' are in sync.` for `dvc status -c/-r` If differences are detected by
+`Data and pipelines are up to date.` or `Cache and remote '{remote}' are in sync.` for `dvc status -c/-r`. If differences are detected by
 `dvc status`, the command output indicates the changes. For each stage with
 differences, the changes in <abbr>dependencies</abbr> and/or
 <abbr>outputs</abbr> that differ are listed. For each item listed, either the
