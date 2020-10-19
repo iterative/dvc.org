@@ -48,7 +48,7 @@ differences between the metrics in different experiments.
 
 ### Supported file formats
 
-Plot metrics can be organized as data series in JSON, YAML (in YAML 1.2 format),
+Plot metrics can be organized as data series in JSON, YAML 1.2,
 CSV, or TSV files. DVC expects to see an array (or multiple arrays) of objects
 (usually _float numbers_) in the file.
 

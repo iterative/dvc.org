@@ -16,8 +16,8 @@ Additionally, there are a few metafiles that support DVC's features:
   These typically have a matching `dvc.lock` file to record the pipeline state
   and track its <abbr>data artifacts</abbr>.
 
-Both `.dvc` files and `dvc.yaml` use human-friendly YAML schemas (expected to be
-in YAML 1.2 format), described below. We encourage you to get familiar with them
+Both `.dvc` files and `dvc.yaml` use human-friendly YAML 1.2 schemas,
+described below. We encourage you to get familiar with them
 so you may create, generate, and edit them on your own.
 
 Both the internal directory and these metafiles should be versioned with Git (in

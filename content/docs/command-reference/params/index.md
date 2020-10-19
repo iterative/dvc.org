@@ -24,7 +24,7 @@ dependencies: _parameters_. Parameters are defined using the the `-p`
 
 In contrast to a regular <abbr>dependency</abbr>, a parameter is not a file (or
 directory). Instead, it consists of a _parameter name_ (or key) to find inside a
-YAML (specifically in YAML 1.2 format), JSON, or TOML _parameters file_.
+YAML 1.2, JSON, or TOML _parameters file_.
 Multiple parameter dependencies can be specified from one or more parameters
 files.
 
