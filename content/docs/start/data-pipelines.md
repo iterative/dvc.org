@@ -1,8 +1,7 @@
 ---
 title: 'Get Started: Data Pipelines'
-description: 'Get started with pipelines in DVC. Learn how to build data
-pipelines to organize, version, and reproduce your data science and machine
-learning processes.'
+description: 'Get started with pipelines in DVC. Learn how to capture, organize,
+version, and reproduce your data science and machine learning workflows.'
 ---
 
 # Get Started: Data Pipelines
