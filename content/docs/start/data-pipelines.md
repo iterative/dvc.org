@@ -92,19 +92,19 @@ prepare:
 - `-o data/prepared` specifies an output directory for this script, which writes
   two files in it. This is how the <abbr>workspace</abbr> should look like now:
 
-  ```diff
-      .
-      ├── data
-      │   ├── data.xml
-      │   ├── data.xml.dvc
-  +   │   └── prepared
-  +   │       ├── test.tsv
-  +   │       └── train.tsv
-  +   ├── dvc.yaml
-  +   ├── dvc.lock
-      ├── params.yaml
-      └── src
-          ├── ...
+  ```git
+   .
+   ├── data
+   │   ├── data.xml
+   │   ├── data.xml.dvc
+  +│   └── prepared
+  +│       ├── test.tsv
+  +│       └── train.tsv
+  +├── dvc.yaml
+  +├── dvc.lock
+   ├── params.yaml
+   └── src
+       ├── ...
   ```
 
 - The last line, `python src/prepare.py ...`, is the command to run in this
@@ -247,7 +247,6 @@ Now, let's change it back to `50` and run `dvc repro` again:
 $ dvc repro
 Stage 'prepare' didn't change, skipping
 Stage 'featurize' didn't change, skipping
-Restored stage 'train' from run-cache
 ```
 
 Same as before, no need to run `prepare`, `featurize`, etc ... but, it doesn't

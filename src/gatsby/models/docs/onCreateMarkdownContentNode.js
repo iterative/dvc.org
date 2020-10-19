@@ -18,7 +18,9 @@ async function createMarkdownDocsNode(api, { parentNode, createChildNode }) {
     slug,
     rawMarkdownBody: node.rawMarkdownBody,
     sourcePath: relativePath,
-    template: node.frontmatter.template
+    template: node.frontmatter.template,
+    title: node.frontmatter.title === '' ? null : node.frontmatter.title,
+    description: node.frontmatter.description
   }
 
   const docNode = {

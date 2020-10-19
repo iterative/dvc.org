@@ -1,0 +1,19 @@
+name: Check all links in the repository
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * *'
+
+jobs:
+  run:
+    name: Link Check All
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Run Link Check
+        uses: 'iterative/link-check.action@v0.7'
+        with:
+          configFile: 'config/link-check/config.yml'
+          output: consoleLog

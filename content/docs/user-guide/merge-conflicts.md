@@ -30,7 +30,7 @@ stages:
 
 ## `dvc.lock`
 
-There's no need to resolve lockfile conflicts manually. You can safely delete
+There's no need to resolve lock file conflicts manually. You can safely delete
 this file and then use `dvc repro` after merging `dvc.yaml` to regenerate this
 file.
 
@@ -39,8 +39,8 @@ file.
 
 ## `.dvc` files
 
-There are three three main variations in the structure of these files, that
-differ by the command that has generated them:
+There are three main variations in the structure of these files, that differ by
+the command that has generated them:
 
 ### Simple tracking (add)
 
@@ -74,7 +74,7 @@ versions, then you can follow this process:
 3. Merge it by-hand;
 4. Finally, run `dvc add data.xml` to overwrite the conflicted `.dvc` file.
 
-#### Append-only directories
+### Append-only directories
 
 If you have an "append-only" dataset, where people only add new
 files/directories, DVC provides a so-called
@@ -115,15 +115,15 @@ deps:
     url: https://github.com/iterative/dataset-registry
 < < < < < < < HEAD
     rev_lock: f31f5c4cdae787b4bdeb97a717687d44667d9e62
-=======
+= = = = = = =
     rev_lock: 06be1104741f8a7c65449322a1fcc8c5f1070a1e
->>>>>>> branch
+> > > > > > > branch
 outs:
 < < < < < < < HEAD
 - md5: a304afb96060aad90176268345e10355
-=======
+= = = = = = =
 - md5: 35dd1fda9cfb4b645ae431f4621fa324
-> > > > > > >
+> > > > > > > branch
   path: data.xml
 ```
 
@@ -139,4 +139,8 @@ outs:
   - path: data.xml
 ```
 
-And then `dvc update` the `.dvc` file.
+And then `dvc update` the `.dvc` file to download the latest data from its
+original source.
+
+> Note that updating will bring in the latest version of the data from its
+> source, which may not correspond with any of the hashes that was removed.

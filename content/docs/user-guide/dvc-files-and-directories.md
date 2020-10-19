@@ -25,13 +25,13 @@ Git-enabled <abbr>repositories</abbr>).
 
 ## `.dvc` files
 
-When you add a file or directory to a <abbr>DVC project</abbr> with `dvc add` or
-`dvc import`, a `.dvc` file is created based on the data file name (e.g.
-`data.xml.dvc`). These files contain the information needed to track the data
-with DVC.
+When you add a file or directory to a <abbr>DVC project</abbr> with `dvc add`,
+`dvc import`, or `dvc import-url`, a `.dvc` file is created based on the data
+file name (e.g. `data.xml.dvc`). These files contain the information needed to
+track the data with DVC.
 
 They use a simple [YAML](https://yaml.org/) format, meant to be easy to read,
-edit, or even created manually by users. Here is a full sample:
+edit, or even created manually. Here is a sample:
 
 ```yaml
 outs:
@@ -50,11 +50,13 @@ meta:
   that represent the files or directories tracked with DVC. Typically there is
   only one (but several can be added or combined manually).
 - `deps`: List of <abbr>dependency</abbr> entries (details below). Only present
-  when `dvc import` and `dvc import-url` are used to generate this `.dvc` file.
+  when `dvc import` or `dvc import-url` are used to generate this `.dvc` file.
   Typically there is only one (but several can be added manually).
 - `wdir`: Working directory for the `outs` and `deps` paths (relative to the
   `.dvc` file's location). If this field is not present explicitly, it defaults
   to `.` (the `.dvc` file's location).
+- `md5`: (only for <abbr>imports</abbr>) MD5 hash of the import `.dvc` file
+  itself.
 - `meta` (optional): Arbitrary metadata can be added manually with this field.
   Any YAML contents is supported. `meta` contents are ignored by DVC, but they
   can be meaningful for user processes that read `.dvc` files.
@@ -65,10 +67,9 @@ An _output entry_ (`outs`) consists of these fields:
   the file's location)
 - `md5`, `etag`, or `checksum`: Hash value for the file or directory being
   tracked with DVC. MD5 is used for most locations (local file system and SSH);
-  [strong ETag](https://en.wikipedia.org/wiki/HTTP_ETag#Strong_and_weak_validation)
-  for HTTP, S3, or Azure
-  [external outputs](/doc/user-guide/managing-external-data); and a special
-  _checksum_ for HDFS.
+  [ETag](https://en.wikipedia.org/wiki/HTTP_ETag#Strong_and_weak_validation) for
+  HTTP, S3, or Azure [external outputs](/doc/user-guide/managing-external-data);
+  and a special _checksum_ for HDFS.
 - `cache`: Whether or not this file or directory is <abbr>cached</abbr> (`true`
   by default, if not present). See the `--no-commit` option of `dvc add`.
 
@@ -78,8 +79,8 @@ A _dependency entry_ (`deps`) consists of these fields:
   file's location)
 - `md5`, `etag`, or `checksum`: Hash value for the file or directory being
   tracked with DVC. MD5 is used for most locations (local file system and SSH);
-  [strong ETag](https://en.wikipedia.org/wiki/HTTP_ETag#Strong_and_weak_validation)
-  for HTTP, S3, or Azure <abbr>external dependencies</abbr>; and a special
+  [ETag](https://en.wikipedia.org/wiki/HTTP_ETag#Strong_and_weak_validation) for
+  HTTP, S3, or Azure <abbr>external dependencies</abbr>; and a special
   _checksum_ for HDFS. See `dvc import-url` for more information.
 - `repo`: This entry is only for external dependencies created with
   `dvc import`, and can contains the following fields:
@@ -95,7 +96,7 @@ A _dependency entry_ (`deps`) consists of these fields:
 Note that comments can be added to `.dvc` files using the `# comment` syntax.
 `meta` fields and `#` comments are preserved among executions of the `dvc repro`
 and `dvc commit` commands, but not when a `.dvc` file is overwritten by
-`dvc add`,`dvc import`, or `dvc import-url`.
+`dvc add`, `dvc move`, `dvc import`, or `dvc import-url`.
 
 ## `dvc.yaml` file
 
@@ -148,7 +149,7 @@ the possible following fields:
 - `deps`: List of <abbr>dependency</abbr> file or directory paths of this stage
   (relative to `wdir` which defaults to the file's location)
 - `params`: List of <abbr>parameter</abbr> dependency keys (field names) that
-  are read from a YAML, JSON, or TOML file (`params.yaml` by default).
+  are read from a YAML, JSON, TOML, or Python file (`params.yaml` by default).
 - `outs`: List of <abbr>output</abbr> file or directory paths of this stage
   (relative to `wdir` which defaults to the file's location), and optionally,
   whether or not this file or directory is <abbr>cached</abbr> (`true` by

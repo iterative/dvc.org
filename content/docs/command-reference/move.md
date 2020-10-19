@@ -1,8 +1,8 @@
 # move
 
-Rename a file or a directory and modify the corresponding `.dvc` file (see
-`dvc add`) to reflect the change. If the file or directory has the same name as
-the `.dvc` file, it also renames it.
+Rename a file or directory tracked with a `.dvc` file, and modify the `.dvc`
+file to reflect the change. The `.dvc` file is renamed if the file or directory
+has the same base name (typical).
 
 ## Synopsis
 
@@ -17,18 +17,21 @@ positional arguments:
 ## Description
 
 `dvc move` is useful when a `src` file or directory has previously been added to
-the <abbr>project</abbr> with `dvc add`, creating a `.dvc` file (with `src` as a
-dependency). `dvc move` behaves like `mv src dst`, moving `src` to the given
-`dst` path, but it also renames and updates the corresponding `.dvc` file
-appropriately.
+the <abbr>project</abbr> with `dvc add` or `dvc import`, creating a `.dvc` file
+(with `src` as an output).
 
-> Note that `src` may be a copy or a
+⚠️ `dvc move` doesn't support renaming stage <abbr>outputs</abbr> (see
+`dvc.yaml`), they have to be [renamed manually](#renaming-stage-outputs).
+
+> Note that `src` itself may be either a
 > [link](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
-> to a file in cache. The cached file is not changed by this command.
+> or a copy to the corresponding data in the cache. The <abbr>cached</abbr> file
+> is not changed by this command.
 
-If the destination path (`dst`) already exists and is a directory, the source
-code file or directory (`src`) is moved unchanged into this folder along with
-the corresponding `.dvc` file.
+`dvc move` behaves like `mv src dst`, moving `src` to the given `dst` path, but
+it also renames and updates the corresponding `.dvc` file appropriately. If the
+destination path is a directory and already exists, the source file or directory
+is moved into this folder along with the corresponding `.dvc` file.
 
 Let's imagine the following scenario:
 
@@ -36,8 +39,7 @@ Let's imagine the following scenario:
 $ dvc add data.csv
 ```
 
-The `dvc add` command would create a `data.csv.dvc` `.dvc` file with the
-following content:
+This creates a `data.csv.dvc` file with the following content:
 
 ```yaml
 outs:
@@ -45,28 +47,57 @@ outs:
     path: data.csv
 ```
 
-If we move this using the regular `mv data.csv other.csv` command, DVC wouldn't
-know that we changed the `path` of `data.csv` to `other.csv`, as the old
-location is still registered in the corresponding `.dvc` file.
-
-`dvc move` adjusts the content of the `.dvc` file to update `path`. This saves
-users from performing several manual operations:
+If we move the data file regularly, with something like `mv data.csv other.csv`,
+DVC wouldn't know that we changed the `path` of `data.csv` to `other.csv`, as
+the old location is still found in the corresponding `.dvc` file. `dvc move`
+updates that `path`, saves users from manual editing it:
 
 ```dvc
 $ dvc move data.csv other.csv
 $ cat other.csv.dvc
 ```
 
-Notice that `path` value has changed, as well as the `.dvc` file name.
+```yaml
+outs:
+  - md5: c8263e8422925b0872ee1fb7c953742a
+    path: other.csv
+```
 
-And here is the updated content of the `other.csv.dvc`:
+Notice the `.dvc` file name was changed to `other.csv.dvc`.
+
+### Renaming stage outputs
+
+`dvc move` does not cover this case, but it can be done manually. For example,
+let's rename stage <abbr>output</abbr> from `keras.h5` to `model.h5` in this
+`dvc.yaml`:
 
 ```yaml
-md5: 3d1a3e5a5b662490e198d6a6ae84984b
-outs:
-  - cache: true
-    md5: c8263e8422925b0872ee1fb7c953742a
-    path: other.csv
+stages:
+  train:
+    ...
+    outs:
+    - keras.h5
+```
+
+First, change the output name in the `train` stage of `dvc.yaml` and update
+`/keras.h5` to `/model.h5` in `.gitignore` file. Then, we rename the existing
+model file:
+
+```dvc
+$ mv keras.h5 model.h5
+```
+
+> Note that, often the output of a stage is a dependency in another stage,
+> creating a
+> [dependency graph](/doc/command-reference/run#dependencies-and-outputs). In
+> this case, you may want to also update the `path` in the `deps` field of
+> `dvc.yaml`.
+
+Finally, we run `dvc commit` with the `-f` option to force save the changes to
+<abbr>cache</abbr>:
+
+```dvc
+$ dvc commit -f
 ```
 
 ## Options
@@ -78,7 +109,7 @@ outs:
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
-## Example: change the file name
+## Example: Change the file name
 
 We first use `dvc add` to track file with DVC. Then, we change its name using
 `dvc move`.
@@ -99,12 +130,12 @@ $ tree
 └── other.csv.dvc
 ```
 
-## Example: change the location
+## Example: Change a file location
 
 We use `dvc add` to track a file with DVC, then we use `dvc move` to change its
-location. If target path already exists and is a directory, data file is moved
-with unchanged name into this folder. Note that the `data.csv.dvc` `.dvc` file
-is also moved.
+location. If the target path is a directory and already exists, the data file is
+moved with unchanged name into this folder. Note that the corresponding `.dvc`
+file, `data.csv.dvc` is also moved.
 
 ```dvc
 $ tree
@@ -135,7 +166,7 @@ $ tree
         └── foo.dvc
 ```
 
-## Example: change an imported directory name and location
+## Example: Move a directory
 
 Let's try the same with an entire directory imported from an external <abbr>DVC
 repository</abbr> with `dvc import`. Note that, as in the previous cases, the

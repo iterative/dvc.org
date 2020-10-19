@@ -89,8 +89,8 @@ used to see what files `dvc pull` would download.
   `-aT` flag.
 
 - `--all-commits` - same as `-a` or `-T` above, but applies to _all_ Git commits
-  as well as the workspace. Useful for downloading all the data used in the
-  entire existing commit history of the project.
+  as well as the workspace. This downloads tracked data for the entire commit
+  history of the project.
 
 - `-d`, `--with-deps` - determines files to download by tracking dependencies to
   the `targets`. If none are provided, this option is ignored. By traversing all
@@ -112,7 +112,7 @@ used to see what files `dvc pull` would download.
   `dvc remote list`).
 
 - `--run-cache` - downloads all available history of stage runs from the remote
-  repository into the local run cache. A `dvc repro <stage_name>` is necessary
+  repository into the local run-cache. A `dvc repro <stage_name>` is necessary
   to checkout these files into the workspace and update the `dvc.lock` file.
 
 - `-j <number>`, `--jobs <number>` - parallelism level for DVC to download data
@@ -192,6 +192,7 @@ such that the data in some of these stages should be updated in the
 
 ```dvc
 $ dvc status -c
+...
     deleted:            data/features/test.pkl
     deleted:            data/features/train.pkl
     deleted:            model.pkl

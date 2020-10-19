@@ -19,7 +19,7 @@ tags:
   - CML
 ---
 
-Earlier this month, we launched [CML](https;//cml.dev), our latest open-source
+Earlier this month, we launched [CML](https://cml.dev), our latest open-source
 project in the MLOps space. We think it's a step towards establishing powerful
 DevOps practices (like continuous integration) as a regular fixture of machine
 learning and data science projects. But there are plenty of challenges ahead,

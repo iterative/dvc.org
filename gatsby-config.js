@@ -49,6 +49,7 @@ const plugins = [
       path: path.join(__dirname, 'static', 'uploads')
     }
   },
+  'community-page',
   {
     resolve: 'gatsby-transformer-remark',
     options: {

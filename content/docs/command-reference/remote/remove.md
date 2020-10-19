@@ -7,8 +7,8 @@ remotely.
 ## Synopsis
 
 ```usage
-usage: dvc remote remove [-h] [--global | --system | --local]
-                         [-q | -v] name
+usage: dvc remote remove [-h] [--global | --system | --local] [-q | -v]
+                         name
 
 positional arguments:
   name           Name of the remote to remove

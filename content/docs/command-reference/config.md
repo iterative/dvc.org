@@ -19,32 +19,51 @@ You can query/set/replace/unset DVC configuration options with this command. It
 takes a config option `name` (a config section and a key, separated by a dot)
 and its `value` (any valid alpha-numeric string generally).
 
-This command reads and updates the DVC configuration files. By default (if none
-of `--local`, `--global`, or `--system` is provided) a project's config
-(`.dvc/config`) file is read or modified. This file is by default meant to be
-tracked by Git and should not contain sensitive and/or user-specific information
-(passwords, SSH keys, etc). Use `--local`, `--global`, or `--system` command
-options (flags) instead to override project's settings, for sensitive, or
-user-specific settings.
+If the config option `value` is not provided (and without `--unset`), this
+command returns the current value of the config option, if found in the
+corresponding config file.
 
-If the config option `value` is not provided and the `--unset` command option is
-not used, this command returns the current value of the config option, if found
-in the corresponding config file.
+This command reads and updates the DVC configuration files. By default, the
+regular project's config file in `.dvc/config` is read or modified. This file is
+meant to be tracked by Git and should not contain sensitive and/or user-specific
+information (passwords, SSH keys, etc). Use the `--local` command option (flag)
+instead, to set (or override) secrets:
+
+| Flag           | Priority | Config file location |
+| -------------- | -------- | -------------------- |
+| `--local`      | 1        | `.dvc/config.local`  |
+| None (default) | 2        | `.dvc/config`        |
+
+The `--global` and `--system` flags are also available to set config options for
+multiple projects and users, respectively:
+
+| Flag       | Priority | Mac location                             | Linux location             | Windows location                                          |
+| ---------- | -------- | ---------------------------------------- | -------------------------- | --------------------------------------------------------- |
+| `--global` | 3        | `$HOME/Library/Application\ Support/dvc` | `$HOME/.config/dvc/config` | `%LocalAppData%\iterative\dvc\config`                     |
+| `--system` | 4        | `/Library/Application\ Support/dvc`      | `/etc/dvc.config`          | `%AllUsersProfile%\Application Data\iterative\dvc\config` |
+
+<!-- Avoids new lines in the Flag column (above). -->
+<style>
+  #markdown-root td:first-child code {
+    white-space: nowrap;
+  }
+</style>
 
 ## Command options (flags)
 
 - `-u`, `--unset` - remove a specified config option from a config file.
 
+- `--local` - modify a Git-ignored local config file. This is useful when you
+  need to specify private config option values that you don't want to track and
+  share with Git (credentials, private locations, etc).
+
 - `--global` - modify a global config file (e.g. `~/.config/dvc/config`) instead
-  of the project's `.dvc/config`.
+  of the project's `.dvc/config`. Useful to apply config options to all your
+  projects.
 
 - `--system` - modify a system config file (e.g. `/etc/dvc.config`) instead of
-  `.dvc/config`.
-
-- `--local` - modify a local config file instead of `.dvc/config`. It is located
-  in `.dvc/config.local` and is Git-ignored. This is useful when you need to
-  specify private config options in your config that you don't want to track and
-  share through Git (credentials, private locations, etc).
+  `.dvc/config`. Useful to apply config options to all the projects (all users)
+  in the machine.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -90,6 +109,11 @@ This is the main section with the general config options:
 - `core.check_update` - disable/enable DVC's automatic update checks, which
   notify the user when a new version is available. Accepts values `true`
   (default) and `false`.
+
+- `core.autostage` - if enabled, DVC will automatically stage (`git add`)
+  [DVC metafiles](/doc/user-guide/dvc-files-and-directories) created or modified
+  by DVC commands (`dvc add`, `dvc run`, etc.). The files will not be committed.
+  Accepts values `true` and `false` (default).
 
 ### remote
 

@@ -79,8 +79,8 @@ platform. It's awesome to know our approach is resonating with teams at the
 intersection of ML and software development. Thanks, ThoughtWorks!
 
 Last up in company news: you might recall that in early May, we hosted an online
-meetup. [Marcel Ribeiro-Dantas](mribeirodantas.me) hosted guest talks from
-[Elizabeth Hutton](https://github.com/ehutt) and
+meetup. [Marcel Ribeiro-Dantas](http://mribeirodantas.me) hosted guest talks
+from [Elizabeth Hutton](https://github.com/ehutt) and
 [Dean Pleban](https://twitter.com/DeanPlbn)- we heard about constructing a new
 COVID-19 dataset, using DVC with transformer language models, and building
 custom cloud infrastructure for MLOps. There's also Q&A with the DVC team, where

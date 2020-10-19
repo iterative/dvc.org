@@ -46,3 +46,25 @@ Make sure you are online and able to access your
 Make sure your bucket
 [exists](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/create-bucket.html)
 in the correct `region` and/or `endpointurl` (see `dvc remote modify`).
+
+## Unable to detect cache type {#no-dvc-cache}
+
+Unable to detect supported link types, as the
+[cache directory](/doc/command-reference/config#cache) doesn't exist. It is
+usually created automatically by DVC commands that need it, but you can create
+it manually (e.g. `mkdir .dvc/cache`) to enable this check.
+
+## Unable to acquire lock {#lock-issue}
+
+You may encounter an error message saying `Unable to acquire lock` if you have
+another DVC process running in the project. If that is not the case, it usually
+means that DVC was terminated abruptly and manually removing the lock file in
+`.dvc/tmp/lock` should resolve the issue.
+
+If the issue still persists then it may be the case that you are running DVC on
+some network filesystem like NFS, Lustre, etc. If so, the solution is to enable
+`core.hardlink_lock` which can be done by running following command:
+
+```
+dvc config core.hardlink_lock true
+```

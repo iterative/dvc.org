@@ -11,7 +11,7 @@ systems for data science**.
 ![](/img/data-registry.png) _Data and models as code_
 
 This means we can build a <abbr>DVC project</abbr> dedicated to tracking and
-versioning _datasets_ (or any large files, directories, ML models, etc.) The
+versioning _datasets_ (or any large files, directories, ML models, etc.). The
 repository would have all the metadata and history of changes in the different
 datasets. We could see who updated what and when, and use pull requests to
 update data, the same way we do with code.
@@ -89,7 +89,7 @@ But first, you may want to explore its contents.
 
 ### Listing data
 
-To explore the contents of a data DVC repo in search for the right data, use he
+To explore the contents of a data DVC repo in search for the right data, use the
 `dvc list` command (analogous to `ls`, or 3rd party tools like `aws s3 ls`):
 
 ```dvc

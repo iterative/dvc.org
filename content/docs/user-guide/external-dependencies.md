@@ -146,26 +146,38 @@ $ dvc run -n download_file \
 
 </details>
 
-## Example: DVC remote aliases
+## Example: Using DVC remote aliases
 
-If instead of a URL you'd like to use an alias that can be managed
-independently, or if the external dependency location requires access
-credentials, you may use `dvc remote add` to define this location as a DVC
-Remote, and then use a special URL with format `remote://{remote_name}/{path}`
-to define an external dependency.
+You may want to encapsulate external locations as configurable entities that can
+be managed independently. This is useful if multiple dependencies (or stages)
+reuse the same location, or if its likely to change in the future. And if the
+location requires authentication, you need a way to configure it in order to
+connect.
 
-For example, for an HTTPs remote/dependency:
+[DVC remotes](/doc/command-reference/remote) can do just this. You may use
+`dvc remote add` to define them, and then use a special URL with format
+`remote://{remote_name}/{path}` (remote alias) to define the external
+dependency.
+
+Let's see an example using SSH. First, register and configure the remote:
 
 ```dvc
-$ dvc remote add example https://example.com
+$ dvc remote add myssh ssh://myserver.com
+$ dvc remote modify --local myssh user myuser
+$ dvc remote modify --local myssh password mypassword
+```
+
+> Please refer to `dvc remote add` for more details like setting up access
+> credentials for the different remote types.
+
+Now, use an alias to this remote when defining the stage:
+
+```dvc
 $ dvc run -n download_file \
-          -d remote://example/data.txt \
+          -d remote://myssh/path/to/data.txt \
           -o data.txt \
           wget https://example.com/data.txt -O data.txt
 ```
-
-Please refer to `dvc remote add` for more details like setting up access
-credentials for the different remotes.
 
 ## Example: `import-url` command
 
@@ -198,18 +210,18 @@ outs:
     persist: false
 ```
 
-DVC checks the headers returned by the server, looking for a strong
-[ETag](https://en.wikipedia.org/wiki/HTTP_ETag) or a
+DVC checks the headers returned by the server, looking for an
+[HTTP ETag](https://en.wikipedia.org/wiki/HTTP_ETag) or a
 [Content-MD5](https://tools.ietf.org/html/rfc1864) header, and uses it to
 determine whether the source has changed and we need to download the file again.
 
 </details>
 
-## Example: Using import
+## Example: Imports
 
 `dvc import` can download a <abbr>data artifact</abbr> from any <abbr>DVC
-project</abbr> or Git repository. It also creates an external dependency in its
-import `.dvc` file.
+project</abbr>, or any file from a Git repository. It also creates an external
+dependency in its import `.dvc` file.
 
 ```dvc
 $ dvc import git@github.com:iterative/example-get-started model.pkl

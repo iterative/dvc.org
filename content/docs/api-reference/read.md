@@ -75,8 +75,6 @@ These are loaded to memory directly (without using any disc space).
 
 - `dvc.exceptions.PathMissingError` - `path` cannot be found in `repo`.
 
-- `dvc.api.UrlNotDvcRepoError` - `repo` is not a DVC project.
-
 - `dvc.exceptions.NoRemoteError` - no `remote` is found.
 
 ## Example: Load data from a DVC repository

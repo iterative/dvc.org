@@ -48,19 +48,24 @@ module.exports = async function () {
     }
   )
 
+  if (!res.ok) {
+    throw new Error(
+      `CloudFlare cache clear request returned non-ok status ${res.status}: ${res.statusText}`
+    )
+  }
+
   const body = await res.json()
 
-  if (!res.ok || !body.success) {
+  if (!body.success) {
     throw new Error(
-      'CloudFlare cache clear failed! ' +
-        JSON.stringify(
-          {
-            status: res.status,
-            errors: body.errors
-          },
-          undefined,
-          2
-        )
+      `CloudFlare cache clear failed! ${JSON.stringify(
+        {
+          status: res.status,
+          errors: body.errors
+        },
+        undefined,
+        2
+      )}`
     )
   }
 

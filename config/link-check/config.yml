@@ -1,0 +1,12 @@
+rootURL: https://dvc.org
+fileIncludePatterns: '{.github,content,src}/**/*!(.test).{css,js,jsx,md,tsx,ts,json}'
+fileExcludePatternFile: config/link-check/excluded-files.yml
+linkExcludePatternFile: config/link-check/excluded-links.yml
+linkOptions:
+  '*.wikipedia.org':
+    minTime: 2000
+    maxConcurrent: 1
+
+  '(*.)?github.com':
+    minTime: 1000
+    maxConcurrent: 1

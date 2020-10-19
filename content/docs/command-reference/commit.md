@@ -249,7 +249,6 @@ $ git status -s
 M src/train.py
 
 $ dvc status
-
 train.dvc:
     changed deps:
         modified:           src/train.py
@@ -275,7 +274,6 @@ dependencies ['src/train.py'] of 'train.dvc' changed.
 Are you sure you commit it? [y/n] y
 
 $ dvc status
-
 Data and pipelines are up to date.
 ```
 
