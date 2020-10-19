@@ -1,7 +1,7 @@
 ---
-description: 'A step-by-step introduction: Learn how to use DVC to organize,
-version, and efficiently reproduce your data science or machine learning
-project.'
+description: 'Learn how you can use DVC to manage data science and machine
+learning projects: version data, manage data access, build data pipelines, and
+capture experiments.'
 ---
 
 # Get Started
@@ -53,14 +53,14 @@ DVC features can be grouped into layers. We'll explore them one by one in the
 next few sections:
 
 - [**Data versioning**](/doc/start/data-versioning) is the core part of DVC for
-  large files, datasets, ML models versioning and efficient sharing. We'll show
-  how to use a regular Git workflow, without storing large files with Git. Think
-  "Git for data".
+  large files, datasets, machine learning models versioning and efficient
+  sharing. We'll show how to use a regular Git workflow, without storing large
+  files with Git. Think "Git for data".
 
 - [**Data access**](/doc/start/data-access) shows how to use data artifacts from
   outside of the project and how to import data artifacts from another DVC
-  project. This can help to download a specific version of a machine learning
-  model to a deployment server or import a model to another project.
+  project. This can help to download a specific version of an ML model to a
+  deployment server or import a model to another project.
 
 - [**Data pipelines**](/doc/start/data-pipelines) describe how models and other
   data artifacts are built, and provide an efficient way to reproduce them.
