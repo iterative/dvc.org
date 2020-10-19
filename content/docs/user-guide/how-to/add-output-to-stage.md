@@ -34,8 +34,8 @@ output. To add a missing output `data/validate` to this stage, we can edit
 >           python src/prepare.py
 > ```
 >
-> The `-f` option overwrites the stage in `dvc.yaml`, and the `--no-exec` option
-> updates the stage without executing it.
+> `-f` overwrites the stage in `dvc.yaml`, while `--no-exec` updates the stage
+> without executing it.
 
 Finally, we need to run `dvc commit` to save the newly specified output(s) to
 the <abbr>cache</abbr> (and to update the corresponding hash values in
