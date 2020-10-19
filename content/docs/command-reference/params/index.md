@@ -24,7 +24,7 @@ dependencies: _parameters_. Parameters are defined using the the `-p`
 
 In contrast to a regular <abbr>dependency</abbr>, a parameter is not a file (or
 directory). Instead, it consists of a _parameter name_ (or key) to find inside a
-YAML, JSON, TOML, or Python _parameters file_. Multiple parameter dependencies
+YAML 1.2, JSON, TOML, or Python _parameters file_. Multiple parameter dependencies
 can be specified from one or more parameters files.
 
 The default parameters file name is `params.yaml`. Parameters should be
