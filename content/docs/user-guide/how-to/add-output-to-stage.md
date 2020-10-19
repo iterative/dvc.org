@@ -4,8 +4,8 @@ There are situations where we have executed a stage (either by writing
 `dvc.yaml` manually and using `dvc repro`, or with `dvc run`), but later notice
 that output(s) already existing in workspace are missing from `dvc.yaml`.
 Re-executing a stage to specify all the outputs is an expensive step, as it
-requires time and resources. Follow the steps below to add already existing
-output(s) to a stage without executing it again.
+requires time and resources. Follow the steps below to add existing output(s) to
+a stage without executing it again.
 
 We start with an example `prepare` stage in `dvc.yaml`, which has a single
 output. To add a missing output `data/validate` to this stage, we can edit
