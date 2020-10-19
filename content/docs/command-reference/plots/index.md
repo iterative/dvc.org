@@ -48,9 +48,9 @@ differences between the metrics in different experiments.
 
 ### Supported file formats
 
-Plot metrics can be organized as data series in JSON, YAML 1.2,
-CSV, or TSV files. DVC expects to see an array (or multiple arrays) of objects
-(usually _float numbers_) in the file.
+Plot metrics can be organized as data series in JSON, YAML 1.2, CSV, or TSV
+files. DVC expects to see an array (or multiple arrays) of objects (usually
+_float numbers_) in the file.
 
 In tabular file formats such as CSV and TSV, each column is an array.
 `dvc plots` subcommands can produce plots for a specified column or a set of
