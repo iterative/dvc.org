@@ -135,7 +135,7 @@ up-to-date and only execute the final stage.
   present in the DVC project.
 
 - `--no-run-cache` - execute stage commands even if they have already been run
-  with the same command/dependencies/outputs/etc before.
+  with the same dependencies/outputs/etc. before.
 
 - `--force-downstream` - in cases like `... -> A (changed) -> B -> C` it will
   reproduce `A` first and then `B`, even if `B` was previously executed with the
@@ -157,8 +157,8 @@ up-to-date and only execute the final stage.
   corresponding pipelines, including the target stages themselves. This option
   has no effect if `targets` are not provided.
 
-- `--pull` - try automatically [pulling](/doc/command-reference/pull) missing
-  cache for outputs restored from run-cache.
+- `--pull` - [pulling](/doc/command-reference/pull) any data involved in the
+  stages being reproduced, if it already exists in remote storage.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
