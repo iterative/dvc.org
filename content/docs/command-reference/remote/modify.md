@@ -257,13 +257,11 @@ $ dvc remote modify myremote endpointurl \
                     https://object-storage.example.com
 ```
 
-Besides that, any settings that are available for AWS S3 and described above, are
-available for an S3 compatible storage if it supports them.
-
-For example, the
-[tutorial for DigitalOcean spaces](https://www.digitalocean.com/community/tutorials/how-to-create-a-digitalocean-space-and-api-key)
-creates a space (equivalent to an AWS bucket) called `example-name` in the `nyc3`
-region. Your remote settings would be set like this: 
+Besides that, any settings that are available for Amazon S3 (see previous
+section) may be available for S3 compatible storage. For example, let's setup a
+DVC remote using the `example-name`
+[DigitalOcean space](https://www.digitalocean.com/community/tutorials/how-to-create-a-digitalocean-space-and-api-key)
+(equivalent to a bucket in AWS) in the `nyc3` region:
 
 ```dvc
 $ dvc remote add -d myremote s3://example-name/path/to/use
