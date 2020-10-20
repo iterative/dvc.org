@@ -39,7 +39,7 @@ and caches relevant <abbr>data artifacts</abbr> along the way.
 needed after a `git commit`. See `dvc install` for more details.
 
 `dvc repro` does not run `dvc fetch`, `dvc pull` or `dvc checkout` to get data
-files, intermediate or final results.
+files, intermediate or final results (except if the `--pull` option is used).
 
 By default, this command checks all pipeline stages to determine which ones have
 changed. Then it executes the corresponding commands. <abbr>Outputs</abbr> are
@@ -157,8 +157,9 @@ up-to-date and only execute the final stage.
   corresponding pipelines, including the target stages themselves. This option
   has no effect if `targets` are not provided.
 
-- `--pull` - [pulling](/doc/command-reference/pull) any data involved in the
-  stages being reproduced, if it already exists in remote storage.
+- `--pull` - [pulls](/doc/command-reference/pull) dependencies and outputs
+  involved in the stages being reproduced, if they are found in remote storage.
+  Note that it checks the run-cache too (available history of stage runs).
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
