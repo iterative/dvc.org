@@ -15,7 +15,7 @@ to a different version of a 100Gb file in less than a second with a
 
 The foundation of DVC consists of a few commands that you can run along with
 `git` to track large files, directories, or ML models. Think "Git for data".
-Read on or watch our video docs to learn about versioning data with DVC!
+Read on or watch our video to learn about versioning data with DVC!
 
 https://youtu.be/kLKBcPonMYw
 
