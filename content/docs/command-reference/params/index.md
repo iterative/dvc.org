@@ -30,7 +30,7 @@ parameters files.
 
 The default parameters file name is `params.yaml`. Parameters should be
 organized as a tree hierarchy inside, as DVC will locate param names by their
-tree path. parameters files have to be manually written, or generated, and these
+tree path. Parameters files have to be manually written, or generated, and these
 can be versioned directly with Git.
 
 Supported parameter _value_ types are: string, integer, float, and arrays. DVC
