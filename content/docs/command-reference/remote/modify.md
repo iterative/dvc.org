@@ -264,7 +264,8 @@ DVC remote using the `example-name`
 
 ```dvc
 $ dvc remote add -d myremote s3://example-name/path/to/use
-$ dvc remote modify myremote https://nyc3.digitaloceanspaces.com
+$ dvc remote modify myremote endpointurl \
+                             https://nyc3.digitaloceanspaces.com
 ```
 
 </details>
