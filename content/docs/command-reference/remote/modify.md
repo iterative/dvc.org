@@ -227,7 +227,6 @@ these settings, you could use the following options.
   > - [ACL Overview - Permissions](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#permissions)
   > - [Put Object ACL](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObjectAcl.html)
 
-
 S3 remotes can also be configured entirely via environment variables:
 
 ```dvc
