@@ -13,7 +13,7 @@ perfect solution, but here are some ideas:
 
 - The full [Cmder](https://cmder.net/) console emulator combines several useful
   tools like [ConEmu](https://conemu.github.io/), and
-  [Git for Windows](https://gitforwindows.org/)\* (Git Bash) among other
+  [Git for Windows](https://gitforwindows.org/) (Git Bash) among other
   [shell options](https://github.com/cmderdev/cmder/blob/master/README.md#access-to-multiple-shells-in-one-window-using-tabs).
 - [Anaconda Prompt](https://docs.anaconda.com/anaconda/user-guide/getting-started/#open-prompt-win)
   is another recommendation.
@@ -24,7 +24,7 @@ perfect solution, but here are some ideas:
   continuation). But it has major
   [I/O performance issues](https://www.phoronix.com/scan.php?page=article&item=windows10-okt-wsl&num=2)
   and is [unable to access GPUs](https://github.com/Microsoft/WSL/issues/829),
-  et al.\*
+  among other limitations.
 - Install an actual Linux distro (e.g. Ubuntu) on a virtual machine, or in a HD
   partition (dual boot).
 
