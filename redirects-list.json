@@ -24,10 +24,11 @@
   "^/doc/get-started(/.*)?$                                                               /doc/start",
   "^/doc/tutorial(/.*)?$                                                                  /doc/start",
   "^/doc/tutorials/get-started(/.*)?$                                                     /doc/start",
-  "^/doc/tutorials/versioning(/.*)?$                                                      /doc/use-cases/versioning-data-and-model-files/tutorial",
+  "^/doc/tutorials/versioning(/.*)?$                                                      /doc/use-cases/versioning-data-and-models/tutorial",
   "^/doc/tutorials(/.*)?                                                                  /doc/start",
 
-  "^/doc/use-cases/data-and-model-files-versioning/?$                                     /doc/use-cases/versioning-data-and-model-files",
+  "^/doc/use-cases/data-and-model-files-versioning/?$                                     /doc/use-cases/versioning-data-and-models",
+  "^/doc/use-cases/versioning-data-and-model-files(/.*)?$                                 /doc/use-cases/versioning-data-and-models$1",
   "^/doc/user-guide/dvc-file-format$                                                      /doc/user-guide/dvc-files-and-directories",
   "^/doc/user-guide/updating-tracked-files$                                               /doc/user-guide/how-to/update-tracked-files",
   "^/doc/understanding-dvc(/.*)?$                                                         /doc/user-guide/what-is-dvc",
