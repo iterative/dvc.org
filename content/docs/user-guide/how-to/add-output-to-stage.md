@@ -2,9 +2,9 @@
 
 There are situations where we have executed a stage (either by writing
 `dvc.yaml` manually and using `dvc repro`, or with `dvc run`), but later notice
-that some of its output files or directories, which already exist in workspace,
-are missing from `dvc.yaml` (`outs` field). Follow the steps below to add
-existing files or directories as outputs to a stage without re-executing it
+that some of its output files or directories, which are already in the
+workspace, are missing from `dvc.yaml` (`outs` field). Follow the steps below to
+add existing files or directories as outputs to a stage without re-executing it
 again, which can be expensive/time-consuming, but is unnecessary.
 
 We start with an example `prepare` stage in `dvc.yaml`, which has a single
