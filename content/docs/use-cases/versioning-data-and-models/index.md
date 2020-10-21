@@ -7,17 +7,17 @@ revisions of these data artifacts for easy access and sharing?
 
 It turns out that we can find some answers in software engineering, like
 [version control](https://en.wikipedia.org/wiki/Version_control). This means
-adopting a standard file storage structure (cache) and keeping a change history
-(commits), as well as further benefits like enabling parallel teamwork
-(branching), peer-reviews (pull requests), etc. Imagine if we could do the same
-with data!
+keeping a change history (commits), automatic file deduplication, enabling
+parallel teamwork (branching), peer-reviews (pull requests), etc. Imagine if we
+could do the same with data!
 
-![](/img/404) _Data as code_
+![](/img/data-as-code.png) _Data as code_
 
 Some advantages:
 
-- Manage and share multiple versions of datasets and ML models easily,
-  maintaining visibility over them.
+- Manage and share multiple versions of datasets and ML models easily, while
+  maintaining visibility over them and
+  [preventing duplication](/doc/user-guide/large-dataset-optimization).
 - Codifying <abbr>data artifacts</abbr> (and processes) enables proven Git
   workflows such as branching, pull requests, release management, and even CI/CD
   for your data lifecycle.
@@ -78,24 +78,24 @@ can be put in Git. Similarly, `dvc.lock` files can also refer to any data
 and linked\* back to their original location:
 
 > \* See
-> [Large Dataset Optimization](/doc/user-guide/large-dataset-optimization) and
-> `dvc config cache` for more info. on file linking.
+> [File link types](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
+> and `dvc config cache` for more info. on file linking.
 
 ```git
  .
 +├── .dvc     # Hidden DVC internals
 +│   ├── cache
-+│   │   ├── b6...  # data/ contents moved here
-+│   │   └── ed...  # model.pkl moved here
++│   │   ├── b6e29fb... # data/ contents moved here
++│   │   └── ede2872... # model.pkl moved here
 +│   ...
  ├── data           # Now a link to the cache
  │   ├── labels.csv
  │   └── transactions.csv
  ...
-+├── data.dvc   # Points to data/
-+├── dvc.lock   # Points to model.h5
-+├── dvc.yaml   # Wrapper for running training.py
-+├── model.h5   # Final result (also a link to the cache)
++├── data.dvc     # Points to data/
++├── dvc.lock     # Points to model.h5
++├── dvc.yaml     # Wrapper for running training.py
++├── model.h5     # Final result (also a link to the cache)
  ├── training.py
 ```
 
