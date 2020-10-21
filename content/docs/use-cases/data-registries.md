@@ -30,9 +30,9 @@ are some of it's advantages:
   [shared](/doc/use-cases/sharing-data-and-model-files) by multiple projects in
   a single location (distributed copies are possible too). This simplifies data
   management and optimizes space requirements.
-- Data as code: leverage Git workflow such as commits, branching, pull requests,
-  reviews, and even CI/CD for your data and models lifecycle. Think "Git for
-  cloud storage", but without ad-hoc conventions.
+- Data as code: leverage Git workflows such as commits, branching, pull
+  requests, reviews, and even CI/CD for your data and models lifecycle. Think
+  "Git for cloud storage", but without ad-hoc conventions.
 - Security: registries can be setup with read-only remote storage (e.g. an HTTP
   server). And [DVC metafiles](/doc/user-guide/dvc-files-and-directories) enable
   auditing data changes.
