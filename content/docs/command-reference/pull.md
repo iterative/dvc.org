@@ -37,7 +37,7 @@ to `dvc config cache.type`).
 It has the same effect as running `dvc fetch` and `dvc checkout`:
 
 ```
-Controlled files             Commands
+Tracked files                Commands
 ---------------- ---------------------------------
 
 remote storage

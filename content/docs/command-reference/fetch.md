@@ -35,7 +35,7 @@ Fetching is performed automatically by `dvc pull` (when the data is not already
 in the <abbr>cache</abbr>), along with `dvc checkout`:
 
 ```
-Controlled files             Commands
+Tracked files                Commands
 ---------------- ---------------------------------
 
 remote storage
