@@ -24,7 +24,7 @@ Enable enhanced
 `dvc.yaml` files by installing the
 [YAML extension](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml).
 
-## JetBrain IDEs (PyCharm, Intellij IDEA, et al.)
+## JetBrain IDEs (PyCharm, Intellij IDEA, etc.)
 
 These IDEs should ask how to associate file types for `dvc.lock` and `.dvc`
 files when you first open one of them. If not, follow

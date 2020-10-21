@@ -27,13 +27,15 @@ versions of the metrics. All plots defined in `dvc.yaml` are used by default.
 > differences between metrics file values.
 
 `revisions` are Git commit hashes, tag, or branch names. If none are specified,
-`dvc plots diff` compares targets currently present in the
-<abbr>workspace</abbr> (uncommitted changes) with their latest committed
-versions (required). A single specified revision results in comparing the
-workspace and that version.
+`dvc plots diff` compares plots currently present in the <abbr>workspace</abbr>
+(uncommitted changes) with their latest commit (required). A single specified
+revision results in comparing the workspace and that version.
 
-Note that any number of `revisions` can be provided, and the resulting plot
+💡 Note that any number of `revisions` can be provided, and the resulting plot
 shows all of them in a single image.
+
+Specific plots files can be specified with the `--targets` option. Note that
+these don't have to be defined as `plots` in `dvc.yaml`.
 
 The plot style can be customized with
 [plot templates](/doc/command-reference/plots#plot-templates), using the
@@ -48,11 +50,9 @@ all the current plots, without comparisons.
 
 ## Options
 
-- `--targets <path>` - specific metrics files to visualize. These must be listed
-  in a [`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvcyaml-file) file
-  (see the `--plots` option of `dvc run`). When specifying arguments for
-  `--targets` before `revisions`, you should use `--` after this option's
-  arguments, e.g.:
+- `--targets <path>` - specific metrics files to visualize. When specifying
+  arguments for `--targets` before `revisions`, you should use `--` after this
+  option's arguments, e.g.:
 
   ```dvc
   $ dvc plots diff --targets t1.json t2.csv -- HEAD v1 v2
