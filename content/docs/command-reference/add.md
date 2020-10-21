@@ -22,8 +22,8 @@ track the added data.
 
 This command can be used to track large files, models, dataset directories, etc.
 that are too big for Git to handle directly. This enables
-[versioning](/doc/use-cases/versioning-data-and-model-files) them indirectly
-with Git.
+[versioning](/doc/use-cases/versioning-data-and-models) them indirectly with
+Git.
 
 The `targets` are the files or directories to add, which are turned into
 <abbr>data artifacts</abbr> of the <abbr>project</abbr>. These are stored in the
@@ -214,7 +214,7 @@ $ dvc run -n train \
 ```
 
 > To try this example, see the
-> [versioning tutorial](/doc/use-cases/versioning-data-and-model-files/tutorial).
+> [versioning tutorial](/doc/use-cases/versioning-data-and-models/tutorial).
 
 If instead we use the `--recursive` (`-R`) option, the output looks like this:
 

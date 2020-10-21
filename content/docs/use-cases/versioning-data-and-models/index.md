@@ -155,7 +155,7 @@ M       data\raw
 ![](/img/versioning.png) _Full project restoration_
 
 > For more hands-on experience, we recommend following the
-> [versioning tutorial](/doc/use-cases/versioning-data-and-model-files).
+> [versioning tutorial](/doc/use-cases/versioning-data-and-models/tutorial).
 
 ## Versioned storage
 
