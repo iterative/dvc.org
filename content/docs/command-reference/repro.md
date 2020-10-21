@@ -158,8 +158,11 @@ up-to-date and only execute the final stage.
   has no effect if `targets` are not provided.
 
 - `--pull` - [pulls](/doc/command-reference/pull) dependencies and outputs
-  involved in the stages being reproduced, if they are found in remote storage.
-  Note that it checks the run-cache too (available history of stage runs).
+  involved in the stages being reproduced, if they are found in the
+  [default](/doc/command-reference/remote/default) remote storage. Note that it
+  checks the local run-cache too (available history of stage runs).
+
+  > Has no effect if combined with `--no-run-cache`.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
