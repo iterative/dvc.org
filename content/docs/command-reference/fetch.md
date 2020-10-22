@@ -277,4 +277,4 @@ into the workspace (with `dvc repro train.dvc`).
 > Note that in this example project, the last stage file `evaluate.dvc` doesn't
 > add any more data files than those form previous stages, so at this point all
 > of the data for this pipeline is cached and `dvc status -c` would output
-> `Cache and remote '{remote}' are in sync.`
+> `Cache and remote 'myremote' are in sync.`
