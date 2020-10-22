@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Data & Model Versioning'
+title: 'Data and Model Versioning Tutorial'
 description: 'Get hands-on experience with data versioning in a basic machine
 learning version control scenario: managing multiple datasets and ML models
 using DVC.'
