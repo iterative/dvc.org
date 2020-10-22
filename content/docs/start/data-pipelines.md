@@ -11,14 +11,11 @@ enough. How is data filtered, transformed, or used to train ML models? DVC
 introduces a mechanism to capture _data pipelines_ — series of data processes
 that produce a final result.
 
-A DVC pipeline uses stages to describe how models and other data artifacts are
-built, and provides an efficient way to reproduce them. This allows you to
-capture simple data workflows, organize data science projects, or build detailed
-machine learning pipelines (to name a few use cases).
-
-You can easily version DVC pipelines and their data (using Git). This allows you
-to better organize your project and reproduce your workflow and results later —
-exactly as they were built originally!
+DVC pipelines and their data can also be easily versioned (using Git). This
+allows you to better organize your project, and reproduce your workflow and
+results later exactly as they were built originally! This allows you to
+capture simple ETL workflows, better organize data science projects, or build detailed
+machine learning pipelines (to name a few uses).
 
 ## Pipeline stages
 
