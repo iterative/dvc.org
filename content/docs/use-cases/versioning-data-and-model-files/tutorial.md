@@ -11,7 +11,7 @@ to build a powerful image classifier using a pretty small dataset.
 
 > We highly recommend reading the François' tutorial itself. It's a great
 > demonstration of how a general pre-trained model can be leveraged to build a
-> new highly performant model, with very limited resources.
+> new high-performance model, with very limited resources.
 
 We first train a classifier model using 1000 labeled images, then we double the
 number of images (2000) and retrain our model. We capture both datasets and
