@@ -19,9 +19,9 @@ positional arguments:
 
 ## Description
 
-This command is a way to visualize the "difference" between metrics among
-experiments in the <abbr>repository</abbr> history, by plotting multiple
-versions of the metrics. All plots defined in `dvc.yaml` are used by default.
+This command is a way to visualize the "difference" between
+[certain metrics](/doc/command-reference/plots#supported-file-formats) among
+versions of the <abbr>repository</abbr>, by overlaying them in a single plot.
 
 > Note that unlike `dvc metrics diff`, this command does not calculate numeric
 > differences between metrics file values.
@@ -34,8 +34,9 @@ revision results in comparing the workspace and that version.
 💡 Note that any number of `revisions` can be provided, and the resulting plot
 shows all of them in a single image.
 
-Specific plots files can be specified with the `--targets` option. Note that
-these don't have to be defined as `plots` in `dvc.yaml`.
+All plots defined in `dvc.yaml` are used by default, but specific plots files
+can be specified with the `--targets` option (note that targets don't
+necessarily have to be defined in `dvc.yaml`).
 
 The plot style can be customized with
 [plot templates](/doc/command-reference/plots#plot-templates), using the
