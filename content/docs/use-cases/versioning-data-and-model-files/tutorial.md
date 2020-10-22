@@ -5,7 +5,7 @@ learning version control scenario: managing multiple datasets and ML models
 using DVC.'
 ---
 
-# Tutorial: Data & Model Versioning
+# Data and Model Versioning Tutorial
 
 The goal of this example is to give you some hands-on experience with a basic
 machine learning version control scenario: managing multiple datasets and ML
