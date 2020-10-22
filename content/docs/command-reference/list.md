@@ -16,12 +16,13 @@ positional arguments:
 
 ## Description
 
-DVC, by effectively replacing data files, models, directories with `.dvc` files,
-hides actual locations and names. This means that you don't see data files when
-you browse a <abbr>DVC repository</abbr> on Git hosting (e.g. GitHub), you just
-see the `dvc.yaml` and `.dvc` files. This makes it hard to navigate the project
-to find <abbr>data artifacts</abbr> for use with `dvc get`, `dvc import`, or
-`dvc.api` functions.
+DVC replaces data files, models, directories, etc. with small
+[metafiles](/doc/user-guide/dvc-files-and-directories#dvc-files-and-directories),
+and hides actual locations and names. Hence data files aren't visible when you
+browse a <abbr>DVC repository</abbr> on Git hosting (e.g. GitHub), you just see
+the `dvc.yaml` and `.dvc` files. This makes it difficult to find <abbr>data
+artifacts</abbr> while navigating in a project, for using with `dvc get`,
+`dvc import`, or `dvc.api` functions.
 
 `dvc list` prints a virtual view of a DVC repository, as if files and
 directories tracked by DVC were found directly in the remote Git repo. Only the
@@ -121,26 +122,4 @@ images/dvc-logo-outlines.png
 images/dvc-logo-outlines.png.dvc
 images/owl_sticker.png
 ...
-```
-
-## Example: Archive project data
-
-An archive is a single file that contains multiple files from a project. It can
-be used to backup project data. We can use `dvc list` to create an archive of
-files and directories (<abbr>outputs</abbr>) tracked by DVC:
-
-```dvc
-$ dvc list . -R --dvc-only | zip -@ data.zip  # if `zip` available
-```
-
-Alternative for windows (if `xargs` available):
-
-```dvc
-$ dvc list . -R --dvc-only | xargs python -m zipfile -c data.zip
-```
-
-Use `git archive` to create an archive of data tracked by Git:
-
-```git
-$ git archive -o code.zip HEAD
 ```
