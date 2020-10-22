@@ -118,14 +118,9 @@ stages:
         md5: ede2872bedbfe10342bb1c416e2f049f
 ```
 
-By matching versions of code with snapshots of the data at the time, we can
-achieve true [reproducibility](/doc/start/data-pipelines).
-
-## Version control
-
-DVC doesn't replace Git. Having codified data <abbr>artifacts</abbr> and
-[pipelines](/doc/start/data-pipelines), use regular `git` commands to create
-versions (commits, tags, branches, etc.):
+**Remember: DVC doesn't replace Git.** Having codified data
+<abbr>artifacts</abbr> and [pipelines](/doc/start/data-pipelines), regular `git`
+commands are used to create versions (commits, tags, branches, etc.):
 
 ```dvc
 $ git add cleanup.sh
@@ -139,10 +134,13 @@ $ git commit -m 'Data cleanup v1.0'
 > Note that DVC automatically prevents Git from tracking data in the
 > <abbr>workspace</abbr> (via `.gitignore`).
 
+💡 By matching versions of code with snapshots of the data at the time, we can
+achieve full [reproducibility](/doc/start/data-pipelines).
+
 Now that Git is tracking the code (including
 [DVC metafiles](/doc/user-guide/dvc-files-and-directories)), and DVC is tracking
-the data, we can repeat the procedure to generate more commits. Use
-`dvc checkout` to go back:
+the data, we can repeat the procedure to generate more commits. `dvc checkout`
+can then be used to go back:
 
 ```dvc
 $ git checkout v1.0
