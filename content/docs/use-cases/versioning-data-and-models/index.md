@@ -58,26 +58,8 @@ for collaboration.
 ![](/img/404) _Parts of a DVC project_
 
 Let's imagine a project containing a couple of large data files (in the `data/`
-directory), along with some source code to process it:
-
-```dvc
-.
-├── data
-│   ├── labels.csv        # Many MB of labeled data here
-│   └── transactions.csv  # Several GB of raw historic data
-├── training.py
-```
-
-Tiny `.dvc` files capture snapshots of existing files or directories in the
-<abbr>workspace</abbr> (see `dvc add`), and can be put in Git as placeholders
-for the data. Similarly, `dvc.yaml` files can also capture any
-<abbr>output</abbr> data produced by running the code (see `dvc repro`). All
-tracked data contents are saved to the <abbr>DVC cache</abbr>, and linked\* back
-to their original location:
-
-> \* See
-> [File link types](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
-> and `dvc config cache` for more info. on file linking.
+directory), along with some source code to process it (`training.py`). Let's
+codify it with DVC:
 
 ```git
  .
@@ -96,6 +78,17 @@ to their original location:
 +├── model.h5     # Final result (also a link to the cache)
  ├── training.py
 ```
+
+Tiny `.dvc` files capture snapshots of existing files or directories in the
+<abbr>workspace</abbr> (see `dvc add`), and can be put in Git as placeholders
+for the data. Similarly, `dvc.yaml` files can also capture any
+<abbr>output</abbr> data produced by running the code (see `dvc repro`). All
+tracked data contents are saved to the <abbr>DVC cache</abbr>, and linked\* back
+to their original location:
+
+> \* See
+> [File link types](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
+> and `dvc config cache` for more info. on file linking.
 
 The `data.dvc` and `dvc.lock` metafiles connect workspace and cache. Let's see
 their contents:
@@ -122,6 +115,9 @@ stages:
 <abbr>artifacts</abbr> and [pipelines](/doc/start/data-pipelines), regular `git`
 commands are used to create versions (commits, tags, branches, etc.):
 
+> Note that DVC automatically prevents Git from tracking data in the
+> <abbr>workspace</abbr> (via `.gitignore`).
+
 ```dvc
 $ git add cleanup.sh
 $ dvc add data/
@@ -131,11 +127,8 @@ $ git add data.dvc data/.gitignore
 $ git commit -m 'Data cleanup v1.0'
 ```
 
-> Note that DVC automatically prevents Git from tracking data in the
-> <abbr>workspace</abbr> (via `.gitignore`).
-
-💡 By matching versions of code with snapshots of the data at the time, we can
-achieve full [reproducibility](/doc/start/data-pipelines).
+> By matching versions of code with snapshots of the data at the time, we can
+> achieve full [reproducibility](/doc/start/data-pipelines).
 
 Now that Git is tracking the code (including
 [DVC metafiles](/doc/user-guide/dvc-files-and-directories)), and DVC is tracking
