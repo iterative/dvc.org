@@ -13,8 +13,8 @@ that produce a final result.
 
 DVC pipelines and their data can also be easily versioned (using Git). This
 allows you to better organize your project, and reproduce your workflow and
-results later exactly as they were built originally! This allows you to
-capture simple ETL workflows, better organize data science projects, or build detailed
+results later exactly as they were built originally! This allows you to capture
+simple ETL workflows, better organize data science projects, or build detailed
 machine learning pipelines (to name a few uses).
 
 ## Pipeline stages
