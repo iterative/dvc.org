@@ -109,9 +109,10 @@ up-to-date and only execute the final stage.
   for example with subdirectories containing a separate pipeline that can be
   reproduced independently.
 
-- `-R`, `--recursive` - determines the stages to reproduce by searching each
-  target directory and its subdirectories. This option only has an effect if a
-  directory is given as one of the `targets`.
+- `-R`, `--recursive` - expands arguments that `targets` accepts to determine
+  the stages to be reproduced, by searching each target directory and its
+  subdirectories. This option only has an effect if directory paths are given as
+  `targets`.
 
 - `--no-commit` - do not save outputs to cache. A DVC-file is created and an
   entry is added to `.dvc/state`, while nothing is added to the cache.
@@ -132,8 +133,9 @@ up-to-date and only execute the final stage.
 - `-p`, `--pipeline` - reproduce the entire pipelines that the `targets` belong
   to. Use `dvc dag <target>` to show the parent pipeline of a target.
 
-- `-P`, `--all-pipelines` - reproduce all pipelines for all `dvc.yaml` files
-  present in the DVC project.
+- `-P`, `--all-pipelines` - expands directory path given as `targets` to
+  reproduce all pipelines for all `dvc.yaml` files present in the <abbr>DVC
+  project</abbr>.
 
 - `--no-run-cache` - execute stage commands even if they have already been run
   with the same command/dependencies/outputs/etc before.
@@ -307,4 +309,7 @@ $ dvc dag
   +-------+
 ```
 
-> Refer to `dvc dag` for more details on that command.
+> Refer to `dvc dag` for more details on that command. Note that using
+> `dvc repro` without `--downstream` in the above example results in the
+> execution of the target ('count`), and the preceeding stages (only 'filter' in
+> this case).
