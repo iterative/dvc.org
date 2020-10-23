@@ -133,9 +133,8 @@ up-to-date and only execute the final stage.
 - `-p`, `--pipeline` - reproduce the entire pipelines that the `targets` belong
   to. Use `dvc dag <target>` to show the parent pipeline of a target.
 
-- `-P`, `--all-pipelines` - expands directory path given as `targets` to
-  reproduce all pipelines for all `dvc.yaml` files present in the <abbr>DVC
-  project</abbr>.
+- `-P`, `--all-pipelines` - expands directory path of the <abbr>DVC
+  project</abbr> to reproduce pipelines for all `dvc.yaml` files present.
 
 - `--no-run-cache` - execute stage commands even if they have already been run
   with the same command/dependencies/outputs/etc before.
@@ -293,7 +292,8 @@ Updating lock file 'dvc.lock'
 
 The change in `text.txt` is ignored because that file is a dependency in the
 `filter` stage, which wasn't executed by the `dvc repro` above. This is because
-`filter` happens before the target (`count`) in the pipeline, as shown below:
+`filter` happens before the target (`count`) in the pipeline (see `dvc dag`), as
+shown below:
 
 ```dvc
 $ dvc dag
@@ -309,7 +309,6 @@ $ dvc dag
   +-------+
 ```
 
-> Refer to `dvc dag` for more details on that command. Note that using
-> `dvc repro` without `--downstream` in the above example results in the
-> execution of the target ('count`), and the preceeding stages (only 'filter' in
-> this case).
+> Note that using `dvc repro` without `--downstream` in the above example
+> results in the execution of the target (`count`), and the preceeding stages
+> (only 'filter' in this case).
