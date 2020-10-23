@@ -18,12 +18,13 @@ positional arguments:
 
 ## Description
 
-This command provides a quick way to visualize metrics such as loss functions,
-AUC curves, confusion matrices, etc. All plots defined in `dvc.yaml` are used by
-default.
+This command provides a quick way to visualize
+[certain metrics](/doc/command-reference/plots#supported-file-formats) such as
+loss functions, AUC curves, confusion matrices, etc.
 
-Optionally, specific metric file `targets` to show are accepted. Note that these
-don't have to be defined as `plots` in `dvc.yaml`.
+All plots defined in `dvc.yaml` are used by default, but specific plots files
+can be specified as `targets` (note that targets don't necessarily have to be
+defined in `dvc.yaml`).
 
 The plot style can be customized with
 [plot templates](/doc/command-reference/plots#plot-templates), using the

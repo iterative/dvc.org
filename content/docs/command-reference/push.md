@@ -168,7 +168,7 @@ $ dvc push --with-deps matrix-train
 ... Push the rest of the data
 
 $ dvc status --cloud
-Data and pipelines are up to date.
+Cache and remote 'r1' are in sync.
 ```
 
 We specified a stage in the middle of this pipeline (`test-posts`) with the
@@ -259,7 +259,7 @@ $ tree ~/vault/recursive
 10 directories, 10 files
 
 $ dvc status --cloud
-Data and pipelines are up to date.
+Cache and remote 'r1' are in sync.
 ```
 
 And running `dvc status --cloud`, DVC verifies that indeed there are no more

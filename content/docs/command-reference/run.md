@@ -170,9 +170,8 @@ $ dvc run -n my_stage './my_script.sh $MYENVVAR'
 
 - `-O <path>`, `--outs-no-cache <path>` - the same as `-o` except that outputs
   are not tracked by DVC. It means that they are not cached, and it's up to a
-  user to save and version control them. This is useful if the outputs are small
-  enough to be tracked by Git directly, or if these files are not of future
-  interest.
+  user to manage them separately. This is useful if the outputs are small enough
+  to be tracked by Git directly, or if these files are not of future interest.
 
 - `--outs-persist <path>` - declare output file or directory that will not be
   removed upon `dvc repro`.
@@ -197,9 +196,9 @@ $ dvc run -n my_stage './my_script.sh $MYENVVAR'
 
 - `-M <path>`, `--metrics-no-cache <path>` - the same as `-m` except that DVC
   does not track the metrics file. This means that the file is not cached, so
-  it's up to the user to save and version control it. This is typically
-  desirable with _metrics_ because they are small enough to be tracked with Git
-  directly. See also the difference between `-o` and `-O`.
+  it's up to the user to manage them separately. This is typically desirable
+  with _metrics_ because they are small enough to be tracked with Git directly.
+  See also the difference between `-o` and `-O`.
 
 - `--plots <path>` - specify a plot metrics file produces by this stage. This
   option behaves like `-o` but registers the file in a `plots` field inside the
@@ -210,8 +209,8 @@ $ dvc run -n my_stage './my_script.sh $MYENVVAR'
 
 - `--plots-no-cache <path>` - the same as `--plots` except that DVC does not
   track the plots metrics file. This means that the file is not cached, so it's
-  up to the user to save and version control it. See also the difference between
-  `-o` and `-O`.
+  up to the user to manage them separately. See also the difference between `-o`
+  and `-O`.
 
 - `-w <path>`, `--wdir <path>` - specifies a working directory for the `command`
   to run in (uses the `wdir` field in `dvc.yaml`). Dependency and output files
@@ -231,10 +230,10 @@ $ dvc run -n my_stage './my_script.sh $MYENVVAR'
 - `-f`, `--force` - overwrite an existing stage in `dvc.yaml` file without
   asking for confirmation.
 
-- `--no-run-cache` - forcefully execute the `command` again, even if the same
-  `dvc run` command has already been run in this workspace. Useful if the
-  command's code is non-deterministic (meaning it produces different outputs
-  from the same list of inputs).
+- `--no-run-cache` - execute the stage `command` even if it has already been run
+  with the same dependencies/outputs/etc. before. Useful for example if the
+  command's code is non-deterministic
+  ([not recommended](#avoiding-unexpected-behavior)).
 
 - `--no-commit` - do not save outputs to cache. A stage created and an entry is
   added to `.dvc/state`, while nothing is added to the cache. In the stage file,

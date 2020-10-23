@@ -37,7 +37,7 @@ to `dvc config cache.type`).
 It has the same effect as running `dvc fetch` and `dvc checkout`:
 
 ```
-Controlled files             Commands
+Tracked files                Commands
 ---------------- ---------------------------------
 
 remote storage
@@ -112,8 +112,9 @@ used to see what files `dvc pull` would download.
   `dvc remote list`).
 
 - `--run-cache` - downloads all available history of stage runs from the remote
-  repository into the local run-cache. A `dvc repro <stage_name>` is necessary
-  to checkout these files into the workspace and update the `dvc.lock` file.
+  repository (to the cache only, like `dvc fetch --run-cache`). Note that
+  `dvc repro <stage_name>` is necessary to checkout these files (into the
+  workspace) and update `dvc.lock`.
 
 - `-j <number>`, `--jobs <number>` - parallelism level for DVC to download data
   from remote storage. This only applies when the `--cloud` option is used, or a
