@@ -132,4 +132,4 @@ M       data\raw
 ![](/img/versioning.png) _Full project restoration_
 
 > For more hands-on experience, please follow the
-> [versioning tutorial](/doc/use-cases/versioning-data-and-models/tutorial).
+> [versioning tutorial](/doc/use-cases/versioning-data-and-model-files/tutorial).

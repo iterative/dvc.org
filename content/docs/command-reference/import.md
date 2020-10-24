@@ -206,7 +206,7 @@ $ dvc get https://github.com/iterative/dataset-registry \
 ```
 
 > Used in our
-> [versioning tutorial](/doc/use-cases/versioning-data-and-models/tutorial)
+> [versioning tutorial](/doc/use-cases/versioning-data-and-model-files/tutorial)
 
 Or
 
