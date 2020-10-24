@@ -1,45 +1,39 @@
 # Versioning Data and Models
 
-Data science teams have to face data management questions around versioning
+Data science teams today face data management questions around versioning
 datasets, data artifacts, and machine learning models. How do we keep track of
 changes in data, code, and ML models? What’s the best way to organize and store
-multiple versions of data files for safe and persistent access? How can the
+multiple versions of data files for safe, persistent access? How can the
 lifecycle of data and models be followed and enforced?
 
-![](/img/data_ver_complex.png) _Exponential complexity of data science projects_
+![](/img/data_ver_complex.png) _Exponential complexity of DS projects_
 
-DVC proposes to codify data projects in order to adopt existing engineering
+DVC proposes to _codify_ data projects in order to adopt existing engineering
 tools like Git
 [version control](https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control),
-continuous integration (CI), and other best practices. This means writing a
-description of which data, ML artifacts, etc. should be in the environment at a
-given point. DVC can restore the <abbr>workspace</abbr> files and directories
-from a specialized data storage, to match that description. Here are some
-benefits of this approach:
+continuous integration (CI), and other best practices that improve productivity.
+This means writing a description of which data, ML artifacts, etc. should be in
+the environment at a given time. DVC can restore the <abbr>workspace</abbr>
+files and directories (from a separate data storage) to match that description.
+Here are some benefits of this approach:
 
-- Track all the things (code, data, ML models) with a unified toolset.
-- Simple CLI: work with simple terminal [commands](/doc/command-reference)
-  similar to `git`.
-- [Reproducibility](/doc/start/data-pipelines): enable rewinding data science
-  experiments to use the exact data employed originally.
+- Track all the things (code, data, ML models) with a unified toolset that is
+  accessible to every project participant (data scientists, engineers, managers,
+  etc.).
+- Reproducibility and trustworthiness: identify exact research inputs, enable
+  anyone to understand and verify results.
+- Enforce data lifecycle policies — all project changes have to go through the
+  repository history.
 - Low coupling: separate code from data by caching large files/directories
   automatically. This makes your project easier to maintain (high cohesion) and
   improves data persistence.
+- Simple CLI: work with simple terminal [commands](/doc/command-reference)
+  similar to `git`.
 - Treating data as code also allows for other advanced features, see
   [Get Started](/doc/start) for a primer.
 - Security: Audit an immutable history of changes to your data and models.
 
 ## How it looks
-
-Replace large data files and directories with tiny, human-readable metafiles
-that can be versioned with Git.
-
-A CAS (DVC Cache) is created automatically.
-
-Metafiles link data from cache to workspace.
-
-Use Git commands to create versions (commits), branches, etc. git+dvc checkout
-to switch between versions
 
 Versioning large data files and directories with Git is made possible by
 replacing them with small, human-readable
