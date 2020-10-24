@@ -1,51 +1,45 @@
 # Versioning Data and Models
 
-Taking data science from conceptual to applied requires answering data
-management questions around dataset and machine learning model versioning. How
-to track the evolution of data and ML models? How to organize and store the
-revisions of these data artifacts for easy access and sharing?
+Data science teams have to face data management questions around versioning
+datasets, data artifacts, and machine learning models. How do we keep track of
+changes in data, code, and ML models? What’s the best way to organize and store
+multiple versions of data files for safe and persistent access? How can the
+lifecycle of data and models be followed and enforced?
 
-It turns out that we can find some answers in software engineering, like
-[version control](https://en.wikipedia.org/wiki/Version_control). This means
-keeping a change history (commits), automatic file deduplication, enabling
-parallel teamwork (branching), peer-reviews (pull requests), etc. Imagine if we
-could do the same with data!
+![](/img/data_ver_complex.png) _Exponential complexity of data science projects_
 
-![](/img/data-as-code.png) _Matching data descriptions to a working environment_
+DVC proposes to codify data projects in order to adopt existing engineering
+tools like Git
+[version control](https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control),
+continuous integration (CI), and other best practices. This means writing a
+description of which data, ML artifacts, etc. should be in the environment at a
+given point. DVC can restore the <abbr>workspace</abbr> files and directories
+from a specialized data storage, to match that description. Here are some
+benefits of this approach:
 
-Some advantages of versioning data and models:
-
-- Manage multiple versions of datasets and ML models easily, while
-  [preventing duplication](/doc/user-guide/large-dataset-optimization).
-- Data as code: leverage Git workflows such as commits, branching, pull
-  requests, reviews, and even CI/CD for your data and models lifecycle. Think
-  "Git for data"
-- Reproducibility: Guarantee that anyone can rewind
-  [data pipelines](/doc/start/data-pipelines) exactly as they were created
-  originally.
-- Simple CLI: work with simple terminal commands like `dvc add` or
-  `dvc checkout` (similar to familiar `git` commands).
-- Security: [DVC metafiles](/doc/user-guide/dvc-files-and-directories) enable
-  auditing data changes. And data access controls can be setup via storage
-  integrations.
-
-## Why DVC
-
-Unfortunately, SCM tools like [Git](https://git-scm.com/) are designed to handle
-small text files, so data scientists can only control part of their assets that
-way. Storage itself is also severely limited by code hosting platforms
-[like GitHub](https://docs.github.com/en/github/managing-large-files/what-is-my-disk-quota),
-so transferring and managing data storage separately is a constant hurdle.
-
-Rather than reinventing the wheel, DVC proposes to treat **data as code** in
-order to manage it with existing engineering tools and best practices. Codifying
-data science projects (building a declarative description of which data and
-models should be in the environment) lets DVC match this description to the
-<abbr>workspace</abbr> automatically, among other advanced uses.
-
-> 💡 Please see [Get Started](/doc/start) for a primer on DVC's features.
+- Track all the things (code, data, ML models) with a unified toolset.
+- Simple CLI: work with simple terminal [commands](/doc/command-reference)
+  similar to `git`.
+- [Reproducibility](/doc/start/data-pipelines): enable rewinding data science
+  experiments to use the exact data employed originally.
+- Low coupling: separate code from data by caching large files/directories
+  automatically. This makes your project easier to maintain (high cohesion) and
+  improves data persistence.
+- Treating data as code also allows for other advanced features, see
+  [Get Started](/doc/start) for a primer.
+- Security: Audit an immutable history of changes to your data and models.
 
 ## How it looks
+
+Replace large data files and directories with tiny, human-readable metafiles
+that can be versioned with Git.
+
+A CAS (DVC Cache) is created automatically.
+
+Metafiles link data from cache to workspace.
+
+Use Git commands to create versions (commits), branches, etc. git+dvc checkout
+to switch between versions
 
 Versioning large data files and directories with Git is made possible by
 replacing them with small, human-readable
@@ -57,8 +51,8 @@ for collaboration.
 
 ![](/img/404) _Parts of a DVC project_
 
-Let's imagine a project containing a couple of large data files (in the `data/`
-directory), along with some source code to process it (`training.py`). Let's
+Let’s imagine a project containing a couple of large data files (in the `data/`
+directory), along with some source code to process it (`training.py`). Let’s
 codify it with DVC:
 
 ```git
@@ -90,7 +84,7 @@ to their original location:
 > [File link types](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
 > and `dvc config cache` for more info. on file linking.
 
-The `data.dvc` and `dvc.lock` metafiles connect workspace and cache. Let's see
+The `data.dvc` and `dvc.lock` metafiles connect workspace and cache. Let’s see
 their contents:
 
 ```yaml
@@ -111,7 +105,7 @@ stages:
         md5: ede2872bedbfe10342bb1c416e2f049f
 ```
 
-**Remember: DVC doesn't replace Git.** Having codified data
+**Remember: DVC doesn’t replace Git.** Having codified data
 <abbr>artifacts</abbr> and [pipelines](/doc/start/data-pipelines), regular `git`
 commands are used to create versions (commits, tags, branches, etc.):
 
