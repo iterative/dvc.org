@@ -17,23 +17,37 @@ the environment at a given time. DVC can restore the <abbr>workspace</abbr>
 files and directories (from a separate data storage) to match that description.
 Here are some benefits of this approach:
 
-- Track all the things (code, data, ML models) with a unified toolset that is
-  accessible to every project participant (data scientists, engineers, managers,
-  etc.).
-- Reproducibility and trustworthiness: identify exact research inputs, enable
-  anyone to understand and verify results.
-- Enforce data lifecycle policies — all project changes have to go through the
-  repository history.
+- Track all the things (code, data, ML models) as they change.
+- Collaborate using a unified toolset that is accessible to everyone (data
+  scientists, engineers, managers, etc.).
+- Reproducibility and trustworthiness: identify exact inputs of past research,
+  enable anyone to understand and verify results.
+- Enforce data lifecycle policies: all project changes have to go through the
+  repository history. Security audits are also made possible by an immutable
+  history of changes in data and models.
 - Low coupling: separate code from data by caching large files/directories
   automatically. This makes your project easier to maintain (high cohesion) and
   improves data persistence.
-- Simple CLI: work with simple terminal [commands](/doc/command-reference)
+- Simple interface: work with simple terminal [commands](/doc/command-reference)
   similar to `git`.
 - Treating data as code also allows for other advanced features, see
   [Get Started](/doc/start) for a primer.
-- Security: Audit an immutable history of changes to your data and models.
 
 ## How it looks
+
+DS/ML are iterative
+
+Replace large data files and directories with tiny, human-readable metafiles
+that can be versioned with Git.
+
+A
+[Content-addressable storage](https://www.google.com/url?q=https://en.wikipedia.org/wiki/Content-addressable_storage&sa=D&ust=1603526252385000&usg=AOvVaw3Y4fV6jAM2grfE4k9AP3HX)
+(<abbr>DVC Cache</abbr>) is created automatically.
+
+Metafiles link data from cache to workspace.
+
+Use Git commands to create versions (commits), branches, etc. git+dvc checkout
+to switch between versions
 
 Versioning large data files and directories with Git is made possible by
 replacing them with small, human-readable
