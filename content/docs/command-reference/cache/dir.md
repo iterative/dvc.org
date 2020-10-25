@@ -79,6 +79,6 @@ Absolute path `/path/to/dir` saved as is.
 ## Example: Getting current cache directory
 
 ```dvc
-$dvc cache dir
+$ dvc cache dir
 /home/user/dvc/.dvc/cache
 ```
