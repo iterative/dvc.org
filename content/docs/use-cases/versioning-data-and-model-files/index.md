@@ -15,7 +15,8 @@ continuous integration (CI), and other best practices that improve productivity.
 This means writing a description of which data, ML artifacts, etc. should be in
 the environment at a given time. DVC can restore the <abbr>workspace</abbr>
 files and directories (from a separate data storage) to match that description.
-Here are some benefits of this approach:
+
+## Why do it with DVC
 
 - Track all the things (code, data, ML models) as they change.
 - Collaborate using a unified toolset that is accessible to everyone (data
@@ -26,82 +27,62 @@ Here are some benefits of this approach:
   repository history. Security audits are also made possible by an immutable
   history of changes in data and models.
 - Low coupling: separate code from data by caching large files/directories
-  automatically. This makes your project easier to maintain (high cohesion) and
+  automatically. This makes data projects easier to maintain (high cohesion) and
   improves data persistence.
 - Simple interface: work with simple terminal [commands](/doc/command-reference)
   similar to `git`.
-- Treating data as code also allows for other advanced features, see
+- Treating _data as code_ also allows for other advanced features, see
   [Get Started](/doc/start) for a primer.
 
-## How it looks
+## How it looks & feels
 
-DS/ML are iterative
+Data science and machine learning are iterative processes where the lifecycles
+of data, code, and models occur semi-independently. Let's see how data
+codification helps manage them effectively.
 
-Replace large data files and directories with tiny, human-readable metafiles
-that can be versioned with Git.
-
-A
-[Content-addressable storage](https://www.google.com/url?q=https://en.wikipedia.org/wiki/Content-addressable_storage&sa=D&ust=1603526252385000&usg=AOvVaw3Y4fV6jAM2grfE4k9AP3HX)
-(<abbr>DVC Cache</abbr>) is created automatically.
-
-Metafiles link data from cache to workspace.
-
-Use Git commands to create versions (commits), branches, etc. git+dvc checkout
-to switch between versions
-
-Versioning large data files and directories with Git is made possible by
-replacing them with small, human-readable
-[metafiles](/doc/user-guide/dvc-files-and-directories). The data itself is
-<abbr>cached</abbr> outside of Git (locally or externally), and can be
-synchronized automatically with
-[dedicated storage](/doc/use-cases/versioned-storage) — a good way to share data
-for collaboration.
-
-![](/img/404) _Parts of a DVC project_
-
-Let’s imagine a project containing a couple of large data files (in the `data/`
-directory), along with some source code to process it (`training.py`). Let’s
-codify it with DVC:
+DVC starts by replacing large data files and directories in the
+<abbr>workspace</abbr> with tiny, human-readable
+[metafiles](/doc/user-guide/dvc-files-and-directories) that can be versioned
+using Git. The data itself is cached outside of Git:
 
 ```git
  .
-+├── .dvc     # Hidden DVC internals
-+│   ├── cache
-+│   │   ├── b6e29fb... # data/ contents moved here
-+│   │   └── ede2872... # model.h5 stored here
++├── .dvc         # Hidden DVC internals
++│   ├── cache      # CAS, excluded from Git
++│   │   ├── b6/e29fb... # data/ contents moved here
++│   │   └── ed/e2872... # model.h5 stored here
 +│   ...
- ├── data           # Now a link to the cache
- │   ├── labels.csv
- │   └── transactions.csv
+ ├── data         # Large dir, kept outside of Git
+ │   ├── raw.txt
+ │   └── labels.csv
  ...
-+├── data.dvc     # Points to data/
-+├── dvc.lock     # Points to model.h5
-+├── dvc.yaml     # Wrapper for running training.py
-+├── model.h5     # Final result (also a link to the cache)
++├── data.dvc     # Metafile that replaces data/
++├── dvc.yaml     # Metafile that replaces model.h5
+ ├── model.h5     # Large file, also cached outside of Git
  ├── training.py
 ```
 
-Tiny `.dvc` files capture snapshots of existing files or directories in the
-<abbr>workspace</abbr> (see `dvc add`), and can be put in Git as placeholders
-for the data. Similarly, `dvc.yaml` files can also capture any
-<abbr>output</abbr> data produced by running the code (see `dvc repro`). All
-tracked data contents are saved to the <abbr>DVC cache</abbr>, and linked\* back
-to their original location:
+The [data cache](/doc/command-reference/config#cache) is a
+[content-addressable storage](https://www.google.com/url?q=https://en.wikipedia.org/wiki/Content-addressable_storage&sa=D&ust=1603526252385000&usg=AOvVaw3Y4fV6jAM2grfE4k9AP3HX)
+(CAS), which adds a layer of indirection between code and data... In other
+words, your code doesn't need to look for the right version of input files, nor
+to write complicated output file names, leave it to DVC to match them later 💘
 
-> \* See
-> [File link types](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
-> and `dvc config cache` for more info. on file linking.
+> 💡 This cache can be
+> [synchronized](/doc/start/data-versioning#storing-and-sharing) automatically
+> with [dedicated storage](/doc/use-cases/versioned-storage) for sharing.
 
-The `data.dvc` and `dvc.lock` metafiles connect workspace and cache. Let’s see
-their contents:
+Metafiles connect workspace and cache (among other purposes). For example:
 
 ```yaml
+# data.dvc
 outs:
-  - md5: b6e29fb8740486c7e64a240e45505e41.dir
+  - md5: b6e29fb... # Points to .dvc/cache/b6/e29fb...
     path: data
 ```
 
 ```yaml
+# dvc.lock
 stages:
   train_model:
     cmd: python training.py data/ model.h5
@@ -113,34 +94,32 @@ stages:
         md5: ede2872bedbfe10342bb1c416e2f049f
 ```
 
-**Remember: DVC doesn’t replace Git.** Having codified data
-<abbr>artifacts</abbr> and [pipelines](/doc/start/data-pipelines), regular `git`
-commands are used to create versions (commits, tags, branches, etc.):
+> See [Data Pipelines](/doc/start/data-pipelines) to learn about stages.
 
-> Note that DVC automatically prevents Git from tracking data in the
-> <abbr>workspace</abbr> (via `.gitignore`).
+Having codified the data and models in the project, a regular `git` workflow can
+be used to create versions (commits), branches, etc. using the metafiles as
+proxies to the underlying data:
 
 ```dvc
-$ git add cleanup.sh
+$ git add training.py
 $ dvc add data/
 ...
 $ git add data.dvc data/.gitignore
+$ git commit -m 'First modeling experiment'
 
-$ git commit -m 'Data cleanup v1.0'
+# Iterate, repeat!
 ```
 
-> By matching versions of code with snapshots of the data at the time, we can
-> achieve full [reproducibility](/doc/start/data-pipelines).
+> Note that DVC prevents Git from tracking data in the workspace (via
+> `.gitignore`).
 
-Now that Git is tracking the code (including
-[DVC metafiles](/doc/user-guide/dvc-files-and-directories)), and DVC is tracking
-the data, we can repeat the procedure to generate more commits. `dvc checkout`
-can then be used to go back:
+With the project metadata in Git (along with matching code), it can now easily
+be rewound ⏪:
 
 ```dvc
-$ git checkout v1.0
+$ git checkout v1
 $ dvc checkout
-M       data\raw
+M       data
 ```
 
 ![](/img/versioning.png) _Full project restoration_
