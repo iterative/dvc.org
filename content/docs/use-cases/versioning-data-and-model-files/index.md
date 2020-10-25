@@ -77,7 +77,7 @@ Metafiles connect workspace and cache (among other purposes). For example:
 ```yaml
 # data.dvc
 outs:
-  - md5: b6e29fb...   # Points to .dvc/cache/b6/e29fb...
+  - md5: b6e29fb... # Points to .dvc/cache/b6/e29fb...
     path: data
 ```
 
