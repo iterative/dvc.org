@@ -3,10 +3,10 @@
 One of the main uses of <abbr>DVC repositories</abbr> is the
 [versioning of data and model files](/doc/use-cases/data-and-model-files-versioning),
 with commands such as `dvc add`. With the aim to enable reusability of these
-<abbr>data artifacts</abbr> between different projects, DVC also provides
-commands like `dvc import` and `dvc get`. This means that your projects can
-depend on data from other DVC repositories, **similar to a package management
-systems for data science**.
+data and ML artifacts between different projects, DVC also provides commands
+like `dvc import` and `dvc get`. This means that your projects can depend on
+data from other DVC repositories, **similar to a package management systems for
+data science**.
 
 ![](/img/data-registry.png) _Data and models as code_
 
@@ -83,9 +83,9 @@ $ dvc push
 
 ## Using registries
 
-The main methods to consume <abbr>artifacts</abbr> from a **data registry** are
-the `dvc import` and `dvc get` commands, as well as the Python API, `dvc.api`.
-But first, you may want to explore its contents.
+The main methods to consume artifacts from a **data registry** are the
+`dvc import` and `dvc get` commands, as well as the Python API, `dvc.api`. But
+first, you may want to explore its contents.
 
 ### Listing data
 
