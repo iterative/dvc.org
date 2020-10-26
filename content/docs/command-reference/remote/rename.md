@@ -32,7 +32,7 @@ DVC remote, respectively.
   `~/.config/dvc/config`) instead of `.dvc/config`.
 
 - `--system` - modify remote configuration to the system config (e.g.
-  `/etc/dvc.config`) instead of `.dvc/config`.
+  `/etc/dvc/config`) instead of `.dvc/config`.
 
 - `--local` - modify a local [config file](/doc/command-reference/config)
   instead of `.dvc/config`. It is located in `.dvc/config.local` and is
