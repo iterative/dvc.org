@@ -93,7 +93,8 @@ latest import data from its source.
 
 Remote storage is enabled with a `store: true` key/value pair in the `outs`
 section of the import `.dvc` file. To switch to regular import behavior, change
-its value to `false` manually, or re-import the data without the `--store` option.
+its value to `false` manually, or re-import the data without the `--store`
+option.
 
 ## Options
 
@@ -113,9 +114,9 @@ its value to `false` manually, or re-import the data without the `--store` optio
   > example below).
 
 - `-s`, `--store` - [enables remote storage](#enabling-remote-storage) for the
-  import, so it can be [pushed](/doc/command-reference/push) and 
-  [pulled](/doc/command-reference/pull) like regular project data (e.g. in
-  case the original source is lost).
+  import, so it can be [pushed](/doc/command-reference/push) and
+  [pulled](/doc/command-reference/pull) like regular project data (e.g. in case
+  the original source is lost).
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 

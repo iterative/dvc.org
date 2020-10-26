@@ -74,8 +74,8 @@ An _output entry_ (`outs`) consists of these fields:
 - `store`: Whether this file or directory can be
   [pushed](/doc/command-reference/push) and
   [pulled](/doc/command-reference/pull) to/from
-  [remote storage](/doc/command-reference/remote) (`true` by default for
-  all outputs except for imports, where it is `false` by default). See
+  [remote storage](/doc/command-reference/remote) (`true` by default for all
+  outputs except for imports, where it is `false` by default). See
   [import storage](/doc/command-reference/import#enabling-remote-storage).
 
 A _dependency entry_ (`deps`) consists of these fields:

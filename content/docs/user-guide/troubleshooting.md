@@ -58,8 +58,8 @@ it manually (e.g. `mkdir .dvc/cache`) to enable this check.
 
 DVC is unable to checkout any output that is not present in the
 <abbr>cache</abbr>. This can usually be solved by fetching from
-[import storage](/doc/command-reference/remote). However, If `store: false`
-is used in a `.dvc` file, `dvc pull` and `dvc fetch` won't attempt to retrieve the
+[import storage](/doc/command-reference/remote). However, If `store: false` is
+used in a `.dvc` file, `dvc pull` and `dvc fetch` won't attempt to retrieve the
 data from a DVC remote.
 
 To solve this, you must provide the file locally.
