@@ -56,15 +56,14 @@ _commit_ means is that DVC:
 - Tells Git to ignore the file/directory (adding them to `.gitignore`). (Note
   that if the <abbr>project</abbr> was initialized with no Git support
   (`dvc init --no-scm`), this does not happen.)
-- Adds the file/directory to the cache.
+- Adds the file(s) in question to the cache.
 
 There are many cases where the last step is not desirable (for example rapid
-iterations on an experiment). The `--no-commit` option prevents the last step
-from occurring (on the commands where it's available), saving time and space by
-not storing unwanted <abbr>data artifacts</abbr>. The file hash is still
-computed and added to the `dvc.lock` or `.dvc` file, but the actual data file is
-not saved in the cache. This is where the `dvc commit` command comes into play.
-It performs that last step (saving the data in cache).
+iterations on an experiment). The `--no-commit` option prevents it (on the
+commands where it's available). The file hash is still computed and added to the
+`dvc.lock` or `.dvc` file, but the actual data is not cached. And this is where
+the `dvc commit` command comes into play: It performs that last step when
+needed.
 
 Note that it's best to avoid the last two scenarios. They essentially
 force-update the `dvc.lock` or `.dvc` files and save data to cache. They are
