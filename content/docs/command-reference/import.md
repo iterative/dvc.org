@@ -123,10 +123,9 @@ Importing 'data/data.xml (git@github.com:iterative/example-get-started)'
 ```
 
 In contrast with `dvc get`, this command doesn't just download the data file,
-but it also creates an <abbr>import stage</abbr> (`.dvc` file) with a link to
-the data source (as explained in the description above). (This import stage can
-later be used to [update](/doc/command-reference/update) the import.) Check
-`data.xml.dvc`:
+but it also creates an import stage (`.dvc` file) with a link to the data source
+(as explained in the description above). (This `.dvc` file can later be used to
+[update](/doc/command-reference/update) the import.) Check `data.xml.dvc`:
 
 ```yaml
 md5: 7de90e7de7b432ad972095bc1f2ec0f8
