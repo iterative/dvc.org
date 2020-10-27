@@ -15,18 +15,14 @@ continuous integration (CI), and other best practices that improve productivity.
 This means writing a description of which data, ML artifacts, etc. should be in
 the environment at a given time. DVC can restore the <abbr>workspace</abbr>
 files and directories (from a separate data storage) to match that description.
-Some benefits of this approach:
 
-- Identify exact research inputs, so anyone can understand and verify results
-  later (reproducibility).
-- Separate code from data neatly, making projects easier to work on by separate
-  teams, and improving data persistence.
-- All changes go through the immutable history of a Git repo, allowing to
-  enforce data lifecycles policies (data security).
-- Compose your own collaboration toolset that everyone (data scientists,
-  engineers, managers) is familiar with, e.g. GitHub, Google Drive, etc.
-- Treating _data as code_ enables other advanced features; See
-  [Get Started](/doc/start) for a primer.
+Data versioning lets us identify exact research inputs later, so anyone can
+understand and reproduce results. DVC brings additional benefits on top of that:
+make projects easier to work on by separating code from data (which also
+increases data persistence); enforce lifecycle and security policies by having
+all changes go though a Git repo (immutable history); collaborate with a toolset
+everyone is familiar with (data scientists, engineers, managers), and others
+(see [Get Started](/doc/start)).
 
 But how does DVC look & feel? First we replaces large data files and directories
 with tiny, human-readable _metafiles_ that can be versioned using Git.
@@ -81,5 +77,5 @@ DVC can use this metadata in Git as a proxy to the actual
 > [versioning tutorial](/doc/use-cases/versioning-data-and-model-files/tutorial).
 
 In summary, data science and machine learning are iterative processes where the
-lifecycles of data, code, and ML models occur at different paces. DVC helps
-integrate and manage them effectively.
+lifecycles of data, code, and ML models occur at different paces. DVC's unique
+_data-as-code_ approach helps integrate and manage them effectively.
