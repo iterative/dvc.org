@@ -99,6 +99,30 @@ undesirable for data directories with a large number of files.
 To avoid adding files inside a directory accidentally, you can add the
 corresponding [patterns](/doc/user-guide/dvcignore) to `.dvcignore`.
 
+### Adding symlinked targets {#add-symlink}
+
+DVC only supports symlinked files as valid targets for `dvc add`. If the target
+path is a directory symlink, or if the target path contains any intermediate
+directory symlinks, `dvc add` will fail.
+
+So given the following project structure:
+
+```
+.
+├── .dvc
+├── dir
+│   └── file
+├── link_to_dir -> dir
+├── link_to_external_dir -> /path/to/dir
+├── link_to_external_file -> /path/to/file
+└── link_to_file -> dir/file
+```
+
+`dir`, `dir/file`, `link_to_external_file` and `link_to_file` are all valid
+targets for `dvc add`. `link_to_dir`, `link_to_external_dir` and
+`link_to_dir/file` are invalid targets, since the target path would contain
+directory symlinks.
+
 ## Options
 
 - `-R`, `--recursive` - determines the files to add by searching each target
