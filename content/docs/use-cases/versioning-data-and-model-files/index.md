@@ -26,32 +26,24 @@ files and directories (from a separate data storage) to match that description.
 - Enforce data lifecycle policies: all project changes have to go through the
   repository history. Security audits are also made possible by an immutable
   history of changes in data and models.
-- Low coupling: separate code from data by caching large files/directories
-  automatically. This makes data projects easier to maintain (high cohesion) and
-  improves data persistence.
+- DVC separates code from data automatically. This makes the project easier to
+  maintain (low coupling, high cohesion) and improves data persistence.
 - Simple interface: work with simple terminal [commands](/doc/command-reference)
   similar to `git`.
 - Treating _data as code_ also allows for other advanced features, see
   [Get Started](/doc/start) for a primer.
 
+In summary, data science and machine learning are iterative processes where the
+lifecycles of data, code, and ML models occur independently. DVC helps manage
+them effectively.
+
 ## How it looks & feels
 
-Data science and machine learning are iterative processes where the lifecycles
-of data, code, and models occur semi-independently. Let's see how data
-codification helps manage them effectively.
-
-DVC starts by replacing large data files and directories in the
-<abbr>workspace</abbr> with tiny, human-readable
-[metafiles](/doc/user-guide/dvc-files-and-directories) that can be versioned
-using Git. The data itself is cached outside of Git:
+DVC replaces large data files and directories in the <abbr>workspace</abbr> with
+tiny, human-readable _metafiles_ that can be versioned using Git.
 
 ```git
  .
-+├── .dvc
-+│   ├── cache
-+│   │   ├── b6/e29fb...  # data/ contents moved here
-+│   │   └── ed/e2872...  # model.h5 stored here
-+│   ...
  ├── data         # Kept outside of Git
  │   ├── raw.txt
  │   └── labels.csv
@@ -62,44 +54,34 @@ using Git. The data itself is cached outside of Git:
  ├── training.py
 ```
 
-The [data cache](/doc/command-reference/config#cache) is a
-[content-addressable storage](https://www.google.com/url?q=https://en.wikipedia.org/wiki/Content-addressable_storage&sa=D&ust=1603526252385000&usg=AOvVaw3Y4fV6jAM2grfE4k9AP3HX)
-(CAS), which adds a layer of indirection between code and data... In other
-words, your code doesn't need to look for the right version of input files, nor
-to write complicated output file paths, leave it to DVC to match them later 💘
+Your code doesn't need to look for the right version of input files, nor to
+write complicated output file paths, leave it to DVC to match them later 💘
 
-> 💡 This cache can be
-> [synchronized](/doc/start/data-versioning#storing-and-sharing) automatically
-> with [dedicated storage](/doc/use-cases/versioned-storage) for sharing.
+> See [DVC Files and Directories](/doc/user-guide/dvc-files-and-directories) for
+> more details.
 
-Metafiles connect workspace and cache (among other purposes). For example
-`data.dvc`:
+Metafiles contain a unique identifier of the version of the data (stored
+separately). For example:
 
 ```yaml
+# data.dvc
 outs:
-  - md5: b6e29fb... #   Points to .dvc/cache/b6/e29fb...
+  - md5: 6d048097506e0f7b6e431ca7d1b00f02
     path: data
 ```
 
-Having codified the data and models in the project, a regular `git` workflow can
-be used to create versions (commits), branches, etc.
+A regular `git` workflow can be used to create versions (commits), branches,
+etc. with the codified data and models:
 
 ```dvc
 $ git add data.dvc data.yaml ... training.py
-$ git commit -m 'First modeling experiment'
-
-# Iterate, repeat!
+$ git commit -m "First modeling experiment"
+$ git tag -a v1 -m "Model v1"
 ```
 
-The data science project metadata in Git works as a proxy to the
-<abbr>cached</abbr> data files that matches specific versions of code and config
-files. DVC uses it to rewind ⏪ (or ⏩) the entire project:
-
-```dvc
-$ git checkout v1
-$ dvc checkout
-M       data
-```
+The project metadata in Git works as a proxy to the actual data that match the
+current code version. DVC uses it to rewind ⏪ (or ⏩) the entire project (see
+`dvc checkout`).
 
 ![](/img/versioning.png) _Full project restoration_
 
