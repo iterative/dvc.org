@@ -19,10 +19,12 @@ If you store and process data files or datasets to produce other data or machine
 learning models, and you want to
 
 - track and save <abbr>data artifacts</abbr> the same way you capture code;
-- create and switch among different versions of data or models easily;
-- understand how data or ML models were built in the first place;
+- create and switch between versions of data and ML models easily;
+- understand how data or ML artifacts were built in the first place;
 - compare machine learning models and metrics to each other;
-- bring software engineering best practices and tools to your data science team
+- bring software engineering best practices and tools to your data science team;
+- work with a simple interface consisting of familiar terminal
+  [commands](/doc/command-reference) (similar to `git`).
 
 DVC is for you!
 

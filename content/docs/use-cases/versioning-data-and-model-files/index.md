@@ -15,29 +15,21 @@ continuous integration (CI), and other best practices that improve productivity.
 This means writing a description of which data, ML artifacts, etc. should be in
 the environment at a given time. DVC can restore the <abbr>workspace</abbr>
 files and directories (from a separate data storage) to match that description.
-
-## Why do it with DVC
+Some benefits of this approach:
 
 - Track all the things (source code, data, ML models) as they change.
-- Collaborate using a unified toolset that is accessible to everyone (data
-  scientists, engineers, managers, etc.).
-- Reproducibility and trustworthiness: identify exact inputs of past research,
-  enable anyone to understand and verify results.
-- Enforce data lifecycle policies: all project changes have to go through the
-  repository history. Security audits are also made possible by an immutable
-  history of changes in data and models.
+- Collaborate using a unified toolset, accessible to everyone (data scientists,
+  engineers, managers, etc.).
+- Identify exact research input, enabling anyone to understand and verify the
+  results later (reproducibility).
+- All project changes go through the immutable history of a repository, allowing
+  for enforcement of lifecycle policies (data security).
 - DVC separates code from data automatically. This makes the project easier to
-  maintain (low coupling, high cohesion) and improves data persistence.
-- Simple interface: work with simple terminal [commands](/doc/command-reference)
-  similar to `git`.
+  maintain and improves data persistence (low coupling, high cohesion).
 - Treating _data as code_ also allows for other advanced features, see
   [Get Started](/doc/start) for a primer.
 
-In summary, data science and machine learning are iterative processes where the
-lifecycles of data, code, and ML models occur independently. DVC helps manage
-them effectively.
-
-## How it looks & feels
+Let's go over how it looks & feels!
 
 DVC replaces large data files and directories in the <abbr>workspace</abbr> with
 tiny, human-readable _metafiles_ that can be versioned using Git.
