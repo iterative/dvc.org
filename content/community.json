@@ -1,9 +1,9 @@
 {
   "hero": [
     {
-      "pictureDesktop": "/img/community/default-banner.png",
-      "pictureMobile": "/img/community/default-mobile-banner.png",
-      "url": "#subscribe",
+      "pictureDesktop": "/img/community/hiring_cm_desktop.png",
+      "pictureMobile": "/img/community/hiring_cm_mobile.png",
+      "url": "https://docs.google.com/document/d/13r0KaxRdQR6srOZdIzL9ZgBL4eOdPCl7foc3cxx0xjA/edit?usp=sharing",
       "expires": false
     }
   ],
