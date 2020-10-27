@@ -68,3 +68,10 @@ some network filesystem like NFS, Lustre, etc. If so, the solution is to enable
 ```
 dvc config core.hardlink_lock true
 ```
+
+## Cannot add files in symlinked directory {#add-symlink}
+
+DVC only supports [symlinked files](/doc/command-reference/add#add-symlink) as
+valid targets for `dvc add`. If the target path is a directory symlink, or if
+the target path contains any intermediate directory symlinks, `dvc add` will
+fail.
