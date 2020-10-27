@@ -6,7 +6,7 @@ that some of the output files or directories it creates, which are already in
 the <abbr>workspace</abbr>, are missing from `dvc.yaml` (`outs` field). Follow
 the steps below to add existing files or directories as <abbr>outputs</abbr> to
 a stage without re-executing it again, which can be expensive/time-consuming,
-but is unnecessary.
+and is unnecessary.
 
 We start with an example `prepare`, which has a single output. To add a missing
 output `data/validate` to this stage, we can edit `dvc.yaml` like this:
