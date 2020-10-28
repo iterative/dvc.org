@@ -27,38 +27,50 @@ everyone is familiar with (data scientists, engineers, managers), and others
 But how does DVC look & feel? First we replaces large data files and directories
 with tiny, human-readable _metafiles_ that can be versioned using Git.
 
+**Before**: manual filename-based versioning mess with ad hoc conventions —
+prone to human error
+
+```dvc
+ .
+ ├── data
+ │   ├── 2019-04
+ │   │   └── raw
+ │   ├── 2019-10
+ │   │   ├── raw
+ │   │   └── clean.txt
+ │   ├── 2020-03
+ │   │   ├── raw.txt
+ │   │   ├── labels.csv
+ │   │   ├── labels-2.csv
+...
+ ├── model.h5
+ ├── model_final.h5
+ ├── training.py  # Only file in Git
+```
+
+**After**: Lean DVC workspace that is easy to navigate. Only one version of the
+data is shown along with the current code version. `dvc.yaml` and `.dvc`
+metafiles replace all the complexity.
+
 ```git
  .
- ├── data         # Kept outside of Git
+ ├── data
  │   ├── raw.txt
  │   ├── labels.csv
  ...
-+├── data.dvc     # Metafile that replaces data/
-+├── dvc.yaml     # Replaces model.h5
- ├── model.h5     # Also ignored by Git
- ├── training.py
++├── data.dvc     # in Git
++├── dvc.yaml     # in Git
+ ├── model.h5
+ ├── training.py  # in Git
 ```
 
-Metafiles contain a unique identifier of this version of the data (stored
-separately). For example:
-
-```yaml
-# data.dvc
-outs:
-  - md5: 6d048097506e0f7b6e431ca7d1b00f02
-    path: data
-```
-
-> See [DVC Files and Directories](/doc/user-guide/dvc-files-and-directories) for
-> more details.
-
-Th bottom line is that your code doesn't need to read or write complicated
-output file paths like `data/2020-10-27...`. Leave it to DVC to match the right
+The bottom line is that your code doesn't need to read or write complicated
+output file paths like `data/2019-10...`. Leave it to DVC to match the right
 versions of code and data later 💘.
 
 A regular `git` workflow can be used to create project
 [snapshots](https://git-scm.com/book/en/v2/Git-Basics-Recording-Changes-to-the-Repository)
-(commits), branches, etc. encompassing all the things (source code, data, and
+(commits), branches, etc. that encompass all the things (source code, data, and
 models):
 
 ```dvc
@@ -67,9 +79,9 @@ $ git commit -m "First modeling experiment"
 $ git tag -a v1 -m "Model v1"
 ```
 
-DVC can use this metadata in Git as a proxy to the actual
-[data storage](/doc/use-cases/versioned-storage), and rewind ⏪ or fast-forward
-⏩ the entire project based on it (see `dvc checkout`).
+DVC uses the metadata we put in Git as a proxy to the actual data
+([stored separately](/doc/command-reference/cache)), and can rewind ⏪ or
+fast-forward ⏩ the entire project based on it (see `dvc checkout`).
 
 ![](/img/versioning.png) _Full project restoration_
 
