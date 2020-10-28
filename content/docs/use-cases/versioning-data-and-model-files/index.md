@@ -27,6 +27,9 @@ everyone is familiar with (data scientists, engineers, managers), and others
 But how does DVC look & feel? First we replaces large data files and directories
 with tiny, human-readable _metafiles_ that can be versioned using Git.
 
+<div style="display: flex; flex-flow: row wrap; margin: 0 -0.5rem;">
+<div style="flex: 1 0 50%; padding: 0.5rem;">
+
 **Before**: manual filename-based versioning mess with ad hoc conventions —
 prone to human error
 
@@ -36,17 +39,17 @@ prone to human error
  │   ├── 2019-04
  │   │   └── raw
  │   ├── 2019-10
- │   │   ├── raw
- │   │   └── clean.txt
+ │   │   └── raw.txt
  │   ├── 2020-03
  │   │   ├── raw.txt
- │   │   ├── labels.csv
- │   │   ├── labels-2.csv
-...
+ │  ...  └── labels.csv
  ├── model.h5
  ├── model_final.h5
  ├── training.py  # Only file in Git
 ```
+
+</div>
+<div style="flex: 1 0 50%; padding: 0.5rem;">
 
 **After**: Lean DVC workspace that is easy to navigate. Only one version of the
 data is shown along with the current code version. `dvc.yaml` and `.dvc`
@@ -56,13 +59,16 @@ metafiles replace all the complexity.
  .
  ├── data
  │   ├── raw.txt
- │   ├── labels.csv
+ │   └── labels.csv
  ...
 +├── data.dvc     # in Git
 +├── dvc.yaml     # in Git
  ├── model.h5
  ├── training.py  # in Git
 ```
+
+</div>
+</div>
 
 The bottom line is that your code doesn't need to read or write complicated
 output file paths like `data/2019-10...`. Leave it to DVC to match the right
