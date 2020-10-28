@@ -1,6 +1,6 @@
 ---
 title: 'Get Started: Data Pipelines'
-description: 'Get started with pipelines in DVC. Learn how to capture, organize,
+description: 'Learn how to build and use DVC pipelines to capture, organize,
 version, and reproduce your data science and machine learning workflows.'
 ---
 
@@ -12,10 +12,10 @@ introduces a mechanism to capture _data pipelines_ — series of data processes
 that produce a final result.
 
 DVC pipelines and their data can also be easily versioned (using Git). This
-allows you to better organize your project, and reproduce your workflow and
-results later exactly as they were built originally! This allows you to capture
-simple ETL workflows, better organize data science projects, or build detailed
-machine learning pipelines (to name a few uses).
+allows you to better organize projects, and reproduce your workflow and results
+later — exactly as they were built originally! For example, you could capture a
+simple ETL workflow, organize a data science project, or build a detailed
+machine learning pipeline.
 
 ## Pipeline stages
 
