@@ -17,6 +17,11 @@ version of datasets, files, and models. It means that Git repository with DVC
 files becomes an entry point and can be used instead of accessing files
 directly.
 
+
+Read on or watch our video to see how to find and access models and datasets with DVC. 
+
+https://youtu.be/EE7Gk84OZY8
+
 ## Find a file or directory
 
 You can use `dvc list` to explore a <abbr>DVC repository</abbr> hosted on any
