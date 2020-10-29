@@ -65,8 +65,8 @@ If the issue still persists then it may be the case that you are running DVC on
 some network filesystem like NFS, Lustre, etc. If so, the solution is to enable
 `core.hardlink_lock` which can be done by running following command:
 
-```
-dvc config core.hardlink_lock true
+```dvc
+$ dvc config core.hardlink_lock true
 ```
 
 ## Cannot add files in symlinked directory {#add-symlink}
