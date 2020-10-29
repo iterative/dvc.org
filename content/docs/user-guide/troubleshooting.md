@@ -88,6 +88,6 @@ DVC to use alternative link types which are supported on your machine.
 After reconfiguring cache types, you can re-link data files in your workspace
 using:
 
-```
-dvc checkout --relink
+```dvc
+$ dvc checkout --relink
 ```
