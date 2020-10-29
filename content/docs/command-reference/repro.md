@@ -110,7 +110,7 @@ up-to-date and only execute the final stage.
   for example with subdirectories containing a separate pipeline that can be
   reproduced independently.
 
-- `-R`, `--recursive` - determines the stages to be reproduced by searching each
+- `-R`, `--recursive` - determines the stages to reproduce by searching each
   target directory and its subdirectories. If there are no directories among the
   `targets`, this option is ignored.
 
