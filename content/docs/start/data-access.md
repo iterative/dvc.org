@@ -5,15 +5,15 @@ version them with Git, next question is how can we _use_ these artifacts outside
 of the project? How do I download a model to deploy it? How do I download a
 specific version of a model? How do I reuse datasets across different projects?
 
-Read on or watch our video to see how to find and access models and datasets
-with DVC.
-
-https://youtu.be/EE7Gk84OZY8
-
 > These questions tend to come up when you browse the files that DVC saves to
 > remote storage, e.g.
 > `s3://dvc-public/remote/get-started/fb/89904ef053f04d64eafcc3d70db673` 😱
 > instead of the original files, name such as `model.pkl` or `data.xml`.
+
+Read on or watch our video to see how to find and access models and datasets
+with DVC.
+
+https://youtu.be/EE7Gk84OZY8
 
 Remember those `.dvc` files `dvc add` generates? Those files (and `dvc.lock`
 that we'll cover later), have their history in Git, DVC remote storage config
