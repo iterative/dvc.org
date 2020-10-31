@@ -105,6 +105,7 @@
           "update-tracked-files"
         ]
       },
+      "setup-dropbox-remote",
       "setup-google-drive-remote",
       "large-dataset-optimization",
       "external-dependencies",

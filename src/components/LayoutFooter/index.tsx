@@ -85,8 +85,13 @@ const LayoutFooter: React.FC<Required<ILayoutModifiable>> = ({ modifiers }) => (
               </Link>
             </li>
             <li className={styles.linkItem}>
-              <Link href="/doc/user-guide/privacy" className={styles.link}>
-                Privacy Policy
+              <Link href="/doc/user-guide/gdrive-privacy" className={styles.link}>
+                Privacy Policy for Google Drive integration
+              </Link>
+            </li>
+            <li className={styles.linkItem}>
+              <Link href="/doc/user-guide/dropbox-privacy" className={styles.link}>
+                Privacy Policy for Dropbox integration
               </Link>
             </li>
           </ul>
