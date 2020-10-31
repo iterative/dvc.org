@@ -82,8 +82,8 @@ _Luigi_, etc.
 
 ## Experiment management software
 
-- DVC uses Git as the underlying layer for data, pipelines, an experiment
-  versioning, instead of a custom web application.
+- DVC integrates with Git, so it remains the underlying version control tool for
+  data, pipelines, an experiments, instead of reinventing the wheel.
 
 - DVC doesn't need to run any services. There's no GUI as a result, but we
   expect some GUI services will be created on top of DVC.
