@@ -93,7 +93,7 @@ model.pkl
 Note that the `model.pkl` file doesn't actually exist in the
 [root directory](https://github.com/iterative/example-get-started/tree/master/)
 of the source Git repo. Instead, it's exported in the `dvc.yaml` file as an
-output of the `train` stage (in the `outs` field). DVC then
+<abbr>output</abbr> of the `train` stage (in the `outs` field). DVC then
 [pulls](/doc/command-reference/pull) the file from the default
 [remote](/doc/command-reference/remote) of the source DVC project (found in its
 [config file](https://github.com/iterative/example-get-started/blob/master/.dvc/config)).
@@ -105,8 +105,7 @@ output of the `train` stage (in the `outs` field). DVC then
 > upon request. This can be automated leveraging DVC with
 > [CI/CD](https://en.wikipedia.org/wiki/CI/CD) tools.
 
-The same example applies to raw or intermediate <abbr>data artifacts</abbr> as
-well.
+The same example applies to raw data or intermediate artifacts as well.
 
 ## Examples: Get a misc. Git-tracked file
 
@@ -139,11 +138,11 @@ https://remote.dvc.org/get-started/66/2eb7f64216d9c2c1088d0a5e2c6951
 ## Example: Compare different versions of data or model
 
 `dvc get` provides the `--rev` option to specify which
-[commit](https://git-scm.com/docs/revisions) of the repository to download a
-<abbr>data artifact</abbr> from. It also has the `--out` option to specify the
-location to place the target data within the workspace. Combining these two
-options allows us to do something we can't achieve with the regular
-`git checkout` + `dvc checkout` process – see for example the
+[commit](https://git-scm.com/docs/revisions) of the repository to download the
+file or directory from. It also has the `--out` option to specify the location
+to place the target data within the workspace. Combining these two options
+allows us to do something we can't achieve with the regular `git checkout` +
+`dvc checkout` process – see for example the
 [Get Older Data Version](/doc/tutorials/get-started/data-versioning#navigate-versions)
 chapter of our _Get Started_.
 
