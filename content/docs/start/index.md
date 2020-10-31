@@ -49,13 +49,13 @@ Changes to be committed:
 $ git commit -m "Initialize DVC"
 ```
 
-DVC features can be grouped into layers. We'll explore them one by one in the
-next few sections:
+DVC features can be grouped into functional components. We'll explore them one
+by one in the next few sections:
 
-- [**Data versioning**](/doc/start/data-versioning) is the core part of DVC for
-  large files, datasets, machine learning models versioning and efficient
-  sharing. We'll show how to use a regular Git workflow, without storing large
-  files with Git. Think "Git for data".
+- [**Data versioning**](/doc/start/data-versioning) is the base layer of DVC. It
+  enables version control for large files, datasets, and machine learning
+  models, as well as efficient sharing. Use a regular Git workflow, without
+  storing large files with Git. Think "Git for data".
 
 - [**Data access**](/doc/start/data-access) shows how to use data artifacts from
   outside of the project and how to import data artifacts from another DVC
