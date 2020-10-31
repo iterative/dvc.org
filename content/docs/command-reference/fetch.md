@@ -85,8 +85,7 @@ The default remote is used (see
   If there are no directories among the `targets`, this option is ignored.
 
 - `-j <number>`, `--jobs <number>` - parallelism level for DVC to download data
-  from remote storage. This only applies when the `--cloud` option is used, or a
-  `--remote` is given. The default value is `4 * cpu_count()`. For SSH remotes,
+  from remote storage. The default value is `4 * cpu_count()`. For SSH remotes,
   the default is `4`. Using more jobs may improve the overall transfer speed.
 
 - `-a`, `--all-branches` - fetch cache for all Git branches instead of just the
