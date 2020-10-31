@@ -79,7 +79,7 @@ These are loaded to memory directly (without using any disc space).
 
 ## Example: Load data from a DVC repository
 
-Any file tracked tracked in a <abbr>DVC project</abbr> (and
+Any file tracked in a <abbr>DVC project</abbr> (and
 [stored remotely](/doc/command-reference/remote/add)) can be loaded directly in
 your Python code with this API. For example, let's say that you want to load and
 unserialize a binary model from a repo on GitHub:

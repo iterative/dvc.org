@@ -88,7 +88,7 @@ streamed, which optimizes memory usage.
 
 ## Example: Use data or models from a DVC repository
 
-Any file tracked tracked in a <abbr>DVC project</abbr> (and
+Any file tracked in a <abbr>DVC project</abbr> (and
 [stored remotely](/doc/command-reference/remote/add)) can be processed directly
 in your Python code with this API. For example, an XML file tracked in a public
 DVC repo on GitHub can be processed like this:
