@@ -30,10 +30,10 @@ See [Authorization](#authorization) for more details.
 ## URL format
 
 You can indicate any directory name that will be created under the
-`DROPBOX_HOME/Applications/dvc`, e.g. `DROPBOX_HOME/Applications/dvc/my-project`.
-Make sure this name is not already used for another project to keep things
-separated. The URL is formed as follows: `dropbox://my-project`. It does not
-need to be an existing directory.
+`DROPBOX_HOME/Applications/dvc`, e.g.
+`DROPBOX_HOME/Applications/dvc/my-project`. Make sure this name is not already
+used for another project to keep things separated. The URL is formed as follows:
+`dropbox://my-project`. It does not need to be an existing directory.
 
 ## Authorization
 
@@ -42,15 +42,15 @@ example when trying to `dvc push` tracked data for the first time, DVC will
 prompt you to visit a special Dropbox authentication web page. There you'll need
 to sign into a Drobpox account with the needed access to the Dropbox
 [URL](#url-format) in question. The
-[auth process](https://www.dropbox.com/lp/developers/reference/oauth-guide) will ask
-you to grant DVC the necessary permissions, and produce a verification code
+[auth process](https://www.dropbox.com/lp/developers/reference/oauth-guide) will
+ask you to grant DVC the necessary permissions, and produce a verification code
 needed for DVC to complete the connection. On success, the necessary credentials
 will be saved in a Git-ignored file, located in
-`.dvc/tmp/dropbox-user-credentials.json` and they will be used automatically next
-time you run DVC.
+`.dvc/tmp/dropbox-user-credentials.json` and they will be used automatically
+next time you run DVC.
 
-⚠️ In order to prevent unauthorized access to your Dropbox, **do not share
-these credentials with others**. Each team member should go through this process
+⚠️ In order to prevent unauthorized access to your Dropbox, **do not share these
+credentials with others**. Each team member should go through this process
 individually.
 
 If you use multiple Dropbox remotes, by default they will be sharing the same
@@ -61,9 +61,9 @@ If you use multiple Dropbox remotes, by default they will be sharing the same
 $ export DROPBOX_CREDENTIALS_FILE=.dvc/tmp/myremote-credentials.json
 ```
 
-⚠️ In order to prevent unauthorized access to your Dropbox, **never
-commit** this file with Git. Instead, add it into `.gitignore` and never share
-it with other people.
+⚠️ In order to prevent unauthorized access to your Dropbox, **never commit**
+this file with Git. Instead, add it into `.gitignore` and never share it with
+other people.
 
 If you wish to change the user you have authenticated with, or for
 troubleshooting misc. token errors, simply remove the user credentials JSON file
@@ -75,7 +75,8 @@ Alternatively, a set of environment variables can be set:
 - `DROPBOX_EXPIRES_AT` - access token expiration time in ISO format
 - `DROPBOX_REFRESH_TOKEN` - refresh token for reauthentication
 
-to pass user credentials in CI/CD systems, production setup, read-only file systems,
-etc. DVC reads these variable first, before the credentials file.
+to pass user credentials in CI/CD systems, production setup, read-only file
+systems, etc. DVC reads these variable first, before the credentials file.
 
-> Please note our [Privacy Policy (Dropbox API)](/doc/user-guide/dropbox-privacy).
+> Please note our
+> [Privacy Policy (Dropbox API)](/doc/user-guide/dropbox-privacy).

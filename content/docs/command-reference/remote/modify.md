@@ -300,9 +300,8 @@ For more information on configuring Azure Storage connection strings, visit
 
 ### Click for Dropbox
 
-Please see
-[Setup a Dropbox DVC Remote](/doc/user-guide/setup-dropbox-remote) for
-a full guide on using Dropbox as DVC remote storage.
+Please see [Setup a Dropbox DVC Remote](/doc/user-guide/setup-dropbox-remote)
+for a full guide on using Dropbox as DVC remote storage.
 
 - `url` - remote location, in the `dropbox://<dvc-subdirectory>` format:
 
@@ -310,8 +309,8 @@ a full guide on using Dropbox as DVC remote storage.
   $ dvc remote modify myremote url dropbox://my-project
   ```
 
-See [Authorization](/doc/user-guide/setup-dropbox-remote#authorization) for
-more details.
+See [Authorization](/doc/user-guide/setup-dropbox-remote#authorization) for more
+details.
 
 > Please note [Privacy Policy (Dropbox API)](/doc/user-guide/dropbox-privacy).
 
@@ -370,7 +369,8 @@ more details.
   $ dvc remote modify myremote gdrive_trash_only true
   ```
 
-> Please note our [Privacy Policy (Google APIs)](/doc/user-guide/gdrive-privacy).
+> Please note our
+> [Privacy Policy (Google APIs)](/doc/user-guide/gdrive-privacy).
 
 **For service accounts:**
 

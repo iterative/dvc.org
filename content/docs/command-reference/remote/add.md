@@ -201,9 +201,9 @@ $ dvc remote add -d myremote 'azure://'
 ### Click for Dropbox
 
 To start using a Dropbox remote, first add it with a
-[valid URL format](/doc/user-guide/setup-dropbox-remote#url-format). Then
-use any DVC command that needs to connect to it (e.g. `dvc pull` or `dvc push`
-once there's tracked data to synchronize). For example:
+[valid URL format](/doc/user-guide/setup-dropbox-remote#url-format). Then use
+any DVC command that needs to connect to it (e.g. `dvc pull` or `dvc push` once
+there's tracked data to synchronize). For example:
 
 ```dvc
 $ dvc remote add -d myremote dropbox://my-project
@@ -250,7 +250,8 @@ parameter is enabled on this type of storage, so DVC recalculates the file
 hashes upon download (e.g. `dvc pull`), to make sure that these haven't been
 modified.
 
-> Please note our [Privacy Policy (Google APIs)](/doc/user-guide/gdrive-privacy).
+> Please note our
+> [Privacy Policy (Google APIs)](/doc/user-guide/gdrive-privacy).
 
 </details>
 

@@ -1,17 +1,15 @@
 # Privacy Policy for Access to Dropbox API
 
-DVC is using the [Dropbox API](https://www.dropbox.com/developers) to
-make it easier to store files on Dropbox. For more details on how to set it
-up, refer to
+DVC is using the [Dropbox API](https://www.dropbox.com/developers) to make it
+easier to store files on Dropbox. For more details on how to set it up, refer to
 [Setup a Dropbox DVC Remote](/doc/user-guide/setup-dropbox-remote).
 
-DVC uses the _DVC_ Application on Dropbox. (That is the name you
-will see in a consent screen.) This integration is governed by common policies,
-recorded here.
+DVC uses the _DVC_ Application on Dropbox. (That is the name you will see in a
+consent screen.) This integration is governed by common policies, recorded here.
 
 Your use of Dropbox API with DVC is subject to each API’s respective terms of
-service. See [Dropbox Terms of Service](https://www.dropbox.com/terms)
-and [Dropbox Privacy Regulations](https://www.dropbox.com/privacy).
+service. See [Dropbox Terms of Service](https://www.dropbox.com/terms) and
+[Dropbox Privacy Regulations](https://www.dropbox.com/privacy).
 
 ## Accessing user data
 
@@ -45,13 +43,13 @@ DVC uses the `Scoped App (App Folder)` permission type. Therefore its access is
 limited to the `DROPBOX_HOME/Applications/dvc` directory. There, the following
 scopes are enabled:
 
-- `account_info.read` - View basic information about your Dropbox account
-such as your username, email, and country
-- `files.metadata.write` - View and edit information about your Dropbox files and
-folders
+- `account_info.read` - View basic information about your Dropbox account such
+  as your username, email, and country
+- `files.metadata.write` - View and edit information about your Dropbox files
+  and folders
 - `files.metadata.read` - View information about your Dropbox files and folders
 - `files.content.write` - Edit content of your Dropbox files and folders
-- `files.content.read` -  View content of your Dropbox files and folders
+- `files.content.read` - View content of your Dropbox files and folders
 
 ## Sharing user data
 
@@ -70,9 +68,9 @@ in `.dvc/tmp/dropbox-user-credentials.json`.
 
 Do not use an API key or client ID from the _DVC_ Application in an external
 package or tool. Per the
-[Dropbox Accceptable Usse](https://www.dropbox.com/acceptable_use),
-your application must accurately represent itself when authenticating to Dropbox
-API services.
+[Dropbox Accceptable Usse](https://www.dropbox.com/acceptable_use), your
+application must accurately represent itself when authenticating to Dropbox API
+services.
 
 If you use DVC inside another package or application that executes its own logic
 — as opposed to code in DVC or by the user — you must communicate this clearly
