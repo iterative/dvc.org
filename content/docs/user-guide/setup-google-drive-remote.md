@@ -237,4 +237,4 @@ credentials files described above, and usually you get it going through the same
 authentication process. DVC reads this variable first, before the credentials
 file.
 
-> Please note our [Privacy Policy (Google APIs)](/doc/user-guide/privacy).
+> Please note our [Privacy Policy (Google APIs)](/doc/user-guide/gdrive-privacy).
