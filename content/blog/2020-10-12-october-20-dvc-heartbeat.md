@@ -61,8 +61,7 @@ image="/uploads/images/2020-10-12/Meetup_Logo.png"/>
 Last week I gave a talk about CML at
 [PyCon India](https://in.pycon.org/cfp/2020/proposals/how-to-make-continuous-integration-work-with-machine-learning~avK5b/),
 and have another one coming up at
-[PyData Global](https://global.pydata.org/talks/321)
-this November 11-15.
+[PyData Global](https://global.pydata.org/talks/321) this November 11-15.
 
 <external-link
 href="https://global.pydata.org/talks/devops-for-science-using-continuous-integration-for-rigorous-and-reproducible-analysis"
