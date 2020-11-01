@@ -64,7 +64,7 @@ and have another one coming up at
 [PyData Global](https://global.pydata.org/talks/321) this November 11-15.
 
 <external-link
-href="https://global.pydata.org/talks/devops-for-science-using-continuous-integration-for-rigorous-and-reproducible-analysis"
+href="https://global.pydata.org/talks/321"
 title="DevOps for science: using continuous integration for rigorous and reproducible analysis"
 description="PyData Global"
 link="https://global.pydata.org"
