@@ -228,7 +228,7 @@ the cache entries for the `data/features` directory, and
 ## Example: With dependencies
 
 After following the previous example (**Specific stages**), only the files
-associated with the `prepare` stage have been fetched. Several
+associated with the `prepare` stage has been fetched. Several
 dependencies/outputs of other pipeline stages are still missing from the cache:
 
 ```dvc
@@ -241,7 +241,7 @@ $ dvc status -c
 ```
 
 One could do a simple `dvc fetch` to get all the data, but what if you only want
-to retrieve the data up to our third stage, `train`? We can use the
+to retrieve the data up to our third stage (`train`)? We can use the
 `--with-deps` (or `-d`) option:
 
 ```dvc
