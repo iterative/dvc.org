@@ -11,7 +11,8 @@ the import.
 
 ```usage
 usage: dvc import [-h] [-q | -v]
-                  [-o <path>] [--file <filename>] [--rev <commit>] [--no-exec]
+                  [-o <path>] [--file <filename>]
+                  [--rev <commit>] [--no-exec]
                   url path
 
 positional arguments:
@@ -104,9 +105,10 @@ repo at `url`) are not supported.
   > example below).
 
 - `--no-exec` - create `.dvc` file without actually downloading `url`. E.g. if
-  the file or directory already exist it can be used to skip download.
-  `dvc commit <out>.dvc` should be used to calculate the URL and data hash,
-  update the `.dvc` files, and save existing data to the cache.
+  the file or directory already exists, this can be used to skip the download.
+  The data hash is not calculated by this since only the metadata is saved into
+  the `.dvc` file. You can use `dvc commit <out>.dvc` if you need the hashes in
+  the new `.dvc` file (_this also updates the cache_).
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
