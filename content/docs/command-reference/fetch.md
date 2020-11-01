@@ -228,7 +228,7 @@ the cache entries for the `data/features` directory, and
 ## Example: With dependencies
 
 After following the previous example (**Specific stages**), only the files
-associated with the `prepare.dvc` stage file have been fetched. Several
+associated with the `prepare` stage have been fetched. Several
 dependencies/outputs of other pipeline stages are still missing from the cache:
 
 ```dvc
@@ -241,11 +241,11 @@ $ dvc status -c
 ```
 
 One could do a simple `dvc fetch` to get all the data, but what if you only want
-to retrieve the data up to our third stage, `train.dvc`? We can use the
+to retrieve the data up to our third stage, `train`? We can use the
 `--with-deps` (or `-d`) option:
 
 ```dvc
-$ dvc fetch --with-deps train.dvc
+$ dvc fetch --with-deps train
 
 $ tree .dvc/cache
 .dvc/cache
@@ -267,14 +267,14 @@ $ tree .dvc/cache
     └── a9c512fda11293cfee7617b66648dc
 ```
 
-Fetching using `--with-deps` starts with the target `.dvc` file (`train.dvc`)
-and searches backwards through its pipeline for data to download into the
-project's cache. All the data for the second and third stages ("featurize" and
-"train") has now been downloaded to the cache. We could now use `dvc checkout`
-to get the data files needed to reproduce this pipeline up to the third stage
-into the workspace (with `dvc repro train.dvc`).
+Fetching using `--with-deps` starts with the target stage (`train`) and searches
+backwards through its pipeline for data to download into the project's cache.
+All the data for the second and third stages (`featurize` and `train`) has now
+been downloaded to the cache. We could now use `dvc checkout` to get the data
+files needed to reproduce this pipeline up to the third stage into the workspace
+(with `dvc repro train`).
 
-> Note that in this example project, the last stage file `evaluate.dvc` doesn't
-> add any more data files than those form previous stages, so at this point all
-> of the data for this pipeline is cached and `dvc status -c` would output
+> Note that in this example project, the last stage `evaluate` doesn't add any
+> more data files than those form previous stages, so at this point all of the
+> data for this pipeline is cached and `dvc status -c` would output
 > `Cache and remote 'myremote' are in sync.`
