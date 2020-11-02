@@ -105,11 +105,10 @@ repo at `url`) are not supported.
   > example below).
 
 - `--no-exec` - create `.dvc` file without actually downloading the file or
-  directory. E.g. if the file or directory already exists, this can be used
-  to skip the download. The data hash is not calculated by this, only the
-  metadata is saved into the `.dvc` file. You can use `dvc commit <out>.dvc`
-  if you need the hashes in the new `.dvc` file and save existing data to the
-  cache.
+  directory. E.g. if the file or directory already exists, this can be used to
+  skip the download. The data hash is not calculated by this, only the metadata
+  is saved into the `.dvc` file. You can use `dvc commit <out>.dvc` if you need
+  the hashes in the new `.dvc` file and save existing data to the cache.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
