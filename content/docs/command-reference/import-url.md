@@ -125,9 +125,9 @@ source.
 
 - `--no-exec` - create `.dvc` file without actually downloading `url`. E.g. if
   the file or directory already exists, this can be used to skip the download.
-  The data hash is not calculated by this since only the metadata is saved into
-  the `.dvc` file. You can use `dvc commit <out>.dvc` if you need the hashes in
-  the new `.dvc` file (_this also updates the cache_).
+  The data hash is not calculated by this, only the metadata is saved into the
+  `.dvc` file. You can use `dvc commit <out>.dvc` if you need the hashes in the
+  new `.dvc` file and save existing data to the cache.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
