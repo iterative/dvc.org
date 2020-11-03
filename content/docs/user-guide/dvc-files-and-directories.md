@@ -335,8 +335,10 @@ array), including their hash values. That's how DVC knows that the other two
 cached files belong in the directory:
 
 ```json
-[{ "md5": "dff70c0392d7d386c39a23c64fcc0376", "relpath": "cat.jpeg" },
-{ "md5": "29a6c8271c0c8fbf75d3b97aecee589f", "relpath": "index.jpeg" }]
+[
+  { "md5": "dff70c0392d7d386c39a23c64fcc0376", "relpath": "cat.jpeg" },
+  { "md5": "29a6c8271c0c8fbf75d3b97aecee589f", "relpath": "index.jpeg" }
+]
 ```
 
 See also `dvc cache dir` to set the location of the cache directory.
