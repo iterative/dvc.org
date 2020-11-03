@@ -20,7 +20,7 @@ positional arguments:
 The `dvc commit` command is useful for several scenarios, when data already
 tracked by DVC changes: when a [stage](/doc/command-reference/run) or
 [pipeline](/doc/command-reference/dag) is in development/experimentation; when
-force updating the `dvc.lock` or `.dvc` files without reproducing stages or
+force-updating the `dvc.lock` or `.dvc` files without reproducing stages or
 pipelines; or when DVC <abbr>outputs</abbr> are added to a stage, manually
 generated or edited. These scenarios are further detailed below.
 
