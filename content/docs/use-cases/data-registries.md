@@ -34,8 +34,7 @@ are some of it's advantages:
   requests, reviews, and even CI/CD for your data and models lifecycle. Think
   "Git for cloud storage", but without ad-hoc conventions.
 - Security: registries can be setup with read-only remote storage (e.g. an HTTP
-  server). And [DVC metafiles](/doc/user-guide/dvc-files-and-directories) enable
-  auditing data changes.
+  server).
 
 ## Building registries
 

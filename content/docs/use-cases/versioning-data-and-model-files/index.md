@@ -86,14 +86,14 @@ entire project based on it (see `dvc checkout`).
 
 ![](/img/versioning.png) _Full project restoration_
 
-Data and models use the same immutable change history as code now (Git commit),
-so you can [semver](https://semver.org/) the project as a whole (as is typical
-in software engineering).
+Data and models use the same change history as code now (Git commit), so you can
+[semver](https://semver.org/) the project as a whole (as is typical in software
+engineering).
 
 > 🔍 For more hands-on experience, please follow the
 > [versioning tutorial](/doc/use-cases/versioning-data-and-model-files/tutorial).
 
-## Benefits of DVC
+## Benefits of Data Version Control
 
 - Identify exact research inputs to understand and reproduce past results: just
   restore the desired project version, and find the file(s) in question.
@@ -104,7 +104,8 @@ in software engineering).
 - Collaborate with a toolset everyone is familiar with (data scientists,
   engineers, managers), and others (see [Get Started](/doc/start)).
 - Enforce lifecycle and security policies by having all changes go though a Git
-  repo.
+  repo. This immutable change history enables auditing changes to data and
+  models.
 
 In summary, data science and machine learning are iterative processes where the
 lifecycles of data, code, and ML models occur at different paces. DVC's unique
