@@ -1,11 +1,11 @@
 ---
-title: 'Data and Model Versioning Tutorial'
+title: 'Tutorial: Data and Model Versioning'
 description: 'Get hands-on experience with data versioning in a basic machine
 learning version control scenario: managing multiple datasets and ML models
 using DVC.'
 ---
 
-# Data and Model Versioning Tutorial
+# Tutorial: Data and Model Versioning
 
 The goal of this example is to give you some hands-on experience with a basic
 machine learning version control scenario: managing multiple datasets and ML
@@ -16,7 +16,7 @@ to build a powerful image classifier using a pretty small dataset.
 
 ![](/img/cats-and-dogs.jpg) _Dataset to classify cats and dogs_
 
-> We highly recommend reading the François' tutorial itself. It's a great
+> We highly recommend reading François' tutorial itself. It's a great
 > demonstration of how a general pre-trained model can be leveraged to build a
 > new high-performance model, with very limited resources.
 
@@ -90,10 +90,9 @@ $ unzip -q data.zip
 $ rm -f data.zip
 ```
 
-> `dvc get` can download any <abbr>data artifact</abbr> tracked in a <abbr>DVC
-> repository</abbr>, using the appropriate
-> [remote storage](/doc/command-reference/remote). It's like `wget`, but for DVC
-> or Git repos. In this case we use our
+> `dvc get` can download any file or directory tracked in a <abbr>DVC
+> repository</abbr> (and [stored remotely](/doc/command-reference/remote)). It's
+> like `wget`, but for DVC or Git repos. In this case we use our
 > [dataset registry](https://github.com/iterative/dataset-registry) repo as the
 > data source (refer to [Data Registries](/doc/use-cases/data-registries) for
 > more info.)

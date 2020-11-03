@@ -109,8 +109,8 @@ $ dvc run -n download_data \
           wget https://data.dvc.org/get-started/data.xml -O data.xml
 ```
 
-`dvc import-url` generates an <abbr>import stage</abbr> `.dvc` file and
-`dvc run` a regular stage (in `dvc.yaml`).
+`dvc import-url` generates an _import stage_ `.dvc` file and `dvc run` a regular
+stage (in `dvc.yaml`).
 
 ⚠️ DVC won't push or pull imported data to/from
 [remote storage](/doc/command-reference/remote), it will rely on it's original
@@ -124,9 +124,10 @@ source.
   the imported data (`out`).
 
 - `--no-exec` - create `.dvc` file without actually downloading `url`. E.g. if
-  the file or directory already exist it can be used to skip download.
-  `dvc commit <out>.dvc` should be used to calculate the URL and data hash,
-  update the `.dvc` files, and save existing data to the cache.
+  the file or directory already exists, this can be used to skip the download.
+  The data hash is not calculated by this, only the metadata is saved into the
+  `.dvc` file. You can use `dvc commit <out>.dvc` if you need the hashes in the
+  new `.dvc` file and save existing data to the cache.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -313,7 +314,7 @@ Data and pipelines are up to date.
 In the data store directory, edit `data.xml`. It doesn't matter what you change,
 as long as it remains a valid XML file, because any change will result in a
 different dependency file hash (`md5`) in the import stage `.dvc` file. Once we
-do so, we can run `dvc update` to make sure the import stage is up to date:
+do so, we can run `dvc update` to make sure the import is up to date:
 
 ```dvc
 $ dvc update data.xml.dvc

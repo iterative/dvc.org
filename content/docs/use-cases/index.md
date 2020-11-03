@@ -18,11 +18,9 @@ knowledge, they are still difficult to implement, reuse, and manage.
 If you store and process data files or datasets to produce other data or machine
 learning models, and you want to
 
-- track and save <abbr>data artifacts</abbr> the same way you capture code;
-- switch between
-  [versions of data and ML models](/doc/use-cases/versioning-data-and-model-files)
-  easily;
-- understand how data or ML artifacts were built in the first place;
+- track and save data and machine learning models the same way you capture code;
+- create and switch among different versions of data or models easily;
+- understand how datasets and ML artifacts were built in the first place;
 - compare ML models and metrics among [experiments](/doc/start/experiments);
 - bring tools and best practices from software engineering to your data science
   projects;
