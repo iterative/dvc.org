@@ -50,7 +50,7 @@ generated, or edited. These scenarios are further detailed below.
 
 - It's always possible to manually execute the terminal command or source code
   used in a stage without DVC (outputs must be unprotected or removed first in
-  certain cases, see `dvc unprotect`). Once a desirable result is reached, use
+  certain cases, see `dvc unprotect`). Once the desired result is reached, use
   `dvc add` or `dvc commit` as appropriate to update the `dvc.lock` or `.dvc`
   files and store changed data to the cache.
 
