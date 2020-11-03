@@ -123,10 +123,11 @@ source.
   default file name: `<file>.dvc`, where `<file>` is the desired file name of
   the imported data (`out`).
 
-- `--no-exec` - create a `.dvc` file without actually downloading `url`. E.g. if
-  the file or directory already exist it can be used to skip the download.
-  `dvc commit <out>.dvc` should be used to calculate the URL and data hash,
-  update the `.dvc` files, and save existing data to the cache.
+- `--no-exec` - create `.dvc` file without actually downloading `url`. E.g. if
+  the file or directory already exists, this can be used to skip the download.
+  The data hash is not calculated by this, only the metadata is saved into the
+  `.dvc` file. You can use `dvc commit <out>.dvc` if you need the hashes in the
+  new `.dvc` file and save existing data to the cache.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 

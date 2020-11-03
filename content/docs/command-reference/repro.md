@@ -14,7 +14,8 @@ usage: dvc repro [-h] [-q | -v] [-f] [-s] [-c <path>] [-m] [--dry] [-i]
                  [targets [targets ...]]
 
 positional arguments:
-  targets        Stage or .dvc file to reproduce
+  targets        Stage or path to dvc.yaml or .dvc file to reproduce. Using -R,
+                 directories to search for stages can also be given.
 ```
 
 ## Description
@@ -110,7 +111,8 @@ up-to-date and only execute the final stage.
   reproduced independently.
 
 - `-R`, `--recursive` - determines the stages to reproduce by searching each
-  target directory (if any) and their subdirectories.
+  target directory and its subdirectories for stages (in `dvc.yaml`) to inspect.
+  If there are no directories among the targets, this option is ignored.
 
 - `--no-commit` - do not save outputs to cache. A DVC-file is created and an
   entry is added to `.dvc/state`, while nothing is added to the cache.
@@ -259,14 +261,14 @@ You can now check that `dvc.lock` and `count.txt` have been updated with the new
 information: updated dependency/output file hash values, and a new result,
 respectively.
 
-## Example: Downstream
+## Example: Downstream from a target stage
 
 > This example continues the previous one.
 
-The `--downstream` option allows us to only reproduce results from commands
-after a specific stage in a pipeline. To demonstrate how it works, let's make a
-change in `text.txt` (the input of our first stage, created in the previous
-example):
+The `--downstream` option, when used with a `target` stage, allows us to only
+reproduce results from commands after that specific stage in a pipeline. To
+demonstrate how it works, let's make a change in `text.txt` (the input of our
+first stage, created in the previous example):
 
 ```
 ...
@@ -283,7 +285,7 @@ print(num_lines)
 ```
 
 Now, using the `--downstream` option with `dvc repro` results in the execution
-only of the target stage, and following ones (none in this case):
+of only the target (`count`) and following stages (none in this case):
 
 ```dvc
 $ dvc repro --downstream count
@@ -294,7 +296,8 @@ Updating lock file 'dvc.lock'
 
 The change in `text.txt` is ignored because that file is a dependency in the
 `filter` stage, which wasn't executed by the `dvc repro` above. This is because
-`filter` happens before the target (`count`) in the pipeline, as shown below:
+`filter` happens before the target (`count`) in the pipeline (see `dvc dag`), as
+shown below:
 
 ```dvc
 $ dvc dag
@@ -310,4 +313,6 @@ $ dvc dag
   +-------+
 ```
 
-> Refer to `dvc dag` for more details on that command.
+> Note that using `dvc repro` without `--downstream` in the above example
+> results in the execution of the target (`count`), and the preceeding stages
+> (only 'filter' in this case).
