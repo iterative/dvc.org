@@ -40,7 +40,7 @@ generated or edited. These scenarios are further detailed below.
   reproduce the whole pipeline. If you're sure no pipeline results would change,
   use `dvc commit` to force update the `dvc.lock` or `.dvc` files and cache.
 
-- In some situations we have executed a stage (either by writing `dvc.yaml`
+- In cases where we have previously executed a stage (either by writing `dvc.yaml`
   manually and using `dvc repro`, or with `dvc run`), and later notice that
   output files or directories created by the stage command, which are already in
   the workspace, are missing from `dvc.yaml` (`outs` field). We can
