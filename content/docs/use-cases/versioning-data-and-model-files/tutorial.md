@@ -1,11 +1,11 @@
 ---
-title: 'Data and Model Versioning Tutorial'
+title: 'Tutorial: Data and Model Versioning'
 description: 'Get hands-on experience with data versioning in a basic machine
 learning version control scenario: managing multiple datasets and ML models
 using DVC.'
 ---
 
-# Data and Model Versioning Tutorial
+# Tutorial: Data and Model Versioning
 
 The goal of this example is to give you some hands-on experience with a basic
 machine learning version control scenario: managing multiple datasets and ML
@@ -16,7 +16,7 @@ to build a powerful image classifier using a pretty small dataset.
 
 ![](/img/cats-and-dogs.jpg) _Dataset to classify cats and dogs_
 
-> We highly recommend reading the François' tutorial itself. It's a great
+> We highly recommend reading François' tutorial itself. It's a great
 > demonstration of how a general pre-trained model can be leveraged to build a
 > new high-performance model, with very limited resources.
 
