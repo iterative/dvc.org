@@ -60,7 +60,7 @@ compares them with a previous version.
 
 ## Examples
 
-> This example is based on the `evaluate.dvc` stage file of our
+> This example is based on the `evaluate` stage of our
 > [Get Started](/doc/tutorials/get-started/experiments#project-metrics), where
 > you can find the actual source code.
 
