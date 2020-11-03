@@ -22,7 +22,7 @@ tracked by DVC changes: when a [stage](/doc/command-reference/run) or
 [pipeline](/doc/command-reference/dag) is in development/experimentation; when
 force-updating the `dvc.lock` or `.dvc` files without reproducing stages or
 pipelines; or when DVC <abbr>outputs</abbr> are added to a stage, manually
-generated or edited. These scenarios are further detailed below.
+generated, or edited. These scenarios are further detailed below.
 
 - Code or data for a stage is under active development, with multiple iterations
   (experiments) in code, configuration, or data. Use the `--no-commit` option of
