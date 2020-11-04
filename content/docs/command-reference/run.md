@@ -106,9 +106,9 @@ Relevant notes:
   also means that the stage command needs to recreate any directory structures
   defined as outputs every time its executed by DVC.
 
-- In some situations we have executed a stage and later notice that output files
-  or directories created by the stage command, which are already in the
-  workspace, are missing from `dvc.yaml` (`outs` field). We can
+- In some situations we have executed a stage and later notice that some of the
+  output files or directories it creates, which are already in the workspace,
+  are missing from `dvc.yaml` (`outs` field). We can
   [add missing outputs to an existing stage](/docs/user-guide/how-to/add-output-to-stage)
   without having to execute it again.
 
