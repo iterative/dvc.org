@@ -48,7 +48,7 @@ can version experiments, manage large datasets, and make projects reproducible.
   > Git servers, as well as SSH and cloud storage providers are supported,
   > however.
 
-## DVC is not Git!
+## DVC does not replace Git!
 
 DVC metafiles such as `dvc.yaml` and `.dvc` files serve as placeholders to track
 large data files and directories for versioning (among other
@@ -58,7 +58,6 @@ along with your data, and you can use Git to place them under
 as a proxy to the actual data versions, which are stored in the <abbr>DVC
 cache</abbr> (outside of Git). This does not replace features of Git.
 
-DVC does, however, provide several commands that are somewhat analogous to their
-Git counterparts, and that interact with the underlying Git repo (if one is
-being used, which is not required). For example: `dvc init`, `dvc add`,
-`dvc checkout`, `dvc push`, among others.
+DVC does, however, provide several commands similar to Git such as `dvc init`,
+`dvc add`, `dvc checkout`, or `dvc push`, which interact with the underlying Git
+repo (if one is being used, which is not required).
