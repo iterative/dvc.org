@@ -74,34 +74,33 @@ environment at any given time. It consists of special
 [metafiles](/doc/user-guide/dvc-files-and-directories) that we can put in Git
 along with the source code.
 
-![](/img/404.png) _Data as code_
+![](/img/data-as-code.png) _Data as code_
 
 This way data and models use the same change history as code, so you can
 [semver](https://semver.org/) the project as a whole (as normally done in
 software engineering). DVC can rewind ⏪ or fast-forward ⏩ the data needed for
 your project based on the metadata in Git, letting you focus on data science
-instead of moving data around!
+instead of moving files around!
 
-Other major benefits of Data Version Control:
+Major benefits of Data Version Control:
 
-- Identify exact research inputs to understand and reproduce past results: just
-  restore the desired project version, and find the data you need.
+- Restore any project version and find the data you need instantly: Identifying
+  research inputs to understand and reproduce past results is made easy.
+- No need to figure out complicated file paths like `data/2019/labels_v2_final`
+  in your code.
 - Adopt existing engineering tools like Git SCM, continuous integration (CI),
-  and other best practices that improve productivity.
+  and other best practices that improve collaboration and productivity.
+- Having a separate project storage let's you easily
+  [share data and models](/doc/use-cases/sharing-data-and-model-files).
 - Make data-centric projects easier to work on by separating code from data,
   which also increases data persistence.
-- Your code doesn't need to figure out complicated file paths like
-  `data/2019/labels_v2_final`. You can focus on writing code and doing data
-  science.
-- Collaborate with a toolset everyone is familiar with (data scientists,
-  engineers, managers), and others (see [Get Started](/doc/start)).
-- Enforce lifecycle and security policies by having all changes go though a Git
-  repo. This immutable change history enables auditing changes to data and
+- Enforce lifecycle policies by having a defined process to change data and
   models.
-
-> 👩‍💻 To try hands-on data versioning with DVC, please follow the
-> [versioning tutorial](/doc/use-cases/versioning-data-and-model-files/tutorial).
+- The project's immutable change history enables data security audits.
 
 In summary, data science and machine learning are iterative processes where the
 lifecycles of data, code, and ML models occur at different paces. DVC helps
 integrate and manage them effectively.
+
+> 👩‍💻 To try hands-on data versioning with DVC, please follow the
+> [versioning tutorial](/doc/use-cases/versioning-data-and-model-files/tutorial).
