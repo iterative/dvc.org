@@ -14,10 +14,10 @@ does not change directories in your terminal).
   `dvc init`.
 - Copy data files or dataset directories for modeling into the repository, and
   track them with DVC using the `dvc add` command.
-- Process the data with your own source code, using `dvc.yaml` and/or the
+- Process raw data with your own source code, using `dvc.yaml` and/or the
   `dvc run` command, specifying further <abbr>outputs</abbr> that should also be
   tracked by DVC after the code is executed.
-- Sharing a <abbr>DVC repository</abbr> with the codified data
+- Sharing a <abbr>DVC repository</abbr> with the codified ML
   [pipeline](/doc/command-reference/dag) will not include the project's
   <abbr>cache</abbr>. Use [remote storage](/doc/command-reference/remote) and
   `dvc push` to share this cache (data tracked by DVC).
