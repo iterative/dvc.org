@@ -161,10 +161,10 @@ $ dvc fetch
 
 $ tree .dvc/cache
 .dvc/cache
-├── 38
-│   └── 63d0e317dee0a55c4e59d2ec0eef33
-├── 42
-│   └── c7025fc0edeb174069280d17add2d4.dir
+├── 20
+│   └── b786b6e6f80e2b3fcf17827ad18597.dir
+├── 32
+│   └── b715ef0d71ff4c9e61f55b09c15e75
 ...
 ```
 
@@ -234,10 +234,9 @@ dependencies/outputs of other pipeline stages are still missing from the cache:
 ```dvc
 $ dvc status -c
 ...
-    deleted:            model.pkl
     deleted:            data/features/test.pkl
     deleted:            data/features/train.pkl
-    deleted:            data/data.xml
+    deleted:            model.pkl
 ```
 
 One could do a simple `dvc fetch` to get all the data, but what if you only want
@@ -249,22 +248,21 @@ $ dvc fetch --with-deps train
 
 $ tree .dvc/cache
 .dvc/cache
-├── 38
-│   └── 63d0e317dee0a55c4e59d2ec0eef33
-├── 42
-│   └── c7025fc0edeb174069280d17add2d4.dir
-├── 58
-│   └── 245acfdc65b519c44e37f7cce12931
-├── 68
-│   └── 36f797f3924fb46fcfd6b9f6aa6416.dir
-├── 9d
-│   └── 603888ec04a6e75a560df8678317fb
+├── 20
+│   └── b786b6e6f80e2b3fcf17827ad18597.dir
+├── 32
+│   └── b715ef0d71ff4c9e61f55b09c15e75
+├── 54
+│   └── c0f3ef1f379563e0b9ba4accae6807
+├── 6f
+│   └── 597d341ceb7d8fbbe88859a892ef81
+├── a1
+│   └── 414b22382ffbb76a153ab1f0d69241.dir
 ├── a3
-│   └── 04afb96060aad90176268345e10355
-├── aa
-│   └── 35101ce881d04b41d5b4ff3593b423
-└── dc
-    └── a9c512fda11293cfee7617b66648dc
+│   └── 04afb96060aad90176268345e10355
+└── c8
+    ├── 43577f9da31eab5ddd3a2cf1465f9b
+    └── d307aa005d6974a8525550956d5fb3
 ```
 
 Fetching using `--with-deps` starts with the target stage (`train`) and searches
@@ -277,4 +275,4 @@ files needed to reproduce this pipeline up to the third stage into the workspace
 > Note that in this example project, the last stage `evaluate` doesn't add any
 > more data files than those form previous stages, so at this point all of the
 > data for this pipeline is cached and `dvc status -c` would output
-> `Cache and remote 'myremote' are in sync.`
+> `Cache and remote 'storage' are in sync.`
