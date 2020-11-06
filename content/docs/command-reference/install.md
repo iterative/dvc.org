@@ -192,8 +192,8 @@ You are in 'detached HEAD' state...
 
 $ dvc status
 featurize:
-	changed outs:
-		modified:           data/features
+    changed outs:
+		    modified:           data/features
 ...
 $ dvc checkout
 

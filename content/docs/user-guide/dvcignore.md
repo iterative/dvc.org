@@ -119,8 +119,8 @@ different output:
 $ echo "345" >> data/data2
 $ dvc status
 data.dvc:
-	changed outs:
-		modified:           data
+	  changed outs:
+		    modified:           data
 ```
 
 ## Example: Moving ignored data
@@ -154,8 +154,8 @@ Data and pipelines are up to date.
 $ mv data/data1 data/data3
 $ dvc status
 data.dvc:
-	changed outs:
-		modified:           data
+	  changed outs:
+		    modified:           data
 ```
 
 ## Example: Ignore DVC tracked file
@@ -189,11 +189,11 @@ Check status:
 ```dvc
 $ dvc status
 dir1/data1.dvc:
-	changed outs:
-		modified:           dir1/data1
+	  changed outs:
+		    modified:           dir1/data1
 dir2/data2.dvc:
-	changed outs:
-		modified:           dir2/data2
+	  changed outs:
+		    modified:           dir2/data2
 ```
 
 Note that both data files are displayed as modified. Create a `.dvcignore` file
@@ -208,8 +208,8 @@ Check status again:
 ```dvc
 $ dvc status
 dir2/data2.dvc:
-	changed outs:
-		modified:           dir2/data2
+	  changed outs:
+		    modified:           dir2/data2
 ```
 
 Only the second file is displayed because DVC ignores `data1.dvc` and `data1`
