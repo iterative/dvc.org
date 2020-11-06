@@ -21,7 +21,7 @@ The `dvc commit` command is useful for several scenarios, when data already
 tracked by DVC changes: when a [stage](/doc/command-reference/run) or
 [pipeline](/doc/command-reference/dag) is in development/experimentation; to
 force-update the `dvc.lock` or `.dvc` files without reproducing stages or
-pipelines; or to add missing outputs or manually execute a stage. These
+pipelines; or to mark existing files/dirs as stage <abbr>outputs</abbr>. These
 scenarios are further detailed below.
 
 - Code or data for a stage is under active development, with multiple iterations
@@ -43,7 +43,8 @@ scenarios are further detailed below.
 - In cases where we have previously executed a stage (either by writing
   `dvc.yaml` manually and using `dvc repro`, or with `dvc run`), but later
   notice that some of the output files or directories it creates, which are
-  already in the workspace, are missing from `dvc.yaml` (`outs` field). We can
+  already in the <abbr>workspace</abbr>, are missing from `dvc.yaml` (`outs`
+  field). We can
   [add missing outputs to an existing stage](/docs/user-guide/how-to/add-output-to-stage)
   without having to execute it again. Use `dvc commit` to update the `dvc.lock`
   file and save outputs to the cache.
@@ -51,8 +52,8 @@ scenarios are further detailed below.
 - It's always possible to manually execute the command or source code used in a
   stage without DVC (outputs must be unprotected or removed first in certain
   cases, see `dvc unprotect`). Once the desired result is reached, use
-  `dvc commit` as appropriate to update the `dvc.lock` file(s) and store changed
-  data to the cache.
+  `dvc commit` to update the `dvc.lock` file(s) and store changed data to the
+  cache.
 
 Let's take a look at what is happening in the first scenario closely. Normally
 DVC commands like `dvc add`, `dvc repro` or `dvc run` commit the data to the
