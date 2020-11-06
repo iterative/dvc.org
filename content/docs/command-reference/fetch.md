@@ -179,8 +179,8 @@ Note that the `.dvc/cache` directory was created and populated.
 
 Used without arguments (as above), `dvc fetch` downloads all files and
 directories needed by all `dvc.yaml` and `.dvc` files in the current branch. For
-example, the hash value `20b786b...` corresponds to the `data/prepared/`
-directory.
+example, the hash values `20b786b...` and `c8d307a...` correspond to the
+`model.pkl` file and `data/features/` directory, respectively.
 
 Let's now link files from the cache to the workspace with:
 
