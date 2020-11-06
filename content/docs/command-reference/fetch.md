@@ -179,8 +179,8 @@ Note that the `.dvc/cache` directory was created and populated.
 
 Used without arguments (as above), `dvc fetch` downloads all files and
 directories needed by all `dvc.yaml` and `.dvc` files in the current branch. For
-example, the hash values `3863d0e...` and `42c7025...` correspond to the
-`model.pkl` file and `data/features/` directory, respectively.
+example, the hash value `20b786b...` corresponds to the `data/prepared/`
+directory.
 
 Let's now link files from the cache to the workspace with:
 
@@ -228,7 +228,7 @@ the cache entries for the `data/features` directory, and
 ## Example: With dependencies
 
 After following the previous example (**Specific stages**), only the files
-associated with the `prepare` stage has been fetched. Several
+associated with the `prepare` stage have been fetched. Several
 dependencies/outputs of other pipeline stages are still missing from the cache:
 
 ```dvc
@@ -240,8 +240,8 @@ $ dvc status -c
 ```
 
 One could do a simple `dvc fetch` to get all the data, but what if you only want
-to retrieve the data up to our third stage (`train`)? We can use the
-`--with-deps` (or `-d`) option:
+to retrieve the data up to our third stage `train`? We can use the `--with-deps`
+(or `-d`) option:
 
 ```dvc
 $ dvc fetch --with-deps train
