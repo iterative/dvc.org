@@ -163,8 +163,9 @@ $ tree .dvc/cache
 .dvc/cache
 ├── 20
 │   └── b786b6e6f80e2b3fcf17827ad18597.dir
-├── 32
-│   └── b715ef0d71ff4c9e61f55b09c15e75
+├── c8
+│    ├── d307aa005d6974a8525550956d5fb3
+│    └── ...
 ...
 ```
 
@@ -180,7 +181,7 @@ Note that the `.dvc/cache` directory was created and populated.
 Used without arguments (as above), `dvc fetch` downloads all files and
 directories needed by all `dvc.yaml` and `.dvc` files in the current branch. For
 example, the hash values `20b786b...` and `c8d307a...` correspond to the
-`model.pkl` file and `data/features/` directory, respectively.
+`data/features/` directory and `model.pkl` file, respectively.
 
 Let's now link files from the cache to the workspace with:
 
@@ -240,8 +241,8 @@ $ dvc status -c
 ```
 
 One could do a simple `dvc fetch` to get all the data, but what if you only want
-to retrieve the data up to our third stage `train`? We can use the `--with-deps`
-(or `-d`) option:
+to retrieve the data up to our third stage, `train`? We can use the
+`--with-deps` (or `-d`) option:
 
 ```dvc
 $ dvc fetch --with-deps train
@@ -250,6 +251,9 @@ $ tree .dvc/cache
 .dvc/cache
 ├── 20
 │   └── b786b6e6f80e2b3fcf17827ad18597.dir
+├── c8
+│   ├── 43577f9da31eab5ddd3a2cf1465f9b
+│   └── d307aa005d6974a8525550956d5fb3
 ├── 32
 │   └── b715ef0d71ff4c9e61f55b09c15e75
 ├── 54
@@ -258,11 +262,8 @@ $ tree .dvc/cache
 │   └── 597d341ceb7d8fbbe88859a892ef81
 ├── a1
 │   └── 414b22382ffbb76a153ab1f0d69241.dir
-├── a3
-│   └── 04afb96060aad90176268345e10355
-└── c8
-    ├── 43577f9da31eab5ddd3a2cf1465f9b
-    └── d307aa005d6974a8525550956d5fb3
+└── a3
+    └── 04afb96060aad90176268345e10355
 ```
 
 Fetching using `--with-deps` starts with the target stage (`train`) and searches

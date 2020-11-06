@@ -177,8 +177,9 @@ The `model.monograms.pkl` file now contains the older version of the model. To
 get the most recent one, we use a similar command, but with
 `-o model.bigrams.pkl` and `--rev bigrams-experiment` (or even without `--rev`
 since that tag has the latest model version anyway). In fact, in this case using
-`dvc pull` with the corresponding stage `target` should suffice, downloading the
-file as just `model.pkl`. We can then rename it to make its variant explicit:
+`dvc pull` with the corresponding stage as target should suffice, downloading
+the file as just `model.pkl`. We can then rename it to make its variant
+explicit:
 
 ```dvc
 $ dvc pull train
