@@ -99,7 +99,11 @@
         "label": "How To",
         "slug": "how-to",
         "source": false,
-        "children": ["undo-adding-data", "update-tracked-files"]
+        "children": [
+          "add-output-to-stage",
+          "undo-adding-data",
+          "update-tracked-files"
+        ]
       },
       "setup-google-drive-remote",
       "large-dataset-optimization",
