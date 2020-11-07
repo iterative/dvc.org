@@ -283,13 +283,11 @@ Full <abbr>parameters</abbr> (key and value) are listed separately under
 ## Structure of the cache directory
 
 The DVC cache is a
-[content-addressable storage](https://en.wikipedia.org/wiki/Content-addressable_storage)
-(CAS), which adds a layer of indirection between code and data. It's hidden from
-the user (and from Git), and typically local. However, it can be synchronized
-with [remote storage](/doc/command-reference/remote) for sharing.
+[content-addressable storage](https://en.wikipedia.org/wiki/Content-addressable_storage),
+which adds a layer of indirection between code and data.
 
-There are two ways in which the data is stored in <abbr>cache</abbr>: As a
-single file (eg. `data.csv`), or as a directory.
+There are two ways in which the data is <abbr>cached</abbr>: As a single file
+(eg. `data.csv`), or as a directory.
 
 ### For files
 
@@ -334,11 +332,10 @@ This `.dir` file contains the mapping of files in `data/images` (as a JSON
 array), including their hash values. That's how DVC knows that the other two
 cached files belong in the directory:
 
-```json
-[
-  { "md5": "dff70c0392d7d386c39a23c64fcc0376", "relpath": "cat.jpeg" },
-  { "md5": "29a6c8271c0c8fbf75d3b97aecee589f", "relpath": "index.jpeg" }
-]
+```dvc
+$ cat .dvc/cache/19/6a322c107c2572335158503c64bfba.dir
+[{"md5": "dff70c0392d7d386c39a23c64fcc0376", "relpath": "cat.jpeg"},
+{"md5": "29a6c8271c0c8fbf75d3b97aecee589f", "relpath": "index.jpeg"}]
 ```
 
 See also `dvc cache dir` to set the location of the cache directory.
