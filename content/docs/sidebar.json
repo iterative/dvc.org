@@ -100,7 +100,7 @@
         "slug": "how-to",
         "source": false,
         "children": [
-          "add-output-to-stage",
+          "add-dependency-or-output-to-stage",
           "undo-adding-data",
           "update-tracked-files"
         ]
