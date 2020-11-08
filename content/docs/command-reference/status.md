@@ -157,18 +157,18 @@ that.
 ```dvc
 $ dvc status
 bar:
-    changed deps:
-        modified:          foo
-    changed outs:
-        not in cache:      bar
+	changed deps:
+        	modified:           foo
+        changed outs:
+		not in cache:       bar
 foo.dvc:
-    changed outs:
-        deleted:           foo
-    changed checksum
+        changed outs:
+                deleted:            foo
+        changed checksum
 prepare.dvc:
-    changed outs:
-        new:      bar
-    always changed
+        changed outs:
+                new:                bar
+        always changed
 ```
 
 This shows that for stage `bar`, the dependency `foo` and the
@@ -182,14 +182,14 @@ This shows that for stage `bar`, the dependency `foo` and the
 ```dvc
 $ dvc status foo.dvc dobar
 foo.dvc:
-    changed outs:
-        deleted:           foo
-    changed checksum
+	changed outs:
+		deleted:            foo
+	changed checksum
 dobar:
-    changed deps:
-        modified:          bar
-    changed outs:
-        not in cache:      foo
+	changed deps:
+		modified:           bar
+	changed outs:
+	not in cache:               foo
 ```
 
 > In this case, the target `foo.dvc` is a `.dvc` file to track the `foo` file,
@@ -222,8 +222,8 @@ Data and pipelines are up to date.
 
 $ dvc status model.p --with-deps
 matrix-train.p:
-    changed deps:
-        modified:  code/featurization.py
+	changed deps:
+		modified:  code/featurization.py
 ```
 
 The `dvc status` command may be limited to a target that had no changes, but by
@@ -245,10 +245,10 @@ remote yet:
 ```dvc
 $ dvc status --remote storage
 ...
-    new:      data/model.p
-    new:      data/eval.txt
-    new:      data/matrix-train.p
-    new:      data/matrix-test.p
+	new:      data/model.p
+	new:      data/eval.txt
+	new:      data/matrix-train.p
+	new:      data/matrix-test.p
 ```
 
 The output shows where the location of the remote storage is, as well as any
@@ -270,8 +270,8 @@ original file or directory changes later, `dvc status` will show
 ```dvc
 $ dvc status
 data.csv.dvc:
-	  changed deps:
-		    update available:   data.csv (different/repo/location)
+	changed deps:
+		update available:   data.csv (different/repo/location)
 ```
 
 The imported data can be brought to its latest version by using `dvc update`.
