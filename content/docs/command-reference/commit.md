@@ -258,8 +258,8 @@ M src/train.py
 
 $ dvc status
 train.dvc:
-    changed deps:
-        modified:           src/train.py
+	changed deps:
+		modified:           src/train.py
 ```
 
 Let's edit one of the source code files. It doesn't matter which one. You'll see

@@ -158,9 +158,9 @@ that.
 $ dvc status
 bar:
 	changed deps:
-        	modified:           foo
+        	modified:           bar
         changed outs:
-		not in cache:       bar
+		not in cache:       foo
 foo.dvc:
         changed outs:
                 deleted:            foo
@@ -171,9 +171,9 @@ prepare.dvc:
         always changed
 ```
 
-This shows that for stage `bar`, the dependency `foo` and the
-<abbr>output</abbr> `bar` have changed. Likewise for `foo.dvc`, the dependency
-`foo` has changed, but no output has changed.
+This shows that for stage `bar`, the dependency `bar` and the
+<abbr>output</abbr> `foo` have changed. Likewise for `foo.dvc`, the output `foo`
+has changed, but no dependency has changed.
 
 ## Example: Specific files or directories
 
