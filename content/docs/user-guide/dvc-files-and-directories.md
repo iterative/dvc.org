@@ -282,22 +282,29 @@ Full <abbr>parameters</abbr> (key and value) are listed separately under
 
 ## Structure of the cache directory
 
-There are two ways in which the data is stored in <abbr>cache</abbr>: As a
-single file (eg. `data.csv`), or a directory of files.
+The DVC cache is a
+[content-addressable storage](https://en.wikipedia.org/wiki/Content-addressable_storage),
+which adds a layer of indirection between code and data.
 
-For the first case, we calculate the file hash, a 32 characters long string
-(usually MD5). The first two characters are used to name the directory inside
-`.dvc/cache`, and the rest become the file name of the cached file. For example,
-if a data file `Posts.xml.zip` has a hash value of
-`ec1d2935f811b77cc49b031b999cbf17`, its path in the cache will be
-`.dvc/cache/ec/1d2935f811b77cc49b031b999cbf17`.
+There are two ways in which the data is <abbr>cached</abbr>: As a single file
+(eg. `data.csv`), or as a directory.
+
+### For files
+
+DVC calculates the file hash, a 32 characters long string (usually MD5). The
+first two characters are used to name the directory inside `.dvc/cache`, and the
+rest become the file name of the cached file. For example, if a data file
+`Posts.xml.zip` has a hash value of `ec1d2935f811b77cc49b031b999cbf17`, its path
+in the cache will be `.dvc/cache/ec/1d2935f811b77cc49b031b999cbf17`.
 
 > Note that file hashes are calculated from file contents only. 2 or more files
 > with different names but the same contents can exist in the workspace and be
 > tracked by DVC, but only one copy is stored in the cache. This helps avoid
 > data duplication in cache and remotes.
 
-For the second case, let us consider a directory with 2 images.
+### For directories
+
+Let's imagine [adding](/doc/command-reference/add) a directory with 2 images:
 
 ```dvc
 $ tree data/images/
@@ -308,21 +315,10 @@ data/images/
 $ dvc add data/images
 ```
 
-When running `dvc add` on this directory of images, a `data/images.dvc`
-[DVC-file](/doc/user-guide/dvc-files-and-directories) is created, containing the
-hash value of the directory:
-
-```yaml
-outs:
-  - md5: 196a322c107c2572335158503c64bfba.dir
-    path: data/images
-```
-
-The directory in cache is stored as a JSON file (with `.dir` file extension)
-describing it's contents, along with the files it contains in cache, like this:
+The directory entry in the cache is stored as a JSON file with `.dir` file
+extension, along with the files it contains in cache, like this:
 
 ```dvc
-$ tree .dvc/cache
 .dvc/cache/
 ├── 19
 │   └── 6a322c107c2572335158503c64bfba.dir
@@ -332,11 +328,9 @@ $ tree .dvc/cache
     └── 0b40427ee0998e9802335d98f08cd98f
 ```
 
-The cache file with `.dir` extension is a special text file that contains the
-mapping of files in the `data/` directory (as a JSON array), along with their
-hash values. The other two cache files are the files inside `data/`.
-
-A typical `.dir` cache file looks like this:
+This `.dir` file contains the mapping of files in `data/images` (as a JSON
+array), including their hash values. That's how DVC knows that the other two
+cached files belong in the directory:
 
 ```dvc
 $ cat .dvc/cache/19/6a322c107c2572335158503c64bfba.dir
