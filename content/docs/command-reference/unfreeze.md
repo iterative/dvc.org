@@ -10,7 +10,6 @@ usage: dvc unfreeze [-h] [-q | -v] targets [targets ...]
 
 positional arguments:
   targets        Stages or .dvc files to unfreeze
-                 (see also `dvc freeze`).
 ```
 
 ## Description
