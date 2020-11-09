@@ -674,6 +674,73 @@ more information.
 
 <details>
 
+### Click for WebHDFS
+
+- `url` - remote location:
+
+  ```dvc
+  $ dvc remote modify myremote url webhdfs://user@example.com/path/to/dir
+  ```
+
+- `user` - username to access the remote, can be empty in case of using
+  `token` or if using a `HdfsCLI` cfg file. May only be used when Hadoop
+  security is off. Defaults to current user as determined by `whoami`.
+
+  ```dvc
+  $ dvc remote modify --local myremote user myuser
+  ```
+
+- `token` - Hadoop delegation token for WebHDFS, can be empty in case
+  of using `user` or if using a `HdfsCLI` cfg file. May be used when Hadoop
+  security is on.
+
+  ```dvc
+  $ dvc remote modify --local myremote token mytoken
+  ```
+
+- `hdfscli_config` - path to a `HdfsCLI` cfg file. WebHDFS access depends on
+  `HdfsCLI`, which allows the usage of a configuration file by default located in
+  `~/.hdfscli.cfg`. In the file, multiple aliases can be set with their own
+  connection parameters, like `url` or `user`. If using a cfg file, `webhdfs_alias`
+  can be set to specify which alias to use.
+
+  ```dvc
+  $ dvc remote modify --local myremote hdfscli_config `/path/to/.hdfscli.cfg`
+  ```
+
+  Sample configuration file:
+
+  ```ini
+  [global]
+  default.alias = myalias
+
+  [myalias.alias]
+  url = http://example.com/path/to/dir
+  user = myuser
+
+  [production.alias]
+  url = http://prodexample.com/path/to/dir
+  user = produser
+  ```
+  See more information in the `HdfsCLI` [docs](https://hdfscli.readthedocs.io/en/latest/quickstart.html#configuration).
+
+- `webhdfs_alias` - alias in a `HdfsCLI` cfg file to use. Only relevant if used
+  in conjunction with `hdfscli_config`. If not defined, `default.alias` in
+  `HdfsCLI` cfg file will be used instead.
+
+  ```dvc
+  $ dvc remote modify --local myremote webhdfs_alias myalias
+  ```
+
+> The username, token, webhdfs_alias, and hdfscli_config may contain sensitive
+> user info. Therefore, it's safer to add it with the `--local` option, so it's
+> written to a Git-ignored config file.
+
+</details>
+
+
+<details>
+
 ### Click for WebDAV
 
 - `url` - remote location:

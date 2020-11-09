@@ -69,7 +69,7 @@ An _output entry_ (`outs`) consists of these fields:
   tracked with DVC. MD5 is used for most locations (local file system and SSH);
   [ETag](https://en.wikipedia.org/wiki/HTTP_ETag#Strong_and_weak_validation) for
   HTTP, S3, or Azure [external outputs](/doc/user-guide/managing-external-data);
-  and a special _checksum_ for HDFS.
+  and a special _checksum_ for HDFS and WebHDFS.
 - `cache`: Whether or not this file or directory is <abbr>cached</abbr> (`true`
   by default, if not present). See the `--no-commit` option of `dvc add`.
 
@@ -81,7 +81,7 @@ A _dependency entry_ (`deps`) consists of these fields:
   tracked with DVC. MD5 is used for most locations (local file system and SSH);
   [ETag](https://en.wikipedia.org/wiki/HTTP_ETag#Strong_and_weak_validation) for
   HTTP, S3, or Azure <abbr>external dependencies</abbr>; and a special
-  _checksum_ for HDFS. See `dvc import-url` for more information.
+  _checksum_ for HDFS and WebHDFS. See `dvc import-url` for more information.
 - `repo`: This entry is only for external dependencies created with
   `dvc import`, and can contains the following fields:
 

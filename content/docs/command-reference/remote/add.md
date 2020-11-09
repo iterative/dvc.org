@@ -363,6 +363,18 @@ $ dvc remote add -d myremote \
 
 <details>
 
+### Click for WebHDFS
+
+```dvc
+$ dvc remote add -d myremote webhdfs://user@example.com/path/to/dir
+```
+
+> See also `dvc remote modify` for a full list of WebHDFS parameters.
+
+</details>
+
+<details>
+
 ### Click for local remote
 
 A "local remote" is a directory in the machine's file system. Not to be confused
