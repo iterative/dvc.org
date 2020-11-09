@@ -1,4 +1,4 @@
-# Updating Tracked Files
+# Update Tracked Files
 
 Due to the way DVC handles linking between the data files between the
 <abbr>cache</abbr> and their counterparts in the <abbr>workspace</abbr> (refer
