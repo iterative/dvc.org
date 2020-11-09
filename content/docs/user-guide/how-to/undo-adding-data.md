@@ -3,8 +3,8 @@
 There are situations where you want to stop tracking data added previously.
 Follow the steps listed here to undo `dvc add`.
 
-Let's first add a data file into an example <abbr>project</abbr> using
-`dvc add`, which creates a `.dvc` file to track the data:
+Let's first add a data file into an example <abbr>project</abbr>, which creates
+a `.dvc` file to track the data:
 
 ```dvc
 $ dvc add data.csv
@@ -12,32 +12,24 @@ $ ls
 data.csv    data.csv.dvc
 ```
 
-> Note, if you are using `symlink` or `hardlink` as
-> [link type](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
-> for DVC <abbr>cache</abbr>, you will have to unprotect the tracked file first
-> (see `dvc unprotect`):
->
-> ```dvc
-> $ dvc unprotect data.csv
-> ```
+> Note, if you're using `symlink` or `hardlink` as the project's
+> [link type](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache),
+> you'll have to unprotect the tracked file first (see `dvc unprotect`).
 
-Now let's reverse `dvc add` by removing the corresponding `.dvc` file and
-`.gitignore` entry using `dvc remove`:
+Now let's reverse that with `dvc remove`. This removes the `.dvc` file (and
+corresponding `.gitignore` entry). The data file is now no longer being tracked
+after this:
 
 ```dvc
 $ dvc remove data.csv.dvc
-```
 
-Data file `data.csv` is now no longer being tracked by DVC.
-
-```dvc
 $ git status
     Untracked files:
         data.csv
 ```
 
 You can run `dvc gc` with the `-w` option to remove the data that isn't
-referenced in the current workspace from the cache:
+referenced in the current workspace from the <abbr>cache</abbr>:
 
 ```dvc
 $ dvc gc -w

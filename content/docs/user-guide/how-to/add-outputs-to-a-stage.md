@@ -1,4 +1,4 @@
-# Add Output to Stage
+# Add Output to a Stage
 
 There are situations where we have executed a stage (either by writing
 `dvc.yaml` manually and using `dvc repro`, or with `dvc run`), but later notice
