@@ -20,7 +20,7 @@ A data pipeline, in general, is a series of data processing
 input and produce an <abbr>output</abbr>). A pipeline may produce intermediate
 data, and has a final result.
 
-Data processing or ML pipelines typically start with large raw datasets, include
+Data science and ML pipelines typically start with large raw datasets, include
 intermediate featurization and training stages, and produce a final model, as
 well as accuracy [metrics](/doc/command-reference/metrics).
 
@@ -78,9 +78,10 @@ example in Bash, we could add the following line to `~/.bashrc`:
 export DVC_PAGER=more
 ```
 
-## Examples
+## Example: Visualize a DVC Pipeline
 
-Visualize DVC pipeline:
+Visualize the prepare, featurize, train, and evaluate stages of a machine
+learning pipeline as defined in `dvc.yaml`:
 
 ```dvc
 $ dvc dag
