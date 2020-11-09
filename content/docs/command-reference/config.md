@@ -196,9 +196,6 @@ for more details.) This section contains the following options:
 - `cache.hdfs` - name of an HDFS remote to use as
   [external cache](/doc/user-guide/managing-external-data#examples).
 
-- `cache.webhdfs` - name of an WebHDFS remote to use as
-  [external cache](/doc/user-guide/managing-external-data#examples).
-
 > Avoid using the same [DVC remote](/doc/command-reference/remote) (used for
 > `dvc push`, `dvc pull`, etc.) as external cache, because it may cause file
 > hash overlaps: the hash of an external <abbr>output</abbr> could collide with
