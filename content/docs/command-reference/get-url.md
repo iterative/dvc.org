@@ -34,7 +34,7 @@ directory will be placed inside.
 DVC supports several types of (local or) remote locations (protocols):
 
 | Type      | Description                  | `url` format example                          |
-| --------  | ---------------------------- | ------------------------------------------    |
+| --------- | ---------------------------- | --------------------------------------------- |
 | `s3`      | Amazon S3                    | `s3://bucket/data`                            |
 | `azure`   | Microsoft Azure Blob Storage | `azure://container/data`                      |
 | `gdrive`  | Google Drive                 | `gdrive://<folder-id>/data`                   |
@@ -54,8 +54,8 @@ DVC supports several types of (local or) remote locations (protocols):
 
 \* Notes on remote locations:
 
-- HDFS, HTTP, WebDav, and WebHDFS **do not** support downloading entire directories, only
-  single files.
+- HDFS, HTTP, WebDav, and WebHDFS **do not** support downloading entire
+  directories, only single files.
 
 - `remote://myremote/path/to/file` notation just means that a DVC
   [remote](/doc/command-reference/remote) `myremote` is defined and when DVC is

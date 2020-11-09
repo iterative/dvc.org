@@ -56,7 +56,7 @@ source.
 DVC supports several types of (local or) remote locations (protocols):
 
 | Type      | Description                  | `url` format example                          |
-| --------  | ---------------------------- | --------------------------------------------- |
+| --------- | ---------------------------- | --------------------------------------------- |
 | `s3`      | Amazon S3                    | `s3://bucket/data`                            |
 | `azure`   | Microsoft Azure Blob Storage | `azure://container/data`                      |
 | `gdrive`  | Google Drive                 | `gdrive://<folder-id>/data`                   |
@@ -77,8 +77,8 @@ DVC supports several types of (local or) remote locations (protocols):
 
 \* Notes on remote locations:
 
-- HDFS, HTTP, WebDav, and WebHDFS **do not** support downloading entire directories, only
-  single files.
+- HDFS, HTTP, WebDav, and WebHDFS **do not** support downloading entire
+  directories, only single files.
 
 - In case of HTTP,
   [ETag](https://en.wikipedia.org/wiki/HTTP_ETag#Strong_and_weak_validation) is
