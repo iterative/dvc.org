@@ -20,9 +20,9 @@ A data pipeline, in general, is a series of data processing
 input and produce an <abbr>output</abbr>). A pipeline may produce intermediate
 data, and has a final result.
 
-Data science and ML pipelines typically start with large raw datasets, include
-intermediate featurization and training stages, and produce a final model, as
-well as accuracy [metrics](/doc/command-reference/metrics).
+Data science and machine learning pipelines typically start with large raw
+datasets, include intermediate featurization and training stages, and produce a
+final model, as well as accuracy [metrics](/doc/command-reference/metrics).
 
 In DVC, pipeline stages and commands, their data I/O, interdependencies, and
 results (intermediate or final) are specified in `dvc.yaml`, which can be
@@ -80,8 +80,8 @@ export DVC_PAGER=more
 
 ## Example: Visualize a DVC Pipeline
 
-Visualize the prepare, featurize, train, and evaluate stages of a machine
-learning pipeline as defined in `dvc.yaml`:
+Visualize the prepare, featurize, train, and evaluate stages of a pipeline as
+defined in `dvc.yaml`:
 
 ```dvc
 $ dvc dag
