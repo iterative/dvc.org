@@ -9,10 +9,10 @@ and enforced?
 ![](/img/data_ver_complex.png) _Exponential complexity of DS projects_
 
 Let's see if DVC can help. Can we avoid ad hoc naming conventions for changed
-data files and directories? Check! ✔️ DVC captures the contents of datasets,
+data files and directories? Yes: DVC captures the contents of datasets,
 intermediate results, and ML models as project snapshots are created
 ([Git commits](<(https://git-scm.com/book/en/v2/Git-Basics-Recording-Changes-to-the-Repository)>)).
-✔️ All these versions of the data are
+And all these versions of the data are
 [stored separately](/doc/user-guide/dvc-files-and-directories#structure-of-the-cache-directory)
 in an efficient way that prevents file duplication.
 
@@ -88,16 +88,18 @@ instead of moving files around!
 
 Major benefits of Data Version Control:
 
-- ⏲️ Restore any project version and find the data you need instantly. Now you
-  can always identify past research inputs to understand and reproduce the
-  results!
-- 📜 No need for complicated file paths like `data/2019/labels_v7_final` in your
+- Restore any project version and find the data you need instantly. Now you can
+  always identify past research inputs to understand and reproduce the results!
+- No need for complicated file paths like `data/2019/labels_v7_final` in your
   code.
-- ⚙️ Adopt existing engineering tools like Git SCM, continuous integration (CI),
-  and other best practices that improve collaboration and productivity.
-- 🤝 A separate data storage increases persistence, and allows
-  [sharing data and models](/doc/use-cases/sharing-data-and-model-files) easily.
-- 💂 Enforce lifecycle policies by having a defined process to change data and
+- Adopt existing engineering tools like Git SCM, continuous integration (CI)
+  such as [CML](https://cml.dev/), and other best practices that improve
+  collaboration and productivity.
+- A separate data storage increases persistence, and allows
+  [sharing data and models](/doc/use-cases/sharing-data-and-model-files) easily
+  You can even build a [data registry](/doc/use-cases/data-registries) or a
+  [model zoo](/doc/api-reference/open).
+- Enforce lifecycle policies by having a defined process to change data and
   models. Data security audits, anyone?
 
 In summary, data science and machine learning are iterative processes where the
