@@ -66,7 +66,7 @@ The following config options are available for all remote types:
   below):
 
   ```dvc
-  $ dvc remote modify s3remote url s3://mybucket/path
+  $ dvc remote modify s3remote s3://mybucket/path
   ```
 
   Or a _local remote_ (a directory in the file system):
