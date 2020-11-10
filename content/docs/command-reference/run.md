@@ -26,7 +26,7 @@ positional arguments:
 the current working directory).
 
 _Stages_ represent individual data processes, including their input and
-resulting outputs. Combine stages to capture simple data workflows, organize
+resulting outputs. They can be combined to capture simple data workflows, organize
 data science projects, or build detailed machine learning pipelines.
 
 A stage name is required and can be provided using the `-n` (`--name`) option.
