@@ -9,12 +9,12 @@ and enforced?
 ![](/img/data_ver_complex.png) _Exponential complexity of DS projects_
 
 Let's see if DVC can help. Can we avoid ad hoc naming conventions for changed
-data files and directories? Yes: DVC captures the contents of datasets,
+data files and directories? Yes: DVC stores the contents of datasets,
 intermediate results, and ML models as project snapshots are created
 ([Git commits](<(https://git-scm.com/book/en/v2/Git-Basics-Recording-Changes-to-the-Repository)>)).
-And all these versions of the data are
-[stored separately](/doc/user-guide/dvc-files-and-directories#structure-of-the-cache-directory)
-in an efficient way that prevents file duplication.
+All these versions of the data are
+[cached](/doc/user-guide/dvc-files-and-directories#structure-of-the-cache-directory)
+outside of Git in an efficient way that prevents file duplication.
 
 <div style="display: flex; flex-flow: row wrap; margin: 0 -0.5rem;">
 <div style="flex: 1 0 50%; padding: 0.5rem;">
@@ -69,8 +69,8 @@ DVC hides the complexity and matches the right versions of code and data for you
 We won't go too deep into how everything works here, since we have many
 [guides](/doc/user-guide) and [references](/doc/command-reference) for that, but
 here's the gist of it: DVC enables data _versioning through codification_. This
-means producing a description of which data, ML artifacts, etc. should be in the
-environment at any given time. It consists of special
+means describing which data, ML artifacts, etc. should be in the environment at
+any given time. It's achieved with special
 [metafiles](/doc/user-guide/dvc-files-and-directories) that we can put in Git
 along with the source code.
 
@@ -95,10 +95,10 @@ Major benefits of Data Version Control:
 - Adopt existing engineering tools like Git SCM, continuous integration (CI)
   such as [CML](https://cml.dev/), and other best practices that improve
   collaboration and productivity.
-- A separate data storage increases persistence, and allows
-  [sharing data and models](/doc/use-cases/sharing-data-and-model-files) easily
-  You can even build a [data registry](/doc/use-cases/data-registries) or a
-  [model zoo](/doc/api-reference/open).
+- Independent storage (<abbr>DVC cache</abbr>) increases data persistence, and
+  allows [sharing data and models](/doc/use-cases/sharing-data-and-model-files)
+  easily You can even build a [data registry](/doc/use-cases/data-registries) or
+  a [model zoo](/doc/api-reference/open).
 - Enforce lifecycle policies by having a defined process to change data and
   models. Data security audits, anyone?
 
