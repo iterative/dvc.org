@@ -95,7 +95,7 @@ The following are the types of remote storage (protocols) supported:
 > [Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html).
 
 ```dvc
-$ dvc remote add -d s3remote url s3://mybucket/path
+$ dvc remote add -d s3remote s3://mybucket/path
 ```
 
 By default, DVC expects your AWS CLI is already
