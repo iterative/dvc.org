@@ -178,7 +178,7 @@ up-to-date and only execute the final stage.
 To get hands-on experience with data science and machine learning pipelines, see
 [Get Started: Data Pipelines](/doc/start/data-pipelines).
 
-To demonstrate `dvc repro`, let's build and reproduce the simple pipeline below.
+Let's build and reproduce a simple pipeline.
 It takes this `text.txt` file:
 
 ```
