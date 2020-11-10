@@ -76,15 +76,14 @@ along with the source code.
 
 ![](/img/data-as-code.png) _Data as code_
 
-This way data and models use the same change history as code, so you can
-[semver](https://semver.org/) the project as a whole (as normally done in
-software engineering). DVC can rewind ⏪ or ⏩ fast-forward the data needed for
-your project based on the metadata in Git, letting you focus on data science
-instead of moving files around!
-
 > To try hands-on data versioning with DVC, please follow the
 > [versioning tutorial](/doc/use-cases/versioning-data-and-model-files/tutorial)
 > 👩‍💻.
+
+This way data the change history of the the whole project (data and code) is in
+Git. DVC can rewind ⏪ or ⏩ fast-forward the data needed for your project based
+on the metadata in Git. You can focus on data science instead of moving files
+around!
 
 Major benefits of Data Version Control:
 
@@ -92,13 +91,15 @@ Major benefits of Data Version Control:
   always identify past research inputs to understand and reproduce the results!
 - No need for complicated file paths like `data/2019/labels_v7_final` in your
   code.
-- Adopt existing engineering tools like Git SCM, continuous integration (CI)
-  such as [CML](https://cml.dev/), and other best practices that improve
-  collaboration and productivity.
+- Adopt existing engineering tools like Git SCM, [semver](https://semver.org/),
+  continuous integration (CI) such as [CML](https://cml.dev/), and other best
+  practices that improve collaboration and productivity.
 - Independent storage (<abbr>DVC cache</abbr>) increases data persistence, and
   allows [sharing data and models](/doc/use-cases/sharing-data-and-model-files)
-  easily You can even build a [data registry](/doc/use-cases/data-registries) or
-  a [model zoo](/doc/api-reference/open).
+  easily.
+- Enable specialized project patterns such as
+  [data registries](/doc/use-cases/data-registries) and
+  [model zoos](/doc/api-reference/open).
 - Enforce lifecycle policies by having a defined process to change data and
   models. Data security audits, anyone?
 
