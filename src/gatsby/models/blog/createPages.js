@@ -134,7 +134,7 @@ const createPages = async ({ graphql, actions }) => {
   // We have to explicitly limit tag pages here, otherwise we get one for
   // every tag on the example post that makes images for a few children.
   // That can easily add hundreds of images because of the blog index template.
-  const _tags = LIMIT_BLOG_PAGES !== undefined ? tags.slice(0, 1) : tags
+  const _tags = LIMIT_BLOG_PAGES === undefined ? tags.slice(0, 1) : tags
 
   const tagPagesPromise = Promise.all(
     _tags.map(({ fieldValue: tag, pageInfo: { itemCount } }) => {
