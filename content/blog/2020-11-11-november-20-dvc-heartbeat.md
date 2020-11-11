@@ -1,6 +1,6 @@
 ---
 title: November '20 Heartbeat
-date: 2020-11-05
+date: 2020-11-11
 description: |
   Catch our monthly updates- featuring new video docs and talks,
   new jobs at DVC, and must-read contributions from the community 
