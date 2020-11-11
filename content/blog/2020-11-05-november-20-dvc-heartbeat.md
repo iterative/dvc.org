@@ -9,10 +9,10 @@ descriptionLong: |
   Catch our monthly updates- featuring new video docs and talks,
   new jobs at DVC, and must-read contributions from the community 
   about MLOps, data science with R, and ML in production.
-picture: 2020-10-12/cover.png
+picture: 2020-11-08/cover.png
 pictureComment: Double DeeVee!
 author: elle_obrien
-commentsUrl: https://discuss.dvc.org/t/october-20-heartbeat/527
+commentsUrl: https://discuss.dvc.org/t/november-20-heartbeat/554
 tags:
   - Heartbeat
   - CML
