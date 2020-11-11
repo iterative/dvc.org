@@ -197,6 +197,37 @@
         "slug": "doctor"
       },
       {
+        "label": "experiments",
+        "slug": "exp",
+        "source": "exp/index.md",
+        "children": [
+          {
+            "label": "exp checkout",
+            "slug": "checkout"
+          },
+          {
+            "label": "exp diff",
+            "slug": "diff"
+          },
+          {
+            "label": "exp gc",
+            "slug": "gc"
+          },
+          {
+            "label": "exp resume",
+            "slug": "resume"
+          },
+          {
+            "label": "exp run",
+            "slug": "run"
+          },
+          {
+            "label": "exp show",
+            "slug": "show"
+          }
+        ]
+      },
+      {
         "label": "fetch",
         "slug": "fetch",
         "tutorials": {

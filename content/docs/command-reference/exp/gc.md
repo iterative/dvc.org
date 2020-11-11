@@ -1,4 +1,4 @@
-# exp[eriments] gc
+# exp gc
 
 Remove unneeded experiments from the project.
 
@@ -68,8 +68,8 @@ details.
 ## Examples
 
 Let's say we have the following project, have
-[checked out](/docs/command-reference/experiments/checkout) and promoted an
-experiment to a full commit:
+[checked out](/docs/command-reference/exp/checkout) and promoted an experiment
+to a full commit:
 
 ```dvc
 $ dvc exp show --all-commits --include-params=featurize

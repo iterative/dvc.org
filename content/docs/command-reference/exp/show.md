@@ -1,7 +1,6 @@
-# exp[eriments] show
+# exp show
 
-Print [experiments](/doc/command-reference/experiments) table, with optional
-formatting.
+Print [experiments](/doc/command-reference/exp) table, with optional formatting.
 
 ## Synopsis
 

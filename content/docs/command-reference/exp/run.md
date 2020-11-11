@@ -1,4 +1,4 @@
-# exp[eriments] run
+# exp run
 
 Reproduce complete or partial experiment [pipelines](/doc/command-reference/dag)
 by executing commands defined in their [stages](/doc/command-reference/run) in
@@ -35,9 +35,8 @@ To get hands-on experience with data science and machine learning pipelines, see
 `dvc exp run` differs from `dvc repro` in that data files and intermediate or
 final results will always be saved into the <abbr>DVC cache</abbr>.
 
-Experiment results will be
-[checked out](/doc/command-reference/experiments/checkout) into the workspace
-upon completion.
+Experiment results will be [checked out](/doc/command-reference/exp/checkout)
+into the workspace upon completion.
 
 For checkpoint experiments, `dvc exp resume` should be used in conjunction with
 `dvc exp run`.

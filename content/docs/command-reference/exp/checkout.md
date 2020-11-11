@@ -1,4 +1,4 @@
-# exp[eriments] checkout
+# exp checkout
 
 Checkout changes from a previously run experiment into the workspace.
 

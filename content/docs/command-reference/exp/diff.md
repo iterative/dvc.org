@@ -1,4 +1,4 @@
-# exp[eriments] diff
+# exp diff
 
 Show changes in [metrics](/doc/command-reference/metrics) and
 [parameters](/doc/command-reference/params) between experiments.

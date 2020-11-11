@@ -1,18 +1,18 @@
-# exp[eriments] res[ume]
+# exp res[ume]
 
 Resume (continue) existing checkpoint experiments.
 
 ## Synopsis
 
 ```usage
-usage: dvc exp res [-h] [-q | -v] [-r <experiment_rev>]
+usage: dvc exp res[ume] [-h] [-q | -v] [-r <experiment_rev>]
                    [--params [<filename>:]<params_list>]
 ```
 
 ## Description
 
-`dvc exp res` can be used to resume execution of a checkpoint experiment which
-was previously started via `dvc exp run`.
+`dvc exp resume` can be used to resume execution of a checkpoint experiment
+which was previously started via `dvc exp run`.
 
 ## Options
 

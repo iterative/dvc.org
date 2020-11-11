@@ -1,12 +1,11 @@
 # exp[eriments]
 
 A set of commands to generate and compare local _experiments_:
-[show](/doc/command-reference/experiments/show),
-[checkout](/doc/command-reference/experiments/show),
-[diff](/doc/command-reference/experiments/diff),
-[run](/doc/command-reference/experiments/run),
-[resume](/doc/command-reference/experiments/resume), and
-[gc](/doc/command-reference/experiments/gc).
+[show](/doc/command-reference/exp/show),
+[checkout](/doc/command-reference/exp/show),
+[diff](/doc/command-reference/exp/diff), [run](/doc/command-reference/exp/run),
+[resume](/doc/command-reference/exp/resume), and
+[gc](/doc/command-reference/exp/gc).
 
 ## Synopsis
 
