@@ -734,6 +734,19 @@ more information.
   $ dvc remote modify --local myremote webhdfs_alias myalias
   ```
 
+**HDFS and WebHDFS:**
+
+Both remotes, HDFS and WebHDFS, allow using a Hadoop cluster as a remote repository.
+However, HDFS relies on `pyarrow` which in turn requires `libhdfs`, an interface
+to the Java Hadoop client, that must be installed separately. Meanwhile, WebHDFS
+has no need for this requirement as it communicates with the Hadoop cluster via
+a HTTP REST API using the Python libraries `HdfsCLI` and `requests`. The latter
+remote should be preferred by users who seek easier and more portable setups, at
+the expense of performance due to the added overhead of HTTP.
+
+One last note: WebHDFS does require enabling the HTTP REST API in the cluster
+by setting the configuration property `dfs.webhdfs.enabled` to `true` in `hdfs-site.xml`.
+
 > The username, token, webhdfs_alias, and hdfscli_config may contain sensitive
 > user info. Therefore, it's safer to add it with the `--local` option, so it's
 > written to a Git-ignored config file.
