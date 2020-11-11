@@ -42,10 +42,10 @@ scenarios are further detailed below.
 
 - In cases where we have previously executed a stage (either by writing
   `dvc.yaml` manually and using `dvc repro`, or with `dvc run`), but later
-  notice that some of the output files or directories it creates, which are
-  already in the <abbr>workspace</abbr>, are missing from `dvc.yaml` (`outs`
-  field). We can
-  [add missing outputs to an existing stage](/docs/user-guide/how-to/add-output-to-stage)
+  notice that some of the existing dependencies, or output files/directories it
+  creates, which are already in the <abbr>workspace</abbr>, are missing from
+  `dvc.yaml` (`deps` and `outs` field respectively). We can
+  [add missing dependencies/outputs to an existing stage](/docs/user-guide/how-to/add-deps-or-outs-to-a-stage)
   without having to execute it again. Use `dvc commit` to update the `dvc.lock`
   file and save outputs to the cache.
 
