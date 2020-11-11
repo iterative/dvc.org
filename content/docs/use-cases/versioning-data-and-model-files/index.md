@@ -24,17 +24,17 @@ outside of Git in an efficient way that prevents file duplication.
 ```git
  .
  ├── data
- │   ├── 2019-04
- │   │   └── raw
-+│   ├── 2019-10
-+│   │   └── raw.txt
-+│   ├── 2020-03
-+│   │   ├── raw.txt
-+│   │   └── features.csv
-+│  ...
+ │   ├── raw
++│   ├── raw_v2.txt
++│   ├── feats_1.tsv
++│   ├── feats_2.csv
++│   ├── ...
  ├── model.h5
++├── model_py.pkl
++├── model_2_2
 +├── model_20200421.h5
 +├── model_final.h5
++├── ...
  └── src
      └── training.py
 ```
