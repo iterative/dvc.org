@@ -1,7 +1,7 @@
 # cache dir
 
 Set/unset the <abbr>cache</abbr> directory location intuitively (compared to
-using `dvc config cache`).
+using `dvc config cache`), or shows the current configured value.
 
 ## Synopsis
 
@@ -19,11 +19,13 @@ positional arguments:
 
 Helper to set the `cache.dir` configuration option. (See
 [cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-the-cache-directory).)
-Unlike doing so with `dvc config cache`, this command transform paths (`value`)
-that are provided relative to the current working directory into paths
+Unlike doing so with `dvc config cache`, `dvc cache dir` transform paths
+(`value`) that are provided relative to the current working directory into paths
 **relative to the config file location**. However, if the `value` provided is an
-absolute path, then it's preserved as it is. If no path is provided, it prints
-the path for current cache directory.
+absolute path, then it's preserved as it is.
+
+If no path `value` is provided to this command, it prints the path for current
+cache directory.
 
 ## Options
 

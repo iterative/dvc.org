@@ -44,8 +44,7 @@
     }
 
     img + em,
-    :global(.gatsby-resp-image-wrapper) + em,
-    .gatsby-highlight + p > em:only-child {
+    :global(.gatsby-resp-image-wrapper) + em {
       color: #6a737d;
       font-size: 0.9em;
       display: block;
