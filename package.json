@@ -6,6 +6,7 @@
   "scripts": {
     "develop": "gatsby develop",
     "dev": "gatsby develop",
+    "author": "LIMIT_BLOG_PAGES=1 SKIP_DOCS=true gatsby develop",
     "build": "gatsby build",
     "start": "node ./src/server/index.js",
     "heroku-postbuild": "./scripts/deploy-with-s3.js",
