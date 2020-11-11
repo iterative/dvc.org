@@ -167,7 +167,7 @@ export DVC_PAGER=more
 
 ## Example: Tabular data
 
-> This example is based on the `evaluate.dvc` stage file of our
+> This example is based on our
 > [Get Started](/doc/tutorials/get-started/experiments), where you can find the
 > actual source code.
 
