@@ -13,7 +13,7 @@ A set of commands to generate and compare local _experiments_:
 usage: dvc exp[eriments] [-h] [-q | -v] {show,checkout,diff,run,resume,res,gc} ...
 
 positional arguments:
-  {show,checkout,diff,run,resume,res,gc}
+  COMMAND
                         Use `dvc experiments CMD --help` to display command-specific help.
     show                Print experiments.
     checkout            Checkout experiments.
