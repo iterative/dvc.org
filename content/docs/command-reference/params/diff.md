@@ -71,8 +71,8 @@ dependencies:
 
 ```dvc
 $ dvc run -n train \
-          -d train.py -d users.csv \
-          -o model.pkl -p lr,train \
+          -d train.py -d users.csv -o model.pkl \
+          -p lr,train \
           python train.py
 ```
 
