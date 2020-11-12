@@ -279,8 +279,8 @@ may use different names.
 
 ### Click for HDFS instructions
 
-Tests currently only work on Linux. First you need to set up passwordless ssh
-access to localhost:
+Tests currently only work on Linux. First you need to set up passwordless SSH
+auth to localhost:
 
 ```dvc
 # Only run the next line if you don't yet have keys
