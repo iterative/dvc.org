@@ -5,8 +5,7 @@ There are situations where we have executed a stage (either by writing
 that some of the build requirements are missing from `dvc.yaml`:
 
 - Files or directories in the <abbr>workspace</abbr> that are dependencies of
-  the stage, are missing from `deps` field.
-
+  the stage are missing from `deps` field.
 - Output files or directories that the stage creates, which are already in the
   workspace, are missing from `outs` field.
 
