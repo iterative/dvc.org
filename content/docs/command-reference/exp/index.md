@@ -12,9 +12,6 @@ A set of commands to generate and compare local _experiments_:
 ```usage
 usage: dvc exp[eriments] [-h] [-q | -v] {show,checkout,diff,run,resume,res,gc} ...
 
-Commands to display and compare experiments.
-Documentation: <https://man.dvc.org/experiments>
-
 positional arguments:
   {show,checkout,diff,run,resume,res,gc}
                         Use `dvc experiments CMD --help` to display command-specific help.
