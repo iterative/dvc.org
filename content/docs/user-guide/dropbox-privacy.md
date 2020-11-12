@@ -39,8 +39,8 @@ authorized e.g. it will name the target API(s) and whether you are authorizing
 
 ## Scopes
 
-DVC uses the `Scoped App` permission type. Therefore access is allowed
-to the entire `DROPBOX_HOME` directory. The following scopes are enabled:
+DVC uses the `Scoped App` permission type. Therefore access is allowed to the
+entire `DROPBOX_HOME` directory. The following scopes are enabled:
 
 - `account_info.read` - View basic information about your Dropbox account such
   as your username, email, and country
