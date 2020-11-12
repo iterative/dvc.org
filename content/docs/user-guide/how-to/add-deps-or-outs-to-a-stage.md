@@ -2,28 +2,28 @@
 
 There are situations where we have executed a stage (either by writing
 `dvc.yaml` manually and using `dvc repro`, or with `dvc run`), but later notice
-that some of the build requirements are missing from `dvc.yaml`:
+that some of its data requirements are missing from `dvc.yaml`. Namely, one of:
 
 - Files or directories in the <abbr>workspace</abbr> that are dependencies of
-  the stage are missing from `deps` field.
+  the stage are missing from `deps`.
+
 - Output files or directories that the stage creates, which are already in the
-  workspace, are missing from `outs` field.
+  workspace are missing from `outs`.
 
 Follow the steps below to add existing files/directories as
-<abbr>dependencies</abbr> or <abbr>outputs</abbr> to a stage without
-re-executing it again, which can be expensive/time-consuming, and is
-unnecessary.
+<abbr>dependencies</abbr> or <abbr>outputs</abbr> to a stage without executing
+it again, which can be expensive/time-consuming, and is unnecessary.
 
-We start with an example `prepare`, which has a single dependency and output. To
-add a missing dependency `data.csv`, and output `data/validate` to this stage,
-we can edit `dvc.yaml` like this:
+We start with an example stage `prepare`, which has a single dependency and
+output. To add a missing dependency `data/raw.csv` and output `data/validate` to
+this stage, we can edit `dvc.yaml` like this:
 
 ```git
  stages:
    prepare:
      cmd: python src/prepare.py
      deps:
-+    - data.csv
++    - data/raw.csv
      - src/prepare.py
      outs:
      - data/train
@@ -36,7 +36,7 @@ we can edit `dvc.yaml` like this:
 > ```dvc
 > $ dvc run -f --no-exec \
 >           -n prepare \
->           -d data.csv \
+>           -d data/raw.csv \
 >           -d src/prepare.py \
 >           -o data/train \
 >           -o data/validate \
