@@ -101,7 +101,10 @@
         "source": false,
         "children": [
           "undo-adding-data",
-          "add-deps-or-outs-to-a-stage",
+        {
+          "label": "Add Tracked Data to a Stage",
+          "slug": "add-deps-or-outs-to-a-stage"
+        },
           "update-tracked-files"
         ]
       },
