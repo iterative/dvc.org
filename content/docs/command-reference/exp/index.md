@@ -14,7 +14,6 @@ usage: dvc exp[eriments] [-h] [-q | -v] {show,checkout,diff,run,resume,res,gc} .
 
 positional arguments:
   COMMAND
-                        Use `dvc experiments CMD --help` to display command-specific help.
     show                Print experiments.
     checkout            Checkout experiments.
     diff                Show changes between experiments in the DVC repository.
