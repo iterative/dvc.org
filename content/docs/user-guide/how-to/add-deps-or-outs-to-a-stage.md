@@ -6,7 +6,6 @@ that some of its data requirements are missing from `dvc.yaml`. Namely, one of:
 
 - Files or directories in the <abbr>workspace</abbr> that are dependencies of
   the stage are missing from `deps`.
-
 - Output files or directories that the stage creates, which are already in the
   workspace are missing from `outs`.
 
@@ -14,9 +13,9 @@ Follow the steps below to add existing files/directories as
 <abbr>dependencies</abbr> or <abbr>outputs</abbr> to a stage without executing
 it again, which can be expensive/time-consuming, and is unnecessary.
 
-We start with an example stage `prepare`, which has a single dependency and
-output. To add a missing dependency `data/raw.csv` and output `data/validate` to
-this stage, we can edit `dvc.yaml` like this:
+We start with an example `prepare` stage, which has a single dependency and
+output. To add a missing dependency (`data/raw.csv`) as well as a missing output
+(`data/validate`) to this stage, we can edit `dvc.yaml` like this:
 
 ```git
  stages:
