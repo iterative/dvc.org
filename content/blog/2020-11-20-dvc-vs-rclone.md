@@ -1,6 +1,6 @@
 ---
-title: Remote Optimization Improvements in DVC 1.0
-date: 2020-07-03
+title: 'Cloud Data Sync Methods and Benchmarks: DVC vs Rclone'
+date: 2020-11-20
 description: |
   An overview of how data synchronization to and from remote storage is optimized in DVC 1.0.
 descriptionLong: |
@@ -144,7 +144,7 @@ will be faster than method 2, with the difference in performance between the two
 methods scaling linearly as the potential remote size increases.
 
 **Total API calls required to query 100 local files from S3**
-![API calls](/uploads/images/2020-07-03/api_calls_100_local.svg 'API calls required to query 100 local files from S3')
+![API calls](/uploads/images/2020-11-20/api_calls_100_local.svg 'API calls required to query 100 local files from S3')
 
 This example illustrates an important point. Given a (relatively) small set of
 files to query and a sufficiently large remote, method 1 will always be faster
@@ -218,7 +218,7 @@ dual-core 3.1GHz i7 cpu_
 
 **Local directory w/100k total files, S3 bucket w/1M total files (1 file
 modified since last sync)**
-![benchmarks](/uploads/images/2020-07-03/dvc_rclone_bench.svg 'DVC 1.0 vs rclone performance comparison')
+![benchmarks](/uploads/images/2020-11-20/dvc_rclone_bench.svg 'DVC 1.0 vs rclone performance comparison')
 
 The previous chart contains benchmarks for a scenario in which the local
 directory contains 100,000 files, and the S3 bucket contains approximately 1
@@ -240,7 +240,7 @@ and rclone will both need to query for the same number of files (i.e. the number
 of files in the cache directory)._
 
 **Local directory w/1 file, S3 bucket w/1M total files**
-![benchmarks](/uploads/images/2020-07-03/dvc_rclone_bench2.svg 'DVC 1.0 vs rclone performance comparison')
+![benchmarks](/uploads/images/2020-11-20/dvc_rclone_bench2.svg 'DVC 1.0 vs rclone performance comparison')
 
 In this example, we are testing a simple scenario in which the local directory
 contains 1 file and the S3 bucket contains approximately 1 million files.
@@ -261,7 +261,7 @@ sets. It's likely that specifying `--no-traverse` allows rclone to skip that
 overhead entirely in this case._
 
 **Local directory w/1M files, Empty S3 bucket**
-![benchmarks](/uploads/images/2020-07-03/dvc_rclone_bench3.svg 'DVC 1.0 vs rclone performance comparison')
+![benchmarks](/uploads/images/2020-11-20/dvc_rclone_bench3.svg 'DVC 1.0 vs rclone performance comparison')
 _Note: DVC 0.91 and rclone with `--no-traverse` both take multiple hours to
 complete in this scenario and continue off of the chart._
 
