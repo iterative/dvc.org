@@ -35,10 +35,10 @@ Property names are passed as [options](#options) to this command (prefixed with
 - `-t <name_or_path>, --template <name_or_path>` - set a default
   [plot template](/doc/command-reference/plots#plot-templates).
 
-- `-x <field>` - set a default field or column name (or number) from which the X
+- `-x <field>` - set a default field or column name (or index) from which the X
   axis data comes from.
 
-- `-y <field>` - set a default field or column name (or number) from which the Y
+- `-y <field>` - set a default field or column name (or index) from which the Y
   axis data comes from.
 
 - `--x-label <text>` - set a default title for the X axis.
