@@ -144,9 +144,9 @@ directory symlinks.
 - `--external` - allow `targets` that are outside of the DVC repository. See
   [Managing External Data](/doc/user-guide/managing-external-data).
 
-- `--glob` - allows adding files and directories that match the specified pattern
-  as specified by `target`. Shell-style wildcards are supported: `*`, `?`, `[seq]`,
-  `[!seq]`, and `**`.
+- `--glob` - allows adding files and directories that match the specified
+  pattern as specified by `target`. Shell-style wildcards are supported: `*`,
+  `?`, `[seq]`, `[!seq]`, and `**`.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
