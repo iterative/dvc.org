@@ -35,9 +35,6 @@ manual editing could be used to change the configuration.
 - `-u`, `--unset` - delete configuration value for the given config `option`.
   Don't provide a `value` when employing this flag.
 
-- `--jobs` - number of workers started. Accepts positive integers. The default
-  value is `4 * cpu_count()`.
-
 - `--global` - save remote configuration to the global config (e.g.
   `~/.config/dvc/config`) instead of `.dvc/config`.
 
@@ -76,6 +73,13 @@ The following config options are available for all remote types:
 
   ```dvc
   $ dvc remote modify localremote url /home/user/dvcstore
+  ```
+
+- `jobs` - number of workers started. Accepts positive integers. The default
+  value is `4 * cpu_count()`.
+
+  ```dvc
+  $ dvc remote modify myremote jobs 8
   ```
 
 - `verify` - upon downloading <abbr>cache</abbr> files (`dvc pull`, `dvc fetch`)
