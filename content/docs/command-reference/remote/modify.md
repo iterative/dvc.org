@@ -76,7 +76,7 @@ The following config options are available for all remote types:
   ```
 
 - `jobs` - number of workers started. Accepts positive integers. The default
-  value is `4 * cpu_count()`.
+  value is `4 * cpu_count()`. For SSH remotes, the default is `4`.
 
   ```dvc
   $ dvc remote modify myremote jobs 8
