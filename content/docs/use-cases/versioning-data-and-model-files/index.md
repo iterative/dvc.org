@@ -8,21 +8,23 @@ and enforced?
 
 ![](/img/data_ver_complex.png) _Exponential complexity of DS projects_
 
-Let's see if DVC can help. First, let's avoid ad hoc naming conventions for
-changing data files and directories. For this, DVC stores the contents of
-datasets, intermediate results, and ML models under the same file name, as
-project snapshots are created
-([Git commits](<(https://git-scm.com/book/en/v2/Git-Basics-Recording-Changes-to-the-Repository)>)).
+Data Version Control (DVC) can address these issues by helping you organize your
+data and models like any other asset that can be captured with
+[Git commits](<(https://git-scm.com/book/en/v2/Git-Basics-Recording-Changes-to-the-Repository)>),
+storing their historic versions automatically outside ot Git. DVC matches the
+right versions of code and data for you 💘.
 
-All these versions of the data are
+Unique versions of data contents are
 [cached](/doc/user-guide/dvc-files-and-directories#structure-of-the-cache-directory)
-outside of Git in an efficient way that prevents file duplication. Only one
-version of the data is in the workspace at any given time (alongside the
-corresponding code). DVC matches the right versions of code and data for you 💘.
+under the same file name so you don't need to name them manually — this also
+prevents storing duplicate files. Only one data version is placed in the
+workspace at any given time (alongside the corresponding code). This way you can
+worry about the current state of your data pipeline instead of on moving files
+around.
 
 ![](/img/ml-pipeline-evolution.png) _Evolution of an ML project_
 
-We won't go too deep into how everything works here, since we have many
+We won't go too deep into how it works here, since we have many
 [guides](/doc/user-guide) and [references](/doc/command-reference) for that, but
 here's the gist of it: DVC enables data _versioning through codification_. This
 means describing which data, ML artifacts, etc. should be in the environment at
@@ -30,16 +32,16 @@ any given time. It's achieved with special
 [metafiles](/doc/user-guide/dvc-files-and-directories) that we can put in Git
 along with the source code.
 
-This way the change history of the the whole project (data and code) is in Git.
-DVC can rewind or fast-forward the data ⏪ ⏩ as needed, based on the metadata
-in Git. Now you can focus on data science instead of moving files around!
+> To try hands-on data versioning with DVC, please follow the
+> [versioning tutorial](/doc/use-cases/versioning-data-and-model-files/tutorial)
+> 👩‍💻.
 
 Let's summarize the benefits of Data Version Control:
 
 - Restore any project version and find the data you need instantly. You can
   always identify past research inputs to understand and reproduce the results.
-- No need for complicated file paths like `data/2019/labels_v7_final` in your
-  projects.
+- Avoid ad hoc naming conventions: No need for complicated file paths like
+  `data/2019/labels_v7_final` in your projects.
 - Adopt existing engineering tools like Git SCM, [semver](https://semver.org/),
   continuous integration (CI) such as [CML](https://cml.dev/), and other best
   practices that improve collaboration and productivity.
@@ -51,10 +53,6 @@ Let's summarize the benefits of Data Version Control:
   [model zoos](/doc/api-reference/open).
 - Enforce lifecycle policies by having a defined process to change data and
   models. Data security audits, anyone?
-
-> To try hands-on data versioning with DVC, please follow the
-> [versioning tutorial](/doc/use-cases/versioning-data-and-model-files/tutorial)
-> 👩‍💻.
 
 In summary, data science and machine learning are iterative processes where the
 lifecycles of data, code, and ML models occur at different paces. DVC helps
