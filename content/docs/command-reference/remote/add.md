@@ -246,6 +246,10 @@ By default, DVC expects your GCP CLI is already
 default GCP key file to access Google Cloud Storage. To override some of these
 settings, use the parameters described in `dvc remote modify`.
 
+> Make sure to run `gcloud auth application-default login` unless you use
+> `GOOGLE_APPLICATION_CREDENTIALS` and/or service account, or other ways to
+> authenticate. See details [here](https://stackoverflow.com/a/53307505/298182).
+
 </details>
 
 <details>
