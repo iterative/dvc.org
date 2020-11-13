@@ -35,6 +35,9 @@ manual editing could be used to change the configuration.
 - `-u`, `--unset` - delete configuration value for the given config `option`.
   Don't provide a `value` when employing this flag.
 
+- `jobs` - number of workers started. Accepts positive integers. The default
+  value is `4 * cpu_count()`.
+
 - `--global` - save remote configuration to the global config (e.g.
   `~/.config/dvc/config`) instead of `.dvc/config`.
 
