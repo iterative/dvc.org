@@ -30,21 +30,23 @@ to learn how this looks and feels, try our
 [versioning tutorial](/doc/use-cases/versioning-data-and-model-files/tutorial)
 👩‍💻.
 
-This approach bring the following benefits:
+DVC's approach brings the following benefits:
 
-- **Simplicity**: No need for ad hoc naming conventions like
-  `data/2019/labels_v7_final`.
-- **Reproducibility**: Restore any project version and find the data you need
-  instantly. Now you can always identify past research inputs and understand the
-  results.
-- **Efficient storage**: Relevant versions of data contents are
+- **Simplicity**: Work with a straightforward project file structure. No need
+  for ad hoc naming conventions like `data/2019/labels_v7_final`.
+- **Efficient storage**: All versions of data contents are
   [cached](/doc/user-guide/dvc-files-and-directories#structure-of-the-cache-directory)
-  automatically and in a way that prevents file duplication.
-- [**Share**](/doc/use-cases/sharing-data-and-model-files): Data and models can
-  be easily pushed and pulled from online/cloud storage.
-- **Best practices**: Adopt existing engineering tools like Git SCM,
-  [semver](https://semver.org/), continuous integration (CI) such as
-  [CML](https://cml.dev/), etc. to improve collaboration and productivity.
+  automatically, in a way that prevents file duplication.
+- **Collaboration**: Data and models can be easily
+  [shared](/doc/use-cases/sharing-data-and-model-files) and
+  [reused](/doc/start/data-access) via on-premises or cloud
+  [storage remotes](/doc/command-reference/remote).
+- **Roll-backs**: Restore any project version and find the data you need
+  instantly. Identify past research inputs and understand/reproduce previous
+  results at any time!
+- **Codification**: Adopt existing engineering tools like Git SCM, and best
+  practices like [semver](https://semver.org/) and continuous integration
+  (CI/CD) such as [CML](https://cml.dev/) to improve team productivity.
 - **Specialization**: Implement useful project patterns such as
   [data registries](/doc/use-cases/data-registries) and
   [model zoos](/doc/api-reference/open).
