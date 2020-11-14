@@ -98,13 +98,13 @@ undesirable for data directories with a large number of files.
 To avoid adding files inside a directory accidentally, you can add the
 corresponding [patterns](/doc/user-guide/dvcignore) to `.dvcignore`.
 
-### Adding symlinked targets {#add-symlink}
+### Adding symlink targets {#add-symlink}
 
-DVC only supports symlinked files as valid targets for `dvc add`. If the target
-path is a directory symlink, or if the target path contains any intermediate
-directory symlinks, `dvc add` will fail.
+`dvc add` supports symlinked files as `targets`. But if a target path is a
+directory symlink, or if it contains any intermediate directory symlinks, it
+cannot be added to DVC.
 
-So given the following project structure:
+For example, given the following project structure:
 
 ```
 .
@@ -117,10 +117,9 @@ So given the following project structure:
 └── link_to_file -> dir/file
 ```
 
-`dir`, `dir/file`, `link_to_external_file` and `link_to_file` are all valid
-targets for `dvc add`. `link_to_dir`, `link_to_external_dir` and
-`link_to_dir/file` are invalid targets, since the target path would contain
-directory symlinks.
+`link_to_file` and `link_to_external_file` are both valid symlink targets to
+`dvc add`. But `link_to_dir`, `link_to_external_dir`, and `link_to_dir/file` are
+not.
 
 ## Options
 
@@ -143,6 +142,9 @@ directory symlinks.
 
 - `--external` - allow `targets` that are outside of the DVC repository. See
   [Managing External Data](/doc/user-guide/managing-external-data).
+
+  > Note that this option implies `--no-commit`, as external outputs are never
+  > pushed or pulled from/to remote storage. See link above for more details.
 
 - `--glob` - allows adding files and directories that match the
   [pattern](https://docs.python.org/3/library/glob.html) specified in `targets`.
