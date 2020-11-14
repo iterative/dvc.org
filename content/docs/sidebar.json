@@ -87,6 +87,11 @@
         "slug": "what-is-dvc",
         "source": "what-is-dvc.md"
       },
+      {
+        "label": "Basic Concepts",
+        "slug": "basic-concepts",
+        "source": "basic-concepts.md"
+      },
       "dvc-files-and-directories",
       "merge-conflicts",
       {
