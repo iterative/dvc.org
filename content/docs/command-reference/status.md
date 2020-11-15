@@ -142,8 +142,9 @@ that.
 - `-j <number>`, `--jobs <number>` - parallelism level for DVC to retrieve
   information from remote storage. This only applies when the `--cloud` option
   is used, or a `--remote` is given. The default value is `4 * cpu_count()`. For
-  SSH remotes, the default is `4`. Using more jobs may improve the overall
-  transfer speed.
+  SSH remotes, the default is `4`. Note that the default value can be set using
+  the `jobs` config option with `dvc remote modify`. Using more jobs may improve
+  the overall transfer speed.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
