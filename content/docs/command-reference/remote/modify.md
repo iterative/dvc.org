@@ -81,9 +81,11 @@ The following config options are available for all remote types:
   - pull
   - status
   - gc
-  - fetch Accepts positive integers. The default value is `4 * cpu_count()`. For
-    SSH remotes, the default is `4`. Using more jobs may improve the overall
-    transfer speed.
+  - fetch
+
+  Accepts positive integers. The default value is `4 * cpu_count()`. For SSH
+  remotes, the default is `4`. Using more jobs may improve the overall transfer
+  speed.
 
   ```dvc
   $ dvc remote modify myremote jobs 8
