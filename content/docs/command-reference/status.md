@@ -158,17 +158,17 @@ that.
 $ dvc status
 bar:
 	changed deps:
-        	modified:           bar
-        changed outs:
+		modified:           bar
+	changed outs:
 		not in cache:       foo
 foo.dvc:
-        changed outs:
-                deleted:            foo
-        changed checksum
+	changed outs:
+		deleted:            foo
+	changed checksum
 prepare.dvc:
-        changed outs:
-                new:                bar
-        always changed
+	changed outs:
+		new:                bar
+	always changed
 ```
 
 This shows that for stage `bar`, the dependency `bar` and the
@@ -189,7 +189,7 @@ dobar:
 	changed deps:
 		modified:           bar
 	changed outs:
-	not in cache:               foo
+		not in cache:               foo
 ```
 
 > In this case, the target `foo.dvc` is a `.dvc` file to track the `foo` file,
