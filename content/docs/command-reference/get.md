@@ -134,7 +134,7 @@ https://remote.dvc.org/get-started/c8/d307aa005d6974a8525550956d5fb3
 
 `remote.dvc.org/get-started` is an HTTP
 [DVC remote](/doc/command-reference/remote), whereas
-`c8d307aa005d6974a8525550956d5fb3` is the file hash.
+`c8d307...` is the file hash.
 
 ## Example: Compare different versions of data or model
 
