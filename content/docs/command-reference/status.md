@@ -144,7 +144,7 @@ that.
   is used, or a `--remote` is given. The default value is `4 * cpu_count()`. For
   SSH remotes, the default is `4`. Note that the default value can be set using
   the `jobs` config option with `dvc remote modify`. Using more jobs may improve
-  the overall transfer speed.
+  the overall connection speed.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 

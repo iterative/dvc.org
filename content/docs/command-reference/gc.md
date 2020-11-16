@@ -94,7 +94,7 @@ The default remote is cleaned (see `dvc config core.remote`) unless the
   `--remote` is given. The default value is `4 * cpu_count()`. For SSH remotes,
   the default is `4`. Note that the default value can be set using the `jobs`
   config option with `dvc remote modify`. Using more jobs may improve the
-  overall transfer speed.
+  overall connection speed.
 
   > For now only some phases of garbage collection are parallel.
 

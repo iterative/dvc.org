@@ -75,17 +75,10 @@ The following config options are available for all remote types:
   $ dvc remote modify localremote url /home/user/dvcstore
   ```
 
-- `jobs` - number of workers started at execution of the following commands:
-
-  - push
-  - pull
-  - status
-  - gc
-  - fetch
-
-  Accepts positive integers. The default value is `4 * cpu_count()`. For SSH
-  remotes, the default is `4`. Using more jobs may improve the overall transfer
-  speed.
+- `jobs` - change the default number of processes for
+  [remote storage](/doc/command-reference/remote) synchronization operations
+  (see the `--jobs` option of `dvc push`, `dvc pull`, `dvc fetch`, `dvc status`,
+  and `dvc gc`). Accepts positive integers. The default is typically `4`.
 
   ```dvc
   $ dvc remote modify myremote jobs 8
