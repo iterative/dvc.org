@@ -147,8 +147,10 @@ not.
 - `--external` - allow `targets` that are outside of the DVC repository. See
   [Managing External Data](/doc/user-guide/managing-external-data).
 
-  > Note that this option implies `--no-commit`, as external outputs are never
-  > pushed or pulled from/to remote storage. See link above for more details.
+  > Note that external outputs require an external cache setup (unless
+  > `--no-commit` is used), and are never pushed or pulled from/to
+  > [remote storage](/doc/command-reference/remote). See link above for more
+  > details.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
