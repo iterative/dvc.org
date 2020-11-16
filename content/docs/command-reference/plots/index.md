@@ -111,10 +111,10 @@ DVC has the following built-in plot templates:
 ### Custom templates
 
 Plot template files are
-[Vega specification](https://vega.github.io/vega/docs/specification/) files that
-use predefined DVC anchors as placeholders for DVC to inject the plot values.
-You can create a custom template from scratch, or modify an existing one from
-`.dvc/plots/`.
+[Vega specification](https://vega.github.io/vega/docs/specification/) JSON or
+HTML files that use predefined DVC anchors as placeholders for DVC to inject the
+plot values. You can create a custom template from scratch, or modify an
+existing one from `.dvc/plots/`.
 
 💡 Note that custom templates can be safely added to the template directory.
 
