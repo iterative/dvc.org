@@ -75,6 +75,15 @@ The following config options are available for all remote types:
   $ dvc remote modify localremote url /home/user/dvcstore
   ```
 
+- `jobs` - change the default number of processes for
+  [remote storage](/doc/command-reference/remote) synchronization operations
+  (see the `--jobs` option of `dvc push`, `dvc pull`, `dvc fetch`, `dvc status`,
+  and `dvc gc`). Accepts positive integers. The default is typically `4`.
+
+  ```dvc
+  $ dvc remote modify myremote jobs 8
+  ```
+
 - `verify` - upon downloading <abbr>cache</abbr> files (`dvc pull`, `dvc fetch`)
   DVC will recalculate the file hashes upon download (e.g. `dvc pull`) to make
   sure that these haven't been modified, or corrupted during download. It may
