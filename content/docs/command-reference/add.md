@@ -140,15 +140,15 @@ not.
   the given target. This option allows to set the name and the path of the
   generated `.dvc` file.
 
+- `--glob` - allows adding files and directories that match the
+  [pattern](https://docs.python.org/3/library/glob.html) specified in `targets`.
+  Shell style wildcards supported: `*`, `?`, `[seq]`, `[!seq]`, and `**`
+
 - `--external` - allow `targets` that are outside of the DVC repository. See
   [Managing External Data](/doc/user-guide/managing-external-data).
 
   > Note that this option implies `--no-commit`, as external outputs are never
   > pushed or pulled from/to remote storage. See link above for more details.
-
-- `--glob` - allows adding files and directories that match the
-  [pattern](https://docs.python.org/3/library/glob.html) specified in `targets`.
-  Shell style wildcards supported: `*`, `?`, `[seq]`, `[!seq]`, and `**`
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
