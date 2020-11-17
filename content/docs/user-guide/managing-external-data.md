@@ -34,12 +34,8 @@ supported:
 - HDFS
 - Local files and directories outside the <abbr>workspace</abbr>
 
-> Note that these are only a subset of the remote storage types supported by
-> `dvc remote`.
-
-> 💡 Note that external outputs are never pushed or pulled from/to
-> [remote storage](/doc/command-reference/remote), as they are already stored in
-> an external location.
+💡 Note that external outputs are never pushed or pulled from/to
+[remote storage](/doc/command-reference/remote).
 
 > ⚠️ Avoid using the same DVC remote (used for `dvc push`, `dvc pull`, etc.) for
 > external outputs, because it may cause file hash overlaps: the hash of an
