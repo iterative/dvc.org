@@ -40,8 +40,8 @@ types:
 1. Adding a `dvc remote` in the same location as the desired outputs, and
    configure it as external <abbr>cache</abbr> with `dvc config`.
 2. Tracking existing data on the location using `dvc add` (`--external` option
-   needed). This produces a `.dvc` file with an external path in its `outs`
-   field.
+   needed). This produces a `.dvc` file with an external URL or path in its
+   `outs` field.
 3. Creating a simple [stage](/doc/command-reference/run) with `dvc run`
    (`--external` option needed) that moves a local file to the external
    location. This produces a stage with an external output, in `dvc.yaml`.

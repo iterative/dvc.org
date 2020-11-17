@@ -13,8 +13,8 @@ data outside of the <abbr>project</abbr>.
 ## How external dependencies work
 
 You can specify external files or directories as dependencies for your pipeline
-stages. DVC will track changes in them and reflect this in the output of
-`dvc status`.
+[stages](/doc/command-reference/run). DVC will track changes in them and reflect
+this in the output of `dvc status`.
 
 Currently, the following types (protocols) of external dependencies are
 supported:
@@ -33,11 +33,15 @@ but that is a different thing.
 
 ## Examples
 
-Let's take a look at a `download_file` [stage](/doc/command-reference/run) that
-simply downloads a file from an external location.
+To define an external <abbr>dependency</abbr>, add the external URL or path to
+the `deps` field of `dvc.yaml`. For example, with the usual `-d` option in
+`dvc run`, giving it the external URL/path to your desired file or directory.
 
-> Note that some of these commands use the `/home/shared` directory, typical in
-> Linux distributions.
+Let's take a look at defining and running a `download_file` stage that simply
+downloads a file from an external location, on all the supported location types.
+
+> Note that some of the example commands below use the `/home/shared` directory,
+> typical in Linux distributions.
 
 <details>
 
