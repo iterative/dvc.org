@@ -18,12 +18,9 @@ DVC can track existing files or directories on an external location with
 External outputs are considered part of the (extended) DVC project: DVC will
 detect when they change, reporting this in `dvc status` for example.
 
-Note that they require an
-[external cache](/doc/use-cases/shared-development-server#configure-the-external-shared-cache)
-in the same external/remote file.
-
-Currently, the following locations (protocols) are supported for external
-outputs (and cache):
+The remote URLs or external paths can be defined with the same format as the
+`url` of certain `dvc remote` types. Currently, the following protocols are
+supported:
 
 - Amazon S3
 - Microsoft Azure Blob Storage
@@ -31,6 +28,13 @@ outputs (and cache):
 - SSH
 - HDFS
 - Local files and directories outside the <abbr>workspace</abbr>
+
+> Note [remote storage](/doc/command-reference/remote) is a separate feature,
+> and that external outputs are not pushed or pulled from/to DVC remotes.
+
+Importantly, external outputs require an
+[external cache](/doc/use-cases/shared-development-server#configure-the-external-shared-cache)
+in the same external/remote file.
 
 ## Examples
 
