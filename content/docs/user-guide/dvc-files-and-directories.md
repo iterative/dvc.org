@@ -70,9 +70,8 @@ An _output entry_ (`outs`) consists of these fields:
   [ETag](https://en.wikipedia.org/wiki/HTTP_ETag#Strong_and_weak_validation) for
   HTTP, S3, or Azure [external outputs](/doc/user-guide/managing-external-data);
   and a special _checksum_ for HDFS.
-- `size` (optional): Size of the file or directory (sum of all files in the
-  directory).
-- `nfiles` (optional): Number of files in the directory.
+- `size`: Size of the file or directory (sum of all files).
+- `nfiles`: If a directory, number of files inside.
 - `cache`: Whether or not this file or directory is <abbr>cached</abbr> (`true`
   by default, if not present). See the `--no-commit` option of `dvc add`.
 
@@ -85,9 +84,8 @@ A _dependency entry_ (`deps`) consists of these fields:
   [ETag](https://en.wikipedia.org/wiki/HTTP_ETag#Strong_and_weak_validation) for
   HTTP, S3, or Azure <abbr>external dependencies</abbr>; and a special
   _checksum_ for HDFS. See `dvc import-url` for more information.
-- `size` (optional): Size of the file or directory (sum of all files in the
-  directory).
-- `nfiles` (optional): Number of files in the directory.
+- `size`: Size of the file or directory (sum of all files).
+- `nfiles`: If a directory, number of files inside.
 - `repo`: This entry is only for external dependencies created with
   `dvc import`, and can contains the following fields:
 
