@@ -23,8 +23,7 @@ module.exports = {
   },
   async onCreateMarkdownContentNode(api, { parentNode, createChildNode }) {
     // Only operate on nodes within the docs/glossary folder.
-    if (parentNode.relativeDirectory !== 'docs/user-guide/basic-concepts')
-      return
+    if (parentNode.relativeDirectory !== 'docs/user-guide/glossary') return
 
     const { node, createNodeId, createContentDigest } = api
 
