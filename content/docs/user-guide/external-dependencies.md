@@ -10,7 +10,7 @@ External <abbr>dependencies</abbr> and
 [external outputs](/doc/user-guide/managing-external-data) provide ways to track
 data outside of the <abbr>project</abbr>.
 
-## How it works
+## How they work
 
 You can specify external files or directories as dependencies for your pipeline
 stages. DVC will track changes in them and reflect this in the output of
@@ -27,9 +27,9 @@ supported:
 - HTTP
 - Local files and directories outside the <abbr>workspace</abbr>
 
-In order to specify an external <abbr>dependency</abbr> for your stage, use the
-usual `-d` option in `dvc run` with the external path or URL to your desired
-file or directory.
+Note that these supported locations correspond to a subset of the
+[remote storage](/doc/command-reference/remote) types supported by `dvc remote`,
+but that is a different thing.
 
 ## Examples
 

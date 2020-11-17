@@ -19,7 +19,7 @@ outputs for `dvc.yaml` files (only `outs` field, not metrics or plots).
 External outputs are considered part of the (extended) DVC project: DVC will
 track changes in them, and reflect this in `dvc status` reports, for example.
 
-Normally, external outputs (e.g. `dvc add`, `dvc run -o`), require an
+External outputs (e.g. `dvc add`, `dvc run -o`), require an
 [external cache](/doc/use-cases/shared-development-server#configure-the-external-shared-cache)
 in the same external/remote file.
 
