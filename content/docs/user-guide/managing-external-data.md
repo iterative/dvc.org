@@ -21,8 +21,7 @@ track changes in them, and reflect this in `dvc status` reports, for example.
 
 Normally, external outputs (e.g. `dvc add`, `dvc run -o`), require an
 [external cache](/doc/use-cases/shared-development-server#configure-the-external-shared-cache)
-in the same external/remote file. The exception is when they are not
-<abbr>cached</abbr> (`--no-commit` option).
+in the same external/remote file.
 
 Currently, the following types (protocols) of external outputs (and cache) are
 supported:
