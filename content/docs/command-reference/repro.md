@@ -114,11 +114,11 @@ up-to-date and only execute the final stage.
   target directory and its subdirectories for stages (in `dvc.yaml`) to inspect.
   If there are no directories among the targets, this option is ignored.
 
-- `--no-commit` - do not save outputs to cache. A DVC-file is created and an
-  entry is added to `.dvc/tmp/state`, while nothing is added to the cache.
-  (`dvc status` will report that the file is `not in cache`.) Use `dvc commit`
-  when ready to commit outputs with DVC. Useful to avoid caching unnecessary
-  data repeatedly when running multiple experiments.
+- `--no-commit` - do not save outputs to cache. A DVC-file is created, while
+  nothing is added to the cache. (`dvc status` will report that the file is
+  `not in cache`.) Use `dvc commit` when ready to commit outputs with DVC.
+  Useful to avoid caching unnecessary data repeatedly when running multiple
+  experiments.
 
 - `-m`, `--metrics` - show metrics after reproduction. The target pipelines must
   have at least one metrics file defined either with the `dvc metrics` command,

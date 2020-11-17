@@ -19,12 +19,13 @@ outputs for `dvc.yaml` files (only `outs` field, not metrics or plots).
 External outputs are considered part of the (extended) DVC project: DVC will
 track changes in them, and reflect this in `dvc status` reports, for example.
 
-For cached external outputs (e.g. `dvc add`, `dvc run -o`), you will need to
-[setup an external cache](/doc/use-cases/shared-development-server#configure-the-external-shared-cache)
-in the same external/remote file system first.
+Normally, external outputs (e.g. `dvc add`, `dvc run -o`), require an
+[external cache](/doc/use-cases/shared-development-server#configure-the-external-shared-cache)
+in the same external/remote file. The exception is when they are not
+<abbr>cached</abbr> (`--no-commit` option).
 
-Currently, the following types (protocols) of external outputs (and
-<abbr>cache</abbr>) are supported:
+Currently, the following types (protocols) of external outputs (and cache) are
+supported:
 
 - Amazon S3
 - Microsoft Azure Blob Storage
@@ -33,13 +34,17 @@ Currently, the following types (protocols) of external outputs (and
 - HDFS
 - Local files and directories outside the <abbr>workspace</abbr>
 
-> Note that these are a subset of the remote storage types supported by
+> Note that these are only a subset of the remote storage types supported by
 > `dvc remote`.
 
-> Avoid using the same [DVC remote](/doc/command-reference/remote) (used for
-> `dvc push`, `dvc pull`, etc.) for external outputs, because it may cause file
-> hash overlaps: the hash of an external output could collide with a hash
-> generated locally for another file with different content.
+> 💡 Note that external outputs are never pushed or pulled from/to
+> [remote storage](/doc/command-reference/remote), as they are already stored in
+> an external location.
+
+> ⚠️ Avoid using the same DVC remote (used for `dvc push`, `dvc pull`, etc.) for
+> external outputs, because it may cause file hash overlaps: the hash of an
+> external output could collide with a hash generated locally for another file
+> with different content.
 
 ## Examples
 

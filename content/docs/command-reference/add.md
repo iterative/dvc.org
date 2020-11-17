@@ -128,11 +128,10 @@ not.
   among the `targets`, this option is ignored. For each file found, a new `.dvc`
   file is created using the process described in this command's description.
 
-- `--no-commit` - do not save outputs to cache. A `.dvc` file is created and an
-  entry is added to `.dvc/tmp/state`, while nothing is added to the cache.
-  (`dvc status` will report that the file is `not in cache`.) Use `dvc commit`
-  when ready to commit outputs with DVC. This is analogous to using `git add`
-  before `git commit`.
+- `--no-commit` - do not save outputs to cache. A `.dvc` file is created, while
+  nothing is added to the cache. (`dvc status` will report that the file is
+  `not in cache`.) Use `dvc commit` when ready to commit outputs with DVC. This
+  is analogous to using `git add` before `git commit`.
 
 - `--file <filename>` - specify name of the `.dvc` file it generates. This
   option works only if there is a single target. By default the name of the
@@ -147,10 +146,8 @@ not.
 - `--external` - allow `targets` that are outside of the DVC repository. See
   [Managing External Data](/doc/user-guide/managing-external-data).
 
-  > Note that external outputs require an external cache setup (unless
-  > `--no-commit` is used), and are never pushed or pulled from/to
-  > [remote storage](/doc/command-reference/remote). See link above for more
-  > details.
+  > Note that external outputs typically require an external cache setup. See
+  > link above for more details.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
