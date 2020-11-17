@@ -129,7 +129,7 @@ not.
   file is created using the process described in this command's description.
 
 - `--no-commit` - do not save outputs to cache. A `.dvc` file is created and an
-  entry is added to `.dvc/state`, while nothing is added to the cache.
+  entry is added to `.dvc/tmp/state`, while nothing is added to the cache.
   (`dvc status` will report that the file is `not in cache`.) Use `dvc commit`
   when ready to commit outputs with DVC. This is analogous to using `git add`
   before `git commit`.
