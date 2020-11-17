@@ -7,7 +7,7 @@ file.
 
 ```usage
 usage: dvc add [-h] [-q | -v] [-R] [--no-commit] [--external]
-               [--file <filename>] [--glob]
+               [--file <filename>] [--glob] [--desc <text>]
                targets [targets ...]
 
 positional arguments:
@@ -147,6 +147,9 @@ directory symlinks.
 - `--glob` - allows adding files and directories that match the specified
   pattern as specified by `target`. Shell-style wildcards are supported: `*`,
   `?`, `[seq]`, `[!seq]`, and `**`.
+
+- `--desc <text>` - user description of the data (optional). This doesn't affect
+  any DVC operations.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 

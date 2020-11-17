@@ -12,7 +12,7 @@ the import.
 ```usage
 usage: dvc import [-h] [-q | -v]
                   [-o <path>] [--file <filename>]
-                  [--rev <commit>] [--no-exec]
+                  [--rev <commit>] [--no-exec] [--desc <text>]
                   url path
 
 positional arguments:
@@ -108,6 +108,9 @@ repo at `url`) are not supported.
   skip the download. The data hash is not calculated by this, only the metadata
   is saved into the `.dvc` file. You can use `dvc commit <out>.dvc` if you need
   the hashes in the new `.dvc` file and save existing data to the cache.
+
+- `--desc <text>` - user description of the data (optional). This doesn't affect
+  any DVC operations.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
