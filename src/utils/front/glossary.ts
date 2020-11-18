@@ -14,7 +14,7 @@ const useGlossary = (): IGlossary =>
     query GlossaryEntries {
       allGlossaryEntry {
         contents: nodes {
-          desc: html
+          desc: tooltip
           name
           match
         }
