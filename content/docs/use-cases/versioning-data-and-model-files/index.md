@@ -52,3 +52,26 @@ DVC's approach brings the following benefits:
 In summary, data science and machine learning are iterative processes where the
 lifecycles of data, code, and ML models occur at different paces. DVC helps
 integrate and manage them effectively.
+
+## What's next?
+
+Adopting codification and
+[Git workflows](https://about.gitlab.com/topics/version-control/what-is-git-workflow/)
+in data science opens the door to advanced scenarios, for example extending
+codification to the project's data pipelines, implementing specialized data and
+model storage patters, and improvements to data security. Let's look at these:
+
+A first natural next step for codifying data is to apply the same for
+[data pipelines](/doc/start/data-pipelines). DVC allows this out-of-the-box, and
+automatically tracks intermediate and final results produced by the pipeline,
+for versioning and other purposes.
+
+Implementing specialized data and model storage patterns such as
+[data registries](/doc/use-cases/data-registries) and
+[model zoos](/doc/api-reference/open) is made easy with DVC.
+
+Data security can also benefit from DVC's approach. You can enforce lifecycle
+policies by having a defined process to change data and models: The project
+history (in Git) is immutable, which allows for auditing changes; Git hosting
+and CI tools can be used to review and approve data update, for example via pull
+requests that are accessible to multiple stakeholders.
