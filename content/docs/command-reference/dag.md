@@ -15,14 +15,17 @@ positional arguments:
 
 ## Description
 
-A data pipeline, in general, is a series of data processing
+Data science and machine learning pipelines are used to help automate the
+workflow. A data pipeline, in general, is a series of data processing
 [stages](/doc/command-reference/run) (for example, console commands that take an
 input and produce an <abbr>output</abbr>). A pipeline may produce intermediate
 data, and has a final result.
 
-Data science and machine learning pipelines typically start with large raw
-datasets, include intermediate featurization and training stages, and produce a
-final model, as well as accuracy [metrics](/doc/command-reference/metrics).
+Pipelines typically start with large raw datasets, include intermediate data
+pre-processing, featurization and training stages, and produce a final model, as
+well as accuracy [metrics](/doc/command-reference/metrics). A pipeline makes it
+easy to iterate over the workflow as it doesn't require to execute each stage
+individually.
 
 In DVC, pipeline stages and commands, their data I/O, interdependencies, and
 results (intermediate or final) are specified in `dvc.yaml`, which can be
