@@ -166,7 +166,7 @@ We can now just run `dvc pull` to download the most recent `data/data.xml`,
 $ dvc pull
 
 $ tree
-example-get-started/
+.
 ├── data
 │   ├── data.xml
 │   ├── data.xml.dvc
