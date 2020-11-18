@@ -6,7 +6,7 @@ changes in data, code, and ML models together? What's the best way to organize
 and store multiple versions of data and model files? How can data lifecycles be
 defined and enforced?
 
-![](/img/data-ver-complex.png) _Traceability of data artifacts_
+![](/img/data-ver-complex.png) _Exponential complexity of data science projects_
 
 Data Version Control (DVC) can address these issues by helping you organize your
 data and models effectively and capture their versions in
@@ -14,19 +14,14 @@ data and models effectively and capture their versions in
 while storing the actual data contents outside ot Git. DVC also matches the
 right versions of code and data for you 💘.
 
-Only the desired data versions exist in the <abbr>workspace</abbr> at any given
-time. This way you can worry about the current state of your
-[data pipelines](/doc/command-reference/dag) instead of on moving files around.
+![](/img/data-ver-storage.png) _Simple data science project organization_
 
-![](/img/ml-pipeline-evolution.png) _Evolution of an ML project_
-
-We won't go too deep into how it works here, since we have many
-[guides](/doc/user-guide) and [references](/doc/command-reference) for that, but
-here's the gist of it: DVC enables data _versioning through codification_. This
-means describing which data, ML artifacts, etc. should be in the environment at
-any given time. It's achieved with special
-[metafiles](/doc/user-guide/dvc-files-and-directories) that can be put in Git —
-to learn how this looks and feels, try our
+DVC enables data _versioning through codification_. This means describing which
+data, ML artifacts, etc. should be in the environment at any given time. This is
+achieved with special [metafiles](/doc/user-guide/dvc-files-and-directories)
+that can be put in Git — but we won't much deeper into how it works here, since
+we have many [guides](/doc/user-guide) and [references](/doc/command-reference)
+for that. To learn how it looks and feels, try our
 [versioning tutorial](/doc/use-cases/versioning-data-and-model-files/tutorial)
 👩‍💻.
 
