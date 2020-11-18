@@ -184,9 +184,6 @@ for more details.) This section contains the following options:
 - `cache.s3` - name of an Amazon S3 remote to use as
   [external cache](/doc/user-guide/managing-external-data#examples).
 
-- `cache.azure` - name of a Microsoft Azure Blob Storage remote to use as
-  [external cache](/doc/user-guide/managing-external-data).
-
 - `cache.gs` - name of a Google Cloud Storage remote to use as
   [external cache](/doc/user-guide/managing-external-data#examples).
 
