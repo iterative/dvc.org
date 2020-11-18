@@ -758,6 +758,44 @@ more information.
 
 </details>
 
+<details>
+
+### Click for OSF
+
+- `url` - remote location:
+
+  ```dvc
+  $ dvc remote modify myremote url \
+        osf://odf.io/path/to/dir
+  ```
+- `project` - project name:
+  ```dvc
+  $ dvc remote modify myremote project \
+        project_id
+  ```
+  Project_id is a combination of characters. You can see it in url line of you project page.
+  
+- `osf_username` - username (e-mail) that you specify during registration.
+  ```dvc
+  $ dvc remote modify myremote osf_username \
+        example@mail.com
+  ```
+- 'password' - password for you osf account.
+  ```dvc
+  $ dvc remote modify osfremote --local password 12345
+  ```
+  > The username and password (may) contain sensitive user info.
+  > Therefore, it's safer to add them with the `--local` option, so they're
+  > written to a Git-ignored config file.
+  
+  Also it is possible to specify password by setting
+  envirement variable `OSF_PASSWORD`. Run
+  ```$ export OSF_PASSWORD=12345```
+
+</details>
+
+</details>
+
 ## Example: Customize an S3 remote
 
 Let's first set up a _default_ S3 remote.
