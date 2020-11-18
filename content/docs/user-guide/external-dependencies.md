@@ -16,12 +16,6 @@ You can specify external files or directories as dependencies for your pipeline
 [stages](/doc/command-reference/run). DVC will track changes in them and reflect
 this in the output of `dvc status`.
 
-<!--
-Note that these supported locations correspond to a subset of the
-[remote storage](/doc/command-reference/remote) types supported by `dvc remote`,
-but that is a different thing.
--->
-
 The remote URLs or external paths can be defined with the same format as the
 `url` of certain `dvc remote` types. Currently, the following protocols are
 supported:
@@ -33,6 +27,8 @@ supported:
 - HDFS
 - HTTP
 - Local files and directories outside the <abbr>workspace</abbr>
+
+> Note [remote storage](/doc/command-reference/remote) is a separate feature.
 
 ## Examples
 
