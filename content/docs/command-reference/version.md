@@ -116,7 +116,7 @@ Supports: gs, hdfs, http, https, s3
 Cache types: hardlink, symlink
 Cache directory: ext4 on /dev/sda1
 Caches: local
-Remotes: https
+Remotes: https, s3, ssh
 Workspace directory: ext4 on /dev/sda1
 Repo: dvc, git
 ```
