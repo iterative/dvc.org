@@ -178,7 +178,6 @@ $ dvc run -d data.txt \
 
 </details>
 
-
 <details>
 
 ### Click for local file system paths

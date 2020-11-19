@@ -355,7 +355,6 @@ $ dvc remote add -d myremote webhdfs://user@example.com/path/to/dir
 
 </details>
 
-
 <details>
 
 ### Click for HTTP
