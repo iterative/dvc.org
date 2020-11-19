@@ -19,7 +19,7 @@ usage: dvc version [-h] [-q | -v]
 | `Supports`                                  | Types of [remote storage](/doc/command-reference/remote/add#supported-storage-types) supported by the current DVC setup (their required dependencies are installed)  |
 | `Cache types`                               | [Types of links](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache) supported (between <abbr>workspace</abbr> and <abbr>cache</abbr>)     |
 | `Cache directory`                           | Filesystem type (e.g. ext4, FAT, etc.) and drive on which the <abbr>cache</abbr> directory is mounted                                                                |
-| `Caches`                                    | [Types of caches](/doc/user-guide/managing-external-data) (e.g. local, s3, ssh, etc.) configured in the repo                                                        |
+| `Caches`                                    | [Types of caches](/doc/user-guide/managing-external-data) (e.g. local, s3, ssh, etc.) configured in the repo                                                         |
 | `Remotes`                                   | [Types of remotes](/doc/command-reference/remote/add) (e.g. local, s3, ssh, etc.) configured in the repo                                                             |
 | `Workspace directory`                       | Filesystem type (e.g. ext4, FAT, etc.) and drive on which the <abbr>workspace</abbr> is mounted                                                                      |
 | `Repo`                                      | Shows whether we are in a DVC repo and/or Git repo                                                                                                                   |
