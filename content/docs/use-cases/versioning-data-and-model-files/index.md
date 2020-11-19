@@ -15,7 +15,7 @@ while storing the actual data contents outside ot Git. This way there's a single
 project history for all of its assets and artifacts, and at the same time the
 data stays with you.
 
-![](/img/data-ver-storage.png) _DVC matches the right versions of code and
+![](/img/project-versions.png) _DVC matches the right versions of code and
 data._
 
 DVC enables data _versioning through codification_. This means describing which
