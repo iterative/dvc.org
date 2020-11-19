@@ -16,7 +16,9 @@ DVC can track existing files or directories on an external location with
 `dvc add`. It can also define external outputs for `dvc.yaml` stages to create.
 
 External outputs are considered part of the (extended) DVC project: DVC will
-detect when they change, reporting this in `dvc status` for example.
+track them for [versioning](/doc/use-cases/versioning-data-and-model-files),
+thus detecting when they change, and reporting their state in `dvc status` for
+example.
 
 The remote URLs or external paths can be defined with the same format as the
 `url` of certain `dvc remote` types. Currently, the following protocols are
@@ -29,12 +31,12 @@ supported:
 - HDFS
 - Local files and directories outside the <abbr>workspace</abbr>
 
-> Note [remote storage](/doc/command-reference/remote) is a separate feature,
-> and that external outputs are not pushed or pulled from/to DVC remotes.
-
-Importantly, external outputs require an
+External outputs require an
 [external cache](/doc/use-cases/shared-development-server#configure-the-external-shared-cache)
 in the same external/remote file.
+
+> Note [remote storage](/doc/command-reference/remote) is a separate feature,
+> and that external outputs are not pushed or pulled from/to DVC remotes.
 
 ## Examples
 
