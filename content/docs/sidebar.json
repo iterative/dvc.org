@@ -88,9 +88,16 @@
         "source": "what-is-dvc.md"
       },
       {
-        "label": "Basic Concepts",
-        "slug": "basic-concepts",
-        "source": "basic-concepts.md"
+        "slug": "concepts",
+        "source": false,
+        "children": [
+          "cache",
+          "dvc-files",
+          "metrics-plots",
+          "pipelines",
+          "remote",
+          "workspace"
+        ]
       },
       "dvc-files-and-directories",
       "merge-conflicts",
