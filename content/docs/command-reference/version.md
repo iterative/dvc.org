@@ -19,6 +19,8 @@ usage: dvc version [-h] [-q | -v]
 | `Supports`                                  | Types of [remote storage](/doc/command-reference/remote/add#supported-storage-types) supported by the current DVC setup (their required dependencies are installed)  |
 | `Cache types`                               | [Types of links](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache) supported (between <abbr>workspace</abbr> and <abbr>cache</abbr>)     |
 | `Cache directory`                           | Filesystem type (e.g. ext4, FAT, etc.) and drive on which the <abbr>cache</abbr> directory is mounted                                                                |
+| `Caches`                                    | [Types of caches](/doc/user-guide/managing-external-data) (e.g. local, s3, ssh, etc.) configured in the repo                                                        |
+| `Remotes`                                    | [Types of remotes](/doc/command-reference/remote/add) (e.g. local, s3, ssh, etc.) configured in the repo                                                            |
 | `Workspace directory`                       | Filesystem type (e.g. ext4, FAT, etc.) and drive on which the <abbr>workspace</abbr> is mounted                                                                      |
 | `Repo`                                      | Shows whether we are in a DVC repo and/or Git repo                                                                                                                   |
 
@@ -107,12 +109,14 @@ Inside a DVC project:
 ```dvc
 $ dvc version
 
-DVC version: 1.7.4 (pip)
+DVC version: 1.10.0 (pip)
 ---------------------------------
 Platform: Python 3.8.3 on Linux-5.4.0-47-generic-x86_64-with-debian-buster-sid
 Supports: gs, hdfs, http, https, s3
 Cache types: hardlink, symlink
 Cache directory: ext4 on /dev/sda1
+Caches: local
+Remotes: https
 Workspace directory: ext4 on /dev/sda1
 Repo: dvc, git
 ```
