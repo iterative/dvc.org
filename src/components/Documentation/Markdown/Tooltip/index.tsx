@@ -30,7 +30,7 @@ const Tooltip: React.FC<{ text: string }> = ({ text }) => {
         })
       }
     })
-  }, [text])
+  }, [text, glossary])
 
   if (!state.match) {
     return <span>{text}</span>

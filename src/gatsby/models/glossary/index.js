@@ -1,4 +1,9 @@
 const { parentResolverPassthrough } = require('gatsby-plugin-parent-resolvers')
+const remark = require('remark')
+const recommended = require('remark-preset-lint-recommended')
+const remarkHtml = require('remark-html')
+
+const tooltipHTMLProcessor = remark().use(recommended).use(remarkHtml)
 
 module.exports = {
   createSchemaCustomization({
@@ -14,6 +19,20 @@ module.exports = {
             type: 'String!',
             resolve: parentResolverPassthrough()
           },
+          tooltip: {
+            type: 'String!',
+            resolve: (source, args, context, info) => {
+              return (
+                source.tooltip ||
+                parentResolverPassthrough({ field: 'html' })(
+                  source,
+                  args,
+                  context,
+                  info
+                )
+              )
+            }
+          },
           name: 'String!',
           match: '[String]'
         }
@@ -28,12 +47,13 @@ module.exports = {
     const { node, createNodeId, createContentDigest } = api
 
     const {
-      frontmatter: { name, match }
+      frontmatter: { name, match, tooltip }
     } = node
 
     const fieldData = {
       name,
-      match
+      match,
+      tooltip: tooltip && tooltipHTMLProcessor.processSync(tooltip).toString()
     }
 
     const entryNode = {
