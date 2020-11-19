@@ -48,12 +48,12 @@ please see `dvc plots`.
 - `-x <field>` - field name from which the X axis data comes from. An
   auto-generated `index` field is used by default. See
   [Custom templates](/doc/command-reference/plots#custom-templates) for more
-  information on this `index` field. Column names or indices (when `--no-header`
-  option is specified) are expected for tabular metrics files.
+  information on this `index` field. Column names or numbers are expected for
+  tabular metrics files.
 
 - `-y <field>` - field name from which the Y axis data comes from. The last
-  field found in the `targets` is used by default. Column names or indices (when
-  `--no-header` option is specified) are expected for tabular metrics files.
+  field found in the `targets` is used by default. Column names or numbers are
+  expected for tabular metrics files.
 
 - `--x-label <text>` - X axis label. The X field name is the default.
 

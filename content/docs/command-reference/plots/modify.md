@@ -26,6 +26,10 @@ The path to the metrics file `target` is required. It must be listed in a
 `dvc.yaml` file (see the `--plots` option of `dvc run`). `dvc plots modify` adds
 the display properties to `dvc.yaml`.
 
+Convert any
+[output or simple metrics file into a plot](#example-convert-any-output-into-a-plot)
+by passing it as a `target` to `dvc plot modify`.
+
 Property names are passed as [options](#options) to this command (prefixed with
 `--`). These are based on the full
 [Vega specification](https://vega.github.io/vega/docs/specification/).
@@ -35,10 +39,10 @@ Property names are passed as [options](#options) to this command (prefixed with
 - `-t <name_or_path>, --template <name_or_path>` - set a default
   [plot template](/doc/command-reference/plots#plot-templates).
 
-- `-x <field>` - set a default field or column name (or index) from which the X
+- `-x <field>` - set a default field or column name (or number) from which the X
   axis data comes from.
 
-- `-y <field>` - set a default field or column name (or index) from which the Y
+- `-y <field>` - set a default field or column name (or number) from which the Y
   axis data comes from.
 
 - `--x-label <text>` - set a default title for the X axis.
@@ -123,29 +127,6 @@ plots:
       title: Accuracy
 ```
 
-## Example: Make a regular output into a plot
-
-We can use `dvc plots modify` to make an <abbr>output</abbr> or metrics file of
-a stage into a plot. Lets take an example stage `evaluate` which has an
-<abbr>output</abbr> `logs.csv`:
-
-```yaml
-evaluate:
-  cmd: python src/evaluate.py
-    deps:
-    - src/evaluate.py
-    outs:
-    - logs.csv
-    plots:
-    - scores.json
-```
-
-To change the output file `logs.csv` into a plot run:
-
-```dvc
-$ dvc plots modify logs.csv
-```
-
 ## Example: Template change
 
 _dvc run --plots file.csv ..._ command assign the default template that needs to
@@ -153,4 +134,28 @@ be changed in many cases. A simple command changes the template:
 
 ```dvc
 $ dvc plots modify classes.csv --template confusion
+```
+
+## Example: Convert any output into a plot
+
+We can use `dvc plots modify` to make an <abbr>output</abbr> or simple metrics
+file of a stage into a plot. Lets take an example `evaluate` stage which has
+`logs.csv` as output. To change the output file `logs.csv` into a plot run:
+
+```dvc
+$ dvc plots modify logs.csv
+```
+
+Changes in `dvc.yaml` shows `logs.csv` is now a plot:
+
+```git
+evaluate:
+  cmd: python src/evaluate.py
+    deps:
+    - src/evaluate.py
+-   outs:
+-   - logs.csv
+    plots:
+    - scores.json
++   - logs.csv
 ```
