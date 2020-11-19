@@ -40,7 +40,7 @@ multiple projects and users, respectively:
 | Flag       | Priority | Mac location                             | Linux location             | Windows location                                          |
 | ---------- | -------- | ---------------------------------------- | -------------------------- | --------------------------------------------------------- |
 | `--global` | 3        | `$HOME/Library/Application\ Support/dvc` | `$HOME/.config/dvc/config` | `%LocalAppData%\iterative\dvc\config`                     |
-| `--system` | 4        | `/Library/Application\ Support/dvc`      | `/etc/dvc.config`          | `%AllUsersProfile%\Application Data\iterative\dvc\config` |
+| `--system` | 4        | `/Library/Application\ Support/dvc`      | `/etc/dvc/config`          | `%AllUsersProfile%\Application Data\iterative\dvc\config` |
 
 <!-- Avoids new lines in the Flag column (above). -->
 <style>
@@ -61,7 +61,7 @@ multiple projects and users, respectively:
   of the project's `.dvc/config`. Useful to apply config options to all your
   projects.
 
-- `--system` - modify a system config file (e.g. `/etc/dvc.config`) instead of
+- `--system` - modify a system config file (e.g. `/etc/dvc/config`) instead of
   `.dvc/config`. Useful to apply config options to all the projects (all users)
   in the machine.
 

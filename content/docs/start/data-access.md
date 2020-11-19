@@ -10,6 +10,11 @@ specific version of a model? How do I reuse datasets across different projects?
 > `s3://dvc-public/remote/get-started/fb/89904ef053f04d64eafcc3d70db673` 😱
 > instead of the original files, name such as `model.pkl` or `data.xml`.
 
+Read on or watch our video to see how to find and access models and datasets
+with DVC.
+
+https://youtu.be/EE7Gk84OZY8
+
 Remember those `.dvc` files `dvc add` generates? Those files (and `dvc.lock`
 that we'll cover later), have their history in Git, DVC remote storage config
 saved in Git contain all the information needed to access and download any

@@ -7,7 +7,7 @@ file.
 
 ```usage
 usage: dvc add [-h] [-q | -v] [-R] [--no-commit] [--external]
-               [--file <filename>]
+               [--file <filename>] [--glob]
                targets [targets ...]
 
 positional arguments:
@@ -25,16 +25,15 @@ that are too big for Git to handle directly. This enables
 [versioning](/doc/use-cases/versioning-data-and-model-files) them indirectly
 with Git.
 
-The `targets` are the files or directories to add, which are turned into
-<abbr>data artifacts</abbr> of the <abbr>project</abbr>. These are stored in the
-<abbr>cache</abbr> by default (use the `--no-commit` option to avoid this, and
-`dvc commit` to finish the process when needed).
+The `targets` are the files or [directories](#adding-entire-directories) to add.
+They get stored in the <abbr>cache</abbr> by default (use the `--no-commit`
+option to avoid this, and `dvc commit` to finish the process when needed).
 
 > See also `dvc.yaml` and `dvc run` for more advanced ways to track and version
 > intermediate and final results (like ML models).
 
-After checking that each `target` file (or directory) hasn't been added before
-(or tracked with other DVC commands), a few actions are taken under the hood:
+After checking that each `target` hasn't been added before (or tracked with
+other DVC commands), a few actions are taken under the hood:
 
 1. Calculate the file hash.
 2. Move the file contents to the cache (by default in `.dvc/cache`), using the
@@ -50,7 +49,7 @@ After checking that each `target` file (or directory) hasn't been added before
    file name of the first target.
 5. Add the `targets` to `.gitignore` in order to prevent them from being
    committed to the Git repository (unless `dvc init --no-scm` was used when
-   initializing the DVC project).
+   initializing the <abbr>DVC project</abbr>).
 6. Instructions are printed showing `git` commands for staging `.dvc` files (or
    they are staged automatically if
    [`core.autostage`](/doc/command-reference/config#core) is set).
@@ -99,6 +98,30 @@ undesirable for data directories with a large number of files.
 To avoid adding files inside a directory accidentally, you can add the
 corresponding [patterns](/doc/user-guide/dvcignore) to `.dvcignore`.
 
+### Adding symlinked targets {#add-symlink}
+
+DVC only supports symlinked files as valid targets for `dvc add`. If the target
+path is a directory symlink, or if the target path contains any intermediate
+directory symlinks, `dvc add` will fail.
+
+So given the following project structure:
+
+```
+.
+├── .dvc
+├── dir
+│   └── file
+├── link_to_dir -> dir
+├── link_to_external_dir -> /path/to/dir
+├── link_to_external_file -> /path/to/file
+└── link_to_file -> dir/file
+```
+
+`dir`, `dir/file`, `link_to_external_file` and `link_to_file` are all valid
+targets for `dvc add`. `link_to_dir`, `link_to_external_dir` and
+`link_to_dir/file` are invalid targets, since the target path would contain
+directory symlinks.
+
 ## Options
 
 - `-R`, `--recursive` - determines the files to add by searching each target
@@ -120,6 +143,10 @@ corresponding [patterns](/doc/user-guide/dvcignore) to `.dvcignore`.
 
 - `--external` - allow `targets` that are outside of the DVC repository. See
   [Managing External Data](/doc/user-guide/managing-external-data).
+
+- `--glob` - allows adding files and directories that match the specified
+  pattern as specified by `target`. Shell-style wildcards are supported: `*`,
+  `?`, `[seq]`, `[!seq]`, and `**`.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -202,9 +229,9 @@ outs:
 > Refer to [Adding entire directories](#adding-entire-directories) for more
 > info.
 
-This allows us to treat the entire directory structure as a single <abbr>data
-artifact</abbr>. For example, you can pass the whole directory tree as a
-<abbr>dependency</abbr> to a `dvc run` stage definition:
+This allows us to treat the entire directory structure as a single data
+artifact. For example, you can pass it as a <abbr>dependency</abbr> to a
+`dvc run` stage definition:
 
 ```dvc
 $ dvc run -n train \

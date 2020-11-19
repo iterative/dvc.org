@@ -39,7 +39,7 @@ manual editing could be used to change the configuration.
   `~/.config/dvc/config`) instead of `.dvc/config`.
 
 - `--system` - save remote configuration to the system config (e.g.
-  `/etc/dvc.config`) instead of `.dvc/config`.
+  `/etc/dvc/config`) instead of `.dvc/config`.
 
 - `--local` - modify a local [config file](/doc/command-reference/config)
   instead of `.dvc/config`. It is located in `.dvc/config.local` and is
@@ -66,13 +66,22 @@ The following config options are available for all remote types:
   below):
 
   ```dvc
-  $ dvc remote modify s3remote url s3://mybucket/path
+  $ dvc remote modify s3remote s3://mybucket/path
   ```
 
   Or a _local remote_ (a directory in the file system):
 
   ```dvc
   $ dvc remote modify localremote url /home/user/dvcstore
+  ```
+
+- `jobs` - change the default number of processes for
+  [remote storage](/doc/command-reference/remote) synchronization operations
+  (see the `--jobs` option of `dvc push`, `dvc pull`, `dvc fetch`, `dvc status`,
+  and `dvc gc`). Accepts positive integers. The default is typically `4`.
+
+  ```dvc
+  $ dvc remote modify myremote jobs 8
   ```
 
 - `verify` - upon downloading <abbr>cache</abbr> files (`dvc pull`, `dvc fetch`)

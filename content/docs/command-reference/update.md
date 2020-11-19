@@ -1,7 +1,7 @@
 # update
 
-Update <abbr>data artifacts</abbr> imported from external <abbr>DVC
-projects</abbr>, and corresponding import stage `.dvc` files.
+Update files or directories imported from external <abbr>DVC
+repositories</abbr>, and the corresponding import stage `.dvc` files.
 
 ## Synopsis
 
@@ -16,9 +16,9 @@ positional arguments:
 
 ## Description
 
-After creating <abbr>import stages</abbr> (`.dvc` files) with `dvc import` or
+After creating import stages (`.dvc` files) with `dvc import` or
 `dvc import-url`, the data source can change. Use `dvc update` to bring these
-imported file, directory, or <abbr>data artifact</abbr> up to date.
+imported file or directory up to date.
 
 To indicate which import stages to update, we can specify the corresponding
 `.dvc` file `targets` as command arguments.
