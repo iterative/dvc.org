@@ -6,7 +6,7 @@ tooltip: 'DVC pipelines tooltip...'
 
 # Data Pipelines
 
-_from `dvc dag`_
+<!-- _from `dvc dag`_ -->
 
 A data pipeline, in general, is a series of data processing
 [stages](/doc/command-reference/run) (for example, console commands that take an

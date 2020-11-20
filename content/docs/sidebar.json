@@ -88,16 +88,16 @@
         "source": "what-is-dvc.md"
       },
       {
+        "label": "Concepts",
         "slug": "glossary",
         "source": false,
         "children": [
-          "dvc-project",
+          "workspace",
+          "dvc-metafiles",
           "dvc-cache",
-          "dvc-files",
-          "metrics-plots",
           "pipelines",
-          "remote",
-          "workspace"
+          "metrics-plots",
+          "remote"
         ]
       },
       "dvc-files-and-directories",

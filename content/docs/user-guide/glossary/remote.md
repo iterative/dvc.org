@@ -6,7 +6,7 @@ tooltip: 'DVC remote storage tooltip...'
 
 # Remote Storage
 
-_from `dvc remote`_
+<!-- _from `dvc remote`_ -->
 
 What is data remote?
 

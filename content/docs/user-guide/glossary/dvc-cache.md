@@ -11,9 +11,9 @@ tooltip: >-
 
 # DVC Cache
 
-Diagram of cache/remote/workspace...
+<!-- Diagram of cache/remote/workspace...
 
-_From `dvc cache`_
+_From `dvc cache`_ -->
 
 The DVC Cache is where your data files, models, etc. (anything you want to
 version with DVC) are actually stored. The data files and directories visible in

@@ -1,12 +1,12 @@
 ---
-name: 'DVC Files'
+name: 'DVC Metafiles'
 match: ['DVC files', 'files', 'directories']
-tooltip: 'DVC files tooltip...'
+tooltip: 'DVC metafiles tooltip...'
 ---
 
-# DVC Files
+# DVC Metafiles
 
-_from dvc-files-and-directories_
+<!-- _from dvc-files-and-directories_ -->
 
 Once initialized in a <abbr>project</abbr>, DVC populates its installation
 directory (`.dvc/`) with the

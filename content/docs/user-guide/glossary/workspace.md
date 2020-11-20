@@ -10,7 +10,7 @@ tooltip: >-
 
 # Workspace
 
-_from dvc-project tooltip_
+<!-- _from dvc-project tooltip_ -->
 
 Initialized by running `dvc init` in the **workspace** (typically a Git
 repository). It will contain the
