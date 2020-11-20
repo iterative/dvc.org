@@ -1,4 +1,4 @@
-# Pipelines
+# Data Pipelines
 
 _from `dvc dag`_
 
