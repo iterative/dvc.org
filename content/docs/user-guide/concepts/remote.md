@@ -1,4 +1,4 @@
-# Remote
+# Remote Storage
 
 _from `dvc remote`_
 
