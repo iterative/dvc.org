@@ -66,7 +66,7 @@ epoch, AUC, loss
 
 In hierarchical file formats (JSON or YAML), an array of consistent objects is
 expected: every object should have the same structure. However, if an object has
-extra elements, it won't effect the plot as long as
+extra elements, it won't affect the plot as long as
 [fields specified](#dvc-template-anchors) for X and Y axis are present in all
 the objects.
 
