@@ -88,10 +88,11 @@
         "source": "what-is-dvc.md"
       },
       {
-        "slug": "concepts",
+        "slug": "glossary",
         "source": false,
         "children": [
-          "cache",
+          "dvc-project",
+          "dvc-cache",
           "dvc-files",
           "metrics-plots",
           "pipelines",
