@@ -40,12 +40,11 @@ scenarios are further detailed below.
   reproduce the whole pipeline. If you're sure no pipeline results would change,
   use `dvc commit` to force update the `dvc.lock` or `.dvc` files and cache.
 
-- In cases where we have previously executed a stage and later notice that some
-  of the files/directories used by the stage as dependencies, or created as
-  outputs, are missing from `dvc.yaml`. We can
-  [add missing dependencies/outputs to an existing stage](/docs/user-guide/how-to/add-deps-or-outs-to-a-stage)
-  without having to execute it again. Use `dvc commit` to update the `dvc.lock`
-  file and save outputs to the cache.
+- In some cases, we have previously executed a stage, and later notice that some
+  of the files/directories used by the stage as dependencies or created as
+  outputs are missing from `dvc.yaml`. It is possible to
+  [add missing data to an existing stage](/docs/user-guide/how-to/add-deps-or-outs-to-a-stage).
+  Use `dvc commit` to update the `dvc.lock` file and save outputs to the cache.
 
 - It's always possible to manually execute the command or source code used in a
   stage without DVC (outputs must be unprotected or removed first in certain

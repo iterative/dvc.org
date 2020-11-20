@@ -106,9 +106,9 @@ Relevant notes:
   also means that the stage command needs to recreate any directory structures
   defined as outputs every time its executed by DVC.
 
-- In some situations we have executed a stage and later notice that some of the
-  files/directories used by the stage as dependencies, or created as outputs,
-  are missing from `dvc.yaml`. We can
+- In some situations, we have previously executed a stage, and later notice that
+  some of the files/directories are missing from the `deps` or `outs` fields of
+  `dvc.yaml`. We can
   [add missing dependencies/outputs to an existing stage](/docs/user-guide/how-to/add-deps-or-outs-to-a-stage)
   without having to execute it again.
 
