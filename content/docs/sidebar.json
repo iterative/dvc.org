@@ -96,8 +96,8 @@
           "dvc-metafiles",
           "dvc-cache",
           "data-pipelines",
-          "metrics-and-plots",
-          "remote-storage"
+          "remote-storage",
+          "metrics-and-plots"
         ]
       },
       "dvc-files-and-directories",
