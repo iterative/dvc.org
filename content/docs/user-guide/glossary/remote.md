@@ -1,3 +1,9 @@
+---
+name: 'Remote Storage'
+match: ['DVC remote', 'remote', 'remote storage']
+tooltip: 'DVC remote storage tooltip...'
+---
+
 # Remote Storage
 
 _from `dvc remote`_

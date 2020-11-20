@@ -1,3 +1,9 @@
+---
+name: 'Data Pipelines'
+match: ['data pipeline', 'pipeline', 'pipelines']
+tooltip: 'DVC pipelines tooltip...'
+---
+
 # Data Pipelines
 
 _from `dvc dag`_

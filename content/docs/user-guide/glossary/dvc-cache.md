@@ -1,15 +1,17 @@
 ---
 name: 'DVC Cache'
-match: ['DVC cache', cache, caches, cached]
+match: ['DVC cache', 'cache', 'caches', 'cached']
 tooltip: >-
   The DVC cache is a hidden storage (by default located in the `.dvc/cache`
   directory) for files that are tracked by DVC, and their different versions.
   Learn more about it's
-  [structure](/doc/user-guide/dvc-files-and-directories#structure-of-the-cache-directory).
-
-  Learn more about the [concept of cache](/doc/user-guide/concepts/cache) in
-  DVC.
+  [structure](/doc/user-guide/dvc-files-and-directories#structure-of-the-cache-directory).Learn
+  more about the [concept of cache](/doc/user-guide/glossary/dvc-cache) in DVC.
 ---
+
+# DVC Cache
+
+Diagram of cache/remote/workspace...
 
 _From `dvc cache`_
 

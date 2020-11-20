@@ -1,3 +1,9 @@
+---
+name: 'DVC Files'
+match: ['DVC files', 'files', 'directories']
+tooltip: 'DVC files tooltip...'
+---
+
 # DVC Files
 
 _from dvc-files-and-directories_

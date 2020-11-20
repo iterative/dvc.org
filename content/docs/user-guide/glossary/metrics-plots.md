@@ -1,3 +1,9 @@
+---
+name: 'Metrics and Plots'
+match: ['metrics', 'plots']
+tooltip: 'Metrics and plots tooltip...'
+---
+
 # Metrics and Plots
 
 _from plots and metrics intros_
