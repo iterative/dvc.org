@@ -95,9 +95,9 @@
           "workspace",
           "dvc-metafiles",
           "dvc-cache",
-          "pipelines",
-          "metrics-plots",
-          "remote"
+          "data-pipelines",
+          "metrics-and-plots",
+          "remote-storage"
         ]
       },
       "dvc-files-and-directories",
