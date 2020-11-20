@@ -105,6 +105,36 @@ file:///Users/usr/src/plots/train.json.html
 
 > Note that only the last field name (`loss`) is used for the plot by default.
 
+<details>
+
+### Expand to see example using YAML metrics file
+
+We'll use metrics file `train.yaml` for this example:
+
+```yaml
+train:
+  - accuracy: 0.96658
+    loss: 0.10757
+  - accuracy: 0.97641
+    loss: 0.07324
+  - accuracy: 0.87707
+    loss: 0.08136
+  - accuracy: 0.87402
+    loss: 0.09026
+```
+
+DVC identifies and plots YAML objects from the first YAML element found in the
+file (`train`):
+
+```dvc
+$ dvc plots show train.yaml
+file:///Users/usr/src/plots/train.yaml.html
+```
+
+![](/img/plots_show_json.svg)
+
+</details>
+
 Use the `-y` option to change the field to plot:
 
 ```dvc
@@ -138,6 +168,35 @@ file:///Users/usr/src/plots/logs.csv.html
 ```
 
 ![](/img/plots_show.svg)
+
+<details>
+
+### Expand to see example using TSV metrics file
+
+We'll use tabular metrics file `logs.tsv` for these examples:
+
+```
+epoch    accuracy    loss    val_accuracy    val_loss
+0    0.9418667    0.19958884770199656     0.9679    0.10217399864746257
+1    0.9763333    0.07896138601688048     0.9768    0.07310650711813942
+2    0.98375      0.05241111190887168     0.9788    0.06665669009438716
+3    0.988016     0.03681169906261687     0.9781    0.06697812260198989
+4    0.991116     0.027362171787042946    0.978     0.07385754839298315
+5    0.9932333    0.02069501801203781     0.9771    0.08009233058886166
+6    0.9945       0.017702101902437668    0.9803    0.07830339228538505
+7    0.9954       0.01396906608727198     0.9802    0.07247738889862157
+```
+
+By default, this command plots the last column of the table (see `-y` option):
+
+```dvc
+$ dvc plots show logs.tsv
+file:///Users/usr/src/plots/logs.csv.html
+```
+
+![](/img/plots_show.svg)
+
+</details>
 
 Use the `-y` option to change the column to plot:
 
