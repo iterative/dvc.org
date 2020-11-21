@@ -27,7 +27,6 @@ Currently, the following types (protocols) of external outputs (and
 <abbr>cache</abbr>) are supported:
 
 - Amazon S3
-- Microsoft Azure Blob Storage
 - Google Cloud Storage
 - SSH
 - HDFS
@@ -67,24 +66,6 @@ $ dvc run -d data.txt \
           --external \
           -o s3://mybucket/data.txt \
           aws s3 cp data.txt s3://mybucket/data.txt
-```
-
-</details>
-
-<details>
-
-### Click for Microsoft Azure Blob Storage
-
-```dvc
-$ dvc remote add azurecache azure://mycontainer/cache
-$ dvc config cache.azure azurecache
-
-$ dvc add --external azure://mycontainer/existing-data
-
-$ dvc run -d data.txt \
-          --external \
-          -o azure://mycontainer/data.txt \
-          az storage blob upload -f data.txt -c mycontainer -n data.txt
 ```
 
 </details>
