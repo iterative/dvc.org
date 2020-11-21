@@ -26,13 +26,13 @@ The path to the metrics file `target` is required. It must be listed in a
 `dvc.yaml` file (see the `--plots` option of `dvc run`). `dvc plots modify` adds
 the display properties to `dvc.yaml`.
 
-Convert any
-[output or simple metrics file into a plot](#example-convert-any-output-into-a-plot)
-by passing it as a `target` to `dvc plot modify`.
-
 Property names are passed as [options](#options) to this command (prefixed with
 `--`). These are based on the full
 [Vega specification](https://vega.github.io/vega/docs/specification/).
+
+Note that a secondary use of this command is to convert output or simple
+[metrics file](/doc/command-reference/metrics) into a plot (see
+[example](#example-convert-any-output-into-a-plot)).
 
 ## Options
 
@@ -138,15 +138,13 @@ $ dvc plots modify classes.csv --template confusion
 
 ## Example: Convert any output into a plot
 
-We can use `dvc plots modify` to make an <abbr>output</abbr> or simple metrics
-file of a stage into a plot. Lets take an example `evaluate` stage which has
-`logs.csv` as output. To change the output file `logs.csv` into a plot run:
+Let's take an example `evaluate` stage which has `logs.csv` as an output. We use
+`dvc plots modify` to convert the `logs.csv` output file into a plot, and then
+observe changes that happened in `dvc.yaml`:
 
 ```dvc
 $ dvc plots modify logs.csv
 ```
-
-Changes in `dvc.yaml` shows `logs.csv` is now a plot:
 
 ```git
 evaluate:
