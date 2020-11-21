@@ -35,8 +35,14 @@ External outputs require an
 [external cache](/doc/use-cases/shared-development-server#configure-the-external-shared-cache)
 in the same external/remote file.
 
-> Note [remote storage](/doc/command-reference/remote) is a separate feature,
-> and that external outputs are not pushed or pulled from/to DVC remotes.
+> Note that [remote storage](/doc/command-reference/remote) is a separate
+> feature, and that external outputs are not pushed or pulled from/to DVC
+> remotes.
+
+> ⚠️ Avoid using the same DVC remote used for `dvc push`, `dvc pull`, etc. for
+> external outputs, because it may cause data collisions: the hash of an
+> external output could collide with that of a local file with different
+> content.
 
 ## Examples
 
