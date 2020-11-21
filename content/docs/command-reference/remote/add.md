@@ -326,6 +326,8 @@ $ dvc remote add -d myremote hdfs://user@example.com/path/to/dir
 
 > See also `dvc remote modify` for a full list of HDFS parameters.
 
+💡 Using an HDFS cluster as remote storage is also supported via the WebHDFS API. Read more about it by expanding the WebHDFS section below.
+
 </details>
 
 <details>
