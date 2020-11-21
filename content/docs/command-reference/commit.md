@@ -43,8 +43,9 @@ scenarios are further detailed below.
 - In some cases, we have previously executed a stage, and later notice that some
   of the files/directories used by the stage as dependencies or created as
   outputs are missing from `dvc.yaml`. It is possible to
-  [add missing data to an existing stage](/docs/user-guide/how-to/add-deps-or-outs-to-a-stage).
-  Use `dvc commit` to update the `dvc.lock` file and save outputs to the cache.
+  [add missing data to an existing stage](/docs/user-guide/how-to/add-deps-or-outs-to-a-stage),
+  and then `dvc commit` can be used to save outputs to the cache (and update
+  `dvc.lock`)
 
 - It's always possible to manually execute the command or source code used in a
   stage without DVC (outputs must be unprotected or removed first in certain
