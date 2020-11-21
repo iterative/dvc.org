@@ -574,6 +574,10 @@ more information.
 
 ### Click for HDFS
 
+💡 Using a HDFS cluster as remote storage is also supported via the WebHDFS API.
+Read more about by expanding the WebHDFS section in
+[`dvc remote add`](/doc/command-reference/remote/add#supported-storage-types).
+
 - `url` - remote location:
 
   ```dvc
@@ -588,10 +592,6 @@ more information.
 
 > The username may contain sensitive user info. Therefore, it's safer to add it
 > with the `--local` option, so it's written to a Git-ignored config file.
-
-💡 Using a HDFS cluster as remote storage is also supported via the WebHDFS API.
-Read more about by expanding the WebHDFS section in
-[`dvc remote add`](/doc/command-reference/remote/add#supported-storage-types).
 
 </details>
 
@@ -689,6 +689,10 @@ Read more about by expanding the WebHDFS section in
 
 ### Click for WebHDFS
 
+💡 WebHDFS serves as an alternative for using the same remote storage supported
+by HDFS. Read more about by expanding the WebHDFS section in
+[`dvc remote add`](/doc/command-reference/remote/add#supported-storage-types).
+
 - `url` - remote location:
 
   ```dvc
@@ -750,10 +754,6 @@ Read more about by expanding the WebHDFS section in
 > The username, token, webhdfs_alias, and hdfscli_config may contain sensitive
 > user info. Therefore, it's safer to add it with the `--local` option, so it's
 > written to a Git-ignored config file.
-
-💡 WebHDFS serves as an alternative for using the same remote storage supported
-by HDFS. Read more about by expanding the WebHDFS section in
-[`dvc remote add`](/doc/command-reference/remote/add#supported-storage-types).
 
 </details>
 
