@@ -142,6 +142,25 @@ it. So systems like Hadoop, Hive, and HBase are supported!
 
 <details>
 
+### Click for WebHDFS
+
+```dvc
+$ dvc remote add webhdfscache webhdfs://user@example.com/cache
+$ dvc config cache.webhdfs webhdfscache
+
+$ dvc add --external webhdfs://user@example.com/existing-data
+
+$ dvc run -d data.txt \
+          --external \
+          -o webhdfs://user@example.com/data.txt \
+          curl --upload-file data.txt \
+              "http://user@example.com:50075/webhdfs/v1/data.txt?op=CREATE"
+```
+
+</details>
+
+<details>
+
 ### Click for local file system paths
 
 The default <abbr>cache</abbr> is in `.dvc/cache`, so there is no need to set a
