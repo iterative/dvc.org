@@ -19,9 +19,9 @@ positional arguments:
 
 The `dvc commit` command is useful for several scenarios, when data already
 tracked by DVC changes: when a [stage](/doc/command-reference/run) or
-[pipeline](/doc/command-reference/dag) is in development/experimentation; when
-manually editing or generating DVC <abbr>outputs</abbr>; or to force update the
-`dvc.lock` or `.dvc` files without reproducing stages or pipelines. These
+[pipeline](/doc/command-reference/dag) is in development/experimentation; to
+force-update the `dvc.lock` or `.dvc` files without reproducing stages or
+pipelines; or to mark existing files/dirs as stage <abbr>outputs</abbr>. These
 scenarios are further detailed below.
 
 - Code or data for a stage is under active development, with multiple iterations
@@ -32,12 +32,6 @@ scenarios are further detailed below.
   💡 For convenience, a pre-commit Git hook is available to remind you to
   `dvc commit` when needed. See `dvc install` for more details.
 
-- It's always possible to manually execute the source code used in a stage
-  without DVC (outputs must be unprotected or removed first in certain cases,
-  see `dvc unprotect`). Once a desirable result is reached, use `dvc add` or
-  `dvc commit` as appropriate to update the `dvc.lock` or `.dvc` files and store
-  changed data to the cache.
-
 - Sometimes we want to edit source code, config, or data files in a way that
   doesn't cause changes in the results of their data pipeline. We might write
   add code comments, change indentation, remove some debugging printouts, or any
@@ -45,6 +39,21 @@ scenarios are further detailed below.
   notice that some <abbr>dependencies</abbr> have changed, and expect you to
   reproduce the whole pipeline. If you're sure no pipeline results would change,
   use `dvc commit` to force update the `dvc.lock` or `.dvc` files and cache.
+
+- In cases where we have previously executed a stage (either by writing
+  `dvc.yaml` manually and using `dvc repro`, or with `dvc run`), but later
+  notice that some of the output files or directories it creates, which are
+  already in the <abbr>workspace</abbr>, are missing from `dvc.yaml` (`outs`
+  field). We can
+  [add missing outputs to an existing stage](/docs/user-guide/how-to/add-output-to-stage)
+  without having to execute it again. Use `dvc commit` to update the `dvc.lock`
+  file and save outputs to the cache.
+
+- It's always possible to manually execute the command or source code used in a
+  stage without DVC (outputs must be unprotected or removed first in certain
+  cases, see `dvc unprotect`). Once the desired result is reached, use
+  `dvc commit` to update the `dvc.lock` file(s) and store changed data to the
+  cache.
 
 Let's take a look at what is happening in the first scenario closely. Normally
 DVC commands like `dvc add`, `dvc repro` or `dvc run` commit the data to the
@@ -56,17 +65,16 @@ _commit_ means is that DVC:
 - Tells Git to ignore the file/directory (adding them to `.gitignore`). (Note
   that if the <abbr>project</abbr> was initialized with no Git support
   (`dvc init --no-scm`), this does not happen.)
-- Adds the file/directory to the cache.
+- Adds the file(s) in question to the cache.
 
 There are many cases where the last step is not desirable (for example rapid
-iterations on an experiment). The `--no-commit` option prevents the last step
-from occurring (on the commands where it's available), saving time and space by
-not storing unwanted <abbr>data artifacts</abbr>. The file hash is still
-computed and added to the `dvc.lock` or `.dvc` file, but the actual data file is
-not saved in the cache. This is where the `dvc commit` command comes into play.
-It performs that last step (saving the data in cache).
+iterations on an experiment). The `--no-commit` option prevents it (on the
+commands where it's available). The file hash is still computed and added to the
+`dvc.lock` or `.dvc` file, but the actual data is not cached. And this is where
+the `dvc commit` command comes into play: It performs that last step when
+needed.
 
-Note that it's best to avoid the last two scenarios. They essentially
+Note that it's best to avoid the last three scenarios. They essentially
 force-update the `dvc.lock` or `.dvc` files and save data to cache. They are
 still useful, but keep in mind that DVC can't guarantee reproducibility in those
 cases.

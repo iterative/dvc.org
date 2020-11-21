@@ -59,7 +59,7 @@ DVC will determine the [type of remote](#supported-storage-types) based on the
   `~/.config/dvc/config`) instead of `.dvc/config`.
 
 - `--system` - save remote configuration to the system config (e.g.
-  `/etc/dvc.config`) instead of `.dvc/config`.
+  `/etc/dvc/config`) instead of `.dvc/config`.
 
 - `--local` - modify a local [config file](/doc/command-reference/config)
   instead of `.dvc/config`. It is located in `.dvc/config.local` and is
@@ -95,7 +95,7 @@ The following are the types of remote storage (protocols) supported:
 > [Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html).
 
 ```dvc
-$ dvc remote add -d s3remote url s3://mybucket/path
+$ dvc remote add -d s3remote s3://mybucket/path
 ```
 
 By default, DVC expects your AWS CLI is already
@@ -245,6 +245,10 @@ By default, DVC expects your GCP CLI is already
 [configured](https://cloud.google.com/sdk/docs/authorizing). DVC will be using
 default GCP key file to access Google Cloud Storage. To override some of these
 settings, use the parameters described in `dvc remote modify`.
+
+> Make sure to run `gcloud auth application-default login` unless you use
+> `GOOGLE_APPLICATION_CREDENTIALS` and/or service account, or other ways to
+> authenticate. See details [here](https://stackoverflow.com/a/53307505/298182).
 
 </details>
 

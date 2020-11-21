@@ -11,7 +11,8 @@ the import.
 
 ```usage
 usage: dvc import [-h] [-q | -v]
-                  [-o <path>] [--file <filename>] [--rev <commit>]
+                  [-o <path>] [--file <filename>]
+                  [--rev <commit>] [--no-exec]
                   url path
 
 positional arguments:
@@ -24,10 +25,9 @@ positional arguments:
 Provides an easy way to reuse files or directories tracked in any <abbr>DVC
 repository</abbr> (e.g. datasets, intermediate results, ML models) or Git
 repository (e.g. source code, small image/other files). `dvc import` downloads
-the target file or directory (found at `path` in `url`) in a way so that it's
-tracked with DVC, becoming a local <abbr>data artifact</abbr>. This also permits
-updating the import later, if it has changed in its data source. (See
-`dvc update`.)
+the target file or directory (found at `path` in `url`) into the workspace and
+tracks it in the project. This makes it possible to update the import later, if
+it has changed in its data source (see `dvc update`).
 
 > Note that `dvc get` corresponds to the first step this command performs (just
 > download the data).
@@ -103,6 +103,12 @@ repo at `url`) are not supported.
   > [Importing and updating fixed revisions](#example-importing-and-updating-fixed-revisions)
   > example below).
 
+- `--no-exec` - create `.dvc` file without actually downloading the file or
+  directory. E.g. if the file or directory already exists, this can be used to
+  skip the download. The data hash is not calculated by this, only the metadata
+  is saved into the `.dvc` file. You can use `dvc commit <out>.dvc` if you need
+  the hashes in the new `.dvc` file and save existing data to the cache.
+
 - `-h`, `--help` - prints the usage/help message, and exit.
 
 - `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if no
@@ -124,10 +130,9 @@ Importing 'data/data.xml (git@github.com:iterative/example-get-started)'
 ```
 
 In contrast with `dvc get`, this command doesn't just download the data file,
-but it also creates an <abbr>import stage</abbr> (`.dvc` file) with a link to
-the data source (as explained in the description above). (This import stage can
-later be used to [update](/doc/command-reference/update) the import.) Check
-`data.xml.dvc`:
+but it also creates an import stage (`.dvc` file) with a link to the data source
+(as explained in the description above). (This `.dvc` file can later be used to
+[update](/doc/command-reference/update) the import.) Check `data.xml.dvc`:
 
 ```yaml
 md5: 7de90e7de7b432ad972095bc1f2ec0f8
@@ -152,8 +157,7 @@ dependency, respectively.
 
 ## Example: Importing and updating fixed revisions
 
-To import a specific version of a <abbr>data artifact</abbr>, we may use the
-`--rev` option:
+To import a specific version of a file/directory, we may use the `--rev` option:
 
 ```dvc
 $ dvc import --rev cats-dogs-v1 \

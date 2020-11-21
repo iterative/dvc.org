@@ -70,9 +70,10 @@ Define a pipeline [stage](/doc/command-reference/run) with parameter
 dependencies:
 
 ```dvc
-$ dvc run -d users.csv -o model.pkl \
-        -p lr,train \
-        python train.py
+$ dvc run -n train \
+          -d train.py -d users.csv -o model.pkl \
+          -p lr,train \
+          python train.py
 ```
 
 Let's now print parameter values that we are tracking in this

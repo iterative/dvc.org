@@ -36,9 +36,9 @@ $ dvc get https://github.com/iterative/dataset-registry \
 
 We use the fancy `dvc get` command to jump ahead a bit and show how Git repo
 becomes a source for datasets or models - what we call "data registry" or "model
-registry". `dvc get` can download any <abbr>data artifact</abbr> tracked in a
-<abbr>DVC repository</abbr>. It's like `wget`, but for DVC or Git repos. In this
-case we download the latest version of the `data.xml` file from the
+registry". `dvc get` can download any file or directory tracked in a <abbr>DVC
+repository</abbr>. It's like `wget`, but for DVC or Git repos. In this case we
+download the latest version of the `data.xml` file from the
 [dataset registry](https://github.com/iterative/dataset-registry) repo as the
 data source.
 

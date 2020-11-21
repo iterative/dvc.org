@@ -23,8 +23,11 @@ positional arguments:
 
 `dvc run` is a helper for creating or updating
 [pipeline](/doc/command-reference/dag) stages in a `dvc.yaml` file (located in
-the current working directory). _Stages_ represent individual data processes,
-including their input and resulting outputs.
+the current working directory).
+
+_Stages_ represent individual data processes, including their input and
+resulting outputs. They can be combined to capture simple data workflows,
+organize data science projects, or build detailed machine learning pipelines.
 
 A stage name is required and can be provided using the `-n` (`--name`) option.
 The other available [options](#options) are mostly meant to describe different
@@ -105,6 +108,12 @@ Relevant notes:
   at `dvc repro`) if their paths are found as existing files/directories. This
   also means that the stage command needs to recreate any directory structures
   defined as outputs every time its executed by DVC.
+
+- In some situations we have executed a stage and later notice that some of the
+  output files or directories it creates, which are already in the workspace,
+  are missing from `dvc.yaml` (`outs` field). We can
+  [add missing outputs to an existing stage](/docs/user-guide/how-to/add-output-to-stage)
+  without having to execute it again.
 
 - Renaming dependencies or outputs requires a
   [manual process](/doc/command-reference/move#renaming-stage-outputs) to update

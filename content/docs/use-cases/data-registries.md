@@ -3,10 +3,10 @@
 One of the main uses of <abbr>DVC repositories</abbr> is the
 [versioning of data and model files](/doc/use-cases/data-and-model-files-versioning),
 with commands such as `dvc add`. With the aim to enable reusability of these
-<abbr>data artifacts</abbr> between different projects, DVC also provides
-commands like `dvc import` and `dvc get`. This means that your projects can
-depend on data from other DVC repositories, **similar to a package management
-systems for data science**.
+data and ML artifacts between different projects, DVC also provides commands
+like `dvc import` and `dvc get`. This means that your projects can depend on
+data from other DVC repositories, **similar to a package management systems for
+data science**.
 
 ![](/img/data-registry.png) _Data and models as code_
 
@@ -22,22 +22,18 @@ _middleware_ between ML projects and cloud storage. Here are its advantages:
 - Reusability: reproduce and organize _feature stores_ with a simple CLI
   (`dvc get` and `dvc import` commands, similar to software package management
   systems like `pip`).
-- Persistence: the DVC registry-controlled
-  [remote storage](/doc/command-reference/remote) (e.g. an S3 bucket) improves
-  data security. There are less chances someone can delete or rewrite a model,
-  for example.
-- Storage optimization: track data
-  [shared](/doc/use-cases/sharing-data-and-model-files) by multiple projects
-  centralized in a single location (with the ability to create distributed
-  copies on other remotes). This simplifies data management and optimizes space
-  requirements.
-- Data as code: leverage Git workflow such as commits, branching, pull requests,
-  reviews, and even CI/CD for your data and models lifecycle. Think "Git for
-  cloud storage", but without ad-hoc conventions.
-- Security: registries can be setup to have read-only remote storage (e.g. an
-  HTTP location). Git versioning of
-  [DVC metafiles](/doc/user-guide/dvc-files-and-directories) allows us to track
-  and audit data changes.
+- Persistence: [remote storage](/doc/command-reference/remote) (e.g. an S3
+  bucket) controlled by the DVC registry improves data security. There are less
+  chances someone can delete or rewrite an ML model, for example.
+- Storage optimization: centralize data
+  [shared](/doc/use-cases/sharing-data-and-model-files) by multiple projects in
+  a single location (distributed copies are possible too). This simplifies data
+  management and optimizes space requirements.
+- Data as code: leverage Git workflows such as commits, branching, pull
+  requests, reviews, and even CI/CD for your data and models lifecycle. Think
+  "Git for cloud storage", but without ad-hoc conventions.
+- Security: registries can be setup with read-only remote storage (e.g. an HTTP
+  server).
 
 ## Building registries
 
@@ -83,9 +79,9 @@ $ dvc push
 
 ## Using registries
 
-The main methods to consume <abbr>artifacts</abbr> from a **data registry** are
-the `dvc import` and `dvc get` commands, as well as the Python API, `dvc.api`.
-But first, you may want to explore its contents.
+The main methods to consume artifacts from a **data registry** are the
+`dvc import` and `dvc get` commands, as well as the Python API, `dvc.api`. But
+first, you may want to explore its contents.
 
 ### Listing data
 
