@@ -31,7 +31,7 @@ Property names are passed as [options](#options) to this command (prefixed with
 [Vega specification](https://vega.github.io/vega/docs/specification/).
 
 Note that a secondary use of this command is to convert output or simple
-`dvc metrics` file into a plots file (see
+`dvc metrics` file into a plots file (see an
 [example](#example-convert-any-output-into-a-plot)).
 
 ## Options
