@@ -369,9 +369,9 @@ $ dvc remote add -d myremote \
 
 ### Click for OSF
 
-Before start using [OSF](https://osf.io/) storage you should create osf aссount.
-After registration you also need run `pip install osfclient` to install package
-for working with OSF API. Finally, to add OSF remote, run
+An [OSF](https://osf.io/) account is needed to use OSF storage. Please also
+run `pip install osfclient` to install the necessary Python package that enables
+DVC to communicate with the OSF API.
 
 ```dvc
 dvc remote add myremote osf://osf.io/path/to/dir
