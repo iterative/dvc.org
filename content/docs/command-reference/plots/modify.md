@@ -31,7 +31,7 @@ Property names are passed as [options](#options) to this command (prefixed with
 [Vega specification](https://vega.github.io/vega/docs/specification/).
 
 Note that a secondary use of this command is to convert output or simple
-[metrics file](/doc/command-reference/metrics) into a plot (see
+`dvc metrics` file into a plots file (see
 [example](#example-convert-any-output-into-a-plot)).
 
 ## Options
@@ -138,9 +138,9 @@ $ dvc plots modify classes.csv --template confusion
 
 ## Example: Convert any output into a plot
 
-Let's take an example `evaluate` stage which has `logs.csv` as an output. We use
-`dvc plots modify` to convert the `logs.csv` output file into a plot, and then
-observe changes that happened in `dvc.yaml`:
+Let's take an example `evaluate` stage which has `logs.csv` as an output. We can
+use `dvc plots modify` to convert the `logs.csv` output file into a plots file,
+and then confirm the changes that happened in `dvc.yaml`:
 
 ```dvc
 $ dvc plots modify logs.csv
