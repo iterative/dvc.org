@@ -768,6 +768,7 @@ more information.
   $ dvc remote modify myremote url \
         osf://odf.io/path/to/dir
 - `project` - project name:
+
   ```dvc
   $ dvc remote modify myremote project \
         project_id
