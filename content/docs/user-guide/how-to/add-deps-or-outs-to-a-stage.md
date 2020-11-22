@@ -1,13 +1,14 @@
 # Add Dependencies or Outputs to a Stage
 
-There are situations where we have executed a stage, but later notice that some
-of the files/directories used by the stage as dependencies or created as outputs
-are missing from `dvc.yaml`.
+To add files/directories as <abbr>dependencies</abbr> or <abbr>outputs</abbr> to
+a stage without executing it, either edit the `dvc.yaml` file or use `dvc run`
+with the `--no-exec` option.
 
-To add existing files/directories as <abbr>dependencies</abbr> or
-<abbr>outputs</abbr> to a stage, either edit the `dvc.yaml` file or use
-`dvc run` with the `--no-exec` option. Then use `dvc commit` to save the
-output(s) to the <abbr>cache</abbr> (and update `dvc.lock`).
+There are situations where we have executed a stage, but later notice that some
+of the existing files/directories used by the stage as dependencies or created
+as outputs are missing from `dvc.yaml`. We can add the existing
+files/directories to a stage, and then use `dvc commit` to save the output(s) to
+the <abbr>cache</abbr> (and update `dvc.lock`).
 
 ## Example
 
@@ -44,8 +45,7 @@ output. To add a missing dependency (`data/raw.csv`) as well as a missing output
 > without executing it.
 
 Finally, we need to run `dvc commit` to save the newly specified output(s) to
-the <abbr>cache</abbr> (and to update the hash values of `deps` and `outs` in
-`dvc.lock`):
+the cache (and to update the hash values of `deps` and `outs` in `dvc.lock`):
 
 ```dvc
 $ dvc commit
