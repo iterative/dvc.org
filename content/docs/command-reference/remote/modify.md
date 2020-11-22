@@ -767,13 +767,12 @@ more information.
   ```dvc
   $ dvc remote modify myremote url \
         osf://odf.io/path/to/dir
-- `project` - project name:
+
+- `project` - [OSF](https://osf.io/) project name. You can see it in the `url` line
+  of your project page.
 
   ```dvc
-  $ dvc remote modify myremote project \
-        project_id
-  ```
-  Project_id is a combination of characters. You can see it in url line of you project page.
+  $ dvc remote modify myremote project <project_name>
   
 - `osf_username` - username (e-mail) that you specify during registration.
   ```dvc
