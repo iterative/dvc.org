@@ -65,8 +65,7 @@ for example when `dvc init` was used with the `--no-scm` option.
 
 ## Examples
 
-For these examples we can use the [Get Started](/doc/tutorials/get-started)
-project.
+For these examples we can use the [Get Started](/doc/start) project.
 
 <details>
 
@@ -111,8 +110,7 @@ $ dvc diff
 
 Let's checkout the
 [2-track-data](https://github.com/iterative/example-get-started/releases/tag/2-track-data)
-tag, corresponding to the
-[tracking data](/doc/tutorials/get-started/data-versioning#tracking-data) _Get
+tag, corresponding to the [data versioning](/doc/start/data-versioning) _Get
 Started_ chapter, right after we added `data.xml` file with DVC:
 
 ```dvc
