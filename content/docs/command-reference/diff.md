@@ -117,13 +117,13 @@ Started_ chapter, right after we added `data.xml` file with DVC:
 
 ```dvc
 $ git checkout 2-track-data
-$ dvc pull
+$ dvc checkout
 ```
 
 </details>
 
 To see the difference between the very previous commit of the project and the
-workspace, we can use `HEAD^` as `a_ref`:
+workspace, we can use `HEAD^` as `a_rev`:
 
 ```dvc
 $ dvc diff HEAD^
@@ -158,14 +158,16 @@ $ dvc checkout
 $ dvc diff baseline-experiment bigrams-experiment
 Modified:
     data/features/
+    data/features/test.pkl
+    data/features/train.pkl
+    model.pkl
     prc.json
     scores.json
-    model.pkl
 
-files summary: 0 added, 0 deleted, 3 modified
+files summary: 0 added, 0 deleted, 5 modified
 ```
 
-The output from this command confirms that there's a difference in 4 files
+The output from this command confirms that there's a difference in 5 files
 between the tags `baseline-experiment` and `bigrams-experiment`.
 
 ## Example: Using different output formats
@@ -185,20 +187,22 @@ It outputs:
   "added": [],
   "deleted": [],
   "modified": [
-    ...{
+    {
       "path": "data/features/",
       "hash": {
         "old": "3338d2c21bdb521cda0ba4add89e1cb0.dir",
         "new": "42c7025fc0edeb174069280d17add2d4.dir"
       }
     },
-    ...{
+    ...
+    {
       "path": "model.pkl",
       "hash": {
         "old": "43630cce66a2432dcecddc9dd006d0a7",
         "new": "662eb7f64216d9c2c1088d0a5e2c6951"
       }
     }
+    ...
   ]
 }
 ```
