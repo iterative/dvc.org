@@ -8,17 +8,16 @@ like `dvc import` and `dvc get`. This means that your projects can depend on
 data from other DVC repositories, **similar to a package management systems for
 data science**.
 
-![](/img/data-registry.png) _Data management middleware_
+![](/img/data-registry.png) _Data and models as code_
 
 This means we can build a <abbr>DVC project</abbr> dedicated to tracking and
-versioning _datasets_ (or any large files, directories, machine learning models,
-etc.). The repository would have all the metadata and history of changes in the
-different datasets. We could see who updated what and when, and use pull
-requests to update data, the same way we do with code.
+versioning _datasets_ (or any large files, directories, ML models, etc.). The
+repository would have all the metadata and history of changes in the different
+datasets. We could see who updated what and when, and use pull requests to
+update data, the same way we do with code.
 
-That's what we call a **data registry**: data management _middleware_ between
-data science projects and large file storage. Think Git for cloud storage. Here
-are some of it's advantages:
+This is what we call a **data registry** — a kind of data management
+_middleware_ between ML projects and cloud storage. Here are its advantages:
 
 - Reusability: reproduce and organize _feature stores_ with a simple CLI
   (`dvc get` and `dvc import` commands, similar to software package management
@@ -101,7 +100,7 @@ images/dvc-logo-outlines.png
 ...
 ```
 
-Both Git-tracked files and DVC-tracked data and ML models are listed.
+Both Git-tracked files and DVC-tracked data and models are listed.
 
 ### Simple downloads
 
