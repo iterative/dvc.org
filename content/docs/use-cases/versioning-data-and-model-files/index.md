@@ -25,13 +25,12 @@ that can be put in Git. These use constant file names but link to variable
 contents (via the metadata in Git), so that the data can be modified
 independently from the source code that addresses it.
 
-We won't go much deeper into how it works here, since we have many
+We won't go much deeper into how DVC works here, since we have many
 [guides](/doc/user-guide) and [references](/doc/command-reference) for that. You
 can also try our
 [versioning tutorial](/doc/use-cases/versioning-data-and-model-files/tutorial)
-👩‍💻 to learn how it looks and feels.
-
-DVC's approach brings the following benefits:
+👩‍💻 to learn how it looks and feels. For now, here are some of the high-level
+benefits of this approach:
 
 - **Simple file names**: Work with a natural project structure. No need for ad
   hoc naming conventions like `data/20190922/labels_v7_final`.
@@ -53,7 +52,8 @@ DVC's approach brings the following benefits:
   that improve productivity and scalability.
 - **Data compliance**: Maintain visibility on data and ML model changes. Review
   who wants to modify them, and why, with pull requests (e.g. on GitHub). Audit
-  this process later: when was a model version approved, and by whom?
+  this process later to determine when and by whom where data or model versions
+  approved.
 
 In summary, data science and machine learning are iterative processes where the
 lifecycles of data, code, and ML models occur at different paces. DVC helps
