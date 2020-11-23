@@ -156,24 +156,25 @@ that.
 
 ```dvc
 $ dvc status
-bar:
+foo:
 	changed deps:
-		modified:           bar
+		modified:           foo
 	changed outs:
-		not in cache:       foo
-foo.dvc:
+		not in cache:       bar
+foo:
 	changed outs:
 		deleted:            foo
 	changed checksum
-prepare.dvc:
+foobar.dvc:
 	changed outs:
-		new:                bar
+		new:                foobar
 	always changed
 ```
 
-This shows that for stage `bar`, the dependency `bar` and the
-<abbr>output</abbr> `foo` have changed. Likewise for `foo.dvc`, the output `foo`
-has changed, but no dependency has changed.
+This shows that for stage `foo`, the dependency `foo` and the
+<abbr>output</abbr> `bar` have changed. Whereas for stage `foo`, the output
+`foo` has changed, but no dependency has changed. Likewise for `foobar.dvc`, the
+output `foobar` tracked by it has changed.
 
 ## Example: Specific files or directories
 
@@ -189,7 +190,7 @@ dobar:
 	changed deps:
 		modified:           bar
 	changed outs:
-		not in cache:               foo
+		not in cache:       foo
 ```
 
 > In this case, the target `foo.dvc` is a `.dvc` file to track the `foo` file,

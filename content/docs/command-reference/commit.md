@@ -257,7 +257,7 @@ $ git status -s
 M src/train.py
 
 $ dvc status
-train.dvc:
+train:
 	changed deps:
 		modified:           src/train.py
 ```
