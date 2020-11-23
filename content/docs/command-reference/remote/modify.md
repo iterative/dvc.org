@@ -9,8 +9,8 @@ Modify the configuration of a [data remote](/doc/command-reference/remote).
 ## Synopsis
 
 ```usage
-usage: dvc remote modify [-h] [--global | --system | --local]
-                         [-q | -v] [-u]
+usage: dvc remote modify [-h] [--global | --system | --local] [-q | -v]
+                         [-u]
                          name option [value]
 
 positional arguments:
@@ -39,7 +39,7 @@ manual editing could be used to change the configuration.
   `~/.config/dvc/config`) instead of `.dvc/config`.
 
 - `--system` - save remote configuration to the system config (e.g.
-  `/etc/dvc.config`) instead of `.dvc/config`.
+  `/etc/dvc/config`) instead of `.dvc/config`.
 
 - `--local` - modify a local [config file](/doc/command-reference/config)
   instead of `.dvc/config`. It is located in `.dvc/config.local` and is
@@ -66,13 +66,22 @@ The following config options are available for all remote types:
   below):
 
   ```dvc
-  $ dvc remote modify s3remote url s3://mybucket/path
+  $ dvc remote modify s3remote s3://mybucket/path
   ```
 
   Or a _local remote_ (a directory in the file system):
 
   ```dvc
   $ dvc remote modify localremote url /home/user/dvcstore
+  ```
+
+- `jobs` - change the default number of processes for
+  [remote storage](/doc/command-reference/remote) synchronization operations
+  (see the `--jobs` option of `dvc push`, `dvc pull`, `dvc fetch`, `dvc status`,
+  and `dvc gc`). Accepts positive integers. The default is typically `4`.
+
+  ```dvc
+  $ dvc remote modify myremote jobs 8
   ```
 
 - `verify` - upon downloading <abbr>cache</abbr> files (`dvc pull`, `dvc fetch`)
@@ -159,7 +168,7 @@ these settings, you could use the following options.
   $ dvc remote modify myremote listobjects true
   ```
 
-- `sse` - server-side encryption algorithm to use (e.g., AES256, aws:kms). By
+- `sse` - server-side encryption algorithm to use (e.g. AES256, aws:kms). By
   default, no encryption is used.
 
   ```dvc
@@ -227,6 +236,17 @@ these settings, you could use the following options.
   > - [ACL Overview - Permissions](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#permissions)
   > - [Put Object ACL](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObjectAcl.html)
 
+S3 remotes can also be configured entirely via environment variables:
+
+```dvc
+$ export AWS_ACCESS_KEY_ID='<my-access-key>'
+$ export AWS_SECRET_ACCESS_KEY='<my-secret-key>'
+$ dvc remote add -d myremote s3://mybucket/my/path
+```
+
+For more information about the variables DVC supports, please visit
+[boto3 documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/configuration.html#environment-variable-configuration)
+
 </details>
 
 <details>
@@ -245,16 +265,17 @@ $ dvc remote modify myremote endpointurl \
                     https://object-storage.example.com
 ```
 
-S3 remotes can also be configured entirely via environment variables:
+Besides that, any settings that are available for Amazon S3 (see previous
+section) may be available for S3 compatible storage. For example, let's setup a
+DVC remote using the `example-name`
+[DigitalOcean space](https://www.digitalocean.com/community/tutorials/how-to-create-a-digitalocean-space-and-api-key)
+(equivalent to a bucket in AWS) in the `nyc3` region:
 
 ```dvc
-$ export AWS_ACCESS_KEY_ID='<my-access-key>'
-$ export AWS_SECRET_ACCESS_KEY='<my-secret-key>'
-$ dvc remote add -d myremote s3://mybucket/my/path
+$ dvc remote add -d myremote s3://example-name/path/to/use
+$ dvc remote modify myremote endpointurl \
+                             https://nyc3.digitaloceanspaces.com
 ```
-
-For more information about the variables DVC supports, please visit
-[boto3 documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/configuration.html#environment-variable-configuration)
 
 </details>
 
@@ -539,11 +560,23 @@ more information.
   $ dvc remote modify myremote gss_auth true
   ```
 
+- `allow_agent` - whether to use [SSH agents](https://www.ssh.com/ssh/agent)
+  (`true` by default). Setting this to `false` is useful when `ssh-agent` is
+  causing problems, such as a "No existing session" error:
+
+  ```dvc
+  $ dvc remote modify myremote allow_agent false
+  ```
+
 </details>
 
 <details>
 
 ### Click for HDFS
+
+💡 Using a HDFS cluster as remote storage is also supported via the WebHDFS API.
+Read more about by expanding the WebHDFS section in
+[`dvc remote add`](/doc/command-reference/remote/add#supported-storage-types).
 
 - `url` - remote location:
 
@@ -572,6 +605,9 @@ more information.
   $ dvc remote modify myremote url https://example.com/path/to/dir
   ```
 
+  > The URL can include a query string, which will be preserved (e.g.
+  > `example.com?loc=path%2Fto%2Fdir`)
+
 - `auth` - authentication method to use when accessing the remote. The accepted
   values are:
 
@@ -589,6 +625,16 @@ more information.
 
   ```dvc
   $ dvc remote modify myremote auth basic
+  ```
+
+- `method` - override the
+  [HTTP method](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods) to
+  use for file uploads (e.g. `PUT` should be used for
+  [Artifactory](https://www.jfrog.com/confluence/display/JFROG/Artifactory+REST+API)).
+  By default, `POST` is used.
+
+  ```dvc
+  $ dvc remote modify myremote method PUT
   ```
 
 - `custom_auth_header` - HTTP header field name to use when the `auth` parameter
@@ -629,6 +675,85 @@ more information.
   > Note that the `password` parameter takes precedence over `ask_password`. If
   > `password` is specified, DVC will not prompt the user to enter a password
   > for this remote.
+
+- `ssl_verify` - allows to disable SSH verification, which is enabled by
+  default.
+
+  ```dvc
+  $ dvc remote modify myremote ssl_verify false
+  ```
+
+</details>
+
+<details>
+
+### Click for WebHDFS
+
+💡 WebHDFS serves as an alternative for using the same remote storage supported
+by HDFS. Read more about by expanding the WebHDFS section in
+[`dvc remote add`](/doc/command-reference/remote/add#supported-storage-types).
+
+- `url` - remote location:
+
+  ```dvc
+  $ dvc remote modify myremote url webhdfs://user@example.com/path/to/dir
+  ```
+
+- `user` - username to access the remote, can be empty in case of using `token`
+  or if using a `HdfsCLI` cfg file. May only be used when Hadoop security is
+  off. Defaults to current user as determined by `whoami`.
+
+  ```dvc
+  $ dvc remote modify --local myremote user myuser
+  ```
+
+- `token` - Hadoop delegation token for WebHDFS, can be empty in case of using
+  `user` or if using a `HdfsCLI` cfg file. May be used when Hadoop security is
+  on.
+
+  ```dvc
+  $ dvc remote modify --local myremote token mytoken
+  ```
+
+- `hdfscli_config` - path to a `HdfsCLI` cfg file. WebHDFS access depends on
+  `HdfsCLI`, which allows the usage of a configuration file by default located
+  in `~/.hdfscli.cfg`. In the file, multiple aliases can be set with their own
+  connection parameters, like `url` or `user`. If using a cfg file,
+  `webhdfs_alias` can be set to specify which alias to use.
+
+  ```dvc
+  $ dvc remote modify --local myremote hdfscli_config `/path/to/.hdfscli.cfg`
+  ```
+
+  Sample configuration file:
+
+  ```ini
+  [global]
+  default.alias = myalias
+
+  [myalias.alias]
+  url = http://example.com/path/to/dir
+  user = myuser
+
+  [production.alias]
+  url = http://prodexample.com/path/to/dir
+  user = produser
+  ```
+
+  See more information in the `HdfsCLI`
+  [docs](https://hdfscli.readthedocs.io/en/latest/quickstart.html#configuration).
+
+- `webhdfs_alias` - alias in a `HdfsCLI` cfg file to use. Only relevant if used
+  in conjunction with `hdfscli_config`. If not defined, `default.alias` in
+  `HdfsCLI` cfg file will be used instead.
+
+  ```dvc
+  $ dvc remote modify --local myremote webhdfs_alias myalias
+  ```
+
+> The username, token, webhdfs_alias, and hdfscli_config may contain sensitive
+> user info. Therefore, it's safer to add it with the `--local` option, so it's
+> written to a Git-ignored config file.
 
 </details>
 

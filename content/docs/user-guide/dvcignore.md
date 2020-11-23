@@ -1,4 +1,4 @@
-# .dvcignore File
+# `.dvcignore` File
 
 Marks which files and/or directories should be excluded when traversing a
 <abbr>DVC project</abbr>.
@@ -149,12 +149,10 @@ adding new file:
 
 ```dvc
 $ dvc status
-
 Data and pipelines are up to date.
 
 $ mv data/data1 data/data3
 $ dvc status
-
 data.dvc:
 	changed outs:
 		modified:           data

@@ -70,9 +70,10 @@ Define a pipeline [stage](/doc/command-reference/run) with parameter
 dependencies:
 
 ```dvc
-$ dvc run -d users.csv -o model.pkl \
-        -p lr,train \
-        python train.py
+$ dvc run -n train \
+          -d train.py -d users.csv -o model.pkl \
+          -p lr,train \
+          python train.py
 ```
 
 Let's now print parameter values that we are tracking in this
@@ -81,16 +82,16 @@ Let's now print parameter values that we are tracking in this
 ```dvc
 $ dvc params diff
 Path         Param           Old   New
-params.yaml  lr              None  0.0041
-params.yaml  process.bow     None  15000
-params.yaml  process.thresh  None  0.98
-params.yaml  train.epochs    None  70
-params.yaml  train.layers    None  9
+params.yaml  lr              —     0.0041
+params.yaml  process.bow     —     15000
+params.yaml  process.thresh  —     0.98
+params.yaml  train.epochs    —     70
+params.yaml  train.layers    —     9
 ```
 
 The command above shows the difference in parameters between the workspace and
 the last committed version of the params file `params.yaml`. Since it did not
-exist before, all `Old` values are `None`.
+exist before, all `Old` values are `—`.
 
 In a project with parameters file history (params present in various Git
 commits), you will see both `Old` and `New` values. However, the parameters

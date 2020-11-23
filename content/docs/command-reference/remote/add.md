@@ -9,7 +9,8 @@ Add a new [data remote](/doc/command-reference/remote).
 
 ```usage
 usage: dvc remote add [-h] [--global | --system | --local] [-q | -v]
-                      [-d] [-f] name url
+                      [-d] [-f]
+                      name url
 
 positional arguments:
   name           Name of the remote.
@@ -58,7 +59,7 @@ DVC will determine the [type of remote](#supported-storage-types) based on the
   `~/.config/dvc/config`) instead of `.dvc/config`.
 
 - `--system` - save remote configuration to the system config (e.g.
-  `/etc/dvc.config`) instead of `.dvc/config`.
+  `/etc/dvc/config`) instead of `.dvc/config`.
 
 - `--local` - modify a local [config file](/doc/command-reference/config)
   instead of `.dvc/config`. It is located in `.dvc/config.local` and is
@@ -94,7 +95,7 @@ The following are the types of remote storage (protocols) supported:
 > [Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html).
 
 ```dvc
-$ dvc remote add -d s3remote url s3://mybucket/path
+$ dvc remote add -d s3remote s3://mybucket/path
 ```
 
 By default, DVC expects your AWS CLI is already
@@ -245,6 +246,10 @@ By default, DVC expects your GCP CLI is already
 default GCP key file to access Google Cloud Storage. To override some of these
 settings, use the parameters described in `dvc remote modify`.
 
+> Make sure to run `gcloud auth application-default login` unless you use
+> `GOOGLE_APPLICATION_CREDENTIALS` and/or service account, or other ways to
+> authenticate. See details [here](https://stackoverflow.com/a/53307505/298182).
+
 </details>
 
 <details>
@@ -319,11 +324,41 @@ Please check that you are able to connect both ways with tools like `ssh` and
 
 ### Click for HDFS
 
+💡 Using an HDFS cluster as remote storage is also supported via the WebHDFS
+API. Read more about it by expanding the WebHDFS section below.
+
 ```dvc
 $ dvc remote add -d myremote hdfs://user@example.com/path/to/dir
 ```
 
 > See also `dvc remote modify` for a full list of HDFS parameters.
+
+</details>
+
+<details>
+
+### Click for WebHDFS
+
+**HDFS and WebHDFS:**
+
+Both remotes, HDFS and WebHDFS, allow using a Hadoop cluster as a remote
+repository. However, HDFS relies on `pyarrow` which in turn requires `libhdfs`,
+an interface to the Java Hadoop client, that must be installed separately.
+Meanwhile, WebHDFS has no need for this requirement as it communicates with the
+Hadoop cluster via a HTTP REST API using the Python libraries `HdfsCLI` and
+`requests`. The latter remote should be preferred by users who seek easier and
+more portable setups, at the expense of performance due to the added overhead of
+HTTP.
+
+One last note: WebHDFS does require enabling the HTTP REST API in the cluster by
+setting the configuration property `dfs.webhdfs.enabled` to `true` in
+`hdfs-site.xml`.
+
+```dvc
+$ dvc remote add -d myremote webhdfs://user@example.com/path/to/dir
+```
+
+> See also `dvc remote modify` for a full list of WebHDFS parameters.
 
 </details>
 

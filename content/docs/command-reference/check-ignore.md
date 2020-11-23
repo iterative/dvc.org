@@ -6,8 +6,8 @@ patterns found in [`.dvcignore`](/doc/user-guide/dvcignore).
 ## Synopsis
 
 ```usage
-usage: usage: dvc check-ignore [-h] [-q | -v] [-d] [-a] [-n] [--stdin]
-                               targets [targets ...]
+usage: dvc check-ignore [-h] [-q | -v] [-d] [-a] [-n] [--stdin]
+                        targets [targets ...]
 
 positional arguments:
   targets        File or directory paths to check
@@ -119,7 +119,7 @@ file1
 file2
 ```
 
-It can also be used as a component of a POSIX pipe:
+It can also be used as part of a POSIX pipe:
 
 ```dvc
 cat file_list | dvc check-ignore --stdin

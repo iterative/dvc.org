@@ -1,3 +1,9 @@
+---
+description: 'Learn how you can use DVC to manage data science and machine
+learning projects: version data, access it anywhere, capture data pipelines, and
+manage experiments.'
+---
+
 # Get Started
 
 Assuming DVC is already [installed](/doc/install), let's initialize it by
@@ -11,7 +17,7 @@ In expandable sections that start with the ⚙️ emoji, we'll be providing more
 information for those trying to run the commands. It's up to you to pick the
 best way to read the material - read the text (skip sections like this, and it
 should be enough to understand the idea of DVC), or try to run them and get the
-fist hand experience.
+first hand experience.
 
 We'll be building an NLP project from scratch together. The end result is
 published on [GitHub](https://github.com/iterative/example-get-started).
@@ -43,13 +49,13 @@ Changes to be committed:
 $ git commit -m "Initialize DVC"
 ```
 
-DVC features can be grouped into layers. We'll explore them one by one in the
-next few sections:
+DVC features can be grouped into functional components. We'll explore them one
+by one in the next few sections:
 
-- [**Data versioning**](/doc/start/data-versioning) is the core part of DVC for
-  large files, datasets, ML models versioning and efficient sharing. We'll show
-  how to use a regular Git workflow, without storing large files with Git. Think
-  "Git for data".
+- [**Data versioning**](/doc/start/data-versioning) is the base layer of DVC for
+  large files, datasets, and machine learning models. It looks like a regular
+  Git workflow, but without storing large files in the repo (think "Git for
+  data"). Data is stored separately, which allows for efficient sharing.
 
 - [**Data access**](/doc/start/data-access) shows how to use data artifacts from
   outside of the project and how to import data artifacts from another DVC
@@ -61,4 +67,5 @@ next few sections:
   Think "Makefiles for data and ML projects" done right.
 
 - [**Experiments**](/doc/start/experiments) attach parameters, metrics, plots.
-  You can capture and navigate experiments not leaving Git. Think "Git for ML".
+  You can capture and navigate experiments without leaving Git. Think "Git for
+  machine learning".

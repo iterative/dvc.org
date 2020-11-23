@@ -12,22 +12,23 @@ usage: dvc plots show [-h] [-q | -v] [-t <name_or_path>] [-x <field>]
                       [targets [targets ...]]
 
 positional arguments:
-  targets               Metric files to visualize.
+  targets               Metrics files to visualize.
                         Shows all plots by default.
 ```
 
 ## Description
 
-This command provides a quick way to visualize metrics such as loss functions,
-AUC curves, confusion matrices, etc. All plots defined in `dvc.yaml` are used by
-default.
+This command provides a quick way to visualize
+[certain metrics](/doc/command-reference/plots#supported-file-formats) such as
+loss functions, AUC curves, confusion matrices, etc.
 
-Optionally, specific metric file `targets` to show are accepted. These must be
-listed in a `dvc.yaml` file (see the `--plots` option of `dvc run`).
+All plots defined in `dvc.yaml` are used by default, but specific plots files
+can be specified as `targets` (note that targets don't necessarily have to be
+defined in `dvc.yaml`).
 
 The plot style can be customized with
 [plot templates](/doc/command-reference/plots#plot-templates), using the
-`--template` option. To learn more about metric file formats and templates
+`--template` option. To learn more about metrics file formats and templates
 please see `dvc plots`.
 
 > Note that the default behavior of this command can be modified per metrics
@@ -48,11 +49,11 @@ please see `dvc plots`.
   auto-generated `index` field is used by default. See
   [Custom templates](/doc/command-reference/plots#custom-templates) for more
   information on this `index` field. Column names or numbers are expected for
-  tabular metric files.
+  tabular metrics files.
 
 - `-y <field>` - field name from which the Y axis data comes from. The last
   field found in the `targets` is used by default. Column names or numbers are
-  expected for tabular metric files.
+  expected for tabular metrics files.
 
 - `--x-label <text>` - X axis label. The X field name is the default.
 
@@ -159,9 +160,9 @@ file:///Users/usr/src/plots/logs.csv.html
 
 ## Example: Vega specification file
 
-In many automation scenarios (like CI/CD for ML), it is convenient to have the
+In many automation scenarios (like CI/CD for ML), it is convenient to output the
 [Vega specification](https://vega.github.io/vega/docs/specification/) file
-instead of a rendered HTML plot file. For example, to generating another image
+instead of rendering an HTML plot. For example, to generating another image
 format like PNG or JPEG, or to include it differently into a web/mobile app. The
 `--show-vega` option prevents wrapping this plot spec in HTML. Note that the
 resulting file is JSON:

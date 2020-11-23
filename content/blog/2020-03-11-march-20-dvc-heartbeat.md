@@ -106,9 +106,8 @@ description="Understand the constructs of the Python programming language and us
 link="packtpub.com"
 image="/uploads/images/2020-03-11/packt.jpeg"/>
 
-Last year in Mexico, DVC contributor [Ramón Valles](https://github.com/mroutis)
-gave a talk about reproducible machine learning workflows at Data Day
-Monterrey—and
+Last year in Mexico, DVC contributor Ramón Valles gave a talk about reproducible
+machine learning workflows at Data Day Monterrey—and
 [a video of his presentation](https://www.youtube.com/watch?v=tAxG-n20Di4) is
 now online! In this Spanish-language talk, Ramón gives a thorough look at DVC,
 particularly building pipelines for reproducible ML.

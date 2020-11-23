@@ -1,29 +1,30 @@
 # Use Cases
 
-We provide short articles on common ML workflow or data management scenarios
-that DVC can help with or improve. Our use cases are not written to be run
-end-to-end like tutorials. For more general, hands-on experience with DVC,
-please see our [Get Started](/doc/tutorials/get-started) instead.
+We provide short articles on common data science scenarios that DVC can help
+with or improve. Our use cases are not written to be run end-to-end like
+tutorials. For more general, hands-on experience with DVC, please see
+[Get Started](/doc/tutorials/get-started) instead.
 
 ## Why DVC?
 
-Even with all the success we've seen today in machine learning (ML), especially
-with deep learning and its applications in business, the data science community
-still lacks good practices for organizing their projects and collaborating
-effectively. This is a critical challenge: while ML algorithms and methods are
-no longer tribal knowledge, they are still difficult to implement, reuse, and
-manage.
+Even with all the success we've seen today in machine learning, especially with
+deep learning and its applications in business, data scientists still lack best
+practices for organizing their projects and collaborating effectively. This is a
+critical challenge: while ML algorithms and methods are no longer tribal
+knowledge, they are still difficult to implement, reuse, and manage.
 
 ## Basic uses of DVC
 
 If you store and process data files or datasets to produce other data or machine
 learning models, and you want to
 
-- capture and save <abbr>data artifacts</abbr> the same way you capture code;
-- track and switch between different versions of data or models easily;
-- understand how data or models were built in the first place;
-- be able to compare models and metrics to each other;
-- bring software engineering best practices to your data science team
+- track and save data and ML models the same way you capture code;
+- create and switch among different
+  [versions of data and ML models](/doc/use-cases/versioning-data-and-model-files)
+  easily;
+- understand how datasets and ML artifacts were built in the first place;
+- compare model metrics among [experiments](/doc/start/experiments);
+- adopt engineering tools and best practices in data science projects;
 
 DVC is for you!
 

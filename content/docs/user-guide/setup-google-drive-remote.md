@@ -50,6 +50,9 @@ folder i.e. `gdrive://<base>/path/to/folder`. The base can be one of:
    and [shared drives](https://support.google.com/a/users/answer/9310351)\*
    (these two can only be referenced by ID).
 
+   > ⚠️ The folder in question should be shared to specific users (or groups) so
+   > they can use it with DVC. "Anyone with a link" is not guaranteed to work.
+
    ```dvc
    $ dvc remote add myremote gdrive://0AIac4JZqHhKmUk9PDA
    ```
@@ -100,10 +103,10 @@ Optionally, follow these steps to create your own Google Cloud project and
 generate OAuth credentials for your GDrive remotes to connect to Google Drive.
 We highly recommend this for heavy use and advanced needs because:
 
-- you control your Google API usage limits, being able to request Google for an
+- You control your Google API usage limits, being able to request Google for an
   increase if needed.
-- it ensures optimal data transfer performance when you need it.
-- [using a service account](#using-service-accounts) for automation tasks (e.g.
+- It ensures optimal data transfer performance when you need it.
+- [Using a service account](#using-service-accounts) for automation tasks (e.g.
   CI/CD) is only possible this way.
 
 DVC uses the [Google Drive API](https://developers.google.com/drive) to connect
@@ -133,8 +136,8 @@ API connections, and its
    the **Save** (scroll to bottom).
 
 5. From the left sidebar, select **Credentials**, and click the **Create
-   credentials** dropdown to select **OAuth client ID**. Chose **Other** and
-   click **Create** to proceed with a default client name.
+   credentials** dropdown to select **OAuth client ID**. Chose **Desktop app**
+   and click **Create** to proceed with a default client name.
 
    ![](/img/gdrive-create-credentials.png)
 

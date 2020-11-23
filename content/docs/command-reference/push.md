@@ -71,9 +71,9 @@ in the cache (compared to the default remote.) It can be used to see what files
   or project. Note that both options can be combined, for example using the
   `-aT` flag.
 
-- `--all-commits` - same as `-a` or `-T` above, but applies to _all_ Git  
-  commits as well as the workspace. Useful for uploading all the data used in
-  the entire existing commit history of the project.
+- `--all-commits` - same as `-a` or `-T` above, but applies to _all_ Git commits
+  as well as the workspace. This uploads tracked data for the entire commit
+  history of the project.
 
 - `-d`, `--with-deps` - determines files to upload by tracking dependencies to
   the `targets`. If none are provided, this option is ignored. By traversing all
@@ -92,10 +92,11 @@ in the cache (compared to the default remote.) It can be used to see what files
 - `--run-cache` - uploads all available history of stage runs to the remote
   repository.
 
-- `-j <number>`, `--jobs <number>` - parallelism level for DVC to upload data
-  from remote storage. This only applies when the `--cloud` option is used, or a
-  `--remote` is given. The default value is `4 * cpu_count()`. For SSH remotes,
-  the default is `4`. Using more jobs may improve the overall transfer speed.
+- `-j <number>`, `--jobs <number>` - parallelism level for DVC to upload data to
+  remote storage. The default value is `4 * cpu_count()`. For SSH remotes, the
+  default is `4`. Note that the default value can be set using the `jobs` config
+  option with `dvc remote modify`. Using more jobs may improve the overall
+  transfer speed.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -149,9 +150,10 @@ Imagine the <abbr>project</abbr> has been modified such that the
 
 ```dvc
 $ dvc status --cloud
-  new:            data/model.p
-  new:            data/matrix-test.p
-  new:            data/matrix-train.p
+...
+    new:            data/model.p
+    new:            data/matrix-test.p
+    new:            data/matrix-train.p
 ```
 
 One could do a simple `dvc push` to share all the data, but what if you only
@@ -167,7 +169,7 @@ $ dvc push --with-deps matrix-train
 ... Push the rest of the data
 
 $ dvc status --cloud
-Data and pipelines are up to date.
+Cache and remote 'r1' are in sync.
 ```
 
 We specified a stage in the middle of this pipeline (`test-posts`) with the
@@ -258,8 +260,7 @@ $ tree ~/vault/recursive
 10 directories, 10 files
 
 $ dvc status --cloud
-
-Data and pipelines are up to date.
+Cache and remote 'r1' are in sync.
 ```
 
 And running `dvc status --cloud`, DVC verifies that indeed there are no more

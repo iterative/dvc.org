@@ -1,7 +1,7 @@
 # plots diff
 
 Show multiple versions of [plot metrics](/doc/command-reference/plots) by
-plotting them in a single image. This allows to easily compare them.
+overlaying them in a single plot. This allows to compare them easily.
 
 ## Synopsis
 
@@ -19,37 +19,41 @@ positional arguments:
 
 ## Description
 
-This command is a way to visualize the "difference" between metrics among
-experiments in the <abbr>repository</abbr> history, by plotting multiple
-versions of the metrics. All plots defined in `dvc.yaml` are used by default.
+This command is a way to visualize the "difference" between
+[certain metrics](/doc/command-reference/plots#supported-file-formats) among
+versions of the <abbr>repository</abbr>, by overlaying them in a single plot.
 
 > Note that unlike `dvc metrics diff`, this command does not calculate numeric
-> differences between metric file values.
+> differences between metrics file values.
 
 `revisions` are Git commit hashes, tag, or branch names. If none are specified,
-`dvc plots diff` compares targets currently present in the
-<abbr>workspace</abbr> (uncommitted changes) with their latest committed
-versions (required). A single specified revision results in comparing the
-workspace and that version.
+`dvc plots diff` compares plots currently present in the <abbr>workspace</abbr>
+(uncommitted changes) with their latest commit (required). A single specified
+revision results in comparing the workspace and that version.
 
-Note that any number of `revisions` can be provided, and the resulting plot
-shows all of them in a single output.
+💡 Note that any number of `revisions` can be provided, and the resulting plot
+shows all of them in a single image.
+
+All plots defined in `dvc.yaml` are used by default, but specific plots files
+can be specified with the `--targets` option (note that targets don't
+necessarily have to be defined in `dvc.yaml`).
 
 The plot style can be customized with
 [plot templates](/doc/command-reference/plots#plot-templates), using the
-`--template` option. To learn more about metric file formats and templates
+`--template` option. To learn more about metrics file formats and templates
 please see `dvc plots`.
 
 > Note that the default behavior of this command can be modified per metrics
 > file with `dvc plots modify`.
 
+Another way to display plots is the `dvc plots show` command, which just lists
+all the current plots, without comparisons.
+
 ## Options
 
-- `--targets <path>` - specific metric files to visualize. These must be listed
-  in a [`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvcyaml-file) file
-  (see the `--plots` option of `dvc run`). When specifying arguments for
-  `--targets` before `revisions`, you should use `--` after this option's
-  arguments, e.g.:
+- `--targets <path>` - specific metrics files to visualize. When specifying
+  arguments for `--targets` before `revisions`, you should use `--` after this
+  option's arguments, e.g.:
 
   ```dvc
   $ dvc plots diff --targets t1.json t2.csv -- HEAD v1 v2
@@ -74,11 +78,11 @@ please see `dvc plots`.
   auto-generated `index` field is used by default. See
   [Custom templates](/doc/command-reference/plots#custom-templates) for more
   information on this `index` field. Column names or numbers are expected for
-  tabular metric files.
+  tabular metrics files.
 
 - `-y <field>` - field name from which the Y axis data comes from. The last
   field found in the `--targets` is used by default. Column names or numbers are
-  expected for tabular metric files.
+  expected for tabular metrics files.
 
 - `--x-label <text>` - X axis label. The X field name is the default.
 
@@ -143,7 +147,7 @@ cat,turtle
 
 The predefined confusion matrix
 [template](/doc/command-reference/plots#plot-templates) (in
-`.dvc/plots/confusion.json`) shows how metric comparisons can be faceted by
+`.dvc/plots/confusion.json`) shows how metrics comparisons can be faceted by
 separate plots. It can be enabled with `-t` (`--template`):
 
 ```dvc

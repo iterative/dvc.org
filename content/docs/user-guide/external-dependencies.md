@@ -1,47 +1,50 @@
 # External Dependencies
 
 There are cases when data is so large, or its processing is organized in a way
-that you would like to avoid moving it out of its external/remote location. For
-example from a network attached storage (NAS) drive, processing data on HDFS,
+such that you would like to avoid moving it out of its external/remote location.
+For example from a network attached storage (NAS), processing data on HDFS,
 running [Dask](https://dask.org/) via SSH, or having a script that streams data
-from S3 to process it. A mechanism for external dependencies and
-[external outputs](/doc/user-guide/managing-external-data) provides a way for
-DVC to control data externally.
+from S3 to process it.
 
-## Description
+External <abbr>dependencies</abbr> and
+[external outputs](/doc/user-guide/managing-external-data) provide ways to track
+data outside of the <abbr>project</abbr>.
 
-With DVC, you can specify external files as dependencies for your pipeline
+## How it works
+
+You can specify external files or directories as dependencies for your pipeline
 stages. DVC will track changes in them and reflect this in the output of
 `dvc status`.
 
 Currently, the following types (protocols) of external dependencies are
 supported:
 
-- Local files and directories outside of your <abbr>workspace</abbr>
-- SSH
 - Amazon S3
 - Microsoft Azure Blob Storage
 - Google Cloud Storage
+- SSH
 - HDFS
 - HTTP
+- Local files and directories outside the <abbr>workspace</abbr>
 
 > Note that these are a subset of the remote storage types supported by
 > `dvc remote`.
 
-In order to specify an external dependency for your stage, use the usual `-d`
-option in `dvc run` with the external path or URL to your desired file or
-directory.
+In order to specify an external <abbr>dependency</abbr> for your stage, use the
+usual `-d` option in `dvc run` with the external path or URL to your desired
+file or directory.
 
 ## Examples
 
-As examples, let's take a look at a [stage](/doc/command-reference/run) that
-simply downloads a file from an external location, adding a `download_file`
-stage to your list of stages in dvc.yaml.
+Let's take a look at a `download_file` [stage](/doc/command-reference/run) that
+simply downloads a file from an external location.
 
 > Note that some of these commands use the `/home/shared` directory, typical in
 > Linux distributions.
 
-### Amazon S3
+<details>
+
+### Click for Amazon S3
 
 ```dvc
 $ dvc run -n download_file \
@@ -50,7 +53,11 @@ $ dvc run -n download_file \
           aws s3 cp s3://mybucket/data.txt data.txt
 ```
 
-### Microsoft Azure Blob Storage
+</details>
+
+<details>
+
+### Click for Microsoft Azure Blob Storage
 
 ```dvc
 $ dvc run -n download_file \
@@ -63,7 +70,11 @@ $ dvc run -n download_file \
                      --source-blob data.txt
 ```
 
-### Google Cloud Storage
+</details>
+
+<details>
+
+### Click for Google Cloud Storage
 
 ```dvc
 $ dvc run -n download_file \
@@ -72,7 +83,11 @@ $ dvc run -n download_file \
           gsutil cp gs://mybucket/data.txt data.txt
 ```
 
-### SSH
+</details>
+
+<details>
+
+### Click for SSH
 
 ```dvc
 $ dvc run -n download_file \
@@ -87,7 +102,11 @@ Please check that you are able to connect both ways with tools like `ssh` and
 
 > Note that your server's SFTP root might differ from its physical root (`/`).
 
-### HDFS
+</details>
+
+<details>
+
+### Click for HDFS
 
 ```dvc
 $ dvc run -n download_file \
@@ -97,7 +116,11 @@ $ dvc run -n download_file \
                   hdfs://user@example.com/data.txt data.txt
 ```
 
-### HTTP
+</details>
+
+<details>
+
+### Click for HTTP
 
 > Including HTTPs
 
@@ -108,7 +131,11 @@ $ dvc run -n download_file \
           wget https://example.com/data.txt -O data.txt
 ```
 
-### Local file system path
+</details>
+
+<details>
+
+### Click for local file system paths
 
 ```dvc
 $ dvc run -n download_file \
@@ -117,26 +144,40 @@ $ dvc run -n download_file \
           cp /home/shared/data.txt data.txt
 ```
 
-## Example: DVC remote aliases
+</details>
 
-If instead of a URL you'd like to use an alias that can be managed
-independently, or if the external dependency location requires access
-credentials, you may use `dvc remote add` to define this location as a DVC
-Remote, and then use a special URL with format `remote://{remote_name}/{path}`
-to define an external dependency.
+## Example: Using DVC remote aliases
 
-For example, for an HTTPs remote/dependency:
+You may want to encapsulate external locations as configurable entities that can
+be managed independently. This is useful if multiple dependencies (or stages)
+reuse the same location, or if its likely to change in the future. And if the
+location requires authentication, you need a way to configure it in order to
+connect.
+
+[DVC remotes](/doc/command-reference/remote) can do just this. You may use
+`dvc remote add` to define them, and then use a special URL with format
+`remote://{remote_name}/{path}` (remote alias) to define the external
+dependency.
+
+Let's see an example using SSH. First, register and configure the remote:
 
 ```dvc
-$ dvc remote add example https://example.com
+$ dvc remote add myssh ssh://myserver.com
+$ dvc remote modify --local myssh user myuser
+$ dvc remote modify --local myssh password mypassword
+```
+
+> Please refer to `dvc remote add` for more details like setting up access
+> credentials for the different remote types.
+
+Now, use an alias to this remote when defining the stage:
+
+```dvc
 $ dvc run -n download_file \
-          -d remote://example/data.txt \
+          -d remote://myssh/path/to/data.txt \
           -o data.txt \
           wget https://example.com/data.txt -O data.txt
 ```
-
-Please refer to `dvc remote add` for more details like setting up access
-credentials for the different remotes.
 
 ## Example: `import-url` command
 
@@ -149,12 +190,12 @@ $ dvc import-url https://data.dvc.org/get-started/data.xml
 Importing 'https://data.dvc.org/get-started/data.xml' -> 'data.xml'
 ```
 
-The command above creates the <abbr>import stage</abbr> (DVC-file)
-`data.xml.dvc`, that uses an external dependency (in this case an HTTPs URL).
+The command above creates the import `.dvc` file `data.xml.dvc`, that contains
+an external dependency (in this case an HTTPs URL).
 
 <details>
 
-### Expand to see resulting DVC-file
+### Expand to see resulting `.dvc` file
 
 ```yaml
 # ...
@@ -169,18 +210,18 @@ outs:
     persist: false
 ```
 
-DVC checks the headers returned by the server, looking for a strong
-[ETag](https://en.wikipedia.org/wiki/HTTP_ETag) or a
+DVC checks the headers returned by the server, looking for an
+[HTTP ETag](https://en.wikipedia.org/wiki/HTTP_ETag) or a
 [Content-MD5](https://tools.ietf.org/html/rfc1864) header, and uses it to
 determine whether the source has changed and we need to download the file again.
 
 </details>
 
-## Example: Using import
+## Example: Imports
 
-`dvc import` can download a <abbr>data artifact</abbr> from any <abbr>DVC
-project</abbr> or Git repository. It also creates an external dependency in its
-<abbr>import stage</abbr> (DVC-file).
+`dvc import` can download a file or directory from any <abbr>DVC project</abbr>,
+or from a Git repository. It also creates an external dependency in its import
+`.dvc` file.
 
 ```dvc
 $ dvc import git@github.com:iterative/example-get-started model.pkl
@@ -193,7 +234,7 @@ specified (with the `repo` field).
 
 <details>
 
-### Expand to see resulting DVC-file
+### Expand to see resulting `.dvc` file
 
 ```yaml
 # ...

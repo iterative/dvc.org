@@ -90,7 +90,7 @@ $ git add scores.json prc.json
 $ git commit -a -m "Create evaluation stage"
 ```
 
-Later we we will see how these and other can be used to compare and visualize
+Later we will see how these and other can be used to compare and visualize
 different experiment iterations. For now, let's see how can we capture another
 important piece of information that will be useful to compare experiments:
 parameters.
@@ -100,7 +100,7 @@ parameters.
 It's pretty common for data science pipelines to include configuration files
 that define adjustable parameters to train a model, do pre-processing, etc. DVC
 provides a mechanism for stages to depend on the values of specific sections of
-such a config file (YAML, JSON and TOML formats are supported).
+such a config file (YAML, JSON, TOML, and Python formats are supported).
 
 Luckily, we should already have a stage with
 [parameters](/doc/command-reference/params) in `dvc.yaml`:

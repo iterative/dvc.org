@@ -71,7 +71,7 @@
         "children": ["tutorial"]
       },
       {
-        "label": "Sharing Data & Model Files",
+        "label": "Sharing Data and Model Files",
         "slug": "sharing-data-and-model-files"
       },
       "shared-development-server",
@@ -87,10 +87,7 @@
         "slug": "what-is-dvc",
         "source": "what-is-dvc.md"
       },
-      {
-        "label": "DVC Files and Directories",
-        "slug": "dvc-files-and-directories"
-      },
+      "dvc-files-and-directories",
       "merge-conflicts",
       {
         "slug": "dvcignore",
@@ -98,7 +95,16 @@
           "katacoda": "https://katacoda.com/dvc/courses/examples/dvcignore"
         }
       },
-      "updating-tracked-files",
+      {
+        "label": "How To",
+        "slug": "how-to",
+        "source": false,
+        "children": [
+          "add-output-to-stage",
+          "undo-adding-data",
+          "update-tracked-files"
+        ]
+      },
       "setup-google-drive-remote",
       "large-dataset-optimization",
       "external-dependencies",
@@ -125,10 +131,7 @@
           }
         ]
       },
-      {
-        "label": "Running DVC on Windows",
-        "slug": "running-dvc-on-windows"
-      },
+      "running-dvc-on-windows",
       "troubleshooting",
       "related-technologies",
       {
@@ -183,6 +186,10 @@
       {
         "label": "diff",
         "slug": "diff"
+      },
+      {
+        "label": "doctor",
+        "slug": "doctor"
       },
       {
         "label": "fetch",

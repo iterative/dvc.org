@@ -1,17 +1,24 @@
-# Tutorial: Versioning
+---
+title: 'Tutorial: Data and Model Versioning'
+description: 'Get hands-on experience with data versioning in a basic machine
+learning version control scenario: managing multiple datasets and ML models
+using DVC.'
+---
+
+# Tutorial: Data and Model Versioning
 
 The goal of this example is to give you some hands-on experience with a basic
-machine learning version control scenario: working with multiple versions of
-datasets and ML models using DVC commands. We'll work with a
+machine learning version control scenario: managing multiple datasets and ML
+models using DVC. We'll work with a
 [tutorial](https://blog.keras.io/building-powerful-image-classification-models-using-very-little-data.html)
 that [François Chollet](https://twitter.com/fchollet) put together to show how
 to build a powerful image classifier using a pretty small dataset.
 
 ![](/img/cats-and-dogs.jpg) _Dataset to classify cats and dogs_
 
-> We highly recommend reading the François' tutorial itself. It's a great
+> We highly recommend reading François' tutorial itself. It's a great
 > demonstration of how a general pre-trained model can be leveraged to build a
-> new highly performant model, with very limited resources.
+> new high-performance model, with very limited resources.
 
 We first train a classifier model using 1000 labeled images, then we double the
 number of images (2000) and retrain our model. We capture both datasets and
@@ -83,10 +90,9 @@ $ unzip -q data.zip
 $ rm -f data.zip
 ```
 
-> `dvc get` can download any <abbr>data artifact</abbr> tracked in a <abbr>DVC
-> repository</abbr>, using the appropriate
-> [remote storage](/doc/command-reference/remote). It's like `wget`, but for DVC
-> or Git repos. In this case we use our
+> `dvc get` can download any file or directory tracked in a <abbr>DVC
+> repository</abbr> (and [stored remotely](/doc/command-reference/remote)). It's
+> like `wget`, but for DVC or Git repos. In this case we use our
 > [dataset registry](https://github.com/iterative/dataset-registry) repo as the
 > data source (refer to [Data Registries](/doc/use-cases/data-registries) for
 > more info.)
@@ -237,9 +243,9 @@ $ git commit -m "Second model, trained with 2000 images"
 $ git tag -a "v2.0" -m "model v2.0, 2000 images"
 ```
 
-That's it! We have tracked a second dataset, model, and metrics versioned DVC,
-and the DVC-files that point to them committed with Git. Let's now look at how
-DVC can help us go back to the previous version if we need to.
+That's it! We've tracked a second version of the dataset, model, and metrics in
+DVC and committed the DVC-files that point to them with Git. Let's now look at
+how DVC can help us go back to the previous version if we need to.
 
 ## Switching between workspace versions
 
@@ -338,15 +344,15 @@ changed. For example, when we added new images to built the second version of
 our model, that was a dependency change. It also updates outputs and puts them
 into the <abbr>cache</abbr>.
 
-To make things a little simpler: if `dvc add` and `dvc checkout` provide a basic
-mechanism to version control large data files or models, `dvc run` and
-`dvc repro` provide a build system for ML models, which is similar to
+To make things a little simpler: `dvc add` and `dvc checkout` provide a basic
+mechanism for model and large dataset versioning. `dvc run` and `dvc repro`
+provide a build system for machine learning models, which is similar to
 [Make](https://www.gnu.org/software/make/) in software build automation.
 
 ## What's next?
 
-In this example, our focus was on giving you hands-on experience with versioning
-ML models and datasets. We specifically looked at the `dvc add` and
+In this example, our focus was on giving you hands-on experience with dataset
+and ML model versioning. We specifically looked at the `dvc add` and
 `dvc checkout` commands. We'd also like to outline some topics and ideas you
 might be interested to try next to learn more about DVC and how it makes
 managing ML projects simpler.
@@ -366,7 +372,7 @@ pipelines, and try to apply it here. Don't hesitate to join our
 [community](/chat) and ask any questions!
 
 Another detail we only brushed upon here is the way we captured the
-`metrics.csv` metric file with the `-M` option of `dvc run`. Marking this
+`metrics.csv` metrics file with the `-M` option of `dvc run`. Marking this
 <abbr>output</abbr> as a metric enables us to compare its values across Git tags
 or branches (for example, representing different experiments). See `dvc metrics`
 and

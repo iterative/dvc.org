@@ -15,18 +15,17 @@ positional arguments:
 
 ## Description
 
-At DVC initialization, a new `.dvc/` directory is created for internal
-configuration and <abbr>cache</abbr>
-[files and directories](/doc/user-guide/dvc-files-and-directories#internal-directories-and-files),
-that are hidden from the user.
+The DVC Cache is where your data files, models, etc. (anything you want to
+version with DVC) are actually stored. The data files and directories visible in
+the <abbr>workspace</abbr> are links\* to (or copies of) the ones in cache.
+Learn more about it's
+[structure](/doc/user-guide/dvc-files-and-directories#structure-of-the-cache-directory).
 
-The cache is where your data files, models, etc. (anything you want to version
-with DVC) are actually stored. The corresponding files you see in the
-<abbr>workspace</abbr> can simply link to the ones in cache. (Refer to
-[File link types](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
-for more information on file links on different platforms.)
+> \* Refer to
+> [File link types](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
+> for more information on file links on different platforms.
 
-> For more cache-related configuration options refer to `dvc config cache`.
+For cache configuration options, refer to `dvc config cache`.
 
 ## Options
 

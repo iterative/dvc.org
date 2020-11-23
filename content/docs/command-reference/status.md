@@ -19,10 +19,10 @@ positional arguments:
 
 ## Description
 
-`dvc status` searches for changes in the existing tracked data and pipelines,
-either showing which files or directories have changed in the
-<abbr>workspace</abbr> and should be added or reproduced again (with `dvc add`
-or `dvc repro`); or differences between <abbr>cache</abbr> vs. remote storage
+Searches for changes in the existing tracked data and pipelines, either showing
+which files or directories have changed in the <abbr>workspace</abbr> and should
+be added or reproduced again (with `dvc add` or `dvc repro`); or differences
+between <abbr>cache</abbr> vs. [remote storage](/doc/command-reference/remote)
 (implying `dvc push` or `dvc pull` should be run to synchronize them). The
 _remote_ mode is triggered by using the `--cloud` or `--remote` options:
 
@@ -43,11 +43,12 @@ paths to tracked files or directories (including paths inside tracked
 directories), `.dvc` files, and stage names (found in `dvc.yaml`).
 
 If no differences are detected, `dvc status` prints
-`Data and pipelines are up to date.` If differences are detected by
-`dvc status`, the command output indicates the changes. For each stage with
-differences, the changes in <abbr>dependencies</abbr> and/or
-<abbr>outputs</abbr> that differ are listed. For each item listed, either the
-file name or hash is shown, along with a _state description_, as detailed below:
+`Data and pipelines are up to date.` or
+`Cache and remote 'myremote' are in sync` (if using the `-c` or `-r` options are
+used). If differences are detected, the changes in <abbr>dependencies</abbr>
+and/or <abbr>outputs</abbr> for each stage that differs are listed. For each
+item listed, either the file name or hash is shown, along with a _state
+description_, as detailed below:
 
 ### Local workspace status
 
@@ -125,8 +126,8 @@ that.
   instead of a human-readable table.
 
 - `--all-commits` - same as `-a` or `-T` above, but applies to _all_ Git commits
-  as well as the workspace. Useful for comparing cache content for the entire
-  existing commit history of the project.
+  as well as the workspace. This compares the cache content for the entire
+  commit history of the project.
 
 - `-d`, `--with-deps` - determines files to check by tracking dependencies to
   the `targets`. If none are provided, this option is ignored. By traversing all
@@ -141,8 +142,9 @@ that.
 - `-j <number>`, `--jobs <number>` - parallelism level for DVC to retrieve
   information from remote storage. This only applies when the `--cloud` option
   is used, or a `--remote` is given. The default value is `4 * cpu_count()`. For
-  SSH remotes, the default is `4`. Using more jobs may improve the overall
-  transfer speed.
+  SSH remotes, the default is `4`. Note that the default value can be set using
+  the `jobs` config option with `dvc remote modify`. Using more jobs may improve
+  the overall connection speed.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -160,11 +162,11 @@ bar.dvc:
                 modified:      bar
         changed outs:
                 not in cache:      foo
-foo.dvc
+foo.dvc:
         changed outs:
                 deleted:      foo
         changed checksum
-prepare.dvc
+prepare.dvc:
         changed outs:
                 new:      bar
         always changed
@@ -180,11 +182,11 @@ This shows that for stage `bar.dvc`, the dependency `foo` and the
 
 ```dvc
 $ dvc status foo.dvc dobar
-foo.dvc
+foo.dvc:
   changed outs:
           deleted:      foo
   changed checksum
-dobar
+dobar:
   changed deps:
           modified:      bar
   changed outs:
@@ -220,7 +222,7 @@ $ dvc status model.p
 Data and pipelines are up to date.
 
 $ dvc status model.p --with-deps
-matrix-train.p
+matrix-train.p:
     changed deps:
             modified:  code/featurization.py
 ```
@@ -243,10 +245,11 @@ remote yet:
 
 ```dvc
 $ dvc status --remote storage
-new:      data/model.p
-new:      data/eval.txt
-new:      data/matrix-train.p
-new:      data/matrix-test.p
+...
+  new:      data/model.p
+  new:      data/eval.txt
+  new:      data/matrix-train.p
+  new:      data/matrix-test.p
 ```
 
 The output shows where the location of the remote storage is, as well as any

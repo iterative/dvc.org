@@ -1,6 +1,6 @@
 const moment = require('moment')
-const { getExpirationFields } = require('../../../utils/shared/expiration.js')
-const { childNodeCreator } = require('../../utils/models/nodes.js')
+const { getExpirationFields } = require('../../src/utils/shared/expiration')
+const content = require('../../content/community.json')
 
 function expiredNodesLog(typeName, nodes) {
   if (nodes.length > 0) {
@@ -68,11 +68,12 @@ module.exports = {
       })
     ])
   },
-  async onParseJsonFile(api, { content }) {
-    const { node, createNodeId, createContentDigest } = api
-    // Only operate on the File node for data.json
-    if (node.relativePath !== 'community.json') return null
-    const createChildNode = childNodeCreator(api)
+  async sourceNodes(api) {
+    const {
+      createNodeId,
+      createContentDigest,
+      actions: { createNode }
+    } = api
     const { events, hero, ...rest } = content
 
     const heroesPromise =
@@ -86,7 +87,7 @@ module.exports = {
             expired,
             sourceIndex
           }
-          await createChildNode({
+          return createNode({
             id: createNodeId(`CommunityHero >>> ${sourceIndex}`),
             ...fields,
             internal: {
@@ -110,7 +111,7 @@ module.exports = {
             expires,
             expired
           }
-          await createChildNode({
+          return createNode({
             id: createNodeId(`Event >>> ${date} >>> ${title}`),
             ...fields,
             internal: {
@@ -126,7 +127,7 @@ module.exports = {
        accessible as a JSON field. This way, we don't have to duplicate imported
        data before updating all Community components.
     */
-    const restPromise = createChildNode({
+    const restPromise = createNode({
       id: createNodeId(`DVCCommunityRest`),
       content: rest,
       internal: {

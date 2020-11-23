@@ -9,29 +9,29 @@ Additionally, there are a few metafiles that support DVC's features:
 
 - Files ending with the `.dvc` extension are placeholders to track data files
   and directories. A <abbr>DVC project</abbr> usually has one `.dvc` file per
-  large data file or dataset directory being tracked.
+  large data file or directory being tracked.
 - `dvc.yaml` files (or _pipelines files_) specify stages that form the
   pipeline(s) of a project, and how they connect (_dependency graph_ or DAG).
 
-  These typically have a matching `dvc.lock` file to record the pipeline state
-  and track its <abbr>data artifacts</abbr>.
+  These normally have a matching `dvc.lock` file to record the pipeline state
+  and track its <abbr>outputs</abbr>.
 
-Both `.dvc` files and `dvc.yaml` use human-friendly YAML schemas, described
+Both `.dvc` files and `dvc.yaml` use human-friendly YAML 1.2 schemas, described
 below. We encourage you to get familiar with them so you may create, generate,
 and edit them on your own.
 
 Both the internal directory and these metafiles should be versioned with Git (in
 Git-enabled <abbr>repositories</abbr>).
 
-## .dvc files
+## `.dvc` files
 
-When you add a file or directory to a <abbr>DVC project</abbr> with `dvc add` or
-`dvc import`, a `.dvc` file is created based on the data file name (e.g.
-`data.xml.dvc`). These files contain the information needed to track the data
-with DVC.
+When you add a file or directory to a <abbr>DVC project</abbr> with `dvc add`,
+`dvc import`, or `dvc import-url`, a `.dvc` file is created based on the data
+file name (e.g. `data.xml.dvc`). These files contain the information needed to
+track the data with DVC.
 
 They use a simple [YAML](https://yaml.org/) format, meant to be easy to read,
-edit, or even created manually by users. Here is a full sample:
+edit, or even created manually. Here is a sample:
 
 ```yaml
 outs:
@@ -50,11 +50,13 @@ meta:
   that represent the files or directories tracked with DVC. Typically there is
   only one (but several can be added or combined manually).
 - `deps`: List of <abbr>dependency</abbr> entries (details below). Only present
-  when `dvc import` and `dvc import-url` are used to generate this `.dvc` file.
+  when `dvc import` or `dvc import-url` are used to generate this `.dvc` file.
   Typically there is only one (but several can be added manually).
 - `wdir`: Working directory for the `outs` and `deps` paths (relative to the
   `.dvc` file's location). If this field is not present explicitly, it defaults
   to `.` (the `.dvc` file's location).
+- `md5`: (only for <abbr>imports</abbr>) MD5 hash of the import `.dvc` file
+  itself.
 - `meta` (optional): Arbitrary metadata can be added manually with this field.
   Any YAML contents is supported. `meta` contents are ignored by DVC, but they
   can be meaningful for user processes that read `.dvc` files.
@@ -65,10 +67,11 @@ An _output entry_ (`outs`) consists of these fields:
   the file's location)
 - `md5`, `etag`, or `checksum`: Hash value for the file or directory being
   tracked with DVC. MD5 is used for most locations (local file system and SSH);
-  [strong ETag](https://en.wikipedia.org/wiki/HTTP_ETag#Strong_and_weak_validation)
-  for HTTP, S3, or Azure
-  [external outputs](/doc/user-guide/managing-external-data); and a special
-  _checksum_ for HDFS.
+  [ETag](https://en.wikipedia.org/wiki/HTTP_ETag#Strong_and_weak_validation) for
+  HTTP, S3, or Azure [external outputs](/doc/user-guide/managing-external-data);
+  and a special _checksum_ for HDFS and WebHDFS.
+- `size`: Size of the file or directory (sum of all files).
+- `nfiles`: If a directory, number of files inside.
 - `cache`: Whether or not this file or directory is <abbr>cached</abbr> (`true`
   by default, if not present). See the `--no-commit` option of `dvc add`.
 
@@ -78,9 +81,11 @@ A _dependency entry_ (`deps`) consists of these fields:
   file's location)
 - `md5`, `etag`, or `checksum`: Hash value for the file or directory being
   tracked with DVC. MD5 is used for most locations (local file system and SSH);
-  [strong ETag](https://en.wikipedia.org/wiki/HTTP_ETag#Strong_and_weak_validation)
-  for HTTP, S3, or Azure <abbr>external dependencies</abbr>; and a special
-  _checksum_ for HDFS. See `dvc import-url` for more information.
+  [ETag](https://en.wikipedia.org/wiki/HTTP_ETag#Strong_and_weak_validation) for
+  HTTP, S3, or Azure <abbr>external dependencies</abbr>; and a special
+  _checksum_ for HDFS and WebHDFS. See `dvc import-url` for more information.
+- `size`: Size of the file or directory (sum of all files).
+- `nfiles`: If a directory, number of files inside.
 - `repo`: This entry is only for external dependencies created with
   `dvc import`, and can contains the following fields:
 
@@ -95,12 +100,12 @@ A _dependency entry_ (`deps`) consists of these fields:
 Note that comments can be added to `.dvc` files using the `# comment` syntax.
 `meta` fields and `#` comments are preserved among executions of the `dvc repro`
 and `dvc commit` commands, but not when a `.dvc` file is overwritten by
-`dvc add`,`dvc import`, or `dvc import-url`.
+`dvc add`, `dvc move`, `dvc import`, or `dvc import-url`.
 
-## dvc.yaml file
+## `dvc.yaml` file
 
-`dvc.yaml` files describe data pipelines, similar to how
-[Makefiles](https://www.gnu.org/software/make/manual/make.html#Introduction)
+`dvc.yaml` files describe data science or machine learning pipelines, similar to
+how [Makefiles](https://www.gnu.org/software/make/manual/make.html#Introduction)
 work for building software. Its YAML structure contains a list of stages which
 can be written manually or generated by user code.
 
@@ -148,7 +153,7 @@ the possible following fields:
 - `deps`: List of <abbr>dependency</abbr> file or directory paths of this stage
   (relative to `wdir` which defaults to the file's location)
 - `params`: List of <abbr>parameter</abbr> dependency keys (field names) that
-  are read from a YAML, JSON, or TOML file (`params.yaml` by default).
+  are read from a YAML, JSON, TOML, or Python file (`params.yaml` by default).
 - `outs`: List of <abbr>output</abbr> file or directory paths of this stage
   (relative to `wdir` which defaults to the file's location), and optionally,
   whether or not this file or directory is <abbr>cached</abbr> (`true` by
@@ -177,7 +182,7 @@ editors like [VSCode](/doc/install/plugins#visual-studio-code) or
 [PyCharm](/doc/install/plugins#pycharmintellij) to enable automatic syntax
 checks and auto-completion.
 
-### dvc.lock file
+### `dvc.lock` file
 
 For every `dvc.yaml` file, a matching `dvc.lock` (YAML) file usually exists.
 It's created or updated by DVC commands such as `dvc run` and `dvc repro`.
@@ -281,22 +286,30 @@ Full <abbr>parameters</abbr> (key and value) are listed separately under
 
 ## Structure of the cache directory
 
-There are two ways in which the data is stored in <abbr>cache</abbr>: As a
-single file (eg. `data.csv`), or a directory of files.
+The DVC cache is a
+[content-addressable storage](https://en.wikipedia.org/wiki/Content-addressable_storage)
+(by default in `.dvc/cache`), which adds a layer of indirection between code and
+data.
 
-For the first case, we calculate the file hash, a 32 characters long string
-(usually MD5). The first two characters are used to name the directory inside
-`.dvc/cache`, and the rest become the file name of the cached file. For example,
-if a data file `Posts.xml.zip` has a hash value of
-`ec1d2935f811b77cc49b031b999cbf17`, its path in the cache will be
+There are two ways in which the data is <abbr>cached</abbr>: As a single file
+(eg. `data.csv`), or as a directory.
+
+### Files
+
+DVC calculates the file hash, a 32 characters long string (usually MD5). The
+first two characters are used to name the directory inside the cache, and the
+rest become the file name of the cached file. For example, if a data file has a
+hash value of `ec1d2935f811b77cc49b031b999cbf17`, its path in the cache will be
 `.dvc/cache/ec/1d2935f811b77cc49b031b999cbf17`.
 
 > Note that file hashes are calculated from file contents only. 2 or more files
 > with different names but the same contents can exist in the workspace and be
 > tracked by DVC, but only one copy is stored in the cache. This helps avoid
-> data duplication in cache and remotes.
+> data duplication.
 
-For the second case, let us consider a directory with 2 images.
+### Directories
+
+Let's imagine [adding](/doc/command-reference/add) a directory with 2 images:
 
 ```dvc
 $ tree data/images/
@@ -307,21 +320,11 @@ data/images/
 $ dvc add data/images
 ```
 
-When running `dvc add` on this directory of images, a `data/images.dvc`
-[DVC-file](/doc/user-guide/dvc-files-and-directories) is created, containing the
-hash value of the directory:
-
-```yaml
-outs:
-  - md5: 196a322c107c2572335158503c64bfba.dir
-    path: data/images
-```
-
-The directory in cache is stored as a JSON file (with `.dir` file extension)
-describing it's contents, along with the files it contains in cache, like this:
+The directory is cached as a JSON file with `.dir` extension. The files it
+contains are stored in the cache regularly, as explained earlier. It looks like
+this:
 
 ```dvc
-$ tree .dvc/cache
 .dvc/cache/
 ├── 19
 │   └── 6a322c107c2572335158503c64bfba.dir
@@ -331,11 +334,8 @@ $ tree .dvc/cache
     └── 0b40427ee0998e9802335d98f08cd98f
 ```
 
-The cache file with `.dir` extension is a special text file that contains the
-mapping of files in the `data/` directory (as a JSON array), along with their
-hash values. The other two cache files are the files inside `data/`.
-
-A typical `.dir` cache file looks like this:
+The `.dir` file contains the mapping of files in `data/images` (as a JSON
+array), including their hash values:
 
 ```dvc
 $ cat .dvc/cache/19/6a322c107c2572335158503c64bfba.dir
@@ -343,4 +343,4 @@ $ cat .dvc/cache/19/6a322c107c2572335158503c64bfba.dir
 {"md5": "29a6c8271c0c8fbf75d3b97aecee589f", "relpath": "index.jpeg"}]
 ```
 
-See also `dvc cache dir` to set the location of the cache directory.
+That's how DVC knows that the other two cached files belong in the directory.

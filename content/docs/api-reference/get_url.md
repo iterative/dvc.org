@@ -50,8 +50,8 @@ or
 
 ## Parameters
 
-- **`path`** - location and file name of the file or directory in `repo`,
-  relative to the project's root.
+- **`path`** (required) - location and file name of the target, relative to the
+  root of the project (`repo`).
 
 - `repo` - specifies the location of the DVC project. It can be a URL or a file
   system path. Both HTTP and SSH protocols are supported for online Git repos
@@ -67,8 +67,6 @@ or
   [default remote](/doc/command-reference/remote/default) of `repo` is used.
 
 ## Exceptions
-
-- `dvc.api.UrlNotDvcRepoError` - `repo` is not a DVC project.
 
 - `dvc.exceptions.NoRemoteError` - no `remote` is found.
 

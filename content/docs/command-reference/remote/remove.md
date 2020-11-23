@@ -7,8 +7,8 @@ remotely.
 ## Synopsis
 
 ```usage
-usage: dvc remote remove [-h] [--global | --system | --local]
-                         [-q | -v] name
+usage: dvc remote remove [-h] [--global | --system | --local] [-q | -v]
+                         name
 
 positional arguments:
   name           Name of the remote to remove
@@ -28,7 +28,7 @@ The `name` argument is required.
   `~/.config/dvc/config`) instead of `.dvc/config`.
 
 - `--system` - save remote configuration to the system config (e.g.
-  `/etc/dvc.config`) instead of `.dvc/config`.
+  `/etc/dvc/config`) instead of `.dvc/config`.
 
 - `--local` - modify a local [config file](/doc/command-reference/config)
   instead of `.dvc/config`. It is located in `.dvc/config.local` and is

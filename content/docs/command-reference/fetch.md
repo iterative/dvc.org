@@ -35,7 +35,7 @@ Fetching is performed automatically by `dvc pull` (when the data is not already
 in the <abbr>cache</abbr>), along with `dvc checkout`:
 
 ```
-Controlled files             Commands
+Tracked files                Commands
 ---------------- ---------------------------------
 
 remote storage
@@ -85,9 +85,10 @@ The default remote is used (see
   If there are no directories among the `targets`, this option is ignored.
 
 - `-j <number>`, `--jobs <number>` - parallelism level for DVC to download data
-  from remote storage. This only applies when the `--cloud` option is used, or a
-  `--remote` is given. The default value is `4 * cpu_count()`. For SSH remotes,
-  the default is `4`. Using more jobs may improve the overall transfer speed.
+  from remote storage. The default value is `4 * cpu_count()`. For SSH remotes,
+  the default is `4`. Note that the default value can be set using the `jobs`
+  config option with `dvc remote modify`. Using more jobs may improve the
+  overall transfer speed.
 
 - `-a`, `--all-branches` - fetch cache for all Git branches instead of just the
   current workspace. This means DVC may download files needed to reproduce
@@ -101,8 +102,8 @@ The default remote is used (see
   `-aT` flag.
 
 - `--all-commits` - same as `-a` or `-T` above, but applies to _all_ Git commits
-  as well as the workspace. Useful for downloading all the data used in the
-  entire existing commit history of the project.
+  as well as the workspace. This downloads tracked data for the entire commit
+  history of the project.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -154,8 +155,8 @@ into our local <abbr>cache</abbr>.
 ```dvc
 $ dvc status --cloud
 ...
-  deleted:            data/features/train.pkl
-  deleted:            model.pkl
+    deleted:            data/features/train.pkl
+    deleted:            model.pkl
 
 $ dvc fetch
 
@@ -277,4 +278,4 @@ into the workspace (with `dvc repro train.dvc`).
 > Note that in this example project, the last stage file `evaluate.dvc` doesn't
 > add any more data files than those form previous stages, so at this point all
 > of the data for this pipeline is cached and `dvc status -c` would output
-> `Data and pipelines are up to date.`
+> `Cache and remote 'myremote' are in sync.`

@@ -1,4 +1,10 @@
-# Data Pipelines
+---
+title: 'Get Started: Data Pipelines'
+description: 'Learn how to build and use DVC pipelines to capture, organize,
+version, and reproduce your data science and machine learning workflows.'
+---
+
+# Get Started: Data Pipelines
 
 Versioning large data files and directories for data science is great, but not
 enough. How is data filtered, transformed, or used to train ML models? DVC
@@ -6,8 +12,10 @@ introduces a mechanism to capture _data pipelines_ — series of data processes
 that produce a final result.
 
 DVC pipelines and their data can also be easily versioned (using Git). This
-allows you to better organize your project, and reproduce your workflow and
-results later exactly as they were built originally!
+allows you to better organize projects, and reproduce your workflow and results
+later — exactly as they were built originally! For example, you could capture a
+simple ETL workflow, organize a data science project, or build a detailed
+machine learning pipeline.
 
 ## Pipeline stages
 
@@ -92,19 +100,19 @@ prepare:
 - `-o data/prepared` specifies an output directory for this script, which writes
   two files in it. This is how the <abbr>workspace</abbr> should look like now:
 
-  ```diff
-      .
-      ├── data
-      │   ├── data.xml
-      │   ├── data.xml.dvc
-  +   │   └── prepared
-  +   │       ├── test.tsv
-  +   │       └── train.tsv
-  +   ├── dvc.yaml
-  +   ├── dvc.lock
-      ├── params.yaml
-      └── src
-          ├── ...
+  ```git
+   .
+   ├── data
+   │   ├── data.xml
+   │   ├── data.xml.dvc
+  +│   └── prepared
+  +│       ├── test.tsv
+  +│       └── train.tsv
+  +├── dvc.yaml
+  +├── dvc.lock
+   ├── params.yaml
+   └── src
+       ├── ...
   ```
 
 - The last line, `python src/prepare.py ...`, is the command to run in this
@@ -247,7 +255,6 @@ Now, let's change it back to `50` and run `dvc repro` again:
 $ dvc repro
 Stage 'prepare' didn't change, skipping
 Stage 'featurize' didn't change, skipping
-Restored stage 'train' from run-cache
 ```
 
 Same as before, no need to run `prepare`, `featurize`, etc ... but, it doesn't
@@ -300,7 +307,7 @@ important problems:
   and which commands will generate the pipeline results (such as an ML model).
   Storing these files in Git makes it easy to version and share.
 - _Continuous Delivery and Continuous Integration (CI/CD) for ML_ - describing
-  projects in way that it can be reproduced (built) is the fist necessary step
+  projects in way that it can be reproduced (built) is the first necessary step
   before introducing CI/CD systems. See our sister project,
   [CML](https://cml.dev/) for some examples.
 

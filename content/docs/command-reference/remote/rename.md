@@ -6,8 +6,8 @@ changed by this command.
 ## Synopsis
 
 ```usage
-usage: dvc remote rename [-h] [--global | --system | --local]
-                         [-q | -v] name new
+usage: dvc remote rename [-h] [--global | --system | --local] [-q | -v]
+                         name new
 
 positional arguments:
   name           Remote to be renamed
@@ -32,7 +32,7 @@ DVC remote, respectively.
   `~/.config/dvc/config`) instead of `.dvc/config`.
 
 - `--system` - modify remote configuration to the system config (e.g.
-  `/etc/dvc.config`) instead of `.dvc/config`.
+  `/etc/dvc/config`) instead of `.dvc/config`.
 
 - `--local` - modify a local [config file](/doc/command-reference/config)
   instead of `.dvc/config`. It is located in `.dvc/config.local` and is

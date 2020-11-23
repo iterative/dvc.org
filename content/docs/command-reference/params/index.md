@@ -24,12 +24,13 @@ dependencies: _parameters_. Parameters are defined using the the `-p`
 
 In contrast to a regular <abbr>dependency</abbr>, a parameter is not a file (or
 directory). Instead, it consists of a _parameter name_ (or key) to find inside a
-YAML, JSON, or TOML _parameters file_. Multiple parameter dependencies can be
-specified from one or more parameters files.
+YAML 1.2, JSON, TOML, or [Python](#examples-python-parameters-file) _parameters
+file_. Multiple parameter dependencies can be specified from one or more
+parameters files.
 
 The default parameters file name is `params.yaml`. Parameters should be
 organized as a tree hierarchy inside, as DVC will locate param names by their
-tree path. parameters files have to be manually written, or generated, and these
+tree path. Parameters files have to be manually written, or generated, and these
 can be versioned directly with Git.
 
 Supported parameter _value_ types are: string, integer, float, and arrays. DVC
@@ -91,8 +92,8 @@ $ dvc run -n train -d users.csv -o model.pkl \
           python train.py
 ```
 
-> Note that we could use the same parameter addressing with JSON or TOML
-> parameters files.
+> Note that we could use the same parameter addressing with JSON, TOML, or
+> Python parameters files.
 
 The `train.py` script will have some code to parse the needed parameters. For
 example:
@@ -143,22 +144,109 @@ $ dvc run -n train -d logs/ -o users.csv \
           python train.py
 ```
 
-## Examples: Print all parameter values in the workspace
+## Examples: Python parameters file
+
+Consider this Python parameters file named `params.py`:
+
+```python
+# All standard variable types are supported.
+BOOL = True
+INT = 5
+FLOAT = 0.001
+STR = 'abc'
+DICT = {'a': 1, 'b': 2}
+LIST = [1, 2, 3]
+SET = {4, 5, 6}
+TUPLE = (10, 100)
+NONE = None
+
+# DVC can retrieve class constants and variables defined in __init__
+class TrainConfig:
+
+    EPOCHS = 70
+
+    def __init__(self):
+        self.layers = 5
+        self.layers = 9  # TrainConfig.layers param will be 9
+        self.sum = 1 + 2  # Will NOT be found due to the expression
+        bar = 3  # Will NOT be found since it's locally scoped
+
+
+class TestConfig:
+
+    TEST_DIR = 'path'
+    METRICS = ['metric']
+```
+
+The following [stage](/doc/command-reference/run) depends on params `BOOL`,
+`INT`, as well as `TrainConfig`'s `EPOCHS` and `layers`:
+
+```dvc
+$ dvc run -n train -d users.csv -o model.pkl \
+          -p params.py:BOOL,INT,TrainConfig.EPOCHS,TrainConfig.layers \
+          python train.py
+```
+
+Resulting `dvc.yaml` and `dvc.lock` files (notice the `params` list):
+
+```yaml
+stages:
+  train:
+    cmd: python train.py
+    deps:
+      - users.csv
+    params:
+      - BOOL
+      - INT
+      - TrainConfig.EPOCHS
+      - TrainConfig.layers
+    outs:
+      - model.pkl
+```
+
+```yaml
+train:
+  cmd: python train.py
+  deps:
+    - path: users.csv
+      md5: 23be4307b23dcd740763d5fc67993f11
+  params:
+    INT: 5
+    BOOL: true
+    TrainConfig.EPOCHS: 70
+    TrainConfig.layers: 9
+  outs:
+    - path: model.pkl
+      md5: 1c06b4756f08203cc496e4061b1e7d67
+```
+
+Alternatively, the entire `TestConfig` params group
+([class](https://docs.python.org/3/library/stdtypes.html#classes-and-class-instances))
+can be referenced
+([dictionaries](https://docs.python.org/3/library/stdtypes.html#dict) are also
+supported), instead of the parameters in it:
+
+```dvc
+$ dvc run -n train -d users.csv -o model.pkl \
+          -p params.py:BOOL,INT,TestConfig \
+          python train.py
+```
+
+## Examples: Print all parameters
 
 Following the previous example, we can use `dvc params diff` to list all of the
-available param values:
+param values available in the <abbr>workspace</abbr>:
 
 ```dvc
 $ dvc params diff
 Path         Param           Old    New
-params.yaml  lr              None   0.0041
-params.yaml  process.bow     None   15000
-params.yaml  process.thresh  None   0.98
-params.yaml  train.epochs    None   70
-params.yaml  train.layers    None   9
+params.yaml  lr              —      0.0041
+params.yaml  process.bow     —      15000
+params.yaml  process.thresh  —      0.98
+params.yaml  train.epochs    —      70
+params.yaml  train.layers    —      9
 ```
 
 This command shows the difference in parameters between the workspace and the
-last committed version of the `params.yaml` file. In our example, there's no
-previous version, which is why all `Old` values are `None`. See `params diff` to
-learn more about the `diff` command.
+last committed version of the `params.yaml` file. In our example there's no
+previous version, which is why all `Old` values are `—`.

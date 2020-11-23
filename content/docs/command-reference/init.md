@@ -26,8 +26,8 @@ advanced scenarios:
 - [Initializing DVC in subdirectories](#initializing-dvc-in-subdirectories)
   (`--subdir`) - for monorepos and nested <abbr>DVC projects</abbr>
 - [Initializing DVC without Git](#initializing-dvc-without-git) (`--no-scm`) -
-  for very simple projects, SCM other than Git, deployment automation, among
-  other uses
+  for very simple projects, version control systems other than Git, deployment
+  automation, among other uses
 
 ### Initializing DVC in subdirectories
 
@@ -119,8 +119,8 @@ include:
 - SCM other than Git is being used. Even though there are DVC features that
   require DVC to be run in the Git repo, DVC can work well with other version
   control systems. Since DVC relies on simple `dvc.yaml` files to manage
-  <abbr>pipelines</abbr>, data, etc, they can be added into any SCM thus
-  providing large data files and directories versioning.
+  <abbr>pipelines</abbr>, data, etc, they can be added into any version control
+  system, thus providing large data files and directories versioning.
 
 - There is no need to keep the history at all, e.g. having a deployment
   automation like running a data pipeline using `cron`.

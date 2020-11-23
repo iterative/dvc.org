@@ -13,7 +13,7 @@ perfect solution, but here are some ideas:
 
 - The full [Cmder](https://cmder.net/) console emulator combines several useful
   tools like [ConEmu](https://conemu.github.io/), and
-  [Git for Windows](https://gitforwindows.org/)\* (Git Bash) among other
+  [Git for Windows](https://gitforwindows.org/) (Git Bash) among other
   [shell options](https://github.com/cmderdev/cmder/blob/master/README.md#access-to-multiple-shells-in-one-window-using-tabs).
 - [Anaconda Prompt](https://docs.anaconda.com/anaconda/user-guide/getting-started/#open-prompt-win)
   is another recommendation.
@@ -24,16 +24,23 @@ perfect solution, but here are some ideas:
   continuation). But it has major
   [I/O performance issues](https://www.phoronix.com/scan.php?page=article&item=windows10-okt-wsl&num=2)
   and is [unable to access GPUs](https://github.com/Microsoft/WSL/issues/829),
-  et al.\*
+  among other limitations.
 - Install an actual Linux distro (e.g. Ubuntu) on a virtual machine, or in a HD
   partition (dual boot).
 
-## Disable short-file name generation
+## Enable symbolic links
 
-With NTFS, users may want to disable `8dot3` as per
-[this article](https://support.microsoft.com/en-us/help/121007/how-to-disable-8-3-file-name-creation-on-ntfs-partitions)
-to disable the short-file name generation. It is important to do so for better
-performance when the user has over 300K files in a single directory.
+This is done automatically by the DVC's Windows
+[installer](/doc/install/windows), but you may want to do it manually after any
+other installation methods like (`choco`, `conda`, `pip`).
+
+Symlinks are one of the possible file link types that DVC can use for
+[optimization](/doc/user-guide/large-dataset-optimization) purposes. They are
+available on Windows, but the
+[Create symbolic links](<https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn221947(v=ws.11)>)
+user privilege is needed. It's granted to the _Administrators_ group by default,
+so running `dvc` in a terminal as an admin is a good option for occasional use.
+For regular users, it can be granted using the _Local Security Policy_ console.
 
 ## Whitelist in Windows Security
 
@@ -59,6 +66,13 @@ Search Indexing can also slow down file I/O operations on Windows. Try
 [fixing](https://www.groovypost.com/howto/fix-windows-10-search-index/) or
 [disabling](https://winaero.com/blog/disable-search-indexing-windows-10/) this
 feature if you don't need it.
+
+## Disable short-file name generation
+
+With NTFS, users may want to disable `8dot3` as per
+[this article](https://support.microsoft.com/en-us/help/121007/how-to-disable-8-3-file-name-creation-on-ntfs-partitions)
+to disable the short-file name generation. It is important to do so for better
+performance when the user has over 300K files in a single directory.
 
 ## Avoid directories with large number of files
 

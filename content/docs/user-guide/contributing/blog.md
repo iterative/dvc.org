@@ -7,9 +7,11 @@ To create a new post, you need to create a PR to the DVC website
 
 Set up the
 [Development environment](/doc/user-guide/contributing/docs#development-environment)
-to see how your content will look like after you publish it. In the
-`yarn develop` mode you will be able to run the website locally, and it'll be
-updating content in your browser as you edit the post.
+to see how your content will look like after you publish it. The `yarn author`
+command will build a subset of the website with only the latest blog post, while
+`yarn develop` lets you preview the whole site at the cost of a longer build
+time. Both commands start up a development server which will continue to update
+as you add new content.
 
 ## Add a post
 
@@ -20,7 +22,7 @@ automatically.
 
 Write front matter in the following format:
 
-```yml
+```yaml
 ---
 title: Hello World
 date: 2015-05-01
@@ -131,7 +133,7 @@ Create `.md` file in the `content/authors` folder.
 
 Write front matter in the following format:
 
-```yml
+```yaml
 name: John Doe
 avatar: avatar.jpeg
 link: https://www.twitter.com/johndoe

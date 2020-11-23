@@ -1,14 +1,25 @@
-# Data Versioning
+---
+title: 'Get Started: Data Versioning'
+description: 'Get started with data versioning in DVC. Learn how to use a
+regular Git workflow for datasets and ML models, without storing large files in
+Git.'
+---
+
+# Get Started: Data Versioning
 
 How cool would it be to make Git handle arbitrary large files and directories
-with the same performance as with small code files? Imagine you can do a
-`git clone` and see data files and ML model files in the workspace. Or do
-`git checkout` and switch to a different version of a 100Gb size file in a less
-than a second?
+with the same performance as with small code files? Imagine doing a `git clone`
+and seeing data files and machine learning models in the workspace. Or switching
+to a different version of a 100Gb file in less than a second with a
+`git checkout`.
 
-The core part of DVC is a few commands that you can run along with Git to track
-a large file, ML model or a directory. To start tracking a file or directory,
-use `dvc add`:
+The foundation of DVC consists of a few commands that you can run along with
+`git` to track large files, directories, or ML models. Think "Git for data".
+Read on or watch our video to learn about versioning data with DVC!
+
+https://youtu.be/kLKBcPonMYw
+
+To start tracking a file or directory, use `dvc add`:
 
 <details>
 
@@ -25,9 +36,9 @@ $ dvc get https://github.com/iterative/dataset-registry \
 
 We use the fancy `dvc get` command to jump ahead a bit and show how Git repo
 becomes a source for datasets or models - what we call "data registry" or "model
-registry". `dvc get` can download any <abbr>data artifact</abbr> tracked in a
-<abbr>DVC repository</abbr>. It's like `wget`, but for DVC or Git repos. In this
-case we download the latest version of the `data.xml` file from the
+registry". `dvc get` can download any file or directory tracked in a <abbr>DVC
+repository</abbr>. It's like `wget`, but for DVC or Git repos. In this case we
+download the latest version of the `data.xml` file from the
 [dataset registry](https://github.com/iterative/dataset-registry) repo as the
 data source.
 
@@ -230,10 +241,10 @@ $ git commit data/data.xml.dvc -m "Revert dataset updates"
 
 </details>
 
-Yes, DVC is technically even not a version control system! `.dvc` files content
-defines data file versions. Git itself serves as the version control system. DVC
-in turn creates these `.dvc` files, updates them, and synchronizes DVC-tracked
-data in the <abbr>workspace</abbr> efficiently to match them.
+Yes, DVC is technically not even a version control system! `.dvc` files content
+defines data file versions. Git itself provides the version control. DVC in turn
+creates these `.dvc` files, updates them, and synchronizes DVC-tracked data in
+the <abbr>workspace</abbr> efficiently to match them.
 
 ## Large datasets versioning
 

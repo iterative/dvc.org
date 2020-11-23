@@ -66,8 +66,8 @@ The default remote is cleaned (see `dvc config core.remote`) unless the
   example using the `-aT` flag.
 
 - `--all-commits` - same as `-a` or `-T` above, but applies to _all_ Git commits
-  as well as the workspace (implies `-w`). Useful for keeping all the data used
-  in the entire existing commit history of the project.
+  as well as the workspace (implies `-w`). This keeps all the data used in the
+  entire commit history of the project.
 
   A use case for this option is to safely delete all temporary data `dvc run`
   and/or `dvc repro` cache when used without committing changes (see the `-O` or
@@ -92,7 +92,9 @@ The default remote is cleaned (see `dvc config core.remote`) unless the
 - `-j <number>`, `--jobs <number>` - parallelism level for DVC to access data
   from remote storage. This only applies when the `--cloud` option is used, or a
   `--remote` is given. The default value is `4 * cpu_count()`. For SSH remotes,
-  the default is `4`. Using more jobs may improve the overall transfer speed.
+  the default is `4`. Note that the default value can be set using the `jobs`
+  config option with `dvc remote modify`. Using more jobs may improve the
+  overall connection speed.
 
   > For now only some phases of garbage collection are parallel.
 

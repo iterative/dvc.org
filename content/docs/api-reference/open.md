@@ -28,7 +28,7 @@ with dvc.api.open(
 Open a data or model file tracked in a <abbr>DVC project</abbr> and generate a
 corresponding
 [file object](https://docs.python.org/3/glossary.html#term-file-object). The
-file can be tracked by DVC or by Git.
+file can be tracked by DVC (as an <abbr>output</abbr>) or by Git.
 
 > The exact type of file object depends on the `mode` used. For more details,
 > please refer to Python's
@@ -50,8 +50,8 @@ streamed, which optimizes memory usage.
 
 ## Parameters
 
-- **`path`** - location and file name of the file in `repo`, relative to the
-  project's root.
+- **`path`** (required) - location and file name of the target to open, relative
+  to the root of the project (`repo`).
 
 - `repo` - specifies the location of the DVC project. It can be a URL or a file
   system path. Both HTTP and SSH protocols are supported for online Git repos
@@ -84,15 +84,14 @@ streamed, which optimizes memory usage.
 
 - `dvc.exceptions.PathMissingError` - `path` cannot be found in `repo`.
 
-- `dvc.api.UrlNotDvcRepoError` - `repo` is not a DVC project.
-
 - `dvc.exceptions.NoRemoteError` - no `remote` is found.
 
-## Example: Use data or models from DVC repos
+## Example: Use data or models from a DVC repository
 
-Any <abbr>data artifact</abbr> hosted online can be processed directly in your
-Python code with this API. For example, an XML file tracked in a public DVC repo
-on GitHub can be processed like this:
+Any file tracked in a <abbr>DVC project</abbr> (and
+[stored remotely](/doc/command-reference/remote/add)) can be processed directly
+in your Python code with this API. For example, an XML file tracked in a public
+DVC repo on GitHub can be processed like this:
 
 ```py
 from xml.sax import parse
@@ -107,11 +106,10 @@ with dvc.api.open(
 ```
 
 Notice that we use a [SAX](http://www.saxproject.org/) XML parser here because
-`dvc.api.open()` is able to stream the data from
-[remote storage](/doc/command-reference/remote/add). (The `mySAXHandler` object
-should handle the event-driven parsing of the document in this case.) This
-increases the performance of the code (minimizing memory usage), and is
-typically faster than loading the whole data into memory.
+`dvc.api.open()` is able to stream the data from remote storage. (The
+`mySAXHandler` object should handle the event-driven parsing of the document in
+this case.) This increases the performance of the code (minimizing memory
+usage), and is typically faster than loading the whole data into memory.
 
 > If you just needed to load the complete file contents into memory, you can use
 > `dvc.api.read()` instead:

@@ -7,34 +7,6 @@
    alone does.
  */
 
-async function createStaticGithubDataNode(api, fieldData = {}) {
-  const {
-    actions: { createNode },
-    createNodeId,
-    createContentDigest
-  } = api
-
-  const fields = {
-    stars: 8888,
-    parent: null,
-    ...fieldData
-  }
-
-  const node = {
-    id: createNodeId('DVCGithubStaticData'),
-    children: [],
-    ...fields,
-    internal: {
-      type: 'StaticGithubData',
-      contentDigest: createContentDigest(fields)
-    }
-  }
-
-  await createNode(node)
-
-  return node
-}
-
 module.exports = {
   async createSchemaCustomization({ actions: { createTypes }, schema }) {
     createTypes(

@@ -1,7 +1,7 @@
 # list
 
 List repository contents, including files, models, and directories tracked by
-DVC (<abbr>data artifacts</abbr>) and by Git.
+DVC (as <abbr>outputs</abbr>) and by Git.
 
 ## Synopsis
 
@@ -20,8 +20,8 @@ DVC, by effectively replacing data files, models, directories with `.dvc` files
 (`.dvc`), hides actual locations and names. This means that you don't see data
 files when you browse a <abbr>DVC repository</abbr> on Git hosting (e.g.
 GitHub), you just see the `dvc.yaml` and `.dvc` files. This makes it hard to
-navigate the project to find <abbr>data artifacts</abbr> for use with `dvc get`,
-`dvc import`, or `dvc.api`.
+navigate the project to find files or directories for use with `dvc get`,
+`dvc import`, or `dvc.api` functions.
 
 `dvc list` prints a virtual view of a DVC repository, as if files and
 directories tracked by DVC were found directly in the remote Git repo. Only the
@@ -36,10 +36,9 @@ $ dvc pull
 $ ls <path>
 ```
 
-The `url` argument specifies the address of the Git repository containing the
-data source. Both HTTP and SSH protocols are supported for online repos (e.g.
-`[user@]server:project.git`). `url` can also be a local file system path to an
-"offline" Git repo.
+The `url` argument specifies the address of the DVC or Git repository containing
+the data source. Both HTTP and SSH protocols are supported (e.g.
+`[user@]server:project.git`). `url` can also be a local file system path.
 
 The optional `path` argument is used to specify a directory to list within the
 source repository at `url` (including paths inside tracked directories). It's
@@ -74,8 +73,7 @@ accessed with `dvc get`, `dvc import`, or `dvc.api`.
 
 We can use this command for getting information about a repository before using
 other commands like `dvc get` or `dvc import` to reuse any file or directory
-found in it. This includes files tracked by Git as well as <abbr>data
-artifacts</abbr> tracked by DVC-tracked:
+found in it. This includes files (or directories) tracked by DVC or by Git:
 
 ```dvc
 $ dvc list https://github.com/iterative/example-get-started

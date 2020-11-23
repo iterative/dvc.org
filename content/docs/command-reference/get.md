@@ -31,20 +31,19 @@ directory. (Analogous to `wget`, but for repos.)
 > directories to download.
 
 The `url` argument specifies the address of the DVC or Git repository containing
-the data source. Both HTTP and SSH protocols are supported for online repos
-(e.g. `[user@]server:project.git`). `url` can also be a local file system path
-to an "offline" repo (if it's a DVC repo without a default remote, instead of
-downloading, DVC will try to copy the target data from its <abbr>cache</abbr>).
+the data source. Both HTTP and SSH protocols are supported (e.g.
+`[user@]server:project.git`). `url` can also be a local file system path.
 
 The `path` argument is used to specify the location of the target to download
 within the source repository at `url`. `path` can specify any file or directory
-in the source repo, either tracked by DVC (including paths inside tracked
-directories) or by Git. Note that DVC-tracked targets must be found in a
-`dvc.yaml` or `.dvc` file of the repo.
+tracked by either Git or DVC (including paths inside tracked directories). Note
+that DVC-tracked targets must be found in a `dvc.yaml` or `.dvc` file of the
+repo.
 
-⚠️ The project should have a default
-[DVC remote](/doc/command-reference/remote), containing the actual data for this
-command to work.
+⚠️ DVC repos should have a default [DVC remote](/doc/command-reference/remote)
+containing the target actual for this command to work. The only exception is for
+local repos, where DVC will try to copy the data from its <abbr>cache</abbr>
+first.
 
 > See `dvc get-url` to download data from other supported locations such as S3,
 > SSH, HTTP, etc.
@@ -94,7 +93,7 @@ model.pkl
 Note that the `model.pkl` file doesn't actually exist in the
 [root directory](https://github.com/iterative/example-get-started/tree/master/)
 of the source Git repo. Instead, it's exported in the `dvc.yaml` file as an
-output of the `train` stage (in the `outs` field). DVC then
+<abbr>output</abbr> of the `train` stage (in the `outs` field). DVC then
 [pulls](/doc/command-reference/pull) the file from the default
 [remote](/doc/command-reference/remote) of the source DVC project (found in its
 [config file](https://github.com/iterative/example-get-started/blob/master/.dvc/config)).
@@ -106,8 +105,7 @@ output of the `train` stage (in the `outs` field). DVC then
 > upon request. This can be automated leveraging DVC with
 > [CI/CD](https://en.wikipedia.org/wiki/CI/CD) tools.
 
-The same example applies to raw or intermediate <abbr>data artifacts</abbr> as
-well.
+The same example applies to raw data or intermediate artifacts as well.
 
 ## Examples: Get a misc. Git-tracked file
 
@@ -140,11 +138,11 @@ https://remote.dvc.org/get-started/66/2eb7f64216d9c2c1088d0a5e2c6951
 ## Example: Compare different versions of data or model
 
 `dvc get` provides the `--rev` option to specify which
-[commit](https://git-scm.com/docs/revisions) of the repository to download a
-<abbr>data artifact</abbr> from. It also has the `--out` option to specify the
-location to place the target data within the workspace. Combining these two
-options allows us to do something we can't achieve with the regular
-`git checkout` + `dvc checkout` process – see for example the
+[commit](https://git-scm.com/docs/revisions) of the repository to download the
+file or directory from. It also has the `--out` option to specify the location
+to place the target data within the workspace. Combining these two options
+allows us to do something we can't achieve with the regular `git checkout` +
+`dvc checkout` process – see for example the
 [Get Older Data Version](/doc/tutorials/get-started/data-versioning#navigate-versions)
 chapter of our _Get Started_.
 
