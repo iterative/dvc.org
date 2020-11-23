@@ -7,13 +7,14 @@ DVC also enables cross-project [reusability](/doc/start/data-access) of these
 from other DVC repositories — like a **package management system for data
 science**.
 
-![](/img/data-registry.png) _Data and models as code_
+![](/img/data-registry.png) _Data management middleware_
 
 We can build a <abbr>DVC project</abbr> dedicated to versioning _datasets_ (or
-data features, ML models, etc.). It would have all the metadata and change
-history for the data it tracks. We could see who changed what and when, and use
-pull requests to update data like we do with code. This is what we call a **data
-registry** — data management _middleware_ between ML projects and cloud storage.
+data features, ML models, etc.). The repository would have all the metadata and
+change history for the data it tracks. We could see who changed what and when,
+and use pull requests to update data like we do with code. This is what we call
+a **data registry** — data management _middleware_ between ML projects and cloud
+storage.
 
 Advantages of data registries:
 
@@ -154,8 +155,9 @@ with dvc.api.open(model_path, repo_url) as fd:
     # ... Use the model!
 ```
 
-This opens `model.pkl` as a file descriptor. The example above illustrates a
-simple ML model **deployment** method.
+This opens `model.pkl` as a file descriptor. This example illustrates a simple
+ML model **deployment** method, but it could be extended to more advances
+scenarios such as a _model zoo_.
 
 See also the `dvc.api.read()` and `dvc.api.get_url()` functions.
 
