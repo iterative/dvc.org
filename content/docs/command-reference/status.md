@@ -157,7 +157,7 @@ that.
 
 ```dvc
 $ dvc status
-foo:
+bar:
 	changed deps:
 		modified:           foo
 	changed outs:
@@ -172,9 +172,9 @@ foobar.dvc:
 	always changed
 ```
 
-This shows that for stage `foo`, the dependency `foo` and the
-<abbr>output</abbr> `bar` have changed. Whereas for stage `foo`, the output
-`foo` has changed, but no dependency has changed. Likewise for `foobar.dvc`, the
+This shows that for stage `bar`, the dependency `foo` and the
+<abbr>output</abbr> `bar` have changed, and for stage `foo`, the output `foo`
+has changed, but no dependency has changed. Likewise for `foobar.dvc`, the
 output `foobar` tracked by it has changed.
 
 ## Example: Specific files or directories
