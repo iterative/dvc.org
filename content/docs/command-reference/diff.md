@@ -110,7 +110,7 @@ $ dvc diff
 
 Let's checkout the
 [2-track-data](https://github.com/iterative/example-get-started/releases/tag/2-track-data)
-tag, corresponding to the [data versioning](/doc/start/data-versioning) _Get
+tag, corresponding to the [Data Versioning](/doc/start/data-versioning) _Get
 Started_ chapter, right after we added `data.xml` file with DVC:
 
 ```dvc
