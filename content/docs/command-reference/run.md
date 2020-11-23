@@ -5,6 +5,8 @@ command.
 
 ## Synopsis
 
+# TODO logs
+
 ```usage
 usage: dvc run [-h] [-q | -v] -n <name> [-d <path>] [-o <path>]
                [-O <path>] [-p [<path>:]<params_list>] [-m <path>]
@@ -220,6 +222,22 @@ $ dvc run -n my_stage './my_script.sh $MYENVVAR'
   track the plots metrics file. This means that the file is not cached, so it's
   up to the user to manage them separately. See also the difference between `-o`
   and `-O`.
+
+- `--logs <path>` - specify a directory that will contain `dvclive` logs (#TODO
+  link) compatible structure:
+
+  ```<path>
+     ├── history
+     │   ├── m1.tsv
+     │   └── m2.tsv
+     └── latest.json
+  ```
+
+  It is a convinience option that tells dvc that under `<path>/history` are
+  plots, and under `<path>/latest.json` are metrics logged by `dvclive`.
+
+- `logs-no-cache <path>` - the same as `--logs` except that DVC does not track
+  the files.
 
 - `-w <path>`, `--wdir <path>` - specifies a working directory for the `command`
   to run in (uses the `wdir` field in `dvc.yaml`). Dependency and output files
