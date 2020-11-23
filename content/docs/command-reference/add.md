@@ -7,7 +7,7 @@ file.
 
 ```usage
 usage: dvc add [-h] [-q | -v] [-R] [--no-commit] [--external]
-               [--file <filename>]
+               [--file <filename>] [--glob]
                targets [targets ...]
 
 positional arguments:
@@ -143,6 +143,10 @@ directory symlinks.
 
 - `--external` - allow `targets` that are outside of the DVC repository. See
   [Managing External Data](/doc/user-guide/managing-external-data).
+
+- `--glob` - allows adding files and directories that match the specified
+  pattern as specified by `target`. Shell-style wildcards are supported: `*`,
+  `?`, `[seq]`, `[!seq]`, and `**`.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 

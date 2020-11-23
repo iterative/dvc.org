@@ -177,9 +177,10 @@ up-to-date and only execute the final stage.
 
 ## Examples
 
-For simplicity, let's build a pipeline defined below. (If you want get your
-hands-on something more real, see this short
-[pipeline tutorial](/doc/start/data-pipelines)). It takes this `text.txt` file:
+> To get hands-on experience with data science and machine learning pipelines,
+> see [Get Started: Data Pipelines](/doc/start/data-pipelines).
+
+Let's build and reproduce a simple pipeline. It takes this `text.txt` file:
 
 ```
 dvc
