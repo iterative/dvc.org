@@ -233,10 +233,9 @@ dependencies/outputs of other pipeline stages are still missing from the cache:
 ```dvc
 $ dvc status -c
 ...
-	deleted:            model.pkl
 	deleted:            data/features/test.pkl
 	deleted:            data/features/train.pkl
-	deleted:            data/data.xml
+	deleted:            model.pkl
 ```
 
 One could do a simple `dvc fetch` to get all the data, but what if you only want
