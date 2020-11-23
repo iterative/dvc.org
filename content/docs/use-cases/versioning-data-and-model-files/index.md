@@ -21,12 +21,15 @@ data._
 DVC enables data _versioning through codification_. This means describing which
 data, ML artifacts, etc. should be in the environment at any given time. This is
 achieved with special [metafiles](/doc/user-guide/dvc-files-and-directories)
-that can be put in Git — but we won't go much deeper into how it works here,
-since we have many [guides](/doc/user-guide) and
-[references](/doc/command-reference) for that. To learn how it looks and feels,
-try our
+that can be put in Git. These use constant file names but link to variable
+contents (via the metadata in Git), so that the data can be modified
+independently from the source code that addresses it.
+
+We won't go much deeper into how it works here, since we have many
+[guides](/doc/user-guide) and [references](/doc/command-reference) for that. You
+can also try our
 [versioning tutorial](/doc/use-cases/versioning-data-and-model-files/tutorial)
-👩‍💻.
+👩‍💻 to learn how it looks and feels.
 
 DVC's approach brings the following benefits:
 
@@ -49,7 +52,7 @@ DVC's approach brings the following benefits:
   [data registries](/doc/use-cases/data-registries), and other best practices
   that improve productivity and scalability.
 - **Data compliance**: Maintain visibility on data and ML model changes. Review
-  who wants to modify them, and why, via pull requests (e.g. on GitHub). Audit
+  who wants to modify them, and why, with pull requests (e.g. on GitHub). Audit
   this process later: when was a model version approved, and by whom?
 
 In summary, data science and machine learning are iterative processes where the
