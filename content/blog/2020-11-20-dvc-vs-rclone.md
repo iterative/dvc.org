@@ -10,7 +10,7 @@ descriptionLong: |
   results from DVC and rclone. We will then conclude with a more in-depth explanation of
   optimizations made in DVC 1.0 which enabled us to outperform both older DVC
   releases as well as general data sync tools.
-picture: ''
+picture: 2020-11-20/header.png
 author: peter_rowlands
 ---
 
