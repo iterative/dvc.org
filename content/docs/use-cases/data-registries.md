@@ -8,16 +8,17 @@ like `dvc import` and `dvc get`. This means that your projects can depend on
 data from other DVC repositories, **similar to a package management systems for
 data science**.
 
-![](/img/data-registry.png) _Data and models as code_
+![](/img/data-registry.png) _Data management middleware_
 
 This means we can build a <abbr>DVC project</abbr> dedicated to tracking and
-versioning _datasets_ (or any large files, directories, ML models, etc.). The
-repository would have all the metadata and history of changes in the different
-datasets. We could see who updated what and when, and use pull requests to
-update data, the same way we do with code.
+versioning _datasets_ (or any large files, directories, machine learning models,
+etc.). The repository would have all the metadata and history of changes in the
+different datasets. We could see who updated what and when, and use pull
+requests to update data, the same way we do with code.
 
-This is what we call a **data registry** — a kind of data management
-_middleware_ between ML projects and cloud storage. Here are its advantages:
+That's what we call a **data registry**: data management _middleware_ between
+data science projects and large file storage. Think Git for cloud storage. Here
+are some of it's advantages:
 
 - Reusability: reproduce and organize _feature stores_ with a simple CLI
   (`dvc get` and `dvc import` commands, similar to software package management
@@ -100,7 +101,7 @@ images/dvc-logo-outlines.png
 ...
 ```
 
-Both Git-tracked files and DVC-tracked data and models are listed.
+Both Git-tracked files and DVC-tracked data and ML models are listed.
 
 ### Simple downloads
 
@@ -167,8 +168,9 @@ with dvc.api.open(model_path, repo_url) as fd:
     # ... Use the model!
 ```
 
-This opens `model.pkl` as a file descriptor. The example above illustrates a
-simple ML model **deployment** method.
+This opens `model.pkl` as a file descriptor. This example illustrates a simple
+ML model **deployment** method, but it could be extended to more advances
+scenarios such as a _model zoo_.
 
 See also the `dvc.api.read()` and `dvc.api.get_url()` functions.
 
