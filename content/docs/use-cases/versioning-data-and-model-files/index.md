@@ -29,49 +29,32 @@ for that. To learn how it looks and feels, try our
 
 DVC's approach brings the following benefits:
 
-- **Simplicity**: Work with a straightforward project file structure. No need
-  for ad hoc naming conventions like `data/2019/labels_v7_final`.
-- **Roll-backs**: Restore any project version and find the data you need
-  instantly. Identify past research inputs and understand/reproduce previous
-  results at any time!
-- **Collaboration**: Data and models can be easily
-  [shared](/doc/use-cases/sharing-data-and-model-files) and
-  [reused](/doc/start/data-access) via on-premises or cloud
-  [storage remotes](/doc/command-reference/remote).
-- **Efficient storage**: All versions of data contents are
+- **Tidy project**: Work with a natural file structure. No need for ad hoc
+  naming conventions like `data/20190922/labels_v7_final`.
+- **Reproducibility**: Restore any project version and find the corresponding
+  data instantly. Identify past research inputs to understand its results, or
+  for debugging.
+- **Easy storage**: All versions of data are
   [cached](/doc/user-guide/dvc-files-and-directories#structure-of-the-cache-directory)
-  automatically, in a way that prevents file duplication.
-- **Standard**: Adopt existing engineering tools like Git SCM, and best
-  practices like [semver](https://semver.org/) and continuous integration
-  (CI/CD) such as [CML](https://cml.dev/) to improve team productivity.
-- **Lightweight**: DVC keeps it simple. No databases, servers, or external
+  automatically in an efficient way that prevents file duplication.
+- **Lightweight**: DVC keeps it simple: No databases, servers, or external
   services are required.<br/> DVC is a
   [free](https://github.com/iterative/dvc/blob/master/LICENSE), open-source
   [command line](/doc/command-reference) tool.
+- **Collaboration**: Data and models can be easily
+  [shared](/doc/use-cases/sharing-data-and-model-files) and
+  [reused](/doc/start/data-access) via on-premises or cloud
+  [storage remotely](/doc/command-reference/remote).
+- **Integrations**: Adopting a
+  [Git workflow](https://about.gitlab.com/topics/version-control/what-is-git-workflow/)
+  opens the door to advanced scenarios such as continuous integration (CI/CD
+  e.g. [CML](https://cml.dev/)), specialized patterns like
+  [data registries](/doc/use-cases/data-registries), and other best practices
+  that improve productivity and scalability.
+- **Data security**: The project history (in Git) is immutable, which allows for
+  defining and auditing processes to change data and models. Existing tools
+  (like pull requests) can be used to review and approve data updates.
 
 In summary, data science and machine learning are iterative processes where the
 lifecycles of data, code, and ML models occur at different paces. DVC helps
 integrate and manage them effectively.
-
-## What's next?
-
-Adopting codification and
-[Git workflows](https://about.gitlab.com/topics/version-control/what-is-git-workflow/)
-in data science opens the door to advanced scenarios, for example extending
-codification to the project's data pipelines, implementing specialized data and
-model storage patters, and improvements to data security. Let's look at these:
-
-A first natural next step for codifying data is to apply the same for
-[data pipelines](/doc/start/data-pipelines). DVC allows this out-of-the-box, and
-automatically tracks intermediate and final results produced by the pipeline,
-for versioning and other purposes.
-
-Implementing specialized data and model storage patterns such as
-[data registries](/doc/use-cases/data-registries) and
-[model zoos](/doc/api-reference/open) is made easy with DVC.
-
-Data security can also benefit from DVC's approach. You can enforce lifecycle
-policies by having a defined process to change data and models: The project
-history (in Git) is immutable, which allows for auditing changes; Git hosting
-and CI tools can be used to review and approve data update, for example via pull
-requests that are accessible to multiple stakeholders.
