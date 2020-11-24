@@ -766,7 +766,7 @@ more information.
 
   ```dvc
   $ dvc remote modify myremote url \
-        osf://odf.io/path/to/dir
+        osf://osf.io/path/to/dir
 
 - `project` - [OSF](https://osf.io/) project name. You can see it in the `url` line
   of your project page.
