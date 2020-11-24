@@ -774,9 +774,9 @@ more information.
   ```dvc
   $ dvc remote modify myremote project <project_name>
   
-- `username` - username (e-mail) that you specify during registration.
+- `user` - username (e-mail) that you specify during registration.
   ```dvc
-  $ dvc remote modify myremote username \
+  $ dvc remote modify myremote user \
         example@mail.com
   ```
 - 'password' - password for you osf account.
