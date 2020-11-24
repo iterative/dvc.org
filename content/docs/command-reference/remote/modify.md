@@ -779,7 +779,7 @@ more information.
   $ dvc remote modify myremote user \
         example@mail.com
   ```
-- 'password' - password for you osf account.
+- `password` - password for you osf account.
   ```dvc
   $ dvc remote modify osfremote --local password 12345
   ```
