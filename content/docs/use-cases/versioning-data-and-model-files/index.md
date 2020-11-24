@@ -9,16 +9,16 @@ lifecycles be defined and enforced?
 ![](/img/data-ver-complex.png) _Exponential complexity of data science projects_
 
 Data Version Control (DVC) addresses these issues by helping you organize data
-and models effectively, and capture their versions with
-[Git commits](<(https://git-scm.com/book/en/v2/Git-Basics-Recording-Changes-to-the-Repository)>)
-without having to put the actual data contents in the repo. You can have a
-single immutable history for all assets and data artifacts.
+and models effectively. It lets you capture their versions with
+[Git commits](<(https://git-scm.com/book/en/v2/Git-Basics-Recording-Changes-to-the-Repository)>),
+without putting the actual data in the repo. You can have a single immutable
+history for all assets and data artifacts.
 
-Unique data versions are stored automatically in a way that prevents file
-duplication. This way the data stays with you. Additionally, now data paths
-(file names) don't need to change, because they can
+Unique data versions are stored automatically (preventing file duplication), so
+the data stays with you. Additionally, file names don't need to change in DVC,
+because they
 [link](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
-to those variable contents. And the data can be modified without worrying about
+to those variable contents. Now the data can be modified without worrying about
 code.
 
 ![](/img/project-versions.png) _DVC matches the right versions of code and
@@ -33,33 +33,32 @@ We won't go much deeper into how DVC works here, since we have many
 [guides](/doc/user-guide) and [references](/doc/command-reference) for that. You
 can also try our
 [versioning tutorial](/doc/use-cases/versioning-data-and-model-files/tutorial)
-👩‍💻 to learn how it looks and feels. For now, here are some of the high-level
-benefits of our approach:
+👩‍💻 to learn how it looks and feels. These are the high-level benefits of our
+approach:
 
-- **Lightweight**: No databases, servers, or external services are required. DVC
-  is a [free](https://github.com/iterative/dvc/blob/master/LICENSE), open-source
-  [command line](/doc/command-reference) tool.
-- **Consistent file names**: No need for ad hoc naming conventions like
-  `data/20190922/labels_v7_final`.
-- **Efficient data management**: Separate data from code storage automatically.
-  This also enables teams to
-  [share data stores](/doc/use-cases/shared-development-server) across working
-  environments.
+- **Simplicity**: DVC is a
+  [free](https://github.com/iterative/dvc/blob/master/LICENSE), open-source
+  [command line](/doc/command-reference) tool that doesn't require databases or
+  servers. It keeps your project readable and consistent: No need for ad hoc
+  file names like `data/20190922/labels_v7_final.bak`.
+- **Data management**: Efficient data storage is automated and decoupled from
+  other assets, which enables teams to
+  [share data stores](/doc/use-cases/shared-development-server) across
+  development environments. Data and ML models can be
+  [shared remotely](/doc/use-cases/sharing-data-and-model-files) and
+  [reused](/doc/start/data-access) data using cloud storage, improving
+  **collaboration**.
 - **Reproducibility**: Restore any project version and find the corresponding
   data instantly. Identify past research inputs to understand the results, or
   for debugging.
-- **Collaboration**: Data artifacts and machine learning models can be easily
-  [shared remotely](/doc/use-cases/sharing-data-and-model-files) and
-  [reused](/doc/start/data-access) by others via on-premises or cloud storage.
-- **Integration**: Adopting a
-  [Git workflow](https://about.gitlab.com/topics/version-control/what-is-git-workflow/)
-  opens the door to advanced scenarios such as continuous integration (CI/CD
-  e.g. [CML](https://cml.dev/)), specialized patterns like
+- [**Git workflows**](https://about.gitlab.com/topics/version-control/what-is-git-workflow/).
+  They open the door to advanced scenarios such as continuous integration
+  (CI/CD) like [CML](https://cml.dev/), specialized patterns such as
   [data registries](/doc/use-cases/data-registries), and other best practices
   that improve productivity and scalability.
-- **Data compliance**: Maintain visibility on data and ML model changes. Review
-  who wants to modify them, and why, with pull requests (e.g. on GitHub). Audit
-  this process later to determine when and by whom where data or model versions
+- **Data compliance**: Maintain visibility on data and model changes. Review who
+  wants to modify them, and why, with pull requests (e.g. on GitHub). Audit this
+  process later to determine when and by whom where data or model versions
   approved.
 
 In summary, data science and machine learning are iterative processes where the
