@@ -8,11 +8,18 @@ lifecycles be defined and enforced?
 
 ![](/img/data-ver-complex.png) _Exponential complexity of data science projects_
 
-Data Version Control (DVC) can address these issues by helping you organize your
-data and models effectively, and capture their versions with
+Data Version Control (DVC) addresses these issues by helping you organize data
+and models effectively, and capture their versions with
 [Git commits](<(https://git-scm.com/book/en/v2/Git-Basics-Recording-Changes-to-the-Repository)>)
 without having to put the actual data contents in the repo. You can have a
-single immutable history for all of your assets and data artifacts.
+single immutable history for all assets and data artifacts.
+
+Unique data versions are stored automatically in a way that prevents file
+duplication. This way the data stays with you. Additionally, now data paths
+(file names) don't need to change, because they can
+[link](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
+to those variable contents. And the data can be modified without worrying about
+code.
 
 ![](/img/project-versions.png) _DVC matches the right versions of code and
 data._
@@ -27,20 +34,20 @@ We won't go much deeper into how DVC works here, since we have many
 can also try our
 [versioning tutorial](/doc/use-cases/versioning-data-and-model-files/tutorial)
 👩‍💻 to learn how it looks and feels. For now, here are some of the high-level
-benefits of this approach:
+benefits of our approach:
 
-- **Reproducibility**: Restore any project version and find the corresponding
-  data instantly. Identify past research inputs to understand its results, or
-  for debugging.
+- **Lightweight**: No databases, servers, or external services are required. DVC
+  is a [free](https://github.com/iterative/dvc/blob/master/LICENSE), open-source
+  [command line](/doc/command-reference) tool.
 - **Consistent file names**: No need for ad hoc naming conventions like
   `data/20190922/labels_v7_final`.
 - **Efficient data management**: Separate data from code storage automatically.
   This also enables teams to
-  [share data stores](/doc/use-cases/shared-development-server) across
-  development environments.
-- **Lightweight**: No databases, servers, or external services are required. DVC
-  is a [free](https://github.com/iterative/dvc/blob/master/LICENSE), open-source
-  [command line](/doc/command-reference) tool.
+  [share data stores](/doc/use-cases/shared-development-server) across working
+  environments.
+- **Reproducibility**: Restore any project version and find the corresponding
+  data instantly. Identify past research inputs to understand the results, or
+  for debugging.
 - **Collaboration**: Data artifacts and machine learning models can be easily
   [shared remotely](/doc/use-cases/sharing-data-and-model-files) and
   [reused](/doc/start/data-access) by others via on-premises or cloud storage.
@@ -56,5 +63,5 @@ benefits of this approach:
   approved.
 
 In summary, data science and machine learning are iterative processes where the
-lifecycles of data, code, and ML models occur at different paces. DVC helps
+lifecycles of data, models, and code happen at different paces. DVC helps
 integrate and manage them effectively.
