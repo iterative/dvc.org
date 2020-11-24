@@ -32,11 +32,16 @@ can also try our
 👩‍💻 to learn how it looks and feels. For now, here are some of the high-level
 benefits of this approach:
 
-- **Simple file names**: Work with a natural project structure. No need for ad
-  hoc naming conventions like `data/20190922/labels_v7_final`.
 - **Lightweight**: No databases, servers, or external services are required. DVC
   is a [free](https://github.com/iterative/dvc/blob/master/LICENSE), open-source
   [command line](/doc/command-reference) tool.
+- **Simple file names**: Work with a natural project structure. No need for ad
+  hoc naming conventions like `data/20190922/labels_v7_final`.
+- **Efficient data management**: A content-addressed data <abbr>cache</abbr>
+  that utilizes
+  [links](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
+  prevents file duplication and enables teams to
+  [share storage](/doc/use-cases/shared-development-server) during development.
 - **Collaboration**: Data artifacts and machine learning models can be easily
   [shared](/doc/use-cases/sharing-data-and-model-files) and
   [reused](/doc/start/data-access) via on-premises or cloud storage
@@ -44,7 +49,7 @@ benefits of this approach:
 - **Reproducibility**: Restore any project version and find the corresponding
   data instantly. Identify past research inputs to understand its results, or
   for debugging.
-- **Integrations**: Adopting a
+- **Integration**: Adopting a
   [Git workflow](https://about.gitlab.com/topics/version-control/what-is-git-workflow/)
   opens the door to advanced scenarios such as continuous integration (CI/CD
   e.g. [CML](https://cml.dev/)), specialized patterns like
