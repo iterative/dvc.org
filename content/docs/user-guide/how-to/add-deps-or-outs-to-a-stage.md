@@ -8,9 +8,9 @@ to an existing stage without re-executing it (which can be expensive and is
 unnecessary) you can either edit the `dvc.yaml` file directly, or use `dvc run`
 with the `-f` and `--no-exec` options to the same end.
 
-After the update, use `dvc commit` to save any output files that already exist
-in the <abbr>workspace</abbr> to the <abbr>cache</abbr> (and to update
-`dvc.lock`).
+If some output files already exist in the <abbr>workspace</abbr>, you can use
+`dvc commit` after the update, to save them to the <abbr>cache</abbr> (and to
+update `dvc.lock`).
 
 ## Example
 
