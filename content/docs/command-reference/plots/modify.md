@@ -30,6 +30,10 @@ Property names are passed as [options](#options) to this command (prefixed with
 `--`). These are based on the full
 [Vega specification](https://vega.github.io/vega/docs/specification/).
 
+Note that a secondary use of this command is to convert output or simple
+`dvc metrics` file into a plots file (see an
+[example](#example-convert-any-output-into-a-plot)).
+
 ## Options
 
 - `-t <name_or_path>, --template <name_or_path>` - set a default
@@ -130,4 +134,26 @@ be changed in many cases. A simple command changes the template:
 
 ```dvc
 $ dvc plots modify classes.csv --template confusion
+```
+
+## Example: Convert any output into a plot
+
+Let's take an example `evaluate` stage which has `logs.csv` as an output. We can
+use `dvc plots modify` to convert the `logs.csv` output file into a plots file,
+and then confirm the changes that happened in `dvc.yaml`:
+
+```dvc
+$ dvc plots modify logs.csv
+```
+
+```git
+evaluate:
+  cmd: python src/evaluate.py
+    deps:
+    - src/evaluate.py
+-   outs:
+-   - logs.csv
+    plots:
+    - scores.json
++   - logs.csv
 ```

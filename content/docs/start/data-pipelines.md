@@ -17,6 +17,10 @@ later — exactly as they were built originally! For example, you could capture 
 simple ETL workflow, organize a data science project, or build a detailed
 machine learning pipeline.
 
+Watch and learn, or follow along with the code example below!
+
+https://youtu.be/71IGzyH95UY
+
 ## Pipeline stages
 
 Use `dvc run` to create _stages_. These represent processes (source code tracked
