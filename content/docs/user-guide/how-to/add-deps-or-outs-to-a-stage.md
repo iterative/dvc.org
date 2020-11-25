@@ -1,17 +1,16 @@
-# Add Dependencies or Outputs to a Stage
+# How to Add Dependencies or Outputs
 
-To add files/directories as <abbr>dependencies</abbr> or <abbr>outputs</abbr> to
-a stage without executing it (which can be expensive/time-consuming, and is
+We have executed a stage, but later notice that some of the files/directories it
+uses as dependencies or creates as outputs are missing from `dvc.yaml`...
+
+To add files or directories as <abbr>dependencies</abbr> or <abbr>outputs</abbr>
+to an existing stage without re-executing it (which can be expensive and is
 unnecessary) you can either edit the `dvc.yaml` file directly, or use `dvc run`
 with the `-f` and `--no-exec` options to the same end.
 
-After updating `dvc.yaml`, use `dvc commit` to save any output file(s) that
-already exist in the <abbr>workspace</abbr> to the <abbr>cache</abbr> (and
-to update `dvc.lock`).
-
-> This could be a need for example after executing a stage, but later noticing
-> that some of the files/directories it uses as dependencies or creates as
-> outputs are missing from `dvc.yaml`.
+After the update, use `dvc commit` to save any output files that already exist
+in the <abbr>workspace</abbr> to the <abbr>cache</abbr> (and to update
+`dvc.lock`).
 
 ## Example
 

@@ -1,39 +1,56 @@
-# Update Tracked Files
+# How to Update Tracked Files
 
-Due to the way DVC handles linking between the data files between the
-<abbr>cache</abbr> and their counterparts in the <abbr>workspace</abbr> (refer
-to [Large Dataset Optimization](/doc/user-guide/large-dataset-optimization)),
-updating tracked files has to be carried out with caution to avoid data
-corruption when the DVC config option `cache.type` is set to `hardlink` or/and
-`symlink`. (See `dvc config cache` for more details on setting the cache file
-link types.)
+Updating a tracked data file (or directory) may mean either
+[modifying](#modifying-content) some of its contents, or completely
+[replacing](#replacing-file) it with a new one (same file name).
+
+When the `cache.type` config option is set to `symlink` or `hardlink` (not the
+default, see `dvc config cache` for more info.), updating tracked files has to
+be carried out with caution, to avoid data corruption. This is due to the way in
+which DVC handles linking data files between the <abbr>cache</abbr> and the
+<abbr>workspace</abbr> (refer to
+[Large Dataset Optimization](/doc/user-guide/large-dataset-optimization) for
+details).
 
 > For an example of the cache corruption problem see
-> [issue #599](https://github.com/iterative/dvc/issues/599) in our GitHub
-> repository.
+> [issue #599](https://github.com/iterative/dvc/issues/599) in our GitHub repo.
 
-Assume `train.tsv` is tracked by DVC and you want to update it. Here updating
-may mean either replacing `train.tsv` with a new file having the same name or
-editing the content of the file.
-
-If you run `dvc repro` there is no need to manage generated (output) files
-manually. DVC removes them for you before executing the stage that generates
+If you use `dvc.yaml` files and `dvc repro`, there is no need to manage stage
+<abbr>outputs</abbr> manually. DVC removes them for you before regenerating
 them.
 
-If you use DVC to track a file that is generated during your pipeline (e.g. some
-intermediate result or a final model file i.e. `model.pkl`) and you don't use
-`dvc run` and `dvc repro` to manage your pipeline, use the procedure below (run
-`dvc unprotect` or `dvc remove`) to unlink it from DVC cache prior to the
-execution of the script that modifies it.
+Otherwise (the data was tracked with `dvc add`), use one of the procedures below
+to unlink the data from the cache prior to updating it. We'll be working with a
+`train.tsv` file:
 
-See also `dvc unprotect` and `dvc config cache` to learn more about protecting
-your data files.
+## Modifying content
 
-## Replacing file
+"Unlink" the file with `dvc unprotect`. This will make `train.tsv` safe to edit:
+
+```dvc
+$ dvc unprotect train.tsv
+```
+
+Then edit the content of the file:
+
+```dvc
+$ echo "new data item" >> train.tsv
+```
+
+Add the new version of the file back with DVC:
+
+```dvc
+$ dvc add train.tsv
+$ git add train.tsv.dvc
+$ git commit -m "modify train data"
+```
+
+## Replacing files
 
 If you want to replace the file, you can take the following steps.
 
-First, un-track the file. This will remove `train.tsv` from the workspace:
+First, [un-track](/doc/user-guide/how-to/untrack-data) the file with
+`dvc remove`. This will remove `train.tsv` from the workspace:
 
 ```dvc
 $ dvc remove train.tsv.dvc
@@ -51,26 +68,4 @@ And start tracking it again:
 $ dvc add train.tsv
 $ git add train.tsv.dvc .gitignore
 $ git commit -m "new train data"
-```
-
-## Modifying content
-
-"Unlink" the file with `dvc unprotect`. This will make `train.tsv` safe to edit:
-
-```dvc
-$ dvc unprotect train.tsv
-```
-
-Edit the content of the file:
-
-```dvc
-$ echo "new data item" >> train.tsv
-```
-
-Add the new version of the file back with DVC:
-
-```dvc
-$ dvc add train.tsv
-$ git add train.tsv.dvc
-$ git commit -m "modify train data"
 ```
