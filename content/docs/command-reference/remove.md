@@ -1,6 +1,7 @@
 # remove
 
-Remove stage, `.gitignore` entry, and unprotect outputs.
+Remove stages or `.dvc` files, unprotect or delete their <abbr>outputs</abbr>,
+and erase the `.gitignore` entries.
 
 ## Synopsis
 
@@ -13,34 +14,32 @@ positional arguments:
 
 ## Description
 
-This command safely removes stages from
-[dvc.yaml](/doc/user-guide/dvc-files-and-directories#dvcyaml-file), their
-`.gitignore` entries, and optionally removes from the <abbr>workspace</abbr>
-files or directories that are tracked by DVC. It takes one or more stage names
-(see `-n` option of `dvc run`) or `.dvc` files as target, removes it, and
-optionally removes all of its outputs (`outs` field).
+This command can safely remove stages from `dvc.yaml` or `.dvc` files. This
+includes deleting the appropriate `.gitignore` entries, and optionally the
+actual output files they track (see `--outs` option).
 
-If there are no stages left in
-[dvc.yaml](/doc/user-guide/dvc-files-and-directories#dvcyaml-file) after stage
-removal then both
-[dvc.yaml](/doc/user-guide/dvc-files-and-directories#dvcyaml-file) and
-[dvc.lock](/doc/user-guide/dvc-files-and-directories#dvclock-file) are removed
-from the workspace.
+It takes one or more stage names (see `-n` option of `dvc run`) or `.dvc` file
+names as `targets`.
 
-Note that in the case of `.dvc` file `targets`, the tracked files or directories
-(`outs` in the `.dvc` file) are removed by default by this command.
+If there are no stages left in `dvc.yaml` after the removal, then both
+`dvc.yaml` and `dvc.lock` are deleted.
 
-`dvc remove` does not remove files from the DVC cache or remote storage (see
-`dvc gc`). However, remember to run `dvc push` to save the files you actually
-want to use or share in the future.
+Note that the actual <abbr>output</abbr> files or directories tracked by the
+stage (`outs` field) are not removed by this command, unless the `--outs` option
+is used.
 
-Refer to [Updating Tracked Files](/doc/user-guide/how-to/update-tracked-files)
-to see how it can be used to replace or modify files that are tracked by DVC.
+> `dvc remove` doesn't remove files from the DVC <abbr>cache</abbr> or
+> [remote storage](/doc/command-reference/remote) either (use `dvc gc` for
+> that).
+
+💡 Refer to [Undo Adding Data](/doc/user-guide/how-to/undo-adding-data) to see
+how it helps replace data that is tracked by DVC.
 
 ## Options
 
-- `--outs` - remove the outputs of any stage `targets` as well. This is always
-  applied automatically for `.dvc` file targets.
+- `--outs` - remove the outputs of any `targets` as well.
+
+  ⚠️This option may be irreversible (e.g. if the data isn't cached).
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
