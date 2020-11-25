@@ -22,3 +22,7 @@ branch/commit.
 Using DVC with remote storage is optional. DVC commands use the local cache
 (usually in dir `.dvc/cache`) as data storage by default. This enables the main
 DVC usage scenarios out of the box.
+
+<!-- "...clarify that DVC remotes are not very much like Git remotes. They are cache backups and not distributed copies of the entire DVC repo." #53-->
+
+<!-- cache/remote/workspace relationship #53-->
