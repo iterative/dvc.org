@@ -27,12 +27,13 @@ achieved with special [metafiles](/doc/user-guide/dvc-files-and-directories)
 that can be put in Git instead of the actual data (already stored by DVC). The
 result is a single immutable history for code and data.
 
-We won't go much deeper into how DVC works now, since we have many
-[guides](/doc/user-guide) and [references](/doc/command-reference) for that. You
-can also try our
-[versioning tutorial](/doc/use-cases/versioning-data-and-model-files/tutorial)
-👩‍💻 to learn how it looks and feels. These are the high-level benefits of our
-approach:
+> To learn more about how DVC works, please refer to our many
+> [guides](/doc/user-guide) and [references](/doc/command-reference). You can
+> also try the
+> [versioning tutorial](/doc/use-cases/versioning-data-and-model-files/tutorial)
+> 👩‍💻 to see how it looks and feels.
+
+These are the high-level benefits of our approach:
 
 - **Simplicity**: DVC is a
   [free](https://github.com/iterative/dvc/blob/master/LICENSE), open-source
