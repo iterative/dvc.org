@@ -1,7 +1,8 @@
 ---
 name: 'Remote Storage'
 match: ['DVC remote', 'remote', 'remote storage']
-tooltip: 'DVC remote storage tooltip...'
+tooltip: >-
+  'DVC [remote storage](/doc/user-guide/glossary/remote-storage) tooltip...'
 ---
 
 # Remote Storage

@@ -1,7 +1,8 @@
 ---
 name: 'Metrics and Plots'
 match: ['metrics', 'plots']
-tooltip: 'Metrics and plots tooltip...'
+tooltip: >-
+  '[Metrics and plots](/doc/user-guide/glossary/metrics-and-plots) tooltip...'
 ---
 
 # Metrics and Plots

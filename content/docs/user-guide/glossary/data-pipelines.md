@@ -1,7 +1,8 @@
 ---
 name: 'Data Pipelines'
 match: ['data pipeline', 'pipeline', 'pipelines']
-tooltip: 'DVC pipelines tooltip...'
+tooltip: >-
+  'DVC [data pipelines](/doc/user-guide/glossary/data-pipelines) tooltip...'
 ---
 
 # Data Pipelines
