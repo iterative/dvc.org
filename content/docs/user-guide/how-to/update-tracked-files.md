@@ -20,18 +20,18 @@ If you use `dvc.yaml` files and `dvc repro`, there is no need to manage stage
 them.
 
 Otherwise (the data was tracked with `dvc add`), use one of the procedures below
-to unlink the data from the cache prior to updating it. We'll be working with a
-`train.tsv` file:
+to "unlink" the data from the cache prior to updating it. We'll be working with
+a `train.tsv` file:
 
 ## Modifying content
 
-"Unlink" the file with `dvc unprotect`. This will make `train.tsv` safe to edit:
+Unlink the file with `dvc unprotect`. This will make `train.tsv` safe to edit:
 
 ```dvc
 $ dvc unprotect train.tsv
 ```
 
-Then edit the content of the file:
+Then edit the content of the file, for example with:
 
 ```dvc
 $ echo "new data item" >> train.tsv
@@ -47,10 +47,11 @@ $ git commit -m "modify train data"
 
 ## Replacing files
 
-If you want to replace the file, you can take the following steps.
+If you want to replace the file altogether, you can take the following steps.
 
-First, [stop tracking](/doc/user-guide/how-to/stop-tracking-data) the file with
-`dvc remove`. This will remove `train.tsv` from the workspace:
+First, [stop tracking](/doc/user-guide/how-to/stop-tracking-data) the file by
+using `dvc remove` on the `.dvc` file. This will remove `train.tsv` from the
+workspace (and unlink it from the <abbr>cache</abbr>):
 
 ```dvc
 $ dvc remove train.tsv.dvc

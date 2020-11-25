@@ -21,10 +21,6 @@ $ cat .gitignore
 
 </details>
 
-> Note that if you are using `symlink` or `hardlink` as
-> [link type](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache),
-> you will have to `dvc unprotect` the tracked file first.
-
 Let's undo `dvc add` with `dvc remove`. This removes the `.dvc` file (and
 corresponding `.gitignore` entry). The data file is now no longer being tracked
 after this:
@@ -37,8 +33,8 @@ $ git status
         data.csv
 ```
 
-You can run `dvc gc` with the `-w` option to remove the data that isn't
-referenced in the current <abbr>workspace</abbr> from the <abbr>cache</abbr>:
+You can run `dvc gc` with the `-w` option to remove the data (and all of it's
+previous versions, if any) from the <abbr>cache</abbr>:
 
 ```dvc
 $ dvc gc -w
