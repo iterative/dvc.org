@@ -2,7 +2,11 @@
 name: 'Data Pipelines'
 match: ['data pipeline', 'pipeline', 'pipelines']
 tooltip: >-
-  'DVC [data pipelines](/doc/user-guide/glossary/data-pipelines) tooltip...'
+  In DVC, [data pipeline](/doc/user-guide/glossary/data-pipelines) stages and
+  commands, inputs, outputs, interdependencies, and results (intermediate or
+  final) are specified in `dvc.yaml`, which can be written manually or built
+  using the helper command `dvc run`. This allows DVC to restore one or more
+  pipelines later (see `dvc repro`).
 ---
 
 # Data Pipelines
@@ -25,3 +29,5 @@ restore one or more pipelines later (see `dvc repro`).
 
 > DVC builds a dependency graph
 > ([DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph)) to do this.
+
+<!-- link to dag, pipeline get started -->
