@@ -8,28 +8,26 @@ lifecycles be defined and enforced?
 
 ![](/img/data-ver-complex.png) _Exponential complexity of data science projects_
 
-Data Version Control (DVC) addresses these issues by helping you organize data
-and models effectively. It lets you capture their versions with
-[Git commits](<(https://git-scm.com/book/en/v2/Git-Basics-Recording-Changes-to-the-Repository)>),
-without putting the actual data in the repo. You can have a single immutable
-history for all assets and data artifacts.
+Data Version Control (DVC) helps you organize data and models effectively.
+Unique data versions are stored automatically (preventing file duplication).
+This storage is separated from the <abbr>workspace</abbr> so it can be handled
+independently. Translation: the data stays with you.
 
-Unique data versions are stored automatically (preventing file duplication), so
-the data stays with you. Additionally, file names don't need to change in DVC,
-because they
+Now file names in the project don't need to change, because they can
 [link](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
-to those variable contents. Now the data can be modified without worrying about
-code.
+to those variable contents. And their contents can be modified without worrying
+about updating paths in code.
 
 ![](/img/project-versions.png) _DVC matches the right versions of code and
 data._
 
-DVC enables data _versioning through codification_. This means describing which
+DVC provides data versioning through codification. That means describing which
 data, ML artifacts, etc. should be in the environment at any given time. This is
 achieved with special [metafiles](/doc/user-guide/dvc-files-and-directories)
-that can be put in Git.
+that can be put in Git instead of the actual data (already stored by DVC). The
+result is a single immutable history for code and data.
 
-We won't go much deeper into how DVC works here, since we have many
+We won't go much deeper into how DVC works now, since we have many
 [guides](/doc/user-guide) and [references](/doc/command-reference) for that. You
 can also try our
 [versioning tutorial](/doc/use-cases/versioning-data-and-model-files/tutorial)
@@ -42,12 +40,12 @@ approach:
   servers. It keeps your project readable and consistent: No need for ad hoc
   file names like `data/20190922/labels_v7_final.bak`.
 - **Data management**: Efficient data storage is automated and decoupled from
-  other assets, which enables teams to
+  other assets (source code, config files, etc.). This enables teams to
   [share data stores](/doc/use-cases/shared-development-server) across
   development environments. Data and ML models can be
   [shared remotely](/doc/use-cases/sharing-data-and-model-files) and
-  [reused](/doc/start/data-access) data using cloud storage, improving
-  **collaboration**.
+  [reused](/doc/start/data-access) via on-premisses or cloud storage, improving
+  on **collaboration**.
 - **Reproducibility**: Restore any project version and find the corresponding
   data instantly. Identify past research inputs to understand the results, or
   for debugging.
