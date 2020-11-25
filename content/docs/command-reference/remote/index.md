@@ -1,6 +1,6 @@
 # remote
 
-A set of commands to set up and manage data remotes:
+A set of commands to set up and manage <abbr>data remotes</abbr>:
 [add](/doc/command-reference/remote/add),
 [default](/doc/command-reference/remote/default),
 [list](/doc/command-reference/remote/list),
@@ -24,44 +24,18 @@ positional arguments:
 
 ## Description
 
-What is data remote?
-
-The same way as GitHub provides storage hosting for Git repositories, DVC
-remotes provide a location to store and share data and models. You can pull data
-assets created by colleagues from DVC remotes without spending time and
-resources to build or process them locally. Remote storage can also save space
-on your local environment – DVC can [fetch](/doc/command-reference/fetch) into
-the <abbr>cache directory</abbr> only the data you need for a specific
-branch/commit.
-
-Using DVC with remote storage is optional. DVC commands use the local cache
-(usually in dir `.dvc/cache`) as data storage by default. This enables the main
-DVC usage scenarios out of the box.
-
-DVC supports several types of remote storage: local file system, SSH, Amazon S3,
-Google Cloud Storage, HTTP, HDFS, among others. Refer to `dvc remote add` for
-more details.
-
-> If you installed DVC via `pip` and plan to use cloud services as remote
-> storage, you might need to install these optional dependencies: `[s3]`,
-> `[azure]`, `[gdrive]`, `[gs]`, `[oss]`, `[ssh]`. Alternatively, use `[all]` to
-> include them all. The command should look like this: `pip install "dvc[s3]"`.
-> (This example installs `boto3` library along with DVC to support S3 storage.)
-
-### Managing remote storage
-
-> For the typical process to share the <abbr>project</abbr> via remote, see
-> [Sharing Data And Model Files](/doc/use-cases/sharing-data-and-model-files).
-
 The [add](/doc/command-reference/remote/add),
 [default](/doc/command-reference/remote/default),
 [list](/doc/command-reference/remote/list),
 [modify](/doc/command-reference/remote/modify),
 [remove](/doc/command-reference/remote/remove), and
 [rename](/doc/command-reference/remote/rename) subcommands read or modify DVC
-[config files](/doc/command-reference/config), where DVC remotes are setup.
-Alternatively, `dvc config` can be used, or the config files can be edited
-manually.
+[config files](/doc/command-reference/config), where <abbr>DVC remotes</abbr>
+are set up. Alternatively, `dvc config` can be used, or the config files can be
+edited manually.
+
+> For the typical process to share the <abbr>project</abbr> via remote, see
+> [Sharing Data And Model Files](/doc/use-cases/sharing-data-and-model-files).
 
 ## Options
 
