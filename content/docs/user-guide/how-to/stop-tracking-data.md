@@ -1,4 +1,4 @@
-# How to Un-track Data
+# How to Stop Tracking Data
 
 There are situations where you may want to stop tracking data added previously.
 Let's see how it can be done using an example `data.csv` file.

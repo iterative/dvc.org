@@ -49,7 +49,7 @@ $ git commit -m "modify train data"
 
 If you want to replace the file, you can take the following steps.
 
-First, [un-track](/doc/user-guide/how-to/untrack-data) the file with
+First, [stop tracking](/doc/user-guide/how-to/stop-tracking-data) the file with
 `dvc remove`. This will remove `train.tsv` from the workspace:
 
 ```dvc

@@ -100,10 +100,7 @@
         "slug": "how-to",
         "source": false,
         "children": [
-          {
-            "label": "Un-track Data",
-            "slug": "untrack-data"
-          },
+          "stop-tracking-data",
           "update-tracked-files",
           "add-deps-or-outs-to-a-stage"
         ]
