@@ -38,8 +38,8 @@ These are the high-level benefits of our approach:
 - **Simplicity**: DVC is a
   [free](https://github.com/iterative/dvc/blob/master/LICENSE), open-source
   [command line](/doc/command-reference) tool that doesn't require databases or
-  servers. It keeps your project readable and consistent: No need for ad hoc
-  file names like `data/20190922/labels_v7_final.bak`.
+  servers. It keeps your project readable and consistent: No need for
+  complicated file names like `data/20190922/labels_v7_final.bak`.
 - **Data management**: Efficient data storage is automated and decoupled from
   other assets (source code, config files, etc.). This enables teams to
   [share data stores](/doc/use-cases/shared-development-server) across
