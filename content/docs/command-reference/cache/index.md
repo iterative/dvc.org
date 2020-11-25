@@ -15,11 +15,10 @@ positional arguments:
 
 ## Description
 
-The DVC Cache is where your data files, models, etc. (anything you want to
-version with DVC) are actually stored. The data files and directories visible in
-the <abbr>workspace</abbr> are links\* to (or copies of) the ones in cache.
-Learn more about it's
-[structure](/doc/user-guide/dvc-files-and-directories#structure-of-the-cache-directory).
+The <abbr>DVC cache</abbr> is where your data files, models, etc. (anything you
+want to version with DVC) are actually stored. The data files and directories
+visible in the <abbr>workspace</abbr> are links\* to (or copies of) the ones in
+cache.
 
 > \* Refer to
 > [File link types](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
