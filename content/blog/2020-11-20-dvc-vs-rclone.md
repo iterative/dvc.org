@@ -1,13 +1,13 @@
 ---
-title: 'Cloud Data Sync Methods and Benchmarks: DVC vs Rclone'
+title: 'Cloud Data Sync Methods and Benchmark: DVC vs Rclone'
 date: 2020-11-20
 description: |
   An overview of how data synchronization to and from remote storage is optimized in DVC 1.0.
 descriptionLong: |
-  In this post, we will outline the general methods used to determine which
+  In this post, we'll outline the general methods used to determine which
   files to upload and download in a data synchronization operation, and
   investigate each method's effects on performance by comparing benchmark
-  results from DVC and rclone. We will then conclude with a more in-depth explanation of
+  results from DVC and rclone. We'll then conclude with a more in-depth explanation of
   optimizations made in DVC 1.0 which enabled us to outperform both older DVC
   releases as well as general data sync tools.
 picture: 2020-11-20/header.png
@@ -24,17 +24,17 @@ through a git-like push and pull
 [interface](/doc/use-cases/sharing-data-and-model-files).
 
 Given that transferring data over a network to and from cloud storage is an
-inherently slow operation, it is important for data sync tools to optimize
+inherently slow operation, it's important for data sync tools to optimize
 performance wherever possible. While the data transfer itself may be the most
-apparent performance bottleneck in the data sync process, **here we will cover a
+apparent performance bottleneck in the data sync process, **here we'll cover a
 less obvious performance issue: How to determine which files to upload and
 download.**
 
-In this post, we will outline the general methods used to solve this problem,
-and investigate each method's effects on performance by comparing benchmark
-results from DVC and rclone. We will then conclude with a more in-depth
-explanation of new optimizations made in DVC 1.0 which enabled us to outperform
-both older DVC releases as well as general data sync tools (like rclone).
+In this post, we'll outline the general methods used to solve this problem, and
+investigate each method's effects on performance by comparing benchmark results
+from DVC and rclone. We'll then conclude with a more in-depth explanation of new
+optimizations made in DVC 1.0 which enabled us to outperform both older DVC
+releases as well as general data sync tools (like rclone).
 
 _Note: "Cloud storage" and "remote storage" will be used interchangeably
 throughout this post. When discussing dataset size in this post, we mean size in
@@ -66,7 +66,7 @@ time). **While this may seem like a trivial problem, the second step is actually
 a significant potential performance bottleneck.**
 
 In general, cloud storage APIs provide two possible ways to determine what files
-are present in cloud storage, and it is up to the data sync tool to select which
+are present in cloud storage, and it's up to the data sync tool to select which
 method to use. Even for an operation as simple as synchronizing a single local
 file to cloud storage, choosing incorrectly between these two options could
 actually mean the difference between that "simple" operation taking several
@@ -103,7 +103,7 @@ With this method, the overall amount of time it will take to complete the full
 operation scales with the total number of files in cloud storage, rather than
 the number of files we wish to query.
 
-It is important to note that when using this method, cloud APIs will only return
+It's important to note that when using this method, cloud APIs will only return
 a certain number of files at a time (the amount returned varies depending on the
 API). This means that for an API which returns 1000 files at a time (such as
 S3), retrieving the full listing of a remote containing 1000 files or less would
@@ -111,18 +111,18 @@ would only take a single API request. Listing a remote which contains 1 million
 files would take 1000 API requests.
 
 Another important note is that API calls for this method must be made
-sequentially and cannot be easily parallelized. Using S3 as an example, the
-first API call would return files 0 through 999. The next call would return
-files 1000 through 1999, and so on. However, the API provides no guarantee of
-ordering, and API calls must be made sequentially, until the full list has been
-retrieved. So we cannot make two simultaneous requests for both "files 1-999"
-and "files 1000-1999".
+sequentially and can't be easily parallelized. Using S3 as an example, the first
+API call would return files 0 through 999. The next call would return files 1000
+through 1999, and so on. However, the API provides no guarantee of ordering, and
+API calls must be made sequentially, until the full list has been retrieved. So
+we can't make two simultaneous requests for both "files 1-999" and "files
+1000-1999".
 
 ### How selecting one method or the other can drastically improve performance
 
 Consider an example scenario where a dataset being synchronized contains 100
 local files, and we need to check which of those files exist in cloud storage.
-For the purposes of this example, we will also assume that all individual API
+For the purposes of this example, we'll also assume that all individual API
 calls take the same amount of time to complete, and that we are not running any
 tasks in parallel. Additionally, let's say that our example cloud storage API
 returns 1000 files per page when using query method 2.
@@ -153,7 +153,7 @@ than method 2.
 Thinking about it from a different perspective, what happens if we have the
 ability to reduce the size of a (relatively) large query set?
 
-Once our query set is smaller than a certain threshold, we will be able to use
+Once our query set is smaller than a certain threshold, we'll be able to use
 method 1 rather than method 2. On top of that, we know that the runtime of
 method 1 scales with query set size. **In simple terms, by reducing the size of
 our query set as much as possible, we can also improve performance.**
@@ -304,7 +304,7 @@ Previously, we have established that:
 - Selecting the right query method will have a significant performance impact.
 - Reducing the number of files to query will improve performance.
 
-In this section, we will cover the ways in which DVC 1.0 has directly addressed
+In this section, we'll cover the ways in which DVC 1.0 has directly addressed
 both of these key points:
 
 - Automatically selecting the optimal query method for any given sync operation.
