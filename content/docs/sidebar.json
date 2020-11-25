@@ -100,9 +100,12 @@
         "slug": "how-to",
         "source": false,
         "children": [
-          "undo-adding-data",
-          "add-deps-or-outs-to-a-stage",
-          "update-tracked-files"
+          {
+            "label": "Un-track Data",
+            "slug": "untrack-data"
+          },
+          "update-tracked-files",
+          "add-deps-or-outs-to-a-stage"
         ]
       },
       "setup-google-drive-remote",
