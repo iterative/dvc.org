@@ -27,8 +27,9 @@ removal then both
 [dvc.lock](/doc/user-guide/dvc-files-and-directories#dvclock-file) are removed
 from the workspace.
 
-Note that in the case of `.dvc` file `targets`, the tracked files or directories
-(`outs` in the `.dvc` file) are removed by default by this command.
+Note that in the case when `targets` are `.dvc` files, the tracked files or
+directories (`outs` in the `.dvc` file) are _not_ removed by this command unless
+`--outs` is specified.
 
 `dvc remove` does not remove files from the DVC cache or remote storage (see
 `dvc gc`). However, remember to run `dvc push` to save the files you actually

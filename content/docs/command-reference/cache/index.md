@@ -25,7 +25,7 @@ Learn more about it's
 > [File link types](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
 > for more information on file links on different platforms.
 
-> For more cache-related configuration options refer to `dvc config cache`.
+For cache configuration options, refer to `dvc config cache`.
 
 ## Options
 

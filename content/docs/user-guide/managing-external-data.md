@@ -27,7 +27,6 @@ Currently, the following types (protocols) of external outputs (and
 <abbr>cache</abbr>) are supported:
 
 - Amazon S3
-- Microsoft Azure Blob Storage
 - Google Cloud Storage
 - SSH
 - HDFS
@@ -67,24 +66,6 @@ $ dvc run -d data.txt \
           --external \
           -o s3://mybucket/data.txt \
           aws s3 cp data.txt s3://mybucket/data.txt
-```
-
-</details>
-
-<details>
-
-### Click for Microsoft Azure Blob Storage
-
-```dvc
-$ dvc remote add azurecache azure://mycontainer/cache
-$ dvc config cache.azure azurecache
-
-$ dvc add --external azure://mycontainer/existing-data
-
-$ dvc run -d data.txt \
-          --external \
-          -o azure://mycontainer/data.txt \
-          az storage blob upload -f data.txt -c mycontainer -n data.txt
 ```
 
 </details>
@@ -156,6 +137,25 @@ $ dvc run -d data.txt \
 
 Note that as long as there is a `hdfs://...` URL for your data, DVC can handle
 it. So systems like Hadoop, Hive, and HBase are supported!
+
+</details>
+
+<details>
+
+### Click for WebHDFS
+
+```dvc
+$ dvc remote add webhdfscache webhdfs://user@example.com/cache
+$ dvc config cache.webhdfs webhdfscache
+
+$ dvc add --external webhdfs://user@example.com/existing-data
+
+$ dvc run -d data.txt \
+          --external \
+          -o webhdfs://user@example.com/data.txt \
+          curl --upload-file data.txt \
+              "http://user@example.com:50075/webhdfs/v1/data.txt?op=CREATE"
+```
 
 </details>
 

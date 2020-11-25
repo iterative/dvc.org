@@ -118,7 +118,9 @@ used to see what files `dvc pull` would download.
 
 - `-j <number>`, `--jobs <number>` - parallelism level for DVC to download data
   from remote storage. The default value is `4 * cpu_count()`. For SSH remotes,
-  the default is `4`. Using more jobs may improve the overall transfer speed.
+  the default is `4`. Note that the default value can be set using the `jobs`
+  config option with `dvc remote modify`. Using more jobs may improve the
+  overall transfer speed.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -151,8 +153,11 @@ $ cd example-get-started
 .
 ├── data
 │   └── data.xml.dvc
+├── dvc.lock
+├── dvc.yaml
 ...
-└── train.dvc
+└── src
+    └── <code files here>
 ```
 
 We can now just run `dvc pull` to download the most recent `data/data.xml`,
@@ -161,20 +166,19 @@ We can now just run `dvc pull` to download the most recent `data/data.xml`,
 ```dvc
 $ dvc pull
 
-$ tree example-get-started/
-example-get-started/
+$ tree
+.
 ├── data
 │   ├── data.xml
 │   ├── data.xml.dvc
 ...
-├── model.pkl
-└── train.dvc
+└── model.pkl
 ```
 
-We can download specific <abbr>outputs</abbr> of a single DVC-file:
+We can download specific <abbr>outputs</abbr> of a single stage:
 
 ```dvc
-$ dvc pull train.dvc
+$ dvc pull train
 ```
 
 ## Example: With dependencies
@@ -212,7 +216,7 @@ Everything is up to date.
 ```
 
 With the first `dvc pull` we specified a stage in the middle of this pipeline
-(`featurize.dvc`) while using `--with-deps`. DVC started with that DVC-file and
+(`featurize`) while using `--with-deps`. DVC started with that stage and
 searched backwards through the pipeline for data files to download. Later we ran
 `dvc pull` to download all the remaining data files.
 
