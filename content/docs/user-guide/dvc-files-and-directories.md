@@ -37,6 +37,7 @@ edit, or even created manually. Here is a sample:
 outs:
   - md5: a304afb96060aad90176268345e10355
     path: data.xml
+    desc: cats and dogs dataset
 
 # Comments and user metadata are supported.
 meta:
@@ -74,6 +75,8 @@ An _output entry_ (`outs`) consists of these fields:
 - `nfiles`: If a directory, number of files inside.
 - `cache`: Whether or not this file or directory is <abbr>cached</abbr> (`true`
   by default, if not present). See the `--no-commit` option of `dvc add`.
+- `desc`: User description for this output. This doesn't affect any DVC
+  operations.
 
 A _dependency entry_ (`deps`) consists of these fields:
 
@@ -128,12 +131,14 @@ stages:
     metrics:
       - performance.json
   training:
+    desc: train your model
     cmd: python train.py
     deps:
       - train.py
       - features
     outs:
-      - model.pkl
+      - model.pkl:
+          desc: my model description
     plots:
       - logs.csv:
           x: epoch
@@ -173,6 +178,8 @@ the possible following fields:
 - `meta` (optional): Arbitrary metadata can be added manually with this field.
   Any YAML contents is supported. `meta` contents are ignored by DVC, but they
   can be meaningful for user processes that read or write `.dvc` files directly.
+- `desc` (optional): User description for this stage. This doesn't affect any
+  DVC operations.
 
 `dvc.yaml` files also support `# comments`.
 
