@@ -191,4 +191,5 @@ She stayed home and made mashed potatoes.
 
 ![](/uploads/images/2020-11-25/deevee_n_taters.png)
 
-That's all for now, everyone! As always, keep in touch with all your questions big and small. 
+That's all for now, everyone! As always, keep in touch with all your questions
+big and small.
