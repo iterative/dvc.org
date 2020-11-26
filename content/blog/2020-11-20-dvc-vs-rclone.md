@@ -1,6 +1,6 @@
 ---
 title: 'Cloud Data Sync Methods and Benchmark: DVC vs Rclone'
-date: 2020-11-20
+date: 2020-11-26
 description: |
   DVC 1.0 optimized data synchronization to and from remote storage. Here's how we did it.
 descriptionLong: |
