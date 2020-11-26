@@ -102,9 +102,17 @@ file is gone from there it's gone for good.
 
 ### [Q: My DVC cache is getting a bit big. Can I clean it?](https://discord.com/channels/485586884165107732/563406153334128681/771275051382341674)
 
-Definitely. Have you seen the command `dvc gc`? It helps you clean your local cache- [read up here](https://dvc.org/doc/command-reference/gc). This function lets you get granular about what you're keeping;  for example, you can instruct `dvc gc` to preserve cache files that are currently used your local worksapce, tips of Git branches, tagged Git commits or all Git commits. Everything else will be removed.
+Definitely. Have you seen the command `dvc gc`? It helps you clean your local
+cache- [read up here](https://dvc.org/doc/command-reference/gc). This function
+lets you get granular about what you're keeping; for example, you can instruct
+`dvc gc` to preserve cache files that are currently used your local worksapce,
+tips of Git branches, tagged Git commits or all Git commits. Everything else
+will be removed.
 
-One word of caution: make sure that when you collect garbage from your cache, you don't delete any files that you haven't yet pushed to a remote. If this happens, you'll delete them permanently. To be safe, it never hurts to `dvc push` before cleaning. 
+One word of caution: make sure that when you collect garbage from your cache,
+you don't delete any files that you haven't yet pushed to a remote. If this
+happens, you'll delete them permanently. To be safe, it never hurts to
+`dvc push` before cleaning.
 
 ## CML questions
 
@@ -120,14 +128,15 @@ to get started. A few quick notes to keep in mind:
    docs!) or you'll surely hit a permissions error.
 
 2. Bitbucket Cloud uses Bitbucket Pipelines for continuous integration
-   workflows, which currently doesn't support self-hosted runners. That means bringing your own GPUs is not supported. Sorry! But
-   you can still have all the other CML benefits of plots, tables and text in
-   your Pull Request.
+   workflows, which currently doesn't support self-hosted runners. That means
+   bringing your own GPUs is not supported. Sorry! But you can still have all
+   the other CML benefits of plots, tables and text in your Pull Request.
 
 3. Bitbucket Server support (with Jenkins and Bamboo) is under active
    development. Stay tuned!
 
-![](/uploads/images/2020-11-25/bitbucket_cloud_pr.png)_Now your Bitbucket PRs can be as pretty as you._
+![](/uploads/images/2020-11-25/bitbucket_cloud_pr.png)_Now your Bitbucket PRs
+can be as pretty as you._
 
 ### [Q: Can I use CML with Windows runners?](https://discord.com/channels/485586884165107732/728693131557732403/772519007894765600)
 
@@ -176,8 +185,10 @@ Docker Machine approach with a method based on TerraForm, and we can't wait to
 unveil it. It should make deploying cloud instances on AWS, GCP and Azure work
 with less code than ever.
 
-### Q: What is DeeVee doing for Thanksgiving?
+### Q: What did DeeVee do for Thanksgiving?
 
-Staying home and making mashed potatoes.
+She stayed home and made mashed potatoes.
 
 ![](/uploads/images/2020-11-25/deevee_n_taters.png)
+
+That's all for now, everyone! As always, keep in touch with all your questions big and small. 
