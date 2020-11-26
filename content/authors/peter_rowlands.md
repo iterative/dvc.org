@@ -6,4 +6,4 @@ links:
   - https://www.linkedin.com/in/pmrowla
 ---
 
-Software engineer at [https://dvc.org/](https://dvc.org/)
+Software engineer at [dvc.org](https://dvc.org/)
