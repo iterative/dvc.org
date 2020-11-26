@@ -2,9 +2,9 @@
 title: 'Cloud Data Sync Methods and Benchmark: DVC vs Rclone'
 date: 2020-11-20
 description: |
-  An overview of how data synchronization to and from remote storage is optimized in DVC 1.0.
+  DVC 1.0 optimized data synchronization to and from remote storage. Here's how we did it.
 descriptionLong: |
-  In this post, we'll outline the general methods used to determine which
+  We'll outline the general methods used to determine which
   files to upload and download in a data synchronization operation, and
   investigate each method's effects on performance by comparing benchmark
   results from DVC and rclone. We'll then conclude with a more in-depth explanation of
