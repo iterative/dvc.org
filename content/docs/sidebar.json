@@ -100,7 +100,7 @@
         "slug": "how-to",
         "source": false,
         "children": [
-          "stop-tracking-data",
+          "reverse-common-mistakes",
           "update-tracked-files",
           "add-deps-or-outs-to-a-stage"
         ]

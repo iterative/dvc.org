@@ -1,14 +1,15 @@
-# How to Stop Tracking Data
+# How to Reverse Common Mistakes
 
-There are situations where you may want to stop tracking data added previously.
-Let's see how it can be done using an example `data.csv` file.
+## Stop tracking data
+
+There are situations where you may want to "un-track" files or directories added
+in error to DVC.
 
 <details>
 
-## Click to add the sample data first
+## Expand to add a sample data `data.csv` file
 
-Let's `dvc add` a `data.csv` file into an example <abbr>project</abbr>, which
-creates a `.dvc` file to track the data and adds it to `.gitignore`:
+`dvc add` creates a `.dvc` file to track the file, and lists it in `.gitignore`:
 
 ```dvc
 $ dvc add data.csv
@@ -21,7 +22,7 @@ $ cat .gitignore
 
 </details>
 
-Let's undo `dvc add` with `dvc remove`. This removes the `.dvc` file (and
+Let's undo `dvc add` with `dvc remove`. This deletes the `.dvc` file (and
 corresponding `.gitignore` entry). The data file is now no longer being tracked
 after this:
 
@@ -39,3 +40,6 @@ previous versions, if any) from the <abbr>cache</abbr>:
 ```dvc
 $ dvc gc -w
 ```
+
+> Note that a very similar procedure works for pipeline stages and their
+> outputs.
