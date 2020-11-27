@@ -1,28 +1,28 @@
 # Managing External Data
 
-There are cases when data is so large, or its processing is organized in a way
-such that its preferable to avoid moving it from its original location, even if
-it's external or remote to the project. For example: data on a network attached
-storage (NAS), processing data on HDFS, running [Dask](https://dask.org/) via
-SSH, or for a script that streams data from S3 to process it.
+There are cases when data is so large, or its processing is organized in such a
+way, that its preferable to avoid moving it from its original location. For
+example data on a network attached storage (NAS), processing data on HDFS,
+running [Dask](https://dask.org/) via SSH, or for a script that streams data
+from S3 to process it.
 
-External <abbr>outputs</abbr> and
+External outputs and
 [external dependencies](/doc/user-guide/external-dependencies) provide ways to
 track data outside of the <abbr>project</abbr>.
 
 ## How external outputs work
 
+External <abbr>outputs</abbr> are considered part of the (extended) DVC project:
+DVC will track them for
+[versioning](/doc/use-cases/versioning-data-and-model-files), detecting when
+they change (reported by `dvc status`, for example).
+
 DVC can track existing files or directories on an external location with
-`dvc add`. It can also define external outputs for `dvc.yaml` stages to create.
+`dvc add`. It's also possible to use them as [stage](/doc/command-reference/run)
+outputs. Their remote URLs or external paths can be defined in `dvc.yaml` with
+the same format as the `url` of certain `dvc remote` types.
 
-External outputs are considered part of the (extended) DVC project: DVC will
-track them for [versioning](/doc/use-cases/versioning-data-and-model-files),
-thus detecting when they change, and reporting their state in `dvc status` for
-example.
-
-The remote URLs or external paths can be defined with the same format as the
-`url` of certain `dvc remote` types. Currently, the following protocols are
-supported:
+Currently, the following protocols are supported:
 
 - Amazon S3
 - Google Cloud Storage
@@ -34,7 +34,7 @@ External outputs require an
 [external cache](/doc/use-cases/shared-development-server#configure-the-external-shared-cache)
 in the same external/remote file.
 
-> Note that [remote storage](/doc/command-reference/remote) is a separate
+> Note that [remote storage](/doc/command-reference/remote) is a different
 > feature, and that external outputs are not pushed or pulled from/to DVC
 > remotes.
 
@@ -53,9 +53,9 @@ types:
 2. Tracking existing data on the location using `dvc add` (`--external` option
    needed). This produces a `.dvc` file with an external URL or path in its
    `outs` field.
-3. Creating a simple [stage](/doc/command-reference/run) with `dvc run`
-   (`--external` option needed) that moves a local file to the external
-   location. This produces a stage with an external output, in `dvc.yaml`.
+3. Creating a simple stage with `dvc run` (`--external` option needed) that
+   moves a local file to the external location. This produces an external output
+   in `dvc.yaml`.
 
 <details>
 
