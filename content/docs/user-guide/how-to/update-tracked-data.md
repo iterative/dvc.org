@@ -1,8 +1,14 @@
-# How to Update Tracked Files
+---
+title: 'How to Update Tracked Data'
+description: 'Updating files or directories may mean either modifying some of
+the data contents, or completely replacing them.'
+---
 
-Updating a tracked data file (or directory) may mean either
-[modifying](#modifying-content) some of its contents, or completely
-[replacing](#replacing-file) it with a new one (same file name).
+# How to Update Tracked Data
+
+Updating tracked files or directories may mean either
+[modifying](#modifying-content) some of the data contents, or completely
+[replacing](#replacing-file) them (under the same file name).
 
 When the `cache.type` config option is set to `symlink` or `hardlink` (not the
 default, see `dvc config cache` for more info.), updating tracked files has to
