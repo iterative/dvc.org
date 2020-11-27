@@ -6,16 +6,15 @@ dependencies or outputs are missing...'
 
 # How to Add Dependencies or Outputs
 
-We have executed a stage, but later notice that some of the files/directories it
-uses as dependencies or creates as outputs are missing from `dvc.yaml`...
+To add <abbr>dependencies</abbr> or <abbr>outputs</abbr> to a stage, edit the
+`dvc.yaml` file (by hand or using `dvc run` with the `-f --no-exec` flags).
+`dvc repro` will execute it and <abbr>cache</abbr> the output files when ready.
 
-To add <abbr>dependencies</abbr> or <abbr>outputs</abbr> to an existing stage
-without re-executing it (which can be expensive and is unnecessary), edit the
-`dvc.yaml` file (by hand or using `dvc run` with the `-f --no-exec` options).
+If the stage has already been executed it and the desired outputs are present in
+the <abbr>workspace</abbr>, you can avoid `dvc repro` (which can be expensive
+and is unnecessary) and use `dvc commit` instead.
 
-If some output files already exist in the <abbr>workspace</abbr>, you can use
-`dvc commit` after the update to save them to the <abbr>cache</abbr> and update
-`dvc.lock`.
+> Both alternatives update `dvc.lock` accordingly.
 
 ## Example
 
@@ -51,9 +50,9 @@ output. To add a missing dependency (`data/raw.csv`) as well as a missing output
 > `-f` overwrites the stage in `dvc.yaml`, while `--no-exec` updates the stage
 > without executing it.
 
-If the `data/raw.csv` or `data/validate` files exist, we also need to use
-`dvc commit` to save the newly specified deps and outs to the <abbr>cache</abbr>
-(and to update the hash values of `deps` and `outs` in `dvc.lock`):
+If the `data/raw.csv` or `data/validate` files already exist, we can use
+`dvc commit` to cache the newly specified outputs (and to update the `deps` and
+`outs` file hashes in `dvc.lock`):
 
 ```dvc
 $ dvc commit
