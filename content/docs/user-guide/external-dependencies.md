@@ -39,9 +39,6 @@ Currently, the following protocols are supported:
 Let's take a look at defining and running a `download_file` stage that simply
 downloads a file from an external location, on all the supported location types.
 
-> Note that some of the example commands below use the `/home/shared` directory,
-> typical in Linux distributions.
-
 <details>
 
 ### Click for Amazon S3
