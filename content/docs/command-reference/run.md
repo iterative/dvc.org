@@ -12,7 +12,7 @@ usage: dvc run [-h] [-q | -v] -n <name> [-d <path>] [-o <path>]
                [-w <path>] [--no-exec] [-f]
                [--no-run-cache] [--no-commit]
                [--outs-persist <path>] [--outs-persist-no-cache <path>]
-               [--always-changed] [--external]
+               [--always-changed] [--external] [--desc <text>]
                command
 
 positional arguments:
@@ -244,11 +244,11 @@ $ dvc run -n my_stage './my_script.sh $MYENVVAR'
   command's code is non-deterministic
   ([not recommended](#avoiding-unexpected-behavior)).
 
-- `--no-commit` - do not save outputs to cache. A stage created and an entry is
-  added to `.dvc/state`, while nothing is added to the cache. In the stage file,
-  the file hash values will be empty; They will be populated the next time this
-  stage is actually executed, or `dvc commit` can be used to force committing
-  existing output file versions to cache.
+- `--no-commit` - do not save outputs to cache. A stage created, while nothing
+  is added to the cache. In the stage file, the file hash values will be empty;
+  They will be populated the next time this stage is actually executed, or
+  `dvc commit` can be used to force committing existing output file versions to
+  cache.
 
   This is useful to avoid caching unnecessary data repeatedly when running
   multiple experiments.
@@ -260,8 +260,11 @@ $ dvc run -n my_stage './my_script.sh $MYENVVAR'
   > Note that DVC-files without dependencies are automatically considered
   > "always changed", so this option has no effect in those cases.
 
-- `--external` - allow outputs that are outside of the DVC repository. See
+- `--external` - allow writing outputs outside of the DVC repository. See
   [Managing External Data](/doc/user-guide/managing-external-data).
+
+- `--desc <text>` - user description of the stage (optional). This doesn't  
+  affect any DVC operations.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
