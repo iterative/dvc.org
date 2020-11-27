@@ -100,9 +100,9 @@
         "slug": "how-to",
         "source": false,
         "children": [
-          "add-output-to-stage",
-          "undo-adding-data",
-          "update-tracked-files"
+          "stop-tracking-data",
+          "update-tracked-files",
+          "add-deps-or-outs-to-a-stage"
         ]
       },
       "setup-google-drive-remote",
