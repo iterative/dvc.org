@@ -18,8 +18,8 @@ executions on `dvc repro`, for example).
 
 DVC can track files or directories on an external location as
 [stage](/doc/command-reference/run) dependencies. Their remote URLs or external
-paths are defined in `dvc.yaml` with the same format as the `url` of certain
-`dvc remote` types.
+paths are defined in `dvc.yaml` (`deps` field) with the same format as the `url`
+of certain `dvc remote` types.
 
 Currently, the following protocols are supported:
 
@@ -35,10 +35,6 @@ Currently, the following protocols are supported:
 > feature.
 
 ## Examples
-
-To define an external <abbr>dependency</abbr>, add the external URL or path to
-the `deps` field of `dvc.yaml`. For example, with the usual `-d` option in
-`dvc run`, giving it the external URL/path to your desired file or directory.
 
 Let's take a look at defining and running a `download_file` stage that simply
 downloads a file from an external location, on all the supported location types.

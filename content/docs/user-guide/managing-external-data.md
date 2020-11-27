@@ -19,8 +19,8 @@ they change (reported by `dvc status`, for example).
 
 DVC can track existing files or directories on an external location with
 `dvc add`. It's also possible to use them as [stage](/doc/command-reference/run)
-outputs. Their remote URLs or external paths can be defined in `dvc.yaml` with
-the same format as the `url` of certain `dvc remote` types.
+outputs. Their remote URLs or external paths can be defined in `dvc.yaml`
+(`outs` field) with the same format as the `url` of certain `dvc remote` types.
 
 Currently, the following protocols are supported:
 
