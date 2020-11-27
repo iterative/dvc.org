@@ -183,9 +183,9 @@ has changed, but no dependency has changed. Likewise for `baz.dvc`, the output
 
 ```dvc
 $ dvc status dofoo.dvc dobar
-dofoo.dvc:
+foo.dvc:
 	changed outs:
-		deleted:            dofoo
+		deleted:            foo
 	changed checksum
 dobar:
 	changed deps:
