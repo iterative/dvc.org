@@ -17,12 +17,11 @@ DVC will track them for
 [versioning](/doc/use-cases/versioning-data-and-model-files), detecting when
 they change (reported by `dvc status`, for example).
 
-DVC can track existing files or directories on an external location with
-`dvc add`. It's also possible to use them as [stage](/doc/command-reference/run)
-outputs. Their remote URLs or external paths can be defined in `dvc.yaml`
-(`outs` field) with the same format as the `url` of certain `dvc remote` types.
-
-Currently, the following protocols are supported:
+To use existing files or directories in an external location as
+[stage](/doc/command-reference/run) outputs, give their remote URLs or external
+paths to `dvc add`, or put them in `dvc.yaml` (`deps` field). Use the same
+format as the `url` of certain `dvc remote` types. Currently, the following
+protocols are supported:
 
 - Amazon S3
 - Google Cloud Storage

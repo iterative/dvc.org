@@ -16,12 +16,10 @@ External <abbr>dependencies</abbr> are considered part of the (extended) DVC
 project: DVC will track them, detecting when they change (triggering stage
 executions on `dvc repro`, for example).
 
-DVC can track files or directories on an external location as
-[stage](/doc/command-reference/run) dependencies. Their remote URLs or external
-paths are defined in `dvc.yaml` (`deps` field) with the same format as the `url`
-of certain `dvc remote` types.
-
-Currently, the following protocols are supported:
+To define files or directories in an external location as
+[stage](/doc/command-reference/run) dependencies, put their remote URLs or
+external paths in `dvc.yaml` (`deps` field). Use the same format as the `url` of
+certain `dvc remote` types. Currently, the following protocols are supported:
 
 - Amazon S3
 - Microsoft Azure Blob Storage
