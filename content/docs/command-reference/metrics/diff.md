@@ -31,6 +31,16 @@ specified, `dvc metrics diff` compares metrics currently present in the
 (required). A single specified revision results in comparing the workspace and
 that version.
 
+Unlike its `dvc plots` counterpart, `dvc metrics diff` can report the numeric
+difference between the metrics in different experiments, for example an `AUC`
+metrics that is `0.801807` and gets increase by `+0.037826`:
+
+```dvc
+$ dvc metrics diff
+    Path       Metric    Value      Change
+summary.json   AUC      0.801807   0.037826
+```
+
 Another way to display metrics is the `dvc metrics show` command, which just
 lists all the current metrics, without comparisons.
 

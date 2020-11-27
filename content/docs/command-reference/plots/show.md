@@ -174,10 +174,60 @@ file:///Users/usr/src/plots/logs.csv.json
 
 ```json
 {
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
-    "data": {
-        "values": [
-    {
-        "accuracy": "0.9418667",
-    ...
+  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+  "data": {
+    "values": [{ "accuracy": "0.9418667", ... }]
+  }
+}
 ```
+
+## Example: Smooth plot
+
+In some cases we would like to smooth our plot. In this example we will use a
+plot with 1000 data points:
+
+```dvc
+$ dvc plots show data.csv
+file:///Users/usr/src/plots/plots.html
+```
+
+![](/img/plots_show_no_smooth.svg)
+
+We can use the `-t` option and `smooth` template to make it less noisy:
+
+```dvc
+$ dvc plots show -t smooth data.csv
+file:///Users/usr/src/plots/plots.html
+```
+
+![](/img/plots_show_smooth.svg)
+
+## Example: Confusion matrix
+
+We'll use `classes.csv` for this example:
+
+```
+actual,predicted
+cat,cat
+cat,cat
+cat,cat
+cat,dog
+cat,dinosaur
+cat,dinosaur
+cat,bird
+turtle,dog
+turtle,cat
+...
+```
+
+Let's visualize it:
+
+```dvc
+$ dvc plots show classes.csv --template confusion -x actual -y predicted
+file:///Users/usr/src/plots/classes.csv.html
+```
+
+![](/img/plots_show_confusion.svg)
+
+> A confusion matrix [template](/doc/command-reference/plots#plot-templates) is
+> predefined in DVC (found in `.dvc/plots/confusion.json`).
