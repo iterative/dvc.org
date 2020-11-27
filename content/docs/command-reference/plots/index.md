@@ -22,15 +22,7 @@ positional arguments:
 
 ...
 
-## Options
-
-- `-h`, `--help` - prints the usage/help message, and exit.
-
-- `-q`, `--quiet` - do not write anything to standard output.
-
-- `-v`, `--verbose` - displays detailed tracing information.
-
-## Supported file formats
+### Supported file formats
 
 DVC generates plots as HTML files that can be open with a web browser. These
 HTML files use [Vega-Lite](https://vega.github.io/vega-lite/). Vega is a
@@ -73,6 +65,14 @@ names in the `train` array below:
   ]
 }
 ```
+
+## Options
+
+- `-h`, `--help` - prints the usage/help message, and exit.
+
+- `-q`, `--quiet` - do not write anything to standard output.
+
+- `-v`, `--verbose` - displays detailed tracing information.
 
 ## Plot templates
 
