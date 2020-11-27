@@ -11,6 +11,7 @@ changes in the remote data source. Creates a `.dvc` file.
 
 ```usage
 usage: dvc import-url [-h] [-q | -v] [--file <filename>] [--no-exec]
+                      [--desc <text>]
                       url [out]
 
 positional arguments:
@@ -129,6 +130,9 @@ source.
   The data hash is not calculated by this, only the metadata is saved into the
   `.dvc` file. You can use `dvc commit <out>.dvc` if you need the hashes in the
   new `.dvc` file and save existing data to the cache.
+
+- `--desc <text>` - user description of the data (optional). This doesn't  
+  affect any DVC operations.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
