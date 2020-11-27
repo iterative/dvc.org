@@ -98,13 +98,13 @@ undesirable for data directories with a large number of files.
 To avoid adding files inside a directory accidentally, you can add the
 corresponding [patterns](/doc/user-guide/dvcignore) to `.dvcignore`.
 
-### Adding symlinked targets {#add-symlink}
+### Adding symlink targets {#add-symlink}
 
-DVC only supports symlinked files as valid targets for `dvc add`. If the target
-path is a directory symlink, or if the target path contains any intermediate
-directory symlinks, `dvc add` will fail.
+`dvc add` supports symlinked files as `targets`. But if a target path is a
+directory symlink, or if it contains any intermediate directory symlinks, it
+cannot be added to DVC.
 
-So given the following project structure:
+For example, given the following project structure:
 
 ```
 .
@@ -117,10 +117,9 @@ So given the following project structure:
 └── link_to_file -> dir/file
 ```
 
-`dir`, `dir/file`, `link_to_external_file` and `link_to_file` are all valid
-targets for `dvc add`. `link_to_dir`, `link_to_external_dir` and
-`link_to_dir/file` are invalid targets, since the target path would contain
-directory symlinks.
+`link_to_file` and `link_to_external_file` are both valid symlink targets to
+`dvc add`. But `link_to_dir`, `link_to_external_dir`, and `link_to_dir/file` are
+not.
 
 ## Options
 
@@ -129,11 +128,10 @@ directory symlinks.
   among the `targets`, this option is ignored. For each file found, a new `.dvc`
   file is created using the process described in this command's description.
 
-- `--no-commit` - do not save outputs to cache. A `.dvc` file is created and an
-  entry is added to `.dvc/state`, while nothing is added to the cache.
-  (`dvc status` will report that the file is `not in cache`.) Use `dvc commit`
-  when ready to commit outputs with DVC. This is analogous to using `git add`
-  before `git commit`.
+- `--no-commit` - do not save outputs to cache. A `.dvc` file is created, while
+  nothing is added to the cache. (`dvc status` will report that the file is
+  `not in cache`.) Use `dvc commit` when ready to commit outputs with DVC. This
+  is analogous to using `git add` before `git commit`.
 
 - `--file <filename>` - specify name of the `.dvc` file it generates. This
   option works only if there is a single target. By default the name of the
@@ -141,12 +139,15 @@ directory symlinks.
   the given target. This option allows to set the name and the path of the
   generated `.dvc` file.
 
+- `--glob` - allows adding files and directories that match the
+  [pattern](https://docs.python.org/3/library/glob.html) specified in `targets`.
+  Shell style wildcards supported: `*`, `?`, `[seq]`, `[!seq]`, and `**`
+
 - `--external` - allow `targets` that are outside of the DVC repository. See
   [Managing External Data](/doc/user-guide/managing-external-data).
 
-- `--glob` - allows adding files and directories that match the specified
-  pattern as specified by `target`. Shell-style wildcards are supported: `*`,
-  `?`, `[seq]`, `[!seq]`, and `**`.
+  > Note that external outputs typically require an external cache setup. See
+  > link above for more details.
 
 - `--desc <text>` - user description of the data (optional). This doesn't affect
   any DVC operations.
