@@ -1,6 +1,6 @@
 ---
 title: 'How to Merge Conflicts'
-description: 'Git merge conflicts can happen in in DVC metafiles when combining
+description: 'Git merge conflicts can happen in DVC metafiles when combining
 changes from multiple team members.'
 ---
 
