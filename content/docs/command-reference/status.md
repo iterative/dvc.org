@@ -157,12 +157,12 @@ that.
 
 ```dvc
 $ dvc status
-foo:
+dofoo:
 	changed deps:
 		modified:           bar
 	changed outs:
 		not in cache:       foo
-bar:
+dobar:
 	changed outs:
 		deleted:            bar
 	changed checksum
