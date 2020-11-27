@@ -14,7 +14,7 @@ positional arguments:
 
 ## Description
 
-This command can safely remove stages from `dvc.yaml` or `.dvc` files. This
+This command can safely remove `.dvc` files or stages from `dvc.yaml`. This
 includes deleting the appropriate `.gitignore` entries, and optionally the
 actual output files they track (see `--outs` option).
 
@@ -48,24 +48,25 @@ how it helps replace data that is tracked by DVC.
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
-## Example: remove a tracked file (or directory)
+## Example: remove a .dvc file
 
 Let's imagine we have `foo.csv` and `bar.csv` files, that are already
 [tracked](/doc/command-reference/add) by DVC:
 
 ```dvc
-$ ls *.csv*
+$ ls
 bar.csv  bar.csv.dvc  foo.csv  foo.csv.dvc
 $ cat .gitignore
 /foo.csv
 /bar.csv
 ```
 
-This removed the `foo.csv.dvc` file, and lists `.gitignore` to double check that
-the corresponding entry is gone from there:
+This removes `foo.csv.dvc` and double checks that its entry is gone from
+`.gitignore`:
 
 ```dvc
 $ dvc remove foo.csv.dvc
+
 $ ls
 bar.csv  bar.csv.dvc  foo.csv
 $ cat .gitignore
@@ -74,10 +75,10 @@ $ cat .gitignore
 
 > The same procedure applies to tracked directories.
 
-## Example: remove a stage
+## Example: remove a stage and its output
 
-Let's imagine we have a stage named `train` in our `dvc.yaml` file, and
-corresponding files in the <abbr>workspace</abbr>:
+Let's imagine we have a `train` stage in `dvc.yaml`, and corresponding files in
+the <abbr>workspace</abbr>:
 
 ```yaml
 train:
@@ -94,9 +95,9 @@ $ ls
 dvc.lock  dvc.yaml  foo.csv  foo.csv.dvc  model  train.py
 ```
 
-Running `dvc remove` on the stage name will remove that entry from `dvc.yaml`,
-and remove its outputs from `.gitignore`. With the `--outs` option, the outputs
-itself (just `model` in this example) are also removed:
+Using `dvc remove` on the stage name will remove that entry from `dvc.yaml`, and
+its outputs from `.gitignore`. With the `--outs` option, its outputs are also
+deleted (just the `model` file in this example):
 
 ```dvc
 $ dvc remove train --outs
@@ -104,4 +105,4 @@ $ ls
 dvc.lock  dvc.yaml  foo.csv  foo.csv.dvc  train.py
 ```
 
-Notice that the dependencies (`data.csv` and `train.py`) are not removed.
+> Notice that the dependencies (`data.csv` and `train.py`) are not deleted.
