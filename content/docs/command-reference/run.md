@@ -12,7 +12,7 @@ usage: dvc run [-h] [-q | -v] -n <name> [-d <path>] [-o <path>]
                [-w <path>] [--no-exec] [-f]
                [--no-run-cache] [--no-commit]
                [--outs-persist <path>] [--outs-persist-no-cache <path>]
-               [--always-changed] [--external]
+               [--always-changed] [--external] [--desc <text>]
                command
 
 positional arguments:
@@ -262,6 +262,9 @@ $ dvc run -n my_stage './my_script.sh $MYENVVAR'
 
 - `--external` - allow writing outputs outside of the DVC repository. See
   [Managing External Data](/doc/user-guide/managing-external-data).
+
+- `--desc <text>` - user description of the stage (optional). This doesn't  
+  affect any DVC operations.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 

@@ -37,6 +37,7 @@ edit, or even created manually. Here is a sample:
 outs:
   - md5: a304afb96060aad90176268345e10355
     path: data.xml
+    desc: cats and dogs dataset
 
 # Comments and user metadata are supported.
 meta:
@@ -69,11 +70,13 @@ An _output entry_ (`outs`) consists of these fields:
   tracked with DVC. MD5 is used for most locations (local file system and SSH);
   [ETag](https://en.wikipedia.org/wiki/HTTP_ETag#Strong_and_weak_validation) for
   HTTP, S3, or Azure [external outputs](/doc/user-guide/managing-external-data);
-  and a special _checksum_ for HDFS.
+  and a special _checksum_ for HDFS and WebHDFS.
 - `size`: Size of the file or directory (sum of all files).
 - `nfiles`: If a directory, number of files inside.
 - `cache`: Whether or not this file or directory is <abbr>cached</abbr> (`true`
   by default, if not present). See the `--no-commit` option of `dvc add`.
+- `desc`: User description for this output. This doesn't affect any DVC
+  operations.
 
 A _dependency entry_ (`deps`) consists of these fields:
 
@@ -83,7 +86,7 @@ A _dependency entry_ (`deps`) consists of these fields:
   tracked with DVC. MD5 is used for most locations (local file system and SSH);
   [ETag](https://en.wikipedia.org/wiki/HTTP_ETag#Strong_and_weak_validation) for
   HTTP, S3, or Azure <abbr>external dependencies</abbr>; and a special
-  _checksum_ for HDFS. See `dvc import-url` for more information.
+  _checksum_ for HDFS and WebHDFS. See `dvc import-url` for more information.
 - `size`: Size of the file or directory (sum of all files).
 - `nfiles`: If a directory, number of files inside.
 - `repo`: This entry is only for external dependencies created with
@@ -128,12 +131,14 @@ stages:
     metrics:
       - performance.json
   training:
+    desc: train your model
     cmd: python train.py
     deps:
       - train.py
       - features
     outs:
-      - model.pkl
+      - model.pkl:
+          desc: my model description
     plots:
       - logs.csv:
           x: epoch
@@ -173,6 +178,8 @@ the possible following fields:
 - `meta` (optional): Arbitrary metadata can be added manually with this field.
   Any YAML contents is supported. `meta` contents are ignored by DVC, but they
   can be meaningful for user processes that read or write `.dvc` files directly.
+- `desc` (optional): User description for this stage. This doesn't affect any
+  DVC operations.
 
 `dvc.yaml` files also support `# comments`.
 

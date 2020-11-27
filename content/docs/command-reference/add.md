@@ -7,7 +7,7 @@ file.
 
 ```usage
 usage: dvc add [-h] [-q | -v] [-R] [--no-commit] [--external]
-               [--file <filename>] [--glob]
+               [--file <filename>] [--glob] [--desc <text>]
                targets [targets ...]
 
 positional arguments:
@@ -148,6 +148,9 @@ not.
 
   > Note that external outputs typically require an external cache setup. See
   > link above for more details.
+
+- `--desc <text>` - user description of the data (optional). This doesn't affect
+  any DVC operations.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
