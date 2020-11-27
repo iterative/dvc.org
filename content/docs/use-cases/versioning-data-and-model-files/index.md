@@ -1,65 +1,76 @@
 # Versioning Data and Models
 
-Data science teams today face data management questions around versioning
-datasets, data artifacts, and machine learning models. How do we keep track of
-changes in data, source code, and ML models together? What's the best way to
-organize and store multiple versions of data and model files? How can data
-lifecycles be defined and enforced?
+Data science teams face data management questions around versions of data and
+machine learning models. How do we keep track of changes in data, source code,
+and ML models together? What's the best way to organize and store variations of
+these files and directories?
 
 ![](/img/data-ver-complex.png) _Exponential complexity of data science projects_
 
-Data Version Control (DVC) helps you organize data and models effectively.
-Unique data versions are stored automatically (preventing file duplication).
-This storage is separated from the <abbr>workspace</abbr> so it can be handled
-independently. Translation: the data stays with you.
+Another problem in the field has to do with bookkeeping: being able to identify
+past research inputs and processes to understand results, for knowledge sharing,
+or for debugging. There's also the matter of defining and enforcing data
+lifecycles.
 
-Now file names in the project don't need to change, because they can
-[link](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
-to those variable contents. And their contents can be modified without worrying
-about updating paths in code.
+**Data Version Control** (DVC) helps you organize data and models effectively,
+and capture their versions with
+[Git commits](https://git-scm.com/book/en/v2/Git-Basics-Recording-Changes-to-the-Repository).
+It supports data _versioning through codification_: describing which datasets,
+ML artifacts, etc. should be in the <abbr>workspace</abbr> at any given time.
+DVC also provides mechanisms to cache different data contents, and to switch
+between their versions.
 
-![](/img/project-versions.png) _DVC matches the right versions of code and
-data._
+![](/img/project-versions.png) _DVC matches the right versions of data to the
+rest of your project._
 
-DVC provides data versioning through codification. That means describing which
-data, ML artifacts, etc. should be in the environment at any given time. This is
-achieved with special [metafiles](/doc/user-guide/dvc-files-and-directories)
-that can be put in Git instead of the actual data (already stored by DVC). The
-result is a single immutable history for code and data.
+This is achieved with special
+[metafiles](/doc/user-guide/dvc-files-and-directories) that can be put in Git
+instead of the actual data. And by storing unique data versions (no file
+duplication) separate from the workspace.
 
-> To learn more about how DVC works, please refer to our many
-> [guides](/doc/user-guide) and [references](/doc/command-reference). You can
-> also try the
+The result is a single immutable history for data, code, models, etc., like an
+experiments journal. This makes the project fully _reproducible_:
+[Restore](/doc/command-reference/checkout) any project version and find the
+corresponding data instantly. And at the same time, the data stays with you —
+free from the storage constraints of Git repos and
+[hosting](https://docs.github.com/en/free-pro-team@latest/github/managing-large-files/what-is-my-disk-quota).
+
+> To learn how it looks and feels, try the
 > [versioning tutorial](/doc/use-cases/versioning-data-and-model-files/tutorial)
-> 👩‍💻 to see how it looks and feels.
+> 👩‍💻. And there are many other [guides](/doc/user-guide) and
+> [references](/doc/command-reference) that explain DVC in more detail.
 
-These are the high-level benefits of our approach:
+These are the benefits of our approach:
 
-- **Simplicity**: DVC is a
+- **Lightweight**: DVC is a
   [free](https://github.com/iterative/dvc/blob/master/LICENSE), open-source
   [command line](/doc/command-reference) tool that doesn't require databases or
-  servers. It keeps your project readable and consistent: No need for
-  complicated file names like `data/20190922/labels_v7_final.bak`.
-- **Data management**: Efficient data storage is automated and decoupled from
-  other assets (source code, config files, etc.). This enables teams to
-  [share data stores](/doc/use-cases/shared-development-server) across
-  development environments. Data and ML models can be
-  [shared remotely](/doc/use-cases/sharing-data-and-model-files) and
-  [reused](/doc/start/data-access) via on-premisses or cloud storage, improving
-  on **collaboration**.
-- **Reproducibility**: Restore any project version and find the corresponding
-  data instantly. Identify past research inputs to understand the results, or
-  for debugging.
-- [**Git workflows**](https://about.gitlab.com/topics/version-control/what-is-git-workflow/).
-  They open the door to advanced scenarios such as continuous integration
-  (CI/CD) like [CML](https://cml.dev/), specialized patterns such as
-  [data registries](/doc/use-cases/data-registries), and other best practices
-  that improve productivity and scalability.
-- **Data compliance**: Maintain visibility on data and model changes. Review who
-  wants to modify them, and why, with pull requests (e.g. on GitHub). Audit this
-  process later to determine when and by whom where data or model versions
-  approved.
+  servers.
+
+- **Consistency**: Keep your projects readable with stable file names (which can
+  contain variable data). No need for complicated paths like
+  `data/20190922/labels_v7_final` or for constantly editing them in source code.
+
+- **Efficient data management**: Use a cost-effective on-premises or cloud
+  storage of your choice for your data and ML models. DVC
+  [optimizes](/doc/user-guide/large-dataset-optimization) their storage and
+  transfers.
+
+- **Collaboration**: Easily share project data
+  [internally](/doc/use-cases/shared-development-server) or
+  [remotely](/doc/use-cases/sharing-data-and-model-files), or
+  [reuse](/doc/start/data-access) it elsewhere.
+
+- **Data compliance**: Review data modification attempts as Git
+  [pull requests](https://www.dummies.com/web-design-development/what-are-github-pull-requests/).
+  Audit this process later to learn when data or model versions were approved,
+  and why.
+
+- **GitOps**: Connect your data science projects with the Git-powered universe.
+  Git workflows open the door to advanced tools such as continuous integration
+  (like [CML](https://cml.dev/) CI/CD), specialized patterns such as
+  [data registries](/doc/use-cases/data-registries), and other best practices.
 
 In summary, data science and machine learning are iterative processes where the
 lifecycles of data, models, and code happen at different paces. DVC helps
-integrate and manage them effectively.
+integrate and manage them effectively. There are other things that DVC can do
