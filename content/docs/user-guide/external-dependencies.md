@@ -1,10 +1,10 @@
 # External Dependencies
 
-There are cases when data is so large, or its processing is organized in a way
-such that its preferable to avoid moving it from its original location, even if
-it's external or remote to the project. For example: data on a network attached
-storage (NAS), processing data on HDFS, running [Dask](https://dask.org/) via
-SSH, or for a script that streams data from S3 to process it.
+There are cases when data is so large, or its processing is organized in such a
+way, that its preferable to avoid moving it from its original location. For
+example data on a network attached storage (NAS), processing data on HDFS,
+running [Dask](https://dask.org/) via SSH, or for a script that streams data
+from S3 to process it.
 
 External <abbr>dependencies</abbr> and
 [external outputs](/doc/user-guide/managing-external-data) provide ways to track
