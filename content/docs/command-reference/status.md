@@ -159,7 +159,7 @@ that.
 $ dvc status
 dofoo:
 	changed deps:
-		modified:           bar
+		modified:           baz
 	changed outs:
 		not in cache:       foo
 dobar:
@@ -172,8 +172,8 @@ baz.dvc:
 	always changed
 ```
 
-This shows that for stage `foo`, the dependency `bar` and the
-<abbr>output</abbr> `foo` have changed, and for stage `bar`, the output `bar`
+This shows that for stage `dofoo`, the dependency `baz` and the
+<abbr>output</abbr> `foo` have changed, and for stage `dobar`, the output `bar`
 has changed, but no dependency has changed. Likewise for `baz.dvc`, the output
 `baz` tracked by it has changed.
 
@@ -182,20 +182,20 @@ has changed, but no dependency has changed. Likewise for `baz.dvc`, the output
 `dvc status` only checks the tracked data corresponding to any given `targets`:
 
 ```dvc
-$ dvc status dofoo.dvc dobar
+$ dvc status foo.dvc dobar
 foo.dvc:
 	changed outs:
 		deleted:            foo
 	changed checksum
 dobar:
 	changed deps:
-		modified:           bar
+		modified:           foo
 	changed outs:
-		not in cache:       foo
+		not in cache:       bar
 ```
 
-> In this case, the target `dofoo.dvc` is a `.dvc` file to track the `dofoo`
-> file, while `dobar` is the name of a stage defined in `dvc.yaml`.
+> In this case, the target `foo.dvc` is a `.dvc` file to track the `foo` file,
+> while `dobar` is the name of a stage defined in `dvc.yaml`.
 
 Note that you can check data within directories tracked, such as the `data/raw`
 directory (tracked with `data/raw.dvc`):
