@@ -8,7 +8,7 @@ from S3 to process it.
 
 External outputs and
 [external dependencies](/doc/user-guide/external-dependencies) provide ways to
-track data outside of the <abbr>project</abbr>.
+track and version data outside of the <abbr>project</abbr>.
 
 ## How external outputs work
 
