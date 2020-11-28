@@ -136,8 +136,9 @@ that.
   later stages than the `targets`. Applies whether or not `--cloud` is
   specified.
 
-- `-r <name>`, `--remote <name>` - specifies which remote storage (see
-  `dvc remote list`) to compare against. Implies `--cloud`.
+- `-r <name>`, `--remote <name>` - name of the
+  [remote storage](/doc/command-reference/remote) to compare against (see
+  `dvc remote list`. Implies `--cloud`.
 
 - `-j <number>`, `--jobs <number>` - parallelism level for DVC to retrieve
   information from remote storage. This only applies when the `--cloud` option

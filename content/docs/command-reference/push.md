@@ -86,7 +86,7 @@ in the cache (compared to the default remote.) It can be used to see what files
   If there are no directories among the `targets`, this option is ignored.
 
 - `-r <name>`, `--remote <name>` - name of the
-  [remote storage](/doc/command-reference/remote) to push from (see
+  [remote storage](/doc/command-reference/remote) to push to (see
   `dvc remote list`).
 
 - `--run-cache` - uploads all available history of stage runs to the remote
