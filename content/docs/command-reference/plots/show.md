@@ -101,15 +101,11 @@ $ dvc plots show train.json
 file:///Users/usr/src/plots/train.json.html
 ```
 
-![](/img/plots_show_json.svg)
-
-> Note that only the last field name (`loss`) is used for the plot by default.
-
 <details>
 
-### Expand to see example using YAML metrics file
+### Expand for YAML format
 
-We'll use metrics file `train.yaml` for this example:
+Here's a corresponding `train.yaml` metrics file:
 
 ```yaml
 train:
@@ -123,17 +119,11 @@ train:
     loss: 0.09026
 ```
 
-DVC identifies and plots YAML objects from the first YAML element found in the
-file (`train`):
-
-```dvc
-$ dvc plots show train.yaml
-file:///Users/usr/src/plots/train.yaml.html
-```
+</details>
 
 ![](/img/plots_show_json.svg)
 
-</details>
+> Note that only the last field name (`loss`) is used for the plot by default.
 
 Use the `-y` option to change the field to plot:
 
@@ -167,13 +157,11 @@ $ dvc plots show logs.csv
 file:///Users/usr/src/plots/logs.csv.html
 ```
 
-![](/img/plots_show.svg)
-
 <details>
 
-### Expand to see example using TSV metrics file
+### Expand for TSV format
 
-We'll use tabular metrics file `logs.tsv` for these examples:
+Here's a corresponding `train.tsv` metrics file:
 
 ```
 epoch    accuracy    loss    val_accuracy    val_loss
@@ -187,16 +175,9 @@ epoch    accuracy    loss    val_accuracy    val_loss
 7    0.9954       0.01396906608727198     0.9802    0.07247738889862157
 ```
 
-By default, this command plots the last column of the table (see `-y` option):
-
-```dvc
-$ dvc plots show logs.tsv
-file:///Users/usr/src/plots/logs.csv.html
-```
+</details>
 
 ![](/img/plots_show.svg)
-
-</details>
 
 Use the `-y` option to change the column to plot:
 
