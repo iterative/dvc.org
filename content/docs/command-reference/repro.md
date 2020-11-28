@@ -26,10 +26,8 @@ implicitly defined by the stages listed in `dvc.yaml`. The commands defined in
 these stages can then be executed in the correct order, reproducing pipeline
 results.
 
-> Pipeline stages are defined in a
-> [`dvc.yaml` file](/doc/user-guide/dvc-files-and-directories#dvcyaml-file)
-> (either manually or by using `dvc run`) while initial data dependencies can be
-> registered with `dvc add`.
+> Pipeline stages are defined in a `dvc.yaml` file (either manually or by using
+> `dvc run`) while initial data dependencies can be registered with `dvc add`.
 
 This command is similar to [Make](https://www.gnu.org/software/make/) in
 software build automation, but DVC captures build requirements
@@ -150,10 +148,10 @@ up-to-date and only execute the final stage.
   stages (`A` and below) depend on `requirements.txt`, we can specify it in `A`,
   and omit it in `B` and `C`.
 
-  Like with the same option on `dvc run`, this is a way to force-execute stages
-  without changes. This can also be useful for pipelines containing stages that
-  produce non-deterministic (semi-random) outputs, where outputs can vary on
-  each execution, meaning the cache cannot be trusted for such stages.
+  Like with the `--force` option on `dvc run`, this is a way to force-execute
+  stages without changes. This can also be useful for pipelines containing
+  stages that produce non-deterministic (semi-random) outputs, where outputs can
+  vary on each execution, meaning the cache cannot be trusted for such stages.
 
 - `--downstream` - only execute the stages after the given `targets` in their
   corresponding pipelines, including the target stages themselves. This option
