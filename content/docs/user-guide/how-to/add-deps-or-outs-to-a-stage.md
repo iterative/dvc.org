@@ -1,7 +1,7 @@
 ---
 title: 'How to Add Dependencies or Outputs to a Stage'
-description: 'It's possible to add files or directories to existing stages, with
-or without executing them.'
+description: "It's possible to add files or directories to existing stages,
+with or without executing them."
 ---
 
 # How to Add Dependencies or Outputs
