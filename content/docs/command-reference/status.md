@@ -157,6 +157,10 @@ that.
 
 ```dvc
 $ dvc status
+baz.dvc:
+	changed outs:
+		modified:           baz
+	always changed
 dofoo:
 	changed deps:
 		modified:           baz
@@ -166,16 +170,12 @@ dobar:
 	changed outs:
 		deleted:            bar
 	changed checksum
-baz.dvc:
-	changed outs:
-		new:                baz
-	always changed
 ```
 
-This shows that for stage `dofoo`, the dependency `baz` and the
-<abbr>output</abbr> `foo` have changed, and for stage `dobar`, the output `bar`
-has changed, but no dependency has changed. Likewise for `baz.dvc`, the output
-`baz` tracked by it has changed.
+This shows that for `baz.dvc`, the output `baz` tracked by it has changed.
+Likewise for stage `dofoo`, the dependency `baz` and the <abbr>output</abbr>
+`foo` have changed, and for stage `dobar`, the output `bar` has changed, but no
+dependency has changed.
 
 ## Example: Specific files or directories
 
