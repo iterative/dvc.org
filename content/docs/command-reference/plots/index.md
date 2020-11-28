@@ -123,7 +123,7 @@ header (first row) are equivalent to field names.
 
 ### DVC template anchors
 
-- `<DVC_METRIC_DATA>` (**required**) - the plot data from any kind of metrics
+- `<DVC_METRIC_DATA>` (**required**) - the plot data from any type of metrics
   files is converted to a single JSON array internally, and injected instead of
   this anchor. Two additional fields will be added: `index` and `rev` (explained
   above).

@@ -11,6 +11,7 @@ changes in the remote data source. Creates a `.dvc` file.
 
 ```usage
 usage: dvc import-url [-h] [-q | -v] [--file <filename>] [--no-exec]
+                      [--desc <text>]
                       url [out]
 
 positional arguments:
@@ -55,18 +56,19 @@ source.
 
 DVC supports several types of (local or) remote locations (protocols):
 
-| Type     | Description                  | `url` format example                       |
-| -------- | ---------------------------- | ------------------------------------------ |
-| `s3`     | Amazon S3                    | `s3://bucket/data`                         |
-| `azure`  | Microsoft Azure Blob Storage | `azure://container/data`                   |
-| `gdrive` | Google Drive                 | `gdrive://<folder-id>/data`                |
-| `gs`     | Google Cloud Storage         | `gs://bucket/data`                         |
-| `ssh`    | SSH server                   | `ssh://user@example.com/path/to/data`      |
-| `hdfs`   | HDFS to file\*               | `hdfs://user@example.com/path/to/data.csv` |
-| `http`   | HTTP to file with _ETag_\*   | `https://example.com/path/to/data.csv`     |
-| `webdav` | WebDav to file\*             | `webdavs://example.com/endpoint/path`      |
-| `local`  | Local path                   | `/path/to/local/data`                      |
-| `remote` | Remote path\*                | `remote://remote-name/data`                |
+| Type      | Description                  | `url` format example                          |
+| --------- | ---------------------------- | --------------------------------------------- |
+| `s3`      | Amazon S3                    | `s3://bucket/data`                            |
+| `azure`   | Microsoft Azure Blob Storage | `azure://container/data`                      |
+| `gdrive`  | Google Drive                 | `gdrive://<folder-id>/data`                   |
+| `gs`      | Google Cloud Storage         | `gs://bucket/data`                            |
+| `ssh`     | SSH server                   | `ssh://user@example.com/path/to/data`         |
+| `hdfs`    | HDFS to file\*               | `hdfs://user@example.com/path/to/data.csv`    |
+| `http`    | HTTP to file with _ETag_\*   | `https://example.com/path/to/data.csv`        |
+| `webdav`  | WebDav to file\*             | `webdavs://example.com/endpoint/path`         |
+| `webhdfs` | HDFS REST API\*              | `webhdfs://user@example.com/path/to/data.csv` |
+| `local`   | Local path                   | `/path/to/local/data`                         |
+| `remote`  | Remote path\*                | `remote://remote-name/data`                   |
 
 > If you installed DVC via `pip` and plan to use cloud services as remote
 > storage, you might need to install these optional dependencies: `[s3]`,
@@ -76,8 +78,8 @@ DVC supports several types of (local or) remote locations (protocols):
 
 \* Notes on remote locations:
 
-- HDFS, HTTP, and WebDav **do not** support downloading entire directories, only
-  single files.
+- HDFS, HTTP, WebDav, and WebHDFS **do not** support downloading entire
+  directories, only single files.
 
 - In case of HTTP,
   [ETag](https://en.wikipedia.org/wiki/HTTP_ETag#Strong_and_weak_validation) is
@@ -125,9 +127,13 @@ source.
 
 - `--no-exec` - create `.dvc` file without actually downloading `url`. E.g. if
   the file or directory already exists, this can be used to skip the download.
-  The data hash is not calculated by this, only the metadata is saved into the
-  `.dvc` file. You can use `dvc commit <out>.dvc` if you need the hashes in the
-  new `.dvc` file and save existing data to the cache.
+  The data hash is not calculated when this option is used, only the import
+  metadata is saved to the `.dvc` file. `dvc commit <out>.dvc` can be used if
+  the data hashes are needed in the `.dvc` file, and to save existing data to
+  the cache.
+
+- `--desc <text>` - user description of the data (optional). This doesn't  
+  affect any DVC operations.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 

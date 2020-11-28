@@ -31,8 +31,8 @@ versions of the <abbr>repository</abbr>, by overlaying them in a single plot.
 (uncommitted changes) with their latest commit (required). A single specified
 revision results in comparing the workspace and that version.
 
-💡 Note that any number of `revisions` can be provided, and the resulting plot
-shows all of them in a single image.
+💡 Note that any number of `revisions` can be provided (the resulting plot shows
+all of them in a single image).
 
 All plots defined in `dvc.yaml` are used by default, but specific plots files
 can be specified with the `--targets` option (note that targets don't

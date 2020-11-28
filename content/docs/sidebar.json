@@ -74,8 +74,8 @@
         "label": "Sharing Data and Model Files",
         "slug": "sharing-data-and-model-files"
       },
-      "shared-development-server",
-      "data-registries"
+      "data-registries",
+      "shared-development-server"
     ]
   },
   {
@@ -101,7 +101,6 @@
         ]
       },
       "dvc-files-and-directories",
-      "merge-conflicts",
       {
         "slug": "dvcignore",
         "tutorials": {
@@ -113,9 +112,10 @@
         "slug": "how-to",
         "source": false,
         "children": [
-          "add-output-to-stage",
-          "undo-adding-data",
-          "update-tracked-files"
+          "stop-tracking-data",
+          "update-tracked-data",
+          "add-deps-or-outs-to-a-stage",
+          "merge-conflicts"
         ]
       },
       "setup-google-drive-remote",

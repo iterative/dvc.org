@@ -75,6 +75,15 @@ The following config options are available for all remote types:
   $ dvc remote modify localremote url /home/user/dvcstore
   ```
 
+- `jobs` - change the default number of processes for
+  [remote storage](/doc/command-reference/remote) synchronization operations
+  (see the `--jobs` option of `dvc push`, `dvc pull`, `dvc fetch`, `dvc status`,
+  and `dvc gc`). Accepts positive integers. The default is typically `4`.
+
+  ```dvc
+  $ dvc remote modify myremote jobs 8
+  ```
+
 - `verify` - upon downloading <abbr>cache</abbr> files (`dvc pull`, `dvc fetch`)
   DVC will recalculate the file hashes upon download (e.g. `dvc pull`) to make
   sure that these haven't been modified, or corrupted during download. It may
@@ -565,6 +574,10 @@ more information.
 
 ### Click for HDFS
 
+💡 Using a HDFS cluster as remote storage is also supported via the WebHDFS API.
+Read more about by expanding the WebHDFS section in
+[`dvc remote add`](/doc/command-reference/remote/add#supported-storage-types).
+
 - `url` - remote location:
 
   ```dvc
@@ -669,6 +682,78 @@ more information.
   ```dvc
   $ dvc remote modify myremote ssl_verify false
   ```
+
+</details>
+
+<details>
+
+### Click for WebHDFS
+
+💡 WebHDFS serves as an alternative for using the same remote storage supported
+by HDFS. Read more about by expanding the WebHDFS section in
+[`dvc remote add`](/doc/command-reference/remote/add#supported-storage-types).
+
+- `url` - remote location:
+
+  ```dvc
+  $ dvc remote modify myremote url webhdfs://user@example.com/path/to/dir
+  ```
+
+- `user` - username to access the remote, can be empty in case of using `token`
+  or if using a `HdfsCLI` cfg file. May only be used when Hadoop security is
+  off. Defaults to current user as determined by `whoami`.
+
+  ```dvc
+  $ dvc remote modify --local myremote user myuser
+  ```
+
+- `token` - Hadoop delegation token for WebHDFS, can be empty in case of using
+  `user` or if using a `HdfsCLI` cfg file. May be used when Hadoop security is
+  on.
+
+  ```dvc
+  $ dvc remote modify --local myremote token mytoken
+  ```
+
+- `hdfscli_config` - path to a `HdfsCLI` cfg file. WebHDFS access depends on
+  `HdfsCLI`, which allows the usage of a configuration file by default located
+  in `~/.hdfscli.cfg`. In the file, multiple aliases can be set with their own
+  connection parameters, like `url` or `user`. If using a cfg file,
+  `webhdfs_alias` can be set to specify which alias to use.
+
+  ```dvc
+  $ dvc remote modify --local myremote hdfscli_config `/path/to/.hdfscli.cfg`
+  ```
+
+  Sample configuration file:
+
+  ```ini
+  [global]
+  default.alias = myalias
+
+  [myalias.alias]
+  url = http://example.com/path/to/dir
+  user = myuser
+
+  [production.alias]
+  url = http://prodexample.com/path/to/dir
+  user = produser
+  ```
+
+  See more information in the `HdfsCLI`
+  [docs](https://hdfscli.readthedocs.io/en/latest/quickstart.html#configuration).
+
+- `webhdfs_alias` - alias in a `HdfsCLI` cfg file to use. Only relevant if used
+  in conjunction with `hdfscli_config`. If not defined, `default.alias` in
+  `HdfsCLI` cfg file will be used instead.
+
+  ```dvc
+  $ dvc remote modify --local myremote webhdfs_alias myalias
+  ```
+
+> The username, token, webhdfs_alias, and hdfscli_config may contain sensitive
+> user info. Therefore, it's safer to add it with the `--local` option, so it's
+> written to a Git-ignored config file.
 
 </details>
 
