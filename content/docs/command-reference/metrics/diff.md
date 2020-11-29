@@ -20,26 +20,16 @@ positional arguments:
 
 ## Description
 
-This command provides a quick way to compare metrics among experiments in the
-repository history. All metrics defined in `dvc.yaml` are used by default. The
-differences shown by this command include the new value, and numeric difference
-(delta) from the previous value of metrics (rounded to 5 digits precision).
+Provides a quick way to compare metrics among experiments in the repository
+history. All metrics defined in `dvc.yaml` are used by default. The differences
+shown by this command include the new value, and numeric difference (delta) from
+the previous value of metrics (rounded to 5 digits precision).
 
 `a_rev` and `b_rev` are Git commit hashes, tag, or branch names. If none are
-specified, `dvc metrics diff` compares metrics currently present in the
+specified, this command compares metrics currently present in the
 <abbr>workspace</abbr> (uncommitted changes) with the latest committed versions
 (required). A single specified revision results in comparing the workspace and
 that version.
-
-Unlike its `dvc plots` counterpart, `dvc metrics diff` can report the numeric
-difference between the metrics in different experiments, for example an `AUC`
-metrics that is `0.801807` and gets increase by `+0.037826`:
-
-```dvc
-$ dvc metrics diff
-    Path       Metric    Value      Change
-summary.json   AUC      0.801807   0.037826
-```
 
 Another way to display metrics is the `dvc metrics show` command, which just
 lists all the current metrics, without comparisons.

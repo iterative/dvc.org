@@ -17,8 +17,8 @@ positional arguments:
 
 ## Description
 
-`dvc metrics` subcommands by default use the metrics files specified in
-`dvc.yaml` (if any), for example `summary.json` below:
+`dvc metrics` subcommands by default use all metrics files found in `dvc.yaml`
+(if any), for example `summary.json` below:
 
 ```yaml
 stages:
@@ -33,10 +33,8 @@ stages:
           cache: false
 ```
 
-> `cache: false` above specifies that `summary.json` is not tracked or
-> <abbr>cached</abbr> by DVC (`-M` option of `dvc run`). These metrics files are
-> normally committed with Git instead. See `dvc.yaml` for more information on
-> the file format above.
+Note that metrics files are normally committed with Git (that's what
+`cache: false` above is for). See `dvc.yaml` for more information.
 
 ### Supported file formats
 
