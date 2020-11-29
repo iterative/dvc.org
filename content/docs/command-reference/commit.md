@@ -21,7 +21,7 @@ The `dvc commit` command is useful for several scenarios, when data already
 tracked by DVC changes: when a [stage](/doc/command-reference/run) or
 [pipeline](/doc/command-reference/dag) is in development/experimentation; to
 force-update the `dvc.lock` or `.dvc` files without reproducing stages or
-pipelines; or to mark existing files/dirs as stage <abbr>outputs</abbr>. These
+pipelines; or when modifying stage <abbr>outputs</abbr> without DVC. These
 scenarios are further detailed below.
 
 - Code or data for a stage is under active development, with multiple iterations
@@ -44,19 +44,18 @@ scenarios are further detailed below.
   of the files/directories used by the stage as dependencies or created as
   outputs are missing from `dvc.yaml`. It is possible to
   [add missing data to an existing stage](/docs/user-guide/how-to/add-deps-or-outs-to-a-stage),
-  and then `dvc commit` can be used to save outputs to the cache (and update
-  `dvc.lock`)
+  and then `dvc commit` can be used to save outputs to the <abbr>cache</abbr>
+  (and update `dvc.lock`)
 
-- It's always possible to manually execute the command or source code used in a
-  stage without DVC (outputs must be unprotected or removed first in certain
-  cases, see `dvc unprotect`). Once the desired result is reached, use
-  `dvc commit` to update the `dvc.lock` file(s) and store changed data to the
-  cache.
+- It's always possible to manually execute the command used in a stage, or to
+  edit output files without DVC (using `dvc unprotect` or removing outputs first
+  may be necessary). Once the desired result is reached, use `dvc commit` to
+  update the `dvc.lock` file(s) and store changed data to the cache.
 
 Let's take a look at what is happening in the first scenario closely. Normally
 DVC commands like `dvc add`, `dvc repro` or `dvc run` commit the data to the
-<abbr>cache</abbr> after creating or updating a `dvc.lock` or `.dvc` file. What
-_commit_ means is that DVC:
+cache after creating or updating a `dvc.lock` or `.dvc` file. What _commit_
+means is that DVC:
 
 - Computes a hash for the file/directory.
 - Enters the hash value and file name in the `dvc.lock` or `.dvc` file.
@@ -69,13 +68,14 @@ There are many cases where the last step is not desirable (for example rapid
 iterations on an experiment). The `--no-commit` option prevents it (on the
 commands where it's available). The file hash is still computed and added to the
 `dvc.lock` or `.dvc` file, but the actual data is not cached. And this is where
-the `dvc commit` command comes into play: It performs that last step when
-needed.
+`dvc commit` comes into play: It performs that last step when needed.
 
 Note that it's best to avoid the last three scenarios. They essentially
-force-update the `dvc.lock` or `.dvc` files and save data to cache. They are
-still useful, but keep in mind that DVC can't guarantee reproducibility in those
-cases.
+force-update the metafiles and cache. They are still useful, but keep in mind
+that DVC can't guarantee reproducibility in those cases.
+
+> Note that committing data does not affect code, `dvc.yaml`, or `.dvc` files.
+> Those should be saved with `git commit`.
 
 ## Options
 

@@ -32,11 +32,10 @@ _remote_ mode is triggered by using the `--cloud` or `--remote` options:
 | remote | `--remote` | Comparisons are made between the cache, and the given remote. Remote storage is defined using the `dvc remote` command.     |
 | remote | `--cloud`  | Comparisons are made between the cache, and the default remote (typically defined with `dvc remote --default`).             |
 
-Without arguments, this command checks all stages (defined in `dvc.yaml`) and
-`.dvc` files, and compares the hash values of their <abbr>outputs</abbr> (found
-in `dvc.lock` for stages) against the actual data files or directories in the
-workspace. The `--all-branches`, `--all-tags`, and `--all-commits` options
-enable checking data for multiple Git commits.
+Without arguments, it checks all [stages](/doc/command-reference/run) and `.dvc`
+files, and compares their <abbr>outputs</abbr> against the actual data files or
+directories in the workspace. The `--all-branches`, `--all-tags`, and
+`--all-commits` options enable checking multiple Git commits.
 
 The `targets` given to this command (if any) limit what to check. It accepts
 paths to tracked files or directories (including paths inside tracked

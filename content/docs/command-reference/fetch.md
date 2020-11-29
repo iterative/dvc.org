@@ -1,7 +1,8 @@
 # fetch
 
-Get tracked files or directories from
-[remote storage](/doc/command-reference/remote) into the <abbr>cache</abbr>.
+Download <abbr>cache</abbr> files or directories from
+[remote storage](/doc/command-reference/remote), based on the current `dvc.yaml`
+and `.dvc` files.
 
 ## Synopsis
 
@@ -17,22 +18,16 @@ positional arguments:
 
 ## Description
 
-Downloads DVC-tracked files from remote storage into the cache of the project
-(without placing them in the <abbr>workspace</abbr>, like `dvc pull` would).
-This makes them available for linking (or copying) into the workspace (refer to
-[`dvc config cache.type`](/doc/command-reference/config#cache)).
+`dvc fetch` downloads tracked data from remote storage into the
+<abbr>cache</abbr> of the project (without placing it in the
+<abbr>workspace</abbr> like `dvc pull`). This makes them available for linking
+(or copying) into the workspace (refer to `dvc config cache.type`).
 
-Without arguments, `dvc fetch` ensures that the files specified in all
-`dvc.lock` and `.dvc` files in the workspace exist in the cache. The
-`--all-branches`, `--all-tags`, and `--all-commits` options enable fetching data
-for multiple Git commits.
+> Note that fetching data does not affect code, `dvc.yaml`, or `.dvc` files.
+> Those should be obtained with `git fetch`.
 
-The `targets` given to this command (if any) limit what to fetch. It accepts
-paths to tracked files or directories (including paths inside tracked
-directories), `.dvc` files, and stage names (found in `dvc.yaml`).
-
-Fetching is performed automatically by `dvc pull` (when the data is not already
-in the <abbr>cache</abbr>), along with `dvc checkout`:
+Fetching is performed automatically if needed by `dvc pull`, along with
+`dvc checkout`:
 
 ```
 Tracked files                Commands
@@ -50,6 +45,16 @@ project's cache                  ++ | dvc pull |
      v
  workspace
 ```
+
+Without arguments, it downloads all files and directories missing from the
+project, found as <abbr>outputs</abbr> of the
+[stages](/doc/command-reference/run) or `.dvc` files present in the workspace.
+The `--all-branches`, `--all-tags`, and `--all-commits` options enable fetching
+multiple Git commits.
+
+The `targets` given to this command (if any) limit what to fetch. It accepts
+paths to tracked files or directories (including paths inside tracked
+directories), `.dvc` files, and stage names (found in `dvc.yaml`).
 
 Here are some scenarios in which `dvc fetch` is useful, instead of pulling:
 
