@@ -174,11 +174,12 @@ file:///Users/usr/src/plots/logs.csv.json
 
 ```json
 {
-  "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
-  "data": {
-    "values": [{ "accuracy": "0.9418667", ... }]
-  }
-}
+    "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+    "data": {
+        "values": [
+    {
+        "accuracy": "0.9418667",
+        ...
 ```
 
 ## Example: Smooth plot

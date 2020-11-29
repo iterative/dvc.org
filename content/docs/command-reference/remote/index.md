@@ -30,9 +30,9 @@ The [add](/doc/command-reference/remote/add),
 [modify](/doc/command-reference/remote/modify),
 [remove](/doc/command-reference/remote/remove), and
 [rename](/doc/command-reference/remote/rename) subcommands read or modify DVC
-[config files](/doc/command-reference/config), where <abbr>DVC remotes</abbr>
-are set up. Alternatively, `dvc config` can be used, or the config files can be
-edited manually.
+[config files](/doc/command-reference/config), where DVC remotes are set up.
+Alternatively, `dvc config` can be used, or the config files can be edited
+manually.
 
 > For the typical process to share the <abbr>project</abbr> via remote, see
 > [Sharing Data And Model Files](/doc/use-cases/sharing-data-and-model-files).
