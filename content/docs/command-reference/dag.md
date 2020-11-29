@@ -15,8 +15,8 @@ positional arguments:
 
 ## Description
 
-The `dvc dag` command displays the stages of a <abbr>data pipeline</abbr> up to
-the target stage. If `target` is omitted, it will show the full project DAG.
+Displays the stages of a <abbr>data pipeline</abbr> up to the target stage. If
+`target` is omitted, it will show the full project DAG.
 
 ## Options
 
