@@ -5,6 +5,10 @@ tooltip: >-
   'DVC [metafiles](/doc/user-guide/glossary/dvc-metafiles) tooltip...'
 ---
 
+<!--
+Mention codification? + link to /doc/use-cases/versioning-data-and-model-files
+-->
+
 # DVC Metafiles
 
 <!-- _from dvc-files-and-directories_ -->

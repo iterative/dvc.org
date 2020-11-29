@@ -17,6 +17,10 @@ tooltip: >-
   environment.
 ---
 
+<!--
+Link to /doc/user-guide/glossary/dvc-cache#structure-of-the-cache-directory
+-->
+
 # Remote Storage
 
 <!-- _from `dvc remote`_ -->
