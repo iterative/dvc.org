@@ -1,7 +1,7 @@
 # metrics
 
-A set of commands to display and compare <abbr>metrics</abbr>:
-[show](/doc/command-reference/metrics/show), and
+A set of commands to display and compare <abbr>metrics</abbr> (JSON, YAML
+files): [show](/doc/command-reference/metrics/show), and
 [diff](/doc/command-reference/metrics/diff).
 
 ## Synopsis

@@ -1,8 +1,7 @@
 # plots
 
-A set of commands to visualize and compare <abbr>plot metrics</abbr> in
-structured files (JSON, YAML, CSV, or TSV):
-[show](/doc/command-reference/plots/show),
+A set of commands to visualize and compare <abbr>plots</abbr> (JSON, YAML, CSV,
+or TSV files): [show](/doc/command-reference/plots/show),
 [diff](/doc/command-reference/plots/diff), and
 [modify](/doc/command-reference/plots/modify).
 
@@ -20,7 +19,24 @@ positional arguments:
 
 ## Description
 
-...
+`dvc plots` subcommands by default use all plots files found in `dvc.yaml` (if
+any), for example `accuracy.json` below:
+
+```yaml
+stages:
+  train:
+    cmd: python train.py
+    deps:
+      - users.csv
+    outs:
+      - model.pkl
+    plots:
+      - accuracy.json:
+          cache: false
+```
+
+Note that metrics files are normally committed with Git (that's what
+`cache: false` above is for). See `dvc.yaml` for more information.
 
 ### Supported file formats
 
