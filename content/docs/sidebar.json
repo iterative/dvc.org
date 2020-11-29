@@ -164,7 +164,7 @@
       {
         "label": "cache",
         "slug": "cache",
-        "source": "cache/index.md",
+        "source": false,
         "children": [
           {
             "label": "cache dir",
