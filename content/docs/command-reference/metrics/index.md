@@ -36,29 +36,6 @@ stages:
 Note that metrics files are normally committed with Git (that's what
 `cache: false` above is for). See `dvc.yaml` for more information.
 
-### Supported file formats
-
-Metrics can be organized as tree hierarchies in JSON or YAML 1.2 files. DVC
-addresses specific metrics by the tree path. In the JSON example below, five
-metrics are presented: `train.accuracy`, `train.loss`, `train.TN`, `train.FP`
-and `time_real`.
-
-```json
-{
-  "train": {
-    "accuracy": 0.9886999726295471,
-    "loss": 0.041855331510305405,
-    "TN": 473,
-    "FP": 845
-  },
-  "time_real": 344.61309599876404
-}
-```
-
-DVC itself does not ascribe any specific meaning for these numbers. Usually they
-are produced by the model training or model evaluation code and serve as a way
-to compare and pick the best performing experiment.
-
 ## Options
 
 - `-h`, `--help` - prints the usage/help message, and exit.

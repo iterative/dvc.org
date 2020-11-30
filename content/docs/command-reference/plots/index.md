@@ -38,50 +38,6 @@ stages:
 Note that metrics files are normally committed with Git (that's what
 `cache: false` above is for). See `dvc.yaml` for more information.
 
-### Supported file formats
-
-DVC generates plots as HTML files that can be open with a web browser. These
-HTML files use [Vega-Lite](https://vega.github.io/vega-lite/). Vega is a
-declarative grammar for defining plots using JSON. The plots can also be saved
-as SVG or PNG image filed from the browser.
-
-Plot metrics can be organized as data series in JSON, YAML 1.2, CSV, or TSV
-files. DVC expects to see an array (or multiple arrays) of objects (usually
-_float numbers_) in the file.
-
-In tabular file formats such as CSV and TSV, each column is an array.
-`dvc plots` subcommands can produce plots for a specified column or a set of
-them. For example, `epoch`, `AUC`, and `loss` are the column names below:
-
-```
-epoch, AUC, loss
-34, 0.91935, 0.0317345
-35, 0.91913, 0.0317829
-36, 0.92256, 0.0304632
-37, 0.92302, 0.0299015
-```
-
-In hierarchical file formats (JSON or YAML), an array of consistent objects is
-expected: every object should have the same structure.
-
-`dvc plots` subcommands can produce plots for a specified field or a set of
-them, from the array's objects. For example, `val_loss` is one of the field
-names in the `train` array below:
-
-```
-{
-  "train": [
-    {"val_accuracy": 0.9665, "val_loss": 0.10757},
-    {"val_accuracy": 0.9764, "val_loss": 0.07324},
-    {"val_accuracy": 0.8770, "val_loss": 0.08136},
-    {"val_accuracy": 0.8740, "val_loss": 0.09026},
-    {"val_accuracy": 0.8795, "val_loss": 0.07640},
-    {"val_accuracy": 0.8803, "val_loss": 0.07608},
-    {"val_accuracy": 0.8987, "val_loss": 0.08455}
-  ]
-}
-```
-
 ## Plot templates
 
 Users have the ability to change the way plots are displayed by modifying the
