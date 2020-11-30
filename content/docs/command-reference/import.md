@@ -24,8 +24,8 @@ positional arguments:
 
 Provides an easy way to reuse files or directories tracked in any <abbr>DVC
 repository</abbr> (e.g. datasets, intermediate results, ML models) or Git
-repository (e.g. source code, small image/other files). `dvc import` downloads
-the target file or directory (found at `path` in `url`) into the workspace and
+repository (e.g. code, small image/other files). `dvc import` downloads the
+target file or directory (found at `path` in `url`) into the workspace and
 tracks it in the project. This makes it possible to update the import later, if
 it has changed in its data source (see `dvc update`).
 
@@ -73,10 +73,9 @@ source.
 To actually [version the data](/doc/tutorials/get-started/data-versioning),
 `git add` (and `git commit`) the import stage.
 
-Note that import stages are considered always
-[frozen](/doc/command-reference/freeze), meaning that if you run `dvc repro`,
-they won't be updated. Use `dvc update` to update the downloaded data artifact
-from the source repo.
+Note that `dvc repro` doesn't check or update import `.dvc` files (see
+`dvc freeze`), use `dvc update` to bring the import up to date from the data
+source.
 
 Also note that chained imports (importing data that was imported into the source
 repo at `url`) are not supported.
@@ -104,14 +103,17 @@ repo at `url`) are not supported.
   > example below).
 
 - `--no-exec` - create the import `.dvc` file without actually downloading the
-  target file or directory. No connection to the source location is made, so the
-  data hash is not calculated. Only the import operation is recorded in the
-  `.dvc` file. Use `dvc commit` to save any existing dep/out files to the cache
-  and record their hashes to the `.dvc` file.
+  target data. No connection to the data source is made, so only the import
+  operation is recorded in the `.dvc` file. Use `dvc commit` to save any
+  existing dep/out files to the cache and record their hashes to the `.dvc`
+  file.
 
-  This can be useful to skip the download if the file or directory already
-  exists locally, or to just save the operation's metadata (to be imported at
-  another time or location).
+  This can be useful to skip the download of files or directories that already
+  exists locally, or for downloading at another time/location (e.g. with
+  `dvc update`).
+
+  > Note that there's no guarantee that the data source is valid until the
+  > download is attempted.
 
 - `--desc <text>` - user description of the data (optional). This doesn't affect
   any DVC operations.
