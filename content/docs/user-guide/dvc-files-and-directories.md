@@ -250,7 +250,7 @@ Full <abbr>parameters</abbr> (key and value) are listed separately under
   hand or with the command `dvc config --local`.
 
 - `.dvc/cache`: The <abbr>cache</abbr> directory will store your data in a
-  special [structure](/doc/user-guide/glossary/dvc-cache). The data files and
+  special [structure](/doc/user-guide/concepts/dvc-cache). The data files and
   directories in the <abbr>workspace</abbr> will only contain links to the data
   files in the cache. (Refer to
   [Large Dataset Optimization](/doc/user-guide/large-dataset-optimization). See

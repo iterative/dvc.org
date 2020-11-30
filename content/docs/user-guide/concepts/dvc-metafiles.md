@@ -2,7 +2,7 @@
 name: 'DVC Metafiles'
 match: ['DVC files', 'files', 'directories']
 tooltip: >-
-  'DVC [metafiles](/doc/user-guide/glossary/dvc-metafiles) tooltip...'
+  'DVC [metafiles](/doc/user-guide/concepts/dvc-metafiles) tooltip...'
 ---
 
 <!--

@@ -2,7 +2,7 @@
 name: 'DVC Cache'
 match: ['DVC cache', 'cache', 'caches', 'cached']
 tooltip: >-
-  The [DVC cache](/doc/user-guide/glossary/dvc-cache) is a hidden storage (by
+  The [DVC cache](/doc/user-guide/concepts/dvc-cache) is a hidden storage (by
   default located in the `.dvc/cache` directory) for files that are tracked by
   DVC, and their different versions.
 ---

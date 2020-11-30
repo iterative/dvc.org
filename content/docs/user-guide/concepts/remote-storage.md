@@ -10,7 +10,7 @@ match:
     'data remotes',
   ]
 tooltip: >-
-  [DVC remotes](/doc/user-guide/glossary/remote-storage) provide a location to
+  [DVC remotes](/doc/user-guide/concepts/remote-storage) provide a location to
   store and share data and models. You can pull data assets created by
   colleagues from DVC remotes without spending time and resources to build or
   process them locally. Remote storage can also save space on your local
@@ -18,7 +18,7 @@ tooltip: >-
 ---
 
 <!--
-Link to /doc/user-guide/glossary/dvc-cache#structure-of-the-cache-directory
+Link to /doc/user-guide/concepts/dvc-cache#structure-of-the-cache-directory
 -->
 
 # Remote Storage
