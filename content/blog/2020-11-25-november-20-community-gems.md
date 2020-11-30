@@ -22,9 +22,9 @@ tags:
 
 ## DVC questions
 
-### [Q: If I make a new Git branch, how can I synchronize it with DVC?](https://discord.com/channels/485586884165107732/485596304961962003/773498570795778058)
+### [Q: If I checkout a different Git branch, how do I synchronize with DVC?](https://discord.com/channels/485586884165107732/485596304961962003/773498570795778058)
 
-Generally, yes. When you make a new Git branch in your project:
+Here's what we recommend: when you checkout a different Git branch in your project:
 
 ```dvc
 $ git checkout -b <my_great_new_branch>
@@ -60,17 +60,15 @@ resource_url = dvc.api.get_url(
 This code means the API will return the URL for a file that ends in `.dir`. The
 `.dir` file contains a JSON-formatted table of the hashes and relative paths for
 all the files inside `<top-level-directory>`. You could then parse that file to
-tget the locations of the full directory contents.
+get the locations of the full directory contents.
 
 Why use the API? It's a good way to access DVC-tracked files without downloading
-them to your workspace! No downloads means nothing in your cache. Read more
+them to your workspace! Read more
 about our
 [Python API and the `get_url` function](https://dvc.org/doc/api-reference/get_url#dvcapiget_url)
 in our docs.
 
 ### [Q: Can I have more than one `dvc.yaml` file in my project?](https://discord.com/channels/485586884165107732/563406153334128681/777946398250893333)
-
-_Sort of._ Here's what we mean.
 
 By default, DVC pipelines records all your stages (and their inputs and outputs)
 in a single file, `dvc.yaml`. Per directory, you can have one `dvc.yaml` file.
@@ -81,21 +79,16 @@ However, `dvc.yaml` is intended to be the only file you need to record and
 reproduce pipelines per directory. Pipelines are designed to have all stages
 stored in the same place, and there's currently no method to rename `dvc.yaml`.
 
-If you really, really, _really_ want to put different stages in different files,
-there is one workaround: you can use our hidden option,
-`dvc run --single-stage`, to do this. Your stage will be stored in its own
-`.dvc` file, which can be named whatever you choose. This is a remnant from the
-pre-DVC 1.0 era. But we hope you'll embrace 1.0 and the simplicity of
-`dvc.yaml`!
-
 ### [Q: How can I untrack a file that's being tracked by DVC? I want to remove it from remote storage and my local cache, too.](https://discord.com/channels/485586884165107732/563406153334128681/773277514717462548)
 
-We don't have a specific command for this, but you can do it manually:
+If you want to untrack a file, perhaps something you added to DVC in error, you can use `dvc remove` to get rid of the `.dvc` file corresponding to your file, and then clear your DVC cache with `dvc gc -w`. [Check out our docs](https://dvc.org/doc/user-guide/how-to/stop-tracking-data) to learn more about how this works. 
+
+Alternatively, you can manually find and delete your files:
 
 1. Find the file using its hash from the corresponding `.dvc` file (or, if it's
    part of a pipeline, the `dvc.lock` file).
 2. Look in your remote storage and remove the file matching the hash.
-3. Look in `.dvc/cache` and remove the file as well.
+3. Look in `.dvc/cache` and remove the file as well. If you'd like to better understand how your cache is organized, [we have docs for that](https://dvc.org/doc/user-guide/dvc-files-and-directories#structure-of-the-cache-directory). 
 
 Your DVC remote storage and cache are simply storage locations, so once your
 file is gone from there it's gone for good.
@@ -112,7 +105,7 @@ will be removed.
 One word of caution: make sure that when you collect garbage from your cache,
 you don't delete any files that you haven't yet pushed to a remote. If this
 happens, you'll delete them permanently. To be safe, it never hurts to
-`dvc push` before cleaning.
+`dvc push` your files of interest before cleaning.
 
 ## CML questions
 
@@ -128,8 +121,8 @@ to get started. A few quick notes to keep in mind:
    docs!) or you'll surely hit a permissions error.
 
 2. Bitbucket Cloud uses Bitbucket Pipelines for continuous integration
-   workflows, which currently doesn't support self-hosted runners. That means
-   bringing your own GPUs is not supported. Sorry! But you can still have all
+   workflows, which [currently doesn't support self-hosted runners](https://jira.atlassian.com/browse/BCLOUD-16995). That means
+   [bringing your own GPUs is not supported](https://community.atlassian.com/t5/Bitbucket-questions/Does-bitbucket-pipe-support-GPUs-yet/qaq-p/1042659). Sorry! But you can still have all
    the other CML benefits of plots, tables and text in your Pull Request.
 
 3. Bitbucket Server support (with Jenkins and Bamboo) is under active
@@ -191,4 +184,5 @@ She stayed home and made mashed potatoes.
 
 ![](/uploads/images/2020-11-25/deevee_n_taters.png)
 
-That's all for now, everyone! As always, keep in touch with all your questions big and small. 
+That's all for now, everyone! As always, keep in touch with all your questions
+big and small.
