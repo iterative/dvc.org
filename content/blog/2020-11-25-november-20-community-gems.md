@@ -24,7 +24,8 @@ tags:
 
 ### [Q: If I checkout a different Git branch, how do I synchronize with DVC?](https://discord.com/channels/485586884165107732/485596304961962003/773498570795778058)
 
-Here's what we recommend: when you checkout a different Git branch in your project:
+Here's what we recommend: when you checkout a different Git branch in your
+project:
 
 ```dvc
 $ git checkout -b <my_great_new_branch>
@@ -63,8 +64,7 @@ all the files inside `<top-level-directory>`. You could then parse that file to
 get the locations of the full directory contents.
 
 Why use the API? It's a good way to access DVC-tracked files without downloading
-them to your workspace! Read more
-about our
+them to your workspace! Read more about our
 [Python API and the `get_url` function](https://dvc.org/doc/api-reference/get_url#dvcapiget_url)
 in our docs.
 
@@ -81,14 +81,20 @@ stored in the same place, and there's currently no method to rename `dvc.yaml`.
 
 ### [Q: How can I untrack a file that's being tracked by DVC? I want to remove it from remote storage and my local cache, too.](https://discord.com/channels/485586884165107732/563406153334128681/773277514717462548)
 
-If you want to untrack a file, perhaps something you added to DVC in error, you can use `dvc remove` to get rid of the `.dvc` file corresponding to your file, and then clear your DVC cache with `dvc gc -w`. [Check out our docs](https://dvc.org/doc/user-guide/how-to/stop-tracking-data) to learn more about how this works. 
+If you want to untrack a file, perhaps something you added to DVC in error, you
+can use `dvc remove` to get rid of the `.dvc` file corresponding to your file,
+and then clear your DVC cache with `dvc gc -w`.
+[Check out our docs](https://dvc.org/doc/user-guide/how-to/stop-tracking-data)
+to learn more about how this works.
 
 Alternatively, you can manually find and delete your files:
 
 1. Find the file using its hash from the corresponding `.dvc` file (or, if it's
    part of a pipeline, the `dvc.lock` file).
 2. Look in your remote storage and remove the file matching the hash.
-3. Look in `.dvc/cache` and remove the file as well. If you'd like to better understand how your cache is organized, [we have docs for that](https://dvc.org/doc/user-guide/dvc-files-and-directories#structure-of-the-cache-directory). 
+3. Look in `.dvc/cache` and remove the file as well. If you'd like to better
+   understand how your cache is organized,
+   [we have docs for that](https://dvc.org/doc/user-guide/dvc-files-and-directories#structure-of-the-cache-directory).
 
 Your DVC remote storage and cache are simply storage locations, so once your
 file is gone from there it's gone for good.
@@ -121,9 +127,12 @@ to get started. A few quick notes to keep in mind:
    docs!) or you'll surely hit a permissions error.
 
 2. Bitbucket Cloud uses Bitbucket Pipelines for continuous integration
-   workflows, which [currently doesn't support self-hosted runners](https://jira.atlassian.com/browse/BCLOUD-16995). That means
-   [bringing your own GPUs is not supported](https://community.atlassian.com/t5/Bitbucket-questions/Does-bitbucket-pipe-support-GPUs-yet/qaq-p/1042659). Sorry! But you can still have all
-   the other CML benefits of plots, tables and text in your Pull Request.
+   workflows, which
+   [currently doesn't support self-hosted runners](https://jira.atlassian.com/browse/BCLOUD-16995).
+   That means
+   [bringing your own GPUs is not supported](https://community.atlassian.com/t5/Bitbucket-questions/Does-bitbucket-pipe-support-GPUs-yet/qaq-p/1042659).
+   Sorry! But you can still have all the other CML benefits of plots, tables and
+   text in your Pull Request.
 
 3. Bitbucket Server support (with Jenkins and Bamboo) is under active
    development. Stay tuned!
