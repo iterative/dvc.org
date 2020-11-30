@@ -11,7 +11,7 @@ descriptionLong: |
   gift- new Bitbucket support for CML!
 picture: 2020-11-25/cover.png
 author: elle_obrien
-commentsUrl: https://discuss.dvc.org/t/october-20-community-gems/535
+commentsUrl: https://discuss.dvc.org/t/november-20-community-gems/566
 tags:
   - Discord
   - Gems
