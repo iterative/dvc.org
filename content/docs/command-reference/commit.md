@@ -17,12 +17,11 @@ positional arguments:
 
 ## Description
 
-The `dvc commit` command is useful for several scenarios, when data already
-tracked by DVC changes: when a [stage](/doc/command-reference/run) or
-[pipeline](/doc/command-reference/dag) is in development/experimentation; to
-force-update the `dvc.lock` or `.dvc` files without reproducing stages or
-pipelines; or when modifying stage <abbr>outputs</abbr> without DVC. These
-scenarios are further detailed below.
+The `dvc commit` command is useful for several scenarios: when a
+[stage](/doc/command-reference/run) or [pipeline](/doc/command-reference/dag) is
+in development/experimentation; to force-update the `dvc.lock` or `.dvc` files
+without reproducing stages or pipelines; or when modifying stage
+<abbr>outputs</abbr> without DVC. These scenarios are further detailed below.
 
 - Code or data for a stage is under active development, with multiple iterations
   (experiments) in code, configuration, or data. Use the `--no-commit` option of
