@@ -179,5 +179,5 @@ file:///Users/usr/src/plots/logs.csv.json
         "values": [
     {
         "accuracy": "0.9418667",
-        ...
+    ...
 ```
