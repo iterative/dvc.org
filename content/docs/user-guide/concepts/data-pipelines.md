@@ -2,7 +2,6 @@
 name: 'Data Pipelines'
 match: ['data pipeline', 'pipeline', 'pipelines']
 tooltip: >-
-  In DVC, [data pipeline](/doc/user-guide/glossary/data-pipelines) stages and
   commands, inputs, outputs, interdependencies, and results (intermediate or
   final) are specified in `dvc.yaml`, which can be written manually or built
   using the helper command `dvc run`. This allows DVC to restore one or more
