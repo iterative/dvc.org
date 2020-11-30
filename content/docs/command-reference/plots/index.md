@@ -82,14 +82,6 @@ names in the `train` array below:
 }
 ```
 
-## Options
-
-- `-h`, `--help` - prints the usage/help message, and exit.
-
-- `-q`, `--quiet` - do not write anything to standard output.
-
-- `-v`, `--verbose` - displays detailed tracing information.
-
 ## Plot templates
 
 Users have the ability to change the way plots are displayed by modifying the
@@ -159,3 +151,106 @@ header (first row) are equivalent to field names.
 - `<DVC_METRIC_X_TITLE>` (optional) - field name to display as the X axis label
 
 - `<DVC_METRIC_Y_TITLE>` (optional) - field name to display as the X axis label
+
+## Options
+
+- `-h`, `--help` - prints the usage/help message, and exit.
+
+- `-q`, `--quiet` - do not write anything to standard output.
+
+- `-v`, `--verbose` - displays detailed tracing information.
+
+## Example: Tabular data
+
+We'll use tabular metrics file `logs.csv` for this example:
+
+```
+epoch,accuracy,loss,val_accuracy,val_loss
+0,0.9418667,0.19958884770199656,0.9679,0.10217399864746257
+1,0.9763333,0.07896138601688048,0.9768,0.07310650711813942
+2,0.98375,0.05241111190887168,0.9788,0.06665669009438716
+3,0.98801666,0.03681169906261687,0.9781,0.06697812260198989
+4,0.99111664,0.027362171787042946,0.978,0.07385754839298315
+5,0.9932333,0.02069501801203781,0.9771,0.08009233058886166
+6,0.9945,0.017702101902437668,0.9803,0.07830339228538505
+7,0.9954,0.01396906608727198,0.9802,0.07247738889862157
+```
+
+Let's plot the last column (default behavior):
+
+```dvc
+$ dvc plots show logs.csv
+file:///Users/usr/src/plots/logs.csv.html
+```
+
+![](/img/plots_show.svg)
+
+Difference in this metric between the current project version and the previous
+commit:
+
+```dvc
+$ dvc plots diff -d logs.csv HEAD^
+file:///Users/usr/src/plots/logs.csv.html
+```
+
+![](/img/plots_diff.svg)
+
+Visualize a specific field:
+
+```dvc
+$ dvc plots show -y loss logs.csv
+file:///Users/usr/src/plots/logs.html
+```
+
+![](/img/plots_show_field.svg)
+
+## Example: Smooth plot
+
+In some cases we would like to smooth our plot. In this example we will use a
+plot with 1000 data points:
+
+```dvc
+$ dvc plots show data.csv
+file:///Users/usr/src/plots/plots.html
+```
+
+![](/img/plots_show_no_smooth.svg)
+
+We can use the `-t` option and `smooth` template to make it less noisy:
+
+```dvc
+$ dvc plots show -t smooth data.csv
+file:///Users/usr/src/plots/plots.html
+```
+
+![](/img/plots_show_smooth.svg)
+
+## Example: Confusion matrix
+
+We'll use `classes.csv` for this example:
+
+```
+actual,predicted
+cat,cat
+cat,cat
+cat,cat
+cat,dog
+cat,dinosaur
+cat,dinosaur
+cat,bird
+turtle,dog
+turtle,cat
+...
+```
+
+Let's visualize it:
+
+```dvc
+$ dvc plots show classes.csv --template confusion -x actual -y predicted
+file:///Users/usr/src/plots/classes.csv.html
+```
+
+![](/img/plots_show_confusion.svg)
+
+> A confusion matrix [template](/doc/command-reference/plots#plot-templates) is
+> predefined in DVC (found in `.dvc/plots/confusion.json`).
