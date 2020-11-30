@@ -25,7 +25,7 @@ project params.
 > Parameter dependencies are defined with the `-p` option in `dvc run`. See also
 > `dvc params`.
 
-Run without arguments, this command compares parameters currently present in the
+Without arguments, this command compares parameters currently present in the
 <abbr>workspace</abbr> (uncommitted changes) with the latest committed version.
 
 Supported parameter _value_ types are: string, integer, float, and arrays. DVC
