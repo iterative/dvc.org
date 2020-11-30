@@ -46,8 +46,9 @@ so you never forget to `dvc checkout`!
 
 ### [Q: I have a big, 100 GB directory. I want to know where the contents are located so I can open them with Spark- is there a way to get the location of my files without caching them locally?](https://discord.com/channels/485586884165107732/485596304961962003/771386223403073587)
 
-For this, we'd recommend the DVC Python API's `get_url` function. For example,
-in a Python script you'd write:
+For this, we'd recommend the
+[DVC Python API](https://dvc.org/doc/api-reference/get_url#dvcapiget_url)'s
+`get_url` function. For example, in a Python script you'd write:
 
 ```python
 import dvc.api
@@ -61,12 +62,26 @@ resource_url = dvc.api.get_url(
 This code means the API will return the URL for a file that ends in `.dir`. The
 `.dir` file contains a JSON-formatted table of the hashes and relative paths for
 all the files inside `<top-level-directory>`. You could then parse that file to
-get the locations of the full directory contents.
+get the relative paths to the files in your remote storage.
 
-Why use the API? It's a good way to access DVC-tracked files without downloading
-them to your workspace! Read more about our
-[Python API and the `get_url` function](https://dvc.org/doc/api-reference/get_url#dvcapiget_url)
-in our docs.
+The JSON object will look something like this, for a file `foo/bar` in your
+project:
+
+```json
+{ "md5": "abcd123", "relpath": "foo/bar" }
+```
+
+Then you can convert the relative path to `foo/bar` to an absolute path as
+follows:
+
+```dvc
+https://<path-to-your-remote-storage>/ab/cd123
+```
+
+To better understand how DVC uses
+[content-addressable storage](https://en.wikipedia.org/wiki/Content-addressable_storage)
+in your remote,
+[read up in our docs](https://dvc.org/doc/user-guide/dvc-files-and-directories#structure-of-the-cache-directory).
 
 ### [Q: Can I have more than one `dvc.yaml` file in my project?](https://discord.com/channels/485586884165107732/563406153334128681/777946398250893333)
 
@@ -83,9 +98,10 @@ stored in the same place, and there's currently no method to rename `dvc.yaml`.
 
 If you want to untrack a file, perhaps something you added to DVC in error, you
 can use `dvc remove` to get rid of the `.dvc` file corresponding to your file,
-and then clear your DVC cache with `dvc gc -w`.
+and then clear your DVC cache with `dvc gc -w --cloud`.
 [Check out our docs](https://dvc.org/doc/user-guide/how-to/stop-tracking-data)
-to learn more about how this works.
+to learn more about `dvc gc` and what its flags mean (you'll want to be sure you
+know what you're doing, since cache cleaning deletes files permanently!).
 
 Alternatively, you can manually find and delete your files:
 
