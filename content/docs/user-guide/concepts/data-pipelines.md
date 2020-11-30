@@ -2,10 +2,13 @@
 name: 'Data Pipelines'
 match: ['data pipeline', 'pipeline', 'pipelines']
 tooltip: >-
-  commands, inputs, outputs, interdependencies, and results (intermediate or
-  final) are specified in `dvc.yaml`, which can be written manually or built
-  using the helper command `dvc run`. This allows DVC to restore one or more
-  pipelines later (see `dvc repro`).
+  In DVC, a [data pipeline](/doc/user-guide/concepts/data-pipelines) is a series
+  of data processing stages (for example, console commands that take an input
+  and produce an <abbr>output</abbr>). A pipeline may produce intermediate data,
+  and has a final result.
+description: >-
+  In DVC, a data pipeline is a series of data processing stages. A pipeline may
+  produce intermediate data, and has a final result.
 ---
 
 # Data Pipelines
