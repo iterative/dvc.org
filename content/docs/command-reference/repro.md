@@ -10,12 +10,23 @@ analyzing dependencies and <abbr>outputs</abbr> of the target stages.
 ```usage
 usage: dvc repro [-h] [-q | -v] [-f] [-s] [-m] [--dry] [-i]
                  [-p] [-P] [-R] [--no-run-cache] [--force-downstream]
-                 [--no-commit] [--downstream] [--pull]
+                 [--no-commit] [--downstream] [--pull] [--glob]
                  [targets [targets ...]]
 
 positional arguments:
-  targets        Stage or path to dvc.yaml or .dvc file to reproduce. Using -R,
-                 directories to search for stages can also be given.
+  targets        Stage or path to dvc.yaml or .dvc file to reproduce.
+                 Using -R, directories to search for stages can also
+                 be given. If no targets are provided, it is assumed
+                 to be the dvc.yaml present in the current working
+                 directory.
+
+                 A stage from a dvc.yaml in a different directory can
+                 be specified using a path to the dvc.yaml, followed
+                 by a colon `:`, followed by the name of the stage
+                 (example: `../dvc.yaml:prepare`).
+
+                 Using --glob, the targets are used as a pattern to
+                 match stages in the specified file.
 ```
 
 ## Description
@@ -156,6 +167,11 @@ up-to-date and only execute the final stage.
   checks the local run-cache too (available history of stage runs).
 
   > Has no effect if combined with `--no-run-cache`.
+
+- `--glob` - allows running the stages from a file that match the wildcard
+  [pattern](https://docs.python.org/3/library/glob.html) specified in `targets`.
+  Note that it does not match pattern with the path, only to the stages present
+  in the specified file.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
