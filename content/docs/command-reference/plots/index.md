@@ -150,7 +150,7 @@ header (first row) are equivalent to field names.
   `index` field (explained above) is the default.
 
 - `<DVC_METRIC_Y>` (optional) - field name of the data for the Y axis. It can be
-  defined with the `-y` option of the `dvc plot` subcommands. t defaults to the
+  defined with the `-y` option of the `dvc plot` subcommands. It defaults to the
   last one found in the first row of the metrics file: the last column for
   CSV/TSV, or the last field for JSON/YAML.
 
