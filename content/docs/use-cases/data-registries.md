@@ -124,7 +124,7 @@ dependency from the local project to the data source (registry repo). This is
 achieved by generating a special import `.dvc` file, which contains this
 metadata.
 
-Whenever the the dataset changes in the registry, we can bring data up to date
+Whenever the dataset changes in the registry, we can bring data up to date
 in with `dvc update`:
 
 ```dvc
