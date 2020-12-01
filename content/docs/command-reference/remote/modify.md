@@ -777,8 +777,7 @@ more information.
 - `user` - OSF account username (email address):
 
   ```dvc
-  $ dvc remote modify myremote user \
-        example@mail.com
+  $ dvc remote modify myremote user example@mail.com
   ```
 
 - `password` - OSF account password:
