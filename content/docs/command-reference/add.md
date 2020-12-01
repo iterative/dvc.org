@@ -38,8 +38,7 @@ other DVC commands), a few actions are taken under the hood:
 1. Calculate the file hash.
 2. Move the file contents to the cache (by default in `.dvc/cache`), using the
    file hash to form the cached file path. (See
-   [Structure of cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-the-cache-directory)
-   for more details.)
+   [DVC cache](/doc/user-guide/concepts/dvc-cache) for more details.)
 3. Attempt to replace the file with a link to the cached data (more details on
    file linking further down).
 4. Create a corresponding `.dvc` file to track the file, using its path and hash
@@ -81,9 +80,8 @@ used), but DVC does not produce individual `.dvc` files for each file in the
 entire tree. Instead, the single `.dvc` file references a special JSON file in
 the cache (with `.dir` extension), that in turn points to the added files.
 
-> Refer to
-> [Structure of cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-the-cache-directory)
-> for more info. on `.dir` cache entries.
+> Refer to [DVC cache](/doc/user-guide/concepts/dvc-cache) for more info. on
+> `.dir` cache entries.
 
 Note that DVC commands that use tracked data support granular targeting of files
 and directories, even when contained in a parent directory added as a whole.

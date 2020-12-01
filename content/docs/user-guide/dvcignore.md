@@ -95,9 +95,7 @@ Only the cache entries of the `data/` directory itself and one file have been
 stored. Checking the hash value of the data files manually, we can see that
 `data2` was cached. This means that `dvc add` did ignore `data1`.
 
-> Refer to
-> [Structure of cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-the-cache-directory)
-> for more info.
+> Refer to [DVC cache](/doc/user-guide/concepts/dvc-cache) for more info.
 
 ## Example: Ignore file state changes
 

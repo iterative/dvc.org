@@ -175,9 +175,7 @@ $ tree .dvc/cache
 
 Note that the `.dvc/cache` directory was created and populated.
 
-> Refer to
-> [Structure of cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-the-cache-directory)
-> for more info.
+> Refer to [DVC cache](/doc/user-guide/concepts/dvc-cache) for more info.
 
 Used without arguments (as above), `dvc fetch` downloads all files and
 directories needed by all `dvc.yaml` and `.dvc` files in the current branch. For

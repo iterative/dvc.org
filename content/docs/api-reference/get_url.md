@@ -36,8 +36,8 @@ URL returned depends on the
 `remote` used (see the [Parameters](#parameters) section).
 
 If the target is a directory, the returned URL will end in `.dir`. Refer to
-[Structure of cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-the-cache-directory)
-and `dvc add` to learn more about how DVC handles data directories.
+[DVC cache](/doc/user-guide/concepts/dvc-cache) and `dvc add` to learn more
+about how DVC handles data directories.
 
 ⚠️ This function does not check for the actual existence of the file or
 directory in the remote storage.
