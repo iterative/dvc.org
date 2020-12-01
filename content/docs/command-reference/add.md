@@ -128,9 +128,9 @@ not.
   among the `targets`, this option is ignored. For each file found, a new `.dvc`
   file is created using the process described in this command's description.
 
-- `--no-commit` - do not cache outputs. A `.dvc` file is created, while nothing
-  is stored in the cache. Use `dvc commit` to finish the operation. This is
-  analogous to using `git add` before `git commit`.
+- `--no-commit` - do not store `targets` in the cache (the `.dvc` file is still
+  created). Use `dvc commit` to finish the operation (similar to `git commit`
+  after `git add`).
 
 - `--file <filename>` - specify name of the `.dvc` file it generates. This
   option works only if there is a single target. By default the name of the
