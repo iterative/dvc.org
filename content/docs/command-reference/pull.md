@@ -57,11 +57,10 @@ The default remote is used (see `dvc remote default`) unless the `--remote`
 option is used. See `dvc remote` for more information on how to configure a
 remote.
 
-Without arguments, it downloads all files and directories missing from the
-project, found as <abbr>outputs</abbr> of the
-[stages](/doc/command-reference/run) or `.dvc` files present in the workspace.
-The `--all-branches`, `--all-tags`, and `--all-commits` options enable pulling
-multiple Git commits.
+Without arguments, it downloads all files and directories referenced in the
+current workspace (found in `dvc.yaml` and `.dvc` files) that are missing from
+the workspace. The `--all-branches`, `--all-tags`, and `--all-commits` options
+enable pulling multiple Git commits.
 
 The `targets` given to this command (if any) limit what to pull. It accepts
 paths to tracked files or directories (including paths inside tracked
@@ -175,7 +174,7 @@ $ tree
 └── model.pkl
 ```
 
-We can download specific <abbr>outputs</abbr> of a single stage:
+We can also download only the <abbr>outputs</abbr> of a specific stage:
 
 ```dvc
 $ dvc pull train

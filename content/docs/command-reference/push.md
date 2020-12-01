@@ -33,14 +33,12 @@ use cases for these commands.
 > Those should be uploaded with `git push`.
 
 The default remote is used (see `dvc remote default`) unless the `--remote`
-option is used. See `dvc remote` for more information on how to configure a
-remote.
+option is used. See `dvc remote` for more information on how to configure them.
 
-Without arguments, it uploads all files and directories missing from remote
-storage, found as <abbr>outputs</abbr> of the
-[stages](/doc/command-reference/run) or `.dvc` files present in the workspace.
-The `--all-branches`, `--all-tags`, and `--all-commits` options enable pushing
-multiple Git commits.
+Without arguments, it uploads all files and directories referenced in the
+current workspace (found in `dvc.yaml` and `.dvc` files) that are missing from
+the remote. The `--all-branches`, `--all-tags`, and `--all-commits` options
+enable pushing multiple Git commits.
 
 The `targets` given to this command (if any) limit what to push. It accepts
 paths to tracked files or directories (including paths inside tracked

@@ -41,10 +41,10 @@ project's cache                  ++ | dvc pull |
  workspace
 ```
 
-Without arguments, it downloads all files and directories missing from the
-project, found as <abbr>outputs</abbr> in all `dvc.yaml` and `.dvc` files
-present in the workspace. The `--all-branches`, `--all-tags`, and
-`--all-commits` options enable fetching multiple Git commits.
+Without arguments, it downloads all files and directories referenced in the
+current workspace (found in `dvc.yaml` and `.dvc` files) that are missing from
+the workspace. The `--all-branches`, `--all-tags`, and `--all-commits` options
+enable fetching multiple Git commits.
 
 The `targets` given to this command (if any) limit what to fetch. It accepts
 paths to tracked files or directories (including paths inside tracked
@@ -172,18 +172,15 @@ $ tree .dvc/cache
 > `dvc status --cloud` compares the cache contents against the default remote.
 > Refer to `dvc status`.
 
-Note that the `.dvc/cache` directory was created and populated.
+Note that the
+[`.dvc/cache`](/doc/user-guide/dvc-files-and-directories#structure-of-the-cache-directory)
+directory was created and populated.
 
-> Refer to
-> [Structure of cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-the-cache-directory)
-> for more info.
+All the data needed in this version of the project is now in your cache: File
+names `20b786b...` and `c8d307a...` correspond to the `data/features/` directory
+and `model.pkl` file, respectively.
 
-Used without arguments (as above), `dvc fetch` downloads all files and
-directories needed by all `dvc.yaml` and `.dvc` files in the current branch. For
-example, the hash values `20b786b...` and `c8d307a...` correspond to the
-`data/features/` directory and `model.pkl` file, respectively.
-
-Let's now link files from the cache to the workspace with:
+To link these files to the workspace:
 
 ```dvc
 $ dvc checkout
