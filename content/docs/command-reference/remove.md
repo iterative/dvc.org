@@ -14,9 +14,13 @@ positional arguments:
 
 ## Description
 
-This command can safely remove `.dvc` files or stages from `dvc.yaml`. This
-includes deleting the appropriate `.gitignore` entries, and optionally the
-actual output files they track (see `--outs` option).
+Safely removes `.dvc` files or stages from `dvc.yaml`. This includes deleting
+the appropriate `.gitignore` entries, and optionally the actual tracked files or
+directories (see `--outs` option).
+
+> `dvc remove` doesn't remove files from the DVC <abbr>cache</abbr> or
+> [remote storage](/doc/command-reference/remote) either (use `dvc gc` for
+> that).
 
 It takes one or more stage names (see `-n` option of `dvc run`) or `.dvc` file
 names as `targets`.
@@ -27,10 +31,6 @@ If there are no stages left in `dvc.yaml` after the removal, then both
 Note that the actual <abbr>output</abbr> files or directories tracked by the
 stage (`outs` field) are not removed by this command, unless the `--outs` option
 is used.
-
-> `dvc remove` doesn't remove files from the DVC <abbr>cache</abbr> or
-> [remote storage](/doc/command-reference/remote) either (use `dvc gc` for
-> that).
 
 💡 Refer to [Undo Adding Data](/doc/user-guide/how-to/undo-adding-data) to see
 how it helps replace data that is tracked by DVC.
