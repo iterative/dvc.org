@@ -227,14 +227,14 @@ $ dvc run -n my_stage './my_script.sh $MYENVVAR'
   It's used by `dvc repro` to change the working directory before executing the
   `command`.
 
-- `--no-exec` - create a stage file, but do not execute the `command` defined in
-  it, nor cache dependencies or outputs (like with `--no-commit`, explained
-  below). DVC will also add your outputs to `.gitignore`, same as it would do
-  without `--no-exec`. Use `dvc commit` to force committing existing output file
-  versions to cache.
+- `--no-exec` - write the stage to `dvc.yaml`, but do not execute its `command`.
+  Any dependencies and outputs will be entered in `.gitignore`, but won't be
+  cached (like with `--no-commit` below) or recorded in `dvc.lock`. Use
+  `dvc commit` to save any existing dep/out files to the cache and record their
+  hashes to the lock file.
 
   This is useful if, for example, you need to build a pipeline quickly first,
-  and run it all at once later.
+  and run it all at once later (with `dvc repro`).
 
 - `-f`, `--force` - overwrite an existing stage in `dvc.yaml` file without
   asking for confirmation.
@@ -244,14 +244,9 @@ $ dvc run -n my_stage './my_script.sh $MYENVVAR'
   command's code is non-deterministic
   ([not recommended](#avoiding-unexpected-behavior)).
 
-- `--no-commit` - do not save outputs to cache. A stage created, while nothing
-  is added to the cache. In the stage file, the file hash values will be empty;
-  They will be populated the next time this stage is actually executed, or
-  `dvc commit` can be used to force committing existing output file versions to
-  cache.
-
-  This is useful to avoid caching unnecessary data repeatedly when running
-  multiple experiments.
+- `--no-commit` - do not store outputs in the cache (`dvc.yaml` and `dvc.lock`
+  are still created or updated); useful to avoid caching unnecessary data when
+  executing tests or experiments. Use `dvc commit` to finish the operation.
 
 - `--always-changed` - always consider this stage as changed (uses the
   `always_changed` field in `dvc.yaml`). As a result `dvc status` will report it
