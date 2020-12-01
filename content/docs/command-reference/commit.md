@@ -1,7 +1,7 @@
 # commit
 
-Stores changed changed files and directories tracked by DVC in the
-<abbr>cache</abbr>, and update the `dvc.lock` or `.dvc` files if needed.
+Record changes to DVC-tracked files in the <abbr>project</abbr>, by saving them
+to the <abbr>cache</abbr> and updating the `dvc.lock` or `.dvc` files.
 
 ## Synopsis
 
@@ -17,52 +17,65 @@ positional arguments:
 
 ## Description
 
-This command can be useful for several scenarios, when
-[stages](/doc/command-reference/run) are under development, or to force-update
-the cache without having to execute stage commands again (avoiding `dvc repro`).
+The `dvc commit` command is useful for several scenarios, when data already
+tracked by DVC changes: when a [stage](/doc/command-reference/run) or
+[pipeline](/doc/command-reference/dag) is in development/experimentation; to
+force-update the `dvc.lock` or `.dvc` files without reproducing stages or
+pipelines; or to mark existing files/dirs as stage <abbr>outputs</abbr>. These
+scenarios are further detailed below.
 
-> Note that this does not register project versions. That can be done with
-> `git commit` (if using Git).
+- Code or data for a stage is under active development, with multiple iterations
+  (experiments) in code, configuration, or data. Use the `--no-commit` option of
+  DVC commands (`dvc add`, `dvc run`, `dvc repro`) to avoid caching unnecessary
+  data repeatedly. Use `dvc commit` when the DVC-tracked data is final.
 
-Normally, `dvc repro` and `dvc run` finish up with the same steps as `dvc add`,
-for each <abbr>output</abbr> involved. In summary:
+  💡 For convenience, a pre-commit Git hook is available to remind you to
+  `dvc commit` when needed. See `dvc install` for more details.
 
-- Compute the hash value of the file or directory and save it in the `dvc.lock`
-  or `.dvc` file.
-- If using Git, append the file/directory path to `.gitignore`.
-- Store the data in question in the <abbr>cache</abbr>.
+- Sometimes we want to edit source code, config, or data files in a way that
+  doesn't cause changes in the results of their data pipeline. We might write
+  add code comments, change indentation, remove some debugging printouts, or any
+  other change that doesn't cause changed stage outputs. However, DVC will
+  notice that some <abbr>dependencies</abbr> have changed, and expect you to
+  reproduce the whole pipeline. If you're sure no pipeline results would change,
+  use `dvc commit` to force update the `dvc.lock` or `.dvc` files and cache.
 
-For stages under development, the last step can be skipped with the
-`--no-commit` option of those commands. This avoids caching unfinished data
-(hash values are still calculated and added to `dvc.lock` or `.dvc` files). This
-is where `dvc commit` comes into play: It performs that last step when needed.
+- In some cases, we have previously executed a stage, and later notice that some
+  of the files/directories used by the stage as dependencies or created as
+  outputs are missing from `dvc.yaml`. It is possible to
+  [add missing data to an existing stage](/docs/user-guide/how-to/add-deps-or-outs-to-a-stage),
+  and then `dvc commit` can be used to save outputs to the cache (and update
+  `dvc.lock`)
 
-💡 For convenience, a pre-commit Git hook is available to remind you to
-`dvc commit` when needed. See `dvc install` for more info.
+- It's always possible to manually execute the command or source code used in a
+  stage without DVC (outputs must be unprotected or removed first in certain
+  cases, see `dvc unprotect`). Once the desired result is reached, use
+  `dvc commit` to update the `dvc.lock` file(s) and store changed data to the
+  cache.
 
-Other scenarios include:
+Let's take a look at what is happening in the first scenario closely. Normally
+DVC commands like `dvc add`, `dvc repro` or `dvc run` commit the data to the
+<abbr>cache</abbr> after creating or updating a `dvc.lock` or `.dvc` file. What
+_commit_ means is that DVC:
 
-- Often we edit source code, configuration, or input data in a way that doesn't
-  cause changes to any outputs, for example reformatting data, adding code
-  comments, etc. However, DVC notices all changes to <abbr>dependencies</abbr>
-  and expects you to reproduce the corresponding stages. Use `dvc commit`
-  instead to force accepting the changes without having to `dvc repro`.
+- Computes a hash for the file/directory.
+- Enters the hash value and file name in the `dvc.lock` or `.dvc` file.
+- Tells Git to ignore the file/directory (adding them to `.gitignore`). (Note
+  that if the <abbr>project</abbr> was initialized with no Git support
+  (`dvc init --no-scm`), this does not happen.)
+- Adds the file(s) in question to the cache.
 
-- Sometimes, after executing a stage, we realize that we forgot to specify some
-  of its dependencies or outputs in `dvc.yaml`. Fortunately it's possible to
-  [add the missing deps/outs](/docs/user-guide/how-to/add-deps-or-outs-to-a-stage),
-  and `dvc commit` may be needed to finalize the remedy (see link).
+There are many cases where the last step is not desirable (for example rapid
+iterations on an experiment). The `--no-commit` option prevents it (on the
+commands where it's available). The file hash is still computed and added to the
+`dvc.lock` or `.dvc` file, but the actual data is not cached. And this is where
+the `dvc commit` command comes into play: It performs that last step when
+needed.
 
-- It's also possible to execute stage commands by hand (without `dvc repro`), or
-  to manually modify their output files or directories. Use `dvc commit` to
-  register the changes with DVC once you're done.
-
-  > Note that `dvc unprotect` (or removing the outputs) is usually required
-  > before rewriting files/dirs tracked by DVC.
-
-Note that it's best to try avoiding these scenarios, where the cache,
-`dvc.lock`, and `.dvc` files are force-updated. DVC can't guarantee
-reproducibility in those cases.
+Note that it's best to avoid the last three scenarios. They essentially
+force-update the `dvc.lock` or `.dvc` files and save data to cache. They are
+still useful, but keep in mind that DVC can't guarantee reproducibility in those
+cases.
 
 ## Options
 
@@ -215,11 +228,11 @@ ba000ba83b341a423a81eed8ff9238
 We've verified that `dvc commit` has saved the changes into the cache, and that
 the new instance of `model.pkl` is there.
 
-## Example: Executing stage commands without DVC
+## Example: Running commands without DVC
 
-Sometimes you may want to execute stage commands manually (instead of using
-`dvc repro`). You won't have DVC helping you, but you'll have the freedom to run
-any command, even ones not defined in `dvc.yaml`. For example:
+It is also possible to execute the commands that are executed by `dvc repro` by
+hand. You won't have DVC helping you, but you have the freedom to run any
+command you like, even ones not defined in `dvc.yaml` stages. For example:
 
 ```dvc
 $ python src/featurization.py data/prepared data/features
@@ -227,9 +240,8 @@ $ python src/train.py data/features model.pkl
 $ python src/evaluate.py model.pkl data/features auc.metric
 ```
 
-As before, `dvc status` will show which tracked files/dirs have changed, and
-when your work is finalized, `dvc commit` will save the outputs the
-<abbr>cache</abbr>.
+As before, `dvc status` will show which files have changed, and when your work
+is finalized `dvc commit` will commit everything to the <abbr>cache</abbr>.
 
 ## Example: Updating dependencies
 
