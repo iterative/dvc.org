@@ -19,15 +19,14 @@ positional arguments:
 
 Downloads tracked data from remote storage into the <abbr>cache</abbr> of the
 project (without placing it in the <abbr>workspace</abbr> like `dvc pull`). This
-makes them available for linking (or copying) into the workspace (refer to
-`dvc config cache.type`).
+makes them available for linking (or copying) into the workspace (see
+`dvc checkout` for more info.).
 
 > Note that this does not download
 > [metafiles](/doc/user-guide/dvc-files-and-directories). That can be done with
 > `git fetch` (if using Git).
 
-Fetching is performed automatically if needed by `dvc pull`, along with
-`dvc checkout`:
+Note that usually fetching is performed automatically (if needed) by `dvc pull`:
 
 ```
 Tracked files                Commands
