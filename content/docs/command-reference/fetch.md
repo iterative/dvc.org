@@ -1,7 +1,7 @@
 # fetch
 
-Download <abbr>cached</abbr> files or directories from
-[remote storage](/doc/command-reference/remote).
+Download files or directories from
+[remote storage](/doc/command-reference/remote) to the <abbr>cached</abbr>.
 
 ## Synopsis
 
@@ -22,9 +22,9 @@ project (without placing it in the <abbr>workspace</abbr> like `dvc pull`). This
 makes them available for linking (or copying) into the workspace (refer to
 `dvc config cache.type`).
 
-> Note that fetching data does not affect code or
-> [metafiles](/doc/user-guide/dvc-files-and-directories). Those can be
-> downloaded with `git fetch` (if using Git).
+> Note that this does not download
+> [metafiles](/doc/user-guide/dvc-files-and-directories). That can be done with
+> `git fetch` (if using Git).
 
 Fetching is performed automatically if needed by `dvc pull`, along with
 `dvc checkout`:
@@ -47,9 +47,9 @@ project's cache                  ++ | dvc pull |
 ```
 
 Without arguments, it downloads all files and directories missing from the
-project, found as <abbr>outputs</abbr> in all `dvc.yaml` and `dvc.lock` pairs,
-as well as in any `.dvc` files present in the workspace. The `--all-branches`,
-`--all-tags`, and `--all-commits` options enable fetching multiple Git commits.
+project, found as <abbr>outputs</abbr> in all `dvc.yaml` and `.dvc` files
+present in the workspace. The `--all-branches`, `--all-tags`, and
+`--all-commits` options enable fetching multiple Git commits.
 
 The `targets` given to this command (if any) limit what to fetch. It accepts
 paths to tracked files or directories (including paths inside tracked
