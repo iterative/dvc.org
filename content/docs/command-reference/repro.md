@@ -98,8 +98,8 @@ up-to-date and only execute the final stage.
 
 - `<target>` - Specify the stages to reproduce.
 
-  Target can be a name of the stage in the dvc.yaml file or a path to a .dvc or
-  a dvc.yaml file. In case of a file, it will reproduce all of the stages
+  Target can be a name of the stage in the `dvc.yaml` file or a path to a `.dvc`
+  or a `dvc.yaml` file. In case of a file, it will reproduce all of the stages
   present in that file.
 
   With `-R`, the target can be a directory to search for stages.
