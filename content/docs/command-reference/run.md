@@ -244,14 +244,9 @@ $ dvc run -n my_stage './my_script.sh $MYENVVAR'
   command's code is non-deterministic
   ([not recommended](#avoiding-unexpected-behavior)).
 
-- `--no-commit` - do not save outputs to cache. A stage created, while nothing
-  is added to the cache. In the stage file, the file hash values will be empty;
-  They will be populated the next time this stage is actually executed, or
-  `dvc commit` can be used to force committing existing output file versions to
-  cache.
-
-  This is useful to avoid caching unnecessary data repeatedly when running
-  multiple experiments.
+- `--no-commit` - do not cache outputs. `dvc.lock` is created or updated, but
+  nothing is stored in the cache. Use `dvc commit` to finish the operation.
+  Useful to avoid caching unnecessary data when executing tests or experiments.
 
 - `--always-changed` - always consider this stage as changed (uses the
   `always_changed` field in `dvc.yaml`). As a result `dvc status` will report it
