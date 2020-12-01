@@ -23,7 +23,7 @@ in the repository history. Requires that Git is being used to version the
 project params.
 
 > Parameter dependencies are defined with the `-p` option in `dvc run`. See also
-> `dvc params`.
+> [parameters](/doc/user-guide/concepts/parameters).
 
 Run without arguments, this command compares parameters currently present in the
 <abbr>workspace</abbr> (uncommitted changes) with the latest committed version.
@@ -52,7 +52,7 @@ itself does not ascribe any specific meaning for these values.
 ## Examples
 
 Let's create a simple YAML parameters file named `params.yaml` (default params
-file name, see `dvc params` to learn more):
+file name, see [parameters](/doc/user-guide/concepts/parameters) to learn more):
 
 ```yaml
 lr: 0.0041

@@ -193,8 +193,8 @@ $ dvc run -n my_stage './my_script.sh $MYENVVAR'
   on, from a parameters file. This is done by sending a comma separated list as
   argument, e.g. `-p learning_rate,epochs`. The default parameters file name is
   `params.yaml`, but this can be redefined with a prefix in the argument sent to
-  this option, e.g. `-p parse_params.yaml:threshold`. See `dvc params` to learn
-  more about parameters.
+  this option, e.g. `-p parse_params.yaml:threshold`. See
+  [parameters](/doc/user-guide/concepts/parameters) to learn more.
 
 - `-m <path>`, `--metrics <path>` - specify a metrics file produced by this
   stage. This option behaves like `-o` but registers the file in a `metrics`
@@ -404,8 +404,8 @@ $ dvc dag
 ## Example: Using parameter dependencies
 
 To use specific values inside a parameters file as dependencies, create a simple
-YAML file named `params.yaml` (default params file name, see `dvc params` to
-learn more):
+YAML file named `params.yaml` (default params file name, see
+[parameters](/doc/user-guide/concepts/parameters) to learn more):
 
 ```yaml
 seed: 20180226
@@ -444,4 +444,4 @@ epochs = params['train']['epochs']
 
 DVC will keep an eye on these param values (same as with the regular dependency
 files) and know that the stage should be reproduced if/when they change. See
-`dvc params` for more details.
+[parameters](/doc/user-guide/concepts/parameters) for more details.
