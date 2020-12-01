@@ -21,8 +21,8 @@ This command can be useful for several scenarios, when
 [stages](/doc/command-reference/run) are under development, or to force-update
 the cache without having to execute stage commands again (avoiding `dvc repro`).
 
-> Note that committing data does not affect code, `dvc.yaml`, or `.dvc` files.
-> Those changes can be recorded with `git commit`.
+> Note that this does not register project versions. That can be done with
+> `git commit`.
 
 Normally, `dvc repro` and `dvc run` finish up with the same steps as `dvc add`,
 for each <abbr>output</abbr> involved. In summary:
