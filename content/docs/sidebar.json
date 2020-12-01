@@ -270,7 +270,7 @@
       {
         "label": "params",
         "slug": "params",
-        "source": "params/index.md",
+        "source": false,
         "children": [
           {
             "label": "params diff",
