@@ -5,6 +5,10 @@ tooltip: >-
   DVC [metrics and plots](/doc/user-guide/concepts/metrics-and-plots) provide
   sets of commands to follow the performance of machine learning experiments.
   Mark certain stage outputs as metrics and visualize metrics as plots.
+description: >-
+  DVC provides sets of commands to track the performance of machine learning
+  experiments. Mark certain stage outputs as metrics and visualize metrics as
+  plots.
 ---
 
 # Metrics and Plots

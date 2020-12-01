@@ -15,6 +15,10 @@ tooltip: >-
   colleagues from DVC remotes without spending time and resources to build or
   process them locally. Remote storage can also save space on your local
   environment.
+description: >-
+  DVC remotes provide a location to store and share data and models, with
+  support for Amazon S3, Google Drive, Azure, and several other remote storage
+  providers.
 ---
 
 <!--

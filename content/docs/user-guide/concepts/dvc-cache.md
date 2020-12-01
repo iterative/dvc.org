@@ -5,6 +5,9 @@ tooltip: >-
   The [DVC cache](/doc/user-guide/concepts/dvc-cache) is a hidden storage (by
   default located in the `.dvc/cache` directory) for files that are tracked by
   DVC, and their different versions.
+description: >-
+  The DVC cache adds a layer of indirection between code and data to efficiently
+  version large datasets, data science features, and machine learning models.
 ---
 
 # DVC Cache
