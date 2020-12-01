@@ -1,7 +1,7 @@
 # commit
 
-<abbr>Cache</abbr> changed files and directories tracked by DVC, and update the
-corresponding `dvc.lock` or `.dvc` files if needed.
+Stores changed changed files and directories tracked by DVC in the
+<abbr>cache</abbr>, and update the `dvc.lock` or `.dvc` files if needed.
 
 ## Synopsis
 
