@@ -78,9 +78,9 @@ fail.
 
 ## Cannot import multiple files or directories at once {#import-wildcard}
 
-DVC only supports a single file or directory as valid  target for `dvc import`.
-If the target path contains a wildcard that matches multiple files or directories,
- `dvc import` will fail.
+DVC only supports a single file or directory as valid target for `dvc import`.
+If the target path contains a wildcard that matches multiple files or
+directories, `dvc import` will fail.
 
 ## No possible cache types {#cache-types}
 
