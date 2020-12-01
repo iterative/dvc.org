@@ -1,7 +1,7 @@
 # fetch
 
 Download files or directories from
-[remote storage](/doc/command-reference/remote) to the <abbr>cached</abbr>.
+[remote storage](/doc/command-reference/remote) to the <abbr>cache</abbr>.
 
 ## Synopsis
 
