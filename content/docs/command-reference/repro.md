@@ -11,23 +11,15 @@ analyzing dependencies and <abbr>outputs</abbr> of the target stages.
 usage: dvc repro [-h] [-q | -v] [-f] [-s] [-m] [--dry] [-i]
                  [-p] [-P] [-R] [--no-run-cache] [--force-downstream]
                  [--no-commit] [--downstream] [--pull] [--glob]
-                 [targets [targets ...]]
+                 [targets [<target> ...]]
 
 positional arguments:
   targets        Stage or path to dvc.yaml or .dvc file to reproduce.
-                 Using -R, directories to search for stages can also
-                 be given. If no targets are provided, it is assumed
-                 to be the dvc.yaml present in the current working
-                 directory.
-
-                 A stage from a dvc.yaml in a different directory can
-                 be specified using a path to the dvc.yaml, followed
-                 by a colon `:`, followed by the name of the stage
-                 (example: `../dvc.yaml:prepare`).
-
-                 Using --glob, the targets are used as a pattern to
-                 match stages in the specified file.
+                 If no targets are provided, it is assumed to be the
+                 dvc.yaml present in the current working directory.
 ```
+
+See [\<target\>](#options) for more details.
 
 ## Description
 
@@ -103,6 +95,25 @@ then run `dvc repro train`: DVC will know that both branches are already
 up-to-date and only execute the final stage.
 
 ## Options
+
+- `<target>` - Specify the stages to reproduce.
+
+  Target can be a name of the stage in the dvc.yaml file or a path to a .dvc or
+  a dvc.yaml file. In case of a file, it will reproduce all of the stages
+  present in that file.
+
+  With `-R`, the target can be a directory to search for stages.
+
+  With `--glob`, the targets are used as a pattern to match stages in the
+  dvc.yaml file (example: `train-*`).
+
+  A stage from a dvc.yaml in a different directory can be specified using a path
+  to the dvc.yaml, followed by a colon `:`, followed by the name of the stage
+  (`models/dvc.yaml:prepare` for example).
+
+  Similarly, to pattern match the stages on a dvc.yaml in a different directory,
+  the pattern could follow after the path and the colon `:`
+  (`models/dvc.yaml:train-*` for example).
 
 - `-f`, `--force` - reproduce a pipeline, regenerating its results, even if no
   changes were found. This executes all of the stages by default, but it can be
