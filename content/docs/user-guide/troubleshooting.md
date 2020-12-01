@@ -76,6 +76,12 @@ valid targets for `dvc add`. If the target path is a directory symlink, or if
 the target path contains any intermediate directory symlinks, `dvc add` will
 fail.
 
+## Cannot import multiple files or directories at once {#import-wildcard}
+
+DVC only supports a single file or directory as valid  target for `dvc import`.
+If the target path contains a wildcard that matches multiple files or directories,
+ `dvc import` will fail.
+
 ## No possible cache types {#cache-types}
 
 You may encounter this error if DVC cannot find a valid

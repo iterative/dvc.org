@@ -113,6 +113,10 @@ repo at `url`) are not supported.
 - `--desc <text>` - user description of the data (optional). This doesn't affect
   any DVC operations.
 
+- `--glob` - allows importing files and directories that match the specified pattern
+  as specified by `target`. Shell-style wildcards are supported: `*`, `?`, `[seq]`,
+  `[!seq]`, and `**`. If multiple entries match the pattern an error will be thrown.
+  
 - `-h`, `--help` - prints the usage/help message, and exit.
 
 - `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if no
