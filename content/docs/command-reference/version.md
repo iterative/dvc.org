@@ -19,8 +19,8 @@ usage: dvc version [-h] [-q | -v]
 | `Supports`                                  | Types of [remote storage](/doc/command-reference/remote/add#supported-storage-types) supported by the current DVC setup (their required dependencies are installed)  |
 | `Cache types`                               | [Types of links](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache) supported (between <abbr>workspace</abbr> and <abbr>cache</abbr>)     |
 | `Cache directory`                           | Filesystem type (e.g. ext4, FAT, etc.) and drive on which the <abbr>cache</abbr> directory is mounted                                                                |
-| `Caches`                                    | Cache [location types](/doc/user-guide/managing-external-data) configured in the repo (e.g. local, SSH, S3, etc.)                                                         |
-| `Remotes`                                   | Remote [location types](/doc/command-reference/remote/add#supported-storage-types) configured in the repo (e.g. SSH, S3, Google Drive, etc.)                                                             |
+| `Caches`                                    | Cache [location types](/doc/user-guide/managing-external-data) configured in the repo (e.g. local, SSH, S3, etc.)                                                    |
+| `Remotes`                                   | Remote [location types](/doc/command-reference/remote/add#supported-storage-types) configured in the repo (e.g. SSH, S3, Google Drive, etc.)                         |
 | `Workspace directory`                       | Filesystem type (e.g. ext4, FAT, etc.) and drive on which the <abbr>workspace</abbr> is mounted                                                                      |
 | `Repo`                                      | Shows whether we are in a DVC repo and/or Git repo                                                                                                                   |
 
@@ -36,7 +36,7 @@ usage: dvc version [-h] [-q | -v]
 
 The detail of DVC version depends upon the way of installing DVC.
 
-- **Official release**: a stable version of DVC (for example `1.7.4`), that can
+- **Official release**: a stable version of DVC (for example `1.10.0`), that can
   be [installed](/doc/install) using the official package stored in
   [Python Packaging Authority](https://www.pypa.io/) or with a binary. These
   releases are tagged in the DVC repository (see
@@ -53,7 +53,7 @@ The detail of DVC version depends upon the way of installing DVC.
 
   Any errors reported with the development version can be traced using the Git
   commit hash displayed in the output of `dvc version`, for example:
-  `1.7.4+292cab.mod`. The part before `+` is the official version number, and
+  `1.10.0+292cab.mod`. The part before `+` is the official version number, and
   the following part is the commit hash of the tip of the `master` branch. The
   optional suffix `.mod` means that code is modified.
 
@@ -126,7 +126,7 @@ Outside a DVC project:
 ```dvc
 $ dvc version
 
-DVC version: 1.7.4 (pip)
+DVC version: 1.10.0 (pip)
 ---------------------------------
 Platform: Python 3.8.3 on Linux-5.4.0-47-generic-x86_64-with-debian-buster-sid
 Supports: All remotes
