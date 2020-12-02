@@ -768,9 +768,9 @@ more information.
   $ dvc remote modify osfremote url osf://osf.io/path/to/dir
   ```
 
-- `project` - [OSF](https://osf.io/) project name. If you open a page
-   with your project in your browser, you can see it in the
-   address bar : `https://osf.io/<your_project>/`.
+- `project` - [OSF](https://osf.io/) project name. Tip: this is displayed in the
+   address bar when browsing the project on the web, like :
+   `https://osf.io/<project_name>/`.
 
   ```dvc
   $ dvc remote modify osfremote --local project <project_name>
