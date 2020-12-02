@@ -244,7 +244,10 @@ $ dvc run -n my_stage './my_script.sh $MYENVVAR'
   ([not recommended](#avoiding-unexpected-behavior)).
 
 - `--no-commit` - do not save outputs to cache. A stage created, while nothing
-  is added to the cache. Use `dvc commit` to finish the operation later.
+  is added to the cache. In the stage file, the file hash values will be empty;
+  They will be populated the next time this stage is actually executed, or
+  `dvc commit` can be used to force committing existing output file versions to
+  cache.
 
   This is useful to avoid caching unnecessary data repeatedly when running
   multiple experiments.
