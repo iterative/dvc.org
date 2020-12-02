@@ -157,25 +157,25 @@ that.
 
 ```dvc
 $ dvc status
-baz.dvc:
-	changed outs:
-		modified:           baz
-	always changed
 dofoo:
 	changed deps:
 		modified:           baz
 	changed outs:
-		not in cache:       foo
+		modified:           foo
 dobar:
+	changed deps:
+		modified:           foo
 	changed outs:
 		deleted:            bar
-	changed checksum
+baz.dvc:
+	changed outs:
+		modified:           baz
 ```
 
-This shows that for `baz.dvc`, the output `baz` tracked by it has changed.
-Likewise for stage `dofoo`, the dependency `baz` and the <abbr>output</abbr>
-`foo` have changed, and for stage `dobar`, the output `bar` has changed, but no
-dependency has changed.
+This shows that for stage `dofoo`, the dependency `baz` and the output `foo`
+have changed. Likewise for stage `dobar`, the dependency `foo` has changed and
+the output `bar` doesn't exist in the workspace. For `baz.dvc`, the file `baz`
+tracked by it has changed.
 
 ## Example: Specific files or directories
 
@@ -185,7 +185,7 @@ dependency has changed.
 $ dvc status foo.dvc dobar
 foo.dvc:
 	changed outs:
-		deleted:            foo
+		modified:            foo
 	changed checksum
 dobar:
 	changed deps:
