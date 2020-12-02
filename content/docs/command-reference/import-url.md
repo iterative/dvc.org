@@ -50,9 +50,8 @@ contains the corresponding local path in the <abbr>workspace</abbr>. It records
 enough metadata about the imported data to enable DVC efficiently determining
 whether the local copy is out of date.
 
-Note that `dvc repro` doesn't check or update import `.dvc` files (see
-`dvc freeze`), use `dvc update` to bring the import up to date from the data
-source.
+Note that `dvc repro` doesn't check or update import `.dvc` files, use
+`dvc update` to bring the import up to date from the data source.
 
 DVC supports several types of (local or) remote locations (protocols):
 
@@ -125,10 +124,10 @@ source.
   default file name: `<file>.dvc`, where `<file>` is the desired file name of
   the imported data (`out`).
 
-- `--no-exec` - create the import `.dvc` file but don't download `url`. The No
-  hash values are calculated or saved to the `.dvc` file. Use `dvc update` to
-  finish the operation later, or `dvc commit` if the data has already been
-  downloaded manually.
+- `--no-exec` - create the import `.dvc` file but don't download `url`. No hash
+  values are calculated or saved to the `.dvc` file. Use `dvc update` to finish
+  the operation later, or `dvc commit` if the data has already been downloaded
+  manually.
 
   > Note that there's no guarantee that the data source is valid until the
   > download is attempted.

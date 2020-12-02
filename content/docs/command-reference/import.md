@@ -103,7 +103,7 @@ repo at `url`) are not supported.
   > example below).
 
 - `--no-exec` - create the import `.dvc` file but don't download the target
-  data. The No hash values are calculated or saved to the `.dvc` file. Use
+  data. No hash values are calculated or saved to the `.dvc` file. Use
   `dvc update` to finish the operation later, or `dvc commit` if the data has
   already been downloaded manually.
 
