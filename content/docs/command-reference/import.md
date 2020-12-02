@@ -102,13 +102,10 @@ repo at `url`) are not supported.
   > [Importing and updating fixed revisions](#example-importing-and-updating-fixed-revisions)
   > example below).
 
-- `--no-exec` - create the import `.dvc` file but don't download the target
-  data. No hash values are calculated or saved to the `.dvc` file. Use
-  `dvc update` to finish the operation later, or `dvc commit` if the data has
-  already been downloaded manually.
-
-  > Note that there's no guarantee that the data source is valid until the
-  > download is attempted.
+- `--no-exec` - create the import `.dvc` file but don't download the target data
+  (assumes that the data source is valid). Use `dvc update` to finish the
+  operation later, or `dvc commit` if the data has already been downloaded
+  manually.
 
 - `--desc <text>` - user description of the data (optional). This doesn't affect
   any DVC operations.

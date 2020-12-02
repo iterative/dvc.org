@@ -228,13 +228,12 @@ $ dvc run -n my_stage './my_script.sh $MYENVVAR'
   `command`.
 
 - `--no-exec` - create a stage file, but do not execute the `command` defined in
-  it, nor cache dependencies or outputs (like with `--no-commit`, explained
-  below). DVC will also add your outputs to `.gitignore`, same as it would do
-  without `--no-exec`. Use `dvc commit` to force committing existing output file
-  versions to cache.
+  it. DVC will still add the outputs to `.gitignore`. Implies `--no-commit`
+  (explained below). If the outputs already exist in the workspace, use
+  `dvc commit` to force caching them.
 
-  This is useful if, for example, you need to build a pipeline quickly first,
-  and run it all at once later.
+  This is useful, for example, to define a full `dvc.yaml` pipeline first, and
+  run it all at once later (with `dvc repro`).
 
 - `-f`, `--force` - overwrite an existing stage in `dvc.yaml` file without
   asking for confirmation.
@@ -245,10 +244,7 @@ $ dvc run -n my_stage './my_script.sh $MYENVVAR'
   ([not recommended](#avoiding-unexpected-behavior)).
 
 - `--no-commit` - do not save outputs to cache. A stage created, while nothing
-  is added to the cache. In the stage file, the file hash values will be empty;
-  They will be populated the next time this stage is actually executed, or
-  `dvc commit` can be used to force committing existing output file versions to
-  cache.
+  is added to the cache. Use `dvc commit` to finish the operation later.
 
   This is useful to avoid caching unnecessary data repeatedly when running
   multiple experiments.
