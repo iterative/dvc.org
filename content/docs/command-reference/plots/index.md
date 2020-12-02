@@ -64,11 +64,8 @@ epoch, AUC, loss
 37, 0.92302, 0.0299015
 ```
 
-In hierarchical file formats (JSON or YAML), an array of consistent objects is
-expected: every object should have the same structure. However, if an object has
-extra elements, it won't affect the plot as long as
-[fields specified](#dvc-template-anchors) for X and Y axis are present in all
-the objects.
+Hierarchical file formats such as JSON and YAML consists of an array of objects
+where each object should contain all fields that are required for the plot.
 
 `dvc plots` subcommands can produce plots for a specified field or a set of
 them, from the array's objects. For example, `val_loss` is one of the field
@@ -151,8 +148,8 @@ header (first row) are equivalent to field names.
 
 - `<DVC_METRIC_Y>` (optional) - field name of the data for the Y axis. It can be
   defined with the `-y` option of the `dvc plot` subcommands. The default is the
-  last one found in the first row of the metrics file: the last column for
-  CSV/TSV, or the last field for JSON/YAML.
+  last header of the metrics file: the last column for CSV/TSV, or the last
+  field for JSON/YAML.
 
 - `<DVC_METRIC_X_TITLE>` (optional) - field name to display as the X axis label
 
