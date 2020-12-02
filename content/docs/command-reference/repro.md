@@ -315,5 +315,5 @@ $ dvc dag
 ```
 
 > Note that using `dvc repro` without `--downstream` in the above example
-> results in the execution of the target (`count`), and the preceeding stages
+> results in the execution of the target (`count`), and the preceding stages
 > (only 'filter' in this case).
