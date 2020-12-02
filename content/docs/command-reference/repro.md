@@ -170,7 +170,7 @@ up-to-date and only execute the final stage.
 
 - `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if all
   stages are up to date or if all stages are successfully executed, otherwise
-  exit with 1. The command defined in the stage is free to write output
+  exit with 1. The commands defined in the stage are free to write output
   regardless of this flag.
 
 - `-v`, `--verbose` - displays detailed tracing information.
