@@ -143,19 +143,7 @@ $ dvc remote modify myremote endpointurl \
 > See `dvc remote modify`(the "Amazon S3" section) for a full list of S3 API
 > parameters.
 
-To save and reuse key and secret for all your dvc project, you could add them to
-the global dvc config file:
-
-```dvc
-$ dvc remote modify --global myremote access_key_id <my-access-key>
-$ dvc remote modify --global myremote secret_access_key <my-secret-key>
-```
-
-You should use this with caution and make sure others don't have access to your
-credential information. `--global` is required here because you should never
-commit your credential information to git history.
-
-If temporary usage is need, you can also configure it via environment variables:
+S3 remotes can also be configured entirely via environment variables:
 
 ```dvc
 $ export AWS_ACCESS_KEY_ID="<my-access-key>"
@@ -495,3 +483,21 @@ $ dvc remote list
 
 myremote	s3://mybucket/another-path
 ```
+
+The credential information can be set via environment variables, for example:
+
+```dvc
+$ export AWS_ACCESS_KEY_ID="<my-access-key>"
+$ export AWS_SECRET_ACCESS_KEY="<my-secret-key>"
+```
+
+or via the dvc (global) config:
+
+```dvc
+$ dvc remote modify --global myremote access_key_id <my-access-key>
+$ dvc remote modify --global myremote secret_access_key <my-secret-key>
+```
+
+You should use this with cautiqon and make sure others don't have access to your
+credential information. For security reason, `--global` is required here because
+you should never commit your credential information to git history.

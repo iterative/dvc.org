@@ -278,7 +278,7 @@ $ dvc remote modify myremote endpointurl \
 ```
 
 Please refer to the "Amazon S3" section for a list of complete S3 variables;
-whether it is useful depends on your actual S3 backend.
+whether the variable is useful depends on your actual S3 backend.
 
 </details>
 
