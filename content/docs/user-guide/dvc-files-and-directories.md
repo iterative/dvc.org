@@ -132,7 +132,9 @@ stages:
       - performance.json
   training:
     desc: train your model
-    cmd: python train.py
+    cmd:
+      - test -z "$(git status -s)"
+      - python train.py
     deps:
       - train.py
       - features
@@ -157,6 +159,8 @@ the possible following fields:
   - the commands are run one after the other
   - the failure of one given command will stop the run of the stage and raises
     an error. Thus that all the commands before failure are well executed.
+    > in the `dvc.yaml` example above, the `python train.py` command will be
+    > executed only if the command before succeeds, _i.e_ if git is clear
 - `wdir`: Working directory for the stage command to run in (relative to the
   file's location). If this field is not present explicitly, it defaults to `.`
   (the file's location).
