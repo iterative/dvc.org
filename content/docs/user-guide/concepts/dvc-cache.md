@@ -10,6 +10,8 @@ description: >-
   version large datasets, data science features, and machine learning models.
 ---
 
+<!-- keywords: data versioning, version control, large dataset versioning, machine learning model management, data science model management, git for data science, git machine learning, ml model version control, data model versioning, "what is versioning through codification?" (can also use all/some of these for dvc-metafiles) -->
+
 # DVC Cache
 
 <!-- Diagram of cache/remote/workspace... -->

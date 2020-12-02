@@ -11,6 +11,8 @@ description: >-
   produce intermediate data, and has a final result.
 ---
 
+<!-- keywords: data pipeline, machine learning pipeline, devops for data science, devops for machine learning, "MLops", "what is a data pipeline?", "data pipeline examples" -->
+
 # Data Pipelines
 
 <!-- _from `dvc dag`_ -->

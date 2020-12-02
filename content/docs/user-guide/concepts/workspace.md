@@ -10,6 +10,8 @@ description: >-
   datasets, source code, ML models, etc. Typically, it's also a Git repository.
 ---
 
+<!-- keywords: data science project architecture, machine learning project architecture, machine learning workflow, data science workflow, machine learning file system, data science file system, data science project structure, machine learning project structure, notebook version control -->
+
 # Workspace
 
 The workspace is the directory containing all your project files e.g. raw
