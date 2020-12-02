@@ -380,7 +380,7 @@ To work with OSF you need to specify several parameters:
 - project
 - password
 
-See `dvc remote modify` for details.
+> See `dvc remote modify` for a full list of OSF parameters.
 
 </details>
 
