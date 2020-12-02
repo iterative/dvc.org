@@ -93,14 +93,6 @@ We'll use tabular metrics file `train.json` for this example:
 }
 ```
 
-DVC identifies and plots JSON objects from the first JSON array found in the
-file (`train`):
-
-```dvc
-$ dvc plots show train.json
-file:///Users/usr/src/plots/train.json.html
-```
-
 <details>
 
 ### Expand for YAML format
@@ -120,6 +112,14 @@ train:
 ```
 
 </details>
+
+DVC identifies and plots JSON objects from the first JSON array found in the
+file (`train`):
+
+```dvc
+$ dvc plots show train.json
+file:///Users/usr/src/plots/train.json.html
+```
 
 ![](/img/plots_show_json.svg)
 
@@ -150,13 +150,6 @@ epoch,accuracy,loss,val_accuracy,val_loss
 7,0.9954,0.01396906608727198,0.9802,0.07247738889862157
 ```
 
-By default, this command plots the last column of the table (see `-y` option):
-
-```dvc
-$ dvc plots show logs.csv
-file:///Users/usr/src/plots/logs.csv.html
-```
-
 <details>
 
 ### Expand for TSV format
@@ -176,6 +169,13 @@ epoch    accuracy    loss    val_accuracy    val_loss
 ```
 
 </details>
+
+By default, this command plots the last column of the table (see `-y` option):
+
+```dvc
+$ dvc plots show logs.csv
+file:///Users/usr/src/plots/logs.csv.html
+```
 
 ![](/img/plots_show.svg)
 
