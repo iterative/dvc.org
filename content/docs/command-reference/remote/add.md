@@ -140,9 +140,22 @@ $ dvc remote modify myremote endpointurl \
                     https://object-storage.example.com
 ```
 
-> See `dvc remote modify` for a full list of S3 API parameters.
+> See `dvc remote modify`(the "Amazon S3" section) for a full list of S3 API
+> parameters.
 
-S3 remotes can also be configured entirely via environment variables:
+To save and reuse key and secret for all your dvc project, you could add them to
+the global dvc config file:
+
+```dvc
+$ dvc remote modify --global myremote access_key_id <my-access-key>
+$ dvc remote modify --global myremote secret_access_key <my-secret-key>
+```
+
+You should use this with caution and make sure others don't have access to your
+credential information. `--global` is required here because you should never
+commit your credential information to git history.
+
+If temporary usage is need, you can also configure it via environment variables:
 
 ```dvc
 $ export AWS_ACCESS_KEY_ID="<my-access-key>"

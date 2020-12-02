@@ -23,7 +23,7 @@ positional arguments:
 
 Remote `name` and `option` name are required. Config option names are specific
 to the remote type. See `dvc remote add` and
-[Available settings](#available-settings-per-storage-type) below for a list of
+[Available settings](#available-parameters-per-storage-type) below for a list of
 remote storage types.
 
 This command modifies a `remote` section in the project's
@@ -276,6 +276,9 @@ $ dvc remote add -d myremote s3://example-name/path/to/use
 $ dvc remote modify myremote endpointurl \
                              https://nyc3.digitaloceanspaces.com
 ```
+
+Please refer to the "Amazon S3" section for a list of complete S3 variables;
+whether it is useful depends on your actual S3 backend.
 
 </details>
 
