@@ -151,10 +151,12 @@ stages:
 by the user with the `--name` (`-n`) option of `dvc run`. Each stage can contain
 the possible following fields:
 
-- `cmd` (always present): Executable commands defined in this stage. This could be
-  either a single command or a list of commands that should be executed sequentially.
-  The failure of one of these commandes will result in the failure of the stage.
-  Note that each command is passed as is to the shell.
+- `cmd` (always present): Executable commands defined in this stage. Each
+  command is passed as is to the shell. The command can be either a single
+  command or a list of commands. In that latter case:
+  - the commands are run one after the other
+  - the failure of one given command will stop the run of the stage and raises
+    an error. Thus that all the commands before failure are well executed.
 - `wdir`: Working directory for the stage command to run in (relative to the
   file's location). If this field is not present explicitly, it defaults to `.`
   (the file's location).
