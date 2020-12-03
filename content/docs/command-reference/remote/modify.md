@@ -778,7 +778,7 @@ more information.
 
   Also it is possible to specify `project` by setting
   environment variable `OSF_PROJECT`. Run
-  `export OSF_PROJECT='my-project'`
+  `export OSF_PROJECT='myproject'`
 
 - `user` - OSF account username (email address by default):
 
