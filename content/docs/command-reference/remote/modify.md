@@ -775,18 +775,20 @@ more information.
   ```dvc
   $ dvc remote modify osfremote --local project <project_name>
   ```
+
   Also it is possible to specify `project` by setting
-  envirement variable `OSF_PROJECT`. Run
-  ```$ export OSF_PROJECT=<your_project>```
-  
+  environment variable `OSF_PROJECT`. Run
+  `export OSF_PROJECT=<your_project>`
+
 - `user` - OSF account username (email address by default):
 
   ```dvc
   $ dvc remote modify osfremote --local user example@mail.com
   ```
+
   Also it is possible to specify `user` by setting
-  envirement variable `OSF_USER`. Run
-  ```$ export OSF_PROJECT=example@mail.com```
+  environment variable `OSF_USER`. Run
+  `export OSF_PROJECT=example@mail.com`
   
 - `password` - OSF account password:
 
