@@ -795,9 +795,10 @@ more information.
   ```dvc
   $ dvc remote modify osfremote --local password 12345
   ```
+
   Also it is possible to specify password by setting
   envirement variable `OSF_PASSWORD`. Run
-  ```$ export OSF_PASSWORD=12345```
+  `export OSF_PASSWORD='12345'`
 
 > The username and password (may) contain sensitive user info.
 > Therefore, it's safer to add them with the `--local` option, so they're
