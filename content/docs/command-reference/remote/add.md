@@ -373,12 +373,15 @@ An [Open Science Framework](https://www.cos.io/products/osf) account is needed t
 [OSF storage](https://help.osf.io/hc/en-us/articles/360054528874). 
 
 ```dvc
-dvc remote add myremote osf://osf.io/path/to/dir
+$ dvc remote add myremote osf://osf.io/path/to/dir
+$ dvc remote modify osfremote --local project myproject
+$ dvc remote modify osfremote --local user example@mail.com
+$ dvc remote modify osfremote --local password 12345
 ```
-To work with OSF you need to specify several parameters:
-- user
-- project
-- password
+
+> The project name, username, and password (may) contain sensitive user info.
+> Therefore, it's safer to add them with the `--local` option, so they're
+> written to a Git-ignored config file.
 
 > See `dvc remote modify` for a full list of OSF parameters.
 
