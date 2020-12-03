@@ -773,7 +773,7 @@ more information.
    `https://osf.io/my-project/`.
 
   ```dvc
-  $ dvc remote modify osfremote --local project <project_name>
+  $ dvc remote modify osfremote --local project myproject
   ```
 
   Also it is possible to specify `project` by setting
