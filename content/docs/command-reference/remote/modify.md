@@ -788,7 +788,7 @@ more information.
 
   Also it is possible to specify `user` by setting
   environment variable `OSF_USER`. Run
-  `export OSF_PROJECT=example@mail.com`
+  `export OSF_PROJECT='example@mail.com'`
   
 - `password` - OSF account password:
 
