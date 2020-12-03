@@ -381,9 +381,8 @@ $ dvc remote modify osfremote --local password 12345
 
 > The project name, username, and password (may) contain sensitive user info.
 > Therefore, it's safer to add them with the `--local` option, so they're
-> written to a Git-ignored config file.
-
-> See `dvc remote modify` for a full list of OSF parameters.
+> written to a Git-ignored config file. See `dvc remote modify` for a full list
+> of OSF parameters.
 
 </details>
 
