@@ -121,7 +121,7 @@ used to see what files `dvc pull` would download.
   the default is `4`. Note that the default value can be set using the `jobs`
   config option with `dvc remote modify`. Using more jobs may improve the
   overall transfer speed.
-  
+
 - `--glob` - allows pulling files and directories that match the
   [pattern](https://docs.python.org/3/library/glob.html) specified in `targets`.
   Shell style wildcards supported: `*`, `?`, `[seq]`, `[!seq]`, and `**`
