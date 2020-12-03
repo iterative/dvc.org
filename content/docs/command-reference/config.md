@@ -126,9 +126,8 @@ remote. See `dvc remote` for more information.
 
 A DVC project <abbr>cache</abbr> is the hidden storage (by default located in
 the `.dvc/cache` directory) for files that are tracked by DVC, and their
-different versions. (See
-[DVC cache](/doc/user-guide/concepts/dvc-cache) for more details.) This section
-contains the following options:
+different versions. (See [DVC cache](/doc/user-guide/concepts/dvc-cache) for
+more details.) This section contains the following options:
 
 - `cache.dir` - set/unset cache directory location. A correct value is either an
   absolute path, or a path **relative to the config file location**. The default
