@@ -153,14 +153,10 @@ stages:
 by the user with the `--name` (`-n`) option of `dvc run`. Each stage can contain
 the possible following fields:
 
-- `cmd` (always present): Executable commands defined in this stage. Each
-  command is passed as is to the shell. The command can be either a single
-  command or a list of commands. In that latter case:
-  - the commands are run one after the other
-  - the failure of one given command will stop the run of the stage and raises
-    an error. Thus that all the commands before failure are well executed.
-    > in the `dvc.yaml` example above, the `python train.py` command will be
-    > executed only if the command before succeeds, _i.e_ if git is clear
+- `cmd` (always present): One or more commands executed by the stage (may
+  contain either a single value, or a list). Commands are executed sequentially
+  until all are finished or until one of them fails (see
+  [`dvc repro`](/doc/command-reference/repro))
 - `wdir`: Working directory for the stage command to run in (relative to the
   file's location). If this field is not present explicitly, it defaults to `.`
   (the file's location).
