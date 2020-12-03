@@ -800,11 +800,9 @@ more information.
   envirement variable `OSF_PASSWORD`. Run
   `export OSF_PASSWORD='12345'`
 
-> The username and password (may) contain sensitive user info.
+> The project name, username, and password (may) contain sensitive user info.
 > Therefore, it's safer to add them with the `--local` option, so they're
 > written to a Git-ignored config file.
-  
-  
 
 </details>
 
