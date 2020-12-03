@@ -232,7 +232,9 @@ The directory `.dvc/cache` is the local cache, while `~/vault/recursive` is a
 the cache having more files in it than the remote – which is what the `new`
 state means.
 
-> Refer to [DVC cache](/doc/user-guide/concepts/dvc-cache) for more info.
+> Refer to
+> [Structure of the cache directory](/doc/user-guide/concepts/dvc-cache#structure-of-the-cache-directory)
+> for more info.
 
 Next we can copy the remaining data from the cache to the remote using
 `dvc push`:
