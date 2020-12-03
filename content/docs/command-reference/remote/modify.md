@@ -770,7 +770,7 @@ more information.
 
 - `project` - [OSF](https://osf.io/) project name. Tip: this is displayed in the
    address bar when browsing the project on the web, like :
-   `https://osf.io/my-project/`.
+   `https://osf.io/myproject/`.
 
   ```dvc
   $ dvc remote modify osfremote --local project myproject
