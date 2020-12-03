@@ -370,7 +370,7 @@ $ dvc remote add -d myremote \
 ### Click for OSF
 
 An [Open Science Framework](https://osf.io/) account is needed to use
-[OSF storage](https://help.osf.io/hc/en-us/articles/360054528874). 
+[OSF storage](https://help.osf.io/hc/en-us/articles/360054528874).
 
 ```dvc
 $ dvc remote add myremote osf://osf.io/path/to/dir
