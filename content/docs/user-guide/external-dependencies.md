@@ -1,23 +1,25 @@
 # External Dependencies
 
-There are cases when data is so large, or its processing is organized in a way
-such that you would like to avoid moving it out of its external/remote location.
-For example from a network attached storage (NAS), processing data on HDFS,
-running [Dask](https://dask.org/) via SSH, or having a script that streams data
+There are cases when data is so large, or its processing is organized in such a
+way, that its preferable to avoid moving it from its original location. For
+example data on a network attached storage (NAS), processing data on HDFS,
+running [Dask](https://dask.org/) via SSH, or for a script that streams data
 from S3 to process it.
 
-External <abbr>dependencies</abbr> and
+External dependencies and
 [external outputs](/doc/user-guide/managing-external-data) provide ways to track
 data outside of the <abbr>project</abbr>.
 
-## How it works
+## How external dependencies work
 
-You can specify external files or directories as dependencies for your pipeline
-stages. DVC will track changes in them and reflect this in the output of
-`dvc status`.
+External <abbr>dependencies</abbr> are considered part of the (extended) DVC
+project: DVC will track them, detecting when they change (triggering stage
+executions on `dvc repro`, for example).
 
-Currently, the following types (protocols) of external dependencies are
-supported:
+To define files or directories in an external location as
+[stage](/doc/command-reference/run) dependencies, put their remote URLs or
+external paths in `dvc.yaml` (`deps` field). Use the same format as the `url` of
+certain `dvc remote` types. Currently, the following protocols are supported:
 
 - Amazon S3
 - Microsoft Azure Blob Storage
@@ -27,20 +29,13 @@ supported:
 - HTTP
 - Local files and directories outside the <abbr>workspace</abbr>
 
-> Note that these are a subset of the remote storage types supported by
-> `dvc remote`.
-
-In order to specify an external <abbr>dependency</abbr> for your stage, use the
-usual `-d` option in `dvc run` with the external path or URL to your desired
-file or directory.
+> Note that [remote storage](/doc/command-reference/remote) is a different
+> feature.
 
 ## Examples
 
-Let's take a look at a `download_file` [stage](/doc/command-reference/run) that
-simply downloads a file from an external location.
-
-> Note that some of these commands use the `/home/shared` directory, typical in
-> Linux distributions.
+Let's take a look at defining and running a `download_file` stage that simply
+downloads a file from an external location, on all the supported location types.
 
 <details>
 

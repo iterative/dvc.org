@@ -40,14 +40,12 @@ scenarios are further detailed below.
   reproduce the whole pipeline. If you're sure no pipeline results would change,
   use `dvc commit` to force update the `dvc.lock` or `.dvc` files and cache.
 
-- In cases where we have previously executed a stage (either by writing
-  `dvc.yaml` manually and using `dvc repro`, or with `dvc run`), but later
-  notice that some of the output files or directories it creates, which are
-  already in the <abbr>workspace</abbr>, are missing from `dvc.yaml` (`outs`
-  field). We can
-  [add missing outputs to an existing stage](/docs/user-guide/how-to/add-output-to-stage)
-  without having to execute it again. Use `dvc commit` to update the `dvc.lock`
-  file and save outputs to the cache.
+- In some cases, we have previously executed a stage, and later notice that some
+  of the files/directories used by the stage as dependencies or created as
+  outputs are missing from `dvc.yaml`. It is possible to
+  [add missing data to an existing stage](/docs/user-guide/how-to/add-deps-or-outs-to-a-stage),
+  and then `dvc commit` can be used to save outputs to the cache (and update
+  `dvc.lock`)
 
 - It's always possible to manually execute the command or source code used in a
   stage without DVC (outputs must be unprotected or removed first in certain
@@ -178,7 +176,7 @@ First verification:
 $ dvc status
 featurize:
 	changed outs:
-	  not in cache:       data/features
+		not in cache:       data/features
 train:
 	changed outs:
 		not in cache:       model.pkl
@@ -257,9 +255,9 @@ $ git status -s
 M src/train.py
 
 $ dvc status
-train.dvc:
-    changed deps:
-        modified:           src/train.py
+train:
+	changed deps:
+		modified:           src/train.py
 ```
 
 Let's edit one of the source code files. It doesn't matter which one. You'll see

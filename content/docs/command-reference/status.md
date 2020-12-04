@@ -143,8 +143,8 @@ that.
   information from remote storage. This only applies when the `--cloud` option
   is used, or a `--remote` is given. The default value is `4 * cpu_count()`. For
   SSH remotes, the default is `4`. Note that the default value can be set using
-  the `jobs` config option with `dvc remote modify`. Using more jobs may improve
-  the overall connection speed.
+  the `jobs` config option with `dvc remote modify`. Using more jobs may speed
+  up the operation.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -157,24 +157,25 @@ that.
 
 ```dvc
 $ dvc status
-bar.dvc:
-        changed deps:
-                modified:      bar
-        changed outs:
-                not in cache:      foo
-foo.dvc:
-        changed outs:
-                deleted:      foo
-        changed checksum
-prepare.dvc:
-        changed outs:
-                new:      bar
-        always changed
+dofoo:
+	changed deps:
+		modified:           baz
+	changed outs:
+		modified:           foo
+dobar:
+	changed deps:
+		modified:           foo
+	changed outs:
+		deleted:            bar
+baz.dvc:
+	changed outs:
+		modified:           baz
 ```
 
-This shows that for stage `bar.dvc`, the dependency `foo` and the
-<abbr>output</abbr> `bar` have changed. Likewise for `foo.dvc`, the dependency
-`foo` has changed, but no output has changed.
+This shows that for stage `dofoo`, the dependency `baz` and the output `foo`
+have changed. Likewise for stage `dobar`, the dependency `foo` has changed and
+the output `bar` doesn't exist in the workspace. For `baz.dvc`, the file `baz`
+tracked by it has changed.
 
 ## Example: Specific files or directories
 
@@ -183,14 +184,14 @@ This shows that for stage `bar.dvc`, the dependency `foo` and the
 ```dvc
 $ dvc status foo.dvc dobar
 foo.dvc:
-  changed outs:
-          deleted:      foo
-  changed checksum
+	changed outs:
+		modified:            foo
+	changed checksum
 dobar:
-  changed deps:
-          modified:      bar
-  changed outs:
-          not in cache:      foo
+	changed deps:
+		modified:           foo
+	changed outs:
+		not in cache:       bar
 ```
 
 > In this case, the target `foo.dvc` is a `.dvc` file to track the `foo` file,
@@ -223,8 +224,8 @@ Data and pipelines are up to date.
 
 $ dvc status model.p --with-deps
 matrix-train.p:
-    changed deps:
-            modified:  code/featurization.py
+	changed deps:
+		modified:  code/featurization.py
 ```
 
 The `dvc status` command may be limited to a target that had no changes, but by
@@ -246,10 +247,10 @@ remote yet:
 ```dvc
 $ dvc status --remote storage
 ...
-  new:      data/model.p
-  new:      data/eval.txt
-  new:      data/matrix-train.p
-  new:      data/matrix-test.p
+	new:      data/model.p
+	new:      data/eval.txt
+	new:      data/matrix-train.p
+	new:      data/matrix-test.p
 ```
 
 The output shows where the location of the remote storage is, as well as any

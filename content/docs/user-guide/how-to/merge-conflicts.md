@@ -1,8 +1,14 @@
-# Merge Conflicts
+---
+title: 'How to Merge Conflicts'
+description: 'Git merge conflicts can happen in DVC metafiles when combining
+changes from multiple team members.'
+---
+
+# How to Merge Conflicts in DVC Metafiles
 
 Sometimes multiple members of a team might work on the the same DVC-tracked
 data. And when the time comes to combine their changes, merge conflicts can
-arise in Git-tracked [metafiles](/doc/user-guide/dvc-files-and-directories),
+happen in Git-tracked [metafiles](/doc/user-guide/dvc-files-and-directories),
 which need to be resolved.
 
 ## `dvc.yaml`
