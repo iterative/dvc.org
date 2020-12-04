@@ -101,7 +101,7 @@ in the cache (compared to the default remote.) It can be used to see what files
 - `--glob` - allows pushing files and directories that match the
   [pattern](https://docs.python.org/3/library/glob.html) specified in `targets`.
   Shell style wildcards supported: `*`, `?`, `[seq]`, `[!seq]`, and `**`
-  
+
 - `-h`, `--help` - prints the usage/help message, and exit.
 
 - `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if no
