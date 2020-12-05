@@ -2,10 +2,9 @@
 name: 'Data Pipelines'
 match: ['data pipeline', 'pipeline', 'pipelines']
 tooltip: >-
-  In DVC, a [data pipeline](/doc/user-guide/concepts/data-pipelines) is a series
-  of data processing stages (for example, console commands that take an input
-  and produce an output). A pipeline may produce intermediate data, and has a
-  final result.
+  A [data pipeline](/doc/user-guide/concepts/data-pipelines) is a series of data
+  processing stages, chained by their outputs and inputs. They use some initial
+  data, may produce intermediate artifacts, and reach a final result.
 description: >-
   In DVC, a data pipeline is a series of data processing stages. A pipeline may
   produce intermediate data, and has a final result.
