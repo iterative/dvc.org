@@ -154,8 +154,8 @@ into our local <abbr>cache</abbr>.
 ```dvc
 $ dvc status --cloud
 ...
-    deleted:            data/features/train.pkl
-    deleted:            model.pkl
+	deleted:            data/features/train.pkl
+	deleted:            model.pkl
 
 $ dvc fetch
 
