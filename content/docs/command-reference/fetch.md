@@ -17,10 +17,10 @@ positional arguments:
 
 ## Description
 
-Downloads tracked data from remote storage into the <abbr>cache</abbr> (without
-placing it in the <abbr>workspace</abbr> like `dvc pull`). This makes them
-available for linking (or copying) into the workspace (see `dvc checkout` for
-more info.).
+Downloads tracked files and directories from remote storage into the
+<abbr>cache</abbr> (without placing them in the <abbr>workspace</abbr> like
+`dvc pull`). This makes them available for linking (or copying) into the
+workspace (see `dvc checkout` for more info.).
 
 Note that `dvc pull` already includes fetching:
 
