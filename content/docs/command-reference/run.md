@@ -227,10 +227,10 @@ $ dvc run -n my_stage './my_script.sh $MYENVVAR'
   It's used by `dvc repro` to change the working directory before executing the
   `command`.
 
-- `--no-exec` - create a stage file, but do not execute the `command` defined in
-  it. DVC will still add the outputs to `.gitignore`. Implies `--no-commit`
+- `--no-exec` - create a stage, but do not execute the `command` defined in it.
+  DVC will still add the outputs to `.gitignore`. Implies `--no-commit`
   (explained below). If the outputs already exist in the workspace, use
-  `dvc commit` to force caching them.
+  `dvc commit` to force DVC to track them (as if the stage had run).
 
   This is useful, for example, to define a full `dvc.yaml` pipeline first, and
   run it all at once later (with `dvc repro`).
