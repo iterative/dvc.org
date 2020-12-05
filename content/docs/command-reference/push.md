@@ -35,9 +35,9 @@ use cases for these commands.
 The default remote is used (see `dvc remote default`) unless the `--remote`
 option is used. See `dvc remote` for more information on how to configure them.
 
-Without arguments, it uploads all files and directories referenced in the
-current workspace (found in `dvc.yaml` and `.dvc` files) that are missing from
-the remote. The `--all-branches`, `--all-tags`, and `--all-commits` options
+Without arguments, it uploads the files and directories referenced in the
+current workspace (found in all `dvc.yaml` and `.dvc` files) that are missing
+from the remote. The `--all-branches`, `--all-tags`, and `--all-commits` options
 enable pushing multiple Git commits.
 
 The `targets` given to this command (if any) limit what to push. It accepts
