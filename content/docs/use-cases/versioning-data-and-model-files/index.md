@@ -56,12 +56,12 @@ Benefits of our approach include:
   editing these in source code.
 
 - **Efficient data management**: Use a familiar and cost-effective storage
-  solution of your choice (e.g. SFTP, S3, HDFS,
+  solution for your data and models (e.g. SFTP, S3, HDFS,
   [etc.](/doc/command-reference/remote/add#supported-storage-types)) — free from
   Git hosting
   [constraints](https://docs.github.com/en/free-pro-team@latest/github/managing-large-files/what-is-my-disk-quota).
-  Storing and transferring are
-  [optimized](/doc/user-guide/large-dataset-optimization) by DVC.
+  DVC [optimizes](/doc/user-guide/large-dataset-optimization) storing and
+  transferring large files.
 
 - **Collaboration**: Easily distribute your project development and share its
   data [internally](/doc/use-cases/shared-development-server) and
