@@ -52,8 +52,8 @@ The default remote is cleaned (see `dvc config core.remote`) unless the
 ## Options
 
 - `-w`, `--workspace` - keep _only_ files and directories referenced in the
-  workspace. This behavior is included automatically with `--all-tags`,
-  `--all-branches`, or `--all-commits` are used.
+  workspace. Note that this behavior is implied in `--all-tags`,
+  `--all-branches`, and `--all-commits`.
 
 - `-a`, `--all-branches` - keep cached objects referenced in all Git branches as
   well as in the workspace (implies `-w`). Useful if branches are used to track
