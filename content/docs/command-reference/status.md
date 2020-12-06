@@ -32,14 +32,15 @@ _remote_ mode is triggered by using the `--cloud` or `--remote` options:
 | remote | `--remote` | Comparisons are made between the cache, and the given remote. Remote storage is defined using the `dvc remote` command.     |
 | remote | `--cloud`  | Comparisons are made between the cache, and the default remote (typically defined with `dvc remote --default`).             |
 
-Without arguments, it checks all [stages](/doc/command-reference/run) and `.dvc`
-files, and compares their <abbr>outputs</abbr> against the actual data files or
-directories in the workspace. The `--all-branches`, `--all-tags`, and
-`--all-commits` options enable checking multiple Git commits.
-
-The `targets` given to this command (if any) limit what to check. It accepts
-paths to tracked files or directories (including paths inside tracked
+Without arguments, it checks all `dvc.yaml` and `.dvc` files, and compares their
+<abbr>outputs</abbr> against the actual data files or directories in the
+workspace. Any `targets` given to this command limit what to show changes for.
+It accepts paths to tracked files or directories (including paths inside tracked
 directories), `.dvc` files, and stage names (found in `dvc.yaml`).
+
+The `--all-branches`, `--all-tags`, and `--all-commits` options enable comparing
+[metafiles](/doc/user-guide/dvc-files-and-directories) referenced in multiple
+Git commits at once.
 
 If no differences are detected, `dvc status` prints
 `Data and pipelines are up to date.` or
@@ -116,17 +117,14 @@ that.
   the workspace. Note that both options can be combined, for example using the
   `-aT` flag.
 
+- `--all-commits` - same as `-a` or `-T` above, but applies to _all_ Git commits
+  as well as the workspace. This compares the cache content for the entire
+  commit history of the project.
+
 - `-R`, `--recursive` - determines the files to check status for by searching
   each target directory and its subdirectories for stages (in `dvc.yaml`) and
   `.dvc` files to inspect. If there are no directories among the targets, this
   option is ignored.
-
-- `--show-json` - prints the command's output in easily parsable JSON format,
-  instead of a human-readable table.
-
-- `--all-commits` - same as `-a` or `-T` above, but applies to _all_ Git commits
-  as well as the workspace. This compares the cache content for the entire
-  commit history of the project.
 
 - `-d`, `--with-deps` - determines files to check by tracking dependencies to
   the `targets`. If none are provided, this option is ignored. By traversing all
@@ -138,6 +136,9 @@ that.
 - `-r <name>`, `--remote <name>` - name of the
   [remote storage](/doc/command-reference/remote) to compare against (see
   `dvc remote list`. Implies `--cloud`.
+
+- `--show-json` - prints the command's output in easily parsable JSON format,
+  instead of a human-readable table.
 
 - `-j <number>`, `--jobs <number>` - parallelism level for DVC to retrieve
   information from remote storage. This only applies when the `--cloud` option

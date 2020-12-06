@@ -53,18 +53,18 @@ project's cache                  ++ | dvc pull |
  workspace
 ```
 
-The default remote is used (see `dvc remote default`) unless the `--remote`
-option is used. See `dvc remote` for more information on how to configure a
-remote.
+The default remote is used (see `dvc remote default`) unless a specific one is
+given with `--remote`. See `dvc remote` for more information on how to configure
+a remote.
 
 Without arguments, it downloads all files and directories referenced in the
 current workspace (found in `dvc.yaml` and `.dvc` files) that are missing from
-the workspace. The `--all-branches`, `--all-tags`, and `--all-commits` options
-enable pulling multiple Git commits.
-
-The `targets` given to this command (if any) limit what to pull. It accepts
-paths to tracked files or directories (including paths inside tracked
+the workspace. Any `targets` given to this command limit what to pull. It
+accepts paths to tracked files or directories (including paths inside tracked
 directories), `.dvc` files, and stage names (found in `dvc.yaml`).
+
+The `--all-branches`, `--all-tags`, and `--all-commits` options enable pulling
+files/dirs referenced in multiple Git commits.
 
 After the data is in the <abbr>cache</abbr>, `dvc pull` uses OS-specific
 mechanisms like reflinks or hardlinks to put it in the workspace, trying to

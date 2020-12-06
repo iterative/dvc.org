@@ -41,15 +41,6 @@ project's cache                  ++ | dvc pull |
  workspace
 ```
 
-Without arguments, it downloads all files and directories referenced in the
-current workspace (found in `dvc.yaml` and `.dvc` files) that are missing from
-the workspace. The `--all-branches`, `--all-tags`, and `--all-commits` options
-enable fetching multiple Git commits.
-
-The `targets` given to this command (if any) limit what to fetch. It accepts
-paths to tracked files or directories (including paths inside tracked
-directories), `.dvc` files, and stage names (found in `dvc.yaml`).
-
 Here are some scenarios in which `dvc fetch` is useful, instead of pulling:
 
 - After checking out a fresh copy of a <abbr>DVC repository</abbr>, to get
@@ -60,9 +51,18 @@ Here are some scenarios in which `dvc fetch` is useful, instead of pulling:
   files from the cache, or keep the <abbr>workspace</abbr> clean for any other
   reason.
 
+Without arguments, it downloads all files and directories referenced in the
+current workspace (found in `dvc.yaml` and `.dvc` files) that are missing from
+the workspace. Any `targets` given to this command limit what to fetch. It
+accepts paths to tracked files or directories (including paths inside tracked
+directories), `.dvc` files, and stage names (found in `dvc.yaml`).
+
+The `--all-branches`, `--all-tags`, and `--all-commits` options enable fetching
+files/dirs referenced in multiple Git commits.
+
 The default remote is used (see
-[`dvc config core.remote`](/doc/command-reference/config#core)) unless the
-`--remote` option is used.
+[`dvc config core.remote`](/doc/command-reference/config#core)) unless a
+specific one is given with `--remote`.
 
 > See `dvc gc` for ways to remove cached files.
 
