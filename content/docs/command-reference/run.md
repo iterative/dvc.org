@@ -232,8 +232,8 @@ $ dvc run -n my_stage './my_script.sh $MYENVVAR'
   in the workspace, you can use `dvc commit` to force DVC to track them (as if
   the stage had run).
 
-  This is useful, for example, to define a full `dvc.yaml` pipeline first, and
-  run it all at once later (with `dvc repro`).
+  This option is useful, for example, to define a full `dvc.yaml` pipeline
+  first, and run it all at once later (with `dvc repro`).
 
 - `-f`, `--force` - overwrite an existing stage in `dvc.yaml` file without
   asking for confirmation.
