@@ -22,11 +22,6 @@ Downloads tracked files and directories from remote storage into the
 `dvc pull`). This makes the tracked data available for linking (or copying) into
 the workspace (see `dvc checkout`).
 
-> A common use for `dvc fetch` is to download cached `dvc metrics` and
-> `dvc plots` files from other Git commits or branches. This way DVC can find
-> them when needed for display e.g. `dvc metrics show --all-commits` or for
-> comparing `dvc plots diff HEAD^`.
-
 Note that `dvc pull` already includes fetching:
 
 ```
@@ -60,7 +55,7 @@ Here are some scenarios in which `dvc fetch` is useful, instead of pulling:
 - After checking out a fresh copy of a <abbr>DVC repository</abbr>, to get
   DVC-tracked data from multiple project branches or tags into your machine.
 - To use comparison commands across different Git commits, for example
-  `dvc metrics show` with its `--all-branches` option.
+  `dvc metrics show` with its `--all-branches` option, or `dvc plots diff`.
 - If you want to avoid [linking](/doc/user-guide/large-dataset-optimization)
   files from the cache, or keep the <abbr>workspace</abbr> clean for any other
   reason.
