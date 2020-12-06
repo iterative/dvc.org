@@ -19,8 +19,13 @@ positional arguments:
 
 Downloads tracked files and directories from remote storage into the
 <abbr>cache</abbr> (without placing them in the <abbr>workspace</abbr> like
-`dvc pull`). This makes them available for linking (or copying) into the
-workspace (see `dvc checkout` for more info.).
+`dvc pull`). This makes the tracked data available for linking (or copying) into
+the workspace (see `dvc checkout`).
+
+> A common use for `dvc fetch` is to download cached `dvc metrics` and
+> `dvc plots` files from other Git commits or branches. This way DVC can find
+> them when needed for display e.g. `dvc metrics show --all-commits` or for
+> comparing `dvc plots diff HEAD^`.
 
 Note that `dvc pull` already includes fetching:
 
@@ -63,6 +68,8 @@ Here are some scenarios in which `dvc fetch` is useful, instead of pulling:
 The default remote is used (see
 [`dvc config core.remote`](/doc/command-reference/config#core)) unless the
 `--remote` option is used.
+
+> See `dvc gc` for ways to remove cached files.
 
 ## Options
 
