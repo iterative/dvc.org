@@ -229,8 +229,8 @@ $ dvc run -n my_stage './my_script.sh $MYENVVAR'
 
 - `--no-exec` - create a stage, but do not execute the `command` defined in it.
   DVC will still add the outputs to `.gitignore`. If the outputs already exist
-  in the workspace, use `dvc commit` to force DVC to track them (as if the stage
-  had run).
+  in the workspace, you can use `dvc commit` to force DVC to track them (as if
+  the stage had run).
 
   This is useful, for example, to define a full `dvc.yaml` pipeline first, and
   run it all at once later (with `dvc repro`).
