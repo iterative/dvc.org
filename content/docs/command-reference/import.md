@@ -11,7 +11,8 @@ import.
 ## Synopsis
 
 ```usage
-usage: dvc import [-h] [-q | -v] [-o <path>] [--rev <commit>] url path
+usage: dvc import [-h] [-q | -v] [-j <number>] 
+                  [-o <path>] [--rev <commit>] url path
 
 positional arguments:
   url              Location of DVC or Git repository to download from
@@ -89,6 +90,12 @@ data artifact from the source repo.
   > revision. This can impact the behavior of `dvc update` (see the
   > [Importing and updating fixed revisions](#example-importing-and-updating-fixed-revisions)
   > example below).
+
+- `-j <number>`, `--jobs <number>` - number of threads to run simultaneously to
+  handle the downloading of files from the remote. The default value is
+  `4 * cpu_count()`. For SSH remotes, the default is just `4`. Using more jobs
+  may improve the total download speed if a combination of small and large files
+  are being fetched.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
