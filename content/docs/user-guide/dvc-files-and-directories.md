@@ -156,7 +156,7 @@ the possible following fields:
 - `cmd` (always present): One or more commands executed by the stage (may
   contain either a single value, or a list). Commands are executed sequentially
   until all are finished or until one of them fails (see
-  [`dvc repro`](/doc/command-reference/repro))
+  [`dvc repro`](/doc/command-reference/repro) for details).
 - `wdir`: Working directory for the stage command to run in (relative to the
   file's location). If this field is not present explicitly, it defaults to `.`
   (the file's location).
