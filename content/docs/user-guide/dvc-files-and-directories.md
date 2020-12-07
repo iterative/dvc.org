@@ -133,7 +133,7 @@ stages:
   training:
     desc: train your model
     cmd:
-      - echo "Train my model!"
+      - pip install -r requirements.txt
       - python train.py
     deps:
       - train.py
