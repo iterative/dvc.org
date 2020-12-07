@@ -253,8 +253,8 @@ If we now run `dvc repro`, we should see this:
 ```dvc
 $ dvc repro
 Stage 'filter' didn't change, skipping
-Running stage 'count':
-$ python process.py numbers.txt > count.txt
+Running stage 'count' with command:
+	python process.py numbers.txt > count.txt
 Updating lock file 'dvc.lock'
 ```
 
@@ -291,7 +291,7 @@ of only the target (`count`) and following stages (none in this case):
 ```dvc
 $ dvc repro --downstream count
 Running stage 'count' with command:
-        python process.py numbers.txt > count.txt
+	python process.py numbers.txt > count.txt
 Updating lock file 'dvc.lock'
 ```
 
