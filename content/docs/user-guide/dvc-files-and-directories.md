@@ -133,7 +133,7 @@ stages:
   training:
     desc: train your model
     cmd:
-      - test -z "$(git status -s)"
+      - echo "Train my model!"
       - python train.py
     deps:
       - train.py
