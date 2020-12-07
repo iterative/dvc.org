@@ -11,7 +11,7 @@ import.
 ## Synopsis
 
 ```usage
-usage: dvc import [-h] [-q | -v] [-j <number>] 
+usage: dvc import [-h] [-q | -v] [-j <number>]
                   [-o <path>] [--rev <commit>] url path
 
 positional arguments:
