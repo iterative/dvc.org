@@ -1,7 +1,8 @@
 # commit
 
-Stores changed changed files and directories tracked by DVC in the
-<abbr>cache</abbr>, and update the `dvc.lock` or `.dvc` files if needed.
+Record changes to files or directories tracked by DVC, by storing the current
+versions in the <abbr>cache</abbr>, and updating `dvc.lock` or `.dvc` files as
+needed.
 
 ## Synopsis
 
