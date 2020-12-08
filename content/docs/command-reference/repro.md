@@ -8,7 +8,7 @@ analyzing dependencies and <abbr>outputs</abbr> of the target stages.
 ## Synopsis
 
 ```usage
-usage: dvc repro [-h] [-q | -v] [-f] [-s] [-c <path>] [-m] [--dry] [-i]
+usage: dvc repro [-h] [-q | -v] [-f] [-s] [-m] [--dry] [-i]
                  [-p] [-P] [-R] [--no-run-cache] [--force-downstream]
                  [--no-commit] [--downstream] [--pull]
                  [targets [targets ...]]
@@ -100,7 +100,7 @@ up-to-date and only execute the final stage.
 
 - `-f`, `--force` - reproduce a pipeline, regenerating its results, even if no
   changes were found. This executes all of the stages by default, but it can be
-  limited with the `targets` argument, or the `-s`, `-p`, `-c` options.
+  limited with the `targets` argument, or the `-s`, `-p` options.
 
 - `-s`, `--single-item` - reproduce only a single stage by turning off the
   recursive search for changed dependencies. Multiple stages are executed

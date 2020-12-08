@@ -41,7 +41,7 @@ https://youtu.be/8dBCgIa7TGE
 Did you know we're hiring for two roles in our growing team? We're looking for:
 
 - A
-  [**Senior Software Engineer**](https://weworkremotely.com/remote-jobs/iterative-senior-software-engineer-open-source-dev-tools-1)
+  [**Senior Software Engineer**](https://remoteok.io/remote-jobs/99244-remote-senior-software-engineer-iterative)
   for the core DVC team- someone with strong Python development skills who can
   build and ship essential DVC features.
 
