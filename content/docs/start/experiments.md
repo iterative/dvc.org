@@ -6,6 +6,10 @@ branches. You can try different ideas quickly by tuning
 [metrics](/doc/command-reference/metrics), and visualize them with
 [plots](/doc/command-reference/plots).
 
+Read on or watch our video to see how it's done!
+
+https://youtu.be/iduHPtBncBk
+
 ## Collecting metrics
 
 First, let's see what is the mechanism to capture values for these ML experiment

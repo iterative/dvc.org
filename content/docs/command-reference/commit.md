@@ -163,7 +163,7 @@ First verification:
 $ dvc status
 featurize:
 	changed outs:
-	  not in cache:       data/features
+		not in cache:       data/features
 train:
 	changed outs:
 		not in cache:       model.pkl
@@ -243,9 +243,9 @@ $ git status -s
 M src/train.py
 
 $ dvc status
-train.dvc:
-    changed deps:
-        modified:           src/train.py
+train:
+	changed deps:
+		modified:           src/train.py
 ```
 
 Let's edit one of the source code files. It doesn't matter which one. You'll see
