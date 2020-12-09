@@ -1,8 +1,6 @@
 # commit
 
-Record changes to files or directories tracked by DVC, by storing the current
-versions in the <abbr>cache</abbr>, and updating `dvc.lock` or `.dvc` files as
-needed.
+Record changes to files or directories tracked by DVC.
 
 ## Synopsis
 
@@ -18,10 +16,13 @@ positional arguments:
 
 ## Description
 
-This command can be useful for several scenarios, when
-[stages](/doc/command-reference/run) are under development, or to force DVC to
-accept changed data in the <abbr>workspace</abbr> without having to execute
-stage commands again (avoiding `dvc repro`). Let's expand on these uses.
+<abbr>Caches</abbr> the current contents of files and directories tracked by
+DVC, and updates `dvc.lock` or `.dvc` files as needed.
+
+This can be useful for several scenarios, mainly when
+[stages](/doc/command-reference/run) are under development, but also to force
+DVC to accept changed data without having to execute stage commands again
+(avoiding `dvc repro`). Let's expand on these uses.
 
 Normally, `dvc repro` and `dvc run` finish up with the same steps as `dvc add`,
 for each <abbr>output</abbr> involved. In summary:
