@@ -128,12 +128,12 @@ stored:
 ```dvc
 $ dvc get --show-url \
           https://github.com/iterative/example-get-started model.pkl
-https://remote.dvc.org/get-started/66/2eb7f64216d9c2c1088d0a5e2c6951
+https://remote.dvc.org/get-started/c8/d307aa005d6974a8525550956d5fb3
 ```
 
 `remote.dvc.org/get-started` is an HTTP
-[DVC remote](/doc/command-reference/remote), whereas
-`662eb7f64216d9c2c1088d0a5e2c6951` is the file hash.
+[DVC remote](/doc/command-reference/remote), whereas `c8d307...` is the file
+hash.
 
 ## Example: Compare different versions of data or model
 
@@ -165,7 +165,7 @@ if we wanted to have both versions of the model "checked out" at the same time?
 `dvc get` provides an easy way to do this:
 
 ```dvc
-$ dvc get . model.pkl --rev baseline-experiment
+$ dvc get . model.pkl --rev baseline-experiment \
                       --out model.monograms.pkl
 ```
 
@@ -176,11 +176,12 @@ The `model.monograms.pkl` file now contains the older version of the model. To
 get the most recent one, we use a similar command, but with
 `-o model.bigrams.pkl` and `--rev bigrams-experiment` (or even without `--rev`
 since that tag has the latest model version anyway). In fact, in this case using
-`dvc pull` with the corresponding `.dvc` files should suffice, downloading the
-file as just `model.pkl`. We can then rename it to make its variant explicit:
+`dvc pull` with the corresponding stage as target should suffice, downloading
+the file as just `model.pkl`. We can then rename it to make its variant
+explicit:
 
 ```dvc
-$ dvc pull train.dvc
+$ dvc pull train
 $ mv model.pkl model.bigrams.pkl
 ```
 

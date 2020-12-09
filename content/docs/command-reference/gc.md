@@ -51,9 +51,9 @@ The default remote is cleaned (see `dvc config core.remote`) unless the
 
 ## Options
 
-- `-w`, `--workspace` - keep files and directories _only_ referenced in the
-  current workspace This option is enabled automatically if `--all-tags`,
-  `--all-branches`, or `--all-commits` are used.
+- `-w`, `--workspace` - keep _only_ files and directories referenced in the
+  workspace. Note that this behavior is implied in `--all-tags`,
+  `--all-branches`, and `--all-commits`.
 
 - `-a`, `--all-branches` - keep cached objects referenced in all Git branches as
   well as in the workspace (implies `-w`). Useful if branches are used to track
@@ -93,8 +93,8 @@ The default remote is cleaned (see `dvc config core.remote`) unless the
   from remote storage. This only applies when the `--cloud` option is used, or a
   `--remote` is given. The default value is `4 * cpu_count()`. For SSH remotes,
   the default is `4`. Note that the default value can be set using the `jobs`
-  config option with `dvc remote modify`. Using more jobs may improve the
-  overall connection speed.
+  config option with `dvc remote modify`. Using more jobs may speed up the
+  operation.
 
   > For now only some phases of garbage collection are parallel.
 
