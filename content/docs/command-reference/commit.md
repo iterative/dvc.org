@@ -21,8 +21,8 @@ DVC, and updates `dvc.lock` or `.dvc` files as needed.
 
 This can be useful for several scenarios, mainly when
 [stages](/doc/command-reference/run) are under development, but also to force
-DVC to accept changed data without having to execute stage commands again
-(avoiding `dvc repro`). Let's expand on these uses.
+DVC to accept changed data (as an alternative to `dvc add` again, or to avoid
+`dvc repro`). We'll expand on these uses below.
 
 Normally, `dvc repro` and `dvc run` finish up with the same steps as `dvc add`,
 for each <abbr>output</abbr> involved. In summary:
@@ -45,8 +45,9 @@ Other scenarios include:
 - Often we edit source code, configuration, or input data in a way that doesn't
   cause changes to any outputs, for example reformatting data, adding code
   comments, etc. However, DVC notices all changes to <abbr>dependencies</abbr>
-  and expects you to reproduce the corresponding stages. Use `dvc commit`
-  instead to force accepting the changes without having to `dvc repro`.
+  and expects you to re-add the files/dirs, or to reproduce the corresponding
+  stages. Use `dvc commit` instead as an alternative to `dvc add`, or to force
+  accepting stage-related changes without having to `dvc repro`.
 
 - Sometimes, after executing a stage, we realize that we forgot to specify some
   of its dependencies or outputs in `dvc.yaml`. Fortunately it's possible to
