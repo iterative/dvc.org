@@ -19,10 +19,9 @@ positional arguments:
 <abbr>Caches</abbr> the current contents of files and directories tracked by
 DVC, and updates `dvc.lock` or `.dvc` files as needed.
 
-This can be useful for several scenarios, mainly when
-[stages](/doc/command-reference/run) are under development, but also to force
-DVC to accept changed data (as an alternative to `dvc add` again, or to avoid
-`dvc repro`). We'll expand on these uses below.
+This can be useful for several scenarios, when the project is under development,
+or to force DVC to accept changed data (avoiding `dvc add` or `dvc repro`).
+We'll expand on these uses below.
 
 Normally, `dvc repro` and `dvc run` finish up with the same steps as `dvc add`,
 for each <abbr>output</abbr> involved. In summary:
@@ -32,10 +31,11 @@ for each <abbr>output</abbr> involved. In summary:
 - If using Git, append the file/directory path to `.gitignore`.
 - Store the data in question in the <abbr>cache</abbr>.
 
-For stages under development, the last step can be skipped with the
-`--no-commit` option of those commands. This avoids caching unfinished data
-(hash values are still calculated and added to `dvc.lock` or `.dvc` files). This
-is where `dvc commit` comes into play: It performs that last step when needed.
+The last step can be skipped with the `--no-commit` option of those commands,
+for example when testing or experimenting during the development of the project.
+This avoids caching unfinished data (hash values are still calculated and added
+to `dvc.lock` or `.dvc` files). This is where `dvc commit` comes into play: It
+performs that last step when needed.
 
 💡 For convenience, a pre-commit Git hook is available to remind you to
 `dvc commit` when needed. See `dvc install` for more info.
