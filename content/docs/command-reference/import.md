@@ -107,7 +107,8 @@ repo at `url`) are not supported.
   file or directory. The data hash is not calculated when this option is used,
   only the import metadata is saved to the `.dvc` file. It can be useful to skip
   the download if the file or directory already exists locally, for example,
-  along with `dvc commit` to record its hash value in the `.dvc` file.
+  along with `dvc commit` to store it in the cache and record its hash value in
+  the `.dvc` file.
 
 - `--desc <text>` - user description of the data (optional). This doesn't affect
   any DVC operations.
