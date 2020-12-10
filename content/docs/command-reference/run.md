@@ -229,7 +229,7 @@ $ dvc run -n my_stage './my_script.sh $MYENVVAR'
 
 - `--no-exec` - write the stage to `dvc.yaml`, but do not execute its `command`.
   Any dependencies and outputs will be entered in `.gitignore`, but won't be
-  cached (like with `--no-commit` below) or recorded in `dvc.lock`. Use
+  cached (like with `--no-commit` below) or recorded in `dvc.lock`. You can use
   `dvc commit` to save any existing dep/out files to the cache and record their
   hashes to the lock file.
 
