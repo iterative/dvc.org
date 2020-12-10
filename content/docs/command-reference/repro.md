@@ -104,9 +104,10 @@ up-to-date and only execute the final stage.
   target directory and its subdirectories for stages (in `dvc.yaml`) to inspect.
   If there are no directories among the targets, this option is ignored.
 
-- `--no-commit` - do not store outputs in the cache (`dvc.yaml` and `dvc.lock`
-  are still created or updated); useful to avoid caching unnecessary data when
-  executing tests or experiments. Use `dvc commit` to finish the operation.
+- `--no-commit` - do not store the outputs of this execution in the cache
+  (`dvc.yaml` and `dvc.lock` are still created or updated); useful to avoid
+  caching unnecessary data when executing tests or experiments. Use `dvc commit`
+  to finish the operation.
 
 - `-m`, `--metrics` - show metrics after reproduction. The target pipelines must
   have at least one metrics file defined either with the `dvc metrics` command,

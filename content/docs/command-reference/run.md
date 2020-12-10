@@ -178,15 +178,16 @@ $ dvc run -n my_stage './my_script.sh $MYENVVAR'
   `dvc add`).
 
 - `-O <path>`, `--outs-no-cache <path>` - the same as `-o` except that outputs
-  are not tracked by DVC. It means that they are not cached, and it's up to a
-  user to manage them separately. This is useful if the outputs are small enough
-  to be tracked by Git directly, or if these files are not of future interest.
+  are not tracked by DVC. This means that they are never cached, so it's up to
+  the user to manage them separately. This is useful if the outputs are small
+  enough to be tracked by Git directly, or if these files are not of future
+  interest.
 
 - `--outs-persist <path>` - declare output file or directory that will not be
   removed upon `dvc repro`.
 
 - `--outs-persist-no-cache <path>` - the same as `-outs-persist` except that
-  outputs are not tracked by DVC.
+  outputs are not tracked by DVC (same as with `-O` above).
 
 - `-p [<path>:]<params_list>`, `--params [<path>:]<params_list>` - specify a set
   of [parameter dependencies](/doc/command-reference/params) the stage depends
@@ -204,10 +205,10 @@ $ dvc run -n my_stage './my_script.sh $MYENVVAR'
   more about _metrics_.
 
 - `-M <path>`, `--metrics-no-cache <path>` - the same as `-m` except that DVC
-  does not track the metrics file. This means that the file is not cached, so
-  it's up to the user to manage them separately. This is typically desirable
-  with _metrics_ because they are small enough to be tracked with Git directly.
-  See also the difference between `-o` and `-O`.
+  does not track the metrics file (same as with `-O` above). This means that
+  they are never cached, so it's up to the user to manage them separately. This
+  is typically desirable with _metrics_ because they are small enough to be
+  tracked with Git directly.
 
 - `--plots <path>` - specify a plot metrics file produces by this stage. This
   option behaves like `-o` but registers the file in a `plots` field inside the
@@ -217,9 +218,8 @@ $ dvc run -n my_stage './my_script.sh $MYENVVAR'
   plots.
 
 - `--plots-no-cache <path>` - the same as `--plots` except that DVC does not
-  track the plots metrics file. This means that the file is not cached, so it's
-  up to the user to manage them separately. See also the difference between `-o`
-  and `-O`.
+  track the plots file (same as with `-O` and `-M` above). This may be desirable
+  with _plots_, if they are small enough to be tracked with Git directly.
 
 - `-w <path>`, `--wdir <path>` - specifies a working directory for the `command`
   to run in (uses the `wdir` field in `dvc.yaml`). Dependency and output files
@@ -244,9 +244,10 @@ $ dvc run -n my_stage './my_script.sh $MYENVVAR'
   command's code is non-deterministic
   ([not recommended](#avoiding-unexpected-behavior)).
 
-- `--no-commit` - do not store outputs in the cache (`dvc.yaml` and `dvc.lock`
-  are still created or updated); useful to avoid caching unnecessary data when
-  executing tests or experiments. Use `dvc commit` to finish the operation.
+- `--no-commit` - do not store the outputs of this execution in the cache
+  (`dvc.yaml` and `dvc.lock` are still created or updated); useful to avoid
+  caching unnecessary data when executing tests or experiments. Use `dvc commit`
+  to finish the operation.
 
 - `--always-changed` - always consider this stage as changed (uses the
   `always_changed` field in `dvc.yaml`). As a result `dvc status` will report it
