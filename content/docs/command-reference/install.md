@@ -118,8 +118,8 @@ This command can be run at any time before or after configuring the DVC hooks in
 
 ## Options
 
-- `--use-pre-commit-tool` - installs pre-commit, pre-push, post-checkout Git
-  hooks into the [pre-commit](https://pre-commit.com/) config file
+- `--use-pre-commit-tool` - configures DVC pre-commit, pre-push, post-checkout
+  Git hooks in the [pre-commit](https://pre-commit.com/) config file
   (`.pre-commit-config.yaml`).
 
 - `-h`, `--help` - prints the usage/help message, and exit.
