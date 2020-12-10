@@ -19,22 +19,20 @@ positional arguments:
 Stores the current contents of files and directories tracked by DVC in the
 <abbr>cache</abbr>, and updates `dvc.lock` or `.dvc` files as needed. This
 forces DVC to accept the contents of tracked data currently in the
-<abbr>workspace</abbr>, even if they have changed. Let's see the scenarios in
-which this can be useful.
+<abbr>workspace</abbr>, even if they have changed. We explore the scenarios in
+which this can be useful next.
 
-Normally, `dvc repro` and `dvc run` finish up with the same steps as `dvc add`,
-for each <abbr>output</abbr> involved. In summary:
+DVC commands that track data (`dvc add`, `dvc repro`, `dvc run`) do the
+following for each file or directory in question:
 
-- Compute the hash value of the file or directory and save it in the `dvc.lock`
-  or `.dvc` file.
-- If using Git, append the file/directory path to `.gitignore`.
-- Store the data in question in the cache.
+- Save the hash value of the file(s) in the `dvc.lock` or `.dvc` file.
+- Store the file contents in the cache.
 
 The last step can be skipped with the `--no-commit` option of those commands,
 for example when testing/experimenting with data or
-[stages](/doc/command-reference/run). This avoids caching unfinished data (hash
-values are still calculated and added to `dvc.lock` or `.dvc` files). This is
-where `dvc commit` comes into play: It performs that last step when needed.
+[stages](/doc/command-reference/run). This avoids caching unfinished data. And
+that's where `dvc commit` comes into play: It performs that last step when
+needed.
 
 💡 For convenience, a pre-commit Git hook is available to remind you to
 `dvc commit` when needed. See `dvc install` for more info.
@@ -47,11 +45,11 @@ Other scenarios include:
 
 - Often we edit source code, configuration, or other files that are specified as
   <abbr>dependencies</abbr> in `dvc.yaml` (`deps` field) in a way that doesn't
-  cause any changes to stage outputs. For example: reformatting input data,
-  adding code comments, etc. However, DVC notices all changes to dependencies
-  and expects you to reproduce the corresponding pipeline (`dvc repro`). You can
-  use `dvc commit` instead to force accepting these new versions without having
-  to execute stage commands.
+  cause any changes to stage <abbr>outputs</abbr>. For example: reformatting
+  input data, adding code comments, etc. However, DVC notices all changes to
+  dependencies and expects you to reproduce the corresponding pipeline
+  (`dvc repro`). You can use `dvc commit` instead to force accepting these new
+  versions without having to execute stage commands.
 
 - Sometimes after executing a stage, we realize that not all of its dependencies
   or outputs are defined in `dvc.yaml`. It is possible to
