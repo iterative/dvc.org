@@ -9,7 +9,8 @@ import styles from './styles.module.css'
 
 export enum LayoutModifiers {
   Wide,
-  Collapsed
+  Collapsed,
+  HideAlert
 }
 
 export interface ILayoutModifiable {
