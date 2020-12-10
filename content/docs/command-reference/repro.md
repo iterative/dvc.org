@@ -52,9 +52,10 @@ options.
 > Note that stages without dependencies are considered _always changed_, so
 > `dvc repro` always executes them.
 
-It saves all the data files, intermediate or final results into the <abbr>DVC
-cache</abbr> (unless the `--no-commit` option is used), and updates the hash
-values of changed dependencies and outputs in the `dvc.lock` and `.dvc` files.
+It stores all the data files, intermediate or final results in the
+<abbr>cache</abbr> (unless the `--no-commit` option is used), and updates the
+hash values of changed dependencies and outputs in the `dvc.lock` and `.dvc`
+files.
 
 ### Parallel stage execution
 
