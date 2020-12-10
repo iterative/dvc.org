@@ -17,11 +17,10 @@ positional arguments:
 ## Description
 
 Stores the current contents of files and directories tracked by DVC in the
-<abbr>cache</abbr>, and updates `dvc.lock` or `.dvc` files as needed. This can
-be useful in several scenarios: when developing data or
-[pipelines](/doc/command-reference/dag), or to force DVC to accept tracked data
-that has changed in the <abbr>workspace</abbr>. We'll expand on these situations
-below.
+<abbr>cache</abbr>, and updates `dvc.lock` or `.dvc` files as needed. This
+forces DVC to accept the contents of tracked data currently in the
+<abbr>workspace</abbr>, even if they have changed. Let's see the scenarios in
+which this can be useful.
 
 Normally, `dvc repro` and `dvc run` finish up with the same steps as `dvc add`,
 for each <abbr>output</abbr> involved. In summary:
