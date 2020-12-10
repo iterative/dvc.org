@@ -17,11 +17,10 @@ positional arguments:
 ## Description
 
 <abbr>Caches</abbr> the current contents of files and directories tracked by
-DVC, and updates `dvc.lock` or `.dvc` files as needed.
-
-This can be useful for several scenarios, when the project is under development,
-or to force DVC to accept changed data (avoiding `dvc add` or `dvc repro`).
-We'll expand on these uses below.
+DVC, and updates `dvc.lock` or `.dvc` files as needed. This can be useful in
+several scenarios: when the project is under development, or to force DVC to
+accept tracked data that has changed in the <abbr>workspace</abbr>. We'll expand
+on these situations below.
 
 Normally, `dvc repro` and `dvc run` finish up with the same steps as `dvc add`,
 for each <abbr>output</abbr> involved. In summary:
@@ -29,7 +28,7 @@ for each <abbr>output</abbr> involved. In summary:
 - Compute the hash value of the file or directory and save it in the `dvc.lock`
   or `.dvc` file.
 - If using Git, append the file/directory path to `.gitignore`.
-- Store the data in question in the <abbr>cache</abbr>.
+- Store the data in question in the cache.
 
 The last step can be skipped with the `--no-commit` option of those commands,
 for example when testing or experimenting during the development of the project.
@@ -42,15 +41,20 @@ performs that last step when needed.
 
 Other scenarios include:
 
-- Often we edit source code, configuration, or input data in a way that doesn't
-  cause changes to any outputs, for example reformatting data, adding code
-  comments, etc. However, DVC notices all changes to <abbr>dependencies</abbr>
-  and expects you to re-add the files/dirs, or to reproduce the corresponding
-  stages. Use `dvc commit` instead as an alternative to `dvc add`, or to force
-  accepting stage-related changes without having to `dvc repro`.
+- As an alternative to `dvc add` for data that's already tracked. For example,
+  you can "`dvc add`" all the changed files or directories already tracked by
+  DVC without having to name each `target`.
 
-- Sometimes, after executing a stage, we realize that we forgot to specify some
-  of its dependencies or outputs in `dvc.yaml`. Fortunately it's possible to
+- Often we edit source code, configuration, or other files that are specified as
+  <abbr>dependencies</abbr> in `dvc.yaml` (`deps` field) in a way that doesn't
+  cause any changes to [stage](/doc/command-reference/run) outputs. For example:
+  reformatting input data, adding code comments, etc. However, DVC notices all
+  changes to dependencies and expects you to reproduce the pipeline
+  (`dvc repro`). You can use `dvc commit` instead to force accepting these new
+  versions without having to execute stage commands.
+
+- Sometimes after executing a stage, we realize that not all of its dependencies
+  or outputs are defined in `dvc.yaml`. It is possible to
   [add the missing deps/outs](/docs/user-guide/how-to/add-deps-or-outs-to-a-stage),
   and `dvc commit` may be needed to finalize the remedy (see link).
 
@@ -61,9 +65,9 @@ Other scenarios include:
   > Note that `dvc unprotect` (or removing the outputs) is usually required
   > before rewriting files/dirs tracked by DVC.
 
-Note that it's best to try avoiding these scenarios, where the cache,
-`dvc.lock`, and `.dvc` files are force-updated. DVC can't guarantee
-reproducibility in those cases.
+Note that it's best to try avoiding these scenarios, where the
+<abbr>cache</abbr>, `dvc.lock`, and `.dvc` files are force-updated. DVC can't
+guarantee reproducibility in those cases.
 
 ## Options
 
