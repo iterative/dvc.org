@@ -18,9 +18,9 @@ positional arguments:
 
 <abbr>Caches</abbr> the current contents of files and directories tracked by
 DVC, and updates `dvc.lock` or `.dvc` files as needed. This can be useful in
-several scenarios: when the project is under development, or to force DVC to
-accept tracked data that has changed in the <abbr>workspace</abbr>. We'll expand
-on these situations below.
+several scenarios: when experimenting during the development of a project, or to
+force DVC to accept tracked data that has changed in the <abbr>workspace</abbr>.
+We'll expand on these situations below.
 
 Normally, `dvc repro` and `dvc run` finish up with the same steps as `dvc add`,
 for each <abbr>output</abbr> involved. In summary:
@@ -31,10 +31,10 @@ for each <abbr>output</abbr> involved. In summary:
 - Store the data in question in the cache.
 
 The last step can be skipped with the `--no-commit` option of those commands,
-for example when testing or experimenting during the development of the project.
-This avoids caching unfinished data (hash values are still calculated and added
-to `dvc.lock` or `.dvc` files). This is where `dvc commit` comes into play: It
-performs that last step when needed.
+for example when testing/experimenting with data or
+[pipelines](/doc/command-reference/dag). This avoids caching unfinished data
+(hash values are still calculated and added to `dvc.lock` or `.dvc` files). This
+is where `dvc commit` comes into play: It performs that last step when needed.
 
 💡 For convenience, a pre-commit Git hook is available to remind you to
 `dvc commit` when needed. See `dvc install` for more info.
