@@ -2,7 +2,6 @@ name: Check new links against deployment
 # This workflow "triggers" and skips on deployment because GitHub Actions /
 # Checks refuses to show the check on deployment_status
 on:
-  - deployment
   - deployment_status
 
 jobs:
@@ -15,10 +14,10 @@ jobs:
       - uses: actions/checkout@v2
 
       - id: build_check
-        uses: LouisBrunner/checks-action@v1.0.0
+        uses: LouisBrunner/checks-action@v1.1.1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          name: Report
+          name: Link Check
           status: queued
 
       - name: Run Link Check
@@ -30,7 +29,7 @@ jobs:
           rootURL: '${{ github.event.deployment.payload.web_url }}'
           output: checksAction
 
-      - uses: LouisBrunner/checks-action@v1.0.0
+      - uses: LouisBrunner/checks-action@v1.1.1
         if: ${{ success() }}
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -39,7 +38,7 @@ jobs:
           conclusion: ${{ steps.check.outputs.conclusion }}
           output: ${{ steps.check.outputs.output }}
 
-      - uses: LouisBrunner/checks-action@v1.0.0
+      - uses: LouisBrunner/checks-action@v1.1.1
         if: ${{ failure() }}
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
