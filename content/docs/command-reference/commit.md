@@ -17,27 +17,27 @@ positional arguments:
 ## Description
 
 Stores the current contents of files and directories tracked by DVC in the
-<abbr>cache</abbr>, and updates `dvc.lock` or `.dvc` files as needed. This
-forces DVC to accept the contents of tracked data currently in the
-<abbr>workspace</abbr>, even if they have changed. We explore the scenarios in
-which this can be useful next.
-
-DVC commands that track data (`dvc add`, `dvc repro`, `dvc import`, etc.) do the
-following for each file or directory in question:
-
-- Save the hash value of the file(s) in the `dvc.lock` or `.dvc` file.
-- Store the file contents in the cache.
-
-The last step can be skipped with the `--no-commit` option of those commands, or
-both steps with `--no-exec`. This avoids caching unfinished data, for example
-when exploring different data or [stages](/doc/command-reference/run). And
-that's where `dvc commit` comes into play: It performs the remaining steps when
-needed.
+<abbr>cache</abbr>, and updates `dvc.lock` or `.dvc` files if/as needed. This
+forces DVC to accept any changed contents of tracked data currently in the
+<abbr>workspace</abbr>. We explore the scenarios in which this can be useful
+next.
 
 💡 For convenience, a pre-commit Git hook is available to remind you to
 `dvc commit` when needed. See `dvc install` for more info.
 
-Other scenarios include:
+Mainly, `dvc commit` provides a way to complete DVC commands that track data
+(`dvc add`, `dvc repro`, `dvc import`, etc.), when they have been used with the
+`--no-commit` or `--no-exec` options. Those options cause the commands to skip
+these step(s) of the tracking process:
+
+- Save the hash value of the file(s) in the `dvc.lock` or `.dvc` file.
+- Store the file(s) contents in the cache.
+
+> Skipping these steps is typically done to avoid caching unfinished data, for
+> example when exploring different data or
+> [stages](/doc/command-reference/run)).
+
+Other scenarios for `dvc commit` include:
 
 - As an alternative to `dvc add` for data that's already tracked. For example,
   you can "`dvc add`" all the changed files or directories already tracked by
