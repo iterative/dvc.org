@@ -247,8 +247,8 @@ $ dvc run -n my_stage './my_script.sh $MYENVVAR'
 
 - `--no-commit` - do not store the outputs of this execution in the cache
   (`dvc.yaml` and `dvc.lock` are still created or updated); useful to avoid
-  caching unnecessary data when executing tests or experiments. Use `dvc commit`
-  to finish the operation.
+  caching unnecessary data when exploring different data or stages. Use
+  `dvc commit` to finish the operation.
 
 - `--always-changed` - always consider this stage as changed (uses the
   `always_changed` field in `dvc.yaml`). As a result `dvc status` will report it

@@ -111,8 +111,8 @@ up-to-date and only execute the final stage.
 
 - `--no-commit` - do not store the outputs of this execution in the cache
   (`dvc.yaml` and `dvc.lock` are still created or updated); useful to avoid
-  caching unnecessary data when executing tests or experiments. Use `dvc commit`
-  to finish the operation.
+  caching unnecessary data when exploring different data or stages. Use
+  `dvc commit` to finish the operation.
 
 - `-m`, `--metrics` - show metrics after reproduction. The target pipelines must
   have at least one metrics file defined either with the `dvc metrics` command,

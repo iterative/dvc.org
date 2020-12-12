@@ -125,11 +125,15 @@ source.
   default file name: `<file>.dvc`, where `<file>` is the desired file name of
   the imported data (`out`).
 
-- `--no-exec` - create `.dvc` file without actually downloading `url`. The data
-  hash is not calculated when this option is used, only the import metadata is
-  saved to the `.dvc` file. It can be useful to skip the download if the file or
-  directory already exists locally, for example, along with `dvc commit` to
-  store it in the cache and record its hash value in the `.dvc` file.
+- `--no-exec` - create the import `.dvc` file without actually downloading
+  `url`. The data hash is not calculated when this option is used, only the
+  import metadata is saved to the `.dvc` file. It can be useful to skip the
+  download if the file/directory already exists locally, for example, along with
+  `dvc commit` to store it in the cache and record its hash value in the `.dvc`
+  file.
+
+  This is useful if, for example, you need to build a project that will use
+  imports first, and download them all at once later (with `dvc repro`).
 
 - `--desc <text>` - user description of the data (optional). This doesn't  
   affect any DVC operations.
