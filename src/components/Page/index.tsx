@@ -3,6 +3,7 @@ import React from 'react'
 import MainLayout from '../MainLayout'
 import DefaultSEO from './DefaultSEO'
 import DocumentationLayout from '../Documentation/Layout'
+import AlertLandingLayout from '../AlertLandingLayout'
 import Layout from '../Blog/Layout'
 
 import { useRedirects, useAnchorNavigation, useSmoothScroll } from './utils'
@@ -19,6 +20,7 @@ export interface IPageProps {
     is404: boolean
     isDocs: boolean
     isBlog: boolean
+    isAlertLanding: boolean
     pageInfo?: {
       currentPage: number
       nextPage?: string
@@ -40,6 +42,8 @@ const Page: React.FC<IPageProps> = props => {
       LayoutComponent = DocumentationLayout
     } else if (props.pageContext.isBlog) {
       LayoutComponent = Layout
+    } else if (props.pageContext.isAlertLanding) {
+      LayoutComponent = AlertLandingLayout
     }
   }
 

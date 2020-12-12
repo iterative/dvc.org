@@ -27,6 +27,7 @@ const LayoutHeader: React.FC<Required<ILayoutModifiable>> = ({ modifiers }) => {
   } = useHamburgerMenu()
   const scrolled = useHeaderIsScrolled()
   const hasCollapsedModifier = includes(modifiers, LayoutModifiers.Collapsed)
+  const hasHideAlertModifier = includes(modifiers, LayoutModifiers.HideAlert)
   const collapsed = opened || hasCollapsedModifier || scrolled
 
   return (
@@ -40,7 +41,9 @@ const LayoutHeader: React.FC<Required<ILayoutModifiable>> = ({ modifiers }) => {
           )}
         />
         <div className={styles.header}>
-          {LayoutAlert && <LayoutAlert collapsed={collapsed} />}
+          {!hasHideAlertModifier && LayoutAlert && (
+            <LayoutAlert collapsed={collapsed} />
+          )}
           <LayoutWidthContainer
             className={cn(styles.container, collapsed && styles.collapsed)}
             wide={includes(modifiers, LayoutModifiers.Wide)}
