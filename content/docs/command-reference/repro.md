@@ -287,7 +287,7 @@ of only the target (`count`) and following stages (none in this case):
 ```dvc
 $ dvc repro --downstream count
 Running stage 'count':
-	python process.py numbers.txt > count.txt
+> python process.py numbers.txt > count.txt
 Updating lock file 'dvc.lock'
 ```
 
