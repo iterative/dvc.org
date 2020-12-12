@@ -249,7 +249,7 @@ If we now run `dvc repro`, we should see this:
 ```dvc
 $ dvc repro
 Stage 'filter' didn't change, skipping
-Running stage 'count' with command:
+Running stage 'count':
 	python process.py numbers.txt > count.txt
 Updating lock file 'dvc.lock'
 ```
