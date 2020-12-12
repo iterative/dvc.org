@@ -2,7 +2,7 @@
 
 Reproduce complete or partial [pipelines](/doc/command-reference/dag) by
 executing commands defined in their [stages](/doc/command-reference/run) in the
-correct order. The stage commands to be executed are determined by recursively
+correct order. The commands to be executed are determined by recursively
 analyzing dependencies and <abbr>outputs</abbr> of the target stages.
 
 ## Synopsis
