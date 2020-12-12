@@ -5,8 +5,8 @@ Get or set <abbr>project</abbr>-level (or global) DVC configuration options.
 ## Synopsis
 
 ```usage
-usage: dvc config [-h] [--global | --system | --local] [-q | -v] [-u]
-                  name [value]
+usage: dvc config [-h] [--global | --system | --local] [-q | -v] [-u] [-l]
+                  [name] [value]
 
 positional arguments:
   name           Option name.
@@ -64,6 +64,8 @@ multiple projects and users, respectively:
 - `--system` - modify a system config file (e.g. `/etc/dvc/config`) instead of
   `.dvc/config`. Useful to apply config options to all the projects (all users)
   in the machine.
+
+- `-l`, `--list` - lists all defined config values.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
