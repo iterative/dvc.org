@@ -22,16 +22,16 @@ forces DVC to accept the contents of tracked data currently in the
 <abbr>workspace</abbr>, even if they have changed. We explore the scenarios in
 which this can be useful next.
 
-DVC commands that track data (`dvc add`, `dvc repro`, `dvc run`) do the
+DVC commands that track data (`dvc add`, `dvc repro`, `dvc import`, etc.) do the
 following for each file or directory in question:
 
 - Save the hash value of the file(s) in the `dvc.lock` or `.dvc` file.
 - Store the file contents in the cache.
 
-The last step can be skipped with the `--no-commit` option of those commands,
-for example when testing/experimenting with data or
-[stages](/doc/command-reference/run). This avoids caching unfinished data. And
-that's where `dvc commit` comes into play: It performs that last step when
+The last step can be skipped with the `--no-commit` option of those commands, or
+both steps with `--no-exec`. This avoids caching unfinished data, for example
+when exploring different data or [stages](/doc/command-reference/run). And
+that's where `dvc commit` comes into play: It performs the remaining steps when
 needed.
 
 💡 For convenience, a pre-commit Git hook is available to remind you to
