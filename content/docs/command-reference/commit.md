@@ -37,7 +37,7 @@ these step(s) during the process of tracking each file or directory:
 > example when exploring different data or
 > [stages](/doc/command-reference/run)).
 
-Other scenarios for `dvc commit` include:
+More specifically, scenarios for `dvc commit` include:
 
 - As an alternative to `dvc add` for data that's already tracked. For example,
   you can "`dvc add`" all the changed files or directories already tracked by
