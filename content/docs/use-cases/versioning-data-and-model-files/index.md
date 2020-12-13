@@ -36,10 +36,10 @@ of large files. Now you can use DVC to create
 to learn how DVC looks and feels firsthand.
 
 As you use DVC, unique versions of your data files and directories are
-[cached](dvc-files-and-directories#structure-of-the-cache-directory) in a
-systematic way (preventing file duplication). The working datastore is separated
-from your <abbr>workspace</abbr> to keep the project light, but stays connected
-via file
+[cached](/doc/user-guide/dvc-files-and-directories#structure-of-the-cache-directory)
+in a systematic way (preventing file duplication). The working datastore is
+separated from your <abbr>workspace</abbr> to keep the project light, but stays
+connected via file
 [links](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
 handled automatically by DVC.
 

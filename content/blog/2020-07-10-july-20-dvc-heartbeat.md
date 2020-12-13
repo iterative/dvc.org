@@ -2,16 +2,16 @@
 title: July '20 Heartbeat
 date: 2020-07-10
 description: |
-  Catch up on new DVC releases, talks, and projects in our 
-  community. This month, we recap the DVC 1.0 release, 
-  making the list of top 20 fastest growing open-source 
-  startups, and interviews galore. Plus: 📣 an invitation to 
+  Catch up on new DVC releases, talks, and projects in our
+  community. This month, we recap the DVC 1.0 release,
+  making the list of top 20 fastest growing open-source
+  startups, and interviews galore. Plus: 📣 an invitation to
   the next DVC meetup!
 descriptionLong: |
-  Catch up on new DVC releases, talks, and projects in our 
-  community. This month, we recap the DVC 1.0 release, 
-  making the list of top 20 fastest growing open-source 
-  startups, and interviews galore. Plus: 📣 an invitation to 
+  Catch up on new DVC releases, talks, and projects in our
+  community. This month, we recap the DVC 1.0 release,
+  making the list of top 20 fastest growing open-source
+  startups, and interviews galore. Plus: 📣 an invitation to
   the next DVC meetup!
 picture: 2020-07-10/july_20_heartbeat_header.png
 author: elle_obrien

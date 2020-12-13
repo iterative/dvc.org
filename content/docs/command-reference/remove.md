@@ -30,7 +30,7 @@ Note that the actual <abbr>output</abbr> files or directories of the stage
 (`outs` field) are not removed by this command, unless the `--outs` option is
 used.
 
-💡 Refer to [Undo Adding Data](/doc/user-guide/how-to/undo-adding-data) to see
+💡 Refer to [Undo Adding Data](/doc/user-guide/how-to/stop-tracking-data) to see
 how it helps replace data that is tracked by DVC.
 
 ## Options
