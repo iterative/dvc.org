@@ -104,9 +104,9 @@ repo at `url`) are not supported.
   > example below).
 
 - `--no-exec` - create the import `.dvc` file without actually downloading the
-  file or directory e.g. if it already exists locally for some reason. The data
-  hash is not calculated when this option is used, only the import metadata is
-  saved to the `.dvc` file. You can use `dvc commit` to finish the operation.
+  file or directory. The data hash is not calculated when this option is used,
+  only the import metadata is saved to the `.dvc` file. You can use `dvc commit`
+  to finish the operation.
 
   This is useful, for example, if you need to define a project quickly (that
   will use imports at a later time/location) before downloading anything, and
