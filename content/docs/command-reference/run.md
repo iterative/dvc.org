@@ -234,8 +234,9 @@ $ dvc run -n my_stage './my_script.sh $MYENVVAR'
   `dvc commit` to save any existing dep/out files to the cache and record their
   hashes to the lock file.
 
-  This is useful if, for example, you need to build a pipeline quickly first,
-  and run it all at once later (with `dvc repro`).
+  This is useful, for example, if you need to define a pipeline quickly (and
+  perhaps share it with others) before executing anything, and run all its
+  stages at once later (with `dvc repro`).
 
 - `-f`, `--force` - overwrite an existing stage in `dvc.yaml` file without
   asking for confirmation.
@@ -247,7 +248,7 @@ $ dvc run -n my_stage './my_script.sh $MYENVVAR'
 
 - `--no-commit` - do not store the outputs of this execution in the cache
   (`dvc.yaml` and `dvc.lock` are still created or updated); useful to avoid
-  caching unnecessary data when exploring different data or stages. Use
+  caching unnecessary data when exploring different data or stages. You can use
   `dvc commit` to finish the operation.
 
 - `--always-changed` - always consider this stage as changed (uses the
