@@ -2,13 +2,13 @@
 title: November '20 Heartbeat
 date: 2020-11-11
 description: |
-  Catch our monthly updates- featuring new video docs and talks,
-  new jobs at DVC, and must-read contributions from the community 
-  about MLOps, data science with R, and ML in production.
+  Catch our monthly updates- featuring new video docs and talks, new jobs at
+  DVC, and must-read contributions from the community about MLOps, data science
+  with R, and ML in production.
 descriptionLong: |
-  Catch our monthly updates- featuring new video docs and talks,
-  new jobs at DVC, and must-read contributions from the community 
-  about MLOps, data science with R, and ML in production.
+  Catch our monthly updates- featuring new video docs and talks, new jobs at
+  DVC, and must-read contributions from the community about MLOps, data science
+  with R, and ML in production.
 picture: 2020-11-08/cover.png
 pictureComment: Double DeeVee!
 author: elle_obrien
@@ -41,7 +41,7 @@ https://youtu.be/8dBCgIa7TGE
 Did you know we're hiring for two roles in our growing team? We're looking for:
 
 - A
-  [**Senior Software Engineer**](https://remoteok.io/remote-jobs/99244-remote-senior-software-engineer-iterative)
+  [**Senior Software Engineer**](https://weworkremotely.com/remote-jobs/iterative-senior-software-engineer-open-source-dev-tools-3)
   for the core DVC team- someone with strong Python development skills who can
   build and ship essential DVC features.
 

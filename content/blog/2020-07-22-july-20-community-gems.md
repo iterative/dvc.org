@@ -2,12 +2,12 @@
 title: July '20 Community Gems
 date: 2020-07-31
 description: |
-  A roundup of technical Q&A's from the DVC community. This month, we discuss 
-  getting started with CML, configuring your DVC cache, and how to request a 
+  A roundup of technical Q&A's from the DVC community. This month, we discuss
+  getting started with CML, configuring your DVC cache, and how to request a
   tutorial video.
 descriptionLong: |
-  A roundup of technical Q&A's from the DVC community. This month, we discuss 
-  getting started with CML, configuring your DVC cache, and how to request a 
+  A roundup of technical Q&A's from the DVC community. This month, we discuss
+  getting started with CML, configuring your DVC cache, and how to request a
   tutorial video.
 picture: 2020-07-31/Gems_July_20.png
 author: elle_obrien
