@@ -167,7 +167,8 @@ the possible following fields:
 - `outs`: List of <abbr>output</abbr> file or directory paths of this stage
   (relative to `wdir` which defaults to the file's location), and optionally,
   whether or not this file or directory is <abbr>cached</abbr> (`true` by
-  default, if not present). See the `--no-commit` option of `dvc run`.
+  default, if not present). See the `--no-commit` option of `dvc run` and
+  `dvc repro`.
 - `metrics`: List of [metrics files](/doc/command-reference/metrics), and
   optionally, whether or not this metrics file is <abbr>cached</abbr> (`true` by
   default, if not present). See the `--metrics-no-cache` (`-M`) option of

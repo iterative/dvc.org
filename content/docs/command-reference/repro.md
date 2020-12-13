@@ -26,10 +26,8 @@ implicitly defined by the stages listed in `dvc.yaml`. The commands defined in
 these stages can then be executed in the correct order, reproducing pipeline
 results.
 
-> Pipeline stages are defined in a
-> [`dvc.yaml` file](/doc/user-guide/dvc-files-and-directories#dvcyaml-file)
-> (either manually or by using `dvc run`) while initial data dependencies can be
-> registered with `dvc add`.
+> Pipeline stages are defined in a `dvc.yaml` file (either manually or by using
+> `dvc run`) while initial data dependencies can be registered with `dvc add`.
 
 This command is similar to [Make](https://www.gnu.org/software/make/) in
 software build automation, but DVC captures build requirements
@@ -59,9 +57,10 @@ options.
 > Note that stages without dependencies are considered _always changed_, so
 > `dvc repro` always executes them.
 
-It saves all the data files, intermediate or final results into the <abbr>DVC
-cache</abbr> (unless the `--no-commit` option is used), and updates the hash
-values of changed dependencies and outputs in the `dvc.lock` and `.dvc` files.
+It stores all the data files, intermediate or final results in the
+<abbr>cache</abbr> (unless the `--no-commit` option is used), and updates the
+hash values of changed dependencies and outputs in the `dvc.lock` and `.dvc`
+files.
 
 ### Parallel stage execution
 
@@ -110,11 +109,10 @@ up-to-date and only execute the final stage.
   target directory and its subdirectories for stages (in `dvc.yaml`) to inspect.
   If there are no directories among the targets, this option is ignored.
 
-- `--no-commit` - do not save outputs to cache. A DVC-file is created, while
-  nothing is added to the cache. (`dvc status` will report that the file is
-  `not in cache`.) Use `dvc commit` when ready to commit outputs with DVC.
-  Useful to avoid caching unnecessary data repeatedly when running multiple
-  experiments.
+- `--no-commit` - do not store the outputs of this execution in the cache
+  (`dvc.yaml` and `dvc.lock` are still created or updated); useful to avoid
+  caching unnecessary data when exploring different data or stages. Use
+  `dvc commit` to finish the operation.
 
 - `-m`, `--metrics` - show metrics after reproduction. The target pipelines must
   have at least one metrics file defined either with the `dvc metrics` command,
@@ -146,10 +144,10 @@ up-to-date and only execute the final stage.
   stages (`A` and below) depend on `requirements.txt`, we can specify it in `A`,
   and omit it in `B` and `C`.
 
-  Like with the same option on `dvc run`, this is a way to force-execute stages
-  without changes. This can also be useful for pipelines containing stages that
-  produce non-deterministic (semi-random) outputs, where outputs can vary on
-  each execution, meaning the cache cannot be trusted for such stages.
+  Like with the `--force` option on `dvc run`, this is a way to force-execute
+  stages without changes. This can also be useful for pipelines containing
+  stages that produce non-deterministic (semi-random) outputs, where outputs can
+  vary on each execution, meaning the cache cannot be trusted for such stages.
 
 - `--downstream` - only execute the stages after the given `targets` in their
   corresponding pipelines, including the target stages themselves. This option

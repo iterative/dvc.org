@@ -178,15 +178,17 @@ $ dvc run -n my_stage './my_script.sh $MYENVVAR'
   `dvc add`).
 
 - `-O <path>`, `--outs-no-cache <path>` - the same as `-o` except that outputs
-  are not tracked by DVC. It means that they are not cached, and it's up to a
-  user to manage them separately. This is useful if the outputs are small enough
-  to be tracked by Git directly, or if these files are not of future interest.
+  are not tracked by DVC. This means that they are never cached, so it's up to
+  the user to manage them separately. This is useful if the outputs are small
+  enough to be tracked by Git directly; or large, yet you prefer to regenerate
+  them every time (see `dvc repro`); or unwanted in storage for any other
+  reason.
 
 - `--outs-persist <path>` - declare output file or directory that will not be
   removed upon `dvc repro`.
 
 - `--outs-persist-no-cache <path>` - the same as `-outs-persist` except that
-  outputs are not tracked by DVC.
+  outputs are not tracked by DVC (same as with `-O` above).
 
 - `-p [<path>:]<params_list>`, `--params [<path>:]<params_list>` - specify a set
   of [parameter dependencies](/doc/command-reference/params) the stage depends
@@ -204,10 +206,10 @@ $ dvc run -n my_stage './my_script.sh $MYENVVAR'
   more about _metrics_.
 
 - `-M <path>`, `--metrics-no-cache <path>` - the same as `-m` except that DVC
-  does not track the metrics file. This means that the file is not cached, so
-  it's up to the user to manage them separately. This is typically desirable
-  with _metrics_ because they are small enough to be tracked with Git directly.
-  See also the difference between `-o` and `-O`.
+  does not track the metrics file (same as with `-O` above). This means that
+  they are never cached, so it's up to the user to manage them separately. This
+  is typically desirable with _metrics_ because they are small enough to be
+  tracked with Git directly.
 
 - `--plots <path>` - specify a plot metrics file produces by this stage. This
   option behaves like `-o` but registers the file in a `plots` field inside the
@@ -217,9 +219,8 @@ $ dvc run -n my_stage './my_script.sh $MYENVVAR'
   plots.
 
 - `--plots-no-cache <path>` - the same as `--plots` except that DVC does not
-  track the plots metrics file. This means that the file is not cached, so it's
-  up to the user to manage them separately. See also the difference between `-o`
-  and `-O`.
+  track the plots file (same as with `-O` and `-M` above). This may be desirable
+  with _plots_, if they are small enough to be tracked with Git directly.
 
 - `-w <path>`, `--wdir <path>` - specifies a working directory for the `command`
   to run in (uses the `wdir` field in `dvc.yaml`). Dependency and output files
@@ -227,14 +228,15 @@ $ dvc run -n my_stage './my_script.sh $MYENVVAR'
   It's used by `dvc repro` to change the working directory before executing the
   `command`.
 
-- `--no-exec` - create a stage file, but do not execute the `command` defined in
-  it, nor cache dependencies or outputs (like with `--no-commit`, explained
-  below). DVC will also add your outputs to `.gitignore`, same as it would do
-  without `--no-exec`. Use `dvc commit` to force committing existing output file
-  versions to cache.
+- `--no-exec` - write the stage to `dvc.yaml`, but do not execute its `command`.
+  Any dependencies and outputs will be entered in `.gitignore`, but won't be
+  cached (like with `--no-commit` below) or recorded in `dvc.lock`. You can use
+  `dvc commit` to save any existing dep/out files to the cache and record their
+  hashes to the lock file.
 
-  This is useful if, for example, you need to build a pipeline quickly first,
-  and run it all at once later.
+  This is useful, for example, if you need to define a pipeline quickly (and
+  perhaps share it with others) before executing anything, and run all its
+  stages at once later (with `dvc repro`).
 
 - `-f`, `--force` - overwrite an existing stage in `dvc.yaml` file without
   asking for confirmation.
@@ -244,14 +246,10 @@ $ dvc run -n my_stage './my_script.sh $MYENVVAR'
   command's code is non-deterministic
   ([not recommended](#avoiding-unexpected-behavior)).
 
-- `--no-commit` - do not save outputs to cache. A stage created, while nothing
-  is added to the cache. In the stage file, the file hash values will be empty;
-  They will be populated the next time this stage is actually executed, or
-  `dvc commit` can be used to force committing existing output file versions to
-  cache.
-
-  This is useful to avoid caching unnecessary data repeatedly when running
-  multiple experiments.
+- `--no-commit` - do not store the outputs of this execution in the cache
+  (`dvc.yaml` and `dvc.lock` are still created or updated); useful to avoid
+  caching unnecessary data when exploring different data or stages. You can use
+  `dvc commit` to finish the operation.
 
 - `--always-changed` - always consider this stage as changed (uses the
   `always_changed` field in `dvc.yaml`). As a result `dvc status` will report it
