@@ -114,18 +114,17 @@ parts of the project, as detailed below.
   (same as `dvc add`). [Import](/doc/command-reference/repro) `.dvc` files are
   ignored (use `dvc update` instead).
 
-- **Stage names** must be defined in `./dvc.yaml`
+- **Stage names** must be defined in `./dvc.yaml`. E.g. `dvc repro train-vision`
 
-With `--glob`, the targets are used as a pattern to match stages in the dvc.yaml
-file (example: `train-*`).
+  Stages in other `dvc.yaml` files can be given using by using a colon `:`
+  following the path to that file. E.g. `models/dvc.yaml:prepare`
 
-A stage from a dvc.yaml in a different directory can be specified using a path
-to the dvc.yaml, followed by a colon `:`, followed by the name of the stage
-(`models/dvc.yaml:prepare` for example).
+For even more flexibility, use `--glob` so that the `targets` are interpreted as
+patterns to match stages in `./dvc.yaml`. E.g. `subdir/**/?.yaml` (certain file
+paths), `train-*` (stage names) or `models/dvc.yaml:train-*` (stages in specific
+`dvc.yaml` file)
 
-Similarly, to pattern match the stages on a dvc.yaml in a different directory,
-the pattern could follow after the path and the colon `:`
-(`models/dvc.yaml:train-*` for example).
+> You may find all the option details in the next section.
 
 ## Options
 
@@ -137,15 +136,26 @@ the pattern could follow after the path and the colon `:`
   recursive search for changed dependencies. Multiple stages are executed
   (non-recursively) if multiple stage names are given as `targets`.
 
-- `-R`, `--recursive` - looks for `dvc.yaml` files to reproduce in all the
-  target directories and their subdirectories. If there are no directories among
-  the targets, this option has no effect.
-
 - `--no-commit` - do not save outputs to cache. A DVC-file is created, while
   nothing is added to the cache. (`dvc status` will report that the file is
   `not in cache`.) Use `dvc commit` when ready to commit outputs with DVC.
   Useful to avoid caching unnecessary data repeatedly when running multiple
   experiments.
+
+- `-p`, `--pipeline` - reproduce the entire pipelines that the `targets` belong
+  to. Use `dvc dag` to show the parent pipeline of a target.
+
+- `-P`, `--all-pipelines` - reproduce all pipelines for all `dvc.yaml` files
+  present in the DVC project.
+
+- `-R`, `--recursive` - looks for `dvc.yaml` files to reproduce in all the
+  target directories and their subdirectories. If there are no directories among
+  the targets, this option has no effect.
+
+- `--glob` - allows running the stages from a file that match the wildcard
+  [pattern](https://docs.python.org/3/library/glob.html) specified in `targets`.
+  Note that it does not match pattern with the path, only to the stages present
+  in the specified file.
 
 - `-m`, `--metrics` - show metrics after reproduction. The target pipelines must
   have at least one metrics file defined either with the `dvc metrics` command,
@@ -156,12 +166,6 @@ the pattern could follow after the path and the colon `:`
 
 - `-i`, `--interactive` - ask for confirmation before reproducing each stage.
   The stage is only executed if the user types "y".
-
-- `-p`, `--pipeline` - reproduce the entire pipelines that the `targets` belong
-  to. Use `dvc dag` to show the parent pipeline of a target.
-
-- `-P`, `--all-pipelines` - reproduce all pipelines for all `dvc.yaml` files
-  present in the DVC project.
 
 - `--no-run-cache` - execute stage commands even if they have already been run
   with the same dependencies/outputs/etc. before.
@@ -192,11 +196,6 @@ the pattern could follow after the path and the colon `:`
   checks the local run-cache too (available history of stage runs).
 
   > Has no effect if combined with `--no-run-cache`.
-
-- `--glob` - allows running the stages from a file that match the wildcard
-  [pattern](https://docs.python.org/3/library/glob.html) specified in `targets`.
-  Note that it does not match pattern with the path, only to the stages present
-  in the specified file.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
