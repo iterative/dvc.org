@@ -64,8 +64,6 @@ The default remote is used (see
 [`dvc config core.remote`](/doc/command-reference/config#core)) unless a
 specific one is given with `--remote`.
 
-> See `dvc gc` for ways to remove cached files.
-
 ## Options
 
 - `-r <name>`, `--remote <name>` - name of the
