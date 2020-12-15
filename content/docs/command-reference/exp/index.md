@@ -1,25 +1,31 @@
-# exp[eriments]
+# experiments
 
-A set of commands to generate and compare local _experiments_:
+A set of commands to generate and compare local <abbr>experiments</abbr>:
+[apply](/doc/command-reference/exp/apply),
 [show](/doc/command-reference/exp/show),
-[checkout](/doc/command-reference/exp/show),
 [diff](/doc/command-reference/exp/diff), [run](/doc/command-reference/exp/run),
 [resume](/doc/command-reference/exp/resume), and
 [gc](/doc/command-reference/exp/gc).
 
+Note that `experiments` is aliased to `exp`.
+
 ## Synopsis
 
 ```usage
-usage: dvc exp[eriments] [-h] [-q | -v] {show,checkout,diff,run,resume,res,gc} ...
+usage: dvc experiments [-h] [-q | -v] {show,apply,diff,run,resume,res,gc,branch,list,push,pull} ...
 
 positional arguments:
   COMMAND
     show                Print experiments.
-    checkout            Checkout experiments.
+    apply               Apply the changes from an experiment to your workspace.
     diff                Show changes between experiments in the DVC repository.
     run                 Reproduce complete or partial experiment pipelines.
     resume (res)        Resume checkpoint experiments.
     gc                  Garbage collect unneeded experiments.
+    branch              Promote an experiment to a Git branch.
+    list                List local and remote experiments.
+    push                Push a local experiment to a Git remote.
+    pull                Pull an experiment from a Git remote.
 ```
 
 ## Types of experiments

@@ -1,14 +1,14 @@
-# exp checkout
+# exp apply
 
-Checkout changes from a previously run experiment into the workspace.
+Apply the changes from a previously run experiment into the workspace.
 
 ## Synopsis
 
 ```usage
-usage: dvc exp checkout [-h] [-q | -v] experiment
+usage: dvc exp apply [-h] [-q | -v] experiment
 
 positional arguments:
-  experiment     Checkout this experiment.
+  experiment     Experiment to be applied.
 ```
 
 ## Description
@@ -22,7 +22,7 @@ commit which is currently (Git) checkout-ed in the workspace.
 
 ## Options
 
-- `experiment` - revision SHA for the experiment to be checked out.
+- `experiment` - name or revision of the experiment to be checked out.
 
 - `-h`, `--help` - shows the help message and exit.
 
@@ -32,7 +32,7 @@ commit which is currently (Git) checkout-ed in the workspace.
 - `-v`, `--verbose` - displays detailed tracing information from executing the
   `dvc pull` command.
 
-## Example: Checkout and promote an experiment
+## Example: Apply and promote an experiment
 
 > This example is based on our
 > [Get Started](/doc/tutorials/get-started/experiments), where you can find the
@@ -47,17 +47,17 @@ $ dvc exp show --include-params=featurize
 ┡━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━┩
 │ workspace             │ -            │ 0.61314 │ 1500                   │ 2                │
 │ 11-bigrams-experiment │ Jun 20, 2020 │ 0.61314 │ 1500                   │ 2                │
-│ ├── e6c974b           │ Oct 21, 2020 │ 0.61314 │ 1500                   │ 2                │
-│ ├── 1dad0d2           │ Oct 09, 2020 │ 0.57756 │ 2000                   │ 2                │
-│ └── 1df77f7           │ Oct 09, 2020 │ 0.51676 │ 500                    │ 2                │
+│ ├── exp-e6c97         │ Oct 21, 2020 │ 0.61314 │ 1500                   │ 2                │
+│ ├── exp-1dad0         │ Oct 09, 2020 │ 0.57756 │ 2000                   │ 2                │
+│ └── exp-1df77         │ Oct 09, 2020 │ 0.51676 │ 500                    │ 2                │
 └───────────────────────┴──────────────┴─────────┴────────────────────────┴──────────────────┘
 ```
 
 We now wish to commit the results of experiment `1dad0d2` into our project.
 
 ```dvc
-$ dvc exp checkout 1dad0d2
-Changes for experiment '1dad0d2' have been applied to your current workspace.
+$ dvc exp apply exp-1dad0
+Changes for experiment 'exp-1dad0' have been applied to your current workspace.
 ```
 
 We can inspect these changes with Git:
@@ -120,8 +120,8 @@ To promote this experiment we simply `git add` and `git commit` the changes:
 
 ```dvc
 $ git add .
-$ git commit -m "promote experiment 1dad0d2"
-[master 0412386] promote experiment 1dad0d2
+$ git commit -m "promote experiment exp-1dad0"
+[master 0412386] promote experiment exp-1dad0
 ```
 
 Finally, we can now see that the promoted experiment is the new tip of our

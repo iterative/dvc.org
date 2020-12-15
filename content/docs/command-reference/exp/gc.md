@@ -68,7 +68,7 @@ details.
 ## Examples
 
 Let's say we have the following project, have
-[checked out](/docs/command-reference/exp/checkout) and promoted an experiment
+[applied](/docs/command-reference/exp/apply) and promoted an experiment
 to a full commit:
 
 ```dvc

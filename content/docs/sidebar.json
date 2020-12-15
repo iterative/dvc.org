@@ -202,8 +202,8 @@
         "source": "exp/index.md",
         "children": [
           {
-            "label": "exp checkout",
-            "slug": "checkout"
+            "label": "exp apply",
+            "slug": "apply"
           },
           {
             "label": "exp diff",
