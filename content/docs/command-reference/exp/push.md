@@ -15,12 +15,16 @@ positional arguments:
   <experiment>          Experiment to push.
 
 optional arguments:
-  -f, --force           Replace experiment in the Git remote if it already exists.
-  --no-cache            Do not push cached outputs for this experiment to DVC remote storage.
+  -f, --force           Replace experiment in the Git remote if it already
+                        exists.
+  --no-cache            Do not push cached outputs for this experiment to DVC
+                        remote storage.
   -r <name>, --remote <name>
-                        Name of the DVC remote to use when pushing cached outputs.
+                        Name of the DVC remote to use when pushing cached
+                        outputs.
   -j <number>, --jobs <number>
-                        Number of jobs to run simultaneously when pushing to DVC remote storage.
+                        Number of jobs to run simultaneously when pushing to
+                        DVC remote storage.
   --run-cache           Push run history for all stages.
 ```
 
