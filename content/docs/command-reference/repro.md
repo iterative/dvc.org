@@ -27,6 +27,10 @@ graph (a [DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph)) implicitly
 defined by the stages listed in `dvc.yaml`. The commands defined in these stages
 are then be executed in the correct order.
 
+For stages with multiple commands (having a list in the `cmd` field), commands
+are run one after the other in the order they are defined. The failure of any
+command will halt the remaining stage execution, and raises an error.
+
 > Pipeline stages are defined in `dvc.yaml` files (either manually or by using
 > `dvc run`) while initial data dependencies can be registered with `dvc add`.
 
@@ -51,9 +55,8 @@ using certain command [options](#options), such as `--single-item`.
 > `dvc repro` always executes them.
 
 `dvc repro` saves all the data files, intermediate or final results into the
-<abbr>DVC cache</abbr> (unless the `--no-commit` option is used), and updates
-the hash values of changed dependencies and outputs in the `dvc.lock` and `.dvc`
-files.
+<abbr>cache</abbr> (unless the `--no-commit` option is used), and updates the
+hash values of changed outputs in the `dvc.lock` and `.dvc` files.
 
 ### Parallel stage execution
 
@@ -131,21 +134,20 @@ paths), `train-*` (stage names) or `models/dvc.yaml:train-*` (stages in specific
   recursive search for changed dependencies. Multiple stages are executed
   (non-recursively) if multiple stage names are given as `targets`.
 
-- `--no-commit` - do not save outputs to cache. A DVC-file is created, while
-  nothing is added to the cache. (`dvc status` will report that the file is
-  `not in cache`.) Use `dvc commit` when ready to commit outputs with DVC.
-  Useful to avoid caching unnecessary data repeatedly when running multiple
-  experiments.
+- `-R`, `--recursive` - looks for `dvc.yaml` files to reproduce in all the
+  target directories and their subdirectories. If there are no directories among
+  the targets, this option has no effect.
+
+- `--no-commit` - do not store the outputs of this execution in the cache
+  (`dvc.yaml` and `dvc.lock` are still created or updated); useful to avoid
+  caching unnecessary data when exploring different data or stages. Use
+  `dvc commit` to finish the operation.
 
 - `-p`, `--pipeline` - reproduce the entire pipelines that the `targets` belong
   to. Use `dvc dag` to show the parent pipeline of a target.
 
 - `-P`, `--all-pipelines` - reproduce all pipelines for all `dvc.yaml` files
   present in the DVC project.
-
-- `-R`, `--recursive` - looks for `dvc.yaml` files to reproduce in all the
-  target directories and their subdirectories. If there are no directories among
-  the targets, this option has no effect.
 
 - `--glob` - allows running the stages from a file that match the wildcard
   [pattern](https://docs.python.org/3/library/glob.html) specified in `targets`.
@@ -176,10 +178,10 @@ paths), `train-*` (stage names) or `models/dvc.yaml:train-*` (stages in specific
   stages (`A` and below) depend on `requirements.txt`, we can specify it in `A`,
   and omit it in `B` and `C`.
 
-  Like with the same option on `dvc run`, this is a way to force-execute stages
-  without changes. This can also be useful for pipelines containing stages that
-  produce non-deterministic (semi-random) outputs, where outputs can vary on
-  each execution, meaning the cache cannot be trusted for such stages.
+  Like with the `--force` option on `dvc run`, this is a way to force-execute
+  stages without changes. This can also be useful for pipelines containing
+  stages that produce non-deterministic (semi-random) outputs, where outputs can
+  vary on each execution, meaning the cache cannot be trusted for such stages.
 
 - `--downstream` - only execute the stages after the given `targets` in their
   corresponding pipelines, including the target stages themselves. This option
@@ -196,7 +198,7 @@ paths), `train-*` (stage names) or `models/dvc.yaml:train-*` (stages in specific
 
 - `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if all
   stages are up to date or if all stages are successfully executed, otherwise
-  exit with 1. The command defined in the stage is free to write output
+  exit with 1. The commands defined in the stage are free to write output
   regardless of this flag.
 
 - `-v`, `--verbose` - displays detailed tracing information.
@@ -279,8 +281,8 @@ If we now run `dvc repro`, we should see this:
 ```dvc
 $ dvc repro
 Stage 'filter' didn't change, skipping
-Running stage 'count' with command:
-        python process.py numbers.txt > count.txt
+Running stage 'count':
+> python process.py numbers.txt > count.txt
 Updating lock file 'dvc.lock'
 ```
 
@@ -316,8 +318,8 @@ of only the target (`count`) and following stages (none in this case):
 
 ```dvc
 $ dvc repro --downstream count
-Running stage 'count' with command:
-        python process.py numbers.txt > count.txt
+Running stage 'count':
+> python process.py numbers.txt > count.txt
 Updating lock file 'dvc.lock'
 ```
 
@@ -341,5 +343,5 @@ $ dvc dag
 ```
 
 > Note that using `dvc repro` without `--downstream` in the above example
-> results in the execution of the target (`count`), and the preceeding stages
+> results in the execution of the target (`count`), and the preceding stages
 > (only 'filter' in this case).

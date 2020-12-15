@@ -2,10 +2,10 @@
 title: April '20 Community Gems
 date: 2020-04-16
 description: |
-  A roundup of technical Q&A's from the DVC community. This month, we discuss 
+  A roundup of technical Q&A's from the DVC community. This month, we discuss
   the DVC cache, pipelines, cloud storage options and concurrency.
 descriptionLong: |
-  A roundup of technical Q&A's from the DVC community. This month, we discuss 
+  A roundup of technical Q&A's from the DVC community. This month, we discuss
   the DVC cache, cloud storage options and concurrency.
 picture: 2020-04-16/DVC_Gems_April_20.png
 author: elle_obrien

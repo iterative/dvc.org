@@ -76,7 +76,7 @@ A `dvc add` target can be either a file or a directory. In the latter case, a
 `.dvc` file is created for the top of the hierarchy (with default name
 `<dir_name>.dvc`).
 
-Every file inside is added to the cache (unless the `--no-commit` option is
+Every file inside is stored in the cache (unless the `--no-commit` option is
 used), but DVC does not produce individual `.dvc` files for each file in the
 entire tree. Instead, the single `.dvc` file references a special JSON file in
 the cache (with `.dir` extension), that in turn points to the added files.
@@ -128,10 +128,9 @@ not.
   among the `targets`, this option is ignored. For each file found, a new `.dvc`
   file is created using the process described in this command's description.
 
-- `--no-commit` - do not save outputs to cache. A `.dvc` file is created, while
-  nothing is added to the cache. (`dvc status` will report that the file is
-  `not in cache`.) Use `dvc commit` when ready to commit outputs with DVC. This
-  is analogous to using `git add` before `git commit`.
+- `--no-commit` - do not store `targets` in the cache (the `.dvc` file is still
+  created). Use `dvc commit` to finish the operation (similar to `git commit`
+  after `git add`).
 
 - `--file <filename>` - specify name of the `.dvc` file it generates. This
   option works only if there is a single target. By default the name of the
