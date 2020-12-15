@@ -9,7 +9,7 @@ usage: dvc config [-h] [--global | --system | --local] [-q | -v] [-u]
                   [-l] [name] [value]
 
 positional arguments:
-  name           Option name (remote.name.option or section.option).
+  name           Option name (section.option or remote.name.option).
   value          Option value.
 ```
 
