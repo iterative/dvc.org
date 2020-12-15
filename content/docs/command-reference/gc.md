@@ -7,7 +7,8 @@ Remove unused files and directories from <abbr>cache</abbr> or
 
 ```usage
 usage: dvc gc [-h] [-q | -v]
-              [-w] [-a] [-T] [--all-commits] [-c] [-r <name>]
+              [-w] [-a] [-T] [--all-commits] [--all-experiments]
+              [-c] [-r <name>]
               [-f] [-j <number>] [-p [<path> [<path> ...]]]
 ```
 
@@ -23,9 +24,9 @@ explicitly provide the right set of options to specify what data is still needed
 (so that DVC can figure out what files can be safely deleted).
 
 One of the scope options (`--workspace`, `--all-branches`, `--all-tags`,
-`--all-commits`) or a combination of them must be provided. Each of them
-corresponds to keeping the data for the current workspace, and for a certain set
-of commits (determined by reading the DVC-files in them). See the
+`--all-commits`, `--all-experiments`) or a combination of them must be provided.
+Each of them corresponds to keeping the data for the current workspace, and for
+a certain set of commits (determined by reading the DVC-files in them). See the
 [Options](#options) section for more details.
 
 > Note that `dvc gc` tries to fetch any missing
@@ -74,6 +75,10 @@ The default remote is cleaned (see `dvc config core.remote`) unless the
   `-M`, and `--no-commit` options in those commands). In that scenario, data
   that is never referenced from the workspace or from any Git commit can still
   be stored in the project's cache).
+
+- `--all-experiments` same as `a`, `T`, or `--all-commits`, but applies to
+  [experiments](/doc/command-reference/exp). This keeps all the data used in all
+  local experiments (including intermediate checkpoints) in the project.
 
 - `-p <paths>`, `--projects <paths>` - if a single remote or a single cache is
   shared among different projects (e.g. a configuration like the one described
