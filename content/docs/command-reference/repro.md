@@ -93,27 +93,18 @@ up-to-date and only execute the final stage.
 
 ## Options
 
-- `targets` (optional argument)
-
-  > The default target is `./dvc.yaml` (if this argument is not provided).
-
-  Accepts one or more file or directory paths (to `.dvc` or `dvc.yaml` files),
-  or stage name(s) (`./dvc.yaml` by default). DVC will reproduce them as
-  detailed below.
+- `targets` (optional argument) - one or more file or directory paths (to `.dvc`
+  or `dvc.yaml` files), or stage name(s) (`./dvc.yaml` by default). DVC will
+  reproduce them as detailed below.
 
   - For **`dvc.yaml` files**, their [pipeline(s)](/doc/command-reference/dag)
     are checked for changes, and reproduced as needed (explained in the command
     [description](#description) above). E.g. `dvc repro pipes/linear/dvc.yaml`
 
-  - **Directory paths** can be provided if the `-R` option is included.
-    `dvc.yaml` files are searched for (recursively) in the given dirs. E.g.
-    `dvc repro -R subdir/`.
-
   - **Stage names** must be defined in `./dvc.yaml`. E.g.
-    `dvc repro train-vision`
-
-    Stages in other `dvc.yaml` files can be given using by using a colon `:`
-    following the path to that file. E.g. `models/dvc.yaml:prepare`
+    `dvc repro train-vision`. Stages in other `dvc.yaml` files can be given
+    using by using a colon `:` following the path to that file. E.g.
+    `models/dvc.yaml:prepare`
 
   - Files and directories tracked by **`.dvc` files** given as `targets` are
     updated (same as `dvc add`). E.g. `dvc repro data.dvc`
@@ -121,12 +112,11 @@ up-to-date and only execute the final stage.
     > Note that [frozen](/doc/command-reference/freeze) `.dvc` files are
     > ignored.
 
-  For even more flexibility, use `--glob` so that the `targets` are interpreted
-  as patterns to match stages in `./dvc.yaml`. E.g. `subdir/**/?.yaml` (certain
-  file paths), `train-*` (stage names) or `models/dvc.yaml:train-*` (stages in
-  specific `dvc.yaml` file)
-
-  > You may find all the option details in the next section.
+- `--glob` - causes the `targets` to be interpreted as wildcard
+  [patterns](https://docs.python.org/3/library/glob.html) to match for stages.
+  For example: `train-*` (certain stage names) or `models/dvc.yaml:train-*`
+  (stages in specific `dvc.yaml` file). Note that it does not match patterns
+  with the path, only to the stages present in the specified file.
 
 - `-f`, `--force` - reproduce a pipeline, regenerating its results, even if no
   changes were found. This executes all of the stages by default, but it can be
@@ -136,9 +126,9 @@ up-to-date and only execute the final stage.
   recursive search for changed dependencies. Multiple stages are executed
   (non-recursively) if multiple stage names are given as `targets`.
 
-- `-R`, `--recursive` - looks for `dvc.yaml` files to reproduce in all the
-  target directories and their subdirectories. If there are no directories among
-  the targets, this option has no effect.
+- `-R`, `--recursive` - looks for `dvc.yaml` files to reproduce in any
+  directories given as `targets`, and in their subdirectories. If there are no
+  directories among the targets, this option has no effect.
 
 - `--no-commit` - do not store the outputs of this execution in the cache
   (`dvc.yaml` and `dvc.lock` are still created or updated); useful to avoid
@@ -150,11 +140,6 @@ up-to-date and only execute the final stage.
 
 - `-P`, `--all-pipelines` - reproduce all pipelines for all `dvc.yaml` files
   present in the DVC project.
-
-- `--glob` - allows running the stages from a file that match the wildcard
-  [pattern](https://docs.python.org/3/library/glob.html) specified in `targets`.
-  Note that it does not match pattern with the path, only to the stages present
-  in the specified file.
 
 - `-m`, `--metrics` - show metrics after reproduction. The target pipelines must
   have at least one metrics file defined either with the `dvc metrics` command,
