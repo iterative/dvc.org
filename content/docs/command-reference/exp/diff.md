@@ -64,16 +64,16 @@ $ dvc exp show --include-params=featurize
 ┡━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━┩
 │ workspace             │ -            │ 0.61314 │ 1500                   │ 2                │
 │ 11-bigrams-experiment │ Jun 20, 2020 │ 0.61314 │ 1500                   │ 2                │
-│ ├── e6c974b           │ Oct 21, 2020 │ 0.61314 │ 1500                   │ 2                │
-│ ├── 1dad0d2           │ Oct 09, 2020 │ 0.57756 │ 2000                   │ 2                │
-│ └── 1df77f7           │ Oct 09, 2020 │ 0.51676 │ 500                    │ 2                │
+│ ├── exp-e6c97         │ Oct 21, 2020 │ 0.61314 │ 1500                   │ 2                │
+│ ├── exp-1dad0         │ Oct 09, 2020 │ 0.57756 │ 2000                   │ 2                │
+│ └── exp-1df77         │ Oct 09, 2020 │ 0.51676 │ 500                    │ 2                │
 └───────────────────────┴──────────────┴─────────┴────────────────────────┴──────────────────┘
 ```
 
-To compare a experiment `1dad0d2` to its baseline (`11-bigrams-experiment`):
+To compare a experiment `exp-1dad0` to its baseline (`11-bigrams-experiment`):
 
 ```dvc
-$ dvc exp diff 1dad0d2
+$ dvc exp diff exp-1dad0
 Path         Metric    Value    Change
 scores.json  auc       0.61314  0.035575
 
@@ -84,7 +84,7 @@ params.yaml  featurize.max_features  1500     -500
 To compare two experiments:
 
 ```dvc
-$ dvc exp diff 1dad0d2 1df77f7
+$ dvc exp diff exp-1dad0 exp-1df77
 Path         Metric    Value    Change
 scores.json  auc       0.51676  -0.060799
 
@@ -95,7 +95,7 @@ params.yaml  featurize.max_features  500      -1500
 To compare an experiment to a Git tag:
 
 ```dvc
-$ dvc exp diff 1dad0d2 8-ml-pipeline
+$ dvc exp diff exp-1dad0 8-ml-pipeline
 Path         Metric    Value    Change
 scores.json  auc       None     diff not supported
 
