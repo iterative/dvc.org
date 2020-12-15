@@ -10,7 +10,7 @@ the correct order. Pipelines will be reproduced within local experiments
 usage: dvc exp run [-h] [-q | -v] [-f]
                    [<repro_options> ...]
                    [--params [<filename>:]<params_list>]
-                   [--queue] [--run-all] [-j <number>]
+                   [-n <name>] [--queue] [--run-all] [-j <number>]
                    [targets [targets ...]]
 
 positional arguments:
@@ -43,9 +43,9 @@ For checkpoint experiments, `dvc exp resume` should be used in conjunction with
 
 ## Options
 
-`dvc exp run` accepts the same options as `dvc repro`, with the exception that
-`--no-commit` has no effect in `dvc exp run`. See `dvc repro` for a detailed
-list of available options.
+In addition to the following options, `dvc exp run` also accepts the same
+options as `dvc repro`, with the exception that `--no-commit` has no effect in
+`dvc exp run`. See `dvc repro` for a detailed list of available options.
 
 - `-f`, `--force` - reproduce an experiment pipeline, regenerating its results,
   even if no changes were found. For `checkpoint` experiments, `dvc exp run -f`
@@ -58,6 +58,9 @@ list of available options.
   `[filename:]key1=val1,key2=val2...`. Any specified values will override those
   from the contents of the relevant params file.
 
+- `-n <name>`, `--name <name>` - use the specified name for this experiment. If
+  `--name` is not provided, a default name will automatically be generated.
+
 - `--queue` - queue an experiment for future execution, but do not actually run
   the pipeline.
 
@@ -65,8 +68,8 @@ list of available options.
   `--queue`. Can be used in conjunction with `-j` to run experiments in
   parallel.
 
-- `-j <number>` - run the specified number of experiments at a time in parallel,
-  only applicable when used in conjunction with `--run-all`.
+- `-j <number>`, `--jobs <number>` - run the specified number of experiments at
+  a time in parallel, only applicable when used in conjunction with `--run-all`.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
