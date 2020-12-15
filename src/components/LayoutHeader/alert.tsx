@@ -7,10 +7,11 @@ import styles from './styles.module.css'
 
 const LayoutAlert: React.FC<{ collapsed: boolean }> = ({ collapsed }) => (
   <div className={cn(styles.alert, collapsed && styles.collapsed)}>
-    <span role="img" aria-label="rocket">
-      🚀
+    <span role="img" aria-label="shield">
+      🛡
     </span>{' '}
-    Join <Link href="https://viewer.iterative.ai/">DVC UI</Link> beta program!{' '}
+    <Link href="/enterprise">DVC for Enterprise</Link> - data access control &
+    compliance!{' '}
   </div>
 )
 

@@ -132,7 +132,9 @@ stages:
       - performance.json
   training:
     desc: train your model
-    cmd: python train.py
+    cmd:
+      - pip install -r requirements.txt
+      - python train.py
     deps:
       - train.py
       - features
@@ -151,7 +153,10 @@ stages:
 by the user with the `--name` (`-n`) option of `dvc run`. Each stage can contain
 the possible following fields:
 
-- `cmd` (always present): Executable command defined in this stage
+- `cmd` (always present): One or more commands executed by the stage (may
+  contain either a single value, or a list). Commands are executed sequentially
+  until all are finished or until one of them fails (see
+  [`dvc repro`](/doc/command-reference/repro) for details).
 - `wdir`: Working directory for the stage command to run in (relative to the
   file's location). If this field is not present explicitly, it defaults to `.`
   (the file's location).
@@ -162,7 +167,8 @@ the possible following fields:
 - `outs`: List of <abbr>output</abbr> file or directory paths of this stage
   (relative to `wdir` which defaults to the file's location), and optionally,
   whether or not this file or directory is <abbr>cached</abbr> (`true` by
-  default, if not present). See the `--no-commit` option of `dvc run`.
+  default, if not present). See the `--no-commit` option of `dvc run` and
+  `dvc repro`.
 - `metrics`: List of [metrics files](/doc/command-reference/metrics), and
   optionally, whether or not this metrics file is <abbr>cached</abbr> (`true` by
   default, if not present). See the `--metrics-no-cache` (`-M`) option of

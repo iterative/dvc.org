@@ -9,8 +9,8 @@ descriptionLong: |
   We've made a painless tab-completion script generator for Python applications!
   It's called `shtab` and it currently works with `argparse`, `docopt`, and
   `argopt` to produce `bash` and `zsh` completion scripts.
-  This tool was originally created to help `dvc`, but we realised it could be made
-  more generic and valuable to the world's entire ecosystem of Python CLI
+  This tool was originally created to help `dvc`, but we realised it could be
+  made more generic and valuable to the world's entire ecosystem of Python CLI
   applications. Find out how to take advantage of it in this blog post.
 picture: 2020-07-27/tab-py.jpg
 pictureComment: Zero Effort Tab Completion for Python Applications

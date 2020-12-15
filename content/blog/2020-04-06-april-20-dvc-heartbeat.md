@@ -2,8 +2,8 @@
 title: April '20 DVC❤️Heartbeat
 date: 2020-04-06
 description: |
-  Catch up on new DVC releases, talks, and projects in our community. 
-  This month, learn what we're up to in MLOps, CI/CD, and the 
+  Catch up on new DVC releases, talks, and projects in our community.
+  This month, learn what we're up to in MLOps, CI/CD, and the
   intersection of data science and software engineering.
 
 descriptionLong: |
