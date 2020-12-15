@@ -1,9 +1,9 @@
 # repro
 
-Reproduce complete or partial <abbr>pipelines</abbr> by executing commands
-defined in their [stages](/doc/command-reference/run) in the correct order. The
-commands to be executed are determined by recursively analyzing dependencies and
-<abbr>outputs</abbr> of the target stages.
+Reproduce complete or partial [pipelines](/doc/command-reference/dag) by
+executing commands defined in their [stages](/doc/command-reference/run) in the
+correct order. The commands to be executed are determined by recursively
+analyzing dependencies and <abbr>outputs</abbr> of the target stages.
 
 ## Synopsis
 
@@ -22,16 +22,16 @@ positional arguments:
 
 ## Description
 
-Provides a way to regenerate data pipeline results, by restoring the dependency
-graph (a [DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph)) implicitly
-defined by the stages listed in `dvc.yaml`. The commands defined in these stages
-are then be executed in the correct order.
+`dvc repro` provides a way to regenerate data pipeline results, by restoring the
+dependency graph (a [DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph))
+implicitly defined by the stages listed in `dvc.yaml`. The commands defined in
+these stages are then be executed in the correct order.
 
 For stages with multiple commands (having a list in the `cmd` field), commands
 are run one after the other in the order they are defined. The failure of any
 command will halt the remaining stage execution, and raises an error.
 
-> Pipeline stages are defined in `dvc.yaml` files (either manually or by using
+> Pipeline stages are defined in a `dvc.yaml` file (either manually or by using
 > `dvc run`) while initial data dependencies can be registered with `dvc add`.
 
 This command is similar to [Make](https://www.gnu.org/software/make/) in
