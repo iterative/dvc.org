@@ -8,7 +8,7 @@ and `.dvc` files.
 
 ```usage
 usage: dvc push [-h] [-q | -v] [-j <number>] [-r <name>] [-a] [-T]
-                [--all-commits] [-d] [-R] [--run-cache]
+                [--all-commits] [--glob] [-d] [-R] [--run-cache]
                 [targets [targets ...]]
 
 positional arguments:
@@ -97,6 +97,10 @@ in the cache (compared to the default remote.) It can be used to see what files
   default is `4`. Note that the default value can be set using the `jobs` config
   option with `dvc remote modify`. Using more jobs may improve the overall
   transfer speed.
+
+- `--glob` - allows pushing files and directories that match the
+  [pattern](https://docs.python.org/3/library/glob.html) specified in `targets`.
+  Shell style wildcards supported: `*`, `?`, `[seq]`, `[!seq]`, and `**`
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
