@@ -206,12 +206,28 @@
             "slug": "apply"
           },
           {
+            "label": "exp branch",
+            "slug": "branch"
+          },
+          {
             "label": "exp diff",
             "slug": "diff"
           },
           {
             "label": "exp gc",
             "slug": "gc"
+          },
+          {
+            "label": "exp list",
+            "slug": "list"
+          },
+          {
+            "label": "exp pull",
+            "slug": "pull"
+          },
+          {
+            "label": "exp push",
+            "slug": "pull"
           },
           {
             "label": "exp resume",

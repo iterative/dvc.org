@@ -68,8 +68,8 @@ details.
 ## Examples
 
 Let's say we have the following project, have
-[applied](/docs/command-reference/exp/apply) and promoted an experiment
-to a full commit:
+[applied](/docs/command-reference/exp/apply) and promoted an experiment to a
+full commit:
 
 ```dvc
 $ dvc exp show --all-commits --include-params=featurize

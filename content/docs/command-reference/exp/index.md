@@ -2,12 +2,16 @@
 
 A set of commands to generate and compare local <abbr>experiments</abbr>:
 [apply](/doc/command-reference/exp/apply),
-[show](/doc/command-reference/exp/show),
-[diff](/doc/command-reference/exp/diff), [run](/doc/command-reference/exp/run),
-[resume](/doc/command-reference/exp/resume), and
-[gc](/doc/command-reference/exp/gc).
+[branch](/doc/command-reference/exp/branch),
+[diff](/doc/command-reference/exp/diff), [gc](/doc/command-reference/exp/gc),
+[list](/doc/command-reference/exp/list),
+[pull](/doc/command-reference/exp/pull),
+[push](/doc/command-reference/exp/list),
+[resume](/doc/command-reference/exp/resume),
+[run](/doc/command-reference/exp/run), and
+[show](/doc/command-reference/exp/show).
 
-Note that `experiments` is aliased to `exp`.
+Note that `experiments` is also aliased to `exp`.
 
 ## Synopsis
 
