@@ -103,8 +103,7 @@ repo at `url`) are not supported.
   > example below).
 
 - `--no-exec` - create the import `.dvc` file but don't download the target data
-  (doesn't check whether the source is valid). You can use `dvc commit` to
-  finish the operation.
+  (doesn't check whether the source is valid).
 
   This is useful, for example, if you need to define a project quickly (that
   will use imports at a later time/location) before downloading anything, and

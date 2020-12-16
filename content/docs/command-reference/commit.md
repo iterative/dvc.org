@@ -25,10 +25,10 @@ next.
 💡 For convenience, a pre-commit Git hook is available to remind you to
 `dvc commit` when needed. See `dvc install` for more info.
 
-Mainly, `dvc commit` provides a way to complete DVC commands that track data
-(`dvc add`, `dvc repro`, `dvc import`, etc.), when they have been used with the
-`--no-commit` or `--no-exec` options. Those options cause the command to skip
-these step(s) during the process of tracking each file or directory:
+`dvc commit` provides a way to complete DVC commands that track data (`dvc add`,
+`dvc repro`, `dvc run`), when they have been used with the `--no-commit` or
+`--no-exec` options. Those options cause the command to skip these step(s)
+during the process of tracking each file or directory:
 
 - Save the hash value of the file/dir in the `dvc.lock` or `.dvc` file.
 - Store the file contents in the cache.
