@@ -1,6 +1,6 @@
 # experiments
 
-A set of commands to generate and compare local <abbr>experiments</abbr>:
+A set of commands to generate and manage experiments:
 [apply](/doc/command-reference/exp/apply),
 [branch](/doc/command-reference/exp/branch),
 [diff](/doc/command-reference/exp/diff), [gc](/doc/command-reference/exp/gc),
