@@ -184,8 +184,7 @@ Finally, we used `dvc status` to double check that all data had been uploaded.
 
 ## Example: What happens in the cache?
 
-Let's take a detailed look at what happens to the
-[cache directory](/doc/user-guide/concepts/dvc-cache#structure-of-the-cache-directory)
+Let's take a detailed look at what happens to the <abbr>cache directory</abbr>
 as you run an experiment locally and push data to remote storage. To set the
 example consider having created a <abbr>workspace</abbr> that contains some code
 and data, and having set up a remote.
