@@ -8,6 +8,7 @@ workspace.
 
 ```usage
 usage: dvc diff [-h] [-q | -v]
+                [--targets [<paths> [<paths> ...]]]
                 [--show-json] [--show-hash] [--show-md]
                 [a_rev] [b_rev]
 
@@ -42,6 +43,20 @@ for example when `dvc init` was used with the `--no-scm` option.
 > [comment](https://github.com/iterative/dvc/issues/770#issuecomment-512693256).
 
 ## Options
+
+- `--targets <paths>` - limit command scope to these paths. When specifying
+  arguments for `--targets` before `a_rev`/`b_rev`, you should use `--` after
+  this option's arguments, e.g.:
+
+  ```dvc
+  $ dvc diff --targets t1.json t2.yaml -- HEAD v1
+  ```
+
+  Alternatively, you can also run the above statement as:
+
+  ```dvc
+  $ dvc diff HEAD v1 --targets t1.json t2.json
+  ```
 
 - `--show-json` - prints the command's output in easily parsable JSON format,
   instead of a human-readable table.
