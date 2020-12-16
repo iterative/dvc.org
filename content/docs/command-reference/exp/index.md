@@ -11,7 +11,8 @@ A set of commands to generate and manage experiments:
 [run](/doc/command-reference/exp/run), and
 [show](/doc/command-reference/exp/show).
 
-Note that `experiments` is also aliased to `exp`.
+Note that `dvc experiments` is also aliased to `dvc exp` including subcommands
+e.g. `dvc exp list`.
 
 ## Synopsis
 
