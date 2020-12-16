@@ -1,8 +1,7 @@
 # params diff
 
-Show changes in [parameter dependencies](/doc/user-guide/concepts/parameters)
-between commits in the <abbr>DVC repository</abbr>, or between a commit and the
-<abbr>workspace</abbr>.
+Show changes in <abbr>parameter</abbr> dependencies between commits in the
+<abbr>DVC repository</abbr>, or between a commit and the <abbr>workspace</abbr>.
 
 ## Synopsis
 
@@ -22,8 +21,8 @@ This command provides a quick way to compare parameter values among experiments
 in the repository history. Requires that Git is being used to version the
 project params.
 
-> Parameter dependencies are defined with the `-p` option in `dvc run`. See also
-> [parameters](/doc/user-guide/concepts/parameters).
+> <abbr>Parameter</abbr> dependencies are defined with the `-p` option in
+> `dvc run`.
 
 Run without arguments, this command compares parameters currently present in the
 <abbr>workspace</abbr> (uncommitted changes) with the latest committed version.
@@ -51,8 +50,8 @@ itself does not ascribe any specific meaning for these values.
 
 ## Examples
 
-Let's create a simple YAML parameters file named `params.yaml` (default params
-file name, see [parameters](/doc/user-guide/concepts/parameters) to learn more):
+Let's create a simple YAML parameters file named `params.yaml` (default
+<abbr>params</abbr> file name):
 
 ```yaml
 lr: 0.0041
