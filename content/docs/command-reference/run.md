@@ -121,10 +121,10 @@ Relevant notes:
 
 ### For displaying and comparing data science experiments
 
-[parameters](/doc/command-reference/params) (`-p`/`--params` option) are a
-special type of key/value dependencies. Multiple parameter dependencies can be
-specified from within one or more YAML, JSON, TOML, or Python parameters files
-(e.g. `params.yaml`). This allows tracking experimental hyperparameters easily.
+<abbr>Parameters</abbr> (`-p`/`--params` option) are a special type of key/value
+dependencies. Multiple parameter dependencies can be specified from within one
+or more YAML, JSON, TOML, or Python parameters files (e.g. `params.yaml`). This
+allows tracking experimental hyperparameters easily.
 
 Special types of output files, [metrics](/doc/command-reference/metrics) (`-m`
 and `-M` options) and [plots](/doc/command-reference/plots) (`--plots` and
@@ -189,12 +189,11 @@ $ dvc run -n my_stage './my_script.sh $MYENVVAR'
   outputs are not tracked by DVC.
 
 - `-p [<path>:]<params_list>`, `--params [<path>:]<params_list>` - specify a set
-  of [parameter dependencies](/doc/command-reference/params) the stage depends
-  on, from a parameters file. This is done by sending a comma separated list as
-  argument, e.g. `-p learning_rate,epochs`. The default parameters file name is
-  `params.yaml`, but this can be redefined with a prefix in the argument sent to
-  this option, e.g. `-p parse_params.yaml:threshold`. See
-  [parameters](/doc/user-guide/concepts/parameters) to learn more.
+  of <abbr>parameter</abbr> dependencies the stage depends on, from a parameters
+  file. This is done by sending a comma separated list as argument, e.g.
+  `-p learning_rate,epochs`. The default parameters file name is `params.yaml`,
+  but this can be redefined with a prefix in the argument sent to this option,
+  e.g. `-p parse_params.yaml:threshold`.
 
 - `-m <path>`, `--metrics <path>` - specify a metrics file produced by this
   stage. This option behaves like `-o` but registers the file in a `metrics`
@@ -403,9 +402,8 @@ $ dvc dag
 
 ## Example: Using parameter dependencies
 
-To use specific values inside a parameters file as dependencies, create a simple
-YAML file named `params.yaml` (default params file name, see
-[parameters](/doc/user-guide/concepts/parameters) to learn more):
+To use specific values inside a <abbr>parameters</abbr> file as dependencies,
+create a simple YAML file named `params.yaml` (default params file name):
 
 ```yaml
 seed: 20180226
@@ -442,6 +440,6 @@ lr = params['train']['lr']
 epochs = params['train']['epochs']
 ```
 
-DVC will keep an eye on these param values (same as with the regular dependency
-files) and know that the stage should be reproduced if/when they change. See
-[parameters](/doc/user-guide/concepts/parameters) for more details.
+DVC will keep an eye on these <abbr>param</abbr> values (same as with the
+regular dependency files) and know that the stage should be reproduced if/when
+they change.
