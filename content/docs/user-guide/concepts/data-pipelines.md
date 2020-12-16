@@ -6,11 +6,11 @@ tooltip: >-
   processing stages, chained by their outputs and inputs. They use some initial
   data, may produce intermediate artifacts, and reach a final result.
 description: >-
-  In DVC, a data pipeline is a series of data processing stages. A pipeline may
-  produce intermediate data, and has a final result.
+  A data pipeline is a series of data processing stages. They use some initial
+  data, may produce intermediate artifacts, and reach a final result.
 ---
 
-<!-- keywords: data pipeline, machine learning pipeline, devops for data science, devops for machine learning, "MLops", "what is a data pipeline?", "data pipeline examples" -->
+<!-- keywords: data pipeline, machine learning pipeline, devops for data science, devops for machine learning, "MLops", "what is a data pipeline?", "data pipeline examples", "machine learning (ML) workflow", "data science workflow", "data science pipeline workflow" -->
 
 # Data Pipelines
 
