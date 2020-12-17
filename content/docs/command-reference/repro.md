@@ -139,9 +139,6 @@ up-to-date and only execute the final stage.
   caching unnecessary data when exploring different data or stages. Use
   `dvc commit` to finish the operation.
 
-- `-p`, `--pipeline` - reproduce the entire pipelines that the `targets` belong
-  to. Use `dvc dag` to show the parent pipeline of a target.
-
 - `-P`, `--all-pipelines` - reproduce all pipelines for all `dvc.yaml` files
   present in the DVC project.
 
@@ -154,6 +151,9 @@ up-to-date and only execute the final stage.
 
 - `-i`, `--interactive` - ask for confirmation before reproducing each stage.
   The stage is only executed if the user types "y".
+
+- `-p`, `--pipeline` - reproduce the entire pipelines that the `targets` belong
+  to. Use `dvc dag <target>` to show the parent pipeline of a target.
 
 - `--no-run-cache` - execute stage commands even if they have already been run
   with the same dependencies/outputs/etc. before.
