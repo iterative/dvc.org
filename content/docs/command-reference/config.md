@@ -9,7 +9,8 @@ usage: dvc config [-h] [--global | --system | --local] [-q | -v] [-u]
                   [-l] [name] [value]
 
 positional arguments:
-  name           Option name (section.option or remote.name.option).
+  name     Option name in format: section.option or remote.name.option
+           e.g. 'core.check_update', 'cache.dir', 'remote.myremote.url'
   value          Option value.
 ```
 
