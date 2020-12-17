@@ -153,8 +153,8 @@ up-to-date and only execute the final stage.
   to. Use `dvc dag <target>` to show the parent pipeline of a target.
 
 - `-P`, `--all-pipelines` - reproduce all pipelines for all `dvc.yaml` files
-  present in the DVC project. There's no need to specify `targets` when using
-  this option.
+  present in the DVC project. Specifying `targets` has no effects with this
+  option, as all possible targets are already included.
 
 - `--no-run-cache` - execute stage commands even if they have already been run
   with the same dependencies/outputs/etc. before.
