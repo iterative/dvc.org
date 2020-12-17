@@ -6,7 +6,7 @@ Get or set <abbr>project</abbr>-level (or global) DVC configuration options.
 
 ```usage
 usage: dvc config [-h] [--global | --system | --local] [-q | -v] [-u]
-                  [-l] [name] [value]
+                  [-l] [--show-origin] [name] [value]
 
 positional arguments:
   name     Option name in format: section.option or remote.name.option
@@ -71,6 +71,9 @@ multiple projects and users, respectively:
   `sudo dvc config --system ...` (Linux).
 
 - `-l`, `--list` - lists all defined config values.
+
+- `--show-origin` - when listing or getting config values, also show the file
+  the config value is saved in.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
