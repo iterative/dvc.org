@@ -61,7 +61,7 @@ command [options](#options), such as `--single-item`.
 
 `dvc repro` saves all the data files, intermediate or final results into the
 <abbr>cache</abbr> (unless the `--no-commit` option is used), and updates the
-hash values of changed outputs in the `dvc.lock` and `.dvc` files.
+hash values of changed outputs in the `dvc.lock` files.
 
 ### Parallel stage execution
 
@@ -98,8 +98,8 @@ up-to-date and only execute the final stage.
 
 ## Options
 
-- `targets` (optional argument) - one or more file or directory paths (to `.dvc`
-  or `dvc.yaml` files), or stage name(s) (`./dvc.yaml` by default). DVC will
+- `targets` (optional argument) - one or more file or directory paths (to find
+  `dvc.yaml` files), or stage name(s) (`./dvc.yaml` by default). DVC will
   reproduce them as detailed below.
 
   - For **`dvc.yaml` files**, their [pipeline(s)](/doc/command-reference/dag)
@@ -110,12 +110,6 @@ up-to-date and only execute the final stage.
     `dvc repro train-vision`. Stages in other `dvc.yaml` files can be given
     using by using a colon `:` following the path to that file. E.g.
     `models/dvc.yaml:prepare`
-
-  - Files and directories tracked by **`.dvc` files** given as `targets` are
-    updated (same as `dvc add`). E.g. `dvc repro data.dvc`
-
-    > Note that [frozen](/doc/command-reference/freeze) `.dvc` files are
-    > ignored.
 
 - `--glob` - causes the `targets` to be interpreted as wildcard
   [patterns](https://docs.python.org/3/library/glob.html) to match for stages.
