@@ -37,7 +37,7 @@ edit, or even created manually. Here is a sample:
 outs:
   - md5: a304afb96060aad90176268345e10355
     path: data.xml
-    desc: cats and dogs dataset
+    desc: Cats and dogs dataset
 
 # Comments and user metadata are supported.
 meta:
@@ -47,12 +47,12 @@ meta:
 
 `.dvc` files can contain the following fields:
 
-- `outs` (always present): List of <abbr>output</abbr> entries (details below)
-  that represent the files or directories tracked with DVC. Typically there is
-  only one (but several can be added or combined manually).
-- `deps`: List of <abbr>dependency</abbr> entries (details below). Only present
-  when `dvc import` or `dvc import-url` are used to generate this `.dvc` file.
-  Typically there is only one (but several can be added manually).
+- `outs` (always present): List of _output entries_ (details below) that
+  represent files or directories tracked by DVC. Normally there is only one (but
+  several can be added or combined manually).
+- `deps`: List of _dependency entries_ (details below). Only present in import
+  `.dvc` files (see `dvc import` and `dvc import-url`). Normally there is only
+  one (but several can be added manually).
 - `wdir`: Working directory for the `outs` and `deps` paths (relative to the
   `.dvc` file's location). If this field is not present explicitly, it defaults
   to `.` (the `.dvc` file's location).
@@ -62,7 +62,7 @@ meta:
   Any YAML contents is supported. `meta` contents are ignored by DVC, but they
   can be meaningful for user processes that read `.dvc` files.
 
-An _output entry_ (`outs`) consists of these fields:
+An _output entry_ (`outs`) can have these fields:
 
 - `path`: Path to the file or directory (relative to `wdir` which defaults to
   the file's location)
@@ -75,10 +75,13 @@ An _output entry_ (`outs`) consists of these fields:
 - `nfiles`: If a directory, number of files inside.
 - `cache`: Whether or not this file or directory is <abbr>cached</abbr> (`true`
   by default, if not present). See the `--no-commit` option of `dvc add`.
+- `persist`: Whether the output file/dir should remain in place while
+  `dvc repro` runs. By default outputs are deleted when `dvc repro` starts (if
+  this value is not present).
 - `desc`: User description for this output. This doesn't affect any DVC
   operations.
 
-A _dependency entry_ (`deps`) consists of these fields:
+A _dependency entry_ (`deps`) can have these fields:
 
 - `path`: Path to the dependency (relative to `wdir` which defaults to the
   file's location)
@@ -131,7 +134,7 @@ stages:
     metrics:
       - performance.json
   training:
-    desc: train your model
+    desc: Training stage description
     cmd:
       - pip install -r requirements.txt
       - python train.py
@@ -140,7 +143,7 @@ stages:
       - features
     outs:
       - model.pkl:
-          desc: my model description
+          desc: My model description
     plots:
       - logs.csv:
           x: epoch
@@ -151,7 +154,7 @@ stages:
 
 `dvc.yaml` files consists of a group of `stages` with names provided explicitly
 by the user with the `--name` (`-n`) option of `dvc run`. Each stage can contain
-the possible following fields:
+the following fields:
 
 - `cmd` (always present): One or more commands executed by the stage (may
   contain either a single value, or a list). Commands are executed sequentially

@@ -152,7 +152,6 @@ outs:
   - md5: a304afb96060aad90176268345e10355
     path: data.xml
     cache: true
-    metric: false
     persist: false
 ```
 

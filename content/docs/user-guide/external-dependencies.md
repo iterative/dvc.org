@@ -201,7 +201,6 @@ outs:
   - md5: a304afb96060aad90176268345e10355
     path: data.xml
     cache: true
-    metric: false
     persist: false
 ```
 
@@ -242,7 +241,6 @@ outs:
   - md5: 3863d0e317dee0a55c4e59d2ec0eef33
     path: model.pkl
     cache: true
-    metric: false
     persist: false
 ```
 

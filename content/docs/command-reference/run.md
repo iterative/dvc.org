@@ -105,9 +105,10 @@ Relevant notes:
   <abbr>workspace</abbr>) are also supported (except metrics and plots).
 
 - Outputs are deleted from the workspace before executing the command (including
-  at `dvc repro`) if their paths are found as existing files/directories. This
-  also means that the stage command needs to recreate any directory structures
-  defined as outputs every time its executed by DVC.
+  at `dvc repro`) if their paths are found as existing files/directories (unless
+  `--outs-persist` is used). This also means that the stage command needs to
+  recreate any directory structures defined as outputs every time its executed
+  by DVC.
 
 - In some situations, we have previously executed a stage, and later notice that
   some of the files/directories used by the stage as dependencies, or created as
@@ -185,7 +186,8 @@ $ dvc run -n my_stage './my_script.sh $MYENVVAR'
   reason.
 
 - `--outs-persist <path>` - declare output file or directory that will not be
-  removed upon `dvc repro`.
+  removed when `dvc repro` starts (but it will still be overwritten when it
+  finishes).
 
 - `--outs-persist-no-cache <path>` - the same as `-outs-persist` except that
   outputs are not tracked by DVC (same as with `-O` above).
