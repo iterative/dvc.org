@@ -299,10 +299,9 @@ Authentication**
 
 If you rely on Azure AD to
 [authenticate](https://docs.microsoft.com/en-us/azure/app-service/configure-authentication-provider-aad)
-against your Azure Storage account,
-DVC supports a number of auth methods for you.
-First, configure the `storage_account` your container path exists in with this
-command, or via an environment variable:
+against your Azure Storage account, DVC supports a number of auth methods for
+you. First, configure the `storage_account` your container path exists in with
+this command, or via an environment variable:
 
 ```
 $ dvc remote modify myremote storage_account 'my-storage-account'
@@ -310,17 +309,16 @@ $ dvc remote modify myremote storage_account 'my-storage-account'
 $ export AZURE_STORAGE_ACCOUNT='my-storage-account'
 ```
 
-- `azcli_credential` - If you are currently logged in using `az cli`, you can use
-  this to authenticate with the remote:
+- `azcli_credential` - If you are currently logged in using `az cli`, you can
+  use this to authenticate with the remote:
 
   ```
   $ dvc remote modify myremote azcli_credential True
   ```
 
-- If using a service principal, you can set the 
-  `AZURE_CLIENT_ID`, `AZURE_CLIENT_SECRET`, and `AZURE_TENANT_ID` env
-  vars and they will be picked up by DVC. Or you can add configure the
-  following remote options:
+- If using a service principal, you can set the `AZURE_CLIENT_ID`,
+  `AZURE_CLIENT_SECRET`, and `AZURE_TENANT_ID` env vars and they will be picked
+  up by DVC. Or you can add configure the following remote options:
 
   ```
   $ dvc remote modify myremote client_id 'my-client-id'
