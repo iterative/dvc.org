@@ -16,18 +16,18 @@ positional arguments:
 
 ## Description
 
-DVC, by effectively replacing data files, models, directories with `.dvc` files
-(`.dvc`), hides actual locations and names. This means that you don't see data
-files when you browse a <abbr>DVC repository</abbr> on Git hosting (e.g.
-GitHub), you just see the `dvc.yaml` and `.dvc` files. This makes it hard to
-navigate the project to find files or directories for use with `dvc get`,
-`dvc import`, or `dvc.api` functions.
+A side-effect of DVC is that it hides actual data paths, by effectively
+replacing files and directories with
+[metafiles](/doc/user-guide/dvc-files-and-directories). So you don't see data
+files/dirs when you browse a <abbr>DVC repository</abbr> on Git hosting (e.g.
+GitHub), you just see the `dvc.yaml` and `.dvc` files. This can make it hard to
+navigate the project, for example to find files or directories for use with
+`dvc get`, `dvc import`, or `dvc.api` functions.
 
-`dvc list` prints a virtual view of a DVC repository, as if files and
-directories tracked by DVC were found directly in the remote Git repo. Only the
-root directory is listed by default. The output of this command is equivalent to
-actually cloning the repo and [pulling](/doc/command-reference/pull) its data
-like this:
+This command produces a view of a DVC repository, as if files and directories
+tracked by DVC were found directly in the Git repo. Its output is equivalent to
+cloning the repo and [pulling](/doc/command-reference/pull) the data (except
+that nothing is downloaded by `dvc list`), like this:
 
 ```dvc
 $ git clone <url> example
@@ -36,14 +36,17 @@ $ dvc pull
 $ ls <path>
 ```
 
+Only the root directory is listed by default, but the `-R` option can be used to
+list files recursively.
+
 The `url` argument specifies the address of the DVC or Git repository containing
 the data source. Both HTTP and SSH protocols are supported (e.g.
-`[user@]server:project.git`). `url` can also be a local file system path.
+`[user@]server:project.git`). `url` can also be a local file system path
+(including the current project e.g. `.`).
 
 The optional `path` argument is used to specify a directory to list within the
 source repository at `url` (including paths inside tracked directories). It's
-similar to providing a path to list to commands such as `ls` or `aws s3 ls`, and
-similar to the former, the `-R` option might be used to list files recursively.
+similar to providing a path to list to commands such as `ls` or `aws s3 ls`.
 
 Please note that `dvc list` doesn't check whether the listed data (tracked by
 DVC) actually exists in remote storage, so it's not guaranteed whether it can be
@@ -77,6 +80,7 @@ found in it. This includes files (or directories) tracked by DVC or by Git:
 
 ```dvc
 $ dvc list https://github.com/iterative/example-get-started
+.dvcignore
 .gitignore
 README.md
 data
