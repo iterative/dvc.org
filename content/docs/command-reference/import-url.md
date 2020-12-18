@@ -193,6 +193,7 @@ Let's take a look at the changes to the `data.xml.dvc`:
  outs:
  - md5: a304afb96060aad90176268345e10355
    path: data.xml
+   cache: true
 ```
 
 The `etag` field in the `.dvc` file contains the
