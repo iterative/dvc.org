@@ -325,7 +325,7 @@ $ export AZURE_STORAGE_ACCOUNT='my-storage-account'
 
   ```
   $ dvc remote modify myremote client_id 'my-client-id'
-  $ dvc remote modify myremote client_secret 'my-client-secret'
+  $ dvc remote modify --local myremote client_secret '<my-secret>'
   $ dvc remote modify myremote tenant_id 'my-tenant-id'
   ```
 
