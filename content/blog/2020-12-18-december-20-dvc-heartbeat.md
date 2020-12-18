@@ -1,12 +1,21 @@
 ---
 title: December '20 Heartbeat
-date: 2020-12-14
+date: 2020-12-18
 description: |
-  Monthly updates are here- read all about our brand new video docs, the DVC Udemy course, open jobs with our team, and essential reading about Git-flow with DVC.
+  Monthly updates are here- read all about 
+  our brand new video docs, the DVC Udemy 
+  course, open jobs with our team, and 
+  essential reading about Git-flow with DVC.
 descriptionLong: |
-  Monthly updates are here- read all about our brand new video docs, the DVC Udemy course, open jobs with our team, and essential reading about Git-flow with DVC.
-picture: 2020-11-08/cover.png
-pictureComment: Double DeeVee!
+  Monthly updates are here- read all about 
+  our brand new video docs, the DVC Udemy 
+  course, open jobs with our team, and 
+  essential reading about Git-flow with DVC.
+picture: 2020-12-18/cover.png
+pictureComment: |
+  This holiday season, show your loved ones
+  you care with our new shirt.
+
 author: elle_obrien
 commentsUrl: https://discuss.dvc.org/t/december-20-heartbeat/585
 tags:
@@ -74,25 +83,17 @@ You may notice that the tweet spelled our name differently, and since Twitter
 doesn't have an edit button, I think that means we're "Interative" now.
 [Hurry up and get your merch!](https://www.zazzle.com/t_shirt-235920696568133954)
 
-![](/uploads/images/2020-12-14/newname.png)
+![](/uploads/images/2020-12-18/newname.png)
 
 ### Workshops
 
-We gave a workshop at a virtual meetup held by the Toronto Machine Learning
-Society, and you can catch a video recording if you missed it. This workshop was
-all about getting started with GitHub Actions and CML!
+We gave a workshop at a virtual meetup held by the
+[Toronto Machine Learning Society](https://mlopsworld.com/about-us/), and you
+can catch a video recording if you missed it. This workshop was all about
+getting started with GitHub Actions and CML! It starts with some high-level
+overview and then gets into live-coding.
 
 https://youtu.be/51H13lfHdMw
-
-DVC will also be represented at the upcoming
-[PyData Montreal](https://www.meetup.com/PyData-MTL/events/274786470/) online
-meeting organized by [Maria Khalusova](https://twitter.com/mariaKhalusova) and
-[Alexander Kim](https://twitter.com/alex000kim?lang=en). Myself (Elle) and
-[Josh Tobin](https://twitter.com/josh_tobin_) will be talking about approaches
-to full-stack machine learning. The event is free and virtual, so consider
-stopping by!
-
-![](/uploads/images/2020-12-14/pydata_mtl.jpg)
 
 ## From the community
 
@@ -106,14 +107,14 @@ Udemy! Data scientists/DVC ambassadors
 [Mikhail Rozhkov](https://www.udemy.com/user/mnrozhkov/) and
 [Marcel Ribeiro-Dantas](https://www.udemy.com/user/marcel-da-camara-ribeiro-dantas/)
 created a course full of
-[practical tips and tricks for learners of all levels](https://www.udemy.com/course/machine-learning-experiments-and-engineering-with-dvc/).
+[practical tips and tricks for learners of all levels](https://www.udemy.com/course/machine-learning-experiments-and-engineering-with-dvc/?referralCode=68BEB2A7E246A54E5E35).
 
 <external-link
-href="https://www.udemy.com/course/machine-learning-experiments-and-engineering-with-dvc/"
+href="https://www.udemy.com/course/machine-learning-experiments-and-engineering-with-dvc/?referralCode=68BEB2A7E246A54E5E35"
 title="Machine Learning Experiments and Engineering with DVC"
 description="Automate machine learning experiments, pipelines and model deployment (CI/CD, MLOps) with Data Version Control (DVC)."
 link="udemy.com"
-image="/uploads/images/2020-12-14/udemy.png"/>
+image="/uploads/images/2020-12-18/udemy.png"/>
 
 ### A proposal for Git-flow with DVC
 
@@ -145,7 +146,7 @@ href="https://git.rz.uni-augsburg.de/rabefabi/git-flow-for-dvc"
 title="Git Flow for DVC"
 description="Fabian Rabe"
 link="git.rz.uni-augsburg.de"
-image="/uploads/images/2020-12-14/universitat_augs.jpg"/>
+image="/uploads/images/2020-12-18/universitat_augs.jpg"/>
 
 ### Channel 9 talks Machine Learning and Python
 
