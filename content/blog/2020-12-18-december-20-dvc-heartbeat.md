@@ -116,6 +116,8 @@ description="Automate machine learning experiments, pipelines and model deployme
 link="udemy.com"
 image="/uploads/images/2020-12-18/udemy.png"/>
 
+There's also a [Discord channel for the class](https://discord.gg/XgZdHfHVPD), where you can ask questions, discuss materials, and report bugs. Keep an eye on the channel periodic for promos and coupon codes, too! 
+
 ### A proposal for Git-flow with DVC
 
 [Fabian Rabe](https://www.uni-augsburg.de/en/fakultaet/fai/informatik/prof/swtpvs/team/fabian-rabe/)
