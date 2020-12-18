@@ -64,8 +64,11 @@ epoch, AUC, loss
 37, 0.92302, 0.0299015
 ```
 
-Hierarchical file formats such as JSON and YAML consists of an array of objects
-where each object should contain all fields that are required for the plot.
+Hierarchical file formats such as JSON and YAML consists of an array of
+consistent objects (sharing a common structure): All objects should contain the
+fields used for the X and Y axis of the plot (see
+[DVC template anchors](#dvc-template-anchors)); Extra elements will be ignored
+silently.
 
 `dvc plots` subcommands can produce plots for a specified field or a set of
 them, from the array's objects. For example, `val_loss` is one of the field
