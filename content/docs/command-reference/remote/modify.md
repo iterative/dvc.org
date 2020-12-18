@@ -318,12 +318,11 @@ $ export AZURE_STORAGE_ACCOUNT='my-storage-account'
   $ dvc remote modify myremote azcli_credential True
   ```
 
-- If using a service principal you can set the environment variables 
-  `AZURE_CLIENT_ID`, `AZURE_CLIENT_SECRET`, `AZURE_TENANT_ID` and they will be picked up
-  
-  Or
-  
-  You can add the following variables into the config
+- If using a service principal, you can set the 
+  `AZURE_CLIENT_ID`, `AZURE_CLIENT_SECRET`, and `AZURE_TENANT_ID` env
+  vars and they will be picked up by DVC. Or you can add configure the
+  following remote options:
+
   ```
   $ dvc remote modify myremote client_id 'my-client-id'
   $ dvc remote modify myremote client_secret 'my-client-secret'
