@@ -311,7 +311,9 @@ $ dvc remote modify myremote storage_account 'my-storage-account'
 $ export AZURE_STORAGE_ACCOUNT='my-storage-account'
 ```
 
-- `azcli_credential` - If you are currently logged in using `az cli` you can choose use this to authenticate with the remote
+- `azcli_credential` - If you are currently logged in using `az cli`, you can use
+  this to authenticate with the remote:
+
   ```
   $ dvc remote modify myremote azcli_credential True
   ```
