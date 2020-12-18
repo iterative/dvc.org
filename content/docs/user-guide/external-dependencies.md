@@ -241,7 +241,6 @@ outs:
   - md5: 3863d0e317dee0a55c4e59d2ec0eef33
     path: model.pkl
     cache: true
-    persist: false
 ```
 
 The `url` and `rev_lock` subfields under `repo` are used to save the origin and

@@ -152,7 +152,6 @@ outs:
   - md5: a304afb96060aad90176268345e10355
     path: data.xml
     cache: true
-    persist: false
 ```
 
 Several of the values above are pulled from the original stage file
