@@ -307,11 +307,7 @@ command, or via an environment variable:
 
 ```
 $ dvc remote modify myremote storage_account 'my-storage-account'
-```
-
-Or
-
-```
+# Or
 export AZURE_STORAGE_ACCOUNT='my-storage-account'
 ```
 
