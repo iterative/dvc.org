@@ -304,7 +304,6 @@ DVC supports a number of auth methods for you.
 First, configure the `storage_account` your container path exists in with this
 command, or via an environment variable:
 
-
 ```
 $ dvc remote modify myremote storage_account 'my-storage-account'
 # Or
