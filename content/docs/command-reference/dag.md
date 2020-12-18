@@ -44,8 +44,8 @@ restore one or more pipelines later (see `dvc repro`).
   [DOT](<https://en.wikipedia.org/wiki/DOT_(graph_description_language)>)
   format. It can be passed to third party visualization utilities.
 
-- `-o`, `--outs` - show a DAG of chained dependencies and outputs instead
-  of the stages themselves. The graph may be significantly different.
+- `-o`, `--outs` - show a DAG of chained dependencies and outputs instead of the
+  stages themselves. The graph may be significantly different.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
