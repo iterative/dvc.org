@@ -76,7 +76,7 @@ The default remote is cleaned (see `dvc config core.remote`) unless the
   that is never referenced from the workspace or from any Git commit can still
   be stored in the project's cache).
 
-- `--all-experiments` same as `a`, `T`, or `--all-commits`, but applies to
+- `--all-experiments` same as `a`, `T`, or `--all-commits`, but applies to all
   [experiments](/doc/command-reference/exp). This keeps all the data used in all
   local experiments (including intermediate checkpoints) in the project.
 
