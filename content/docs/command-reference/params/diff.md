@@ -7,7 +7,8 @@ commits in the <abbr>DVC repository</abbr>, or between a commit and the
 ## Synopsis
 
 ```usage
-usage: dvc params diff [-h] [-q | -v] [--all] [--show-json] [--show-md]
+usage: dvc params diff [-h] [-q | -v] [--targets [<path> [<path> ...]]]
+                       [--all] [--show-json] [--show-md] [--no-path]
                        [a_rev] [b_rev]
 
 positional arguments:
@@ -34,6 +35,20 @@ itself does not ascribe any specific meaning for these values.
 ❗ By default it only shows parameters that were changed.
 
 ## Options
+
+- `--targets` - Limit command scope to these params files. When specifying
+  arguments for `--targets` before `revisions`, you should use `--` after this
+  option's arguments, e.g.:
+
+  ```dvc
+  $ dvc params diff --targets m1.json m2.yaml -- HEAD v1
+  ```
+
+  Alternatively, you can also run the above statement as:
+
+  ```dvc
+  $ dvc params diff HEAD v1 --targets m1.json m2.json
+  ```
 
 - `--all` - prints all parameters including not changed.
 
