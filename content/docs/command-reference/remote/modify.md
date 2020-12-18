@@ -300,7 +300,7 @@ Authentication**
 If you rely on Azure AD to
 [authenticate](https://docs.microsoft.com/en-us/azure/app-service/configure-authentication-provider-aad)
 against your Azure Storage account,
-the dvc azure remote supports a number of authentication methods. 
+DVC supports a number of auth methods for you.
 The methods below enable authentication however you must
 set the storage account your container path exists in your dvc config or as an environment variable
 
