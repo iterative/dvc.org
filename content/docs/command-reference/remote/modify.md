@@ -294,7 +294,8 @@ $ dvc remote modify myremote endpointurl \
 For more information on configuring Azure Storage connection strings, visit
 [here](https://docs.microsoft.com/en-us/azure/storage/common/storage-configure-connection-string).
 
-**Advanced Azure Authentication**
+**[Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/active-directory-whatis)
+Authentication**
 
 If you rely on AAD to authenticate against your azure storage account, 
 the dvc azure remote supports a number of authentication methods. 
