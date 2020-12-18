@@ -53,8 +53,9 @@ More specifically, scenarios for `dvc commit` include:
 
 - Sometimes after executing a stage, we realize that not all of its dependencies
   or outputs are defined in `dvc.yaml`. It is possible to
-  [add the missing deps/outs](/docs/user-guide/how-to/add-deps-or-outs-to-a-stage),
-  and `dvc commit` may be needed to finalize the remedy (see link).
+  [add the missing deps/outs](/docs/user-guide/how-to/add-deps-or-outs-to-a-stage)
+  without having to re-execute stages, and `dvc commit` is needed to finalize
+  the operation (see link).
 
 - It's also possible to execute stage commands by hand (without `dvc repro`), or
   to manually modify their output files or directories. Use `dvc commit` to
