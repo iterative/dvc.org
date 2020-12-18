@@ -301,8 +301,8 @@ If you rely on Azure AD to
 [authenticate](https://docs.microsoft.com/en-us/azure/app-service/configure-authentication-provider-aad)
 against your Azure Storage account,
 DVC supports a number of auth methods for you.
-The methods below enable authentication however you must
-set the storage account your container path exists in your dvc config or as an environment variable
+First, configure the `storage_account` your container path exists in with this
+command, or via an environment variable:
 
 
 ```
