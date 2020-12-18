@@ -297,7 +297,9 @@ For more information on configuring Azure Storage connection strings, visit
 **[Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/active-directory-whatis)
 Authentication**
 
-If you rely on AAD to authenticate against your azure storage account, 
+If you rely on Azure AD to
+[authenticate](https://docs.microsoft.com/en-us/azure/app-service/configure-authentication-provider-aad)
+against your Azure Storage account,
 the dvc azure remote supports a number of authentication methods. 
 The methods below enable authentication however you must
 set the storage account your container path exists in your dvc config or as an environment variable
