@@ -72,8 +72,8 @@ multiple projects and users, respectively:
 
 - `-l`, `--list` - lists all defined config values.
 
-- `--show-origin` - when listing or getting config values, also show the file
-  the config value is saved in.
+- `--show-origin` - when listing or getting config options, also show the
+  location of the config file where each option `value` is found.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
