@@ -104,12 +104,10 @@ repo at `url`) are not supported.
 
 - `--no-exec` - create the import `.dvc` file but don't download the target data
   (doesn't check whether the source is valid). You can use `dvc update` to
-  finish the operation.
-
-  This is useful if you need to define the project imports quickly before
-  downloading anything, and everything later (with `dvc update`), or if the
-  target data has been downloaded manually, and you want to "DVCfy" the existing
-  state of the project.
+  finish the operation. This is useful if you need to define the project imports
+  quickly before downloading anything, and import everything later (with
+  `dvc update`), or if the target data already exist locally, and you want to
+  "DVCfy" the existing state of the project (see also `dvc commit`).
 
 - `--desc <text>` - user description of the data (optional). This doesn't affect
   any DVC operations.
