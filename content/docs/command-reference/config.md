@@ -53,8 +53,8 @@ multiple projects and users, respectively:
 > \* For Linux, the global `dvc/config` may be found in `$XDG_CONFIG_HOME`, and
 > the system-wide one in `$XDG_CONFIG_DIRS[0]`, if those env vars are defined.
 
-> **Note:** The `--show-origin` flag can show you where a given config option
-> value is currently stored.
+> Note that the `--show-origin` flag can show you where a given config option
+> `value` is currently stored.
 
 ## Command options (flags)
 
