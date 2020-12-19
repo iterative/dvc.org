@@ -37,7 +37,8 @@ it has changed in its data source (see `dvc update`).
 
 The `url` argument specifies the address of the DVC or Git repository containing
 the data source. Both HTTP and SSH protocols are supported (e.g.
-`[user@]server:project.git`). `url` can also be a local file system path.
+`[user@]server:project.git`). `url` can also be a local file system path
+(including the current project e.g. `.`).
 
 The `path` argument is used to specify the location of the target to download
 within the source repository at `url`. `path` can specify any file or directory
@@ -149,8 +150,6 @@ outs:
   - md5: a304afb96060aad90176268345e10355
     path: data.xml
     cache: true
-    metric: false
-    persist: false
 ```
 
 Several of the values above are pulled from the original stage file

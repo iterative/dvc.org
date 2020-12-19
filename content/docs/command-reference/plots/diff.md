@@ -1,7 +1,7 @@
 # plots diff
 
 Show multiple versions of [plot metrics](/doc/command-reference/plots) by
-overlaying them in a single plot. This allows to compare them easily.
+overlaying them in a single image. This allows to compare them easily.
 
 ## Synopsis
 

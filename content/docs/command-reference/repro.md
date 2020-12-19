@@ -44,7 +44,7 @@ By default, this command checks all [pipeline](/doc/command-reference/dag)
 stages to determine which ones have changed. Then it executes the corresponding
 commands (`cmd` field of `dvc.yaml`). [Stage](/doc/command-reference/run)
 outputs are deleted from the <abbr>workspace</abbr> before executing the stage
-commands that produce them.
+commands that produce them (unless `persist: true` is used in `dvc.yaml`).
 
 For stages with multiple commands (having a list in the `cmd` field), commands
 are run one after the other in the order they are defined. The failure of any
