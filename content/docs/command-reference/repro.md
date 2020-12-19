@@ -99,21 +99,16 @@ up-to-date and only execute the final stage.
 
 ## Options
 
-- `targets` (optional argument) - specifies one or more `dvc.yaml` files or
-  specific stage name(s). `./dvc.yaml` by default. E.g.
-  `dvc repro pipes/linear/dvc.yaml`
+- `targets` (optional command argument) - what to reproduce (the pipeline(s) in
+  `./dvc.yaml` by default). Different things can be provided as targets
+  depending on the flags used (more details in each option). Examples:
 
-  Stage names must be defined in `./dvc.yaml`. E.g. `dvc repro train-vision`.
-  Stages in other `dvc.yaml` files can be given using by using a colon `:`
-  following the path to that file. E.g. `models/dvc.yaml:prepare`
-
-  Different things can be provided as targets depending on the flags used (more
-  details in each option), namely:
-
-  - With `-R` you can provide directory paths to search for `dvc.yaml` files in,
-    recursively.
-  - With `--glob`, you can use special patterns (using wildcards) to match
-    groups of stage names.
+  - `dvc repro linear/dvc.yaml`: Specific `dvc.yaml` file to reproduce
+  - `dvc repro -R pipelines/`: Directory path to explore recursively for for
+    `dvc.yaml` files
+  - `dvc repro train-model`: Specific stage in `./dvc.yaml`
+  - `dvc repro modeling/dvc.yaml:prepare`: Stage in a specific `dvc.yaml` file
+  - `dvc repro --glob train-*`: Pattern to match groups of stages
 
 - `-R`, `--recursive` - looks for `dvc.yaml` files to reproduce in any
   directories given as `targets`, and in their subdirectories. If there are no
