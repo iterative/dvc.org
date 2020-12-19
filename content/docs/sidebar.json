@@ -9,7 +9,7 @@
     "label": "CML",
     "slug": "cml",
     "source": "cml/index.md",
-    "icon": "house",
+    "icon": "cml",
     "children": [
       "usage",
       "get-started",
