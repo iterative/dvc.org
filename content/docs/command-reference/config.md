@@ -42,6 +42,9 @@ multiple projects and users, respectively:
 | `--global` | 3        | `$HOME/Library/Application\ Support/dvc` | `$HOME/.config/dvc/config` | `%LocalAppData%\iterative\dvc\config`                     |
 | `--system` | 4        | `/Library/Application\ Support/dvc`      | `/etc/dvc/config`          | `%AllUsersProfile%\Application Data\iterative\dvc\config` |
 
+> **Note:** The `--show-origin` flag can show you where a given config option value is
+> currently stored.
+
 <!-- Avoids new lines in the Flag column (above). -->
 <style>
   #markdown-root td:first-child code {
