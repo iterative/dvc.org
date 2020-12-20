@@ -95,9 +95,9 @@ A _dependency entry_ (`deps`) can have these fields:
   _checksum_ for HDFS and WebHDFS. See `dvc import-url` for more information.
 - `size`: Size of the file or directory (sum of all files).
 - `nfiles`: If a directory, number of files inside.
-- `isexec`: If a file, whether or not owner has execute permission. On Windows,
-  it is not saved and, if set manually, won't have any effect on `dvc checkout`
-  and `dvc pull`.
+- `isexec`: Whether this is an executable file. DVC preserves execute
+  permissions upon `dvc checkout` and `dvc pull`. This has no effect on
+  directories, or in general on Windows.
 - `repo`: This entry is only for external dependencies created with
   `dvc import`, and can contains the following fields:
 
