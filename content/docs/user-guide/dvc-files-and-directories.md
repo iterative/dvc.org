@@ -73,6 +73,9 @@ An _output entry_ (`outs`) can have these fields:
   and a special _checksum_ for HDFS and WebHDFS.
 - `size`: Size of the file or directory (sum of all files).
 - `nfiles`: If a directory, number of files inside.
+- `isexec`: If a file, whether or not owner has execute permission. On Windows,
+  it is not saved and, if set manually, won't have any effect on `dvc checkout`
+  and `dvc pull`.
 - `cache`: Whether or not this file or directory is <abbr>cached</abbr> (`true`
   by default, if not present). See the `--no-commit` option of `dvc add`.
 - `persist`: Whether the output file/dir should remain in place while
@@ -92,6 +95,9 @@ A _dependency entry_ (`deps`) can have these fields:
   _checksum_ for HDFS and WebHDFS. See `dvc import-url` for more information.
 - `size`: Size of the file or directory (sum of all files).
 - `nfiles`: If a directory, number of files inside.
+- `isexec`: If a file, whether or not owner has execute permission. On Windows,
+  it is not saved and, if set manually, won't have any effect on `dvc checkout`
+  and `dvc pull`.
 - `repo`: This entry is only for external dependencies created with
   `dvc import`, and can contains the following fields:
 
