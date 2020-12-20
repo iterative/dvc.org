@@ -126,10 +126,10 @@ source.
 
 - `--no-exec` - create the import `.dvc` file but don't download `url` (assumes
   that the data source is valid). You can use `dvc update` to finish the
-  operation. This is useful if you need to define the project imports quickly
-  before downloading anything, and import everything later (with `dvc update`),
-  or if the target data already exist locally, and you want to "DVCfy" the
-  existing state of the project (see also `dvc commit`).
+  operation. This is useful if you need to define the project imports quickly,
+  and download everything later (with `dvc update`); or if the target data
+  already exist locally and you want to "DVCfy" this state of the project (see
+  also `dvc commit`).
 
 - `--desc <text>` - user description of the data (optional). This doesn't  
   affect any DVC operations.

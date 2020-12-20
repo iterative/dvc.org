@@ -232,12 +232,10 @@ $ dvc run -n my_stage './my_script.sh $MYENVVAR'
 
 - `--no-exec` - write the stage to `dvc.yaml`, but do not execute the `command`.
   DVC will still add the outputs to `.gitignore`, but they won't be cached or
-  recorded in `dvc.lock` (like with `--no-commit` below). You can use
-  `dvc repro` to finish the operation. This is useful if you need to define a
-  pipeline quickly before executing anything, and run all of its stages at once
-  later (with `dvc repro`), or if the commands has been run manually before
-  and/or it's outputs already exist, and you want to "DVCfy" the existing state
-  of the project (see also `dvc commit`).
+  recorded in `dvc.lock` (like with `--no-commit` below). This is useful if you
+  need to define a pipeline quickly, and `dvc repro` it later; or if the stage
+  outputs already exist and you want to "DVCfy" this state of the project (see
+  also `dvc commit`).
 
 - `-f`, `--force` - overwrite an existing stage in `dvc.yaml` file without
   asking for confirmation.
