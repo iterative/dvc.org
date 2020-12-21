@@ -32,19 +32,18 @@ use cases for these commands.
 > Note that pushing data does not affect code, `dvc.yaml`, or `.dvc` files.
 > Those should be uploaded with `git push`.
 
-The default remote is used (see `dvc remote default`) unless the `--remote`
-option is used. See `dvc remote` for more information on how to configure a
-remote.
+The default remote is used (see `dvc remote default`) unless a specific one is
+given with `--remote`. See `dvc remote` for more information on how to configure
+them.
 
-Without arguments, it uploads all files and directories missing from remote
-storage, found as <abbr>outputs</abbr> of the
-[stages](/doc/command-reference/run) or `.dvc` files present in the workspace.
-The `--all-branches`, `--all-tags`, and `--all-commits` options enable pushing
-multiple Git commits.
-
-The `targets` given to this command (if any) limit what to push. It accepts
-paths to tracked files or directories (including paths inside tracked
+Without arguments, it uploads the files and directories referenced in the
+current workspace (found in all `dvc.yaml` and `.dvc` files) that are missing
+from the remote. Any `targets` given to this command limit what to push. It
+accepts paths to tracked files or directories (including paths inside tracked
 directories), `.dvc` files, and stage names (found in `dvc.yaml`).
+
+The `--all-branches`, `--all-tags`, and `--all-commits` options enable pushing
+files/dirs referenced in multiple Git commits.
 
 💡 For convenience, a Git hook is available to automate running `dvc push` after
 `git push`. See `dvc install` for more details.
@@ -86,7 +85,7 @@ in the cache (compared to the default remote.) It can be used to see what files
   If there are no directories among the `targets`, this option is ignored.
 
 - `-r <name>`, `--remote <name>` - name of the
-  [remote storage](/doc/command-reference/remote) to push from (see
+  [remote storage](/doc/command-reference/remote) to push to (see
   `dvc remote list`).
 
 - `--run-cache` - uploads all available history of stage runs to the remote

@@ -230,15 +230,12 @@ $ dvc run -n my_stage './my_script.sh $MYENVVAR'
   It's used by `dvc repro` to change the working directory before executing the
   `command`.
 
-- `--no-exec` - write the stage to `dvc.yaml`, but do not execute its `command`.
-  Any dependencies and outputs will be entered in `.gitignore`, but won't be
-  cached (like with `--no-commit` below) or recorded in `dvc.lock`. You can use
-  `dvc commit` to save any existing dep/out files to the cache and record their
-  hashes to the lock file.
-
-  This is useful, for example, if you need to define a pipeline quickly (and
-  perhaps share it with others) before executing anything, and run all its
-  stages at once later (with `dvc repro`).
+- `--no-exec` - write the stage to `dvc.yaml`, but do not execute the `command`.
+  DVC will still add the outputs to `.gitignore`, but they won't be cached or
+  recorded in `dvc.lock` (like with `--no-commit` below). This is useful if you
+  need to define a pipeline quickly, and `dvc repro` it later; or if the stage
+  outputs already exist and you want to "DVCfy" this state of the project (see
+  also `dvc commit`).
 
 - `-f`, `--force` - overwrite an existing stage in `dvc.yaml` file without
   asking for confirmation.

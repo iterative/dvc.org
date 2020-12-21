@@ -24,8 +24,8 @@ positional arguments:
 
 Provides an easy way to reuse files or directories tracked in any <abbr>DVC
 repository</abbr> (e.g. datasets, intermediate results, ML models) or Git
-repository (e.g. source code, small image/other files). `dvc import` downloads
-the target file or directory (found at `path` in `url`) into the workspace and
+repository (e.g. code, small image/other files). `dvc import` downloads the
+target file or directory (found at `path` in `url`) into the workspace and
 tracks it in the project. This makes it possible to update the import later, if
 it has changed in its data source (see `dvc update`).
 
@@ -74,10 +74,9 @@ source.
 To actually [version the data](/doc/tutorials/get-started/data-versioning),
 `git add` (and `git commit`) the import stage.
 
-Note that import stages are considered always
-[frozen](/doc/command-reference/freeze), meaning that if you run `dvc repro`,
-they won't be updated. Use `dvc update` to update the downloaded data artifact
-from the source repo.
+Note that `dvc repro` doesn't check or update import `.dvc` files (see
+`dvc freeze`), use `dvc update` to bring the import up to date from the data
+source.
 
 Also note that chained imports (importing data that was imported into the source
 repo at `url`) are not supported.
@@ -104,14 +103,12 @@ repo at `url`) are not supported.
   > [Importing and updating fixed revisions](#example-importing-and-updating-fixed-revisions)
   > example below).
 
-- `--no-exec` - create the import `.dvc` file without actually downloading the
-  file or directory. The data hash is not calculated when this option is used,
-  only the import metadata is saved to the `.dvc` file. You can use `dvc commit`
-  to finish the operation.
-
-  This is useful, for example, if you need to define a project quickly (that
-  will use imports at a later time/location) before downloading anything, and
-  import everything later (with `dvc update`).
+- `--no-exec` - create the import `.dvc` file but don't download the target data
+  (doesn't check whether the source is valid). You can use `dvc update` to
+  finish the operation. This is useful if you need to define the project imports
+  quickly, and download everything later (with `dvc update`); or if the target
+  data already exist locally and you want to "DVCfy" this state of the project
+  (see also `dvc commit`).
 
 - `--desc <text>` - user description of the data (optional). This doesn't affect
   any DVC operations.

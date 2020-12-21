@@ -1,6 +1,6 @@
 ---
 name: 'DVC Cache'
-match: ['DVC cache', cache, caches, cached]
+match: ['DVC cache', cache, caches, cached, 'cache directory']
 ---
 
 The DVC cache is a hidden storage (by default located in the `.dvc/cache`

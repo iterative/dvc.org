@@ -51,8 +51,7 @@ enough metadata about the imported data to enable DVC efficiently determining
 whether the local copy is out of date.
 
 Note that `dvc repro` doesn't check or update import `.dvc` files, use
-`dvc update` on them to bring the import up to date from the external data
-source.
+`dvc update` to bring the import up to date from the data source.
 
 DVC supports several types of (local or) remote locations (protocols):
 
@@ -125,14 +124,12 @@ source.
   default file name: `<file>.dvc`, where `<file>` is the desired file name of
   the imported data (`out`).
 
-- `--no-exec` - create the import `.dvc` file without actually downloading
-  `url`. The data hash is not calculated when this option is used, only the
-  import metadata is saved to the `.dvc` file. You can use `dvc commit` to
-  finish the operation.
-
-  This is useful, for example, if you need to define a project quickly (that
-  will use imports at a later time/location) before downloading anything, and
-  import everything later (with `dvc update`).
+- `--no-exec` - create the import `.dvc` file but don't download `url` (assumes
+  that the data source is valid). You can use `dvc update` to finish the
+  operation. This is useful if you need to define the project imports quickly,
+  and download everything later (with `dvc update`); or if the target data
+  already exist locally and you want to "DVCfy" this state of the project (see
+  also `dvc commit`).
 
 - `--desc <text>` - user description of the data (optional). This doesn't  
   affect any DVC operations.

@@ -25,8 +25,8 @@ next.
 💡 For convenience, a pre-commit Git hook is available to remind you to
 `dvc commit` when needed. See `dvc install` for more info.
 
-Mainly, `dvc commit` provides a way to complete DVC commands that track data
-(`dvc add`, `dvc repro`, `dvc import`, etc.), when they have been used with the
+`dvc commit` provides a way to complete DVC commands that track data (`dvc add`,
+`dvc repro`, `dvc import`, etc.), when they have been used with the
 `--no-commit` or `--no-exec` options. Those options cause the command to skip
 these step(s) during the process of tracking each file or directory:
 
@@ -53,8 +53,9 @@ More specifically, scenarios for `dvc commit` include:
 
 - Sometimes after executing a stage, we realize that not all of its dependencies
   or outputs are defined in `dvc.yaml`. It is possible to
-  [add the missing deps/outs](/docs/user-guide/how-to/add-deps-or-outs-to-a-stage),
-  and `dvc commit` may be needed to finalize the remedy (see link).
+  [add the missing deps/outs](/docs/user-guide/how-to/add-deps-or-outs-to-a-stage)
+  without having to re-execute stages, and `dvc commit` is needed to finalize
+  the operation (see link).
 
 - It's also possible to execute stage commands by hand (without `dvc repro`), or
   to manually modify their output files or directories. Use `dvc commit` to

@@ -1,7 +1,7 @@
 # fetch
 
-Get tracked files or directories from
-[remote storage](/doc/command-reference/remote) into the <abbr>cache</abbr>.
+Download files or directories from
+[remote storage](/doc/command-reference/remote) to the <abbr>cache</abbr>.
 
 ## Synopsis
 
@@ -17,22 +17,12 @@ positional arguments:
 
 ## Description
 
-Downloads DVC-tracked files from remote storage into the cache of the project
-(without placing them in the <abbr>workspace</abbr>, like `dvc pull` would).
-This makes them available for linking (or copying) into the workspace (refer to
-[`dvc config cache.type`](/doc/command-reference/config#cache)).
+Downloads tracked files and directories from remote storage into the
+<abbr>cache</abbr> (without placing them in the <abbr>workspace</abbr> like
+`dvc pull`). This makes the tracked data available for linking (or copying) into
+the workspace (see `dvc checkout`).
 
-Without arguments, `dvc fetch` ensures that the files specified in all
-`dvc.lock` and `.dvc` files in the workspace exist in the cache. The
-`--all-branches`, `--all-tags`, and `--all-commits` options enable fetching data
-for multiple Git commits.
-
-The `targets` given to this command (if any) limit what to fetch. It accepts
-paths to tracked files or directories (including paths inside tracked
-directories), `.dvc` files, and stage names (found in `dvc.yaml`).
-
-Fetching is performed automatically by `dvc pull` (when the data is not already
-in the <abbr>cache</abbr>), along with `dvc checkout`:
+Note that `dvc pull` already includes fetching:
 
 ```
 Tracked files                Commands
@@ -56,14 +46,23 @@ Here are some scenarios in which `dvc fetch` is useful, instead of pulling:
 - After checking out a fresh copy of a <abbr>DVC repository</abbr>, to get
   DVC-tracked data from multiple project branches or tags into your machine.
 - To use comparison commands across different Git commits, for example
-  `dvc metrics show` with its `--all-branches` option.
+  `dvc metrics show` with its `--all-branches` option, or `dvc plots diff`.
 - If you want to avoid [linking](/doc/user-guide/large-dataset-optimization)
   files from the cache, or keep the <abbr>workspace</abbr> clean for any other
   reason.
 
+Without arguments, it downloads all files and directories referenced in the
+current workspace (found in `dvc.yaml` and `.dvc` files) that are missing from
+the workspace. Any `targets` given to this command limit what to fetch. It
+accepts paths to tracked files or directories (including paths inside tracked
+directories), `.dvc` files, and stage names (found in `dvc.yaml`).
+
+The `--all-branches`, `--all-tags`, and `--all-commits` options enable fetching
+files/dirs referenced in multiple Git commits.
+
 The default remote is used (see
-[`dvc config core.remote`](/doc/command-reference/config#core)) unless the
-`--remote` option is used.
+[`dvc config core.remote`](/doc/command-reference/config#core)) unless a
+specific one is given with `--remote`.
 
 ## Options
 
@@ -173,18 +172,15 @@ $ tree .dvc/cache
 > `dvc status --cloud` compares the cache contents against the default remote.
 > Refer to `dvc status`.
 
-Note that the `.dvc/cache` directory was created and populated.
+Note that the
+[`.dvc/cache`](/doc/user-guide/dvc-files-and-directories#structure-of-the-cache-directory)
+directory was created and populated.
 
-> Refer to
-> [Structure of cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-the-cache-directory)
-> for more info.
+All the data needed in this version of the project is now in your cache: File
+names `20b786b...` and `c8d307a...` correspond to the `data/features/` directory
+and `model.pkl` file, respectively.
 
-Used without arguments (as above), `dvc fetch` downloads all files and
-directories needed by all `dvc.yaml` and `.dvc` files in the current branch. For
-example, the hash values `20b786b...` and `c8d307a...` correspond to the
-`data/features/` directory and `model.pkl` file, respectively.
-
-Let's now link files from the cache to the workspace with:
+To link these files to the workspace:
 
 ```dvc
 $ dvc checkout
