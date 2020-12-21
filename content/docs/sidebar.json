@@ -393,23 +393,22 @@
     "label": "CML",
     "slug": "cml",
     "source": "cml/index.md",
-    "icon": "house",
+    "icon": "cml",
     "children": [
-      "usage",
       "get-started",
+      "usage",
       {
         "label": "CML with DVC",
         "slug": "cml-with-dvc"
       },
       {
-        "label": "Self-hosted runners",
+        "label": "Self-hosted Runners",
         "slug": "self-hosted-runners"
       },
       {
-        "label": "Install CML as a package",
+        "label": "Install CML as a Package",
         "slug": "cml-with-npm"
-      },
-      "examples"
+      }
     ]
   }
 ]

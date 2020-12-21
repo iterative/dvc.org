@@ -27,8 +27,17 @@ We built CML with these principles in mind:
 _Need help? Just want to chat about continuous integration for ML?
 [Visit our Discord channel!](https://discord.gg/bzA6uY7)_
 
-🌟🌟🌟 Check out our
+🌟 Check out our
 [YouTube video series](https://www.youtube.com/playlist?list=PL7WG7YrwYcnDBDuCkFbcyjnZQrdskFsBz)
-for hands-on MLOps tutorials using CML! 🌟🌟🌟
+for hands-on MLOps tutorials using CML! 🌟
 
 https://youtu.be/9BgIDqAzfuA
+
+## Case studies
+
+Here are some example projects using CML.
+
+- [Basic CML project](https://github.com/iterative/cml_base_case)
+- [CML with DVC to pull data](https://github.com/iterative/cml_dvc_case)
+- [CML with Tensorboard](https://github.com/iterative/cml_tensorboard_case)
+- [CML with EC2 GPU](https://github.com/iterative/cml_cloud_case)
