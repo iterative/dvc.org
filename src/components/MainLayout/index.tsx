@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 
 import { IPageProps } from '../Page'
 import LayoutHeader from '../LayoutHeader'
-import HamburgerMenu from '../HamburgerMenu'
 import LayoutFooter from '../LayoutFooter'
 import { handleFirstTab } from '../../utils/front/accessibility'
 
@@ -10,7 +9,8 @@ import styles from './styles.module.css'
 
 export enum LayoutModifiers {
   Wide,
-  Collapsed
+  Collapsed,
+  HideAlert
 }
 
 export interface ILayoutModifiable {
@@ -52,7 +52,6 @@ const MainLayout: LayoutComponent = ({
   return (
     <>
       <LayoutHeader modifiers={modifiers} />
-      <HamburgerMenu />
       <div id="layoutContent" className={styles.pageContent}>
         {children}
       </div>

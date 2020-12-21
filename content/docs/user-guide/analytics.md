@@ -7,8 +7,8 @@ run `dvc init`.
 ## Motivation
 
 Analytics help us to decide on how best to design future features and prioritize
-current work. Anonymous aggregate user analytics allow us to prioritize fixes
-and features based on how, where and when people use DVC. For example:
+current work. Anonymous aggregates of user analytics allow us to prioritize
+fixes and improvements based on how, where and when people use DVC. For example:
 
 - If reflinks (depends on a file system type) are supported for most users, we
   can keep cache protected mode off by default (see `dvc unprotect`).
@@ -45,7 +45,7 @@ They are done in a separate background process and fail fast to avoid delaying
 any execution. They will fail immediately and silently if you have no network
 connection.
 
-DVC's analytics are sent throughout DVC's proxy to Google Analytics over HTTPS.
+DVC's analytics are sent through DVC's proxy to Google Analytics over HTTPS.
 
 ## Opting out
 

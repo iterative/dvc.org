@@ -94,8 +94,12 @@ async function uploadToS3(dir, childPrefix, basePrefix = s3Prefix) {
   console.timeEnd(timeString)
 }
 
+async function cleanEntry([dir]) {
+  return remove(localPath(dir))
+}
+
 async function cleanAllLocal(entries) {
-  return Promise.all(entries.map(([dir]) => remove(localPath(dir))))
+  return Promise.all(entries.map(cleanEntry))
 }
 
 async function downloadAllFromS3(entries, basePrefix) {
@@ -137,6 +141,7 @@ module.exports = {
   uploadAllToS3,
   downloadAllFromS3,
   withEntries,
+  cleanEntry,
   cleanAllLocal,
   prefixIsEmpty
 }

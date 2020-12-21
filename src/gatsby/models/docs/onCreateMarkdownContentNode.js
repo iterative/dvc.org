@@ -1,11 +1,14 @@
 const path = require('path')
 
-function createMarkdownDocsNode(api, { parentNode }) {
+async function createMarkdownDocsNode(api, { parentNode, createChildNode }) {
+  // Suppress page creation for Basic Concepts and the Glossary
+  // They're only used in tooltips now, but we intend to expand on them later.
+  if (parentNode.relativeDirectory === 'docs/user-guide/basic-concepts') return
+
   const splitDir = parentNode.relativeDirectory.split('/')
   if (splitDir[0] !== 'docs') return
 
-  const { node, actions, createNodeId, createContentDigest } = api
-  const { createNode, createParentChildLink } = actions
+  const { node, createNodeId, createContentDigest } = api
   const { name, relativePath } = parentNode
   splitDir[0] = 'doc'
 
@@ -14,7 +17,10 @@ function createMarkdownDocsNode(api, { parentNode }) {
   const fieldData = {
     slug,
     rawMarkdownBody: node.rawMarkdownBody,
-    sourcePath: relativePath
+    sourcePath: relativePath,
+    template: node.frontmatter.template,
+    title: node.frontmatter.title === '' ? null : node.frontmatter.title,
+    description: node.frontmatter.description
   }
 
   const docNode = {
@@ -28,8 +34,7 @@ function createMarkdownDocsNode(api, { parentNode }) {
     }
   }
 
-  createNode(docNode)
-  createParentChildLink({ parent: node, child: docNode })
+  return createChildNode(docNode)
 }
 
 module.exports = createMarkdownDocsNode

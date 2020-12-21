@@ -1,0 +1,50 @@
+name: Check new links against deployment
+# This workflow "triggers" and skips on deployment because GitHub Actions /
+# Checks refuses to show the check on deployment_status
+on:
+  - deployment
+  - deployment_status
+
+jobs:
+  run:
+    name: Initialize
+    runs-on: ubuntu-latest
+    if: github.event.deployment.ref != 'master' && github.event.deployment_status.state == 'success'
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - id: build_check
+        uses: LouisBrunner/checks-action@v1.0.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          name: Report
+          status: queued
+
+      - name: Run Link Check
+        id: check
+        uses: 'iterative/link-check.action@v0.7'
+        with:
+          diff: true
+          configFile: 'config/link-check/config.yml'
+          rootURL: '${{ github.event.deployment.payload.web_url }}'
+          output: checksAction
+
+      - uses: LouisBrunner/checks-action@v1.0.0
+        if: ${{ success() }}
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          check_id: ${{ steps.build_check.outputs.check_id }}
+          status: completed
+          conclusion: ${{ steps.check.outputs.conclusion }}
+          output: ${{ steps.check.outputs.output }}
+
+      - uses: LouisBrunner/checks-action@v1.0.0
+        if: ${{ failure() }}
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          check_id: ${{ steps.build_check.outputs.check_id }}
+          status: completed
+          conclusion: failure
+          output: >-
+            {"summary": "The Link Check script had an error!"}

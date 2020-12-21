@@ -23,8 +23,8 @@ into the local file system. The `dvc get-url` command helps the user do just
 that.
 
 > Note that unlike `dvc import-url`, this command does not track the downloaded
-> data files (does not create a DVC-file). For that reason, this command doesn't
-> require an existing <abbr>DVC project</abbr> to run in.
+> data files (does not create a `.dvc` file). For that reason, this command
+> doesn't require an existing <abbr>DVC project</abbr> to run in.
 
 The `url` argument should provide the location of the data to be downloaded,
 while `out` can be used to specify the directory and/or file name desired for
@@ -33,14 +33,18 @@ directory will be placed inside.
 
 DVC supports several types of (local or) remote locations (protocols):
 
-| Type    | Description    | `url` format                               |
-| ------- | -------------- | ------------------------------------------ |
-| `local` | Local path     | `/path/to/local/data`                      |
-| `s3`    | Amazon S3      | `s3://mybucket/data`                       |
-| `gs`    | Google Storage | `gs://mybucket/data`                       |
-| `ssh`   | SSH server     | `ssh://user@example.com:/path/to/data`     |
-| `hdfs`  | HDFS to file\* | `hdfs://user@example.com/path/to/data.csv` |
-| `http`  | HTTP to file\* | `https://example.com/path/to/data.csv`     |
+| Type      | Description                  | `url` format example                          |
+| --------- | ---------------------------- | --------------------------------------------- |
+| `s3`      | Amazon S3                    | `s3://bucket/data`                            |
+| `azure`   | Microsoft Azure Blob Storage | `azure://container/data`                      |
+| `gdrive`  | Google Drive                 | `gdrive://<folder-id>/data`                   |
+| `gs`      | Google Cloud Storage         | `gs://bucket/data`                            |
+| `ssh`     | SSH server                   | `ssh://user@example.com/path/to/data`         |
+| `hdfs`    | HDFS to file\*               | `hdfs://user@example.com/path/to/data.csv`    |
+| `http`    | HTTP to file\*               | `https://example.com/path/to/data.csv`        |
+| `webdav`  | WebDav to file\*             | `webdavs://example.com/enpoint/path`          |
+| `webhdfs` | HDFS REST API\*              | `webhdfs://user@example.com/path/to/data.csv` |
+| `local`   | Local path                   | `/path/to/local/data`                         |
 
 > If you installed DVC via `pip` and plan to use cloud services as remote
 > storage, you might need to install these optional dependencies: `[s3]`,
@@ -48,8 +52,15 @@ DVC supports several types of (local or) remote locations (protocols):
 > include them all. The command should look like this: `pip install "dvc[s3]"`.
 > (This example installs `boto3` library along with DVC to support S3 storage.)
 
-\* HDFS and HTTP **do not** support downloading entire directories, only single
-files.
+\* Notes on remote locations:
+
+- HDFS, HTTP, WebDav, and WebHDFS **do not** support downloading entire
+  directories, only single files.
+
+- `remote://myremote/path/to/file` notation just means that a DVC
+  [remote](/doc/command-reference/remote) `myremote` is defined and when DVC is
+  running. DVC automatically expands this URL into a regular S3, SSH, GS, etc
+  URL by appending `/path/to/file` to the `myremote`'s configured base path.
 
 Another way to understand the `dvc get-url` command is as a tool for downloading
 data files. On GNU/Linux systems for example, instead of `dvc get-url` with
@@ -72,19 +83,6 @@ $ wget https://example.com/path/to/data.csv
 
 <details>
 
-### Click and expand for a local example
-
-```dvc
-$ dvc get-url /local/path/to/data
-```
-
-The above command will copy the `/local/path/to/data` file or directory into
-`./dir`.
-
-</details>
-
-<details>
-
 ### Click for Amazon S3 example
 
 This command will copy an S3 object into the current working directory with the
@@ -98,7 +96,7 @@ By default, DVC expects that AWS CLI is already
 [configured](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html).
 
 DVC will use the AWS credentials file to access S3. To override the
-configuration, you can the parameters described in `dvc remote modify`.
+configuration, you can use the parameters described in `dvc remote modify`.
 
 > We use the `boto3` library to and communicate with AWS. The following API
 > methods may be performed:
@@ -154,5 +152,28 @@ $ dvc get-url hdfs://user@example.com/path/to/file
 ```dvc
 $ dvc get-url https://example.com/path/to/file
 ```
+
+</details>
+
+<details>
+
+### Click for WebHDFS example
+
+```dvc
+$ dvc get-url webhdfs://user@example.com/path/to/file
+```
+
+</details>
+
+<details>
+
+### Click and expand for a local example
+
+```dvc
+$ dvc get-url /local/path/to/data
+```
+
+The above command will copy the `/local/path/to/data` file or directory into
+`./dir`.
 
 </details>

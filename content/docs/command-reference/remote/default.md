@@ -1,20 +1,16 @@
 # remote default
 
-Set/unset the default data remote.
+Set/unset the default [data remote](/doc/command-reference/remote).
 
 > Depending on your remote storage type, you may also need `dvc remote modify`
 > to provide credentials and/or configure other remote parameters.
 
-See also [add](/doc/command-reference/remote/add),
-[list](/doc/command-reference/remote/list),
-[modify](/doc/command-reference/remote/modify), and
-[remove](/doc/command-reference/remote/remove) commands to manage data remotes.
-
 ## Synopsis
 
 ```usage
-usage: dvc remote default [-h] [--global] [--system] [--local]
-                          [-q | -v] [-u] [name]
+usage: dvc remote default [-h] [--global | --system | --local]
+                          [-q | -v] [-u]
+                          [name]
 
 positional arguments:
   name           Name of the remote.
@@ -22,7 +18,7 @@ positional arguments:
 
 ## Description
 
-You can query/set/replace/unset default remote using the options of this
+You can query/set/replace/unset the _default remote_ using the options of this
 command. If the `name` of the remote is not provided and `--unset` is not
 specified, this command returns the name of the default remote.
 
@@ -38,9 +34,9 @@ This command assigns the default remote in the core section of the DVC
 remote = myremote
 ```
 
-For the commands that accept a `--remote` option (`dvc pull`, `dvc push`,
-`dvc status`, `dvc gc`, `dvc fetch`), the default remote is used if that option
-is not used.
+Default remotes are expected by commands that accept a `-r`/`--remote` option
+(`dvc pull`, `dvc push`, `dvc status`, `dvc gc`, `dvc fetch`) when that option
+is omitted.
 
 You can also use `dvc config`, `dvc remote add` and `dvc remote modify` commands
 to set/unset/change the default remote configurations.
@@ -53,7 +49,7 @@ to set/unset/change the default remote configurations.
   `~/.config/dvc/config`) instead of `.dvc/config`.
 
 - `--system` - save remote configuration to the system config (e.g.
-  `/etc/dvc.config`) instead of `.dvc/config`.
+  `/etc/dvc/config`) instead of `.dvc/config`.
 
 - `--local` - modify a local [config file](/doc/command-reference/config)
   instead of `.dvc/config`. It is located in `.dvc/config.local` and is

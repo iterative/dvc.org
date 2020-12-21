@@ -9,39 +9,45 @@ workarounds that can help avoid these potential problems:
 
 The regular Command Prompt (`cmd`) in Windows will most likely not help you use
 DVC effectively, or follow the examples in our docs. Please avoid it. There's no
-perfect solution, bu here are some ideas:
+perfect solution, but here are some ideas:
 
 - The full [Cmder](https://cmder.net/) console emulator combines several useful
   tools like [ConEmu](https://conemu.github.io/), and
-  [Git for Windows](https://gitforwindows.org/)\* (Git Bash) among other
+  [Git for Windows](https://gitforwindows.org/) (Git Bash) among other
   [shell options](https://github.com/cmderdev/cmder/blob/master/README.md#access-to-multiple-shells-in-one-window-using-tabs).
 - [Anaconda Prompt](https://docs.anaconda.com/anaconda/user-guide/getting-started/#open-prompt-win)
-  is another recommendation, but it may not support all the desired CLI features
-  (e.g. `\` line continuation).
+  is another recommendation.
 - Consider enabling and using
   [WSL](https://blogs.windows.com/windowsdeveloper/2016/03/30/run-bash-on-ubuntu-on-windows/)
   ([Windows Terminal](https://devblogs.microsoft.com/commandline/) also
-  recommended). But it has major
+  recommended) which supports the most CLI features (e.g. `\` line
+  continuation). But it has major
   [I/O performance issues](https://www.phoronix.com/scan.php?page=article&item=windows10-okt-wsl&num=2)
   and is [unable to access GPUs](https://github.com/Microsoft/WSL/issues/829),
-  et al.\*
+  among other limitations.
 - Install an actual Linux distro (e.g. Ubuntu) on a virtual machine, or in a HD
   partition (dual boot).
 
-## Disable short-file name generation
+## Enable symbolic links
 
-With NTFS, users may want to disable `8dot3` as per
-[this article](https://support.microsoft.com/en-us/help/121007/how-to-disable-8-3-file-name-creation-on-ntfs-partitions)
-to disable the short-file name generation. It is important to do so for better
-performance when the user has over 300K files in a single directory.
+This is done automatically by the DVC's Windows
+[installer](/doc/install/windows), but you may want to do it manually after any
+other installation methods like (`choco`, `conda`, `pip`).
+
+Symlinks are one of the possible file link types that DVC can use for
+[optimization](/doc/user-guide/large-dataset-optimization) purposes. They are
+available on Windows, but the
+[Create symbolic links](<https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn221947(v=ws.11)>)
+user privilege is needed. It's granted to the _Administrators_ group by default,
+so running `dvc` in a terminal as an admin is a good option for occasional use.
+For regular users, it can be granted using the _Local Security Policy_ console.
 
 ## Whitelist in Windows Security
 
 Windows 10 includes the
 [Windows Security](https://support.microsoft.com/en-us/help/4013263/windows-10-stay-protected-with-windows-security)
-antivirus features. If user wants to avoid antivirus scans on specific folders
-or files to improve the performance, then whitelist them in Windows Security as
-per
+antivirus. If user wants to avoid antivirus scans on specific folders or files
+to improve the performance, then whitelist them in Windows Security as per
 [this](https://support.microsoft.com/en-in/help/4028485/windows-10-add-an-exclusion-to-windows-security)
 guide. For example, we can whitelist DVC binary files on Windows to speed up the
 processes.
@@ -61,6 +67,13 @@ Search Indexing can also slow down file I/O operations on Windows. Try
 [disabling](https://winaero.com/blog/disable-search-indexing-windows-10/) this
 feature if you don't need it.
 
+## Disable short-file name generation
+
+With NTFS, users may want to disable `8dot3` as per
+[this article](https://support.microsoft.com/en-us/help/121007/how-to-disable-8-3-file-name-creation-on-ntfs-partitions)
+to disable the short-file name generation. It is important to do so for better
+performance when the user has over 300K files in a single directory.
+
 ## Avoid directories with large number of files
 
 The performance of NTFS degrades while handling large volumes of files in a
@@ -70,9 +83,9 @@ directory, as explained in
 ## Enabling paging with `less`
 
 By default, DVC tries to use [Less](<https://en.wikipedia.org/wiki/Less_(Unix)>)
-as pager for the output of `dvc pipeline show`. Windows doesn't have the less
-command available however. Fortunately, there is a easy way of installing `less`
-via [Chocolatey](https://chocolatey.org/) (please install the tool first):
+as pager for the output of `dvc dag`. Windows doesn't have the `less` command
+available however. Fortunately, there is a easy way of installing it via
+[Chocolatey](https://chocolatey.org/) (please install the tool first):
 
 ```dvc
 $ choco install less

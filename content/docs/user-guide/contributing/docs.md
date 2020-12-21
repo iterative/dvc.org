@@ -39,15 +39,15 @@ Otherwise, please refer to the following procedure:
   [issue tracker](https://github.com/iterative/dvc.org/issues) to let us know
   that you are working on this.
 
-- Format the code by following the
-  [code style guidelines](#code-style-guidelines) below. We highly recommend
-  setting up a [development environment](#development-environment) as explained
-  below. Among other things, it can help format the documentation and/or JS code
-  automatically.
+- Format the source code by following the
+  [style guidelines](#doc-style-guidelines-javascript-and-markdown) below. We
+  highly recommend setting up a
+  [development environment](#development-environment) as explained below. Among
+  other things, it can help format the documentation and JS code automatically.
 
 - Push the changes to your fork of
   [dvc.org](https://github.com/iterative/dvc.org.git) and submit a PR to the
-  original repository.
+  upstream repo.
 
 We will review your PR as soon as possible. Thank you for contributing!
 
@@ -79,17 +79,12 @@ $ yarn develop
 
 This will start the server on the default port, `8000`. Visit
 `http://localhost:8000/` and navigate to the page in question. This will also
-enable the Git pre-commit hook that will be formatting and linting your code and
+enable the pre-commit Git hook that will be formatting and linting your code and
 documentation files automatically.
 
 ### All commands
 
-Please, check the project's `package.json` file to see the complete list. For
-the tools we provide wrappers for your convenience, you can always call them
-directly (e.g. `yarn eslint <file>` or `yarn prettier --check <file>`).
-
-> All the style, linter, test checks below will be enforced automatically upon
-> [submitting PRs](#submitting-changes).
+These Node scripts are specified in the docs repo's `package.json` file.
 
 To build the project and run it:
 
@@ -97,19 +92,22 @@ To build the project and run it:
 - `yarn build` - build assets in the `public` directory.
 - `yarn start` - run production static server over the `public` directory.
 
+> All the tests, formatting, and linters below will be enforced automatically
+> upon [submitting PRs](#submitting-changes).
+
 If you change source code files, run tests:
 
 - `yarn test` - run tests.
 
-We use [Prettier](https://prettier.io/) to format our source code, below is a
+We use [Prettier](https://prettier.io/) to format our source code. Below is a
 set of wrapper commands for your convenience:
 
 - `yarn format-check` - check all source and content files that they are
-  properly formatted. This command does not fix any found issue, only reports
+  properly formatted. This script does not fix any found issue, only reports
   them.
 - `yarn format-all` - fix all found problems.
 - `yarn format-staged` - same, but only on staged files.
-- `yarn format <file>` - run this command `yarn format <file-name>` to format a
+- `yarn format <file>` - run this script `yarn format <file-name>` to format a
   specific file.
 
 We use linters (e.g. [ESLint](https://eslint.org/)) to check source code style
@@ -117,6 +115,9 @@ and detect different errors:
 
 - `yarn lint-ts` - lint source code files (`.ts`, `.js`, `tsx`, etc).
 - `yarn lint-css` - lint `.css` files.
+
+> Note that you can always use the formatter or linter directly (e.g.
+> `yarn eslint <file>` or `yarn prettier --check <file>`).
 
 ### ENV variables
 
@@ -134,26 +135,29 @@ Some available variables:
 
 ## Doc style guidelines (JavaScript and Markdown)
 
-Some the rules below are be enforced automatically by a Git pre-commit hook that
-is installed when `yarn` runs (explained above).
+Some the rules below are be applied automatically by a pre-commit Git hook that
+is installed when `yarn` runs (see [dev env](#development-environment)).
 
 - No trailing white spaces are allowed.
 
-- Content must be properly formatted at 80 symbols width.
+- Text content must be properly formatted at 80 symbols width.
 
   > 💡 We recommend using Visual Studio Code with the
   > [Rewrap](https://marketplace.visualstudio.com/items?itemName=stkb.rewrap)
   > plugin for help with this.
 
-- We use [Prettier](https://prettier.io/) to format our source code (see
-  [its configuration](https://github.com/iterative/dvc.org/blob/master/.prettierrc)).
-  The formatting of staged files will automatically be done by a Git pre-commit
-  hook. You may also run the formatting [commands](#all-commands) manually.
+- You can see the configuration of our formatter tool (Prettier)
+  [here](https://github.com/iterative/dvc.org/blob/master/.prettierrc). You may
+  also run the formatting [commands](#all-commands) manually.
   ([Advanced usage](https://prettier.io/docs/en/cli.html) of Prettier is
   available through `yarn prettier ...`)
 
 - Markdown: Using `dvc <command>`, the docs engine will create a link to that
   command automatically. (No need to use `[]()` explicitly to create them.)
+
+- Markdown: Using `dvc.api.<api_method>()` or `dvc.api`, the docs engine will
+  create a link to that API method automatically. (No need to use `[]()`
+  explicitly to create them.)
 
 - Markdown: Neither bullet lists nor each item's should be too long (3 sentence
   paragraphs max.) Full sentence bullets should begin with a capital letter and
@@ -165,8 +169,8 @@ is installed when `yarn` runs (explained above).
   `dvc`, `yaml`, or `diff` custom languages. `usage` is employed to show the
   `dvc --help` output for each command reference. `dvc` can be used to show
   examples of commands and their output in a terminal session. `yaml` is used to
-  show [DVC-file](/doc/user-guide/dvc-file-format) contents or other YAML data.
-  `diff` is used mainly for examples of `git diff` output.
+  show [DVC-file](/doc/user-guide/dvc-files-and-directories) contents or other
+  YAML data. `diff` is used mainly for examples of `git diff` output.
 
 > Check out the `.md` source code of any command reference to get a better idea,
 > for example in
@@ -193,9 +197,10 @@ We use **bold** text for emphasis, and _italics_ for special terms.
 
 We also use "emoji" symbols sparingly for visibility on certain notes. Mainly:
 
+- 📖 For notes that link to other related documentation
 - ⚠️ Warnings about possible problems related to DVC usage (similar to **Note!**
   and "Note that..." notes)
-- 💡 Useful tips related to external tools/integrations
+- 💡 Useful notes and tips, often related to external tools and integrations
 
-> Some other emojis currently in use here and there: ⚡🙏🐛⭐❗✅ (We're not
-> limited to these.)
+> Some other emojis currently in use here and there: ⚡✅🙏🐛⭐❗ (among
+> others).

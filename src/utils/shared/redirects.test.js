@@ -216,10 +216,17 @@ describe('getRedirects', () => {
 
     itRedirects('/doc/commands-reference/foo', '/doc/command-reference/foo')
 
-    itRedirects('/doc/tutorial', '/doc/tutorials')
-    itRedirects('/doc/tutorial/', '/doc/tutorials')
+    itRedirects('/doc/tutorial', '/doc/start')
+    itRedirects('/doc/tutorial/', '/doc/start')
+    itRedirects('/doc/tutorials', '/doc/start')
+    itRedirects('/doc/tutorials/', '/doc/start')
+    itRedirects('/doc/tutorials/deep', '/doc/start')
+    itRedirects(
+      '/doc/tutorials/versioning',
+      '/doc/use-cases/versioning-data-and-model-files/tutorial'
+    )
 
-    itRedirects('/doc/tutorial/bar', '/doc/tutorials/deep/bar')
+    itRedirects('/doc/tutorial/bar', '/doc/start')
 
     itRedirects(
       '/doc/use-cases/data-and-model-files-versioning',

@@ -76,8 +76,8 @@ image="/uploads/images/2019-08-01/principled-machine-learning.jpeg" />
 
 - **First
   [ML-REPA](http://ml-repa.ru/)[Meetup: Reproducible ML experiments](http://ml-repa.ru/page6697700.html)
-  hosted by [Raiffeisen DGTL](https://www.raiffeisen-digital.ru/?utm_referrer=)
-  — check out the video and slide decks.**
+  hosted by [Raiffeisen DGTL](https://dgtl.raiffeisen.ru/) check out the video
+  and slide decks.**
 
 <external-link
 href="http://ml-repa.ru/"

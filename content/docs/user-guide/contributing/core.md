@@ -49,11 +49,11 @@ Python. For Windows, we recommend an official
 
 Install DVC in editable mode with `pip install -e ".[all,tests]"`. But before we
 do that, we **strongly** recommend creating a
-[virtual environment](https://packaging.python.org/tutorials/installing-packages/#creating-virtual-environments):
+[virtual environment](https://python.readthedocs.io/en/stable/library/venv.html):
 
 ```dvc
 $ cd dvc
-$ virtualenv --python python3 .env
+$ python3 -m venv .env
 $ source .env/bin/activate
 $ pip install -e ".[all,tests]"
 ```
@@ -71,14 +71,14 @@ you experience any problems, please don't hesitate to ping us in our
 
 ## Writing tests
 
-We have unit tests and functional ones in `tests/unit/` and `tests/func/`
-correspondingly. Consider writing the former to ensure complicated functions and
-classes behave as expected.
+We have unit tests in `tests/unit/` and functional tests in `tests/func/`.
+Consider writing the former to ensure complicated functions and classes behave
+as expected.
 
-To test a specific functionality you will need to use functional tests alongside
-some [pytest](https://docs.pytest.org/en/latest/) fixtures to create a temporary
-directory, Git and/or DVC repo and bootstrap some files. See a
-[dir_helpers module](https://github.com/iterative/dvc/blob/master/tests/dir_helpers.py)
+For specific functionality, you will need to use functional tests alongside
+[pytest](https://docs.pytest.org/en/latest/) fixtures to create a temporary
+directory, Git and/or DVC repo, and bootstrap some files. See the
+[`dir_helpers` module](https://github.com/iterative/dvc/blob/master/tests/dir_helpers.py)
 docstring for some usage examples.
 
 ## Running tests
@@ -279,8 +279,8 @@ may use different names.
 
 ### Click for HDFS instructions
 
-Tests currently only work on Linux. First you need to set up passwordless ssh
-access to localhost:
+Tests currently only work on Linux. First you need to set up passwordless SSH
+auth to localhost:
 
 ```dvc
 # Only run the next line if you don't yet have keys

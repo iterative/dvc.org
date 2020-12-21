@@ -31,7 +31,7 @@ to the bucket where the data should be stored to the `dvc remote add` command.
 For example:
 
 ```dvc
-$ dvc remote add -d myremote s3://mybucket/myproject
+$ dvc remote add -d myremote s3://mybucket/path
 Setting 'myremote' as a default remote.
 ```
 
@@ -43,7 +43,7 @@ remote section for it:
 
 ```dvc
 ['remote "myremote"']
-url = s3://mybucket/myproject
+url = s3://mybucket/path
 [core]
 remote = myremote
 ```
@@ -67,8 +67,8 @@ with the `dvc push` command:
 $ dvc push
 ```
 
-Code and [DVC-files](/doc/user-guide/dvc-file-format) can be safely committed
-and pushed with Git.
+Code and [DVC-files](/doc/user-guide/dvc-files-and-directories) can be safely
+committed and pushed with Git.
 
 ## Download code
 

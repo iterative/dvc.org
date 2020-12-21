@@ -17,9 +17,9 @@ Get the PKG (binary) from the big "Download" button on the [home page](/), or
 from the [release page](https://github.com/iterative/dvc/releases/) on GitHub.
 
 > Note that currently, in order to open the PKG file, you must go to the
-> Downloads directory in Finder and use
+> **Downloads** directory in Finder and do a
 > [secondary click](https://support.apple.com/en-us/HT207700) on it, then select
-> "Open With" > **Installer.app**, and choose the **Open** button.
+> "Open With" > **Installer.app**, and click the **Open** button.
 
 > You may try [these instructions](https://stackoverflow.com/a/42120328/761963)
 > to uninstall the MacOS package.
@@ -27,7 +27,7 @@ from the [release page](https://github.com/iterative/dvc/releases/) on GitHub.
 ## Install with pip
 
 > We **strongly** recommend creating a
-> [virtual environment](https://packaging.python.org/tutorials/installing-packages/#creating-virtual-environments)
+> [virtual environment](https://python.readthedocs.io/en/stable/library/venv.html)
 > or using
 > [pipx](https://packaging.python.org/guides/installing-stand-alone-command-line-tools/)
 > (on Python 3.6+) to encapsulate your local environment.

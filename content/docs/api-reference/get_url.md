@@ -29,14 +29,14 @@ Returns the URL string of the storage location (in a
 specified by its `path` in a `repo` (<abbr>DVC project</abbr>), is stored.
 
 The URL is formed by reading the project's
-[remote configuration](/doc/command-reference/config#remote) and the
-[DVC-file](/doc/user-guide/dvc-file-format) where the given `path` is found
-(`outs` field). The URL schema returned depends on the
+[remote configuration](/doc/command-reference/config#remote) and the `dvc.yaml`
+or `.dvc` file where the given `path` is found (`outs` field). The schema of the
+URL returned depends on the
 [type](/doc/command-reference/remote/add#supported-storage-types) of the
 `remote` used (see the [Parameters](#parameters) section).
 
 If the target is a directory, the returned URL will end in `.dir`. Refer to
-[Structure of cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory)
+[Structure of cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-the-cache-directory)
 and `dvc add` to learn more about how DVC handles data directories.
 
 ⚠️ This function does not check for the actual existence of the file or
@@ -50,8 +50,8 @@ or
 
 ## Parameters
 
-- **`path`** - location and file name of the file or directory in `repo`,
-  relative to the project's root.
+- **`path`** (required) - location and file name of the target, relative to the
+  root of the project (`repo`).
 
 - `repo` - specifies the location of the DVC project. It can be a URL or a file
   system path. Both HTTP and SSH protocols are supported for online Git repos
@@ -67,8 +67,6 @@ or
   [default remote](/doc/command-reference/remote/default) of `repo` is used.
 
 ## Exceptions
-
-- `dvc.api.UrlNotDvcRepoError` - `repo` is not a DVC project.
 
 - `dvc.exceptions.NoRemoteError` - no `remote` is found.
 
@@ -90,7 +88,7 @@ The script above prints
 `https://remote.dvc.org/dataset-registry/a3/04afb96060aad90176268345e10355`
 
 This URL represents the location where the data is stored, and is built by
-reading the corresponding DVC-file
+reading the corresponding `.dvc` file
 ([`get-started/data.xml.dvc`](https://github.com/iterative/dataset-registry/blob/master/get-started/data.xml.dvc))
 where the `md5` file hash is stored,
 

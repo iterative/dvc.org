@@ -1,18 +1,14 @@
 # remote remove
 
-Remove a data remote. This command affects DVC configuration files only, it does
-not physically remove data files stored remotely.
-
-See also [add](/doc/command-reference/remote/add),
-[default](/doc/command-reference/remote/default),
-[list](/doc/command-reference/remote/list), and
-[modify](/doc/command-reference/remote/modify) commands to manage data remotes.
+Remove a [data remote](/doc/command-reference/remote). This command affects DVC
+configuration files only, it does not physically remove data files stored
+remotely.
 
 ## Synopsis
 
 ```usage
-usage: dvc remote remove [-h] [--global] [--system] [--local]
-                         [-q | -v] name
+usage: dvc remote remove [-h] [--global | --system | --local] [-q | -v]
+                         name
 
 positional arguments:
   name           Name of the remote to remove
@@ -20,11 +16,11 @@ positional arguments:
 
 ## Description
 
-Remote `name` is required.
-
 This command removes a section in the DVC
 [config file](/doc/command-reference/config). Alternatively, it is possible to
 edit config files manually.
+
+The `name` argument is required.
 
 ## Options
 
@@ -32,7 +28,7 @@ edit config files manually.
   `~/.config/dvc/config`) instead of `.dvc/config`.
 
 - `--system` - save remote configuration to the system config (e.g.
-  `/etc/dvc.config`) instead of `.dvc/config`.
+  `/etc/dvc/config`) instead of `.dvc/config`.
 
 - `--local` - modify a local [config file](/doc/command-reference/config)
   instead of `.dvc/config`. It is located in `.dvc/config.local` and is
@@ -50,7 +46,7 @@ edit config files manually.
 Add Amazon S3 remote:
 
 ```dvc
-$ dvc remote add myremote s3://mybucket/myproject
+$ dvc remote add myremote s3://mybucket/path
 ```
 
 Remove it:

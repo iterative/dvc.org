@@ -20,8 +20,8 @@
   }
 
   :global(.ReactCollapse--collapse) {
-    padding-left: 20px;
     transition: height 250ms;
+    padding-left: 10px;
   }
 }
 
@@ -45,9 +45,8 @@
   display: block;
   position: relative;
   min-height: 26px;
-  margin: 0 0 0 5px;
-  padding-left: 15px;
-  padding-bottom: 5px;
+  margin: 0;
+  padding: 0 0 5px 15px;
   font-size: 18px;
   line-height: 26px;
   font-weight: 400;
@@ -65,30 +64,45 @@
   &.active {
     color: var(--color-gray-hover);
   }
+}
 
+.withDefaultBullet {
   &::before {
     content: '';
     position: absolute;
     left: 0;
-    top: 10px;
+    top: 9px;
     display: block;
-    height: 5px;
+    height: 8px;
     width: 8px;
     background: url('/img/triangle_dark.svg') no-repeat center center;
+  }
+
+  &.active::before {
+    animation: rotateIcon 0.5s forwards;
+  }
+
+  &.leafItem::before {
+    background: url('/img/default_bullet_dark.svg') no-repeat center center;
   }
 }
 
 @keyframes rotateIcon {
   100% {
-    transform: rotate(-90deg);
+    transform: rotate(90deg);
   }
-}
-
-.active::before {
-  animation: rotateIcon 0.5s forwards;
 }
 
 .footer {
   margin-top: 30px;
   padding-bottom: 30px;
+}
+
+.specialIcon {
+  color: var(--color-gray-light);
+  position: absolute;
+  width: 0.65rem;
+  height: 0.65rem;
+  top: 0.5rem;
+  left: -0.08rem;
 }

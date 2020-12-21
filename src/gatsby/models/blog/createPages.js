@@ -6,8 +6,6 @@ const { BLOG } = require('../../../consts')
 // developing. Set LIMIT_BLOG_PAGES to anything truthy and this module will
 // attempt to generate as few blog pages as possible while still having a bit of
 // everything to look at.
-const LIMIT_BLOG_PAGES = Boolean(process.env.LIMIT_BLOG_PAGES)
-
 const pageUrl = (basePath, page) => {
   if (page > 1) {
     const basePrefix = basePath === '/' ? '' : `${basePath}/`
@@ -52,7 +50,16 @@ function* pagesGenerator({ itemCount, hasHeroItem = false, basePath }) {
   }
 }
 
+const getPageLimit = LIMIT_BLOG_PAGES => {
+  if (LIMIT_BLOG_PAGES === undefined) return 9999
+  const numberLimit = Number(LIMIT_BLOG_PAGES)
+  if (numberLimit === NaN)
+    throw new Error('LIMIT_BLOG_PAGES must be a number of pages!')
+  return numberLimit
+}
+
 const createPages = async ({ graphql, actions }) => {
+  const { LIMIT_BLOG_PAGES } = process.env
   const blogResponse = await graphql(
     `
       query BlogPageBuilderQuery($limit: Int) {
@@ -71,7 +78,7 @@ const createPages = async ({ graphql, actions }) => {
       }
     `,
     {
-      limit: LIMIT_BLOG_PAGES ? 1 : 9999
+      limit: getPageLimit(LIMIT_BLOG_PAGES)
     }
   )
 
@@ -127,7 +134,7 @@ const createPages = async ({ graphql, actions }) => {
   // We have to explicitly limit tag pages here, otherwise we get one for
   // every tag on the example post that makes images for a few children.
   // That can easily add hundreds of images because of the blog index template.
-  const _tags = LIMIT_BLOG_PAGES ? tags.slice(0, 1) : tags
+  const _tags = LIMIT_BLOG_PAGES !== undefined ? tags.slice(0, 1) : tags
 
   const tagPagesPromise = Promise.all(
     _tags.map(({ fieldValue: tag, pageInfo: { itemCount } }) => {

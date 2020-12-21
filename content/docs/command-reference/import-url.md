@@ -2,7 +2,7 @@
 
 Download a file or directory from a supported URL (for example `s3://`,
 `ssh://`, and other protocols) into the <abbr>workspace</abbr>, and track
-changes in the remote data source. Creates a DVC-file.
+changes in the remote data source. Creates a `.dvc` file.
 
 > See `dvc import` to download and tack data/model files or directories from
 > other <abbr>DVC repositories</abbr> (e.g. hosted on GitHub).
@@ -10,7 +10,9 @@ changes in the remote data source. Creates a DVC-file.
 ## Synopsis
 
 ```usage
-usage: dvc import-url [-h] [-q | -v] [-f <filename>] url [out]
+usage: dvc import-url [-h] [-q | -v] [--file <filename>] [--no-exec]
+                      [--desc <text>]
+                      url [out]
 
 positional arguments:
   url                   (See supported URLs in the description.)
@@ -41,25 +43,31 @@ while `out` can be used to specify the directory and/or file name desired for
 the downloaded data. If an existing directory is specified, the file or
 directory will be placed inside.
 
-[DVC-files](/doc/user-guide/dvc-file-format) support references to data in an
-external location, see
-[External Dependencies](/doc/user-guide/external-dependencies). In such a
-DVC-file, the `deps` field stores the remote URL, and the `outs` field contains
-the corresponding local path in the <abbr>workspace</abbr>. It records enough
-metadata about the imported data to enable DVC efficiently determining whether
-the local copy is out of date.
+`.dvc` files support references to data in an external location, see
+[External Dependencies](/doc/user-guide/external-dependencies). In such an
+import `.dvc` file, the `deps` field stores the remote URL, and the `outs` field
+contains the corresponding local path in the <abbr>workspace</abbr>. It records
+enough metadata about the imported data to enable DVC efficiently determining
+whether the local copy is out of date.
+
+Note that `dvc repro` doesn't check or update import `.dvc` files, use
+`dvc update` to bring the import up to date from the data source.
 
 DVC supports several types of (local or) remote locations (protocols):
 
-| Type     | Description                                         | `url` format                               |
-| -------- | --------------------------------------------------- | ------------------------------------------ |
-| `local`  | Local path                                          | `/path/to/local/data`                      |
-| `s3`     | Amazon S3                                           | `s3://mybucket/data`                       |
-| `gs`     | Google Storage                                      | `gs://mybucket/data`                       |
-| `ssh`    | SSH server                                          | `ssh://user@example.com:/path/to/data`     |
-| `hdfs`   | HDFS to file (explanation below)                    | `hdfs://user@example.com/path/to/data.csv` |
-| `http`   | HTTP to file with _strong ETag_ (explanation below) | `https://example.com/path/to/data.csv`     |
-| `remote` | Remote path (see explanation below)                 | `remote://myremote/path/to/data`           |
+| Type      | Description                  | `url` format example                          |
+| --------- | ---------------------------- | --------------------------------------------- |
+| `s3`      | Amazon S3                    | `s3://bucket/data`                            |
+| `azure`   | Microsoft Azure Blob Storage | `azure://container/data`                      |
+| `gdrive`  | Google Drive                 | `gdrive://<folder-id>/data`                   |
+| `gs`      | Google Cloud Storage         | `gs://bucket/data`                            |
+| `ssh`     | SSH server                   | `ssh://user@example.com/path/to/data`         |
+| `hdfs`    | HDFS to file\*               | `hdfs://user@example.com/path/to/data.csv`    |
+| `http`    | HTTP to file with _ETag_\*   | `https://example.com/path/to/data.csv`        |
+| `webdav`  | WebDav to file\*             | `webdavs://example.com/endpoint/path`         |
+| `webhdfs` | HDFS REST API\*              | `webhdfs://user@example.com/path/to/data.csv` |
+| `local`   | Local path                   | `/path/to/local/data`                         |
+| `remote`  | Remote path\*                | `remote://remote-name/data`                   |
 
 > If you installed DVC via `pip` and plan to use cloud services as remote
 > storage, you might need to install these optional dependencies: `[s3]`,
@@ -67,54 +75,64 @@ DVC supports several types of (local or) remote locations (protocols):
 > include them all. The command should look like this: `pip install "dvc[s3]"`.
 > (This example installs `boto3` library along with DVC to support S3 storage.)
 
-Specific explanations:
+\* Notes on remote locations:
 
-- HDFS and HTTP **do not** support downloading entire directories, only single
-  files.
+- HDFS, HTTP, WebDav, and WebHDFS **do not** support downloading entire
+  directories, only single files.
 
 - In case of HTTP,
-  [strong ETag](https://en.wikipedia.org/wiki/HTTP_ETag#Strong_and_weak_validation)
-  is necessary to track if the specified remote file (URL) changed to download
-  it again.
+  [ETag](https://en.wikipedia.org/wiki/HTTP_ETag#Strong_and_weak_validation) is
+  necessary to track if the specified remote file (URL) changed to download it
+  again.
 
 - `remote://myremote/path/to/file` notation just means that a DVC
   [remote](/doc/command-reference/remote) `myremote` is defined and when DVC is
   running. DVC automatically expands this URL into a regular S3, SSH, GS, etc
   URL by appending `/path/to/file` to the `myremote`'s configured base path.
 
-Another way to understand the `dvc import-url` command is as a short-cut for a
-more verbose `dvc run` command. This is discussed in the
-[External Dependencies](/doc/user-guide/external-dependencies) documentation,
-where an alternative is demonstrated for each of these schemes.
+Another way to understand the `dvc import-url` command is as a shortcut for
+generating a pipeline stage with and external dependency. This is discussed in
+the [External Dependencies](/doc/user-guide/external-dependencies)
+documentation, where an alternative is demonstrated for each of these schemes.
 
 Instead of:
 
 ```dvc
-$ dvc import-url https://example.com/path/to/data.csv data.csv
+$ dvc import-url https://data.dvc.org/get-started/data.xml data.xml
 ```
 
-It is possible to instead use `dvc run`, for example (HTTP URL):
+It is possible to use `dvc run`, for example (HTTP URL):
 
 ```dvc
-$ dvc run -d https://example.com/path/to/data.csv \
-          -o data.csv \
-          wget https://example.com/path/to/data.csv -O data.csv
+$ dvc run -n download_data \
+          -d https://data.dvc.org/get-started/data.xml \
+          -o data.xml \
+          wget https://data.dvc.org/get-started/data.xml -O data.xml
 ```
 
-Both methods generate a [DVC-files](/doc/user-guide/dvc-file-format) with an
-external dependency, but the one created by `dvc import-url` preserves the
-connection to the data source. We call this an _import stage_.
+`dvc import-url` generates an _import stage_ `.dvc` file and `dvc run` a regular
+stage (in `dvc.yaml`).
 
-Note that import stages are considered always locked, meaning that if you run
-`dvc repro`, they won't be updated. Use `dvc update` on them to bring the import
-up to date from the external data source.
+⚠️ DVC won't push or pull imported data to/from
+[remote storage](/doc/command-reference/remote), it will rely on it's original
+source.
 
 ## Options
 
-- `-f <filename>`, `--file <filename>` - specify a path and/or file name for the
-  DVC-file created by this command (e.g. `-f stages/stage.dvc`). This overrides
-  the default file name: `<file>.dvc`, where `<file>` is the desired file name
-  of the imported data (`out`).
+- `--file <filename>` - specify a path and/or file name for the `.dvc` file
+  created by this command (e.g. `--file stages/stage.dvc`). This overrides the
+  default file name: `<file>.dvc`, where `<file>` is the desired file name of
+  the imported data (`out`).
+
+- `--no-exec` - create the import `.dvc` file but don't download `url` (assumes
+  that the data source is valid). You can use `dvc update` to finish the
+  operation. This is useful if you need to define the project imports quickly,
+  and download everything later (with `dvc update`); or if the target data
+  already exist locally and you want to "DVCfy" this state of the project (see
+  also `dvc commit`).
+
+- `--desc <text>` - user description of the data (optional). This doesn't  
+  affect any DVC operations.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -134,26 +152,22 @@ in the [Get Started](/doc/tutorials/get-started).
 
 Start by cloning our example repo if you don't already have it. Then move into
 the repo and checkout the
-[2-remote](https://github.com/iterative/example-get-started/releases/tag/2-remote)
-tag, corresponding to the [Configure](/doc/tutorials/get-started/configure) _Get
-Started_ chapter:
+[3-config-remote](https://github.com/iterative/example-get-started/releases/tag/3-config-remote)
+tag, section of the _Get Started_:
 
 ```dvc
 $ git clone https://github.com/iterative/example-get-started
 $ cd example-get-started
-$ git checkout 2-remote
-$ mkdir data
+$ git checkout 3-config-remote
 ```
-
-You should now have a blank workspace, just before the
-[Add Files](/doc/tutorials/get-started/add-files) chapter.
 
 </details>
 
 ## Example: Tracking a remote file
 
-An advanced alternate to [Add Files](/doc/tutorials/get-started/add-files)
-chapter of the _Get Started_ is to use `dvc import-url`:
+An advanced alternate to the intro of the
+[Versioning Basics](/doc/tutorials/get-started/data-versioning) part of the _Get
+Started_ is to use `dvc import-url`:
 
 ```dvc
 $ dvc import-url https://data.dvc.org/get-started/data.xml \
@@ -165,29 +179,26 @@ To track the changes with git, run:
 	git add data.xml.dvc data/.gitignore
 ```
 
-Let's take a look at the resulting stage file (DVC-file) `data.xml.dvc`:
+Let's take a look at the changes to the `data.xml.dvc`:
 
-```yaml
-md5: 61e80c38c1ce04ed2e11e331258e6d0d
-wdir: .
-deps:
-  - etag: '"f432e270cd634c51296ecd2bc2f5e752-5"'
-    path: https://data.dvc.org/get-started/data.xml
-outs:
-  - md5: a304afb96060aad90176268345e10355
-    path: data/data.xml
-    cache: true
-    metric: false
-    persist: false
+```diff
++md5: c4d6740ee09950bb532d418b8ae0b52e
++frozen: true
++deps:
++- etag: '"f432e270cd634c51296ecd2bc2f5e752-5"'
++  path: https://data.dvc.org/get-started/data.xml
+ outs:
+ - md5: a304afb96060aad90176268345e10355
+   path: data.xml
+   cache: true
 ```
 
-The `etag` field in the DVC-file contains the
+The `etag` field in the `.dvc` file contains the
 [ETag](https://en.wikipedia.org/wiki/HTTP_ETag) recorded from the HTTP request.
 If the remote file changes, its ETag will be different. This metadata allows DVC
-to determine whether its necessary to download it again.
+to determine whether it's necessary to download it again.
 
-> See [DVC-File Format](/doc/user-guide/dvc-file-format) for more details on the
-> text format above.
+> See `.dvc` files for more details on the format above.
 
 You may want to get out of and remove the `example-get-started/` directory after
 trying this example (especially if trying out the following one).
@@ -196,8 +207,8 @@ trying this example (especially if trying out the following one).
 
 What if that remote file is updated regularly? The project goals might include
 regenerating some results based on the updated data source.
-[Pipeline](/doc/command-reference/pipeline) reproduction can be triggered based
-on a changed external dependency.
+[Pipeline](/doc/command-reference/dag) reproduction can be triggered based on a
+changed external dependency.
 
 Let's use the [Get Started](/doc/tutorials/get-started) project again,
 simulating an updated external data source. (Remember to prepare the
@@ -226,28 +237,25 @@ Importing '../../../tmp/dvc-import-url-example/data.xml' -> 'data/data.xml'
 Check `data.xml.dvc`:
 
 ```yaml
-md5: eca0a296d67781cc488c6ffd1cc63b8e
-wdir: .
+md5: fceb2bc076fabe99b483729c3ea2a897
+frozen: true
 deps:
   - md5: a304afb96060aad90176268345e10355
     path: /tmp/dvc-import-url-example/data.xml
 outs:
   - md5: a304afb96060aad90176268345e10355
-    path: data/data.xml
-    cache: true
-    metric: false
-    persist: false
+    path: data.xml
 ```
 
-The DVC-file is nearly the same as in the previous example. The difference is
+The `.dvc` file is nearly the same as in the previous example. The difference is
 that the dependency (`deps`) now references the local file in the data store
 directory we created previously. (Its `path` has the URL for the data store.)
 And instead of an `etag` we have an `md5` hash value. We did this so its easy to
 edit the data file.
 
-Let's now manually reproduce a
-[processing chapter](/doc/tutorials/get-started/connect-code-and-data) from the
-_Get Started_ project. Download the example source code archive and unzip it:
+Let's now manually reproduce the
+[data processing part](/doc/tutorials/get-started/data-pipelines) of the _Get
+Started_ project. Download the example source code archive and unzip it:
 
 ```dvc
 $ wget https://code.dvc.org/get-started/code.zip
@@ -261,10 +269,10 @@ $ rm -f code.zip
 
 Let's install the requirements. But before we do that, we **strongly** recommend
 creating a
-[virtual environment](https://packaging.python.org/tutorials/installing-packages/#creating-virtual-environments):
+[virtual environment](https://python.readthedocs.io/en/stable/library/venv.html):
 
 ```dvc
-$ virtualenv -p python3 .env
+$ python3 -m venv .env
 $ source .env/bin/activate
 $ pip install -r src/requirements.txt
 ```
@@ -272,30 +280,34 @@ $ pip install -r src/requirements.txt
 </details>
 
 ```dvc
-$ dvc run -f prepare.dvc \
+$ dvc run -n prepare \
           -d src/prepare.py -d data/data.xml \
           -o data/prepared \
           python src/prepare.py data/data.xml
 Running command:
 	python src/prepare.py data/data.xml
 ...
+```
+
+```dvc
 $ tree
 .
+├── README.md
 ├── data
 │   ├── data.xml
+│   ├── data.xml.dvc
 │   └── prepared
 │       ├── test.tsv
 │       └── train.tsv
-├── data.xml.dvc
-├── prepare.dvc
-├── requirements.txt
+├── dvc.lock
+├── dvc.yaml
+├── params.yaml
 └── src
     ├── evaluate.py
     ├── featurization.py
     ├── prepare.py
+    ├── requirements.txt
     └── train.py
-
-3 directories, 10 files
 ```
 
 At this point, DVC considers everything being up to date:
@@ -307,12 +319,11 @@ Data and pipelines are up to date.
 
 In the data store directory, edit `data.xml`. It doesn't matter what you change,
 as long as it remains a valid XML file, because any change will result in a
-different dependency file hash (`md5`) in the import stage DVC-file. Once we do
-so, we can run `dvc update` to make sure the import stage is up to date:
+different dependency file hash (`md5`) in the import stage `.dvc` file. Once we
+do so, we can run `dvc update` to make sure the import is up to date:
 
 ```dvc
 $ dvc update data.xml.dvc
-...
 Importing '.../tmp/dvc-import-url-example/data.xml' -> 'data/data.xml'
 ```
 
@@ -321,20 +332,7 @@ DVC notices the "external" data source has changed, and updates the import stage
 remaining pipeline results are also regenerated:
 
 ```dvc
-$ dvc status
-prepare.dvc:
-	changed deps:
-		modified:           data/data.xml
-
-$ dvc repro prepare.dvc
-...
-Reproducing 'prepare.dvc'
-...
-
-$ dvc status
-Data and pipelines are up to date.
+$ dvc repro
+Running stage 'prepare' with command:
+	python src/prepare.py data/data.xml
 ```
-
-`dvc repro` executes the command defined in the given `prepare.dvc` stage after
-noticing that its dependency `data/data.xml` has changed. `dvc status` should
-report "Data and pipelines are up to date" after this.

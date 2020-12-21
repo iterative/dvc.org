@@ -1,38 +1,43 @@
 # remove
 
-Remove DVC-tracked files or directories from the <abbr>workspace</abbr>.
+Remove stages from `dvc.yaml` and/or stop tracking files or directories (and
+optionally delete them).
 
 ## Synopsis
 
 ```usage
-usage: dvc remove [-h] [-q | -v] [-o | -p] [-f] targets [targets ...]
+usage: dvc remove [-h] [-q | -v] [--outs] targets [targets ...]
 
 positional arguments:
-  targets        DVC-files to remove.
+  targets        stages (found in dvc.yaml) or .dvc files to remove.
 ```
 
 ## Description
 
-This command safely removes data files or directories that are tracked by DVC
-from the <abbr>workspace</abbr>. It takes a
-[DVC-File](/doc/user-guide/dvc-file-format) as input, removes all of its outputs
-(`outs`), and optionally removes the DVC-file itself.
+Safely removes `.dvc` files or stages from `dvc.yaml`. This includes deleting
+the corresponding `.gitignore` entries (based on the `outs` fields removed).
 
-Note that it does not remove files from the DVC cache or remote storage (see
-`dvc gc`). However, remember to run `dvc push` to save the files you actually
-want to use or share in the future.
+> `dvc remove` doesn't remove files from the DVC <abbr>cache</abbr> or
+> [remote storage](/doc/command-reference/remote). Use `dvc gc` for that.
 
-Refer to [Updating Tracked Files](/doc/user-guide/updating-tracked-files) to see
-how it can be used to replace or modify files that are tracked by DVC.
+It takes one or more stage names (see `-n` option of `dvc run`) or `.dvc` file
+names as `targets`.
+
+If there are no stages left in `dvc.yaml` after the removal, then both
+`dvc.yaml` and `dvc.lock` are deleted.
+
+Note that the actual <abbr>output</abbr> files or directories of the stage
+(`outs` field) are not removed by this command, unless the `--outs` option is
+used.
+
+💡 Refer to [Undo Adding Data](/doc/user-guide/how-to/stop-tracking-data) to see
+how it helps replace data that is tracked by DVC.
 
 ## Options
 
-- `-o`, `--outs` - remove the outputs described in the given `targets`, keep the
-  DVC-files themselves. **This is the default behavior.**
+- `--outs` - remove the outputs of any `targets` as well.
 
-- `-p`, `--purge` - remove outputs and DVC-files.
-
-- `-f`, `--force` - force purge. Skip confirmation prompt.
+  ⚠️This option may be irreversible (e.g. if the data isn't cached).
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -41,30 +46,61 @@ how it can be used to replace or modify files that are tracked by DVC.
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
-## Examples
+## Example: remove a .dvc file
 
-Let's imagine have a `data.csv` data file, and track it with DVC:
-
-```dvc
-$ dvc add data.csv
-$ ls data.csv*
-
-    data.csv
-    data.csv.dvc
-```
-
-Remove `data.csv` data file:
+Let's imagine we have `foo.csv` and `bar.csv` files, that are already
+[tracked](/doc/command-reference/add) by DVC:
 
 ```dvc
-$ dvc remove data.csv.dvc
-$ ls data.csv*
-
-     data.csv.dvc
+$ ls
+bar.csv  bar.csv.dvc  foo.csv  foo.csv.dvc
+$ cat .gitignore
+/foo.csv
+/bar.csv
 ```
 
-Purge DVC-files:
+This removes `foo.csv.dvc` and double checks that its entry is gone from
+`.gitignore`:
 
 ```dvc
-$ dvc remove data.csv.dvc -p
-$ ls data.csv*
+$ dvc remove foo.csv.dvc
+
+$ ls
+bar.csv  bar.csv.dvc  foo.csv
+$ cat .gitignore
+/bar.csv
 ```
+
+> The same procedure applies to tracked directories.
+
+## Example: remove a stage and its output
+
+Let's imagine we have a `train` stage in `dvc.yaml`, and corresponding files in
+the <abbr>workspace</abbr>:
+
+```yaml
+train:
+  cmd: python train.py data.py
+  deps:
+    - data.csv
+    - train.py
+  outs:
+    - model
+```
+
+```dvc
+$ ls
+dvc.lock  dvc.yaml  foo.csv  foo.csv.dvc  model  train.py
+```
+
+Using `dvc remove` on the stage name will remove that entry from `dvc.yaml`, and
+its outputs from `.gitignore`. With the `--outs` option, its outputs are also
+deleted (just the `model` file in this example):
+
+```dvc
+$ dvc remove train --outs
+$ ls
+dvc.lock  dvc.yaml  foo.csv  foo.csv.dvc  train.py
+```
+
+> Notice that the dependencies (`data.csv` and `train.py`) are not deleted.

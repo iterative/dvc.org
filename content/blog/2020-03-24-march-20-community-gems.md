@@ -4,7 +4,7 @@ date: 2020-03-12
 description: |
   Great discussions and technical Q&A's from our users.
 descriptionLong: |
-  Look here every month for great discussions and technical Q&A's from our users 
+  Look here every month for great discussions and technical Q&A's from our users
   and core development team.
 picture: 2020-03-12/march_20_header.png
 author: elle_obrien

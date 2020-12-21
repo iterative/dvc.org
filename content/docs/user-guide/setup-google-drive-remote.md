@@ -18,10 +18,13 @@ to establish GDrive remote connections (e.g. CI/CD).
 ## Quick start
 
 To start using a Google Drive remote, you only need to add it with a
-[valid URL format](#url-format). Then use any DVC command that needs it (e.g.
-`dvc pull`, `dvc fetch`, `dvc push`). For example:
+[valid URL format](#url-format). Then use any DVC command that needs to connect
+to it (e.g. `dvc pull` or `dvc push` once there's tracked data to synchronize).
+For example:
 
 ```dvc
+$ dvc add data
+...
 $ dvc remote add --default myremote \
                            gdrive://0AIac4JZqHhKmUk9PDA/dvcstore
 $ dvc push
@@ -46,6 +49,9 @@ folder i.e. `gdrive://<base>/path/to/folder`. The base can be one of:
    including [shared folders](https://support.google.com/drive/answer/7166529)
    and [shared drives](https://support.google.com/a/users/answer/9310351)\*
    (these two can only be referenced by ID).
+
+   > ⚠️ The folder in question should be shared to specific users (or groups) so
+   > they can use it with DVC. "Anyone with a link" is not guaranteed to work.
 
    ```dvc
    $ dvc remote add myremote gdrive://0AIac4JZqHhKmUk9PDA
@@ -97,10 +103,10 @@ Optionally, follow these steps to create your own Google Cloud project and
 generate OAuth credentials for your GDrive remotes to connect to Google Drive.
 We highly recommend this for heavy use and advanced needs because:
 
-- you control your Google API usage limits, being able to request Google for an
+- You control your Google API usage limits, being able to request Google for an
   increase if needed.
-- it ensures optimal data transfer performance when you need it.
-- [using a service account](#using-service-accounts) for automation tasks (e.g.
+- It ensures optimal data transfer performance when you need it.
+- [Using a service account](#using-service-accounts) for automation tasks (e.g.
   CI/CD) is only possible this way.
 
 DVC uses the [Google Drive API](https://developers.google.com/drive) to connect
@@ -130,8 +136,8 @@ API connections, and its
    the **Save** (scroll to bottom).
 
 5. From the left sidebar, select **Credentials**, and click the **Create
-   credentials** dropdown to select **OAuth client ID**. Chose **Other** and
-   click **Create** to proceed with a default client name.
+   credentials** dropdown to select **OAuth client ID**. Chose **Desktop app**
+   and click **Create** to proceed with a default client name.
 
    ![](/img/gdrive-create-credentials.png)
 
@@ -192,9 +198,10 @@ authentication is needed.
 ## Authorization
 
 On the first usage of a GDrive [remote](/doc/command-reference/remote), for
-example when trying to `dvc push` for the first time after adding the remote
-with a [valid URL](#url-format), DVC will prompt you to visit a special Google
-authentication web page. There you'll need to sign into your Google account. The
+example when trying to `dvc push` tracked data for the first time, DVC will
+prompt you to visit a special Google authentication web page. There you'll need
+to sign into a Google account with the needed access to the GDrive
+[URL](#url-format) in question. The
 [auth process](https://developers.google.com/drive/api/v2/about-auth) will ask
 you to grant DVC the necessary permissions, and produce a verification code
 needed for DVC to complete the connection. On success, the necessary credentials
@@ -207,16 +214,13 @@ these credentials with others**. Each team member should go through this process
 individually.
 
 If you use multiple GDrive remotes, by default they will be sharing the same
-`.dvc/tmp/gdrive-user-credentials.json` credentials file. It can be overridden
-with the `gdrive_user_credentials_file` setting:
+`.dvc/tmp/gdrive-user-credentials.json` file. It can be overridden with the
+`gdrive_user_credentials_file` setting:
 
 ```dvc
 $ dvc remote modify myremote gdrive_user_credentials_file \
                     .dvc/tmp/myremote-credentials.json
 ```
-
-> If you edit the config file manually, value must be either an absolute path or
-> a path **relative to the config file location**.
 
 ⚠️ In order to prevent unauthorized access to your Google Drive, **never
 commit** this file with Git. Instead, add it into `.gitignore` and never share

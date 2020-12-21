@@ -1,22 +1,20 @@
 require('dotenv').config()
-const pruneCache = require('./src/gatsby/prune-cache')
 
-const {
-  setPageContext,
-  removePageTrailingSlash
-} = require('./src/gatsby/common')
+const { setPageContext } = require('./src/gatsby/common')
 
 const models = require('./src/gatsby/models.js')
 const callOnModels = require('./src/gatsby/utils/models')
 
 exports.createSchemaCustomization = api =>
   callOnModels(models, 'createSchemaCustomization', api)
+exports.sourceNodes = api => callOnModels(models, 'sourceNodes', api)
 exports.onCreateNode = api => callOnModels(models, 'onCreateNode', api)
 exports.createPages = api => callOnModels(models, 'createPages', api)
+exports.createResolvers = api => callOnModels(models, 'createResolvers', api)
+exports.onPostBuild = api => callOnModels(models, 'onPostBuild', api)
 
 exports.onCreatePage = ({ page, actions }) => {
   setPageContext(page, actions)
-  removePageTrailingSlash(page, actions)
 }
 
 // Ignore warnings about CSS inclusion order, because we use CSS modules.
@@ -41,8 +39,4 @@ exports.onCreateWebpackConfig = ({ stage, actions, getConfig }) => {
     }
     actions.replaceWebpackConfig(config)
   }
-}
-
-exports.onPostBuild = api => {
-  return Promise.all([callOnModels(models, 'onPostBuild', api), pruneCache])
 }

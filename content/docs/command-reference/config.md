@@ -5,11 +5,12 @@ Get or set <abbr>project</abbr>-level (or global) DVC configuration options.
 ## Synopsis
 
 ```usage
-usage: dvc config [-h] [--global] [--system] [--local] [-q | -v] [-u]
-                  name [value]
+usage: dvc config [-h] [--global | --system | --local] [-q | -v] [-u]
+                  [-l] [name] [value]
 
 positional arguments:
-  name           Option name.
+  name     Option name in format: section.option or remote.name.option
+           e.g. 'core.check_update', 'cache.dir', 'remote.myremote.url'
   value          Option value.
 ```
 
@@ -19,32 +20,57 @@ You can query/set/replace/unset DVC configuration options with this command. It
 takes a config option `name` (a config section and a key, separated by a dot)
 and its `value` (any valid alpha-numeric string generally).
 
-This command reads and updates the DVC configuration files. By default (if none
-of `--local`, `--global`, or `--system` is provided) a project's config
-(`.dvc/config`) file is read or modified. This file is by default meant to be
-tracked by Git and should not contain sensitive and/or user-specific information
-(passwords, SSH keys, etc). Use `--local`, `--global`, or `--system` command
-options (flags) instead to override project's settings, for sensitive, or
-user-specific settings.
+If the config option `value` is not provided (and without `--unset`), this
+command returns the current value of the config option, if found in the
+corresponding config file.
 
-If the config option `value` is not provided and the `--unset` command option is
-not used, this command returns the current value of the config option, if found
-in the corresponding config file.
+This command reads and updates the DVC configuration files. By default, the
+regular project's config file in `.dvc/config` is read or modified. This file is
+meant to be tracked by Git and should not contain sensitive and/or user-specific
+information (passwords, SSH keys, etc). Use the `--local` command option (flag)
+instead, to set (or override) secrets:
+
+| Flag           | Priority | Config file location |
+| -------------- | -------- | -------------------- |
+| `--local`      | 1        | `.dvc/config.local`  |
+| None (default) | 2        | `.dvc/config`        |
+
+The `--global` and `--system` flags are also available to set config options for
+multiple projects and users, respectively:
+
+<!-- Avoids new lines in the Flag columns (below). -->
+<style>
+  #markdown-root td:first-child code {
+    white-space: nowrap;
+  }
+</style>
+
+| Flag       | Priority | Mac location                           | Linux location (typical\*) | Windows location                                          |
+| ---------- | -------- | -------------------------------------- | -------------------------- | --------------------------------------------------------- |
+| `--global` | 3        | `$HOME/Library/Preferences/dvc/config` | `$HOME/.config/dvc/config` | `%LocalAppData%\iterative\dvc\config`                     |
+| `--system` | 4        | `/Library/Preferences/dvc/config`      | `/etc/xdg/dvc/config`      | `%AllUsersProfile%\Application Data\iterative\dvc\config` |
+
+> \* For Linux, the global `dvc/config` may be found in `$XDG_CONFIG_HOME`, and
+> the system-wide one in `$XDG_CONFIG_DIRS[0]`, if those env vars are defined.
 
 ## Command options (flags)
 
 - `-u`, `--unset` - remove a specified config option from a config file.
 
+- `--local` - modify a Git-ignored local config file. This is useful when you
+  need to specify private config option values that you don't want to track and
+  share with Git (credentials, private locations, etc).
+
 - `--global` - modify a global config file (e.g. `~/.config/dvc/config`) instead
-  of the project's `.dvc/config`.
+  of the project's `.dvc/config`. Useful to apply config options to all your
+  projects.
 
-- `--system` - modify a system config file (e.g. `/etc/dvc.config`) instead of
-  `.dvc/config`.
+- `--system` - modify a system config file (e.g. `/etc/dvc/config`) instead of
+  `.dvc/config`. Useful to apply config options to all the projects (all users)
+  in the machine. May require superuser access e.g.
+  `sudo dvc config --system ...` (Linux).
 
-- `--local` - modify a local config file instead of `.dvc/config`. It is located
-  in `.dvc/config.local` and is Git-ignored. This is useful when you need to
-  specify private config options in your config that you don't want to track and
-  share through Git (credentials, private locations, etc).
+- `-l`, `--list` - lists all defined config values.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -62,7 +88,7 @@ file (in `.dvc/config` by default), and they support the options below:
 
 This is the main section with the general config options:
 
-- `core.remote` - name of the remote storage that should be used by default.
+- `core.remote` - name of the remote storage to use by default.
 
 - `core.interactive` - whether to always ask for confirmation before reproducing
   each [stage](/doc/command-reference/run) in `dvc repro`. (Normally, this
@@ -87,6 +113,15 @@ This is the main section with the general config options:
   and `false` (default). Set with the `--no-scm` option of `dvc init`
   ([more details](/doc/command-reference/init#initializing-dvc-without-git)).
 
+- `core.check_update` - disable/enable DVC's automatic update checks, which
+  notify the user when a new version is available. Accepts values `true`
+  (default) and `false`.
+
+- `core.autostage` - if enabled, DVC will automatically stage (`git add`)
+  [DVC metafiles](/doc/user-guide/dvc-files-and-directories) created or modified
+  by DVC commands (`dvc add`, `dvc run`, etc.). The files will not be committed.
+  Accepts values `true` and `false` (default).
+
 ### remote
 
 These are sections in the config file that describe particular remotes. They
@@ -99,21 +134,17 @@ remote. See `dvc remote` for more information.
 A DVC project <abbr>cache</abbr> is the hidden storage (by default located in
 the `.dvc/cache` directory) for files that are tracked by DVC, and their
 different versions. (See `dvc cache` and
-[DVC Files and Directories](/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory)
+[DVC Files and Directories](/doc/user-guide/dvc-files-and-directories#structure-of-the-cache-directory)
 for more details.) This section contains the following options:
 
-- `cache.dir` - set/unset cache directory location. A correct value must be
-  either an absolute path or a path **relative to the config file location**.
-  The default value is `cache`, that resolves to `.dvc/cache` (relative to the
-  project config file location).
+- `cache.dir` - set/unset cache directory location. A correct value is either an
+  absolute path, or a path **relative to the config file location**. The default
+  value is `cache`, that resolves to `.dvc/cache` (relative to the project
+  config file location).
 
-  > See also helper command `dvc cache dir` to intuitively set this config
+  > See also the helper command `dvc cache dir` to intuitively set this config
   > option, properly transforming paths relative to the current working
   > directory into paths relative to the config file location.
-
-- `cache.protected` (_deprecated_) - when using `hardlink` or `symlink` as
-  `cache.type`, the file links will automatically be protected (read-only). Use
-  `dvc unprotect` if you need to update them.
 
 - `cache.type` - link type that DVC should use to link data files from cache to
   the workspace. Possible values: `reflink`, `symlink`, `hardlink`, `copy` or a
@@ -123,8 +154,8 @@ for more details.) This section contains the following options:
   effective of those two. DVC avoids `symlink` and `hardlink` types by default
   to protect user from accidental cache and repository corruption.
 
-  ⚠️ If you manually set `cache.type` to `hardlink` or `symlink`, **you will
-  corrupt the cache** if you modify tracked data files in the workspace. In an
+  ⚠️ If you set `cache.type` to `hardlink` or `symlink` and manually modify
+  tracked data files in the workspace, **you will corrupt the cache**. In an
   attempt to prevent that, DVC will automatically protect those file links (make
   them read-only). Use `dvc unprotect` to be able to modify them safely.
 
@@ -152,35 +183,36 @@ for more details.) This section contains the following options:
   directories, which is useful when you are using a a
   [shared development server](/doc/use-cases/shared-development-server).
 
-- `cache.local` - name of a local remote to use as cache directory. (Refer to
-  `dvc remote` for more information on "local remotes".) This will overwrite the
-  value provided to `dvc config cache.dir` or `dvc cache dir`.
+- `cache.local` - name of a _local remote_ to use as a
+  [custom cache](/doc/user-guide/managing-external-data#examples) directory.
+  (Refer to `dvc remote` for more information on "local remotes".) This will
+  overwrite the value provided to `dvc config cache.dir` or `dvc cache dir`.
 
-- `cache.ssh` - name of an
-  [SSH remote to use as external cache](/doc/user-guide/managing-external-data#ssh).
+- `cache.s3` - name of an Amazon S3 remote to use as
+  [external cache](/doc/user-guide/managing-external-data#examples).
 
-  > Avoid using the same remote location that you are using for `dvc push`,
-  > `dvc pull`, `dvc fetch` as external cache for your external outputs, because
-  > it may cause possible file hash overlaps: the hash of a data file in
-  > external storage could collide with a hash generated locally for another
-  > file with a different content.
+- `cache.gs` - name of a Google Cloud Storage remote to use as
+  [external cache](/doc/user-guide/managing-external-data#examples).
 
-- `cache.s3` - name of an
-  [Amazon S3 remote to use as external cache](/doc/user-guide/managing-external-data#amazon-s-3).
+- `cache.ssh` - name of an SSH remote to use as
+  [external cache](/doc/user-guide/managing-external-data#examples).
 
-- `cache.gs` - name of a
-  [Google Cloud Storage remote to use as external cache](/doc/user-guide/managing-external-data#google-cloud-storage).
+- `cache.hdfs` - name of an HDFS remote to use as
+  [external cache](/doc/user-guide/managing-external-data#examples).
 
-- `cache.hdfs` - name of an
-  [HDFS remote to use as external cache](/doc/user-guide/managing-external-data#hdfs).
+- `cache.webhdfs` - name of an HDFS remote with WebHDFS enabled to use as
+  [external cache](/doc/user-guide/managing-external-data#examples).
 
-- `cache.azure` - name of a Microsoft Azure Blob Storage remote to use as
-  [external cache](/doc/user-guide/managing-external-data).
+> Avoid using the same [DVC remote](/doc/command-reference/remote) (used for
+> `dvc push`, `dvc pull`, etc.) as external cache, because it may cause file
+> hash overlaps: the hash of an external <abbr>output</abbr> could collide with
+> a hash generated locally for another file with different content.
 
 ### state
 
-See [DVC Files and Directories](/doc/user-guide/dvc-files-and-directories) to
-learn more about the state file (database) that is used for optimization.
+See
+[Internal directories and files](/doc/user-guide/dvc-files-and-directories#internal-directories-and-files)
+to learn more about the state file (database) that is used for optimization.
 
 - `state.row_limit` - maximum number of entries in the state database, which
   affects the physical size of the state file itself, as well as the performance

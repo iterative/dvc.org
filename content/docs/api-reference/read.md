@@ -3,7 +3,7 @@
 Returns the contents of a tracked file.
 
 ```py
-def open(path: str,
+def read(path: str,
          repo: str = None,
          rev: str = None,
          remote: str = None,
@@ -24,9 +24,9 @@ modelpkl = dvc.api.read(
 
 ## Description
 
-This function wraps [`dvc.api.open()`](/doc/api-reference/open), for a simple
-way to return the complete contents of a file tracked in a <abbr>DVC
-project</abbr>. The file can be tracked by DVC or by Git.
+This function wraps `dvc.api.open()`, for a simple way to return the complete
+contents of a file tracked in a <abbr>DVC project</abbr>. The file can be
+tracked by DVC (as an <abbr>output</abbr>) or by Git.
 
 > This is similar to the `dvc get` command in our CLI.
 
@@ -41,8 +41,8 @@ These are loaded to memory directly (without using any disc space).
 
 ## Parameters
 
-- **`path`** - location and file name of the file in `repo`, relative to the
-  project's root.
+- **`path`** (required) - location and file name of the target to read, relative
+  to the root of the project (`repo`).
 
 - `repo` - specifies the location of the DVC project. It can be a URL or a file
   system path. Both HTTP and SSH protocols are supported for online Git repos
@@ -75,15 +75,14 @@ These are loaded to memory directly (without using any disc space).
 
 - `dvc.exceptions.PathMissingError` - `path` cannot be found in `repo`.
 
-- `dvc.api.UrlNotDvcRepoError` - `repo` is not a DVC project.
-
 - `dvc.exceptions.NoRemoteError` - no `remote` is found.
 
 ## Example: Load data from a DVC repository
 
-Any <abbr>data artifact</abbr> hosted online can be loaded directly in your
-Python code with this API. For example, let's say that you want to load and
-unserialize a binary model from a repo on Github:
+Any file tracked in a <abbr>DVC project</abbr> (and
+[stored remotely](/doc/command-reference/remote/add)) can be loaded directly in
+your Python code with this API. For example, let's say that you want to load and
+unserialize a binary model from a repo on GitHub:
 
 ```py
 import pickle

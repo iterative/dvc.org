@@ -1,17 +1,16 @@
 # metrics diff
 
-Show changes in [project metrics](/doc/command-reference/metrics), between
-commits in the <abbr>DVC repository</abbr>, or between a commit and the
-<abbr>workspace</abbr>.
+Compare [metrics](/doc/command-reference/metrics) between two commits in the
+<abbr>DVC repository</abbr>, or between a commit and the <abbr>workspace</abbr>.
 
 ## Synopsis
 
 ```usage
 usage: dvc metrics diff [-h] [-q | -v]
-                        [--targets [<path> [<path> ...]]]
-                        [-t <type>] [-x <path>] [-R]
-                        [--show-json] [--show-md]
-                        [a_ref] [b_ref]
+                        [--targets [<paths> [<paths> ...]]] [-R]
+                        [--all] [--show-json] [--show-md] [--no-path]
+                        [--old] [--precision <n>]
+                        [a_rev] [b_rev]
 
 positional arguments:
   a_rev                 Old Git commit to compare (defaults to HEAD)
@@ -22,49 +21,56 @@ positional arguments:
 ## Description
 
 This command provides a quick way to compare metrics among experiments in the
-repository history. Requires that Git is being used to version the project
-metrics.
+repository history. All metrics defined in `dvc.yaml` are used by default. The
+differences shown by this command include the new value, and numeric difference
+(delta) from the previous value of metrics (rounded to 5 digits precision).
 
-> Metrics can be defined with `dvc metrics add`, ot the `-m` and `-M` options of
-> `dvc run`.
+`a_rev` and `b_rev` are Git commit hashes, tag, or branch names. If none are
+specified, `dvc metrics diff` compares metrics currently present in the
+<abbr>workspace</abbr> (uncommitted changes) with the latest committed versions
+(required). A single specified revision results in comparing the workspace and
+that version.
 
-Run without arguments, this command compares metrics currently present in the
-<abbr>workspace</abbr> uncommitted changes) with the latest committed version.
-
-The differences shown by this command include the new value, and numeric
-difference (delta) from the previous value of metrics (with 3-digit accuracy).
-They're calculated between two commits (hash, branch, tag, or any
-[Git revision](https://git-scm.com/docs/revisions)) for all metrics in the
-<abbr>project</abbr>, found by examining all of the
-[DVC-files](/doc/user-guide/dvc-file-format) in both references.
+Another way to display metrics is the `dvc metrics show` command, which just
+lists all the current metrics, without comparisons.
 
 ## Options
 
-- `--targets <paths>` - limit the comparison to these specific metric files.
+- `--targets <paths>` - limit command scope to these metrics files. Using `-R`,
+  directories to search metrics files in can also be given. When specifying
+  arguments for `--targets` before `revisions`, you should use `--` after this
+  option's arguments, e.g.:
 
-- `-R`, `--recursive` - determines the metric files to use by searching each
+  ```dvc
+  $ dvc metrics diff --targets t1.json t2.yaml -- HEAD v1
+  ```
+
+  Alternatively, you can also run the above statement as:
+
+  ```dvc
+  $ dvc metrics diff HEAD v1 --targets t1.json t2.json
+  ```
+
+- `-R`, `--recursive` - determines the metrics files to use by searching each
   target directory and its subdirectories for DVC-files to inspect. If there are
   no directories among the `targets`, this option is ignored.
 
-- `-t <type>`, `--type <type>` - specify a type of the metric file. Accepted
-  values are: `json`. It will be saved into the corresponding DVC-file, and used
-  to determine how to handle displaying metrics. See `dvc metrics show` for more
-  details.
-
-  This option will override any `type` and `xpath` values defined in the
-  corresponding DVC-file. If no `type` is provided or found in the DVC-file, DVC
-  will try to detect it based on file extension.
-
-- `-x <path>`, `--xpath <path>` - specify a path within a metric file to show
-  changes for a specific metric value only. Should be used if the metric file
-  contains multiple numbers and you want to use only one of them. Only a single
-  path is allowed. It will override `xpath` defined in the corresponding
-  DVC-file. See `dvc metrics show` for more details.
+- `--all` - list all metrics, even those without changes.
 
 - `--show-json` - prints the command's output in easily parsable JSON format,
   instead of a human-readable table.
 
 - `--show-md` - prints the command's output in Markdown table format.
+
+- `--old` - show old metric value in addition to the new value.
+
+- `--no-path` - don't show metric path in the result table. This option is
+  useful when only one metrics file is in use or there is no intersection
+  between the metric names.
+
+- `--precision <n>` -
+  [round](https://docs.python.org/3/library/functions.html#round) metrics to `n`
+  digits precision after the decimal point. Rounds to 5 digits by default.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -75,29 +81,27 @@ They're calculated between two commits (hash, branch, tag, or any
 
 ## Examples
 
-Start by creating a simple metrics file and commit it:
+Start by creating a metrics file and commit it (see the `-M` option of `dvc run`
+for more details):
 
 ```dvc
-$ dvc run -M metrics.json \
-        'echo {\"AUC\": 0.9643, \"TP\": 527} > metrics.json'
-$ git add metrics.json metrics.json.dvc
+$ dvc run -n eval -M metrics.json \
+          'echo {"AUC": 0.9643, "TP": 527} > metrics.json'
+
+$ cat metrics.json
+{"AUC": 0.9643, "TP": 527}
+
+$ git add dvc.* metrics.json
 $ git commit -m "Add metrics file"
 ```
 
-```
-$ cat metrics.json
-{"AUC":0.9643, "TP":527}
-```
+Now let's simulate a change in our AUC metric:
 
-Now let's mock a change in our AUC metric:
-
-```
-$ echo {\"AUC\":0.9671, \"TP\":531} > metrics.json
+```dvc
+$ echo '{"AUC":0.9671, "TP":531}' > metrics.json
 
 $ git diff
---- a/metrics.json
-+++ b/metrics.json
-@@ -1 +1 @@
+...
 -{"AUC":0.9643, "TP":527}
 +{"AUC":0.9671, "TP":531}
 ```
@@ -106,9 +110,21 @@ To see the change, let's run `dvc metrics diff`. This compares our current
 <abbr>workspace</abbr> (including uncommitted local changes) metrics to what we
 had in the previous commit:
 
-```
+```dvc
 $ dvc metrics diff
 Path          Metric    Value    Change
+metrics.json  AUC       0.9671   0.0028
 metrics.json  TP        531      4
-metrics.json  AUC       0.967    0.003
+```
+
+## Example: compare metrics among specific versions
+
+Metrics files committed with Git can be compared by referencing the commits (any
+two [revisions](https://git-scm.com/docs/revisions)):
+
+```dvc
+$ dvc metrics diff --targets metrics.json -- HEAD c7bef55
+Path       Metric    Value    Change
+eval.json  ACU       0.66729  0.01614
+eval.json  TP        516      -12
 ```

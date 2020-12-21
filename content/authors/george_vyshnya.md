@@ -1,6 +1,8 @@
 ---
 name: George Vyshnya
 avatar: george_vyshnya.jpeg
+links:
+  - https://www.linkedin.com/in/gvyshnya
 ---
 
 Seasoned Data Scientist / Software Developer with blended experience in software

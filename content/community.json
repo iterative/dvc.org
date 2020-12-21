@@ -1,9 +1,9 @@
 {
   "hero": [
     {
-      "pictureDesktop": "/img/community/default-banner.png",
-      "pictureMobile": "/img/community/default-mobile-banner.png",
-      "url": "#subscribe",
+      "pictureDesktop": "/img/community/hiring_cm_desktop.png",
+      "pictureMobile": "/img/community/hiring_cm_mobile.png",
+      "url": "https://docs.google.com/document/d/13r0KaxRdQR6srOZdIzL9ZgBL4eOdPCl7foc3cxx0xjA/edit?usp=sharing",
       "expires": false
     }
   ],
@@ -71,27 +71,20 @@
   ],
   "events": [
     {
-      "url": "https://www.widsconference.org/",
-      "title": "Women in Data Science San Diego",
-      "description": "Elle O'Brien is talking about data catalogs and feature stores.",
-      "city": "San Diego",
-      "date": "2020-03-27"
+      "url": "https://dssconf.pl/",
+      "title": "Data Science Summit",
+      "description": "Paweł Redzyński will talk about Continuous Machine Learning.",
+      "city": "Virtual",
+      "date": "2020-10-16",
+      "pictureUrl": "/img/community/events/dssp.png"
     },
     {
-      "url": "https://www.mlprague.com/#schedule-saturday",
-      "title": "Machine Learning Prague 2020",
-      "description": "Paweł Redzyński will talk about open source tools for versioning machine learning projects",
-      "city": "Prague",
-      "date": "2020-03-20",
-      "pictureUrl": "/img/community/events/mlprague.jpg"
-    },
-    {
-      "url": "https://divops.org",
-      "title": "DivOps",
-      "description": "Elle O'Brien is talking about open source software in the growing field of MLOps.",
-      "city": "Remote",
-      "date": "2020-03-25",
-      "pictureUrl": "/img/community/events/divops.jpg"
+      "url": "https://global.pydata.org/talks/devops-for-science-using-continuous-integration-for-rigorous-and-reproducible-analysis",
+      "title": "PyData Global",
+      "description": "Elle O'Brien presents 'DevOps for science: using continuous integration for rigorous and reproducible analysis'",
+      "city": "Virtual",
+      "date": "2020-11-14",
+      "pictureUrl": "/img/community/events/pydata.png"
     }
   ],
   "stats": {

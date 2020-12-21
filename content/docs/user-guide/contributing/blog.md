@@ -7,20 +7,22 @@ To create a new post, you need to create a PR to the DVC website
 
 Set up the
 [Development environment](/doc/user-guide/contributing/docs#development-environment)
-to see how your content will look like after you publish it. In the
-`yarn develop` mode you will be able to run the website locally, and it'll be
-updating content in your browser as you edit the post.
+to see how your content will look like after you publish it. The `yarn author`
+command will build a subset of the website with only the latest blog post, while
+`yarn develop` lets you preview the whole site at the cost of a longer build
+time. Both commands start up a development server which will continue to update
+as you add new content.
 
 ## Add a post
 
-Create a Markdown file in the `content/blog` folder. File name must follow the
-pattern: `YYYY-MM-DD-my-new-blog-post.md`. After merging this file into the
-`master` branch, blog post will be published at `blog/my-new-blog-post` address
+Create a Markdown file in the `content/blog` folder. The file name must follow
+this pattern: `YYYY-MM-DD-my-post-title.md`. After merging this file into the
+`master` branch, the blog post will be published at `/blog/my-post-title`
 automatically.
 
 Write front matter in the following format:
 
-```yml
+```yaml
 ---
 title: Hello World
 date: 2015-05-01
@@ -42,23 +44,23 @@ tags:
 
 ```
 
-- `title` - **Required.** Title of the post.
-- `date` - **Required.** Publication date in the `YYYY-MM-DD` format. Will be
+- `title` (**required**) - title of the post.
+- `date` (**required**) - publication date in the `YYYY-MM-DD` format. Will be
   used to sort posts and in RSS.
-- `description` - **Required.** Short description to show in the feed.
-- `descriptionLong` - Optional long description to show before the image on the
-  post page. If not set, `description` will be used instead. Supports basic
+- `description` (**required**) - short description to show in the feed.
+- `descriptionLong` (optional) - long description to show before the image on
+  the post page. If not set, `description` will be used instead. Supports basic
   Markdown markup.
-- `picture` - Optional cover image, relative to `static/uploads/images`
-- `pictureComment` - Optional cover image comment. Supports basic Markdown
+- `picture` (optional) - cover image, relative to `static/uploads/images`
+- `pictureComment` (optional) - cover image comment. Supports basic Markdown
   markup.
-- `author` - **Required.** The name of the file in `content/authors`
+- `author` (**required**) - base name of the file in `content/authors`
   representing this post's author. See
   [Adding authors](/doc/user-guide/contributing/blog#adding-authors) to add a
   new author.
-- `commentsUrl` - Optional link to the [DVC forum](https://discuss.dvc.org)
+- `commentsUrl` (optional) - link to the [DVC forum](https://discuss.dvc.org)
   topic. It will contain comments for the post.
-- `tags` - Optional list of tags.
+- `tags` (optional) - list of tags.
 
 ## Content guidelines
 
@@ -82,7 +84,7 @@ reference them like this:
 To add a subtitle:
 
 ```md
-![](/uploads/images/2020-02-10/image.png)_subtitle [with a link](link)_
+![](/uploads/images/2020-02-10/image.png) _subtitle [with a link](link)_
 ```
 
 To set the image size and text wrap:
@@ -131,11 +133,13 @@ Create `.md` file in the `content/authors` folder.
 
 Write front matter in the following format:
 
-```yml
+```yaml
 name: John Doe
 avatar: avatar.jpeg
+link: https://www.twitter.com/johndoe
 ```
 
-- `name` – **Required.** Author's name.
-- `avatar` - **Required.** Path to the author's avatar, relative to
+- `name` (**required**) – author's name.
+- `avatar` (**required**) - path to the author's avatar, relative to
   `static/uploads/avatars` (1024x1024 is recommended).
+- `link` (optional) - location that the author's name will link to.

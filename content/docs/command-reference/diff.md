@@ -1,6 +1,6 @@
 # diff
 
-Show added, modified, or deleted DVC-tracked files and directories between
+Show added, modified, or deleted DVC-tracked files and directories between two
 commits in the <abbr>DVC repository</abbr>, or between a commit and the
 workspace.
 
@@ -8,6 +8,7 @@ workspace.
 
 ```usage
 usage: dvc diff [-h] [-q | -v]
+                [--targets [<paths> [<paths> ...]]]
                 [--show-json] [--show-hash] [--show-md]
                 [a_rev] [b_rev]
 
@@ -26,8 +27,8 @@ name, Git commit hash, etc.
 It defaults to comparing the current workspace and the last commit (`HEAD`), if
 arguments `a_rev` and `b_rev` are not specified.
 
-Options `--show-json` and `--show-hash` can be used to modify format and details
-of the output produced. See the [Options](#options) and [Examples](#examples)
+Options `--show-json` and `--show-hash` can be used to modify format of the
+output of this command. See the [Options](#options) and [Examples](#examples)
 sections below for more details.
 
 `dvc diff` does not have an effect when the repository is not tracked by Git,
@@ -43,14 +44,32 @@ for example when `dvc init` was used with the `--no-scm` option.
 
 ## Options
 
-- `--show-json` - generate output in JSON format. Usually needed to integrate
-  DVC into scripts.
+- `--targets <paths>` - limit command scope to these paths. When specifying
+  arguments for `--targets` before `a_rev`/`b_rev`, you should use `--` after
+  this option's arguments, e.g.:
+
+  ```dvc
+  $ dvc diff --targets t1.json t2.yaml -- HEAD v1
+  ```
+
+  Alternatively, you can also run the above statement as:
+
+  ```dvc
+  $ dvc diff HEAD v1 --targets t1.json t2.json
+  ```
+
+- `--show-json` - prints the command's output in easily parsable JSON format,
+  instead of a human-readable table.
+
+- `--show-md` - prints the command's output in Markdown table format.
 
 - `--show-hash` - print file and directory hash values along with their path.
   Useful for debug purposes.
 
-- `--show-md` - print the list of files and directories with their status in the
-  Markdown table format.
+- `--hide-missing` - do not list data missing from both workspace and cache
+  (`not in cache`). Only list files and directories which have been expliclity
+  added, modified, or deleted. This option does nothing when comparing two Git
+  commits.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -61,8 +80,7 @@ for example when `dvc init` was used with the `--no-scm` option.
 
 ## Examples
 
-For these examples we can use the [Get Started](/doc/tutorials/get-started)
-project.
+For these examples we can use the [Get Started](/doc/start) project.
 
 <details>
 
@@ -106,19 +124,19 @@ $ dvc diff
 ### Click and expand to setup the example
 
 Let's checkout the
-[3-add-file](https://github.com/iterative/example-get-started/releases/tag/3-add-file)
-tag, corresponding to the [Add Files](/doc/tutorials/get-started/add-files) _Get
+[2-track-data](https://github.com/iterative/example-get-started/releases/tag/2-track-data)
+tag, corresponding to the [Data Versioning](/doc/start/data-versioning) _Get
 Started_ chapter, right after we added `data.xml` file with DVC:
 
 ```dvc
-$ git checkout 3-add-file
-$ dvc pull
+$ git checkout 2-track-data
+$ dvc checkout
 ```
 
 </details>
 
 To see the difference between the very previous commit of the project and the
-workspace, we can use `HEAD^` as `a_ref`:
+workspace, we can use `HEAD^` as `a_rev`:
 
 ```dvc
 $ dvc diff HEAD^
@@ -152,16 +170,17 @@ $ dvc checkout
 ```dvc
 $ dvc diff baseline-experiment bigrams-experiment
 Modified:
-    auc.metric
     data/features/
     data/features/test.pkl
     data/features/train.pkl
     model.pkl
+    prc.json
+    scores.json
 
-files summary: 0 added, 0 deleted, 4 modified
+files summary: 0 added, 0 deleted, 5 modified
 ```
 
-The output from this command confirms that there's a difference in 4 files
+The output from this command confirms that there's a difference in 5 files
 between the tags `baseline-experiment` and `bigrams-experiment`.
 
 ## Example: Using different output formats
@@ -181,20 +200,22 @@ It outputs:
   "added": [],
   "deleted": [],
   "modified": [
-    ...{
+    {
       "path": "data/features/",
       "hash": {
         "old": "3338d2c21bdb521cda0ba4add89e1cb0.dir",
         "new": "42c7025fc0edeb174069280d17add2d4.dir"
       }
     },
-    ...{
+    ...
+    {
       "path": "model.pkl",
       "hash": {
         "old": "43630cce66a2432dcecddc9dd006d0a7",
         "new": "662eb7f64216d9c2c1088d0a5e2c6951"
       }
     }
+    ...
   ]
 }
 ```

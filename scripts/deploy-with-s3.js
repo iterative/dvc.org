@@ -5,6 +5,7 @@ const path = require('path')
 const PRODUCTION_PREFIX = 'dvc-org-prod'
 
 const { DEPLOY_OPTIONS } = process.env
+const clearCloudflareCache = require('./clear-cloudflare-cache')
 
 // Generate deploy options from a comma separated string in the DEPLOY_OPTIONS
 // env var. If DEPLOY_OPTIONS isn't set, use a default setting.
@@ -20,7 +21,8 @@ const deployOptions = DEPLOY_OPTIONS
       download: true,
       build: true,
       upload: true,
-      clean: true
+      clean: true,
+      clearCloudflareCache: true
     }
 
 if (deployOptions.logSteps) {
@@ -60,7 +62,12 @@ const cacheDirs = [
   ['.cache', '-cache/']
 ]
 
-const { s3Prefix, withEntries, prefixIsEmpty } = require('./s3-utils')
+const {
+  s3Prefix,
+  withEntries,
+  prefixIsEmpty,
+  cleanEntry
+} = require('./s3-utils')
 const { move } = require('fs-extra')
 const { downloadAllFromS3, uploadAllToS3, cleanAllLocal } = withEntries(
   cacheDirs
@@ -101,7 +108,9 @@ async function main() {
       console.error(buildError)
       console.error('\nRetrying with a cleared cache:\n')
 
-      await cleanAllLocal()
+      // Clear only .cache so we re-use images
+      await cleanEntry(cacheDirs[1])
+
       run('yarn build')
     }
   }
@@ -121,6 +130,10 @@ async function main() {
   if (deployOptions.clean) {
     console.log('Cleaning all local cache!')
     await cleanAllLocal()
+  }
+
+  if (deployOptions.clearCloudflareCache) {
+    await clearCloudflareCache()
   }
 }
 

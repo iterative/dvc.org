@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import cn from 'classnames'
 import Portal from '@reach/portal'
-import ReactMarkdown from 'react-markdown'
 
 import { isTriggeredFromKB } from '../../../../../utils/front/keyboard'
 
@@ -68,7 +67,10 @@ const MobileView: React.FC<IMobileViewProps> = ({
                 <div className={cn(styles.closeLine, styles.second)} />
               </div>
               <h5 className={styles.modalHeader}>{header}</h5>
-              <ReactMarkdown className="markdown-body" source={description} />
+              <div
+                className="markdown-body"
+                dangerouslySetInnerHTML={{ __html: description }}
+              />
             </div>
           </div>
         </Portal>

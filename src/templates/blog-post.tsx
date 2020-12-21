@@ -6,6 +6,8 @@ import React from 'react'
 import SEO from '../components/SEO'
 import Post from '../components/Blog/Post'
 
+import { ISocialIcon } from '../components/SocialIcon'
+
 interface IFluidObject extends FluidObject {
   presentationWidth: number
   presentationHeight: number
@@ -45,6 +47,7 @@ export interface IBlogPostData {
     avatar: {
       fixed: FixedObject
     }
+    links: Array<ISocialIcon>
   }
 }
 
@@ -87,6 +90,10 @@ export const pageQuery = graphql`
       commentsUrl
       author {
         name
+        links {
+          url
+          site
+        }
         avatar {
           fixed(width: 40, height: 40, quality: 50, cropFocus: CENTER) {
             ...GatsbyImageSharpFixed_withWebp

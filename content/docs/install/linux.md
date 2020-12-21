@@ -6,7 +6,7 @@
 ## Install with pip
 
 > We **strongly** recommend creating a
-> [virtual-environment](https://packaging.python.org/tutorials/installing-packages/#creating-virtual-environments)
+> [virtual environment](https://python.readthedocs.io/en/stable/library/venv.html)
 > or using
 > [pipx](https://packaging.python.org/guides/installing-stand-alone-command-line-tools/)
 > (on Python 3.6+) to encapsulate your local environment.
@@ -51,13 +51,12 @@ $ conda install -c conda-forge dvc
 
 > Requires [snapd](https://snapcraft.io/docs/installing-snapd).
 
-To install the latest stable version of `dvc`:
-
 ```dvc
 $ snap install --classic dvc
 ```
 
-Add `--edge` to install the latest beta (master) version.
+Add `--beta` for the latest tagged release candidate, or `--edge` for the latest
+`master` version.
 
 > 💡 When connected to the internet, `snap` will automatically look for updates
 > every 6 hours.

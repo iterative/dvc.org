@@ -5,6 +5,7 @@ import Link from '../../Link'
 import { pluralizeComments } from '../../../utils/front/i18n'
 
 import styles from './styles.module.css'
+import SocialIcon, { ISocialIcon } from '../../SocialIcon'
 
 interface IBlogFeedMetaProps {
   avatar: {
@@ -15,6 +16,7 @@ interface IBlogFeedMetaProps {
   date: string
   name: string
   timeToRead: string
+  links: Array<ISocialIcon>
 }
 
 const FeedMeta: React.FC<IBlogFeedMetaProps> = ({
@@ -23,13 +25,22 @@ const FeedMeta: React.FC<IBlogFeedMetaProps> = ({
   commentsCount,
   date,
   name,
-  timeToRead
+  timeToRead,
+  links
 }) => {
   return (
     <div className={styles.wrapper}>
       <Image fixed={avatar.fixed} className={styles.avatar} />
       <ul className={styles.list}>
-        <li className={styles.item}>{name}</li>
+        <li className={styles.segment}>{name}</li>
+        {links && (
+          <li className={styles.linkIcons}>
+            {links.map(({ site, url }, i) => (
+              <SocialIcon site={site} url={url} key={i} />
+            ))}
+          </li>
+        )}
+
         <li className={styles.item}>
           {date} • {timeToRead} min read
         </li>

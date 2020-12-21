@@ -2,12 +2,13 @@
 title: 'Join the DVC Ambassador Program!'
 date: 2020-05-08
 description: |
-  We're launching our ambassador program for people all around the world to get involved in 
-  the DVC community.
+  We're launching our ambassador program for people all around the world to get
+  involved in the DVC community.
 descriptionLong: |
-  We're launching our ambassador program for people all around the world to get involved in 
-  the DVC community. Our first ambassador, Marcel Ribeiro-Dantas, shares a guest blog about 
-  how ambassadors support open source projects through blog writing, public outreach, and code.
+  We're launching our ambassador program for people all around the world to get
+  involved in the DVC community. Our first ambassador, Marcel Ribeiro-Dantas,
+  shares a guest blog about how ambassadors support open source projects through
+  blog writing, public outreach, and code.
 picture: 2020-05-08/Ambassador_Header.png
 author: marcel_rd
 commentsUrl: https://discuss.dvc.org/t/join-the-dvc-ambassador-program/383
@@ -179,7 +180,7 @@ a goldmine for ways to pitch in. For example:
 
 ![](/uploads/images/2020-01-17/odd_with_deevee.png 'Vera and team =500')_Vera
 (center, flashing a peace sign) thanked us with this lovely picture of DeeVee
-and her team, [Odd Industries](https://odd.co/en/)._
+and her team, [Odd Industries](https://odd.co)._
 
 If any of this sounds fun to you, please be in touch over
 [email](mailto:info@dvc.org) (and you can also reach us on

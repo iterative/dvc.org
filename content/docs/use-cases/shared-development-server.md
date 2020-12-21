@@ -42,7 +42,7 @@ members of the same group):
 
 ```dvc
 $ sudo find /home/shared/dvc-cache -type d -exec chmod 0775 {} \;
-$ sudo find /home/shared/dvc-cache -type f -exec chmod 0664 {} \;
+$ sudo find /home/shared/dvc-cache -type f -exec chmod 0444 {} \;
 $ sudo chown -R myuser:ourgroup /home/shared/dvc-cache/
 ```
 
@@ -52,7 +52,7 @@ Tell DVC to use the directory we've set up above as the <abbr>cache</abbr> for
 your <abbr>project</abbr>:
 
 ```dvc
-$ dvc config cache.dir /home/shared/dvc-cache
+$ dvc cache dir /home/shared/dvc-cache
 ```
 
 And tell DVC to set group permissions on newly created or downloaded cache
@@ -62,7 +62,7 @@ files:
 $ dvc config cache.shared group
 ```
 
-> See `dvc config cache` for more information on these config options.
+> See `dvc cache dir` and `dvc config cache` for more information.
 
 If you're using Git, commit changes to your project's config file (`.dvc/config`
 by default):
@@ -80,9 +80,9 @@ Let's say you are cleaning up raw data for later stages:
 
 ```dvc
 $ dvc add raw
-$ dvc run -d raw -o clean ./cleanup.py raw clean
+$ dvc run -n clean_data -d raw -o clean ./cleanup.py raw clean
   # The data is cached in the shared location.
-$ git add raw.dvc clean.dvc
+$ git add raw.dvc dvc.yaml dvc.lock .gitignore
 $ git commit -m "cleanup raw data"
 $ git push
 ```
@@ -91,14 +91,14 @@ Your colleagues can [checkout](/doc/command-reference/checkout) the
 <abbr>project</abbr> data (from the shared <abbr>cache</abbr>), and have both
 `raw` and `clean` data files appear in their workspace without moving anything
 manually. After this, they could decide to continue building this
-[pipeline](/doc/command-reference/pipeline) and process the clean data:
+[pipeline](/doc/command-reference/dag) and process the clean data:
 
 ```dvc
 $ git pull
 $ dvc checkout
 A       raw  # Data is linked from cache to workspace.
-$ dvc run -d clean -o processed ./process.py clean process
-$ git add processed.dvc
+$ dvc run -n process_clean_data -d clean -o processed ./process.py clean process
+$ git add dvc.yaml dvc.lock
 $ git commit -m "process clean data"
 $ git push
 ```

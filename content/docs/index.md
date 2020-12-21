@@ -1,10 +1,28 @@
 # DVC Documentation
 
-Welcome! In here you may find all the guiding material and technical documents
-needed to learn about DVC: how to use it, how it works, and where to go for
-additional resources.
+Data Version Control, or DVC, is a data and ML experiment management tool that
+takes advantage of the existing engineering toolset that you're already familiar
+with (Git, CI/CD, etc.).
 
-## Before you start
+<cards>
+
+  <card href="/doc/tutorials/get-started" heading="Get Started">
+    A step-by-step introduction into basic DVC features
+  </card>
+
+  <card href="/doc/user-guide" heading="User Guide">
+    Study the detailed inner-workings of DVC in its user guide.
+  </card>
+
+  <card href="/doc/use-cases" heading="Use Cases">
+    Non-exhaustive list of scenarios DVC can help with
+  </card>
+
+  <card href="/doc/command-reference" heading="Command Reference">
+    See all of DVC's commands.
+  </card>
+
+</cards>
 
 ✅ Please join our [community](/community) or use the [support](/support)
 channels if you have any questions or need specific help. We are very responsive
@@ -15,15 +33,3 @@ us a ⭐ if you like the project!
 
 ✅ Contribute to DVC [on GitHub](https://github.com/iterative/dvc) or help us
 improve this [documentation](https://github.com/iterative/dvc.org) 🙏.
-
-## Main topics
-
-- Learn how to [install](/doc/install) and
-  [get started](/doc/tutorials/get-started) with DVC in the first sections.
-- Explore the main [reasons](/doc/use-cases) to adopt DVC.
-- Study the detailed [inner-workings](/doc/user-guide) of DVC, as well as each
-  one of its [commands](/doc/command-reference) and Python
-  [functions](/doc/api-reference).
-
-Please choose a topic from the sidebar to the left, or click the `Next` button
-below to start from the beginning ↘

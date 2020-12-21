@@ -1,11 +1,22 @@
 .placeholder {
+  transition: height 0.2s linear;
   height: var(--layout-header-height);
 
-  &.collapsed {
-    height: var(--layout-header-height-collapsed);
+  &.withAlert {
+    height: calc(var(--layout-header-height) + var(--layout-alert-height));
   }
 
   @media (--xs-scr) {
+    height: var(--layout-header-height-collapsed);
+
+    &.withAlert {
+      height: calc(
+        var(--layout-header-height-collapsed) + var(--layout-alert-height)
+      );
+    }
+  }
+
+  &.collapsed {
     height: var(--layout-header-height-collapsed);
   }
 }
@@ -58,4 +69,29 @@
 .logo {
   display: block;
   padding-top: 2px;
+}
+
+.alert {
+  height: var(--layout-alert-height);
+  line-height: var(--layout-alert-height);
+  font-size: 18px;
+  text-align: center;
+  width: 100%;
+  background-color: #dee;
+  transition: 0.5s all;
+  overflow: hidden;
+
+  &.collapsed {
+    height: 0;
+    transform: translateY(-100%);
+  }
+}
+
+.gitHubAlertLink {
+  vertical-align: middle;
+  margin-left: 0.1em;
+
+  svg {
+    color: inherit;
+  }
 }

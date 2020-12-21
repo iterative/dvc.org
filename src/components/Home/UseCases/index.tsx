@@ -80,7 +80,7 @@ const UseCases: React.ForwardRefRenderFunction<HTMLElement> = (_, ref) => {
         <h2 className={styles.heading}>Use cases</h2>
         <div className={styles.wrapper}>
           <div className={styles.videoContainer}>
-            <YoutubeVideo id={`4h6I9_xeYA4`} />
+            <YoutubeVideo id={`UbL7VUpv1Bs`} />
           </div>
 
           <div className={styles.rightColumn}>

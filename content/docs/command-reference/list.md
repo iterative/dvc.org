@@ -1,12 +1,12 @@
 # list
 
 List repository contents, including files, models, and directories tracked by
-DVC (<abbr>data artifacts</abbr>) and by Git.
+DVC (as <abbr>outputs</abbr>) and by Git.
 
 ## Synopsis
 
 ```usage
-usage: dvc list [-h] [-q | -v] [-R] [--outs-only] [--rev <commit>]
+usage: dvc list [-h] [-q | -v] [-R] [--dvc-only] [--rev <commit>]
                 url [path]
 
 positional arguments:
@@ -16,18 +16,18 @@ positional arguments:
 
 ## Description
 
-DVC, by effectively replacing data files, models, directories with DVC-files
-(`.dvc`), hides actual locations and names. This means that you don't see data
-files when you browse a <abbr>DVC repository</abbr> on Git hosting (e.g.
-Github), you just see the DVC-files. This makes it hard to navigate the project
-to find <abbr>data artifacts</abbr> for use with `dvc get`, `dvc import`, or
-[`dvc.api`](/doc/api-reference).
+A side-effect of DVC is that it hides actual data paths, by effectively
+replacing files and directories with
+[metafiles](/doc/user-guide/dvc-files-and-directories). So you don't see data
+files/dirs when you browse a <abbr>DVC repository</abbr> on Git hosting (e.g.
+GitHub), you just see the `dvc.yaml` and `.dvc` files. This can make it hard to
+navigate the project, for example to find files or directories for use with
+`dvc get`, `dvc import`, or `dvc.api` functions.
 
-`dvc list` prints a virtual view of a DVC repository, as if files and
-directories [tracked by DVC](/doc/use-cases/versioning-data-and-model-files)
-were found directly in the remote Git repo. Only the root directory is listed by
-default. The output of this command is equivalent to actually cloning the repo
-and [pulling](/doc/command-reference/pull) its data like this:
+This command produces a view of a DVC repository, as if files and directories
+tracked by DVC were found directly in the Git repo. Its output is equivalent to
+cloning the repo and [pulling](/doc/command-reference/pull) the data (except
+that nothing is downloaded by `dvc list`), like this:
 
 ```dvc
 $ git clone <url> example
@@ -36,25 +36,27 @@ $ dvc pull
 $ ls <path>
 ```
 
-The `url` argument specifies the address of the Git repository containing the
-data source. Both HTTP and SSH protocols are supported for online repos (e.g.
-`[user@]server:project.git`). `url` can also be a local file system path to an
-"offline" Git repo.
-
-The optional `path` argument is used to specify directory to list within the
-source repository at `url`. It's similar to providing a path to list to commands
-such as `ls` or `aws s3 ls`. And similar to the, `-R` option might be used to
+Only the root directory is listed by default, but the `-R` option can be used to
 list files recursively.
+
+The `url` argument specifies the address of the DVC or Git repository containing
+the data source. Both HTTP and SSH protocols are supported (e.g.
+`[user@]server:project.git`). `url` can also be a local file system path
+(including the current project e.g. `.`).
+
+The optional `path` argument is used to specify a directory to list within the
+source repository at `url` (including paths inside tracked directories). It's
+similar to providing a path to list to commands such as `ls` or `aws s3 ls`.
 
 Please note that `dvc list` doesn't check whether the listed data (tracked by
 DVC) actually exists in remote storage, so it's not guaranteed whether it can be
-accessed with `dvc get`, `dvc import`, or [`dvc.api`](/doc/api-reference)
+accessed with `dvc get`, `dvc import`, or `dvc.api`.
 
 ## Options
 
 - `-R`, `--recursive` - recursively prints contents of all subdirectories.
 
-- `--outs-only` - show only DVC-tracked files and directories
+- `--dvc-only` - show only DVC-tracked files and directories
   (<abbr>outputs</abbr>).
 
 - `--rev <commit>` - commit hash, branch or tag name, etc. (any
@@ -74,30 +76,28 @@ accessed with `dvc get`, `dvc import`, or [`dvc.api`](/doc/api-reference)
 
 We can use this command for getting information about a repository before using
 other commands like `dvc get` or `dvc import` to reuse any file or directory
-found in it. This includes files tracked by Git as well as <abbr>data
-artifacts</abbr> tracked by DVC-tracked:
+found in it. This includes files (or directories) tracked by DVC or by Git:
 
 ```dvc
 $ dvc list https://github.com/iterative/example-get-started
+.dvcignore
 .gitignore
 README.md
-auc.metric
 data
-evaluate.dvc
-featurize.dvc
+dvc.lock
+dvc.yaml
 model.pkl
-prepare.dvc
+params.yaml
+prc.json
+scores.json
 src
-train.dvc
 ```
 
 If you open the
 [example-get-started](https://github.com/iterative/example-get-started)
-project's page, you will see a similar list, except that `model.pkl` will be
-missing. That's because its tracked by DVC and not visible to Git. You can find
-it in the
-[`train.dvc`](https://github.com/iterative/example-get-started/blob/master/train.dvc)
-DVC-file (`outs` field).
+project's page, you will see a similar list but the `model.pkl` file. It's
+tracked by DVC and not visible to Git. It's exported in the `dvc.yaml` file as
+an output of the `train` stage (in the `outs` field).
 
 We can now, for example, download the model file with:
 
