@@ -60,3 +60,78 @@ jobs:
 
 If you're using DVC with cloud storage, take note of environmental variables for
 your storage format.
+
+<details>
+
+### S3 and S3 compatible storage (Minio, DigitalOcean Spaces, IBM Cloud Object Storage...)
+
+```yaml
+env:
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  AWS_SESSION_TOKEN: ${{ secrets.AWS_SESSION_TOKEN }}
+```
+
+Note that `AWS_SESSION_TOKEN` is optional.
+
+</details>
+
+<details>
+
+### Azure
+
+```yaml
+env:
+  AZURE_STORAGE_CONNECTION_STRING:
+    ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
+  AZURE_STORAGE_CONTAINER_NAME: ${{ secrets.AZURE_STORAGE_CONTAINER_NAME }}
+```
+
+</details>
+
+<details>
+
+### Aliyn
+
+```yaml
+env:
+  OSS_BUCKET: ${{ secrets.OSS_BUCKET }}
+  OSS_ACCESS_KEY_ID: ${{ secrets.OSS_ACCESS_KEY_ID }}
+  OSS_ACCESS_KEY_SECRET: ${{ secrets.OSS_ACCESS_KEY_SECRET }}
+  OSS_ENDPOINT: ${{ secrets.OSS_ENDPOINT }}
+```
+
+</details>
+
+<details>
+
+### Google Cloud Storage
+
+⚠️ Normally, `GOOGLE_APPLICATION_CREDENTIALS` points to the path of the `.json`
+file that contains the credentials. However, in this context, the variable
+contains the content of the file. Copy the text inside the `.json` and add it as
+a secret.
+
+```yaml
+env:
+  GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
+```
+
+</details>
+
+<details>
+
+### Google Drive
+
+⚠️ After configuring your
+[Google Drive credentials](https://dvc.org/doc/command-reference/remote/add) you
+will find a json file at
+`your_project_path/.dvc/tmp/gdrive-user-credentials.json`. Copy the text inside
+that `.json` and add it as a secret.
+
+```yaml
+env:
+  GDRIVE_CREDENTIALS_DATA: ${{ secrets.GDRIVE_CREDENTIALS_DATA }}
+```
+
+</details>
