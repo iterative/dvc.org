@@ -38,17 +38,20 @@ instead, to set (or override) secrets:
 The `--global` and `--system` flags are also available to set config options for
 multiple projects and users, respectively:
 
-| Flag       | Priority | Mac location                             | Linux location             | Windows location                                          |
-| ---------- | -------- | ---------------------------------------- | -------------------------- | --------------------------------------------------------- |
-| `--global` | 3        | `$HOME/Library/Application\ Support/dvc` | `$HOME/.config/dvc/config` | `%LocalAppData%\iterative\dvc\config`                     |
-| `--system` | 4        | `/Library/Application\ Support/dvc`      | `/etc/dvc/config`          | `%AllUsersProfile%\Application Data\iterative\dvc\config` |
-
-<!-- Avoids new lines in the Flag column (above). -->
+<!-- Avoids new lines in the Flag columns (below). -->
 <style>
   #markdown-root td:first-child code {
     white-space: nowrap;
   }
 </style>
+
+| Flag       | Priority | Mac location                           | Linux location (typical\*) | Windows location                                          |
+| ---------- | -------- | -------------------------------------- | -------------------------- | --------------------------------------------------------- |
+| `--global` | 3        | `$HOME/Library/Preferences/dvc/config` | `$HOME/.config/dvc/config` | `%LocalAppData%\iterative\dvc\config`                     |
+| `--system` | 4        | `/Library/Preferences/dvc/config`      | `/etc/xdg/dvc/config`      | `%AllUsersProfile%\Application Data\iterative\dvc\config` |
+
+> \* For Linux, the global `dvc/config` may be found in `$XDG_CONFIG_HOME`, and
+> the system-wide one in `$XDG_CONFIG_DIRS[0]`, if those env vars are defined.
 
 ## Command options (flags)
 
@@ -64,7 +67,8 @@ multiple projects and users, respectively:
 
 - `--system` - modify a system config file (e.g. `/etc/dvc/config`) instead of
   `.dvc/config`. Useful to apply config options to all the projects (all users)
-  in the machine.
+  in the machine. May require superuser access e.g.
+  `sudo dvc config --system ...` (Linux).
 
 - `-l`, `--list` - lists all defined config values.
 
