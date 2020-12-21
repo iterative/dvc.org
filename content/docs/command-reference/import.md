@@ -10,7 +10,7 @@ the import.
 ## Synopsis
 
 ```usage
-usage: dvc import [-h] [-q | -v]
+usage: dvc import [-h] [-q | -v] [-j <number>]
                   [-o <path>] [--file <filename>]
                   [--rev <commit>] [--no-exec] [--desc <text>]
                   url path
@@ -109,6 +109,12 @@ repo at `url`) are not supported.
   quickly, and download everything later (with `dvc update`); or if the target
   data already exist locally and you want to "DVCfy" this state of the project
   (see also `dvc commit`).
+
+- `-j <number>`, `--jobs <number>` - number of threads to run simultaneously to
+  handle the downloading of files from the remote. The default value is
+  `4 * cpu_count()`. For SSH remotes, the default is just `4`. Using more jobs
+  may improve the total download speed if a combination of small and large files
+  are being fetched.
 
 - `--desc <text>` - user description of the data (optional). This doesn't affect
   any DVC operations.
