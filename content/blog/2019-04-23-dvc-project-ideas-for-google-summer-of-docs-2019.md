@@ -81,10 +81,10 @@ there is need for improving the overall structure and making some parts more
 friendly from a new user perspective. We have mostly complete
 [reference documentation](/doc/commands-reference) for each command, although
 some functions are missing good actionable examples. We also have a
-[User Guide](/doc/user-guide/dvc-files-and-directories), however it is not in
-very good shape. We strive for making our documentation clear and comprehensive
-for users of various backgrounds and proficiency levels and this is where we do
-need some fresh perspective.
+[User Guide](/doc/user-guide), however it is not in very good shape. We strive
+for making our documentation clear and comprehensive for users of various
+backgrounds and proficiency levels and this is where we do need some fresh
+perspective.
 
 ### How DVC documentation is built
 
