@@ -22,7 +22,7 @@
         "slug": "self-hosted-runners"
       },
       {
-        "label": "Install CML as a package",
+        "label": "Install CML as a Package",
         "slug": "cml-with-npm"
       },
       "examples"
