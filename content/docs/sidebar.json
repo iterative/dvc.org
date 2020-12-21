@@ -6,29 +6,6 @@
     "icon": "house"
   },
   {
-    "label": "CML",
-    "slug": "cml",
-    "source": "cml/index.md",
-    "icon": "house",
-    "children": [
-      "usage",
-      "get-started",
-      {
-        "label": "CML with DVC",
-        "slug": "cml-with-dvc"
-      },
-      {
-        "label": "Self-hosted runners",
-        "slug": "self-hosted-runners"
-      },
-      {
-        "label": "Install CML as a package",
-        "slug": "cml-with-npm"
-      },
-      "examples"
-    ]
-  },
-  {
     "slug": "install",
     "source": "install/index.md",
     "children": [
@@ -411,5 +388,28 @@
     "label": "Changelog",
     "url": "https://github.com/iterative/dvc/releases",
     "type": "external"
+  },
+  {
+    "label": "CML",
+    "slug": "cml",
+    "source": "cml/index.md",
+    "icon": "house",
+    "children": [
+      "usage",
+      "get-started",
+      {
+        "label": "CML with DVC",
+        "slug": "cml-with-dvc"
+      },
+      {
+        "label": "Self-hosted runners",
+        "slug": "self-hosted-runners"
+      },
+      {
+        "label": "Install CML as a package",
+        "slug": "cml-with-npm"
+      },
+      "examples"
+    ]
   }
 ]
