@@ -73,6 +73,9 @@ An _output entry_ (`outs`) can have these fields:
   and a special _checksum_ for HDFS and WebHDFS.
 - `size`: Size of the file or directory (sum of all files).
 - `nfiles`: If a directory, number of files inside.
+- `isexec`: Whether this is an executable file. DVC preserves execute
+  permissions upon `dvc checkout` and `dvc pull`. This has no effect on
+  directories, or in general on Windows.
 - `cache`: Whether or not this file or directory is <abbr>cached</abbr> (`true`
   by default, if not present). See the `--no-commit` option of `dvc add`.
 - `persist`: Whether the output file/dir should remain in place while
