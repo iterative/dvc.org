@@ -4,6 +4,8 @@ Once initialized in a <abbr>project</abbr>, DVC populates its installation
 directory (`.dvc/`) with the internal directories and files needed for DVC
 operation.
 
+> See also [DVC Files](/doc/user-guide/dvc-files).
+
 - `.dvc/config`: This is a configuration file. The config file can be edited by
   hand or with the `dvc config` command.
 
