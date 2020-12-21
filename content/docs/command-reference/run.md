@@ -97,7 +97,7 @@ Relevant notes:
 
 - Entire directories produced by the stage can be tracked as outputs by DVC,
   which generates a single `.dir` entry in the cache (refer to
-  [Structure of cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-the-cache-directory)
+  [Structure of cache directory](/doc/user-guide/dvc-internals#structure-of-the-cache-directory)
   for more info.)
 
 - [external dependencies](/doc/user-guide/external-dependencies) and

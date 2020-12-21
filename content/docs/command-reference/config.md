@@ -130,7 +130,7 @@ remote. See `dvc remote` for more information.
 A DVC project <abbr>cache</abbr> is the hidden storage (by default located in
 the `.dvc/cache` directory) for files that are tracked by DVC, and their
 different versions. (See `dvc cache` and
-[DVC Files and Directories](/doc/user-guide/dvc-files-and-directories#structure-of-the-cache-directory)
+[DVC Files and Directories](/doc/user-guide/dvc-internals#structure-of-the-cache-directory)
 for more details.) This section contains the following options:
 
 - `cache.dir` - set/unset cache directory location. A correct value is either an
@@ -206,9 +206,8 @@ for more details.) This section contains the following options:
 
 ### state
 
-See
-[Internal directories and files](/doc/user-guide/dvc-files-and-directories#internal-directories-and-files)
-to learn more about the state file (database) that is used for optimization.
+See [Internal directories and files](/doc/user-guide/dvc-internals) to learn
+more about the state file (database) that is used for optimization.
 
 - `state.row_limit` - maximum number of entries in the state database, which
   affects the physical size of the state file itself, as well as the performance

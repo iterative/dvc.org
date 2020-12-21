@@ -16,9 +16,9 @@ repository root (a `.git/` directory should be present).
 
 At DVC initialization, a new `.dvc/` directory is created for internal
 configuration and <abbr>cache</abbr>
-[files and directories](/doc/user-guide/dvc-files-and-directories#internal-directories-and-files),
-that are hidden from the user. This directory is automatically staged with
-`git add`, so it can be easily committed with Git.
+[files and directories](/doc/user-guide/dvc-internals), that are hidden from the
+user. This directory is automatically staged with `git add`, so it can be easily
+committed with Git.
 
 The command [options](#options) can be used to start an alternative workflow for
 advanced scenarios:
