@@ -36,9 +36,9 @@ itself does not ascribe any specific meaning for these values.
 
 ## Options
 
-- `--targets <paths>` - limit command scope to these params files. When specifying
-  arguments for `--targets` before `revisions`, you should use `--` after this
-  option's arguments, e.g.:
+- `--targets <paths>` - limit command scope to these params files. When
+  specifying arguments for `--targets` before `revisions`, you should use `--`
+  after this option's arguments, e.g.:
 
   ```dvc
   $ dvc params diff --targets m1.json m2.yaml -- HEAD v1
