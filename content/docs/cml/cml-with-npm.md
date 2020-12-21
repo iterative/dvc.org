@@ -11,8 +11,8 @@ You may need to install additional dependencies to use DVC plots and Vega-Lite
 CLI commands:
 
 ```bash
-sudo apt-get install -y libcairo2-dev libpango1.0-dev libjpeg-dev libgif-dev \
-          librsvg2-dev libfontconfig-dev
+sudo apt-get install -y libcairo2-dev libpango1.0-dev libjpeg-dev \
+          libgif-dev librsvg2-dev libfontconfig-dev
 npm install -g vega-cli vega-lite
 ```
 
