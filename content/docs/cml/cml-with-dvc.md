@@ -39,12 +39,20 @@ jobs:
 
           # Publish confusion matrix diff
           echo -e "## Plots\n### Class confusions" >> report.md
-          dvc plots diff --target classes.csv --template confusion -x actual -y predicted --show-vega master > vega.json
+          dvc plots diff \
+            --target classes.csv \
+            --template confusion \
+            -x actual \
+            -y predicted \
+            --show-vega master > vega.json
           vl2png vega.json -s 1.5 | cml-publish --md >> report.md
 
           # Publish regularization function diff
           echo "### Effects of regularization\n" >> report.md
-          dvc plots diff --target estimators.csv -x Regularization --show-vega master > vega.json
+          dvc plots diff \
+            --target estimators.csv \
+            -x Regularization \
+            --show-vega master vega.json
           vl2png vega.json -s 1.5 | cml-publish --md >> report.md
 
           cml-send-comment report.md
