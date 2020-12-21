@@ -17,12 +17,11 @@ positional arguments:
 ## Description
 
 A side-effect of DVC is that it hides actual data paths, by effectively
-replacing files and directories with
-[metafiles](/doc/user-guide/dvc-files-and-directories). So you don't see data
-files/dirs when you browse a <abbr>DVC repository</abbr> on Git hosting (e.g.
-GitHub), you just see the `dvc.yaml` and `.dvc` files. This can make it hard to
-navigate the project, for example to find files or directories for use with
-`dvc get`, `dvc import`, or `dvc.api` functions.
+replacing files and directories with [DVC files](/doc/user-guide/dvc-files). So
+you don't see data files/dirs when you browse a <abbr>DVC repository</abbr> on
+Git hosting (e.g. GitHub), you just see the `dvc.yaml` and `.dvc` files. This
+can make it hard to navigate the project, for example to find files or
+directories for use with `dvc get`, `dvc import`, or `dvc.api` functions.
 
 This command produces a view of a DVC repository, as if files and directories
 tracked by DVC were found directly in the Git repo. Its output is equivalent to

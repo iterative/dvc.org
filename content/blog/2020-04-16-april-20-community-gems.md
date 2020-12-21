@@ -148,5 +148,5 @@ look like hashes (because, well, they are). Luckily, DVC handles all the
 conversions between the filenames in your local workspace and these hashes.
 
 To get some more intuition about this, check out some of our
-[docs](https://dvc.org/doc/user-guide/dvc-files-and-directories) about how DVC
-organizes files.
+[docs](https://dvc.org/doc/user-guide/dvc-internals) about how DVC organizes
+files.

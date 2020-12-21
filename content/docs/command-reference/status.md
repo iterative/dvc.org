@@ -39,8 +39,8 @@ It accepts paths to tracked files or directories (including paths inside tracked
 directories), `.dvc` files, and stage names (found in `dvc.yaml`).
 
 The `--all-branches`, `--all-tags`, and `--all-commits` options enable comparing
-[metafiles](/doc/user-guide/dvc-files-and-directories) referenced in multiple
-Git commits at once.
+[DVC files](/doc/user-guide/dvc-files) referenced in multiple Git commits at
+once.
 
 If no differences are detected, `dvc status` prints
 `Data and pipelines are up to date.` or
