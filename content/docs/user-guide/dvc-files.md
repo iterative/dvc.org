@@ -44,12 +44,12 @@ meta:
 
 `.dvc` files can contain the following fields:
 
-- `outs` (always present): List of _output entries_ (details below) that
-  represent files or directories tracked by DVC. Normally there is only one (but
-  several can be added or combined manually).
-- `deps`: List of _dependency entries_ (details below). Only present in import
-  `.dvc` files (see `dvc import` and `dvc import-url`). Normally there is only
-  one (but several can be added manually).
+- `outs` (always present): List of [output entries](#output-entries) (details
+  below) that represent the files or directories tracked with DVC. Typically
+  there is only one (but several can be added or combined manually).
+- `deps`: List of [dependency entries](#dependency-entries) (details below).
+  Only present when `dvc import` or `dvc import-url` are used to generate this
+  `.dvc` file. Typically there is only one (but several can be added manually).
 - `wdir`: Working directory for the `outs` and `deps` paths (relative to the
   `.dvc` file's location). If this field is not present explicitly, it defaults
   to `.` (the `.dvc` file's location).
@@ -59,7 +59,14 @@ meta:
   Any YAML contents is supported. `meta` contents are ignored by DVC, but they
   can be meaningful for user processes that read `.dvc` files.
 
-An _output entry_ (`outs`) can have these fields:
+Note that comments can be added to `.dvc` files using the `# comment` syntax.
+`meta` fields and `#` comments are preserved among executions of the `dvc repro`
+and `dvc commit` commands, but not when a `.dvc` file is overwritten by
+`dvc add`, `dvc move`, `dvc import`, or `dvc import-url`.
+
+### Output entries
+
+`outs` fields can contain these subfields:
 
 - `path`: Path to the file or directory (relative to `wdir` which defaults to
   the file's location)
@@ -81,7 +88,9 @@ An _output entry_ (`outs`) can have these fields:
 - `desc`: User description for this output. This doesn't affect any DVC
   operations.
 
-A _dependency entry_ (`deps`) can have these fields:
+### Dependency entries
+
+`deps` fields can contain these subfields:
 
 - `path`: Path to the dependency (relative to `wdir` which defaults to the
   file's location)
@@ -102,11 +111,6 @@ A _dependency entry_ (`deps`) can have these fields:
     dependency from.
   - `rev_lock`: Git commit hash of the external <abbr>DVC repository</abbr> at
     the time of importing or updating the dependency (with `dvc update`)
-
-Note that comments can be added to `.dvc` files using the `# comment` syntax.
-`meta` fields and `#` comments are preserved among executions of the `dvc repro`
-and `dvc commit` commands, but not when a `.dvc` file is overwritten by
-`dvc add`, `dvc move`, `dvc import`, or `dvc import-url`.
 
 ## `dvc.yaml` file
 
@@ -164,14 +168,13 @@ the following fields:
   file's location). If this field is not present explicitly, it defaults to `.`
   (the file's location).
 - `deps`: List of <abbr>dependency</abbr> file or directory paths of this stage
-  (relative to `wdir` which defaults to the file's location)
+  (relative to `wdir` which defaults to the file's location). See
+  [Dependency entries](#dependency-entries) above for more details.
 - `params`: List of <abbr>parameter</abbr> dependency keys (field names) that
-  are read from a YAML, JSON, TOML, or Python file (`params.yaml` by default).
+  are read from a YAML, JSON, TOML, or Python file (`params.yaml` by default)
 - `outs`: List of <abbr>output</abbr> file or directory paths of this stage
-  (relative to `wdir` which defaults to the file's location), and optionally,
-  whether or not this file or directory is <abbr>cached</abbr> (`true` by
-  default, if not present). See the `--no-commit` option of `dvc run` and
-  `dvc repro`.
+  (relative to `wdir` which defaults to the file's location). See
+  [Output entries](#output-entries) above for more details.
 - `metrics`: List of [metrics files](/doc/command-reference/metrics), and
   optionally, whether or not this metrics file is <abbr>cached</abbr> (`true` by
   default, if not present). See the `--metrics-no-cache` (`-M`) option of
