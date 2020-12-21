@@ -44,8 +44,11 @@ jobs:
           eval "$(docker-machine env --shell sh $MACHINE)"
 
           (
-          docker-machine ssh $MACHINE "sudo mkdir -p /docker_machine && sudo chmod 777 /docker_machine" && \
-          docker-machine scp -r -q ~/.docker/machine/ $MACHINE:/docker_machine && \
+          docker-machine ssh \
+            $MACHINE "sudo mkdir -p /docker_machine && \
+            sudo chmod 777 /docker_machine" && \
+          docker-machine scp -r -q ~/.docker/machine \ 
+            $MACHINE:/docker_machine && \
 
           docker run --name runner -d \
             -v /docker_machine/machine:/root/.docker/machine \
@@ -94,7 +97,8 @@ deploy-gce:
       run: |
         echo "Deploying..."
 
-        echo '${{ secrets.GOOGLE_APPLICATION_CREDENTIALS_DATA }}' > gce-credentials.json
+        echo '${{ secrets.GOOGLE_APPLICATION_CREDENTIALS_DATA }}' \
+          > gce-credentials.json
         export GOOGLE_APPLICATION_CREDENTIALS='gce-credentials.json'
 
         RUNNER_LABELS="gce"
@@ -109,9 +113,13 @@ deploy-gce:
         eval "$(docker-machine env --shell sh $MACHINE)"
 
         (
-        docker-machine ssh $MACHINE "sudo mkdir -p /docker_machine && sudo chmod 777 /docker_machine" && \
-        docker-machine scp -r -q ~/.docker/machine/ $MACHINE:/docker_machine && \
-        docker-machine scp -q gce-credentials.json $MACHINE:/docker_machine/gce-credentials.json && \
+        docker-machine ssh \
+          $MACHINE "sudo mkdir -p /docker_machine && \
+          sudo chmod 777 /docker_machine" && \
+        docker-machine scp -r -q ~/.docker/machine/ \   
+          $MACHINE:/docker_machine && \
+        docker-machine scp -q gce-credentials.json \
+          $MACHINE:/docker_machine/gce-credentials.json && \
 
         eval "$(docker-machine env --shell sh $MACHINE)" && \
         docker run --name runner -d \
