@@ -36,7 +36,7 @@ itself does not ascribe any specific meaning for these values.
 
 ## Options
 
-- `--targets` - Limit command scope to these params files. When specifying
+- `--targets <paths>` - limit command scope to these params files. When specifying
   arguments for `--targets` before `revisions`, you should use `--` after this
   option's arguments, e.g.:
 
