@@ -38,7 +38,7 @@ other DVC commands), a few actions are taken under the hood:
 1. Calculate the file hash.
 2. Move the file contents to the cache (by default in `.dvc/cache`), using the
    file hash to form the cached file path. (See
-   [Structure of cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-the-cache-directory)
+   [Structure of cache directory](/doc/user-guide/dvc-internals#structure-of-the-cache-directory)
    for more details.)
 3. Attempt to replace the file with a link to the cached data (more details on
    file linking further down).
@@ -82,7 +82,7 @@ entire tree. Instead, the single `.dvc` file references a special JSON file in
 the cache (with `.dir` extension), that in turn points to the added files.
 
 > Refer to
-> [Structure of cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-the-cache-directory)
+> [Structure of cache directory](/doc/user-guide/dvc-internals#structure-of-the-cache-directory)
 > for more info. on `.dir` cache entries.
 
 Note that DVC commands that use tracked data support granular targeting of files

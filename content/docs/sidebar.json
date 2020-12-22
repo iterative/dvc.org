@@ -92,7 +92,8 @@
         "slug": "what-is-dvc",
         "source": "what-is-dvc.md"
       },
-      "dvc-files-and-directories",
+      "dvc-files",
+      "dvc-internals",
       {
         "slug": "dvcignore",
         "tutorials": {
