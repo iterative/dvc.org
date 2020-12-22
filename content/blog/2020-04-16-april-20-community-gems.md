@@ -119,7 +119,7 @@ all. That's okay, easy to fix. Simply remove the `.dvc` file like any other-
 `rm <file>.dvc`. DVC will then stop tracking the file, and the associated target
 file will still be in your local workspace. Note that the file will still be in
 your
-[DVC cache](https://dvc.org/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory)
+[DVC cache](https://dvc.org/doc/user-guide/dvc-internals#structure-of-cache-directory)
 unless you clear it with `dvc gc`.
 
 ### Q: [I'm trying to move a stage file with `dvc move`, but I'm getting an error. What's going on?](https://discordapp.com/channels/485586884165107732/563406153334128681/685125650901630996)
@@ -148,5 +148,5 @@ look like hashes (because, well, they are). Luckily, DVC handles all the
 conversions between the filenames in your local workspace and these hashes.
 
 To get some more intuition about this, check out some of our
-[docs](https://dvc.org/doc/user-guide/dvc-files-and-directories) about how DVC
-organizes files.
+[docs](https://dvc.org/doc/user-guide/dvc-internals) about how DVC organizes
+files.
