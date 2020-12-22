@@ -218,8 +218,7 @@ It's created or updated by DVC commands such as `dvc run` and `dvc repro`.
 - `dvc.lock` is needed internally for several DVC commands to operate, such as
   `dvc checkout`, `dvc get`, and `dvc import`.
 
-Here's an example `dvc.lock` based on the one in [`dvc.yaml`](#dvcyaml-file)
-above:
+Here's an example `dvc.lock` based on the one in `dvc.yaml` above:
 
 ```yaml
 stages:
@@ -248,7 +247,7 @@ Regular <abbr>dependencies</abbr> and all kinds of <abbr>outputs</abbr>
 [plots](/doc/command-reference/plots) files) are also listed (per stage) in
 `dvc.lock`, but with an additional field to store the hash value of each file or
 directory tracked by DVC. Specifically: `md5`, `etag`, or `checksum` (same as in
-`deps` and `outs` entries of [`.dvc` files](#dvc-files)).
+`deps` and `outs` entries of `.dvc` files).
 
 Full <abbr>parameters</abbr> (key and value) are listed separately under
 `params`, grouped by parameters file.
