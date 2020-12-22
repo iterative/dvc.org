@@ -129,12 +129,12 @@ modify its corresponding DVC file. It's handy so you don't rename a file in your
 local workspace that's under DVC tracking without updating DVC to the change
 (see an [example here](https://dvc.org/doc/command-reference/move#description)).
 The function doesn't work on
-[stage files](https://dvc.org/doc/tutorials/pipelines#define-stages) from DVC
-pipelines. There's not currently an easy way to safely move stage files, and
-it's an
+["stage files"](https://dvc.org/doc/tutorials/pipelines#define-stages) from DVC
+pipelines. There's not currently an easy way to safely move `dvc.yaml` files,
+and it's an
 [open issue we're working on](https://github.com/iterative/dvc/issues/1489).
-Until then, you can manually update the stage file, or make a new one in the
-desired location.
+Until then, you can manually update `dvc.yaml`, or make a new one in the desired
+location.
 
 ### Q: [I just starting using DVC and noticed that when I `dvc push` files to remote cloud storage, the directory in my remote looks like my DVC cache, not my local workspace directory. Is this right?](https://discordapp.com/channels/485586884165107732/485596304961962003/693740598498426930)
 
