@@ -186,8 +186,8 @@ $ dvc run -n my_stage './my_script.sh $MYENVVAR'
   reason.
 
 - `--outs-persist <path>` - declare output file or directory that will not be
-  removed when `dvc repro` starts (but it will still be overwritten when it
-  finishes).
+  removed when `dvc repro` starts (but it can still be modified, overwritten, or
+  even deleted by the stage command(s)).
 
 - `--outs-persist-no-cache <path>` - the same as `-outs-persist` except that
   outputs are not tracked by DVC (same as with `-O` above).
