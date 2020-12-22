@@ -24,8 +24,8 @@ operation.
 
   > Note that DVC includes the cache directory in `.gitignore` during
   > initialization. No data tracked by DVC will ever be pushed to the Git
-  > repository, only [DVC-files](/doc/user-guide/dvc-files-and-directories) that
-  > are needed to download or reproduce them.
+  > repository, only [DVC files](/doc/user-guide/dvc-files) that are needed to
+  > download or reproduce them.
 
 - `.dvc/plots`: Directory for
   [plot templates](/doc/command-reference/plots#plot-templates)

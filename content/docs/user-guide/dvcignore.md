@@ -212,5 +212,5 @@ dir2/data2.dvc:
 		modified:           dir2/data2
 ```
 
-Only the second file is displayed because DVC ignores `data1.dvc` and `data1`
-when collecting DVC-files.
+Only the second file is displayed because DVC now ignores `data1.dvc` and
+`data1`.
