@@ -93,8 +93,8 @@ _Luigi_, etc.
   visualizations.
 
 - DVC has transparent design. Its
-  [internal files and directories](/doc/user-guide/dvc-files-and-directories)
-  have a human-readable format and can be easily reused by external tools.
+  [internal directories and files](/doc/user-guide/dvc-internals) have a
+  human-readable format and can be easily reused by external tools.
 
 ## Build automation tools
 
