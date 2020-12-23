@@ -28,8 +28,8 @@ YAML 1.2, JSON, TOML, or [Python](#examples-python-parameters-file) _parameters
 file_. Multiple parameter dependencies can be specified from one or more
 parameters files.
 
-💡 Parameters can also be used as variables in `dvc.yaml` files in order to
-[parametrize stages](#example-parametrized-stages-in-dvcyaml).
+💡 Parameters can also be used as variables in `dvc.yaml` itself. See the
+[Parametrizes stages](#example-parametrized-stages-in-dvcyaml) example below.
 
 The default parameters file name is `params.yaml`. Parameters should be
 organized as a tree hierarchy inside, as DVC will locate param names by their
@@ -177,17 +177,20 @@ models:
     filename: 'model-us.hdf5'
 ```
 
-To use those values in `dvc.yaml`, you can use this special syntax:
+To use those values in `dvc.yaml` itself, you can use the special `${}`
+expression:
 
 ```yaml
 stages:
   build-us:
-    cmd: python script.py--out ${models.us.filename}
+    cmd: python script.py --out ${models.us.filename}
     outs:
       - ${models.us.filename}
 ```
 
-DVC will track the params values over time based on these `${}` expressions.
+> Note that nothing prevent you from using the same parameters in your stages
+> (`params` field of `dvc.yaml`). DVC will track these params over time the same
+> way in either case.
 
 ## Examples: Python parameters file
 
