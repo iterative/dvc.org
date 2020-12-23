@@ -56,19 +56,19 @@ The default remote is cleaned (see `dvc config core.remote`) unless the
   workspace. Note that this behavior is implied in `--all-tags`,
   `--all-branches`, and `--all-commits`.
 
-- `-a`, `--all-branches` - keep cached objects referenced in all Git branches as
-  well as in the workspace (implies `-w`). Useful if branches are used to track
+- `-a`, `--all-branches` - keep cached objects referenced in all Git branches,
+  and in the workspace (implying `-w`). Useful if branches are used to track
   different experiments. Note that this can be combined with `-T` below, for
   example using the `-aT` flag.
 
-- `-T`, `--all-tags` - same as `-a` above, but applies to Git tags as well as
-  the workspace (implies `-w`). Useful if tags are used to track "checkpoints"
+- `-T`, `--all-tags` - same as `-a` above, but applies to all Git tags, and in
+  the workspace (implying `-w`). Useful if tags are used to track "checkpoints"
   of an experiment or project. Note that both options can be combined, for
   example using the `-aT` flag.
 
-- `--all-commits` - same as `-a` or `-T` above, but applies to _all_ Git commits
-  as well as the workspace (implies `-w`). This keeps all the data used in the
-  entire commit history of the project.
+- `--all-commits` - same as `-a` or `-T` above, but applies to all Git commits,
+  and in the workspace (implying `-w`). This preserves the cache for all data
+  used in the entire commit history of the project.
 
   A use case for this option is to safely delete all temporary data `dvc run`
   and/or `dvc repro` cache when used without committing changes (see the `-O` or
