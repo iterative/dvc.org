@@ -65,10 +65,15 @@
     "source": "use-cases/index.md",
     "children": [
       {
-        "label": "Versioning Data & Model Files",
+        "label": "Versioning Data and Models",
         "slug": "versioning-data-and-model-files",
         "source": "versioning-data-and-model-files/index.md",
-        "children": ["tutorial"]
+        "children": [
+          {
+            "label": "Tutorial 👩‍💻",
+            "slug": "tutorial"
+          }
+        ]
       },
       {
         "label": "Sharing Data and Model Files",
@@ -101,7 +106,8 @@
           "parameters"
         ]
       },
-      "dvc-files-and-directories",
+      "dvc-files",
+      "dvc-internals",
       {
         "slug": "dvcignore",
         "tutorials": {

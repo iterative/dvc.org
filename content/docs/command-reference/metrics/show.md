@@ -18,7 +18,7 @@ positional arguments:
 ## Description
 
 Finds and prints all metrics in the <abbr>project</abbr> by examining all of its
-[DVC-files](/doc/user-guide/dvc-files-and-directories).
+[DVC files](/doc/user-guide/dvc-files).
 
 If `targets` are provided, it will show those specific metrics files instead.
 With the `-a` or `-T` options, this command shows the different metrics values

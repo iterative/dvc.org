@@ -24,7 +24,7 @@ Freezing a stage is useful to avoid syncing data from the top of its
 (non-frozen) stages only.
 
 Note that <abbr>import stages</abbr> are frozen by default. Use `dvc update` to
-update the imported data from the external data source.
+bring the import up to date from the data source.
 [Unfreeze](/doc/command-reference/unfreeze) them before using `dvc repro` on a
 pipeline that needs their outputs.
 

@@ -11,7 +11,7 @@ Mention codification? + link to /doc/use-cases/versioning-data-and-model-files
 
 # DVC Metafiles
 
-<!-- _from dvc-files-and-directories_ -->
+<!-- _from dvc-files_ -->
 
 Once initialized in a <abbr>project</abbr>, DVC populates its installation
 directory (`.dvc/`) with the

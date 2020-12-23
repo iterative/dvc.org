@@ -1,15 +1,10 @@
-# DVC Files and Directories
+# DVC Files
 
-Once initialized in a <abbr>project</abbr>, DVC populates its installation
-directory (`.dvc/`) with the
-[internal directories and files](#internal-directories-and-files) needed for DVC
-operation.
+There are a few special DVC file formats that enable its features:
 
-Additionally, there are a few metafiles that support DVC's features:
-
-- Files ending with the `.dvc` extension are placeholders to track data files
-  and directories. A <abbr>DVC project</abbr> usually has one `.dvc` file per
-  large data file or directory being tracked.
+- Files ending with the `.dvc` extension ("dot DVC files") are placeholders to
+  track data files and directories. A <abbr>DVC project</abbr> usually has one
+  `.dvc` file per large data file or directory being tracked.
 - `dvc.yaml` files (or _pipelines files_) specify stages that form the
   pipeline(s) of a project, and how they connect (_dependency graph_ or DAG).
 
@@ -20,8 +15,13 @@ Both `.dvc` files and `dvc.yaml` use human-friendly YAML 1.2 schemas, described
 below. We encourage you to get familiar with them so you may create, generate,
 and edit them on your own.
 
-Both the internal directory and these metafiles should be versioned with Git (in
-Git-enabled <abbr>repositories</abbr>).
+These metafiles should be versioned with Git (in Git-enabled
+<abbr>repositories</abbr>).
+
+See the [internals guide](/doc/user-guide/dvc-internals) for the contents of the
+`.dvc/` directory.
+
+> See also [`.dvcignore`](/doc/user-guide/dvcignore).
 
 ## `.dvc` files
 
@@ -37,7 +37,7 @@ edit, or even created manually. Here is a sample:
 outs:
   - md5: a304afb96060aad90176268345e10355
     path: data.xml
-    desc: cats and dogs dataset
+    desc: Cats and dogs dataset
 
 # Comments and user metadata are supported.
 meta:
@@ -47,12 +47,12 @@ meta:
 
 `.dvc` files can contain the following fields:
 
-- `outs` (always present): List of <abbr>output</abbr> entries (details below)
-  that represent the files or directories tracked with DVC. Typically there is
-  only one (but several can be added or combined manually).
-- `deps`: List of <abbr>dependency</abbr> entries (details below). Only present
-  when `dvc import` or `dvc import-url` are used to generate this `.dvc` file.
-  Typically there is only one (but several can be added manually).
+- `outs` (always present): List of [output entries](#output-entries) (details
+  below) that represent the files or directories tracked with DVC. Typically
+  there is only one (but several can be added or combined manually).
+- `deps`: List of [dependency entries](#dependency-entries) (details below).
+  Only present when `dvc import` or `dvc import-url` are used to generate this
+  `.dvc` file. Typically there is only one (but several can be added manually).
 - `wdir`: Working directory for the `outs` and `deps` paths (relative to the
   `.dvc` file's location). If this field is not present explicitly, it defaults
   to `.` (the `.dvc` file's location).
@@ -62,7 +62,14 @@ meta:
   Any YAML contents is supported. `meta` contents are ignored by DVC, but they
   can be meaningful for user processes that read `.dvc` files.
 
-An _output entry_ (`outs`) consists of these fields:
+Note that comments can be added to `.dvc` files using the `# comment` syntax.
+`meta` fields and `#` comments are preserved among executions of the `dvc repro`
+and `dvc commit` commands, but not when a `.dvc` file is overwritten by
+`dvc add`, `dvc move`, `dvc import`, or `dvc import-url`.
+
+### Output entries
+
+`outs` fields can contain these subfields:
 
 - `path`: Path to the file or directory (relative to `wdir` which defaults to
   the file's location)
@@ -73,12 +80,20 @@ An _output entry_ (`outs`) consists of these fields:
   and a special _checksum_ for HDFS and WebHDFS.
 - `size`: Size of the file or directory (sum of all files).
 - `nfiles`: If a directory, number of files inside.
+- `isexec`: Whether this is an executable file. DVC preserves execute
+  permissions upon `dvc checkout` and `dvc pull`. This has no effect on
+  directories, or in general on Windows.
 - `cache`: Whether or not this file or directory is <abbr>cached</abbr> (`true`
   by default, if not present). See the `--no-commit` option of `dvc add`.
+- `persist`: Whether the output file/dir should remain in place while
+  `dvc repro` runs. By default outputs are deleted when `dvc repro` starts (if
+  this value is not present).
 - `desc`: User description for this output. This doesn't affect any DVC
   operations.
 
-A _dependency entry_ (`deps`) consists of these fields:
+### Dependency entries
+
+`deps` fields can contain these subfields:
 
 - `path`: Path to the dependency (relative to `wdir` which defaults to the
   file's location)
@@ -99,11 +114,6 @@ A _dependency entry_ (`deps`) consists of these fields:
     dependency from.
   - `rev_lock`: Git commit hash of the external <abbr>DVC repository</abbr> at
     the time of importing or updating the dependency (with `dvc update`)
-
-Note that comments can be added to `.dvc` files using the `# comment` syntax.
-`meta` fields and `#` comments are preserved among executions of the `dvc repro`
-and `dvc commit` commands, but not when a `.dvc` file is overwritten by
-`dvc add`, `dvc move`, `dvc import`, or `dvc import-url`.
 
 ## `dvc.yaml` file
 
@@ -131,14 +141,16 @@ stages:
     metrics:
       - performance.json
   training:
-    desc: train your model
-    cmd: python train.py
+    desc: Training stage description
+    cmd:
+      - pip install -r requirements.txt
+      - python train.py
     deps:
       - train.py
       - features
     outs:
       - model.pkl:
-          desc: my model description
+          desc: My model description
     plots:
       - logs.csv:
           x: epoch
@@ -149,20 +161,23 @@ stages:
 
 `dvc.yaml` files consists of a group of `stages` with names provided explicitly
 by the user with the `--name` (`-n`) option of `dvc run`. Each stage can contain
-the possible following fields:
+the following fields:
 
-- `cmd` (always present): Executable command defined in this stage
+- `cmd` (always present): One or more commands executed by the stage (may
+  contain either a single value, or a list). Commands are executed sequentially
+  until all are finished or until one of them fails (see
+  [`dvc repro`](/doc/command-reference/repro) for details).
 - `wdir`: Working directory for the stage command to run in (relative to the
   file's location). If this field is not present explicitly, it defaults to `.`
   (the file's location).
 - `deps`: List of <abbr>dependency</abbr> file or directory paths of this stage
-  (relative to `wdir` which defaults to the file's location)
+  (relative to `wdir` which defaults to the file's location). See
+  [Dependency entries](#dependency-entries) above for more details.
 - `params`: List of <abbr>parameter</abbr> dependency keys (field names) that
-  are read from a YAML, JSON, TOML, or Python file (`params.yaml` by default).
+  are read from a YAML, JSON, TOML, or Python file (`params.yaml` by default)
 - `outs`: List of <abbr>output</abbr> file or directory paths of this stage
-  (relative to `wdir` which defaults to the file's location), and optionally,
-  whether or not this file or directory is <abbr>cached</abbr> (`true` by
-  default, if not present). See the `--no-commit` option of `dvc run`.
+  (relative to `wdir` which defaults to the file's location). See
+  [Output entries](#output-entries) above for more details.
 - `metrics`: List of [metrics files](/doc/command-reference/metrics), and
   optionally, whether or not this metrics file is <abbr>cached</abbr> (`true` by
   default, if not present). See the `--metrics-no-cache` (`-M`) option of
@@ -203,8 +218,7 @@ It's created or updated by DVC commands such as `dvc run` and `dvc repro`.
 - `dvc.lock` is needed internally for several DVC commands to operate, such as
   `dvc checkout`, `dvc get`, and `dvc import`.
 
-Here's an example `dvc.lock` based on the one in [`dvc.yaml`](#dvcyaml-file)
-above:
+Here's an example `dvc.lock` based on the one in `dvc.yaml` above:
 
 ```yaml
 stages:
@@ -233,61 +247,7 @@ Regular <abbr>dependencies</abbr> and all kinds of <abbr>outputs</abbr>
 [plots](/doc/command-reference/plots) files) are also listed (per stage) in
 `dvc.lock`, but with an additional field to store the hash value of each file or
 directory tracked by DVC. Specifically: `md5`, `etag`, or `checksum` (same as in
-`deps` and `outs` entries of [`.dvc` files](#dvc-files)).
+`deps` and `outs` entries of `.dvc` files).
 
 Full <abbr>parameters</abbr> (key and value) are listed separately under
 `params`, grouped by parameters file.
-
-## Internal directories and files
-
-- `.dvc/config`: This is a configuration file. The config file can be edited by
-  hand or with the `dvc config` command.
-
-- `.dvc/config.local`: This is a local configuration file, that will overwrite
-  options in `.dvc/config`. This is useful when you need to specify private
-  options in your config that you don't want to track and share through Git
-  (credentials, private locations, etc). The local config file can be edited by
-  hand or with the command `dvc config --local`.
-
-- `.dvc/cache`: The <abbr>cache</abbr> directory will store your data in a
-  special
-  [structure](/doc/user-guide/concepts/dvc-cache#structure-of-the-cache-directory).
-  The data files and directories in the <abbr>workspace</abbr> will only contain
-  links to the data files in the cache. (Refer to
-  [Large Dataset Optimization](/doc/user-guide/large-dataset-optimization). See
-  `dvc config cache` for related configuration options.
-
-  > Note that DVC includes the cache directory in `.gitignore` during
-  > initialization. No data tracked by DVC will ever be pushed to the Git
-  > repository, only [DVC-files](/doc/user-guide/dvc-files-and-directories) that
-  > are needed to download or reproduce them.
-
-- `.dvc/plots`: Directory for
-  [plot templates](/doc/command-reference/plots#plot-templates)
-
-- `.dvc/tmp`: Directory for miscellaneous temporary files
-
-- `.dvc/tmp/index`: Directory for remote index files that are used for
-  optimizing `dvc push`, `dvc pull`, `dvc fetch` and `dvc status -c` operations
-
-- `.dvc/tmp/state`: This file is used for optimization. It is a SQLite database,
-  that contains hash values for files tracked in a DVC project, with respective
-  timestamps and inodes to avoid unnecessary file hash computations. It also
-  contains a list of links (from cache to <abbr>workspace</abbr>) created by DVC
-  and is used to cleanup your workspace when calling `dvc checkout`.
-
-- `.dvc/tmp/state-journal`: Temporary file for SQLite operations
-
-- `.dvc/tmp/state-wal`: Another SQLite temporary file
-
-- `.dvc/tmp/updater`: This file is used store the latest available version of
-  DVC. It's used to remind the user to upgrade when the installed version is
-  behind.
-
-- `.dvc/tmp/updater.lock`: Lock file for `.dvc/tmp/updater`
-
-- `.dvc/tmp/lock`: Lock file for the entire DVC project
-
-- `.dvc/tmp/rwlock`: JSON file that contains read and write locks for specific
-  dependencies and outputs, to allow safely running multiple DVC commands in
-  parallel

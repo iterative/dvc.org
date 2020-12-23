@@ -1,9 +1,6 @@
 require('dotenv').config()
 
-const {
-  setPageContext,
-  removePageTrailingSlash
-} = require('./src/gatsby/common')
+const { setPageContext } = require('./src/gatsby/common')
 
 const models = require('./src/gatsby/models.js')
 const callOnModels = require('./src/gatsby/utils/models')
@@ -18,7 +15,6 @@ exports.onPostBuild = api => callOnModels(models, 'onPostBuild', api)
 
 exports.onCreatePage = ({ page, actions }) => {
   setPageContext(page, actions)
-  removePageTrailingSlash(page, actions)
 }
 
 // Ignore warnings about CSS inclusion order, because we use CSS modules.

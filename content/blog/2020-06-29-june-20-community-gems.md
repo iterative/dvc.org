@@ -32,7 +32,7 @@ delete the old `.dvc` files. We also have a
 available, although we can't provide long-term support for it.
 
 Learn more about the `dvc.yaml` format in our
-[brand new docs](https://dvc.org/doc/user-guide/dvc-files-and-directories#dvcyaml-file)!
+[brand new docs](https://dvc.org/doc/user-guide/dvc-files#dvcyaml-file)!
 
 https://media.giphy.com/media/JYpTAnhT0EI2Q/giphy.gif
 
@@ -46,7 +46,7 @@ possible- these file names are how DVC deduplicates data (to avoid keeping
 multiple copies of the same file version) and ensures that each unique version
 of a file is immutable. If you manually overwrote those filenames you would risk
 breaking Git version control. You can
-[read more about how DVC uses this file format in our docs](https://dvc.org/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory).
+[read more about how DVC uses this file format in our docs](https://dvc.org/doc/user-guide/dvc-internals#structure-of-cache-directory).
 
 It sounds like you're looking for ways to interact with DVC-tracked objects at a
 high level of abstraction, meaning that you want to interface with the original
@@ -69,7 +69,7 @@ secure and recommended ways to do this:
 If the directory you're adding is logically one unit (for example, it is the
 whole dataset in your project), we recommend using `dvc add` at the directory
 level. Otherwise, add files one-by-one. You can
-[read more about how DVC versions directories in our docs](https://dvc.org/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory).
+[read more about how DVC versions directories in our docs](https://dvc.org/doc/user-guide/dvc-internals#structure-of-cache-directory).
 
 ### Q: [Do you have any examples of using DVC with MinIO?](https://discord.com/channels/485586884165107732/563406153334128681/722780202844815362)
 

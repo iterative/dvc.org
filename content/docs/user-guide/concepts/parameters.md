@@ -21,6 +21,14 @@ are invalidated when any of their parameter values change.
 
 <!-- from params index -->
 
+```
+epoch, AUC, loss
+34, 0.91935, 0.0317345
+35, 0.91913, 0.0317829
+36, 0.92256, 0.0304632
+37, 0.92302, 0.0299015
+```
+
 In order to track <abbr>parameters</abbr> and hyperparameters associated to
 machine learning experiments in <abbr>DVC projects</abbr>, DVC provides a
 different type of dependencies: _parameters_. Parameters are defined using the

@@ -26,14 +26,17 @@ any), for example `accuracy.json` below:
 stages:
   train:
     cmd: python train.py
-    deps:
-      - users.csv
-    outs:
-      - model.pkl
+    ...
     plots:
       - accuracy.json:
           cache: false
 ```
+
+Hierarchical file formats such as JSON and YAML consists of an array of
+consistent objects (sharing a common structure): All objects should contain the
+fields used for the X and Y axis of the plot (see
+[DVC template anchors](#dvc-template-anchors)); Extra elements will be ignored
+silently.
 
 Note that metrics files are normally committed with Git (that's what
 `cache: false` above is for). See `dvc.yaml` for more information.
@@ -100,8 +103,8 @@ header (first row) are equivalent to field names.
   `index` field (explained above) is the default.
 
 - `<DVC_METRIC_Y>` (optional) - field name of the data for the Y axis. It can be
-  defined with the `-y` option of the `dvc plot` subcommands. The default is the
-  last one found in the metrics file: the last column for CSV/TSV, or the last
+  defined with the `-y` option of the `dvc plot` subcommands. It defaults to the
+  last header of the metrics file: the last column for CSV/TSV, or the last
   field for JSON/YAML.
 
 - `<DVC_METRIC_X_TITLE>` (optional) - field name to display as the X axis label

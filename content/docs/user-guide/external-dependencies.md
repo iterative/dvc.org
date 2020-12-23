@@ -8,7 +8,7 @@ from S3 to process it.
 
 External dependencies and
 [external outputs](/doc/user-guide/managing-external-data) provide ways to track
-data outside of the <abbr>project</abbr>.
+and version data outside of the <abbr>project</abbr>.
 
 ## How external dependencies work
 
@@ -201,7 +201,6 @@ outs:
   - md5: a304afb96060aad90176268345e10355
     path: data.xml
     cache: true
-    metric: false
     persist: false
 ```
 
@@ -242,8 +241,6 @@ outs:
   - md5: 3863d0e317dee0a55c4e59d2ec0eef33
     path: model.pkl
     cache: true
-    metric: false
-    persist: false
 ```
 
 The `url` and `rev_lock` subfields under `repo` are used to save the origin and

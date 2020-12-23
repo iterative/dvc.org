@@ -5,8 +5,7 @@ In order to track the data files and directories added with `dvc add` or
 <abbr>project</abbr>'s cache is the hidden storage (by default located in
 `.dvc/cache`) for files that are tracked by DVC, and their different versions.
 (See [DVC Cache](/doc/user-guide/concepts/dvc-cache) and
-[DVC Files and Directories](/doc/user-guide/dvc-files-and-directories) for more
-details.)
+[DVC Internals](/doc/user-guide/dvc-internals) for more details.)
 
 However, the versions of the tracked files that
 [match the current code](/doc/tutorials/get-started/data-pipelines) are also
