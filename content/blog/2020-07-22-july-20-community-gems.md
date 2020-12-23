@@ -53,7 +53,7 @@ If for some reason this won't work for your team, you can either downgrade to a
 previous version, or use a workaround:
 
 ```dvc
-$ dvc repro <.dvc stage file>
+$ dvc repro <.dvc file>
 ```
 
 substituting the appropriate `.dvc` file for your pipeline. DVC 1.0 is backwards
