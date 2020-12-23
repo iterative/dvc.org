@@ -28,6 +28,9 @@ YAML 1.2, JSON, TOML, or [Python](#examples-python-parameters-file) _parameters
 file_. Multiple parameter dependencies can be specified from one or more
 parameters files.
 
+💡 Parameters can also be used as variables in `dvc.yaml` files in order to
+[parametrize stages](#example-parametrized-stages-in-dvcyaml).
+
 The default parameters file name is `params.yaml`. Parameters should be
 organized as a tree hierarchy inside, as DVC will locate param names by their
 tree path. Parameters files have to be manually written, or generated, and these
@@ -144,6 +147,48 @@ $ dvc run -n train -d logs/ -o users.csv \
           python train.py
 ```
 
+## Examples: Print all parameters
+
+Following the previous example, we can use `dvc params diff` to list all of the
+param values available in the <abbr>workspace</abbr>:
+
+```dvc
+$ dvc params diff
+Path         Param           Old    New
+params.yaml  lr              —      0.0041
+params.yaml  process.bow     —      15000
+params.yaml  process.thresh  —      0.98
+params.yaml  train.epochs    —      70
+params.yaml  train.layers    —      9
+```
+
+This command shows the difference in parameters between the workspace and the
+last committed version of the `params.yaml` file. In our example there's no
+previous version, which is why all `Old` values are `—`.
+
+## Example: Parametrized stages in `dvc.yaml`
+
+Let's say we have a `params.yaml` file with the following contents:
+
+```yaml
+models:
+  us:
+    thresh: 10
+    filename: 'model-us.hdf5'
+```
+
+To use those values in `dvc.yaml`, you can use this special syntax:
+
+```yaml
+stages:
+  build-us:
+    cmd: python script.py--out ${models.us.filename}
+    outs:
+      - ${models.us.filename}
+```
+
+DVC will track the params values over time based on these `${}` expressions.
+
 ## Examples: Python parameters file
 
 Consider this Python parameters file named `params.py`:
@@ -231,22 +276,3 @@ $ dvc run -n train -d users.csv -o model.pkl \
           -p params.py:BOOL,INT,TestConfig \
           python train.py
 ```
-
-## Examples: Print all parameters
-
-Following the previous example, we can use `dvc params diff` to list all of the
-param values available in the <abbr>workspace</abbr>:
-
-```dvc
-$ dvc params diff
-Path         Param           Old    New
-params.yaml  lr              —      0.0041
-params.yaml  process.bow     —      15000
-params.yaml  process.thresh  —      0.98
-params.yaml  train.epochs    —      70
-params.yaml  train.layers    —      9
-```
-
-This command shows the difference in parameters between the workspace and the
-last committed version of the `params.yaml` file. In our example there's no
-previous version, which is why all `Old` values are `—`.
