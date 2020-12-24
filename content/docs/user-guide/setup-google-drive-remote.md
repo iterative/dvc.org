@@ -215,7 +215,7 @@ individually.
 
 If you use multiple GDrive remotes, by default they will be sharing the same
 `.dvc/tmp/gdrive-user-credentials.json` file. It can be overridden with the
-`gdrive_user_credentials_file` setting:
+`gdrive_user_credentials_file` parameter:
 
 ```dvc
 $ dvc remote modify myremote gdrive_user_credentials_file \

@@ -72,14 +72,15 @@ An _output entry_ (`outs`) can have these fields:
   HTTP, S3, or Azure [external outputs](/doc/user-guide/managing-external-data);
   and a special _checksum_ for HDFS and WebHDFS.
 - `size`: Size of the file or directory (sum of all files).
-- `nfiles`: If a directory, number of files inside.
+- `nfiles`: If this output is a directory, the number of files inside
+  (recursive).
 - `cache`: Whether or not this file or directory is <abbr>cached</abbr> (`true`
   by default, if not present). See the `--no-commit` option of `dvc add`.
 - `persist`: Whether the output file/dir should remain in place while
   `dvc repro` runs. By default outputs are deleted when `dvc repro` starts (if
   this value is not present).
-- `desc`: User description for this output. This doesn't affect any DVC
-  operations.
+- `desc` (optional): User description for this output. This doesn't affect any
+  DVC operations.
 
 A _dependency entry_ (`deps`) can have these fields:
 
@@ -91,7 +92,8 @@ A _dependency entry_ (`deps`) can have these fields:
   HTTP, S3, or Azure <abbr>external dependencies</abbr>; and a special
   _checksum_ for HDFS and WebHDFS. See `dvc import-url` for more information.
 - `size`: Size of the file or directory (sum of all files).
-- `nfiles`: If a directory, number of files inside.
+- `nfiles`: If this dependency is a directory, the number of files inside
+  (recursive).
 - `repo`: This entry is only for external dependencies created with
   `dvc import`, and can contains the following fields:
 
