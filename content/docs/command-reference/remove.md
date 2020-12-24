@@ -26,6 +26,8 @@ names as `targets`.
 If there are no stages left in `dvc.yaml` after the removal, then both
 `dvc.yaml` and `dvc.lock` are deleted.
 
+Additionally, `.gitignore` is deleted if there are no `.gitignore` entries.
+
 Note that the actual <abbr>output</abbr> files or directories of the stage
 (`outs` field) are not removed by this command, unless the `--outs` option is
 used.
