@@ -186,7 +186,7 @@ up-to-date and only execute the final stage.
 
 - `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if all
   stages are up to date or if all stages are successfully executed, otherwise
-  exit with 1. The command defined in the stage is free to write output
+  exit with 1. The commands defined in the stage are free to write output
   regardless of this flag.
 
 - `-v`, `--verbose` - displays detailed tracing information.
@@ -269,8 +269,8 @@ If we now run `dvc repro`, we should see this:
 ```dvc
 $ dvc repro
 Stage 'filter' didn't change, skipping
-Running stage 'count' with command:
-        python process.py numbers.txt > count.txt
+Running stage 'count':
+> python process.py numbers.txt > count.txt
 Updating lock file 'dvc.lock'
 ```
 
@@ -306,8 +306,8 @@ of only the target (`count`) and following stages (none in this case):
 
 ```dvc
 $ dvc repro --downstream count
-Running stage 'count' with command:
-        python process.py numbers.txt > count.txt
+Running stage 'count':
+> python process.py numbers.txt > count.txt
 Updating lock file 'dvc.lock'
 ```
 
