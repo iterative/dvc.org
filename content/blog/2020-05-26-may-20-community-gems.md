@@ -57,7 +57,7 @@ find the entry corresponding to `image_1.png`. It'll give the `md5` for
 `image_1.png`. Finally, go back to `.dvc/cache`, identify the file corresponding
 to that `md5`, and delete it. For detailed instructions about `.dir` files,
 where to find them and how they're used,
-[see our docs about the structure of the cache](https://dvc.org/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory).
+[see our docs about the structure of the cache](https://dvc.org/doc/user-guide/dvc-internals#structure-of-cache-directory).
 
 Having said all this... please know that in the future, we plan to support a
 function like `git rm` that will allow easier deletes from DVC!

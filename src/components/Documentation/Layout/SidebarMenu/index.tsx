@@ -10,6 +10,7 @@ import DownloadButton from '../../../DownloadButton'
 import Link from '../../../Link'
 import { ReactComponent as ExternalLinkIcon } from './external-link-icon.svg'
 import { ReactComponent as HouseIcon } from './house.svg'
+import { ReactComponent as CMLIcon } from './cml_bw_logo.svg'
 
 import {
   structure,
@@ -23,7 +24,8 @@ import styles from './styles.module.css'
 // A map for optional special icons that can be used in menu items
 // Use the key string here as the "icon" field in sidebar.json
 const ICONS: { [key: string]: React.FC<{ className?: string }> } = {
-  house: HouseIcon
+  house: HouseIcon,
+  cml: CMLIcon
 }
 
 interface ISidebarMenuItemProps {

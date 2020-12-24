@@ -97,7 +97,7 @@ Relevant notes:
 
 - Entire directories produced by the stage can be tracked as outputs by DVC,
   which generates a single `.dir` entry in the cache (refer to
-  [Structure of cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-the-cache-directory)
+  [Structure of cache directory](/doc/user-guide/dvc-internals#structure-of-the-cache-directory)
   for more info.)
 
 - [external dependencies](/doc/user-guide/external-dependencies) and
@@ -186,8 +186,8 @@ $ dvc run -n my_stage './my_script.sh $MYENVVAR'
   reason.
 
 - `--outs-persist <path>` - declare output file or directory that will not be
-  removed when `dvc repro` starts (but it will still be overwritten when it
-  finishes).
+  removed when `dvc repro` starts (but it can still be modified, overwritten, or
+  even deleted by the stage command(s)).
 
 - `--outs-persist-no-cache <path>` - the same as `-outs-persist` except that
   outputs are not tracked by DVC (same as with `-O` above).

@@ -173,7 +173,7 @@ $ tree .dvc/cache
 > Refer to `dvc status`.
 
 Note that the
-[`.dvc/cache`](/doc/user-guide/dvc-files-and-directories#structure-of-the-cache-directory)
+[`.dvc/cache`](/doc/user-guide/dvc-internals#structure-of-the-cache-directory)
 directory was created and populated.
 
 All the data needed in this version of the project is now in your cache: File

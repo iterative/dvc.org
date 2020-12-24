@@ -188,7 +188,7 @@ Finally, we used `dvc status` to double check that all data had been uploaded.
 ## Example: What happens in the cache?
 
 Let's take a detailed look at what happens to the
-[cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-the-cache-directory)
+[cache directory](/doc/user-guide/dvc-internals#structure-of-the-cache-directory)
 as you run an experiment locally and push data to remote storage. To set the
 example consider having created a <abbr>workspace</abbr> that contains some code
 and data, and having set up a remote.
@@ -236,7 +236,7 @@ the cache having more files in it than the remote – which is what the `new`
 state means.
 
 > Refer to
-> [Structure of cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-the-cache-directory)
+> [Structure of cache directory](/doc/user-guide/dvc-internals#structure-of-the-cache-directory)
 > for more info.
 
 Next we can copy the remaining data from the cache to the remote using
