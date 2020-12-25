@@ -18,9 +18,9 @@ positional arguments:
 ## Description
 
 This command is usually needed after `git checkout`, `git clone`, or any other
-operation that changes the current `dvc.lock` or `.dvc` files. It restores the
-corresponding versions of the DVC-tracked files and directories from the
-<abbr>cache</abbr> to the workspace.
+operation that changes the current [DVC files](/doc/user-guide/dvc-files). It
+restores the corresponding versions of the DVC-tracked files and directories
+from the <abbr>cache</abbr> to the workspace.
 
 The `targets` given to this command (if any) limit what to checkout. It accepts
 paths to tracked files or directories (including paths inside tracked
@@ -75,25 +75,25 @@ the pipeline must be reproduced (using `dvc repro`) to regenerate its outputs.
   the workspace, instead of a full list of changes.
 
 - `-R`, `--recursive` - determines the files to checkout by searching each
-  target directory and its subdirectories for DVC-files to inspect. If there are
-  no directories among the `targets`, this option is ignored.
+  target directory and its subdirectories for `.dvc` files to inspect. If there
+  are no directories among the `targets`, this option is ignored.
 
 - `-d`, `--with-deps` - determines files to update by tracking dependencies to
-  the target DVC-files (stages). If no `targets` are provided, this option is
-  ignored. By traversing all stage dependencies, DVC searches backward from the
+  the target stages (if no stage `targets` are provided, this option is
+  ignored). By traversing all stage dependencies, DVC searches backward from the
   target stages in the corresponding pipelines. This means DVC will not checkout
   files referenced in later stages than the `targets`.
 
 - `-f`, `--force` - does not prompt when removing workspace files. Changing the
-  current set of DVC-files with `git checkout` can result in the need for DVC to
-  remove files that don't match those DVC-file references or are missing from
-  cache. (They are not "committed", in DVC terms.)
+  current set of [DVC files](/doc/user-guide/dvc-files) with `git checkout` can
+  result in the need for DVC to remove files that don't match those references
+  or are missing from cache. (They are not "committed", in DVC terms.)
 
 - `--relink` - ensures the file linking strategy (`reflink`, `hardlink`,
   `symlink`, or `copy`) for all data in the workspace is consistent with the
   project's [`cache.type`](/doc/command-reference/config#cache). This is
-  achieved by restoring **all data files or a directories** referenced in
-  current DVC-files (regardless of whether they match a current DVC-file).
+  achieved by restoring **all data files or directories** referenced in current
+  DVC files (regardless of whether the files/dirs were already present).
 
 - `-h`, `--help` - shows the help message and exit.
 
