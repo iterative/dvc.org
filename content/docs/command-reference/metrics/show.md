@@ -6,7 +6,7 @@ Print [metrics](/doc/command-reference/metrics), with optional formatting.
 
 ```usage
 usage: dvc metrics show [-h] [-q | -v] [-a] [-T] [--all-commits] [-R]
-                        [--show-json]
+                        [--show-json][--show-md]
                         [targets [targets ...]]
 
 positional arguments:
@@ -47,6 +47,8 @@ compares them with a previous version.
 - `--show-json` - prints the command's output in easily parsable JSON format,
   instead of a human-readable table.
 
+- `--show-md` - prints the command's output in Markdown table format.
+  
 - `-R`, `--recursive` - determines the metrics files to show by searching each
   target directory and its subdirectories for `dvc.yaml` files to inspect. If
   there are no directories among the `targets`, this option is ignored.
