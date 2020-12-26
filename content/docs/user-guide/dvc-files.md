@@ -363,14 +363,14 @@ ${param.list[0]} # List elements via index in [] (square brackets)
 ```
 
 > To use the same expression literally in `dvc.yaml`, escape it with a
-backslash, e.g. `\${...`.
+> backslash, e.g. `\${...`.
 
 ### Stage groups (loops)
 
 You can create loop structures inside `dvc.yaml` stage entries in order to
 define more than one stage at a time. A `foreach` element accepts a list or
-dictionary to iterate on, while `do` contains the regular stage fields
-(`cmd`, `outs`, etc.). Here's a simple example:
+dictionary to iterate on, while `do` contains the regular stage fields (`cmd`,
+`outs`, etc.). Here's a simple example:
 
 ```yaml
 stages:
@@ -395,5 +395,3 @@ echo@baz:
 echo@foo:
   cmd: echo foo
 ```
-
-For lists with 
