@@ -254,8 +254,8 @@ $ dvc run -n my_stage './my_script.sh $MYENVVAR'
   `always_changed` field in `dvc.yaml`). As a result `dvc status` will report it
   as `always changed` and `dvc repro` will always execute it.
 
-  > Note that DVC-files without dependencies are automatically considered
-  > "always changed", so this option has no effect in those cases.
+  > Note that regular `.dvc` files (without dependencies) are automatically
+  > considered "always changed", so this option has no effect in those cases.
 
 - `--external` - allow writing outputs outside of the DVC repository. See
   [Managing External Data](/doc/user-guide/managing-external-data).

@@ -79,7 +79,8 @@ and `dvc commit` commands, but not when a `.dvc` file is overwritten by
   HTTP, S3, or Azure [external outputs](/doc/user-guide/managing-external-data);
   and a special _checksum_ for HDFS and WebHDFS.
 - `size`: Size of the file or directory (sum of all files).
-- `nfiles`: If a directory, number of files inside.
+- `nfiles`: If this output is a directory, the number of files inside
+  (recursive).
 - `isexec`: Whether this is an executable file. DVC preserves execute
   permissions upon `dvc checkout` and `dvc pull`. This has no effect on
   directories, or in general on Windows.
@@ -88,8 +89,8 @@ and `dvc commit` commands, but not when a `.dvc` file is overwritten by
 - `persist`: Whether the output file/dir should remain in place while
   `dvc repro` runs. By default outputs are deleted when `dvc repro` starts (if
   this value is not present).
-- `desc`: User description for this output. This doesn't affect any DVC
-  operations.
+- `desc` (optional): User description for this output. This doesn't affect any
+  DVC operations.
 
 ### Dependency entries
 
@@ -103,7 +104,8 @@ and `dvc commit` commands, but not when a `.dvc` file is overwritten by
   HTTP, S3, or Azure <abbr>external dependencies</abbr>; and a special
   _checksum_ for HDFS and WebHDFS. See `dvc import-url` for more information.
 - `size`: Size of the file or directory (sum of all files).
-- `nfiles`: If a directory, number of files inside.
+- `nfiles`: If this dependency is a directory, the number of files inside
+  (recursive).
 - `repo`: This entry is only for external dependencies created with
   `dvc import`, and can contains the following fields:
 
@@ -178,10 +180,7 @@ syntax.
 by the user with the `--name` (`-n`) option of `dvc run`. Each stage can contain
 the following fields:
 
-- `cmd` (always present): One or more commands executed by the stage (may
-  contain either a single value, or a list). Commands are executed sequentially
-  until all are finished or until one of them fails (see
-  [`dvc repro`](/doc/command-reference/repro) for details).
+- `cmd` (always present): Executable command defined in this stage
 - `wdir`: Working directory for the stage command to run in (relative to the
   file's location). If this field is not present explicitly, it defaults to `.`
   (the file's location).

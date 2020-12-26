@@ -169,7 +169,8 @@ $ git tag -a "v1.0" -m "model v1.0, 1000 images"
 As we mentioned briefly, DVC does not commit the `data/` directory and
 `model.h5` file with Git. Instead, `dvc add` stores them in the
 <abbr>cache</abbr> (usually in `.dvc/cache`) and adds them to `.gitignore`. We
-then `git commit` DVC-files that contain file hashes that point to cached data.
+then `git commit` `.dvc` files that contain file hashes that point to cached
+data.
 
 In this case we created `data.dvc` and `model.h5.dvc`. Refer to
 [DVC Files](/doc/user-guide/dvc-files#dvc-files) to learn more about how these
@@ -242,8 +243,8 @@ $ git tag -a "v2.0" -m "model v2.0, 2000 images"
 ```
 
 That's it! We've tracked a second version of the dataset, model, and metrics in
-DVC and committed the DVC-files that point to them with Git. Let's now look at
-how DVC can help us go back to the previous version if we need to.
+DVC and committed the `.dvc` files that point to them with Git. Let's now look
+at how DVC can help us go back to the previous version if we need to.
 
 ## Switching between workspace versions
 
@@ -291,8 +292,8 @@ As we have learned already, DVC keeps data files out of Git (by adjusting
 placeholders that point to the cached files, and they can be easily version
 controlled with Git.
 
-When we run `git checkout` we restore pointers (DVC-files) first. Then, when we
-run `dvc checkout`, we use these pointers to put the right data in the right
+When we run `git checkout` we restore pointers (`.dvc` files) first. Then, when
+we run `dvc checkout`, we use these pointers to put the right data in the right
 place.
 
 </details>
