@@ -29,7 +29,7 @@ file_. Multiple parameter dependencies can be specified from one or more
 parameters files.
 
 💡 Parameters can also be used as variables in `dvc.yaml` itself. See the
-[Parametrizes stages](#example-parametrized-stages-in-dvcyaml) example below.
+[Parameterize stages](#example-parameterize-stages-in-dvcyaml) example below.
 
 The default parameters file name is `params.yaml`. Parameters should be
 organized as a tree hierarchy inside, as DVC will locate param names by their
@@ -38,7 +38,7 @@ can be versioned directly with Git.
 
 Supported parameter _value_ types are: string, integer, float, and arrays. DVC
 itself does not ascribe any specific meaning for these values. They are
-user-defined, and serve as a way to generalize and parametrize an machine
+user-defined, and serve as a way to generalize and parameterize an machine
 learning algorithms or data processing code.
 
 DVC saves the param names and their latest values in the `dvc.yaml` file. These
@@ -166,7 +166,7 @@ This command shows the difference in parameters between the workspace and the
 last committed version of the `params.yaml` file. In our example there's no
 previous version, which is why all `Old` values are `—`.
 
-## Example: Parametrized stages in `dvc.yaml`
+## Example: Parameterize stages in `dvc.yaml`
 
 Let's say we have a `params.yaml` file with the following contents:
 
