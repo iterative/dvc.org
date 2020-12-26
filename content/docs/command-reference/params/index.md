@@ -28,7 +28,7 @@ YAML 1.2, JSON, TOML, or [Python](#examples-python-parameters-file) _parameters
 file_. Multiple parameter dependencies can be specified from one or more
 parameters files.
 
-💡 Parameters can also be used as variables in `dvc.yaml` itself. See the
+💡 Parameters can also be used directly in `dvc.yaml` itself. See the
 [Parameterize stages](#example-parameterize-stages-in-dvcyaml) example below.
 
 The default parameters file name is `params.yaml`. Parameters should be

@@ -275,7 +275,8 @@ models:
     filename: 'model-us.hdf5'
 ```
 
-To use those values in `dvc.yaml`, you can use this special syntax:
+To use those values in `dvc.yaml`, you can use the `${}` expression anywhere in
+the file:
 
 ```yaml
 stages:
@@ -289,7 +290,7 @@ stages:
         persist: true
 ```
 
-Alternatively, the `vars` can be included in `dvc.yaml` like this:
+Alternatively, `vars` can be included in `dvc.yaml` like this:
 
 ```yaml
 vars:
@@ -329,10 +330,10 @@ To use the expression literally in `dvc.yaml`, escape it with a backslash, e.g.
 
 ### Stage groups (loops)
 
-You can create loop structures inside stage (group) names in `dvc.yaml` to
-define more than one stage at a time. A `foreach` part accepts a list or
-dictionary to iterate on, while a `do` section contains the regular stage fields
-(`cmd`, `outs`, etc.). Here's a simple example:
+You can create loop structures inside stage names in `dvc.yaml` to define more
+than one stage at a time. A `foreach` part accepts a list or dictionary to
+iterate on, while a `do` section contains the regular stage fields (`cmd`,
+`outs`, etc.). Here's a simple example:
 
 ```yaml
 stages:
