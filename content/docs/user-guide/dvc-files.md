@@ -367,10 +367,10 @@ ${param.list[0]} # List elements via index in [] (square brackets)
 
 ### Stage groups (loops)
 
-You can create loop structures inside `dvc.yaml` stage entries in order to
-define more than one stage at a time. A `foreach` element accepts a list or
-dictionary to iterate on, while `do` contains the regular stage fields (`cmd`,
-`outs`, etc.). Here's a simple example:
+You can create loop structures in `dvc.yaml` stage entries to define more than
+one stage at a time. A `foreach` element accepts a list or dictionary to iterate
+on, while `do` contains the regular stage fields (`cmd`, `outs`, etc.). Here's a
+simple example:
 
 ```yaml
 stages:
@@ -384,14 +384,82 @@ stages:
 ```
 
 Upon `dvc repro`, each item in the list is expanded into its own stage by
-substituting the item's value in `${item}`. The item's value is appended to each
-specific stage name after a `@`. `dvc.lock` will reflect this expansion:
+substituting the item's value in expression `${item}`. The item's value is
+appended to each specific stage name after a `@`. `dvc.lock` will reflect this:
 
 ```yaml
-echo@bar:
-  cmd: echo bar
-echo@baz:
-  cmd: echo baz
-echo@foo:
-  cmd: echo foo
+stages:
+  echo@bar:
+    cmd: echo bar
+  echo@baz:
+    cmd: echo baz
+  echo@foo:
+    cmd: echo foo
+```
+
+For lists containing complex values (e.g. dictionaries), the substitution
+expression can use the `${item.key}` form. Stage names will be appended with a
+zero-based index. For example:
+
+```yaml
+stages:
+  train:
+    foreach:
+      - epochs: 3
+        thresh: 10
+      - epochs: 10
+        thresh: 15
+    cmd: python train.py ${item.epochs} ${item.thresh}
+```
+
+```yaml
+# dvc.lock
+stages:
+  train@0:
+    cmd: python train.py 3 10
+  train@1:
+    cmd: python train.py 10 15
+```
+
+DVC can also iterate on a dictionary given directly to `foreach`, resulting in
+two substitution expressions being available: `${key}` and `${item}`. The former
+is used for the stage names:
+
+```yaml
+stages:
+  build:
+    foreach:
+      uk:
+        epochs: 3
+        thresh: 10
+      us:
+        epochs: 10
+        thresh: 15
+    do:
+      cmd: python train.py '${key}' ${item.epochs} ${item.thresh}
+      outs:
+        - model-${key}.hdfs
+```
+
+```yaml
+# dvc.lock
+stages:
+  build@uk:
+    cmd: python train.py 'uk' 3 10
+    outs:
+      - model-uk.hdfs
+  build@us: ...
+```
+
+Importantly, dictionaries from [parameters](#parameterize-dvcyaml) files can be
+used in `foreach` stage groups as well:
+
+```yaml
+stages:
+  mystage:
+    foreach: ${myobject} # From params.yaml
+    do:
+      cmd: ./script.py ${key} ${item.prop1}
+      outs:
+        - ${item.prop2}
 ```
