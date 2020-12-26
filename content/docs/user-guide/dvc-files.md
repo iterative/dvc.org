@@ -263,8 +263,8 @@ values from different sources in the YAML structure itself.
 
 Global parameters (file scope) can be defined either in a
 [params file](/doc/command-reference/params) (`params.yaml` by default), or in a
-top `vars` section of `dvc.yaml` itself. Both can coexist as long as `vars`
-don't overwrite any external param.
+top `vars` section of `dvc.yaml`. Both can coexist as long as `vars` don't
+overwrite any external param.
 
 Let's say we have a `params.yaml` file with the following contents:
 
@@ -287,21 +287,58 @@ stages:
       --out ${models.us.filename}
     outs:
       - ${models.us.filename}:
-        persist: true
+        cache: true
 ```
 
-Alternatively, `vars` can be included in `dvc.yaml` like this:
+Alternatively, the same or other values can be included as `vars` like this:
 
 ```yaml
 vars:
   - models:
     us:
       thresh: 10
-      filename: 'model-us.hdf5'
+  - desc: 'Reusable description'
 
 stages:
-  build-us: ...
+  build-us:
+    desc: ${desc}
+    cmd: python train.py --tresh ${models.us.threshold} ...
 ```
+
+The global `vars` section also accepts any number of parameters file names as
+entries as a way to include their contents for substituting in `dvc.yaml`, e.g.:
+
+```yaml
+vars:
+  - params.json
+  - myconfig.yaml
+  - myvar: value
+```
+
+> ⚠️ Note that the default `params.yaml` is always included (completely) first.
+
+It's also possible to narrow down what to include from each params file by using
+this special `:` colon format:
+
+```yaml
+vars:
+  - params.json:cleaning,featurization
+
+stages:
+  clean:
+    cmd: source ${cleaning.script}
+    outs:
+      - ${cleaning.outname}
+  featurize:
+    cmd: python ${featurization.pyscript}
+    deps:
+      - ${cleaning.outname}
+    outs: ...
+```
+
+> DVC merges structures from params files as long as there are no collisions.
+> E.g. `{"grp": {"a": 1}}` can be merged with `{"grp": {"b": 2}}` but not with
+> `{"grp": {"a": 10}}`.
 
 Local parameters (stage scope) are also supported, with stage-specific `vars`
 sections:
@@ -314,26 +351,26 @@ stages:
         filename: 'model-us.hdf5'
     cmd: python train.py --out ${model.filename}
     outs:
-      - ${models.us.filename}
+      - ${model.filename}
 ```
 
 The template substitution expression (`${}`) supports these forms:
 
 ```yaml
 ${param} # Simple
-${param.name} # Nested values through . (period)
-${param.list[0]} # List elements through [index]
+${param.key} # Nested values through . (period)
+${param.list[0]} # List elements via index in [] (square brackets)
 ```
 
-To use the expression literally in `dvc.yaml`, escape it with a backslash, e.g.
-`\${...`.
+> To use the same expression literally in `dvc.yaml`, escape it with a
+backslash, e.g. `\${...`.
 
 ### Stage groups (loops)
 
-You can create loop structures inside stage names in `dvc.yaml` to define more
-than one stage at a time. A `foreach` part accepts a list or dictionary to
-iterate on, while a `do` section contains the regular stage fields (`cmd`,
-`outs`, etc.). Here's a simple example:
+You can create loop structures inside `dvc.yaml` stage entries in order to
+define more than one stage at a time. A `foreach` element accepts a list or
+dictionary to iterate on, while `do` contains the regular stage fields
+(`cmd`, `outs`, etc.). Here's a simple example:
 
 ```yaml
 stages:
@@ -346,7 +383,7 @@ stages:
       cmd: echo ${item}
 ```
 
-Upon `dvc repro`, each item in the loop is expanded into its own stage by
+Upon `dvc repro`, each item in the list is expanded into its own stage by
 substituting the item's value in `${item}`. The item's value is appended to each
 specific stage name after a `@`. `dvc.lock` will reflect this expansion:
 
@@ -358,3 +395,5 @@ echo@baz:
 echo@foo:
   cmd: echo foo
 ```
+
+For lists with 
