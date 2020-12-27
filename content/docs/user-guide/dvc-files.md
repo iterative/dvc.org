@@ -144,7 +144,7 @@ stages:
       - performance.json
   training:
     desc: Training stage description
-    cmd: python train.py
+    cmd: python train.py --out ${model_file}
     deps:
       - train.py
       - features
