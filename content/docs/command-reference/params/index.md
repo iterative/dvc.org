@@ -19,8 +19,8 @@ positional arguments:
 In order to track parameters and hyperparameters associated to machine learning
 experiments in <abbr>DVC projects</abbr>, DVC provides a different type of
 dependencies: _parameters_. Params are defined in the `params` field of
-`dvc.yaml` or using the the `-p` (`--params`) option of `dvc run`. They usually
-have simple names like `epochs`, `learning-rate`, `batch_size`, etc.
+`dvc.yaml` (e.g. with the the `-p` (`--params`) option of `dvc run`). They
+usually have simple names like `epochs`, `learning-rate`, `batch_size`, etc.
 
 In contrast to a regular <abbr>dependency</abbr>, a parameter is not a file (or
 directory). Instead, it consists of a _parameter name_ (or key) to find inside a
