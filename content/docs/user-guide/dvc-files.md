@@ -166,7 +166,10 @@ stages:
 by the user with the `--name` (`-n`) option of `dvc run`. Each stage can contain
 the following fields:
 
-- `cmd` (always present): Executable command defined in this stage
+- `cmd` (always present): One or more commands executed by the stage (may
+  contain either a single value, or a list). Commands are executed sequentially
+  until all are finished or until one of them fails (see `dvc repro` for
+  details).
 - `wdir`: Working directory for the stage command to run in (relative to the
   file's location). If this field is not present explicitly, it defaults to `.`
   (the file's location).
