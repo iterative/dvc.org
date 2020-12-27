@@ -12,8 +12,7 @@ descriptionLong: |
   projects by our users and big ideas about best practices in ML and data
   science.
 picture: 2020-02-10/heartbeat_black.png
-pictureComment:
-  Just in time for Valentine's day, here's a seasonally-relevant DVC pipeline.
+pictureComment: Just in time for Valentine's day, here's a seasonally-relevant DVC pipeline.
 author: elle_obrien
 commentsUrl: https://discuss.dvc.org/t/dvc-heartbeat-feburary-20/318
 tags:

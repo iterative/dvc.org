@@ -10,8 +10,7 @@ descriptionLong: |
   new video docs on our YouTube channel, 
   and the best tutorials from our community.
 picture: 2020-10-12/cover.png
-pictureComment:
-  Double DeeVee! One of these birds is on a layover before heading to Germany.
+pictureComment: Double DeeVee! One of these birds is on a layover before heading to Germany.
 author: elle_obrien
 commentsUrl: https://discuss.dvc.org/t/october-20-heartbeat/527
 tags:

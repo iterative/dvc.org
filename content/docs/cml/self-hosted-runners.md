@@ -92,8 +92,7 @@ deploy-gce:
       shell: bash
       env:
         repo_token: ${{ secrets.REPO_TOKEN }}
-        GOOGLE_APPLICATION_CREDENTIALS_DATA:
-          ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS_DATA }}
+        GOOGLE_APPLICATION_CREDENTIALS_DATA: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS_DATA }}
       run: |
         echo "Deploying..."
 

@@ -13,8 +13,7 @@ descriptionLong: |
   journey. The others are a collection of exciting stories and ideas centered
   around ML best practices and workflow.
 picture: 2019-12-14/post-image.jpeg
-pictureComment:
-  How cool is this handmade swag from our community? We were in tears!
+pictureComment: How cool is this handmade swag from our community? We were in tears!
 author: svetlana_grinchenko
 commentsUrl: https://discuss.dvc.org/t/november-19-dvc-heartbeat/284
 tags:
