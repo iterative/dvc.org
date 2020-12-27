@@ -188,10 +188,6 @@ stages:
       - ${models.us.filename}
 ```
 
-> Note that nothing prevent you from using the same parameters in your stages
-> (`params` field of `dvc.yaml`). DVC will track these params over time the same
-> way in either case.
-
 ## Examples: Python parameters file
 
 Consider this Python parameters file named `params.py`:
