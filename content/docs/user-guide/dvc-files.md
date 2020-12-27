@@ -353,7 +353,7 @@ stages:
       - ${model.filename}
 ```
 
-The template substitution expression (`${}`) supports these forms:
+The substitution expression supports these forms:
 
 ```yaml
 ${param} # Simple
@@ -366,9 +366,10 @@ ${param.list[0]} # List elements via index in [] (square brackets)
 
 ### Stage groups
 
-You define more than one stage at a time with the following syntax. A `foreach`
-element accepts a list or dictionary to iterate on, while `do` contains the
-regular stage fields (`cmd`, `outs`, etc.). Here's a simple example:
+You can generate more than one stage from a single `dvc.yaml` entry with the
+following syntax. A `foreach` element accepts a list or dictionary with values
+to iterate on, while `do` contains the regular stage fields (`cmd`, `outs`,
+etc.). Here's a simple example:
 
 ```yaml
 stages:
@@ -376,23 +377,23 @@ stages:
     foreach: # List of simple values
       - foo
       - bar
-      - baz
+      - baz qux
     do:
-      cmd: echo ${item}
+      cmd: echo "${item}"
 ```
 
 Upon `dvc repro`, each item in the list is expanded into its own stage by
-substituting the item's value in expression `${item}`. The item's value is
-appended to each specific stage name after a `@`. `dvc.lock` will reflect this:
+substituting is value in expression `${item}`. The item's value is appended to
+each stage name after a `@`. `dvc.lock` will reflect this:
 
 ```yaml
 stages:
   echo@bar:
-    cmd: echo bar
+    cmd: echo "bar"
   echo@baz:
-    cmd: echo baz
+    cmd: echo "baz qux"
   echo@foo:
-    cmd: echo foo
+    cmd: echo "foo"
 ```
 
 For lists containing complex values (e.g. dictionaries), the substitution
