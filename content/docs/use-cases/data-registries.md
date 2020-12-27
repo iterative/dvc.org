@@ -30,7 +30,7 @@ Advantages of data registries:
   management and optimizes space requirements.
 - **Data as code**: leverage Git workflows such as commits, branching, pull
   requests, reviews, and even CI/CD for your data and models lifecycle. Think
-  "Git for cloud storage", but without ad-hoc conventions.
+  "Git for cloud storage".
 - **Security**: registries can be setup with read-only remote storage (e.g. an
   HTTP server).
 

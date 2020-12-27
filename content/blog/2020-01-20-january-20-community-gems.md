@@ -114,7 +114,7 @@ as we'll be eager to pass on any insights to the community.
 
 ### Q: Say I have a Git repository with multiple projets inside (one classification, one object detection, etc.). [Is it possible to tell DVC to just pull data for one particular project?](https://discordapp.com/channels/485586884165107732/563406153334128681/646760832616890408)
 
-Absolutely, DVC supports pulling data from different DVC-files. An example would
+Absolutely, DVC supports pulling data from different DVC files. An example would
 be having two project subdirectories in your Git repo, `classification` and
 `detection`. You could use `dvc pull -R classification` to only pull files in
 that project to your workspace.
