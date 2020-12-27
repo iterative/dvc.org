@@ -143,9 +143,12 @@ stages:
     metrics:
       - performance.json
   training:
-    desc: Training stage description
-    cmd: python train.py
+    desc: Train model with Python
+    cmd:
+      - pip install -r requirements.txt
+      - python train.py --out ${model_file}
     deps:
+      - requirements.txt
       - train.py
       - features
     outs:
