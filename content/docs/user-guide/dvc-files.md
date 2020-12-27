@@ -143,7 +143,7 @@ stages:
     metrics:
       - performance.json
   training:
-    desc: Training stage description
+    desc: Training stage description blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah
     cmd: python train.py
     deps:
       - train.py
@@ -161,7 +161,7 @@ stages:
 
 `dvc.yaml` files consists of a group of `stages` with names provided explicitly
 by the user with the `--name` (`-n`) option of `dvc run`. Each stage can contain
-the following fields:
+the following fields blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah:
 
 - `cmd` (always present): Executable command defined in this stage
 - `wdir`: Working directory for the stage command to run in (relative to the
