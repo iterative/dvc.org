@@ -29,10 +29,8 @@ params.
 Without arguments, this command compares parameters currently present in the
 <abbr>workspace</abbr> (uncommitted changes) with the latest committed version.
 This includes everything in the default parameters file (`params.yaml`) as well
-as all `params` found in [DVC files](/doc/user-guide/dvc-files).
-
-> Note that by default, `dvc params diff` only shows parameters that were
-> changed.
+as all `params` found in [DVC files](/doc/user-guide/dvc-files). Only params
+that have changes are listed.
 
 Supported parameter _value_ types are: string, integer, float, and arrays. DVC
 itself does not ascribe any specific meaning for these values.
