@@ -257,14 +257,12 @@ the `dvc.lock` YAML structure.
 ### Parameterize `dvc.yaml`
 
 `dvc.yaml` supports a templating format to reuse values from different sources
-(detailed below) in the YAML structure itself.
+in the YAML structure itself. The sources can be external
+[parameters](/doc/command-reference/params) files, or internal `vars` sections,
+as detailed below.
 
-Global parameters (file scope) can be defined either in a
-[params file](/doc/command-reference/params) (`params.yaml` by default), or in a
-top `vars` section of `dvc.yaml`. Both can coexist as long as `vars` don't
-overwrite any external param.
-
-Let's say we have a `params.yaml` file with the following contents:
+Let's say we have `params.yaml` (default params file) with the following
+contents:
 
 ```yaml
 models:
@@ -273,8 +271,8 @@ models:
     filename: 'model-us.hdf5'
 ```
 
-To use those values in `dvc.yaml`, you can use the `${}` expression anywhere in
-the file:
+Those values can be used anywhere in `dvc.yaml` with the `${}` _substitution
+expression_:
 
 ```yaml
 stages:
@@ -288,13 +286,14 @@ stages:
         cache: true
 ```
 
-Alternatively, the same or other values can be included as `vars` like this:
+Alternatively, these or other values could be listed as top-level `vars` like
+this:
 
 ```yaml
 vars:
   - models:
-    us:
-      thresh: 10
+      us:
+        threshold: 10
   - desc: 'Reusable description'
 
 stages:
@@ -303,20 +302,23 @@ stages:
     cmd: python train.py --tresh ${models.us.threshold} ...
 ```
 
-The global `vars` section also accepts any number of parameters file names as
-entries as a way to include their contents for substituting in `dvc.yaml`, e.g.:
+⚠️ Both external params and top `vars` can coexist as long as their contents
+don't overlap (so the 2 examples above are incompatible with each other).
+
+To load additional params files, list them in the top `vars` section in the
+desired order, e.g.:
 
 ```yaml
 vars:
   - params.json
+  - myvar: 'value'
   - myconfig.yaml
-  - myvar: value
 ```
 
-> ⚠️ Note that the default `params.yaml` is always included (completely) first.
+> Note that the default `params.yaml` is always included first.
 
-It's also possible to narrow down what to include from each params file by using
-this special `:` colon format:
+It's also possible to specify what to include from extra params files, with a
+`:` colon:
 
 ```yaml
 vars:
@@ -334,12 +336,11 @@ stages:
     outs: ...
 ```
 
-> DVC merges structures from params files as long as there are no collisions.
-> E.g. `{"grp": {"a": 1}}` can be merged with `{"grp": {"b": 2}}` but not with
-> `{"grp": {"a": 10}}`.
+⚠️ DVC merges data from params files as long as there are no leaf node
+collisions. For example `{"grp": {"a": 1}}` can be merged with
+`{"grp": {"b": 2}}`, but not with `{"grp": {"a": 7}}`.
 
-Local parameters (stage scope) are also supported, with stage-specific `vars`
-sections:
+Stage-specific values are also supported, with inner `vars` sections:
 
 ```yaml
 stages:
@@ -360,8 +361,8 @@ ${param.key} # Nested values through . (period)
 ${param.list[0]} # List elements via index in [] (square brackets)
 ```
 
-> To use the same expression literally in `dvc.yaml`, escape it with a
-> backslash, e.g. `\${...`.
+> To use the expression literally in `dvc.yaml`, escape it with a backslash,
+> e.g. `\${...`.
 
 ### Stage groups (loops)
 
