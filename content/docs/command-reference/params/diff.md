@@ -19,20 +19,23 @@ positional arguments:
 
 ## Description
 
-This command provides a quick way to compare parameter values among experiments
-in the repository history. Requires that Git is being used to version the
-project params.
+Provides a quick way to compare parameter values among experiments in the
+repository history. Requires that Git is being used to version the project
+params.
 
 > Parameter dependencies are defined with the `-p` option in `dvc run`. See also
 > `dvc params`.
 
 Without arguments, this command compares parameters currently present in the
 <abbr>workspace</abbr> (uncommitted changes) with the latest committed version.
+This includes everything in the default parameters file (`params.yaml`) as well
+as `params` found in `dvc.yaml` files.
+
+> Note that by default, `dvc params diff` only shows parameters that were
+> changed.
 
 Supported parameter _value_ types are: string, integer, float, and arrays. DVC
 itself does not ascribe any specific meaning for these values.
-
-❗ By default it only shows parameters that were changed.
 
 ## Options
 
