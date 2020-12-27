@@ -256,8 +256,8 @@ the `dvc.lock` YAML structure.
 
 ### Parameterize `dvc.yaml`
 
-`dvc.yaml` supports a special templating format that enables reusing simple
-values from different sources in the YAML structure itself.
+`dvc.yaml` supports a templating format to reuse values from different sources
+(detailed below) in the YAML structure itself.
 
 Global parameters (file scope) can be defined either in a
 [params file](/doc/command-reference/params) (`params.yaml` by default), or in a
