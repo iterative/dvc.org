@@ -176,8 +176,9 @@ the following fields:
 - `deps`: List of <abbr>dependency</abbr> file or directory paths of this stage
   (relative to `wdir` which defaults to the file's location). See
   [Dependency entries](#dependency-entries) above for more details.
-- `params`: List of <abbr>parameter</abbr> dependency keys (field names) that
-  are read from a YAML, JSON, TOML, or Python file (`params.yaml` by default)
+- `params`: List of <abbr>parameter</abbr> dependency keys (field names) to
+  track in `params.yaml`. The list may also contain other YAML, JSON, TOML, or
+  Python file names, with a sub-list of the param names to track in them.
 - `outs`: List of <abbr>output</abbr> file or directory paths of this stage
   (relative to `wdir` which defaults to the file's location). See
   [Output entries](#output-entries) above for more details.
