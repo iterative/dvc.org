@@ -48,7 +48,7 @@ compares them with a previous version.
   instead of a human-readable table.
 
 - `--show-md` - prints the command's output in Markdown table format.
-  
+
 - `-R`, `--recursive` - determines the metrics files to show by searching each
   target directory and its subdirectories for `dvc.yaml` files to inspect. If
   there are no directories among the `targets`, this option is ignored.
