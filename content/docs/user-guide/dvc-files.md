@@ -162,8 +162,8 @@ stages:
 💡 You can parameterize this file with the special expression `${}`. See
 [Parameterize `dvc.yaml`](#parameterize-dvcyaml) to learn more.
 
-`dvc.yaml` files consists of a group of `stages` with names provided explicitly
-by the user with the `--name` (`-n`) option of `dvc run`. Each stage can contain
+`dvc.yaml` files consists of a set of `stages` with names provided explicitly by
+the user with the `--name` (`-n`) option of `dvc run`. Each stage can contain
 the following fields:
 
 - `cmd` (always present): Executable command defined in this stage
@@ -274,19 +274,21 @@ models:
 Those values can be used anywhere in `dvc.yaml` with the `${}` _substitution
 expression_:
 
+<!-- prettier-ignore-start -->
 ```yaml
 stages:
   build-us:
     cmd: >-
       python train.py
-      --tresh ${models.us.threshold}
+      --thresh ${models.us.threshold}
       --out ${models.us.filename}
     outs:
       - ${models.us.filename}:
         cache: true
 ```
+<!-- prettier-ignore-end -->
 
-Alternatively, these or other values could be listed as top-level `vars` like
+Alternatively, values for substitution can be listed as top-level `vars` like
 this:
 
 ```yaml
@@ -299,11 +301,13 @@ vars:
 stages:
   build-us:
     desc: ${desc}
-    cmd: python train.py --tresh ${models.us.threshold} ...
+    cmd: python train.py --thresh ${models.us.threshold}
 ```
 
-⚠️ Both external params and top `vars` can coexist as long as their contents
-don't overlap (so the 2 examples above are incompatible with each other).
+⚠️ DVC merges external params and `vars` as long as there are no leaf node
+collisions (so the two examples above can't be used simultaneously). For
+example, `{"grp": {"a": 1}}` can be merged with `{"grp": {"b": 2}}`, but not
+with `{"grp": {"a": 7}}`.
 
 To load additional params files, list them in the top `vars` section in the
 desired order, e.g.:
@@ -315,40 +319,35 @@ vars:
   - myconfig.yaml
 ```
 
-> Note that the default `params.yaml` is always included first.
+(ℹ️) Note that the default `params.yaml` is always included first.
 
-It's also possible to specify what to include from extra params files, with a
-`:` colon:
+It's also possible to specify what to include from additional params files, with
+a `:` colon:
 
 ```yaml
 vars:
-  - params.json:cleaning,featurization
+  - params.json:clean,feats
 
 stages:
-  clean:
-    cmd: source ${cleaning.script}
-    outs:
-      - ${cleaning.outname}
   featurize:
-    cmd: python ${featurization.pyscript}
+    cmd: ${feats.exec}
     deps:
-      - ${cleaning.outname}
-    outs: ...
+      - ${clean.filename}
+    outs:
+      - ${feats.dirname}
 ```
 
-⚠️ DVC merges data from params files as long as there are no leaf node
-collisions. For example `{"grp": {"a": 1}}` can be merged with
-`{"grp": {"b": 2}}`, but not with `{"grp": {"a": 7}}`.
-
-Stage-specific values are also supported, with inner `vars` sections:
+Stage-specific values are also supported, with inner `vars` sections. You may
+also load additional params files locally. For example:
 
 ```yaml
 stages:
   build-us:
     vars:
+      - params.json:build
       - model:
         filename: 'model-us.hdf5'
-    cmd: python train.py --out ${model.filename}
+    cmd: python train.py ${build.epochs} --out ${model.filename}
     outs:
       - ${model.filename}
 ```
@@ -364,7 +363,7 @@ ${param.list[0]} # List elements via index in [] (square brackets)
 > To use the expression literally in `dvc.yaml`, escape it with a backslash,
 > e.g. `\${...`.
 
-### Stage groups
+### Defining multiple stages at once
 
 You can generate more than one stage from a single `dvc.yaml` entry with the
 following syntax. A `foreach` element accepts a list or dictionary with values
@@ -373,7 +372,7 @@ etc.). Here's a simple example:
 
 ```yaml
 stages:
-  echo: # Stage group
+  echo: # Multi-stage
     foreach: # List of simple values
       - foo
       - bar
@@ -451,11 +450,11 @@ stages:
 ```
 
 Importantly, dictionaries from [parameters](#parameterize-dvcyaml) files can be
-used in `foreach` stage groups as well:
+used in `foreach` multi-stages as well:
 
 ```yaml
 stages:
-  mystage:
+  mystages:
     foreach: ${myobject} # From params.yaml
     do:
       cmd: ./script.py ${key} ${item.prop1}
