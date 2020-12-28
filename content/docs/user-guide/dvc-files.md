@@ -278,9 +278,7 @@ expression_:
 stages:
   build-us:
     cmd: >-
-      python train.py
-      --tresh ${models.us.threshold}
-      --out ${models.us.filename}
+      python train.py --tresh ${models.us.threshold} --out ${models.us.filename}
     outs:
       - ${models.us.filename}:
         cache: true
