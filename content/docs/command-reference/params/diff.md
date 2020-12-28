@@ -23,8 +23,8 @@ Provides a quick way to compare parameter values among experiments in the
 repository history. Requires that Git is being used to version the project
 params.
 
-> Parameters are defined in the `params` field of `dvc.yaml` (e.g. with the the
-> `-p` (`--params`) option of `dvc run`).
+> Parameter dependencies are defined in the `params` field of `dvc.yaml` (e.g.
+> with the the `-p` (`--params`) option of `dvc run`).
 
 Without arguments, this command compares parameters currently present in the
 <abbr>workspace</abbr> (uncommitted changes) with the latest committed version.
