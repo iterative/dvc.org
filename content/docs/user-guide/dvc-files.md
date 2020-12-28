@@ -274,6 +274,7 @@ models:
 Those values can be used anywhere in `dvc.yaml` with the `${}` _substitution
 expression_:
 
+<!-- prettier-ignore-start -->
 ```yaml
 stages:
   build-us:
@@ -285,6 +286,7 @@ stages:
       - ${models.us.filename}:
         cache: true
 ```
+<!-- prettier-ignore-end -->
 
 Alternatively, these or other values could be listed as top-level `vars` like
 this:
