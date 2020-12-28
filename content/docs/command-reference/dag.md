@@ -110,3 +110,30 @@ $ dvc dag
         | evaluate |
         +----------+
 ```
+
+Otherwise, it's also possible to visualize the outputs produced by the stages:
+
+```dvc
+$ dvc dag --outs
+                  +---------------+
+                  | data/prepared |
+                  +---------------+
+                          *
+                          *
+                          *
+                  +---------------+
+                  | data/features |
+                **+---------------+**
+            ****          *          *****
+       *****              *               ****
+   ****                   *                   ****
+***                 +-----------+                 ***
+  **                | model.pkl |                **
+    **              +-----------+              **
+      **           **           **           **
+        **       **               **       **
+          **   **                   **   **
+      +-------------+            +----------+
+      | scores.json |            | prc.json |
+      +-------------+            +----------+
+```
