@@ -14,8 +14,7 @@ descriptionLong: |
   projects by our users and big ideas about best practices in ML and data
   science.
 picture: 2020-04-06/april_header.png
-# prettier-ignore
-pictureComment:
+pictureComment: |
   A view from
   [Barrancas del Cobre](https://en.wikipedia.org/wiki/Copper_Canyon), shot by
   Jorge Orpinel Pérez. Jorge has mastered the art of working on DVC remotely.
