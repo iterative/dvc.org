@@ -59,14 +59,14 @@ TOML, or [Python](#examples-python-parameters-file) files can be used
 additionally. These files are typically written manually (or they can be
 generated) and they can be versioned directly with Git.
 
-Param values should be organized in tree-like hierarchies (dictionaries) inside
-(see [Examples](#examples)). DVC will interpret param names as the tree path to
-find those values.
-
 ### Parameter values
 
-Supported param value types are: string, integer, float, and arrays. Note that
-DVC does not ascribe any specific meaning to these values.
+Param values should be organized in tree-like hierarchies (dictionaries) inside
+param files (see [Examples](#examples)). DVC will interpret param names as the
+tree path to find those values.
+
+Supported types are: string, integer, float, and arrays. Note that DVC does not
+ascribe any specific meaning to these values.
 
 DVC saves parameter names and values in the project's
 [DVC files](/doc/user-guide/dvc-files) in order to track them over time. They
