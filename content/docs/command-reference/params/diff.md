@@ -34,8 +34,7 @@ that have changes are listed.
 
 ## Options
 
-- `--targets <paths>` - limit or expand the command's scope to these params
-  files.
+- `--targets <paths>` - limit the command's scope to these params files.
 
   When specifying arguments for `--targets` before `a_rev`/`b_rev`, you should
   use `--` after this option's arguments (POSIX terminals), e.g.:
