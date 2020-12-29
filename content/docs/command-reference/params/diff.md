@@ -32,23 +32,16 @@ This includes everything in the default parameters file (`params.yaml`) as well
 as all `params` found in [DVC files](/doc/user-guide/dvc-files). Only params
 that have changes are listed.
 
-Supported parameter _value_ types are: string, integer, float, and arrays. DVC
-itself does not ascribe any specific meaning for these values.
-
 ## Options
 
-- `--targets <paths>` - limit command scope to these params files. When
-  specifying arguments for `--targets` before `revisions`, you should use `--`
-  after this option's arguments, e.g.:
+- `--targets <paths>` - limit or expand the command's scope to these params
+  files.
+
+  When specifying arguments for `--targets` before `a_rev`/`b_rev`, you should
+  use `--` after this option's arguments (POSIX terminals), e.g.:
 
   ```dvc
   $ dvc params diff --targets m1.json m2.yaml -- HEAD v1
-  ```
-
-  Alternatively, you can also run the above statement as:
-
-  ```dvc
-  $ dvc params diff HEAD v1 --targets m1.json m2.json
   ```
 
 - `--all` - prints all parameters including not changed.
