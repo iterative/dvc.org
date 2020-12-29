@@ -21,8 +21,26 @@ experiments in <abbr>DVC projects</abbr>, DVC provides a different type of
 dependencies: _parameters_. They usually have simple names like `epochs`,
 `learning-rate`, `batch_size`, etc.
 
-In contrast to a regular <abbr>dependency</abbr>, a parameter is not a file (or
-directory). Instead, it consists of a _parameter name_ (or key) in a
+To start tracking parameters, list them under the `params` field of `dvc.yaml`
+stages (manually or with the the `-p`/`--params` option of `dvc run`). For
+example:
+
+```yaml
+stages:
+  mystage:
+    cmd: ./myscript.sh
+    params:
+      - foo
+      - bar.baz
+      - myparams.toml:
+          - qux
+```
+
+> By default, parameters are read from `params.yaml`. Other params files can be
+> listed too, with sub-lists of the params found in them (as shown above).
+
+In contrast to a regular <abbr>dependency</abbr>, a parameter is not a file or
+directory. Instead, it consists of a _parameter name_ (or key) in a
 [parameters file](#parameters-file), where the _parameter value_ should be
 found. This allows you to define [stage](/doc/command-reference/run)
 dependencies more granularly: changes to other parts of the params file will not
@@ -30,22 +48,6 @@ affect the stage. Parameter dependencies also prevent situations where several
 stages share a regular dependency (e.g. a config file), and any change in it
 invalidates all these stages, causing unnecessary re-executions upon
 `dvc repro`.
-
-To start tracking parameters from the default `params.yaml` file, list them
-under the `params` field of `dvc.yaml` stages (manually or with the the
-`-p`/`--params` option of `dvc run`). Other params files can be listed too, with
-sub-lists of params names in them:
-
-```yaml
-stages:
-  mystage:
-    cmd: ./myscript.sh
-    params:
-      - foo # from params.yaml
-      - myparams.toml:
-          - bar
-          - baz.qux
-```
 
 The `dvc params diff` command is available to show parameter changes, displaying
 their current and previous [values](#parameter-values).
