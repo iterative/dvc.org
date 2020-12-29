@@ -26,9 +26,10 @@ directory). Instead, it consists of a _parameter name_ (or key) in a
 [parameters file](#parameters-file), where the _parameter value_ should be
 found. This allows you to define [stage](/doc/command-reference/run)
 dependencies more granularly: changes to other parts of the params file will not
-affect the stage. Parameters also prevent situations where several stages share
-a common dependency (e.g. a config file), and any change in it invalidates all
-these stages, causing unnecessary re-executions upon `dvc repro`.
+affect the stage. Parameter dependencies also prevent situations where several
+stages share a regular dependency (e.g. a config file), and any change in it
+invalidates all these stages, causing unnecessary re-executions upon
+`dvc repro`.
 
 To start tracking parameters from the default `params.yaml` file, list them
 under the `params` field of `dvc.yaml` stages (manually or with the the
@@ -112,8 +113,8 @@ $ dvc run -n train -d users.csv -o model.pkl \
 > Note that we could use the same parameter addressing with JSON, TOML, or
 > Python parameters files.
 
-The `train.py` script will have some code to parse the needed parameters. For
-example:
+The `train.py` script will have some code to parse and load the needed
+parameters. For example:
 
 ```py
 import yaml
@@ -128,7 +129,7 @@ layers = params['train']['layers']
 
 You can find that each parameter and their values were saved to `dvc.yaml` and
 `dvc.lock`. These are compared to the values in the params files when
-`dvc repro` is used to determine if the param dependency has changed.
+`dvc repro` is used to determine if the parameter dependency has changed.
 
 ```yaml
 # dvc.yaml
@@ -145,7 +146,7 @@ stages:
 ```
 
 Alternatively, the entire group of parameters `train` can be referenced, instead
-of specifying each of the group parameters separately:
+of specifying each of the params separately:
 
 ```dvc
 $ dvc run -n train -d users.csv -o model.pkl \
