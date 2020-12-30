@@ -8,7 +8,7 @@ Add a new [data remote](/doc/command-reference/remote).
 ## Synopsis
 
 ```usage
-usage: dvc remote add [-h] [--global | --system | --local] [-q | -v]
+usage: dvc remote add [-h] [--global | --system | --project | --local] [-q | -v]
                       [-d] [-f]
                       name url
 
@@ -60,6 +60,9 @@ DVC will determine the [type of remote](#supported-storage-types) based on the
 
 - `--system` - save remote configuration to the system config (e.g.
   `/etc/dvc/config`) instead of `.dvc/config`.
+
+- `--project` - save remote configuration to the project's config
+  (`.dvc/config`). Used by default.
 
 - `--local` - modify a local [config file](/doc/command-reference/config)
   instead of `.dvc/config`. It is located in `.dvc/config.local` and is

@@ -8,7 +8,7 @@ Set/unset the default [data remote](/doc/command-reference/remote).
 ## Synopsis
 
 ```usage
-usage: dvc remote default [-h] [--global | --system | --local]
+usage: dvc remote default [-h] [--global | --system | --project | --local]
                           [-q | -v] [-u]
                           [name]
 
@@ -21,6 +21,16 @@ positional arguments:
 You can query/set/replace/unset the _default remote_ using the options of this
 command. If the `name` of the remote is not provided and `--unset` is not
 specified, this command returns the name of the default remote.
+
+When reading (`name` is not provided), the value ise read from the system,
+global, repo and local configuration files by default, and options `--system`,
+`--global`, `--project`, and `--local` can be used to tell the command to read
+from only that location.
+
+When writing (`name` is provided), the new value is written to the projects
+configuration file by default (`.dvc/config`), and options `--system`,
+`--global` and `--local` can be used to tell the command to write to that
+location (you can say `--project` but that is the default).
 
 ```dvc
 $ dvc remote default myremote
@@ -45,17 +55,19 @@ to set/unset/change the default remote configurations.
 
 - `-u`, `--unset` - unsets default remote.
 
-- `--global` - save remote configuration to the global config (e.g.
-  `~/.config/dvc/config`) instead of `.dvc/config`.
+- `--global` - use a global config file (e.g. `~/.config/dvc/config`) instead of
+  `.dvc/config`.
 
-- `--system` - save remote configuration to the system config (e.g.
-  `/etc/dvc/config`) instead of `.dvc/config`.
+- `--system` - use a system config file (e.g. `/etc/dvc/config`) instead of
+  `.dvc/config`.
 
-- `--local` - modify a local [config file](/doc/command-reference/config)
-  instead of `.dvc/config`. It is located in `.dvc/config.local` and is
-  Git-ignored. This is useful when you need to specify private config options in
-  your config that you don't want to track and share through Git (credentials,
-  private locations, etc).
+- `--project` - use a project's config file (`.dvc/config`).
+
+- `--local` - use a local [config file](/doc/command-reference/config) instead
+  of `.dvc/config`. It is located in `.dvc/config.local` and is Git-ignored.
+  This is useful when you need to specify private config options in your config
+  that you don't want to track and share through Git (credentials, private
+  locations, etc).
 
 - `-h`, `--help` - prints the usage/help message and exit.
 

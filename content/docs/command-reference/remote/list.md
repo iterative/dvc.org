@@ -5,13 +5,16 @@ List all available [data remotes](/doc/command-reference/remote).
 ## Synopsis
 
 ```usage
-usage: dvc remote list [-h] [--global | --system | --local] [-q | -v]
+usage: dvc remote list [-h] [--global | --system | --project | --local] [-q | -v]
 ```
 
 ## Description
 
 Reads DVC configuration files and prints the list of available remotes,
-including names and URLs.
+including names and URLs. The values are read from the system, global, repo and
+local configuration files by default, and options `--system`, `--global`,
+`--project`, and `--local` can be used to tell the command to read from only
+that location.
 
 ## Options
 
@@ -20,6 +23,9 @@ including names and URLs.
 
 - `--system` - save remote configuration to the system config (e.g.
   `/etc/dvc/config`) instead of `.dvc/config`.
+
+- `--project` - read remote configuration from the project's config
+  (`.dvc/config`).
 
 - `--local` - read a local [config file](/doc/command-reference/config) instead
   of `.dvc/config`. It is located in `.dvc/config.local` and is Git-ignored.
