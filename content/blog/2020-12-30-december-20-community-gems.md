@@ -13,8 +13,7 @@ descriptionLong: |
   several pipelines in parallel!
 picture: 2020-12-30/cover.png
 author: elle_obrien
-commentsUrl: https://discuss.dvc.org/t/
-december-20-gems/606
+commentsUrl: https://discuss.dvc.org/t/december-20-gems/606
 tags:
   - Discord
   - Gems
