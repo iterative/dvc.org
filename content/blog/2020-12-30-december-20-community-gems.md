@@ -2,18 +2,26 @@
 title: December '20 Community Gems
 date: 2020-12-30
 description: |
-  A roundup of technical Q&A's from the DVC community. This month, read about custom DVC plots, teamwork with DVC, CML without Docker, and maintaining several pipelines in parallel!
+  A roundup of technical Q&A's from the DVC community. 
+  This month, read about custom DVC plots, teamwork 
+  with DVC, CML without Docker, and maintaining 
+  several pipelines in parallel!
 descriptionLong: |
-  A roundup of technical Q&A's from the DVC community. This month, read about custom DVC plots, teamwork with DVC, CML without Docker, and maintaining several pipelines in parallel!
+  A roundup of technical Q&A's from the DVC community. 
+  This month, read about custom DVC plots, teamwork 
+  with DVC, CML without Docker, and maintaining 
+  several pipelines in parallel!
 picture: 2020-12-30/cover.png
 author: elle_obrien
-commentsUrl: https://discuss.dvc.org/t/november-20-community-gems/566
+commentsUrl: https://discuss.dvc.org/t/
+december-20-gems/606
 tags:
   - Discord
   - Gems
   - CML
-  - Cache
-  - Bitbucket
+  - Plots
+  - Pipelines
+  - Docker
 ---
 
 ## DVC questions
@@ -32,7 +40,13 @@ where the plotting instructions are stored!
 You can create your own, or modify the existing templates, by
 [following the instructions in our docs](https://dvc.org/doc/command-reference/plots#plot-templates).
 In short, you'll create a new template and then run
-`dvc plot show -t <name-of-template>` to use it! Happy creating.
+`dvc plot show -t <name-of-template>` to use it!
+
+Vega-Lite has an
+[interactive template editor online](https://vega.github.io/editor/#/), which
+might help you test out ideas. Happy creating, and if you come up with a
+template you'd like to share with the DVC community,
+[consider opening a pull request!](https://github.com/iterative/dvc)
 
 ### [Q: My teammate and I are having some issues keeping our workplaces synced. We're tracking some folders with DVC, and he recently added a new file to each of these folders. How does he update the tracked folder and push the new contents so I can access them, too?](https://discord.com/channels/485586884165107732/563406153334128681/785965719367843860)
 
