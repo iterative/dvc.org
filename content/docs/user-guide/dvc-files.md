@@ -258,8 +258,8 @@ the `dvc.lock` YAML structure.
 
 `dvc.yaml` supports a templating format to reuse values from different sources
 in the YAML structure itself. The sources can be external
-[parameters](/doc/command-reference/params) files, or internal `vars` sections,
-as detailed below.
+[parameters files](/doc/command-reference/params), or internal `vars`, as
+detailed below.
 
 Let's say we have `params.yaml` (default params file) with the following
 contents:
@@ -288,6 +288,8 @@ stages:
 ```
 <!-- prettier-ignore-end -->
 
+DVC will track the specified parameters (saving their values to `dvc.lock`).
+
 Alternatively, values for substitution can be listed as top-level `vars` like
 this:
 
@@ -304,16 +306,15 @@ stages:
     cmd: python train.py --thresh ${models.us.threshold}
 ```
 
-⚠️ DVC merges external params and `vars` as long as there are no leaf node
-collisions (so the two examples above can't be used simultaneously). For
-example, `{"grp": {"a": 1}}` can be merged with `{"grp": {"b": 2}}`, but not
-with `{"grp": {"a": 7}}`.
+> DVC merges external params and `vars` as long as there are no leaf node
+> collisions (so the two examples above can't be used simultaneously). For
+> example, `{"grp": {"a": 1}}` can be merged with `{"grp": {"b": 2}}`, but not
+> with `{"grp": {"a": 7}}`.
 
-> Note that values defined in `vars` will not be tracked like
-> [parameter dependencies](/doc/command-reference/params).
+⚠️ Note that values defined in `vars` will not be tracked like parameters.
 
-To load additional params files, list them in the top `vars` section, in the
-desired order, e.g.:
+To load additional params files, list them in the top `vars`, in the desired
+order, e.g.:
 
 ```yaml
 vars:
@@ -340,8 +341,8 @@ stages:
       - ${feats.dirname}
 ```
 
-Stage-specific values are also supported, with inner `vars` sections. You may
-also load additional params files locally. For example:
+Stage-specific values are also supported, with inner `vars`. You may also load
+additional params files locally. For example:
 
 ```yaml
 stages:
