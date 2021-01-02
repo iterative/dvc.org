@@ -74,8 +74,8 @@ will be compared to the latest params files to determine if the stage is
 outdated upon `dvc repro` (or `dvc status`).
 
 > Note that DVC does not pass the parameter values to stage commands. The
-> commands executed by `dvc run` or `dvc repro` will have to load and parse the
-> parameters file by itself.
+> commands executed by DVC will have to load and parse the parameters file by
+> itself.
 
 ## Options
 
