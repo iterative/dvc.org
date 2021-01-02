@@ -44,7 +44,7 @@ for example when `dvc init` was used with the `--no-scm` option.
 
 ## Options
 
-- `--targets <paths>` - limit command scope to these paths.
+- `--targets <paths>` - specific DVC-tracked files to compare.
 
   When specifying arguments for `--targets` before `a_rev`/`b_rev`, you should
   use `--` after this option's arguments (POSIX terminals), e.g.:
