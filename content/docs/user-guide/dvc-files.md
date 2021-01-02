@@ -309,7 +309,10 @@ collisions (so the two examples above can't be used simultaneously). For
 example, `{"grp": {"a": 1}}` can be merged with `{"grp": {"b": 2}}`, but not
 with `{"grp": {"a": 7}}`.
 
-To load additional params files, list them in the top `vars` section in the
+> Note that values defined in `vars` will not be tracked like
+> [parameter dependencies](/doc/command-reference/params).
+
+To load additional params files, list them in the top `vars` section, in the
 desired order, e.g.:
 
 ```yaml
@@ -319,7 +322,7 @@ vars:
   - myconfig.yaml
 ```
 
-(ℹ️) Note that the default `params.yaml` is always included first.
+(ℹ️) Note that the default `params.yaml` is always loaded first, if present.
 
 It's also possible to specify what to include from additional params files, with
 a `:` colon:
@@ -461,3 +464,9 @@ stages:
       outs:
         - ${item.prop2}
 ```
+
+> ⚠️ Remember that DVC only guarantees stage execution order based on
+> [DAGs](/doc/command-reference/dag). This means that if the resulting stages
+> are not connected by their <abbr>outputs</abbr> and <abbr>dependencies</abbr>,
+> they may not be [reproed](/doc/command-reference/repro) in the order in which
+> they are defined.

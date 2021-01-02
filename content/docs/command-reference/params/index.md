@@ -188,6 +188,9 @@ stages:
       - ${models.us.filename}
 ```
 
+See [Parameterize `dvc.yaml`](/doc/user-guide/dvc-files#parameterize-dvcyaml)
+for more details.
+
 ## Examples: Python parameters file
 
 Consider this Python parameters file named `params.py`:
