@@ -28,8 +28,8 @@ params.
 
 Without arguments, this command compares parameters currently present in the
 <abbr>workspace</abbr> (uncommitted changes) with the latest committed version.
-This includes everything in the default parameters file (`params.yaml`) as well
-as all `params` found in [DVC files](/doc/user-guide/dvc-files). Only params
+This includes everything in `params.yaml` (default parameters file) as well
+everything listed in the `params` field of `dvc.yaml`/`dvc.lock`. Only params
 that have changes are listed.
 
 ## Options
