@@ -30,43 +30,32 @@ stages:
   mystage:
     cmd: ./myscript.sh
     params:
-      - foo
+      - foo # from params.yaml
       - bar.baz
       - myparams.toml:
           - qux
 ```
 
-> By default, parameters are read from `params.yaml`. Other params files can be
-> listed too, with sub-lists of the params found in them (as shown above).
-
 In contrast to a regular <abbr>dependency</abbr>, a parameter is not a file or
-directory. Instead, it consists of a _parameter name_ (or key) in a
-[parameters file](#parameters-file), where the _parameter value_ should be
-found. This allows you to define [stage](/doc/command-reference/run)
-dependencies more granularly: changes to other parts of the params file will not
-affect the stage. Parameter dependencies also prevent situations where several
-stages share a regular dependency (e.g. a config file), and any change in it
-invalidates all these stages, causing unnecessary re-executions upon
-`dvc repro`.
+directory. Instead, it consists of a _parameter name_ (or key) in a _parameters
+file_, where the _parameter value_ should be found. This allows you to define
+[stage](/doc/command-reference/run) dependencies more granularly: changes to
+other parts of the params file will not affect the stage. Parameter dependencies
+also prevent situations where several stages share a regular dependency (e.g. a
+config file), and any change in it invalidates all these stages, causing
+unnecessary re-executions upon `dvc repro`.
 
-The `dvc params diff` command is available to show parameter changes, displaying
-their current and previous [values](#parameter-values).
-
-### Parameters files
-
-The default params file name is `params.yaml`, but any other YAML 1.2, JSON,
-TOML, or [Python](#examples-python-parameters-file) files can be used
-additionally. These files are typically written manually (or they can be
+The default **parameters file** name is `params.yaml`, but any other YAML 1.2,
+JSON, TOML, or [Python](#examples-python-parameters-file) files can be listed in
+`dvc.yaml` additionally (with sub-lists of the params found in them, as shown in
+the sample above) . These files are typically written manually (or they can be
 generated) and they can be versioned directly with Git.
 
-### Parameter values
-
-Param values should be organized in tree-like hierarchies (dictionaries) inside
-param files (see [Examples](#examples)). DVC will interpret param names as the
-tree path to find those values.
-
-Supported types are: string, integer, float, and arrays. Note that DVC does not
-ascribe any specific meaning to these values.
+**Parameter values** should be organized in tree-like hierarchies (dictionaries)
+inside param files (see [Examples](#examples)). DVC will interpret param names
+as the tree path to find those values. Supported types are: string, integer,
+float, and arrays (groups of params). Note that DVC does not ascribe any
+specific meaning to these values.
 
 DVC saves parameter names and values in the project's
 [DVC files](/doc/user-guide/dvc-files) in order to track them over time. They
@@ -76,6 +65,9 @@ outdated upon `dvc repro` (or `dvc status`).
 > Note that DVC does not pass the parameter values to stage commands. The
 > commands executed by DVC will have to load and parse the parameters file by
 > itself.
+
+The `dvc params diff` command is available to show parameter changes, displaying
+their current and previous values.
 
 ## Options
 
@@ -102,9 +94,9 @@ process:
   bow: 15000
 ```
 
-Define a [stage](/doc/command-reference/run) that depends on params `lr`,
-`layers`, and `epochs` from the params file above. Full paths should be used to
-specify `layers` and `epochs` from the `train` group:
+Using `dvc run`, define a [stage](/doc/command-reference/run) that depends on
+params `lr`, `layers`, and `epochs` from the params file above. Full paths
+should be used to specify `layers` and `epochs` from the `train` group:
 
 ```dvc
 $ dvc run -n train -d users.csv -o model.pkl \
@@ -142,7 +134,8 @@ stages:
       - users.csv
     params:
       - lr
-      - train
+      - train.epochs
+      - train.layers
     outs:
       - model.pkl
 ```
@@ -156,8 +149,17 @@ $ dvc run -n train -d users.csv -o model.pkl \
           python train.py
 ```
 
+```yaml
+# dvc.yaml
+params:
+  - lr
+  - train
+outs:
+```
+
 In the examples above, the default parameters file name `params.yaml` was used.
-This file name can be redefined with a prefix in the `-p` argument:
+Note that this file name can be redefined using a prefix in the `-p` argument of
+`dvc run`. In our case:
 
 ```dvc
 $ dvc run -n train -d logs/ -o users.csv \
