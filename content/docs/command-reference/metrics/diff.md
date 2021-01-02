@@ -36,8 +36,9 @@ lists all the current metrics, without comparisons.
 
 ## Options
 
-- `--targets <paths>` - limit command scope to these metrics files. Using `-R`,
-  directories to search metrics files in can also be given.
+- `--targets <paths>` - specify the command's scope to these metrics files. It
+  accepts `paths` to any valid metrics file, regardless of whether it's used by
+  DVC. Using `-R`, directories to search metrics files in can also be given.
 
   When specifying arguments for `--targets` before `revisions`, you should use
   `--` after this option's arguments (POSIX terminals), e.g.:
