@@ -27,13 +27,13 @@ example:
 
 ```yaml
 stages:
-  mystage:
-    cmd: ./myscript.sh
+  preprocess:
+    cmd: ./prepare.py
     params:
-      - foo # from params.yaml
-      - bar.baz
+      - html_tags
+      - cleanup.stemming
       - myparams.toml:
-          - qux
+          - nlp.lemmatize
 ```
 
 In contrast to a regular <abbr>dependency</abbr>, a parameter is not a file or
@@ -46,10 +46,10 @@ config file), and any change in it invalidates all these stages, causing
 unnecessary re-executions upon `dvc repro`.
 
 The default **parameters file** name is `params.yaml`, but any other YAML 1.2,
-JSON, TOML, or [Python](#examples-python-parameters-file) files can be listed in
-`dvc.yaml` additionally (with sub-lists of the params found in them, as shown in
-the sample above) . These files are typically written manually (or they can be
-generated) and they can be versioned directly with Git.
+JSON, TOML, or [Python](#examples-python-parameters-file) files can be used
+additionally (listed under `params:` with a sub-list of param values, as shown
+in the sample above) . These files are typically written manually (or they can
+be generated) and they can be versioned directly with Git.
 
 **Parameter values** should be organized in tree-like hierarchies (dictionaries)
 inside param files (see [Examples](#examples)). DVC will interpret param names
@@ -150,11 +150,10 @@ $ dvc run -n train -d users.csv -o model.pkl \
 ```
 
 ```yaml
-# dvc.yaml
+# in dvc.yaml
 params:
   - lr
   - train
-outs:
 ```
 
 In the examples above, the default parameters file name `params.yaml` was used.
