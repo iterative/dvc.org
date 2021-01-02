@@ -34,7 +34,9 @@ that have changes are listed.
 
 ## Options
 
-- `--targets <paths>` - limit the command's scope to these params files.
+- `--targets <paths>` - specify the command's scope to these params files. It
+  accepts `paths` to any valid parameters file, regardless of whether it's used
+  by DVC.
 
   When specifying arguments for `--targets` before `a_rev`/`b_rev`, you should
   use `--` after this option's arguments (POSIX terminals), e.g.:
