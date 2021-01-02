@@ -35,7 +35,8 @@ that have changes are listed.
 ## Options
 
 - `--targets <paths>` - specific params files to compare. It accepts `paths` to
-  any valid parameters file, regardless of whether it's used by DVC.
+  any valid parameters file, regardless of whether `dvc.yaml` is currently
+  tracking any params in them.
 
   When specifying arguments for `--targets` before `a_rev`/`b_rev`, you should
   use `--` after this option's arguments (POSIX terminals), e.g.:

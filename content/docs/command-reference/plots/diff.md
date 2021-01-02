@@ -52,7 +52,8 @@ all the current plots, without comparisons.
 ## Options
 
 - `--targets <paths>` - specific plots files to visualize. It accepts `paths` to
-  any valid plots file, regardless of whether it's used by DVC.
+  any valid plots file, regardless of whether `dvc.yaml` is currently tracking
+  any plots in them.
 
   When specifying arguments for `--targets` before `revisions`, you should use
   `--` after this option's arguments, e.g.:
