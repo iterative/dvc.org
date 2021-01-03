@@ -405,7 +405,7 @@ stages:
 ```
 
 Upon `dvc repro`, each item in the list is expanded into its own stage by
-substituting is value in expression `${item}`. The item's value is appended to
+substituting its value in expression `${item}`. The item's value is appended to
 each stage name after a `@`. `dvc.lock` will reflect this:
 
 ```yaml
