@@ -316,6 +316,11 @@ Default `48`.
 See [Authorization](/doc/user-guide/setup-dropbox-remote#authorization) for more
 details.
 
+> If you synchronize your Dropbox account with your PC, it may be useful to enable
+> selective sync or smart sync. See
+> [Selective Sync](/doc/user-guide/setup-dropbox-remote#selective-sync)
+> for more details.
+
 > Please note [Privacy Policy (Dropbox API)](/doc/user-guide/dropbox-privacy).
 
 </details>
