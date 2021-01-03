@@ -280,7 +280,8 @@ or to a relative path (resolved from `./.dvc/`):
 
 ```dvc
 $ dvc config cache.dir ../../mycache
-$ dvc pull -q
+$ dvc pull
+
 $ ls ../mycache
 2f/
 ```
