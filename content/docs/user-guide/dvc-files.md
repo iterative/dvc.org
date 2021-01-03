@@ -54,8 +54,7 @@ meta:
   Only present when `dvc import` or `dvc import-url` are used to generate this
   `.dvc` file. Typically there is only one (but several can be added manually).
 - `wdir`: Working directory for the `outs` and `deps` paths (relative to the
-  `.dvc` file's location). If this field is not present explicitly, it defaults
-  to `.` (the `.dvc` file's location).
+  `.dvc` file's location). It defaults to `.` (the `.dvc` file's location).
 - `md5`: (only for <abbr>imports</abbr>) MD5 hash of the import `.dvc` file
   itself.
 - `meta` (optional): Arbitrary metadata can be added manually with this field.
@@ -71,7 +70,7 @@ and `dvc commit` commands, but not when a `.dvc` file is overwritten by
 
 `outs` fields can contain these subfields:
 
-- `path`: Path to the file or directory (relative to `wdir` which defaults to
+- `path`: Path to the file or directory (relative to `wdir`, which defaults to
   the file's location)
 - `md5`, `etag`, or `checksum`: Hash value for the file or directory being
   tracked with DVC. MD5 is used for most locations (local file system and SSH);
@@ -96,7 +95,7 @@ and `dvc commit` commands, but not when a `.dvc` file is overwritten by
 
 `deps` fields can contain these subfields:
 
-- `path`: Path to the dependency (relative to `wdir` which defaults to the
+- `path`: Path to the dependency (relative to `wdir`, which defaults to the
   file's location)
 - `md5`, `etag`, or `checksum`: Hash value for the file or directory being
   tracked with DVC. MD5 is used for most locations (local file system and SSH);
@@ -159,8 +158,8 @@ stages:
     # User metadata and comments are supported.
 ```
 
-💡 You can parameterize this file with the special expression `${}`. See
-[Parameterize `dvc.yaml`](#parameterize-dvcyaml) to learn more.
+💡 You can [parameterize this file](#parameterize-dvcyaml) with the special
+expression `${}`, external params files, and/or internal lists of `vars`.
 
 `dvc.yaml` files consists of a set of `stages` with names provided explicitly by
 the user with the `--name` (`-n`) option of `dvc run`. Each stage can contain
@@ -168,16 +167,16 @@ the following fields:
 
 - `cmd` (always present): Executable command defined in this stage
 - `wdir`: Working directory for the stage command to run in (relative to the
-  file's location). If this field is not present explicitly, it defaults to `.`
-  (the file's location).
+  file's location). Any other paths in the stage are also based on this. It
+  defaults to `.` (the file's location).
 - `deps`: List of <abbr>dependency</abbr> file or directory paths of this stage
-  (relative to `wdir` which defaults to the file's location). See
-  [Dependency entries](#dependency-entries) above for more details.
+  (relative to `wdir`). See [Dependency entries](#dependency-entries) above for
+  more details.
 - `params`: List of <abbr>parameter</abbr> dependency keys (field names) that
   are read from a YAML, JSON, TOML, or Python file (`params.yaml` by default)
 - `outs`: List of <abbr>output</abbr> file or directory paths of this stage
-  (relative to `wdir` which defaults to the file's location). See
-  [Output entries](#output-entries) above for more details.
+  (relative to `wdir`). See [Output entries](#output-entries) above for more
+  details.
 - `metrics`: List of [metrics files](/doc/command-reference/metrics), and
   optionally, whether or not this metrics file is <abbr>cached</abbr> (`true` by
   default, if not present). See the `--metrics-no-cache` (`-M`) option of
@@ -196,9 +195,12 @@ the following fields:
 - `desc` (optional): User description for this stage. This doesn't affect any
   DVC operations.
 
+💡 You can also [define multiple stages](#defining-multiple-stages-at-once) in a
+single entry using `foreach`/`do` syntax.
+
 `dvc.yaml` files also support `# comments`.
 
-💡 We maintain a `dvc.yaml`
+Note that we maintain a `dvc.yaml`
 [schema](https://github.com/iterative/dvcyaml-schema) that can be used by
 editors like [VSCode](/doc/install/plugins#visual-studio-code) or
 [PyCharm](/doc/install/plugins#pycharmintellij) to enable automatic syntax
@@ -249,10 +251,10 @@ Regular <abbr>dependencies</abbr> and all kinds of <abbr>outputs</abbr>
 contents. Specifically: `md5`, `etag`, or `checksum` are used (same as in `deps`
 and `outs` entries of `.dvc` files).
 
-Full <abbr>parameters</abbr> (key and value) are listed too (under `params`),
-grouped by parameters file. And in the case of templated/parameterized
-`dvc.yaml` files (see next section), their actual values are substituted into
-the `dvc.lock` YAML structure.
+Full <abbr>parameter dependencies</abbr> (key and value) are listed too (under
+`params`), grouped by parameters file. And in the case of
+templated/parameterized `dvc.yaml` files (see next section), their actual values
+are substituted into the `dvc.lock` YAML structure.
 
 ### Parameterize `dvc.yaml`
 
@@ -288,7 +290,8 @@ stages:
 ```
 <!-- prettier-ignore-end -->
 
-DVC will track the specified parameters (saving their values to `dvc.lock`).
+DVC will track simple param values (numbers, strings, etc.) used in `${}` (they
+will be listed by `dvc params diff`).
 
 Alternatively, values for substitution can be listed as top-level `vars` like
 this:
@@ -311,19 +314,23 @@ stages:
 > example, `{"grp": {"a": 1}}` can be merged with `{"grp": {"b": 2}}`, but not
 > with `{"grp": {"a": 7}}`.
 
-⚠️ Note that values defined in `vars` will not be tracked like parameters.
+⚠️ Note that doesn't track values from `vars` like parameters (ignored by
+`dvc params diff`).
 
 To load additional params files, list them in the top `vars`, in the desired
 order, e.g.:
+
+> Their paths will be evaluated based on `wdir`, if one given.
 
 ```yaml
 vars:
   - params.json
   - myvar: 'value'
-  - myconfig.yaml
+  - config/myapp.yaml
 ```
 
-(ℹ️) Note that the default `params.yaml` is always loaded first, if present.
+(ℹ️) Note that the default `params.yaml` file is always loaded first, if
+present.
 
 It's also possible to specify what to include from additional params files, with
 a `:` colon:
@@ -355,6 +362,12 @@ stages:
     outs:
       - ${model.filename}
 ```
+
+⚠️ Important: Limitations of local `vars`:
+
+- `wdir` cannot use values from local `vars`, as DVC uses the working directory
+  first (to load any values from params files listed in `vars`).
+- `foreach` is also incompatible with local `vars` at the moment.
 
 The substitution expression supports these forms:
 

@@ -1,5 +1,5 @@
 ---
-name: Parameter
+name: 'Parameter Dependency'
 match: [parameter, parameters, param, params, hyperparameter, hyperparameters]
 ---
 
