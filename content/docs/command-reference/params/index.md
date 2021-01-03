@@ -18,47 +18,58 @@ positional arguments:
 
 In order to track parameters and hyperparameters associated to machine learning
 experiments in <abbr>DVC projects</abbr>, DVC provides a different type of
-dependencies: _parameters_. Parameters are defined using the the `-p`
-(`--params`) option of `dvc run`, using simple names like `epochs`,
+dependencies: _parameters_. They usually have simple names like `epochs`,
 `learning-rate`, `batch_size`, etc.
 
-In contrast to a regular <abbr>dependency</abbr>, a parameter is not a file (or
-directory). Instead, it consists of a _parameter name_ (or key) to find inside a
-YAML 1.2, JSON, TOML, or [Python](#examples-python-parameters-file) _parameters
-file_. Multiple parameter dependencies can be specified from one or more
-parameters files.
+To start tracking parameters, list them under the `params` field of `dvc.yaml`
+stages (manually or with the the `-p`/`--params` option of `dvc run`). For
+example:
+
+```yaml
+stages:
+  learn:
+    cmd: ./deep.py
+    params:
+      - epochs
+      - tuning.learning-rate
+      - myparams.toml:
+          - batch_size
+```
 
 💡 Parameters can also be used directly in `dvc.yaml` itself. See the
 [Parameterize stages](#example-parameterize-stages-in-dvcyaml) example below.
 
-The default parameters file name is `params.yaml`. Parameters should be
-organized as a tree hierarchy inside, as DVC will locate param names by their
-tree path. Parameters files have to be manually written, or generated, and these
-can be versioned directly with Git.
+In contrast to a regular <abbr>dependency</abbr>, a parameter dependency is not
+a file or directory. Instead, it consists of a _parameter name_ (or key) in a
+_parameters file_, where the _parameter value_ should be found. This allows you
+to define [stage](/doc/command-reference/run) dependencies more granularly:
+changes to other parts of the params file will not affect the stage. Parameter
+dependencies also prevent situations where several stages share a regular
+dependency (e.g. a config file), and any change in it invalidates all these
+stages, causing unnecessary re-executions upon `dvc repro`.
 
-Supported parameter _value_ types are: string, integer, float, and arrays. DVC
-itself does not ascribe any specific meaning for these values. They are
-user-defined, and serve as a way to generalize and parameterize an machine
-learning algorithms or data processing code.
+The default **parameters file** name is `params.yaml`, but any other YAML 1.2,
+JSON, TOML, or [Python](#examples-python-parameters-file) files can be used
+additionally (listed under `params:` with a sub-list of param values, as shown
+in the sample above) . These files are typically written manually (or they can
+be generated) and they can be versioned directly with Git.
 
-DVC saves the param names and their latest values in the `dvc.yaml` file. These
-values will be compared to the ones in the params files to determine if the
-stage is invalidated upon pipeline [reproduction](/doc/command-reference/repro).
+**Parameter values** should be organized in tree-like hierarchies (dictionaries)
+inside param files (see [Examples](#examples)). DVC will interpret param names
+as the tree path to find those values. Supported types are: string, integer,
+float, and arrays (groups of params). Note that DVC does not ascribe any
+specific meaning to these values.
+
+DVC saves parameter names and values to `dvc.lock` in order to track them over
+time. They will be compared to the latest params files to determine if the stage
+is outdated upon `dvc repro` (or `dvc status`).
 
 > Note that DVC does not pass the parameter values to stage commands. The
-> associated command executed by `dvc run` or `dvc repro` will have to open and
-> parse the parameters file by itself, and use the params specified with `-p`.
+> commands executed by DVC will have to load and parse the parameters file by
+> itself.
 
-The parameters concept helps to define [stage](/doc/command-reference/run)
-dependencies more granularly. A particular parameter or set of parameters will
-be required for the stage invalidation (see `dvc status` and `dvc repro`).
-Changes to other parts of the dependency file will not affect the stage. This
-prevents situations where several stages share a (configuration) file as a
-common dependency, and any change in this dependency invalidates all these
-stages and causes their reproduction unnecessarily.
-
-`dvc params diff` is available to show changes in parameters, displaying the
-param names as well as their current and previous values.
+The `dvc params diff` command is available to show parameter changes, displaying
+their current and previous values.
 
 ## Options
 
@@ -85,9 +96,9 @@ process:
   bow: 15000
 ```
 
-Define a [stage](/doc/command-reference/run) that depends on params `lr`,
-`layers`, and `epochs` from the params file above. Full paths should be used to
-specify `layers` and `epochs` from the `train` group:
+Using `dvc run`, define a [stage](/doc/command-reference/run) that depends on
+params `lr`, `layers`, and `epochs` from the params file above. Full paths
+should be used to specify `layers` and `epochs` from the `train` group:
 
 ```dvc
 $ dvc run -n train -d users.csv -o model.pkl \
@@ -98,8 +109,8 @@ $ dvc run -n train -d users.csv -o model.pkl \
 > Note that we could use the same parameter addressing with JSON, TOML, or
 > Python parameters files.
 
-The `train.py` script will have some code to parse the needed parameters. For
-example:
+The `train.py` script will have some code to parse and load the needed
+parameters. For example:
 
 ```py
 import yaml
@@ -112,11 +123,12 @@ epochs = params['train']['epochs']
 layers = params['train']['layers']
 ```
 
-You can find that each parameter and it's value were saved to `dvc.yaml`. These
-values will be compared to the ones in the parameters files whenever `dvc repro`
-is used, to determine if dependency to the params file is invalidated:
+You can find that each parameter was defined in `dvc.yaml`, as well as saved to
+`dvc.lock` along with the values. These are compared to the params files when
+`dvc repro` is used, to determine if the parameter dependency has changed.
 
 ```yaml
+# dvc.yaml
 stages:
   train:
     cmd: python train.py
@@ -124,13 +136,14 @@ stages:
       - users.csv
     params:
       - lr
-      - train
+      - train.epochs
+      - train.layers
     outs:
       - model.pkl
 ```
 
 Alternatively, the entire group of parameters `train` can be referenced, instead
-of specifying each of the group parameters separately:
+of specifying each of the params separately:
 
 ```dvc
 $ dvc run -n train -d users.csv -o model.pkl \
@@ -138,8 +151,16 @@ $ dvc run -n train -d users.csv -o model.pkl \
           python train.py
 ```
 
+```yaml
+# in dvc.yaml
+params:
+  - lr
+  - train
+```
+
 In the examples above, the default parameters file name `params.yaml` was used.
-This file name can be redefined with a prefix in the `-p` argument:
+Note that this file name can be redefined using a prefix in the `-p` argument of
+`dvc run`. In our case:
 
 ```dvc
 $ dvc run -n train -d logs/ -o users.csv \
@@ -234,7 +255,7 @@ $ dvc run -n train -d users.csv -o model.pkl \
           python train.py
 ```
 
-Resulting `dvc.yaml` and `dvc.lock` files (notice the `params` list):
+Resulting `dvc.yaml` and `dvc.lock` files (notice the `params` lists):
 
 ```yaml
 stages:
