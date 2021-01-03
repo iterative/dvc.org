@@ -146,6 +146,7 @@ but it also creates an import stage (`.dvc` file) with a link to the data source
 
 ```yaml
 md5: 7de90e7de7b432ad972095bc1f2ec0f8
+frozen: true
 wdir: .
 deps:
   - path: data/data.xml
