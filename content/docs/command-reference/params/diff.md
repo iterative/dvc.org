@@ -32,6 +32,10 @@ This includes everything in `params.yaml` (default parameters file) as well
 everything listed in the `params` field of `dvc.yaml`/`dvc.lock`. Only params
 that have changes are listed.
 
+> Note that unlike `dvc diff`, this command doesn't always need DVC files to
+> find params files (see `--targets` option). For that reason, it doesn't
+> require an existing DVC project to run in. It can work in any Git repo.
+
 ## Options
 
 - `--targets <paths>` - specific params files to compare. It accepts `paths` to
