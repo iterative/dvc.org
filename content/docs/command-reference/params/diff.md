@@ -28,9 +28,9 @@ params.
 
 Without arguments, this command compares parameters currently present in the
 <abbr>workspace</abbr> (uncommitted changes) with the latest committed version.
-This includes everything in `params.yaml` (default parameters file) as well
-everything listed in the `params` field of `dvc.yaml`/`dvc.lock`. Only params
-that have changes are listed.
+This includes everything in `params.yaml` (default parameters file) as well all
+the `params` used in `dvc.yaml`. Values in `dvc.lock` are used for comparison.
+Only params that have changes are listed.
 
 > Note that unlike `dvc diff`, this command doesn't always need DVC files to
 > find params files (see `--targets` option). For that reason, it doesn't
