@@ -1,7 +1,7 @@
 # params diff
 
-Show changes in [parameter dependencies](/doc/command-reference/params) between
-commits in the <abbr>DVC repository</abbr>, or between a commit and the
+Show changes in [parameters](/doc/command-reference/params) between commits in
+the <abbr>DVC repository</abbr>, or between a commit and the
 <abbr>workspace</abbr>.
 
 ## Synopsis

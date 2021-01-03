@@ -167,7 +167,7 @@ the following fields:
 
 - `cmd` (always present): Executable command defined in this stage
 - `wdir`: Working directory for the stage command to run in (relative to the
-  file's location). Any other paths in the stage are also based on this. It
+  file's location). Any paths in other fields are also based on this. It
   defaults to `.` (the file's location).
 - `deps`: List of <abbr>dependency</abbr> file or directory paths of this stage
   (relative to `wdir`). See [Dependency entries](#dependency-entries) above for
