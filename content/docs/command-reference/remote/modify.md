@@ -309,17 +309,17 @@ for a full guide on using Dropbox as DVC remote storage.
   $ dvc remote modify myremote url dropbox://my-project
   ```
 
-- `chunk_size` - size of a single data chunk for the files to upload.
-Needs to be a multiple of 4 MB, with a minimum of 4 MB and maximum of 150 MB.
-Default `48`.
+- `chunk_size` - size of a single data chunk for the files to upload. Needs to
+  be a multiple of 4 MB, with a minimum of 4 MB and maximum of 150 MB. Default
+  `48`.
 
 See [Authorization](/doc/user-guide/setup-dropbox-remote#authorization) for more
 details.
 
-> If you synchronize your Dropbox account with your PC, it may be useful to enable
-> selective sync or smart sync. See
-> [Selective Sync](/doc/user-guide/setup-dropbox-remote#selective-sync)
-> for more details.
+> If you synchronize your Dropbox account with your PC, it may be useful to
+> enable selective sync or smart sync. See
+> [Selective Sync](/doc/user-guide/setup-dropbox-remote#selective-sync) for more
+> details.
 
 > Please note [Privacy Policy (Dropbox API)](/doc/user-guide/dropbox-privacy).
 

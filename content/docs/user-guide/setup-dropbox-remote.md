@@ -83,9 +83,9 @@ systems, etc. DVC reads these variable first, before the credentials file.
 
 ## Selective Sync
 
-If you synchronize your Dropbox account to your computer, you may not necessarily
-want to synchronize all the files DVC uses. Instead, you can setup Selective Sync
-or Smart Sync within the Dropbox desktop application.
+If you synchronize your Dropbox account to your computer, you may not
+necessarily want to synchronize all the files DVC uses. Instead, you can setup
+Selective Sync or Smart Sync within the Dropbox desktop application.
 
 ### Selective Sync vs Smart Sync
 
@@ -99,8 +99,8 @@ The two options slightly differ:
 | Files visible in Explorer / Finder / ... | No             | Yes        |
 | Files visible in Dropbox web UI          | Yes            | Yes        |
 
-If you plan to use DVC with few (say up to 100 files) of significant size,
-it should not matter whether you use Selective Sync or Smart Sync.
+If you plan to use DVC with few (say up to 100 files) of significant size, it
+should not matter whether you use Selective Sync or Smart Sync.
 
 If you plan to use DVC with numerous small files (like thousands of images),
 metadata synchronization becomes significant issue. Therefore, it's recommended
@@ -109,14 +109,14 @@ This works well with remote machines being used for computations and your
 computer just for coding.
 
 If you already used a directory on your Dropbox as a 'local cache' which just
-got synchronized via Dropbox, you probably review most of the files locally.
-In such case Smart Sync would be more useful than duplicating the storage.
-However, care must be taken to ensure that the synchronization completes on
-the Dropbox side.
+got synchronized via Dropbox, you probably review most of the files locally. In
+such case Smart Sync would be more useful than duplicating the storage. However,
+care must be taken to ensure that the synchronization completes on the Dropbox
+side.
 
-You can use different settings for different projects. Selective Sync could
-be enabled for a project with numerous images, while the project with big
-models and big binary data files can be under Smart Sync at the same time.
+You can use different settings for different projects. Selective Sync could be
+enabled for a project with numerous images, while the project with big models
+and big binary data files can be under Smart Sync at the same time.
 
 ### Enable Selective Sync / Smart Sync
 
@@ -124,7 +124,7 @@ models and big binary data files can be under Smart Sync at the same time.
 2. Navigate to the **Sync** tab.
 3. **Choose folders** for Selective Sync.
 
-    ![](/img/dropbox-selective-sync.png)
+   ![](/img/dropbox-selective-sync.png)
 
 4. Turn on **Save hard drive space automatically** for Smart Sync.
 
