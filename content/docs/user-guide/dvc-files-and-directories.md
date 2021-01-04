@@ -187,7 +187,11 @@ the following fields:
 
 `dvc.yaml` files also support `# comments`.
 
-💡 We maintain a `dvc.yaml`
+💡 Keep in mind that there may be more than one `dvc.yaml` files in each
+<abbr>DVC project</abbr>. DVC checks all of them for consistency during
+operations that require rebuilding DAGs (like `dvc dag`).
+
+Note that we maintain a `dvc.yaml`
 [schema](https://github.com/iterative/dvcyaml-schema) that can be used by
 editors like [VSCode](/doc/install/plugins#visual-studio-code) or
 [PyCharm](/doc/install/plugins#pycharmintellij) to enable automatic syntax

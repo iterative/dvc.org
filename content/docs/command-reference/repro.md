@@ -24,11 +24,11 @@ positional arguments:
 
 `dvc repro` provides a way to regenerate data pipeline results, by restoring the
 dependency graph (a [DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph))
-implicitly defined by the stages listed in `dvc.yaml`. The commands defined in
-these stages are then executed in the correct order, reproducing pipeline
-results.
+implicitly defined by the stages listed in `dvc.yaml` files. The commands
+defined in these stages are then executed in the correct order, reproducing
+pipeline results.
 
-> Pipeline stages are defined in a `dvc.yaml` file (either manually or by using
+> Pipeline stages are defined in `dvc.yaml` (either manually or by using
 > `dvc run`) while initial data dependencies can be registered with `dvc add`.
 
 This command is similar to [Make](https://www.gnu.org/software/make/) in
