@@ -150,8 +150,8 @@ like `|` (pipe) or `<`, `>` (redirection), otherwise they would apply to
 variables in it that should be evaluated dynamically. Examples:
 
 ```dvc
-$ dvc run -n my_stage "./my_script.sh > /dev/null 2>&1"
-$ dvc run -n my_stage -f './my_script.sh $MYENVVAR'
+$ dvc run -n first_stage "./a_script.sh > /dev/null 2>&1"
+$ dvc run -n second_stage './another_script.sh $MYENVVAR'
 ```
 
 ## Options
