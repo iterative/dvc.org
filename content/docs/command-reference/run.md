@@ -341,7 +341,7 @@ $ cd more_stages/
 $ dvc run -n process_data \
           -d data.in \
           -o result.out \
-          ./my_script.sh --in data.in --out result.out
+          ./my_script.sh data.in result.out
 $ tree ..
 .
 ├── dvc.yaml
@@ -379,7 +379,7 @@ Execute an R script that parses the XML file:
 $ dvc run -n parse \
           -d parsingxml.R -d data/Posts.xml \
           -o data/Posts.csv \
-          Rscript parsingxml.R --in data/Posts.xml --out data/Posts.csv
+          Rscript parsingxml.R data/Posts.xml data/Posts.csv
 ```
 
 To visualize how these stages are connected into a pipeline (given their outputs
