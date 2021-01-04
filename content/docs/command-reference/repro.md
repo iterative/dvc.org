@@ -27,9 +27,10 @@ graph (a [DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph)) implicitly
 defined by the stages listed in `dvc.yaml`. The commands defined in these stages
 are then be executed in the correct order.
 
-For stages with multiple commands (having a list in the `cmd` field), commands
-are run one after the other in the order they are defined. The failure of any
-command will halt the remaining stage execution, and raises an error.
+For stages with multiple commands (having a list or a multiline string in the
+`cmd` field), commands are run one after the other in the order they are
+defined. The failure of any command will halt the remaining stage execution, and
+raises an error.
 
 > Pipeline stages are defined in a `dvc.yaml` file (either manually or by using
 > `dvc run`) while initial data dependencies can be registered with `dvc add`.
