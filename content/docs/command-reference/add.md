@@ -76,10 +76,10 @@ A `dvc add` target can be either a file or a directory. In the latter case, a
 `.dvc` file is created for the top of the hierarchy (with default name
 `<dir_name>.dvc`).
 
-Every file inside is stored in the cache (unless the `--no-commit` option is
-used), but DVC does not produce individual `.dvc` files for each file in the
-entire tree. Instead, the single `.dvc` file references a special JSON file in
-the cache (with `.dir` extension), that in turn points to the added files.
+Every file in the dir is cached normally (unless the `--no-commit` option is
+used), but DVC does not produce individual `.dvc` files for each one. Instead,
+the single `.dvc` file references a special JSON file in the cache (with `.dir`
+extension), that in turn points to the added files.
 
 > Refer to
 > [Structure of cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-the-cache-directory)

@@ -256,7 +256,7 @@ Full <abbr>parameters</abbr> (key and value) are listed separately under
 - `.dvc/cache`: The <abbr>cache</abbr> directory will store your data in a
   special [structure](#structure-of-the-cache-directory). The data files and
   directories in the <abbr>workspace</abbr> will only contain links to the data
-  files in the cache. (Refer to
+  files in the cache (refer to
   [Large Dataset Optimization](/doc/user-guide/large-dataset-optimization). See
   `dvc config cache` for related configuration options.
 
@@ -297,13 +297,17 @@ Full <abbr>parameters</abbr> (key and value) are listed separately under
 
 ## Structure of the cache directory
 
-The DVC cache is a
+The DVC cache is a hidden
 [content-addressable storage](https://en.wikipedia.org/wiki/Content-addressable_storage)
-(by default in `.dvc/cache`), which adds a layer of indirection between code and
+(by default in `.dvc/cache`). It adds a layer of indirection between code and
 data.
 
-There are two ways in which the data is <abbr>cached</abbr>: As a single file
-(eg. `data.csv`), or as a directory.
+There are two ways in which the data is <abbr>cached</abbr>, depending on
+whether it's a single file, or a directory (which may contain multiple files).
+
+Note files are renamed, reorganized, and directory trees are flattened in the
+cache, which always has exactly one depth level with 2-character directories
+(based on hashes of the data contents, as explained next).
 
 ### Files
 
@@ -331,9 +335,7 @@ data/images/
 $ dvc add data/images
 ```
 
-The directory is cached as a JSON file with `.dir` extension. The files it
-contains are stored in the cache regularly, as explained earlier. It looks like
-this:
+The resulting cache dir looks like this:
 
 ```dvc
 .dvc/cache/
@@ -345,8 +347,9 @@ this:
     └── 0b40427ee0998e9802335d98f08cd98f
 ```
 
-The `.dir` file contains the mapping of files in `data/images` (as a JSON
-array), including their hash values:
+The files in the directory are cached normally. The directory itself gets a
+similar entry, which with the `.dir` extension. It contains the mapping of files
+inside (as a JSON array), identified by their hash values:
 
 ```dvc
 $ cat .dvc/cache/19/6a322c107c2572335158503c64bfba.dir
@@ -354,4 +357,4 @@ $ cat .dvc/cache/19/6a322c107c2572335158503c64bfba.dir
 {"md5": "29a6c8271c0c8fbf75d3b97aecee589f", "relpath": "index.jpeg"}]
 ```
 
-That's how DVC knows that the other two cached files belong in the directory.
+That's how DVC knows that those two cached files belong in the directory.
