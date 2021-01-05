@@ -1,4 +1,11 @@
-### Templating `dvc.yaml`
+# Advanced dvc.yaml Usage
+
+> ⚠️ These features will be released shortly, along with DVC 2.0 ⚠️
+
+The following features are supported only via manual manipulation of `dvc.yaml`
+files. Specifically, `dvc run` cannot currently produce them.
+
+## Templating dvc.yaml
 
 `dvc.yaml` supports a templating format to reuse values from different sources
 in the YAML structure itself. The sources can be external
@@ -122,7 +129,7 @@ ${param.list[0]} # List elements via index in [] (square brackets)
 > To use the expression literally in `dvc.yaml`, escape it with a backslash,
 > e.g. `\${...`.
 
-### Defining multiple stages at once
+## Defining multiple stages at once
 
 You can generate more than one stage from a single `dvc.yaml` entry with the
 following syntax. A `foreach` element accepts a list or dictionary with values
