@@ -484,9 +484,3 @@ stages:
       outs:
         - ${item.prop2}
 ```
-
-> ⚠️ Remember that DVC only guarantees stage execution order based on
-> [DAGs](/doc/command-reference/dag). This means that if the resulting stages
-> are not connected by their <abbr>outputs</abbr> and <abbr>dependencies</abbr>,
-> they may not be [reproed](/doc/command-reference/repro) in the order in which
-> they are defined.
