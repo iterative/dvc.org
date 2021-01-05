@@ -129,9 +129,9 @@ ${param.list[0]} # List elements via index in [] (square brackets)
 > To use the expression literally in `dvc.yaml`, escape it with a backslash,
 > e.g. `\${...`.
 
-## Defining multiple stages at once
+## Generating multiple stages at once
 
-You can generate more than one stage from a single `dvc.yaml` entry with the
+You can define more than one stage in a single `dvc.yaml` entry with the
 following syntax. A `foreach` element accepts a list or dictionary with values
 to iterate on, while `do` contains the regular stage fields (`cmd`, `outs`,
 etc.). Here's a simple example:

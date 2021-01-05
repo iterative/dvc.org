@@ -84,7 +84,7 @@ the following fields:
   DVC operations.
 
 💡 You can also
-[define multiple stages](/doc/user-guide/dvc-files/advanced-dvc.yaml#defining-multiple-stages-at-once)
+[define multiple stages](/doc/user-guide/dvc-files/advanced-dvc.yaml#generating-multiple-stages-at-once)
 in a single entry using `foreach`/`do` syntax.
 
 `dvc.yaml` files also support `# comments`.
