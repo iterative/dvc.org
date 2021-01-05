@@ -51,10 +51,14 @@ const SidebarMenuItem: React.FC<ISidebarMenuItemProps> = ({
   type
 }) => {
   const isActive = activePaths && includes(activePaths, path)
+  const [dropDownToggle, setDropDownToggle] = useState(isActive)
   const isRootParent =
     activePaths && activePaths.length > 1 && activePaths[0] === path
   const isLeafItem = children === undefined || children.length === 0
-  const currentLevelOnClick = (): void => onClick(isLeafItem)
+  const currentLevelOnClick = (): void => {
+    setDropDownToggle(!dropDownToggle)
+    onClick(isLeafItem)
+  }
 
   // Fetch a special icon if one is defined
   const IconComponent = icon && ICONS[icon]
@@ -64,7 +68,7 @@ const SidebarMenuItem: React.FC<ISidebarMenuItemProps> = ({
 
   const className = cn(
     styles.sectionLink,
-    isActive && styles.active,
+    dropDownToggle && styles.active,
     isRootParent && 'docSearch-lvl0',
     'link-with-focus',
     style ? styles[style] : styles.sidebarDefault,
@@ -101,8 +105,8 @@ const SidebarMenuItem: React.FC<ISidebarMenuItemProps> = ({
     <>
       {parentElement}
       {children && (
-        <span hidden={!isActive}>
-          <Collapse isOpened={!!isActive}>
+        <span hidden={!dropDownToggle}>
+          <Collapse isOpened={!!dropDownToggle}>
             {children.map(item => (
               <SidebarMenuItem
                 key={item.path}
