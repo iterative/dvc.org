@@ -24,15 +24,15 @@ positional arguments:
 
 Provides a way to regenerate data pipeline results, by restoring the dependency
 graph (a [DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph)) implicitly
-defined by the stages listed in `dvc.yaml`. The commands defined in these stages
-are then be executed in the correct order.
+defined by the stages listed in `dvc.yaml` files. The commands defined in these
+stages are then be executed in the correct order.
 
 For stages with multiple commands (having a list or a multiline string in the
 `cmd` field), commands are run one after the other in the order they are
 defined. The failure of any command will halt the remaining stage execution, and
 raises an error.
 
-> Pipeline stages are defined in a `dvc.yaml` file (either manually or by using
+> Pipeline stages are defined in `dvc.yaml` (either manually or by using
 > `dvc run`) while initial data dependencies can be registered with `dvc add`.
 
 This command is similar to [Make](https://www.gnu.org/software/make/) in
@@ -187,7 +187,7 @@ up-to-date and only execute the final stage.
 
 - `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if all
   stages are up to date or if all stages are successfully executed, otherwise
-  exit with 1. The commands defined in the stage are free to write output
+  exit with 1. The command defined in the stage is free to write output
   regardless of this flag.
 
 - `-v`, `--verbose` - displays detailed tracing information.
@@ -270,8 +270,8 @@ If we now run `dvc repro`, we should see this:
 ```dvc
 $ dvc repro
 Stage 'filter' didn't change, skipping
-Running stage 'count':
-> python process.py numbers.txt > count.txt
+Running stage 'count' with command:
+        python process.py numbers.txt > count.txt
 Updating lock file 'dvc.lock'
 ```
 
@@ -307,8 +307,8 @@ of only the target (`count`) and following stages (none in this case):
 
 ```dvc
 $ dvc repro --downstream count
-Running stage 'count':
-> python process.py numbers.txt > count.txt
+Running stage 'count' with command:
+        python process.py numbers.txt > count.txt
 Updating lock file 'dvc.lock'
 ```
 

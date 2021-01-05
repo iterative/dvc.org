@@ -5,8 +5,8 @@ Print [metrics](/doc/command-reference/metrics), with optional formatting.
 ## Synopsis
 
 ```usage
-usage: dvc metrics show [-h] [-q | -v] [-a] [-T] [--all-commits] [-R]
-                        [--show-json] [--show-md]
+usage: dvc metrics show [-h] [-q | -v] [-a] [-T] [--all-commits]
+                        [--show-json] [--show-md] [-R]
                         [targets [targets ...]]
 
 positional arguments:

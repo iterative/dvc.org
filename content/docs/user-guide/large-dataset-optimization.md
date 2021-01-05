@@ -1,11 +1,7 @@
 # Large Dataset Optimization
 
-In order to track the data files and directories added with `dvc add` or
-`dvc run`, DVC moves all these files to the <abbr>cache</abbr>. A
-<abbr>project</abbr>'s cache is the hidden storage (by default located in
-`.dvc/cache`) for files that are tracked by DVC, and their different versions.
-(See `dvc cache` and [DVC Internals](/doc/user-guide/dvc-internals) for more
-details.)
+In order to track the data files and directories added with `dvc add`,
+`dvc repro`, etc. DVC moves all these files to the project's <abbr>cache</abbr>.
 
 However, the versions of the tracked files that
 [match the current code](/doc/tutorials/get-started/data-pipelines) are also
