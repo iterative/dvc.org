@@ -24,8 +24,8 @@ target file or directory (found at `path` in `url`) to the current working
 directory. (Analogous to `wget`, but for repos.)
 
 > Note that unlike `dvc import`, this command does not track the downloaded
-> files (does not create a `.dvc` file). For that reason, this command doesn't
-> require an existing DVC project to run in.
+> files (does not create a `.dvc` file). For that reason, it doesn't require an
+> existing DVC project to run in.
 
 > See `dvc list` for a way to browse repository contents to find files or
 > directories to download.

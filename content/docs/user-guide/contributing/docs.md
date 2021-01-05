@@ -202,5 +202,4 @@ We also use "emoji" symbols sparingly for visibility on certain notes. Mainly:
   and "Note that..." notes)
 - 💡 Useful notes and tips, often related to external tools and integrations
 
-> Some other emojis currently in use here and there: ⚡✅🙏🐛⭐❗ (among
-> others).
+> Some other emojis currently in use here and there: ⚡✅🙏🐛⭐ (among others).

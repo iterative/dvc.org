@@ -44,18 +44,13 @@ for example when `dvc init` was used with the `--no-scm` option.
 
 ## Options
 
-- `--targets <paths>` - limit command scope to these paths. When specifying
-  arguments for `--targets` before `a_rev`/`b_rev`, you should use `--` after
-  this option's arguments, e.g.:
+- `--targets <paths>` - specific DVC-tracked files to compare.
+
+  When specifying arguments for `--targets` before `a_rev`/`b_rev`, you should
+  use `--` after this option's arguments (POSIX terminals), e.g.:
 
   ```dvc
   $ dvc diff --targets t1.json t2.yaml -- HEAD v1
-  ```
-
-  Alternatively, you can also run the above statement as:
-
-  ```dvc
-  $ dvc diff HEAD v1 --targets t1.json t2.json
   ```
 
 - `--show-json` - prints the command's output in easily parsable JSON format,

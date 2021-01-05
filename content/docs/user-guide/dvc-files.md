@@ -143,9 +143,12 @@ stages:
     metrics:
       - performance.json
   training:
-    desc: Training stage description
-    cmd: python train.py
+    desc: Train model with Python
+    cmd:
+      - pip install -r requirements.txt
+      - python train.py --out ${model_file}
     deps:
+      - requirements.txt
       - train.py
       - features
     outs:
@@ -163,15 +166,19 @@ stages:
 by the user with the `--name` (`-n`) option of `dvc run`. Each stage can contain
 the following fields:
 
-- `cmd` (always present): Executable command defined in this stage
+- `cmd` (always present): One or more commands executed by the stage (may
+  contain either a single value, or a list). Commands are executed sequentially
+  until all are finished or until one of them fails (see `dvc repro` for
+  details).
 - `wdir`: Working directory for the stage command to run in (relative to the
   file's location). If this field is not present explicitly, it defaults to `.`
   (the file's location).
 - `deps`: List of <abbr>dependency</abbr> file or directory paths of this stage
   (relative to `wdir` which defaults to the file's location). See
   [Dependency entries](#dependency-entries) above for more details.
-- `params`: List of <abbr>parameter</abbr> dependency keys (field names) that
-  are read from a YAML, JSON, TOML, or Python file (`params.yaml` by default)
+- `params`: List of <abbr>parameter</abbr> dependency keys (field names) to
+  track in `params.yaml`. The list may also contain other YAML, JSON, TOML, or
+  Python file names, with a sub-list of the param names to track in them.
 - `outs`: List of <abbr>output</abbr> file or directory paths of this stage
   (relative to `wdir` which defaults to the file's location). See
   [Output entries](#output-entries) above for more details.
@@ -207,8 +214,8 @@ For every `dvc.yaml` file, a matching `dvc.lock` (YAML) file usually exists.
 It's created or updated by DVC commands such as `dvc run` and `dvc repro`.
 `dvc.lock` describes the latest pipeline state. It has several purposes:
 
-- Tracking of intermediate and final results of a pipeline — similar to
-  [`.dvc` files](#dvc-files).
+- Tracking of intermediate and final <abbr>outputs</abbr> of a pipeline —
+  similar to [`.dvc` files](#dvc-files).
 - Allow DVC to detect when stage definitions, or their dependencies have
   changed. Such conditions invalidate stages, requiring their reproduction (see
   `dvc status`, `dvc repro`).
