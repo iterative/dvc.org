@@ -169,8 +169,8 @@ is installed when `yarn` runs (see [dev env](#development-environment)).
   `dvc`, `yaml`, or `diff` custom languages. `usage` is employed to show the
   `dvc --help` output for each command reference. `dvc` can be used to show
   examples of commands and their output in a terminal session. `yaml` is used to
-  show [DVC-file](/doc/user-guide/dvc-files-and-directories) contents or other
-  YAML data. `diff` is used mainly for examples of `git diff` output.
+  show [DVC file](/doc/user-guide/dvc-files) contents, or other YAML data.
+  `diff` is used mainly for examples of `git diff` output.
 
 > Check out the `.md` source code of any command reference to get a better idea,
 > for example in
@@ -202,5 +202,4 @@ We also use "emoji" symbols sparingly for visibility on certain notes. Mainly:
   and "Note that..." notes)
 - 💡 Useful notes and tips, often related to external tools and integrations
 
-> Some other emojis currently in use here and there: ⚡✅🙏🐛⭐❗ (among
-> others).
+> Some other emojis currently in use here and there: ⚡✅🙏🐛⭐ (among others).

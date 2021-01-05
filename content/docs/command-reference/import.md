@@ -159,7 +159,7 @@ outs:
     cache: true
 ```
 
-Several of the values above are pulled from the original stage file
+Several of the values above are pulled from the original `.dvc` file
 `model.pkl.dvc` in the external DVC repository. The `url` and `rev_lock`
 subfields under `repo` are used to save the origin and version of the
 dependency, respectively.

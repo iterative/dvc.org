@@ -97,7 +97,7 @@ Relevant notes:
 
 - Entire directories produced by the stage can be tracked as outputs by DVC,
   which generates a single `.dir` entry in the cache (refer to
-  [Structure of cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-the-cache-directory)
+  [Structure of cache directory](/doc/user-guide/dvc-internals#structure-of-the-cache-directory)
   for more info.)
 
 - [external dependencies](/doc/user-guide/external-dependencies) and
@@ -186,8 +186,8 @@ $ dvc run -n second_stage './another_script.sh $MYENVVAR'
   reason.
 
 - `--outs-persist <path>` - declare output file or directory that will not be
-  removed when `dvc repro` starts (but it will still be overwritten when it
-  finishes).
+  removed when `dvc repro` starts (but it can still be modified, overwritten, or
+  even deleted by the stage command(s)).
 
 - `--outs-persist-no-cache <path>` - the same as `-outs-persist` except that
   outputs are not tracked by DVC (same as with `-O` above).
@@ -254,8 +254,8 @@ $ dvc run -n second_stage './another_script.sh $MYENVVAR'
   `always_changed` field in `dvc.yaml`). As a result `dvc status` will report it
   as `always changed` and `dvc repro` will always execute it.
 
-  > Note that DVC-files without dependencies are automatically considered
-  > "always changed", so this option has no effect in those cases.
+  > Note that regular `.dvc` files (without dependencies) are automatically
+  > considered "always changed", so this option has no effect in those cases.
 
 - `--external` - allow writing outputs outside of the DVC repository. See
   [Managing External Data](/doc/user-guide/managing-external-data).

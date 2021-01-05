@@ -1,8 +1,7 @@
 # destroy
 
-Remove all
-[DVC files and directories](/doc/user-guide/dvc-files-and-directories) from a
-<abbr>DVC project</abbr>.
+Remove all [DVC files](/doc/user-guide/dvc-files) and
+[internals](/doc/user-guide/dvc-internals) from a <abbr>DVC project</abbr>.
 
 ## Synopsis
 
@@ -22,9 +21,9 @@ Note that the <abbr>cache directory</abbr> will be removed as well, unless it's
 cache, DVC will replace them with the latest versions of the actual files and
 directories first, so that your data is intact after the project's destruction.
 
-> Refer to
-> [DVC files and directories](/doc/user-guide/dvc-files-and-directories) for
-> more details on the directories and files deleted by this command.
+> Refer to [DVC files](/doc/user-guide/dvc-files) and
+> [internals](/doc/user-guide/dvc-internals) for more details on the directories
+> and files deleted by this command.
 
 ## Options
 
@@ -99,7 +98,7 @@ $ ls -a
 .git code.py foo
 ```
 
-`dvc destroy` command removed DVC-files, and the internal `.dvc/` directory from
+`dvc destroy` command removed `foo.dvc` and the internal `.dvc/` directory from
 the <abbr>workspace</abbr>. But the cache files that are present in the
 `/mnt/cache` directory still persist:
 

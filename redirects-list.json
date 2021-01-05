@@ -29,6 +29,7 @@
 
   "^/doc/use-cases/data-and-model-files-versioning/?$                                     /doc/use-cases/versioning-data-and-model-files",
   "^/doc/user-guide/dvc-file-format$                                                      /doc/user-guide/dvc-files-and-directories",
+  "^/doc/user-guide/dvc-files-and-directories$                                            /doc/user-guide/dvc-files",
   "^/doc/user-guide/updating-tracked-files$                                               /doc/user-guide/how-to/update-tracked-data",
   "^/doc/user-guide/how-to/update-tracked-files$                                          /doc/user-guide/how-to/update-tracked-data",
   "^/doc/user-guide/merge-conflicts$                                                      /doc/user-guide/how-to/merge-conflicts",

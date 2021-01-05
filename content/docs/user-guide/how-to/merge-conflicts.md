@@ -1,15 +1,15 @@
 ---
 title: 'How to Merge Conflicts'
-description: 'Git merge conflicts can happen in DVC metafiles when combining
-changes from multiple team members.'
+description: 'Git merge conflicts can happen in DVC files when combining changes
+from multiple team members.'
 ---
 
-# How to Merge Conflicts in DVC Metafiles
+# How to Merge Conflicts in DVC Files
 
 Sometimes multiple members of a team might work on the the same DVC-tracked
 data. And when the time comes to combine their changes, merge conflicts can
-happen in Git-tracked [metafiles](/doc/user-guide/dvc-files-and-directories),
-which need to be resolved.
+happen in Git-tracked [DVC files](/doc/user-guide/dvc-files), which need to be
+resolved.
 
 ## `dvc.yaml`
 
@@ -36,9 +36,8 @@ stages:
 
 ## `dvc.lock`
 
-There's no need to resolve lock file conflicts manually. You can safely delete
-this file and then use `dvc repro` after merging `dvc.yaml` to regenerate this
-file.
+There's no need to resolve lock file conflicts manually. You can safely
+overwrite this file by using `dvc repro` after merging `dvc.yaml`.
 
 > `dvc commit` can also be a good option, but only for the specific case where
 > the `HEAD` version is chosen.

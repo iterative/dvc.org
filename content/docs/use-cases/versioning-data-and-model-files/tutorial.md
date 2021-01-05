@@ -71,9 +71,8 @@ $ pip install -r requirements.txt
 The repository you cloned is already DVC-initialized. It already contains a
 `.dvc/` directory with the `config` and `.gitignore` files. These and other
 files and directories are hidden from user, as typically there's no need to
-interact with them directly. See
-[DVC Files and Directories](/doc/user-guide/dvc-files-and-directories) to learn
-more.
+interact with them directly. See [DVC Internals](/doc/user-guide/dvc-internals)
+to learn more.
 
 </details>
 
@@ -137,9 +136,8 @@ intermediate results, etc. It tells Git to ignore the directory and puts it into
 the <abbr>cache</abbr> (while keeping a
 [file link](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
 to it in the <abbr>workspace</abbr>, so you can continue working the same way as
-before). This is achieved by creating a simple human-readable
-[DVC-file](/doc/user-guide/dvc-files-and-directories) that serves as a pointer
-to the cache.
+before). This is achieved by creating a simple human-readable `.dvc` file that
+serves as a pointer to the cache.
 
 Next, we train our first model with `train.py`. Because of the small dataset,
 this training process should be small enough to run on most computers in a
@@ -171,11 +169,12 @@ $ git tag -a "v1.0" -m "model v1.0, 1000 images"
 As we mentioned briefly, DVC does not commit the `data/` directory and
 `model.h5` file with Git. Instead, `dvc add` stores them in the
 <abbr>cache</abbr> (usually in `.dvc/cache`) and adds them to `.gitignore`. We
-then `git commit` DVC-files that contain file hashes that point to cached data.
+then `git commit` `.dvc` files that contain file hashes that point to cached
+data.
 
 In this case we created `data.dvc` and `model.h5.dvc`. Refer to
-[DVC Files](/doc/user-guide/dvc-files-and-directories) to learn more about how
-these files work.
+[DVC Files](/doc/user-guide/dvc-files#dvc-files) to learn more about how these
+files work.
 
 </details>
 
@@ -244,8 +243,8 @@ $ git tag -a "v2.0" -m "model v2.0, 2000 images"
 ```
 
 That's it! We've tracked a second version of the dataset, model, and metrics in
-DVC and committed the DVC-files that point to them with Git. Let's now look at
-how DVC can help us go back to the previous version if we need to.
+DVC and committed the `.dvc` files that point to them with Git. Let's now look
+at how DVC can help us go back to the previous version if we need to.
 
 ## Switching between workspace versions
 
@@ -284,17 +283,17 @@ the `v2.0` tag.
 
 <details>
 
-### Expand to learn more about DVC internals
+### Expand to learn more about DVC files
 
 As we have learned already, DVC keeps data files out of Git (by adjusting
 `.gitignore`) and puts them into the <abbr>cache</abbr> (usually it's a
 `.dvc/cache` directory inside the repository). Instead, DVC creates
-[DVC-files](/doc/user-guide/dvc-files-and-directories). These text files serve
-as data placeholders that point to the cached files, and they can be easily
-version controlled with Git.
+[DVC files](/doc/user-guide/dvc-files). These text files serve as data
+placeholders that point to the cached files, and they can be easily version
+controlled with Git.
 
-When we run `git checkout` we restore pointers (DVC-files) first. Then, when we
-run `dvc checkout`, we use these pointers to put the right data in the right
+When we run `git checkout` we restore pointers (`.dvc` files) first. Then, when
+we run `dvc checkout`, we use these pointers to put the right data in the right
 place.
 
 </details>

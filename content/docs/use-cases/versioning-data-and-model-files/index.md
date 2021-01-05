@@ -22,12 +22,11 @@ work!
 ![](/img/project-versions.png) _DVC matches the right versions of data, code,
 and models for you 💘._
 
-DVC enables data _versioning through codification_. You write simple
-[metafiles](/doc/user-guide/dvc-files-and-directories) once, describing what
-datasets, ML artifacts, etc. to track. This metadata can be put in Git in lieu
-of large files. Now you can use DVC to create
-[snapshots](/doc/command-reference/add) of the data,
-[restore](/doc/command-reference/checkout) previous versions,
+DVC enables data _versioning through codification_. You produce simple
+[metafiles](/doc/user-guide/dvc-files) once, describing what datasets, ML
+artifacts, etc. to track. This metadata can be put in Git in lieu of large
+files. Now you can use DVC to create [snapshots](/doc/command-reference/add) of
+the data, [restore](/doc/command-reference/checkout) previous versions,
 [reproduce](/doc/command-reference/repro) experiments, record evolving
 [metrics](/doc/command-reference/metrics), and more!
 
@@ -36,10 +35,10 @@ of large files. Now you can use DVC to create
 to learn how DVC looks and feels firsthand.
 
 As you use DVC, unique versions of your data files and directories are
-[cached](/doc/user-guide/dvc-files-and-directories#structure-of-the-cache-directory)
-in a systematic way (preventing file duplication). The working datastore is
-separated from your <abbr>workspace</abbr> to keep the project light, but stays
-connected via file
+[cached](/doc/user-guide/dvc-internals#structure-of-the-cache-directory) in a
+systematic way (preventing file duplication). The working datastore is separated
+from your <abbr>workspace</abbr> to keep the project light, but stays connected
+via file
 [links](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
 handled automatically by DVC.
 
