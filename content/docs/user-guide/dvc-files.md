@@ -54,8 +54,7 @@ meta:
   Only present when `dvc import` or `dvc import-url` are used to generate this
   `.dvc` file. Typically there is only one (but several can be added manually).
 - `wdir`: Working directory for the `outs` and `deps` paths (relative to the
-  `.dvc` file's location). If this field is not present explicitly, it defaults
-  to `.` (the `.dvc` file's location).
+  `.dvc` file's location). It defaults to `.` (the file's location).
 - `md5`: (only for <abbr>imports</abbr>) MD5 hash of the import `.dvc` file
   itself.
 - `meta` (optional): Arbitrary metadata can be added manually with this field.
@@ -71,7 +70,7 @@ and `dvc commit` commands, but not when a `.dvc` file is overwritten by
 
 `outs` fields can contain these subfields:
 
-- `path`: Path to the file or directory (relative to `wdir` which defaults to
+- `path`: Path to the file or directory (relative to `wdir`, which defaults to
   the file's location)
 - `md5`, `etag`, or `checksum`: Hash value for the file or directory being
   tracked with DVC. MD5 is used for most locations (local file system and SSH);
@@ -85,10 +84,10 @@ and `dvc commit` commands, but not when a `.dvc` file is overwritten by
   permissions upon `dvc checkout` and `dvc pull`. This has no effect on
   directories, or in general on Windows.
 - `cache`: Whether or not this file or directory is <abbr>cached</abbr> (`true`
-  by default, if not present). See the `--no-commit` option of `dvc add`.
+  by default). See the `--no-commit` option of `dvc add`.
 - `persist`: Whether the output file/dir should remain in place while
-  `dvc repro` runs. By default outputs are deleted when `dvc repro` starts (if
-  this value is not present).
+  `dvc repro` runs (`false` by default: outputs are deleted when `dvc repro`
+  starts
 - `desc` (optional): User description for this output. This doesn't affect any
   DVC operations.
 
@@ -96,7 +95,7 @@ and `dvc commit` commands, but not when a `.dvc` file is overwritten by
 
 `deps` fields can contain these subfields:
 
-- `path`: Path to the dependency (relative to `wdir` which defaults to the
+- `path`: Path to the dependency (relative to `wdir`, which defaults to the
   file's location)
 - `md5`, `etag`, or `checksum`: Hash value for the file or directory being
   tracked with DVC. MD5 is used for most locations (local file system and SSH);
@@ -171,26 +170,23 @@ the following fields:
   until all are finished or until one of them fails (see `dvc repro` for
   details).
 - `wdir`: Working directory for the stage command to run in (relative to the
-  file's location). If this field is not present explicitly, it defaults to `.`
-  (the file's location).
+  file's location). It defaults to `.` (the file's location).
 - `deps`: List of <abbr>dependency</abbr> file or directory paths of this stage
-  (relative to `wdir` which defaults to the file's location). See
-  [Dependency entries](#dependency-entries) above for more details.
+  (relative to `wdir`). See [Dependency entries](#dependency-entries) above for
+  more details.
 - `params`: List of <abbr>parameter</abbr> dependency keys (field names) to
   track in `params.yaml`. The list may also contain other YAML, JSON, TOML, or
   Python file names, with a sub-list of the param names to track in them.
 - `outs`: List of <abbr>output</abbr> file or directory paths of this stage
-  (relative to `wdir` which defaults to the file's location). See
-  [Output entries](#output-entries) above for more details.
+  (relative to `wdir`). See [Output entries](#output-entries) above for more
+  details.
 - `metrics`: List of [metrics files](/doc/command-reference/metrics), and
   optionally, whether or not this metrics file is <abbr>cached</abbr> (`true` by
-  default, if not present). See the `--metrics-no-cache` (`-M`) option of
-  `dvc run`.
+  default). See the `--metrics-no-cache` (`-M`) option of `dvc run`.
 - `plots`: List of [plot metrics](/doc/command-reference/plots), and optionally,
   their default configuration (subfields matching the options of
   `dvc plots modify`), and whether or not this plots file is <abbr>cached</abbr>
-  ( `true` by default, if not present). See the `--plots-no-cache` option of
-  `dvc run`.
+  ( `true` by default). See the `--plots-no-cache` option of `dvc run`.
 - `frozen`: Whether or not this stage is frozen from reproduction
 - `always_changed`: Whether or not this stage is considered as changed by
   commands such as `dvc status` and `dvc repro`. `false` by default
