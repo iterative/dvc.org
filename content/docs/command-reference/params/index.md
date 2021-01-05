@@ -36,9 +36,6 @@ stages:
           - batch_size
 ```
 
-💡 Parameters can also be used directly in `dvc.yaml` itself. See the
-[Parameterize stages](#example-parameterize-stages-in-dvcyaml) example below.
-
 In contrast to a regular <abbr>dependency</abbr>, a parameter dependency is not
 a file or directory. Instead, it consists of a _parameter name_ (or key) in a
 _parameters file_, where the _parameter value_ should be found. This allows you
@@ -70,6 +67,10 @@ is outdated upon `dvc repro` (or `dvc status`).
 
 The `dvc params diff` command is available to show parameter changes, displaying
 their current and previous values.
+
+💡 Parameters can also be used directly in `dvc.yaml` itself. See
+[Parameterize `dvc.yaml`](/doc/user-guide/dvc-files#parameterize-dvcyaml) for
+more details.
 
 ## Options
 
@@ -186,31 +187,6 @@ params.yaml  train.layers    —      9
 This command shows the difference in parameters between the workspace and the
 last committed version of the `params.yaml` file. In our example there's no
 previous version, which is why all `Old` values are `—`.
-
-## Example: Parameterize stages in `dvc.yaml`
-
-Let's say we have a `params.yaml` file with the following contents:
-
-```yaml
-models:
-  us:
-    thresh: 10
-    filename: 'model-us.hdf5'
-```
-
-To use those values in `dvc.yaml` itself, you can use the special `${}`
-expression:
-
-```yaml
-stages:
-  build-us:
-    cmd: python script.py --out ${models.us.filename}
-    outs:
-      - ${models.us.filename}
-```
-
-See [Parameterize `dvc.yaml`](/doc/user-guide/dvc-files#parameterize-dvcyaml)
-for more details.
 
 ## Examples: Python parameters file
 
