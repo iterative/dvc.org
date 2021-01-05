@@ -1,14 +1,14 @@
 module.exports = [
   {
     matches: '.dvc',
-    url: '/doc/user-guide/dvc-files#dvc-files'
+    url: '/doc/user-guide/dvc-files/.dvc'
   },
   {
     matches: 'dvc.yaml',
-    url: '/doc/user-guide/dvc-files#dvcyaml-file'
+    url: '/doc/user-guide/dvc-files/dvc.yaml'
   },
   {
     matches: 'dvc.lock',
-    url: '/doc/user-guide/dvc-files#dvclock-file'
+    url: '/doc/user-guide/dvc-files/dvc.yaml#dvclock-file'
   }
 ]

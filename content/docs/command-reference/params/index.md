@@ -68,9 +68,9 @@ is outdated upon `dvc repro` (or `dvc status`).
 The `dvc params diff` command is available to show parameter changes, displaying
 their current and previous values.
 
-💡 Parameters can also be used directly in `dvc.yaml` itself. See
-[Parameterize `dvc.yaml`](/doc/user-guide/dvc-files#parameterize-dvcyaml) for
-more details.
+💡 Parameters can also be used for
+[templating](/doc/user-guide/dvc-files/advanced-dvc.yaml#templating) `dvc.yaml`
+itself.
 
 ## Options
 
