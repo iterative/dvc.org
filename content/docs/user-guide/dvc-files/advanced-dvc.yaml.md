@@ -7,7 +7,7 @@ The following features are supported only via manual edition of `dvc.yaml` files
 
 ## Templating
 
-`dvc.yaml` supports a templating format to reuse values from different sources
+`dvc.yaml` supports a templating format to insert values from different sources
 in the YAML structure itself. The sources can be external
 [parameters files](/doc/command-reference/params), or internal `vars`.
 
