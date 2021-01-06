@@ -130,8 +130,8 @@ stages:
   prepare:
     cmd: python src/prepare.py data/data.xml
     deps:
-      - data/data.xml
       - src/prepare.py
+      - data/data.xml
     params:
       - prepare.seed
       - prepare.split

@@ -134,7 +134,7 @@ the default remote:
 $ dvc push
 ```
 
-Push <abbr>outputs</abbr> of a specific `.dvc` file only:
+Push files related to a specific `.dvc` file only:
 
 ```dvc
 $ dvc push data.zip.dvc
@@ -165,11 +165,10 @@ want to upload part of the data?
 ```dvc
 $ dvc push --with-deps test-posts
 
-... Do some work based on the partial update
+# Do some work based on the partial update...
+# Then push the rest of the data:
 
 $ dvc push --with-deps matrix-train
-
-... Push the rest of the data
 
 $ dvc status --cloud
 Cache and remote 'r1' are in sync.

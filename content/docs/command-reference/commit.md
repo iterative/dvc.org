@@ -122,7 +122,7 @@ $ pip install -r src/requirements.txt
 Download the precomputed data using:
 
 ```dvc
-$ dvc pull --all-branches --all-tags
+$ dvc pull -aT
 ```
 
 </details>
