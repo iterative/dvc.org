@@ -62,8 +62,7 @@ stages:
 > `{"grp": {"a": 1}}` merges with `{"grp": {"b": 2}}`, but not with
 > `{"grp": {"a": 7}}`.
 
-⚠️ Note that doesn't track values from `vars` like parameters (ignored by
-`dvc params diff`).
+> Note that values from `vars` are not tracked like parameters.
 
 To load additional params files, list them in the top `vars`, in the desired
 order, e.g.:
@@ -112,7 +111,7 @@ stages:
       - ${model.filename}
 ```
 
-⚠️ Important: Limitations of local `vars`:
+⚠️ Known limitations of local `vars`:
 
 - [`wdir`](/doc/user-guide/dvc-files/dvc.yaml#accepted-fields) cannot use values
   from local `vars`, as DVC uses the working directory first (to load any values
