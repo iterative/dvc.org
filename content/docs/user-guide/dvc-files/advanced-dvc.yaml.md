@@ -138,13 +138,13 @@ etc.). Here's a simple example:
 
 ```yaml
 stages:
-  echo: # Multi-stage
+  cleanups: # Multi-stage
     foreach: # List of simple values
-      - foo
-      - bar
-      - baz qux
+      - raw1
+      - labels1
+      - raw2 labels2
     do:
-      cmd: echo "${item}"
+      cmd: clean.py "${item}"
 ```
 
 Upon `dvc repro`, each item in the list is expanded into its own stage by
@@ -152,13 +152,12 @@ substituting its value in expression `${item}`. The item's value is appended to
 each stage name after a `@`. The final generated stages are saved to `dvc.lock`:
 
 ```yaml
-stages:
-  echo@bar:
-    cmd: echo "bar"
-  echo@baz:
-    cmd: echo "baz qux"
-  echo@foo:
-    cmd: echo "foo"
+cleanups@raw2 labels2:
+  cmd: echo "raw2 labels2"
+cleanups@raw1:
+  cmd: echo "raw1"
+cleanups@labels1:
+  cmd: echo "labels1"
 ```
 
 For lists containing complex values (e.g. dictionaries), the substitution
