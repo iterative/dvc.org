@@ -2,15 +2,14 @@
 
 > ⚠️ These features will be released shortly, along with DVC 2.0 ⚠️
 
-The following features are supported only via manual manipulation of `dvc.yaml`
-files. Specifically, `dvc run` cannot currently produce them.
+The following features are supported only via manual edition of `dvc.yaml` files
+(`dvc run` cannot currently produce them).
 
-## Templating dvc.yaml
+## Templating
 
 `dvc.yaml` supports a templating format to reuse values from different sources
 in the YAML structure itself. The sources can be external
-[parameters files](/doc/command-reference/params), or internal `vars`, as
-detailed below.
+[parameters files](/doc/command-reference/params), or internal `vars`.
 
 Let's say we have `params.yaml` (default params file) with the following
 contents:
@@ -129,7 +128,7 @@ ${param.list[0]} # List elements via index in [] (square brackets)
 > To use the expression literally in `dvc.yaml`, escape it with a backslash,
 > e.g. `\${...`.
 
-## Generating multiple stages at once
+## Generating multiple stages
 
 You can define more than one stage in a single `dvc.yaml` entry with the
 following syntax. A `foreach` element accepts a list or dictionary with values
@@ -215,8 +214,8 @@ stages:
   build@us: ...
 ```
 
-Importantly, dictionaries [from parameters](#templating-dvcyaml) files can be
-used in `foreach` multi-stages as well:
+Importantly, dictionaries [from parameters](#templating) files can be used in
+`foreach` multi-stages as well:
 
 ```yaml
 stages:

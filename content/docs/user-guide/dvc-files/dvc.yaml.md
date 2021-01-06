@@ -43,9 +43,15 @@ stages:
     # User metadata and comments are supported.
 ```
 
-`dvc.yaml` files consists of a set of `stages` with names provided explicitly by
-the user with the `--name` (`-n`) option of `dvc run`. Each stage can contain
-the following fields:
+💡 Keep in mind that there may be multiple `dvc.yaml` files in each <abbr>DVC
+project</abbr>. All of them are checked for consistency during operations that
+require rebuilding [DAGs](/doc/command-reference/dag) (like `dvc repro`).
+
+## Accepted fields
+
+`dvc.yaml` files consists of a set of `stages` with names provided by the user
+(for example with the `--name` option of `dvc run`). Each stage entry can
+contain the following fields:
 
 - `cmd` (always present): One or more commands executed by the stage (may
   contain either a single value, or a list). Commands are executed sequentially
@@ -78,14 +84,10 @@ the following fields:
 - `desc` (optional): User description for this stage. This doesn't affect any
   DVC operations.
 
+See [Advanced dvc.yaml Usage](/doc/user-guide/dvc-files/advanced-dvc.yaml) for
+info on the `${}` syntax, as well as `foreach`/`do` fields.
+
 `dvc.yaml` files also support `# comments`.
-
-💡 Keep in mind that there may be more than one `dvc.yaml` files in each
-<abbr>DVC project</abbr>. DVC checks all of them for consistency during
-operations that require rebuilding DAGs (like `dvc dag`).
-
-> See also
-> [Advanced dvc.yaml Usage](/doc/user-guide/dvc-files/advanced-dvc.yaml).
 
 Note that we maintain a `dvc.yaml`
 [schema](https://github.com/iterative/dvcyaml-schema) that can be used by
