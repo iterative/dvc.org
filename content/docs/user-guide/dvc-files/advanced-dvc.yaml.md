@@ -68,7 +68,8 @@ stages:
 To load additional params files, list them in the top `vars`, in the desired
 order, e.g.:
 
-> Their paths will be evaluated based on `wdir`, if one given.
+> Their paths will be evaluated based on
+> [`wdir`](/doc/user-guide/dvc-files/dvc.yaml#accepted-fields), if one given.
 
 ```yaml
 vars:
@@ -113,8 +114,9 @@ stages:
 
 ⚠️ Important: Limitations of local `vars`:
 
-- `wdir` cannot use values from local `vars`, as DVC uses the working directory
-  first (to load any values from params files listed in `vars`).
+- [`wdir`](/doc/user-guide/dvc-files/dvc.yaml#accepted-fields) cannot use values
+  from local `vars`, as DVC uses the working directory first (to load any values
+  from params files listed in `vars`).
 - `foreach` is also incompatible with local `vars` at the moment.
 
 The substitution expression supports these forms:
