@@ -106,7 +106,7 @@ stages:
     vars:
       - params.json:build
       - model:
-        filename: 'model-us.hdf5'
+          filename: 'model-us.hdf5'
     cmd: python train.py ${build.epochs} --out ${model.filename}
     outs:
       - ${model.filename}
