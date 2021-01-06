@@ -58,10 +58,9 @@ stages:
     cmd: python train.py --thresh ${models.us.threshold}
 ```
 
-> DVC merges values from params files and `vars` as long as there are no leaf
-> node collisions (so the two examples above can't be used simultaneously). For
-> example, `{"grp": {"a": 1}}` can be merged with `{"grp": {"b": 2}}`, but not
-> with `{"grp": {"a": 7}}`.
+> DVC merges values from params files and `vars` when possible. For example,
+> `{"grp": {"a": 1}}` merges with `{"grp": {"b": 2}}`, but not with
+> `{"grp": {"a": 7}}`.
 
 ⚠️ Note that doesn't track values from `vars` like parameters (ignored by
 `dvc params diff`).
