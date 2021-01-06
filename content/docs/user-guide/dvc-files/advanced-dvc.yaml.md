@@ -8,8 +8,9 @@ The following features are supported only via manual edition of `dvc.yaml` files
 ## Templating
 
 `dvc.yaml` supports a templating format to insert values from different sources
-in the YAML structure itself. The sources can be external
-[parameters files](/doc/command-reference/params), or internal `vars`.
+in the YAML structure itself. The sources can be
+[parameters files](/doc/command-reference/params), or `vars` defined in
+`dvc.yaml` instead.
 
 Let's say we have `params.yaml` (default params file) with the following
 contents:
@@ -57,8 +58,8 @@ stages:
     cmd: python train.py --thresh ${models.us.threshold}
 ```
 
-> DVC merges external params and `vars` as long as there are no leaf node
-> collisions (so the two examples above can't be used simultaneously). For
+> DVC merges values from params files and `vars` as long as there are no leaf
+> node collisions (so the two examples above can't be used simultaneously). For
 > example, `{"grp": {"a": 1}}` can be merged with `{"grp": {"b": 2}}`, but not
 > with `{"grp": {"a": 7}}`.
 
