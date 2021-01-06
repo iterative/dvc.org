@@ -43,11 +43,6 @@ stages:
     # User metadata and comments are supported.
 ```
 
-💡 You can
-[parameterize this file](/doc/user-guide/dvc-files/advanced-dvc.yaml#templating-dvcyaml)
-with the special expression `${}`, external params files, and/or internal lists
-of `vars`.
-
 `dvc.yaml` files consists of a set of `stages` with names provided explicitly by
 the user with the `--name` (`-n`) option of `dvc run`. Each stage can contain
 the following fields:
@@ -83,15 +78,14 @@ the following fields:
 - `desc` (optional): User description for this stage. This doesn't affect any
   DVC operations.
 
-💡 You can also
-[define multiple stages](/doc/user-guide/dvc-files/advanced-dvc.yaml#generating-multiple-stages-at-once)
-in a single entry using `foreach`/`do` syntax.
-
 `dvc.yaml` files also support `# comments`.
 
 💡 Keep in mind that there may be more than one `dvc.yaml` files in each
 <abbr>DVC project</abbr>. DVC checks all of them for consistency during
 operations that require rebuilding DAGs (like `dvc dag`).
+
+> See also
+> [Advanced dvc.yaml Usage](/doc/user-guide/dvc-files/advanced-dvc.yaml).
 
 Note that we maintain a `dvc.yaml`
 [schema](https://github.com/iterative/dvcyaml-schema) that can be used by
@@ -99,7 +93,7 @@ editors like [VSCode](/doc/install/plugins#visual-studio-code) or
 [PyCharm](/doc/install/plugins#pycharmintellij) to enable automatic syntax
 validation and auto-completion.
 
-## Output entries
+### Output entries
 
 `outs` fields can contain these subfields:
 

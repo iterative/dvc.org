@@ -149,7 +149,7 @@ stages:
 
 Upon `dvc repro`, each item in the list is expanded into its own stage by
 substituting its value in expression `${item}`. The item's value is appended to
-each stage name after a `@`. `dvc.lock` will reflect this:
+each stage name after a `@`. The final generated stages are saved to `dvc.lock`:
 
 ```yaml
 stages:
