@@ -73,7 +73,7 @@ so on (see `dvc dag`). This graph can be restored by DVC later to modify or
 
 ```dvc
 $ dvc run -n printer -d write.sh -o pages ./write.sh
-$ dvc run -n scanner -d read.sh -d pages -o signed.pdf ./read.sh
+$ dvc run -n scanner -d read.sh -d pages -o signed.pdf ./read.sh pages
 ```
 
 Stage dependencies can be any file or directory, either untracked, or more
@@ -150,8 +150,8 @@ like `|` (pipe) or `<`, `>` (redirection), otherwise they would apply to
 variables in it that should be evaluated dynamically. Examples:
 
 ```dvc
-$ dvc run -n my_stage "./my_script.sh > /dev/null 2>&1"
-$ dvc run -n my_stage './my_script.sh $MYENVVAR'
+$ dvc run -n first_stage "./a_script.sh > /dev/null 2>&1"
+$ dvc run -n second_stage './another_script.sh $MYENVVAR'
 ```
 
 ## Options
@@ -317,17 +317,17 @@ dataset (`20180226` is a seed value):
 
 ```dvc
 $ dvc run -n train \
-          -d matrix-train.p -d train_model.py \
-          -o model.p \
-          python train_model.py matrix-train.p 20180226 model.p
+          -d train_model.py -d matrix-train.p -o model.p \
+          python train_model.py 20180226 model.p
 ```
 
 To update a stage that is already defined, the `-f` (`--force`) option is
 needed. Let's update the seed for the `train` stage:
 
 ```dvc
-$ dvc run -n train -f -d matrix-train.p -d train_model.py -o model.p \
-          python train_model.py matrix-train.p 18494003 model.p
+$ dvc run -n train --force \
+          -d train_model.p -d matrix-train.p -o model.p \
+          python train_model.py 18494003 model.p
 ```
 
 ## Example: Separate stages in a subdirectory
@@ -421,9 +421,9 @@ Define a stage with both regular dependencies as well as parameter dependencies:
 
 ```dvc
 $ dvc run -n train \
-          -d matrix-train.p -d train_model.py -o model.p \
+          -d train_model.py -d matrix-train.p  -o model.p \
           -p seed,train.lr,train.epochs
-          python train_model.py matrix-train.p model.p
+          python train_model.py 20200105 model.p
 ```
 
 `train_model.py` will include some code to open and parse the parameters:

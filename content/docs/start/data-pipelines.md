@@ -72,7 +72,7 @@ $ dvc run -n prepare \
 ```
 
 A `dvc.yaml` file is generated. It includes information about the command we ran
-(`python src/prepare.py`), its <abbr>dependencies</abbr>, and
+(`python src/prepare.py data/data.xml`), its <abbr>dependencies</abbr>, and
 <abbr>outputs</abbr>.
 
 <details>

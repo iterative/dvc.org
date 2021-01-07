@@ -87,7 +87,7 @@ Define a [stage](/doc/command-reference/run) that depends on params `lr`,
 specify `layers` and `epochs` from the `train` group:
 
 ```dvc
-$ dvc run -n train -d users.csv -o model.pkl \
+$ dvc run -n train -d train.py -d users.csv -o model.pkl \
           -p lr,train.epochs,train.layers \
           python train.py
 ```
@@ -130,7 +130,7 @@ Alternatively, the entire group of parameters `train` can be referenced, instead
 of specifying each of the group parameters separately:
 
 ```dvc
-$ dvc run -n train -d users.csv -o model.pkl \
+$ dvc run -n train -d train.py -d users.csv -o model.pkl \
           -p lr,train \
           python train.py
 ```
@@ -139,7 +139,7 @@ In the examples above, the default parameters file name `params.yaml` was used.
 This file name can be redefined with a prefix in the `-p` argument:
 
 ```dvc
-$ dvc run -n train -d logs/ -o users.csv \
+$ dvc run -n train -d train.py -d logs/ -o users.csv -f \
           -p parse_params.yaml:threshold,classes_num \
           python train.py
 ```
@@ -182,7 +182,7 @@ The following [stage](/doc/command-reference/run) depends on params `BOOL`,
 `INT`, as well as `TrainConfig`'s `EPOCHS` and `layers`:
 
 ```dvc
-$ dvc run -n train -d users.csv -o model.pkl \
+$ dvc run -n train -d train.py -d users.csv -o model.pkl \
           -p params.py:BOOL,INT,TrainConfig.EPOCHS,TrainConfig.layers \
           python train.py
 ```
@@ -227,7 +227,7 @@ can be referenced
 supported), instead of the parameters in it:
 
 ```dvc
-$ dvc run -n train -d users.csv -o model.pkl \
+$ dvc run -n train -d train.py -d users.csv -o model.pkl \
           -p params.py:BOOL,INT,TestConfig \
           python train.py
 ```
