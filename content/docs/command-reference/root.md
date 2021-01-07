@@ -27,11 +27,14 @@ Use this command to build fixed paths to dependencies, files, or stage
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
-## Example: Basic output
+## Examples
+
+Basic demonstration:
 
 ```dvc
 $ dvc root
 .
+
 $ mkdir subdir
 $ cd subdir
 $ dvc root

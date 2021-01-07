@@ -101,9 +101,10 @@ Note, a new field _y_ was added to `dvc.yaml` file for the plot. Please do not
 forget to commit the change in Git if the modification needs to be preserved.
 
 ```yaml
-- logs.csv:
-    cache: false
-    y: accuracy
+plots:
+  - logs.csv:
+      cache: false
+      y: accuracy
 ```
 
 Changing the plot `title` and `x-label`:

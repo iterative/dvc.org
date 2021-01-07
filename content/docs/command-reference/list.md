@@ -124,3 +124,31 @@ images/dvc-logo-outlines.png.dvc
 images/owl_sticker.png
 ...
 ```
+
+## Example: Create an archive of you DVC project
+
+Just like you can use `git archive` to make a quick bundle (ZIP) file of the
+current code, `dvc list` can be easily complemented with simple archive tools to
+bundle the current data files in the project.
+
+For example, here's a TAR archive of the entire <abbr>workspace</abbr>
+(Linux/GNU):
+
+```dvc
+$ dvc list . -R | tar -cvf project.tar
+```
+
+Or separate ZIP archives of code and DVC-tracked data (POSIX terminal with
+`zip`):
+
+```
+$ git archive -o code.zip HEAD
+$ dvc list . -R --dvc-only | zip -@ data.zip
+```
+
+ZIP alternative for [POSIX on Windows](/doc/user-guide/running-dvc-on-windows)
+(Python installed):
+
+```dvc
+$ dvc list . -R --dvc-only | xargs python -m zipfile -c data.zip
+```

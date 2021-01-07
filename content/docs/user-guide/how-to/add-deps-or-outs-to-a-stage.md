@@ -39,13 +39,13 @@ output. To add a missing dependency (`data/raw.csv`) as well as a missing output
 > dependency/output to the stage:
 >
 > ```dvc
-> $ dvc run -f --no-exec \
->           -n prepare \
->           -d data/raw.csv \
+> $ dvc run -n prepare \
+>           -f --no-exec \
 >           -d src/prepare.py \
+>           -d data/raw.csv \
 >           -o data/train \
 >           -o data/validate \
->           python src/prepare.py
+>           python src/prepare.py data/raw.csv
 > ```
 >
 > `-f` overwrites the stage in `dvc.yaml`, while `--no-exec` updates the stage

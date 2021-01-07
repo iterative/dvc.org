@@ -80,8 +80,9 @@ Let's say you are cleaning up raw data for later stages:
 
 ```dvc
 $ dvc add raw
-$ dvc run -n clean_data -d raw -o clean ./cleanup.py raw clean
-  # The data is cached in the shared location.
+$ dvc run -n clean_data -d cleanup.py -d raw -o clean \
+          ./cleanup.py raw clean
+# The data is cached in the shared location.
 $ git add raw.dvc dvc.yaml dvc.lock .gitignore
 $ git commit -m "cleanup raw data"
 $ git push
@@ -97,7 +98,8 @@ manually. After this, they could decide to continue building this
 $ git pull
 $ dvc checkout
 A       raw  # Data is linked from cache to workspace.
-$ dvc run -n process_clean_data -d clean -o processed ./process.py clean process
+$ dvc run -n process_clean_data -d process.py -d clean -o processed
+          ./process.py clean processed
 $ git add dvc.yaml dvc.lock
 $ git commit -m "process clean data"
 $ git push

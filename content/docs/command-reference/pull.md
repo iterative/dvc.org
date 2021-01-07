@@ -208,7 +208,8 @@ to retrieve part of the data?
 ```dvc
 $ dvc pull --with-deps featurize
 
-... Use the partial update, then pull the remaining data:
+# Use the partial update...
+# Then pull the remaining data:
 
 $ dvc pull
 Everything is up to date.
