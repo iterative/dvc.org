@@ -89,7 +89,7 @@ Selective Sync or Smart Sync within the Dropbox desktop application.
 
 ### Selective Sync vs Smart Sync
 
-The two options slightly differ:
+The two options differ slightly:
 
 | Characteristic                           | Selective Sync | Smart Sync |
 | ---------------------------------------- | -------------- | ---------- |
