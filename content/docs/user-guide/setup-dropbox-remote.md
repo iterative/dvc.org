@@ -29,11 +29,10 @@ See [Authorization](#authorization) for more details.
 
 ## URL format
 
-You can indicate any directory name that will be created under the
-`DROPBOX_HOME`, e.g. `DROPBOX_HOME/dvc/my-project`. Make sure this name is not
-already used for another project to keep things separated. The URL is formed as
-follows: `dropbox://dvc/my-project`. It does not need to be an existing
-directory.
+The URL is formed as follows: `dropbox://dvc/my-project`. You can indicate any
+directory path (it will be created if it doesn't exist) under the
+`DROPBOX_HOME`, e.g. `DROPBOX_HOME/dvc/my-project`. Make sure this directory is
+not already used by another project, to keep things separate. 
 
 ## Authorization
 
