@@ -220,6 +220,11 @@ Please see `dvc remote modify` for a list of other Dropbox parameters, or
 [Setup a Dropbox DVC Remote](/doc/user-guide/setup-dropbox-remote) for
 a full guide on using Dropbox as DVC remote storage.
 
+> If you synchronize your Dropbox account with your PC, it may be useful to
+> enable selective sync or smart sync. See
+> [Selective Sync](/doc/user-guide/setup-dropbox-remote#selective-sync) for more
+> details.
+
 > Please note our
 > [Privacy Policy (Dropbox API)](/doc/user-guide/dropbox-privacy).
 

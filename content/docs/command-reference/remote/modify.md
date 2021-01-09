@@ -319,11 +319,6 @@ for a full guide on using Dropbox as DVC remote storage.
   $ dvc remote modify myremote chunk_size 128
   ```
 
-> If you synchronize your Dropbox account with your PC, it may be useful to
-> enable selective sync or smart sync. See
-> [Selective Sync](/doc/user-guide/setup-dropbox-remote#selective-sync) for more
-> details.
-
 > Please note our
 > [Privacy Policy (Dropbox API)](/doc/user-guide/dropbox-privacy).
 
