@@ -32,7 +32,7 @@ See [Authorization](#authorization) for more details.
 The URL is formed as follows: `dropbox://dvc/my-project`. You can indicate any
 directory path (it will be created if it doesn't exist) under the
 `DROPBOX_HOME`, e.g. `DROPBOX_HOME/dvc/my-project`. Make sure this directory is
-not already used by another project, to keep things separate. 
+not already used by another project, to keep things separate.
 
 ## Authorization
 
@@ -74,7 +74,7 @@ reads these variables first, before the credentials file:
 
 - `DROPBOX_ACCESS_TOKEN` - current access token
 - `DROPBOX_EXPIRES_AT` - access token expiration time in
-[ISO format](https://docs.python.org/3/library/datetime.html#datetime.datetime.isoformat)
+  [ISO format](https://docs.python.org/3/library/datetime.html#datetime.datetime.isoformat)
 - `DROPBOX_REFRESH_TOKEN` - refresh token for reauthentication
 
 > Please note our
