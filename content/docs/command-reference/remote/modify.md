@@ -311,7 +311,9 @@ for a full guide on using Dropbox as DVC remote storage.
 
 - `chunk_size` - size of a single data chunk for the files to upload. Needs to
   be a multiple of 4 MB, with a minimum of 4 MB and maximum of 150 MB. Default
-  `48`.
+  `48`. Setting this larger will increase the speed slightly (at most 10% for
+  128MB in tests) at the cost of using more memory. It can be set smaller if
+  you are tight on memory.
 
 > If you synchronize your Dropbox account with your PC, it may be useful to
 > enable selective sync or smart sync. See
