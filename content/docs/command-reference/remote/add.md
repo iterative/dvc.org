@@ -216,7 +216,8 @@ Go to the following link in your browser:
 Enter verification code: # <- enter resulting code
 ```
 
-> Please note [Privacy Policy (Dropbox API)](/doc/user-guide/dropbox-privacy).
+> Please note our
+> [Privacy Policy (Dropbox API)](/doc/user-guide/dropbox-privacy).
 
 </details>
 
