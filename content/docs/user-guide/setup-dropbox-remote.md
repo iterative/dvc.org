@@ -84,7 +84,10 @@ reads these variables first, before the credentials file:
 
 If you synchronize your Dropbox account to your computer, you may not
 necessarily want to synchronize all the files DVC uses. Instead, you can setup
-Selective Sync or Smart Sync within the Dropbox desktop application.
+[Selective Sync](https://help.dropbox.com/installs-integrations/sync-uploads/selective-sync-overview)
+or
+[Smart Sync](https://help.dropbox.com/installs-integrations/sync-uploads/smart-sync)
+within the Dropbox desktop application.
 
 ### Selective Sync vs Smart Sync
 
