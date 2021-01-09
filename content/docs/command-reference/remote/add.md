@@ -216,6 +216,10 @@ Go to the following link in your browser:
 Enter verification code: # <- enter resulting code
 ```
 
+Please see `dvc remote modify` for a list of other Dropbox parameters, or
+[Setup a Dropbox DVC Remote](/doc/user-guide/setup-dropbox-remote) for
+a full guide on using Dropbox as DVC remote storage.
+
 > Please note our
 > [Privacy Policy (Dropbox API)](/doc/user-guide/dropbox-privacy).
 
