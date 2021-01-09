@@ -80,6 +80,10 @@
 
   &.active::before {
     animation: rotateIcon 0.5s forwards;
+    height: 10px;
+    width: 10px;
+    background-size: 100% auto;
+    transition: 0.1s ease-in-out;
   }
 
   &.leafItem::before {
@@ -105,4 +109,13 @@
   height: 0.65rem;
   top: 0.5rem;
   left: -0.08rem;
+}
+
+.absBeforeIconOverlay {
+  content: '';
+  position: absolute;
+  top: 9px;
+  left: 0;
+  width: 10px;
+  height: 10px;
 }
