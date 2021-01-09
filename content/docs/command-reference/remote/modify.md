@@ -321,7 +321,8 @@ details.
 > [Selective Sync](/doc/user-guide/setup-dropbox-remote#selective-sync) for more
 > details.
 
-> Please note [Privacy Policy (Dropbox API)](/doc/user-guide/dropbox-privacy).
+> Please note our
+> [Privacy Policy (Dropbox API)](/doc/user-guide/dropbox-privacy).
 
 </details>
 
