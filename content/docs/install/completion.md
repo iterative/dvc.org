@@ -19,10 +19,10 @@ For example:
 $ dvc r # Press [tab] key
 Completing dvc commands
 remote  -- Set up and manage data remotes.
-remove  -- Remove stage entry and unprotect outputs
-repro   -- Reproduce complete or partial pipelines by executing their stages
+remove  -- Remove stages or .dvc files, unprotect their outputs, ...
+repro   -- Reproduce complete or partial pipelines by executing ...
 root    -- Return the relative path to the root of the DVC project.
-run     -- Generate a stage file from a command and execute the command.
+run     -- Generate a stage file from a command and execute the command
 ```
 
 Depending on what you typed on the command line so far, it completes:
