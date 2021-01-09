@@ -74,7 +74,8 @@ credentials in CI/CD systems, production setup, read-only file systems, etc. DVC
 reads these variables first, before the credentials file:
 
 - `DROPBOX_ACCESS_TOKEN` - current access token
-- `DROPBOX_EXPIRES_AT` - access token expiration time in ISO format
+- `DROPBOX_EXPIRES_AT` - access token expiration time in
+[ISO format](https://docs.python.org/3/library/datetime.html#datetime.datetime.isoformat)
 - `DROPBOX_REFRESH_TOKEN` - refresh token for reauthentication
 
 > Please note our
