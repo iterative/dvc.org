@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState, SyntheticEvent } from 'react'
 import { useLocation } from '@reach/router'
 import cn from 'classnames'
 import { Collapse } from 'react-collapse'
@@ -50,14 +50,22 @@ const SidebarMenuItem: React.FC<ISidebarMenuItemProps> = ({
   icon,
   type
 }) => {
-  const isActive = activePaths && includes(activePaths, path)
-  const [dropDownToggle, setDropDownToggle] = useState(isActive)
+  const [isActive, setIsActive] = useState(
+    activePaths && includes(activePaths, path)
+  )
+
+  useEffect(() => {
+    setIsActive(activePaths && includes(activePaths, path))
+  }, [activePaths])
+
   const isRootParent =
     activePaths && activePaths.length > 1 && activePaths[0] === path
   const isLeafItem = children === undefined || children.length === 0
-  const currentLevelOnClick = (): void => {
-    setDropDownToggle(!dropDownToggle)
-    onClick(isLeafItem)
+  const currentLevelOnClick = (): void => onClick(isLeafItem)
+
+  const bulletIconClick = (event: SyntheticEvent<HTMLSpanElement>): void => {
+    event.preventDefault()
+    setIsActive(false)
   }
 
   // Fetch a special icon if one is defined
@@ -68,7 +76,7 @@ const SidebarMenuItem: React.FC<ISidebarMenuItemProps> = ({
 
   const className = cn(
     styles.sectionLink,
-    dropDownToggle && styles.active,
+    isActive && styles.active,
     isRootParent && 'docSearch-lvl0',
     'link-with-focus',
     style ? styles[style] : styles.sidebarDefault,
@@ -96,6 +104,13 @@ const SidebarMenuItem: React.FC<ISidebarMenuItemProps> = ({
         className={className}
         onClick={currentLevelOnClick}
       >
+        <span
+          className={styles.absBeforeIconOverlay}
+          onClick={bulletIconClick}
+          onKeyDown={bulletIconClick}
+          role="button"
+          tabIndex={0}
+        ></span>
         {iconElement}
         {label}
       </Link>
@@ -105,8 +120,8 @@ const SidebarMenuItem: React.FC<ISidebarMenuItemProps> = ({
     <>
       {parentElement}
       {children && (
-        <span hidden={!dropDownToggle}>
-          <Collapse isOpened={!!dropDownToggle}>
+        <span hidden={!isActive}>
+          <Collapse isOpened={!!isActive}>
             {children.map(item => (
               <SidebarMenuItem
                 key={item.path}
