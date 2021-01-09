@@ -69,14 +69,13 @@ If you wish to change the user you have authenticated with, or for
 troubleshooting misc. token errors, simply remove the user credentials JSON file
 and authorize again.
 
-Alternatively, a set of environment variables can be set:
+Alternatively, a set of environment variables can be set to pass user
+credentials in CI/CD systems, production setup, read-only file systems, etc. DVC
+reads these variables first, before the credentials file:
 
 - `DROPBOX_ACCESS_TOKEN` - current access token
 - `DROPBOX_EXPIRES_AT` - access token expiration time in ISO format
 - `DROPBOX_REFRESH_TOKEN` - refresh token for reauthentication
-
-to pass user credentials in CI/CD systems, production setup, read-only file
-systems, etc. DVC reads these variable first, before the credentials file.
 
 > Please note our
 > [Privacy Policy (Dropbox API)](/doc/user-guide/dropbox-privacy).
