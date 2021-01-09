@@ -11,22 +11,21 @@ The regular Command Prompt (`cmd`) in Windows will most likely not help you use
 DVC effectively, or follow the examples in our docs. Please avoid it. There's no
 perfect solution, but here are some ideas:
 
-- The full [Cmder](https://cmder.net/) console emulator combines several useful
-  tools like [ConEmu](https://conemu.github.io/), and
-  [Git for Windows](https://gitforwindows.org/) (Git Bash) among other
-  [shell options](https://github.com/cmderdev/cmder/blob/master/README.md#access-to-multiple-shells-in-one-window-using-tabs).
+- [WSL 2](https://docs.microsoft.com/en-us/windows/wsl/install-win10) with
+  [Windows Terminal](https://devblogs.microsoft.com/commandline/) supports the
+  most CLI features (e.g. `\` line continuation). It has
+  [good performance](https://itigic.com/wsl-vs-wsl2-performance-in-windows-10-update/)
+  (and can even
+  [access GPUs](https://channel9.msdn.com/Shows/Tabs-vs-Spaces/GPU-Accelerated-Machine-Learning-with-WSL-2)).
+- The full [Cmder](https://cmder.net/) console emulator is another good option.
+  It combines several useful tools like [ConEmu](https://conemu.github.io/)
+  terminal and [Git for Windows](https://gitforwindows.org/) (Git Bash), among
+  [other shells](https://github.com/cmderdev/cmder/blob/master/README.md#features).
 - [Anaconda Prompt](https://docs.anaconda.com/anaconda/user-guide/getting-started/#open-prompt-win)
-  is another recommendation.
-- Consider enabling and using
-  [WSL](https://blogs.windows.com/windowsdeveloper/2016/03/30/run-bash-on-ubuntu-on-windows/)
-  ([Windows Terminal](https://devblogs.microsoft.com/commandline/) also
-  recommended) which supports the most CLI features (e.g. `\` line
-  continuation). But it has major
-  [I/O performance issues](https://www.phoronix.com/scan.php?page=article&item=windows10-okt-wsl&num=2)
-  and is [unable to access GPUs](https://github.com/Microsoft/WSL/issues/829),
-  among other limitations.
-- Install an actual Linux distro (e.g. Ubuntu) on a virtual machine, or in a HD
-  partition (dual boot).
+  is also popular.
+- Install an actual Linux distro (e.g. Ubuntu) on a
+  [virtual machine](https://docs.microsoft.com/en-us/virtualization/hyper-v-on-windows/),
+  or in an HD partition (dual boot).
 
 ## Enable symbolic links
 

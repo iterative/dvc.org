@@ -4,7 +4,9 @@
 for implementing continuous integration & delivery (CI/CD) in machine learning
 projects. Use it to automate parts of your development workflow, including model
 training and evaluation, comparing ML experiments across your project history,
-and monitoring changing datasets. Website of the project https://cml.dev
+and monitoring changing datasets.
+
+Project website: https://cml.dev
 
 ![](/img/cml_neural_transfer.png) _On every pull request, CML helps you
 automatically train and evaluate models, then generates a visual report with
