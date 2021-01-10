@@ -799,7 +799,7 @@ by HDFS. Read more about by expanding the WebHDFS section in
 > written to a Git-ignored config file.
 
 > Note that `user/password` and `token` authentication are incompatible. You
-> should authenticate against yout WebDAV remote by either `user/password` or
+> should authenticate against your WebDAV remote by either `user/password` or
 > `token`.
 
 - `ask_password` - ask each time for the password to use for `user/password`
