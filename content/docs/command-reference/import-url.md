@@ -1,8 +1,8 @@
 # import-url
 
 Download a file or directory from a supported URL (for example `s3://`,
-`ssh://`, and other protocols) into the <abbr>workspace</abbr>, and track
-changes in the external data source. Creates a `.dvc` file.
+`ssh://`, and other protocols) into the <abbr>workspace</abbr>, and track it (an
+import `.dvc` file is created).
 
 > See `dvc import` to download and tack data/model files or directories from
 > other <abbr>DVC repositories</abbr> (e.g. hosted on GitHub).
@@ -33,14 +33,21 @@ external data source changes. Example scenarios:
 > Note that `dvc get-url` corresponds to the first step this command performs
 > (just download the file or directory).
 
-The `dvc import-url` command helps the user create such an external data
-dependency without having to manually copying files from the supported locations
-(listed below), which may require installing a different tool for each type.
+`dvc import-url` helps you create such an external data dependency, without
+having to manually copy files from the supported locations (listed below), which
+may require installing a different tool for each type.
 
-The `url` argument specifies the external location of the data to be imported,
-while `out` can be used to specify the directory and/or file name desired for
-the downloaded data. If an existing directory is specified, the file or
-directory will be placed inside.
+The `url` argument specifies the external location of the data to be imported.
+The imported data is <abbr>cached</abbr>, and linked (or copied) to the current
+working directory with its original file name e.g. `data.txt` (or to a location
+provided with `out`).
+
+An _import `.dvc` file_ is created in the same location e.g. `data.txt.dvc` –
+similar to using `dvc add` after downloading the data. This makes it possible to
+update the import later, if the data source has changed (see `dvc update`).
+
+> Note that the imported data can be [pushed](/doc/command-reference/push) to
+> remote storage normally.
 
 `.dvc` files support references to data in an external location, see
 [External Dependencies](/doc/user-guide/external-dependencies). In such an
