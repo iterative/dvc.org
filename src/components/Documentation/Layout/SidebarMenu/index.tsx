@@ -61,11 +61,14 @@ const SidebarMenuItem: React.FC<ISidebarMenuItemProps> = ({
   const isRootParent =
     activePaths && activePaths.length > 1 && activePaths[0] === path
   const isLeafItem = children === undefined || children.length === 0
-  const currentLevelOnClick = (): void => onClick(isLeafItem)
-
-  const bulletIconClick = (event: SyntheticEvent<HTMLSpanElement>): void => {
-    event.preventDefault()
-    setIsActive(false)
+  const currentLevelOnClick = (
+    event: SyntheticEvent<HTMLAnchorElement>
+  ): void => {
+    if (event.currentTarget.getAttribute('aria-current') === 'page') {
+      event.preventDefault()
+      setIsActive(!isActive)
+    }
+    onClick(isLeafItem)
   }
 
   // Fetch a special icon if one is defined
@@ -104,13 +107,6 @@ const SidebarMenuItem: React.FC<ISidebarMenuItemProps> = ({
         className={className}
         onClick={currentLevelOnClick}
       >
-        <span
-          className={styles.absBeforeIconOverlay}
-          onClick={bulletIconClick}
-          onKeyDown={bulletIconClick}
-          role="button"
-          tabIndex={0}
-        ></span>
         {iconElement}
         {label}
       </Link>
