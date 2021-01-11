@@ -128,10 +128,10 @@ these settings, you could use the following options.
   $ dvc remote modify myremote profile myprofile
   ```
 
-- `credentialpath` - credentials path to access S3:
+- `credentialpath` - S3 credentials file path:
 
   ```dvc
-  $ dvc remote modify myremote credentialpath /path/to/my/creds
+  $ dvc remote modify myremote --local credentialpath /path/to/my/creds
   ```
 
 - `endpointurl` - endpoint URL to access S3:
@@ -144,14 +144,15 @@ these settings, you could use the following options.
   `secret_access_key`) instead of `credentialpath`:
 
   ```dvc
-  $ dvc remote modify myremote access_key_id my-access-key-id
+  $ dvc remote modify myremote --local access_key_id my-access-key-id
   ```
 
 - `secret_access_key` - AWS Secret Access Key. May be used (along with
   `access_key_id`) instead of `credentialpath`:
 
   ```dvc
-  $ dvc remote modify myremote secret_access_key my-secret_access_key
+  $ dvc remote modify myremote --local \
+                      secret_access_key my-secret_access_key
   ```
 
 - `session_token` - AWS
@@ -189,8 +190,12 @@ these settings, you could use the following options.
   value that S3 supports, including both key ids and aliases.
 
   ```dvc
-  $ dvc remote modify myremote sse_kms_key_id mykeyid_or_alias
+  $ dvc remote modify myremote --local sse_kms_key_id mykeyid_or_alias
   ```
+
+> The credentials file path, access key and secret, and other options contains
+> sensitive user info. Therefore, it's safer to add it with the `--local`
+> option, so it's written to a Git-ignored config file.
 
 - `acl` - set object level access control list (ACL) such as `private`,
   `public-read`, etc. By default, no ACL is specified.
