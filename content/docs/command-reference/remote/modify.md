@@ -154,9 +154,10 @@ these settings, you could use the following options.
   $ dvc remote modify myremote secret_access_key my-secret_access_key
   ```
 
-- `session_token` - AWS MFA Session Token. May be used (along with
-  `access_key_id` and `secret_access_key`) instead of `credentialpath` when MFA
-  is required:
+- `session_token` - AWS
+  [MFA](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa.html)
+  session token. May be used (along with `access_key_id` and
+  `secret_access_key`) instead of `credentialpath` when MFA is required:
 
   ```dvc
   $ dvc remote modify myremote session_token my-session-token
