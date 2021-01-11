@@ -106,3 +106,16 @@
   top: 0.5rem;
   left: -0.08rem;
 }
+
+.absBeforeIconOverlay {
+  content: '';
+  position: absolute;
+  top: 9px;
+  left: 0;
+  width: 10px;
+  height: 10px;
+
+  &:focus {
+    outline: none;
+  }
+}
