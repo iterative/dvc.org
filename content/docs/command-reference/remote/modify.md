@@ -160,7 +160,7 @@ these settings, you could use the following options.
   `secret_access_key`) instead of `credentialpath` when MFA is required:
 
   ```dvc
-  $ dvc remote modify myremote session_token my-session-token
+  $ dvc remote modify myremote --local session_token my-session-token
   ```
 
 - `use_ssl` - whether or not to use SSL. By default, SSL is used.
