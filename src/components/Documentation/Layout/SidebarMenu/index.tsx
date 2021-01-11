@@ -71,6 +71,11 @@ const SidebarMenuItem: React.FC<ISidebarMenuItemProps> = ({
     onClick(isLeafItem)
   }
 
+  const bulletIconClick = (event: SyntheticEvent<HTMLSpanElement>): void => {
+    event.preventDefault()
+    setIsActive(false)
+  }
+
   // Fetch a special icon if one is defined
   const IconComponent = icon && ICONS[icon]
   const iconElement = IconComponent ? (
@@ -107,6 +112,13 @@ const SidebarMenuItem: React.FC<ISidebarMenuItemProps> = ({
         className={className}
         onClick={currentLevelOnClick}
       >
+        <span
+          className={styles.absBeforeIconOverlay}
+          onClick={bulletIconClick}
+          onKeyDown={bulletIconClick}
+          role="button"
+          tabIndex={-1}
+        ></span>
         {iconElement}
         {label}
       </Link>
