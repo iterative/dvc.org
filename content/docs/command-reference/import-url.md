@@ -11,7 +11,7 @@ import `.dvc` file is created).
 
 ```usage
 usage: dvc import-url [-h] [-q | -v] [--file <filename>] [--no-exec]
-                      [--desc <text>]
+                      [--to-remote] [-r <name>] [--desc <text>]
                       url [out]
 
 positional arguments:
@@ -22,8 +22,8 @@ positional arguments:
 ## Description
 
 In some cases it's convenient to add a data file or directory from an external
-location into the workspace, such that it can be updated later, if/when the
-external data source changes. Example scenarios:
+location into the workspace (or to the [remote storage](/doc/command-reference/remote),
+such that it can be updated later, if/when the external data source changes. Example scenarios:
 
 - A remote system may produce occasional data files that are used in other
   projects.
@@ -36,6 +36,10 @@ external data source changes. Example scenarios:
 `dvc import-url` helps you create such an external data dependency, without
 having to manually copy files from the supported locations (listed below), which
 may require installing a different tool for each type.
+
+When you don't actually want to store the whole data file / directory in your
+local workspace but rather import it directly to the remote storage, `--to-remote`
+option can be given.
 
 The `url` argument specifies the external location of the data to be imported.
 The imported data is <abbr>cached</abbr>, and linked (or copied) to the current
@@ -131,6 +135,12 @@ $ dvc run -n download_data \
   and download everything later (with `dvc update`); or if the target data
   already exist locally and you want to "DVCfy" this state of the project (see
   also `dvc commit`).
+
+- `--to-remote` - imports data into the remote storage, instead of the local
+  <abbr>workspace</abbr>.
+
+- `-r <name>`, `--remote <name>` - name of the
+  [remote storage](/doc/command-reference/remote)
 
 - `--desc <text>` - user description of the data (optional). This doesn't  
   affect any DVC operations.
