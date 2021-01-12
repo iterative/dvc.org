@@ -92,7 +92,24 @@
         "slug": "what-is-dvc",
         "source": "what-is-dvc.md"
       },
-      "dvc-files",
+      {
+        "label": "DVC Files",
+        "slug": "dvc-files",
+        "children": [
+          {
+            "label": ".dvc files",
+            "slug": ".dvc"
+          },
+          {
+            "label": "dvc.yaml & dvc.lock",
+            "slug": "dvc.yaml"
+          },
+          {
+            "label": "Advanced dvc.yaml",
+            "slug": "advanced-dvc.yaml"
+          }
+        ]
+      },
       "dvc-internals",
       {
         "slug": "dvcignore",

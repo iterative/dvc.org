@@ -68,6 +68,10 @@ is outdated upon `dvc repro` (or `dvc status`).
 The `dvc params diff` command is available to show parameter changes, displaying
 their current and previous values.
 
+💡 Parameters can also be used for
+[templating](/doc/user-guide/dvc-files/advanced-dvc.yaml#templating) `dvc.yaml`
+itself.
+
 ## Options
 
 - `-h`, `--help` - prints the usage/help message, and exit.
@@ -165,6 +169,25 @@ $ dvc run -n train -d train.py -d logs/ -o users.csv -f \
           python train.py
 ```
 
+## Examples: Print all parameters
+
+Following the previous example, we can use `dvc params diff` to list all of the
+param values available in the <abbr>workspace</abbr>:
+
+```dvc
+$ dvc params diff
+Path         Param           Old    New
+params.yaml  lr              —      0.0041
+params.yaml  process.bow     —      15000
+params.yaml  process.thresh  —      0.98
+params.yaml  train.epochs    —      70
+params.yaml  train.layers    —      9
+```
+
+This command shows the difference in parameters between the workspace and the
+last committed version of the `params.yaml` file. In our example there's no
+previous version, which is why all `Old` values are `—`.
+
 ## Examples: Python parameters file
 
 Consider this Python parameters file named `params.py`:
@@ -252,22 +275,3 @@ $ dvc run -n train -d train.py -d users.csv -o model.pkl \
           -p params.py:BOOL,INT,TestConfig \
           python train.py
 ```
-
-## Examples: Print all parameters
-
-Following the previous example, we can use `dvc params diff` to list all of the
-param values available in the <abbr>workspace</abbr>:
-
-```dvc
-$ dvc params diff
-Path         Param           Old    New
-params.yaml  lr              —      0.0041
-params.yaml  process.bow     —      15000
-params.yaml  process.thresh  —      0.98
-params.yaml  train.epochs    —      70
-params.yaml  train.layers    —      9
-```
-
-This command shows the difference in parameters between the workspace and the
-last committed version of the `params.yaml` file. In our example there's no
-previous version, which is why all `Old` values are `—`.
