@@ -1,7 +1,8 @@
 # import-url
 
 Download a file or directory from a supported URL (for example `s3://`,
-`ssh://`, and other protocols) into the <abbr>workspace</abbr>, and track it (an
+`ssh://`, and other protocols) into the <abbr>workspace</abbr> (or to the
+[remote storage](/doc/command-reference/remote), and track it (an
 import `.dvc` file is created).
 
 > See `dvc import` to download and tack data/model files or directories from
@@ -119,8 +120,17 @@ $ dvc run -n download_data \
           wget https://data.dvc.org/get-started/data.xml -O data.xml
 ```
 
+<<<<<<< HEAD
 `dvc import-url` generates an _import `.dvc` file_ and `dvc run` a regular stage
 (in `dvc.yaml`).
+=======
+`dvc import-url` generates an _import stage_ `.dvc` file and `dvc run` a regular
+stage (in `dvc.yaml`).
+
+⚠️ When not combined with `--to-remote`, DVC won't push or pull imported data
+to/from [remote storage](/doc/command-reference/remote), it will rely on it's
+original source.
+>>>>>>> More mentions to --to-remote
 
 ## Options
 
