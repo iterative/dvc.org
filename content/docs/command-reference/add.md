@@ -75,23 +75,17 @@ large files. DVC also supports other link types for use on file systems without
 ### Transferring data directly to the remote
 
 Giving `--to-remote` option would change the behavior described above. Instead
-of only being able to give it a local target, it would be able to support all
-kinds of remote locations (listed in
-[import-url](/doc/command-reference/import-url)). The main difference is that it
-won't actually do anything on the working system beside creating a DVC file. It
-will take the data in batches from the given target and transfer it through 'the
-local system' to the [remote storage](/doc/command-reference/remote). It is
-especially targeting cases where the running system doesn't have the means of
-storing that data as a whole but it can later have (or another user's system who
-shares the same project). So that the DVC file would allow checking out that
-data when the system can meet the needs of storage.
-
-The option is designed to transfer data straight to remote, when the used system
-doesn't have the means to store it locally. So instead of transferring it to the
-local cache and link it to the working directory, it is transferred through the
-local computer in batches to the remote storage (can be configured using
-`--remote <name>`) and can be checked out locally when the necessary means have
-been established since this process also results with a DVC file.
+of only being able to give it something from local/remote workspace, it would be
+able to support all kinds of remote locations that you can import something
+(listed in [import-url](/doc/command-reference/import-url)). The main difference
+is that it won't actually do anything on the workspace beside creating a DVC
+file. It will take the data in batches from the given target and transfer it
+through 'the local system' to the
+[remote storage](/doc/command-reference/remote). This option especially targets
+cases where the running system doesn't have the means of storage that data as a
+whole fits in but it can later have (or another user's system who shares the
+same project). So that the DVC file would allow checking out that data from the
+same remote storage when the system is ready to handle it.
 
 ### Adding entire directories
 
@@ -171,25 +165,29 @@ not.
   > Note that external outputs typically require an external cache setup. See
   > link above for more details.
 
-- `--to-remote` - adds data into the remote storage, instead of the local
-  <abbr>workspace</abbr>.
+- `--to-remote` - transfer data straight to remote, when the used system doesn't
+  have the means to store it locally. So instead of transferring it to the local
+  cache and link it to the working directory, it is transferred through the
+  local computer in batches to the remote storage (can be configured using
+  `--remote <name>`) and can be checked out locally when the necessary means
+  have been established since this process also results with a DVC file.
 
-- `-o <filename>`, `--out <filename>` - destination path for the transferred
+* `-o <filename>`, `--out <filename>` - destination path for the transferred
   data. (Can only be used with `--to-remote`)
 
-- `-r <name>`, `--remote <name>` - name of the
+* `-r <name>`, `--remote <name>` - name of the
   [remote storage](/doc/command-reference/remote). (Can only be used with
   `--to-remote`)
 
-- `--desc <text>` - user description of the data (optional). This doesn't affect
+* `--desc <text>` - user description of the data (optional). This doesn't affect
   any DVC operations.
 
-- `-h`, `--help` - prints the usage/help message, and exit.
+* `-h`, `--help` - prints the usage/help message, and exit.
 
-- `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if no
+* `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if no
   problems arise, otherwise 1.
 
-- `-v`, `--verbose` - displays detailed tracing information.
+* `-v`, `--verbose` - displays detailed tracing information.
 
 ## Example: Single file
 

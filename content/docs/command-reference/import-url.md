@@ -146,8 +146,12 @@ original source.
   already exist locally and you want to "DVCfy" this state of the project (see
   also `dvc commit`).
 
-- `--to-remote` - imports data into the remote storage, instead of the local
-  <abbr>workspace</abbr>.
+- `--to-remote` - transfer data straight to remote, when the used system doesn't
+  have the means to store it locally. So instead of importing it to the
+  workspace, it is transferred through the local computer in batches to the
+  remote storage (can be configured using `--remote <name>`) and can be checked
+  out locally when the necessary means have been established since this process
+  also results with a DVC file.
 
 - `-r <name>`, `--remote <name>` - name of the
   [remote storage](/doc/command-reference/remote)
