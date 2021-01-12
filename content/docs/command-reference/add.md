@@ -7,7 +7,8 @@ file.
 
 ```usage
 usage: dvc add [-h] [-q | -v] [-R] [--no-commit] [--external]
-               [--glob] [--file <filename>] [--desc <text>]
+               [--glob] [--file <filename>] [-o <path>] [--to-remote]
+               [-r <name>] [-j <number>] [--desc <text>]
                targets [targets ...]
 
 positional arguments:
@@ -33,7 +34,8 @@ option to avoid this, and `dvc commit` to finish the process when needed).
 > intermediate and final results (like ML models).
 
 After checking that each `target` hasn't been added before (or tracked with
-other DVC commands), a few actions are taken under the hood:
+other DVC commands), a few actions are taken under the hood (if `--to-remote` is
+not provided):
 
 1. Calculate the file hash.
 2. Move the file contents to the cache (by default in `.dvc/cache`), using the
@@ -69,6 +71,27 @@ to avoid copying any file contents and to optimize `.dvc` file operations for
 large files. DVC also supports other link types for use on file systems without
 `reflink` support, but they have to be specified manually. Refer to the
 `cache.type` config option in `dvc config cache` for more information.
+
+### Transferring data directly to the remote
+
+Giving `--to-remote` option would change the behavior described above. Instead
+of only being able to give it a local target, it would be able to support all
+kinds of remote locations (listed in
+[import-url](/doc/command-reference/import-url)). The main difference is that it
+won't actually do anything on the working system beside creating a DVC file. It
+will take the data in batches from the given target and transfer it through 'the
+local system' to the [remote storage](/doc/command-reference/remote). It is
+especially targeting cases where the running system doesn't have the means of
+storing that data as a whole but it can later have (or another user's system who
+shares the same project). So that the DVC file would allow checking out that
+data when the system can meet the needs of storage.
+
+The option is designed to transfer data straight to remote, when the used system
+doesn't have the means to store it locally. So instead of transferring it to the
+local cache and link it to the working directory, it is transferred through the
+local computer in batches to the remote storage (can be configured using
+`--remote <name>`) and can be checked out locally when the necessary means have
+been established since this process also results with a DVC file.
 
 ### Adding entire directories
 
@@ -147,6 +170,16 @@ not.
 
   > Note that external outputs typically require an external cache setup. See
   > link above for more details.
+
+- `--to-remote` - adds data into the remote storage, instead of the local
+  <abbr>workspace</abbr>.
+
+- `-o <filename>`, `--out <filename>` - destination path for the transferred
+  data. (Can only be used with `--to-remote`)
+
+- `-r <name>`, `--remote <name>` - name of the
+  [remote storage](/doc/command-reference/remote). (Can only be used with
+  `--to-remote`)
 
 - `--desc <text>` - user description of the data (optional). This doesn't affect
   any DVC operations.
