@@ -346,3 +346,42 @@ $ dvc repro
 Running stage 'prepare' with command:
 	python src/prepare.py data/data.xml
 ```
+
+## Example: Import straight to the remote
+
+If you want to move a dataset or a model from a distant location into your
+remote storage, and while doing that you also want to track it in case you might
+later need to [checkout](/docs/command-reference/checkout) it locally,
+`--to-remote` option can come to your help on that case.
+
+```dvc
+$ mkdir /tmp/dvc-import-url-straight-to-remote/
+$ mkdir /tmp/remote
+$ cd /tmp/dvc-import-url-straight-to-remote/
+$ git init
+$ dvc init
+$ dvc remote add tmp_remote /tmp/remote
+```
+
+For transferring a source from a remote location, to the given remote you can
+combine `import-url` with `--to-remote` option which basically does the whole
+transferring operation without actually a need of fitting the dataset as a whole
+to your system.
+
+```
+$ dvc import-url https://data.dvc.org/get-started/data.xml data.xml --to-remote -r tmp_remote
+To track the changes with git, run:
+
+        git add data.xml.dvc
+```
+
+This operation will result with a DVC file (`data.xml.dvc`) and no local cache /
+data at all. When you move to a more suitable system, which can store the data
+locally `dvc pull` will simply get it for you.
+
+```
+ $ dvc pull data.xml.dvc -r tmp_remote
+
+A       data.xml
+1 file added and 1 file fetched
+```
