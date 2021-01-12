@@ -365,8 +365,8 @@ Running stage 'prepare' with command:
 
 If you want to move a dataset or a model from a distant location into your
 remote storage, and while doing that you also want to track it in case you might
-later need to [checkout](/docs/command-reference/checkout) it locally,
-`--to-remote` option can come to your help on that case.
+later need to [pull](/docs/command-reference/pull) it locally, `--to-remote`
+option can come to your help on that case.
 
 ```dvc
 $ mkdir /tmp/dvc-import-url-straight-to-remote/
