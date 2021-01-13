@@ -106,7 +106,7 @@ up-to-date and only execute the final stage.
   depending on the flags used (more details in each option). Examples:
 
   - `dvc repro linear/dvc.yaml`: Specific `dvc.yaml` file to reproduce
-  - `dvc repro -R pipelines/`: Directory path to explore recursively for for
+  - `dvc repro -R pipelines/`: Directory path to explore recursively for
     `dvc.yaml` files
   - `dvc repro train-model`: Specific stage in `./dvc.yaml`
   - `dvc repro modeling/dvc.yaml:prepare`: Stage in a specific `dvc.yaml` file
