@@ -145,12 +145,8 @@ original source.
   finish the operation(s)); or if the target data already exist locally and you
   want to "DVCfy" this state of the project (see also `dvc commit`).
 
-- `--to-remote` - transfer data straight to remote, when the used system doesn't
-  have the means to store it locally. So instead of importing it to the
-  workspace, it is transferred through the local computer in batches to the
-  remote storage (can be configured using `--remote <name>`) and can be checked
-  out locally when the necessary means have been established since this process
-  also results with a DVC file.
+- `--to-remote` - import data straight to remote storage and create a .dvc file.
+  Check [this](#example-import-straight-to-the-remote) section for the details.
 
 - `-r <name>`, `--remote <name>` - name of the
   [remote storage](/doc/command-reference/remote)
@@ -363,10 +359,18 @@ Running stage 'prepare' with command:
 
 ## Example: Import straight to the remote
 
-If you want to move a dataset or a model from a distant location into your
-remote storage, and while doing that you also want to track it in case you might
-later need to [pull](/docs/command-reference/pull) it locally, `--to-remote`
-option can come to your help on that case.
+When you have a massive dataset in a distant location, and working on a computer
+which can't actually store it locally (due to not having enough disk space) but
+you still want to take it under control of DVC just like in the scenario of
+importing it and then pushing it to the remote, then you can use `--to-remote`
+flag.
+
+It will try to import the data into the remote storage that you choose, and when
+you or any of your colleagues want to copy the data to their systems, they could
+just simply [pull](/doc/command-reference/remote). Let's do a simple example
+
+We initalize 2 directories, one being the remote storage unit and the other one
+is the workspace.
 
 ```dvc
 $ mkdir /tmp/dvc-import-url-straight-to-remote/
@@ -379,8 +383,16 @@ $ dvc remote add tmp_remote /tmp/remote
 
 For transferring a source from a remote location, to the given remote you can
 combine `import-url` with `--to-remote` option which basically does the whole
-transferring operation without actually a need of fitting the dataset as a whole
-to your system.
+importing and [push](/doc/command-reference/push)ing operation under the hood
+but without actually downloading everything in once, but rather transferring
+gradually.
+
+When you run the `import-url` with `--to-remote`, you pass as usual the remote
+location and the output filename, afterward if you haven't set a default
+[remote](/doc/command-reference/remote) yet, you can simply pass the name of the
+remote with `-r`/`--remote` flag and it will start the transfer and leave a DVC
+file as an only side effect on your workspace (everything else happens in the
+remote storage unit)
 
 ```
 $ dvc import-url https://data.dvc.org/get-started/data.xml data.xml --to-remote -r tmp_remote
@@ -389,9 +401,9 @@ To track the changes with git, run:
         git add data.xml.dvc
 ```
 
-This operation will result with a DVC file (`data.xml.dvc`) and no local cache /
-data at all. When you move to a more suitable system, which can store the data
-locally `dvc pull` will simply get it for you.
+Whenever anyone wants to actually get this file, like when they have a system
+which can handle it, it is just a simple [pull](/doc/command-reference/pull)
+operation.
 
 ```
  $ dvc pull data.xml.dvc -r tmp_remote
