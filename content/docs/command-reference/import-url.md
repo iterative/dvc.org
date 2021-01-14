@@ -2,8 +2,8 @@
 
 Download a file or directory from a supported URL (for example `s3://`,
 `ssh://`, and other protocols) into the <abbr>workspace</abbr> (or to the
-[remote storage](/doc/command-reference/remote), and track it (an
-import `.dvc` file is created).
+[remote storage](/doc/command-reference/remote), and track it (an import `.dvc`
+file is created).
 
 > See `dvc import` to download and tack data/model files or directories from
 > other <abbr>DVC repositories</abbr> (e.g. hosted on GitHub).
@@ -23,8 +23,9 @@ positional arguments:
 ## Description
 
 In some cases it's convenient to add a data file or directory from an external
-location into the workspace (or to the [remote storage](/doc/command-reference/remote),
-such that it can be updated later, if/when the external data source changes. Example scenarios:
+location into the workspace (or to the
+[remote storage](/doc/command-reference/remote), such that it can be updated
+later, if/when the external data source changes. Example scenarios:
 
 - A remote system may produce occasional data files that are used in other
   projects.
@@ -39,8 +40,10 @@ having to manually copy files from the supported locations (listed below), which
 may require installing a different tool for each type.
 
 When you don't actually want to store the whole data file / directory in your
-local workspace but rather import it directly to the remote storage, `--to-remote`
-option can be given.
+local workspace but rather import it directly to the remote storage,
+`--to-remote` option can be given. See the
+["import straight to remote"](#example-import-straight-to-the-remote) example
+for more details.
 
 The `url` argument specifies the external location of the data to be imported.
 The imported data is <abbr>cached</abbr>, and linked (or copied) to the current
@@ -120,17 +123,8 @@ $ dvc run -n download_data \
           wget https://data.dvc.org/get-started/data.xml -O data.xml
 ```
 
-<<<<<<< HEAD
 `dvc import-url` generates an _import `.dvc` file_ and `dvc run` a regular stage
 (in `dvc.yaml`).
-=======
-`dvc import-url` generates an _import stage_ `.dvc` file and `dvc run` a regular
-stage (in `dvc.yaml`).
-
-⚠️ When not combined with `--to-remote`, DVC won't push or pull imported data
-to/from [remote storage](/doc/command-reference/remote), it will rely on it's
-original source.
->>>>>>> More mentions to --to-remote
 
 ## Options
 
