@@ -8,7 +8,8 @@ file.
 ```usage
 usage: dvc add [-h] [-q | -v] [-R] [--no-commit] [--external]
                [--file <filename>] [--glob] [-o <path>]
-               [--to-remote] [-r <name>] [--desc <text>]
+               [--to-remote] [-r <name>] [-j <number>]
+               [--desc <text>]
                targets [targets ...]
 
 positional arguments:

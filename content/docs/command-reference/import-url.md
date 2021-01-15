@@ -12,7 +12,8 @@ file is created).
 
 ```usage
 usage: dvc import-url [-h] [-q | -v] [--file <filename>] [--no-exec]
-                      [--to-remote] [-r <name>] [--desc <text>]
+                      [--to-remote] [-r <name>] [-j <number>]
+                      [--desc <text>]
                       url [out]
 
 positional arguments:
