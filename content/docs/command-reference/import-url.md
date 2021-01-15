@@ -1,7 +1,7 @@
 # import-url
 
 Download a file or directory from a supported URL (for example `s3://`,
-`ssh://`, and other protocols) into the <abbr>workspace</abbr> (or to the
+`ssh://`, and other protocols) into the <abbr>workspace</abbr> or to the
 [remote storage](/doc/command-reference/remote), and track it (an import `.dvc`
 file is created).
 
