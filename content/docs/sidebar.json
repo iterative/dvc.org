@@ -101,12 +101,12 @@
             "slug": ".dvc"
           },
           {
-            "label": "dvc.yaml & dvc.lock",
+            "label": "dvc.yaml",
             "slug": "dvc-yaml"
           },
           {
-            "label": "Advanced dvc.yaml",
-            "slug": "advanced-dvc-yaml"
+            "label": "dvc.lock",
+            "slug": "dvc-lock"
           }
         ]
       },
