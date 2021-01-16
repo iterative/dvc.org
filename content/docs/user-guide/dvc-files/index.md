@@ -9,7 +9,8 @@ DVC has a few special YAML 1.2 file formats that support its features:
   pipeline(s) of a project, and how they connect (_dependency graph_ or DAG).
 
   These normally have a matching `dvc.lock` file to record the pipeline state
-  and track its <abbr>outputs</abbr>.
+  and track its <abbr>outputs</abbr>. Avoid editing these, DVC will generate and
+  update them for you.
 
 > Note that all these metafiles are meant to be versioned with Git (in
 > Git-enabled <abbr>repositories</abbr>).
