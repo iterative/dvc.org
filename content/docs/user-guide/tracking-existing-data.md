@@ -1,4 +1,4 @@
-# `.dvc` files
+# Tracking Existing Files or Directories
 
 When you add a file or directory with `dvc add`, `dvc import`, or
 `dvc import-url`, one or more files ending with the `.dvc` extension ("dot DVC

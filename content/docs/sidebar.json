@@ -89,28 +89,11 @@
     "children": [
       {
         "label": "What is DVC?",
-        "slug": "what-is-dvc",
-        "source": "what-is-dvc.md"
-      },
-      {
-        "label": "DVC Files",
-        "slug": "dvc-files",
-        "children": [
-          {
-            "label": ".dvc files",
-            "slug": ".dvc"
-          },
-          {
-            "label": "dvc.yaml",
-            "slug": "dvc-yaml"
-          },
-          {
-            "label": "dvc.lock",
-            "slug": "dvc-lock"
-          }
-        ]
+        "slug": "what-is-dvc"
       },
       "dvc-internals",
+      "tracking-existing-data",
+      "creating-pipelines",
       {
         "slug": "dvcignore",
         "tutorials": {
