@@ -157,8 +157,9 @@ stages:
       - logs.csv:
           x: epoch
           x_label: Epoch
+
     meta: 'For deployment'
-    # User metadata and comments are supported.
+    # User metadata (per stage) and comments are supported.
 ```
 
 `dvc.yaml` files consists of a group of `stages` with names provided explicitly
