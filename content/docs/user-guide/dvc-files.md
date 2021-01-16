@@ -217,8 +217,8 @@ It's created or updated by DVC commands such as `dvc run` and `dvc repro`.
 - Tracking of intermediate and final <abbr>outputs</abbr> of a pipeline —
   similar to [`.dvc` files](#dvc-files).
 - Allow DVC to detect when stage definitions, or their dependencies have
-  changed. Such conditions invalidate stages, requiring their reproduction (see
-  `dvc status`, `dvc repro`).
+  changed. Such conditions "invalidate" stages, considering them outdated and
+  requiring their reproduction (see `dvc status`, `dvc repro`).
 - `dvc.lock` is needed internally for several DVC commands to operate, such as
   `dvc checkout`, `dvc get`, and `dvc import`.
 
