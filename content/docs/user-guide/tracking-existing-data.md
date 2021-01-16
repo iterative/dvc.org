@@ -19,12 +19,13 @@ over time.
 ## Dot DVC files
 
 `.dvc` files are placeholders that supports basic tracking of data files and
-directories in DVC. <abbr>DVC projects</abbr> typically has one `.dvc` file per
+directories in DVC. <abbr>DVC projects</abbr> typically have one `.dvc` file per
 data file or directory being tracked.
 
-They use the [YAML 1.2](https://yaml.org/) file format, and a human-friendly
-schema described below. We encourage you to get familiar with it so you may
-modify, write, or generate `.dvc` files on your own. Here's an example:
+These files use the [YAML 1.2](https://yaml.org/) file format, and a
+human-friendly schema described below. We encourage you to get familiar with it
+so you may modify, write, or generate `.dvc` files on your own. Here's an
+example:
 
 ```yaml
 outs:

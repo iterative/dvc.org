@@ -2,17 +2,19 @@
 
 You construct pipelines by defining individual
 [stages](/doc/command-reference/run) in one or more `dvc.yaml` files. Stages
-that connect to each other (the <abbr>outputs</abbr> of one stage become the
-<abbr>dependencies</abbr> of another one, and so on) become a pipeline. See
-[Data Pipelines](/doc/start/data-pipelines) for an intro.
+form a pipeline when they connect with each other (see `dvc dag`). Refer to
+[Data Pipelines](/doc/start/data-pipelines).
+
+> Note that a helper command, `dvc run`, is available to create (and execute)
+> stages.
 
 💡 Keep in mind that one `dvc.yaml` file does not necessarily equal one pipeline
 (although that is typical). DVC evaluates all the `dvc.yaml` files in the
-<abbr>workspace</abbr> to rebuild an validate all of your pipelines (see
-`dvc repro` and `dvc status`).
+<abbr>workspace</abbr> to rebuild an validate the pipeline(s) (see `dvc status`
+and `dvc repro`).
 
-To record the state of your pipeline(s) and track its outputs, DVC will also
-maintain `dvc.lock` file(s) matching `dvc.yaml`.
+To record the state of your pipeline(s) and track its <abbr>outputs</abbr>, DVC
+will also maintain `dvc.lock` file(s) matching `dvc.yaml`.
 
 > Note `dvc.yaml` and `dvc.lock` files are meant to be versioned with Git (if
 > enabled in the <abbr>repository</abbr>).
@@ -23,9 +25,10 @@ maintain `dvc.lock` file(s) matching `dvc.yaml`.
 of a project, and how they connect (_dependency graph_ or
 [DAG](/doc/command-reference/dag)).
 
-They use the [YAML 1.2](https://yaml.org/) file format, and a human-friendly
-schema described below. We encourage you to get familiar with it so you may
-modify, write, or generate stages and pipelines on your own. Here's an example:
+These files use the [YAML 1.2](https://yaml.org/) file format, and a
+human-friendly schema described below. We encourage you to get familiar with it
+so you may modify, write, or generate stages and pipelines on your own. Here's
+an example:
 
 ...
 
