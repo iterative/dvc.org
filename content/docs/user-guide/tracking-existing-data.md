@@ -9,12 +9,12 @@ Alternatively, `dvc import` and `dvc import-url` let you bring data from
 external locations to your project, and start tracking it at the same time. See
 also [Data Access](/doc/start/data-access).
 
-In either case, one or more files ending with the `.dvc` extension ("dot DVC
-file") are created in the project, containing the information to track the
-target data over time.
+In any case, one or more files ending with the `.dvc` extension ("dot DVC file")
+are created in the project, containing the information to track the target data
+over time.
 
-> Note `.dvc` files are meant to be versioned with Git (in Git-enabled
-> <abbr>repositories</abbr>).
+> Note `.dvc` files are meant to be versioned with Git (if enabled in the
+> <abbr>repository</abbr>).
 
 ## Dot DVC files
 
@@ -37,6 +37,9 @@ meta:
   name: 'Devee Bird'
   email: devee@dvc.org
 ```
+
+> See [How to Merge Conflicts](/doc/user-guide/how-to/merge-conflicts) for tips
+> on managing DVC files.
 
 ## .dvc YAML specification
 

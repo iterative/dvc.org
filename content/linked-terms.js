@@ -5,10 +5,10 @@ module.exports = [
   },
   {
     matches: 'dvc.yaml',
-    url: '/doc/user-guide/creating-pipelines'
+    url: '/doc/user-guide/creating-pipelines#dvc-yaml-files'
   },
   {
     matches: 'dvc.lock',
-    url: '/doc/user-guide/creating-pipelines#dvclock'
+    url: '/doc/user-guide/creating-pipelines#dvclock-file'
   }
 ]
