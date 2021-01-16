@@ -29,9 +29,9 @@ Ignored files will not be saved in <abbr>cache</abbr>, they will be non-existent
 for DVC. It's worth to remember that, especially when ignoring files inside
 DVC-handled directories.
 
-⚠️ Important! Note that `dvc run` and `dvc repro` might remove ignored files. If
-they are not produced by a pipeline [stage](/doc/command-reference/run), they
-can be lost permanently.
+⚠️ `dvc run` and `dvc repro` might remove ignored files. If they are not
+produced by a pipeline [stage](/doc/command-reference/run), they can be lost
+permanently.
 
 Keep in mind that when you add `.dvcignore` patterns that affect an existing
 <abbr>output</abbr>, its status will change and DVC will behave as if that

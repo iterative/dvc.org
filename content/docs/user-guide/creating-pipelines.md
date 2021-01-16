@@ -89,7 +89,7 @@ on it).
 
 params ...
 
-### Other outputs
+### Metrics (outputs)
 
 metrics and plots ...
 

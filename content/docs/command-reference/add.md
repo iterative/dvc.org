@@ -192,8 +192,8 @@ $ file .dvc/cache/d8/acabbfd4ee51c95da5d7628c7ef74b
 .dvc/cache/61/37cde4893c59f76f005a8123d8e8e6: ASCII text
 ```
 
-⚠️ Note that tracking compressed files (e.g. ZIP or TAR archives) is not
-recommended, as `dvc add` supports tracking directories (details below).
+⚠️ Tracking compressed files (e.g. ZIP or TAR archives) is not recommended, as
+`dvc add` supports tracking directories (details below).
 
 ## Example: Directory
 

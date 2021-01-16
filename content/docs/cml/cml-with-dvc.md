@@ -107,10 +107,10 @@ env:
 
 ### Google Cloud Storage
 
-⚠️ Normally, `GOOGLE_APPLICATION_CREDENTIALS` points to the path of the `.json`
-file that contains the credentials. However, in this context, the variable
-contains the content of the file. Copy the text inside the `.json` and add it as
-a secret.
+(ℹ️) Normally, `GOOGLE_APPLICATION_CREDENTIALS` points to the path of the
+`.json` file that contains the credentials. However, in this context, the
+variable contains the content of the file. Copy the text inside the `.json` and
+add it as a secret.
 
 ```yaml
 env:
@@ -123,7 +123,7 @@ env:
 
 ### Google Drive
 
-⚠️ After configuring your
+(ℹ️) After configuring your
 [Google Drive credentials](https://dvc.org/doc/command-reference/remote/add) you
 will find a json file at
 `your_project_path/.dvc/tmp/gdrive-user-credentials.json`. Copy the text inside
