@@ -1,7 +1,7 @@
 module.exports = [
   {
     matches: '.dvc',
-    url: '/doc/user-guide/tracking-existing-data'
+    url: '/doc/user-guide/tracking-existing-data#dot-dvc-files'
   },
   {
     matches: 'dvc.yaml',

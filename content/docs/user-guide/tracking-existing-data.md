@@ -1,11 +1,30 @@
-# Tracking Existing Files or Directories
+# Tracking Existing Files and Directories
 
-When you add a file or directory with `dvc add`, `dvc import`, or
-`dvc import-url`, one or more files ending with the `.dvc` extension ("dot DVC
-file") is created to track the target data (e.g. `data.xml.dvc`).
+You can use `dvc add` to track data located in your current
+<abbr>workspace</abbr>, or in the supported
+[external locations](/doc/user-guide/managing-external-data). See
+[Data Versioning](/doc/start/data-versioning) for a primer.
 
-These files use a simple [YAML](https://yaml.org/) scheme that is meant to be
-easy to read, edit, or even create. Here is an example:
+Alternatively, `dvc import` and `dvc import-url` let you bring data from
+external locations to your project, and start tracking it at the same time. See
+also [Data Access](/doc/start/data-access).
+
+In either case, one or more files ending with the `.dvc` extension ("dot DVC
+file") are created in the project, containing the information to track the
+target data over time.
+
+> Note `.dvc` files are meant to be versioned with Git (in Git-enabled
+> <abbr>repositories</abbr>).
+
+## Dot DVC files
+
+`.dvc` files are placeholders that supports basic tracking of data files and
+directories in DVC. <abbr>DVC projects</abbr> typically has one `.dvc` file per
+data file or directory being tracked.
+
+They use the [YAML 1.2](https://yaml.org/) file format, and a human-friendly
+schema described below. We encourage you to get familiar with it so you may
+modify, write, or generate `.dvc` files on your own. Here's an example:
 
 ```yaml
 outs:
@@ -15,11 +34,11 @@ outs:
 
 # Comments and user metadata are supported.
 meta:
-  name: 'John Doe'
-  email: john@doe.com
+  name: 'Devee Bird'
+  email: devee@dvc.org
 ```
 
-## Specification
+## .dvc YAML specification
 
 | Field  | Description                                                                                                                                                                                                                   |
 | ------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
