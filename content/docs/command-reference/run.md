@@ -140,7 +140,7 @@ run directly, for example a shell built-in, expression, or binary found in
 `PATH`. Please remember that any flags sent after the `command` are interpreted
 by the command itself, not by `dvc run`.
 
-⚠️ Note that while DVC is platform-agnostic, the commands defined in your
+⚠️ While DVC is platform-agnostic, the commands defined in your
 [pipeline](/doc/command-reference/dag) stages may only work on some operating
 systems and require certain software packages to be installed.
 
