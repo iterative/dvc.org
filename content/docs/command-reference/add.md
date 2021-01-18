@@ -8,7 +8,7 @@ file.
 ```usage
 usage: dvc add [-h] [-q | -v] [-R] [--no-commit] [--external]
                [--file <filename>] [--glob] [--desc <text>]
-               targets [targets ...]
+               [-o <path>] targets [targets ...]
 
 positional arguments:
   targets               Files or directories to add
@@ -150,6 +150,9 @@ not.
 
 - `--desc <text>` - user description of the data (optional). This doesn't affect
   any DVC operations.
+
+- `-o`, `--output` - adds the `<target>` file from outside the repo to the repo
+  at the specified `<path>`.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
