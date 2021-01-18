@@ -35,16 +35,16 @@ option to avoid this, and `dvc commit` to finish the process when needed).
 > intermediate and final results (like ML models).
 
 After checking that each `target` hasn't been added before (or tracked with
-other DVC commands), a few actions are taken under the hood (if `--to-remote` is
-not provided):
+other DVC commands), a few actions are taken under the hood:
 
 1. Calculate the file hash.
-2. Move the file contents to the cache (by default in `.dvc/cache`), using the
+2. Move the file contents to the cache (by default in `.dvc/cache`) (if
+   `--to-remote` option given, then move them to the remote storage), using the
    file hash to form the cached file path. (See
    [Structure of cache directory](/doc/user-guide/dvc-internals#structure-of-the-cache-directory)
    for more details.)
-3. Attempt to replace the file with a link to the cached data (more details on
-   file linking further down).
+3. Attempt to replace the file with a link to the cached data (unless
+   `--to-remote` option given) (more details on file linking further down).
 4. Create a corresponding `.dvc` file to track the file, using its path and hash
    to identify the cached data. The `.dvc` file lists the DVC-tracked file as an
    <abbr>output</abbr> (`outs` field). Unless the `--file` option is used, the
