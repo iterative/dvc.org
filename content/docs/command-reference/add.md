@@ -73,25 +73,19 @@ large files. DVC also supports other link types for use on file systems without
 `reflink` support, but they have to be specified manually. Refer to the
 `cache.type` config option in `dvc config cache` for more information.
 
-### Transferring data directly to the remote
+### Transferring data directly to remote storage
 
-When you have a very big dataset that you want to move from some remote location
-to one of your remotes, but at the same time you don't have time or resources to
-store it locally on your local system, you can use `--to-remote` to add that
-remote location straight to remote instead of your local workspace. The remote
-location can be any of the ones that are listed under
-[import-url](/doc/command-reference/import-url) page. When you add a remote
-location with `--to-remote`, it will get the dataset from the given location and
-transfer it to the remote you specified (or the default one). It will create a
-DVC file just like you added something locally, but there won't be any data that
-you can access, unless you [pull](/doc/command-reference/pull) it. In that case,
-it will pull it from the remote storage unit to your workspace and you can start
-using it.
+When you have a very big dataset that you want to move from some external
+location to [remote storage](/doc/command-reference/remote) while avoiding
+storing it locally, you can use the `--to-remote` option. This will transfer a
+copy of the target data directly to a remote of your choice (or the default
+one). A `.dvc` file will be created normally, but the data won't be found in
+your local project until you `dvc pull` it.
 
-This flag is extremely useful when your current system can't handle the data as
-whole, but you still want to track and store it in a remote storage unit, so
-that whenever you switch to a different system that can handle it as a whole (or
-partially) you can simply get the data and start working on it.
+This option is useful when the local system can't handle the target data, but
+you still want to track and store it in remote storage, so that whenever you
+switch to a different system that can handle it, you can simply pull the data
+and start working on it.
 
 ### Adding entire directories
 
@@ -171,19 +165,17 @@ not.
   > Note that external outputs typically require an external cache setup. See
   > link above for more details.
 
-- `--to-remote` - add target data into DVC and create a .dvc file, but instead
-  of caching it into DVC cache, transfer it straight to remote storage. Check
-  [this](#transferring-data-directly-to-the-remote) section for the details. If
-  this option is specified target can be any cloud or local URL, not necessarily
-  a local file or directory from the workspace as it is required in the regular
-  dvc addworkflow.
-
-- `-o <path>`, `--out <path>` - destination path for the transferred data. (Can
-  only be used with `--to-remote`)
+- `--to-remote` - track a single external target file or directory (with a `.dvc` file),
+  but instead of caching and linking it locally,
+  [transfer](#transferring-data-directly-to-the-remote) it straight to remote
+  storage.
 
 - `-r <name>`, `--remote <name>` - name of the
-  [remote storage](/doc/command-reference/remote). (Can only be used with
-  `--to-remote`)
+  [remote storage](/doc/command-reference/remote) to transfer external target to
+  (can only be used with `--to-remote`).
+
+- `-o <path>`, `--out <path>` - destination path for the transferred data (can
+  only be used with `--to-remote`).
 
 - `--desc <text>` - user description of the data (optional). This doesn't affect
   any DVC operations.
