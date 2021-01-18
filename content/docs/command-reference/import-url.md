@@ -1,9 +1,8 @@
 # import-url
 
-Download a file or directory from a supported URL (for example `s3://`,
-`ssh://`, and other protocols) into the <abbr>workspace</abbr> or to the
-[remote storage](/doc/command-reference/remote), and track it (an import `.dvc`
-file is created).
+Track a file or directory found in an external location (`s3://`, `/local/path`,
+etc.), and download it to the local project, or make a copy in
+[remote storage](/doc/command-reference/remote).
 
 > See `dvc import` to download and tack data/model files or directories from
 > other <abbr>DVC repositories</abbr> (e.g. hosted on GitHub).
