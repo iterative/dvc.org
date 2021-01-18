@@ -164,8 +164,8 @@ not.
   > Note that external outputs typically require an external cache setup. See
   > link above for more details.
 
-- `--to-remote` - track a single external target file or directory (with a `.dvc` file),
-  but instead of caching and linking it locally,
+- `--to-remote` - track a single external target file or directory (with a
+  `.dvc` file), but instead of caching and linking it locally,
   [transfer](#transferring-data-directly-to-the-remote) it straight to remote
   storage.
 
