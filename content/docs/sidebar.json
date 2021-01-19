@@ -91,14 +91,29 @@
         "label": "What is DVC?",
         "slug": "what-is-dvc"
       },
-      "dvc-internals",
-      "tracking-existing-data",
-      "creating-pipelines",
       {
-        "slug": "dvcignore",
-        "tutorials": {
-          "katacoda": "https://katacoda.com/dvc/courses/examples/dvcignore"
-        }
+        "slug": "project-structure",
+        "source": false,
+        "children": [
+          {
+            "label": "Data Files (.dvc)",
+            "slug": "data-files"
+          },
+          {
+            "label": "Pipelines (dvc.yaml)",
+            "slug": "pipelines-files"
+          },
+          {
+            "label": "Internal Files",
+            "slug": "internal-files"
+          },
+          {
+            "slug": "dvcignore",
+            "tutorials": {
+              "katacoda": "https://katacoda.com/dvc/courses/examples/dvcignore"
+            }
+          }
+        ]
       },
       {
         "label": "How To",

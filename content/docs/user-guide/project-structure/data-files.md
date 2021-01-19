@@ -1,4 +1,4 @@
-# Tracking Existing Files and Directories
+# Data Files (`.dvc`)
 
 You can use `dvc add` to track data located in your current
 <abbr>workspace</abbr>, or in the supported

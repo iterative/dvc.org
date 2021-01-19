@@ -1,4 +1,4 @@
-# Creating Pipelines
+# Pipelines (`dvc.yaml` files)
 
 You construct pipelines by defining individual
 [stages](/doc/command-reference/run) in one or more `dvc.yaml` files. Stages
