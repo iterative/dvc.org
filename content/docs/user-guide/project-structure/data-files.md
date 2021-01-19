@@ -81,7 +81,7 @@ Comments can be entered using the `# comment` format.
 | `nfiles`                        | If this dependency is a directory, the number of files inside (recursive).                                                                                                                                                                                                                                                                               |
 | `repo`                          | This entry is only for external dependencies created with `dvc import`, and can contain `url`, `rev`, and `rev_lock` (detailed below).                                                                                                                                                                                                                   |
 
-#### Import `repo` subfields
+#### `repo` subfields:
 
 | Field      | Description                                                                                                                                                                                             |
 | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

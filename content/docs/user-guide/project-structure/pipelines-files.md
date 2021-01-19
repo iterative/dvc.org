@@ -93,6 +93,14 @@ params ...
 
 metrics and plots ...
 
+### Templating (with `params` and `vars`)
+
+...
+
+### Generating multiple stages (`foreach`)
+
+...
+
 ## dvc.yaml specification
 
 | Field  | Description                                                                                                                                                                                                   |
