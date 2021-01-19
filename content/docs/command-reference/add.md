@@ -174,7 +174,7 @@ not.
   [remote storage](/doc/command-reference/remote) to transfer external target to
   (can only be used with `--to-remote`).
 
-- `-o <path>`, `--out <path>` - destination path for the transferred data (can
+- `-o <path>`, `--out <path>` - destination `path` for the transferred data (can
   only be used with `--to-remote`).
 
 - `--desc <text>` - user description of the data (optional). This doesn't affect
