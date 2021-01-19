@@ -104,10 +104,11 @@
             "slug": "pipelines-files"
           },
           {
-            "label": "Internal Files",
+            "label": "Internals",
             "slug": "internal-files"
           },
           {
+            "label": ".dvcignore",
             "slug": "dvcignore",
             "tutorials": {
               "katacoda": "https://katacoda.com/dvc/courses/examples/dvcignore"
