@@ -27,9 +27,8 @@ _dependency graph_ or [DAG](/doc/command-reference/dag)).
 
 These files use the [YAML 1.2](https://yaml.org/) file format, and a
 human-friendly schema explained below. We encourage you to get familiar with it
-so you may modify, write, or generate stages and pipelines on your own.
-
-Let's go over all the things you can do with stages!
+so you may modify, write, or generate stages and pipelines on your own. Let's go
+over its features!
 
 > Note that we use GNU/Linux in most of our examples.
 
@@ -44,12 +43,12 @@ stages:
     cmd: echo Howdy!
 ```
 
-> Try `dvc repro` after saving the `dvc.yaml` file above in a fresh <abbr>DVC
+> Try `dvc repro` after saving this `dvc.yaml` file in a fresh <abbr>DVC
 > project</abbr>.
 
 ### Dependencies
 
-Just printing a preset text is not very useful. What if you read/process a file
+Just printing a set text is not very useful. What if you read/process a file
 along the way?
 
 ```yaml
@@ -67,8 +66,8 @@ changed before deciding to re-execute the stage.
 
 ### Basic outputs
 
-To make DVC stages really useful, you'll usually want to write the command
-results to disk:
+To make DVC stages really useful, you'll usually want to write the command's
+result to disk:
 
 ```yaml
 stages:
@@ -80,14 +79,35 @@ stages:
       - doubled.txt
 ```
 
-In this stage, we are editing the contents of `lines.txt` (a dependency), and
-writing the results to `doubled.txt`. By listing the <abbr>output</abbr> file in
+In this stage, we are processing the contents of `lines.txt` (a dependency),
+into a new `doubled.txt` file. By listing the <abbr>output</abbr> file in
 `outs`, we are telling DVC to track it going forward (similar to using `dvc add`
 on it).
 
 ### Parameter dependencies
 
-params ...
+[Parameters](/doc/command-reference/params) are a special type of stage
+dependency. They consist of a name/value pair to find in a YAML, JSON, TOML, or
+Python parameters file (`params.yaml` by default). Example:
+
+```yaml
+stages:
+  preprocess:
+    cmd: ./clean.r raw.txt clean.txt
+    deps:
+      - raw.txt
+    params:
+      - threshold
+      - passes
+    outs:
+      - clean.txt
+```
+
+This allows several stages to have this kind of dependency based on a single,
+structured file (which can be versioned directly with Git).
+
+As an added benefit, the `dvc params diff` utility helps you list parameters and
+follow their changes.
 
 ### Metrics (outputs)
 
