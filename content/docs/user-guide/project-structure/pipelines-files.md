@@ -1,88 +1,52 @@
-# Pipelines (`dvc.yaml` files)
+# Pipelines files (`dvc.yaml`)
 
 You construct pipelines by defining individual
-[stages](/doc/command-reference/run) in one or more `dvc.yaml` files. Stages
-form a pipeline when they connect with each other (see `dvc dag`). Refer to
-[Data Pipelines](/doc/start/data-pipelines).
+[stages](/doc/command-reference/run) in one or more `dvc.yaml` files (or
+_pipelines files_). Stages form a pipeline when they connect with each other
+(see `dvc dag`). Refer to [Data Pipelines](/doc/start/data-pipelines).
 
 > Note that a helper command, `dvc run`, is available to create (and execute)
 > stages.
 
-💡 Keep in mind that one `dvc.yaml` file does not necessarily equal one pipeline
-(although that is typical). DVC evaluates all the `dvc.yaml` files in the
-<abbr>workspace</abbr> to rebuild an validate the pipeline(s) (see `dvc status`
-and `dvc repro`).
-
 To record the state of your pipeline(s) and help track its <abbr>outputs</abbr>,
-DVC will also maintain `dvc.lock` file(s) matching `dvc.yaml`.
+DVC will also maintain a `dvc.lock` file for each `dvc.yaml`. `dvc.yaml` and
+`dvc.lock` files can be versioned directly with Git.
 
-> Note `dvc.yaml` and `dvc.lock` files are meant to be versioned with Git (if
-> enabled in the <abbr>repository</abbr>).
+## Stages
 
-## DVC YAML files
-
-`dvc.yaml` files (or _pipelines files_) specify a list of `stages` that form the
-pipeline(s) of your project, and determine how they connect (representing a
-_dependency graph_ or [DAG](/doc/command-reference/dag)).
+`dvc.yaml` files contain a list of `stages` that form the pipeline(s) of your
+project, and determine how they connect (forming a _dependency graph_ or
+[DAG](/doc/command-reference/dag)).
 
 These files use the [YAML 1.2](https://yaml.org/) file format, and a
 human-friendly schema explained below. We encourage you to get familiar with it
-so you may modify, write, or generate stages and pipelines on your own. Let's go
-over its features!
+so you may modify, write, or generate stages and pipelines on your own. Here's a
+simple example:
 
-> Note that we use GNU/Linux in most of our examples.
-
-### Commands
-
-The most basic part of a stage it's the terminal command it executes (`cmd`
-field):
-
-```yaml
-stages:
-  hello:
-    cmd: echo Howdy!
-```
-
-> Try `dvc repro` after saving this `dvc.yaml` file in a fresh <abbr>DVC
-> project</abbr>.
-
-### Dependencies
-
-Just printing a set text is not very useful. What if you read/process a file
-along the way?
+> Note that we use [GNU/Linux](https://www.gnu.org/software/software.html) in
+> most of our examples.
 
 ```yaml
 stages:
   print2cols:
-    cmd: awk '{print $1 "\t" $2}' input.txt
-    deps:
-      - input.txt
-```
-
-The command above prints 2 columns with the first words from each line in an
-input text file. Since it requires `input.txt`, we mark that file as a
-<abbr>dependency</abbr> (`deps` list). DVC will check whether this file has
-changed before deciding to re-execute the stage.
-
-### Basic outputs
-
-To make DVC stages really useful, you'll usually want to write the command's
-result to disk:
-
-```yaml
-stages:
-  duplicate:
-    cmd: sed 'p' lines.txt > doubled.txt
+    cmd: awk '{print $1 "\t" $2}' lines.txt > 2columns.txt
     deps:
       - lines.txt
     outs:
-      - doubled.txt
+      - 2columns.txt
 ```
 
-In this stage, we are processing the contents of `lines.txt` (a dependency),
-into a new `doubled.txt` file. By listing the <abbr>output</abbr> file in
-`outs`, we are telling DVC to track it going forward (similar to using `dvc add`
-on it).
+The most important part of a stage it's the terminal command(s) it executes
+(`cmd` field). This is what DVC runs when the stage is reproduced (see
+`dvc repro`).
+
+If a program executed by the command read input files, they can be defined as
+<abbr>dependencies</abbr> (`deps`). DVC will check whether they have changed to
+decide whether the stage requires re-execution (see `dvc status`).
+
+If the command writes files or directories, they can be defined as
+<abbr>outputs</abbr> (`outs`). DVC will track them going forward (similar to
+using `dvc add`).
 
 ### Parameter dependencies
 
@@ -103,23 +67,24 @@ stages:
       - clean.txt
 ```
 
-This allows several stages to have this kind of dependency based on a single,
-structured file (which can be versioned directly with Git).
+This allows several stages to depend on values of a shared structured file
+(which can be versioned directly with Git, see `dvc params diff`).
 
-As an added benefit, the `dvc params diff` utility helps you list parameters and
-follow their changes.
+### Metrics and Plots outputs
 
-### Metrics (outputs)
-
-metrics and plots ...
-
-### Templating (with `params` and `vars`)
+Like [common outputs](#outputs), metrics and plots files are produced by the
+stage `cmd`. However, their purpose is different and closer to a side-effect, as
+metadata to evaluate our processes.
 
 ...
 
-### Generating multiple stages (`foreach`)
+## Templating
 
-...
+`params` and `vars` ...
+
+## Generating multiple stages
+
+`foreach` ...
 
 ## dvc.yaml specification
 
