@@ -1,8 +1,8 @@
 # Pipelines Files (`dvc.yaml`)
 
-You can construct pipelines by defining individual
-[stages](/doc/command-reference/run) in one or more `dvc.yaml` files (or
-_pipelines files_). Stages form a pipeline when they connect with each other
+You can construct data science or machine learning pipelines by defining
+individual [stages](/doc/command-reference/run) in one or more `dvc.yaml` files
+(or _pipelines files_). Stages form a pipeline when they connect with each other
 (forming a _dependency graph_, see `dvc dag`). Refer to
 [Data Pipelines](/doc/start/data-pipelines).
 
@@ -20,7 +20,8 @@ so you may modify, write, or generate stages and pipelines on your own.
 
 ## Stages
 
-Here's a simple example:
+`stages` are named by the user and have a flexible structure. Here's a simple
+example:
 
 ```yaml
 stages:
@@ -104,15 +105,38 @@ metrics and plots.
 
 ## Specification
 
-| Field  | Description                                                                                                                                                                                                   |
-| ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `cmd`  | (Required.) One or more commands executed by the stage (may contain either a single value or a list). Commands are executed sequentially until all are finished or until one of them fails (see `dvc repro`). |
-| `wdir` |                                                                                                                                                                                                               |
+| Field            | Description                                                                                                                                                                                                                                                                               |
+| ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `cmd`            | (Required) One or more commands executed by the stage (may contain either a single value or a list). Commands are executed sequentially until all are finished or until one of them fails (see `dvc repro`).                                                                              |
+| `wdir`           | Working directory for the stage command to run in (relative to the file's location). Any paths in other fields are also based on this. It defaults to `.` (the file's location).                                                                                                          |
+| `deps`           | List of <abbr>dependencies</abbr> paths of this stage (relative to `wdir`).                                                                                                                                                                                                               |
+| `outs`           | List of <abbr>outputs</abbr> paths of this stage (relative to `wdir`). See [Output entries](#output-entries) for more details.                                                                                                                                                            |
+| `params`         | List of <abbr>parameter</abbr> dependency keys (field names) to track from `params.yaml` (in `wdir`). The list may also contain other parameters file names, with a sub-list of the param names to track in them.                                                                         |
+| `metrics`        | List of [metrics files](/doc/command-reference/metrics), and optionally, whether or not this metrics file is <abbr>cached</abbr> (`true` by default). See the `--metrics-no-cache` (`-M`) option of `dvc run`.                                                                            |
+| `plots`          | List of [plot metrics](/doc/command-reference/plots), and optionally, their default configuration (subfields matching the options of `dvc plots modify`), and whether or not this plots file is <abbr>cached</abbr> ( `true` by default). See the `--plots-no-cache` option of `dvc run`. |
+| `frozen`         | Whether or not this stage is frozen from reproduction                                                                                                                                                                                                                                     |
+| `always_changed` | Whether or not this stage is considered as changed by commands such as `dvc status` and `dvc repro`. `false` by default                                                                                                                                                                   |
+| `meta`           | (Optional) arbitrary metadata can be added manually with this field. Any YAML contents is supported. `meta` contents are ignored by DVC, but they can be meaningful for user processes that read or write `.dvc` files directly.                                                          |
+| `desc`           | (Optional) user description for this stage. This doesn't affect any DVC operations.                                                                                                                                                                                                       |
 
-...
+`dvc.yaml` files also support `# comments`.
+
+Note that we maintain a `dvc.yaml`
+[schema](https://github.com/iterative/dvcyaml-schema) that can be used by
+editors like [VSCode](/doc/install/plugins#visual-studio-code) or
+[PyCharm](/doc/install/plugins#pycharmintellij) to enable automatic syntax
+validation and auto-completion.
 
 > See also
 > [How to Merge Conflicts](/doc/user-guide/how-to/merge-conflicts#dvcyaml).
+
+### Output entries
+
+| Field     | Description                                                                                                                                |
+| --------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| `cache`   | Whether or not this file or directory is <abbr>cached</abbr> (`true` by default). See the `--no-commit` option of `dvc add`.               |
+| `persist` | Whether the output file/dir should remain in place while `dvc repro` runs (`false` by default: outputs are deleted when `dvc repro` starts |
+| `desc`    | (Optional) user description for this output. This doesn't affect any DVC operations.                                                       |
 
 ## dvc.lock file
 
