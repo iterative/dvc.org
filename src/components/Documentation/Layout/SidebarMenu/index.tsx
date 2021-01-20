@@ -72,12 +72,8 @@ const SidebarMenuItem: React.FC<ISidebarMenuItemProps> = ({
   }
 
   const bulletIconClick = (event: SyntheticEvent<HTMLSpanElement>): void => {
-    if (isActive) {
-      event.preventDefault()
-      setIsActive(false)
-    } else {
-      setIsActive(true)
-    }
+    event.preventDefault()
+    setIsActive(!isActive)
   }
 
   // Fetch a special icon if one is defined
