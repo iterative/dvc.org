@@ -1,31 +1,17 @@
-# Data Files (`.dvc`)
+# `.dvc` Files
 
-You can use `dvc add` to track data located in your current
-<abbr>workspace</abbr>, or in the supported
-[external locations](/doc/user-guide/managing-external-data). See
-[Data Versioning](/doc/start/data-versioning) for a primer.
+You can use `dvc add` to track data files or directories located in your current
+<abbr>workspace</abbr>, or in supported
+[external locations](/doc/user-guide/managing-external-data). Additionally,
+`dvc import` and `dvc import-url` let you bring data from external locations to
+your project, and start tracking it locally.
 
-Alternatively, `dvc import` and `dvc import-url` let you bring data from
-external locations to your project, and start tracking it at the same time. See
-also [Data Access](/doc/start/data-access).
+> See [Data Versioning](/doc/start/data-versioning) and
+> [Data Access](/doc/start/data-access) for more info.
 
-In any case, one or more files ending with the `.dvc` extension ("dot DVC file")
-are created in the project, containing the information to track the target data
-over time.
-
-> Note `.dvc` files are meant to be versioned with Git (if enabled in the
-> <abbr>repository</abbr>).
-
-## Dot DVC files
-
-`.dvc` files are placeholders that supports basic tracking of data files and
-directories in DVC. <abbr>DVC projects</abbr> typically have one `.dvc` file per
-data file or directory being tracked.
-
-These files use the [YAML 1.2](https://yaml.org/) file format, and a
-human-friendly schema described below. We encourage you to get familiar with it
-so you may modify, write, or generate `.dvc` files on your own. Here's an
-example:
+Files ending with the `.dvc` extension ("dot DVC file") are created by these
+commands as data placeholders that can be versioned with Git. They contain the
+information needed to track the target data over time. Here's an example:
 
 ```yaml
 outs:
@@ -39,10 +25,14 @@ meta:
   email: devee@dvc.org
 ```
 
-> See [How to Merge Conflicts](/doc/user-guide/how-to/merge-conflicts) for tips
-> on managing DVC files.
+These files use the [YAML 1.2](https://yaml.org/) file format, and a
+human-friendly schema described below. We encourage you to get familiar with it
+so you may modify, write, or generate `.dvc` files on your own.
 
-## .dvc YAML specification
+> See also
+> [How to Merge Conflicts](/doc/user-guide/how-to/merge-conflicts#dvc-files).
+
+## Specification
 
 | Field  | Description                                                                                                                                                                                                                   |
 | ------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

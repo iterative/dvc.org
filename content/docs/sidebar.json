@@ -96,16 +96,16 @@
         "source": false,
         "children": [
           {
-            "label": "Pipelines (dvc.yaml)",
+            "label": "Pipelines Files (dvc.yaml)",
             "slug": "pipelines-files"
           },
           {
-            "label": "Data Files (.dvc)",
-            "slug": "data-files"
+            "label": ".dvc Files",
+            "slug": "dvc-files"
           },
           {
-            "label": ".dvcignore",
-            "slug": "dvcignore",
+            "label": ".dvcignore Files",
+            "slug": "dvcignore-files",
             "tutorials": {
               "katacoda": "https://katacoda.com/dvc/courses/examples/dvcignore"
             }

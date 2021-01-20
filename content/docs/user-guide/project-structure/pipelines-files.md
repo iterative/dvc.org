@@ -1,4 +1,4 @@
-# Pipelines files (`dvc.yaml`)
+# Pipelines Files (`dvc.yaml`)
 
 You construct pipelines by defining individual
 [stages](/doc/command-reference/run) in one or more `dvc.yaml` files (or
@@ -10,7 +10,7 @@ _pipelines files_). Stages form a pipeline when they connect with each other
 
 To record the state of your pipeline(s) and help track its <abbr>outputs</abbr>,
 DVC will also maintain a `dvc.lock` file for each `dvc.yaml`. `dvc.yaml` and
-`dvc.lock` files can be versioned directly with Git.
+`dvc.lock` files can be versioned with Git.
 
 ## Stages
 
@@ -86,7 +86,7 @@ metadata to evaluate our processes.
 
 `foreach` ...
 
-## dvc.yaml specification
+## Specification
 
 | Field  | Description                                                                                                                                                                                                   |
 | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -95,8 +95,8 @@ metadata to evaluate our processes.
 
 ...
 
-> See [How to Merge Conflicts](/doc/user-guide/how-to/merge-conflicts) for tips
-> on managing DVC files.
+> See also
+> [How to Merge Conflicts](/doc/user-guide/how-to/merge-conflicts#dvcyaml).
 
 ## dvc.lock file
 
