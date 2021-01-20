@@ -125,7 +125,7 @@ images/owl_sticker.png
 ...
 ```
 
-## Example: Create an archive of you DVC project
+## Example: Create an archive of your DVC project
 
 Just like you can use `git archive` to make a quick bundle (ZIP) file of the
 current code, `dvc list` can be easily complemented with simple archive tools to
