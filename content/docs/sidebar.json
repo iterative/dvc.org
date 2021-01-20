@@ -93,7 +93,7 @@
       },
       {
         "slug": "project-structure",
-        "source": false,
+        "source": "user-guide/project-structure/index.md",
         "children": [
           {
             "label": "Pipelines Files (dvc.yaml)",
