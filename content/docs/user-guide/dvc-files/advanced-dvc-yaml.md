@@ -1,6 +1,6 @@
 # Advanced dvc.yaml Usage
 
-> ⚠️ These features will be released shortly, along with DVC 2.0 ⚠️
+> ⚠️ These features will be released shortly, in DVC 2.0 ⚠️
 
 The following features are supported only via manual edition of `dvc.yaml` files
 (`dvc run` cannot currently produce them).
