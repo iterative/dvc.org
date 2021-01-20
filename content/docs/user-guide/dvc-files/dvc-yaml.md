@@ -84,8 +84,8 @@ contain the following fields:
 - `desc` (optional): User description for this stage. This doesn't affect any
   DVC operations.
 
-See [Advanced dvc.yaml Usage](/doc/user-guide/dvc-files/advanced-dvc.yaml) for
-info on the `${}` syntax, as well as `foreach`/`do` fields.
+See [Advanced dvc.yaml Usage](/doc/user-guide/project-structure/pipelines-files)
+for info on the `${}` syntax, as well as `foreach`/`do` fields.
 
 `dvc.yaml` files also support `# comments`.
 
