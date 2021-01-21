@@ -7,7 +7,7 @@ file.
 
 ```usage
 usage: dvc add [-h] [-q | -v] [-R] [--no-commit] [--external]
-               [--file <filename>] [--glob] [--desc <text>]
+               [--glob] [--file <filename>] [--desc <text>]
                targets [targets ...]
 
 positional arguments:
