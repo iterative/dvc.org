@@ -219,8 +219,8 @@ ${param.key} # Nested values through . (period)
 ${param.list[0]} # List elements via index in [] (square brackets)
 ```
 
-> To use the expression literally in `dvc.yaml`, escape it with a backslash,
-> e.g. `\${...`.
+> To use the expression in `dvc.yaml`, for example for the shell to interpret a
+> command substitution, escape it with a backslash, e.g. `\${...`.
 
 ## Generating multiple stages
 
@@ -238,6 +238,8 @@ stages:
       - raw2 labels2
     do:
       cmd: clean.py "${item}"
+      out:
+        - ${item}.cln
 ```
 
 Upon `dvc repro`, each item in the list is expanded into its own stage by
@@ -265,7 +267,8 @@ stages:
         thresh: 10
       - epochs: 10
         thresh: 15
-    cmd: python train.py ${item.epochs} ${item.thresh}
+    do:
+      cmd: python train.py ${item.epochs} ${item.thresh}
 ```
 
 ```yaml
