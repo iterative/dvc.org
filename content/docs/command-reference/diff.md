@@ -19,10 +19,13 @@ positional arguments:
 
 ## Description
 
-Prints a list of files and directories added, modified, renamed, and deleted in
-a Git commit `b_rev` as compared to another Git commit `a_rev`. Both `a_rev` and
+Prints a list of files and directories added, modified, renamed, or deleted in a
+Git commit `b_rev` as compared to another Git commit `a_rev`. Both `a_rev` and
 `b_rev` accept any [Git revision](https://git-scm.com/docs/gitrevisions) -
 branch or tag name, Git commit hash, etc.
+
+> Note that for renames `dvc diff` only detects files which have been renamed
+> but are otherwise unmodified between Git commits.
 
 It defaults to comparing the current workspace and the last commit (`HEAD`), if
 arguments `a_rev` and `b_rev` are not specified.
@@ -41,11 +44,6 @@ for example when `dvc init` was used with the `--no-scm` option.
 > text, or binary blobs, etc. For an example on how to create line-to-line text
 > file comparison, refer to this
 > [comment](https://github.com/iterative/dvc/issues/770#issuecomment-512693256).
-
-> Also note that support for rename detection is currently limited to files
-> which have been renamed but are otherwise unmodified between Git commits. If a
-> file's contents are modified after being renamed, `dvc diff` will show that
-> the original file has been deleted, and the modified version has been added.
 
 ## Options
 
