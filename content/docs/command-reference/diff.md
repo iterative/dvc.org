@@ -217,3 +217,54 @@ It outputs:
   ]
 }
 ```
+
+## Example: Renamed files
+
+<details>
+
+### Click and expand to setup the example
+
+Having followed the previous examples' setup, move into the
+`example-get-started/` directory. Then make sure that you have the latest code
+and data with the following commands:
+
+```dvc
+$ git checkout master
+$ dvc checkout
+```
+
+</details>
+
+`dvc diff` only detects files which have been renamed but are otherwise
+unmodified. If a file has been renamed and also has modified content, `dvc diff`
+will show that the original file has been deleted and the modified version has
+been added.
+
+Let's see what happens when we rename `data/data.xml` in our workspace:
+
+```dvc
+$ dvc move data/data.xml data/other_data.xml
+$ dvc diff
+Renamed:
+    data/data.xml -> data/other_data.xml
+
+files summary: 0 added, 0 deleted, 1 renamed, 0 modified, 0 not in cache
+```
+
+Now, let's modify `data/other_data.xml` and then see what happens again:
+
+```dvc
+$ echo "<row Id=\"12345678\" Body=\"New row\" />" >> data/other_data.xml
+$ dvc diff
+Added:
+    data/other_data.xml
+
+Deleted:
+    data/data.xml
+
+files summary: 1 added, 1 deleted, 0 renamed, 0 modified, 0 not in cache
+```
+
+In this case, since the file content in `data/other_data.xml` has been changed,
+`dvc diff` can no longer detect that it is a renamed version of the original
+file `data/data.xml`.
