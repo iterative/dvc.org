@@ -2,20 +2,16 @@
 title: January '21 Heartbeat
 date: 2021-01-20
 description: |
-  Monthly updates are here- read all about 
+  Monthly updates are here! read all about 
   our new R language tutorial, putting DVC 
   to work on an image segmentation pipeline,
   and a new fast way to setup your DVC remote.
 descriptionLong: |
-  Monthly updates are here- read all about 
+  Monthly updates are here! read all about 
   our new R language tutorial, putting DVC 
   to work on an image segmentation pipeline,
   and a new fast way to setup your DVC remote.
-picture: 2020-12-18/cover.png
-pictureComment: |
-  This holiday season, show your loved ones
-  you care with our new shirt.
-
+picture: 2021-01-20/cover.png
 author: elle_obrien
 commentsUrl: https://discuss.dvc.org/t/dvc-heartbeat-jan-21/632
 tags:
@@ -72,15 +68,15 @@ https://youtu.be/NwUijrm2U2w
 
 ### Workshops and talks
 
-Coming up Friday, Jan 21, I (Elle) will be speaking with
-[Alexey Grigorev](https://twitter.com/Al_Grigor), author of a
-[Data Science Bookcamp](https://mlbookcamp.com/), on his podcast about being a
+On Friday, January 24, I (Elle) spoke with
+[Alexey Grigorev](https://twitter.com/Al_Grigor) (author of a
+[Data Science Bookcamp](https://mlbookcamp.com/)), on his podcast about being a
 developer advocate in the machine learning space! If you're curious about what
 the role entails, or what to look for when hiring a developer advocate for your
-machine learning project, please come by. The event will be recorded live and
-then shared for your listening pleasure 🎧
+machine learning project, please come by. The event is up on YouTube, and will
+soon be available as a podcast for your listening pleasure 🎧
 
-https://twitter.com/Al_Grigor/status/1351955523890012167
+https://youtu.be/jv5W4jXk4P4
 
 ## From the community
 
