@@ -172,7 +172,8 @@ stages:
         thresh: 10
       - epochs: 10
         thresh: 15
-    cmd: python train.py ${item.epochs} ${item.thresh}
+    do:
+      cmd: python train.py ${item.epochs} ${item.thresh}
 ```
 
 ```yaml

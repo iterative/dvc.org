@@ -49,7 +49,7 @@ Only params that have changes are listed.
   $ dvc params diff --targets m1.json m2.yaml -- HEAD v1
   ```
 
-- `--all` - prints all parameters including not changed.
+- `--all` - list all parameters, including those without changes.
 
 - `--show-json` - prints the command's output in easily parsable JSON format,
   instead of a human-readable table.

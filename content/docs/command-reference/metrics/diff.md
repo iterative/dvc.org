@@ -56,7 +56,7 @@ lists all the current metrics, without comparisons.
   target directory and its subdirectories for DVC-tracked files to inspect. If
   there are no directories among the `targets`, this option is ignored.
 
-- `--all` - list all metrics, even those without changes.
+- `--all` - list all metrics, including those without changes.
 
 - `--show-json` - prints the command's output in easily parsable JSON format,
   instead of a human-readable table.
