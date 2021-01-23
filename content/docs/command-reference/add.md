@@ -43,8 +43,8 @@ other DVC commands), a few actions are taken under the hood:
    cached file path. (See
    [Structure of cache directory](/doc/user-guide/dvc-internals#structure-of-the-cache-directory)
    for more details.)
-3. Attempt to replace the file with a link to the cached data (unless
-   `--to-remote` option given) (more details on file linking further down).
+3. Attempt to replace the file with a link to the cached data (more details on
+   file linking further down). Skipped if `--to-remote` is used.
 4. Create a corresponding `.dvc` file to track the file, using its path and hash
    to identify the cached data. The `.dvc` file lists the DVC-tracked file as an
    <abbr>output</abbr> (`outs` field). Unless the `--file` option is used, the
