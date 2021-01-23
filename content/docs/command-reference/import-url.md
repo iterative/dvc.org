@@ -23,8 +23,8 @@ positional arguments:
 ## Description
 
 In some cases it's convenient to add a data file or directory from an external
-location into the workspace (or to the
-[remote storage](/doc/command-reference/remote), such that it can be updated
+location into the workspace (or to
+[remote storage](/doc/command-reference/remote)), such that it can be updated
 later, if/when the external data source changes. Example scenarios:
 
 - A remote system may produce occasional data files that are used in other
