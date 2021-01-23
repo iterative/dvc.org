@@ -164,10 +164,9 @@ not.
   > Note that external outputs typically require an external cache setup. See
   > link above for more details.
 
-- `--to-remote` - track a single external target file or directory (with a
-  `.dvc` file), but instead of caching and linking it locally,
-  [transfer](#transferring-data-directly-to-the-remote) it straight to remote
-  storage.
+- `--to-remote` - Track an external target, but don't move it into the
+  workspace, nor cache it. [Transfer](#transferring-data-directly-to-the-remote)
+  it directly to remote storage instead. Use `dvc pull` to get the data locally.
 
 - `-r <name>`, `--remote <name>` - name of the
   [remote storage](/doc/command-reference/remote) to transfer external target to
