@@ -353,7 +353,7 @@ Running stage 'prepare' with command:
 	python src/prepare.py data/data.xml
 ```
 
-## Example: Import straight to the remote
+## Example: Import straight to remote
 
 When you have a massive dataset in a distant location, and working on a computer
 which can't actually store it locally (due to not having enough disk space) but
