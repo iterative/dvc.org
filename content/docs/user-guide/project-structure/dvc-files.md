@@ -43,7 +43,7 @@ schema:
 | `deps` | List of [dependency entries](#dependency-entries) (details below). Only present when `dvc import` or `dvc import-url` are used to generate this `.dvc` file. Typically there is only one (but several can be added manually). |
 | `wdir` | Working directory for the `outs` and `deps` paths (relative to the `.dvc` file's location). It defaults to `.` (the file's location).                                                                                         |
 | `md5`  | (Only for <abbr>imports</abbr>) MD5 hash of the `.dvc` file itself.                                                                                                                                                           |
-| `meta` | (Optional) arbitrary user metadata can be added manually with this field. Any YAML contents is supported. `meta` contents are ignored by DVC.                                                                                 |
+| `meta` | (Optional) arbitrary user metadata can be added manually with this field. Any YAML content is supported. `meta` contents are ignored by DVC.                                                                                  |
 
 Comments can be entered using the `# comment` format.
 

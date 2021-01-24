@@ -20,30 +20,29 @@ so you may modify, write, or generate stages and pipelines on your own.
 
 ## Stages
 
-`stages` are named by the user and have a flexible structure. Here's a simple
-example:
+The `stages` list contains a list of user-defined stages. Here's a simple one
+named `transpose`:
 
 ```yaml
 stages:
-  print2cols:
-    cmd: awk '{print $1 "\t" $2}' lines.txt > 2columns.txt
+  transpose:
+    cmd: ./trans.r rows.txt > columns.txt
     deps:
-      - lines.txt
+      - rows.txt
     outs:
-      - 2columns.txt
+      - columns.txt
 ```
 
 The most important part of a stage it's the terminal command(s) it executes
 (`cmd` field). This is what DVC runs when the stage is reproduced (see
 `dvc repro`).
 
-If a program executed by the command read input files, they can be defined as
-<abbr>dependencies</abbr> (`deps`). DVC will check whether they have changed to
-decide whether the stage requires re-execution (see `dvc status`).
+If a command reads input files, these (or their directory locations) can be
+defined as <abbr>dependencies</abbr> (`deps`). DVC will check whether they have
+changed to decide whether the stage requires re-execution (see `dvc status`).
 
-If the command writes files or directories, they can be defined as
-<abbr>outputs</abbr> (`outs`). DVC will track them going forward (similar to
-using `dvc add`).
+If it writes files or dirs, they can be defined as <abbr>outputs</abbr>
+(`outs`). DVC will track them going forward (similar to using `dvc add`).
 
 ### Parameter dependencies
 
@@ -54,7 +53,7 @@ Python parameters file (`params.yaml` by default). Example:
 ```yaml
 stages:
   preprocess:
-    cmd: ./clean.sh raw.txt clean.txt
+    cmd: bin/cleanup raw.txt clean.txt
     deps:
       - raw.txt
     params:
@@ -153,10 +152,6 @@ stages:
     cmd: python train.py --thresh ${models.us.threshold}
 ```
 
-> DVC merges values from params files and `vars` when possible. For example,
-> `{"grp": {"a": 1}}` merges with `{"grp": {"b": 2}}`, but not with
-> `{"grp": {"a": 7}}`.
-
 > Note that values from `vars` are not tracked like parameters.
 
 To load additional params files, list them in the top `vars`, in the desired
@@ -206,6 +201,10 @@ stages:
       - ${model.filename}
 ```
 
+DVC merges values from params files and `vars` in each scope when possible. For
+example, `{"grp": {"a": 1}}` merges with `{"grp": {"b": 2}}`, but not with
+`{"grp": {"a": 7}}`.
+
 ⚠️ Known limitations of local `vars`:
 
 - [`wdir`](/doc/user-guide/dvc-files/dvc.yaml#accepted-fields) cannot use values
@@ -221,8 +220,8 @@ ${param.key} # Nested values through . (period)
 ${param.list[0]} # List elements via index in [] (square brackets)
 ```
 
-> To use the expression in `dvc.yaml`, for example for the shell to interpret a
-> command substitution, escape it with a backslash, e.g. `\${...`.
+> To use the expression literally in `dvc.yaml` (so DVC does not replace it for
+> a value), escape it with a backslash, e.g. `\${...`.
 
 ## Generating multiple stages
 
@@ -314,7 +313,8 @@ stages:
   build@us: ...
 ```
 
-Importantly, dictionaries [from parameters](#templating) files can be used in
+Importantly, dictionaries from
+[parameters files](/doc/command-reference/params#examples) can be used in
 `foreach` multi-stages as well:
 
 ```yaml
@@ -343,7 +343,7 @@ stages:
 | `plots`          | List of [plot metrics](/doc/command-reference/plots), and optionally, their default configuration (subfields matching the options of `dvc plots modify`), and whether or not this plots file is <abbr>cached</abbr> ( `true` by default). See the `--plots-no-cache` option of `dvc run`. |
 | `frozen`         | Whether or not this stage is frozen from reproduction                                                                                                                                                                                                                                     |
 | `always_changed` | Whether or not this stage is considered as changed by commands such as `dvc status` and `dvc repro`. `false` by default                                                                                                                                                                   |
-| `meta`           | (Optional) arbitrary metadata can be added manually with this field. Any YAML contents is supported. `meta` contents are ignored by DVC, but they can be meaningful for user processes that read or write `.dvc` files directly.                                                          |
+| `meta`           | (Optional) arbitrary metadata can be added manually with this field. Any YAML content is supported. `meta` contents are ignored by DVC, but they can be meaningful for user processes that read or write `.dvc` files directly.                                                           |
 | `desc`           | (Optional) user description for this stage. This doesn't affect any DVC operations.                                                                                                                                                                                                       |
 
 `dvc.yaml` files also support `# comments`.
