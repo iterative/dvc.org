@@ -1,6 +1,7 @@
 # Managing External Data
 
-> ⚠️ Artifacts added with --external are not affected by
+> ⚠️ This is an advanced feature that we don't recommend using unless you really
+> know what you are doing. Artifacts added with --external are not affected by
 > `dvc push/pull/status -c`. You are likely looking for
 > [straight-to-remote/cache](https://github.com/iterative/dvc/issues/4520)
 > functionality or `dvc import-url`
