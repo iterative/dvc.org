@@ -102,8 +102,8 @@ in the YAML structure itself. These sources can be
 [parameters files](/doc/command-reference/params), or `vars` defined in
 `dvc.yaml` instead.
 
-> Note that this feature is only supported via manual edition of `dvc.yaml` and
-> incompatible with `dvc run`.
+> Note that this parameterization feature is only supported via manual edition
+> of `dvc.yaml` and incompatible with `dvc run`.
 
 Let's say we have `params.yaml` (default params file) with the following
 contents:
