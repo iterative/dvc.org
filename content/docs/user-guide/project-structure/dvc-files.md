@@ -32,7 +32,10 @@ so you may modify, write, or generate `.dvc` files on your own.
 > See also
 > [How to Merge Conflicts](/doc/user-guide/how-to/merge-conflicts#dvc-files).
 
-## Specification (file-level)
+## Specification
+
+These are the fields that are accepted at the root level of the `.dvc` file
+schema:
 
 | Field  | Description                                                                                                                                                                                                                   |
 | ------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -50,6 +53,8 @@ Comments can be entered using the `# comment` format.
 
 ## Output entries
 
+The following subfields may be present under `outs` entries:
+
 | Field                           | Description                                                                                                                                                                                                                                                                                                                           |
 | ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `path`                          | (Required) Path to the file or directory (relative to `wdir`, which defaults to the file's location)                                                                                                                                                                                                                                  |
@@ -63,6 +68,8 @@ Comments can be entered using the `# comment` format.
 
 ## Dependency entries
 
+The following subfields may be present under `deps` entries:
+
 | Field                           | Description                                                                                                                                                                                                                                                                                                                                              |
 | ------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `path`                          | (Required) Path to the dependency (relative to `wdir`, which defaults to the file's location)                                                                                                                                                                                                                                                            |
@@ -71,7 +78,7 @@ Comments can be entered using the `# comment` format.
 | `nfiles`                        | If this dependency is a directory, the number of files inside (recursive).                                                                                                                                                                                                                                                                               |
 | `repo`                          | This entry is only for external dependencies created with `dvc import`, and can contain `url`, `rev`, and `rev_lock` (detailed below).                                                                                                                                                                                                                   |
 
-### `repo` subfields:
+### Dependency `repo` subfields:
 
 | Field      | Description                                                                                                                                                                                             |
 | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
