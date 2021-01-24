@@ -32,7 +32,7 @@ so you may modify, write, or generate `.dvc` files on your own.
 > See also
 > [How to Merge Conflicts](/doc/user-guide/how-to/merge-conflicts#dvc-files).
 
-## Specification
+## Specification (file-level)
 
 | Field  | Description                                                                                                                                                                                                                   |
 | ------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -48,7 +48,7 @@ Comments can be entered using the `# comment` format.
 > and `dvc commit`, but not when the file is overwritten by `dvc add`,
 > `dvc move`, `dvc import`, or `dvc import-url`.
 
-### Output entries
+## Output entries
 
 | Field                           | Description                                                                                                                                                                                                                                                                                                                           |
 | ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -61,7 +61,7 @@ Comments can be entered using the `# comment` format.
 | `persist`                       | Whether the output file/dir should remain in place while `dvc repro` runs (`false` by default: outputs are deleted when `dvc repro` starts)                                                                                                                                                                                           |
 | `desc`                          | (Optional) user description for this output (supported in metrics and plots too). This doesn't affect any DVC operations.                                                                                                                                                                                                             |
 
-### Dependency entries
+## Dependency entries
 
 | Field                           | Description                                                                                                                                                                                                                                                                                                                                              |
 | ------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -71,7 +71,7 @@ Comments can be entered using the `# comment` format.
 | `nfiles`                        | If this dependency is a directory, the number of files inside (recursive).                                                                                                                                                                                                                                                                               |
 | `repo`                          | This entry is only for external dependencies created with `dvc import`, and can contain `url`, `rev`, and `rev_lock` (detailed below).                                                                                                                                                                                                                   |
 
-#### `repo` subfields:
+### `repo` subfields:
 
 | Field      | Description                                                                                                                                                                                             |
 | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
