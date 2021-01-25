@@ -86,7 +86,7 @@ the pipeline must be reproduced (using `dvc repro`) to regenerate its outputs.
   files referenced in later stages than the `targets`.
 
 - `-f`, `--force` - does not prompt when removing workspace files. Changing the
-  current set of [DVC files](/doc/user-guide/project-structure) with
+  current [set of DVC files](/doc/user-guide/project-structure) with
   `git checkout` can result in the need for DVC to remove files that don't match
   those references or are missing from cache. (They are not "committed", in DVC
   terms.)
