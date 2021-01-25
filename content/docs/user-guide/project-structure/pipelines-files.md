@@ -158,7 +158,8 @@ To load additional params files, list them in the top `vars`, in the desired
 order, e.g.:
 
 > Params file paths will be evaluated based on
-> [`wdir`](/doc/user-guide/dvc-files/dvc.yaml#accepted-fields), if one given.
+> [`wdir`](/doc/user-guide/project-structure/pipelines-files#specification), if
+> one given.
 
 ```yaml
 vars:
@@ -207,9 +208,9 @@ example, `{"grp": {"a": 1}}` merges with `{"grp": {"b": 2}}`, but not with
 
 ⚠️ Known limitations of local `vars`:
 
-- [`wdir`](/doc/user-guide/dvc-files/dvc.yaml#accepted-fields) cannot use values
-  from local `vars`, as DVC uses the working directory first (to load any values
-  from params files listed in `vars`).
+- [`wdir`](/doc/user-guide/project-structure/pipelines-files#specification)
+  cannot use values from local `vars`, as DVC uses the working directory first
+  (to load any values from params files listed in `vars`).
 - `foreach` is also incompatible with local `vars` at the moment.
 
 The substitution expression supports these forms:
