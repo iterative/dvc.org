@@ -129,7 +129,7 @@ stages:
       --out ${models.us.filename}
     outs:
       - ${models.us.filename}:
-        cache: true
+          cache: true
 ```
 <!-- prettier-ignore-end -->
 
