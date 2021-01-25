@@ -173,8 +173,8 @@ then `git commit` `.dvc` files that contain file hashes that point to cached
 data.
 
 In this case we created `data.dvc` and `model.h5.dvc`. Refer to
-[DVC Files](/doc/user-guide/dvc-files#dvc-files) to learn more about how these
-files work.
+[DVC Files](/doc/user-guide/project-structure/dvc-files) to learn more about how
+these files work.
 
 </details>
 

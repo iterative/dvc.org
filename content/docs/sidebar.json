@@ -89,33 +89,32 @@
     "children": [
       {
         "label": "What is DVC?",
-        "slug": "what-is-dvc",
-        "source": "what-is-dvc.md"
+        "slug": "what-is-dvc"
       },
       {
-        "label": "DVC Files",
-        "slug": "dvc-files",
+        "slug": "project-structure",
+        "source": "user-guide/project-structure/index.md",
         "children": [
           {
-            "label": ".dvc files",
-            "slug": ".dvc"
+            "label": "Pipelines Files (dvc.yaml)",
+            "slug": "pipelines-files"
           },
           {
-            "label": "dvc.yaml & dvc.lock",
-            "slug": "dvc-yaml"
+            "label": ".dvc Files",
+            "slug": "dvc-files"
           },
           {
-            "label": "Advanced dvc.yaml",
-            "slug": "advanced-dvc-yaml"
+            "label": ".dvcignore Files",
+            "slug": "dvcignore-files",
+            "tutorials": {
+              "katacoda": "https://katacoda.com/dvc/courses/examples/dvcignore"
+            }
+          },
+          {
+            "label": "Internal Files",
+            "slug": "internal-files"
           }
         ]
-      },
-      "dvc-internals",
-      {
-        "slug": "dvcignore",
-        "tutorials": {
-          "katacoda": "https://katacoda.com/dvc/courses/examples/dvcignore"
-        }
       },
       {
         "label": "How To",
