@@ -1,8 +1,8 @@
 # IDE Plugins and Syntax Highlighting
 
 When files or directories are added to the project, or stages to a pipeline,
-[DVC files](/doc/user-guide/dvc-files) are created. These use a simple YAML
-format.
+[DVC files](/doc/user-guide/project-structure) are created. These use a simple
+YAML format.
 
 We maintain a [schema](https://github.com/iterative/dvcyaml-schema) for
 `dvc.yaml` that can enable IDE syntax checks and auto-completion.

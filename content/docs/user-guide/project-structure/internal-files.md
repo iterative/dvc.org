@@ -4,7 +4,7 @@ Once initialized in a <abbr>project</abbr>, DVC populates its installation
 directory (`.dvc/`) with the internal directories and files needed for DVC
 operation.
 
-> See also [DVC Files](/doc/user-guide/dvc-files).
+> See also `dvc.yaml` and `.dvc` files.
 
 - `.dvc/config`: This is a configuration file. The config file can be edited by
   hand or with the `dvc config` command.
@@ -23,9 +23,9 @@ operation.
   `dvc config cache` for related configuration options.
 
   > Note that DVC includes the cache directory in `.gitignore` during
-  > initialization. No data tracked by DVC will ever be pushed to the Git
-  > repository, only [DVC files](/doc/user-guide/dvc-files) that are needed to
-  > download or reproduce them.
+  > initialization. No data tracked by DVC should ever be pushed to the Git
+  > repository, only the [DVC files](/doc/user-guide/project-structure) that are
+  > needed to download or reproduce that data.
 
 - `.dvc/plots`: Directory for
   [plot templates](/doc/command-reference/plots#plot-templates)

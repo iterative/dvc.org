@@ -1,6 +1,6 @@
 # destroy
 
-Remove all [DVC files](/doc/user-guide/dvc-files) and
+Remove all [DVC files](/doc/user-guide/project-structure) and
 [internals](/doc/user-guide/dvc-internals) from a <abbr>DVC project</abbr>.
 
 ## Synopsis
@@ -21,9 +21,8 @@ Note that the <abbr>cache directory</abbr> will be removed as well, unless it's
 cache, DVC will replace them with the latest versions of the actual files and
 directories first, so that your data is intact after the project's destruction.
 
-> Refer to [DVC files](/doc/user-guide/dvc-files) and
-> [internals](/doc/user-guide/dvc-internals) for more details on the directories
-> and files deleted by this command.
+> Refer to [Project Structure](/doc/user-guide/project-structure) for more
+> details on the directories and files deleted by this command.
 
 ## Options
 

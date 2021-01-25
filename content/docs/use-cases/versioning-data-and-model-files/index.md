@@ -23,8 +23,8 @@ work!
 and models for you 💘._
 
 DVC enables data _versioning through codification_. You produce simple
-[metafiles](/doc/user-guide/dvc-files) once, describing what datasets, ML
-artifacts, etc. to track. This metadata can be put in Git in lieu of large
+[metafiles](/doc/user-guide/project-structure) once, describing what datasets,
+ML artifacts, etc. to track. This metadata can be put in Git in lieu of large
 files. Now you can use DVC to create [snapshots](/doc/command-reference/add) of
 the data, [restore](/doc/command-reference/checkout) previous versions,
 [reproduce](/doc/command-reference/repro) experiments, record evolving

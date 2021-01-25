@@ -118,9 +118,9 @@ This is the main section with the general config options:
   (default) and `false`.
 
 - `core.autostage` - if enabled, DVC will automatically stage (`git add`)
-  [DVC files](/doc/user-guide/dvc-files) created or modified by DVC commands
-  (`dvc add`, `dvc run`, etc.). The files will not be committed. Accepts values
-  `true` and `false` (default).
+  [DVC files](/doc/user-guide/project-structure) created or modified by commands
+  like `dvc add`, `dvc run`, etc. The files will not be committed. Accepts
+  values `true` and `false` (default).
 
 ### remote
 

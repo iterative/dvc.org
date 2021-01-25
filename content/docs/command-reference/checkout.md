@@ -18,9 +18,10 @@ positional arguments:
 ## Description
 
 This command is usually needed after `git checkout`, `git clone`, or any other
-operation that changes the current [DVC files](/doc/user-guide/dvc-files). It
-restores the corresponding versions of the DVC-tracked files and directories
-from the <abbr>cache</abbr> to the workspace.
+operation that changes the current
+[DVC files](/doc/user-guide/project-structure). It restores the corresponding
+versions of the DVC-tracked files and directories from the <abbr>cache</abbr> to
+the workspace.
 
 The `targets` given to this command (if any) limit what to checkout. It accepts
 paths to tracked files or directories (including paths inside tracked
@@ -85,9 +86,10 @@ the pipeline must be reproduced (using `dvc repro`) to regenerate its outputs.
   files referenced in later stages than the `targets`.
 
 - `-f`, `--force` - does not prompt when removing workspace files. Changing the
-  current set of [DVC files](/doc/user-guide/dvc-files) with `git checkout` can
-  result in the need for DVC to remove files that don't match those references
-  or are missing from cache. (They are not "committed", in DVC terms.)
+  current set of [DVC files](/doc/user-guide/project-structure) with
+  `git checkout` can result in the need for DVC to remove files that don't match
+  those references or are missing from cache. (They are not "committed", in DVC
+  terms.)
 
 - `--relink` - ensures the file linking strategy (`reflink`, `hardlink`,
   `symlink`, or `copy`) for all data in the workspace is consistent with the

@@ -8,8 +8,8 @@ from multiple team members.'
 
 Sometimes multiple members of a team might work on the the same DVC-tracked
 data. And when the time comes to combine their changes, merge conflicts can
-happen in Git-tracked [DVC files](/doc/user-guide/dvc-files), which need to be
-resolved.
+happen in Git-tracked [DVC files](/doc/user-guide/project-structure), which need
+to be resolved.
 
 ## `dvc.yaml`
 
