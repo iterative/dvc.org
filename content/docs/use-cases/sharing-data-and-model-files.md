@@ -72,7 +72,7 @@ pushed with Git.
 
 ## Download code
 
-Please use regular Git commands to download code and DVC-files from your Git
+Please use regular Git commands to download code and DVC files from your Git
 servers. For example:
 
 ```dvc

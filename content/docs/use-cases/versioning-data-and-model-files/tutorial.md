@@ -288,9 +288,9 @@ the `v2.0` tag.
 As we have learned already, DVC keeps data files out of Git (by adjusting
 `.gitignore`) and puts them into the <abbr>cache</abbr> (usually it's a
 `.dvc/cache` directory inside the repository). Instead, DVC creates
-[DVC files](/doc/user-guide/dvc-files). These text files serve as data
-placeholders that point to the cached files, and they can be easily version
-controlled with Git.
+[DVC files](/doc/user-guide/project-structure). These text files serve as data
+placeholders that point to the cached files, and they can be easily versioned
+with Git.
 
 When we run `git checkout` we restore pointers (`.dvc` files) first. Then, when
 we run `dvc checkout`, we use these pointers to put the right data in the right
