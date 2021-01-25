@@ -157,7 +157,7 @@ stages:
 To load additional params files, list them in the top `vars`, in the desired
 order, e.g.:
 
-> Their paths will be evaluated based on
+> Params file paths will be evaluated based on
 > [`wdir`](/doc/user-guide/dvc-files/dvc.yaml#accepted-fields), if one given.
 
 ```yaml
@@ -238,7 +238,7 @@ stages:
     foreach: # List of simple values
       - raw1
       - labels1
-      - raw2 labels2
+      - raw2
     do:
       cmd: clean.py "${item}"
       out:
