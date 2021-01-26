@@ -164,7 +164,7 @@ $ git tag -a "v1.0" -m "model v1.0, 1000 images"
 
 <details>
 
-### Expand to learn more about DVC internals
+### Expand to learn more about how DVC works
 
 As we mentioned briefly, DVC does not commit the `data/` directory and
 `model.h5` file with Git. Instead, `dvc add` stores them in the
