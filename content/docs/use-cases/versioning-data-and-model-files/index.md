@@ -35,10 +35,10 @@ the data, [restore](/doc/command-reference/checkout) previous versions,
 to learn how DVC looks and feels firsthand.
 
 As you use DVC, unique versions of your data files and directories are
-[cached](/doc/user-guide/dvc-internals#structure-of-the-cache-directory) in a
-systematic way (preventing file duplication). The working datastore is separated
-from your <abbr>workspace</abbr> to keep the project light, but stays connected
-via file
+[cached](/doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory)
+in a systematic way (preventing file duplication). The working datastore is
+separated from your <abbr>workspace</abbr> to keep the project light, but stays
+connected via file
 [links](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
 handled automatically by DVC.
 

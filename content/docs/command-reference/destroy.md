@@ -1,7 +1,8 @@
 # destroy
 
 Remove all [DVC files](/doc/user-guide/project-structure) and
-[internals](/doc/user-guide/dvc-internals) from a <abbr>DVC project</abbr>.
+[internals](/doc/user-guide/project-structure/internal-files) from a <abbr>DVC
+project</abbr>.
 
 ## Synopsis
 

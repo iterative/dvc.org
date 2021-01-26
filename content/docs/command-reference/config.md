@@ -207,8 +207,9 @@ This section contains the following options, which affect the project's
 
 ### state
 
-See [Internal directories and files](/doc/user-guide/dvc-internals) to learn
-more about the state file (database) that is used for optimization.
+See
+[Internal directories and files](/doc/user-guide/project-structure/internal-files)
+to learn more about the state file (database) that is used for optimization.
 
 - `state.row_limit` - maximum number of entries in the state database, which
   affects the physical size of the state file itself, as well as the performance
