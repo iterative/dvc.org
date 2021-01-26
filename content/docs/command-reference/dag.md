@@ -44,6 +44,9 @@ restore one or more pipelines later (see `dvc repro`).
   [DOT](<https://en.wikipedia.org/wiki/DOT_(graph_description_language)>)
   format. It can be passed to third party visualization utilities.
 
+- `-o`, `--outs` - show a DAG of chained dependencies and outputs instead of the
+  stages themselves. The graph may be significantly different.
+
 - `-h`, `--help` - prints the usage/help message, and exit.
 
 - `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if no
@@ -106,4 +109,33 @@ $ dvc dag
         +----------+
         | evaluate |
         +----------+
+```
+
+The pipeline can also be seen from the point of view of how stage
+outputs/dependencies are connected (using the `--outs` option). Notice that the
+resulting graph may be different:
+
+```dvc
+$ dvc dag --outs
+                  +---------------+
+                  | data/prepared |
+                  +---------------+
+                          *
+                          *
+                          *
+                  +---------------+
+                  | data/features |
+                **+---------------+**
+            ****          *          *****
+       *****              *               ****
+   ****                   *                   ****
+***                 +-----------+                 ***
+  **                | model.pkl |                **
+    **              +-----------+              **
+      **           **           **           **
+        **       **               **       **
+          **   **                   **   **
+      +-------------+            +----------+
+      | scores.json |            | prc.json |
+      +-------------+            +----------+
 ```

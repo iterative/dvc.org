@@ -30,7 +30,7 @@ Advantages of data registries:
   management and optimizes space requirements.
 - **Data as code**: leverage Git workflows such as commits, branching, pull
   requests, reviews, and even CI/CD for your data and models lifecycle. Think
-  "Git for cloud storage", but without ad-hoc conventions.
+  "Git for cloud storage".
 - **Security**: registries can be setup with read-only remote storage (e.g. an
   HTTP server).
 
@@ -183,7 +183,7 @@ $ git commit -am "Add 1,000 more songs to music/ dataset."
 
 Iterating on this process for several datasets can give shape to a robust
 registry. The result is basically a repo that versions a set of
-[metafiles](/doc/user-guide/dvc-files-and-directories). Let's see an example:
+[metafiles](/doc/user-guide/project-structure). Let's see an example:
 
 ```dvc
 $ tree --filelimit=10

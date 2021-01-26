@@ -1,13 +1,14 @@
 # params diff
 
-Show changes in [parameter dependencies](/doc/command-reference/params) between
-commits in the <abbr>DVC repository</abbr>, or between a commit and the
+Show changes in [parameters](/doc/command-reference/params) between commits in
+the <abbr>DVC repository</abbr>, or between a commit and the
 <abbr>workspace</abbr>.
 
 ## Synopsis
 
 ```usage
-usage: dvc params diff [-h] [-q | -v] [--all] [--show-json] [--show-md]
+usage: dvc params diff [-h] [-q | -v] [--targets [<paths> [<paths> ...]]]
+                       [--all] [--show-json] [--show-md] [--no-path]
                        [a_rev] [b_rev]
 
 positional arguments:
@@ -18,24 +19,37 @@ positional arguments:
 
 ## Description
 
-This command provides a quick way to compare parameter values among experiments
-in the repository history. Requires that Git is being used to version the
-project params.
+Provides a quick way to compare parameter values among experiments in the
+repository history. Requires that Git is being used to version the project
+params.
 
-> Parameter dependencies are defined with the `-p` option in `dvc run`. See also
-> `dvc params`.
+> Parameter dependencies are defined in the `params` field of `dvc.yaml` (e.g.
+> with the the `-p` (`--params`) option of `dvc run`).
 
-Run without arguments, this command compares parameters currently present in the
+Without arguments, this command compares parameters currently present in the
 <abbr>workspace</abbr> (uncommitted changes) with the latest committed version.
+This includes everything in `params.yaml` (default parameters file) as well all
+the `params` used in `dvc.yaml`. Values in `dvc.lock` are used for comparison.
+Only params that have changes are listed.
 
-Supported parameter _value_ types are: string, integer, float, and arrays. DVC
-itself does not ascribe any specific meaning for these values.
-
-❗ By default it only shows parameters that were changed.
+> Note that unlike `dvc diff`, this command doesn't always need DVC files to
+> find params files (see `--targets` option). For that reason, it doesn't
+> require an existing DVC project to run in. It can work in any Git repo.
 
 ## Options
 
-- `--all` - prints all parameters including not changed.
+- `--targets <paths>` - specific params files to compare. It accepts `paths` to
+  any valid parameters file, regardless of whether `dvc.yaml` is currently
+  tracking any params in them.
+
+  When specifying arguments for `--targets` before `a_rev`/`b_rev`, you should
+  use `--` after this option's arguments (POSIX terminals), e.g.:
+
+  ```dvc
+  $ dvc params diff --targets m1.json m2.yaml -- HEAD v1
+  ```
+
+- `--all` - list all parameters, including those without changes.
 
 - `--show-json` - prints the command's output in easily parsable JSON format,
   instead of a human-readable table.

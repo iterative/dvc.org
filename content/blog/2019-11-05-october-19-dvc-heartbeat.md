@@ -193,9 +193,9 @@ move should be instant. Please, find more information
 ### Q: My repo’s DVC is “busy and locked” and I’m not sure how it got that way and how to remove/diagnose the lock. [Any suggestions?](https://discordapp.com/channels/485586884165107732/485596304961962003/608392956679815168)
 
 DVC uses a lock file to prevent running two commands at the same time. The lock
-[file](https://dvc.org/doc/user-guide/dvc-files-and-directories#dvc-files-and-directories)
-is under the `.dvc` directory. If no DVC commands running and you are still
-getting this error it’s safe to remove this file manually to resolve the issue.
+[file](https://dvc.org/doc/user-guide/dvc-internals) is under the `.dvc`
+directory. If no DVC commands running and you are still getting this error it’s
+safe to remove this file manually to resolve the issue.
 
 ### Q: [I’m trying to understand how does DVC remote add work in case of a local folder and what is the best workflow when data is outside of your project root?](https://discordapp.com/channels/485586884165107732/485596304961962003/611209851757920266)
 
@@ -250,7 +250,7 @@ advanced[ DVC setup with symlinks and hardlinks](https://dvc.org/doc/user-guide/
 (`cache.type` config option is not default). If `dvc gc` behavior is not
 granular enough you can manually find the by its cache from the DVC-file in
 `.dvc/cache` and remote storage. Learn
-[here](https://dvc.org/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory)
+[here](https://dvc.org/doc/user-guide/dvc-internals#structure-of-cache-directory)
 how they are organized.
 
 ### Q: [I’m trying to understand if DVC is an appropriate solution for storing data under GDPR requirements.](https://discordapp.com/channels/485586884165107732/485596304961962003/621057268145848340) That means that permanent deletion of files with sensitive data needs to be fully supported.

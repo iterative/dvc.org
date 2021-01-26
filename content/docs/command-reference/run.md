@@ -73,7 +73,7 @@ so on (see `dvc dag`). This graph can be restored by DVC later to modify or
 
 ```dvc
 $ dvc run -n printer -d write.sh -o pages ./write.sh
-$ dvc run -n scanner -d read.sh -d pages -o signed.pdf ./read.sh
+$ dvc run -n scanner -d read.sh -d pages -o signed.pdf ./read.sh pages
 ```
 
 Stage dependencies can be any file or directory, either untracked, or more
@@ -97,7 +97,7 @@ Relevant notes:
 
 - Entire directories produced by the stage can be tracked as outputs by DVC,
   which generates a single `.dir` entry in the cache (refer to
-  [Structure of cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-the-cache-directory)
+  [Structure of cache directory](/doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory)
   for more info.)
 
 - [external dependencies](/doc/user-guide/external-dependencies) and
@@ -105,9 +105,10 @@ Relevant notes:
   <abbr>workspace</abbr>) are also supported (except metrics and plots).
 
 - Outputs are deleted from the workspace before executing the command (including
-  at `dvc repro`) if their paths are found as existing files/directories. This
-  also means that the stage command needs to recreate any directory structures
-  defined as outputs every time its executed by DVC.
+  at `dvc repro`) if their paths are found as existing files/directories (unless
+  `--outs-persist` is used). This also means that the stage command needs to
+  recreate any directory structures defined as outputs every time its executed
+  by DVC.
 
 - In some situations, we have previously executed a stage, and later notice that
   some of the files/directories used by the stage as dependencies, or created as
@@ -139,7 +140,7 @@ run directly, for example a shell built-in, expression, or binary found in
 `PATH`. Please remember that any flags sent after the `command` are interpreted
 by the command itself, not by `dvc run`.
 
-⚠️ Note that while DVC is platform-agnostic, the commands defined in your
+⚠️ While DVC is platform-agnostic, the commands defined in your
 [pipeline](/doc/command-reference/dag) stages may only work on some operating
 systems and require certain software packages to be installed.
 
@@ -149,8 +150,8 @@ like `|` (pipe) or `<`, `>` (redirection), otherwise they would apply to
 variables in it that should be evaluated dynamically. Examples:
 
 ```dvc
-$ dvc run -n my_stage "./my_script.sh > /dev/null 2>&1"
-$ dvc run -n my_stage './my_script.sh $MYENVVAR'
+$ dvc run -n first_stage "./a_script.sh > /dev/null 2>&1"
+$ dvc run -n second_stage './another_script.sh $MYENVVAR'
 ```
 
 ## Options
@@ -185,7 +186,8 @@ $ dvc run -n my_stage './my_script.sh $MYENVVAR'
   reason.
 
 - `--outs-persist <path>` - declare output file or directory that will not be
-  removed upon `dvc repro`.
+  removed when `dvc repro` starts (but it can still be modified, overwritten, or
+  even deleted by the stage command(s)).
 
 - `--outs-persist-no-cache <path>` - the same as `-outs-persist` except that
   outputs are not tracked by DVC (same as with `-O` above).
@@ -228,15 +230,12 @@ $ dvc run -n my_stage './my_script.sh $MYENVVAR'
   It's used by `dvc repro` to change the working directory before executing the
   `command`.
 
-- `--no-exec` - write the stage to `dvc.yaml`, but do not execute its `command`.
-  Any dependencies and outputs will be entered in `.gitignore`, but won't be
-  cached (like with `--no-commit` below) or recorded in `dvc.lock`. You can use
-  `dvc commit` to save any existing dep/out files to the cache and record their
-  hashes to the lock file.
-
-  This is useful, for example, if you need to define a pipeline quickly (and
-  perhaps share it with others) before executing anything, and run all its
-  stages at once later (with `dvc repro`).
+- `--no-exec` - write the stage to `dvc.yaml`, but do not execute the `command`.
+  DVC will still add the outputs to `.gitignore`, but they won't be cached or
+  recorded in `dvc.lock` (like with `--no-commit` below). This is useful if you
+  need to define a pipeline quickly, and `dvc repro` it later; or if the stage
+  outputs already exist and you want to "DVCfy" this state of the project (see
+  also `dvc commit`).
 
 - `-f`, `--force` - overwrite an existing stage in `dvc.yaml` file without
   asking for confirmation.
@@ -255,8 +254,8 @@ $ dvc run -n my_stage './my_script.sh $MYENVVAR'
   `always_changed` field in `dvc.yaml`). As a result `dvc status` will report it
   as `always changed` and `dvc repro` will always execute it.
 
-  > Note that DVC-files without dependencies are automatically considered
-  > "always changed", so this option has no effect in those cases.
+  > Note that regular `.dvc` files (without dependencies) are automatically
+  > considered "always changed", so this option has no effect in those cases.
 
 - `--external` - allow writing outputs outside of the DVC repository. See
   [Managing External Data](/doc/user-guide/managing-external-data).
@@ -318,17 +317,17 @@ dataset (`20180226` is a seed value):
 
 ```dvc
 $ dvc run -n train \
-          -d matrix-train.p -d train_model.py \
-          -o model.p \
-          python train_model.py matrix-train.p 20180226 model.p
+          -d train_model.py -d matrix-train.p -o model.p \
+          python train_model.py 20180226 model.p
 ```
 
 To update a stage that is already defined, the `-f` (`--force`) option is
 needed. Let's update the seed for the `train` stage:
 
 ```dvc
-$ dvc run -n train -f -d matrix-train.p -d train_model.py -o model.p \
-          python train_model.py matrix-train.p 18494003 model.p
+$ dvc run -n train --force \
+          -d train_model.p -d matrix-train.p -o model.p \
+          python train_model.py 18494003 model.p
 ```
 
 ## Example: Separate stages in a subdirectory
@@ -422,9 +421,9 @@ Define a stage with both regular dependencies as well as parameter dependencies:
 
 ```dvc
 $ dvc run -n train \
-          -d matrix-train.p -d train_model.py -o model.p \
+          -d train_model.py -d matrix-train.p  -o model.p \
           -p seed,train.lr,train.epochs
-          python train_model.py matrix-train.p model.p
+          python train_model.py 20200105 model.p
 ```
 
 `train_model.py` will include some code to open and parse the parameters:

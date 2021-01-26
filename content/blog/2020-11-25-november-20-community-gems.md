@@ -81,7 +81,7 @@ https://<path-to-your-remote-storage>/ab/cd123
 To better understand how DVC uses
 [content-addressable storage](https://en.wikipedia.org/wiki/Content-addressable_storage)
 in your remote,
-[read up in our docs](https://dvc.org/doc/user-guide/dvc-files-and-directories#structure-of-the-cache-directory).
+[read up in our docs](https://dvc.org/doc/user-guide/dvc-internals#structure-of-the-cache-directory).
 
 ### [Q: Can I have more than one `dvc.yaml` file in my project?](https://discord.com/channels/485586884165107732/563406153334128681/777946398250893333)
 
@@ -110,7 +110,7 @@ Alternatively, you can manually find and delete your files:
 2. Look in your remote storage and remove the file matching the hash.
 3. Look in `.dvc/cache` and remove the file as well. If you'd like to better
    understand how your cache is organized,
-   [we have docs for that](https://dvc.org/doc/user-guide/dvc-files-and-directories#structure-of-the-cache-directory).
+   [we have docs for that](https://dvc.org/doc/user-guide/dvc-internals#structure-of-the-cache-directory).
 
 Your DVC remote storage and cache are simply storage locations, so once your
 file is gone from there it's gone for good.

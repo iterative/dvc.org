@@ -25,7 +25,7 @@ ones that are ignored indeed are printed back.
   series of lines are printed in this format:
   `<path/to/.dvcignore>:<line_num>:<pattern> <target_path>`
 
-- `-a`, `--all` - include all the patterns that match each target path in the
+- `-a`, `--all` - list all patterns that match each target path in the
   `--details` list. Has no effect without `--details`.
 
 - `-n`, `--non-matching` - include the target paths which don’t match any

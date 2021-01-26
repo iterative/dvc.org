@@ -1,4 +1,8 @@
-# Data Access
+---
+title: 'Get Started: Data Access'
+---
+
+# Get Started: Data Access
 
 Okay, now that we've learned how to _track_ data and models with DVC and how to
 version them with Git, next question is how can we _use_ these artifacts outside

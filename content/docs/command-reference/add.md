@@ -7,7 +7,7 @@ file.
 
 ```usage
 usage: dvc add [-h] [-q | -v] [-R] [--no-commit] [--external]
-               [--file <filename>] [--glob] [--desc <text>]
+               [--glob] [--file <filename>] [--desc <text>]
                targets [targets ...]
 
 positional arguments:
@@ -38,7 +38,7 @@ other DVC commands), a few actions are taken under the hood:
 1. Calculate the file hash.
 2. Move the file contents to the cache (by default in `.dvc/cache`), using the
    file hash to form the cached file path. (See
-   [Structure of cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-the-cache-directory)
+   [Structure of cache directory](/doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory)
    for more details.)
 3. Attempt to replace the file with a link to the cached data (more details on
    file linking further down).
@@ -76,13 +76,13 @@ A `dvc add` target can be either a file or a directory. In the latter case, a
 `.dvc` file is created for the top of the hierarchy (with default name
 `<dir_name>.dvc`).
 
-Every file inside is stored in the cache (unless the `--no-commit` option is
-used), but DVC does not produce individual `.dvc` files for each file in the
-entire tree. Instead, the single `.dvc` file references a special JSON file in
-the cache (with `.dir` extension), that in turn points to the added files.
+Every file in the dir is cached normally (unless the `--no-commit` option is
+used), but DVC does not produce individual `.dvc` files for each one. Instead,
+the single `.dvc` file references a special JSON file in the cache (with `.dir`
+extension), that in turn points to the added files.
 
 > Refer to
-> [Structure of cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-the-cache-directory)
+> [Structure of cache directory](/doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory)
 > for more info. on `.dir` cache entries.
 
 Note that DVC commands that use tracked data support granular targeting of files
@@ -192,8 +192,8 @@ $ file .dvc/cache/d8/acabbfd4ee51c95da5d7628c7ef74b
 .dvc/cache/61/37cde4893c59f76f005a8123d8e8e6: ASCII text
 ```
 
-⚠️ Note that tracking compressed files (e.g. ZIP or TAR archives) is not
-recommended, as `dvc add` supports tracking directories (details below).
+⚠️ Tracking compressed files (e.g. ZIP or TAR archives) is not recommended, as
+`dvc add` supports tracking directories (details below).
 
 ## Example: Directory
 

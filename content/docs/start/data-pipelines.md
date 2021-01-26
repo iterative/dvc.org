@@ -72,7 +72,7 @@ $ dvc run -n prepare \
 ```
 
 A `dvc.yaml` file is generated. It includes information about the command we ran
-(`python src/prepare.py`), its <abbr>dependencies</abbr>, and
+(`python src/prepare.py data/data.xml`), its <abbr>dependencies</abbr>, and
 <abbr>outputs</abbr>.
 
 <details>
@@ -120,18 +120,17 @@ prepare:
   ```
 
 - The last line, `python src/prepare.py ...`, is the command to run in this
-  stage, and it's saved to the stage file, as shown below.
+  stage, and it's saved to `dvc.yaml`, as shown below.
 
-The resulting `prepare` stage in the `dvc.yaml` contains all of the information
-above:
+The resulting `prepare` stage contains all of the information above:
 
 ```yaml
 stages:
   prepare:
     cmd: python src/prepare.py data/data.xml
     deps:
-      - data/data.xml
       - src/prepare.py
+      - data/data.xml
     params:
       - prepare.seed
       - prepare.split
@@ -145,7 +144,7 @@ There's no need to use `dvc add` for DVC to track stage outputs (`data/prepared`
 in this case); `dvc run` already took care of this. You only need to run
 `dvc push` if you want to save them to
 [remote storage](/doc/tutorials/get-started/data-versioning#storing-and-sharing),
-(usually along with `git commit` to version the stage file itself).
+(usually along with `git commit` to version `dvc.yaml` itself).
 
 ## Dependency graphs (DAGs)
 
@@ -318,7 +317,7 @@ important problems:
 ## Visualize
 
 Having built our pipeline, we need a good way to understand its structure.
-Seeing a graph of connected stage files would help. DVC lets you do just that,
+Seeing a graph of connected stages would help. DVC lets you do just that,
 without leaving the terminal!
 
 ```dvc
