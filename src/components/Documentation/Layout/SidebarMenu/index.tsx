@@ -50,12 +50,14 @@ const SidebarMenuItem: React.FC<ISidebarMenuItemProps> = ({
   icon,
   type
 }) => {
-  const [isActive, setIsActive] = useState(
+  const isActive = activePaths && includes(activePaths, path)
+
+  const [isExpanded, setIsExpanded] = useState(
     activePaths && includes(activePaths, path)
   )
 
   useEffect(() => {
-    setIsActive(activePaths && includes(activePaths, path))
+    setIsExpanded(activePaths && includes(activePaths, path))
   }, [activePaths])
 
   const isRootParent =
@@ -64,16 +66,16 @@ const SidebarMenuItem: React.FC<ISidebarMenuItemProps> = ({
   const currentLevelOnClick = (
     event: SyntheticEvent<HTMLAnchorElement>
   ): void => {
-    if (event.currentTarget.getAttribute('aria-current') === 'page') {
+    if (isActive) {
       event.preventDefault()
-      setIsActive(!isActive)
+      setIsExpanded(!isExpanded)
     }
     onClick(isLeafItem)
   }
 
   const bulletIconClick = (event: SyntheticEvent<HTMLSpanElement>): void => {
     event.preventDefault()
-    setIsActive(!isActive)
+    setIsExpanded(!isExpanded)
   }
 
   // Fetch a special icon if one is defined
@@ -84,7 +86,7 @@ const SidebarMenuItem: React.FC<ISidebarMenuItemProps> = ({
 
   const className = cn(
     styles.sectionLink,
-    isActive && styles.active,
+    isExpanded && styles.active,
     isRootParent && 'docSearch-lvl0',
     'link-with-focus',
     style ? styles[style] : styles.sidebarDefault,
@@ -129,8 +131,8 @@ const SidebarMenuItem: React.FC<ISidebarMenuItemProps> = ({
     <>
       {parentElement}
       {children && (
-        <span hidden={!isActive}>
-          <Collapse isOpened={!!isActive}>
+        <span hidden={!isExpanded}>
+          <Collapse isOpened={!!isExpanded}>
             {children.map(item => (
               <SidebarMenuItem
                 key={item.path}
