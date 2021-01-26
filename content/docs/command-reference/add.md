@@ -57,8 +57,8 @@ other DVC commands), a few actions are taken under the hood:
 Summarizing, the result is that the target data is replaced by small `.dvc`
 files that can be easily tracked with Git.
 
-It's possible to prevent files or directories from being added by DVC by adding
-the corresponding patterns in a [`.dvcignore`](/doc/user-guide/dvcignore) file.
+It's possible to prevent files or directories from being added by DVC by
+entering the corresponding patterns in a `.dvcignore` file.
 
 You can also [undo `dvc add`](/doc/user-guide/how-to/stop-tracking-data) to stop
 tracking files or directories.
@@ -96,7 +96,7 @@ adding several data files grouped in a structural directory, but it's
 undesirable for data directories with a large number of files.
 
 To avoid adding files inside a directory accidentally, you can add the
-corresponding [patterns](/doc/user-guide/dvcignore) to `.dvcignore`.
+corresponding patterns to `.dvcignore`.
 
 ### Adding symlink targets {#add-symlink}
 
@@ -275,7 +275,7 @@ Note that no top-level `.dvc` file is generated, which is typically less
 convenient. For example, we cannot use the directory structure as one unit with
 `dvc run` or other commands.
 
-## Example: Dvcignore
+## Example .dvcignore
 
 Let's take an example to illustrate how `.dvcignore` interacts with `dvc add`.
 
@@ -316,5 +316,3 @@ $ tree .dvc/cache
 
 Only the hash values of the `dir/` directory (with `.dir` file extension) and
 `file2` have been cached.
-
-See [Dvcignore](/doc/user-guide/dvcignore) for more details.
