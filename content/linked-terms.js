@@ -1,7 +1,7 @@
 module.exports = [
   {
     matches: 'dvc.yaml',
-    url: '/doc/user-guide/creating-pipelines#dvc-yaml-files'
+    url: '/doc/user-guide/project-structure/pipelines-files'
   },
   {
     matches: 'dvc.lock',
@@ -9,7 +9,7 @@ module.exports = [
   },
   {
     matches: '.dvc',
-    url: '/doc/user-guide/tracking-existing-data#dot-dvc-files'
+    url: '/doc/user-guide/project-structure/dvc-files'
   },
   {
     matches: '.dvc/',
