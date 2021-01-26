@@ -67,8 +67,8 @@ with the `dvc push` command:
 $ dvc push
 ```
 
-Code and [DVC files](/doc/user-guide/project-structure/pipelines-files) can be
-safely committed and pushed with Git.
+Code and [DVC project files](/doc/user-guide/project-structure/pipelines-files)
+can be safely committed and pushed with Git.
 
 ## Download code
 

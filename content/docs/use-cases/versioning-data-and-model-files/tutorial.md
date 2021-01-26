@@ -136,7 +136,7 @@ intermediate results, etc. It tells Git to ignore the directory and puts it into
 the <abbr>cache</abbr> (while keeping a
 [file link](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
 to it in the <abbr>workspace</abbr>, so you can continue working the same way as
-before). This is achieved by creating a simple human-readable `.dvc` file that
+before). This is achieved by creating a tiny, human-readable `.dvc` file that
 serves as a pointer to the cache.
 
 Next, we train our first model with `train.py`. Because of the small dataset,
@@ -168,13 +168,10 @@ $ git tag -a "v1.0" -m "model v1.0, 1000 images"
 
 As we mentioned briefly, DVC does not commit the `data/` directory and
 `model.h5` file with Git. Instead, `dvc add` stores them in the
-<abbr>cache</abbr> (usually in `.dvc/cache`) and adds them to `.gitignore`. We
-then `git commit` `.dvc` files that contain file hashes that point to cached
-data.
+<abbr>cache</abbr> (usually in `.dvc/cache`) and adds them to `.gitignore`.
 
-In this case we created `data.dvc` and `model.h5.dvc`. Refer to
-[DVC Files](/doc/user-guide/project-structure/dvc-files) to learn more about how
-these files work.
+In this case, we created `data.dvc` and `model.h5.dvc`, which contain file
+hashes that point to cached data. We then `git commit` these `.dvc` files.
 
 </details>
 
@@ -270,7 +267,7 @@ or model files each time. So `dvc checkout` is quick even if you have large
 datasets, data files, or models.
 
 On the other hand, if we want to keep the current code, but go back to the
-previous dataset version, we can do something like this:
+previous dataset version, we can target specific data, like this:
 
 ```dvc
 $ git checkout v1.0 data.dvc
@@ -280,22 +277,6 @@ $ dvc checkout data.dvc
 If you run `git status` you'll see that `data.dvc` is modified and currently
 points to the `v1.0` version of the dataset, while code and model files are from
 the `v2.0` tag.
-
-<details>
-
-### Expand to learn more about DVC files
-
-As we have learned already, DVC keeps data files out of Git (by adjusting
-`.gitignore`) and puts them into the <abbr>cache</abbr> (usually it's a
-`.dvc/cache` directory inside the repository). Instead, DVC creates
-[DVC files](/doc/user-guide/project-structure). These text files serve as data
-placeholders that point to the cached files, and they can be easily version
-controlled with Git.
-
-When we run `git checkout` we restore these pointers first. Then, when we run
-`dvc checkout`, we use these pointers to put the right data in the right place.
-
-</details>
 
 ## Automating capturing
 
