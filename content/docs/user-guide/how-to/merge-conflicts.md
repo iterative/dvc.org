@@ -1,15 +1,14 @@
 ---
 title: 'How to Merge Conflicts'
-description: 'Git merge conflicts can happen in DVC project files when combining
-changes from multiple team members.'
+description: 'Git merge conflicts can happen in DVC files when combining changes
+from multiple team members.'
 ---
 
 # How to Merge Conflicts in DVC Files
 
 Sometimes multiple tam members work on the the same DVC-tracked data. When the
 time comes to combine their changes, merge conflicts can occur in Git-tracked
-[DVC project files](/doc/user-guide/project-structure), which need to be
-resolved.
+<abbr>DVC files</abbr>, which need to be resolved.
 
 ## `dvc.yaml`
 

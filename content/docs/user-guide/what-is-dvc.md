@@ -50,7 +50,7 @@ can version experiments, manage large datasets, and make projects reproducible.
 
 ## DVC does not replace Git!
 
-DVC file such as `dvc.yaml` and `.dvc` files serve as placeholders to track
+DVC files such as `dvc.yaml` and `.dvc` files serve as placeholders to track
 large data files and directories for versioning (among other
 [purposes](/doc/user-guide/project-structure)). These metafiles change along
 with your data, and you can use Git to place them under

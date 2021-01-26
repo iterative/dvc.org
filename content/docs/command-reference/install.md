@@ -169,10 +169,9 @@ $ dvc pull -aT
 ## Example: Checkout both Git and DVC
 
 Switching from one Git commit to another (with `git checkout`) may change the
-[set of DVC files](/doc/user-guide/project-structure) in the
-<abbr>workspace</abbr>. This would mean that the currently present data files
-and directories no longer matches project's version (which can be fixed with
-`dvc checkout`).
+set of <abbr>DVC files</abbr> in the <abbr>workspace</abbr>. This could mean
+that the currently present data no longer matches the project's version (which
+can be fixed with `dvc checkout`).
 
 Let's first list the available tags in the _Get Started_ repo:
 
@@ -267,7 +266,7 @@ Data and pipelines are up to date.
 
 Look carefully at this output and it is clear that the `dvc checkout` command
 has indeed been run. As a result the workspace is up to date with the data files
-matching what is referenced by the DVC files.
+matching what is referenced in the <abbr>DVC files</abbr>.
 
 ## Example: Showing DVC status when committing with Git
 

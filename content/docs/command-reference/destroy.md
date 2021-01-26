@@ -1,6 +1,6 @@
 # destroy
 
-Remove all [DVC files](/doc/user-guide/project-structure) and
+Remove all <abbr>DVC files</abbr> and
 [internals](/doc/user-guide/project-structure/internal-files) from a <abbr>DVC
 project</abbr>.
 
@@ -12,7 +12,7 @@ usage: dvc destroy [-h] [-q | -v] [-f]
 
 ## Description
 
-`dvc destroy` removes `dvc.yaml`, `.dvc` files, and the internal `.dvc/`
+`dvc destroy` removes `dvc.yaml` and `.dvc` files, and the internal `.dvc/`
 directory from the <abbr>workspace</abbr>.
 
 Note that the <abbr>cache directory</abbr> will be removed as well, unless it's
