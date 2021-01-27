@@ -5,11 +5,6 @@
 
 ## Install with brew
 
-> ⚠️ Currently there is no brew bottle for Apple Silicon M1, so installation
-> might fail on M1 machines. See
-> [this issue](https://github.com/iterative/dvc.org/issues/2113) for more
-> details.
-
 Recommended. Requires [Homebrew](https://brew.sh/).
 
 ```dvc
