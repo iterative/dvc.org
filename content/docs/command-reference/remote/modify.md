@@ -85,10 +85,10 @@ The following config options are available for all remote types:
   ```
 
 - `verify` - upon downloading <abbr>cache</abbr> files (`dvc pull`, `dvc fetch`)
-  DVC will recalculate the file hashes upon download (e.g. `dvc pull`) to make
-  sure that these haven't been modified, or corrupted during download. It may
-  slow down the aforementioned commands. The calculated hash is compared to the
-  value saved in the corresponding [DVC file](/doc/user-guide/dvc-files).
+  DVC will recalculate the file hashes, to make sure that these haven't been
+  modified or corrupted. This may slow down the aforementioned commands. The
+  calculated hash is compared to the value saved in the corresponding <abbr>DVC
+  file</abbr>.
 
   > Note that this option is enabled on **Google Drive** remotes by default.
 

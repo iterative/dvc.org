@@ -36,7 +36,7 @@ URL returned depends on the
 `remote` used (see the [Parameters](#parameters) section).
 
 If the target is a directory, the returned URL will end in `.dir`. Refer to
-[Structure of cache directory](/doc/user-guide/dvc-internals#structure-of-the-cache-directory)
+[Structure of cache directory](/doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory)
 and `dvc add` to learn more about how DVC handles data directories.
 
 ⚠️ This function does not check for the actual existence of the file or

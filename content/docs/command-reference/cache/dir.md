@@ -18,7 +18,7 @@ positional arguments:
 ## Description
 
 Helper to set the `cache.dir` configuration option. (See
-[cache directory](/doc/user-guide/dvc-internals#structure-of-the-cache-directory).)
+[cache directory](/doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory).)
 Unlike doing so with `dvc config cache`, `dvc cache dir` transform paths
 (`value`) that are provided relative to the current working directory into paths
 **relative to the config file location**. However, if the `value` provided is an

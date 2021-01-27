@@ -25,12 +25,11 @@ explicitly provide the right set of options to specify what data is still needed
 One of the scope options (`--workspace`, `--all-branches`, `--all-tags`,
 `--all-commits`) or a combination of them must be provided. Each of them
 corresponds to keeping the data for the current workspace, and possibly for a
-certain set of commits (determined by reading the
-[DVC files](/doc/user-guide/dvc-files) in them). See the [Options](#options)
-section for more details.
+certain set of commits (determined by reading the <abbr>DVC files</abbr> in
+them). See the [Options](#options) section for more details.
 
 > Note that `dvc gc` tries to fetch any missing
-> [`.dir` files](/doc/user-guide/dvc-internals#structure-of-the-cache-directory)
+> [`.dir` files](/doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory)
 > from [remote storage](/doc/command-reference/remote) to the local
 > <abbr>cache</abbr>, in order to determine which files should exist inside
 > cached directories. These files may be missing if the cache directory was
@@ -119,7 +118,7 @@ $ du -sh .dvc/cache/
 
 When you run `dvc gc --workspace`, DVC removes all objects from cache that are
 not referenced in the <abbr>workspace</abbr> (by collecting hash values from the
-[DVC files](/doc/user-guide/dvc-files)):
+<abbr>DVC files</abbr>):
 
 ```dvc
 $ dvc gc --workspace
