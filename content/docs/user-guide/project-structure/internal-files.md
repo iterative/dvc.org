@@ -1,4 +1,4 @@
-# DVC Internal Directories and Files
+# Internal Directories and Files
 
 Once initialized in a <abbr>project</abbr>, DVC populates its installation
 directory (`.dvc/`) with the internal directories and files needed for DVC
