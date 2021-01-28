@@ -9,9 +9,9 @@ descriptionLong: |
   A roundup of technical Q&A's from the DVC community. 
   This month: parallelize your data transfer, 
   compressed datasets, and DVC pipelines in CI/CD.
-picture: 2020-12-30/cover.png
+picture: 2021-01-28/gems-cover.png
 author: elle_obrien
-commentsUrl: https://discuss.dvc.org/t/december-20-gems/606
+commentsUrl: https://discuss.dvc.org/t/january-21-community-gems/645
 tags:
   - Discord
   - Gems
@@ -23,23 +23,36 @@ tags:
 
 ## DVC questions
 
+### [Q: Is there an equivalent of `git restore <file>` for DVC?](https://discord.com/channels/485586884165107732/563406153334128681/799598181310267392)
+
+Yes! You'll want `dvc checkout`. It restores the corresponding verion of your
+DVC-tracked file or directory from
+[the cache](https://dvc.org/doc/user-guide/dvc-internals#structure-of-the-cache-directory)
+to your local workspace.
+[Read up in our docs for more info!](https://dvc.org/doc/command-reference/checkout#checkout)
+
 ### [Q: My dataset is made of more than _a million_ small files. Can I use an archive format, like `tar.gz` with DVC?](https://discord.com/channels/485586884165107732/485596304961962003/798983422965841920)
 
-There are some downsides to using archive formats with DVC, and often we
-discourage it- but let's review some factors to consider, so you can make the
-best choice for your project.
+There are some downsides to using archive formats, and often we discourage it-
+but let's review some factors to consider, so you can make the best choice for
+your project.
 
-- DVC versions via snapshots, not diffs. So if your `tar.gz` file changes at
-  all- perhaps because you changed a single file before zipping- DVC will create
-  an entirely new copy of the archive for versioning! This is not very space
-  efficient, but if space isn't an issue it might not be a dealbreaker.
-- Because of the way DVC optimizes data transfer, you'll end up transferring the
+- If your `tar.gz` file changes at all- perhaps because you changed a single
+  file before zipping- you'll end up with an entirely new copy of the archive
+  every time you commit! This is not very space efficient, but if space isn't an
+  issue it might not be a dealbreaker.
+- Because of the way we optimize data transfer, you'll end up transferring the
   whole archive anytime you modify a single file and `dvc push`/`dvc pull`.
-- If you're worried about data transfer speeds with the raw dataset, we
-  recommend exploring our parallelization options. DVC has parallelism built-in
-  and data transfer functions like `dvc push` and `dvc pull` have a flag (`-j`)
-  for increasing the number of jobs run simultaneously.
-  [Check out the docs for more details](https://dvc.org/doc/command-reference/push#options).
+- In general, archives don't play nice with the concept of diffs. Looking back
+  at your git history, it can be challenging to log how files were deleted,
+  modified, or added when you're versioning archives.
+
+While we can't do much about the general issues that archives present for
+version control systems, DVC does have some options that might help you achieve
+better data transfer speeds. We recommend exploring DVC's built-in parallelism-
+data transfer functions like `dvc push` and `dvc pull` have a flag (`-j`) for
+increasing the number of jobs run simultaneously.
+[Check out the docs for more details](https://dvc.org/doc/command-reference/push#options).
 
 In summary, the advantage of using an archive format will depend on both how
 often you modify your dataset and how often you need to push and pull data. You
@@ -100,14 +113,6 @@ $ dvc push -j <number>
 will control the number of simultaneous uploads DVC attempts when pushing files
 to your remote storage
 ([see more in our docs](https://dvc.org/doc/command-reference/push#push)).
-
-### [Is there an equivalent of `git restore <file>` for DVC?](https://discord.com/channels/485586884165107732/563406153334128681/799598181310267392)
-
-Yes! You'll want `dvc checkout`. It restores the corresponding verion of your
-DVC-tracked file or directory from
-[the cache](https://dvc.org/doc/user-guide/dvc-internals#structure-of-the-cache-directory)
-to your local workspace.
-[Read up in our docs for more info!](https://dvc.org/doc/command-reference/checkout#checkout)
 
 ## CML questions
 
