@@ -98,7 +98,8 @@ storage:
 
 ```dvc
 $ dvc remote add -d storage s3://my-bucket/dvc-storage
-$ git commit .dvc/config -m "Configure remote storage"
+$ git add .dvc/config
+$ git commit -m "Configure remote storage"
 ```
 
 > DVC supports the following remote storage types: Google Drive, Amazon S3,
