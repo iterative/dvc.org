@@ -9,7 +9,7 @@ Download a file or directory from a supported URL (for example `s3://`,
 ## Synopsis
 
 ```usage
-usage: dvc get-url [-h] [-q | -v] url [out]
+usage: dvc get-url [-h] [-q | -v] [-j <number>] url [out]
 
 positional arguments:
   url            (See supported URLs in the description.)
@@ -71,6 +71,12 @@ $ wget https://example.com/path/to/data.csv
 ```
 
 ## Options
+
+- `-j <number>`, `--jobs <number>` - number of threads to run simultaneously to
+  handle the downloading of files from the remote. The default value is
+  `4 * cpu_count()`. For SSH remotes, the default is just `4`. Using more jobs
+  may improve the total download speed if a combination of small and large files
+  are being fetched.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 

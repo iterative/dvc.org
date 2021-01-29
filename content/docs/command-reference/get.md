@@ -8,7 +8,8 @@ directory.
 ## Synopsis
 
 ```usage
-usage: dvc get [-h] [-q | -v] [-o <path>] [--rev <commit>] url path
+usage: dvc get [-h] [-q | -v] [-o <path>] [--rev <commit>] [-j <number>]
+       url path
 
 positional arguments:
   url              Location of DVC or Git repository to download from
@@ -64,6 +65,12 @@ name.
   [Git revision](https://git-scm.com/docs/revisions)) of the repository to
   download the file or directory from. The latest commit in `master` (tip of the
   default branch) is used by default when this option is not specified.
+
+- `-j <number>`, `--jobs <number>` - number of threads to run simultaneously to
+  handle the downloading of files from the remote. The default value is
+  `4 * cpu_count()`. For SSH remotes, the default is just `4`. Using more jobs
+  may improve the total download speed if a combination of small and large files
+  are being fetched.
 
 - `--show-url` - instead of downloading the file or directory, just print the
   storage location (URL) of the target data. If `path` is a Git-tracked file,
