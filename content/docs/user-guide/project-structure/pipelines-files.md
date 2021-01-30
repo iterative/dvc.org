@@ -224,7 +224,7 @@ ${param.list[0]} # List elements via index in [] (square brackets)
 > To use the expression literally in `dvc.yaml` (so DVC does not replace it for
 > a value), escape it with a backslash, e.g. `\${...`.
 
-## Foreach stages
+## `foreach` stages
 
 ⚠️ This feature is only available in DVC 2.0 ⚠️
 
@@ -317,7 +317,7 @@ stages:
 
 Importantly, dictionaries from
 [parameters files](/doc/command-reference/params#examples) can be used in
-foreach stages as well:
+`foreach` stages as well:
 
 ```yaml
 stages:
@@ -418,5 +418,5 @@ Full <abbr>parameter dependencies</abbr> (key and value) are listed too (under
 
 Note that in the case of [templated](#templating) `dvc.yaml` files, the actual
 values are substituted in `dvc.lock` (no `${}` expressions remain). And for
-those with [foreach stages](#foreach-stages), individual stages are expanded
+those with [`foreach` stages](#foreach-stages), individual stages are expanded
 (`foreach` structures are not preserved).
