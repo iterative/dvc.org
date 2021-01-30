@@ -12,10 +12,6 @@ module.exports = [
     url: '/doc/user-guide/project-structure/dvc-files'
   },
   {
-    matches: '.dvcignore',
-    url: '/doc/user-guide/project-structure/dvcignore-files'
-  },
-  {
     matches: '.dvc/',
     url: '/doc/user-guide/project-structure/internal-files'
   }
