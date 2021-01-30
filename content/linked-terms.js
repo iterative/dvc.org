@@ -10,5 +10,9 @@ module.exports = [
   {
     matches: 'dvc.lock',
     url: '/doc/user-guide/project-structure/pipelines-files#dvclock-file'
+  },
+  {
+    matches: '.dvcignore',
+    url: '/doc/user-guide/project-structure/dvcignore-files'
   }
 ]
