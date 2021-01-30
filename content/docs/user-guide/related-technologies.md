@@ -92,9 +92,8 @@ _Luigi_, etc.
 - DVC can generate images with [experiment](/doc/start/experiments) workflow
   visualizations.
 
-- DVC has transparent design. Its
-  [internal directories and files](/doc/user-guide/project-structure/internal-files)
-  have a human-readable format and can be easily reused by external tools.
+- DVC has transparent design. <abbr>DVC files</abbr> have a human-readable
+  format and can be easily reused by external tools.
 
 ## Build automation tools
 
