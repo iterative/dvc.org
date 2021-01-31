@@ -67,7 +67,7 @@ for example when `dvc init` was used with the `--no-scm` option.
   Useful for debug purposes.
 
 - `--hide-missing` - do not list data missing from both workspace and cache
-  (`not in cache`). Only list files and directories which have been expliclity
+  (`not in cache`). Only list files and directories which have been explicitly
   added, modified, or deleted. This option does nothing when comparing two Git
   commits.
 

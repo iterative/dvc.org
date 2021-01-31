@@ -21,15 +21,19 @@ positional arguments:
 ## Description
 
 This command provides a quick way to compare metrics among experiments in the
-repository history. All metrics defined in `dvc.yaml` are used by default. The
-differences shown by this command include the new value, and numeric difference
-(delta) from the previous value of metrics (rounded to 5 digits precision).
+repository history. The differences shown by this command include the new value,
+and numeric difference (delta) from the previous value of metrics (rounded to 5
+digits precision).
 
 `a_rev` and `b_rev` are Git commit hashes, tag, or branch names. If none are
 specified, `dvc metrics diff` compares metrics currently present in the
 <abbr>workspace</abbr> (uncommitted changes) with the latest committed versions
 (required). A single specified revision results in comparing the workspace and
 that version.
+
+All metrics defined in `dvc.yaml` are used by default, but specific metrics
+files can be specified with the `--targets` option (note that targets don't
+necessarily have to be defined in `dvc.yaml`).
 
 Another way to display metrics is the `dvc metrics show` command, which just
 lists all the current metrics, without comparisons.
@@ -38,8 +42,8 @@ lists all the current metrics, without comparisons.
 
 - `--targets <paths>` - limit command scope to these metrics files. Using `-R`,
   directories to search metrics files in can also be given. When specifying
-  arguments for `--targets` before `revisions`, you should use `--` after this
-  option's arguments, e.g.:
+  arguments for `--targets` before `a_rev`/`b_rev`, you should use `--` after
+  this option's arguments, e.g.:
 
   ```dvc
   $ dvc metrics diff --targets t1.json t2.yaml -- HEAD v1

@@ -51,7 +51,7 @@ initializing DVC in the Git repo root:
 
 - DVC [internals](/doc/user-guide/dvc-files-and-directories) (config file, cache
   directory, etc.) would be shared across different subdirectories. This forces
-  all of them to use the same DVC settings and
+  all of them to use the same DVC configuration and
   [remote storage](/doc/command-reference/remote).
 
 - By default, DVC commands like `dvc pull` and `dvc repro` explore the whole
