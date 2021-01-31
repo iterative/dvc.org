@@ -1,4 +1,8 @@
-# Data Access
+---
+title: 'Get Started: Data Access'
+---
+
+# Get Started: Data Access
 
 Okay, now that we've learned how to _track_ data and models with DVC and how to
 version them with Git, next question is how can we _use_ these artifacts outside
@@ -18,9 +22,9 @@ https://youtu.be/EE7Gk84OZY8
 Remember those `.dvc` files `dvc add` generates? Those files (and `dvc.lock`
 that we'll cover later), have their history in Git, DVC remote storage config
 saved in Git contain all the information needed to access and download any
-version of datasets, files, and models. It means that Git repository with DVC
-files becomes an entry point and can be used instead of accessing files
-directly.
+version of datasets, files, and models. It means that a Git repository with
+<abbr>DVC files</abbr> becomes an entry point, and can be used instead of
+accessing files directly.
 
 ## Find a file or directory
 

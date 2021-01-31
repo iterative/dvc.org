@@ -14,9 +14,8 @@ DVC works best in a Git repository. This enables all features, providing the
 most value. For this reason, `dvc init` (without flags) expects to run in a Git
 repository root (a `.git/` directory should be present).
 
-At DVC initialization, a new `.dvc/` directory is created for internal
-configuration and <abbr>cache</abbr>
-[files and directories](/doc/user-guide/dvc-files-and-directories#internal-directories-and-files),
+At DVC initialization, a new `.dvc/` directory is created for configuration,
+default <abbr>cache</abbr> location, and other internal files and directories,
 that are hidden from the user. This directory is automatically staged with
 `git add`, so it can be easily committed with Git.
 
@@ -49,9 +48,9 @@ initializing DVC in the Git repo root:
 - Repository maintainers might not allow a top level `.dvc/` directory,
   especially if DVC is already being used by several sub-projects (monorepo).
 
-- DVC [internals](/doc/user-guide/dvc-files-and-directories) (config file, cache
-  directory, etc.) would be shared across different subdirectories. This forces
-  all of them to use the same DVC configuration and
+- DVC [internals](/doc/user-guide/project-structure/internal-files) (config
+  file, cache directory, etc.) would be shared across different subdirectories.
+  This forces all of them to use the same DVC configuration and
   [remote storage](/doc/command-reference/remote).
 
 - By default, DVC commands like `dvc pull` and `dvc repro` explore the whole

@@ -50,9 +50,9 @@ $ dvc add data/data.xml
 
 DVC stores information about the added file (or a directory) in a special `.dvc`
 file named `data/data.xml.dvc`, a small text file with a human-readable
-[format](/doc/user-guide/dvc-files-and-directories#dvc-files). This file can be
-easily versioned like source code with Git, as a placeholder for the original
-data (which gets listed in `.gitignore`):
+[format](/doc/user-guide/project-structure/dvc-files). This file can be easily
+versioned like source code with Git, as a placeholder for the original data
+(which gets listed in `.gitignore`):
 
 ```dvc
 $ git add data/data.xml.dvc data/.gitignore
@@ -98,7 +98,8 @@ storage:
 
 ```dvc
 $ dvc remote add -d storage s3://my-bucket/dvc-storage
-$ git commit .dvc/config -m "Configure remote storage"
+$ git add .dvc/config
+$ git commit -m "Configure remote storage"
 ```
 
 > DVC supports the following remote storage types: Google Drive, Amazon S3,

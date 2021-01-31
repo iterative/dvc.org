@@ -89,15 +89,32 @@
     "children": [
       {
         "label": "What is DVC?",
-        "slug": "what-is-dvc",
-        "source": "what-is-dvc.md"
+        "slug": "what-is-dvc"
       },
-      "dvc-files-and-directories",
       {
-        "slug": "dvcignore",
-        "tutorials": {
-          "katacoda": "https://katacoda.com/dvc/courses/examples/dvcignore"
-        }
+        "slug": "project-structure",
+        "source": "user-guide/project-structure/index.md",
+        "children": [
+          {
+            "label": "Pipelines Files (dvc.yaml)",
+            "slug": "pipelines-files"
+          },
+          {
+            "label": ".dvc Files",
+            "slug": "dvc-files"
+          },
+          {
+            "label": ".dvcignore Files",
+            "slug": "dvcignore-files",
+            "tutorials": {
+              "katacoda": "https://katacoda.com/dvc/courses/examples/dvcignore"
+            }
+          },
+          {
+            "label": "Internal Files",
+            "slug": "internal-files"
+          }
+        ]
       },
       {
         "label": "How To",
@@ -388,5 +405,27 @@
     "label": "Changelog",
     "url": "https://github.com/iterative/dvc/releases",
     "type": "external"
+  },
+  {
+    "label": "CML",
+    "slug": "cml",
+    "source": "cml/index.md",
+    "icon": "cml",
+    "children": [
+      "get-started",
+      "usage",
+      {
+        "label": "CML with DVC",
+        "slug": "cml-with-dvc"
+      },
+      {
+        "label": "Self-hosted Runners",
+        "slug": "self-hosted-runners"
+      },
+      {
+        "label": "Install CML as a Package",
+        "slug": "cml-with-npm"
+      }
+    ]
   }
 ]

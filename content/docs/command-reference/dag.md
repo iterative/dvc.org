@@ -110,3 +110,32 @@ $ dvc dag
         | evaluate |
         +----------+
 ```
+
+The pipeline can also be seen from the point of view of how stage
+outputs/dependencies are connected (using the `--outs` option). Notice that the
+resulting graph may be different:
+
+```dvc
+$ dvc dag --outs
+                  +---------------+
+                  | data/prepared |
+                  +---------------+
+                          *
+                          *
+                          *
+                  +---------------+
+                  | data/features |
+                **+---------------+**
+            ****          *          *****
+       *****              *               ****
+   ****                   *                   ****
+***                 +-----------+                 ***
+  **                | model.pkl |                **
+    **              +-----------+              **
+      **           **           **           **
+        **       **               **       **
+          **   **                   **   **
+      +-------------+            +----------+
+      | scores.json |            | prc.json |
+      +-------------+            +----------+
+```

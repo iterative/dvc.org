@@ -38,8 +38,8 @@ working directory with its original file name e.g. `data.txt` (or to a location
 provided with `--out`). An _import `.dvc` file_ is created in the same location
 e.g. `data.txt.dvc` – similar to using `dvc add` after downloading the data.
 
-⚠️ DVC won't push or pull data imported from other DVC repos to/from
-[remote storage](/doc/command-reference/remote). It will rely on it's original
+(ℹ️) DVC won't push or pull imported data to/from
+[remote storage](/doc/command-reference/remote), it will rely on it's original
 source.
 
 The `url` argument specifies the address of the DVC or Git repository containing
@@ -155,7 +155,7 @@ outs:
     cache: true
 ```
 
-Several of the values above are pulled from the original stage file
+Several of the values above are pulled from the original `.dvc` file
 `model.pkl.dvc` in the external DVC repository. The `url` and `rev_lock`
 subfields under `repo` are used to save the origin and version of the
 dependency, respectively.

@@ -36,9 +36,8 @@ $ git init
 $ dvc init
 ```
 
-A few
-[directories and files](/doc/user-guide/dvc-files-and-directories#internal-directories-and-files)
-are created that should be added to Git:
+A few [internal files](/doc/user-guide/project-structure/internal-files) are
+created that should be added to Git:
 
 ```dvc
 $ git status

@@ -32,15 +32,15 @@ _remote_ mode is triggered by using the `--cloud` or `--remote` options:
 | remote | `--remote` | Comparisons are made between the cache, and the given remote. Remote storage is defined using the `dvc remote` command.     |
 | remote | `--cloud`  | Comparisons are made between the cache, and the default remote (typically defined with `dvc remote --default`).             |
 
-Without arguments, it checks all `dvc.yaml` and `.dvc` files, and compares their
-<abbr>outputs</abbr> against the actual data files or directories in the
-workspace. Any `targets` given to this command limit what to show changes for.
-It accepts paths to tracked files or directories (including paths inside tracked
-directories), `.dvc` files, and stage names (found in `dvc.yaml`).
+Without arguments, this command checks all `dvc.yaml` and `.dvc` files to
+rebuild and validate pipeline(s). It then compares their <abbr>outputs</abbr>
+against the actual data files or directories in the workspace. Any `targets`
+given to this command limit what to show changes for. It accepts paths to
+tracked files or directories (including paths inside tracked directories),
+`.dvc` files, and stage names (found in `dvc.yaml`).
 
 The `--all-branches`, `--all-tags`, and `--all-commits` options enable comparing
-[metafiles](/doc/user-guide/dvc-files-and-directories) referenced in multiple
-Git commits at once.
+DVC-tracked files referenced in multiple Git commits at once.
 
 If no differences are detected, `dvc status` prints
 `Data and pipelines are up to date.` or

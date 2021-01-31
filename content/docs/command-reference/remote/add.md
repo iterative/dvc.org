@@ -145,8 +145,8 @@ $ dvc remote modify myremote endpointurl \
 S3 remotes can also be configured entirely via environment variables:
 
 ```dvc
-$ export AWS_ACCESS_KEY_ID="<my-access-key>"
-$ export AWS_SECRET_ACCESS_KEY="<my-secret-key>"
+$ export AWS_ACCESS_KEY_ID='<my-key-id>'
+$ export AWS_SECRET_ACCESS_KEY='<my-key-secret>'
 $ dvc remote add -d myremote s3://mybucket/my/path
 ```
 
@@ -277,9 +277,9 @@ You can also set environment variables and use them later, to set environment
 variables use following environment variables:
 
 ```dvc
-$ export OSS_ACCESS_KEY_ID='my-key-id'
-$ export OSS_ACCESS_KEY_SECRET='my-key-secret'
-$ export OSS_ENDPOINT='endpoint'
+$ export OSS_ACCESS_KEY_ID='<my-key-id>'
+$ export OSS_ACCESS_KEY_SECRET='<my-key-secret>'
+$ export OSS_ENDPOINT='<endpoint>'
 ```
 
 **Testing your OSS storage using docker**
@@ -291,10 +291,10 @@ for example:
 $ git clone https://github.com/nanaya-tachibana/oss-emulator.git
 $ docker image build -t oss:1.0 oss-emulator
 $ docker run --detach -p 8880:8880 --name oss-emulator oss:1.0
-$ export OSS_BUCKET='my-bucket'
-$ export OSS_ENDPOINT='localhost:8880'
-$ export OSS_ACCESS_KEY_ID='AccessKeyID'
-$ export OSS_ACCESS_KEY_SECRET='AccessKeySecret'
+$ export OSS_BUCKET='<my-bucket>'
+$ export OSS_ENDPOINT='<endpoint>'
+$ export OSS_ACCESS_KEY_ID='<my-key-id>'
+$ export OSS_ACCESS_KEY_SECRET='<my-key-secret>'
 ```
 
 > Uses default key id and key secret when they are not given, which gives read

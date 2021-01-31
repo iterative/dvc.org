@@ -24,9 +24,9 @@ can version experiments, manage large datasets, and make projects reproducible.
 
 - **Data versioning** is enabled by replacing large files, dataset directories,
   machine learning models, etc. with small
-  [metafiles](/doc/user-guide/dvc-files-and-directories) (easy to handle with
-  Git). These placeholders point to the original data, which is decoupled from
-  source code management.
+  [metafiles](/doc/user-guide/project-structure) (easy to handle with Git).
+  These placeholders point to the original data, which is decoupled from source
+  code management.
 
 - **Data storage**: On-premises or cloud storage can be used to store the
   project's data separate from its code base. This is how data scientists can
@@ -50,10 +50,10 @@ can version experiments, manage large datasets, and make projects reproducible.
 
 ## DVC does not replace Git!
 
-DVC metafiles such as `dvc.yaml` and `.dvc` files serve as placeholders to track
+DVC files such as `dvc.yaml` and `.dvc` files serve as placeholders to track
 large data files and directories for versioning (among other
-[purposes](/doc/user-guide/dvc-files-and-directories)). These metafiles change
-along with your data, and you can use Git to place them under
+[purposes](/doc/user-guide/project-structure)). These metafiles change along
+with your data, and you can use Git to place them under
 [version control](https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control)
 as a proxy to the actual data versions, which are stored in the <abbr>DVC
 cache</abbr> (outside of Git). This does not replace features of Git.

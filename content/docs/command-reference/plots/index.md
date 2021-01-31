@@ -125,8 +125,8 @@ All metrics files given to `dvc plots show` and `dvc plots diff` as input are
 combined together into a single data array for injection into a template file.
 There are two important fields that DVC adds to the plot data:
 
-- `index` - self-incrementing, zero-based counter for the data rows/values. In
-  many cases it corresponds to a machine learning training epoch or step number.
+- `index` - zero-based counter for the data rows/values. In many cases it
+  corresponds to a machine learning training epoch or step number.
 
 - `rev` - Git commit hash, tag, or branch of the metrics file. This helps
   distinguish between different versions when using the `dvc plots diff`
@@ -138,8 +138,8 @@ header (first row) are equivalent to field names.
 ### DVC template anchors
 
 - `<DVC_METRIC_DATA>` (**required**) - the plot data from any type of metrics
-  files is converted to a single JSON array internally, and injected instead of
-  this anchor. Two additional fields will be added: `index` and `rev` (explained
+  files is converted to a single JSON array, and injected instead of this
+  anchor. Two additional fields will be added: `index` and `rev` (explained
   above).
 
 - `<DVC_METRIC_TITLE>` (optional) - a title for the plot, that can be defined

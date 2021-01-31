@@ -118,9 +118,8 @@ This is the main section with the general config options:
   (default) and `false`.
 
 - `core.autostage` - if enabled, DVC will automatically stage (`git add`)
-  [DVC metafiles](/doc/user-guide/dvc-files-and-directories) created or modified
-  by DVC commands (`dvc add`, `dvc run`, etc.). The files will not be committed.
-  Accepts values `true` and `false` (default).
+  <abbr>DVC files</abbr> created or modified by DVC commands. The files will not
+  be committed. Accepts values `true` and `false` (default).
 
 ### remote
 
@@ -208,7 +207,7 @@ This section contains the following options, which affect the project's
 ### state
 
 See
-[Internal directories and files](/doc/user-guide/dvc-files-and-directories#internal-directories-and-files)
+[Internal directories and files](/doc/user-guide/project-structure/internal-files)
 to learn more about the state file (database) that is used for optimization.
 
 - `state.row_limit` - maximum number of entries in the state database, which
