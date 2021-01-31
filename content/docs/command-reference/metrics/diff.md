@@ -31,8 +31,8 @@ specified, `dvc metrics diff` compares metrics currently present in the
 (required). A single specified revision results in comparing the workspace and
 that version.
 
-> Note that unlike `dvc diff`, this command doesn't always need DVC files to
-> find metrics files (see `--targets` option). For that reason, it doesn't
+> Note that unlike `dvc diff`, this command doesn't always need `dvc.yaml` files
+> to find metrics files (see `--targets` option). For that reason, it doesn't
 > require an existing DVC project to run in. It can work in any Git repo.
 
 Another way to display metrics is the `dvc metrics show` command, which just

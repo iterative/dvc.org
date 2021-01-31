@@ -18,9 +18,9 @@ positional arguments:
 ## Description
 
 This command is usually needed after `git checkout`, `git clone`, or any other
-operation that changes the current [DVC files](/doc/user-guide/dvc-files). It
-restores the corresponding versions of the DVC-tracked files and directories
-from the <abbr>cache</abbr> to the workspace.
+operation that changes the current <abbr>DVC files</abbr>. It restores the
+corresponding versions of the DVC-tracked data files and directories from the
+<abbr>cache</abbr> to the workspace.
 
 The `targets` given to this command (if any) limit what to checkout. It accepts
 paths to tracked files or directories (including paths inside tracked
@@ -85,9 +85,9 @@ the pipeline must be reproduced (using `dvc repro`) to regenerate its outputs.
   files referenced in later stages than the `targets`.
 
 - `-f`, `--force` - does not prompt when removing workspace files. Changing the
-  current set of [DVC files](/doc/user-guide/dvc-files) with `git checkout` can
-  result in the need for DVC to remove files that don't match those references
-  or are missing from cache. (They are not "committed", in DVC terms.)
+  current set of DVC files with `git checkout` can result in the need for DVC to
+  remove files that don't match those references or are missing from cache.
+  (They are not "committed", in DVC terms.)
 
 - `--relink` - ensures the file linking strategy (`reflink`, `hardlink`,
   `symlink`, or `copy`) for all data in the workspace is consistent with the
@@ -185,9 +185,10 @@ outs:
 ```
 
 But if you check the MD5 of `model.pkl`, the file hash is still the same
-(`ab349c2...`). This is because `git checkout` changed `dvc.lock` and other DVC
-files, but it did nothing with `model.pkl`, or any other DVC-tracked files/dirs.
-Since Git doesn't track them, to get them we can do this:
+(`ab349c2...`). This is because `git checkout` changed `dvc.lock` and other
+<abbr>DVC files</abbr>, but it did nothing with `model.pkl`, or any other
+DVC-tracked files/dirs. Since Git doesn't track them, to get them we can do
+this:
 
 ```dvc
 $ dvc checkout

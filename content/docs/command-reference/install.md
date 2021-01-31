@@ -21,11 +21,12 @@ etc.) doesn't have DVC initialized (no `.dvc/` directory present).
 
 Namely:
 
-**Checkout**: For any commit hash, branch or tag, `git checkout` retrieves the
-[DVC files](/doc/user-guide/dvc-files) corresponding to that version. These
-files in turn refer to data stored in <abbr>cache</abbr>, but not necessarily in
-the <abbr>workspace</abbr>. Normally, it would be necessary to use
-`dvc checkout` to update the workspace accordingly.
+**Checkout**: For any commit hash, branch or tag, `git checkout` restores the
+[DVC project files](/doc/user-guide/project-structure) corresponding to that
+version. Some of these files, in turn refer to data stored in
+<abbr>cache</abbr>, but not necessarily current in the <abbr>workspace</abbr>.
+Normally, it's necessary to use `dvc checkout` to also update the workspace
+accordingly.
 
 This hook automates `dvc checkout` after `git checkout`.
 
@@ -168,9 +169,9 @@ $ dvc pull -aT
 ## Example: Checkout both Git and DVC
 
 Switching from one Git commit to another (with `git checkout`) may change the
-set of [DVC files](/doc/user-guide/dvc-files) in the <abbr>workspace</abbr>.
-This would mean that the currently present data files and directories no longer
-matches project's version (which can be fixed with `dvc checkout`).
+set of <abbr>DVC files</abbr> in the <abbr>workspace</abbr>. This could mean
+that the currently present data no longer matches the project's version (which
+can be fixed with `dvc checkout`).
 
 Let's first list the available tags in the _Get Started_ repo:
 
@@ -265,7 +266,7 @@ Data and pipelines are up to date.
 
 Look carefully at this output and it is clear that the `dvc checkout` command
 has indeed been run. As a result the workspace is up to date with the data files
-matching what is referenced by the DVC files.
+matching what is referenced in the <abbr>DVC files</abbr>.
 
 ## Example: Showing DVC status when committing with Git
 

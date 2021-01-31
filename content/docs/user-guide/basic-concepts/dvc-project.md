@@ -14,6 +14,5 @@ match:
 ---
 
 Initialized by running `dvc init` in the **workspace** (typically a Git
-repository). It will contain the
-[`.dvc/` directory](/doc/user-guide/dvc-internals), as well as `dvc.yaml` and
+repository). It will contain the `.dvc/` directory, as well as `dvc.yaml` and
 `.dvc` files created with commands such as `dvc add` or `dvc run`.
