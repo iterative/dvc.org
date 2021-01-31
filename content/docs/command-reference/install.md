@@ -106,20 +106,17 @@ repos:
 ```
 
 Note that by default, the pre-commit tool only installs `pre-commit` hooks. To
-enable the DVC `pre-push` and `post-checkout` hooks with pre-commit, you must
-explicitly configure pre-commit to install the appropriate hook types:
+enable the `post-checkout` and `pre-push` hooks, you must explicitly configure
+the tool this way:
 
 ```dvc
 $ pre-commit install --hook-type pre-push --hook-type post-checkout
 ```
 
-This command can be run at any time before or after configuring the DVC hooks in
-`.pre-commit-config.yaml`.
-
 ## Options
 
 - `--use-pre-commit-tool` - configures DVC pre-commit, pre-push, post-checkout
-  Git hooks in the [pre-commit](https://pre-commit.com/) config file
+  Git hooks in the [pre-commit](#using-the-pre-commit-tool) config file
   (`.pre-commit-config.yaml`).
 
 - `-h`, `--help` - prints the usage/help message, and exit.
