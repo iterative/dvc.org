@@ -66,7 +66,8 @@ files.
 
 Currently, `dvc repro` is not able to parallelize stage execution automatically.
 If you need to do this, you can launch `dvc repro` multiple times manually. For
-example, let's say a <abbr>pipeline</abbr> graph looks something like this:
+example, let's say a [pipelines](/doc/command-reference/dag) graph looks
+something like this:
 
 ```dvc
 $ dvc dag
