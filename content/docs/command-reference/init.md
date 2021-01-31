@@ -14,11 +14,10 @@ DVC works best in a Git repository. This enables all features, providing the
 most value. For this reason, `dvc init` (without flags) expects to run in a Git
 repository root (a `.git/` directory should be present).
 
-At DVC initialization, a new `.dvc/` directory is created for internal
-configuration and <abbr>cache</abbr>
-[files and directories](/doc/user-guide/project-structure/internal-files), that
-are hidden from the user. This directory is automatically staged with `git add`,
-so it can be easily committed with Git.
+At DVC initialization, a new `.dvc/` directory is created for configuration,
+default <abbr>cache</abbr> location, and other internal files and directories,
+that are hidden from the user. This directory is automatically staged with
+`git add`, so it can be easily committed with Git.
 
 The command [options](#options) can be used to start an alternative workflow for
 advanced scenarios:

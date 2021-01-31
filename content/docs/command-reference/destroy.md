@@ -98,9 +98,9 @@ $ ls -a
 .git code.py foo
 ```
 
-`dvc destroy` command removed `foo.dvc` and the internal `.dvc/` directory from
-the <abbr>workspace</abbr>. But the cache files that are present in the
-`/mnt/cache` directory still persist:
+`dvc destroy` command removed `foo.dvc` and the `.dvc/` directory from the
+<abbr>workspace</abbr>. But the cache files that are present in the `/mnt/cache`
+directory still persist:
 
 ```dvc
 $ tree /mnt/cache

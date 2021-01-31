@@ -15,8 +15,7 @@ as you use DVC and work on your data science experiments.
 - `.dvcignore` files (optional) contain a list of paths for DVC to ignore, which
   can dramatically increase its operational performance.
 
-- Internal files and directories in
-  [`.dvc/`](/doc/user-guide/project-structure/internal-files) contains the local
+- Internal files and directories in `.dvc/` contains the local
   [configuration](/doc/command-reference/config) file(s), default local cache
   location, and other utilities that DVC needs to operate.
 
