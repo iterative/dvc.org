@@ -5,11 +5,15 @@ module.exports = [
   },
   {
     matches: 'dvc.lock',
-    url: '/doc/user-guide/creating-pipelines#dvclock-file'
+    url: '/doc/user-guide/project-structure/pipelines-files#dvclock-file'
   },
   {
     matches: '.dvc',
     url: '/doc/user-guide/project-structure/dvc-files'
+  },
+  {
+    matches: '.dvcignore',
+    url: '/doc/user-guide/project-structure/dvcignore-files'
   },
   {
     matches: '.dvc/',
