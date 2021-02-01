@@ -158,6 +158,9 @@ that.
 
 ```dvc
 $ dvc status
+baz.dvc:
+	changed outs:
+		modified:           baz
 dofoo:
 	changed deps:
 		modified:           baz
@@ -168,9 +171,6 @@ dobar:
 		modified:           foo
 	changed outs:
 		deleted:            bar
-baz.dvc:
-	changed outs:
-		modified:           baz
 ```
 
 This shows that for stage `dofoo`, the dependency `baz` and the output `foo`
