@@ -60,7 +60,7 @@ $ dvc run -n download_file \
           -o data.txt \
           az storage copy \
                      -d data.json \
-                     --source-account-name my-account \
+                     --source-account-name myuser \
                      --source-container mycontainer \
                      --source-blob data.txt
 ```

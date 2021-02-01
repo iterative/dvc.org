@@ -49,9 +49,10 @@ initializing DVC in the Git repo root:
 - Repository maintainers might not allow a top level `.dvc/` directory,
   especially if DVC is already being used by several sub-projects (monorepo).
 
-- DVC [internals](/doc/user-guide/dvc-files-and-directories) (config file, cache
-  directory, etc.) would be shared across different subdirectories. This forces
-  all of them to use the same DVC configuration and
+- DVC
+  [internals](/doc/user-guide/dvc-files-and-directories#internal-directories-and-files)
+  (config file, cache directory, etc.) would be shared across different
+  subdirectories. This forces all of them to use the same DVC configuration and
   [remote storage](/doc/command-reference/remote).
 
 - By default, DVC commands like `dvc pull` and `dvc repro` explore the whole

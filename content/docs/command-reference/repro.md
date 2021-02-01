@@ -13,7 +13,7 @@ usage: dvc repro [-h] [-q | -v] [-f] [-s] [-m] [--dry] [-i]
                  [targets [<target> ...]]
 
 positional arguments:
-  targets       Stages to reproduce. 'dvc.yaml' by default.
+  targets               Stages to reproduce. 'dvc.yaml' by default.
 ```
 
 > See [`targets`](#options) for more details.
@@ -23,26 +23,26 @@ positional arguments:
 Provides a way to regenerate data pipeline results, by restoring the dependency
 graph (a [DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph)) implicitly
 defined by the stages listed in `dvc.yaml`. The commands defined in these stages
-are then executed in the correct order.
+(`cmd` field) are then executed in the correct order.
 
 For stages with multiple commands (having a list in the `cmd` field), commands
 are run one after the other in the order they are defined. The failure of any
 command will halt the remaining stage execution, and raises an error.
 
+By default, all [pipeline](/doc/command-reference/dag) stages are checked to
+determine which ones have changed.
+
 > Pipeline stages are defined in `dvc.yaml` (either manually or by using
-> `dvc run`) while initial data dependencies can be registered with `dvc add`.
+> `dvc run`) while initial data dependencies can be registered with `dvc add`
+> (into `.dvc` files).
 
 `dvc repro` is similar to [Make](https://www.gnu.org/software/make/) in software
 build automation, but DVC captures build requirements
 ([dependencies and outputs](/doc/command-reference/run#dependencies-and-outputs))
-and <abbr>caches</abbr> the pipeline's <abbr>outputs</abbr> along the way.
+and <abbr>caches</abbr> the pipeline's outputs along the way.
 
 💡 For convenience, a Git hook is available to remind you to `dvc repro` when
 needed after a `git commit`. See `dvc install` for more details.
-
-By default, all [pipeline](/doc/command-reference/dag) stages are checked to
-determine which ones have changed. Then the corresponding commands (`cmd` field
-of `dvc.yaml`) are executed.
 
 ⚠️ Note that [stage](/doc/command-reference/run) outputs are deleted from the
 <abbr>workspace</abbr> before executing the stage commands that produce them.
