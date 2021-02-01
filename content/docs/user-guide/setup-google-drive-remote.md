@@ -153,8 +153,8 @@ Finally, use the `dvc remote modify` command to set the credentials (for each
 GDrive remote), for example:
 
 ```dvc
-$ dvc remote modify myremote gdrive_client_id <client ID>
-$ dvc remote modify myremote gdrive_client_secret <client secret>
+$ dvc remote modify myremote gdrive_client_id client-id
+$ dvc remote modify myremote gdrive_client_secret client-secret
 ```
 
 > Note that Google Drive API usage limits/quotas apply per _project_ client and

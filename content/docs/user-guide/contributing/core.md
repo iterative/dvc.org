@@ -230,7 +230,7 @@ from backup for any new DVC repo setup to avoid manual login.
 Or add the contents of that file to your env (use encryption for CI setup):
 
 ```dvc
-$ export GDRIVE_USER_CREDENTIALS_DATA='<my-secret-creds>'
+$ export GDRIVE_USER_CREDENTIALS_DATA='mysecret'
 ```
 
 </details>

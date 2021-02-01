@@ -23,8 +23,8 @@ positional arguments:
 
 Remote `name` and `option` name are required. Config option names are specific
 to the remote type. See `dvc remote add` and
-[Available settings](#available-settings-per-storage-type) below for a list of
-remote storage types.
+[Available parameters](#available-parameters-per-storage-type) below for a list
+of remote storage types.
 
 This command modifies a `remote` section in the project's
 [config file](/doc/command-reference/config). Alternatively, `dvc config` or
@@ -66,7 +66,7 @@ The following config options are available for all remote types:
   below):
 
   ```dvc
-  $ dvc remote modify s3remote s3://mybucket/path
+  $ dvc remote modify myremote url s3://mybucket/new/path
   ```
 
   Or a _local remote_ (a directory in the file system):
@@ -108,12 +108,12 @@ options:
 By default, DVC expects your AWS CLI is already
 [configured](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html).
 DVC will be using default AWS credentials file to access S3. To override some of
-these settings, you could use the following options.
+these parameters, you could use the following options.
 
 - `url` - remote location, in the `s3://<bucket>/<key>` format:
 
   ```dvc
-  $ dvc remote modify myremote url s3://mybucket/my/path
+  $ dvc remote modify myremote url s3://mybucket/path
   ```
 
 - `region` - change S3 remote region:
@@ -131,7 +131,7 @@ these settings, you could use the following options.
 - `credentialpath` - S3 credentials file path:
 
   ```dvc
-  $ dvc remote modify myremote --local credentialpath /path/to/my/creds
+  $ dvc remote modify myremote credentialpath /path/to/creds
   ```
 
 - `endpointurl` - endpoint URL to access S3:
@@ -144,15 +144,15 @@ these settings, you could use the following options.
   `secret_access_key`) instead of `credentialpath`:
 
   ```dvc
-  $ dvc remote modify myremote --local access_key_id my-access-key-id
+  $ dvc remote modify myremote access_key_id 'mykey'
   ```
 
 - `secret_access_key` - AWS Secret Access Key. May be used (along with
   `access_key_id`) instead of `credentialpath`:
 
   ```dvc
-  $ dvc remote modify myremote --local \
-                      secret_access_key my-secret_access_key
+  $ dvc remote modify myremote \
+        secret_access_key 'mysecret'
   ```
 
 - `session_token` - AWS
@@ -190,7 +190,7 @@ these settings, you could use the following options.
   value that S3 supports, including both key ids and aliases.
 
   ```dvc
-  $ dvc remote modify myremote --local sse_kms_key_id mykeyid_or_alias
+  $ dvc remote modify myremote sse_kms_key_id 'key-alias'
   ```
 
 > The credentials file path, access key and secret, and other options contains
@@ -252,9 +252,9 @@ these settings, you could use the following options.
 S3 remotes can also be configured entirely via environment variables:
 
 ```dvc
-$ export AWS_ACCESS_KEY_ID='<my-access-key>'
-$ export AWS_SECRET_ACCESS_KEY='<my-key-secret>'
-$ dvc remote add -d myremote s3://mybucket/my/path
+$ export AWS_ACCESS_KEY_ID='mykey'
+$ export AWS_SECRET_ACCESS_KEY='mysecret'
+$ dvc remote add -d myremote s3://mybucket/path
 ```
 
 For more information about the variables DVC supports, please visit
@@ -273,19 +273,19 @@ To communicate with a remote object storage that supports an S3 compatible API
 configure the remote's `endpointurl` explicitly:
 
 ```dvc
-$ dvc remote add -d myremote s3://mybucket/path/to/dir
+$ dvc remote add -d myremote s3://mybucket/path
 $ dvc remote modify myremote endpointurl \
                     https://object-storage.example.com
 ```
 
-Besides that, any settings that are available for Amazon S3 (see previous
+Besides that, any parameters that are available for Amazon S3 (see previous
 section) may be available for S3 compatible storage. For example, let's setup a
 DVC remote using the `example-name`
 [DigitalOcean space](https://www.digitalocean.com/community/tutorials/how-to-create-a-digitalocean-space-and-api-key)
 (equivalent to a bucket in AWS) in the `nyc3` region:
 
 ```dvc
-$ dvc remote add -d myremote s3://example-name/path/to/use
+$ dvc remote add -d myremote s3://example-name/path
 $ dvc remote modify myremote endpointurl \
                              https://nyc3.digitaloceanspaces.com
 ```
@@ -306,7 +306,7 @@ $ dvc remote modify myremote endpointurl \
 
   ```dvc
   $ dvc remote modify --local myremote connection_string \
-                              'my-connection-string'
+                              'mystring'
   ```
 
 > The connection string contains sensitive user info. Therefore, it's safer to
@@ -339,14 +339,15 @@ a full guide on using Google Drive as DVC remote storage.
   Also requires using `gdrive_client_secret`.
 
   ```dvc
-  $ dvc remote modify myremote gdrive_client_id <client ID>
+  $ dvc remote modify myremote gdrive_client_id client-id
   ```
 
 - `gdrive_client_secret` - Client secret for authentication with OAuth 2.0 when
   using a custom Google Client project. Also requires using `gdrive_client_id`.
 
   ```dvc
-  $ dvc remote modify myremote gdrive_client_secret <client secret>
+  $ dvc remote modify myremote \
+        gdrive_client_secret client-secret
   ```
 
 - `gdrive_user_credentials_file` - path where DVC stores OAuth credentials to
@@ -394,7 +395,7 @@ more information.
 
   ```dvc
   $ dvc remote modify myremote \
-                      gdrive_service_account_email <service acct email>
+        gdrive_service_account_email 'email-addr'
   ```
 
 - `gdrive_service_account_p12_file_path` - Google Project's service account
@@ -413,7 +414,7 @@ more information.
 
   ```dvc
   $ dvc remote modify myremote \
-                      gdrive_service_account_user_email <user email>
+                      gdrive_service_account_user_email 'myemail-addr'
   ```
 
 </details>
@@ -425,7 +426,7 @@ more information.
 - `url` - remote location, in the `gs://<bucket>/<object>` format:
 
   ```dvc
-  $ dvc remote modify myremote url gs://my-bucket/path
+  $ dvc remote modify myremote url gs://mybucket/path
   ```
 
 - `projectname` - override or provide a project name to use, if a default one is
@@ -449,13 +450,13 @@ more information.
 
   ```dvc
   $ dvc remote modify \
-        myremote credentialpath '/home/.../project-XXXXXXX.json'
+        myremote credentialpath '/home/.../project-XXX.json'
   ```
 
   Alternatively, the `GOOGLE_APPLICATION_CREDENTIALS` env var can be set:
 
   ```dvc
-  $ export GOOGLE_APPLICATION_CREDENTIALS='.../project-XXXXXXX.json'
+  $ export GOOGLE_APPLICATION_CREDENTIALS='.../project-XXX.json'
   ```
 
 </details>
@@ -467,7 +468,7 @@ more information.
 - `url` - remote location, in the `oss://<bucket>/<object>` format:
 
   ```dvc
-  $ dvc remote modify myremote url oss://my-bucket/path
+  $ dvc remote modify myremote url oss://mybucket/path
   ```
 
 - `oss_endpoint` - OSS endpoint values for accessing the remote container.
@@ -479,13 +480,13 @@ more information.
 - `oss_key_id` - OSS key ID to access the remote.
 
   ```dvc
-  $ dvc remote modify myremote --local oss_key_id my-key-id
+  $ dvc remote modify myremote --local oss_key_id 'mykey'
   ```
 
 - `oss_key_secret` - OSS secret key for authorizing access into the remote.
 
   ```dvc
-  $ dvc remote modify myremote --local oss_key_secret my-key-secret
+  $ dvc remote modify myremote --local oss_key_secret 'mysecret'
   ```
 
 > The key ID and secret key contain sensitive user info. Therefore, it's safer
@@ -503,7 +504,7 @@ more information.
 
   ```dvc
   $ dvc remote modify myremote url \
-                      ssh://user@example.com:1234/path/to/dir
+                      ssh://user@example.com:1234/path
   ```
 
   ⚠️ DVC requires both SSH and SFTP access to work with remote SSH locations.
@@ -594,7 +595,7 @@ Read more about by expanding the WebHDFS section in
 - `url` - remote location:
 
   ```dvc
-  $ dvc remote modify myremote url hdfs://user@example.com/path/to/dir
+  $ dvc remote modify myremote url hdfs://user@example.com/path
   ```
 
 - `user` - username to access the remote.
@@ -610,12 +611,85 @@ Read more about by expanding the WebHDFS section in
 
 <details>
 
+### Click for WebHDFS
+
+💡 WebHDFS serves as an alternative for using the same remote storage supported
+by HDFS. Read more about by expanding the WebHDFS section in
+[`dvc remote add`](/doc/command-reference/remote/add#supported-storage-types).
+
+- `url` - remote location:
+
+  ```dvc
+  $ dvc remote modify myremote url webhdfs://user@example.com/path
+  ```
+
+- `user` - username to access the remote, can be empty in case of using `token`
+  or if using a `HdfsCLI` cfg file. May only be used when Hadoop security is
+  off. Defaults to current user as determined by `whoami`.
+
+  ```dvc
+  $ dvc remote modify --local myremote user myuser
+  ```
+
+- `token` - Hadoop delegation token for WebHDFS, can be empty in case of using
+  `user` or if using a `HdfsCLI` cfg file. May be used when Hadoop security is
+  on.
+
+  ```dvc
+  $ dvc remote modify --local myremote token mytoken
+  ```
+
+- `hdfscli_config` - path to a `HdfsCLI` cfg file. WebHDFS access depends on
+  `HdfsCLI`, which allows the usage of a configuration file by default located
+  in `~/.hdfscli.cfg`. In the file, multiple aliases can be set with their own
+  connection parameters, like `url` or `user`. If using a cfg file,
+  `webhdfs_alias` can be set to specify which alias to use.
+
+  ```dvc
+  $ dvc remote modify --local myremote hdfscli_config \
+                                `/path/to/.hdfscli.cfg`
+  ```
+
+  Sample configuration file:
+
+  ```ini
+  [global]
+  default.alias = myalias
+
+  [myalias.alias]
+  url = http://example.com/path
+  user = myuser
+
+  [production.alias]
+  url = http://prodexample.com/path
+  user = produser
+  ```
+
+  See more information in the `HdfsCLI`
+  [docs](https://hdfscli.readthedocs.io/en/latest/quickstart.html#configuration).
+
+- `webhdfs_alias` - alias in a `HdfsCLI` cfg file to use. Only relevant if used
+  in conjunction with `hdfscli_config`. If not defined, `default.alias` in
+  `HdfsCLI` cfg file will be used instead.
+
+  ```dvc
+  $ dvc remote modify --local myremote webhdfs_alias myalias
+  ```
+
+> The username, token, webhdfs_alias, and hdfscli_config may contain sensitive
+> user info. Therefore, it's safer to add it with the `--local` option, so it's
+> written to a Git-ignored config file.
+
+</details>
+
+<details>
+
 ### Click for HTTP
 
 - `url` - remote location:
 
   ```dvc
-  $ dvc remote modify myremote url https://example.com/path/to/dir
+  $ dvc remote modify myremote url https://example.com/path
   ```
 
   > The URL can include a query string, which will be preserved (e.g.
@@ -654,7 +728,7 @@ Read more about by expanding the WebHDFS section in
   is set to `custom`.
 
   ```dvc
-  $ dvc remote modify myremote custom_auth_header My-Header
+  $ dvc remote modify myremote custom_auth_header 'My-Header'
   ```
 
 - `user` - username to use when the `auth` parameter is set to `basic` or
@@ -700,92 +774,20 @@ Read more about by expanding the WebHDFS section in
 
 <details>
 
-### Click for WebHDFS
-
-💡 WebHDFS serves as an alternative for using the same remote storage supported
-by HDFS. Read more about by expanding the WebHDFS section in
-[`dvc remote add`](/doc/command-reference/remote/add#supported-storage-types).
-
-- `url` - remote location:
-
-  ```dvc
-  $ dvc remote modify myremote url webhdfs://user@example.com/path/to/dir
-  ```
-
-- `user` - username to access the remote, can be empty in case of using `token`
-  or if using a `HdfsCLI` cfg file. May only be used when Hadoop security is
-  off. Defaults to current user as determined by `whoami`.
-
-  ```dvc
-  $ dvc remote modify --local myremote user myuser
-  ```
-
-- `token` - Hadoop delegation token for WebHDFS, can be empty in case of using
-  `user` or if using a `HdfsCLI` cfg file. May be used when Hadoop security is
-  on.
-
-  ```dvc
-  $ dvc remote modify --local myremote token mytoken
-  ```
-
-- `hdfscli_config` - path to a `HdfsCLI` cfg file. WebHDFS access depends on
-  `HdfsCLI`, which allows the usage of a configuration file by default located
-  in `~/.hdfscli.cfg`. In the file, multiple aliases can be set with their own
-  connection parameters, like `url` or `user`. If using a cfg file,
-  `webhdfs_alias` can be set to specify which alias to use.
-
-  ```dvc
-  $ dvc remote modify --local myremote hdfscli_config `/path/to/.hdfscli.cfg`
-  ```
-
-  Sample configuration file:
-
-  ```ini
-  [global]
-  default.alias = myalias
-
-  [myalias.alias]
-  url = http://example.com/path/to/dir
-  user = myuser
-
-  [production.alias]
-  url = http://prodexample.com/path/to/dir
-  user = produser
-  ```
-
-  See more information in the `HdfsCLI`
-  [docs](https://hdfscli.readthedocs.io/en/latest/quickstart.html#configuration).
-
-- `webhdfs_alias` - alias in a `HdfsCLI` cfg file to use. Only relevant if used
-  in conjunction with `hdfscli_config`. If not defined, `default.alias` in
-  `HdfsCLI` cfg file will be used instead.
-
-  ```dvc
-  $ dvc remote modify --local myremote webhdfs_alias myalias
-  ```
-
-> The username, token, webhdfs_alias, and hdfscli_config may contain sensitive
-> user info. Therefore, it's safer to add it with the `--local` option, so it's
-> written to a Git-ignored config file.
-
-</details>
-
-<details>
-
 ### Click for WebDAV
 
 - `url` - remote location:
 
   ```dvc
   $ dvc remote modify myremote url \
-        webdavs://example.com/nextcloud/remote.php/dav/files/USERNAME/
+      webdavs://example.com/nextcloud/remote.php/dav/files/myuser/
   ```
 
 - `token` - token for WebDAV server, can be empty in case of using
   `user/password` authentication.
 
   ```dvc
-  $ dvc remote modify --local myremote token '<mytoken>'
+  $ dvc remote modify --local myremote token 'mytoken'
   ```
 
 - `user` - username for WebDAV server, can be empty in case of using `token`
@@ -862,7 +864,7 @@ Setting 'myremote' as a default remote.
 Modify its access profile:
 
 ```dvc
-$ dvc remote modify myremote profile myusername
+$ dvc remote modify myremote profile myuser
 ```
 
 Now the project config file should look like this:
@@ -870,7 +872,7 @@ Now the project config file should look like this:
 ```ini
 ['remote "myremote"']
 url = s3://mybucket/path
-profile = myusername
+profile = myuser
 [core]
 remote = myremote
 ```
