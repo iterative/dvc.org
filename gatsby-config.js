@@ -32,6 +32,7 @@ const plugins = [
     }
   },
   'gatsby-plugin-postcss',
+  'gatsby-plugin-preload-fonts',
   'gatsby-plugin-react-helmet',
   'gatsby-plugin-sitemap',
   'gatsby-plugin-twitter',
