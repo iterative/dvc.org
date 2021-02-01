@@ -339,7 +339,7 @@ a full guide on using Google Drive as DVC remote storage.
   Also requires using `gdrive_client_secret`.
 
   ```dvc
-  $ dvc remote modify myremote gdrive_client_id client-id
+  $ dvc remote modify myremote gdrive_client_id 'client-id'
   ```
 
 - `gdrive_client_secret` - Client secret for authentication with OAuth 2.0 when
@@ -347,7 +347,7 @@ a full guide on using Google Drive as DVC remote storage.
 
   ```dvc
   $ dvc remote modify myremote \
-        gdrive_client_secret client-secret
+        gdrive_client_secret 'client-secret'
   ```
 
 - `gdrive_user_credentials_file` - path where DVC stores OAuth credentials to
@@ -471,7 +471,9 @@ more information.
   $ dvc remote modify myremote url oss://mybucket/path
   ```
 
-- `oss_endpoint` - OSS endpoint values for accessing the remote container.
+- `oss_endpoint` -
+  [OSS endpoint](https://www.alibabacloud.com/help/doc-detail/31837.html) values
+  for accessing the remote container.
 
   ```dvc
   $ dvc remote modify myremote oss_endpoint endpoint
@@ -636,7 +638,7 @@ by HDFS. Read more about by expanding the WebHDFS section in
   on.
 
   ```dvc
-  $ dvc remote modify --local myremote token mytoken
+  $ dvc remote modify --local myremote token 'mytoken'
   ```
 
 - `hdfscli_config` - path to a `HdfsCLI` cfg file. WebHDFS access depends on

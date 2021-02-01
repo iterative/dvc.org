@@ -26,7 +26,7 @@ for the first remote):
 
 ```ini
 ['remote "myremote"']
-url = /tmp/dvc-storage
+url = /tmp/dvcstore
 [core]
 remote = myremote
 ```
@@ -255,12 +255,13 @@ parameters, use the parameters described in `dvc remote modify`.
 ### Click for Aliyun OSS
 
 First you need to setup OSS storage on Aliyun Cloud. Then, use an S3 style URL
-for OSS storage, and configure the endpoint:
+for OSS storage, and configure the
+[endpoint](https://www.alibabacloud.com/help/doc-detail/31837.html):
 
 ```dvc
 $ dvc remote add -d myremote oss://mybucket/path
 $ dvc remote modify myremote \
-                    oss_endpoint oss-accelerate.aliyuncs.com
+                    oss_endpoint endpoint
 ```
 
 To set key id, key secret and endpoint (or any other OSS parameter), use
@@ -356,7 +357,7 @@ setting the configuration property `dfs.webhdfs.enabled` to `true` in
 ```dvc
 $ dvc remote add -d myremote webhdfs://user@example.com/path
 $ dvc remote modify --local myremote user myuser
-$ dvc remote modify --local myremote token mytoken
+$ dvc remote modify --local myremote token 'mytoken'
 ```
 
 > The username and password may contain sensitive user info. Therefore, it's
