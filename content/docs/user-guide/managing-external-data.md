@@ -1,5 +1,11 @@
 # Managing External Data
 
+> ⚠️ This is an advanced feature that we don't recommend using unless you really
+> know what you are doing. Artifacts added with --external are not affected by
+> `dvc push/pull/status -c`. You are likely looking for
+> [straight-to-remote/cache](https://github.com/iterative/dvc/issues/4520)
+> functionality or `dvc import-url`
+
 There are cases when data is so large, or its processing is organized in such a
 way, that its preferable to avoid moving it from its original location. For
 example data on a network attached storage (NAS), processing data on HDFS,
