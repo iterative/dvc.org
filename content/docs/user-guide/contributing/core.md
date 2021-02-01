@@ -230,7 +230,7 @@ from backup for any new DVC repo setup to avoid manual login.
 Or add this to your env (use encryption for CI setup):
 
 ```dvc
-$ export GDRIVE_USER_CREDENTIALS_DATA='CONTENT_of_gdrive-user-credentials.json'
+$ export GDRIVE_USER_CREDENTIALS_DATA='mysecret'
 ```
 
 </details>
