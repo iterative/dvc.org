@@ -37,8 +37,8 @@ data.xml.dvc
 
 The benefit of this command over browsing a Git hosting website is that the list
 includes files and directories tracked by both Git and DVC (`data.xml` is not
-visible if you check
-[GitHub](https://github.com/iterative/dataset-registry/tree/master/get-started)).
+visible if you
+[check GitHub](https://github.com/iterative/dataset-registry/tree/master/get-started)).
 
 ## Download
 
