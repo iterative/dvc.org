@@ -1,9 +1,8 @@
 # repro
 
-Reproduce complete or partial <abbr>pipelines</abbr> by executing commands
-defined in their [stages](/doc/command-reference/run) in the correct order. The
-commands to be executed are determined by recursively analyzing dependencies and
-<abbr>outputs</abbr> of the target stages.
+Reproduce complete or partial [pipelines](/doc/command-reference/dag) by
+executing commands defined in their [stages](/doc/command-reference/run) in the
+correct order.
 
 ## Synopsis
 
@@ -14,8 +13,7 @@ usage: dvc repro [-h] [-q | -v] [-f] [-s] [-m] [--dry] [-i]
                  [targets [<target> ...]]
 
 positional arguments:
-  targets       Limit command scope to these .dvc or dvc.yaml files,
-                or stage names.
+  targets       Stages to reproduce. 'dvc.yaml' by default.
 ```
 
 > See [`targets`](#options) for more details.
@@ -24,19 +22,18 @@ positional arguments:
 
 Provides a way to regenerate data pipeline results, by restoring the dependency
 graph (a [DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph)) implicitly
-defined by the stages listed in `dvc.yaml` files. The commands defined in these
-stages are then be executed in the correct order.
+defined by the stages listed in `dvc.yaml`. The commands defined in these stages
+are then executed in the correct order.
 
-For stages with multiple commands (having a list or a multiline string in the
-`cmd` field), commands are run one after the other in the order they are
-defined. The failure of any command will halt the remaining stage execution, and
-raises an error.
+For stages with multiple commands (having a list in the `cmd` field), commands
+are run one after the other in the order they are defined. The failure of any
+command will halt the remaining stage execution, and raises an error.
 
 > Pipeline stages are defined in `dvc.yaml` (either manually or by using
 > `dvc run`) while initial data dependencies can be registered with `dvc add`.
 
-This command is similar to [Make](https://www.gnu.org/software/make/) in
-software build automation, but DVC captures build requirements
+`dvc repro` is similar to [Make](https://www.gnu.org/software/make/) in software
+build automation, but DVC captures build requirements
 ([dependencies and outputs](/doc/command-reference/run#dependencies-and-outputs))
 and <abbr>caches</abbr> the pipeline's <abbr>outputs</abbr> along the way.
 
@@ -72,7 +69,8 @@ files.
 
 Currently, `dvc repro` is not able to parallelize stage execution automatically.
 If you need to do this, you can launch `dvc repro` multiple times manually. For
-example, let's say a <abbr>pipeline</abbr> graph looks something like this:
+example, let's say a [pipelines](/doc/command-reference/dag) graph looks
+something like this:
 
 ```dvc
 $ dvc dag
@@ -139,8 +137,8 @@ up-to-date and only execute the final stage.
   `dvc commit` to finish the operation.
 
 - `-m`, `--metrics` - show metrics after reproduction. The target pipelines must
-  have at least one metrics file defined either with the `dvc metrics` command,
-  or by the `-M` or `-m` options of the `dvc run` command.
+  have at least one metrics file defined either with `dvc metrics` or by the
+  `-M` or `-m` options of `dvc run`
 
 - `--dry` - only print the commands that would be executed without actually
   executing the commands.
