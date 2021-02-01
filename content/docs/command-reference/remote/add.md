@@ -260,8 +260,7 @@ for OSS storage, and configure the
 
 ```dvc
 $ dvc remote add -d myremote oss://mybucket/path
-$ dvc remote modify myremote \
-                    oss_endpoint endpoint
+$ dvc remote modify myremote oss_endpoint endpoint
 ```
 
 To set key id, key secret and endpoint (or any other OSS parameter), use
