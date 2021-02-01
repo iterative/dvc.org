@@ -90,6 +90,8 @@ To build the project and run it:
 
 - `yarn develop` - run development server with hot reload.
 - `yarn build` - build assets in the `public` directory.
+- `yarn preload-fonts` - add font preloading (e.g. if new page is created or
+  font is changed).
 - `yarn start` - run production static server over the `public` directory.
 
 > All the tests, formatting, and linters below will be enforced automatically
