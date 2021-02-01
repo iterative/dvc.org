@@ -33,7 +33,7 @@ external data source changes. Example scenarios:
 > Note that `dvc get-url` corresponds to the first step this command performs
 > (just download the file or directory).
 
-`dvc import-url` helps you create such an external data dependency, without
+`dvc import-url` helps you create such an external data dependency without
 having to manually copy files from the supported locations (listed below), which
 may require installing a different tool for each type.
 
@@ -49,15 +49,10 @@ update the import later, if the data source has changed (see `dvc update`).
 > Note that the imported data can be [pushed](/doc/command-reference/push) to
 > remote storage normally.
 
-`.dvc` files support references to data in an external location, see
-[External Dependencies](/doc/user-guide/external-dependencies). In such an
-import `.dvc` file, the `deps` field stores the external URL, and the `outs`
-field contains the corresponding local path in the <abbr>workspace</abbr>. It
-records enough metadata about the imported data to enable DVC efficiently
-determining whether the local copy is out of date.
-
-Note that `dvc repro` doesn't check or update import `.dvc` files, use
-`dvc update` to bring the import up to date from the data source.
+Note that import stages are considered always
+[frozen](/doc/command-reference/freeze), meaning that if you run `dvc repro`,
+they won't be updated. Use `dvc update` to update the downloaded data artifact
+from the data source.
 
 DVC supports several types of external locations (protocols):
 
@@ -95,10 +90,8 @@ DVC supports several types of external locations (protocols):
   running. DVC automatically expands this URL into a regular S3, SSH, GS, etc
   URL by appending `/path/to/file` to the `myremote`'s configured base path.
 
-Another way to understand the `dvc import-url` command is as a shortcut for
-generating a pipeline stage with and external dependency. This is discussed in
-the [External Dependencies](/doc/user-guide/external-dependencies)
-documentation, where an alternative is demonstrated for each of these schemes.
+Another way to understand the `dvc import-url` command is as an alternative for
+generating an [external dependency](/doc/user-guide/external-dependencies).
 
 Instead of:
 
@@ -115,8 +108,8 @@ $ dvc run -n download_data \
           wget https://data.dvc.org/get-started/data.xml -O data.xml
 ```
 
-`dvc import-url` generates an _import `.dvc` file_ and `dvc run` a regular stage
-(in `dvc.yaml`).
+Note that `dvc import-url` generates an import `.dvc` file, while `dvc run`
+creates a stage (in `dvc.yaml`).
 
 ## Options
 

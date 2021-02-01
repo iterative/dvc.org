@@ -41,10 +41,10 @@ tracked by either Git or DVC (including paths inside tracked directories). Note
 that DVC-tracked targets must be found in a `dvc.yaml` or `.dvc` file of the
 repo.
 
-⚠️ DVC repos should have a default [DVC remote](/doc/command-reference/remote)
-containing the target actual for this command to work. The only exception is for
-local repos, where DVC will try to copy the data from its <abbr>cache</abbr>
-first.
+⚠️ Source repos repos should have a default
+[DVC remote](/doc/command-reference/remote) containing the target actual for
+this command to work. The only exception is for local repos, where DVC will try
+to copy the data from its <abbr>cache</abbr> first.
 
 > See `dvc get-url` to download data from other supported locations such as S3,
 > SSH, HTTP, etc.
