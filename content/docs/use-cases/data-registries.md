@@ -61,7 +61,7 @@ The actual data is stored in the project's <abbr>cache</abbr>, and can be
 accessed from other locations and by other people:
 
 ```dvc
-$ dvc remote add -d myremote s3://my-bucket/dvc-storage
+$ dvc remote add -d myremote s3://mybucket/dvcstore
 $ dvc push
 ```
 

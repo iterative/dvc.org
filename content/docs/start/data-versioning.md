@@ -97,7 +97,7 @@ retrieved on other environments later with `dvc pull`. First, we need to setup a
 storage:
 
 ```dvc
-$ dvc remote add -d storage s3://my-bucket/dvc-storage
+$ dvc remote add -d storage s3://mybucket/dvcstore
 $ git add .dvc/config
 $ git commit -m "Configure remote storage"
 ```
@@ -115,8 +115,8 @@ cache, usually a cloud storage service. For simplicity, let's set up a _local
 remote_:
 
 ```dvc
-$ mkdir -p /tmp/dvc-storage
-$ dvc remote add -d myremote /tmp/dvc-storage
+$ mkdir -p /tmp/dvcstore
+$ dvc remote add -d myremote /tmp/dvcstore
 $ git commit .dvc/config -m "Configure local remote"
 ```
 
@@ -143,11 +143,11 @@ set up earlier. You can check that the data has been stored in the DVC remote
 with:
 
 ```dvc
-$ ls -R /tmp/dvc-storage
-/tmp/dvc-storage/:
+$ ls -R /tmp/dvcstore
+/tmp/dvcstore/:
 a3
 
-/tmp/dvc-storage/a3:
+/tmp/dvcstore/a3:
 04afb96060aad90176268345e10355
 ```
 
