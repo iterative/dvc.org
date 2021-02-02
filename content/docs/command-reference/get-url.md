@@ -31,7 +31,7 @@ while `out` can be used to specify the directory and/or file name desired for
 the downloaded data. If an existing directory is specified, then the file or
 directory will be placed inside.
 
-DVC supports several types of (local or) remote locations (protocols):
+DVC supports several types of (local or) remote data sources (protocols):
 
 | Type      | Description                  | `url` format example                          |
 | --------- | ---------------------------- | --------------------------------------------- |
@@ -72,11 +72,9 @@ $ wget https://example.com/path/to/data.csv
 
 ## Options
 
-- `-j <number>`, `--jobs <number>` - number of threads to run simultaneously to
-  handle the downloading of files from the remote. The default value is
-  `4 * cpu_count()`. For SSH remotes, the default is just `4`. Using more jobs
-  may improve the total download speed if a combination of small and large files
-  are being fetched.
+- `-j <number>`, `--jobs <number>` - parallelism level for DVC to download data
+  from the source. The default value is `4 * cpu_count()`. For SSH remotes, the
+  default is `4`. Using more jobs may speed up the operation.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 

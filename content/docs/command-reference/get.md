@@ -66,11 +66,10 @@ name.
   download the file or directory from. The latest commit in `master` (tip of the
   default branch) is used by default when this option is not specified.
 
-- `-j <number>`, `--jobs <number>` - number of threads to run simultaneously to
-  handle the downloading of files from the remote. The default value is
-  `4 * cpu_count()`. For SSH remotes, the default is just `4`. Using more jobs
-  may improve the total download speed if a combination of small and large files
-  are being fetched.
+- `-j <number>`, `--jobs <number>` - parallelism level for DVC to download data
+  from the remote. The default value is `4 * cpu_count()`. For SSH remotes, the
+  default is `4`. Note that the default value can be set using the `jobs` config
+  option with `dvc remote modify`. Using more jobs may speed up the operation.
 
 - `--show-url` - instead of downloading the file or directory, just print the
   storage location (URL) of the target data. If `path` is a Git-tracked file,
