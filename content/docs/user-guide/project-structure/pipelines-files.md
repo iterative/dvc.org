@@ -404,10 +404,13 @@ stages:
     outs:
       - path: features
         md5: 2119f7661d49546288b73b5730d76485
+        size: 154683
       - path: performance.json
         md5: ea46c1139d771bfeba7942d1fbb5981e
+        size: 975
       - path: logs.csv
         md5: f99aac37e383b422adc76f5f1fb45004
+        size: 695947
 ```
 
 Stages are listed again in `dvc.lock`, in order to know if their definitions
