@@ -119,7 +119,7 @@ used to see what files `dvc pull` would download.
   from remote storage. The default value is `4 * cpu_count()`. For SSH remotes,
   the default is `4`. Note that the default value can be set using the `jobs`
   config option with `dvc remote modify`. Using more jobs may improve the
-  overall transfer speed.
+  operation.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
