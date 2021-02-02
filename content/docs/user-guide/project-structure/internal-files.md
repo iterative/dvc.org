@@ -127,9 +127,9 @@ That's how DVC knows that the other two cached files belong in the directory.
 
 ### Run-cache
 
-`dvc repro` and `dvc run` by default populate and reutilize a log of stage runs
-known, which is found in the `runs/` directory inside the cache (or
-[remote storage](/doc/command-reference/remote)).
+`dvc repro` and `dvc run` by default populate and reutilize a log of stages that
+have been run in the project. It is found in the `runs/` directory inside the
+cache (or [remote storage](/doc/command-reference/remote)).
 
 Runs are identified as combinations of <abbr>dependencies</abbr>, commands, and
 <abbr>outputs</abbr> that correspond to each other. These combinations are
