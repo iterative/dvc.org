@@ -344,7 +344,7 @@ stages:
 | `cmd`            | (Required) One or more commands executed by the stage (may contain either a single value or a list). Commands are executed sequentially until all are finished or until one of them fails (see `dvc repro`).                                                                              |
 | `wdir`           | Working directory for the stage command to run in (relative to the file's location). Any paths in other fields are also based on this. It defaults to `.` (the file's location).                                                                                                          |
 | `deps`           | List of <abbr>dependency</abbr> paths of this stage (relative to `wdir`).                                                                                                                                                                                                                 |
-| `outs`           | List of <abbr>output</abbr> paths of this stage (relative to `wdir`). See [Simple output entries](#simple-output-entries) for more details.                                                                                                                                               |
+| `outs`           | List of <abbr>output</abbr> paths of this stage (relative to `wdir`). These can contain certain optional [subfields](#output-subfields).                                                                                                                                                  |
 | `params`         | List of <abbr>parameter</abbr> dependency keys (field names) to track from `params.yaml` (in `wdir`). The list may also contain other parameters file names, with a sub-list of the param names to track in them.                                                                         |
 | `metrics`        | List of [metrics files](/doc/command-reference/metrics), and optionally, whether or not this metrics file is <abbr>cached</abbr> (`true` by default). See the `--metrics-no-cache` (`-M`) option of `dvc run`.                                                                            |
 | `plots`          | List of [plot metrics](/doc/command-reference/plots), and optionally, their default configuration (subfields matching the options of `dvc plots modify`), and whether or not this plots file is <abbr>cached</abbr> ( `true` by default). See the `--plots-no-cache` option of `dvc run`. |
@@ -364,11 +364,10 @@ validation and auto-completion.
 > See also
 > [How to Merge Conflicts](/doc/user-guide/how-to/merge-conflicts#dvcyaml).
 
-### Simple output entries
+### Output subfields
 
-> _Simple_ compared to full
-> [output entries](/doc/user-guide/project-structure/dvc-files#output-entries)
-> used in `dvc.lock` and `.dvc` files
+> Notice that these are a subset of those in `.dvc` file
+> [output entries](/doc/user-guide/project-structure/dvc-files#output-entries).
 
 | Field     | Description                                                                                                                                |
 | --------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -419,7 +418,7 @@ stages:
 Stages are listed again in `dvc.lock`, in order to know if their definitions
 change in `dvc.yaml`.
 
-Full
+Regular
 [dependency entries](/doc/user-guide/project-structure/dvc-files#dependency-entries)
 and all forms of
 [output entries](/doc/user-guide/project-structure/dvc-files#output-entries)
@@ -427,10 +426,8 @@ and all forms of
 [plots](/doc/command-reference/plots) files) are also listed (per stage) in
 `dvc.lock`, including a content hash field (`md5`, `etag`, or `checksum`).
 
-Full <abbr>parameter dependencies</abbr> (key and value) are listed too (under
-`params`), grouped by parameters file.
-
-Note that in the case of [templated](#templating) `dvc.yaml` files, the actual
-values are substituted in `dvc.lock` (no `${}` expressions remain). And for
-those with [`foreach` stages](#foreach-stages), individual stages are expanded
-(`foreach` structures are not preserved).
+Full <abbr>parameter dependencies</abbr> (both key and value) are listed too
+(under `params`), under each parameters file name.
+[templated `dvc.yaml`](#templating) files, the actual values are written to
+`dvc.lock` (no `${}` expression). As for [`foreach` stages](#foreach-stages),
+individual stages are expanded (no `foreach` structures are preserved).
