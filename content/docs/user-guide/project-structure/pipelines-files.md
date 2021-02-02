@@ -317,7 +317,6 @@ stages:
     outs:
       - path: model-uk.hdfs
         md5: 17b3d1efc339b416c4b5615b1ce1b97e
-        size: 2712300
   build@us: ...
 ```
 
