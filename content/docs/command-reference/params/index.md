@@ -249,19 +249,21 @@ stages:
 ```
 
 ```yaml
-train:
-  cmd: python train.py
-  deps:
-    - path: users.csv
-      md5: 23be4307b23dcd740763d5fc67993f11
-  params:
-    INT: 5
-    BOOL: true
-    TrainConfig.EPOCHS: 70
-    TrainConfig.layers: 9
-  outs:
-    - path: model.pkl
-      md5: 1c06b4756f08203cc496e4061b1e7d67
+schema: '2.0'
+stages:
+  train:
+    cmd: python train.py
+    deps:
+      - path: users.csv
+        md5: 23be4307b23dcd740763d5fc67993f11
+    params:
+      INT: 5
+      BOOL: true
+      TrainConfig.EPOCHS: 70
+      TrainConfig.layers: 9
+    outs:
+      - path: model.pkl
+        md5: 1c06b4756f08203cc496e4061b1e7d67
 ```
 
 Alternatively, the entire `TestConfig` params group
