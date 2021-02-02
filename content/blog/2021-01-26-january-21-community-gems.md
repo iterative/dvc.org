@@ -61,22 +61,16 @@ some speed tests for your use case. We'd love to know what you find!
 
 ### [Q: My DVC remote is a server with a self-signed certificate. When I push data, DVC is giving me an SSL verification error- how can I get around this?](https://discord.com/channels/485586884165107732/563406153334128681/800707271502856222)
 
-If you're using an `http`-addressable storage, try modifying your DVC remote
-configuration to disable SSH verification:
-
-```dvc
-$ dvc remote modify <myremote> ssl_verify false
-```
-
-If your storage is another format, you'll want to check into the manufacturer's
-docs to see how you can make your certificate pass verification. For example, if
-you use S3 or S3-compatible storage, you can configure your AWS CLI to use a
-custom certificate path.
+On S3 or S3-compatible storage, you can configure your AWS CLI to use a custom
+certificate path.
 [As suggested by their docs](https://docs.aws.amazon.com/credref/latest/refdocs/setting-global-ca_bundle.html),
-you'll set the environmental variable `AWS_CA_BUNDLE` to your `.pem` file.
+you can also set the environment variable `AWS_CA_BUNDLE` to your `.pem` file.
 
-Then, when DVC tries to access your S3 storage via `boto`, you should be able to
-get past SSL verification!
+Similarly, on HTTP and Webdav remotes, there's `REQUESTS_CA_BUNDLE` environment
+variable that you can set your self-signed certificate file to.
+
+Then, when DVC tries to access your storage, you should be able to get past SSL
+verification!
 
 ### [Q: I want to be able to make my own plots in Python with data points from my `dvc plots`, including older versions of those plots. What do you recommend to get the raw historical data?](https://discord.com/channels/485586884165107732/563406153334128681/799617584336338954)
 
