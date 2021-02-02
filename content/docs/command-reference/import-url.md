@@ -10,8 +10,8 @@ import `.dvc` file is created).
 ## Synopsis
 
 ```usage
-usage: dvc import-url [-h] [-q | -v] [--file <filename>] [--no-exec]
-                      [--desc <text>]
+usage: dvc import-url [-h] [-q | -v] [-j <number>] [--file <filename>]
+                      [--no-exec] [--desc <text>]
                       url [out]
 
 positional arguments:
@@ -131,6 +131,10 @@ $ dvc run -n download_data \
   and download everything later (with `dvc update`); or if the target data
   already exist locally and you want to "DVCfy" this state of the project (see
   also `dvc commit`).
+
+- `-j <number>`, `--jobs <number>` - parallelism level for DVC to download data
+  from the source. The default value is `4 * cpu_count()`. For SSH remotes, the
+  default is `4`. Using more jobs may speed up the operation.
 
 - `--desc <text>` - user description of the data (optional). This doesn't  
   affect any DVC operations.
