@@ -134,7 +134,7 @@ these settings, you could use the following options.
   $ dvc remote modify myremote --local credentialpath /path/to/my/creds
   ```
 
-- `configpath` - Path to the AWS config file. The location defaults to
+- `configpath` - path to the AWS config file. The location defaults to
   `~/.aws/config`. It supports S3-specific
   [configuration values](https://docs.aws.amazon.com/cli/latest/topic/s3-config.html#configuration-values):
 
