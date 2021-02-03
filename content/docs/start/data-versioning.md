@@ -257,10 +257,10 @@ volume?
 While these cases are not covered in the Get Started, we recommend reading the
 following sections next to learn more about advanced workflows:
 
-- A shared [external cache](/doc/use-cases/shared-development-server) can be set
+- A [shared external cache](/doc/use-cases/shared-development-server) can be set
   up to store, version and access a lot of data on a large shared volume
   efficiently.
 - A quite advanced scenario is to track and version data directly on the remote
   storage (e.g. S3). Check out
-  [Managing External Data](https://dvc.org/doc/user-guide/managing-external-data)
-  to learn more.
+  [External Outputs](https://dvc.org/doc/user-guide/external-outputs) to learn
+  more.

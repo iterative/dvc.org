@@ -179,30 +179,30 @@ This section contains the following options, which affect the project's
   directories, which is useful when you are using a a
   [shared development server](/doc/use-cases/shared-development-server).
 
-- `cache.local` - name of a _local remote_ to use as a
-  [custom cache](/doc/user-guide/managing-external-data#examples) directory.
+- `cache.local` - name of a _local remote_ to
+  [use as external cache](/doc/user-guide/external-outputs#examples) directory.
   (Refer to `dvc remote` for more information on "local remotes".) This will
   overwrite the value provided to `dvc config cache.dir` or `dvc cache dir`.
 
 - `cache.s3` - name of an Amazon S3 remote to use as
-  [external cache](/doc/user-guide/managing-external-data#examples).
+  [use as external cache](/doc/user-guide/external-outputs#examples).
 
 - `cache.gs` - name of a Google Cloud Storage remote to use as
-  [external cache](/doc/user-guide/managing-external-data#examples).
+  [use as external cache](/doc/user-guide/external-outputs#examples).
 
 - `cache.ssh` - name of an SSH remote to use as
-  [external cache](/doc/user-guide/managing-external-data#examples).
+  [use as external cache](/doc/user-guide/external-outputs#examples).
 
 - `cache.hdfs` - name of an HDFS remote to use as
-  [external cache](/doc/user-guide/managing-external-data#examples).
+  [use as external cache](/doc/user-guide/external-outputs#examples).
 
 - `cache.webhdfs` - name of an HDFS remote with WebHDFS enabled to use as
-  [external cache](/doc/user-guide/managing-external-data#examples).
+  [use as external cache](/doc/user-guide/external-outputs#examples).
 
-> Avoid using the same [DVC remote](/doc/command-reference/remote) (used for
-> `dvc push`, `dvc pull`, etc.) as external cache, because it may cause file
+> ⚠️ Avoid using the same [remote storage](/doc/command-reference/remote) used
+> for `dvc push` and `dvc pull` as external cache, because it may cause file
 > hash overlaps: the hash of an external <abbr>output</abbr> could collide with
-> a hash generated locally for another file with different content.
+> that of a local file with different content.
 
 ### state
 

@@ -1,25 +1,24 @@
 # External Dependencies
 
 There are cases when data is so large, or its processing is organized in such a
-way, that its preferable to avoid moving it from its original location. For
-example data on a network attached storage (NAS), processing data on HDFS,
+way, that its preferable to avoid moving it from its current external location.
+For example data on a network attached storage (NAS), processing data on HDFS,
 running [Dask](https://dask.org/) via SSH, or for a script that streams data
 from S3 to process it.
 
-External dependencies and
-[external outputs](/doc/user-guide/managing-external-data) provide ways to track
-and version data outside of the <abbr>project</abbr>.
+External dependencies (and [external outputs](/doc/user-guide/external-outputs))
+provide ways to track (and version) data outside of the <abbr>project</abbr>.
 
 ## How external dependencies work
 
-External <abbr>dependencies</abbr> are considered part of the (extended) DVC
-project: DVC will track them, detecting when they change (triggering stage
-executions on `dvc repro`, for example).
+External <abbr>dependencies</abbr> will be tracked by DVC, detecting when they
+change (triggering stage executions on `dvc repro`, for example).
 
 To define files or directories in an external location as
-[stage](/doc/command-reference/run) dependencies, put their remote URLs or
+[stage](/doc/command-reference/run) dependencies, specify their remote URLs or
 external paths in `dvc.yaml` (`deps` field). Use the same format as the `url` of
-certain `dvc remote` types. Currently, the following protocols are supported:
+certain `dvc remote` types. Currently, the following supported `dvc remote`
+types/protocols:
 
 - Amazon S3
 - Microsoft Azure Blob Storage

@@ -1,13 +1,12 @@
 # `.dvc` Files
 
 You can use `dvc add` to track data files or directories located in your current
-<abbr>workspace</abbr>, or in supported
-[external locations](/doc/user-guide/managing-external-data). Additionally,
-`dvc import` and `dvc import-url` let you bring data from external locations to
-your project, and start tracking it locally.
+<abbr>workspace</abbr>\*. Additionally, `dvc import` and `dvc import-url` let
+you bring data from external locations to your project, and start tracking it
+locally. See [Data Versioning](/doc/start/data-versioning) for more info.
 
-> See [Data Versioning](/doc/start/data-versioning) and
-> [Data Access](/doc/start/data-access) for more info.
+> \* Certain [external locations](/doc/user-guide/external-outputs) are also
+> supported.
 
 Files ending with the `.dvc` extension ("dot DVC file") are created by these
 commands as data placeholders that can be versioned with Git. They contain the
@@ -55,16 +54,16 @@ Comments can be entered using the `# comment` format.
 
 The following subfields may be present under `outs` entries:
 
-| Field                           | Description                                                                                                                                                                                                                                                                                                                           |
-| ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `path`                          | (Required) Path to the file or directory (relative to `wdir`, which defaults to the file's location)                                                                                                                                                                                                                                  |
-| `md5`<br/>`etag`<br/>`checksum` | Hash value for the file or directory being tracked with DVC. MD5 is used for most locations (local file system and SSH); [ETag](https://en.wikipedia.org/wiki/HTTP_ETag#Strong_and_weak_validation) for HTTP, S3, or Azure [external outputs](/doc/user-guide/managing-external-data); and a special _checksum_ for HDFS and WebHDFS. |
-| `size`                          | Size of the file or directory (sum of all files).                                                                                                                                                                                                                                                                                     |
-| `nfiles`                        | If this output is a directory, the number of files inside (recursive).                                                                                                                                                                                                                                                                |
-| `isexec`                        | Whether this is an executable file. DVC preserves execute permissions upon `dvc checkout` and `dvc pull`. This has no effect on directories, or in general on Windows.                                                                                                                                                                |
-| `cache`                         | Whether or not this file or directory is <abbr>cached</abbr> (`true` by default). See the `--no-commit` option of `dvc add`.                                                                                                                                                                                                          |
-| `persist`                       | Whether the output file/dir should remain in place while `dvc repro` runs (`false` by default: outputs are deleted when `dvc repro` starts)                                                                                                                                                                                           |
-| `desc`                          | (Optional) user description for this output (supported in metrics and plots too). This doesn't affect any DVC operations.                                                                                                                                                                                                             |
+| Field                           | Description                                                                                                                                                                                                                                                                                                                     |
+| ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `path`                          | (Required) Path to the file or directory (relative to `wdir`, which defaults to the file's location)                                                                                                                                                                                                                            |
+| `md5`<br/>`etag`<br/>`checksum` | Hash value for the file or directory being tracked with DVC. MD5 is used for most locations (local file system and SSH); [ETag](https://en.wikipedia.org/wiki/HTTP_ETag#Strong_and_weak_validation) for HTTP, S3, or Azure [external outputs](/doc/user-guide/external-outputs); and a special _checksum_ for HDFS and WebHDFS. |
+| `size`                          | Size of the file or directory (sum of all files).                                                                                                                                                                                                                                                                               |
+| `nfiles`                        | If this output is a directory, the number of files inside (recursive).                                                                                                                                                                                                                                                          |
+| `isexec`                        | Whether this is an executable file. DVC preserves execute permissions upon `dvc checkout` and `dvc pull`. This has no effect on directories, or in general on Windows.                                                                                                                                                          |
+| `cache`                         | Whether or not this file or directory is <abbr>cached</abbr> (`true` by default). See the `--no-commit` option of `dvc add`.                                                                                                                                                                                                    |
+| `persist`                       | Whether the output file/dir should remain in place while `dvc repro` runs (`false` by default: outputs are deleted when `dvc repro` starts)                                                                                                                                                                                     |
+| `desc`                          | (Optional) user description for this output (supported in metrics and plots too). This doesn't affect any DVC operations.                                                                                                                                                                                                       |
 
 ## Dependency entries
 

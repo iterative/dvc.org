@@ -143,10 +143,12 @@ not.
   Shell style wildcards supported: `*`, `?`, `[seq]`, `[!seq]`, and `**`
 
 - `--external` - allow `targets` that are outside of the DVC repository. See
-  [Managing External Data](/doc/user-guide/managing-external-data).
+  [External Outputs](/doc/user-guide/external-outputs).
 
-  > Note that external outputs typically require an external cache setup. See
-  > link above for more details.
+  > ⚠️ Note that this is an advanced feature for very specific situations and
+  > not recommended except if there's absolutely no other alternative.
+  > Additionally, this typically requires an external cache setup (see link
+  > above).
 
 - `--desc <text>` - user description of the data (optional). This doesn't affect
   any DVC operations.

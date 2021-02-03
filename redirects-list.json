@@ -37,6 +37,7 @@
   "^/doc/user-guide/dvc-files/.dvc$                                                       /doc/user-guide/project-structure/dvc-files",
   "^/doc/user-guide/dvc-internals(/.*)?$                                                  /doc/user-guide/project-structure/internal-files$1",
   "^/doc/user-guide/dvcignore$                                                            /doc/user-guide/project-structure/dvcignore-files",
+  "^/doc/user-guide/managing-external-data$                                               /doc/user-guide/user-guide/external-outputs",
   "^/doc/understanding-dvc(/.*)?$                                                         /doc/user-guide/what-is-dvc",
   "^/doc/commands-reference(/.*)?$                                                        /doc/command-reference$1",
   "^/doc/command-reference/plot$                                                          /doc/command-reference/plots",

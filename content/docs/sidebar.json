@@ -131,8 +131,8 @@
       "large-dataset-optimization",
       "external-dependencies",
       {
-        "label": "Managing External Data",
-        "slug": "managing-external-data"
+        "label": "External Outputs",
+        "slug": "external-outputs"
       },
       {
         "label": "Contributing",
