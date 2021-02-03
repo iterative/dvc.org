@@ -99,12 +99,11 @@ repo at `url`) are not supported.
   > [Importing and updating fixed revisions](#example-importing-and-updating-fixed-revisions)
   > example below).
 
-- `--no-exec` - create the import `.dvc` file but don't download the target data
-  (doesn't check whether the source is valid). You can use `dvc update` to
-  finish the operation. This is useful if you need to define the project imports
-  quickly, and download everything later (with `dvc update`); or if the target
-  data already exist locally and you want to "DVCfy" this state of the project
-  (see also `dvc commit`).
+- `--no-exec` - create the import `.dvc` file but don't download `url` (assumes
+  that the data source is valid). This is useful if you need to define the
+  project imports quickly, and download everything later (use `dvc update` to
+  finish the operation(s)); or if the target data already exist locally and you
+  want to "DVCfy" this state of the project (see also `dvc commit`).
 
 - `-j <number>`, `--jobs <number>` - parallelism level for DVC to download data
   from the remote. The default value is `4 * cpu_count()`. For SSH remotes, the

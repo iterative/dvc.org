@@ -22,7 +22,7 @@ Advantages of data registries:
   (`dvc get` and `dvc import` commands, similar to software package management
   systems like `pip`).
 - **Persistence**: [remote storage](/doc/command-reference/remote) (e.g. an S3
-  bucket) controlled by the DVC registry improves data security. There are less
+  bucket) tracked by the DVC registry improves data security. There are less
   chances someone can delete or rewrite an ML model, for example.
 - **Storage optimization**: centralize data
   [shared](/doc/use-cases/sharing-data-and-model-files) by multiple projects in
@@ -61,7 +61,7 @@ The actual data is stored in the project's <abbr>cache</abbr>, and can be
 accessed from other locations and by other people:
 
 ```dvc
-$ dvc remote add -d myremote s3://my-bucket/dvc-storage
+$ dvc remote add -d myremote s3://mybucket/dvcstore
 $ dvc push
 ```
 

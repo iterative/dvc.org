@@ -22,9 +22,9 @@ https://youtu.be/EE7Gk84OZY8
 Remember those `.dvc` files `dvc add` generates? Those files (and `dvc.lock`
 that we'll cover later), have their history in Git, DVC remote storage config
 saved in Git contain all the information needed to access and download any
-version of datasets, files, and models. It means that Git repository with DVC
-files becomes an entry point and can be used instead of accessing files
-directly.
+version of datasets, files, and models. It means that a Git repository with
+<abbr>DVC files</abbr> becomes an entry point, and can be used instead of
+accessing files directly.
 
 ## Find a file or directory
 
@@ -41,8 +41,8 @@ data.xml.dvc
 
 The benefit of this command over browsing a Git hosting website is that the list
 includes files and directories tracked by both Git and DVC (`data.xml` is not
-visible if you check
-[GitHub](https://github.com/iterative/dataset-registry/tree/master/get-started)).
+visible if you
+[check GitHub](https://github.com/iterative/dataset-registry/tree/master/get-started)).
 
 ## Download
 

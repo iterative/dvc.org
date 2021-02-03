@@ -126,11 +126,10 @@ $ dvc run -n download_data \
   the imported data (`out`).
 
 - `--no-exec` - create the import `.dvc` file but don't download `url` (assumes
-  that the data source is valid). You can use `dvc update` to finish the
-  operation. This is useful if you need to define the project imports quickly,
-  and download everything later (with `dvc update`); or if the target data
-  already exist locally and you want to "DVCfy" this state of the project (see
-  also `dvc commit`).
+  that the data source is valid). This is useful if you need to define the
+  project imports quickly, and download everything later (use `dvc update` to
+  finish the operation(s)); or if the target data already exist locally and you
+  want to "DVCfy" this state of the project (see also `dvc commit`).
 
 - `-j <number>`, `--jobs <number>` - parallelism level for DVC to download data
   from the source. The default value is `4 * cpu_count()`. For SSH remotes, the

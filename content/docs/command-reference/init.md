@@ -14,11 +14,10 @@ DVC works best in a Git repository. This enables all features, providing the
 most value. For this reason, `dvc init` (without flags) expects to run in a Git
 repository root (a `.git/` directory should be present).
 
-At DVC initialization, a new `.dvc/` directory is created for internal
-configuration and <abbr>cache</abbr>
-[files and directories](/doc/user-guide/project-structure/internal-files), that
-are hidden from the user. This directory is automatically staged with `git add`,
-so it can be easily committed with Git.
+At DVC initialization, a new `.dvc/` directory is created for configuration,
+default <abbr>cache</abbr> location, and other internal files and directories,
+that are hidden from the user. This directory is automatically staged with
+`git add`, so it can be easily committed with Git.
 
 The command [options](#options) can be used to start an alternative workflow for
 advanced scenarios:
@@ -51,7 +50,7 @@ initializing DVC in the Git repo root:
 
 - DVC [internals](/doc/user-guide/project-structure/internal-files) (config
   file, cache directory, etc.) would be shared across different subdirectories.
-  This forces all of them to use the same DVC settings and
+  This forces all of them to use the same DVC configuration and
   [remote storage](/doc/command-reference/remote).
 
 - By default, DVC commands like `dvc pull` and `dvc repro` explore the whole
@@ -119,8 +118,9 @@ include:
 - SCM other than Git is being used. Even though there are DVC features that
   require DVC to be run in the Git repo, DVC can work well with other version
   control systems. Since DVC relies on simple `dvc.yaml` files to manage
-  <abbr>pipelines</abbr>, data, etc, they can be added into any version control
-  system, thus providing large data files and directories versioning.
+  [pipelines](/doc/command-reference/dag), data, etc, they can be added into any
+  version control system, thus providing large data files and directories
+  versioning.
 
 - There is no need to keep the history at all, e.g. having a deployment
   automation like running a data pipeline using `cron`.
