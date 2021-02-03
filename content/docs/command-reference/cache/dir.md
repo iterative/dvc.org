@@ -24,15 +24,14 @@ Unlike doing so with `dvc config cache`, `dvc cache dir` transform paths
 **relative to the config file location**. However, if the `value` provided is an
 absolute path, then it's preserved as it is.
 
-When reading (`value` is not provided) the value is read from the system,
-global, repo and local configuration files by default, and options `--system`,
-`--global`, `--project`, and `--local` can be used to tell the command to read
-from only that location.
+If no path `value` is provided to this command, it prints the path for current
+cache directory. The value is searched in the system, global, project, and local
+config files by default (in that order). Options `--system`, `--global`,
+`--project`, and `--local` can be used to look only in one place.
 
-When writing (`value` is provided or `--unset` is used), the new value is
-written to the projects configuration file by default (`.dvc/config`), and
-options `--system`, `--global` and `--local` can be used to tell the command to
-write to that location (you can say `--project` but that is the default).
+The `value` is written to the project's config file by default (`.dvc/config`).
+Options `--system`, `--global`, and `--local` can be used to write to the other
+possible config files.
 
 ## Options
 
