@@ -11,7 +11,7 @@ usage: dvc remote list [-h] [--global | --system | --project | --local] [-q | -v
 ## Description
 
 Reads DVC configuration files and prints the list of available remotes,
-including names and URLs. The values are read from the system, global, repo and
+including names and URLs. The values are read from the system, global, project and
 local configuration files by default, and options `--system`, `--global`,
 `--project`, and `--local` can be used to tell the command to read from only
 that location.
