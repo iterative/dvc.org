@@ -41,7 +41,8 @@ possible config files.
 - `--system` - use a system config file (e.g. `/etc/dvc/config`) instead of
   `.dvc/config`.
 
-- `--project` - use a project's config file (`.dvc/config`).
+- `--project` - use the regular config file (`.dvc/config`) only when reading
+  the value. Has no effect when writing (this is the default).
 
 - `--local` - use a local [config file](/doc/command-reference/config) instead
   of `.dvc/config`. It is located in `.dvc/config.local` and is Git-ignored.
