@@ -134,12 +134,12 @@ these settings, you could use the following options.
   $ dvc remote modify myremote --local credentialpath /path/to/my/creds
   ```
 
-- `config` - S3 config file path. Supports some s3-specific
-  [configuration options](https://docs.aws.amazon.com/cli/latest/topic/s3-config.html#aws-cli-s3-configuration)
-  that are used by `aws-cli`:
+- `configpath` - Path to the AWS config file. The location defaults to
+  `~/.aws/config`. It supports S3-specific
+  [configuration values](https://docs.aws.amazon.com/cli/latest/topic/s3-config.html#configuration-values):
 
   ```dvc
-  $ dvc remote modify myremote --local configpath /path/to/my/config
+  $ dvc remote modify myremote --local configpath /path/to/config
   ```
 
 - `endpointurl` - endpoint URL to access S3:
