@@ -15,17 +15,21 @@ operation.
   (credentials, private locations, etc). The local config file can be edited by
   hand or with the command `dvc config --local`.
 
-- `.dvc/cache`: The <abbr>cache</abbr> directory will store your data in a
-  special [structure](#structure-of-the-cache-directory). The data files and
-  directories in the <abbr>workspace</abbr> will only contain links to the data
-  files in the cache. (Refer to
+- `.dvc/cache`: Default location of the <abbr>cache</abbr> directory. The cache
+  stores the project data in a special
+  [structure](#structure-of-the-cache-directory). The data files and directories
+  in the <abbr>workspace</abbr> will only contain links to the data files in the
+  cache (refer to
   [Large Dataset Optimization](/doc/user-guide/large-dataset-optimization). See
-  `dvc config cache` for related configuration options.
+  `dvc config cache` for related configuration options, including changing the
+  its location.
 
   > Note that DVC includes the cache directory in `.gitignore` during
   > initialization. No data tracked by DVC should ever be pushed to the Git
   > repository, only the <abbr>DVC files</abbr> that are needed to download or
   > reproduce that data.
+
+- `.dvc/cache/runs`: Default location of the [run-cache](#run-cache).
 
 - `.dvc/plots`: Directory for
   [plot templates](/doc/command-reference/plots#plot-templates)
@@ -120,3 +124,30 @@ $ cat .dvc/cache/19/6a322c107c2572335158503c64bfba.dir
 ```
 
 That's how DVC knows that the other two cached files belong in the directory.
+
+### Run-cache
+
+`dvc repro` and `dvc run` by default populate and reutilize a log of stages that
+have been run in the project. It is found in the `runs/` directory inside the
+cache (or [remote storage](/doc/command-reference/remote)).
+
+Runs are identified as combinations of <abbr>dependencies</abbr>, commands, and
+<abbr>outputs</abbr> that correspond to each other. These combinations are
+hashed into special values that make up the file paths inside the run-cache dir.
+
+```dvc
+$ tree .dvc/cache/runs
+.dvc/cache/runs
+└── 86
+    └── 8632e1555283d6e23ec808c9ee1fadc30630c888d5c08695333609ef341508bf
+        └── e98a34c44fa6b564ef211e76fb3b265bc67f19e5de2e255217d3900d8f...
+```
+
+The files themselves are backups of the `dvc.lock` file that resulted from that
+run.
+
+> Note that the run's <abbr>outputs</abbr> are stored and retrieved from the
+> regular cache.
+
+💡 `dvc push` and `dvc pull` (and `dvc fetch`) can download and upload the
+run-cache to remote storage for sharing and/or as a back up.
