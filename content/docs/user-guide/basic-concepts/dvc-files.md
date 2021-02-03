@@ -3,7 +3,10 @@ name: DVC File
 match: ['dvc files', 'dvc file']
 ---
 
-`dvc.yaml`, `dvc.lock`, or `.dvc` files. DVC commands create these in the
-workspace to codify [pipelines](/doc/command-reference/dag) and/or to track data
-for [versioning](/doc/use-cases/versioning-data-and-model-files). See also
-`dvc repro`, `dvc add`.
+A file used by DVC to track
+[versioning](/doc/use-cases/versioning-data-and-model-files) and
+[pipeline](/doc/command-reference/dag) relationships. Commands like `dvc add`
+and `dvc repro` create and modify these files. 
+
+Typically these files have a `.dvc` extension or named as `dvc.yaml` and `dvc.lock`.
+
