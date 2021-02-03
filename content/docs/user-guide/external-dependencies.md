@@ -37,6 +37,9 @@ certain `dvc remote` types. Currently, the following protocols are supported:
 Let's take a look at defining and running a `download_file` stage that simply
 downloads a file from an external location, on all the supported location types.
 
+> See the [Remote alias example](#example-using-dvc-remote-aliases) for info. on
+> using remote locations that require manual authentication setup.
+
 <details>
 
 ### Click for Amazon S3
@@ -88,7 +91,7 @@ $ dvc run -n download_file \
 $ dvc run -n download_file \
           -d ssh://user@example.com/path/to/data.txt \
           -o data.txt \
-          scp user@example.com:/path/to/data.txt data.txt
+          scp ssh://user@example.com:/path/to/data.txt data.txt
 ```
 
 ⚠️ DVC requires both SSH and SFTP access to work with remote SSH locations.
@@ -144,10 +147,9 @@ $ dvc run -n download_file \
 ## Example: Using DVC remote aliases
 
 You may want to encapsulate external locations as configurable entities that can
-be managed independently. This is useful if multiple dependencies (or stages)
-reuse the same location, or if its likely to change in the future. And if the
-location requires authentication, you need a way to configure it in order to
-connect.
+be managed independently. This is useful if the connection requires
+authentication, if multiple dependencies (or stages) reuse the same location, or
+if the URL is likely to change in the future.
 
 [DVC remotes](/doc/command-reference/remote) can do just this. You may use
 `dvc remote add` to define them, and then use a special URL with format
@@ -157,12 +159,11 @@ dependency.
 Let's see an example using SSH. First, register and configure the remote:
 
 ```dvc
-$ dvc remote add myssh ssh://myserver.com
-$ dvc remote modify --local myssh user myuser
-$ dvc remote modify --local myssh password mypassword
+$ dvc remote add myssh ssh://user@example.com
+$ dvc remote modify --local myssh password 'mypassword'
 ```
 
-> Please refer to `dvc remote add` for more details like setting up access
+> Please refer to `dvc remote modify` for more details like setting up access
 > credentials for the different remote types.
 
 Now, use an alias to this remote when defining the stage:

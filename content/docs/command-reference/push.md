@@ -116,7 +116,7 @@ To use `dvc push` (without options), a default
 
 ```dvc
 $ dvc remote add --default r1 \
-                 ssh://_username_@_host_/path/to/dvc/cache/directory
+                 ssh://user@example.com/path/to/dvc/cache/directory
 ```
 
 > For existing <abbr>projects</abbr>, remotes are usually already set up. You
@@ -124,7 +124,7 @@ $ dvc remote add --default r1 \
 >
 > ```dvc
 > $ dvc remote list
-> r1	ssh://_username_@_host_/path/to/dvc/cache/directory
+> r1	ssh://user@example.com/path/to/dvc/cache/directory
 > ```
 
 Push entire data <abbr>cache</abbr> from the current <abbr>workspace</abbr> to

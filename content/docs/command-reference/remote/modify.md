@@ -515,7 +515,8 @@ more information.
 ### Click for SSH
 
 - `url` - remote location, in a regular
-  [SSH format](https://tools.ietf.org/id/draft-salowey-secsh-uri-00.html#sshsyntax):
+  [SSH format](https://tools.ietf.org/id/draft-salowey-secsh-uri-00.html#sshsyntax).
+  Note that this can already the `user` parameter, embedded into the URL:
 
   ```dvc
   $ dvc remote modify myremote url \
@@ -528,7 +529,7 @@ more information.
 
   > Note that your server's SFTP root might differ from its physical root (`/`).
 
-- `user` - username to access the remote.
+- `user` - username to access the remote:
 
   ```dvc
   $ dvc remote modify --local myremote user myuser
@@ -539,7 +540,7 @@ more information.
   1. `user` parameter set with this command (found in `.dvc/config`);
   2. User defined in the URL (e.g. `ssh://user@example.com/path`);
   3. User defined in `~/.ssh/config` for this host (URL);
-  4. Current user
+  4. Current system user
 
 - `port` - port to access the remote.
 
