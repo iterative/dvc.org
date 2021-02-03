@@ -23,9 +23,9 @@ command. If the `name` of the remote is not provided and `--unset` is not
 specified, this command returns the name of the default remote.
 
 When reading (`name` is not provided), the value ise read from the system,
-global, project and local configuration files by default, and options `--system`,
-`--global`, `--project`, and `--local` can be used to tell the command to read
-from only that location.
+global, project and local configuration files by default, and options
+`--system`, `--global`, `--project`, and `--local` can be used to tell the
+command to read from only that location.
 
 When writing (`name` is provided), the new value is written to the projects
 configuration file by default (`.dvc/config`), and options `--system`,
