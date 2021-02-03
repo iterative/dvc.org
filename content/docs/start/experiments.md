@@ -14,6 +14,9 @@ Read on or watch our video to see how it's done!
 
 https://youtu.be/iduHPtBncBk
 
+> 📖 See [Experiment Management](/doc/user-guide/experiment-management) for more
+> information on DVC's approach.
+
 ## Collecting metrics
 
 First, let's see what is the mechanism to capture values for these ML experiment
