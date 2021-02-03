@@ -539,7 +539,8 @@ more information.
 
   1. `user` parameter set with this command (found in `.dvc/config`);
   2. User defined in the URL (e.g. `ssh://user@example.com/path`);
-  3. User defined in `~/.ssh/config` for this host (URL);
+  3. User defined in the SSH config file (e.g. `~/.ssh/config`) for this host
+     (URL);
   4. Current system user
 
 - `port` - port to access the remote.
@@ -552,7 +553,8 @@ more information.
 
   1. `port` parameter set with this command (found in `.dvc/config`);
   2. Port defined in the URL (e.g. `ssh://example.com:1234/path`);
-  3. Port defined in `~/.ssh/config` for this host (URL);
+  3. Port defined in the SSH config file (e.g. `~/.ssh/config`) for this host
+     (URL);
   4. Default SSH port 22
 
 - `keyfile` - path to private key to access the remote.
@@ -657,8 +659,8 @@ by HDFS. Read more about by expanding the WebHDFS section in
 
 - `hdfscli_config` - path to a `HdfsCLI` cfg file. WebHDFS access depends on
   `HdfsCLI`, which allows the usage of a configuration file by default located
-  in `~/.hdfscli.cfg`. In the file, multiple aliases can be set with their own
-  connection parameters, like `url` or `user`. If using a cfg file,
+  in `~/.hdfscli.cfg` (Linux). In the file, multiple aliases can be set with
+  their own connection parameters, like `url` or `user`. If using a cfg file,
   `webhdfs_alias` can be set to specify which alias to use.
 
   ```dvc
