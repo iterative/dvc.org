@@ -21,7 +21,7 @@ takes a config option `name` (a config section and a key, separated by a dot)
 and its `value` (any valid alpha-numeric string generally).
 
 When reading (e.g. `value` is not provided or `--list` is used), the values are
-read from the system, global, repo and local configuration files by default, and
+read from the system, global, project and local configuration files by default, and
 options `--system`, `--global`, `--project`, and `--local` can be used to tell
 the command to read from only that location.
 
