@@ -13,7 +13,9 @@ match:
   ]
 ---
 
-Initialized by running `dvc init` in the **workspace** (typically a Git
-repository). It will contain the
-[`.dvc/` directory](/doc/user-guide/dvc-internals), as well as `dvc.yaml` and
-`.dvc` files created with commands such as `dvc add` or `dvc run`.
+A DVC project (or DVC repository) is a directory initialized by `dvc init`. It
+contains [`.dvc` directory](/doc/user-guide/project-structure/internal-files),
+`dvc.yaml` file that describes <abbr>pipeline</abbr> and `.dvc` files for each
+tracked data file. See `dvc add` for data file tracking and `dvc run` for
+pipelines.
+
