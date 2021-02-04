@@ -29,9 +29,9 @@ cache directory. The value is read from the system, global, project, and local
 config files (in that order). The `--system`, `--global`, `--project`, and
 `--local` options can be used to read from that configuration only.
 
-The `value` is written to the project's config file by default (`.dvc/config`).
-Options `--system`, `--global`, and `--local` can be used to write to the other
-possible config files.
+If a `value` is given, it's written to the project-level config file by default
+(`.dvc/config`). Options `--system`, `--global` and `--local` can be used to
+write to that location instead.
 
 ## Options
 
