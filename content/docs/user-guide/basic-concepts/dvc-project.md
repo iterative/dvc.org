@@ -9,7 +9,7 @@ match:
     'DVC repository',
     'DVC repositories',
     repository,
-    repositories,
+    repositories
   ]
 ---
 
