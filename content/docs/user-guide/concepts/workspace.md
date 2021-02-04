@@ -29,6 +29,3 @@ will contain your DVC project.
 ## Things you can do in the Workspace
 
 `dvc init` to create a DVC project...
-
-
-

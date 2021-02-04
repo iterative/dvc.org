@@ -17,8 +17,8 @@ description: >-
 
 <abbr>Pipeline</abbr> <abbr>stages</abbr> (defined in `dvc.yaml`) can depend on
 specific values inside an arbitrary YAML, JSON, TOML, or Python file
-(`params.yaml` by default). Stages become invalid (considered outdated) when
-any of their parameter values change. See `dvc param`.
+(`params.yaml` by default). Stages become invalid (considered outdated) when any
+of their parameter values change. See `dvc param`.
 
 <!-- from params index -->
 
@@ -258,5 +258,3 @@ params.yaml  train.layers    —      9
 This command shows the difference in parameters between the workspace and the
 last committed version of the `params.yaml` file. In our example there's no
 previous version, which is why all `Old` values are `—`.
-
-
