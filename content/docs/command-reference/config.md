@@ -5,8 +5,8 @@ Get or set <abbr>project</abbr>-level (or global) DVC configuration options.
 ## Synopsis
 
 ```usage
-usage: dvc config [-h] [--global | --system | --project | --local] [-q | -v] [-u]
-                  [-l] [name] [value]
+usage: dvc config [-h] [--global | --system | --project | --local]
+                  [-q | -v] [-u] [-l] [name] [value]
 
 positional arguments:
   name     Option name in format: section.option or remote.name.option
