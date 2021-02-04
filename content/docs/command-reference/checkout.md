@@ -32,8 +32,8 @@ The execution of `dvc checkout` does the following:
   <abbr>outputs</abbr> against the actual files or directories in the
   <abbr>workspace</abbr> (similar to `dvc status`).
 
-  > Stage outputs must be defined in `dvc.yaml`. If found there but not in
-  > `dvc.lock`, they'll be skipped with a warning.
+  > Stage outputs must be defined in `dvc.yaml` (and `dvc.lock` contain their
+  > hash values), or they'll be skipped with a warning.
 
 - Missing data files or directories are restored from the cache. Those that
   don't match with `dvc.lock` or `.dvc` files are removed. See options `--force`
@@ -67,7 +67,8 @@ progress made by the checkout.
 There are two methods to restore a file missing from the cache, depending on the
 situation. In some cases the cache can be pulled from
 [remote storage](/doc/command-reference/remote) using `dvc pull`. In other cases
-the pipeline must be reproduced (using `dvc repro`) to regenerate its outputs.
+the [pipeline](/doc/command-reference/dag) must be reproduced (using
+`dvc repro`) to regenerate its outputs.
 
 ## Options
 
@@ -185,9 +186,10 @@ outs:
 ```
 
 But if you check the MD5 of `model.pkl`, the file hash is still the same
-(`ab349c2...`). This is because `git checkout` changed `dvc.lock` and other DVC
-files, but it did nothing with `model.pkl`, or any other DVC-tracked files/dirs.
-Since Git doesn't track them, to get them we can do this:
+(`ab349c2...`). This is because `git checkout` changed `dvc.lock` and other
+<abbr>DVC files</abbr>, but it did nothing with `model.pkl`, or any other
+DVC-tracked files/dirs. Since Git doesn't track them, to get them we can do
+this:
 
 ```dvc
 $ dvc checkout

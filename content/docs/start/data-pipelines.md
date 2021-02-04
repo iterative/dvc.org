@@ -278,20 +278,22 @@ same set of inputs (parameters + data) and reused it.
 considered a _state_ of the pipeline:
 
 ```yaml
-prepare:
-  cmd: python src/prepare.py data/data.xml
-  deps:
-    - path: data/data.xml
-      md5: a304afb96060aad90176268345e10355
-    - path: src/prepare.py
-      md5: 285af85d794bb57e5d09ace7209f3519
-  params:
-    params.yaml:
-      prepare.seed: 20170428
-      prepare.split: 0.2
-  outs:
-    - path: data/prepared
-      md5: 20b786b6e6f80e2b3fcf17827ad18597.dir
+schema: '2.0'
+stages:
+  prepare:
+    cmd: python src/prepare.py data/data.xml
+    deps:
+      - path: data/data.xml
+        md5: a304afb96060aad90176268345e10355
+      - path: src/prepare.py
+        md5: 285af85d794bb57e5d09ace7209f3519
+    params:
+      params.yaml:
+        prepare.seed: 20170428
+        prepare.split: 0.2
+    outs:
+      - path: data/prepared
+        md5: 20b786b6e6f80e2b3fcf17827ad18597.dir
 ```
 
 > `dvc status` command can be used to compare this state with an actual state of

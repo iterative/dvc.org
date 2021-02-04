@@ -110,16 +110,17 @@ used to see what files `dvc pull` would download.
   [remote storage](/doc/command-reference/remote) to pull from (see
   `dvc remote list`).
 
-- `--run-cache` - downloads all available history of stage runs from the remote
-  repository (to the cache only, like `dvc fetch --run-cache`). Note that
-  `dvc repro <stage_name>` is necessary to checkout these files (into the
+- `--run-cache` - downloads all available history of
+  [stage runs](/doc/user-guide/project-structure/internal-files#run-cache) from
+  the remote repository (to the cache only, like `dvc fetch --run-cache`). Note
+  that `dvc repro <stage_name>` is necessary to checkout these files (into the
   workspace) and update `dvc.lock`.
 
 - `-j <number>`, `--jobs <number>` - parallelism level for DVC to download data
   from remote storage. The default value is `4 * cpu_count()`. For SSH remotes,
   the default is `4`. Note that the default value can be set using the `jobs`
   config option with `dvc remote modify`. Using more jobs may improve the
-  overall transfer speed.
+  operation.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 

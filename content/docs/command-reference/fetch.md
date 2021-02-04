@@ -70,8 +70,9 @@ specific one is given with `--remote`.
   [remote storage](/doc/command-reference/remote) to fetch from (see
   `dvc remote list`).
 
-- `--run-cache` - downloads all available history of stage runs from the remote
-  repository.
+- `--run-cache` - downloads all available history of
+  [stage runs](/doc/user-guide/project-structure/internal-files#run-cache) from
+  the remote repository. See the same option in `dvc push`.
 
 - `-d`, `--with-deps` - determines files to download by tracking dependencies to
   the `targets`. If none are provided, this option is ignored. By traversing all
@@ -87,7 +88,7 @@ specific one is given with `--remote`.
   from remote storage. The default value is `4 * cpu_count()`. For SSH remotes,
   the default is `4`. Note that the default value can be set using the `jobs`
   config option with `dvc remote modify`. Using more jobs may improve the
-  overall transfer speed.
+  operation.
 
 - `-a`, `--all-branches` - fetch cache for all Git branches instead of just the
   current workspace. This means DVC may download files needed to reproduce

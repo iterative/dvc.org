@@ -240,9 +240,10 @@ $ dvc run -n second_stage './another_script.sh $MYENVVAR'
 - `-f`, `--force` - overwrite an existing stage in `dvc.yaml` file without
   asking for confirmation.
 
-- `--no-run-cache` - execute the stage `command` even if it has already been run
-  with the same dependencies/outputs/etc. before. Useful for example if the
-  command's code is non-deterministic
+- `--no-run-cache` - execute the stage command(s) even if they have already been
+  run with the same dependencies and outputs (see the
+  [details](/doc/user-guide/project-structure/internal-files#run-cache)). Useful
+  for example if the stage command/s is/are non-deterministic
   ([not recommended](#avoiding-unexpected-behavior)).
 
 - `--no-commit` - do not store the outputs of this execution in the cache
