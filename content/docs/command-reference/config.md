@@ -38,8 +38,8 @@ doubt.
 | `--local`                     | 1        | `.dvc/config.local`  |
 | None or `--project` (default) | 2        | `.dvc/config`        |
 
-The `--global` and `--system` flags are also available to set config options for
-multiple projects and users, respectively:
+The `--global` and `--system` flags are also useful to set config options for
+multiple projects or users, respectively.
 
 <!-- Avoids new lines in the Flag columns (below). -->
 <style>
