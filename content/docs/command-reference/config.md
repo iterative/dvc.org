@@ -20,10 +20,10 @@ You can query/set/replace/unset DVC configuration options with this command. It
 takes a config option `name` (a config section and a key, separated by a dot)
 and its `value` (any valid alpha-numeric string generally).
 
-When reading (e.g. `value` is not provided or `--list` is used), the values are
-read from the system, global, project and local configuration files by default,
-and options `--system`, `--global`, `--project`, and `--local` can be used to
-tell the command to read from only that location.
+When reading config options (no `value` is given or `--list` is used), the
+values are read from the system, global, project and local configuration files
+(in that order). The `--system`, `--global`, `--project`, and `--local` options
+can be used to read from that configuration only.
 
 When writing (e.g. `value` is specified or `--unset` is used), the new value is
 written to the projects configuration file by default (`.dvc/config`), and
