@@ -21,9 +21,9 @@ takes a config option `name` (a config section and a key, separated by a dot)
 and its `value` (any valid alpha-numeric string generally).
 
 When reading config options (no `value` is given or `--list` is used), the
-values are read from the system, global, project and local configuration files
-(in that order). The `--system`, `--global`, `--project`, and `--local` options
-can be used to read from that configuration only.
+values are read from the system, global, project, and local config files (in
+that order). The `--system`, `--global`, `--project`, and `--local` options can
+be used to read from that configuration only.
 
 When writing (a `value` is given or `--unset` is used), the new value is written
 to the project-level config file by default (`.dvc/config`). Options `--system`,
