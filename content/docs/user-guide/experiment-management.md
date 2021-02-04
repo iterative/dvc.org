@@ -2,31 +2,49 @@
 
 Data science and ML are iterative processes that tend to require a large number
 of attempts during their course, for example to develop data features,
-hyperspace exploration, model accuracy optimization, etc. DVC is designed to
-help you codify and manage all of your experiments.
+hyperspace exploration, deep learning optimization, etc. DVC is designed to help
+you codify and manage all of your experiments.
 
-Kinds of exps... With DVC, no variation of your code or data is left
-hyperparameters
+DVC considers certain levels at which the variants of your work are considered
+_experiments_:
 
-## Automatic log of stage runs
+0. Tests you do on you own without DVC knowing about them — we can't help with
+   that!
+1. An automatic log of every stage run through `dvc repro` is the entry point
+   for DVC.
+2. _Ephemeral experiments_ can be setup in virtual project branches. This is
+   where you can start **automating** their execution and generate reports
+   comparing many of them. At some point a few are selected/promoted, and the
+   rest can be abandoned.
+3. _Persistent experiments_ can be picked up from previous levels, or they can
+   be registered manually by **committed** their results to Git. This is where
+   you may want to start thinking about the different ways to
+   [organize](#organizing-experimentats) them in your project (branches,
+   folders, etc.).
 
-DVC already caches every change to <abbr>outputs</abbr> when it can (see also
-`dvc status`). Additionally, `dvc repro` and `dvc run` by default populate and
-reutilize a log of stages that have been run in the project, known as the
-<abbr>run-cache</abbr>.
+## Automatic log of stage runs (run-cache)
 
-This means that every time you execute [stages](/doc/command-reference/run) with
-DVC, the unique combination that identifies that "run" is saved internally (in
-`.dvc/cache/runs` by default). The corresponding results (typically
-<abbr>cached</abbr>) can later be retrieved in subsequent runs, even if you
-didn't remember that the combination had been tried before!
+Every time you `dvc repro` each stage [stages](/doc/command-reference/run), DVC
+determines a unique identifier of each stage "run" (logged to `.dvc/cache/runs`
+by default). If it never happened before, the stage command(s) are executed and
+their <abbr>outputs</abbr> cached normally. Every subsequent time the stage runs
+under the same conditions, those results can be restored instantly, without
+wasting time or computing resources.
 
-When this happens, the results are restored instantly, without wasting time or
-computing resources. This can dramatically improve performance, and it's a
-built-in feature that just works out-of-the-box (it can be disabled via the
-`--no-run-cache` option).
+This mechanism can dramatically improve performance, and it's a built-in
+feature, enabled out-of-the-box (it can be disabled via the `--no-run-cache`
+option).
+
+> Note that the run-cache assumes that stage commands are deterministic (see
+> **Avoiding unexpected behavior** in `dvc run`).
 
 ## Ephemeral experiments
+
+Unique stage runs can be identified by the combination of their dependencies
+(including params) and the command(s) to execute.
+
+Every run of a stage or pipeline can be considered an experiment. These are
+identified by the exact combination of dependencies, , and
 
 frequent, transient, brain storming
 
@@ -34,6 +52,6 @@ frequent, transient, brain storming
 
 selected, committed
 
-## Ways to organize experimentation
+## Organizing experiments
 
 Implicit vs. Git branches/tags vs. file structures
