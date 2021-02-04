@@ -24,12 +24,12 @@ explicitly provide the right set of options to specify what data is still needed
 
 One of the scope options (`--workspace`, `--all-branches`, `--all-tags`,
 `--all-commits`) or a combination of them must be provided. Each of them
-corresponds to keeping the data for the current workspace, and for a certain set
-of commits (determined by reading the DVC-files in them). See the
-[Options](#options) section for more details.
+corresponds to keeping the data for the current workspace, and possibly for a
+certain set of commits (determined by reading the <abbr>DVC files</abbr> in
+them). See the [Options](#options) section for more details.
 
 > Note that `dvc gc` tries to fetch any missing
-> [`.dir` files](/doc/user-guide/dvc-files-and-directories#structure-of-the-cache-directory)
+> [`.dir` files](/doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory)
 > from [remote storage](/doc/command-reference/remote) to the local
 > <abbr>cache</abbr>, in order to determine which files should exist inside
 > cached directories. These files may be missing if the cache directory was
@@ -51,23 +51,23 @@ The default remote is cleaned (see `dvc config core.remote`) unless the
 
 ## Options
 
-- `-w`, `--workspace` - keep files and directories _only_ referenced in the
-  current workspace This option is enabled automatically if `--all-tags`,
-  `--all-branches`, or `--all-commits` are used.
+- `-w`, `--workspace` - keep _only_ files and directories referenced in the
+  workspace. Note that this behavior is implied in `--all-tags`,
+  `--all-branches`, and `--all-commits`.
 
-- `-a`, `--all-branches` - keep cached objects referenced in all Git branches as
-  well as in the workspace (implies `-w`). Useful if branches are used to track
+- `-a`, `--all-branches` - keep cached objects referenced in all Git branches,
+  and in the workspace (implying `-w`). Useful if branches are used to track
   different experiments. Note that this can be combined with `-T` below, for
   example using the `-aT` flag.
 
-- `-T`, `--all-tags` - same as `-a` above, but applies to Git tags as well as
-  the workspace (implies `-w`). Useful if tags are used to track "checkpoints"
+- `-T`, `--all-tags` - same as `-a` above, but applies to all Git tags, and in
+  the workspace (implying `-w`). Useful if tags are used to track "checkpoints"
   of an experiment or project. Note that both options can be combined, for
   example using the `-aT` flag.
 
-- `--all-commits` - same as `-a` or `-T` above, but applies to _all_ Git commits
-  as well as the workspace (implies `-w`). This keeps all the data used in the
-  entire commit history of the project.
+- `--all-commits` - same as `-a` or `-T` above, but applies to all Git commits,
+  and in the workspace (implying `-w`). This preserves the cache for all data
+  used in the entire commit history of the project.
 
   A use case for this option is to safely delete all temporary data `dvc run`
   and/or `dvc repro` cache when used without committing changes (see the `-O` or
@@ -118,7 +118,7 @@ $ du -sh .dvc/cache/
 
 When you run `dvc gc --workspace`, DVC removes all objects from cache that are
 not referenced in the <abbr>workspace</abbr> (by collecting hash values from the
-DVC-files):
+<abbr>DVC files</abbr>):
 
 ```dvc
 $ dvc gc --workspace

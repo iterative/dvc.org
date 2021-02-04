@@ -1,8 +1,8 @@
 # destroy
 
-Remove all
-[DVC files and directories](/doc/user-guide/dvc-files-and-directories) from a
-<abbr>DVC project</abbr>.
+Remove all <abbr>DVC files</abbr> and
+[internals](/doc/user-guide/project-structure/internal-files) from a <abbr>DVC
+project</abbr>.
 
 ## Synopsis
 
@@ -12,19 +12,19 @@ usage: dvc destroy [-h] [-q | -v] [-f]
 
 ## Description
 
-`dvc destroy` removes `dvc.yaml`, `.dvc` files, and the internal `.dvc/`
-directory from the <abbr>workspace</abbr>.
+`dvc destroy` removes `dvc.yaml` and `.dvc` files, as well as the internal
+`.dvc/` directory from the <abbr>workspace</abbr>.
 
 Note that the <abbr>cache directory</abbr> will be removed as well, unless it's
-[set to an external location](/doc/use-cases/shared-development-server#configure-the-external-shared-cache)
+set to an
+[external location](/doc/use-cases/shared-development-server#configure-the-external-shared-cache)
 (by default a local cache is located in `.dvc/cache`). If you were using
 [symlinks for linking](/doc/user-guide/large-dataset-optimization) data from the
 cache, DVC will replace them with the latest versions of the actual files and
-directories first, so that your data is intact after the project's destruction.
+directories first, so that your data is intact after destruction.
 
-> Refer to
-> [DVC files and directories](/doc/user-guide/dvc-files-and-directories) for
-> more details on the directories and files deleted by this command.
+> Refer to [Project Structure](/doc/user-guide/project-structure) for more
+> details on the directories and files deleted by this command.
 
 ## Options
 
@@ -70,14 +70,14 @@ $ dvc add foo
 ```
 
 `dvc cache dir` changed the location of the cache directory to an external
-location. Content of <abbr>workspace</abbr>:
+location. Contents of the <abbr>project</abbr>:
 
 ```dvc
 $ ls -a
 .dvc .git code.py foo foo.dvc
 ```
 
-Content of `/mnt/cache` directory:
+Contents of the external `/mnt/cache` directory:
 
 ```dvc
 $ tree /mnt/cache
@@ -99,9 +99,9 @@ $ ls -a
 .git code.py foo
 ```
 
-`dvc destroy` command removed DVC-files, and the internal `.dvc/` directory from
-the <abbr>workspace</abbr>. But the cache files that are present in the
-`/mnt/cache` directory still persist:
+`dvc destroy` command removed `foo.dvc` and the `.dvc/` directory from the
+<abbr>workspace</abbr>. But the cache files that are present in `/mnt/cache`
+still persist:
 
 ```dvc
 $ tree /mnt/cache

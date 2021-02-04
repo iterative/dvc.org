@@ -26,7 +26,7 @@ for the first remote):
 
 ```ini
 ['remote "myremote"']
-url = /tmp/dvc-storage
+url = /tmp/dvcstore
 [core]
 remote = myremote
 ```
@@ -95,13 +95,13 @@ The following are the types of remote storage (protocols) supported:
 > [Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html).
 
 ```dvc
-$ dvc remote add -d s3remote s3://mybucket/path
+$ dvc remote add -d myremote s3://mybucket/path
 ```
 
 By default, DVC expects your AWS CLI is already
 [configured](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html).
 DVC will be using default AWS credentials file to access S3. To override some of
-these settings, use the parameters described in `dvc remote modify`.
+these parameters, use the parameters described in `dvc remote modify`.
 
 We use the `boto3` library to communicate with AWS. The following API methods
 are performed:
@@ -135,7 +135,7 @@ configure the remote's `endpointurl` explicitly:
 For example:
 
 ```dvc
-$ dvc remote add -d myremote s3://mybucket/path/to/dir
+$ dvc remote add -d myremote s3://mybucket/path
 $ dvc remote modify myremote endpointurl \
                     https://object-storage.example.com
 ```
@@ -145,9 +145,9 @@ $ dvc remote modify myremote endpointurl \
 S3 remotes can also be configured entirely via environment variables:
 
 ```dvc
-$ export AWS_ACCESS_KEY_ID="<my-access-key>"
-$ export AWS_SECRET_ACCESS_KEY="<my-secret-key>"
-$ dvc remote add -d myremote s3://mybucket/my/path
+$ export AWS_ACCESS_KEY_ID='mykey'
+$ export AWS_SECRET_ACCESS_KEY='mysecret'
+$ dvc remote add -d myremote s3://mybucket/path
 ```
 
 For more information about the variables DVC supports, please visit
@@ -161,8 +161,7 @@ For more information about the variables DVC supports, please visit
 
 ```dvc
 $ dvc remote add -d myremote azure://mycontainer/path
-$ dvc remote modify --local myremote connection_string \
-                            'my-connection-string'
+$ dvc remote modify --local myremote connection_string 'mystring'
 ```
 
 > The connection string contains sensitive user info. Therefore, it's safer to
@@ -173,26 +172,25 @@ The Azure Blob Storage remote can also be configured globally via environment
 variables:
 
 ```dvc
-$ export AZURE_STORAGE_CONNECTION_STRING='<my-connection-string>'
+$ export AZURE_STORAGE_CONNECTION_STRING='mysecret'
 $ export AZURE_STORAGE_CONTAINER_NAME='mycontainer'
 $ dvc remote add -d myremote 'azure://'
 ```
 
-> For more information on configuring Azure Storage connection strings, visit
-> [here](https://docs.microsoft.com/en-us/azure/storage/common/storage-configure-connection-string).
+`AZURE_STORAGE_CONNECTION_STRING`: This is the secret to access your Azure
+Storage Account. If you don't already have a storage account, you can create one
+by following
+[these instructions](https://docs.microsoft.com/en-us/azure/storage/common/storage-create-storage-account).
+The connection string can be found in the **Access Keys** pane of your Storage
+Account resource in the Azure portal.
 
-- `connection string` - this is the connection string to access your Azure
-  Storage Account. If you don't already have a storage account, you can create
-  one following
-  [these instructions](https://docs.microsoft.com/en-us/azure/storage/common/storage-create-storage-account).
-  The connection string can be found in the **Access Keys** pane of your Storage
-  Account resource in the Azure portal.
+> 💡 Make sure the value is quoted so its processed correctly by the console.
+> For more info on Azure Storage connection strings, visit their
+> [docs](https://docs.microsoft.com/en-us/azure/storage/common/storage-configure-connection-string).
 
-  > 💡 Make sure the value is quoted so its processed correctly by the console.
-
-- `container name` - this is the top-level container in your Azure Storage
-  Account under which all the files for this remote will be uploaded. If the
-  container doesn't already exist, it will be created automatically.
+`AZURE_STORAGE_CONTAINER_NAME`: This is the top-level container in your Azure
+Storage Account under which all the files for this remote will be uploaded. If
+the container doesn't already exist, it will be created automatically.
 
 </details>
 
@@ -216,12 +214,12 @@ Go to the following link in your browser:
 Enter verification code: # <- enter resulting code
 ```
 
-Please see `dvc remote modify` for a list of other GDrive parameters, or
+See `dvc remote modify` for a list of other GDrive parameters, or
 [Setup a Google Drive DVC Remote](/doc/user-guide/setup-google-drive-remote) for
 a full guide on using Google Drive as DVC remote storage.
 
 Note that GDrive remotes are not "trusted" by default. This means that the
-[`verify`](/doc/command-reference/remote/modify#available-settings-for-all-remotes)
+[`verify`](/doc/command-reference/remote/modify#available-parameters-for-all-remotes)
 parameter is enabled on this type of storage, so DVC recalculates the file
 hashes upon download (e.g. `dvc pull`), to make sure that these haven't been
 modified.
@@ -238,13 +236,13 @@ modified.
 > [Create a storage bucket](https://cloud.google.com/storage/docs/creating-buckets).
 
 ```dvc
-$ dvc remote add -d myremote gs://my-bucket/path
+$ dvc remote add -d myremote gs://mybucket/path
 ```
 
 By default, DVC expects your GCP CLI is already
 [configured](https://cloud.google.com/sdk/docs/authorizing). DVC will be using
 default GCP key file to access Google Cloud Storage. To override some of these
-settings, use the parameters described in `dvc remote modify`.
+parameters, use the parameters described in `dvc remote modify`.
 
 > Make sure to run `gcloud auth application-default login` unless you use
 > `GOOGLE_APPLICATION_CREDENTIALS` and/or service account, or other ways to
@@ -257,11 +255,12 @@ settings, use the parameters described in `dvc remote modify`.
 ### Click for Aliyun OSS
 
 First you need to setup OSS storage on Aliyun Cloud. Then, use an S3 style URL
-for OSS storage, and configure the endpoint:
+for OSS storage, and configure the
+[endpoint](https://www.alibabacloud.com/help/doc-detail/31837.html):
 
 ```dvc
-$ dvc remote add -d myremote oss://my-bucket/path
-$ dvc remote modify myremote oss_endpoint oss-accelerate.aliyuncs.com
+$ dvc remote add -d myremote oss://mybucket/path
+$ dvc remote modify myremote oss_endpoint endpoint
 ```
 
 To set key id, key secret and endpoint (or any other OSS parameter), use
@@ -269,16 +268,16 @@ To set key id, key secret and endpoint (or any other OSS parameter), use
 option to avoid committing your secrets with Git:
 
 ```dvc
-$ dvc remote modify myremote --local oss_key_id my-key-id
-$ dvc remote modify myremote --local oss_key_secret my-key-secret
+$ dvc remote modify myremote --local oss_key_id 'mykey'
+$ dvc remote modify myremote --local oss_key_secret 'mysecret'
 ```
 
 You can also set environment variables and use them later, to set environment
 variables use following environment variables:
 
 ```dvc
-$ export OSS_ACCESS_KEY_ID='my-key-id'
-$ export OSS_ACCESS_KEY_SECRET='my-key-secret'
+$ export OSS_ACCESS_KEY_ID='mykey'
+$ export OSS_ACCESS_KEY_SECRET='mysecret'
 $ export OSS_ENDPOINT='endpoint'
 ```
 
@@ -291,10 +290,10 @@ for example:
 $ git clone https://github.com/nanaya-tachibana/oss-emulator.git
 $ docker image build -t oss:1.0 oss-emulator
 $ docker run --detach -p 8880:8880 --name oss-emulator oss:1.0
-$ export OSS_BUCKET='my-bucket'
-$ export OSS_ENDPOINT='localhost:8880'
-$ export OSS_ACCESS_KEY_ID='AccessKeyID'
-$ export OSS_ACCESS_KEY_SECRET='AccessKeySecret'
+$ export OSS_BUCKET='mybucket'
+$ export OSS_ENDPOINT='endpoint'
+$ export OSS_ACCESS_KEY_ID='mykey'
+$ export OSS_ACCESS_KEY_SECRET='mysecret'
 ```
 
 > Uses default key id and key secret when they are not given, which gives read
@@ -307,10 +306,10 @@ $ export OSS_ACCESS_KEY_SECRET='AccessKeySecret'
 ### Click for SSH
 
 ```dvc
-$ dvc remote add -d myremote ssh://user@example.com/path/to/dir
+$ dvc remote add -d myremote ssh://user@example.com/path
 ```
 
-> See also `dvc remote modify` for a full list of SSH parameters.
+> See `dvc remote modify` for a full list of SSH parameters.
 
 ⚠️ DVC requires both SSH and SFTP access to work with remote SSH locations.
 Please check that you are able to connect both ways with tools like `ssh` and
@@ -328,10 +327,10 @@ Please check that you are able to connect both ways with tools like `ssh` and
 API. Read more about it by expanding the WebHDFS section below.
 
 ```dvc
-$ dvc remote add -d myremote hdfs://user@example.com/path/to/dir
+$ dvc remote add -d myremote hdfs://user@example.com/path
 ```
 
-> See also `dvc remote modify` for a full list of HDFS parameters.
+> See `dvc remote modify` for a full list of HDFS parameters.
 
 </details>
 
@@ -355,10 +354,14 @@ setting the configuration property `dfs.webhdfs.enabled` to `true` in
 `hdfs-site.xml`.
 
 ```dvc
-$ dvc remote add -d myremote webhdfs://user@example.com/path/to/dir
+$ dvc remote add -d myremote webhdfs://user@example.com/path
+$ dvc remote modify --local myremote user myuser
+$ dvc remote modify --local myremote token 'mytoken'
 ```
 
-> See also `dvc remote modify` for a full list of WebHDFS parameters.
+> The username and password may contain sensitive user info. Therefore, it's
+> safer to add it with the `--local` option, so it's written to a Git-ignored
+> config file. See `dvc remote modify` for a full list of WebHDFS parameters.
 
 </details>
 
@@ -367,10 +370,10 @@ $ dvc remote add -d myremote webhdfs://user@example.com/path/to/dir
 ### Click for HTTP
 
 ```dvc
-$ dvc remote add -d myremote https://example.com/path/to/dir
+$ dvc remote add -d myremote https://example.com/path
 ```
 
-> See also `dvc remote modify` for a full list of HTTP parameters.
+> See `dvc remote modify` for a full list of HTTP parameters.
 
 </details>
 
@@ -384,14 +387,14 @@ $ dvc remote add -d myremote \
 ```
 
 If your remote is located in a subfolder of your WebDAV server e.g.
-`/path/to/dir`, this may be appended to the base URL:
+`files/myuser`, this path may be appended to the base URL:
 
 ```dvc
 $ dvc remote add -d myremote \
-      webdavs://example.com/owncloud/remote.php/dav/files/USERNAME/
+      webdavs://example.com/owncloud/remote.php/dav/files/myuser
 ```
 
-> See also `dvc remote modify` for a full list of WebDAV parameters.
+> See `dvc remote modify` for a full list of WebDAV parameters.
 
 </details>
 
@@ -410,30 +413,30 @@ with the `--local` option of `dvc remote` commands!
 Using an absolute path (recommended):
 
 ```dvc
-$ dvc remote add -d myremote /tmp/my-dvc-storage
+$ dvc remote add -d myremote /tmp/dvcstore
 $ cat .dvc/config
   ...
   ['remote "myremote"']
-        url = /tmp/my-dvc-storage
+        url = /tmp/dvcstore
   ...
 ```
 
-> Note that the absolute path `/tmp/my-dvc-storage` is saved as is.
+> Note that the absolute path `/tmp/dvcstore` is saved as is.
 
 Using a relative path. It will be resolved against the current working
 directory, but saved **relative to the config file location**:
 
 ```dvc
-$ dvc remote add -d myremote ../my-dvc-storage
+$ dvc remote add -d myremote ../dvcstore
 $ cat .dvc/config
   ...
   ['remote "myremote"']
-      url = ../../my-dvc-storage
+      url = ../../dvcstore
   ...
 ```
 
-> Note that `../my-dvc-storage` has been resolved relative to the `.dvc/` dir,
-> resulting in `../../my-dvc-storage`.
+> Note that `../dvcstore` has been resolved relative to the `.dvc/` dir,
+> resulting in `../../dvcstore`.
 
 </details>
 
@@ -479,6 +482,5 @@ List remotes again to view the updated remote:
 
 ```dvc
 $ dvc remote list
-
 myremote	s3://mybucket/another-path
 ```

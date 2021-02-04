@@ -18,8 +18,8 @@ positional arguments:
 ## Description
 
 This command is usually needed after `git checkout`, `git clone`, or any other
-operation that changes the current `dvc.lock` or `.dvc` files. It restores the
-corresponding versions of the DVC-tracked files and directories from the
+operation that changes the current <abbr>DVC files</abbr>. It restores the
+corresponding versions of the DVC-tracked data files and directories from the
 <abbr>cache</abbr> to the workspace.
 
 The `targets` given to this command (if any) limit what to checkout. It accepts
@@ -32,8 +32,8 @@ The execution of `dvc checkout` does the following:
   <abbr>outputs</abbr> against the actual files or directories in the
   <abbr>workspace</abbr> (similar to `dvc status`).
 
-  > Stage outputs must be defined in `dvc.yaml`. If found there but not in
-  > `dvc.lock`, they'll be skipped with a warning.
+  > Stage outputs must be defined in `dvc.yaml` (and `dvc.lock` contain their
+  > hash values), or they'll be skipped with a warning.
 
 - Missing data files or directories are restored from the cache. Those that
   don't match with `dvc.lock` or `.dvc` files are removed. See options `--force`
@@ -67,7 +67,8 @@ progress made by the checkout.
 There are two methods to restore a file missing from the cache, depending on the
 situation. In some cases the cache can be pulled from
 [remote storage](/doc/command-reference/remote) using `dvc pull`. In other cases
-the pipeline must be reproduced (using `dvc repro`) to regenerate its outputs.
+the [pipeline](/doc/command-reference/dag) must be reproduced (using
+`dvc repro`) to regenerate its outputs.
 
 ## Options
 
@@ -75,25 +76,25 @@ the pipeline must be reproduced (using `dvc repro`) to regenerate its outputs.
   the workspace, instead of a full list of changes.
 
 - `-R`, `--recursive` - determines the files to checkout by searching each
-  target directory and its subdirectories for DVC-files to inspect. If there are
-  no directories among the `targets`, this option is ignored.
+  target directory and its subdirectories for `.dvc` files to inspect. If there
+  are no directories among the `targets`, this option is ignored.
 
 - `-d`, `--with-deps` - determines files to update by tracking dependencies to
-  the target DVC-files (stages). If no `targets` are provided, this option is
-  ignored. By traversing all stage dependencies, DVC searches backward from the
+  the target stages (if no stage `targets` are provided, this option is
+  ignored). By traversing all stage dependencies, DVC searches backward from the
   target stages in the corresponding pipelines. This means DVC will not checkout
   files referenced in later stages than the `targets`.
 
 - `-f`, `--force` - does not prompt when removing workspace files. Changing the
-  current set of DVC-files with `git checkout` can result in the need for DVC to
-  remove files that don't match those DVC-file references or are missing from
-  cache. (They are not "committed", in DVC terms.)
+  current set of DVC files with `git checkout` can result in the need for DVC to
+  remove files that don't match those references or are missing from cache.
+  (They are not "committed", in DVC terms.)
 
 - `--relink` - ensures the file linking strategy (`reflink`, `hardlink`,
   `symlink`, or `copy`) for all data in the workspace is consistent with the
   project's [`cache.type`](/doc/command-reference/config#cache). This is
-  achieved by restoring **all data files or a directories** referenced in
-  current DVC-files (regardless of whether they match a current DVC-file).
+  achieved by restoring **all data files or directories** referenced in current
+  DVC files (regardless of whether the files/dirs were already present).
 
 - `-h`, `--help` - shows the help message and exit.
 
@@ -185,9 +186,10 @@ outs:
 ```
 
 But if you check the MD5 of `model.pkl`, the file hash is still the same
-(`ab349c2...`). This is because `git checkout` changed `dvc.lock` and other DVC
-files, but it did nothing with `model.pkl`, or any other DVC-tracked files/dirs.
-Since Git doesn't track them, to get them we can do this:
+(`ab349c2...`). This is because `git checkout` changed `dvc.lock` and other
+<abbr>DVC files</abbr>, but it did nothing with `model.pkl`, or any other
+DVC-tracked files/dirs. Since Git doesn't track them, to get them we can do
+this:
 
 ```dvc
 $ dvc checkout

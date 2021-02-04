@@ -21,11 +21,12 @@ etc.) doesn't have DVC initialized (no `.dvc/` directory present).
 
 Namely:
 
-**Checkout**: For any commit hash, branch or tag, `git checkout` retrieves the
-[DVC-files](/doc/user-guide/dvc-files-and-directories) corresponding to that
-version. The project's DVC-files in turn refer to data stored in
-<abbr>cache</abbr>, but not necessarily in the <abbr>workspace</abbr>. Normally,
-it would be necessary to use `dvc checkout` to update the workspace accordingly.
+**Checkout**: For any commit hash, branch or tag, `git checkout` restores the
+[DVC project files](/doc/user-guide/project-structure) corresponding to that
+version. Some of these files, in turn refer to data stored in
+<abbr>cache</abbr>, but not necessarily current in the <abbr>workspace</abbr>.
+Normally, it's necessary to use `dvc checkout` to also update the workspace
+accordingly.
 
 This hook automates `dvc checkout` after `git checkout`.
 
@@ -105,10 +106,18 @@ repos:
     rev: master
 ```
 
+Note that by default, the pre-commit tool only installs `pre-commit` hooks. To
+enable the `pre-push` and `post-checkout` hooks, you must explicitly configure
+the tool this way:
+
+```dvc
+$ pre-commit install --hook-type pre-push --hook-type post-checkout --hook-type pre-commit
+```
+
 ## Options
 
-- `--use-pre-commit-tool` - installs pre-commit, pre-push, post-checkout Git
-  hooks into the [pre-commit](https://pre-commit.com/) config file
+- `--use-pre-commit-tool` - configures DVC pre-commit, pre-push, post-checkout
+  Git hooks in the [pre-commit](#using-the-pre-commit-tool) config file
   (`.pre-commit-config.yaml`).
 
 - `-h`, `--help` - prints the usage/help message, and exit.
@@ -149,7 +158,7 @@ $ pip install -r src/requirements.txt
 Download the precomputed data using:
 
 ```dvc
-$ dvc pull --all-branches --all-tags
+$ dvc pull -aT
 ```
 
 </details>
@@ -157,10 +166,9 @@ $ dvc pull --all-branches --all-tags
 ## Example: Checkout both Git and DVC
 
 Switching from one Git commit to another (with `git checkout`) may change the
-set of [DVC-files](/doc/user-guide/dvc-files-and-directories) in the
-<abbr>workspace</abbr>. This would mean that the currently present data files
-and directories no longer matches project's version (which can be fixed with
-`dvc checkout`).
+set of <abbr>DVC files</abbr> in the <abbr>workspace</abbr>. This could mean
+that the currently present data no longer matches the project's version (which
+can be fixed with `dvc checkout`).
 
 Let's first list the available tags in the _Get Started_ repo:
 
@@ -207,12 +215,11 @@ running `git checkout master`.
 
 We also see that the first `dvc status` tells us about differences between the
 project's <abbr>cache</abbr> and the data files currently in the workspace. Git
-changed the DVC-files in the workspace, which changed references to data files.
+changed the DVC files in the workspace, which changed references to data files.
 `dvc status` first informed us that the data files in the workspace no longer
-matched the hash values in the corresponding `.dvc` and `dvc.lock`
-[files](/doc/user-guide/dvc-files-and-directories). Running `dvc checkout` then
-brings them up to date, and a second `dvc status` tells us that the data files
-now do match the DVC files.
+matched the hash values in the corresponding `.dvc` and `dvc.lock` files.
+Running `dvc checkout` then brings them up to date, and a second `dvc status`
+tells us that the data files now do match the DVC files.
 
 ```dvc
 $ git checkout master
@@ -256,7 +263,7 @@ Data and pipelines are up to date.
 
 Look carefully at this output and it is clear that the `dvc checkout` command
 has indeed been run. As a result the workspace is up to date with the data files
-matching what is referenced by the DVC files.
+matching what is referenced in the <abbr>DVC files</abbr>.
 
 ## Example: Showing DVC status when committing with Git
 

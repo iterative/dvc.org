@@ -2,12 +2,12 @@
 title: July '20 Community Gems
 date: 2020-07-31
 description: |
-  A roundup of technical Q&A's from the DVC community. This month, we discuss 
-  getting started with CML, configuring your DVC cache, and how to request a 
+  A roundup of technical Q&A's from the DVC community. This month, we discuss
+  getting started with CML, configuring your DVC cache, and how to request a
   tutorial video.
 descriptionLong: |
-  A roundup of technical Q&A's from the DVC community. This month, we discuss 
-  getting started with CML, configuring your DVC cache, and how to request a 
+  A roundup of technical Q&A's from the DVC community. This month, we discuss
+  getting started with CML, configuring your DVC cache, and how to request a
   tutorial video.
 picture: 2020-07-31/Gems_July_20.png
 author: elle_obrien
@@ -53,7 +53,7 @@ If for some reason this won't work for your team, you can either downgrade to a
 previous version, or use a workaround:
 
 ```dvc
-$ dvc repro <.dvc stage file>
+$ dvc repro <.dvc file>
 ```
 
 substituting the appropriate `.dvc` file for your pipeline. DVC 1.0 is backwards

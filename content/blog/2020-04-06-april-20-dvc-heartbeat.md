@@ -2,8 +2,8 @@
 title: April '20 DVC❤️Heartbeat
 date: 2020-04-06
 description: |
-  Catch up on new DVC releases, talks, and projects in our community. 
-  This month, learn what we're up to in MLOps, CI/CD, and the 
+  Catch up on new DVC releases, talks, and projects in our community.
+  This month, learn what we're up to in MLOps, CI/CD, and the
   intersection of data science and software engineering.
 
 descriptionLong: |
@@ -14,10 +14,10 @@ descriptionLong: |
   projects by our users and big ideas about best practices in ML and data
   science.
 picture: 2020-04-06/april_header.png
-pictureComment:
-  A view from [Barrancas del
-  Cobre](https://en.wikipedia.org/wiki/Copper_Canyon), shot by Jorge Orpinel
-  Pérez. Jorge has mastered the art of working on DVC remotely.
+pictureComment: |
+  A view from
+  [Barrancas del Cobre](https://en.wikipedia.org/wiki/Copper_Canyon), shot by
+  Jorge Orpinel Pérez. Jorge has mastered the art of working on DVC remotely.
 author: elle_obrien
 commentsUrl: https://discuss.dvc.org/t/april-20-heartbeat/347
 tags:

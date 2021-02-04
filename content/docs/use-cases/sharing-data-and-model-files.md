@@ -9,7 +9,8 @@ supports Amazon S3, Microsoft Azure Blob Storage, Google Drive, Google Cloud
 Storage, SSH, HDFS, and other remote locations. The list is constantly growing.
 (For a complete list and configuration instructions, refer to `dvc remote add`.)
 
-![](/img/model-sharing-digram.png)
+![](/img/model-sharing-digram.png) _Data is stored in storage you control,
+separate from code._
 
 As an example, let's take a look at how you could setup an S3
 [remote storage](/doc/command-reference/remote) for a <abbr>DVC project</abbr>,
@@ -67,12 +68,12 @@ with the `dvc push` command:
 $ dvc push
 ```
 
-Code and [DVC-files](/doc/user-guide/dvc-files-and-directories) can be safely
-committed and pushed with Git.
+Code and [DVC project files](/doc/user-guide/project-structure/pipelines-files)
+can be safely committed and pushed with Git.
 
 ## Download code
 
-Please use regular Git commands to download code and DVC-files from your Git
+Please use regular Git commands to download code and DVC files from your Git
 servers. For example:
 
 ```dvc

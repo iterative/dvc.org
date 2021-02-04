@@ -1,7 +1,7 @@
 # check-ignore
 
 Check whether any given files or directories are excluded from DVC due to the
-patterns found in [`.dvcignore`](/doc/user-guide/dvcignore).
+patterns found in `.dvcignore`.
 
 ## Synopsis
 
@@ -16,8 +16,8 @@ positional arguments:
 ## Description
 
 This helper command checks whether the given `targets` are ignored by DVC
-according to the [`.dvcignore` file](/doc/user-guide/dvcignore) (if any). The
-ones that are ignored indeed are printed back.
+according to the `.dvcignore` file (if any). The ones that are ignored indeed
+are printed back.
 
 ## Options
 
@@ -25,7 +25,7 @@ ones that are ignored indeed are printed back.
   series of lines are printed in this format:
   `<path/to/.dvcignore>:<line_num>:<pattern> <target_path>`
 
-- `-a`, `--all` - include all the patterns that match each target path in the
+- `-a`, `--all` - list all patterns that match each target path in the
   `--details` list. Has no effect without `--details`.
 
 - `-n`, `--non-matching` - include the target paths which don’t match any

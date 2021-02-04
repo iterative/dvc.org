@@ -73,7 +73,7 @@ so on (see `dvc dag`). This graph can be restored by DVC later to modify or
 
 ```dvc
 $ dvc run -n printer -d write.sh -o pages ./write.sh
-$ dvc run -n scanner -d read.sh -d pages -o signed.pdf ./read.sh
+$ dvc run -n scanner -d read.sh -d pages -o signed.pdf ./read.sh pages
 ```
 
 Stage dependencies can be any file or directory, either untracked, or more
@@ -97,7 +97,7 @@ Relevant notes:
 
 - Entire directories produced by the stage can be tracked as outputs by DVC,
   which generates a single `.dir` entry in the cache (refer to
-  [Structure of cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-the-cache-directory)
+  [Structure of cache directory](/doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory)
   for more info.)
 
 - [external dependencies](/doc/user-guide/external-dependencies) and
@@ -105,9 +105,10 @@ Relevant notes:
   <abbr>workspace</abbr>) are also supported (except metrics and plots).
 
 - Outputs are deleted from the workspace before executing the command (including
-  at `dvc repro`) if their paths are found as existing files/directories. This
-  also means that the stage command needs to recreate any directory structures
-  defined as outputs every time its executed by DVC.
+  at `dvc repro`) if their paths are found as existing files/directories (unless
+  `--outs-persist` is used). This also means that the stage command needs to
+  recreate any directory structures defined as outputs every time its executed
+  by DVC.
 
 - In some situations, we have previously executed a stage, and later notice that
   some of the files/directories used by the stage as dependencies, or created as
@@ -139,7 +140,7 @@ run directly, for example a shell built-in, expression, or binary found in
 `PATH`. Please remember that any flags sent after the `command` are interpreted
 by the command itself, not by `dvc run`.
 
-⚠️ Note that while DVC is platform-agnostic, the commands defined in your
+⚠️ While DVC is platform-agnostic, the commands defined in your
 [pipeline](/doc/command-reference/dag) stages may only work on some operating
 systems and require certain software packages to be installed.
 
@@ -149,8 +150,8 @@ like `|` (pipe) or `<`, `>` (redirection), otherwise they would apply to
 variables in it that should be evaluated dynamically. Examples:
 
 ```dvc
-$ dvc run -n my_stage "./my_script.sh > /dev/null 2>&1"
-$ dvc run -n my_stage './my_script.sh $MYENVVAR'
+$ dvc run -n first_stage "./a_script.sh > /dev/null 2>&1"
+$ dvc run -n second_stage './another_script.sh $MYENVVAR'
 ```
 
 ## Options
@@ -178,15 +179,18 @@ $ dvc run -n my_stage './my_script.sh $MYENVVAR'
   `dvc add`).
 
 - `-O <path>`, `--outs-no-cache <path>` - the same as `-o` except that outputs
-  are not tracked by DVC. It means that they are not cached, and it's up to a
-  user to manage them separately. This is useful if the outputs are small enough
-  to be tracked by Git directly, or if these files are not of future interest.
+  are not tracked by DVC. This means that they are never cached, so it's up to
+  the user to manage them separately. This is useful if the outputs are small
+  enough to be tracked by Git directly; or large, yet you prefer to regenerate
+  them every time (see `dvc repro`); or unwanted in storage for any other
+  reason.
 
 - `--outs-persist <path>` - declare output file or directory that will not be
-  removed upon `dvc repro`.
+  removed when `dvc repro` starts (but it can still be modified, overwritten, or
+  even deleted by the stage command(s)).
 
 - `--outs-persist-no-cache <path>` - the same as `-outs-persist` except that
-  outputs are not tracked by DVC.
+  outputs are not tracked by DVC (same as with `-O` above).
 
 - `-p [<path>:]<params_list>`, `--params [<path>:]<params_list>` - specify a set
   of [parameter dependencies](/doc/command-reference/params) the stage depends
@@ -204,10 +208,10 @@ $ dvc run -n my_stage './my_script.sh $MYENVVAR'
   more about _metrics_.
 
 - `-M <path>`, `--metrics-no-cache <path>` - the same as `-m` except that DVC
-  does not track the metrics file. This means that the file is not cached, so
-  it's up to the user to manage them separately. This is typically desirable
-  with _metrics_ because they are small enough to be tracked with Git directly.
-  See also the difference between `-o` and `-O`.
+  does not track the metrics file (same as with `-O` above). This means that
+  they are never cached, so it's up to the user to manage them separately. This
+  is typically desirable with _metrics_ because they are small enough to be
+  tracked with Git directly.
 
 - `--plots <path>` - specify a plot metrics file produces by this stage. This
   option behaves like `-o` but registers the file in a `plots` field inside the
@@ -217,9 +221,8 @@ $ dvc run -n my_stage './my_script.sh $MYENVVAR'
   plots.
 
 - `--plots-no-cache <path>` - the same as `--plots` except that DVC does not
-  track the plots metrics file. This means that the file is not cached, so it's
-  up to the user to manage them separately. See also the difference between `-o`
-  and `-O`.
+  track the plots file (same as with `-O` and `-M` above). This may be desirable
+  with _plots_, if they are small enough to be tracked with Git directly.
 
 - `-w <path>`, `--wdir <path>` - specifies a working directory for the `command`
   to run in (uses the `wdir` field in `dvc.yaml`). Dependency and output files
@@ -227,38 +230,33 @@ $ dvc run -n my_stage './my_script.sh $MYENVVAR'
   It's used by `dvc repro` to change the working directory before executing the
   `command`.
 
-- `--no-exec` - create a stage file, but do not execute the `command` defined in
-  it, nor cache dependencies or outputs (like with `--no-commit`, explained
-  below). DVC will also add your outputs to `.gitignore`, same as it would do
-  without `--no-exec`. Use `dvc commit` to force committing existing output file
-  versions to cache.
-
-  This is useful if, for example, you need to build a pipeline quickly first,
-  and run it all at once later.
+- `--no-exec` - write the stage to `dvc.yaml`, but do not execute the `command`.
+  DVC will still add the outputs to `.gitignore`, but they won't be cached or
+  recorded in `dvc.lock` (like with `--no-commit` below). This is useful if you
+  need to define a pipeline quickly, and `dvc repro` it later; or if the stage
+  outputs already exist and you want to "DVCfy" this state of the project (see
+  also `dvc commit`).
 
 - `-f`, `--force` - overwrite an existing stage in `dvc.yaml` file without
   asking for confirmation.
 
-- `--no-run-cache` - execute the stage `command` even if it has already been run
-  with the same dependencies/outputs/etc. before. Useful for example if the
-  command's code is non-deterministic
+- `--no-run-cache` - execute the stage command(s) even if they have already been
+  run with the same dependencies and outputs (see the
+  [details](/doc/user-guide/project-structure/internal-files#run-cache)). Useful
+  for example if the stage command/s is/are non-deterministic
   ([not recommended](#avoiding-unexpected-behavior)).
 
-- `--no-commit` - do not save outputs to cache. A stage created, while nothing
-  is added to the cache. In the stage file, the file hash values will be empty;
-  They will be populated the next time this stage is actually executed, or
-  `dvc commit` can be used to force committing existing output file versions to
-  cache.
-
-  This is useful to avoid caching unnecessary data repeatedly when running
-  multiple experiments.
+- `--no-commit` - do not store the outputs of this execution in the cache
+  (`dvc.yaml` and `dvc.lock` are still created or updated); useful to avoid
+  caching unnecessary data when exploring different data or stages. You can use
+  `dvc commit` to finish the operation.
 
 - `--always-changed` - always consider this stage as changed (uses the
   `always_changed` field in `dvc.yaml`). As a result `dvc status` will report it
   as `always changed` and `dvc repro` will always execute it.
 
-  > Note that DVC-files without dependencies are automatically considered
-  > "always changed", so this option has no effect in those cases.
+  > Note that regular `.dvc` files (without dependencies) are automatically
+  > considered "always changed", so this option has no effect in those cases.
 
 - `--external` - allow writing outputs outside of the DVC repository. See
   [Managing External Data](/doc/user-guide/managing-external-data).
@@ -320,17 +318,17 @@ dataset (`20180226` is a seed value):
 
 ```dvc
 $ dvc run -n train \
-          -d matrix-train.p -d train_model.py \
-          -o model.p \
-          python train_model.py matrix-train.p 20180226 model.p
+          -d train_model.py -d matrix-train.p -o model.p \
+          python train_model.py 20180226 model.p
 ```
 
 To update a stage that is already defined, the `-f` (`--force`) option is
 needed. Let's update the seed for the `train` stage:
 
 ```dvc
-$ dvc run -n train -f -d matrix-train.p -d train_model.py -o model.p \
-          python train_model.py matrix-train.p 18494003 model.p
+$ dvc run -n train --force \
+          -d train_model.p -d matrix-train.p -o model.p \
+          python train_model.py 18494003 model.p
 ```
 
 ## Example: Separate stages in a subdirectory
@@ -424,9 +422,9 @@ Define a stage with both regular dependencies as well as parameter dependencies:
 
 ```dvc
 $ dvc run -n train \
-          -d matrix-train.p -d train_model.py -o model.p \
+          -d train_model.py -d matrix-train.p  -o model.p \
           -p seed,train.lr,train.epochs
-          python train_model.py matrix-train.p model.p
+          python train_model.py 20200105 model.p
 ```
 
 `train_model.py` will include some code to open and parse the parameters:

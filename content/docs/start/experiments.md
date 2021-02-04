@@ -1,10 +1,18 @@
-# Experiments
+---
+title: 'Get Started: Experiments'
+---
+
+# Get Started: Experiments
 
 DVC makes it easy to iterate on your project using Git commits, tags, or
 branches. You can try different ideas quickly by tuning
 [parameters](/doc/command-reference/params), compare their performance with
 [metrics](/doc/command-reference/metrics), and visualize them with
 [plots](/doc/command-reference/plots).
+
+Read on or watch our video to see how it's done!
+
+https://youtu.be/iduHPtBncBk
 
 ## Collecting metrics
 

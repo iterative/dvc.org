@@ -50,9 +50,9 @@ $ dvc add data/data.xml
 
 DVC stores information about the added file (or a directory) in a special `.dvc`
 file named `data/data.xml.dvc`, a small text file with a human-readable
-[format](/doc/user-guide/dvc-files-and-directories#dvc-files). This file can be
-easily versioned like source code with Git, as a placeholder for the original
-data (which gets listed in `.gitignore`):
+[format](/doc/user-guide/project-structure/dvc-files). This file can be easily
+versioned like source code with Git, as a placeholder for the original data
+(which gets listed in `.gitignore`):
 
 ```dvc
 $ git add data/data.xml.dvc data/.gitignore
@@ -85,7 +85,7 @@ outs:
 
 > \* See
 > [Large Dataset Optimization](/doc/user-guide/large-dataset-optimization) and
-> `dvc config cache` for more information on file linking.
+> `dvc config cache` for more info. on file linking.
 
 </details>
 
@@ -97,8 +97,9 @@ retrieved on other environments later with `dvc pull`. First, we need to setup a
 storage:
 
 ```dvc
-$ dvc remote add -d storage s3://my-bucket/dvc-storage
-$ git commit .dvc/config -m "Configure remote storage"
+$ dvc remote add -d storage s3://mybucket/dvcstore
+$ git add .dvc/config
+$ git commit -m "Configure remote storage"
 ```
 
 > DVC supports the following remote storage types: Google Drive, Amazon S3,
@@ -114,8 +115,8 @@ cache, usually a cloud storage service. For simplicity, let's set up a _local
 remote_:
 
 ```dvc
-$ mkdir -p /tmp/dvc-storage
-$ dvc remote add -d myremote /tmp/dvc-storage
+$ mkdir -p /tmp/dvcstore
+$ dvc remote add -d myremote /tmp/dvcstore
 $ git commit .dvc/config -m "Configure local remote"
 ```
 
@@ -142,11 +143,11 @@ set up earlier. You can check that the data has been stored in the DVC remote
 with:
 
 ```dvc
-$ ls -R /tmp/dvc-storage
-/tmp/dvc-storage/:
+$ ls -R /tmp/dvcstore
+/tmp/dvcstore/:
 a3
 
-/tmp/dvc-storage/a3:
+/tmp/dvcstore/a3:
 04afb96060aad90176268345e10355
 ```
 

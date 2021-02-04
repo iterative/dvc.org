@@ -24,15 +24,16 @@ target file or directory (found at `path` in `url`) to the current working
 directory. (Analogous to `wget`, but for repos.)
 
 > Note that unlike `dvc import`, this command does not track the downloaded
-> files (does not create a `.dvc` file). For that reason, this command doesn't
-> require an existing DVC project to run in.
+> files (does not create a `.dvc` file). For that reason, it doesn't require an
+> existing DVC project to run in.
 
 > See `dvc list` for a way to browse repository contents to find files or
 > directories to download.
 
 The `url` argument specifies the address of the DVC or Git repository containing
 the data source. Both HTTP and SSH protocols are supported (e.g.
-`[user@]server:project.git`). `url` can also be a local file system path.
+`[user@]server:project.git`). `url` can also be a local file system path
+(including the current project e.g. `.`).
 
 The `path` argument is used to specify the location of the target to download
 within the source repository at `url`. `path` can specify any file or directory

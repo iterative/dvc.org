@@ -1,4 +1,4 @@
-# `.dvcignore` File
+# `.dvcignore` Files
 
 Marks which files and/or directories should be excluded when traversing a
 <abbr>DVC project</abbr>.
@@ -29,9 +29,9 @@ Ignored files will not be saved in <abbr>cache</abbr>, they will be non-existent
 for DVC. It's worth to remember that, especially when ignoring files inside
 DVC-handled directories.
 
-⚠️ Important! Note that `dvc run` and `dvc repro` might remove ignored files. If
-they are not produced by a pipeline [stage](/doc/command-reference/run), they
-can be lost permanently.
+⚠️ `dvc run` and `dvc repro` might remove ignored files. If they are not
+produced by a pipeline [stage](/doc/command-reference/run), they can be lost
+permanently.
 
 Keep in mind that when you add `.dvcignore` patterns that affect an existing
 <abbr>output</abbr>, its status will change and DVC will behave as if that
@@ -96,7 +96,7 @@ stored. Checking the hash value of the data files manually, we can see that
 `data2` was cached. This means that `dvc add` did ignore `data1`.
 
 > Refer to
-> [Structure of cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-the-cache-directory)
+> [Structure of cache directory](/doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory)
 > for more info.
 
 ## Example: Ignore file state changes
@@ -212,5 +212,5 @@ dir2/data2.dvc:
 		modified:           dir2/data2
 ```
 
-Only the second file is displayed because DVC ignores `data1.dvc` and `data1`
-when collecting DVC-files.
+Only the second file is displayed because DVC now ignores `data1.dvc` and
+`data1`.

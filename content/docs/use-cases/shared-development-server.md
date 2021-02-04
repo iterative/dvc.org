@@ -1,13 +1,13 @@
 # Shared Development Server
 
-Some teams may prefer using one single shared machine to run their experiments.
-This allows better resource utilization, such as the ability to use multiple
-GPUs, centralized data storage, etc. With DVC, you can easily setup shared data
-storage on a server accessed by several users or for any other reason, in a way
-that enables almost instantaneous <abbr>workspace</abbr> restoration/switching
-speed for everyone – similar to `git checkout` for your code.
+Some teams may prefer using a single shared machine to run their experiments.
+This allows better resource utilization, such as GPU access, centralized data
+storage, etc. With DVC, you can easily setup shared data store on a server with
+multiple users or processes. This enables near-instantaneous
+<abbr>workspace</abbr> restoration and switching speeds for everyone – a
+**checkout for data**.
 
-![](/img/shared-server.png)
+![](/img/shared-server.png) _Data store shared by DVC projects_
 
 ## Preparation
 
@@ -80,8 +80,9 @@ Let's say you are cleaning up raw data for later stages:
 
 ```dvc
 $ dvc add raw
-$ dvc run -n clean_data -d raw -o clean ./cleanup.py raw clean
-  # The data is cached in the shared location.
+$ dvc run -n clean_data -d cleanup.py -d raw -o clean \
+          ./cleanup.py raw clean
+# The data is cached in the shared location.
 $ git add raw.dvc dvc.yaml dvc.lock .gitignore
 $ git commit -m "cleanup raw data"
 $ git push
@@ -97,7 +98,8 @@ manually. After this, they could decide to continue building this
 $ git pull
 $ dvc checkout
 A       raw  # Data is linked from cache to workspace.
-$ dvc run -n process_clean_data -d clean -o processed ./process.py clean process
+$ dvc run -n process_clean_data -d process.py -d clean -o processed
+          ./process.py clean processed
 $ git add dvc.yaml dvc.lock
 $ git commit -m "process clean data"
 $ git push

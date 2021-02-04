@@ -64,8 +64,11 @@ epoch, AUC, loss
 37, 0.92302, 0.0299015
 ```
 
-In hierarchical file formats (JSON or YAML), an array of consistent objects is
-expected: every object should have the same structure.
+Hierarchical file formats such as JSON and YAML consists of an array of
+consistent objects (sharing a common structure): All objects should contain the
+fields used for the X and Y axis of the plot (see
+[DVC template anchors](#dvc-template-anchors)); Extra elements will be ignored
+silently.
 
 `dvc plots` subcommands can produce plots for a specified field or a set of
 them, from the array's objects. For example, `val_loss` is one of the field
@@ -122,8 +125,8 @@ All metrics files given to `dvc plots show` and `dvc plots diff` as input are
 combined together into a single data array for injection into a template file.
 There are two important fields that DVC adds to the plot data:
 
-- `index` - self-incrementing, zero-based counter for the data rows/values. In
-  many cases it corresponds to a machine learning training epoch or step number.
+- `index` - zero-based counter for the data rows/values. In many cases it
+  corresponds to a machine learning training epoch or step number.
 
 - `rev` - Git commit hash, tag, or branch of the metrics file. This helps
   distinguish between different versions when using the `dvc plots diff`
@@ -135,8 +138,8 @@ header (first row) are equivalent to field names.
 ### DVC template anchors
 
 - `<DVC_METRIC_DATA>` (**required**) - the plot data from any type of metrics
-  files is converted to a single JSON array internally, and injected instead of
-  this anchor. Two additional fields will be added: `index` and `rev` (explained
+  files is converted to a single JSON array, and injected instead of this
+  anchor. Two additional fields will be added: `index` and `rev` (explained
   above).
 
 - `<DVC_METRIC_TITLE>` (optional) - a title for the plot, that can be defined
@@ -147,8 +150,8 @@ header (first row) are equivalent to field names.
   `index` field (explained above) is the default.
 
 - `<DVC_METRIC_Y>` (optional) - field name of the data for the Y axis. It can be
-  defined with the `-y` option of the `dvc plot` subcommands. The default is the
-  last one found in the metrics file: the last column for CSV/TSV, or the last
+  defined with the `-y` option of the `dvc plot` subcommands. It defaults to the
+  last header of the metrics file: the last column for CSV/TSV, or the last
   field for JSON/YAML.
 
 - `<DVC_METRIC_X_TITLE>` (optional) - field name to display as the X axis label

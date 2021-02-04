@@ -1,12 +1,13 @@
 # plots diff
 
 Show multiple versions of [plot metrics](/doc/command-reference/plots) by
-overlaying them in a single plot. This allows to compare them easily.
+overlaying them in a single image. This allows to compare them easily.
 
 ## Synopsis
 
 ```usage
-usage: dvc plots diff [-h] [-q | -v] [--targets [<path> [<path> ...]]]
+usage: dvc plots diff [-h] [-q | -v]
+                      [--targets [<paths> [<paths> ...]]]
                       [-t <name_or_path>] [-x <field>] [-y <field>]
                       [--no-header] [--title <text>]
                       [--x-label <text>] [--y-label <text>] [-o <path>]
@@ -24,7 +25,7 @@ This command is a way to visualize the "difference" between
 versions of the <abbr>repository</abbr>, by overlaying them in a single plot.
 
 > Note that unlike `dvc metrics diff`, this command does not calculate numeric
-> differences between metrics file values.
+> differences between plots file values.
 
 `revisions` are Git commit hashes, tag, or branch names. If none are specified,
 `dvc plots diff` compares plots currently present in the <abbr>workspace</abbr>
@@ -34,14 +35,13 @@ revision results in comparing the workspace and that version.
 💡 Note that any number of `revisions` can be provided (the resulting plot shows
 all of them in a single image).
 
-All plots defined in `dvc.yaml` are used by default, but specific plots files
-can be specified with the `--targets` option (note that targets don't
-necessarily have to be defined in `dvc.yaml`).
+All plots defined in `dvc.yaml` are used by default, but specific files can be
+specified with the `--targets` option (any valid plots file is accepted).
 
 The plot style can be customized with
 [plot templates](/doc/command-reference/plots#plot-templates), using the
-`--template` option. To learn more about metrics file formats and templates
-please see `dvc plots`.
+`--template` option. To learn more about plots files and templates please see
+`dvc plots`.
 
 > Note that the default behavior of this command can be modified per metrics
 > file with `dvc plots modify`.
@@ -51,18 +51,15 @@ all the current plots, without comparisons.
 
 ## Options
 
-- `--targets <path>` - specific metrics files to visualize. When specifying
-  arguments for `--targets` before `revisions`, you should use `--` after this
-  option's arguments, e.g.:
+- `--targets <paths>` - specific plots files to visualize. It accepts `paths` to
+  any valid plots file, regardless of whether `dvc.yaml` is currently tracking
+  any plots in them.
+
+  When specifying arguments for `--targets` before `revisions`, you should use
+  `--` after this option's arguments, e.g.:
 
   ```dvc
   $ dvc plots diff --targets t1.json t2.csv -- HEAD v1 v2
-  ```
-
-  Alternatively, you can also run the above statement as:
-
-  ```dvc
-  $ dvc plots diff HEAD v1 v2 --targets t1.json t2.csv
   ```
 
 - `-o <path>, --out <path>` - name of the generated file. By default, the output

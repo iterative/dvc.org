@@ -22,7 +22,7 @@ Advantages of data registries:
   (`dvc get` and `dvc import` commands, similar to software package management
   systems like `pip`).
 - **Persistence**: [remote storage](/doc/command-reference/remote) (e.g. an S3
-  bucket) controlled by the DVC registry improves data security. There are less
+  bucket) tracked by the DVC registry improves data security. There are less
   chances someone can delete or rewrite an ML model, for example.
 - **Storage optimization**: centralize data
   [shared](/doc/use-cases/sharing-data-and-model-files) by multiple projects in
@@ -30,7 +30,7 @@ Advantages of data registries:
   management and optimizes space requirements.
 - **Data as code**: leverage Git workflows such as commits, branching, pull
   requests, reviews, and even CI/CD for your data and models lifecycle. Think
-  "Git for cloud storage", but without ad-hoc conventions.
+  "Git for cloud storage".
 - **Security**: registries can be setup with read-only remote storage (e.g. an
   HTTP server).
 
@@ -61,7 +61,7 @@ The actual data is stored in the project's <abbr>cache</abbr>, and can be
 accessed from other locations and by other people:
 
 ```dvc
-$ dvc remote add -d myremote s3://my-bucket/dvc-storage
+$ dvc remote add -d myremote s3://mybucket/dvcstore
 $ dvc push
 ```
 
@@ -183,7 +183,7 @@ $ git commit -am "Add 1,000 more songs to music/ dataset."
 
 Iterating on this process for several datasets can give shape to a robust
 registry. The result is basically a repo that versions a set of
-[metafiles](/doc/user-guide/dvc-files-and-directories). Let's see an example:
+[metafiles](/doc/user-guide/project-structure). Let's see an example:
 
 ```dvc
 $ tree --filelimit=10

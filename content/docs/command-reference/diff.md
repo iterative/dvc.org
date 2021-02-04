@@ -8,6 +8,7 @@ workspace.
 
 ```usage
 usage: dvc diff [-h] [-q | -v]
+                [--targets [<paths> [<paths> ...]]]
                 [--show-json] [--show-hash] [--show-md]
                 [a_rev] [b_rev]
 
@@ -43,6 +44,15 @@ for example when `dvc init` was used with the `--no-scm` option.
 
 ## Options
 
+- `--targets <paths>` - specific DVC-tracked files to compare.
+
+  When specifying arguments for `--targets` before `a_rev`/`b_rev`, you should
+  use `--` after this option's arguments (POSIX terminals), e.g.:
+
+  ```dvc
+  $ dvc diff --targets t1.json t2.yaml -- HEAD v1
+  ```
+
 - `--show-json` - prints the command's output in easily parsable JSON format,
   instead of a human-readable table.
 
@@ -52,7 +62,7 @@ for example when `dvc init` was used with the `--no-scm` option.
   Useful for debug purposes.
 
 - `--hide-missing` - do not list data missing from both workspace and cache
-  (`not in cache`). Only list files and directories which have been expliclity
+  (`not in cache`). Only list files and directories which have been explicitly
   added, modified, or deleted. This option does nothing when comparing two Git
   commits.
 

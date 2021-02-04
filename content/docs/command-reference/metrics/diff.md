@@ -21,9 +21,9 @@ positional arguments:
 ## Description
 
 This command provides a quick way to compare metrics among experiments in the
-repository history. All metrics defined in `dvc.yaml` are used by default. The
-differences shown by this command include the new value, and numeric difference
-(delta) from the previous value of metrics (rounded to 5 digits precision).
+repository history. The differences shown by this command include the new value,
+and numeric difference (delta) from the previous value of metrics (rounded to 5
+digits precision).
 
 `a_rev` and `b_rev` are Git commit hashes, tag, or branch names. If none are
 specified, `dvc metrics diff` compares metrics currently present in the
@@ -31,31 +31,35 @@ specified, `dvc metrics diff` compares metrics currently present in the
 (required). A single specified revision results in comparing the workspace and
 that version.
 
+All metrics defined in `dvc.yaml` are used by default, but specific metrics
+files can be specified with the `--targets` option
+
+> Note that targets don't necessarily have to be defined in `dvc.yaml`. For that
+> reason, this command doesn't require an existing DVC project to run in; It
+> works in any Git repo.
+
 Another way to display metrics is the `dvc metrics show` command, which just
 lists all the current metrics, without comparisons.
 
 ## Options
 
-- `--targets <paths>` - limit command scope to these metrics files. Using `-R`,
-  directories to search metrics files in can also be given. When specifying
-  arguments for `--targets` before `revisions`, you should use `--` after this
-  option's arguments, e.g.:
+- `--targets <paths>` - specific metrics files to compare. It accepts `paths` to
+  any valid metrics file, regardless of whether `dvc.yaml` is currently tracking
+  any metrics in them. Using `-R`, directories to search metrics files in can
+  also be given.
+
+  When specifying arguments for `--targets` before `revisions`, you should use
+  `--` after this option's arguments (POSIX terminals), e.g.:
 
   ```dvc
   $ dvc metrics diff --targets t1.json t2.yaml -- HEAD v1
   ```
 
-  Alternatively, you can also run the above statement as:
-
-  ```dvc
-  $ dvc metrics diff HEAD v1 --targets t1.json t2.json
-  ```
-
 - `-R`, `--recursive` - determines the metrics files to use by searching each
-  target directory and its subdirectories for DVC-files to inspect. If there are
-  no directories among the `targets`, this option is ignored.
+  target directory and its subdirectories for DVC-tracked files to inspect. If
+  there are no directories among the `targets`, this option is ignored.
 
-- `--all` - list all metrics, even those without changes.
+- `--all` - list all metrics, including those without changes.
 
 - `--show-json` - prints the command's output in easily parsable JSON format,
   instead of a human-readable table.

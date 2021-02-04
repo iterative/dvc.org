@@ -1,8 +1,8 @@
 # import-url
 
 Download a file or directory from a supported URL (for example `s3://`,
-`ssh://`, and other protocols) into the <abbr>workspace</abbr>, and track
-changes in the remote data source. Creates a `.dvc` file.
+`ssh://`, and other protocols) into the <abbr>workspace</abbr>, and track it (an
+import `.dvc` file is created).
 
 > See `dvc import` to download and tack data/model files or directories from
 > other <abbr>DVC repositories</abbr> (e.g. hosted on GitHub).
@@ -21,40 +21,45 @@ positional arguments:
 
 ## Description
 
-In some cases it's convenient to add a data file or directory from a remote
+In some cases it's convenient to add a data file or directory from an external
 location into the workspace, such that it can be updated later, if/when the
 external data source changes. Example scenarios:
 
 - A remote system may produce occasional data files that are used in other
   projects.
 - A batch process running regularly updates a data file to import.
-- A shared dataset on a remote storage that is managed and updated outside DVC.
+- A shared dataset on cloud storage that is managed and updated outside DVC.
 
 > Note that `dvc get-url` corresponds to the first step this command performs
 > (just download the file or directory).
 
-The `dvc import-url` command helps the user create such an external data
-dependency without having to manually copying files from the supported remote
-locations (listed below), which may require installing a different tool for each
-type.
+`dvc import-url` helps you create such an external data dependency, without
+having to manually copy files from the supported locations (listed below), which
+may require installing a different tool for each type.
 
-The `url` argument specifies the external location of the data to be imported,
-while `out` can be used to specify the directory and/or file name desired for
-the downloaded data. If an existing directory is specified, the file or
-directory will be placed inside.
+The `url` argument specifies the external location of the data to be imported.
+The imported data is <abbr>cached</abbr>, and linked (or copied) to the current
+working directory with its original file name e.g. `data.txt` (or to a location
+provided with `out`).
+
+An _import `.dvc` file_ is created in the same location e.g. `data.txt.dvc` –
+similar to using `dvc add` after downloading the data. This makes it possible to
+update the import later, if the data source has changed (see `dvc update`).
+
+> Note that the imported data can be [pushed](/doc/command-reference/push) to
+> remote storage normally.
 
 `.dvc` files support references to data in an external location, see
 [External Dependencies](/doc/user-guide/external-dependencies). In such an
-import `.dvc` file, the `deps` field stores the remote URL, and the `outs` field
-contains the corresponding local path in the <abbr>workspace</abbr>. It records
-enough metadata about the imported data to enable DVC efficiently determining
-whether the local copy is out of date.
+import `.dvc` file, the `deps` field stores the external URL, and the `outs`
+field contains the corresponding local path in the <abbr>workspace</abbr>. It
+records enough metadata about the imported data to enable DVC efficiently
+determining whether the local copy is out of date.
 
 Note that `dvc repro` doesn't check or update import `.dvc` files, use
-`dvc update` on them to bring the import up to date from the external data
-source.
+`dvc update` to bring the import up to date from the data source.
 
-DVC supports several types of (local or) remote locations (protocols):
+DVC supports several types of external locations (protocols):
 
 | Type      | Description                  | `url` format example                          |
 | --------- | ---------------------------- | --------------------------------------------- |
@@ -83,8 +88,7 @@ DVC supports several types of (local or) remote locations (protocols):
 
 - In case of HTTP,
   [ETag](https://en.wikipedia.org/wiki/HTTP_ETag#Strong_and_weak_validation) is
-  necessary to track if the specified remote file (URL) changed to download it
-  again.
+  necessary to track if the specified URL changed.
 
 - `remote://myremote/path/to/file` notation just means that a DVC
   [remote](/doc/command-reference/remote) `myremote` is defined and when DVC is
@@ -111,12 +115,8 @@ $ dvc run -n download_data \
           wget https://data.dvc.org/get-started/data.xml -O data.xml
 ```
 
-`dvc import-url` generates an _import stage_ `.dvc` file and `dvc run` a regular
-stage (in `dvc.yaml`).
-
-⚠️ DVC won't push or pull imported data to/from
-[remote storage](/doc/command-reference/remote), it will rely on it's original
-source.
+`dvc import-url` generates an _import `.dvc` file_ and `dvc run` a regular stage
+(in `dvc.yaml`).
 
 ## Options
 
@@ -125,12 +125,11 @@ source.
   default file name: `<file>.dvc`, where `<file>` is the desired file name of
   the imported data (`out`).
 
-- `--no-exec` - create `.dvc` file without actually downloading `url`. E.g. if
-  the file or directory already exists, this can be used to skip the download.
-  The data hash is not calculated when this option is used, only the import
-  metadata is saved to the `.dvc` file. `dvc commit <out>.dvc` can be used if
-  the data hashes are needed in the `.dvc` file, and to save existing data to
-  the cache.
+- `--no-exec` - create the import `.dvc` file but don't download `url` (assumes
+  that the data source is valid). This is useful if you need to define the
+  project imports quickly, and download everything later (use `dvc update` to
+  finish the operation(s)); or if the target data already exist locally and you
+  want to "DVCfy" this state of the project (see also `dvc commit`).
 
 - `--desc <text>` - user description of the data (optional). This doesn't  
   affect any DVC operations.
@@ -164,7 +163,7 @@ $ git checkout 3-config-remote
 
 </details>
 
-## Example: Tracking a remote file
+## Example: Tracking a file from the web
 
 An advanced alternate to the intro of the
 [Versioning Basics](/doc/tutorials/get-started/data-versioning) part of the _Get
@@ -191,22 +190,23 @@ Let's take a look at the changes to the `data.xml.dvc`:
  outs:
  - md5: a304afb96060aad90176268345e10355
    path: data.xml
+   cache: true
 ```
 
 The `etag` field in the `.dvc` file contains the
 [ETag](https://en.wikipedia.org/wiki/HTTP_ETag) recorded from the HTTP request.
-If the remote file changes, its ETag will be different. This metadata allows DVC
-to determine whether it's necessary to download it again.
+If the imported file changes online, its ETag will be different. This metadata
+allows DVC to determine whether it's necessary to download it again.
 
 > See `.dvc` files for more details on the format above.
 
 You may want to get out of and remove the `example-get-started/` directory after
 trying this example (especially if trying out the following one).
 
-## Example: Detecting remote file changes
+## Example: Detecting external file changes
 
-What if that remote file is updated regularly? The project goals might include
-regenerating some results based on the updated data source.
+What if an imported file is updated regularly at it's source? The project goals
+might include regenerating some results based on the updated data source.
 [Pipeline](/doc/command-reference/dag) reproduction can be triggered based on a
 changed external dependency.
 
@@ -214,9 +214,9 @@ Let's use the [Get Started](/doc/tutorials/get-started) project again,
 simulating an updated external data source. (Remember to prepare the
 <abbr>workspace</abbr>, as explained in [Examples](#examples))
 
-To illustrate this scenario, let's use a local file system directory (external
-to the workspace) to simulate a remote data source location. (In real life, the
-data file will probably be on a remote server.) Run these commands:
+To illustrate this scenario, let's use a local file system directory external to
+the workspace (in real life, the data file could be on a remote server instead).
+Run these commands:
 
 ```dvc
 $ mkdir /tmp/dvc-import-url-example
@@ -319,15 +319,15 @@ Data and pipelines are up to date.
 
 In the data store directory, edit `data.xml`. It doesn't matter what you change,
 as long as it remains a valid XML file, because any change will result in a
-different dependency file hash (`md5`) in the import stage `.dvc` file. Once we
-do so, we can run `dvc update` to make sure the import is up to date:
+different dependency file hash (`md5`) in the import `.dvc` file. Once we do so,
+we can run `dvc update` to make sure the import is up to date:
 
 ```dvc
 $ dvc update data.xml.dvc
 Importing '.../tmp/dvc-import-url-example/data.xml' -> 'data/data.xml'
 ```
 
-DVC notices the "external" data source has changed, and updates the import stage
+DVC notices the external data source has changed, and updates the `.dvc` file
 (reproduces it). In this case it's also necessary to run `dvc repro` so that the
 remaining pipeline results are also regenerated:
 

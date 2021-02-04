@@ -100,6 +100,14 @@ url = /path/to/remote
 remote = myremote
 ```
 
+## Example: List all remotes in the project
+
+```dvc
+$ dvc remote list
+myremote	/path/to/remote
+newremote	s3://mybucket/path
+```
+
 ## Example: Customize an additional S3 remote
 
 > 💡 Before adding an S3 remote, be sure to
@@ -122,18 +130,10 @@ url = s3://mybucket/path
 endpointurl = https://object-storage.example.com
 ```
 
-## Example: List all remotes in the project
-
-```dvc
-$ dvc remote list
-myremote	/path/to/remote
-newremote	s3://mybucket/path
-```
-
 ## Example: Change the name of a remote
 
-Notice that `dvc remote modify` doesn't provide a way to change the name of a
-DVC remote, but there's a specific subcommand for this:
+`dvc remote modify` can't change the name of a DVC remote, but there's a
+specific subcommand for this:
 
 ```dvc
 $ dvc remote rename newremote oldremote
