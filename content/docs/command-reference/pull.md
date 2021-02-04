@@ -8,7 +8,7 @@ and `.dvc` files, and make them visible in the <abbr>workspace</abbr>.
 
 ```usage
 usage: dvc pull [-h] [-q | -v] [-j <number>] [-r <name>] [-a] [-T]
-                [-d] [-f] [-R] [--all-commits] [--run-cache]
+                [-d] [-f] [-R] [--glob] [--all-commits] [--run-cache]
                 [targets [targets ...]]
 
 positional arguments:
@@ -121,6 +121,10 @@ used to see what files `dvc pull` would download.
   the default is `4`. Note that the default value can be set using the `jobs`
   config option with `dvc remote modify`. Using more jobs may speed up the
   operation.
+
+- `--glob` - allows pulling files and directories that match the
+  [pattern](https://docs.python.org/3/library/glob.html) specified in `targets`.
+  Shell style wildcards supported: `*`, `?`, `[seq]`, `[!seq]`, and `**`
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
