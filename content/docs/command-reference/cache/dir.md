@@ -24,10 +24,10 @@ Unlike doing so with `dvc config cache`, `dvc cache dir` transform paths
 **relative to the config file location**. However, if the `value` provided is an
 absolute path, then it's preserved as it is.
 
-If no path `value` is given, it prints the current path of the
-cache directory. The value is read from the system, global, project, and local
-config files (in that order). The `--system`, `--global`, `--project`, and
-`--local` options can be used to read from that configuration only.
+If no path `value` is given, it prints the current path of the cache directory.
+The value is read from the system, global, project, and local config files (in
+that order). The `--system`, `--global`, `--project`, and `--local` options can
+be used to read from that configuration only.
 
 If a `value` is given, it's written to the project-level config file by default
 (`.dvc/config`). Options `--system`, `--global` and `--local` can be used to
