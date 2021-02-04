@@ -25,14 +25,13 @@ values are read from the system, global, project and local configuration files
 (in that order). The `--system`, `--global`, `--project`, and `--local` options
 can be used to read from that configuration only.
 
-When writing (e.g. `value` is specified or `--unset` is used), the new value is
-written to the projects configuration file by default (`.dvc/config`), and
-options `--system`, `--global` and `--local` can be used to tell the command to
-write to that location (you can say `--project` but that is the default). The
-regular project's config file (`.dvc/config`) is meant to be tracked by Git and
-should not contain sensitive and/or user-specific information (passwords, SSH
-keys, etc). Use the `--local` command option (flag) instead, to set (or
-override) secrets:
+When writing (a `value` is given or `--unset` is used), the new value is written
+to the project-level config file by default (`.dvc/config`). Options `--system`,
+`--global` and `--local` can be used to write to that location instead.
+
+⚠️ Note that `.dvc/config` is meant to be tracked by Git and should not contain
+sensitive user info or secrets (passwords, SSH keys, etc). Use `--local` when in
+doubt.
 
 | Flag                          | Priority | Config file location |
 | ----------------------------- | -------- | -------------------- |
