@@ -38,8 +38,8 @@ other DVC commands), a few actions are taken under the hood:
 
 1. Calculate the file hash.
 2. Move the file contents to the cache (by default in `.dvc/cache`) (or to
-   remote storage if `--to-remote` is given), using the file hash to form
-   the cached file path. (See
+   remote storage if `--to-remote` is given), using the file hash to form the
+   cached file path. (See
    [Structure of cache directory](/doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory)
    for more details.)
 3. Attempt to replace the file with a link to the cached data (more details on
