@@ -68,8 +68,9 @@ name.
 
 - `-j <number>`, `--jobs <number>` - parallelism level for DVC to download data
   from the remote. The default value is `4 * cpu_count()`. For SSH remotes, the
-  default is `4`. Note that the default value can be set using the `jobs` config
-  option with `dvc remote modify`. Using more jobs may speed up the operation.
+  default is `4`. Using more jobs may speed up the operation. Note that the
+  default value can be set in the source repo using the `jobs` config option of
+  `dvc remote modify`.
 
 - `--show-url` - instead of downloading the file or directory, just print the
   storage location (URL) of the target data. If `path` is a Git-tracked file,

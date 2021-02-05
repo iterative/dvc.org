@@ -133,7 +133,8 @@ $ dvc run -n download_data \
 
 - `-j <number>`, `--jobs <number>` - parallelism level for DVC to download data
   from the source. The default value is `4 * cpu_count()`. For SSH remotes, the
-  default is `4`. Using more jobs may speed up the operation.
+  default is `4`. Note that the default value can be set using the `jobs` config
+  option with `dvc remote modify`. Using more jobs may speed up the operation.
 
 - `--desc <text>` - user description of the data (optional). This doesn't  
   affect any DVC operations.

@@ -107,8 +107,9 @@ repo at `url`) are not supported.
 
 - `-j <number>`, `--jobs <number>` - parallelism level for DVC to download data
   from the remote. The default value is `4 * cpu_count()`. For SSH remotes, the
-  default is `4`. Note that the default value can be set using the `jobs` config
-  option with `dvc remote modify`. Using more jobs may speed up the operation.
+  default is `4`. Using more jobs may speed up the operation. Note that the
+  default value can be set in the source repo using the `jobs` config option of
+  `dvc remote modify`.
 
 - `--desc <text>` - user description of the data (optional). This doesn't affect
   any DVC operations.
