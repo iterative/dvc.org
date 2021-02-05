@@ -364,16 +364,15 @@ It will try to import the data into the remote storage that you choose, and when
 you or any of your colleagues want to copy the data to their systems, they could
 just simply [pull](/doc/command-reference/remote). Let's do a simple example
 
-We initalize 2 directories, one being the remote storage unit and the other one
-is the workspace.
+Let's initialize a new project, and add a local [remote](/doc/command-reference/remote):
 
 ```dvc
-$ mkdir /tmp/dvc-import-url-straight-to-remote/
-$ mkdir /tmp/remote
-$ cd /tmp/dvc-import-url-straight-to-remote/
+$ mkdir example # workspace
+$ mkdir /tmp/dvc-storage # remote storage
+$ cd example
 $ git init
 $ dvc init
-$ dvc remote add tmp_remote /tmp/remote
+$ dvc remote add local_remote /tmp/dvc-storage
 ```
 
 For transferring a source from a remote location, to the given remote you can
