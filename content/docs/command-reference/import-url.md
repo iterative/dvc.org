@@ -365,7 +365,8 @@ It will try to import the data into the remote storage that you choose, and when
 you or any of your colleagues want to copy the data to their systems, they could
 just simply [pull](/doc/command-reference/remote). Let's do a simple example
 
-Let's initialize a new project, and add a local [remote](/doc/command-reference/remote):
+Let's initialize a new project, and add a local
+[remote](/doc/command-reference/remote):
 
 ```dvc
 $ mkdir example # workspace
