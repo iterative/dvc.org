@@ -352,19 +352,13 @@ Running stage 'prepare' with command:
 	python src/prepare.py data/data.xml
 ```
 
-## Example: Import straight to remote
+## Example: Transfer to remote storage
 
-When you have a massive dataset in a distant location, and working on a computer
-which can't actually store it locally (due to not having enough disk space) but
-you still want to take it under control of DVC just like in the scenario of
-importing it and then pushing it to the remote, then you can use `--to-remote`
-flag.
+When you have a massive dataset in a distant location and want to import it to
+your remote storage directly, you can use `--to-remote` option.
 
-It will try to import the data into the remote storage that you choose, and when
-you or any of your colleagues want to copy the data to their systems, they could
-just simply [pull](/doc/command-reference/remote). Let's do a simple example
-
-Let's initialize a new project, and add a local [remote](/doc/command-reference/remote):
+Let's initialize a new project, and add a local
+[remote](/doc/command-reference/remote):
 
 ```dvc
 $ mkdir example # workspace
@@ -375,11 +369,16 @@ $ dvc init
 $ dvc remote add local_remote /tmp/dvc-storage
 ```
 
-For transferring a source from a remote location, to the given remote you can
-combine `import-url` with `--to-remote` option which basically does the whole
-importing and [push](/doc/command-reference/push)ing operation under the hood
-but without actually downloading everything in once, but rather transferring
-gradually.
+Now let's create an import .dvc file without downloading the target data, but
+transferring directly to remote storage instead:
+
+```
+$ dvc import-url https://data.dvc.org/get-started/data.xml data.xml \
+                 --to-remote -r local_remote
+To track the changes with git, run:
+
+        git add data.xml.dvc
+```
 
 When you run the `import-url` with `--to-remote`, you pass as usual the remote
 location and the output filename, afterward if you haven't set a default
@@ -388,16 +387,8 @@ remote with `-r`/`--remote` flag and it will start the transfer and leave a DVC
 file as an only side effect on your workspace (everything else happens in the
 remote storage unit)
 
-```
-$ dvc import-url https://data.dvc.org/get-started/data.xml data.xml --to-remote -r tmp_remote
-To track the changes with git, run:
-
-        git add data.xml.dvc
-```
-
-Whenever anyone wants to actually get this file, like when they have a system
-which can handle it, it is just a simple [pull](/doc/command-reference/pull)
-operation.
+Whenever anyone wants to actually download the imported data (for example from a
+system that can handle it), they can use `dvc pull` as usual:
 
 ```
  $ dvc pull data.xml.dvc -r tmp_remote
