@@ -6,7 +6,7 @@ Get or set <abbr>project</abbr>-level (or global) DVC configuration options.
 
 ```usage
 usage: dvc config [-h] [--global | --system | --local] [-q | -v] [-u]
-                  [-l] [name] [value]
+                  [-l] [--show-origin] [name] [value]
 
 positional arguments:
   name     Option name in format: section.option or remote.name.option
@@ -53,6 +53,9 @@ multiple projects and users, respectively:
 > \* For Linux, the global `dvc/config` may be found in `$XDG_CONFIG_HOME`, and
 > the system-wide one in `$XDG_CONFIG_DIRS[0]`, if those env vars are defined.
 
+> Note that the `--show-origin` flag can show you where a given config option
+> `value` is currently stored.
+
 ## Command options (flags)
 
 - `-u`, `--unset` - remove a specified config option from a config file.
@@ -71,6 +74,9 @@ multiple projects and users, respectively:
   `sudo dvc config --system ...` (Linux).
 
 - `-l`, `--list` - lists all defined config values.
+
+- `--show-origin` - when listing or getting config options, also show the
+  location of the config file where each option `value` is found.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
