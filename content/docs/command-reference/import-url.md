@@ -140,7 +140,7 @@ $ dvc run -n download_data \
   want to "DVCfy" this state of the project (see also `dvc commit`).
 
 - `--to-remote` - Import an external target, but don't move it into the
-  workspace, nor cache it. [Transfer](#example-import-straight-to-the-remote) it
+  workspace, nor cache it. [Transfer](#example-transfer-to-remote-storage) it
   directly to remote storage instead. Use `dvc pull` to get the data locally.
 
 - `-r <name>`, `--remote <name>` - name of the
