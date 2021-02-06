@@ -70,8 +70,9 @@ specific one is given with `--remote`.
   [remote storage](/doc/command-reference/remote) to fetch from (see
   `dvc remote list`).
 
-- `--run-cache` - downloads all available history of stage runs from the remote
-  repository.
+- `--run-cache` - downloads all available history of
+  [stage runs](/doc/user-guide/project-structure/internal-files#run-cache) from
+  the remote repository. See the same option in `dvc push`.
 
 - `-d`, `--with-deps` - determines files to download by tracking dependencies to
   the `targets`. If none are provided, this option is ignored. By traversing all

@@ -153,8 +153,11 @@ up-to-date and only execute the final stage.
   present in the DVC project. Specifying `targets` has no effects with this
   option, as all possible targets are already included.
 
-- `--no-run-cache` - execute stage commands even if they have already been run
-  with the same dependencies/outputs/etc. before.
+- `--no-run-cache` - execute stage command(s) even if they have already been run
+  with the same dependencies and outputs (see the
+  [details](/doc/user-guide/project-structure/internal-files#run-cache)). Useful
+  for example if the stage command/s is/are non-deterministic
+  ([not recommended](/doc/command-reference/run#avoiding-unexpected-behavior)).
 
 - `--force-downstream` - in cases like `... -> A (changed) -> B -> C` it will
   reproduce `A` first and then `B`, even if `B` was previously executed with the
@@ -178,10 +181,8 @@ up-to-date and only execute the final stage.
 
 - `--pull` - [pulls](/doc/command-reference/pull) dependencies and outputs
   involved in the stages being reproduced, if they are found in the
-  [default](/doc/command-reference/remote/default) remote storage. Note that it
-  checks the local run-cache too (available history of stage runs).
-
-  > Has no effect if combined with `--no-run-cache`.
+  [default remote storage](/doc/command-reference/remote/default). Note that it
+  tries the local run-cache first (unless `--no-run-cache` is also used).
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
