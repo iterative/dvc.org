@@ -374,7 +374,7 @@ transferring it directly to remote storage instead:
 
 ```
 $ dvc import-url https://data.dvc.org/get-started/data.xml data.xml \
-                 --to-remote -r local_remote
+                 --to-remote -r myremote
 ...
 ```
 
