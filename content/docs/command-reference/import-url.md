@@ -369,8 +369,8 @@ $ dvc init
 $ dvc remote add myremote /tmp/dvc-storage
 ```
 
-Now let's create an import .dvc file without downloading the target data, but
-transferring directly to remote storage instead:
+Now let's create an import `.dvc` file without downloading the target data,
+transferring it directly to remote storage instead:
 
 ```
 $ dvc import-url https://data.dvc.org/get-started/data.xml data.xml \
