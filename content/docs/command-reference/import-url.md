@@ -362,11 +362,11 @@ and setup a remote:
 
 ```dvc
 $ mkdir example # workspace
-$ mkdir /tmp/dvc-storage # remote storage
+$ mkdir /tmp/dvc-storage
 $ cd example
 $ git init
 $ dvc init
-$ dvc remote add local_remote /tmp/dvc-storage
+$ dvc remote add myremote /tmp/dvc-storage
 ```
 
 Now let's create an import .dvc file without downloading the target data, but
