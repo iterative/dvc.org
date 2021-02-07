@@ -375,9 +375,7 @@ transferring it directly to remote storage instead:
 ```
 $ dvc import-url https://data.dvc.org/get-started/data.xml data.xml \
                  --to-remote -r local_remote
-To track the changes with git, run:
-
-        git add data.xml.dvc
+...
 ```
 
 When you run the `import-url` with `--to-remote`, you pass as usual the remote
