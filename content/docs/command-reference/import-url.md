@@ -354,10 +354,11 @@ Running stage 'prepare' with command:
 
 ## Example: Transfer to remote storage
 
-When you have a large dataset in an external location and want to import it to
-you project without using your local disk, you can use the `--to-remote` option
-to transfer it directly to remote storage. Let's initialize a new project, and
-add a local [remote](/doc/command-reference/remote):
+When you have a large dataset in an external location, you may want to import it
+to you project without downloading it to the local file system. The
+`--to-remote` option lets you transfer it directly to
+[remote storage](/doc/command-reference/remote). Let's initialize a DVC project,
+and setup a remote:
 
 ```dvc
 $ mkdir example # workspace
