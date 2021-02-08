@@ -42,8 +42,8 @@ may require installing a different tool for each type.
 When you don't want to store the target data in your local system, you can still
 create an import `.dvc` file while transferring a file or directory directly to
 remote storage, by using the `--to-remote` option. See the
-[Import straight to remote](#example-transfer-to-remote-storage) example for more
-details.
+[Import straight to remote](#example-transfer-to-remote-storage) example for
+more details.
 
 The `url` argument specifies the external location of the data to be imported.
 The imported data is <abbr>cached</abbr>, and linked (or copied) to the current
@@ -140,11 +140,13 @@ $ dvc run -n download_data \
   want to "DVCfy" this state of the project (see also `dvc commit`).
 
 - `--to-remote` - Import an external target, but don't move it into the
-  workspace, nor cache it. [Transfer](#example-transfer-to-remote-storage) it
-  directly to remote storage instead. Use `dvc pull` to get the data locally.
+  workspace, nor cache it. [Transfer](#example-import-straight-to-the-remote) it
+  directly to remote storage (the default one, unless `-r` is specified)
+  instead. Use `dvc pull` to get the data locally.
 
 - `-r <name>`, `--remote <name>` - name of the
-  [remote storage](/doc/command-reference/remote)
+  [remote storage](/doc/command-reference/remote) (can only be used with
+  `--to-remote`).
 
 - `--desc <text>` - user description of the data (optional). This doesn't  
   affect any DVC operations.
@@ -378,12 +380,13 @@ $ dvc import-url https://data.dvc.org/get-started/data.xml data.xml \
 ...
 ```
 
-When you run the `import-url` with `--to-remote`, you pass as usual the remote
-location and the output filename, afterward if you haven't set a default
-[remote](/doc/command-reference/remote) yet, you can simply pass the name of the
-remote with `-r`/`--remote` flag and it will start the transfer and leave a DVC
-file as an only side effect on your workspace (everything else happens in the
-remote storage unit)
+After importing `data.xml` to our remote storage unit, the only change in our
+local workspace is the newly created dvc file for `data.xml`.
+
+```
+$ ls
+data.xml.rc
+```
 
 Whenever anyone wants to actually download the imported data (for example from a
 system that can handle it), they can use `dvc pull` as usual:
