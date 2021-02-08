@@ -10,8 +10,8 @@ etc.), and download it to the local project, or make a copy in
 ## Synopsis
 
 ```usage
-usage: dvc import-url [-h] [-q | -v] [--file <filename>] [--no-exec]
-                      [--to-remote] [-r <name>] [-j <number>]
+usage: dvc import-url [-h] [-q | -v] [-j <number>] [--file <filename>]
+                      [--no-exec] [--to-remote] [-r <name>]
                       [--desc <text>]
                       url [out]
 
@@ -147,6 +147,10 @@ $ dvc run -n download_data \
 - `-r <name>`, `--remote <name>` - name of the
   [remote storage](/doc/command-reference/remote) (can only be used with
   `--to-remote`).
+
+- `-j <number>`, `--jobs <number>` - parallelism level for DVC to download data
+  from the source. The default value is `4 * cpu_count()`. For SSH remotes, the
+  default is `4`. Using more jobs may speed up the operation.
 
 - `--desc <text>` - user description of the data (optional). This doesn't  
   affect any DVC operations.
