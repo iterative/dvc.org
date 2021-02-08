@@ -13,6 +13,8 @@ match:
   ]
 ---
 
+# DVC Project
+
 A DVC project (or DVC repository) is a directory initialized by `dvc init`. It
 contains [`.dvc` directory](/doc/user-guide/project-structure/internal-files),
 `dvc.yaml` file that describes <abbr>pipeline</abbr> and `.dvc` files for each
