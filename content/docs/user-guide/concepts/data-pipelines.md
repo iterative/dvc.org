@@ -25,4 +25,3 @@ In DVC, pipeline stages and commands, their data I/O, interdependencies, and
 results (intermediate or final) are specified in `dvc.yaml`, which can be
 written manually or built using `dvc run`. This allows DVC to restore one or
 more pipelines later (see `dvc repro`).
-

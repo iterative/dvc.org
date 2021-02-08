@@ -16,15 +16,16 @@ description: >-
 
 <!-- Diagram of cache/remote/workspace... -->
 
-The DVC cache is where the *content* of tracked data files and directories are
+The DVC cache is where the _content_ of tracked data files and directories are
 found. It's a key-value store similar to git objects. DVC cache contains whole
 binary files and tracks them using their hash values. The data files and
 directories visible in the <abbr>workspace</abbr> are links to (or copies of)
-the content in cache. By default DVC cache for a <abbr>workspace</abbr> is in `.dvc/cache` directory. 
+the content in cache. By default DVC cache for a <abbr>workspace</abbr> is in
+`.dvc/cache` directory.
 
 There may be multiple caches for a <abbr>project</abbr>. These can reside in a
 system wide directory, a <abbr>remote</abbr> URL (in S3, Azure, file server
-etc.) or in a project-local directory. 
+etc.) or in a project-local directory.
 
 ## Structure of the cache directory
 
@@ -86,4 +87,3 @@ $ cat .dvc/cache/19/6a322c107c2572335158503c64bfba.dir
 ```
 
 That's how DVC knows that the other two cached files belong in the directory.
-

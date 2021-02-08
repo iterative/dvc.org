@@ -35,5 +35,3 @@ and edit them on your own.
 
 Both the internal directory and these metafiles should be versioned with Git (in
 Git-enabled <abbr>repositories</abbr>).
-
-
