@@ -1,6 +1,8 @@
 ---
 name: 'Import Stage'
 match: ['import stage', 'import stages', 'imports']
+tooltip: >-
+  TBW
 ---
 
 # Import Stage

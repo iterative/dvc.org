@@ -11,6 +11,8 @@ match:
     repository,
     repositories,
   ]
+tooltip: >-
+  A DVC project is a directory initialized by `dvc init`.
 ---
 
 # DVC Project

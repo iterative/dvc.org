@@ -1,6 +1,7 @@
 ---
 name: 'Stage'
 match: ['stage', 'stages']
+tooltip: TBW
 ---
 
 # Stage

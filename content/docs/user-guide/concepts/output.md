@@ -1,6 +1,7 @@
 ---
 name: Output
 match: [output, outputs]
+tooltip: TBW
 ---
 
 # Output
