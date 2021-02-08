@@ -1,9 +1,8 @@
 const path = require('path')
 
 async function createMarkdownDocsNode(api, { parentNode, createChildNode }) {
-  // Suppress page creation for Basic Concepts and the Glossary
-  // They're only used in tooltips now, but we intend to expand on them later.
-  if (parentNode.relativeDirectory === 'docs/user-guide/basic-concepts') return
+  // No need to suppress concepts directory as it contains content now
+  // if (parentNode.relativeDirectory === 'docs/user-guide/concepts') return
 
   const splitDir = parentNode.relativeDirectory.split('/')
   if (splitDir[0] !== 'docs') return
