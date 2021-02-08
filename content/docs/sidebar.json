@@ -92,6 +92,27 @@
         "slug": "what-is-dvc"
       },
       {
+        "label": "Basic Concepts",
+        "slug": "concepts",
+        "source": false,
+        "children": [
+          "workspace",
+          "dvc-project",
+          "dependency",
+          "external-dependency",
+          "data-pipelines",
+          "stage",
+          "dvc-cache",
+          "dvc-metafiles",
+          "remote-storage",
+          "import-stage",
+          "frozen-dependency",
+          "metrics-and-plots",
+          "parameters",
+          "run-cache"
+        ]
+      },
+      {
         "slug": "project-structure",
         "source": "user-guide/project-structure/index.md",
         "children": [
