@@ -384,12 +384,12 @@ $ dvc import-url https://data.dvc.org/get-started/data.xml data.xml \
 ...
 ```
 
-After importing `data.xml` to our remote storage unit, the only change in our
-local workspace is the newly created dvc file for `data.xml`.
+The only change in our local <abbr>workspace</abbr> is a newly created import
+`.dvc` file:
 
-```
+```dvc
 $ ls
-data.xml.rc
+data.xml.dvc
 ```
 
 Whenever anyone wants to actually download the imported data (for example from a
