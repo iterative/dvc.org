@@ -12,27 +12,19 @@ Mention codification? + link to /doc/use-cases/versioning-data-and-model-files
 
 # DVC Metafiles
 
-<!-- _from dvc-files_ -->
-
 Once initialized in a <abbr>project</abbr>, DVC populates its installation
-directory (`.dvc/`) with the
-[internal directories and files](#internal-directories-and-files) needed for DVC
-operation.
+directory (`.dvc/`) with a set of files needed for DVC operation. These are used
+to track the changes in data and represent <abbr>pipelines</abbr>.
 
-Additionally, there are a few metafiles that support DVC's features:
+Files ending with the `.dvc` extension are placeholders to track data files and
+directories. There is a `.dvc` file for each data file or directory being
+tracked.
 
-- Files ending with the `.dvc` extension are placeholders to track data files
-  and directories. A <abbr>DVC project</abbr> usually has one `.dvc` file per
-  large data file or directory being tracked.
-- `dvc.yaml` files (or _pipelines files_) specify stages that form the
-  pipeline(s) of a project, and how they connect (_dependency graph_ or DAG).
+A `dvc.yaml` file is used to represent <abbr>pipelines</abbr> in the
+<abbr>project</abbr>. `.dvc` and `dvc.yaml` files use human-friendly YAML 1.2
+schema.
 
-  These normally have a matching `dvc.lock` file to record the pipeline state
-  and track its <abbr>outputs</abbr>.
+A `dvc.lock` file for each <abbr>DVC project</abbr> records the pipeline state
+and track its outputs.
 
-Both `.dvc` files and `dvc.yaml` use human-friendly YAML 1.2 schemas, described
-below. We encourage you to get familiar with them so you may create, generate,
-and edit them on your own.
-
-Both the internal directory and these metafiles should be versioned with Git (in
-Git-enabled <abbr>repositories</abbr>).
+These files should be versioned by Git in Git-enabled repositories.
