@@ -85,3 +85,17 @@ have the right `dvc.yaml` and `dvc.lock` file pair, as well as the corresponding
 
 See [Get Started: Experiments](/doc/start/experiments) for a hands-on intro
 guide on regular experiments.
+
+## Organizing experiments
+
+Automatic [stage run logs](#automatic-log-of-stage-runs-run-cache) are dumped
+without a structure in the <abbr>run-cache</abbr>.
+[Ephemeral experiments](#ephemeral-experiments) always have a linear branch
+structure (a queue) based on current `HEAD` commit. But when it comes to
+full-blown [persistent experiments](#persistent-experiments), it's up to you to
+decide how to organize them in your project. These are the main alternatives:
+
+- Branches
+- Tags
+- Directories
+- Hybrid
