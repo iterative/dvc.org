@@ -21,7 +21,7 @@ operation.
   in the <abbr>workspace</abbr> will only contain links to the data files in the
   cache (refer to
   [Large Dataset Optimization](/doc/user-guide/large-dataset-optimization). See
-  `dvc config cache` for related configuration options, including changing the
+  `dvc config cache` for related configuration options, including changing
   its location.
 
   > Note that DVC includes the cache directory in `.gitignore` during
