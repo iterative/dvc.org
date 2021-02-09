@@ -164,7 +164,7 @@ not.
   > Note that external outputs typically require an external cache setup. See
   > link above for more details.
 
-- `--to-remote` - Import an external target, but don't move it into the
+- `--to-remote` - import an external target, but don't move it into the
   workspace, nor cache it. [Transfer](#example-import-straight-to-the-remote) it
   directly to remote storage (the default one, unless `-r` is specified)
   instead. Use `dvc pull` to get the data locally.
