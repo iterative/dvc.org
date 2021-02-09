@@ -40,13 +40,14 @@ disabled with the `--no-run-cache` command option).
 
 `dvc experiments` commands let you work on DVC
 [pipelines](/doc/command-reference/dag) in a virtual branch, so that each
-experiment is captured automatically in a way that you can visualize later. The
-<abbr>workspace</abbr> may reflect each experiment's results for you to check,
-but there's no need to save them manually. The base workflow goes like this:
+experiment is captured automatically in a way that you can review and roll back
+later. The <abbr>workspace</abbr> may reflect each experiment's results for you
+to check, but there's no need to save them manually. The base workflow goes like
+this:
 
-- Establish or change the <abbr>dependencies</abbr> (e.g. input data or source
-  code), <abbr>parameters</abbr>, or commands (`cmd` field of `dvc.yaml`) of
-  your stages.
+- Modify <abbr>dependencies</abbr> (e.g. input data or source code),
+  <abbr>parameters</abbr>, or commands (`cmd` field of `dvc.yaml`) of a
+  committed stage.
 - Use `dvc exp run` (instead of `repro`) to execute the pipeline, which creates
   a transient commit that records this experiment.
 - Visualize the experiments statistics with `dvc exp show`. Repeat.
@@ -60,9 +61,11 @@ but there's no need to save them manually. The base workflow goes like this:
 
 DVC uses actual commits under custom
 [Git references](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
-(found in `.git/refs/exps`) to keep track of `dvc exp run` branches. The first
-experiment has the Git repo's `HEAD` as parent. Each reference has a unique
-signature similar to the
+(found in `.git/refs/exps`) to keep track of `dvc exp run` branches. These are
+not pushed to the Git remote by default (see `dvc exp push`).
+
+The first transient commits has the Git repo's `HEAD` as parent, and the rest
+branch off there. Each reference has a unique signature similar to the
 [entries in the run-cache](/doc/user-guide/project-structure/internal-files#run-cache).
 
 </details>
