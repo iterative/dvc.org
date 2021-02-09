@@ -1,15 +1,16 @@
 ---
 name: Output
 match: [output, outputs]
-tooltip: >- 
-    A file, directory or metric produced as a result of a stage. 
+tooltip: >-
+  A file, directory or metric produced as a result of a stage.
 ---
 
 # Output
 
-A file, directory or <abbr>metric</abbr> produced as a _result_ of a <abbr>stage</abbr>. (cf.
-<abbr>dependency</abbr>). A stage may have multiple outputs which in turn can be
-a dependency to other stages in a <abbr>pipeline</abbr>.
+A file, directory or <abbr>metric</abbr> produced as a _result_ of a
+<abbr>stage</abbr>. (cf. <abbr>dependency</abbr>). A stage may have multiple
+outputs which in turn can be a dependency to other stages in a
+<abbr>pipeline</abbr>.
 
 Outputs are recorded in `outs` section of `dvc.yaml` or `.dvc` file.
 

@@ -2,7 +2,8 @@
 name: 'Import Stage'
 match: ['import stage', 'import stages', 'imports']
 tooltip: >-
-   Import stage is a <abbr>stage</abbr> where the <abbr>external dependencies</abbr> are imported to the workspace from <abbr>remotes</abbr>.
+  Import stage is a <abbr>stage</abbr> where the <abbr>external
+  dependencies</abbr> are imported to the workspace from <abbr>remotes</abbr>.
 ---
 
 # Import Stage
