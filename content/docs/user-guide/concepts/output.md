@@ -1,12 +1,13 @@
 ---
 name: Output
 match: [output, outputs]
-tooltip: TBW
+tooltip: >- 
+    A file, directory or metric produced as a result of a stage. 
 ---
 
 # Output
 
-A file or directory produced as a _result_ of a <abbr>stage</abbr>. (cf.
+A file, directory or <abbr>metric</abbr> produced as a _result_ of a <abbr>stage</abbr>. (cf.
 <abbr>dependency</abbr>). A stage may have multiple outputs which in turn can be
 a dependency to other stages in a <abbr>pipeline</abbr>.
 

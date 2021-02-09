@@ -22,10 +22,10 @@ will contain your DVC project.
 
 <!-- _from dvc-project tooltip_ -->
 
-## What's the difference between workspace and project?
+<!-- ## What's the difference between workspace and project? -->
 
 <!-- _Relationship between workspace, cache, remote_ -->
 
-## Things you can do in the Workspace
+<!-- ## Things you can do in the Workspace -->
 
-`dvc init` to create a DVC project...
+<!-- `dvc init` to create a DVC project... -->

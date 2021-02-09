@@ -2,7 +2,9 @@
 name: 'DVC Metafiles'
 match: ['DVC files', 'files', 'directories']
 tooltip: >-
-  'DVC [metafiles](/doc/user-guide/concepts/dvc-metafiles) tooltip...'
+  Files used by DVC to track the changes in <abbr>workspace</abbr>. They can
+  be placeholders for data files/directories or represent
+  <abbr>pipelines</abbr>.
 ---
 
 <!--

@@ -2,8 +2,8 @@
 name: 'External Dependency'
 match: ['external dependency', 'external dependencies']
 tooltip: >-
-  A <abbr>dependency</abbr> for a <abbr>stage</abbr> which points to an external
-  resource outside of the workspace.
+  External dependency is a <abbr>dependency</abbr> for a <abbr>stage</abbr>
+  which points to an external resource outside of the workspace.
 ---
 
 # External Dependency
