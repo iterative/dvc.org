@@ -368,10 +368,10 @@ initialize a DVC project, and setup a remote:
 
 ```dvc
 $ mkdir example # workspace
-$ mkdir /tmp/dvc-storage
 $ cd example
 $ git init
 $ dvc init
+$ mkdir /tmp/dvc-storage
 $ dvc remote add myremote /tmp/dvc-storage
 ```
 
