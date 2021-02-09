@@ -81,10 +81,8 @@ copy of the target data directly to a remote of your choice (or the default
 one). A `.dvc` file will be created normally, but the data won't be found in
 your local project until you `dvc pull` it.
 
-This option is useful when the local system can't handle the target data, but
-you still want to track and store it in remote storage, so that whenever you
-switch to a different system that can handle it, you can simply pull the data
-and start working on it.
+(ℹ️) See the [Transfer to remote storage](#example-transfer-to-remote-storage)
+below.
 
 ### Adding entire directories
 
@@ -344,3 +342,44 @@ $ tree .dvc/cache
 
 Only the hash values of the `dir/` directory (with `.dir` file extension) and
 `file2` have been cached.
+
+# Example: Transfer to remote storage
+
+When you want to include a remote location (like some file in a s3 bucket, or a
+Google Drive directory) to your project, but don't want DVC to control the given
+remote location rather just sync the data into your remote storage,
+`--to-remote` option can be used.
+
+```dvc
+$ mkdir example # workspace
+$ cd example
+$ git init
+$ dvc init
+$ mkdir /tmp/dvc-storage
+$ dvc remote add myremote /tmp/dvc-storage
+```
+
+Now let's add the `data.xml` to our remote storage, and create a `.dvc` file.
+
+```dvc
+$ dvc add https://data.dvc.org/get-started/data.xml --to-remote \
+          -r myremote
+```
+
+The only change in our local <abbr>workspace</abbr> is a newly created `.dvc`
+file:
+
+```dvc
+$ ls
+data.xml.dvc
+```
+
+Whenever anyone wants to actually have the added data (for example from a system
+with much larger space), they can use `dvc pull` as usual:
+
+```dvc
+ $ dvc pull data.xml.dvc -r tmp_remote
+
+A       data.xml
+1 file added and 1 file fetched
+```
