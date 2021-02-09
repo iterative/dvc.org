@@ -29,49 +29,59 @@ stage command(s) are executed normally. Every subsequent time a
 [stage](/doc/command-reference/run) runs under the same conditions, the previous
 results can be restored instantly, without wasting time or computing resources.
 
-✅ This mechanism can dramatically improve performance, and it's a built-in
-feature, enabled out-of-the-box (it can be disabled via the `--no-run-cache`
-option).
+✅ This built-in feature is called <abbr>run-cache</abbr> and it can
+dramatically improve performance. It's enabled out-of-the-box (but can be
+disabled with the `--no-run-cache` command option).
 
 ## Ephemeral experiments
 
 ⚠️ This feature is only available in DVC 2.0, and for Git-enabled
 <abbr>repositories</abbr> ⚠️
 
-`dvc experiments` commands let you run DVC
-[pipelines](/doc/command-reference/dag) in a "virtual branch", so that each
-experiment is captured automatically as a transient commit. Your parent Git repo
-is not cluttered with all these commits. The base workflow goes like this:
+`dvc experiments` commands let you work on DVC
+[pipelines](/doc/command-reference/dag) in a virtual branch, so that each
+experiment is captured automatically in a way that you can visualize later. The
+<abbr>workspace</abbr> may reflect each experiment's results for you to check,
+but there's no need to save them manually. The base workflow goes like this:
 
-- Establish or change the <abbr>dependencies</abbr>, <abbr>parameters</abbr>,
-  commands (`cmd` field of `dvc.yaml`), or the source code of your stages.
+- Establish or change the <abbr>dependencies</abbr> (e.g. input data or source
+  code), <abbr>parameters</abbr>, or commands (`cmd` field of `dvc.yaml`) of
+  your stages.
 - Use `dvc exp run` (instead of `repro`) to execute the pipeline, which creates
-  a transient commit that represents this experiment.
+  a transient commit that records this experiment.
 - Visualize the experiments statistics with `dvc exp show`. Repeat.
-- Use [metrics](/doc/command-reference/metrics) in your pipeline to help you
-  identify the best experiment(s), and promote them to persistent experiments
-  (regular commits) with `dvc exp apply`.
-
-> See `dvc exp` for more options.
+- Use [metrics](/doc/command-reference/metrics) in your pipeline to identify the
+  best experiment(s), and promote them to persistent experiments (regular
+  commits) with `dvc exp apply`.
 
 <details>
 
 ### What are _virtual branches_ and _transient commits_?
 
 DVC uses actual commits under custom
-
 [Git references](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
 (found in `.git/refs/exps`) to keep track of `dvc exp run` branches. The first
-run has the current Git repo's `HEAD` as parent. Each reference has a unique
-signature similar to the entries in the <abbr>run-cache</abbr>.
+experiment has the Git repo's `HEAD` as parent. Each reference has a unique
+signature similar to the
+[entries in the run-cache](/doc/user-guide/project-structure/internal-files#run-cache).
 
 </details>
 
+Note that `dvc exp run` also logs and reuses
+[stage runs](#automatic-log-of-stage-runs-run-cache) in the
+<abbr>run-cache</abbr> by default.
+
+> See `dvc exp` for more details and other commands.
+
 ## Persistent experiments
 
-> See [Get Started: Experiments](/doc/start/experiments) for a primer.
-
 When your experiments are good enough to save or share, you may want to store
-them persistently as commits in your (Git-enabled) <abbr>repository</abbr>. The
-results may have been produced with `dvc repro` directly, or as a `dvc exp run`
-that gets promoted with `dvc exp apply`.
+them persistently as commits in your (Git-enabled) <abbr>repository</abbr>.
+
+The results may have been produced with `dvc repro` directly, or after an
+[ephemeral workflow](#ephemeral-experiments). In any case the workspace will
+have the right `dvc.yaml` and `dvc.lock` file pair, as well as the corresponding
+<abbr>outputs</abbr> (via `dvc checkout`).
+
+See [Get Started: Experiments](/doc/start/experiments) for a hands-on intro
+guide on regular experiments.
