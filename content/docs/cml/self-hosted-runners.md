@@ -1,4 +1,4 @@
-# Self hosted runners
+# Self-hosted Runners
 
 GitHub Actions are run on GitHub-hosted runners by default. However, there are
 many great reasons to use your own runners: to take advantage of GPUs; to
