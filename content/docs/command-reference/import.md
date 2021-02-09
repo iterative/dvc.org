@@ -105,11 +105,11 @@ repo at `url`) are not supported.
   finish the operation(s)); or if the target data already exist locally and you
   want to "DVCfy" this state of the project (see also `dvc commit`).
 
-- `-j <number>`, `--jobs <number>` - parallelism level for DVC to download data
-  from the remote. The default value is `4 * cpu_count()`. For SSH remotes, the
-  default is `4`. Using more jobs may speed up the operation. Note that the
-  default value can be set in the source repo using the `jobs` config option of
-  `dvc remote modify`.
+- `-j <number>`, `--jobs <number>` - number of threads to run simultaneously to
+  handle the downloading of files from the remote. The default value is
+  `4 * cpu_count()`. For SSH remotes, the default is just `4`. Using more jobs
+  may improve the total download speed if a combination of small and large files
+  are being fetched.
 
 - `--desc <text>` - user description of the data (optional). This doesn't affect
   any DVC operations.

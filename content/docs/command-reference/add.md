@@ -7,7 +7,8 @@ file.
 
 ```usage
 usage: dvc add [-h] [-q | -v] [-R] [--no-commit] [--external]
-               [--glob] [--file <filename>] [--desc <text>]
+               [--glob] [--file <filename>] [-o <path>] [--to-remote]
+               [-r <name>] [-j <number>] [--desc <text>]
                targets [targets ...]
 
 positional arguments:
@@ -36,12 +37,13 @@ After checking that each `target` hasn't been added before (or tracked with
 other DVC commands), a few actions are taken under the hood:
 
 1. Calculate the file hash.
-2. Move the file contents to the cache (by default in `.dvc/cache`), using the
-   file hash to form the cached file path. (See
+2. Move the file contents to the cache (by default in `.dvc/cache`) (or to
+   remote storage if `--to-remote` is given), using the file hash to form the
+   cached file path. (See
    [Structure of cache directory](/doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory)
    for more details.)
 3. Attempt to replace the file with a link to the cached data (more details on
-   file linking further down).
+   file linking further down). Skipped if `--to-remote` is used.
 4. Create a corresponding `.dvc` file to track the file, using its path and hash
    to identify the cached data. The `.dvc` file lists the DVC-tracked file as an
    <abbr>output</abbr> (`outs` field). Unless the `--file` option is used, the
@@ -69,6 +71,20 @@ to avoid copying any file contents and to optimize `.dvc` file operations for
 large files. DVC also supports other link types for use on file systems without
 `reflink` support, but they have to be specified manually. Refer to the
 `cache.type` config option in `dvc config cache` for more information.
+
+### Transferring data directly to remote storage
+
+When you have a very big dataset that you want to move from some external
+location to [remote storage](/doc/command-reference/remote) while avoiding
+storing it locally, you can use the `--to-remote` option. This will transfer a
+copy of the target data directly to a remote of your choice (or the default
+one). A `.dvc` file will be created normally, but the data won't be found in
+your local project until you `dvc pull` it.
+
+This option is useful when the local system can't handle the target data, but
+you still want to track and store it in remote storage, so that whenever you
+switch to a different system that can handle it, you can simply pull the data
+and start working on it.
 
 ### Adding entire directories
 
@@ -147,6 +163,18 @@ not.
 
   > Note that external outputs typically require an external cache setup. See
   > link above for more details.
+
+- `--to-remote` - import an external target, but don't move it into the
+  workspace, nor cache it. [Transfer](#example-import-straight-to-the-remote) it
+  directly to remote storage (the default one, unless `-r` is specified)
+  instead. Use `dvc pull` to get the data locally.
+
+- `-r <name>`, `--remote <name>` - name of the
+  [remote storage](/doc/command-reference/remote) to transfer external target to
+  (can only be used with `--to-remote`).
+
+- `-o <path>`, `--out <path>` - destination `path` for the transferred data (can
+  only be used with `--to-remote`).
 
 - `--desc <text>` - user description of the data (optional). This doesn't affect
   any DVC operations.
