@@ -42,7 +42,7 @@ may require installing a different tool for each type.
 When you don't want to store the target data in your local system, you can still
 create an import `.dvc` file while transferring a file or directory directly to
 remote storage, by using the `--to-remote` option. See the
-[Import straight to remote](#example-transfer-to-remote-storage) example for
+[Transfer to remote storage](#example-transfer-to-remote-storage) example for
 more details.
 
 The `url` argument specifies the external location of the data to be imported.
