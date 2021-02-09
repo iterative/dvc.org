@@ -43,24 +43,35 @@ option).
 experiment is captured automatically as a transient commit. Your parent Git repo
 is not cluttered with all these commits. The base workflow goes like this:
 
-- Establish or change the dependencies, parameters, or commands/source code of
-  your stages.
+- Establish or change the <abbr>dependencies</abbr>, <abbr>parameters</abbr>,
+  commands (`cmd` field of `dvc.yaml`), or the source code of your stages.
 - Use `dvc exp run` (instead of `repro`) to execute the pipeline, which creates
   a transient commit that represents this experiment.
 - Visualize the experiments statistics with `dvc exp show`. Repeat.
-- Use metrics in your pipeline to help you identify the best experiment(s), and
-  use `dvc exp apply` to promote them as persistent experiments (regular
-  commits) to the project.
+- Use [metrics](/doc/command-reference/metrics) in your pipeline to help you
+  identify the best experiment(s), and promote them to persistent experiments
+  (regular commits) with `dvc exp apply`.
+
+> See `dvc exp` for more options.
 
 <details>
 
-### What are virtual experiment branches?
+### What are _virtual branches_ and _transient commits_?
 
 DVC uses actual commits under custom
+
 [Git references](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
 (found in `.git/refs/exps`) to keep track of `dvc exp run` branches. The first
-run has the current Git repo's `HEAD` as parent.
+run has the current Git repo's `HEAD` as parent. Each reference has a unique
+signature similar to the entries in the <abbr>run-cache</abbr>.
 
 </details>
 
-> See `dvc exp` for more details.
+## Persistent experiments
+
+> See [Get Started: Experiments](/doc/start/experiments) for a primer.
+
+When your experiments are good enough to save or share, you may want to store
+them persistently as commits in your (Git-enabled) <abbr>repository</abbr>. The
+results may have been produced with `dvc repro` directly, or as a `dvc exp run`
+that gets promoted with `dvc exp apply`.
