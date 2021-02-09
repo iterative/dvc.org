@@ -23,9 +23,9 @@ levels at which they may exist:
 
 ## Automatic log of stage runs (run-cache)
 
-Every time you `dvc repro` stages, DVC logs the unique signature of that "run"
-(to `.dvc/cache/runs` by default). If it never happened before, the stage
-command(s) are executed normally. Every subsequent time the
+Every time you `dvc repro` pipelines, DVC logs the unique signature of each
+stage run (to `.dvc/cache/runs` by default). If it never happened before, the
+stage command(s) are executed normally. Every subsequent time a
 [stage](/doc/command-reference/run) runs under the same conditions, the previous
 results can be restored instantly, without wasting time or computing resources.
 
@@ -35,12 +35,32 @@ option).
 
 ## Ephemeral experiments
 
-...
+⚠️ This feature is only available in DVC 2.0, and for Git-enabled
+<abbr>repositories</abbr> ⚠️
 
-## Persistent experiments
+`dvc experiments` commands let you run DVC
+[pipelines](/doc/command-reference/dag) in a "virtual branch", so that each
+experiment is captured automatically as a transient commit. Your parent Git repo
+is not cluttered with all these commits. The base workflow goes like this:
 
-...
+- Establish or change the dependencies, parameters, or commands/source code of
+  your stages.
+- Use `dvc exp run` (instead of `repro`) to execute the pipeline, which creates
+  a transient commit that represents this experiment.
+- Visualize the experiments statistics with `dvc exp show`. Repeat.
+- Use metrics in your pipeline to help you identify the best experiment(s), and
+  use `dvc exp apply` to promote them as persistent experiments (regular
+  commits) to the project.
 
-## Organizing experiments
+<details>
 
-...
+### What are virtual experiment branches?
+
+DVC uses actual commits under custom
+[Git references](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
+(found in `.git/refs/exps`) to keep track of `dvc exp run` branches. The first
+run has the current Git repo's `HEAD` as parent.
+
+</details>
+
+> See `dvc exp` for more details.
