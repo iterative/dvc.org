@@ -1,4 +1,4 @@
-# Using CML
+# Get Started with CML on GitHub
 
 Here, we'll walk through a tutorial to start using CML. For simplicity, we'll
 show the demo in GitHub Actions, but these instructions are valid for all

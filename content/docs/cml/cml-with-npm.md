@@ -1,4 +1,4 @@
-# CML with NPM
+# Install CML with NPM
 
 In the above examples, CML is pre-installed in a custom Docker image, which is
 pulled by a CI runner. You can also install CML as a package:

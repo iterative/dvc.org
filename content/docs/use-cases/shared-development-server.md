@@ -1,13 +1,13 @@
 # Shared Development Server
 
-Some teams may prefer using one single shared machine to run their experiments.
-This allows better resource utilization, such as the ability to use multiple
-GPUs, centralized data storage, etc. With DVC, you can easily setup shared data
-storage on a server accessed by several users or for any other reason, in a way
-that enables almost instantaneous <abbr>workspace</abbr> restoration/switching
-speed for everyone – similar to `git checkout` for your code.
+Some teams may prefer using a single shared machine to run their experiments.
+This allows better resource utilization, such as GPU access, centralized data
+storage, etc. With DVC, you can easily setup shared data store on a server with
+multiple users or processes. This enables near-instantaneous
+<abbr>workspace</abbr> restoration and switching speeds for everyone – a
+**checkout for data**.
 
-![](/img/shared-server.png)
+![](/img/shared-server.png) _Data store shared by DVC projects_
 
 ## Preparation
 

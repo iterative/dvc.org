@@ -413,7 +413,10 @@
     "source": "cml/index.md",
     "icon": "cml",
     "children": [
-      "get-started",
+      {
+        "label": "Get Started (GitHub)",
+        "slug": "start-github"
+      },
       "usage",
       {
         "label": "CML with DVC",
@@ -424,7 +427,7 @@
         "slug": "self-hosted-runners"
       },
       {
-        "label": "Install CML as a Package",
+        "label": "Install as a Package",
         "slug": "cml-with-npm"
       }
     ]
