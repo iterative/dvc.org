@@ -106,7 +106,6 @@
           "dvc-metafiles",
           "remote-storage",
           "import-stage",
-          "frozen-dependency",
           "metrics-and-plots",
           "parameters",
           "run-cache"
