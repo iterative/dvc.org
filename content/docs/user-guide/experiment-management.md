@@ -23,38 +23,36 @@ experimentation approaches:
 
 ## Ephemeral experiments
 
-⚠️ This feature is only available in DVC 2.0, and for Git-enabled
-<abbr>repositories</abbr> ⚠️
+⚠️ This feature is only available in DVC 2.0 ⚠️
 
-`dvc experiments` commands let you work on DVC
-[pipelines](/doc/command-reference/dag) in a virtual branch, so that each
-experiment is captured automatically in a way that you can review and roll back
-later. The <abbr>workspace</abbr> may reflect each experiment's results for you
-to check, but there's no need to save them manually. The base workflow goes like
+`dvc exp` commands let you automatically track variations to established DVC
+[pipelines](/doc/command-reference/dag), so you can review, compare, and restore
+them at any time, or roll back to the baseline. The base workflow goes like
 this:
 
 - Modify <abbr>dependencies</abbr> (e.g. input data or source code),
   <abbr>parameters</abbr>, or commands (`cmd` field of `dvc.yaml`) of a
   committed stage.
-- Use `dvc exp run` (instead of `repro`) to execute the pipeline. This creates a
-  transient commit that records this experiment.
-- Visualize the experiments statistics with `dvc exp show`. Repeat.
+- Use `dvc exp run` (instead of `repro`) to execute the pipeline. This puts the
+  experiment's results in your <abbr>workspace</abbr>, and records it under the
+  hood.
+- Visualize experiment configurations and results with `dvc exp show`. Repeat.
 - Use [metrics](/doc/command-reference/metrics) in your pipeline to identify the
   best experiment(s), and promote them to persistent experiments (regular
   commits) with `dvc exp apply`.
 
 <details>
 
-### What are _virtual branches_ and _transient commits_?
+### How does DVC capture these experiments?
 
 DVC uses actual commits under custom
 [Git references](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
-(found in `.git/refs/exps`) to keep track of `dvc exp run` branches. These are
-not pushed to the Git remote by default (see `dvc exp push`).
+(found in `.git/refs/exps`) to keep track of ephemeral experiments. Each commit
+has the Git repo's `HEAD` as parent. These are not pushed to the Git remote by
+default (see `dvc exp push`).
 
-The first transient commits has the Git repo's `HEAD` as parent, and the rest
-branch off there. Each reference has a unique signature similar to the
-[entries in the run-cache](/doc/user-guide/project-structure/internal-files#run-cache).
+> References have a unique signature similar to the
+> [entries in the run-cache](/doc/user-guide/project-structure/internal-files#run-cache).
 
 </details>
 
@@ -62,8 +60,7 @@ branch off there. Each reference has a unique signature similar to the
 
 ## Checkpoints in Python code
 
-⚠️ This feature is only available in DVC 2.0, and for Git-enabled
-<abbr>repositories</abbr> ⚠️
+⚠️ This feature is only available in DVC 2.0 ⚠️
 
 ...
 
@@ -71,17 +68,18 @@ branch off there. Each reference has a unique signature similar to the
 
 ### How are checkpoints captured by DVC?
 
-When DVC runs checkpoint-enabled stages, a new transient commit is generated in
-the experiment's virtual branch each time the code calls
-`dvc.api.make_checkpoint()` or writes a `.dvc/tmp/DVC_CHECKPOINT` signal file.
-See `dvc exp run` for more details
+When DVC runs checkpoint-enabled stages, a new commit is generated in a custom
+Git branch (found in `.git/refs/exps`) each time the code calls
+`dvc.api.make_checkpoint()` or writes a `.dvc/tmp/DVC_CHECKPOINT` signal file
+(see `dvc exp run` for info). These are not pushed to the Git remote by default
+(see `dvc exp push`).
 
 </details>
 
 ## Persistent experiments
 
 When your experiments are good enough to save or share, you may want to store
-them persistently as commits in your (Git-enabled) <abbr>repository</abbr>.
+them persistently as commits in your <abbr>repository</abbr>.
 
 The results may have been produced with `dvc repro` directly, or after an
 [ephemeral workflow](#ephemeral-experiments). In any case the workspace will
