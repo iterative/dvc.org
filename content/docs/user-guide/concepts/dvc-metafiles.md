@@ -39,3 +39,10 @@ files without checking in any other large files. These files are enough to
 represent data, pipelines and artifacts of a project, hence can be used to
 reproduce and distribute a full ML project without attaching large data or model
 files.
+
+## Further Reading
+
+- [Versioning Data and Model Files](/doc/uses-cases/versioning-data-and-model-files/)
+- [`.dvc` files specification](/doc/project-structure/dvc-files.md)
+- [Internal Files](/doc/project-structure/internal-files.md)
+- [Pipelines Files](/doc/project-structure/pipelines-files.md)
