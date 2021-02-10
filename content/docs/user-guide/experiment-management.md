@@ -6,12 +6,12 @@ hyperspace exploration, deep learning optimization, etc. DVC helps you codify
 and manage all of your <abbr>experiments</abbr>, considering the following
 levels at which they may exist:
 
-0. Tests you do on you own (without DVC knowing) — that's all you!
 1. DVC enters the scene with an automatic log of every stage `dvc repro` runs.
-2. Create [ephemeral experiments](#ephemeral-experiments) that virtually branch
-   off your current workspace. You can start **automating** them at this point,
-   and quickly visualize and compare them from terminal. The best ones can be
-   promoted to the next level, and the rest archived.
+2. Create [ephemeral experiments](#ephemeral-experiments) and
+   [in-code checkpoints](#checkpoints-in-python-code) that virtually branch off
+   your current workspace. DVC lets you quickly visualize and compare them from
+   terminal. The best ones can be promoted to the next level, and the rest
+   archived.
 3. [Persistent experiments](#persistent-experiments) have their results
    **committed** to Git. They can be selected from previous levels, or created
    from scratch. This is where you may want to consider the different
@@ -48,8 +48,8 @@ this:
 - Modify <abbr>dependencies</abbr> (e.g. input data or source code),
   <abbr>parameters</abbr>, or commands (`cmd` field of `dvc.yaml`) of a
   committed stage.
-- Use `dvc exp run` (instead of `repro`) to execute the pipeline, which creates
-  a transient commit that records this experiment.
+- Use `dvc exp run` (instead of `repro`) to execute the pipeline. This creates a
+  transient commit that records this experiment.
 - Visualize the experiments statistics with `dvc exp show`. Repeat.
 - Use [metrics](/doc/command-reference/metrics) in your pipeline to identify the
   best experiment(s), and promote them to persistent experiments (regular
@@ -75,6 +75,10 @@ Note that `dvc exp run` also logs and reuses
 <abbr>run-cache</abbr> by default.
 
 > See `dvc exp` for more details and other commands.
+
+## Checkpoints in Python code
+
+...
 
 ## Persistent experiments
 
