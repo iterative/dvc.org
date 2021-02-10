@@ -1,4 +1,4 @@
-# Using CML on GitLab
+# Get Started with CML on GitLab
 
 Here, we'll walk through a tutorial to start using CML on GitLab. For
 simplicity, we'll show the demo in GitLab Actions, but these instructions are
