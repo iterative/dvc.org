@@ -3,35 +3,23 @@
 Data science and ML are iterative processes that tend to require a large number
 of attempts during their course, for example to develop data features,
 hyperspace exploration, deep learning optimization, etc. DVC helps you codify
-and manage all of your <abbr>experiments</abbr>, considering the following
-levels at which they may exist:
+and manage all of your <abbr>experiments</abbr>, supporting these main
+experimentation approaches:
 
-1. DVC enters the scene with an automatic log of every stage `dvc repro` runs.
-2. Create [ephemeral experiments](#ephemeral-experiments) and
-   [in-code checkpoints](#checkpoints-in-python-code) that virtually branch off
-   your current workspace. DVC lets you quickly visualize and compare them from
-   terminal. The best ones can be promoted to the next level, and the rest
-   archived.
+1. Create [ephemeral experiments](#ephemeral-experiments) that derive from your
+   latest project version, without having to keep track manually. DVC does that
+   for you, letting you list and compare them. The best ones can be promoted,
+   and the rest archived.
+2. Place [in-code checkpoints](#checkpoints-in-python-code) that form series of
+   (ephemeral) experiments. DVC helps you capture them at runtime, and manage
+   them as batches.
 3. [Persistent experiments](#persistent-experiments) have their results
-   **committed** to Git. They can be selected from previous levels, or created
-   from scratch. This is where you may want to consider the different
-   [ways to organize](#organizing-experimentats) them in your project (as
-   branches, folders, etc.).
+   **committed** to Git. They can be selected from existing attempts, or created
+   from scratch.
 
-> Note that DVC assumes that all experiments are deterministic (see **Avoiding
-> unexpected behavior** in `dvc run`).
-
-## Automatic log of stage runs (run-cache)
-
-Every time you `dvc repro` pipelines, DVC logs the unique signature of each
-stage run (to `.dvc/cache/runs` by default). If it never happened before, the
-stage command(s) are executed normally. Every subsequent time a
-[stage](/doc/command-reference/run) runs under the same conditions, the previous
-results can be restored instantly, without wasting time or computing resources.
-
-✅ This built-in feature is called <abbr>run-cache</abbr> and it can
-dramatically improve performance. It's enabled out-of-the-box (but can be
-disabled with the `--no-run-cache` command option).
+   At this point you may also want to consider the different
+   [ways to organize](#organizing-experimentats) experiments in your project (as
+   Git branches, as folders, etc.).
 
 ## Ephemeral experiments
 
@@ -70,15 +58,25 @@ branch off there. Each reference has a unique signature similar to the
 
 </details>
 
-Note that `dvc exp run` also logs and reuses
-[stage runs](#automatic-log-of-stage-runs-run-cache) in the
-<abbr>run-cache</abbr> by default.
-
 > See `dvc exp` for more details and other commands.
 
 ## Checkpoints in Python code
 
+⚠️ This feature is only available in DVC 2.0, and for Git-enabled
+<abbr>repositories</abbr> ⚠️
+
 ...
+
+<details>
+
+### How are checkpoints captured by DVC?
+
+When DVC runs checkpoint-enabled stages, a new transient commit is generated in
+the experiment's virtual branch each time the code calls
+`dvc.api.make_checkpoint()` or writes a `.dvc/tmp/DVC_CHECKPOINT` signal file.
+See `dvc exp run` for more details
+
+</details>
 
 ## Persistent experiments
 
@@ -92,6 +90,19 @@ have the right `dvc.yaml` and `dvc.lock` file pair, as well as the corresponding
 
 See [Get Started: Experiments](/doc/start/experiments) for a hands-on intro
 guide on regular experiments.
+
+## Automatic log of stage runs (run-cache)
+
+Every time you `dvc repro` pipelines or `dvc exp run` experiments, DVC logs the
+unique signature of each stage run (to `.dvc/cache/runs` by default). If it
+never happened before, the stage command(s) are executed normally. Every
+subsequent time a [stage](/doc/command-reference/run) runs under the same
+conditions, the previous results can be restored instantly, without wasting time
+or computing resources.
+
+✅ This built-in feature is called <abbr>run-cache</abbr> and it can
+dramatically improve performance. It's enabled out-of-the-box (but can be
+disabled with the `--no-run-cache` command option).
 
 ## Organizing experiments
 
