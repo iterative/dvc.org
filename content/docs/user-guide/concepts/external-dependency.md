@@ -10,9 +10,7 @@ tooltip: >-
 
 A <abbr>dependency</abbr> for a <abbr>stage</abbr> which points to an external
 (remote) resource outside of the <abbr>workspace</abbr>. It is tracked with a
-`.dvc` file and <abbr>cached</abbr> during experiment runs. External
-dependencies are not checked for change and considered always
-<abbr>frozen</abbr>.
+`.dvc` file and <abbr>cached</abbr> during experiment runs.
 
 An external dependency can be added with `dvc import` or `dvc import-url`
 command. by adding it to `deps` section of `dvc.yaml`. It can refer to an HTTP,
