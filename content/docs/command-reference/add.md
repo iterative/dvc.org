@@ -343,12 +343,13 @@ $ tree .dvc/cache
 Only the hash values of the `dir/` directory (with `.dir` file extension) and
 `file2` have been cached.
 
-# Example: Transfer to remote storage
+## Example: Transfer to remote storage
 
-When you want to include a remote location (like some file in a s3 bucket, or a
-Google Drive directory) to your project, but don't want DVC to control the given
-remote location rather just sync the data into your remote storage,
-`--to-remote` option can be used.
+When you have a large dataset in an external location, you may want to add it to
+your project without downloading it to the local file system (for using it
+later/elsewhere). The `--to-remote` option let you skip the download, while
+storing the imported data [remotely](/doc/command-reference/remote). Let's
+initialize a DVC project, and setup a remote:
 
 ```dvc
 $ mkdir example # workspace
@@ -359,23 +360,27 @@ $ mkdir /tmp/dvc-storage
 $ dvc remote add myremote /tmp/dvc-storage
 ```
 
-Now let's add the `data.xml` to our remote storage, and create a `.dvc` file.
+Now let's add the `data.xml` to our remote storage from the given remote
+location.
 
 ```dvc
-$ dvc add https://data.dvc.org/get-started/data.xml --to-remote \
-          -r myremote
+$ dvc add https://data.dvc.org/get-started/data.xml -o data.xml \
+                 --to-remote -r myremote
+...
 ```
 
-The only change in our local <abbr>workspace</abbr> is a newly created `.dvc`
-file:
+The only difference that dataset is transferred straight to remote, so DVC won't
+control the remote location you gave but rather continue managing your remote
+storage where the data is now on. The operation will still be resulted with an
+`.dvc` file:
 
 ```dvc
 $ ls
 data.xml.dvc
 ```
 
-Whenever anyone wants to actually have the added data (for example from a system
-with much larger space), they can use `dvc pull` as usual:
+Whenever anyone wants to actually download the added data (for example from a
+system that can handle it), they can use `dvc pull` as usual:
 
 ```dvc
  $ dvc pull data.xml.dvc -r tmp_remote
