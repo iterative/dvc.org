@@ -32,6 +32,6 @@ Behind the scene these operations of a <abbr>DVC project</abbr> uses
 
 ## Further Reading
 
-- [What is DVC?](/doc/user-guide/what-is-dvc.md)
-- [Versioning Data and Model](/doc/use-cases/versioning-data-and-model-files/)
+- [What is DVC?](/doc/user-guide/what-is-dvc)
+- [Versioning Data and Model](/doc/use-cases/versioning-data-and-model-files)
   from Use Cases

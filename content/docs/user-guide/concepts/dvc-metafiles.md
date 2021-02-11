@@ -42,7 +42,7 @@ files.
 
 ## Further Reading
 
-- [Versioning Data and Model Files](/doc/uses-cases/versioning-data-and-model-files/)
-- [`.dvc` files specification](/doc/project-structure/dvc-files.md)
-- [Internal Files](/doc/project-structure/internal-files.md)
-- [Pipelines Files](/doc/project-structure/pipelines-files.md)
+- [Versioning Data and Model Files](/doc/uses-cases/versioning-data-and-model-files)
+- [`.dvc` files specification](/doc/user-guide/project-structure/dvc-files)
+- [Internal Files](/doc/user-guide/project-structure/internal-files)
+- [Pipelines Files](/doc/user-guide/project-structure/pipelines-files)

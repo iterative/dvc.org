@@ -28,6 +28,6 @@ more pipelines later. (See `dvc repro`)
 
 ## Further Reading
 
-- [Data Pipelines](/doc/start/data-pipelines.md) in Get Started
+- [Data Pipelines](/doc/start/data-pipelines) in Get Started
 - `dvc run` command reference
 - `dvc repro` command reference

@@ -33,6 +33,6 @@ artifacts of the project including those in <abbr>remotes</abbr> and
 
 ## Further Reading
 
-- [Project Structure](/doc/project-structure/)
+- [Project Structure](/doc/user-guide/project-structure/)
 - `dvc add` command reference for data file tracking
 - `dvc run` command reference for pipelines.

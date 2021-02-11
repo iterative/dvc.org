@@ -34,7 +34,7 @@ duplication.
 
 Internally DVC uses MD5 hash of the content to create an address within the
 cache for a file. For details see
-[Structure of the Cache Directory](content/docs/user-guide/project-structure/internal-files.md#structure-of-the-cache-directory)
+[Structure of the Cache Directory](/doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory)
 
 DVC can cache entire directories as a single unit similar to files. A `.dir`
 file for each tracked directory is created that lists names and hash values of
@@ -43,7 +43,7 @@ files for each file in a directory, which can contain thousands of files.
 
 ## Further Reading
 
-- [Internal Files](/doc/user-guide/project-structure/internal-files.md) in
+- [Internal Files](/doc/user-guide/project-structure/internal-files) in
   User's Guide
-- [Shared Development Server](/doc/use-cases/shared-development-server.md) in
+- [Shared Development Server](/doc/use-cases/shared-development-server) in
   Use Cases

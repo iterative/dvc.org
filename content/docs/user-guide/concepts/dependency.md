@@ -26,4 +26,4 @@ locations like <abbr>remotes</abbr>.
 
 ## Further Reading
 
-- [Experiments](/doc/start/experiments.md)
+- [Experiments](/doc/start/experiments)
