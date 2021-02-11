@@ -40,3 +40,10 @@ DVC can cache entire directories as a single unit similar to files. A `.dir`
 file for each tracked directory is created that lists names and hash values of
 files in the directory. This eliminates the need to create corresponding `*.dvc`
 files for each file in a directory, which can contain thousands of files.
+
+## Further Reading
+
+- [Internal Files](/doc/user-guide/project-structure/internal-files.md) in
+  User's Guide
+- [Shared Development Server](/doc/use-cases/shared-development-server.md) in
+  Use Cases
