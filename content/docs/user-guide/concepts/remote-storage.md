@@ -7,7 +7,7 @@ match:
     'remote',
     'remote storage',
     'data remote',
-    'data remotes'
+    'data remotes',
   ]
 tooltip: >-
   [DVC remotes](/doc/user-guide/concepts/remote-storage) provide a location to
