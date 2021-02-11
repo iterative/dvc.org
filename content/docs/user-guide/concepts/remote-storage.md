@@ -10,11 +10,10 @@ match:
     'data remotes',
   ]
 tooltip: >-
-  [DVC remotes](/doc/user-guide/concepts/remote-storage) provide a location to
-  store and share data and models. You can pull data assets created by
-  colleagues from DVC remotes without spending time and resources to build or
-  process them locally. Remote storage can also save space on your local
-  environment.
+  DVC remotes provide a location to store and share data and models. You can
+  pull data assets created by colleagues from DVC remotes without spending time
+  and resources to build or process them locally. Remote storage can also save
+  space on your local environment. [📖](/doc/user-guide/concepts/remote-storage)
 description: >-
   DVC remotes provide a location to store and share data and models, with
   support for Amazon S3, Google Drive, Azure, and several other remote storage

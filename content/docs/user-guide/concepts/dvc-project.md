@@ -13,7 +13,7 @@ match:
   ]
 tooltip: >-
   A DVC project is a directory initialized by `dvc init` that contains a `.dvc`
-  directory.
+  directory. [📖](/doc/user-guide/concepts/dvc-project)
 ---
 
 # DVC Project

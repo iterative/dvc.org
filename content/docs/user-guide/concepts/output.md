@@ -3,7 +3,7 @@ name: Output
 match: [output, outputs]
 tooltip: >-
   A file, directory or metric produced as a result of a stage. It can also mean
-  artifacts added to the project.
+  artifacts added to the project. [📖](/doc/user-guide/concepts/output)
 ---
 
 # Output

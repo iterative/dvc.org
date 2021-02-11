@@ -3,7 +3,7 @@ name: 'Stage'
 match: ['stage', 'stages']
 tooltip: >-
   A stage is a single unit of execution in a pipeline that produces some
-  (intermediate or final) output.
+  (intermediate or final) output. [📖](/doc/user-guide/concepts/stage)
 ---
 
 # Stage

@@ -4,6 +4,7 @@ match: ['dependency', 'dependencies']
 tooltip: >-
   A file or directory in a <abbr>pipeline</abbr> that is used as an input to a
   stage. Dependencies are listed `deps` section of `dvc.yaml` or `.dvc` file.
+  [📖](/doc/user-guide/concepts/dependency)
 description: >-
   A file or directory in a <abbr>pipeline</abbr> that is used as an input to a
   stage. Dependencies are listed `deps` section of `dvc.yaml` or `.dvc` file.

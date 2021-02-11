@@ -2,7 +2,9 @@
 name: 'Run-cache'
 match: ['run-cache']
 tooltip: >-
-  A logging and replication mechanism of DVC for experiment runs.
+  A logging and replication mechanism of DVC for experiment runs. It maintains
+  history of experiment runs without checking each result into Git.
+  [📖](/doc/user-guide/concepts/run-cache)
 ---
 
 # Run-Cache

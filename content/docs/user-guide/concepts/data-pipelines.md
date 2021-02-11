@@ -2,9 +2,10 @@
 name: 'Data Pipelines'
 match: ['data pipeline', 'pipeline', 'pipelines']
 tooltip: >-
-  A [data pipeline](/doc/user-guide/concepts/data-pipelines) is a series of data
-  processing stages, chained by their outputs and inputs. They use some initial
-  data, may produce intermediate artifacts, and reach a final result.
+  A data pipeline is a series of data processing stages, chained by their
+  outputs and inputs. They use some initial data, may produce intermediate
+  artifacts, and reach a final result.
+  [📖](/doc/user-guide/concepts/data-pipelines)
 description: >-
   A data pipeline is a series of data processing stages. They use some initial
   data, may produce intermediate artifacts, and reach a final result.

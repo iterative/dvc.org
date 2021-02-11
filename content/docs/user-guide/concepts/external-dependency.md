@@ -4,6 +4,7 @@ match: ['external dependency', 'external dependencies']
 tooltip: >-
   External dependency is a dependency for a stage which points to an external
   (remote) resource outside of the workspace.
+  [📖](/doc/user-guide/concepts/external-dependency)
 ---
 
 # External Dependency
