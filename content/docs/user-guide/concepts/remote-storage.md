@@ -23,40 +23,30 @@ description: >-
 
 <!-- keywords: remote data storage, machine learning model storage, data science collaboration tool, manage external datasets, cloud storage version control, machine learning model management framework, data warehouse, (combine "azure", "s3", or "gcp" with "ML pipeline") -->
 
-<!--
-Link to /doc/user-guide/concepts/dvc-cache#structure-of-the-cache-directory
--->
-
 # Remote Storage
 
-<!-- _from `dvc remote`_ -->
+DVC allows its <abbr>cache</abbr> to reside in the cloud or any other location
+outside of the project directory. This allows to keep data secure and utilize
+local disk space more effectively.
 
-The same way as GitHub provides storage hosting for Git repositories, DVC
-remotes provide a location to store and share data and models. You can pull data
-assets created by colleagues from DVC remotes without spending time and
-resources to build or process them locally.
+In principle _remote_ for a resource means _not stored in `.dvc/cache`_. A
+remote storage can be in the same disk as the DVC project but is considered
+remote as it's not within the <abbr>repository</abbr>.
 
-Remote storage can also save space on your local environment – DVC can
-[fetch](/doc/command-reference/fetch) into the <abbr>cache directory</abbr> only
-the data you need for a specific branch/commit.
+Remotes provide a consistent way to pull and share data and model files. Two DVC
+projects can share a single remote and download only the immediately required
+resources for their experiments.
 
-> DVC remotes are **not** Git remotes. They are cache backups, not distributed
-> copies of the <abbr>DVC project</abbr>.
+\*_Unlike Git remotes_, DVC remotes are not full copies of a repository. They
+are (possibly partial) copies of <abbr>DVC cache</abbr> and contain data files
+tracked by DVC. A DVC project can have more than one remote location. Actually
+the recommended way is keeping separate remotes for data files and outputs to
+avoid any hash collision.
 
-Using DVC with remote storage is optional. DVC commands use the local
-<abbr>cache</abbr> (usually in dir `.dvc/cache`) as data storage by default.
-This enables the main DVC usage scenarios out of the box.
+Although a local cache is used by default, DVC allows to use all major cloud
+providers as remote locations as well as SSH file servers.
 
-<!-- cache/remote/workspace relationship #53-->
+## Further Reading
 
-## Types of remote storage
-
-DVC supports several types of remote storage: local file system, SSH, Amazon S3,
-Google Cloud Storage, HTTP, HDFS, among others. Refer to `dvc remote add` for
-more details.
-
-> If you installed DVC via `pip` and plan to use cloud services as remote
-> storage, you might need to install these optional dependencies: `[s3]`,
-> `[azure]`, `[gdrive]`, `[gs]`, `[oss]`, `[ssh]`. Alternatively, use `[all]` to
-> include them all. The command should look like this: `pip install "dvc[s3]"`.
-> (This example installs `boto3` library along with DVC to support S3 storage.)
+- `dvc remote` command reference.
+- `dvc fetch` command reference.
