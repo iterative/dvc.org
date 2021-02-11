@@ -1,10 +1,10 @@
 # Experiment Management
 
-Data science and ML are iterative processes that tend to require a large number
-of attempts during their course, for example to develop data features,
-hyperspace exploration, deep learning optimization, etc. DVC helps you codify
-and manage all of your <abbr>experiments</abbr>, supporting these main
-experimentation approaches:
+Data science and ML are iterative processes that require a large number of
+attempts to reach a certain level of a metric. Experimentation is part of the
+development of data features, hyperspace exploration, deep learning
+optimization, etc. DVC helps you codify and manage all of your
+<abbr>experiments</abbr>, supporting these main approaches:
 
 1. Create [ephemeral experiments](#ephemeral-experiments) that derive from your
    latest project version, without having to keep track manually. DVC does that
@@ -21,6 +21,13 @@ experimentation approaches:
    [ways to organize](#organizing-experimentats) experiments in your project (as
    Git branches, as folders, etc.).
 
+DVC also provides specialized features to codify and analyze experiments.
+[Parameters](/doc/command-reference/params) are simple values you can tweak in a
+human-readable text file, which cause different behaviors in your code and
+models. On the other end, [metrics](/doc/command-reference/metrics) (and
+[plots](/doc/command-reference/plots)) let you define, visualize, and compare
+meaningful measures for the experimental results.
+
 ## Ephemeral experiments
 
 ⚠️ This feature is only available in DVC 2.0 ⚠️
@@ -31,7 +38,7 @@ compare, and restore them at any time, or roll back to the baseline. The basic
 workflow goes like this:
 
 - Modify <abbr>dependencies</abbr> (e.g. input data or source code),
-  <abbr>parameters</abbr>, or commands (`cmd` field of `dvc.yaml`) of a
+  <abbr>hyperparameters</abbr>, or commands (`cmd` field of `dvc.yaml`) of a
   committed stage.
 - Use `dvc exp run` (instead of `repro`) to execute the pipeline. This puts the
   experiment's results in your <abbr>workspace</abbr>, and records it under the
@@ -86,13 +93,14 @@ default (see `dvc exp push`).
 When your experiments are good enough to save or share, you may want to store
 them persistently as commits in your <abbr>repository</abbr>.
 
-The results may have been produced with `dvc repro` directly, or after an
-[ephemeral workflow](#ephemeral-experiments). In any case the workspace will
-have the right `dvc.yaml` and `dvc.lock` file pair, as well as the corresponding
-<abbr>outputs</abbr> (via `dvc checkout`).
+Whether the results were produced with `dvc repro` directly, or after an
+[ephemeral workflow](#ephemeral-experiments), the <abbr>workspace</abbr> will
+have a corresponding `dvc.yaml` and `dvc.lock` file pair. The right
+<abbr>outputs</abbr> (including [metrics](/doc/command-reference/metrics)) will
+also be present, or available via `dvc checkout`.
 
-See [Get Started: Experiments](/doc/start/experiments) for a hands-on intro
-guide on regular experiments.
+See [Get Started: Experiments](/doc/start/experiments) for a hands-on
+introduction to regular experiments.
 
 ## Automatic log of stage runs (run-cache)
 
