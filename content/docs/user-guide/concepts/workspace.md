@@ -2,9 +2,8 @@
 name: Workspace
 match: [workspace]
 tooltip: >-
-  The [workspace](/doc/user-guide/concepts/workspace) is the directory
-  containing all your project files e.g. raw datasets, source code, ML models,
-  etc. Typically, it's also a Git repository. It will contain your DVC project.
+  The workspace is the _user visible_ part of the directory containing all your
+  project files e.g. raw datasets, source code, ML models, etc.
 description: >-
   The workspace is the directory containing all your project files e.g. raw
   datasets, source code, ML models, etc. Typically, it's also a Git repository.
@@ -14,18 +13,25 @@ description: >-
 
 # Workspace
 
-The workspace is the directory containing all your project files e.g. raw
-datasets, source code, ML models, etc. Typically, it's also a Git repository. It
-will contain your DVC project.
+The workspace is the _user visible_ part of the directory that contains all your
+project files e.g. raw datasets, source code, ML models, etc. Users work in this
+directory with links of the data/model files that reside in <abbr>cache</abbr>
+and manipulate the contents through DVC commands.
 
-<!-- _"External dependencies, outputs, and cache are the exception to the rule."_ -->
+Files and directories in the workspace can be added to DVC (`dvc add`) or they
+can be downloaded from external sources (`dvc get`, `dvc import`,
+`dvc import-url`), changes to them can be tracked (`dvc commit`),
+<abbr>pipelines</abbr> and <abbr>dependencies</abbr> between them can be defined
+(`dvc run`), they can be sent to or retrieved from <abbr>remotes</abbr>
+(`dvc push`, `dvc pull`) and can be removed (`dvc remove`, `dvc gc`) from the
+workspace. DVC supports all typical operations of files and directories through
+its commands.
 
-<!-- _from dvc-project tooltip_ -->
+Behind the scene these operations of a <abbr>DVC project</abbr> uses
+<abbr>metafiles</abbr> to track the content and dependencies.
 
-<!-- ## What's the difference between workspace and project? -->
+## Further Reading
 
-<!-- _Relationship between workspace, cache, remote_ -->
-
-<!-- ## Things you can do in the Workspace -->
-
-<!-- `dvc init` to create a DVC project... -->
+- [What is DVC?](/doc/user-guide/what-is-dvc.md)
+- [Versioning Data and Model](/doc/use-cases/versioning-data-and-model-files/)
+  from Use Cases
