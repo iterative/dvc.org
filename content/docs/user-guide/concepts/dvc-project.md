@@ -9,7 +9,7 @@ match:
     'DVC repository',
     'DVC repositories',
     repository,
-    repositories,
+    repositories
   ]
 tooltip: >-
   A DVC project is a directory initialized by `dvc init` that contains a `.dvc`
