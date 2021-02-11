@@ -10,7 +10,7 @@ experimentation approaches:
    latest project version, without having to keep track manually. DVC does that
    for you, letting you list and compare them. The best ones can be promoted,
    and the rest archived.
-2. Place [in-code checkpoints](#checkpoints-in-python-code) that form series of
+2. Place [in-code checkpoints](#checkpoints-in-source-code) that form series of
    (ephemeral) experiments. DVC helps you capture them at runtime, and manage
    them as batches.
 3. [Persistent experiments](#persistent-experiments) have their results
@@ -25,10 +25,10 @@ experimentation approaches:
 
 ⚠️ This feature is only available in DVC 2.0 ⚠️
 
-`dvc exp` commands let you automatically track variations to established DVC
-[pipelines](/doc/command-reference/dag), so you can review, compare, and restore
-them at any time, or roll back to the baseline. The base workflow goes like
-this:
+`dvc exp` commands let you automatically track multiple variations to
+established DVC [pipelines](/doc/command-reference/dag), so you can review,
+compare, and restore them at any time, or roll back to the baseline. The basic
+workflow goes like this:
 
 - Modify <abbr>dependencies</abbr> (e.g. input data or source code),
   <abbr>parameters</abbr>, or commands (`cmd` field of `dvc.yaml`) of a
@@ -48,31 +48,36 @@ this:
 DVC uses actual commits under custom
 [Git references](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
 (found in `.git/refs/exps`) to keep track of ephemeral experiments. Each commit
-has the Git repo's `HEAD` as parent. These are not pushed to the Git remote by
-default (see `dvc exp push`).
+has the repo `HEAD` as parent. These are not pushed to the Git remote by default
+(see `dvc exp push`).
 
 > References have a unique signature similar to the
 > [entries in the run-cache](/doc/user-guide/project-structure/internal-files#run-cache).
 
 </details>
 
-> See `dvc exp` for more details and other commands.
-
-## Checkpoints in Python code
+## Checkpoints in source code
 
 ⚠️ This feature is only available in DVC 2.0 ⚠️
 
-...
+To track successive steps in a longer experiment, you can write your code so it
+registers checkpoints with DVC at runtime. This allows you, for example, to
+track the progress in deep learning techniques such as evolving neural networks.
+
+This kind of experiment is also derived fom your latest project version, but it
+can contain a series of variations (the checkpoints). You mainly interact with
+them using `dvc exp run`, `dvc exp resume`, and `dvc exp reset`. See also the
+`checkpoint` field of `dvc.yaml`.
 
 <details>
 
 ### How are checkpoints captured by DVC?
 
-When DVC runs checkpoint-enabled stages, a new commit is generated in a custom
-Git branch (found in `.git/refs/exps`) each time the code calls
-`dvc.api.make_checkpoint()` or writes a `.dvc/tmp/DVC_CHECKPOINT` signal file
-(see `dvc exp run` for info). These are not pushed to the Git remote by default
-(see `dvc exp push`).
+When DVC runs a checkpoint-enabled pipeline, a custom Git branch (in
+`.git/refs/exps`) is started off the repo `HEAD`. A new commit is appended each
+time the code calls `dvc.api.make_checkpoint()` or writes a
+`.dvc/tmp/DVC_CHECKPOINT` signal file. These are not pushed to the Git remote by
+default (see `dvc exp push`).
 
 </details>
 
