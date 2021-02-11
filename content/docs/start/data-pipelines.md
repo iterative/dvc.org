@@ -222,7 +222,7 @@ This should be a good point to commit the changes with Git. These include
 
 ## Reproduce
 
-The whole point of creating this `dvc.yaml` pipeline file is an ability to
+The whole point of creating this `dvc.yaml` pipelines file is an ability to
 reproduce the pipeline:
 
 ```dvc
