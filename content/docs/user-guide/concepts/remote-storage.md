@@ -7,7 +7,7 @@ match:
     'remote',
     'remote storage',
     'data remote',
-    'data remotes',
+    'data remotes'
   ]
 tooltip: >-
   DVC remotes provide a location to store and share data and models. You can
