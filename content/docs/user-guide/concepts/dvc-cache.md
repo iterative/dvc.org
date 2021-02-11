@@ -43,7 +43,7 @@ files for each file in a directory, which can contain thousands of files.
 
 ## Further Reading
 
-- [Internal Files](/doc/user-guide/project-structure/internal-files) in
-  User's Guide
-- [Shared Development Server](/doc/use-cases/shared-development-server) in
-  Use Cases
+- [Internal Files](/doc/user-guide/project-structure/internal-files) in User's
+  Guide
+- [Shared Development Server](/doc/use-cases/shared-development-server) in Use
+  Cases
