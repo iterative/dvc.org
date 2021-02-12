@@ -63,27 +63,10 @@
 
   &.active {
     color: var(--color-gray-hover);
-  }
-}
 
-.withDefaultBullet {
-  &::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 9px;
-    display: block;
-    height: 8px;
-    width: 8px;
-    background: url('/img/triangle_dark.svg') no-repeat center center;
-  }
-
-  &.active::before {
-    animation: rotateIcon 0.5s forwards;
-  }
-
-  &.leafItem::before {
-    background: url('/img/default_bullet_dark.svg') no-repeat center center;
+    .sidebarDefaultBullet {
+      animation: rotateIcon 0.5s forwards;
+    }
   }
 }
 
@@ -107,13 +90,19 @@
   left: -0.08rem;
 }
 
-.absBeforeIconOverlay {
+.sidebarDefaultBullet {
   content: '';
   position: absolute;
-  top: 9px;
   left: 0;
-  width: 10px;
-  height: 10px;
+  top: 9px;
+  display: block;
+  height: 8px;
+  width: 8px;
+  background: url('/img/triangle_dark.svg') no-repeat center center;
+
+  &.sidebarLeafBullet {
+    background: url('/img/default_bullet_dark.svg') no-repeat center center;
+  }
 
   &:focus {
     outline: none;
