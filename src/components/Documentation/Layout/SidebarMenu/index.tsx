@@ -62,7 +62,9 @@ const SidebarMenuItem: React.FC<ISidebarMenuItemProps> = ({
 
   const isRootParent =
     activePaths && activePaths.length > 1 && activePaths[0] === path
+
   const isLeafItem = children === undefined || children.length === 0
+
   const currentLevelOnClick = (
     event: SyntheticEvent<HTMLAnchorElement>
   ): void => {
@@ -95,6 +97,12 @@ const SidebarMenuItem: React.FC<ISidebarMenuItemProps> = ({
     icon ? undefined : styles.withDefaultBullet
   )
 
+  const bulletIconClassName = cn(
+    styles.sidebarDefaultBullet,
+    isExpanded && styles.active,
+    isLeafItem && styles.sidebarLeafBullet
+  )
+
   const parentElement =
     type === 'external' ? (
       <Link
@@ -114,15 +122,17 @@ const SidebarMenuItem: React.FC<ISidebarMenuItemProps> = ({
         className={className}
         onClick={currentLevelOnClick}
       >
-        <span
-          className={styles.absBeforeIconOverlay}
-          onClick={bulletIconClick}
-          onKeyDown={bulletIconClick}
-          data-path={path}
-          role="button"
-          tabIndex={0}
-        ></span>
-        {iconElement}
+        {iconElement ? (
+          iconElement
+        ) : (
+          <span
+            className={bulletIconClassName}
+            onClick={bulletIconClick}
+            onKeyDown={bulletIconClick}
+            role="button"
+            tabIndex={0}
+          ></span>
+        )}
         {label}
       </Link>
     )
