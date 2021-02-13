@@ -50,8 +50,6 @@ const SidebarMenuItem: React.FC<ISidebarMenuItemProps> = ({
   icon,
   type
 }) => {
-  const isActive = activePaths && includes(activePaths, path)
-
   const [isExpanded, setIsExpanded] = useState(
     activePaths && includes(activePaths, path)
   )
@@ -68,7 +66,7 @@ const SidebarMenuItem: React.FC<ISidebarMenuItemProps> = ({
   const currentLevelOnClick = (
     event: SyntheticEvent<HTMLAnchorElement>
   ): void => {
-    if (isActive) {
+    if (event.currentTarget.getAttribute('aria-current') === 'page') {
       event.preventDefault()
       setIsExpanded(!isExpanded)
     }
@@ -112,7 +110,11 @@ const SidebarMenuItem: React.FC<ISidebarMenuItemProps> = ({
         onClick={currentLevelOnClick}
         target="_blank"
       >
-        {iconElement}
+        {iconElement ? (
+          iconElement
+        ) : (
+          <span className={bulletIconClassName}></span>
+        )}
         {label} <ExternalLinkIcon />
       </Link>
     ) : (
