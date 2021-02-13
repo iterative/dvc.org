@@ -20,7 +20,7 @@
   }
 
   :global(.ReactCollapse--collapse) {
-    transition: height 250ms;
+    transition: height 500ms;
     padding-left: 10px;
   }
 }
@@ -99,12 +99,18 @@
   height: 8px;
   width: 8px;
   background: url('/img/triangle_dark.svg') no-repeat center center;
-
-  &.sidebarLeafBullet {
-    background: url('/img/default_bullet_dark.svg') no-repeat center center;
-  }
+  transition: 0.5s all;
 
   &:focus {
     outline: none;
+  }
+
+  &:hover {
+    transform: scale(1.5);
+  }
+
+  &.sidebarLeafBullet {
+    background: url('/img/default_bullet_dark.svg') no-repeat center center;
+    transform: unset;
   }
 }
