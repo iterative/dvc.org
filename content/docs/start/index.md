@@ -71,6 +71,6 @@ by one in the next few pages:
   You can capture, navigate, and evaluate ML projects without leaving Git. Think
   "Git for machine learning".
 
-- [**Experiments**](/doc/start/experiments) enable exploration, iteration,
-  and comparison across many ML experiments. Track your experiments with all of
-  the reproducibility and power of DVC.
+- [**Experiments**](/doc/start/experiments) enable exploration, iteration, and
+  comparison across many ML experiments. Track your experiments with all of the
+  reproducibility and power of DVC.

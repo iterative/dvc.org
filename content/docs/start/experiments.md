@@ -12,9 +12,9 @@ and only keep what we ultimately need with
 ## Using experiments
 
 In the previous section, we learned how to tune
-[ML pipelines](/doc/tutorials/get-started/ml-pipeline) and compare the
-changes. Let's further increase the number of features in the `featurize` stage
-to see how it compares.
+[ML pipelines](/doc/tutorials/get-started/ml-pipeline) and compare the changes.
+Let's further increase the number of features in the `featurize` stage to see
+how it compares.
 
 `dvc exp run` makes it even easier to try a new experiment:
 
@@ -31,8 +31,7 @@ running experiments. The `--params` flag sets the values for
 [parameters](/doc/command-reference/params) as a shortcut to editing
 `params.yaml`.
 
-Check that the `featurize.max_features` value has been updated in
-`params.yaml`:
+Check that the `featurize.max_features` value has been updated in `params.yaml`:
 
 ```diff
  featurize:
@@ -109,21 +108,13 @@ $ dvc exp show --no-timestamp --include-params train.n_estimators,train.min_samp
 ┃ Experiment    ┃ avg_prec ┃ roc_auc ┃ train.n_estimators ┃ train.min_samples_split ┃
 ┡━━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━┩
 │ workspace     │  0.56191 │ 0.93345 │ 50                 │ 2
-│
-│ master       │  0.55259 │ 0.91536 │ 50                 │ 2
-│
+│ master        │  0.55259 │ 0.91536 │ 50                 │ 2
 │ ├── exp-bfe64 │  0.57833 │ 0.95555 │ 50                 │ 8
-│
 │ ├── exp-b8082 │  0.59806 │ 0.95287 │ 50                 │ 64
-│
 │ ├── exp-c7250 │  0.58876 │ 0.94524 │ 100                │ 2
-│
 │ ├── exp-b9cd4 │  0.57953 │ 0.95732 │ 100                │ 8
-│
 │ ├── exp-98a96 │  0.60405 │  0.9608 │ 100                │ 64
-│
 │ └── exp-ad5b1 │  0.56191 │ 0.93345 │ 50                 │ 2
-│
 └───────────────┴──────────┴─────────┴────────────────────┴─────────────────────────┘
 ```
 
@@ -151,14 +142,14 @@ Changes for experiment 'exp-98a96' have been applied to your current workspace.
 ### 💡 Expand to see what this command does.
 
 `dvc exp apply` is similar to `dvc checkout` but it works with experiments that
-have not been manually committed to the Git repo. DVC tracks everything in
-the pipeline for each experiment (parameters, metrics, dependencies, and
-outputs) and can later retrieve it as needed.
+have not been manually committed to the Git repo. DVC tracks everything in the
+pipeline for each experiment (parameters, metrics, dependencies, and outputs)
+and can later retrieve it as needed.
 
 Check that `scores.json` reflects the scores in the table above:
 
 ```json
-{"avg_prec": 0.6040544652105823, "roc_auc": 0.9608017142900953}
+{ "avg_prec": 0.6040544652105823, "roc_auc": 0.9608017142900953 }
 ```
 
 </details>
@@ -186,12 +177,9 @@ experiments table:
 $ dvc exp show --no-timestamp --include-params train.n_estimators,train.min_samples_split
 ┏━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━┓
 ┃ Experiment ┃ avg_prec ┃ roc_auc ┃ train.n_estimators ┃ train.min_samples_split
-┃
 ┡━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━┩
 │ workspace  │  0.60405 │  0.9608 │ 100                │ 64
-│
-│ master    │  0.60405 │  0.9608 │ 100                │ 64
-│
+│ master     │  0.60405 │  0.9608 │ 100                │ 64
 └────────────┴──────────┴─────────┴────────────────────┴─────────────────────────┘
 ```
 
@@ -206,27 +194,18 @@ $ dvc exp show -n 2 --no-timestamp --include-params train.n_estimators,train.min
 ┃ Experiment    ┃ avg_prec ┃ roc_auc ┃ train.n_estimators ┃ train.min_samples_split ┃
 ┡━━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━┩
 │ workspace     │  0.60405 │  0.9608 │ 100                │ 64
-│
-│ master       │  0.60405 │  0.9608 │ 100                │ 64
-│
+│ master        │  0.60405 │  0.9608 │ 100                │ 64
 │ 64d74b2       │  0.55259 │ 0.91536 │ 50                 │ 2
-│
 │ ├── exp-bfe64 │  0.57833 │ 0.95555 │ 50                 │ 8
-│
 │ ├── exp-b8082 │  0.59806 │ 0.95287 │ 50                 │ 64
-│
 │ ├── exp-c7250 │  0.58876 │ 0.94524 │ 100                │ 2
-│
 │ ├── exp-98a96 │  0.60405 │  0.9608 │ 100                │ 64
-│
 │ ├── exp-b9cd4 │  0.57953 │ 0.95732 │ 100                │ 8
-│
 │ └── exp-ad5b1 │  0.56191 │ 0.93345 │ 50                 │ 2
-│
 └───────────────┴──────────┴─────────┴────────────────────┴─────────────────────────┘
 ```
 
-Eventually, old experiments may clutter the experiments table. 
+Eventually, old experiments may clutter the experiments table.
 
 `dvc exp gc` removes all references to old experiments:
 
@@ -235,14 +214,10 @@ $ dvc exp gc -w
 $ dvc exp show -n 2 --no-timestamp --include-params train.n_estimators,train.min_samples_split
 ┏━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━┓
 ┃ Experiment ┃ avg_prec ┃ roc_auc ┃ train.n_estimators ┃ train.min_samples_split
-┃
 ┡━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━┩
 │ workspace  │  0.60405 │  0.9608 │ 100                │ 64
-│
-│ master    │  0.60405 │  0.9608 │ 100                │ 64
-│
+│ master     │  0.60405 │  0.9608 │ 100                │ 64
 │ 64d74b2    │  0.55259 │ 0.91536 │ 50                 │ 2
-│
 └────────────┴──────────┴─────────┴────────────────────┴─────────────────────────┘
 ```
 

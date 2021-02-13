@@ -53,10 +53,13 @@
         }
       },
       {
-        "slug": "experiments",
+        "slug": "ml-pipelines",
         "tutorials": {
           "katacoda": "https://katacoda.com/dvc/courses/get-started"
         }
+      },
+      {
+        "slug": "experiments"
       }
     ]
   },
