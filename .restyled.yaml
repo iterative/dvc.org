@@ -6,7 +6,7 @@ restylers:
         '--trailing-comma=none',
         '--no-semi',
         '--arrow-parens=avoid',
-        '--single-quote=false',
+        '--single-quote=true',
         '--print-width=80',
         '--tab-width=2',
         '--use-tabs=false',
