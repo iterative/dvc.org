@@ -1,10 +1,10 @@
 ---
-title: 'Get Started: Experiments'
+title: 'Get Started: ML Pipelines'
 ---
 
-# Get Started: Experiments
+# Get Started: ML Pipelines
 
-DVC makes it easy to iterate on your project using Git commits, tags, or
+DVC makes it easy to iterate on your ML project using Git commits, tags, or
 branches. You can try different ideas quickly by tuning
 [parameters](/doc/command-reference/params), compare their performance with
 [metrics](/doc/command-reference/metrics), and visualize them with
@@ -19,7 +19,7 @@ https://youtu.be/iduHPtBncBk
 
 ## Collecting metrics
 
-First, let's see what is the mechanism to capture values for these ML experiment
+First, let's see what is the mechanism to capture values for these ML
 attributes. Let's add a final evaluation stage to our
 [pipeline](/doc/tutorials/get-started/data-pipelines#dependency-graphs-dags):
 
@@ -58,9 +58,9 @@ evaluate:
 
 The biggest difference to previous stages in our pipeline is in two new
 sections: `metrics` and `plots`. These are used to mark certain files containing
-experiment "telemetry". Metrics files contain simple numeric values (e.g. `AUC`)
-and plots files contain matrices and data series (e.g. `ROC` or model loss
-plots) that are meant to be visualized and compared.
+ML "telemetry". Metrics files contain scalar values (e.g. `AUC`) and plots files
+contain matrices and data series (e.g. `ROC curves` or model loss plots) that
+are meant to be visualized and compared.
 
 > With `cache: false`, DVC skips caching the output, as we want `scores.json`
 > and `prc.json` to be versioned by Git.
@@ -69,11 +69,13 @@ plots) that are meant to be visualized and compared.
 
 [`evaluate.py`](https://github.com/iterative/example-get-started/blob/master/src/evaluate.py)
 writes the model's
-[AUC value](https://towardsdatascience.com/understanding-auc-roc-curve-68b2303cc9c5)
+[ROC-AUC](https://scikit-learn.org/stable/modules/model_evaluation.html#receiver-operating-characteristic-roc)
+and
+[average precision](https://scikit-learn.org/stable/modules/model_evaluation.html#precision-recall-and-f-measures)
 to `scores.json`, which is marked as a metrics file with `-M`:
 
 ```json
-{ "auc": 0.57313829 }
+{ "avg_prec": 0.5204838673030754, "roc_auc": 0.9032012604172255 }
 ```
 
 It also writes `precision`, `recall`, and `thresholds` arrays (obtained using
@@ -85,16 +87,20 @@ into plots file `prc.json`:
   "prc": [
     { "precision": 0.021473008227975116, "recall": 1.0, "threshold": 0.0 },
     ...,
-    { "precision": 1.0, "recall": 0.009345794392523364, "threshold": 0.64 }
+    { "precision": 1.0, "recall": 0.009345794392523364, "threshold": 0.6 }
   ]
 }
 ```
+
+Similarly, it writes arrays for the
+[roc_curve](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_curve.html)
+into `roc.json` for an additional plot.
 
 > DVC doesn't force you to use any specific file names, or even format or
 > structure of a metrics or plots file - it's pretty much user and case defined.
 > Please refer to `dvc metrics` and `dvc plots` for more details.
 
-Let's save this experiment, so we can compare it later:
+Let's save this iteration, so we can compare it later:
 
 ```dvc
 $ git add scores.json prc.json
@@ -102,9 +108,8 @@ $ git commit -a -m "Create evaluation stage"
 ```
 
 Later we will see how these and other can be used to compare and visualize
-different experiment iterations. For now, let's see how can we capture another
-important piece of information that will be useful to compare experiments:
-parameters.
+different pipeline iterations. For now, let's see how can we capture another
+important piece of information that will be useful for comparison: parameters.
 
 ## Defining parameters
 
@@ -168,13 +173,14 @@ featurize:
 train:
   seed: 20170428
   n_estimators: 50
+  min_samples_split: 2
 ```
 
-## Tuning and running experiments
+## Tuning and running
 
-We are definitely not happy with the `AUC` value we got so far! Let's now tune
-and run the new experiment. Edit the `params.yaml` file to use bigrams and
-increase the number of features:
+We are definitely not happy with the `AUC` value we got so far! Let's adjust our
+parameters and run the pipeline again. Edit the `params.yaml` file to use
+bigrams and increase the number of features:
 
 ```diff
  featurize:
@@ -193,15 +199,15 @@ $ dvc repro
 It'll analyze the changes, use existing cache of previous runs, and execute only
 the commands that are needed to get the new results (model, metrics, plots).
 
-The same logic applies to other possible experiment adjustments — edit source
-code, update datasets — you do the changes, use `dvc repro`, and DVC runs what
-needs to be run.
+The same logic applies to other possible adjustments — edit source code, update
+datasets — you do the changes, use `dvc repro`, and DVC runs what needs to be
+run.
 
-## Comparing experiments
+## Comparing changes
 
 Finally, we are now ready to compare everything! DVC has a few commands to see
-metrics and parameter changes, and to visualize plots, for one or more
-experiments. Let's compare the current "bigrams" run with the last committed
+metrics and parameter changes, and to visualize plots, for one or more pipeline
+iterations. Let's compare the current "bigrams" run with the last committed
 "baseline" iteration:
 
 ```dvc
@@ -218,23 +224,27 @@ commit.
 
 ```dvc
 $ dvc metrics diff
-Path         Metric    Value    Change
-scores.json  auc       0.61314  0.07139
+Path         Metric    Old      New      Change
+scores.json  avg_prec  0.52048  0.55259  0.03211
+scores.json  roc_auc   0.9032   0.91536  0.01216
 ```
 
-And finally, we can compare `precision recall` curves with a single command!
+And finally, we can compare `precision recall` and `roc` curves with a single
+command!
 
 ```dvc
-$ dvc plots diff -x recall -y precision
+$ dvc plots diff
 file:///Users/dvc/example-get-started/plots.html
 ```
 
-![](/img/plots_prc_get_started.svg)
+![](/img/plots_prc_get_started.svg) ![](/img/plots_roc_get_started.svg)
 
 All these commands also accept
 [Git revisions](https://git-scm.com/docs/gitrevisions) (commits, tags, branch
-names) to compare. This is a powerful mechanism for navigating experiments to
-see the history, to pick the best ones, etc.
+names) to compare. This is a powerful mechanism for navigating ML pipeline
+iterations.
 
-> See `dvc plots diff` for more info on its options, such as `-x` and `-y` used
-> above.
+For even more quick and powerful ways to run and track many experiments within
+your ML project, see [Experiments](/doc/tutorials/get-started/experiments).
+
+> See `dvc plots diff` for more info on its options.

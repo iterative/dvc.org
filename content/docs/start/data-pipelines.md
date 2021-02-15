@@ -207,7 +207,7 @@ with the same set of options:
 
 ```dvc
 $ dvc run -n train \
-          -p train.seed,train.n_estimators \
+          -p train.seed,train.n_estimators,train.min_samples_split \
           -d src/train.py -d data/features \
           -o model.pkl \
           python src/train.py data/features model.pkl
