@@ -12,12 +12,12 @@ tooltip: >-
 # Workspace
 
 A data science project consists of data obtained from many different sources.
-Most of the time it needs to convert the the format of this data into a form
-that is required by the training models and supplying to data science / machine
-learning workflows. Sometimes it needs to be split into multiple files or
-directories or (as the project structure needs) have different versions for
-different requirements. e.g. A smaller / simplified version might be required in
-protoyping for faster feedback and shorter training times.
+Most of the time it needs to convert the format of this data into a form that is
+required by the training models and supplying to data science / machine learning
+workflows. Sometimes it needs to be split into multiple files or directories or
+(as the project structure needs) have different versions for different
+requirements. e.g. A smaller / simplified version might be required in
+prototyping for faster feedback and shorter training times.
 
 These activities all involve to change the machine learning / data science
 project structure in unforeseeable ways and tracking them manually becomes
@@ -39,7 +39,7 @@ general machine learning file system can be tracked (`dvc commit`).
 (`dvc run`). Data and model files can be sent to or retrieved from
 <abbr>remotes</abbr> (`dvc push`, `dvc pull`) and can be removed (`dvc remove`,
 `dvc gc`) from the workspace. DVC supports all typical operations of files and
-directories of a file sytem through its commands.
+directories of a file system through its commands.
 
 Behind the scene these operations of a <abbr>DVC project</abbr> uses
 <abbr>metafiles</abbr> to track the content and dependencies.
