@@ -353,7 +353,6 @@ These are the fields that are accepted in each stage:
 | `metrics`        | List of [metrics files](/doc/command-reference/metrics), and optionally, whether or not this metrics file is <abbr>cached</abbr> (`true` by default). See the `--metrics-no-cache` (`-M`) option of `dvc run`.                                                                            |
 | `plots`          | List of [plot metrics](/doc/command-reference/plots), and optionally, their default configuration (subfields matching the options of `dvc plots modify`), and whether or not this plots file is <abbr>cached</abbr> ( `true` by default). See the `--plots-no-cache` option of `dvc run`. |
 | `frozen`         | Whether or not this stage is frozen from reproduction                                                                                                                                                                                                                                     |
-| `checkpoint`     | Set to `true` to let DVC know this stage registers [in-code checkpoint](/doc/user-guide/experiment-management#checkpoints-in-source-code) experiments.                                                                                                                                    |
 | `always_changed` | Whether or not this stage is considered as changed by commands such as `dvc status` and `dvc repro`. `false` by default                                                                                                                                                                   |
 | `meta`           | (Optional) arbitrary metadata can be added manually with this field. Any YAML content is supported. `meta` contents are ignored by DVC, but they can be meaningful for user processes that read or write `.dvc` files directly.                                                           |
 | `desc`           | (Optional) user description for this stage. This doesn't affect any DVC operations.                                                                                                                                                                                                       |
@@ -374,11 +373,12 @@ validation and auto-completion.
 > Notice that these are a subset of those in `.dvc` file
 > [output entries](/doc/user-guide/project-structure/dvc-files#output-entries).
 
-| Field     | Description                                                                                                                                |
-| --------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| `cache`   | Whether or not this file or directory is <abbr>cached</abbr> (`true` by default). See the `--no-commit` option of `dvc add`.               |
-| `persist` | Whether the output file/dir should remain in place while `dvc repro` runs (`false` by default: outputs are deleted when `dvc repro` starts |
-| `desc`    | (Optional) user description for this output. This doesn't affect any DVC operations.                                                       |
+| Field        | Description                                                                                                                                                                        |
+| ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `cache`      | Whether or not this file or directory is <abbr>cached</abbr> (`true` by default). See the `--no-commit` option of `dvc add`.                                                       |
+| `persist`    | Whether the output file/dir should remain in place while `dvc repro` runs (`false` by default: outputs are deleted when `dvc repro` starts                                         |
+| `desc`       | (Optional) user description for this output. This doesn't affect any DVC operations.                                                                                               |
+| `checkpoint` | Set to `true` to let DVC know that this output is associated with [in-code checkpoints](/doc/user-guide/experiment-management#checkpoints-in-source-code) (for `dvc experiments`). |
 
 ## dvc.lock file
 

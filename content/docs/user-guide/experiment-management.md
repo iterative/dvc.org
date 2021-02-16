@@ -74,7 +74,7 @@ track the progress in deep learning techniques such as evolving neural networks.
 This kind of experiment is also derived fom your latest project version, but it
 tracks a series of variations (the checkpoints). You interact with them using
 `dvc exp run`, `dvc exp resume`, and `dvc exp reset` (see also the `checkpoint`
-field of `dvc.yaml`).
+field of `dvc.yaml` outputs).
 
 <details>
 
