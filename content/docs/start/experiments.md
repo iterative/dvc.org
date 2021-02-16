@@ -19,7 +19,7 @@ how it compares.
 `dvc exp run` makes it even easier to try a new experiment:
 
 ```dvc
-$ dvc exp run --params featurize.max_features=3000
+$ dvc exp run --set-param featurize.max_features=3000
 ```
 
 <details>
@@ -27,7 +27,7 @@ $ dvc exp run --params featurize.max_features=3000
 ### 💡 Expand to see what this command does.
 
 `dvc exp run` is similar to `dvc repro` but with some added conveniences for
-running experiments. The `--params` flag sets the values for
+running experiments. The `--set-param` (or `-S`) flag sets the values for
 [parameters](/doc/command-reference/params) as a shortcut to editing
 `params.yaml`.
 
@@ -77,15 +77,15 @@ the classifier. We can define all the combinations we want to try without
 executing anything using the `--queue` flag:
 
 ```dvc
-$ dvc exp run --queue --params train.min_samples_split=8
+$ dvc exp run --queue --set-param train.min_samples_split=8
 Queued experiment 'd3f6d1e' for future execution.
-$ dvc exp run --queue --params train.min_samples_split=64
+$ dvc exp run --queue --set-param train.min_samples_split=64
 Queued experiment 'f1810e0' for future execution.
-$ dvc exp run --queue --params train.min_samples_split=2 --params train.n_estimators=100
+$ dvc exp run --queue --set-param train.min_samples_split=2 --set-param train.n_estimators=100
 Queued experiment '7323ea2' for future execution.
-$ dvc exp run --queue --params train.min_samples_split=8
+$ dvc exp run --queue --set-param train.min_samples_split=8
 Queued experiment 'c605382' for future execution.
-$ dvc exp run --queue --params train.min_samples_split=64
+$ dvc exp run --queue --set-param train.min_samples_split=64
 Queued experiment '0cdee86' for future execution.
 ```
 
