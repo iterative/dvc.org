@@ -14,5 +14,6 @@ optional arguments:
   -v, --verbose    Be verbose.
   --summary        Show summary of the changes.
   -d, --with-deps  Checkout all dependencies of the specified target.
+  -R, --recursive  Checkout all subdirectories of the specified directory.
   -f, --force      Do not prompt when removing working directory files.
   --relink         Recreate links or copies from cache to workspace.
