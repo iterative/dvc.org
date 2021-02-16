@@ -2,10 +2,10 @@
 title: February '21 Heartbeat
 date: 2021-02-12
 description: |
-  Monthly updates are here! read all about our growing team, 
+  Monthly updates are here! Read all about our growing team, 
   our CEO's interview on The New Stack, integration with spaCy and more!
 descriptionLong: |
-  Monthly updates are here! read all about our growing team, 
+  Monthly updates are here! Read all about our growing team, 
   our CEO's interview on The New Stack, integration with spaCy and more!
 picture: 2021-02-11/feb21cover.png
 author: jeny_defigueiredo
@@ -165,8 +165,8 @@ https://twitter.com/mihail_eric/status/1357014486377324547?s=20
 
 You're all caught up! See you at the next Community Gems 💎!
 
-Do you have any use case questions or need support? Join us in
-[Discord](https://discord.com/invite/dvwXA2N)!
+*Do you have any use case questions or need support? Join us in
+[Discord](https://discord.com/invite/dvwXA2N)!*
 
-Head to the [DVC Forum](https://discuss.dvc.org/) to discuss you ideas and best
-practices.
+*Head to the [DVC Forum](https://discuss.dvc.org/) to discuss your ideas and best
+practices.*
