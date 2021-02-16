@@ -1,0 +1,13 @@
+usage: dvc get-url [-h] [-q | -v] url [out]
+
+Download or copy files from URL.
+Documentation: <https://man.dvc.org/get-url>
+
+positional arguments:
+  url            See `dvc import-url -h` for full list of supported URLs.
+  out            Destination path to put data to.
+
+optional arguments:
+  -h, --help     show this help message and exit
+  -q, --quiet    Be quiet.
+  -v, --verbose  Be verbose.

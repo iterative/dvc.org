@@ -1,0 +1,12 @@
+usage: dvc unprotect [-h] [-q | -v] targets [targets ...]
+
+Unprotect tracked files or directories (when hardlinks or symlinks have been enabled with `dvc config cache.type`)
+Documentation: <https://man.dvc.org/unprotect>
+
+positional arguments:
+  targets        Data files/directories to unprotect.
+
+optional arguments:
+  -h, --help     show this help message and exit
+  -q, --quiet    Be quiet.
+  -v, --verbose  Be verbose.

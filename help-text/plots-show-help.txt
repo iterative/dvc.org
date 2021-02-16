@@ -1,0 +1,30 @@
+usage: dvc plots show [-h] [-q | -v] [-t [<path>]] [-x <field>] [-y <field>]
+                      [--no-header] [--title <text>] [--x-label <text>]
+                      [--y-label <text>] [-o <path>] [--show-vega]
+                      [targets [targets ...]]
+
+Generate plots from metrics files.
+Documentation: <https://man.dvc.org/plots/show>
+
+positional arguments:
+  targets               Files to visualize (supports any file, even when not
+                        found as `plots` in `dvc.yaml`). Shows all plots by
+                        default.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -q, --quiet           Be quiet.
+  -v, --verbose         Be verbose.
+  -t [<path>], --template [<path>]
+                        Special JSON or HTML schema file to inject with the
+                        data. See <https://man.dvc.org/plots#plot-
+                        templates>
+  -x <field>            Field name for X axis.
+  -y <field>            Field name for Y axis.
+  --no-header           Provided CSV or TSV datafile does not have a header.
+  --title <text>        Plot title.
+  --x-label <text>      X axis label
+  --y-label <text>      Y axis label
+  -o <path>, --out <path>
+                        Destination path to save plots to
+  --show-vega           Show output in Vega format.

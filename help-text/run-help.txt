@@ -1,0 +1,55 @@
+usage: dvc run [-h] [-q | -v] [-d <path>] [-n NAME] [-o <filename>]
+               [-O <filename>] [-p [<filename>:]<params_list>] [-m <path>]
+               [-M <path>] [--plots <path>] [--plots-no-cache <path>]
+               [-w <path>] [--no-exec] [-f] [--no-run-cache] [--no-commit]
+               [--outs-persist <filename>]
+               [--outs-persist-no-cache <filename>] [--always-changed]
+               [--external] [--desc <text>]
+               ...
+
+Generate a stage file from a command and execute the command.
+Documentation: <https://man.dvc.org/run>
+
+positional arguments:
+  command               Command to execute.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -q, --quiet           Be quiet.
+  -v, --verbose         Be verbose.
+  -d <path>, --deps <path>
+                        Declare dependencies for reproducible cmd.
+  -n NAME, --name NAME  Stage name.
+  -o <filename>, --outs <filename>
+                        Declare output file or directory.
+  -O <filename>, --outs-no-cache <filename>
+                        Declare output file or directory (do not put into DVC
+                        cache).
+  -p [<filename>:]<params_list>, --params [<filename>:]<params_list>
+                        Declare parameter to use as additional dependency.
+  -m <path>, --metrics <path>
+                        Declare output metrics file.
+  -M <path>, --metrics-no-cache <path>
+                        Declare output metrics file (do not put into DVC
+                        cache).
+  --plots <path>        Declare output plot file.
+  --plots-no-cache <path>
+                        Declare output plot file (do not put into DVC cache).
+  -w <path>, --wdir <path>
+                        Directory within your repo to run your command in.
+  --no-exec             Only create stage file without actually running it.
+  -f, --force           Overwrite existing stage
+  --no-run-cache        Execute the command even if this stage has already
+                        been run with the same
+                        command/dependencies/outputs/etc before.
+  --no-commit           Don't put files/directories into cache.
+  --outs-persist <filename>
+                        Declare output file or directory that will not be
+                        removed upon repro.
+  --outs-persist-no-cache <filename>
+                        Declare output file or directory that will not be
+                        removed upon repro (do not put into DVC cache).
+  --always-changed      Always consider this DVC-file as changed.
+  --external            Allow outputs that are outside of the DVC repository.
+  --desc <text>         User description of the stage (optional). This doesn't
+                        affect any DVC operations.

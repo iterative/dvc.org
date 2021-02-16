@@ -1,0 +1,12 @@
+usage: dvc install [-h] [-q | -v] [--use-pre-commit-tool]
+
+Install DVC git hooks into the repository.
+Documentation: <https://man.dvc.org/install>
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -q, --quiet           Be quiet.
+  -v, --verbose         Be verbose.
+  --use-pre-commit-tool
+                        Install DVC hooks using pre-commit (https://pre-
+                        commit.com) if it is installed.

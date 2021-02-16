@@ -1,0 +1,14 @@
+usage: dvc move [-h] [-q | -v] src dst
+
+Rename or move a DVC controlled data file or a directory.
+It renames and modifies the corresponding DVC-file to reflect the changes.
+Documentation: <https://man.dvc.org/move>
+
+positional arguments:
+  src            Source path to a data file or directory.
+  dst            Destination path.
+
+optional arguments:
+  -h, --help     show this help message and exit
+  -q, --quiet    Be quiet.
+  -v, --verbose  Be verbose.

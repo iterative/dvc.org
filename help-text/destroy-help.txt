@@ -1,0 +1,10 @@
+usage: dvc destroy [-h] [-q | -v] [-f]
+
+Remove DVC-files, local DVC config and data cache.
+Documentation: <https://man.dvc.org/destroy>
+
+optional arguments:
+  -h, --help     show this help message and exit
+  -q, --quiet    Be quiet.
+  -v, --verbose  Be verbose.
+  -f, --force    Force destruction.

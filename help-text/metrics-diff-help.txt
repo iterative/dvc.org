@@ -1,0 +1,29 @@
+usage: dvc metrics diff [-h] [-q | -v] [--targets [<paths> [<paths> ...]]]
+                        [-R] [--all] [--show-json] [--show-md] [--no-path]
+                        [--precision <n>]
+                        [a_rev] [b_rev]
+
+Show changes in metrics between commits in the DVC repository, or between a commit and the workspace.
+Documentation: <https://man.dvc.org/metrics/diff>
+
+positional arguments:
+  a_rev                 Old Git commit to compare (defaults to HEAD)
+  b_rev                 New Git commit to compare (defaults to the current
+                        workspace)
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -q, --quiet           Be quiet.
+  -v, --verbose         Be verbose.
+  --targets [<paths> [<paths> ...]]
+                        Limit command scope to these metrics files. Using -R,
+                        directories to search metrics files in can also be
+                        given.
+  -R, --recursive       If any target is a directory, recursively search and
+                        process metrics files.
+  --all                 Show unchanged metrics as well.
+  --show-json           Show output in JSON format.
+  --show-md             Show tabulated output in the Markdown format (GFM).
+  --no-path             Don't show metric path.
+  --precision <n>       Round metrics to `n` digits precision after the
+                        decimal point. Rounds to 5 digits by default.

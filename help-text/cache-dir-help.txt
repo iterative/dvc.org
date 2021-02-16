@@ -1,0 +1,20 @@
+usage: dvc cache dir [-h] [-q | -v] [--global | --system | --local] [-u]
+                     [value]
+
+Manage cache settings.
+Documentation: <https://man.dvc.org/cache/dir>
+
+positional arguments:
+  value          Path to cache directory. Relative paths are resolved relative
+                 to the current directory and saved to config relative to the
+                 config file location. If no path is provided, it returns the
+                 current cache directory.
+
+optional arguments:
+  -h, --help     show this help message and exit
+  -q, --quiet    Be quiet.
+  -v, --verbose  Be verbose.
+  --global       Use global config.
+  --system       Use system config.
+  --local        Use local config.
+  -u, --unset    Unset option.

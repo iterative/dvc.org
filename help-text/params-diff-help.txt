@@ -1,0 +1,19 @@
+usage: dvc params diff [-h] [-q | -v] [--all] [--show-json] [--show-md]
+                       [--no-path]
+                       [a_rev] [b_rev]
+
+Show changes in params between commits in the DVC repository, or between a commit and the workspace.
+Documentation: <https://man.dvc.org/params/diff>
+
+positional arguments:
+  a_rev          Old Git commit to compare (defaults to HEAD)
+  b_rev          New Git commit to compare (defaults to the current workspace)
+
+optional arguments:
+  -h, --help     show this help message and exit
+  -q, --quiet    Be quiet.
+  -v, --verbose  Be verbose.
+  --all          Show unchanged params as well.
+  --show-json    Show output in JSON format.
+  --show-md      Show tabulated output in the Markdown format (GFM).
+  --no-path      Don't show params path.

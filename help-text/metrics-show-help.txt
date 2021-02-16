@@ -1,0 +1,22 @@
+usage: dvc metrics show [-h] [-q | -v] [-a] [-T] [--all-commits] [--show-json]
+                        [-R]
+                        [targets [targets ...]]
+
+Print metrics, with optional formatting.
+Documentation: <https://man.dvc.org/metrics/show>
+
+positional arguments:
+  targets             Limit command scope to these metrics files. Using -R,
+                      directories to search metrics files in can also be
+                      given.
+
+optional arguments:
+  -h, --help          show this help message and exit
+  -q, --quiet         Be quiet.
+  -v, --verbose       Be verbose.
+  -a, --all-branches  Show metrics for all branches.
+  -T, --all-tags      Show metrics for all tags.
+  --all-commits       Show metrics for all commits.
+  --show-json         Show output in JSON format.
+  -R, --recursive     If any target is a directory, recursively search and
+                      process metrics files.

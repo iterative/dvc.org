@@ -1,0 +1,16 @@
+usage: dvc list [-h] [-q | -v] [-R] [--dvc-only] [--rev [<commit>]] url [path]
+
+List repository contents, including files and directories tracked by DVC and by Git.
+Documentation: <https://man.dvc.org/list>
+
+positional arguments:
+  url               Location of DVC repository to list
+  path              Path to directory within the repository to list outputs for
+
+optional arguments:
+  -h, --help        show this help message and exit
+  -q, --quiet       Be quiet.
+  -v, --verbose     Be verbose.
+  -R, --recursive   Recursively list files.
+  --dvc-only        Show only DVC outputs.
+  --rev [<commit>]  Git revision (e.g. SHA, branch, tag)

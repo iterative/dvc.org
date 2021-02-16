@@ -1,0 +1,9 @@
+usage: dvc version [-h] [-q | -v]
+
+Display the DVC version and system/environment information.
+Documentation: <https://man.dvc.org/version>
+
+optional arguments:
+  -h, --help     show this help message and exit
+  -q, --quiet    Be quiet.
+  -v, --verbose  Be verbose.

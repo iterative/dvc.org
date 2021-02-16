@@ -1,0 +1,28 @@
+usage: dvc fetch [-h] [-q | -v] [-j <number>] [-r <name>] [-a] [-T]
+                 [--all-commits] [-d] [-R] [--run-cache]
+                 [targets [targets ...]]
+
+Download cached files or directories from remote storage.
+Documentation: <https://man.dvc.org/fetch>
+
+positional arguments:
+  targets               Limit command scope to these tracked
+                        files/directories, .dvc files, or stage names.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -q, --quiet           Be quiet.
+  -v, --verbose         Be verbose.
+  -j <number>, --jobs <number>
+                        Number of jobs to run simultaneously. The default
+                        value is 4 * cpu_count(). For SSH remotes, the default
+                        is 4.
+  -r <name>, --remote <name>
+                        Remote storage to fetch from
+  -a, --all-branches    Fetch cache for all branches.
+  -T, --all-tags        Fetch cache for all tags.
+  --all-commits         Fetch cache for all commits.
+  -d, --with-deps       Fetch cache for all dependencies of the specified
+                        target.
+  -R, --recursive       Fetch cache for subdirectories of specified directory.
+  --run-cache           Fetch run history for all stages.

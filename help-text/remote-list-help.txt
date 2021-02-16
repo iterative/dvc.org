@@ -1,0 +1,12 @@
+usage: dvc remote list [-h] [--global | --system | --local] [-q | -v]
+
+List all available data remotes.
+Documentation: <https://man.dvc.org/remote/list>
+
+optional arguments:
+  -h, --help     show this help message and exit
+  --global       Use global config.
+  --system       Use system config.
+  --local        Use local config.
+  -q, --quiet    Be quiet.
+  -v, --verbose  Be verbose.

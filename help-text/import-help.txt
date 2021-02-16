@@ -1,0 +1,21 @@
+usage: dvc import [-h] [-q | -v] [-o [<path>]] [--rev [<commit>]]
+                  [--file <filename>] [--no-exec] [--desc <text>]
+                  url path
+
+Download file or directory tracked by DVC or by Git into the workspace, and track it.
+Documentation: <https://man.dvc.org/import>
+
+positional arguments:
+  url                   Location of DVC or Git repository to download from
+  path                  Path to a file or directory within the repository
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -q, --quiet           Be quiet.
+  -v, --verbose         Be verbose.
+  -o [<path>], --out [<path>]
+                        Destination path to download files to
+  --rev [<commit>]      Git revision (e.g. SHA, branch, tag)
+  --file <filename>     Specify name of the DVC-file this command will generate.
+  --no-exec             Only create DVC-file without actually downloading it.
+  --desc <text>         User description of the data (optional). This doesn't affect any DVC operations.
