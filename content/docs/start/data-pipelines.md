@@ -84,11 +84,11 @@ The command options used above mean the following:
 - `-n prepare` specifies a name for the stage. If you open the `dvc.yaml` file
   you will see a section named `prepare`.
 
-- `-p prepare.seed,prepare.split` is a special type of dependencies -
+- `-p prepare.seed,prepare.split` defines special types of dependencies -
   [parameters](/doc/command-reference/params). We'll get to them later in the
-  [Experiments](/doc/tutorials/get-started/experiments) section, but the idea is
-  that stage can depend on field values from a parameters file (`params.yaml` by
-  default):
+  [Metrics, parameters, and plots](/doc/start/metrics-parameters-plots) section,
+  but the idea is that the stage can depend on field values from a parameters
+  file (`params.yaml` by default):
 
 ```yaml
 prepare:

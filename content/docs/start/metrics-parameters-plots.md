@@ -1,32 +1,31 @@
 ---
-title: 'Get Started: ML Pipelines'
+title: 'Get Started: Metrics, Parameters, and Plots'
 ---
 
-# Get Started: ML Pipelines
+# Get Started: Metrics, Parameters, and Plots
 
-DVC makes it easy to iterate on your ML project using Git commits, tags, or
-branches. You can try different ideas quickly by tuning
-[parameters](/doc/command-reference/params), compare their performance with
-[metrics](/doc/command-reference/metrics), and visualize them with
-[plots](/doc/command-reference/plots).
+DVC makes it easy to track [metrics](/doc/command-reference/metrics), update
+[parameters](/doc/command-reference/params), and visualize performance with
+[plots](/doc/command-reference/plots). The tutorial below introduces these
+concepts, and the [Experiments](/doc/start/experiments) tutorial shows how to
+combine them to run and compare many iterations of your ML project.
 
-Read on or watch our video to see how it's done!
-
-https://youtu.be/iduHPtBncBk
+Read on to see how it's done!
 
 ## Collecting metrics
 
 First, let's see what is the mechanism to capture values for these ML
 attributes. Let's add a final evaluation stage to our
-[pipeline](/doc/tutorials/get-started/data-pipelines#dependency-graphs-dags):
+[pipeline](/doc/start/data-pipelines#dependency-graphs-dags):
 
 ```dvc
 $ dvc run -n evaluate \
           -d src/evaluate.py -d model.pkl -d data/features \
           -M scores.json \
           --plots-no-cache prc.json \
+          --plots-no-cache roc.json \
           python src/evaluate.py model.pkl \
-                 data/features scores.json prc.json
+                 data/features scores.json prc.json roc.json
 ```
 
 <details>
@@ -51,6 +50,8 @@ evaluate:
   plots:
     - prc.json:
         cache: false
+    - roc.json:
+        cache: false
 ```
 
 The biggest difference to previous stages in our pipeline is in two new
@@ -59,8 +60,8 @@ ML "telemetry". Metrics files contain scalar values (e.g. `AUC`) and plots files
 contain matrices and data series (e.g. `ROC curves` or model loss plots) that
 are meant to be visualized and compared.
 
-> With `cache: false`, DVC skips caching the output, as we want `scores.json`
-> and `prc.json` to be versioned by Git.
+> With `cache: false`, DVC skips caching the output, as we want `scores.json`,
+> `prc.json`, and `roc.json` to be versioned by Git.
 
 </details>
 
@@ -100,7 +101,7 @@ into `roc.json` for an additional plot.
 Let's save this iteration, so we can compare it later:
 
 ```dvc
-$ git add scores.json prc.json
+$ git add scores.json prc.json roc.json
 $ git commit -a -m "Create evaluation stage"
 ```
 
@@ -173,11 +174,10 @@ train:
   min_samples_split: 2
 ```
 
-## Tuning and running
+## Updating and running
 
-We are definitely not happy with the `AUC` value we got so far! Let's adjust our
-parameters and run the pipeline again. Edit the `params.yaml` file to use
-bigrams and increase the number of features:
+Let's edit the `params.yaml` file to use bigrams and increase the number of
+features:
 
 ```diff
  featurize:
@@ -202,10 +202,10 @@ run.
 
 ## Comparing changes
 
-Finally, we are now ready to compare everything! DVC has a few commands to see
-metrics and parameter changes, and to visualize plots, for one or more pipeline
-iterations. Let's compare the current "bigrams" run with the last committed
-"baseline" iteration:
+Finally, let's see how the updates improved performance. DVC has a few commands
+to see metrics and parameter changes, and to visualize plots, for one or more
+pipeline iterations. Let's compare the current "bigrams" run with the last
+committed "baseline" iteration:
 
 ```dvc
 $ dvc params diff
@@ -236,12 +236,12 @@ file:///Users/dvc/example-get-started/plots.html
 
 ![](/img/plots_prc_get_started.svg) ![](/img/plots_roc_get_started.svg)
 
-All these commands also accept
-[Git revisions](https://git-scm.com/docs/gitrevisions) (commits, tags, branch
-names) to compare. This is a powerful mechanism for navigating ML pipeline
-iterations.
-
-For even more quick and powerful ways to run and track many experiments within
-your ML project, see [Experiments](/doc/tutorials/get-started/experiments).
-
 > See `dvc plots diff` for more info on its options.
+
+> All these commands also accept
+> [Git revisions](https://git-scm.com/docs/gitrevisions) (commits, tags, branch
+> names) to compare.
+
+Now that you know the basics, see [Experiments](/doc/start/experiments) to tune
+parameters or make other changes across many iterations of your pipeline and
+compare them all at once!

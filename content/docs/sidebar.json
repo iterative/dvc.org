@@ -53,7 +53,7 @@
         }
       },
       {
-        "slug": "ml-pipelines",
+        "slug": "metrics-parameters-plots",
         "tutorials": {
           "katacoda": "https://katacoda.com/dvc/courses/get-started"
         }
