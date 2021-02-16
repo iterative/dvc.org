@@ -165,8 +165,8 @@ https://twitter.com/mihail_eric/status/1357014486377324547?s=20
 
 You're all caught up! See you at the next Community Gems 💎!
 
-*Do you have any use case questions or need support? Join us in
-[Discord](https://discord.com/invite/dvwXA2N)!*
+_Do you have any use case questions or need support? Join us in
+[Discord](https://discord.com/invite/dvwXA2N)!_
 
-*Head to the [DVC Forum](https://discuss.dvc.org/) to discuss your ideas and best
-practices.*
+_Head to the [DVC Forum](https://discuss.dvc.org/) to discuss your ideas and
+best practices._
