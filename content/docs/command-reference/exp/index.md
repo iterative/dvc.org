@@ -39,3 +39,11 @@ positional arguments:
 
 > Note that DVC assumes that experiments are deterministic (see **Avoiding
 > unexpected behavior** in `dvc run`).
+
+## Options
+
+- `-h`, `--help` - prints the usage/help message, and exit.
+
+- `-q`, `--quiet` - do not write anything to standard output.
+
+- `-v`, `--verbose` - displays detailed tracing information.
