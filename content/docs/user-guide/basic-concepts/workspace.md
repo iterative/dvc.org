@@ -12,24 +12,18 @@ tooltip: >-
 # Workspace
 
 A data science project consists of data obtained from many different sources.
-Most of the time it needs to convert the format of this data into a form that is
-required by the training models and supplying to data science / machine learning
-workflows. Sometimes it needs to be split into multiple files or directories or
-(as the project structure needs) have different versions for different
-requirements. e.g. A smaller / simplified version might be required in
-prototyping for faster feedback and shorter training times.
-
-These activities all involve to change the machine learning / data science
-project structure in unforeseeable ways and tracking them manually becomes
-tedious. A single workspace to manage all artifacts of a project is desirable,
-although versioning needs and managing dependencies make it increasingly
-complex.
+This data may be split into multiple files or directories or (as the project
+structure needs) have different versions for different requirements. e.g. A
+smaller / simplified version might be required in prototyping for faster
+feedback and shorter training times. A single workspace to manage all artifacts
+of a project is desirable, although versioning needs and managing dependencies
+make it increasingly complex.
 
 DVC allows a single directory to contain all your project artifacts. In the
 documentation the workspace is the _user visible_ part of the directory that
-contains all your project files e.g. raw datasets, source code, ML models, etc.
-Users work in this directory using their data and model files that and
-manipulate the contents through DVC commands.
+contains all your <abbr>project</abbr> files e.g. raw datasets, source code, ML
+models, etc. Users work in this directory using their data and model files that
+and manipulate the contents through DVC commands.
 
 Files and directories in the workspace can be added to DVC (`dvc add`) or they
 can be downloaded from external sources (`dvc get`, `dvc import`,
