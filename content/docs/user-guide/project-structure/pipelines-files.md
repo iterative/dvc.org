@@ -44,6 +44,8 @@ changed to decide whether the stage requires re-execution (see `dvc status`).
 If it writes files or dirs, they can be defined as <abbr>outputs</abbr>
 (`outs`). DVC will track them going forward (similar to using `dvc add`).
 
+> See the full stage entry [specification](#stage-entries).
+
 ### Parameter dependencies
 
 [Parameters](/doc/command-reference/params) are a special type of stage
@@ -337,7 +339,9 @@ stages:
 > Note that this feature is not compatible with [templating](#templating) at the
 > moment.
 
-## Specification
+## Stage entries
+
+These are the fields that are accepted in each stage:
 
 | Field            | Description                                                                                                                                                                                                                                                                               |
 | ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -349,6 +353,7 @@ stages:
 | `metrics`        | List of [metrics files](/doc/command-reference/metrics), and optionally, whether or not this metrics file is <abbr>cached</abbr> (`true` by default). See the `--metrics-no-cache` (`-M`) option of `dvc run`.                                                                            |
 | `plots`          | List of [plot metrics](/doc/command-reference/plots), and optionally, their default configuration (subfields matching the options of `dvc plots modify`), and whether or not this plots file is <abbr>cached</abbr> ( `true` by default). See the `--plots-no-cache` option of `dvc run`. |
 | `frozen`         | Whether or not this stage is frozen from reproduction                                                                                                                                                                                                                                     |
+| `checkpoint`     | Set to `true` to let DVC know this stage registers [in-code checkpoint](/doc/user-guide/experiment-management#checkpoints-in-source-code) experiments.                                                                                                                                    |
 | `always_changed` | Whether or not this stage is considered as changed by commands such as `dvc status` and `dvc repro`. `false` by default                                                                                                                                                                   |
 | `meta`           | (Optional) arbitrary metadata can be added manually with this field. Any YAML content is supported. `meta` contents are ignored by DVC, but they can be meaningful for user processes that read or write `.dvc` files directly.                                                           |
 | `desc`           | (Optional) user description for this stage. This doesn't affect any DVC operations.                                                                                                                                                                                                       |

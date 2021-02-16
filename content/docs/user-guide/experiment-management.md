@@ -6,19 +6,19 @@ development of data features, hyperspace exploration, deep learning
 optimization, etc. DVC helps you codify and manage all of your
 <abbr>experiments</abbr>, supporting these main approaches:
 
-1. Create [ephemeral experiments](#ephemeral-experiments) that derive from your
-   latest project version, without having to keep track manually. DVC does that
-   for you, letting you list and compare them. The best ones can be promoted,
-   and the rest archived.
-2. Place [in-code checkpoints](#checkpoints-in-source-code) that form series of
-   (ephemeral) experiments. DVC helps you capture them at runtime, and manage
-   them as batches.
-3. [Persistent experiments](#persistent-experiments) have their results
-   **committed** to Git. They can be selected from existing attempts, or created
-   from scratch.
+1. Create [experiments](#experiments) that derive from your latest project
+   version without having to track them manually. DVC does that automatically,
+   letting you list and compare them. The best ones can be promoted, and the
+   rest archived.
+2. Place in-code [checkpoints](#checkpoints-in-source-code) that mark a series
+   of variations, forming an in-depth experiment. DVC helps you capture them at
+   runtime, and manage them in batches.
+3. Apply experiments or checkpoints as [persistent](#persistent-experiments)
+   commits in your <abbr>repository</abbr>. Or create these versions from
+   scratch like typical project changes.
 
    At this point you may also want to consider the different
-   [ways to organize](#organizing-experimentats) experiments in your project (as
+   [ways to organize](#organization-patterns) experiments in your project (as
    Git branches, as folders, etc.).
 
 DVC also provides specialized features to codify and analyze experiments.
@@ -28,20 +28,20 @@ models. On the other end, [metrics](/doc/command-reference/metrics) (and
 [plots](/doc/command-reference/plots)) let you define, visualize, and compare
 meaningful measures for the experimental results.
 
-## Ephemeral experiments
+## Experiments
 
 ⚠️ This feature is only available in DVC 2.0 ⚠️
 
-`dvc exp` commands let you automatically track multiple variations to
-established DVC [pipelines](/doc/command-reference/dag), so you can review,
-compare, and restore them at any time, or roll back to the baseline. The basic
-workflow goes like this:
+`dvc exp` commands let you automatically track a variation to an established
+[data pipeline](/doc/command-reference/dag). You can create multiple isolated
+experiments this way, as well as review, compare, and restore them later, or
+roll back to the baseline. The basic workflow goes like this:
 
 - Modify <abbr>dependencies</abbr> (e.g. input data or source code),
-  <abbr>hyperparameters</abbr>, or commands (`cmd` field of `dvc.yaml`) of a
-  committed stage.
+  <abbr>hyperparameters</abbr>, or commands (`cmd` field of `dvc.yaml`) of
+  committed stages.
 - Use `dvc exp run` (instead of `repro`) to execute the pipeline. This puts the
-  experiment's results in your <abbr>workspace</abbr>, and records it under the
+  experiment's results in your <abbr>workspace</abbr>, and tracks it under the
   hood.
 - Visualize experiment configurations and results with `dvc exp show`. Repeat.
 - Use [metrics](/doc/command-reference/metrics) in your pipeline to identify the
@@ -50,13 +50,13 @@ workflow goes like this:
 
 <details>
 
-### How does DVC capture these experiments?
+### How does DVC track experiments?
 
 DVC uses actual commits under custom
 [Git references](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
-(found in `.git/refs/exps`) to keep track of ephemeral experiments. Each commit
-has the repo `HEAD` as parent. These are not pushed to the Git remote by default
-(see `dvc exp push`).
+(found in `.git/refs/exps`) to keep track of experiments created with `dvc exp`.
+Each commit has the repo `HEAD` as parent. These are not pushed to the Git
+remote by default (see `dvc exp push`).
 
 > References have a unique signature similar to the
 > [entries in the run-cache](/doc/user-guide/project-structure/internal-files#run-cache).
@@ -72,9 +72,9 @@ registers checkpoints with DVC at runtime. This allows you, for example, to
 track the progress in deep learning techniques such as evolving neural networks.
 
 This kind of experiment is also derived fom your latest project version, but it
-can contain a series of variations (the checkpoints). You mainly interact with
-them using `dvc exp run`, `dvc exp resume`, and `dvc exp reset`. See also the
-`checkpoint` field of `dvc.yaml`.
+tracks a series of variations (the checkpoints). You interact with them using
+`dvc exp run`, `dvc exp resume`, and `dvc exp reset` (see also the `checkpoint`
+field of `dvc.yaml`).
 
 <details>
 
@@ -93,14 +93,36 @@ default (see `dvc exp push`).
 When your experiments are good enough to save or share, you may want to store
 them persistently as commits in your <abbr>repository</abbr>.
 
-Whether the results were produced with `dvc repro` directly, or after an
-[ephemeral workflow](#ephemeral-experiments), the <abbr>workspace</abbr> will
-have a corresponding `dvc.yaml` and `dvc.lock` file pair. The right
-<abbr>outputs</abbr> (including [metrics](/doc/command-reference/metrics)) will
-also be present, or available via `dvc checkout`.
+Whether the results were produced with `dvc repro` directly, or after a
+`dvc exp` workflow (refer to previous sections), the `dvc.yaml` and `dvc.lock`
+pair in the <abbr>workspace</abbr> will codify the experiment as a new project
+version. The right <abbr>outputs</abbr> (including
+[metrics](/doc/command-reference/metrics)) should also be present, or available
+via `dvc checkout`.
 
-See [Get Started: Experiments](/doc/start/experiments) for a hands-on
-introduction to regular experiments.
+> 👨‍💻 See [Get Started: Experiments](/doc/start/experiments) for a hands-on
+> introduction to regular experiments.
+
+### Organization patterns
+
+DVC takes care of arranging `dvc exp` experiments and the data
+<abbr>cache</abbr> under the hood. But when it comes to full-blown persistent
+experiments, it's up to you to decide how to organize them in your project.
+These are the main alternatives:
+
+- **Git tags and branches** - use the repo's "time dimension" to distribute your
+  experiments. This makes the most sense for experiments that build on each
+  other. Helpful if the Git [revisions](https://git-scm.com/docs/revisions) can
+  be easily visualized, for example with tools
+  [like GitHub](https://docs.github.com/en/github/visualizing-repository-data-with-graphs/viewing-a-repositorys-network).
+- **Directories** - the project's "space dimension" can be structured with
+  directories (folders) to organize experiments. Useful when you want to see all
+  your experiments at the same time (without switching versions) by just
+  exploring the file system.
+- **Hybrid** - combining an intuitive directory structure with a good repo
+  branching strategy tends to be the best option for complex projects.
+  Completely independent experiments live in separate directories, while their
+  progress can be found in different branches.
 
 ## Automatic log of stage runs (run-cache)
 
@@ -114,17 +136,3 @@ or computing resources.
 ✅ This built-in feature is called <abbr>run-cache</abbr> and it can
 dramatically improve performance. It's enabled out-of-the-box (but can be
 disabled with the `--no-run-cache` command option).
-
-## Organizing experiments
-
-Automatic [stage run logs](#automatic-log-of-stage-runs-run-cache) are dumped
-without a structure in the <abbr>run-cache</abbr>.
-[Ephemeral experiments](#ephemeral-experiments) always have a linear branch
-structure (a queue) based on current `HEAD` commit. But when it comes to
-full-blown [persistent experiments](#persistent-experiments), it's up to you to
-decide how to organize them in your project. These are the main alternatives:
-
-- Branches
-- Tags
-- Directories
-- Hybrid
