@@ -179,11 +179,11 @@ This section contains the following options, which affect the project's
   > set.
 
 - `cache.shared` - permissions for newly created or downloaded cache files and
-  directories. The default is `0o664`(rw-r--r--) for files and `0o755`
-  (rwxr-xr-x) for directories. The only accepted value right now is `group`,
-  which makes DVC use `0o664` (rw-rw-r--) for files and `0o775` (rwxrwxr-x) for
-  directories, which is useful when you are using a a
-  [shared development server](/doc/use-cases/shared-development-server).
+  directories. The only accepted value right now is `group`, which makes DVC use
+  `0o664` (rw-rw-r--) for files and `0o775` (rwxrwxr-x) for directories, which
+  is useful when you are using a a
+  [shared development server](/doc/use-cases/shared-development-server). (The
+  default permissions for cache files is system dependent.)
 
 - `cache.local` - name of a _local remote_ to use as a
   [custom cache](/doc/user-guide/managing-external-data#examples) directory.
