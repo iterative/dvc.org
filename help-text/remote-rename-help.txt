@@ -1,0 +1,17 @@
+usage: dvc remote rename [-h] [--global | --system | --local] [-q | -v]
+                         name new
+
+Rename a DVC remote
+Documentation: <https://man.dvc.org/remote/rename>
+
+positional arguments:
+  name           Remote to be renamed
+  new            New name of the remote
+
+optional arguments:
+  -h, --help     show this help message and exit
+  --global       Use global config.
+  --system       Use system config.
+  --local        Use local config.
+  -q, --quiet    Be quiet.
+  -v, --verbose  Be verbose.

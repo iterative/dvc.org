@@ -1,0 +1,16 @@
+usage: dvc commit [-h] [-q | -v] [-f] [-d] [-R] [targets [targets ...]]
+
+Save changed data to cache and update DVC-files.
+Documentation: <https://man.dvc.org/commit>
+
+positional arguments:
+  targets          DVC-files to commit. Optional. (Finds all DVC-files in the
+                   workspace by default.)
+
+optional arguments:
+  -h, --help       show this help message and exit
+  -q, --quiet      Be quiet.
+  -v, --verbose    Be verbose.
+  -f, --force      Commit even if hash value for dependencies/outputs changed.
+  -d, --with-deps  Commit all dependencies of the specified target.
+  -R, --recursive  Commit cache for subdirectories of the specified directory.

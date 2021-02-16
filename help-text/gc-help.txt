@@ -1,0 +1,28 @@
+usage: dvc gc [-h] [-q | -v] [-w] [-a] [-T] [--all-commits] [-c] [-r <name>]
+              [-f] [-j <number>] [-p [<paths> [<paths> ...]]]
+
+Removes all files in the cache or a remote which are not in
+use by the specified Git revisions (defaults to just HEAD).
+Documentation: <https://man.dvc.org/gc>
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -q, --quiet           Be quiet.
+  -v, --verbose         Be verbose.
+  -w, --workspace       Keep data files used in the current workspace.
+  -a, --all-branches    Keep data files for the tips of all Git branches.
+  -T, --all-tags        Keep data files for all Git tags.
+  --all-commits         Keep data files for all Git commits.
+  -c, --cloud           Collect garbage in remote repository.
+  -r <name>, --remote <name>
+                        Remote storage to collect garbage in
+  -f, --force           Force garbage collection - automatically agree to all
+                        prompts.
+  -j <number>, --jobs <number>
+                        Number of jobs to run simultaneously. The default
+                        value is 4 * cpu_count(). For SSH remotes, the default
+                        is 4.
+  -p [<paths> [<paths> ...]], --projects [<paths> [<paths> ...]]
+                        Keep data files required by these projects in addition
+                        to the current one. Useful if you share a single cache
+                        across repos.

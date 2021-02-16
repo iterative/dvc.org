@@ -1,0 +1,13 @@
+usage: dvc remove [-h] [-q | -v] [--outs] targets [targets ...]
+
+Remove stages or .dvc files, unprotect their outputs, and erase .gitignore entries.
+Documentation: <https://man.dvc.org/remove>
+
+positional arguments:
+  targets        DVC-files to remove.
+
+optional arguments:
+  -h, --help     show this help message and exit
+  -q, --quiet    Be quiet.
+  -v, --verbose  Be verbose.
+  --outs         Remove outputs as well.

@@ -1,0 +1,15 @@
+usage: dvc remote remove [-h] [--global | --system | --local] [-q | -v] name
+
+Remove a data remote.
+Documentation: <https://man.dvc.org/remote/remove>
+
+positional arguments:
+  name           Name of the remote to remove.
+
+optional arguments:
+  -h, --help     show this help message and exit
+  --global       Use global config.
+  --system       Use system config.
+  --local        Use local config.
+  -q, --quiet    Be quiet.
+  -v, --verbose  Be verbose.

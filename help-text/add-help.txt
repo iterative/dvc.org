@@ -1,0 +1,21 @@
+usage: dvc add [-h] [-q | -v] [-R] [--no-commit] [--external] [--glob]
+               [--file <filename>] [--desc <text>]
+               targets [targets ...]
+
+Track data files or directories with DVC.
+Documentation: <https://man.dvc.org/add>
+
+positional arguments:
+  targets            Input files/directories to add.
+
+optional arguments:
+  -h, --help         show this help message and exit
+  -q, --quiet        Be quiet.
+  -v, --verbose      Be verbose.
+  -R, --recursive    Recursively add files under directory targets.
+  --no-commit        Don't put files/directories into cache.
+  --external         Allow targets that are outside of the DVC repository.
+  --glob             Allows targets containing shell-style wildcards.
+  --file <filename>  Specify name of the DVC-file this command will generate.
+  --desc <text>      User description of the data (optional). This doesn't
+                     affect any DVC operations.

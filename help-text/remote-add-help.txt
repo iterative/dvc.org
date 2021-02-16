@@ -1,0 +1,20 @@
+usage: dvc remote add [-h] [--global | --system | --local] [-q | -v] [-d] [-f]
+                      name url
+
+Add a new data remote.
+Documentation: <https://man.dvc.org/remote/add>
+
+positional arguments:
+  name           Name of the remote
+  url            Remote location. See full list of supported URLs at
+                 <https://man.dvc.org/remote>
+
+optional arguments:
+  -h, --help     show this help message and exit
+  --global       Use global config.
+  --system       Use system config.
+  --local        Use local config.
+  -q, --quiet    Be quiet.
+  -v, --verbose  Be verbose.
+  -d, --default  Set as default remote.
+  -f, --force    Force overwriting existing configs

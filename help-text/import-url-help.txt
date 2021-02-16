@@ -1,0 +1,27 @@
+usage: dvc import-url [-h] [-q | -v] [--file <filename>] [--no-exec]
+                      [--desc <text>]
+                      url [out]
+
+Download or copy file from URL and take it under DVC control.
+Documentation: <https://man.dvc.org/import-url>
+
+positional arguments:
+  url                Location of the data to download. Supported URLs:
+                     /absolute/path/to/file/or/dir
+                     relative/path/to/file/or/dir
+                     C:\\path\to\file\or\dir
+                     https://example.com/path/to/file
+                     s3://bucket/key/path
+                     gs://bucket/path/to/file/or/dir
+                     hdfs://example.com/path/to/file
+                     ssh://example.com/absolute/path/to/file/or/dir
+                     remote://remote_name/path/to/file/or/dir (see `dvc remote`)
+  out                Destination path to put files to.
+
+optional arguments:
+  -h, --help         show this help message and exit
+  -q, --quiet        Be quiet.
+  -v, --verbose      Be verbose.
+  --file <filename>  Specify name of the DVC-file this command will generate.
+  --no-exec          Only create DVC-file without actually downloading it.
+  --desc <text>      User description of the data (optional). This doesn't affect any DVC operations.

@@ -1,0 +1,12 @@
+usage: dvc unfreeze [-h] [-q | -v] targets [targets ...]
+
+Unfreeze stages or .dvc files.
+Documentation: <https://man.dvc.org/unfreeze>
+
+positional arguments:
+  targets        Stages or .dvc files to unfreeze
+
+optional arguments:
+  -h, --help     show this help message and exit
+  -q, --quiet    Be quiet.
+  -v, --verbose  Be verbose.

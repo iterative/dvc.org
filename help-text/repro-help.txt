@@ -1,0 +1,40 @@
+usage: dvc repro [-h] [-q | -v] [-f] [-s] [-c <path>] [-m] [--dry] [-i] [-p]
+                 [-P] [-R] [--no-run-cache] [--force-downstream] [--no-commit]
+                 [--downstream] [--pull] [--glob]
+                 [targets [targets ...]]
+
+Reproduce complete or partial pipelines by executing their stages.
+Documentation: <https://man.dvc.org/repro>
+
+positional arguments:
+  targets               Stages to reproduce. 'dvc.yaml' by default.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -q, --quiet           Be quiet.
+  -v, --verbose         Be verbose.
+  -f, --force           Reproduce even if dependencies were not changed.
+  -s, --single-item     Reproduce only single data item without recursive
+                        dependencies check.
+  -c <path>, --cwd <path>
+                        Directory within your repo to reproduce from. Note:
+                        deprecated by `dvc --cd <path>`.
+  -m, --metrics         Show metrics after reproduction.
+  --dry                 Only print the commands that would be executed without
+                        actually executing.
+  -i, --interactive     Ask for confirmation before reproducing each stage.
+  -p, --pipeline        Reproduce the whole pipeline that the specified stage
+                        file belongs to.
+  -P, --all-pipelines   Reproduce all pipelines in the repo.
+  -R, --recursive       Reproduce all stages in the specified directory.
+  --no-run-cache        Execute stage commands even if they have already been
+                        run with the same command/dependencies/outputs/etc
+                        before.
+  --force-downstream    Reproduce all descendants of a changed stage even if
+                        their direct dependencies didn't change.
+  --no-commit           Don't put files/directories into cache.
+  --downstream          Start from the specified stages when reproducing
+                        pipelines.
+  --pull                Try automatically pulling missing cache for outputs
+                        restored from the run-cache.
+  --glob                Allows targets containing shell-style wildcards.

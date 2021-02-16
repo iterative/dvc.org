@@ -1,0 +1,18 @@
+usage: dvc config [-h] [--global | --system | --local] [-q | -v] [-u]
+                  name [value]
+
+Get or set config options.
+Documentation: <https://man.dvc.org/config>
+
+positional arguments:
+  name           Option name (remote.name.option or section.option).
+  value          Option value.
+
+optional arguments:
+  -h, --help     show this help message and exit
+  --global       Use global config.
+  --system       Use system config.
+  --local        Use local config.
+  -q, --quiet    Be quiet.
+  -v, --verbose  Be verbose.
+  -u, --unset    Unset option.

@@ -1,0 +1,16 @@
+usage: dvc init [-h] [-q | -v] [--no-scm] [-f] [--subdir]
+
+Initialize DVC in the current directory. Expects directory
+to be a Git repository unless --no-scm option is specified.
+Documentation: <https://man.dvc.org/init>
+
+optional arguments:
+  -h, --help     show this help message and exit
+  -q, --quiet    Be quiet.
+  -v, --verbose  Be verbose.
+  --no-scm       Initiate DVC in directory that is not tracked by any SCM tool
+                 (e.g. Git).
+  -f, --force    Overwrite existing '.dvc/' directory. This operation removes
+                 local cache.
+  --subdir       Necessary for running this command inside a subdirectory of a
+                 parent SCM repository.

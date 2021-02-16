@@ -1,0 +1,34 @@
+usage: dvc status [-h] [-v] [-j <number>] [-q] [-c] [-r <name>] [-a] [-T]
+                  [--all-commits] [-d] [-R] [--show-json]
+                  [targets [targets ...]]
+
+Show changed stages, compare local cache and a remote storage.
+Documentation: <https://man.dvc.org/status>
+
+positional arguments:
+  targets               Limit command scope to these tracked
+                        files/directories, .dvc files, or stage names.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -v, --verbose         Be verbose.
+  -j <number>, --jobs <number>
+                        Number of jobs to run simultaneously. The default
+                        value is 4 * cpu_count(). For SSH remotes, the default
+                        is 4.
+  -q, --quiet           Suppresses all output. Exit with 0 if pipelines are up
+                        to date, otherwise 1.
+  -c, --cloud           Show status of a local cache compared to a remote
+                        repository.
+  -r <name>, --remote <name>
+                        Remote storage to compare local cache to
+  -a, --all-branches    Show status of a local cache compared to a remote
+                        repository for all branches.
+  -T, --all-tags        Show status of a local cache compared to a remote
+                        repository for all tags.
+  --all-commits         Show status of a local cache compared to a remote
+                        repository for all commits.
+  -d, --with-deps       Show status for all dependencies of the specified
+                        target.
+  -R, --recursive       Show status of all stages in the specified directory.
+  --show-json           Show status in JSON format.

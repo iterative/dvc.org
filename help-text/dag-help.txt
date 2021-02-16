@@ -1,0 +1,17 @@
+usage: dvc dag [-h] [-q | -v] [--dot] [--full] [-o] [target]
+
+Visualize DVC project DAG.
+Documentation: <https://man.dvc.org/dag>
+
+positional arguments:
+  target         Stage or output to show pipeline for (optional). Finds all
+                 stages in the workspace by default.
+
+optional arguments:
+  -h, --help     show this help message and exit
+  -q, --quiet    Be quiet.
+  -v, --verbose  Be verbose.
+  --dot          Print DAG with .dot format.
+  --full         Show full DAG that the target belongs too, instead of showing
+                 DAG consisting only of ancestors.
+  -o, --outs     Print output files instead of stages.

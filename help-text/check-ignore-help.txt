@@ -1,0 +1,20 @@
+usage: dvc check-ignore [-h] [-q | -v] [-d] [-a] [-n] [--stdin]
+                        [targets [targets ...]]
+
+Check whether files or directories are excluded due to `.dvcignore`.
+Documentation: <https://man.dvc.org/check-ignore>
+
+positional arguments:
+  targets             File or directory paths to check
+
+optional arguments:
+  -h, --help          show this help message and exit
+  -q, --quiet         Be quiet.
+  -v, --verbose       Be verbose.
+  -d, --details       Show the exclude patterns along with each target path.
+  -a, --all           Include the target paths which don’t match any pattern
+                      in the `--details` list.
+  -n, --non-matching  Include the target paths which don’t match any pattern
+                      in the `--details` list.
+  --stdin             Read paths from standard input instead of providing
+                      `targets`.

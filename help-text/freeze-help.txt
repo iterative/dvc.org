@@ -1,0 +1,12 @@
+usage: dvc freeze [-h] [-q | -v] targets [targets ...]
+
+Freeze stages or .dvc files.
+Documentation: <https://man.dvc.org/freeze>
+
+positional arguments:
+  targets        Stages or .dvc files to freeze
+
+optional arguments:
+  -h, --help     show this help message and exit
+  -q, --quiet    Be quiet.
+  -v, --verbose  Be verbose.

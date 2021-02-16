@@ -1,0 +1,20 @@
+usage: dvc diff [-h] [-q | -v] [--show-json] [--show-hash] [--show-md]
+                [--hide-missing]
+                [a_rev] [b_rev]
+
+Show added, modified, or deleted data between commits in the DVC repository, or between a commit and the workspace.
+Documentation: <https://man.dvc.org/diff>
+
+positional arguments:
+  a_rev           Old Git commit to compare (defaults to HEAD)
+  b_rev           New Git commit to compare (defaults to the current
+                  workspace)
+
+optional arguments:
+  -h, --help      show this help message and exit
+  -q, --quiet     Be quiet.
+  -v, --verbose   Be verbose.
+  --show-json     Format the output into a JSON
+  --show-hash     Display hash value for each entry
+  --show-md       Show tabulated output in the Markdown format (GFM).
+  --hide-missing  Hide missing cache file status.

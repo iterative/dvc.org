@@ -1,0 +1,14 @@
+usage: dvc update [-h] [-q | -v] [--rev [<commit>]] [-R] targets [targets ...]
+
+Update data artifacts imported from other DVC repositories.
+Documentation: <https://man.dvc.org/update>
+
+positional arguments:
+  targets           DVC-files to update.
+
+optional arguments:
+  -h, --help        show this help message and exit
+  -q, --quiet       Be quiet.
+  -v, --verbose     Be verbose.
+  --rev [<commit>]  Git revision (e.g. SHA, branch, tag)
+  -R, --recursive   Update all stages in the specified directory.
