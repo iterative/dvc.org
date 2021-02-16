@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState, SyntheticEvent } from 'react'
 import { useLocation } from '@reach/router'
 import cn from 'classnames'
 import { Collapse } from 'react-collapse'
@@ -50,11 +50,33 @@ const SidebarMenuItem: React.FC<ISidebarMenuItemProps> = ({
   icon,
   type
 }) => {
-  const isActive = activePaths && includes(activePaths, path)
+  const [isExpanded, setIsExpanded] = useState(
+    activePaths && includes(activePaths, path)
+  )
+
+  useEffect(() => {
+    setIsExpanded(activePaths && includes(activePaths, path))
+  }, [activePaths])
+
   const isRootParent =
     activePaths && activePaths.length > 1 && activePaths[0] === path
+
   const isLeafItem = children === undefined || children.length === 0
-  const currentLevelOnClick = (): void => onClick(isLeafItem)
+
+  const currentLevelOnClick = (
+    event: SyntheticEvent<HTMLAnchorElement>
+  ): void => {
+    if (event.currentTarget.getAttribute('aria-current') === 'page') {
+      event.preventDefault()
+      setIsExpanded(!isExpanded)
+    }
+    onClick(isLeafItem)
+  }
+
+  const bulletIconClick = (event: SyntheticEvent<HTMLSpanElement>): void => {
+    event.preventDefault()
+    setIsExpanded(!isExpanded)
+  }
 
   // Fetch a special icon if one is defined
   const IconComponent = icon && ICONS[icon]
@@ -64,13 +86,19 @@ const SidebarMenuItem: React.FC<ISidebarMenuItemProps> = ({
 
   const className = cn(
     styles.sectionLink,
-    isActive && styles.active,
+    isExpanded && styles.active,
     isRootParent && 'docSearch-lvl0',
     'link-with-focus',
     style ? styles[style] : styles.sidebarDefault,
     isLeafItem && styles.leafItem,
     // Limit the default bullet to items with no special icon
     icon ? undefined : styles.withDefaultBullet
+  )
+
+  const bulletIconClassName = cn(
+    styles.sidebarDefaultBullet,
+    isExpanded && styles.active,
+    isLeafItem && styles.sidebarLeafBullet
   )
 
   const parentElement =
@@ -82,7 +110,11 @@ const SidebarMenuItem: React.FC<ISidebarMenuItemProps> = ({
         onClick={currentLevelOnClick}
         target="_blank"
       >
-        {iconElement}
+        {iconElement ? (
+          iconElement
+        ) : (
+          <span className={bulletIconClassName}></span>
+        )}
         {label} <ExternalLinkIcon />
       </Link>
     ) : (
@@ -92,7 +124,17 @@ const SidebarMenuItem: React.FC<ISidebarMenuItemProps> = ({
         className={className}
         onClick={currentLevelOnClick}
       >
-        {iconElement}
+        {iconElement ? (
+          iconElement
+        ) : (
+          <span
+            className={bulletIconClassName}
+            onClick={bulletIconClick}
+            onKeyDown={bulletIconClick}
+            role="button"
+            tabIndex={0}
+          ></span>
+        )}
         {label}
       </Link>
     )
@@ -101,8 +143,8 @@ const SidebarMenuItem: React.FC<ISidebarMenuItemProps> = ({
     <>
       {parentElement}
       {children && (
-        <span hidden={!isActive}>
-          <Collapse isOpened={!!isActive}>
+        <span hidden={!isExpanded}>
+          <Collapse isOpened={!!isExpanded}>
             {children.map(item => (
               <SidebarMenuItem
                 key={item.path}
