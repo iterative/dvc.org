@@ -1,5 +1,7 @@
 # dvc experiments
 
+⚠️ This feature is only available in DVC 2.0 ⚠️
+
 > Aliased to `dvc exp`.
 
 A set of commands to generate and manage experiments:
