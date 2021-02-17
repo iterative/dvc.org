@@ -108,8 +108,10 @@ noted!).
 
 ![](/img/change_user_name.png)
 
-11. Click on the "Compare branches and continue" button. Enter any additional comments you      would like to put in the description and click the "Submit merge request" button. Shortly, you should see
-    a comment from github-actions appear in the Pull Request with your CML
-    report. This is a result of the function cml-send-comment in your workflow.
+11. Click on the "Compare branches and continue" button. Enter any additional
+    comments you would like to put in the description and click the "Submit
+    merge request" button. Shortly, you should see a comment from github-actions
+    appear in the Pull Request with your CML report. This is a result of the
+    function cml-send-comment in your workflow.
 
     ![](/img/gitlab_cml_getting_started_end.png)
