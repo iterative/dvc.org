@@ -170,14 +170,83 @@ $ git add dvc.lock params.yaml prc.json roc.json scores.json
 $ git commit -a -m "Preserve best random forest experiment"
 ```
 
-> `dvc push` only uploads persistent experiments that have been committed to
-> Git. The other experiments will not be pushed to the remote. See
-> `dvc exp push` and `dvc exp pull` for how to share other experiments.
+## Sharing experiments
+
+After committing the best experiment to our Git branch, we can
+[store and share](/doc/start/data-versioning#storing-and-sharing) it remotely
+just like any other iteration of the pipeline.
+
+```dvc
+dvc push
+git push
+```
+
+<details>
+
+### 💡 Expand to try out sharing with simple remotes.
+
+Let's set up both a DVC remote to save the experiment data and a Git remote to
+save the code, parameters, and other metadata associated with the experiment.
+DVC supports various types of remote storage (local file system, SSH, Amazon S3,
+Google Cloud Storage, HTTP, HDFS, etc.). In many cases, the Git remote might be
+a central Git server (GitHub, GitLab, etc.). Let's set up both the DVC and Git
+remotes on our local filesystem to try them out:
+
+```dvc
+$ mkdir -p /tmp/dvcstore
+$ dvc remote add -d myremote /tmp/dvcstore
+$ git commit .dvc/config -m "Configure local remote"
+$ mkdir -p /tmp/gitremote
+$ git clone . /temp/gitremote
+$ git remote add gitremote /tmp/gitremote
+$ dvc push
+$ git push gitremote master
+```
+
+`dvc push` saves the promoted experiment data to the default DVC remote in
+`/tmp/dvstore`.
+
+`git push gitremote master` saves the code, parameters, and associated metadata
+from the experiment committed to our `master` branch to the Git remote named
+`gitremote` in `/tmp/gitremote`.
+
+Read on to learn how to use remote storage to share other experiments with the
+configured DVC and Git remotes.
+
+</details>
+
+Experiments that have not been promoted will not be stored or shared remotely
+through `dvc push` or `git push`.
+
+`dvc exp push` enables saving experiments to remote storage without needing to
+promote them and commit them in your Git branch.
+
+```dvc
+$ dvc exp push gitremote exp-bfe64
+Pushed experiment 'exp-bfe64' to Git remote 'gitremote'.
+```
+
+`dvc exp list` shows all experiments that have been saved.
+
+```dvc
+$ dvc exp list gitremote --all
+72ed9cd:
+        exp-bfe64
+```
+
+`dvc exp pull` retrieves the experiment from remote storage.
+
+```dvc
+$ dvc exp pull gitremote exp-bfe64
+Pulled experiment 'exp-bfe64' from Git remote 'gitremote'.
+```
+
+> All these commands take a Git remote as an argument. A default DVC remote is
+> also required to share the experiment data.
 
 ## Cleaning up
 
-After committing the best experiment to Git, let's take another look at the
-experiments table:
+Let's take another look at the experiments table:
 
 ```dvc
 $ dvc exp show --no-timestamp
