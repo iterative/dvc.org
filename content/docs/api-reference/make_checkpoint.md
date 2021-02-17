@@ -19,10 +19,10 @@ while True:
 
 ## Description
 
-To track successive steps in a longer
-[experiment](/doc/user-guide/experiment-management), you can write your code so
-it registers checkpoints with DVC during runtime. This function should be called
-by the code in stages executes by `dvc exp run` (see `cmd` field of `dvc.yaml`).
+To track successive steps in a longer <abbr>experiment</abbr>, you can write
+your code so it registers checkpoints with DVC during runtime. This function
+should be called by the code in stages executes by `dvc exp run` (see `cmd`
+field of `dvc.yaml`).
 
 > Note that for non-Python code, the alternative is to write a
 > `.dvc/tmp/DVC_CHECKPOINT` signal file.
@@ -41,8 +41,8 @@ stages:
 ```
 
 The code in `iterate.py` will execute continuously increment an integer number
-saved in `int.txt` (starting at 0). Every 100 loops, it makes a checkpoint with
-`dvc exp`:
+saved in `int.txt` (starting at 0). Every 100 loops, it makes a checkpoint for
+`dvc experiments`:
 
 ```py
 import os
@@ -68,4 +68,14 @@ while True:
 
     except KeyboardInterrupt:
         exit()
+```
+
+Using `dvc repro` with a continuous process such as this may not be helpful, as
+you know the output file will keep changing every time. Instead you can execute
+the stage with `dvc exp run` and end the process when you decide:
+
+```dvc
+$ dvc exp run
+# Wait a few seconds
+^C # Kill the process with Ctrl + C
 ```
