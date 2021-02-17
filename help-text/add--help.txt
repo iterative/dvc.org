@@ -10,8 +10,6 @@ positional arguments:
 
 optional arguments:
   -h, --help         show this help message and exit
-  -q, --quiet        Be quiet.
-  -v, --verbose      Be verbose.
   -R, --recursive    Recursively add files under directory targets.
   --no-commit        Don't put files/directories into cache.
   --external         Allow targets that are outside of the DVC repository.
