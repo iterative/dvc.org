@@ -73,9 +73,9 @@ Does this sound like you or someone you know? Be in touch!
 
 [Susan Hall](https://thenewstack.io/author/susanhall/) of
 [The New Stack.io](https://thenewstack.io/) interviewed our very own CEO,
-[Dmitry Petrov](https://twitter.com/fullstackml), discussing the needs
-of ML engineers and how Iterative.ai makes tools to enable version control and
-CI/CD for versioning data and ML models.
+[Dmitry Petrov](https://twitter.com/fullstackml), discussing the needs of ML
+engineers and how Iterative.ai makes tools to enable version control and CI/CD
+for versioning data and ML models.
 
 > "ML engineers, they still need collaboration. They need GitHub for
 > collaboration, they need this CI/CD system to resolve [issues] between each
@@ -94,8 +94,8 @@ image="/uploads/images/2021-02-16/newstack_image.png"/>
 
 So you saw the post further up. 👆🏽 Curious about developer advocacy or what to
 look for in a hire for this position?
-[Elle O'Brien](https://twitter.com/drelleobrien) dove into this recently
-with [Alexey Grigorev](https://twitter.com/Al_Grigor) (author of a
+[Elle O'Brien](https://twitter.com/drelleobrien) dove into this recently with
+[Alexey Grigorev](https://twitter.com/Al_Grigor) (author of a
 [Data Science Bookcamp](https://mlbookcamp.com/))
 [in this podcast](https://www.youtube.com/watch?v=jv5W4jXk4P4) on
 [DataTalks.club](http://datatalks.club/) You can watch it here below. 👇🏼
@@ -164,7 +164,8 @@ reproducibility and why Spell fans are DVC fans, and vice versa. 🔄
 https://twitter.com/mihail_eric/status/1357014486377324547?s=20
 
 You're all caught up! See you at the next Community Gems 💎!
-___
+
+---
 
 _Do you have any use case questions or need support? Join us in
 [Discord](https://discord.com/invite/dvwXA2N)!_
