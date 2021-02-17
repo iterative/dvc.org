@@ -35,41 +35,37 @@ Let's consider the following `dvc.yaml` file:
 stages:
   foo:
     cmd: python iterate.py
-    params:
-      - start
     outs:
       - int.txt:
           checkpoint: true
 ```
 
-> See `dvc params` for information on stage parameters.
-
-Here's the example code that the stage above will execute. It continuously
-increments an integer value in `int.txt`, starting at the `start` param. It
-makes a checkpoint with `dvc exp` every time the value adds 100:
+The code in `iterate.py` will execute continuously increment an integer number
+saved in `int.txt` (starting at 0). Every 100 loops, it makes a checkpoint with
+`dvc exp`:
 
 ```py
 import os
-from dvc.api import make_checkpoint
 
-output_file = "int.txt"
-start = _load_param('start') # Load start from params.yaml
+from dvc.api import make_checkpoint
 
 while True:
     try:
-        if os.path.exists(output_file):
-            with open(output_file, "r") as fd:
+        if os.path.exists("int.txt"):
+            with open("int.txt", "r") as fd:
                 try:
-                    iter_ = int(fd.read()) + 1
+                    i_ = int(fd.read()) + 1
                 except ValueError:
-                    iter_ = start
+                    i_ = 0
         else:
-            iter_ = start
+            i_ = 0
 
-        with open(output_file, "w") as fd:
-            fd.write(f"{iter_}")
+        with open("int.txt", "w") as fd:
+            fd.write(f"{i_}")
 
-        if iter_ % 100 == 0:
+        if i_ % 100 == 0:
             make_checkpoint()
-    # ...
+
+    except KeyboardInterrupt:
+        exit()
 ```
