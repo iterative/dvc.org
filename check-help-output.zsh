@@ -31,7 +31,8 @@ check_output_diff () {
             diff=$(git diff ${out_f} | tail -n +7)
             the_body="The diff in the command output is\\n\`\`\`diff\\n${diff}\\n\`\`\`"
             echo "$the_body"
-            gh issue create --title "cmd: [auto] changes in \`dvc ${cmd} ${subcmd} --help\` should be reflected to command reference" --body "${the_body}"
+            # Uncomment the following to create an issue. 
+            # gh issue create --title "cmd: [auto] changes in \`dvc ${cmd} ${subcmd} --help\` should be reflected to command reference" --body "${the_body}"
         fi
         # git add ${f}
         # git commit -m "[auto] updated help output for ${f}"
