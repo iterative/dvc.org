@@ -47,7 +47,7 @@ This is me. 🙋🏻‍♀️ I'll be writing Heartbeat!)
 
 [**Roger Parent**](https://www.linkedin.com/in/rogermparent/) has already been a
 big part of building DVC and [CML](https://cml.dev/). He has been a primary
-developer of a Visual Studio code extension that interfaces with the DVC Python
+developer of a UI that interfaces with the DVC Python
 application to provide an interface with the Experiments feature that's coming
 out with DVC 2.0. We are so excited to have him joining us full time as Software
 Engineer.
@@ -124,7 +124,7 @@ image="/uploads/images/2021-02-16/spacy_integration.jpg"/>
 
 This month two great articles came out regarding the integration of DAGsHub and
 DVC. First, this article:
-[Datasets Should Behave Like Git Repositories](https://dagshub.com/blog/datasets-should-behave-like-git-repositories/)
+[Datasets Should Behave Like Git Repo
 walks you through the steps to use DVC in your data versioning. The following
 image shows the dependencies and how you simply need to do a `dvc update` each
 time your dataset or model changes to track the process.
