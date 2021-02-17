@@ -2,8 +2,7 @@
 
 ⚠️ This feature is only available in DVC 2.0 ⚠️
 
-A set of commands to generate and manage
-[experiments](/doc/user-guide/experiment-management):
+A set of commands to generate and manage <abbr>experiment</abbr>:
 [run](/doc/command-reference/exp/run), [show](/doc/command-reference/exp/show),
 [diff](/doc/command-reference/exp/diff),
 [apply](/doc/command-reference/exp/apply),
