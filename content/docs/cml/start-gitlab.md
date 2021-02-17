@@ -86,8 +86,6 @@ noted!).
 6. In your text editor of choice, open `train.py` and edit line 16 to
    `depth = 5`.
 
-   ![](/img/change_depth.png)
-
 7. Commit and push the changes using:
 
    ```bash
@@ -110,7 +108,7 @@ noted!).
 
 ![](/img/change_user_name.png)
 
-11. Click on the "Compare branches and continue" button. Shortly, you should see
+11. Click on the "Compare branches and continue" button. Enter any additional comments you      would like to put in the description and click the "Submit merge request" button. Shortly, you should see
     a comment from github-actions appear in the Pull Request with your CML
     report. This is a result of the function cml-send-comment in your workflow.
 
