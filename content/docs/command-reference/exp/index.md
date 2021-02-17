@@ -36,8 +36,8 @@ positional arguments:
 
 ## Description
 
-> Note that DVC assumes that experiments are deterministic (see **Avoiding
-> unexpected behavior** in `dvc run`).
+> Note that DVC assumes that <abbr>experiments</abbr> are deterministic (see
+> **Avoiding unexpected behavior** in `dvc run`).
 
 ## Options
 
