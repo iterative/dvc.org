@@ -50,7 +50,7 @@ file. So, you can pass the same seed value or filename to multiple stages in the
 pipeline.
 
 ```yaml
-var:
+vars:
     train_matrix: train.pkl
     test_matrix: test.pkl
     seed: 20210215
