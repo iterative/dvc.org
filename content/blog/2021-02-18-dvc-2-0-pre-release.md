@@ -86,9 +86,8 @@ It is quite common to define pipeline parameters in a config file or the
 parameters file `params.yaml` instead of in the pipeline file `dvc.yaml`.
 Parameters defined in `params.yaml` can also be used in `dvc.yaml`.
 
-Params.yaml:
-
 ```yaml
+# params.yaml
 models:
   us:
     thresh: 10
