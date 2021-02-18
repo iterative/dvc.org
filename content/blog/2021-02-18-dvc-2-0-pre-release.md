@@ -115,7 +115,7 @@ of `dvc run` for more details.
 ### Iterating over params with foreach stages
 
 Iterating over params was a frequently requested feature. Now users can define
-multiple similar stages with a templetized command.
+multiple similar stages with a templatized command.
 
 ```yaml
 stages:
