@@ -158,7 +158,7 @@ feature extraction:
 
 ```dvc
 $ dvc run -n featurize \
-          -p fr.max_fr,fr.ngrams \
+          -p featurize.max_features,featurize.ngrams \
           -d src/featurization.py -d data/prepared \
           -o data/features \
           python src/featurization.py data/prepared data/features
@@ -190,8 +190,8 @@ stages:
 +    - data/prepared
 +    - src/featurization.py
 +    params:
-+    - fr.max_fr
-+    - fr.ngrams
++    - featurize.max_features
++    - featurize.ngrams
 +    outs:
 +    - data/features
 ```

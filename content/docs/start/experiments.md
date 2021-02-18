@@ -21,7 +21,7 @@ how it compares.
 `dvc exp run` makes it even easier to try a new experiment:
 
 ```dvc
-$ dvc exp run --set-param fr.max_fr=3000
+$ dvc exp run --set-param featurize.max_features=3000
 ```
 
 <details>
@@ -33,12 +33,12 @@ running experiments. The `--set-param` (or `-S`) flag sets the values for
 [parameters](/doc/command-reference/params) as a shortcut to editing
 `params.yaml`.
 
-Check that the `fr.max_fr` value has been updated in `params.yaml`:
+Check that the `featurize.max_features` value has been updated in `params.yaml`:
 
 ```diff
- fr:
--  max_fr: 1500
-+  max_fr: 3000
+ featurize:
+-  max_features: 1500
++  max_features: 3000
 ```
 
 Any edits to dependencies (parameters, source code, data) will be reflected in
@@ -54,8 +54,8 @@ Path         Metric    Value    Change
 scores.json  avg_prec  0.56191  0.009322
 scores.json  roc_auc   0.93345  0.018087
 
-Path         Param      Value    Change
-params.yaml  fr.max_fr  3000     1500
+Path         Param                   Value    Change
+params.yaml  featurize.max_features  3000     1500
 ```
 
 ## Iterating over experiments
