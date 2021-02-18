@@ -7,7 +7,7 @@ description: |
 
 descriptionLong: |
   The new release is a result of our learning from our users. There are four
-  major features are coming:
+  major features coming:
 
   🔗 ML pipeline templating and iterative foreach stages
 
@@ -20,7 +20,7 @@ descriptionLong: |
 picture: 2021-02-18/dvc-2-0-pre-release.png
 pictureComment: DVC 2.0 Pre-Release
 author: dmitry_petrov
-commentsUrl: https://discuss.dvc.org/t/dvc-3-years-anniversary-and-1-0-pre-release/374
+commentsUrl: https://discuss.dvc.org/t/dvc-2-0-pre-release/681
 tags:
   - Release
   - MLOps
@@ -183,7 +183,7 @@ Reproduced experiment(s): exp-80655
 Experiment results have been applied to your workspace.
 ```
 
-In the examples above, hyperparamteres were changed automaticaly by option
+In the examples above, hyperparamters were changed automaticaly by option
 `--set-param`. User can make this changes manualy by modifying the file. The
 same way _any code or data files can be changed_ and `dvc exp run` will capture
 the changes.
@@ -204,6 +204,14 @@ $ dvc exp show --no-pager --no-timestamp \
 │ └── exp-bb55c │ 0.57462 │ 3000                   │ 2                │
 └───────────────┴─────────┴────────────────────────┴──────────────────┘
 ```
+
+Under the hood DVC uses Git to store the experiments meta-information.
+Straight-forward implementation on top of Git should include branches and
+auto-commits in the branches. This approach over-pollutes the branch namespace
+very quickly. To avoid this issue, we introduced Git custom references `exps`
+the same way as GitHub uses Git custom references `pulls` to track pull
+requests. This is an interesting technical topic that deserves a separate blog
+post. Below you can see how it works.
 
 No artificial branches, only custome references `exps` (do not worry if you
 don't understand this part - it is an implementation detail):
@@ -246,7 +254,7 @@ Remove all the experiments that were not used:
 $ dvc exp gc --workspace --force
 ```
 
-## Model checkpoints tracking
+## Model checkpoints
 
 ML model checkpoints are an essential part of deep learning. ML engineers prefer
 to save the model files (or weights) at checkpoints during a training process
@@ -267,35 +275,128 @@ processes to the next level - every checkpoint is reproducible.
 
 This is how you define checkpoints with live-metrics:
 
+```dvc
+$ dvc stage add -n train \
+        -d users.csv -d train.py \
+        -p dropout,epochs,lr,process \
+        --checkpoint model.h5 \
+        --live logs \
+    python train.py
+
+Creating 'dvc.yaml'
+Adding stage 'train' in 'dvc.yaml'
 ```
 
-```
+Note, we use `dvc stage add` command instead of `dvc run`. Starting from DVC 2.0
+we extracting all stage specific functionality under `dvc stage` unbrella.
+`dvc run` is still working but it wll be depricated in the following DVC version
+(most likely in 3.0).
 
-Start and interrupt training process:
+Start the training process and interrupt it after 5 epoches:
 
-```
-
+```dvc
+$ dvc exp run
+'users.csv.dvc' didn't change, skipping
+Running stage 'train':
+> python train.py
+...
+^CTraceback (most recent call last):
+...
+KeyboardInterrupt
 ```
 
 Navigate in checkpoints:
 
+```dvc
+$ dvc exp show --no-pager --no-timestamp
+┏━━━━━━━━━━━━━━━┳━━━━━━┳━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━┳━━━┳━━━━━━━━┳━━━┓
+┃ Experiment    ┃ step ┃   loss ┃ accuracy ┃ val_loss ┃ … ┃ epochs ┃ … ┃
+┡━━━━━━━━━━━━━━━╇━━━━━━╇━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━━╇━━━╇━━━━━━━━╇━━━┩
+│ workspace     │    4 │ 2.0702 │  0.30388 │    2.025 │ … │ 5      │ … │
+│ master        │    - │      5 │  2.1e-07 │     logs │ … │ 0.124  │ … │
+│ │ ╓ exp-e15bc │    4 │ 2.0702 │  0.30388 │    2.025 │ … │ 5      │ … │
+│ │ ╟ 5ea8327   │    4 │ 2.0702 │  0.30388 │    2.025 │ … │ 5      │ … │
+│ │ ╟ bc0cf02   │    3 │ 2.1338 │  0.23988 │   2.0883 │ … │ 5      │ … │
+│ │ ╟ f8cf03f   │    2 │ 2.1989 │  0.17932 │   2.1542 │ … │ 5      │ … │
+│ │ ╟ 7575a44   │    1 │ 2.2694 │  0.12833 │    2.223 │ … │ 5      │ … │
+│ ├─╨ a72c526   │    0 │ 2.3416 │   0.0959 │   2.2955 │ … │ 5      │ … │
+└───────────────┴──────┴────────┴──────────┴──────────┴───┴────────┴───┘
 ```
 
+Each of the checkpoint above is a separate experiment with all data, code,
+paramaters and metrics. You can use the same `dvc exp apply` command to extract
+any of these.
+
+Another run just continues this process. You can see how accuracy metrics is
+increasing - DVC does not remove the model/checkpoint and training code trains
+on top of it:
+
+```dvc
+$ dvc exp run
+Existing checkpoint experiment 'exp-e15bc' will be resumed
+...
+^C
+KeyboardInterrupt
+
+$ dvc exp show --no-pager --no-timestamp
+┏━━━━━━━━━━━━━━━┳━━━━━━┳━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━┳━━━┳━━━━━━━━┳━━━┓
+┃ Experiment    ┃ step ┃   loss ┃ accuracy ┃ val_loss ┃ … ┃ epochs ┃ … ┃
+┡━━━━━━━━━━━━━━━╇━━━━━━╇━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━━╇━━━╇━━━━━━━━╇━━━┩
+│ workspace     │    9 │ 1.7845 │  0.58125 │   1.7381 │ … │ 5      │ … │
+│ master        │    - │      5 │  2.1e-07 │     logs │ … │ 0.124  │ … │
+│ │ ╓ exp-e15bc │    9 │ 1.7845 │  0.58125 │   1.7381 │ … │ 5      │ … │
+│ │ ╟ 205a8d3   │    9 │ 1.7845 │  0.58125 │   1.7381 │ … │ 5      │ … │
+│ │ ╟ dd23d96   │    8 │ 1.8369 │  0.54173 │   1.7919 │ … │ 5      │ … │
+│ │ ╟ 5bb3a1f   │    7 │ 1.8929 │  0.49108 │   1.8474 │ … │ 5      │ … │
+│ │ ╟ 6dc5610   │    6 │  1.951 │  0.43433 │   1.9046 │ … │ 5      │ … │
+│ │ ╟ a79cf29   │    5 │ 2.0088 │  0.36837 │   1.9637 │ … │ 5      │ … │
+│ │ ╟ bf276cf   │    4 │ 2.0702 │  0.30388 │    2.025 │ … │ 5      │ … │
+│ │ ╟ 5ea8327   │    4 │ 2.0702 │  0.30388 │    2.025 │ … │ 5      │ … │
+│ │ ╟ bc0cf02   │    3 │ 2.1338 │  0.23988 │   2.0883 │ … │ 5      │ … │
+│ │ ╟ f8cf03f   │    2 │ 2.1989 │  0.17932 │   2.1542 │ … │ 5      │ … │
+│ │ ╟ 7575a44   │    1 │ 2.2694 │  0.12833 │    2.223 │ … │ 5      │ … │
+│ ├─╨ a72c526   │    0 │ 2.3416 │   0.0959 │   2.2955 │ … │ 5      │ … │
+└───────────────┴──────┴────────┴──────────┴──────────┴───┴────────┴───┘
 ```
 
-Get back to any version:
+Afrer modifing code, data or params the same process can be resumed. DVC
+recognizes the change and shows it (see experiment `b363267`):
 
+```dvc
+$ vi train.py     # modify code
+$ vi params.yaml  # modify params
+
+$ dvc exp run
+Modified checkpoint experiment based on 'exp-e15bc' will be created
+...
+
+$ dvc exp show --no-pager --no-timestamp
+┏━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━┳━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━┳━━━┳━━━━━━━━┳━━━┓
+┃ Experiment            ┃ step ┃   loss ┃ accuracy ┃ val_loss ┃ … ┃ epochs ┃ … ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━╇━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━━╇━━━╇━━━━━━━━╇━━━┩
+│ workspace             │   13 │ 1.5841 │  0.69262 │   1.5381 │ … │ 15     │ … │
+│ master                │    - │      5 │  2.1e-07 │     logs │ … │ 0.124  │ … │
+│ │ ╓ exp-7ff06         │   13 │ 1.5841 │  0.69262 │   1.5381 │ … │ 15     │ … │
+│ │ ╟ 6c62fec           │   12 │ 1.6325 │  0.67248 │   1.5857 │ … │ 15     │ … │
+│ │ ╟ 4baca3c           │   11 │ 1.6817 │  0.64855 │   1.6349 │ … │ 15     │ … │
+│ │ ╟ b363267 (2b06de7) │   10 │ 1.7323 │  0.61925 │   1.6857 │ … │ 15     │ … │
+│ │ ╓ 2b06de7           │    - │      - │          │          │   │        │   │
+│ │ ╟ 205a8d3           │    - │      - │          │          │   │        │   │
+│ │ ╟ dd23d96           │    - │      - │          │          │   │        │   │
+│ │ ╟ 5bb3a1f           │    - │      - │          │          │   │        │   │
+│ │ ╟ 6dc5610           │    - │      - │          │          │   │        │   │
+│ │ ╟ a79cf29           │    - │      - │          │          │   │        │   │
+│ │ ╟ bf276cf           │    - │      - │          │          │   │        │   │
+│ │ ╟ 5ea8327           │    - │      - │          │          │   │        │   │
+│ │ ╟ bc0cf02           │    - │      - │          │          │   │        │   │
+│ │ ╟ f8cf03f           │    - │      - │          │          │   │        │   │
+│ │ ╟ 7575a44           │    - │      - │          │          │   │        │   │
+│ ├─╨ a72c526           │    - │      - │          │          │   │        │   │
+└───────────────────────┴──────┴────────┴──────────┴──────────┴───┴────────┴───┘
 ```
 
-```
-
-Under the hood DVC uses Git to store the checkpoint meta-information.
-Straight-forward implementation of checkpoints on top of Git should include
-branches and auto-commits in the branches. This approach over-pollutes the
-branch namespace very quickly. To avoid this issue, we introduced Git custom
-references `exps` the same way as GitHub uses Git custom references `pulls` to
-track pull requests. This is an interesting technical topic that deserves a
-separate blog post. Please follow us if you are interested.
+Sometimes you might need training the model from scratch. Reset option removes
+the checkpoint file before the traning: `dvc exp run --reset`
 
 ## Metrics logging
 
@@ -415,7 +516,7 @@ logs.json  val_loss      13.70596  3.29033  -10.41563
 
 The difference between a particular commit/branch/tag or between two commits:
 
-```
+```dvc
 $ dvc metrics diff --target logs.json HEAD^ 47b85c
 Path       Metric        Old       New      Change
 logs.json  accuracy      0.995     0.998    0.003
