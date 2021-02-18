@@ -52,7 +52,7 @@ application to provide an interface with the Experiments feature that's coming
 out with DVC 2.0. We are so excited to have him joining us full time as Software
 Engineer.
 
-![Alt Text](https://media.giphy.com/media/vAvWgk3NCFXTa/giphy.gif)
+![](https://media.giphy.com/media/vAvWgk3NCFXTa/giphy.gif)
 
 ## Open Positions
 
@@ -157,7 +157,7 @@ by [Aleksey Bilogur](https://twitter.com/ResidentMario) , reviews the process of
 using DVC with Spell for managing changing datasets, enabling team-wide data
 reproducibility and why Spell fans are DVC fans, and vice versa. 🔄
 
-![Alt Text](https://media.giphy.com/media/GM8PrUsm92hRC/giphy.gif)
+![](https://media.giphy.com/media/GM8PrUsm92hRC/giphy.gif)
 
 ## Tweet Love ❤️
 
