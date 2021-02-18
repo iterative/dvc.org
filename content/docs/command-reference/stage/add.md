@@ -29,8 +29,8 @@ resulting outputs. They can be combined to capture simple data workflows,
 organize data science projects, or build detailed machine learning pipelines.
 
 A stage name is required and can be provided using the `-n` (`--name`) option.
-The other available [options](#options) are mostly meant to describe different
-kinds of stage [dependencies and outputs](#dependencies-and-outputs). The
+Most of the other [options](#options) help with defining different kinds of
+[dependencies and outputs](#dependencies-and-outputs) for the stage. The
 remaining terminal input provided to `dvc stage add` after `-`/`--` flags will
 become the required [`command` argument](#the-command-argument).
 
