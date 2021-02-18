@@ -148,7 +148,7 @@ overhead - each experiment run requires additional Git commands
 We introduce lightweight experiments in DVC 2.0! This is the way of
 auto-tracking without any overhead from ML engineers:
 
-```yaml
+```dvc
 $ dvc exp run
 ...
 Reproduced experiment(s): exp-0c0f7
