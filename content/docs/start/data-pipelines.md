@@ -158,7 +158,7 @@ feature extraction:
 
 ```dvc
 $ dvc run -n featurize \
-          -p featurize.max_features,featurize.ngrams \
+          -p fr.max_fr,fr.ngrams \
           -d src/featurization.py -d data/prepared \
           -o data/features \
           python src/featurization.py data/prepared data/features
@@ -190,8 +190,8 @@ stages:
 +    - data/prepared
 +    - src/featurization.py
 +    params:
-+    - featurize.max_features
-+    - featurize.ngrams
++    - fr.max_fr
++    - fr.ngrams
 +    outs:
 +    - data/features
 ```
@@ -207,7 +207,7 @@ with the same set of options:
 
 ```dvc
 $ dvc run -n train \
-          -p train.seed,train.n_estimators,train.min_samples_split \
+          -p train.seed,train.n_est,train.min_split \
           -d src/train.py -d data/features \
           -o model.pkl \
           python src/train.py data/features model.pkl
@@ -240,7 +240,7 @@ parameters for the training stage:
 $ vim params.yaml
 ```
 
-Change `n_estimators` to `100` and run `dvc repro`, you should see:
+Change `n_est` to `100` and run `dvc repro`, you should see:
 
 ```dvc
 $ dvc repro
