@@ -181,7 +181,7 @@ authentication is needed.
    Accounts**. Click **+ CREATE SERVICE ACCOUNT**, on the next screen, enter
    **Service account name** e.g. "My DVC project", and click **Create**. Select
    **Continue** at the next **Service account permissions** page, click at **+
-   CREATE KEY**, select **P12** and **Create**. Download the generated `.p12`
+   CREATE KEY**, select **JSON** and **Create**. Download the generated `.json`
    key file to a safe location.
 
    ⚠️ Be careful about sharing the key file with others.
@@ -191,8 +191,7 @@ authentication is needed.
 
    ```dvc
    $ dvc remote modify myremote gdrive_use_service_account true
-   $ dvc remote modify myremote gdrive_service_account_email <service acct email>
-   $ dvc remote modify myremote gdrive_service_account_p12_file_path path/to/file.p12
+   $ dvc remote modify myremote gdrive_service_account_json_file_path path/to/file.json
    ```
 
 ## Authorization
