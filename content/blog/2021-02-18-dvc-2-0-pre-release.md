@@ -75,10 +75,10 @@ stages:
         - ${train_matrix}
 ```
 
-Also, it gives an ability to localize all important parameters in a single `var`
-block and play with them. This is a natural thing to do for scenarios like NLP
-or when hyperparameter optimization is happening not only in the model training
-code but in the data processing as well.
+Also, it gives an ability to localize all important parameters in a single
+`vars` block, and play with them. This is a natural thing to do for scenarios
+like NLP or when hyperparameter optimization is happening not only in the model
+training code but in the data processing as well.
 
 ### Pipeline params from params.yaml
 
