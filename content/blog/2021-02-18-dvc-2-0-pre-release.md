@@ -167,7 +167,7 @@ Reproduced experiment(s): exp-a814a
 
 See all the runs:
 
-```yaml
+```dvc
 $ dvc exp show --no-pager
 ```
 
