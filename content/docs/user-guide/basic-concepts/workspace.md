@@ -34,7 +34,8 @@ necessary (`dvc push`, `dvc pull`). DVC supports all typical operations of files
 and directories of a file system through its commands.
 
 Behind the scene these operations of a <abbr>DVC project</abbr> uses
-<abbr>metafiles</abbr> to track the content and dependencies.
+<abbr>metafiles</abbr> like the `.dvc/` directory, `dvc.yaml` or files with
+`*.dvc` extension to track the content and dependencies.
 
 ## Further Reading
 
