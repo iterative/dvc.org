@@ -367,9 +367,9 @@ $ dvc stage add -n parse \
           Rscript parsingxml.R data/Posts.xml data/Posts.csv
 ```
 
-These stages are not run yet, so there are no outputs yet. But we can still see
-how they are connected into a pipeline (given their outputs and dependencies)
-with `dvc dag`:
+These stages are not run yet, so there are no outputs. But we can still see how
+they are connected into a pipeline (given their outputs and dependencies) with
+`dvc dag`:
 
 ```dvc
 $ dvc dag
