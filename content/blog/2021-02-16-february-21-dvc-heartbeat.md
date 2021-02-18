@@ -51,7 +51,7 @@ developer of a UI that interfaces with the DVC Python application to provide an
 interface with the Experiments feature that's coming out with DVC 2.0. We are so
 excited to have him joining us full time as Software Engineer.
 
-![Alt Text](https://media.giphy.com/media/vAvWgk3NCFXTa/giphy.gif)
+![Search](https://media.giphy.com/media/vAvWgk3NCFXTa/giphy.gif)
 
 ## Open Positions
 
@@ -142,7 +142,7 @@ tells how their new DAGsHub storage is a DVC remote that requires zero
 configuration (!) and will allow for team and organization access controls as
 well as easy visibility.
 
-![Alt Text](https://media.giphy.com/media/Ftz07proVX6Rq/giphy.gif)
+![Friends](https://media.giphy.com/media/Ftz07proVX6Rq/giphy.gif)
 
 ### Model Management and ML Workflow Orchestration with DVC and Apache Airflow 🇩🇪 ❗️
 
@@ -160,7 +160,7 @@ by [Aleksey Bilogur](https://twitter.com/ResidentMario) , reviews the process of
 using DVC with Spell for managing changing datasets, enabling team-wide data
 reproducibility and why Spell fans are DVC fans, and vice versa. 🔄
 
-![Alt Text](https://media.giphy.com/media/GM8PrUsm92hRC/giphy.gif)
+![Fans](https://media.giphy.com/media/GM8PrUsm92hRC/giphy.gif)
 
 ## Tweet Love ❤️
 
