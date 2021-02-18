@@ -1,18 +1,18 @@
-# run
+# stage add
 
-Helper command to add or update _stages_ in `dvc.yaml`. Requires a name and a
-command.
+Helper command to add or update <abbr>stages</abbr> in `dvc.yaml`. Requires a
+name and a command.
 
 ## Synopsis
 
 ```usage
 usage: dvc stage add [-h] [-q | -v] -n <name> [-d <path>] [-o <path>]
-               [-O <path>] [-p [<path>:]<params_list>] [-m <path>]
-               [-M <path>] [--plots <path>] [--plots-no-cache <path>]
-               [-w <path>] [-f]
-               [--outs-persist <path>] [--outs-persist-no-cache <path>]
-               [--always-changed] [--external] [--desc <text>]
-               command
+                     [-O <path>] [-p [<path>:]<params_list>] [-m <path>]
+                     [-M <path>] [--plots <path>] [--plots-no-cache <path>]
+                     [-w <path>] [-f]
+                     [--outs-persist <path>] [--outs-persist-no-cache <path>]
+                     [--always-changed] [--external] [--desc <text>]
+                     command
 
 positional arguments:
   command               Command to execute.

@@ -1,6 +1,6 @@
-# plots
+# stage
 
-A set of commands to add and list stages:
+A set of commands to add and list <abbr>stages</abbr>:
 [add](/doc/command-reference/stage/add).
 
 ## Synopsis
