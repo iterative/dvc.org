@@ -94,9 +94,8 @@ models:
     filename: 'model-us.hdf5'
 ```
 
-Pipeline file `dvc.yaml`:
-
 ```yaml
+# dvc.yaml
 stages:
   build-us:
     cmd: >-
