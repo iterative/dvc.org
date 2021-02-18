@@ -5,4 +5,4 @@ links:
   - https://twitter.com/jendefig
 ---
 
-Community Manager at [http://dvc.org](http://dvc.org)
+Community Manager at [DVC](http://dvc.org)
