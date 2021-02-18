@@ -48,7 +48,7 @@ noted!).
    > However, to follow along the commands, we recommend cloning your fork to
    > your local workstation
 
-3. Copy the Clone with HTTPS as shown in the image below, and then in your
+3. Go back to your forked `example_cml` project.  Copy the Clone with HTTPS as shown in the image below, and then in your
    terminal, type the following command, replacing <user_name> with your own
    from GitLab.
 
