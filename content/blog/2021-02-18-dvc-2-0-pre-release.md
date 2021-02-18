@@ -2,20 +2,20 @@
 title: DVC 2.0 Pre-Release
 date: 2021-02-17
 description: |
-  Today, we're announcing DVC 2.0 pre-release. We'll share learnings from our
+  Today, we're announcing DVC 2.0 pre-release. We'll share lessons from our
   journey and how these will be reflected in the coming release.
 
 descriptionLong: |
-  The new release is a result of our learnings from our users. There are four
+  The new release is a result of our learning from our users. There are four
   major features are coming:
 
-  🔗 ML pipelines templating and iterative foreach stages
+  🔗 ML pipeline templating and iterative foreach stages
 
   🧪 Lightweight ML experiments
 
   📍 ML model checkpoints
 
-  📈 Dvc-live - metrics logging
+  📈 Dvc-live - new open-source library for metrics logging
 
 picture: 2021-02-18/dvc-2-0-pre-release.png
 pictureComment: DVC 2.0 Pre-Release
@@ -37,17 +37,17 @@ through pip:
 $ pip install --upgrade --pre dvc
 ```
 
-## ML pipelines parametrization and foreach stages
+## ML pipelines parameterization and foreach stages
 
 After introducing the multi-stage pipeline file `dvc.yaml`, it was quickly
-adopted among DVC users. The DVC team got tons of positive feedback from users
+adopted among our users. The DVC team got tons of positive feedback from them,
 as well as feature requests.
 
-### Parameters
+### Pipeline parameters from `vars`
 
-The most requested feature was the ability to use parameters in the pipeline
-file. So, you can pass the same seed value or filename to multiple stages in the
-pipeline.
+The most requested feature was the ability to use parameters in `dvc.yaml`. For
+example. So, you can pass the same seed value or filename to multiple stages in
+the pipeline.
 
 ```yaml
 vars:
@@ -80,11 +80,12 @@ Also, it gives an ability to localize all important parameters in a single
 like NLP or when hyperparameter optimization is happening not only in the model
 training code but in the data processing as well.
 
-### Pipeline params from params.yaml
+### Pipeline parameters from params files
 
-It is quite common to define pipeline parameters in a config file or the
-parameters file `params.yaml` instead of in the pipeline file `dvc.yaml`.
-Parameters defined in `params.yaml` can also be used in `dvc.yaml`.
+It is quite common to define pipeline parameters in a config file or a
+parameters file (like `params.yaml`) instead of in the pipeline file `dvc.yaml`
+itself. These parameters defined in `params.yaml` can also be used in
+`dvc.yaml`.
 
 ```yaml
 # params.yaml
@@ -107,14 +108,14 @@ stages:
 ```
 
 DVC properly tracks params dependencies for each stage starting from the
-previous DVC version 1.0. See
-[params option](https://dvc.org/doc/command-reference/run#for-displaying-and-comparing-data-science-experiments)
-in `dvc run` for more details.
+previous DVC version 1.0. See the
+[`--params` option](/doc/command-reference/run#for-displaying-and-comparing-data-science-experiments)
+of `dvc run` for more details.
 
 ### Iterating over params with foreach stages
 
 Iterating over params was a frequently requested feature. Now users can define
-multiple similar stages by a single command.
+multiple similar stages with a templetized command.
 
 ```yaml
 stages:
@@ -144,36 +145,105 @@ overhead - each experiment run requires additional Git commands
 `git add/commit`, and comparing all experiments is difficult.
 
 We introduce lightweight experiments in DVC 2.0! This is the way of
-auto-tracking without any overhead from ML engineers:
+auto-tracking without any overhead from ML engineers.
+
+⚠️ Note, ML experiment is an experimental feature in the coming release. It
+means the commands might change a bit even after the release.
+
+Run an ML experiment with a new hyperparameter from `params.yaml`:
 
 ```dvc
-$ dvc exp run
-...
-Reproduced experiment(s): exp-0c0f7
-…
-$ dvc exp run --params learning_rate=0.03
-Reproduced experiment(s): exp-bc5cd
+$ dvc exp run --set-param featurize.max_features=3000
 
+Reproduced experiment(s): exp-bb55c
+Experiment results have been applied to your workspace.
 
-$ dvc exp run --params learning_rate=0.025
-Reproduced experiment(s): exp-49181
+$ dvc exp diff
+Path         Metric    Value    Change
+scores.json  auc       0.57462  0.0072197
 
-$ vi train.py  # edit code
-$ dvc exp run --params learning_rate=0.025
-Reproduced experiment(s): exp-a814a
+Path         Param                   Value    Change
+params.yaml  featurize.max_features  3000     1500
 ```
+
+More experiments:
+
+```dvc
+$ dvc exp run --set-param featurize.max_features=4000
+Reproduced experiment(s): exp-9bf22
+Experiment results have been applied to your workspace.
+
+$ dvc exp run --set-param featurize.max_features=5000
+Reproduced experiment(s): exp-63ee0
+Experiment results have been applied to your workspace.
+
+$ dvc exp run --set-param featurize.max_features=5000 \
+                --set-param featurize.ngrams=3
+Reproduced experiment(s): exp-80655
+Experiment results have been applied to your workspace.
+```
+
+In the examples above, hyperparamteres were changed automaticaly by option
+`--set-param`. User can make this changes manualy by modifying the file. The
+same way _any code or data files can be changed_ and `dvc exp run` will capture
+the changes.
 
 See all the runs:
 
 ```dvc
-$ dvc exp show --no-pager
+$ dvc exp show --no-pager --no-timestamp \
+        --include-params featurize.max_features,featurize.ngrams
+┏━━━━━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━┓
+┃ Experiment    ┃     auc ┃ featurize.max_features ┃ featurize.ngrams ┃
+┡━━━━━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━┩
+│ workspace     │ 0.56359 │ 5000                   │ 3                │
+│ master        │  0.5674 │ 1500                   │ 2                │
+│ ├── exp-80655 │ 0.56359 │ 5000                   │ 3                │
+│ ├── exp-63ee0 │  0.5515 │ 5000                   │ 2                │
+│ ├── exp-9bf22 │ 0.56448 │ 4000                   │ 2                │
+│ └── exp-bb55c │ 0.57462 │ 3000                   │ 2                │
+└───────────────┴─────────┴────────────────────────┴──────────────────┘
 ```
 
-Any of the runs can be easily obtained with code, data and models:
+No artificial branches, only custome references `exps` (do not worry if you
+don't understand this part - it is an implementation detail):
 
 ```dvc
-$ dvc apply exp-49181 Changes for experiment 'exp-0c0f7' have been applied to
-your current workspace.
+$ git branch
+* master
+
+$ git show-ref
+5649f62d845fdc29e28ea6f7672dd729d3946940 refs/exps/exec/EXEC_APPLY
+5649f62d845fdc29e28ea6f7672dd729d3946940 refs/exps/exec/EXEC_BRANCH
+5649f62d845fdc29e28ea6f7672dd729d3946940 refs/exps/71/67904d89e116f28daf7a6e4c0878268117c893/exp-80655
+f16e7b7c804cf52d91d1d11850c15963fb2a8d7b refs/exps/97/d69af70c6fb4bc59aefb9a87437dcd28b3bde4/exp-63ee0
+0566d42cddb3a8c4eb533f31027f0febccbbc2dd refs/exps/91/94265d5acd847e1c439dd859aa74b1fc3d73ad/exp-bb55c
+9bb067559583990a8c5d499d7435c35a7c9417b7 refs/exps/49/5c835cd36772123e82e812d96eabcce320f7ec/exp-9bf22
+```
+
+The best experiment can be promoted to the workspace and commited to Git.
+
+```dvc
+$ dvc exp apply exp-bb55c
+$ git add .
+$ git commit -m 'optimize max feature size'
+```
+
+Alternatively, an experiment can be promoted to a branch (`big_fr_size` branch
+in this case):
+
+```dvc
+$ dvc exp branch exp-80655 big_fr_size
+Git branch 'big_fr_size' has been created from experiment 'exp-c695f'.
+To switch to the new branch run:
+
+	git checkout big_fr_size
+```
+
+Remove all the experiments that were not used:
+
+```dvc
+$ dvc exp gc --workspace --force
 ```
 
 ## Model checkpoints tracking
