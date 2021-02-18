@@ -53,15 +53,16 @@ Now you're ready to DVC!
 DVC's features can be grouped into functional components. We'll explore them one
 by one in the next few pages:
 
-- [**Data versioning**](/doc/start/data-versioning) (try this next) is the base
-  layer of DVC for large files, datasets, and machine learning models. Use a
-  regular Git workflow, but without storing large files in the repo (think "Git
-  for data"). Data is stored separately, which allows for efficient sharing.
+- [**Data and model versioning**](/doc/start/data-and-model-versioning) (try
+  this next) is the base layer of DVC for large files, datasets, and machine
+  learning models. Use a regular Git workflow, but without storing large files
+  in the repo (think "Git for data"). Data is stored separately, which allows
+  for efficient sharing.
 
-- [**Data access**](/doc/start/data-access) shows how to use data artifacts from
-  outside of the project and how to import data artifacts from another DVC
-  project. This can help to download a specific version of an ML model to a
-  deployment server or import a model to another project.
+- [**Data and model access**](/doc/start/data-and-model-access) shows how to use
+  data artifacts from outside of the project and how to import data artifacts
+  from another DVC project. This can help to download a specific version of an
+  ML model to a deployment server or import a model to another project.
 
 - [**Data pipelines**](/doc/start/data-pipelines) describe how models and other
   data artifacts are built, and provide an efficient way to reproduce them.

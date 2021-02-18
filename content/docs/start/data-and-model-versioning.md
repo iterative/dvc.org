@@ -1,6 +1,6 @@
 ---
-title: 'Get Started: Data Versioning'
-description: 'Get started with data versioning in DVC. Learn how to use a
+title: 'Get Started: Data and Model Versioning'
+description: 'Get started with data and model versioning in DVC. Learn how to use a
 regular Git workflow for datasets and ML models, without storing large files in
 Git.'
 ---
@@ -246,6 +246,16 @@ Yes, DVC is technically not even a version control system! `.dvc` files content
 defines data file versions. Git itself provides the version control. DVC in turn
 creates these `.dvc` files, updates them, and synchronizes DVC-tracked data in
 the <abbr>workspace</abbr> efficiently to match them.
+
+## Model versioning
+
+Apart from data files, DVC eases the way you work with models. Models in a
+project usually change more frequently than data files and they need to be kept
+in sync with changes in other elements of a project. Model files are no
+different than data files when it comes to tracking their versions. DVC also
+provides means to track minor changes in model files without fully checking in
+to underlying VCS. In later sections of this series, you'll see how DVC enables
+to track changes in pipelines consisting of multiple model and data files.
 
 ## Large datasets versioning
 
