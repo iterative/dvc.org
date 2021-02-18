@@ -129,8 +129,8 @@ featurize:
     - data/prepared
     - src/featurization.py
   params:
-    - fr.max_fr
-    - fr.ngrams
+    - featurize.max_features
+    - featurize.ngrams
   outs:
     - data/features
 ```
@@ -146,7 +146,7 @@ The `featurize` stage
 
 ```dvc
 $ dvc run -n featurize \
-          -p fr.max_fr,fr.ngrams \
+          -p featurize.max_features,featurize.ngrams \
           -d src/featurization.py -d data/prepared \
           -o data/features \
           python src/featurization.py data/prepared data/features
@@ -156,8 +156,9 @@ $ dvc run -n featurize \
 
 The `params` section defines the [parameter](/doc/command-reference/params)
 dependencies of the `featurize` stage. By default DVC reads those values
-(`fr.max_fr` and `fr.ngrams`) from a `params.yaml` file. But as with metrics and
-plots, parameter file names and structure can also be user and case defined.
+(`featurize.max_features` and `featurize.ngrams`) from a `params.yaml` file. But
+as with metrics and plots, parameter file names and structure can also be user
+and case defined.
 
 This is how our `params.yaml` file looks like:
 
@@ -166,8 +167,8 @@ prepare:
   split: 0.20
   seed: 20170428
 
-fr:
-  max_fr: 500
+featurize:
+  max_features: 500
   ngrams: 1
 
 train:
@@ -182,10 +183,10 @@ Let's edit the `params.yaml` file to use bigrams and increase the number of
 features:
 
 ```diff
- fr:
--  max_fr: 500
+ featurize:
+-  max_features: 500
 -  ngrams: 1
-+  max_fr: 1500
++  max_features: 1500
 +  ngrams: 2
 ```
 
@@ -211,9 +212,9 @@ committed "baseline" iteration:
 
 ```dvc
 $ dvc params diff
-Path         Param      Old    New
-params.yaml  fr.max_fr  500    1500
-params.yaml  fr.ngrams  1      2
+Path         Param                   Old    New
+params.yaml  featurize.max_features  500    1500
+params.yaml  featurize.ngrams        1      2
 ```
 
 `dvc params diff` can show how params in the workspace differ vs. the last
