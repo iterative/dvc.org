@@ -7,8 +7,6 @@ tooltip: >-
   project.
 ---
 
-<!-- keywords: data science project architecture, machine learning project architecture, machine learning workflow, data science workflow, machine learning file system, data science file system, data science project structure, machine learning project structure, notebook version control -->
-
 # Workspace
 
 A data science project consists of data obtained from many different sources.
@@ -27,13 +25,12 @@ and manipulate the contents through DVC commands.
 
 Files and directories in the workspace can be added to DVC (`dvc add`) or they
 can be downloaded from external sources (`dvc get`, `dvc import`,
-`dvc import-url`). Changes to the files, directories, notebooks, models and in
+`dvc import-url`). Changes to the files, directories, notebooks, models, and in
 general machine learning file system can be tracked (`dvc commit`) and versioned
-in Git (`dvc checkout`). <abbr>Pipelines</abbr> and <abbr>dependencies</abbr>
-between them can be defined. Data and model files can be moved to the cloud
-(`dvc remote`) and retrieved one by one when necessary (`dvc push`, `dvc pull`).
-They can be removed (`dvc remove`) from the workspace. DVC supports all typical
-operations of files and directories of a file system through its commands.
+in Git (`dvc checkout`). They can be removed (`dvc remove`) from the workspace. <abbr>Pipelines</abbr> and <abbr>dependencies</abbr> between them can be
+defined. Data and model files can be moved to the cloud and retrieved 
+when necessary (`dvc push`, `dvc pull`). DVC supports all typical operations of
+files and directories of a file system through its commands.
 
 Behind the scene these operations of a <abbr>DVC project</abbr> uses
 <abbr>metafiles</abbr> to track the content and dependencies.
