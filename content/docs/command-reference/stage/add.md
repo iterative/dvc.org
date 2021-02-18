@@ -15,7 +15,7 @@ usage: dvc stage add [-h] [-q | -v] -n <name> [-d <path>] [-o <path>]
                     command
 
 positional arguments:
-  command               Command to execute.
+  command               Command to execute
 ```
 
 ## Description
