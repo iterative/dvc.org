@@ -29,7 +29,7 @@ tags:
 
 ## Install
 
-First things first. You can install the 1.0 pre-release from the master branch
+First things first. You can install the 2.0 pre-release from the master branch
 in our repo (instruction [here](https://dvc.org/doc/install/pre-release)) or
 through pip:
 
