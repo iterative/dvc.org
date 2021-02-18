@@ -48,9 +48,9 @@ noted!).
    > However, to follow along the commands, we recommend cloning your fork to
    > your local workstation
 
-3. Go back to your forked `example_cml` project.  Copy the Clone with HTTPS as shown in the image below, and then in your
-   terminal, type the following command, replacing <user_name> with your own
-   from GitLab.
+3. Go back to your forked `example_cml` project. Copy the Clone with HTTPS as
+   shown in the image below, and then in your terminal, type the following
+   command, replacing <user_name> with your own from GitLab.
 
    ![](/img/gitlab_cml_clone.png)
 
@@ -114,4 +114,4 @@ noted!).
     appear in the Pull Request with your CML report. This is a result of the
     function cml-send-comment in your workflow.
 
-    ![](/img/gitlab_cml_getting_started_end.png)
+    ![](/img/cml_start_gitlab_end.png)
