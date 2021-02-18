@@ -85,9 +85,9 @@ $ dvc exp run --queue --set-param train.min_split=64
 Queued experiment 'f1810e0' for future execution.
 $ dvc exp run --queue --set-param train.min_split=2 --set-param train.n_est=100
 Queued experiment '7323ea2' for future execution.
-$ dvc exp run --queue --set-param train.min_split=8
+$ dvc exp run --queue --set-param train.min_split=8 --set-param train.n_est=100
 Queued experiment 'c605382' for future execution.
-$ dvc exp run --queue --set-param train.min_split=64
+$ dvc exp run --queue --set-param train.min_split=64 --set-param train.n_est=100
 Queued experiment '0cdee86' for future execution.
 ```
 
