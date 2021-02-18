@@ -50,7 +50,7 @@ noted!).
 
 3. Go back to your forked `example_cml` project. Copy the Clone with HTTPS as
    shown in the image below, and then in your terminal, type the following
-   command, replacing <user_name> with your own from GitLab.
+   command, replacing `<user_name>` with your own from GitLab.
 
    ![](/img/gitlab_cml_clone.png)
 
@@ -58,7 +58,7 @@ noted!).
    git clone https://gitlab.com/<user_name>/example_cml.git
    ```
 
-4. Change directory to example_cml
+4. Change directory to `example_cml`
 
    ```bash
    cd example_cml
@@ -106,7 +106,7 @@ noted!).
 
 10. ⚠️ Change target branch to your local branch with your username.
 
-![](/img/change_user_name.png)
+   ![](/img/change_user_name.png)
 
 11. Click on the "Compare branches and continue" button. Enter any additional
     comments you would like to put in the description and click the "Submit
