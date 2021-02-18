@@ -173,7 +173,7 @@ $ dvc exp show --no-pager
 
 Any of the runs can be easily obtained with code, data and models:
 
-```yaml
+```dvc
 $ dvc apply exp-49181 Changes for experiment 'exp-0c0f7' have been applied to
 your current workspace.
 ```
