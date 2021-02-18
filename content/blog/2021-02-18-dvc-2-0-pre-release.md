@@ -316,28 +316,109 @@ other branch.
 This approach is similar to the other metrics tracking tools with the difference
 that Git becomes a "database" or of ML experiments.
 
-In your code:
+### Generate metrics file
+
+Install the library:
+
+```dvc
+$ pip install dvclive
+```
+
+Instrument your code:
+
+```python
+import dvclive
+from dvclive.keras import DvcLiveCallback
+
+dvclive.init("logs") #, summarize=True)
+
+...
+
+model.fit(...
+          # Set up DVC-Live callback:
+          callbacks=[ DvcLiveCallback() ]
+         )
 
 ```
 
+During the training you will see the metrics files that are continiously
+populated each epoches:
+
+```dvc
+$ ls logs/
+accuracy.tsv     loss.tsv         val_accuracy.tsv val_loss.tsv
+
+$ head logs/accuracy.tsv
+timestamp	step	accuracy
+1613645582716	0	0.7360000014305115
+1613645585478	1	0.8349999785423279
+1613645587322	2	0.8830000162124634
+1613645589125	3	0.9049999713897705
+1613645590891	4	0.9070000052452087
+1613645592681	5	0.9279999732971191
+1613645594490	6	0.9430000185966492
+1613645596232	7	0.9369999766349792
+1613645598034	8	0.9430000185966492
 ```
 
-Result:
+In addition to the continious metrics files you will see the summary metrics
+file and html file with the same file prefix. The summary file conteins the
+result of the latest epoch:
 
+```dvc
+$ cat logs.json | python -m json.tool
+{
+    "step": 41,
+    "loss": 0.015958430245518684,
+    "accuracy": 0.9950000047683716,
+    "val_loss": 13.705962181091309,
+    "val_accuracy": 0.5149999856948853
+}
 ```
 
+The html file contains all the visuals for continious metrics as well as the
+summary metrics in a single page:
+
+![](/uploads/images/2021-02-18/dvclive-html.png)
+
+Note, the HTML and the summary metrics files are generating automatically for
+each. So, you can monitor model performance in realtime.
+
+### Navigation with the metrics file
+
+DVC repository is NOT required to use the live metrics functionality from the
+above. It works independently from DVC.
+
+DVC repository become usefule when the metrics and plots are commited in your
+Git repository and you need navigation around the metrics.
+
+```dvc
+$ dvc metrics diff
+????
 ```
 
-Visualize:
+The same with the plots:
 
+```dvc
+$ dvc plots diff ....
+????
 ```
 
-```
+Another nice thing about the live metrics - they work across ML experiments and
+checkpoints if properly set up in dvc stages. To set up live metrics you need to
+specify the metrics directory in `live` section of a stage:
 
-Navigate in Git history:
-
-```
-
+```yaml
+stages:
+  train:
+    cmd: python train.py
+    live:
+      logs:
+        cache: false
+        summary: true
+        report: true
+    deps:
+      - data
 ```
 
 ## Thank you!
