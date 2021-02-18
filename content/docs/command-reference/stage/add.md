@@ -12,7 +12,7 @@ usage: dvc stage add [-h] [-q | -v] -n <name> [-d <path>] [-o <path>]
                      [-w <path>] [-f]
                      [--outs-persist <path>] [--outs-persist-no-cache <path>]
                      [--always-changed] [--external] [--desc <text>]
-                     command
+                    command
 
 positional arguments:
   command               Command to execute.

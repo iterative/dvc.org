@@ -6,7 +6,7 @@ A set of commands to add and list <abbr>stages</abbr>:
 ## Synopsis
 
 ```usage
-usage: dvc stage [-h] [-q | -v] {add,list} ...
+usage: dvc stage [-h] [-q | -v] {add,list}  ...
 
 positional arguments:
   COMMAND
