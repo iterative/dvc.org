@@ -17,11 +17,11 @@ feedback and shorter training times. A single workspace to manage all artifacts
 of a project is desirable, although versioning needs and managing dependencies
 make it increasingly complex.
 
-DVC allows a single directory to contain all your project artifacts. In the
-documentation the workspace is the _user visible_ part of the directory that
-contains all your <abbr>project</abbr> files e.g. raw datasets, source code, ML
-models, etc. Users work in this directory using their data and model files that
-and manipulate the contents through DVC commands.
+DVC allows a single directory to contain all your project artifacts. The
+workspace is the directory containing _user visible_ part of your
+<abbr>project</abbr> e.g. raw datasets, source code, ML models, etc. Users work
+in this directory using their data and model files that and manipulate the
+contents through DVC commands.
 
 Files and directories in the workspace can be added to DVC (`dvc add`) or they
 can be downloaded from external sources (`dvc get`, `dvc import`,
