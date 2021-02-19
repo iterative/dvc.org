@@ -212,7 +212,7 @@ Eventually, old experiments may clutter the experiments table.
 `dvc exp gc` removes all references to old experiments:
 
 ```dvc
-$ dvc exp gc -w
+$ dvc exp gc --workspace
 $ dvc exp show -n 2 --no-timestamp --include-params train.n_est,train.min_split
 ┏━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
 ┃ Experiment ┃ avg_prec ┃ roc_auc ┃ train.n_est┃ train.min_split
