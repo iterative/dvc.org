@@ -354,7 +354,6 @@ $ dvc exp show --no-pager --no-timestamp
 │ │ ╟ 5bb3a1f   │    7 │ 1.8929 │  0.49108 │   1.8474 │ … │ 5      │ … │
 │ │ ╟ 6dc5610   │    6 │  1.951 │  0.43433 │   1.9046 │ … │ 5      │ … │
 │ │ ╟ a79cf29   │    5 │ 2.0088 │  0.36837 │   1.9637 │ … │ 5      │ … │
-│ │ ╟ bf276cf   │    4 │ 2.0702 │  0.30388 │    2.025 │ … │ 5      │ … │
 │ │ ╟ 5ea8327   │    4 │ 2.0702 │  0.30388 │    2.025 │ … │ 5      │ … │
 │ │ ╟ bc0cf02   │    3 │ 2.1338 │  0.23988 │   2.0883 │ … │ 5      │ … │
 │ │ ╟ f8cf03f   │    2 │ 2.1989 │  0.17932 │   2.1542 │ … │ 5      │ … │
@@ -390,7 +389,6 @@ $ dvc exp show --no-pager --no-timestamp
 │ │ ╟ 5bb3a1f           │    7 │ 1.8929 │  0.49108 │   1.8474 │ … │ 5      │ … │
 │ │ ╟ 6dc5610           │    6 │  1.951 │  0.43433 │   1.9046 │ … │ 5      │ … │
 │ │ ╟ a79cf29           │    5 │ 2.0088 │  0.36837 │   1.9637 │ … │ 5      │ … │
-│ │ ╟ bf276cf           │    4 │ 2.0702 │  0.30388 │    2.025 │ … │ 5      │ … │
 │ │ ╟ 5ea8327           │    4 │ 2.0702 │  0.30388 │    2.025 │ … │ 5      │ … │
 │ │ ╟ bc0cf02           │    3 │ 2.1338 │  0.23988 │   2.0883 │ … │ 5      │ … │
 │ │ ╟ f8cf03f           │    2 │ 2.1989 │  0.17932 │   2.1542 │ … │ 5      │ … │
@@ -412,7 +410,7 @@ for metrics collecting and experiment tracking such as sacred, mlflow, weight
 and biases, neptune.ai or other.
 
 With DVC 2.0 we are releasing new open-source library
-[DVC-Live](https://github.com/iterative/dvclive) that provide functionality for
+[DVC-Live](https://github.com/iterative/dvclive) that provides functionality for
 tracking model metrics and organizing metrics in simple text files in a way that
 DVC can visualize the metrics with navigation in Git histroy. So, DVC can show
 you a metrics difference between current model and a model in `master` or any
