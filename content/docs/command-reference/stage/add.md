@@ -29,7 +29,9 @@ Most of the other [options](#options) help with defining different kinds of
 remaining terminal input provided to `dvc stage add` after `-`/`--` flags will
 become the required [`command` argument](#the-command-argument).
 
-`dvc repro` can be used to execute pipelines after their stages have been defined.
+`dvc repro` can be used to execute pipelines after their stages have been
+defined.
+
 <details>
 
 ### 💡 Avoiding unexpected behavior
@@ -295,8 +297,8 @@ dataset (`20180226` is a seed value):
 
 ```dvc
 $ dvc stage add -n train \
-          -d train_model.py -d matrix-train.p -o model.p \
-          python train_model.py 20180226 model.p
+                -d train_model.py -d matrix-train.p -o model.p \
+                python train_model.py 20180226 model.p
 ```
 
 To update a stage that is already defined, the `-f` (`--force`) option is
@@ -304,8 +306,8 @@ needed. Let's update the seed for the `train` stage:
 
 ```dvc
 $ dvc stage add -n train --force \
-          -d train_model.p -d matrix-train.p -o model.p \
-          python train_model.py 18494003 model.p
+                -d train_model.p -d matrix-train.p -o model.p \
+                python train_model.py 18494003 model.p
 ```
 
 ## Example: Separate stages in a subdirectory
@@ -317,9 +319,9 @@ Let's move to a subdirectory and create a stage there. This generates a separate
 ```dvc
 $ cd more_stages/
 $ dvc stage add -n process_data \
-          -d data.in \
-          -o result.out \
-          ./my_script.sh data.in result.out
+                -d data.in \
+                -o result.out \
+                ./my_script.sh data.in result.out
 $ tree ..
 .
 ├── dvc.yaml
@@ -342,9 +344,9 @@ folder:
 ```dvc
 $ mkdir data
 $ dvc stage add -n extract \
-          -d Posts.xml.zip \
-          -o data/Posts.xml \
-          unzip Posts.xml.zip -d data/
+                -d Posts.xml.zip \
+                -o data/Posts.xml \
+                unzip Posts.xml.zip -d data/
 ```
 
 > Note that the last `-d` applies to the stage's command (`unzip`), not to
@@ -355,9 +357,9 @@ file:
 
 ```dvc
 $ dvc stage add -n parse \
-          -d parsingxml.R -d data/Posts.xml \
-          -o data/Posts.csv \
-          Rscript parsingxml.R data/Posts.xml data/Posts.csv
+                -d parsingxml.R -d data/Posts.xml \
+                -o data/Posts.csv \
+                Rscript parsingxml.R data/Posts.xml data/Posts.csv
 ```
 
 These stages are not run yet, so there are no outputs. But we can still see how
@@ -402,9 +404,9 @@ Define a stage with both regular dependencies as well as parameter dependencies:
 
 ```dvc
 $ dvc stage add -n train \
-          -d train_model.py -d matrix-train.p  -o model.p \
-          -p seed,train.lr,train.epochs
-          python train_model.py 20200105 model.p
+                -d train_model.py -d matrix-train.p  -o model.p \
+                -p seed,train.lr,train.epochs
+                python train_model.py 20200105 model.p
 ```
 
 `train_model.py` will include some code to open and parse the parameters:
