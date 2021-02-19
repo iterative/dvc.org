@@ -106,7 +106,7 @@ noted!).
 
 10. ⚠️ Change target branch to your local branch with your username.
 
-   ![](/img/change_user_name.png)
+![](/img/change_user_name.png)
 
 11. Click on the "Compare branches and continue" button. Enter any additional
     comments you would like to put in the description and click the "Submit
