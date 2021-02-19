@@ -7,16 +7,18 @@ noted!).
 
 1. Fork our
    [example project repository](https://gitlab.com/iterative.ai/example_cml).
-   Click on Fork and select the namespace where you would like to keep the project.
+   Click on Fork and select the namespace where you would like to keep the
+   project.
 
    ![](/img/gitlab_fork_cml_project.png)
 
    > 💡 If just starting to use GitLab, you may receive a warning at the top of
-   > the page regarding SSH keys. You do not need to use SSH keys for the tutorial so you can click: "Don't show me again."  
-   >[More info on SSH keys.](https://docs.gitlab.com/ee/ssh/)
+   > the page regarding SSH keys. You do not need to use SSH keys for the
+   > tutorial so you can click: "Don't show me again."  
+   > [More info on SSH keys.](https://docs.gitlab.com/ee/ssh/)
 
-2. ⚠️ In GitLab, to use CML, you must create a variable called a repo_token whose
-   value is a Personal Access Token. To do this:
+2. ⚠️ In GitLab, to use CML, you must create a variable called a repo_token
+   whose value is a Personal Access Token. To do this:
 
    a. Click on your Avatar in the upper right side and click on Edit Profile.
 
