@@ -136,21 +136,25 @@ stages:
 
 ## Lightweight ML experiments
 
-DVC uses Git as a foundation for ML experiments. This solid foundation makes
-each ML experiment reproducible and accessible from Git history. This Git-based
-approach works very well for ML projects with mature ML models when only a few
-new experiments per day are running. However, in more active development when
-dozens or hundreds of experiments need to be run in a single day, Git creates
-overhead - each experiment run requires additional Git commands
-`git add/commit`, and comparing all experiments is difficult.
+DVC uses Git versioning as the basis for ML experiments. This solid foundation
+makes each experiment reproducible and accessible from the project's history.
+This Git-based approach works very well for ML projects with mature models when
+only a few new experiments per day are run.
 
-We introduce lightweight experiments in DVC 2.0! This is the way of
-auto-tracking without any overhead from ML engineers.
+However, in more active development when dozens or hundreds of experiments need
+to be run in a single day, Git creates overhead — each experiment run requires
+additional Git commands `git add/commit`, and comparing all experiments is
+difficult.
 
-⚠️ Note, ML experiment is an experimental feature in the coming release. It
-means the commands might change a bit even after the release.
+We introduce lightweight experiments in DVC 2.0! This is how you can auto-track
+ML experiments without any overhead from ML engineers.
 
-Run an ML experiment with a new hyperparameter from `params.yaml`:
+⚠️ Note, our new ML experiment features (`dvc exp`) are experimental in the
+coming release. This means that the commands might change a bit in following
+minor releases.
+
+`dvc exp run` can run an ML experiment with a new hyperparameter from
+`params.yaml` while `dvc exp diff` shows metrics and params difference:
 
 ```dvc
 $ dvc exp run --set-param featurize.max_features=3000
@@ -183,10 +187,10 @@ Reproduced experiment(s): exp-80655
 Experiment results have been applied to your workspace.
 ```
 
-In the examples above, hyperparamters were changed automaticaly by option
-`--set-param`. User can make this changes manualy by modifying the file. The
-same way _any code or data files can be changed_ and `dvc exp run` will capture
-the changes.
+In the examples above, hyperparamters were changed with the `--set-param`
+option, but you can make these changes by modifying the params file instead. In
+fact _any code or data files can be changed_ and `dvc exp run` will capture the
+variations.
 
 See all the runs:
 
@@ -205,16 +209,16 @@ $ dvc exp show --no-pager --no-timestamp \
 └───────────────┴─────────┴────────────────────────┴──────────────────┘
 ```
 
-Under the hood DVC uses Git to store the experiments meta-information.
-Straight-forward implementation on top of Git should include branches and
-auto-commits in the branches. This approach over-pollutes the branch namespace
-very quickly. To avoid this issue, we introduced Git custom references `exps`
-the same way as GitHub uses Git custom references `pulls` to track pull
-requests. This is an interesting technical topic that deserves a separate blog
-post. Below you can see how it works.
+Under the hood DVC uses Git to store the experiments meta-information. A
+straight-forward implementation would create visible branches and auto-commit in
+them, but that approach would over-pollute the branch namespace very quickly. To
+avoid this issue, we introduced custom Git references `exps`, the same way as
+GitHub uses custom references `pulls` to track pull requests (this is an
+interesting technical topic that deserves a separate blog post). Below you can
+see how it works.
 
-No artificial branches, only custome references `exps` (do not worry if you
-don't understand this part - it is an implementation detail):
+No artificial branches, only custom references `exps` (do not worry if you don't
+understand this part - it is an implementation detail):
 
 ```dvc
 $ git branch
@@ -288,11 +292,11 @@ Adding stage 'train' in 'dvc.yaml'
 ```
 
 Note, we use `dvc stage add` command instead of `dvc run`. Starting from DVC 2.0
-we extracting all stage specific functionality under `dvc stage` unbrella.
-`dvc run` is still working but it wll be depricated in the following DVC version
+we extracting all stage specific functionality under `dvc stage` umbrella.
+`dvc run` is still working but it wll be deprecated in the following DVC version
 (most likely in 3.0).
 
-Start the training process and interrupt it after 5 epoches:
+Start the training process and interrupt it after 5 epochs:
 
 ```dvc
 $ dvc exp run
@@ -313,7 +317,7 @@ $ dvc exp show --no-pager --no-timestamp
 ┃ Experiment    ┃ step ┃   loss ┃ accuracy ┃ val_loss ┃ … ┃ epochs ┃ … ┃
 ┡━━━━━━━━━━━━━━━╇━━━━━━╇━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━━╇━━━╇━━━━━━━━╇━━━┩
 │ workspace     │    4 │ 2.0702 │  0.30388 │    2.025 │ … │ 5      │ … │
-│ master        │    - │      5 │  2.1e-07 │     logs │ … │ 0.124  │ … │
+│ master        │    - │      - │        - │        - │ … │ 5      │ … │
 │ │ ╓ exp-e15bc │    4 │ 2.0702 │  0.30388 │    2.025 │ … │ 5      │ … │
 │ │ ╟ 5ea8327   │    4 │ 2.0702 │  0.30388 │    2.025 │ … │ 5      │ … │
 │ │ ╟ bc0cf02   │    3 │ 2.1338 │  0.23988 │   2.0883 │ … │ 5      │ … │
@@ -343,14 +347,13 @@ $ dvc exp show --no-pager --no-timestamp
 ┃ Experiment    ┃ step ┃   loss ┃ accuracy ┃ val_loss ┃ … ┃ epochs ┃ … ┃
 ┡━━━━━━━━━━━━━━━╇━━━━━━╇━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━━╇━━━╇━━━━━━━━╇━━━┩
 │ workspace     │    9 │ 1.7845 │  0.58125 │   1.7381 │ … │ 5      │ … │
-│ master        │    - │      5 │  2.1e-07 │     logs │ … │ 0.124  │ … │
+│ master        │    - │      - │        - │        - │ … │ 5      │ … │
 │ │ ╓ exp-e15bc │    9 │ 1.7845 │  0.58125 │   1.7381 │ … │ 5      │ … │
 │ │ ╟ 205a8d3   │    9 │ 1.7845 │  0.58125 │   1.7381 │ … │ 5      │ … │
 │ │ ╟ dd23d96   │    8 │ 1.8369 │  0.54173 │   1.7919 │ … │ 5      │ … │
 │ │ ╟ 5bb3a1f   │    7 │ 1.8929 │  0.49108 │   1.8474 │ … │ 5      │ … │
 │ │ ╟ 6dc5610   │    6 │  1.951 │  0.43433 │   1.9046 │ … │ 5      │ … │
 │ │ ╟ a79cf29   │    5 │ 2.0088 │  0.36837 │   1.9637 │ … │ 5      │ … │
-│ │ ╟ bf276cf   │    4 │ 2.0702 │  0.30388 │    2.025 │ … │ 5      │ … │
 │ │ ╟ 5ea8327   │    4 │ 2.0702 │  0.30388 │    2.025 │ … │ 5      │ … │
 │ │ ╟ bc0cf02   │    3 │ 2.1338 │  0.23988 │   2.0883 │ … │ 5      │ … │
 │ │ ╟ f8cf03f   │    2 │ 2.1989 │  0.17932 │   2.1542 │ … │ 5      │ … │
@@ -359,7 +362,7 @@ $ dvc exp show --no-pager --no-timestamp
 └───────────────┴──────┴────────┴──────────┴──────────┴───┴────────┴───┘
 ```
 
-Afrer modifing code, data or params the same process can be resumed. DVC
+Afrer modifyng code, data or params the same process can be resumed. DVC
 recognizes the change and shows it (see experiment `b363267`):
 
 ```dvc
@@ -375,28 +378,27 @@ $ dvc exp show --no-pager --no-timestamp
 ┃ Experiment            ┃ step ┃   loss ┃ accuracy ┃ val_loss ┃ … ┃ epochs ┃ … ┃
 ┡━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━╇━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━━╇━━━╇━━━━━━━━╇━━━┩
 │ workspace             │   13 │ 1.5841 │  0.69262 │   1.5381 │ … │ 15     │ … │
-│ master                │    - │      5 │  2.1e-07 │     logs │ … │ 0.124  │ … │
+│ master                │    - │      - │        - │        - │ … │ 5      │ … │
 │ │ ╓ exp-7ff06         │   13 │ 1.5841 │  0.69262 │   1.5381 │ … │ 15     │ … │
 │ │ ╟ 6c62fec           │   12 │ 1.6325 │  0.67248 │   1.5857 │ … │ 15     │ … │
 │ │ ╟ 4baca3c           │   11 │ 1.6817 │  0.64855 │   1.6349 │ … │ 15     │ … │
 │ │ ╟ b363267 (2b06de7) │   10 │ 1.7323 │  0.61925 │   1.6857 │ … │ 15     │ … │
-│ │ ╓ 2b06de7           │    - │      - │          │          │   │        │   │
-│ │ ╟ 205a8d3           │    - │      - │          │          │   │        │   │
-│ │ ╟ dd23d96           │    - │      - │          │          │   │        │   │
-│ │ ╟ 5bb3a1f           │    - │      - │          │          │   │        │   │
-│ │ ╟ 6dc5610           │    - │      - │          │          │   │        │   │
-│ │ ╟ a79cf29           │    - │      - │          │          │   │        │   │
-│ │ ╟ bf276cf           │    - │      - │          │          │   │        │   │
-│ │ ╟ 5ea8327           │    - │      - │          │          │   │        │   │
-│ │ ╟ bc0cf02           │    - │      - │          │          │   │        │   │
-│ │ ╟ f8cf03f           │    - │      - │          │          │   │        │   │
-│ │ ╟ 7575a44           │    - │      - │          │          │   │        │   │
-│ ├─╨ a72c526           │    - │      - │          │          │   │        │   │
+│ │ ╓ 2b06de7           │    9 │ 1.7845 │  0.58125 │   1.7381 │ … │ 5      │ … │
+│ │ ╟ 205a8d3           │    9 │ 1.7845 │  0.58125 │   1.7381 │ … │ 5      │ … │
+│ │ ╟ dd23d96           │    8 │ 1.8369 │  0.54173 │   1.7919 │ … │ 5      │ … │
+│ │ ╟ 5bb3a1f           │    7 │ 1.8929 │  0.49108 │   1.8474 │ … │ 5      │ … │
+│ │ ╟ 6dc5610           │    6 │  1.951 │  0.43433 │   1.9046 │ … │ 5      │ … │
+│ │ ╟ a79cf29           │    5 │ 2.0088 │  0.36837 │   1.9637 │ … │ 5      │ … │
+│ │ ╟ 5ea8327           │    4 │ 2.0702 │  0.30388 │    2.025 │ … │ 5      │ … │
+│ │ ╟ bc0cf02           │    3 │ 2.1338 │  0.23988 │   2.0883 │ … │ 5      │ … │
+│ │ ╟ f8cf03f           │    2 │ 2.1989 │  0.17932 │   2.1542 │ … │ 5      │ … │
+│ │ ╟ 7575a44           │    1 │ 2.2694 │  0.12833 │    2.223 │ … │ 5      │ … │
+│ ├─╨ a72c526           │    0 │ 2.3416 │   0.0959 │   2.2955 │ … │ 5      │ … │
 └───────────────────────┴──────┴────────┴──────────┴──────────┴───┴────────┴───┘
 ```
 
-Sometimes you might need training the model from scratch. Reset option removes
-the checkpoint file before the traning: `dvc exp run --reset`
+Sometimes you might need to train the model from scratch. The reset option
+removes the checkpoint file before training: `dvc exp run --reset`.
 
 ## Metrics logging
 
@@ -408,7 +410,7 @@ for metrics collecting and experiment tracking such as sacred, mlflow, weight
 and biases, neptune.ai or other.
 
 With DVC 2.0 we are releasing new open-source library
-[DVC-Live](https://github.com/iterative/dvclive) that provide functionality for
+[DVC-Live](https://github.com/iterative/dvclive) that provides functionality for
 tracking model metrics and organizing metrics in simple text files in a way that
 DVC can visualize the metrics with navigation in Git histroy. So, DVC can show
 you a metrics difference between current model and a model in `master` or any
@@ -463,7 +465,7 @@ timestamp	step	accuracy
 ```
 
 In addition to the continious metrics files you will see the summary metrics
-file and html file with the same file prefix. The summary file conteins the
+file and html file with the same file prefix. The summary file contains the
 result of the latest epoch:
 
 ```dvc
@@ -477,7 +479,7 @@ $ cat logs.json | python -m json.tool
 }
 ```
 
-The html file contains all the visuals for continious metrics as well as the
+The html file contains all the visuals for continuous metrics as well as the
 summary metrics in a single page:
 
 ![](/uploads/images/2021-02-18/dvclive-html.png)
@@ -490,8 +492,8 @@ each. So, you can monitor model performance in realtime.
 DVC repository is NOT required to use the live metrics functionality from the
 above. It works independently from DVC.
 
-DVC repository become usefule when the metrics and plots are commited in your
-Git repository and you need navigation around the metrics.
+DVC repository become useful when the metrics and plots are commited in your Git
+repository and you need navigation around the metrics.
 
 Metrics difference between workspace and the last Git commit:
 
