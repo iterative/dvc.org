@@ -152,7 +152,7 @@ not.
   > link above for more details.
 
 - `--to-remote` - import an external target, but don't move it into the
-  workspace, nor cache it. [Transfer](#example-import-straight-to-the-remote) it
+  workspace, nor cache it. [Transfer it](#example-transfer-to-remote-storage) it
   directly to remote storage (the default one, unless `-r` is specified)
   instead. Use `dvc pull` to get the data locally.
 
@@ -334,11 +334,12 @@ Only the hash values of the `dir/` directory (with `.dir` file extension) and
 
 ## Example: Transfer to remote storage
 
-When you have a large dataset in an external location, you may want to add it to
-your project without downloading it to the local file system (for using it
-later/elsewhere). The `--to-remote` option let you skip the download, while
-storing the imported data [remotely](/doc/command-reference/remote). Let's
-initialize a DVC project, and setup a remote:
+When you have a large dataset in an external location, you may want to track it
+as if it was in your project, but without downloading it locally (for now). The
+`--to-remote` option lets you do so, while storing a copy
+[remotely](/doc/command-reference/remote) so it can be
+[pulled](/doc/command-reference/plots) later. Let's initialize a DVC project,
+and setup a remote:
 
 ```dvc
 $ mkdir example # workspace
