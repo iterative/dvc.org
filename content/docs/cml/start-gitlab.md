@@ -32,8 +32,8 @@ noted!).
 
    ![](/img/personal_access_token.png)
 
-   e. Head back to your forked repository by clicking the Projects tab next to
-   the GitLab logo and select your forked project.
+   e. Head back to your fork by clicking the Projects tab next to the GitLab
+   logo and select it.
 
    f. On the left hand side Navigate to **Settings** ➡ **CI/CD** ➡ **Varibles**.
 
