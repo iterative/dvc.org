@@ -58,7 +58,7 @@ noted!).
    git clone https://gitlab.com/<user_name>/example_cml.git
    ```
 
-4. Change directory to `example_cml`
+4. Change directory to `example_cml`.
 
    ```bash
    cd example_cml
