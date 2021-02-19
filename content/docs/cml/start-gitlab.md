@@ -12,7 +12,6 @@ noted!).
 
    ![](/img/gitlab_fork_cml_project.png)
 
-   
 2. ⚠️ In GitLab, to use CML, you must create a variable called a repo_token
    whose value is a Personal Access Token. To do this:
 
