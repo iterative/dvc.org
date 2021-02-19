@@ -57,6 +57,27 @@ time functions, hardware dependencies, etc.).
 
 </details>
 
+### The `command` argument
+
+The `command` sent to `dvc stage add` can be anything your terminal would accept
+and run directly, for example a shell built-in, expression, or binary found in
+`PATH`. Please remember that any flags sent after the `command` are considered
+part of the command itself, not of `dvc stage add`.
+
+⚠️ While DVC is platform-agnostic, the commands defined in your
+[pipeline](/doc/command-reference/dag) stages may only work on some operating
+systems and require certain software packages to be installed.
+
+Wrap the command with double quotes `"` if there are special characters in it
+like `|` (pipe) or `<`, `>` (redirection), otherwise they would apply to
+`dvc stage add` itself. Use single quotes `'` instead if there are environment
+variables in it that should be evaluated dynamically. Examples:
+
+```dvc
+$ dvc stage add -n first_stage "./a_script.sh > /dev/null 2>&1"
+$ dvc stage add -n second_stage './another_script.sh $MYENVVAR'
+```
+
 ### Dependencies and outputs
 
 By specifying lists of <abbr>dependencies</abbr> (`-d` option) and/or
@@ -127,27 +148,6 @@ and `-M` options) and [plots](/doc/command-reference/plots) (`--plots` and
 `--plots-no-cache` options), are also supported. Metrics and plots files have
 specific formats (JSON, YAML, CSV, or TSV) and allow displaying and comparing
 data science experiments.
-
-### The `command` argument
-
-The `command` sent to `dvc stage add` can be anything your terminal would accept
-and run directly, for example a shell built-in, expression, or binary found in
-`PATH`. Please remember that any flags sent after the `command` are considered
-part of the command itself, not of `dvc stage add`.
-
-⚠️ While DVC is platform-agnostic, the commands defined in your
-[pipeline](/doc/command-reference/dag) stages may only work on some operating
-systems and require certain software packages to be installed.
-
-Wrap the command with double quotes `"` if there are special characters in it
-like `|` (pipe) or `<`, `>` (redirection), otherwise they would apply to
-`dvc stage add` itself. Use single quotes `'` instead if there are environment
-variables in it that should be evaluated dynamically. Examples:
-
-```dvc
-$ dvc stage add -n first_stage "./a_script.sh > /dev/null 2>&1"
-$ dvc stage add -n second_stage './another_script.sh $MYENVVAR'
-```
 
 ## Options
 
