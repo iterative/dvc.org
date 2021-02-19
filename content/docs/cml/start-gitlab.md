@@ -2,7 +2,7 @@
 
 Here, we'll walk through a tutorial to start using CML on GitLab. For
 simplicity, we'll show the demo in GitLab Actions, but these instructions are
-valid for all supported Continuous Integration(CI) systems (with exceptions as
+valid for all supported Continuous Integration (CI) systems (with exceptions as
 noted!).
 
 1. Fork our
