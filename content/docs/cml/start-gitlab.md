@@ -7,17 +7,15 @@ noted!).
 
 1. Fork our
    [example project repository](https://gitlab.com/iterative.ai/example_cml).
-   Click on Fork and select what namespace to fork the project to.
+   Click on Fork and select the namespace where you would like to keep the project.
 
    ![](/img/gitlab_fork_cml_project.png)
 
    > 💡 If just starting to use GitLab, you may receive a warning at the top of
-   > the page regarding SSH keys. You do not need to use SSH keys for the
-   > tutorial so you can click: "Don't show me again."  
-   > [Click this link for more information on SSH keys.](https://docs.gitlab.com/ee/ssh/)
+   > the page regarding SSH keys. You do not need to use SSH keys for the tutorial so you can click: "Don't show me again."  
+   >[More info on SSH keys.](https://docs.gitlab.com/ee/ssh/)
 
-2. ⚠️ CML in GitLab works exactly as in GitHub except for a few conventions. In
-   Gitlab, to use CML, you must create a variable called a repo_token whose
+2. ⚠️ In GitLab, to use CML, you must create a variable called a repo_token whose
    value is a Personal Access Token. To do this:
 
    a. Click on your Avatar in the upper right side and click on Edit Profile.
@@ -106,7 +104,7 @@ noted!).
 
 10. ⚠️ Change target branch to your local branch with your username.
 
-   ![](/img/change_user_name.png)
+    ![](/img/change_user_name.png)
 
 11. Click on the "Compare branches and continue" button. Enter any additional
     comments you would like to put in the description and click the "Submit
