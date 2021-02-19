@@ -12,7 +12,6 @@ noted!).
 
    ![](/img/gitlab_fork_cml_project.png)
 
-   
 2. ⚠️ In GitLab, to use CML, you must create a variable called a repo_token
    whose value is a Personal Access Token. To do this:
 
@@ -105,7 +104,7 @@ noted!).
 
 11. Click on the "Compare branches and continue" button. Enter any additional
     comments you would like to put in the description and click the "Submit
-    merge request" button. Shortly, you should see a comment from github-actions
+    merge request" button. Shortly, you should see a comment from GitLab CI
     appear in the Pull Request with your CML report. This is a result of the
     function cml-send-comment in your workflow.
 
