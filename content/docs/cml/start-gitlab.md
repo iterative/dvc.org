@@ -83,8 +83,7 @@ noted!).
        - cml-send-comment report.md
    ```
 
-6. In your text editor of choice, open `train.py` and edit line 16 to
-   `depth = 5`.
+6. In your text editor, open `train.py` and edit line 16 to `depth = 5`.
 
 7. Commit and push the changes using:
 
