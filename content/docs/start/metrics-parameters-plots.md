@@ -229,8 +229,18 @@ scores.json  avg_prec  0.52048  0.55259  0.03211
 scores.json  roc_auc   0.9032   0.91536  0.01216
 ```
 
-And finally, we can compare `precision recall` and `roc` curves with a single
-command!
+Since there are multiple arrays of data in each plots file, let's specify which
+to use as the axes in our plots:
+
+```dvc
+$ dvc plots modify prc.json -x recall -y precision
+Modifying stage 'evaluate' in 'dvc.yaml'
+$ dvc plots modify roc.json -x fpr -y tpr
+Modifying stage 'evaluate' in 'dvc.yaml'
+```
+
+And finally, we can compare both `precision recall` and `roc` curves with a
+single command!
 
 ```dvc
 $ dvc plots diff
