@@ -64,7 +64,7 @@ noted!).
    cd example_cml
    ```
 
-5. To create a CML workflow, use Vim or your editor of choice to copy the
+5. To create a CML workflow, use your editor of choice to copy the
    following into a new file `.gitlab-ci.yml` and save.
 
    ```yaml
