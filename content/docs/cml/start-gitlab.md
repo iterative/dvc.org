@@ -2,7 +2,7 @@
 
 Here, we'll walk through a tutorial to start using CML on GitLab. For
 simplicity, we'll show the demo in GitLab Actions, but these instructions are
-valid for all supported Continuous Integration(CI) systems (with exceptions as
+valid for all supported Continuous Integration (CI) systems (with exceptions as
 noted!).
 
 1. Fork our
@@ -32,8 +32,8 @@ noted!).
 
    ![](/img/personal_access_token.png)
 
-   e. Head back to your forked repository by clicking the Projects tab next to
-   the GitLab logo and select your forked project.
+   e. Head back to your fork by clicking the Projects tab next to the GitLab
+   logo and select it.
 
    f. On the left hand side Navigate to **Settings** ➡ **CI/CD** ➡ **Varibles**.
 
@@ -44,9 +44,9 @@ noted!).
    Token. Check the "Mask variable" box, uncheck "Protect variable", and then
    save the variable by clicking "Add variable" at the bottom of the dialog box.
 
-   > 💡The following steps can all be done in the GitLab browser interface.
-   > However, to follow along the commands, we recommend cloning your fork to
-   > your local workstation
+> 💡 The following steps can all be done in the GitLab website.
+> However, to follow along the steps, we recommend cloning your fork to
+> your local workstation.
 
 3. Go back to your forked `example_cml` project. Copy the Clone with HTTPS as
    shown in the image below, and then in your terminal, type the following
@@ -58,13 +58,13 @@ noted!).
    git clone https://gitlab.com/<user_name>/example_cml.git
    ```
 
-4. Change directory to `example_cml`
+4. Change directory to `example_cml`.
 
    ```bash
    cd example_cml
    ```
 
-5. To create a CML workflow, use Vim or your editor of choice to copy the
+5. To create a CML workflow, use your editor of choice to copy the
    following into a new file `.gitlab-ci.yml` and save.
 
    ```yaml
@@ -83,8 +83,7 @@ noted!).
        - cml-send-comment report.md
    ```
 
-6. In your text editor of choice, open `train.py` and edit line 16 to
-   `depth = 5`.
+6. In your text editor, open `train.py` and edit line 16 to `depth = 5`.
 
 7. Commit and push the changes using:
 
