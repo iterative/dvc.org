@@ -1,18 +1,18 @@
 # stage add
 
-Helper command to add or update <abbr>stages</abbr> in `dvc.yaml`. Requires a
-name and a command.
+Helper command to create or update <abbr>stages</abbr> in `dvc.yaml`.
 
 ## Synopsis
 
 ```usage
 usage: dvc stage add [-h] [-q | -v] -n <name> [-d <path>] [-o <path>]
-                     [-O <path>] [-p [<path>:]<params_list>] [-m <path>]
-                     [-M <path>] [--plots <path>] [--plots-no-cache <path>]
-                     [-w <path>] [-f]
-                     [--outs-persist <path>] [--outs-persist-no-cache <path>]
+                     [-O <path>] [-p [<path>:]<params_list>]
+                     [-m <path>] [-M <path>] [--plots <path>]
+                     [--plots-no-cache <path>] [-w <path>] [-f]
+                     [--outs-persist <path>]
+                     [--outs-persist-no-cache <path>]
                      [--always-changed] [--external] [--desc <text>]
-                    command
+                     command
 
 positional arguments:
   command               Command to execute
@@ -20,13 +20,8 @@ positional arguments:
 
 ## Description
 
-`dvc stage add` is a helper for creating or updating
-[pipeline](/doc/command-reference/dag) stages in a `dvc.yaml` file (located in
-the current working directory).
-
-_Stages_ represent individual data processes, including their input and
-resulting outputs. They can be combined to capture simple data workflows,
-organize data science projects, or build detailed machine learning pipelines.
+Creates or updates stages in a [pipeline](/doc/command-reference/dag) (saved to
+`dvc.yaml` in the current working directory).
 
 A stage name is required and can be provided using the `-n` (`--name`) option.
 Most of the other [options](#options) help with defining different kinds of
@@ -34,9 +29,7 @@ Most of the other [options](#options) help with defining different kinds of
 remaining terminal input provided to `dvc stage add` after `-`/`--` flags will
 become the required [`command` argument](#the-command-argument).
 
-`dvc stage add`, unlike `dvc run`, does not execute stage commands by default.
-`dvc repro` command can be used instead to execute them.
-
+`dvc repro` can be used to execute pipelines after their stages have been defined.
 <details>
 
 ### 💡 Avoiding unexpected behavior
@@ -264,9 +257,9 @@ $ git init
 $ dvc init
 $ mkdir data
 $ dvc stage add -n count \
-          -d test.txt \
-          -o lines \
-          "cat test.txt | wc -l > lines"
+                -d test.txt \
+                -o lines \
+                "cat test.txt | wc -l > lines"
 Creating 'dvc.yaml'
 Adding stage 'count' in 'dvc.yaml'
 
