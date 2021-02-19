@@ -44,9 +44,9 @@ noted!).
    Token. Check the "Mask variable" box, uncheck "Protect variable", and then
    save the variable by clicking "Add variable" at the bottom of the dialog box.
 
-   > 💡The following steps can all be done in the GitLab browser interface.
-   > However, to follow along the commands, we recommend cloning your fork to
-   > your local workstation
+> 💡 The following steps can all be done in the GitLab website.
+> However, to follow along the steps, we recommend cloning your fork to
+> your local workstation.
 
 3. Go back to your forked `example_cml` project. Copy the Clone with HTTPS as
    shown in the image below, and then in your terminal, type the following
