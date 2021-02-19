@@ -29,7 +29,9 @@ Most of the other [options](#options) help with defining different kinds of
 remaining terminal input provided to `dvc stage add` after `-`/`--` flags will
 become the required [`command` argument](#the-command-argument).
 
-`dvc repro` can be used to execute pipelines after their stages have been defined.
+`dvc repro` can be used to execute pipelines after their stages have been
+defined.
+
 <details>
 
 ### 💡 Avoiding unexpected behavior
