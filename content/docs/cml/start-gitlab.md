@@ -12,11 +12,7 @@ noted!).
 
    ![](/img/gitlab_fork_cml_project.png)
 
-   > 💡 If just starting to use GitLab, you may receive a warning at the top of
-   > the page regarding SSH keys. You do not need to use SSH keys for the
-   > tutorial so you can click: "Don't show me again."  
-   > [More info on SSH keys.](https://docs.gitlab.com/ee/ssh/)
-
+   
 2. ⚠️ In GitLab, to use CML, you must create a variable called a repo_token
    whose value is a Personal Access Token. To do this:
 
@@ -44,9 +40,9 @@ noted!).
    Token. Check the "Mask variable" box, uncheck "Protect variable", and then
    save the variable by clicking "Add variable" at the bottom of the dialog box.
 
-> 💡 The following steps can all be done in the GitLab website.
-> However, to follow along the steps, we recommend cloning your fork to
-> your local workstation.
+> 💡 The following steps can all be done in the GitLab website. However, to
+> follow along the steps, we recommend cloning your fork to your local
+> workstation.
 
 3. Go back to your forked `example_cml` project. Copy the Clone with HTTPS as
    shown in the image below, and then in your terminal, type the following
@@ -64,8 +60,8 @@ noted!).
    cd example_cml
    ```
 
-5. To create a CML workflow, use your editor of choice to copy the
-   following into a new file `.gitlab-ci.yml` and save.
+5. To create a CML workflow, use your editor of choice to copy the following
+   into a new file `.gitlab-ci.yml` and save.
 
    ```yaml
    stages:
