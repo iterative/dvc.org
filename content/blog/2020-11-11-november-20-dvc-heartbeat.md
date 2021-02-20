@@ -64,7 +64,7 @@ welcome referrals if you know a good candidate)!
 
 We're continuing to develop our video docs, and now half of our "Getting
 Started" section has video accompaniments. Check out our latest release on
-[data access with DVC](https://dvc.org/doc/start/data-access):
+[data access with DVC](https://dvc.org/doc/start/data-and-model-access):
 
 https://youtu.be/EE7Gk84OZY8
 

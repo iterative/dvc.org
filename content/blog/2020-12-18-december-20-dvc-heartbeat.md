@@ -53,11 +53,11 @@ As you may have heard
 on adding complete video docs to the "Getting Started" section of the DVC site.
 We now have 100% coverage! We have videos that mirror the tutorials for:
 
-- [Data versioning](https://dvc.org/doc/start/data-versioning) - how to use Git
-  and DVC together to track different versions of a dataset
+- [Data versioning](https://dvc.org/doc/start/data-and-model-versioning) - how
+  to use Git and DVC together to track different versions of a dataset
 
-- [Data access](https://dvc.org/doc/start/data-access) - how to share models and
-  datasets across projects and environments
+- [Data access](https://dvc.org/doc/start/data-and-model-access) - how to share
+  models and datasets across projects and environments
 
 - [Pipelines](https://dvc.org/doc/start/data-pipelines) - how to create
   reproducible pipelines to transform datasets to features to models
