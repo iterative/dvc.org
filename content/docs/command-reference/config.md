@@ -183,7 +183,12 @@ This section contains the following options, which affect the project's
   `664` (rw-rw-r--) for files and `775` (rwxrwxr-x) for directories. This is
   useful when using a
   [shared development server](/doc/use-cases/shared-development-server). The
-  default permissions for cache files is system dependent.
+  default permissions for cache files is system dependent. In Linux and macOS
+  default permissions of cache is determined using
+  [`os.umask`](https://docs.python.org/3/library/os.html#os.umask). In Windows
+  due to the limitations of
+  [`os.chmod`](https://docs.python.org/3/library/os.html#os.chmod) only
+  read-only bit can be set.
 
 - `cache.local` - name of a _local remote_ to use as a
   [custom cache](/doc/user-guide/managing-external-data#examples) directory.
