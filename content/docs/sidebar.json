@@ -35,13 +35,13 @@
     },
     "children": [
       {
-        "slug": "data-versioning",
+        "slug": "data-and-model-versioning",
         "tutorials": {
           "katacoda": "https://katacoda.com/dvc/courses/get-started/versioning"
         }
       },
       {
-        "slug": "data-access",
+        "slug": "data-and-model-access",
         "tutorials": {
           "katacoda": "https://katacoda.com/dvc/courses/get-started/accessing"
         }

@@ -26,6 +26,7 @@
   "^/doc/tutorials/get-started(/.*)?$                                                     /doc/start",
   "^/doc/tutorials/versioning(/.*)?$                                                      /doc/use-cases/versioning-data-and-model-files/tutorial",
   "^/doc/tutorials(/.*)?                                                                  /doc/start",
+
   "^/doc/start/data-versioning$                                                           /doc/start/data-and-model-versioning",
   "^/doc/start/data-access$                                                               /doc/start/data-and-model-access",
 
