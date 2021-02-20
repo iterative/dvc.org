@@ -7,11 +7,9 @@ title: 'Get Started: Data and Model Access'
 Okay, now that we've learned how to _track_ data files in DVC and how to commit
 their versions to Git. _Models_ in a machine learning project are also files
 written and read by programs and DVC can track and version them similar to data
-files.
-
-Next questions are: How can we _use_ these artifacts outside of the project? How
-do I download a model to deploy it? How do I download a specific version of a
-model? How do I reuse datasets across different projects?
+files. Next questions are: How can we _use_ these artifacts outside of the
+project? How do I download a model to deploy it? How do I download a specific
+version of a model? How do I reuse datasets across different projects?
 
 > These questions tend to come up when you browse the files that DVC saves to
 > remote storage, e.g.
