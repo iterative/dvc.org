@@ -7,6 +7,8 @@ module.exports = [
   'unfreeze',
   'tag',
   'status',
+  'stage add',
+  'stage',
   'run',
   'root',
   'repro',
