@@ -113,7 +113,8 @@ $ dvc exp show
 # Press q to exit this screen.
 ```
 
-Now if we use `dvc exp run` again, the process will start from 200. To restart
+Now if we use `dvc exp run` again, the process will start from 200. The
+`--reset` option of that command restarts the process from scratch. To start
 from a previous point or even from scratch, you can use use `dvc exp apply`.
 
 See `dvc experiments` for more info on managing <abbr>experiments</abbr>.
