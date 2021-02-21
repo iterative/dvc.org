@@ -40,8 +40,8 @@ positional arguments:
 experiments. The basic workflow goes like this:
 
 - Modify <abbr>dependencies</abbr> (e.g. input data or source code),
-  <abbr>hyperparameters</abbr>, or commands (`cmd` field of `dvc.yaml`) of
-  committed stages.
+  <abbr>parameters</abbr>, or commands (`cmd` field of `dvc.yaml`) of committed
+  stages.
 - Use `dvc exp run` (instead of `repro`) to execute the pipeline. This puts the
   experiment's results in your <abbr>workspace</abbr>, and tracks it under the
   hood.
