@@ -34,12 +34,12 @@ can be downloaded from external sources (`dvc get`, `dvc import`,
 `dvc import-url`). Changes to the data, notebooks, models, and any related
 machine learning artifact can be tracked (`dvc commit`) and their content can be
 synchronized (`dvc checkout`). Tracked data can be removed (`dvc remove`) from
-the workspace. DVC supports all typical operations of files and directories of a
-file system through its commands.
+the workspace.
 
-Behind the scene these operations of a <abbr>DVC project</abbr> uses
-<abbr>metafiles</abbr> like the `.dvc/` directory, `dvc.yaml` or files with
-`*.dvc` extension to track the content and dependencies.
+DVC supports all typical operations of a versioned data file system through its
+commands. Behind the scene these operations use <abbr>metafiles</abbr> like the
+`.dvc/` directory, `dvc.yaml` files or files with `*.dvc` extension to track the
+content and dependencies.
 
 ## Further Reading
 
