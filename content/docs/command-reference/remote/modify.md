@@ -310,19 +310,99 @@ $ dvc remote modify myremote endpointurl \
   $ dvc remote modify myremote url azure://mycontainer/path
   ```
 
-- `connection_string` - connection string:
+- `connection_string` -
+  [connection string](http://azure.microsoft.com/en-us/documentation/articles/storage-configure-connection-string/):
 
   ```dvc
   $ dvc remote modify --local myremote connection_string \
                               'mystring'
   ```
 
-> The connection string contains sensitive user info. Therefore, it's safer to
-> add it with the `--local` option, so it's written to a Git-ignored config
-> file.
+  > The connection string contains sensitive user info. Therefore, it's safer to
+  > add it with the `--local` option, so it's written to a Git-ignored config
+  > file.
 
-For more information on configuring Azure Storage connection strings, visit
-[here](https://docs.microsoft.com/en-us/azure/storage/common/storage-configure-connection-string).
+  For more information on configuring Azure Storage connection strings, visit
+  [here](https://docs.microsoft.com/en-us/azure/storage/common/storage-configure-connection-string).
+
+* `account_name` - storage account name, will be required if authenticated
+  either with `account_key` or `sas_token`.
+
+  ```dvc
+  $ dvc remote modify --local myremote account_name \
+                              'account_name'
+  ```
+
+* `account_key` - storage account key:
+
+  ```dvc
+  $ dvc remote modify --local myremote account_key \
+                              'account_key'
+  ```
+
+* `sas_token` - shared access signature token, can be used instead of
+  `account_key`:
+
+  ```dvc
+  $ dvc remote modify --local myremote sas_token \
+                              'sas_token'
+  ```
+
+* `tenant_id` - Tenant ID for
+  [Principal Service Authentication](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal)
+
+  ```dvc
+  $ dvc remote modify --local myremote tenant_id \
+                              'tenant_id'
+  ```
+
+* `client_id` - Client ID for
+  [Principal Service Authentication](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal)
+
+  ```dvc
+  $ dvc remote modify --local myremote client_id \
+                              'client_id'
+  ```
+
+* `client_secret` - Client Secret for
+  [Principal Service Authentication](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal)
+
+  ```dvc
+  $ dvc remote modify --local myremote client_secret \
+                              'client_secret'
+  ```
+
+Azure remotes can also be configured entirely via environment variables:
+
+```dvc
+$ export AZURE_STORAGE_ACCOUNT_NAME='account_name'
+$ export AZURE_STORAGE_ACCOUNT_KEY='account_key'
+$ dvc remote add -d myremote azure://mycontainer/path
+```
+
+For using service principal with certificate:
+
+```dvc
+$ export AZURE_TENANT_ID='tenant_id'
+$ export AZURE_CLIENT_ID='client_id'
+$ export AZURE_CLIENT_CERTIFICATE_PATH='/path/to/certificate'
+```
+
+For logging in with username/password;
+
+```
+$ export AZURE_CLIENT_ID='client_id'
+$ export AZURE_USERNAME='username'
+$ export AZURE_PASSWOR='password'
+```
+
+> On windows, if none of the above settings are configured the login will
+> fallback to search for a signed in Microsoft application (e.g Visual Studio)
+> and use that identity. If multiple found, it will use `AZURE_USERNAME` to
+> select the primary one.
+
+> On all other systems, it will use the Microsoft account of user who is signed
+> in to Visual Studio Code, if it is available.
 
 </details>
 
