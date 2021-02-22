@@ -310,6 +310,9 @@ $ dvc remote modify myremote endpointurl \
   $ dvc remote modify myremote url azure://mycontainer/path
   ```
 
+> The options below contain sensitive user info. Therefore, it's safer to add it
+> with the `--local` option, so it's written to a Git-ignored config file.
+
 - `connection_string` -
   [connection string](http://azure.microsoft.com/en-us/documentation/articles/storage-configure-connection-string/):
 
@@ -317,13 +320,6 @@ $ dvc remote modify myremote endpointurl \
   $ dvc remote modify --local myremote connection_string \
                               'mystring'
   ```
-
-  > The connection string contains sensitive user info. Therefore, it's safer to
-  > add it with the `--local` option, so it's written to a Git-ignored config
-  > file.
-
-  For more information on configuring Azure Storage connection strings, visit
-  [here](https://docs.microsoft.com/en-us/azure/storage/common/storage-configure-connection-string).
 
 * `account_name` - storage account name, will be required if authenticated
   either with `account_key` or `sas_token`.
@@ -348,7 +344,7 @@ $ dvc remote modify myremote endpointurl \
                               'sas_token'
   ```
 
-* `tenant_id` - Tenant ID for
+* `tenant_id` - tenant ID for
   [Principal Service Authentication](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal)
 
   ```dvc
@@ -396,7 +392,7 @@ $ export AZURE_USERNAME='username'
 $ export AZURE_PASSWOR='password'
 ```
 
-> On windows, if none of the above settings are configured the login will
+> On Windows, if none of the above settings are configured the login will
 > fallback to search for a signed in Microsoft application (e.g Visual Studio)
 > and use that identity. If multiple found, it will use `AZURE_USERNAME` to
 > select the primary one.
