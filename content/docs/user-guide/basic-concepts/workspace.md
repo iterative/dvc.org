@@ -18,10 +18,16 @@ of a project is desirable, although versioning needs and managing dependencies
 make it increasingly complex.
 
 DVC allows a single directory to contain all your project artifacts. The
-workspace is the directory containing _user visible_ part of your
-<abbr>project</abbr> e.g. raw datasets, source code, ML models, etc. Users work
-in this directory using their data and model files that and manipulate the
-contents through DVC commands.
+workspace is the directory containing _visible_ part of your
+<abbr>project</abbr> e.g. raw data, source code, model files. You can have
+multiple versions of data, models and other kinds of artifacts within the
+workspace and limit your focus to a subset of these, then record your progress
+in a commit and move along your data and model history. DVC provides a _machine
+learning file system_ to manipulate your data and models using its commands. No
+need to keep different artifact versions in different directories, under
+different names, without any semantic relation among them. Instead DVC is able
+to link your data and models and can show the evolution, progress and
+interrelationships.
 
 Files and directories in the workspace can be added to DVC (`dvc add`) or they
 can be downloaded from external sources (`dvc get`, `dvc import`,
