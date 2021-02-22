@@ -14,7 +14,7 @@ descriptionLong: |
   shorter, sweeter and easier than ever. Plus, 
   a new GitHub Action to setup CML means more 
   ways to use CML without our Docker container.
-picture: 2021-02-17/cover.png
+picture: 2021-02-22/cover.png
 author: elle_obrien
 commentsUrl: https://discuss.dvc.org/t/cml-0-3-0-pre-release/685
 tags:
@@ -114,7 +114,7 @@ train-model:
 
 You'll get a pull request that looks something like this:
 
-![](/uploads/images/2021-02-17/sample_pr.png)
+![](/uploads/images/2021-02-22/sample_pr.png)
 
 All the code to replicate this example is up on a
 [brand new demo repository](https://github.com/iterative/cml-runner-base-case).
