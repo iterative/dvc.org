@@ -133,6 +133,7 @@
           "merge-conflicts"
         ]
       },
+      "experiment-management",
       "setup-google-drive-remote",
       "large-dataset-optimization",
       "external-dependencies",
@@ -365,6 +366,17 @@
       {
         "label": "run",
         "slug": "run"
+      },
+      {
+        "label": "stage",
+        "slug": "stage",
+        "source": "stage/index.md",
+        "children": [
+          {
+            "label": "stage add",
+            "slug": "add"
+          }
+        ]
       },
       {
         "label": "status",
