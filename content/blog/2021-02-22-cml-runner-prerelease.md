@@ -21,8 +21,8 @@ tags:
   - CML
   - Continuous Machine Learning
   - GitHub Actions
-  - GitLab
-  - Cloud
+  - GitLab CI
+  - Terraform
 ---
 
 Today, we're pre-releasing some new features in Continuous Machine Learning, or
