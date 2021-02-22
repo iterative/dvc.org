@@ -31,9 +31,9 @@ interrelationships.
 
 Files and directories in the workspace can be added to DVC (`dvc add`) or they
 can be downloaded from external sources (`dvc get`, `dvc import`,
-`dvc import-url`). Changes to the files, directories, notebooks, models, and in
-general machine learning file system can be tracked (`dvc commit`) and versioned
-in Git (`dvc checkout`). They can be removed (`dvc remove`) from the workspace.
+`dvc import-url`). Changes to the data, notebooks, models, and any related
+machine learning artifact can be tracked (`dvc commit`) and versioned in Git
+(`dvc checkout`). They can be removed (`dvc remove`) from the workspace.
 <abbr>Pipelines</abbr> and <abbr>dependencies</abbr> between them can be
 defined. Data and model files can be moved to the cloud and retrieved when
 necessary (`dvc push`, `dvc pull`). DVC supports all typical operations of files
