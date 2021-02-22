@@ -18,7 +18,6 @@ author: elle_obrien
 commentsUrl: https://discuss.dvc.org/t/cml-0-3-0-pre-release/685
 tags:
   - CML
-  - Continuous Machine Learning
   - GitHub Actions
   - GitLab CI
   - Terraform
