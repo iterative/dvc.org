@@ -16,7 +16,7 @@ descriptionLong: |
   ways to use CML without our Docker container.
 picture: 2021-02-17/cover.png
 author: elle_obrien
-commentsUrl: https://discuss.dvc.org/t/cml-self-hosted-runners-on-demand-with-gpus/462
+commentsUrl: https://discuss.dvc.org/t/cml-0-3-0-pre-release/685
 tags:
   - CML
   - Continuous Machine Learning
