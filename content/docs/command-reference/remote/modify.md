@@ -322,8 +322,8 @@ $ dvc remote modify myremote endpointurl \
                               'mystring'
   ```
 
-* `account_name` - storage account name, will be required if authenticated
-  either with `account_key` or `sas_token`.
+- `account_name` - storage account name. Required along with either
+  `account_key` or `sas_token`
 
   ```dvc
   $ dvc remote modify --local myremote account_name \
