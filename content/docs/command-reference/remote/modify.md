@@ -346,8 +346,7 @@ $ dvc remote modify myremote endpointurl \
   [Principal Service Authentication](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal)
 
   ```dvc
-  $ dvc remote modify --local myremote tenant_id \
-                              'tenant_id'
+  $ dvc remote modify --local myremote tenant_id 'tenant_id'
   ```
 
 * `client_id` - Client ID for
