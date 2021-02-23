@@ -12,9 +12,6 @@ combine them to run and compare many iterations of your ML project.
 
 Read on to see how it's done!
 
-> 📖 See [Experiment Management](/doc/user-guide/experiment-management) for more
-> information on DVC's approach.
-
 ## Collecting metrics
 
 First, let's see what is the mechanism to capture values for these ML

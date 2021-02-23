@@ -11,6 +11,9 @@ to tune or other permutations of the code or data. We can organize such projects
 and only keep what we ultimately need with
 [experiments](/doc/command-reference/exp).
 
+> 📖 See [Experiment Management](/doc/user-guide/experiment-management) for more
+> information on DVC's approach.
+
 ## Using experiments
 
 In the previous section, we learned how to tune
@@ -225,6 +228,3 @@ $ dvc exp show -n 2 --no-timestamp --include-params train.n_est,train.min_split
 
 > `dvc exp gc` only removes references to the experiments, not the cached
 > objects associated with it. To clean up the cache, use `dvc gc`.
-
-> See [Experiment Management](/doc/user-guide/experiment-management) to learn
-> more about how to manage experiments.
