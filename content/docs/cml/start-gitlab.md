@@ -1,6 +1,6 @@
 # Using CML on GitLab
 
-Here, we'll walk through a tutorial to start using CML on GitLab. 
+Here, we'll walk through a tutorial to start using CML on GitLab.
 
 1. Fork our
    [example project repository](https://gitlab.com/iterative.ai/example_cml).
