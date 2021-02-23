@@ -1,8 +1,7 @@
 # exp diff
 
-Show [parameters](/doc/command-reference/params) and
-[metrics](/doc/command-reference/metrics) changes between `dvc experiments`, or
-between the last <abbr>project</abbr> version and the workspace.
+Show changes in [metrics](/doc/command-reference/metrics) and
+[parameters](/doc/command-reference/params) between `dvc experiments`.
 
 ## Synopsis
 

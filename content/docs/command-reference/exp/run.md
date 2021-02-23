@@ -31,10 +31,10 @@ directories, etc.
 > outputs will always be <abbr>cached</abbr> (so they can be restored later).
 
 Each `dvc exp run` creates a variation based on the last project version (Git
-commit) and stores it internally with an automatic experiment ID (a short SHA-1
-hash). The results of the last experiment can be seen in the
-<abbr>workspace</abbr>. To display and compare your experiments, use
-`dvc exp show` or `dvc exp diff`.
+commit) and stores it internally with an automatic experiment name like
+`exp-bfe64` (which can be customized with the `--name` option). The results of
+the last experiment can be seen in the <abbr>workspace</abbr>. To display and
+compare your experiments, use `dvc exp show` or `dvc exp diff`.
 
 <details>
 
@@ -42,8 +42,9 @@ hash). The results of the last experiment can be seen in the
 
 `dvc exp` uses actual commits under custom
 [Git references](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
-(found in `.git/refs/exps`). Each commit has the Git `HEAD` as parent. These are
-not pushed to the Git remote by default (see `dvc exp push`).
+(found in `.git/refs/exps`). Each commit has the Git `HEAD` as parent and has
+it's own SHA-256 hash. These are not pushed to the Git remote by default (see
+`dvc exp push`).
 
 > References have a unique signature similar to the
 > [entries in the run-cache](/doc/user-guide/project-structure/internal-files#run-cache).
@@ -68,10 +69,9 @@ within pipelines.
 
 ## Options
 
-- `-f`, `--force` - reproduce an experiment pipeline, regenerating its results,
-  even if no changes were found. For `checkpoint` experiments, `dvc exp run -f`
-  will force regeneration of an existing checkpoint experiment branch from
-  scratch.
+> In addition to the following options, `dvc exp run` also accepts the same
+> options as `dvc repro`, with the exception that `--no-commit` has no effect
+> here.
 
 - `--params [<filename>:]<params_list>]` - reproduce an experiment using the
   specified [parameter](/doc/command-reference/params) values. Accepts a
@@ -79,8 +79,14 @@ within pipelines.
   `[filename:]key1=val1,key2=val2...`. Any specified values will override those
   from the contents of the relevant params file.
 
-- `-n <name>`, `--name <name>` - use the specified name for this experiment. If
-  `--name` is not provided, a default name will automatically be generated.
+- `-n <name>`, `--name <name>` - specify a name for this experiment. If this not
+  provided, a default name will generated like `exp-f80g4` (based on the
+  experiment's hash).
+
+- `-f`, `--force` - reproduce an experiment pipeline, regenerating its results,
+  even if no changes were found. For `checkpoint` experiments, `dvc exp run -f`
+  will force regeneration of an existing checkpoint experiment branch from
+  scratch.
 
 - `--queue` - queue an experiment for future execution, but do not actually run
   the pipeline.
