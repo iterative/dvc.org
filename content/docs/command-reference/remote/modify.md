@@ -339,8 +339,7 @@ $ dvc remote modify myremote endpointurl \
   `account_key`:
 
   ```dvc
-  $ dvc remote modify --local myremote sas_token \
-                              'sas_token'
+  $ dvc remote modify --local myremote sas_token 'sas_token'
   ```
 
 * `tenant_id` - tenant ID for
