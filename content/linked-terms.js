@@ -18,5 +18,9 @@ module.exports = [
   {
     matches: '.dvc/',
     url: '/doc/user-guide/project-structure/internal-files'
+  },
+  {
+    matches: 'dvc experiments',
+    url: '/doc/command-reference/exp'
   }
 ]

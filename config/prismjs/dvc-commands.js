@@ -44,6 +44,8 @@ module.exports = [
   'gc',
   'freeze',
   'fetch',
+  'exp',
+  'experiments',
   'doctor',
   'diff',
   'destroy',
