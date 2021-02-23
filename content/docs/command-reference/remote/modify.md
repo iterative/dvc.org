@@ -370,7 +370,7 @@ $ export AZURE_STORAGE_ACCOUNT_KEY='mykey'
 $ dvc remote add -d myremote azure://mycontainer/path
 ```
 
-For using service principal with certificate:
+Env vars can also help setup service principal auth via certificate file:
 
 ```dvc
 $ export AZURE_TENANT_ID='directory-id'
