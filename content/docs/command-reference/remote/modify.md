@@ -326,7 +326,7 @@ $ dvc remote modify myremote endpointurl \
   `account_key` or `sas_token`:
 
   ```dvc
-  $ dvc remote modify --local myremote account_name 'account_name'
+  $ dvc remote modify --local myremote account_name 'myuser'
   ```
 
 * `account_key` - storage account key:
