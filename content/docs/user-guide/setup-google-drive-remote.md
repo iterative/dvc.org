@@ -191,7 +191,8 @@ authentication is needed.
 
    ```dvc
    $ dvc remote modify myremote gdrive_use_service_account true
-   $ dvc remote modify myremote gdrive_service_account_json_file_path path/to/file.json
+   $ dvc remote modify myremote gdrive_service_account_json_file_path \
+                                path/to/file.json
    ```
 
 ## Authorization
