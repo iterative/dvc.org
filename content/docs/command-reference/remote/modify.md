@@ -332,14 +332,14 @@ $ dvc remote modify myremote endpointurl \
 * `account_key` - storage account key:
 
   ```dvc
-  $ dvc remote modify --local myremote account_key 'account_key'
+  $ dvc remote modify --local myremote account_key 'mykey'
   ```
 
 * `sas_token` - shared access signature token (can be used instead of
   `account_key`):
 
   ```dvc
-  $ dvc remote modify --local myremote sas_token 'sas_token'
+  $ dvc remote modify --local myremote sas_token 'mytoken'
   ```
 
 * `tenant_id` - tenant ID for
@@ -347,43 +347,43 @@ $ dvc remote modify myremote endpointurl \
   authentication:
 
   ```dvc
-  $ dvc remote modify --local myremote tenant_id 'tenant_id'
+  $ dvc remote modify --local myremote tenant_id 'directory-id'
   ```
 
 * `client_id` - client ID for _service principal_ authentication:
 
   ```dvc
-  $ dvc remote modify --local myremote client_id 'client_id'
+  $ dvc remote modify --local myremote client_id 'client-id'
   ```
 
 * `client_secret` - client Secret for _service principal_ authentication:
 
   ```dvc
-  $ dvc remote modify --local myremote client_secret 'client_secret'
+  $ dvc remote modify --local myremote client_secret 'client-secret'
   ```
 
 Azure remotes can also be configured entirely via environment variables:
 
 ```dvc
-$ export AZURE_STORAGE_ACCOUNT_NAME='account_name'
-$ export AZURE_STORAGE_ACCOUNT_KEY='account_key'
+$ export AZURE_STORAGE_ACCOUNT_NAME='myuser'
+$ export AZURE_STORAGE_ACCOUNT_KEY='mykey'
 $ dvc remote add -d myremote azure://mycontainer/path
 ```
 
 For using service principal with certificate:
 
 ```dvc
-$ export AZURE_TENANT_ID='tenant_id'
-$ export AZURE_CLIENT_ID='client_id'
+$ export AZURE_TENANT_ID='directory-id'
+$ export AZURE_CLIENT_ID='client-id'
 $ export AZURE_CLIENT_CERTIFICATE_PATH='/path/to/certificate'
 ```
 
 For logging in with username/password;
 
 ```
-$ export AZURE_CLIENT_ID='client_id'
-$ export AZURE_USERNAME='username'
-$ export AZURE_PASSWOR='password'
+$ export AZURE_CLIENT_ID='client-id'
+$ export AZURE_USERNAME='myuser'
+$ export AZURE_PASSWOR='mysecret'
 ```
 
 > On Windows, if none of the above settings are configured the login will
