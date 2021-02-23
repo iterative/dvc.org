@@ -20,19 +20,18 @@ positional arguments:
 
 Provides a quick way to compare `dvc params` and `dvc metrics` between two
 `dvc experiments`. The differences shown by this command include the old and new
-values, and numeric difference (delta) from the previous ones.
+values, as well as the difference (change) if both values are numbers.
 
 > This is similar to combining the reports from `dvc params diff` and
 > `dvc metrics diff` together, for the experiments in question.
 
 Without arguments, this command compares params and metrics currently present in
-the <abbr>workspace</abbr> (last `dvc exp run`) with the latest committed
-versions (required).
+the <abbr>workspace</abbr> (e.g. the last `dvc exp run`) with the latest
+committed versions (required).
 
 `a_rev` and `b_rev` are optional experiments to compare. They accept experiment
-names (see `dvc exp run --name`) or hashes (printed by DVC). Git commit hashes,
-tags, or branch names are also accepted. A single specified exp ID results in
-comparing it to the baseline commit from which it was derived.
+names or hashes (see `dvc exp run`). Providing a single one results in comparing
+it to the workspace.
 
 All params and metrics defined in the experiments' `dvc.yaml` files are used by
 default.
