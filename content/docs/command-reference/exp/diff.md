@@ -1,10 +1,8 @@
 # exp diff
 
-Show [parameter](/doc/command-reference/params) and
+Show [parameters](/doc/command-reference/params) and
 [metrics](/doc/command-reference/metrics) changes between `dvc experiments`, or
 between the last <abbr>project</abbr> version and the workspace.
-
-Show changes between `dvc experiments` in the DVC repository.
 
 ## Synopsis
 
@@ -33,10 +31,10 @@ the <abbr>workspace</abbr> (last `dvc exp run`) with the latest committed
 versions (required).
 
 `a_rev` and `b_rev` are optional experiment IDs (printed by `dvc exp run`) to
-compare. A single specified experiment results in comparing it against the
-workspace.
+compare.
 
-All params and metrics defined in `dvc.yaml` are used by default.
+All params and metrics defined in the experiments' `dvc.yaml` files are used by
+default.
 
 Another way to display experiments is the `dvc exp show` command, which lists
 all the current experiments (without comparisons).

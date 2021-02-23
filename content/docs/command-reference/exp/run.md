@@ -21,8 +21,9 @@ positional arguments:
 
 ## Description
 
-Provides a way to execute and track experiments in your <abbr>project</abbr>
-without polluting it with unnecessary commits, branches, directories, etc.
+Provides a way to execute and track `dvc experiments` in your
+<abbr>project</abbr> without polluting it with unnecessary commits, branches,
+directories, etc.
 
 > `dvc exp run` is equivalent to `dvc repro` for <abbr>experiments</abbr>. It
 > has the same behavior when it comes to stage execution (restores the
@@ -32,7 +33,8 @@ without polluting it with unnecessary commits, branches, directories, etc.
 Each `dvc exp run` creates a variation based on the last project version (Git
 commit) and stores it internally with an automatic experiment ID (a short SHA-1
 hash). The results of the last experiment can be seen in the
-<abbr>workspace</abbr>. To display all your experiments, use `dvc exp show`.
+<abbr>workspace</abbr>. To display and compare your experiments, use
+`dvc exp show` or `dvc exp diff`.
 
 <details>
 
@@ -48,18 +50,21 @@ not pushed to the Git remote by default (see `dvc exp push`).
 
 </details>
 
-Successful experiments can be promoted as commits to the main Git repo with
-`dvc exp apply`. Unnecessary ones can be removed with `dvc exp gc` (and their
-data with `dvc gc`), or abandoned.
+Successful experiments can be made
+[persistent](/doc/user-guide/experiment-management#persistent-experiments) by
+committing them to the Git repo. You can use `dvc exp apply` to roll back the
+workspace to a previous experiment first. Unnecessary ones can be removed with
+`dvc exp gc`, or abandoned (and their data with `dvc gc`).
 
-## Parallel execution (multi-threading)
+## Parallel execution
 
-⚠️ Multi-thread runs are experimental and may be unstable. ⚠️
+⚠️ Multi-threading is experimental and may be unstable. ⚠️
 
-When using `-j` to run experiments in parallel, take caution to only specify a
-number of jobs which can be handled by your local machine or execution
-environment. DVC makes no attempt to intelligently schedule or prioritize
-execution of stages within pipelines.
+When using `-j` (`--jobs`) to run experiments in parallel, make sure you're
+using a number of jobs that your machine or environment can handle.
+
+Note that DVC makes no attempt to intelligently schedule or prioritize stages
+within pipelines.
 
 ## Options
 
