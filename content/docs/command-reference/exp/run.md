@@ -22,23 +22,31 @@ positional arguments:
 ## Description
 
 Provides a way to execute and track experiments in your <abbr>project</abbr>
-without polluting it with unnecessary commits, branches, directories, etc. The
-results are reflected in the <abbr>workspace</abbr> normally, and saved
-internally with an automatic experiment ID (a short SHA-1 hash).
+without polluting it with unnecessary commits, branches, directories, etc.
 
 > `dvc exp run` is equivalent to `dvc repro` for <abbr>experiments</abbr>. It
-> has the same behavior for the most part (restore the dependency graph, etc.).
-> It differs from `dvc repro` in that dependencies and outputs will always be
-> <abbr>cached</abbr> (so they can be restored later).
+> has the same behavior when it comes to stage execution (restores the
+> dependency graph, etc.). It differs from in that experiment dependencies and
+> outputs will always be <abbr>cached</abbr> (so they can be restored later).
 
-This is achieved by committing the results internally in a custom
-[Git reference](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
-(found in `.git/refs/exps`). These are not visible to regular `git` commands,
-not pushed to Git remotes by default (see `dvc exp push`).
+Each `dvc exp run` creates a variation based on the last project version (Git
+commit) and stores it internally with an automatic experiment ID (a short SHA-1
+hash). The results of the last experiment can be seen in the
+<abbr>workspace</abbr>. To display all your experiments, use `dvc exp show`.
 
-Each `dvc exp run` in effect creates a Git branch based on `HEAD`, with a single
-commit that codifies the experiment (but `HEAD` is not moved). To display all
-your experiments, use `dvc exp show`.
+<details>
+
+### How does DVC track experiments?
+
+`dvc exp` uses actual commits under custom
+[Git references](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
+(found in `.git/refs/exps`). Each commit has the Git `HEAD` as parent. These are
+not pushed to the Git remote by default (see `dvc exp push`).
+
+> References have a unique signature similar to the
+> [entries in the run-cache](/doc/user-guide/project-structure/internal-files#run-cache).
+
+</details>
 
 Successful experiments can be promoted as commits to the main Git repo with
 `dvc exp apply`. Unnecessary ones can be removed with `dvc exp gc` (and their

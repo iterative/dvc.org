@@ -16,3 +16,12 @@ usage: dvc exp show [-h] [-q | -v] [-a] [-T] [--all-commits] [--no-pager]
                     [--no-timestamp] [--sha] [--show-json]
                     [--precision <n>]
 ```
+
+## Description
+
+Enters a screen that shows all of the relevant experiments you've run. Typically
+you can exit this screen by typing `q` in your keyboard.
+
+By default only the experiments derived from the last project version (Git
+commit) are listed, but you can use `-n` to include the ones based on a given
+number of previous commits.

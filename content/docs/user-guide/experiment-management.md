@@ -8,14 +8,14 @@ optimization, etc. DVC helps you codify and manage all of your
 
 1. Create [experiments](#experiments) that derive from your latest project
    version without having to track them manually. DVC does that automatically,
-   letting you list and compare them. The best ones can be promoted, and the
-   rest archived.
+   letting you list and compare them. The best ones can be made persistent, and
+   the rest archived.
 2. Place in-code [checkpoints](#checkpoints-in-source-code) that mark a series
-   of variations, forming an in-depth experiment. DVC helps you capture them at
+   of variations, forming a deep experiment. DVC helps you capture them at
    runtime, and manage them in batches.
-3. Apply experiments or checkpoints as [persistent](#persistent-experiments)
-   commits in your <abbr>repository</abbr>. Or create these versions from
-   scratch like typical project changes.
+3. Make experiments or checkpoints [persistent](#persistent-experiments) by
+   committing them to your <abbr>repository</abbr>. Or create these versions
+   from scratch like typical project changes.
 
    At this point you may also want to consider the different
    [ways to organize](#organization-patterns) experiments in your project (as
@@ -37,31 +37,17 @@ meaningful measures for the experimental results.
 experiments this way, as well as review, compare, and restore them later, or
 roll back to the baseline. The basic workflow goes like this:
 
-- Modify <abbr>dependencies</abbr> (e.g. input data or source code),
-  <abbr>hyperparameters</abbr>, or commands (`cmd` field of `dvc.yaml`) of
-  committed stages.
-- Use `dvc exp run` (instead of `repro`) to execute the pipeline. This puts the
-  experiment's results in your <abbr>workspace</abbr>, and tracks it under the
-  hood.
-- Visualize experiment configurations and results with `dvc exp show`. Repeat.
-- Use [metrics](/doc/command-reference/metrics) in your pipeline to identify the
-  best experiment(s), and promote them to persistent experiments (regular
-  commits) with `dvc exp apply`.
-
-<details>
-
-### How does DVC track experiments?
-
-DVC uses actual commits under custom
-[Git references](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
-(found in `.git/refs/exps`) to keep track of experiments created with `dvc exp`.
-Each commit has the repo `HEAD` as parent. These are not pushed to the Git
-remote by default (see `dvc exp push`).
-
-> References have a unique signature similar to the
-> [entries in the run-cache](/doc/user-guide/project-structure/internal-files#run-cache).
-
-</details>
+- Modify stage <abbr>parameters</abbr> or other dependencies (e.g. input data,
+  source code) of committed stages.
+- Use `dvc exp run` (instead of `repro`) to execute the pipeline. The results
+  are reflected in your <abbr>workspace</abbr>, and tracked automatically.
+- Use [metrics](/doc/command-reference/metrics) to identify the best
+  experiment(s).
+- Visualize and compare experiments with `dvc exp show` or `dvc exp diff`.
+  Repeat.
+- Use `dvc exp apply` to roll back to the best one.
+- Make the selected experiment persistent by committing its results to Git. This
+  cleans the slate so you can repeat the process.
 
 ## Checkpoints in source code
 
@@ -76,22 +62,10 @@ tracks a series of variations (the checkpoints). You interact with them using
 `dvc exp run`, `dvc exp resume`, and `dvc exp reset` (see also the `checkpoint`
 field of `dvc.yaml` outputs).
 
-<details>
-
-### How are checkpoints captured by DVC?
-
-When DVC runs a checkpoint-enabled pipeline, a custom Git branch (in
-`.git/refs/exps`) is started off the repo `HEAD`. A new commit is appended each
-time the code calls `dvc.api.make_checkpoint()` or writes a
-`.dvc/tmp/DVC_CHECKPOINT` signal file. These are not pushed to the Git remote by
-default (see `dvc exp push`).
-
-</details>
-
 ## Persistent experiments
 
 When your experiments are good enough to save or share, you may want to store
-them persistently as commits in your <abbr>repository</abbr>.
+them persistently as Git commits in your <abbr>repository</abbr>.
 
 Whether the results were produced with `dvc repro` directly, or after a
 `dvc exp` workflow (refer to previous sections), the `dvc.yaml` and `dvc.lock`

@@ -14,6 +14,8 @@ A set of commands to generate and manage <abbr>experiment</abbr>:
 
 > Aliased to `dvc exp`.
 
+> Requires that Git is being used to version the project.
+
 ## Synopsis
 
 ```usage
@@ -39,16 +41,17 @@ positional arguments:
 `dvc exp` subcommands provide specialized ways to create and manage data science
 experiments. The basic workflow goes like this:
 
-- Modify <abbr>dependencies</abbr> (e.g. input data or source code),
-  <abbr>parameters</abbr>, or commands (`cmd` field of `dvc.yaml`) of committed
-  stages.
-- Use `dvc exp run` (instead of `repro`) to execute the pipeline. This puts the
-  experiment's results in your <abbr>workspace</abbr>, and tracks it under the
-  hood.
-- Visualize experiment configurations and results with `dvc exp show`. Repeat.
+- Modify stage <abbr>parameters</abbr> or other dependencies (e.g. input data,
+  source code) of committed stages.
+- Use `dvc exp run` (instead of `repro`) to execute the pipeline. The results
+  are reflected in your <abbr>workspace</abbr>, and tracked automatically.
 - Use [metrics](/doc/command-reference/metrics) in your pipeline to identify the
-  best experiment(s), and promote them to persistent experiments (regular
-  commits) with `dvc exp apply`.
+  best experiment(s).
+- Visualize and compare experiments with `dvc exp show` or `dvc exp diff`.
+  Repeat.
+- Use `dvc exp apply` to roll back to the best one.
+- Make the selected experiment persistent by committing its results to Git. This
+  cleans the slate so you can repeat the process.
 
 📖 See [Experiment Management](/doc/user-guide/experiment-management) for more
 info.
