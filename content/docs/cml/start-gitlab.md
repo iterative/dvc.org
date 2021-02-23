@@ -1,9 +1,6 @@
 # Using CML on GitLab
 
-Here, we'll walk through a tutorial to start using CML on GitLab. For
-simplicity, we'll show the demo in GitLab Actions, but these instructions are
-valid for all supported Continuous Integration (CI) systems (with exceptions as
-noted!).
+Here, we'll walk through a tutorial to start using CML on GitLab. 
 
 1. Fork our
    [example project repository](https://gitlab.com/iterative.ai/example_cml).
@@ -12,10 +9,10 @@ noted!).
 
    ![](/img/gitlab_fork_cml_project.png)
 
-2. ⚠️ In GitLab, to use CML, you must create a variable called a repo_token
+2. ⚠️ In GitLab, to use CML, you must create a variable called a `repo_token`
    whose value is a Personal Access Token. To do this:
 
-   a. Click on your Avatar in the upper right side and click on Edit Profile.
+   a. Click on your Avatar in the upper right side and click on "Edit Profile."
 
    b. Along the left side of the screen go to Access Tokens.
 
