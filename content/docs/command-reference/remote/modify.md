@@ -360,8 +360,7 @@ $ dvc remote modify myremote endpointurl \
   [Principal Service Authentication](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal)
 
   ```dvc
-  $ dvc remote modify --local myremote client_secret \
-                              'client_secret'
+  $ dvc remote modify --local myremote client_secret 'client_secret'
   ```
 
 Azure remotes can also be configured entirely via environment variables:
