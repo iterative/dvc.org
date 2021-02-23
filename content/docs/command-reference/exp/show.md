@@ -19,12 +19,13 @@ usage: dvc exp show [-h] [-q | -v] [-a] [-T] [--all-commits] [--no-pager]
 
 ## Description
 
-Enters a screen that shows all of the relevant experiments you've run. Typically
-you can exit this screen by typing `q` in your keyboard.
+Shows experiments in a detailed table which includes parameters and metrics.
+Only the experiments derived from the Git `HEAD` are shown by default but all
+experiments can be included with the `---all-commits` option.
 
-By default only the experiments derived from the last project version (Git
-commit) are listed, but you can use `-n` to include the ones based on a given
-number of previous commits.
+`dvc exp show` enters a paginated screen by default, which you can exit by
+typing `Q` (or Esc) in your keyboard. Use `--no-pager` to print the entire
+output to terminal instead.
 
 ## Options
 

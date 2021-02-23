@@ -57,7 +57,7 @@ To track successive steps in a longer experiment, you can write your code so it
 registers checkpoints with DVC at runtime. This allows you, for example, to
 track the progress in deep learning techniques such as evolving neural networks.
 
-This kind of experiment is also derived fom your latest project version, but it
+This kind of experiment can also derived from a stable project version, but it
 tracks a series of variations (the checkpoints). You interact with them using
 `dvc exp run`, `dvc exp resume`, and `dvc exp reset` (see also the `checkpoint`
 field of `dvc.yaml` outputs).

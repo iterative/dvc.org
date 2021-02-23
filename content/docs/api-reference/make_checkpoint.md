@@ -89,8 +89,8 @@ Experiment results have been applied to your workspace.
 
 In this example we kill the process (with Ctrl + C) after 3 checkpoints (at 0,
 100, and 200). The <abbr>cache</abbr> will contain those 3 versions of
-`int.txt`. DVC applies the last checkpoint to the <abbr>workspace</abbr> even
-when more cycles happened before the interrupt:
+`int.txt`. DVC applies the last checkpoint to the <abbr>workspace</abbr> even if
+more cycles happened after that:
 
 ```dvc
 $ cat int.txt

@@ -27,11 +27,11 @@ directories, etc.
 
 > `dvc exp run` is equivalent to `dvc repro` for <abbr>experiments</abbr>. It
 > has the same behavior when it comes to stage execution (restores the
-> dependency graph, etc.). It differs from in that experiment dependencies and
-> outputs will always be <abbr>cached</abbr> (so they can be restored later).
+> dependency graph, etc.). See the command [options](#options) for more details
+> on the differences.
 
-Each `dvc exp run` creates a variation based on the last project version (Git
-commit) and stores it internally with an automatic experiment name like
+Each `dvc exp run` creates a variation based on the latest project version
+committed to Git and stores it internally with an automatic experiment name like
 `exp-bfe64` (which can be customized with the `--name` option). The results of
 the last experiment can be seen in the <abbr>workspace</abbr>. To display and
 compare your experiments, use `dvc exp show` or `dvc exp diff`.
@@ -126,3 +126,18 @@ within pipelines.
   regardless of this flag.
 
 - `-v`, `--verbose` - displays detailed tracing information.
+
+## Example: Modify parameters on-the-fly
+
+dvc.yaml with 1 param, 1 stage, and 1 metric
+
+Try a quick variation with `--set-param`...
+
+Check the results...
+
+Try again and check results (`-S`)...
+
+> Notice that experiments run as a series don't build up on each other, as they
+> are all based of `HEAD`.
+
+## Example:
