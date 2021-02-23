@@ -92,10 +92,9 @@ specific one is given with `--remote`.
 
 - `-a`, `--all-branches` - fetch cache for all Git branches instead of just the
   current workspace. This means DVC may download files needed to reproduce
-  different versions of data specified in `dvc.yaml` and `.dvc` files (see
-  [data versioning](/doc/start/data-versioning)), not just the ones currently in
-  the workspace. Note that this can be combined with `-T` below, for example
-  using the `-aT` flag.
+  different versions of a `.dvc` file, not just the ones currently in the
+  workspace. Note that this can be combined with `-T` below, for example using
+  the `-aT` flag.
 
 - `-T`, `--all-tags` - same as `-a` above, but applies to Git tags as well as
   the workspace. Note that both options can be combined, for example using the

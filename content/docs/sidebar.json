@@ -219,6 +219,11 @@
         "slug": "doctor"
       },
       {
+        "label": "experiments",
+        "slug": "exp",
+        "source": "exp/index.md"
+      },
+      {
         "label": "fetch",
         "slug": "fetch",
         "tutorials": {
@@ -414,6 +419,10 @@
       {
         "slug": "read",
         "label": "read()"
+      },
+      {
+        "slug": "make_checkpoint",
+        "label": "make_checkpoint()"
       }
     ]
   },

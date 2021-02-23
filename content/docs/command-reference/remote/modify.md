@@ -397,23 +397,13 @@ more information.
   $ dvc remote modify myremote gdrive_use_service_account true
   ```
 
-- `gdrive_service_account_email` - email address of the Google Project's service
-  account when `gdrive_use_service_account` is on. Also requires using
-  `gdrive_service_account_p12_file_path`.
+- `gdrive_service_account_json_file_path` - path to the Google Project's service
+  account `.json` key file, when `gdrive_use_service_account` is on.
 
   ```dvc
   $ dvc remote modify myremote \
-        gdrive_service_account_email 'email-addr'
-  ```
-
-- `gdrive_service_account_p12_file_path` - Google Project's service account
-  `.p12` file path when `gdrive_use_service_account` is on. Also requires using
-  `gdrive_service_account_email`.
-
-  ```dvc
-  $ dvc remote modify myremote \
-                      gdrive_service_account_p12_file_path \
-                      path/to/file.p12
+                      gdrive_service_account_json_file_path \
+                      path/to/file.json
   ```
 
 - `gdrive_service_account_user_email` - email of a user account to

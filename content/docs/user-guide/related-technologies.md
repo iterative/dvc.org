@@ -92,8 +92,7 @@ _Luigi_, etc.
 - DVC doesn't need to run any services. There's no GUI as a result, but we
   expect some GUI services will be created on top of DVC.
 
-- DVC can generate images with [experiment](/doc/start/experiments) workflow
-  visualizations.
+- DVC can generate images with experiment workflow visualizations.
 
 - DVC has transparent design. <abbr>DVC files</abbr> have a human-readable
   format and can be easily reused by external tools.

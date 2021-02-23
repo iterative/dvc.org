@@ -150,7 +150,7 @@ Now your machine will be listening for workflows from your project repository.
 ## A New GitHub Action
 
 One more thing: you might've noticed in our example workflow above that there's
-a [new CML GitHub Action](https://github.com/iterative/cml-setup)! The new
+a [new CML GitHub Action](https://github.com/iterative/setup-cml)! The new
 Action helps you setup CML, giving you one more way to mix and match the CML
 suite of functions with your preferred environment.
 
