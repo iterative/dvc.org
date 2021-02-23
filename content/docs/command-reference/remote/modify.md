@@ -310,8 +310,9 @@ $ dvc remote modify myremote endpointurl \
   $ dvc remote modify myremote url azure://mycontainer/path
   ```
 
-> The options below contain sensitive user info. Therefore, it's safer to add it
-> with the `--local` option, so it's written to a Git-ignored config file.
+> The options below contain sensitive user info. Therefore, it's safer to use
+> the `--local` option so they're written to a Git-ignored
+> [config-file](https://dvc.org/doc/command-reference/config).
 
 - `connection_string` -
   [connection string](http://azure.microsoft.com/en-us/documentation/articles/storage-configure-connection-string/):
