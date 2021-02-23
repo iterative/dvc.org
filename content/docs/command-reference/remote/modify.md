@@ -397,8 +397,8 @@ more information.
   $ dvc remote modify myremote gdrive_use_service_account true
   ```
 
-- `gdrive_service_account_json_file_path` - Google Project's service account
-  `.json` file path when `gdrive_use_service_account` is on.
+- `gdrive_service_account_json_file_path` - path to the Google Project's service
+  account `.json` key file, when `gdrive_use_service_account` is on.
 
   ```dvc
   $ dvc remote modify myremote \
