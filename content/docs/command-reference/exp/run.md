@@ -57,6 +57,26 @@ committing them to the Git repo. You can use `dvc exp apply` to roll back the
 workspace to a previous experiment first. Unnecessary ones can be removed with
 `dvc exp gc`, or abandoned (and their data with `dvc gc`).
 
+## Checkpoints
+
+To track successive steps in a longer <abbr>experiment</abbr>, you can register
+checkpoints with DVC during your code or script runtime (similar to a logger).
+
+To do so, mark stage `outs` with `checkpoint: true` in `dvc.yaml`, and in your
+code either call the `dvc.api.make_checkpoint()` function (Python), or write a
+`.dvc/tmp/DVC_CHECKPOINT` signal file (any programming language).
+
+<details>
+
+### How are checkpoints captured by DVC?
+
+When DVC runs a checkpoint-enabled experiment, a custom Git branch (in
+`.git/refs/exps`) is started off the repo `HEAD`. A new commit is appended each
+time a checkpoint is registered by the code. These are not pushed to the Git
+remote by default (see `dvc exp push`).
+
+</details>
+
 ## Parallel execution
 
 ⚠️ Multi-threading is experimental and may be unstable. ⚠️

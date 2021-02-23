@@ -21,11 +21,14 @@ while True:
 
 To track successive steps in a longer <abbr>experiment</abbr>, you can write
 your code so it registers checkpoints with DVC during runtime (similar to a
-logger). This function can be called by the code in stages executes by
-`dvc exp run` (see also the `cmd` field of `dvc.yaml`).
+logger). This function can be called by the code in stages executed by
+`dvc exp run`.
 
 > Note that for non-Python code, the alternative is to write a
 > `.dvc/tmp/DVC_CHECKPOINT` signal file.
+
+The stage definition in `dvc.yaml` should contain `outs` with the
+`checkpoint: true` value set, so that DVC enables checkpoint registration.
 
 ## Example: Every 100th iteration
 
