@@ -322,21 +322,21 @@ $ dvc remote modify myremote endpointurl \
                               'mystring'
   ```
 
-- `account_name` - storage account name. Required along with either
-  `account_key` or `sas_token`:
+- `account_name` - storage account name (requires either `account_key` or
+  `sas_token` along with this):
 
   ```dvc
   $ dvc remote modify --local myremote account_name 'myuser'
   ```
 
-* `account_key` - storage account key:
+* `account_key` - storage account key (for `account_name`):
 
   ```dvc
   $ dvc remote modify --local myremote account_key 'mykey'
   ```
 
-* `sas_token` - shared access signature token (can be used instead of
-  `account_key`):
+* `sas_token` - shared access signature token (can be used for `account_name`
+  instead of `account_key`):
 
   ```dvc
   $ dvc remote modify --local myremote sas_token 'mytoken'
