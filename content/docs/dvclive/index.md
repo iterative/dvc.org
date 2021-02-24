@@ -5,7 +5,8 @@ metrics in machine learning projects. Use it to log metrics during training.
 
 dvclive is integrated seamlesly with dvc and logs produced by it can be fed to
 `dvc plots` command. Even though, one does not need dvc to visualize dvclive
-logs, as they are saved into easily readable tsv format.
+logs, as they are saved into easily parsable tsv format, feel free to apply
+custom visualization methods.
 
 We have created dvclive with two principles in mind:
 
