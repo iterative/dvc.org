@@ -249,7 +249,7 @@ the <abbr>workspace</abbr> efficiently to match them.
 
 ## Model versioning
 
-Apart from data files, DVC eases the way you work with models. Models in a
+DVC helps you handle model files as well. Models in a
 project usually change more frequently than data files and they need to be kept
 in sync with changes in other elements of a project. Model files are no
 different than data files when it comes to tracking their versions. DVC also
