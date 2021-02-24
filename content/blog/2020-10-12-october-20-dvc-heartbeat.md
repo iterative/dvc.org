@@ -107,7 +107,7 @@ few weeks, so stay tuned. Another big initative is adding videos to our docs:
 since video seems like a popular format for a lot of learners, we're working to
 supplement our official docs with embedded videos. Check out our first
 installment on the
-[Getting Started with Data Versioning](https://dvc.org/doc/start/data-and-model-versioning).
+[Getting Started with Data Versioning](/doc/start/data-and-model-versioning).
 
 https://youtu.be/kLKBcPonMYw
 
