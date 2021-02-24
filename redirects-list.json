@@ -22,13 +22,12 @@
   "^/(?:docs|documentation)(/.*)?$                                                        /doc$1",
 
   "^/doc/get-started(/.*)?$                                                               /doc/start",
+  "^/doc/start/data-versioning$                                                           /doc/start/data-and-model-versioning",
+  "^/doc/start/data-access$                                                               /doc/start/data-and-model-access",
   "^/doc/tutorial(/.*)?$                                                                  /doc/start",
   "^/doc/tutorials/get-started(/.*)?$                                                     /doc/start",
   "^/doc/tutorials/versioning(/.*)?$                                                      /doc/use-cases/versioning-data-and-model-files/tutorial",
   "^/doc/tutorials(/.*)?                                                                  /doc/start",
-
-  "^/doc/start/data-versioning$                                                           /doc/start/data-and-model-versioning",
-  "^/doc/start/data-access$                                                               /doc/start/data-and-model-access",
 
   "^/doc/use-cases/data-and-model-files-versioning/?$                                     /doc/use-cases/versioning-data-and-model-files",
   "^/doc/user-guide/updating-tracked-files$                                               /doc/user-guide/how-to/update-tracked-data",
