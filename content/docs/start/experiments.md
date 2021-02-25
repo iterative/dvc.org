@@ -44,8 +44,8 @@ Check that the `featurize.max_features` value has been updated in `params.yaml`:
 +  max_features: 3000
 ```
 
-Any edits to dependencies (parameters, source code, data) will be reflected in
-the experiment run.
+Any edits to <abbr>dependencies</abbr> (parameters, source code, data) will be
+reflected in the experiment run.
 
 </details>
 
