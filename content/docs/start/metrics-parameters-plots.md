@@ -98,6 +98,34 @@ into `roc.json` for an additional plot.
 > structure of a metrics or plots file - it's pretty much user and case defined.
 > Please refer to `dvc metrics` and `dvc plots` for more details.
 
+You can view tracked metrics and plots with DVC. Let's start with the metrics:
+
+```dvc
+$ dvc metrics show
+Path         avg_prec    roc_auc
+scores.json  0.52048     0.9032
+```
+
+To view plots, first specify which arrays to use as the plot axes. We only need
+to do this once, and DVC will save our plot configurations.
+
+```dvc
+$ dvc plots modify prc.json -x recall -y precision
+Modifying stage 'evaluate' in 'dvc.yaml'
+$ dvc plots modify roc.json -x fpr -y tpr
+Modifying stage 'evaluate' in 'dvc.yaml'
+```
+
+Now let's view the plots:
+
+```dvc
+$ dvc plots show
+file:///Users/dvc/example-get-started/plots.html
+```
+
+![](/img/plots_prc_get_started_show.svg)
+![](/img/plots_roc_get_started_show.svg)
+
 Let's save this iteration, so we can compare it later:
 
 ```dvc
@@ -226,16 +254,6 @@ scores.json  avg_prec  0.52048  0.55259  0.03211
 scores.json  roc_auc   0.9032   0.91536  0.01216
 ```
 
-Since there are multiple arrays of data in each plots file, let's specify which
-to use as the axes in our plots:
-
-```dvc
-$ dvc plots modify prc.json -x recall -y precision
-Modifying stage 'evaluate' in 'dvc.yaml'
-$ dvc plots modify roc.json -x fpr -y tpr
-Modifying stage 'evaluate' in 'dvc.yaml'
-```
-
 And finally, we can compare both `precision recall` and `roc` curves with a
 single command!
 
@@ -244,7 +262,8 @@ $ dvc plots diff
 file:///Users/dvc/example-get-started/plots.html
 ```
 
-![](/img/plots_prc_get_started.svg) ![](/img/plots_roc_get_started.svg)
+![](/img/plots_prc_get_started_diff.svg)
+![](/img/plots_roc_get_started_diff.svg)
 
 > See `dvc plots diff` for more info on its options.
 
