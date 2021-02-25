@@ -21,9 +21,17 @@ positional arguments:
 Provides a quick way to compare `dvc params` and `dvc metrics` between two
 `dvc experiments` by printing a table of differences. By default, it includes
 the params/metrics file "Path", "Param" or "Metric" name, the new "Value", and
-the difference ("Change") fpr numeric values.
+the difference ("Change") for numeric values. Example:
 
-<!-- Quick example -->
+```dvc
+$ dvc exp diff
+Path         Metric    Value    Change
+scores.json  roc_auc   0.93345  0.018087
+scores.json  grade     B-       —
+
+Path         Param         Value    Change
+params.yaml  max_features  3000     1500
+```
 
 > This is similar to combining the reports from `dvc params diff` and
 > `dvc metrics diff` together, for the experiments in question.

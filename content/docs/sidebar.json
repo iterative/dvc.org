@@ -228,6 +228,10 @@
             "slug": "show"
           },
           {
+            "label": "exp diff",
+            "slug": "diff"
+          },
+          {
             "label": "exp apply",
             "slug": "apply"
           }

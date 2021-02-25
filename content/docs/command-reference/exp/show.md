@@ -28,7 +28,17 @@ Your terminal will enter a paginated screen by default, which you can exit by
 typing `Q` in your keyboard. Use `--no-pager` to print the entire table at once
 instead.
 
-<!-- Quick example -->
+```dvc
+$ dvc exp show --no-pager
+┏━━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
+┃ Experiment    ┃ avg_prec ┃ roc_auc ┃ train.n_est┃ train.min_split ┃
+┡━━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━┩
+│ workspace     │  0.56191 │ 0.93345 │ 50         │ 2               │
+│ master        │  0.55259 │ 0.91536 │ 50         │ 2               │
+│ ├── exp-bfe64 │  0.57833 │ 0.95555 │ 50         │ 8               │
+│ └── exp-ad5b1 │  0.56191 │ 0.93345 │ 50         │ 2               │
+└───────────────┴──────────┴─────────┴────────────┴─────────────────┘
+```
 
 ## Options
 
