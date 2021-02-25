@@ -34,10 +34,11 @@ const RightPanel: React.FC<IRightPanelProps> = ({
   const [currentHeadingSlug, setCurrentHeadingSlug] = useState<string | null>(
     null
   )
+  const contentBlockRef = useRef<HTMLDivElement>(null)
+
   const updateCurrentHeader = (): void => {
     const currentScroll = getScrollPosition()
     const coordinateKeys = Object.keys(headingsOffsets)
-
     if (!coordinateKeys.length) return
 
     const headerHeight = getHeaderHeight()
@@ -50,8 +51,16 @@ const RightPanel: React.FC<IRightPanelProps> = ({
     const newCurrentHeadingSlug = filteredKeys.length
       ? headingsOffsets[filteredKeys[filteredKeys.length - 1]]
       : null
-
-    setCurrentHeadingSlug(newCurrentHeadingSlug)
+    if (currentHeadingSlug != newCurrentHeadingSlug) {
+      const divObj = contentBlockRef.current.getClientRects()[0]
+      let cellHeight = 0
+      if (newCurrentHeadingSlug)
+        cellHeight =
+          document.getElementById('link-' + newCurrentHeadingSlug).offsetTop -
+          contentBlockRef.current.offsetTop
+      contentBlockRef.current.scrollTo(divObj.x, cellHeight)
+      setCurrentHeadingSlug(newCurrentHeadingSlug)
+    }
   }
 
   const updateHeadingsPosition = (): void => {
@@ -91,7 +100,6 @@ const RightPanel: React.FC<IRightPanelProps> = ({
   useEffect(initHeadingsPosition, [headings])
   useEffect(updateCurrentHeader, [headingsOffsets, documentHeight])
 
-  const contentBlockRef = useRef<HTMLDivElement>(null)
   const [
     isScrollToCurrentHeadingHappened,
     setIsScrollToCurrentHeadingHappened
