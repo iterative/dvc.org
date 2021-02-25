@@ -19,15 +19,17 @@ positional arguments:
 # Description
 
 Provides a quick way to compare `dvc params` and `dvc metrics` between two
-`dvc experiments`. The differences shown by this command include the old and new
-values, as well as the difference (change) if both values are numbers.
+`dvc experiments` by printing a table of differences. It includes the
+params/metrics file "Path", "Param" or "Metric" name, their "Old" and "New"
+values, and the difference ("Change") if both values are numbers.
 
 > This is similar to combining the reports from `dvc params diff` and
 > `dvc metrics diff` together, for the experiments in question.
 
-Without arguments, this command compares params and metrics currently present in
-the <abbr>workspace</abbr> (e.g. the last `dvc exp run`) with the latest
-committed versions (required).
+Without arguments, this command compares all the params and metrics currently
+present in the <abbr>workspace</abbr> (e.g. the last `dvc exp run`) with the
+latest committed versions (required). Only params/metrics that changed are
+listed, by default (show everything with `--all`).
 
 `a_rev` and `b_rev` are optional experiments to compare. They accept experiment
 names or hashes (see `dvc exp run`). Providing a single one results in comparing
@@ -41,22 +43,23 @@ all the current experiments (without comparisons).
 
 ## Options
 
-- `--all` - prints all parameters including not changed.
+- `--all` - list all parameters and metrics, including those without changes.
 
-- `--show-json` - prints the command's output in easily parsable JSON format,
+- `--show-json` - prints the command's output in JSON format (machine-readable)
   instead of a human-readable table.
 
-- `--show-md` - prints the command's output in the Markdown table format.
+- `--show-md` - prints the command's output in the Markdown table format
+  ([GFM](https://github.github.com/gfm/#tables-extension-)).
 
-- `--old` - show old metric value in addition to the new value.
+- `--old` - include the "Old" value column in addition to the new "Value" (and
+  "Change"). Useful when the values are not numeric, for example
 
-- `--no-path` - don't show metric or param path in the result table. This option
-  is useful when only one metrics or params file is in use or there is no
-  intersection between the metric or param names.
+- `--no-path` - hide the "Path" column that lists the param/metrics file
+  location. Useful when only one metrics or params file exists, for example
 
 - `--precision <n>` -
-  [round](https://docs.python.org/3/library/functions.html#round) metrics to `n`
-  digits precision after the decimal point. Rounds to 5 digits by default.
+  [round](https://docs.python.org/3/library/functions.html#round) decimal values
+  to `n` digits of precision (5 by default). Applies to metrics only.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
