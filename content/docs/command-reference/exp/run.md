@@ -69,7 +69,8 @@ checkpoints with DVC during your code or script runtime (similar to a logger).
 
 To do so, mark stage `outs` with `checkpoint: true` in `dvc.yaml`, and in your
 code either call the `dvc.api.make_checkpoint()` function (Python), or write a
-`.dvc/tmp/DVC_CHECKPOINT` signal file (any programming language).
+signal file (any programming language) following the same steps as
+`make_checkpoint()` — please refer to that reference for details.
 
 <details>
 
