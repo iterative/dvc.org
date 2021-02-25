@@ -132,13 +132,10 @@ The following inputs are supported.
 
 Setup CML has no outputs.
 
-### A complete example
-
-![](https://github.com/iterative/cml/blob/master/imgs/cml_first_report.png) _A
-sample CML report from a machine learning project displayed in a Pull Request._
+### A complete workflow
 
 Assume that we have a machine learning script, `train.py`, that outputs an image
-`plot.png`.
+`plot.png`. A potential workflow will look like this:
 
 ```yaml
 steps:
