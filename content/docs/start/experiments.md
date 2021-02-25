@@ -6,22 +6,22 @@ title: 'Get Started: Experiments'
 
 ⚠️ This feature is only available in DVC 2.0 ⚠️
 
-Experiments proliferate quickly in ML projects where there are many parameters
+<abbr>Experiments</abbr> proliferate quickly in ML projects where there are many parameters
 to tune or other permutations of the code or data. We can organize such projects
-and only keep what we ultimately need with
-[experiments](/doc/command-reference/exp).
+and only keep what we ultimately need with `dvc experiments`.
 
 > 📖 See [Experiment Management](/doc/user-guide/experiment-management) for more
 > information on DVC's approach.
 
 ## Using experiments
 
-In the previous section, we learned how to tune
+In the previous page, we learned how to tune
 [ML pipelines](/doc/tutorials/get-started/ml-pipeline) and compare the changes.
 Let's further increase the number of features in the `featurize` stage to see
 how it compares.
 
-`dvc exp run` makes it even easier to try a new experiment:
+`dvc exp run` makes it easy to change <abbr>hyperparameters</abbr> and run a new
+experiment:
 
 ```dvc
 $ dvc exp run --set-param featurize.max_features=3000
@@ -191,11 +191,12 @@ $ dvc exp show --no-timestamp --include-params train.n_est,train.min_split
 
 Where did all the experiments go? By default, `dvc exp show` only shows
 experiments since the last commit, but don't worry. The experiments remain
-cached and can be shown or applied. For example, use `-n` to show experiments
-from the previous n commits:
+<abbr>cached</abbr> and can be shown or applied. For example, use `-n` to show
+experiments from the previous _n_ commits:
 
 ```dvc
-$ dvc exp show -n 2 --no-timestamp --include-params train.n_est,train.min_split
+$ dvc exp show -n 2 --no-timestamp
+                    --include-params train.n_est,train.min_split
 ┏━━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
 ┃ Experiment    ┃ avg_prec ┃ roc_auc ┃ train.n_est┃ train.min_split ┃
 ┡━━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━┩
@@ -217,7 +218,8 @@ Eventually, old experiments may clutter the experiments table.
 
 ```dvc
 $ dvc exp gc --workspace
-$ dvc exp show -n 2 --no-timestamp --include-params train.n_est,train.min_split
+$ dvc exp show -n 2 --no-timestamp
+                    --include-params train.n_est,train.min_split
 ┏━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
 ┃ Experiment ┃ avg_prec ┃ roc_auc ┃ train.n_est┃ train.min_split
 ┡━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━┩
@@ -228,4 +230,4 @@ $ dvc exp show -n 2 --no-timestamp --include-params train.n_est,train.min_split
 ```
 
 > `dvc exp gc` only removes references to the experiments, not the cached
-> objects associated with it. To clean up the cache, use `dvc gc`.
+> objects associated to them. To clean up the cache, use `dvc gc`.
