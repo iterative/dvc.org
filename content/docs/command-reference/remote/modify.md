@@ -349,13 +349,15 @@ $ dvc remote modify myremote endpointurl \
   $ dvc remote modify --local myremote tenant_id 'directory-id'
   ```
 
-* `client_id` - client ID for _service principal_ authentication (when `tenant_id` is set):
+* `client_id` - client ID for _service principal_ authentication (when
+  `tenant_id` is set):
 
   ```dvc
   $ dvc remote modify --local myremote client_id 'client-id'
   ```
 
-* `client_secret` - client Secret for _service principal_ authentication (when `tenant_id` is set):
+* `client_secret` - client Secret for _service principal_ authentication (when
+  `tenant_id` is set):
 
   ```dvc
   $ dvc remote modify --local myremote client_secret 'client-secret'
