@@ -19,24 +19,22 @@ positional arguments:
 # Description
 
 Provides a quick way to compare `dvc params` and `dvc metrics` between two
-`dvc experiments` by printing a table of differences. It includes the
-params/metrics file "Path", "Param" or "Metric" name, their "Old" and "New"
-values, and the difference ("Change") if both values are numbers.
+`dvc experiments` by printing a table of differences. By default, it includes
+the params/metrics file "Path", "Param" or "Metric" name, the new "Value", and
+the difference ("Change") fpr numeric values.
 
 > This is similar to combining the reports from `dvc params diff` and
 > `dvc metrics diff` together, for the experiments in question.
 
-Without arguments, this command compares all the params and metrics currently
-present in the <abbr>workspace</abbr> (e.g. the last `dvc exp run`) with the
-latest committed versions (required). Only params/metrics that changed are
-listed, by default (show everything with `--all`).
+Without arguments, this command compares all the params and metrics defined in
+`dvc.yaml` files currently present in the <abbr>workspace</abbr> (e.g. the last
+`dvc exp run`) with the latest committed versions (required). Only
+params/metrics that changed are listed, by default (show everything with
+`--all`).
 
 `a_rev` and `b_rev` are optional experiments to compare. They accept experiment
 names or hashes (see `dvc exp run`). Providing a single one results in comparing
 it to the workspace.
-
-All params and metrics defined in the experiments' `dvc.yaml` files are used by
-default.
 
 Another way to display experiments is the `dvc exp show` command, which lists
 all the current experiments (without comparisons).
