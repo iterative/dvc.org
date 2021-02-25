@@ -53,7 +53,8 @@ $ dvc update --rev master
   [transfer](/doc/command-reference/import-url#example-import-straight-to-the-remote)
   the new data directly to remote storage (the default one unless `-r` is used).
   No changes are done in the <abbr>workspace</abbr>. Use `dvc pull` to get the
-  data locally.
+  data locally. This option can't used when updating the data that is imported
+  from other DVC or Git repositories.
 
 - `-r <name>`, `--remote <name>` - name of the
   [remote storage](/doc/command-reference/remote) (can only be used with
