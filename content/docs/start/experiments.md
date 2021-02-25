@@ -13,7 +13,7 @@ such projects and only keep what we ultimately need with `dvc experiments`.
 > 📖 See [Experiment Management](/doc/user-guide/experiment-management) for more
 > information on DVC's approach.
 
-## Using experiments
+## Running experiments
 
 In the previous page, we learned how to tune
 [ML pipelines](/doc/tutorials/get-started/ml-pipeline) and compare the changes.
@@ -61,10 +61,9 @@ Path         Param                   Value    Change
 params.yaml  featurize.max_features  3000     1500
 ```
 
-## Iterating over experiments
+## Simultaneously running multiple experiments
 
-The real magic of `dvc exp run` happens when running multiple experiments. So
-far, we have been tuning the `featurize` stage, but there are also parameters
+So far, we have been tuning the `featurize` stage, but there are also parameters
 for the `train` stage, which trains a
 [random forest classifier](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html).
 
@@ -77,49 +76,48 @@ train:
   min_split: 2
 ```
 
-Let's run experiments with different numbers of estimators and minimum samples
-needed to split a node. We can define all the combinations we want to try
-without executing anything using the `--queue` flag:
+Let's run experiments with different hyperparameter combinations. We can define
+all the combinations we want to try without executing anything using the
+`--queue` flag:
 
 ```dvc
-$ dvc exp run --queue --set-param train.min_split=8
+$ dvc exp run --queue -S train.min_split=8
 Queued experiment 'd3f6d1e' for future execution.
-$ dvc exp run --queue --set-param train.min_split=64
+$ dvc exp run --queue -S train.min_split=64
 Queued experiment 'f1810e0' for future execution.
-$ dvc exp run --queue --set-param train.min_split=2 --set-param train.n_est=100
+$ dvc exp run --queue -S train.min_split=2 -S train.n_est=100
 Queued experiment '7323ea2' for future execution.
-$ dvc exp run --queue --set-param train.min_split=8 --set-param train.n_est=100
+$ dvc exp run --queue -S train.min_split=8 -S train.n_est=100
 Queued experiment 'c605382' for future execution.
-$ dvc exp run --queue --set-param train.min_split=64 --set-param train.n_est=100
+$ dvc exp run --queue -S train.min_split=64 -S train.n_est=100
 Queued experiment '0cdee86' for future execution.
 ```
 
 Next, run all queued experiments simultaneously using `--run-all` (and in
-parallel with `-j`):
+parallel with `--jobs`):
 
 ```dvc
-$ dvc exp run --run-all -j 2
+$ dvc exp run --run-all --jobs 2
 ```
 
 ## Comparing many experiments
 
-To compare all of these experiments, we need more than `diff`.
-
-`dvc exp show` compares any number of experiments in one table:
+To compare all of these experiments, we need more than `diff`. `dvc exp show`
+compares any number of experiments in one table:
 
 ```dvc
 $ dvc exp show --no-timestamp --include-params train.n_est,train.min_split
 ┏━━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
 ┃ Experiment    ┃ avg_prec ┃ roc_auc ┃ train.n_est┃ train.min_split ┃
 ┡━━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━┩
-│ workspace     │  0.56191 │ 0.93345 │ 50         │ 2
-│ master        │  0.55259 │ 0.91536 │ 50         │ 2
-│ ├── exp-bfe64 │  0.57833 │ 0.95555 │ 50         │ 8
-│ ├── exp-b8082 │  0.59806 │ 0.95287 │ 50         │ 64
-│ ├── exp-c7250 │  0.58876 │ 0.94524 │ 100        │ 2
-│ ├── exp-b9cd4 │  0.57953 │ 0.95732 │ 100        │ 8
-│ ├── exp-98a96 │  0.60405 │  0.9608 │ 100        │ 64
-│ └── exp-ad5b1 │  0.56191 │ 0.93345 │ 50         │ 2
+│ workspace     │  0.56191 │ 0.93345 │ 50         │ 2               │
+│ master        │  0.55259 │ 0.91536 │ 50         │ 2               │
+│ ├── exp-bfe64 │  0.57833 │ 0.95555 │ 50         │ 8               │
+│ ├── exp-b8082 │  0.59806 │ 0.95287 │ 50         │ 64              │
+│ ├── exp-c7250 │  0.58876 │ 0.94524 │ 100        │ 2               │
+│ ├── exp-b9cd4 │  0.57953 │ 0.95732 │ 100        │ 8               │
+│ ├── exp-98a96 │  0.60405 │  0.9608 │ 100        │ 64              │
+│ └── exp-ad5b1 │  0.56191 │ 0.93345 │ 50         │ 2               │
 └───────────────┴──────────┴─────────┴────────────┴─────────────────┘
 ```
 
@@ -130,7 +128,7 @@ split a node.
 
 > See `dvc exp show --help` for more info on its options.
 
-## Promoting experiments
+## Persisting experiments
 
 Now that we know the best parameters, let's keep that experiment and ignore the
 rest.
@@ -140,7 +138,7 @@ experiment:
 
 ```dvc
 $ dvc exp apply exp-98a96
-Changes for experiment 'exp-98a96' have been applied to your current workspace.
+Changes for experiment 'exp-98a96' have been applied to your workspace.
 ```
 
 <details>
@@ -152,7 +150,7 @@ have not been manually committed to the Git repo. DVC tracks everything in the
 pipeline for each experiment (parameters, metrics, dependencies, and outputs)
 and can later retrieve it as needed.
 
-Check that `scores.json` reflects the scores in the table above:
+Check that `scores.json` reflects the metrics in the table above:
 
 ```json
 { "avg_prec": 0.6040544652105823, "roc_auc": 0.9608017142900953 }
@@ -161,18 +159,17 @@ Check that `scores.json` reflects the scores in the table above:
 </details>
 
 Once an experiment has been applied to the workspace, it is no different from
-reproducing the result without `dvc exp run`. Let's promote it to our regular
-pipeline by committing it in our Git branch:
+reproducing the result without `dvc exp run`. Let's make it persistent in our
+regular pipeline by committing it in our Git branch:
 
 ```dvc
 $ git add dvc.lock params.yaml prc.json roc.json scores.json
 $ git commit -a -m "Preserve best random forest experiment"
 ```
 
-> `dvc push` will push the above experiment to a remote once it has been
-> promoted and committed to our Git branch. The other experiments will not be
-> pushed to the remote. See `dvc exp push` and `dvc exp pull` for how to share
-> other experiments.
+> `dvc push` only uploads persistent experiments that have been committed to
+> Git. The other experiments will not be pushed to the remote. See
+> `dvc exp push` and `dvc exp pull` for how to share other experiments.
 
 ## Cleaning up
 
@@ -182,10 +179,10 @@ experiments table:
 ```dvc
 $ dvc exp show --no-timestamp --include-params train.n_est,train.min_split
 ┏━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
-┃ Experiment ┃ avg_prec ┃ roc_auc ┃ train.n_est┃ train.min_split
+┃ Experiment ┃ avg_prec ┃ roc_auc ┃ train.n_est┃ train.min_split ┃
 ┡━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━┩
-│ workspace  │  0.60405 │  0.9608 │ 100        │ 64
-│ master     │  0.60405 │  0.9608 │ 100        │ 64
+│ workspace  │  0.60405 │  0.9608 │ 100        │ 64              │
+│ master     │  0.60405 │  0.9608 │ 100        │ 64              │
 └────────────┴──────────┴─────────┴────────────┴─────────────────┘
 ```
 
@@ -200,15 +197,15 @@ $ dvc exp show -n 2 --no-timestamp
 ┏━━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
 ┃ Experiment    ┃ avg_prec ┃ roc_auc ┃ train.n_est┃ train.min_split ┃
 ┡━━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━┩
-│ workspace     │  0.60405 │  0.9608 │ 100        │ 64
-│ master        │  0.60405 │  0.9608 │ 100        │ 64
-│ 64d74b2       │  0.55259 │ 0.91536 │ 50         │ 2
-│ ├── exp-bfe64 │  0.57833 │ 0.95555 │ 50         │ 8
-│ ├── exp-b8082 │  0.59806 │ 0.95287 │ 50         │ 64
-│ ├── exp-c7250 │  0.58876 │ 0.94524 │ 100        │ 2
-│ ├── exp-98a96 │  0.60405 │  0.9608 │ 100        │ 64
-│ ├── exp-b9cd4 │  0.57953 │ 0.95732 │ 100        │ 8
-│ └── exp-ad5b1 │  0.56191 │ 0.93345 │ 50         │ 2
+│ workspace     │  0.60405 │  0.9608 │ 100        │ 64              │
+│ master        │  0.60405 │  0.9608 │ 100        │ 64              │
+│ 64d74b2       │  0.55259 │ 0.91536 │ 50         │ 2               │
+│ ├── exp-bfe64 │  0.57833 │ 0.95555 │ 50         │ 8               │
+│ ├── exp-b8082 │  0.59806 │ 0.95287 │ 50         │ 64              │
+│ ├── exp-c7250 │  0.58876 │ 0.94524 │ 100        │ 2               │
+│ ├── exp-98a96 │  0.60405 │  0.9608 │ 100        │ 64              │
+│ ├── exp-b9cd4 │  0.57953 │ 0.95732 │ 100        │ 8               │
+│ └── exp-ad5b1 │  0.56191 │ 0.93345 │ 50         │ 2               │
 └───────────────┴──────────┴─────────┴────────────┴─────────────────┘
 ```
 
@@ -221,11 +218,11 @@ $ dvc exp gc --workspace
 $ dvc exp show -n 2 --no-timestamp
                     --include-params train.n_est,train.min_split
 ┏━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
-┃ Experiment ┃ avg_prec ┃ roc_auc ┃ train.n_est┃ train.min_split
+┃ Experiment ┃ avg_prec ┃ roc_auc ┃ train.n_est┃ train.min_split ┃
 ┡━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━┩
-│ workspace  │  0.60405 │  0.9608 │ 100        │ 64
-│ master     │  0.60405 │  0.9608 │ 100        │ 64
-│ 64d74b2    │  0.55259 │ 0.91536 │ 50         │ 2
+│ workspace  │  0.60405 │  0.9608 │ 100        │ 64              │
+│ master     │  0.60405 │  0.9608 │ 100        │ 64              │
+│ 64d74b2    │  0.55259 │ 0.91536 │ 50         │ 2               │
 └────────────┴──────────┴─────────┴────────────┴─────────────────┘
 ```
 
