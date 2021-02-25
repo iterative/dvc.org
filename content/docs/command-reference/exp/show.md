@@ -21,63 +21,65 @@ usage: dvc exp show [-h] [-q | -v] [-a] [-T] [--all-commits] [--no-pager]
 
 Shows experiments in a detailed table which includes parameters and metrics.
 Only the experiments derived from the Git `HEAD` are shown by default but all
-experiments can be included with the `---all-commits` option.
+experiments can be included with the `---all-commits` option. Experiments are
+sorted by timestamp by default.
 
-`dvc exp show` enters a paginated screen by default, which you can exit by
-typing `Q` (or Esc) in your keyboard. Use `--no-pager` to print the entire
-output to terminal instead.
+Your terminal will enter a paginated screen by default, which you can exit by
+typing `Q` in your keyboard. Use `--no-pager` to print the entire table at once
+instead.
+
+<!-- Quick example -->
 
 ## Options
 
-- `-a`, `--all-branches` - print experiments derived from the tip of all Git
-  branches instead of just those derived from the current workspace. Note that
-  this can be combined with `-T` below, for example using the `-aT` flag.
+- `-a`, `--all-branches` - include experiments derived from the tip of all Git
+  branches instead of just the last commit. Note that this can be combined with
+  `-T` below, for example using the `-aT` flag.
 
 - `-T`, `--all-tags` - same as `-a` above, but applies to Git tags as well as
   the workspace. Note that both options can be combined, for example using the
   `-aT` flag.
 
 - `--all-commits` - same as `-a` or `-T` above, but applies to _all_ Git commits
-  as well as the workspace. This prints all experiments derived from the entire
-  commit history of the project.
+  as well as the workspace. This prints all experiments available.
 
-- `--no-pager` - do not pipe output into a pager.
+- `--no-pager` - do not enter the pager screen. Writes the entire table to
+  standard output. Useful to redirect the output to a file, or use your own
+  paginator.
 
-- `--include-metrics <metrics_list>` - include the specified metrics in output
-  table. When this option is used, only the specified metrics columns will be
-  shown.
+- `--include-params <list>` - include the specified `dvc params` in the table
+  (only the specified params will be shown). Accepts a comma-separated `list` of
+  param names.
 
-- `--exclude-metrics <metrics_list>` - exclude the specified metrics from output
-  table. When this option is used, all metric columns except for the specified
-  columns will be shown.
+- `--exclude-params <list>` - exclude the specified `dvc params` from the table
+  (all param will be shown except for the specified ones). Accepts a
+  comma-separated `list` of param names.
 
-- `--include-params <params_list>` - include the specified params in output
-  table. When this option is used, only the specified params columns will be
-  shown.
+- `--include-metrics <list>` - include the specified `dvc metrics` in the table
+  (only the specified metrics will be shown). Accepts a comma-separated `list`
+  of metric names.
 
-- `--exclude-params <params_list>` - exclude the specified params from output
-  table. When this option is used, all params columns except for the specified
-  columns will be shown.
+- `--exclude-metrics <list>` - exclude the specified `dvc metrics` from the
+  table (all param will be shown except for the specified ones). Accepts a
+  comma-separated `list` of metric names.
 
-- `--sort-by <metric/param>` - sort related experiments by the specified metric
-  or param. Experiments in the printed table will be sorted by the specified
-  metric or param column. By default, experiments will be sorted by timestamp.
-  Only one sort column (either metric or param) can be specified.
+- `--sort-by <name>` - sort related experiments by the specified metric or param
+  (`name`). Only one sort column (either metric or param) can be specified.
 
-- `--sort-order {asc,desc}` - sort order to use with `--sort-by`. Defaults to
-  descending.
+- `--sort-order {asc,desc}` - sort order to use with `--sort-by` (defaults to
+  descending).
 
 - `--no-timestamp` - do not show experiment timestamps.
 
-- `--sha` - always show Git commit SHAs instead of branch/tag names. By default,
-  if commit is the tip of a Git branch or a Git tag, the branch or tag name will
-  be shown instead of the Git SHA.
+- `--sha` - display Git commit (SHA) hashes instead of branch, tag, or
+  experiment names.
 
 - `--show-json` - prints the command's output in easily parsable JSON format,
   instead of a human-readable table.
 
-- `--precision <n>` - round metrics and params to `n` digits precision after the
-  decimal point. Rounds to 5 digits by default.
+- `--precision <n>` -
+  [round](https://docs.python.org/3/library/functions.html#round) decimal values
+  to `n` digits of precision (5 by default). Applies to metrics only.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 

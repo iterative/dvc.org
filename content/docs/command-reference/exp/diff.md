@@ -23,6 +23,8 @@ Provides a quick way to compare `dvc params` and `dvc metrics` between two
 the params/metrics file "Path", "Param" or "Metric" name, the new "Value", and
 the difference ("Change") fpr numeric values.
 
+<!-- Quick example -->
+
 > This is similar to combining the reports from `dvc params diff` and
 > `dvc metrics diff` together, for the experiments in question.
 
@@ -43,7 +45,7 @@ all the current experiments (without comparisons).
 
 - `--all` - list all parameters and metrics, including those without changes.
 
-- `--show-json` - prints the command's output in JSON format (machine-readable)
+- `--show-json` - prints the command's output in easily parsable JSON format,
   instead of a human-readable table.
 
 - `--show-md` - prints the command's output in the Markdown table format
