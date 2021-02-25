@@ -20,7 +20,8 @@ In the previous section, we learned how to tune
 Let's further increase the number of features in the `featurize` stage to see
 how it compares.
 
-`dvc exp run` makes it even easier to try a new experiment:
+`dvc exp run` makes it easy to change <abbr>hyperparameters</abbr> and run a new
+experiment:
 
 ```dvc
 $ dvc exp run --set-param featurize.max_features=3000
