@@ -27,7 +27,7 @@ versions of the <abbr>repository</abbr>, by overlaying them in a single plot.
 > Note that unlike `dvc metrics diff`, this command does not calculate numeric
 > differences between plots file values.
 
-`revisions` are Git commit hashes, tag, or branch names. If none are specified,
+`revisions` are Git commit hashes, tags, or branch names. If none are specified,
 `dvc plots diff` compares plots currently present in the <abbr>workspace</abbr>
 (uncommitted changes) with their latest commit (required). A single specified
 revision results in comparing the workspace and that version.

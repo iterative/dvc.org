@@ -62,8 +62,8 @@ in the cache (compared to the default remote.) It can be used to see what files
 - `-a`, `--all-branches` - determines the files to upload by examining
   `dvc.yaml` and `.dvc` files in all Git branches instead of just those present
   in the current workspace. It's useful if branches are used to track
-  experiments or project checkpoints. Note that this can be combined with `-T`
-  below, for example using the `-aT` flag.
+  experiments. Note that this can be combined with `-T` below, for example using
+  the `-aT` flag.
 
 - `-T`, `--all-tags` - same as `-a` above, but applies to Git tags as well as
   the workspace. Useful if tags are used to track "checkpoints" of an experiment

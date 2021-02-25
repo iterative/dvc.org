@@ -4,6 +4,8 @@ Show changes in [parameters](/doc/command-reference/params) between commits in
 the <abbr>DVC repository</abbr>, or between a commit and the
 <abbr>workspace</abbr>.
 
+> Requires that Git is being used to version the project.
+
 ## Synopsis
 
 ```usage
@@ -20,21 +22,28 @@ positional arguments:
 ## Description
 
 Provides a quick way to compare parameter values among experiments in the
-repository history. Requires that Git is being used to version the project
-params.
+repository history. The differences shown by this command include the old and
+new param values, along with the param name.
 
 > Parameter dependencies are defined in the `params` field of `dvc.yaml` (e.g.
 > with the the `-p` (`--params`) option of `dvc run`).
 
-Without arguments, this command compares parameters currently present in the
-<abbr>workspace</abbr> (uncommitted changes) with the latest committed version.
-This includes everything in `params.yaml` (default parameters file) as well all
-the `params` used in `dvc.yaml`. Values in `dvc.lock` are used for comparison.
-Only params that have changes are listed.
+Without arguments, `dvc params diff` compares parameters currently present in
+the <abbr>workspace</abbr> (uncommitted changes) with the latest committed
+versions (required). This includes everything in `params.yaml` (default
+parameters file) as well all the `params` used in `dvc.yaml`. Values in
+`dvc.lock` are used for comparison. Only params that have changes are listed.
 
-> Note that unlike `dvc diff`, this command doesn't always need DVC files to
-> find params files (see `--targets` option). For that reason, it doesn't
-> require an existing DVC project to run in. It can work in any Git repo.
+`a_rev` and `b_rev` are optional Git commit hashes, tags, or branch names to
+compare. A single specified revision results in comparing it against the
+workspace.
+
+All params defined in `dvc.yaml` are used by default, but specific ones can be
+specified with the `--targets` option.
+
+> Note that targets don't necessarily have to be defined in `dvc.yaml`. For that
+> reason, it doesn't require an existing DVC project to run in. It can work in
+> any Git repo.
 
 ## Options
 
