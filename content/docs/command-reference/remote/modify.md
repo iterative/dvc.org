@@ -335,8 +335,7 @@ $ dvc remote modify myremote endpointurl \
   $ dvc remote modify --local myremote account_key 'mykey'
   ```
 
-* `sas_token` - shared access signature token (can be used for `account_name`
-  instead of `account_key`):
+* `sas_token` - shared access signature token (for `account_name`):
 
   ```dvc
   $ dvc remote modify --local myremote sas_token 'mytoken'
