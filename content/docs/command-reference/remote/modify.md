@@ -361,7 +361,8 @@ $ dvc remote modify myremote endpointurl \
   $ dvc remote modify --local myremote client_secret 'client-secret'
   ```
 
-Azure remotes can also be configured entirely via environment variables:
+Azure remotes can also be configured entirely via environment variables. For
+account name and key/token auth:
 
 ```dvc
 $ export AZURE_STORAGE_ACCOUNT_NAME='myuser'
