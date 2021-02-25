@@ -6,9 +6,9 @@ title: 'Get Started: Metrics, Parameters, and Plots'
 
 DVC makes it easy to track [metrics](/doc/command-reference/metrics), update
 [parameters](/doc/command-reference/params), and visualize performance with
-[plots](/doc/command-reference/plots). The tutorial below introduces these
-concepts, and the [Experiments](/doc/start/experiments) tutorial shows how to
-combine them to run and compare many iterations of your ML project.
+[plots](/doc/command-reference/plots). These concepts are introduced below, and
+[Experiments](/doc/start/experiments) shows how to combine them to run and
+compare many iterations of your ML project.
 
 Read on to see how it's done!
 
@@ -109,7 +109,7 @@ Later we will see how these and other can be used to compare and visualize
 different pipeline iterations. For now, let's see how can we capture another
 important piece of information that will be useful for comparison: parameters.
 
-## Defining parameters
+## Defining stage parameters
 
 It's pretty common for data science pipelines to include configuration files
 that define adjustable parameters to train a model, do pre-processing, etc. DVC
@@ -174,12 +174,12 @@ train:
   min_split: 2
 ```
 
-## Updating and running
+## Updating params and iterating
 
-Let's edit the `params.yaml` file to use bigrams and increase the number of
-features:
+We are definitely not happy with the AUC value we got so far! Let's edit the
+`params.yaml` file to use bigrams and increase the number of features:
 
-```diff
+```git
  featurize:
 -  max_features: 500
 -  ngrams: 1
@@ -200,7 +200,7 @@ The same logic applies to other possible adjustments — edit source code, updat
 datasets — you do the changes, use `dvc repro`, and DVC runs what needs to be
 run.
 
-## Comparing changes
+## Comparing iterations
 
 Finally, let's see how the updates improved performance. DVC has a few commands
 to see metrics and parameter changes, and to visualize plots, for one or more
@@ -252,6 +252,5 @@ file:///Users/dvc/example-get-started/plots.html
 > [Git revisions](https://git-scm.com/docs/gitrevisions) (commits, tags, branch
 > names) to compare.
 
-Now that you know the basics, see [Experiments](/doc/start/experiments) to tune
-parameters or make other changes across many iterations of your pipeline and
-compare them all at once!
+In the next page, learn advanced ways to track, organize, and compare more
+experiment iterations.

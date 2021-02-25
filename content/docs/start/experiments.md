@@ -38,7 +38,7 @@ running experiments. The `--set-param` (or `-S`) flag sets the values for
 
 Check that the `featurize.max_features` value has been updated in `params.yaml`:
 
-```diff
+```git
  featurize:
 -  max_features: 1500
 +  max_features: 3000
@@ -135,7 +135,8 @@ split a node.
 Now that we know the best parameters, let's keep that experiment and ignore the
 rest.
 
-`dvc exp apply` checks out the specified experiment to our workspace:
+`dvc exp apply` rolls back the <abbr>workspace<abbr> to the specified
+experiment:
 
 ```dvc
 $ dvc exp apply exp-98a96

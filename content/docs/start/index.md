@@ -67,11 +67,11 @@ by one in the next few pages:
   data artifacts are built, and provide an efficient way to reproduce them.
   Think "Makefiles for data and ML projects" done right.
 
-- [**Metrics, parameters, and plots**](/doc/start/metrics-parameters-plots)
-  explains how to attach metrics, parameters, and plots. You can capture,
-  navigate, and evaluate ML projects without leaving Git. Think "Git for machine
-  learning".
+- [**Metrics, parameters, and plots**](/doc/start/metrics-parameters-plots) can
+  be attached to pipelines. These let you capture, navigate, and evaluate ML
+  projects without leaving Git. Think "Git for machine learning".
 
 - [**Experiments**](/doc/start/experiments) enable exploration, iteration, and
-  comparison across many ML experiments. Track your experiments with all of the
-  reproducibility and power of DVC.
+  comparison across many ML experiments. Track your experiments with automatic
+  versioning and checkpoint logging. Compare differences in parameters, metrics,
+  code, and data. Apply, drop, roll back, resume, or share any experiment.
