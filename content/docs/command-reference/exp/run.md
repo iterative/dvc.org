@@ -27,8 +27,8 @@ directories, etc.
 
 > `dvc exp run` is equivalent to `dvc repro` for <abbr>experiments</abbr>. It
 > has the same behavior when it comes to `targets` and stage execution (restores
-> the dependency graph, etc.). See the command [options](#options) for more
-> info.
+> the dependency graph, etc.). See the command [options](#options) for more the
+> differences.
 
 Before using this command, you'll probably want to make modifications such as
 data and code updates, or <abbr>hyperparameter</abbr> tuning. You can use the
@@ -89,20 +89,21 @@ is actually run. Instead, the experiment is put in a wait-list for later
 execution. `dvc exp show` will mark queued experiments with an asterisk `*`.
 
 Use `dvc exp run --run-all` to process this queue. Adding `-j` (`--jobs`),
-queued experiments can be run in parallel for better performance.
+queued experiments can be run in parallel for better performance. This creates a
+temporary workspace copy (in `.dvc/tmp/exp<n>` where _n_ is the job number) for
+each subprocess.
 
 ⚠️ Parallel runs are experimental and may be unstable at this time. ⚠️ Make sure
 you're using a number of jobs that your environment can handle (no more than the
 CPU cores).
 
-> Note that each job runs an entire pipeline serially — DVC makes no attempt to
-> distribute stages within pipelines among jobs.
+> Note that each job runs the entire pipeline (or `targets`) serially — DVC
+> makes no attempt to distribute stage commands among jobs.
 
 ## Options
 
-> In addition to the following options, `dvc exp run` also accepts all the
-> options in `dvc repro`, with the exception that `--no-commit` has no effect
-> here.
+> In addition to the following, `dvc exp run` accepts all the options in
+> `dvc repro`, with the exception that `--no-commit` has no effect here.
 
 - `-S [<filename>:]<params_list>`, `--set-param [<filename>:]<params_list>` -
   set the specified `dvc params` for this experiment. `filename` can be any
