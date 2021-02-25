@@ -378,12 +378,12 @@ $ export AZURE_CLIENT_ID='client-id'
 $ export AZURE_CLIENT_CERTIFICATE_PATH='/path/to/certificate'
 ```
 
-For logging in with username/password;
+For simple username/password login:
 
 ```
 $ export AZURE_CLIENT_ID='client-id'
 $ export AZURE_USERNAME='myuser'
-$ export AZURE_PASSWOR='mysecret'
+$ export AZURE_PASSWORD='mysecret'
 ```
 
 > On Windows, if none of the above settings are configured the login will
