@@ -15,7 +15,7 @@ and only keep what we ultimately need with `dvc experiments`.
 
 ## Using experiments
 
-In the previous section, we learned how to tune
+In the previous page, we learned how to tune
 [ML pipelines](/doc/tutorials/get-started/ml-pipeline) and compare the changes.
 Let's further increase the number of features in the `featurize` stage to see
 how it compares.
