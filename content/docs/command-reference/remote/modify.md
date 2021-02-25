@@ -322,8 +322,8 @@ $ dvc remote modify myremote endpointurl \
                               'mystring'
   ```
 
-- `account_name` - storage account name (requires either `account_key` or
-  `sas_token` along with this):
+- `account_name` - storage account name. Works by itself (anonymous auth) or
+  along with either `account_key` or `sas_token` along with this):
 
   ```dvc
   $ dvc remote modify --local myremote account_name 'myuser'
