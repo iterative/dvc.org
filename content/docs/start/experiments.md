@@ -8,7 +8,10 @@ title: 'Get Started: Experiments'
 
 <abbr>Experiments</abbr> proliferate quickly in ML projects where there are many
 parameters to tune or other permutations of the code or data. We can organize
-such projects and only keep what we ultimately need with `dvc experiments`.
+such projects and only keep what we ultimately need with `dvc experiments`. DVC
+can track your experiments without you needing to commit each one in Git, so
+that your repo doesn't become polluted with all of your experiments. You can get
+rid of experiments once you no longer need them.
 
 > 📖 See [Experiment Management](/doc/user-guide/experiment-management) for more
 > information on DVC's approach.
