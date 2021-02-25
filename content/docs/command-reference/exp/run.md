@@ -139,3 +139,20 @@ CPU cores).
   regardless of this flag.
 
 - `-v`, `--verbose` - displays detailed tracing information.
+
+## Example: Modify parameters on-the-fly
+
+dvc.yaml with 1 param, 1 stage, and 1 metric
+
+Try a quick variation with `--set-param`...
+
+Check the results...
+
+Try again and check results (`-S`)...
+
+> Notice that experiments run as a series don't build up on each other, as they
+> are all based of `HEAD`.
+
+## Example:
+
+...
