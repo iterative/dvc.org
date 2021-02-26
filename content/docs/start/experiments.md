@@ -9,9 +9,9 @@ title: 'Get Started: Experiments'
 <abbr>Experiments</abbr> proliferate quickly in ML projects where there are many
 parameters to tune or other permutations of the code. We can organize such
 projects and only keep what we ultimately need with `dvc experiments`. DVC can
-track your experiments without you needing to commit each one in Git, so that
-your repo doesn't become polluted with all of your experiments. You can get rid
-of experiments once you no longer need them.
+track experiments for you so there's no need to commit each one to Git. This way
+your repo doesn't become polluted with all of them. You can discard experiments
+once they're no longer needed.
 
 > 📖 See [Experiment Management](/doc/user-guide/experiment-management) for more
 > information on DVC's approach.
@@ -64,7 +64,7 @@ Path         Param                   Value    Change
 params.yaml  featurize.max_features  3000     1500
 ```
 
-## Simultaneously running multiple experiments
+## Queueing experiments
 
 So far, we have been tuning the `featurize` stage, but there are also parameters
 for the `train` stage, which trains a
@@ -79,9 +79,9 @@ train:
   min_split: 2
 ```
 
-Let's run experiments with different hyperparameter combinations. We can define
-all the combinations we want to try without executing anything using the
-`--queue` flag:
+Let's setup experiments with different hyperparameters. We can define all the
+combinations we want to try without executing anything, by using the `--queue`
+flag:
 
 ```dvc
 $ dvc exp run --queue -S train.min_split=8
@@ -96,8 +96,8 @@ $ dvc exp run --queue -S train.min_split=64 -S train.n_est=100
 Queued experiment '0cdee86' for future execution.
 ```
 
-Next, run all queued experiments simultaneously using `--run-all` (and in
-parallel with `--jobs`):
+Next, run all queued experiments using `--run-all` (and in parallel with
+`--jobs`):
 
 ```dvc
 $ dvc exp run --run-all --jobs 2
@@ -109,7 +109,8 @@ To compare all of these experiments, we need more than `diff`. `dvc exp show`
 compares any number of experiments in one table:
 
 ```dvc
-$ dvc exp show --no-timestamp --include-params train.n_est,train.min_split
+$ dvc exp show --no-timestamp
+               --include-params train.n_est,train.min_split
 ┏━━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
 ┃ Experiment    ┃ avg_prec ┃ roc_auc ┃ train.n_est┃ train.min_split ┃
 ┡━━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━┩
@@ -126,8 +127,8 @@ $ dvc exp show --no-timestamp --include-params train.n_est,train.min_split
 
 Each experiment is given an arbitrary name by default (although we can specify
 one with `dvc exp run -n`.) We can see that `exp-98a96` performed best among
-both of our metrics, with 100 estimators and a minimum of 64 samples required to
-split a node.
+both of our metrics, with 100 estimators and a minimum of 64 samples to split a
+node.
 
 > See `dvc exp show --help` for more info on its options.
 
@@ -148,10 +149,9 @@ Changes for experiment 'exp-98a96' have been applied to your workspace.
 
 ### 💡 Expand to see what this command does.
 
-`dvc exp apply` is similar to `dvc checkout` but it works with experiments that
-have not been manually committed to the Git repo. DVC tracks everything in the
-pipeline for each experiment (parameters, metrics, dependencies, and outputs)
-and can later retrieve it as needed.
+`dvc exp apply` is similar to `dvc checkout` but it works with experiments. DVC
+tracks everything in the pipeline for each experiment (parameters, metrics,
+dependencies, and outputs) and can later retrieve it as needed.
 
 Check that `scores.json` reflects the metrics in the table above:
 
@@ -180,7 +180,8 @@ After committing the best experiment to Git, let's take another look at the
 experiments table:
 
 ```dvc
-$ dvc exp show --no-timestamp --include-params train.n_est,train.min_split
+$ dvc exp show --no-timestamp
+               --include-params train.n_est,train.min_split
 ┏━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
 ┃ Experiment ┃ avg_prec ┃ roc_auc ┃ train.n_est┃ train.min_split ┃
 ┡━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━┩
