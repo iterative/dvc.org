@@ -96,7 +96,7 @@ Alternately, if your pipeline stage has already been created, you can manually
 edit your `dvc.yaml` file to replace `params.yaml` with `params.json`.
 
 For more about the `params.yaml` file,
-[see our docs](https://dvc.org/doc/start/metrics-parameters-plots#defining-parameters).
+[see our docs](https://dvc.org/doc/start/experiments#defining-parameters).
 
 ### [Q: Is there a guide for migrating from Git-LFS to DVC?](https://discordapp.com/channels/485586884165107732/485596304961962003/743559246599421974)
 
