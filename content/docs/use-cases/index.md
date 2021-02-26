@@ -23,7 +23,7 @@ learning models, and you want to
   [versions of data and ML models](/doc/use-cases/versioning-data-and-model-files)
   easily;
 - understand how datasets and ML artifacts were built in the first place;
-- compare model metrics among [experiments](/doc/start/experiments);
+- compare model metrics among <abbr>experiments</abbr>;
 - adopt engineering tools and best practices in data science projects;
 
 DVC is for you!
