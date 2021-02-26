@@ -262,8 +262,8 @@ $ dvc plots diff
 file:///Users/dvc/example-get-started/plots.html
 ```
 
-![](/img/plots_prc_get_started_diff.svg '=200')
-![](/img/plots_roc_get_started_diff.svg '=200')
+![](/img/plots_prc_get_started_diff.svg)
+![](/img/plots_roc_get_started_diff.svg)
 
 > See `dvc plots diff` for more info on its options.
 
