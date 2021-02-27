@@ -51,8 +51,8 @@ To learn more about `config` and `config.local`,
 When you install DVC via `conda`, it will come with dependencies like
 `paramiko`.
 
-The only exception when installing DVC as a Python library is with with `pip`:
-you might want to specify the kind of remote storage you need to make sure all
+The only exception when installing DVC as a Python library is with `pip`: you
+might want to specify the kind of remote storage you need to make sure all
 dependencies are present (like `boto` for S3). You can run
 `pip install "dvc[<option>]"`, with supported options like `[s3]`, `[azure]`,
 `[gdrive]`, `[gs]`, `[oss]`, `[ssh]`. Or, use `[all]` to include them all.
@@ -84,7 +84,7 @@ specified as a pipeline stage dependency (in CLI, `dvc run -d` , or in YAML,
 If you're not interested in adding modules as explicit dependencies, there are a
 few other approaches:
 
-- Make your `requirements.txt` file a stage dependency in (if the loaded module
+- Make your `requirements.txt` file a stage dependency (if the loaded module
   comes from a package).
 - Manually rebuild the pipeline (with `dvc repro --force <stage>.dvc`) when you
   know an unmarked dependency is changed – although this is prone to human
