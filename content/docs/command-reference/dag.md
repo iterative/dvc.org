@@ -1,7 +1,7 @@
 # dag
 
-Visualize the pipeline(s) in `dvc.yaml` as one or more graph(s) of connected
-[stages](/doc/command-reference/run).
+Visualize the <abbr>pipeline</abbr>(s) in `dvc.yaml` as one or more graph(s) of
+connected [stages](/doc/command-reference/run).
 
 ## Synopsis
 
@@ -14,6 +14,11 @@ positional arguments:
 ```
 
 ## Description
+
+Displays the stages of a pipeline up to the `target` stage. If omitted, it will
+show the full project DAG.
+
+### Directed acyclic graph
 
 A data pipeline, in general, is a series of data processing
 [stages](/doc/command-reference/run) (for example, console commands that take an
@@ -32,29 +37,7 @@ restore one or more pipelines later (see `dvc repro`).
 > DVC builds a dependency graph
 > ([DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph)) to do this.
 
-`dvc dag` command displays the stages of a pipeline up to the target stage. If
-`target` is omitted, it will show the full project DAG.
-
-## Options
-
-- `--full` - show full DAG that the `target` stage belongs to, instead of
-  showing only its ancestors.
-
-- `--dot` - show DAG in
-  [DOT](<https://en.wikipedia.org/wiki/DOT_(graph_description_language)>)
-  format. It can be passed to third party visualization utilities.
-
-- `-o`, `--outs` - show a DAG of chained dependencies and outputs instead of the
-  stages themselves. The graph may be significantly different.
-
-- `-h`, `--help` - prints the usage/help message, and exit.
-
-- `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if no
-  problems arise, otherwise 1.
-
-- `-v`, `--verbose` - displays detailed tracing information.
-
-## Paginating the output
+### Paginating the output
 
 This command's output is automatically piped to
 [less](<https://en.wikipedia.org/wiki/Less_(Unix)>) if available in the terminal
@@ -82,6 +65,25 @@ example in Bash, we could add the following line to `~/.bashrc`:
 ```bash
 export DVC_PAGER=more
 ```
+
+## Options
+
+- `--full` - show full DAG that the `target` stage belongs to, instead of
+  showing only its ancestors.
+
+- `--dot` - show DAG in
+  [DOT](<https://en.wikipedia.org/wiki/DOT_(graph_description_language)>)
+  format. It can be passed to third party visualization utilities.
+
+- `-o`, `--outs` - show a DAG of chained dependencies and outputs instead of the
+  stages themselves. The graph may be significantly different.
+
+- `-h`, `--help` - prints the usage/help message, and exit.
+
+- `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if no
+  problems arise, otherwise 1.
+
+- `-v`, `--verbose` - displays detailed tracing information.
 
 ## Example: Visualize a DVC Pipeline
 
