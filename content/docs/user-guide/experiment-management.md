@@ -28,6 +28,9 @@ models. On the other end, [metrics](/doc/command-reference/metrics) (and
 [plots](/doc/command-reference/plots)) let you define, visualize, and compare
 meaningful measures for the experimental results.
 
+> 👨‍💻 See [Get Started: Experiments](/doc/start/experiments) for a hands-on
+> introduction to DVC experiments.
+
 ## Experiments
 
 ⚠️ This feature is only available in DVC 2.0 ⚠️
@@ -43,8 +46,8 @@ roll back to the baseline. The basic workflow goes like this:
   are reflected in your <abbr>workspace</abbr>, and tracked automatically.
 - Use [metrics](/doc/command-reference/metrics) to identify the best
   experiment(s).
-- Visualize and compare experiments with `dvc exp show` or `dvc exp diff`.
-  Repeat.
+- Visualize, compare experiments with `dvc exp show` or `dvc exp diff`. Repeat
+  🔄
 - Use `dvc exp apply` to roll back to the best one.
 - Make the selected experiment persistent by committing its results to Git. This
   cleans the slate so you can repeat the process.
@@ -73,9 +76,6 @@ pair in the <abbr>workspace</abbr> will codify the experiment as a new project
 version. The right <abbr>outputs</abbr> (including
 [metrics](/doc/command-reference/metrics)) should also be present, or available
 via `dvc checkout`.
-
-> 👨‍💻 See [Get Started: Experiments](/doc/start/experiments) for a hands-on
-> introduction to regular experiments.
 
 ### Organization patterns
 
