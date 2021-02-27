@@ -20,7 +20,6 @@ tags:
   - Discord
   - Gems
   - CML
-  - config
   - Pipelines
   - Terraform
   - Conda
@@ -55,7 +54,7 @@ When you install DVC via `conda`, it will come with dependencies like
 The only exception when installing DVC as a Python library is with with `pip`:
 you might want to specify the kind of remote storage you need to make sure all
 dependencies are present (like `boto` for S3). You can run
-`pip install dvc[<option>]`, with supported options like `[s3]`, `[azure]`,
+`pip install "dvc[<option>]"`, with supported options like `[s3]`, `[azure]`,
 `[gdrive]`, `[gs]`, `[oss]`, `[ssh]`. Or, use `[all]` to include them all.
 
 For more about installing DVC and its dependencies,
