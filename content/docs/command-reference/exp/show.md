@@ -21,15 +21,11 @@ usage: dvc exp show [-h] [-q | -v] [-a] [-T] [--all-commits] [--no-pager]
 
 Shows experiments in a detailed table which includes parameters and metrics.
 Only the experiments derived from the Git `HEAD` are shown by default but all
-experiments can be included with the `---all-commits` option. Experiments are
-sorted by timestamp by default.
-
-Your terminal will enter a paginated screen by default, which you can exit by
-typing `Q` in your keyboard. Use `--no-pager` to print the entire table at once
-instead.
+experiments can be included with the `--all-commits` option. Experiments are
+sorted by timestamp by default. Example:
 
 ```dvc
-$ dvc exp show --no-pager
+$ dvc exp show
 ┏━━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
 ┃ Experiment    ┃ avg_prec ┃ roc_auc ┃ train.n_est┃ train.min_split ┃
 ┡━━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━┩
@@ -39,6 +35,12 @@ $ dvc exp show --no-pager
 │ └── exp-ad5b1 │  0.56191 │ 0.93345 │ 50         │ 2               │
 └───────────────┴──────────┴─────────┴────────────┴─────────────────┘
 ```
+
+Your terminal will enter a paginated screen by default, which you can typically
+exit by typing `Q`. Use `--no-pager` to print the table to standard output.
+
+> See [Paginating the output](/doc/command-reference/dag#paginating-the-output)
+> for more details.
 
 ## Options
 
@@ -73,8 +75,10 @@ $ dvc exp show --no-pager
   table (all param will be shown except for the specified ones). Accepts a
   comma-separated `list` of metric names.
 
-- `--sort-by <name>` - sort related experiments by the specified metric or param
-  (`name`). Only one sort column (either metric or param) can be specified.
+- `--sort-by <name>` - sort experiments by the specified metric or param
+  (`name`). Only one sort column (either metric or param) can be specified. Note
+  that experiment derived from the same parent wll be sorted within their groups
+  only.
 
 - `--sort-order {asc,desc}` - sort order to use with `--sort-by` (defaults to
   descending).

@@ -361,8 +361,8 @@ Running stage 'prepare' with command:
 ## Example: Transfer to remote storage
 
 When you have a large dataset in an external location, you may want to import it
-to you project without downloading it to the local file system (for using it
-later/elsewhere). The `--to-remote` option lets you skip the download, while
+to your project without downloading it to the local file system (for using it
+later/elsewhere). The `--to-remote` option let you skip the download, while
 storing the imported data [remotely](/doc/command-reference/remote). Let's
 initialize a DVC project, and setup a remote:
 
