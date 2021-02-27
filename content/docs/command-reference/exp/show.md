@@ -1,6 +1,6 @@
 # exp show
 
-Display `dvc experiments` as a table, with optional formatting.
+Print a customizable table of `dvc experiments`, their metrics and parameters.
 
 > Press `q` to exit.
 
@@ -19,18 +19,13 @@ usage: dvc exp show [-h] [-q | -v] [-a] [-T] [--all-commits] [--no-pager]
 
 ## Description
 
-Shows experiments in a detailed table which includes parameters and metrics.
-Only the experiments derived from the Git `HEAD` are shown by default but all
-experiments can be included with `---all-commits` (see the command
-[options](#options for more alternatives)). Experiments are sorted by timestamp
-by default.
-
-Your terminal will enter a paginated screen by default, which you can exit by
-typing `Q` in your keyboard. Use `--no-pager` to print the entire table at once
-instead.
+Displays experiments in a detailed table which includes their parent, name (or
+hash), metrics, and parameters. Only the experiments derived from the Git `HEAD`
+are shown by default but all experiments can be included with the
+`--all-commits` option. Experiments are sorted by timestamp by default. Example:
 
 ```dvc
-$ dvc exp show --no-pager
+$ dvc exp show
 ┏━━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
 ┃ Experiment    ┃ avg_prec ┃ roc_auc ┃ train.n_est┃ train.min_split ┃
 ┡━━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━┩
@@ -41,65 +36,19 @@ $ dvc exp show --no-pager
 └───────────────┴──────────┴─────────┴────────────┴─────────────────┘
 ```
 
-## Filtering the output
+Your terminal will enter a
+[paginated screen](/doc/command-reference/dag#paginating-the-output) by default,
+which you can typically exit by typing `Q`. Use `--no-pager` to print the table
+to standard output.
 
 By default, the printed experiments table will include columns for all metrics
 and params from the entire project. The `--include-metrics`,
 `--exclude-metrics`, `--include-params`, and `--exclude-params` options can be
-used to limit the columns to be displayed. Each option accepts a comma-separated
-list of metric or param names.
+used to choose them.
 
-When an `--include-...` option is used, only the specified metric/param columns
-will be displayed. When an `--exclude-...` option is used, all columns except
-for those specified will be displayed.
-
-`--include-...` and `--exclude-...` will match nested metrics and params. So for
-a stage `featurize` with params `max_features` and `ngrams`,
-`--include-params=featurize` would include columns for both
-`featurize.max_features` and `featurize.ngrams`.
-
-Metric and param columns are handled separately. So for the command
-`dvc exp show --include-metrics=foo,bar`, `foo` and `bar` would be the only
-metrics displayed in the output table, and all possible params columns would
-also be displayed in the table.
-
-## Sorting the output
-
-By default, experiment rows will be sorted by timestamp in descending order. The
-`--sort-by` and `--sort-order` options can be used to sort related experiment
-rows on any single metric or param column.
-
-Note that when sorting experiments, related experiments will remain grouped
-together. This means that for a given Git commit `abc123`, all experiments
-derived from that commit will be sorted and grouped together. Experiments
-derived from a different Git commit `def456` would be sorted in their own group.
-
-## Paging the output
-
-This command's output is automatically piped to
-[Less](<https://en.wikipedia.org/wiki/Less_(Unix)>), if available in the
-terminal. (The exact command used is `less --chop-long-lines --clear-screen`.)
-If `less` is not available (e.g. on Windows), the output is simply printed out.
-
-> It's also possible to
-> [enable Less paging on Windows](/doc/user-guide/running-dvc-on-windows#enabling-paging-with-less).
-
-### Providing a custom pager
-
-It's possible to override the default pager via the `DVC_PAGER` environment
-variable. For example, the following command will replace the default pager with
-[`more`](<https://en.wikipedia.org/wiki/More_(command)>), for a single run:
-
-```dvc
-$ DVC_PAGER=more dvc dag
-```
-
-For a persistent change, define `DVC_PAGER` in the shell configuration. For
-example in Bash, we could add the following line to `~/.bashrc`:
-
-```bash
-export DVC_PAGER=more
-```
+Experiments in the table are first grouped (by parent commit). They are then
+sorted, chronologically by default. The `--sort-by` and `--sort-order` options
+can change this ordering based on any single metric or param column.
 
 ## Options
 
@@ -120,22 +69,24 @@ export DVC_PAGER=more
 
 - `--include-params <list>` - include the specified `dvc params` in the table
   (only the specified params will be shown). Accepts a comma-separated `list` of
-  param names.
+  param names (including groups).
 
 - `--exclude-params <list>` - exclude the specified `dvc params` from the table
   (all param will be shown except for the specified ones). Accepts a
-  comma-separated `list` of param names.
+  comma-separated `list` of param names (including groups).
 
 - `--include-metrics <list>` - include the specified `dvc metrics` in the table
   (only the specified metrics will be shown). Accepts a comma-separated `list`
-  of metric names.
+  of metric names (including groups).
 
 - `--exclude-metrics <list>` - exclude the specified `dvc metrics` from the
   table (all param will be shown except for the specified ones). Accepts a
-  comma-separated `list` of metric names.
+  comma-separated `list` of metric names (including groups).
 
-- `--sort-by <name>` - sort related experiments by the specified metric or param
-  (`name`). Only one sort column (either metric or param) can be specified.
+- `--sort-by <name>` - sort experiments by the specified metric or param
+  (`name`). Only one sort column (either metric or param) can be specified. Note
+  that experiment derived from the same parent commit wll be sorted within their
+  groups only.
 
 - `--sort-order {asc,desc}` - sort order to use with `--sort-by` (defaults to
   descending).

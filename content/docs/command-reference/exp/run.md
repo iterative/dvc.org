@@ -67,10 +67,10 @@ committing them to the Git repo. Unnecessary ones can be removed with
 To track successive steps in a longer <abbr>experiment</abbr>, you can register
 checkpoints with DVC during your code or script runtime (similar to a logger).
 
-To do so, mark stage `outs` with `checkpoint: true` in `dvc.yaml`, and in your
-code either call the `dvc.api.make_checkpoint()` function (Python), or write a
-signal file (any programming language) following the same steps as
-`make_checkpoint()` — please refer to that reference for details.
+To do so, first mark stage `outs` with `checkpoint: true` in `dvc.yaml`. Then,
+in the corresponding code, either call the `dvc.api.make_checkpoint()` function
+(Python), or write a signal file (any programming language) following the same
+steps as `make_checkpoint()` — please refer to that reference for details.
 
 <details>
 
