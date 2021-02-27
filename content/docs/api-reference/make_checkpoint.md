@@ -39,8 +39,9 @@ logger). This function can be called by the code in stages executed by
 💡 Note that for non-Python code, the way to register checkpoints with DVC is to
 implement the steps above yourself.
 
-The stage definition in `dvc.yaml` should contain `outs` with the
-`checkpoint: true` value set, so that DVC enables checkpoint registration.
+The stage definition in `dvc.yaml` should contain at least one
+<abbr>output</abbr> with the `checkpoint: true` value set, so that DVC registers
+its checkpoint.
 
 ## Example: Every 100th iteration
 
