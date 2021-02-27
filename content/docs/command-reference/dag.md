@@ -54,15 +54,17 @@ restore one or more pipelines later (see `dvc repro`).
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
-## Paging the output
+## Paginating the output
 
 This command's output is automatically piped to
-[Less](<https://en.wikipedia.org/wiki/Less_(Unix)>), if available in the
-terminal. (The exact command used is `less --chop-long-lines --clear-screen`.)
-If `less` is not available (e.g. on Windows), the output is simply printed out.
+[less](<https://en.wikipedia.org/wiki/Less_(Unix)>) if available in the terminal
+(the exact command used is `less --chop-long-lines --clear-screen`). If `less`
+is not available (e.g. on Windows), the output is simply printed out.
 
 > It's also possible to
-> [enable Less paging on Windows](/doc/user-guide/running-dvc-on-windows#enabling-paging-with-less).
+> [enable `less` on Windows](/doc/user-guide/running-dvc-on-windows#enabling-paging-with-less).
+
+> Note that this also applies to `dvc exp show`.
 
 ### Providing a custom pager
 
