@@ -22,7 +22,7 @@ usage: dvc exp show [-h] [-q | -v] [-a] [-T] [--all-commits] [--no-pager]
 Displays experiments in a detailed table which includes their parent, name (or
 hash), metrics, and parameters. Only the experiments derived from the Git `HEAD`
 are shown by default but all experiments can be included with the
-`--all-commits` option. Experiments are sorted by timestamp by default. Example:
+`--all-commits` option. Example:
 
 ```dvc
 $ dvc exp show
@@ -47,8 +47,9 @@ and params from the entire project. The `--include-metrics`,
 used to choose them.
 
 Experiments in the table are first grouped (by parent commit). They are then
-sorted, chronologically by default. The `--sort-by` and `--sort-order` options
-can change this ordering based on any single metric or param column.
+sorted inside each group, chronologically by default. The `--sort-by` and
+`--sort-order` options can change this ordering, based on any single metric or
+param.
 
 ## Options
 
@@ -84,9 +85,9 @@ can change this ordering based on any single metric or param column.
   comma-separated `list` of metric names (including groups).
 
 - `--sort-by <name>` - sort experiments by the specified metric or param
-  (`name`). Only one sort column (either metric or param) can be specified. Note
-  that experiment derived from the same parent commit wll be sorted within their
-  groups only.
+  (`name`). Only one sort column (either metric or param) can be specified. This
+  only affects the ordering of experiments derived from the same parent commit.
+  Parent commits are always sorted chronologically.
 
 - `--sort-order {asc,desc}` - sort order to use with `--sort-by` (defaults to
   descending).
