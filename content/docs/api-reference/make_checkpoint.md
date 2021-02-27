@@ -41,7 +41,10 @@ implement the steps above yourself.
 
 The stage definition in `dvc.yaml` should contain at least one
 <abbr>output</abbr> with the `checkpoint: true` value set, so that DVC registers
-its checkpoint.
+its checkpoints.
+
+⚠️ Using the `checkpoint` field in `dvc.yaml` is only compatibly with
+`dvc exp run`, `dvc repro` will abort if any stage contains it.
 
 ## Example: Every 100th iteration
 
