@@ -72,6 +72,9 @@ in the corresponding code, either call the `dvc.api.make_checkpoint()` function
 (Python), or write a signal file (any programming language) following the same
 steps as `make_checkpoint()` — please refer to that reference for details.
 
+⚠️ Using the `checkpoint` field in `dvc.yaml` is only compatibly with
+`dvc exp run`, `dvc repro` will abort if any stage contains it.
+
 <details>
 
 ### How are checkpoints captured by DVC?

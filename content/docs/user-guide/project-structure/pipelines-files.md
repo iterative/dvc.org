@@ -380,6 +380,9 @@ validation and auto-completion.
 | `desc`       | (Optional) user description for this output. This doesn't affect any DVC operations.                                                                                                                                                                                               |
 | `checkpoint` | Set to `true` to let DVC know that this output is associated with [in-code checkpoints](/doc/user-guide/experiment-management#checkpoints-in-source-code). These outputs are reverted to their last cached version at `dvc exp run` and also `persist` during the stage execution. |
 
+⚠️ Using the `checkpoint` field is only compatibly with `dvc exp run`,
+`dvc repro` will abort if any stage contains it.
+
 ## dvc.lock file
 
 > ⚠️ Avoid editing these files. DVC will create and update them for you.
