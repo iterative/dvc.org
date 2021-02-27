@@ -4,237 +4,231 @@ title: 'Get Started: Experiments'
 
 # Get Started: Experiments
 
-DVC makes it easy to iterate on your project using Git commits, tags, or
-branches. You can try different ideas quickly by tuning
-[parameters](/doc/command-reference/params), compare their performance with
-[metrics](/doc/command-reference/metrics), and visualize them with
-[plots](/doc/command-reference/plots).
+⚠️ This feature is only available in DVC 2.0 ⚠️
 
-Read on or watch our video to see how it's done!
-
-https://youtu.be/iduHPtBncBk
+<abbr>Experiments</abbr> proliferate quickly in ML projects where there are many
+parameters to tune or other permutations of the code. We can organize such
+projects and only keep what we ultimately need with `dvc experiments`. DVC can
+track experiments for you so there's no need to commit each one to Git. This way
+your repo doesn't become polluted with all of them. You can discard experiments
+once they're no longer needed.
 
 > 📖 See [Experiment Management](/doc/user-guide/experiment-management) for more
 > information on DVC's approach.
 
-## Collecting metrics
+## Running experiments
 
-First, let's see what is the mechanism to capture values for these ML experiment
-attributes. Let's add a final evaluation stage to our
-[pipeline](/doc/tutorials/get-started/data-pipelines#dependency-graphs-dags):
+In the previous page, we learned how to tune
+[ML pipelines](/doc/tutorials/get-started/ml-pipeline) and compare the changes.
+Let's further increase the number of features in the `featurize` stage to see
+how it compares.
+
+`dvc exp run` makes it easy to change <abbr>hyperparameters</abbr> and run a new
+experiment:
 
 ```dvc
-$ dvc run -n evaluate \
-          -d src/evaluate.py -d model.pkl -d data/features \
-          -M scores.json \
-          --plots-no-cache prc.json \
-          python src/evaluate.py model.pkl \
-                 data/features scores.json prc.json
+$ dvc exp run --set-param featurize.max_features=3000
 ```
 
 <details>
 
-### 💡 Expand to see what happens under the hood.
+### 💡 Expand to see what this command does.
 
-The `-M` option here specifies a metrics file, while `--plots-no-cache`
-specifies a plots file produced by this stage that will not be
-<abbr>cached</abbr> by DVC. `dvc run` generates a new stage in the `dvc.yaml`
-file:
+`dvc exp run` is similar to `dvc repro` but with some added conveniences for
+running experiments. The `--set-param` (or `-S`) flag sets the values for
+[parameters](/doc/command-reference/params) as a shortcut to editing
+`params.yaml`.
 
-```yaml
-evaluate:
-  cmd: python src/evaluate.py model.pkl data/features ...
-  deps:
-    - data/features
-    - model.pkl
-    - src/evaluate.py
-  metrics:
-    - scores.json:
-        cache: false
-  plots:
-    - prc.json:
-        cache: false
+Check that the `featurize.max_features` value has been updated in `params.yaml`:
+
+```git
+ featurize:
+-  max_features: 1500
++  max_features: 3000
 ```
 
-The biggest difference to previous stages in our pipeline is in two new
-sections: `metrics` and `plots`. These are used to mark certain files containing
-experiment "telemetry". Metrics files contain simple numeric values (e.g. `AUC`)
-and plots files contain matrices and data series (e.g. `ROC` or model loss
-plots) that are meant to be visualized and compared.
-
-> With `cache: false`, DVC skips caching the output, as we want `scores.json`
-> and `prc.json` to be versioned by Git.
+Any edits to <abbr>dependencies</abbr> (parameters or source code) will be
+reflected in the experiment run.
 
 </details>
 
-[`evaluate.py`](https://github.com/iterative/example-get-started/blob/master/src/evaluate.py)
-writes the model's
-[AUC value](https://towardsdatascience.com/understanding-auc-roc-curve-68b2303cc9c5)
-to `scores.json`, which is marked as a metrics file with `-M`:
-
-```json
-{ "auc": 0.57313829 }
-```
-
-It also writes `precision`, `recall`, and `thresholds` arrays (obtained using
-[`precision_recall_curve`](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_recall_curve.html))
-into plots file `prc.json`:
-
-```json
-{
-  "prc": [
-    { "precision": 0.021473008227975116, "recall": 1.0, "threshold": 0.0 },
-    ...,
-    { "precision": 1.0, "recall": 0.009345794392523364, "threshold": 0.64 }
-  ]
-}
-```
-
-> DVC doesn't force you to use any specific file names, or even format or
-> structure of a metrics or plots file - it's pretty much user and case defined.
-> Please refer to `dvc metrics` and `dvc plots` for more details.
-
-Let's save this experiment, so we can compare it later:
+`dvc exp diff` compares experiments:
 
 ```dvc
-$ git add scores.json prc.json
-$ git commit -a -m "Create evaluation stage"
+$ dvc exp diff
+Path         Metric    Value    Change
+scores.json  avg_prec  0.56191  0.009322
+scores.json  roc_auc   0.93345  0.018087
+
+Path         Param                   Value    Change
+params.yaml  featurize.max_features  3000     1500
 ```
 
-Later we will see how these and other can be used to compare and visualize
-different experiment iterations. For now, let's see how can we capture another
-important piece of information that will be useful to compare experiments:
-parameters.
+## Queueing experiments
 
-## Defining parameters
+So far, we have been tuning the `featurize` stage, but there are also parameters
+for the `train` stage, which trains a
+[random forest classifier](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html).
 
-It's pretty common for data science pipelines to include configuration files
-that define adjustable parameters to train a model, do pre-processing, etc. DVC
-provides a mechanism for stages to depend on the values of specific sections of
-such a config file (YAML, JSON, TOML, and Python formats are supported).
-
-Luckily, we should already have a stage with
-[parameters](/doc/command-reference/params) in `dvc.yaml`:
+These are the `train` parameters in `params.yaml`:
 
 ```yaml
-featurize:
-  cmd: python src/featurization.py data/prepared data/features
-  deps:
-    - data/prepared
-    - src/featurization.py
-  params:
-    - featurize.max_features
-    - featurize.ngrams
-  outs:
-    - data/features
-```
-
-<details>
-
-### 💡 Expand to recall how it was generated.
-
-The `featurize` stage
-[was created](/doc/start/data-pipelines#dependency-graphs-dags) with this
-`dvc run` command. Notice the argument sent to the `-p` option (short for
-`--params`):
-
-```dvc
-$ dvc run -n featurize \
-          -p featurize.max_features,featurize.ngrams \
-          -d src/featurization.py -d data/prepared \
-          -o data/features \
-          python src/featurization.py data/prepared data/features
-```
-
-</details>
-
-The `params` section defines the [parameter](/doc/command-reference/params)
-dependencies of the `featurize` stage. By default DVC reads those values
-(`featurize.max_features` and `featurize.ngrams`) from a `params.yaml` file. But
-as with metrics and plots, parameter file names and structure can also be user
-and case defined.
-
-This is how our `params.yaml` file looks like:
-
-```yaml
-prepare:
-  split: 0.20
-  seed: 20170428
-
-featurize:
-  max_features: 500
-  ngrams: 1
-
 train:
   seed: 20170428
-  n_estimators: 50
+  n_est: 50
+  min_split: 2
 ```
 
-## Tuning and running experiments
-
-We are definitely not happy with the `AUC` value we got so far! Let's now tune
-and run the new experiment. Edit the `params.yaml` file to use bigrams and
-increase the number of features:
-
-```diff
- featurize:
--  max_features: 500
--  ngrams: 1
-+  max_features: 1500
-+  ngrams: 2
-```
-
-And the beauty of `dvc.yaml` is that all you need to do now is to run:
+Let's setup experiments with different hyperparameters. We can define all the
+combinations we want to try without executing anything, by using the `--queue`
+flag:
 
 ```dvc
-$ dvc repro
+$ dvc exp run --queue -S train.min_split=8
+Queued experiment 'd3f6d1e' for future execution.
+$ dvc exp run --queue -S train.min_split=64
+Queued experiment 'f1810e0' for future execution.
+$ dvc exp run --queue -S train.min_split=2 -S train.n_est=100
+Queued experiment '7323ea2' for future execution.
+$ dvc exp run --queue -S train.min_split=8 -S train.n_est=100
+Queued experiment 'c605382' for future execution.
+$ dvc exp run --queue -S train.min_split=64 -S train.n_est=100
+Queued experiment '0cdee86' for future execution.
 ```
 
-It'll analyze the changes, use existing cache of previous runs, and execute only
-the commands that are needed to get the new results (model, metrics, plots).
-
-The same logic applies to other possible experiment adjustments — edit source
-code, update datasets — you do the changes, use `dvc repro`, and DVC runs what
-needs to be run.
-
-## Comparing experiments
-
-Finally, we are now ready to compare everything! DVC has a few commands to see
-metrics and parameter changes, and to visualize plots, for one or more
-experiments. Let's compare the current "bigrams" run with the last committed
-"baseline" iteration:
+Next, run all queued experiments using `--run-all` (and in parallel with
+`--jobs`):
 
 ```dvc
-$ dvc params diff
-Path         Param                   Old    New
-params.yaml  featurize.max_features  500    1500
-params.yaml  featurize.ngrams        1      2
+$ dvc exp run --run-all --jobs 2
 ```
 
-`dvc params diff` can show how params in the workspace differ vs. the last
-commit.
+## Comparing many experiments
 
-`dvc metrics diff` does the same for metrics:
+To compare all of these experiments, we need more than `diff`. `dvc exp show`
+compares any number of experiments in one table:
 
 ```dvc
-$ dvc metrics diff
-Path         Metric    Value    Change
-scores.json  auc       0.61314  0.07139
+$ dvc exp show --no-timestamp
+               --include-params train.n_est,train.min_split
+┏━━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
+┃ Experiment    ┃ avg_prec ┃ roc_auc ┃ train.n_est┃ train.min_split ┃
+┡━━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━┩
+│ workspace     │  0.56191 │ 0.93345 │ 50         │ 2               │
+│ master        │  0.55259 │ 0.91536 │ 50         │ 2               │
+│ ├── exp-bfe64 │  0.57833 │ 0.95555 │ 50         │ 8               │
+│ ├── exp-b8082 │  0.59806 │ 0.95287 │ 50         │ 64              │
+│ ├── exp-c7250 │  0.58876 │ 0.94524 │ 100        │ 2               │
+│ ├── exp-b9cd4 │  0.57953 │ 0.95732 │ 100        │ 8               │
+│ ├── exp-98a96 │  0.60405 │  0.9608 │ 100        │ 64              │
+│ └── exp-ad5b1 │  0.56191 │ 0.93345 │ 50         │ 2               │
+└───────────────┴──────────┴─────────┴────────────┴─────────────────┘
 ```
 
-And finally, we can compare `precision recall` curves with a single command!
+Each experiment is given an arbitrary name by default (although we can specify
+one with `dvc exp run -n`.) We can see that `exp-98a96` performed best among
+both of our metrics, with 100 estimators and a minimum of 64 samples to split a
+node.
+
+> See `dvc exp show --help` for more info on its options.
+
+## Persisting experiments
+
+Now that we know the best parameters, let's keep that experiment and ignore the
+rest.
+
+`dvc exp apply` rolls back the <abbr>workspace<abbr> to the specified
+experiment:
 
 ```dvc
-$ dvc plots diff -x recall -y precision
-file:///Users/dvc/example-get-started/plots.html
+$ dvc exp apply exp-98a96
+Changes for experiment 'exp-98a96' have been applied to your workspace.
 ```
 
-![](/img/plots_prc_get_started.svg)
+<details>
 
-All these commands also accept
-[Git revisions](https://git-scm.com/docs/gitrevisions) (commits, tags, branch
-names) to compare. This is a powerful mechanism for navigating experiments to
-see the history, to pick the best ones, etc.
+### 💡 Expand to see what this command does.
 
-> See `dvc plots diff` for more info on its options, such as `-x` and `-y` used
-> above.
+`dvc exp apply` is similar to `dvc checkout` but it works with experiments. DVC
+tracks everything in the pipeline for each experiment (parameters, metrics,
+dependencies, and outputs) and can later retrieve it as needed.
+
+Check that `scores.json` reflects the metrics in the table above:
+
+```json
+{ "avg_prec": 0.6040544652105823, "roc_auc": 0.9608017142900953 }
+```
+
+</details>
+
+Once an experiment has been applied to the workspace, it is no different from
+reproducing the result without `dvc exp run`. Let's make it persistent in our
+regular pipeline by committing it in our Git branch:
+
+```dvc
+$ git add dvc.lock params.yaml prc.json roc.json scores.json
+$ git commit -a -m "Preserve best random forest experiment"
+```
+
+> `dvc push` only uploads persistent experiments that have been committed to
+> Git. The other experiments will not be pushed to the remote. See
+> `dvc exp push` and `dvc exp pull` for how to share other experiments.
+
+## Cleaning up
+
+After committing the best experiment to Git, let's take another look at the
+experiments table:
+
+```dvc
+$ dvc exp show --no-timestamp
+               --include-params train.n_est,train.min_split
+┏━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
+┃ Experiment ┃ avg_prec ┃ roc_auc ┃ train.n_est┃ train.min_split ┃
+┡━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━┩
+│ workspace  │  0.60405 │  0.9608 │ 100        │ 64              │
+│ master     │  0.60405 │  0.9608 │ 100        │ 64              │
+└────────────┴──────────┴─────────┴────────────┴─────────────────┘
+```
+
+Where did all the experiments go? By default, `dvc exp show` only shows
+experiments since the last commit, but don't worry. The experiments remain
+<abbr>cached</abbr> and can be shown or applied. For example, use `-n` to show
+experiments from the previous _n_ commits:
+
+```dvc
+$ dvc exp show -n 2 --no-timestamp
+                    --include-params train.n_est,train.min_split
+┏━━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
+┃ Experiment    ┃ avg_prec ┃ roc_auc ┃ train.n_est┃ train.min_split ┃
+┡━━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━┩
+│ workspace     │  0.60405 │  0.9608 │ 100        │ 64              │
+│ master        │  0.60405 │  0.9608 │ 100        │ 64              │
+│ 64d74b2       │  0.55259 │ 0.91536 │ 50         │ 2               │
+│ ├── exp-bfe64 │  0.57833 │ 0.95555 │ 50         │ 8               │
+│ ├── exp-b8082 │  0.59806 │ 0.95287 │ 50         │ 64              │
+│ ├── exp-c7250 │  0.58876 │ 0.94524 │ 100        │ 2               │
+│ ├── exp-98a96 │  0.60405 │  0.9608 │ 100        │ 64              │
+│ ├── exp-b9cd4 │  0.57953 │ 0.95732 │ 100        │ 8               │
+│ └── exp-ad5b1 │  0.56191 │ 0.93345 │ 50         │ 2               │
+└───────────────┴──────────┴─────────┴────────────┴─────────────────┘
+```
+
+Eventually, old experiments may clutter the experiments table.
+
+`dvc exp gc` removes all references to old experiments:
+
+```dvc
+$ dvc exp gc --workspace
+$ dvc exp show -n 2 --no-timestamp
+                    --include-params train.n_est,train.min_split
+┏━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
+┃ Experiment ┃ avg_prec ┃ roc_auc ┃ train.n_est┃ train.min_split ┃
+┡━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━┩
+│ workspace  │  0.60405 │  0.9608 │ 100        │ 64              │
+│ master     │  0.60405 │  0.9608 │ 100        │ 64              │
+│ 64d74b2    │  0.55259 │ 0.91536 │ 50         │ 2               │
+└────────────┴──────────┴─────────┴────────────┴─────────────────┘
+```
+
+> `dvc exp gc` only removes references to the experiments, not the cached
+> objects associated to them. To clean up the cache, use `dvc gc`.
