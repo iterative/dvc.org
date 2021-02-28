@@ -127,7 +127,7 @@ up-to-date and only execute the final stage.
   recursive search for changed dependencies. Multiple stages are executed
   (non-recursively) if multiple stage names are given as `targets`.
 
-- `-f`, `--force` - reproduce a pipeline, regenerating its results, even if no
+- `-f`, `--force` - reproduce pipelines, regenerating its results, even if no
   changes were found. This executes all of the stages by default, but it can be
   limited with the `targets` argument, or the `-s`, `-p` options.
 
