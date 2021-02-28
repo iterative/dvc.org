@@ -33,6 +33,9 @@ all <abbr>cached</abbr> data associated with the experiment to DVC
 The default remote is used (see `dvc remote default`) unless a specific one is
 given with `--remote`.
 
+> 💡 Note that `git push <git_remote> --delete <experiment>` can be used to
+> delete a pushed experiment.
+
 ## Options
 
 - `-f`, `--force` - rewrite the `experiment` commit if it already exists in the
