@@ -67,22 +67,30 @@ committing them to the Git repo. Unnecessary ones can be removed with
 To track successive steps in a longer <abbr>experiment</abbr>, you can register
 checkpoints with DVC during your code or script runtime (similar to a logger).
 
-⚠️ Using the `checkpoint` field in `dvc.yaml` is only compatibly with
-`dvc exp run`, `dvc repro` will abort if any stage contains it.
-
 To do so, first mark stage `outs` with `checkpoint: true` in `dvc.yaml`. Having
 at least a checkpoint <abbr>output</abbr> is needed so that the experiment can
 later restart based on that output's last <abbr>cached</abbr> state.
+
+⚠️ Using the `checkpoint` field in `dvc.yaml` is only compatibly with
+`dvc exp run`, `dvc repro` will abort if any stage contains it.
 
 Then, in the corresponding code, either call the `dvc.api.make_checkpoint()`
 function (Python), or write a signal file (any programming language) following
 the same steps as `make_checkpoint()` — please refer to that reference for
 details.
 
-The `--rev` and `--reset` options of this command are specifically designed to
-help you manage checkpoint experiments. The former lets you continue an
-experiment from a previously registered checkpoint (having made some changes to
-code, params, etc.). The latter restarts the whole process from scratch.
+Once this is setup, you can use `dvc exp run` to begin the experiment. You may
+interrupt this process manually (e.g. with Ctrl + `C`) if needed, and DVC will
+automatically [apply](/doc/command-reference/exp/apply) the last checkpoint to
+the <abbr>workspace</abbr> (overwriting any further changes done by the stage).
+Simply `dvc exp run` again to continue.
+
+The `--rev` and `--reset` options also help you manage checkpoint experiment
+runs. The former lets you continue an experiment from a specific checkpoint
+(having made some changes to code, params, etc.). The latter restarts the whole
+process from scratch.
+
+Note that `dvc exp show` displays checkpoints with a special branching format.
 
 <details>
 
