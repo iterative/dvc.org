@@ -1,7 +1,7 @@
 # exp branch
 
-Commit the results from any [experiment](/doc/command-reference/exp) to Git, in
-a new branch (which will become the current <abbr>workspace</abbr>).
+Commit the results from an [experiment](/doc/command-reference/exp) in a new Git
+branch, which will become the <abbr>workspace</abbr>.
 
 ## Synopsis
 
@@ -15,17 +15,22 @@ positional arguments:
 
 ## Description
 
-Makes a Git branch off the last commit (`HEAD`) based on the given `experiment`,
-using the `branch` name provided.
+Makes a
+[Git branch](https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging)
+off the last commit (`HEAD`) based on the given `experiment`, using the `branch`
+name provided. The new branch is switched into (`git checkout`).
 
-This is equivalent to using `dvc exp apply` (applies the results from any
-experiment to the workspace) followed by Git branching and committing:
+In most cases this is equivalent to using `dvc exp apply` (applies the
+`experiment` results to the workspace) followed by Git branching and committing:
 
 ```dvc
 $ dvc exp apply experiment
 $ git checkout -b branch
-$ git commit ...
+$ git add . && git commit
 ```
+
+For [checkpoints](/doc/command-reference/exp/run#checkpoints), the `experiment`
+(custom Git branch) is merged into the new `branch`.
 
 ## Options
 
