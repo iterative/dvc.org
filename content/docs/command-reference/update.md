@@ -49,11 +49,11 @@ $ dvc update --rev master
   directory and its subdirectories for import stage `.dvc` files to inspect. If
   there are no directories among the targets, this option is ignored.
 
-- `--to-remote` - update the import `.dvc` file and
+- `--to-remote` - update a `.dvc` file created with `dvc import-url` and
   [transfer](/doc/command-reference/import-url#example-import-straight-to-the-remote)
   the new data directly to remote storage (the default one unless `-r` is used).
   No changes are done in the <abbr>workspace</abbr>. Use `dvc pull` to get the
-  data locally.
+  data locally. This option can't be used with DVC or Git repository imports.
 
 - `-r <name>`, `--remote <name>` - name of the
   [remote storage](/doc/command-reference/remote) (can only be used with
