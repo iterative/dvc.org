@@ -79,16 +79,15 @@ function (Python), or write a signal file (any programming language) following
 the same steps as `make_checkpoint()` — please refer to that reference for
 details.
 
-Once this is setup, you can use `dvc exp run` to begin the experiment. You may
-interrupt this process manually (e.g. with Ctrl + `C`) if needed, and DVC will
-automatically [apply](/doc/command-reference/exp/apply) the last checkpoint to
-the <abbr>workspace</abbr> (overwriting any further changes done by the stage).
-Simply `dvc exp run` again to continue.
+Once this is setup, you can use `dvc exp run` to begin the experiment. When the
+process finishes or gets interrupted (e.g. with Ctrl + `C`), DVC will
+[apply](/doc/command-reference/exp/apply) the last checkpoint to the
+<abbr>workspace</abbr> (overwriting any further changes done by the stage).
 
-The `--rev` and `--reset` options also help you manage checkpoint experiment
-runs. The former lets you continue an experiment from a specific checkpoint
-(having made some changes to code, params, etc.). The latter restarts the whole
-process from scratch.
+`dvc exp run` again will continue from this point (useful for interrupted runs).
+Use `--reset` to roll-back the workspace to `HEAD` and restart the whole
+experiment. Alternatively, you can use `--rev` to continue from a specific
+(previous) checkpoint.
 
 Note that `dvc exp show` displays checkpoints with a special branching format.
 
@@ -109,10 +108,12 @@ The `--queue` option lets you create an experiment as usual, except that nothing
 is actually run. Instead, the experiment is put in a wait-list for later
 execution. `dvc exp show` will mark queued experiments with an asterisk `*`.
 
-Use `dvc exp run --run-all` to process this queue. Adding `-j` (`--jobs`),
-queued experiments can be run in parallel for better performance. This creates a
-temporary workspace copy (in `.dvc/tmp/exp<n>` where _n_ is the job number) for
-each subprocess (see also `--temp`).
+Use `dvc exp run --run-all` to process this queue. Note that if the queued
+experiments use checkpoints, `--run-all` implies `--reset` (restarts them).
+
+Adding `-j` (`--jobs`), experiment queues can be run in parallel for better
+performance. This creates a temporary workspace copy for each subprocess (in
+`.dvc/tmp/exp<n>` where _n_ is the job number). See also `--temp`.
 
 ⚠️ Parallel runs are experimental and may be unstable at this time. ⚠️ Make sure
 you're using a number of jobs that your environment can handle (no more than the
@@ -137,20 +138,22 @@ CPU cores).
   hash).
 
 - `--temp` - run this experiment in a separate temporary directory (in
-  `.dvc/tmp/exp<n>`) instead of your workspace. Useful for
+  `.dvc/tmp/exp<n>`) instead of your workspace.
 
 - `--queue` - place this experiment at the end of a line for future execution,
   but do not actually run it yet. Use `dvc exp run --run-all` to process the
   queue.
 
 - `--run-all` - run all queued experiments (see `--queue`). Use `-j` to execute
-  them [in parallel](#queueing-and-parallel-execution).
+  them [in parallel](#queueing-and-parallel-execution). For checkpoint
+  experiments, this implies `--reset`.
 
 - `-j <number>`, `--jobs <number>` - run this `number` of queued experiments in
   parallel. Only applicable when used in conjunction with `--run-all`.
 
 - `-r <commit>`, `--rev <commit>` - continue an experiment from a specific
-  checkpoint name or hash (`commit`).
+  checkpoint name or hash (`commit`). This is needed for example to resume
+  experiments from `--queue` or `--temp` runs.
 
 - `--reset` - restart a checkpoint experiment from scratch (resets the workspace
   and clears existing checkpoints before the run). Implies `--force`, so that
