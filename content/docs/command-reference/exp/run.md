@@ -1,7 +1,7 @@
 # exp run
 
-Run an experiment: reproduce a variation of a committed
-[pipeline](/doc/command-reference/dag) in a hidden project branch.
+Run an [experiment](/doc/command-reference/exp): reproduce a variation of a
+committed [pipeline](/doc/command-reference/dag) in a hidden project branch.
 
 > Similar to `dvc repro` but for
 > [experimentation](/doc/user-guide/experiment-management).
@@ -142,8 +142,7 @@ CPU cores).
   parallel. Only applicable when used in conjunction with `--run-all`.
 
 - `-r <commit>`, `--rev <commit>` - continue an experiment from a specific
-  checkpoint name or hash (`commit`). Required for explicitly resuming
-  checkpoints in queued or temp dir runs.
+  checkpoint name or hash (`commit`).
 
 - `--reset` - restart a checkpoint experiment from scratch (resets existing
   checkpoints to the initial state).
