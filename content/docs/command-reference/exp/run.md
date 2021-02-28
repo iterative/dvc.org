@@ -152,12 +152,12 @@ CPU cores).
 - `-r <commit>`, `--rev <commit>` - continue an experiment from a specific
   checkpoint name or hash (`commit`).
 
-- `--reset` - restart a checkpoint experiment from scratch (resets existing
-  checkpoints to the initial state).
+- `--reset` - restart a checkpoint experiment from scratch (resets the workspace
+  and clears existing checkpoints before the run). Implies `--force`, so that
+  cached checkpoint results are regenerated.
 
 - `-f`, `--force` - reproduce pipelines even if no changes were found (same as
-  `dvc repro -f`). For `checkpoint` experiments, this restarts form scratch,
-  like `--reset`.
+  `dvc repro -f`).
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
