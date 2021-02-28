@@ -238,6 +238,26 @@
           {
             "label": "exp apply",
             "slug": "apply"
+          },
+          {
+            "label": "exp branch",
+            "slug": "branch"
+          },
+          {
+            "label": "exp gc",
+            "slug": "gc"
+          },
+          {
+            "label": "exp push",
+            "slug": "push"
+          },
+          {
+            "label": "exp pull",
+            "slug": "pull"
+          },
+          {
+            "label": "exp list",
+            "slug": "list"
           }
         ]
       },

@@ -66,9 +66,9 @@ in the cache (compared to the default remote.) It can be used to see what files
   the `-aT` flag.
 
 - `-T`, `--all-tags` - same as `-a` above, but applies to Git tags as well as
-  the workspace. Useful if tags are used to track "checkpoints" of an experiment
-  or project. Note that both options can be combined, for example using the
-  `-aT` flag.
+  the workspace. Useful if tags are used to mark certain versions of an
+  experiment or project. Note that both options can be combined, for example
+  using the `-aT` flag.
 
 - `--all-commits` - same as `-a` or `-T` above, but applies to _all_ Git commits
   as well as the workspace. This uploads tracked data for the entire commit
