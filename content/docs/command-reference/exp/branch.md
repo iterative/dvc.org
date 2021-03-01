@@ -20,17 +20,20 @@ Makes a
 off the last commit (`HEAD`) based on the given `experiment`, using the `branch`
 name provided. The new branch is switched into (`git checkout`).
 
-In most cases this is equivalent to using `dvc exp apply` (applies the
-`experiment` results to the workspace) followed by Git branching and committing:
+In most cases this is similar to using `dvc exp apply` (applies the `experiment`
+results to the workspace) followed by Git branching and committing, except that
+`dvc exp branch` **does not** switch into the created `branch`. Equivalent to
+this:
 
-```dvc
-$ dvc exp apply experiment
-$ git checkout -b branch
-$ git add . && git commit
+```bash
+[master] $ git checkout -b branch
+[branch] $ dvc exp apply experiment
+[branch] $ git add . && git commit
+[branch] $ git checkout master
 ```
 
 For [checkpoints](/doc/command-reference/exp/run#checkpoints), the `experiment`
-(custom Git branch) is merged into the new `branch`.
+(custom Git branch with multiple commits) is merged into the new `branch`.
 
 ## Options
 
