@@ -160,8 +160,10 @@ not.
   [remote storage](/doc/command-reference/remote) to transfer external target to
   (can only be used with `--to-remote`).
 
-- `-o <path>`, `--out <path>` - destination `path` for the transferred data (can
-  only be used with `--to-remote`).
+- `-o <path>`, `--out <path>` - destination `path` for the transferred data. If
+  used with `--to-remote`, the data will be transferred to the remote storage.
+  Else, it will be transferred [to the cache](#example-transfer-to-cache) and
+  will be linked to the workspace.
 
 - `--desc <text>` - user description of the data (optional). This doesn't affect
   any DVC operations.
@@ -377,4 +379,50 @@ system that can handle it), they can use `dvc pull` as usual:
 
 A       data.xml
 1 file added and 1 file fetched
+```
+
+## Example: Transfer to cache
+
+When you have a large dataset in an external location, you may want to add it to
+your cache without actually copying it into the workspace first. This might be
+due to cache and workspace are in separate disks, which only the cache can
+handle that size of data. After the data is saved to your cache, we link it to
+your workspace with the
+[preffered links](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache).
+
+Let's initalize a DVC project;
+
+```dvc
+$ mkdir example # workspace
+$ cd example
+$ git init
+$ dvc init
+```
+
+Afterwards, let's setup a shared cache by following
+[this](https://dvc.org/doc/use-cases/shared-development-server#preparation)
+tutorial. When it is ready to go, we can add `data.xml` to our cache directly;
+
+```
+$ dvc add https://data.dvc.org/get-started/data.xml -o data.xml
+```
+
+Depending on the cache type configured on our workspace (can be set using
+`cache.type` config value), the data is either linked up or just copied over.
+For this use case, a reflink or a symlink is suggested.
+
+```
+$ ls
+data.xml data.xml.dvc
+```
+
+As it can be seen, this option doesn't track the source unlike
+[import-url](/doc/command-reference/import-url).
+
+```
+ $ cat data.xml.dvc
+outs:
+- md5: a304afb96060aad90176268345e10355
+  nfiles: 1
+  path: data.xml
 ```
