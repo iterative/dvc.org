@@ -1,7 +1,7 @@
 # exp branch
 
 Commit the results from an [experiment](/doc/command-reference/exp) in a new Git
-branch, which will become the <abbr>workspace</abbr>.
+branch.
 
 ## Synopsis
 
