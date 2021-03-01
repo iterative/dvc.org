@@ -381,7 +381,7 @@ A       data.xml
 1 file added and 1 file fetched
 ```
 
-## Example: Transfer to cache
+## Example: Transfer to the cache
 
 When you have a large dataset in an external location, you may want to add it to
 your cache without actually copying it into the workspace first. This might be
