@@ -52,8 +52,10 @@ given with `--remote`.
 - `-r <name>`, `--remote <name>` - name of the `dvc remote` to pull cached files
   to.
 
-- `--run-cache` - downloads all available history of stage runs to the
-  `dvc remote` (to the cache only, like `dvc fetch --run-cache`).
+- `--run-cache` - downloads all available history of
+  [stage runs](/doc/user-guide/project-structure/internal-files#run-cache) from
+  the `dvc remote` (to the cache only, like `dvc fetch --run-cache`). Note that
+  `dvc exp run <stage_name>` is necessary to checkout these files.
 
 - `-j <number>`, `--jobs <number>` - parallelism level for DVC to upload data to
   remote storage. The default value is `4 * cpu_count()`. For SSH remotes, the

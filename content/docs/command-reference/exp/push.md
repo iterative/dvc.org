@@ -49,8 +49,9 @@ given with `--remote`.
 - `-r <name>`, `--remote <name>` - name of the `dvc remote` to push cached files
   to.
 
-- `--run-cache` - uploads all available history of stage runs to the
-  `dvc remote`.
+- `--run-cache` - uploads all available history of
+  [stage runs](/doc/user-guide/project-structure/internal-files#run-cache) to
+  the `dvc remote`.
 
 - `-j <number>`, `--jobs <number>` - parallelism level for DVC to upload data to
   remote storage. The default value is `4 * cpu_count()`. For SSH remotes, the
