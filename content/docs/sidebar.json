@@ -378,6 +378,10 @@
           {
             "label": "stage add",
             "slug": "add"
+          },
+          {
+            "label": "stage list",
+            "slug": "list"
           }
         ]
       },
