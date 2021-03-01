@@ -29,7 +29,6 @@ their remote URLs or external paths to `dvc add`, or put them in `dvc.yaml`
 `dvc remote` types/protocols:
 
 - Amazon S3
-- Google Cloud Storage
 - SSH
 - HDFS
 - Local files and directories outside the workspace
@@ -73,24 +72,6 @@ $ dvc run -d data.txt \
           --external \
           -o s3://mybucket/data.txt \
           aws s3 cp data.txt s3://mybucket/data.txt
-```
-
-</details>
-
-<details>
-
-### Click for Google Cloud Storage
-
-```dvc
-$ dvc remote add gscache gs://mybucket/cache
-$ dvc config cache.gs gscache
-
-$ dvc add --external gs://mybucket/existing-data
-
-$ dvc run -d data.txt \
-          --external \
-          -o gs://mybucket/data.txt \
-          gsutil cp data.txt gs://mybucket/data.txt
 ```
 
 </details>

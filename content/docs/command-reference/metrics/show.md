@@ -63,8 +63,8 @@ compares them with a previous version.
 ## Examples
 
 > This example is based on the `evaluate` stage of our
-> [Get Started](/doc/start/experiments#collecting-metrics), where you can find
-> the actual source code.
+> [Get Started](/doc/start/metrics-parameters-plots#collecting-metrics), where
+> you can find the actual source code.
 
 The basic use case shows the values in the current workspace:
 

@@ -66,9 +66,9 @@ in the cache (compared to the default remote.) It can be used to see what files
   below, for example using the `-aT` flag.
 
 - `-T`, `--all-tags` - same as `-a` above, but applies to Git tags as well as
-  the workspace. Useful if tags are used to track "checkpoints" of an experiment
-  or project. Note that both options can be combined, for example using the
-  `-aT` flag.
+  the workspace. Useful if tags are used to mark certain versions of an
+  experiment or project. Note that both options can be combined, for example
+  using the `-aT` flag.
 
 - `--all-commits` - same as `-a` or `-T` above, but applies to _all_ Git commits
   as well as the workspace. This uploads tracked data for the entire commit
@@ -95,7 +95,7 @@ in the cache (compared to the default remote.) It can be used to see what files
 - `-j <number>`, `--jobs <number>` - parallelism level for DVC to upload data to
   remote storage. The default value is `4 * cpu_count()`. For SSH remotes, the
   default is `4`. Note that the default value can be set using the `jobs` config
-  option with `dvc remote modify`. Using more jobs may improve the operation.
+  option with `dvc remote modify`. Using more jobs may speed up the operation.
 
 - `--glob` - allows pushing files and directories that match the
   [pattern](https://docs.python.org/3/library/glob.html) specified in `targets`.

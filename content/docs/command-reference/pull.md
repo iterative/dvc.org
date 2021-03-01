@@ -8,7 +8,7 @@ and `.dvc` files, and make them visible in the <abbr>workspace</abbr>.
 
 ```usage
 usage: dvc pull [-h] [-q | -v] [-j <number>] [-r <name>] [-a] [-T]
-                [-d] [-f] [-R] [--all-commits] [--run-cache]
+                [-d] [-f] [-R] [--glob] [--all-commits] [--run-cache]
                 [targets [targets ...]]
 
 positional arguments:
@@ -83,9 +83,9 @@ used to see what files `dvc pull` would download.
   below, for example using the `-aT` flag.
 
 - `-T`, `--all-tags` - same as `-a` above, but applies to Git tags as well as
-  the workspace. Useful if tags are used to track "checkpoints" of an experiment
-  or project. Note that both options can be combined, for example using the
-  `-aT` flag.
+  the workspace. Useful if tags are used to mark certain versions of an
+  experiment or project. Note that both options can be combined, for example
+  using the `-aT` flag.
 
 - `--all-commits` - same as `-a` or `-T` above, but applies to _all_ Git commits
   as well as the workspace. This downloads tracked data for the entire commit
@@ -119,8 +119,12 @@ used to see what files `dvc pull` would download.
 - `-j <number>`, `--jobs <number>` - parallelism level for DVC to download data
   from remote storage. The default value is `4 * cpu_count()`. For SSH remotes,
   the default is `4`. Note that the default value can be set using the `jobs`
-  config option with `dvc remote modify`. Using more jobs may improve the
+  config option with `dvc remote modify`. Using more jobs may speed up the
   operation.
+
+- `--glob` - allows pulling files and directories that match the
+  [pattern](https://docs.python.org/3/library/glob.html) specified in `targets`.
+  Shell style wildcards supported: `*`, `?`, `[seq]`, `[!seq]`, and `**`
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 

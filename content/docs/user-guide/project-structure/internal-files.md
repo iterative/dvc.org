@@ -21,8 +21,8 @@ operation.
   in the <abbr>workspace</abbr> will only contain links to the data files in the
   cache (refer to
   [Large Dataset Optimization](/doc/user-guide/large-dataset-optimization). See
-  `dvc config cache` for related configuration options, including changing the
-  its location.
+  `dvc config cache` for related configuration options, including changing its
+  location.
 
   > Note that DVC includes the cache directory in `.gitignore` during
   > initialization. No data tracked by DVC should ever be pushed to the Git
@@ -60,6 +60,9 @@ operation.
 - `.dvc/tmp/rwlock`: JSON file that contains read and write locks for specific
   dependencies and outputs, to allow safely running multiple DVC commands in
   parallel
+
+- `.dvc/tmp/exp<n>`: workspace copy number _n_ for
+  [parallel experiments](/doc/command-reference/exp/run#queueing-and-parallel-execution).
 
 ## Structure of the cache directory
 
@@ -131,9 +134,10 @@ That's how DVC knows that the other two cached files belong in the directory.
 have been run in the project. It is found in the `runs/` directory inside the
 cache (or [remote storage](/doc/command-reference/remote)).
 
-Runs are identified as combinations of <abbr>dependencies</abbr>, commands, and
-<abbr>outputs</abbr> that correspond to each other. These combinations are
-hashed into special values that make up the file paths inside the run-cache dir.
+Runs are identified as combinations of exact <abbr>dependency</abbr> contents
+(or [parameter](/doc/command-reference/params) values), and the literal
+command(s) to execute. These combinations are represented by special hashes that
+translate to the file paths inside the run-cache dir:
 
 ```dvc
 $ tree .dvc/cache/runs
@@ -151,3 +155,6 @@ run.
 
 💡 `dvc push` and `dvc pull` (and `dvc fetch`) can download and upload the
 run-cache to remote storage for sharing and/or as a back up.
+
+> Note that the run-cache assumes that stage commands are deterministic (see
+> **Avoiding unexpected behavior** in `dvc run`).

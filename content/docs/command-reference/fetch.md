@@ -87,15 +87,14 @@ specific one is given with `--remote`.
 - `-j <number>`, `--jobs <number>` - parallelism level for DVC to download data
   from remote storage. The default value is `4 * cpu_count()`. For SSH remotes,
   the default is `4`. Note that the default value can be set using the `jobs`
-  config option with `dvc remote modify`. Using more jobs may improve the
+  config option with `dvc remote modify`. Using more jobs may speed up the
   operation.
 
 - `-a`, `--all-branches` - fetch cache for all Git branches instead of just the
   current workspace. This means DVC may download files needed to reproduce
-  different versions of a `.dvc` file
-  ([experiments](/doc/tutorials/get-started/experiments)), not just the ones
-  currently in the workspace. Note that this can be combined with `-T` below,
-  for example using the `-aT` flag.
+  different versions of a `.dvc` file, not just the ones currently in the
+  workspace. Note that this can be combined with `-T` below, for example using
+  the `-aT` flag.
 
 - `-T`, `--all-tags` - same as `-a` above, but applies to Git tags as well as
   the workspace. Note that both options can be combined, for example using the

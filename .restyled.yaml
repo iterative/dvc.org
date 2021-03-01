@@ -1,6 +1,17 @@
 restylers:
   - name: prettier
-    arguments: ['--write']
+    arguments:
+      [
+        '--write',
+        '--trailing-comma=none',
+        '--no-semi',
+        '--arrow-parens=avoid',
+        '--single-quote=true',
+        '--print-width=80',
+        '--tab-width=2',
+        '--use-tabs=false',
+        '--prose-wrap=always',
+      ]
     include:
       - './*.{js,md}'
       - 'pages/**/*.js'
