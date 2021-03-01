@@ -110,12 +110,16 @@ metric or param.
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
-## Example: Tabular data
+## Examples
 
 > This example is based on our
 > [Get Started](/doc/tutorials/get-started/experiments), where you can find the
-> actual source code. The basic use case shows the values in the current
-> workspace:
+> actual source code.
+
+Let's say we have run 3 experiments in our project. The basic usage shows the
+workspace (Git working tree) and experiments derived from `HEAD`
+(`11-bigrams-experiment` branch in this case), and all of their metrics and
+params (scroll right to see all):
 
 ```dvc
 $ dvc exp show
@@ -130,6 +134,10 @@ $ dvc exp show
 └───────────────────────┴──────────────┴─────────┴────────────────────┴──────────────────┴──────────────┴───────────────┴────────────────────┴────────────┘
 ```
 
+> You can exit this screen with `Q`, typically.
+
+Let's limit the param columns to only include the `featurize` group:
+
 ```dvc
 $ dvc exp show --include-params=featurize
 ┏━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━┓
@@ -143,7 +151,7 @@ $ dvc exp show --include-params=featurize
 └───────────────────────┴──────────────┴─────────┴────────────────────────┴──────────────────┘
 ```
 
-To sort experiments by the `auc` metric in ascending order:
+Sort experiments by the `auc` metric, in ascending order:
 
 ```dvc
 $ dvc exp show --include-params=featurize --sort-by=auc --sort-order=asc
@@ -158,7 +166,7 @@ $ dvc exp show --include-params=featurize --sort-by=auc --sort-order=asc
 └───────────────────────┴──────────────┴─────────┴────────────────────────┴──────────────────┘
 ```
 
-To see all experiments in the workspace and down the Git history:
+To see all experiments throughout the Git history:
 
 ```dvc
 $ dvc exp show --all-commits --include-params=featurize --sort-by=auc --sort-order=asc
@@ -184,11 +192,8 @@ $ dvc exp show --all-commits --include-params=featurize --sort-by=auc --sort-ord
 └───────────────────────┴──────────────┴─────────┴────────────────────────┴──────────────────┘
 ```
 
-Note that in the final example, the top level Git commits remain in their
-original order. The experiment sorting only applies to experiments grouped
-according to each top level Git commit.
+Note that in the final example, Git commits remain in chronological order. The
+sorting only applies to experiment groups (sharing a parent commit).
 
-The
-[Compare Experiments](/doc/tutorials/get-started/experiments#compare-experiments)
-chapter of our _Get Started_ covers the `-a` option to collect and print a
-metrics file value across all Git branches.
+📖 See [Metrics, Parameters, and Plots](/doc/start/metrics-parameters-plots) for
+an introduction to parameters, metrics, plots.
