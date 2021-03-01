@@ -90,7 +90,7 @@ in the cache (compared to the default remote.) It can be used to see what files
 
 - `--run-cache` - uploads all available history of
   [stage runs](/doc/user-guide/project-structure/internal-files#run-cache) to
-  remote storage.
+  the `dvc remote`.
 
 - `-j <number>`, `--jobs <number>` - parallelism level for DVC to upload data to
   remote storage. The default value is `4 * cpu_count()`. For SSH remotes, the

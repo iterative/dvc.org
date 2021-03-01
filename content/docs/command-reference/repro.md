@@ -182,7 +182,8 @@ up-to-date and only execute the final stage.
 - `--pull` - [pulls](/doc/command-reference/pull) dependencies and outputs
   involved in the stages being reproduced, if they are found in the
   [default remote storage](/doc/command-reference/remote/default). Note that it
-  tries the local run-cache first (unless `--no-run-cache` is also used).
+  includes pulling any available run-cache (unless `--no-run-cache` is also
+  used).
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
