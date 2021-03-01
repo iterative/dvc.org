@@ -75,3 +75,59 @@ all the current experiments (without comparisons).
   problems arise, otherwise 1.
 
 - `-v`, `--verbose` - displays detailed tracing information.
+
+## Examples
+
+> This example is based on our
+> [Get Started](/doc/tutorials/get-started/experiments), where you can find the
+> actual source code.
+
+Let's say we have run 3 experiments in our project:
+
+```dvc
+$ dvc exp show --include-params=featurize
+┏━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━┓
+┃ Experiment            ┃ Created      ┃     auc ┃ featurize.max_features ┃ featurize.ngrams ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━┩
+│ workspace             │ -            │ 0.61314 │ 1500                   │ 2                │
+│ 10-bigrams-experiment │ Jun 20, 2020 │ 0.61314 │ 1500                   │ 2                │
+│ ├── exp-e6c97         │ Oct 21, 2020 │ 0.61314 │ 1500                   │ 2                │
+│ ├── exp-1dad0         │ Oct 09, 2020 │ 0.57756 │ 2000                   │ 2                │
+│ └── exp-1df77         │ Oct 09, 2020 │ 0.51676 │ 500                    │ 2                │
+└───────────────────────┴──────────────┴─────────┴────────────────────────┴──────────────────┘
+```
+
+Since we haven't made any changes to the workspace, we can compare `exp-1dad0`
+to its baseline (`10-bigrams-experiment`, current `HEAD`) like this:
+
+```dvc
+$ dvc exp diff exp-1dad0
+Path         Metric    Value    Change
+scores.json  auc       0.61314  0.035575
+Path         Param                   Value    Change
+params.yaml  featurize.max_features  1500     -500
+```
+
+To compare two specific experiments (values are shown for the second one by
+default):
+
+```dvc
+$ dvc exp diff exp-1dad0 exp-1df77
+Path         Metric    Value    Change
+scores.json  auc       0.51676  -0.060799
+Path         Param                   Value    Change
+params.yaml  featurize.max_features  500      -1500
+```
+
+To compare an experiment to the
+[`7-ml-pipeline`](https://github.com/iterative/example-get-started/releases/tag/7-ml-pipeline)
+tag (or any other [revision](https://git-scm.com/docs/revisions)):
+
+```dvc
+$ dvc exp diff exp-1dad0 7-ml-pipeline
+Path         Metric    Value    Change
+scores.json  auc       None     diff not supported
+Path         Param                   Value    Change
+params.yaml  featurize.max_features  500      -1500
+params.yaml  featurize.ngrams        1        -1
+```
