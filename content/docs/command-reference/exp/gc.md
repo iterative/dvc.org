@@ -1,6 +1,6 @@
 # exp gc
 
-Remove `dvc experiments` from the <abbr>project</abbr>.
+Remove unnecessary `dvc experiments` from the <abbr>project</abbr>.
 
 ## Synopsis
 
@@ -29,7 +29,7 @@ separately to delete it.
 ## Options
 
 - `-w`, `--workspace` - keep _only_ experiments derived from the current
-  workspace This option is enabled automatically if `--all-tags`,
+  workspace. This option is enabled automatically if `--all-tags`,
   `--all-branches`, or `--all-commits` are used.
 
 - `-a`, `--all-branches` - keep experiments derived from the tips of all Git
@@ -45,7 +45,7 @@ separately to delete it.
   clearing the experiments run queue.
 
 - `--queued` - keep experiments that haven't been run yet (defined via
-  `dvc exp run --queue`) . The experiment run queue will typically be cleared if
+  `dvc exp run --queue`). The experiment run queue will typically be cleared if
   this option isn't used.
 
 - `-f`, `--force` - force garbage collection. Skip confirmation prompt.
