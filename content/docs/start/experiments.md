@@ -174,7 +174,7 @@ $ git commit -a -m "Preserve best random forest experiment"
 
 After committing the best experiment to our Git branch, we can
 [store and share](/doc/start/data-versioning#storing-and-sharing) it remotely
-just like any other iteration of the pipeline.
+like any other iteration of the pipeline.
 
 ```dvc
 dvc push
@@ -185,12 +185,12 @@ git push
 
 ### 💡 Expand to try out sharing with simple remotes.
 
-Let's set up both a DVC remote to save the experiment data and a Git remote to
-save the code, parameters, and other metadata associated with the experiment.
-DVC supports various types of remote storage (local file system, SSH, Amazon S3,
-Google Cloud Storage, HTTP, HDFS, etc.). In many cases, the Git remote might be
-a central Git server (GitHub, GitLab, etc.). Let's set up both the DVC and Git
-remotes on our local filesystem to try them out:
+A DVC remote stores the experiment data, and a Git remote stores the code,
+parameters, and other metadata associated with the experiment. DVC supports
+various types of remote storage (local file system, SSH, Amazon S3, Google Cloud
+Storage, HTTP, HDFS, etc.). The Git remote is often a central Git server
+(GitHub, GitLab, BitBucket, etc.). Let's set up both the DVC and Git remotes on
+our local filesystem to try them out:
 
 ```dvc
 $ mkdir -p /tmp/dvcstore
@@ -200,26 +200,24 @@ $ mkdir -p /tmp/gitremote
 $ git clone . /temp/gitremote
 $ git remote add gitremote /tmp/gitremote
 $ dvc push
-$ git push gitremote master
+$ git push -u gitremote master
 ```
 
 `dvc push` saves the promoted experiment data to the default DVC remote in
 `/tmp/dvstore`.
 
-`git push gitremote master` saves the code, parameters, and associated metadata
-from the experiment committed to our `master` branch to the Git remote named
-`gitremote` in `/tmp/gitremote`.
+`git push -u gitremote master` saves the code, parameters, and associated
+metadata from the experiment committed to our `master` branch to the Git remote
+named `gitremote` in `/tmp/gitremote`.
 
-Read on to learn how to use remote storage to share other experiments with the
-configured DVC and Git remotes.
+Read on to learn how to share other experiments with DVC and Git remotes.
 
 </details>
 
-Experiments that have not been promoted will not be stored or shared remotely
-through `dvc push` or `git push`.
+Experiments that have not been made a persistent part of the pipeline will not
+be stored or shared remotely through `dvc push` or `git push`.
 
-`dvc exp push` enables saving experiments to remote storage without needing to
-promote them and commit them in your Git branch.
+`dvc exp push` enables storing and sharing any experiment remotely.
 
 ```dvc
 $ dvc exp push gitremote exp-bfe64
