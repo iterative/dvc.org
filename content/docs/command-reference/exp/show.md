@@ -118,7 +118,7 @@ metric or param.
 
 Let's say we have run 3 experiments in our project. The basic usage shows the
 workspace (Git working tree) and experiments derived from `HEAD`
-(`11-bigrams-experiment` branch in this case), and all of their metrics and
+(`10-bigrams-experiment` branch in this case), and all of their metrics and
 params (scroll right to see all):
 
 ```dvc
@@ -127,7 +127,7 @@ $ dvc exp show
 ┃ Experiment            ┃ Created      ┃     auc ┃ featurize.max_fea… ┃ featurize.ngrams ┃ prepare.seed ┃ prepare.split ┃ train.n_estimators ┃ train.seed ┃
 ┡━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━┩
 │ workspace             │ -            │ 0.61314 │ 1500               │ 2                │ 20170428     │ 0.2           │ 50                 │ 20170428   │
-│ 11-bigrams-experiment │ Jun 20, 2020 │ 0.61314 │ 1500               │ 2                │ 20170428     │ 0.2           │ 50                 │ 20170428   │
+│ 10-bigrams-experiment │ Jun 20, 2020 │ 0.61314 │ 1500               │ 2                │ 20170428     │ 0.2           │ 50                 │ 20170428   │
 │ ├── exp-e6c97         │ Oct 21, 2020 │ 0.61314 │ 1500               │ 2                │ 20170428     │ 0.2           │ 50                 │ 20170428   │
 │ ├── exp-1dad0         │ Oct 09, 2020 │ 0.57756 │ 2000               │ 2                │ 20170428     │ 0.2           │ 50                 │ 20170428   │
 │ └── exp-1df77         │ Oct 09, 2020 │ 0.51676 │ 500                │ 2                │ 20170428     │ 0.2           │ 50                 │ 20170428   │
@@ -144,7 +144,7 @@ $ dvc exp show --include-params=featurize
 ┃ Experiment            ┃ Created      ┃     auc ┃ featurize.max_features ┃ featurize.ngrams ┃
 ┡━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━┩
 │ workspace             │ -            │ 0.61314 │ 1500                   │ 2                │
-│ 11-bigrams-experiment │ Jun 20, 2020 │ 0.61314 │ 1500                   │ 2                │
+│ 10-bigrams-experiment │ Jun 20, 2020 │ 0.61314 │ 1500                   │ 2                │
 │ ├── exp-e6c97         │ Oct 21, 2020 │ 0.61314 │ 1500                   │ 2                │
 │ ├── exp-1dad0         │ Oct 09, 2020 │ 0.57756 │ 2000                   │ 2                │
 │ └── exp-1df77         │ Oct 09, 2020 │ 0.51676 │ 500                    │ 2                │
@@ -159,7 +159,7 @@ $ dvc exp show --include-params=featurize --sort-by=auc --sort-order=asc
 ┃ Experiment            ┃ Created      ┃     auc ┃ featurize.max_features ┃ featurize.ngrams ┃
 ┡━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━┩
 │ workspace             │ -            │ 0.61314 │ 1500                   │ 2                │
-│ 11-bigrams-experiment │ Jun 20, 2020 │ 0.61314 │ 1500                   │ 2                │
+│ 10-bigrams-experiment │ Jun 20, 2020 │ 0.61314 │ 1500                   │ 2                │
 │ ├── exp-1df77         │ Oct 09, 2020 │ 0.51676 │ 500                    │ 2                │
 │ ├── exp-1dad0         │ Oct 09, 2020 │ 0.57756 │ 2000                   │ 2                │
 │ └── exp-e6c97         │ Oct 21, 2020 │ 0.61314 │ 1500                   │ 2                │
@@ -174,7 +174,7 @@ $ dvc exp show --all-commits --include-params=featurize --sort-by=auc --sort-ord
 ┃ Experiment            ┃ Created      ┃     auc ┃ featurize.max_features ┃ featurize.ngrams ┃
 ┡━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━┩
 │ workspace             │ -            │ 0.61314 │ 1500                   │ 2                │
-│ 11-bigrams-experiment │ Jun 20, 2020 │ 0.61314 │ 1500                   │ 2                │
+│ 10-bigrams-experiment │ Jun 20, 2020 │ 0.61314 │ 1500                   │ 2                │
 │ ├── exp-1df77         │ Oct 09, 2020 │ 0.51676 │ 500                    │ 2                │
 │ ├── exp-1dad0         │ Oct 09, 2020 │ 0.57756 │ 2000                   │ 2                │
 │ └── exp-e6c97         │ Oct 21, 2020 │ 0.61314 │ 1500                   │ 2                │
