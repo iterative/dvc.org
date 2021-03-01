@@ -28,8 +28,8 @@ results to the workspace) followed by Git branching and committing, except that
 this:
 
 ```bash
-[master] $ git checkout -b branch
-[branch] $ dvc exp apply experiment
+[master] $ git checkout -b <branch>
+[branch] $ dvc exp apply <experiment>
 [branch] $ git add . && git commit
 [branch] $ git checkout master
 ```
