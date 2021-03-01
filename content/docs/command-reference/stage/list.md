@@ -6,8 +6,7 @@ List <abbr>stages</abbr> in the `dvc.yaml`.
 
 ```usage
 usage: dvc stage list [-h] [-q | -v]
-                      [-R] [--all] [--fail]
-                      [--names-only]
+                      [-R] [--all] [--fail] [--names-only]
                       [targets ...]
 
 positional arguments:
