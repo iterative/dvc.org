@@ -310,6 +310,18 @@ $ dvc remote modify myremote endpointurl \
   $ dvc remote modify myremote url azure://mycontainer/path
   ```
 
+#### Authentication Flow:
+
+- If `connection_string` specified, it will auth with it
+- If `tenant_id`/`client_id`/`client_secret` is specified, it will auth with AD
+  service principal
+- If `account_name`/`account_key` is specified, it will auth with account_key
+- If `account_name`/`sas_token` is specified, it will auth with SAS token
+- If `account_name` is specified, it will auth anonymously
+- If nothing is specified in the config, it will try to follow the steps here
+  and try to infer it from the environment (
+  https://azuresdkdocs.blob.core.windows.net/$web/python/azure-identity/1.4.0/azure.identity.html#azure.identity.DefaultAzureCredential)
+
 > The authentication values below will contain sensitive user info. Therefore,
 > it's safer to use the `--local` flag so they're written to a Git-ignored
 > [config file](https://dvc.org/doc/command-reference/config).
@@ -320,25 +332,6 @@ $ dvc remote modify myremote endpointurl \
   ```dvc
   $ dvc remote modify --local myremote connection_string \
                               'mystring'
-  ```
-
-- `account_name` - storage account name. Works by itself (anonymous auth) or
-  along with either `account_key` or `sas_token` along with this):
-
-  ```dvc
-  $ dvc remote modify --local myremote account_name 'myuser'
-  ```
-
-* `account_key` - storage account key (for `account_name`):
-
-  ```dvc
-  $ dvc remote modify --local myremote account_key 'mykey'
-  ```
-
-* `sas_token` - shared access signature token (for `account_name`):
-
-  ```dvc
-  $ dvc remote modify --local myremote sas_token 'mytoken'
   ```
 
 * `tenant_id` - tenant ID for
@@ -361,6 +354,25 @@ $ dvc remote modify myremote endpointurl \
 
   ```dvc
   $ dvc remote modify --local myremote client_secret 'client-secret'
+  ```
+
+- `account_name` - storage account name. Works by itself (anonymous auth) or
+  along with either `account_key` or `sas_token` along with this):
+
+  ```dvc
+  $ dvc remote modify --local myremote account_name 'myuser'
+  ```
+
+* `account_key` - storage account key (for `account_name`):
+
+  ```dvc
+  $ dvc remote modify --local myremote account_key 'mykey'
+  ```
+
+* `sas_token` - shared access signature token (for `account_name`):
+
+  ```dvc
+  $ dvc remote modify --local myremote sas_token 'mytoken'
   ```
 
 Azure remotes can also be configured entirely via environment variables. For

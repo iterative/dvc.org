@@ -166,7 +166,7 @@ $ dvc remote modify --local myremote connection_string 'mystring'
 
 > The connection string contains sensitive user info. Therefore, it's safer to
 > add it with the `--local` option, so it's written to a Git-ignored config
-> file. See `dvc remote modify` for a full list of Azure storage parameters.
+> file. See `dvc remote modify` for a full list of Azure authentication methods.
 
 The Azure Blob Storage remote can also be configured globally via environment
 variables:
