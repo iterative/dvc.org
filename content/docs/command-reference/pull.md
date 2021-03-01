@@ -233,9 +233,9 @@ already set up and you can use `dvc remote list` to check them. To remember how
 it's done, and set a context for the example, let's define a default SSH remote:
 
 ```dvc
-$ dvc remote add -d r1 ssh://_username_@_host_/path/to/dvc/remote/storage
+$ dvc remote add -d r1 ssh://user@example.com/path/to/dvc/remote/storage
 $ dvc remote list
-r1	ssh://_username_@_host_/path/to/dvc/remote/storage
+r1	ssh://user@example.com/path/to/dvc/remote/storage
 ```
 
 > DVC supports several
