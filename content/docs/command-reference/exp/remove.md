@@ -8,7 +8,8 @@ Remove specific `dvc experiments` from the <abbr>project</abbr>.
 usage: dvc experiments remove [-h] [-q | -v] [--queue]
                               [experiment [experiment ...]]
 
-Remove local experiments.
+positional arguments:
+   experiment    Experiments to remove.
 ```
 
 ## Description

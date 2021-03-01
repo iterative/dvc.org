@@ -9,7 +9,7 @@ branch, which will become the <abbr>workspace</abbr>.
 usage: dvc exp branch [-h] [-q | -v] experiment branch
 
 positional arguments:
-  experiment     Experiment to be promoted
+  experiment     Experiment to commit/merge
   branch         Git branch name to use
 ```
 
