@@ -244,6 +244,10 @@
             "slug": "branch"
           },
           {
+            "label": "exp remove",
+            "slug": "remove"
+          },
+          {
             "label": "exp gc",
             "slug": "gc"
           },

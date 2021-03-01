@@ -1,7 +1,7 @@
 # exp push
 
-Upload a single [experiment](/doc/command-reference/exp) to a Git remote, and
-its data to a `dvc remote`.
+Upload an [experiment](/doc/command-reference/exp) to a Git remote, and its data
+to a `dvc remote`.
 
 ## Synopsis
 
@@ -20,12 +20,17 @@ positional arguments:
 The `dvc exp push` and `dvc exp pull` commands are the means for sharing
 experiments across <abbr>repository</abbr> copies via Git (and DVC) remotes.
 
-> Plain `git push` and `git pull` don't work with `dvc experiments` because
+> Plain `git push` and `git fetch` don't work with `dvc experiments` because
 > these are saved under custom Git references. See **How does DVC track
 > experiments?** in `dvc exp run` to learn more about DVC experiment storage.
 
 A working `git_remote` name (e.g. `origin`) or valid Git repo's URL is required,
-as well as a single `experiment` name or hash (see `dvc exp run`) to push.
+as well as an `experiment` name or hash (see `dvc exp run`) to push.
+
+The first action of `dvc exp push` is to upload the `experiment` to the Git
+remote so it can be pulled later from other repo clones (equivalent to
+`git push <git_remote> refs/exps/<experiment>`). Use `dvc exp list <git_remote>`
+to see experiments in the remote.
 
 This command will also try to [push](/doc/command-reference/push) all
 <abbr>cached</abbr> data associated with the experiment to DVC
@@ -44,8 +49,9 @@ given with `--remote`.
 - `-r <name>`, `--remote <name>` - name of the `dvc remote` to push cached files
   to.
 
-- `--run-cache` - uploads all available history of stage runs to the
-  `dvc remote`.
+- `--run-cache` - uploads all available history of
+  [stage runs](/doc/user-guide/project-structure/internal-files#run-cache) to
+  the `dvc remote`.
 
 - `-j <number>`, `--jobs <number>` - parallelism level for DVC to upload data to
   remote storage. The default value is `4 * cpu_count()`. For SSH remotes, the

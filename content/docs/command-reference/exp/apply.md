@@ -1,6 +1,6 @@
 # exp apply
 
-Apply the results from any [experiment](/doc/command-reference/exp) to the
+Apply the results from an [experiment](/doc/command-reference/exp) to the
 <abbr>workspace</abbr>.
 
 ## Synopsis

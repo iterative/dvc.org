@@ -28,6 +28,9 @@ provided, lists experiments in that <abbr>repository</abbr> instead (if any).
 Only experiments derived from the `HEAD` commit are listed by default (see the
 options below).
 
+> Note that [checkpoints](/doc/command-reference/exp/run#checkpoints) are not
+> listed, only the parent experiment.
+
 ## Options
 
 - `--rev <commit>` - list experiments derived from the specified Git commit

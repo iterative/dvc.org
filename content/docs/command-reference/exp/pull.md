@@ -1,7 +1,7 @@
 # exp pull
 
-Download a single [experiment](/doc/command-reference/exp) to a Git remote, and
-its data to a `dvc remote`.
+Download an [experiment](/doc/command-reference/exp) from a Git remote, and its
+data from a `dvc remote`.
 
 ## Synopsis
 
@@ -20,18 +20,26 @@ positional arguments:
 The `dvc exp push` and `dvc exp pull` commands are the means for sharing
 experiments across <abbr>repository</abbr> copies via Git (and DVC) remotes.
 
-> Plain `git push` and `git pull` don't work with `dvc experiments` because
+> Plain `git push` and `git fetch` don't work with `dvc experiments` because
 > these are saved under custom Git references. See **How does DVC track
 > experiments?** in `dvc exp run` to learn more about DVC experiment storage.
 
 A working `git_remote` name (e.g. `origin`) or valid Git repo's URL is required,
-as well as a single `experiment` name or hash (see `dvc exp run`) to pull.
+as well as an `experiment` name or hash (see `dvc exp run`) to pull.
+
+The first action of `dvc exp pull` is to download the `experiment` so it's
+available in the local repository (equivalent to
+`git fetch <git_remote> refs/exps/<experiment>`). Use `dvc exp show` to explore
+your local experiments.
 
 By default, this command will also try to [pull](/doc/command-reference/pull)
 all <abbr>cached</abbr> data associated with the experiment to DVC
 [remote storage](/doc/command-reference/remote), unless `--no-cache` is used.
 The default remote is used (see `dvc remote default`) unless a specific one is
 given with `--remote`.
+
+> 💡 Note that `git push <git_remote> --delete <experiment>` can be used to
+> delete a pushed experiment.
 
 ## Options
 
@@ -44,8 +52,10 @@ given with `--remote`.
 - `-r <name>`, `--remote <name>` - name of the `dvc remote` to pull cached files
   to.
 
-- `--run-cache` - downloads all available history of stage runs to the
-  `dvc remote` (to the cache only, like `dvc fetch --run-cache`).
+- `--run-cache` - downloads all available history of
+  [stage runs](/doc/user-guide/project-structure/internal-files#run-cache) from
+  the `dvc remote` (to the cache only, like `dvc fetch --run-cache`). Note that
+  `dvc exp run <stage_name>` is necessary to checkout these files.
 
 - `-j <number>`, `--jobs <number>` - parallelism level for DVC to upload data to
   remote storage. The default value is `4 * cpu_count()`. For SSH remotes, the
