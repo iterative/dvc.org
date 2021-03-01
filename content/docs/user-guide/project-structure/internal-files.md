@@ -61,8 +61,8 @@ operation.
   dependencies and outputs, to allow safely running multiple DVC commands in
   parallel
 
-- `.dvc/tmp/exp<n>`: _n_<sup>th</sup> workspace copy, used for temporary or
-  parallel <abbr>experiments</abbr> (see `dvc exp run`).
+- `.dvc/tmp/exps`: This directory will contain workspace copies used for
+  temporary or parallel <abbr>experiments</abbr> (see `dvc exp run`).
 
 ## Structure of the cache directory
 

@@ -113,7 +113,7 @@ experiments use checkpoints, `--run-all` implies `--reset` (restarts them).
 
 Adding `-j` (`--jobs`), experiment queues can be run in parallel for better
 performance. This creates a temporary workspace copy for each subprocess (in
-`.dvc/tmp/exp<n>` where _n_ is the job number). See also `--temp`.
+`.dvc/tmp/exps` where _n_ is the job number). See also `--temp`.
 
 ⚠️ Parallel runs are experimental and may be unstable at this time. ⚠️ Make sure
 you're using a number of jobs that your environment can handle (no more than the
@@ -138,7 +138,7 @@ CPU cores).
   hash).
 
 - `--temp` - run this experiment in a separate temporary directory (in
-  `.dvc/tmp/exp<n>`) instead of your workspace.
+  `.dvc/tmp/exps`) instead of your workspace.
 
 - `--queue` - place this experiment at the end of a line for future execution,
   but do not actually run it yet. Use `dvc exp run --run-all` to process the
