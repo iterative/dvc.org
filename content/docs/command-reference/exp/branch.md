@@ -18,7 +18,9 @@ positional arguments:
 Makes a
 [Git branch](https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging)
 off the last commit (`HEAD`) based on the given `experiment`, using the `branch`
-name provided. The new branch is switched into (`git checkout`).
+name provided. This makes the given experiment
+[persistent](/doc/user-guide/experiment-management#persistent-experiments) in
+the repo.
 
 In most cases this is similar to using `dvc exp apply` (applies the `experiment`
 results to the workspace) followed by Git branching and committing, except that
@@ -34,6 +36,8 @@ this:
 
 For [checkpoints](/doc/command-reference/exp/run#checkpoints), the `experiment`
 (custom Git branch with multiple commits) is merged into the new `branch`.
+
+To switch into the new branch, use `git checkout branch` and `dvc checkout`.
 
 ## Options
 
