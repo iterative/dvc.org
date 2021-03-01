@@ -109,3 +109,86 @@ metric or param.
   problems arise, otherwise 1.
 
 - `-v`, `--verbose` - displays detailed tracing information.
+
+## Example: Tabular data
+
+> This example is based on our
+> [Get Started](/doc/tutorials/get-started/experiments), where you can find the
+> actual source code. The basic use case shows the values in the current
+> workspace:
+
+```dvc
+$ dvc exp show
+┏━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━┓
+┃ Experiment            ┃ Created      ┃     auc ┃ featurize.max_fea… ┃ featurize.ngrams ┃ prepare.seed ┃ prepare.split ┃ train.n_estimators ┃ train.seed ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━┩
+│ workspace             │ -            │ 0.61314 │ 1500               │ 2                │ 20170428     │ 0.2           │ 50                 │ 20170428   │
+│ 11-bigrams-experiment │ Jun 20, 2020 │ 0.61314 │ 1500               │ 2                │ 20170428     │ 0.2           │ 50                 │ 20170428   │
+│ ├── exp-e6c97         │ Oct 21, 2020 │ 0.61314 │ 1500               │ 2                │ 20170428     │ 0.2           │ 50                 │ 20170428   │
+│ ├── exp-1dad0         │ Oct 09, 2020 │ 0.57756 │ 2000               │ 2                │ 20170428     │ 0.2           │ 50                 │ 20170428   │
+│ └── exp-1df77         │ Oct 09, 2020 │ 0.51676 │ 500                │ 2                │ 20170428     │ 0.2           │ 50                 │ 20170428   │
+└───────────────────────┴──────────────┴─────────┴────────────────────┴──────────────────┴──────────────┴───────────────┴────────────────────┴────────────┘
+```
+
+```dvc
+$ dvc exp show --include-params=featurize
+┏━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━┓
+┃ Experiment            ┃ Created      ┃     auc ┃ featurize.max_features ┃ featurize.ngrams ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━┩
+│ workspace             │ -            │ 0.61314 │ 1500                   │ 2                │
+│ 11-bigrams-experiment │ Jun 20, 2020 │ 0.61314 │ 1500                   │ 2                │
+│ ├── exp-e6c97         │ Oct 21, 2020 │ 0.61314 │ 1500                   │ 2                │
+│ ├── exp-1dad0         │ Oct 09, 2020 │ 0.57756 │ 2000                   │ 2                │
+│ └── exp-1df77         │ Oct 09, 2020 │ 0.51676 │ 500                    │ 2                │
+└───────────────────────┴──────────────┴─────────┴────────────────────────┴──────────────────┘
+```
+
+To sort experiments by the `auc` metric in ascending order:
+
+```dvc
+$ dvc exp show --include-params=featurize --sort-by=auc --sort-order=asc
+┏━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━┓
+┃ Experiment            ┃ Created      ┃     auc ┃ featurize.max_features ┃ featurize.ngrams ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━┩
+│ workspace             │ -            │ 0.61314 │ 1500                   │ 2                │
+│ 11-bigrams-experiment │ Jun 20, 2020 │ 0.61314 │ 1500                   │ 2                │
+│ ├── exp-1df77         │ Oct 09, 2020 │ 0.51676 │ 500                    │ 2                │
+│ ├── exp-1dad0         │ Oct 09, 2020 │ 0.57756 │ 2000                   │ 2                │
+│ └── exp-e6c97         │ Oct 21, 2020 │ 0.61314 │ 1500                   │ 2                │
+└───────────────────────┴──────────────┴─────────┴────────────────────────┴──────────────────┘
+```
+
+To see all experiments in the workspace and down the Git history:
+
+```dvc
+$ dvc exp show --all-commits --include-params=featurize --sort-by=auc --sort-order=asc
+┏━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━┓
+┃ Experiment            ┃ Created      ┃     auc ┃ featurize.max_features ┃ featurize.ngrams ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━┩
+│ workspace             │ -            │ 0.61314 │ 1500                   │ 2                │
+│ 11-bigrams-experiment │ Jun 20, 2020 │ 0.61314 │ 1500                   │ 2                │
+│ ├── exp-1df77         │ Oct 09, 2020 │ 0.51676 │ 500                    │ 2                │
+│ ├── exp-1dad0         │ Oct 09, 2020 │ 0.57756 │ 2000                   │ 2                │
+│ └── exp-e6c97         │ Oct 21, 2020 │ 0.61314 │ 1500                   │ 2                │
+│ 10-bigrams-model      │ Jun 20, 2020 │ 0.54175 │ 1500                   │ 2                │
+│ └── exp-069d9         │ Sep 24, 2020 │ 0.51076 │ 2500                   │ 2                │
+│ 9-evaluation          │ Jun 20, 2020 │ 0.54175 │ 500                    │ 1                │
+│ 8-ml-pipeline         │ Jun 20, 2020 │       - │ 500                    │ 1                │
+│ 6-prep-stage          │ Jun 20, 2020 │       - │ 500                    │ 1                │
+│ 5-source-code         │ Jun 20, 2020 │       - │ 500                    │ 1                │
+│ 4-import-data         │ Jun 20, 2020 │       - │ 1500                   │ 2                │
+│ 2-track-data          │ Jun 20, 2020 │       - │ 1500                   │ 2                │
+│ 3-config-remote       │ Jun 20, 2020 │       - │ 1500                   │ 2                │
+│ 1-dvc-init            │ Jun 20, 2020 │       - │ 1500                   │ 2                │
+│ 0-git-init            │ Jun 20, 2020 │       - │ 1500                   │ 2                │
+└───────────────────────┴──────────────┴─────────┴────────────────────────┴──────────────────┘
+```
+
+Note that in the final example, the top level Git commits remain in their
+original order. The experiment sorting only applies to experiments grouped
+according to each top level Git commit.
+
+The
+[Compare Experiments](/doc/tutorials/get-started/experiments#compare-experiments)
+chapter of our _Get Started_ covers the `-a` option to collect and print a
+metrics file value across all Git branches.
