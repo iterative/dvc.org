@@ -506,7 +506,8 @@ more information.
 
 - `url` - remote location, in a regular
   [SSH format](https://tools.ietf.org/id/draft-salowey-secsh-uri-00.html#sshsyntax).
-  Note that this can already the `user` parameter, embedded into the URL:
+  Note that this can already include the `user` parameter, embedded into the
+  URL:
 
   ```dvc
   $ dvc remote modify myremote url \
