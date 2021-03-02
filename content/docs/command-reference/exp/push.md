@@ -66,3 +66,34 @@ given with `--remote`.
 
 - `-v`, `--verbose` - displays detailed tracing information from executing the
   `dvc pull` command.
+
+## Examples
+
+> This example is based on our
+> [Get Started](/doc/tutorials/get-started/experiments), where you can find the
+> actual source code.
+
+Let's say we have run 3 experiments in our project:
+
+```dvc
+$ dvc exp list --all
+11-bigrams-experiment:
+        exp-e6c97
+        exp-1dad0
+        exp-1df77
+```
+
+We would now like to share one of them with others via the Git remote:
+
+```dvc
+$ dvc exp push origin exp-e6c97
+Pushed experiment 'exp-e6c97' to Git remote 'origin'.
+```
+
+We can now see that the experiment exists in the remote repo:
+
+```dvc
+$ dvc exp list --all origin
+master:
+        exp-e6c97
+```

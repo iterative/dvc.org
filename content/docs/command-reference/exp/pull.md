@@ -70,3 +70,28 @@ given with `--remote`.
 
 - `-v`, `--verbose` - displays detailed tracing information from executing the
   `dvc pull` command.
+
+## Examples
+
+> This example is based on our
+> [Get Started](/doc/tutorials/get-started/experiments), where you can find the
+> actual source code.
+
+Let's say we have cloned a DVC repository, and would like to fetch an experiment
+that someone else shared (see also `dvc exp list`).
+
+```dvc
+$ dvc exp list --all origin
+master:
+        exp-e6c97
+$ dvc exp pull origin exp-e6c97
+Pulled experiment 'exp-e6c97' from Git remote 'origin'.
+```
+
+We can now see that the experiment exists in the local repo:
+
+```dvc
+$ dvc exp list --all
+master:
+        exp-e6c97
+```
