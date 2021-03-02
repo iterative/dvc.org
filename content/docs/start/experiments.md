@@ -172,9 +172,9 @@ $ git commit -a -m "Preserve best random forest experiment"
 
 ## Sharing experiments
 
-After committing the best experiment to our Git branch, we can
-[store and share](/doc/start/data-versioning#storing-and-sharing) it remotely
-like any other iteration of the pipeline.
+After committing the best experiments to our Git branch, we can
+[store and share](/doc/start/data-versioning#storing-and-sharing) them
+remotely like any other iteration of the pipeline.
 
 ```dvc
 dvc push
