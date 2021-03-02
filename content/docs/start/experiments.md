@@ -214,7 +214,7 @@ Read on to learn how to share other experiments with DVC and Git remotes.
 
 </details>
 
-Experiments that have not been made a persistent part of the pipeline will not
+Experiments that have not been made persistent will not
 be stored or shared remotely through `dvc push` or `git push`.
 
 `dvc exp push` enables storing and sharing any experiment remotely.
