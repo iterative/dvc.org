@@ -151,6 +151,11 @@ not.
   > Note that external outputs typically require an external cache setup. See
   > link above for more details.
 
+- `-o <path>`, `--out <path>` - destination `path` inside the workspace, to
+  [transfer](#example-transfer-to-cache) an external target into cache, and
+  track it in-place. Note that this can be combined with `--to-remote` to avoid
+  storing the data locally, while still adding it to the project.
+
 - `--to-remote` - import an external target, but don't move it into the
   workspace, nor cache it. [Transfer it](#example-transfer-to-remote-storage) it
   directly to remote storage (the default one, unless `-r` is specified)
@@ -159,11 +164,6 @@ not.
 - `-r <name>`, `--remote <name>` - name of the
   [remote storage](/doc/command-reference/remote) to transfer external target to
   (can only be used with `--to-remote`).
-
-- `-o <path>`, `--out <path>` - destination `path` for the transferred data. If
-  used with `--to-remote`, the data will be transferred to the remote storage.
-  Else, it will be transferred [to the cache](#example-transfer-to-cache) and
-  will be linked to the workspace.
 
 - `--desc <text>` - user description of the data (optional). This doesn't affect
   any DVC operations.
@@ -334,6 +334,56 @@ $ tree .dvc/cache
 Only the hash values of the `dir/` directory (with `.dir` file extension) and
 `file2` have been cached.
 
+## Example: Transfer to the cache
+
+When you have a large dataset in an external location, you may want to add it to
+the <abbr>project</abbr> without having to copy it into the workspace. Maybe
+your local disk doesn't even have enough space, but you have setup an
+[external cache](/doc/use-cases/shared-development-server#configure-the-external-shared-cache)
+that could handle it.
+
+The `--out` option lets you add external paths in a way that they are
+<abbr>cached</abbr> first, and then
+[linked](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
+to a given path inside the <abbr>workspace<abbr>. Let's initialize a DVC
+project:
+
+```dvc
+$ mkdir example # workspace
+$ cd example
+$ git init
+$ dvc init
+```
+
+Now we can add a `data.xml` file via HTTP for example, putting it a local path
+in our project:
+
+```
+$ dvc add https://data.dvc.org/get-started/data.xml -o data.xml
+
+To track the changes with git, run:
+
+    git add data.xml.dvc
+
+$ ls
+data.xml data.xml.dvc
+```
+
+The resulting `.dvc` file will save the provided local `path` as if the data was
+always there, while the `md5` hash points to the copy of the data that has now
+been transferred to the cache. Let's check the contents of `data.xml.dvc` in
+this case:
+
+```yaml
+outs:
+  - md5: a304afb96060aad90176268345e10355
+    nfiles: 1
+    path: data.xml
+```
+
+> For a similar operation that actually keeps a connection to the data source,
+> please see `dvc import-url`.
+
 ## Example: Transfer to remote storage
 
 When you have a large dataset in an external location, you may want to track it
@@ -379,50 +429,4 @@ system that can handle it), they can use `dvc pull` as usual:
 
 A       data.xml
 1 file added and 1 file fetched
-```
-
-## Example: Transfer to the cache
-
-When you have a large dataset in an external location, you may want to add it to
-your cache without actually copying it into the workspace first. This might be
-due to cache and workspace are in separate disks, which only the cache can
-handle that size of data. After the data is saved to your cache, we link it to
-your workspace with the
-[preffered links](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache).
-
-Let's initalize a DVC project;
-
-```dvc
-$ mkdir example # workspace
-$ cd example
-$ git init
-$ dvc init
-```
-
-Afterwards, let's setup a shared cache by following
-[this](https://dvc.org/doc/use-cases/shared-development-server#preparation)
-tutorial. When it is ready to go, we can add `data.xml` to our cache directly;
-
-```
-$ dvc add https://data.dvc.org/get-started/data.xml -o data.xml
-```
-
-Depending on the cache type configured on our workspace (can be set using
-`cache.type` config value), the data is either linked up or just copied over.
-For this use case, a reflink or a symlink is suggested.
-
-```
-$ ls
-data.xml data.xml.dvc
-```
-
-As it can be seen, this option doesn't track the source unlike
-[import-url](/doc/command-reference/import-url).
-
-```
- $ cat data.xml.dvc
-outs:
-- md5: a304afb96060aad90176268345e10355
-  nfiles: 1
-  path: data.xml
 ```
