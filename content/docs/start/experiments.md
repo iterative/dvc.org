@@ -173,8 +173,8 @@ $ git commit -a -m "Preserve best random forest experiment"
 ## Sharing experiments
 
 After committing the best experiments to our Git branch, we can
-[store and share](/doc/start/data-versioning#storing-and-sharing) them
-remotely like any other iteration of the pipeline.
+[store and share](/doc/start/data-versioning#storing-and-sharing) them remotely
+like any other iteration of the pipeline.
 
 ```dvc
 dvc push
@@ -183,39 +183,19 @@ git push
 
 <details>
 
-### 💡 Expand to try out sharing with simple remotes.
+### 💡 Expand for more info on remote storage.
 
+The commands in this section require both a default DVC remote and a Git remote.
 A DVC remote stores the experiment data, and a Git remote stores the code,
 parameters, and other metadata associated with the experiment. DVC supports
 various types of remote storage (local file system, SSH, Amazon S3, Google Cloud
 Storage, HTTP, HDFS, etc.). The Git remote is often a central Git server
-(GitHub, GitLab, BitBucket, etc.). Let's set up both the DVC and Git remotes on
-our local filesystem to try them out:
-
-```dvc
-$ mkdir -p /tmp/dvcstore
-$ dvc remote add -d myremote /tmp/dvcstore
-$ git commit .dvc/config -m "Configure local remote"
-$ mkdir -p /tmp/gitremote
-$ git clone . /temp/gitremote
-$ git remote add gitremote /tmp/gitremote
-$ dvc push
-$ git push -u gitremote master
-```
-
-`dvc push` saves the promoted experiment data to the default DVC remote in
-`/tmp/dvstore`.
-
-`git push -u gitremote master` saves the code, parameters, and associated
-metadata from the experiment committed to our `master` branch to the Git remote
-named `gitremote` in `/tmp/gitremote`.
-
-Read on to learn how to share other experiments with DVC and Git remotes.
+(GitHub, GitLab, BitBucket, etc.).
 
 </details>
 
-Experiments that have not been made persistent will not
-be stored or shared remotely through `dvc push` or `git push`.
+Experiments that have not been made persistent will not be stored or shared
+remotely through `dvc push` or `git push`.
 
 `dvc exp push` enables storing and sharing any experiment remotely.
 
