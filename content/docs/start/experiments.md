@@ -173,8 +173,8 @@ $ git commit -a -m "Preserve best random forest experiment"
 ## Sharing experiments
 
 After committing the best experiments to our Git branch, we can
-[store and share](/doc/start/data-versioning#storing-and-sharing) them
-remotely like any other iteration of the pipeline.
+[store and share](/doc/start/data-versioning#storing-and-sharing) them remotely
+like any other iteration of the pipeline.
 
 ```dvc
 dvc push
@@ -214,8 +214,8 @@ Read on to learn how to share other experiments with DVC and Git remotes.
 
 </details>
 
-Experiments that have not been made persistent will not
-be stored or shared remotely through `dvc push` or `git push`.
+Experiments that have not been made persistent will not be stored or shared
+remotely through `dvc push` or `git push`.
 
 `dvc exp push` enables storing and sharing any experiment remotely.
 
