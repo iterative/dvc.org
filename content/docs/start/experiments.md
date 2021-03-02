@@ -212,7 +212,7 @@ $ dvc exp list gitremote --all
         exp-bfe64
 ```
 
-`dvc exp pull` retrieves the experiment from remote storage.
+`dvc exp pull` retrieves the experiment from a Git remote.
 
 ```dvc
 $ dvc exp pull gitremote exp-bfe64
