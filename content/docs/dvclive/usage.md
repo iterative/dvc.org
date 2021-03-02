@@ -5,7 +5,7 @@ training code in order to see how one can introduce `dvclive` into the workflow.
 In order to run the example,
 [keras](https://keras.io/about/#installation-amp-compatibility) is required.
 
-The code:
+The training code (`train.py` file):
 
 ```python
 from keras.datasets import mnist
@@ -51,9 +51,9 @@ model.fit(x_train,
           epochs=3)
 ```
 
-Run the code to verify the training is running.
+Run the code to verify the training is executing.
 
-In this example we are training the `model` for 10 epochs. Lets use `dvclive` to
+In this example we are training the `model` for 3 epochs. Lets use `dvclive` to
 log the `accuracy`, `loss`, `validation_accuracy` and `validation_loss` after
 each epoch, so that we can observe how our training progresses.
 
@@ -63,7 +63,7 @@ In order to do that, we will need to provide proper
 ```python
 from keras.callbacks import Callback
 import dvclive
-class DvcLiveCallback(Callback):
+class MetricsCallback(Callback):
     def on_epoch_end(self, epoch: int, logs: dict = None):
         logs = logs or {}
         for metric, value in logs.items():
@@ -113,14 +113,6 @@ $ ls
 training_metrics  training_metrics.json  train.py
 ```
 
-Besides directory, `training_metrics.json` has been created. It's file
-containing information about latest training step. You can prevent its creation
-during `dvclive.init` call:
-
-```python
-dvclive.init('training_metrics', summary=False)
-```
-
 `training_metrics` directory contains `*.tsv` files with names respective to
 metrics logged during training:
 
@@ -137,10 +129,32 @@ training_metrics
 Each of the files contains metric values logged in every training step:
 
 ```bash
-$ training_metrics/accuracy.tsv
+$ cat training_metrics/accuracy.tsv
 
 timestamp	step	accuracy
 1614129197192	0	0.7612833380699158
 1614129198031	1	0.8736833333969116
 1614129198848	2	0.8907166719436646
 ```
+
+### Configuring dvclive
+
+Besides `training_metrics `directory, `training_metrics.json` has been created.
+It's a file containing information about latest training step. You can prevent
+its creation by providing proper `dvclive.init` config flag.
+
+Args supported by `dvclive.init`:
+
+- `path` - directory where `dvclive` will write its outputs
+- `resume` (`False` by default) - If set to `True`, `dvclive` will try to read
+  latest `step` from `{path}` dir. Following `next_step` calls will increment
+  basing on found value.
+- `step` (`0`) - If set, the `step` values in logs files will start incrementing
+  from given value. If provided alongside `resume`, `dvclive` will not try to
+  find latest `step` in `{path}` and start from `step`.
+- `summary` (`True`) - upon each `next_step` call `dvclive` will dump a json
+  file containing all metrics gathered in last step. The json file has the
+  following name: `{path}.json`.
+- `html` (`True`) - works only when `dvclive` is used alongside DVC. If true,
+  upon each `next_step` call, DVC will prepare summary of currently running
+  training with all metrics logged in `{path}`.
