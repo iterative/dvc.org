@@ -8,11 +8,11 @@ produces can be fed as `dvc plots`. However, `dvc` is not needed to work with
 `dvclive` logs, and since they're saved as easily parsable TSV files, you can
 use your preferred visualization method.
 
-We have created dvclive with two principles in mind:
+We have created Dvclive with two principles in mind:
 
-- **no dependencies** While you can install optional integrations for various
-  frameworks, basic dvclive installation does not need anything besides standard
-  python libs.
-- **integration with DVC** DVC is able to recognize when its being used in
-  tandem with dvclive and is able to provide useful features - like producing
-  training summary during training.
+- **No dependencies.** While you can install optional integrations for various
+  frameworks, the basic `dvclive` installation doesn't have requirements besides
+  [Python](https://www.python.org/).
+- **DVC integration.** `dvc` recognizes when its being used along with
+  `dvclive`. This enables useful features automatically, like producing model
+  training summaries, among others.
