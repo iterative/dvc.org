@@ -134,13 +134,18 @@ these parameters, you could use the following options.
   $ dvc remote modify myremote credentialpath /path/to/creds
   ```
 
-- `configpath` - path to the AWS config file. The location defaults to
-  `~/.aws/config`. It supports S3-specific
-  [configuration values](https://docs.aws.amazon.com/cli/latest/topic/s3-config.html#configuration-values):
+- `configpath` - path to the
+  [AWS CLI config file](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html).
+  The default AWS CLI config file path (e.g. `~/.aws/config`) is used if this
+  parameter isn't set.
 
   ```dvc
   $ dvc remote modify myremote --local configpath /path/to/config
   ```
+
+  > Note that only the S3-specific
+  > [configuration values](https://docs.aws.amazon.com/cli/latest/topic/s3-config.html#configuration-values)
+  > are used.
 
 - `endpointurl` - endpoint URL to access S3:
 
@@ -500,7 +505,9 @@ more information.
 ### Click for SSH
 
 - `url` - remote location, in a regular
-  [SSH format](https://tools.ietf.org/id/draft-salowey-secsh-uri-00.html#sshsyntax):
+  [SSH format](https://tools.ietf.org/id/draft-salowey-secsh-uri-00.html#sshsyntax).
+  Note that this can already include the `user` parameter, embedded into the
+  URL:
 
   ```dvc
   $ dvc remote modify myremote url \
@@ -513,7 +520,7 @@ more information.
 
   > Note that your server's SFTP root might differ from its physical root (`/`).
 
-- `user` - username to access the remote.
+- `user` - username to access the remote:
 
   ```dvc
   $ dvc remote modify --local myremote user myuser
@@ -523,8 +530,9 @@ more information.
 
   1. `user` parameter set with this command (found in `.dvc/config`);
   2. User defined in the URL (e.g. `ssh://user@example.com/path`);
-  3. User defined in `~/.ssh/config` for this host (URL);
-  4. Current user
+  3. User defined in the SSH config file (e.g. `~/.ssh/config`) for this host
+     (URL);
+  4. Current system user
 
 - `port` - port to access the remote.
 
@@ -536,7 +544,8 @@ more information.
 
   1. `port` parameter set with this command (found in `.dvc/config`);
   2. Port defined in the URL (e.g. `ssh://example.com:1234/path`);
-  3. Port defined in `~/.ssh/config` for this host (URL);
+  3. Port defined in the SSH config file (e.g. `~/.ssh/config`) for this host
+     (URL);
   4. Default SSH port 22
 
 - `keyfile` - path to private key to access the remote.
@@ -641,8 +650,8 @@ by HDFS. Read more about by expanding the WebHDFS section in
 
 - `hdfscli_config` - path to a `HdfsCLI` cfg file. WebHDFS access depends on
   `HdfsCLI`, which allows the usage of a configuration file by default located
-  in `~/.hdfscli.cfg`. In the file, multiple aliases can be set with their own
-  connection parameters, like `url` or `user`. If using a cfg file,
+  in `~/.hdfscli.cfg` (Linux). In the file, multiple aliases can be set with
+  their own connection parameters, like `url` or `user`. If using a cfg file,
   `webhdfs_alias` can be set to specify which alias to use.
 
   ```dvc
