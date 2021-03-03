@@ -71,6 +71,7 @@ Add `--beta` for the latest tagged release candidate, or `--edge` for the latest
 $ sudo wget \
        https://dvc.org/deb/dvc.list \
        -O /etc/apt/sources.list.d/dvc.list
+$ wget -qO - https://dvc.org/deb/iterative.asc | sudo apt-key add -
 $ sudo apt update
 $ sudo apt install dvc
 ```
@@ -85,6 +86,7 @@ $ sudo apt install dvc
 $ sudo wget \
        https://dvc.org/rpm/dvc.repo \
        -O /etc/yum.repos.d/dvc.repo
+$ sudo rpm --import https://dvc.org/rpm/iterative.asc
 $ sudo yum update
 $ sudo yum install dvc
 ```

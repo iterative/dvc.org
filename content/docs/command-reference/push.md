@@ -66,9 +66,9 @@ in the cache (compared to the default remote.) It can be used to see what files
   below, for example using the `-aT` flag.
 
 - `-T`, `--all-tags` - same as `-a` above, but applies to Git tags as well as
-  the workspace. Useful if tags are used to track "checkpoints" of an experiment
-  or project. Note that both options can be combined, for example using the
-  `-aT` flag.
+  the workspace. Useful if tags are used to mark certain versions of an
+  experiment or project. Note that both options can be combined, for example
+  using the `-aT` flag.
 
 - `--all-commits` - same as `-a` or `-T` above, but applies to _all_ Git commits
   as well as the workspace. This uploads tracked data for the entire commit
@@ -116,7 +116,7 @@ To use `dvc push` (without options), a default
 
 ```dvc
 $ dvc remote add --default r1 \
-                 ssh://_username_@_host_/path/to/dvc/cache/directory
+                 ssh://user@example.com/path/to/dvc/cache/directory
 ```
 
 > For existing <abbr>projects</abbr>, remotes are usually already set up. You
@@ -124,7 +124,7 @@ $ dvc remote add --default r1 \
 >
 > ```dvc
 > $ dvc remote list
-> r1	ssh://_username_@_host_/path/to/dvc/cache/directory
+> r1	ssh://user@example.com/path/to/dvc/cache/directory
 > ```
 
 Push entire data <abbr>cache</abbr> from the current <abbr>workspace</abbr> to

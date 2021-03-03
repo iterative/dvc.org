@@ -221,7 +221,25 @@
       {
         "label": "experiments",
         "slug": "exp",
-        "source": "exp/index.md"
+        "source": "exp/index.md",
+        "children": [
+          {
+            "label": "exp run",
+            "slug": "run"
+          },
+          {
+            "label": "exp show",
+            "slug": "show"
+          },
+          {
+            "label": "exp diff",
+            "slug": "diff"
+          },
+          {
+            "label": "exp apply",
+            "slug": "apply"
+          }
+        ]
       },
       {
         "label": "fetch",

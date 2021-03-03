@@ -83,9 +83,9 @@ used to see what files `dvc pull` would download.
   below, for example using the `-aT` flag.
 
 - `-T`, `--all-tags` - same as `-a` above, but applies to Git tags as well as
-  the workspace. Useful if tags are used to track "checkpoints" of an experiment
-  or project. Note that both options can be combined, for example using the
-  `-aT` flag.
+  the workspace. Useful if tags are used to mark certain versions of an
+  experiment or project. Note that both options can be combined, for example
+  using the `-aT` flag.
 
 - `--all-commits` - same as `-a` or `-T` above, but applies to _all_ Git commits
   as well as the workspace. This downloads tracked data for the entire commit
@@ -233,9 +233,9 @@ already set up and you can use `dvc remote list` to check them. To remember how
 it's done, and set a context for the example, let's define a default SSH remote:
 
 ```dvc
-$ dvc remote add -d r1 ssh://_username_@_host_/path/to/dvc/remote/storage
+$ dvc remote add -d r1 ssh://user@example.com/path/to/dvc/remote/storage
 $ dvc remote list
-r1	ssh://_username_@_host_/path/to/dvc/remote/storage
+r1	ssh://user@example.com/path/to/dvc/remote/storage
 ```
 
 > DVC supports several
