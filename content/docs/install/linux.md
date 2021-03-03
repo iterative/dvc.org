@@ -86,6 +86,7 @@ $ sudo apt install dvc
 $ sudo wget \
        https://dvc.org/rpm/dvc.repo \
        -O /etc/yum.repos.d/dvc.repo
+$ wget -qO - https://dvc.org/rpm/iterative.asc | sudo rpm --import
 $ sudo yum update
 $ sudo yum install dvc
 ```
