@@ -61,6 +61,9 @@ operation.
   dependencies and outputs, to allow safely running multiple DVC commands in
   parallel
 
+- `.dvc/tmp/exp<n>`: workspace copy number _n_ for
+  [parallel experiments](/doc/command-reference/exp/run#queueing-and-parallel-execution).
+
 ## Structure of the cache directory
 
 The DVC cache is a

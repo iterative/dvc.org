@@ -20,12 +20,31 @@ while True:
 ## Description
 
 To track successive steps in a longer <abbr>experiment</abbr>, you can write
-your code so it registers checkpoints with DVC during runtime. This function
-should be called by the code in stages executes by `dvc exp run` (see `cmd`
-field of `dvc.yaml`).
+your code so it registers checkpoints with DVC during runtime (similar to a
+logger). This function can be called by the code in stages executed by
+`dvc exp run`.
 
-> Note that for non-Python code, the alternative is to write a
-> `.dvc/tmp/DVC_CHECKPOINT` signal file.
+`make_checkpoint()` does the following:
+
+1. Check that the `DVC_ROOT` env var is set. It means this code is being
+   executed via `dvc exp run`, and it contains the location to the correct
+   `.dvc/` directory for this experiment (which can vary when `-j` is used)
+2. Creates an empty `$DVC_ROOT/tmp/DVC_CHECKPOINT` signal file so DVC knows that
+   a checkpoint should be captures now.
+3. Blocks the execution of any further code (that changes the state of the
+   <abbr>workspace</abbr>) until the signal file is deleted, which means that
+   DVC has finished caching all the data, calculating hashes, etc. (see
+   `dvc commit`).
+
+💡 Note that for non-Python code, the way to register checkpoints with DVC is to
+implement the steps above yourself.
+
+The stage definition in `dvc.yaml` should contain at least one
+<abbr>output</abbr> with the `checkpoint: true` value set, so that DVC registers
+its checkpoints.
+
+⚠️ Using the `checkpoint` field in `dvc.yaml` is only compatibly with
+`dvc exp run`, `dvc repro` will abort if any stage contains it.
 
 ## Example: Every 100th iteration
 
@@ -86,8 +105,8 @@ Experiment results have been applied to your workspace.
 
 In this example we kill the process (with Ctrl + C) after 3 checkpoints (at 0,
 100, and 200). The <abbr>cache</abbr> will contain those 3 versions of
-`int.txt`. And DVC applies the last checkpoint to the <abbr>workspace</abbr>
-even when more cycles happened before the interrupt:
+`int.txt`. DVC applies the last checkpoint to the <abbr>workspace</abbr> even if
+more cycles happened after that:
 
 ```dvc
 $ cat int.txt
@@ -113,9 +132,9 @@ $ dvc exp show
 # Press q to exit this screen.
 ```
 
-Now if we use `dvc exp run` again, the process will start from 200. The
-`--reset` option of that command drops the existing checkpoints and restarts the
-experiment from scratch. Or, to restart from a previous checkpoint, you can use
-use `dvc exp apply` instead.
+If we use `dvc exp run` again, the process will start from 200 (since that's
+what the workspace reflects). The `--reset` option of that command drops the
+existing checkpoints and restarts the experiment from scratch. Or, to restart
+from a previous checkpoint, you can use use `dvc exp apply` instead.
 
 See `dvc experiments` for more info on managing <abbr>experiments</abbr>.

@@ -2,7 +2,7 @@
 
 ⚠️ This feature is only available in DVC 2.0 ⚠️
 
-A set of commands to generate and manage <abbr>experiment</abbr>:
+A set of commands to generate and manage <abbr>experiments</abbr>:
 [run](/doc/command-reference/exp/run), [show](/doc/command-reference/exp/show),
 [diff](/doc/command-reference/exp/diff),
 [apply](/doc/command-reference/exp/apply),
@@ -13,6 +13,8 @@ A set of commands to generate and manage <abbr>experiment</abbr>:
 [pull](/doc/command-reference/exp/pull).
 
 > Aliased to `dvc exp`.
+
+> Requires that Git is being used to version the project.
 
 ## Synopsis
 
@@ -36,25 +38,14 @@ positional arguments:
 
 ## Description
 
-`dvc exp` subcommands provide specialized ways to create and manage data science
-experiments. The basic workflow goes like this:
-
-- Modify <abbr>dependencies</abbr> (e.g. input data or source code),
-  <abbr>parameters</abbr>, or commands (`cmd` field of `dvc.yaml`) of committed
-  stages.
-- Use `dvc exp run` (instead of `repro`) to execute the pipeline. This puts the
-  experiment's results in your <abbr>workspace</abbr>, and tracks it under the
-  hood.
-- Visualize experiment configurations and results with `dvc exp show`. Repeat.
-- Use [metrics](/doc/command-reference/metrics) in your pipeline to identify the
-  best experiment(s), and promote them to persistent experiments (regular
-  commits) with `dvc exp apply`.
+`dvc exp` subcommands provide specialized ways to create and manage data
+science/ machine learning experiments.
 
 📖 See [Experiment Management](/doc/user-guide/experiment-management) for more
 info.
 
-> Note that DVC assumes that <abbr>experiments</abbr> are deterministic (see
-> **Avoiding unexpected behavior** in `dvc run`).
+> ⚠️ Note that DVC assumes that experiments are deterministic (see **Avoiding
+> unexpected behavior** in `dvc stage add`).
 
 ## Options
 
