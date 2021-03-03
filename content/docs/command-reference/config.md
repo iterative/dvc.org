@@ -64,11 +64,11 @@ multiple projects and users, respectively:
   need to specify private config option values that you don't want to track and
   share with Git (credentials, private locations, etc).
 
-- `--global` - modify the global config file (e.g. `~/.config/dvc/config`)
-  instead of the project's `.dvc/config`. Useful to apply config options to all
-  your projects.
+- `--global` - modify a global config file (e.g. `~/.config/dvc/config`) instead
+  of the project's `.dvc/config`. Useful to apply config options to all your
+  projects.
 
-- `--system` - modify the system config file (e.g. `/etc/dvc/config`) instead of
+- `--system` - modify a system config file (e.g. `/etc/dvc/config`) instead of
   `.dvc/config`. Useful to apply config options to all the projects (all users)
   in the machine. May require superuser access e.g.
   `sudo dvc config --system ...` (Linux).
@@ -179,11 +179,16 @@ This section contains the following options, which affect the project's
   > set.
 
 - `cache.shared` - permissions for newly created or downloaded cache files and
-  directories. The default is `0o664`(rw-r--r--) for files and `0o755`
-  (rwxr-xr-x) for directories. The only accepted value right now is `group`,
-  which makes DVC use `0o664` (rw-rw-r--) for files and `0o775` (rwxrwxr-x) for
-  directories, which is useful when you are using a a
-  [shared development server](/doc/use-cases/shared-development-server).
+  directories. The only accepted value right now is `group`, which makes DVC use
+  `664` (rw-rw-r--) for files and `775` (rwxrwxr-x) for directories. This is
+  useful when using a
+  [shared development server](/doc/use-cases/shared-development-server). The
+  default permissions for cache files is system dependent. In Linux and macOS
+  default permissions of cache is determined using
+  [`os.umask`](https://docs.python.org/3/library/os.html#os.umask). In Windows
+  due to the limitations of
+  [`os.chmod`](https://docs.python.org/3/library/os.html#os.chmod) only
+  read-only bit can be set.
 
 - `cache.local` - name of a _local remote_ to use as a
   [custom cache](/doc/user-guide/managing-external-data#examples) directory.
