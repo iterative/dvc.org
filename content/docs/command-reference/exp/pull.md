@@ -1,7 +1,7 @@
 # exp pull
 
-Download a single [experiment](/doc/command-reference/exp) from a Git remote, and
-its data from a `dvc remote`.
+Download a single [experiment](/doc/command-reference/exp) from a Git remote,
+and its data from a `dvc remote`.
 
 ## Synopsis
 
