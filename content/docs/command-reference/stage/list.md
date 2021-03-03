@@ -1,6 +1,6 @@
 # stage list
 
-List <abbr>stages</abbr> in the `dvc.yaml`.
+List <abbr>stages</abbr> in the project.
 
 ## Synopsis
 
@@ -16,8 +16,8 @@ positional arguments:
 
 ## Description
 
-`dvc stage list` is useful for quick listing of stages present in the dvc.yaml
-file without having to open it.
+`dvc stage list` is useful for quick listing of stages present in the project
+without having to open `dvc.yaml` files.
 
 It provides a list of stages, with a stage name and the description of the
 stage. The description of the stage is read from
@@ -25,15 +25,18 @@ stage. The description of the stage is read from
 or if it does not exist, DVC generates the short description from the other
 metadata it has about the stage.
 
+Without any targets, by default, it only lists the stages from the `dvc.yaml`
+present in the current working directory.
+
 DVC also uses this command to provide autocompletion in `bash` and `zsh`.
 
 ## Options
 
-- `targets` (optional command argument) - Stages to list from (`./dvc.yaml` by
+- `targets` (optional command argument) - stages to list from (`./dvc.yaml` by
   default). Different things can be provided as targets depending on the flags
   used (more details in each option). Examples:
 
-  - `dvc stage list linear/dvc.yaml`: Specific `dvc.yaml` file to reproduce
+  - `dvc stage list linear/dvc.yaml`: Specific `dvc.yaml` file to list from
   - `dvc stage list -R pipelines/`: Directory path to explore recursively for
     `dvc.yaml` files
   - `dvc stage list train-model`: Specific stage name or a
@@ -54,7 +57,7 @@ DVC also uses this command to provide autocompletion in `bash` and `zsh`.
   default, those errors are skipped. This option is only in effect if `--all` or
   `-R` is used.
 
-- `--names-only` - Only lists the name of the stages. It can be useful for
+- `--names-only` - only lists the name of the stages. It can be useful for
   scripting purposes. DVC uses it for providing autocompletion on `bash`.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
