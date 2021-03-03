@@ -3,10 +3,10 @@
 [dvclive](/doc/dvclive) is an open-source python library for monitoring
 the progress of metrics during training of machine learning models.
 
-dvclive is integrated seamlesly with dvc and logs produced by it can be fed to
-`dvc plots` command. Even though, one does not need dvc to visualize dvclive
-logs, as they are saved into easily parsable tsv format, feel free to apply
-custom visualization methods.
+Dvclive integrates seamlessly with [DVC](https://dvc.org/) and the logs it
+produces can be fed as `dvc plots`. However, `dvc` is not needed to work with
+`dvclive` logs, and since they're saved as easily parsable TSV files, you can
+use your preferred visualization method.
 
 We have created dvclive with two principles in mind:
 
