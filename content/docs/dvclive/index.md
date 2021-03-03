@@ -1,7 +1,8 @@
 # dvclive
 
 [dvclive](https://cml.dev) is an open-source python library for monitoring
-metrics in machine learning projects. Use it to log metrics during training.
+[dvclive](https://cml.dev) is an open-source python library for monitoring
+the progress of metrics during training of machine learning projects.
 
 dvclive is integrated seamlesly with dvc and logs produced by it can be fed to
 `dvc plots` command. Even though, one does not need dvc to visualize dvclive
