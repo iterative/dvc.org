@@ -477,5 +477,17 @@
         "slug": "cml-with-npm"
       }
     ]
+  },
+  {
+    "label": "dvclive",
+    "slug": "dvclive",
+    "source": "dvclive/index.md",
+    "children": [
+      "usage",
+      {
+        "label": "dvclive with DVC",
+        "slug": "dvclive-with-dvc"
+      }
+    ]
   }
 ]
