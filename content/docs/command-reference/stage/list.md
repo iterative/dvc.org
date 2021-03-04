@@ -50,7 +50,7 @@ DVC also uses this command to provide autocompletion in `bash` and `zsh`.
   directories given as `targets`, and in their subdirectories. If there are no
   directories among the targets, this option has no effect.
 
-- `--all` - lists all of the stages present in the repo, regardless of the
+- `--all` - lists all of the stages from all `dvc.yaml` files in the repo, regardless of the
   targets.
 
 - `--fail` - fails immediately if any `dvc.yaml` files have syntax errors. By
