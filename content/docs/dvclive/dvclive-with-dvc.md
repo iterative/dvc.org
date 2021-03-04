@@ -117,12 +117,15 @@ argument for `dvclive.init`. Other supported args for DVC integration:
 > provided `run` args. In such case your `path` arg for `dvclive.init` must
 > match `--live` argument.
 
-After the training is done you should see following content:
+Run the training:
 
 ```bash
 $ dvc repro train
-... training happens
+```
 
+After it is done you should see following content of your repository:
+
+```bash
 $ ls
 
 dvc.lock  training_metrics       training_metrics.json
