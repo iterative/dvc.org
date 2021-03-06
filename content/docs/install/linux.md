@@ -48,8 +48,8 @@ $ conda install -c conda-forge dvc
 > Currently, it supports Python 3.6-3.8
 
 Depending on the type of the [remote storage](/doc/command-reference/remote) you
-plan to use, you might need to install optional dependencies: `dvc-s3`, `dvc-azure`,
-`dvc-gdrive`, `dvc-gs`, `dvc-oss`, `dvc-ssh`.
+plan to use, you might need to install optional dependencies: `dvc-s3`,
+`dvc-azure`, `dvc-gdrive`, `dvc-gs`, `dvc-oss`, `dvc-ssh`.
 
 ### Example: How to install DVC with support for Amazon S3 storage
 
