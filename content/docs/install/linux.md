@@ -47,6 +47,19 @@ $ conda install -c conda-forge dvc
 
 > Currently, it supports Python 3.6-3.8
 
+Depending on the type of the [remote storage](/doc/command-reference/remote) you
+plan to use, you might need to install optional dependencies: `dvc-s3`, `dvc-azure`,
+`dvc-gdrive`, `dvc-gs`, `dvc-oss`, `dvc-ssh`.
+
+### Example: How to install DVC with support for Amazon S3 storage
+
+```dvc
+$ conda install -c conda-forge dvc-s3
+```
+
+In this case it installs `boto3` library as well, besides DVC.
+
+
 ## Install with snap
 
 > Requires [snapd](https://snapcraft.io/docs/installing-snapd).
