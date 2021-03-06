@@ -59,7 +59,6 @@ $ conda install -c conda-forge dvc-s3
 
 In this case it installs `boto3` library as well, besides DVC.
 
-
 ## Install with snap
 
 > Requires [snapd](https://snapcraft.io/docs/installing-snapd).
