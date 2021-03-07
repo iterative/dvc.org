@@ -36,10 +36,10 @@ write to that location instead.
 
 ## Options
 
-- `--global` - use a global config file (e.g. `~/.config/dvc/config`) instead of
-  the project's `.dvc/config`.
+- `--global` - modify the global config file (e.g. `~/.config/dvc/config`)
+  instead of the project's `.dvc/config`.
 
-- `--system` - use a system config file (e.g. `/etc/dvc/config`) instead of
+- `--system` - modify the system config file (e.g. `/etc/dvc/config`) instead of
   `.dvc/config`.
 
 - `--project` - use the regular config file (`.dvc/config`) only when reading

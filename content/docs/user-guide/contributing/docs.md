@@ -65,10 +65,17 @@ Make sure you have a recent LTS version of [Node.js](https://nodejs.org/en/)
 $ npm install -g yarn
 ```
 
-Install the project dependencies with Yarn:
+Having cloned this project locally, navigate into the directory and install the
+project dependencies with Yarn:
 
 ```dvc
 $ yarn
+```
+
+You may need to resolve dependencies at this point by running:
+
+```dvc
+$ npm install
 ```
 
 Launch the server locally with:

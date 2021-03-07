@@ -8,7 +8,7 @@ and `.dvc` files, and make them visible in the <abbr>workspace</abbr>.
 
 ```usage
 usage: dvc pull [-h] [-q | -v] [-j <number>] [-r <name>] [-a] [-T]
-                [-d] [-f] [-R] [--all-commits] [--run-cache]
+                [-d] [-f] [-R] [--glob] [--all-commits] [--run-cache]
                 [targets [targets ...]]
 
 positional arguments:
@@ -83,9 +83,9 @@ used to see what files `dvc pull` would download.
   below, for example using the `-aT` flag.
 
 - `-T`, `--all-tags` - same as `-a` above, but applies to Git tags as well as
-  the workspace. Useful if tags are used to track "checkpoints" of an experiment
-  or project. Note that both options can be combined, for example using the
-  `-aT` flag.
+  the workspace. Useful if tags are used to mark certain versions of an
+  experiment or project. Note that both options can be combined, for example
+  using the `-aT` flag.
 
 - `--all-commits` - same as `-a` or `-T` above, but applies to _all_ Git commits
   as well as the workspace. This downloads tracked data for the entire commit
@@ -110,16 +110,21 @@ used to see what files `dvc pull` would download.
   [remote storage](/doc/command-reference/remote) to pull from (see
   `dvc remote list`).
 
-- `--run-cache` - downloads all available history of stage runs from the remote
-  repository (to the cache only, like `dvc fetch --run-cache`). Note that
-  `dvc repro <stage_name>` is necessary to checkout these files (into the
+- `--run-cache` - downloads all available history of
+  [stage runs](/doc/user-guide/project-structure/internal-files#run-cache) from
+  the remote repository (to the cache only, like `dvc fetch --run-cache`). Note
+  that `dvc repro <stage_name>` is necessary to checkout these files (into the
   workspace) and update `dvc.lock`.
 
 - `-j <number>`, `--jobs <number>` - parallelism level for DVC to download data
   from remote storage. The default value is `4 * cpu_count()`. For SSH remotes,
   the default is `4`. Note that the default value can be set using the `jobs`
-  config option with `dvc remote modify`. Using more jobs may improve the
+  config option with `dvc remote modify`. Using more jobs may speed up the
   operation.
+
+- `--glob` - allows pulling files and directories that match the
+  [pattern](https://docs.python.org/3/library/glob.html) specified in `targets`.
+  Shell style wildcards supported: `*`, `?`, `[seq]`, `[!seq]`, and `**`
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -228,9 +233,9 @@ already set up and you can use `dvc remote list` to check them. To remember how
 it's done, and set a context for the example, let's define a default SSH remote:
 
 ```dvc
-$ dvc remote add -d r1 ssh://_username_@_host_/path/to/dvc/remote/storage
+$ dvc remote add -d r1 ssh://user@example.com/path/to/dvc/remote/storage
 $ dvc remote list
-r1	ssh://_username_@_host_/path/to/dvc/remote/storage
+r1	ssh://user@example.com/path/to/dvc/remote/storage
 ```
 
 > DVC supports several

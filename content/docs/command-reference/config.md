@@ -6,7 +6,8 @@ Get or set <abbr>project</abbr>-level (or global) DVC configuration options.
 
 ```usage
 usage: dvc config [-h] [--global | --system | --project | --local]
-                  [-q | -v] [-u] [-l] [name] [value]
+                  [-q | -v] [-u]
+                  [-l] [--show-origin] [name] [value]
 
 positional arguments:
   name     Option name in format: section.option or remote.name.option
@@ -56,6 +57,9 @@ multiple projects or users, respectively.
 > \* For Linux, the global `dvc/config` may be found in `$XDG_CONFIG_HOME`, and
 > the system-wide one in `$XDG_CONFIG_DIRS[0]`, if those env vars are defined.
 
+> Note that the `--show-origin` flag can show you where a given config option
+> `value` is currently stored.
+
 ## Command options (flags)
 
 - `-u`, `--unset` - remove a specified config option from a config file.
@@ -67,14 +71,19 @@ multiple projects or users, respectively.
 - `--project` - use the project's config file (.dvc/config) only, when reading
   config values (this is the default when writing).
 
-- `--global` - use the global config file (e.g. `~/.config/dvc/config`). Useful
-  to set config options for all of your projects.
+- `--global` - modify the global config file (e.g. `~/.config/dvc/config`)
+  instead of the project's `.dvc/config`. Useful to apply config options to all
+  your projects.
 
-- `--system` - use the system config file (e.g. `/etc/dvc/config`). Useful to
-  set config options for all of the projects in the machine (all users). May
-  require superuser access e.g. `sudo dvc config --system ...` (Linux).
+- `--system` - modify the system config file (e.g. `/etc/dvc/config`) instead of
+  `.dvc/config`. Useful to apply config options to all the projects (all users)
+  in the machine. May require superuser access e.g.
+  `sudo dvc config --system ...` (Linux).
 
 - `-l`, `--list` - lists all defined config values.
+
+- `--show-origin` - when listing or getting config options, also show the
+  location of the config file where each option `value` is found.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 

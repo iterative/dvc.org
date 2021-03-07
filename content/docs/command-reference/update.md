@@ -6,8 +6,8 @@ repositories</abbr>, and the corresponding import stage `.dvc` files.
 ## Synopsis
 
 ```usage
-usage: dvc update [-h] [-q | -v] [--rev <commit>] [-R]
-                  targets [targets ...]
+usage: dvc update [-h] [-q | -v] [--rev <commit>] [-R] [--to-remote]
+                  [-r <name>] [-j <number>] targets [targets ...]
 
 positional arguments:
   targets      Import stage .dvc files to update. Using -R, directories
@@ -48,6 +48,20 @@ $ dvc update --rev master
 - `-R`, `--recursive` - determines the files to update by searching each target
   directory and its subdirectories for import stage `.dvc` files to inspect. If
   there are no directories among the targets, this option is ignored.
+
+- `--to-remote` - update a `.dvc` file created with `dvc import-url` and
+  [transfer](/doc/command-reference/import-url#example-import-straight-to-the-remote)
+  the new data directly to remote storage (the default one unless `-r` is used).
+  No changes are done in the <abbr>workspace</abbr>. Use `dvc pull` to get the
+  data locally. This option can't be used with DVC or Git repository imports.
+
+- `-r <name>`, `--remote <name>` - name of the
+  [remote storage](/doc/command-reference/remote) (can only be used with
+  `--to-remote`).
+
+- `-j <number>`, `--jobs <number>` - parallelism level for DVC to download data
+  from the source. The default value is `4 * cpu_count()`. For SSH remotes, the
+  default is `4`. Using more jobs may speed up the operation.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 

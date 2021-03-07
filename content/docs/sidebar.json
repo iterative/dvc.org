@@ -53,10 +53,14 @@
         }
       },
       {
-        "slug": "experiments",
+        "label": "Metrics, Parameters, and Plots",
+        "slug": "metrics-parameters-plots",
         "tutorials": {
           "katacoda": "https://katacoda.com/dvc/courses/get-started"
         }
+      },
+      {
+        "slug": "experiments"
       }
     ]
   },
@@ -127,6 +131,7 @@
           "merge-conflicts"
         ]
       },
+      "experiment-management",
       "setup-google-drive-remote",
       "large-dataset-optimization",
       "external-dependencies",
@@ -212,6 +217,53 @@
       {
         "label": "doctor",
         "slug": "doctor"
+      },
+      {
+        "label": "experiments",
+        "slug": "exp",
+        "source": "exp/index.md",
+        "children": [
+          {
+            "label": "exp run",
+            "slug": "run"
+          },
+          {
+            "label": "exp show",
+            "slug": "show"
+          },
+          {
+            "label": "exp diff",
+            "slug": "diff"
+          },
+          {
+            "label": "exp apply",
+            "slug": "apply"
+          },
+          {
+            "label": "exp branch",
+            "slug": "branch"
+          },
+          {
+            "label": "exp remove",
+            "slug": "remove"
+          },
+          {
+            "label": "exp gc",
+            "slug": "gc"
+          },
+          {
+            "label": "exp push",
+            "slug": "push"
+          },
+          {
+            "label": "exp pull",
+            "slug": "pull"
+          },
+          {
+            "label": "exp list",
+            "slug": "list"
+          }
+        ]
       },
       {
         "label": "fetch",
@@ -361,6 +413,17 @@
         "slug": "run"
       },
       {
+        "label": "stage",
+        "slug": "stage",
+        "source": "stage/index.md",
+        "children": [
+          {
+            "label": "stage add",
+            "slug": "add"
+          }
+        ]
+      },
+      {
         "label": "status",
         "slug": "status"
       },
@@ -398,6 +461,10 @@
       {
         "slug": "read",
         "label": "read()"
+      },
+      {
+        "slug": "make_checkpoint",
+        "label": "make_checkpoint()"
       }
     ]
   },
@@ -412,7 +479,14 @@
     "source": "cml/index.md",
     "icon": "cml",
     "children": [
-      "get-started",
+      {
+        "label": "Get Started (GitHub)",
+        "slug": "start-github"
+      },
+      {
+        "label": "Get Started (GitLab)",
+        "slug": "start-gitlab"
+      },
       "usage",
       {
         "label": "CML with DVC",
@@ -423,7 +497,7 @@
         "slug": "self-hosted-runners"
       },
       {
-        "label": "Install CML as a Package",
+        "label": "Install as a Package",
         "slug": "cml-with-npm"
       }
     ]
