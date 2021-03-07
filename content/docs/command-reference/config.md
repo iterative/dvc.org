@@ -64,7 +64,8 @@ multiple projects or users, respectively.
   need to specify private config option values that you don't want to track and
   share with Git (credentials, private locations, etc).
 
-- `--project` - use a project's config file (.dvc/config).
+- `--project` - use the project's config file (.dvc/config) only, when reading
+  config values (this is the default when writing).
 
 - `--global` - use a global config file (e.g. `~/.config/dvc/config`) instead of
   the project's `.dvc/config`. Useful to apply config options to all your
