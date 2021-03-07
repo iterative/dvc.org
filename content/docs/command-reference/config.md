@@ -60,9 +60,9 @@ multiple projects or users, respectively.
 
 - `-u`, `--unset` - remove a specified config option from a config file.
 
-- `--local` - use a Git-ignored local config file. This is useful when you need
-  to specify private config option values that you don't want to track and share
-  with Git (credentials, private locations, etc).
+- `--local` - use the (Git-ignored) local config file. This is useful when you
+  need to specify private config option values that you don't want to track and
+  share with Git (credentials, private locations, etc).
 
 - `--project` - use a project's config file (.dvc/config).
 
