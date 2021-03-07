@@ -67,9 +67,8 @@ multiple projects or users, respectively.
 - `--project` - use the project's config file (.dvc/config) only, when reading
   config values (this is the default when writing).
 
-- `--global` - use a global config file (e.g. `~/.config/dvc/config`) instead of
-  the project's `.dvc/config`. Useful to apply config options to all your
-  projects.
+- `--global` - use the global config file (e.g. `~/.config/dvc/config`). Useful
+  to set config options for all of your projects.
 
 - `--system` - use the system config file (e.g. `/etc/dvc/config`). Useful to
   set config options for all of the projects in the machine (all users). May
