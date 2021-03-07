@@ -6,7 +6,8 @@ using `dvc config cache`), or shows the current configured value.
 ## Synopsis
 
 ```usage
-usage: dvc cache dir [-h] [--global | --system | --project | --local] [-u] [value]
+usage: dvc cache dir [-h] [--global | --system | --project | --local]
+                     [-u] [value]
 
 positional arguments:
   value        Path to cache directory. Relative paths are resolved
