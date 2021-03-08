@@ -858,6 +858,53 @@ by HDFS. Read more about by expanding the WebHDFS section in
 
 </details>
 
+<details>
+
+### Click for OSF
+
+- `url` - remote location:
+
+  ```dvc
+  $ dvc remote modify osfremote url osf://osf.io/path/to/dir
+  ```
+
+- `project` - [OSF](https://osf.io/) project name. Tip: this is displayed in the
+  address bar when browsing the project on the web, like :
+  `https://osf.io/myproject/`.
+
+  ```dvc
+  $ dvc remote modify osfremote --local project myproject
+  ```
+
+  Also it is possible to specify `project` by setting environment variable
+  `OSF_PROJECT`. Run `export OSF_PROJECT='myproject'`
+
+- `user` - OSF account username (email address by default):
+
+  ```dvc
+  $ dvc remote modify osfremote --local user example@mail.com
+  ```
+
+  Also it is possible to specify `user` by setting environment variable
+  `OSF_USER`. Run `export OSF_PROJECT='example@mail.com'`
+
+- `password` - OSF account password:
+
+  ```dvc
+  $ dvc remote modify osfremote --local password 12345
+  ```
+
+  Also it is possible to specify password by setting envirement variable
+  `OSF_PASSWORD`. Run `export OSF_PASSWORD='12345'`
+
+> The project name, username, and password (may) contain sensitive user info.
+> Therefore, it's safer to add them with the `--local` option, so they're
+> written to a Git-ignored config file.
+
+</details>
+
+</details>
+
 ## Example: Customize an S3 remote
 
 Let's first set up a _default_ S3 remote.
