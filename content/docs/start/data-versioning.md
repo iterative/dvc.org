@@ -29,7 +29,6 @@ Having initialized a project in the previous section, get the data file we will
 be using later like this:
 
 ```dvc
-$ mkdir data
 $ dvc get https://github.com/iterative/dataset-registry \
           get-started/data.xml -o data/data.xml
 ```
