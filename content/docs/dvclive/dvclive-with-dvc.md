@@ -1,4 +1,4 @@
-# dvclive with DVC
+# Dvclive with DVC
 
 Even though dvclive does not require DVC to function properly, it includes a lot
 of integrations with DVC that you might find valuable. In this section we will
