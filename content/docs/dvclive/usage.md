@@ -71,10 +71,10 @@ class MetricsCallback(Callback):
         dvclive.next_step()
 ```
 
-On the end of each epoch, this callback will iterate over the gathered
-metrics (`logs`) and use the `dvclive.log()` function to record their respective value.
-After that we call `dvclive.next_step()` to signal
-Dvclive that we are done logging for the current iteration.
+On the end of each epoch, this callback will iterate over the gathered metrics
+(`logs`) and use the `dvclive.log()` function to record their respective value.
+After that we call `dvclive.next_step()` to signal Dvclive that we are done
+logging for the current iteration.
 
 And in order to make that work, we need to plug it in with this change:
 
@@ -99,11 +99,11 @@ $ ls
 training_metrics  training_metrics.json  train.py
 ```
 
-The `*.tsv` files inside have names corresponding to the
-metrics logged during training. Note that a `training_metrics.json` file has been created as well.
-It's contains information about latest training step. You can prevent
-its creation by sending `summary = False` to `dvclive.init()` (see all the [options](#initial-configuration)).
-
+The `*.tsv` files inside have names corresponding to the metrics logged during
+training. Note that a `training_metrics.json` file has been created as well.
+It's contains information about latest training step. You can prevent its
+creation by sending `summary = False` to `dvclive.init()` (see all the
+[options](#initial-configuration)).
 
 ```bash
 $ ls training_metrics
@@ -126,17 +126,18 @@ These are the arguments accepted by `dvclive.init()`:
 
 - `path` (**required**) - directory where `dvclive` will write TSV log files
 
-- `step` (`0` by default) - the `step` values in log files will start incrementing
-  from this value.
+- `step` (`0` by default) - the `step` values in log files will start
+  incrementing from this value.
 
-- `resume` (`False`) - if set to `True`, Dvclive will try to read the
-  previous `step` from the `path` dir and start from that point (unless a `step` is passed explicitly).
-  Subsequent `next_step()` calls will increment the step.
+- `resume` (`False`) - if set to `True`, Dvclive will try to read the previous
+  `step` from the `path` dir and start from that point (unless a `step` is
+  passed explicitly). Subsequent `next_step()` calls will increment the step.
 
 - `summary` (`True`) - upon each `next_step()` call, Dvclive will dump a JSON
   file containing all metrics gathered in the last step. This file uses the
-  following naming: `<path>.json` (`path` being the logging directory passed to `init()`).
+  following naming: `<path>.json` (`path` being the logging directory passed to
+  `init()`).
 
-- `html` (`True`) - works only when Dvclive is used alongside DVC. If true,
-  upon each `next_step()` call, DVC will prepare summary of the training currently running,
-  with all metrics logged in `path`.
+- `html` (`True`) - works only when Dvclive is used alongside DVC. If true, upon
+  each `next_step()` call, DVC will prepare summary of the training currently
+  running, with all metrics logged in `path`.
