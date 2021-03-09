@@ -2,12 +2,12 @@
 
 We will use sample [MNIST classification](http://yann.lecun.com/exdb/mnist/)
 training code in order to see how one can introduce Dvclive into the workflow.
-In order to run the example,
-[keras](https://keras.io/about/#installation-amp-compatibility) is required.
 
-The training code (`train.py` file):
+> Note that [keras](https://keras.io/about/#installation-amp-compatibility) is
+> required throughout these examples.
 
 ```python
+# train.py
 from keras.datasets import mnist
 from keras.models import Sequential
 from keras.layers.core import Dense, Activation
@@ -51,14 +51,14 @@ model.fit(x_train,
           epochs=3)
 ```
 
-Run the code to verify the training is executing.
+> You may want to run the code manually to verify that the model gets trained.
 
 In this example we are training the `model` for 3 epochs. Lets use `dvclive` to
 log the `accuracy`, `loss`, `validation_accuracy` and `validation_loss` after
-each epoch, so that we can observe how our training progresses.
+each epoch, so that we can observe how the training progresses.
 
-In order to do that, we will need to provide proper
-[`Callback`](https://keras.io/api/callbacks/) for `fit` method:
+In order to do that, we will provide a
+[`Callback`](https://keras.io/api/callbacks/) for the `fit` method call:
 
 ```python
 from keras.callbacks import Callback
@@ -71,90 +71,72 @@ class MetricsCallback(Callback):
         dvclive.next_step()
 ```
 
-We created callback, that, on the end of each epoch, will iterate over gathered
-metrics (`logs`) and use `dvclive.log` function to log their respective value.
-After logging the metrics, we call `dvclive.next_step` function to signal
-Dvclive that we are done with metrics logging for current epoch.
+On the end of each epoch, this callback will iterate over the gathered
+metrics (`logs`) and use the `dvclive.log()` function to record their respective value.
+After that we call `dvclive.next_step()` to signal
+Dvclive that we are done logging for the current iteration.
 
-In order to make it work with the training code, we need to do one more change,
-we need to replace:
+And in order to make that work, we need to plug it in with this change:
 
-```python
-model.fit(x_train,
-          y_train,
-          validation_data=(x_test, y_test),
-          batch_size=128,
-          epochs=10)
+```diff
++ dvclive.init("training_metrics")
+  model.fit(x_train,
+            y_train,
+            validation_data=(x_test, y_test),
+            batch_size=128,
+-           epochs=3)
++           epochs=3,
++           callbacks=[MetricsCallback()])
 ```
 
-with:
+We call `dvclive.init()` first, which tells Dvclive to write metrics under the
+diven directory path (in this case `./training_metrics`).
 
-```python
-dvclive.init("training_metrics")
-model.fit(x_train,
-          y_train,
-          validation_data=(x_test, y_test),
-          batch_size=128,
-          epochs=3,
-          callbacks=[MetricsCallback()])
-```
-
-We call `dvclive.init` to tell `dvclive` to write metrics under
-`training_metrics` directory. We also provide `callbacks` argument for `fit`
-method with newly created callback.
-
-Rerun the code.
-
-After running the code, you can see that `training_metrics` directory has been
-created.
+After running the code, the `training_metrics` should be created:
 
 ```bash
 $ ls
 training_metrics  training_metrics.json  train.py
 ```
 
-`training_metrics` directory contains `*.tsv` files with names respective to
-metrics logged during training:
+The `*.tsv` files inside have names corresponding to the
+metrics logged during training. Note that a `training_metrics.json` file has been created as well.
+It's contains information about latest training step. You can prevent
+its creation by sending `summary = False` to `dvclive.init()` (see all the [options](#initial-configuration)).
+
 
 ```bash
-$ tree training_metrics
-
-training_metrics
-├── accuracy.tsv
-├── loss.tsv
-├── val_accuracy.tsv
-└── val_loss.tsv
+$ ls training_metrics
+accuracy.tsv  loss.tsv  val_accuracy.tsv  val_loss.tsv
 ```
 
-Each of the files contains metric values logged in every training step:
+Each file contains metrics values logged in each epoch. For example:
 
 ```bash
 $ cat training_metrics/accuracy.tsv
-
 timestamp	step	accuracy
 1614129197192	0	0.7612833380699158
 1614129198031	1	0.8736833333969116
 1614129198848	2	0.8907166719436646
 ```
 
-### Configuring Dvclive
+### Initial configuration
 
-Besides `training_metrics `directory, `training_metrics.json` has been created.
-It's a file containing information about latest training step. You can prevent
-its creation by providing proper `dvclive.init` config flag.
+These are the arguments accepted by `dvclive.init()`:
 
-Args supported by `dvclive.init`:
+- `path` (**required**) - directory where `dvclive` will write TSV log files
 
-- `path` - directory where `dvclive` will write its outputs
-- `resume` (`False` by default) - If set to `True`, `dvclive` will try to read
-  latest `step` from `{path}` dir. Following `next_step` calls will increment
-  basing on found value.
-- `step` (`0`) - If set, the `step` values in logs files will start incrementing
-  from given value. If provided alongside `resume`, `dvclive` will not try to
-  find latest `step` in `{path}` and start from `step`.
-- `summary` (`True`) - upon each `next_step` call `dvclive` will dump a json
-  file containing all metrics gathered in last step. The json file has the
-  following name: `{path}.json`.
-- `html` (`True`) - works only when `dvclive` is used alongside DVC. If true,
-  upon each `next_step` call, DVC will prepare summary of currently running
-  training with all metrics logged in `{path}`.
+- `step` (`0` by default) - the `step` values in log files will start incrementing
+  from this value.
+
+- `resume` (`False`) - if set to `True`, Dvclive will try to read the
+  previous `step` from the `path` dir and start from that point (unless a `step` is passed explicitly).
+  Subsequent `next_step()` calls will increment the step.
+
+- `summary` (`True`) - upon each `next_step()` call, Dvclive will dump a JSON
+  file containing all metrics gathered in the last step. This file uses the
+  following naming: `<path>.json` (`path` being the logging directory passed to `init()`).
+
+- `html` (`True`) - works only when Dvclive is used alongside DVC. If true,
+  upon each `next_step()` call, DVC will prepare summary of the training currently running,
+  with all metrics logged in `path`.
