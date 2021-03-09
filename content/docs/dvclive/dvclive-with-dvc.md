@@ -1,10 +1,10 @@
 # Dvclive with DVC
 
-Even though Dvclive does not require DVC, they can integrate in several useful ways.
+Even though Dvclive does not require DVC, they can integrate in several useful
+ways.
 
-> In this section we will
-> modify the [basic usage example](/doc/dvclive/usage) to see how DVC can
-> cooperate with Dvclive module.
+> In this section we will modify the [basic usage example](/doc/dvclive/usage)
+> to see how DVC can cooperate with Dvclive module.
 
 ```python
 # train.py
@@ -67,22 +67,23 @@ model.fit(x_train,
 Note that when using Dvclive in a DVC project, there is no need for manual
 initialization of Dvclive (no `dvclive.init()` call).
 
-Let's use `dvc stage add` to create a stage to wrap this code (don't forget to `dvc init` first):
+Let's use `dvc stage add` to create a stage to wrap this code (don't forget to
+`dvc init` first):
 
 ```dvc
 $ dvc stage add -n train --live training_metrics
                 -d train.py python train.py
 ```
 
-`dvc.yaml` will contain a new `train` stage with the
-Dvclive [configuration](/doc/dvclive/usage#initial-configuration) (in the `live` field):
+`dvc.yaml` will contain a new `train` stage with the Dvclive
+[configuration](/doc/dvclive/usage#initial-configuration) (in the `live` field):
 
 ```yaml
 stages:
   train:
     cmd: python train.py
     deps:
-    - train.py
+      - train.py
     live:
       training_metrics:
         summary: true
@@ -90,15 +91,15 @@ stages:
 ```
 
 The value passed to `--live` (`training_metrics`) became the directory `path`
-for Dvclive to write logs in. Other supported command options for DVC integration:
+for Dvclive to write logs in. Other supported command options for DVC
+integration:
 
 - `--live-no-summary` - passes `summary=False` to Dvclive.
 - `--live-no-html` - passes `html=False` to Dvclive.
 
-> Note that these are convenience CLI options. You can still
-> use `dvclive.init()` manually, which it will override
-> `dvc stage add` flags. Just be careful to match the `--live` value (CLI) and
-> `path` argument (code).
+> Note that these are convenience CLI options. You can still use
+> `dvclive.init()` manually, which it will override `dvc stage add` flags. Just
+> be careful to match the `--live` value (CLI) and `path` argument (code).
 
 Run the training with `dvc repro`:
 
@@ -114,14 +115,13 @@ dvc.lock  training_metrics       training_metrics.json
 dvc.yaml  training_metrics.html  train.py
 ```
 
-If you open
-`training_metrics.html` in a browser, you'll see a plot for metrics logged
-during the model training!
+If you open `training_metrics.html` in a browser, you'll see a plot for metrics
+logged during the model training!
 
 ![](/img/dvclive_report.png)
 
 ## Further integrations
 
-Dvclive is capable of creating _checkpoint_
-signal files used by [experiments](/doc/user-guide/experiment-management). See this example
+Dvclive is capable of creating _checkpoint_ signal files used by
+[experiments](/doc/user-guide/experiment-management). See this example
 [repository](https://github.com/iterative/dvc-checkpoints-mnist) to see how.
