@@ -1,7 +1,7 @@
 # dvclive with DVC
 
 Even though dvclive does not require DVC to function properly, it includes a lot
-of integrations with DVC that user might find valuable. In this section we will
+of integrations with DVC that you might find valuable. In this section we will
 modify the [example from previous one](/doc/dvclive/usage) to see how DVC can
 cooperate with dvclive.
 
