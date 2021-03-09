@@ -485,7 +485,7 @@
     "children": [
       "usage",
       {
-        "label": "dvclive with DVC",
+        "label": "Dvclive with DVC",
         "slug": "dvclive-with-dvc"
       }
     ]
