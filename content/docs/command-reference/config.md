@@ -64,11 +64,11 @@ multiple projects and users, respectively:
   need to specify private config option values that you don't want to track and
   share with Git (credentials, private locations, etc).
 
-- `--global` - modify a global config file (e.g. `~/.config/dvc/config`) instead
-  of the project's `.dvc/config`. Useful to apply config options to all your
-  projects.
+- `--global` - modify the global config file (e.g. `~/.config/dvc/config`)
+  instead of the project's `.dvc/config`. Useful to apply config options to all
+  your projects.
 
-- `--system` - modify a system config file (e.g. `/etc/dvc/config`) instead of
+- `--system` - modify the system config file (e.g. `/etc/dvc/config`) instead of
   `.dvc/config`. Useful to apply config options to all the projects (all users)
   in the machine. May require superuser access e.g.
   `sudo dvc config --system ...` (Linux).
