@@ -1,4 +1,4 @@
-# Usage
+# Usage Guide
 
 We will use sample [MNIST classification](http://yann.lecun.com/exdb/mnist/)
 training code in order to see how one can introduce Dvclive into the workflow.
