@@ -64,9 +64,8 @@ model.fit(x_train,
           callbacks=[MetricsCallback()])
 ```
 
-When one is using Dvclive in a
-DVC project, there is no need for manual initialization of `dvclive`
-inside the code.
+When one is using Dvclive in a DVC project, there is no need for manual
+initialization of `dvclive` inside the code.
 
 So in case of our code we can remove the following line:
 
@@ -144,5 +143,5 @@ during the training.
 DVC integration does not end here. Dvclive is capable of creating checkpoint
 signal files used by [experiments](/doc/start/experiments). See the sample
 [repository](https://github.com/iterative/dvc-checkpoints-mnist) to see how to
-make `dvclive` and [DVC experiments](/doc/user-guide/experiment-management)
-work together.
+make `dvclive` and [DVC experiments](/doc/user-guide/experiment-management) work
+together.
