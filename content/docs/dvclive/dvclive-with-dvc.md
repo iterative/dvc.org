@@ -1,14 +1,14 @@
 # Dvclive with DVC
 
-Even though Dvclive does not require DVC to function properly, it includes a lot
-of integrations with DVC that you might find valuable. In this section we will
-modify the [basic usage example](/doc/dvclive/usage) to see how DVC can
-cooperate with the `dvclive` module.
+Even though Dvclive does not require DVC, they can integrate in several useful ways.
 
-Let's use the code prepared in previous example and try to make it work with
-dvc. Training file `train.py` content:
+> In this section we will
+> modify the [basic usage example](/doc/dvclive/usage) to see how DVC can
+> cooperate with Dvclive module.
 
 ```python
+# train.py
+
 from keras.datasets import mnist
 from keras.models import Sequential
 from keras.layers.core import Dense, Activation
@@ -55,7 +55,7 @@ class MetricsCallback(Callback):
 (x_train, y_train), (x_test, y_test) = load_data()
 model = get_model()
 
-dvclive.init("training_metrics")
+# dvclive.init("training_metrics")  # Implicit with DVC
 model.fit(x_train,
           y_train,
           validation_data=(x_test, y_test),
@@ -64,27 +64,20 @@ model.fit(x_train,
           callbacks=[MetricsCallback()])
 ```
 
-When one is using Dvclive in a DVC project, there is no need for manual
-initialization of `dvclive` inside the code.
+Note that when using Dvclive in a DVC project, there is no need for manual
+initialization of Dvclive (no `dvclive.init()` call).
 
-So in case of our code we can remove the following line:
-
-```python
-dvclive.init("training_metrics")
-```
-
-Now, lets use dvc to create the stage:
+Let's use `dvc stage add` to create a stage to wrap this code (don't forget to `dvc init` first):
 
 ```dvc
-$ dvc stage add -n train --live training_metrics -d train.py python train.py
+$ dvc stage add -n train --live training_metrics
+                -d train.py python train.py
 ```
 
-In `dvc.yaml` there is new stage defined, containing information about the
-Dvclive outputs. Inside the stage file, they are named `live`:
+`dvc.yaml` will contain a new `train` stage with the
+Dvclive [configuration](/doc/dvclive/usage#initial-configuration) (in the `live` field):
 
-```bash
-$ cat dvc.yaml
-
+```yaml
 stages:
   train:
     cmd: python train.py
@@ -96,52 +89,39 @@ stages:
         html: true
 ```
 
-As you can see, `live` output has already some properties defined.
+The value passed to `--live` (`training_metrics`) became the directory `path`
+for Dvclive to write logs in. Other supported command options for DVC integration:
 
-- `summary` - if `true`, after each `next_step` call, Dvclive will dump all
-  metrics gathered during the step into the JSON file named after `live` output.
-  In this case, it will be `training_metrics.json`.
-- `html` - if `true`, after each `next_step` call, Dvclive will signal `dvc` to
-  prepare training report for `live` output. Report is named after the `live`
-  output. In this case it will be `training_metrics.html`.
+- `--live-no-summary` - passes `summary=False` to Dvclive.
+- `--live-no-html` - passes `html=False` to Dvclive.
 
-DVC integration allows to pass the information that `training_metrics` is `path`
-argument for `dvclive.init`. Other supported args for DVC integration:
+> Note that these are convenience CLI options. You can still
+> use `dvclive.init()` manually, which it will override
+> `dvc stage add` flags. Just be careful to match the `--live` value (CLI) and
+> `path` argument (code).
 
-- `--live-no-summary` - passes `summary=False` into the `dvc.yaml`.
-- `--live-no-html` - passes `html=False` into the `dvc.yaml`.
-
-> Note that those `dvc stage add` params are only convinience methods. If you
-> decide to invoke `dvclive.init` manually, the manual call config will override
-> provided `run` args. In such case your `path` arg for `dvclive.init` must
-> match `--live` argument.
-
-Run the training:
+Run the training with `dvc repro`:
 
 ```bash
 $ dvc repro train
 ```
 
-After it is done you should see following content of your repository:
+After that's finished, you should see the following content in the project:
 
 ```bash
 $ ls
-
 dvc.lock  training_metrics       training_metrics.json
 dvc.yaml  training_metrics.html  train.py
 ```
 
-`training_metrics.json` and `training_metrics.html` are there because we did not
-provide `--live-no-sumary` nor `--live-no-html`. If you will open
-`training_metrics.html` in your browser, you will get plots for metrics logged
-during the training.
+If you open
+`training_metrics.html` in a browser, you'll see a plot for metrics logged
+during the model training!
 
 ![](/img/dvclive_report.png)
 
-### Going further
+## Further integrations
 
-DVC integration does not end here. Dvclive is capable of creating checkpoint
-signal files used by [experiments](/doc/start/experiments). See the sample
-[repository](https://github.com/iterative/dvc-checkpoints-mnist) to see how to
-make `dvclive` and [DVC experiments](/doc/user-guide/experiment-management) work
-together.
+Dvclive is capable of creating _checkpoint_
+signal files used by [experiments](/doc/user-guide/experiment-management). See this example
+[repository](https://github.com/iterative/dvc-checkpoints-mnist) to see how.
