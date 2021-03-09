@@ -120,7 +120,7 @@ timestamp	step	accuracy
 1614129198848	2	0.8907166719436646
 ```
 
-### Initial configuration
+## Initial configuration
 
 These are the arguments accepted by `dvclive.init()`:
 
