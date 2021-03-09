@@ -1,9 +1,9 @@
 # Dvclive with DVC
 
-Even though dvclive does not require DVC to function properly, it includes a lot
+Even though Dvclive does not require DVC to function properly, it includes a lot
 of integrations with DVC that you might find valuable. In this section we will
 modify the [basic usage example](/doc/dvclive/usage) to see how DVC can
-cooperate with dvclive.
+cooperate with the `dvclive` module.
 
 Let's use the code prepared in previous example and try to make it work with
 dvc. Training file `train.py` content:
@@ -64,8 +64,8 @@ model.fit(x_train,
           callbacks=[MetricsCallback()])
 ```
 
-DVC provides extensive integration with dvclive. When one is using dvclive in a
-project managed by DVC, there is no need for manual initialization of dvclive
+When one is using Dvclive in a
+DVC project, there is no need for manual initialization of `dvclive`
 inside the code.
 
 So in case of our code we can remove the following line:
@@ -81,7 +81,7 @@ $ dvc stage add -n train --live training_metrics -d train.py python train.py
 ```
 
 In `dvc.yaml` there is new stage defined, containing information about the
-dvclive outputs. Inside the stage file, they are named `live`:
+Dvclive outputs. Inside the stage file, they are named `live`:
 
 ```bash
 $ cat dvc.yaml
@@ -99,10 +99,10 @@ stages:
 
 As you can see, `live` output has already some properties defined.
 
-- `summary` - if `true`, after each `next_step` call, dvclive will dump all
+- `summary` - if `true`, after each `next_step` call, Dvclive will dump all
   metrics gathered during the step into the JSON file named after `live` output.
   In this case, it will be `training_metrics.json`.
-- `html` - if `true`, after each `next_step` call, dvclive will signal `dvc` to
+- `html` - if `true`, after each `next_step` call, Dvclive will signal `dvc` to
   prepare training report for `live` output. Report is named after the `live`
   output. In this case it will be `training_metrics.html`.
 
@@ -141,7 +141,8 @@ during the training.
 
 ### Going further
 
-dvclive integration does not end here. dvclive is capable of creating checkpoint
+DVC integration does not end here. Dvclive is capable of creating checkpoint
 signal files used by [experiments](/doc/start/experiments). See the sample
 [repository](https://github.com/iterative/dvc-checkpoints-mnist) to see how to
-make dvclive and experiments work together.
+make `dvclive` and [DVC experiments](/doc/user-guide/experiment-management)
+work together.

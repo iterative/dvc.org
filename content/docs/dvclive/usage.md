@@ -1,7 +1,7 @@
 # Usage
 
 We will use sample [MNIST classification](http://yann.lecun.com/exdb/mnist/)
-training code in order to see how one can introduce `dvclive` into the workflow.
+training code in order to see how one can introduce Dvclive into the workflow.
 In order to run the example,
 [keras](https://keras.io/about/#installation-amp-compatibility) is required.
 
@@ -74,7 +74,7 @@ class MetricsCallback(Callback):
 We created callback, that, on the end of each epoch, will iterate over gathered
 metrics (`logs`) and use `dvclive.log` function to log their respective value.
 After logging the metrics, we call `dvclive.next_step` function to signal
-`dvclive` that we are done with metrics logging for current epoch.
+Dvclive that we are done with metrics logging for current epoch.
 
 In order to make it work with the training code, we need to do one more change,
 we need to replace:
@@ -137,7 +137,7 @@ timestamp	step	accuracy
 1614129198848	2	0.8907166719436646
 ```
 
-### Configuring dvclive
+### Configuring Dvclive
 
 Besides `training_metrics `directory, `training_metrics.json` has been created.
 It's a file containing information about latest training step. You can prevent
