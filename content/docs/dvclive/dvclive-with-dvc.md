@@ -120,8 +120,6 @@ logged during the model training!
 
 ![](/img/dvclive_report.png)
 
-## Further integrations
-
-Dvclive is capable of creating _checkpoint_ signal files used by
-[experiments](/doc/user-guide/experiment-management). See this example
-[repository](https://github.com/iterative/dvc-checkpoints-mnist) to see how.
+> Dvclive is capable of creating _checkpoint_ signal files used by
+> [experiments](/doc/user-guide/experiment-management). See this example
+> [repository](https://github.com/iterative/dvc-checkpoints-mnist) to see how.
