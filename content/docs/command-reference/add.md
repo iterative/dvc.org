@@ -338,15 +338,15 @@ Only the hash values of the `dir/` directory (with `.dir` file extension) and
 
 When you have a large dataset in an external location, you may want to add it to
 the <abbr>project</abbr> without having to copy it into the workspace. Maybe
-your local disk doesn't even have enough space, but you have setup an
+your local disk doesn't have enough space, but you have setup an
 [external cache](/doc/use-cases/shared-development-server#configure-the-external-shared-cache)
 that could handle it.
 
 The `--out` option lets you add external paths in a way that they are
 <abbr>cached</abbr> first, and then
 [linked](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
-to a given path inside the <abbr>workspace<abbr>. Let's initialize a DVC
-project:
+to a given path inside the <abbr>workspace<abbr>. Let's initialize an
+example DVC project to try this:
 
 ```dvc
 $ mkdir example # workspace
@@ -358,19 +358,15 @@ $ dvc init
 Now we can add a `data.xml` file via HTTP for example, putting it a local path
 in our project:
 
-```
+```dvc
 $ dvc add https://data.dvc.org/get-started/data.xml -o data.xml
-
-To track the changes with git, run:
-
-    git add data.xml.dvc
 
 $ ls
 data.xml data.xml.dvc
 ```
 
 The resulting `.dvc` file will save the provided local `path` as if the data was
-always there, while the `md5` hash points to the copy of the data that has now
+already in the workspace, while the `md5` hash points to the copy of the data that has now
 been transferred to the cache. Let's check the contents of `data.xml.dvc` in
 this case:
 
