@@ -152,7 +152,7 @@ not.
   > link above for more details.
 
 - `-o <path>`, `--out <path>` - destination `path` to make a local target copy, or to
-  [transfer](#example-transfer-to-cache) an external target into the cache and workspace.
+  [transfer](#example-transfer-to-cache) an external target into the cache (and link to workspace).
   Note that this can be combined with `--to-remote` to avoid
   storing the data locally, while still adding it to the project.
 
