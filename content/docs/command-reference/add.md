@@ -151,10 +151,10 @@ not.
   > Note that external outputs typically require an external cache setup. See
   > link above for more details.
 
-- `-o <path>`, `--out <path>` - destination `path` to make a local target copy, or to
-  [transfer](#example-transfer-to-cache) an external target into the cache (and link to workspace).
-  Note that this can be combined with `--to-remote` to avoid
-  storing the data locally, while still adding it to the project.
+- `-o <path>`, `--out <path>` - destination `path` to make a local target copy,
+  or to [transfer](#example-transfer-to-cache) an external target into the cache
+  (and link to workspace). Note that this can be combined with `--to-remote` to
+  avoid storing the data locally, while still adding it to the project.
 
 - `--to-remote` - import an external target, but don't move it into the
   workspace, nor cache it. [Transfer it](#example-transfer-to-remote-storage) it
@@ -345,8 +345,8 @@ that could handle it.
 The `--out` option lets you add external paths in a way that they are
 <abbr>cached</abbr> first, and then
 [linked](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
-to a given path inside the <abbr>workspace<abbr>. Let's initialize an
-example DVC project to try this:
+to a given path inside the <abbr>workspace<abbr>. Let's initialize an example
+DVC project to try this:
 
 ```dvc
 $ mkdir example # workspace
@@ -366,9 +366,9 @@ data.xml data.xml.dvc
 ```
 
 The resulting `.dvc` file will save the provided local `path` as if the data was
-already in the workspace, while the `md5` hash points to the copy of the data that has now
-been transferred to the cache. Let's check the contents of `data.xml.dvc` in
-this case:
+already in the workspace, while the `md5` hash points to the copy of the data
+that has now been transferred to the cache. Let's check the contents of
+`data.xml.dvc` in this case:
 
 ```yaml
 outs:
