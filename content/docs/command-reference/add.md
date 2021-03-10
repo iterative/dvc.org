@@ -367,8 +367,8 @@ data.xml data.xml.dvc
 
 The resulting `.dvc` file will save the provided local `path` as if the data was
 already in the workspace, while the `md5` hash points to the copy of the data
-that has now been transferred to the cache. Let's check the contents of
-`data.xml.dvc` in this case:
+that has now been transferred to the <abbr>cache</abbr>. Let's check the
+contents of `data.xml.dvc` in this case:
 
 ```yaml
 outs:
