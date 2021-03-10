@@ -76,7 +76,8 @@ $ dvc stage add -n train --live training_metrics
 ```
 
 `dvc.yaml` will contain a new `train` stage with the Dvclive
-[configuration](/doc/dvclive/usage#initial-configuration) (in the `live` field):
+[configuration](/doc/dvclive/usage#initial-configuration) (in the
+[`live` field](docs/user-guide/project-structure/pipelines-files)):
 
 ```yaml
 stages:

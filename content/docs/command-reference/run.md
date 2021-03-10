@@ -6,13 +6,14 @@ command.
 ## Synopsis
 
 ```usage
-usage: dvc run [-h] [-q | -v] -n <name> [-d <path>] [-o <path>]
-               [-O <path>] [-p [<path>:]<params_list>] [-m <path>]
-               [-M <path>] [--plots <path>] [--plots-no-cache <path>]
-               [-w <path>] [--no-exec] [-f]
-               [--no-run-cache] [--no-commit]
-               [--outs-persist <path>] [--outs-persist-no-cache <path>]
-               [--always-changed] [--external] [--desc <text>]
+usage: dvc run [-h] [-q | -v] [-n NAME] [--no-exec] [--no-run-cache]
+               [--no-commit] [-d <path>] [-o <filename>] [-O <filename>]
+               [-p [<filename>:]<params_list>] [-m <path>] [-M <path>]
+               [--plots <path>] [--plots-no-cache <path>] [--live <path>]
+               [--live-no-cache <path>] [--live-no-summary] [--live-no-html]
+               [-w <path>] [-f] [--outs-persist <filename>]
+               [--outs-persist-no-cache <filename>] [--always-changed]
+               [--external] [--desc <text>]
                command
 
 positional arguments:
@@ -223,6 +224,16 @@ $ dvc run -n second_stage './another_script.sh $MYENVVAR'
 - `--plots-no-cache <path>` - the same as `--plots` except that DVC does not
   track the plots file (same as with `-O` and `-M` above). This may be desirable
   with _plots_, if they are small enough to be tracked with Git directly.
+- `--live <path>` - specify [Dvclive](/docs/dvclive) output - it is a directory
+  of `plots` files, optionally accompanied with `<path>.json` file, which is a
+  metrics file. Optional `<path>.json` file is not tracked by DVC.
+- `--live-no-cache` - the same asa `--live` except that DVC does not track the
+  directory of plots
+- `--live-no-summary` - instruct [Dvclive](/docs/dvclive) to not produce the
+  metrics file.
+
+- `--live-no-html` - instruct DVC to not produce html training report for
+  [Dvclive](/docs/dvclive).
 
 - `-w <path>`, `--wdir <path>` - specifies a working directory for the `command`
   to run in (uses the `wdir` field in `dvc.yaml`). Dependency and output files
