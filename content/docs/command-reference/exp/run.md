@@ -85,9 +85,10 @@ process finishes or gets interrupted (e.g. with Ctrl + `C`), DVC will
 <abbr>workspace</abbr> (overwriting any further changes done by the stage).
 
 `dvc exp run` again will continue from this point (useful for interrupted runs).
-Use `--reset` to roll-back the workspace to `HEAD` and restart the whole
-experiment. Alternatively, you can use `--rev` to continue from a specific
-(previous) checkpoint.
+Use `--reset` to reset (remove) any existing `checkpoint` outputs in your
+workspace before running the experiment. Note that `--reset` overrides any
+existing `dvc.lock` entries for `checkpoint` outputs. Alternatively, you can use
+`--rev` to continue from a specific (previous) checkpoint.
 
 Note that `dvc exp show` displays checkpoints with a special branching format.
 
@@ -108,8 +109,11 @@ The `--queue` option lets you create an experiment as usual, except that nothing
 is actually run. Instead, the experiment is put in a wait-list for later
 execution. `dvc exp show` will mark queued experiments with an asterisk `*`.
 
-Use `dvc exp run --run-all` to process this queue. Note that if the queued
-experiments use checkpoints, `--run-all` implies `--reset` (restarts them).
+Note that for experiments which use checkpoints, queuing an experiment implies
+`--reset` unless an existing checkpoint to resume is explicitly provided via
+`--rev`.
+
+Use `dvc exp run --run-all` to process this queue.
 
 Adding `-j` (`--jobs`), experiment queues can be run in parallel for better
 performance. This creates a temporary workspace copy for each subprocess (in
@@ -139,11 +143,11 @@ CPU cores).
 
 - `--queue` - place this experiment at the end of a line for future execution,
   but do not actually run it yet. Use `dvc exp run --run-all` to process the
-  queue.
+  queue. For checkpoint experiments, this implies `--reset` unless `--rev` is
+  provided.
 
 - `--run-all` - run all queued experiments (see `--queue`). Use `-j` to execute
-  them [in parallel](#queueing-and-parallel-execution). For checkpoint
-  experiments, this implies `--reset`.
+  them [in parallel](#queueing-and-parallel-execution).
 
 - `-j <number>`, `--jobs <number>` - run this `number` of queued experiments in
   parallel. Only applicable when used in conjunction with `--run-all`.
@@ -155,9 +159,8 @@ CPU cores).
   checkpoint name or hash (`commit`). This is needed for example to resume
   experiments from `--queue` or `--temp` runs.
 
-- `--reset` - restart a checkpoint experiment from scratch (resets the workspace
-  and clears existing checkpoints before the run). Implies `--force`, so that
-  cached checkpoint results are regenerated.
+- `--reset` - reset any checkpoint outputs before running this experiment.
+  Implies `--force`, so that cached checkpoint results are regenerated.
 
 - `-f`, `--force` - reproduce pipelines even if no changes were found (same as
   `dvc repro -f`).
