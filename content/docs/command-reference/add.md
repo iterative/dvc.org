@@ -151,9 +151,9 @@ not.
   > Note that external outputs typically require an external cache setup. See
   > link above for more details.
 
-- `-o <path>`, `--out <path>` - destination `path` inside the workspace, to
-  [transfer](#example-transfer-to-cache) an external target into cache, and
-  track it in-place. Note that this can be combined with `--to-remote` to avoid
+- `-o <path>`, `--out <path>` - destination `path` to make a local target copy, or to
+  [transfer](#example-transfer-to-cache) an external target into the cache and workspace.
+  Note that this can be combined with `--to-remote` to avoid
   storing the data locally, while still adding it to the project.
 
 - `--to-remote` - import an external target, but don't move it into the
