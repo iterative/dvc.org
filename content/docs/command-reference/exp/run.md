@@ -177,21 +177,40 @@ CPU cores).
 > [Get Started](/doc/tutorials/get-started/experiments), where you can find the
 > actual source code.
 
-Let's clone our example ML project, download the data it <abbr>depends</abbr>
-on, and check the latest metrics:
+<details>
+
+### Expand to prepare the example ML project
+
+Clone the DVC repo and download the data it <abbr>depends</abbr> on:
 
 ```dvc
 $ git clone git@github.com:iterative/example-get-started.git
 $ cd example-get-started
 $ dvc pull
+```
+
+Let's also install the Python requirements:
+
+> We **strongly** recommend creating a
+> [virtual environment](https://python.readthedocs.io/en/stable/library/venv.html)
+> first.
+
+```dvc
+$ pip install -r src/requirements.txt
+```
+
+</details>
+
+Let's check the latest metrics of the project:
+
+```dvc
 $ dvc metrics show
 Path         avg_prec    roc_auc
 scores.json  0.60405     0.9608
 ```
 
 For this experiment, we want to see the results for a smaller dataset input, so
-let's limit the data to 20 MB (originally 37) and reproduce the pipeline with
-`dvc exp run`:
+let's limit the data to 20 MB and reproduce the pipeline with `dvc exp run`:
 
 ```dvc
 $ truncate --size=20M data/data.xml
@@ -206,5 +225,36 @@ scores.json  avg_prec  0.60405  0.56103  -0.04302
 scores.json  roc_auc   0.9608   0.94003  -0.02077
 ```
 
-The results in the `exp-44136` experiment are predictably worst, as the
+The results in the `exp-44136` experiment seem to be worst (expected), as the
 `dvc metrics` commands show.
+
+## Example: Modify parameters on-the-fly
+
+You could modify a params file just like any other <abbr>dependency</abbr> and
+run an experiment on that basis. Since this is a common need, `dvc exp run`
+comes with the `--set-param` (`-S`) option built-in. This saves you the need to
+manually edit the params file:
+
+```dvc
+$ dvc exp run -S prepare.split=0.25 -S featurize.max_features=2000
+...
+Reproduced experiment(s): exp-18bf6
+Experiment results have been applied to your workspace.
+```
+
+To see the results, we can use `dvc exp diff` which compares both params and
+metrics to the previous project version:
+
+```dvc
+$ dvc exp diff
+Path         Metric    Value    Change
+scores.json  avg_prec  0.58187  -0.022184
+scores.json  roc_auc   0.93634  -0.024464
+
+Path         Param                   Value    Change
+params.yaml  featurize.max_features  2000     -1000
+params.yaml  prepare.split           0.25     0.05
+```
+
+> Notice that experiments run as a series don't build up on each other. They are
+> all based on `HEAD`.
