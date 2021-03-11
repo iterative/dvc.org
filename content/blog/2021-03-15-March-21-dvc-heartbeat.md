@@ -22,13 +22,15 @@ tags:
 
 ## News
 
-Welcome to March! It's been a great month already! Here's all that will keep you in the know.
+Welcome to March! It's been a great month already! Here's all that will keep you
+in the know.
 
 ![UnderRock](https://media.giphy.com/media/J2gg8fO7RarRgQRC4d/giphy.gif)
 
 ## ICYMI - DVC 2.0 is here!
 
-If you somehow missed our March 3rd announcment, DVC 2.0 is here with loads of features to make your life easier.
+If you somehow missed our March 3rd announcment, DVC 2.0 is here with loads of
+features to make your life easier.
 
 🧪 Lightweight ML experiments
 
@@ -40,32 +42,40 @@ If you somehow missed our March 3rd announcment, DVC 2.0 is here with loads of f
 
 🤖 CML - new way to get GPU/CPU in clouds and GitHub Actions
 
-This video from the team gives you an overview of all the new features. 
+This video from the team gives you an overview of all the new features.
 
 https://www.youtube.com/watch?v=h-ioXYurEJo
-
 
 ## And we keep on growing our worldwide team! 🌏
 
 We have three new team members this month!
 
-[**Laurens Duijvesteijn**](https://www.linkedin.com/in/duijf/) 
-joins the team from Utrecht, The Netherlands as a backend infrastructure engineer.  Previously he led a devops team at Channable where he learned that he really enjoys working on developer tools and empowering people to do great work.  When not solving dev chanllenges, he enjoys bouldering/climbing, snowboarding and hiking!  Welcome Laurens!
+[**Laurens Duijvesteijn**](https://www.linkedin.com/in/duijf/) joins the team
+from Utrecht, The Netherlands as a backend infrastructure engineer. Previously
+he led a devops team at Channable where he learned that he really enjoys working
+on developer tools and empowering people to do great work. When not solving dev
+chanllenges, he enjoys bouldering/climbing, snowboarding and hiking! Welcome
+Laurens!
 
-[**Helio Machado**](https://github.com/0x2b3bfa0) 
-joins our team from Spain as a CML engineer!  Helio comes from a heutogogic background, mainly focused on the Free and Open Source culture and technologies from a systems perspective.  You will find his clever cryptograph handle helping you out in Discord with your CML questions. Fun fact:  Our two CML engineers, Helio and David Ortega live just 300 km apart in Spain!  CML has some Spanish flare! 💃🏻🇪🇸
+[**Helio Machado**](https://github.com/0x2b3bfa0) joins our team from Spain as a
+CML engineer! Helio comes from a heutogogic background, mainly focused on the
+Free and Open Source culture and technologies from a systems perspective. You
+will find his clever cryptograph handle helping you out in Discord with your CML
+questions. Fun fact: Our two CML engineers, Helio and David Ortega live just 300
+km apart in Spain! CML has some Spanish flare! 💃🏻🇪🇸
 
-[**MikHail Rozhkov**](linkedin.com/in/mikhail-rozhkov-33549118/)
-joins us from Moscow, Russia as a Solution Engineer.  Mikhail has been working with DVC for 2+ years in the banking industry and is also the creator of the 
-[**Machine Learning REPA**](https://mlrepa.com) community as well as created our 
-[**first course on Udemy**](https://www.udemy.com/course/machine-learning-experiments-and-engineering-with-dvc/).  We are so excited to have him officially join our team full-time!
-
+[**MikHail Rozhkov**](linkedin.com/in/mikhail-rozhkov-33549118/) joins us from
+Moscow, Russia as a Solution Engineer. Mikhail has been working with DVC for 2+
+years in the banking industry and is also the creator of the
+[**Machine Learning REPA**](https://mlrepa.com) community as well as created our
+[**first course on Udemy**](https://www.udemy.com/course/machine-learning-experiments-and-engineering-with-dvc/).
+We are so excited to have him officially join our team full-time!
 
 ![Join Us](https://media.giphy.com/media/3ohhwznAY9PN08m0H6/giphy.gif)
 
 ## Open Positions
 
-Come join our team!  Open positions this month: 
+Come join our team! Open positions this month:
 
 [TypeScript Front-End Engineer](https://docs.google.com/document/d/1aT5HZYt4kAUxXqD4JNTe3jPDlVUwSmnEWDPR2QoKdvo/edit)
 to build SaaS and a VS Code UI for our popular machine learning tools: DVC and
@@ -84,30 +94,32 @@ Does this sound like you or someone you know? Be in touch!
 [**Swapnil Bhartiya**](https://twitter.com/tfir_io) of
 [TFIR Insights](https://www.tfir.io/) interviewed our very own CEO,
 [**Dmitry Petrov**](https://twitter.com/fullstackml), on his show discussing:
- 
+
 - Iterative.ai
 - Why Open Source is a better approach for AI/ML
 - DVC and CML
 - Who should care about these tools
-- How DVC and CML stack up against proprietary AI Platforms such as AWS SageMaker and Microsoft Azure ML Engineer
+- How DVC and CML stack up against proprietary AI Platforms such as AWS
+  SageMaker and Microsoft Azure ML Engineer
 
 https://www.youtube.com/watch?v=lv2cpm9Pduk
 
 ## Elle at DataTalks.Club Conference
 
-[**Elle O'Brien**](https://twitter.com/drelleobrien) presents her talk "Automating ML with Continuous Integration" at the 
+[**Elle O'Brien**](https://twitter.com/drelleobrien) presents her talk
+"Automating ML with Continuous Integration" at the
 [DataTalks.club](http://datatalks.club/) with
-[**Alexey Grigorev**](https://twitter.com/Al_Grigor) and 
+[**Alexey Grigorev**](https://twitter.com/Al_Grigor) and
 [**Demtrios Brinkmann**](https://www.linkedin.com/in/dpbrinkm/) of
-[MLOps Community](https://open.spotify.com/show/7wZygk3mUUqBaRbBGB1lgh).  You can catch her talk starting at 3:03 below.
- 👇🏼
+[MLOps Community](https://open.spotify.com/show/7wZygk3mUUqBaRbBGB1lgh). You can
+catch her talk starting at 3:03 below. 👇🏼
 
 https://www.youtube.com/watch?v=og1DG1KZ71c&t=11382s
 
 ## From the Community
 
-This great tutorial from 
-[Matsui-lab Blog](https://mti-lab.github.io/blog/) provides a solution using DVC for the data management problem labs face.
+This great tutorial from [Matsui-lab Blog](https://mti-lab.github.io/blog/)
+provides a solution using DVC for the data management problem labs face.
 
 <external-link
 href="https://mti-lab.github.io/blog/yusuke%20matsui/education/labops/2021/03/03/dvc.html"
@@ -118,16 +130,21 @@ image="/uploads/images/2021-03-15/matsui-lab-blog.png"/>
 
 ### Healthcare Use Case Video Tutorial
 
-[**Danial Senejohnny**](https://www.linkedin.com/in/danial-senejohnny/) created this video outlining the use of DVC for healthcare institutes where the data must be kept private and on premise data store is preferred. 👇🏼
+[**Danial Senejohnny**](https://www.linkedin.com/in/danial-senejohnny/) created
+this video outlining the use of DVC for healthcare institutes where the data
+must be kept private and on premise data store is preferred. 👇🏼
 
 https://www.youtube.com/watch?v=K1iyWr4Z6go
 
 ## Scientific Journals 🧑🏻‍🔬
 
-We are excited to announce a scientific paper purely devoted to DVC coming out from Queen's University.  This publication by 
-[**Amine Barrak**](https://www.linkedin.com/in/amine-barrak-0bb99160/), 
-[**Ellis E Eghan**](https://www.linkedin.com/in/elliseghan/) and 
-[**Bram Adams**](https://www.linkedin.com/in/bramadams/),  will be presented at the 28th IEEE International Conference on Software Analysis, Evolution, and Reengineering.  You can check it out here. 👇🏼
+We are excited to announce a scientific paper purely devoted to DVC coming out
+from Queen's University. This publication by
+[**Amine Barrak**](https://www.linkedin.com/in/amine-barrak-0bb99160/),
+[**Ellis E Eghan**](https://www.linkedin.com/in/elliseghan/) and
+[**Bram Adams**](https://www.linkedin.com/in/bramadams/), will be presented at
+the 28th IEEE International Conference on Software Analysis, Evolution, and
+Reengineering. You can check it out here. 👇🏼
 
 <external-link
 href="https://mcis.cs.queensu.ca/publications/2021/saner.pdf"
@@ -136,11 +153,12 @@ description="Empirical Study of DVC Projects"
 link="mcis.cs.queensu.ca"
 image="/uploads/images/2021-03-15/EmpiricalStudyDVC.png"/>
 
-
-This article by 
-**Samuel Idowu**, 
-[**Daniel Struber**](https://www.linkedin.com/in/daniel-g-str%C3%BCber-359134100/), and 
-[**Thorsten Berger**](https://www.linkedin.com/in/thorsten-berger-3a6a851ab/), reviews a number of asset management tools for machine learning including DVC, that solve the  commonly reported ML engineering challenges.
+This article by **Samuel Idowu**,
+[**Daniel Struber**](https://www.linkedin.com/in/daniel-g-str%C3%BCber-359134100/),
+and
+[**Thorsten Berger**](https://www.linkedin.com/in/thorsten-berger-3a6a851ab/),
+reviews a number of asset management tools for machine learning including DVC,
+that solve the commonly reported ML engineering challenges.
 
 <external-link
 href="https://arxiv.org/pdf/2102.06919.pdf"
@@ -155,7 +173,9 @@ image="/uploads/images/2021-02-16/dagshub-logo.png"/>
 
 From a Porutguese speaking community member in Finland...
 
-> "The @DVCorg surely it is among the best tools of the ecosystem of the last 3 years. It won't be long before DVC is as common as Scikit-Learn in ML / DS projects with high maturity. 👏🏼👏🏼👏🏼"
+> "The @DVCorg surely it is among the best tools of the ecosystem of the last 3
+> years. It won't be long before DVC is as common as Scikit-Learn in ML / DS
+> projects with high maturity. 👏🏼👏🏼👏🏼"
 
 https://twitter.com/flavioclesio/status/1367187054749224961
 
