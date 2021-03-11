@@ -170,3 +170,41 @@ CPU cores).
   regardless of this flag.
 
 - `-v`, `--verbose` - displays detailed tracing information.
+
+## Examples
+
+> These examples are based on our
+> [Get Started](/doc/tutorials/get-started/experiments), where you can find the
+> actual source code.
+
+Let's clone our example ML project, download the data it <abbr>depends</abbr>
+on, and check the latest metrics:
+
+```dvc
+$ git clone git@github.com:iterative/example-get-started.git
+$ cd example-get-started
+$ dvc pull
+$ dvc metrics show
+Path         avg_prec    roc_auc
+scores.json  0.60405     0.9608
+```
+
+For this experiment, we want to see the results for a smaller dataset input, so
+let's limit the data to 20 MB (originally 37) and reproduce the pipeline with
+`dvc exp run`:
+
+```dvc
+$ truncate --size=20M data/data.xml
+$ dvc exp run
+...
+Reproduced experiment(s): exp-44136
+Experiment results have been applied to your workspace.
+
+$ dvc metrics diff
+Path         Metric    Old      New      Change
+scores.json  avg_prec  0.60405  0.56103  -0.04302
+scores.json  roc_auc   0.9608   0.94003  -0.02077
+```
+
+The results in the `exp-44136` experiment are predictably worst, as the
+`dvc metrics` commands show.
