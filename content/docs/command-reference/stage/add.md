@@ -187,10 +187,9 @@ data science experiments.
 - `--outs-persist-no-cache <path>` - the same as `-outs-persist` except that
   outputs are not tracked by DVC (same as with `-O` above).
 
-- `-c <path`, `--checkpoints <path` - declare output file or directory that will
-  be handled as an intermediate
-  [checkpoint](/doc/command-reference/exp/run#checkpoints) by `dvc exp run`.
-  Note that checkpoints are not supported by `dvc repro`.
+- `-c <path`, `--checkpoints <path>` - the same as `-o` but also marks the
+  output as a [checkpoint](/doc/command-reference/exp/run#checkpoints).
+  Implies `--no-exec`. This makes the stage incompatible with `dvc repro`.
 
 - `-p [<path>:]<params_list>`, `--params [<path>:]<params_list>` - specify a set
   of [parameter dependencies](/doc/command-reference/params) the stage depends
