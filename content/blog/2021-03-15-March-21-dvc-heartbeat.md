@@ -108,15 +108,22 @@ https://www.youtube.com/watch?v=lv2cpm9Pduk
 
 [**Elle O'Brien**](https://twitter.com/drelleobrien) presents her talk
 "Automating ML with Continuous Integration" at the
-[DataTalks.club](http://datatalks.club/) with
+[DataTalks.Club](http://datatalks.club/) Conference with
 [**Alexey Grigorev**](https://twitter.com/Al_Grigor) and
 [**Demtrios Brinkmann**](https://www.linkedin.com/in/dpbrinkm/) of
 [MLOps Community](https://open.spotify.com/show/7wZygk3mUUqBaRbBGB1lgh). You can
 catch her talk starting at 3:03 below. 👇🏼
 
-https://www.youtube.com/watch?v=og1DG1KZ71c&t=11382s
+<external-link
+href="https://www.youtube.com/watch?v=og1DG1KZ71c&t=11382s"
+title="Automating ML with Continuous Integration"
+description="Elle O'Brien, PhD presents at DataTalks.Club Conference"
+link="DataTalks.Club"
+image="/uploads/images/2021-03-15/confused-animals.png"/>
 
 ## From the Community
+
+### Using DVC in Lab Data Management
 
 This great tutorial from [Matsui-lab Blog](https://mti-lab.github.io/blog/)
 provides a solution using DVC for the data management problem labs face.
