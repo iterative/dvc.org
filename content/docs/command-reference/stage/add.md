@@ -10,7 +10,7 @@ usage: dvc stage add [-h] [-q | -v] -n <name> [-d <path>] [-o <path>]
                      [-m <path>] [-M <path>] [--plots <path>]
                      [--plots-no-cache <path>] [-w <path>] [-f]
                      [--outs-persist <path>]
-                     [--outs-persist-no-cache <path>]
+                     [--outs-persist-no-cache <path>] [-c <path>]
                      [--always-changed] [--external] [--desc <text>]
                      command
 
@@ -186,6 +186,10 @@ data science experiments.
 
 - `--outs-persist-no-cache <path>` - the same as `-outs-persist` except that
   outputs are not tracked by DVC (same as with `-O` above).
+
+- `-c <path`, `--checkpoints <path>` - the same as `-o` but also marks the
+  output as a [checkpoint](/doc/command-reference/exp/run#checkpoints). Implies
+  `--no-exec`. This makes the stage incompatible with `dvc repro`.
 
 - `-p [<path>:]<params_list>`, `--params [<path>:]<params_list>` - specify a set
   of [parameter dependencies](/doc/command-reference/params) the stage depends
