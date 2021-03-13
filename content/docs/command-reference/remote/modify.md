@@ -520,13 +520,13 @@ more information.
 
   > Note that your server's SFTP root might differ from its physical root (`/`).
 
-- `user` - username to access the remote:
+- `user` - user name to access the remote:
 
   ```dvc
   $ dvc remote modify --local myremote user myuser
   ```
 
-  The order in which DVC picks the username:
+  The order in which DVC picks the user name:
 
   1. `user` parameter set with this command (found in `.dvc/config`);
   2. User defined in the URL (e.g. `ssh://user@example.com/path`);
@@ -560,7 +560,7 @@ more information.
   $ dvc remote modify --local myremote password mypassword
   ```
 
-> The username and password (may) contain sensitive user info. Therefore, it's
+> The user name and password (may) contain sensitive user info. Therefore, it's
 > safer to add them with the `--local` option, so they're written to a
 > Git-ignored config file.
 
@@ -607,13 +607,13 @@ Read more about by expanding the WebHDFS section in
   $ dvc remote modify myremote url hdfs://user@example.com/path
   ```
 
-- `user` - username to access the remote.
+- `user` - user name to access the remote.
 
   ```dvc
   $ dvc remote modify --local myremote user myuser
   ```
 
-> The username may contain sensitive user info. Therefore, it's safer to add it
+> The user name may contain sensitive user info. Therefore, it's safer to add it
 > with the `--local` option, so it's written to a Git-ignored config file.
 
 </details>
@@ -632,7 +632,7 @@ by HDFS. Read more about by expanding the WebHDFS section in
   $ dvc remote modify myremote url webhdfs://user@example.com/path
   ```
 
-- `user` - username to access the remote, can be empty in case of using `token`
+- `user` - user name to access the remote, can be empty in case of using `token`
   or if using a `HdfsCLI` cfg file. May only be used when Hadoop security is
   off. Defaults to current user as determined by `whoami`.
 
@@ -685,7 +685,7 @@ by HDFS. Read more about by expanding the WebHDFS section in
   $ dvc remote modify --local myremote webhdfs_alias myalias
   ```
 
-> The username, token, webhdfs_alias, and hdfscli_config may contain sensitive
+> The user name, token, webhdfs_alias, and hdfscli_config may contain sensitive
 > user info. Therefore, it's safer to add it with the `--local` option, so it's
 > written to a Git-ignored config file.
 
@@ -740,14 +740,14 @@ by HDFS. Read more about by expanding the WebHDFS section in
   $ dvc remote modify myremote custom_auth_header 'My-Header'
   ```
 
-- `user` - username to use when the `auth` parameter is set to `basic` or
+- `user` - user name to use when the `auth` parameter is set to `basic` or
   `digest`.
 
   ```dvc
   $ dvc remote modify --local myremote user myuser
   ```
 
-  The order in which DVC picks the username:
+  The order in which DVC picks the user name:
 
   1. `user` parameter set with this command (found in `.dvc/config`);
   2. User defined in the URL (e.g. `http://user@example.com/path`);
@@ -758,7 +758,7 @@ by HDFS. Read more about by expanding the WebHDFS section in
   $ dvc remote modify myremote --local password mypassword
   ```
 
-> The username and password (may) contain sensitive user info. Therefore, it's
+> The user name and password (may) contain sensitive user info. Therefore, it's
 > safer to add them with the `--local` option, so they're written to a
 > Git-ignored config file.
 
@@ -799,14 +799,14 @@ by HDFS. Read more about by expanding the WebHDFS section in
   $ dvc remote modify --local myremote token 'mytoken'
   ```
 
-- `user` - username for WebDAV server, can be empty in case of using `token`
+- `user` - user name for WebDAV server, can be empty in case of using `token`
   authentication.
 
   ```dvc
   $ dvc remote modify --local myremote user myuser
   ```
 
-  The order in which DVC searches for username is:
+  The order in which DVC searches for user name is:
 
   1. `user` parameter set with this command (found in `.dvc/config`);
   2. User defined in the URL (e.g. `webdavs://user@example.com/endpoint/path`)
@@ -818,7 +818,7 @@ by HDFS. Read more about by expanding the WebHDFS section in
   $ dvc remote modify --local myremote password mypassword
   ```
 
-> The username, password, and token (may) contain sensitive user info.
+> The user name, password, and token (may) contain sensitive user info.
 > Therefore, it's safer to add them with the `--local` option, so they're
 > written to a Git-ignored config file.
 
