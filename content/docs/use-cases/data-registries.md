@@ -156,7 +156,7 @@ with dvc.api.open(model_path, repo_url) as fd:
 ```
 
 This opens `model.pkl` as a file descriptor. This example illustrates a simple
-ML model **deployment** method, but it could be extended to more advances
+ML model **deployment** method, but it could be extended to more advanced
 scenarios such as a _model zoo_.
 
 See also the `dvc.api.read()` and `dvc.api.get_url()` functions.

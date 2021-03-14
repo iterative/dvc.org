@@ -22,8 +22,9 @@ show the full project DAG.
 
 A data pipeline, in general, is a series of data processing
 [stages](/doc/command-reference/run) (for example, console commands that take an
-input and produce an <abbr>output</abbr>). A pipeline may produce intermediate
-data, and has a final result.
+input and produce an outcome). The connections between stages are formed by the
+<abbr>output<s/abbr> of one turning into the <abbr>dependency</abbr> of another.
+A pipeline may produce intermediate data, and has a final result.
 
 Data science and machine learning pipelines typically start with large raw
 datasets, include intermediate featurization and training stages, and produce a

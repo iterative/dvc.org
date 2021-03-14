@@ -11,7 +11,7 @@ usage: dvc plots diff [-h] [-q | -v]
                       [-t <name_or_path>] [-x <field>] [-y <field>]
                       [--no-header] [--title <text>]
                       [--x-label <text>] [--y-label <text>] [-o <path>]
-                      [--show-vega]
+                      [--show-vega] [--open]
                       [revisions [revisions ...]]
 
 positional arguments:
@@ -90,6 +90,8 @@ all the current plots, without comparisons.
 - `--show-vega` - produce a
   [Vega specification](https://vega.github.io/vega/docs/specification/) file
   instead of HTML. See `dvc plots` for more info.
+
+- `--open` - opens the generated plot directly in the browser.
 
 - `--no-header` - lets DVC know that CSV or TSV `--targets` do not have a
   header. A 0-based numeric index can be used to identify each column instead of
