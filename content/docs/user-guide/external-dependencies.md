@@ -6,8 +6,9 @@ For example data on a network attached storage (NAS), processing data on HDFS,
 running [Dask](https://dask.org/) via SSH, or for a script that streams data
 from S3 to process it.
 
-External dependencies (and [external outputs](/doc/user-guide/external-outputs))
-provide ways to track (and version) data outside of the <abbr>project</abbr>.
+External dependencies and
+[external outputs](/doc/user-guide/managing-external-data) provide ways to track
+and version data outside of the <abbr>project</abbr>.
 
 ## How external dependencies work
 

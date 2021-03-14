@@ -101,9 +101,8 @@ Relevant notes:
   for more info.)
 
 - [external dependencies](/doc/user-guide/external-dependencies) and
-  [external outputs](/doc/user-guide/external-outputs) (outside of the
-  <abbr>workspace</abbr>) are also supported (except metrics and plots),
-  although not usually recommended.
+  [external outputs](/doc/user-guide/managing-external-data) (outside of the
+  <abbr>workspace</abbr>) are also supported (except metrics and plots).
 
 - Outputs are deleted from the workspace before executing the command (including
   at `dvc repro`) if their paths are found as existing files/directories (unless
@@ -264,8 +263,7 @@ $ dvc run -n second_stage './another_script.sh $MYENVVAR'
   > considered "always changed", so this option has no effect in those cases.
 
 - `--external` - allow writing outputs outside of the DVC repository. See
-  [External Outputs](/doc/user-guide/external-outputs) — not usually
-  recommended.
+  [Managing External Data](/doc/user-guide/managing-external-data).
 
 - `--desc <text>` - user description of the stage (optional). This doesn't  
   affect any DVC operations.

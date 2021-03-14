@@ -146,7 +146,7 @@ not.
   Shell style wildcards supported: `*`, `?`, `[seq]`, `[!seq]`, and `**`
 
 - `--external` - allow `targets` that are outside of the DVC repository. See
-  [External Outputs](/doc/user-guide/external-outputs).
+  [Managing External Data](/doc/user-guide/managing-external-data).
 
   > ⚠️ Note that this is an advanced feature for very specific situations and
   > not recommended except if there's absolutely no other alternative.
