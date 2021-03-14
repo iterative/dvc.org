@@ -13,10 +13,6 @@ tags:
   - Heartbeat
   - CML
   - DVC
-  - DataTalks.Club
-  - TFIR
-  - Queen's University
-  - arXiv
   - MLOps
 ---
 
@@ -29,7 +25,8 @@ in the know.
 
 ## ICYMI - DVC 2.0 is here!
 
-If you somehow missed our March 3rd announcment, DVC 2.0 is here with loads of
+If you somehow missed our 
+[March 3rd announcment](https://dvc.org/blog/dvc-2-0-release), DVC 2.0 is here with loads of
 features to make your life easier.
 
 🧪 Lightweight ML experiments
@@ -114,11 +111,12 @@ https://www.youtube.com/watch?v=lv2cpm9Pduk
 [MLOps Community](https://open.spotify.com/show/7wZygk3mUUqBaRbBGB1lgh). You can
 catch her talk starting at 3:03 below. 👇🏼
 
-<external-link
+<external-link 
 href="https://www.youtube.com/watch?v=og1DG1KZ71c&t=11382s"
 title="Automating ML with Continuous Integration"
 description="Elle O'Brien, PhD presents at DataTalks.Club Conference"
 link="DataTalks.Club"
+target="_blank"
 image="/uploads/images/2021-03-15/confused-animals.png"/>
 
 ## From the Community
