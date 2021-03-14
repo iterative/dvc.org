@@ -11,7 +11,7 @@ usage: dvc config [-h] [--global | --system | --local] [-q | -v] [-u]
 positional arguments:
   name     Option name in format: section.option or remote.name.option
            e.g. 'core.check_update', 'cache.dir', 'remote.myremote.url'
-  value          Option value.
+  value    Option value.
 ```
 
 ## Description
@@ -187,25 +187,26 @@ This section contains the following options, which affect the project's
   for example, they're determined using
   [`os.umask`](https://docs.python.org/3/library/os.html#os.umask).
 
-- `cache.local` - name of a _local remote_ to use as a
-  [custom cache](/doc/user-guide/managing-external-data#examples) directory.
-  (Refer to `dvc remote` for more information on "local remotes".) This will
-  overwrite the value provided to `dvc config cache.dir` or `dvc cache dir`.
+The following parameters allow setting an
+[external cache](/doc/user-guide/managing-external-data#examples) location. A
+[DVC remote](/doc/command-reference/remote) name is used (instead of the URL)
+because often it's necessary to configure authentication or other connection
+settings, and configuring a remote is the way that can be done.
 
-- `cache.s3` - name of an Amazon S3 remote to use as
-  [external cache](/doc/user-guide/managing-external-data#examples).
+- `cache.local` - name of a _local remote_ to use as external cache (refer to
+  `dvc remote` for more info. on "local remotes".) This will overwrite the value
+  in `cache.dir` (see `dvc cache dir`).
 
-- `cache.gs` - name of a Google Cloud Storage remote to use as
-  [external cache](/doc/user-guide/managing-external-data#examples).
+- `cache.s3` - name of an Amazon S3 remote to use as external cache.
 
-- `cache.ssh` - name of an SSH remote to use as
-  [external cache](/doc/user-guide/managing-external-data#examples).
+- `cache.gs` - name of a Google Cloud Storage remote to use as external cache.
 
-- `cache.hdfs` - name of an HDFS remote to use as
-  [external cache](/doc/user-guide/managing-external-data#examples).
+- `cache.ssh` - name of an SSH remote to use as external cache.
+
+- `cache.hdfs` - name of an HDFS remote to use as external cache.
 
 - `cache.webhdfs` - name of an HDFS remote with WebHDFS enabled to use as
-  [external cache](/doc/user-guide/managing-external-data#examples).
+  external cache.
 
 > Avoid using the same [DVC remote](/doc/command-reference/remote) (used for
 > `dvc push`, `dvc pull`, etc.) as external cache, because it may cause file
