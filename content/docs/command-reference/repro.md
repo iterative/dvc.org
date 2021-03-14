@@ -179,11 +179,10 @@ up-to-date and only execute the final stage.
   corresponding pipelines, including the target stages themselves. This option
   has no effect if `targets` are not provided.
 
-- `--pull` - [pulls](/doc/command-reference/pull) dependencies and outputs
-  involved in the stages being reproduced, if they are found in the
-  [default remote storage](/doc/command-reference/remote/default). Note that it
-  includes pulling any available run-cache (unless `--no-run-cache` is also
-  used).
+- `--pull` - downloads dependencies and outputs in the stages being reproduced
+  from the [default remote storage](/doc/command-reference/remote/default) (see
+  `dvc pull`) based on the run-cache. Note that this doesn't include initial
+  pipeline data sources (never found in the run-cache).
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
