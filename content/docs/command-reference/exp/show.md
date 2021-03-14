@@ -19,10 +19,11 @@ usage: dvc exp show [-h] [-q | -v] [-a] [-T] [--all-commits] [--no-pager]
 
 ## Description
 
-Displays experiments in a detailed table which includes their parent, name (or
-hash), metrics, and parameters. Only the experiments derived from the Git `HEAD`
-are shown by default but all experiments can be included with the
-`--all-commits` option. Example:
+Displays experiments and
+[checkpoints](/doc/command-reference/exp/run#checkpoints) in a detailed table
+which includes their parent, name (or hash), metrics, and parameters. Only the
+experiments derived from the Git `HEAD` are shown by default but all experiments
+can be included with the `--all-commits` option. Example:
 
 ```dvc
 $ dvc exp show

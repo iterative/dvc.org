@@ -12,7 +12,7 @@ usage: dvc run [-h] [-q | -v] -n <name> [-d <path>] [-o <path>]
                [-w <path>] [--no-exec] [-f]
                [--no-run-cache] [--no-commit]
                [--outs-persist <path>] [--outs-persist-no-cache <path>]
-               [--always-changed] [--external] [--desc <text>]
+               [-c <path>] [--always-changed] [--external] [--desc <text>]
                command
 
 positional arguments:
@@ -192,6 +192,10 @@ $ dvc run -n second_stage './another_script.sh $MYENVVAR'
 
 - `--outs-persist-no-cache <path>` - the same as `-outs-persist` except that
   outputs are not tracked by DVC (same as with `-O` above).
+
+- `-c <path`, `--checkpoints <path>` - the same as `-o` but also marks the
+  output as a [checkpoint](/doc/command-reference/exp/run#checkpoints). Implies
+  `--no-exec`. This makes the stage incompatible with `dvc repro`.
 
 - `-p [<path>:]<params_list>`, `--params [<path>:]<params_list>` - specify a set
   of [parameter dependencies](/doc/command-reference/params) the stage depends

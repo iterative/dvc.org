@@ -29,10 +29,10 @@ cache directory.
 
 ## Options
 
-- `--global` - modify a global config file (e.g. `~/.config/dvc/config`) instead
-  of the project's `.dvc/config`.
+- `--global` - modify the global config file (e.g. `~/.config/dvc/config`)
+  instead of the project's `.dvc/config`.
 
-- `--system` - modify a system config file (e.g. `/etc/dvc/config`) instead of
+- `--system` - modify the system config file (e.g. `/etc/dvc/config`) instead of
   `.dvc/config`.
 
 - `--local` - modify a local [config file](/doc/command-reference/config)

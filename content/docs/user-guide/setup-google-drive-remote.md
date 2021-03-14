@@ -8,7 +8,7 @@ DVC uses the Google Drive API to synchronize your DVC project data with this
 type of remote storage, so it's subject to certain usage limits and quotas,
 which by default are shared with other GDrive remote storage users. For heavy
 use, it's highly recommended to
-[connect using a custom Google Cloud project](#using-a-custom-google-cloud-project),
+[connect using a custom Google Cloud project](#using-a-custom-google-cloud-project-recommended),
 which puts you in control of these limits.
 
 Having your own GC project, it's also possible to
@@ -172,7 +172,7 @@ running inside a Compute Engine, automatic CI/CD, etc. No interactive user OAuth
 authentication is needed.
 
 > This requires having your own
-> [GC project](/doc/user-guide/setup-google-drive-remote#using-a-custom-google-cloud-project)
+> [GC project](/doc/user-guide/setup-google-drive-remote#using-a-custom-google-cloud-project-recommended)
 > as explained above.
 
 1. To
