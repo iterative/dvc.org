@@ -67,27 +67,26 @@ committing them to the Git repo. Unnecessary ones can be removed with
 To track successive steps in a longer <abbr>experiment</abbr>, you can register
 checkpoints with DVC during your code or script runtime (similar to a logger).
 
-To do so, first mark stage `outs` with `checkpoint: true` in `dvc.yaml`. Having
-at least a checkpoint <abbr>output</abbr> is needed so that the experiment can
-later restart based on that output's last <abbr>cached</abbr> state.
+To do so, first mark stage `outs` with `checkpoint: true` in `dvc.yaml`. At
+least one checkpoint <abbr>output</abbr> is needed so that the experiment can
+later restart based on it's last <abbr>cached</abbr> contents.
 
-⚠️ Using the `checkpoint` field in `dvc.yaml` is only compatibly with
-`dvc exp run`, `dvc repro` will abort if any stage contains it.
+⚠️ Note that using the `checkpoint` field in `dvc.yaml` is not compatibly with
+`dvc repro`.
 
 Then, in the corresponding code, either call the `dvc.api.make_checkpoint()`
 function (Python), or write a signal file (any programming language) following
-the same steps as `make_checkpoint()` — please refer to that reference for
-details.
+the same steps as `make_checkpoint()` — see the function reference for details.
 
 Once this is setup, you can use `dvc exp run` to begin the experiment. When the
 process finishes or gets interrupted (e.g. with Ctrl + `C`), DVC will
 [apply](/doc/command-reference/exp/apply) the last checkpoint to the
-<abbr>workspace</abbr> (overwriting any further changes done by the stage).
+<abbr>workspace</abbr> (overwrites any changes after the last checkpoint).
 
-`dvc exp run` again will continue from this point (useful for interrupted runs).
+Y`dvc exp run` again to continue from this point (useful for interrupted runs).
 Use `--reset` to roll-back the workspace to `HEAD` and restart the whole
-experiment. Alternatively, you can use `--rev` to continue from a specific
-(previous) checkpoint.
+experiment. Use `--rev` to continue from a specific (previous) checkpoint
+instead.
 
 Note that `dvc exp show` displays checkpoints with a special branching format.
 
