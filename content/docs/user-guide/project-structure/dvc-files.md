@@ -1,13 +1,12 @@
 # `.dvc` Files
 
 You can use `dvc add` to track data files or directories located in your current
-<abbr>workspace</abbr>, or in supported
-[external locations](/doc/user-guide/managing-external-data). Additionally,
-`dvc import` and `dvc import-url` let you bring data from external locations to
-your project, and start tracking it locally.
+<abbr>workspace</abbr>\*. Additionally, `dvc import` and `dvc import-url` let
+you bring data from external locations to your project, and start tracking it
+locally. See [Data Versioning](/doc/start/data-versioning) for more info.
 
-> See [Data Versioning](/doc/start/data-versioning) and
-> [Data Access](/doc/start/data-access) for more info.
+> \* Certain [external locations](/doc/user-guide/managing-external-data) are
+> also supported.
 
 Files ending with the `.dvc` extension ("dot DVC file") are created by these
 commands as data placeholders that can be versioned with Git. They contain the

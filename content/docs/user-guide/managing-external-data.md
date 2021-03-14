@@ -1,52 +1,51 @@
-# Managing External Data
+# External Outputs
 
-> ⚠️ This is an advanced feature that we don't recommend using unless you really
-> know what you are doing. Artifacts added with --external are not affected by
-> `dvc push/pull/status -c`. You are likely looking for straight
+> ⚠️ This is an advanced feature for very specific situations and not
+> recommended except if there's absolutely no other alternative. In most cases
+> alternatives like the
 > [to-cache](/doc/command-reference/add#example-transfer-to-the-cache) or
 > [to-remote](/doc/command-reference/add#example-transfer-to-remote-storage)
-> transfers, or `dvc import-url`).
+> strategies of `dvc add` and `dvc import-url` are more convenient. **Note**
+> that external outputs are not pushed or pulled from/to
+> [remote storage](/doc/command-reference/remote).
 
 There are cases when data is so large, or its processing is organized in such a
-way, that its preferable to avoid moving it from its original location. For
-example data on a network attached storage (NAS), processing data on HDFS,
-running [Dask](https://dask.org/) via SSH, or for a script that streams data
-from S3 to process it.
+way, that its impossible to handle it in the local machine disk. For example
+versioning existing data on a network attached storage (NAS), processing data on
+HDFS, running [Dask](https://dask.org/) via SSH, or any code that generates
+massive files directly to the cloud.
 
-External outputs and
-[external dependencies](/doc/user-guide/external-dependencies) provide ways to
+External outputs (and
+[external dependencies](/doc/user-guide/external-dependencies)) provide ways to
 track and version data outside of the <abbr>project</abbr>.
 
 ## How external outputs work
 
-External <abbr>outputs</abbr> are considered part of the (extended) DVC project:
-DVC will track them for
+External <abbr>outputs</abbr> are considered part of the (extended)
+<abbr>workspace</abbr>: DVC will track them for
 [versioning](/doc/use-cases/versioning-data-and-model-files), detecting when
 they change (reported by `dvc status`, for example).
 
-To use existing files or directories in an external location as
-[stage](/doc/command-reference/run) outputs, give their remote URLs or external
-paths to `dvc add`, or put them in `dvc.yaml` (`deps` field). Use the same
-format as the `url` of certain `dvc remote` types. Currently, the following
-protocols are supported:
+To use existing files or directories in an external location as outputs, give
+their remote URLs or external paths to `dvc add`, or put them in `dvc.yaml`
+(`deps` field). Use the same format as the `url` of the following supported
+`dvc remote` types/protocols:
 
 - Amazon S3
 - SSH
 - HDFS
-- Local files and directories outside the <abbr>workspace</abbr>
+- Local files and directories outside the workspace
 
-External outputs require an
+⚠️ External outputs require an
 [external cache](/doc/use-cases/shared-development-server#configure-the-external-shared-cache)
 in the same external/remote file.
 
-> Note that [remote storage](/doc/command-reference/remote) is a different
-> feature, and that external outputs are not pushed or pulled from/to DVC
-> remotes.
+> Avoid using the same DVC remote used for `dvc push`, `dvc pull`, etc. as
+> external cache, because it may cause data collisions: the hash of an external
+> output could collide with that of a local file with different content.
 
-> ⚠️ Avoid using the same DVC remote used for `dvc push`, `dvc pull`, etc. for
-> external outputs, because it may cause data collisions: the hash of an
-> external output could collide with that of a local file with different
-> content.
+> Note that [remote storage](/doc/command-reference/remote) is a different
+> feature.
 
 ## Examples
 
