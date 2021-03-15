@@ -39,12 +39,8 @@ provided with `--out`). An _import `.dvc` file_ is created in the same location
 e.g. `data.txt.dvc` – similar to using `dvc add` after downloading the data.
 
 (ℹ️) DVC won't push or pull data imported from other DVC repos to/from
-[remote storage](/doc/command-reference/remote), it will rely on the original
-source instead.
-
-> Note that imported data can be [pushed](/doc/command-reference/push) and
-> [pulled](/doc/command-reference/pull) to/from
-> [remote storage](/doc/command-reference/remote) normally.
+[remote storage](/doc/command-reference/remote). `dvc pull` will download from
+the original source instead.
 
 The `url` argument specifies the address of the DVC or Git repository containing
 the data source. Both HTTP and SSH protocols are supported (e.g.
@@ -158,7 +154,7 @@ outs:
     cache: true
 ```
 
-Several of the values above are pulled from the original `.dvc` file
+Several of the values above are obtained from the original `.dvc` file
 `model.pkl.dvc` in the external DVC repository. The `url` and `rev_lock`
 subfields under `repo` are used to save the origin and version of the
 dependency, respectively.

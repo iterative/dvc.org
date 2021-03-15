@@ -57,6 +57,8 @@ Note that the `dvc status -c` command can list files tracked by DVC that are new
 in the cache (compared to the default remote.) It can be used to see what files
 `dvc push` would upload.
 
+> Note that `dvc push` doesn't upload `dvc import` data.
+
 ## Options
 
 - `-a`, `--all-branches` - determines the files to upload by examining
