@@ -348,29 +348,30 @@ The `--out` option lets you add external data in a way that it's
 [linked](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
 to a given path inside the <abbr>workspace</abbr>. Combined with an
 [external cache](/doc/use-cases/shared-development-server#configure-the-external-shared-cache)
-setup, this let's you avoid using your local file system completely.
+and the right
+[kind of links](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache),
+this let's you avoid using the local file system completely.
 
 For example, we can add a `data.xml` file via HTTP, outputting it to a local
 path in our project:
 
 ```dvc
-$ dvc add https://data.dvc.org/get-started/data.xml -o data.xml
+$ dvc add https://data.dvc.org/get-started/data.xml -o raw/data.xml
 
 $ ls
 data.xml data.xml.dvc
 ```
 
-The resulting `.dvc` file will save the provided local `path` as if the data was
-always in the workspace, while the `md5` hash points to the copy of the data
-that has now been transferred to the <abbr>cache</abbr> (which again, we assume
-it's already setup in some storage drive that can handle it). Let's check the
-contents of `data.xml.dvc`:
+The local `data.xml` should be a symlink or hardlink to the externally
+<abbr>cached</abbr> data that was transferred. The resulting `.dvc` file will
+save the local `path` as if the data was already there before this command.
+Let's check the contents of `data.xml.dvc`:
 
 ```yaml
 outs:
   - md5: a304afb96060aad90176268345e10355
     nfiles: 1
-    path: data.xml
+    path: raw/data.xml
 ```
 
 > For a similar operation that actually keeps a connection to the data source,
