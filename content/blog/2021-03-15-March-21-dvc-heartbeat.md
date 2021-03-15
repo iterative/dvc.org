@@ -63,11 +63,10 @@ will find his clever cryptograph handle helping you out in Discord with your CML
 questions. Fun fact: Our two CML engineers, Helio and David Ortega live just 300
 km apart in Spain! CML has some Spanish flare! 💃🏻🇪🇸
 
-[**MikHail Rozhkov**](https://www.linkedin.com/in/mikhail-rozhkov-33549118/) 
-joins us from Moscow, Russia as a Solution Engineer. Mikhail has been working 
+[**MikHail Rozhkov**](https://www.linkedin.com/in/mikhail-rozhkov-33549118/)
+joins us from Moscow, Russia as a Solution Engineer. Mikhail has been working
 with DVC for 2+ years in the banking industry and is also the creator of the
-[**Machine Learning REPA**](https://mlrepa.com) community as well as created 
-our
+[**Machine Learning REPA**](https://mlrepa.com) community as well as created our
 [**first course on Udemy**](https://www.udemy.com/course/machine-learning-experiments-and-engineering-with-dvc/).
 We are so excited to have him officially join our team full-time!
 
