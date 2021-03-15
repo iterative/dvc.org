@@ -154,11 +154,8 @@ not.
   > above).
 
 - `-o <path>`, `--out <path>` - destination `path` inside the workspace to link
-  (or copy) a data target, which will now be tracked by DVC. Note that combining
-  this with an
-  [external cache transfer](#example-transfer-to-an-external-cache), or with the
-  `--to-remote` option, let's you avoid storing an external target locally,
-  while still adding it to the project.
+  (or copy) a data target (instead of using the current working directory).
+  Directories specified in the path will be created by this command.
 
 - `--to-remote` - import an external target, but don't move it into the
   workspace, nor cache it. [Transfer it](#example-transfer-to-remote-storage) it

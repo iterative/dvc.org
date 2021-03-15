@@ -79,10 +79,10 @@ repo at `url`) are not supported.
 
 ## Options
 
-- `-o <path>`, `--out <path>` - specify a path to the desired location in the
-  workspace to place the downloaded file or directory (instead of using the
-  current working directory). Directories specified in the path must already
-  exist, otherwise this command will fail.
+- `-o <path>`, `--out <path>` - destination `path` inside the workspace to place
+  the downloaded file or directory (instead of using the current working
+  directory). Directories specified in the path must already exist, otherwise
+  this command will fail.
 
 - `--file <filename>` - specify a path and/or file name for the `.dvc` file
   created by this command (e.g. `--file stages/stage.dvc`). This overrides the
