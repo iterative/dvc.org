@@ -2,7 +2,8 @@
 title: March '21 Heartbeat
 date: 2021-03-15
 description: |
-  Monthly updates are here! News, use cases, videos, journal publications and more!
+  Monthly updates are here! News, use cases, videos, journal publications and
+  more!
 descriptionLong: |
   Monthly updates are here! Read all about our growing team, 
   our CEO's interview on TFIR, Elle's talk at DataTalks.Club Conference and more!
@@ -25,9 +26,9 @@ in the know.
 
 ## ICYMI - DVC 2.0 is here!
 
-If you somehow missed our 
-[March 3rd announcment](https://dvc.org/blog/dvc-2-0-release), DVC 2.0 is here with loads of
-features to make your life easier.
+If you somehow missed our
+[March 3rd announcment](https://dvc.org/blog/dvc-2-0-release), DVC 2.0 is here
+with loads of features to make your life easier.
 
 🧪 Lightweight ML experiments
 
