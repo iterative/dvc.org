@@ -37,10 +37,11 @@ After checking that each `target` isn't already tracked with DVC, a few actions
 are taken under the hood:
 
 1. Calculate the file hash.
-2. Move the file contents to the cache (transfer them to remote storage with
-   `--to-remote`), using the file hash to form the cached file path (see
+2. Move the file contents to the cache, using the file hash to form the cached
+   file path (see
    [Structure of cache directory](/doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory)
-   for details).
+   for details). Using the `--out` and `--to-remote` options with an external
+   target, the data is copied instead (to cache or remote storage).
 3. Attempt to replace the file with a link to (or copy of) the cached data (more
    details on file linking ahead). A new link is created if a different `--out`
    `path` is given. Skipped if `--to-remote` is used
@@ -151,13 +152,13 @@ not.
 - `--to-remote` - allow a target outside of the DVC repository (e.g. an S3
   object, SSH directory URL, file on mounted volume, etc.) but don't move it
   into the workspace, nor cache it.
-  [Transfer it](#example-transfer-to-remote-storage) it directly to remote
-  storage instead (the default one unless `-r` is specified). Use `dvc pull` to
-  get the data locally.
+  [Store a copy](#example-transfer-to-remote-storage) on a remote directly
+  instead (the default one unless `-r` is specified). Use `dvc pull` to get the
+  data locally later.
 
 - `-r <name>`, `--remote <name>` - name of the
-  [remote storage](/doc/command-reference/remote) to transfer external target to
-  (can only be used with `--to-remote`).
+  [remote](/doc/command-reference/remote) to store an external target on (can
+  only be used with `--to-remote`).
 
 - `--external` - allow `targets` that are outside of the DVC repository, to
   track in-place. See
@@ -362,10 +363,10 @@ $ ls
 data.xml data.xml.dvc
 ```
 
-The local `data.xml` should be a symlink or hardlink to the externally
-<abbr>cached</abbr> data that was transferred. The resulting `.dvc` file will
-save the local `path` as if the data was already there before this command.
-Let's check the contents of `data.xml.dvc`:
+The local `data.xml` should be a symlink or hard link to the externally
+<abbr>cached</abbr> data copy. The resulting `.dvc` file will save the local
+`path` as if the data was already there before this command. Let's check the
+contents of `data.xml.dvc`:
 
 ```yaml
 outs:
@@ -384,14 +385,13 @@ dataset found externally into a regular <abbr>project</abbr> (with a local
 <abbr>cache</abbr>). Can it be done without downloading the data locally (for
 now)? Yes!
 
-The `--to-remote` option lets you transfer a copy of the target data to
-[remote storage](/doc/command-reference/remote), while creating a `.dvc` file
+The `--to-remote` option lets you store a copy of the target data on a
+[DVC remote](/doc/command-reference/remote), while creating a `.dvc` file
 locally so it can be [pulled](/doc/command-reference/plots) later. This is a way
 to "bootstrap" your project in your local machine, to be reproduced on the right
 environment later (e.g. a GPU cloud server or a CI/CD system).
 
-Let's setup a simple remote and transfer a `data.xml` file from the web into it
-via DVC:
+Let's setup a simple remote and add a `data.xml` file from the web this way:
 
 ```dvc
 $ mkdir /tmp/dvc-storage

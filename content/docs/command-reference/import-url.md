@@ -48,9 +48,9 @@ similar to using `dvc add` after downloading the data. It saves the information
 about the data source, so the import can be updated later if the data source has
 changed (see `dvc update`).
 
-💡 Using the `--to-remote` option lets you
-[transfer](#example-transfer-to-remote-storage) an import without using the
-local file system.
+💡 The `--to-remote` option lets you store an import
+[on remote storage](#example-transfer-to-remote-storage) without using the local
+file system.
 
 > Note that data imported from external locaitons can be
 > [pushed](/doc/command-reference/push) and
@@ -366,12 +366,12 @@ Normally, `dvc import-url` downloads the target data (to the <abbr>cache</abbr>)
 in order to link and track it locally. But what if there's not enough disk space
 for the download?
 
-You can use the `--to-remote` option so the target data is transferred to
-[remote storage](/doc/command-reference/remote), while also tracked via an
+You can use the `--to-remote` option to store a copy of the target on a
+[DVC remote](/doc/command-reference/remote) directly, while also tracked via an
 import `.dvc` file in the project.
 
 Let's setup a simple remote and create an import `.dvc` file without downloading
-the target data, transferring it directly to the remote:
+the target data:
 
 ```
 $ mkdir /tmp/dvc-storage
