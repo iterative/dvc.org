@@ -148,8 +148,10 @@ not.
 - `--external` - allow `targets` that are outside of the DVC repository. See
   [Managing External Data](/doc/user-guide/managing-external-data).
 
-  > Note that external outputs typically require an external cache setup. See
-  > link above for more details.
+  > ⚠️ Note that this is an advanced feature for very specific situations and
+  > not recommended except if there's absolutely no other alternative.
+  > Additionally, this typically requires an external cache setup (see link
+  > above).
 
 - `-o <path>`, `--out <path>` - destination `path` to make a local target copy,
   or to [transfer](#example-transfer-to-cache) an external target into the cache

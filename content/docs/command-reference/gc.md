@@ -13,27 +13,24 @@ usage: dvc gc [-h] [-q | -v] [-w] [-a] [-T] [--all-commits]
 
 ## Description
 
-This command deletes (garbage collects) data files or directories that exist in
-DVC cache but are no longer needed. With `--cloud` it also removes data in
+This command can delete (garbage collect) data files or directories that exist
+in the cache but are no longer needed. With `--cloud`, it also removes data in
 [remote storage](/doc/command-reference/remote).
 
-To avoid accidentally deleting data, it raises an error and doesn't touch any
-files if no scope options are provided. It means it's user's responsibility to
-explicitly provide the right set of options to specify what data is still needed
-(so that DVC can figure out what files can be safely deleted).
+To avoid accidentally deleting data, `dvc gc` doesn't do anything unless one or
+a combination of scope options are provided (`--workspace`, `--all-branches`,
+`--all-tags`, `--all-commits`). Use these to indicate which cached files are
+still needed. See the [Options](#options) section for more details.
 
-One of the scope options (`--workspace`, `--all-branches`, `--all-tags`,
-`--all-commits`, `--all-experiments`) or a combination of them must be provided.
-Each of them corresponds to keeping the data for the current workspace, and for
-a certain set of commits (determined by reading the <abbr>DVC files</abbr> in
-them). See the [Options](#options) section for more details.
+The data kept is determined by reading the <abbr>DVC files</abbr> in the set of
+commits of the given scope.
 
 > Note that `dvc gc` tries to fetch any missing
 > [`.dir` files](/doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory)
 > from [remote storage](/doc/command-reference/remote) to the local
 > <abbr>cache</abbr>, in order to determine which files should exist inside
 > cached directories. These files may be missing if the cache directory was
-> previously garbage collected, in a newly cloned copy of the repo, etc.
+> previously garbage collected, or in a newly cloned copy of the repo, etc.
 
 Unless the `--cloud` option is used, `dvc gc` does not remove data files from
 any remote. This means that any files collected from the local cache can be

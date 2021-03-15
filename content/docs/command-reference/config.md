@@ -208,10 +208,10 @@ settings, and configuring a remote is the way that can be done.
 - `cache.webhdfs` - name of an HDFS remote with WebHDFS enabled to use as
   external cache.
 
-> Avoid using the same [DVC remote](/doc/command-reference/remote) (used for
-> `dvc push`, `dvc pull`, etc.) as external cache, because it may cause file
+> ⚠️ Avoid using the same [remote storage](/doc/command-reference/remote) used
+> for `dvc push` and `dvc pull` as external cache, because it may cause file
 > hash overlaps: the hash of an external <abbr>output</abbr> could collide with
-> a hash generated locally for another file with different content.
+> that of a local file with different content.
 
 ### state
 
