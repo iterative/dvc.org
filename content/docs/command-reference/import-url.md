@@ -143,8 +143,8 @@ $ dvc run -n download_data \
 
 - `--to-remote` - import an external target, but don't move it into the
   workspace, nor cache it. [Transfer](#example-import-straight-to-the-remote) it
-  directly to remote storage (the default one, unless `-r` is specified)
-  instead. Use `dvc pull` to get the data locally.
+  directly to remote storage (the default one unless `-r` is specified) instead.
+  Use `dvc pull` to get the data locally.
 
 - `-r <name>`, `--remote <name>` - name of the
   [remote storage](/doc/command-reference/remote) (can only be used with
