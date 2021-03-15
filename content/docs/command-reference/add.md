@@ -352,7 +352,7 @@ to a given path inside the <abbr>workspace</abbr>. Combined with an
 [external cache](/doc/use-cases/shared-development-server#configure-the-external-shared-cache)
 setup, this let's you avoid using your local file system completely.
 
-For example, we can add a `data.xml` file via HTTP, outputting it a local path
+For example, we can add a `data.xml` file via HTTP, outputting it to a local path
 in our project:
 
 ```dvc
