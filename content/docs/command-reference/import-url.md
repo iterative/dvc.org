@@ -383,9 +383,9 @@ $ ls
 data.xml.dvc
 ```
 
-The only change in our local <abbr>workspace</abbr> is a the tiny `.dvc` file
-that was created. Whenever anyone wants to actually download the imported data
-(into a system that can handle it), they can use `dvc pull` as usual:
+The only change in our local <abbr>workspace</abbr> is the tiny `.dvc` file that
+was created. Whenever anyone wants to actually download the imported data (into
+a system that can handle it), they can use `dvc pull` as usual:
 
 ```
  $ dvc pull data.xml.dvc -r tmp_remote

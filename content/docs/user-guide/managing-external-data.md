@@ -8,7 +8,7 @@
 > In most cases the
 > [to-cache](/doc/command-reference/add#example-transfer-to-an-external-cache)
 > or [to-remote](/doc/command-reference/add#example-transfer-to-remote-storage)
-> strategies of `dvc add` and `dvc import-url` are more convenient.
+> strategies of `dvc add` and `dvc import-url` are better.
 
 There are cases when data is so large, or its processing is organized in such a
 way, that its impossible to handle it in the local machine disk. For example

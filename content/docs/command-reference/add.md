@@ -379,7 +379,7 @@ outs:
 
 ## Example: Transfer to remote storage
 
-Similarly to the previous scenario, you may sometimes want to track a large
+Similarly to the previous scenario, you may sometimes want to add a large
 dataset found externally into a regular <abbr>project</abbr> (with a local
 <abbr>cache</abbr>). Can it be done without downloading the data locally (for
 now)? Yes!
