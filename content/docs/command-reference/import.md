@@ -27,20 +27,25 @@ target file or directory (found at `path` in `url`), and tracks it in the local
 project. This makes it possible to update the import later, if the data source
 has changed (see `dvc update`).
 
-> Note that `dvc get` corresponds to the first step this command performs (just
-> download the data).
-
 > See `dvc list` for a way to browse repository contents to find files or
 > directories to import.
+
+> Note that `dvc get` corresponds to the first step this command performs (just
+> download the data).
 
 The imported data is <abbr>cached</abbr>, and linked (or copied) to the current
 working directory with its original file name e.g. `data.txt` (or to a location
 provided with `--out`). An _import `.dvc` file_ is created in the same location
 e.g. `data.txt.dvc` – similar to using `dvc add` after downloading the data.
 
-(ℹ️) DVC won't push or pull imported data to/from
-[remote storage](/doc/command-reference/remote), it will rely on it's original
-source.
+💡 Using an
+[external cache](/doc/use-cases/shared-development-server#configure-the-external-shared-cache)
+lets you transfer an import there (and link it in the <abbr>workspace</abbr>),
+without using the local file system.
+
+> Note that imported data can be [pushed](/doc/command-reference/push) and
+> [pulled](/doc/command-reference/pull) to/from
+> [remote storage](/doc/command-reference/remote) normally.
 
 The `url` argument specifies the address of the DVC or Git repository containing
 the data source. Both HTTP and SSH protocols are supported (e.g.
@@ -70,9 +75,9 @@ enable DVC efficiently determining whether the local copy is out of date.
 To actually [version the data](/doc/tutorials/get-started/data-versioning),
 `git add` (and `git commit`) the import `.dvc` file.
 
-Note that `dvc repro` doesn't check or update import `.dvc` files (see
-`dvc freeze`), use `dvc update` to bring the import up to date from the data
-source.
+Note that `dvc repro` doesn't check or update import `.dvc` files by default
+(see `dvc freeze`), use `dvc update` to bring the import up to date from the
+data source.
 
 Also note that chained imports (importing data that was imported into the source
 repo at `url`) are not supported.

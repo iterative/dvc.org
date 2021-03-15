@@ -6,8 +6,8 @@
 > [remote storage](/doc/command-reference/remote).
 >
 > In most cases the
-> [to-cache](/doc/command-reference/add#example-transfer-to-the-cache) or
-> [to-remote](/doc/command-reference/add#example-transfer-to-remote-storage)
+> [to-cache](/doc/command-reference/add#example-transfer-to-an-external-cache)
+> or [to-remote](/doc/command-reference/add#example-transfer-to-remote-storage)
 > strategies of `dvc add` and `dvc import-url` are more convenient.
 
 There are cases when data is so large, or its processing is organized in such a

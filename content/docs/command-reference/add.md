@@ -153,10 +153,12 @@ not.
   > Additionally, this typically requires an external cache setup (see link
   > above).
 
-- `-o <path>`, `--out <path>` - destination `path` to make a local target copy,
-  or to [transfer](#example-transfer-to-cache) an external target into the cache
-  (and link to workspace). Note that this can be combined with `--to-remote` to
-  avoid storing the data locally, while still adding it to the project.
+- `-o <path>`, `--out <path>` - destination `path` inside the workspace to link
+  (or copy) a data target, which will now be tracked by DVC. Note that combining
+  this with an
+  [external cache transfer](#example-transfer-to-an-external-cache), or with the
+  `--to-remote` option, let's you avoid storing an external target locally,
+  while still adding it to the project.
 
 - `--to-remote` - import an external target, but don't move it into the
   workspace, nor cache it. [Transfer it](#example-transfer-to-remote-storage) it
@@ -336,28 +338,21 @@ $ tree .dvc/cache
 Only the hash values of the `dir/` directory (with `.dir` file extension) and
 `file2` have been cached.
 
-## Example: Transfer to the cache
+## Example: Transfer to an external cache
 
-When you have a large dataset in an external location, you may want to add it to
-the <abbr>project</abbr> without having to copy it into the workspace. Maybe
-your local disk doesn't have enough space, but you have setup an
-[external cache](/doc/use-cases/shared-development-server#configure-the-external-shared-cache)
-that could handle it.
+Sometimes you may want to add a large dataset currently found in an external
+location, so it becomes local to the project. However, your local file system
+may not have enough space to download it — which is needed to add data in DVC,
+right? Not necessarily!
 
-The `--out` option lets you add external paths in a way that they are
+The `--out` option lets you add external data in a way that it's
 <abbr>cached</abbr> first, and then
 [linked](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
-to a given path inside the <abbr>workspace<abbr>. Let's initialize an example
-DVC project to try this:
+to a given path inside the <abbr>workspace</abbr>. Combined with an
+[external cache](/doc/use-cases/shared-development-server#configure-the-external-shared-cache)
+setup, this let's you avoid using your local file system completely.
 
-```dvc
-$ mkdir example # workspace
-$ cd example
-$ git init
-$ dvc init
-```
-
-Now we can add a `data.xml` file via HTTP for example, putting it a local path
+For example, we can add a `data.xml` file via HTTP, outputting it a local path
 in our project:
 
 ```dvc
@@ -368,9 +363,10 @@ data.xml data.xml.dvc
 ```
 
 The resulting `.dvc` file will save the provided local `path` as if the data was
-already in the workspace, while the `md5` hash points to the copy of the data
-that has now been transferred to the <abbr>cache</abbr>. Let's check the
-contents of `data.xml.dvc` in this case:
+always in the workspace, while the `md5` hash points to the copy of the data
+that has now been transferred to the <abbr>cache</abbr> (which again, we assume
+it's already setup in some storage drive that can handle it). Let's check the
+contents of `data.xml.dvc`:
 
 ```yaml
 outs:
@@ -384,43 +380,37 @@ outs:
 
 ## Example: Transfer to remote storage
 
-When you have a large dataset in an external location, you may want to track it
-as if it was in your project, but without downloading it locally (for now). The
-`--to-remote` option lets you do so, while storing a copy
-[remotely](/doc/command-reference/remote) so it can be
-[pulled](/doc/command-reference/plots) later. Let's initialize a DVC project,
-and setup a remote:
+Similarly to the previous scenario, you may sometimes want to track a large
+dataset found externally into a regular <abbr>project</abbr> (with a local
+<abbr>cache</abbr>). Can it be done without downloading the data locally (for
+now)? Yes!
+
+The `--to-remote` option lets you transfer a copy of the target data to
+[remote storage](/doc/command-reference/remote), while creating a `.dvc` file
+locally so it can be [pulled](/doc/command-reference/plots) later. This is a way
+to "bootstrap" your project in your local machine, to be reproduced on the right
+environment later (e.g. a GPU cloud server or a CI/CD system).
+
+Let's setup a simple remote and transfer a `data.xml` file from the web into it
+via DVC:
 
 ```dvc
-$ mkdir example # workspace
-$ cd example
-$ git init
-$ dvc init
 $ mkdir /tmp/dvc-storage
 $ dvc remote add myremote /tmp/dvc-storage
-```
-
-Now let's add the `data.xml` to our remote storage from the given remote
-location.
-
-```dvc
 $ dvc add https://data.dvc.org/get-started/data.xml -o data.xml \
                  --to-remote -r myremote
 ...
-```
-
-The only difference that dataset is transferred straight to remote, so DVC won't
-control the remote location you gave but rather continue managing your remote
-storage where the data is now on. The operation will still be resulted with an
-`.dvc` file:
-
-```dvc
 $ ls
 data.xml.dvc
 ```
 
-Whenever anyone wants to actually download the added data (for example from a
-system that can handle it), they can use `dvc pull` as usual:
+> Note that this can be combined with `--out` to specify a local destination
+> `path` (written to the `.dvc` file).
+
+DVC won't control the original data source after this, but rather continue
+managing your remote storage, where the data is now found. Whenever anyone wants
+to actually download the added data (from a system that can handle it), they can
+use `dvc pull` as usual:
 
 ```dvc
  $ dvc pull data.xml.dvc -r tmp_remote
