@@ -43,6 +43,10 @@ e.g. `data.txt.dvc` – similar to using `dvc add` after downloading the data.
 lets you transfer an import there (and link it in the <abbr>workspace</abbr>),
 without using the local file system.
 
+(ℹ️) DVC won't push or pull data imported from other DVC repos to/from
+[remote storage](/doc/command-reference/remote), it will rely on the original
+source instead.
+
 > Note that imported data can be [pushed](/doc/command-reference/push) and
 > [pulled](/doc/command-reference/pull) to/from
 > [remote storage](/doc/command-reference/remote) normally.

@@ -54,9 +54,11 @@ or the `--to-remote` option lets you
 [transfer](#example-transfer-to-remote-storage) an import without using the
 local file system.
 
-> Note that imported data can be [pushed](/doc/command-reference/push) and
+> Note that data imported from external locaitons can be
+> [pushed](/doc/command-reference/push) and
 > [pulled](/doc/command-reference/pull) to/from
-> [remote storage](/doc/command-reference/remote) normally.
+> [remote storage](/doc/command-reference/remote) normally (unlike for
+> `dvc import`).
 
 `.dvc` files support references to data in an external location, see
 [External Dependencies](/doc/user-guide/external-dependencies). In such an
