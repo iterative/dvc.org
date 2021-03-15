@@ -340,9 +340,8 @@ Only the hash values of the `dir/` directory (with `.dir` file extension) and
 ## Example: Transfer to an external cache
 
 Sometimes you may want to add a large dataset currently found in an external
-location, so it becomes local to the project. However, your local file system
-may not have enough space to download it — which is needed to add data in DVC,
-right? Not necessarily!
+location, so it becomes local to the project. But what if there's not enough
+disk space to download the data first?
 
 The `--out` option lets you add external data in a way that it's
 <abbr>cached</abbr> first, and then
