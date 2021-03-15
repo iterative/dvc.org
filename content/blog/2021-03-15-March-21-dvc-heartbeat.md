@@ -6,7 +6,8 @@ description: |
   more!
 descriptionLong: |
   Monthly updates are here! Read all about our growing team, 
-  our CEO's interview on TFIR, Elle's talk at DataTalks.Club Conference and more!
+  our CEO's interview on TFIR, Elle's talk at DataTalks.Club Conference and 
+  more!
 picture: 2021-03-15/mar21cover.png
 author: jeny_defigueiredo
 commentsUrl: https://discuss.dvc.org/t/february-21-heartbeat/669
@@ -19,8 +20,8 @@ tags:
 
 ## News
 
-Welcome to March! It's been a great month already! Here's all that will keep you
-in the know.
+Welcome to March! It's been a great month already! Here's all that will keep 
+you in the know.
 
 ![UnderRock](https://media.giphy.com/media/J2gg8fO7RarRgQRC4d/giphy.gif)
 
@@ -50,22 +51,23 @@ We have three new team members this month!
 
 [**Laurens Duijvesteijn**](https://www.linkedin.com/in/duijf/) joins the team
 from Utrecht, The Netherlands as a backend infrastructure engineer. Previously
-he led a devops team at Channable where he learned that he really enjoys working
-on developer tools and empowering people to do great work. When not solving dev
-chanllenges, he enjoys bouldering/climbing, snowboarding and hiking! Welcome
-Laurens!
+he led a devops team at Channable where he learned that he really enjoys 
+working on developer tools and empowering people to do great work. When not 
+solving dev challenges, he enjoys bouldering/climbing, snowboarding and hiking!
+Welcome Laurens!
 
-[**Helio Machado**](https://github.com/0x2b3bfa0) joins our team from Spain as a
-CML engineer! Helio comes from a heutogogic background, mainly focused on the
+[**Helio Machado**](https://github.com/0x2b3bfa0) joins our team from Spain as 
+a CML engineer! Helio comes from a heutogogic background, mainly focused on the
 Free and Open Source culture and technologies from a systems perspective. You
-will find his clever cryptograph handle helping you out in Discord with your CML
-questions. Fun fact: Our two CML engineers, Helio and David Ortega live just 300
-km apart in Spain! CML has some Spanish flare! 💃🏻🇪🇸
+will find his clever cryptograph handle helping you out in Discord with your 
+CML questions. Fun fact: Our two CML engineers, Helio and David Ortega live 
+just 300 km apart in Spain! CML has some Spanish flare! 💃🏻🇪🇸
 
 [**MikHail Rozhkov**](linkedin.com/in/mikhail-rozhkov-33549118/) joins us from
 Moscow, Russia as a Solution Engineer. Mikhail has been working with DVC for 2+
 years in the banking industry and is also the creator of the
-[**Machine Learning REPA**](https://mlrepa.com) community as well as created our
+[**Machine Learning REPA**](https://mlrepa.com) community as well as created 
+our
 [**first course on Udemy**](https://www.udemy.com/course/machine-learning-experiments-and-engineering-with-dvc/).
 We are so excited to have him officially join our team full-time!
 
@@ -82,8 +84,8 @@ this exciting project!
 
 Our search continues for a
 [Developer Advocate](https://weworkremotely.com/remote-jobs/iterative-developer-advocate)
-to support and inspire developers by creating new content like blogs, tutorials,
-and videos - plus lead outreach through meetups and conferences.
+to support and inspire developers by creating new content like blogs, 
+tutorials, and videos - plus lead outreach through meetups and conferences.
 
 Does this sound like you or someone you know? Be in touch!
 
@@ -109,8 +111,8 @@ https://www.youtube.com/watch?v=lv2cpm9Pduk
 [DataTalks.Club](http://datatalks.club/) Conference with
 [**Alexey Grigorev**](https://twitter.com/Al_Grigor) and
 [**Demtrios Brinkmann**](https://www.linkedin.com/in/dpbrinkm/) of
-[MLOps Community](https://open.spotify.com/show/7wZygk3mUUqBaRbBGB1lgh). You can
-catch her talk starting at 3:03 below. 👇🏼
+[MLOps Community](https://open.spotify.com/show/7wZygk3mUUqBaRbBGB1lgh). You 
+can catch her talk starting at 3:03 below. 👇🏼
 
 <external-link 
 href="https://www.youtube.com/watch?v=og1DG1KZ71c&t=11382s"
@@ -136,9 +138,9 @@ image="/uploads/images/2021-03-15/matsui-lab-blog.png"/>
 
 ### Healthcare Use Case Video Tutorial
 
-[**Danial Senejohnny**](https://www.linkedin.com/in/danial-senejohnny/) created
-this video outlining the use of DVC for healthcare institutes where the data
-must be kept private and on premise data store is preferred. 👇🏼
+[**Danial Senejohnny**](https://www.linkedin.com/in/danial-senejohnny/) 
+created this video outlining the use of DVC for healthcare institutes where the 
+data must be kept private and on premise data store is preferred. 👇🏼
 
 https://www.youtube.com/watch?v=K1iyWr4Z6go
 
