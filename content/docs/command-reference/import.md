@@ -38,11 +38,6 @@ working directory with its original file name e.g. `data.txt` (or to a location
 provided with `--out`). An _import `.dvc` file_ is created in the same location
 e.g. `data.txt.dvc` – similar to using `dvc add` after downloading the data.
 
-💡 Using an
-[external cache](/doc/use-cases/shared-development-server#configure-the-external-shared-cache)
-lets you transfer an import there (and link it in the <abbr>workspace</abbr>),
-without using the local file system.
-
 (ℹ️) DVC won't push or pull data imported from other DVC repos to/from
 [remote storage](/doc/command-reference/remote), it will rely on the original
 source instead.

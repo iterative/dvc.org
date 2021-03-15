@@ -48,9 +48,7 @@ similar to using `dvc add` after downloading the data. It saves the information
 about the data source, so the import can be updated later if the data source has
 changed (see `dvc update`).
 
-💡 Using an
-[external cache](/doc/use-cases/shared-development-server#configure-the-external-shared-cache)
-or the `--to-remote` option lets you
+💡 Using the `--to-remote` option lets you
 [transfer](#example-transfer-to-remote-storage) an import without using the
 local file system.
 
@@ -368,10 +366,7 @@ Normally, `dvc import-url` downloads the target data (to the <abbr>cache</abbr>)
 in order to link and track it locally. But what if there's not enough disk space
 for the download?
 
-One option is to setup an
-[external cache](/doc/use-cases/shared-development-server#configure-the-external-shared-cache)
-in a location that can handle the data. Another is to use the `--to-remote`
-option so the target data is transferred to
+You can use the `--to-remote` option so the target data is transferred to
 [remote storage](/doc/command-reference/remote), while also tracked via an
 import `.dvc` file in the project.
 
