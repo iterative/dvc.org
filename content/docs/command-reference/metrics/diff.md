@@ -3,6 +3,8 @@
 Compare [metrics](/doc/command-reference/metrics) between two commits in the
 <abbr>DVC repository</abbr>, or between a commit and the <abbr>workspace</abbr>.
 
+> Requires that Git is being used to version the project.
+
 ## Synopsis
 
 ```usage
@@ -20,26 +22,29 @@ positional arguments:
 
 ## Description
 
-This command provides a quick way to compare metrics among experiments in the
-repository history. The differences shown by this command include the new value,
-and numeric difference (delta) from the previous value of metrics (rounded to 5
+Provides a quick way to compare metrics among experiments in the repository
+history. The differences shown by this command include the new value, and
+numeric difference (delta) from the previous value of metrics (rounded to 5
 digits precision).
 
-`a_rev` and `b_rev` are Git commit hashes, tag, or branch names. If none are
-specified, `dvc metrics diff` compares metrics currently present in the
+Without arguments, `dvc metrics diff` compares metrics currently present in the
 <abbr>workspace</abbr> (uncommitted changes) with the latest committed versions
-(required). A single specified revision results in comparing the workspace and
-that version.
+(required). Only metrics that changed are listed, by default (show everything
+with `--all`).
 
-All metrics defined in `dvc.yaml` are used by default, but specific metrics
-files can be specified with the `--targets` option
+`a_rev` and `b_rev` are optional Git commit hashes, tags, or branch names to
+compare. A single specified revision results in comparing it against the
+workspace.
 
 > Note that targets don't necessarily have to be defined in `dvc.yaml`. For that
 > reason, this command doesn't require an existing DVC project to run in; It
 > works in any Git repo.
 
-Another way to display metrics is the `dvc metrics show` command, which just
-lists all the current metrics, without comparisons.
+All metrics defined in `dvc.yaml` are used by default, but specific metrics
+files can be specified with the `--targets` option.
+
+Another way to display metrics is the `dvc metrics show` command, which lists
+all the current metrics (without comparisons).
 
 ## Options
 
@@ -61,20 +66,21 @@ lists all the current metrics, without comparisons.
 
 - `--all` - list all metrics, including those without changes.
 
-- `--show-json` - prints the command's output in easily parsable JSON format,
+- `--show-json` - prints the command's output in JSON format (machine-readable)
   instead of a human-readable table.
 
-- `--show-md` - prints the command's output in Markdown table format.
+- `--show-md` - prints the command's output in the Markdown table format
+  ([GFM](https://github.github.com/gfm/#tables-extension-)).
 
-- `--old` - show old metric value in addition to the new value.
+- `--old` - include the "Old" value column in addition to the new "Value" (and
+  "Change"). Useful when the values are not numeric, for example
 
-- `--no-path` - don't show metric path in the result table. This option is
-  useful when only one metrics file is in use or there is no intersection
-  between the metric names.
+- `--no-path` - hide the "Path" column that lists the param/metrics file
+  location. Useful when only one metrics file exists, for example
 
 - `--precision <n>` -
-  [round](https://docs.python.org/3/library/functions.html#round) metrics to `n`
-  digits precision after the decimal point. Rounds to 5 digits by default.
+  [round](https://docs.python.org/3/library/functions.html#round) decimal values
+  to `n` digits of precision (5 by default).
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
