@@ -359,7 +359,7 @@ Running stage 'prepare' with command:
 	python src/prepare.py data/data.xml
 ```
 
-## Example: Transfer to remote storage {#straight-to-remote}
+## Example: Storing large data remotely {#straight-to-remote}
 
 Normally, `dvc import-url` downloads the target data (to the <abbr>cache</abbr>)
 in order to link and track it locally. But what if there's not enough disk space

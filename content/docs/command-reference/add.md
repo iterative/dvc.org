@@ -339,7 +339,7 @@ $ tree .dvc/cache
 Only the hash values of the `dir/` directory (with `.dir` file extension) and
 `file2` have been cached.
 
-## Example: Adding large data without using the disk {#straight-to-cache}
+## Example: Caching large data externally {#straight-to-cache}
 
 Sometimes you may want to add a large dataset currently found in an external
 location, so it becomes local to the project. But what if there's not enough
@@ -379,7 +379,7 @@ outs:
 > For a similar operation that actually keeps a connection to the data source,
 > please see `dvc import-url`.
 
-## Example: Transfer to remote storage {#straight-to-remote}
+## Example: Storing large data remotely {#straight-to-remote}
 
 Similarly to the previous scenario, you may sometimes want to add a large
 dataset found externally into a regular <abbr>project</abbr> (with a local
