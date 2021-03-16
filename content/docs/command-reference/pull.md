@@ -74,9 +74,6 @@ Note that the command `dvc status -c` can list files referenced in current
 stages (in `dvc.yaml`) or `.dvc` files, but missing from the cache. It can be
 used to see what files `dvc pull` would download.
 
-> Note that in the case of `dvc import` data, `dvc pull` downloads from the
-> original data source (an external DVC repo's remote storage, typically).
-
 ## Options
 
 - `-a`, `--all-branches` - determines the files to download by examining
