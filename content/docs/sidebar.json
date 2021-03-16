@@ -238,6 +238,30 @@
           {
             "label": "exp apply",
             "slug": "apply"
+          },
+          {
+            "label": "exp branch",
+            "slug": "branch"
+          },
+          {
+            "label": "exp remove",
+            "slug": "remove"
+          },
+          {
+            "label": "exp gc",
+            "slug": "gc"
+          },
+          {
+            "label": "exp push",
+            "slug": "push"
+          },
+          {
+            "label": "exp pull",
+            "slug": "pull"
+          },
+          {
+            "label": "exp list",
+            "slug": "list"
           }
         ]
       },
@@ -475,6 +499,18 @@
       {
         "label": "Install as a Package",
         "slug": "cml-with-npm"
+      }
+    ]
+  },
+  {
+    "label": "Dvclive",
+    "slug": "dvclive",
+    "source": "dvclive/index.md",
+    "children": [
+      "usage",
+      {
+        "label": "Dvclive with DVC",
+        "slug": "dvclive-with-dvc"
       }
     ]
   }
