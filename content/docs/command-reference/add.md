@@ -145,11 +145,11 @@ not.
   [pattern](https://docs.python.org/3/library/glob.html) specified in `targets`.
   Shell style wildcards supported: `*`, `?`, `[seq]`, `[!seq]`, and `**`
 
-- `-o <path>`, `--out <path>` - destination `path` inside the workspace to link
-  (or copy) a data target (instead of using the current working directory).
-  Directories specified in the path will be created by this command. Note that
-  this can be used [with an external cache](#straight-to-cache) to avoid using
-  the disk.
+- `-o <path>`, `--out <path>` - destination `path` inside the workspace to place
+  a data target (instead of using the current working directory). Directories
+  specified in the path will be created by this command. Note that this can be
+  used [with an external cache](#straight-to-cache) to avoid using the local
+  file system.
 
 - `--to-remote` - allow a target outside of the DVC repository (e.g. an S3
   object, SSH directory URL, file on mounted volume, etc.) but don't move it
@@ -158,8 +158,8 @@ not.
   get the data locally later.
 
 - `-r <name>`, `--remote <name>` - name of the
-  [remote](/doc/command-reference/remote) to store an external target on (can
-  only be used with `--to-remote`).
+  [remote](/doc/command-reference/remote) to store data on (can only be used
+  with `--to-remote`).
 
 - `--external` - allow `targets` that are outside of the DVC repository, to
   track in-place. See

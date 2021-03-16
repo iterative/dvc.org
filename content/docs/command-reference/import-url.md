@@ -146,8 +146,8 @@ $ dvc run -n download_data \
   data locally.
 
 - `-r <name>`, `--remote <name>` - name of the
-  [remote storage](/doc/command-reference/remote) (can only be used with
-  `--to-remote`).
+  [remote](/doc/command-reference/remote) to store data on (can only be used
+  with `--to-remote`).
 
 - `-j <number>`, `--jobs <number>` - parallelism level for DVC to download data
   from the source. The default value is `4 * cpu_count()`. For SSH remotes, the
