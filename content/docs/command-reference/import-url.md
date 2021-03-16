@@ -49,8 +49,7 @@ about the data source, so the import can be updated later if the data source has
 changed (see `dvc update`).
 
 💡 The `--to-remote` option lets you store an import
-[on remote storage](#example-transfer-to-remote-storage) without using the local
-file system.
+[on remote storage](#straight-to-remote) without using the local file system.
 
 > Note that data imported from external locaitons can be
 > [pushed](/doc/command-reference/push) and
@@ -142,9 +141,9 @@ $ dvc run -n download_data \
   want to "DVCfy" this state of the project (see also `dvc commit`).
 
 - `--to-remote` - import an external target, but don't move it into the
-  workspace, nor cache it. [Transfer](#example-import-straight-to-the-remote) it
-  directly to remote storage (the default one unless `-r` is specified) instead.
-  Use `dvc pull` to get the data locally.
+  workspace, nor cache it. [Store a copy](#straight-to-remote) on a remote
+  instead (the default one unless `-r` is specified). Use `dvc pull` to get the
+  data locally.
 
 - `-r <name>`, `--remote <name>` - name of the
   [remote storage](/doc/command-reference/remote) (can only be used with
@@ -360,7 +359,7 @@ Running stage 'prepare' with command:
 	python src/prepare.py data/data.xml
 ```
 
-## Example: Transfer to remote storage
+## Example: Transfer to remote storage {#straight-to-remote}
 
 Normally, `dvc import-url` downloads the target data (to the <abbr>cache</abbr>)
 in order to link and track it locally. But what if there's not enough disk space

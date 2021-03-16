@@ -5,10 +5,9 @@
 > external outputs are not pushed or pulled from/to
 > [remote storage](/doc/command-reference/remote).
 >
-> In most cases the
-> [to-cache](/doc/command-reference/add#example-transfer-to-an-external-cache)
-> or [to-remote](/doc/command-reference/add#example-transfer-to-remote-storage)
-> strategies of `dvc add` and `dvc import-url` are better.
+> In most cases the [to-cache](/doc/command-reference/add#straight-to-cache) or
+> [to-remote](/doc/command-reference/add#straight-to-remote) strategies of
+> `dvc add` and `dvc import-url` are better.
 
 There are cases when data is so large, or its processing is organized in such a
 way, that its impossible to handle it in the local machine disk. For example
