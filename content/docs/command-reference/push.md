@@ -30,7 +30,8 @@ use cases for these commands.
 [remote storage](/doc/command-reference/remote).
 
 > Note that pushing data does not affect code, `dvc.yaml`, or `.dvc` files.
-> Those should be uploaded with `git push`.
+> Those should be uploaded with `git push`. `dvc import` data is also ignored by
+> this command.
 
 The default remote is used (see `dvc remote default`) unless a specific one is
 given with `--remote`. See `dvc remote` for more information on how to configure

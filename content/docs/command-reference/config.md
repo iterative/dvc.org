@@ -45,10 +45,10 @@ multiple projects and users, respectively:
   }
 </style>
 
-| Flag       | Priority | Mac location                           | Linux location (typical\*) | Windows location                                          |
-| ---------- | -------- | -------------------------------------- | -------------------------- | --------------------------------------------------------- |
-| `--global` | 3        | `$HOME/Library/Preferences/dvc/config` | `$HOME/.config/dvc/config` | `%LocalAppData%\iterative\dvc\config`                     |
-| `--system` | 4        | `/Library/Preferences/dvc/config`      | `/etc/xdg/dvc/config`      | `%AllUsersProfile%\Application Data\iterative\dvc\config` |
+| Flag       | Priority | Mac location                                    | Linux location (typical\*) | Windows location                                          |
+| ---------- | -------- | ----------------------------------------------- | -------------------------- | --------------------------------------------------------- |
+| `--global` | 3        | `$HOME/Library/Application\ Support/dvc/config` | `$HOME/.config/dvc/config` | `%LocalAppData%\iterative\dvc\config`                     |
+| `--system` | 4        | `/Library/Application\ Support/dvc/config`      | `/etc/xdg/dvc/config`      | `%AllUsersProfile%\Application Data\iterative\dvc\config` |
 
 > \* For Linux, the global `dvc/config` may be found in `$XDG_CONFIG_HOME`, and
 > the system-wide one in `$XDG_CONFIG_DIRS[0]`, if those env vars are defined.
