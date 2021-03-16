@@ -52,9 +52,9 @@ $ dvc update --rev master
 - `--to-remote` - update a `.dvc` file created with `dvc import-url` and store
   the latest data directly
   [on remote storage](/doc/command-reference/import-url#straight-to-remote) (the
-  default one unless `-r` is specified). No changes are done in the
+  default one unless `-r` is specified). Tracked data is not changed in the
   <abbr>workspace</abbr>. Use `dvc pull` to get the data locally. This option
-  can't be used with DVC or Git repository imports.
+  can't be used with data imported from DVC or Git repos (with `dvc import`).
 
 - `-r <name>`, `--remote <name>` - name of the
   [remote storage](/doc/command-reference/remote) (can only be used with
