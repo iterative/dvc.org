@@ -80,8 +80,8 @@ But first, we may want to explore its contents.
 
 ### Listing data
 
-To explore the contents of a data DVC repo in search for the right data, use the
-`dvc list` command (similar to `ls` and 3rd-party tools like `aws s3 ls`):
+To explore the contents of a DVC repository in search for the right data, use
+the `dvc list` command (similar to `ls` and 3rd-party tools like `aws s3 ls`):
 
 ```dvc
 $ dvc list -R https://github.com/iterative/dataset-registry
