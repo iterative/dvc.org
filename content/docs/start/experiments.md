@@ -183,9 +183,10 @@ git push
 
 <details>
 
-### 💡 Expand for more info on remote storage.
+### 💡 Important information on storing experiments remotely.
 
-The commands in this section require both a default DVC remote and a Git remote.
+The commands in this section require both a `dvc remote default` and a
+[Git remote](https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes).
 A DVC remote stores the experiment data, and a Git remote stores the code,
 parameters, and other metadata associated with the experiment. DVC supports
 various types of remote storage (local file system, SSH, Amazon S3, Google Cloud
