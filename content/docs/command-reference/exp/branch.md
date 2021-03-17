@@ -88,4 +88,4 @@ $ git branch
   maxf-2000
 ```
 
-`maxf-2000` can now be merged, rebased, pushed, etc. like any other Git branch.
+`maxf-2000` can now be checked out, merged, rebased, pushed, etc. like any other Git branch.
