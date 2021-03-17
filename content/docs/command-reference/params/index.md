@@ -52,7 +52,7 @@ in the sample above) . These files are typically written manually (or they can
 be generated) and they can be versioned directly with Git.
 
 **Parameter values** should be organized in tree-like hierarchies (dictionaries)
-inside param files (see [Examples](#examples)). DVC will interpret param names
+inside params files (see [Examples](#examples)). DVC will interpret param names
 as the tree path to find those values. Supported types are: string, integer,
 float, and arrays (groups of params). Note that DVC does not ascribe any
 specific meaning to these values.
