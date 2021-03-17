@@ -153,9 +153,9 @@ not.
 
 - `--to-remote` - allow a target outside of the DVC repository (e.g. an S3
   object, SSH directory URL, file on mounted volume, etc.) but don't move it
-  into the workspace, nor cache it. [Store a copy](#straight-to-remote) on a
-  remote instead (the default one unless `-r` is specified). Use `dvc pull` to
-  get the data locally later.
+  into the workspace, nor cache it. [Store a copy](#straight-to-remote) on a DVC
+  remote instead (the default one unless `-r` is specified) to skip the local
+  file system. Use `dvc pull` to get the data later.
 
 - `-r <name>`, `--remote <name>` - name of the
   [remote](/doc/command-reference/remote) to store data on (can only be used
@@ -342,8 +342,7 @@ Only the hash values of the `dir/` directory (with `.dir` file extension) and
 ## Example: Large external data {#straight-to-cache}
 
 Sometimes you may want to add a large dataset currently found in an external
-location, so it becomes local to the project. But what if there's not enough
-disk space to download the data?
+location. But what if there's not enough disk space to download the data?
 
 The `--out` option lets you add external data in a way that it's
 <abbr>cached</abbr> first, and then
@@ -383,8 +382,7 @@ outs:
 
 Similarly to the previous scenario, you may sometimes want to add a large
 dataset found externally into a regular <abbr>project</abbr> (with a local
-<abbr>cache</abbr>). Can it be done without downloading the data locally (for
-now)? Yes!
+<abbr>cache</abbr>). Can it be done without downloading the data locally? Yes!
 
 The `--to-remote` option lets you store a copy of the target data on a
 [DVC remote](/doc/command-reference/remote), while creating a `.dvc` file
