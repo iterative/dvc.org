@@ -225,8 +225,8 @@ scores.json  avg_prec  0.60405  0.56103  -0.04302
 scores.json  roc_auc   0.9608   0.94003  -0.02077
 ```
 
-The results in the `exp-44136` experiment seem to be worst (expected), as the
-`dvc metrics` commands show.
+The `dvc metrics diff` command shows the difference in performance
+for the experiment we just ran (`exp-44136`).
 
 ## Example: Modify parameters on-the-fly
 
