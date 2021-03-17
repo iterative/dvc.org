@@ -40,8 +40,8 @@ are taken under the hood:
 2. Move the file contents to the cache, using the file hash to form the cached
    file path (see
    [Structure of cache directory](/doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory)
-   for details). Using the `--out` and `--to-remote` options with an external
-   target, the data is copied instead (to cache or remote storage).
+   for details). Using `--out`, or `--to-remote` with an external target, the
+   data is copied instead (to cache or remote storage).
 3. Attempt to replace the file with a link to (or copy of) the cached data (more
    details on file linking ahead). A new link is created if a different `--out`
    `path` is given. Skipped if `--to-remote` is used
@@ -339,7 +339,7 @@ $ tree .dvc/cache
 Only the hash values of the `dir/` directory (with `.dir` file extension) and
 `file2` have been cached.
 
-## Example: Caching large data externally {#straight-to-cache}
+## Example: Large external data {#straight-to-cache}
 
 Sometimes you may want to add a large dataset currently found in an external
 location, so it becomes local to the project. But what if there's not enough
@@ -379,7 +379,7 @@ outs:
 > For a similar operation that actually keeps a connection to the data source,
 > please see `dvc import-url`.
 
-## Example: Storing large data remotely {#straight-to-remote}
+## Example: External data onto remote storage {#straight-to-remote}
 
 Similarly to the previous scenario, you may sometimes want to add a large
 dataset found externally into a regular <abbr>project</abbr> (with a local
