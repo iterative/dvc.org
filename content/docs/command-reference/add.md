@@ -345,12 +345,11 @@ Sometimes you may want to add a large dataset currently found in an external
 location. But what if there's not enough disk space to download the data?
 
 The `--out` option lets you add external data in a way that it's
-<abbr>cached</abbr> first, and then
-[linked](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
-to a given path inside the <abbr>workspace</abbr>. Combined with an
-[external cache](/doc/use-cases/shared-development-server#configure-the-external-shared-cache)
-and the right
-[kind of links](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache),
+<abbr>cached</abbr> first, and then linked to a given path inside the
+<abbr>workspace</abbr>. Combined with
+[symlinking](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
+an
+[external cache](/doc/use-cases/shared-development-server#configure-the-external-shared-cache),
 this let's you avoid using the local file system completely.
 
 For example, we can add a `data.xml` file via HTTP, outputting it to a local
@@ -363,10 +362,10 @@ $ ls
 data.xml data.xml.dvc
 ```
 
-The local `data.xml` should be a symlink or hard link to the externally
-<abbr>cached</abbr> data copy. The resulting `.dvc` file will save the local
-`path` as if the data was already there before this command. Let's check the
-contents of `data.xml.dvc`:
+The local `data.xml` should be a symlink to the externally <abbr>cached</abbr>
+data copy. The resulting `.dvc` file will save the local `path` as if the data
+was already there before this command. Let's check the contents of
+`data.xml.dvc`:
 
 ```yaml
 outs:
