@@ -143,7 +143,7 @@ CPU cores).
 
 - `--queue` - place this experiment at the end of a line for future execution,
   but do not actually run it yet. Use `dvc exp run --run-all` to process the
-  queue. For checkpoint experiments, this implies `--reset` unless `--rev` is
+  queue. For checkpoint experiments, this implies `--reset` unless a `--rev` is
   provided.
 
 - `--run-all` - run all queued experiments (see `--queue`). Use `-j` to execute
