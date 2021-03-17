@@ -67,7 +67,7 @@ $ dvc exp list --all
 > Contrast this with the full table
 > [displayed by `dvc exp show`](/doc/command-reference/exp/show#examples).
 
-You can also list experiments in a any DVC repo with `dvc exp list`:
+You can also list experiments in any DVC repo with `dvc exp list`:
 
 ```dvc
 $ dvc exp list --all git@github.com:iterative/example-get-started.git
