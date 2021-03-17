@@ -146,10 +146,10 @@ not.
   Shell style wildcards supported: `*`, `?`, `[seq]`, `[!seq]`, and `**`
 
 - `-o <path>`, `--out <path>` - destination `path` inside the workspace to place
-  a data target (instead of using the current working directory). Directories
-  specified in the path will be created by this command. Note that this can be
-  used [with an external cache](#straight-to-cache) to avoid using the local
-  file system.
+  the data target. By default the data file basename is used in the current
+  working directory (if this option isn't used). Directories in the given `path`
+  will be created. Note that for external targets, this can be combined
+  [with an external cache](#straight-to-cache) to skip the local file system.
 
 - `--to-remote` - allow a target outside of the DVC repository (e.g. an S3
   object, SSH directory URL, file on mounted volume, etc.) but don't move it
