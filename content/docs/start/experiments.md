@@ -170,14 +170,62 @@ $ git add dvc.lock params.yaml prc.json roc.json scores.json
 $ git commit -a -m "Preserve best random forest experiment"
 ```
 
-> `dvc push` only uploads persistent experiments that have been committed to
-> Git. The other experiments will not be pushed to the remote. See
-> `dvc exp push` and `dvc exp pull` for how to share other experiments.
+## Sharing experiments
+
+After committing the best experiments to our Git branch, we can
+[store and share](/doc/start/data-versioning#storing-and-sharing) them remotely
+like any other iteration of the pipeline.
+
+```dvc
+dvc push
+git push
+```
+
+<details>
+
+### 💡 Important information on storing experiments remotely.
+
+The commands in this section require both a `dvc remote default` and a
+[Git remote](https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes). A
+DVC remote stores the experiment data, and a Git remote stores the code,
+parameters, and other metadata associated with the experiment. DVC supports
+various types of remote storage (local file system, SSH, Amazon S3, Google Cloud
+Storage, HTTP, HDFS, etc.). The Git remote is often a central Git server
+(GitHub, GitLab, BitBucket, etc.).
+
+</details>
+
+Experiments that have not been made persistent will not be stored or shared
+remotely through `dvc push` or `git push`.
+
+`dvc exp push` enables storing and sharing any experiment remotely.
+
+```dvc
+$ dvc exp push gitremote exp-bfe64
+Pushed experiment 'exp-bfe64' to Git remote 'gitremote'.
+```
+
+`dvc exp list` shows all experiments that have been saved.
+
+```dvc
+$ dvc exp list gitremote --all
+72ed9cd:
+        exp-bfe64
+```
+
+`dvc exp pull` retrieves the experiment from a Git remote.
+
+```dvc
+$ dvc exp pull gitremote exp-bfe64
+Pulled experiment 'exp-bfe64' from Git remote 'gitremote'.
+```
+
+> All these commands take a Git remote as an argument. A default DVC remote is
+> also required to share the experiment data.
 
 ## Cleaning up
 
-After committing the best experiment to Git, let's take another look at the
-experiments table:
+Let's take another look at the experiments table:
 
 ```dvc
 $ dvc exp show --no-timestamp
