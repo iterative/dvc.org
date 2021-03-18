@@ -60,7 +60,10 @@ display and compare your experiments, use `dvc exp show` or `dvc exp diff`. Use
 Successful experiments can be made
 [persistent](/doc/user-guide/experiment-management#persistent-experiments) by
 committing them to the Git repo. Unnecessary ones can be removed with
-`dvc exp gc` (or abandoned) and their data with `dvc gc`.
+`dvc exp gc` (or abandoned).
+
+> Note that experiment data will remain in the <abbr>cache</abbr> until you use
+> regular `dvc gc` to clean it up.
 
 ## Checkpoints
 
@@ -69,7 +72,7 @@ checkpoints with DVC during your code or script runtime (similar to a logger).
 
 To do so, first mark stage `outs` with `checkpoint: true` in `dvc.yaml`. At
 least one checkpoint <abbr>output</abbr> is needed so that the experiment can
-later continue from that output's last <abbr>cached</abbr> state.
+later continue from that output's last cached state.
 
 ⚠️ Using the `checkpoint` field in `dvc.yaml` is only compatible with
 `dvc exp run`, `dvc repro` will abort if any stage contains it.
@@ -80,20 +83,17 @@ steps as `make_checkpoint()` — please refer to its reference for details.
 
 You can now use `dvc exp run` to begin the experiment. On this very first use,
 any `checkpoint` outputs are deleted before running the experiment (regardless
-of whether they have cached versions). If the process gets interrupted (e.g.
-with Ctrl + `C`), DVC will [apply](/doc/command-reference/exp/apply) the last
-checkpoint to the <abbr>workspace</abbr> (overwriting any further changes). When
-a run finishes normally, a final checkpoint will reflect the resulting workspace
-(if needed).
+of whether they have <abbr>cached</abbr> versions). If the process gets
+interrupted (e.g. with Ctrl + `C`), DVC will
+[apply](/doc/command-reference/exp/apply) the last checkpoint to the
+<abbr>workspace</abbr> (overwriting any further changes). When a run finishes
+normally, a final checkpoint will reflect the resulting workspace (if needed).
 
 Following uses of `dvc exp run` will continue from this point (using the latest
 cached versions of all outputs). You can add a `--rev` to continue from a
 previous checkpoint instead (list them with `dvc exp show`). Or use `--reset` to
 start over (discards previous checkpoints and deletes `checkpoint` outputs, like
 the first `dvc exp run`) — useful for re-training ML models, for example.
-
-> Note that after resetting checkpoint experiments, you may want to use `dvc gc`
-> to clean up unnecessary data in the cache.
 
 <details>
 
