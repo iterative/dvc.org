@@ -48,8 +48,8 @@ similar to using `dvc add` after downloading the data. It saves the information
 about the data source, so the import can be updated later if the data source has
 changed (see `dvc update`).
 
-💡 The `--to-remote` option lets you store an import
-[on remote storage](#straight-to-remote) without using the local file system.
+💡 The `--to-remote` option lets you store an import on a
+[DVC remote](/doc/command-reference/remote) without using the local file system.
 
 > Note that data imported from external locaitons can be
 > [pushed](/doc/command-reference/push) and
@@ -359,18 +359,19 @@ Running stage 'prepare' with command:
 	python src/prepare.py data/data.xml
 ```
 
-## Example: Storing large data remotely {#straight-to-remote}
+## Example: `--to-remote` usage {#straight-to-remote}
 
 Normally, `dvc import-url` downloads the target data (to the <abbr>cache</abbr>)
-in order to link and track it locally. But what if there's not enough disk space
-for the download?
+in order to link and track it locally. But what if there's not enough disk
+space?
 
-You can use the `--to-remote` option to store a copy of the target on a
-[DVC remote](/doc/command-reference/remote) directly, while also tracked via an
-import `.dvc` file in the project.
+The `--to-remote` option lets you store a copy of the target data on a
+[DVC remote](/doc/command-reference/remote), while creating an import `.dvc`
+file locally so it can be [pulled](/doc/command-reference/plots) later. This is
+a way to "bootstrap" an import in your local machine, to be downloaded on the
+right environment later.
 
-Let's setup a simple remote and create an import `.dvc` file without downloading
-the target data:
+Let's setup a simple remote and add a `data.xml` file from the web this way:
 
 ```
 $ mkdir /tmp/dvc-storage
@@ -383,12 +384,11 @@ data.xml.dvc
 ```
 
 The only change in our local <abbr>workspace</abbr> is the tiny `.dvc` file that
-was created. Whenever anyone wants to actually download the imported data (into
-a system that can handle it), they can use `dvc pull` as usual:
+was created. To actually download the data to <abbr>cache</abbr>, you can use
+`dvc fetch` or `dvc pull` as usual (on a system that can handle it):
 
 ```
- $ dvc pull data.xml.dvc -r tmp_remote
-
+$ dvc pull data.xml.dvc -r tmp_remote
 A       data.xml
 1 file added and 1 file fetched
 ```

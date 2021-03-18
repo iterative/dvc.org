@@ -40,8 +40,8 @@ are taken under the hood:
 2. Move the file contents to the cache, using the file hash to form the cached
    file path (see
    [Structure of cache directory](/doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory)
-   for details). Using the `--out` and `--to-remote` options with an external
-   target, the data is copied instead (to cache or remote storage).
+   for details). Using `--out`, or `--to-remote` with an external target, the
+   data is copied instead (to cache or remote storage).
 3. Attempt to replace the file with a link to (or copy of) the cached data (more
    details on file linking ahead). A new link is created if a different `--out`
    `path` is given. Skipped if `--to-remote` is used
@@ -146,16 +146,17 @@ not.
   Shell style wildcards supported: `*`, `?`, `[seq]`, `[!seq]`, and `**`
 
 - `-o <path>`, `--out <path>` - destination `path` inside the workspace to place
-  a data target (instead of using the current working directory). Directories
-  specified in the path will be created by this command. Note that this can be
-  used [with an external cache](#straight-to-cache) to avoid using the local
-  file system.
+  the data target. By default the data file basename is used in the current
+  working directory (if this option isn't used). Directories in the given `path`
+  will be created. Note that for external targets, this can be combined
+  [with an external cache](#example-external-data) to skip the local file
+  system.
 
 - `--to-remote` - allow a target outside of the DVC repository (e.g. an S3
   object, SSH directory URL, file on mounted volume, etc.) but don't move it
-  into the workspace, nor cache it. [Store a copy](#straight-to-remote) on a
-  remote instead (the default one unless `-r` is specified). Use `dvc pull` to
-  get the data locally later.
+  into the workspace, nor cache it. [Store a copy](#straight-to-remote) on a DVC
+  remote instead (the default one unless `-r` is specified) to skip the local
+  file system. Use `dvc pull` to get the data later.
 
 - `-r <name>`, `--remote <name>` - name of the
   [remote](/doc/command-reference/remote) to store data on (can only be used
@@ -339,19 +340,18 @@ $ tree .dvc/cache
 Only the hash values of the `dir/` directory (with `.dir` file extension) and
 `file2` have been cached.
 
-## Example: Caching large data externally {#straight-to-cache}
+## Example: External data
 
 Sometimes you may want to add a large dataset currently found in an external
-location, so it becomes local to the project. But what if there's not enough
-disk space to download the data?
+location. But what if there's not enough disk space to download the data? Here's
+one method!
 
-The `--out` option lets you add external data in a way that it's
-<abbr>cached</abbr> first, and then
-[linked](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
-to a given path inside the <abbr>workspace</abbr>. Combined with an
-[external cache](/doc/use-cases/shared-development-server#configure-the-external-shared-cache)
-and the right
-[kind of links](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache),
+The `--out` option lets you add external so that it's linked to a given path
+inside the <abbr>workspace</abbr> after being copied to the <abbr>cache</abbr>.
+Combined with
+[symlinking](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
+an
+[external cache](/doc/use-cases/shared-development-server#configure-the-external-shared-cache),
 this let's you avoid using the local file system completely.
 
 For example, we can add a `data.xml` file via HTTP, outputting it to a local
@@ -364,10 +364,10 @@ $ ls
 data.xml data.xml.dvc
 ```
 
-The local `data.xml` should be a symlink or hard link to the externally
-<abbr>cached</abbr> data copy. The resulting `.dvc` file will save the local
-`path` as if the data was already there before this command. Let's check the
-contents of `data.xml.dvc`:
+The local `data.xml` should be a symlink to the (externally) <abbr>cached</abbr>
+data copy. The resulting `.dvc` file will save the local `path` as if the data
+was already there before this command. Let's check the contents of
+`data.xml.dvc`:
 
 ```yaml
 outs:
@@ -379,18 +379,17 @@ outs:
 > For a similar operation that actually keeps a connection to the data source,
 > please see `dvc import-url`.
 
-## Example: Storing large data remotely {#straight-to-remote}
+## Example: `--to-remote` usage {#straight-to-remote}
 
-Similarly to the previous scenario, you may sometimes want to add a large
-dataset found externally into a regular <abbr>project</abbr> (with a local
-<abbr>cache</abbr>). Can it be done without downloading the data locally (for
-now)? Yes!
+Here's another method to add a large dataset found in an external location
+without downloading the data (refer to previous example).
 
 The `--to-remote` option lets you store a copy of the target data on a
 [DVC remote](/doc/command-reference/remote), while creating a `.dvc` file
 locally so it can be [pulled](/doc/command-reference/plots) later. This is a way
-to "bootstrap" your project in your local machine, to be reproduced on the right
-environment later (e.g. a GPU cloud server or a CI/CD system).
+to "bootstrap" a project in your local machine, to be
+[reproduced](/doc/command-reference/repro) on the right environment later (e.g.
+a GPU cloud server or a CI/CD system).
 
 Let's setup a simple remote and add a `data.xml` file from the web this way:
 
@@ -408,13 +407,15 @@ data.xml.dvc
 > `path` (written to the `.dvc` file).
 
 DVC won't control the original data source after this, but rather continue
-managing your remote storage, where the data is now found. Whenever anyone wants
-to actually download the added data (from a system that can handle it), they can
-use `dvc pull` as usual:
+managing your remote storage, where the data is now found. To actually download
+the data to <abbr>cache</abbr>, you can use `dvc fetch` or `dvc pull` as usual
+(on a system that can handle it):
 
 ```dvc
- $ dvc pull data.xml.dvc -r tmp_remote
-
+$ dvc pull data.xml.dvc -r tmp_remote
 A       data.xml
 1 file added and 1 file fetched
 ```
+
+> Note that `dvc repro` will try to download the data too, as part of the
+> pipeline execution.
