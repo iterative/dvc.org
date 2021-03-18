@@ -69,28 +69,27 @@ checkpoints with DVC during your code or script runtime (similar to a logger).
 
 To do so, first mark stage `outs` with `checkpoint: true` in `dvc.yaml`. Having
 at least a checkpoint <abbr>output</abbr> is needed so that the experiment can
-later restart based on that output's last <abbr>cached</abbr> state.
+later continue from that output's last <abbr>cached</abbr> state.
 
 ⚠️ Using the `checkpoint` field in `dvc.yaml` is only compatibly with
 `dvc exp run`, `dvc repro` will abort if any stage contains it.
 
-Then, in the corresponding code, either call the `dvc.api.make_checkpoint()`
-function (Python), or write a signal file (any programming language) following
-the same steps as `make_checkpoint()` — please refer to that reference for
-details.
+Then, in your code either call the `dvc.api.make_checkpoint()` function
+(Python), or write a signal file (any programming language) following the same
+steps as `make_checkpoint()` — please refer to its reference for details.
 
-Once this is setup, you can use `dvc exp run` to begin the experiment. When the
-process finishes or gets interrupted (e.g. with Ctrl + `C`), DVC will
-[apply](/doc/command-reference/exp/apply) the last checkpoint to the
-<abbr>workspace</abbr> (overwriting any further changes done by the stage).
+You can now use `dvc exp run` to begin the experiment. This removes any
+`checkpoint` outputs before running the experiment (regardless of whether they
+have cached versions). When the process finishes or gets interrupted (e.g. with
+Ctrl + `C`), DVC will [apply](/doc/command-reference/exp/apply) the last
+checkpoint to the <abbr>workspace</abbr> (overwriting any further changes done
+by the stage).
 
-`dvc exp run` again will continue from this point (useful for interrupted runs).
-Use `--reset` to reset (remove) any existing `checkpoint` outputs in your
-workspace before running the experiment. Note that `--reset` overrides any
-existing `dvc.lock` entries for `checkpoint` outputs. Alternatively, you can use
-`--rev` to continue from a specific (previous) checkpoint.
-
-Note that `dvc exp show` displays checkpoints with a special branching format.
+`dvc exp run` again will continue from this point. You can add a `--rev` to
+continue from a previous checkpoint instead (they can be listed with
+`dvc exp show`). Or use `--reset` to start over (removes `checkpoint` outputs
+before the run, like the first run of this experiment) — useful for re-training
+ML models, for example.
 
 <details>
 
@@ -109,15 +108,13 @@ The `--queue` option lets you create an experiment as usual, except that nothing
 is actually run. Instead, the experiment is put in a wait-list for later
 execution. `dvc exp show` will mark queued experiments with an asterisk `*`.
 
-Note that for experiments which use checkpoints, queuing an experiment implies
-`--reset` unless an existing checkpoint to resume is explicitly provided via
-`--rev`.
+> Note that queuing an experiment that uses checkpoints implies `--reset`,
+> unless a `--rev` is provided (refer to the previous section).
 
-Use `dvc exp run --run-all` to process this queue.
-
-Adding `-j` (`--jobs`), experiment queues can be run in parallel for better
-performance. This creates a temporary workspace copy for each subprocess (in
-`.dvc/tmp/exps`). See also `--temp`.
+Use `dvc exp run --run-all` to process this queue. Adding `-j` (`--jobs`),
+experiment queues can be run in parallel for better performance. This creates a
+temporary workspace copy for each subprocess (in `.dvc/tmp/exps`). See also
+`--temp`.
 
 ⚠️ Parallel runs are experimental and may be unstable at this time. ⚠️ Make sure
 you're using a number of jobs that your environment can handle (no more than the
@@ -159,8 +156,9 @@ CPU cores).
   checkpoint name or hash (`commit`). This is needed for example to resume
   experiments from `--queue` or `--temp` runs.
 
-- `--reset` - reset any checkpoint outputs before running this experiment.
-  Implies `--force`, so that cached checkpoint results are regenerated.
+- `--reset` - remove `checkpoint` outputs before running this experiment
+  (regardless of `dvc.lock`). Implies `--force`, so that cached checkpoint
+  results are regenerated. Useful for ML model re-training
 
 - `-f`, `--force` - reproduce pipelines even if no changes were found (same as
   `dvc repro -f`).
