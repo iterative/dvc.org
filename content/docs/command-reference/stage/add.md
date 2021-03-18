@@ -10,7 +10,7 @@ usage: dvc stage add [-h] [-q | -v] -n <name> [-d <path>] [-o <path>]
                      [-m <path>] [-M <path>] [--plots <path>]
                      [--plots-no-cache <path>] [-w <path>] [-f]
                      [--outs-persist <path>]
-                     [--outs-persist-no-cache <path>]
+                     [--outs-persist-no-cache <path>] [-c <path>]
                      [--always-changed] [--external] [--desc <text>]
                      command
 
@@ -20,8 +20,8 @@ positional arguments:
 
 ## Description
 
-Creates or updates stages in a [pipeline](/doc/command-reference/dag) (saved to
-`dvc.yaml` in the current working directory).
+Writes stage definitions to `dvc.yaml` (in the current working directory). To
+update an existing stage, overwrite it with the `-f` (`--force`) option.
 
 A stage name is required and can be provided using the `-n` (`--name`) option.
 Most of the other [options](#options) help with defining different kinds of
@@ -29,8 +29,9 @@ Most of the other [options](#options) help with defining different kinds of
 remaining terminal input provided to `dvc stage add` after `-`/`--` flags will
 become the required [`command` argument](#the-command-argument).
 
-`dvc repro` can be used to execute pipelines after their stages have been
-defined.
+Stages whose dependencies are outputs from other stages form
+[pipelines](/doc/command-reference/dag). `dvc repro` can be used to rebuild
+their dependency graph, and execute them.
 
 <details>
 
@@ -186,6 +187,10 @@ data science experiments.
 
 - `--outs-persist-no-cache <path>` - the same as `-outs-persist` except that
   outputs are not tracked by DVC (same as with `-O` above).
+
+- `-c <path`, `--checkpoints <path>` - the same as `-o` but also marks the
+  output as a [checkpoint](/doc/command-reference/exp/run#checkpoints). Implies
+  `--no-exec`. This makes the stage incompatible with `dvc repro`.
 
 - `-p [<path>:]<params_list>`, `--params [<path>:]<params_list>` - specify a set
   of [parameter dependencies](/doc/command-reference/params) the stage depends

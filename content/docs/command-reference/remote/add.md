@@ -359,7 +359,7 @@ $ dvc remote modify --local myremote user myuser
 $ dvc remote modify --local myremote token 'mytoken'
 ```
 
-> The username and password may contain sensitive user info. Therefore, it's
+> The user name and password may contain sensitive user info. Therefore, it's
 > safer to add it with the `--local` option, so it's written to a Git-ignored
 > config file. See `dvc remote modify` for a full list of WebHDFS parameters.
 

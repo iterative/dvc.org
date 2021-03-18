@@ -11,7 +11,7 @@ usage: dvc plots diff [-h] [-q | -v]
                       [-t <name_or_path>] [-x <field>] [-y <field>]
                       [--no-header] [--title <text>]
                       [--x-label <text>] [--y-label <text>] [-o <path>]
-                      [--show-vega]
+                      [--show-vega] [--open]
                       [revisions [revisions ...]]
 
 positional arguments:
@@ -27,7 +27,7 @@ versions of the <abbr>repository</abbr>, by overlaying them in a single plot.
 > Note that unlike `dvc metrics diff`, this command does not calculate numeric
 > differences between plots file values.
 
-`revisions` are Git commit hashes, tag, or branch names. If none are specified,
+`revisions` are Git commit hashes, tags, or branch names. If none are specified,
 `dvc plots diff` compares plots currently present in the <abbr>workspace</abbr>
 (uncommitted changes) with their latest commit (required). A single specified
 revision results in comparing the workspace and that version.
@@ -90,6 +90,8 @@ all the current plots, without comparisons.
 - `--show-vega` - produce a
   [Vega specification](https://vega.github.io/vega/docs/specification/) file
   instead of HTML. See `dvc plots` for more info.
+
+- `--open` - opens the generated plot directly in the browser.
 
 - `--no-header` - lets DVC know that CSV or TSV `--targets` do not have a
   header. A 0-based numeric index can be used to identify each column instead of

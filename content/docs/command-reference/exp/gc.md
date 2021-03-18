@@ -58,3 +58,73 @@ separately to delete it.
 
 - `-v`, `--verbose` - displays detailed tracing information from executing the
   `dvc pull` command.
+
+## Examples
+
+> This example is based on our
+> [Get Started](/doc/tutorials/get-started/experiments), where you can find the
+> actual source code.
+
+Let's say we have the following project, and have just
+[applied](/docs/command-reference/exp/apply) and committed `exp-1dad0` (current
+`HEAD` of `master`):
+
+```dvc
+$ dvc exp show --all-commits --include-params=featurize
+┏━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━┓
+┃ Experiment            ┃ Created      ┃     auc ┃ featurize.max_features ┃ featurize.ngrams ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━┩
+│ workspace             │ -            │ 0.57756 │ 2000                   │ 2                │
+│ master                │ 05:39 PM     │ 0.57756 │ 2000                   │ 2                │
+│ 10-bigrams-experiment │ Jun 20, 2020 │ 0.61314 │ 1500                   │ 2                │
+│ ├── exp-e6c97         │ Oct 21, 2020 │ 0.61314 │ 1500                   │ 2                │
+│ ├── exp-1dad0         │ Oct 09, 2020 │ 0.57756 │ 2000                   │ 2                │
+│ └── exp-1df77         │ Oct 09, 2020 │ 0.51676 │ 500                    │ 2                │
+│ 9-bigrams-model       │ Jun 20, 2020 │ 0.54175 │ 1500                   │ 2                │
+│ └── exp-069d9         │ Sep 24, 2020 │ 0.51076 │ 2500                   │ 2                │
+│ 8-evaluation          │ Jun 20, 2020 │ 0.54175 │ 500                    │ 1                │
+│ 7-ml-pipeline         │ Jun 20, 2020 │       - │ 500                    │ 1                │
+  ...
+│ 0-git-init            │ Jun 20, 2020 │       - │ 1500                   │ 2                │
+└───────────────────────┴──────────────┴─────────┴────────────────────────┴──────────────────┘
+```
+
+If we consider all the other experiments unnecessary, we can delete them like
+this:
+
+```dvc
+$ dvc exp gc -w
+WARNING: This will remove all experiments except ...
+Are you sure you want to proceed? [y/n] y
+Removed 4 experiments. To remove unused cache files use 'dvc gc'.
+```
+
+We can confirm that all the previous experiments are gone:
+
+```dvc
+$ dvc exp show --all-commits --include-params=featurize
+┏━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━┓
+┃ Experiment            ┃ Created      ┃     auc ┃ featurize.max_features ┃ featurize.ngrams ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━┩
+│ workspace             │ -            │ 0.57756 │ 2000                   │ 2                │
+│ master                │ 05:39 PM     │ 0.57756 │ 2000                   │ 2                │
+│ 10-bigrams-experiment │ Jun 20, 2020 │ 0.61314 │ 1500                   │ 2                │
+│ 9-bigrams-model       │ Jun 20, 2020 │ 0.54175 │ 1500                   │ 2                │
+  ...
+│ 0-git-init            │ Jun 20, 2020 │       - │ 2000                   │ 2                │
+└───────────────────────┴──────────────┴─────────┴────────────────────────┴──────────────────┘
+```
+
+To remove any <abbr>cached</abbr> data associated to the deleted experiments and
+which are no longer needed in the project, we can use regular `dvc gc` (with the
+appropriate options):
+
+```dvc
+$ dvc dvc gc --all-commits
+WARNING: This will remove all cache except ...
+Are you sure you want to proceed? [y/n] y
+...
+```
+
+> Note the use of `--all-commits` to ensure that we do not garbage collect files
+> or directories referenced in remaining commits in the repo.
