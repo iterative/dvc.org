@@ -78,18 +78,18 @@ Then, in your code either call the `dvc.api.make_checkpoint()` function
 (Python), or write a signal file (any programming language) following the same
 steps as `make_checkpoint()` — please refer to its reference for details.
 
-You can now use `dvc exp run` to begin the experiment. This deletes any
-`checkpoint` outputs before running the experiment (regardless of whether they
-have cached versions). When the process finishes or gets interrupted (e.g. with
-Ctrl + `C`), DVC will [apply](/doc/command-reference/exp/apply) the last
-checkpoint to the <abbr>workspace</abbr> (overwriting any further changes done
-by the stage).
+You can now use `dvc exp run` to begin the experiment. On this very first use,
+any `checkpoint` outputs are deleted before running the experiment (regardless
+of whether they have cached versions). When the process finishes or gets
+interrupted (e.g. with Ctrl + `C`), DVC will
+[apply](/doc/command-reference/exp/apply) the last checkpoint to the
+<abbr>workspace</abbr> (overwriting any further changes done by the stage).
 
-`dvc exp run` again will continue from this point. You can add a `--rev` to
-continue from a previous checkpoint instead (they can be listed with
-`dvc exp show`). Or use `--reset` to start over (discards previous checkpoints
-and deletes `checkpoint` outputs before this run, like the first `dvc exp run`)
-— useful for re-training ML models, for example.
+Following uses of `dvc exp run` will continue from this point (using the latest
+cached versions of all outputs). You can add a `--rev` to continue from a
+previous checkpoint instead (list them with `dvc exp show`). Or use `--reset` to
+start over (discards previous checkpoints and deletes `checkpoint` outputs, like
+the first `dvc exp run`) — useful for re-training ML models, for example.
 
 > Note that after resetting checkpoint experiments, you may want to use `dvc gc`
 > to clean up unnecessary data in the cache.
