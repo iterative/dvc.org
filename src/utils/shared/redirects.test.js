@@ -191,6 +191,12 @@ describe('getRedirects', () => {
     )
 
     itRedirects(
+      '/exe/foo',
+      'https://s3-us-east-2.amazonaws.com/dvc-public/dvc-pkgs/exe/foo',
+      303
+    )
+
+    itRedirects(
       '/deb/foo',
       'https://s3-us-east-2.amazonaws.com/dvc-s3-repo/deb/foo',
       303

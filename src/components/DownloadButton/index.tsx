@@ -9,7 +9,7 @@ import { logEvent } from '../../utils/front/ga'
 
 import styles from './styles.module.css'
 
-const VERSION = `2.0.5`
+const VERSION = `2.0.6`
 
 enum OS {
   UNKNOWN = '...',
@@ -32,7 +32,7 @@ const itemsByOs = {
   },
   [OS.WINDOWS]: {
     title: 'Windows',
-    url: `https://github.com/iterative/dvc/releases/download/${VERSION}/dvc-${VERSION}.exe`,
+    url: `/exe/dvc-${VERSION}.exe`,
     download: true
   },
   [OS.LINUX]: {
