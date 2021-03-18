@@ -67,8 +67,8 @@ committing them to the Git repo. Unnecessary ones can be removed with
 To track successive steps in a longer <abbr>experiment</abbr>, you can register
 checkpoints with DVC during your code or script runtime (similar to a logger).
 
-To do so, first mark stage `outs` with `checkpoint: true` in `dvc.yaml`. Having
-at least a checkpoint <abbr>output</abbr> is needed so that the experiment can
+To do so, first mark stage `outs` with `checkpoint: true` in `dvc.yaml`. At
+least one checkpoint <abbr>output</abbr> is needed so that the experiment can
 later continue from that output's last <abbr>cached</abbr> state.
 
 ⚠️ Using the `checkpoint` field in `dvc.yaml` is only compatible with
@@ -161,7 +161,7 @@ CPU cores).
 
 - `--reset` - deletes `checkpoint` outputs before running this experiment
   (regardless of `dvc.lock`). Implies `--force`, so that cached checkpoint
-  results are regenerated. Useful for ML model re-training
+  results are regenerated. Useful for ML model re-training.
 
 - `-f`, `--force` - reproduce pipelines even if no changes were found (same as
   `dvc repro -f`).
