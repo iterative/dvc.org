@@ -68,9 +68,9 @@ multiple projects and users, respectively:
   instead of the project's `.dvc/config`. Useful to apply config options to all
   your projects.
 
-- `--system` - modify the system config file (e.g. `/etc/dvc/config`) instead of
-  `.dvc/config`. Useful to apply config options to all the projects (all users)
-  in the machine. May require superuser access e.g.
+- `--system` - modify the system config file (e.g. `/etc/xdg/dvc/config`)
+  instead of `.dvc/config`. Useful to apply config options to all the projects
+  (all users) in the machine. May require superuser access e.g.
   `sudo dvc config --system ...` (Linux).
 
 - `-l`, `--list` - lists all defined config values.
