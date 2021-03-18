@@ -32,7 +32,7 @@ const itemsByOs = {
   },
   [OS.WINDOWS]: {
     title: 'Windows',
-    url: `https://github.com/iterative/dvc/releases/download/${VERSION}/dvc-${VERSION}.exe`,
+    url: `/exe/dvc-${VERSION}.exe`,
     download: true
   },
   [OS.LINUX]: {
