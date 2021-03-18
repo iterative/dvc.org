@@ -24,12 +24,12 @@ repository (e.g. source code, small image/other files). `dvc get` copies the
 target file or directory (found at `path` in `url`) to the current working
 directory. (Analogous to `wget`, but for repos.)
 
-> See `dvc list` for a way to browse repository contents to find files or
-> directories to download.
-
 > Note that unlike `dvc import`, this command does not track the downloaded
 > files (does not create a `.dvc` file). For that reason, it doesn't require an
 > existing DVC project to run in.
+
+> See `dvc list` for a way to browse repository contents to find files or
+> directories to download.
 
 The `url` argument specifies the address of the DVC or Git repository containing
 the data source. Both HTTP and SSH protocols are supported (e.g.
@@ -56,10 +56,10 @@ name.
 
 ## Options
 
-- `-o <path>`, `--out <path>` - destination `path` to place the downloaded file
-  or directory. By default the data file basename is used in the current working
-  directory (if this option isn't used). Directories in the given `path` will be
-  created.
+- `-o <path>`, `--out <path>` - specify a path to the desired location in the
+  workspace to place the downloaded file or directory (instead of using the
+  current working directory). Directories specified in the path will be created
+  by this command.
 
 - `--rev <commit>` - commit hash, branch or tag name, etc. (any
   [Git revision](https://git-scm.com/docs/revisions)) of the repository to
