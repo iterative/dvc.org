@@ -80,10 +80,11 @@ steps as `make_checkpoint()` — please refer to its reference for details.
 
 You can now use `dvc exp run` to begin the experiment. On this very first use,
 any `checkpoint` outputs are deleted before running the experiment (regardless
-of whether they have cached versions). When the process finishes or gets
-interrupted (e.g. with Ctrl + `C`), DVC will
-[apply](/doc/command-reference/exp/apply) the last checkpoint to the
-<abbr>workspace</abbr> (overwriting any further changes done by the stage).
+of whether they have cached versions). If the process gets interrupted (e.g.
+with Ctrl + `C`), DVC will [apply](/doc/command-reference/exp/apply) the last
+checkpoint to the <abbr>workspace</abbr> (overwriting any further changes). When
+a run finishes normally, a final checkpoint will reflect the resulting workspace
+(if needed).
 
 Following uses of `dvc exp run` will continue from this point (using the latest
 cached versions of all outputs). You can add a `--rev` to continue from a
