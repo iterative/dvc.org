@@ -81,9 +81,7 @@ Then, in your code either call the `dvc.api.make_checkpoint()` function
 (Python), or write a signal file (any programming language) following the same
 steps as `make_checkpoint()` — please refer to its reference for details.
 
-You can now use `dvc exp run` to begin the experiment. On this very first use,
-any `checkpoint` outputs are deleted before running the experiment (regardless
-of whether they have <abbr>cached</abbr> versions). If the process gets
+You can now use `dvc exp run` to begin the experiment. If the process gets
 interrupted (e.g. with Ctrl + `C`), DVC will
 [apply](/doc/command-reference/exp/apply) the last checkpoint to the
 <abbr>workspace</abbr> (overwriting any further changes). When a run finishes
