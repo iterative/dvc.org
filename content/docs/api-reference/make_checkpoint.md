@@ -39,13 +39,10 @@ logger). This function can be called by the code in stages executed by
 💡 Note that for non-Python code, the way to register checkpoints with DVC is to
 implement the steps above yourself.
 
-The stage definition in `dvc.yaml` should contain at least one
-<abbr>output</abbr> with the `checkpoint: true` value set, so that DVC registers
-its checkpoints. This is needed so that the experiment can later restart based
-on that output's last <abbr>cached</abbr> state.
-
-⚠️ Using the `checkpoint` field in `dvc.yaml` is only compatibly with
-`dvc exp run`, `dvc repro` will abort if any stage contains it.
+Note that the stage definition in `dvc.yaml` should contain at least one
+<abbr>output</abbr> with the `checkpoint: true` value set for DVC to registers
+its checkpoints. See [Checkpoints](/doc/command-reference/exp/run#checkpoints)
+for details.
 
 ## Example: Every 100th iteration
 
@@ -106,8 +103,7 @@ Experiment results have been applied to your workspace.
 
 In this example we kill the process (with Ctrl + C) after 3 checkpoints (at 0,
 100, and 200). The <abbr>cache</abbr> will contain those 3 versions of
-`int.txt`. DVC applies the last checkpoint to the <abbr>workspace</abbr> even if
-more cycles happened after that:
+`int.txt`.
 
 ```dvc
 $ cat int.txt
@@ -134,8 +130,6 @@ $ dvc exp show
 ```
 
 If we use `dvc exp run` again, the process will start from 200 (since that's
-what the workspace reflects). The `--reset` option of that command drops the
-existing checkpoints and restarts the experiment from scratch. Or, to restart
-from a previous checkpoint, you can use use `dvc exp apply` instead.
+what the workspace reflects).
 
-See `dvc experiments` for more info on managing <abbr>experiments</abbr>.
+See `dvc experiments` for more details on managing <abbr>experiments</abbr>.
