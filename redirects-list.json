@@ -17,6 +17,7 @@
   "^https://error\\.dvc\\.org/(.*)?                                                       https://dvc.org/doc/user-guide/troubleshooting#$1 303",
   "^https://(code|data|remote)\\.dvc\\.org/(.+)                                           https://s3-us-east-2.amazonaws.com/dvc-public/$1/$2 303",
 
+  "^/(exe/.+)                                                                             https://s3-us-east-2.amazonaws.com/dvc-public/dvc-pkgs/$1 303",
   "^/((?:deb|rpm)/.+)                                                                     https://s3-us-east-2.amazonaws.com/dvc-s3-repo/$1 303",
   "^/(?:help|chat)/?$                                                                     https://discordapp.com/invite/dvwXA2N 303",
   "^/(?:docs|documentation)(/.*)?$                                                        /doc$1",

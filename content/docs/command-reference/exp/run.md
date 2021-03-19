@@ -60,7 +60,10 @@ display and compare your experiments, use `dvc exp show` or `dvc exp diff`. Use
 Successful experiments can be made
 [persistent](/doc/user-guide/experiment-management#persistent-experiments) by
 committing them to the Git repo. Unnecessary ones can be removed with
-`dvc exp gc`, or abandoned (and their data with `dvc gc`).
+`dvc exp gc` (or abandoned).
+
+> Note that experiment data will remain in the <abbr>cache</abbr> until you use
+> regular `dvc gc` to clean it up.
 
 ## Checkpoints
 
@@ -69,26 +72,25 @@ checkpoints with DVC during your code or script runtime (similar to a logger).
 
 To do so, first mark stage `outs` with `checkpoint: true` in `dvc.yaml`. At
 least one checkpoint <abbr>output</abbr> is needed so that the experiment can
-later restart based on it's last <abbr>cached</abbr> contents.
+later continue from that output's last cached state.
 
-⚠️ Note that using the `checkpoint` field in `dvc.yaml` is not compatibly with
-`dvc repro`.
+⚠️ Using the `checkpoint` field in `dvc.yaml` is only compatible with
+`dvc exp run`, `dvc repro` will abort if any stage contains it.
 
-Then, in the corresponding code, either call the `dvc.api.make_checkpoint()`
-function (Python), or write a signal file (any programming language) following
-the same steps as `make_checkpoint()` — see the function reference for details.
+Then, in your code either call the `dvc.api.make_checkpoint()` function
+(Python), or write a signal file (any programming language) following the same
+steps as `make_checkpoint()` — please refer to its reference for details.
 
-Once this is setup, you can use `dvc exp run` to begin the experiment. When the
-process finishes or gets interrupted (e.g. with Ctrl + `C`), DVC will
-[apply](/doc/command-reference/exp/apply) the last checkpoint to the
-<abbr>workspace</abbr> (overwrites any changes after the last checkpoint).
+You can now use `dvc exp run` to begin the experiment. If the process gets
+interrupted (e.g. with Ctrl + `C`), all the checkpoints registered so far will
+be preserved. When a run finishes normally, a final checkpoint will be added (if
+needed) to reflect the results.
 
-Y`dvc exp run` again to continue from this point (useful for interrupted runs).
-Use `--reset` to roll-back the workspace to `HEAD` and restart the whole
-experiment. Use `--rev` to continue from a specific (previous) checkpoint
-instead.
-
-Note that `dvc exp show` displays checkpoints with a special branching format.
+Following uses of `dvc exp run` will continue from this point (using the latest
+cached versions of all outputs). You can add a `--rev` to continue from a
+previous checkpoint instead (list them with `dvc exp show`). Or use `--reset` to
+start over (discards previous checkpoints and deletes `checkpoint` outputs, like
+the first `dvc exp run`) — useful for re-training ML models, for example.
 
 <details>
 
@@ -107,12 +109,13 @@ The `--queue` option lets you create an experiment as usual, except that nothing
 is actually run. Instead, the experiment is put in a wait-list for later
 execution. `dvc exp show` will mark queued experiments with an asterisk `*`.
 
-Use `dvc exp run --run-all` to process this queue. Note that if the queued
-experiments use checkpoints, `--run-all` implies `--reset` (restarts them).
+> Note that queuing an experiment that uses checkpoints implies `--reset`,
+> unless a `--rev` is provided (refer to the previous section).
 
-Adding `-j` (`--jobs`), experiment queues can be run in parallel for better
-performance. This creates a temporary workspace copy for each subprocess (in
-`.dvc/tmp/exps`). See also `--temp`.
+Use `dvc exp run --run-all` to process this queue. Adding `-j` (`--jobs`),
+experiment queues can be run in parallel for better performance. This creates a
+temporary workspace copy for each subprocess (in `.dvc/tmp/exps`). See also
+`--temp`.
 
 ⚠️ Parallel runs are experimental and may be unstable at this time. ⚠️ Make sure
 you're using a number of jobs that your environment can handle (no more than the
@@ -138,11 +141,11 @@ CPU cores).
 
 - `--queue` - place this experiment at the end of a line for future execution,
   but do not actually run it yet. Use `dvc exp run --run-all` to process the
-  queue.
+  queue. For checkpoint experiments, this implies `--reset` unless a `--rev` is
+  provided.
 
 - `--run-all` - run all queued experiments (see `--queue`). Use `-j` to execute
-  them [in parallel](#queueing-and-parallel-execution). For checkpoint
-  experiments, this implies `--reset`.
+  them [in parallel](#queueing-and-parallel-execution).
 
 - `-j <number>`, `--jobs <number>` - run this `number` of queued experiments in
   parallel. Only applicable when used in conjunction with `--run-all`.
@@ -154,9 +157,9 @@ CPU cores).
   checkpoint name or hash (`commit`). This is needed for example to resume
   experiments from `--queue` or `--temp` runs.
 
-- `--reset` - restart a checkpoint experiment from scratch (resets the workspace
-  and clears existing checkpoints before the run). Implies `--force`, so that
-  cached checkpoint results are regenerated.
+- `--reset` - deletes `checkpoint` outputs before running this experiment
+  (regardless of `dvc.lock`). Implies `--force`, so that cached checkpoint
+  results are regenerated. Useful for ML model re-training.
 
 - `-f`, `--force` - reproduce pipelines even if no changes were found (same as
   `dvc repro -f`).
@@ -169,3 +172,91 @@ CPU cores).
   regardless of this flag.
 
 - `-v`, `--verbose` - displays detailed tracing information.
+
+## Examples
+
+> These examples are based on our
+> [Get Started](/doc/tutorials/get-started/experiments), where you can find the
+> actual source code.
+
+<details>
+
+### Expand to prepare the example ML project
+
+Clone the DVC repo and download the data it <abbr>depends</abbr> on:
+
+```dvc
+$ git clone git@github.com:iterative/example-get-started.git
+$ cd example-get-started
+$ dvc pull
+```
+
+Let's also install the Python requirements:
+
+> We **strongly** recommend creating a
+> [virtual environment](https://python.readthedocs.io/en/stable/library/venv.html)
+> first.
+
+```dvc
+$ pip install -r src/requirements.txt
+```
+
+</details>
+
+Let's check the latest metrics of the project:
+
+```dvc
+$ dvc metrics show
+Path         avg_prec    roc_auc
+scores.json  0.60405     0.9608
+```
+
+For this experiment, we want to see the results for a smaller dataset input, so
+let's limit the data to 20 MB and reproduce the pipeline with `dvc exp run`:
+
+```dvc
+$ truncate --size=20M data/data.xml
+$ dvc exp run
+...
+Reproduced experiment(s): exp-44136
+Experiment results have been applied to your workspace.
+
+$ dvc metrics diff
+Path         Metric    Old      New      Change
+scores.json  avg_prec  0.60405  0.56103  -0.04302
+scores.json  roc_auc   0.9608   0.94003  -0.02077
+```
+
+The `dvc metrics diff` command shows the difference in performance for the
+experiment we just ran (`exp-44136`).
+
+## Example: Modify parameters on-the-fly
+
+You could modify a params file just like any other <abbr>dependency</abbr> and
+run an experiment on that basis. Since this is a common need, `dvc exp run`
+comes with the `--set-param` (`-S`) option built-in. This saves you the need to
+manually edit the params file:
+
+```dvc
+$ dvc exp run -S prepare.split=0.25 -S featurize.max_features=2000
+...
+Reproduced experiment(s): exp-18bf6
+Experiment results have been applied to your workspace.
+```
+
+To see the results, we can use `dvc exp diff` which compares both params and
+metrics to the previous project version:
+
+```dvc
+$ dvc exp diff
+Path         Metric    Value    Change
+scores.json  avg_prec  0.58187  -0.022184
+scores.json  roc_auc   0.93634  -0.024464
+
+Path         Param                   Value    Change
+params.yaml  featurize.max_features  2000     -1000
+params.yaml  prepare.split           0.25     0.05
+```
+
+> Notice that experiments run as a series don't build up on each other. They are
+> all based on `HEAD`.
