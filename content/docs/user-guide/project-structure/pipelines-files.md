@@ -346,7 +346,7 @@ These are the fields that are accepted in each stage:
 | ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `cmd`            | (Required) One or more commands executed by the stage (may contain either a single value or a list). Commands are executed sequentially until all are finished or until one of them fails (see `dvc repro`).                                                                              |
 | `wdir`           | Working directory for the stage command to run in (relative to the file's location). Any paths in other fields are also based on this. It defaults to `.` (the file's location).                                                                                                          |
-| `deps`           | List of <abbr>dependency</abbr> paths of this stage (relative to `wdir`).                                                                                                                                                                                                                 |
+| `deps`           | List of <abbr>dependency</abbr> paths of this stage (relative to `wdir`). These can contain certain optional [subfields](#dependency-subfields).                                                                                                                                          |
 | `outs`           | List of <abbr>output</abbr> paths of this stage (relative to `wdir`). These can contain certain optional [subfields](#output-subfields).                                                                                                                                                  |
 | `params`         | List of <abbr>parameter</abbr> dependency keys (field names) to track from `params.yaml` (in `wdir`). The list may also contain other parameters file names, with a sub-list of the param names to track in them.                                                                         |
 | `metrics`        | List of [metrics files](/doc/command-reference/metrics), and optionally, whether or not this metrics file is <abbr>cached</abbr> (`true` by default). See the `--metrics-no-cache` (`-M`) option of `dvc run`.                                                                            |
@@ -367,9 +367,19 @@ validation and auto-completion.
 > See also
 > [How to Merge Conflicts](/doc/user-guide/how-to/merge-conflicts#dvcyaml).
 
+### Dependency subfields
+
+> Notice that these are a subset of the fields in `.dvc` file
+> [dependency entries](/doc/user-guide/project-structure/dvc-files#dependency-entries).
+
+| Field                           | Description                                                                                                                                                                                                                                                                                                                                              |
+| ------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `md5`<br/>`etag`<br/>`checksum` | Hash value for the file or directory being tracked with DVC. MD5 is used for most locations (local file system and SSH); [ETag](https://en.wikipedia.org/wiki/HTTP_ETag#Strong_and_weak_validation) for HTTP, S3, or Azure <abbr>external dependencies</abbr>; and a special _checksum_ for HDFS and WebHDFS. See `dvc import-url` for more information. |
+| `repo`                          | This entry is only for external dependencies created with `dvc import`, and can contain `url`, `rev`, and `rev_lock` (detailed below).                                                                                                                                                                                                                   |
+
 ### Output subfields
 
-> Notice that these are a subset of those in `.dvc` file
+> Notice that these are a subset of the fields in `.dvc` file
 > [output entries](/doc/user-guide/project-structure/dvc-files#output-entries).
 
 | Field        | Description                                                                                                                                                                                                                                                                        |
