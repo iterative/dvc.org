@@ -369,13 +369,15 @@ validation and auto-completion.
 
 ### Dependency subfields
 
+These fields occur for <abbr>external dependencies</abbr> from remote locations.
+
 > Notice that these are a subset of the fields in `.dvc` file
 > [dependency entries](/doc/user-guide/project-structure/dvc-files#dependency-entries).
 
-| Field                           | Description                                                                                                                                                                                                                                                                                                                                              |
-| ------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `md5`<br/>`etag`<br/>`checksum` | Hash value for the file or directory being tracked with DVC. MD5 is used for most locations (local file system and SSH); [ETag](https://en.wikipedia.org/wiki/HTTP_ETag#Strong_and_weak_validation) for HTTP, S3, or Azure <abbr>external dependencies</abbr>; and a special _checksum_ for HDFS and WebHDFS. See `dvc import-url` for more information. |
-| `repo`                          | This entry is only for external dependencies created with `dvc import`, and can contain `url`, `rev`, and `rev_lock` (detailed below).                                                                                                                                                                                                                   |
+| Field                           | Description                                                                                                                                                                                                                                                                                                                           |
+| ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `md5`<br/>`etag`<br/>`checksum` | Hash value for the file or directory being tracked with DVC. MD5 is used for most locations (local file system and SSH); [ETag](https://en.wikipedia.org/wiki/HTTP_ETag#Strong_and_weak_validation) for HTTP, S3, or Azure external `deps`; and a special _checksum_ for HDFS and WebHDFS. See `dvc import-url` for more information. |
+| `repo`                          | This entry is only for external dependencies created with `dvc import`, and can contain `url`, `rev`, and `rev_lock` (detailed below).                                                                                                                                                                                                |
 
 ### Output subfields
 
