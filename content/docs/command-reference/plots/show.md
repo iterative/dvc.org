@@ -65,7 +65,7 @@ please see `dvc plots`.
   [Vega specification](https://vega.github.io/vega/docs/specification/) file
   instead of HTML. See `dvc plots` for more info.
 
-- `--open` - opens the generated plot directly in the browser.
+- `--open` - opens the generated plot in the browser automatically.
 
 - `--no-header` - lets DVC know that CSV or TSV `targets` do not have a header.
   A 0-based numeric index can be used to identify each column instead of names.
