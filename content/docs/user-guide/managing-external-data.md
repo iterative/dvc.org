@@ -1,13 +1,13 @@
 # External Outputs
 
 > ⚠️ This is an advanced feature for very specific situations and not
-> recommended except if there's absolutely no other alternative. Note that
-> external outputs are not pushed or pulled from/to
+> recommended except if there's absolutely no other alternative. In most cases
+> alternatives like the
+> [to-cache](/doc/command-reference/add#example-transfer-to-the-cache) or
+> [to-remote](/doc/command-reference/add#example-transfer-to-remote-storage)
+> strategies of `dvc add` and `dvc import-url` are more convenient. **Note**
+> that external outputs are not pushed or pulled from/to
 > [remote storage](/doc/command-reference/remote).
->
-> In most cases the [to-cache](/doc/command-reference/add#example-external-data)
-> or [to-remote](/doc/command-reference/add#straight-to-remote) strategies of
-> `dvc add` and `dvc import-url` are better.
 
 There are cases when data is so large, or its processing is organized in such a
 way, that its impossible to handle it in the local machine disk. For example

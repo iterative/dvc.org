@@ -23,8 +23,9 @@ positional arguments:
 ## Description
 
 In some cases it's convenient to add a data file or directory from an external
-location into the project, such that it can be updated later if/when the
-external data source changes. Example scenarios:
+location into the workspace (or to
+[remote storage](/doc/command-reference/remote)), such that it can be updated
+later, if/when the external data source changes. Example scenarios:
 
 - A remote system may produce occasional data files that are used in other
   projects.
@@ -36,20 +37,22 @@ external data source changes. Example scenarios:
 
 `dvc import-url` helps you create such an external data dependency, without
 having to manually copy files from the supported locations (listed below), which
-would require installing/using a different tool for each type.
+may require installing a different tool for each type.
+
+When you don't want to store the target data in your local system, you can still
+create an import `.dvc` file while transferring a file or directory directly to
+remote storage, by using the `--to-remote` option. See the
+[Transfer to remote storage](#example-transfer-to-remote-storage) example for
+more details.
 
 The `url` argument specifies the external location of the data to be imported.
 The imported data is <abbr>cached</abbr>, and linked (or copied) to the current
-working directory with its original file name e.g. `data.txt`, or to a location
-provided with `out`.
+working directory with its original file name e.g. `data.txt` (or to a location
+provided with `out`).
 
 An _import `.dvc` file_ is created in the same location e.g. `data.txt.dvc` –
-similar to using `dvc add` after downloading the data. It saves the information
-about the data source, so the import can be updated later if the data source has
-changed (see `dvc update`).
-
-💡 The `--to-remote` option lets you store an import on a
-[DVC remote](/doc/command-reference/remote) without using the local file system.
+similar to using `dvc add` after downloading the data. This makes it possible to
+update the import later, if the data source has changed (see `dvc update`).
 
 > Note that data imported from external locaitons can be
 > [pushed](/doc/command-reference/push) and
@@ -64,9 +67,8 @@ field contains the corresponding local path in the <abbr>workspace</abbr>. It
 records enough metadata about the imported data to enable DVC efficiently
 determining whether the local copy is out of date.
 
-Note that `dvc repro` doesn't check or update import `.dvc` files by default
-(see `dvc freeze`), use `dvc update` to bring the import up to date from the
-data source.
+Note that `dvc repro` doesn't check or update import `.dvc` files, use
+`dvc update` to bring the import up to date from the data source.
 
 DVC supports several types of external locations (protocols):
 
@@ -141,13 +143,13 @@ $ dvc run -n download_data \
   want to "DVCfy" this state of the project (see also `dvc commit`).
 
 - `--to-remote` - import an external target, but don't move it into the
-  workspace, nor cache it. [Store a copy](#straight-to-remote) on a remote
-  instead (the default one unless `-r` is specified). Use `dvc pull` to get the
-  data locally.
+  workspace, nor cache it. [Transfer](#example-import-straight-to-the-remote) it
+  directly to remote storage (the default one, unless `-r` is specified)
+  instead. Use `dvc pull` to get the data locally.
 
 - `-r <name>`, `--remote <name>` - name of the
-  [remote](/doc/command-reference/remote) to store data on (can only be used
-  with `--to-remote`).
+  [remote storage](/doc/command-reference/remote) (can only be used with
+  `--to-remote`).
 
 - `-j <number>`, `--jobs <number>` - parallelism level for DVC to download data
   from the source. The default value is `4 * cpu_count()`. For SSH remotes, the
@@ -359,36 +361,46 @@ Running stage 'prepare' with command:
 	python src/prepare.py data/data.xml
 ```
 
-## Example: `--to-remote` usage {#straight-to-remote}
+## Example: Transfer to remote storage
 
-Normally, `dvc import-url` downloads the target data (to the <abbr>cache</abbr>)
-in order to link and track it locally. But what if there's not enough disk
-space?
+When you have a large dataset in an external location, you may want to import it
+to your project without downloading it to the local file system (for using it
+later/elsewhere). The `--to-remote` option let you skip the download, while
+storing the imported data [remotely](/doc/command-reference/remote). Let's
+initialize a DVC project, and setup a remote:
 
-The `--to-remote` option lets you store a copy of the target data on a
-[DVC remote](/doc/command-reference/remote), while creating an import `.dvc`
-file locally so it can be [pulled](/doc/command-reference/plots) later. This is
-a way to "bootstrap" an import in your local machine, to be downloaded on the
-right environment later.
-
-Let's setup a simple remote and add a `data.xml` file from the web this way:
-
-```
+```dvc
+$ mkdir example # workspace
+$ cd example
+$ git init
+$ dvc init
 $ mkdir /tmp/dvc-storage
 $ dvc remote add myremote /tmp/dvc-storage
+```
+
+Now let's create an import `.dvc` file without downloading the target data,
+transferring it directly to remote storage instead:
+
+```
 $ dvc import-url https://data.dvc.org/get-started/data.xml data.xml \
                  --to-remote -r myremote
 ...
+```
+
+The only change in our local <abbr>workspace</abbr> is a newly created import
+`.dvc` file:
+
+```dvc
 $ ls
 data.xml.dvc
 ```
 
-The only change in our local <abbr>workspace</abbr> is the tiny `.dvc` file that
-was created. To actually download the data to <abbr>cache</abbr>, you can use
-`dvc fetch` or `dvc pull` as usual (on a system that can handle it):
+Whenever anyone wants to actually download the imported data (for example from a
+system that can handle it), they can use `dvc pull` as usual:
 
 ```
-$ dvc pull data.xml.dvc -r tmp_remote
+ $ dvc pull data.xml.dvc -r tmp_remote
+
 A       data.xml
 1 file added and 1 file fetched
 ```

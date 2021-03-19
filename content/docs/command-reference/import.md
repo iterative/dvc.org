@@ -70,19 +70,19 @@ enable DVC efficiently determining whether the local copy is out of date.
 To actually [version the data](/doc/tutorials/get-started/data-versioning),
 `git add` (and `git commit`) the import `.dvc` file.
 
-Note that `dvc repro` doesn't check or update import `.dvc` files by default
-(see `dvc freeze`), use `dvc update` to bring the import up to date from the
-data source.
+Note that `dvc repro` doesn't check or update import `.dvc` files (see
+`dvc freeze`), use `dvc update` to bring the import up to date from the data
+source.
 
 Also note that chained imports (importing data that was imported into the source
 repo at `url`) are not supported.
 
 ## Options
 
-- `-o <path>`, `--out <path>` - destination `path` inside the workspace to place
-  the downloaded file or directory. By default the file basename name is used in
-  the current working directory (if this option isn't used). Directories in the
-  given `path` will be created.
+- `-o <path>`, `--out <path>` - specify a path to the desired location in the
+  workspace to place the downloaded file or directory (instead of using the
+  current working directory). Directories specified in the path must already
+  exist, otherwise this command will fail.
 
 - `--file <filename>` - specify a path and/or file name for the `.dvc` file
   created by this command (e.g. `--file stages/stage.dvc`). This overrides the
@@ -154,7 +154,7 @@ outs:
     cache: true
 ```
 
-Several of the values above are obtained from the original `.dvc` file
+Several of the values above are pulled from the original `.dvc` file
 `model.pkl.dvc` in the external DVC repository. The `url` and `rev_lock`
 subfields under `repo` are used to save the origin and version of the
 dependency, respectively.

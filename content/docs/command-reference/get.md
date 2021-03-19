@@ -56,10 +56,10 @@ name.
 
 ## Options
 
-- `-o <path>`, `--out <path>` - destination `path` to place the downloaded file
-  or directory. By default the data file basename is used in the current working
-  directory (if this option isn't used). Directories in the given `path` will be
-  created.
+- `-o <path>`, `--out <path>` - specify a path to the desired location in the
+  workspace to place the downloaded file or directory (instead of using the
+  current working directory). Directories specified in the path will be created
+  by this command.
 
 - `--rev <commit>` - commit hash, branch or tag name, etc. (any
   [Git revision](https://git-scm.com/docs/revisions)) of the repository to
