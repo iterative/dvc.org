@@ -27,7 +27,7 @@ const itemsByOs = {
   },
   [OS.OSX]: {
     title: 'Mac OS',
-    url: `https://github.com/iterative/dvc/releases/download/${VERSION}/dvc-${VERSION}.pkg`,
+    url: `/osxpkg/dvc-${VERSION}.pkg`,
     download: true
   },
   [OS.WINDOWS]: {
