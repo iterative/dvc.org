@@ -73,6 +73,8 @@ while True:
     else:
         i_ = 0
 
+    # ... do something meaningful
+
     with open("int.txt", "w") as fd:
         fd.write(f"{i_}")
 
