@@ -74,7 +74,7 @@ To do so, first mark stage `outs` with `checkpoint: true` in `dvc.yaml`. At
 least one checkpoint <abbr>output</abbr> is needed so that the experiment can
 later continue from that output's last cached state.
 
-⚠️ Note that using the `checkpoint` field in `dvc.yaml` is not compatibly with
+⚠️ Note that using the `checkpoint` field in `dvc.yaml` is not compatible with
 `dvc repro`.
 
 Then, in your code either call the `dvc.api.make_checkpoint()` function
