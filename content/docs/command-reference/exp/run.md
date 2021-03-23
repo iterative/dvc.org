@@ -82,9 +82,9 @@ Then, in your code either call the `dvc.api.make_checkpoint()` function
 steps as `make_checkpoint()` — please refer to its reference for details.
 
 You can now use `dvc exp run` to begin the experiment. If the process gets
-interrupted (e.g. with Ctrl + `C`), all the checkpoints registered so far will
-be preserved. When a run finishes normally, a final checkpoint will be added (if
-needed) to reflect the results.
+interrupted (e.g. with `[Ctrl] C` or by an error), all the checkpoints so far
+will be preserved. When a run finishes normally, a final checkpoint will be
+added (if needed) to wrap up the experiment.
 
 Following uses of `dvc exp run` will continue from this point (using the latest
 cached versions of all outputs). You can add a `--rev` to continue from a
