@@ -83,7 +83,7 @@ while True:
 ```
 
 Since `checkpoint` outputs in effect implement a circular dependency,
-`dvc repro` does not support running this stage. Let's the stage with
+`dvc repro` does not support running this stage. Let's execute the stage with
 `dvc exp run` instead, and interrupt the process manually moments later:
 
 ```dvc
