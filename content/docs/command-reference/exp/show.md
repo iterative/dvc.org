@@ -62,8 +62,8 @@ metric or param.
   the workspace. Note that both options can be combined, for example using the
   `-aT` flag.
 
-- `--all-commits` - same as `-a` or `-T` above, but applies to _all_ Git commits
-  as well as the workspace. This prints all experiments available.
+- `--all-commits` - same as `-a` or `-T` above, but applies to _all_ reachable
+  Git commits as well as the workspace. This prints all experiments available.
 
 - `--no-pager` - do not enter the pager screen. Writes the entire table to
   standard output. Useful to redirect the output to a file, or use your own
