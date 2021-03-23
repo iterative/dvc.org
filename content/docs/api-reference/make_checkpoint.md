@@ -80,9 +80,9 @@ while True:
         make_checkpoint()
 ```
 
-Using `dvc repro` with a continuous process such as this may not be helpful, as
-you know the output file will keep changing every time. Instead you can execute
-the stage with `dvc exp run` and end the process when you decide:
+Since `checkpoint` outputs in effect implement a circular dependency,
+`dvc repro` does not support running this stage. Let's the stage with
+`dvc exp run` instead, and interrupt the process manually moments later:
 
 ```dvc
 $ dvc exp run
@@ -101,8 +101,8 @@ Reproduced experiment(s): exp-8a3bd
 Experiment results have been applied to your workspace.
 ```
 
-In this example we kill the process (with Ctrl + C) after 3 checkpoints (at 0,
-100, and 200). The <abbr>cache</abbr> will contain those 3 versions of
+In this example we killed the process (with Ctrl + C) after 3 checkpoints (at 0,
+100, and 200 `i_`). The <abbr>cache</abbr> will contain those 3 versions of
 `int.txt`.
 
 ```dvc
