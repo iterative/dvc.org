@@ -40,7 +40,7 @@ logger). This function can be called by the code in stages executed by
 implement the steps above yourself.
 
 Note that the stage definition in `dvc.yaml` should contain at least one
-<abbr>output</abbr> with the `checkpoint: true` value set for DVC to registers
+<abbr>output</abbr> with the `checkpoint: true` value set for DVC to register
 its checkpoints. See [Checkpoints](/doc/command-reference/exp/run#checkpoints)
 for details.
 
