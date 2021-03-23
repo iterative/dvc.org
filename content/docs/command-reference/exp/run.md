@@ -60,7 +60,7 @@ display and compare your experiments, use `dvc exp show` or `dvc exp diff`. Use
 Successful experiments can be made
 [persistent](/doc/user-guide/experiment-management#persistent-experiments) by
 committing them to the Git repo. Unnecessary ones can be removed with
-`dvc exp gc` (or abandoned).
+`dvc exp remove`or `dvc exp gc` (or abandoned).
 
 > Note that experiment data will remain in the <abbr>cache</abbr> until you use
 > regular `dvc gc` to clean it up.
@@ -74,17 +74,17 @@ To do so, first mark stage `outs` with `checkpoint: true` in `dvc.yaml`. At
 least one checkpoint <abbr>output</abbr> is needed so that the experiment can
 later continue from that output's last cached state.
 
-⚠️ Using the `checkpoint` field in `dvc.yaml` is only compatible with
-`dvc exp run`, `dvc repro` will abort if any stage contains it.
+⚠️ Note that using the `checkpoint` field in `dvc.yaml` is not compatible with
+`dvc repro`.
 
 Then, in your code either call the `dvc.api.make_checkpoint()` function
 (Python), or write a signal file (any programming language) following the same
 steps as `make_checkpoint()` — please refer to its reference for details.
 
 You can now use `dvc exp run` to begin the experiment. If the process gets
-interrupted (e.g. with Ctrl + `C`), all the checkpoints registered so far will
-be preserved. When a run finishes normally, a final checkpoint will be added (if
-needed) to reflect the results.
+interrupted (e.g. with `[Ctrl] C` or by an error), all the checkpoints so far
+will be preserved. When a run finishes normally, a final checkpoint will be
+added (if needed) to wrap up the experiment.
 
 Following uses of `dvc exp run` will continue from this point (using the latest
 cached versions of all outputs). You can add a `--rev` to continue from a
