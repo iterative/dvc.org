@@ -379,7 +379,7 @@ validation and auto-completion.
 | `desc`       | (Optional) user description for this output. This doesn't affect any DVC operations.                                                                                                                                                                                               |
 | `checkpoint` | Set to `true` to let DVC know that this output is associated with [in-code checkpoints](/doc/user-guide/experiment-management#checkpoints-in-source-code). These outputs are reverted to their last cached version at `dvc exp run` and also `persist` during the stage execution. |
 
-⚠️ Note that using the `checkpoint` field in `dvc.yaml` is not compatibly with
+⚠️ Note that using the `checkpoint` field in `dvc.yaml` is not compatible with
 `dvc repro`.
 
 ## dvc.lock file
