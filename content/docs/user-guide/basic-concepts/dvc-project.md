@@ -9,7 +9,7 @@ match:
     'DVC repository',
     'DVC repositories',
     repository,
-    repositories,
+    repositories
   ]
 tooltip: >-
   Initialized by running `dvc init` in the **workspace** (typically a Git

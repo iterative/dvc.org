@@ -61,6 +61,9 @@ operation.
   dependencies and outputs, to allow safely running multiple DVC commands in
   parallel
 
+- `.dvc/tmp/exps`: This directory will contain workspace copies used for
+  temporary or parallel <abbr>experiments</abbr> (see `dvc exp run`).
+
 ## Structure of the cache directory
 
 The DVC cache is a
@@ -119,8 +122,8 @@ inside (as a JSON array), identified by their hash values:
 
 ```dvc
 $ cat .dvc/cache/19/6a322c107c2572335158503c64bfba.dir
-[{"md5": "dff70c0392d7d386c39a23c64fcc0376", "relpath": "cat.jpeg"},
-{"md5": "29a6c8271c0c8fbf75d3b97aecee589f", "relpath": "index.jpeg"}]
+[{"md5": "200b40427ee0998e9802335d98f08cd98f", "relpath": "cat.jpeg"},
+{"md5": "d41d8cd98f00b204e9800998ecf8427e", "relpath": "index.jpeg"}]
 ```
 
 That's how DVC knows that the other two cached files belong in the directory.
@@ -131,9 +134,10 @@ That's how DVC knows that the other two cached files belong in the directory.
 have been run in the project. It is found in the `runs/` directory inside the
 cache (or [remote storage](/doc/command-reference/remote)).
 
-Runs are identified as combinations of <abbr>dependencies</abbr>, commands, and
-<abbr>outputs</abbr> that correspond to each other. These combinations are
-hashed into special values that make up the file paths inside the run-cache dir.
+Runs are identified as combinations of exact <abbr>dependency</abbr> contents
+(or [parameter](/doc/command-reference/params) values), and the literal
+command(s) to execute. These combinations are represented by special hashes that
+translate to the file paths inside the run-cache dir:
 
 ```dvc
 $ tree .dvc/cache/runs
@@ -151,3 +155,6 @@ run.
 
 💡 `dvc push` and `dvc pull` (and `dvc fetch`) can download and upload the
 run-cache to remote storage for sharing and/or as a back up.
+
+> Note that the run-cache assumes that stage commands are deterministic (see
+> **Avoiding unexpected behavior** in `dvc run`).

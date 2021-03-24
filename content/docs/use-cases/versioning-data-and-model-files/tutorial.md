@@ -352,7 +352,8 @@ pipelines, and try to apply it here. Don't hesitate to join our
 Another detail we only brushed upon here is the way we captured the
 `metrics.csv` metrics file with the `-M` option of `dvc run`. Marking this
 <abbr>output</abbr> as a metric enables us to compare its values across Git tags
-or branches (for example, representing different experiments). See `dvc metrics`
-and
-[Compare Experiments](/doc/tutorials/get-started/experiments#compare-experiments)
+or branches (for example, representing different experiments). See
+`dvc metrics`,
+[Comparing Changes](/doc/start/metrics-parameters-plots#comparing-changes), and
+[Comparing Many Experiments](/doc/start/experiments#comparing-many-experiments)
 to learn more about managing metrics with DVC.

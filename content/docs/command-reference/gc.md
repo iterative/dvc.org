@@ -6,34 +6,31 @@ Remove unused files and directories from <abbr>cache</abbr> or
 ## Synopsis
 
 ```usage
-usage: dvc gc [-h] [-q | -v]
-              [-w] [-a] [-T] [--all-commits] [-c] [-r <name>]
-              [-f] [-j <number>] [-p [<path> [<path> ...]]]
+usage: dvc gc [-h] [-q | -v] [-w] [-a] [-T] [--all-commits]
+              [--all-experiments] [-c] [-r <name>] [-f] [-j <number>]
+              [-p [<path> [<path> ...]]]
 ```
 
 ## Description
 
-This command deletes (garbage collects) data files or directories that exist in
-DVC cache but are no longer needed. With `--cloud` it also removes data in
+This command can delete (garbage collect) data files or directories that exist
+in the cache but are no longer needed. With `--cloud`, it also removes data in
 [remote storage](/doc/command-reference/remote).
 
-To avoid accidentally deleting data, it raises an error and doesn't touch any
-files if no scope options are provided. It means it's user's responsibility to
-explicitly provide the right set of options to specify what data is still needed
-(so that DVC can figure out what files can be safely deleted).
+To avoid accidentally deleting data, `dvc gc` doesn't do anything unless one or
+a combination of scope options are provided (`--workspace`, `--all-branches`,
+`--all-tags`, `--all-commits`). Use these to indicate which cached files are
+still needed. See the [Options](#options) section for more details.
 
-One of the scope options (`--workspace`, `--all-branches`, `--all-tags`,
-`--all-commits`) or a combination of them must be provided. Each of them
-corresponds to keeping the data for the current workspace, and possibly for a
-certain set of commits (determined by reading the <abbr>DVC files</abbr> in
-them). See the [Options](#options) section for more details.
+The data kept is determined by reading the <abbr>DVC files</abbr> in the set of
+commits of the given scope.
 
 > Note that `dvc gc` tries to fetch any missing
 > [`.dir` files](/doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory)
 > from [remote storage](/doc/command-reference/remote) to the local
 > <abbr>cache</abbr>, in order to determine which files should exist inside
 > cached directories. These files may be missing if the cache directory was
-> previously garbage collected, in a newly cloned copy of the repo, etc.
+> previously garbage collected, or in a newly cloned copy of the repo, etc.
 
 Unless the `--cloud` option is used, `dvc gc` does not remove data files from
 any remote. This means that any files collected from the local cache can be
@@ -53,7 +50,7 @@ The default remote is cleaned (see `dvc config core.remote`) unless the
 
 - `-w`, `--workspace` - keep _only_ files and directories referenced in the
   workspace. Note that this behavior is implied in `--all-tags`,
-  `--all-branches`, and `--all-commits`.
+  `--all-branches`, `--all-commits`, and `--all-commits`.
 
 - `-a`, `--all-branches` - keep cached objects referenced in all Git branches,
   and in the workspace (implying `-w`). Useful if branches are used to track
@@ -61,9 +58,9 @@ The default remote is cleaned (see `dvc config core.remote`) unless the
   example using the `-aT` flag.
 
 - `-T`, `--all-tags` - same as `-a` above, but applies to all Git tags, and in
-  the workspace (implying `-w`). Useful if tags are used to track "checkpoints"
-  of an experiment or project. Note that both options can be combined, for
-  example using the `-aT` flag.
+  the workspace (implying `-w`). Useful if tags are used to mark certain
+  versions of an experiment or project. Note that both options can be combined,
+  for example using the `-aT` flag.
 
 - `--all-commits` - same as `-a` or `-T` above, but applies to all Git commits,
   and in the workspace (implying `-w`). This preserves the cache for all data
@@ -74,6 +71,11 @@ The default remote is cleaned (see `dvc config core.remote`) unless the
   `-M`, and `--no-commit` options in those commands). In that scenario, data
   that is never referenced from the workspace or from any Git commit can still
   be stored in the project's cache).
+
+- `--all-experiments` same as `a`, `T`, but applies to all `dvc experiments`.
+  This preserves the cache for all
+  [experimental](/doc/user-guide/external-dependencies) data (including
+  intermediate checkpoints).
 
 - `-p <paths>`, `--projects <paths>` - if a single remote or a single cache is
   shared among different projects (e.g. a configuration like the one described

@@ -1,8 +1,8 @@
 # External Dependencies
 
 There are cases when data is so large, or its processing is organized in such a
-way, that its preferable to avoid moving it from its original location. For
-example data on a network attached storage (NAS), processing data on HDFS,
+way, that its preferable to avoid moving it from its current external location.
+For example data on a network attached storage (NAS), processing data on HDFS,
 running [Dask](https://dask.org/) via SSH, or for a script that streams data
 from S3 to process it.
 
@@ -12,14 +12,14 @@ and version data outside of the <abbr>project</abbr>.
 
 ## How external dependencies work
 
-External <abbr>dependencies</abbr> are considered part of the (extended) DVC
-project: DVC will track them, detecting when they change (triggering stage
-executions on `dvc repro`, for example).
+External <abbr>dependencies</abbr> will be tracked by DVC, detecting when they
+change (triggering stage executions on `dvc repro`, for example).
 
 To define files or directories in an external location as
-[stage](/doc/command-reference/run) dependencies, put their remote URLs or
+[stage](/doc/command-reference/run) dependencies, specify their remote URLs or
 external paths in `dvc.yaml` (`deps` field). Use the same format as the `url` of
-certain `dvc remote` types. Currently, the following protocols are supported:
+certain `dvc remote` types. Currently, the following supported `dvc remote`
+types/protocols:
 
 - Amazon S3
 - Microsoft Azure Blob Storage
@@ -36,6 +36,9 @@ certain `dvc remote` types. Currently, the following protocols are supported:
 
 Let's take a look at defining and running a `download_file` stage that simply
 downloads a file from an external location, on all the supported location types.
+
+> See the [Remote alias example](#example-using-dvc-remote-aliases) for info. on
+> using remote locations that require manual authentication setup.
 
 <details>
 
@@ -144,10 +147,9 @@ $ dvc run -n download_file \
 ## Example: Using DVC remote aliases
 
 You may want to encapsulate external locations as configurable entities that can
-be managed independently. This is useful if multiple dependencies (or stages)
-reuse the same location, or if its likely to change in the future. And if the
-location requires authentication, you need a way to configure it in order to
-connect.
+be managed independently. This is useful if the connection requires
+authentication, if multiple dependencies (or stages) reuse the same location, or
+if the URL is likely to change in the future.
 
 [DVC remotes](/doc/command-reference/remote) can do just this. You may use
 `dvc remote add` to define them, and then use a special URL with format
@@ -157,12 +159,11 @@ dependency.
 Let's see an example using SSH. First, register and configure the remote:
 
 ```dvc
-$ dvc remote add myssh ssh://myserver.com
-$ dvc remote modify --local myssh user myuser
-$ dvc remote modify --local myssh password mypassword
+$ dvc remote add myssh ssh://user@example.com
+$ dvc remote modify --local myssh password 'mypassword'
 ```
 
-> Please refer to `dvc remote add` for more details like setting up access
+> Please refer to `dvc remote modify` for more details like setting up access
 > credentials for the different remote types.
 
 Now, use an alias to this remote when defining the stage:

@@ -44,6 +44,8 @@ changed to decide whether the stage requires re-execution (see `dvc status`).
 If it writes files or dirs, they can be defined as <abbr>outputs</abbr>
 (`outs`). DVC will track them going forward (similar to using `dvc add`).
 
+> See the full stage entry [specification](#stage-entries).
+
 ### Parameter dependencies
 
 [Parameters](/doc/command-reference/params) are a special type of stage
@@ -157,9 +159,8 @@ stages:
 To load additional params files, list them in the top `vars`, in the desired
 order, e.g.:
 
-> Params file paths will be evaluated based on
-> [`wdir`](/doc/user-guide/project-structure/pipelines-files#specification), if
-> one given.
+> Params file paths will be evaluated based on [`wdir`](#stage-entries), if one
+> given.
 
 ```yaml
 vars:
@@ -208,9 +209,9 @@ example, `{"grp": {"a": 1}}` merges with `{"grp": {"b": 2}}`, but not with
 
 ⚠️ Known limitations of local `vars`:
 
-- [`wdir`](/doc/user-guide/project-structure/pipelines-files#specification)
-  cannot use values from local `vars`, as DVC uses the working directory first
-  (to load any values from params files listed in `vars`).
+- [`wdir`](#stage-entries) cannot use values from local `vars`, as DVC uses the
+  working directory first (to load any values from params files listed in
+  `vars`).
 - `foreach` is also incompatible with local `vars` at the moment.
 
 The substitution expression supports these forms:
@@ -337,7 +338,9 @@ stages:
 > Note that this feature is not compatible with [templating](#templating) at the
 > moment.
 
-## Specification
+## Stage entries
+
+These are the fields that are accepted in each stage:
 
 | Field            | Description                                                                                                                                                                                                                                                                               |
 | ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -369,11 +372,15 @@ validation and auto-completion.
 > Notice that these are a subset of those in `.dvc` file
 > [output entries](/doc/user-guide/project-structure/dvc-files#output-entries).
 
-| Field     | Description                                                                                                                                |
-| --------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
-| `cache`   | Whether or not this file or directory is <abbr>cached</abbr> (`true` by default). See the `--no-commit` option of `dvc add`.               |
-| `persist` | Whether the output file/dir should remain in place while `dvc repro` runs (`false` by default: outputs are deleted when `dvc repro` starts |
-| `desc`    | (Optional) user description for this output. This doesn't affect any DVC operations.                                                       |
+| Field        | Description                                                                                                                                                                                                                                                                        |
+| ------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `cache`      | Whether or not this file or directory is <abbr>cached</abbr> (`true` by default). See the `--no-commit` option of `dvc add`.                                                                                                                                                       |
+| `persist`    | Whether the output file/dir should remain in place while `dvc repro` runs (`false` by default: outputs are deleted when `dvc repro` starts                                                                                                                                         |
+| `desc`       | (Optional) user description for this output. This doesn't affect any DVC operations.                                                                                                                                                                                               |
+| `checkpoint` | Set to `true` to let DVC know that this output is associated with [in-code checkpoints](/doc/user-guide/experiment-management#checkpoints-in-source-code). These outputs are reverted to their last cached version at `dvc exp run` and also `persist` during the stage execution. |
+
+⚠️ Using the `checkpoint` field is only compatibly with `dvc exp run`,
+`dvc repro` will abort if any stage contains it.
 
 ## dvc.lock file
 

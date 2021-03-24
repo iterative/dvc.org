@@ -79,13 +79,13 @@ used to see what files `dvc pull` would download.
 - `-a`, `--all-branches` - determines the files to download by examining
   `dvc.yaml` and `.dvc` files in all Git branches instead of just those present
   in the current workspace. It's useful if branches are used to track
-  experiments or project checkpoints. Note that this can be combined with `-T`
-  below, for example using the `-aT` flag.
+  experiments. Note that this can be combined with `-T` below, for example using
+  the `-aT` flag.
 
 - `-T`, `--all-tags` - same as `-a` above, but applies to Git tags as well as
-  the workspace. Useful if tags are used to track "checkpoints" of an experiment
-  or project. Note that both options can be combined, for example using the
-  `-aT` flag.
+  the workspace. Useful if tags are used to mark certain versions of an
+  experiment or project. Note that both options can be combined, for example
+  using the `-aT` flag.
 
 - `--all-commits` - same as `-a` or `-T` above, but applies to _all_ Git commits
   as well as the workspace. This downloads tracked data for the entire commit
@@ -112,8 +112,8 @@ used to see what files `dvc pull` would download.
 
 - `--run-cache` - downloads all available history of
   [stage runs](/doc/user-guide/project-structure/internal-files#run-cache) from
-  the remote repository (to the cache only, like `dvc fetch --run-cache`). Note
-  that `dvc repro <stage_name>` is necessary to checkout these files (into the
+  the `dvc remote` (to the cache only, like `dvc fetch --run-cache`). Note that
+  `dvc repro <stage_name>` is necessary to checkout these files (into the
   workspace) and update `dvc.lock`.
 
 - `-j <number>`, `--jobs <number>` - parallelism level for DVC to download data
@@ -233,9 +233,9 @@ already set up and you can use `dvc remote list` to check them. To remember how
 it's done, and set a context for the example, let's define a default SSH remote:
 
 ```dvc
-$ dvc remote add -d r1 ssh://_username_@_host_/path/to/dvc/remote/storage
+$ dvc remote add -d r1 ssh://user@example.com/path/to/dvc/remote/storage
 $ dvc remote list
-r1	ssh://_username_@_host_/path/to/dvc/remote/storage
+r1	ssh://user@example.com/path/to/dvc/remote/storage
 ```
 
 > DVC supports several
