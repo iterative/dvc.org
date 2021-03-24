@@ -369,7 +369,7 @@ validation and auto-completion.
 
 ### Output subfields
 
-> Notice that these are a subset of those in `.dvc` file
+> These include a subset of the fields in `.dvc` file
 > [output entries](/doc/user-guide/project-structure/dvc-files#output-entries).
 
 | Field        | Description                                                                                                                                                                                                                                                                        |
