@@ -315,19 +315,21 @@ $ dvc remote modify myremote endpointurl \
   $ dvc remote modify myremote url azure://mycontainer/path
   ```
 
-#### Authentication Flow:
+The remaining parameters represent different authentication methods. Here's a
+summary, in order of precedence:
 
-- If `connection_string` specified, it will auth with it
-- If `tenant_id`/`client_id`/`client_secret` is specified, it will auth with AD
-  service principal
-- If `account_name`/`account_key` is specified, it will auth with account_key
-- If `account_name`/`sas_token` is specified, it will auth with SAS token
-- If `account_name` is specified, it will auth anonymously
-- If nothing is specified in the config, it will try to follow the steps here
-  and try to infer it from the environment (
-  https://azuresdkdocs.blob.core.windows.net/$web/python/azure-identity/1.4.0/azure.identity.html#azure.identity.DefaultAzureCredential)
+- `connection_string` is used for authentication if given (all others are
+  ignored).
+- If `tenant_id` and `client_id`/`client_secret` are given, Active Directory
+  (AD) service principal auth is performed.
+- `account_name` auth comes next (if given), attempting to use `account_key` or
+  `sas_token` (in that order). If neither are provided, DVC will try to connect
+  anonymously.
+- If no params are given, DVC will try to use a
+  [default credential](https://docs.microsoft.com/en-us/python/api/azure-identity/azure.identity.defaultazurecredential)
+  (inferred from environment variables).
 
-> The authentication values below will contain sensitive user info. Therefore,
+> The authentication values below may contain sensitive user info. Therefore,
 > it's safer to use the `--local` flag so they're written to a Git-ignored
 > [config file](https://dvc.org/doc/command-reference/config).
 
@@ -339,7 +341,7 @@ $ dvc remote modify myremote endpointurl \
                               'mystring'
   ```
 
-* `tenant_id` - tenant ID for
+* `tenant_id` - tenant ID for AD
   [service principal](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal)
   authentication (requires `client_id` and `client_secret` along with this):
 
@@ -405,13 +407,11 @@ $ export AZURE_USERNAME='myuser'
 $ export AZURE_PASSWORD='mysecret'
 ```
 
-> On Windows, if none of the above settings are configured the login will
-> fallback to search for a signed in Microsoft application (e.g Visual Studio)
-> and use that identity. If multiple found, it will use `AZURE_USERNAME` to
-> select the primary one.
-
-> On all other systems, it will use the Microsoft account of user who is signed
-> in to Visual Studio Code, if it is available.
+> On Windows, Azure authentication will fall back to searching for a signed-in
+> Microsoft application (e.g Visual Studio) and using it's identity (if multiple
+> exist, `AZURE_USERNAME` can be set to select one). On all other systems this
+> will apply only if [Visual Studio Code](https://code.visualstudio.com/) is
+> available.
 
 </details>
 
