@@ -20,15 +20,6 @@ With `--queue`, the list of experiments awaiting execution is cleared instead.
 
 > Note that all the checkpoints in an experiment are removed by this command.
 
-<details>
-
-### What happens to removed experiments?
-
-Internally, `dvc exp` uses actual Git commits under custom Git references (found
-in `.git/refs/exps`). `dvc remove` deletes these references.
-
-</details>
-
 ## Options
 
 - `--queue` - remove all experiments that haven't been run yet (defined via

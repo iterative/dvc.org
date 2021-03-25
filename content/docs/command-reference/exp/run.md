@@ -42,7 +42,7 @@ name like `exp-bfe64` (which can be customized with the `--name` option).
 
 ### How does DVC track experiments?
 
-Experiments are implemented as custom
+Experiments are custom
 [Git references](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
 (found in `.git/refs/exps`) with a commit whose parent is the `HEAD` at the time
 of running. Note that they're not pushed to the Git remote by default (see
