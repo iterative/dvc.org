@@ -18,16 +18,14 @@ Deletes one or more experiments, indicated by name (see `dvc exp run`).
 
 With `--queue`, the list of experiments awaiting execution is cleared instead.
 
-> Note that all the checkpoints in an experiment are deleted by this command.
+> Note that all the checkpoints in an experiment are removed by this command.
 
 <details>
 
 ### What happens to removed experiments?
 
 Internally, `dvc exp` uses actual Git commits under custom Git references (found
-in `.git/refs/exps`). `dvc remove` deletes the references only, rendering the
-commits unreachable. `git` should garbage collect them automatically
-[after some time](https://git-scm.com/docs/git-gc#Documentation/git-gc.txt---pruneltdategt).
+in `.git/refs/exps`). `dvc remove` deletes these references.
 
 </details>
 

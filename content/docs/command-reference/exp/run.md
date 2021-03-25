@@ -35,27 +35,24 @@ data and code updates, or <abbr>hyperparameter</abbr> tuning. You can use the
 `--set-param` option to change `dvc param` values on-the fly.
 
 Each `dvc exp run` creates a variation based on the latest project version
-committed to Git, and tracks this experiment automatically with an automatic
+committed to Git (`HEAD`), and tracks this experiment with an auto-generated
 name like `exp-bfe64` (which can be customized with the `--name` option).
 
 <details>
 
 ### How does DVC track experiments?
 
-Internally, `dvc exp` uses actual commits under custom
+Experiments are implemented as custom
 [Git references](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
-(found in `.git/refs/exps`). Each commit has the Git `HEAD` as parent and has
-it's own SHA-256 hash. These are not pushed to the Git remote by default (see
+(found in `.git/refs/exps`) with a commit whose parent is the `HEAD` at the time
+of running. Note that they're not pushed to the Git remote by default (see
 `dvc exp push`).
-
-> References have a unique signature similar to the
-> [entries in the run-cache](/doc/user-guide/project-structure/internal-files#run-cache).
 
 </details>
 
 The results of the last experiment can be seen in the <abbr>workspace</abbr>. To
 display and compare your experiments, use `dvc exp show` or `dvc exp diff`. Use
-`dvc exp apply` to roll back the workspace to a previous experiment
+`dvc exp apply` to roll back the workspace to a previous experiment.
 
 Successful experiments can be made
 [persistent](/doc/user-guide/experiment-management#persistent-experiments) by
@@ -94,12 +91,10 @@ the first `dvc exp run`) — useful for re-training ML models, for example.
 
 <details>
 
-### How are checkpoints captured by DVC?
+### How are checkpoints captured?
 
-When DVC runs a checkpoint-enabled experiment, a custom Git branch (in
-`.git/refs/exps`) is started off the repo `HEAD`. A new commit is appended each
-time a checkpoint is registered by the code. These are not pushed to the Git
-remote by default (see `dvc exp push`).
+Instead of a single commit, checkpoint experiments have multiple commits under
+the custom Git reference (in `.git/refs/exps`), forming a branch.
 
 </details>
 
