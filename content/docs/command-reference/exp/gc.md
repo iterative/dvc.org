@@ -40,10 +40,9 @@ separately to delete it.
   the workspace (implies `-w`). Note that both options can be combined, for
   example using the `-aT` flag.
 
-- `--all-commits` - same as `-a` or `-T` above, but applies to _all_
-  [reachable](https://git-scm.com/docs/gitglossary#def_reachable) Git commits as
-  well as the workspace (implies `-w`). This is mainly needed when clearing the
-  experiments run queue.
+- `--all-commits` - same as `-a` or `-T` above, but applies to _all_ your Git
+  commits as well as the workspace (implies `-w`). This is mainly needed when
+  clearing the experiments run queue.
 
 - `--queued` - keep also experiments that haven't been run yet (defined via
   `dvc exp run --queue`). A scope option (`-w`, `-a`, etc.) is required along

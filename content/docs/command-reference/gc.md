@@ -62,10 +62,9 @@ The default remote is cleaned (see `dvc config core.remote`) unless the
   versions of an experiment or project. Note that both options can be combined,
   for example using the `-aT` flag.
 
-- `--all-commits` - same as `-a` or `-T` above, but applies to all
-  [reachable](https://git-scm.com/docs/gitglossary#def_reachable) Git commits,
-  and in the workspace (implying `-w`). This preserves the cache for all data
-  used in the entire commit history of the project.
+- `--all-commits` - same as `-a` or `-T` above, but applies to all your Git
+  commits, and in the workspace (implying `-w`). This preserves the cache for
+  all data used in the entire commit history of the project.
 
   A use case for this option is to safely delete all temporary data `dvc run`
   and/or `dvc repro` cache when used without committing changes (see the `-O` or
