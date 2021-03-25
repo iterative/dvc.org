@@ -120,8 +120,8 @@ $ dvc import https://github.com/example/registry images/faces
 ```
 
 Besides downloading the data, importing saves the information about the
-dependency that the local project has on the data source (registry repo). This is
-achieved by generating a special import `.dvc` file, which contains this
+dependency that the local project has on the data source (registry repo). This
+is achieved by generating a special import `.dvc` file, which contains this
 metadata.
 
 Whenever the dataset changes in the registry, we can bring data up to date in
