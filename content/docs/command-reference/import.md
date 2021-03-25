@@ -155,7 +155,7 @@ outs:
 ```
 
 Several of the values above are pulled from the original `.dvc` file
-`data.xml.dvc` in the external DVC repository. The `url` and `rev_lock`
+ [in the external DVC repository](https://github.com/iterative/example-get-started/blob/master/data/data.xml.dvc). The `url` and `rev_lock`
 subfields under `repo` are used to save the origin and version of the
 dependency, respectively.
 
