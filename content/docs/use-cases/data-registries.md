@@ -120,7 +120,7 @@ $ dvc import https://github.com/example/registry images/faces
 ```
 
 Besides downloading the data, importing saves the information about the
-dependency from the local project to the data source (registry repo). This is
+dependency from the data source (registry repo) to the local project. This is
 achieved by generating a special import `.dvc` file, which contains this
 metadata.
 
