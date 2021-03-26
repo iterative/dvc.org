@@ -379,9 +379,6 @@ outs:
     path: data.xml
 ```
 
-> For a similar operation that actually keeps a connection to the data source,
-> please see `dvc import-url`.
-
 ## Example: Transfer to remote storage
 
 When you have a large dataset in an external location, you may want to track it
@@ -428,3 +425,6 @@ system that can handle it), they can use `dvc pull` as usual:
 A       data.xml
 1 file added and 1 file fetched
 ```
+
+> For a similar operation that actually keeps a connection to the data source,
+> please see `dvc import-url`.
