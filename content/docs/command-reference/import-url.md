@@ -404,3 +404,6 @@ system that can handle it), they can use `dvc pull` as usual:
 A       data.xml
 1 file added and 1 file fetched
 ```
+
+Note that you can also use `dvc update --to-remote` to bring the import up to
+date in remote storage, without downloading anything.
