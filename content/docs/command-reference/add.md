@@ -427,4 +427,5 @@ A       data.xml
 ```
 
 > For a similar operation that actually keeps a connection to the data source,
-> please see `dvc import-url`.
+> please see an
+> [`import-url` example](/doc/command-reference/import-url#example-transfer-to-remote-storage).
