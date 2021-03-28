@@ -3,7 +3,7 @@
 We provide short articles on common data science scenarios that DVC can help
 with or improve. Our use cases are not written to be run end-to-end like
 tutorials. For more general, hands-on experience with DVC, please see
-[Get Started](/doc/tutorials/get-started) instead.
+[Get Started](/doc/start) instead.
 
 ## Why DVC?
 

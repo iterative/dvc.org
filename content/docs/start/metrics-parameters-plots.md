@@ -16,7 +16,7 @@ Read on to see how it's done!
 
 First, let's see what is the mechanism to capture values for these ML
 attributes. Let's add a final evaluation stage to our
-[pipeline](/doc/start/data-pipelines#dependency-graphs-dags):
+[pipeline](/doc/start/data-pipelines):
 
 ```dvc
 $ dvc run -n evaluate \

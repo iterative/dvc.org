@@ -102,9 +102,9 @@ to compare and pick the best performing experiment.
 
 ## Examples
 
-> This example is based on our
-> [Get Started](/doc/start/metrics-parameters-plots#collecting-metrics), where
-> you can find the actual source code.
+> This example is based on the `evaluate` stage of our
+> [Get Started](/doc/start/metrics-parameters-plots), where you can find the
+> actual source code.
 
 First, let's imagine we have a simple [stage](/doc/command-reference/run) that
 produces a `eval.json` metrics file:
