@@ -48,20 +48,19 @@ that order).
 
 - `-u`, `--unset` - unset the current default remote from a config file.
 
-- `--system` - save or only read remote configuration to the system config (e.g.
-  `/etc/xdg/dvc/config`) instead of `.dvc/config`.
+- `--system` - save or only read remote configuration to/from the system config
+  file (e.g. `/etc/xdg/dvc/config`) instead of `.dvc/config`.
 
-- `--global` - save or only read remote configuration to the global config file
-  (e.g. `~/.config/dvc/config`) instead of `.dvc/config`.
+- `--global` - save or only read remote configuration to/from the global config
+  file (e.g. `~/.config/dvc/config`) instead of `.dvc/config`.
 
-- `--project` - save or only read remote configuration to the project's config
-  file (`.dvc/config`) (this is the default behavior).
+- `--project` - save or only read remote configuration to/from the project's
+  config file (`.dvc/config`) (this is the default behavior).
 
-- `--local` - save or only read remote configuration to the a local
-  [config file](/doc/command-reference/config) instead of `.dvc/config`. It is
-  located in `.dvc/config.local` and is Git-ignored. This is useful when you
-  need to specify private config options in your config that you don't want to
-  track and share through Git (credentials, private locations, etc).
+- `--local` - save or only read remote configuration to/from the Git-ignored
+  local config file (located in `.dvc/config.local`) instead of `.dvc/config`.
+  This is useful to save private remote config that you don't want to track and
+  share with Git.
 
 - `-h`, `--help` - prints the usage/help message and exit.
 

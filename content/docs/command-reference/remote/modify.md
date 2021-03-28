@@ -35,20 +35,19 @@ manual editing could be used to change the configuration.
 - `-u`, `--unset` - remove the configuration `option` from a config file. Don't
   provide a `value` argument when employing this flag.
 
-- `--system` - modify remote configuration to the system config (e.g.
-  `/etc/xdg/dvc/config`) instead of `.dvc/config`.
+- `--system` - modify the system config file (e.g. `/etc/xdg/dvc/config`)
+  instead of `.dvc/config`.
 
-- `--global` - modify remote configuration to the global config (e.g.
-  `~/.config/dvc/config`) instead of `.dvc/config`.
+- `--global` - modify the global config file (e.g. `~/.config/dvc/config`)
+  instead of `.dvc/config`.
 
-- `--project` - modify remote configuration to the project's config
-  (`.dvc/config`). This is the default behavior.
+- `--project` - modify the project's config file (`.dvc/config`). This is the
+  default behavior.
 
-- `--local` - modify a local [config file](/doc/command-reference/config)
-  instead of `.dvc/config`. It is located in `.dvc/config.local` and is
-  Git-ignored. This is useful when you need to specify private config options in
-  your config that you don't want to track and share through Git (credentials,
-  private locations, etc).
+- `--local` - modify the Git-ignored local config file (located in
+  `.dvc/config.local`) instead of `.dvc/config`. This is useful to save private
+  remote config that you don't want to track and share with Git (credentials,
+  private locations, etc.).
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 

@@ -77,9 +77,10 @@ multiple projects or users, respectively.
 - `--project` - only use the project's config file (`.dvc/config`) when reading
   config values (this is the default when writing).
 
-- `--local` - use the (Git-ignored) local config file. This is useful when you
-  need to specify private config option values that you don't want to track and
-  share with Git (credentials, private locations, etc).
+- `--local` - use the Git-ignored local config file (located in
+  `.dvc/config.local`) instead of `.dvc/config`. This is useful to save private
+  config values that you don't want to track and share with Git (credentials,
+  private locations, etc.).
 
 - `-l`, `--list` - lists all defined config values.
 

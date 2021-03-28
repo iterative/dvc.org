@@ -16,18 +16,17 @@ local config files (in that order).
 
 ## Options
 
-- `--system` - only read remote configuration to the system config (e.g.
+- `--system` - only read remote configuration from the system config file (e.g.
   `/etc/xdg/dvc/config`) instead of `.dvc/config`.
 
-- `--global` - only read remote configuration to the global config (e.g.
+- `--global` - only read remote configuration from the global config file (e.g.
   `~/.config/dvc/config`) instead of `.dvc/config`.
 
-- `--project` - only read use the project's config file (`.dvc/config`) when
-  reading remote configuration.
+- `--project` - only read remote configuration from the project's config file
+  (`.dvc/config`) when reading remote configuration.
 
-- `--local` - only read a local [config file](/doc/command-reference/config)
-  instead of `.dvc/config`. It is located in `.dvc/config.local` and is
-  Git-ignored.
+- `--local` - only read remote configuration from the Git-ignored local config
+  file (located in `.dvc/config.local`) instead of `.dvc/config`.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
