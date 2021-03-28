@@ -318,23 +318,24 @@ $ dvc remote modify myremote endpointurl \
 The remaining parameters represent different authentication methods. Here's a
 summary, in order of precedence:
 
-- `connection_string` is used for authentication if given (all others are
-  ignored).
-- If `tenant_id` and `client_id`/`client_secret` are given, Active Directory
-  (AD) service principal auth is performed.
-- `account_name` auth comes next (if given), attempting to use `account_key` or
-  `sas_token` (in that order). If neither are provided, DVC will try to connect
-  anonymously.
-- If no params are given, DVC will try to use a
-  [default credential](https://docs.microsoft.com/en-us/python/api/azure-identity/azure.identity.defaultazurecredential)
-  (inferred from environment variables).
+1. `connection_string` is used for authentication if given (all others params
+   are ignored).
+2. If `tenant_id` and `client_id` or `client_secret` are given, Active Directory
+   (AD) service principal auth is performed.
+3. The storage `account_name` is tried next, along with `account_key` or
+   `sas_token` (in that order). If neither are provided, DVC will try to connect
+   anonymously.
+4. If no params are given, DVC will try to use a
+   [default credential](https://docs.microsoft.com/en-us/python/api/azure-identity/azure.identity.defaultazurecredential)
+   (inferred from environment variables).
 
 > The authentication values below may contain sensitive user info. Therefore,
 > it's safer to use the `--local` flag so they're written to a Git-ignored
 > [config file](https://dvc.org/doc/command-reference/config).
 
-- `connection_string` -
-  [connection string](http://azure.microsoft.com/en-us/documentation/articles/storage-configure-connection-string/):
+- `connection_string` - Azure Storage
+  [connection string](http://azure.microsoft.com/en-us/documentation/articles/storage-configure-connection-string/)
+  (recommended):
 
   ```dvc
   $ dvc remote modify --local myremote connection_string \
@@ -363,8 +364,9 @@ summary, in order of precedence:
   $ dvc remote modify --local myremote client_secret 'client-secret'
   ```
 
-- `account_name` - storage account name. Works by itself (anonymous auth) or
-  along with either `account_key` or `sas_token` along with this):
+- `account_name` - storage account name. May work by itself (via
+  [anonymous auth](https://docs.microsoft.com/en-us/azure/storage/blobs/anonymous-read-access-configure))
+  or along with either `account_key` or `sas_token` along with this):
 
   ```dvc
   $ dvc remote modify --local myremote account_name 'myuser'
@@ -382,8 +384,8 @@ summary, in order of precedence:
   $ dvc remote modify --local myremote sas_token 'mytoken'
   ```
 
-Azure remotes can also be configured entirely via environment variables (if none
-of the auth params above are set). For account name and key/token auth:
+Authentication via environment variables (if none of the auth params above are
+set). For account name and key/token auth:
 
 ```dvc
 $ export AZURE_STORAGE_ACCOUNT_NAME='myuser'
