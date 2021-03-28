@@ -73,9 +73,8 @@ given with `--remote`.
 
 ## Examples
 
-> This example is based on our
-> [Get Started](/doc/tutorials/get-started/experiments), where you can find the
-> actual source code.
+> This example is based on our [Get Started](/doc/start/experiments), where you
+> can find the actual source code.
 
 Let's say we have cloned a DVC repository, and would like to fetch an experiment
 that someone else shared (see also `dvc exp list`).

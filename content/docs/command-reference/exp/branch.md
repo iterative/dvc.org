@@ -51,9 +51,8 @@ To switch into the new branch, use `git checkout branch` and `dvc checkout`.
 
 ## Example: Make a persistent branch from an experiment
 
-> This example is based on our
-> [Get Started](/doc/tutorials/get-started/experiments), where you can find the
-> actual source code.
+> This example is based on our [Get Started](/doc/start/experiments), where you
+> can find the actual source code.
 
 Let's say we have run 3 experiments in our project:
 

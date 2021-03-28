@@ -67,8 +67,8 @@ data `path`, and the `outs` field contains the corresponding local path in the
 <abbr>workspace</abbr>. It records enough metadata about the imported data to
 enable DVC efficiently determining whether the local copy is out of date.
 
-To actually [version the data](/doc/tutorials/get-started/data-versioning),
-`git add` (and `git commit`) the import `.dvc` file.
+To actually [version the data](/doc/start/data-versioning), `git add` (and
+`git commit`) the import `.dvc` file.
 
 Note that `dvc repro` doesn't check or update import `.dvc` files (see
 `dvc freeze`), use `dvc update` to bring the import up to date from the data
@@ -155,9 +155,9 @@ outs:
 ```
 
 Several of the values above are pulled from the original `.dvc` file
-`model.pkl.dvc` in the external DVC repository. The `url` and `rev_lock`
-subfields under `repo` are used to save the origin and version of the
-dependency, respectively.
+[in the external DVC repository](https://github.com/iterative/example-get-started/blob/master/data/data.xml.dvc).
+The `url` and `rev_lock` subfields under `repo` are used to save the origin and
+version of the dependency, respectively.
 
 ## Example: Importing and updating fixed revisions
 

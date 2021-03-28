@@ -108,8 +108,8 @@ the [pipeline](/doc/command-reference/dag) must be reproduced (using
 
 Let's employ a simple <abbr>workspace</abbr> with some data, code, ML models,
 pipeline stages, such as the <abbr>DVC project</abbr> created for the
-[Get Started](/doc/tutorials/get-started). Then we can see what happens with
-`git checkout` and `dvc checkout` as we switch from tag to tag.
+[Get Started](/doc/start). Then we can see what happens with `git checkout` and
+`dvc checkout` as we switch from tag to tag.
 
 <details>
 

@@ -4,7 +4,7 @@ You can construct data science or machine learning pipelines by defining
 individual [stages](/doc/command-reference/run) in one or more `dvc.yaml` files
 (or _pipelines files_). Stages form a pipeline when they connect with each other
 (forming a _dependency graph_, see `dvc dag`). Refer to
-[Data Pipelines](/doc/start/data-pipelines).
+[Get Started: Data Pipelines](/doc/start/data-pipelines).
 
 > Note that a helper command, `dvc run`, is available to create (and execute)
 > stages.
@@ -369,7 +369,7 @@ validation and auto-completion.
 
 ### Output subfields
 
-> Notice that these are a subset of those in `.dvc` file
+> These include a subset of the fields in `.dvc` file
 > [output entries](/doc/user-guide/project-structure/dvc-files#output-entries).
 
 | Field        | Description                                                                                                                                                                                                                                                                        |
@@ -379,8 +379,8 @@ validation and auto-completion.
 | `desc`       | (Optional) user description for this output. This doesn't affect any DVC operations.                                                                                                                                                                                               |
 | `checkpoint` | Set to `true` to let DVC know that this output is associated with [in-code checkpoints](/doc/user-guide/experiment-management#checkpoints-in-source-code). These outputs are reverted to their last cached version at `dvc exp run` and also `persist` during the stage execution. |
 
-⚠️ Using the `checkpoint` field is only compatibly with `dvc exp run`,
-`dvc repro` will abort if any stage contains it.
+⚠️ Note that using the `checkpoint` field in `dvc.yaml` is not compatible with
+`dvc repro`.
 
 ## dvc.lock file
 
