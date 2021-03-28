@@ -163,11 +163,11 @@ later, DVC will keep operating detached from Git in this project.
 
 ## Examples: Most common initialization workflow
 
-Create a new <abbr>DVC repository</abbr> (requires to be run in the Git
-repository root):
+Create a new <abbr>DVC repository</abbr> (requires running in the Git repository
+root):
 
 ```dvc
-$ mkdir example && cd example
+$ mkdir mydvcrepo && cd mydvcrepo
 $ git init
 $ dvc init
 $ git status
@@ -191,14 +191,13 @@ $ cat .dvc/.gitignore
 
 ## Examples: Initializing DVC in a subdirectory
 
-Create a new <abbr>DVC repository</abbr> in a subdirectory of a Git repository:
+Create a <abbr>DVC repository</abbr> in a subdirectory of a Git repository:
 
 ```dvc
-$ mkdir repo && cd repo
-
+$ mkdir mygitrepo && cd mygitrepo
 $ git init
-$ mkdir project-a && cd project-a
 
+$ mkdir project-a && cd project-a
 $ dvc init --subdir
 ```
 

@@ -277,14 +277,9 @@ $ dvc run -n second_stage './another_script.sh $MYENVVAR'
 
 ## Examples
 
-Let's create a <abbr>DVC project</abbr> and a stage (that counts the number of
-lines in a `test.txt` file):
+Let's create a stage (that counts the number of lines in a `test.txt` file):
 
 ```dvc
-$ mkdir example && cd example
-$ git init
-$ dvc init
-$ mkdir data
 $ dvc run -n count \
           -d test.txt \
           -o lines \
@@ -368,7 +363,6 @@ outputs of a stage to the dependencies of the following one(s).
 Extract an XML file from an archive to the `data/` folder:
 
 ```dvc
-$ mkdir data
 $ dvc run -n extract \
           -d Posts.xml.zip \
           -o data/Posts.xml \
