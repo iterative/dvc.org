@@ -80,8 +80,8 @@ But first, we may want to explore its contents.
 
 ### Listing data
 
-To explore the contents of a data DVC repo in search for the right data, use the
-`dvc list` command (similar to `ls` and 3rd-party tools like `aws s3 ls`):
+To explore the contents of a DVC repository in search for the right data, use
+the `dvc list` command (similar to `ls` and 3rd-party tools like `aws s3 ls`):
 
 ```dvc
 $ dvc list -R https://github.com/iterative/dataset-registry
@@ -120,8 +120,8 @@ $ dvc import https://github.com/example/registry images/faces
 ```
 
 Besides downloading the data, importing saves the information about the
-dependency from the local project to the data source (registry repo). This is
-achieved by generating a special import `.dvc` file, which contains this
+dependency that the local project has on the data source (registry repo). This
+is achieved by generating a special import `.dvc` file, which contains this
 metadata.
 
 Whenever the dataset changes in the registry, we can bring data up to date in
@@ -156,7 +156,7 @@ with dvc.api.open(model_path, repo_url) as fd:
 ```
 
 This opens `model.pkl` as a file descriptor. This example illustrates a simple
-ML model **deployment** method, but it could be extended to more advances
+ML model **deployment** method, but it could be extended to more advanced
 scenarios such as a _model zoo_.
 
 See also the `dvc.api.read()` and `dvc.api.get_url()` functions.

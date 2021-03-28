@@ -27,8 +27,8 @@ The `name` argument is required.
 - `--global` - modify the global config (e.g. `~/.config/dvc/config`) instead of
   `.dvc/config`.
 
-- `--system` - modify the system config (e.g. `/etc/dvc/config`) instead of
-  `.dvc/config`.
+- `--system` - save remote configuration to the system config (e.g.
+  `/etc/xdg/dvc/config`) instead of `.dvc/config`.
 
 - `--project` - modify a project's config (`.dvc/config`). Used by default.
 

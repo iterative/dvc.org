@@ -58,8 +58,8 @@ to set/unset/change the default remote configurations.
 - `--global` - use a global config file (e.g. `~/.config/dvc/config`) instead of
   `.dvc/config`.
 
-- `--system` - use a system config file (e.g. `/etc/dvc/config`) instead of
-  `.dvc/config`.
+- `--system` - save remote configuration to the system config (e.g.
+  `/etc/xdg/dvc/config`) instead of `.dvc/config`.
 
 - `--project` - use a project's config file (`.dvc/config`).
 

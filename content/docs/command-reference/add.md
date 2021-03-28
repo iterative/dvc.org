@@ -148,8 +148,15 @@ not.
 - `--external` - allow `targets` that are outside of the DVC repository. See
   [Managing External Data](/doc/user-guide/managing-external-data).
 
-  > Note that external outputs typically require an external cache setup. See
-  > link above for more details.
+  > ⚠️ Note that this is an advanced feature for very specific situations and
+  > not recommended except if there's absolutely no other alternative.
+  > Additionally, this typically requires an external cache setup (see link
+  > above).
+
+- `-o <path>`, `--out <path>` - destination `path` to make a local target copy,
+  or to [transfer](#example-transfer-to-cache) an external target into the cache
+  (and link to workspace). Note that this can be combined with `--to-remote` to
+  avoid storing the data locally, while still adding it to the project.
 
 - `--to-remote` - import an external target, but don't move it into the
   workspace, nor cache it. [Transfer it](#example-transfer-to-remote-storage) it
@@ -159,9 +166,6 @@ not.
 - `-r <name>`, `--remote <name>` - name of the
   [remote storage](/doc/command-reference/remote) to transfer external target to
   (can only be used with `--to-remote`).
-
-- `-o <path>`, `--out <path>` - destination `path` for the transferred data (can
-  only be used with `--to-remote`).
 
 - `--desc <text>` - user description of the data (optional). This doesn't affect
   any DVC operations.
@@ -332,28 +336,56 @@ $ tree .dvc/cache
 Only the hash values of the `dir/` directory (with `.dir` file extension) and
 `file2` have been cached.
 
+## Example: Transfer to the cache
+
+When you have a large dataset in an external location, you may want to add it to
+the <abbr>project</abbr> without having to copy it into the workspace. Maybe
+your local disk doesn't have enough space, but you have setup an
+[external cache](/doc/use-cases/shared-development-server#configure-the-external-shared-cache)
+that could handle it.
+
+The `--out` option lets you add external paths in a way that they are
+<abbr>cached</abbr> first, and then
+[linked](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
+to a given path inside the <abbr>workspace<abbr>.
+
+Let's add a `data.xml` file via HTTP for example, putting it a local path in our
+project:
+
+```dvc
+$ dvc add https://data.dvc.org/get-started/data.xml -o data.xml
+...
+$ ls
+data.xml data.xml.dvc
+```
+
+The resulting `.dvc` file will save the provided local `path` as if the data was
+already in the workspace, while the `md5` hash points to the copy of the data
+that has now been transferred to the <abbr>cache</abbr>. Let's check the
+contents of `data.xml.dvc` in this case:
+
+```yaml
+outs:
+  - md5: a304afb96060aad90176268345e10355
+    nfiles: 1
+    path: data.xml
+```
+
 ## Example: Transfer to remote storage
 
 When you have a large dataset in an external location, you may want to track it
 as if it was in your project, but without downloading it locally (for now). The
 `--to-remote` option lets you do so, while storing a copy
 [remotely](/doc/command-reference/remote) so it can be
-[pulled](/doc/command-reference/plots) later. Let's initialize a DVC project,
-and setup a remote:
+[pulled](/doc/command-reference/plots) later.
+
+Let's setup a sample remote and add the `data.xml` to our remote storage from
+the given remote location:
 
 ```dvc
-$ mkdir example # workspace
-$ cd example
-$ git init
-$ dvc init
-$ mkdir /tmp/dvc-storage
-$ dvc remote add myremote /tmp/dvc-storage
-```
+$ mkdir /tmp/dvcstore
+$ dvc remote add myremote /tmp/dvcstore
 
-Now let's add the `data.xml` to our remote storage from the given remote
-location.
-
-```dvc
 $ dvc add https://data.dvc.org/get-started/data.xml -o data.xml \
                  --to-remote -r myremote
 ...
@@ -378,3 +410,7 @@ system that can handle it), they can use `dvc pull` as usual:
 A       data.xml
 1 file added and 1 file fetched
 ```
+
+> For a similar operation that actually keeps a connection to the data source,
+> please see an
+> [`import-url` example](/doc/command-reference/import-url#example-transfer-to-remote-storage).

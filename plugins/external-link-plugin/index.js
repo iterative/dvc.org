@@ -15,7 +15,9 @@ function isCorrectExternalLinkAttr(attrsKeyTagArray) {
 function renderTag(attrs) {
   return `
     <section class="elp-content-holder">
-      <a href="${escape(attrs.href)}" class="external-link-preview">
+      <a href="${escape(
+        attrs.href
+      )}" class="external-link-preview" target="_blank" rel="noopener noreferrer">
           <div class="elp-description-holder">
             <h4 class="elp-title">${escape(attrs.title)}</h4>
             <div class="elp-description">${escape(attrs.description)}</div>

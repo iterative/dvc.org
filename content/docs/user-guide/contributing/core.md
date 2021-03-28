@@ -39,7 +39,7 @@ contributing!
 Get the latest development version. Fork and clone the repo:
 
 ```dvc
-$ git clone git@github.com:<username>/dvc.git
+$ git clone git@github.com:<your-username>/dvc.git
 ```
 
 Make sure that you have Python 3 installed. Version 3.6 or higher is required to

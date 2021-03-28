@@ -32,7 +32,7 @@ DVC remote, respectively.
   `~/.config/dvc/config`) instead of `.dvc/config`.
 
 - `--system` - modify remote configuration to the system config (e.g.
-  `/etc/dvc/config`) instead of `.dvc/config`.
+  `/etc/xdg/dvc/config`) instead of `.dvc/config`.
 
 - `--project` - modify remote configuration to the project's config
   (`.dvc/config`). Used by default.

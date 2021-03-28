@@ -59,7 +59,7 @@ DVC will determine the [type of remote](#supported-storage-types) based on the
   `~/.config/dvc/config`) instead of `.dvc/config`.
 
 - `--system` - save remote configuration to the system config (e.g.
-  `/etc/dvc/config`) instead of `.dvc/config`.
+  `/etc/xdg/dvc/config`) instead of `.dvc/config`.
 
 - `--project` - save remote configuration to the project's config
   (`.dvc/config`). Used by default.
@@ -169,7 +169,7 @@ $ dvc remote modify --local myremote connection_string 'mystring'
 
 > The connection string contains sensitive user info. Therefore, it's safer to
 > add it with the `--local` option, so it's written to a Git-ignored config
-> file. See `dvc remote modify` for a full list of Azure storage parameters.
+> file. See `dvc remote modify` for a full list of Azure parameters.
 
 The Azure Blob Storage remote can also be configured globally via environment
 variables:
@@ -362,7 +362,7 @@ $ dvc remote modify --local myremote user myuser
 $ dvc remote modify --local myremote token 'mytoken'
 ```
 
-> The username and password may contain sensitive user info. Therefore, it's
+> The user name and password may contain sensitive user info. Therefore, it's
 > safer to add it with the `--local` option, so it's written to a Git-ignored
 > config file. See `dvc remote modify` for a full list of WebHDFS parameters.
 

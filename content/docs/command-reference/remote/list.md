@@ -22,7 +22,7 @@ that location.
   `~/.config/dvc/config`) instead of `.dvc/config`.
 
 - `--system` - save remote configuration to the system config (e.g.
-  `/etc/dvc/config`) instead of `.dvc/config`.
+  `/etc/xdg/dvc/config`) instead of `.dvc/config`.
 
 - `--project` - read remote configuration from the project's config
   (`.dvc/config`).
