@@ -65,14 +65,14 @@ multiple projects or users, respectively.
 - `-u`, `--unset` - remove the specified config option `name` from a config
   file. Don't provide a `value` argument when employing this flag.
 
-- `--global` - modify the global config file (e.g. `~/.config/dvc/config`)
-  instead of the project's `.dvc/config`. Useful to apply config options to all
-  your projects.
-
 - `--system` - modify the system config file (e.g. `/etc/xdg/dvc/config`)
   instead of `.dvc/config`. Useful to apply config options to all the projects
   (all users) in the machine. May require superuser access e.g.
   `sudo dvc config --system ...` (Linux).
+
+- `--global` - modify the global config file (e.g. `~/.config/dvc/config`)
+  instead of the project's `.dvc/config`. Useful to apply config options to all
+  your projects.
 
 - `--project` - only use the project's config file (`.dvc/config`) when reading
   config values (this is the default when writing).

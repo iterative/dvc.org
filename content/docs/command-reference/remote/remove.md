@@ -24,11 +24,11 @@ The `name` argument is required.
 
 ## Options
 
-- `--global` - modify the global config (e.g. `~/.config/dvc/config`) instead of
-  `.dvc/config`.
-
 - `--system` - save remote configuration to the system config (e.g.
   `/etc/xdg/dvc/config`) instead of `.dvc/config`.
+
+- `--global` - modify the global config (e.g. `~/.config/dvc/config`) instead of
+  `.dvc/config`.
 
 - `--project` - save remote configuration to the project's config
   (`.dvc/config`). This is the default behavior.

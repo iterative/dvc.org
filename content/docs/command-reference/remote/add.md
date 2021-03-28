@@ -55,11 +55,11 @@ DVC will determine the [type of remote](#supported-storage-types) based on the
 
 ## Options
 
-- `--global` - save remote configuration to the global config (e.g.
-  `~/.config/dvc/config`) instead of `.dvc/config`.
-
 - `--system` - save remote configuration to the system config (e.g.
   `/etc/xdg/dvc/config`) instead of `.dvc/config`.
+
+- `--global` - save remote configuration to the global config (e.g.
+  `~/.config/dvc/config`) instead of `.dvc/config`.
 
 - `--project` - save remote configuration to the project's config
   (`.dvc/config`). This is the default behavior.

@@ -27,23 +27,18 @@ absolute path, then it's preserved as it is.
 
 If no path `value` is given, it prints the current path of the cache directory.
 The value is read from the system, global, project, and local config files (in
-that order). The `--system`, `--global`, `--project`, and `--local` options can
-be used to read from that configuration only.
-
-If a `value` is given, it's written to the project-level config file by default
-(`.dvc/config`). Options `--system`, `--global` and `--local` can be used to
-write to that location instead.
+that order).
 
 ## Options
 
 - `-u`, `--unset` - remove the `cache.dir` config option from a config file.
   Don't provide a `value` argument when employing this flag.
 
-- `--global` - use the global config file (e.g. `~/.config/dvc/config`) instead
-  of the project's `.dvc/config`.
-
 - `--system` - use the system config file (e.g. `/etc/xdg/dvc/config`) instead
   of `.dvc/config`.
+
+- `--global` - use the global config file (e.g. `~/.config/dvc/config`) instead
+  of the project's `.dvc/config`.
 
 - `--project` - only use the project's config file (`.dvc/config`) when reading
   the value (this is the default when writing).

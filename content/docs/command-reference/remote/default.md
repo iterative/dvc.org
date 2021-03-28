@@ -22,16 +22,6 @@ You can query/set/replace/unset the _default remote_ using the options of this
 command. If the `name` of the remote is not provided and `--unset` is not
 specified, this command returns the name of the default remote.
 
-When reading (`name` is not provided), the value ise read from the system,
-global, project and local configuration files by default, and options
-`--system`, `--global`, `--project`, and `--local` can be used to tell the
-command to read from only that location.
-
-When writing (`name` is provided), the new value is written to the projects
-configuration file by default (`.dvc/config`), and options `--system`,
-`--global` and `--local` can be used to tell the command to write to that
-location (you can say `--project` but that is the default).
-
 ```dvc
 $ dvc remote default myremote
 ```
@@ -51,20 +41,23 @@ is omitted.
 You can also use `dvc config`, `dvc remote add` and `dvc remote modify` commands
 to set/unset/change the default remote configurations.
 
+Remotes are read from the system, global, project, and local config files (in
+that order).
+
 ## Options
 
 - `-u`, `--unset` - unset the current default remote from a config file.
 
-- `--global` - save remote configuration to the global config file (e.g.
-  `~/.config/dvc/config`) instead of `.dvc/config`.
-
-- `--system` - save remote configuration to the system config (e.g.
+- `--system` - save or only read remote configuration to the system config (e.g.
   `/etc/xdg/dvc/config`) instead of `.dvc/config`.
 
-- `--project` - save remote configuration to the project's config file
-  (`.dvc/config`) (this is the default behavior).
+- `--global` - save or only read remote configuration to the global config file
+  (e.g. `~/.config/dvc/config`) instead of `.dvc/config`.
 
-- `--local` - save remote configuration to the a local
+- `--project` - save or only read remote configuration to the project's config
+  file (`.dvc/config`) (this is the default behavior).
+
+- `--local` - save or only read remote configuration to the a local
   [config file](/doc/command-reference/config) instead of `.dvc/config`. It is
   located in `.dvc/config.local` and is Git-ignored. This is useful when you
   need to specify private config options in your config that you don't want to
