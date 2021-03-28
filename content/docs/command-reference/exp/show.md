@@ -72,23 +72,23 @@ metric or param.
 
 - `--include-params <list>` - show the specified `dvc params` in the table only.
   Accepts a comma-separated `list` of param names (including groups). Names can
-  be defined using [wildcard
-  patterns](https://docs.python.org/3.6/library/fnmatch.html)
+  be defined using
+  [wildcard patterns](https://docs.python.org/3.6/library/fnmatch.html)
 
 - `--exclude-params <list>` - hide the specified `dvc params` from the table
   (all param will be shown except for these). Accepts a comma-separated `list`
-  of param names (including groups). Names can be defined using [wildcard
-  patterns](https://docs.python.org/3.6/library/fnmatch.html)
+  of param names (including groups). Names can be defined using
+  [wildcard patterns](https://docs.python.org/3.6/library/fnmatch.html)
 
 - `--include-metrics <list>` - show the specified `dvc metrics` in the table
   only. Accepts a comma-separated `list` of metric names (including groups).
-  Names can be defined using [wildcard
-  patterns](https://docs.python.org/3.6/library/fnmatch.html)
+  Names can be defined using
+  [wildcard patterns](https://docs.python.org/3.6/library/fnmatch.html)
 
 - `--exclude-metrics <list>` - hide the specified `dvc metrics` from the table
   (all param will be shown except for these). Accepts a comma-separated `list`
-  of metric names (including groups).Names can be defined using [wildcard
-  patterns](https://docs.python.org/3.6/library/fnmatch.html)
+  of metric names (including groups).Names can be defined using
+  [wildcard patterns](https://docs.python.org/3.6/library/fnmatch.html)
 
 - `--sort-by <name>` - sort experiments by the specified metric or param
   (`name`). Only one visible column (either metric or param) can be used for
