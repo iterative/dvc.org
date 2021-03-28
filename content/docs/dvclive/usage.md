@@ -14,6 +14,7 @@ from keras.models import Sequential
 from keras.layers.core import Dense, Activation
 from keras.utils import np_utils
 
+
 def load_data():
     (x_train, y_train), (x_test, y_test) = mnist.load_data()
 
@@ -23,18 +24,19 @@ def load_data():
     x_test = x_test.astype('float32')
     x_train /= 255
     x_test /= 255
+
     classes = 10
     y_train = np_utils.to_categorical(y_train, classes)
     y_test = np_utils.to_categorical(y_test, classes)
     return (x_train, y_train), (x_test, y_test)
 
+
 def get_model():
     model = Sequential()
+
     model.add(Dense(512, input_dim=784))
     model.add(Activation('relu'))
-
     model.add(Dense(10, input_dim=512))
-
     model.add(Activation('softmax'))
 
     model.compile(loss='categorical_crossentropy',
@@ -59,11 +61,14 @@ log the `accuracy`, `loss`, `validation_accuracy` and `validation_loss` after
 each epoch, so that we can observe how the training progresses.
 
 In order to do that, we will provide a
-[`Callback`](https://keras.io/api/callbacks/) for the `fit` method call:
+[`Callback`](https://keras.io/api/callbacks/) for the `fit` method call (add
+this to `train.py`):
 
 ```python
-from keras.callbacks import Callback
 import dvclive
+from keras.callbacks import Callback
+
+
 class MetricsCallback(Callback):
     def on_epoch_end(self, epoch: int, logs: dict = None):
         logs = logs or {}
