@@ -168,7 +168,7 @@ $ dvc run -n download_data \
 ## Examples
 
 To illustrate these examples we will be using the <abbr>project</abbr> explained
-in the [Get Started](/doc/tutorials/get-started).
+in the [Get Started](/doc/start).
 
 <details>
 
@@ -190,8 +190,8 @@ $ git checkout 3-config-remote
 ## Example: Tracking a file from the web
 
 An advanced alternate to the intro of the
-[Versioning Basics](/doc/tutorials/get-started/data-versioning) part of the _Get
-Started_ is to use `dvc import-url`:
+[Versioning Basics](/doc/start/data-versioning) part of the _Get Started_ is to
+use `dvc import-url`:
 
 ```dvc
 $ dvc import-url https://data.dvc.org/get-started/data.xml \
@@ -234,9 +234,9 @@ might include regenerating some results based on the updated data source.
 [Pipeline](/doc/command-reference/dag) reproduction can be triggered based on a
 changed external dependency.
 
-Let's use the [Get Started](/doc/tutorials/get-started) project again,
-simulating an updated external data source. (Remember to prepare the
-<abbr>workspace</abbr>, as explained in [Examples](#examples))
+Let's use the [Get Started](/doc/start) project again, simulating an updated
+external data source. (Remember to prepare the <abbr>workspace</abbr>, as
+explained in [Examples](#examples))
 
 To illustrate this scenario, let's use a local file system directory external to
 the workspace (in real life, the data file could be on a remote server instead).
@@ -278,8 +278,8 @@ And instead of an `etag` we have an `md5` hash value. We did this so its easy to
 edit the data file.
 
 Let's now manually reproduce the
-[data processing part](/doc/tutorials/get-started/data-pipelines) of the _Get
-Started_ project. Download the example source code archive and unzip it:
+[data processing part](/doc/start/data-pipelines) of the _Get Started_. Download
+the example source code archive and unzip it:
 
 ```dvc
 $ wget https://code.dvc.org/get-started/code.zip

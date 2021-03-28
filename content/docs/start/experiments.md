@@ -19,9 +19,8 @@ once they're no longer needed.
 ## Running experiments
 
 In the previous page, we learned how to tune
-[ML pipelines](/doc/tutorials/get-started/ml-pipeline) and compare the changes.
-Let's further increase the number of features in the `featurize` stage to see
-how it compares.
+[ML pipelines](/doc/start/data-pipelines) and compare the changes. Let's further
+increase the number of features in the `featurize` stage to see how it compares.
 
 `dvc exp run` makes it easy to change <abbr>hyperparameters</abbr> and run a new
 experiment:

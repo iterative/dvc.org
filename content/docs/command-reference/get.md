@@ -151,7 +151,7 @@ file or directory from. It also has the `--out` option to specify the location
 to place the target data within the workspace. Combining these two options
 allows us to do something we can't achieve with the regular `git checkout` +
 `dvc checkout` process – see for example the
-[Get Older Data Version](/doc/tutorials/get-started/data-versioning#navigate-versions)
+[Get Older Data Version](/doc/start/data-versioning#switching-between-versions)
 chapter of our _Get Started_.
 
 Let's use the
@@ -164,13 +164,12 @@ $ git clone https://github.com/iterative/example-get-started
 $ cd example-get-started
 ```
 
-If you are familiar with the project in our
-[Get Started](/doc/tutorials/get-started) (used in these examples), you may
-remember that the chapter where we train a first version of the model
-corresponds to the the `baseline-experiment` tag in the repo. Similarly
-`bigrams-experiment` points to an improved model (trained using bigrams). What
-if we wanted to have both versions of the model "checked out" at the same time?
-`dvc get` provides an easy way to do this:
+If you are familiar with the project in our [Get Started](/doc/start) (used in
+these examples), you may remember that the chapter where we train a first
+version of the model corresponds to the the `baseline-experiment` tag in the
+repo. Similarly `bigrams-experiment` points to an improved model (trained using
+bigrams). What if we wanted to have both versions of the model "checked out" at
+the same time? `dvc get` provides an easy way to do this:
 
 ```dvc
 $ dvc get . model.pkl --rev baseline-experiment \
