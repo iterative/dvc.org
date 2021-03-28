@@ -35,7 +35,7 @@ DVC remote, respectively.
   `/etc/xdg/dvc/config`) instead of `.dvc/config`.
 
 - `--project` - modify remote configuration to the project's config
-  (`.dvc/config`). Used by default.
+  (`.dvc/config`). This is the default behavior.
 
 - `--local` - modify a local [config file](/doc/command-reference/config)
   instead of `.dvc/config`. It is located in `.dvc/config.local` and is

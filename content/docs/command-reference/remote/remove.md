@@ -30,7 +30,8 @@ The `name` argument is required.
 - `--system` - save remote configuration to the system config (e.g.
   `/etc/xdg/dvc/config`) instead of `.dvc/config`.
 
-- `--project` - modify a project's config (`.dvc/config`). Used by default.
+- `--project` - save remote configuration to the project's config
+  (`.dvc/config`). This is the default behavior.
 
 - `--local` - modify a local [config file](/doc/command-reference/config)
   instead of `.dvc/config`. It is located in `.dvc/config.local` and is

@@ -36,23 +36,23 @@ write to that location instead.
 
 ## Options
 
-- `--global` - modify the global config file (e.g. `~/.config/dvc/config`)
-  instead of the project's `.dvc/config`.
+- `-u`, `--unset` - remove the `cache.dir` config option from a config file.
+  Don't provide a `value` argument when employing this flag.
 
-- `--system` - modify the system config file (e.g. `/etc/xdg/dvc/config`)
-  instead of `.dvc/config`.
+- `--global` - use the global config file (e.g. `~/.config/dvc/config`) instead
+  of the project's `.dvc/config`.
 
-- `--project` - use the regular config file (`.dvc/config`) only when reading
-  the value. Has no effect when writing (this is the default).
+- `--system` - use the system config file (e.g. `/etc/xdg/dvc/config`) instead
+  of `.dvc/config`.
+
+- `--project` - only use the project's config file (`.dvc/config`) when reading
+  the value (this is the default when writing).
 
 - `--local` - use a local [config file](/doc/command-reference/config) instead
   of `.dvc/config`. It is located in `.dvc/config.local` and is Git-ignored.
   This is useful when you need to specify private config options in your config
   that you don't want to track and share through Git (credentials, private
   locations, etc).
-
-- `-u`, `--unset` - remove the `cache.dir` config option from the config file.
-  Don't provide a `value` argument when employing this flag.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 

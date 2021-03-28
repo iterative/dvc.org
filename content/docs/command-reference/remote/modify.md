@@ -32,17 +32,17 @@ manual editing could be used to change the configuration.
 
 ## Command options (flags)
 
-- `-u`, `--unset` - delete configuration value for the given config `option`.
-  Don't provide a `value` when employing this flag.
+- `-u`, `--unset` - remove the configuration `option` from a config file. Don't
+  provide a `value` argument when employing this flag.
 
-- `--global` - save remote configuration to the global config (e.g.
+- `--global` - modify remote configuration to the global config (e.g.
   `~/.config/dvc/config`) instead of `.dvc/config`.
 
-- `--system` - save remote configuration to the system config (e.g.
+- `--system` - modify remote configuration to the system config (e.g.
   `/etc/xdg/dvc/config`) instead of `.dvc/config`.
 
-- `--project` - save remote configuration to the project's config
-  (`.dvc/config`). Used by default.
+- `--project` - modify remote configuration to the project's config
+  (`.dvc/config`). This is the default behavior.
 
 - `--local` - modify a local [config file](/doc/command-reference/config)
   instead of `.dvc/config`. It is located in `.dvc/config.local` and is

@@ -53,21 +53,22 @@ to set/unset/change the default remote configurations.
 
 ## Options
 
-- `-u`, `--unset` - unsets default remote.
+- `-u`, `--unset` - unset the current default remote from a config file.
 
-- `--global` - use a global config file (e.g. `~/.config/dvc/config`) instead of
-  `.dvc/config`.
+- `--global` - save remote configuration to the global config file (e.g.
+  `~/.config/dvc/config`) instead of `.dvc/config`.
 
 - `--system` - save remote configuration to the system config (e.g.
   `/etc/xdg/dvc/config`) instead of `.dvc/config`.
 
-- `--project` - use a project's config file (`.dvc/config`).
+- `--project` - save remote configuration to the project's config file
+  (`.dvc/config`) (this is the default behavior).
 
-- `--local` - use a local [config file](/doc/command-reference/config) instead
-  of `.dvc/config`. It is located in `.dvc/config.local` and is Git-ignored.
-  This is useful when you need to specify private config options in your config
-  that you don't want to track and share through Git (credentials, private
-  locations, etc).
+- `--local` - save remote configuration to the a local
+  [config file](/doc/command-reference/config) instead of `.dvc/config`. It is
+  located in `.dvc/config.local` and is Git-ignored. This is useful when you
+  need to specify private config options in your config that you don't want to
+  track and share through Git (credentials, private locations, etc).
 
 - `-h`, `--help` - prints the usage/help message and exit.
 

@@ -62,13 +62,13 @@ DVC will determine the [type of remote](#supported-storage-types) based on the
   `/etc/xdg/dvc/config`) instead of `.dvc/config`.
 
 - `--project` - save remote configuration to the project's config
-  (`.dvc/config`). Used by default.
+  (`.dvc/config`). This is the default behavior.
 
-- `--local` - modify a local [config file](/doc/command-reference/config)
-  instead of `.dvc/config`. It is located in `.dvc/config.local` and is
-  Git-ignored. This is useful when you need to specify private config options in
-  your config that you don't want to track and share through Git (credentials,
-  private locations, etc).
+- `--local` - save remote configuration to the local
+  [config file](/doc/command-reference/config) instead of `.dvc/config`. It is
+  located in `.dvc/config.local` and is Git-ignored. This is useful when you
+  need to specify private config options in your config that you don't want to
+  track and share through Git (credentials, private locations, etc).
 
 - `-d`, `--default` - commands that require a remote (such as `dvc pull`,
   `dvc push`, `dvc fetch`) will be using this remote by default to upload or

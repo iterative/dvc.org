@@ -18,14 +18,14 @@ that location.
 
 ## Options
 
-- `--global` - save remote configuration to the global config (e.g.
+- `--global` - read remote configuration to the global config (e.g.
   `~/.config/dvc/config`) instead of `.dvc/config`.
 
-- `--system` - save remote configuration to the system config (e.g.
+- `--system` - read remote configuration to the system config (e.g.
   `/etc/xdg/dvc/config`) instead of `.dvc/config`.
 
-- `--project` - read remote configuration from the project's config
-  (`.dvc/config`).
+- `--project` - only use the project's config file (`.dvc/config`) when reading
+  remote configuration.
 
 - `--local` - read a local [config file](/doc/command-reference/config) instead
   of `.dvc/config`. It is located in `.dvc/config.local` and is Git-ignored.

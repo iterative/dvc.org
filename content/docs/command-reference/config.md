@@ -62,14 +62,8 @@ multiple projects or users, respectively.
 
 ## Command options (flags)
 
-- `-u`, `--unset` - remove a specified config option from a config file.
-
-- `--local` - use the (Git-ignored) local config file. This is useful when you
-  need to specify private config option values that you don't want to track and
-  share with Git (credentials, private locations, etc).
-
-- `--project` - use the project's config file (.dvc/config) only, when reading
-  config values (this is the default when writing).
+- `-u`, `--unset` - remove the specified config option `name` from a config
+  file. Don't provide a `value` argument when employing this flag.
 
 - `--global` - modify the global config file (e.g. `~/.config/dvc/config`)
   instead of the project's `.dvc/config`. Useful to apply config options to all
@@ -79,6 +73,13 @@ multiple projects or users, respectively.
   instead of `.dvc/config`. Useful to apply config options to all the projects
   (all users) in the machine. May require superuser access e.g.
   `sudo dvc config --system ...` (Linux).
+
+- `--project` - only use the project's config file (`.dvc/config`) when reading
+  config values (this is the default when writing).
+
+- `--local` - use the (Git-ignored) local config file. This is useful when you
+  need to specify private config option values that you don't want to track and
+  share with Git (credentials, private locations, etc).
 
 - `-l`, `--list` - lists all defined config values.
 
