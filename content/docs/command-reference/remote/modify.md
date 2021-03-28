@@ -382,8 +382,8 @@ summary, in order of precedence:
   $ dvc remote modify --local myremote sas_token 'mytoken'
   ```
 
-Azure remotes can also be configured entirely via environment variables. For
-account name and key/token auth:
+Azure remotes can also be configured entirely via environment variables (if none
+of the auth params above are set). For account name and key/token auth:
 
 ```dvc
 $ export AZURE_STORAGE_ACCOUNT_NAME='myuser'
