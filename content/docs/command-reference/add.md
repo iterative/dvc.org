@@ -347,22 +347,14 @@ that could handle it.
 The `--out` option lets you add external paths in a way that they are
 <abbr>cached</abbr> first, and then
 [linked](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
-to a given path inside the <abbr>workspace<abbr>. Let's initialize an example
-DVC project to try this:
+to a given path inside the <abbr>workspace<abbr>.
 
-```dvc
-$ mkdir example # workspace
-$ cd example
-$ git init
-$ dvc init
-```
-
-Now we can add a `data.xml` file via HTTP for example, putting it a local path
-in our project:
+Let's add a `data.xml` file via HTTP for example, putting it a local path in our
+project:
 
 ```dvc
 $ dvc add https://data.dvc.org/get-started/data.xml -o data.xml
-
+...
 $ ls
 data.xml data.xml.dvc
 ```
@@ -385,22 +377,15 @@ When you have a large dataset in an external location, you may want to track it
 as if it was in your project, but without downloading it locally (for now). The
 `--to-remote` option lets you do so, while storing a copy
 [remotely](/doc/command-reference/remote) so it can be
-[pulled](/doc/command-reference/plots) later. Let's initialize a DVC project,
-and setup a remote:
+[pulled](/doc/command-reference/plots) later.
+
+Let's setup a sample remote and add the `data.xml` to our remote storage from
+the given remote location:
 
 ```dvc
-$ mkdir example # workspace
-$ cd example
-$ git init
-$ dvc init
-$ mkdir /tmp/dvc-storage
-$ dvc remote add myremote /tmp/dvc-storage
-```
+$ mkdir /tmp/dvcstore
+$ dvc remote add myremote /tmp/dvcstore
 
-Now let's add the `data.xml` to our remote storage from the given remote
-location.
-
-```dvc
 $ dvc add https://data.dvc.org/get-started/data.xml -o data.xml \
                  --to-remote -r myremote
 ...

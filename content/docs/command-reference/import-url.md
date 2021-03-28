@@ -246,7 +246,7 @@ Run these commands:
 $ mkdir /tmp/dvc-import-url-example
 $ cd /tmp/dvc-import-url-example/
 $ wget https://data.dvc.org/get-started/data.xml
-$ cd -  # to go back to the project
+$ cd - # go back to the project
 ```
 
 In a production system, you might have a process to update data files. That's
@@ -366,22 +366,15 @@ Running stage 'prepare' with command:
 When you have a large dataset in an external location, you may want to import it
 to your project without downloading it to the local file system (for using it
 later/elsewhere). The `--to-remote` option let you skip the download, while
-storing the imported data [remotely](/doc/command-reference/remote). Let's
-initialize a DVC project, and setup a remote:
+storing the imported data [remotely](/doc/command-reference/remote).
+
+Let's setup a sample remote and create an import `.dvc` file without downloading
+the target data, transferring it directly to remote storage instead:
 
 ```dvc
-$ mkdir example # workspace
-$ cd example
-$ git init
-$ dvc init
-$ mkdir /tmp/dvc-storage
-$ dvc remote add myremote /tmp/dvc-storage
-```
+$ mkdir /tmp/dvcstore
+$ dvc remote add myremote /tmp/dvcstore
 
-Now let's create an import `.dvc` file without downloading the target data,
-transferring it directly to remote storage instead:
-
-```
 $ dvc import-url https://data.dvc.org/get-started/data.xml data.xml \
                  --to-remote -r myremote
 ...
