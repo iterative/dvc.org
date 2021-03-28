@@ -246,6 +246,17 @@ data science experiments.
 - `--desc <text>` - user description of the stage (optional). This doesn't  
   affect any DVC operations.
 
+- `--live <path>` - specify the directory `path` for
+  [Dvclive](/doc/dvclive/dvclive-with-dvc) to write logs in. Saved in the `live`
+  field of `dvc.yaml`.
+
+- `--live-no-cache <path>` - specify a Dvclive log file <abbr>output</abbr> (not
+  <abbr>cached</abbr>). Turns any `-o <path>` into a `-O`.
+
+- `--live-no-summary` - passes `summary=False` to Dvclive config.
+
+- `--live-no-html` - passes `html=False` to Dvclive config.
+
 - `-h`, `--help` - prints the usage/help message, and exit.
 
 - `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if no

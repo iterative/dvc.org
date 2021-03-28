@@ -97,6 +97,8 @@ The value passed to `--live` (`training_metrics`) became the directory `path`
 for Dvclive to write logs in. Other supported command options for DVC
 integration:
 
+- `--live-no-cache <path>` - specify a Dvclive log file <abbr>output</abbr> (not
+  <abbr>cached</abbr>).
 - `--live-no-summary` - passes `summary=False` to Dvclive.
 - `--live-no-html` - passes `html=False` to Dvclive.
 
