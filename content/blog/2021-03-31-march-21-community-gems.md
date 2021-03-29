@@ -11,13 +11,12 @@ descriptionLong: |
   best practices for managing experiments and more.
 picture: 2021-03-31/gems-cover.png
 author: jeny_defigueiredo
-commentsUrl: https://discuss.dvc.org/t/january-21-community-gems/645
+commentsUrl: https://discuss.dvc.org/t/march-2021-community-gems/708
 tags:
   - Discord
   - Gems
-  - Plots
   - Pipelines
-  - Docker
+  - Remote Storage
 ---
 
 ## DVC questions
