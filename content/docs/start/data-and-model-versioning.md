@@ -247,16 +247,6 @@ defines data file versions. Git itself provides the version control. DVC in turn
 creates these `.dvc` files, updates them, and synchronizes DVC-tracked data in
 the <abbr>workspace</abbr> efficiently to match them.
 
-## Model versioning
-
-DVC helps you to handle model files as well. Models in a project usually change
-more frequently than data files and they need to be kept in sync with changes in
-other elements of a project. Model files are no different than data files when
-it comes to tracking their versions. DVC also provides means to track minor
-changes in model files without fully checking in to Git. In later sections of
-this series, you'll see how DVC enables to track changes to synchronize multiple
-model and data files.
-
 ## Large datasets versioning
 
 In cases where you process very large datasets, you need an efficient mechanism
