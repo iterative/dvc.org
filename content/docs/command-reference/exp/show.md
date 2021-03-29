@@ -71,24 +71,22 @@ metric or param.
   paginator.
 
 - `--include-params <list>` - show the specified `dvc params` in the table only.
-  Accepts a comma-separated `list` of param names (including groups). Names can
-  be defined using
-  [wildcard patterns](https://docs.python.org/3.6/library/fnmatch.html)
+  Accepts a comma-separated `list` of param names (including groups).
+  Shell style wildcards supported: `*`, `?`, `[seq]`, `[!seq]`, and `**`
 
 - `--exclude-params <list>` - hide the specified `dvc params` from the table
   (all param will be shown except for these). Accepts a comma-separated `list`
-  of param names (including groups). Names can be defined using
-  [wildcard patterns](https://docs.python.org/3.6/library/fnmatch.html)
+  of param names (including groups).
+  Shell style wildcards supported: `*`, `?`, `[seq]`, `[!seq]`, and `**`
 
 - `--include-metrics <list>` - show the specified `dvc metrics` in the table
   only. Accepts a comma-separated `list` of metric names (including groups).
-  Names can be defined using
-  [wildcard patterns](https://docs.python.org/3.6/library/fnmatch.html)
+  Shell style wildcards supported: `*`, `?`, `[seq]`, `[!seq]`, and `**`
 
 - `--exclude-metrics <list>` - hide the specified `dvc metrics` from the table
   (all param will be shown except for these). Accepts a comma-separated `list`
-  of metric names (including groups).Names can be defined using
-  [wildcard patterns](https://docs.python.org/3.6/library/fnmatch.html)
+  of metric names (including groups).
+  Shell style wildcards supported: `*`, `?`, `[seq]`, `[!seq]`, and `**`
 
 - `--sort-by <name>` - sort experiments by the specified metric or param
   (`name`). Only one visible column (either metric or param) can be used for
