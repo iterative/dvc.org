@@ -14,8 +14,8 @@ to a different version of a 100Gb file in less than a second with a
 `git checkout`.
 
 The foundation of DVC consists of a few commands that you can run along with
-`git` to track large files, directories, or ML models. Think "Git for data".
-Read on or watch our video to learn about versioning data with DVC!
+`git` to track large files, directories, or ML model files. Think "Git for
+data". Read on or watch our video to learn about versioning data with DVC!
 
 https://youtu.be/kLKBcPonMYw
 
@@ -34,8 +34,8 @@ $ dvc get https://github.com/iterative/dataset-registry \
 ```
 
 We use the fancy `dvc get` command to jump ahead a bit and show how Git repo
-becomes a source for datasets or models - what we call "data registry" or "model
-registry". `dvc get` can download any file or directory tracked in a <abbr>DVC
+becomes a source for datasets or models - what we call "data/model registry".
+`dvc get` can download any file or directory tracked in a <abbr>DVC
 repository</abbr>. It's like `wget`, but for DVC or Git repos. In this case we
 download the latest version of the `data.xml` file from the
 [dataset registry](https://github.com/iterative/dataset-registry) repo as the
@@ -90,10 +90,10 @@ outs:
 
 ## Storing and sharing
 
-You can upload DVC-tracked data or models with `dvc push`, so they're safely
-stored [remotely](/doc/command-reference/remote). This also means they can be
-retrieved on other environments later with `dvc pull`. First, we need to setup a
-storage:
+You can upload DVC-tracked data or model files with `dvc push`, so they're
+safely stored [remotely](/doc/command-reference/remote). This also means they
+can be retrieved on other environments later with `dvc pull`. First, we need to
+setup a storage:
 
 ```dvc
 $ dvc remote add -d storage s3://mybucket/dvcstore
@@ -154,9 +154,9 @@ a3
 
 ## Retrieving
 
-Having DVC-tracked data stored remotely, it can be downloaded when needed in
-other copies of this <abbr>project</abbr> with `dvc pull`. Usually, we run it
-after `git clone` and `git pull`.
+Having DVC-tracked data and models stored remotely, it can be downloaded when
+needed in other copies of this <abbr>project</abbr> with `dvc pull`. Usually, we
+run it after `git clone` and `git pull`.
 
 <details>
 
