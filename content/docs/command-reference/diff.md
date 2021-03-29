@@ -14,7 +14,7 @@ usage: dvc diff [-h] [-q | -v]
 
 positional arguments:
   a_rev      Old Git commit to compare (defaults to HEAD)
-  b_rev      New Git commit to compare (defaults to the current workspace)
+  b_rev      New Git commit to compare (defaults to current workspace)
 ```
 
 ## Description

@@ -12,8 +12,8 @@ usage: dvc destroy [-h] [-q | -v] [-f]
 
 ## Description
 
-`dvc destroy` removes `dvc.yaml` and `.dvc` files, as well as the internal
-`.dvc/` directory from the <abbr>workspace</abbr>.
+`dvc destroy` removes `dvc.yaml`, `.dvc` files, and the internal `.dvc/`
+directory from the <abbr>project</abbr>.
 
 Note that the <abbr>cache directory</abbr> will be removed as well, unless it's
 set to an
@@ -99,9 +99,9 @@ $ ls -a
 .git code.py foo
 ```
 
-`dvc destroy` command removed `foo.dvc` and the `.dvc/` directory from the
-<abbr>workspace</abbr>. But the cache files that are present in `/mnt/cache`
-still persist:
+`dvc destroy` removed `foo.dvc` and the internal `.dvc/` directory from
+<abbr>project</abbr>. But the cache files that are present in `/mnt/cache`
+persist:
 
 ```dvc
 $ tree /mnt/cache

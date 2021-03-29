@@ -75,8 +75,8 @@ stages:
         - ${train_matrix}
 ```
 
-Also, it gives an ability to localize all important parameters in a single
-`vars` block, and play with them. This is a natural thing to do for scenarios
+Also, it gives an ability to localize all the important parameters in a single
+`vars` block and play with them. This is a natural thing to do for scenarios
 like NLP or when hyperparameter optimization is happening not only in the model
 training code but in the data processing as well.
 
@@ -141,7 +141,7 @@ makes each experiment reproducible and accessible from the project's history.
 This Git-based approach works very well for ML projects with mature models when
 only a few new experiments per day are run.
 
-However, in more active development when dozens or hundreds of experiments need
+However, in more active development, when dozens or hundreds of experiments need
 to be run in a single day, Git creates overhead — each experiment run requires
 additional Git commands `git add/commit`, and comparing all experiments is
 difficult.
@@ -150,7 +150,7 @@ We introduce lightweight experiments in DVC 2.0! This is how you can auto-track
 ML experiments without any overhead from ML engineers.
 
 ⚠️ Note, our new ML experiment features (`dvc exp`) are experimental in the
-coming release. This means that the commands might change a bit in following
+coming release. This means that the commands might change a bit in the following
 minor releases.
 
 `dvc exp run` can run an ML experiment with a new hyperparameter from
@@ -187,7 +187,7 @@ Reproduced experiment(s): exp-80655
 Experiment results have been applied to your workspace.
 ```
 
-In the examples above, hyperparamters were changed with the `--set-param`
+In the examples above, hyperparameters were changed with the `--set-param`
 option, but you can make these changes by modifying the params file instead. In
 fact _any code or data files can be changed_ and `dvc exp run` will capture the
 variations.
@@ -209,7 +209,7 @@ $ dvc exp show --no-pager --no-timestamp \
 └───────────────┴─────────┴────────────────────────┴──────────────────┘
 ```
 
-Under the hood DVC uses Git to store the experiments meta-information. A
+Under the hood, DVC uses Git to store the experiments' meta-information. A
 straight-forward implementation would create visible branches and auto-commit in
 them, but that approach would over-pollute the branch namespace very quickly. To
 avoid this issue, we introduced custom Git references `exps`, the same way as
@@ -233,7 +233,7 @@ f16e7b7c804cf52d91d1d11850c15963fb2a8d7b refs/exps/97/d69af70c6fb4bc59aefb9a8743
 9bb067559583990a8c5d499d7435c35a7c9417b7 refs/exps/49/5c835cd36772123e82e812d96eabcce320f7ec/exp-9bf22
 ```
 
-The best experiment can be promoted to the workspace and commited to Git.
+The best experiment can be promoted to the workspace and committed to Git.
 
 ```dvc
 $ dvc exp apply exp-bb55c
@@ -273,9 +273,9 @@ special support from the toolset:
 3. Reuse checkpoints - warm-start training with an existing model file,
    corresponding code, dataset version and metrics.
 
-This new behaviour is supported in DVC 2.0. Now, DVC can version all your
-checkpoints with corresponding code and data. It brings reproducibility of DL
-processes to the next level - every checkpoint is reproducible.
+This new behavior is supported in DVC 2.0. Now, DVC can version all your
+checkpoints with corresponding code and data. It brings the reproducibility of
+DL processes to the next level - every checkpoint is reproducible.
 
 This is how you define checkpoints with live-metrics:
 
@@ -292,9 +292,9 @@ Adding stage 'train' in 'dvc.yaml'
 ```
 
 Note, we use `dvc stage add` command instead of `dvc run`. Starting from DVC 2.0
-we extracting all stage specific functionality under `dvc stage` umbrella.
-`dvc run` is still working but it wll be deprecated in the following DVC version
-(most likely in 3.0).
+we begin extracting all stage specific functionality under `dvc stage` umbrella.
+`dvc run` is still working, but will be deprecated in the following major DVC
+version (most likely in 3.0).
 
 Start the training process and interrupt it after 5 epochs:
 
@@ -327,11 +327,11 @@ $ dvc exp show --no-pager --no-timestamp
 └───────────────┴──────┴────────┴──────────┴──────────┴───┴────────┴───┘
 ```
 
-Each of the checkpoint above is a separate experiment with all data, code,
+Each of the checkpoints above is a separate experiment with all data, code,
 paramaters and metrics. You can use the same `dvc exp apply` command to extract
 any of these.
 
-Another run just continues this process. You can see how accuracy metrics is
+Another run continues this process. You can see how accuracy metrics are
 increasing - DVC does not remove the model/checkpoint and training code trains
 on top of it:
 
@@ -362,7 +362,7 @@ $ dvc exp show --no-pager --no-timestamp
 └───────────────┴──────┴────────┴──────────┴──────────┴───┴────────┴───┘
 ```
 
-Afrer modifyng code, data or params the same process can be resumed. DVC
+After modifying the code, data, or params, the same process can be resumed. DVC
 recognizes the change and shows it (see experiment `b363267`):
 
 ```dvc
@@ -403,18 +403,18 @@ removes the checkpoint file before training: `dvc exp run --reset`.
 ## Metrics logging
 
 Continuously logging ML metrics is a very common practice in the ML world.
-Instead of a simple command line output with the metrics values many ML
+Instead of a simple command-line output with the metrics values, many ML
 engineers prefer visuals and plots. These plots can be organized in a "database"
 of ML experiments to keep track of a project. There are many special solutions
 for metrics collecting and experiment tracking such as sacred, mlflow, weight
-and biases, neptune.ai or other.
+and biases, neptune.ai, or others.
 
-With DVC 2.0 we are releasing new open-source library
+With DVC 2.0, we are releasing a new open-source library
 [DVC-Live](https://github.com/iterative/dvclive) that provides functionality for
 tracking model metrics and organizing metrics in simple text files in a way that
-DVC can visualize the metrics with navigation in Git histroy. So, DVC can show
-you a metrics difference between current model and a model in `master` or any
-other branch.
+DVC can visualize the metrics with navigation in Git history. So, DVC can show
+you a metrics difference between the current model and a model in `master` or
+any other branch.
 
 This approach is similar to the other metrics tracking tools with the difference
 that Git becomes a "database" or of ML experiments.
@@ -444,8 +444,8 @@ model.fit(...
 
 ```
 
-During the training you will see the metrics files that are continiously
-populated each epoches:
+During the training you will see the metrics files that are continuously
+populated each epochs:
 
 ```dvc
 $ ls logs/
@@ -464,8 +464,8 @@ timestamp	step	accuracy
 1613645598034	8	0.9430000185966492
 ```
 
-In addition to the continious metrics files you will see the summary metrics
-file and html file with the same file prefix. The summary file contains the
+In addition to the continuous metrics files, you will see the summary metrics
+file and HTML file with the same file prefix. The summary file contains the
 result of the latest epoch:
 
 ```dvc
@@ -479,8 +479,8 @@ $ cat logs.json | python -m json.tool
 }
 ```
 
-The html file contains all the visuals for continuous metrics as well as the
-summary metrics in a single page:
+The HTML file contains all the visuals for continuous metrics as well as the
+summary metrics on a single page:
 
 ![](/uploads/images/2021-02-18/dvclive-html.png)
 
@@ -492,8 +492,8 @@ each. So, you can monitor model performance in realtime.
 DVC repository is NOT required to use the live metrics functionality from the
 above. It works independently from DVC.
 
-DVC repository become useful when the metrics and plots are commited in your Git
-repository and you need navigation around the metrics.
+DVC repository becomes useful when the metrics and plots are committed in your
+Git repository, and you need navigation around the metrics.
 
 Metrics difference between workspace and the last Git commit:
 
@@ -538,8 +538,8 @@ file:///Users/dmitry/src/exp-dc/plots.html
 ![](/uploads/images/2021-02-18/dvclive-diff-html.png)
 
 Another nice thing about the live metrics - they work across ML experiments and
-checkpoints if properly set up in dvc stages. To set up live metrics you need to
-specify the metrics directory in `live` section of a stage:
+checkpoints, if properly set up in dvc stages. To set up live metrics, you need
+to specify the metrics directory in the `live` section of a stage:
 
 ```yaml
 stages:

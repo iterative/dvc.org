@@ -11,7 +11,7 @@ usage: dvc config [-h] [--global | --system | --local] [-q | -v] [-u]
 positional arguments:
   name     Option name in format: section.option or remote.name.option
            e.g. 'core.check_update', 'cache.dir', 'remote.myremote.url'
-  value          Option value.
+  value    Option value.
 ```
 
 ## Description
@@ -45,10 +45,10 @@ multiple projects and users, respectively:
   }
 </style>
 
-| Flag       | Priority | Mac location                           | Linux location (typical\*) | Windows location                                          |
-| ---------- | -------- | -------------------------------------- | -------------------------- | --------------------------------------------------------- |
-| `--global` | 3        | `$HOME/Library/Preferences/dvc/config` | `$HOME/.config/dvc/config` | `%LocalAppData%\iterative\dvc\config`                     |
-| `--system` | 4        | `/Library/Preferences/dvc/config`      | `/etc/xdg/dvc/config`      | `%AllUsersProfile%\Application Data\iterative\dvc\config` |
+| Flag       | Priority | Mac location                                    | Linux location (typical\*) | Windows location                                          |
+| ---------- | -------- | ----------------------------------------------- | -------------------------- | --------------------------------------------------------- |
+| `--global` | 3        | `$HOME/Library/Application\ Support/dvc/config` | `$HOME/.config/dvc/config` | `%LocalAppData%\iterative\dvc\config`                     |
+| `--system` | 4        | `/Library/Application\ Support/dvc/config`      | `/etc/xdg/dvc/config`      | `%AllUsersProfile%\Application Data\iterative\dvc\config` |
 
 > \* For Linux, the global `dvc/config` may be found in `$XDG_CONFIG_HOME`, and
 > the system-wide one in `$XDG_CONFIG_DIRS[0]`, if those env vars are defined.
@@ -64,13 +64,13 @@ multiple projects and users, respectively:
   need to specify private config option values that you don't want to track and
   share with Git (credentials, private locations, etc).
 
-- `--global` - modify a global config file (e.g. `~/.config/dvc/config`) instead
-  of the project's `.dvc/config`. Useful to apply config options to all your
-  projects.
+- `--global` - modify the global config file (e.g. `~/.config/dvc/config`)
+  instead of the project's `.dvc/config`. Useful to apply config options to all
+  your projects.
 
-- `--system` - modify a system config file (e.g. `/etc/dvc/config`) instead of
-  `.dvc/config`. Useful to apply config options to all the projects (all users)
-  in the machine. May require superuser access e.g.
+- `--system` - modify the system config file (e.g. `/etc/xdg/dvc/config`)
+  instead of `.dvc/config`. Useful to apply config options to all the projects
+  (all users) in the machine. May require superuser access e.g.
   `sudo dvc config --system ...` (Linux).
 
 - `-l`, `--list` - lists all defined config values.
@@ -179,36 +179,39 @@ This section contains the following options, which affect the project's
   > set.
 
 - `cache.shared` - permissions for newly created or downloaded cache files and
-  directories. The default is `0o664`(rw-r--r--) for files and `0o755`
-  (rwxr-xr-x) for directories. The only accepted value right now is `group`,
-  which makes DVC use `0o664` (rw-rw-r--) for files and `0o775` (rwxrwxr-x) for
-  directories, which is useful when you are using a a
-  [shared development server](/doc/use-cases/shared-development-server).
+  directories. The only accepted value right now is `group`, which makes DVC use
+  `664` (rw-rw-r--) for files and `775` (rwxrwxr-x) for directories. This is
+  useful when using a
+  [shared development server](/doc/use-cases/shared-development-server). The
+  default permissions for cache files is system dependent. In Linux and MacOS
+  for example, they're determined using
+  [`os.umask`](https://docs.python.org/3/library/os.html#os.umask).
 
-- `cache.local` - name of a _local remote_ to use as a
-  [custom cache](/doc/user-guide/managing-external-data#examples) directory.
-  (Refer to `dvc remote` for more information on "local remotes".) This will
-  overwrite the value provided to `dvc config cache.dir` or `dvc cache dir`.
+The following parameters allow setting an
+[external cache](/doc/user-guide/managing-external-data#examples) location. A
+[DVC remote](/doc/command-reference/remote) name is used (instead of the URL)
+because often it's necessary to configure authentication or other connection
+settings, and configuring a remote is the way that can be done.
 
-- `cache.s3` - name of an Amazon S3 remote to use as
-  [external cache](/doc/user-guide/managing-external-data#examples).
+- `cache.local` - name of a _local remote_ to use as external cache (refer to
+  `dvc remote` for more info. on "local remotes".) This will overwrite the value
+  in `cache.dir` (see `dvc cache dir`).
 
-- `cache.gs` - name of a Google Cloud Storage remote to use as
-  [external cache](/doc/user-guide/managing-external-data#examples).
+- `cache.s3` - name of an Amazon S3 remote to use as external cache.
 
-- `cache.ssh` - name of an SSH remote to use as
-  [external cache](/doc/user-guide/managing-external-data#examples).
+- `cache.gs` - name of a Google Cloud Storage remote to use as external cache.
 
-- `cache.hdfs` - name of an HDFS remote to use as
-  [external cache](/doc/user-guide/managing-external-data#examples).
+- `cache.ssh` - name of an SSH remote to use as external cache.
+
+- `cache.hdfs` - name of an HDFS remote to use as external cache.
 
 - `cache.webhdfs` - name of an HDFS remote with WebHDFS enabled to use as
-  [external cache](/doc/user-guide/managing-external-data#examples).
+  external cache.
 
-> Avoid using the same [DVC remote](/doc/command-reference/remote) (used for
-> `dvc push`, `dvc pull`, etc.) as external cache, because it may cause file
+> ⚠️ Avoid using the same [remote storage](/doc/command-reference/remote) used
+> for `dvc push` and `dvc pull` as external cache, because it may cause file
 > hash overlaps: the hash of an external <abbr>output</abbr> could collide with
-> a hash generated locally for another file with different content.
+> that of a local file with different content.
 
 ### state
 

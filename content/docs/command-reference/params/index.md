@@ -52,7 +52,7 @@ in the sample above) . These files are typically written manually (or they can
 be generated) and they can be versioned directly with Git.
 
 **Parameter values** should be organized in tree-like hierarchies (dictionaries)
-inside param files (see [Examples](#examples)). DVC will interpret param names
+inside params files (see [Examples](#examples)). DVC will interpret param names
 as the tree path to find those values. Supported types are: string, integer,
 float, and arrays (groups of params). Note that DVC does not ascribe any
 specific meaning to these values.
@@ -240,10 +240,11 @@ stages:
     deps:
       - users.csv
     params:
-      - BOOL
-      - INT
-      - TrainConfig.EPOCHS
-      - TrainConfig.layers
+      - params.py:
+          - BOOL
+          - INT
+          - TrainConfig.EPOCHS
+          - TrainConfig.layers
     outs:
       - model.pkl
 ```
@@ -257,10 +258,11 @@ stages:
       - path: users.csv
         md5: 23be4307b23dcd740763d5fc67993f11
     params:
-      INT: 5
-      BOOL: true
-      TrainConfig.EPOCHS: 70
-      TrainConfig.layers: 9
+      params.py:
+        INT: 5
+        BOOL: true
+        TrainConfig.EPOCHS: 70
+        TrainConfig.layers: 9
     outs:
       - path: model.pkl
         md5: 1c06b4756f08203cc496e4061b1e7d67

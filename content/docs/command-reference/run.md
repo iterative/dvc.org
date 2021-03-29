@@ -12,7 +12,7 @@ usage: dvc run [-h] [-q | -v] -n <name> [-d <path>] [-o <path>]
                [-w <path>] [--no-exec] [-f]
                [--no-run-cache] [--no-commit]
                [--outs-persist <path>] [--outs-persist-no-cache <path>]
-               [--always-changed] [--external] [--desc <text>]
+               [-c <path>] [--always-changed] [--external] [--desc <text>]
                command
 
 positional arguments:
@@ -192,6 +192,10 @@ $ dvc run -n second_stage './another_script.sh $MYENVVAR'
 - `--outs-persist-no-cache <path>` - the same as `-outs-persist` except that
   outputs are not tracked by DVC (same as with `-O` above).
 
+- `-c <path`, `--checkpoints <path>` - the same as `-o` but also marks the
+  output as a [checkpoint](/doc/command-reference/exp/run#checkpoints). Implies
+  `--no-exec`. This makes the stage incompatible with `dvc repro`.
+
 - `-p [<path>:]<params_list>`, `--params [<path>:]<params_list>` - specify a set
   of [parameter dependencies](/doc/command-reference/params) the stage depends
   on, from a parameters file. This is done by sending a comma separated list as
@@ -273,14 +277,9 @@ $ dvc run -n second_stage './another_script.sh $MYENVVAR'
 
 ## Examples
 
-Let's create a <abbr>DVC project</abbr> and a stage (that counts the number of
-lines in a `test.txt` file):
+Let's create a stage (that counts the number of lines in a `test.txt` file):
 
 ```dvc
-$ mkdir example && cd example
-$ git init
-$ dvc init
-$ mkdir data
 $ dvc run -n count \
           -d test.txt \
           -o lines \
@@ -364,7 +363,6 @@ outputs of a stage to the dependencies of the following one(s).
 Extract an XML file from an archive to the `data/` folder:
 
 ```dvc
-$ mkdir data
 $ dvc run -n extract \
           -d Posts.xml.zip \
           -o data/Posts.xml \

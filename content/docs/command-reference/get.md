@@ -24,12 +24,12 @@ repository (e.g. source code, small image/other files). `dvc get` copies the
 target file or directory (found at `path` in `url`) to the current working
 directory. (Analogous to `wget`, but for repos.)
 
+> See `dvc list` for a way to browse repository contents to find files or
+> directories to download.
+
 > Note that unlike `dvc import`, this command does not track the downloaded
 > files (does not create a `.dvc` file). For that reason, it doesn't require an
 > existing DVC project to run in.
-
-> See `dvc list` for a way to browse repository contents to find files or
-> directories to download.
 
 The `url` argument specifies the address of the DVC or Git repository containing
 the data source. Both HTTP and SSH protocols are supported (e.g.
@@ -164,13 +164,12 @@ $ git clone https://github.com/iterative/example-get-started
 $ cd example-get-started
 ```
 
-If you are familiar with the project in our
-[Get Started](/doc/tutorials/get-started) (used in these examples), you may
-remember that the chapter where we train a first version of the model
-corresponds to the the `baseline-experiment` tag in the repo. Similarly
-`bigrams-experiment` points to an improved model (trained using bigrams). What
-if we wanted to have both versions of the model "checked out" at the same time?
-`dvc get` provides an easy way to do this:
+If you are familiar with the project in our [Get Started](/doc/start) (used in
+these examples), you may remember that the chapter where we train a first
+version of the model corresponds to the the `baseline-experiment` tag in the
+repo. Similarly `bigrams-experiment` points to an improved model (trained using
+bigrams). What if we wanted to have both versions of the model "checked out" at
+the same time? `dvc get` provides an easy way to do this:
 
 ```dvc
 $ dvc get . model.pkl --rev baseline-experiment \

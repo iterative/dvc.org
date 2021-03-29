@@ -54,8 +54,11 @@ An _import `.dvc` file_ is created in the same location e.g. `data.txt.dvc` –
 similar to using `dvc add` after downloading the data. This makes it possible to
 update the import later, if the data source has changed (see `dvc update`).
 
-> Note that the imported data can be [pushed](/doc/command-reference/push) to
-> remote storage normally.
+> Note that data imported from external locaitons can be
+> [pushed](/doc/command-reference/push) and
+> [pulled](/doc/command-reference/pull) to/from
+> [remote storage](/doc/command-reference/remote) normally (unlike for
+> `dvc import`).
 
 `.dvc` files support references to data in an external location, see
 [External Dependencies](/doc/user-guide/external-dependencies). In such an
@@ -165,7 +168,7 @@ $ dvc run -n download_data \
 ## Examples
 
 To illustrate these examples we will be using the <abbr>project</abbr> explained
-in the [Get Started](/doc/tutorials/get-started).
+in the [Get Started](/doc/start).
 
 <details>
 
@@ -231,9 +234,9 @@ might include regenerating some results based on the updated data source.
 [Pipeline](/doc/command-reference/dag) reproduction can be triggered based on a
 changed external dependency.
 
-Let's use the [Get Started](/doc/tutorials/get-started) project again,
-simulating an updated external data source. (Remember to prepare the
-<abbr>workspace</abbr>, as explained in [Examples](#examples))
+Let's use the [Get Started](/doc/start) project again, simulating an updated
+external data source. (Remember to prepare the <abbr>workspace</abbr>, as
+explained in [Examples](#examples))
 
 To illustrate this scenario, let's use a local file system directory external to
 the workspace (in real life, the data file could be on a remote server instead).
@@ -243,7 +246,7 @@ Run these commands:
 $ mkdir /tmp/dvc-import-url-example
 $ cd /tmp/dvc-import-url-example/
 $ wget https://data.dvc.org/get-started/data.xml
-$ cd -  # to go back to the project
+$ cd - # go back to the project
 ```
 
 In a production system, you might have a process to update data files. That's
@@ -275,8 +278,8 @@ And instead of an `etag` we have an `md5` hash value. We did this so its easy to
 edit the data file.
 
 Let's now manually reproduce the
-[data processing part](/doc/tutorials/get-started/data-pipelines) of the _Get
-Started_ project. Download the example source code archive and unzip it:
+[data processing part](/doc/start/data-pipelines) of the _Get Started_. Download
+the example source code archive and unzip it:
 
 ```dvc
 $ wget https://code.dvc.org/get-started/code.zip
@@ -361,24 +364,17 @@ Running stage 'prepare' with command:
 ## Example: Transfer to remote storage
 
 When you have a large dataset in an external location, you may want to import it
-to you project without downloading it to the local file system (for using it
-later/elsewhere). The `--to-remote` option lets you skip the download, while
-storing the imported data [remotely](/doc/command-reference/remote). Let's
-initialize a DVC project, and setup a remote:
+to your project without downloading it to the local file system (for using it
+later/elsewhere). The `--to-remote` option let you skip the download, while
+storing the imported data [remotely](/doc/command-reference/remote).
+
+Let's setup a sample remote and create an import `.dvc` file without downloading
+the target data, transferring it directly to remote storage instead:
 
 ```dvc
-$ mkdir example # workspace
-$ cd example
-$ git init
-$ dvc init
-$ mkdir /tmp/dvc-storage
-$ dvc remote add myremote /tmp/dvc-storage
-```
+$ mkdir /tmp/dvcstore
+$ dvc remote add myremote /tmp/dvcstore
 
-Now let's create an import `.dvc` file without downloading the target data,
-transferring it directly to remote storage instead:
-
-```
 $ dvc import-url https://data.dvc.org/get-started/data.xml data.xml \
                  --to-remote -r myremote
 ...
@@ -401,3 +397,6 @@ system that can handle it), they can use `dvc pull` as usual:
 A       data.xml
 1 file added and 1 file fetched
 ```
+
+Note that you can also use `dvc update --to-remote` to bring the import up to
+date in remote storage, without downloading anything.

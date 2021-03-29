@@ -53,10 +53,14 @@
         }
       },
       {
-        "slug": "experiments",
+        "label": "Metrics, Parameters, and Plots",
+        "slug": "metrics-parameters-plots",
         "tutorials": {
           "katacoda": "https://katacoda.com/dvc/courses/get-started"
         }
+      },
+      {
+        "slug": "experiments"
       }
     ]
   },
@@ -217,7 +221,49 @@
       {
         "label": "experiments",
         "slug": "exp",
-        "source": "exp/index.md"
+        "source": "exp/index.md",
+        "children": [
+          {
+            "label": "exp run",
+            "slug": "run"
+          },
+          {
+            "label": "exp show",
+            "slug": "show"
+          },
+          {
+            "label": "exp diff",
+            "slug": "diff"
+          },
+          {
+            "label": "exp apply",
+            "slug": "apply"
+          },
+          {
+            "label": "exp branch",
+            "slug": "branch"
+          },
+          {
+            "label": "exp remove",
+            "slug": "remove"
+          },
+          {
+            "label": "exp gc",
+            "slug": "gc"
+          },
+          {
+            "label": "exp push",
+            "slug": "push"
+          },
+          {
+            "label": "exp pull",
+            "slug": "pull"
+          },
+          {
+            "label": "exp list",
+            "slug": "list"
+          }
+        ]
       },
       {
         "label": "fetch",
@@ -453,6 +499,18 @@
       {
         "label": "Install as a Package",
         "slug": "cml-with-npm"
+      }
+    ]
+  },
+  {
+    "label": "Dvclive",
+    "slug": "dvclive",
+    "source": "dvclive/index.md",
+    "children": [
+      "usage",
+      {
+        "label": "Dvclive with DVC",
+        "slug": "dvclive-with-dvc"
       }
     ]
   }

@@ -119,7 +119,7 @@ All the code to replicate this example is up on a
 ### Our favorite details
 
 The new `cml-runner` function lets you turn on instances, including GPU,
-high-memory and sport instances, and kick off a new workflow using the hardware
+high-memory and spot instances, and kick off a new workflow using the hardware
 and environment of your choice—and of course, it'll turn _off_ those instances
 after a configurable timeout! In the first CML release, this took
 [more than 30 lines of code](https://github.com/iterative/cml_cloud_case/blob/master/.github/workflows/cml.yaml)

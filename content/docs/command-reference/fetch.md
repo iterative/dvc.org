@@ -115,8 +115,8 @@ specific one is given with `--remote`.
 
 Let's employ a simple <abbr>workspace</abbr> with some data, code, ML models,
 pipeline stages, such as the <abbr>DVC project</abbr> created for the
-[Get Started](/doc/tutorials/get-started). Then we can see what `dvc fetch` does
-in different scenarios.
+[Get Started](/doc/start). Then we can see what `dvc fetch` does in different
+scenarios.
 
 <details>
 
