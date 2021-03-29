@@ -71,13 +71,13 @@ metric or param.
   paginator.
 
 - `--include-params <list>` - show the specified `dvc params` in the table only.
-  Accepts a comma-separated `list` of param names (including groups).
-  Shell style wildcards supported: `*`, `?`, `[seq]`, `[!seq]`, and `**`
+  Accepts a comma-separated `list` of param names (including groups). Shell
+  style wildcards supported: `*`, `?`, `[seq]`, `[!seq]`, and `**`
 
 - `--exclude-params <list>` - hide the specified `dvc params` from the table
   (all param will be shown except for these). Accepts a comma-separated `list`
-  of param names (including groups).
-  Shell style wildcards supported: `*`, `?`, `[seq]`, `[!seq]`, and `**`
+  of param names (including groups). Shell style wildcards supported: `*`, `?`,
+  `[seq]`, `[!seq]`, and `**`
 
 - `--include-metrics <list>` - show the specified `dvc metrics` in the table
   only. Accepts a comma-separated `list` of metric names (including groups).
@@ -85,8 +85,8 @@ metric or param.
 
 - `--exclude-metrics <list>` - hide the specified `dvc metrics` from the table
   (all param will be shown except for these). Accepts a comma-separated `list`
-  of metric names (including groups).
-  Shell style wildcards supported: `*`, `?`, `[seq]`, `[!seq]`, and `**`
+  of metric names (including groups). Shell style wildcards supported: `*`, `?`,
+  `[seq]`, `[!seq]`, and `**`
 
 - `--sort-by <name>` - sort experiments by the specified metric or param
   (`name`). Only one visible column (either metric or param) can be used for
