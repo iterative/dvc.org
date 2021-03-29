@@ -65,7 +65,7 @@ Benefits of our approach include:
 - **Collaboration**: Easily distribute your project development and share its
   data [internally](/doc/use-cases/shared-development-server) and
   [remotely](/doc/use-cases/sharing-data-and-model-files), or
-  [reuse](/doc/start/data-access) it in other places.
+  [reuse](/doc/start/data-and-model-access) it in other places.
 
 - **Data compliance**: Review data modification attempts as Git
   [pull requests](https://www.dummies.com/web-design-development/what-are-github-pull-requests/).
