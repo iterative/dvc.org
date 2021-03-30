@@ -183,10 +183,10 @@ these parameters, you could use the following options.
   $ dvc remote modify myremote use_ssl false
   ```
   
-- `verify` - whether or not to validate SSL certificates, By default, validation is used. 
+- `verify_ssl` - whether or not to validate SSL certificates, By default, validation is used. 
 
   ```dvc
-  $ dvc remote modify myremote verify false
+  $ dvc remote modify myremote verify_ssl false
   ```
 
 - `listobjects` - whether or not to use `list_objects`. By default,
