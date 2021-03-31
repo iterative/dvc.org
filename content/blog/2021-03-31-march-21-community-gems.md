@@ -95,7 +95,7 @@ video on [Getting Started: Pipelines](https://dvc.org/doc/start/data-pipelines)
 and [Getting Started: Experiments](https://dvc.org/doc/start/experiments) which
 shows detailed set up and functionality of pipelines and experiments. In your
 case these steps would be followed for each directory which contains its own
-experiment.  You can find more information on
+experiment. You can find more information on
 [organization patterns for experiments here.](https://dvc.org/doc/user-guide/experiment-management#organization-patterns)
 
 At our April Office Hours Meetup we will be demo-ing pipelines as well as CML.
