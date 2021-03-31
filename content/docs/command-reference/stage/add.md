@@ -266,14 +266,9 @@ data science experiments.
 
 ## Examples
 
-Let's create a <abbr>DVC project</abbr> and a stage (that counts the number of
-lines in a `test.txt` file):
+Let's create a stage (that counts the number of lines in a `test.txt` file):
 
 ```dvc
-$ mkdir example && cd example
-$ git init
-$ dvc init
-$ mkdir data
 $ dvc stage add -n count \
                 -d test.txt \
                 -o lines \
@@ -358,7 +353,6 @@ Let's create a stage that extracts an XML file from an archive to the `data/`
 folder:
 
 ```dvc
-$ mkdir data
 $ dvc stage add -n extract \
                 -d Posts.xml.zip \
                 -o data/Posts.xml \

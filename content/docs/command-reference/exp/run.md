@@ -175,9 +175,8 @@ CPU cores).
 
 ## Examples
 
-> These examples are based on our
-> [Get Started](/doc/tutorials/get-started/experiments), where you can find the
-> actual source code.
+> These examples are based on our [Get Started](/doc/start/experiments), where
+> you can find the actual source code.
 
 <details>
 

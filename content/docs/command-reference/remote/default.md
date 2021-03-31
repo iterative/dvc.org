@@ -8,7 +8,7 @@ Set/unset the default [data remote](/doc/command-reference/remote).
 ## Synopsis
 
 ```usage
-usage: dvc remote default [-h] [--global | --system | --local]
+usage: dvc remote default [-h] [--global | --system | --project | --local]
                           [-q | -v] [-u]
                           [name]
 
@@ -41,21 +41,26 @@ is omitted.
 You can also use `dvc config`, `dvc remote add` and `dvc remote modify` commands
 to set/unset/change the default remote configurations.
 
+Remotes are read from the system, global, project, and local config files (in
+that order).
+
 ## Options
 
-- `-u`, `--unset` - unsets default remote.
+- `-u`, `--unset` - unset the current default remote from a config file.
 
-- `--global` - save remote configuration to the global config (e.g.
-  `~/.config/dvc/config`) instead of `.dvc/config`.
+- `--system` - save or only read remote configuration to/from the system config
+  file (e.g. `/etc/xdg/dvc/config`) instead of `.dvc/config`.
 
-- `--system` - save remote configuration to the system config (e.g.
-  `/etc/xdg/dvc/config`) instead of `.dvc/config`.
+- `--global` - save or only read remote configuration to/from the global config
+  file (e.g. `~/.config/dvc/config`) instead of `.dvc/config`.
 
-- `--local` - modify a local [config file](/doc/command-reference/config)
-  instead of `.dvc/config`. It is located in `.dvc/config.local` and is
-  Git-ignored. This is useful when you need to specify private config options in
-  your config that you don't want to track and share through Git (credentials,
-  private locations, etc).
+- `--project` - save or only read remote configuration to/from the project's
+  config file (`.dvc/config`) (this is the default behavior).
+
+- `--local` - save or only read remote configuration to/from the Git-ignored
+  local config file (located in `.dvc/config.local`) instead of `.dvc/config`.
+  This is useful to save private remote config that you don't want to track and
+  share with Git.
 
 - `-h`, `--help` - prints the usage/help message and exit.
 

@@ -86,7 +86,7 @@ The command options used above mean the following:
 
 - `-p prepare.seed,prepare.split` defines special types of dependencies -
   [parameters](/doc/command-reference/params). We'll get to them later in the
-  [Metrics, parameters, and plots](/doc/start/metrics-parameters-plots) section,
+  [Metrics, Parameters, and Plots](/doc/start/metrics-parameters-plots) page,
   but the idea is that the stage can depend on field values from a parameters
   file (`params.yaml` by default):
 
@@ -143,7 +143,7 @@ stages:
 There's no need to use `dvc add` for DVC to track stage outputs (`data/prepared`
 in this case); `dvc run` already took care of this. You only need to run
 `dvc push` if you want to save them to
-[remote storage](/doc/tutorials/get-started/data-versioning#storing-and-sharing),
+[remote storage](/doc/start/data-and-model-versioning#storing-and-sharing),
 (usually along with `git commit` to version `dvc.yaml` itself).
 
 ## Dependency graphs (DAGs)

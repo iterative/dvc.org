@@ -14,7 +14,7 @@ usage: dvc diff [-h] [-q | -v]
 
 positional arguments:
   a_rev      Old Git commit to compare (defaults to HEAD)
-  b_rev      New Git commit to compare (defaults to the current workspace)
+  b_rev      New Git commit to compare (defaults to current workspace)
 ```
 
 ## Description
@@ -123,8 +123,9 @@ $ dvc diff
 
 Let's checkout the
 [2-track-data](https://github.com/iterative/example-get-started/releases/tag/2-track-data)
-tag, corresponding to the [Data Versioning](/doc/start/data-versioning) _Get
-Started_ chapter, right after we added `data.xml` file with DVC:
+tag, corresponding to the
+[Data Versioning](/doc/start/data-and-model-versioning) _Get Started_ chapter,
+right after we added `data.xml` file with DVC:
 
 ```dvc
 $ git checkout 2-track-data
