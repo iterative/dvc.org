@@ -94,17 +94,20 @@ stages:
 ```
 
 The value passed to `--live` (`training_metrics`) became the directory `path`
-for Dvclive to write logs in. Other supported command options for DVC
-integration:
+for Dvclive to write logs in, and DVC will now
+[track](/doc/use-cases/versioning-data-and-model-files) it. Other supported
+command options for the DVC integration:
 
-- `--live-no-cache <path>` - specify a Dvclive log file <abbr>output</abbr> (not
-  <abbr>cached</abbr>).
+- `--live-no-cache <path>` - specify a Dvclive log directory `path` but don't
+  tracked it with DVC. Useful if you prefer to track it with Git.
 - `--live-no-summary` - passes `summary=False` to Dvclive.
 - `--live-no-html` - passes `html=False` to Dvclive.
 
 > Note that these are convenience CLI options. You can still use
-> `dvclive.init()` manually, which it will override `dvc stage add` flags. Just
-> be careful to match the `--live` value (CLI) and `path` argument (code).
+> `dvclive.init()` manually, which will override any options sent to
+> `dvc stage add`. Just be careful to match the `--live` value (CLI) and `path`
+> argument (code). Also, note that summary files are never tracked by DVC
+> automatically.
 
 Run the training with `dvc repro`:
 

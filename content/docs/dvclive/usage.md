@@ -106,8 +106,8 @@ training_metrics  training_metrics.json  train.py
 ```
 
 The `*.tsv` files inside have names corresponding to the metrics logged during
-training. Note that a `training_metrics.json` file has been created as well.
-It's contains information about latest training step. You can prevent its
+training. Note that a `training_metrics.json` summary file has been created as
+well, containing information about the latest training step. You can prevent its
 creation by sending `summary = False` to `dvclive.init()` (see all the
 [options](#initial-configuration)).
 
