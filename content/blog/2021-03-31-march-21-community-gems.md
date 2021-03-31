@@ -24,7 +24,7 @@ tags:
 We recently had questions about this, specifically regarding Huawei Cloud and
 Backblaze B2 Storage. The answer is any cloud storage that has an S3 interface
 will work with DVC and both of the aforementioned do! In addition DVC works with
-Azure, Google Drive, GS, OSS and SSH.
+Azure, Google Drive, GS, OSS, and SSH.
 [Learn more about S3 combatibility integrations and all available remote storage capabilities here.](https://dvc.org/doc/command-reference/remote)
 
 Thanks to @luke and @Samuel H from Discord for asking these questions that led
@@ -64,11 +64,14 @@ your data without needing to copy it into the DVC/repo first,
 
 I see you are having the following error:
 
-```bash
-dvc pull
+```$
+$ dvc pull
+
 Everything is up to date.
 ERROR: failed to pull data from the cloud - 'data\rhinoceros.dvc' format error: extra keys not allowed @ data['outs'][0]['size']
-dvc doctor
+
+$ dvc doctor
+
 DVC version: 1.9.1 (exe)
 ---------------------------------
 Platform: Python 3.7.9 on Windows-10-10.0.19041-SP0
@@ -76,7 +79,7 @@ Supports: All remotes
 Cache types: hardlink
 Cache directory: NTFS on C:\
 Workspace directory: NTFS on C:\
-Repo: dvc, git`
+Repo: dvc, git
 ```
 
 You're colleague is likely running a newer version of DVC. Upgrade so that all
@@ -92,7 +95,8 @@ video on [Getting Started: Pipelines](https://dvc.org/doc/start/data-pipelines)
 and [Getting Started: Experiments](https://dvc.org/doc/start/experiments) which
 shows detailed set up and functionality of pipelines and experiments. In your
 case these steps would be followed for each directory which contains its own
-experiment.
+experiment.  You can find more information on
+[organization patterns for experiments here.](https://dvc.org/doc/user-guide/experiment-management#organization-patterns)
 
 At our April Office Hours Meetup we will be demo-ing pipelines as well as CML.
 [RSVP for the Meetup here](https://www.meetup.com/DVC-Community-Virtual-Meetups/events/277245660/?isFirstPublish=true)
