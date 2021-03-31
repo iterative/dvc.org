@@ -6,13 +6,14 @@ command.
 ## Synopsis
 
 ```usage
-usage: dvc run [-h] [-q | -v] -n <name> [-d <path>] [-o <path>]
-               [-O <path>] [-p [<path>:]<params_list>] [-m <path>]
-               [-M <path>] [--plots <path>] [--plots-no-cache <path>]
-               [-w <path>] [--no-exec] [-f]
-               [--no-run-cache] [--no-commit]
-               [--outs-persist <path>] [--outs-persist-no-cache <path>]
-               [-c <path>] [--always-changed] [--external] [--desc <text>]
+usage: dvc run [-h] [-q | -v] [-n <name>] [--no-exec] [--no-run-cache]
+               [--no-commit] [-d <path>] [-o <filename>] [-O <filename>]
+               [-p [<filename>:]<params_list>] [-m <path>] [-M <path>]
+               [--plots <path>] [--plots-no-cache <path>] [--live <path>]
+               [--live-no-cache <path>] [--live-no-summary] [--live-no-html]
+               [-w <path>] [-f] [--outs-persist <filename>]
+               [--outs-persist-no-cache <filename>] [-c <filename>]
+               [--always-changed] [--external] [--desc <text>]
                command
 
 positional arguments:
@@ -272,8 +273,8 @@ $ dvc run -n second_stage './another_script.sh $MYENVVAR'
   [Dvclive](/doc/dvclive/dvclive-with-dvc) to write logs in. Saved in the `live`
   field of `dvc.yaml`.
 
-- `--live-no-cache <path>` - specify a Dvclive log file <abbr>output</abbr> (not
-  <abbr>cached</abbr>). Turns any `-o <path>` into a `-O`.
+- `--live-no-cache <path>` - specify the directory `path` for Dvclive (not
+  <abbr>cached</abbr>).
 
 - `--live-no-summary` - passes `summary=False` to Dvclive config.
 
