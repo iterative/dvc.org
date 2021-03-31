@@ -19,17 +19,16 @@ tags:
   - Remote Storage
 ---
 
-
-
 ### [Q: Will DVC work with <my remote cloud storage of choice?>](https://discord.com/channels/485586884165107732/563406153334128681/821493606770409493)
 
 We recently had questions about this, specifically regarding Huawei Cloud and
 Backblaze B2 Storage. The answer is any cloud storage that has an S3 interface
-will work with DVC and both of the aforementioned do!  In addition DVC works with Azure, Google Drive, GS, OSS and SSH.
+will work with DVC and both of the aforementioned do! In addition DVC works with
+Azure, Google Drive, GS, OSS and SSH.
 [Learn more about S3 combatibility integrations and all available remote storage capabilities here.](https://dvc.org/doc/command-reference/remote)
 
-Thanks to @luke and @Samuel H from Discord for asking these questions that led to
-this Gem! 💎
+Thanks to @luke and @Samuel H from Discord for asking these questions that led
+to this Gem! 💎
 
 ### [Q: I had understood previously that DVC was not suitable for hyperparameter tuning. Has that changed?](https://discord.com/channels/485586884165107732/485596304961962003/820722752709328967)
 
@@ -50,8 +49,8 @@ One solution to this would be to keep your DVC cache on your mount, and use the
 `symlink` cache type so all of your data would remain on that mount, but for
 DVC's purposes it would only deal with files that are "inside" your repo (via
 symlinks). Note that your data on that mount would be stored in DVC's
-content-addressable cache format, and not in `path/to/mount/foo.nc`. Check out 
-the docs on 
+content-addressable cache format, and not in `path/to/mount/foo.nc`. Check out
+the docs on
 [how to keep DVC cache on your mount here.](https://dvc.org/doc/use-cases/shared-development-server)
 
 To actually work with `foo.nc`, you'd end up with a symlink `foo.nc` inside your
@@ -88,15 +87,16 @@ Thanks @ojon for this important gem! 💎
 ### [Q: How do I create multiple pipeline (`dvc.yaml`) files for different experiments?](https://discord.com/channels/485586884165107732/485596304961962003/824846339288334356)
 
 You could create separate directories for each experiment and keep your
-pipelines organized with separate `dvc.yaml` files. Check out these docs and video
-on [Getting Started: Pipelines](https://dvc.org/doc/start/data-pipelines) and
-[Getting Started: Experiments](https://dvc.org/doc/start/experiments) which 
-shows detailed set up and functionality of pipelines and experiments.  In 
-your case these steps would be followed for each directory which contains its
-own experiment.  
+pipelines organized with separate `dvc.yaml` files. Check out these docs and
+video on [Getting Started: Pipelines](https://dvc.org/doc/start/data-pipelines)
+and [Getting Started: Experiments](https://dvc.org/doc/start/experiments) which
+shows detailed set up and functionality of pipelines and experiments. In your
+case these steps would be followed for each directory which contains its own
+experiment.
 
 At our April Office Hours Meetup we will be demo-ing pipelines as well as CML.
-[RSVP for the Meetup here](https://www.meetup.com/DVC-Community-Virtual-Meetups/events/277245660/?isFirstPublish=true) to stay up to date with specifics as we get closer to the event!
+[RSVP for the Meetup here](https://www.meetup.com/DVC-Community-Virtual-Meetups/events/277245660/?isFirstPublish=true)
+to stay up to date with specifics as we get closer to the event!
 
 Thanks @tijoseymathew for your question in Discord!
 
