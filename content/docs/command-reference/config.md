@@ -5,7 +5,8 @@ Get or set <abbr>project</abbr>-level (or global) DVC configuration options.
 ## Synopsis
 
 ```usage
-usage: dvc config [-h] [--global | --system | --local] [-q | -v] [-u]
+usage: dvc config [-h] [--global | --system | --project | --local]
+                  [-q | -v] [-u]
                   [-l] [--show-origin] [name] [value]
 
 positional arguments:
@@ -20,23 +21,26 @@ You can query/set/replace/unset DVC configuration options with this command. It
 takes a config option `name` (a config section and a key, separated by a dot)
 and its `value` (any valid alpha-numeric string generally).
 
-If the config option `value` is not provided (and without `--unset`), this
-command returns the current value of the config option, if found in the
-corresponding config file.
+When reading config options (no `value` is given or `--list` is used), the
+values are read from the system, global, project, and local config files (in
+that order). The `--system`, `--global`, `--project`, and `--local` options can
+be used to read from that configuration only.
 
-This command reads and updates the DVC configuration files. By default, the
-regular project's config file in `.dvc/config` is read or modified. This file is
-meant to be tracked by Git and should not contain sensitive and/or user-specific
-information (passwords, SSH keys, etc). Use the `--local` command option (flag)
-instead, to set (or override) secrets:
+When writing (a `value` is given or `--unset` is used), the new value is written
+to the project-level config file by default (`.dvc/config`). Options `--system`,
+`--global` and `--local` can be used to write to that location instead.
 
-| Flag           | Priority | Config file location |
-| -------------- | -------- | -------------------- |
-| `--local`      | 1        | `.dvc/config.local`  |
-| None (default) | 2        | `.dvc/config`        |
+⚠️ Note that `.dvc/config` is meant to be tracked by Git and should not contain
+sensitive user info or secrets (passwords, SSH keys, etc). Use `--local` when in
+doubt.
 
-The `--global` and `--system` flags are also available to set config options for
-multiple projects and users, respectively:
+| Flag                          | Priority | Config file location |
+| ----------------------------- | -------- | -------------------- |
+| `--local`                     | 1        | `.dvc/config.local`  |
+| None or `--project` (default) | 2        | `.dvc/config`        |
+
+The `--global` and `--system` flags are also useful to set config options for
+multiple projects or users, respectively.
 
 <!-- Avoids new lines in the Flag columns (below). -->
 <style>
@@ -58,20 +62,25 @@ multiple projects and users, respectively:
 
 ## Command options (flags)
 
-- `-u`, `--unset` - remove a specified config option from a config file.
-
-- `--local` - modify a Git-ignored local config file. This is useful when you
-  need to specify private config option values that you don't want to track and
-  share with Git (credentials, private locations, etc).
-
-- `--global` - modify the global config file (e.g. `~/.config/dvc/config`)
-  instead of the project's `.dvc/config`. Useful to apply config options to all
-  your projects.
+- `-u`, `--unset` - remove the specified config option `name` from a config
+  file. Don't provide a `value` argument when employing this flag.
 
 - `--system` - modify the system config file (e.g. `/etc/xdg/dvc/config`)
   instead of `.dvc/config`. Useful to apply config options to all the projects
   (all users) in the machine. May require superuser access e.g.
   `sudo dvc config --system ...` (Linux).
+
+- `--global` - modify the global config file (e.g. `~/.config/dvc/config`)
+  instead of the project's `.dvc/config`. Useful to apply config options to all
+  your projects.
+
+- `--project` - only use the project's config file (`.dvc/config`) when reading
+  config values (this is the default when writing).
+
+- `--local` - use the Git-ignored local config file (located in
+  `.dvc/config.local`) instead of `.dvc/config`. This is useful to save private
+  config values that you don't want to track and share with Git (credentials,
+  private locations, etc.).
 
 - `-l`, `--list` - lists all defined config values.
 
