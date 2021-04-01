@@ -185,6 +185,13 @@ these parameters, you could use the following options.
   $ dvc remote modify myremote use_ssl false
   ```
 
+- `ssl_verify` - whether or not to verify SSL certificates. By default SSL
+  certificates are verified.
+
+  ```dvc
+  $ dvc remote modify myremote verify_ssl false
+  ```
+
 - `listobjects` - whether or not to use `list_objects`. By default,
   `list_objects_v2` is used. Useful for ceph and other S3 emulators.
 
