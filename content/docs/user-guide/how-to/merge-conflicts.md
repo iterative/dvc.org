@@ -6,7 +6,7 @@ from multiple team members.'
 
 # How to Merge Conflicts in DVC Files
 
-Sometimes multiple tam members work on the the same DVC-tracked data. When the
+Sometimes multiple team members work on the the same DVC-tracked data. When the
 time comes to combine their changes, merge conflicts can occur in Git-tracked
 <abbr>DVC files</abbr>, which need to be resolved.
 
