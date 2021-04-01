@@ -64,7 +64,7 @@ your data without needing to copy it into the DVC/repo first,
 
 I see you are having the following error:
 
-```$
+```dvc
 $ dvc pull
 
 Everything is up to date.
