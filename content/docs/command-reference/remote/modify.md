@@ -183,9 +183,8 @@ these parameters, you could use the following options.
   $ dvc remote modify myremote use_ssl false
   ```
   
-- `ssl_verify` - whether or not to verify SSL certificates. By default SSL certificates are verified. You can provide the following values:
-  False - do not validate SSL certificates. SSL will still be used (unless use_ssl is False), but SSL certificates will not be verified.
-  path/to/cert/bundle.pem - A filename of the CA cert bundle to use.
+- `ssl_verify` - whether or not to verify SSL certificates. 
+  By default SSL certificates are verified.
 
   ```dvc
   $ dvc remote modify myremote verify_ssl false
