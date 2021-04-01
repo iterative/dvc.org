@@ -3,16 +3,28 @@
 Even though Dvclive does not require DVC, they can integrate in several useful
 ways.
 
-> In this section we will modify the [basic usage example](/doc/dvclive/usage)
-> to see how DVC can cooperate with Dvclive module.
+> In this section we reuse the finished
+> [basic usage example](/doc/dvclive/usage) to see how DVC can cooperate with
+> Dvclive.
 
 ```python
 # train.py
 
+import dvclive
+from keras.callbacks import Callback
 from keras.datasets import mnist
 from keras.models import Sequential
 from keras.layers.core import Dense, Activation
 from keras.utils import np_utils
+
+
+class MetricsCallback(Callback):
+    def on_epoch_end(self, epoch: int, logs: dict = None):
+        logs = logs or {}
+        for metric, value in logs.items():
+            dvclive.log(metric, value)
+        dvclive.next_step()
+
 
 def load_data():
     (x_train, y_train), (x_test, y_test) = mnist.load_data()
@@ -23,34 +35,25 @@ def load_data():
     x_test = x_test.astype('float32')
     x_train /= 255
     x_test /= 255
+
     classes = 10
     y_train = np_utils.to_categorical(y_train, classes)
     y_test = np_utils.to_categorical(y_test, classes)
     return (x_train, y_train), (x_test, y_test)
 
+
 def get_model():
     model = Sequential()
+
     model.add(Dense(512, input_dim=784))
     model.add(Activation('relu'))
-
     model.add(Dense(10, input_dim=512))
-
     model.add(Activation('softmax'))
 
     model.compile(loss='categorical_crossentropy',
     metrics=['accuracy'], optimizer='sgd')
     return model
 
-
-from keras.callbacks import Callback
-import dvclive
-
-class MetricsCallback(Callback):
-    def on_epoch_end(self, epoch: int, logs: dict = None):
-        logs = logs or {}
-        for metric, value in logs.items():
-            dvclive.log(metric, value)
-        dvclive.next_step()
 
 (x_train, y_train), (x_test, y_test) = load_data()
 model = get_model()
@@ -91,15 +94,20 @@ stages:
 ```
 
 The value passed to `--live` (`training_metrics`) became the directory `path`
-for Dvclive to write logs in. Other supported command options for DVC
-integration:
+for Dvclive to write logs in, and DVC will now
+[track](/doc/use-cases/versioning-data-and-model-files) it. Other supported
+command options for the DVC integration:
 
+- `--live-no-cache <path>` - specify a Dvclive log directory `path` but don't
+  tracked it with DVC. Useful if you prefer to track it with Git.
 - `--live-no-summary` - passes `summary=False` to Dvclive.
 - `--live-no-html` - passes `html=False` to Dvclive.
 
 > Note that these are convenience CLI options. You can still use
-> `dvclive.init()` manually, which it will override `dvc stage add` flags. Just
-> be careful to match the `--live` value (CLI) and `path` argument (code).
+> `dvclive.init()` manually, which will override any options sent to
+> `dvc stage add`. Just be careful to match the `--live` value (CLI) and `path`
+> argument (code). Also, note that summary files are never tracked by DVC
+> automatically.
 
 Run the training with `dvc repro`:
 
@@ -120,6 +128,6 @@ logged during the model training!
 
 ![](/img/dvclive_report.png)
 
-> Dvclive is capable of creating _checkpoint_ signal files used by
-> [experiments](/doc/user-guide/experiment-management). See this example
-> [repository](https://github.com/iterative/dvc-checkpoints-mnist) to see how.
+💡 Dvclive is also capable of creating _checkpoint_ signal files used by
+[experiments](/doc/user-guide/experiment-management). See this example
+[repository](https://github.com/iterative/dvc-checkpoints-mnist) to see how.
