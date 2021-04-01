@@ -182,9 +182,9 @@ these parameters, you could use the following options.
   ```dvc
   $ dvc remote modify myremote use_ssl false
   ```
-  
-- `ssl_verify` - whether or not to verify SSL certificates. 
-  By default SSL certificates are verified.
+
+- `ssl_verify` - whether or not to verify SSL certificates. By default SSL
+  certificates are verified.
 
   ```dvc
   $ dvc remote modify myremote verify_ssl false
