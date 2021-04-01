@@ -90,17 +90,12 @@ Thanks @ojon for this important gem! 💎
 ### [Q: How do I create multiple pipeline (`dvc.yaml`) files for different experiments?](https://discord.com/channels/485586884165107732/485596304961962003/824846339288334356)
 
 You could create separate directories for each experiment and keep your
-pipelines organized with separate `dvc.yaml` files. Check out these docs and
-video on [Getting Started: Pipelines](https://dvc.org/doc/start/data-pipelines)
-and [Getting Started: Experiments](https://dvc.org/doc/start/experiments) which
-shows detailed set up and functionality of pipelines and experiments. In your
-case these steps would be followed for each directory which contains its own
-experiment. You can find more information on
+pipelines organized with separate `dvc.yaml` files. You can find more
+information on
 [organization patterns for experiments here.](https://dvc.org/doc/user-guide/experiment-management#organization-patterns)
-
-At our April Office Hours Meetup we will be demo-ing pipelines as well as CML.
-[RSVP for the Meetup here](https://www.meetup.com/DVC-Community-Virtual-Meetups/events/277245660/?isFirstPublish=true)
-to stay up to date with specifics as we get closer to the event!
+Currently we are working on a way to compare metrics between different paths if
+using this method of keeping experiments in different directories.
+[You can follow that issue here!](https://github.com/iterative/dvc/issues/5074)
 
 Thanks @tijoseymathew for your question in Discord!
 
@@ -127,6 +122,10 @@ Drive
 Thanks @Carlos Lopez H for this important gem! 💎
 
 https://media.giphy.com/media/l0IycQmt79g9XzOWQ/giphy.gif
+
+At our April Office Hours Meetup we will be demo-ing pipelines as well as CML.
+[RSVP for the Meetup here](https://www.meetup.com/DVC-Community-Virtual-Meetups/events/277245660/?isFirstPublish=true)
+to stay up to date with specifics as we get closer to the event!
 
 [Join us in Discord](https://discord.com/invite/dvwXA2N) to get all your DVC and
 CML questions answered!
