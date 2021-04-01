@@ -107,7 +107,7 @@ Thanks @tijoseymathew for your question in Discord!
 ### [Q: Is there a way to run "git checkout and "dvc checkout" in one command?](https://discord.com/channels/485586884165107732/563406153334128681/818488624303046677)
 
 Yep! There's a way! We offer a Git hook for `post-checkout`, which automates DVC
-checkout right after git checkout. You can use `dvc install` to install that
+checkout right after `git checkout`. You can use `dvc install` to install that
 hook.  
 [Check out these docs](https://dvc.org/doc/command-reference/install) for all
 the info on installing Git hooks
