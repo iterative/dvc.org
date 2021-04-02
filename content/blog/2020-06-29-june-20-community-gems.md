@@ -14,7 +14,7 @@ tags:
   - Discord Gems
   - MinIO
   - Pipelines
-  - Python API
+  - Python
   - Optimization
 ---
 
