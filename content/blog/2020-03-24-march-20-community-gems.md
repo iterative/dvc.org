@@ -10,9 +10,8 @@ picture: 2020-03-12/march_20_header.png
 author: elle_obrien
 commentsUrl: https://discuss.dvc.org/t/march-20-community-gems/336
 tags:
-  - Discord
   - Tags
-  - Gems
+  - Discord Gems
   - Data registry
 ---
 

@@ -13,8 +13,7 @@ picture: 2021-01-28/gems-cover.png
 author: elle_obrien
 commentsUrl: https://discuss.dvc.org/t/january-21-community-gems/645
 tags:
-  - Discord
-  - Gems
+  - Discord Gems
   - CML
   - Plots
   - Pipelines

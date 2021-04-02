@@ -13,8 +13,7 @@ pictureComment:
 author: elle_obrien
 commentsUrl: https://discuss.dvc.org/t/january-20-community-gems/315
 tags:
-  - Discord
-  - Gems
+  - Discord Gems
 ---
 
 ## Discord gems

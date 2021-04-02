@@ -13,8 +13,7 @@ picture: 2020-09-28/Gems_Sept_20.png
 author: elle_obrien
 commentsUrl: https://discuss.dvc.org/t/september-20-community-gems/512
 tags:
-  - Discord
-  - Gems
+  - Discord Gems
   - CML
   - Hyperparameters
   - External Data

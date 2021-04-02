@@ -13,8 +13,7 @@ picture: 2020-05-26/May_20_Gems_Header.png
 author: elle_obrien
 commentsUrl: https://discuss.dvc.org/t/may-20-community-gems/398
 tags:
-  - Discord
-  - Gems
+  - Discord Gems
   - Cache
   - Google Cloud Storage
   - Import

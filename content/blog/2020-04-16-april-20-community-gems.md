@@ -11,8 +11,7 @@ picture: 2020-04-16/DVC_Gems_April_20.png
 author: elle_obrien
 commentsUrl: https://discuss.dvc.org/t/april-20-community-gems/356
 tags:
-  - Discord
-  - Gems
+  - Discord Gems
   - Pipelines
 ---
 
