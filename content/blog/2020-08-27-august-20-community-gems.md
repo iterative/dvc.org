@@ -17,7 +17,7 @@ tags:
   - CML
   - Hyperparameters
   - Git LFS
-  - Pipeline
+  - Pipelines
 ---
 
 Here are some of our top Q&A's from around the community. With the launch of

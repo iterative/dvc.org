@@ -13,7 +13,7 @@ commentsUrl: https://discuss.dvc.org/t/june-20-community-gems/426
 tags:
   - Discord Gems
   - MinIO
-  - Pipeline
+  - Pipelines
   - Python API
   - Optimization
 ---
