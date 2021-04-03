@@ -151,8 +151,7 @@ download one will have `joke.txt` as an output . The duplicate one defined
 a pipeline by joining those stages.
 
 You can inspect the content of each stage file
-[here](https://dvc.org/doc/user-guide/dvc-file-format) (they are human
-readable).
+[here](/doc/user-guide/project-structure) (they are human readable).
 
 ### Q: [Is it possible to use the same data of a remote in two different repositories?](https://discordapp.com/channels/485586884165107732/485596304961962003/560022999848321026)
 

@@ -282,9 +282,9 @@ Assuming the file was created with `dvc run`. There are few possible ways.
 Obvious one is to delete the file and create a new one with
 `dvc run --no-exec -f file/path/and/name.dvc`. Another possibility is to
 rename/move and then edit manually. See
-[this document](https://dvc.org/doc/user-guide/dvc-file-format) that describes
-how DVC-files are organized. No matter what method you use, you can run
-`dvc commit file.dvc` to save changes without running the command again.
+[this document](/doc/user-guide/project-structure) that describes how DVC-files
+are organized. No matter what method you use, you can run `dvc commit file.dvc`
+to save changes without running the command again.
 
 ### Q: [`dvc status` doesn’t seem to report things that need to be dvc pushed, is that by design?](https://discordapp.com/channels/485586884165107732/563406153334128681/606917839688957952)
 

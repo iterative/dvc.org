@@ -93,10 +93,10 @@ interesting takeaways.
 ### Q: [Edit and define DVC files manually, in a Makefile style](https://discordapp.com/channels/485586884165107732/485586884165107734/541622187296161816)
 
 There is no separate guide for that, but it is very straight forward. See
-[DVC file format](https://dvc.org/doc/user-guide/dvc-file-format) description
-for how DVC file looks inside in general. All `dvc add` or `dvc run` does is
-just computing `md5` fields in it, that is all. You could write your DVC-file
-and then run `dvc repro` that will run a command(if any) and compute all needed
+[DVC file format](/doc/user-guide/project-structure) description for how DVC
+file looks inside in general. All `dvc add` or `dvc run` does is just computing
+`md5` fields in it, that is all. You could write your DVC-file and then run
+`dvc repro` that will run a command(if any) and compute all needed
 checksums,[read more](https://discordapp.com/channels/485586884165107732/485586884165107734/541622187296161816).
 
 ### Q: [Best practices to define the code dependencies](https://discordapp.com/channels/485586884165107732/485586884165107734/547424240677158915)
