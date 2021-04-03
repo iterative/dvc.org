@@ -5,13 +5,16 @@ Helper command to create or update <abbr>stages</abbr> in `dvc.yaml`.
 ## Synopsis
 
 ```usage
-usage: dvc stage add [-h] [-q | -v] -n <name> [-d <path>] [-o <path>]
-                     [-O <path>] [-p [<path>:]<params_list>]
+usage: dvc stage add [-h] [-q | -v] -n <name> [-d <path>] [-o <filename>]
+                     [-O <filename>] [-p [<filename>:]<params_list>]
                      [-m <path>] [-M <path>] [--plots <path>]
-                     [--plots-no-cache <path>] [-w <path>] [-f]
-                     [--outs-persist <path>]
-                     [--outs-persist-no-cache <path>] [-c <path>]
+                     [--plots-no-cache <path>] [--live <path>]
+                     [--live-no-cache <path>] [--live-no-summary]
+                     [--live-no-html] [-w <path>] [-f]
+                     [--outs-persist <filename>]
+                     [--outs-persist-no-cache <filename>] [-c <filename>]
                      [--always-changed] [--external] [--desc <text>]
+
                      command
 
 positional arguments:
@@ -246,6 +249,17 @@ data science experiments.
 - `--desc <text>` - user description of the stage (optional). This doesn't  
   affect any DVC operations.
 
+- `--live <path>` - specify the directory `path` for
+  [Dvclive](/doc/dvclive/dvclive-with-dvc) to write logs in. `path` will be
+  tracked (<abbr>cached</abbr>) by DVC. Saved in the `live` field of `dvc.yaml`.
+
+- `--live-no-cache <path>` - the same as `-o` except that the `path` is not
+  tracked by DVC. Useful if you prefer to track it with Git.
+
+- `--live-no-summary` - passes `summary=False` to Dvclive config.
+
+- `--live-no-html` - passes `html=False` to Dvclive config.
+
 - `-h`, `--help` - prints the usage/help message, and exit.
 
 - `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if no
@@ -255,14 +269,9 @@ data science experiments.
 
 ## Examples
 
-Let's create a <abbr>DVC project</abbr> and a stage (that counts the number of
-lines in a `test.txt` file):
+Let's create a stage (that counts the number of lines in a `test.txt` file):
 
 ```dvc
-$ mkdir example && cd example
-$ git init
-$ dvc init
-$ mkdir data
 $ dvc stage add -n count \
                 -d test.txt \
                 -o lines \
@@ -347,7 +356,6 @@ Let's create a stage that extracts an XML file from an archive to the `data/`
 folder:
 
 ```dvc
-$ mkdir data
 $ dvc stage add -n extract \
                 -d Posts.xml.zip \
                 -o data/Posts.xml \

@@ -7,10 +7,10 @@ A set of commands to generate and manage <abbr>experiments</abbr>:
 [diff](/doc/command-reference/exp/diff),
 [apply](/doc/command-reference/exp/apply),
 [branch](/doc/command-reference/exp/branch),
-[resume](/doc/command-reference/exp/resume),
-[gc](/doc/command-reference/exp/gc), [list](/doc/command-reference/exp/list),
-[push](/doc/command-reference/exp/list), and
-[pull](/doc/command-reference/exp/pull).
+[remove](/doc/command-reference/exp/remove),
+[gc](/doc/command-reference/exp/gc), [push](/doc/command-reference/exp/list),
+[pull](/doc/command-reference/exp/pull), and
+[list](/doc/command-reference/exp/list).
 
 > Aliased to `dvc exp`.
 

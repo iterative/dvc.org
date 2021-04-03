@@ -7,7 +7,7 @@ advantage of the existing engineering toolset that you're already familiar with
 
 <cards>
 
-  <card href="/doc/tutorials/get-started" heading="Get Started">
+  <card href="/doc/start" heading="Get Started">
     A step-by-step introduction into basic DVC features
   </card>
 

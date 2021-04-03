@@ -6,7 +6,8 @@ using `dvc config cache`), or shows the current configured value.
 ## Synopsis
 
 ```usage
-usage: dvc cache dir [-h] [--global | --system | --local] [-u] value
+usage: dvc cache dir [-h] [--global | --system | --project | --local]
+                     [-u] [value]
 
 positional arguments:
   value        Path to cache directory. Relative paths are resolved
@@ -24,25 +25,27 @@ Unlike doing so with `dvc config cache`, `dvc cache dir` transform paths
 **relative to the config file location**. However, if the `value` provided is an
 absolute path, then it's preserved as it is.
 
-If no path `value` is provided to this command, it prints the path for current
-cache directory.
+If no path `value` is given, it prints the current path of the cache directory.
+The value is read from the system, global, project, and local config files (in
+that order).
 
 ## Options
 
-- `--global` - modify the global config file (e.g. `~/.config/dvc/config`)
-  instead of the project's `.dvc/config`.
-
-- `--system` - modify the system config file (e.g. `/etc/xdg/dvc/config`)
-  instead of `.dvc/config`.
-
-- `--local` - modify a local [config file](/doc/command-reference/config)
-  instead of `.dvc/config`. It is located in `.dvc/config.local` and is
-  Git-ignored. This is useful when you need to specify private config options in
-  your config that you don't want to track and share through Git (credentials,
-  private locations, etc).
-
-- `-u`, `--unset` - remove the `cache.dir` config option from the config file.
+- `-u`, `--unset` - remove the `cache.dir` config option from a config file.
   Don't provide a `value` argument when employing this flag.
+
+- `--system` - use the system config file (e.g. `/etc/xdg/dvc/config`) instead
+  of `.dvc/config`.
+
+- `--global` - use the global config file (e.g. `~/.config/dvc/config`) instead
+  of the project's `.dvc/config`.
+
+- `--project` - only use the project's config file (`.dvc/config`) when reading
+  the value (this is the default when writing).
+
+- `--local` - use the Git-ignored local config file (located in
+  `.dvc/config.local`) instead of `.dvc/config`. This is useful to save a
+  private `cache.dir` value that you don't want to track and share with Git.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 

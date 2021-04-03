@@ -4,7 +4,7 @@ You can construct data science or machine learning pipelines by defining
 individual [stages](/doc/command-reference/run) in one or more `dvc.yaml` files
 (or _pipelines files_). Stages form a pipeline when they connect with each other
 (forming a _dependency graph_, see `dvc dag`). Refer to
-[Data Pipelines](/doc/start/data-pipelines).
+[Get Started: Data Pipelines](/doc/start/data-pipelines).
 
 > Note that a helper command, `dvc run`, is available to create (and execute)
 > stages.
@@ -355,6 +355,7 @@ These are the fields that are accepted in each stage:
 | `always_changed` | Whether or not this stage is considered as changed by commands such as `dvc status` and `dvc repro`. `false` by default                                                                                                                                                                   |
 | `meta`           | (Optional) arbitrary metadata can be added manually with this field. Any YAML content is supported. `meta` contents are ignored by DVC, but they can be meaningful for user processes that read or write `.dvc` files directly.                                                           |
 | `desc`           | (Optional) user description for this stage. This doesn't affect any DVC operations.                                                                                                                                                                                                       |
+| `live`           | (Optional) [Dvclive](/doc/dvclive/dvclive-with-dvc) configuration field                                                                                                                                                                                                                   |
 
 `dvc.yaml` files also support `# comments`.
 
@@ -369,7 +370,7 @@ validation and auto-completion.
 
 ### Output subfields
 
-> Notice that these are a subset of those in `.dvc` file
+> These include a subset of the fields in `.dvc` file
 > [output entries](/doc/user-guide/project-structure/dvc-files#output-entries).
 
 | Field        | Description                                                                                                                                                                                                                                                                        |

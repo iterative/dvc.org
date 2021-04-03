@@ -6,13 +6,14 @@ command.
 ## Synopsis
 
 ```usage
-usage: dvc run [-h] [-q | -v] -n <name> [-d <path>] [-o <path>]
-               [-O <path>] [-p [<path>:]<params_list>] [-m <path>]
-               [-M <path>] [--plots <path>] [--plots-no-cache <path>]
-               [-w <path>] [--no-exec] [-f]
-               [--no-run-cache] [--no-commit]
-               [--outs-persist <path>] [--outs-persist-no-cache <path>]
-               [-c <path>] [--always-changed] [--external] [--desc <text>]
+usage: dvc run [-h] [-q | -v] [-n <name>] [--no-exec] [--no-run-cache]
+               [--no-commit] [-d <path>] [-o <filename>] [-O <filename>]
+               [-p [<filename>:]<params_list>] [-m <path>] [-M <path>]
+               [--plots <path>] [--plots-no-cache <path>] [--live <path>]
+               [--live-no-cache <path>] [--live-no-summary] [--live-no-html]
+               [-w <path>] [-f] [--outs-persist <filename>]
+               [--outs-persist-no-cache <filename>] [-c <filename>]
+               [--always-changed] [--external] [--desc <text>]
                command
 
 positional arguments:
@@ -268,6 +269,17 @@ $ dvc run -n second_stage './another_script.sh $MYENVVAR'
 - `--desc <text>` - user description of the stage (optional). This doesn't  
   affect any DVC operations.
 
+- `--live <path>` - specify the directory `path` for
+  [Dvclive](/doc/dvclive/dvclive-with-dvc) to write logs in. `path` will be
+  tracked (<abbr>cached</abbr>) by DVC. Saved in the `live` field of `dvc.yaml`.
+
+- `--live-no-cache <path>` - the same as `-o` except that the `path` is not
+  tracked by DVC. Useful if you prefer to track it with Git.
+
+- `--live-no-summary` - passes `summary=False` to Dvclive config.
+
+- `--live-no-html` - passes `html=False` to Dvclive config.
+
 - `-h`, `--help` - prints the usage/help message, and exit.
 
 - `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if no
@@ -277,14 +289,9 @@ $ dvc run -n second_stage './another_script.sh $MYENVVAR'
 
 ## Examples
 
-Let's create a <abbr>DVC project</abbr> and a stage (that counts the number of
-lines in a `test.txt` file):
+Let's create a stage (that counts the number of lines in a `test.txt` file):
 
 ```dvc
-$ mkdir example && cd example
-$ git init
-$ dvc init
-$ mkdir data
 $ dvc run -n count \
           -d test.txt \
           -o lines \
@@ -368,7 +375,6 @@ outputs of a stage to the dependencies of the following one(s).
 Extract an XML file from an archive to the `data/` folder:
 
 ```dvc
-$ mkdir data
 $ dvc run -n extract \
           -d Posts.xml.zip \
           -o data/Posts.xml \

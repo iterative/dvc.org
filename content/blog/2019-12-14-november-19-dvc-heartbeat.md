@@ -99,7 +99,7 @@ link="deploymachinelearning.com"
 image="/uploads/images/2019-12-14/deploy-machine-learning-models.png" />
 
 - **[How to Manage Your Machine Learning Workflow with DVC, Weights & Biases, and Docker](https://towardsdatascience.com/how-to-manage-your-machine-learning-workflow-with-dvc-weights-biases-and-docker-5529ea4e59e0)
-  by [James Le](https://towardsdatascience.com/@james_aka_yale).**
+  by [James Le](https://le-james94.medium.com).**
 
 > In this article, I want to show 3 powerful tools to simplify and scale up
 > machine learning development within an organization by making it easy to

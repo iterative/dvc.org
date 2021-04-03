@@ -61,9 +61,8 @@ separately to delete it.
 
 ## Examples
 
-> This example is based on our
-> [Get Started](/doc/tutorials/get-started/experiments), where you can find the
-> actual source code.
+> This example is based on our [Get Started](/doc/start/experiments), where you
+> can find the actual source code.
 
 Let's say we have the following project, and have just
 [applied](/docs/command-reference/exp/apply) and committed `exp-1dad0` (current

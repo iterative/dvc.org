@@ -9,7 +9,7 @@ Modify the configuration of a [data remote](/doc/command-reference/remote).
 ## Synopsis
 
 ```usage
-usage: dvc remote modify [-h] [--global | --system | --local] [-q | -v]
+usage: dvc remote modify [-h] [--global | --system | --project | --local] [-q | -v]
                          [-u]
                          name option [value]
 
@@ -32,20 +32,22 @@ manual editing could be used to change the configuration.
 
 ## Command options (flags)
 
-- `-u`, `--unset` - delete configuration value for the given config `option`.
-  Don't provide a `value` when employing this flag.
+- `-u`, `--unset` - remove the configuration `option` from a config file. Don't
+  provide a `value` argument when employing this flag.
 
-- `--global` - save remote configuration to the global config (e.g.
-  `~/.config/dvc/config`) instead of `.dvc/config`.
+- `--system` - modify the system config file (e.g. `/etc/xdg/dvc/config`)
+  instead of `.dvc/config`.
 
-- `--system` - save remote configuration to the system config (e.g.
-  `/etc/xdg/dvc/config`) instead of `.dvc/config`.
+- `--global` - modify the global config file (e.g. `~/.config/dvc/config`)
+  instead of `.dvc/config`.
 
-- `--local` - modify a local [config file](/doc/command-reference/config)
-  instead of `.dvc/config`. It is located in `.dvc/config.local` and is
-  Git-ignored. This is useful when you need to specify private config options in
-  your config that you don't want to track and share through Git (credentials,
-  private locations, etc).
+- `--project` - modify the project's config file (`.dvc/config`). This is the
+  default behavior.
+
+- `--local` - modify the Git-ignored local config file (located in
+  `.dvc/config.local`) instead of `.dvc/config`. This is useful to save private
+  remote config that you don't want to track and share with Git (credentials,
+  private locations, etc.).
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -183,6 +185,13 @@ these parameters, you could use the following options.
   $ dvc remote modify myremote use_ssl false
   ```
 
+- `ssl_verify` - whether or not to verify SSL certificates. By default SSL
+  certificates are verified.
+
+  ```dvc
+  $ dvc remote modify myremote verify_ssl false
+  ```
+
 - `listobjects` - whether or not to use `list_objects`. By default,
   `list_objects_v2` is used. Useful for ceph and other S3 emulators.
 
@@ -315,19 +324,105 @@ $ dvc remote modify myremote endpointurl \
   $ dvc remote modify myremote url azure://mycontainer/path
   ```
 
-- `connection_string` - connection string:
+The remaining parameters represent different authentication methods. Here's a
+summary, in order of precedence:
+
+1. `connection_string` is used for authentication if given (all others params
+   are ignored).
+2. If `tenant_id` and `client_id` or `client_secret` are given, Active Directory
+   (AD) service principal auth is performed.
+3. The storage `account_name` is tried next, along with `account_key` or
+   `sas_token` (in that order). If neither are provided, DVC will try to connect
+   anonymously.
+4. If no params are given, DVC will try to use a
+   [default credential](https://docs.microsoft.com/en-us/python/api/azure-identity/azure.identity.defaultazurecredential)
+   (inferred from environment variables).
+
+> The authentication values below may contain sensitive user info. Therefore,
+> it's safer to use the `--local` flag so they're written to a Git-ignored
+> [config file](https://dvc.org/doc/command-reference/config).
+
+- `connection_string` - Azure Storage
+  [connection string](http://azure.microsoft.com/en-us/documentation/articles/storage-configure-connection-string/)
+  (recommended):
 
   ```dvc
   $ dvc remote modify --local myremote connection_string \
                               'mystring'
   ```
 
-> The connection string contains sensitive user info. Therefore, it's safer to
-> add it with the `--local` option, so it's written to a Git-ignored config
-> file.
+* `tenant_id` - tenant ID for AD
+  [service principal](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal)
+  authentication (requires `client_id` and `client_secret` along with this):
 
-For more information on configuring Azure Storage connection strings, visit
-[here](https://docs.microsoft.com/en-us/azure/storage/common/storage-configure-connection-string).
+  ```dvc
+  $ dvc remote modify --local myremote tenant_id 'directory-id'
+  ```
+
+* `client_id` - client ID for _service principal_ authentication (when
+  `tenant_id` is set):
+
+  ```dvc
+  $ dvc remote modify --local myremote client_id 'client-id'
+  ```
+
+* `client_secret` - client Secret for _service principal_ authentication (when
+  `tenant_id` is set):
+
+  ```dvc
+  $ dvc remote modify --local myremote client_secret 'client-secret'
+  ```
+
+- `account_name` - storage account name. May work by itself (via
+  [anonymous auth](https://docs.microsoft.com/en-us/azure/storage/blobs/anonymous-read-access-configure))
+  or along with either `account_key` or `sas_token` along with this):
+
+  ```dvc
+  $ dvc remote modify --local myremote account_name 'myuser'
+  ```
+
+* `account_key` - storage account key (for `account_name`):
+
+  ```dvc
+  $ dvc remote modify --local myremote account_key 'mykey'
+  ```
+
+* `sas_token` - shared access signature token (for `account_name`):
+
+  ```dvc
+  $ dvc remote modify --local myremote sas_token 'mytoken'
+  ```
+
+Authentication via environment variables (if none of the auth params above are
+set). For account name and key/token auth:
+
+```dvc
+$ export AZURE_STORAGE_ACCOUNT_NAME='myuser'
+$ export AZURE_STORAGE_ACCOUNT_KEY='mykey'
+$ dvc remote add -d myremote azure://mycontainer/path
+```
+
+For _service principal_ auth (via certificate file):
+
+```dvc
+$ export AZURE_TENANT_ID='directory-id'
+$ export AZURE_CLIENT_ID='client-id'
+$ export AZURE_CLIENT_CERTIFICATE_PATH='/path/to/certificate'
+```
+
+For simple username/password login:
+
+```
+$ export AZURE_CLIENT_ID='client-id'
+$ export AZURE_USERNAME='myuser'
+$ export AZURE_PASSWORD='mysecret'
+```
+
+> On Windows, Azure authentication will fall back to searching for a signed-in
+> Microsoft application (e.g Visual Studio) and using it's identity (if multiple
+> exist, `AZURE_USERNAME` can be set to select one). On all other systems this
+> will apply only if [Visual Studio Code](https://code.visualstudio.com/) is
+> available.
 
 </details>
 

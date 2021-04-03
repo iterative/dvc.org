@@ -2,10 +2,10 @@
 
 One of the main uses of <abbr>DVC repositories</abbr> is the
 [versioning of data and model files](/doc/use-cases/data-and-model-files-versioning).
-DVC also enables cross-project [reusability](/doc/start/data-access) of these
-<abbr>data artifacts</abbr>. This means that your projects can depend on data
-from other DVC repositories — like a **package management system for data
-science**.
+DVC also enables cross-project [reusability](/doc/start/data-and-model-access)
+of these <abbr>data artifacts</abbr>. This means that your projects can depend
+on data from other DVC repositories — like a **package management system for
+data science**.
 
 ![](/img/data-registry.png) _Data management middleware_
 
@@ -120,8 +120,8 @@ $ dvc import https://github.com/example/registry images/faces
 ```
 
 Besides downloading the data, importing saves the information about the
-dependency from the local project to the data source (registry repo). This is
-achieved by generating a special import `.dvc` file, which contains this
+dependency that the local project has on the data source (registry repo). This
+is achieved by generating a special import `.dvc` file, which contains this
 metadata.
 
 Whenever the dataset changes in the registry, we can bring data up to date in
