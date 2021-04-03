@@ -27,16 +27,18 @@ directories, etc.
 
 > `dvc exp run` is equivalent to `dvc repro` for <abbr>experiments</abbr>. It
 > has the same behavior when it comes to `targets` and stage execution (restores
-> the dependency graph, etc.). See the command [options](#options) for more the
-> differences.
+> the dependency graph, etc.). See the command [options](#options) for more on
+> the differences.
 
-Before using this command, you'll probably want to make modifications such as
-data and code updates, or <abbr>hyperparameter</abbr> tuning. You can use the
-`--set-param` option to change `dvc param` values on-the fly.
+Before running an experiment, you'll probably want to make modifications such as
+data and code updates, or <abbr>hyperparameter</abbr> tuning. For the latter,
+you can use the `--set-param` (`-S`) option of this command to change
+`dvc param` values on-the fly.
 
-Each `dvc exp run` creates a variation based on the latest project version
-committed to Git (`HEAD`), and tracks this experiment with an auto-generated
-name like `exp-bfe64` (which can be customized with the `--name` option).
+Each `dvc exp run` creates and tracks a variation based on the latest project
+version committed to Git (`HEAD`). Experiments will have an auto-generated name
+like `exp-bfe64` by default, which can be customized using the `--name` (`-n`)
+option.
 
 <details>
 
@@ -44,8 +46,9 @@ name like `exp-bfe64` (which can be customized with the `--name` option).
 
 Experiments are custom
 [Git references](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
-(found in `.git/refs/exps`) with a commit based on `HEAD`. Note that they're not
-pushed to the Git remote by default (see `dvc exp push`).
+(found in `.git/refs/exps`) with a single commit based on `HEAD` (not checked
+out by DVC). Note that these commits are not pushed to the Git remote by default
+(see `dvc exp push`).
 
 </details>
 
