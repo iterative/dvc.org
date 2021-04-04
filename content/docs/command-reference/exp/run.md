@@ -54,7 +54,7 @@ out by DVC). Note that these commits are not pushed to the Git remote by default
 
 The results of the last experiment can be seen in the <abbr>workspace</abbr>. To
 display and compare your experiments, use `dvc exp show` or `dvc exp diff`. Use
-`dvc exp apply` to roll back the workspace to a previous experiment.
+`dvc exp apply` to restore the results of any other experiment instead.
 
 Successful experiments can be made
 [persistent](/doc/user-guide/experiment-management#persistent-experiments) by
@@ -109,10 +109,11 @@ execution. `dvc exp show` will mark queued experiments with an asterisk `*`.
 > Note that queuing an experiment that uses checkpoints implies `--reset`,
 > unless a `--rev` is provided (refer to the previous section).
 
-Use `dvc exp run --run-all` to process this queue. Adding `-j` (`--jobs`),
+Use `dvc exp run --run-all` to process the queue. Adding `-j` (`--jobs`),
 experiment queues can be run in parallel for better performance. This creates a
-temporary workspace copy for each subprocess (in `.dvc/tmp/exps`). See also
-`--temp`.
+temporary workspace copy for each subprocess (in `.dvc/tmp/exps`). See also the
+`--temp` option. Queued (and temporary) experiment runs do not get applied to
+the workspace like regular ones.
 
 ⚠️ Parallel runs are experimental and may be unstable at this time. ⚠️ Make sure
 you're using a number of jobs that your environment can handle (no more than the
