@@ -124,7 +124,7 @@ train:
 
 ```dvc
 $ ls
-dvc.lock  dvc.yaml  foo.csv  foo.csv.dvc  logs  model.h5  train.py
+dvc.lock  dvc.yaml  data.csv  data.csv.dvc  logs  model.h5  train.py
 ```
 
 Using `dvc remove` you can remove a specific file using it's output name:
