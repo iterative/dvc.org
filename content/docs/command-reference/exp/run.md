@@ -96,7 +96,7 @@ the first `dvc exp run`) — useful for re-training ML models, for example.
 ### How are checkpoints captured?
 
 Instead of a single commit, checkpoint experiments have multiple commits under
-the custom Git reference (in `.git/refs/exps`), forming a branch.
+the custom Git reference (in `.git/refs/exps`), similar to a branch.
 
 </details>
 
