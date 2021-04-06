@@ -9,7 +9,7 @@ optionally delete them).
 usage: dvc remove [-h] [-q | -v] [--outs] targets [targets ...]
 
 positional arguments:
-  targets        stages (found in dvc.yaml) or .dvc files to remove.
+  targets        stages (found in dvc.yaml), .dvc files or name of output files to remove.
 ```
 
 ## Description
@@ -81,7 +81,7 @@ the <abbr>workspace</abbr>:
 
 ```yaml
 train:
-  cmd: python train.py data.py
+  cmd: python train.py data.csv
   deps:
     - data.csv
     - train.py
@@ -91,7 +91,7 @@ train:
 
 ```dvc
 $ ls
-dvc.lock  dvc.yaml  foo.csv  foo.csv.dvc  model  train.py
+dvc.lock  dvc.yaml  data.csv  data.csv.dvc  model  train.py
 ```
 
 Using `dvc remove` on the stage name will remove that entry from `dvc.yaml`, and
@@ -101,7 +101,38 @@ deleted (just the `model` file in this example):
 ```dvc
 $ dvc remove train --outs
 $ ls
-dvc.lock  dvc.yaml  foo.csv  foo.csv.dvc  train.py
+dvc.lock  dvc.yaml  data.csv  data.csv.dvc  train.py
 ```
 
 > Notice that the dependencies (`data.csv` and `train.py`) are not deleted.
+
+## Example: remove a single output file by name
+
+Imagine the same <abbr>workspace</abbr> as before but now we have multiple
+`outs` for the `train` stage:
+
+```yaml
+train:
+  cmd: python train.py data.csv
+  deps:
+    - data.csv
+    - train.py
+  outs:
+    - logs
+    - model.h5
+```
+
+```dvc
+$ ls
+dvc.lock  dvc.yaml  foo.csv  foo.csv.dvc  logs  model.h5  train.py
+```
+
+Using `dvc remove` you can remove a specific file using it's output name:
+
+```dvc
+$ dvc remove model.h5
+$ ls
+dvc.lock  dvc.yaml  data.csv  data.csv.dvc  logs  train.py
+```
+
+> Notice that the other outputs (`logs`) are not deleted.
