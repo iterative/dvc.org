@@ -2,7 +2,7 @@
 title: 'Get Started: Metrics, Parameters, and Plots'
 ---
 
-# Get Started: Metrics, Parameters, and Plots
+# Metrics, Parameters, and Plots
 
 DVC makes it easy to track [metrics](/doc/command-reference/metrics), update
 [parameters](/doc/command-reference/params), and visualize performance with
@@ -95,8 +95,8 @@ Similarly, it writes arrays for the
 into `roc.json` for an additional plot.
 
 > DVC doesn't force you to use any specific file names, or even format or
-> structure of a metrics or plots file - it's pretty much user and case defined.
-> Please refer to `dvc metrics` and `dvc plots` for more details.
+> structure of a metrics or plots file — it's pretty much user- and
+> case-defined. Please refer to `dvc metrics` and `dvc plots` for more details.
 
 You can view tracked metrics and plots with DVC. Let's start with the metrics:
 
