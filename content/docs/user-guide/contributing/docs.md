@@ -16,7 +16,7 @@ To contribute documentation, these are the relevant locations:
 - [Content](https://github.com/iterative/dvc.org/tree/master/content/docs)
   (`content/docs/`):
   [Markdown](https://guides.github.com/features/mastering-markdown/) files. One
-  file - one page of the documentation.
+  file — one page of the documentation.
 - [Images](https://github.com/iterative/dvc.org/tree/master/static/img)
   (`static/img/`): Add new images (`.png`, `.svg`, etc.) here. Use them in
   Markdown files like this: `![](/img/<filename>.gif)`.
