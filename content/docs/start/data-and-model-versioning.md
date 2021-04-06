@@ -103,7 +103,7 @@ $ git commit -m "Configure remote storage"
 
 <details>
 
-### ⚙️ Expand to set up a remote storage provider.
+### ⚙️ Expand to set up a remote storage provider ☁
 
 DVC remotes let you store a copy of the data tracked by DVC outside of the local
 cache (usually a cloud storage service). For simplicity, let's set up a _local
@@ -219,7 +219,7 @@ $ dvc checkout
 
 <details>
 
-### ⚙️ Expand to get the previous version of the dataset.
+### ⚙️ Expand to get the previous version of the dataset 🕑
 
 Let's go back to the original version of the data:
 
