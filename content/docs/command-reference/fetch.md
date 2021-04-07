@@ -7,7 +7,7 @@ Download files or directories from
 
 ```usage
 usage: dvc fetch [-h] [-q | -v] [-j <number>] [-r <name>] [-a] [-T]
-                  [--all-commits] [-d] [-R] [--run-cache]
+                 [--all-commits] [-d] [-R] [--run-cache]
                  [targets [targets ...]]
 
 positional arguments:
