@@ -102,7 +102,7 @@ The function `cml-runner` accepts the following arguments:
 | `--cloud-ssh-private <key>`       | Automatically generated throwaway key                      | Custom private RSA SSH key                                                                                                                            |
 | `--cloud-spot`                    | N/A                                                        | Request a spot instance. If not set, `--cloud-spot-price` won't have any effect                                                                       |
 | `--cloud-spot-price <usd>`        | Current spot bidding price                                 | Maximum spot instance bidding price in USD                                                                                                            |
-| `--cloud-startup-script <script>` | N/A                                                        | Run the provided Base64-encoded Linux shell script during the instance initialization                                                                 |
+| `--cloud-startup-script <base64>` | N/A                                                        | Run the provided Base64-encoded Linux shell script during the instance initialization                                                                 |
 | `-h`                              | N/A                                                        | Show this help menu and exit                                                                                                                          |
 
 ## Environmental variables
