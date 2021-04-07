@@ -49,18 +49,21 @@
       {
         "slug": "data-pipelines",
         "tutorials": {
-          "katacoda": "https://katacoda.com/dvc/courses/get-started"
+          "katacoda": "https://katacoda.com/dvc/courses/get-started/stages"
         }
       },
       {
         "label": "Metrics, Parameters, and Plots",
         "slug": "metrics-parameters-plots",
         "tutorials": {
-          "katacoda": "https://katacoda.com/dvc/courses/get-started"
+          "katacoda": "https://katacoda.com/dvc/courses/get-started/params-metrics-plots"
         }
       },
       {
-        "slug": "experiments"
+        "slug": "experiments",
+        "tutorials": {
+          "katacoda": "https://katacoda.com/dvc/courses/get-started/experiments"
+        }
       }
     ]
   },
