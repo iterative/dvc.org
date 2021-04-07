@@ -27,8 +27,9 @@ directories, etc.
 
 > `dvc exp run` is equivalent to `dvc repro` for <abbr>experiments</abbr>. It
 > has the same behavior when it comes to `targets` and stage execution (restores
-> the dependency graph, etc.). See the command [options](#options) for more on
-> the differences.
+> the dependency graph, etc.). An important difference is that changes in the
+> working tree are discarded by `dvc exp run`. See the command
+> [options](#options) for more on the differences.
 
 Before running an experiment, you'll probably want to make modifications such as
 data and code updates, or <abbr>hyperparameter</abbr> tuning. For the latter,
