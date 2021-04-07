@@ -156,8 +156,7 @@ CPU cores).
   experiments from `--queue` or `--temp` runs.
 
 - `--reset` - deletes `checkpoint` outputs before running this experiment
-  (regardless of `dvc.lock`). Implies `--force`, so that cached checkpoint
-  results are regenerated. Useful for ML model re-training.
+  (regardless of `dvc.lock`). Useful for ML model re-training.
 
 - `-f`, `--force` - reproduce pipelines even if no changes were found (same as
   `dvc repro -f`).
