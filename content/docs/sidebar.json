@@ -62,7 +62,8 @@
       {
         "slug": "experiments",
         "tutorials": {
-            "katacoda": "https://katacoda.com/dvc/courses/get-started/experiments"
+          "katacoda": "https://katacoda.com/dvc/courses/get-started/experiments"
+        }
       }
     ]
   },
