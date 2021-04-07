@@ -109,7 +109,8 @@ up-to-date and only execute the final stage.
   - `dvc repro -R pipelines/`: Directory path to explore recursively for
     `dvc.yaml` files
   - `dvc repro train-model`: Specific stage in `./dvc.yaml`
-  - `dvc repro model.pt`: Specific output file or directory listed in `./dvc.yaml` (`outs` field.)
+  - `dvc repro model.pt`: Specific output file or directory listed in
+    `./dvc.yaml` (`outs` field.)
   - `dvc repro modeling/dvc.yaml:prepare`: Stage in a specific `dvc.yaml` file
   - `dvc repro --glob-stages 'train-*'`: Pattern to match groups of stages
   - `dvc repro --glob '*output*'`: Pattern to match groups of output filenames
@@ -120,8 +121,8 @@ up-to-date and only execute the final stage.
 
 - `--glob` - causes the `targets` to be interpreted as wildcard
   [patterns](https://docs.python.org/3/library/glob.html) to match for output
-  names. For example: `output*` (certain output names). Note that it
-  matches patterns with all defined output names.
+  names. For example: `output*` (certain output names). Note that it matches
+  patterns with all defined output names.
 
 - `--glob-stages` - causes the `targets` to be interpreted as wildcard
   [patterns](https://docs.python.org/3/library/glob.html) to match for stage
