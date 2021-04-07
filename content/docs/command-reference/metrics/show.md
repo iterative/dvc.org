@@ -40,9 +40,9 @@ compares them with a previous version.
   the workspace. Note that both options can be combined, for example using the
   `-aT` flag.
 
-- `--all-commits` - same as `-a` or `-T` above, but applies to _all_ Git commits
-  as well as the workspace. This prints metrics in the entire commit history of
-  the project.
+- `--all-commits` - same as `-a` or `-T` above, but applies to _all_ your Git
+  commits as well as the workspace. This prints metrics in the entire commit
+  history of the project.
 
 - `--show-json` - prints the command's output in easily parsable JSON format,
   instead of a human-readable table.
