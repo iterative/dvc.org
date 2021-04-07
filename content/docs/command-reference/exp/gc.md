@@ -40,8 +40,8 @@ separately to delete it.
   the workspace (implies `-w`). Note that both options can be combined, for
   example using the `-aT` flag.
 
-- `--all-commits` - same as `-a` or `-T` above, but applies to _all_ Git commits
-  as well as the workspace (implies `-w`). This is mainly only needed when
+- `--all-commits` - same as `-a` or `-T` above, but applies to _all_ your Git
+  commits as well as the workspace (implies `-w`). This is mainly needed when
   clearing the experiments run queue.
 
 - `--queued` - keep also experiments that haven't been run yet (defined via

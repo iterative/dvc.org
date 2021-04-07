@@ -27,35 +27,34 @@ directories, etc.
 
 > `dvc exp run` is equivalent to `dvc repro` for <abbr>experiments</abbr>. It
 > has the same behavior when it comes to `targets` and stage execution (restores
-> the dependency graph, etc.). See the command [options](#options) for more the
-> differences.
+> the dependency graph, etc.). See the command [options](#options) for more on
+> the differences.
 
-Before using this command, you'll probably want to make modifications such as
-data and code updates, or <abbr>hyperparameter</abbr> tuning. You can use the
-`--set-param` option to change `dvc param` values on-the fly.
+Before running an experiment, you'll probably want to make modifications such as
+data and code updates, or <abbr>hyperparameter</abbr> tuning. For the latter,
+you can use the `--set-param` (`-S`) option of this command to change
+`dvc param` values on-the fly.
 
-Each `dvc exp run` creates a variation based on the latest project version
-committed to Git, and tracks this experiment automatically with an automatic
-name like `exp-bfe64` (which can be customized with the `--name` option).
+Each `dvc exp run` creates and tracks a variation based on the latest project
+version committed to Git (`HEAD`). Experiments will have an auto-generated name
+like `exp-bfe64` by default, which can be customized using the `--name` (`-n`)
+option.
 
 <details>
 
 ### How does DVC track experiments?
 
-Internally, `dvc exp` uses actual commits under custom
+Experiments are custom
 [Git references](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
-(found in `.git/refs/exps`). Each commit has the Git `HEAD` as parent and has
-it's own SHA-256 hash. These are not pushed to the Git remote by default (see
-`dvc exp push`).
-
-> References have a unique signature similar to the
-> [entries in the run-cache](/doc/user-guide/project-structure/internal-files#run-cache).
+(found in `.git/refs/exps`) with a single commit based on `HEAD` (not checked
+out by DVC). Note that these commits are not pushed to the Git remote by default
+(see `dvc exp push`).
 
 </details>
 
 The results of the last experiment can be seen in the <abbr>workspace</abbr>. To
 display and compare your experiments, use `dvc exp show` or `dvc exp diff`. Use
-`dvc exp apply` to roll back the workspace to a previous experiment
+`dvc exp apply` to restore the results of any other experiment instead.
 
 Successful experiments can be made
 [persistent](/doc/user-guide/experiment-management#persistent-experiments) by
@@ -94,12 +93,10 @@ the first `dvc exp run`) — useful for re-training ML models, for example.
 
 <details>
 
-### How are checkpoints captured by DVC?
+### How are checkpoints captured?
 
-When DVC runs a checkpoint-enabled experiment, a custom Git branch (in
-`.git/refs/exps`) is started off the repo `HEAD`. A new commit is appended each
-time a checkpoint is registered by the code. These are not pushed to the Git
-remote by default (see `dvc exp push`).
+Instead of a single commit, checkpoint experiments have multiple commits under
+the custom Git reference (in `.git/refs/exps`), similar to a branch.
 
 </details>
 
@@ -112,10 +109,11 @@ execution. `dvc exp show` will mark queued experiments with an asterisk `*`.
 > Note that queuing an experiment that uses checkpoints implies `--reset`,
 > unless a `--rev` is provided (refer to the previous section).
 
-Use `dvc exp run --run-all` to process this queue. Adding `-j` (`--jobs`),
+Use `dvc exp run --run-all` to process the queue. Adding `-j` (`--jobs`),
 experiment queues can be run in parallel for better performance. This creates a
-temporary workspace copy for each subprocess (in `.dvc/tmp/exps`). See also
-`--temp`.
+temporary workspace copy for each subprocess (in `.dvc/tmp/exps`). See also the
+`--temp` option. Queued (and temporary) experiment runs do not get applied to
+the workspace like regular ones.
 
 ⚠️ Parallel runs are experimental and may be unstable at this time. ⚠️ Make sure
 you're using a number of jobs that your environment can handle (no more than the
