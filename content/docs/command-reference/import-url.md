@@ -190,8 +190,8 @@ $ git checkout 3-config-remote
 ## Example: Tracking a file from the web
 
 An advanced alternate to the intro of the
-[Versioning Basics](/doc/start/data-versioning) part of the _Get Started_ is to
-use `dvc import-url`:
+[Versioning Basics](/doc/start/data-and-model-versioning) part of the _Get
+Started_ is to use `dvc import-url`:
 
 ```dvc
 $ dvc import-url https://data.dvc.org/get-started/data.xml \

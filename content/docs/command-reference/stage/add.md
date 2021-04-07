@@ -5,13 +5,16 @@ Helper command to create or update <abbr>stages</abbr> in `dvc.yaml`.
 ## Synopsis
 
 ```usage
-usage: dvc stage add [-h] [-q | -v] -n <name> [-d <path>] [-o <path>]
-                     [-O <path>] [-p [<path>:]<params_list>]
+usage: dvc stage add [-h] [-q | -v] -n <name> [-d <path>] [-o <filename>]
+                     [-O <filename>] [-p [<filename>:]<params_list>]
                      [-m <path>] [-M <path>] [--plots <path>]
-                     [--plots-no-cache <path>] [-w <path>] [-f]
-                     [--outs-persist <path>]
-                     [--outs-persist-no-cache <path>] [-c <path>]
+                     [--plots-no-cache <path>] [--live <path>]
+                     [--live-no-cache <path>] [--live-no-summary]
+                     [--live-no-html] [-w <path>] [-f]
+                     [--outs-persist <filename>]
+                     [--outs-persist-no-cache <filename>] [-c <filename>]
                      [--always-changed] [--external] [--desc <text>]
+
                      command
 
 positional arguments:
@@ -245,6 +248,17 @@ data science experiments.
 
 - `--desc <text>` - user description of the stage (optional). This doesn't  
   affect any DVC operations.
+
+- `--live <path>` - specify the directory `path` for
+  [Dvclive](/doc/dvclive/dvclive-with-dvc) to write logs in. `path` will be
+  tracked (<abbr>cached</abbr>) by DVC. Saved in the `live` field of `dvc.yaml`.
+
+- `--live-no-cache <path>` - the same as `-o` except that the `path` is not
+  tracked by DVC. Useful if you prefer to track it with Git.
+
+- `--live-no-summary` - passes `summary=False` to Dvclive config.
+
+- `--live-no-html` - passes `html=False` to Dvclive config.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 

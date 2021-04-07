@@ -43,7 +43,7 @@ Each `meta` entry is a `key:value` pair (for example, `name: Jean-Luc`). The
 `meta` field can be manually added or written programmatically, but note that if
 the `.dvc` file is overwritten (perhaps by `dvc run`, `dvc add`, or
 `dvc import`) these values will not be preserved. You can read more about this
-[in our docs](https://dvc.org/doc/user-guide/dvc-file-format).
+[in our docs](/doc/user-guide/project-structure).
 
 Another approach would be to track the statistics of your dataset in a metric
 file, just as you might track performance metrics of a model. For a tutorial on

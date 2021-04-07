@@ -1,6 +1,6 @@
 # exp apply
 
-Apply the results from an [experiment](/doc/command-reference/exp) to the
+Put the results from an [experiment](/doc/command-reference/exp) in the
 <abbr>workspace</abbr>.
 
 ## Synopsis
@@ -14,9 +14,9 @@ positional arguments:
 
 ## Description
 
-Rolls back/forward the workspace to reflect the results of a given `experiment`
-(name or hash are accepted, see `dvc exp run` for details). This means changing
-the appropriate [metafiles](/doc/user-guide/project-structure),
+Restores the results of a given `experiment` (name or hash are accepted, see
+`dvc exp run` for details) into the workspace. This means changing the
+appropriate [metafiles](/doc/user-guide/project-structure),
 <abbr>parameter</abbr> files, <abbr>metrics</abbr>, <abbr>plots</abbr>, and
 corresponding DVC-tracked data.
 

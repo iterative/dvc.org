@@ -9,7 +9,7 @@ Modify the configuration of a [data remote](/doc/command-reference/remote).
 ## Synopsis
 
 ```usage
-usage: dvc remote modify [-h] [--global | --system | --local] [-q | -v]
+usage: dvc remote modify [-h] [--global | --system | --project | --local] [-q | -v]
                          [-u]
                          name option [value]
 
@@ -32,20 +32,22 @@ manual editing could be used to change the configuration.
 
 ## Command options (flags)
 
-- `-u`, `--unset` - delete configuration value for the given config `option`.
-  Don't provide a `value` when employing this flag.
+- `-u`, `--unset` - remove the configuration `option` from a config file. Don't
+  provide a `value` argument when employing this flag.
 
-- `--global` - save remote configuration to the global config (e.g.
-  `~/.config/dvc/config`) instead of `.dvc/config`.
+- `--system` - modify the system config file (e.g. `/etc/xdg/dvc/config`)
+  instead of `.dvc/config`.
 
-- `--system` - save remote configuration to the system config (e.g.
-  `/etc/xdg/dvc/config`) instead of `.dvc/config`.
+- `--global` - modify the global config file (e.g. `~/.config/dvc/config`)
+  instead of `.dvc/config`.
 
-- `--local` - modify a local [config file](/doc/command-reference/config)
-  instead of `.dvc/config`. It is located in `.dvc/config.local` and is
-  Git-ignored. This is useful when you need to specify private config options in
-  your config that you don't want to track and share through Git (credentials,
-  private locations, etc).
+- `--project` - modify the project's config file (`.dvc/config`). This is the
+  default behavior.
+
+- `--local` - modify the Git-ignored local config file (located in
+  `.dvc/config.local`) instead of `.dvc/config`. This is useful to save private
+  remote config that you don't want to track and share with Git (credentials,
+  private locations, etc.).
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -181,6 +183,13 @@ these parameters, you could use the following options.
 
   ```dvc
   $ dvc remote modify myremote use_ssl false
+  ```
+
+- `ssl_verify` - whether or not to verify SSL certificates. By default SSL
+  certificates are verified.
+
+  ```dvc
+  $ dvc remote modify myremote verify_ssl false
   ```
 
 - `listobjects` - whether or not to use `list_objects`. By default,

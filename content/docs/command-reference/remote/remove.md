@@ -7,7 +7,7 @@ remotely.
 ## Synopsis
 
 ```usage
-usage: dvc remote remove [-h] [--global | --system | --local] [-q | -v]
+usage: dvc remote remove [-h] [--global | --system | --project | --local] [-q | -v]
                          name
 
 positional arguments:
@@ -24,15 +24,17 @@ The `name` argument is required.
 
 ## Options
 
-- `--global` - save remote configuration to the global config (e.g.
-  `~/.config/dvc/config`) instead of `.dvc/config`.
+- `--system` - modify the system config file (e.g. `/etc/xdg/dvc/config`)
+  instead of `.dvc/config`.
 
-- `--system` - save remote configuration to the system config (e.g.
-  `/etc/xdg/dvc/config`) instead of `.dvc/config`.
+- `--global` - modify the global config file (e.g. `~/.config/dvc/config`)
+  instead of `.dvc/config`.
 
-- `--local` - modify a local [config file](/doc/command-reference/config)
-  instead of `.dvc/config`. It is located in `.dvc/config.local` and is
-  Git-ignored.
+- `--project` - modify the project's config file (`.dvc/config`). This is the
+  default behavior.
+
+- `--local` - modify the Git-ignored local config file (located in
+  `.dvc/config.local`) instead of `.dvc/config`.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
