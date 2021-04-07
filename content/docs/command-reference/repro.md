@@ -13,7 +13,7 @@ usage: dvc repro [-h] [-q | -v] [-f] [-s] [-m] [--dry] [-i]
                  [targets [<target> ...]]
 
 positional arguments:
-  targets       Stages to reproduce. 'dvc.yaml' by default.
+  targets       Stages or output files to reproduce. 'dvc.yaml' by default.
 ```
 
 > See [`targets`](#options) for more details.
@@ -109,14 +109,21 @@ up-to-date and only execute the final stage.
   - `dvc repro -R pipelines/`: Directory path to explore recursively for
     `dvc.yaml` files
   - `dvc repro train-model`: Specific stage in `./dvc.yaml`
+  - `dvc repro model-output.xyz`: Specific output file in `./dvc.yaml`
   - `dvc repro modeling/dvc.yaml:prepare`: Stage in a specific `dvc.yaml` file
-  - `dvc repro --glob train-*`: Pattern to match groups of stages
+  - `dvc repro --glob-stages 'train-*'`: Pattern to match groups of stages
+  - `dvc repro --glob '*output*'`: Pattern to match groups of output filenames
 
 - `-R`, `--recursive` - looks for `dvc.yaml` files to reproduce in any
   directories given as `targets`, and in their subdirectories. If there are no
   directories among the targets, this option has no effect.
 
 - `--glob` - causes the `targets` to be interpreted as wildcard
+  [patterns](https://docs.python.org/3/library/glob.html) to match for output
+  names. For example: `output*` (certain output names). Note that it
+  matches patterns with all defined output names.
+
+- `--glob-stages` - causes the `targets` to be interpreted as wildcard
   [patterns](https://docs.python.org/3/library/glob.html) to match for stage
   names. For example: `train-*` (certain stage names) or
   `models/dvc.yaml:train-*` (stages in specific `dvc.yaml` file). Note that it
