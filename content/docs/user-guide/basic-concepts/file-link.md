@@ -1,7 +1,6 @@
 ---
 name: File Linking
-match:
-  [link, symlink, hardlink, reflink, linked, symlinked, hardlinked, reflinked]
+match: [linked]
 tooltip: >-
   A way to have a file appear in multiple different folders without occupying
   more physical space on the storage disk. This is both fast and economical. See
