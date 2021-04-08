@@ -2,7 +2,7 @@
 title: 'Get Started: Data and Model Access'
 ---
 
-# Data and Model Access
+# Get Started: Data and Model Access
 
 We've learned how to _track_ data and models with DVC, and how to commit their
 versions to Git. The next questions are: How can we _use_ these artifacts
