@@ -2,7 +2,7 @@
 title: 'Get Started: Metrics, Parameters, and Plots'
 ---
 
-# Metrics, Parameters, and Plots
+# Get Started: Metrics, Parameters, and Plots
 
 DVC makes it easy to track [metrics](/doc/command-reference/metrics), update
 <abbr>parameters</abbr>, and visualize performance with

@@ -5,7 +5,7 @@ regular Git workflow for datasets and ML models, without storing large files in
 Git.'
 ---
 
-# Data Versioning
+# Get Started: Data Versioning
 
 How cool would it be to make Git handle arbitrary large files and directories
 with the same performance as with small code files? Imagine doing a `git clone`
