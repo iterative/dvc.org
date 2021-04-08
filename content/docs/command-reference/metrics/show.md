@@ -62,11 +62,9 @@ compares them with a previous version.
 
 ## Examples
 
-> This example is based on the `evaluate` stage of our
-> [Get Started](/doc/start/metrics-parameters-plots), where you can find the
-> actual source code.
-
-The basic use case shows the values in the current workspace:
+Let's imagine we have a simple [stage](/doc/command-reference/run) that produces
+an `eval.json` metrics file. The basic use case shows the values in the current
+workspace:
 
 ```dvc
 $ dvc metrics show

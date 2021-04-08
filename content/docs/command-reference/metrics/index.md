@@ -102,12 +102,8 @@ to compare and pick the best performing experiment.
 
 ## Examples
 
-> This example is based on the `evaluate` stage of our
-> [Get Started](/doc/start/metrics-parameters-plots), where you can find the
-> actual source code.
-
 First, let's imagine we have a simple [stage](/doc/command-reference/run) that
-produces a `eval.json` metrics file:
+produces an `eval.json` metrics file:
 
 ```dvc
 $ dvc run -n evaluate -d code/evaluate.py -M eval.json \

@@ -143,7 +143,7 @@ JavaScript action that sets up [DVC](https://dvc.org/) in your workflow.
 
 ### Usage
 
-This action can be run on `ubuntu-latest`, `macos-latest`, `windows-latest`.
+This action can be run on `ubuntu-latest`, `macos-latest`, or `windows-latest`.
 When running on `windows-latest`, Python 3 is a dependency that should be setup
 first (and
 [there's an action for that](https://github.com/actions/setup-python)).
