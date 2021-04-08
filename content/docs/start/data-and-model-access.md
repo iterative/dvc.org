@@ -20,7 +20,7 @@ with DVC.
 https://youtu.be/EE7Gk84OZY8
 
 Remember those `.dvc` files `dvc add` generates? Those files (and `dvc.lock`,
-which we'll cover later), have their history in Git. DVC's remote storage config
+which we'll cover later) have their history in Git. DVC's remote storage config
 is also saved in Git, and contains all the information needed to access and
 download any version of datasets, files, and models. It means that a Git
 repository with <abbr>DVC files</abbr> becomes an entry point, and can be used
@@ -62,7 +62,7 @@ the data came from or whether new versions are available.
 ## Import file or directory
 
 `dvc import` also downloads any file or directory, while also creating a `.dvc`
-file which can be saved in the project:
+file (which can be saved in the project):
 
 ```dvc
 $ dvc import https://github.com/iterative/dataset-registry \
