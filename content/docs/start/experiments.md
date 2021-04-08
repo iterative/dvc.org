@@ -2,7 +2,7 @@
 title: 'Get Started: Experiments'
 ---
 
-# Experiments
+# Get Started: Experiments
 
 ⚠️ This feature is only available in DVC 2.0 ⚠️
 
