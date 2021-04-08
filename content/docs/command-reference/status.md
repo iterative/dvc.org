@@ -106,20 +106,19 @@ that.
   the `--remote` option is not used, DVC will compare against the default remote
   (specified in the `core.remote` config option).
 
-- `-a`, `--all-branches` - compares cache content against all Git branches
-  instead of just the current workspace. This basically runs the same status
-  command in every branch of this repo. The corresponding branches are shown in
-  the status output. Applies only if `--cloud` or a `-r` remote is specified.
-  Note that this can be combined with `-T` below, for example using the `-aT`
-  flag.
+- `-a`, `--all-branches` - compares cache content against all Git branches, as
+  well as the current workspace. This basically runs the same status command in
+  every branch of this repo. The corresponding branches are shown in the status
+  output. Applies only if `--cloud` or a `-r` remote is specified. Note that
+  this can be combined with `-T` below, for example using the `-aT` flags.
 
-- `-T`, `--all-tags` - same as `-a` above, but applies to Git tags as well as
-  the workspace. Note that both options can be combined, for example using the
-  `-aT` flag.
+- `-T`, `--all-tags` - compares cache content against all Git tags, as well as
+  the workspace. Note that this can be combined with `-a` above, for example
+  using the `-aT` flags.
 
-- `--all-commits` - same as `-a` or `-T` above, but applies to _all_ Git commits
-  as well as the workspace. This compares the cache content for the entire
-  commit history of the project.
+- `--all-commits` - compares cache content against all Git commits, as well as
+  the workspace. This compares the cache content for the entire commit history
+  of the project.
 
 - `-R`, `--recursive` - determines the files to check status for by searching
   each target directory and its subdirectories for stages (in `dvc.yaml`) and
