@@ -9,7 +9,8 @@ optionally delete them).
 usage: dvc remove [-h] [-q | -v] [--outs] targets [targets ...]
 
 positional arguments:
-  targets        stages (found in dvc.yaml), .dvc files or name of output files to remove.
+  targets        Tracked files/directories, stage names (found in
+                 dvc.yaml), or .dvc files to remove.
 ```
 
 ## Description
