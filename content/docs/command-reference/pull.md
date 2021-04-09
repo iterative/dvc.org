@@ -77,19 +77,18 @@ used to see what files `dvc pull` would download.
 ## Options
 
 - `-a`, `--all-branches` - determines the files to download by examining
-  `dvc.yaml` and `.dvc` files in all Git branches instead of just those present
-  in the current workspace. It's useful if branches are used to track
-  experiments. Note that this can be combined with `-T` below, for example using
-  the `-aT` flag.
+  `dvc.yaml` and `.dvc` metafiles in all Git branches, as well as in the
+  workspace. It's useful if branches are used to track experiments. Note that
+  this can be combined with `-T` below, for example using the `-aT` flags.
 
-- `-T`, `--all-tags` - same as `-a` above, but applies to Git tags as well as
-  the workspace. Useful if tags are used to mark certain versions of an
-  experiment or project. Note that both options can be combined, for example
-  using the `-aT` flag.
+- `-T`, `--all-tags` - examines metafiles in all Git tags, as well as in the
+  workspace. Useful if tags are used to mark certain versions of an experiment
+  or project. Note that this can be combined with `-a` above, for example using
+  the `-aT` flags.
 
-- `--all-commits` - same as `-a` or `-T` above, but applies to _all_ Git commits
-  as well as the workspace. This downloads tracked data for the entire commit
-  history of the project.
+- `--all-commits` - examines metafiles in all Git commits, as well as in the
+  workspace. This downloads tracked data for the entire commit history of the
+  project.
 
 - `-d`, `--with-deps` - determines files to download by tracking dependencies to
   the `targets`. If none are provided, this option is ignored. By traversing all

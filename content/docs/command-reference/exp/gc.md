@@ -28,26 +28,26 @@ separately to delete it.
 
 ## Options
 
-- `-w`, `--workspace` - keep _only_ experiments derived from the Git `HEAD`
-  commits (default base commit for `dvc exp run`). This option is enabled
-  automatically if `--all-tags`, `--all-branches`, or `--all-commits` are used.
+- `-w`, `--workspace` - keep _only_ experiments derived from the last commit
+  (`HEAD`, default base for `dvc experiments`). This option is enabled
+  automatically with the other scope options (below).
 
-- `-a`, `--all-branches` - keep experiments derived from the tips of all Git
-  branches as well as the workspace (implies `-w`). Note that this can be
-  combined with `-T` below, for example using the `-aT` flag.
+- `-a`, `--all-branches` - keep experiments derived from all Git branches, as
+  well as from the last commit (implies `-w`). Note that this can be combined
+  with `-T` below, for example using the `-aT` flags.
 
-- `-T`, `--all-tags` - same as `-a` above, but applies to Git tags as well as
-  the workspace (implies `-w`). Note that both options can be combined, for
-  example using the `-aT` flag.
+- `-T`, `--all-tags` - keep experiments derived from all Git tags, as well as
+  from the last commit (implies `-w`). Note that this can be combined with `-a`
+  above, for example using the `-aT` flags.
 
-- `--all-commits` - same as `-a` or `-T` above, but applies to _all_ your Git
-  commits as well as the workspace (implies `-w`). This is mainly needed when
-  clearing the experiments run queue.
+- `--all-commits` - keep experiments derived from all Git commits, as well as
+  from the last commit (implies `-w`). This is mainly needed when clearing
+  `--queued` experiments (below).
 
 - `--queued` - keep also experiments that haven't been run yet (defined via
-  `dvc exp run --queue`). A scope option (`-w`, `-a`, etc.) is required along
-  with this. The experiment run queue will typically be cleared if this option
-  isn't used.
+  `dvc exp run --queue`). Another scope option (`-w`, `-a`, etc.) is required
+  along with this. The experiment run queue will be cleared if this option isn't
+  used.
 
 - `-f`, `--force` - force garbage collection. Skip confirmation prompt.
 

@@ -54,16 +54,16 @@ metric or param.
 
 ## Options
 
-- `-a`, `--all-branches` - include experiments derived from the tip of all Git
-  branches instead of just the last commit. Note that this can be combined with
-  `-T` below, for example using the `-aT` flag.
+- `-a`, `--all-branches` - include experiments derived from all Git branches, as
+  well as from the last commit (`HEAD`). Note that this can be combined with
+  `-T` below, for example using the `-aT` flags.
 
-- `-T`, `--all-tags` - same as `-a` above, but applies to Git tags as well as
-  the workspace. Note that both options can be combined, for example using the
-  `-aT` flag.
+- `-T`, `--all-tags` - include experiments derived from all Git tags, as well as
+  from the last commit. Note that this can be combined with `-a` above, for
+  example using the `-aT` flags.
 
-- `-A`, `--all-commits` - same as `-a` or `-T` above, but applies to _all_ your
-  Git commits as well as the workspace. This prints all experiments available.
+- `-A`, `--all-commits` - include experiments derived from all Git commits, as
+  well as from the last one. This prints all experiments in the project.
 
 - `--no-pager` - do not enter the pager screen. Writes the entire table to
   standard output. Useful to redirect the output to a file, or use your own
