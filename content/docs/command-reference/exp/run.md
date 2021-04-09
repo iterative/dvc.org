@@ -111,9 +111,9 @@ execution. `dvc exp show` will mark queued experiments with an asterisk `*`.
 
 Use `dvc exp run --run-all` to process the queue. Adding `-j` (`--jobs`),
 experiment queues can be run in parallel for better performance. This creates a
-temporary workspace copy for each subprocess (in `.dvc/tmp/exps`). See also the
-`--temp` option. Queued (and temporary) experiment runs do not get applied to
-the workspace like regular ones.
+temporary workspace copy for each subprocess (in `.dvc/tmp/exps`). Queued (and
+temporary) experiment runs do not get applied to the workspace like regular
+ones.
 
 ⚠️ Parallel runs are experimental and may be unstable at this time. ⚠️ Make sure
 you're using a number of jobs that your environment can handle (no more than the
