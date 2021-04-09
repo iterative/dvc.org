@@ -25,8 +25,8 @@ To start tracking a file or directory, use `dvc add`:
 
 ### ⚙️ Expand to get an example dataset.
 
-Having initialized a project in the previous section, get the data file which we
-will be using later like this:
+Having initialized a project in the previous section, we can get the data file
+(which we'll be using later) like this:
 
 ```dvc
 $ dvc get https://github.com/iterative/dataset-registry \
@@ -48,15 +48,17 @@ $ dvc add data/data.xml
 ```
 
 DVC stores information about the added file (or a directory) in a special `.dvc`
-file named `data/data.xml.dvc` - a small text file with a human-readable
-[format](/doc/user-guide/project-structure/dvc-files). This metadata file can be
-easily versioned like source code with Git. The original data, meanwhile, is
-listed in `.gitignore`:
+file named `data/data.xml.dvc` — a small text file with a human-readable
+[format](/doc/user-guide/project-structure/dvc-files). This metadata file is a
+placeholder for the original data, and can be easily versioned like source code
+with Git:
 
 ```dvc
 $ git add data/data.xml.dvc data/.gitignore
 $ git commit -m "Add raw data"
 ```
+
+The original data, meanwhile, is listed in `.gitignore`.
 
 <details>
 
@@ -89,7 +91,7 @@ outs:
 You can upload DVC-tracked data or model files with `dvc push`, so they're
 safely stored [remotely](/doc/command-reference/remote). This also means they
 can be retrieved on other environments later with `dvc pull`. First, we need to
-setup a storage provider:
+setup a storage location:
 
 ```dvc
 $ dvc remote add -d storage s3://mybucket/dvcstore
@@ -103,7 +105,7 @@ $ git commit -m "Configure remote storage"
 
 <details>
 
-### ⚙️ Expand to set up a remote storage provider ☁
+### ⚙️ Expand to set up a remote storage location.
 
 DVC remotes let you store a copy of the data tracked by DVC outside of the local
 cache (usually a cloud storage service). For simplicity, let's set up a _local
@@ -156,7 +158,7 @@ run it after `git clone` and `git pull`.
 
 <details>
 
-### ⚙️ Expand to refresh the project ⟳
+### ⚙️ Expand to delete locally cached data.
 
 If you've run `dvc push`, you can delete the cache (`.dvc/cache`) and
 `data/data.xml` to experiment with `dvc pull`:
@@ -237,8 +239,8 @@ $ git commit data/data.xml.dvc -m "Revert dataset updates"
 
 </details>
 
-Yes, DVC is technically not even a version control system! `.dvc` files' content
-defines data file versions. Git itself provides the version control. DVC in turn
+Yes, DVC is technically not even a version control system! `.dvc` file contents
+define data file versions. Git itself provides the version control. DVC in turn
 creates these `.dvc` files, updates them, and synchronizes DVC-tracked data in
 the <abbr>workspace</abbr> efficiently to match them.
 
