@@ -35,7 +35,7 @@ data and code updates, or <abbr>hyperparameter</abbr> tuning. For the latter,
 you can use the `--set-param` (`-S`) option of this command to change
 `dvc param` values on-the fly.
 
-Each `dvc exp run` creates and tracks a project variation based on your
+Each experiment creates and tracks a project variation based on your
 <abbr>workspace</abbr> changes. Experiments will have an auto-generated name
 like `exp-bfe64` by default, which can be customized using the `--name` (`-n`)
 option.
@@ -52,9 +52,9 @@ out by DVC). Note that these commits are not pushed to the Git remote by default
 
 </details>
 
-The results of the last experiment can be seen in the workspace. To display and
-compare your experiments, use `dvc exp show` or `dvc exp diff`. Use
-`dvc exp apply` to restore the results of any other experiment instead.
+The results of the last `dvc exp run` can be seen in the workspace. To display
+and compare your experiments, use `dvc exp show` or `dvc exp diff` to restore
+the results of any other experiment instead.
 
 Successful experiments can be made
 [persistent](/doc/user-guide/experiment-management#persistent-experiments) by
