@@ -53,8 +53,9 @@ out by DVC). Note that these commits are not pushed to the Git remote by default
 </details>
 
 The results of the last `dvc exp run` can be seen in the workspace. To display
-and compare your experiments, use `dvc exp show` or `dvc exp diff` to restore
-the results of any other experiment instead.
+and compare multiple experiments, use `dvc exp show` or `dvc exp diff`
+(`plots diff` also accepts experiment names as `revisions`). Use `dvc exp apply`
+to restore the results of any other experiment instead.
 
 Successful experiments can be made
 [persistent](/doc/user-guide/experiment-management#persistent-experiments) by
