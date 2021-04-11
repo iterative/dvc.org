@@ -111,12 +111,12 @@ execution. `dvc exp show` will mark queued experiments with an asterisk `*`.
 > unless a `--rev` is provided (refer to the previous section).
 
 Use `dvc exp run --run-all` to process the queue. This is done outside your
-<abbr>workspace</abbr> (in a temporary dir in `.dvc/tmp/exps`), so you can
+<abbr>workspace</abbr> (in temporary dirs in `.dvc/tmp/exps`), so you can
 continue working on the project meanwhile (e.g. on another terminal). You can
 run a single experiment outside the workspace with `dvc exp run --temp`.
 
 Adding `-j` (`--jobs`), experiment queues can be run in parallel for better
-performance (creates a tmp dir for each subprocess).
+performance (creates a tmp dir for each job).
 
 ⚠️ Parallel runs are experimental and may be unstable at this time. ⚠️ Make sure
 you're using a number of jobs that your environment can handle (no more than the
