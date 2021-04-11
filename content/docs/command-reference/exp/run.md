@@ -155,7 +155,8 @@ CPU cores).
   [in parallel](#queueing-and-parallel-execution).
 
 - `-j <number>`, `--jobs <number>` - run this `number` of queued experiments in
-  parallel. Only has an effect along with `--run-all`.
+  parallel. Only has an effect along with `--run-all`. Defaults to 1 (the queue
+  is processed serially).
 
 - `-r <commit>`, `--rev <commit>` - continue an experiment from a specific
   checkpoint name or hash (`commit`). This is needed for example to resume
