@@ -124,7 +124,7 @@ CPU cores).
 
 > Note that each job runs the entire pipeline (or `targets`) serially. DVC makes
 > no attempt to distribute stage commands among jobs. The order in which they
-> were queues is also not preserved when running them.
+> were queued is also not preserved when running them.
 
 ## Options
 
