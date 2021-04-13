@@ -92,9 +92,62 @@ $ cat .gitignore
 
 > Notice that the dependencies (`data.csv` and `train.py`) are not deleted.
 
+## Example target: stage output files/directories
+
+Assuming we have the same initial <abbr>workspace</abbr> as before:
+
+```yaml
+train:
+  cmd: python train.py data.csv
+  deps:
+    - data.csv
+    - train.py
+  outs:
+    - logs
+    - model.h5
+```
+
+```dvc
+$ ls
+dvc.lock  dvc.yaml  data.csv  data.csv.dvc  model.h5  logs  train.py
+
+$ cat .gitignore
+/data.csv
+/model.h5
+/logs
+```
+
+`dvc remove` can also be used on **individual** <abbr>output</abbr> files or
+directories of a stage:
+
+```dvc
+$ dvc remove model.h5
+
+$ ls
+dvc.lock  dvc.yaml  data.csv  data.csv.dvc  logs  train.py
+
+$ cat .gitignore
+/data.csv
+/logs
+```
+
+The <abbr>output</abbr> file is actually being removed from the
+<abbr>workspace</abbr> and `.gitignore` but `dvc.yaml` is not being updated.
+
 ## Example target: tracked files/directories
 
-Let's imagine we have the same initial <abbr>workspace</abbr> as before:
+Assuming we have the same initial <abbr>workspace</abbr> as before:
+
+```yaml
+train:
+  cmd: python train.py data.csv
+  deps:
+    - data.csv
+    - train.py
+  outs:
+    - logs
+    - model.h5
+```
 
 ```dvc
 $ ls
@@ -121,18 +174,3 @@ $ cat .gitignore
 ```
 
 > The same procedure applies to tracked directories.
-
-In addition, `dvc remove` can also be used on individual <abbr>output</abbr>
-files or directories of a stage.:
-
-```dvc
-$ dvc remove model.h5
-
-$ ls
-dvc.lock  dvc.yaml  data.csv  logs  train.py
-
-$ cat .gitignore
-/logs
-```
-
-> Note than in this case the file is being removed from the workspace.
