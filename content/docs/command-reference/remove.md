@@ -15,22 +15,24 @@ positional arguments:
 
 ## Description
 
-Safely removes `.dvc` files or stages from `dvc.yaml`. This includes deleting
-the corresponding `.gitignore` entries (based on the `outs` fields removed).
+Safely removes tracked files/directories, stage names (found in `dvc.yaml`), or
+`.dvc` files. This includes deleting the corresponding `.gitignore` entries.
 
 > `dvc remove` doesn't remove files from the DVC <abbr>cache</abbr> or
 > [remote storage](/doc/command-reference/remote). Use `dvc gc` for that.
 
-It takes one or more stage names (see `-n` option of `dvc run`) or `.dvc` file
-names as `targets`.
+It takes one or more stage names (see `-n` option of `dvc run`), `.dvc` file
+names or tracked files/directories as `targets`.
 
 If there are no stages left in `dvc.yaml` after the removal, then both
 `dvc.yaml` and `dvc.lock` are deleted. `.gitignore` is also deleted if there are
 no more entries left in it.
 
-Note that the actual <abbr>output</abbr> files or directories of the stage
-(`outs` field) are not removed by this command, unless the `--outs` option is
-used.
+Note that, when using stage name as target, the actual <abbr>output</abbr> files
+or directories of the stage (`outs` field) are not removed by this command,
+unless the `--outs` option is used which will remove **all** of them.
+Alternatively, you can the names of individual <abbr>output</abbr> files or
+directories of a stage as `targets`.
 
 💡 Refer to [Undo Adding Data](/doc/user-guide/how-to/stop-tracking-data) to see
 how it helps replace data that is tracked by DVC.
@@ -48,69 +50,10 @@ how it helps replace data that is tracked by DVC.
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
-## Example: remove a .dvc file
-
-Let's imagine we have `foo.csv` and `bar.csv` files, that are already
-[tracked](/doc/command-reference/add) by DVC:
-
-```dvc
-$ ls
-bar.csv  bar.csv.dvc  foo.csv  foo.csv.dvc
-$ cat .gitignore
-/foo.csv
-/bar.csv
-```
-
-This removes `foo.csv.dvc` and double checks that its entry is gone from
-`.gitignore`:
-
-```dvc
-$ dvc remove foo.csv.dvc
-
-$ ls
-bar.csv  bar.csv.dvc  foo.csv
-$ cat .gitignore
-/bar.csv
-```
-
-> The same procedure applies to tracked directories.
-
-## Example: remove a stage and its output
+## Example target: stage name
 
 Let's imagine we have a `train` stage in `dvc.yaml`, and corresponding files in
 the <abbr>workspace</abbr>:
-
-```yaml
-train:
-  cmd: python train.py data.csv
-  deps:
-    - data.csv
-    - train.py
-  outs:
-    - model
-```
-
-```dvc
-$ ls
-dvc.lock  dvc.yaml  data.csv  data.csv.dvc  model  train.py
-```
-
-Using `dvc remove` on the stage name will remove that entry from `dvc.yaml`, and
-its outputs from `.gitignore`. With the `--outs` option, its outputs are also
-deleted (just the `model` file in this example):
-
-```dvc
-$ dvc remove train --outs
-$ ls
-dvc.lock  dvc.yaml  data.csv  data.csv.dvc  train.py
-```
-
-> Notice that the dependencies (`data.csv` and `train.py`) are not deleted.
-
-## Example: remove a single output file by name
-
-Imagine the same <abbr>workspace</abbr> as before but now we have multiple
-`outs` for the `train` stage:
 
 ```yaml
 train:
@@ -125,15 +68,71 @@ train:
 
 ```dvc
 $ ls
-dvc.lock  dvc.yaml  data.csv  data.csv.dvc  logs  model.h5  train.py
+dvc.lock  dvc.yaml  data.csv  data.csv.dvc  model.h5  logs  train.py
+
+$ cat .gitignore
+/data.csv
+/model.h5
+/logs
 ```
 
-Using `dvc remove` you can remove a specific file using it's output name:
+Using `dvc remove` on the stage name will remove that entry from `dvc.yaml`, and
+its outputs from `.gitignore`. With the `--outs` option, its outputs are also
+deleted (`logs` and `model.h5` in this example):
+
+```dvc
+$ dvc remove train --outs
+
+$ ls
+dvc.lock  dvc.yaml  data.csv  data.csv.dvc  train.py
+
+$ cat .gitignore
+/data.csv
+```
+
+> Notice that the dependencies (`data.csv` and `train.py`) are not deleted.
+
+## Example target: tracked files/directories
+
+Let's imagine we have the same initial <abbr>workspace</abbr> as before:
+
+```dvc
+$ ls
+dvc.lock  dvc.yaml  data.csv  data.csv.dvc  model.h5  logs  train.py
+
+$ cat .gitignore
+/data.csv
+/model.h5
+/logs
+```
+
+Using `dvc remove` on a tracked file name will remove the corresponding `.dvc`
+file and `gitignore` entry:
+
+```dvc
+$ dvc remove data.csv
+
+$ ls
+dvc.lock  dvc.yaml  data.csv  model.h5  logs  train.py
+
+$ cat .gitignore
+/model.h5
+/logs
+```
+
+> The same procedure applies to tracked directories.
+
+In addition, `dvc remove` can also be used on individual <abbr>output</abbr>
+files or directories of a stage.:
 
 ```dvc
 $ dvc remove model.h5
+
 $ ls
-dvc.lock  dvc.yaml  data.csv  data.csv.dvc  logs  train.py
+dvc.lock  dvc.yaml  data.csv  logs  train.py
+
+$ cat .gitignore
+/logs
 ```
 
-> Notice that the other outputs (`logs`) are not deleted.
+> Note than in this case the file is being removed from the workspace.
