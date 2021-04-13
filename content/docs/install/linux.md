@@ -42,7 +42,8 @@ In this case it installs the `boto3` library along with DVC.
 > [Anaconda Distribution](https://docs.anaconda.com/anaconda/).
 
 ```dvc
-$ conda install -c conda-forge dvc
+$ conda install -c conda-forge mamba
+$ mamba install -c conda-forge dvc
 ```
 
 > Currently, it supports Python 3.6-3.8
@@ -56,7 +57,8 @@ plan to use, you might need to install optional dependencies: `dvc-s3`,
 ### Example: with support for Amazon S3 storage
 
 ```dvc
-$ conda install -c conda-forge dvc-s3
+$ conda install -c conda-forge mamba
+$ mamba install -c conda-forge dvc-s3
 ```
 
 In this case it installs the `boto3` library along with DVC.
