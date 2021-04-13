@@ -112,7 +112,7 @@ up-to-date and only execute the final stage.
     `dvc.yaml` files
   - `dvc repro train-model`: Specific stage in `./dvc.yaml`
   - `dvc repro model.pt`: Specific output file or directory listed in
-    `./dvc.yaml` (`outs` field.)
+    `./dvc.yaml` (`outs` field)
   - `dvc repro modeling/dvc.yaml:prepare`: Stage in a specific `dvc.yaml` file
   - `dvc repro --glob 'model.??'`: Pattern to match groups of output filenames
   - `dvc repro --glob-stages 'train-mode?'`: Pattern to match groups of stages
