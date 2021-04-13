@@ -5,7 +5,7 @@ description: |
   Monthly updates are here! Loads from the Community, use cases, videos, 5 new hires and more!
 descriptionLong: |
   Monthly updates are here! Read all about what our community is doing
-  with DVC, our CEO's interviews and talks, new team members more!
+  with DVC, our CEO's interviews and talks, new team members and more!
 picture: 2021-04-15/apr21cover.png
 author: jeny_defigueiredo
 commentsUrl: https://discuss.dvc.org/t/april-21-heartbeat/718?u=jendefig
@@ -78,8 +78,8 @@ files.
 ## En Español
 
 Yurely Camacho of [Open Science Labs](http://opensciencelabs.org/) created this
-blog post on DVC and the advantages to use it for our Spanish speaking friends!
-¡Olé!💃🏻
+blog post on DVC and the advantages of using it for our Spanish speaking
+friends! ¡Olé!💃🏻
 
 <external-link
 href="http://opensciencelabs.org/2021/03/22/que-es-el-data-version-control-y-por-que-es-necesario-que-tu-equipo-sepa-como-utilizarlo/"
@@ -102,7 +102,7 @@ from this Heartbeat:
   [Harshit Tyagi](https://twitter.com/dswharshit) of
   [Data Science with Harshit](https://www.youtube.com/channel/UCH-xwLTKQaABNs2QmGxK2bQ),
   and
-- Dmitry's [talk](https://www.youtube.com/watch?v=J8mCr3wVgdA) with the
+- Dmitry's [talk](https://www.youtube.com/watch?v=J8mCr3wVgdA) at the
   [Toronto Machine Learning Society](https://twitter.com/TMLS_TO)
 
 Spoiler alert ⚠️: You can't choose wrong!
@@ -117,7 +117,7 @@ Heartbeat! 😅🚀💗
 [**Julie Galvan**](https://www.linkedin.com/in/julianna-galvan/) joins our team
 from Houston, Texas as an engineer. She is focused on web development. In her
 free time Julie loves reading, especially fantasy fiction (Harry Potter #6 was
-favorite) and paper crafting. Welcome Julie!🎉
+fav) and paper crafting. Welcome Julie!🎉
 
 [**Matt Seddon**](https://www.linkedin.com/in/matt-seddon/) joins us from Down
 Under as a DVC front-end engineer! 🦘 He lives in Kiama, a small town on the
@@ -138,11 +138,12 @@ industry roles involved working on core routing products at juniper.net, medical
 image augmentation with GANs, and synth data generation for autonomous vehicles.
 Welcome to the team Daniel! 🙌🏼
 
-Last but not least, [**Milecia McGregor**](https://www.linkedin.com/in/milecia/)
-joins us as a Developer Advocate from Tulsa, Oklahoma. Milecia has a background
-in mechanical and aerospace engineering, some machine learning on autonomous
-vehicles, and basically everything that the web touches. She also practices kung
-fu in her free time.🥋🙇🏻‍♀️ We think that's "Oklahoma, OK!" 👌🏼
+Last but not least joining just this week,
+[**Milecia McGregor**](https://www.linkedin.com/in/milecia/) joins us as a
+Developer Advocate from Tulsa, Oklahoma. Milecia has a background in mechanical
+and aerospace engineering, some machine learning on autonomous vehicles, and
+basically everything that the web touches. She also practices kung fu in her
+free time.🥋🙇🏻‍♀️ We think that's "Oklahoma, OK!" 👌🏼
 
 ## Open Positions
 
