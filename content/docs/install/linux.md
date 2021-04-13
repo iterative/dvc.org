@@ -42,11 +42,9 @@ In this case it installs the `boto3` library along with DVC.
 > [Anaconda Distribution](https://docs.anaconda.com/anaconda/).
 
 ```dvc
-$ conda install -c conda-forge mamba
+$ conda install -c conda-forge mamba # installs much faster than conda
 $ mamba install -c conda-forge dvc
 ```
-
-> Currently, it supports Python 3.6-3.8
 
 Depending on the type of the [remote storage](/doc/command-reference/remote) you
 plan to use, you might need to install optional dependencies: `dvc-s3`,
