@@ -30,7 +30,7 @@ corresponding `.gitignore` entry). The data file is now no longer being tracked
 after this:
 
 ```dvc
-$ dvc remove data.csv.dvc
+$ dvc remove data.csv
 
 $ git status
     Untracked files:
