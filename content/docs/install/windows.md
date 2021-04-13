@@ -27,11 +27,9 @@ You can use `conda` from
 a POSIX-like command line terminal in Windows.
 
 ```dvc
-$ conda install -c conda-forge mamba
+$ conda install -c conda-forge mamba # installs much faster than conda
 $ mamba install -c conda-forge dvc
 ```
-
-> Currently, it supports Python 3.6-3.8
 
 Depending on the type of the [remote storage](/doc/command-reference/remote) you
 plan to use, you might need to install optional dependencies: `dvc-s3`,
@@ -42,7 +40,7 @@ plan to use, you might need to install optional dependencies: `dvc-s3`,
 ### Example: with support for Amazon S3 storage
 
 ```dvc
-$ conda install -c conda-forge mamba
+$ conda install -c conda-forge mamba # installs much faster than conda
 $ mamba install -c conda-forge dvc-s3
 ```
 
