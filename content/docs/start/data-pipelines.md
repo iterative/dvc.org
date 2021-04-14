@@ -314,7 +314,7 @@ important problems:
   and which commands will generate the pipeline results (such as an ML model).
   Storing these files in Git makes it easy to version and share.
 - _Continuous Delivery and Continuous Integration (CI/CD) for ML_: describing
-  projects in way which it can be reproduced (built) is the first necessary step
+  projects in way that can be reproduced (built) is the first necessary step
   before introducing CI/CD systems. See our sister project
   [CML](https://cml.dev/) for some examples.
 
