@@ -13,7 +13,7 @@ track experiments for you so there's no need to commit each one to Git. This way
 your repo doesn't become polluted with all of them. You can discard experiments
 once they're no longer needed.
 
-> 📖 See [experiment management](/doc/user-guide/experiment-management) for more
+> 📖 See [Experiment Management](/doc/user-guide/experiment-management) for more
 > information on DVC's approach.
 
 ## Running experiments
