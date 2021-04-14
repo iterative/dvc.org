@@ -175,7 +175,7 @@ $ dvc pull
 ```
 
 > 📖 See also
-> [sharing data and model files](/doc/use-cases/sharing-data-and-model-files)
+> [Sharing Data and Model Files](/doc/use-cases/sharing-data-and-model-files)
 > for more on basic collaboration workflows.
 
 ## Making changes
@@ -256,5 +256,5 @@ You can learn more about advanced workflows using these links:
   efficiently.
 - A quite advanced scenario is to track and version data directly on the remote
   storage (e.g. S3). See
-  [managing external data](https://dvc.org/doc/user-guide/managing-external-data)
+  [Managing External Data](https://dvc.org/doc/user-guide/managing-external-data)
   to learn more.

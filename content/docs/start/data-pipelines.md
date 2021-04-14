@@ -87,7 +87,7 @@ The command options used above mean the following:
 
 - `-p prepare.seed,prepare.split` defines special types of dependencies —
   [parameters](/doc/command-reference/params). We'll get to them later in the
-  [metrics, parameters, and plots](/doc/start/metrics-parameters-plots) page,
+  [Metrics, Parameters, and Plots](/doc/start/metrics-parameters-plots) page,
   but the idea is that the stage can depend on field values from a parameters
   file (`params.yaml` by default):
 
