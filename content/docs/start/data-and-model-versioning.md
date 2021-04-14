@@ -99,9 +99,9 @@ $ git add .dvc/config
 $ git commit -m "Configure remote storage"
 ```
 
-> DVC supports many remote storage types, including: Google Drive, Amazon S3,
-> Azure Blob Storage, Google Cloud Storage, Aliyun OSS, SSH, HDFS, and HTTP. See
-> `dvc remote add` for more details and examples.
+> DVC supports many remote storage types, including Amazon S3, SSH, Google
+> Drive, Azure Blob Storage, and HDFS. See `dvc remote add` for more details and
+> examples.
 
 <details>
 
