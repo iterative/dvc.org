@@ -174,7 +174,7 @@ The `dvc.yaml` file is updated automatically and should include two stages now.
 
 The changes to the `dvc.yaml` should look like this:
 
-```diff
+```git
  stages:
    prepare:
      cmd: python src/prepare.py data/data.xml
