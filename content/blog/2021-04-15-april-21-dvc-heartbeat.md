@@ -26,7 +26,7 @@ with great content from our users. It's like we're on a sugar high!
 
 First up, [Goku Mahandas](https://twitter.com/GokuMohandas) of
 [Made With ML](https://madewithml.com/) has created
-[this tutorial](https://madewithml.com/courses/mlops/versioning/) using DVC.  
+[this tutorial](https://madewithml.com/courses/mlops/versioning/) using DVC.
 It's RT'ing around the MLOps Twitter space like hotcakes! 🥞
 
 <external-link
