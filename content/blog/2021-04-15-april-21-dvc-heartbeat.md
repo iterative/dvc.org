@@ -2,13 +2,14 @@
 title: April '21 Heartbeat
 date: 2021-04-15
 description: |
-  Monthly updates are here! Loads from the Community, use cases, videos, 5 new hires and more!
+  Monthly updates are here! Loads from the Community, use cases, videos, 
+  5 new hires and more!
 descriptionLong: |
   Monthly updates are here! Read all about what our community is doing
   with DVC, our CEO's interviews and talks, new team members and more!
 picture: 2021-04-15/apr21cover.png
 author: jeny_defigueiredo
-commentsUrl: https://discuss.dvc.org/t/april-21-heartbeat/718?u=jendefig
+commentsUrl: https://discuss.dvc.org/t/april-21-heartbeat/718
 tags:
   - Heartbeat
   - DVC
@@ -22,7 +23,7 @@ with great content from our users. It's like we're on a sugar high!
 
 ![Sugar High](https://media.giphy.com/media/oiGCnybFPh6Q8/giphy.gif)
 
-### Goku Mohandas Tutorial
+### Goku Mohandas' New Lessons!
 
 First up, [Goku Mahandas](https://twitter.com/GokuMohandas) of
 [Made With ML](https://madewithml.com/) has created
@@ -31,8 +32,9 @@ It's RT'ing around the MLOps Twitter space like hotcakes! 🥞
 
 <external-link
 href="https://madewithml.com/courses/mlops/"
-title="MLOps"
-description="DVC tutorial"
+title="MLOps - Versioning Code, Data and Models"
+description="Using DVC to version data and models for reproducibility 
+in a local storage use case"
 link="https://madewithml.com/"
 image="/uploads/images/2021-04-15/made-with-ml-logo.png"/>
 
