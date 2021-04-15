@@ -64,12 +64,6 @@
         "tutorials": {
           "katacoda": "https://katacoda.com/dvc/courses/get-started/experiments"
         }
-      },
-      {
-        "slug": "checkpoints",
-        "tutorials": {
-          "katacoda": "https://katacoda.com/dvc/courses/get-started/checkpoints"
-        }
       }
     ]
   },
@@ -139,6 +133,12 @@
           "add-deps-or-outs-to-a-stage",
           "merge-conflicts"
         ]
+      },
+      {
+        "slug": "checkpoints",
+        "tutorials": {
+          "katacoda": "https://katacoda.com/dvc/courses/get-started/checkpoints"
+        }
       },
       "experiment-management",
       "setup-google-drive-remote",
