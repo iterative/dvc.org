@@ -4,7 +4,7 @@ ML checkpoints are an important part of deep learning because ML engineers like
 to save the model files at checkpoints during a training process and return back
 when metrics start diverging.
 
-*Note: This is not a continuation of the previous Getting Started sections.*
+_Note: This is not a continuation of the previous Getting Started sections._
 
 With checkpoints in DVC, you can track every training epoch, return to any
 previous checkpoint, see when metrics converge or when the learning rate needs
@@ -14,10 +14,13 @@ parameters and code, DVC tracks those changes for you.
 
 ## Adding checkpoints
 
-When you want to add a checkpoint to your training process, there are only a couple of things you need to setup. You can find the code we use here in [this GitHub repo](https://github.com/iterative/dvc-checkpoints-mnist).
+When you want to add a checkpoint to your training process, there are only a
+couple of things you need to setup. You can find the code we use here in
+[this GitHub repo](https://github.com/iterative/dvc-checkpoints-mnist).
 
 In your `dvc.yaml` file, add `checkpoint: true` to your `outs` under the model
-file. This adds checkpoints at the pipeline level. It should look something like this.
+file. This adds checkpoints at the pipeline level. It should look something like
+this.
 
 ```yaml
 stages:
@@ -34,10 +37,13 @@ stages:
         html: true
 ```
 
-You can also add checkpoints by running the command `dvc stage add -n name_of_stage --checkpoints model.pt`. This will create a new stage with checkpoints enabled.
+You can also add checkpoints by running the command
+`dvc stage add -n name_of_stage --checkpoints model.pt`. This will create a new
+stage with checkpoints enabled.
 
-Then you can run your code using the `dvc exp run` command and it will start from an existing checkpoint or create a new checkpoint file for you. Now you have
-to include the checkpoints in your code using the `make_checkpoint()`
+Then you can run your code using the `dvc exp run` command and it will start
+from an existing checkpoint or create a new checkpoint file for you. Now you
+have to include the checkpoints in your code using the `make_checkpoint()`
 function or the `DvcLiveCallback()` function.
 
 First, import the function into your script.
@@ -51,8 +57,8 @@ The code will keep running and making checkpoints until you hit `Ctrl+C` to stop
 training. This will save the checkpoints that you have so far so you can take a
 look at them.
 
-While your script is executing epoch runs,
-you should see output in the terminal similar to this:
+While your script is executing epoch runs, you should see output in the terminal
+similar to this:
 
 ```dvc
 Generating lock file 'dvc.lock'
@@ -68,7 +74,8 @@ Updating lock file 'dvc.lock'
 Checkpoint experiment iteration '9b0bf16'.
 ```
 
-If you execute `dvc exp show` after your epoch runs finish, you'll see a table with all of your checkpoints.
+If you execute `dvc exp show` after your epoch runs finish, you'll see a table
+with all of your checkpoints.
 
 ```dvc
 ┏━━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━┳━━━━━━━━┓
@@ -181,7 +188,8 @@ existing checkpoints, you can get rid of all of them with the `--reset` flag.
 Add this to the usual command for running DVC experiments and it looks like
 this: `dvc exp run --reset`.
 
-You can also reset checkpoints with the following command: `dvc exp apply && modify file && dvc exp run`.
+You can also reset checkpoints with the following command:
+`dvc exp apply && modify file && dvc exp run`.
 
 This removes the `model.pt` file and clears the `dvc.lock` file of any existing
 checkpoints.
