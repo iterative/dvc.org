@@ -14,6 +14,7 @@ tags:
   - Heartbeat
   - DVC
   - MLOps
+  - Made with ML
 ---
 
 ## From the Community
@@ -21,7 +22,7 @@ tags:
 We're starting with the community this month because it has been overflowing
 with great content from our users. It's like we're on a sugar high!
 
-![Sugar High](https://imgur.com/a/dod7MwF)
+![Sugar High](https://media.giphy.com/media/oiGCnybFPh6Q8/giphy.gif)
 
 ### Goku Mohandas' New Lessons!
 
