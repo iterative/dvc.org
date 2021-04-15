@@ -61,6 +61,11 @@ types:
    moves a local file to the external location. This produces an external output
    in `dvc.yaml`.
 
+> 🔒 Note that for locations that require authentication, it's necessary to
+> configure the remote accordingly in 1. (see `dvc remote modify`), and use a
+> special `remote://` URL in 2. e.g.
+> `dvc add --external remote://xcache/existing-data`.
+
 <details>
 
 ### Click for Amazon S3
@@ -94,11 +99,6 @@ $ dvc run -d data.txt \
           -o ssh://user@example.com/data.txt \
           scp data.txt user@example.com:/data.txt
 ```
-
-> Please note that to use password authentication, it's necessary to set the
-> `password` or `ask_password` SSH remote options first (see
-> `dvc remote modify`), and use a special `remote://` URL in step 2:
-> `dvc add --external remote://sshcache/existing-data`.
 
 ⚠️ DVC requires both SSH and SFTP access to work with remote SSH locations.
 Please check that you are able to connect both ways with tools like `ssh` and
