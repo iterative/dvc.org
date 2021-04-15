@@ -21,7 +21,7 @@ tags:
 We're starting with the community this month because it has been overflowing
 with great content from our users. It's like we're on a sugar high!
 
-![Sugar High](https://media.giphy.com/media/oiGCnybFPh6Q8/giphy.gif)
+![Sugar High](https://imgur.com/a/dod7MwF)
 
 ### Goku Mohandas' New Lessons!
 
@@ -127,7 +127,7 @@ East Coast of Australia. Originally from Scotland, when he's not programming he
 likes to spend time with his family away from screens (😅🙌🏼) and he volunteers
 for the state emergency service. 🤲🏼
 
-[**Yanxiang Gao**](https://www.linkedin.com/in/gaoyanxiang/)(who graciously
+[**Yanxiang Gao**](https://www.linkedin.com/in/gaoyanxiang/) (who graciously
 allows us to call him Gao) joins us from Hangzhou, China as new DVC engineer.
 Gao has a Masters in Physics and has previously worked as a Machine Learning
 engineer in Chinese tech companies using DVC. He has been a long time
