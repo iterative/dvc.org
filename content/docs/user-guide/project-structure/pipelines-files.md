@@ -243,7 +243,7 @@ stages:
       - raw2
     do:
       cmd: clean.py "${item}"
-      out:
+      outs:
         - ${item}.cln
 ```
 
