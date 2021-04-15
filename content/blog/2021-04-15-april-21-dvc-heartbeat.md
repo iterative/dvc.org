@@ -15,6 +15,8 @@ tags:
   - DVC
   - MLOps
   - Made with ML
+  - AI Singapore
+  - DAGsHub
 ---
 
 ## From the Community
