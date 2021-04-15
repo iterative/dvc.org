@@ -7,7 +7,7 @@ description: |
 descriptionLong: |
   Monthly updates are here! Read all about what our community is doing
   with DVC, our CEO's interviews and talks, new team members and more!
-picture: 2021-04-15/apr21cover.png
+picture: 2021-04-15/april21cover.png
 author: jeny_defigueiredo
 commentsUrl: https://discuss.dvc.org/t/april-21-heartbeat/718
 tags:
