@@ -77,7 +77,7 @@ by one in the next few pages:
   versioning and checkpoint logging. Compare differences in parameters, metrics,
   code, and data. Apply, drop, roll back, resume, or share any experiment.
 
-- [**Checkpoints**](/doc/start/checkpoints) let you track every training epoch,
-  return to any previous checkpoint, see when metrics converge or when the
-  learning rate needs to be adjusted, and even recover model weights,
+- [**Checkpoints**](/doc/user-guide/checkpoints) let you track every training
+  epoch, return to any previous checkpoint, see when metrics converge or when
+  the learning rate needs to be adjusted, and even recover model weights,
   parameters, and code.
