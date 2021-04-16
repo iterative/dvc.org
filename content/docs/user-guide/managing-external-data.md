@@ -61,10 +61,11 @@ types:
    moves a local file to the external location. This produces an external output
    in `dvc.yaml`.
 
-> 🔒 Note that for locations that require authentication, it's necessary to
-> configure the remote accordingly in 1. (see `dvc remote modify`), and use a
-> special `remote://` URL in 2. e.g.
-> `dvc add --external remote://xcache/existing-data`.
+> 🔒 Note that for locations that require authentication there may be extra
+> steps required. One way is to configure the remote accordingly after step 1,
+> and use a special `remote://` URL in step 2. e.g.
+> `dvc add --external remote://xcache/data`. See `dvc remote modify` for more
+> details.
 
 <details>
 
