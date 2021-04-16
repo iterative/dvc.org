@@ -162,36 +162,27 @@ For more information about the variables DVC supports, please visit
 
 ```dvc
 $ dvc remote add -d myremote azure://mycontainer/path
-$ dvc remote modify --local myremote connection_string 'mystring'
+$ dvc remote modify --local myremote connection_string 'mysecret'
 ```
 
-> The connection string contains sensitive user info. Therefore, it's safer to
-> add it with the `--local` option, so it's written to a Git-ignored config
-> file. See `dvc remote modify` for a full list of Azure parameters.
+> The Azure Storage
+> [connection string](http://azure.microsoft.com/en-us/documentation/articles/storage-configure-connection-string/)
+> contains sensitive user info. Therefore, it's safer to add it with the
+> `--local` option, so it's written to a Git-ignored config file. See
+> `dvc remote modify` for a full list of Azure parameters.
 
 The Azure Blob Storage remote can also be configured globally via environment
 variables:
 
 ```dvc
 $ export AZURE_STORAGE_CONNECTION_STRING='mysecret'
-$ export AZURE_STORAGE_CONTAINER_NAME='mycontainer'
-$ dvc remote add -d myremote 'azure://'
+$ dvc remote add -d myremote azure://mycontainer/path
 ```
 
-`AZURE_STORAGE_CONNECTION_STRING`: This is the secret to access your Azure
-Storage Account. If you don't already have a storage account, you can create one
-by following
-[these instructions](https://docs.microsoft.com/en-us/azure/storage/common/storage-create-storage-account).
-The connection string can be found in the **Access Keys** pane of your Storage
-Account resource in the Azure portal.
-
 > 💡 Make sure the value is quoted so its processed correctly by the console.
-> For more info on Azure Storage connection strings, visit their
-> [docs](https://docs.microsoft.com/en-us/azure/storage/common/storage-configure-connection-string).
 
-`AZURE_STORAGE_CONTAINER_NAME`: This is the top-level container in your Azure
-Storage Account under which all the files for this remote will be uploaded. If
-the container doesn't already exist, it will be created automatically.
+See `dvc remote modify` for a full list of Azure parameters and environment
+variables.
 
 </details>
 
