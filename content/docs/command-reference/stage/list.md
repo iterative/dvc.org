@@ -43,11 +43,9 @@ important characteristics (dependencies, outputs, or metrics).
   - `dvc stage list linear/dvc.yaml`: Specific `dvc.yaml` file to list from
   - `dvc stage list -R pipelines/`: Directory path to explore recursively for
     stages
-  - `dvc stage list train-model`: Specific stage in `./dvc.yaml`. Supports
-    [`foreach` stage](doc/user-guide/project-structure/pipelines-files#foreach-stages)
-    names.
-  - `dvc stage list modeling/dvc.yaml:prepare`: Stage in a specific `dvc.yaml`
-    file. Supports `foreach` stage names.
+  - `dvc stage list train-model`: Specific stage(s) from `./dvc.yaml`
+  - `dvc stage list modeling/dvc.yaml:prepare`: Stage(s) from a specific
+    `dvc.yaml` file
 
 - `--names-only` - only lists stage names. Useful for scripting purposes (DVC
   uses it for shell tab completion).

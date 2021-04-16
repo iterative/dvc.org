@@ -108,8 +108,9 @@ up-to-date and only execute the final stage.
   - `dvc repro linear/dvc.yaml`: Specific `dvc.yaml` file to reproduce
   - `dvc repro -R pipelines/`: Directory path to explore recursively for
     `dvc.yaml` files
-  - `dvc repro train-model`: Specific stage in `./dvc.yaml`
-  - `dvc repro modeling/dvc.yaml:prepare`: Stage in a specific `dvc.yaml` file
+  - `dvc repro train-model`: Specific stage(s) from `./dvc.yaml`
+  - `dvc repro modeling/dvc.yaml:prepare`: Stage(s) from a specific `dvc.yaml`
+    file
   - `dvc repro --glob train-*`: Pattern to match groups of stages
 
 - `-R`, `--recursive` - looks for `dvc.yaml` files to reproduce in any
