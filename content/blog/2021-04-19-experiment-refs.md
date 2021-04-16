@@ -16,7 +16,7 @@ descriptionLong: |
 picture: 2021-04-19/experiment-refs.png
 pictureComment: Utilizing Custom Git References in DVC
 author: peter_rowlands
-commentsUrl: https://discuss.dvc.org/
+commentsUrl: https://discuss.dvc.org/t/utilizing-custom-git-references-in-dvc/727
 tags:
   - MLOps
   - Git
