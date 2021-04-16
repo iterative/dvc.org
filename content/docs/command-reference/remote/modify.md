@@ -711,6 +711,12 @@ Read more about by expanding the WebHDFS section in
 > The user name may contain sensitive user info. Therefore, it's safer to add it
 > with the `--local` option, so it's written to a Git-ignored config file.
 
+- `kerb_ticket` - path to Kerberos ticket cache to connect to Kerberos-secured HDFS clusters.
+
+  ```dvc
+  $ dvc remote modify myremote kerb_ticket /path/to/kerb_ticket
+  ```
+
 </details>
 
 <details>
