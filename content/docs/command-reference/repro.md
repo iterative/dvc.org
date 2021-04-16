@@ -13,7 +13,8 @@ usage: dvc repro [-h] [-q | -v] [-f] [-s] [-m] [--dry] [-i]
                  [targets [<target> ...]]
 
 positional arguments:
-  targets       Stage names or stage outputs to reproduce. 'dvc.yaml' by default.
+  targets       Stage names or stage outputs to reproduce. './dvc.yaml'
+                by default.
 ```
 
 > See [`targets`](#options) for more details.
