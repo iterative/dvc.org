@@ -56,7 +56,9 @@ Thanks Ryzal for this detailed work! 🙏🏼
 <external-link
 href="https://makerspace.aisingapore.org/2021/04/data-versioning-for-cd4ml-part-2/"
 title="Data Versioning for CD4ML - Part 2"
-description="DVC tutorial"
+description="Complete tutorial for beginning continuous integration, automated 
+testing and versioning, experiment tracking, reproducing the model training 
+pipeline and creating a Flask app for predictive use of the model "
 link="https://makerspace.aisingapore.org/"
 image="/uploads/images/2021-04-15/ai-singapore-logo.jpeg"/>
 
@@ -92,7 +94,7 @@ friends! ¡Olé!💃🏻
 <external-link
 href="http://opensciencelabs.org/2021/03/22/que-es-el-data-version-control-y-por-que-es-necesario-que-tu-equipo-sepa-como-utilizarlo/"
 title="Qué es el Data Version Control y por qué es necesario que tu equipo sepa cómo utilizarlo"
-description="DVC tutorial"
+description="Advantages to using DVC for data version control and team collaboration"
 link="http://opensciencelabs.org/"
 image="/uploads/images/2021-04-15/open-science-labs-logo.png"/>
 
