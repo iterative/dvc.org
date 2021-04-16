@@ -1,13 +1,14 @@
 ﻿---
 title: April '21 Heartbeat
-date: 2021-04-15
+date: 2021-04-16
 description: |
   Monthly updates are here! Loads from the Community, use cases, videos, 
-  5 new hires and more!
+  5 new hires, and more!
 descriptionLong: |
-  Monthly updates are here! Read all about what our community is doing
-  with DVC, our CEO's interviews and talks, new team members and more!
-picture: 2021-04-15/april21cover.png
+  Monthly updates are here! Read all about new lessons and a tutorials from
+  our community, DVC's use in longevity research, our CEO's interviews and 
+  talk at the Toronto Machine Learning Society, new team members, and more!
+picture: 2021-04-16/april21cover.png
 author: jeny_defigueiredo
 commentsUrl: https://discuss.dvc.org/t/april-21-heartbeat/718
 tags:
@@ -17,6 +18,7 @@ tags:
   - Made with ML
   - AI Singapore
   - DAGsHub
+  - Toronto Machine Learning Society
 ---
 
 ## From the Community
@@ -29,8 +31,9 @@ with great content from our users. It's like we're on a sugar high!
 ### Goku Mohandas' New Lessons!
 
 First up, [Goku Mahandas](https://twitter.com/GokuMohandas) of
-[Made With ML](https://madewithml.com/) has created
-[this tutorial](https://madewithml.com/courses/mlops/versioning/) using DVC.  
+[Made With ML](https://madewithml.com/) has added this
+[Versioning Lesson](https://madewithml.com/courses/mlops/versioning/) to the
+popular **MLOps Course** using DVC.  
 It's RT'ing around the MLOps Twitter space like hotcakes! 🥞
 
 <external-link
