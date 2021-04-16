@@ -131,7 +131,7 @@ up-to-date and only execute the final stage.
 - `--glob-stages` - causes the `targets` to be interpreted as wildcard
   [patterns](https://docs.python.org/3/library/glob.html) to match for stage
   names. For example: `train-*` (certain stage names) or
-  `models/dvc.yaml:train-*` (stages in specific `dvc.yaml` file). Note that it
+  `models/dvc.yaml:a*` (some stages in a specific `dvc.yaml` file). Note that it
   does not match patterns with the path, only to the stages present in the
   specified file.
 
