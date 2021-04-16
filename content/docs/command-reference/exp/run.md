@@ -84,13 +84,19 @@ steps as `make_checkpoint()` — please refer to its reference for details.
 You can now use `dvc exp run` to begin the experiment. If the process gets
 interrupted (e.g. with `[Ctrl] C` or by an error), all the checkpoints so far
 will be preserved. When a run finishes normally, a final checkpoint will be
-added (if needed) to wrap up the experiment.
+added (if needed) to wrap up the experiment. Following uses of `dvc exp run`
+will continue from this point (using the latest cached versions of all outputs).
 
-Following uses of `dvc exp run` will continue from this point (using the latest
-cached versions of all outputs). You can add a `--rev` to continue from a
-previous checkpoint instead (list them with `dvc exp show`). Or use `--reset` to
-start over (discards previous checkpoints and deletes `checkpoint` outputs, like
-the first `dvc exp run`) — useful for re-training ML models, for example.
+To continue from a previous checkpoint (list them with `dvc exp show`), when
+running experiments in your workspace, you must first use `dvc exp apply` to
+apply the checkpoint from which you want to resume before using `dvc exp run`.
+When running experiments outside of your workspace via `--queue/--run-all` or
+`--temp`, you can use `--rev` to directly specify the checkpoint from which you
+want to resume.
+
+Alternatively, use `--reset` to start over (discards previous checkpoints and
+deletes `checkpoint` outputs, like the first `dvc exp run`) — useful for
+re-training ML models, for example.
 
 <details>
 
@@ -162,8 +168,9 @@ CPU cores).
   is processed serially).
 
 - `-r <commit>`, `--rev <commit>` - continue an experiment from a specific
-  checkpoint name or hash (`commit`). This is needed for example to resume
-  experiments from `--queue` or `--temp` runs.
+  checkpoint name or hash (`commit`). This is required to resume experiments
+  from `--queue` or `--temp` runs. `--rev` is explicitly disallowed when running
+  experiments in your workspace (`dvc exp apply` should be used instead).
 
 - `--reset` - deletes `checkpoint` outputs before running this experiment
   (regardless of `dvc.lock`). Useful for ML model re-training.
