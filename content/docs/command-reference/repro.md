@@ -125,7 +125,8 @@ up-to-date and only execute the final stage.
 
 - `--glob` - causes the `targets` to be interpreted as wildcard
   [patterns](https://docs.python.org/3/library/glob.html) to match for output
-  files and directories. For example: `output*` (certain outputs).
+  files or directories. For example: `out/*` (all stage outputs inside a
+  directory).
 
 - `--glob-stages` - causes the `targets` to be interpreted as wildcard
   [patterns](https://docs.python.org/3/library/glob.html) to match for stage
