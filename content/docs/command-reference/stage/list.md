@@ -39,12 +39,9 @@ DVC also uses this command to provide autocompletion in `bash` and `zsh`.
   - `dvc stage list linear/dvc.yaml`: Specific `dvc.yaml` file to list from
   - `dvc stage list -R pipelines/`: Directory path to explore recursively for
     `dvc.yaml` files
-  - `dvc stage list train-model`: Specific stage name or a
-    [foreach group](doc/user-guide/project-structure/pipelines-files#foreach-stages)
-    in `./dvc.yaml`
-  - `dvc stage list modeling/dvc.yaml:prepare`: Stage or a
-    [foreach group](doc/user-guide/project-structure/pipelines-files#foreach-stages)
-    in a specific `dvc.yaml` file
+  - `dvc stage list train-model`: Specific stage(s) from `./dvc.yaml`
+  - `dvc stage list modeling/dvc.yaml:prepare`: Stage(s) from a specific
+    `dvc.yaml` file
 
 - `-R`, `--recursive` - looks for `dvc.yaml` files to list from in any
   directories given as `targets`, and in their subdirectories. If there are no
