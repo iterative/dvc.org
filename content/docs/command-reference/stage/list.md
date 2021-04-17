@@ -21,7 +21,7 @@ without having to open `dvc.yaml` files.
 
 It provides a list of stages, with a stage name and the description of the
 stage. The description of the stage is read from
-[`desc` field in the `dvc.yaml` file](doc/user-guide/project-structure/pipelines-files#stage-entries),
+[`desc` field in the `dvc.yaml` file](/doc/user-guide/project-structure/pipelines-files#stage-entries),
 or if it does not exist, DVC generates the short description from the other
 metadata it has about the stage.
 
@@ -40,10 +40,10 @@ DVC also uses this command to provide autocompletion in `bash` and `zsh`.
   - `dvc stage list -R pipelines/`: Directory path to explore recursively for
     `dvc.yaml` files
   - `dvc stage list train-model`: Specific stage name or a
-    [foreach group](doc/user-guide/project-structure/pipelines-files#foreach-stages)
+    [foreach group](/doc/user-guide/project-structure/pipelines-files#foreach-stages)
     in `./dvc.yaml`
   - `dvc stage list modeling/dvc.yaml:prepare`: Stage or a
-    [foreach group](doc/user-guide/project-structure/pipelines-files#foreach-stages)
+    [foreach group](/doc/user-guide/project-structure/pipelines-files#foreach-stages)
     in a specific `dvc.yaml` file
 
 - `-R`, `--recursive` - looks for `dvc.yaml` files to list from in any
