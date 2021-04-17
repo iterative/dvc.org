@@ -96,11 +96,10 @@ directory where `less` is installed to the `PATH` environment variable.)
 
 ## Using private repositories
 
-When a stale enough version of git is installed, you may face issues with 
-several dvc commands (`list`, `get`, `import`) applied to private 
-repositories, which look like infinite loading or "freeze". The issues are 
-caused by git internal auth problems and they are fixed for newer git 
-versions. Please upgrade git to 2.29 at least, where Git Credential Manager 
-Core is included. You can update git using `git update-for-windows` command 
-either in GitBash or PowerShell. Please install the latest DVC also to ensure 
-the best experience.
+When a stale enough version of git is installed, you may face issues with
+several dvc commands (`list`, `get`, `import`) applied to private repositories,
+which look like infinite loading or "freeze". The issues are caused by git
+internal auth problems and they are fixed for newer git versions. Please upgrade
+git to 2.29 at least, where Git Credential Manager Core is included. You can
+update git using `git update-for-windows` command either in GitBash or
+PowerShell. Please install the latest DVC also to ensure the best experience.
