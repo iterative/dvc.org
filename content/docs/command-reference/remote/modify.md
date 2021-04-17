@@ -402,8 +402,10 @@ $ export AZURE_STORAGE_CONNECTION_STRING='mysecret'
 For account name and key/token auth:
 
 ```dvc
-$ export AZURE_STORAGE_ACCOUNT_NAME='myuser'
-$ export AZURE_STORAGE_ACCOUNT_KEY='mysecret'
+$ export AZURE_STORAGE_ACCOUNT='myuser'
+$ export AZURE_STORAGE_KEY='mysecret'
+# or
+$ export AZURE_STORAGE_SAS_TOKEN='mysecret'
 ```
 
 For _service principal_ auth (via certificate file):
