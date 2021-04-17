@@ -40,9 +40,9 @@ compares them with a previous version.
   in the workspace. Note that this can be combined with `-a` above, for example
   using the `-aT` flags.
 
-- `--all-commits` - print metrics file contents in all Git commits, as well as
-  in the workspace. This prints metrics in the entire commit history of the
-  project.
+- `-A`, `--all-commits` - print metrics file contents in all Git commits, as
+  well as in the workspace. This prints metrics in the entire commit history of
+  the project.
 
 - `--show-json` - prints the command's output in easily parsable JSON format,
   instead of a human-readable table.
