@@ -42,7 +42,7 @@ title="MLOps - Versioning Code, Data and Models"
 description="Using DVC to version data and models for reproducibility 
 in a local storage use case"
 link="https://madewithml.com/"
-image="/uploads/images/2021-04-15/made-with-ml-logo.png"/>
+image="/uploads/images/2021-04-16/made-with-ml-logo.png"/>
 
 ### Ryzal Kamis Tutorial
 
@@ -60,7 +60,7 @@ description="Complete tutorial for beginning continuous integration, automated
 testing and versioning, experiment tracking, reproducing the model training 
 pipeline and creating a Flask app for predictive use of the model "
 link="https://makerspace.aisingapore.org/"
-image="/uploads/images/2021-04-15/ai-singapore-logo.jpeg"/>
+image="/uploads/images/2021-04-16/ai-singapore-logo.jpeg"/>
 
 ## DVC used to help in Research published in the International Journal of Molecular Sciences 🧑🏻‍🔬
 
@@ -73,7 +73,7 @@ and their [GitHub repository.](https://github.com/antonkulaga/yspecies)
 
 See the diagram of the research below.👇🏼
 
-![](/uploads/images/2021-04-15/longevity-study.png)_longevity research diagram_
+![](/uploads/images/2021-04-16/longevity-study.png)_longevity research diagram_
 
 ## DAGsHub ❤️ DVC Colab Notebook
 
@@ -96,7 +96,7 @@ href="http://opensciencelabs.org/2021/03/22/que-es-el-data-version-control-y-por
 title="Qué es el Data Version Control y por qué es necesario que tu equipo sepa cómo utilizarlo"
 description="Advantages to using DVC for data version control and team collaboration"
 link="http://opensciencelabs.org/"
-image="/uploads/images/2021-04-15/open-science-labs-logo.png"/>
+image="/uploads/images/2021-04-16/open-science-labs-logo.png"/>
 
 ## DVC News
 
