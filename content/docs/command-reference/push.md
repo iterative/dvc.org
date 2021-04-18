@@ -70,8 +70,8 @@ in the cache (compared to the default remote.) It can be used to see what files
   or project. Note that this can be combined with `-a` above, for example using
   the `-aT` flags.
 
-- `--all-commits` - examines metafiles in all Git commits, as well as in the
-  workspace. This uploads tracked data for the entire commit history of the
+- `-A`, `--all-commits` - examines metafiles in all Git commits, as well as in
+  the workspace. This uploads tracked data for the entire commit history of the
   project.
 
 - `-d`, `--with-deps` - determines files to upload by tracking dependencies to

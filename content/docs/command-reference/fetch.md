@@ -99,7 +99,7 @@ specific one is given with `--remote`.
   workspace. Note that this can be combined with `-a` above, for example using
   the `-aT` flags.
 
-- `--all-commits` - fetch cache for all Git commits, as well as for the
+- `-A`, `--all-commits` - fetch cache for all Git commits, as well as for the
   workspace. This downloads tracked data for the entire commit history of the
   project.
 
