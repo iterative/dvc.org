@@ -116,9 +116,9 @@ that.
   the workspace. Note that this can be combined with `-a` above, for example
   using the `-aT` flags.
 
-- `--all-commits` - compares cache content against all Git commits, as well as
-  the workspace. This compares the cache content for the entire commit history
-  of the project.
+- `-A`, `--all-commits` - compares cache content against all Git commits, as
+  well as the workspace. This compares the cache content for the entire commit
+  history of the project.
 
 - `-R`, `--recursive` - determines the files to check status for by searching
   each target directory and its subdirectories for stages (in `dvc.yaml`) and

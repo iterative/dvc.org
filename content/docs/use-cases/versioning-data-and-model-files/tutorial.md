@@ -33,8 +33,7 @@ model file.
 
 ## Preparation
 
-> We have tested our tutorials and examples with Python 3. We don't recommend
-> using earlier versions.
+> We have last tested this tutorial with Python 3.7.
 
 You'll need [Git](https://git-scm.com/) to run the commands in this tutorial.
 Also, if DVC is not installed, please follow these [instructions](/doc/install)
