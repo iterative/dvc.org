@@ -65,7 +65,7 @@ types:
 > steps required. One way is to configure the remote accordingly after step 1,
 > and use a special `remote://` URL in step 2. e.g.
 > `dvc add --external remote://xcache/data`. See `dvc remote modify` for more
-> details.
+> alternatives.
 
 <details>
 
