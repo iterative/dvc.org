@@ -27,20 +27,20 @@ You can use `conda` from
 a POSIX-like command line terminal in Windows.
 
 ```dvc
-$ conda install -c conda-forge mamba # installs much faster than conda
+$ conda install -c conda-forge mamba # Installs much faster than conda
 $ mamba install -c conda-forge dvc
 ```
 
 Depending on the type of the [remote storage](/doc/command-reference/remote) you
-plan to use, you might need to install optional dependencies: `dvc-s3`,
-`dvc-azure`, `dvc-gdrive`, `dvc-gs`, `dvc-oss`, `dvc-ssh`.
+plan to use, you might need to install optional dependencies: `-s3`, `-azure`,
+`-gdrive`, `-gs`, `-oss`, `-ssh`.
 
 <details>
 
 ### Example: with support for Amazon S3 storage
 
 ```dvc
-$ conda install -c conda-forge mamba # installs much faster than conda
+$ conda install -c conda-forge mamba
 $ mamba install -c conda-forge dvc-s3
 ```
 
