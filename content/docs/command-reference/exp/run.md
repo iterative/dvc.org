@@ -94,6 +94,10 @@ When running experiments outside of your workspace via `--queue/--run-all` or
 `--temp`, you can use `--rev` to directly specify the checkpoint from which you
 want to resume.
 
+⚠️ Note that `--rev` is disallowed when running in your workspace, since using
+`--rev` in this way could potentially lead to discarding and overwriting changes
+in your workspace.
+
 Alternatively, use `--reset` to start over (discards previous checkpoints and
 deletes `checkpoint` outputs, like the first `dvc exp run`) — useful for
 re-training ML models, for example.
