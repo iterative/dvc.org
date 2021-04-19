@@ -118,6 +118,16 @@ changes between/after queueing runs.
 `dvc exp run --temp`, for example to continue working on the project meanwhile
 (e.g. on another terminal).
 
+> Note that only Git-tracked and DVC-tracked files and data will be included in
+> the execution environment when running experiments outside of your workspace.
+> Git-ignored files and directories are explicitly excluded from the execution
+> environment.
+>
+> To include untracked files (such as new code or new DVC pipeline files) in the
+> experiment, you should first stage the file in Git using `git add <file>` or
+> `git add --intent-to-add <file>` and then use `dvc exp run --queue/--temp`
+> once all of your untracked files have been staged.
+
 Adding `-j` (`--jobs`), experiment queues can be run in parallel for better
 performance (creates a tmp dir for each job).
 
