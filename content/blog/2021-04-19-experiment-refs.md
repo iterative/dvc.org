@@ -7,11 +7,12 @@ description: |
   how exactly these new experiments work.
 
 descriptionLong: |
-  In DVC 2.0, we’ve introduced a new feature set aimed at simplifying the
-  versioning of lightweight ML experiments. In this post, we’ll show how DVC
-  leverages the power of Git references to track each experiment, while also
-  completely abstracting away the need for you to manually manage a potentially
-  unlimited number of Git feature branches or tags.
+  In [DVC 2.0](/blog/dvc-2-0-release), we’ve introduced a new feature set
+  aimed at simplifying the versioning of lightweight ML experiments. In this
+  post, we’ll show how DVC leverages the power of Git references to track each
+  experiment, while also completely abstracting away the need for you to
+  manually manage a potentially unlimited number of Git feature branches or
+  tags.
 
 picture: 2021-04-19/experiment-refs.png
 pictureComment: Utilizing Custom Git References in DVC
@@ -68,13 +69,7 @@ we invoked `dvc exp run --set-param` to generate a new experiment with the
 specified parameter value. DVC then reproduced our pipeline as if we had
 manually edited our `params.yaml` to contain that parameter change (setting
 `featurize.max_features` to `2000`), and then saved the results in a new
-experiment named `exp-9b1a5`.
-
-_Note: `--temp` is an optional flag for `dvc exp run` which makes DVC run the
-experiment in a temporary directory instead of in our main workspace. We use
-`--temp` here to illustrate how DVC tracks experiment changes without needing to
-modify the workspace at all, but experiments can also be run directly in your
-workspace as well (like in traditional `dvc repro` workflows)._
+experiment named `exp-26220`.
 
 Returning DVC users will likely be familiar with the typical Git+DVC workflow of
 reproducing your pipeline, staging the results in Git, and then Git committing
@@ -97,13 +92,13 @@ addressed via a pathname starting with `refs/`. Git branches and tags are
 actually just references which are stored in the `refs/heads` and `refs/tags`
 namespaces respectively. In our repo, we can see that:
 
-The tip of our `master` branch is commit `0413348`:
+The tip of our `master` branch is commit `f137703`:
 
 ```dvc
 $ git show master
-commit 0413348986d70a3b1fb0061b7217866b60a89390 (HEAD -> master, origin/master, origin/HEAD)
+commit f137703af59ba1b80e77505a762335805d05d212 (HEAD -> master)
 Author: dberenbaum <dave@iterative.ai>
-Date:   Mon Mar 1 14:57:36 2021 -0500
+Date:   Wed Apr 14 14:31:54 2021 -0400
 
     Run experiments tuning random forest params
 ```
@@ -112,22 +107,22 @@ Date:   Mon Mar 1 14:57:36 2021 -0500
 
 ```dvc
 $ git show-ref master
-0413348986d70a3b1fb0061b7217866b60a89390 refs/heads/master
+f137703af59ba1b80e77505a762335805d05d212 refs/heads/master
 ```
 
 ## What exactly is a DVC experiment?
 
 Now, going back to our experiment run, we see that DVC has generated and saved
-an experiment named `exp-9b1a5`. We can even use that name freely within DVC
+an experiment named `exp-26220`. We can even use that name freely within DVC
 commands as if it was a Git branch or tag name:
 
 ```dvc
-$ dvc metrics diff master exp-9b1a5
+$ dvc metrics diff master exp-26220
 Path         Metric    Old      New      Change
 scores.json  avg_prec  0.60405  0.58589  -0.01817
 scores.json  roc_auc   0.9608   0.945    -0.01581
 
-$ dvc diff master exp-9b1a5
+$ dvc diff master exp-26220
 Modified:
     data/features/
     data/features/test.pkl
@@ -140,7 +135,7 @@ Modified:
 files summary: 0 added, 0 deleted, 0 renamed, 6 modified
 ```
 
-However, Git tells us that there is no branch or tag named `exp-9b1a5`, and we
+However, Git tells us that there is no branch or tag named `exp-26220`, and we
 cannot use that name in Git porcelain commands:
 
 ```dvc
@@ -164,8 +159,8 @@ random-forest-experiments
 $ git branch -l
 * master
 
-$ git checkout exp-9b1a5
-error: pathspec 'exp-9b1a5' did not match any file(s) known to git
+$ git checkout exp-26220
+error: pathspec 'exp-26220' did not match any file(s) known to git
 ```
 
 _Note: The Git CLI is divided into
@@ -173,13 +168,13 @@ _Note: The Git CLI is divided into
 the commonly used user-friendly “porcelain” commands (like `git checkout`) and
 the lower level “plumbing” commands._
 
-This naturally begs the question, “What is `exp-9b1a5`?”
+This naturally begs the question, “What is `exp-26220`?”
 
 The answer is simple, it’s a custom DVC Git ref pointing to a Git commit:
 
 ```dvc
-$ git show-ref exp-9b1a5
-7365395a722ab30ddc8ff28536b5e50371006348 refs/exps/04/13348986d70a3b1fb0061b7217866b60a89390/exp-9b1a5
+$ git show-ref exp-26220
+c42f48168830148b946f6a75d1bdbb25cda46f35 refs/exps/f1/37703af59ba1b80e77505a762335805d05d212/exp-26220
 ```
 
 _Note: that `dvc exp show --sha` can be used to view Git commit SHAs for
@@ -191,19 +186,19 @@ commit object that contains our hyperparameter change and the results of the
 run:
 
 ```dvc
-$ git show 7365395
-commit 7365395a722ab30ddc8ff28536b5e50371006348 (refs/exps/04/13348986d70a3b1fb0061b7217866b60a89390/exp-9b1a5)
+$ git show c42f481
+commit c42f48168830148b946f6a75d1bdbb25cda46f35 (refs/exps/f1/37703af59ba1b80e77505a762335805d05d212/exp-26220)
 Author: Peter Rowlands <peter@pmrowla.com>
-Date:   Tue Apr 6 07:20:17 2021 +0000
+Date:   Mon Apr 19 04:24:04 2021 +0000
 
-    dvc: commit experiment 9b1a52d692cf9a725ee790ae61a376fa470e8589ec1cf90385a459a92b3a0544
+    dvc: commit experiment 262206295221319fe5e8ca8a9854d6eb93ec0931fb377488910304cf5ed55f84
 
 diff --git a/dvc.lock b/dvc.lock
-index a55afd2..4210d68 100644
+index 0e92326..d81fe2b 100644
 --- a/dvc.lock
 +++ b/dvc.lock
 @@ -30,19 +30,19 @@ stages:
-       size: 2480
+       size: 2455
      params:
        params.yaml:
 -        featurize.max_features: 3000
@@ -244,11 +239,13 @@ Likewise, for tools which provide a GUI on top of Git, experiments will be
 hidden from your repository in typical use cases:
 
 ![`gitk --branches --tags` example](/uploads/images/2021-04-19/gitk-branches-tags.png 'gitk --branches --tags')
+_`gitk --branches --tags`_
 
 Tools which provide the capability to displaying all Git refs (including custom
 namespaces) can also be used to view experiments as if they were Git branches:
 
 ![`gitk --all` example screenshot](/uploads/images/2021-04-19/gitk-all.png 'gitk --all')
+_`gitk --all`_
 
 Experiments are also completely local (since custom refs are not transferred to
 or from Git remotes on `git push` and `git pull`), meaning that even if you run
@@ -256,6 +253,8 @@ thousands of experiments locally, you do not need to worry about accidentally
 polluting your team’s upstream Github or Gitlab repository with those
 experiments. However, individual DVC experiments can be explicitly shared via
 remote Git repositories using the `dvc exp push` and `dvc exp pull` commands.
+Regular Git branches can also be created from experiments can via
+`dvc exp branch`.
 
 ## Conclusion
 
