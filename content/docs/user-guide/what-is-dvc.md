@@ -38,7 +38,7 @@ can version experiments, manage large datasets, and make projects reproducible.
   by codifying the data and artifacts involved.
 
 - DVC is **platform agnostic**: It runs on all major operating systems (Linux,
-  MacOS, and Windows), and works independently of the programming languages
+  macOS, and Windows), and works independently of the programming languages
   (Python, R, Julia, shell scripts, etc.) or ML libraries (Keras, Tensorflow,
   PyTorch, Scipy, etc.) used in the <abbr>project</abbr>.
 
