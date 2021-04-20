@@ -52,8 +52,9 @@ in the same external/remote file.
 Let's take a look at the following operations on all the supported location
 types:
 
-1. Adding a `dvc remote` in the same location as the desired outputs, and
-   configure it as external <abbr>cache</abbr> with `dvc config`.
+1. Configure an external <abbr>cache</abbr> directory (added as a
+   `dvc remote`\*) in the same location as the external data, using
+   `dvc config`.
 2. Tracking existing data on the external location using `dvc add` (`--external`
    option needed). This produces a `.dvc` file with an external URL or path in
    its `outs` field.
@@ -61,11 +62,10 @@ types:
    moves a local file to the external location. This produces an external output
    in `dvc.yaml`.
 
-> 🔒 Note that for locations that require authentication there may be extra
-> steps required. One way is to configure the remote accordingly after step 1,
-> and use a special `remote://` URL in step 2. e.g.
-> `dvc add --external remote://xcache/data`. See `dvc remote modify` for more
-> alternatives.
+> \* Note that for certain `dvc remote` authentication methods, extra config
+> steps are required (see `dvc remote modify` for details). Once access is
+> setup, use the special `remote://` URL format in step 2. For example:  
+> `dvc add --external remote://myxcache/existing-data`.
 
 <details>
 
