@@ -67,7 +67,7 @@ efficiency:
    intact.
 
    > Unfortunately reflinks are currently supported on a limited number of file
-   > systems only (Linux: Btrfs, XFS, OCFS2; MacOS: APFS), but in the future
+   > systems only (Linux: Btrfs, XFS, OCFS2; macOS: APFS), but in the future
    > they will be supported by the majority of file systems in use.
 
 2. **`hardlink`**: Hard links are the most efficient way to link your data to

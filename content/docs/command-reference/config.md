@@ -49,7 +49,7 @@ multiple projects or users, respectively.
   }
 </style>
 
-| Flag       | Priority | Mac location                                    | Linux location (typical\*) | Windows location                                          |
+| Flag       | Priority | macOS location                                  | Linux location (typical\*) | Windows location                                          |
 | ---------- | -------- | ----------------------------------------------- | -------------------------- | --------------------------------------------------------- |
 | `--global` | 3        | `$HOME/Library/Application\ Support/dvc/config` | `$HOME/.config/dvc/config` | `%LocalAppData%\iterative\dvc\config`                     |
 | `--system` | 4        | `/Library/Application\ Support/dvc/config`      | `/etc/xdg/dvc/config`      | `%AllUsersProfile%\Application Data\iterative\dvc\config` |
@@ -192,7 +192,7 @@ This section contains the following options, which affect the project's
   `664` (rw-rw-r--) for files and `775` (rwxrwxr-x) for directories. This is
   useful when using a
   [shared development server](/doc/use-cases/shared-development-server). The
-  default permissions for cache files is system dependent. In Linux and MacOS
+  default permissions for cache files is system dependent. In Linux and macOS
   for example, they're determined using
   [`os.umask`](https://docs.python.org/3/library/os.html#os.umask).
 

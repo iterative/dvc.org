@@ -20,7 +20,7 @@ original <abbr>project</abbr>, and try again.
 
 A known problem some users run into with the `dvc pull`, `dvc fetch` and
 `dvc push` commands is `[Errno 24] Too many open files` (most common for S3
-remotes on MacOS). The more `--jobs` specified, the more file descriptors need
+remotes on macOS). The more `--jobs` specified, the more file descriptors need
 to be open on the host file system for each download thread, and the limit may
 be reached, causing this error.
 
