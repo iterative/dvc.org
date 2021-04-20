@@ -1,5 +1,5 @@
 ---
-title: Utilizing Custom Git References in DVC
+title: Git Custom References for ML Experiments
 date: 2021-04-19
 description: |
   In DVC 2.0, we’ve introduced a new feature set aimed at simplifying the
