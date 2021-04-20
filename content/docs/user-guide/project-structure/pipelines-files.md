@@ -6,7 +6,7 @@ individual [stages](/doc/command-reference/run) in one or more `dvc.yaml` files
 (forming a _dependency graph_, see `dvc dag`). Refer to
 [Get Started: Data Pipelines](/doc/start/data-pipelines).
 
-> Note that a helper command, `dvc run`, is available to create (and execute)
+> Note that a helper command, `dvc stage`, is available to create and list
 > stages.
 
 `dvc.yaml` files can be versioned with Git.
