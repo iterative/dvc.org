@@ -333,13 +333,15 @@ summary, in order of precedence:
 1. `connection_string` is used for authentication if given (all others params
    are ignored).
 2. If `tenant_id` and `client_id` or `client_secret` are given, Active Directory
-   (AD) service principal auth is performed.
+   (AD)
+   [service principal](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal)
+   auth is performed.
 3. The storage `account_name` is tried next, along with `account_key` or
-   `sas_token` (in that order). If neither are provided, DVC will try to connect
-   anonymously.
-4. If no params are given, DVC will try to use a
+   `sas_token` (in that order). If neither key nor token is provided, DVC will
+   try to connect anonymously.
+4. If no params are given, DVC will try Azure's
    [default credential](https://docs.microsoft.com/en-us/python/api/azure-identity/azure.identity.defaultazurecredential)
-   (inferred from environment variables).
+   process.
 
 > The authentication values below may contain sensitive user info. Therefore,
 > it's safer to use the `--local` flag so they're written to a Git-ignored
@@ -353,9 +355,8 @@ summary, in order of precedence:
   $ dvc remote modify --local myremote connection_string 'mysecret'
   ```
 
-* `tenant_id` - tenant ID for AD
-  [service principal](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal)
-  authentication (requires `client_id` and `client_secret` along with this):
+* `tenant_id` - tenant ID for AD _service principal_ authentication (requires
+  `client_id` and `client_secret` along with this):
 
   ```dvc
   $ dvc remote modify --local myremote tenant_id 'directory-id'
@@ -395,8 +396,8 @@ summary, in order of precedence:
   $ dvc remote modify --local myremote sas_token 'mysecret'
   ```
 
-Authentication via environment variables (if none of the auth params above are
-set). For Azure connection string:
+The same authentication methods are available via environment variables (checked
+after the params above). For Azure connection string:
 
 ```dvc
 $ export AZURE_STORAGE_CONNECTION_STRING='mysecret'
@@ -406,6 +407,7 @@ For account name and key/token auth:
 
 ```dvc
 $ export AZURE_STORAGE_ACCOUNT='myuser'
+# and
 $ export AZURE_STORAGE_KEY='mysecret'
 # or
 $ export AZURE_STORAGE_SAS_TOKEN='mysecret'
@@ -419,6 +421,10 @@ $ export AZURE_CLIENT_ID='client-id'
 $ export AZURE_CLIENT_CERTIFICATE_PATH='/path/to/certificate'
 ```
 
+> See
+> [more env vars](https://docs.microsoft.com/en-us/python/api/azure-identity/azure.identity.environmentcredential)
+> for _service principal_ auth.
+
 For simple username/password login:
 
 ```
@@ -426,12 +432,6 @@ $ export AZURE_CLIENT_ID='client-id'
 $ export AZURE_USERNAME='myuser'
 $ export AZURE_PASSWORD='mysecret'
 ```
-
-> On Windows, Azure authentication will fall back to searching for a signed-in
-> Microsoft application (e.g Visual Studio) and using it's identity (if multiple
-> exist, `AZURE_USERNAME` can be set to select one). On all other systems this
-> will apply only if [Visual Studio Code](https://code.visualstudio.com/) is
-> available.
 
 </details>
 

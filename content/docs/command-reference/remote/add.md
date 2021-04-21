@@ -171,18 +171,15 @@ $ dvc remote modify --local myremote connection_string 'mysecret'
 > `--local` option, so it's written to a Git-ignored config file. See
 > `dvc remote modify` for a full list of Azure parameters.
 
-The Azure Blob Storage remote can also be configured globally via environment
-variables:
+This remote type can also be configured via environment variables:
 
 ```dvc
 $ export AZURE_STORAGE_CONNECTION_STRING='mysecret'
 $ dvc remote add -d myremote azure://mycontainer/path
 ```
 
-> 💡 Make sure the value is quoted so its processed correctly by the console.
-
-See `dvc remote modify` for a full list of Azure parameters and environment
-variables.
+See `dvc remote modify` for a full list of Azure parameters (authentication
+methods) and environment variables.
 
 </details>
 
