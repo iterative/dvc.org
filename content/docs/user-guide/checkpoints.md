@@ -166,6 +166,9 @@ _If you don't define a number of epochs to run, checkpoints will be created
 indefinitely until you terminate the code in the terminal. `Ctrl + C` will end
 the process._
 
+_If you use `dvclive.next_step()`, you don't need to use `make_checkpoints()`.
+One or the other will give you checkpoints._
+
 ### Adding checkpoints conditionally
 
 You do have the option of adding checkpoints conditionally. You might be running
@@ -291,9 +294,39 @@ decreasing at a certain checkpoint and you want to make some changes to fix
 that. You can start training from any existing checkpoint with the following
 command.
 
-**Add command here**
+If you want to start a new experiment based on an existing checkpoint, you can
+run `dvc exp run --rev 0fff9ff` where _0fff9ff_ is the id of the checkpoint you
+want to reference.
 
-## Running a modified experiment
+You'll be able to see where the experiment starts from the existing checkpoint
+with the `dvc exp show` command. You should seem something similar to this in
+your terminal.
+
+```dvc
+┏━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━┓
+┃ Experiment            ┃ Created      ┃    acc ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━┩
+│ workspace             │ -            │  0.984 │
+│ make_checkpoint       │ Apr 20, 2021 │      - │
+│ │ ╓ exp-bf633         │ 08:47 AM     │  0.984 │
+│ │ ╟ a012471           │ 08:47 AM     │ 0.9851 │
+│ │ ╟ f8f88de           │ 08:47 AM     │  0.984 │
+│ │ ╟ bf99e9c           │ 08:47 AM     │  0.983 │
+│ │ ╟ 920c3bb           │ 08:47 AM     │ 0.9835 │
+│ │ ╟ 8461894           │ 08:47 AM     │ 0.9837 │
+│ │ ╟ 02059db           │ 08:46 AM     │ 0.9791 │
+│ │ ╟ b802041           │ 08:46 AM     │ 0.9804 │
+│ │ ╟ 9243729           │ 08:46 AM     │ 0.9808 │
+│ │ ╟ 64f1b50 (0fff9ff) │ 08:46 AM     │ 0.9752 │
+│ │ ╓ exp-59edb         │ Apr 20, 2021 │ 0.9771 │
+│ │ ╟ 9f5b812           │ Apr 20, 2021 │  0.979 │
+│ │ ╟ 54a30b8           │ Apr 20, 2021 │  0.974 │
+│ │ ╟ 97126cc           │ Apr 20, 2021 │ 0.9708 │
+```
+
+The existing checkpoint is referenced at the beginning of the new experiment.
+The new experiment is referred to as a modified experiment because it's taking
+existing data and using it as the starting point.
 
 ### Metrics diff
 
