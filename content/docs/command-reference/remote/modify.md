@@ -324,6 +324,9 @@ $ dvc remote modify myremote endpointurl \
   $ dvc remote modify myremote url azure://mycontainer/path
   ```
 
+  Note that if the given container name isn't found in your account, DVC will
+  attempt to create it.
+
 The remaining parameters represent different authentication methods. Here's a
 summary, in order of precedence:
 
