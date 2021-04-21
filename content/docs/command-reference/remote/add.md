@@ -99,10 +99,10 @@ The following are the types of remote storage (protocols) supported:
 $ dvc remote add -d myremote s3://mybucket/path
 ```
 
-By default, DVC expects your AWS CLI is already
-[configured](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html).
-DVC will be using default AWS credentials file to access S3. To override some of
-these parameters, use the parameters described in `dvc remote modify`.
+By default, DVC authenticates using your AWS CLI
+[configuration](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html)
+(if set). This uses the default AWS credentials file. To use a custom
+authentication method, use the parameters described in `dvc remote modify`.
 
 We use the `boto3` library to communicate with AWS. The following API methods
 are performed:
@@ -162,14 +162,13 @@ For more information about the variables DVC supports, please visit
 
 ```dvc
 $ dvc remote add -d myremote azure://mycontainer/path
-$ dvc remote modify --local myremote connection_string 'mysecret'
 ```
 
-> The Azure Storage
-> [connection string](http://azure.microsoft.com/en-us/documentation/articles/storage-configure-connection-string/)
-> contains sensitive user info. Therefore, it's safer to add it with the
-> `--local` option, so it's written to a Git-ignored config file. See
-> `dvc remote modify` for a full list of Azure parameters.
+By default, DVC authenticates using an Azure
+[default credential](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html)
+(if any). This uses certain environment variables or a signed in Microsoft
+application. To use a custom authentication method, use the parameters described
+in `dvc remote modify`.
 
 This remote type can also be configured via environment variables, for example:
 
@@ -178,8 +177,9 @@ $ export AZURE_STORAGE_CONNECTION_STRING='mysecret'
 $ dvc remote add -d myremote azure://mycontainer/path
 ```
 
-See `dvc remote modify` for a full list of Azure parameters and env vars for
-different authentication methods.
+> See
+> [all the env vars](https://docs.microsoft.com/en-us/python/api/azure-identity/azure.identity.environmentcredential)
+> available.
 
 </details>
 

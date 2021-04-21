@@ -107,11 +107,6 @@ options:
 
 ### Click for Amazon S3
 
-By default, DVC expects your AWS CLI is already
-[configured](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html).
-DVC will be using default AWS credentials file to access S3. To override some of
-these parameters, you could use the following options.
-
 - `url` - remote location, in the `s3://<bucket>/<key>` format:
 
   ```dvc
@@ -123,6 +118,11 @@ these parameters, you could use the following options.
   ```dvc
   $ dvc remote modify myremote region us-east-2
   ```
+
+By default, DVC authenticates using your AWS CLI
+[configuration](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html)
+(if set). This uses the default AWS credentials file. Use the following
+parameters to customize the authentication method:
 
 - `profile` - credentials profile name to access S3:
 
@@ -191,6 +191,8 @@ these parameters, you could use the following options.
   ```dvc
   $ dvc remote modify myremote ssl_verify false
   ```
+
+Operational parameters:
 
 - `listobjects` - whether or not to use `list_objects`. By default,
   `list_objects_v2` is used. Useful for ceph and other S3 emulators.
@@ -327,8 +329,11 @@ $ dvc remote modify myremote endpointurl \
   Note that if the given container name isn't found in your account, DVC will
   attempt to create it.
 
-The remaining parameters represent different authentication methods. Here's a
-summary, in order of precedence:
+By default, DVC authenticates using an Azure
+[default credential](https://docs.microsoft.com/en-us/python/api/azure-identity/azure.identity.defaultazurecredential)
+(if any). This uses certain environment variables or other auth sources. Use the
+following parameters (listed in order or precedence) to customize the
+authentication method:
 
 1. `connection_string` is used for authentication if given (all others params
    are ignored).
@@ -339,9 +344,6 @@ summary, in order of precedence:
 3. The storage `account_name` is tried next, along with `account_key` or
    `sas_token` (in that order). If neither key nor token is provided, DVC will
    try to connect anonymously.
-4. If no params are given, DVC will try Azure's
-   [default credential](https://docs.microsoft.com/en-us/python/api/azure-identity/azure.identity.defaultazurecredential)
-   process.
 
 > The authentication values below may contain sensitive user info. Therefore,
 > it's safer to use the `--local` flag so they're written to a Git-ignored
