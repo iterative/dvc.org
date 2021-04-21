@@ -222,7 +222,7 @@ $ time rclone copy --dry-run --progress --exclude "**/**.unpacked/" .dvc/cache r
 
 _rclone run with `--no-traverse` where indicated_
 
-_Benchmark platform: Python 3.7, MacOS Catalina, DVC installed from pip,
+_Benchmark platform: Python 3.7, macOS Catalina, DVC installed from pip,
 dual-core 3.1GHz i7 cpu_
 
 **Local directory w/100k total files, S3 bucket w/1M total files (1 file

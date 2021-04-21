@@ -26,7 +26,7 @@ const itemsByOs = {
     download: false
   },
   [OS.OSX]: {
-    title: 'Mac OS',
+    title: 'macOS',
     url: `/osxpkg/dvc-${VERSION}.pkg`,
     download: true
   },

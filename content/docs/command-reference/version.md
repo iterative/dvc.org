@@ -66,13 +66,13 @@ The detail of DVC version depends upon the way of installing DVC.
     distributions, like Ubuntu
   - Red Hat package (`.rpm`) - file used to install packages in some Linux based
     distributions, such as Fedora, CentOS, etc.
-  - PKG file (`.pkg`) - file used to install apps on MacOS
+  - PKG file (`.pkg`) - file used to install apps on macOS
   - Windows executable (`.exe`) - file used to install applications on Windows
 
   These downloads are available from our [home page](/). They ultimately contain
   a binary bundle, which is the executable file of a software application,
   meaning that it will run natively on a specific platform (Linux, Windows,
-  MacOS).
+  macOS).
 
   > We use [PyInstaller](https://pythonhosted.org/PyInstaller/) to bundle our
   > source code into the binary package app.
@@ -83,7 +83,7 @@ The detail of DVC version depends upon the way of installing DVC.
     source code is hosted
   - [The Python Package Index (PyPI)](https://pypi.org/project/dvc/) - source
     code is stored as a Python package
-  - [Homebrew package manager](https://formulae.brew.sh/formula/dvc) (for MacOS
+  - [Homebrew package manager](https://formulae.brew.sh/formula/dvc) (for macOS
     systems) - source code is stored as Python package
 
   This method of installation involves downloading DVC source code, and
