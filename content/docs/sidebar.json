@@ -87,7 +87,11 @@
         "slug": "sharing-data-and-model-files"
       },
       "data-registries",
-      "shared-development-server"
+      "shared-development-server",
+      {
+        "label": "CI/CD for Machine Learning",
+        "slug": "ci-cd-ml"
+      }
     ]
   },
   {
