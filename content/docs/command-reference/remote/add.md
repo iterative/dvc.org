@@ -99,10 +99,10 @@ The following are the types of remote storage (protocols) supported:
 $ dvc remote add -d myremote s3://mybucket/path
 ```
 
-By default, DVC expects your AWS CLI is already
-[configured](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html).
-DVC will be using default AWS credentials file to access S3. To override some of
-these parameters, use the parameters described in `dvc remote modify`.
+By default, DVC authenticates using your AWS CLI
+[configuration](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html)
+(if set). This uses the default AWS credentials file. To use a custom
+authentication method, use the parameters described in `dvc remote modify`.
 
 We use the `boto3` library to communicate with AWS. The following API methods
 are performed:
@@ -162,36 +162,24 @@ For more information about the variables DVC supports, please visit
 
 ```dvc
 $ dvc remote add -d myremote azure://mycontainer/path
-$ dvc remote modify --local myremote connection_string 'mystring'
 ```
 
-> The connection string contains sensitive user info. Therefore, it's safer to
-> add it with the `--local` option, so it's written to a Git-ignored config
-> file. See `dvc remote modify` for a full list of Azure parameters.
+By default, DVC authenticates using an Azure
+[default credential](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html)
+(if any). This uses certain environment variables or a signed in Microsoft
+application. To use a custom authentication method, use the parameters described
+in `dvc remote modify`.
 
-The Azure Blob Storage remote can also be configured globally via environment
-variables:
+This remote type can also be configured via environment variables, for example:
 
 ```dvc
 $ export AZURE_STORAGE_CONNECTION_STRING='mysecret'
-$ export AZURE_STORAGE_CONTAINER_NAME='mycontainer'
-$ dvc remote add -d myremote 'azure://'
+$ dvc remote add -d myremote azure://mycontainer/path
 ```
 
-`AZURE_STORAGE_CONNECTION_STRING`: This is the secret to access your Azure
-Storage Account. If you don't already have a storage account, you can create one
-by following
-[these instructions](https://docs.microsoft.com/en-us/azure/storage/common/storage-create-storage-account).
-The connection string can be found in the **Access Keys** pane of your Storage
-Account resource in the Azure portal.
-
-> 💡 Make sure the value is quoted so its processed correctly by the console.
-> For more info on Azure Storage connection strings, visit their
-> [docs](https://docs.microsoft.com/en-us/azure/storage/common/storage-configure-connection-string).
-
-`AZURE_STORAGE_CONTAINER_NAME`: This is the top-level container in your Azure
-Storage Account under which all the files for this remote will be uploaded. If
-the container doesn't already exist, it will be created automatically.
+> See
+> [all the env vars](https://docs.microsoft.com/en-us/python/api/azure-identity/azure.identity.environmentcredential)
+> available.
 
 </details>
 
