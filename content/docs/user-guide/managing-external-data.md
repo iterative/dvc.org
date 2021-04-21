@@ -62,7 +62,7 @@ types:
    moves a local file to the external location. This produces an external output
    in `dvc.yaml`.
 
-> \* Note that for certain `dvc remote` authentication methods, extra config
+> \* Note that for certain remote storage authentication methods, extra config
 > steps are required (see `dvc remote modify` for details). Once access is
 > setup, use the special `remote://` URL format in step 2. For example:  
 > `dvc add --external remote://myxcache/existing-data`.
