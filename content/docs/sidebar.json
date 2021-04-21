@@ -87,6 +87,10 @@
         "slug": "sharing-data-and-model-files"
       },
       {
+        "label": "CI/CD for Machine Learning",
+        "slug": "ci-cd-ml"
+      },
+      {
         "label": "Fast and Secure Data Caching Hub",
         "slug": "fast-data-caching-hub"
       },
