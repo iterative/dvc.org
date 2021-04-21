@@ -421,10 +421,6 @@ $ export AZURE_CLIENT_ID='client-id'
 $ export AZURE_CLIENT_CERTIFICATE_PATH='/path/to/certificate'
 ```
 
-> See
-> [more env vars](https://docs.microsoft.com/en-us/python/api/azure-identity/azure.identity.environmentcredential)
-> for _service principal_ auth.
-
 For simple username/password login:
 
 ```
@@ -432,6 +428,10 @@ $ export AZURE_CLIENT_ID='client-id'
 $ export AZURE_USERNAME='myuser'
 $ export AZURE_PASSWORD='mysecret'
 ```
+
+> See
+> [all the env vars](https://docs.microsoft.com/en-us/python/api/azure-identity/azure.identity.environmentcredential)
+> available.
 
 </details>
 
