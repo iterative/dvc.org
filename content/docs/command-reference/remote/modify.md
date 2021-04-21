@@ -189,7 +189,7 @@ these parameters, you could use the following options.
   certificates are verified.
 
   ```dvc
-  $ dvc remote modify myremote verify_ssl false
+  $ dvc remote modify myremote ssl_verify false
   ```
 
 - `listobjects` - whether or not to use `list_objects`. By default,
