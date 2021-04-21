@@ -171,15 +171,15 @@ $ dvc remote modify --local myremote connection_string 'mysecret'
 > `--local` option, so it's written to a Git-ignored config file. See
 > `dvc remote modify` for a full list of Azure parameters.
 
-This remote type can also be configured via environment variables:
+This remote type can also be configured via environment variables, for example:
 
 ```dvc
 $ export AZURE_STORAGE_CONNECTION_STRING='mysecret'
 $ dvc remote add -d myremote azure://mycontainer/path
 ```
 
-See `dvc remote modify` for a full list of Azure parameters (authentication
-methods) and environment variables.
+See `dvc remote modify` for a full list of Azure parameters and env vars for
+different authentication methods.
 
 </details>
 
