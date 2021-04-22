@@ -84,7 +84,7 @@ logging for the current iteration.
 
 And in order to make that work, we need to plug it in with this change:
 
-```diff
+```git
 + dvclive.init("training_metrics")
   model.fit(x_train,
             y_train,

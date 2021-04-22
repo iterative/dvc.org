@@ -85,7 +85,7 @@ bring in changes from the data source later using `dvc update`.
 `.dvc` files created by `dvc import` have special fields, such as the data
 source `repo` and `path` (under `deps`):
 
-```diff
+```git
 + deps:
 + - path: get-started/data.xml
 +   repo:
