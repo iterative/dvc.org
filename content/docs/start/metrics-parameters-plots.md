@@ -167,7 +167,7 @@ featurize:
 
 <details>
 
-### 💡 Expand to recall how it was generated 🤔
+### ⚙️ Expand to recall how it was generated.
 
 The `featurize` stage
 [was created](/doc/start/data-pipelines#dependency-graphs-dags) with this
