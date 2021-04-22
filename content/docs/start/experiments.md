@@ -40,7 +40,7 @@ running experiments. The `--set-param` (or `-S`) flag sets the values for
 
 Check that the `featurize.max_features` value has been updated in `params.yaml`:
 
-```diff
+```git
  featurize:
 -  max_features: 1500
 +  max_features: 3000

@@ -105,7 +105,7 @@ prepare:
 - `-o data/prepared` specifies an output directory for this script, which writes
   two files in it. This is how the <abbr>workspace</abbr> should look like now:
 
-  ```diff
+  ```git
    .
    ├── data
    │   ├── data.xml
@@ -238,8 +238,8 @@ $ dvc repro
 Let's try to play a little bit with it. First, let's try to change one of the
 parameters for the training stage:
 
-- Open `params.yaml` and change `n_est` to `100`, and
-- (re)run `dvc repro`.
+1. Open `params.yaml` and change `n_est` to `100`, and
+2. (re)run `dvc repro`.
 
 You should see:
 
@@ -261,10 +261,9 @@ Stage 'prepare' didn't change, skipping
 Stage 'featurize' didn't change, skipping
 ```
 
-This is the same result as before (no need to rerun `prepare`, `featurize`,
-etc.) but it also doesn't run `train` again this time either! DVC maintains a
-<abbr>run-cache</abbr> where it saved the previous run with the same set of
-inputs (parameters + data) for later reuse.
+As before, there was no need to rerun `prepare`, `featurize`, etc. But this time
+it also doesn't rerun `train`! The previous run with the same set of inputs
+(parameters & data) was saved in DVC's <abbr>run-cache</abbr>, and reused here.
 
 </details>
 
@@ -308,7 +307,8 @@ important problems:
 
 - _Automation_: run a sequence of steps in a "smart" way which makes iterating
   on your project faster. DVC automatically determines which parts of a project
-  need to be run, and it caches "runs" and their results to avoid unnecessary reruns.
+  need to be run, and it caches "runs" and their results to avoid unnecessary
+  reruns.
 - _Reproducibility_: `dvc.yaml` and `dvc.lock` files describe what data to use
   and which commands will generate the pipeline results (such as an ML model).
   Storing these files in Git makes it easy to version and share.
@@ -320,7 +320,7 @@ important problems:
 ## Visualize
 
 Having built our pipeline, we need a good way to understand its structure.
-Seeing a graph of connected stages would help. DVC lets you do just that without
+Seeing a graph of connected stages would help. DVC lets you do so without
 leaving the terminal!
 
 ```dvc

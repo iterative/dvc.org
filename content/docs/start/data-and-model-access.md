@@ -82,8 +82,8 @@ bring in changes from the data source later using `dvc update`.
 > doesn't actually contain a `get-started/data.xml` file. Like `dvc get`,
 > `dvc import` downloads from [remote storage](/doc/command-reference/remote).
 
-`.dvc` files created by `dvc import` have special fields — such as the data
-source `repo`, and `path` (under `deps`):
+`.dvc` files created by `dvc import` have special fields, such as the data
+source `repo` and `path` (under `deps`):
 
 ```git
 +deps:
