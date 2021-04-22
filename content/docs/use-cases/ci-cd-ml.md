@@ -4,7 +4,7 @@ MLOps and DataOps apply DevOps methodologies to machine learning (ML) and data
 management. The fields are rapidly evolving beyond a mere set of best practices,
 and now encompass the entire product lifecycle management. A core component is
 the automation of testing and deployment: CI/CD (continuous integration and
-delivery).
+continuous delivery).
 
 CI/CD is easy to set up with practically any Git repository. Some example
 scenarios are:
@@ -23,8 +23,7 @@ scenarios are:
 - Continuous machine learning (CML): online training
   - Schedule regular jobs pulling in data updates from public sources to refine
     deployed models
-  - Provision bare metal in the cloud and run a brute force hyperparameter
-    search
+  - Provision hardware in the cloud and run a brute force hyperparameter search
 
 In ML, CI/CD can be used to automatically build, test and push data and models
 to production in the cloud with minimal effort. There are many components, such
