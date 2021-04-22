@@ -9,7 +9,7 @@ versions to Git. The next questions are: How can we _use_ these artifacts
 outside of the project? How do we download a model to deploy it? How to download
 a specific version of a model? Or reuse datasets across different projects?
 
-> These questions tend to come up when you browse the files which DVC saves to
+> These questions tend to come up when you browse the files that DVC saves to
 > remote storage (e.g.
 > `s3://dvc-public/remote/get-started/fb/89904ef053f04d64eafcc3d70db673` 😱
 > instead of the original file name such as `model.pkl` or `data.xml`).
