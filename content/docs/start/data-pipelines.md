@@ -308,7 +308,8 @@ important problems:
 
 - _Automation_: run a sequence of steps in a "smart" way which makes iterating
   on your project faster. DVC automatically determines which parts of a project
-  need to be run, and it caches "runs" and their results to avoid unnecessary reruns.
+  need to be run, and it caches "runs" and their results to avoid unnecessary
+  reruns.
 - _Reproducibility_: `dvc.yaml` and `dvc.lock` files describe what data to use
   and which commands will generate the pipeline results (such as an ML model).
   Storing these files in Git makes it easy to version and share.
