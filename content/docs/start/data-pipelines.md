@@ -8,8 +8,8 @@ version, and reproduce your data science and machine learning workflows.'
 
 Versioning large data files and directories for data science is great, but not
 enough. How is data filtered, transformed, or used to train ML models? DVC
-introduces a mechanism to capture <abbr>data pipelines</abbr> — series of data
-processes that produce a final result.
+introduces a mechanism to capture _data pipelines_ — series of data processes
+that produce a final result.
 
 DVC pipelines and their data can also be easily versioned (using Git). This
 allows you to better organize projects, and reproduce your workflow and results
@@ -23,10 +23,9 @@ https://youtu.be/71IGzyH95UY
 
 ## Pipeline stages
 
-Use `dvc run` to create <abbr>stages</abbr>. These represent processes (source
-code tracked with Git) which form the steps of a <abbr>pipeline</abbr>. Stages
-also connect code to its corresponding data <abbr>input</abbr> and
-<abbr>output</abbr>. Let's transform a Python script into a
+Use `dvc run` to create _stages_. These represent processes (source code tracked
+with Git) which form the steps of a _pipeline_. Stages also connect code to its
+corresponding data _input_ and _output_. Let's transform a Python script into a
 [stage](/doc/command-reference/run):
 
 <details>
@@ -151,9 +150,8 @@ in this case); `dvc run` already took care of this. You only need to run
 
 By using `dvc run` multiple times, and specifying <abbr>outputs</abbr> of a
 stage as <abbr>dependencies</abbr> of another one, we can describe a sequence of
-commands which gets to a desired result. This is what we call a <abbr>data
-pipeline</abbr> or
-[dependency graph](https://en.wikipedia.org/wiki/Directed_acyclic_graph).
+commands which gets to a desired result. This is what we call a _data pipeline_
+or [_dependency graph_](https://en.wikipedia.org/wiki/Directed_acyclic_graph).
 
 Let's create a second stage chained to the outputs of `prepare`, to perform
 feature extraction:

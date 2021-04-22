@@ -211,8 +211,7 @@ $ dvc push
 ## Switching between versions
 
 The regular workflow is to use `git checkout` first (to switch a branch or
-checkout a `.dvc` file version) and then run `dvc checkout` to sync
-data:
+checkout a `.dvc` file version) and then run `dvc checkout` to sync data:
 
 ```dvc
 $ git checkout <...>
