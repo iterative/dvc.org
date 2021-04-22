@@ -13,7 +13,7 @@ and seeing data files and machine learning models in the workspace. Or switching
 to a different version of a 100Gb file in less than a second with a
 `git checkout`.
 
-The foundation of DVC consists of a few commands which you can run along with
+The foundation of DVC consists of a few commands you can run along with
 `git` to track large files, directories, or ML model files. Think "Git for
 data". Read on or watch our video to learn about versioning data with DVC!
 
