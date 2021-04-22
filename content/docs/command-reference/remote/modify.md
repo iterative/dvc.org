@@ -324,6 +324,9 @@ $ dvc remote modify myremote endpointurl \
   $ dvc remote modify myremote url azure://mycontainer/path
   ```
 
+  Note that if the given container name isn't found in your account, DVC will
+  attempt to create it.
+
 The remaining parameters represent different authentication methods. Here's a
 summary, in order of precedence:
 
@@ -344,11 +347,10 @@ summary, in order of precedence:
 
 - `connection_string` - Azure Storage
   [connection string](http://azure.microsoft.com/en-us/documentation/articles/storage-configure-connection-string/)
-  (recommended):
+  (recommended).
 
   ```dvc
-  $ dvc remote modify --local myremote connection_string \
-                              'mystring'
+  $ dvc remote modify --local myremote connection_string 'mysecret'
   ```
 
 * `tenant_id` - tenant ID for AD
@@ -384,22 +386,29 @@ summary, in order of precedence:
 * `account_key` - storage account key (for `account_name`):
 
   ```dvc
-  $ dvc remote modify --local myremote account_key 'mykey'
+  $ dvc remote modify --local myremote account_key 'mysecret'
   ```
 
 * `sas_token` - shared access signature token (for `account_name`):
 
   ```dvc
-  $ dvc remote modify --local myremote sas_token 'mytoken'
+  $ dvc remote modify --local myremote sas_token 'mysecret'
   ```
 
 Authentication via environment variables (if none of the auth params above are
-set). For account name and key/token auth:
+set). For Azure connection string:
 
 ```dvc
-$ export AZURE_STORAGE_ACCOUNT_NAME='myuser'
-$ export AZURE_STORAGE_ACCOUNT_KEY='mykey'
-$ dvc remote add -d myremote azure://mycontainer/path
+$ export AZURE_STORAGE_CONNECTION_STRING='mysecret'
+```
+
+For account name and key/token auth:
+
+```dvc
+$ export AZURE_STORAGE_ACCOUNT='myuser'
+$ export AZURE_STORAGE_KEY='mysecret'
+# or
+$ export AZURE_STORAGE_SAS_TOKEN='mysecret'
 ```
 
 For _service principal_ auth (via certificate file):
