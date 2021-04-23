@@ -15,17 +15,19 @@ positional arguments:
 
 ## Description
 
-Makes a
-[Git branch](https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging)
-off the last commit (`HEAD`) based on the given `experiment`, using the `branch`
-name provided. This makes the given experiment
-[persistent](/doc/user-guide/experiment-management#persistent-experiments) in
-the repo.
+Makes a named Git
+[`branch`](https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging)
+containing the target `experiment` (making it
+[persistent](/doc/user-guide/experiment-management#persistent-experiments)). The
+branch is based on the commit that was active (`HEAD`) at the time that the
+target experiment was run.
 
-In most cases this is similar to using `dvc exp apply` (applies the `experiment`
-results to the workspace) followed by Git branching and committing, except that
-`dvc exp branch` **does not** switch into the created `branch`. Equivalent to
-this:
+This command is useful, for example, in cases where `dvc exp apply` fails due to
+significant diversion between the project version at the time of the experiment
+run and the current <abbr>workspace</abbr>.
+
+Note that `dvc exp branch` **does not** switch into the new branch created. It's
+equivalent to:
 
 ```bash
 [master] $ git checkout -b <branch>
@@ -34,10 +36,12 @@ this:
 [branch] $ git checkout master
 ```
 
-For [checkpoints](/doc/command-reference/exp/run#checkpoints), the `experiment`
-(custom Git branch with multiple commits) is merged into the new `branch`.
+For [checkpoints](/doc/command-reference/exp/run#checkpoints), the new branch
+will contain multiple commits (the checkpoints).
 
-To switch into the new branch, use `git checkout branch` and `dvc checkout`.
+To switch into the new branch, use `git checkout branch` and `dvc checkout`. Or
+use `git merge branch` to merge it into another existing project branch (e.g.
+`master`).
 
 ## Options
 
