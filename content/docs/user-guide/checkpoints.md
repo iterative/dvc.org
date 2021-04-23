@@ -73,13 +73,16 @@ stages:
         html: true
 ```
 
-You can also enable checkpoints at the pipeline level by running the command:
-`dvc stage add -n name_of_stage --checkpoints model.pt`. This will create a new
-stage with checkpoints enabled, but does not update existing stages.
+The checkpoints need to be enabled in DVC at the pipeline level. The
+`--checkpoint` option of the `dvc stage add` command defines the checkpoint file
+or directory. In the cloned repository, the checkpoints are already defined.
+That's why you see `checkpoint: true` next to the ML model output file
+`model.pt`.
 
-If you want to update an existing stage, run the command:
-`dvc stage add -f --checkpoint`. This will force an overwrite of the current
-stage and update it with checkpoints enabled.
+This will create a new stage with checkpoints enabled, but does not update
+existing stages. If you want to update an existing stage, adding the `-f` option
+to the `dvc stage add --checkpoint` command will force an overwrite of the
+current stage and update it with checkpoints enabled.
 
 Now that you know how to enable checkpoints in a DVC pipeline, let's move on to
 setting up checkpoints in your code.
@@ -118,61 +121,22 @@ checkpoint file will be created. Each time an epoch completes, a new checkpoint
 is added to that file. In the code, you'll find the `dvclive.next_step()` method
 in the training epochs. This line is how checkpoints are created.
 
+Having the number of training epochs defined will prevent your training from
+running indefinitely. You can also hit `Ctrl + C` to stop creating new
+checkpoints if the number of epochs are not defined.
+
 ### Manually adding checkpoints
 
-_This is just an example of how you can manually add checkpoints. The remainder
-of this tutorial will use the `dvclive` implementation._
-
 You also have the option to implement checkpoints in code with the
-`make_checkpoint()` method if you don't want to use `dvclive` in your code. This
-manually adds checkpoints for you.
+`make_checkpoints()` method if you don't want to use `dvclive` in your code.
+This manually adds checkpoints for you, but it won't generate metrics for you.
 
-First, import the method into the code.
-
-`from dvc.api import make_checkpoint`
-
-Then you can change a few things in the training epoch part of the code. Start
-by removing the following lines of code:
-
-```python
-metrics = evaluate(model, x_test, y_test)
-for metric, value in metrics.items():
-    dvclive.log(metric, value)
-dvclive.next_step()
-```
-
-Then replace them with this code:
-
-```python
-evaluate(model, x_test, y_test)
-make_checkpoint()
-```
-
-We've updated the way we record our metrics and now we're using the
-`make_checkpoint()` method to generate our checkpoints throughout training.
-There's also a small update we need to make to the `evaluate` method so that we
-are saving our data correctly.
-
-Instead of returning the metrics for `dvclive` to work with, we're going to save
-them to a file. In the `evaluate` method, replace this code:
-
-```python
-return metrics
-```
-
-With the following code:
-
-```python
-with open("metrics.json", "w") as f:
-    json.dump(metrics, f)
-```
+If you use `dvclive.next_step()`, you don't need to use `make_checkpoints()`.
+One or the other will give you checkpoints.
 
 _If you don't define a number of epochs to run, checkpoints will be created
 indefinitely until you terminate the code in the terminal. `Ctrl + C` will end
 the process._
-
-_If you use `dvclive.next_step()`, you don't need to use `make_checkpoints()`.
-One or the other will give you checkpoints._
 
 ### Adding checkpoints conditionally
 
@@ -251,6 +215,77 @@ checkpoint.
 └───────────────┴──────────────┴──────┴──────────┴────────┴────────┴───────┴──────────────┘
 ```
 
+## Starting from an existing checkpoint
+
+Since you have all of these different checkpoints, you might want to resume
+training from a particular one. For example, maybe your accuracy started
+decreasing at a certain checkpoint and you want to make some changes to fix
+that. You can start training from any existing checkpoint with the following
+command.
+
+If you want to start a new experiment based on an existing checkpoint, you can
+run `dvc exp apply 574bdc3 && dvc exp run` where _574bdc3_ is the id of the
+checkpoint you want to reference.
+
+You'll be able to see where the experiment starts from the existing checkpoint
+with the `dvc exp show` command. You should seem something similar to this in
+your terminal.
+
+```dvc
+┏━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━┳━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━┳━━━━━━━━━━━━━━┓
+┃ Experiment            ┃ Created      ┃ step ┃     loss ┃    acc ┃ seed   ┃ lr    ┃ weight_decay ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━╇━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━╇━━━━━━━━━━━━━━┩
+│ workspace             │ -            │   19 │ 0.048277 │ 0.9854 │ 473987 │ 0.001 │ 0            │
+│ full_pipeline         │ Apr 20, 2021 │    - │        - │      - │ 473987 │ 0.001 │ 0            │
+│ │ ╓ exp-3c7a8         │ 01:41 PM     │   19 │ 0.048277 │ 0.9854 │ 473987 │ 0.001 │ 0            │
+│ │ ╟ a4d64fc           │ 01:41 PM     │   18 │ 0.049162 │ 0.9836 │ 473987 │ 0.001 │ 0            │
+│ │ ╟ 4067622           │ 01:41 PM     │   17 │ 0.050389 │ 0.9823 │ 473987 │ 0.001 │ 0            │
+│ │ ╟ 05a0883           │ 01:41 PM     │   16 │ 0.065079 │ 0.9808 │ 473987 │ 0.001 │ 0            │
+│ │ ╟ c23a6e0           │ 01:41 PM     │   15 │  0.05095 │ 0.9831 │ 473987 │ 0.001 │ 0            │
+│ │ ╟ a8ed9aa           │ 01:40 PM     │   14 │ 0.056475 │ 0.9819 │ 473987 │ 0.001 │ 0            │
+│ │ ╟ 0b5c7f0           │ 01:40 PM     │   13 │ 0.054636 │ 0.9817 │ 473987 │ 0.001 │ 0            │
+│ │ ╟ 6c4523d           │ 01:40 PM     │   12 │ 0.060063 │  0.982 │ 473987 │ 0.001 │ 0            │
+│ │ ╟ 54bca46           │ 01:40 PM     │   11 │  0.07912 │ 0.9747 │ 473987 │ 0.001 │ 0            │
+│ │ ╟ c60fe61 (574bdc3) │ 01:40 PM     │   10 │ 0.082944 │ 0.9728 │ 473987 │ 0.001 │ 0            │
+│ │ ╓ exp-e81d6         │ 01:30 PM     │    9 │ 0.066135 │ 0.9792 │ 473987 │ 0.001 │ 0            │
+│ │ ╟ 34b1d6f           │ 01:30 PM     │    8 │ 0.066629 │ 0.9783 │ 473987 │ 0.001 │ 0            │
+│ │ ╟ c048966           │ 01:30 PM     │    7 │ 0.082436 │ 0.9747 │ 473987 │ 0.001 │ 0            │
+│ │ ╟ 2910f35           │ 01:30 PM     │    6 │  0.08161 │ 0.9749 │ 473987 │ 0.001 │ 0            │
+│ │ ╟ 255d3aa           │ 01:30 PM     │    5 │ 0.088654 │ 0.9716 │ 473987 │ 0.001 │ 0            │
+```
+
+The existing checkpoint is referenced at the beginning of the new experiment.
+The new experiment is referred to as a modified experiment because it's taking
+existing data and using it as the starting point.
+
+### Metrics diff
+
+When you've run all the experiments you want to and you are ready to compare
+metrics between checkpoints, you can run the command:
+`dvc metrics diff exp-3c7a8 c23a6e0`. You'll see something similart to this in
+your terminal. \_Make sure that you replace `exp-3c7a8` with the experiment
+branch in your table and replace `c23a6e0` with the checkpoint id you want to
+see.
+
+```dvc
+Path          Metric    Old      New      Change
+dvclive.json  acc       0.9854   0.9831   -0.0023
+dvclive.json  loss      0.04828  0.05095  0.00267
+dvclive.json  step      19       15       -4
+```
+
+### Looking at plots
+
+You also have the option to generate plots to visualize the metrics about your
+training epochs. Running `dvc plots diff c60fe61 a4d64fc`, where `c60fe61` and
+`a4d64fc` are the checkpoint ids you want to compare, will generate a
+`plots.html` file that you can open in a browser and it will display plots for
+you similar to the ones below.
+
+![Plots generated from running experiments on MNIST dataset using DVC](/img/checkpoints_plots.png)
+_The results here won't show anything interesting because the model increases in
+accuracy so fast._
+
 ## Resetting checkpoints
 
 Usually when you start training a model, you won't begin with accuracy this
@@ -293,75 +328,10 @@ new set of checkpoints under a new experiment branch.
 We can also remove all of the experiments we don't promote to our Git workspace
 with the following command: `dvc exp gc --workspace --force`.
 
-## Starting from an existing checkpoint
+## Adding checkpoints to Git
 
-Since you have all of these different checkpoints, you might want to resume
-training from a particular one. For example, maybe your accuracy started
-decreasing at a certain checkpoint and you want to make some changes to fix
-that. You can start training from any existing checkpoint with the following
-command.
-
-If you want to start a new experiment based on an existing checkpoint, you can
-run `dvc exp run --rev 574bdc3` where _574bdc3_ is the id of the checkpoint you
-want to reference.
-
-You'll be able to see where the experiment starts from the existing checkpoint
-with the `dvc exp show` command. You should seem something similar to this in
-your terminal.
-
-```dvc
-┏━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━┳━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━┳━━━━━━━━━━━━━━┓
-┃ Experiment            ┃ Created      ┃ step ┃     loss ┃    acc ┃ seed   ┃ lr    ┃ weight_decay ┃
-┡━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━╇━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━╇━━━━━━━━━━━━━━┩
-│ workspace             │ -            │   19 │ 0.048277 │ 0.9854 │ 473987 │ 0.001 │ 0            │
-│ full_pipeline         │ Apr 20, 2021 │    - │        - │      - │ 473987 │ 0.001 │ 0            │
-│ │ ╓ exp-3c7a8         │ 01:41 PM     │   19 │ 0.048277 │ 0.9854 │ 473987 │ 0.001 │ 0            │
-│ │ ╟ a4d64fc           │ 01:41 PM     │   18 │ 0.049162 │ 0.9836 │ 473987 │ 0.001 │ 0            │
-│ │ ╟ 4067622           │ 01:41 PM     │   17 │ 0.050389 │ 0.9823 │ 473987 │ 0.001 │ 0            │
-│ │ ╟ 05a0883           │ 01:41 PM     │   16 │ 0.065079 │ 0.9808 │ 473987 │ 0.001 │ 0            │
-│ │ ╟ c23a6e0           │ 01:41 PM     │   15 │  0.05095 │ 0.9831 │ 473987 │ 0.001 │ 0            │
-│ │ ╟ a8ed9aa           │ 01:40 PM     │   14 │ 0.056475 │ 0.9819 │ 473987 │ 0.001 │ 0            │
-│ │ ╟ 0b5c7f0           │ 01:40 PM     │   13 │ 0.054636 │ 0.9817 │ 473987 │ 0.001 │ 0            │
-│ │ ╟ 6c4523d           │ 01:40 PM     │   12 │ 0.060063 │  0.982 │ 473987 │ 0.001 │ 0            │
-│ │ ╟ 54bca46           │ 01:40 PM     │   11 │  0.07912 │ 0.9747 │ 473987 │ 0.001 │ 0            │
-│ │ ╟ c60fe61 (574bdc3) │ 01:40 PM     │   10 │ 0.082944 │ 0.9728 │ 473987 │ 0.001 │ 0            │
-│ │ ╓ exp-e81d6         │ 01:30 PM     │    9 │ 0.066135 │ 0.9792 │ 473987 │ 0.001 │ 0            │
-│ │ ╟ 34b1d6f           │ 01:30 PM     │    8 │ 0.066629 │ 0.9783 │ 473987 │ 0.001 │ 0            │
-│ │ ╟ c048966           │ 01:30 PM     │    7 │ 0.082436 │ 0.9747 │ 473987 │ 0.001 │ 0            │
-│ │ ╟ 2910f35           │ 01:30 PM     │    6 │  0.08161 │ 0.9749 │ 473987 │ 0.001 │ 0            │
-│ │ ╟ 255d3aa           │ 01:30 PM     │    5 │ 0.088654 │ 0.9716 │ 473987 │ 0.001 │ 0            │
-```
-
-The existing checkpoint is referenced at the beginning of the new experiment.
-The new experiment is referred to as a modified experiment because it's taking
-existing data and using it as the starting point.
-
-### Metrics diff
-
-When you've run all the experiments you want to and you are ready to compare
-metrics between checkpoints, you can run the command: `dvc metrics diff`. You'll
-see something similart to this in your terminal.
-
-```dvc
-Path          Metric    Old    New      Change
-dvclive.json  acc       —      0.9854   —
-dvclive.json  loss      —      0.04828  —
-dvclive.json  step      —      19       —
-```
-
-### Looking at plots
-
-You also have the option to generate plots to visualize the metrics about your
-training epochs. Running `dvc plots show` will generate a `plots.html` file that
-you can open in a browser and it will display plots for you similar to the ones
-below.
-
-![Plots generated from running experiments on MNIST dataset using DVC](/img/checkpoints_plots.png)
-
-## Adding checkpoints to your Git workspace
-
-When the final epoch has run, you'll see a few commands in the terminal that
-will allow you to add these changes to Git.
+When you terminate training, you'll see a few commands in the terminal that will
+allow you to add these changes to Git.
 
 ```dvc
 To track the changes with git, run:
@@ -376,11 +346,29 @@ To promote an experiment to a Git branch run:
         dvc exp branch <exp>
 ```
 
-You could also run the following command to promote your experiments to the Git
+You can run the following command to promote your experiments to the Git
 workspace.
 
 ```bash
-dvc exp apply exp-263da
-git add .
-git commit -m 'optimize model'
+git add dvclive.json dvc.yaml .gitignore train.py dvc.lock
+```
+
+You can take a look at what will be commited to your Git history by running
+`git status`. You should see something similar to this in the terminal.
+
+```git
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   .gitignore
+        new file:   dvc.lock
+        new file:   dvclive.json
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        data/
+        dvclive.html
+        dvclive/
+        model.pt
+        plots.html
+        predictions.json
 ```
