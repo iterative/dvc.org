@@ -120,7 +120,7 @@ changes between/after queueing runs.
 
 > ⚠️ Note that only tracked files and directories will be included in
 > `--queue/temp` experiments. To include untracked files, stage them with
-> `git add -N` first (before `dvc exp run`). Feel free to `git reset` them
+> `git add` first (before `dvc exp run`). Feel free to `git reset` them
 > afterwards. Git-ignored files/dirs are explicitly excluded from runs outside
 > the workspace to avoid committing unwanted files into experiments.
 
