@@ -118,7 +118,7 @@ changes between/after queueing runs.
 `dvc exp run --temp`, for example to continue working on the project meanwhile
 (e.g. on another terminal).
 
-> ⚠️ Note that only tracked code and data will be included in `--queue/temp`
+> ⚠️ Note that only tracked files and directories will be included in `--queue/temp`
 > experiments. To include untracked files or directories, stage them with
 > `git add -N` first (before `dvc exp run`). Feel free to `git reset` them
 > afterwards. Git-ignored files/dirs are explicitly excluded from runs outside
