@@ -17,9 +17,10 @@ needs to be adjusted, and even recover model weights, parameters, and code. When
 you adjust parameters and code, DVC tracks those changes for you without adding
 a lot of commits to your workspace.
 
-The way checkpoints are implemented by DVC utilizes _ephemeral_ experiment
-commits and experiment branches within DVC. They are created using the metadata
-from experiments and are tracked with the `exps` custom Git reference.
+[The way checkpoints are implemented by DVC](/blog/2021-04-19-experiment-refs.md)
+utilizes _ephemeral_ experiment commits and experiment branches within DVC. They
+are created using the metadata from experiments and are tracked with the `exps`
+custom Git reference.
 
 You can add experiments to your Git history by committing the experiment you
 want to track, which you'll see later in this tutorial.
@@ -34,8 +35,8 @@ You can follow along with the steps here or you can clone the repo directly from
 GitHub and play with it. To clone the repo, run the following commands.
 
 ```bash
-git clone https://github.com/iterative/dvc-checkpoints-mnist
-cd dvc-checkpoints-mnist
+git clone https://github.com/iterative/checkpoints-tutorial
+cd checkpoints-tutorial
 ```
 
 It is highly recommended you create a virtual environment for this example. You
@@ -54,19 +55,63 @@ started with experiments and checkpoints.
 
 ## Enabling DVC pipelines for checkpoint experiments
 
-In the `dvc.yaml` file, you'll see `checkpoint: true` under the model file in
-the `outs` level. This enables checkpoints at the pipeline level. It should look
-like this.
+In the `dvc.yaml` file, we need to add a few things to get our checkpoints and
+metrics tracking setup. First we'll add metrics tracking to our experiments. At
+the end of the file, add the following lines.
+
+```yaml
+live:
+  dvclive:
+    summary: true
+    html: true
+```
+
+Your `dvc.yaml` should look similar to this now.
+
+```yaml
+---
+plots:
+  - predictions.json:
+      cache: false
+      template: confusion
+      x: actual
+      y: predicted
+live:
+  dvclive:
+    summary: true
+    html: true
+```
+
+Now we'll set up checkpoints. Below the `model.pt`, add the following code:
+`checkpoint: true`. This enables checkpoints at the pipeline level. Your
+`dvc.yaml` should look like this now.
 
 ```yaml
 stages:
+  download:
+    cmd: python download.py
+    deps:
+      - download.py
+    outs:
+      - data/MNIST
   train:
     cmd: python train.py
     deps:
+      - data/MNIST
       - train.py
+    params:
+      - seed
+      - lr
+      - weight_decay
     outs:
       - model.pt:
           checkpoint: true
+    plots:
+      - predictions.json:
+          cache: false
+          template: confusion
+          x: actual
+          y: predicted
     live:
       dvclive:
         summary: true
@@ -75,14 +120,12 @@ stages:
 
 The checkpoints need to be enabled in DVC at the pipeline level. The
 `--checkpoint` option of the `dvc stage add` command defines the checkpoint file
-or directory. In the cloned repository, the checkpoints are already defined.
-That's why you see `checkpoint: true` next to the ML model output file
-`model.pt`.
+or directory. This will create a new stage with checkpoints enabled, but does
+not update existing stages.
 
-This will create a new stage with checkpoints enabled, but does not update
-existing stages. If you want to update an existing stage, adding the `-f` option
-to the `dvc stage add --checkpoint` command will force an overwrite of the
-current stage and update it with checkpoints enabled.
+If you want to update an existing stage, adding the `-f` option to the
+`dvc stage add --checkpoint` command will force an overwrite of the current
+stage and update it with checkpoints enabled.
 
 Now that you know how to enable checkpoints in a DVC pipeline, let's move on to
 setting up checkpoints in your code.
@@ -98,28 +141,36 @@ add our checkpoints to give us the points in time with our model that we can
 switch between.
 
 To run this code, run the `dvc exp run` command and it will start training the
-model. In the terminal, you'll see the MNIST data being fetched from a remote
-source and then a _dvc.lock_ file will be generated and you'll see the first
-checkpoint being created.
+model. In the terminal, you'll see the training code being executed and you'll
+see the metrics being recorded.
 
 ```dvc
-Downloading https://ossci-datasets.s3.amazonaws.com/mnist/train-images-idx3-ubyte.gz
-Downloading https://ossci-datasets.s3.amazonaws.com/mnist/train-images-idx3-ubyte.gz to data/MNIST/raw/train-images-idx3-ubyte.gz
-9913344it [00:00, 14169693.99it/s]
-Extracting data/MNIST/raw/train-images-idx3-ubyte.gz to data/MNIST/raw
-
-...
-
-Done!
-Generating lock file 'dvc.lock'
-Updating lock file 'dvc.lock'
-Checkpoint experiment iteration '8747b08'.
+Running stage 'train':
+> python train.py
+Epoch 1: loss=0.4989388585090637
+Epoch 1: acc=0.8481
+Epoch 2: loss=0.3318292796611786
+Epoch 2: acc=0.9037
+Epoch 3: loss=0.21992072463035583
 ```
 
-Since this is the first run of this project with checkpoints enabled, a new
-checkpoint file will be created. Each time an epoch completes, a new checkpoint
-is added to that file. In the code, you'll find the `dvclive.next_step()` method
-in the training epochs. This line is how checkpoints are created.
+Now we need to enable checkpoints at the pipeline level. We are interested in
+tracking the metrics along with each checkpoint, so we'll need to add a few
+lines of code.
+
+In the `train.py` file, update the following lines of code in the `main` method
+inside of the training epoch loop.
+
+```python
+for k, v in metrics.items():
+    print('Epoch %s: %s=%s'%(i, k, v))
+    dvclive.log(k, v)
+dvclive.next_step()
+```
+
+By adding the two `dvclive` methods to our training epoch loop, we are enabling
+checkpoints in our code and recording the training metrics at each of those
+checkpoints.
 
 Having the number of training epochs defined will prevent your training from
 running indefinitely. You can also hit `Ctrl + C` to stop creating new
