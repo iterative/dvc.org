@@ -40,8 +40,8 @@ separately to delete it.
   from the last commit (implies `-w`). Note that this can be combined with `-a`
   above, for example using the `-aT` flags.
 
-- `--all-commits` - keep experiments derived from all Git commits, as well as
-  from the last commit (implies `-w`). This is mainly needed when clearing
+- `-A`, `--all-commits` - keep experiments derived from all Git commits, as well
+  as from the last commit (implies `-w`). This is mainly needed when clearing
   `--queued` experiments (below).
 
 - `--queued` - keep also experiments that haven't been run yet (defined via

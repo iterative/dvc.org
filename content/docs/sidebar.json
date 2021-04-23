@@ -10,7 +10,7 @@
     "source": "install/index.md",
     "children": [
       {
-        "label": "Mac OS",
+        "label": "macOS",
         "slug": "macos"
       },
       "windows",

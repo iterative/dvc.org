@@ -17,9 +17,9 @@ needs to be adjusted, and even recover model weights, parameters, and code. When
 you adjust parameters and code, DVC tracks those changes for you without adding
 a lot of commits to your workspace.
 
-[The way checkpoints are implemented by DVC](/blog/2021-04-19-experiment-refs.md)
-utilizes _ephemeral_ experiment commits and experiment branches within DVC. They
-are created using the metadata from experiments and are tracked with the `exps`
+[The way checkpoints are implemented by DVC](/blog/experiment-refs) utilizes
+_ephemeral_ experiment commits and experiment branches within DVC. They are
+created using the metadata from experiments and are tracked with the `exps`
 custom Git reference.
 
 You can add experiments to your Git history by committing the experiment you

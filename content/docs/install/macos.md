@@ -1,4 +1,4 @@
-# Installation on MacOS
+# Installation on macOS
 
 > To use DVC [as a Python library](/doc/api-reference), please
 > [install with pip](#install-with-pip) or [with conda](#install-with-conda).
@@ -22,7 +22,7 @@ from the [release page](https://github.com/iterative/dvc/releases/) on GitHub.
 > "Open With" > **Installer.app**, and click the **Open** button.
 
 > You may try [these instructions](https://stackoverflow.com/a/42120328/761963)
-> to uninstall the MacOS package.
+> to uninstall the macOS package.
 
 ## Install with pip
 
@@ -58,10 +58,9 @@ In this case it installs the `boto3` library along with DVC.
 > [Anaconda Distribution](https://docs.anaconda.com/anaconda/).
 
 ```dvc
-$ conda install -c conda-forge dvc
+$ conda install -c conda-forge mamba # installs much faster than conda
+$ mamba install -c conda-forge dvc
 ```
-
-> Currently, it supports Python 3.6-3.8
 
 Depending on the type of the [remote storage](/doc/command-reference/remote) you
 plan to use, you might need to install optional dependencies: `dvc-s3`,
@@ -72,7 +71,8 @@ plan to use, you might need to install optional dependencies: `dvc-s3`,
 ### Example: with support for Amazon S3 storage
 
 ```dvc
-$ conda install -c conda-forge dvc-s3
+$ conda install -c conda-forge mamba # installs much faster than conda
+$ mamba install -c conda-forge dvc-s3
 ```
 
 In this case it installs the `boto3` library along with DVC.
