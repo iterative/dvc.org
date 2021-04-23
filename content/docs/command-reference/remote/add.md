@@ -125,15 +125,13 @@ So, make sure you have the following permissions enabled:
 
 <details>
 
-### Click for S3 API compatible storage
+### Click for S3-compatible storage
 
-To communicate with a remote object storage that supports an S3 compatible API
+To communicate with a remote object storage that supports an S3-compatible API
 (e.g. [Minio](https://min.io/),
 [DigitalOcean Spaces](https://www.digitalocean.com/products/spaces/),
 [IBM Cloud Object Storage](https://www.ibm.com/cloud/object-storage) etc.),
-configure the remote's `endpointurl` explicitly:
-
-For example:
+configure the remote's `endpointurl`:
 
 ```dvc
 $ dvc remote add -d myremote s3://mybucket/path
@@ -141,9 +139,17 @@ $ dvc remote modify myremote endpointurl \
                     https://object-storage.example.com
 ```
 
-> See `dvc remote modify` for a full list of S3 API parameters.
+It's also important to setup appropriate authentication with any of the related
+parameters available for regular S3 storage (see `dvc remote modify`).
+Otherwise, DVC may try to use default AWS credentials (if any), which will
+probably cause an error. Example:
 
-S3 remotes can also be configured entirely via environment variables:
+```dvc
+$ dvc remote modify myremote profile 'myprofile'
+$ dvc remote modify myremote credentialpath /path/to/mycreds
+```
+
+Note that S3 remotes can also be configured entirely via environment variables:
 
 ```dvc
 $ export AWS_ACCESS_KEY_ID='mykey'
@@ -151,8 +157,8 @@ $ export AWS_SECRET_ACCESS_KEY='mysecret'
 $ dvc remote add -d myremote s3://mybucket/path
 ```
 
-For more information about the variables DVC supports, please visit
-[boto3 documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/configuration.html#environment-variable-configuration)
+For more on the supported env vars, please see the
+[boto3 docs](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/configuration.html#environment-variable-configuration)
 
 </details>
 

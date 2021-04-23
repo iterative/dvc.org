@@ -63,7 +63,7 @@ your storage format.
 
 <details>
 
-### S3 and S3 compatible storage (Minio, DigitalOcean Spaces, IBM Cloud Object Storage...)
+### S3 and S3-compatible storage (Minio, DigitalOcean Spaces, IBM Cloud Object Storage...)
 
 ```yaml
 env:

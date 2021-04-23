@@ -288,13 +288,10 @@ For more information about the variables DVC supports, please visit
 
 <details>
 
-### Click for S3 API compatible storage
+### Click for S3-compatible storage
 
-To communicate with a remote object storage that supports an S3 compatible API
-(e.g. [Minio](https://min.io/),
-[DigitalOcean Spaces](https://www.digitalocean.com/products/spaces/),
-[IBM Cloud Object Storage](https://www.ibm.com/cloud/object-storage) etc.),
-configure the remote's `endpointurl` explicitly:
+To communicate with a remote object storage that supports an S3-compatible API,
+configure the remote's `endpointurl`:
 
 ```dvc
 $ dvc remote add -d myremote s3://mybucket/path
@@ -302,9 +299,13 @@ $ dvc remote modify myremote endpointurl \
                     https://object-storage.example.com
 ```
 
-Besides that, any parameters that are available for Amazon S3 (see previous
-section) may be available for S3 compatible storage. For example, let's setup a
-DVC remote using the `example-name`
+It's also important to setup appropriate authentication with any of the related
+parameters available for regular S3 storage (see previous section). Otherwise,
+DVC may try to use default AWS credentials (if any), which will probably cause
+an error.
+
+Any other S3 remote parameter may also be available for S3-compatible storage.
+For example, let's setup a DVC remote using the `example-name`
 [DigitalOcean space](https://www.digitalocean.com/community/tutorials/how-to-create-a-digitalocean-space-and-api-key)
 (equivalent to a bucket in AWS) in the `nyc3` region:
 
