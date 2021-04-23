@@ -84,8 +84,8 @@ steps as `make_checkpoint()` — please refer to its reference for details.
 You can now use `dvc exp run` to begin the experiment. If the process gets
 interrupted (e.g. with `[Ctrl] C` or by an error), all the checkpoints so far
 will be preserved. When a run finishes normally, a final checkpoint will be
-added (if needed) to wrap up the experiment. Following uses of `dvc exp run`
-will continue from this point (using the latest cached versions of all outputs).
+added (if needed) to wrap up the experiment. Subsequent uses of `dvc exp run`
+will resume from this point (using the latest cached versions of all outputs).
 
 To continue from a previous checkpoint (list them with `dvc exp show`), when
 running experiments in your workspace, you must first use `dvc exp apply` to
