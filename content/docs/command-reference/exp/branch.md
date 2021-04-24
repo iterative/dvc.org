@@ -18,22 +18,20 @@ positional arguments:
 Makes a named Git
 [`branch`](https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging)
 containing the target `experiment` (making it
-[persistent](/doc/user-guide/experiment-management#persistent-experiments)). The
-branch is based on the commit that was active (`HEAD`) at the time that the
-target experiment was run.
+[persistent](/doc/user-guide/experiment-management#persistent-experiments)).
+This is useful, for example, in cases where `dvc exp apply` fails due to a
+divergence from the project version at the time of running the experiment.
 
-This command is useful, for example, in cases where `dvc exp apply` fails due to
-divergence between the project version at the time of the experiment run and
-now.
-
-Note that `dvc exp branch` **does not** switch into the new branch created. It's
-equivalent to:
+The branch is based on the target experiment's parent commit (`HEAD` at the time
+that the experiment was run). Note that unlike `git branch`, DVC **does not**
+switch into the new `branch`. `dvc exp branch` is equivalent to:
 
 ```bash
-[master] $ git checkout -b <branch>
-[branch] $ dvc exp apply <experiment>
+[master] $ git checkout <exp-parent>
+[exp-parent] $ git checkout -b <branch>
+[branch] $ dvc exp apply <experiment>  # guaranteed to succeed
 [branch] $ git add . && git commit
-[branch] $ git checkout master
+[branch] $ git checkout master  # back to where you started
 ```
 
 For [checkpoints](/doc/command-reference/exp/run#checkpoints), the new branch
