@@ -90,7 +90,7 @@
       "shared-development-server",
       {
         "label": "CI/CD for Machine Learning",
-        "slug": "ci-cd-ml"
+        "slug": "ci-cd-for-machine-learning"
       }
     ]
   },
