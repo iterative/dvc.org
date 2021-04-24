@@ -172,9 +172,7 @@ CPU cores).
   is processed serially).
 
 - `-r <commit>`, `--rev <commit>` - continue an experiment from a specific
-  checkpoint name or hash (`commit`). This is required to resume experiments
-  from `--queue` or `--temp` runs. `--rev` is explicitly disallowed when running
-  experiments in your workspace (`dvc exp apply` should be used instead).
+  checkpoint name or hash (`commit`) in `--queue` or `--temp` runs.
 
 - `--reset` - deletes `checkpoint` outputs before running this experiment
   (regardless of `dvc.lock`). Useful for ML model re-training.
