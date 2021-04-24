@@ -23,8 +23,8 @@ branch is based on the commit that was active (`HEAD`) at the time that the
 target experiment was run.
 
 This command is useful, for example, in cases where `dvc exp apply` fails due to
-significant diversion between the project version at the time of the experiment
-run and the current <abbr>workspace</abbr>.
+divergence between the project version at the time of the experiment run and
+now.
 
 Note that `dvc exp branch` **does not** switch into the new branch created. It's
 equivalent to:

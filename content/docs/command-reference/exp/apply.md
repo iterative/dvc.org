@@ -17,14 +17,15 @@ positional arguments:
 Restores a given `experiment` (name or hash are accepted, see `dvc exp run` for
 details) into the workspace. This means changing all files (code, data,
 <abbr>parameters</abbr>, <abbr>metrics</abbr>, etc.) needed to reflect the
-experiment conditions and results in the <abbr>workspace</abbr>.
+experiment conditions and results in the workspace.
 
 This command is typically used after finding a target experiment with
 `dvc exp show` or `dvc exp diff`, and before committing it to Git (making it
 [persistent](/doc/user-guide/experiment-management#persistent-experiments)).
 
-Note that this command may fail if the current Git commit (`HEAD`) has changed
-significantly from the time the `experiment` was run.
+Note that this command will fail if the current Git commit (`HEAD`) has changed
+from the time the `experiment` was run, or if changes in the
+<abbr>workspace</abbr> conflict with the desired experiment files.
 
 ## Options
 
