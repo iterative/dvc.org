@@ -81,16 +81,16 @@ Then, in your code either call the `dvc.api.make_checkpoint()` function
 (Python), or write a signal file (any programming language) following the same
 steps as `make_checkpoint()` — please refer to its reference for details.
 
-You can now use `dvc exp run` to begin the experiment. If the process gets
-interrupted (e.g. with `[Ctrl] C` or by an error), all the checkpoints so far
-will be preserved. When a run finishes normally, a final checkpoint will be
-added (if needed) to wrap up the experiment.
+You can now use `dvc exp run` to begin the experiment. All checkpoints
+registered at runtime will be preserved even if the process gets interrupted
+(e.g. with `[Ctrl] C`, or by an error). When a run finishes normally, a final
+checkpoint will be added (if needed) to wrap up the experiment.
 
 Following uses of `dvc exp run` will continue from this point (using the latest
 cached versions of all outputs). You can add a `--rev` to continue from a
 previous checkpoint instead (list them with `dvc exp show`). Or use `--reset` to
-start over (discards previous checkpoints and deletes `checkpoint` outputs, like
-the first `dvc exp run`) — useful for re-training ML models, for example.
+start over (discards previous checkpoints and deletes `checkpoint` outputs) —
+useful for re-training ML models, for example.
 
 <details>
 
