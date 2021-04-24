@@ -19,8 +19,6 @@ Makes a named Git
 [`branch`](https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging)
 containing the target `experiment` (making it
 [persistent](/doc/user-guide/experiment-management#persistent-experiments)).
-This is useful, for example, in cases where `dvc exp apply` fails due to a
-divergence from the project version at the time of running the experiment.
 
 The branch is based on the target experiment's parent commit (`HEAD` at the time
 that the experiment was run). Note that unlike `git branch`, DVC **does not**
@@ -28,18 +26,27 @@ switch into the new `branch`. `dvc exp branch` is equivalent to:
 
 ```bash
 [master] $ git checkout <exp-parent>
-[exp-parent] $ git checkout -b <branch>
+[exp-parent] $ git checkout --branch <branch>
 [branch] $ dvc exp apply <experiment>  # guaranteed to succeed
 [branch] $ git add . && git commit
 [branch] $ git checkout master  # back to where you started
 ```
 
-For [checkpoints](/doc/command-reference/exp/run#checkpoints), the new branch
-will contain multiple commits (the checkpoints).
+Note that for
+[checkpoint experiments](/doc/command-reference/exp/run#checkpoints), the new
+branch will contain multiple commits (the checkpoints).
+
+This command is useful for several scenarios, including:
+
+- To make one or more experiments persistent without applying them to the
+  workspace, so they can be
+  [stored and shared](https://dvc.org/doc/use-cases/sharing-data-and-model-files)
+  in a normal Git+DVC workflow;
+- In cases where `dvc exp apply` fails;
+- To preserve checkpoints as independent commits in the project's Git history
 
 To switch into the new branch, use `git checkout branch` and `dvc checkout`. Or
-use `git merge branch` to merge it into another existing project branch (e.g.
-`master`).
+use `git merge branch` to merge it into the current branch.
 
 ## Options
 

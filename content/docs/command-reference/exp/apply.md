@@ -19,12 +19,15 @@ details) into the workspace. This means changing all files (code, data,
 <abbr>parameters</abbr>, <abbr>metrics</abbr>, etc.) needed to reflect the
 experiment conditions and results in the workspace.
 
-This command is typically used after finding a target experiment with
+This command is typically used after finding a target `experiment` with
 `dvc exp show` or `dvc exp diff`, and before committing it to Git (making it
 [persistent](/doc/user-guide/experiment-management#persistent-experiments)).
 
-Note that this command will fail if the current Git commit (`HEAD`) has changed
-from the time the `experiment` was run, or if changes in the
+Note that any [checkpoints](/doc/command-reference/exp/run#checkpoints) found in
+the `experiment` are not preserved when applying and committing it.
+
+⚠️ This command will fail if the current Git commit (`HEAD`) has changed from
+the time the experiment in question was run, or if changes in the
 <abbr>workspace</abbr> conflict with the desired experiment files.
 
 ## Options
