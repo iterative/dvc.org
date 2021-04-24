@@ -14,13 +14,10 @@ positional arguments:
 
 ## Description
 
-Restores the results of a given `experiment` (name or hash are accepted, see
-`dvc exp run` for details) into the workspace. This means changing the
-appropriate [metafiles](/doc/user-guide/project-structure),
-<abbr>parameters</abbr>, <abbr>metrics</abbr>, <abbr>plots</abbr>, and
-corresponding DVC-tracked data.
-
-> This is similar to `dvc checkout`, but for `dvc experiments`.
+Restores a given `experiment` (name or hash are accepted, see `dvc exp run` for
+details) into the workspace. This means changing all files (code, data,
+<abbr>parameters</abbr>, <abbr>metrics</abbr>, etc.) needed to reflect the
+experiment conditions and results in the <abbr>workspace</abbr>.
 
 This command is typically used after finding a target experiment with
 `dvc exp show` or `dvc exp diff`, and before committing it to Git (making it
