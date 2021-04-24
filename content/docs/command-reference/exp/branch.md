@@ -36,7 +36,8 @@ not** switch into the new `branch`.
 - To preserve checkpoints as independent commits in the project's Git history
 
 To switch into the new branch, use `git checkout branch` and `dvc checkout`. Or
-use `git merge branch` to merge it into the current branch.
+use `git merge branch` and `dvc repro` to combine it with your current project
+version.
 
 ## Options
 
