@@ -139,10 +139,8 @@ $ dvc remote modify myremote endpointurl \
                     https://object-storage.example.com
 ```
 
-It's also important to setup appropriate authentication with any of the related
-parameters available for regular S3 storage (see `dvc remote modify`).
-Otherwise, DVC may try to use default AWS credentials (if any), which will
-probably cause an error. Example:
+⚠️ It's important to setup appropriate authentication with `dvc remote modify`.
+Otherwise, DVC may use default AWS credentials, which would cause an error.
 
 ```dvc
 $ dvc remote modify myremote profile 'myprofile'
