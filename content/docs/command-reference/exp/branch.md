@@ -28,11 +28,12 @@ new `branch` automatically.
 
 `dvc exp branch` is useful for several scenarios, including:
 
-- To make one or more experiments persistent without applying them to the
-  workspace, so they can be
+- To make one or more experiments persistent (without changing the workspace),
+  so they can be
   [stored and shared](https://dvc.org/doc/use-cases/sharing-data-and-model-files)
   in a normal Git+DVC workflow;
-- In cases where it's not possible to `dvc exp apply` an experiment directly;
+- As a step towards recreating a past experiment (along with
+  `git branch/rebase`) once `dvc exp apply` is no longer possible;
 - To preserve checkpoints as independent commits in the project's Git history
 
 To switch into the new branch, use `git checkout branch` and `dvc checkout`. Or
