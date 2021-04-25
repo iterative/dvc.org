@@ -31,6 +31,9 @@ the current Git commit.
 
 ## Options
 
+- `--no-force` - fail if this command would overwrite conflicting differences
+  between the `experiment` and the workspace.
+
 - `-h`, `--help` - shows the help message and exit.
 
 - `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if no
