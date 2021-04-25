@@ -87,12 +87,11 @@ will be preserved. When a run finishes normally, a final checkpoint will be
 added (if needed) to wrap up the experiment. Subsequent uses of `dvc exp run`
 will resume from this point (using the latest cached versions of all outputs).
 
-To continue from a previous checkpoint (list them with `dvc exp show`), when
-running experiments in your workspace, you must first use `dvc exp apply` to
-apply the checkpoint from which you want to resume before using `dvc exp run`.
-When running experiments outside of your workspace via `--queue/--run-all` or
-`--temp`, you can use `--rev` to directly specify the checkpoint from which you
-want to resume.
+List previous checkpoints with `dvc exp show`. To continue from a previous
+checkpoint, you must first `dvc exp apply` it before using `dvc exp run`. For
+convenience, when running experiments outside of your workspace via
+`--queue/--run-all` or `--temp`, you can use `--rev` instead to specify the
+checkpoint from which you want to continue.
 
 ⚠️ Note that `--rev` is disallowed when running in your workspace, since using
 `--rev` in this way could potentially lead to discarding and overwriting changes
