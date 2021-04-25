@@ -7,14 +7,14 @@ Print a customizable table of `dvc experiments`, their metrics and parameters.
 ## Synopsis
 
 ```usage
-usage: dvc exp show [-h] [-q | -v] [-a] [-T] [--all-commits] [--no-pager]
-                    [--include-metrics <metrics_list>]
+usage: dvc exp show [-h] [-q | -v] [-a] [-T] [-A] [-n <num>]
+                    [--no-pager] [--include-metrics <metrics_list>]
                     [--exclude-metrics <metrics_list>]
                     [--include-params <params_list>]
-                    [--exclude-params <params_list>]
-                    [--sort-by <metric/param>] [--sort-order {asc,desc}]
-                    [--no-timestamp] [--sha] [--show-json]
-                    [--precision <n>]
+                    [--exclude-params <params_list>] [--param-deps]
+                    [--sort-by <metric/param>]
+                    [--sort-order {asc,desc}] [--no-timestamp] [--sha]
+                    [--show-json] [--precision <n>]
 ```
 
 ## Description

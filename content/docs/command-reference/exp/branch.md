@@ -9,7 +9,7 @@ branch.
 usage: dvc exp branch [-h] [-q | -v] experiment branch
 
 positional arguments:
-  experiment     Experiment to commit/merge
+  experiment     Experiment to turn into a branch
   branch         Git branch name to use
 ```
 

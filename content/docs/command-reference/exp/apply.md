@@ -6,7 +6,7 @@ Put the results from an [experiment](/doc/command-reference/exp) in the
 ## Synopsis
 
 ```usage
-usage: dvc exp apply [-h] [-q | -v] experiment
+usage: dvc exp apply [-h] [-q | -v] [--no-force] experiment
 
 positional arguments:
   experiment     Experiment to be applied
