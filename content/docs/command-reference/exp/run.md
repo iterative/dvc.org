@@ -98,8 +98,8 @@ checkpoint from which you want to continue.
 in your workspace.
 
 Alternatively, use `--reset` to start over (discards previous checkpoints and
-deletes `checkpoint` outputs, like the first `dvc exp run`) — useful for
-re-training ML models, for example.
+their outputs, leaving things as they were before the first `dvc exp run`). This
+is useful for re-training ML models, for example.
 
 <details>
 
