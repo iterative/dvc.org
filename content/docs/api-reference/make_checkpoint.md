@@ -67,19 +67,23 @@ import os
 from dvc.api import make_checkpoint
 
 while True:
-    if os.path.exists("int.txt"):
-        with open("int.txt", "r") as fd:
-            i_ = int(fd.read()) + 1
-    else:
-        i_ = 0
+    try:
+        if os.path.exists("int.txt"):
+            with open("int.txt", "r") as fd:
+                i_ = int(fd.read()) + 1
+        else:
+            i_ = 0
 
-    # ... do something meaningful
+        # ... do something meaningful
 
-    with open("int.txt", "w") as fd:
-        fd.write(f"{i_}")
+        with open("int.txt", "w") as fd:
+            fd.write(f"{i_}")
 
-    if i_ % 100 == 0:
-        make_checkpoint()
+        if i_ % 100 == 0:
+            make_checkpoint()
+
+    except KeyboardInterrupt:
+    exit()
 ```
 
 Since `checkpoint` outputs in effect implement a circular dependency,
@@ -102,6 +106,9 @@ Checkpoint experiment iteration '75ff5e0'.
 Reproduced experiment(s): exp-8a3bd
 Experiment results have been applied to your workspace.
 ```
+
+> ⚠️ it's important to handle interruptions or any other errors in your code for
+> DVC checkpoints to behave as expected.
 
 In this example we killed the process (with Ctrl + C) after 3 checkpoints (at 0,
 100, and 200 `i_`). The <abbr>cache</abbr> will contain those 3 versions of
