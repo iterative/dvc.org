@@ -42,7 +42,7 @@ option.
 
 <details>
 
-### How does DVC track experiments?
+### ⚙️ How does DVC track experiments?
 
 Experiments are custom
 [Git references](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
@@ -98,7 +98,7 @@ useful for re-training ML models, for example.
 
 <details>
 
-### How are checkpoints captured?
+### ⚙️ How are checkpoints captured?
 
 Instead of a single commit, checkpoint experiments have multiple commits under
 the custom Git reference (in `.git/refs/exps`), similar to a branch.
@@ -127,6 +127,15 @@ changes between/after queueing runs.
 > `git add` first (before `dvc exp run`). Feel free to `git reset` them
 > afterwards. Git-ignored files/dirs are explicitly excluded from runs outside
 > the workspace to avoid committing unwanted files into experiments.
+
+<details>
+
+### ⚙️ How are experiments queued?
+
+A custom [Git stash](https://www.git-scm.com/docs/git-stash) is used to queue
+pre-experiment commits.
+
+</details>
 
 Adding `-j` (`--jobs`), experiment queues can be run in parallel for better
 performance (creates a tmp dir for each job).
