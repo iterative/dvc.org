@@ -87,8 +87,7 @@ registered at runtime will be preserved even if the process gets interrupted
 needed) to wrap up the experiment.
 
 > \* The stage command(s) should return a non-error exit code (`0`) for the
-> final checkpoint to happen. Otherwise, it will not be possible to continue
-> this experiment as described below (it will restart from scratch).
+> final checkpoint to happen.
 
 Following uses of `dvc exp run` will continue from this point (using the latest
 cached versions of all outputs). You can add a `--rev` to continue from a

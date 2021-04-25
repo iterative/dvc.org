@@ -23,8 +23,8 @@ containing the target `experiment` (making it
 branch will contain multiple commits (the checkpoints).
 
 The new `branch` will be based on the experiment's parent commit (`HEAD` at the
-time that the experiment was run). Note that unlike `git branch`, DVC **does
-not** switch into the new `branch`.
+time that the experiment was run). Note that DVC **does not** switch into the
+new `branch` automatically.
 
 `dvc exp branch` is useful for several scenarios, including:
 
