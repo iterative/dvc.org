@@ -3,7 +3,7 @@
 > Please double check that you don't already have DVC (for example running
 > `which dvc`) before trying to install it.
 
-- [Install on MacOS](/doc/install/macos)
+- [Install on macOS](/doc/install/macos)
 - [Install on Windows](/doc/install/windows)
 - [Install on Linux](/doc/install/linux)
 

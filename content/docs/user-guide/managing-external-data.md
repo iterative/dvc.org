@@ -52,14 +52,20 @@ in the same external/remote file.
 Let's take a look at the following operations on all the supported location
 types:
 
-1. Adding a `dvc remote` in the same location as the desired outputs, and
-   configure it as external <abbr>cache</abbr> with `dvc config`.
+1. Configure an external <abbr>cache</abbr> directory (added as a
+   `dvc remote`\*) in the same location as the external data, using
+   `dvc config`.
 2. Tracking existing data on the external location using `dvc add` (`--external`
    option needed). This produces a `.dvc` file with an external URL or path in
    its `outs` field.
 3. Creating a simple stage with `dvc run` (`--external` option needed) that
    moves a local file to the external location. This produces an external output
    in `dvc.yaml`.
+
+> \* Note that for certain remote storage authentication methods, extra config
+> steps are required (see `dvc remote modify` for details). Once access is
+> setup, use the special `remote://` URL format in step 2. For example:  
+> `dvc add --external remote://myxcache/existing-data`.
 
 <details>
 
@@ -94,11 +100,6 @@ $ dvc run -d data.txt \
           -o ssh://user@example.com/data.txt \
           scp data.txt user@example.com:/data.txt
 ```
-
-> Please note that to use password authentication, it's necessary to set the
-> `password` or `ask_password` SSH remote options first (see
-> `dvc remote modify`), and use a special `remote://` URL in step 2:
-> `dvc add --external remote://sshcache/existing-data`.
 
 ⚠️ DVC requires both SSH and SFTP access to work with remote SSH locations.
 Please check that you are able to connect both ways with tools like `ssh` and
