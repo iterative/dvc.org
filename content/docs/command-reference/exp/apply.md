@@ -23,8 +23,9 @@ This command is typically used after finding a target `experiment` with
 `dvc exp show` or `dvc exp diff`, and before committing it to Git (making it
 [persistent](/doc/user-guide/experiment-management#persistent-experiments)).
 
-Note that any [checkpoints](/doc/command-reference/exp/run#checkpoints) found in
-the `experiment` are **not** preserved when applying and committing it.
+Note that the history of
+[checkpoints](/doc/command-reference/exp/run#checkpoints) found in the
+`experiment` are **not** preserved when applying and committing it.
 
 ⚠️ This command will fail if the current Git commit (`HEAD`) has changed from
 the time the experiment in question was run, or if changes in the
