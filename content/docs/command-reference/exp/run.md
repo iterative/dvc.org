@@ -89,9 +89,8 @@ will resume from this point (using the latest cached versions of all outputs).
 
 List previous checkpoints with `dvc exp show`. To continue from a previous
 checkpoint, you must first `dvc exp apply` it before using `dvc exp run`. For
-convenience, when running experiments outside of your workspace via
-`--queue/--run-all` or `--temp`, you can use `--rev` instead to specify the
-checkpoint from which you want to continue.
+`--queue` or `--temp` runs (see below), use `--rev` instead to specify the
+checkpoint to continue from.
 
 Alternatively, use `--reset` to start over (discards previous checkpoints and
 their outputs). This is useful for re-training ML models, for example.
