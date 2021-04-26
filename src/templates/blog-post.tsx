@@ -13,8 +13,9 @@ interface IFluidObject extends FluidObject {
   presentationHeight: number
 }
 
-export interface IGatsbyImageProps extends GatsbyImageProps {
-  fluid?: IFluidObject
+export type IGatsbyImageProps = GatsbyImageProps & {
+  fluid: IFluidObject
+  style?: object
 }
 
 export interface IBlogPostHeroPic {
