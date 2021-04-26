@@ -26,15 +26,10 @@ The new `branch` will be based on the experiment's parent commit (`HEAD` at the
 time that the experiment was run). Note that DVC **does not** switch into the
 new `branch` automatically.
 
-`dvc exp branch` is useful for several scenarios, including:
-
-- To make one or more experiments persistent (without changing the workspace),
-  so they can be
-  [stored and shared](https://dvc.org/doc/use-cases/sharing-data-and-model-files)
-  in a normal Git+DVC workflow;
-- As a step towards recreating a past experiment (along with
-  `git branch/rebase`) once `dvc exp apply` is no longer possible;
-- To preserve checkpoints as independent commits in the project's Git history
+`dvc exp branch` is useful to make an experiment persistent without modifying
+the workspace, so they can be continued,
+[stored, and shared](https://dvc.org/doc/use-cases/sharing-data-and-model-files)
+in a normal Git + DVC workflow.
 
 To switch into the new branch, use `git checkout branch` and `dvc checkout`. Or
 use `git merge branch` and `dvc repro` to combine it with your current project
