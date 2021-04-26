@@ -21,9 +21,10 @@ usage: dvc exp show [-h] [-q | -v] [-a] [-T] [-A] [-n <num>]
 
 Displays experiments and
 [checkpoints](/doc/command-reference/exp/run#checkpoints) in a detailed table
-which includes their parent, name (or hash), metrics, and parameters. Only the
-experiments derived from the Git `HEAD` are shown by default but all experiments
-can be included with the `--all-commits` option. Example:
+which includes their parent and name (or hash), as well as project metrics and
+parameters. Only the experiments derived from the Git `HEAD` are shown by
+default but all experiments can be included with the `--all-commits` option.
+Example:
 
 ```dvc
 $ dvc exp show
@@ -43,9 +44,8 @@ which you can typically exit by typing `Q`. Use `--no-pager` to print the table
 to standard output.
 
 By default, the printed experiments table will include columns for all metrics
-and params from the entire project. The `--include-metrics`,
-`--exclude-metrics`, `--include-params`, and `--exclude-params` options can
-determine which ones should be visible.
+and params from the entire project. The `--param-deps`, `--include-metrics`, and
+other [options](#options) can determine which ones should be displayed.
 
 Experiments in the table are first grouped (by parent commit). They are then
 sorted inside each group, chronologically by default. The `--sort-by` and
@@ -68,6 +68,8 @@ metric or param.
 - `--no-pager` - do not enter the pager screen. Writes the entire table to
   standard output. Useful to redirect the output to a file, or use your own
   paginator.
+
+- `--param-deps` - include only parameters that are stage dependencies.
 
 - `--include-params <list>` - show the specified `dvc params` in the table only.
   Accepts a comma-separated `list` of param names. Shell style wildcards
@@ -114,7 +116,6 @@ metric or param.
 - `--precision <n>` -
   [round](https://docs.python.org/3/library/functions.html#round) decimal values
   to `n` digits of precision (5 by default). Applies to metrics only.
-- `--param-deps` - show only parameters that are stage dependencies.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
