@@ -53,38 +53,41 @@ running: `pip install -r requirements.txt`. This will download all of the
 packages you need to run the example. Now you have everything you need to get
 started with experiments and checkpoints.
 
+## Setting up a DVC pipeline
+
+If you don't have a DVC pipeline setup in your project, adding one only takes a
+few commands. At the root of the project, run `dvc init`. This sets up the files
+you need for your DVC pipeline to work.
+
+Next we'll add a stage to our pipeline to run our download the data we need for
+training our model. In your terminal, run
+`dvc stage add -n download -d download.py -o data/MNIST python download.py`.
+This will create a _dvc.yaml_ file in your root directory.
+
+The command we just ran creates a stage called _download_ with a dependency on
+the _download.py_ file and it should output any results to the _data/MNIST_
+directory.
+
+Inside of the yaml file, you should see the following code.
+
+```yaml
+stages:
+  download:
+    cmd: python download.py
+    deps:
+      - download.py
+    outs:
+      - data/MNIST
+```
+
+Now we need to add a stage for training our model within a DVC pipeliene. We'll
+do that with the following command:
+`dvc stage add -n train -d data/MNIST -d train.py -c model.pt --plots-no-cache predictions.json -p seed,lr,weight_decay --live dvclive python train.py`
+
 ## Enabling DVC pipelines for checkpoint experiments
 
-In the `dvc.yaml` file, we need to add a few things to get our checkpoints and
-metrics tracking setup. First we'll add metrics tracking to our experiments. At
-the end of the file, add the following lines.
-
-```yaml
-live:
-  dvclive:
-    summary: true
-    html: true
-```
-
-Your `dvc.yaml` should look similar to this now.
-
-```yaml
----
-plots:
-  - predictions.json:
-      cache: false
-      template: confusion
-      x: actual
-      y: predicted
-live:
-  dvclive:
-    summary: true
-    html: true
-```
-
-Now we'll set up checkpoints. Below the `model.pt`, add the following code:
-`checkpoint: true`. This enables checkpoints at the pipeline level. Your
-`dvc.yaml` should look like this now.
+After running the command above to setup your _train_ stage, your _dvc.yaml_
+should have the following code.
 
 ```yaml
 stages:
@@ -109,9 +112,6 @@ stages:
     plots:
       - predictions.json:
           cache: false
-          template: confusion
-          x: actual
-          y: predicted
     live:
       dvclive:
         summary: true
@@ -119,13 +119,27 @@ stages:
 ```
 
 The checkpoints need to be enabled in DVC at the pipeline level. The
-`--checkpoint` option of the `dvc stage add` command defines the checkpoint file
-or directory. This will create a new stage with checkpoints enabled, but does
-not update existing stages.
+`-c / --checkpoint` option of the `dvc stage add` command defines the checkpoint
+file or directory. This will create a new stage with checkpoints enabled, but
+does not update existing stages.
 
-If you want to update an existing stage, adding the `-f` option to the
-`dvc stage add --checkpoint` command will force an overwrite of the current
-stage and update it with checkpoints enabled.
+The rest of the command `dvc stage add` sets up our dependencies for running the
+training code, which parameters we want to track (which are defined in the
+_params.yaml_), some configurations for our plots and showing the training
+metrics.
+
+We'll manually add a slight modification to the way our plots are handled. Add
+the following lines to your _dvc.yaml_. This just changes the way our results
+are shown after we've run some experiments.
+
+```yaml
+plots:
+  - predictions.json:
+      cache: false
+      template: confusion
+      x: actual
+      y: predicted
+```
 
 Now that you know how to enable checkpoints in a DVC pipeline, let's move on to
 setting up checkpoints in your code.
@@ -158,7 +172,8 @@ Now we need to enable checkpoints at the pipeline level. We are interested in
 tracking the metrics along with each checkpoint, so we'll need to add a few
 lines of code.
 
-In the `train.py` file, update the following lines of code in the `main` method
+In the `train.py` file, import the `dvclive` package with the other imports:
+`import dvclive`. Then update the following lines of code in the `main` method
 inside of the training epoch loop.
 
 ```python
@@ -172,45 +187,9 @@ By adding the two `dvclive` methods to our training epoch loop, we are enabling
 checkpoints in our code and recording the training metrics at each of those
 checkpoints.
 
-Having the number of training epochs defined will prevent your training from
-running indefinitely. You can also hit `Ctrl + C` to stop creating new
-checkpoints if the number of epochs are not defined.
-
-### Manually adding checkpoints
-
-You also have the option to implement checkpoints in code with the
-`make_checkpoints()` method if you don't want to use `dvclive` in your code.
-This manually adds checkpoints for you, but it won't generate metrics for you.
-
-If you use `dvclive.next_step()`, you don't need to use `make_checkpoints()`.
-One or the other will give you checkpoints.
-
-_If you don't define a number of epochs to run, checkpoints will be created
-indefinitely until you terminate the code in the terminal. `Ctrl + C` will end
-the process._
-
-### Adding checkpoints conditionally
-
-You do have the option of adding checkpoints conditionally. You might be running
-thousands of training epochs and you only want to save after a number of epochs
-have run. Let's say you want to save every 100th checkpoint.
-
-Inside of the `main` method, where we have defined the training epochs, let's
-add this condition.
-
-```python
-# Evaluate and checkpoint.
-if i % 100 == 0:
-    metrics = evaluate(model, x_test, y_test)
-    for k, v in metrics.items():
-        dvclive.log(k, v)
-    dvclive.next_step()
-```
-
-Now we are conditionally saving checkpoints after a set number of runs have been
-completed. For the sake of this tutorial, we're going to remove that condition
-for everything going forward. We just wanted to make sure you know that you are
-able to do this and you don't have to save every checkpoint.
+If you don't have a number of training epochs defined, the experiment will run
+for 10 minutes. You can also hit `Ctrl + C` to stop creating new checkpoints if
+the number of epochs are not defined.
 
 ## Running experiments
 
@@ -223,22 +202,24 @@ You'll see output similar to this in your terminal while the training process is
 going on.
 
 ```dvc
-Checkpoint experiment iteration '0ddae2a'.
+Checkpoint experiment iteration 'd50c724'.
 Updating lock file 'dvc.lock'
-Checkpoint experiment iteration '71d4d82'.
+Checkpoint experiment iteration '29491a9'.
 Updating lock file 'dvc.lock'
-Checkpoint experiment iteration 'f59dca5'.
+Checkpoint experiment iteration 'b3de55f'.
 Updating lock file 'dvc.lock'
-Checkpoint experiment iteration '08d7ab2'.
+Checkpoint experiment iteration 'c4a46af'.
 Updating lock file 'dvc.lock'
-Checkpoint experiment iteration 'bcd3a62'.
+Checkpoint experiment iteration 'daf204c'.
 Updating lock file 'dvc.lock'
-Checkpoint experiment iteration '3cf9691'.
+Checkpoint experiment iteration 'bdb975c'.
+Updating lock file 'dvc.lock'
+Checkpoint experiment iteration '77dc46c'.
 Updating lock file 'dvc.lock'
 ```
 
-Once your epochs are finished, it's time to take a look at the metrics we're
-working with.
+After a few epochs have completed, stop terminate the training process with
+`Ctrl + C`. Now it's time to take a look at the metrics we're working with.
 
 ## Viewing checkpoints
 
@@ -248,22 +229,19 @@ because we've already run them twice and training always picks up from the last
 checkpoint.
 
 ```dvc
-┏━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━┳━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━┳━━━━━━━━━━━━━━┓
-┃ Experiment    ┃ Created      ┃ step ┃     loss ┃    acc ┃ seed   ┃ lr    ┃ weight_decay ┃
-┡━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━╇━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━╇━━━━━━━━━━━━━━┩
-│ workspace     │ -            │    9 │ 0.066135 │ 0.9792 │ 473987 │ 0.001 │ 0            │
-│ full_pipeline │ Apr 20, 2021 │    - │        - │      - │ 473987 │ 0.001 │ 0            │
-│ │ ╓ exp-263da │ 12:06 PM     │    9 │ 0.066135 │ 0.9792 │ 473987 │ 0.001 │ 0            │
-│ │ ╟ 0391730   │ 12:05 PM     │    8 │ 0.066629 │ 0.9783 │ 473987 │ 0.001 │ 0            │
-│ │ ╟ 92042bd   │ 12:05 PM     │    7 │ 0.082436 │ 0.9747 │ 473987 │ 0.001 │ 0            │
-│ │ ╟ a557ace   │ 12:05 PM     │    6 │  0.08161 │ 0.9749 │ 473987 │ 0.001 │ 0            │
-│ │ ╟ 114d93f   │ 12:05 PM     │    5 │ 0.088654 │ 0.9716 │ 473987 │ 0.001 │ 0            │
-│ │ ╟ 3289b4b   │ 12:05 PM     │    4 │  0.13659 │ 0.9574 │ 473987 │ 0.001 │ 0            │
-│ │ ╟ e32a023   │ 12:04 PM     │    3 │  0.16031 │ 0.9507 │ 473987 │ 0.001 │ 0            │
-│ │ ╟ cc52edc   │ 12:04 PM     │    2 │  0.21992 │ 0.9345 │ 473987 │ 0.001 │ 0            │
-│ │ ╟ 6d2e1d9   │ 12:04 PM     │    1 │  0.33183 │ 0.9037 │ 473987 │ 0.001 │ 0            │
-│ ├─╨ d121d33   │ 12:04 PM     │    0 │  0.49894 │ 0.8481 │ 473987 │ 0.001 │ 0            │
-└───────────────┴──────────────┴──────┴──────────┴────────┴────────┴───────┴──────────────┘
+┏━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━┳━━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━┓
+┃ Experiment            ┃ Created  ┃ step ┃    loss ┃    acc ┃ seed   ┃ lr     ┃ weight_decay ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━╇━━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━┩
+│ workspace             │ -        │    7 │  0.3096 │ 0.9092 │ 473987 │ 0.0001 │ 0            │
+│ main                  │ 04:49 PM │    - │       - │      - │ 473987 │ 0.001  │ 0            │
+│ │ ╓ exp-4de2a         │ 05:03 PM │    7 │  0.3096 │ 0.9092 │ 473987 │ 0.0001 │ 0            │
+│ │ ╟ d50c724           │ 05:03 PM │    6 │ 0.33246 │ 0.9044 │ 473987 │ 0.0001 │ 0            │
+│ │ ╟ 29491a9           │ 05:02 PM │    5 │ 0.36601 │ 0.8943 │ 473987 │ 0.0001 │ 0            │
+│ │ ╟ b3de55f           │ 05:02 PM │    4 │ 0.41666 │ 0.8777 │ 473987 │ 0.0001 │ 0            │
+│ │ ╟ c4a46af           │ 05:02 PM │    3 │ 0.50835 │ 0.8538 │ 473987 │ 0.0001 │ 0            │
+│ │ ╟ daf204c           │ 05:02 PM │    2 │ 0.72421 │ 0.8284 │ 473987 │ 0.0001 │ 0            │
+│ │ ╟ bdb975c           │ 05:02 PM │    1 │  1.2537 │ 0.7738 │ 473987 │ 0.0001 │ 0            │
+│ ├─╨ 77dc46c           │ 05:01 PM │    0 │  1.9428 │ 0.5715 │ 473987 │ 0.0001 │ 0            │
 ```
 
 ## Starting from an existing checkpoint
@@ -275,7 +253,7 @@ that. You can start training from any existing checkpoint with the following
 command.
 
 If you want to start a new experiment based on an existing checkpoint, you can
-run `dvc exp apply 574bdc3 && dvc exp run` where _574bdc3_ is the id of the
+run `dvc exp apply b3de55f && dvc exp run` where _b3de55f_ is the id of the
 checkpoint you want to reference.
 
 You'll be able to see where the experiment starts from the existing checkpoint
@@ -283,26 +261,22 @@ with the `dvc exp show` command. You should seem something similar to this in
 your terminal.
 
 ```dvc
-┏━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━┳━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━┳━━━━━━━━━━━━━━┓
-┃ Experiment            ┃ Created      ┃ step ┃     loss ┃    acc ┃ seed   ┃ lr    ┃ weight_decay ┃
-┡━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━╇━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━╇━━━━━━━━━━━━━━┩
-│ workspace             │ -            │   19 │ 0.048277 │ 0.9854 │ 473987 │ 0.001 │ 0            │
-│ full_pipeline         │ Apr 20, 2021 │    - │        - │      - │ 473987 │ 0.001 │ 0            │
-│ │ ╓ exp-3c7a8         │ 01:41 PM     │   19 │ 0.048277 │ 0.9854 │ 473987 │ 0.001 │ 0            │
-│ │ ╟ a4d64fc           │ 01:41 PM     │   18 │ 0.049162 │ 0.9836 │ 473987 │ 0.001 │ 0            │
-│ │ ╟ 4067622           │ 01:41 PM     │   17 │ 0.050389 │ 0.9823 │ 473987 │ 0.001 │ 0            │
-│ │ ╟ 05a0883           │ 01:41 PM     │   16 │ 0.065079 │ 0.9808 │ 473987 │ 0.001 │ 0            │
-│ │ ╟ c23a6e0           │ 01:41 PM     │   15 │  0.05095 │ 0.9831 │ 473987 │ 0.001 │ 0            │
-│ │ ╟ a8ed9aa           │ 01:40 PM     │   14 │ 0.056475 │ 0.9819 │ 473987 │ 0.001 │ 0            │
-│ │ ╟ 0b5c7f0           │ 01:40 PM     │   13 │ 0.054636 │ 0.9817 │ 473987 │ 0.001 │ 0            │
-│ │ ╟ 6c4523d           │ 01:40 PM     │   12 │ 0.060063 │  0.982 │ 473987 │ 0.001 │ 0            │
-│ │ ╟ 54bca46           │ 01:40 PM     │   11 │  0.07912 │ 0.9747 │ 473987 │ 0.001 │ 0            │
-│ │ ╟ c60fe61 (574bdc3) │ 01:40 PM     │   10 │ 0.082944 │ 0.9728 │ 473987 │ 0.001 │ 0            │
-│ │ ╓ exp-e81d6         │ 01:30 PM     │    9 │ 0.066135 │ 0.9792 │ 473987 │ 0.001 │ 0            │
-│ │ ╟ 34b1d6f           │ 01:30 PM     │    8 │ 0.066629 │ 0.9783 │ 473987 │ 0.001 │ 0            │
-│ │ ╟ c048966           │ 01:30 PM     │    7 │ 0.082436 │ 0.9747 │ 473987 │ 0.001 │ 0            │
-│ │ ╟ 2910f35           │ 01:30 PM     │    6 │  0.08161 │ 0.9749 │ 473987 │ 0.001 │ 0            │
-│ │ ╟ 255d3aa           │ 01:30 PM     │    5 │ 0.088654 │ 0.9716 │ 473987 │ 0.001 │ 0            │
+┏━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━┳━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━┓
+┃ Experiment            ┃ Created      ┃ step ┃     loss ┃    acc ┃ seed   ┃ lr     ┃ weight_decay ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━╇━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━┩
+│ workspace             │ -            │    5 │ 0.36601  │ 0.8943 │ 473987 │ 0.0001 │ 0            │
+│ main                  │ 04:49 PM     │    - │       -  │      - │ 473987 │ 0.0001 │ 0            │
+│ │ ╓ exp-d0b15         │ 05:10 PM     │    5 │ 0.36601  │ 0.8943 │ 473987 │ 0.0001 │ 0            │
+│ │ ╟ 9ac9e6a           │ 05:09 PM     │    4 │ 0.41666  │ 0.8777 │ 473987 │ 0.0001 │ 0            │
+│ │ ╟ b869efe           │ 05:09 PM     │    3 │ 0.50835  │ 0.8538 │ 473987 │ 0.0001 │ 0            │
+│ │ ╟ 422395e           │ 05:09 PM     │    2 │ 0.72421  │ 0.8284 │ 473987 │ 0.0001 │ 0            │
+│ │ ╟ 44e44a9           │ 05:09 PM     │    1 │  1.2537  │ 0.7738 │ 473987 │ 0.0001 │ 0            │
+│ │ ╟ c60fe61 (b3de55f) │ 01:40 PM     │   10 │ 0.082944 │ 0.9728 │ 473987 │ 0.0001 │ 0            │
+│ │ ╓ exp-4de2a         │ 01:30 PM     │    9 │ 0.066135 │ 0.9792 │ 473987 │ 0.0001 │ 0            │
+│ │ ╓ exp-4de2a         │ 05:03 PM     │    7 │  0.3096  │ 0.9092 │ 473987 │ 0.0001 │ 0            │
+│ │ ╟ d50c724           │ 05:03 PM     │    6 │ 0.33246  │ 0.9044 │ 473987 │ 0.0001 │ 0            │
+│ │ ╟ 29491a9           │ 05:02 PM     │    5 │ 0.36601  │ 0.8943 │ 473987 │ 0.0001 │ 0            │
+│ │ ╟ b3de55f           │ 05:02 PM     │    4 │ 0.41666  │ 0.8777 │ 473987 │ 0.0001 │ 0            │
 ```
 
 The existing checkpoint is referenced at the beginning of the new experiment.
@@ -348,32 +322,22 @@ This resets all of the existing checkpoints and re-runs the code to generate a
 new set of checkpoints under a new experiment branch.
 
 ```dvc
-┏━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━┳━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━┳━━━━━━━━━━━━━━┓
-┃ Experiment    ┃ Created      ┃ step ┃     loss ┃    acc ┃ seed   ┃ lr    ┃ weight_decay ┃
-┡━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━╇━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━╇━━━━━━━━━━━━━━┩
-│ workspace     │ -            │    9 │ 0.066135 │ 0.9792 │ 473987 │ 0.001 │ 0            │
-│ full_pipeline │ Apr 20, 2021 │    - │        - │      - │ 473987 │ 0.001 │ 0            │
-│ │ ╓ exp-e81d6 │ 01:30 PM     │    9 │ 0.066135 │ 0.9792 │ 473987 │ 0.001 │ 0            │
-│ │ ╟ 34b1d6f   │ 01:30 PM     │    8 │ 0.066629 │ 0.9783 │ 473987 │ 0.001 │ 0            │
-│ │ ╟ c048966   │ 01:30 PM     │    7 │ 0.082436 │ 0.9747 │ 473987 │ 0.001 │ 0            │
-│ │ ╟ 2910f35   │ 01:30 PM     │    6 │  0.08161 │ 0.9749 │ 473987 │ 0.001 │ 0            │
-│ │ ╟ 255d3aa   │ 01:30 PM     │    5 │ 0.088654 │ 0.9716 │ 473987 │ 0.001 │ 0            │
-│ │ ╟ c976c6f   │ 01:29 PM     │    4 │  0.13659 │ 0.9574 │ 473987 │ 0.001 │ 0            │
-│ │ ╟ 0bdcd86   │ 01:29 PM     │    3 │  0.16031 │ 0.9507 │ 473987 │ 0.001 │ 0            │
-│ │ ╟ 574bdc3   │ 01:29 PM     │    2 │  0.21992 │ 0.9345 │ 473987 │ 0.001 │ 0            │
-│ │ ╟ d0a150d   │ 01:29 PM     │    1 │  0.33183 │ 0.9037 │ 473987 │ 0.001 │ 0            │
-│ ├─╨ 239affa   │ 01:29 PM     │    0 │  0.49894 │ 0.8481 │ 473987 │ 0.001 │ 0            │
-│ │ ╓ exp-263da │ 01:19 PM     │   19 │ 0.048277 │ 0.9854 │ 473987 │ 0.001 │ 0            │
-│ │ ╟ 0391730   │ 12:05 PM     │    8 │ 0.066629 │ 0.9783 │ 473987 │ 0.001 │ 0            │
-│ │ ╟ 92042bd   │ 12:05 PM     │    7 │ 0.082436 │ 0.9747 │ 473987 │ 0.001 │ 0            │
-│ │ ╟ a557ace   │ 12:05 PM     │    6 │  0.08161 │ 0.9749 │ 473987 │ 0.001 │ 0            │
-│ │ ╟ 114d93f   │ 12:05 PM     │    5 │ 0.088654 │ 0.9716 │ 473987 │ 0.001 │ 0            │
-│ │ ╟ 3289b4b   │ 12:05 PM     │    4 │  0.13659 │ 0.9574 │ 473987 │ 0.001 │ 0            │
-│ │ ╟ e32a023   │ 12:04 PM     │    3 │  0.16031 │ 0.9507 │ 473987 │ 0.001 │ 0            │
-│ │ ╟ cc52edc   │ 12:04 PM     │    2 │  0.21992 │ 0.9345 │ 473987 │ 0.001 │ 0            │
-│ │ ╟ 6d2e1d9   │ 12:04 PM     │    1 │  0.33183 │ 0.9037 │ 473987 │ 0.001 │ 0            │
-│ ├─╨ d121d33   │ 12:04 PM     │    0 │  0.49894 │ 0.8481 │ 473987 │ 0.001 │ 0            │
-└───────────────┴──────────────┴──────┴──────────┴────────┴────────┴───────┴──────────────┘
+┏━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━┳━━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━┓
+┃ Experiment            ┃ Created  ┃ step ┃    loss ┃    acc ┃ seed   ┃ lr     ┃ weight_decay ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━╇━━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━┩
+│ workspace             │ -        │    4 │ 0.41666 │ 0.8777 │ 473987 │ 0.0001 │ 0            │
+│ main                  │ 04:49 PM │    - │       - │      - │ 473987 │ 0.001  │ 0            │
+│ │ ╓ exp-a75bb         │ 05:18 PM │    4 │ 0.41666 │ 0.8777 │ 473987 │ 0.0001 │ 0            │
+│ │ ╟ b8a4ceb           │ 05:18 PM │    3 │ 0.50835 │ 0.8538 │ 473987 │ 0.0001 │ 0            │
+│ │ ╟ 7b652b1           │ 05:17 PM │    2 │ 0.72421 │ 0.8284 │ 473987 │ 0.0001 │ 0            │
+│ │ ╟ cf0168f           │ 05:17 PM │    1 │  1.2537 │ 0.7738 │ 473987 │ 0.0001 │ 0            │
+│ ├─╨ 8c7f40f           │ 05:17 PM │    0 │  1.9428 │ 0.5715 │ 473987 │ 0.0001 │ 0            │
+│ │ ╓ exp-7fafd         │ 05:10 PM │    5 │ 0.36601 │ 0.8943 │ 473987 │ 0.0001 │ 0            │
+│ │ ╟ 9ac9e6a           │ 05:09 PM │    4 │ 0.41666 │ 0.8777 │ 473987 │ 0.0001 │ 0            │
+│ │ ╟ b869efe           │ 05:09 PM │    3 │ 0.50835 │ 0.8538 │ 473987 │ 0.0001 │ 0            │
+│ │ ╟ 422395e           │ 05:09 PM │    2 │ 0.72421 │ 0.8284 │ 473987 │ 0.0001 │ 0            │
+│ │ ╟ 44e44a9           │ 05:09 PM │    1 │  1.2537 │ 0.7738 │ 473987 │ 0.0001 │ 0            │
+│ ├─╨ c6e11b4           │ 05:09 PM │    0 │  1.9428 │ 0.5715 │ 473987 │ 0.0001 │ 0            │
 ```
 
 We can also remove all of the experiments we don't promote to our Git workspace
@@ -397,8 +361,7 @@ To promote an experiment to a Git branch run:
         dvc exp branch <exp>
 ```
 
-You can run the following command to promote your experiments to the Git
-workspace.
+You can run the following command to save your experiments to the Git history.
 
 ```bash
 git add dvclive.json dvc.yaml .gitignore train.py dvc.lock
