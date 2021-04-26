@@ -94,8 +94,7 @@ convenience, when running experiments outside of your workspace via
 checkpoint from which you want to continue.
 
 Alternatively, use `--reset` to start over (discards previous checkpoints and
-their outputs, leaving things as they were before the first `dvc exp run`). This
-is useful for re-training ML models, for example.
+their outputs). This is useful for re-training ML models, for example.
 
 <details>
 
