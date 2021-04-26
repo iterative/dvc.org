@@ -105,7 +105,7 @@ up-to-date and only execute the final stage.
   `./dvc.yaml` by default). Different things can be provided as targets
   depending on the flags used (more details in each option). Examples:
 
-  - `dvc repro linear/dvc.yaml`: Specific `dvc.yaml` file
+  - `dvc repro linear/dvc.yaml`: A `dvc.yaml` file
   - `dvc repro -R pipelines/`: Directory to explore recursively for stages
   - `dvc repro train-model`: Specific stage(s) from `./dvc.yaml`
   - `dvc repro modeling/dvc.yaml:prepare`: Stage(s) from a specific `dvc.yaml`

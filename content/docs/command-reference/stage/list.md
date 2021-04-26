@@ -19,11 +19,10 @@ positional arguments:
 
 ## Description
 
-Prints a summarized list of stages including their names and a one-line
-description (which can be omitted using `--names-only`). This command is useful
-for discovering or reviewing what stages are present in the project without
-having to examine `dvc.yaml` files manually. It can also be a shorter
-alternative to `dvc dag`.
+Prints a list of stages including their names and a one-line description (which
+can be omitted using `--names-only`). This command is useful for discovering or
+reviewing what stages are present in the project without having to examine
+`dvc.yaml` files manually. It can also be a shorter alternative to `dvc dag`.
 
 Without any `targets`, `dvc stage list` lists the stages from `./dvc.yaml` (in
 the current working directory) by default.
@@ -32,15 +31,12 @@ The stage description is read from the `desc` field in `dvc.yaml` (truncated to
 80 characters) if it exists. Otherwise, DVC generates one with the stage's most
 important characteristics (dependencies, outputs, or metrics).
 
-> (ℹ️) DVC uses this command to provide
-> [shell tab completion](/doc/install/completion).
-
 ## Options
 
-- `targets` (optional command argument) - where to look for stages to list
+- `targets` (optional command argument) - location of the stages to list
   (`./dvc.yaml` by default). Examples:
 
-  - `dvc stage list linear/dvc.yaml`: Specific `dvc.yaml` file
+  - `dvc stage list linear/dvc.yaml`: A `dvc.yaml` file
   - `dvc stage list -R pipelines/`: Directory to explore recursively for stages
   - `dvc stage list train-model`: Specific stage(s) from `./dvc.yaml`
   - `dvc stage list modeling/dvc.yaml:prepare`: Stage(s) from a specific
@@ -68,7 +64,7 @@ important characteristics (dependencies, outputs, or metrics).
 
 ## Examples:
 
-The base case is to list stages from `./dvc.yaml`:
+The default behavior is to list stages from `./dvc.yaml`:
 
 ```dvc
 $ dvc stage list
