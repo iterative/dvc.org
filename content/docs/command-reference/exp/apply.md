@@ -28,8 +28,7 @@ Note that the history of
 `experiment` are **not** preserved when applying and committing it.
 
 ⚠️ This command will fail if the current Git commit (`HEAD`) has changed from
-the time the experiment in question was run, or if changes in the
-<abbr>workspace</abbr> conflict with the desired experiment files.
+the time the experiment in question was run.
 
 ## Options
 
