@@ -14,21 +14,25 @@ positional arguments:
 
 ## Description
 
-Restores a given `experiment` (name or hash are accepted, see `dvc exp run` for
-details) into the workspace. This means changing all files (code, data,
-<abbr>parameters</abbr>, <abbr>metrics</abbr>, etc.) needed to reflect the
-experiment conditions and results in the workspace.
+Restores an `experiment` into the workspace as long as no more Git commits have
+been made after the experiment was run (`HEAD` hasn't moved). The `experiment`
+can be referenced by name or hash (see `dvc exp run` for details).
 
-This command is typically used after finding a target `experiment` with
-`dvc exp show` or `dvc exp diff`, and before committing it to Git (making it
+This is typically used after choosing a target `experiment` with `dvc exp show`
+or `dvc exp diff`, and before committing it to Git (making it
 [persistent](/doc/user-guide/experiment-management#persistent-experiments)).
+
+`dvc exp apply` changes any files (code, data, <abbr>parameters</abbr>,
+<abbr>metrics</abbr>, etc.) needed to reflect the experiment conditions and
+results in the workspace.
+
+⚠️ Current changes to the workspace are preserved except if they conflict with
+the experiment in question, in which case they are overwritten (unless
+`--no-force` is used).
 
 Note that the history of
 [checkpoints](/doc/command-reference/exp/run#checkpoints) found in the
-`experiment` are **not** preserved when applying and committing it.
-
-⚠️ This command will fail if the current Git commit (`HEAD`) has changed from
-the time the experiment in question was run.
+`experiment` is **not** preserved when applying and committing it.
 
 ## Options
 
