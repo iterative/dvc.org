@@ -114,6 +114,7 @@ metric or param.
 - `--precision <n>` -
   [round](https://docs.python.org/3/library/functions.html#round) decimal values
   to `n` digits of precision (5 by default). Applies to metrics only.
+- `--param-deps` - show only parameters that are stage dependencies.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 

@@ -6,7 +6,7 @@ Show changes in [metrics](/doc/command-reference/metrics) and
 ## Synopsis
 
 ```usage
-usage: dvc exp diff [-h] [-q | -v] [--all] [--param-deps]
+usage: dvc exp diff [-h] [-q | -v] [--all] [--deps]
                     [--show-json] [--show-md] [--old]
                     [--no-path] [--precision <n>]
                     [a_rev] [b_rev]
@@ -53,6 +53,8 @@ all the current experiments (without comparisons).
 
 - `--all` - list all parameters and metrics, including those without changes.
 
+- `--deps` - show only parameters that are stage dependencies.
+
 - `--show-json` - prints the command's output in easily parsable JSON format,
   instead of a human-readable table.
 
@@ -68,7 +70,6 @@ all the current experiments (without comparisons).
 - `--precision <n>` -
   [round](https://docs.python.org/3/library/functions.html#round) decimal values
   to `n` digits of precision (5 by default). Applies to metrics only.
-
 - `-h`, `--help` - prints the usage/help message, and exit.
 
 - `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if no
