@@ -117,8 +117,8 @@ $ cat .gitignore
 /logs
 ```
 
-`dvc remove` can also be used on **individual** <abbr>outputs</abbr> of a
-stage (by file name):
+`dvc remove` can also be used on **individual** <abbr>outputs</abbr> of a stage
+(by file name):
 
 ```dvc
 $ dvc remove model.h5
@@ -131,8 +131,8 @@ $ cat .gitignore
 /logs
 ```
 
-`model.h5` file is removed from the <abbr>workspace</abbr> and `.gitignore`,
-but note that `dvc.yaml` is not updated.
+`model.h5` file is removed from the <abbr>workspace</abbr> and `.gitignore`, but
+note that `dvc.yaml` is not updated.
 
 ## Example: remove specific data
 
