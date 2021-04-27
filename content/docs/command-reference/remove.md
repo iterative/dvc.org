@@ -50,7 +50,7 @@ how it helps replace data that is tracked by DVC.
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
-## Example target: stage name
+## Example: Remove stage outputs
 
 Let's imagine we have a `train` stage in `dvc.yaml`, and corresponding files in
 the <abbr>workspace</abbr>:
@@ -76,9 +76,9 @@ $ cat .gitignore
 /logs
 ```
 
-Using `dvc remove` on the stage name will remove that entry from `dvc.yaml`, and
-its outputs from `.gitignore`. With the `--outs` option, its outputs are also
-deleted (`logs` and `model.h5` in this example):
+Using `dvc remove` on the stage name will remove the stage from `dvc.yaml`, and
+corresponding entries from `.gitignore`. With the `--outs` option, the actual
+files and directories are deleted too (`logs/` and `model.h5` in this example):
 
 ```dvc
 $ dvc remove train --outs
@@ -92,7 +92,7 @@ $ cat .gitignore
 
 > Notice that the dependencies (`data.csv` and `train.py`) are not deleted.
 
-## Example target: stage output files/directories
+## Example: remove a specific stage output
 
 Assuming we have the same initial <abbr>workspace</abbr> as before:
 
@@ -117,8 +117,8 @@ $ cat .gitignore
 /logs
 ```
 
-`dvc remove` can also be used on **individual** <abbr>output</abbr> files or
-directories of a stage:
+`dvc remove` can also be used on **individual** <abbr>outputs</abbr> of a
+stage (by file name):
 
 ```dvc
 $ dvc remove model.h5
@@ -131,10 +131,10 @@ $ cat .gitignore
 /logs
 ```
 
-The <abbr>output</abbr> file is actually being removed from the
-<abbr>workspace</abbr> and `.gitignore` but `dvc.yaml` is not being updated.
+`model.h5` file is removed from the <abbr>workspace</abbr> and `.gitignore`,
+but note that `dvc.yaml` is not updated.
 
-## Example target: tracked files/directories
+## Example: remove specific data
 
 Assuming we have the same initial <abbr>workspace</abbr> as before:
 
