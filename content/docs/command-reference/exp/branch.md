@@ -32,7 +32,7 @@ new `branch` automatically.
   workspace, so they can be
   [stored and shared](https://dvc.org/doc/use-cases/sharing-data-and-model-files)
   in a normal Git+DVC workflow;
-- In cases where `dvc exp apply` fails;
+- In cases where it's not possible to `dvc exp apply` an experiment directly;
 - To preserve checkpoints as independent commits in the project's Git history
 
 To switch into the new branch, use `git checkout branch` and `dvc checkout`. Or
