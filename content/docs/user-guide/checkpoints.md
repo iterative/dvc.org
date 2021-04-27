@@ -40,7 +40,11 @@ cd checkpoints-tutorial
 ```
 
 It is highly recommended you create a virtual environment for this example. You
-can do that by running: `python3 -m venv .venv`.
+can do that by running:
+
+```bash
+python3 -m venv .venv
+```
 
 Once your virtual environment is installed, you can start it up with one of the
 following commands.
@@ -49,40 +53,42 @@ following commands.
 - On Windows: `.\.venv\Scripts\activate`
 
 Once you have your environment set up, you can install the dependencies by
-running: `pip install -r requirements.txt`. This will download all of the
-packages you need to run the example. Now you have everything you need to get
-started with experiments and checkpoints.
+running:
+
+```bash
+pip install -r requirements.txt
+```
+
+This will download all of the packages you need to run the example. Now you have
+everything you need to get started with experiments and checkpoints.
 
 ## Setting up a DVC pipeline
 
 If you don't have a DVC pipeline setup in your project, adding one only takes a
-few commands. At the root of the project, run `dvc init`. This sets up the files
-you need for your DVC pipeline to work.
+few commands. At the root of the project, run:
 
-Next we'll add a stage to our pipeline to run our download the data we need for
-training our model. In your terminal, run
-`dvc stage add -n download -d download.py -o data/MNIST python download.py`.
-This will create a _dvc.yaml_ file in your root directory.
-
-The command we just ran creates a stage called _download_ with a dependency on
-the _download.py_ file and it should output any results to the _data/MNIST_
-directory.
-
-Inside of the yaml file, you should see the following code.
-
-```yaml
-stages:
-  download:
-    cmd: python download.py
-    deps:
-      - download.py
-    outs:
-      - data/MNIST
+```bash
+dvc init
 ```
+
+This sets up the files you need for your DVC pipeline to work.
+
+This will create a _dvc.yaml_ file in your root directory.
 
 Now we need to add a stage for training our model within a DVC pipeliene. We'll
 do that with the following command:
-`dvc stage add -n train -d data/MNIST -d train.py -c model.pt --plots-no-cache predictions.json -p seed,lr,weight_decay --live dvclive python train.py`
+
+```bash
+dvc stage add -n train -d data/MNIST -d train.py -c model.pt --plots-no-cache predictions.json -p seed,lr,weight_decay --live dvclive python train.py
+```
+
+Before we go any further, this is a great point to add these changes to your Git
+history. You can do that with the following commands:
+
+```bash
+git add .
+git commit -m "created DVC pipeline"
+```
 
 ## Enabling DVC pipelines for checkpoint experiments
 
@@ -154,27 +160,18 @@ This is where DVC will be able to track our metrics over time and where we will
 add our checkpoints to give us the points in time with our model that we can
 switch between.
 
-To run this code, run the `dvc exp run` command and it will start training the
-model. In the terminal, you'll see the training code being executed and you'll
-see the metrics being recorded.
-
-```dvc
-Running stage 'train':
-> python train.py
-Epoch 1: loss=0.4989388585090637
-Epoch 1: acc=0.8481
-Epoch 2: loss=0.3318292796611786
-Epoch 2: acc=0.9037
-Epoch 3: loss=0.21992072463035583
-```
-
-Now we need to enable checkpoints at the pipeline level. We are interested in
+Now we need to enable checkpoints at the code level. We are interested in
 tracking the metrics along with each checkpoint, so we'll need to add a few
 lines of code.
 
 In the `train.py` file, import the `dvclive` package with the other imports:
-`import dvclive`. Then update the following lines of code in the `main` method
-inside of the training epoch loop.
+
+```bash
+import dvclive
+```
+
+Then update the following lines of code in the `main` method inside of the
+training epoch loop.
 
 ```python
 for k, v in metrics.items():
@@ -187,16 +184,14 @@ By adding the two `dvclive` methods to our training epoch loop, we are enabling
 checkpoints in our code and recording the training metrics at each of those
 checkpoints.
 
-If you don't have a number of training epochs defined, the experiment will run
-for 10 minutes. You can also hit `Ctrl + C` to stop creating new checkpoints if
-the number of epochs are not defined.
-
 ## Running experiments
 
 With checkpoints enabled and working in our code, let's run the experiment
-again. You can run an experiment with the `dvc exp run` command. Since we've
-already run this code before, it will pick up training from the previous
-checkpoint and continue from there.
+again. You can run an experiment with the following command:
+
+```bash
+dvc exp run
+```
 
 You'll see output similar to this in your terminal while the training process is
 going on.
@@ -221,12 +216,20 @@ Updating lock file 'dvc.lock'
 After a few epochs have completed, stop terminate the training process with
 `Ctrl + C`. Now it's time to take a look at the metrics we're working with.
 
+_If you don't have a number of training epochs defined and you don't terminate
+the process, the experiment will run for 10 minutes._
+
 ## Viewing checkpoints
 
 You can see a table of your experiments and checkpoints in the terminal by
-running `dvc exp show`. The accuracy on our current checkpoints will be high
-because we've already run them twice and training always picks up from the last
-checkpoint.
+running:
+
+```bash
+dvc exp show
+```
+
+The accuracy on our current checkpoints will be high because we've already run
+them twice and training always picks up from the last checkpoint.
 
 ```dvc
 ┏━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━┳━━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━┓
@@ -253,12 +256,22 @@ that. You can start training from any existing checkpoint with the following
 command.
 
 If you want to start a new experiment based on an existing checkpoint, you can
-run `dvc exp apply b3de55f && dvc exp run` where _b3de55f_ is the id of the
-checkpoint you want to reference.
+run:
+
+```bash
+dvc exp apply b3de55f && dvc exp run
+```
+
+where _b3de55f_ is the id of the checkpoint you want to reference.
 
 You'll be able to see where the experiment starts from the existing checkpoint
-with the `dvc exp show` command. You should seem something similar to this in
-your terminal.
+by running:
+
+```bash
+dvc exp show
+```
+
+You should seem something similar to this in your terminal.
 
 ```dvc
 ┏━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━┳━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━┓
@@ -287,10 +300,14 @@ existing data and using it as the starting point.
 
 When you've run all the experiments you want to and you are ready to compare
 metrics between checkpoints, you can run the command:
-`dvc metrics diff exp-3c7a8 c23a6e0`. You'll see something similart to this in
-your terminal. \_Make sure that you replace `exp-3c7a8` with the experiment
-branch in your table and replace `c23a6e0` with the checkpoint id you want to
-see.
+
+```bash
+dvc metrics diff exp-3c7a8 c23a6e0
+```
+
+You'll see something similart to this in your terminal. \_Make sure that you
+replace `exp-3c7a8` with the experiment branch in your table and replace
+`c23a6e0` with the checkpoint id you want to see.
 
 ```dvc
 Path          Metric    Old      New      Change
@@ -302,10 +319,15 @@ dvclive.json  step      19       15       -4
 ### Looking at plots
 
 You also have the option to generate plots to visualize the metrics about your
-training epochs. Running `dvc plots diff c60fe61 a4d64fc`, where `c60fe61` and
-`a4d64fc` are the checkpoint ids you want to compare, will generate a
-`plots.html` file that you can open in a browser and it will display plots for
-you similar to the ones below.
+training epochs. Running:
+
+```bash
+dvc plots diff c60fe61 a4d64fc
+```
+
+where `c60fe61` and `a4d64fc` are the checkpoint ids you want to compare, will
+generate a `plots.html` file that you can open in a browser and it will display
+plots for you similar to the ones below.
 
 ![Plots generated from running experiments on MNIST dataset using DVC](/img/checkpoints_plots.png)
 _The results here won't show anything interesting because the model increases in
@@ -316,7 +338,11 @@ accuracy so fast._
 Usually when you start training a model, you won't begin with accuracy this
 high. There might be a time when you want to remove all of the existing
 checkpoints to start the training from scratch. You can reset your checkpoints
-with the following command: `dvc exp run --reset`.
+with the following command:
+
+```bash
+dvc exp run --reset
+```
 
 This resets all of the existing checkpoints and re-runs the code to generate a
 new set of checkpoints under a new experiment branch.
@@ -341,7 +367,11 @@ new set of checkpoints under a new experiment branch.
 ```
 
 We can also remove all of the experiments we don't promote to our Git workspace
-with the following command: `dvc exp gc --workspace --force`.
+with the following command:
+
+```bash
+dvc exp gc --workspace --force
+```
 
 ## Adding checkpoints to Git
 
@@ -367,8 +397,13 @@ You can run the following command to save your experiments to the Git history.
 git add dvclive.json dvc.yaml .gitignore train.py dvc.lock
 ```
 
-You can take a look at what will be commited to your Git history by running
-`git status`. You should see something similar to this in the terminal.
+You can take a look at what will be commited to your Git history by running:
+
+```bash
+git status
+```
+
+You should see something similar to this in the terminal.
 
 ```git
 Changes to be committed:
