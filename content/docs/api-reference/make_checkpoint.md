@@ -83,7 +83,7 @@ while True:
             make_checkpoint()
 
     except KeyboardInterrupt:
-    exit()
+        exit()
 ```
 
 Since `checkpoint` outputs in effect implement a circular dependency,
