@@ -15,8 +15,8 @@ positional arguments:
 
 ## Description
 
-Safely removes tracked files/directories, stage names (found in `dvc.yaml`), or
-`.dvc` files. This includes deleting the corresponding `.gitignore` entries.
+Safely removes tracked data (by file name, stage name, or `.dvc` file path).
+This includes deleting the corresponding `.gitignore` entries.
 
 > `dvc remove` doesn't remove files from the DVC <abbr>cache</abbr> or
 > [remote storage](/doc/command-reference/remote). Use `dvc gc` for that.
