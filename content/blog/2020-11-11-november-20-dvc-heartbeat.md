@@ -90,8 +90,8 @@ As usual, there are plenty of remote meetings on our schedules:
   [Toronto Machine Learning Society Annual Meeting](https://torontomachinelearning.com/).
   It'll cover how to get started using
   [Continuous Machine Learning](https://cml.dev)(CML) with GitHub Actions-
-  [register here](https://torontomachinelearning.com/join-us/), and be sure to
-  reserve your spot in the workshop.
+  [register here](https://torontomachinelearning.com/), and be sure to reserve
+  your spot in the workshop.
 
 - This week, I have another talk at [PyData Global](https://global.pydata.org/)
   about CML. PyData Global is online for the first time ever and promises to be
