@@ -403,7 +403,7 @@ You can take a look at what will be commited to your Git history by running:
 git status
 ```
 
-You should see something similar to this in the terminal.
+You should see something similar to this in your terminal.
 
 ```git
 Changes to be committed:
