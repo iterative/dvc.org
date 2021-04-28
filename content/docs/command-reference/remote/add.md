@@ -312,6 +312,10 @@ Please check that you are able to connect both ways with tools like `ssh` and
 
 ### Click for HDFS
 
+HDFS might require additional setup. Our assumption with HDFS is that the client
+is setup to use it and DVC can rely on the same libraries. See more details
+[here](https://github.com/iterative/dvc/issues/5858#issuecomment-824216700).
+
 💡 Using an HDFS cluster as remote storage is also supported via the WebHDFS
 API. Read more about it by expanding the WebHDFS section below.
 
