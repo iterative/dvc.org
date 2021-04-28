@@ -7,15 +7,9 @@ With DVC experiments and checkpoints, you can:
 
 - Implement the best practice in deep learning to save your model weights as
   checkpoints.
-- Add reproducibility to the messy deep learning process.
 - Track all code and data changes corresponded to the checkpoints.
-- Return a report when metrics start diverging.
-
-You can also automate the process of tracking every training epoch, return to
-any previous checkpoint, see when metrics converge or when the learning rate
-needs to be adjusted, and even recover model weights, parameters, and code. When
-you adjust parameters and code, DVC tracks those changes for you without adding
-a lot of commits to your workspace.
+- See when metrics start diverging and revert to the optimal checkpoint.
+- Automate the process of tracking every training epoch.
 
 [The way checkpoints are implemented by DVC](/blog/experiment-refs) utilizes
 _ephemeral_ experiment commits and experiment branches within DVC. They are
@@ -76,7 +70,8 @@ This sets up the files you need for your DVC pipeline to work.
 This will create a _dvc.yaml_ file in your root directory.
 
 Now we need to add a stage for training our model within a DVC pipeliene. We'll
-do that with the following command:
+do that with `dvc stage add`, which we'll explain more later. For now, run the
+following command:
 
 ```bash
 dvc stage add -n train -d data/MNIST -d train.py -c model.pt --plots-no-cache predictions.json -p seed,lr,weight_decay --live dvclive python train.py
@@ -127,16 +122,24 @@ stages:
 The checkpoints need to be enabled in DVC at the pipeline level. The
 `-c / --checkpoint` option of the `dvc stage add` command defines the checkpoint
 file or directory. This will create a new stage with checkpoints enabled, but
-does not update existing stages.
+does not update existing stages. Another thing to note is that with checkpoints
+enabled, an existing checkpoint file lets DVC know that the file will serve as
+an input dependency for the next checkpoint.
 
 The rest of the command `dvc stage add` sets up our dependencies for running the
 training code, which parameters we want to track (which are defined in the
-_params.yaml_), some configurations for our plots and showing the training
-metrics.
+_params.yaml_), some configurations for our plots, showing the training metrics,
+and specifying where the logs produced by the training process will go.
 
-We'll manually add a slight modification to the way our plots are handled. Add
-the following lines to your _dvc.yaml_. This just changes the way our results
-are shown after we've run some experiments.
+We'll add a slight modification to the way our plots are handled using
+`dvc plots modify`. This is just changing the way our results are shown after
+we've run some experiments. Run the following command to make these
+modifications:
+
+`dvc plots modify predictions.json -t confusion -x actual -y predicted`
+
+After running this command, you should see the following updates in your
+_dvc.yaml_ under the _plots_ area.
 
 ```yaml
 plots:
@@ -186,8 +189,8 @@ checkpoints.
 
 ## Running experiments
 
-With checkpoints enabled and working in our code, let's run the experiment
-again. You can run an experiment with the following command:
+With checkpoints enabled and working in our code, let's run the experiment. You
+can run an experiment with the following command:
 
 ```bash
 dvc exp run
@@ -217,7 +220,7 @@ After a few epochs have completed, stop terminate the training process with
 `Ctrl + C`. Now it's time to take a look at the metrics we're working with.
 
 _If you don't have a number of training epochs defined and you don't terminate
-the process, the experiment will run for 10 minutes._
+the process, the experiment will run for 100 epochs._
 
 ## Viewing checkpoints
 
@@ -227,9 +230,6 @@ running:
 ```bash
 dvc exp show
 ```
-
-The accuracy on our current checkpoints will be high because we've already run
-them twice and training always picks up from the last checkpoint.
 
 ```dvc
 ┏━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━┳━━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━┓
@@ -255,8 +255,9 @@ decreasing at a certain checkpoint and you want to make some changes to fix
 that. You can start training from any existing checkpoint with the following
 command.
 
-If you want to start a new experiment based on an existing checkpoint, you can
-run:
+We'll do an example and change the learning rate in the _params.yaml_ to
+`0.001`. Then we'll start a new experiment based on an existing checkpoint with
+the following command:
 
 ```bash
 dvc exp apply b3de55f && dvc exp run
@@ -277,15 +278,13 @@ You should seem something similar to this in your terminal.
 ┏━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━┳━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━┓
 ┃ Experiment            ┃ Created      ┃ step ┃     loss ┃    acc ┃ seed   ┃ lr     ┃ weight_decay ┃
 ┡━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━╇━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━┩
-│ workspace             │ -            │    5 │ 0.36601  │ 0.8943 │ 473987 │ 0.0001 │ 0            │
-│ main                  │ 04:49 PM     │    - │       -  │      - │ 473987 │ 0.0001 │ 0            │
-│ │ ╓ exp-d0b15         │ 05:10 PM     │    5 │ 0.36601  │ 0.8943 │ 473987 │ 0.0001 │ 0            │
-│ │ ╟ 9ac9e6a           │ 05:09 PM     │    4 │ 0.41666  │ 0.8777 │ 473987 │ 0.0001 │ 0            │
-│ │ ╟ b869efe           │ 05:09 PM     │    3 │ 0.50835  │ 0.8538 │ 473987 │ 0.0001 │ 0            │
-│ │ ╟ 422395e           │ 05:09 PM     │    2 │ 0.72421  │ 0.8284 │ 473987 │ 0.0001 │ 0            │
-│ │ ╟ 44e44a9           │ 05:09 PM     │    1 │  1.2537  │ 0.7738 │ 473987 │ 0.0001 │ 0            │
-│ │ ╟ c60fe61 (b3de55f) │ 01:40 PM     │   10 │ 0.082944 │ 0.9728 │ 473987 │ 0.0001 │ 0            │
-│ │ ╓ exp-4de2a         │ 01:30 PM     │    9 │ 0.066135 │ 0.9792 │ 473987 │ 0.0001 │ 0            │
+│ workspace             │ -            │   18 │ 0.12399  │ 0.9625 │ 473987 │ 0.001  │ 0            │
+│ main                  │ Apr 27, 2021 │    - │       -  │      - │ 473987 │ 0.0001 │ 0            │
+│ │ ╓ exp-63287         │ 04:37 PM     │   18 │ 0.12399  │ 0.9625 │ 473987 │ 0.001  │ 0            │
+│ │ ╟ 868c144           │ 04:37 PM     │   17 │ 0.12042  │ 0.9616 │ 473987 │ 0.001  │ 0            │
+│ │ ╟ 4de4e69           │ 04:37 PM     │   16 │ 0.13808  │ 0.9585 │ 473987 │ 0.001  │ 0            │
+│ │ ╟ d8d633c           │ 04:37 PM     │   15 │ 0.20415  │ 0.9397 │ 473987 │ 0.001  │ 0            │
+│ │ ╟ 8fbab93 (b3de55f) │ 04:36 PM     │   14 │ 0.24509  │ 0.9309 │ 473987 │ 0.001  │ 0            │
 │ │ ╓ exp-4de2a         │ 05:03 PM     │    7 │  0.3096  │ 0.9092 │ 473987 │ 0.0001 │ 0            │
 │ │ ╟ d50c724           │ 05:03 PM     │    6 │ 0.33246  │ 0.9044 │ 473987 │ 0.0001 │ 0            │
 │ │ ╟ 29491a9           │ 05:02 PM     │    5 │ 0.36601  │ 0.8943 │ 473987 │ 0.0001 │ 0            │
