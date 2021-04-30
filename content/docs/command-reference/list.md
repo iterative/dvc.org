@@ -8,8 +8,7 @@ and by Git.
 ## Synopsis
 
 ```usage
-usage: dvc list [-h] [-q | -v] [-R] [--dvc-only] [--rev <commit>]
-                url [path]
+usage: dvc list [-h] [-q | -v] [-R] [--dvc-only] [--show-json] [--rev [<commit>]] url [path]
 
 positional arguments:
   url            Location of DVC or Git repository to list from
@@ -62,6 +61,8 @@ accessed with `dvc get`, `dvc import`, or `dvc.api`.
   [Git revision](https://git-scm.com/docs/revisions)) of the repository to list
   content for. The latest commit in `master` (tip of the default branch) is used
   by default when this option is not specified.
+  
+- `--show-json` - show the output in JSON format.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
