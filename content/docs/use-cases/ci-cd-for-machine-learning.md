@@ -10,7 +10,7 @@ CI/CD is easy to set up with practically any Git repository. Some example
 scenarios are:
 
 - Easy testing and quality assurance (QA)
-  - When new data is pushed in a pull request (PR), validation tests
+  - When new data or code is pushed in a pull request (PR), validation tests
     automatically run in the cloud (without each collaborator setting up
     potentially inconsistent local testing environments)
   - Agile development: automating QA means teams can confidently deploy new
