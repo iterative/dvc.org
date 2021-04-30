@@ -304,9 +304,9 @@ metrics between checkpoints, you can run the command:
 dvc metrics diff exp-3c7a8 c23a6e0
 ```
 
-You'll see something similart to this in your terminal. \_Make sure that you
-replace `exp-3c7a8` with the experiment branch in your table and replace
-`c23a6e0` with the checkpoint id you want to see.
+Make sure that you replace `exp-3c7a8` with the experiment branch in your table
+and replace `c23a6e0` with the checkpoint id you want to see. You'll see
+something similart to this in your terminal.
 
 ```dvc
 Path          Metric    Old      New      Change
