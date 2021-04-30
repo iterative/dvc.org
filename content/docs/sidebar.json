@@ -134,12 +134,11 @@
           "merge-conflicts"
         ]
       },
-      "experiment-management",
       {
-        "slug": "checkpoints",
-        "tutorials": {
-          "katacoda": "https://katacoda.com/dvc/courses/get-started/checkpoints"
-        }
+        "label": "Experiment Management",
+        "slug": "experiment-management",
+        "source": "user-guide/experiment-management/index.md",
+        "children": ["checkpoints"]
       },
       "setup-google-drive-remote",
       "large-dataset-optimization",
