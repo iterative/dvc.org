@@ -131,25 +131,6 @@ training code, which parameters we want to track (which are defined in the
 _params.yaml_), some configurations for our plots, showing the training metrics,
 and specifying where the logs produced by the training process will go.
 
-We'll add a slight modification to the way our plots are handled using
-`dvc plots modify`. This is just changing the way our results are shown after
-we've run some experiments. Run the following command to make these
-modifications:
-
-`dvc plots modify predictions.json -t confusion -x actual -y predicted`
-
-After running this command, you should see the following updates in your
-_dvc.yaml_ under the _plots_ area.
-
-```yaml
-plots:
-  - predictions.json:
-      cache: false
-      template: confusion
-      x: actual
-      y: predicted
-```
-
 Now that you know how to enable checkpoints in a DVC pipeline, let's move on to
 setting up checkpoints in your code.
 
@@ -252,18 +233,24 @@ dvc exp show
 Since you have all of these different checkpoints, you might want to resume
 training from a particular one. For example, maybe your accuracy started
 decreasing at a certain checkpoint and you want to make some changes to fix
-that. You can start training from any existing checkpoint with the following
-command.
+that.
 
-We'll do an example and change the learning rate in the _params.yaml_ to
-`0.001`. Then we'll start a new experiment based on an existing checkpoint with
-the following command:
+First, we need to apply the checkpoint we want to begin our new experiment from.
+To do that, run the following command:
 
 ```bash
-dvc exp apply b3de55f && dvc exp run
+dvc exp apply b3de55f
 ```
 
 where _b3de55f_ is the id of the checkpoint you want to reference.
+
+Next, we'll change the learning rate in the _params.yaml_ to `0.001`. Then we'll
+start a new experiment based on an existing checkpoint with the following
+command:
+
+```bash
+dvc exp run
+```
 
 You'll be able to see where the experiment starts from the existing checkpoint
 by running:
@@ -301,12 +288,12 @@ When you've run all the experiments you want to and you are ready to compare
 metrics between checkpoints, you can run the command:
 
 ```bash
-dvc metrics diff exp-3c7a8 c23a6e0
+dvc metrics diff 8fbab93 868c144
 ```
 
-Make sure that you replace `exp-3c7a8` with the experiment branch in your table
-and replace `c23a6e0` with the checkpoint id you want to see. You'll see
-something similart to this in your terminal.
+Make sure that you replace `8fbab93` and `868c144` with checkpoint ids from your
+table with the checkpoints you want to compare. You'll see something similart to
+this in your terminal.
 
 ```dvc
 Path          Metric    Old      New      Change
@@ -321,10 +308,10 @@ You also have the option to generate plots to visualize the metrics about your
 training epochs. Running:
 
 ```bash
-dvc plots diff c60fe61 a4d64fc
+dvc plots diff 8fbab93 868c144
 ```
 
-where `c60fe61` and `a4d64fc` are the checkpoint ids you want to compare, will
+where `8fbab93` and `868c144` are the checkpoint ids you want to compare, will
 generate a `plots.html` file that you can open in a browser and it will display
 plots for you similar to the ones below.
 
