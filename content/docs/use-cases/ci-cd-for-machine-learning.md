@@ -24,6 +24,8 @@ scenarios are:
   - Automatically generate performance metrics reports and post them as a PR
     comment with interactive graphs and tables
 
+![](https://static.iterative.ai/img/ci-cd-ml.png)
+
 In ML, CI/CD can be used to automatically build, test and push data and models
 to production in the cloud with minimal effort. There are many components, such
 as:
@@ -38,6 +40,8 @@ Quite often, CI/CD for ML is hard to set up and debug, and solutions unclear.
 DVC provides lightweight tools that can work on any infrastructure and alleviate
 [hidden technical debt](https://papers.nips.cc/paper/2015/file/86df7dcfd896fcaf2674f757a2463eba-Paper.pdf)
 by managing data, models, and code together.
+
+![](https://static.iterative.ai/img/git-dvc-cml.png)
 
 **Data as Code**: DVC removes the need to manage databases or write bespoke code
 to read and write to such databases. Instead, DVC works alongside Git to manage
