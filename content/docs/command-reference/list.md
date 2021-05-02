@@ -8,7 +8,9 @@ and by Git.
 ## Synopsis
 
 ```usage
-usage: dvc list [-h] [-q | -v] [-R] [--dvc-only] [--show-json] [--rev [<commit>]] url [path]
+usage: dvc list [-h] [-q | -v] [-R] [--dvc-only]
+                [--show-json] [--rev [<commit>]]
+                url [path]
 
 positional arguments:
   url            Location of DVC or Git repository to list from
