@@ -378,12 +378,12 @@
             "slug": "add"
           },
           {
-            "label": "remote default",
-            "slug": "default"
-          },
-          {
             "label": "remote modify",
             "slug": "modify"
+          },
+          {
+            "label": "remote default",
+            "slug": "default"
           },
           {
             "label": "remote list",

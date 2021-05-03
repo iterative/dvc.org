@@ -273,7 +273,7 @@ Operational parameters:
   > - [ACL Overview - Permissions](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#permissions)
   > - [Put Object ACL](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObjectAcl.html)
 
-S3 remotes can also be configured entirely via environment variables:
+S3 remotes can also be configured entirely via environment variables, e.g.:
 
 ```dvc
 $ export AWS_ACCESS_KEY_ID='mykey'
@@ -281,20 +281,33 @@ $ export AWS_SECRET_ACCESS_KEY='mysecret'
 $ dvc remote add -d myremote s3://mybucket/path
 ```
 
-For more information about the variables DVC supports, please visit
-[boto3 documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/configuration.html#environment-variable-configuration)
+For more on the supported env vars, please see the
+[boto3 docs](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/configuration.html#environment-variable-configuration)
+
+The following API methods are performed by the `boto3` library (used by DVC):
+
+- `list_objects_v2`, `list_objects`
+- `head_object`
+- `download_file`
+- `upload_file`
+- `delete_object`
+- `copy`
+
+So make sure you have the following permissions enabled:
+
+- `s3:ListBucket`
+- `s3:GetObject`
+- `s3:PutObject`
+- `s3:DeleteObject`
 
 </details>
 
 <details>
 
-### Click for S3 API compatible storage
+### Click for S3-compatible storage
 
-To communicate with a remote object storage that supports an S3 compatible API
-(e.g. [Minio](https://min.io/),
-[DigitalOcean Spaces](https://www.digitalocean.com/products/spaces/),
-[IBM Cloud Object Storage](https://www.ibm.com/cloud/object-storage) etc.),
-configure the remote's `endpointurl` explicitly:
+For object storage that supports an S3-compatible API, configure the
+`endpointurl` parameter:
 
 ```dvc
 $ dvc remote add -d myremote s3://mybucket/path
@@ -302,9 +315,12 @@ $ dvc remote modify myremote endpointurl \
                     https://object-storage.example.com
 ```
 
-Besides that, any parameters that are available for Amazon S3 (see previous
-section) may be available for S3 compatible storage. For example, let's setup a
-DVC remote using the `example-name`
+⚠️ It's also important to setup appropriate authentication with
+`dvc remote modify`. Otherwise, DVC will try to use default AWS credentials,
+which may cause an error.
+
+Any other S3 remote parameter may also be available for S3-compatible storage.
+For example, let's setup a DVC remote using the `example-name`
 [DigitalOcean space](https://www.digitalocean.com/community/tutorials/how-to-create-a-digitalocean-space-and-api-key)
 (equivalent to a bucket in AWS) in the `nyc3` region:
 
