@@ -42,7 +42,7 @@ option.
 
 <details>
 
-### How does DVC track experiments?
+### ⚙️ How does DVC track experiments?
 
 Experiments are custom
 [Git references](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
@@ -81,20 +81,23 @@ Then, in your code either call the `dvc.api.make_checkpoint()` function
 (Python), or write a signal file (any programming language) following the same
 steps as `make_checkpoint()` — please refer to its reference for details.
 
-You can now use `dvc exp run` to begin the experiment. If the process gets
-interrupted (e.g. with `[Ctrl] C` or by an error), all the checkpoints so far
-will be preserved. When a run finishes normally, a final checkpoint will be
-added (if needed) to wrap up the experiment.
+You can now use `dvc exp run` to begin the experiment. All checkpoints
+registered at runtime will be preserved even if the process gets interrupted
+(e.g. with `[Ctrl] C`, or by an error\*). A "wrap-up" checkpoint will be added
+(if needed), so that no changes remain in the workspace.
 
-Following uses of `dvc exp run` will continue from this point (using the latest
-cached versions of all outputs). You can add a `--rev` to continue from a
-previous checkpoint instead (list them with `dvc exp show`). Or use `--reset` to
-start over (discards previous checkpoints and deletes `checkpoint` outputs, like
-the first `dvc exp run`) — useful for re-training ML models, for example.
+> \* Stage command(s) should return a non-error exit code (`0`) for the final
+> checkpoint to happen.
+
+Subsequent uses of `dvc exp run` will continue from the wrap-up checkpoint
+(using the latest cached versions of all outputs). You can add a `--rev` to
+continue from a previous checkpoint instead (list them with `dvc exp show`). Or
+use `--reset` to start over (discards previous checkpoints and deletes
+`checkpoint` outputs) — useful for re-training ML models, for example.
 
 <details>
 
-### How are checkpoints captured?
+### ⚙️ How are checkpoints captured?
 
 Instead of a single commit, checkpoint experiments have multiple commits under
 the custom Git reference (in `.git/refs/exps`), similar to a branch.
@@ -123,6 +126,15 @@ changes between/after queueing runs.
 > `git add` first (before `dvc exp run`). Feel free to `git reset` them
 > afterwards. Git-ignored files/dirs are explicitly excluded from runs outside
 > the workspace to avoid committing unwanted files into experiments.
+
+<details>
+
+### ⚙️ How are experiments queued?
+
+A custom [Git stash](https://www.git-scm.com/docs/git-stash) is used to queue
+pre-experiment commits.
+
+</details>
 
 Adding `-j` (`--jobs`), experiment queues can be run in parallel for better
 performance (creates a tmp dir for each job).
