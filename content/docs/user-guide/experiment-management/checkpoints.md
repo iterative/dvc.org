@@ -171,7 +171,9 @@ for i in range(1, EPOCHS+1):
     # Evaluate and checkpoint.
     metrics = evaluate(model, x_test, y_test)
     for k, v in metrics.items():
-        print('Epoch %s: %s=%s'%(i, k, v))
+-        print('Epoch %s: %s=%s'%(i, k, v))
++        dvclive.log(k, v)
++    dvclive.next_step()
 ```
 
 The line `torch.save(model.state_dict(), "model.pt")` updates the checkpoint
