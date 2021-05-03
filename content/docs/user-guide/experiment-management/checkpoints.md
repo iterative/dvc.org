@@ -58,9 +58,9 @@ everything you need to get started with experiments and checkpoints.
 
 ## Setting up a DVC pipeline
 
-DVC versions data and models and it also can version the machine learning model
-weights file, the checkpoints, during the training process. To enable this, you
-will need to run your model training under DVC pipeline.
+DVC versions data and it also can version the machine learning model
+weights file as checkpoints during the training process. To enable this, you
+will need to set up a DVC pipeline to train your model.
 
 Adding DVC pipline only takes a few commands. At the root of the project, run:
 
