@@ -58,8 +58,11 @@ everything you need to get started with experiments and checkpoints.
 
 ## Setting up a DVC pipeline
 
-If you don't have a DVC pipeline setup in your project, adding one only takes a
-few commands. At the root of the project, run:
+DVC versions data and models and it also can version the machine learning model
+weights file, the checkpoints, during the training process. To enable this, you
+will need to run your model training under DVC pipeline.
+
+Adding DVC pipline only takes a few commands. At the root of the project, run:
 
 ```bash
 dvc init
@@ -74,18 +77,19 @@ do that with `dvc stage add`, which we'll explain more later. For now, run the
 following command:
 
 ```bash
-dvc stage add -n train -d data/MNIST -d train.py -c model.pt --plots-no-cache predictions.json -p seed,lr,weight_decay --live dvclive python train.py
+dvc stage add -n train -d data/MNIST -d train.py \
+              -c model.pt --plots-no-cache predictions.json \
+              -p seed,lr,weight_decay --live dvclive python train.py
 ```
 
-Before we go any further, this is a great point to add these changes to your Git
-history. You can do that with the following commands:
+The checkpoints need to be enabled in DVC at the pipeline level. The
+`-c / --checkpoint` option of the `dvc stage add` command defines the checkpoint
+file or directory.
 
-```bash
-git add .
-git commit -m "created DVC pipeline"
-```
-
-## Enabling DVC pipelines for checkpoint experiments
+The rest of the `dvc stage add` command sets up our dependencies for running the
+training code, which parameters we want to track (which are defined in the
+_params.yaml_), some configurations for our plots, showing the training metrics,
+and specifying where the logs produced by the training process will go.
 
 After running the command above to setup your _train_ stage, your _dvc.yaml_
 should have the following code.
@@ -119,17 +123,13 @@ stages:
         html: true
 ```
 
-The checkpoints need to be enabled in DVC at the pipeline level. The
-`-c / --checkpoint` option of the `dvc stage add` command defines the checkpoint
-file or directory. This will create a new stage with checkpoints enabled, but
-does not update existing stages. Another thing to note is that with checkpoints
-enabled, an existing checkpoint file lets DVC know that the file will serve as
-an input dependency for the next checkpoint.
+Before we go any further, this is a great point to add these changes to your Git
+history. You can do that with the following commands:
 
-The rest of the command `dvc stage add` sets up our dependencies for running the
-training code, which parameters we want to track (which are defined in the
-_params.yaml_), some configurations for our plots, showing the training metrics,
-and specifying where the logs produced by the training process will go.
+```bash
+git add .
+git commit -m "created DVC pipeline"
+```
 
 Now that you know how to enable checkpoints in a DVC pipeline, let's move on to
 setting up checkpoints in your code.
@@ -158,15 +158,32 @@ Then update the following lines of code in the `main` method inside of the
 training epoch loop.
 
 ```python
-for k, v in metrics.items():
-    print('Epoch %s: %s=%s'%(i, k, v))
-    dvclive.log(k, v)
-dvclive.next_step()
+# Iterate over training epochs.
+for i in range(1, EPOCHS+1):
+    # Train in batches.
+    train_loader = torch.utils.data.DataLoader(
+            dataset=list(zip(x_train, y_train)),
+            batch_size=512,
+            shuffle=True)
+    for x_batch, y_batch in train_loader:
+        train(model, x_batch, y_batch, params["lr"], params["weight_decay"])
+    torch.save(model.state_dict(), "model.pt")
+    # Evaluate and checkpoint.
+    metrics = evaluate(model, x_test, y_test)
+    for k, v in metrics.items():
+        print('Epoch %s: %s=%s'%(i, k, v))
 ```
 
-By adding the two `dvclive` methods to our training epoch loop, we are enabling
-checkpoints in our code and recording the training metrics at each of those
-checkpoints.
+The line `torch.save(model.state_dict(), "model.pt")` updates the checkpoint
+file.
+
+The `dvclive.log(k, v)` line stores the metric _k_ with a value _v_ in plain
+text files in the _dvclive_ directory by default.
+
+The `dvclive.next_step()` line tells DVC that it can take a snapshot of the
+entire workspace and version it with Git. It's important that with this approach
+only code with metadata is versioned in Git (as an ephemeral commit), while the
+actual model weight file will be stored in the DVC data cache.
 
 ## Running experiments
 
@@ -181,20 +198,34 @@ You'll see output similar to this in your terminal while the training process is
 going on.
 
 ```dvc
-Checkpoint experiment iteration 'd50c724'.
+Epoch 1: loss=1.9225023984909058
+Epoch 1: acc=0.5833
 Updating lock file 'dvc.lock'
-Checkpoint experiment iteration '29491a9'.
+Checkpoint experiment iteration '09aa592'.
+
+file:///Users/milecia/checkpoints-tutorial/dvclive.html
+Epoch 2: loss=1.2303115129470825
+Epoch 2: acc=0.7777
 Updating lock file 'dvc.lock'
-Checkpoint experiment iteration 'b3de55f'.
+Checkpoint experiment iteration 'f5742b3'.
+
+file:///Users/milecia/checkpoints-tutorial/dvclive.html
+Epoch 3: loss=0.714752733707428
+Epoch 3: acc=0.8295
 Updating lock file 'dvc.lock'
-Checkpoint experiment iteration 'c4a46af'.
+Checkpoint experiment iteration '4917b0e'.
+
+file:///Users/milecia/checkpoints-tutorial/dvclive.html
+Epoch 4: loss=0.5060071349143982
+Epoch 4: acc=0.8551
 Updating lock file 'dvc.lock'
-Checkpoint experiment iteration 'daf204c'.
+Checkpoint experiment iteration 'acfa695'.
+
+file:///Users/milecia/checkpoints-tutorial/dvclive.html
+Epoch 5: loss=0.41547226905822754
+Epoch 5: acc=0.8785
 Updating lock file 'dvc.lock'
-Checkpoint experiment iteration 'bdb975c'.
-Updating lock file 'dvc.lock'
-Checkpoint experiment iteration '77dc46c'.
-Updating lock file 'dvc.lock'
+Checkpoint experiment iteration '69beaaa'.
 ```
 
 After a few epochs have completed, stop terminate the training process with
@@ -244,12 +275,12 @@ dvc exp apply b3de55f
 
 where _b3de55f_ is the id of the checkpoint you want to reference.
 
-Next, we'll change the learning rate in the _params.yaml_ to `0.001`. Then we'll
+Next, we'll change the learning rate set in the _params.yaml_ to `0.001` and
 start a new experiment based on an existing checkpoint with the following
 command:
 
 ```bash
-dvc exp run
+dvc exp run --set-param lr=0.001
 ```
 
 You'll be able to see where the experiment starts from the existing checkpoint
@@ -292,7 +323,7 @@ dvc metrics diff 8fbab93 868c144
 ```
 
 Make sure that you replace `8fbab93` and `868c144` with checkpoint ids from your
-table with the checkpoints you want to compare. You'll see something similart to
+table with the checkpoints you want to compare. You'll see something similar to
 this in your terminal.
 
 ```dvc
@@ -301,6 +332,9 @@ dvclive.json  acc       0.9854   0.9831   -0.0023
 dvclive.json  loss      0.04828  0.05095  0.00267
 dvclive.json  step      19       15       -4
 ```
+
+_These are the same numbers you see in the metrics table, just in a different
+format._
 
 ### Looking at plots
 
@@ -407,3 +441,14 @@ Untracked files:
         plots.html
         predictions.json
 ```
+
+All that's left is to commit these changes with the following command:
+
+```git
+git commit -m 'saved files from experiment'
+```
+
+Now that you know how to use checkpoints in DVC, you'll be able to resume
+training from different checkpoints to try out new hyperparameters or code and
+you'll be able to track all of the changes you make while trying to create the
+best possible model.
