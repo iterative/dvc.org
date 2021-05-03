@@ -62,7 +62,7 @@ DVC versions data and it also can version the machine learning model
 weights file as checkpoints during the training process. To enable this, you
 will need to set up a DVC pipeline to train your model.
 
-Adding DVC pipline only takes a few commands. At the root of the project, run:
+Adding a DVC pipline only takes a few commands. At the root of the project, run:
 
 ```bash
 dvc init
