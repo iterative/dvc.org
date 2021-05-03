@@ -58,9 +58,9 @@ everything you need to get started with experiments and checkpoints.
 
 ## Setting up a DVC pipeline
 
-DVC versions data and it also can version the machine learning model
-weights file as checkpoints during the training process. To enable this, you
-will need to set up a DVC pipeline to train your model.
+DVC versions data and it also can version the machine learning model weights
+file as checkpoints during the training process. To enable this, you will need
+to set up a DVC pipeline to train your model.
 
 Adding a DVC pipline only takes a few commands. At the root of the project, run:
 
@@ -230,8 +230,8 @@ Updating lock file 'dvc.lock'
 Checkpoint experiment iteration '69beaaa'.
 ```
 
-After a few epochs have completed, stop the training process with
-`Ctrl + C`. Now it's time to take a look at the metrics we're working with.
+After a few epochs have completed, stop the training process with `Ctrl + C`.
+Now it's time to take a look at the metrics we're working with.
 
 _If you don't have a number of training epochs defined and you don't terminate
 the process, the experiment will run for 100 epochs._
