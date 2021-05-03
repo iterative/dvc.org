@@ -101,15 +101,15 @@ up-to-date and only execute the final stage.
 
 ## Options
 
-- `targets` (optional command argument) - what to reproduce (the pipeline(s) in
+- `targets` (optional command argument) - what to reproduce (all pipeline(s) in
   `./dvc.yaml` by default). Different things can be provided as targets
   depending on the flags used (more details in each option). Examples:
 
-  - `dvc repro linear/dvc.yaml`: Specific `dvc.yaml` file to reproduce
-  - `dvc repro -R pipelines/`: Directory path to explore recursively for
-    `dvc.yaml` files
-  - `dvc repro train-model`: Specific stage in `./dvc.yaml`
-  - `dvc repro modeling/dvc.yaml:prepare`: Stage in a specific `dvc.yaml` file
+  - `dvc repro linear/dvc.yaml`: A `dvc.yaml` file
+  - `dvc repro -R pipelines/`: Directory to explore recursively for pipelines
+  - `dvc repro train-model`: Specific stage(s) from `./dvc.yaml`
+  - `dvc repro modeling/dvc.yaml:prepare`: Stage(s) from a specific `dvc.yaml`
+    file
   - `dvc repro --glob train-*`: Pattern to match groups of stages
 
 - `-R`, `--recursive` - looks for `dvc.yaml` files to reproduce in any
@@ -296,7 +296,7 @@ The answer to universe is 42
 - The Hitchhiker's Guide to the  Galaxy
 ```
 
-Let's say we also want to print the filename in the description, and so we
+Let's say we also want to print the file name in the description, and so we
 update the `process.py` as:
 
 ```python

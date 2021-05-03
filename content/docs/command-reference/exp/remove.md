@@ -1,6 +1,6 @@
 # exp remove
 
-Remove specific `dvc experiments` from the <abbr>project</abbr>.
+Delete specific `dvc experiments` from the <abbr>project</abbr>.
 
 ## Synopsis
 
@@ -14,9 +14,11 @@ positional arguments:
 
 ## Description
 
-Deletes one or more experiments indicated by name or hash (see `dvc exp run`).
+Deletes one or more experiments, indicated by name (see `dvc exp run`).
 
-With `--queue`, the queue of experiments is cleared.
+With `--queue`, the list of experiments awaiting execution is cleared instead.
+
+> Note that all the checkpoints in an experiment are removed by this command.
 
 ## Options
 

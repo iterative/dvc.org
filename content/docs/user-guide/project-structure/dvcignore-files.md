@@ -7,7 +7,7 @@ Sometimes you might want DVC to ignore some files while working with the
 project. For example, when working in a <abbr>workspace</abbr> directory with a
 large number of data files, you might encounter extended execution time for
 operations as simple as `dvc status`. In other case you might want to omit files
-or folders unrelated to the project (like `.DS_Store` on MacOS). To address
+or folders unrelated to the project (like `.DS_Store` on macOS). To address
 these scenarios, DVC supports optional `.dvcignore` files.
 
 `.dvcignore` is similar to `.gitignore` in Git, and can be tested with our

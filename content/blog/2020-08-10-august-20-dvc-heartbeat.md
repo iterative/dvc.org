@@ -150,7 +150,7 @@ image="/uploads/images/2020-08-10/dagshub.jpg"/>
 
 Here are some of our favorite blogs from around the internet 🌏.
 
-- [Déborah Mesquita](https://www.deborahmesquita.com/), data scientist (and an
+- [Déborah Mesquita](https://deborahmesquita.com/), data scientist (and an
   excellent writer to follow), published a tutorial about DVC pipelines that is
   truly deserving of the moniker "ultimate guide". It's a start-to-finish case
   study about a typical machine learning project, with DVC pipelines to automate

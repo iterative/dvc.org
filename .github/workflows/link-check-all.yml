@@ -8,6 +8,8 @@ jobs:
   run:
     name: Link Check All
     runs-on: ubuntu-latest
+    env:
+      NODE_OPTIONS: '--max-http-header-size=65536'
 
     steps:
       - uses: actions/checkout@v2

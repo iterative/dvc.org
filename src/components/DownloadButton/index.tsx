@@ -9,7 +9,7 @@ import { logEvent } from '../../utils/front/ga'
 
 import styles from './styles.module.css'
 
-const VERSION = `2.0.15`
+const VERSION = `2.0.18`
 
 enum OS {
   UNKNOWN = '...',
@@ -26,7 +26,7 @@ const itemsByOs = {
     download: false
   },
   [OS.OSX]: {
-    title: 'Mac OS',
+    title: 'macOS',
     url: `/osxpkg/dvc-${VERSION}.pkg`,
     download: true
   },

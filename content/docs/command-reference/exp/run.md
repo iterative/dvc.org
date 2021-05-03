@@ -27,35 +27,35 @@ directories, etc.
 
 > `dvc exp run` is equivalent to `dvc repro` for <abbr>experiments</abbr>. It
 > has the same behavior when it comes to `targets` and stage execution (restores
-> the dependency graph, etc.). See the command [options](#options) for more the
-> differences.
+> the dependency graph, etc.). See the command [options](#options) for more on
+> the differences.
 
-Before using this command, you'll probably want to make modifications such as
-data and code updates, or <abbr>hyperparameter</abbr> tuning. You can use the
-`--set-param` option to change `dvc param` values on-the fly.
+Before running an experiment, you'll probably want to make modifications such as
+data and code updates, or <abbr>hyperparameter</abbr> tuning. For the latter,
+you can use the `--set-param` (`-S`) option of this command to change
+`dvc param` values on-the fly.
 
-Each `dvc exp run` creates a variation based on the latest project version
-committed to Git, and tracks this experiment automatically with an automatic
-name like `exp-bfe64` (which can be customized with the `--name` option).
+Each experiment creates and tracks a project variation based on your
+<abbr>workspace</abbr> changes. Experiments will have an auto-generated name
+like `exp-bfe64` by default, which can be customized using the `--name` (`-n`)
+option.
 
 <details>
 
-### How does DVC track experiments?
+### ⚙️ How does DVC track experiments?
 
-Internally, `dvc exp` uses actual commits under custom
+Experiments are custom
 [Git references](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
-(found in `.git/refs/exps`). Each commit has the Git `HEAD` as parent and has
-it's own SHA-256 hash. These are not pushed to the Git remote by default (see
-`dvc exp push`).
-
-> References have a unique signature similar to the
-> [entries in the run-cache](/doc/user-guide/project-structure/internal-files#run-cache).
+(found in `.git/refs/exps`) with a single commit based on `HEAD` (not checked
+out by DVC). Note that these commits are not pushed to the Git remote by default
+(see `dvc exp push`).
 
 </details>
 
-The results of the last experiment can be seen in the <abbr>workspace</abbr>. To
-display and compare your experiments, use `dvc exp show` or `dvc exp diff`. Use
-`dvc exp apply` to roll back the workspace to a previous experiment
+The results of the last `dvc exp run` can be seen in the workspace. To display
+and compare multiple experiments, use `dvc exp show` or `dvc exp diff`
+(`plots diff` also accepts experiment names as `revisions`). Use `dvc exp apply`
+to restore the results of any other experiment instead.
 
 Successful experiments can be made
 [persistent](/doc/user-guide/experiment-management#persistent-experiments) by
@@ -81,25 +81,26 @@ Then, in your code either call the `dvc.api.make_checkpoint()` function
 (Python), or write a signal file (any programming language) following the same
 steps as `make_checkpoint()` — please refer to its reference for details.
 
-You can now use `dvc exp run` to begin the experiment. If the process gets
-interrupted (e.g. with `[Ctrl] C` or by an error), all the checkpoints so far
-will be preserved. When a run finishes normally, a final checkpoint will be
-added (if needed) to wrap up the experiment.
+You can now use `dvc exp run` to begin the experiment. All checkpoints
+registered at runtime will be preserved even if the process gets interrupted
+(e.g. with `[Ctrl] C`, or by an error\*). A "wrap-up" checkpoint will be added
+(if needed), so that no changes remain in the workspace.
 
-Following uses of `dvc exp run` will continue from this point (using the latest
-cached versions of all outputs). You can add a `--rev` to continue from a
-previous checkpoint instead (list them with `dvc exp show`). Or use `--reset` to
-start over (discards previous checkpoints and deletes `checkpoint` outputs, like
-the first `dvc exp run`) — useful for re-training ML models, for example.
+> \* Stage command(s) should return a non-error exit code (`0`) for the final
+> checkpoint to happen.
+
+Subsequent uses of `dvc exp run` will continue from the wrap-up checkpoint
+(using the latest cached versions of all outputs). You can add a `--rev` to
+continue from a previous checkpoint instead (list them with `dvc exp show`). Or
+use `--reset` to start over (discards previous checkpoints and deletes
+`checkpoint` outputs) — useful for re-training ML models, for example.
 
 <details>
 
-### How are checkpoints captured by DVC?
+### ⚙️ How are checkpoints captured?
 
-When DVC runs a checkpoint-enabled experiment, a custom Git branch (in
-`.git/refs/exps`) is started off the repo `HEAD`. A new commit is appended each
-time a checkpoint is registered by the code. These are not pushed to the Git
-remote by default (see `dvc exp push`).
+Instead of a single commit, checkpoint experiments have multiple commits under
+the custom Git reference (in `.git/refs/exps`), similar to a branch.
 
 </details>
 
@@ -112,17 +113,39 @@ execution. `dvc exp show` will mark queued experiments with an asterisk `*`.
 > Note that queuing an experiment that uses checkpoints implies `--reset`,
 > unless a `--rev` is provided (refer to the previous section).
 
-Use `dvc exp run --run-all` to process this queue. Adding `-j` (`--jobs`),
-experiment queues can be run in parallel for better performance. This creates a
-temporary workspace copy for each subprocess (in `.dvc/tmp/exps`). See also
-`--temp`.
+Use `dvc exp run --run-all` to process the queue. This is done outside your
+<abbr>workspace</abbr> (in temporary dirs in `.dvc/tmp/exps`) to preserve any
+changes between/after queueing runs.
+
+💡 You can also run a single experiment outside the workspace with
+`dvc exp run --temp`, for example to continue working on the project meanwhile
+(e.g. on another terminal).
+
+> ⚠️ Note that only tracked files and directories will be included in
+> `--queue/temp` experiments. To include untracked files, stage them with
+> `git add` first (before `dvc exp run`). Feel free to `git reset` them
+> afterwards. Git-ignored files/dirs are explicitly excluded from runs outside
+> the workspace to avoid committing unwanted files into experiments.
+
+<details>
+
+### ⚙️ How are experiments queued?
+
+A custom [Git stash](https://www.git-scm.com/docs/git-stash) is used to queue
+pre-experiment commits.
+
+</details>
+
+Adding `-j` (`--jobs`), experiment queues can be run in parallel for better
+performance (creates a tmp dir for each job).
 
 ⚠️ Parallel runs are experimental and may be unstable at this time. ⚠️ Make sure
 you're using a number of jobs that your environment can handle (no more than the
 CPU cores).
 
-> Note that each job runs the entire pipeline (or `targets`) serially — DVC
-> makes no attempt to distribute stage commands among jobs.
+> Note that each job runs the entire pipeline (or `targets`) serially. DVC makes
+> no attempt to distribute stage commands among jobs. The order in which they
+> were queued is also not preserved when running them.
 
 ## Options
 
@@ -139,27 +162,29 @@ CPU cores).
   name will generated by default, such as `exp-f80g4` (based on the experiment's
   hash).
 
+- `--temp` - run this experiment outside your workspace (in `.dvc/tmp/exps`).
+  Useful to continue working (e.g. in another terminal) while a long experiment
+  runs.
+
 - `--queue` - place this experiment at the end of a line for future execution,
-  but do not actually run it yet. Use `dvc exp run --run-all` to process the
+  but don't actually run it yet. Use `dvc exp run --run-all` to process the
   queue. For checkpoint experiments, this implies `--reset` unless a `--rev` is
   provided.
 
-- `--run-all` - run all queued experiments (see `--queue`). Use `-j` to execute
-  them [in parallel](#queueing-and-parallel-execution).
+- `--run-all` - run all queued experiments (see `--queue`) and outside your
+  workspace (in `.dvc/tmp/exps`). Use `-j` to execute them
+  [in parallel](#queueing-and-parallel-execution).
 
 - `-j <number>`, `--jobs <number>` - run this `number` of queued experiments in
-  parallel. Only applicable when used in conjunction with `--run-all`.
-
-- `--temp` - run this experiment in a separate temporary directory (in
-  `.dvc/tmp/exps`) instead of your workspace.
+  parallel. Only has an effect along with `--run-all`. Defaults to 1 (the queue
+  is processed serially).
 
 - `-r <commit>`, `--rev <commit>` - continue an experiment from a specific
   checkpoint name or hash (`commit`). This is needed for example to resume
   experiments from `--queue` or `--temp` runs.
 
 - `--reset` - deletes `checkpoint` outputs before running this experiment
-  (regardless of `dvc.lock`). Implies `--force`, so that cached checkpoint
-  results are regenerated. Useful for ML model re-training.
+  (regardless of `dvc.lock`). Useful for ML model re-training.
 
 - `-f`, `--force` - reproduce pipelines even if no changes were found (same as
   `dvc repro -f`).

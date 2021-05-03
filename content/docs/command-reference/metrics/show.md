@@ -31,17 +31,17 @@ compares them with a previous version.
 
 ## Options
 
-- `-a`, `--all-branches` - print metrics file contents in all Git branches
-  instead of just those present in the current workspace. It can be used to
-  compare different experiments. Note that this can be combined with `-T` below,
-  for example using the `-aT` flag.
+- `-a`, `--all-branches` - print metrics file contents in all Git branches, as
+  well as in the workspace. It can be used to compare different experiments.
+  Note that this can be combined with `-T` below, for example using the `-aT`
+  flags.
 
-- `-T`, `--all-tags` - same as `-a` above, but applies to Git tags as well as
-  the workspace. Note that both options can be combined, for example using the
-  `-aT` flag.
+- `-T`, `--all-tags` - print metrics file contents in all Git tags, as well as
+  in the workspace. Note that this can be combined with `-a` above, for example
+  using the `-aT` flags.
 
-- `--all-commits` - same as `-a` or `-T` above, but applies to _all_ Git commits
-  as well as the workspace. This prints metrics in the entire commit history of
+- `-A`, `--all-commits` - print metrics file contents in all Git commits, as
+  well as in the workspace. This prints metrics in the entire commit history of
   the project.
 
 - `--show-json` - prints the command's output in easily parsable JSON format,
@@ -62,11 +62,9 @@ compares them with a previous version.
 
 ## Examples
 
-> This example is based on the `evaluate` stage of our
-> [Get Started](/doc/start/metrics-parameters-plots), where you can find the
-> actual source code.
-
-The basic use case shows the values in the current workspace:
+Let's imagine we have a simple [stage](/doc/command-reference/run) that produces
+an `eval.json` metrics file. The basic use case shows the values in the current
+workspace:
 
 ```dvc
 $ dvc metrics show

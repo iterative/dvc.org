@@ -10,7 +10,7 @@
     "source": "install/index.md",
     "children": [
       {
-        "label": "Mac OS",
+        "label": "macOS",
         "slug": "macos"
       },
       "windows",
@@ -49,18 +49,21 @@
       {
         "slug": "data-pipelines",
         "tutorials": {
-          "katacoda": "https://katacoda.com/dvc/courses/get-started"
+          "katacoda": "https://katacoda.com/dvc/courses/get-started/stages"
         }
       },
       {
         "label": "Metrics, Parameters, and Plots",
         "slug": "metrics-parameters-plots",
         "tutorials": {
-          "katacoda": "https://katacoda.com/dvc/courses/get-started"
+          "katacoda": "https://katacoda.com/dvc/courses/get-started/params-metrics-plots"
         }
       },
       {
-        "slug": "experiments"
+        "slug": "experiments",
+        "tutorials": {
+          "katacoda": "https://katacoda.com/dvc/courses/get-started/experiments"
+        }
       }
     ]
   },
@@ -375,12 +378,12 @@
             "slug": "add"
           },
           {
-            "label": "remote default",
-            "slug": "default"
-          },
-          {
             "label": "remote modify",
             "slug": "modify"
+          },
+          {
+            "label": "remote default",
+            "slug": "default"
           },
           {
             "label": "remote list",
@@ -420,6 +423,10 @@
           {
             "label": "stage add",
             "slug": "add"
+          },
+          {
+            "label": "stage list",
+            "slug": "list"
           }
         ]
       },

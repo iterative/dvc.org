@@ -153,7 +153,7 @@ frequencies (i.e., the frequency of word occurences in post titles and bodies)
 as features. This is intended to give a baseline for what kind of performance
 any future modeling efforts should beat. Because of the strong class imbalance,
 I used
-[SMOTE to oversample](https://imbalanced-learn.readthedocs.io/en/stable/generated/imblearn.over_sampling.SMOTE.html)
+[SMOTE to oversample](https://imbalanced-learn.org/stable/over_sampling.html#smote-variants)
 Asshole posts. And, for simplicity, I binarized the category labels:
 
 |     Verdict      | Label |

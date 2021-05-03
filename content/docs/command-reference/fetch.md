@@ -7,7 +7,7 @@ Download files or directories from
 
 ```usage
 usage: dvc fetch [-h] [-q | -v] [-j <number>] [-r <name>] [-a] [-T]
-                  [--all-commits] [-d] [-R] [--run-cache]
+                 [--all-commits] [-d] [-R] [--run-cache]
                  [targets [targets ...]]
 
 positional arguments:
@@ -90,19 +90,18 @@ specific one is given with `--remote`.
   config option with `dvc remote modify`. Using more jobs may speed up the
   operation.
 
-- `-a`, `--all-branches` - fetch cache for all Git branches instead of just the
-  current workspace. This means DVC may download files needed to reproduce
-  different versions of a `.dvc` file, not just the ones currently in the
-  workspace. Note that this can be combined with `-T` below, for example using
-  the `-aT` flag.
+- `-a`, `--all-branches` - fetch cache for all Git branches, as well as for the
+  workspace. This means DVC may download files needed to reproduce different
+  versions of a `.dvc` file, not just the ones currently in the workspace. Note
+  that this can be combined with `-T` below, for example using the `-aT` flags.
 
-- `-T`, `--all-tags` - same as `-a` above, but applies to Git tags as well as
-  the workspace. Note that both options can be combined, for example using the
-  `-aT` flag.
+- `-T`, `--all-tags` - fetch cache for all Git tags, as well as for the
+  workspace. Note that this can be combined with `-a` above, for example using
+  the `-aT` flags.
 
-- `--all-commits` - same as `-a` or `-T` above, but applies to _all_ Git commits
-  as well as the workspace. This downloads tracked data for the entire commit
-  history of the project.
+- `-A`, `--all-commits` - fetch cache for all Git commits, as well as for the
+  workspace. This downloads tracked data for the entire commit history of the
+  project.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 

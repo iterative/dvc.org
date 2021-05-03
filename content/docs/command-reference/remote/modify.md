@@ -107,11 +107,6 @@ options:
 
 ### Click for Amazon S3
 
-By default, DVC expects your AWS CLI is already
-[configured](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html).
-DVC will be using default AWS credentials file to access S3. To override some of
-these parameters, you could use the following options.
-
 - `url` - remote location, in the `s3://<bucket>/<key>` format:
 
   ```dvc
@@ -123,6 +118,11 @@ these parameters, you could use the following options.
   ```dvc
   $ dvc remote modify myremote region us-east-2
   ```
+
+By default, DVC authenticates using your AWS CLI
+[configuration](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html)
+(if set). This uses the default AWS credentials file. Use the following
+parameters to customize the authentication method:
 
 - `profile` - credentials profile name to access S3:
 
@@ -189,8 +189,10 @@ these parameters, you could use the following options.
   certificates are verified.
 
   ```dvc
-  $ dvc remote modify myremote verify_ssl false
+  $ dvc remote modify myremote ssl_verify false
   ```
+
+Operational parameters:
 
 - `listobjects` - whether or not to use `list_objects`. By default,
   `list_objects_v2` is used. Useful for ceph and other S3 emulators.
@@ -271,7 +273,7 @@ these parameters, you could use the following options.
   > - [ACL Overview - Permissions](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#permissions)
   > - [Put Object ACL](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObjectAcl.html)
 
-S3 remotes can also be configured entirely via environment variables:
+S3 remotes can also be configured entirely via environment variables, e.g.:
 
 ```dvc
 $ export AWS_ACCESS_KEY_ID='mykey'
@@ -279,20 +281,33 @@ $ export AWS_SECRET_ACCESS_KEY='mysecret'
 $ dvc remote add -d myremote s3://mybucket/path
 ```
 
-For more information about the variables DVC supports, please visit
-[boto3 documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/configuration.html#environment-variable-configuration)
+For more on the supported env vars, please see the
+[boto3 docs](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/configuration.html#environment-variable-configuration)
+
+The following API methods are performed by the `boto3` library (used by DVC):
+
+- `list_objects_v2`, `list_objects`
+- `head_object`
+- `download_file`
+- `upload_file`
+- `delete_object`
+- `copy`
+
+So make sure you have the following permissions enabled:
+
+- `s3:ListBucket`
+- `s3:GetObject`
+- `s3:PutObject`
+- `s3:DeleteObject`
 
 </details>
 
 <details>
 
-### Click for S3 API compatible storage
+### Click for S3-compatible storage
 
-To communicate with a remote object storage that supports an S3 compatible API
-(e.g. [Minio](https://min.io/),
-[DigitalOcean Spaces](https://www.digitalocean.com/products/spaces/),
-[IBM Cloud Object Storage](https://www.ibm.com/cloud/object-storage) etc.),
-configure the remote's `endpointurl` explicitly:
+For object storage that supports an S3-compatible API, configure the
+`endpointurl` parameter:
 
 ```dvc
 $ dvc remote add -d myremote s3://mybucket/path
@@ -300,9 +315,12 @@ $ dvc remote modify myremote endpointurl \
                     https://object-storage.example.com
 ```
 
-Besides that, any parameters that are available for Amazon S3 (see previous
-section) may be available for S3 compatible storage. For example, let's setup a
-DVC remote using the `example-name`
+⚠️ It's also important to setup appropriate authentication with
+`dvc remote modify`. Otherwise, DVC will try to use default AWS credentials,
+which may cause an error.
+
+Any other S3 remote parameter may also be available for S3-compatible storage.
+For example, let's setup a DVC remote using the `example-name`
 [DigitalOcean space](https://www.digitalocean.com/community/tutorials/how-to-create-a-digitalocean-space-and-api-key)
 (equivalent to a bucket in AWS) in the `nyc3` region:
 
@@ -324,19 +342,24 @@ $ dvc remote modify myremote endpointurl \
   $ dvc remote modify myremote url azure://mycontainer/path
   ```
 
-The remaining parameters represent different authentication methods. Here's a
-summary, in order of precedence:
+  Note that if the given container name isn't found in your account, DVC will
+  attempt to create it.
+
+By default, DVC authenticates using an Azure
+[default credential](https://docs.microsoft.com/en-us/python/api/azure-identity/azure.identity.defaultazurecredential)
+(if any). This uses certain environment variables or other auth sources. Use the
+following parameters (listed in order or precedence) to customize the
+authentication method:
 
 1. `connection_string` is used for authentication if given (all others params
    are ignored).
 2. If `tenant_id` and `client_id` or `client_secret` are given, Active Directory
-   (AD) service principal auth is performed.
+   (AD)
+   [service principal](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal)
+   auth is performed.
 3. The storage `account_name` is tried next, along with `account_key` or
-   `sas_token` (in that order). If neither are provided, DVC will try to connect
-   anonymously.
-4. If no params are given, DVC will try to use a
-   [default credential](https://docs.microsoft.com/en-us/python/api/azure-identity/azure.identity.defaultazurecredential)
-   (inferred from environment variables).
+   `sas_token` (in that order). If neither key nor token is provided, DVC will
+   try to connect anonymously.
 
 > The authentication values below may contain sensitive user info. Therefore,
 > it's safer to use the `--local` flag so they're written to a Git-ignored
@@ -344,16 +367,14 @@ summary, in order of precedence:
 
 - `connection_string` - Azure Storage
   [connection string](http://azure.microsoft.com/en-us/documentation/articles/storage-configure-connection-string/)
-  (recommended):
+  (recommended).
 
   ```dvc
-  $ dvc remote modify --local myremote connection_string \
-                              'mystring'
+  $ dvc remote modify --local myremote connection_string 'mysecret'
   ```
 
-* `tenant_id` - tenant ID for AD
-  [service principal](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal)
-  authentication (requires `client_id` and `client_secret` along with this):
+* `tenant_id` - tenant ID for AD _service principal_ authentication (requires
+  `client_id` and `client_secret` along with this):
 
   ```dvc
   $ dvc remote modify --local myremote tenant_id 'directory-id'
@@ -384,22 +405,30 @@ summary, in order of precedence:
 * `account_key` - storage account key (for `account_name`):
 
   ```dvc
-  $ dvc remote modify --local myremote account_key 'mykey'
+  $ dvc remote modify --local myremote account_key 'mysecret'
   ```
 
 * `sas_token` - shared access signature token (for `account_name`):
 
   ```dvc
-  $ dvc remote modify --local myremote sas_token 'mytoken'
+  $ dvc remote modify --local myremote sas_token 'mysecret'
   ```
 
-Authentication via environment variables (if none of the auth params above are
-set). For account name and key/token auth:
+The same authentication methods are available via environment variables (checked
+after the params above). For Azure connection string:
 
 ```dvc
-$ export AZURE_STORAGE_ACCOUNT_NAME='myuser'
-$ export AZURE_STORAGE_ACCOUNT_KEY='mykey'
-$ dvc remote add -d myremote azure://mycontainer/path
+$ export AZURE_STORAGE_CONNECTION_STRING='mysecret'
+```
+
+For account name and key/token auth:
+
+```dvc
+$ export AZURE_STORAGE_ACCOUNT='myuser'
+# and
+$ export AZURE_STORAGE_KEY='mysecret'
+# or
+$ export AZURE_STORAGE_SAS_TOKEN='mysecret'
 ```
 
 For _service principal_ auth (via certificate file):
@@ -418,10 +447,8 @@ $ export AZURE_USERNAME='myuser'
 $ export AZURE_PASSWORD='mysecret'
 ```
 
-> On Windows, Azure authentication will fall back to searching for a signed-in
-> Microsoft application (e.g Visual Studio) and using it's identity (if multiple
-> exist, `AZURE_USERNAME` can be set to select one). On all other systems this
-> will apply only if [Visual Studio Code](https://code.visualstudio.com/) is
+> See
+> [all the env vars](https://docs.microsoft.com/en-us/python/api/azure-identity/azure.identity.environmentcredential)
 > available.
 
 </details>
@@ -671,7 +698,7 @@ more information.
   [with kerberos](https://en.wikipedia.org/wiki/Generic_Security_Services_Application_Program_Interface#Relationship_to_Kerberos)).
   Using this param requires `paramiko[gssapi]`, which is currently only
   supported by our pip package, and could be installed with
-  `pip install 'dvc[ssh_gssapi]'`. Other packages (Conda, Windows, and MacOS
+  `pip install 'dvc[ssh_gssapi]'`. Other packages (Conda, Windows, and macOS
   PKG) do not support it.
 
   ```dvc
@@ -710,6 +737,14 @@ Read more about by expanding the WebHDFS section in
 
 > The user name may contain sensitive user info. Therefore, it's safer to add it
 > with the `--local` option, so it's written to a Git-ignored config file.
+
+- `kerb_ticket` - path to the Kerberos ticket cache for Kerberos-secured HDFS
+  clusters
+
+  ```dvc
+  $ dvc remote modify --local myremote \
+                              kerb_ticket /path/to/ticket/cache
+  ```
 
 </details>
 

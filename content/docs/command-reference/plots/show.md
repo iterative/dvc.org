@@ -37,7 +37,7 @@ please see `dvc plots`.
 ## Options
 
 - `-o <path>, --out <path>` - name of the generated file. By default, this file
-  name is equal to the input filename with a `.html` file extension (or `.json`
+  name is equal to the input file name with a `.html` file extension (or `.json`
   when using `--show-vega`).
 
 - `-t <name_or_path>, --template <name_or_path>` -

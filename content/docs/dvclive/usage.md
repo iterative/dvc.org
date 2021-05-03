@@ -96,7 +96,7 @@ And in order to make that work, we need to plug it in with this change:
 ```
 
 We call `dvclive.init()` first, which tells Dvclive to write metrics under the
-diven directory path (in this case `./training_metrics`).
+given directory path (in this case `./training_metrics`).
 
 After running the code, the `training_metrics` should be created:
 

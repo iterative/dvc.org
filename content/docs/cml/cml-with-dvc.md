@@ -63,7 +63,7 @@ your storage format.
 
 <details>
 
-### S3 and S3 compatible storage (Minio, DigitalOcean Spaces, IBM Cloud Object Storage...)
+### S3 and S3-compatible storage (Minio, DigitalOcean Spaces, IBM Cloud Object Storage...)
 
 ```yaml
 env:
@@ -84,7 +84,6 @@ Note that `AWS_SESSION_TOKEN` is optional.
 env:
   AZURE_STORAGE_CONNECTION_STRING:
     ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
-  AZURE_STORAGE_CONTAINER_NAME: ${{ secrets.AZURE_STORAGE_CONTAINER_NAME }}
 ```
 
 </details>
@@ -143,7 +142,7 @@ JavaScript action that sets up [DVC](https://dvc.org/) in your workflow.
 
 ### Usage
 
-This action can be run on `ubuntu-latest`, `macos-latest`, `windows-latest`.
+This action can be run on `ubuntu-latest`, `macos-latest`, or `windows-latest`.
 When running on `windows-latest`, Python 3 is a dependency that should be setup
 first (and
 [there's an action for that](https://github.com/actions/setup-python)).

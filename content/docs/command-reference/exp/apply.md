@@ -1,6 +1,6 @@
 # exp apply
 
-Apply the results from an [experiment](/doc/command-reference/exp) to the
+Put the results from an [experiment](/doc/command-reference/exp) in the
 <abbr>workspace</abbr>.
 
 ## Synopsis
@@ -14,20 +14,21 @@ positional arguments:
 
 ## Description
 
-Rolls back/forward the workspace to reflect the results of a given `experiment`
-(name or hash are accepted, see `dvc exp run` for details). This means changing
-the appropriate [metafiles](/doc/user-guide/project-structure),
-<abbr>parameter</abbr> files, <abbr>metrics</abbr>, <abbr>plots</abbr>, and
-corresponding DVC-tracked data.
+Restores a given `experiment` (name or hash are accepted, see `dvc exp run` for
+details) into the workspace. This means changing all files (code, data,
+<abbr>parameters</abbr>, <abbr>metrics</abbr>, etc.) needed to reflect the
+experiment conditions and results in the workspace.
 
-> This is similar to `dvc checkout`, but for `dvc experiments`.
+This command is typically used after finding a target `experiment` with
+`dvc exp show` or `dvc exp diff`, and before committing it to Git (making it
+[persistent](/doc/user-guide/experiment-management#persistent-experiments)).
 
-This is typically used after using `dvc exp show` or `dvc exp diff` to find the
-best experiment, and before committing to Git in order to make it
-[persistent](/doc/user-guide/experiment-management#persistent-experiments).
+Note that the history of
+[checkpoints](/doc/command-reference/exp/run#checkpoints) found in the
+`experiment` are **not** preserved when applying and committing it.
 
-Note that this command will fail if the target `experiment` was not derived from
-the current Git commit.
+⚠️ This command will fail if the current Git commit (`HEAD`) has changed from
+the time the experiment in question was run.
 
 ## Options
 
