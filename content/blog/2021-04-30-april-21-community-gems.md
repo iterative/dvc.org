@@ -4,11 +4,11 @@ date: 2021-04-30
 description: |
   A roundup of technical Q&A's from the DVC community. 
   This month: remote storage integration, removing old experiments,
-  ideas for running cml pipeline reports and more.
+  ideas for running CML pipeline reports and more.
 descriptionLong: |
   A roundup of technical Q&A's from the DVC community. 
   This month: remote storage integration, removing old experiments,
-  ideas for running cml pipeline reports  and more.
+  ideas for running CML pipeline reports  and more.
 picture: 2021-04-30/gems-cover.png
 author: jeny_defigueiredo
 commentsUrl: https://discuss.dvc.org/t/april-21-community-gems/
@@ -30,50 +30,31 @@ your DVC and CML questions answered!
 
 ## DVC
 
-### [Does the directory system have to already be set up before pushing to OwnCloud with a WebDav remote?](https://discord.com/channels/485586884165107732/485596304961962003/831472645508694046)
+### [Can directories and subdirectories be created on OwnCloud with a WebDav remote when I run dvc push if they don't already exist?](https://discord.com/channels/485586884165107732/485596304961962003/831472645508694046)
 
-A `dvc push` should set that up from your local drive. If you are receiving
-'failed to upload' and 'Remote resource not found' errors with your OwnCloud
-links and a `dvc doctor` report something like this,
+This likely means that there is an issue with either the credentials or
+permissions set up in WebDav. Make sure that you are using the correct protocol
+and provide a username and/or token or password.
 
-```dvc
-
-$ dvc doctor
-DVC version: 2.0.17 (pip)
----------------------------------
-Platform: Python 3.8.5 on Linux-5.4.0-70-generic-x86_64-with-glibc2.29
-Supports: http, https, s3, webdav, webdavs
-Cache types: hardlink, symlink
-Cache directory: ext4 on /dev/sda8
-Caches: local
-Remotes: webdav
-Workspace directory: ext4 on /dev/sda8
-Repo: dvc, git
-```
-
-in this case you can use webdavs for the url and the ask_password parameter for
-the config.
+If you use webdavs for your URL and use the `ask_password` parameter for your
+config, this should clear up the issue.
 
 ### [What procedures would I use if I needed to remove unwanted or outdated experiments and corresponding data in the cache?](https://discord.com/channels/485586884165107732/485596304961962003/831127462544146482)
 
 You can use `dvc exp gc` with corresponding flags to delete the experiments
-themselves. You can
-[find info on the "garbage collect" function here.](https://dvc.org/doc/command-reference/exp/gc#exp-gc)
+themselves and there are a number of other flags that can be used with
+`dvc exp gc` depending on your needs.
 
 Alternatively, you can remove branches that are no longer required using
-`dvc remove`, then run `dvc gc --all-branches --all-tags`. DVC will then go
+`dvc exp remove`, then run `dvc gc --all-branches --all-tags`. DVC will then go
 through each branch and tag revisions; will keep them, and will purge the rest.
 
-There a number of other flags that can be used with `dvc gc` depending on your
-needs.
-[You can find the docs on those flags here.](<[https://dvc.org/doc/command-reference/exp/gc#options](https://dvc.org/doc/command-reference/exp/gc#options)>)
-
-Do note that `--all commits` is the safest flag to use, though it will not
-remove much of the cache. Finally, when you delete what's in cache, it does not
-delete the directory completely. It leaves the directory empty in your repo. To
-find info and comment on this known issue, head to
-[Issue #3375 here.](<[https://github.com/iterative/dvc/issues/3375](https://github.com/iterative/dvc/issues/3375)>)
-Your input is ALWAYS valuable to us! 🙏🏼
+Note that `--all commits` is the safest flag to use, though it will not remove
+much of the cache. Finally, when you delete what's in cache, it does not delete
+the directory completely. It leaves the directory empty in your repo. To find
+info and comment on this known issue, head to
+[Issue #3375 here.](https://github.com/iterative/dvc/issues/3375) Your input is
+ALWAYS valuable to us! 🙏🏼
 
 ### [If I have two cloud folder links added to the DVC config, I'm able to push the data to the default one. How could I push the data to the other cloud folder?](https://discord.com/channels/485586884165107732/563406153334128681/833176227762274364)
 
