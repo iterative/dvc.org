@@ -58,9 +58,9 @@ everything you need to get started with experiments and checkpoints.
 
 ## Setting up a DVC pipeline
 
-DVC versions data and it also can version the machine learning model
-weights file as checkpoints during the training process. To enable this, you
-will need to set up a DVC pipeline to train your model.
+DVC versions data and it also can version the machine learning model weights
+file as checkpoints during the training process. To enable this, you will need
+to set up a DVC pipeline to train your model.
 
 Adding a DVC pipline only takes a few commands. At the root of the project, run:
 
@@ -70,21 +70,21 @@ dvc init
 
 This sets up the files you need for your DVC pipeline to work.
 
-This will create a _dvc.yaml_ file in your root directory.
-
 Now we need to add a stage for training our model within a DVC pipeliene. We'll
 do that with `dvc stage add`, which we'll explain more later. For now, run the
 following command:
 
 ```bash
-dvc stage add -n train -d data/MNIST -d train.py \
-              -c model.pt --plots-no-cache predictions.json \
-              -p seed,lr,weight_decay --live dvclive python train.py
+dvc stage add --name train --deps data/MNIST --deps train.py \
+              --checkpoints model.pt --plots-no-cache predictions.json \
+              --params seed,lr,weight_decay --live dvclive python train.py
 ```
 
 The checkpoints need to be enabled in DVC at the pipeline level. The
 `-c / --checkpoint` option of the `dvc stage add` command defines the checkpoint
-file or directory.
+file or directory. The checkpoint file, _model.pt_, is an output from one
+checkpoint that becomes a dependency for the next checkpoint, such as the model
+weights file.
 
 The rest of the `dvc stage add` command sets up our dependencies for running the
 training code, which parameters we want to track (which are defined in the
@@ -96,20 +96,14 @@ should have the following code.
 
 ```yaml
 stages:
-  download:
-    cmd: python download.py
-    deps:
-      - download.py
-    outs:
-      - data/MNIST
   train:
     cmd: python train.py
     deps:
       - data/MNIST
       - train.py
     params:
-      - seed
       - lr
+      - seed
       - weight_decay
     outs:
       - model.pt:
@@ -157,7 +151,7 @@ import dvclive
 Then update the following lines of code in the `main` method inside of the
 training epoch loop.
 
-```python
+```diff
 # Iterate over training epochs.
 for i in range(1, EPOCHS+1):
     # Train in batches.
@@ -171,9 +165,9 @@ for i in range(1, EPOCHS+1):
     # Evaluate and checkpoint.
     metrics = evaluate(model, x_test, y_test)
     for k, v in metrics.items():
--        print('Epoch %s: %s=%s'%(i, k, v))
-+        dvclive.log(k, v)
-+    dvclive.next_step()
+        print('Epoch %s: %s=%s'%(i, k, v))
++       dvclive.log(k, v)
++   dvclive.next_step()
 ```
 
 The line `torch.save(model.state_dict(), "model.pt")` updates the checkpoint
@@ -200,38 +194,51 @@ You'll see output similar to this in your terminal while the training process is
 going on.
 
 ```dvc
-Epoch 1: loss=1.9225023984909058
-Epoch 1: acc=0.5833
+Epoch 1: loss=1.9428282976150513
+Epoch 1: acc=0.5715
+Generating lock file 'dvc.lock'
 Updating lock file 'dvc.lock'
-Checkpoint experiment iteration '09aa592'.
+Checkpoint experiment iteration '4f6044f'.
 
-file:///Users/milecia/checkpoints-tutorial/dvclive.html
-Epoch 2: loss=1.2303115129470825
-Epoch 2: acc=0.7777
+file:///Users/milecia/Repos/checkpoints-tutorial/dvclive.html
+Epoch 2: loss=1.25374174118042
+Epoch 2: acc=0.7738
 Updating lock file 'dvc.lock'
-Checkpoint experiment iteration 'f5742b3'.
+Checkpoint experiment iteration 'd402c8d'.
 
-file:///Users/milecia/checkpoints-tutorial/dvclive.html
-Epoch 3: loss=0.714752733707428
-Epoch 3: acc=0.8295
+file:///Users/milecia/Repos/checkpoints-tutorial/dvclive.html
+Epoch 3: loss=0.7242147922515869
+Epoch 3: acc=0.8284
 Updating lock file 'dvc.lock'
-Checkpoint experiment iteration '4917b0e'.
+Checkpoint experiment iteration '97e6898'.
 
-file:///Users/milecia/checkpoints-tutorial/dvclive.html
-Epoch 4: loss=0.5060071349143982
-Epoch 4: acc=0.8551
+file:///Users/milecia/Repos/checkpoints-tutorial/dvclive.html
+Epoch 4: loss=0.5083536505699158
+Epoch 4: acc=0.8538
 Updating lock file 'dvc.lock'
-Checkpoint experiment iteration 'acfa695'.
+Checkpoint experiment iteration '59ba304'.
 
-file:///Users/milecia/checkpoints-tutorial/dvclive.html
-Epoch 5: loss=0.41547226905822754
-Epoch 5: acc=0.8785
+file:///Users/milecia/Repos/checkpoints-tutorial/dvclive.html
+Epoch 5: loss=0.416655033826828
+Epoch 5: acc=0.8777
 Updating lock file 'dvc.lock'
-Checkpoint experiment iteration '69beaaa'.
+Checkpoint experiment iteration '3803071'.
+
+file:///Users/milecia/Repos/checkpoints-tutorial/dvclive.html
+Epoch 6: loss=0.36601492762565613
+Epoch 6: acc=0.8943
+Updating lock file 'dvc.lock'
+Checkpoint experiment iteration 'b49dcf8'.
+
+file:///Users/milecia/Repos/checkpoints-tutorial/dvclive.html
+Epoch 7: loss=0.3324562609195709
+Epoch 7: acc=0.9044
+Updating lock file 'dvc.lock'
+Checkpoint experiment iteration '03cb7a7'.
 ```
 
-After a few epochs have completed, stop the training process with
-`Ctrl + C`. Now it's time to take a look at the metrics we're working with.
+After a few epochs have completed, stop the training process with `Ctrl + C`.
+Now it's time to take a look at the metrics we're working with.
 
 _If you don't have a number of training epochs defined and you don't terminate
 the process, the experiment will run for 100 epochs._
@@ -246,19 +253,19 @@ dvc exp show
 ```
 
 ```dvc
-┏━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━┳━━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━┓
-┃ Experiment            ┃ Created  ┃ step ┃    loss ┃    acc ┃ seed   ┃ lr     ┃ weight_decay ┃
-┡━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━╇━━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━┩
-│ workspace             │ -        │    7 │  0.3096 │ 0.9092 │ 473987 │ 0.0001 │ 0            │
-│ main                  │ 04:49 PM │    - │       - │      - │ 473987 │ 0.001  │ 0            │
-│ │ ╓ exp-4de2a         │ 05:03 PM │    7 │  0.3096 │ 0.9092 │ 473987 │ 0.0001 │ 0            │
-│ │ ╟ d50c724           │ 05:03 PM │    6 │ 0.33246 │ 0.9044 │ 473987 │ 0.0001 │ 0            │
-│ │ ╟ 29491a9           │ 05:02 PM │    5 │ 0.36601 │ 0.8943 │ 473987 │ 0.0001 │ 0            │
-│ │ ╟ b3de55f           │ 05:02 PM │    4 │ 0.41666 │ 0.8777 │ 473987 │ 0.0001 │ 0            │
-│ │ ╟ c4a46af           │ 05:02 PM │    3 │ 0.50835 │ 0.8538 │ 473987 │ 0.0001 │ 0            │
-│ │ ╟ daf204c           │ 05:02 PM │    2 │ 0.72421 │ 0.8284 │ 473987 │ 0.0001 │ 0            │
-│ │ ╟ bdb975c           │ 05:02 PM │    1 │  1.2537 │ 0.7738 │ 473987 │ 0.0001 │ 0            │
-│ ├─╨ 77dc46c           │ 05:01 PM │    0 │  1.9428 │ 0.5715 │ 473987 │ 0.0001 │ 0            │
+┏━━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━┳━━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━┓
+┃ Experiment    ┃ Created  ┃ step ┃    loss ┃    acc ┃ seed   ┃ lr     ┃ weight_decay ┃
+┡━━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━╇━━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━┩
+│ workspace     │ -        │    6 │ 0.33246 │ 0.9044 │ 473987 │ 0.0001 │ 0            │
+│ main          │ 02:34 PM │    - │       - │      - │ 473987 │ 0.0001 │ 0            │
+│ │ ╓ exp-1db77 │ 02:57 PM │    6 │ 0.33246 │ 0.9044 │ 473987 │ 0.0001 │ 0            │
+│ │ ╟ b49dcf8   │ 02:57 PM │    5 │ 0.36601 │ 0.8943 │ 473987 │ 0.0001 │ 0            │
+│ │ ╟ 3803071   │ 02:57 PM │    4 │ 0.41666 │ 0.8777 │ 473987 │ 0.0001 │ 0            │
+│ │ ╟ 59ba304   │ 02:56 PM │    3 │ 0.50835 │ 0.8538 │ 473987 │ 0.0001 │ 0            │
+│ │ ╟ 97e6898   │ 02:56 PM │    2 │ 0.72421 │ 0.8284 │ 473987 │ 0.0001 │ 0            │
+│ │ ╟ d402c8d   │ 02:56 PM │    1 │  1.2537 │ 0.7738 │ 473987 │ 0.0001 │ 0            │
+│ ├─╨ 4f6044f   │ 02:56 PM │    0 │  1.9428 │ 0.5715 │ 473987 │ 0.0001 │ 0            │
+└───────────────┴──────────┴──────┴─────────┴────────┴────────┴────────┴──────────────┘
 ```
 
 ## Starting from an existing checkpoint
@@ -272,17 +279,17 @@ First, we need to apply the checkpoint we want to begin our new experiment from.
 To do that, run the following command:
 
 ```bash
-dvc exp apply b3de55f
+dvc exp apply d402c8d
 ```
 
-where _b3de55f_ is the id of the checkpoint you want to reference.
+where _d402c8d_ is the id of the checkpoint you want to reference.
 
-Next, we'll change the learning rate set in the _params.yaml_ to `0.001` and
+Next, we'll change the learning rate set in the _params.yaml_ to `0.000001` and
 start a new experiment based on an existing checkpoint with the following
 command:
 
 ```bash
-dvc exp run --set-param lr=0.001
+dvc exp run --set-param lr=0.000001
 ```
 
 You'll be able to see where the experiment starts from the existing checkpoint
@@ -388,13 +395,6 @@ new set of checkpoints under a new experiment branch.
 │ ├─╨ c6e11b4           │ 05:09 PM │    0 │  1.9428 │ 0.5715 │ 473987 │ 0.0001 │ 0            │
 ```
 
-We can also remove all of the experiments we don't promote to our Git workspace
-with the following command:
-
-```bash
-dvc exp gc --workspace --force
-```
-
 ## Adding checkpoints to Git
 
 When you terminate training, you'll see a few commands in the terminal that will
@@ -448,6 +448,13 @@ All that's left is to commit these changes with the following command:
 
 ```git
 git commit -m 'saved files from experiment'
+```
+
+We can also remove all of the experiments we don't promote to our Git workspace
+with the following command:
+
+```bash
+dvc exp gc --workspace --force
 ```
 
 Now that you know how to use checkpoints in DVC, you'll be able to resume
