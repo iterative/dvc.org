@@ -22,7 +22,7 @@ positional arguments:
 Prints a list of stages including their names and a one-line description (which
 can be omitted using `--names-only`). This command is useful for discovering or
 reviewing what stages are present in the project without having to examine
-`dvc.yaml` files manually. It can also be a shorter alternative to `dvc dag`.
+`dvc.yaml` files manually.
 
 Without any `targets`, `dvc stage list` lists the stages from `./dvc.yaml` (in
 the current working directory) by default.
