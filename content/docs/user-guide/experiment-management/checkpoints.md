@@ -230,7 +230,7 @@ Updating lock file 'dvc.lock'
 Checkpoint experiment iteration '69beaaa'.
 ```
 
-After a few epochs have completed, stop terminate the training process with
+After a few epochs have completed, stop the training process with
 `Ctrl + C`. Now it's time to take a look at the metrics we're working with.
 
 _If you don't have a number of training epochs defined and you don't terminate
