@@ -115,21 +115,7 @@ $ dvc remote add -d myremote s3://mybucket/path
 For more on the supported env vars, please see the
 [boto3 docs](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/configuration.html#environment-variable-configuration)
 
-The following API methods are performed by the `boto3` library (used by DVC):
-
-- `list_objects_v2`, `list_objects`
-- `head_object`
-- `download_file`
-- `upload_file`
-- `delete_object`
-- `copy`
-
-So make sure you have the following permissions enabled:
-
-- `s3:ListBucket`
-- `s3:GetObject`
-- `s3:PutObject`
-- `s3:DeleteObject`
+> See `dvc remote modify` for a full list of S3 parameters and other details.
 
 </details>
 
