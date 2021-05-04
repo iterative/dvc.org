@@ -273,7 +273,7 @@ Operational parameters:
   > - [ACL Overview - Permissions](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#permissions)
   > - [Put Object ACL](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObjectAcl.html)
 
-S3 remotes can also be configured entirely via environment variables, e.g.:
+S3 remotes can also be configured via environment variables, for example:
 
 ```dvc
 $ export AWS_ACCESS_KEY_ID='mykey'
@@ -402,8 +402,10 @@ authentication method:
   $ dvc remote modify --local myremote sas_token 'mysecret'
   ```
 
-The same authentication methods are available via environment variables (checked
-after the params above). For Azure connection string:
+Azure remotes can also be configured via environment variables (checked after
+the params above).
+
+For Azure connection string:
 
 ```dvc
 $ export AZURE_STORAGE_CONNECTION_STRING='mysecret'
@@ -607,6 +609,15 @@ more information.
 > The key ID and secret key contain sensitive user info. Therefore, it's safer
 > to add them with the `--local` option, so they're written to a Git-ignored
 > config file.
+
+OSS remotes can also be configured via environment variables. The available ones
+are:
+
+```dvc
+$ export OSS_ACCESS_KEY_ID='mykey'
+$ export OSS_ACCESS_KEY_SECRET='mysecret'
+$ export OSS_ENDPOINT='endpoint'
+```
 
 </details>
 

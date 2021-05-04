@@ -104,7 +104,7 @@ By default, DVC authenticates using your AWS CLI
 (if set). This uses the default AWS credentials file. To use a custom
 authentication method, use the parameters described in `dvc remote modify`.
 
-S3 remotes can also be configured entirely via environment variables, e.g.:
+S3 remotes can also be configured via environment variables, for example:
 
 ```dvc
 $ export AWS_ACCESS_KEY_ID='mykey'
@@ -175,7 +175,7 @@ By default, DVC authenticates using an Azure
 application. To use a custom authentication method, use the parameters described
 in `dvc remote modify`.
 
-This remote type can also be configured via environment variables, for example:
+Azure remotes can also be configured via environment variables, for example:
 
 ```dvc
 $ export AZURE_STORAGE_CONNECTION_STRING='mysecret'
@@ -266,8 +266,8 @@ $ dvc remote modify myremote --local oss_key_id 'mykey'
 $ dvc remote modify myremote --local oss_key_secret 'mysecret'
 ```
 
-You can also set environment variables and use them later, to set environment
-variables use following environment variables:
+OSS remotes can also be configured via environment variables. The available ones
+are:
 
 ```dvc
 $ export OSS_ACCESS_KEY_ID='mykey'
