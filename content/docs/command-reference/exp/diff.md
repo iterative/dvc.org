@@ -6,7 +6,7 @@ Show changes in [metrics](/doc/command-reference/metrics) and
 ## Synopsis
 
 ```usage
-usage: dvc exp diff [-h] [-q | -v] [--all] [--deps]
+usage: dvc exp diff [-h] [-q | -v] [--all] [--param-deps]
                     [--show-json] [--show-md] [--old]
                     [--no-path] [--precision <n>]
                     [a_rev] [b_rev]
