@@ -17,8 +17,7 @@ picture: 2021-02-26/feb-gems-cover.png
 author: elle_obrien
 commentsUrl: https://discuss.dvc.org/t/february-21-community-gems/686
 tags:
-  - Discord
-  - Gems
+  - Community
   - CML
   - Pipelines
   - Terraform

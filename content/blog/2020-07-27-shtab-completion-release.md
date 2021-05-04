@@ -23,6 +23,7 @@ tags:
   - Autocomplete
   - Tab
   - Completion
+  - Python
 ---
 
 Command line tools are powerful. Things like [`make`] have manual pages

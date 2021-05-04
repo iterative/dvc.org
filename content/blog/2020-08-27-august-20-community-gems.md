@@ -13,12 +13,11 @@ picture: 2020-08-27/Gems_Aug_20.png
 author: elle_obrien
 commentsUrl: https://discuss.dvc.org/t/august-20-community-gems/477
 tags:
-  - Discord
-  - Gems
+  - Community
   - CML
   - Hyperparameters
   - Git LFS
-  - Pipeline
+  - Pipelines
 ---
 
 Here are some of our top Q&A's from around the community. With the launch of

@@ -18,7 +18,7 @@ author: dmitry_petrov
 commentsUrl: https://discuss.dvc.org/t/continuous-machine-learning-release/429
 tags:
   - Release
-  - CI/CD for ML
+  - CI/CD
   - MLOps
   - DataOps
 ---
