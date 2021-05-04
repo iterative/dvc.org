@@ -198,43 +198,43 @@ Epoch 1: loss=1.9428282976150513
 Epoch 1: acc=0.5715
 Generating lock file 'dvc.lock'
 Updating lock file 'dvc.lock'
-Checkpoint experiment iteration '4f6044f'.
+Checkpoint experiment iteration 'd99d81c'.
 
 file:///Users/milecia/Repos/checkpoints-tutorial/dvclive.html
 Epoch 2: loss=1.25374174118042
 Epoch 2: acc=0.7738
 Updating lock file 'dvc.lock'
-Checkpoint experiment iteration 'd402c8d'.
+Checkpoint experiment iteration '963b396'.
 
 file:///Users/milecia/Repos/checkpoints-tutorial/dvclive.html
 Epoch 3: loss=0.7242147922515869
 Epoch 3: acc=0.8284
 Updating lock file 'dvc.lock'
-Checkpoint experiment iteration '97e6898'.
+Checkpoint experiment iteration 'd630b92'.
 
 file:///Users/milecia/Repos/checkpoints-tutorial/dvclive.html
 Epoch 4: loss=0.5083536505699158
 Epoch 4: acc=0.8538
 Updating lock file 'dvc.lock'
-Checkpoint experiment iteration '59ba304'.
+Checkpoint experiment iteration '0911c09'.
 
 file:///Users/milecia/Repos/checkpoints-tutorial/dvclive.html
 Epoch 5: loss=0.416655033826828
 Epoch 5: acc=0.8777
 Updating lock file 'dvc.lock'
-Checkpoint experiment iteration '3803071'.
+Checkpoint experiment iteration 'd665a31'.
 
 file:///Users/milecia/Repos/checkpoints-tutorial/dvclive.html
 Epoch 6: loss=0.36601492762565613
 Epoch 6: acc=0.8943
 Updating lock file 'dvc.lock'
-Checkpoint experiment iteration 'b49dcf8'.
+Checkpoint experiment iteration '5eb4025'.
 
 file:///Users/milecia/Repos/checkpoints-tutorial/dvclive.html
 Epoch 7: loss=0.3324562609195709
 Epoch 7: acc=0.9044
 Updating lock file 'dvc.lock'
-Checkpoint experiment iteration '03cb7a7'.
+Checkpoint experiment iteration 'd90179a'.
 ```
 
 After a few epochs have completed, stop the training process with `Ctrl + C`.
@@ -253,19 +253,19 @@ dvc exp show
 ```
 
 ```dvc
-┏━━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━┳━━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━┓
-┃ Experiment    ┃ Created  ┃ step ┃    loss ┃    acc ┃ seed   ┃ lr     ┃ weight_decay ┃
-┡━━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━╇━━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━┩
-│ workspace     │ -        │    6 │ 0.33246 │ 0.9044 │ 473987 │ 0.0001 │ 0            │
-│ main          │ 02:34 PM │    - │       - │      - │ 473987 │ 0.0001 │ 0            │
-│ │ ╓ exp-1db77 │ 02:57 PM │    6 │ 0.33246 │ 0.9044 │ 473987 │ 0.0001 │ 0            │
-│ │ ╟ b49dcf8   │ 02:57 PM │    5 │ 0.36601 │ 0.8943 │ 473987 │ 0.0001 │ 0            │
-│ │ ╟ 3803071   │ 02:57 PM │    4 │ 0.41666 │ 0.8777 │ 473987 │ 0.0001 │ 0            │
-│ │ ╟ 59ba304   │ 02:56 PM │    3 │ 0.50835 │ 0.8538 │ 473987 │ 0.0001 │ 0            │
-│ │ ╟ 97e6898   │ 02:56 PM │    2 │ 0.72421 │ 0.8284 │ 473987 │ 0.0001 │ 0            │
-│ │ ╟ d402c8d   │ 02:56 PM │    1 │  1.2537 │ 0.7738 │ 473987 │ 0.0001 │ 0            │
-│ ├─╨ 4f6044f   │ 02:56 PM │    0 │  1.9428 │ 0.5715 │ 473987 │ 0.0001 │ 0            │
-└───────────────┴──────────┴──────┴─────────┴────────┴────────┴────────┴──────────────┘
+┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━┳━━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━┓
+┃ Experiment              ┃ Created  ┃ step ┃ loss    ┃ acc    ┃ seed   ┃ lr     ┃ weight_decay ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━╇━━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━┩
+│ workspace               │ -        │ 6    │ 0.33246 │ 0.9044 │ 473987 │ 0.0001 │ 0            │
+│ main                    │ 01:19 PM │ -    │ -       │ -      │ 473987 │ 0.0001 │ 0            │
+│ │ ╓ d90179a [exp-02ba1] │ 01:24 PM │ 6    │ 0.33246 │ 0.9044 │ 473987 │ 0.0001 │ 0            │
+│ │ ╟ 5eb4025             │ 01:24 PM │ 5    │ 0.36601 │ 0.8943 │ 473987 │ 0.0001 │ 0            │
+│ │ ╟ d665a31             │ 01:24 PM │ 4    │ 0.41666 │ 0.8777 │ 473987 │ 0.0001 │ 0            │
+│ │ ╟ 0911c09             │ 01:24 PM │ 3    │ 0.50835 │ 0.8538 │ 473987 │ 0.0001 │ 0            │
+│ │ ╟ d630b92             │ 01:23 PM │ 2    │ 0.72421 │ 0.8284 │ 473987 │ 0.0001 │ 0            │
+│ │ ╟ 963b396             │ 01:23 PM │ 1    │ 1.2537  │ 0.7738 │ 473987 │ 0.0001 │ 0            │
+│ ├─╨ d99d81c             │ 01:23 PM │ 0    │ 1.9428  │ 0.5715 │ 473987 │ 0.0001 │ 0            │
+└─────────────────────────┴──────────┴──────┴─────────┴────────┴────────┴────────┴──────────────┘
 ```
 
 ## Starting from an existing checkpoint
@@ -279,17 +279,17 @@ First, we need to apply the checkpoint we want to begin our new experiment from.
 To do that, run the following command:
 
 ```bash
-dvc exp apply d402c8d
+dvc exp apply 963b396
 ```
 
-where _d402c8d_ is the id of the checkpoint you want to reference.
+where _963b396_ is the id of the checkpoint you want to reference.
 
 Next, we'll change the learning rate set in the _params.yaml_ to `0.000001` and
 start a new experiment based on an existing checkpoint with the following
 command:
 
 ```bash
-dvc exp run --set-param lr=0.000001
+dvc exp run --set-param lr=0.00001
 ```
 
 You'll be able to see where the experiment starts from the existing checkpoint
@@ -302,20 +302,26 @@ dvc exp show
 You should seem something similar to this in your terminal.
 
 ```dvc
-┏━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━┳━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━┓
-┃ Experiment            ┃ Created      ┃ step ┃     loss ┃    acc ┃ seed   ┃ lr     ┃ weight_decay ┃
-┡━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━╇━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━┩
-│ workspace             │ -            │   18 │ 0.12399  │ 0.9625 │ 473987 │ 0.001  │ 0            │
-│ main                  │ Apr 27, 2021 │    - │       -  │      - │ 473987 │ 0.0001 │ 0            │
-│ │ ╓ exp-63287         │ 04:37 PM     │   18 │ 0.12399  │ 0.9625 │ 473987 │ 0.001  │ 0            │
-│ │ ╟ 868c144           │ 04:37 PM     │   17 │ 0.12042  │ 0.9616 │ 473987 │ 0.001  │ 0            │
-│ │ ╟ 4de4e69           │ 04:37 PM     │   16 │ 0.13808  │ 0.9585 │ 473987 │ 0.001  │ 0            │
-│ │ ╟ d8d633c           │ 04:37 PM     │   15 │ 0.20415  │ 0.9397 │ 473987 │ 0.001  │ 0            │
-│ │ ╟ 8fbab93 (b3de55f) │ 04:36 PM     │   14 │ 0.24509  │ 0.9309 │ 473987 │ 0.001  │ 0            │
-│ │ ╓ exp-4de2a         │ 05:03 PM     │    7 │  0.3096  │ 0.9092 │ 473987 │ 0.0001 │ 0            │
-│ │ ╟ d50c724           │ 05:03 PM     │    6 │ 0.33246  │ 0.9044 │ 473987 │ 0.0001 │ 0            │
-│ │ ╟ 29491a9           │ 05:02 PM     │    5 │ 0.36601  │ 0.8943 │ 473987 │ 0.0001 │ 0            │
-│ │ ╟ b3de55f           │ 05:02 PM     │    4 │ 0.41666  │ 0.8777 │ 473987 │ 0.0001 │ 0            │
+┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━┳━━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━┓
+┃ Experiment              ┃ Created  ┃ step ┃ loss    ┃ acc    ┃ seed   ┃ lr     ┃ weight_decay ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━╇━━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━┩
+│ workspace               │ -        │ 8    │ 0.83515 │ 0.8185 │ 473987 │ 1e-05  │ 0            │
+│ main                    │ 01:19 PM │ -    │ -       │ -      │ 473987 │ 0.0001 │ 0            │
+│ │ ╓ 726d32f [exp-3b52b] │ 01:38 PM │ 8    │ 0.83515 │ 0.8185 │ 473987 │ 1e-05  │ 0            │
+│ │ ╟ 3f8efc5             │ 01:38 PM │ 7    │ 0.88414 │ 0.814  │ 473987 │ 1e-05  │ 0            │
+│ │ ╟ 23f04c2             │ 01:37 PM │ 6    │ 0.9369  │ 0.8105 │ 473987 │ 1e-05  │ 0            │
+│ │ ╟ d810ed0             │ 01:37 PM │ 5    │ 0.99302 │ 0.804  │ 473987 │ 1e-05  │ 0            │
+│ │ ╟ 3e46262             │ 01:37 PM │ 4    │ 1.0528  │ 0.799  │ 473987 │ 1e-05  │ 0            │
+│ │ ╟ bf580a5             │ 01:37 PM │ 3    │ 1.1164  │ 0.7929 │ 473987 │ 1e-05  │ 0            │
+│ │ ╟ ea2d11b (963b396)   │ 01:37 PM │ 2    │ 1.1833  │ 0.7847 │ 473987 │ 1e-05  │ 0            │
+│ │ ╓ d90179a [exp-02ba1] │ 01:24 PM │ 6    │ 0.33246 │ 0.9044 │ 473987 │ 0.0001 │ 0            │
+│ │ ╟ 5eb4025             │ 01:24 PM │ 5    │ 0.36601 │ 0.8943 │ 473987 │ 0.0001 │ 0            │
+│ │ ╟ d665a31             │ 01:24 PM │ 4    │ 0.41666 │ 0.8777 │ 473987 │ 0.0001 │ 0            │
+│ │ ╟ 0911c09             │ 01:24 PM │ 3    │ 0.50835 │ 0.8538 │ 473987 │ 0.0001 │ 0            │
+│ │ ╟ d630b92             │ 01:23 PM │ 2    │ 0.72421 │ 0.8284 │ 473987 │ 0.0001 │ 0            │
+│ │ ╟ 963b396             │ 01:23 PM │ 1    │ 1.2537  │ 0.7738 │ 473987 │ 0.0001 │ 0            │
+│ ├─╨ d99d81c             │ 01:23 PM │ 0    │ 1.9428  │ 0.5715 │ 473987 │ 0.0001 │ 0            │
+└─────────────────────────┴──────────┴──────┴─────────┴────────┴────────┴────────┴──────────────┘
 ```
 
 The existing checkpoint is referenced at the beginning of the new experiment.
@@ -328,18 +334,18 @@ When you've run all the experiments you want to and you are ready to compare
 metrics between checkpoints, you can run the command:
 
 ```bash
-dvc metrics diff 8fbab93 868c144
+dvc metrics diff d90179a 726d32f
 ```
 
-Make sure that you replace `8fbab93` and `868c144` with checkpoint ids from your
+Make sure that you replace `d90179a` and `726d32f` with checkpoint ids from your
 table with the checkpoints you want to compare. You'll see something similar to
 this in your terminal.
 
 ```dvc
 Path          Metric    Old      New      Change
-dvclive.json  acc       0.9854   0.9831   -0.0023
-dvclive.json  loss      0.04828  0.05095  0.00267
-dvclive.json  step      19       15       -4
+dvclive.json  acc       0.9044   0.8185   -0.0859
+dvclive.json  loss      0.33246  0.83515  0.50269
+dvclive.json  step      6        8        2
 ```
 
 _These are the same numbers you see in the metrics table, just in a different
@@ -351,16 +357,14 @@ You also have the option to generate plots to visualize the metrics about your
 training epochs. Running:
 
 ```bash
-dvc plots diff 8fbab93 868c144
+dvc plots diff d90179a 726d32f
 ```
 
-where `8fbab93` and `868c144` are the checkpoint ids you want to compare, will
+where `d90179a` and `726d32f` are the checkpoint ids you want to compare, will
 generate a `plots.html` file that you can open in a browser and it will display
 plots for you similar to the ones below.
 
 ![Plots generated from running experiments on MNIST dataset using DVC](/img/checkpoints_plots.png)
-_The results here won't show anything interesting because the model increases in
-accuracy so fast._
 
 ## Resetting checkpoints
 
@@ -377,22 +381,33 @@ This resets all of the existing checkpoints and re-runs the code to generate a
 new set of checkpoints under a new experiment branch.
 
 ```dvc
-┏━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━┳━━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━┓
-┃ Experiment            ┃ Created  ┃ step ┃    loss ┃    acc ┃ seed   ┃ lr     ┃ weight_decay ┃
-┡━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━╇━━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━┩
-│ workspace             │ -        │    4 │ 0.41666 │ 0.8777 │ 473987 │ 0.0001 │ 0            │
-│ main                  │ 04:49 PM │    - │       - │      - │ 473987 │ 0.001  │ 0            │
-│ │ ╓ exp-a75bb         │ 05:18 PM │    4 │ 0.41666 │ 0.8777 │ 473987 │ 0.0001 │ 0            │
-│ │ ╟ b8a4ceb           │ 05:18 PM │    3 │ 0.50835 │ 0.8538 │ 473987 │ 0.0001 │ 0            │
-│ │ ╟ 7b652b1           │ 05:17 PM │    2 │ 0.72421 │ 0.8284 │ 473987 │ 0.0001 │ 0            │
-│ │ ╟ cf0168f           │ 05:17 PM │    1 │  1.2537 │ 0.7738 │ 473987 │ 0.0001 │ 0            │
-│ ├─╨ 8c7f40f           │ 05:17 PM │    0 │  1.9428 │ 0.5715 │ 473987 │ 0.0001 │ 0            │
-│ │ ╓ exp-7fafd         │ 05:10 PM │    5 │ 0.36601 │ 0.8943 │ 473987 │ 0.0001 │ 0            │
-│ │ ╟ 9ac9e6a           │ 05:09 PM │    4 │ 0.41666 │ 0.8777 │ 473987 │ 0.0001 │ 0            │
-│ │ ╟ b869efe           │ 05:09 PM │    3 │ 0.50835 │ 0.8538 │ 473987 │ 0.0001 │ 0            │
-│ │ ╟ 422395e           │ 05:09 PM │    2 │ 0.72421 │ 0.8284 │ 473987 │ 0.0001 │ 0            │
-│ │ ╟ 44e44a9           │ 05:09 PM │    1 │  1.2537 │ 0.7738 │ 473987 │ 0.0001 │ 0            │
-│ ├─╨ c6e11b4           │ 05:09 PM │    0 │  1.9428 │ 0.5715 │ 473987 │ 0.0001 │ 0            │
+┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━┳━━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━┓
+┃ Experiment              ┃ Created  ┃ step ┃ loss    ┃ acc    ┃ seed   ┃ lr     ┃ weight_decay ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━╇━━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━┩
+│ workspace               │ -        │ 6    │ 2.0912  │ 0.5607 │ 473987 │ 1e-05  │ 0            │
+│ main                    │ 01:19 PM │ -    │ -       │ -      │ 473987 │ 0.0001 │ 0            │
+│ │ ╓ b21235e [exp-6c6fa] │ 01:56 PM │ 6    │ 2.0912  │ 0.5607 │ 473987 │ 1e-05  │ 0            │
+│ │ ╟ 53e5d64             │ 01:56 PM │ 5    │ 2.1385  │ 0.5012 │ 473987 │ 1e-05  │ 0            │
+│ │ ╟ 7e0e0fe             │ 01:56 PM │ 4    │ 2.1809  │ 0.4154 │ 473987 │ 1e-05  │ 0            │
+│ │ ╟ f7eafc5             │ 01:55 PM │ 3    │ 2.2177  │ 0.2518 │ 473987 │ 1e-05  │ 0            │
+│ │ ╟ dcfa3ff             │ 01:55 PM │ 2    │ 2.2486  │ 0.1264 │ 473987 │ 1e-05  │ 0            │
+│ │ ╟ bfd54b4             │ 01:55 PM │ 1    │ 2.2736  │ 0.1015 │ 473987 │ 1e-05  │ 0            │
+│ ├─╨ 189bbcb             │ 01:55 PM │ 0    │ 2.2936  │ 0.0892 │ 473987 │ 1e-05  │ 0            │
+│ │ ╓ 726d32f [exp-3b52b] │ 01:38 PM │ 8    │ 0.83515 │ 0.8185 │ 473987 │ 1e-05  │ 0            │
+│ │ ╟ 3f8efc5             │ 01:38 PM │ 7    │ 0.88414 │ 0.814  │ 473987 │ 1e-05  │ 0            │
+│ │ ╟ 23f04c2             │ 01:37 PM │ 6    │ 0.9369  │ 0.8105 │ 473987 │ 1e-05  │ 0            │
+│ │ ╟ d810ed0             │ 01:37 PM │ 5    │ 0.99302 │ 0.804  │ 473987 │ 1e-05  │ 0            │
+│ │ ╟ 3e46262             │ 01:37 PM │ 4    │ 1.0528  │ 0.799  │ 473987 │ 1e-05  │ 0            │
+│ │ ╟ bf580a5             │ 01:37 PM │ 3    │ 1.1164  │ 0.7929 │ 473987 │ 1e-05  │ 0            │
+│ │ ╟ ea2d11b (963b396)   │ 01:37 PM │ 2    │ 1.1833  │ 0.7847 │ 473987 │ 1e-05  │ 0            │
+│ │ ╓ d90179a [exp-02ba1] │ 01:24 PM │ 6    │ 0.33246 │ 0.9044 │ 473987 │ 0.0001 │ 0            │
+│ │ ╟ 5eb4025             │ 01:24 PM │ 5    │ 0.36601 │ 0.8943 │ 473987 │ 0.0001 │ 0            │
+│ │ ╟ d665a31             │ 01:24 PM │ 4    │ 0.41666 │ 0.8777 │ 473987 │ 0.0001 │ 0            │
+│ │ ╟ 0911c09             │ 01:24 PM │ 3    │ 0.50835 │ 0.8538 │ 473987 │ 0.0001 │ 0            │
+│ │ ╟ d630b92             │ 01:23 PM │ 2    │ 0.72421 │ 0.8284 │ 473987 │ 0.0001 │ 0            │
+│ │ ╟ 963b396             │ 01:23 PM │ 1    │ 1.2537  │ 0.7738 │ 473987 │ 0.0001 │ 0            │
+│ ├─╨ d99d81c             │ 01:23 PM │ 0    │ 1.9428  │ 0.5715 │ 473987 │ 0.0001 │ 0            │
+└─────────────────────────┴──────────┴──────┴─────────┴────────┴────────┴────────┴──────────────┘
 ```
 
 ## Adding checkpoints to Git
