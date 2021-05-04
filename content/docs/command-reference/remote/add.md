@@ -104,17 +104,6 @@ By default, DVC authenticates using your AWS CLI
 (if set). This uses the default AWS credentials file. To use a custom
 authentication method, use the parameters described in `dvc remote modify`.
 
-S3 remotes can also be configured via environment variables, for example:
-
-```dvc
-$ export AWS_ACCESS_KEY_ID='mykey'
-$ export AWS_SECRET_ACCESS_KEY='mysecret'
-$ dvc remote add -d myremote s3://mybucket/path
-```
-
-For more on the supported env vars, please see the
-[boto3 docs](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/configuration.html#environment-variable-configuration)
-
 The following API methods are performed by DVC: `list_objects_v2` or
 `list_objects`, `head_object`, `download_file`, `upload_file`, `delete_object`,
 `copy`. So make sure you have the following permissions enabled:
@@ -165,17 +154,6 @@ By default, DVC authenticates using an Azure
 (if any). This uses certain environment variables or a signed in Microsoft
 application. To use a custom authentication method, use the parameters described
 in `dvc remote modify`.
-
-Azure remotes can also be configured via environment variables, for example:
-
-```dvc
-$ export AZURE_STORAGE_CONNECTION_STRING='mysecret'
-$ dvc remote add -d myremote azure://mycontainer/path
-```
-
-> See
-> [all the env vars](https://docs.microsoft.com/en-us/python/api/azure-identity/azure.identity.environmentcredential)
-> available.
 
 </details>
 
@@ -255,15 +233,6 @@ option to avoid committing your secrets with Git:
 ```dvc
 $ dvc remote modify myremote --local oss_key_id 'mykey'
 $ dvc remote modify myremote --local oss_key_secret 'mysecret'
-```
-
-OSS remotes can also be configured via environment variables. The available ones
-are:
-
-```dvc
-$ export OSS_ACCESS_KEY_ID='mykey'
-$ export OSS_ACCESS_KEY_SECRET='mysecret'
-$ export OSS_ENDPOINT='endpoint'
 ```
 
 **Testing your OSS storage using docker**
