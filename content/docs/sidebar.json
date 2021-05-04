@@ -134,7 +134,12 @@
           "merge-conflicts"
         ]
       },
-      "experiment-management",
+      {
+        "label": "Experiment Management",
+        "slug": "experiment-management",
+        "source": "user-guide/experiment-management/index.md",
+        "children": ["checkpoints"]
+      },
       "setup-google-drive-remote",
       "large-dataset-optimization",
       "external-dependencies",
