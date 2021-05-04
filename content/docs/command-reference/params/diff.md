@@ -10,7 +10,7 @@ the <abbr>DVC repository</abbr>, or between a commit and the
 
 ```usage
 usage: dvc params diff [-h] [-q | -v] [--targets [<paths> [<paths> ...]]]
-                       [--all] [--show-json] [--show-md] [--no-path]
+                       [--all] [--deps] [--show-json] [--show-md] [--no-path]
                        [a_rev] [b_rev]
 
 positional arguments:
@@ -59,6 +59,8 @@ specified with the `--targets` option.
   ```
 
 - `--all` - list all parameters, including those without changes.
+
+- `--deps` - include only parameters that are stage dependencies.
 
 - `--show-json` - prints the command's output in easily parsable JSON format,
   instead of a human-readable table.
