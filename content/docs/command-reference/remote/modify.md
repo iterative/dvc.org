@@ -278,16 +278,20 @@ The following API methods are performed by DVC: `list_objects_v2` or
   > - [ACL Overview - Permissions](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#permissions)
   > - [Put Object ACL](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObjectAcl.html)
 
-S3 remotes can also be configured via environment variables, for example:
+Note that S3 remotes can also be configured via environment variables (instead
+of `dvc remote modify`). These are tried if none of the params above are set.
+
+Authentication example:
 
 ```dvc
+$ dvc remote add -d myremote s3://mybucket/path
 $ export AWS_ACCESS_KEY_ID='mykey'
 $ export AWS_SECRET_ACCESS_KEY='mysecret'
-$ dvc remote add -d myremote s3://mybucket/path
+$ dvc remote push
 ```
 
 For more on the supported env vars, please see the
-[boto3 docs](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/configuration.html#environment-variable-configuration)
+[boto3 docs](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/configuration.html#using-environment-variables)
 
 </details>
 
@@ -391,8 +395,8 @@ authentication method:
   $ dvc remote modify --local myremote sas_token 'mysecret'
   ```
 
-Azure remotes can also be configured via environment variables (checked after
-the params above).
+Note that Azure remotes can also authenticate via environment variables (instead
+of `dvc remote modify`). These are tried if none of the params above are set.
 
 For Azure connection string:
 
@@ -557,7 +561,8 @@ more information.
         myremote credentialpath '/home/.../project-XXX.json'
   ```
 
-  Alternatively, the `GOOGLE_APPLICATION_CREDENTIALS` env var can be set:
+  Alternatively, the `GOOGLE_APPLICATION_CREDENTIALS` environment variable can
+  be set:
 
   ```dvc
   $ export GOOGLE_APPLICATION_CREDENTIALS='.../project-XXX.json'
@@ -599,8 +604,9 @@ more information.
 > to add them with the `--local` option, so they're written to a Git-ignored
 > config file.
 
-OSS remotes can also be configured via environment variables. The available ones
-are:
+Note that OSS remotes can also be configured via environment variables (instead
+of `dvc remote modify`). These are tried if none of the params above are set.
+The available ones are shown below:
 
 ```dvc
 $ export OSS_ACCESS_KEY_ID='mykey'
