@@ -11,7 +11,7 @@ picture: 2020-06-29/Gems_June_20.png
 author: elle_obrien
 commentsUrl: https://discuss.dvc.org/t/june-20-community-gems/426
 tags:
-  - Discord Gems
+  - Community
   - MinIO
   - Pipelines
   - Python

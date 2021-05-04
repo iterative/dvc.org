@@ -21,7 +21,7 @@ tags:
   - Meetup
   - Heartbeat
   - Hacktoberfest
-  - Discord Gems
+  - Community
 ---
 
 The past few months have been so busy and full of great events! We love how

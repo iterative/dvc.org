@@ -11,7 +11,7 @@ author: elle_obrien
 commentsUrl: https://discuss.dvc.org/t/march-20-community-gems/336
 tags:
   - Tags
-  - Discord Gems
+  - Community
   - Data registry
 ---
 

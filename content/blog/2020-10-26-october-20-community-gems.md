@@ -15,7 +15,7 @@ pictureComment: |
 author: elle_obrien
 commentsUrl: https://discuss.dvc.org/t/october-20-community-gems/535
 tags:
-  - Discord Gems
+  - Community
   - CML
   - Vega
   - Metrics

@@ -13,7 +13,7 @@ picture: 2020-11-25/cover.png
 author: elle_obrien
 commentsUrl: https://discuss.dvc.org/t/november-20-community-gems/566
 tags:
-  - Discord Gems
+  - Community
   - CML
   - Cache
   - Bitbucket

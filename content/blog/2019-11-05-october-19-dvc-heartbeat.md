@@ -18,7 +18,7 @@ tags:
   - Meetup
   - Heartbeat
   - Hacktoberfest
-  - Discord Gems
+  - Community
 ---
 
 ## News and links

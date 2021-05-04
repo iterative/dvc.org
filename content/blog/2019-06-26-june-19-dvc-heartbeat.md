@@ -21,7 +21,7 @@ commentsUrl: https://discuss.dvc.org/t/june-19-dvc-heartbeat/289
 tags:
   - PyCon
   - Heartbeat
-  - Discord Gems
+  - Community
 ---
 
 ## News and links
