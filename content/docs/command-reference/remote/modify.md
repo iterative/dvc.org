@@ -306,29 +306,17 @@ So make sure you have the following permissions enabled:
 
 ### Click for S3-compatible storage
 
-For object storage that supports an S3-compatible API, configure the
-`endpointurl` parameter:
+- `endpointurl` - URL to connect to the S3-compatible storage server or service
+  (e.g. [Minio](https://min.io/),
+  [DigitalOcean Spaces](https://www.digitalocean.com/products/spaces/),
+  [IBM Cloud Object Storage](https://www.ibm.com/cloud/object-storage) etc.):
 
-```dvc
-$ dvc remote add -d myremote s3://mybucket/path
-$ dvc remote modify myremote endpointurl \
-                    https://object-storage.example.com
-```
+  ```dvc
+  $ dvc remote modify myremote endpointurl https://storage.example.com
+  ```
 
-⚠️ It's also important to setup appropriate authentication with
-`dvc remote modify`. Otherwise, DVC will try to use default AWS credentials,
-which may cause an error.
-
-Any other S3 remote parameter may also be available for S3-compatible storage.
-For example, let's setup a DVC remote using the `example-name`
-[DigitalOcean space](https://www.digitalocean.com/community/tutorials/how-to-create-a-digitalocean-space-and-api-key)
-(equivalent to a bucket in AWS) in the `nyc3` region:
-
-```dvc
-$ dvc remote add -d myremote s3://example-name/path
-$ dvc remote modify myremote endpointurl \
-                             https://nyc3.digitaloceanspaces.com
-```
+Any other S3 parameter (see previous section) can also be set for S3-compatible
+storage. Whether they're effective depends on each storage platform.
 
 </details>
 

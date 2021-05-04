@@ -141,17 +141,23 @@ For object storage that supports an S3-compatible API (e.g.
 [Minio](https://min.io/),
 [DigitalOcean Spaces](https://www.digitalocean.com/products/spaces/),
 [IBM Cloud Object Storage](https://www.ibm.com/cloud/object-storage) etc.),
-configure the `endpointurl` parameter:
+configure the `endpointurl` parameter. For example, let's setup a DigitalOcean
+"space" (equivalent to a bucket in S3) called `mystore` that uses the `nyc3`
+region:
 
 ```dvc
-$ dvc remote add -d myremote s3://mybucket/path
+$ dvc remote add -d myremote s3://mystore/path
 $ dvc remote modify myremote endpointurl \
-                    https://object-storage.example.com
+                             https://nyc3.digitaloceanspaces.com
 ```
 
-⚠️ It's also important to setup appropriate authentication with
-`dvc remote modify`. Otherwise, DVC will try to use default AWS credentials,
-which may cause an error.
+By default, DVC authenticates using your AWS CLI
+[configuration](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html)
+(if set). This uses the default AWS credentials file. To use a custom
+authentication method, use the parameters described in `dvc remote modify`.
+
+Any other S3 parameter can also be set for S3-compatible storage. Whether
+they're effective depends on each storage platform.
 
 </details>
 
