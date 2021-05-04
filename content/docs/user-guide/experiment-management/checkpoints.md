@@ -17,7 +17,7 @@ created using the metadata from experiments and are tracked with the `exps`
 custom Git reference.
 
 You can add experiments to your Git history by committing the experiment you
-want to track, which you'll see later in this t$ utorial.
+want to track, which you'll see later in this tutorial.
 
 ## Setting up the project
 
