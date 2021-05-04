@@ -17,7 +17,7 @@ created using the metadata from experiments and are tracked with the `exps`
 custom Git reference.
 
 You can add experiments to your Git history by committing the experiment you
-want to track, which you'll see later in this tutorial.
+want to track, which you'll see later in this t$ utorial.
 
 ## Setting up the project
 
@@ -29,15 +29,15 @@ You can follow along with the steps here or you can clone the repo directly from
 GitHub and play with it. To clone the repo, run the following commands.
 
 ```bash
-git clone https://github.com/iterative/checkpoints-tutorial
-cd checkpoints-tutorial
+$ git clone https://github.com/iterative/checkpoints-tutorial
+$ cd checkpoints-tutorial
 ```
 
 It is highly recommended you create a virtual environment for this example. You
 can do that by running:
 
 ```bash
-python3 -m venv .venv
+$ python3 -m venv .venv
 ```
 
 Once your virtual environment is installed, you can start it up with one of the
@@ -50,7 +50,7 @@ Once you have your environment set up, you can install the dependencies by
 running:
 
 ```bash
-pip install -r requirements.txt
+$ pip install -r requirements.txt
 ```
 
 This will download all of the packages you need to run the example. Now you have
@@ -64,8 +64,8 @@ to set up a DVC pipeline to train your model.
 
 Adding a DVC pipline only takes a few commands. At the root of the project, run:
 
-```bash
-dvc init
+```dvc
+$ dvc init
 ```
 
 This sets up the files you need for your DVC pipeline to work.
@@ -74,8 +74,8 @@ Now we need to add a stage for training our model within a DVC pipeliene. We'll
 do that with `dvc stage add`, which we'll explain more later. For now, run the
 following command:
 
-```bash
-dvc stage add --name train --deps data/MNIST --deps train.py \
+```dvc
+$ dvc stage add --name train --deps data/MNIST --deps train.py \
               --checkpoints model.pt --plots-no-cache predictions.json \
               --params seed,lr,weight_decay --live dvclive python train.py
 ```
@@ -121,8 +121,8 @@ Before we go any further, this is a great point to add these changes to your Git
 history. You can do that with the following commands:
 
 ```bash
-git add .
-git commit -m "created DVC pipeline"
+$ git add .
+$ git commit -m "created DVC pipeline"
 ```
 
 Now that you know how to enable checkpoints in a DVC pipeline, let's move on to
@@ -144,7 +144,7 @@ lines of code.
 
 In the `train.py` file, import the `dvclive` package with the other imports:
 
-```bash
+```python
 import dvclive
 ```
 
@@ -186,14 +186,14 @@ actual model weight file will be stored in the DVC data cache.
 With checkpoints enabled and working in our code, let's run the experiment. You
 can run an experiment with the following command:
 
-```bash
-dvc exp run
+```dvc
+$ dvc exp run
 ```
 
 You'll see output similar to this in your terminal while the training process is
 going on.
 
-```dvc
+```
 Epoch 1: loss=1.9428282976150513
 Epoch 1: acc=0.5715
 Generating lock file 'dvc.lock'
@@ -248,11 +248,11 @@ the process, the experiment will run for 100 epochs._
 You can see a table of your experiments and checkpoints in the terminal by
 running:
 
-```bash
-dvc exp show
+```dvc
+$ dvc exp show
 ```
 
-```dvc
+```
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━┳━━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━┓
 ┃ Experiment              ┃ Created  ┃ step ┃ loss    ┃ acc    ┃ seed   ┃ lr     ┃ weight_decay ┃
 ┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━╇━━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━┩
@@ -278,8 +278,8 @@ that.
 First, we need to apply the checkpoint we want to begin our new experiment from.
 To do that, run the following command:
 
-```bash
-dvc exp apply 963b396
+```dvc
+$ dvc exp apply 963b396
 ```
 
 where _963b396_ is the id of the checkpoint you want to reference.
@@ -288,20 +288,20 @@ Next, we'll change the learning rate set in the _params.yaml_ to `0.000001` and
 start a new experiment based on an existing checkpoint with the following
 command:
 
-```bash
-dvc exp run --set-param lr=0.00001
+```dvc
+$ dvc exp run --set-param lr=0.00001
 ```
 
 You'll be able to see where the experiment starts from the existing checkpoint
 by running:
 
-```bash
-dvc exp show
+```dvc
+$ dvc exp show
 ```
 
 You should seem something similar to this in your terminal.
 
-```dvc
+```
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━┳━━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━┓
 ┃ Experiment              ┃ Created  ┃ step ┃ loss    ┃ acc    ┃ seed   ┃ lr     ┃ weight_decay ┃
 ┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━╇━━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━┩
@@ -333,15 +333,15 @@ existing data and using it as the starting point.
 When you've run all the experiments you want to and you are ready to compare
 metrics between checkpoints, you can run the command:
 
-```bash
-dvc metrics diff d90179a 726d32f
+```dvc
+$ dvc metrics diff d90179a 726d32f
 ```
 
 Make sure that you replace `d90179a` and `726d32f` with checkpoint ids from your
 table with the checkpoints you want to compare. You'll see something similar to
 this in your terminal.
 
-```dvc
+```
 Path          Metric    Old      New      Change
 dvclive.json  acc       0.9044   0.8185   -0.0859
 dvclive.json  loss      0.33246  0.83515  0.50269
@@ -356,8 +356,8 @@ format._
 You also have the option to generate plots to visualize the metrics about your
 training epochs. Running:
 
-```bash
-dvc plots diff d90179a 726d32f
+```dvc
+$ dvc plots diff d90179a 726d32f
 ```
 
 where `d90179a` and `726d32f` are the checkpoint ids you want to compare, will
@@ -373,14 +373,14 @@ high. There might be a time when you want to remove all of the existing
 checkpoints to start the training from scratch. You can reset your checkpoints
 with the following command:
 
-```bash
-dvc exp run --reset
+```dvc
+$ dvc exp run --reset
 ```
 
 This resets all of the existing checkpoints and re-runs the code to generate a
 new set of checkpoints under a new experiment branch.
 
-```dvc
+```
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━┳━━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━┓
 ┃ Experiment              ┃ Created  ┃ step ┃ loss    ┃ acc    ┃ seed   ┃ lr     ┃ weight_decay ┃
 ┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━╇━━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━┩
@@ -415,7 +415,7 @@ new set of checkpoints under a new experiment branch.
 When you terminate training, you'll see a few commands in the terminal that will
 allow you to add these changes to Git.
 
-```dvc
+```
 To track the changes with git, run:
 
         git add dvclive.json dvc.yaml .gitignore train.py dvc.lock
@@ -431,18 +431,18 @@ To promote an experiment to a Git branch run:
 You can run the following command to save your experiments to the Git history.
 
 ```bash
-git add dvclive.json dvc.yaml .gitignore train.py dvc.lock
+$ git add dvclive.json dvc.yaml .gitignore train.py dvc.lock
 ```
 
 You can take a look at what will be commited to your Git history by running:
 
 ```bash
-git status
+$ git status
 ```
 
 You should see something similar to this in your terminal.
 
-```git
+```
 Changes to be committed:
   (use "git restore --staged <file>..." to unstage)
         new file:   .gitignore
@@ -461,15 +461,15 @@ Untracked files:
 
 All that's left is to commit these changes with the following command:
 
-```git
-git commit -m 'saved files from experiment'
+```bash
+$ git commit -m 'saved files from experiment'
 ```
 
 We can also remove all of the experiments we don't promote to our Git workspace
 with the following command:
 
-```bash
-dvc exp gc --workspace --force
+```dvc
+$ dvc exp gc --workspace --force
 ```
 
 Now that you know how to use checkpoints in DVC, you'll be able to resume
