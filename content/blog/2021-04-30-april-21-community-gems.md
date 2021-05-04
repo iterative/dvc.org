@@ -58,7 +58,15 @@ ALWAYS valuable to us! 🙏🏼
 
 ### [If I have two cloud folder links added to the DVC config, I'm able to push the data to the default one. How could I push the data to the other cloud folder?](https://discord.com/channels/485586884165107732/563406153334128681/833176227762274364)
 
-You're looking for the `-r / --remote` option for `dvc push`.
+You're looking for the `-r / --remote` option for `dvc push`. The command looks
+like this:
+
+```
+dvc push --remote name_of_remote_storage
+```
+
+This will upload tracked files or directories to remote storage based on the
+current _dvc.yaml_ and _.dvc_ files.
 
 ### [What's the current recommended way to automate hyperparameter search when using DVC pipelines?](https://discord.com/channels/485586884165107732/563406153334128681/829803720190590986)
 
@@ -68,14 +76,14 @@ easily experiment with different parameter values.
 
 You could script a grid search pretty easily by queueing an experiment for each
 set of parameter values you want to try. For example,
-`dvc exp run --queue -S alpha={alpha} -S beta={beta}`, and then comparing the
-results with `dvc exp show`.
+`dvc exp run --queue -S alpha={alpha},beta={beta}`, and then compare the results
+with `dvc exp show`.
 
-It would be great to further develop experiments to have features or documented
-patterns explicitly for grid search support, so definitely share any feedback to
-help drive future direction of that!
+We are working on developing experiments to have features or documented patterns
+explicitly for grid search support, so definitely share any feedback to help
+drive the future direction of that!
 
-### [How can I pass these sensitive strings (connectionString, containerName, etc) to DVC get without storing them to Git?](https://discord.com/channels/485586884165107732/563406153334128681/830021022337073185)
+### [How can I pass sensitive strings (connectionString, containerName, etc) to DVC get without storing them to Git?](https://discord.com/channels/485586884165107732/563406153334128681/830021022337073185)
 
 There's a bit of context behind this question that might give it more meaning.
 
@@ -100,7 +108,7 @@ Learn more about configuration settings at <https://man.dvc.org/remote/modify>: 
 
 ---
 
-Generally, there are two ways
+Generally, there are two ways solve this issue:
 
 - ENV vars
 - setup some options in the `--global, --system` DVC config
@@ -153,9 +161,9 @@ configure `cache.dir` and link type in both projects.
 [I have an ML model that retrains every 24 hours with updated data, but I do not want to create a merge request every time. I just need a nice way to look at the results. Is there a solution on how to report the results of a pipeline in Gitlab?](<[https://discord.com/channels/485586884165107732/728693131557732403/827099289372983336](https://discord.com/channels/485586884165107732/728693131557732403/827099289372983336)>)
 
 Great question! CML doesn't currently have a feature that takes care of this,
-but here are a couple of solutions:
+but here are a couple of solutions (only one is needed):
 
-1. Keep a separate branch with unrelated history for committing the reports, or
+1. Keep a separate branch with unrelated history for committing the reports.
 2. Keep a single report file on the repository and update it with each commit.
 
 [I've run into an error trying to get CML to orchestrate runs in my AWS account. It doesn't seem to be a permissions issue as the AWSEc2FullAccess policy seems to have worked, but I can't see the security group. What could be going wrong?](<[https://discord.com/channels/485586884165107732/728693131557732403/818450988084101160](https://discord.com/channels/485586884165107732/728693131557732403/818450988084101160)>)
