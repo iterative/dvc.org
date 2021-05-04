@@ -192,7 +192,16 @@ parameters to customize the authentication method:
   $ dvc remote modify myremote ssl_verify false
   ```
 
-Operational parameters:
+> The credentials file path, access key and secret, and other options contains
+> sensitive user info. Therefore, it's safer to add it with the `--local`
+> option, so it's written to a Git-ignored config file.
+
+Operational details:
+
+The following API methods are performed by DVC: `list_objects_v2` or
+`list_objects`, `head_object`, `download_file`, `upload_file`, `delete_object`,
+`copy`. So make sure you have the following permissions enabled:
+`s3:ListBucket`, `s3:GetObject`, `s3:PutObject`, `s3:DeleteObject`.
 
 - `listobjects` - whether or not to use `list_objects`. By default,
   `list_objects_v2` is used. Useful for ceph and other S3 emulators.
@@ -216,10 +225,6 @@ Operational parameters:
   ```dvc
   $ dvc remote modify myremote sse_kms_key_id 'key-alias'
   ```
-
-> The credentials file path, access key and secret, and other options contains
-> sensitive user info. Therefore, it's safer to add it with the `--local`
-> option, so it's written to a Git-ignored config file.
 
 - `acl` - set object level access control list (ACL) such as `private`,
   `public-read`, etc. By default, no ACL is specified.
@@ -267,8 +272,8 @@ Operational parameters:
   > \*\* default ACL grantees are overwritten. Grantees are AWS accounts
   > identifiable by `id` (AWS Canonical User ID), `emailAddress` or `uri`
   > (predefined group).
-
-  > **Sources**
+  >
+  > **References**
   >
   > - [ACL Overview - Permissions](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#permissions)
   > - [Put Object ACL](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObjectAcl.html)
@@ -283,22 +288,6 @@ $ dvc remote add -d myremote s3://mybucket/path
 
 For more on the supported env vars, please see the
 [boto3 docs](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/configuration.html#environment-variable-configuration)
-
-The following API methods are performed by the `boto3` library (used by DVC):
-
-- `list_objects_v2`, `list_objects`
-- `head_object`
-- `download_file`
-- `upload_file`
-- `delete_object`
-- `copy`
-
-So make sure you have the following permissions enabled:
-
-- `s3:ListBucket`
-- `s3:GetObject`
-- `s3:PutObject`
-- `s3:DeleteObject`
 
 </details>
 
