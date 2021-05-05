@@ -49,7 +49,7 @@ to your `~/.vimrc`(to be created if it doesn't exist).
 
 ## Doom Emacs
 
-In order to recognize `dvc.lock` and `.dvc` files as YAML in Doom Emacs, you 
+In order to recognize `dvc.lock` and `.dvc` files as YAML in Doom Emacs, you
 should add:
 
 ```emacs-lisp
