@@ -13,8 +13,7 @@ picture: 2020-07-31/Gems_July_20.png
 author: elle_obrien
 commentsUrl: https://discuss.dvc.org/t/july-20-community-gems/460
 tags:
-  - Discord
-  - Gems
+  - Community
   - CML
   - GCP
   - DVC 1.0

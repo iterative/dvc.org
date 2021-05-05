@@ -1,4 +1,4 @@
-# Installation on MacOS
+# Installation on macOS
 
 > To use DVC [as a Python library](/doc/api-reference), please
 > [install with pip](#install-with-pip) or [with conda](#install-with-conda).
@@ -22,7 +22,7 @@ from the [release page](https://github.com/iterative/dvc/releases/) on GitHub.
 > "Open With" > **Installer.app**, and click the **Open** button.
 
 > You may try [these instructions](https://stackoverflow.com/a/42120328/761963)
-> to uninstall the MacOS package.
+> to uninstall the macOS package.
 
 ## Install with pip
 

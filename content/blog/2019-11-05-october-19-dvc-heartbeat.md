@@ -18,6 +18,7 @@ tags:
   - Meetup
   - Heartbeat
   - Hacktoberfest
+  - Community
 ---
 
 ## News and links

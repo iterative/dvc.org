@@ -2,7 +2,7 @@
 
 Enjoy working with DVC faster and with fewer typos!
 
-Shell completion is automatically enabled when DVC is installed on MacOS
+Shell completion is automatically enabled when DVC is installed on macOS
 [with Homebrew](/doc/install/macos#install-with-brew), or on Linux
 [from **deb** or **rpm** repositories](/doc/install/linux#install-from-repository)
 or via [**snap**](/doc/install/linux#install-with-snap).
@@ -43,7 +43,7 @@ one you are using (Bash or Zsh).
 Depending on the shell that you are using, follow the instruction below to
 install and configure shell completion.
 
-## Bash completion on MacOS
+## Bash completion on macOS
 
 1. First, make sure that Bash completion support is installed:
 

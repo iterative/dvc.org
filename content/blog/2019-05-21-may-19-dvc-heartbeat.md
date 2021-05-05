@@ -20,7 +20,7 @@ author: svetlana_grinchenko
 commentsUrl: https://discuss.dvc.org/t/may-19-dvc-heartbeat/290
 tags:
   - Heartbeat
-  - Discord Gems
+  - Community
   - Google Season of Docs
 ---
 

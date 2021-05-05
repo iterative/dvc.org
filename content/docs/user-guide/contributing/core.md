@@ -43,7 +43,7 @@ $ git clone git@github.com:<your-username>/dvc.git
 ```
 
 Make sure that you have Python 3 installed. Version 3.6 or higher is required to
-run style checkers on pre-commit. On MacOS, we recommend using `brew` to install
+run style checkers on pre-commit. On macOS, we recommend using `brew` to install
 Python. For Windows, we recommend an official
 [python.org release](https://www.python.org/downloads/windows/).
 

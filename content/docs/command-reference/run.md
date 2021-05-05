@@ -193,7 +193,7 @@ $ dvc run -n second_stage './another_script.sh $MYENVVAR'
 - `--outs-persist-no-cache <path>` - the same as `-outs-persist` except that
   outputs are not tracked by DVC (same as with `-O` above).
 
-- `-c <path`, `--checkpoints <path>` - the same as `-o` but also marks the
+- `-c <path>`, `--checkpoints <path>` - the same as `-o` but also marks the
   output as a [checkpoint](/doc/command-reference/exp/run#checkpoints). Implies
   `--no-exec`. This makes the stage incompatible with `dvc repro`.
 

@@ -63,7 +63,7 @@ your storage format.
 
 <details>
 
-### S3 and S3 compatible storage (Minio, DigitalOcean Spaces, IBM Cloud Object Storage...)
+### S3 and S3-compatible storage (Minio, DigitalOcean Spaces, IBM Cloud Object Storage...)
 
 ```yaml
 env:
@@ -84,7 +84,6 @@ Note that `AWS_SESSION_TOKEN` is optional.
 env:
   AZURE_STORAGE_CONNECTION_STRING:
     ${{ secrets.AZURE_STORAGE_CONNECTION_STRING }}
-  AZURE_STORAGE_CONTAINER_NAME: ${{ secrets.AZURE_STORAGE_CONTAINER_NAME }}
 ```
 
 </details>

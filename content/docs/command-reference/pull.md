@@ -86,9 +86,9 @@ used to see what files `dvc pull` would download.
   or project. Note that this can be combined with `-a` above, for example using
   the `-aT` flags.
 
-- `--all-commits` - examines metafiles in all Git commits, as well as in the
-  workspace. This downloads tracked data for the entire commit history of the
-  project.
+- `-A`, `--all-commits` - examines metafiles in all Git commits, as well as in
+  the workspace. This downloads tracked data for the entire commit history of
+  the project.
 
 - `-d`, `--with-deps` - determines files to download by tracking dependencies to
   the `targets`. If none are provided, this option is ignored. By traversing all

@@ -10,7 +10,7 @@
     "source": "install/index.md",
     "children": [
       {
-        "label": "Mac OS",
+        "label": "macOS",
         "slug": "macos"
       },
       "windows",
@@ -134,7 +134,12 @@
           "merge-conflicts"
         ]
       },
-      "experiment-management",
+      {
+        "label": "Experiment Management",
+        "slug": "experiment-management",
+        "source": "user-guide/experiment-management/index.md",
+        "children": ["checkpoints"]
+      },
       "setup-google-drive-remote",
       "large-dataset-optimization",
       "external-dependencies",
@@ -378,12 +383,12 @@
             "slug": "add"
           },
           {
-            "label": "remote default",
-            "slug": "default"
-          },
-          {
             "label": "remote modify",
             "slug": "modify"
+          },
+          {
+            "label": "remote default",
+            "slug": "default"
           },
           {
             "label": "remote list",
