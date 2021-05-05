@@ -5,8 +5,9 @@ List `dvc experiments` in a <abbr>DVC repository</abbr> (remote or local).
 ## Synopsis
 
 ```usage
-usage: dvc experiments list [-h] [-q | -v] [--rev <rev>] [--all]
-                            [git_remote]
+usage: dvc exp list [-h] [-q | -v] [--rev <rev>]
+                    [--all] [--names-only]
+                    [git_remote]
 
 positional arguments:
   git_remote    Optional Git remote name or repo URL
