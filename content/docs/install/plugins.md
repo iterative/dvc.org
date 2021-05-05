@@ -46,3 +46,18 @@ autocmd! BufNewFile,BufRead Dvcfile,*.dvc,dvc.lock setfiletype yaml
 ```
 
 to your `~/.vimrc`(to be created if it doesn't exist).
+
+## Doom Emacs
+
+In order to recognize `dvc.lock` and `.dvc` files as YAML in Doom Emacs, you 
+should add:
+
+```emacs-lisp
+(use-package! yaml-mode
+  :config
+  (add-to-list 'auto-mode-alist '("\\.dvc" . yaml-mode))
+  (add-to-list 'auto-mode-alist '("dvc.lock" . yaml-mode))
+  )
+```
+
+to your `~/.doom.d/config.el`.
