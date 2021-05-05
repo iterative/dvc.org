@@ -10,9 +10,10 @@ committed [pipeline](/doc/command-reference/dag) in a hidden project branch.
 
 ```usage
 usage: dvc exp run [-h] [-q | -v] [-f]
-                   [<repro_options> ...]
-                   [--set-param [<filename>:]<params_list>]
-                   [-n <name>] [--queue] [--run-all] [-j <number>]
+                   [repro_options ...]
+                   [-S [<filename>:]<params_list>]
+                   [--queue] [--run-all] [-j <number>] [--temp]
+                   [-r <experiment_rev>] [--reset]
                    [targets [targets ...]]
 
 positional arguments:
