@@ -196,12 +196,12 @@ parameters to customize the authentication method:
 > sensitive user info. Therefore, it's safer to add it with the `--local`
 > option, so it's written to a Git-ignored config file.
 
-Operational details:
+**Operational details**
 
-The following API methods are performed by DVC: `list_objects_v2` or
-`list_objects`, `head_object`, `download_file`, `upload_file`, `delete_object`,
-`copy`. So make sure you have the following permissions enabled:
-`s3:ListBucket`, `s3:GetObject`, `s3:PutObject`, `s3:DeleteObject`.
+Make sure you have the following permissions enabled: `s3:ListBucket`,
+`s3:GetObject`, `s3:PutObject`, `s3:DeleteObject`. This enables the S3 API
+methods that are performed by DVC (`list_objects_v2` or `list_objects`,
+`head_object`, `upload_file`, `download_file`, `delete_object`, `copy`).
 
 - `listobjects` - whether or not to use `list_objects`. By default,
   `list_objects_v2` is used. Useful for ceph and other S3 emulators.
