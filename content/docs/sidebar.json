@@ -525,5 +525,18 @@
         "slug": "dvclive-with-dvc"
       }
     ]
+  },
+  {
+    "label": "DVC Studio",
+    "slug": "studio",
+    "source": "studio/index.md",
+    "icon": "studio",
+    "children": [
+      "usage",
+      {
+        "label": "Running experiements",
+        "slug": "cml-experiments"
+      }
+    ]
   }
 ]
