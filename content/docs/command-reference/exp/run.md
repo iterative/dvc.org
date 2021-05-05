@@ -84,8 +84,9 @@ steps as `make_checkpoint()` — please refer to its reference for details.
 You can now use `dvc exp run` to begin the experiment. All checkpoints
 registered at runtime will be preserved even if the process gets interrupted
 (e.g. with `[Ctrl] C`, or by an error\*). A "wrap-up" checkpoint will be added
-(if needed), so that no changes remain in the workspace. Subsequent uses of `dvc exp run`
-will resume from this point (using the latest cached versions of all outputs).
+(if needed), so that no changes remain in the workspace. Subsequent uses of
+`dvc exp run` will resume from this point (using the latest cached versions of
+all outputs).
 
 > \* Stage command(s) should return a non-error exit code (`0`) for the final
 > checkpoint to happen.
