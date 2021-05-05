@@ -14,7 +14,8 @@ author: david_g_ortega
 commentsUrl: https://discuss.dvc.org/t/cml-self-hosted-runners-on-demand-with-gpus/462
 tags:
   - CML
-  - Continuous Machine Learning
+  - CI/CD
+  - MLOps
   - GPUs
   - Self-hosted Runner
   - Reproducibility

@@ -10,16 +10,15 @@ picture: 2020-02-19/feb20_gems_header_gr.png
 author: elle_obrien
 commentsUrl: https://discuss.dvc.org/t/feb-20-community-gems/330
 tags:
-  - Discord
   - Google Drive
   - Azure
-  - Gems
+  - Community
   - Homebrew
 ---
 
 ## Discord gems
 
-Welcome to the Februrary roundup of useful, intriguing, and good-to-know
+Welcome to the February roundup of useful, intriguing, and good-to-know
 discussions going on with DVC users and developers. Let's dive right in with
 some questions from our Discord channel.
 

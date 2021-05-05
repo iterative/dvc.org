@@ -17,7 +17,7 @@ author: svetlana_grinchenko
 commentsUrl: https://discuss.dvc.org/t/april-19-dvc-heartbeat/292
 tags:
   - Heartbeat
-  - Discord Gems
+  - Community
   - PyCon
 ---
 
