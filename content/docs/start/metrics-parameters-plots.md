@@ -58,8 +58,8 @@ evaluate:
 The biggest difference to previous stages in our pipeline is in two new
 sections: `metrics` and `plots`. These are used to mark certain files containing
 ML "telemetry". Metrics files contain scalar values (e.g. `AUC`) and plots files
-contain matrices and data series (e.g. `ROC curves` or model loss plots) which
-are meant to be visualized and compared.
+contain matrices and data series (e.g. `ROC curves` or model loss plots) meant
+to be visualized and compared.
 
 > With `cache: false`, DVC skips caching the output, as we want `scores.json`,
 > `prc.json`, and `roc.json` to be versioned by Git.
@@ -81,7 +81,7 @@ contents are:
 `evaluate.py` also writes `precision`, `recall`, and `thresholds` arrays
 (obtained using
 [`precision_recall_curve`](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_recall_curve.html))
-into a `plots` file `prc.json`:
+into plots file `prc.json`:
 
 ```json
 {
@@ -144,7 +144,7 @@ which will be useful for comparison: parameters.
 ## Defining stage parameters
 
 It's pretty common for data science pipelines to include configuration files
-which define adjustable parameters to train a model, do pre-processing, etc. DVC
+to define adjustable parameters to train a model, do pre-processing, etc. DVC
 provides a mechanism for stages to depend on the values of specific sections of
 such a config file (YAML, JSON, TOML, and Python formats are supported).
 
@@ -225,7 +225,7 @@ $ dvc repro
 ```
 
 It'll analyze the changes, use existing <abbr>run-caches</abbr>, and execute
-only the commands which are needed to produce new results (model, metrics,
+only the commands that are needed to produce new results (model, metrics,
 plots).
 
 The same logic applies to other possible adjustments — edit source code, update
