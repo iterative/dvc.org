@@ -34,7 +34,7 @@ $ dvc run -n evaluate \
 ### 💡 Expand to see what happens under the hood.
 
 The `-M` option here specifies a metrics file, while `--plots-no-cache`
-specifies a plots file produced by this stage which will not be
+specifies a plots file (produced by this stage) which will not be
 <abbr>cached</abbr> by DVC. `dvc run` generates a new stage in the `dvc.yaml`
 file:
 
