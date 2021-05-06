@@ -81,7 +81,7 @@ contents are:
 `evaluate.py` also writes `precision`, `recall`, and `thresholds` arrays
 (obtained using
 [`precision_recall_curve`](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_recall_curve.html))
-into plots file `prc.json`:
+into the plots file `prc.json`:
 
 ```json
 {
@@ -143,8 +143,8 @@ which will be useful for comparison: parameters.
 
 ## Defining stage parameters
 
-It's pretty common for data science pipelines to include configuration files
-to define adjustable parameters to train a model, do pre-processing, etc. DVC
+It's pretty common for data science pipelines to include configuration files to
+define adjustable parameters to train a model, do pre-processing, etc. DVC
 provides a mechanism for stages to depend on the values of specific sections of
 such a config file (YAML, JSON, TOML, and Python formats are supported).
 
