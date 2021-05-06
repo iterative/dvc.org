@@ -269,12 +269,12 @@ it also doesn't rerun `train`! The previous run with the same set of inputs
 
 ### 💡 Expand to see what happens under the hood.
 
-`dvc repro` relies on the <abbr>DAG</abbr> definition which it reads from
+`dvc repro` relies on the <abbr>DAG</abbr> definition that is read from
 `dvc.yaml`, and uses `dvc.lock` to determine what exactly needs to be run.
 
-Meanwhile, the `dvc.lock` file is similar to a `.dvc` file — it captures hashes
-(in most cases `md5`s) of the dependencies and values of the parameters which
-were used. It can be considered a _state_ of the pipeline:
+The `dvc.lock` file is similar to a `.dvc` file — it captures hashes (in most
+cases `md5`s) of the dependencies and values of the parameters that were used.
+It can be considered a _state_ of the pipeline:
 
 ```yaml
 schema: '2.0'
