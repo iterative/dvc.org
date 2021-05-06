@@ -192,7 +192,16 @@ parameters to customize the authentication method:
   $ dvc remote modify myremote ssl_verify false
   ```
 
-Operational parameters:
+> The credentials file path, access key and secret, and other options contains
+> sensitive user info. Therefore, it's safer to add it with the `--local`
+> option, so it's written to a Git-ignored config file.
+
+**Operational details**
+
+Make sure you have the following permissions enabled: `s3:ListBucket`,
+`s3:GetObject`, `s3:PutObject`, `s3:DeleteObject`. This enables the S3 API
+methods that are performed by DVC (`list_objects_v2` or `list_objects`,
+`head_object`, `upload_file`, `download_file`, `delete_object`, `copy`).
 
 - `listobjects` - whether or not to use `list_objects`. By default,
   `list_objects_v2` is used. Useful for ceph and other S3 emulators.
@@ -216,10 +225,6 @@ Operational parameters:
   ```dvc
   $ dvc remote modify myremote sse_kms_key_id 'key-alias'
   ```
-
-> The credentials file path, access key and secret, and other options contains
-> sensitive user info. Therefore, it's safer to add it with the `--local`
-> option, so it's written to a Git-ignored config file.
 
 - `acl` - set object level access control list (ACL) such as `private`,
   `public-read`, etc. By default, no ACL is specified.
@@ -267,38 +272,26 @@ Operational parameters:
   > \*\* default ACL grantees are overwritten. Grantees are AWS accounts
   > identifiable by `id` (AWS Canonical User ID), `emailAddress` or `uri`
   > (predefined group).
-
-  > **Sources**
+  >
+  > **References**
   >
   > - [ACL Overview - Permissions](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#permissions)
   > - [Put Object ACL](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObjectAcl.html)
 
-S3 remotes can also be configured entirely via environment variables, e.g.:
+Note that S3 remotes can also be configured via environment variables (instead
+of `dvc remote modify`). These are tried if none of the params above are set.
+
+Authentication example:
 
 ```dvc
+$ dvc remote add -d myremote s3://mybucket/path
 $ export AWS_ACCESS_KEY_ID='mykey'
 $ export AWS_SECRET_ACCESS_KEY='mysecret'
-$ dvc remote add -d myremote s3://mybucket/path
+$ dvc remote push
 ```
 
 For more on the supported env vars, please see the
-[boto3 docs](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/configuration.html#environment-variable-configuration)
-
-The following API methods are performed by the `boto3` library (used by DVC):
-
-- `list_objects_v2`, `list_objects`
-- `head_object`
-- `download_file`
-- `upload_file`
-- `delete_object`
-- `copy`
-
-So make sure you have the following permissions enabled:
-
-- `s3:ListBucket`
-- `s3:GetObject`
-- `s3:PutObject`
-- `s3:DeleteObject`
+[boto3 docs](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/configuration.html#using-environment-variables)
 
 </details>
 
@@ -306,29 +299,17 @@ So make sure you have the following permissions enabled:
 
 ### Click for S3-compatible storage
 
-For object storage that supports an S3-compatible API, configure the
-`endpointurl` parameter:
+- `endpointurl` - URL to connect to the S3-compatible storage server or service
+  (e.g. [Minio](https://min.io/),
+  [DigitalOcean Spaces](https://www.digitalocean.com/products/spaces/),
+  [IBM Cloud Object Storage](https://www.ibm.com/cloud/object-storage) etc.):
 
-```dvc
-$ dvc remote add -d myremote s3://mybucket/path
-$ dvc remote modify myremote endpointurl \
-                    https://object-storage.example.com
-```
+  ```dvc
+  $ dvc remote modify myremote endpointurl https://storage.example.com
+  ```
 
-⚠️ It's also important to setup appropriate authentication with
-`dvc remote modify`. Otherwise, DVC will try to use default AWS credentials,
-which may cause an error.
-
-Any other S3 remote parameter may also be available for S3-compatible storage.
-For example, let's setup a DVC remote using the `example-name`
-[DigitalOcean space](https://www.digitalocean.com/community/tutorials/how-to-create-a-digitalocean-space-and-api-key)
-(equivalent to a bucket in AWS) in the `nyc3` region:
-
-```dvc
-$ dvc remote add -d myremote s3://example-name/path
-$ dvc remote modify myremote endpointurl \
-                             https://nyc3.digitaloceanspaces.com
-```
+Any other S3 parameter (see previous section) can also be set for S3-compatible
+storage. Whether they're effective depends on each storage platform.
 
 </details>
 
@@ -414,8 +395,10 @@ authentication method:
   $ dvc remote modify --local myremote sas_token 'mysecret'
   ```
 
-The same authentication methods are available via environment variables (checked
-after the params above). For Azure connection string:
+Note that Azure remotes can also authenticate via environment variables (instead
+of `dvc remote modify`). These are tried if none of the params above are set.
+
+For Azure connection string:
 
 ```dvc
 $ export AZURE_STORAGE_CONNECTION_STRING='mysecret'
@@ -578,7 +561,8 @@ more information.
         myremote credentialpath '/home/.../project-XXX.json'
   ```
 
-  Alternatively, the `GOOGLE_APPLICATION_CREDENTIALS` env var can be set:
+  Alternatively, the `GOOGLE_APPLICATION_CREDENTIALS` environment variable can
+  be set:
 
   ```dvc
   $ export GOOGLE_APPLICATION_CREDENTIALS='.../project-XXX.json'
@@ -619,6 +603,16 @@ more information.
 > The key ID and secret key contain sensitive user info. Therefore, it's safer
 > to add them with the `--local` option, so they're written to a Git-ignored
 > config file.
+
+Note that OSS remotes can also be configured via environment variables (instead
+of `dvc remote modify`). These are tried if none of the params above are set.
+The available ones are shown below:
+
+```dvc
+$ export OSS_ACCESS_KEY_ID='mykey'
+$ export OSS_ACCESS_KEY_SECRET='mysecret'
+$ export OSS_ENDPOINT='endpoint'
+```
 
 </details>
 
