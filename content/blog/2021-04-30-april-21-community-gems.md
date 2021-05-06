@@ -2,15 +2,15 @@
 title: April '21 Community Gems
 date: 2021-04-30
 description: |
-  A roundup of technical Q&A's from the DVC community. 
+  A roundup of technical Q&A's from the [DVC](#dvc) and [CML](#cml) community. 
   This month: remote storage integration, removing old experiments,
   ideas for running CML pipeline reports and more.
 descriptionLong: |
-  A roundup of technical Q&A's from the DVC community. 
+  A roundup of technical Q&A's from the [DVC](#dvc) and [CML](#cml) community. 
   This month: remote storage integration, removing old experiments,
-  ideas for running CML pipeline reports  and more.
+  ideas for running CML pipeline reports and more.
 picture: 2021-04-30/gems-cover.png
-author: jeny_defigueiredo
+author: milecia_mcgregor
 commentsUrl: https://discuss.dvc.org/t/april-21-community-gems/
 tags:
   - Discord
@@ -22,8 +22,8 @@ tags:
 
 Each month we go through our Discord messages to pull out some of the best
 questions from our community. AKA: Community Gems. 💎 This month we'd like to
-thank asraniel, Julian, mattlbeck, Ahti, **\_**, yikeqicn, lexzen, EdAb,
-FreshLettuce for inspiring this month's gems!
+thank @asraniel, @Julian, @mattlbeck, @Ahti, @**\_**, @yikeqicn, @lexzen, @EdAb,
+@FreshLettuce for inspiring this month's gems!
 
 As always, [join us in Discord](https://discord.com/invite/dvwXA2N) to get all
 your DVC and CML questions answered!
@@ -83,7 +83,7 @@ We are working on developing experiments to have features or documented patterns
 explicitly for grid search support, so definitely share any feedback to help
 drive the future direction of that!
 
-### [How can I pass sensitive strings (connectionString, containerName, etc) to DVC get without storing them to Git?](https://discord.com/channels/485586884165107732/563406153334128681/830021022337073185)
+### [When importing/getting data from a repo, how do I provide credentials to the source repo remote storage without saving it into that Git repo?](https://discord.com/channels/485586884165107732/563406153334128681/830021022337073185)
 
 There's a bit of context behind this question that might give it more meaning.
 
@@ -91,10 +91,6 @@ There's a bit of context behind this question that might give it more meaning.
 
 I set up a private GitHub repo to be a data registry and I have set up a private
 Azure remote where I have pushed some datasets.
-
-At the moment I set up the Azure remote using the environment variables
-[as the docs explain here](https://dvc.org/doc/command-reference/remote/add) so
-I don't push sensitive information.
 
 I am now trying to read those datasets from another repository
 ("my-project-repo"), using `dvc get` (e.g.
@@ -111,11 +107,11 @@ Learn more about configuration settings at <https://man.dvc.org/remote/modify>: 
 Generally, there are two ways solve this issue:
 
 - ENV vars
-- setup some options in the `--global, --system` DVC config
+- Setup some options in the `--global, --system` DVC config
 
-Once they removed some old remotes (with the same name) from their project repo
-and tried to pull from the data registry using `AZURE_STORAGE_CONNECTION_STRING`
-and `AZURE_STORAGE_CONTAINER_NAME`, it worked!
+If you remove the old remotes (with the same name) from your project repo and
+try to pull from the data registry using `AZURE_STORAGE_CONNECTION_STRING` and
+`AZURE_STORAGE_CONTAINER_NAME`, it should work!
 
 ### [Is there any way to ensure that `dvc import` uses the cache from the config file?](https://discord.com/channels/485586884165107732/563406153334128681/827574712825413672)
 
@@ -128,7 +124,7 @@ _dvcdata_.
 
 The config for _dvcdata_ is:
 
-```bash
+```ini
 [core]
     remote = awsremote
 [cache]
@@ -158,7 +154,7 @@ configure `cache.dir` and link type in both projects.
 
 ## CML
 
-[I have an ML model that retrains every 24 hours with updated data, but I do not want to create a merge request every time. I just need a nice way to look at the results. Is there a solution on how to report the results of a pipeline in Gitlab?](<[https://discord.com/channels/485586884165107732/728693131557732403/827099289372983336](https://discord.com/channels/485586884165107732/728693131557732403/827099289372983336)>)
+[I have an ML model that retrains every 24 hours with updated data, but I do not want to create a merge request every time. I just need a nice way to look at the results. Is there a solution on how to report the results of a pipeline in Gitlab?](https://discord.com/channels/485586884165107732/728693131557732403/827099289372983336)
 
 Great question! CML doesn't currently have a feature that takes care of this,
 but here are a couple of solutions (only one is needed):
@@ -166,7 +162,7 @@ but here are a couple of solutions (only one is needed):
 1. Keep a separate branch with unrelated history for committing the reports.
 2. Keep a single report file on the repository and update it with each commit.
 
-[I've run into an error trying to get CML to orchestrate runs in my AWS account. It doesn't seem to be a permissions issue as the AWSEc2FullAccess policy seems to have worked, but I can't see the security group. What could be going wrong?](<[https://discord.com/channels/485586884165107732/728693131557732403/818450988084101160](https://discord.com/channels/485586884165107732/728693131557732403/818450988084101160)>)
+[I've run into an error trying to get CML to orchestrate runs in my AWS account. It doesn't seem to be a permissions issue as the AWSEc2FullAccess policy seems to have worked, but I can't see the security group. What could be going wrong?](https://discord.com/channels/485586884165107732/728693131557732403/818450988084101160)
 
 Check to make sure you are deploying to the correct region. Use the argument
 `--cloud-region <region>` (`us-west` for example) to mark the region where the
