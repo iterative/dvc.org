@@ -22,37 +22,45 @@ tags:
 
 Each month we go through our Discord messages to pull out some of the best
 questions from our community. AKA: Community Gems. 💎 This month we'd like to
-thank @asraniel, @Julian, @mattlbeck, @Ahti, @**\_**, @yikeqicn, @lexzen, @EdAb,
-@FreshLettuce for inspiring this month's gems!
+thank @asraniel, @PythonF, @mattlbeck, @Ahti, @**\_**, @yikeqicn, @lexzen,
+@EdAb, @FreshLettuce for inspiring this month's gems!
 
 As always, [join us in Discord](https://discord.com/invite/dvwXA2N) to get all
 your DVC and CML questions answered!
 
 ## DVC
 
-### [Can directories and subdirectories be created on OwnCloud with a WebDav remote when I run dvc push if they don't already exist?](https://discord.com/channels/485586884165107732/485596304961962003/831472645508694046)
+### [What is the best way, to commit 2 experiment runs?](https://discord.com/channels/485586884165107732/485596304961962003/836626346544594995)
 
-This likely means that there is an issue with either the credentials or
-permissions set up in WebDav. Make sure that you are using the correct protocol
-and provide a username and/or token or password.
+You want to use `dvc exp branch` if you want to keep multiple experiments. That
+way, each one is in a separate branch rather than trying to apply one experiment
+on top of another.
 
-If you use webdavs for your URL and use the `ask_password` parameter for your
-config, this should clear up the issue.
+### [How can I clean up the remote caches after a lot of experiments and branches have been pushed?](https://discord.com/channels/485586884165107732/485596304961962003/831142466169733120)
 
-### [What procedures would I use if I needed to remove unwanted or outdated experiments and corresponding data in the cache?](https://discord.com/channels/485586884165107732/485596304961962003/831127462544146482)
+`dvc exp gc` requires some kind of flags to operate. At the very least,
+`--workspace`. So, with `--workspace`, `dvc` will try to read all of the pointer
+files: _.dvc_ files and _dvc.yaml_ files in the workspace. It will read all of
+them and will determine all the cache objects/files that need to be preserved
+(since they are being used in the current workspace). The rest of the files in
+the _.dvc/cache_ are removed.
 
-You can use `dvc exp gc` with corresponding flags to delete the experiments
-themselves and there are a number of other flags that can be used with
-`dvc exp gc` depending on your needs.
+_This does not require and Git operations!_
 
-Alternatively, you can remove branches that are no longer required using
-`dvc exp remove`, then run `dvc gc --all-branches --all-tags`. DVC will then go
-through each branch and tag revisions; will keep them, and will purge the rest.
+You can also use the `--all-branches` flag. It will read all of the files
+present in the current workspace and from the commits in the branches you have
+locally. Then it will use that list to determine what to keep and what to
+remove.
 
-Note that `--all commits` is the safest flag to use, though it will not remove
-much of the cache. Finally, when you delete what's in cache, it does not delete
-the directory completely. It leaves the directory empty in your repo. To find
-info and comment on this known issue, head to
+If you need to read pointer files from given tags you have locally, the
+`--all-tags` flag is the best option.
+
+The `--all-commits` flag reads pointer files from every commit and it will make
+a list of all the files that are in the cache/remote and if the _.dvc_ file
+isn't found in any commits of the Git repo, it will delete those files.
+
+It doesn't check if the directories are empty and you can find info and comment
+on this known issue, head to
 [Issue #3375 here.](https://github.com/iterative/dvc/issues/3375) Your input is
 ALWAYS valuable to us! 🙏🏼
 
@@ -61,12 +69,11 @@ ALWAYS valuable to us! 🙏🏼
 You're looking for the `-r / --remote` option for `dvc push`. The command looks
 like this:
 
-```
-dvc push --remote name_of_remote_storage
+```dvc
+$ dvc push --remote <name_of_remote_storage>
 ```
 
-This will upload tracked files or directories to remote storage based on the
-current _dvc.yaml_ and _.dvc_ files.
+It will push directly to the remote storage you defined in the command above.
 
 ### [What's the current recommended way to automate hyperparameter search when using DVC pipelines?](https://discord.com/channels/485586884165107732/563406153334128681/829803720190590986)
 
@@ -75,9 +82,29 @@ Take a look at the new
 easily experiment with different parameter values.
 
 You could script a grid search pretty easily by queueing an experiment for each
-set of parameter values you want to try. For example,
-`dvc exp run --queue -S alpha={alpha},beta={beta}`, and then compare the results
-with `dvc exp show`.
+set of parameter values you want to try. For example:
+
+```dvc
+$ dvc exp run --queue -S alpha={alpha},beta={beta}
+$ dvc exp run --run-all --jobs 2
+```
+
+Then you can compare the results with `dvc exp show`.
+
+```
+┏━━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
+┃ Experiment    ┃ avg_prec ┃ roc_auc ┃ train.n_est┃ train.min_split ┃
+┡━━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━┩
+│ workspace     │  0.56191 │ 0.93345 │ 50         │ 2               │
+│ master        │  0.55259 │ 0.91536 │ 50         │ 2               │
+│ ├── exp-bfe64 │  0.57833 │ 0.95555 │ 50         │ 8               │
+│ ├── exp-b8082 │  0.59806 │ 0.95287 │ 50         │ 64              │
+│ ├── exp-c7250 │  0.58876 │ 0.94524 │ 100        │ 2               │
+│ ├── exp-b9cd4 │  0.57953 │ 0.95732 │ 100        │ 8               │
+│ ├── exp-98a96 │  0.60405 │  0.9608 │ 100        │ 64              │
+│ └── exp-ad5b1 │  0.56191 │ 0.93345 │ 50         │ 2               │
+└───────────────┴──────────┴─────────┴────────────┴─────────────────┘
+```
 
 We are working on developing experiments to have features or documented patterns
 explicitly for grid search support, so definitely share any feedback to help
@@ -106,8 +133,9 @@ Learn more about configuration settings at <https://man.dvc.org/remote/modify>: 
 
 Generally, there are two ways solve this issue:
 
-- ENV vars
-- Setup some options in the `--global, --system` DVC config
+- [ENV vars](https://dvc.org/doc/user-guide/contributing/docs#env-variables)
+- Setup some options using the `--global` or `--system` flags to update the DVC
+  config
 
 If you remove the old remotes (with the same name) from your project repo and
 try to pull from the data registry using `AZURE_STORAGE_CONNECTION_STRING` and
@@ -147,10 +175,9 @@ being updated.
 
 ---
 
-The repo you are importing into has its own cache directory.
-
-If you want to use the same cache directory across both projects, you have to
-configure `cache.dir` and link type in both projects.
+The repo you are importing into has its own cache directory. We recommend you
+use the `--global` or `--system` flags for all of your projects across all
+machines.
 
 ## CML
 
