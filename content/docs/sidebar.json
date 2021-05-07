@@ -534,8 +534,20 @@
     "children": [
       "usage",
       {
-        "label": "Running experiements",
+        "label": "Create a view",
+        "slug": "create-view"
+      },
+      {
+        "label": "Visualize experiments",
+        "slug": "visualize-exp"
+      },
+      {
+        "label": "Run experiements from Studio",
         "slug": "cml-experiments"
+      },
+      {
+        "label": "Create teams and share views",
+        "slug": "teams"
       }
     ]
   }
