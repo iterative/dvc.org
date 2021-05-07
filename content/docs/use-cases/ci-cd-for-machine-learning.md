@@ -1,51 +1,41 @@
 # Continuous Integration and Deployment for Machine Learning
 
-MLOps and DataOps apply DevOps methodologies to machine learning (ML) and data
-management. The fields are rapidly evolving beyond a mere set of best practices,
-and now encompass the entire product lifecycle management. A core component is
-the automation of testing and deployment: CI/CD (continuous integration and
-continuous delivery).
+MLOps/DataOps apply DevOps methodologies to machine learning (ML) and data
+management. This means automating resource orchestration, testing and deployment
+(CI/CD -- continuous integration and continuous delivery), as well as monitoring
+and feedback.
 
-CI/CD is easy to set up with practically any Git repository. Some example
-scenarios are:
+In ML, CI/CD can be used to automatically build, test and push data and models
+to production in the cloud with minimal effort. Benefits include:
 
-- Easy testing and quality assurance (QA)
-  - When new data or code is pushed in a pull request (PR), validation tests
-    automatically run in the cloud (without each collaborator setting up
-    potentially inconsistent local testing environments)
-  - Agile development: automating QA means teams can confidently deploy new
-    versions several times a day and even before the weekend without fear of
-    bugs/regressions
+- Automating & enforcing testing and quality assurance (QA)
+  - When data or code is added or changed in a pull request (PR), validation
+    tests automatically run in the cloud
+  - Agile development: automating QA means teams can confidently package, deploy
+    and deliver new versions several times a day and even before the weekend
+    without fear of bugs/regressions
 - Continuous machine learning (CML): training in the cloud
-  - Infrastructure orchestration: provision hardware in the cloud
-  - Run a hyperparameter search
-  - Schedule regular jobs pulling in new data from regularly updated external
-    sources to refine deployed models
+  - Infrastructure orchestration: make CI systems provision and launch a GPU
+    instance, train a model, cleanly terminate, and pull results back
+  - Run a hyperparameter search: keep heavyweight resources and big data on CI
+    servers running overnight, and put your laptop to sleep
+  - Fine-tune on a schedule: set up jobs to pull in new data from regularly
+    updated external sources to refine deployed models
   - Automatically generate performance metrics reports and post them as a PR
     comment with interactive graphs and tables
 
 ![](https://static.iterative.ai/img/ci-cd-ml.png)
 
-In ML, CI/CD can be used to automatically build, test and push data and models
-to production in the cloud with minimal effort. There are many components, such
-as:
-
-1. Data collection & storage
-2. Metadata management
-3. Validation & testing (including provisioning resources)
-4. Sharing & deployment
-5. Monitoring & feedback
-
 Quite often, CI/CD for ML is hard to set up and debug, and solutions unclear.
-DVC provides lightweight tools that can work on any infrastructure and alleviate
-[hidden technical debt](https://papers.nips.cc/paper/2015/file/86df7dcfd896fcaf2674f757a2463eba-Paper.pdf)
-by managing data, models, and code together.
+DVC and CML provide lightweight tools that can work on any infrastructure (such
+as AWS, GitHub Actions, or Bitbucket piplelines) by managing data, models, and
+code together.
 
 ![](https://static.iterative.ai/img/git-dvc-cml.png)
 
-**Data as Code**: DVC removes the need to manage databases or write bespoke code
-to read and write to such databases. Instead, DVC works alongside Git to manage
-data files and folders as painlessly as code.
+**Models, Data, and Metrics as Code**: DVC removes the need to manage databases
+or write bespoke code to read and write to such databases. Instead, DVC works
+alongside Git to manage data files and folders as painlessly as code.
 
 **Data Validation**: It is common practice for tests to be triggered each time a
 code change is pushed to a repository branch. DVC can be used in a similar
