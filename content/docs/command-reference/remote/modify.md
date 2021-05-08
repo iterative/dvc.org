@@ -133,7 +133,7 @@ parameters to customize the authentication method:
 - `credentialpath` - S3 credentials file path:
 
   ```dvc
-  $ dvc remote modify myremote credentialpath /path/to/creds
+  $ dvc remote modify --local myremote credentialpath /path/to/creds
   ```
 
 - `configpath` - path to the
@@ -142,7 +142,7 @@ parameters to customize the authentication method:
   parameter isn't set.
 
   ```dvc
-  $ dvc remote modify myremote --local configpath /path/to/config
+  $ dvc remote modify --local myremote configpath /path/to/config
   ```
 
   > Note that only the S3-specific
@@ -159,14 +159,14 @@ parameters to customize the authentication method:
   `secret_access_key`) instead of `credentialpath`:
 
   ```dvc
-  $ dvc remote modify myremote access_key_id 'mykey'
+  $ dvc remote modify --local myremote access_key_id 'mykey'
   ```
 
 - `secret_access_key` - AWS Secret Access Key. May be used (along with
   `access_key_id`) instead of `credentialpath`:
 
   ```dvc
-  $ dvc remote modify myremote \
+  $ dvc remote modify --local myremote \
         secret_access_key 'mysecret'
   ```
 
@@ -176,7 +176,7 @@ parameters to customize the authentication method:
   `secret_access_key`) instead of `credentialpath` when MFA is required:
 
   ```dvc
-  $ dvc remote modify myremote --local session_token my-session-token
+  $ dvc remote modify --local myremote session_token my-session-token
   ```
 
 - `use_ssl` - whether or not to use SSL. By default, SSL is used.
@@ -223,7 +223,7 @@ methods that are performed by DVC (`list_objects_v2` or `list_objects`,
   value that S3 supports, including both key ids and aliases.
 
   ```dvc
-  $ dvc remote modify myremote sse_kms_key_id 'key-alias'
+  $ dvc remote modify --local myremote sse_kms_key_id 'key-alias'
   ```
 
 - `acl` - set object level access control list (ACL) such as `private`,
@@ -464,7 +464,7 @@ a full guide on using Google Drive as DVC remote storage.
   using a custom Google Client project. Also requires using `gdrive_client_id`.
 
   ```dvc
-  $ dvc remote modify myremote \
+  $ dvc remote modify --local myremote \
         gdrive_client_secret 'client-secret'
   ```
 
@@ -472,9 +472,13 @@ a full guide on using Google Drive as DVC remote storage.
   access Google Drive data. `.dvc/tmp/gdrive-user-credentials.json` by default.
 
   ```dvc
-  $ dvc remote modify myremote gdrive_user_credentials_file \
-                      .dvc/tmp/myremote-credentials.json
+  $ dvc remote modify --local myremote \
+        gdrive_user_credentials_file .dvc/tmp/mycredentials.json
   ```
+
+> Authentication values may contain sensitive user info. Therefore, it's safer
+> to use the `--local` flag so they're written to a Git-ignored
+> [config file](https://dvc.org/doc/command-reference/config).
 
 See [Authorization](/doc/user-guide/setup-google-drive-remote#authorization) for
 more details.
@@ -511,7 +515,7 @@ more information.
   account `.json` key file, when `gdrive_use_service_account` is on.
 
   ```dvc
-  $ dvc remote modify myremote \
+  $ dvc remote modify --local myremote \
                       gdrive_service_account_json_file_path \
                       path/to/file.json
   ```
@@ -557,16 +561,20 @@ more information.
   file structure in the remote `url`.
 
   ```dvc
-  $ dvc remote modify \
-        myremote credentialpath '/home/.../project-XXX.json'
+  $ dvc remote modify --local myremote \
+          credentialpath '/home/.../project-XXX.json'
   ```
 
-  Alternatively, the `GOOGLE_APPLICATION_CREDENTIALS` environment variable can
-  be set:
+> The `credentialpath` value may contain personal user info. Therefore, it's
+> safer to use the `--local` flag so it's written to a Git-ignored
+> [config file](https://dvc.org/doc/command-reference/config).
 
-  ```dvc
-  $ export GOOGLE_APPLICATION_CREDENTIALS='.../project-XXX.json'
-  ```
+Alternatively, the `GOOGLE_APPLICATION_CREDENTIALS` environment variable can be
+set:
+
+```dvc
+$ export GOOGLE_APPLICATION_CREDENTIALS='.../project-XXX.json'
+```
 
 </details>
 
@@ -591,13 +599,13 @@ more information.
 - `oss_key_id` - OSS key ID to access the remote.
 
   ```dvc
-  $ dvc remote modify myremote --local oss_key_id 'mykey'
+  $ dvc remote modify --local myremote oss_key_id 'mykey'
   ```
 
 - `oss_key_secret` - OSS secret key for authorizing access into the remote.
 
   ```dvc
-  $ dvc remote modify myremote --local oss_key_secret 'mysecret'
+  $ dvc remote modify --local myremote oss_key_secret 'mysecret'
   ```
 
 > The key ID and secret key contain sensitive user info. Therefore, it's safer
@@ -667,7 +675,7 @@ $ export OSS_ENDPOINT='endpoint'
 - `keyfile` - path to private key to access the remote.
 
   ```dvc
-  $ dvc remote modify myremote keyfile /path/to/keyfile
+  $ dvc remote modify --local myremote keyfile /path/to/keyfile
   ```
 
 - `password` - a private key passphrase or a password to access the remote.
@@ -861,7 +869,8 @@ by HDFS. Read more about by expanding the WebHDFS section in
   is set to `custom`.
 
   ```dvc
-  $ dvc remote modify myremote custom_auth_header 'My-Header'
+  $ dvc remote modify --local myremote \
+                        custom_auth_header 'My-Header'
   ```
 
 - `user` - user name to use when the `auth` parameter is set to `basic` or
@@ -879,7 +888,7 @@ by HDFS. Read more about by expanding the WebHDFS section in
 - `password` - password to use for any `auth` method.
 
   ```dvc
-  $ dvc remote modify myremote --local password mypassword
+  $ dvc remote modify --local myremote password mypassword
   ```
 
 > The user name and password (may) contain sensitive user info. Therefore, it's
@@ -961,14 +970,14 @@ by HDFS. Read more about by expanding the WebHDFS section in
   you need to use local client side certificates.
 
   ```dvc
-  $ dvc remote modify myremote cert_path /path/to/cert
+  $ dvc remote modify --local myremote cert_path /path/to/cert
   ```
 
 - `key_path` - path to private key to use to access a remote. Only has an effect
   in combination with `cert_path`.
 
   ```dvc
-  $ dvc remote modify myremote key_path /path/to/key
+  $ dvc remote modify --local myremote key_path /path/to/key
   ```
 
   > Note that the certificate in `cert_path` might already contain the private
