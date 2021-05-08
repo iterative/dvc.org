@@ -203,14 +203,14 @@ $ dvc update --rev cats-dogs-v2
 If you take a look at our
 [dataset registry](https://github.com/iterative/dataset-registry)
 <abbr>project</abbr>, you'll see that it's organized into different directories
-such as `tutorials/ver` and `use-cases/`, and these contain `.dvc` files that
-track different datasets. Given this simple structure, its data files can be
-easily shared among several other projects using `dvc get` and `dvc import`. For
-example:
+such as `tutorials/versioning` and `use-cases/`, and these contain `.dvc` files
+that track different datasets. Given this simple structure, its data files can
+be easily shared among several other projects using `dvc get` and `dvc import`.
+For example:
 
 ```dvc
 $ dvc get https://github.com/iterative/dataset-registry \
-          tutorials/ver/data.zip
+          tutorials/versioning/data.zip
 ```
 
 > Used in our
