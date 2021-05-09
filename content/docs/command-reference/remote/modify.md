@@ -464,7 +464,7 @@ a full guide on using Google Drive as DVC remote storage.
   using a custom Google Client project. Also requires using `gdrive_client_id`.
 
   ```dvc
-  $ dvc remote modify --local myremote \
+  $ dvc remote modify myremote \
         gdrive_client_secret 'client-secret'
   ```
 
@@ -472,13 +472,9 @@ a full guide on using Google Drive as DVC remote storage.
   access Google Drive data. `.dvc/tmp/gdrive-user-credentials.json` by default.
 
   ```dvc
-  $ dvc remote modify --local myremote \
+  $ dvc remote modify myremote \
         gdrive_user_credentials_file .dvc/tmp/mycredentials.json
   ```
-
-> Authentication values may contain sensitive user info. Therefore, it's safer
-> to use the `--local` flag so they're written to a Git-ignored
-> [config file](https://dvc.org/doc/command-reference/config).
 
 See [Authorization](/doc/user-guide/setup-google-drive-remote#authorization) for
 more details.
