@@ -566,7 +566,7 @@ more information.
   ```
 
 > The `credentialpath` value may contain personal user info. Therefore, it's
-> safer to use the `--local` flag so it's written to a Git-ignored
+> convenient to use the `--local` flag so it's written to a Git-ignored
 > [config file](https://dvc.org/doc/command-reference/config).
 
 Alternatively, the `GOOGLE_APPLICATION_CREDENTIALS` environment variable can be
