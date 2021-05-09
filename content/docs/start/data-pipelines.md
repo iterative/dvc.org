@@ -172,18 +172,18 @@ The `dvc.yaml` file is updated automatically and should include two stages now.
 
 The changes to the `dvc.yaml` should look like this:
 
-```diff
-stages:
-  prepare:
-    cmd: python src/prepare.py data/data.xml
-    deps:
-    - data/data.xml
-    - src/prepare.py
-    params:
-    - prepare.seed
-    - prepare.split
-    outs:
-    - data/prepared
+```git
+ stages:
+   prepare:
+     cmd: python src/prepare.py data/data.xml
+     deps:
+     - data/data.xml
+     - src/prepare.py
+     params:
+     - prepare.seed
+     - prepare.split
+     outs:
+     - data/prepared
 +  featurize:
 +    cmd: python src/featurization.py data/prepared data/features
 +    deps:
