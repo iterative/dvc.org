@@ -151,7 +151,7 @@ import dvclive
 Then update the following lines of code in the `main` method inside of the
 training epoch loop.
 
-```diff
+```git
 # Iterate over training epochs.
 for i in range(1, EPOCHS+1):
     # Train in batches.
