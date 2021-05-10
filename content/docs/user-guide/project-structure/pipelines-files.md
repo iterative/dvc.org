@@ -258,15 +258,15 @@ stages:
   cleanups@labels1:
     cmd: clean.py "labels1"
     outs:
-    - path: labels1.cln
+      - path: labels1.cln
   cleanups@raw1:
     cmd: clean.py "raw1"
     outs:
-    - path: raw1.cln
+      - path: raw1.cln
   cleanups@raw2:
     cmd: clean.py "raw2"
     outs:
-    - path: raw2.cln
+      - path: raw2.cln
 ```
 
 For lists containing complex values (e.g. dictionaries), the substitution
