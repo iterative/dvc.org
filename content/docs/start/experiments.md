@@ -149,7 +149,7 @@ Changes for experiment 'exp-98a96' have been applied to your workspace.
 
 `dvc exp apply` is similar to `dvc checkout`, but works with experiments
 instead. DVC tracks everything in the pipeline for each experiment (parameters,
-metrics, dependencies, and outputs) and can later retrieve them as needed.
+metrics, dependencies, and outputs), retrieving things later as needed.
 
 Check that `scores.json` reflects the metrics in the table above:
 
