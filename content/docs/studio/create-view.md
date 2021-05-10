@@ -1,4 +1,4 @@
-# Create a view
+# Create a View
 
 To create a new view for your repository, follow these steps.
 

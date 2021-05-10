@@ -1,4 +1,4 @@
-# Run experiments
+# Run Experiments
 
 You can also run your ML experiments directly from DVC Studio. Your regular
 CI/CD set-up is used to run the experiments. For instance, Github Actions can be

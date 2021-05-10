@@ -537,21 +537,15 @@
         "slug": "get-started"
       },
       {
-        "label": "Create a view",
+        "label": "Create a View",
         "slug": "create-view"
       },
       {
         "label": "Visualize experiments",
         "slug": "visualize-exp"
       },
-      {
-        "label": "Run experiements",
-        "slug": "experiments"
-      },
-      {
-        "label": "Create teams",
-        "slug": "teams"
-      }
+      "run-experiments",
+      "teams"
     ]
   }
 ]

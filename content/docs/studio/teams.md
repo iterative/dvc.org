@@ -1,4 +1,4 @@
-# Create teams
+# Teams
 
 So far, you have seen how you can create personal and public views. In this
 section, we will illustrate how you can create teams. In Studio, you can define
