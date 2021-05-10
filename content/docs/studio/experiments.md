@@ -10,11 +10,6 @@ you want to make to your input datasets and hyperparameters. Once you have made
 all the necessary changes, you can commit the changes to your Git repository
 directly from Studio and invoke your CI/CD pipeline.
 
-You can use DVC Studio along with CML for running experiments.
-[CML](/doc/cml/index) is an open-source library for implementing continuous
-integration & delivery (CI/CD) in machine learning projects. You can run CML
-experiments on top of any one of all the listed commits.
-
 To run experiments from DVC Studio, select the commit that you want to use and
 click on the Run button. An input form will be generated for you to enter all
 the input files and parameters that you want to use in your experiment.
