@@ -193,7 +193,7 @@ Storage, HTTP, HDFS, etc.). The Git remote is often a central Git server
 
 </details>
 
-Experiments which have not been made persistent will not be stored or shared
+Experiments that have not been made persistent will not be stored or shared
 remotely through `dvc push` or `git push`.
 
 `dvc exp push` enables storing and sharing any experiment remotely.
@@ -203,7 +203,7 @@ $ dvc exp push gitremote exp-bfe64
 Pushed experiment 'exp-bfe64' to Git remote 'gitremote'.
 ```
 
-`dvc exp list` shows all experiments which have been saved.
+`dvc exp list` shows all experiments that have been saved.
 
 ```dvc
 $ dvc exp list gitremote --all
