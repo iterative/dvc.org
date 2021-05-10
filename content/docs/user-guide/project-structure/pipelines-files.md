@@ -255,12 +255,18 @@ are saved to `dvc.lock`:
 ```yaml
 schema: '2.0'
 stages:
-  cleanups@raw2 labels2:
-    cmd: echo "raw2 labels2"
-  cleanups@raw1:
-    cmd: echo "raw1"
   cleanups@labels1:
-    cmd: echo "labels1"
+    cmd: clean.py "labels1"
+    outs:
+    - path: labels1.cln
+  cleanups@raw1:
+    cmd: clean.py "raw1"
+    outs:
+    - path: raw1.cln
+  cleanups@raw2:
+    cmd: clean.py "raw2"
+    outs:
+    - path: raw2.cln
 ```
 
 For lists containing complex values (e.g. dictionaries), the substitution
