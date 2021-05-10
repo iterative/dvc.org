@@ -11,8 +11,6 @@ DVC makes it easy to track [metrics](/doc/command-reference/metrics), update
 > All of the above can be combined into <abbr>experiments</abbr> to run and
 > compare many iterations of your ML project.
 
-Read on to see how it's done!
-
 ## Collecting metrics
 
 First, let's see what is the mechanism to capture values for these ML
@@ -98,8 +96,8 @@ Similarly, it writes arrays for the
 into `roc.json` for an additional plot.
 
 > DVC doesn't force you to use any specific file names, nor does it enforce a
-> format or structure of a metrics or plots file. It's completely user- and
-> case-defined. R to `dvc metrics` and `dvc plots` for more details.
+> format or structure of a metrics or plots file. It's completely
+> user/case-defined. R to `dvc metrics` and `dvc plots` for more details.
 
 You can view tracked metrics and plots with DVC. Let's start with the metrics:
 
