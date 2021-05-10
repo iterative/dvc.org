@@ -1,6 +1,6 @@
 ---
 name: 'Run-cache'
-match: ['run-cache', 'run-caches']
+match: ['run-cache']
 tooltip: >-
   A log of stages that have been run in the project. It's comprised of
   `dvc.lock` file backups, identified as combinations of dependencies, commands,

@@ -222,8 +222,8 @@ The beauty of `dvc.yaml` is that all you need to do now is run:
 $ dvc repro
 ```
 
-It'll analyze the changes, use existing <abbr>run-caches</abbr>, and execute
-only the commands that are needed to produce new results (model, metrics,
+It'll analyze the changes, use existing results from the <abbr>run-cache</abbr>,
+and execute only the commands needed to produce new results (model, metrics,
 plots).
 
 The same logic applies to other possible adjustments — edit source code, update
@@ -232,9 +232,9 @@ datasets — you do the changes, use `dvc repro`, and DVC runs what needs to be.
 ## Comparing iterations
 
 Finally, let's see how the updates improved performance. DVC has a few commands
-to see metrics & parameter changes and to visualize plots (for one or more
-pipeline iterations). Let's compare the current "bigrams" run with the last
-committed "baseline" iteration:
+to see changes in and visualize metrics, parameters, and plots. These commands
+can work for one or across multiple pipeline iteration(s). Let's compare the
+current "bigrams" run with the last committed "baseline" iteration:
 
 ```dvc
 $ dvc params diff
