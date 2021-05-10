@@ -1,4 +1,4 @@
-# Running experiments
+# Run experiments
 
 You can also run CML experiments directly from DVC Studio. CML is an open-source
 library for implementing continuous integration & delivery (CI/CD) in machine
@@ -20,8 +20,8 @@ parameters that you want to use in your experiment.
 
 The values listed in this form by default are extracted from your selected
 commit. Change the input files or parameters according to what experiment you
-want to run. For instance, in the given example, you can increase max_features
-to 4000 or decrease ngrams to 1.
+want to run. For instance, in the given example, you can increase `max_features`
+to 4000 or decrease `ngrams` to 1.
 
 After making all the necessary input changes, click on Start commit. Enter your
 commit messages, select the branch you want to commit to (the same branch as the

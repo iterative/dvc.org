@@ -527,12 +527,15 @@
     ]
   },
   {
-    "label": "DVC Studio",
+    "label": "Studio",
     "slug": "studio",
     "source": "studio/index.md",
     "icon": "studio",
     "children": [
-      "usage",
+      {
+        "label": "Get started",
+        "slug": "get-started"
+      },
       {
         "label": "Create a view",
         "slug": "create-view"
@@ -542,11 +545,11 @@
         "slug": "visualize-exp"
       },
       {
-        "label": "Run experiements from Studio",
+        "label": "Run experiements",
         "slug": "cml-experiments"
       },
       {
-        "label": "Create teams and share views",
+        "label": "Create teams",
         "slug": "teams"
       }
     ]

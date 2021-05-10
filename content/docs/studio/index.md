@@ -13,7 +13,10 @@ Project website: https://viewer.iterative.ai
 results, but also run and track experiments but a single intuitive dashboard.
 Above, an example dashboard for an exmaple project._
 
-Use DVC Studio to:
+Use DVC, CML and Studio to:
+
+- **Visualize, collaborate, and do everything that a regular ML tracking tool
+  does.**
 
 - **Keep your code, data and model connected at all times.**
 
@@ -21,6 +24,3 @@ Use DVC Studio to:
 
 - **Run CI/CD for your ML projects on cloud resources of your choice without any
   new tools.**
-
-- **Visualize, collaborate, and do everything that a regular ML tracking tool
-  does.**
