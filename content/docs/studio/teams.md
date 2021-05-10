@@ -4,20 +4,23 @@ So far, you have seen how you can create personal and public views. In this
 section, we will illustrate how you can create teams. In Studio, you can define
 teams with one or more team members. The team members are also called
 collaborators, and you can assign different roles to the collaborators. The
-views that you create in your team's shared space will be accessible to all
-members of the team.
+views that you create in your team's page will be accessible to all members of
+the team.
 
 ## Roles
 
 Team members can have different roles.
 
-- **View.** Users with the View only access cannot edit team settings or create
-  new views within the team's shared space. They have read-only access to the
-  views created by other team members.
-- **Edit.** Users with the Edit role can also view, edit and invite people in
-  the team as well as create new views within the team's shared space.
-- **Admin.** In addition to accessing the team's views, Admin users can also
-  change team settings and collaborators.
+- **View.** Users with the View access cannot edit team settings or create new
+  views within the team's page. They have read-only access to the views created
+  by other team members.
+- **Edit.** In addition to accessing all the team's views, users with the Edit
+  role can also create new views for the team, edit the views' settings, and run
+  experiments.
+- **Admin.** Admin users have full access to the team's views and settings. They
+  can do everything that viewers and editors can do. Additionally, they can add
+  (invite) and remove collaborators as well as change team settings such as
+  cloud credentials (data remotes).
 
 ## Create a team
 

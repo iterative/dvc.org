@@ -12,7 +12,7 @@ data processing code, and can be defined in dvc.yaml (plots field) for tracking
 for details on how plots are generated.
 
 To generate metric plots, select one or more experiements (represented by the
-commits), and click on the 'Plots' icon.
+commits), and click on the 'Show plots' button.
 
 <img src="/img/studio/select_commits.png" alt="drawing" width="300"/>
 
@@ -21,18 +21,22 @@ one experiment, you can use the plots to compare them.
 
 <img src="/img/studio/plots.png" alt="drawing" width="300"/>
 
-_Here, 2 experiments were selected comparison using plots._
+_Here, 2 experiments were selected for comparison using plots._
 
 ## Generate trend charts
 
 Click on the Trends button to generate a plot of how the metrics changed over
-the course of the different experiments.
+the course of the different experiments. For each metric, the trend charts show
+how the metric changed from one commit to another within a single branch in the
+repository.
 
 <img src="/img/studio/trends.png" alt="drawing" width="300"/>
 
 ## Compare experiements
 
 To compare different experiements, select two or more experiements (represented
-by the commits), and click on the 'Compare' icon.
+by the commits), and click on the 'Compare' icon. The metrics, parametes and
+files in the selected experiments will be displayed side by side for easy
+comparison.
 
 <img src="/img/studio/compare.png" alt="drawing" width="300"/>
