@@ -99,7 +99,6 @@
         "slug": "what-is-dvc"
       },
       {
-        "label": "Basic Concepts",
         "slug": "basic-concepts",
         "source": false,
         "children": ["workspace"]
