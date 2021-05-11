@@ -55,12 +55,18 @@ your <abbr>project</abbr>:
 $ dvc cache dir /home/shared/dvc-cache
 ```
 
-And tell DVC to set group permissions on newly created or downloaded cache
-files:
+Let's do a few important configurations:
 
 ```dvc
 $ dvc config cache.shared group
+$ dvc config cache.type "reflink,symlink,hardlink,copy"
+$ dvc config cache.protected true
 ```
+
+First we tells DVC to set group permissions on new cache files. Then we enable
+soft and hard links (you limit to one or the other) to avoid copying from the
+external cache to the <abbr>workspace</abbr>. Finally we must "protect" the
+symlinked data in our project to avoid corrupting the cache.
 
 > See `dvc cache dir` and `dvc config cache` for more information.
 
