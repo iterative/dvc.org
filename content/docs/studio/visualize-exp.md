@@ -1,4 +1,4 @@
-# Visualize and compare experiements
+# Visualize and Compare Experiments
 
 You can visualize and compare experiements using a variety of tools.
 

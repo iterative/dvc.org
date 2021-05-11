@@ -1,32 +1,30 @@
-# Get started
+# Get Started with DVC Studio
 
 Here, we will walk you through a tutorial to use DVC Studio for collaboration on
-your ML projects. You will need access to Github, Gitlab or Bitbucket account
-which has the Git repositories that you want to connect to from DVC Studio. When
-you connect to the repositories, DVC Studio creates views from those
-repositories.
+your ML projects. You will need access to a Github, Gitlab or Bitbucket account
+which has access to the Git repositories you want to connect to from DVC Studio.
+DVC Studio creates views from repositories when you connect to them.
 
 ## What is a view?
 
-A view is an interative presentation of data about the experiments that you have
-run in your ML project. DVC Studio automatically identifies datasets, metrics
-and hyperparameters in your ML experiments. You can also add custom files with
-the required data (more on this later). Using this data, DVC Studio creates a
-summary view, and you can drill down the summary view to visualize all the data
-across all your experiments in a table. You can also generate plots and compare
-experiments using the views.
+A *view* is an interactive representation of the experiments run in your ML
+project. DVC Studio automatically identifies datasets, metrics and
+hyperparameters in your ML experiments. You can also add custom files with the
+required data (more on this later). Using this data, DVC Studio creates a
+summary view. This includes tables of all the metrics across all your
+experiments. You can also generate plots and compare experiments here.
 
 ## Access your first view
 
-In your browser, open https://viewer.iterative.ai/ Sign in with your Github,
+In your browser, open <https://viewer.iterative.ai>. Sign in with your Github,
 Gitlab, or Bitbucket account.
 
 ![](/img/studio/login_home.png) _When you first login, an example view is
 already created for you to explore, and you can add more views._
 
 When you first login, you will find that there already exists a view connecting
-to a public Git repository for an example DVC project. Use this view to explore
-the features that DVC Studio has to offer.
+to an example DVC project. Use this view to explore the features that DVC Studio
+has to offer.
 
 ## Components of a view
 
@@ -36,13 +34,11 @@ example view shown above, you can see that `avg_prec` and `roc_auc` metrics are
 displayed.
 
 You can dive deep into all the experiments committed to the repo. For this, open
-the view by clicking on the view name (in this case, example-get-started).
+the view by clicking on the view name (in this case, `example-get-started`).
 
-A detailed tabular display of your view will be generated as shown below. This
-table includes not just metrics, but also hyperparameters and informatoin about
-the datasets. All the data is flattened and neatly presented for your to
-visually evaluate the experiments as well as compare multiple experiements with
-one another.
+A table will be generated as shown below. This includes metrics, hyperparameters
+and information about the datasets. All the data is flattened and neatly
+presented for your to evaluate and compare the experiments.
 
 ![](/img/studio/main.png) _Replace this image with an image that has labels for
 the individual sections._
@@ -67,5 +63,5 @@ This tabular display has the following components:
    - **Delta mode:** Change the displayed values to be differentials over the
      values in the first row
 
-You can connect to additional repositories and add more views as needed. In the
-next section, we will show you how you can do this.
+You can connect to additional repositories and add more views as needed. You can
+find out how to do this in the next section.
