@@ -39,9 +39,8 @@ You will need to speciy advanced settings in the following scenarios.
   view, you can skip this setting.
 - **Custom files:** DVC Studio automatically detects metrics, plots, and
   parameters files specified in the project's `dvc.yaml`. If you want to connect
-  custom files, you can add them by clicking on the `Add file` button. Enter
-  the full file path, and specify whether the file is for `Metrics` or
-  `Parameters`.
+  custom files, you can add them by clicking on the `Add file` button. Enter the
+  full file path, and specify whether the file is for `Metrics` or `Parameters`.
 
 ## Share a view
 
