@@ -10,8 +10,8 @@ share results.
 Project website: https://viewer.iterative.ai
 
 ![](/img/studio/main.png) _DVC Studio lets you not just visualize and share
-results, but also run and track experiments but a single intuitive dashboard.
-Above, an example dashboard for an exmaple project._
+results, but also run and track experiments in a single intuitive dashboard.
+Above, a dashboard for an example project._
 
 Use DVC, CML and Studio to:
 

@@ -38,10 +38,9 @@ the view by clicking on the view name (in this case, `example-get-started`).
 
 A table will be generated as shown below. This includes metrics, hyperparameters
 and information about the datasets. All the data is flattened and neatly
-presented for your to evaluate and compare the experiments.
+presented for you to evaluate and compare the experiments.
 
-![](/img/studio/main.png) _Replace this image with an image that has labels for
-the individual sections._
+![](/img/studio/main.png)
 
 This tabular display has the following components:
 
