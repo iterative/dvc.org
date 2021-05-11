@@ -20,9 +20,9 @@ the input files or parameters according to what experiment you want to run. For
 instance, in the given example, you can increase `max_features` to 4000 or
 decrease `ngrams` to 1.
 
-After making all the necessary input changes, click on Start commit. Enter your
-commit messages, select the branch you want to commit to (the same branch as the
-base branch or a new branch), and click on Commit changes.
+After making all the necessary input changes, click on `Start commit`. Enter
+your commit messages, select the branch to commit to (either the base branch or
+a new branch), and click on `Commit changes`.
 
 If your refresh the `View details` page now, the experiment (i.e. the commit
 that you just pushed) along with its results (metrics) will be included in the

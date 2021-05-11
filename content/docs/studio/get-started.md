@@ -45,23 +45,21 @@ the individual sections._
 
 This tabular display has the following components:
 
-1. The branches on your Git repository.
-2. All the commits in the branches. Each commit represents an experiment. Each
-   commit is on a single row in the table.
-3. Values of all the metrics, files and parameters in the given commits. The
-   different types of values are presented in different columns in the table.
-4. Following buttons for performing actions:
-   - **Filters:** Filter commits
-   - **Columns:** Select columns to display
-   - **Show plots:** Show plots, by selecting one or more commits that have
-     plots
-   - **Compare:** Compare different experiements
-   - **Run:** Run experiments, by selecting any one commit (Refer here for how
-     to run experiments)
-   - **Trends:** Generate trend charts to show how the metrics eveolved over
-     time
-   - **Delta mode:** Change the displayed values to be differentials over the
-     values in the first row
+- The branches in your Git repository.
+- All commits in each branch. Each commit, corresponding to a single row in the
+  table, represents an experiment.
+- Values of all the metrics, files and parameters in the given commits;
+  corresponding to the table columns.
+- Various buttons for performing actions:
+  - **Filters:** Filter commits
+  - **Columns:** Select columns to display
+  - **Show plots:** Show plots for the selected commits
+  - **Compare:** Compare different experiements
+  - **Run:** Run experiments by selecting any one commit (Refer
+    [here](/doc/studio/run-experiments) for how to run experiments)
+  - **Trends:** Generate trend charts to show metric evolution over time
+  - **Delta mode:** Toggle between absolute values and difference from the first
+    row
 
 You can connect to additional repositories and add more views as needed. You can
 find out how to do this in the next section.

@@ -515,18 +515,6 @@
     ]
   },
   {
-    "label": "Dvclive",
-    "slug": "dvclive",
-    "source": "dvclive/index.md",
-    "children": [
-      "usage",
-      {
-        "label": "Dvclive with DVC",
-        "slug": "dvclive-with-dvc"
-      }
-    ]
-  },
-  {
     "label": "Studio",
     "slug": "studio",
     "source": "studio/index.md",
@@ -540,6 +528,18 @@
       "visualize-experiments",
       "run-experiments",
       "teams"
+    ]
+  },
+  {
+    "label": "Dvclive",
+    "slug": "dvclive",
+    "source": "dvclive/index.md",
+    "children": [
+      "usage",
+      {
+        "label": "Dvclive with DVC",
+        "slug": "dvclive-with-dvc"
+      }
     ]
   }
 ]
