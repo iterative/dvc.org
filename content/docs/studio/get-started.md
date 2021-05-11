@@ -7,7 +7,7 @@ DVC Studio creates views from repositories when you connect to them.
 
 ## What is a view?
 
-A *view* is an interactive representation of the experiments run in your ML
+A _view_ is an interactive representation of the experiments run in your ML
 project. DVC Studio automatically identifies datasets, metrics and
 hyperparameters in your ML experiments. You can also add custom files with the
 required data (more on this later). Using this data, DVC Studio creates a

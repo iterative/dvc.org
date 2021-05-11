@@ -15,8 +15,8 @@ To create a new view for your repository, follow these steps.
 4. Once you click on `Connect`, you will be able to specify advanced settings
    for the connection. ![](/img/studio/view_settings.png)
 
-> :point_right: In most scenarios, you can skip the advanced settings. Refer to
-> the [Advanced Settings](#advanced-settings) section below for more details.
+> In most scenarios, you can skip the advanced settings. Refer to the
+> [Advanced Settings](#advanced-settings) section below for more details.
 
 You should now see that a view has been added in your dashboard.
 
@@ -26,8 +26,8 @@ You should now see that a view has been added in your dashboard.
 
 You will need to speciy advanced settings in the following scenarios.
 
-> :point_right: These settings can be skipped when creating the view -- they can
-> be edited later.
+> These settings can be skipped when creating the view -- they can be edited
+> later.
 
 - **Monorepo:** If you have connected to a monorepo, then specify the full path
   to the root directory for the project that you want to connect to.
@@ -39,9 +39,8 @@ You will need to speciy advanced settings in the following scenarios.
   view, you can skip this setting.
 - **Custom files:** DVC Studio automatically detects metrics, plots, and
   parameters files specified in the project's `dvc.yaml`. If you want to connect
-  custom files, you can add them by clicking on the `Add file` button. Enter
-  the full file path, and specify whether the file is for `Metrics` or
-  `Parameters`.
+  custom files, you can add them by clicking on the `Add file` button. Enter the
+  full file path, and specify whether the file is for `Metrics` or `Parameters`.
 
 ## Share a view
 

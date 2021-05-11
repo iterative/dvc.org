@@ -532,18 +532,12 @@
     "source": "studio/index.md",
     "icon": "studio",
     "children": [
-      {
-        "label": "Get started",
-        "slug": "get-started"
-      },
+      "get-started",
       {
         "label": "Create a View",
         "slug": "create-view"
       },
-      {
-        "label": "Visualize Experiments",
-        "slug": "visualize-exp"
-      },
+      "visualize-experiments",
       "run-experiments",
       "teams"
     ]
