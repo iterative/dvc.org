@@ -26,12 +26,11 @@ When you first login, you will find that there already exists a view connecting
 to an example DVC project. Use this view to explore the features that DVC Studio
 has to offer.
 
-## Components of a view
-
 DVC Studio automatically identifies datasets, metrics and hyperparameters in
 your ML experiments. Each view on the dashboard displays the metrics. In the
-example view shown above, you can see that `avg_prec` and `roc_auc` metrics are
-displayed.
+figure above, you can see that `avg_prec` and `roc_auc` metrics are displayed.
+
+## Components of a view
 
 You can dive deep into all the experiments committed to the repo. For this, open
 the view by clicking on the view name (in this case, `example-get-started`).
