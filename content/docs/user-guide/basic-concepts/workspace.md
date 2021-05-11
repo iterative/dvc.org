@@ -29,4 +29,4 @@ single version of the project is visible at a time.
 
 - [What is DVC?](/doc/user-guide/what-is-dvc)
 - [Get Started](/doc/start) with DVC
-- DVC [Project Structure](doc/user-guide/project-structure)
+- DVC [Project Structure](/doc/user-guide/project-structure)
