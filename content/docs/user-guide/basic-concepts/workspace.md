@@ -25,6 +25,13 @@ single version of the project is visible at a time.
 > The DVC workspace is analogous to the
 > [working tree](https://git-scm.com/docs/gitglossary#def_working_tree) in Git.
 
+Files and directories in the workspace can be added to DVC (`dvc add`), or they
+can be downloaded from external sources (`dvc get`, `dvc import`,
+`dvc import-url`). Changes to the data, notebooks, models, and any related
+machine learning artifact can be tracked (`dvc commit`), and their content can
+be synchronized (`dvc checkout`). Tracked data can be removed (`dvc remove`)
+from the workspace.
+
 ## Further Reading
 
 - [What is DVC?](/doc/user-guide/what-is-dvc)
