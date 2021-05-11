@@ -55,18 +55,20 @@ your <abbr>project</abbr>:
 $ dvc cache dir /home/shared/dvc-cache
 ```
 
-Let's do a few important configurations:
+External cache configuration:
 
 ```dvc
 $ dvc config cache.shared group
 $ dvc config cache.type "reflink,symlink,hardlink,copy"
-$ dvc config cache.protected true
 ```
 
-First we tells DVC to set group permissions on new cache files. Then we enable
-soft and hard links (you limit to one or the other) to avoid copying from the
-external cache to the <abbr>workspace</abbr>. Finally we must "protect" the
-symlinked data in our project to avoid corrupting the cache.
+Above, we first tell DVC to set group permissions on new cache files. Then we
+enable soft and hard links (you limit to one or the other) to avoid having
+copies from the external cache to the <abbr>workspace</abbr>.
+
+⚠️ Note that enabling symlinks/hardlinks causes DVC to protect the linked data
+in the workspace, since editing them in-place would corrupt the cache. See also
+`dvc unprotect`.
 
 > See `dvc cache dir` and `dvc config cache` for more information.
 
