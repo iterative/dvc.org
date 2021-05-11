@@ -11,7 +11,7 @@ import Link from '../../../Link'
 import { ReactComponent as ExternalLinkIcon } from './external-link-icon.svg'
 import { ReactComponent as HouseIcon } from './house.svg'
 import { ReactComponent as CMLIcon } from './cml_bw_logo.svg'
-import { ReactComponent as StudioIcon } from './studio_icon.svg'
+import { ReactComponent as StudioIcon } from './studio_gray_icon.svg'
 
 import {
   structure,
