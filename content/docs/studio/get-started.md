@@ -14,9 +14,9 @@ required data (more on this later). Using this data, DVC Studio creates a
 summary view. This includes tables of all the metrics across all your
 experiments. You can also generate plots and compare experiments here.
 
-## Access your first view
+## DVC Studio Views page
 
-In your browser, open <https://viewer.iterative.ai>. Sign in with your Github,
+In your browser, open <https://studio.iterative.ai>. Sign in with your Github,
 Gitlab, or Bitbucket account.
 
 ![](/img/studio/login_home.png) _When you first login, an example view is
@@ -39,7 +39,7 @@ A table will be generated as shown below. This includes metrics, hyperparameters
 and information about the datasets. All the data is flattened and neatly
 presented for you to evaluate and compare the experiments.
 
-![](/img/studio/main.png)
+![](/img/studio/view_components.png)
 
 This tabular display has the following components:
 

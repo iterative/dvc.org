@@ -2,17 +2,20 @@
 
 To create a new view for your repository, follow these steps.
 
-1. Click on `Add a View`. All the organizations that you have access to will be
+1. Sign into your [DVC Studio](https://studio.iterative.ai/) dashboard.
+   ![](/img/studio/login_home.png)
+
+2. Click on `Add a View`. All the organizations that you have access to will be
    listed. ![](/img/studio/create_view.png)
 
-2. Open the organization whose repository you want to connect to. You can also
+3. Open the organization whose repository you want to connect to. You can also
    use the search bar to search directly for the repo which you want to connect
    to. ![](/img/studio/select_repo.png)
 
-3. Select the Git repository for which you want to create a view. For this,
+4. Select the Git repository for which you want to create a view. For this,
    hover over the required repository and click on `Connect`.
 
-4. Once you click on `Connect`, you will be able to specify advanced settings
+5. Once you click on `Connect`, you will be able to specify advanced settings
    for the connection. ![](/img/studio/view_settings.png)
 
 > In most scenarios, you can skip the advanced settings. Refer to the
