@@ -33,12 +33,12 @@ You will need to speciy advanced settings in the following scenarios.
   [monorepo](https://en.wikipedia.org/wiki/Monorepo), then specify the full path
   to the root directory for the project that you want to connect to.
 
-- **Data remote:** The metrics and parameters that you want to include in the
+- **Data remotes:** The metrics and parameters that you want to include in the
   view may be present in a data remote (cloud storage or another location
   outside of the Git repo). If you want to include such data in your views, then
   you will have to grant DVC Studio access to the data remote.
 
-- **Custom files:** DVC Studio automatically detects metrics, plots, and
+- **Custom metrics and parameters:** DVC Studio automatically detects metrics, plots, and
   parameters files specified in the project's `dvc.yaml`. If you want to connect
   custom files, you can add them by clicking on the `Add file` button. Enter the
   full file path, and specify whether the file is for `Metrics` or `Parameters`.
