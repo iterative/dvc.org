@@ -4,27 +4,27 @@ title: 'Get Started: Data and Model Access'
 
 # Get Started: Data and Model Access
 
-Okay, we've learned how to _track_ data and models with DVC, and how to commit
-their versions to Git. The next questions are: How can we _use_ these artifacts
-outside of the project? How do I download a model to deploy it? How to download
+We've learned how to _track_ data and models with DVC, and how to commit their
+versions to Git. The next questions are: How can we _use_ these artifacts
+outside of the project? How do we download a model to deploy it? How to download
 a specific version of a model? Or reuse datasets across different projects?
 
 > These questions tend to come up when you browse the files that DVC saves to
-> remote storage, e.g.
+> remote storage (e.g.
 > `s3://dvc-public/remote/get-started/fb/89904ef053f04d64eafcc3d70db673` 😱
-> instead of the original files, name such as `model.pkl` or `data.xml`.
+> instead of the original file name such as `model.pkl` or `data.xml`).
 
 Read on or watch our video to see how to find and access models and datasets
 with DVC.
 
 https://youtu.be/EE7Gk84OZY8
 
-Remember those `.dvc` files `dvc add` generates? Those files (and `dvc.lock`
-that we'll cover later), have their history in Git, DVC remote storage config
-saved in Git contain all the information needed to access and download any
-version of datasets, files, and models. It means that a Git repository with
-<abbr>DVC files</abbr> becomes an entry point, and can be used instead of
-accessing files directly.
+Remember those `.dvc` files `dvc add` generates? Those files (and `dvc.lock`,
+which we'll cover later) have their history in Git. DVC's remote storage config
+is also saved in Git, and contains all the information needed to access and
+download any version of datasets, files, and models. It means that a Git
+repository with <abbr>DVC files</abbr> becomes an entry point, and can be used
+instead of accessing files directly.
 
 ## Find a file or directory
 
@@ -62,7 +62,7 @@ the data came from or whether new versions are available.
 ## Import file or directory
 
 `dvc import` also downloads any file or directory, while also creating a `.dvc`
-file that can be saved in the project:
+file (which can be saved in the project):
 
 ```dvc
 $ dvc import https://github.com/iterative/dataset-registry \
@@ -71,7 +71,7 @@ $ dvc import https://github.com/iterative/dataset-registry \
 
 This is similar to `dvc get` + `dvc add`, but the resulting `.dvc` files
 includes metadata to track changes in the source repository. This allows you to
-bring in changes from the data source later, using `dvc update`.
+bring in changes from the data source later using `dvc update`.
 
 <details>
 
@@ -83,7 +83,7 @@ bring in changes from the data source later, using `dvc update`.
 > `dvc import` downloads from [remote storage](/doc/command-reference/remote).
 
 `.dvc` files created by `dvc import` have special fields, such as the data
-source `repo`, and `path` (under `deps`):
+source `repo` and `path` (under `deps`):
 
 ```git
 +deps:
@@ -111,8 +111,8 @@ directly from within an application at runtime. For example:
 import dvc.api
 
 with dvc.api.open(
-        'get-started/data.xml',
-        repo='https://github.com/iterative/dataset-registry'
-        ) as fd:
-    # ... fd is a file descriptor that can be processed normally.
+    'get-started/data.xml',
+    repo='https://github.com/iterative/dataset-registry'
+) as fd:
+    # fd is a file descriptor which can be processed normally
 ```
