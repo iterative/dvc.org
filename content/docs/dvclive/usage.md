@@ -84,15 +84,15 @@ logging for the current iteration.
 
 And in order to make that work, we need to plug it in with this change:
 
-```diff
-+ dvclive.init("training_metrics")
-  model.fit(x_train,
-            y_train,
-            validation_data=(x_test, y_test),
-            batch_size=128,
--           epochs=3)
-+           epochs=3,
-+           callbacks=[MetricsCallback()])
+```git
++dvclive.init("training_metrics")
+ model.fit(x_train,
+           y_train,
+           validation_data=(x_test, y_test),
+           batch_size=128,
+-          epochs=3)
++          epochs=3,
++          callbacks=[MetricsCallback()])
 ```
 
 We call `dvclive.init()` first, which tells Dvclive to write metrics under the

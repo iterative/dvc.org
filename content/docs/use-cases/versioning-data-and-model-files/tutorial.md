@@ -82,7 +82,7 @@ model [metrics](/doc/command-reference/metrics).
 
 ```dvc
 $ dvc get https://github.com/iterative/dataset-registry \
-          tutorial/ver/data.zip
+          tutorials/versioning/data.zip
 $ unzip -q data.zip
 $ rm -f data.zip
 ```
@@ -190,7 +190,7 @@ Let's imagine that our image dataset doubles in size. The next command extracts
 
 ```dvc
 $ dvc get https://github.com/iterative/dataset-registry \
-          tutorial/ver/new-labels.zip
+          tutorials/versioning/new-labels.zip
 $ unzip -q new-labels.zip
 $ rm -f new-labels.zip
 ```
