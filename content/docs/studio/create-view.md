@@ -50,4 +50,4 @@ You can share your views on the web. Simply click on the button labelled
 `Share to Web`. ![](/img/studio/view_share.png)
 
 You can change a shared (public) view and make it private by turning off
-`Share to Web`.
+`Share to web`.
