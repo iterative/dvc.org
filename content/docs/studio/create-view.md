@@ -38,10 +38,11 @@ You will need to speciy advanced settings in the following scenarios.
   outside of the Git repo). If you want to include such data in your views, then
   you will have to grant DVC Studio access to the data remote.
 
-- **Custom metrics and parameters:** DVC Studio automatically detects metrics, plots, and
-  parameters files specified in the project's `dvc.yaml`. If you want to connect
-  custom files, you can add them by clicking on the `Add file` button. Enter the
-  full file path, and specify whether the file is for `Metrics` or `Parameters`.
+- **Custom metrics and parameters:** DVC Studio automatically detects metrics,
+  plots, and parameters files specified in the project's `dvc.yaml`. If you want
+  to connect custom files, you can add them by clicking on the `Add file`
+  button. Enter the full file path, and specify whether the file is for
+  `Metrics` or `Parameters`.
 
 ## Share a view
 
