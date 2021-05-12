@@ -25,9 +25,17 @@ You should now see that a view has been added in your dashboard.
 
 ![](/img/studio/view_added.png)
 
+If your project requires any of the advanced settings, then remember to
+configure them by opening the View settings. Otherwise, your view may not work
+as expected. To go to View settings, click on the
+![](/img/studio/view_open_settings_icon.png) icon in the view. In the menu that
+opens up (highlighted in yellow in the screenshot below), click on `Settings`.
+
+![](/img/studio/view_open_settings.png)
+
 ## Advanced Settings
 
-You will need to speciy advanced settings in the following scenarios.
+You will need to specify advanced settings in the following scenarios.
 
 > These settings can be skipped when creating the view -- they can be edited
 > later.
