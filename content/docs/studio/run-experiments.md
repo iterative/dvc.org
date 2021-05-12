@@ -14,7 +14,7 @@ To run experiments from DVC Studio, select the commit that you want to use and
 click the `Run` button. A form will let you to specify all the changes that you
 want to make to your experiment input files/dirs and parameters.
 
-<img src="/img/studio/cml.png" alt="drawing" width="300"/>
+<img src="https://static.iterative.ai/img/studio/cml.png" alt="drawing" width="300"/>
 
 The default values in this form are extracted from your selected commit. For
 instance, in the given example, `max_features` can be increased to 4000,

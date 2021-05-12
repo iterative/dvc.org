@@ -9,7 +9,8 @@ share results.
 
 Project website: https://studio.iterative.ai
 
-![](/img/studio/main.png) _DVC Studio experiments dashboard_
+![](https://static.iterative.ai/img/studio/main.png) _DVC Studio experiments
+dashboard_
 
 Use DVC, CML and Studio to:
 
