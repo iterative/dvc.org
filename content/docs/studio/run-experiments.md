@@ -1,8 +1,9 @@
 # Run Experiments
 
 You can also run your ML experiments directly from DVC Studio. Your regular
-CI/CD set-up is used to run the experiments. For instance, Github Actions can be
-used to run ML experiments on each new commit.
+CI/CD set-up is used to run the experiments. For instance,
+[CML](https://dvc.org/doc/cml) Github Actions can be used
+to run ML experiments on each new commit.
 
 To run experiments from DVC Studio, select the commit that you want to use and
 click the `Run` button. A form will let you to specify all the changes that you
