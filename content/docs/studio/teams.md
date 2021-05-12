@@ -52,7 +52,7 @@ Edit, or View role. ![](/img/studio/team_roles.png)
 Once you have added the people that you wish to add to your team, click on
 `Send Invites and Close` on the top right corner.
 
-## Perform actions within the team's page
+## Manage your team and its views
 
 Once you have created the team, the team's page opens up.
 
