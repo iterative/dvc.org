@@ -15,12 +15,12 @@ are generated.
 To generate metric plots, select one or more experiements (represented by the
 commits), and click on the 'Show plots' button.
 
-<img src="/img/studio/select_commits.png" alt="drawing" width="300"/>
+<img src="https://static.iterative.ai/img/studio/select_commits.png" alt="drawing" width="300"/>
 
 The plots will appear below the tabular display. If you have selected more than
 one experiment, you can use the plots to compare them.
 
-<img src="/img/studio/plots.png" alt="drawing" width="300"/>
+<img src="https://static.iterative.ai/img/studio/plots.png" alt="drawing" width="300"/>
 
 ## Generate trend charts
 
@@ -29,7 +29,7 @@ the course of the different experiments. For each metric, the trend charts show
 how the metric changed from one commit to another. You can include one or more
 branches in the trend chart.
 
-<img src="/img/studio/trends.png" alt="drawing" width="300"/>
+<img src="https://static.iterative.ai/img/studio/trends.png" alt="drawing" width="300"/>
 
 ## Compare experiements
 
@@ -37,4 +37,4 @@ To compare different experiements, select two experiements (represented by the
 commits), and click on the `Compare` button. The metrics, parametes and files in
 the selected experiments will be displayed side by side for easy comparison.
 
-<img src="/img/studio/compare.png" alt="drawing" width="300"/>
+<img src="https://static.iterative.ai/img/studio/compare.png" alt="drawing" width="300"/>

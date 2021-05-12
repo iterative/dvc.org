@@ -27,11 +27,11 @@ Team members can have different roles.
 To create a team, click on the drop down next to `Personal`. All the teams that
 you have created so far will be listed within "Teams" in the drop down menu. If
 you have not created any team so far, this list will be empty. Now, click on
-`Create a team`. ![](/img/studio/team_create.png)
+`Create a team`. ![](https://static.iterative.ai/img/studio/team_create.png)
 
 You will be asked to enter the URL namespace for your team. Enter a unique name.
 The URL for your team will be formed using this name.
-![](/img/studio/team_enter_name.png)
+![](https://static.iterative.ai/img/studio/team_enter_name.png)
 
 Then, click on the `Create team` button on the top right corner.
 
@@ -47,7 +47,7 @@ invite will be sent to each invitee, and they will have to join using their
 Github, Gitlab or Bitbucket account.
 
 You can add multiple collaborators. Each collaborator can be assigned the Admin,
-Edit, or View role. ![](/img/studio/team_roles.png)
+Edit, or View role. ![](https://static.iterative.ai/img/studio/team_roles.png)
 
 Once you have added the people that you wish to add to your team, click on
 `Send Invites and Close` on the top right corner.
@@ -56,7 +56,7 @@ Once you have added the people that you wish to add to your team, click on
 
 Once you have created the team, the team's page opens up.
 
-![](/img/studio/team_page.png)
+![](https://static.iterative.ai/img/studio/team_page.png)
 
 On this page, you can perform three types of tasks:
 
@@ -70,4 +70,4 @@ On this page, you can perform three types of tasks:
 
 - **Change settings.** Finally, you can click on the `Settings` menu item to
   change the team name, add credentials for the data remotes, and delete the
-  team. ![](/img/studio/team_settings.png)
+  team. ![](https://static.iterative.ai/img/studio/team_settings.png)
