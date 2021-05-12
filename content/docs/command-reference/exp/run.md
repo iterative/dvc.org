@@ -159,7 +159,7 @@ CPU cores).
 
 - `-S [<filename>:]<params_list>`, `--set-param [<filename>:]<params_list>` -
   set the specified `dvc params` for this experiment. `filename` can be any
-  valid params file (`params.yaml` bu default). `params_list` accepts a
+  valid params file (`params.yaml` by default). `params_list` accepts a
   comma-separated list of key-value pairs in the form `key1=val1,key2=val2...`.
   This will override the param values coming from the params file.
 

@@ -23,6 +23,6 @@ description, select the branch to commit to (either the base branch or a new
 branch), and click on `Commit changes`.
 
 Now, the CI/CD pipeline that you have set up (eg, Github Actions) will be
-invoked to run the experiment. If your refresh the view (reload the page), the
+invoked to run the experiment. If you refresh the view (reload the page), the
 experiment (i.e. the commit that you just pushed) along with its results
 (metrics) will be included in the list of all commits.

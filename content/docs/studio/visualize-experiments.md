@@ -1,6 +1,6 @@
 # Visualize and Compare Experiments
 
-You can visualize and compare experiements using a variety of tools.
+You can visualize and compare experiments using a variety of tools.
 
 ## Generate metric plots
 
@@ -12,7 +12,7 @@ tracking (optional). Refer to the
 [DVC plots documentation](/doc/command-reference/plots) for details on how plots
 are generated.
 
-To generate metric plots, select one or more experiements (represented by the
+To generate metric plots, select one or more experiments (represented by the
 commits), and click on the 'Show plots' button.
 
 <img src="/img/studio/select_commits.png" alt="drawing" width="300"/>
@@ -31,10 +31,10 @@ branches in the trend chart.
 
 <img src="/img/studio/trends.png" alt="drawing" width="300"/>
 
-## Compare experiements
+## Compare experiments
 
-To compare different experiements, select two experiements (represented by the
-commits), and click on the `Compare` button. The metrics, parametes and files in
-the selected experiments will be displayed side by side for easy comparison.
+To compare different experiments, select two experiments (represented by the
+commits), and click on the `Compare` button. The metrics, parameters and files
+in the selected experiments will be displayed side by side for easy comparison.
 
 <img src="/img/studio/compare.png" alt="drawing" width="300"/>

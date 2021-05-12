@@ -2,8 +2,8 @@
 
 Here, we will walk you through a tutorial to use DVC Studio for collaboration on
 your ML projects. You will need access to a Github, Gitlab or Bitbucket account
-which has access to the Git repositories you want to connect to from DVC Studio.
-DVC Studio creates views from repositories when you connect to them.
+which has access to the Git repositories you want to connect. DVC Studio creates
+views from repositories when you connect to them.
 
 ## What is a view?
 
@@ -33,7 +33,7 @@ figure above, you can see that `avg_prec` and `roc_auc` metrics are displayed.
 ## Components of a view
 
 You can dive deep into all the experiments committed to the repo. For this, open
-the view by clicking on the view name (in this case, `example-get-started`).
+the view by clicking the view name (in this case, `example-get-started`).
 
 A table will be generated as shown below. This includes metrics, hyperparameters
 and information about the datasets. All the data is flattened and neatly
@@ -52,12 +52,12 @@ This tabular display has the following components:
   - **Filters:** Filter commits
   - **Columns:** Select columns to display
   - **Show plots:** Show plots for the selected commits
-  - **Compare:** Compare different experiements
+  - **Compare:** Compare different experiments
   - **Run:** Run experiments by selecting any one commit (Refer
     [here](/doc/studio/run-experiments) for how to run experiments)
   - **Trends:** Generate trend charts to show metric evolution over time
   - **Delta mode:** Toggle between absolute values and difference from the first
     row
 
-You can connect to additional repositories and add more views as needed. You can
+You can connect to additional repositories and add more views as needed. You'll
 find out how to do this in the next section.
