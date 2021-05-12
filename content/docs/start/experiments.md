@@ -18,8 +18,7 @@ once they're no longer needed.
 
 ## Running experiments
 
-Previously, we learned how to tune ML data
-[pipelines](/doc/start/data-pipelines) and
+Previously, we learned how to tune [ML pipelines](/doc/start/data-pipelines) and
 [compare the changes](/doc/start/metrics-parameters-plots). Let's further
 increase the number of features in the `featurize` stage to see how it compares.
 
@@ -95,7 +94,7 @@ $ dvc exp run --queue -S train.min_split=64 -S train.n_est=100
 Queued experiment '0cdee86' for future execution.
 ```
 
-Next, run all (`--run-all`) queued experiments in parallel (`--jobs`):
+Next, run all (`--run-all`) queued experiments in parallel (using `--jobs`):
 
 ```dvc
 $ dvc exp run --run-all --jobs 2
