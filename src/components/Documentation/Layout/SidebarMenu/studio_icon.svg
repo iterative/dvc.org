@@ -1,0 +1,28 @@
+<svg fill="none" viewBox="0 0 40 40">
+  <g clip-path="url(#clip0)">
+    <path fill="#1EBAE8" d="M14.26 22.66l-1.13-1.88a1.25 1.25 0 00-2.12-.04L4.6 30.6a2.5 2.5 0 01-4.2-2.72l6.42-9.87a6.25 6.25 0 0110.6.19l.15.26-3.3 4.2z"/>
+    <path fill="url(#paint0_linear)" fill-opacity=".5" d="M14.26 22.66l-1.13-1.88a1.25 1.25 0 00-2.12-.04L4.6 30.6a2.5 2.5 0 01-4.2-2.72l6.42-9.87a6.25 6.25 0 0110.6.19l.15.26-3.3 4.2z" style="mix-blend-mode:color-burn"/>
+    <path fill="#F46737" d="M20.5 23.32l1.48 2.47c.46.78 1.59.81 2.1.06L35.44 9.22a2.5 2.5 0 014.12 2.81L28.21 28.67a6.25 6.25 0 01-10.52-.3l-.62-1.04 3.42-4.01z"/>
+    <path fill="url(#paint1_linear)" fill-opacity=".5" d="M20.5 23.32l1.48 2.47c.46.78 1.59.81 2.1.06L35.44 9.22a2.5 2.5 0 014.12 2.81L28.21 28.67a6.25 6.25 0 01-10.52-.3l-.62-1.04 3.42-4.01z" style="mix-blend-mode:color-burn"/>
+    <path fill="#945DD6" d="M11 20.74l1.25-1.82c1.3-1.9 3.98-2.7 5.16-.72l4.57 7.59c.42.7 1.37.8 1.93.26l-1.13 1.63c-1.28 1.87-3.92 2.63-5.09.68l-4.56-7.58a1.25 1.25 0 00-2.12-.04z"/>
+    <path fill="url(#paint2_linear)" fill-opacity=".5" d="M11 20.74l1.25-1.82c1.3-1.9 3.98-2.7 5.16-.72l4.57 7.59c.42.7 1.37.8 1.93.26l-1.13 1.63c-1.28 1.87-3.92 2.63-5.09.68l-4.56-7.58a1.25 1.25 0 00-2.12-.04z" style="mix-blend-mode:multiply"/>
+  </g>
+  <defs>
+    <linearGradient id="paint0_linear" x1="11.25" x2="4.69" y1="10.63" y2="21.25" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#945DD6"/>
+      <stop offset="1" stop-color="#945DD6" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="paint1_linear" x1="28.13" x2="18.44" y1="17.5" y2="31.25" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#945DD6" stop-opacity="0"/>
+      <stop offset="1" stop-color="#7B61FF"/>
+    </linearGradient>
+    <linearGradient id="paint2_linear" x1="12.81" x2="20.94" y1="17.81" y2="29.38" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#13ADC7"/>
+      <stop offset=".5" stop-color="#7B61FF" stop-opacity="0"/>
+      <stop offset="1" stop-color="#F46737"/>
+    </linearGradient>
+    <clipPath id="clip0">
+      <path fill="#fff" d="M0 4a4 4 0 014-4h32a4 4 0 014 4v32a4 4 0 01-4 4H4a4 4 0 01-4-4V4z"/>
+    </clipPath>
+  </defs>
+</svg>
