@@ -36,8 +36,7 @@ You will need to speciy advanced settings in the following scenarios.
 - **Data remote:** The metrics and parameters that you want to include in the
   view may be present in a data remote (cloud storage or another location
   outside of the Git repo). If you want to include such data in your views, then
-  you will have to grant DVC Studio access to the data remote. You can skip this
-  setting when creating the view, and configure it later (in View settings).
+  you will have to grant DVC Studio access to the data remote.
 
 - **Custom files:** DVC Studio automatically detects metrics, plots, and
   parameters files specified in the project's `dvc.yaml`. If you want to connect
