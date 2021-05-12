@@ -1,7 +1,7 @@
 # DVC Studio
 
 [`DVC Studio`](https://viewer.iterative.ai/) is a comprehensive and interactive
-collboration tool for your Machine Learning projects.
+collaboration tool for your Machine Learning projects.
 
 Using the power of leading open-source tools DVC, CML and Git, it enables you to
 seamlessly manage data and models, run and track experiments, and visualize and
