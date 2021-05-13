@@ -99,7 +99,7 @@ all the current plots, without comparisons.
 
 - `--html-template <path>` - let user provide path to custom HTML page template.
   For use instructions see the
-  [guide](/doc/user-guide/plotting-in-isolated-evrionments.md).
+  [guide](/doc/user-guide/plotting-in-isolated-evrionments).
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 

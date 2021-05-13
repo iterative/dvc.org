@@ -243,7 +243,7 @@ to learn more about the state file (database) that is used for optimization.
 ### plots
 
 - `plots.html_template` - set default plots HTML template. For use instructions
-  see the [guide](/doc/user-guide/plotting-in-isolated-evrionments.md).
+  see the [guide](/doc/user-guide/plotting-in-isolated-evrionments).
 
 ## Example: Add an S3 remote, and set it as default
 
