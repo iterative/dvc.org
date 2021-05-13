@@ -22,15 +22,15 @@ tags:
 
 Each month we go through our Discord messages to pull out some of the best
 questions from our community. AKA: Community Gems. 💎 This month we'd like to
-thank @asraniel, @PythonF, @mattlbeck, @Ahti, @**\_**, @yikeqicn, @lexzen,
-@EdAb, @FreshLettuce for inspiring this month's gems!
+thank @asraniel, @PythonF, @mattlbeck, @Ahti, @yikeqicn, @lexzen, @EdAb,
+@FreshLettuce for inspiring this month's gems!
 
 As always, [join us in Discord](https://discord.com/invite/dvwXA2N) to get all
 your DVC and CML questions answered!
 
 ## DVC
 
-### [What is the best way, to commit 2 experiment runs?](https://discord.com/channels/485586884165107732/485596304961962003/836626346544594995)
+### [What is the best way to commit 2 experiment runs?](https://discord.com/channels/485586884165107732/485596304961962003/836626346544594995)
 
 You want to use `dvc exp branch` if you want to keep multiple experiments. That
 way, each one is in a separate branch rather than trying to apply one experiment
@@ -45,7 +45,7 @@ them and will determine all the cache objects/files that need to be preserved
 (since they are being used in the current workspace). The rest of the files in
 the _.dvc/cache_ are removed.
 
-_This does not require and Git operations!_
+_This does not require any Git operations!_
 
 You can also use the `--all-branches` flag. It will read all of the files
 present in the current workspace and from the commits in the branches you have
@@ -113,6 +113,7 @@ drive the future direction of that!
 ### [When importing/getting data from a repo, how do I provide credentials to the source repo remote storage without saving it into that Git repo?](https://discord.com/channels/485586884165107732/563406153334128681/830021022337073185)
 
 There's a bit of context behind this question that might give it more meaning.
+Here's the background information given by @EdAb in Discord:
 
 ---
 
