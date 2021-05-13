@@ -97,7 +97,7 @@ into `roc.json` for an additional plot.
 
 > DVC doesn't force you to use any specific file names, nor does it enforce a
 > format or structure of a metrics or plots file. It's completely
-> user/case-defined. R to `dvc metrics` and `dvc plots` for more details.
+> user/case-defined. Refer to `dvc metrics` and `dvc plots` for more details.
 
 You can view tracked metrics and plots with DVC. Let's start with the metrics:
 
