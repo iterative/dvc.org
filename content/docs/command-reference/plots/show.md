@@ -8,7 +8,7 @@ Generate [plot](/doc/command-reference/plots) from a metrics file.
 usage: dvc plots show [-h] [-q | -v] [-t <name_or_path>] [-x <field>]
                       [-y <field>] [--no-header] [--title <text>]
                       [--x-label <text>] [--y-label <text>] [-o <path>]
-                      [--show-vega] [--open]
+                      [--show-vega] [--open] [--html-template <path>]
                       [targets [targets ...]]
 
 positional arguments:
@@ -69,6 +69,9 @@ please see `dvc plots`.
 
 - `--no-header` - lets DVC know that CSV or TSV `targets` do not have a header.
   A 0-based numeric index can be used to identify each column instead of names.
+- `--html-template <path>` - let user provide path to custom HTML page template.
+  For use instructions see the
+  [guide](/doc/user-guide/plotting-in-isolated-evrionments.md).
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 

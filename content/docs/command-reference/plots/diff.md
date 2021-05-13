@@ -11,7 +11,7 @@ usage: dvc plots diff [-h] [-q | -v]
                       [-t <name_or_path>] [-x <field>] [-y <field>]
                       [--no-header] [--title <text>]
                       [--x-label <text>] [--y-label <text>] [-o <path>]
-                      [--show-vega] [--open]
+                      [--show-vega] [--open] [--html-template <path>]
                       [revisions [revisions ...]]
 
 positional arguments:
@@ -96,6 +96,10 @@ all the current plots, without comparisons.
 - `--no-header` - lets DVC know that CSV or TSV `--targets` do not have a
   header. A 0-based numeric index can be used to identify each column instead of
   names.
+
+- `--html-template <path>` - let user provide path to custom HTML page template.
+  For use instructions see the
+  [guide](/doc/user-guide/plotting-in-isolated-evrionments.md).
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
