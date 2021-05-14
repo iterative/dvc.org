@@ -57,7 +57,7 @@ $ ls -a
 .git code.py foo
 ```
 
-## Example: External cache directory
+## Example: External cache directory (is preserved)
 
 By default, the <abbr>cache</abbr> location is `.dvc/cache`. Let's change the
 cache location to `/mnt/cache` and then execute `dvc destroy` command:
