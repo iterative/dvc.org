@@ -64,6 +64,12 @@ $ dvc cache dir /tmp/dvcstore
 location, e.g. `ssh://user@example.com/cache` or `remote://myremote/cache` (see
 the examples below).
 
+> ⚠️ An external cache could be
+> [shared](/doc/use-cases/shared-development-server) among copies of a DVC
+> project. Please **do not** use external outputs in that scenario, as
+> `dvc checkout` in any project would overwrite the working data for all of
+> them.
+
 ## Examples
 
 Let's take a look at the following operations on all the supported location
