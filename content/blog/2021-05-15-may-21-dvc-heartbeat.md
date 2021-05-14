@@ -46,12 +46,11 @@ and is excited to work on open source software. In her spare time you may find
 her dancing the tango! 💃🏻 Welcome Sveta!
 
 Exemplifying our diverse team in one fell swoop,
-[Casper da Costa-Luis](https://www.cdcl.ml) was born in Kenya, has an Indian
-Passport and lives in the UK. He has been working on DVC for a couple of years
-and contributing to open source since 2014. He now joins us full time on the CML
-team after completing his PhD in Medical Imaging. Fun facts about Casper include
-his becoming the U18 chess champion of Kenya when he was 14 and that he is a
-qualified SCUBA diver. 🤿
+[Casper da Costa-Luis](https://www.cdcl.ml) has lived in three continents. He
+has been working on DVC for a couple of years and is a long-standing contributor
+to open source. He now joins us on the CML & Docs teams after completing his PhD
+in Medical Imaging. Fun facts about Casper include his becoming the U18 chess
+champion of Kenya when he was 14 and being a qualified SCUBA diver. 🤿
 
 [Emre Sahin](https://github.com/iesahin) joins us on the DevRel team as a
 techinical writer/ML enthusiast/AI dreamer/tutorial builder from Instanbul,
