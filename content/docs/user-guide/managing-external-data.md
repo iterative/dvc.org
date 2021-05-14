@@ -1,4 +1,4 @@
-# External Outputs
+# Managing External Data
 
 > ⚠️ This is an advanced feature for very specific situations and not
 > recommended except if there's absolutely no other alternative. In most cases
