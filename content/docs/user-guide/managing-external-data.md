@@ -15,14 +15,13 @@ versioning existing data on a network attached storage (NAS), processing data on
 HDFS, running [Dask](https://dask.org/) via SSH, or any code that generates
 massive files directly to the cloud.
 
-External outputs (and
+_External outputs_ (and
 [external dependencies](/doc/user-guide/external-dependencies)) provide ways to
 track and version data outside of the <abbr>project</abbr>.
 
 ## How external outputs work
 
-External <abbr>outputs</abbr> are considered part of the (extended)
-<abbr>workspace</abbr>: DVC will track them for
+External <abbr>outputs</abbr> will be tracked by DVC for
 [versioning](/doc/use-cases/versioning-data-and-model-files), detecting when
 they change (reported by `dvc status`, for example).
 
