@@ -54,7 +54,7 @@ champion of Kenya when he was 14 and being a qualified SCUBA diver. 🤿
 
 [Emre Sahin](https://github.com/iesahin) joins us on the DevRel team as a
 technical writer/ML enthusiast/AI dreamer/tutorial builder from Instanbul,
-Turkey. A self-described zelaot for technologies, Emre has worked in many
+Turkey. A self-described zealot for technologies, Emre has worked in many
 development/ML related projects and has been programming in Python since v. 1.7.
 We are excited for Emre to bring you excellent technical content! ✍🏼
 
