@@ -58,7 +58,7 @@ Turkey. A self-described zelaot for technologies, Emre has worked in many
 development/ML related projects and has been programming in Python since v. 1.7.
 We are excited for Emre to bring you excellent technical content! ✍🏼
 
-[Tapa Dipti Situala](https://www.linkedin.com/in/tapa-dipti-sitaula/) joins us
+[Tapa Dipti Sitaula](https://www.linkedin.com/in/tapa-dipti-sitaula/) joins us
 as a Senior Product Engineer from Nepal. She previously worked as a Principal
 Engineer at a tech start up in India and has worked in various capacities in her
 career from engineering to project management and communications. Her interests
