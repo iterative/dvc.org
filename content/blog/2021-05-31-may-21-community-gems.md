@@ -49,7 +49,16 @@ Another great question from @Chandana!
 Right now, we support GitHub and GitLab. Azure DevOps and GCP (Google Cloud
 Platform) support are in the pipeline. Stay tuned for more updates!
 
-### [Q: ?]()
+### [Q: I pushed a lot of files using `dvc push` to my DVC remote, but there are a few that couldn't be pushed at the time. If I run `dvc push` again, will it just upload the missing files?]()
+
+Thanks for the question @petek!
+
+Yes! You can just re-run `dvc push` and it will only upload the missing files.
+
+It might be a little slow than you would expect because DVC has to do some
+checks to make sure that the other files were uploaded successfully before, but
+as far as the actual data transfer goes, only the missing files will be
+uploaded.
 
 ### [Q: ?]()
 
