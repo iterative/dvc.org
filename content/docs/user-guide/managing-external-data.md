@@ -54,15 +54,15 @@ As an example, let's create a directory external to the workspace and set it up
 as cache:
 
 ```dvc
-$ mkdir -p /tmp/dvcstore
-$ dvc cache dir /tmp/dvcstore
+$ mkdir -p /home/shared/dvcstore
+$ dvc cache dir /home/shared/dvcstore
 ```
 
 > See `dvc cache dir` and `dvc config cache` for more information.
 
 💡 Note that in real-life scenarios, often the directory will be in a remote
-location, e.g. `ssh://user@example.com/cache` or `remote://myremote/cache` (see
-the examples below).
+location, e.g. `s3://mybucket/cache` or `ssh://user@example.com/cache` (see the
+examples below).
 
 > ⚠️ An external cache could be
 > [shared](/doc/use-cases/shared-development-server) among copies of a DVC
