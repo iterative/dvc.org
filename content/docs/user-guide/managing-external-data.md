@@ -36,16 +36,34 @@ their remote URLs or external paths to `dvc add`, or put them in `dvc.yaml`
 - HDFS
 - Local files and directories outside the workspace
 
-⚠️ External outputs require an
-[external cache](/doc/use-cases/shared-development-server#configure-the-external-shared-cache)
-in the same external/remote file.
-
 > Avoid using the same DVC remote used for `dvc push`, `dvc pull`, etc. as
 > external cache, because it may cause data collisions: the hash of an external
 > output could collide with that of a local file with different content.
 
 > Note that [remote storage](/doc/command-reference/remote) is a different
 > feature.
+
+## Setting up an external cache
+
+DVC requires that the project's <abbr>cache</abbr> is configured in the same
+external location as the data that will be tracked (external outputs). This
+avoids transferring files to the local environment and enables
+[file linking](/doc/user-guide/large-dataset-optimization) within the external
+storage.
+
+As an example, let's create a directory external to the workspace and set it up
+as cache:
+
+```dvc
+$ mkdir -p /tmp/dvcstore
+$ dvc cache dir /tmp/dvcstore
+```
+
+> See `dvc cache dir` and `dvc config cache` for more information.
+
+💡 Note that in real-life scenarios, often the directory will be in a remote
+location, e.g. `ssh://user@example.com/cache` or `remote://myremote/cache` (see
+the examples below).
 
 ## Examples
 
