@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import cn from 'classnames'
 
 import MainLayout, { LayoutComponent, LayoutModifiers } from '../../MainLayout'
@@ -7,6 +7,7 @@ import HamburgerIcon from '../../HamburgerIcon'
 import SearchForm from './SearchForm'
 import SidebarMenu from './SidebarMenu'
 import { matchMedia } from '../../../utils/front/breakpoints'
+import { focusElementWithHotkey } from '../../../utils/front/focusElementWithHotkey'
 
 import styles from './styles.module.css'
 
@@ -17,6 +18,10 @@ const Layout: LayoutComponent = ({ children, ...restProps }) => {
   } = restProps
 
   const toggleMenu = useCallback(() => setIsMenuOpen(!isMenuOpen), [isMenuOpen])
+
+  useEffect(() => {
+    focusElementWithHotkey('#doc-search', '/')
+  }, [])
 
   return (
     <MainLayout
