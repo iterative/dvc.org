@@ -67,8 +67,8 @@ examples below).
 > ⚠️ An external cache could be
 > [shared](/doc/use-cases/shared-development-server) among copies of a DVC
 > project. Please **do not** use external outputs in that scenario, as
-> `dvc checkout` in any project would overwrite the working data for all of
-> them.
+> `dvc checkout` in any project would overwrite the working data for all
+> projects.
 
 ## Examples
 
