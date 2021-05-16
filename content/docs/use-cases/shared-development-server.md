@@ -59,18 +59,19 @@ External cache configuration:
 
 ```dvc
 $ dvc config cache.shared group
-$ dvc config cache.type "reflink,symlink,hardlink,copy"
+$ dvc config cache.type "symlink,hardlink,copy"
 ```
 
 Above, we first tell DVC to set group permissions on new cache files. Then we
-enable soft and hard links (you limit to one or the other) to avoid having
-copies from the external cache to the <abbr>workspace</abbr>.
+enable soft and hard [file links](/doc/user-guide/large-dataset-optimization)
+(you can pick only one or the other) to avoid having copies from the external
+cache to the <abbr>workspace</abbr>.
+
+> See `dvc config cache` for more information.
 
 ⚠️ Note that enabling symlinks/hardlinks causes DVC to protect the linked data
 in the workspace, since editing them in-place would corrupt the cache. See also
 `dvc unprotect`.
-
-> See `dvc cache dir` and `dvc config cache` for more information.
 
 If you're using Git, commit changes to your project's config file (`.dvc/config`
 by default):
