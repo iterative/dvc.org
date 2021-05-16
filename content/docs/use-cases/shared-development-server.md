@@ -55,14 +55,22 @@ your <abbr>project</abbr>:
 $ dvc cache dir /home/shared/dvc-cache
 ```
 
-And tell DVC to set group permissions on newly created or downloaded cache
-files:
+External cache configuration:
 
 ```dvc
 $ dvc config cache.shared group
+$ dvc config cache.type symlink
 ```
 
-> See `dvc cache dir` and `dvc config cache` for more information.
+Above, we first tell DVC to set group permissions on new cache files. Then we
+enable symlinks to avoid having copies from the external cache to the
+<abbr>workspace</abbr>.
+
+> See `dvc config cache` and
+> [File link types](/doc/user-guide/large-dataset-optimization) for more info.
+
+⚠️ Note that enabling soft/hard links causes DVC to protect the linked data,
+because editing them in-place would corrupt the cache. See `dvc unprotect`.
 
 If you're using Git, commit changes to your project's config file (`.dvc/config`
 by default):
