@@ -87,7 +87,7 @@
         "slug": "sharing-data-and-model-files"
       },
       "data-registries",
-      "shared-development-server"
+      "sharing-resources"
     ]
   },
   {
@@ -131,7 +131,8 @@
           "stop-tracking-data",
           "update-tracked-data",
           "add-deps-or-outs-to-a-stage",
-          "merge-conflicts"
+          "merge-conflicts",
+          "share-a-dvc-cache"
         ]
       },
       {

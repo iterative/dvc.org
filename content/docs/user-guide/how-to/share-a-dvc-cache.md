@@ -1,13 +1,21 @@
-# Shared Development Server
+---
+title: 'How to Share a Cache Among Projects'
+description: >-
+  Setup a single cache for different projects or distributed copies of a same
+  project.
+---
 
-Some teams may prefer using a single shared machine to run their experiments.
-This allows better resource utilization, such as GPU access, centralized data
-storage, etc. With DVC, you can easily setup shared data store on a server with
-multiple users or processes. This enables near-instantaneous
-<abbr>workspace</abbr> restoration and switching speeds for everyone – a
-**checkout for data**.
+# How to Share a DVC Cache
 
-![](/img/shared-server.png) _Data store shared by DVC projects_
+There are 2 main reasons to setup a shared <abbr>DVC cache</abbr>:
+
+1. You have distributed copies of a DVC repository in a single shared server
+   with multiple users. A shared cache is necessary to avoid duplicating the
+   project's data on the single local storage available to all.
+2. Your team works with multiple projects in environments with limited storage,
+   which share a large storage unit. Everyone needs to use the shared drive
+   anyway, and combining the cache locations will also prevent data duplication
+   (across projects).
 
 ## Preparation
 
@@ -76,45 +84,4 @@ If you're using Git, commit the changes to your project's config file (usually
 ```dvc
 $ git add .dvc/config
 $ git commit -m "config external/shared DVC cache"
-```
-
-## Examples
-
-You and your colleagues can work in your own separate <abbr>workspaces</abbr> as
-usual, and DVC will handle all your data in the most effective way possible.
-Let's say you are cleaning up raw data for later stages:
-
-```dvc
-$ dvc add raw
-$ dvc run -n clean_data -d cleanup.py -d raw -o clean \
-          ./cleanup.py raw clean
-# The data is cached in the shared location.
-$ git add raw.dvc dvc.yaml dvc.lock .gitignore
-$ git commit -m "cleanup raw data"
-$ git push
-```
-
-Your colleagues can [checkout](/doc/command-reference/checkout) the
-<abbr>project</abbr> data (from the shared <abbr>cache</abbr>), and have both
-`raw` and `clean` data files appear in their workspace without moving anything
-manually. After this, they could decide to continue building this
-[pipeline](/doc/command-reference/dag) and process the clean data:
-
-```dvc
-$ git pull
-$ dvc checkout
-A       raw  # Data is linked from cache to workspace.
-$ dvc run -n process_clean_data -d process.py -d clean -o processed
-          ./process.py clean processed
-$ git add dvc.yaml dvc.lock
-$ git commit -m "process clean data"
-$ git push
-```
-
-And now you can just as easily make their work appear in your workspace with:
-
-```dvc
-$ git pull
-$ dvc checkout
-A       processed
 ```
