@@ -8,7 +8,7 @@ title: 'Get Started: Experiments'
 
 <abbr>Experiments</abbr> proliferate quickly in ML projects where there are many
 parameters to tune or other permutations of the code. We can organize such
-projects and only keep what we ultimately need with `dvc experiments`. DVC can
+projects and keep only what we ultimately need with `dvc experiments`. DVC can
 track experiments for you so there's no need to commit each one to Git. This way
 your repo doesn't become polluted with all of them. You can discard experiments
 once they're no longer needed.
@@ -18,8 +18,8 @@ once they're no longer needed.
 
 ## Running experiments
 
-In the previous page, we learned how to tune
-[ML pipelines](/doc/start/data-pipelines) and compare the changes. Let's further
+Previously, we learned how to tune [ML pipelines](/doc/start/data-pipelines) and
+[compare the changes](/doc/start/metrics-parameters-plots). Let's further
 increase the number of features in the `featurize` stage to see how it compares.
 
 `dvc exp run` makes it easy to change <abbr>hyperparameters</abbr> and run a new
@@ -31,12 +31,11 @@ $ dvc exp run --set-param featurize.max_features=3000
 
 <details>
 
-### 💡 Expand to see what this command does.
+### 💡 Expand to see what happens under the hood.
 
 `dvc exp run` is similar to `dvc repro` but with some added conveniences for
 running experiments. The `--set-param` (or `-S`) flag sets the values for
-[parameters](/doc/command-reference/params) as a shortcut to editing
-`params.yaml`.
+<abbr>parameters<abbr> as a shortcut for editing `params.yaml`.
 
 Check that the `featurize.max_features` value has been updated in `params.yaml`:
 
@@ -66,10 +65,10 @@ params.yaml  featurize.max_features  3000     1500
 ## Queueing experiments
 
 So far, we have been tuning the `featurize` stage, but there are also parameters
-for the `train` stage, which trains a
-[random forest classifier](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html).
+for the `train` stage (which trains a
+[random forest classifier](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html)).
 
-These are the `train` parameters in `params.yaml`:
+These are the `train` parameters from `params.yaml`:
 
 ```yaml
 train:
@@ -78,9 +77,9 @@ train:
   min_split: 2
 ```
 
-Let's setup experiments with different hyperparameters. We can define all the
-combinations we want to try without executing anything, by using the `--queue`
-flag:
+Let's setup experiments with different hyperparameters. We can use the `--queue`
+flag to define all the combinations we want to try without executing anything
+(yet):
 
 ```dvc
 $ dvc exp run --queue -S train.min_split=8
@@ -95,8 +94,7 @@ $ dvc exp run --queue -S train.min_split=64 -S train.n_est=100
 Queued experiment '0cdee86' for future execution.
 ```
 
-Next, run all queued experiments using `--run-all` (and in parallel with
-`--jobs`):
+Next, run all (`--run-all`) queued experiments in parallel (using `--jobs`):
 
 ```dvc
 $ dvc exp run --run-all --jobs 2
@@ -108,7 +106,7 @@ To compare all of these experiments, we need more than `diff`. `dvc exp show`
 compares any number of experiments in one table:
 
 ```dvc
-$ dvc exp show --no-timestamp
+$ dvc exp show --no-timestamp \
                --include-params train.n_est,train.min_split
 ┏━━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
 ┃ Experiment    ┃ avg_prec ┃ roc_auc ┃ train.n_est┃ train.min_split ┃
@@ -146,11 +144,11 @@ Changes for experiment 'exp-98a96' have been applied to your workspace.
 
 <details>
 
-### 💡 Expand to see what this command does.
+### 💡 Expand to see what happens under the hood.
 
-`dvc exp apply` is similar to `dvc checkout` but it works with experiments. DVC
-tracks everything in the pipeline for each experiment (parameters, metrics,
-dependencies, and outputs) and can later retrieve it as needed.
+`dvc exp apply` is similar to `dvc checkout`, but works with experiments
+instead. DVC tracks everything in the pipeline for each experiment (parameters,
+metrics, dependencies, and outputs), retrieving things later as needed.
 
 Check that `scores.json` reflects the metrics in the table above:
 
@@ -219,7 +217,7 @@ $ dvc exp pull gitremote exp-bfe64
 Pulled experiment 'exp-bfe64' from Git remote 'gitremote'.
 ```
 
-> All these commands take a Git remote as an argument. A default DVC remote is
+> All these commands take a Git remote as an argument. A `dvc remote default` is
 > also required to share the experiment data.
 
 ## Cleaning up
@@ -227,7 +225,7 @@ Pulled experiment 'exp-bfe64' from Git remote 'gitremote'.
 Let's take another look at the experiments table:
 
 ```dvc
-$ dvc exp show --no-timestamp
+$ dvc exp show --no-timestamp \
                --include-params train.n_est,train.min_split
 ┏━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
 ┃ Experiment ┃ avg_prec ┃ roc_auc ┃ train.n_est┃ train.min_split ┃
@@ -243,7 +241,7 @@ experiments since the last commit, but don't worry. The experiments remain
 experiments from the previous _n_ commits:
 
 ```dvc
-$ dvc exp show -n 2 --no-timestamp
+$ dvc exp show -n 2 --no-timestamp \
                     --include-params train.n_est,train.min_split
 ┏━━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
 ┃ Experiment    ┃ avg_prec ┃ roc_auc ┃ train.n_est┃ train.min_split ┃
@@ -266,7 +264,7 @@ Eventually, old experiments may clutter the experiments table.
 
 ```dvc
 $ dvc exp gc --workspace
-$ dvc exp show -n 2 --no-timestamp
+$ dvc exp show -n 2 --no-timestamp \
                     --include-params train.n_est,train.min_split
 ┏━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
 ┃ Experiment ┃ avg_prec ┃ roc_auc ┃ train.n_est┃ train.min_split ┃
@@ -277,5 +275,6 @@ $ dvc exp show -n 2 --no-timestamp
 └────────────┴──────────┴─────────┴────────────┴─────────────────┘
 ```
 
-> `dvc exp gc` only removes references to the experiments, not the cached
-> objects associated to them. To clean up the cache, use `dvc gc`.
+> `dvc exp gc` only removes references to the experiments; not the cached
+> objects associated with them. To clean up the <abbr>cache</abbr>, use
+> `dvc gc`.
