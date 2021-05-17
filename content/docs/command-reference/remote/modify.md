@@ -185,21 +185,15 @@ parameters to customize the authentication method:
   $ dvc remote modify myremote use_ssl false
   ```
 
-- `ssl_verify` - whether or not to verify SSL certificates, or a path to a 
-  custom CA bundle. By default SSL certificates are verified using the CA bundle
-  specified in the AWS config, if one is specified there. If one is not specified,
-  the default CA bundle used by `botocore` will be used. Setting to `false` will 
-  still use SSL if `use_ssl` is `true`, but SSL certificates will not be verified.
+- `ssl_verify` - whether or not to verify SSL certificates, or a path to a
+  custom CA certificates bundle to do so (implies `true`). The CA specified in
+  [AWS CLI config](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings)
+  (if any) is used by default.
 
   ```dvc
   $ dvc remote modify myremote ssl_verify false
-  ```
-  
-  To specify a custom CA bundle:
-  
-  ```dvc
-  $ dvc remote modify myremote ssl_verify path/to/cabundle.pem
-  ```
+  # or
+  $ dvc remote modify myremote ssl_verify path/to/ca_bundle.pem
 
 > The credentials file path, access key and secret, and other options contains
 > sensitive user info. Therefore, it's safer to add it with the `--local`
