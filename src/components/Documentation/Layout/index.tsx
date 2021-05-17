@@ -20,7 +20,8 @@ const Layout: LayoutComponent = ({ children, ...restProps }) => {
   const toggleMenu = useCallback(() => setIsMenuOpen(!isMenuOpen), [isMenuOpen])
 
   useEffect(() => {
-    focusElementWithHotkey('#doc-search', '/')
+    const closeEventListener = focusElementWithHotkey('#doc-search', '/')
+    return closeEventListener
   }, [])
 
   return (
