@@ -1,5 +1,6 @@
 ---
 title: 'Get Started: Experiments'
+docker: dvcorg/doc-start:experiments
 ---
 
 # Get Started: Experiments
@@ -19,31 +20,66 @@ once they're no longer needed.
 ## Running experiments
 
 In the previous page, we learned how to tune
-[ML pipelines](/doc/start/data-pipelines) and compare the changes. Let's further
-increase the number of features in the `featurize` stage to see how it compares.
+[ML pipelines](/doc/start/data-pipelines) and compare the changes. In this
+section we'll use a [new Get Started project][dvcgs] to illustrate
+experimentation features in DVC 2.0
 
 `dvc exp run` makes it easy to change <abbr>hyperparameters</abbr> and run a new
-experiment:
+experiment. We'll use it to find parameters that results in better
+classification performance for MNIST dataset.
+
+> You can run these commands in the container we built for this tutorial. It has
+> all the code and data required to run these examples.
+> `docker run -it dvcorg/doc-start:evaluate`
+
+In order to run a baseline experiment with the default parameters defined in
+`params.yaml`:
 
 ```dvc
-$ dvc exp run --set-param featurize.max_features=3000
+dvc exp run
 ```
+
+This resembles `dvc repro` without any command-line arguments. However, when
+using `dvc repro` we need to update `params.yaml` manually, run the pipeline, if
+the results are worth it commit them to DVC and Git. `dvc exp` automates this
+process through its subcommands.
+
+Let's see the metrics produced by this baseline experiment:
+
+```dvc
+dvc exp show --include_metrics TK
+```
+
+Note that the experiment results are identical with the values checked-out from
+Git. By default each experiment is given a name automatically. We can set the
+name by the `--name/-n` argument.
+
+Let's change the number of units in CNN and do another experiment:
+
+```dvc
+dvc exp run -n cnn-32 --set-param model.cnn.units=32
+```
+
+`--set-param/-S` argument of `dvc exp run` is used to set parameters in
+`params.yaml`.
 
 <details>
 
 ### 💡 Expand to see what this command does.
 
-`dvc exp run` is similar to `dvc repro` but with some added conveniences for
-running experiments. The `--set-param` (or `-S`) flag sets the values for
+The `--set-param` (or `-S`) flag sets the values for
 [parameters](/doc/command-reference/params) as a shortcut to editing
 `params.yaml`.
 
-Check that the `featurize.max_features` value has been updated in `params.yaml`:
+Check that the `model.cnn.units` value has been updated in `params.yaml`:
+
+TK: CHECK the diff
 
 ```git
- featurize:
--  max_features: 1500
-+  max_features: 3000
+ model:
+   cnn:
+-     units: 16
+-     units: 32
 ```
 
 Any edits to <abbr>dependencies</abbr> (parameters or source code) will be
@@ -52,6 +88,8 @@ reflected in the experiment run.
 </details>
 
 `dvc exp diff` compares experiments:
+
+TK: update the result
 
 ```dvc
 $ dvc exp diff
@@ -65,34 +103,26 @@ params.yaml  featurize.max_features  3000     1500
 
 ## Queueing experiments
 
-So far, we have been tuning the `featurize` stage, but there are also parameters
-for the `train` stage, which trains a
-[random forest classifier](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html).
+Instead of running the experiments one-by-one, we can define them without
+executing. This is especially handy when you have long running experiments to
+try.
 
-These are the `train` parameters in `params.yaml`:
-
-```yaml
-train:
-  seed: 20170428
-  n_est: 50
-  min_split: 2
-```
-
-Let's setup experiments with different hyperparameters. We can define all the
-combinations we want to try without executing anything, by using the `--queue`
-flag:
+We add experiments to the queue using `--queue` option of `dvc exp run`. Here,
+we also set the names of experiments to observe the results clearly:
 
 ```dvc
-$ dvc exp run --queue -S train.min_split=8
-Queued experiment 'd3f6d1e' for future execution.
-$ dvc exp run --queue -S train.min_split=64
-Queued experiment 'f1810e0' for future execution.
-$ dvc exp run --queue -S train.min_split=2 -S train.n_est=100
-Queued experiment '7323ea2' for future execution.
-$ dvc exp run --queue -S train.min_split=8 -S train.n_est=100
-Queued experiment 'c605382' for future execution.
-$ dvc exp run --queue -S train.min_split=64 -S train.n_est=100
-Queued experiment '0cdee86' for future execution.
+$ dvc exp run --queue -n cnn-16-drop-0.1 -S model.cnn.conv_units=16 -S model.cnn.dropout=0.1
+$ dvc exp run --queue -n cnn-16-drop-0.5 -S model.cnn.conv_units=16 -S model.cnn.dropout=0.5
+$ dvc exp run --queue -n cnn-16-drop-0.9 -S model.cnn.conv_units=16 -S model.cnn.dropout=0.9
+$ dvc exp run --queue -n cnn-32-drop-0.1 -S model.cnn.conv_units=32 -S model.cnn.dropout=0.1
+$ dvc exp run --queue -n cnn-32-drop-0.5 -S model.cnn.conv_units=32 -S model.cnn.dropout=0.5
+$ dvc exp run --queue -n cnn-32-drop-0.9 -S model.cnn.conv_units=32 -S model.cnn.dropout=0.9
+$ dvc exp run --queue -n cnn-64-drop-0.1 -S model.cnn.conv_units=64 -S model.cnn.dropout=0.1
+$ dvc exp run --queue -n cnn-64-drop-0.5 -S model.cnn.conv_units=64 -S model.cnn.dropout=0.5
+$ dvc exp run --queue -n cnn-64-drop-0.9 -S model.cnn.conv_units=64 -S model.cnn.dropout=0.9
+$ dvc exp run --queue -n cnn-128-drop-0.1 -S model.cnn.conv_units=128 -S model.cnn.dropout=0.1
+$ dvc exp run --queue -n cnn-128-drop-0.5 -S model.cnn.conv_units=128 -S model.cnn.dropout=0.5
+$ dvc exp run --queue -n cnn-128-drop-0.9 -S model.cnn.conv_units=128 -S model.cnn.dropout=0.9
 ```
 
 Next, run all queued experiments using `--run-all` (and in parallel with
@@ -107,9 +137,12 @@ $ dvc exp run --run-all --jobs 2
 To compare all of these experiments, we need more than `diff`. `dvc exp show`
 compares any number of experiments in one table:
 
+TK: Update the metrics and table
+
 ```dvc
 $ dvc exp show --no-timestamp
-               --include-params train.n_est,train.min_split
+               --include-params model.cnn.units,model.cnn.dropout
+               --include-metrics
 ┏━━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
 ┃ Experiment    ┃ avg_prec ┃ roc_auc ┃ train.n_est┃ train.min_split ┃
 ┡━━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━┩
@@ -124,10 +157,8 @@ $ dvc exp show --no-timestamp
 └───────────────┴──────────┴─────────┴────────────┴─────────────────┘
 ```
 
-Each experiment is given an arbitrary name by default (although we can specify
-one with `dvc exp run -n`.) We can see that `exp-98a96` performed best among
-both of our metrics, with 100 estimators and a minimum of 64 samples to split a
-node.
+We can see that TK:`exp-98a96` performed best among both of our metrics, with
+100 estimators and a minimum of 64 samples to split a node.
 
 > See `dvc exp show --help` for more info on its options.
 
@@ -138,6 +169,8 @@ rest.
 
 `dvc exp apply` rolls back the <abbr>workspace<abbr> to the specified
 experiment:
+
+TK: Update the experiment name
 
 ```dvc
 $ dvc exp apply exp-98a96
@@ -152,7 +185,8 @@ Changes for experiment 'exp-98a96' have been applied to your workspace.
 tracks everything in the pipeline for each experiment (parameters, metrics,
 dependencies, and outputs) and can later retrieve it as needed.
 
-Check that `scores.json` reflects the metrics in the table above:
+Check that `scores.json` reflects the metrics in the table above: TK: Update
+scores
 
 ```json
 { "avg_prec": 0.6040544652105823, "roc_auc": 0.9608017142900953 }
@@ -163,6 +197,8 @@ Check that `scores.json` reflects the metrics in the table above:
 Once an experiment has been applied to the workspace, it is no different from
 reproducing the result without `dvc exp run`. Let's make it persistent in our
 regular pipeline by committing it in our Git branch:
+
+TK: Update the commands
 
 ```dvc
 $ git add dvc.lock params.yaml prc.json roc.json scores.json
@@ -194,8 +230,8 @@ Storage, HTTP, HDFS, etc.). The Git remote is often a central Git server
 
 </details>
 
-Experiments that have not been made persistent will not be stored or shared
-remotely through `dvc push` or `git push`.
+⚠️ Experiments that have not been made persistent with `dvc exp apply` will not
+be stored or shared remotely.
 
 `dvc exp push` enables storing and sharing any experiment remotely.
 
