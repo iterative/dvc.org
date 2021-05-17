@@ -60,7 +60,25 @@ checks to make sure that the other files were uploaded successfully before, but
 as far as the actual data transfer goes, only the missing files will be
 uploaded.
 
-### [Q: ?]()
+### [Q: After running `dvc repro`, I want to use `dvc add` on specific outputs of the pipeline, but I get this error: `output 'train' is already specified in stage: '../dvc.yaml`. Is there a way to manually add and pull data using the file versioning?](https://discord.com/channels/485586884165107732/485596304961962003/841688323663855616)
+
+Since the _dvc.lock_ file already has the data versioned, you could do a
+`dvc push`.
+
+If you want to keep the flexibility of adding and pulling data manually, there
+are a few things you can do. `dvc add` is specifically for tracking raw data. If
+you have a pipeline output, it will already be tracked with the combination of
+the _dvc.yaml_ and _dvc.lock_ files. This lets you push and pull your pipeline
+outputs without needed to run the `dvc add` command.
+
+If you don't want DVC to track some of the specific outputs, you can mark them
+as `cache: fasle` in your _dvc.yaml_.
+
+You can also pull specific output from a pipeline with
+`dvc pull path/to/specific/output`. This is similar to how you can use `dvc add`
+to work with specific files and directories.
+
+Thanks for such a great question @LucZ!
 
 ### [Q: ?]()
 
