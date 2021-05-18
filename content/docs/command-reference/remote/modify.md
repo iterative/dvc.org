@@ -194,6 +194,7 @@ parameters to customize the authentication method:
   $ dvc remote modify myremote ssl_verify false
   # or
   $ dvc remote modify myremote ssl_verify path/to/ca_bundle.pem
+  ```
 
 > The credentials file path, access key and secret, and other options contains
 > sensitive user info. Therefore, it's safer to add it with the `--local`
