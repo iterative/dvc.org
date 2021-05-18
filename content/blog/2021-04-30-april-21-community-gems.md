@@ -107,8 +107,9 @@ Then you can compare the results with `dvc exp show`.
 ```
 
 We are working on developing experiments to have features or documented patterns
-explicitly for grid search support, so definitely share any feedback to help
-drive the future direction of that!
+explicitly for grid search support, so definitely
+[share any feedback](https://github.com/iterative/dvc/issues/4283) to help drive
+the future direction of that!
 
 ### [When importing/getting data from a repo, how do I provide credentials to the source repo remote storage without saving it into that Git repo?](https://discord.com/channels/485586884165107732/563406153334128681/830021022337073185)
 
@@ -134,15 +135,23 @@ Learn more about configuration settings at <https://man.dvc.org/remote/modify>: 
 
 Generally, there are two ways solve this issue:
 
-- [ENV vars](https://dvc.org/doc/user-guide/contributing/docs#env-variables)
+- [ENV vars](https://docs.microsoft.com/en-us/python/api/azure-identity/azure.identity.environmentcredential?view=azure-python)
 - Setup some options using the `--global` or `--system` flags to update the DVC
   config
 
-If you remove the old remotes (with the same name) from your project repo and
-try to pull from the data registry using `AZURE_STORAGE_CONNECTION_STRING` and
-`AZURE_STORAGE_CONTAINER_NAME`, it should work!
+If you're going to update the DVC config to include your cloud credentials, use
+the `dvc remote modify` command. Here's an example of how you can do that with
+Azure using the `--global` flag.
 
-### [Is there any way to ensure that `dvc import` uses the cache from the config file?](https://discord.com/channels/485586884165107732/563406153334128681/827574712825413672)
+```dvc
+$ dvc remote modify --global myremote connection_string 'mysecret'
+```
+
+This will modify the global config file, _~/.config/dvc/config_, instead of the
+_.dvc/config_ file. You could also use the `--system` flag to modify the
+_/etc/xdg/dvc/config_ file if that's necessary for your project.
+
+### [Is there any way to ensure that `dvc import` uses the cache from the config file and how can I keep the cache consistent for multiple team members?](https://discord.com/channels/485586884165107732/563406153334128681/827574712825413672)
 
 This is another great question where a little context might be useful.
 
@@ -167,18 +176,37 @@ When I run `dvc import git@github.com:user/dvcdata.git my_data`, it starts to
 redownload it. I have double checked that I have pushed this config file to
 master.
 
-I have also checked that if I manually clone the repo and run
-`cd /tmp/dvcdata; dvc pull`, the files are symlinked.
-
-The command output says it's downloading to
-`../../../../../../../tmp/tmphlgqpv9zdvc-clone/<file name>` so the cache isn't
-being updated.
-
 ---
 
-The repo you are importing into has its own cache directory. We recommend you
-use the `--global` or `--system` flags for all of your projects across all
-machines.
+The repo you are importing into has its own cache directory. If you want to use
+the same cache directory across both projects, you have to configure _cache.dir_
+and _cache.type_ in both projects.
+
+You can set up the cache dir and cache link type in your own global config and
+then when project 1 imports _dvcdata_, it will be cached there. Finally when
+project 2 imports _dvcdata_, it will just be linked or copied, depending on the
+config, from the cache without downloading.
+
+We recommend you use the `--global` or `--system` flags in the `dvc config`
+command for all of your projects across all machines. An example of this would
+be:
+
+```dvc
+$ dvc config --global cache.dir path/to/cache/
+$ dvc config --project cache.type symlink
+```
+
+You might also consider using the local URL of the source project to avoid the
+import downloading from the remote storage. That would look something like this:
+
+```dvc
+$ dvc import /home/user/dvcdata my_data
+```
+
+If your concern is keeping these configs consistent for multiple users on the
+same machine, check out
+[the doc on shared server development](https://dvc.org/doc/use-cases/shared-development-server)
+to get more details!
 
 ## CML
 
