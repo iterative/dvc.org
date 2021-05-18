@@ -333,14 +333,21 @@ following parameters (listed in order or precedence) to customize the
 authentication method:
 
 1. `connection_string` is used for authentication if given (all others params
-   are ignored).
+   are ignored). If `connection_string` is not set, the `account_name` must be
+   given.
 2. If `tenant_id` and `client_id` or `client_secret` are given, Active Directory
    (AD)
    [service principal](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal)
    auth is performed.
-3. The storage `account_name` is tried next, along with `account_key` or
-   `sas_token` (in that order). If neither key nor token is provided, DVC will
-   try to connect anonymously.
+3. If either `account_key` or `sas_token` (in this order) are set, then DVC will
+   try to connect with those options.
+4. If `allow_anonymous_login` is set to `True`, then DVC will try to connect
+   anonymously.
+5. If none of the steps apply, and the only variable which is set is
+   `account_name` then DVC will try to use a
+   [default credential](https://docs.microsoft.com/en-us/python/api/azure-identity/azure.identity.defaultazurecredential)
+   (the information will be inferred by the current environment; including
+   environment variables, activated logings to VS Code and `azure cli`).
 
 > The authentication values below may contain sensitive user info. Therefore,
 > it's safer to use the `--local` flag so they're written to a Git-ignored
@@ -352,6 +359,13 @@ authentication method:
 
   ```dvc
   $ dvc remote modify --local myremote connection_string 'mysecret'
+  ```
+
+- `account_name` - storage account name. Required if `coonection_string` is not
+  supplied. Will accompany the options below:
+
+  ```dvc
+  $ dvc remote modify myremote account_name 'myuser'
   ```
 
 * `tenant_id` - tenant ID for AD _service principal_ authentication (requires
@@ -375,24 +389,24 @@ authentication method:
   $ dvc remote modify --local myremote client_secret 'client-secret'
   ```
 
-- `account_name` - storage account name. May work by itself (via
-  [anonymous auth](https://docs.microsoft.com/en-us/azure/storage/blobs/anonymous-read-access-configure))
-  or along with either `account_key` or `sas_token` along with this):
+* `account_key` - storage account key:
 
   ```dvc
-  $ dvc remote modify --local myremote account_name 'myuser'
+  $ dvc remote modify --local myremote account_key 'mykey'
   ```
 
-* `account_key` - storage account key (for `account_name`):
+* `sas_token` - shared access signature token:
 
   ```dvc
-  $ dvc remote modify --local myremote account_key 'mysecret'
+  $ dvc remote modify --local myremote sas_token 'mytoken'
   ```
 
-* `sas_token` - shared access signature token (for `account_name`):
+* `allow_anonymous_login` - whether fallback to anonymous login or not. If none
+  of the options above are specified beside `account_name`, and option is set
+  then DVC will try to connect anonymously for read-only buckets:
 
   ```dvc
-  $ dvc remote modify --local myremote sas_token 'mysecret'
+  $ dvc remote modify myremote allow_anonymous_login 'true'
   ```
 
 Note that Azure remotes can also authenticate via environment variables (instead
