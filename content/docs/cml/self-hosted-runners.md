@@ -74,7 +74,7 @@ your instance, you can create your favorite training environment in the cloud by
 pulling the Docker container of your choice.
 
 We like the
-[CML container](https://github.com/iterative/cml/blob/master/docker/Dockerfile)
+[CML container](https://github.com/iterative/cml/blob/master/Dockerfile)
 (`docker://dvcorg/cml-py3`) because it comes loaded with Python, CUDA, `git`,
 `node` and other essentials for full-stack data science. But we don't mind if
 you do it your way :)
