@@ -1,6 +1,6 @@
 # Sharing Resources Efficiently
 
-Data science teams need to handle large files, rotate the use og special
+Data science teams need to handle large files, rotate the use of special
 processors, and minimize data transfers. This involves provisioning and managing
 resources such as massive on-prem data stores and powerful servers, which can be
 expensive and time consuming.
@@ -15,8 +15,6 @@ minimize cost and complexity. This can make the difference, for example when:
 - GPU time gets distributed among people or processes for training machine
   learning models.
 - There's a centralized data storage unit or cluster.
-
-## Shared Storage
 
 Individual DVC projects already use a local data <abbr>cache</abbr> to achieve
 near-instantaneous <abbr>workspace</abbr> restoration when switching among
