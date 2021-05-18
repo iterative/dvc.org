@@ -127,7 +127,7 @@ to configure. Now it's just one function.
 
 Another highlight: you can use whatever Docker container you'd like on your
 instance. In the above example, we use our
-[custom CML Docker container](https://github.com/iterative/cml/blob/master/docker/Dockerfile)
+[custom CML Docker container](https://github.com/iterative/cml/blob/master/Dockerfile)
 (because we like it!)—but you certainly don't have to! Whatever image you
 choose, we highly recommend containerizing your environment for ultimate
 reproducibility and security with CML.
