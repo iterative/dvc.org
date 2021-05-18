@@ -193,7 +193,7 @@ be:
 
 ```dvc
 $ dvc config --global cache.dir path/to/cache/
-$ dvc config --project cache.type symlink
+$ dvc config --global cache.type symlink
 ```
 
 You might also consider using the local URL of the source project to avoid the
