@@ -1,6 +1,6 @@
 ﻿---
 title: May '21 Heartbeat
-date: 2021-05-15
+date: 2021-05-20
 description: |
   Monthly updates are here! We've hit 30 team members! MLOps learning 
   opportunities, tutorials with integrations, conference videos, Discord 
@@ -12,7 +12,7 @@ descriptionLong: |
   🔃 tutorials with integrations, 
   🎥 conference videos from our team members, 
   💥 Discord server growth, and more!
-picture: 2021-05-15/may21cover.png
+picture: 2021-05-20/may21cover.png
 author: jeny_defigueiredo
 commentsUrl: https://discuss.dvc.org/t/dvc-may-2021-heartbeat/
 tags:
