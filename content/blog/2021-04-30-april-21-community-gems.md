@@ -40,10 +40,10 @@ on top of another.
 
 `dvc exp gc` requires some kind of flags to operate. At the very least,
 `--workspace`. So, with `--workspace`, `dvc` will try to read all of the pointer
-files: _.dvc_ files and _dvc.yaml_ files in the workspace. It will read all of
+files: `.dvc` files and `dvc.yaml` files in the workspace. It will read all of
 them and will determine all the cache objects/files that need to be preserved
 (since they are being used in the current workspace). The rest of the files in
-the _.dvc/cache_ are removed.
+the `.dvc/cache` are removed.
 
 _This does not require any Git operations!_
 
@@ -58,11 +58,6 @@ If you need to read pointer files from given tags you have locally, the
 The `--all-commits` flag reads pointer files from every commit and it will make
 a list of all the files that are in the cache/remote and if the _.dvc_ file
 isn't found in any commits of the Git repo, it will delete those files.
-
-It doesn't check if the directories are empty and you can find info and comment
-on this known issue, head to
-[Issue #3375 here.](https://github.com/iterative/dvc/issues/3375) Your input is
-ALWAYS valuable to us! 🙏🏼
 
 ### [If I have two cloud folder links added to the DVC config, I'm able to push the data to the default one. How could I push the data to the other cloud folder?](https://discord.com/channels/485586884165107732/563406153334128681/833176227762274364)
 
@@ -88,6 +83,9 @@ set of parameter values you want to try. For example:
 $ dvc exp run --queue -S alpha={alpha},beta={beta}
 $ dvc exp run --run-all --jobs 2
 ```
+
+The `--jobs 2` flag means you're running 2 queued experiments in parallel. By
+default, the `--run-all` flag runs 1 queued experiment at a time.
 
 Then you can compare the results with `dvc exp show`.
 
@@ -135,7 +133,7 @@ Learn more about configuration settings at <https://man.dvc.org/remote/modify>: 
 
 Generally, there are two ways solve this issue:
 
-- [ENV vars](https://docs.microsoft.com/en-us/python/api/azure-identity/azure.identity.environmentcredential?view=azure-python)
+- [ENV vars](https://dvc.org/doc/command-reference/remote/modify)
 - Setup some options using the `--global` or `--system` flags to update the DVC
   config
 
@@ -147,9 +145,13 @@ Azure using the `--global` flag.
 $ dvc remote modify --global myremote connection_string 'mysecret'
 ```
 
-This will modify the global config file, _~/.config/dvc/config_, instead of the
-_.dvc/config_ file. You could also use the `--system` flag to modify the
-_/etc/xdg/dvc/config_ file if that's necessary for your project.
+You should initialize `myremote` in the config file with `dvc remote add` and
+remove the URL to rely on the one that comes from the repo being imported.
+
+This will modify the global config file, instead of the _.dvc/config_ file. You
+could also use the `--system` flag to modify the system file if that's necessary
+for your project. You can take a look at the specific
+[config file locations here](https://dvc.org/doc/command-reference/config).
 
 ### [Is there any way to ensure that `dvc import` uses the cache from the config file and how can I keep the cache consistent for multiple team members?](https://discord.com/channels/485586884165107732/563406153334128681/827574712825413672)
 
@@ -180,21 +182,23 @@ master.
 
 The repo you are importing into has its own cache directory. If you want to use
 the same cache directory across both projects, you have to configure _cache.dir_
-and _cache.type_ in both projects.
+in both projects. You also have the option to configure the _cache.type_.
 
 You can set up the cache dir and cache link type in your own global config and
-then when project 1 imports _dvcdata_, it will be cached there. Finally when
-project 2 imports _dvcdata_, it will just be linked or copied, depending on the
+then when project 1 imports `dvcdata`, it will be cached there. Finally when
+project 2 imports `dvcdata`, it will just be linked or copied, depending on the
 config, from the cache without downloading.
 
 We recommend you use the `--global` or `--system` flags in the `dvc config`
-command for all of your projects across all machines. An example of this would
-be:
+command for updating the configs globally. An example of this would be:
 
 ```dvc
 $ dvc config --global cache.dir path/to/cache/
-$ dvc config --global cache.type symlink
 ```
+
+If you set up a cache that is not shared and located on a separate volume and
+you have a lot of data - consider also enabling symlinks as described here -
+[Large Data Optimizations](https://dvc.org/doc/user-guide/large-dataset-optimization#large-dataset-optimization)
 
 You might also consider using the local URL of the source project to avoid the
 import downloading from the remote storage. That would look something like this:
@@ -218,7 +222,7 @@ but here are a couple of solutions (only one is needed):
 1. Keep a separate branch with unrelated history for committing the reports.
 2. Keep a single report file on the repository and update it with each commit.
 
-[I've run into an error trying to get CML to orchestrate runs in my AWS account. It doesn't seem to be a permissions issue as the AWSEc2FullAccess policy seems to have worked, but I can't see the security group. What could be going wrong?](https://discord.com/channels/485586884165107732/728693131557732403/818450988084101160)
+[I've run into an error trying to get CML to orchestrate runs in my AWS account. It doesn't seem to be a permissions issue as the `AWSEc2FullAccess` policy seems to have worked, but I can't see the security group. What could be going wrong?](https://discord.com/channels/485586884165107732/728693131557732403/818450988084101160)
 
 Check to make sure you are deploying to the correct region. Use the argument
 `--cloud-region <region>` (`us-west` for example) to mark the region where the
