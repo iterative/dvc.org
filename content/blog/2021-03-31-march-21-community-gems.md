@@ -13,8 +13,7 @@ picture: 2021-03-31/gems-cover.png
 author: jeny_defigueiredo
 commentsUrl: https://discuss.dvc.org/t/march-2021-community-gems/708
 tags:
-  - Discord
-  - Gems
+  - Community
   - Pipelines
   - Remote Storage
 ---

@@ -191,8 +191,8 @@ authentication is needed.
 
    ```dvc
    $ dvc remote modify myremote gdrive_use_service_account true
-   $ dvc remote modify myremote gdrive_service_account_json_file_path \
-                                path/to/file.json
+   $ dvc remote modify myremote --local \
+                 gdrive_service_account_json_file_path path/to/file.json
    ```
 
 ## Authorization
@@ -218,8 +218,8 @@ If you use multiple GDrive remotes, by default they will be sharing the same
 `gdrive_user_credentials_file` parameter:
 
 ```dvc
-$ dvc remote modify myremote gdrive_user_credentials_file \
-                    .dvc/tmp/myremote-credentials.json
+$ dvc remote modify myremote --local \
+      gdrive_user_credentials_file .dvc/tmp/myremote-credentials.json
 ```
 
 ⚠️ In order to prevent unauthorized access to your Google Drive, **never

@@ -15,7 +15,7 @@ running `dvc init` inside a Git project:
 
 In expandable sections that start with the ⚙️ emoji, we'll be providing more
 information for those trying to run the commands. It's up to you to pick the
-best way to read the material - read the text (skip sections like this, and it
+best way to read the material — read the text (skip sections like this, and it
 should be enough to understand the idea of DVC), or try to run them and get the
 first hand experience.
 

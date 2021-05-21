@@ -148,13 +148,13 @@ $ dvc plots modify logs.csv
 ```
 
 ```git
-evaluate:
-  cmd: python src/evaluate.py
-    deps:
-    - src/evaluate.py
--   outs:
--   - logs.csv
-    plots:
-    - scores.json
-+   - logs.csv
+ evaluate:
+   cmd: python src/evaluate.py
+     deps:
+     - src/evaluate.py
+-    outs:
+-    - logs.csv
+     plots:
+     - scores.json
++    - logs.csv
 ```

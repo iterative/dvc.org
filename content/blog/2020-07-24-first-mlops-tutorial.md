@@ -13,7 +13,7 @@ picture: 2020-07-24/blog_header.png
 author: elle_obrien
 commentsUrl: https://discuss.dvc.org/t/new-video-mlops-tutorial-1-intro-to-continuous-integration-for-ml/454
 tags:
-  - Continuous integration
+  - CI/CD
   - DevOps
   - MLOps
   - CML
