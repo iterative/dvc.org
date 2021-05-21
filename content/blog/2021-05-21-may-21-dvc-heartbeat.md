@@ -1,6 +1,6 @@
 ﻿---
 title: May '21 Heartbeat
-date: 2021-05-20
+date: 2021-05-21
 description: |
   Monthly updates are here! We've hit 30 team members! MLOps learning 
   opportunities, tutorials with integrations, conference videos, Discord 
@@ -12,7 +12,7 @@ descriptionLong: |
   🔃 tutorials with integrations, 
   🎥 conference videos from our team members, 
   💥 Discord server growth, and more!
-picture: 2021-05-20/may21cover.png
+picture: 2021-05-21/may21cover.png
 author: jeny_defigueiredo
 commentsUrl: https://discuss.dvc.org/t/dvc-may-2021-heartbeat/
 tags:
@@ -43,7 +43,7 @@ data scientists. The videos are beginner accessbile with tips for intermediate
 git users.
 [Access the videos here.](https://www.youtube.com/watch?v=OnNVbIEIO7A)
 
-![](/uploads/images/2021-05-15/curvenote-dvc-integration.jpeg)_DVC and Curvenote
+![](/uploads/images/2021-05-21/curvenote-dvc-integration.jpeg)_DVC and Curvenote
 for the version control win!_
 
 ### CML with Jenkins in DAGsHub
@@ -67,7 +67,7 @@ href="https://dagshub.com/blog/in-depth-tour-of-jenkinsfile/"
 title="CML with Jenkins in DAGsHub"
 description="The first of a two-part series on how to set up continuous machine learning using DVC pipelines with Jenkins and DAGsHub."
 link="https://dagshub.com/"
-image="/uploads/images/2021-05-15/puneeth-gears.png"/>
+image="/uploads/images/2021-05-21/puneeth-gears.png"/>
 
 ### Discord Server Explosion
 
@@ -102,7 +102,7 @@ href="https://www.coursera.org/specializations/machine-learning-engineering-for-
 title="Machine Learning Engineering for Production (MLOps) Specialization"
 description="Andrew Ng's new course in Coursera providing the foundation to successful and efficient MLOps"
 link="https://www.coursera.org/"
-image="/uploads/images/2021-05-15/andrew-ng.png"/>
+image="/uploads/images/2021-05-21/andrew-ng.png"/>
 
 Next for your learning pleasure,
 [Simone Scardapane](https://twitter.com/s_scardapane) is in the process of
@@ -112,7 +112,7 @@ that includes the use of open source tools including our own DVC!
 [Head to the link](https://github.com/sscardapane/reprodl2021) to star the repo
 and cheer him on. We will be! 🙌🏼
 
-![](/uploads/images/2021-05-15/reproducedl.png)_Reproducible Deep Learning PhD
+![](/uploads/images/2021-05-21/reproducedl.png)_Reproducible Deep Learning PhD
 Course_
 
 [Simone Scardapane](https://twitter.com/s_scardapane) is in the process of
@@ -136,7 +136,7 @@ UTC + and UTC -, these meetings honor all our different time zones while
 allowing the other group to watch via recording when they are awake! You know
 we're all about solving complicated problems. 💪🏼
 
-![](/uploads/images/2021-05-15/team-map.png)_Our team_
+![](/uploads/images/2021-05-21/team-map.png)_Our team_
 
 ## New Team Members
 
@@ -197,21 +197,21 @@ href="https://www.youtube.com/watch?v=OD2KiIOMeMw&list=PLlxErbAvYYLDRP6cHtVP76f2
 title="DVC: Data Versioning and ML Experiments on Top of Git"
 description="Dmitry Petrov's talk at ML Repa Week on using DVC as an extension of Git for data versioning and machine learning experiments"
 link="http://ml-repa.ru/en/"
-image="/uploads/images/2021-05-15/dmitry-ml-repa-week.png"/>
+image="/uploads/images/2021-05-21/dmitry-ml-repa-week.png"/>
 
 <external-link
 href="https://youtu.be/tOo98CtiDJg"
 title="Automating Machine Learning with GitHub Actions & GitLab CI"
 description="Elle O'Brien's conference talk about how to use GitHub actions or GitLab CI to provide automation for your machine learning projects"
 link="http://ml-repa.ru/en"
-image="/uploads/images/2021-05-15/elle-ml-repa-week.png"/>
+image="/uploads/images/2021-05-21/elle-ml-repa-week.png"/>
 
 <external-link
 href="https://youtu.be/PYzvLc7o7u0"
 title="Workflow & MLOps for Batch Scoring Applications with DVC, MLflow and Airflow"
 description="Mikhail Rozhkov's talk on how to set up a workflow for batch scoring applications integrating DVC, MLflow and Airlow "
 link="http://ml-repa.ru/en"
-image="/uploads/images/2021-05-15/mikhail-ml-repa-week.png"/>
+image="/uploads/images/2021-05-21/mikhail-ml-repa-week.png"/>
 
 ## Next Meetup
 
