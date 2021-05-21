@@ -343,8 +343,8 @@ authentication method:
    try to connect with those options.
 4. If `allow_anonymous_login` is set to `True`, then DVC will try to connect
    anonymously.
-5. If none of the parameters above are set except
-   `account_name`, then DVC will try to use a
+5. If none of the parameters above are set except `account_name`, then DVC will
+   try to use a
    [default credential](https://docs.microsoft.com/en-us/python/api/azure-identity/azure.identity.defaultazurecredential)
    (the information will be inferred by the current environment; including
    environment variables, activated logings to VS Code and `azure cli`).
