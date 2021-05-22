@@ -7,8 +7,8 @@ expensive and time consuming.
 
 ![](/img/shared-server.png) _Data store shared by DVC projects_
 
-DVC projects support different ways to optimize resource utilization in order to
-minimize cost and complexity. This can make the difference, for example when:
+Minimizing the cost and complexity of utilizing key resources can make the
+difference, for example, when:
 
 - Multiple users work on the same shared server, or there's a single computing
   environment to run experiments.
@@ -16,20 +16,25 @@ minimize cost and complexity. This can make the difference, for example when:
   learning models.
 - There's a centralized data storage unit or cluster.
 
-Individual DVC projects already use a local data <abbr>cache</abbr> to achieve
-near-instantaneous <abbr>workspace</abbr> restoration when switching among
+In DVC, a built-in <abbr>caching</abbr> mechanism already provides individual
+<abbr>projects</abbr> with basic
+[dataset optimization](/doc/user-guide/large-dataset-optimization). It
+de-duplicates file contents automatically -- so need to worry about depleting
+disk space with copies. And by linking files from cache to
+<abbr>workspace</abbr>, DVC achieves near-instantaneous switching between
 [versions of data](/doc/use-cases/versioning-data-and-model-files), results,
 etc. (think **Git for data**).
 
-The cache directory is fully customizable (see `dvc config cache`), including
-it's location, so nothing prevents you from having it in a
-[location shared](/doc/user-guide/how-to/share-a-dvc-cache) by multiple local
-copies of a <abbr>project</abbr>, or even by different projects altogether. This
-enables DVC's automatic de-duplication of data files across all projects.
+These benefits can extend to multiple DVC repository copies, or even to
+different projects altogether. Just set up their caches to the same
+[shared](/doc/user-guide/how-to/share-a-dvc-cache) directory. This way they all
+use a central data location which optimizes local (or network) storage.
 
-Additionally, optional [remote storage](/doc/command-reference/remote) e.g.
-Amazon S3 or Azure Blob Storage (managed separately) can be used by multiple
-projects to synchronize their caches (see `dvc push` and `dvc pull`).
+Additionally/Alternatively, [remote storage](/doc/command-reference/remote) (on
+Amazon S3, SSH, Google Drive, etc.) can also be shared by multiple projects to
+back up and synchronize their data caches (see `dvc push` and `dvc pull`). This
+can reduce service costs by consolidating an optimized data backup for many
+projects.
 
 <!--
 
