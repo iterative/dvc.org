@@ -62,10 +62,11 @@ Benefits of our approach include:
   DVC [optimizes](/doc/user-guide/large-dataset-optimization) storing and
   transferring large files.
 
-- **Collaboration**: Easily distribute your project development and share its
-  data [internally](/doc/use-cases/shared-development-server) and
-  [remotely](/doc/use-cases/sharing-data-and-model-files), or
-  [reuse](/doc/start/data-and-model-access) it in other places.
+- **Collaboration**: Easily distribute your project development and
+  [share limited resources](/doc/use-cases/sharing-resources-efficiently).
+  [Access results](/doc/use-cases/sharing-data-and-model-files) from anywhere,
+  or [reuse data and models](/doc/start/data-and-model-access) it in other
+  places.
 
 - **Data compliance**: Review data modification attempts as Git
   [pull requests](https://www.dummies.com/web-design-development/what-are-github-pull-requests/).

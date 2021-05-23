@@ -190,8 +190,8 @@ This section contains the following options, which affect the project's
 - `cache.shared` - permissions for newly created or downloaded cache files and
   directories. The only accepted value right now is `group`, which makes DVC use
   `664` (rw-rw-r--) for files and `775` (rwxrwxr-x) for directories. This is
-  useful when using a
-  [shared development server](/doc/use-cases/shared-development-server). The
+  useful when
+  [sharing data storage](/doc/use-cases/sharing-resources-efficiently). The
   default permissions for cache files is system dependent. In Linux and macOS
   for example, they're determined using
   [`os.umask`](https://docs.python.org/3/library/os.html#os.umask).
