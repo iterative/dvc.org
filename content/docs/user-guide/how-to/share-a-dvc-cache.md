@@ -56,7 +56,7 @@ $ sudo chown -R myuser:ourgroup /home/shared/dvc-cache/
 
 ## Configure the shared cache
 
-A <abbr>cache</abbr> outside the <abbr>workspace</abbr> is called an
+A <abbr>cache</abbr> directory outside the <abbr>workspace</abbr> is called an
 [external cache](/doc/user-guide/managing-external-data#setting-up-an-external-cache).
 Set it to the directory we created earlier with `dvc cache dir` and configure it
 with `dvc config cache`:
