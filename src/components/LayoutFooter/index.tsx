@@ -31,7 +31,7 @@ interface IFooterListData {
   links: Array<IFooterLinkData>
 }
 
-const footerLists: Array<IFooterListData> = [
+const footerListsData: Array<IFooterListData> = [
   {
     header: 'Product',
     links: [
@@ -146,69 +146,75 @@ const footerSocialIconsData: Array<ISocialIcon> = [
   }
 ]
 
-const LayoutFooter: React.FC = () => {
-  return (
-    <footer className={styles.wrapper}>
-      <LayoutWidthContainer className={cn(styles.container)} wide>
-        <div className={styles.top}>
-          <Link className={styles.logo} href="/" title="dvc.org">
-            <LogoSVG />
-          </Link>
-        </div>
-        <div className={styles.columns}>
-          {footerLists.map(({ header, links }, index) => (
-            <div className={styles.column} key={index}>
-              <h2 className={styles.heading}>{header}</h2>
-              <ul className={styles.links}>
-                {links.map(({ text, target, href, icon }, i) => (
-                  <li className={styles.linkItem} key={i}>
-                    <Link target={target} href={href} className={styles.link}>
-                      {icon}
-                      {text}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+const FooterLists: React.FC = () => (
+  <div className={styles.columns}>
+    {footerListsData.map(({ header, links }, index) => (
+      <div className={styles.column} key={index}>
+        <h2 className={styles.heading}>{header}</h2>
+        <ul className={styles.links}>
+          {links.map(({ text, target, href, icon }, i) => (
+            <li className={styles.linkItem} key={i}>
+              <Link target={target} href={href} className={styles.link}>
+                {icon}
+                {text}
+              </Link>
+            </li>
           ))}
-        </div>
-        <div className={styles.bottomRow}>
-          <p className={styles.companyLabel}>
-            By{' '}
-            <Link
-              className={styles.companyName}
-              href="https://iterative.ai/"
-              target="_blank"
-            >
-              <IterativeSVG className={styles.companyLogo} />
-              iterative.ai
-            </Link>
-            <span className={styles.companyDescription}>
-              <ShowOnly as="span" on="desktop">
-                {' '}
-                - an open platform to operationalize AI
-              </ShowOnly>
-              <ShowOnly as="span" on="mobile">
-                {' '}
-                An open platform to operationalize AI
-              </ShowOnly>
-            </span>
-          </p>
-          <div className={styles.socialIcons}>
-            {footerSocialIconsData.map(({ site, label, url }, index) => (
-              <SocialIcon
-                key={index}
-                site={site}
-                label={label}
-                url={url}
-                className={cn(styles.link, styles.socialIcon)}
-              />
-            ))}
-          </div>
-        </div>
-      </LayoutWidthContainer>
-    </footer>
-  )
-}
+        </ul>
+      </div>
+    ))}
+  </div>
+)
+
+const FooterSocialIcons: React.FC = () => (
+  <div className={styles.socialIcons}>
+    {footerSocialIconsData.map(({ site, label, url }, index) => (
+      <SocialIcon
+        key={index}
+        site={site}
+        label={label}
+        url={url}
+        className={cn(styles.link, styles.socialIcon)}
+      />
+    ))}
+  </div>
+)
+
+const LayoutFooter: React.FC = () => (
+  <footer className={styles.wrapper}>
+    <LayoutWidthContainer className={cn(styles.container)} wide>
+      <div className={styles.top}>
+        <Link className={styles.logo} href="/" title="dvc.org">
+          <LogoSVG />
+        </Link>
+      </div>
+      <FooterLists />
+      <div className={styles.bottomRow}>
+        <p className={styles.companyLabel}>
+          By{' '}
+          <Link
+            className={styles.companyName}
+            href="https://iterative.ai/"
+            target="_blank"
+          >
+            <IterativeSVG className={styles.companyLogo} />
+            iterative.ai
+          </Link>
+          <span className={styles.companyDescription}>
+            <ShowOnly as="span" on="desktop">
+              {' '}
+              - an open platform to operationalize AI
+            </ShowOnly>
+            <ShowOnly as="span" on="mobile">
+              {' '}
+              An open platform to operationalize AI
+            </ShowOnly>
+          </span>
+        </p>
+        <FooterSocialIcons />
+      </div>
+    </LayoutWidthContainer>
+  </footer>
+)
 
 export default LayoutFooter
