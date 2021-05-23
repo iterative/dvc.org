@@ -76,7 +76,7 @@ $ ls -a
 .dvc .git code.py foo foo.dvc
 ```
 
-Contents of the (external) cache dir, `/mnt/cache`:
+Contents of the (external) cache (`b1/946a...` contains `foo`):
 
 ```dvc
 $ tree /mnt/cache
