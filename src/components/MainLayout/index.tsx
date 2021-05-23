@@ -55,7 +55,7 @@ const MainLayout: LayoutComponent = ({
       <div id="layoutContent" className={styles.pageContent}>
         {children}
       </div>
-      <LayoutFooter modifiers={modifiers} />
+      <LayoutFooter />
     </>
   )
 }
