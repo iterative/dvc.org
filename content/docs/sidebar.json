@@ -87,6 +87,7 @@
         "slug": "sharing-data-and-model-files"
       },
       "data-registries",
+      "production",
       "shared-development-server"
     ]
   },
