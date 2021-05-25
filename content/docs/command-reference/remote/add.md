@@ -150,7 +150,7 @@ $ dvc remote add -d myremote azure://mycontainer/path
 ```
 
 By default, DVC authenticates using an Azure
-[default credential](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html)
+[default credential](https://docs.microsoft.com/en-us/python/api/azure-identity/azure.identity.defaultazurecredential)
 (if any). This uses certain environment variables or a signed in Microsoft
 application. To use a custom authentication method, use the parameters described
 in `dvc remote modify`.
