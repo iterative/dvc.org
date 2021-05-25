@@ -2,7 +2,7 @@
 title: April '21 Community Gems
 date: 2021-04-30
 description: |
-  A roundup of technical Q&A's from the [DVC](#dvc) and [CML](#cml) community. 
+  A roundup of technical Q&A's from the DVC and CML community. 
   This month: remote storage integration, removing old experiments,
   ideas for running CML pipeline reports and more.
 descriptionLong: |
@@ -159,8 +159,8 @@ This is another great question where a little context might be useful.
 
 ---
 
-I'm trying to import a dataset project into another DVC project, let's call it
-_dvcdata_.
+I'm trying to import a dataset project called _dvcdata_ into another DVC
+project.
 
 The config for _dvcdata_ is:
 
@@ -175,8 +175,9 @@ The config for _dvcdata_ is:
 ```
 
 When I run `dvc import git@github.com:user/dvcdata.git my_data`, it starts to
-redownload it. I have double checked that I have pushed this config file to
-master.
+download it. I have double checked that I have pushed this config file to master
+and don't understand why it's not pulling the data from my cache instead of
+downloading the data again.
 
 ---
 
