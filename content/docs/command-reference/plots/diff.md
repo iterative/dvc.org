@@ -97,9 +97,9 @@ all the current plots, without comparisons.
   header. A 0-based numeric index can be used to identify each column instead of
   names.
 
-- `--html-template <path>` - let user provide path to custom HTML page template.
-  For use instructions see the
-  [guide](/doc/user-guide/plotting-in-isolated-evrionments).
+- `--html-template <path>` - provide path to custom HTML page template. For
+  detailed instructions see the
+  [plotting guide](/doc/user-guide/plotting-in-isolated-evrionments).
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
