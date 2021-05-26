@@ -184,7 +184,7 @@ $ dvc exp show --no-timestamp \
                --include-metrics categorical_accuracy
 ```
 
-![dvc exp show screenshot](/static/img/doc/start/exp-36794.png)
+![dvc exp show screenshot](/static/img/doc/start/exp-ss-36794.png)
 
 We can see that `cnn-64` performed best in `categorical_accuracy`.
 
