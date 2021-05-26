@@ -328,9 +328,9 @@ storage. Whether they're effective depends on each storage platform.
 
 By default, DVC authenticates using an Azure
 [default credential](https://docs.microsoft.com/en-us/python/api/azure-identity/azure.identity.defaultazurecredential)
-(if any). This uses certain environment variables or other auth sources. Use the
-following parameters (listed in order or precedence) to customize the
-authentication method:
+(if any). This uses certain environment variables or other auth sources. The
+following parameters (listed in order of precedence) are used for
+authentication:
 
 1. `connection_string` is used for authentication if given (all others params
    are ignored). If `connection_string` is not set, the `account_name` must be
