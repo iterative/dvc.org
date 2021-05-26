@@ -80,7 +80,21 @@ to work with specific files and directories.
 
 Thanks for such a great question @LucZ!
 
-### [Q: ?]()
+### [Q: How does DVC handle incremental changes in the data and how does it work with non-DvC based pipeline features?](https://discord.com/channels/485586884165107732/485596304961962003/846364469524430848)
+
+These are good questions for common problems in MLOps from @Phoenix!
+
+To answer the first part, say you are getting new data every week. When you use
+DVC, you don't have to worry about getting duplicate data.
+
+DVC supports file-level deduplication right now, so if your data is in a shape
+of directory with files, then all unique files will only be stored once.
+Chunk-level deduplication is on our todo list.
+
+For the second part of the question, you can use data management with DVC and
+have your own pipelines. Just treat it as Git for data then be sure to
+`dvc add/push/pull` and you should be set. Hooks, like `pre-commit` or
+`post-pipeline-run`, are a good way to go about it.
 
 ### [Q: ?]()
 
