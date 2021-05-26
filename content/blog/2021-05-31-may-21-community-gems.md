@@ -96,7 +96,19 @@ have your own pipelines. Just treat it as Git for data then be sure to
 `dvc add/push/pull` and you should be set. Hooks, like `pre-commit` or
 `post-pipeline-run`, are a good way to go about it.
 
-### [Q: ?]()
+### [Q: Is there a way to tell DVC to use that profile instead of the default when running S3 commands?](https://discord.com/channels/485586884165107732/563406153334128681/846857498094469120)
+
+When you have a remote that is not on your main AWS profile and when you access
+it via the `awscli` using something like `aws s3 --profile=second_profile ls`,
+you'll need to update your remote config in DVC.
+
+You can run a command like:
+
+```bash
+$ dvc remote modify myremote profile myprofile
+```
+
+Check out the docs on `dvc remote modify` for all the remote config options.
 
 https://media.giphy.com/media/l0IycQmt79g9XzOWQ/giphy.gif
 
