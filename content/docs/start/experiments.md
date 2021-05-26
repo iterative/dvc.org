@@ -61,7 +61,7 @@ In order to run a baseline experiment with the default parameters defined in
 dvc exp run
 ```
 
-![dvc exp run result screenshot](/static/img/doc/start/exp-ss-90252.png)
+![dvc exp run result screenshot](/img/doc/start/exp-ss-90252.png)
 
 This resembles `dvc repro` without any command-line arguments. However, when
 using `dvc repro` we need to update `params.yaml` manually, run the pipeline, if
@@ -75,7 +75,7 @@ $ dvc exp show --include-metrics categorical_accuracy \
                --include-params  model.name,model.cnn.conv_units
 ```
 
-![dvc exp show result screenshot](/static/img/doc/start/exp-ss-63714.png)
+![dvc exp show result screenshot](/img/doc/start/exp-ss-63714.png)
 
 Note that the experiment results are identical with the values checked-out from
 Git. By default each experiment is given a name automatically. We can set the
@@ -184,7 +184,7 @@ $ dvc exp show --no-timestamp \
                --include-metrics categorical_accuracy
 ```
 
-![dvc exp show screenshot](/static/img/doc/start/exp-ss-36794.png)
+![dvc exp show screenshot](/img/doc/start/exp-ss-36794.png)
 
 We can see that `cnn-64` performed best in `categorical_accuracy`.
 
@@ -305,7 +305,7 @@ $ dvc exp show --no-timestamp \
                --include-metrics categorical_accuracy
 ```
 
-![dvc exp show screenshot](/static/img/doc/start/exp-ss-35552.png)
+![dvc exp show screenshot](/img/doc/start/exp-ss-35552.png)
 
 Where did all the experiments go? By default, `dvc exp show` only shows
 experiments since the last commit, but don't worry. The experiments remain
@@ -318,7 +318,7 @@ $ dvc exp show -n 2 --no-timestamp \
                --include-metrics categorical_accuracy
 ```
 
-![dvc exp show screenshot](/static/img/doc/start/exp-ss-68591.png)
+![dvc exp show screenshot](/img/doc/start/exp-ss-68591.png)
 
 Eventually, old experiments may clutter the experiments table.
 
@@ -333,7 +333,7 @@ $ dvc exp show -n 2 --no-timestamp \
                --include-metrics categorical_accuracy
 ```
 
-![dvc exp show screenshot](/static/img/doc/start/exp-ss-32408.png)
+![dvc exp show screenshot](/img/doc/start/exp-ss-32408.png)
 
 > `dvc exp gc` only removes references to the experiments, not the cached
 > objects associated to them. To clean up the cache, use `dvc gc`.
