@@ -6,21 +6,6 @@ define teams with one or more team members. The team members are also called
 collaborators, and you can assign different roles to them. The views that you
 create in your team's page will be accessible to all members of the team.
 
-## Roles
-
-Team members can have different roles.
-
-- **View.** Users with the View access cannot edit team settings or create new
-  views within the team's page. They have read-only access to the views created
-  by other team members.
-- **Edit.** In addition to accessing all the team's views, users with the Edit
-  role can also create new views for the team, edit the views' settings, and run
-  experiments.
-- **Admin.** Admin users have full access to the team's views and settings. They
-  can do everything that viewers and editors can do. Additionally, they can add
-  (invite) and remove collaborators as well as change team settings such as
-  cloud credentials (data remotes).
-
 ## Create a team
 
 To create a team, click on the drop down next to `Personal`. All the teams that
@@ -46,10 +31,26 @@ invite will be sent to each invitee, and they will have to join using their
 Github, Gitlab or Bitbucket account.
 
 You can add multiple collaborators. Each collaborator can be assigned the Admin,
-Edit, or View role. ![](https://static.iterative.ai/img/studio/team_roles.png)
+Edit, or View role. Refer to the [Roles](#roles) section below for more details
+about the roles. ![](https://static.iterative.ai/img/studio/team_roles.png)
 
 Once you have added the people that you wish to add to your team, click on
 `Send Invites and Close` on the top right corner.
+
+## Roles
+
+Team members can have different roles.
+
+- **View.** Users with the View access cannot edit team settings or create new
+  views within the team's page. They have read-only access to the views created
+  by other team members.
+- **Edit.** In addition to accessing all the team's views, users with the Edit
+  role can also create new views for the team, edit the views' settings, and run
+  experiments.
+- **Admin.** Admin users have full access to the team's views and settings. They
+  can do everything that viewers and editors can do. Additionally, they can add
+  (invite) and remove collaborators as well as change team settings such as
+  cloud credentials (data remotes).
 
 ## Manage your team and its views
 

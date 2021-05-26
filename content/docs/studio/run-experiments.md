@@ -5,24 +5,53 @@ CI/CD set-up is used to run the experiments. For instance,
 [CML](https://dvc.org/doc/cml) Github Actions can be used to run ML experiments
 on each new commit.
 
-> Note that you cannot run experiments on the demo view (`example-get-started`)
-> that is provided to you by default. Once you create views for your ML project
-> repositories, you can follow the instructions given below and run experiments
-> directly from DVC Studio.
+> Note that due to access restrictions, you cannot run experiments on the demo
+> view (`example-get-started`) that is provided to you by default. Once you
+> create views for your ML project repositories, you can follow the instructions
+> given below and run experiments directly from DVC Studio.
 
 To run experiments from DVC Studio, select the commit that you want to use and
-click the `Run` button. A form will let you to specify all the changes that you
-want to make to your experiment input files/dirs and parameters.
+click the `Run` button. A form will let you specify all the changes that you
+want to make to your experiment. On this form, there are 2 types of inputs that
+you can change:
+
+1. **Input data files**: You can change datasets as well as metrics and model
+   files. The list of files that you can change will depend on your ML project.
+   For instance, in the `example-get-started` project, you can change the
+   `data.xml` file. If you select the
+   `Show all input parameters (including hidden)` option, then you can also
+   change the hidden files such as the `model.pkl` model file and the
+   `scores.json` metrics file. You can also choose not to change any input data
+   files if you only wish to change the values of one or more hyperparameters.
+2. **Hyperparameters**: You can change the values of the hyperparameters that
+   are defined in your ML project. For instance, in the `example-get-started`
+   project, you can change `max_features` (the maximum number of features that
+   the model uses), `ngrams`, etc. You can also choose not to change any
+   hyperparameters if you only wish to change one or more input data files.
+
+The default values of the input data files and hyperparameters in this form are
+extracted from your selected commit.
 
 <img src="https://static.iterative.ai/img/studio/cml.png" alt="drawing" width="300"/>
 
-The default values in this form are extracted from your selected commit. For
-instance, in the given example, `max_features` can be increased to 4000,
-`ngrams` can be changed to 2, and so on. Enter your commit message and
-description, select the branch to commit to (either the base branch or a new
-branch), and click on `Commit changes`.
+Once you have made all the required changes, enter your Git commit message and
+description. Then, select the branch to commit to. You can commit to either the
+base branch or a new branch. If you commit to a new branch, a Git pull request
+will automatically be created from the new branch to the base branch. Now, click
+on `Commit changes`.
 
-Now, the CI/CD pipeline that you have set up (eg, Github Actions) will be
-invoked to run the experiment. If you refresh the view (reload the page), the
-experiment (i.e. the commit that you just pushed) along with its results
-(metrics) will be included in the list of all commits.
+At this point, the new experiment appears in the view table. If you check in
+your Git repository, you will find the Git commit that you just made. If you had
+committed to a new branch, a new pull request will also have been created from
+the new branch to the base branch.
+
+If your project is integrated with a CI/CD setup (eg, GitHub Actions), the CI/CD
+setup will get invoked. If this setup includes a model training process, it will
+be triggered, which means that your ML experiment will run automatically. The
+model training can happen on any cloud or Kubernetes. For more details on how to
+set up CI/CD pipelines for your ML project, refer to
+[CML](https://dvc.org/doc/cml) .
+
+Once the experiment completes, its metrics will be available in the view table.
+You can then generate plots and trend charts for it, or compare it with the
+other experiments.
