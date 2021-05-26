@@ -342,7 +342,7 @@ authentication method:
 3. If either `account_key` or `sas_token` (in this order) are set, then DVC will
    try to connect with those options.
 4. If `allow_anonymous_login` is set to `True`, then DVC will try to connect
-   anonymously.
+   [anonymously](https://docs.microsoft.com/en-us/azure/storage/blobs/anonymous-read-access-configure).
 5. If none of the parameters above are set except `account_name`, then DVC will
    try to use a
    [default credential](https://docs.microsoft.com/en-us/python/api/azure-identity/azure.identity.defaultazurecredential)
