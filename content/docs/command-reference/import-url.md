@@ -368,8 +368,8 @@ to your project without downloading it to the local file system (for using it
 later/elsewhere). The `--to-remote` option let you skip the download, while
 storing the imported data [remotely](/doc/command-reference/remote).
 
-Let's set up a sample remote and create an import `.dvc` file without downloading
-the target data, transferring it directly to remote storage instead:
+Let's set up a sample remote and create an import `.dvc` file without
+downloading the target data, transferring it directly to remote storage instead:
 
 ```dvc
 $ mkdir /tmp/dvcstore

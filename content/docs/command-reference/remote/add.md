@@ -178,8 +178,8 @@ Enter verification code: # <- enter resulting code
 ```
 
 See `dvc remote modify` for a list of other GDrive parameters, or
-[Set up a Google Drive DVC Remote](/doc/user-guide/setup-google-drive-remote) for
-a full guide on using Google Drive as DVC remote storage.
+[Set up a Google Drive DVC Remote](/doc/user-guide/setup-google-drive-remote)
+for a full guide on using Google Drive as DVC remote storage.
 
 Note that GDrive remotes are not "trusted" by default. This means that the
 [`verify`](/doc/command-reference/remote/modify#available-parameters-for-all-remotes)

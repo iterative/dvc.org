@@ -141,8 +141,8 @@ which will be useful for comparison: parameters.
 
 ## Defining stage parameters
 
-It's pretty common for data science pipelines to include configuration files that 
-define adjustable parameters to train a model, do pre-processing, etc. DVC
+It's pretty common for data science pipelines to include configuration files
+that define adjustable parameters to train a model, do pre-processing, etc. DVC
 provides a mechanism for stages to depend on the values of specific sections of
 such a config file (YAML, JSON, TOML, and Python formats are supported).
 
