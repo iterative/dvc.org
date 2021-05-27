@@ -1,6 +1,6 @@
 ---
-title: May '21 Community Gems
-date: 2021-05-31
+title: June '21 Community Gems
+date: 2021-06-25
 description: |
   A roundup of technical Q&A's from the DVC community. 
   This month: remote storage integration, hyperparameter tuning,
@@ -9,7 +9,7 @@ descriptionLong: |
   A roundup of technical Q&A's from the DVC community. 
   This month: remote storage integration, hyperparameter tuning,
   best practices for managing experiments and more.
-picture: 2021-05-31/gems-cover.png
+picture: 2021-05-25/gems-cover.png
 author: elle_obrien
 commentsUrl: https://discuss.dvc.org/t/may-2021-community-gems/708
 tags:
