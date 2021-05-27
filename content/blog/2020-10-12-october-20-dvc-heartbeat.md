@@ -123,7 +123,7 @@ It's a neat setup and a nice model for folks to study.
 https://youtu.be/H1VBsK7XiKs
 
 Another detailed and easy-to-follow tutorial, with a similarly impressive scope,
-appared on [Heise Online](https://www.heise.de/). This project puts together
+appeared on [Heise Online](https://www.heise.de/). This project puts together
 DVC, Cortex, and ONNX to develop and deploy a model trained on the Fashion MNIST
 dataset (note: the article is in German, and I read it with Chrome's English
 translation).

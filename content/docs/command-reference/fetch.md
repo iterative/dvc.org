@@ -119,7 +119,7 @@ scenarios.
 
 <details>
 
-### Click and expand to setup the project
+### Click and expand to set up the project
 
 Start by cloning our example repo if you don't already have it:
 

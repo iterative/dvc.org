@@ -77,7 +77,7 @@ train:
   min_split: 2
 ```
 
-Let's setup experiments with different hyperparameters. We can use the `--queue`
+Let's set up experiments with different hyperparameters. We can use the `--queue`
 flag to define all the combinations we want to try without executing anything
 (yet):
 

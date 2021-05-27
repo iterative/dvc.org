@@ -45,7 +45,7 @@ Here are some benefits of using CML with a self-hosted runner:
     will install all the dependencies in the containerised runner leaving your
     machine always clean.
 
-3.  **Security.** If your repo is public your runners could be accesed by anyone
+3.  **Security.** If your repo is public your runners could be accessed by anyone
     that could add
     [scripts that exploits your machine](https://docs.github.com/en/actions/hosting-your-own-runners/about-self-hosted-runners#self-hosted-runner-security-with-public-repositories).
     With the containerised runner you are restricting the access to your real

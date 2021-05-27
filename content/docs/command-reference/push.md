@@ -143,7 +143,7 @@ $ dvc push data.zip.dvc
 ## Example: With dependencies
 
 Demonstrating the `--with-deps` option requires a larger example. First, assume
-a [pipeline](/doc/command-reference/dag) has been setup with these
+a [pipeline](/doc/command-reference/dag) has been set up with these
 [stages](/doc/command-reference/run): `clean-posts`, `featurize`, `test-posts`,
 `matrix-train`
 
