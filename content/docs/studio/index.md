@@ -9,17 +9,17 @@ share results.
 
 Project website: https://studio.iterative.ai
 
-![](https://static.iterative.ai/img/studio/main.png) _DVC Studio experiments
+![](https://static.iterative.ai/img/studio/main_v2.png) _DVC Studio experiments
 dashboard_
 
 Use DVC, CML and Studio to:
 
-- **Visualize, collaborate, and do everything that a regular ML tracking tool
-  does.**
+- Visualize, collaborate, and do everything that a regular ML tracking tool
+  does.
 
-- **Keep your code, data and model connected at all times.**
+- Keep your code, data and model connected at all times.
 
-- **Use the power of Git to track and preserve all your experiments.**
+- Use the power of Git to track and preserve all your experiments.
 
-- **Run [CI/CD](https://en.wikipedia.org/wiki/CI/CD) for your ML projects on
-  cloud resources of your choice without any new tools.**
+- Run [CI/CD](https://en.wikipedia.org/wiki/CI/CD) for your ML projects on cloud
+  resources of your choice without any new tools.

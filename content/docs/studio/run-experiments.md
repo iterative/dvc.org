@@ -32,13 +32,15 @@ you can change:
 The default values of the input data files and hyperparameters in this form are
 extracted from your selected commit.
 
-<img src="https://static.iterative.ai/img/studio/cml.png" alt="drawing" width="300"/>
+![](https://static.iterative.ai/img/studio/cml_changes_v2.png)
 
 Once you have made all the required changes, enter your Git commit message and
 description. Then, select the branch to commit to. You can commit to either the
 base branch or a new branch. If you commit to a new branch, a Git pull request
 will automatically be created from the new branch to the base branch. Now, click
 on `Commit changes`.
+
+![](https://static.iterative.ai/img/studio/cml_commit_v2.png)
 
 At this point, the new experiment appears in the view table. If you check in
 your Git repository, you will find the Git commit that you just made. If you had

@@ -19,7 +19,7 @@ experiments. You can also generate plots and compare experiments here.
 In your browser, open <https://studio.iterative.ai>. Sign in with your Github,
 Gitlab, or Bitbucket account.
 
-![](https://static.iterative.ai/img/studio/login_home.png) _When you first
+![](https://static.iterative.ai/img/studio/login_home_v2.png) _When you first
 login, an example view is already created for you to explore, and you can add
 more views._
 
@@ -40,7 +40,7 @@ A table will be generated as shown below. This includes metrics, hyperparameters
 and information about the datasets. All the data is flattened and neatly
 presented for you to evaluate and compare the experiments.
 
-![](https://static.iterative.ai/img/studio/view_components.png)
+![](https://static.iterative.ai/img/studio/view_components_v2.png)
 
 This tabular display has the following components:
 
