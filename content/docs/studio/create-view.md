@@ -9,13 +9,11 @@ To create a new view for your repository, follow these steps.
    listed.
 
 3. Open the organization whose repository you want to connect to. You can also
-   use the search bar to search directly for the repo which you want to connect
-   to. ![](https://static.iterative.ai/img/studio/select_repo_v2.png)
+   use the search bar to search directly for the repository. Click on the
+   required repository to connect to it.
+   ![](https://static.iterative.ai/img/studio/select_repo_v2.png)
 
-4. Select the Git repository for which you want to create a view. For this,
-   hover over the required repository and click `Connect`.
-
-5. Once you click on `Connect`, you will be able to specify advanced settings
+4. Once you click on `Connect`, you will be able to specify advanced settings
    for the connection.
    ![](https://static.iterative.ai/img/studio/view_settings_v2.png)
 
