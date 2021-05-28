@@ -11,7 +11,7 @@ descriptionLong: |
   ideas for running CML pipeline reports and more.
 picture: 2021-05-28/gems-cover.png
 author: milecia_mcgregor
-commentsUrl: https://discuss.dvc.org/t/april-21-community-gems/
+commentsUrl: https://discuss.dvc.org/t/may-21-community-gems/767
 tags:
   - Discord
   - Gems
