@@ -88,3 +88,7 @@ Click on the link to `Configure Git integrations settings`. This will open the
 
 Click on the `Configure` button, and you will be redirected to the GitHub page
 to install and authorize the DVC Studio GitHub app.
+
+> Note that you do not have to authorize DVC Studio on all the repositories in
+> your GitHub organization. You can limit access to only those repositories
+> which you want to use with DVC Studio.
