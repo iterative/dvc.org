@@ -104,55 +104,40 @@ By default, DVC authenticates using your AWS CLI
 (if set). This uses the default AWS credentials file. To use a custom
 authentication method, use the parameters described in `dvc remote modify`.
 
-We use the `boto3` library to communicate with AWS. The following API methods
-are performed:
+Make sure you have the following permissions enabled: `s3:ListBucket`,
+`s3:GetObject`, `s3:PutObject`, `s3:DeleteObject`. This enables the S3 API
+methods that are performed by DVC (`list_objects_v2` or `list_objects`,
+`head_object`, `upload_file`, `download_file`, `delete_object`, `copy`).
 
-- `list_objects_v2`, `list_objects`
-- `head_object`
-- `download_file`
-- `upload_file`
-- `delete_object`
-- `copy`
-
-So, make sure you have the following permissions enabled:
-
-- `s3:ListBucket`
-- `s3:GetObject`
-- `s3:PutObject`
-- `s3:DeleteObject`
+> See `dvc remote modify` for a full list of S3 parameters.
 
 </details>
 
 <details>
 
-### Click for S3 API compatible storage
+### Click for S3-compatible storage
 
-To communicate with a remote object storage that supports an S3 compatible API
-(e.g. [Minio](https://min.io/),
+For object storage that supports an S3-compatible API (e.g.
+[Minio](https://min.io/),
 [DigitalOcean Spaces](https://www.digitalocean.com/products/spaces/),
 [IBM Cloud Object Storage](https://www.ibm.com/cloud/object-storage) etc.),
-configure the remote's `endpointurl` explicitly:
-
-For example:
+configure the `endpointurl` parameter. For example, let's setup a DigitalOcean
+"space" (equivalent to a bucket in S3) called `mystore` that uses the `nyc3`
+region:
 
 ```dvc
-$ dvc remote add -d myremote s3://mybucket/path
+$ dvc remote add -d myremote s3://mystore/path
 $ dvc remote modify myremote endpointurl \
-                    https://object-storage.example.com
+                             https://nyc3.digitaloceanspaces.com
 ```
 
-> See `dvc remote modify` for a full list of S3 API parameters.
+By default, DVC authenticates using your AWS CLI
+[configuration](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html)
+(if set). This uses the default AWS credentials file. To use a custom
+authentication method, use the parameters described in `dvc remote modify`.
 
-S3 remotes can also be configured entirely via environment variables:
-
-```dvc
-$ export AWS_ACCESS_KEY_ID='mykey'
-$ export AWS_SECRET_ACCESS_KEY='mysecret'
-$ dvc remote add -d myremote s3://mybucket/path
-```
-
-For more information about the variables DVC supports, please visit
-[boto3 documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/configuration.html#environment-variable-configuration)
+Any other S3 parameter can also be set for S3-compatible storage. Whether
+they're effective depends on each storage platform.
 
 </details>
 
@@ -165,21 +150,10 @@ $ dvc remote add -d myremote azure://mycontainer/path
 ```
 
 By default, DVC authenticates using an Azure
-[default credential](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html)
+[default credential](https://docs.microsoft.com/en-us/python/api/azure-identity/azure.identity.defaultazurecredential)
 (if any). This uses certain environment variables or a signed in Microsoft
 application. To use a custom authentication method, use the parameters described
 in `dvc remote modify`.
-
-This remote type can also be configured via environment variables, for example:
-
-```dvc
-$ export AZURE_STORAGE_CONNECTION_STRING='mysecret'
-$ dvc remote add -d myremote azure://mycontainer/path
-```
-
-> See
-> [all the env vars](https://docs.microsoft.com/en-us/python/api/azure-identity/azure.identity.environmentcredential)
-> available.
 
 </details>
 
@@ -259,15 +233,6 @@ option to avoid committing your secrets with Git:
 ```dvc
 $ dvc remote modify myremote --local oss_key_id 'mykey'
 $ dvc remote modify myremote --local oss_key_secret 'mysecret'
-```
-
-You can also set environment variables and use them later, to set environment
-variables use following environment variables:
-
-```dvc
-$ export OSS_ACCESS_KEY_ID='mykey'
-$ export OSS_ACCESS_KEY_SECRET='mysecret'
-$ export OSS_ENDPOINT='endpoint'
 ```
 
 **Testing your OSS storage using docker**

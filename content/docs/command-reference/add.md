@@ -341,7 +341,7 @@ Only the hash values of the `dir/` directory (with `.dir` file extension) and
 When you have a large dataset in an external location, you may want to add it to
 the <abbr>project</abbr> without having to copy it into the workspace. Maybe
 your local disk doesn't have enough space, but you have setup an
-[external cache](/doc/use-cases/shared-development-server#configure-the-external-shared-cache)
+[external cache](/doc/user-guide/managing-external-data#setting-up-an-external-cache)
 that could handle it.
 
 The `--out` option lets you add external paths in a way that they are

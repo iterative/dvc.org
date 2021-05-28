@@ -20,20 +20,23 @@ A set of commands to generate and manage <abbr>experiments</abbr>:
 
 ```usage
 usage: dvc experiments [-h] [-q | -v]
-       {show,apply,diff,run,resume,res,gc,branch,list,push,pull} ...
+          {show,apply,diff,run,gc,branch,list,push,pull,remove}
+          ...
 
 positional arguments:
   COMMAND
-    show          Print experiments.
-    apply         Apply the changes from an experiment to your workspace.
-    diff          Show changes between experiments in the DVC repository.
-    run           Reproduce complete or partial experiment pipelines.
-    resume (res)  Resume checkpoint experiments.
-    gc            Garbage collect unneeded experiments.
-    branch        Promote an experiment to a Git branch.
-    list          List local and remote experiments.
-    push          Push a local experiment to a Git remote.
-    pull          Pull an experiment from a Git remote.
+    show                Print experiments.
+    apply               Apply the changes from an experiment to your
+                        workspace.
+    diff                Show changes between experiments in the DVC
+                        repository.
+    run                 Reproduce complete or partial experiment pipelines.
+    gc                  Garbage collect unneeded experiments.
+    branch              Promote an experiment to a Git branch.
+    list                List local and remote experiments.
+    push                Push a local experiment to a Git remote.
+    pull                Pull an experiment from a Git remote.
+    remove              Remove local experiments.
 ```
 
 ## Description

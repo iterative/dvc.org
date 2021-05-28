@@ -205,7 +205,7 @@ To track the changes with git, run:
 
 Let's take a look at the changes to the `data.xml.dvc`:
 
-```diff
+```git
 +md5: c4d6740ee09950bb532d418b8ae0b52e
 +frozen: true
 +deps:

@@ -11,6 +11,7 @@ import Link from '../../../Link'
 import { ReactComponent as ExternalLinkIcon } from './external-link-icon.svg'
 import { ReactComponent as HouseIcon } from './house.svg'
 import { ReactComponent as CMLIcon } from './cml_bw_logo.svg'
+import { ReactComponent as StudioIcon } from './studio_gray_icon.svg'
 
 import {
   structure,
@@ -25,7 +26,8 @@ import styles from './styles.module.css'
 // Use the key string here as the "icon" field in sidebar.json
 const ICONS: { [key: string]: React.FC<{ className?: string }> } = {
   house: HouseIcon,
-  cml: CMLIcon
+  cml: CMLIcon,
+  studio: StudioIcon
 }
 
 interface ISidebarMenuItemProps {

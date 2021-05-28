@@ -16,7 +16,7 @@ picture: 2019-09-26/post-image.jpeg
 author: svetlana_grinchenko
 commentsUrl: https://discuss.dvc.org/t/september-19-dvc-heartbeat/287
 tags:
-  - Discord Gems
+  - Community
   - Heartbeat
   - Meetup
   - Open Source Summit
