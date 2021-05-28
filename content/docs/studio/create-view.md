@@ -33,8 +33,7 @@ If your project requires any of the advanced settings, then remember to
 configure them by opening the View settings. Otherwise, your view may not work
 as expected. To go to View settings, click on the
 ![](https://static.iterative.ai/img/studio/view_open_settings_icon_v2.png) icon
-in the view. In the menu that opens up (highlighted in yellow in the screenshot
-below), click on `Settings`.
+in the view. In the menu that opens up, click on `Settings`.
 
 ![](https://static.iterative.ai/img/studio/view_open_settings_v2.png)
 
