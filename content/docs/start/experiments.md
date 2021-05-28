@@ -20,14 +20,18 @@ once they're no longer needed.
 
 In the previous page, we learned how to tune
 [ML pipelines](/doc/start/data-pipelines) and compare the changes. In this
-section we'll use a [Get Started to Experiments project][gsexp] to illustrate
-experimentation features in DVC 2.0
-
-[gsexp]: https://github.com/iterative/get-started-experiments
+section we'll use a
+[Get Started to Experiments project](https://github.com/iterative/get-started-experiments)
+to illustrate experimentation features in DVC 2.0
 
 <details>
 
 ### 🆕 Click here for the instructions to install the project
+
+These commands are run in
+[`get-started-experiments`](https://github.com/iterative/get-started-experiments)
+project. You can run these commands after cloning the repository and install the
+requirements.
 
 Please clone and create a virtual environment:
 
@@ -41,18 +45,15 @@ python -m pip install -r requirements.txt
 
 Then you can `dvc pull` to get the dataset and run the commands in this
 document. For detailed information on parameters and the project structure
-please refer to the [project repository][gsexp].
+please refer to the
+[project repository](https://github.com/iterative/get-started-experiments)
 
 </details>
 
 `dvc exp run` makes it easy to change <abbr>hyperparameters</abbr> and run a new
 experiment. We'll use it to search for parameters to increase the classification
-performance of our model using [Fashion-MNIST][fmnist] dataset.
-
-[fmnist]: https://github.com/zalandoresearch/fashion-mnist
-
-> These commands are run in [`get-started-experiments`][gsexp] project. You can
-> run these commands after cloning the repository and install the requirements.
+performance of our model using
+[Fashion-MNIST](https://github.com/iterative/get-started-experiments) dataset.
 
 In order to run a baseline experiment with the default parameters defined in
 `params.yaml`:
@@ -186,7 +187,7 @@ $ dvc exp show --no-timestamp \
 
 ![dvc exp show screenshot](/img/doc/start/exp-ss-36794.png)
 
-We can see that `cnn-64` performed best in `categorical_accuracy`.
+We can see that `cnn-128` performed best in `categorical_accuracy`.
 
 > See `dvc exp show --help` for more info on its options.
 
@@ -200,8 +201,8 @@ experiment with the highest `categorical_accuracy` score and ignore the rest.
 experiment:
 
 ```dvc
-$ dvc exp apply cnn-64
-Changes for experiment 'cnn-64' have been applied to your workspace.
+$ dvc exp apply cnn-128
+Changes for experiment 'cnn-128' have been applied to your workspace.
 ```
 
 <details>
@@ -238,9 +239,9 @@ regular pipeline by committing it in our Git branch:
 
 ```dvc
 $ git add dvc.lock params.yaml logs.csv metrics.json
-$ git commit -m "Preserve the experiment with 64 Conv Units"
+$ git commit -m "Preserve the experiment with 128 Conv Units"
 
-[main 84d1c8f] Preserve the experiment with 64 Conv Units
+[main 84d1c8f] Preserve the experiment with 128 Conv Units
  4 files changed, 21 insertions(+), 21 deletions(-)
  rewrite logs.csv (91%)
 ```
@@ -273,8 +274,8 @@ Storage, HTTP, HDFS, etc.). The Git remote is often a central Git server
 `dvc exp push` enables storing and sharing any experiment remotely.
 
 ```dvc
-$ dvc exp push gitremote cnn-64
-Pushed experiment 'cnn-64' to Git remote 'gitremote'.
+$ dvc exp push gitremote cnn-128
+Pushed experiment 'cnn-128' to Git remote 'gitremote'.
 ```
 
 `dvc exp list` shows all experiments that have been saved.
@@ -282,14 +283,14 @@ Pushed experiment 'cnn-64' to Git remote 'gitremote'.
 ```dvc
 $ dvc exp list gitremote --all
 experiments:
-        cnn-64
+        cnn-128
 ```
 
 `dvc exp pull` retrieves the experiment from a Git remote.
 
 ```dvc
-$ dvc exp pull gitremote cnn-64
-Pulled experiment 'cnn-64' from Git remote 'gitremote'.
+$ dvc exp pull gitremote cnn-128
+Pulled experiment 'cnn-128' from Git remote 'gitremote'.
 ```
 
 > All these commands take a Git remote as an argument. A `dvc remote default` is
@@ -340,6 +341,7 @@ $ dvc exp show -n 2 --no-timestamp \
 
 ## Going Further
 
-You can continue to experiment with [the project][gsexp], there are many
+You can continue to experiment with
+[the project](https://github.com/iterative/get-started-experiments) are are many
 parameters available to change, e.g., `noise` or `units` in Dense layer of the
 network.
