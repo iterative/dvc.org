@@ -1,7 +1,7 @@
 # Get Started with DVC Studio
 
 Here, we will walk you through a tutorial to use DVC Studio for collaboration on
-your ML projects. You will need access to a Github, Gitlab or Bitbucket account
+your ML projects. You will need access to a GitHub, GitLab or Bitbucket account
 which has access to the Git repositories you want to connect. DVC Studio creates
 views from repositories when you connect to them.
 
@@ -17,15 +17,15 @@ experiments. You can also generate plots and compare experiments here.
 ## DVC Studio Views page
 
 In your browser, open <https://studio.iterative.ai>. Sign in with your Github,
-Gitlab, or Bitbucket account.
+GitLab, or Bitbucket account.
 
 ![](https://static.iterative.ai/img/studio/login_home_v2.png) _When you first
 login, an example view is already created for you to explore, and you can add
 more views._
 
-When you first login, you will find that there already exists a view connecting
-to an example DVC project. Use this view to explore the features that DVC Studio
-has to offer.
+When you first login, you will find that there already exists a `Demo` view
+connecting to an example DVC project. Use this view to explore the features that
+DVC Studio has to offer.
 
 DVC Studio automatically identifies datasets, metrics and hyperparameters in
 your ML experiments. Each view on the dashboard displays the metrics. In the
