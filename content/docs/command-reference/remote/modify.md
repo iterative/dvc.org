@@ -3,8 +3,8 @@
 Modify the configuration of a [data remote](/doc/command-reference/remote).
 
 > This command is commonly needed after `dvc remote add` or
-> [default](/doc/command-reference/remote/default) to setup credentials or other
-> customizations to each remote storage type.
+> [default](/doc/command-reference/remote/default) to set up credentials or
+> other customizations to each remote storage type.
 
 ## Synopsis
 
@@ -441,8 +441,8 @@ $ export AZURE_PASSWORD='mysecret'
 ### Click for Google Drive
 
 Please see
-[Setup a Google Drive DVC Remote](/doc/user-guide/setup-google-drive-remote) for
-a full guide on using Google Drive as DVC remote storage.
+[Set up a Google Drive DVC Remote](/doc/user-guide/setup-google-drive-remote)
+for a full guide on using Google Drive as DVC remote storage.
 
 - `url` - remote location. See
   [valid URL format](/doc/user-guide/setup-google-drive-remote#url-format).
