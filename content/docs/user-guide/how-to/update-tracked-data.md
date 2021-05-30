@@ -8,7 +8,7 @@ the data contents, or completely replacing them.'
 
 Updating tracked files or directories may mean either
 [modifying](#modifying-content) some of the data contents, or completely
-[replacing](#replacing-file) them (under the same file name).
+[replacing](#replacing-files) them (under the same file name).
 
 When the `cache.type` config option is set to `symlink` or `hardlink` (not the
 default, see `dvc config cache` for more info.), updating tracked files has to
