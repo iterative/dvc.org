@@ -9,7 +9,7 @@ type IPseudoButtonProps = {
   children: React.ReactNode
   className?: string
   type?: 'primary' | 'secondary'
-  size?: 'small' | 'big'
+  size?: 'small' | 'big' | 'none'
 } & ILinkProps
 
 const PseudoButton: React.FC<IPseudoButtonProps> = ({
