@@ -43,13 +43,13 @@ const otherToolsPopupData: Array<IOtherToolsLinkData> = [
     title: 'DVC',
     icon: <LogoSVG className={styles.linkIcon} />,
     description: 'Open-source version control system for ML projects',
-    href: 'https://dvc.org/'
+    href: '/'
   },
   {
     title: 'CML',
     icon: <CmlSVG className={styles.linkIcon} />,
     description: 'Open-source CI/CD for ML projects',
-    href: '/'
+    href: 'https://cml.dev/'
   }
 ]
 
