@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import cn from 'classnames'
 
 import Link from '../../../Link'
@@ -53,7 +53,109 @@ const otherToolsPopupData: Array<IOtherToolsLinkData> = [
   }
 ]
 
-const Popup: React.FC<{
+type useNavPopupsHelpers = {
+  onCommunityButtonClick: () => void
+  onOtherToolsButtonClick: () => void
+  isOtherToolsPopupOpen: boolean
+  isCommunityPopupOpen: boolean
+}
+
+export const useNavPopups: (
+  communityPopupContainerEl: { current: HTMLLIElement | null },
+  otherToolsPopupContainerEl: { current: HTMLLIElement | null }
+) => useNavPopupsHelpers = (
+  communityPopupContainerEl,
+  otherToolsPopupContainerEl
+) => {
+  const [isCommunityPopupOpen, setIsCommunityPopupOpen] = useState(false)
+  const [isOtherToolsPopupOpen, setIsOtherToolsPopupOpen] = useState(false)
+  let pageCloseEventListener: () => void = () => null
+  let keyupCloseEventListener: () => void = () => null
+
+  const closeAllPopups = (): void => {
+    setIsCommunityPopupOpen(false)
+    setIsOtherToolsPopupOpen(false)
+
+    pageCloseEventListener()
+    keyupCloseEventListener()
+  }
+
+  const handlePageClick = (event: MouseEvent): void => {
+    if (
+      !communityPopupContainerEl.current ||
+      !otherToolsPopupContainerEl.current
+    ) {
+      return
+    }
+    if (
+      !communityPopupContainerEl.current.contains(event.target as Node) &&
+      !otherToolsPopupContainerEl.current.contains(event.target as Node)
+    ) {
+      closeAllPopups()
+    }
+  }
+
+  const handlePageKeyup = (event: KeyboardEvent): void => {
+    if (event.key === 'Escape') {
+      closeAllPopups()
+    }
+  }
+
+  const setupPopupEventListeners = (): void => {
+    document.addEventListener('click', handlePageClick)
+    document.addEventListener('keyup', handlePageKeyup)
+
+    pageCloseEventListener = (): void =>
+      document.removeEventListener('click', handlePageClick)
+    keyupCloseEventListener = (): void =>
+      document.removeEventListener('keyup', handlePageKeyup)
+  }
+
+  const openCommunityPopup = (): void => {
+    setupPopupEventListeners()
+    setIsCommunityPopupOpen(true)
+  }
+
+  const openOtherToolsPopup = (): void => {
+    setupPopupEventListeners()
+    setIsOtherToolsPopupOpen(true)
+  }
+
+  const togglePopup = (
+    closeOtherPopups: () => void,
+    isSelectedPopupOpen: boolean,
+    openSelectedPopup: () => void
+  ): void => {
+    closeOtherPopups()
+    if (isSelectedPopupOpen) {
+      closeAllPopups()
+    } else {
+      openSelectedPopup()
+    }
+  }
+
+  const onCommunityButtonClick = (): void =>
+    togglePopup(
+      (): void => setIsOtherToolsPopupOpen(false),
+      isCommunityPopupOpen,
+      openCommunityPopup
+    )
+  const onOtherToolsButtonClick = (): void =>
+    togglePopup(
+      (): void => setIsCommunityPopupOpen(false),
+      isOtherToolsPopupOpen,
+      openOtherToolsPopup
+    )
+
+  return {
+    onCommunityButtonClick,
+    onOtherToolsButtonClick,
+    isOtherToolsPopupOpen,
+    isCommunityPopupOpen
+  }
+}
+
+export const Popup: React.FC<{
   className?: string
   isVisible?: boolean
 }> = ({ children, isVisible, className }) => (

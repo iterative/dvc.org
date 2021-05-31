@@ -1,9 +1,9 @@
-import React, { useState, useRef } from 'react'
+import React, { useRef } from 'react'
 import cn from 'classnames'
 
 import Link from '../../Link'
 import PseudoButton from '../../PseudoButton'
-import { OtherToolsPopup, CommunityPopup } from './Popup'
+import { OtherToolsPopup, CommunityPopup, useNavPopups } from './Popup'
 import SocialIcons from './SocialIcons'
 
 import { logEvent } from '../../../utils/front/ga'
@@ -17,74 +17,14 @@ const docsPage = getFirstPage()
 import styles from './styles.module.css'
 
 const Nav: React.FC = () => {
-  const [isCommunityPopupOpen, setIsCommunityPopupOpen] = useState(false)
-  const [isOtherToolsPopupOpen, setIsOtherToolsPopupOpen] = useState(false)
   const communityPopupContainerEl = useRef<HTMLLIElement>(null)
   const otherToolsPopupContainerEl = useRef<HTMLLIElement>(null)
-  let pageCloseEventListener: () => void = () => null
-  let keyupCloseEventListener: () => void = () => null
-
-  const closeAllPopups = (): void => {
-    setIsCommunityPopupOpen(false)
-    setIsOtherToolsPopupOpen(false)
-
-    pageCloseEventListener()
-    keyupCloseEventListener()
-  }
-
-  const handlePageClick = (event: MouseEvent): void => {
-    if (
-      !communityPopupContainerEl.current ||
-      !otherToolsPopupContainerEl.current
-    ) {
-      return
-    }
-    if (
-      !communityPopupContainerEl.current.contains(event.target as Node) &&
-      !otherToolsPopupContainerEl.current.contains(event.target as Node)
-    ) {
-      closeAllPopups()
-    }
-  }
-
-  const handlePageKeyup = (event: KeyboardEvent): void => {
-    if (event.key === 'Escape') {
-      closeAllPopups()
-    }
-  }
-
-  const setupPopupEventListeners = (): void => {
-    document.addEventListener('click', handlePageClick)
-    document.addEventListener('keyup', handlePageKeyup)
-
-    pageCloseEventListener = (): void =>
-      document.removeEventListener('click', handlePageClick)
-    keyupCloseEventListener = (): void =>
-      document.removeEventListener('keyup', handlePageKeyup)
-  }
-
-  const openCommunityPopup = (): void => {
-    setupPopupEventListeners()
-    setIsCommunityPopupOpen(true)
-  }
-
-  const openOtherToolsPopup = (): void => {
-    setupPopupEventListeners()
-    setIsOtherToolsPopupOpen(true)
-  }
-
-  const togglePopup = (
-    closeOtherPopups: () => void,
-    isSelectedPopupOpen: boolean,
-    openSelectedPopup: () => void
-  ): void => {
-    closeOtherPopups()
-    if (isSelectedPopupOpen) {
-      closeAllPopups()
-    } else {
-      openSelectedPopup()
-    }
-  }
+  const {
+    onCommunityButtonClick,
+    onOtherToolsButtonClick,
+    isOtherToolsPopupOpen,
+    isCommunityPopupOpen
+  } = useNavPopups(communityPopupContainerEl, otherToolsPopupContainerEl)
 
   return (
     <div className={styles.wrapper}>
@@ -119,13 +59,7 @@ const Nav: React.FC = () => {
         <li className={styles.linkItem} ref={communityPopupContainerEl}>
           <button
             className={cn(styles.link, isCommunityPopupOpen && styles.open)}
-            onClick={(): void =>
-              togglePopup(
-                (): void => setIsOtherToolsPopupOpen(false),
-                isCommunityPopupOpen,
-                openCommunityPopup
-              )
-            }
+            onClick={onCommunityButtonClick}
           >
             Community
             <ArrowDownSVG
@@ -147,13 +81,7 @@ const Nav: React.FC = () => {
         <li className={styles.linkItem} ref={otherToolsPopupContainerEl}>
           <button
             className={cn(styles.link, isOtherToolsPopupOpen && styles.open)}
-            onClick={(): void =>
-              togglePopup(
-                (): void => setIsCommunityPopupOpen(false),
-                isOtherToolsPopupOpen,
-                openOtherToolsPopup
-              )
-            }
+            onClick={onOtherToolsButtonClick}
           >
             Other Tools
             <ArrowDownSVG
