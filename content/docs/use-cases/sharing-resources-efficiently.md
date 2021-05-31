@@ -17,17 +17,16 @@ Minimizing cost and complexity can make the difference, for example, when:
 - Distributing GPU time among people for training machine learning models
 
 In DVC, a built-in <abbr>caching</abbr> mechanism already provides individual
-<abbr>projects</abbr> with basic
-[dataset optimization](/doc/user-guide/large-dataset-optimization). It
-de-duplicates file contents automatically. And by linking files from cache to
-<abbr>workspace</abbr>, it achieves near-instantaneous switching between
+basic [dataset optimization](/doc/user-guide/large-dataset-optimization). It
+de-duplicates file contents automatically. And by linking files from the cache
+to your <abbr>workspace</abbr>, it achieves near-instantaneous switching between
 [versions of data](/doc/use-cases/versioning-data-and-model-files), results,
 etc.
 
-These benefits can extend to multiple DVC repository clones, or even different
-projects altogether. Configure
+These benefits can extend to multiple copies of a <abbr>DVC project</abbr>, or
+even different ones altogether. Just configure
 [the same cache](/doc/user-guide/how-to/share-a-dvc-cache) directory in all of
-them so that they share a central data location. The optimization of this local
+them so that they share a central data location! The optimization of this local
 (or network) storage will compound with each project that's added.
 
 ![](/img/shared-server.png) _One data store shared among people or projects_
