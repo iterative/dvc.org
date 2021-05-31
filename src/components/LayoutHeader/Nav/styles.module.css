@@ -22,20 +22,12 @@
   position: relative;
   margin-left: 4px;
 
-  &.socialIconLinkItem + &.socialIconLinkItem {
-    margin: 0 16px 0 0;
-  }
-
   &:first-of-type {
     margin: 0;
   }
 
   @media (--xl-scr) {
     margin-left: 12px;
-
-    &.socialIconLinkItem + &.socialIconLinkItem {
-      margin: 0 24px 0 0;
-    }
   }
 
   @media (--md-scr) {
@@ -112,26 +104,6 @@
 
 button.link:focus {
   color: #353940;
-}
-
-.socialIcon {
-  display: block;
-  width: 24px;
-  height: 24px;
-  color: #6f7685;
-  padding: 12px;
-  margin: 0;
-
-  @media (--md-scr) {
-    width: 20px;
-    height: 20px;
-    padding: 6px;
-  }
-
-  svg {
-    width: inherit;
-    height: inherit;
-  }
 }
 
 .getStartedButton {

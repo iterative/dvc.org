@@ -2,9 +2,9 @@ import React, { useState, useRef } from 'react'
 import cn from 'classnames'
 
 import Link from '../../Link'
-import SocialIcon from '../../SocialIcon'
 import PseudoButton from '../../PseudoButton'
 import { OtherToolsPopup, CommunityPopup } from './Popup'
+import SocialIcons from './SocialIcons'
 
 import { logEvent } from '../../../utils/front/ga'
 import { getFirstPage } from '../../../utils/shared/sidebar'
@@ -73,21 +73,16 @@ const Nav: React.FC = () => {
     setIsOtherToolsPopupOpen(true)
   }
 
-  const toggleCommunityPopup = (): void => {
-    setIsOtherToolsPopupOpen(false)
-    if (isCommunityPopupOpen) {
+  const togglePopup = (
+    closeOtherPopups: () => void,
+    isSelectedPopupOpen: boolean,
+    openSelectedPopup: () => void
+  ): void => {
+    closeOtherPopups()
+    if (isSelectedPopupOpen) {
       closeAllPopups()
     } else {
-      openCommunityPopup()
-    }
-  }
-
-  const toggleOtherToolsPopup = (): void => {
-    setIsCommunityPopupOpen(false)
-    if (isOtherToolsPopupOpen) {
-      closeAllPopups()
-    } else {
-      openOtherToolsPopup()
+      openSelectedPopup()
     }
   }
 
@@ -124,7 +119,13 @@ const Nav: React.FC = () => {
         <li className={styles.linkItem} ref={communityPopupContainerEl}>
           <button
             className={cn(styles.link, isCommunityPopupOpen && styles.open)}
-            onClick={toggleCommunityPopup}
+            onClick={(): void =>
+              togglePopup(
+                (): void => setIsOtherToolsPopupOpen(false),
+                isCommunityPopupOpen,
+                openCommunityPopup
+              )
+            }
           >
             Community
             <ArrowDownSVG
@@ -146,7 +147,13 @@ const Nav: React.FC = () => {
         <li className={styles.linkItem} ref={otherToolsPopupContainerEl}>
           <button
             className={cn(styles.link, isOtherToolsPopupOpen && styles.open)}
-            onClick={toggleOtherToolsPopup}
+            onClick={(): void =>
+              togglePopup(
+                (): void => setIsCommunityPopupOpen(false),
+                isOtherToolsPopupOpen,
+                openOtherToolsPopup
+              )
+            }
           >
             Other Tools
             <ArrowDownSVG
@@ -156,23 +163,8 @@ const Nav: React.FC = () => {
           </button>
           <OtherToolsPopup isVisible={isOtherToolsPopupOpen} />
         </li>
-        <li className={cn(styles.linkItem, styles.socialIconLinkItem)}>
-          <SocialIcon
-            site="github"
-            label="Go to DVC Github page"
-            url="https://github.com/iterative/dvc"
-            className={cn(styles.link, styles.socialIcon)}
-          />
-        </li>
-        <li className={cn(styles.linkItem, styles.socialIconLinkItem)}>
-          <SocialIcon
-            site="discord"
-            label="Go to DVC Discord page"
-            url="/chat"
-            className={cn(styles.link, styles.socialIcon)}
-          />
-        </li>
       </ul>
+      <SocialIcons />
       <PseudoButton
         className={`${styles.getStartedButton} btn-with-focus`}
         href="/doc/start"
