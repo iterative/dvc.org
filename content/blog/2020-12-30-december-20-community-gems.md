@@ -72,7 +72,7 @@ No problem- what you'll want to do is edit your `dvc.yaml` case and then run
 `dvc commit dvc.yaml` to store the change.
 
 `dvc commit` is a helpful function that updates your `dvc.lock` file and `.dvc`
-files as needed, which foces DVC to accept any modifications to tracked data
+files as needed, which forces DVC to accept any modifications to tracked data
 currently in your workspace. That should cover the case where you have a metric
 file from your last pipeline run in your workspace, but forgot to add it to the
 `dvc.yaml` as an output!

@@ -77,9 +77,9 @@ train:
   min_split: 2
 ```
 
-Let's setup experiments with different hyperparameters. We can use the `--queue`
-flag to define all the combinations we want to try without executing anything
-(yet):
+Let's set up experiments with different hyperparameters. We can use the
+`--queue` flag to define all the combinations we want to try without executing
+anything (yet):
 
 ```dvc
 $ dvc exp run --queue -S train.min_split=8

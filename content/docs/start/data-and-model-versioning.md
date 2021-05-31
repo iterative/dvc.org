@@ -7,10 +7,10 @@ Git.'
 
 # Get Started: Data Versioning
 
-How cool would it be to make Git handle arbitrary large files and directories
-with the same performance as with small code files? Imagine doing a `git clone`
-and seeing data files and machine learning models in the workspace. Or switching
-to a different version of a 100Gb file in less than a second with a
+How cool would it be to make Git handle arbitrarily large files and directories
+with the same performance that you get with small code files? Imagine doing a
+`git clone` and seeing data files and machine learning models in the workspace.
+Or switching to a different version of a 100Gb file in less than a second with a
 `git checkout`.
 
 The foundation of DVC consists of a few commands you can run along with `git` to
@@ -91,7 +91,7 @@ outs:
 You can upload DVC-tracked data or model files with `dvc push`, so they're
 safely stored [remotely](/doc/command-reference/remote). This also means they
 can be retrieved on other environments later with `dvc pull`. First, we need to
-setup a remote storage location:
+set up a remote storage location:
 
 ```dvc
 $ dvc remote add -d storage s3://mybucket/dvcstore

@@ -82,7 +82,7 @@ For these examples we can use the [Get Started](/doc/start) project.
 
 <details>
 
-### Click and expand to setup the project to run examples
+### Click and expand to set up the project to run examples
 
 Start by cloning our example repo if you don't already have it:
 
@@ -119,7 +119,7 @@ $ dvc diff
 
 <details>
 
-### Click and expand to setup the example
+### Click and expand to set up the example
 
 Let's checkout the
 [2-track-data](https://github.com/iterative/example-get-started/releases/tag/2-track-data)
@@ -149,7 +149,7 @@ files summary: 1 added, 0 deleted, 0 modified
 
 <details>
 
-### Click and expand to setup the example
+### Click and expand to set up the example
 
 Our example repository has the `baseline-experiment` and `bigrams-experiment`
 [tags](https://github.com/iterative/example-get-started/tags) tags, that
@@ -223,7 +223,7 @@ It outputs:
 
 <details>
 
-### Click and expand to setup the example
+### Click and expand to set up the example
 
 Having followed the previous examples' setup, move into the
 `example-get-started/` directory. Then make sure that you have the latest code
