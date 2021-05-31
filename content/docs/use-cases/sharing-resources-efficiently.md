@@ -1,21 +1,20 @@
 # Sharing Resources Efficiently
 
-Data science teams need to handle large files, rotate the use of special
-processors, and minimize data transfers. This involves provisioning and managing
-resources such as massive on-prem or cloud data stores and powerful servers,
-which is expensive and time consuming.
+Data science teams need to handle large amounts of data, share limited
+processing units (GPUs), avoid multiple data transfers, etc. It's not always
+clear how to connect and utilize resources such as massive data stores or
+powerful machines for an effective collaboration. An over-engineered setup may
+require clustering servers, installing load balancing software, etc.
 
 ![](/img/resource-pool.png) _Fragile and disjointed pool of limited resources_
 
-Minimizing operational cost and complexity can make the difference, for example,
-when:
+Minimizing cost and complexity can make the difference, for example, when:
 
 - Multiple users work on the same shared server.
-- There's a centralized data storage unit or single-entry cluster.
-- There's a single computing environment with access to the data needed to
-  reproduce full [experiments](/doc/user-guide/experiment-management).
-- Distributing GPU time among people or processes for training machine learning
-  models
+- There's a centralized data storage unit or cluster.
+- There's a single environment with access to the data needed to reproduce full
+  [pipelines](/doc/start/data-pipelines).
+- Distributing GPU time among people for training machine learning models
 
 In DVC, a built-in <abbr>caching</abbr> mechanism already provides individual
 <abbr>projects</abbr> with basic
@@ -26,27 +25,27 @@ de-duplicates file contents automatically. And by linking files from cache to
 etc.
 
 These benefits can extend to multiple DVC repository clones, or even different
-projects altogether. Just set up
+projects altogether. Configure
 [the same cache](/doc/user-guide/how-to/share-a-dvc-cache) directory in all of
-them so that they share a central data location, optimizing local (or network)
-storage.
+them so that they share a central data location. The optimization of this local
+(or network) storage will compound with each project that's added.
 
 ![](/img/shared-server.png) _One data store shared among people or projects_
 
-Additionally, [remote storage](/doc/command-reference/remote) (Amazon S3, SSH,
-Google Drive, etc.) can also be shared by multiple projects to synchronize their
-data caches (see `dvc push` and `dvc pull`). This can reduce service costs by
-consolidating the backups.
+A central [remote storage](/doc/command-reference/remote) (Amazon S3, SSH,
+Google Drive, etc.) can also be used by many projects to synchronize cached data
+(see `dvc push` and `dvc pull`). It these caches are not set up in a shared
+location, then the DVC remote can represent primary storage instead.
 
-> 💡 Another way to centralize some or all of the data requirements of your
-> projects is to implement a [data registry](/doc/use-cases/data-registries)
-> pattern and leverage `dvc import`.
+> 💡 Another way to centralize the data requirements of your projects is to
+> implement a [data registry](/doc/use-cases/data-registries) pattern and
+> leverage `dvc import`.
 
 Data-driven teams may also need a specialized execution environment (such as a
-server with abundant memory and GPUs) to test experiments on large data loads.
-This lets different members confirm whether promising
-[data pipeline](/doc/start/data-pipelines) improvements developed locally scale
-up.
+server with abundant memory and GPUs) to test
+[experiments](/doc/start/experiments) on large data loads. This lets different
+members confirm whether promising [data pipeline](/doc/start/data-pipelines)
+improvements developed locally scale up.
 
 To this end, you can deploy the <abbr>DVC repository</abbr> on a shared server
 (easy using Git). The familiar DVC [CLI](/doc/command-reference) can be used
