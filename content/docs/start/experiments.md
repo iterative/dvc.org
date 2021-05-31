@@ -35,12 +35,12 @@ requirements.
 
 Please clone and create a virtual environment:
 
-```console
-git clone https://github.com/iterative/get-started-experiments
-cd get-started-experiments
-python -m venv .venv
-. .venv/bin/activate
-python -m pip install -r requirements.txt
+```dvc
+$ git clone https://github.com/iterative/get-started-experiments
+$ cd get-started-experiments
+$ python -m venv .venv
+$ . .venv/bin/activate
+$ python -m pip install -r requirements.txt
 ```
 
 Then you can `dvc pull` to get the dataset and run the commands in this
@@ -59,10 +59,13 @@ In order to run a baseline experiment with the default parameters defined in
 `params.yaml`:
 
 ```dvc
-dvc exp run
+$ dvc exp run
+'data/fashion-mnist/raw.dvc' didn't change, skipping
+Stage 'prepare' didn't change, skipping
+Stage 'preprocess' didn't change, skipping
+Stage 'train' didn't change, skipping
+Stage 'evaluate' didn't change, skipping
 ```
-
-![dvc exp run result screenshot](/img/doc/start/exp-ss-90252.png)
 
 This resembles `dvc repro` without any command-line arguments. However, when
 using `dvc repro` we need to update `params.yaml` manually, run the pipeline, if
@@ -342,6 +345,8 @@ $ dvc exp show -n 2 --no-timestamp \
 ## Going Further
 
 You can continue to experiment with
-[the project](https://github.com/iterative/get-started-experiments) are are many
-parameters available to change, e.g., `noise` or `units` in Dense layer of the
-network.
+[the project](https://github.com/iterative/get-started-experiments). There are
+many parameters available to modify, e.g., `noise` or `units` in Dense layer of
+the network. Please see the `README.md` file of the project for these. Don't
+forget to [notify us](https://dvc.org/chat) if you happen to find good
+parameters.
