@@ -127,7 +127,7 @@ const RightPanel: React.FC<IRightPanelProps> = ({
       menuItemsEleme.scrollHeight > menuItemsEleme.clientHeight
     ) {
       currentHeadingSlugElem.scrollIntoView({
-        behavior: 'instant',
+        behavior: 'auto',
         block: 'nearest',
         inline: 'start'
       })
