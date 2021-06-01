@@ -29,9 +29,11 @@ These benefits can extend to multiple copies of a <abbr>DVC project</abbr>, or
 even different ones altogether. Just configure
 [the same cache](/doc/user-guide/how-to/share-a-dvc-cache) directory in all of
 them so that they share a central data location! The optimization of this local
-(or network) storage will compound with each project that's added.
+(or network) storage will compound with each project that's added. This is a
+useful pattern when [sharing a development server](#example-shared-cache), for
+example.
 
-![](/img/shared-server.png) _One data store shared among people or projects_
+![](/img/shared-server.png) _One data store shared among several parties_
 
 A central [remote storage](/doc/command-reference/remote) (Amazon S3, SSH,
 Google Drive, etc.) can also be used by many projects to synchronize cached data
@@ -42,22 +44,22 @@ location, then the DVC remote can be the primary storage instead.
 > implement a [data registry](/doc/use-cases/data-registries) pattern and
 > leverage `dvc import`.
 
-Data science teams may also need a specialized execution environment (with
-abundant memory and GPUs, for example) to test
-[experiments](/doc/start/experiments) on large data loads. This lets different
-members confirm whether promising [data pipeline](/doc/start/data-pipelines)
-improvements developed locally scale up.
+You can also optimize your data processing with DVC. This is made possible by
+codifying your [data pipelines](/doc/start/data-pipelines). You can then deploy
+the same project on one or more environments (using Git), and reproduce any
+variation of the pipeline(s) with a few commands. This enables a range of
+processing workflows, from distributing the execution of [experiment
+queues][queueing-experiments], to rotating an ML model training environment
+among team members (or batches of data).
 
-To this end, you can deploy the <abbr>DVC repository</abbr> on a shared server
-(easy using Git). The familiar DVC [CLI](/doc/command-reference) can be used
-there to checkout specific project versions (e.g. branches or tags), plug in
-full datasets, and reproduce the experiments in question (see `dvc exp run`).
+[queueing-experiments]:
+  /doc/command-reference/exp/run#queueing-and-parallel-execution
 
-![]() _TO-DO: Do we want a 3rd figure here?_
+![](/img/remote-execution.png) _Remote execution of ML pipelines_
 
-> 💡 Integrate this part of the workflow to a regular development process (on
-> platforms like GitHub or GitLab) using [CML](https://cml.dev/). This can be
-> part of your CI/CD setup, and include automatic performance reports.
+> ♾️ You can use [CML](https://cml.dev/) to integrate your desired workflow on
+> platforms like GitHub or GitLab. This can be part of your CI/CD (MLOps), along
+> with automatic performance reports, among other benefits!
 
 Finally, there's the question of handling residual data objects left behind by
 different people and processes. This can be a challenging and risky task without
