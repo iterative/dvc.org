@@ -7,7 +7,7 @@ With DVC experiments and checkpoints, you can:
 
 - Implement the best practice in deep learning to save your model weights as
   checkpoints.
-- Track all code and data changes corresponded to the checkpoints.
+- Track all code and data changes corresponded to a checkpoint.
 - See when metrics start diverging and revert to the optimal checkpoint.
 - Automate the process of tracking every training epoch.
 
@@ -19,11 +19,13 @@ custom Git reference.
 You can add experiments to your Git history by committing the experiment you
 want to track, which you'll see later in this tutorial.
 
-## Setting up the project
-
-This tutorial is going to cover how to implement checkpoints in a ML project
+This tutorial is going to cover how to implement checkpoints in an ML project
 using DVC. We're going to train a model to identify handwritten digits based on
 the MNIST dataset.
+
+<details>
+
+## 💡 Setting up the project
 
 You can follow along with the steps here or you can clone the repo directly from
 GitHub and play with it. To clone the repo, run the following commands.
@@ -56,13 +58,16 @@ $ pip install -r requirements.txt
 This will download all of the packages you need to run the example. Now you have
 everything you need to get started with experiments and checkpoints.
 
+</details>
+
 ## Setting up a DVC pipeline
 
 DVC versions data and it also can version the machine learning model weights
 file as checkpoints during the training process. To enable this, you will need
 to set up a DVC pipeline to train your model.
 
-Adding a DVC pipline only takes a few commands. At the root of the project, run:
+Adding a DVC pipeline only takes a few commands. At the root of the project,
+run:
 
 ```dvc
 $ dvc init
@@ -70,7 +75,7 @@ $ dvc init
 
 This sets up the files you need for your DVC pipeline to work.
 
-Now we need to add a stage for training our model within a DVC pipeliene. We'll
+Now we need to add a stage for training our model within a DVC pipeline. We'll
 do that with `dvc stage add`, which we'll explain more later. For now, run the
 following command:
 
@@ -130,7 +135,7 @@ setting up checkpoints in your code.
 
 ## Registering checkpoints in your code
 
-Take a look at the _train.py_ file and you'll see how we train a convolutional
+Take a look at the `train.py` file and you'll see how we train a convolutional
 neural network to classify handwritten digits. The main area of this code most
 relevant to checkpoints is when we iterate over the training epochs.
 
@@ -434,7 +439,7 @@ You can run the following command to save your experiments to the Git history.
 $ git add dvclive.json dvc.yaml .gitignore train.py dvc.lock
 ```
 
-You can take a look at what will be commited to your Git history by running:
+You can take a look at what will be committed to your Git history by running:
 
 ```bash
 $ git status
