@@ -25,7 +25,6 @@
   text-decoration: none;
   font-size: 18px;
   line-height: 30px;
-  letter-spacing: 0.02em;
   transition: background-color 0.2s ease-in;
 
   &:hover,
@@ -69,11 +68,10 @@
     .title {
       grid-area: title;
       font-weight: 500;
-      font-size: 16px;
+      font-size: 18px;
       line-height: 24px;
       display: flex;
       align-items: center;
-      letter-spacing: 0.02em;
     }
 
     .titleIcon {
@@ -86,9 +84,8 @@
     .description {
       grid-area: description;
       color: rgba(15, 22, 36, 0.5);
-      font-size: 14px;
+      font-size: 16px;
       line-height: 18px;
-      letter-spacing: 0.02em;
     }
   }
 }
