@@ -31,9 +31,21 @@ const RightPanel: React.FC<IRightPanelProps> = ({
   const [headingsOffsets, setHeadingsOffsets] = useState<IHeadingsCoordinates>(
     {}
   )
-  const [currentHeadingSlug, setCurrentHeadingSlug] = useState<string | null>(
-    null
+  const [currentHeadingSlug, setCurrentHeadingSlug] =
+    useState<string | null>(null)
+  const [contentBoxClasses, setContentBoxClasses] = useState(
+    cn(
+      styles.contentBlock,
+      {
+        [styles.shadowTop]: false
+      },
+      {
+        [styles.shadowBottom]: false
+      }
+    )
   )
+  const menuItemsRef = useRef<HTMLDivElement>(null)
+
   const updateCurrentHeader = (): void => {
     const currentScroll = getScrollPosition()
     const coordinateKeys = Object.keys(headingsOffsets)
@@ -54,6 +66,31 @@ const RightPanel: React.FC<IRightPanelProps> = ({
     setCurrentHeadingSlug(newCurrentHeadingSlug)
   }
 
+  const setShadowBox = (): void => {
+    const menuItemsElem = menuItemsRef.current
+    let displayTopShadowBox = false
+    let displayBottomShadowBox = false
+
+    if (menuItemsElem) {
+      displayTopShadowBox = menuItemsElem?.scrollTop > 0
+      displayBottomShadowBox =
+        Math.floor(menuItemsElem?.scrollHeight - menuItemsElem?.scrollTop) >
+        menuItemsElem?.offsetHeight
+
+      setContentBoxClasses(
+        cn(
+          styles.contentBlock,
+          {
+            [styles.shadowTop]: displayTopShadowBox
+          },
+          {
+            [styles.shadowBottom]: displayBottomShadowBox
+          }
+        )
+      )
+    }
+  }
+
   const updateHeadingsPosition = (): void => {
     const offsets = headings.reduce(
       (result: IHeadingsCoordinates, heading: IHeading) => {
@@ -69,12 +106,32 @@ const RightPanel: React.FC<IRightPanelProps> = ({
     )
     setHeadingsOffsets(offsets)
     setDocumentHeight(document.documentElement.clientHeight)
+
+    setShadowBox()
   }
 
   const initHeadingsPosition = (): void => {
     const root = document.querySelector('#markdown-root')
 
     root && allImagesLoadedInContainer(root).then(updateHeadingsPosition)
+  }
+
+  const scrollHeadingIntoView = (): void => {
+    const currentHeadingSlugElem = document.getElementById(
+      `link-${currentHeadingSlug}`
+    )
+    const menuItemsEleme = menuItemsRef.current
+    if (
+      currentHeadingSlugElem &&
+      menuItemsEleme &&
+      menuItemsEleme.scrollHeight > menuItemsEleme.clientHeight
+    ) {
+      currentHeadingSlugElem.scrollIntoView({
+        behavior: 'instant',
+        block: 'nearest',
+        inline: 'start'
+      })
+    }
   }
 
   useEffect(() => {
@@ -88,40 +145,10 @@ const RightPanel: React.FC<IRightPanelProps> = ({
       window.removeEventListener('resize', updateHeadingsPosition)
     }
   }, [updateCurrentHeader])
+
   useEffect(initHeadingsPosition, [headings])
   useEffect(updateCurrentHeader, [headingsOffsets, documentHeight])
-
-  const contentBlockRef = useRef<HTMLDivElement>(null)
-  const [
-    isScrollToCurrentHeadingHappened,
-    setIsScrollToCurrentHeadingHappened
-  ] = useState(false)
-  useEffect(() => {
-    if (isScrollToCurrentHeadingHappened) {
-      return
-    }
-    if (!document.location.hash) {
-      setIsScrollToCurrentHeadingHappened(true)
-      return
-    }
-    if (currentHeadingSlug) {
-      setIsScrollToCurrentHeadingHappened(true)
-      const currentHeadingSlugElem = document.getElementById(
-        `link-${currentHeadingSlug}`
-      )
-      const contentBlockElem = contentBlockRef.current
-      if (currentHeadingSlugElem && contentBlockElem) {
-        const hasVerticalScrollbar =
-          contentBlockElem.scrollHeight > contentBlockElem.clientHeight
-        if (hasVerticalScrollbar) {
-          currentHeadingSlugElem.scrollIntoView({
-            block: 'start',
-            inline: 'nearest'
-          })
-        }
-      }
-    }
-  })
+  useEffect(scrollHeadingIntoView, [currentHeadingSlug])
 
   return (
     <div className={styles.container}>
@@ -131,21 +158,27 @@ const RightPanel: React.FC<IRightPanelProps> = ({
             <h5 className={styles.header}>Content</h5>
             <hr className={styles.separator} />
           </div>
-          <div className={styles.contentBlock} ref={contentBlockRef}>
-            {headings.map(({ slug, text }) => (
-              <div id={`link-${slug}`} key={`link-${slug}`}>
-                <Link
-                  className={cn(
-                    styles.headingLink,
-                    currentHeadingSlug === slug && styles.current,
-                    'link-with-focus'
-                  )}
-                  href={`#${slug}`}
-                >
-                  {text}
-                </Link>
-              </div>
-            ))}
+          <div className={contentBoxClasses}>
+            <div
+              className={styles.menuItems}
+              ref={menuItemsRef}
+              onScroll={setShadowBox}
+            >
+              {headings.map(({ slug, text }) => (
+                <div id={`link-${slug}`} key={`link-${slug}`}>
+                  <Link
+                    className={cn(
+                      styles.headingLink,
+                      currentHeadingSlug === slug && styles.current,
+                      'link-with-focus'
+                    )}
+                    href={`#${slug}`}
+                  >
+                    {text}
+                  </Link>
+                </div>
+              ))}
+            </div>
           </div>
         </>
       )}

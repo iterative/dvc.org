@@ -16,8 +16,14 @@
 }
 
 .contentBlock {
-  overflow-y: scroll;
   margin-bottom: 27px;
+  position: relative;
+  min-height: 100px;
+}
+
+.menuItems {
+  overflow-y: scroll;
+  height: 100%;
 
   &::-webkit-scrollbar {
     -webkit-appearance: none;
@@ -30,9 +36,35 @@
   }
 }
 
+.shadowTop {
+  &::before {
+    -webkit-box-shadow: 0 2px 2px -1px rgb(0 0 0 / 10%);
+    box-shadow: 0 2px 2px -1px rgb(0 0 0 / 10%);
+    border-bottom: 1px solid #e5e5e5;
+    position: absolute;
+    margin-top: -5px;
+    height: 4px;
+    width: 100%;
+    content: '';
+  }
+}
+
+.shadowBottom {
+  &::after {
+    -webkit-box-shadow: rgb(0 0 0 / 17%) 0 -2px 2px -1px;
+    box-shadow: rgb(0 0 0 / 17%) 0 -2px 2px -1px;
+    position: absolute;
+    height: 4px;
+    content: '';
+    width: 100%;
+    bottom: -4px;
+  }
+}
+
 .separator {
   border: none;
   border-top: 1px solid var(--color-lighter-blue);
+  margin-bottom: 0;
 }
 
 .header {
