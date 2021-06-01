@@ -119,7 +119,7 @@ experiment on Studio is as simple as it can get - simply modify the ML model
 hyperparameters and dataset version from a UI and save the changes with a
 comment. The modifications and the message will be automatically converted to a
 proper Git commit with the source code changes and the commit message. Your team
-members can see the changes through Git or GitHub/GitLab, and track the author
+members can see the changes through your Git platform, and track the author
 and timestamp of the change. Now you can track the provenance of your model
 changes through Git.
 
