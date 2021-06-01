@@ -8,7 +8,7 @@ on each new commit.
 > Note that due to access restrictions, you cannot run experiments on the demo
 > view (`example-get-started`) that is provided to you by default. Once you
 > create views for your ML project repositories, you can follow the instructions
-> given below and run experiments directly from DVC Studio.
+> given below to run experiments directly from DVC Studio.
 
 To run experiments from DVC Studio, select the commit that you want to use and
 click the `Run` button. A form will let you specify all the changes that you
@@ -42,17 +42,15 @@ on `Commit changes`.
 
 ![](https://static.iterative.ai/img/studio/cml_commit_v2.png)
 
-At this point, the new experiment appears in the view table. If you check in
-your Git repository, you will find the Git commit that you just made. If you had
-committed to a new branch, a new pull request will also have been created from
-the new branch to the base branch.
+At this point, the new experiment appears in the view table. If you just
+committed to a new branch, then a new pull request will also have been created
+from the new branch to the base branch.
 
-If your project is integrated with a CI/CD setup (eg, GitHub Actions), the CI/CD
+If your project is integrated with a CI/CD setup (e.g. GitHub Actions), the CI/CD
 setup will get invoked. If this setup includes a model training process, it will
 be triggered, which means that your ML experiment will run automatically. The
 model training can happen on any cloud or Kubernetes. For more details on how to
-set up CI/CD pipelines for your ML project, refer to
-[CML](https://dvc.org/doc/cml) .
+set up CI/CD pipelines for your ML project, refer to [CML](https://cml.dev).
 
 Once the experiment completes, its metrics will be available in the view table.
 You can then generate plots and trend charts for it, or compare it with the

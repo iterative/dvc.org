@@ -3,7 +3,7 @@
 You can create views from your Git repositories, just like the `Demo` view you
 saw in the last section. To create a new view, follow these steps.
 
-1. Sign into your [DVC Studio](https://studio.iterative.ai/) dashboard using
+1. Sign in to your [DVC Studio](https://studio.iterative.ai/) dashboard using
    GitHub, GitLab or Bitbucket.
 
 2. Click on `Add a View`. All the organizations that you have access to will be
@@ -15,19 +15,18 @@ saw in the last section. To create a new view, follow these steps.
 > details.
 
 3. Open the organization whose repository you want to connect to. You can also
-   use the search bar to search directly for the repository. Click on the
-   required repository to connect to it.
+   use the search bar to directly look for a repository.
 
    ![](https://static.iterative.ai/img/studio/select_repo_v2.png)
 
-4. You will be able to specify additional settings for the connection.
+4. Specify additional connection settings if required.
 
    ![](https://static.iterative.ai/img/studio/view_settings_v2.png)
 
 > In most scenarios, you can skip these additional View settings. Refer to the
 > [View Settings](/doc/studio/view-settings) section for more details.
 
-You should now see that a view has been added in your dashboard.
+You should now see that a View has been added in your dashboard.
 
 If your project requires any of the advanced settings, then remember to
 configure them by opening the View settings. Otherwise, your view may not work
@@ -51,7 +50,7 @@ You can change a shared (public) view and make it private by turning off
 ## DVC Studio GitHub app installation
 
 If you are using a GitHub account, you will have to install the DVC Studio
-GitHub app on your GitHub repositories / organizations that you want to use with
+GitHub app on the GitHub repositories/organizations that you want to use with
 DVC Studio. When you try to create a view, if the app is not already installed,
 DVC Studio will not be able to fetch the list of your GitHub repositories. In
 this case, you will be prompted to configure Git integrations as shown below.
@@ -67,5 +66,5 @@ Click on the `Configure` button, and you will be redirected to the GitHub page
 to install and authorize the DVC Studio GitHub app.
 
 > Note that you do not have to authorize DVC Studio on all the repositories in
-> your GitHub organization. You can limit access to only those repositories
-> which you want to use with DVC Studio.
+> your GitHub organization. You can limit access to only repositories that
+> you want to use with DVC Studio.
