@@ -45,6 +45,12 @@ You can add these details to your Git repositories in two ways:
    for this project by specifying the file (within your Git repo) which contains
    your saved metrics.
 
+   So as you can see, DVC Studio simply requires your metrics and
+   hyperparameters to be available in data files in your Git repositories. This
+   video further illustrates this concept.
+
+   https://www.youtube.com/watch?v=5xM5az78Lrg
+
 ## Monorepo
 
 Depending on how you have set up your Git repositories, your DVC repo (for which

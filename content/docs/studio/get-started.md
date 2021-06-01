@@ -5,6 +5,10 @@ your ML projects. You will need access to a GitHub, GitLab or Bitbucket account
 which has access to the Git repositories you want to connect. DVC Studio creates
 views from repositories when you connect to them.
 
+The following video provides you a quick overview of DVC Studio.
+
+https://www.youtube.com/watch?v=hKf4twg832g
+
 ## What is a view?
 
 A _view_ is an interactive representation of the experiments run in your ML

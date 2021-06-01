@@ -10,6 +10,11 @@ on each new commit.
 > create views for your ML project repositories, you can follow the instructions
 > given below to run experiments directly from DVC Studio.
 
+Watch this video for an overview of how you can run experiments from DVC Studio,
+or read below for details.
+
+https://www.youtube.com/watch?v=nXJXR-zBvHQ
+
 To run experiments from DVC Studio, select the commit that you want to use and
 click the `Run` button. A form will let you specify all the changes that you
 want to make to your experiment. On this form, there are 2 types of inputs that
