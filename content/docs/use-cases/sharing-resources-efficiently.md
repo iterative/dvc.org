@@ -3,8 +3,8 @@
 Data science teams need to handle large amounts of data, share limited
 processing units (GPUs), avoid multiple data transfers, etc. It's not always
 clear how to connect and utilize resources such as massive data stores or
-powerful machines for an effective collaboration. An over-engineered setup may
-require clustering servers, installing load balancing software, etc.
+powerful machines for an effective collaboration. An over-engineered solution
+may involve clustering servers, load balancing software, etc.
 
 ![](/img/resource-pool.png) _Fragile and disjointed pool of limited resources_
 
@@ -16,12 +16,14 @@ Minimizing cost and complexity can make the difference, for example, when:
   [pipelines](/doc/start/data-pipelines).
 - Distributing GPU time among people for training machine learning models
 
-In DVC, a built-in <abbr>caching</abbr> mechanism already provides individual
-basic [dataset optimization](/doc/user-guide/large-dataset-optimization). It
+DVC's approach keeps it simple: you work with a set of intuitive terminal
+commands that interact directly with your files and directories (data, models,
+metrics, code, etc.). A built-in <abbr>caching</abbr> mechanism provides basic
+[dataset optimization](/doc/user-guide/large-dataset-optimization), which
 de-duplicates file contents automatically. And by linking files from the cache
-to your <abbr>workspace</abbr>, it achieves near-instantaneous switching between
-[versions of data](/doc/use-cases/versioning-data-and-model-files), results,
-etc.
+to your <abbr>workspace</abbr>, DVC achieves near-instantaneous switching
+between [versions of data](/doc/use-cases/versioning-data-and-model-files),
+results, etc.
 
 These benefits can extend to multiple copies of a <abbr>DVC project</abbr>, or
 even different ones altogether. Just configure
