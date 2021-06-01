@@ -87,18 +87,16 @@ share your experiment tables.
 
 ## Use Git for ML metrics tracking. Nothing fancy. Nothing difficult.
 
-The table and visuals in DVC Studio aren’t magic - they are simply a
-representation of the data in JSON or CSV files in your Git repositories. What
-makes DVC Studio special is this connection to the Git ecosystem.
-
 Most ML engineers already use Git for code versioning. `dvc init`, `dvc add`,
 `dvc push` - these simple Git-like DVC commands are all you need to convert your
 Git repos into DVC repos - a single source of truth for not just your code but
 also your data, model and metrics.
 
-Even this sounds like a lot? Well, you can start by simply visualizing metrics
-you add in custom json or csv files - DVC Studio works with these custom files
-as well.
+What makes DVC Studio special is this connection to the Git ecosystem. The table
+and visuals in DVC Studio aren’t magic - they are simply a representation of the
+data in JSON or CSV files in your Git repositories.
+
+See how DVC Studio works with these files in this video.
 
 https://www.youtube.com/watch?v=5xM5az78Lrg
 
@@ -119,9 +117,9 @@ experiment on Studio is as simple as it can get - simply modify the ML model
 hyperparameters and dataset version from a UI and save the changes with a
 comment. The modifications and the message will be automatically converted to a
 proper Git commit with the source code changes and the commit message. Your team
-members can see the changes through your Git platform, and track the author
-and timestamp of the change. Now you can track the provenance of your model
-changes through Git.
+members can see the changes through your Git platform, and track the author and
+timestamp of the change. Now you can track the provenance of your model changes
+through Git.
 
 If your project is integrated with the CI/CD process, the model training process
 will be automatically triggered. Once the experiment completes, all its inputs
