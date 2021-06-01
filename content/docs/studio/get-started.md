@@ -10,9 +10,10 @@ views from repositories when you connect to them.
 A _view_ is an interactive representation of the experiments run in your ML
 project. DVC Studio automatically identifies datasets, metrics and
 hyperparameters in your ML experiments. You can also add custom files with the
-required data (more on this later). Using this data, DVC Studio creates a
-summary view. This includes tables of all the metrics across all your
-experiments. You can also generate plots and compare experiments here.
+required data (more on this [here](/doc/studio/view-settings)). Using this data,
+DVC Studio creates a summary view. This includes tables of all the metrics
+across all your experiments. You can also generate plots and compare experiments
+here.
 
 ## DVC Studio Views page
 

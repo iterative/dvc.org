@@ -525,6 +525,7 @@
         "label": "Create a View",
         "slug": "create-view"
       },
+      "view-settings",
       {
         "label": "Visualize and Compare",
         "slug": "visualize-experiments"

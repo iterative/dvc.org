@@ -70,4 +70,6 @@ On this page, you can perform three types of tasks:
 
 - **Change settings.** Finally, you can click on the `Settings` menu item to
   change the team name, add credentials for the data remotes, and delete the
-  team. ![](https://static.iterative.ai/img/studio/team_settings_v2.png)
+  team.
+
+  ![](https://static.iterative.ai/img/studio/team_settings_v2.png)

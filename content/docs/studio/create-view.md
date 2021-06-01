@@ -20,12 +20,12 @@ saw in the last section. To create a new view, follow these steps.
 
    ![](https://static.iterative.ai/img/studio/select_repo_v2.png)
 
-4. You will be able to specify advanced settings for the connection.
+4. You will be able to specify additional settings for the connection.
 
    ![](https://static.iterative.ai/img/studio/view_settings_v2.png)
 
-> In most scenarios, you can skip the advanced settings. Refer to the
-> [Advanced Settings](#advanced-settings) section below for more details.
+> In most scenarios, you can skip these additional View settings. Refer to the
+> [View Settings](/doc/studio/view-settings) section for more details.
 
 You should now see that a view has been added in your dashboard.
 
@@ -47,28 +47,6 @@ You can share your views on the web. Simply click on the button labelled
 
 You can change a shared (public) view and make it private by turning off
 `Share to web`.
-
-## Advanced Settings
-
-You will need to specify advanced settings in the following scenarios.
-
-> These settings can be skipped when creating the view -- they can be edited
-> later.
-
-- **Monorepo:** If you have connected to a
-  [monorepo](https://en.wikipedia.org/wiki/Monorepo), then specify the full path
-  to the root directory of the project that you want to connect.
-
-- **Data remotes:** The metrics and parameters that you want to include in the
-  view may be present in a <abbr>data remote</abbr> (cloud storage or another
-  location outside of the Git repo). If you want to include such data in your
-  views, then you will have to grant DVC Studio access to the data remote.
-
-- **Custom metrics and parameters:** DVC Studio automatically detects metrics,
-  plots, and parameters files specified in the project's `dvc.yaml`. If you want
-  to connect custom files, you can add them by clicking the `Add file` button.
-  Enter the full file path, and specify whether the file is for `Metrics` or
-  `Parameters`.
 
 ## DVC Studio GitHub app installation
 
