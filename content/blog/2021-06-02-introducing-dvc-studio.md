@@ -55,7 +55,7 @@ represented by a commit in your Git history, is presented along with its data,
 metrics and parameters. This is your playground for visualizing, comparing and
 even running experiments.
 
-![](/uploads/images/2021-02-18/dvc-studio-view.png)
+![](/uploads/images/2021-06-02/dvc-studio-view.png)
 
 ## Visualize. Collaborate. Track.
 
@@ -165,7 +165,7 @@ and we will get back to you soon.
 We would love to get your feedback. Reach out to us with your questions,
 concerns or requests on [Discord](https://discord.com/invite/dvwXA2N). Head to
 the [DVC Forum](https://discuss.dvc.org/) to discuss your ideas. You can also
-raise an issue on [GitHub](https://github.com/iterative/studio-support').
+raise an issue on [GitHub](https://github.com/iterative/studio-support).
 
 We are super excited to have you use DVC Studio. We’re confident that it’ll make
 your Machine Learning journeys so much easier. We can’t wait to hear how it
