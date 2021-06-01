@@ -167,5 +167,6 @@ concerns or requests on [Discord](https://discord.com/invite/dvwXA2N). Head to
 the [DVC Forum](https://discuss.dvc.org/) to discuss your ideas. You can also
 raise an issue on [GitHub](https://github.com/iterative/studio-support').
 
-We are super excited to have you use DVC Studio. We’re confident that it’ll make your
-Machine Learning journeys so much easier. We can’t wait to hear how it goes.
+We are super excited to have you use DVC Studio. We’re confident that it’ll make
+your Machine Learning journeys so much easier. We can’t wait to hear how it
+goes.
