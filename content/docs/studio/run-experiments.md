@@ -46,11 +46,12 @@ At this point, the new experiment appears in the view table. If you just
 committed to a new branch, then a new pull request will also have been created
 from the new branch to the base branch.
 
-If your project is integrated with a CI/CD setup (e.g. GitHub Actions), the CI/CD
-setup will get invoked. If this setup includes a model training process, it will
-be triggered, which means that your ML experiment will run automatically. The
-model training can happen on any cloud or Kubernetes. For more details on how to
-set up CI/CD pipelines for your ML project, refer to [CML](https://cml.dev).
+If your project is integrated with a CI/CD setup (e.g. GitHub Actions), the
+CI/CD setup will get invoked. If this setup includes a model training process,
+it will be triggered, which means that your ML experiment will run
+automatically. The model training can happen on any cloud or Kubernetes. For
+more details on how to set up CI/CD pipelines for your ML project, refer to
+[CML](https://cml.dev).
 
 Once the experiment completes, its metrics will be available in the view table.
 You can then generate plots and trend charts for it, or compare it with the

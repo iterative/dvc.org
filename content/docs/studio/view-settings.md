@@ -39,10 +39,11 @@ You can add these details to your Git repositories in two ways:
    metrics and hyperparameters are stored in CSV, JSON or YAML files. To
    visualize such custom data, simply
    [specify the custom files](#specifying-view-settings) to use, and DVC Studio
-   will efficiently generate tables and plots for your custom input. For instance,
-   if you have an ML project for which you generate and save metrics either manually
-   or using some ML tracking tools, then you can create a view for this project by
-   specifying the file (within your Git repo) which contains your saved metrics.
+   will efficiently generate tables and plots for your custom input. For
+   instance, if you have an ML project for which you generate and save metrics
+   either manually or using some ML tracking tools, then you can create a view
+   for this project by specifying the file (within your Git repo) which contains
+   your saved metrics.
 
 ## Monorepo
 
@@ -78,10 +79,10 @@ in the view. In the menu that opens up, click on `Settings`.
   the view.
 
 - **Data remotes:** If you need to set up DVC data remotes for your view, you
-  will need to do it after your view has been created. First, create your
-  view without specifying the data remotes. Once your view is created, open the
-  View settings. Open the `Data remotes / cloud storage credentials` section.
-  The data remotes that are used in your DVC repo will be listed. Now, click on
+  will need to do it after your view has been created. First, create your view
+  without specifying the data remotes. Once your view is created, open the View
+  settings. Open the `Data remotes / cloud storage credentials` section. The
+  data remotes that are used in your DVC repo will be listed. Now, click on
   `Add new credentials`. In the form that opens up, select the provider (Amazon
   S3, GCP, etc.). Depending on the provider, you will be asked for more details
   such as the credentials name, username, password etc.
