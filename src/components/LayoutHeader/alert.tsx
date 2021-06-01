@@ -10,8 +10,8 @@ const LayoutAlert: React.FC<{ collapsed: boolean }> = ({ collapsed }) => (
     <span role="img" aria-label="shield">
       🛡
     </span>{' '}
-    <Link href="/enterprise">DVC for Enterprise</Link> - data access control &
-    compliance!{' '}
+    <Link href="https://studio.iterative.ai">DVC Studio</Link>, the online UI
+    for DVC, is live!{' '}
   </div>
 )
 
