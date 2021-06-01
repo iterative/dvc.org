@@ -36,14 +36,14 @@ them so that they share a central data location! The optimization of this local
 A central [remote storage](/doc/command-reference/remote) (Amazon S3, SSH,
 Google Drive, etc.) can also be used by many projects to synchronize cached data
 (see `dvc push` and `dvc pull`). It these caches are not set up in a shared
-location, then the DVC remote can represent primary storage instead.
+location, then the DVC remote can be the primary storage instead.
 
 > 💡 Another way to centralize the data requirements of your projects is to
 > implement a [data registry](/doc/use-cases/data-registries) pattern and
 > leverage `dvc import`.
 
-Data-driven teams may also need a specialized execution environment (such as a
-server with abundant memory and GPUs) to test
+Data science teams may also need a specialized execution environment (with
+abundant memory and GPUs, for example) to test
 [experiments](/doc/start/experiments) on large data loads. This lets different
 members confirm whether promising [data pipeline](/doc/start/data-pipelines)
 improvements developed locally scale up.
@@ -65,32 +65,3 @@ a clear mapping of who-uses-what in a collaborative setting. DVC provides this
 exact map through human-readable [metafiles](/doc/user-guide/project-structure)
 that you can analyze and manipulate as needed. Garbage collection becomes as
 simple as typing `dvc gc` with this approach.
-
-<!--
-
-Your colleagues can [checkout](/doc/command-reference/checkout) the data (from
-the shared <abbr>cache</abbr>), and have both `raw` and `clean` data files
-appear in their workspace without moving anything manually. After this, they
-could decide to continue building this [pipeline](/doc/command-reference/dag)
-and process the clean data:
-
-```dvc
-$ git pull
-$ dvc checkout
-A       raw  # Data is linked from cache to workspace.
-$ dvc run -n process_clean_data -d process.py -d clean -o processed
-          ./process.py clean processed
-$ git add dvc.yaml dvc.lock
-$ git commit -m "process clean data"
-$ git push
-```
-
-And now you can just as easily make their work appear in your workspace with:
-
-```dvc
-$ git pull
-$ dvc checkout
-A       processed
-```
-
--->
