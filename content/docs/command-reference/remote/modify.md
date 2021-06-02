@@ -186,9 +186,9 @@ parameters to customize the authentication method:
   ```
 
 - `ssl_verify` - whether or not to verify SSL certificates, or a path to a
-  custom CA certificates bundle to do so (implies `true`). The CA specified in
+  custom CA certificates bundle to do so (implies `true`). The certs in
   [AWS CLI config](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings)
-  (if any) is used by default.
+  (if any) are used by default.
 
   ```dvc
   $ dvc remote modify myremote ssl_verify false
