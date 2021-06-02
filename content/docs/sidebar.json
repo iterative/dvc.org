@@ -525,7 +525,11 @@
         "label": "Create a View",
         "slug": "create-view"
       },
-      "visualize-experiments",
+      "view-settings",
+      {
+        "label": "Visualize and Compare",
+        "slug": "visualize-experiments"
+      },
       "run-experiments",
       "teams"
     ]
