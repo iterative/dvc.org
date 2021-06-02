@@ -25,8 +25,7 @@ interface ICommunityLinkData {
 }
 
 const communityPopupData: Array<ICommunityLinkData> = [
-  { text: 'Community', href: '/community' },
-  { text: 'Meet the Community', href: '/community#meet' },
+  { text: 'Meet the Community', href: '/community' },
   { text: 'Contribute', href: '/community#contribute' },
   { text: 'Learn', href: '/community#learn' },
   { text: 'Events', href: '/community#events' }
