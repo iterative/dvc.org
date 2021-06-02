@@ -61,16 +61,20 @@ export const Popup: React.FC<{
   </div>
 )
 
-export const CommunityPopup: React.FC<{ isVisible: boolean }> = ({
-  isVisible
-}) => (
+export const CommunityPopup: React.FC<{
+  isVisible: boolean
+  closePopup: () => void
+}> = ({ isVisible, closePopup }) => (
   <Popup className={styles.communityPopup} isVisible={isVisible}>
     {communityPopupData.map(({ text, href }, i) => (
       <Link
         className={styles.link}
         href={href}
         key={i}
-        onClick={(): void => logEvent('menu', 'community')}
+        onClick={(): void => {
+          logEvent('menu', 'community')
+          closePopup()
+        }}
       >
         {text}
       </Link>
@@ -78,13 +82,20 @@ export const CommunityPopup: React.FC<{ isVisible: boolean }> = ({
   </Popup>
 )
 
-export const OtherToolsPopup: React.FC<{ isVisible: boolean }> = ({
-  isVisible
-}) => (
+export const OtherToolsPopup: React.FC<{
+  isVisible: boolean
+  closePopup: () => void
+}> = ({ isVisible, closePopup }) => (
   <Popup className={styles.otherToolsPopup} isVisible={isVisible}>
     {otherToolsPopupData.map(
       ({ title, icon, description, href, target }, i) => (
-        <Link className={styles.link} href={href} key={i} target={target}>
+        <Link
+          className={styles.link}
+          href={href}
+          key={i}
+          target={target}
+          onClick={closePopup}
+        >
           {icon}
           <p className={styles.title}>
             {title}

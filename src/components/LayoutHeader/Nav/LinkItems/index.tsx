@@ -175,9 +175,15 @@ const LinkItems: React.FC = ({}) => {
                 />
               </button>
               {item.popup === 'OtherToolsPopup' ? (
-                <OtherToolsPopup isVisible={isOtherToolsPopupOpen} />
+                <OtherToolsPopup
+                  closePopup={closeAllPopups}
+                  isVisible={isOtherToolsPopupOpen}
+                />
               ) : (
-                <CommunityPopup isVisible={isCommunityPopupOpen} />
+                <CommunityPopup
+                  closePopup={closeAllPopups}
+                  isVisible={isCommunityPopupOpen}
+                />
               )}
             </>
           ) : (
