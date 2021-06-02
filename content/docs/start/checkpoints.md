@@ -11,8 +11,8 @@ hyperparameters and it's desirable to restart the experimentation from a good
 point.
 
 Along with experimentation features, DVC 2.0 introduced the _checkpoints_ that
-does not depend to any particular library or language. Here we'll cover how to
-add checkpoints to a deep learning project.
+may be used to store the training progress in special Git objects. Here we'll
+cover how to add checkpoints to a deep learning project.
 
 <details>
 
