@@ -7,7 +7,7 @@ With DVC experiments and checkpoints, you can:
 
 - Implement the best practice in deep learning to save your model weights as
   checkpoints.
-- Track all code and data changes corresponded to a checkpoint.
+- Track all code and data changes corresponding to the checkpoints.
 - See when metrics start diverging and revert to the optimal checkpoint.
 - Automate the process of tracking every training epoch.
 
@@ -25,7 +25,7 @@ the MNIST dataset.
 
 <details>
 
-## 💡 Setting up the project
+## ⚙ Setting up the project
 
 You can follow along with the steps here or you can clone the repo directly from
 GitHub and play with it. To clone the repo, run the following commands.
