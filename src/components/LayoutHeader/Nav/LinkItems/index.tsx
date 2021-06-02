@@ -2,7 +2,8 @@ import React, { useRef } from 'react'
 import cn from 'classnames'
 
 import Link from '../../../Link'
-import { OtherToolsPopup, CommunityPopup, useNavPopups } from '../Popup'
+import { OtherToolsPopup, CommunityPopup } from '../Popup'
+import { useNavPopups } from '../Popup/util'
 
 import { ReactComponent as ArrowUpSVG } from '../../../../../static/img/arrow-up-icon.svg'
 import { ReactComponent as ArrowDownSVG } from '../../../../../static/img/arrow-down-icon.svg'
