@@ -16,7 +16,7 @@ To contribute documentation, these are the relevant locations:
 - [Content](https://github.com/iterative/dvc.org/tree/master/content/docs)
   (`content/docs/`):
   [Markdown](https://guides.github.com/features/mastering-markdown/) files. One
-  file - one page of the documentation.
+  file — one page of the documentation.
 - [Images](https://github.com/iterative/dvc.org/tree/master/static/img)
   (`static/img/`): Add new images (`.png`, `.svg`, etc.) here. Use them in
   Markdown files like this: `![](/img/<filename>.gif)`.
@@ -208,5 +208,5 @@ We also use "emoji" symbols sparingly for visibility on certain notes. Mainly:
 - ⚠️ Important warnings or disclaimers related to advanced DVC usage
 - 💡 Useful notes and tips, often related to external tools and integrations
 
-> Some other emojis currently in use here and there: ⚡✅🙏🐛⭐(ℹ️) (among
+> Some other emojis currently in use here and there: ⚡✅🙏🐛⭐⚙️(ℹ️) (among
 > others).

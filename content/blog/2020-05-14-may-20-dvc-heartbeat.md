@@ -134,7 +134,7 @@ image="/uploads/images/2020-05-14/dev_logo.png"/>
 - [Vimarsh Karbhari](https://medium.com/@vimarshk) blogged about how teams that
   work with data can strategize better about versioning their data and analysis
   pipelines. On the opposite end of giving very practical recommendations,
-  Vimarsh stresses a deliberate and caeful approach. He emphasizes how the
+  Vimarsh stresses a deliberate and careful approach. He emphasizes how the
   team's choices should depend on factors like project maturity and how much
   flexibility is going to be needed. It's a solid overview of how to begin
   thinking about MLOps at a high level.

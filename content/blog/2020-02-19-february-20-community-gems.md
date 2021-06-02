@@ -10,22 +10,21 @@ picture: 2020-02-19/feb20_gems_header_gr.png
 author: elle_obrien
 commentsUrl: https://discuss.dvc.org/t/feb-20-community-gems/330
 tags:
-  - Discord
   - Google Drive
   - Azure
-  - Gems
+  - Community
   - Homebrew
 ---
 
 ## Discord gems
 
-Welcome to the Februrary roundup of useful, intriguing, and good-to-know
+Welcome to the February roundup of useful, intriguing, and good-to-know
 discussions going on with DVC users and developers. Let's dive right in with
 some questions from our Discord channel.
 
 ### Q: [If I have multiple outputs from a DVC pipeline and only want to checkout one, what command would I run?](https://discordapp.com/channels/485586884165107732/563406153334128681/670233820326264843)
 
-By defult, `dvc checkout` is written for a
+By default, `dvc checkout` is written for a
 [Git-like experience](https://dvc.org/doc/command-reference/checkout), meaning
 that it will sync your local workspace with all the model files, dependencies,
 and outputs specified by a project's `.dvc` files. If you only want to access

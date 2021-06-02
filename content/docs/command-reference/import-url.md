@@ -172,7 +172,7 @@ in the [Get Started](/doc/start).
 
 <details>
 
-### Click and expand to setup example
+### Click and expand to set up example
 
 Start by cloning our example repo if you don't already have it. Then move into
 the repo and checkout the
@@ -205,7 +205,7 @@ To track the changes with git, run:
 
 Let's take a look at the changes to the `data.xml.dvc`:
 
-```diff
+```git
 +md5: c4d6740ee09950bb532d418b8ae0b52e
 +frozen: true
 +deps:
@@ -289,7 +289,7 @@ $ rm -f code.zip
 
 <details>
 
-### Click and expand to setup the environment
+### Click and expand to set up the environment
 
 Let's install the requirements. But before we do that, we **strongly** recommend
 creating a
@@ -368,8 +368,8 @@ to your project without downloading it to the local file system (for using it
 later/elsewhere). The `--to-remote` option let you skip the download, while
 storing the imported data [remotely](/doc/command-reference/remote).
 
-Let's setup a sample remote and create an import `.dvc` file without downloading
-the target data, transferring it directly to remote storage instead:
+Let's set up a sample remote and create an import `.dvc` file without
+downloading the target data, transferring it directly to remote storage instead:
 
 ```dvc
 $ mkdir /tmp/dvcstore

@@ -10,9 +10,8 @@ picture: 2020-03-12/march_20_header.png
 author: elle_obrien
 commentsUrl: https://discuss.dvc.org/t/march-20-community-gems/336
 tags:
-  - Discord
   - Tags
-  - Gems
+  - Community
   - Data registry
 ---
 
@@ -79,7 +78,7 @@ dependencies (for example, a training datset tracked by DVC) have been found. So
 if you had a hypoethetical DVC pipeline whose final process was `deploy.dvc`,
 you could run `dvc repro -f deploy.dvc` to rerun the whole pipeline.
 
-### Q: What's the best way to orgnize DVC repositories if I have several training datasets shared by several projects? Some projects use only one dataset while other use several. [Can one project have `.dvc` files corresponding to different remotes?](https://discordapp.com/channels/485586884165107732/563406153334128681/670664813973864449)
+### Q: What's the best way to organize DVC repositories if I have several training datasets shared by several projects? Some projects use only one dataset while other use several. [Can one project have `.dvc` files corresponding to different remotes?](https://discordapp.com/channels/485586884165107732/563406153334128681/670664813973864449)
 
 Yes, one project directory can contain datasets from several different DVC
 remotes. Specifically, DVC has functions `dvc import` and `dvc get` that emulate

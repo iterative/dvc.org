@@ -134,7 +134,12 @@
           "merge-conflicts"
         ]
       },
-      "experiment-management",
+      {
+        "label": "Experiment Management",
+        "slug": "experiment-management",
+        "source": "user-guide/experiment-management/index.md",
+        "children": ["checkpoints"]
+      },
       "setup-google-drive-remote",
       "large-dataset-optimization",
       "external-dependencies",
@@ -378,12 +383,12 @@
             "slug": "add"
           },
           {
-            "label": "remote default",
-            "slug": "default"
-          },
-          {
             "label": "remote modify",
             "slug": "modify"
+          },
+          {
+            "label": "remote default",
+            "slug": "default"
           },
           {
             "label": "remote list",
@@ -507,6 +512,26 @@
         "label": "Install as a Package",
         "slug": "cml-with-npm"
       }
+    ]
+  },
+  {
+    "label": "Studio",
+    "slug": "studio",
+    "source": "studio/index.md",
+    "icon": "studio",
+    "children": [
+      "get-started",
+      {
+        "label": "Create a View",
+        "slug": "create-view"
+      },
+      "view-settings",
+      {
+        "label": "Visualize and Compare",
+        "slug": "visualize-experiments"
+      },
+      "run-experiments",
+      "teams"
     ]
   },
   {

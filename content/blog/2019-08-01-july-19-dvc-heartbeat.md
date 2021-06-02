@@ -23,7 +23,7 @@ commentsUrl: https://discuss.dvc.org/t/july-19-dvc-heartbeat/288
 tags:
   - Heartbeat
   - Open Source Summit
-  - Discord Gems
+  - Community
 ---
 
 ## News and links

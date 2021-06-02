@@ -6,7 +6,7 @@ Remove unnecessary `dvc experiments` from the <abbr>project</abbr>.
 
 ```usage
 usage: dvc exp gc [-h] [-q | -v] [-w]
-                  [-a] [-T] [--all-commits] [--queued] [-f]
+                  [-a] [-T] [-A] [--queued] [-f]
 ```
 
 ## Description
