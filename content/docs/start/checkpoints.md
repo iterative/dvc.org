@@ -69,8 +69,8 @@ output, e.g., _model_, we can specify a checkpoint on it, so that DVC stores
 these outputs as special objects.
 
 In order to specify `models/fashion-mnist/model.h5` as a checkpoint, we convert
-the item into a [YAML 1.2 dictionary key,][yamldk] and specify
-`checkpoints: true` as an element, like the following:
+the item into a YAML 1.2 dictionary key and specify `checkpoints: true` as an
+element, like the following:
 
 ```yaml
 train:
@@ -83,7 +83,7 @@ train:
 Now, when we run the pipeline:
 
 ```dvc
-$ dvc exp run
+$ dvc exp run --set-param train.epochs=1
 ```
 
 We get a new experiment consisting of a single epoch, and running again and
@@ -92,7 +92,7 @@ again stores each model file in separate experiments.
 You can run the pipeline indefinitely:
 
 ```dvc
-$ while true ; do dvc exp run ; done
+$ while true ; do dvc exp run -S train.epochs=1 ; done
 ```
 
 Terminate it using `Ctrl-c` after a few epochs.
