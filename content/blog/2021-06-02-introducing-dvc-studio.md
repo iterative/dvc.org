@@ -16,7 +16,7 @@ descriptionLong: |
   buttons. Find all the exciting details in this blog post.
 picture: 2021-06-02/dvc-studio-release.png
 author: tapa_dipti_sitaula
-commentsUrl: https://discuss.dvc.org/t/dvc-may-2021-heartbeat/
+commentsUrl: https://discuss.dvc.org/t/introducing-dvc-studio/
 tags:
   - Release
   - DVC Studio
