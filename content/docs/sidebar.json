@@ -64,6 +64,12 @@
         "tutorials": {
           "katacoda": "https://katacoda.com/dvc/courses/get-started/experiments"
         }
+      },
+      {
+        "slug": "checkpoints",
+        "tutorials": {
+          "katacoda": "https://katacoda.com/dvc/courses/get-started"
+        }
       }
     ]
   },
