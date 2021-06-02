@@ -401,9 +401,9 @@ authentication:
   $ dvc remote modify --local myremote sas_token 'mysecret'
   ```
 
-* `allow_anonymous_login` - whether to fall back to anonymous login. If none
-  of the options above are specified besides `account_name`, DVC will try
-  to connect anonymously for public buckets:
+* `allow_anonymous_login` - whether to fall back to anonymous login. If none of
+  the options above are specified besides `account_name`, DVC will try to
+  connect anonymously for public buckets:
 
   ```dvc
   $ dvc remote modify myremote allow_anonymous_login 'true'
