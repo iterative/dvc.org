@@ -23,5 +23,5 @@ Use DVC, CML and Studio to:
 
 - Use the power of Git to track and preserve all your experiments.
 
-- Run [CI/CD](https://en.wikipedia.org/wiki/CI/CD) for your ML projects on cloud
-  resources of your choice without any new tools.
+- Run experiments for your ML projects on cloud resources of your choice without
+  any new tools.

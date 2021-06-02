@@ -13,11 +13,11 @@ https://www.youtube.com/watch?v=hKf4twg832g
 
 A _view_ is an interactive representation of the experiments run in your ML
 project. DVC Studio identifies datasets, metrics and hyperparameters in your ML
-experiments. These details can either be in DVC repositories or you can add
+experiments. These values can either be in DVC repositories or you can add
 custom files with the required data. Refer to
 [View settings](/doc/studio/view-settings) to understand the different ways in
 which you can prepare your Git repository for use with DVC Studio. Using these
-details, DVC Studio creates a View, which is a tabular presentation of all your
+values, DVC Studio creates a View, which is a tabular presentation of all your
 experiments along with their datasets, metrics ad hyperparameters. You can also
 generate plots and compare experiments here.
 
@@ -44,7 +44,7 @@ You can dive deep into all the experiments committed to the repo. For this, open
 the view by clicking the view name (in this case, `example-get-started`).
 
 A table will be generated as shown below. This includes metrics, hyperparameters
-and information about the datasets. All the data is flattened and neatly
+and information about the datasets. All these values are flattened and neatly
 presented for you to evaluate and compare the experiments.
 
 ![](https://static.iterative.ai/img/studio/view_components_v2.png)
