@@ -3,25 +3,27 @@
 Here, we will walk you through a tutorial to use DVC Studio for collaboration on
 your ML projects. You will need access to a GitHub, GitLab or Bitbucket account
 which has access to the Git repositories you want to connect. DVC Studio creates
-[views](#what-is-a-view) from repositories when you connect to them.
+[views](#dvc-studio-views-page) from repositories when you connect to them.
 
 The following video provides you a quick overview of DVC Studio.
 
 https://www.youtube.com/watch?v=hKf4twg832g
 
-## What is a view?
+## Preparing your repositories
 
-A _view_ is an interactive representation of the experiments run in your ML
-project. DVC Studio identifies datasets, metrics and hyperparameters in your ML
-experiments. These values can either be in DVC repositories or you can add
-custom files with the required data. Refer to
-[View settings](/doc/studio/view-settings) to understand the different ways in
-which you can prepare your Git repository for use with DVC Studio. Using these
-values, DVC Studio creates a View, which is a tabular presentation of all your
-experiments along with their datasets, metrics ad hyperparameters. You can also
-generate plots and compare experiments here.
+DVC Studio identifies datasets, metrics and hyperparameters in your Git
+repositories. These values can either be in DVC repositories or you can add
+custom files with the required values. Read more about the different ways in
+which you can prepare your Git repository for use with DVC Studio
+[here](/doc/studio/view-settings#non-dvc-repositories).
 
 ## DVC Studio Views page
+
+By identifying the datasets, metrics and hyperparameters in your Git
+repositories, DVC Studio creates a **view**, which is an interactive, tabular
+representation of all your ML experiments. In this view, you will not only see
+your complete experiment history, you can also generate plots, compare
+experiments, and run new experiments.
 
 In your browser, open <https://studio.iterative.ai>. Sign in with your Github,
 GitLab, or Bitbucket account.

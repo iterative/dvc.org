@@ -522,10 +522,13 @@
     "children": [
       "get-started",
       {
-        "label": "Create a View",
+        "label": "Create and Share View",
         "slug": "create-view"
       },
-      "view-settings",
+      {
+        "label": "Configure View",
+        "slug": "view-settings"
+      },
       {
         "label": "Visualize and Compare",
         "slug": "visualize-experiments"
