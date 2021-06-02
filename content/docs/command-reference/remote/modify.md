@@ -339,8 +339,8 @@ authentication:
    (AD)
    [service principal](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal)
    auth is performed.
-3. If either `account_key` or `sas_token` (in this order) are set, then DVC will
-   try to connect with those options.
+3. DVC will try next to connect with `account_key` or `sas_token` (in this
+   order) if either are provided.
 4. If `allow_anonymous_login` is set to `True`, then DVC will try to connect
    [anonymously](https://docs.microsoft.com/en-us/azure/storage/blobs/anonymous-read-access-configure).
 5. If none of the parameters above are set except `account_name`, then DVC will
