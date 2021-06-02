@@ -25,7 +25,13 @@ You can add these details to your Git repositories in two ways:
    version your code, data and models all within your Git repositories. By using
    DVC, you can be sure not to bloat your repositories with large volumes of
    data or huge models. These large assets reside in the cloud or other remote
-   storage locations. You will simply track their version info in Git.
+   storage locations. You will simply track their version info in Git. DVC also
+   enables you to
+   [share your data and model files](/doc/use-cases/sharing-data-and-model-files),
+   [create data registries](/doc/use-cases/data-registries),
+   [create data pipelines](/doc/start/data-pipelines), connect them with
+   [CML](/doc/cml) for CI/CD in machine learning, and so on. Find more about the
+   features and benefits of DVC [here](/doc/start).
 
    Refer to the [DVC documentation](https://dvc.org/doc) to initialize a DVC
    repository. You can then connect to this DVC repository and create a view as
@@ -98,3 +104,8 @@ in the view. In the menu that opens up, click on `Settings`.
   For details on what permissions are required, refer to the DVC documentation
   on
   [supported storage types](/doc/command-reference/remote/add#supported-storage-types).
+
+  Note that DVC Studio uses the credentials only to read plots/metrics files if
+  they are not saved into Git. It does not access any other data in your remote
+  storage. And you do not need to provide the credentials if any DVC data remote
+  in not used in your Git repository.

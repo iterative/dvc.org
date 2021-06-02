@@ -3,7 +3,7 @@
 Here, we will walk you through a tutorial to use DVC Studio for collaboration on
 your ML projects. You will need access to a GitHub, GitLab or Bitbucket account
 which has access to the Git repositories you want to connect. DVC Studio creates
-views from repositories when you connect to them.
+[views](#what-is-a-view) from repositories when you connect to them.
 
 The following video provides you a quick overview of DVC Studio.
 
@@ -12,14 +12,14 @@ https://www.youtube.com/watch?v=hKf4twg832g
 ## What is a view?
 
 A _view_ is an interactive representation of the experiments run in your ML
-project. DVC Studio automatically identifies datasets, metrics and
-hyperparameters in your ML experiments. The data can either be in DVC
-repositories or you can add custom files with the required data. Refer to
+project. DVC Studio identifies datasets, metrics and hyperparameters in your ML
+experiments. These details can either be in DVC repositories or you can add
+custom files with the required data. Refer to
 [View settings](/doc/studio/view-settings) to understand the different ways in
-which you can prepare your Git repository for use with DVC Studio. Using this
-data, DVC Studio creates a summary view. This includes tables of all the metrics
-across all your experiments. You can also generate plots and compare experiments
-here.
+which you can prepare your Git repository for use with DVC Studio. Using these
+details, DVC Studio creates a View, which is a tabular presentation of all your
+experiments along with their datasets, metrics ad hyperparameters. You can also
+generate plots and compare experiments here.
 
 ## DVC Studio Views page
 
