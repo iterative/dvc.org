@@ -99,7 +99,9 @@ export const OtherToolsPopup: React.FC<{
           {icon}
           <p className={styles.title}>
             {title}
-            <ExternalLinkIcon className={styles.titleIcon} />
+            {/^https?:\/\//.test(href) && (
+              <ExternalLinkIcon className={styles.titleIcon} />
+            )}
           </p>
           <p className={styles.description}>{description}</p>
         </Link>
