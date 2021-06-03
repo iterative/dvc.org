@@ -19,19 +19,20 @@ once they're no longer needed.
 ## Running experiments
 
 In the previous page, we learned how to tune
-[ML pipelines](/doc/start/data-pipelines) and compare the changes. In this
-section we'll use a
-[Get Started to Experiments project](https://github.com/iterative/get-started-experiments)
-to illustrate experimentation features in DVC 2.0
+[ML pipelines](/doc/start/data-pipelines) and
+[compare the changes](/doc/start/metrics-parameters-plots). In this section
+we'll use a
+[Get Started with Experiments project](https://github.com/iterative/get-started-experiments)
+to illustrate experimentation features in DVC 2.0.
 
 <details>
 
-### 🆕 Click here for the instructions to install the project
+### ⚙️ Click here for the installation instructions
 
-These commands are run in
+These commands are run in the
 [`get-started-experiments`](https://github.com/iterative/get-started-experiments)
-project. You can run these commands after cloning the repository and install the
-requirements.
+project. You can run these commands after cloning the repository and installing
+the requirements.
 
 Please clone and create a virtual environment:
 
@@ -52,7 +53,7 @@ please refer to the
 
 `dvc exp run` makes it easy to change <abbr>hyperparameters</abbr> and run a new
 experiment. We'll use it to search for parameters to increase the classification
-performance of our model using
+performance of our model using the
 [Fashion-MNIST](https://github.com/iterative/get-started-experiments) dataset.
 
 In order to run a baseline experiment with the default parameters defined in
@@ -67,10 +68,9 @@ Stage 'train' didn't change, skipping
 Stage 'evaluate' didn't change, skipping
 ```
 
-This resembles `dvc repro` without any command-line arguments. However, when
-using `dvc repro` we need to update `params.yaml` manually, run the pipeline, if
-the results are worth it commit them to DVC and Git. `dvc exp` automates this
-process through its subcommands.
+This resembles `dvc repro`. However, when using `dvc repro` we need to update
+`params.yaml` manually, run the pipeline, if the results are worth it commit
+them to DVC and Git. `dvc exp` automates this process through its subcommands.
 
 Let's see some metrics produced by this baseline experiment:
 
@@ -112,7 +112,7 @@ running experiments. The `--set-param` (or `-S`) flag sets the values for
 
 Check that the `model.cnn.units` value has been updated in `params.yaml`:
 
-```git
+```diff
  model:
    cnn:
 -    conv_units: 16
@@ -346,7 +346,7 @@ $ dvc exp show -n 2 --no-timestamp \
 
 You can continue to experiment with
 [the project](https://github.com/iterative/get-started-experiments). There are
-many parameters available to modify, e.g., `noise` or `units` in Dense layer of
-the network. Please see the `README.md` file of the project for these. Don't
+many parameters available to modify, e.g., `noise` or `units` in the Dense layer
+of the network. Please see the `README.md` file of the project for these. Don't
 forget to [notify us](https://dvc.org/chat) if you happen to find good
 parameters.
