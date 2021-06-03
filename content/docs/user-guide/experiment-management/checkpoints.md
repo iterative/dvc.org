@@ -25,7 +25,7 @@ the MNIST dataset.
 
 <details>
 
-## ⚙ Setting up the project
+## ⚙️ Setting up the project
 
 You can follow along with the steps here or you can clone the repo directly from
 GitHub and play with it. To clone the repo, run the following commands.
