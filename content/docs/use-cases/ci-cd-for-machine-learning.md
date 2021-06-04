@@ -79,11 +79,12 @@ including reporting metric changes with tables and graphs in pull request
 comments.
 
 **Refine in the Cloud**: Rather than frequently updating models locally (e.g.
-based on new data from regular feeds), DVC lets you refine in the cloud. For
-example, CI providers allow scheduling of regular jobs. Every day, a job could
-use DVC to pull in data from a regularly updated source, checkout a pre-existing
-model, and then deploy an updated model refined on the additional data.
+based on new data from regular feeds), DVC and CML let you refine in the cloud.
+For example, CI providers allow scheduling of regular jobs. Every day, a job
+could use CML to provision a GPU server on which DVC will pull in data from a
+regularly updated source, checkout a pre-existing model, and then deploy an
+updated model refined on the additional data.
 
-**Experiment in the Cloud**: Alternatively, DVC can be used to do research and
-run [experiments](/doc/start/experiments) in the cloud -- such as an entire
-hyperparameter search!
+**Experiment in the Cloud**: Alternatively, DVC and CML can be used to do
+research and run [experiments](/doc/start/experiments) in the cloud -- such as
+an entire hyperparameter search!
