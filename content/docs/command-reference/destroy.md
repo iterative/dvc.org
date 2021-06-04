@@ -57,27 +57,26 @@ $ ls -a
 .git code.py foo
 ```
 
-## Example: External cache directory
+## Example: Preserve an external cache directory
 
-By default, the <abbr>cache</abbr> location is `.dvc/cache`. Let's change the
-cache location to `/mnt/cache` and then execute `dvc destroy` command:
+By default, the <abbr>cache</abbr> location is `.dvc/cache`. Let's change its
+location to `/mnt/cache` using `dvc cache dir`, add some data, and then try
+`dvc destroy`:
 
 ```dvc
-$ dvc init
-$ echo foo > foo
 $ dvc cache dir /mnt/cache
+$ echo foo > foo
 $ dvc add foo
 ```
 
-`dvc cache dir` changed the location of the cache directory to an external
-location. Contents of the <abbr>project</abbr>:
+Contents of the <abbr>workspace</abbr>:
 
 ```dvc
 $ ls -a
 .dvc .git code.py foo foo.dvc
 ```
 
-Contents of the external `/mnt/cache` directory:
+Contents of the (external) cache (`b1/946a...` contains `foo`):
 
 ```dvc
 $ tree /mnt/cache
@@ -86,7 +85,7 @@ $ tree /mnt/cache
     └── 946ac92492d2347c6235b4d2611184
 ```
 
-Let's execute `dvc destroy`:
+OK, let's destroy the <abbr>DVC project</abbr>:
 
 ```dvc
 $ dvc destroy
@@ -99,9 +98,9 @@ $ ls -a
 .git code.py foo
 ```
 
-`dvc destroy` removed `foo.dvc` and the internal `.dvc/` directory from
-<abbr>project</abbr>. But the cache files that are present in `/mnt/cache`
-persist:
+`foo.dvc` and the internal `.dvc/` directory were removed (this would include
+any cached data prior to changing the cache location). But the cache files in
+`/mnt/cache` persist:
 
 ```dvc
 $ tree /mnt/cache

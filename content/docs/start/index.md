@@ -15,7 +15,7 @@ running `dvc init` inside a Git project:
 
 In expandable sections that start with the ⚙️ emoji, we'll be providing more
 information for those trying to run the commands. It's up to you to pick the
-best way to read the material - read the text (skip sections like this, and it
+best way to read the material — read the text (skip sections like this, and it
 should be enough to understand the idea of DVC), or try to run them and get the
 first hand experience.
 
@@ -76,3 +76,8 @@ by one in the next few pages:
   comparison across many ML experiments. Track your experiments with automatic
   versioning and checkpoint logging. Compare differences in parameters, metrics,
   code, and data. Apply, drop, roll back, resume, or share any experiment.
+
+**New!** Once you set up your DVC repository, you can also interact with it
+using DVC Studio, the online UI for DVC.
+[Here's a demo](https://studio.iterative.ai/team/Iterative/views/example-get-started-zde16i6c4g)
+of how that looks like!

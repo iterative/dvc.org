@@ -192,7 +192,7 @@ We'll close on a nice tweet from [Russell Jurney](https://datasyndrome.com/):
 https://twitter.com/rjurney/status/1266735603921547264
 
 Thanks, we couldn't do it without our community! As always, thanks for joining
-us and reading. There are lots ofways to stay in touch and we always love to
+us and reading. There are lots of ways to stay in touch and we always love to
 hear from you. Follow us on [Twitter](twitter.com/dvcorg), join our
 [Discord server](https://discordapp.com/invite/dvwXA2N), or leave a blog
 comment. Until next time! 😎

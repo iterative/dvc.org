@@ -515,6 +515,29 @@
     ]
   },
   {
+    "label": "Studio",
+    "slug": "studio",
+    "source": "studio/index.md",
+    "icon": "studio",
+    "children": [
+      "get-started",
+      {
+        "label": "Create and Share View",
+        "slug": "create-view"
+      },
+      {
+        "label": "Configure View",
+        "slug": "view-settings"
+      },
+      {
+        "label": "Visualize and Compare",
+        "slug": "visualize-experiments"
+      },
+      "run-experiments",
+      "teams"
+    ]
+  },
+  {
     "label": "Dvclive",
     "slug": "dvclive",
     "source": "dvclive/index.md",

@@ -340,8 +340,8 @@ Only the hash values of the `dir/` directory (with `.dir` file extension) and
 
 When you have a large dataset in an external location, you may want to add it to
 the <abbr>project</abbr> without having to copy it into the workspace. Maybe
-your local disk doesn't have enough space, but you have setup an
-[external cache](/doc/use-cases/shared-development-server#configure-the-external-shared-cache)
+your local disk doesn't have enough space, but you have set up an
+[external cache](/doc/user-guide/managing-external-data#setting-up-an-external-cache)
 that could handle it.
 
 The `--out` option lets you add external paths in a way that they are
@@ -379,7 +379,7 @@ as if it was in your project, but without downloading it locally (for now). The
 [remotely](/doc/command-reference/remote) so it can be
 [pulled](/doc/command-reference/plots) later.
 
-Let's setup a sample remote and add the `data.xml` to our remote storage from
+Let's set up a sample remote and add the `data.xml` to our remote storage from
 the given remote location:
 
 ```dvc

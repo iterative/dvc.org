@@ -46,26 +46,32 @@ $ sudo find /home/shared/dvc-cache -type f -exec chmod 0444 {} \;
 $ sudo chown -R myuser:ourgroup /home/shared/dvc-cache/
 ```
 
-## Configure the external shared cache
+## Configure the shared cache
 
-Tell DVC to use the directory we've set up above as the <abbr>cache</abbr> for
-your <abbr>project</abbr>:
+A <abbr>cache</abbr> directory outside the <abbr>workspace</abbr> is called an
+[external cache](/doc/user-guide/managing-external-data#setting-up-an-external-cache).
+Set it to the directory we created earlier with `dvc cache dir` and configure it
+with `dvc config cache`:
 
 ```dvc
 $ dvc cache dir /home/shared/dvc-cache
-```
 
-And tell DVC to set group permissions on newly created or downloaded cache
-files:
-
-```dvc
 $ dvc config cache.shared group
+$ dvc config cache.type symlink
 ```
 
-> See `dvc cache dir` and `dvc config cache` for more information.
+Above, we first tell DVC to set group permissions on new cache files. Then we
+enable symlinks to avoid having copies from the external cache to the
+<abbr>workspace</abbr>.
 
-If you're using Git, commit changes to your project's config file (`.dvc/config`
-by default):
+> See `dvc config cache` and
+> [File link types](/doc/user-guide/large-dataset-optimization) for more info.
+
+⚠️ Note that enabling soft/hard links causes DVC to protect the linked data,
+because editing them in-place would corrupt the cache. See `dvc unprotect`.
+
+If you're using Git, commit the changes to your project's config file (usually
+`.dvc/config`):
 
 ```dvc
 $ git add .dvc/config
