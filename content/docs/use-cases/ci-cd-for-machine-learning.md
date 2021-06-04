@@ -44,7 +44,7 @@ This concerns training in the cloud. For example:
 = ❤️
 
 Normally, CI/CD is hard to set up, configure, and maintain -- especially for
-data and ML pipelines. DVC can alleviate most (in not all) of the
+data and ML pipelines. DVC and CML can alleviate most (in not all) of the
 [hidden technical debt in ML](https://papers.nips.cc/paper/2015/file/86df7dcfd896fcaf2674f757a2463eba-Paper.pdf).
 Advantages include:
 
