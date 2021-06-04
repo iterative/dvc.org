@@ -85,7 +85,7 @@ Note that the experiment results are identical with the values checked-out from
 Git. By default each experiment is given a name automatically. We can set the
 name by the `--name/-n` argument.
 
-Let's change the number of units in CNN and make another experiment:
+Let's change the number of units in the CNN and make another experiment:
 
 ```dvc
 $ dvc exp run -n cnn-32 --set-param model.cnn.conv_units=32
@@ -150,7 +150,7 @@ Instead of running the experiments one-by-one, we can define them without
 executing. This is especially handy when you have long running experiments to
 try.
 
-We add experiments to the queue using `--queue` option of `dvc exp run`. Here,
+We add experiments to the queue using the `--queue` option of `dvc exp run`. Here,
 we also set the names of experiments to observe the results clearly:
 
 ```dvc
