@@ -4,9 +4,6 @@ import cn from 'classnames'
 import Link from '../../../Link'
 import { logEvent } from '../../../../utils/front/ga'
 
-import { ReactComponent as CmlSVG } from '../../../../../static/img/cml-icon.svg'
-import { ReactComponent as StudioSVG } from '../../../../../static/img/studio-icon.svg'
-import { ReactComponent as LogoSVG } from '../../../../../static/img/logo.svg'
 import { ReactComponent as ExternalLinkIcon } from '../../../../../static/img/external-link-icon.svg'
 
 import styles from './styles.module.css'
@@ -15,7 +12,7 @@ interface IOtherToolsLinkData {
   href: string
   title: string
   description: string
-  icon: JSX.Element
+  iconClass: string
   target?: '_blank'
 }
 
@@ -34,19 +31,19 @@ const communityPopupData: Array<ICommunityLinkData> = [
 const otherToolsPopupData: Array<IOtherToolsLinkData> = [
   {
     title: 'Studio',
-    icon: <StudioSVG className={styles.linkIcon} />,
+    iconClass: styles.studioIcon,
     description: 'Track experiments and share insights from ML projects',
     href: 'https://studio.iterative.ai/'
   },
   {
     title: 'DVC',
-    icon: <LogoSVG className={styles.linkIcon} />,
+    iconClass: styles.dvcIcon,
     description: 'Open-source version control system for ML projects',
     href: '/'
   },
   {
     title: 'CML',
-    icon: <CmlSVG className={styles.linkIcon} />,
+    iconClass: styles.cmlIcon,
     description: 'Open-source CI/CD for ML projects',
     href: 'https://cml.dev/'
   }
@@ -88,7 +85,7 @@ export const OtherToolsPopup: React.FC<{
 }> = ({ isVisible, closePopup }) => (
   <Popup className={styles.otherToolsPopup} isVisible={isVisible}>
     {otherToolsPopupData.map(
-      ({ title, icon, description, href, target }, i) => (
+      ({ title, iconClass, description, href, target }, i) => (
         <Link
           className={styles.link}
           href={href}
@@ -96,7 +93,7 @@ export const OtherToolsPopup: React.FC<{
           target={target}
           onClick={closePopup}
         >
-          {icon}
+          <div className={cn(styles.linkIcon, iconClass)} />
           <p className={styles.title}>
             {title}
             {/^https?:\/\//.test(href) && (

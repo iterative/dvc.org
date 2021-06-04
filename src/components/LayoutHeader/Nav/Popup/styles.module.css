@@ -33,6 +33,18 @@
   }
 }
 
+.cmlIcon {
+  background-image: url(../../../../../static/img/cml-icon.svg);
+}
+
+.dvcIcon {
+  background-image: url(../../../../../static/img/logo.svg);
+}
+
+.studioIcon {
+  background-image: url(../../../../../static/img/studio-icon.svg);
+}
+
 .communityPopup {
   row-gap: 4px;
   width: 260px;
@@ -63,6 +75,7 @@
       grid-area: icon;
       display: flex;
       align-items: center;
+      background-size: contain;
     }
 
     .title {

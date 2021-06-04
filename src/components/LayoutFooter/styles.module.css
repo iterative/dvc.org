@@ -3,6 +3,10 @@
   background-color: #40364d;
 }
 
+.div {
+  background-image: url(../../../static/img/cml-icon.svg);
+}
+
 .container {
   margin: 0 auto;
   padding: 24px 32px;
