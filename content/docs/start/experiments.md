@@ -150,8 +150,8 @@ Instead of running the experiments one-by-one, we can define them without
 executing. This is especially handy when you have long running experiments to
 try.
 
-We add experiments to the queue using the `--queue` option of `dvc exp run`. Here,
-we also set the names of experiments to observe the results clearly:
+We add experiments to the queue using the `--queue` option of `dvc exp run`.
+Here, we also set the names of experiments to observe the results clearly:
 
 ```dvc
 $ dvc exp run --queue -n cnn-48 -S model.cnn.conv_units=48
