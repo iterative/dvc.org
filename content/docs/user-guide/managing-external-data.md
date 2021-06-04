@@ -39,8 +39,9 @@ their remote URLs or external paths to `dvc add`, or put them in `dvc.yaml`
 > external cache, because it may cause data collisions: the hash of an external
 > output could collide with that of a local file with different content.
 
-> Note that [remote storage](/doc/command-reference/remote) is a different
-> feature.
+> Note that [remote storage][remote storage] is a different feature.
+
+[remote storage]: /doc/command-reference/remoter
 
 ## Setting up an external cache
 
