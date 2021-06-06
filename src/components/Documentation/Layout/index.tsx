@@ -20,6 +20,9 @@ const Layout: LayoutComponent = ({ children, ...restProps }) => {
   const toggleMenu = useCallback(() => setIsMenuOpen(!isMenuOpen), [isMenuOpen])
 
   useEffect(() => {
+    if (matchMedia('--xs-scr')) {
+      return
+    }
     const closeEventListener = focusElementWithHotkey('#doc-search', '/')
     return closeEventListener
   }, [])
