@@ -154,9 +154,9 @@ header (first row) are equivalent to field names.
   last header of the metrics file: the last column for CSV/TSV, or the last
   field for JSON/YAML.
 
-- `<DVC_METRIC_X_TITLE>` (optional) - field name to display as the X axis label
+- `<DVC_METRIC_X_LABEL>` (optional) - field name to display as the X axis label
 
-- `<DVC_METRIC_Y_TITLE>` (optional) - field name to display as the X axis label
+- `<DVC_METRIC_Y_LABEL>` (optional) - field name to display as the X axis label
 
 ## Options
 
