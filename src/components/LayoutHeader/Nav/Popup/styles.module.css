@@ -1,0 +1,104 @@
+.popup {
+  display: grid;
+  padding: 8px;
+  opacity: 0;
+  position: absolute;
+  left: 10px;
+  top: calc(100% + 4px);
+  visibility: hidden;
+  z-index: 2;
+  background-color: #fff;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.15));
+  border-radius: 12px;
+  box-sizing: border-box;
+  transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+
+  &.visible {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.link {
+  border-radius: 8px;
+  color: #0f1624;
+  text-decoration: none;
+  font-size: 18px;
+  line-height: 30px;
+  transition: background-color 0.2s ease-in;
+
+  &:hover,
+  &:focus {
+    background-color: rgba(15, 22, 36, 0.05);
+  }
+}
+
+.cmlIcon {
+  background-image: url(../../../../../static/img/cml-icon.svg);
+}
+
+.dvcIcon {
+  background-image: url(../../../../../static/img/logo.svg);
+}
+
+.studioIcon {
+  background-image: url(../../../../../static/img/studio-icon.svg);
+}
+
+.communityPopup {
+  row-gap: 4px;
+  width: 260px;
+
+  .link {
+    padding: 6px 12px 4px;
+  }
+}
+
+.otherToolsPopup {
+  row-gap: 8px;
+  width: 296px;
+
+  .link {
+    padding: 8px;
+    display: grid;
+    grid-template-areas: 'icon title' 'icon description';
+    grid-template-columns: 32px 216px;
+    column-gap: 16px;
+
+    &:hover .titleIcon {
+      opacity: 1;
+    }
+
+    .linkIcon {
+      height: 32px;
+      width: 32px;
+      grid-area: icon;
+      display: flex;
+      align-items: center;
+      background-size: contain;
+    }
+
+    .title {
+      grid-area: title;
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 24px;
+      display: flex;
+      align-items: center;
+    }
+
+    .titleIcon {
+      opacity: 0;
+      width: 16px;
+      height: 16px;
+      margin-left: 8px;
+    }
+
+    .description {
+      grid-area: description;
+      color: rgba(15, 22, 36, 0.5);
+      font-size: 16px;
+      line-height: 20px;
+    }
+  }
+}

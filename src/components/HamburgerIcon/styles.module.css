@@ -1,28 +1,32 @@
 .wrapper {
   display: inline-block;
   cursor: pointer;
+
+  &.opened {
+    transform: translateX(-4px);
+  }
 }
 
 .line {
-  width: 30px;
-  height: 3px;
-  background-color: #173042;
+  width: 22px;
+  height: 4px;
+  background-color: #2e3137;
+  border-radius: 10px;
   margin: 5px 0;
   transition: 0.4s;
 
   .opened & {
-    background-color: #fff;
+    background-color: var(--color-gray-light);
+    border-radius: 20px;
+    width: 27px;
+    height: 3px;
 
     &.first {
-      transform: rotate(-45deg) translate(-7px, 6px);
+      transform: rotate(-45deg) translateY(6px);
     }
 
     &.second {
-      opacity: 0;
-    }
-
-    &.third {
-      transform: rotate(45deg) translate(-5px, -5px);
+      transform: rotate(45deg) translateY(-6px);
     }
   }
 }
