@@ -327,9 +327,6 @@ storage. Whether they're effective depends on each storage platform.
   $ dvc remote modify myremote url azure://mycontainer/path
   ```
 
-  Note that if the given container name isn't found in your account, DVC will
-  attempt to create it.
-
 By default, DVC authenticates using an Azure
 [default credential](https://docs.microsoft.com/en-us/python/api/azure-identity/azure.identity.defaultazurecredential)
 (if any). This uses certain environment variables or other auth sources. Use the
@@ -905,11 +902,13 @@ by HDFS. Read more about by expanding the WebHDFS section in
   > `password` is specified, DVC will not prompt the user to enter a password
   > for this remote.
 
-- `ssl_verify` - allows to disable SSH verification, which is enabled by
-  default.
+- `ssl_verify` - whether or not to verify SSL certificates, or a path to a
+  custom CA bundle to do so (`true` by default).
 
   ```dvc
   $ dvc remote modify myremote ssl_verify false
+  # or
+  $ dvc remote modify myremote ssl_verify path/to/ca_bundle.pem
   ```
 
 </details>
@@ -964,6 +963,15 @@ by HDFS. Read more about by expanding the WebHDFS section in
 
   ```dvc
   $ dvc remote modify myremote ask_password true
+  ```
+
+- `ssl_verify` - whether or not to verify SSL certificates, or a path to a
+  custom CA bundle to do so (`true` by default).
+
+  ```dvc
+  $ dvc remote modify myremote ssl_verify false
+  # or
+  $ dvc remote modify myremote ssl_verify path/to/ca_bundle.pem
   ```
 
 - `cert_path` - path to certificate used for WebDAV server authentication, if

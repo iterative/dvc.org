@@ -1,8 +1,8 @@
-# Additional Settings for a View
+# Configure a View
 
 If you are creating a view for a DVC repo, and if the DVC repo is at the root of
 the Git repository and does not reference remote/cloud storage, then you can
-successfully visualize it without specifying additional settings.
+successfully visualize it without configuring additional settings.
 
 Alternatively, you could create views from:
 
@@ -10,16 +10,16 @@ Alternatively, you could create views from:
 - Project sub-directories in a monorepo
 - Custom files in your repository or remote/cloud storage
 
-In each of these scenarios, you will need to specify advanced settings for DVC
-Studio to be able to access the data required for visualization. Details are
+In each of these scenarios, you will need to configure additional settings for
+DVC Studio to be able to access the data required for visualization. Details are
 given below.
 
 ## Non-DVC repositories
 
 DVC Studio creates views by identifying datasets, metrics and hyperparameters
-defined in your Git repositories. These details (datasets, metrics and
-hyperparameters) are stored in your Git repositories as CSV, JSON or YAML files.
-You can add these details to your Git repositories in two ways:
+defined in your Git repositories. These values are stored in your Git
+repositories as CSV, JSON or YAML files. You can add these values to your Git
+repositories in two ways:
 
 1. **Set up DVC repositories**: You can use [DVC](https://dvc.org/) and Git to
    version your code, data and models all within your Git repositories. By using
@@ -73,7 +73,7 @@ present in a data remote (cloud storage or another location outside the Git
 repo). If you want to include such data in your views, then you will have to
 grant DVC Studio access to the data remote.
 
-# Specifying View settings
+# Configuring view settings
 
 For any of the scenarios defined above, specify the additional settings as
 described below. You can access these settings at any time after creating the
@@ -92,7 +92,7 @@ in the view. In the menu that opens up, click on `Settings`.
 
 - **Data remotes:** If you need to set up DVC data remotes for your view, you
   will need to do it after your view has been created. First, create your view
-  without specifying the data remotes. Once your view is created, open the View
+  without specifying the data remotes. Once your view is created, open its
   settings. Open the `Data remotes / cloud storage credentials` section. The
   data remotes that are used in your DVC repo will be listed. Now, click on
   `Add new credentials`. In the form that opens up, select the provider (Amazon

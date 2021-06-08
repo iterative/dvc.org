@@ -1,0 +1,38 @@
+.socialIcons {
+  flex-direction: row;
+  display: flex;
+  padding: 0;
+  margin: 0 16px 0 4px;
+
+  @media (--xl-scr) {
+    margin: 0 24px 0 12px;
+  }
+
+  @media (--md-scr) {
+    margin: 0 16px 0 0;
+  }
+
+  @media (--sm-scr) {
+    margin: 0 16px 0 4px;
+  }
+}
+
+.socialIcon {
+  display: block;
+  width: 24px;
+  height: 24px;
+  color: #6f7685;
+  padding: 12px;
+  margin: 0;
+
+  @media (--md-scr) {
+    width: 20px;
+    height: 20px;
+    padding: 6px;
+  }
+
+  svg {
+    width: inherit;
+    height: inherit;
+  }
+}

@@ -23,14 +23,14 @@ saw in the last section. To create a new view, follow these steps.
 
    ![](https://static.iterative.ai/img/studio/view_settings_v2.png)
 
-> In most scenarios, you can skip these additional View settings. Refer to the
+> In most scenarios, you can skip these additional view settings. Refer to the
 > [View Settings](/doc/studio/view-settings) section for more details.
 
-You should now see that a View has been added in your dashboard.
+You should now see that a view has been added in your dashboard.
 
 If your project requires any of the advanced settings, then remember to
-configure them by opening the View settings. Otherwise, your view may not work
-as expected. To go to View settings, click on the
+configure them by opening the view settings. Otherwise, your view may not work
+as expected. To go to view settings, click on the
 ![](https://static.iterative.ai/img/studio/view_open_settings_icon_v2.png) icon
 in the view. In the menu that opens up, click on `Settings`.
 

@@ -1,11 +1,5 @@
 import cn from 'classnames'
-import React, {
-  useEffect,
-  useState,
-  useCallback,
-  MouseEvent,
-  KeyboardEvent
-} from 'react'
+import React, { useEffect, useState, useCallback, MouseEvent } from 'react'
 
 import HamburgerIcon from '../HamburgerIcon'
 import Link from '../Link'
@@ -24,26 +18,23 @@ export type HamburgerHelpers = {
   opened: boolean
   setOpened: (newState: boolean) => void
   handleToggle: () => void
-  handleKeyDown: (e: KeyboardEvent) => void
   handleClose: () => void
-  handleItemClick: (name: string) => (e: MouseEvent) => void
+  handleItemClick: (name?: string) => (e: MouseEvent) => void
 }
 
 export const useHamburgerMenu: () => HamburgerHelpers = () => {
   const [opened, setOpened] = useState(false)
 
   const handleToggle = useCallback(() => setOpened(!opened), [opened])
-  const handleKeyDown = useCallback(e => {
-    if (e.which === 13) {
-      handleToggle()
-    }
-  }, [])
 
   const handleClose = useCallback(() => setOpened(false), [opened])
+
   const handleItemClick = useCallback(
     item => (): void => {
-      close()
-      logEvent('hamburger', item)
+      handleClose()
+      if (item) {
+        logEvent('hamburger', item)
+      }
     },
     []
   )
@@ -57,25 +48,33 @@ export const useHamburgerMenu: () => HamburgerHelpers = () => {
     opened,
     setOpened,
     handleToggle,
-    handleKeyDown,
     handleClose,
     handleItemClick
   }
 }
 
 export const HamburgerMenu: React.FC<
-  Pick<
-    HamburgerHelpers,
-    'opened' | 'handleItemClick' | 'handleKeyDown' | 'handleToggle'
-  > & {
+  Pick<HamburgerHelpers, 'opened' | 'handleItemClick' | 'handleToggle'> & {
     collapsed: boolean
   }
 > = ({ opened, handleItemClick }) => {
   return (
     <div className={cn(styles.wrapper, opened && styles.opened)}>
       <div className={styles.logoRow}>
-        <Link href="/" className={styles.logo} aria-label="Home">
+        <Link
+          onClick={handleItemClick()}
+          href="/"
+          className={styles.logo}
+          aria-label="Home"
+        >
           <LogoSVG />
+        </Link>
+        <Link
+          className={styles.company}
+          href="https://iterative.ai/"
+          target="_blank"
+        >
+          by <span className={styles.companyName}>iterative.ai</span>
         </Link>
       </div>
       <ul className={styles.sections}>
@@ -252,12 +251,14 @@ export const HamburgerButton: React.FC<{
   opened: boolean
   collapsed: boolean
   handleClick: (e: MouseEvent) => void
-  handleKeyDown: (e: KeyboardEvent) => void
-}> = ({ opened, collapsed, handleClick, handleKeyDown }) => (
+}> = ({ opened, collapsed, handleClick }) => (
   <button
-    className={cn(styles.toggleButton, collapsed || styles.expanded)}
+    className={cn(
+      styles.toggleButton,
+      collapsed || styles.expanded,
+      opened && styles.opened
+    )}
     onClick={handleClick}
-    onKeyDown={handleKeyDown}
     aria-label="Toggle Mobile Menu"
   >
     <HamburgerIcon opened={opened} />
