@@ -1,5 +1,7 @@
 # Experiment Management
 
+⚠️ This feature is only available in DVC 2.0 ⚠️
+
 Data science and ML are iterative processes that require a large number of
 attempts to reach a certain level of a metric. Experimentation is part of the
 development of data features, hyperspace exploration, deep learning
@@ -33,8 +35,6 @@ meaningful measures for the experimental results.
 
 ## Experiments
 
-⚠️ This feature is only available in DVC 2.0 ⚠️
-
 `dvc exp` commands let you automatically track a variation to an established
 [data pipeline](/doc/command-reference/dag). You can create multiple isolated
 experiments this way, as well as review, compare, and restore them later, or
@@ -54,21 +54,17 @@ roll back to the baseline. The basic workflow goes like this:
 
 ## Checkpoints in source code
 
-⚠️ This feature is only available in DVC 2.0 ⚠️
+To track successive steps in a longer experiment, you can register checkpoints
+from your code at runtime. This allows you, for example, to track the progress
+in deep learning techniques such as evolving neural networks.
 
-To track successive steps in a longer experiment, you can write your code so it
-registers checkpoints with DVC at runtime. This allows you, for example, to
-track the progress in deep learning techniques such as evolving neural networks.
-
-This kind of experiment can also derive from a stable project version, but it
-tracks a series of variations (the checkpoints). You interact with them using
+This kind of experiments track a series of variations (the checkpoints) and its
+execution can be stopped and resumed as needed. You interact with them using
 `dvc exp run` and its `--rev`, `--reset` options (see also the `checkpoint`
 field in `dvc.yaml` `outs`).
 
-To learn the main ways to use checkpoint experiments hands-on, please see our
-sample
-[dvc-checkpoints-mnist](https://github.com/iterative/dvc-checkpoints-mnist)
-repo.
+> 📖 To learn more, see the dedicated
+> [Checkpoints](/doc/user-guide/experiment-management/checkpoints) guide.
 
 ## Persistent experiments
 
