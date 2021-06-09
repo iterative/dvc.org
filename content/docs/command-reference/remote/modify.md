@@ -905,11 +905,13 @@ by HDFS. Read more about by expanding the WebHDFS section in
   > `password` is specified, DVC will not prompt the user to enter a password
   > for this remote.
 
-- `ssl_verify` - allows to disable SSH verification, which is enabled by
-  default.
+- `ssl_verify` - whether or not to verify SSL certificates, or a path to a
+  custom CA certificates bundle to do so (implies `true`).
 
   ```dvc
   $ dvc remote modify myremote ssl_verify false
+  # or
+  $ dvc remote modify myremote ssl_verify path/to/ca_bundle.pem
   ```
 
 </details>
@@ -964,6 +966,15 @@ by HDFS. Read more about by expanding the WebHDFS section in
 
   ```dvc
   $ dvc remote modify myremote ask_password true
+  ```
+
+- `ssl_verify` - whether or not to verify SSL certificates, or a path to a
+  custom CA certificates bundle to do so (implies `true`).
+
+  ```dvc
+  $ dvc remote modify myremote ssl_verify false
+  # or
+  $ dvc remote modify myremote ssl_verify path/to/ca_bundle.pem
   ```
 
 - `cert_path` - path to certificate used for WebDAV server authentication, if
