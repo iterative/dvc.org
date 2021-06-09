@@ -327,9 +327,6 @@ storage. Whether they're effective depends on each storage platform.
   $ dvc remote modify myremote url azure://mycontainer/path
   ```
 
-  Note that if the given container name isn't found in your account, DVC will
-  attempt to create it.
-
 By default, DVC authenticates using an Azure
 [default credential](https://docs.microsoft.com/en-us/python/api/azure-identity/azure.identity.defaultazurecredential)
 (if any). This uses certain environment variables or other auth sources. Use the
