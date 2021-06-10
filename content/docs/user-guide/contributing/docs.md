@@ -204,7 +204,7 @@ We use **bold** text for emphasis, and _italics_ for special terms.
 
 We also use "emoji" symbols sparingly for visibility on certain notes. Mainly:
 
-- 📖 (or 👨‍💻) For notes that link to related docs
+- 📖 For notes that link to other related documentation
 - ⚠️ Important warnings or disclaimers related to advanced DVC usage
 - 💡 Useful notes and tips, often related to external tools and integrations
 
