@@ -39,15 +39,13 @@ operation.
 - `.dvc/tmp/index`: Directory for remote index files that are used for
   optimizing `dvc push`, `dvc pull`, `dvc fetch` and `dvc status -c` operations
 
-- `.dvc/tmp/state`: This file is used for optimization. It is a SQLite database,
-  that contains hash values for files tracked in a DVC project, with respective
-  timestamps and inodes to avoid unnecessary file hash computations. It also
-  contains a list of links (from cache to <abbr>workspace</abbr>) created by DVC
-  and is used to cleanup your workspace when calling `dvc checkout`.
+- `.dvc/tmp/md5s`: This directory is used for optimization. It contains a SQLite
+  database, that stores hash values for files tracked in a DVC project, with
+  respective timestamps and inodes to avoid unnecessary file hash computations.
 
-- `.dvc/tmp/state-journal`: Temporary file for SQLite operations
-
-- `.dvc/tmp/state-wal`: Another SQLite temporary file
+- `.dvc/tmp/links`: This directory contains a SQLite database, that stores a list
+  of links (from cache to <abbr>workspace</abbr>) created by DVC and is used to
+  cleanup your workspace when calling `dvc checkout`.
 
 - `.dvc/tmp/updater`: This file is used store the latest available version of
   DVC. It's used to remind the user to upgrade when the installed version is
