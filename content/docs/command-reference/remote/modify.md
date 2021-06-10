@@ -906,7 +906,7 @@ by HDFS. Read more about by expanding the WebHDFS section in
   > for this remote.
 
 - `ssl_verify` - whether or not to verify SSL certificates, or a path to a
-  custom CA certificates bundle to do so (implies `true`).
+  custom CA bundle to do so (`true` by default).
 
   ```dvc
   $ dvc remote modify myremote ssl_verify false
@@ -969,7 +969,7 @@ by HDFS. Read more about by expanding the WebHDFS section in
   ```
 
 - `ssl_verify` - whether or not to verify SSL certificates, or a path to a
-  custom CA certificates bundle to do so (implies `true`).
+  custom CA bundle to do so (`true` by default).
 
   ```dvc
   $ dvc remote modify myremote ssl_verify false
