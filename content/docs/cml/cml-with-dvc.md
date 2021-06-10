@@ -52,7 +52,7 @@ jobs:
           dvc plots diff \
             --target estimators.csv \
             -x Regularization \
-            --show-vega master vega.json
+            --show-vega master > vega.json
           vl2png vega.json -s 1.5 | cml-publish --md >> report.md
 
           cml-send-comment report.md
