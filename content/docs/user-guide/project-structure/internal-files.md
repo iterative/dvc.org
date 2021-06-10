@@ -40,13 +40,13 @@ operation.
   optimizing `dvc push`, `dvc pull`, `dvc fetch` and `dvc status -c` operations
 
 - `.dvc/tmp/md5s`: This directory is used for optimization. It contains a SQLite
-  database that stores hash values for files tracked in a DVC project. It also saves
-  the corresponding timestamps and inodes, to avoid unnecessary file hash
+  database that stores hash values for files tracked in a DVC project. It also
+  saves the corresponding timestamps and inodes, to avoid unnecessary file hash
   computations.
 
-- `.dvc/tmp/links`: This directory contains a SQLite database that stores a
-  list of file links created by DVC (from cache to <abbr>workspace</abbr>).
-  It's used to cleanup your workspace when calling `dvc checkout`.
+- `.dvc/tmp/links`: This directory contains a SQLite database that stores a list
+  of file links created by DVC (from cache to <abbr>workspace</abbr>). It's used
+  to cleanup your workspace when calling `dvc checkout`.
 
 - `.dvc/tmp/updater`: This file is used store the latest available version of
   DVC. It's used to remind the user to upgrade when the installed version is
