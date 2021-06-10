@@ -43,9 +43,9 @@ operation.
   database, that stores hash values for files tracked in a DVC project, with
   respective timestamps and inodes to avoid unnecessary file hash computations.
 
-- `.dvc/tmp/links`: This directory contains a SQLite database, that stores a list
-  of links (from cache to <abbr>workspace</abbr>) created by DVC and is used to
-  cleanup your workspace when calling `dvc checkout`.
+- `.dvc/tmp/links`: This directory contains a SQLite database, that stores a
+  list of links (from cache to <abbr>workspace</abbr>) created by DVC and is
+  used to cleanup your workspace when calling `dvc checkout`.
 
 - `.dvc/tmp/updater`: This file is used store the latest available version of
   DVC. It's used to remind the user to upgrade when the installed version is
