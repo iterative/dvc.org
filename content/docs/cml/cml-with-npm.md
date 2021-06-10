@@ -24,7 +24,7 @@ Below you can find how to install Node.
 In GitHub there is a special action for NPM installation:
 
 ```bash
-uses: actions/setup-node@v1
+- uses: actions/setup-node@v1
   with:
     node-version: '12'
 ```
