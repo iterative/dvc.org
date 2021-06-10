@@ -134,11 +134,7 @@
   border-top: 1px solid #4d465a;
 }
 
-.sectionLink {
-  @mixin hover;
-  @mixin active;
-  @mixin focus;
-
+.sectionHeading {
   display: block;
   padding: 15px 0;
   font-family: var(--font-brandon);
@@ -150,13 +146,19 @@
   color: #fff;
 }
 
+a.sectionHeading {
+  @mixin hover;
+  @mixin active;
+  @mixin focus;
+}
+
 .subSections {
   display: flex;
   padding-bottom: 15px;
 }
 
 .subSection {
-  flex-grow: 1;
+  width: calc((100% - 45px) / 4);
 
   & + & {
     margin-left: 15px;
@@ -182,6 +184,8 @@
   display: block;
   margin: 0 auto 5px;
   color: #fff;
+  height: 40px;
+  width: 40px;
 }
 
 .subSectionLinkTitle {
