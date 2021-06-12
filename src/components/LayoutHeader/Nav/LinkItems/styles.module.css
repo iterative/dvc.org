@@ -9,14 +9,10 @@
 
 .linkItem {
   position: relative;
-  margin-left: 4px;
+  margin-left: 12px;
 
   &:first-of-type {
     margin: 0;
-  }
-
-  @media (--xl-scr) {
-    margin-left: 12px;
   }
 
   @media (--md-scr) {
@@ -43,7 +39,7 @@
   @mixin focus;
 
   font-family: var(--font-brandon);
-  font-weight: 500;
+  font-weight: 400;
   font-size: 20px;
   line-height: 24px;
   text-decoration: none;
