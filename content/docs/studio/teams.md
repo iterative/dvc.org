@@ -39,18 +39,45 @@ Once you have added the people that you wish to add to your team, click on
 
 ## Roles
 
-Team members can have different roles.
+Team members or collaborators can have the View, Edit or Admin roles. Viewers
+have read-only access to the views created by other team members. Editors can
+create and edit the team's views. And admins have full access to the team's
+views and settings. They can add (invite) and remove collaborators as well as
+change team settings such as cloud credentials (data remotes).
 
-- **View.** Users with the View access cannot edit team settings or create new
-  views within the team's page. They have read-only access to the views created
-  by other team members.
-- **Edit.** In addition to accessing all the team's views, users with the Edit
-  role can also create new views for the team, edit the views' settings, and run
-  experiments.
-- **Admin.** Admin users have full access to the team's views and settings. They
-  can do everything that viewers and editors can do. Additionally, they can add
-  (invite) and remove collaborators as well as change team settings such as
-  cloud credentials (data remotes).
+DVC Studio does not have the concept of an `Owner` role. The user who creates
+the team has the `Admin` role. The privileges of such an admin is the same as
+that of any other collaborator who has been assigned the `Admin` role.
+
+> An additional role `Visitor` exists for anonymous users who can open a public
+> view.
+
+### Access permissions for different roles:
+
+| Feature                                      | Visitor | Viewer | Editor | Admin |
+| -------------------------------------------- | ------- | ------ | ------ | ----- |
+| Import a repository                          | No      | No     | Yes    | Yes   |
+| Add a new view                               | No      | No     | ?      | Yes   |
+| Delete a view                                | No      | No     | Yes    | Yes   |
+| Share a view                                 | No      | No     | Yes    | Yes   |
+| Change view name                             | No      | No     | Yes    | Yes   |
+| Configure cloud / data remote credentials    | No      | No     | No     | Yes   |
+| Use existing cloud / data remote credentials | No      | No     | Yes    | Yes   |
+| Manage tracking scope                        | No      | No     | ?      | Yes   |
+| Manage custom files                          | No      | No     | Yes    | Yes   |
+| Specify project directory                    | No      | No     | Yes    | Yes   |
+| Apply filters                                | Yes\*   | Yes    | Yes    | Yes   |
+| Show / Hide columns                          | Yes\*   | Yes    | Yes    | Yes   |
+| Save the View filters and columns settings   | No      | No     | Yes    | Yes   |
+| Force repository import                      | No      | No     | Yes    | Yes   |
+| Run experiments                              | No      | No     | Yes    | Yes   |
+| Delete a team                                | No      | No     | No     | Yes   |
+| Manage team settings                         | No      | No     | Yes    | Yes   |
+| Manage team collaborators                    | No      | No     | No     | Yes   |
+| View CML reports                             | No      | No     | Yes    | Yes   |
+
+\*Visitors can open, apply filters to, and show/hide columns in public views
+only.
 
 ## Manage your team and its views
 
