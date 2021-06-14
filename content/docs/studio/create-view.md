@@ -1,4 +1,13 @@
-# Create a View
+# Create and Share a View
+
+In this section, you will learn how to:
+
+- [Create a view](#create-a-view)
+- [Create multiple views from a single Git repository](#create-multiple-views-from-a-single-git-repository)
+- [Share a view](#share-a-view)
+- [Install and authorize DVC Studio GitHub app](#dvc-studio-github-app-installation)
+
+## Create a View
 
 You can create views from your Git repositories, just like the `Demo` view you
 saw in the last section. To create a new view, follow these steps.
@@ -35,6 +44,20 @@ as expected. To go to view settings, click on the
 in the view. In the menu that opens up, click on `Settings`.
 
 ![](https://static.iterative.ai/img/studio/view_open_settings_v2.png)
+
+## Create multiple views from a single Git repository
+
+You can also create multiple views from a single Git repository and apply
+different settings to them.
+
+One use case for this is if you have a
+[monorepo](https://en.wikipedia.org/wiki/Monorepo) that contains sub-directories
+for multiple ML projects. If you want to create views for each of those ML
+projects, simply create multiple views for this monorepo, and for each view,
+specify a different sub-directory.
+
+Refer to the [View Settings](/doc/studio/view-settings) section for more details
+on how to configure different settings (and sub-directores) for the views.
 
 ## Share a view
 
