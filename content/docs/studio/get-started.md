@@ -6,10 +6,6 @@ with the Git repositories you want to connect. Using DVC Studio, you will
 connect to your Git repositories and create views, which are interactive,
 tabular representations of all your ML experiments.
 
-The following video provides you a quick overview of DVC Studio.
-
-https://www.youtube.com/watch?v=hKf4twg832g
-
 In the rest of this section, you will:
 
 - [Learn how to prepare your Git repositories for use with DVC Studio](#preparing-your-repositories)
@@ -18,11 +14,46 @@ In the rest of this section, you will:
 
 ## Preparing your repositories
 
-DVC Studio identifies datasets, metrics and hyperparameters in your Git
-repositories. These values can either be in DVC repositories or you can add
-custom files with the required values. Read more about the different ways in
-which you can prepare your Git repository for use with DVC Studio
-[here](/doc/studio/view-settings#non-dvc-repositories).
+DVC Studio creates views by identifying datasets, metrics and hyperparameters
+defined in your Git repositories. These values are stored in your Git
+repositories as CSV, JSON or YAML files. You can add these values to your Git
+repositories in two ways:
+
+1. **Set up DVC repositories**: You can use [DVC](https://dvc.org/) and Git to
+   version your code, data and models all within your Git repositories. By using
+   DVC, you can be sure not to bloat your repositories with large volumes of
+   data or huge models. These large assets reside in the cloud or other remote
+   storage locations. You will simply track their version info in Git. DVC also
+   enables you to
+   [share your data and model files](/doc/use-cases/sharing-data-and-model-files),
+   [create data registries](/doc/use-cases/data-registries),
+   [create data pipelines](/doc/start/data-pipelines), connect them with
+   [CML](/doc/cml) for CI/CD in machine learning, and so on. Find more about the
+   features and benefits of DVC [here](/doc/start).
+
+   Refer to the [DVC documentation](https://dvc.org/doc) to initialize a DVC
+   repository. You can then connect to this DVC repository and create a view as
+   described in the [Create View](/doc/studio/create-view) section later. DVC
+   Studio automatically detects metrics, plots, and hyperparameters files
+   specified in the project's `dvc.yaml`. Each time you push a commit to this
+   DVC repository, your view will reflect the new changes.
+
+2. **Specify custom files with your metrics and parameters**: If you are working
+   with a non-DVC repository, you can still create views for it provided that
+   metrics and hyperparameters are stored in CSV, JSON or YAML files. To
+   visualize such custom data, simply
+   [specify the custom files](/doc/studio/view-settings#configuring-view-settings)
+   to use, and DVC Studio will efficiently generate tables and plots for your
+   custom input. For instance, if you have an ML project for which you generate
+   and save metrics either manually or using some ML tracking tools, then you
+   can create a view for this project by specifying the file (within your Git
+   repo) which contains your saved metrics.
+
+   So as you can see, DVC Studio simply requires your metrics and
+   hyperparameters to be available in data files in your Git repositories. This
+   video further illustrates this concept.
+
+   https://www.youtube.com/watch?v=5xM5az78Lrg
 
 ## DVC Studio Views dashboard
 

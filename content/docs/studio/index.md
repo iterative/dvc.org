@@ -11,8 +11,9 @@ share results.
 
 Project website: https://studio.iterative.ai
 
-![](https://static.iterative.ai/img/studio/main_v2.png) _DVC Studio experiments
-dashboard_
+The following video provides you a quick overview of DVC Studio.
+
+https://www.youtube.com/watch?v=hKf4twg832g
 
 Use DVC, CML and Studio to:
 

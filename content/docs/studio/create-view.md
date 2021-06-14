@@ -32,16 +32,21 @@ saw in the last section. To create a new view, follow these steps.
 
    ![](https://static.iterative.ai/img/studio/view_settings_v2.png)
 
-> In most scenarios, you can skip these additional view settings. Refer to the
+> View settings must be configured if you are connecting to a non-DVC
+> repository, if your metrics are in some custom files, if you are connecting to
+> a monorepo, or if your metrics are in cloud or other remote storage. However,
+> you can configure the view settings after the view has been created. So, you
+> can `Skip and Continue` now. Refer to the
 > [View Settings](/doc/studio/view-settings) section for more details.
 
 You should now see that a view has been added in your dashboard.
 
-If your project requires any of the advanced settings, then remember to
-configure them by opening the view settings. Otherwise, your view may not work
-as expected. To go to view settings, click on the
-![](https://static.iterative.ai/img/studio/view_open_settings_icon_v2.png) icon
-in the view. In the menu that opens up, click on `Settings`.
+5. Configure [view settings](/doc/studio/view-settings) if required. If your
+   project requires any of the additional settings, then remember to configure
+   them by opening the view settings. Otherwise, your view may not work as
+   expected. To go to view settings, click on the
+   ![](https://static.iterative.ai/img/studio/view_open_settings_icon_v2.png)
+   icon in the view. In the menu that opens up, click on `Settings`.
 
 ![](https://static.iterative.ai/img/studio/view_open_settings_v2.png)
 
