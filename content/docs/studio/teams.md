@@ -6,6 +6,13 @@ define teams with one or more team members. The team members are also called
 collaborators, and you can assign different roles to them. The views that you
 create in your team's page will be accessible to all members of the team.
 
+In this section, you will:
+
+- [Learn how to create a team](#create-a-team)
+- [Learn how to invite collboarators (team members)](#invite-collaborators)
+- [Understand the privileges (access permissions) of different roles](#roles)
+- [Learn how to manage the team and its views](#manage-your-team-and-its-views)
+
 ## Create a team
 
 To create a team, click on the drop down next to `Personal`. All the teams that
@@ -52,32 +59,41 @@ that of any other collaborator who has been assigned the `Admin` role.
 > An additional role `Visitor` exists for anonymous users who can open a public
 > view.
 
-### Access permissions for different roles:
+### Privileges to create, open and access the team's views
+
+| Feature                                    | Visitor | Viewer | Editor | Admin |
+| ------------------------------------------ | ------- | ------ | ------ | ----- |
+| Open a team's view                         | Yes\*   | Yes    | Yes    | Yes   |
+| Apply filters                              | Yes\*   | Yes    | Yes    | Yes   |
+| Show / Hide columns                        | Yes\*   | Yes    | Yes    | Yes   |
+| Save the View filters and columns settings | No      | No     | Yes    | Yes   |
+| Run experiments                            | No      | No     | Yes    | Yes   |
+| View CML reports                           | No      | No     | Yes    | Yes   |
+| Share a view                               | No      | No     | Yes    | Yes   |
+| Add a new view                             | No      | No     | Yes    | Yes   |
+| Force repository import                    | No      | No     | Yes    | Yes   |
+| Delete a view                              | No      | No     | Yes    | Yes   |
+
+\*Visitors can access only the public views of the team.
+
+### Privileges to manage view settings
 
 | Feature                                      | Visitor | Viewer | Editor | Admin |
 | -------------------------------------------- | ------- | ------ | ------ | ----- |
-| Import a repository                          | No      | No     | Yes    | Yes   |
-| Add a new view                               | No      | No     | ?      | Yes   |
-| Delete a view                                | No      | No     | Yes    | Yes   |
-| Share a view                                 | No      | No     | Yes    | Yes   |
 | Change view name                             | No      | No     | Yes    | Yes   |
-| Configure cloud / data remote credentials    | No      | No     | No     | Yes   |
-| Use existing cloud / data remote credentials | No      | No     | Yes    | Yes   |
-| Manage tracking scope                        | No      | No     | ?      | Yes   |
-| Manage custom files                          | No      | No     | Yes    | Yes   |
 | Specify project directory                    | No      | No     | Yes    | Yes   |
-| Apply filters                                | Yes\*   | Yes    | Yes    | Yes   |
-| Show / Hide columns                          | Yes\*   | Yes    | Yes    | Yes   |
-| Save the View filters and columns settings   | No      | No     | Yes    | Yes   |
-| Force repository import                      | No      | No     | Yes    | Yes   |
-| Run experiments                              | No      | No     | Yes    | Yes   |
-| Delete a team                                | No      | No     | No     | Yes   |
-| Manage team settings                         | No      | No     | Yes    | Yes   |
-| Manage team collaborators                    | No      | No     | No     | Yes   |
-| View CML reports                             | No      | No     | Yes    | Yes   |
+| Use existing cloud / data remote credentials | No      | No     | Yes    | Yes   |
+| Configure cloud / data remote credentials    | No      | No     | No     | Yes   |
+| Manage tracking scope                        | No      | No     | Yes    | Yes   |
+| Manage custom files                          | No      | No     | Yes    | Yes   |
 
-\*Visitors can open, apply filters to, and show/hide columns in public views
-only.
+### Privileges to manage the team
+
+| Feature                   | Visitor | Viewer | Editor | Admin |
+| ------------------------- | ------- | ------ | ------ | ----- |
+| Manage team settings      | No      | No     | No     | Yes   |
+| Manage team collaborators | No      | No     | No     | Yes   |
+| Delete a team             | No      | No     | No     | Yes   |
 
 ## Manage your team and its views
 
