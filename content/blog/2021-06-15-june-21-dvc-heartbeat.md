@@ -10,7 +10,7 @@ descriptionLong: |
   🗺 Navigating the MLOps Landscape,
   🧐 Our MLOps philosophy
   📖 MLOps learning opportunities,
-  💻 R with DVC 
+  💻 R with DVC, 
   🎥 conference videos from our team members,
   🚀 info on our growing team, and more!
 picture: 2021-06-16/june21cover.png
@@ -41,9 +41,10 @@ lays out a framework for making sense of this space. The list of tools is not
 exhaustive, but the framework and thought process for evaluating the tools is
 intriguing. Additionally he encourages thinking about the skillset of the
 members of your team within this framework to help you make decisions on the
-right tools. It's not just about the tools, it's about the people! As you can
-see DVC makes it into the "Trial" loop, but we think we will be be making it
-into the adoption region in relatively short order. 😉🚀
+right tools. It's not just about the tools, it's about the people!
+
+As you can see DVC makes it into the "Trial" loop, but we think we will be be
+making it into the adoption region in relatively short order. 😉🚀
 
 ![](/uploads/images/2021-05-21/LJMiranda.png)_Making sense of the MLOps
 Landscape_
@@ -89,7 +90,7 @@ And at last I bring you to
 ["The Road to AI Hell Starts with Good MLOps Intentions" ](https://thenewstack.io/the-road-to-ai-hell-starts-with-good-mlops-intentions/)
 by our CEO [Dmitry Petrov](https://twitter.com/FullStackML) which explains our
 philosophy in the MLOps space. You will learn about Dmitry's experience that led
-to our tools, what we think is the right way to solve MLOps challenges and how
+to our tools, what we think is the right way to solve MLOps challenges, and how
 we do it.
 
 > Teams made up of data scientists and developers should be able to define their
@@ -108,7 +109,7 @@ image="/uploads/images/2021-06-15/ai-hell.png"/>
 
 # Big News! 🚀🚀🚀
 
-In case you missed it, June 3rd we introduced our latest tool that brings a GUI
+In case you missed it, June 3rd we introduced our latest tool that offers a GUI
 to display your team's work with DVC and CML: DVC Studio! We know this has been
 on our Community's wishlist and now it's here! You can check out all its
 features and [give it a try here](https://studio.iterative.ai/). Or check out
@@ -134,7 +135,7 @@ description="João Santiago's repository for dvcru, providing utility functions 
 link="https://github.com"
 image="/uploads/images/2021-06-15/r.png"/>
 
-## Milecia McGregor's at PyData SoCal
+## Milecia McGregor at PyData SoCal
 
 Next up we have [Milecia McGregor](https://twitter.com/FlippedCoding) presenting
 and live coding at [PyData SoCal](https://www.meetup.com/PyData-SoCal/)
@@ -161,7 +162,7 @@ We're still growing! Meet this month's new team members.
 [Jelle Bouwman](https://www.linkedin.com/in/jelle-bouwman/) joins us from
 Utrecht, Netherlands as a software engineer. He's worked as a consultant and at
 an agency. He's most proud of
-[the work he did with his team at the Port of Rotterdam](https://rotterdam.navigate-connections.com/voyages)
+[the work he did with his team at the Port of Rotterdam](https://rotterdam.navigate-connections.com/voyages).
 In his free time, Jelle loves reading fiction and books on human
 psychology/productivity, hiking and making music with others. He has already
 shared with the team a
@@ -170,9 +171,9 @@ to listen to while trying to focus! Welcome Jelle! 🎼
 
 Next we welcome [Alexander Gushcin](https://www.linkedin.com/in/1aguschin/).
 Alexander joins us from Russia where he has been a Data Scientist/ML Engineer
-for the last five years. He's also paricipated in many Kaggle competitions and
-was ranked 5th in general competitions at some point.  
-This led him to create a Coursera course on
+for the last five years. He's also participated in many Kaggle competitions and
+was ranked 5th in general competitions at some point! This led him to create a
+Coursera course on
 [how to win data science competitions](https://www.coursera.org/learn/competitive-data-science)
 about the tips and tricks needed to win one. Teaching is his passion and you
 will probably see him producing some content in the near future. 🧑🏽‍💻
@@ -182,9 +183,9 @@ Russia where he formerly worked as a Data Engineer Team Lead for Rubbles. He
 created [ebonite](https://github.com/zyfra/ebonite), an ML deployment tool and
 teaches Python and Big Data at HSE University. Finally he is one of the admins
 of [ods.ai](https://ods.ai/) community, which creates global projects to unite
-the community promote Data Science and help people develop their skills. In his
-spare time he likes to play guitar, badminton, ski and mix cocktails. 🍸 Cheers
-Mikhail!
+the community, promote Data Science, and help people develop their skills. In
+his spare time he likes to play guitar, badminton, ski, and mix cocktails. 🍸
+Cheers Mikhail!
 
 [Jervis Hui](https://www.linkedin.com/in/jervishui/) joins us from New York City
 in a marketing capacity. Jervis graduated from Stanford with a degree in
@@ -213,9 +214,10 @@ forward to new team members! 🎉
 ## Next Meetup
 
 Don't miss our [Meetup](https://www.meetup.com/DVC-Community-Virtual-Meetups/)
-June 24th at 3:00 pm UTC (8:00 am PDT), where Sami Jawhar of Kernel will present
-different experiment use cases Bring your questions and thinking cap! It's bound
-to be a great session!
+June 24th at 3:00 pm UTC (8:00 am PDT), where
+[Sami Jawhar](https://www.linkedin.com/in/sami-jawhar-a58b9849/) of Kernel will
+present different experiment use cases. Bring your questions and thinking cap!
+It's bound to be a great session!
 
 <external-link
 href="https://www.meetup.com/DVC-Community-Virtual-Meetups/events/278729121/"
