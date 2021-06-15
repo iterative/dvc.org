@@ -2,6 +2,18 @@
 
 You can visualize and compare experiments using a variety of tools.
 
+## Section outline
+
+In this section, you will learn how to:
+
+- [Generate metric plots](#generate-metric-plots)
+- [Generate trend charts](#generate-trend-charts)
+- [Compare experiments](#compare-experiments)
+
+Then, in the [next section](/doc/studio/run-experiments), you will learn how to
+run new experiments by changing datasets and hyperparameters and committing the
+changes into Git from the DVC Studio UI.
+
 ## Generate metric plots
 
 You can visualize certain metrics of machine learning experiments as plots.

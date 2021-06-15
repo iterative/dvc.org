@@ -6,6 +6,8 @@ define teams with one or more team members. The team members are also called
 collaborators, and you can assign different roles to them. The views that you
 create in your team's page will be accessible to all members of the team.
 
+## Section outline
+
 In this section, you will:
 
 - [Learn how to create a team](#create-a-team)
@@ -113,6 +115,7 @@ On this page, you can perform three types of tasks:
 
 - **Change settings.** Finally, you can click on the `Settings` menu item to
   change the team name, add credentials for the data remotes, and delete the
-  team.
+  team. Note that these settings are applicable to the team and are thus
+  different from [view settings](/doc/studio/view-settings).
 
   ![](https://static.iterative.ai/img/studio/team_settings_v2.png)

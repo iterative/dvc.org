@@ -1,11 +1,19 @@
 # Create and Share a View
 
+Views are interactive representations of the information stored in your Git
+repositories.
+
+## Section outline
+
 In this section, you will learn how to:
 
 - [Create a view](#create-a-view)
 - [Create multiple views from a single Git repository](#create-multiple-views-from-a-single-git-repository)
 - [Share a view](#share-a-view)
 - [Install and authorize DVC Studio GitHub app](#dvc-studio-github-app-installation)
+
+Then, in the [next section](/doc/studio/explore-experiments), you will dive deep
+into a view to explore the ML experiments and their results.
 
 ## Create a View
 

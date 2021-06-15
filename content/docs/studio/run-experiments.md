@@ -1,14 +1,39 @@
 # Run Experiments
 
-You can also run your ML experiments directly from DVC Studio. Your regular
-CI/CD set-up is used to run the experiments. For instance,
-[CML](https://dvc.org/doc/cml) Github Actions can be used to run ML experiments
-on each new commit.
+You can run your ML experiments directly from DVC Studio.
+
+## Section outline
+
+In this section, you will:
+
+- [Understand how DVC Studio runs your ML experiments](#how-dvc-studio-runs-ml-experiments)
+- [Learn how to submit new experiments](#generate-trend-charts)
+
+Then, in the [next section](/doc/studio/view-settings), you will learn about
+additional settings that you can configure for your views.
+
+## How DVC Studio runs ML experiments
+
+If your Git repository is To run experiments from DVC Studio, you need to set up
+your regular your regular CI/CD set-up is used to run the experiments. You will
+
+If your Git repository is integrated with a CI/CD setup (e.g. GitHub Actions),
+then on each Git commit, the CI/CD setup will get invoked. If this setup
+includes a model training process, it will be triggered, which means that your
+ML experiment will run automatically. You simply submit the data and
+hyperparameter changes for your new experiment using the DVC Studio UI, and your
+regular CI/CD setup will get invoked to run the experiments.
+
+The model training can happen on any cloud or Kubernetes. For more details on
+how to set up CI/CD pipelines for your ML project, refer to
+[CML](https://cml.dev).
 
 > Note that due to access restrictions, you cannot run experiments on the demo
 > view (`example-get-started`) that is provided to you by default. Once you
 > create views for your ML project repositories, you can follow the instructions
 > given below to run experiments directly from DVC Studio.
+
+## Submit a new experiment
 
 Watch this video for an overview of how you can run experiments from DVC Studio,
 or read below for details.

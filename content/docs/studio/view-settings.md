@@ -1,5 +1,23 @@
 # Configure a View
 
+You can configure additional settings for your views. Some of these settings,
+such as view name, are optional. Some other settings, such as data remotes, may
+be required depending on how your Git repository has been set up. This section
+provides you details of what settings are essential and how you can configure
+them.
+
+## Section outline
+
+In this section, you will:
+
+- [Understand what settings you can configure for your views](#view-settings)
+- [Learn how to configure the view settings](#configuring-view-settings)
+
+Then, in the [next section](/doc/studio/teams), you will learn about how you can
+create and manage teams for collaborating on your views.
+
+## View settings
+
 If you are connecting to a DVC repo which is at the root of the Git repository
 and does not reference remote/cloud storage, then you can successfully visualize
 it without configuring additional settings.
@@ -11,10 +29,9 @@ Alternatively, you could create views from:
 - Custom files in your repository or remote/cloud storage
 
 In each of these scenarios, you will need to configure additional settings for
-DVC Studio to be able to access the data required for visualization. Details are
-given below.
+DVC Studio to be able to access the data required for visualization.
 
-## Non-DVC repositories
+### Non-DVC repositories
 
 In the section on
 [preparing your repositories](/doc/studio/get-started#preparing-your-repositories),
@@ -23,7 +40,7 @@ you are conecting to a non-DVC repository, then you will need to specify the
 custom files that contain the metrics and hyperparameters that you want to
 visualize.
 
-## Monorepo
+### Monorepo
 
 Depending on how you have set up your Git repositories, your DVC repo (for which
 you are trying to create the view) may not be in the root of your Git repo.
@@ -32,14 +49,14 @@ Instead, it could be in a sub-directory of a
 will need to specify the full path to the sub-directory that you want to use
 with your view.
 
-## Data remotes (cloud/remote storage)
+### Data remotes (cloud/remote storage)
 
 The metrics and parameters that you want to include in the view may also be
 present in a data remote (cloud storage or another location outside the Git
 repo). If you want to include such data in your views, then you will have to
 grant DVC Studio access to the data remote.
 
-# Configuring view settings
+## Configuring view settings
 
 For any of the scenarios defined above, specify the additional settings as
 described below. You can access these settings at any time after creating the
@@ -75,3 +92,14 @@ in the view. In the menu that opens up, click on `Settings`.
   they are not saved into Git. It does not access any other data in your remote
   storage. And you do not need to provide the credentials if any DVC data remote
   in not used in your Git repository.
+
+You can then connect to this DVC repository and create a view as described in
+the [Create View](/doc/studio/create-view) section later. DVC Studio
+automatically detects metrics, plots, and hyperparameters files specified in the
+project's `dvc.yaml`. Each time you push a commit to this DVC repository, your
+view will reflect the new changes.
+
+To visualize such custom data, simply
+[specify the custom files](/doc/studio/view-settings#configuring-view-settings)
+to use, and DVC Studio will efficiently generate tables and plots for your
+custom input.
