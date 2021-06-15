@@ -11,8 +11,8 @@ create are included in a central dashboard for easy access.
 
 In this section, you will learn how to:
 
-- [Access your DVC Studio dashboard](#dvc-studio-views-dashboard)
-- [Prepare your Git repositories for use with DVC Studio](#preparing-your-repositories)
+- [Access your DVC Studio dashboard](#access-your-dvc-studio-views-dashboard)
+- [Prepare your Git repositories for use with DVC Studio](#prepare-your-repositories)
 
 Then, in the [next section](/doc/studio/create-view), you will learn how to
 create and share your own views by connecting to the Git repositories.

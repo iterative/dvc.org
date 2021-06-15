@@ -7,7 +7,7 @@ You can run your ML experiments directly from DVC Studio.
 In this section, you will:
 
 - [Understand how DVC Studio runs your ML experiments](#how-dvc-studio-runs-ml-experiments)
-- [Learn how to submit new experiments](#generate-trend-charts)
+- [Learn how to submit new experiments](#submit-a-new-experiment)
 
 Then, in the [next section](/doc/studio/view-settings), you will learn about
 additional settings that you can configure for your views.
