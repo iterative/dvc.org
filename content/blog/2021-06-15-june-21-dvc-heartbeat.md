@@ -46,7 +46,7 @@ right tools. It's not just about the tools, it's about the people!
 As you can see DVC makes it into the "Trial" loop, but we think we will be be
 making it into the adoption region in relatively short order. 😉🚀
 
-![](/uploads/images/2021-05-21/LJMiranda.png)_Making sense of the MLOps
+![](/uploads/images/2021-06-16/LJMiranda.png)_Making sense of the MLOps
 Landscape_
 
 ## Found in the MLOps Community
