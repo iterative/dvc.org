@@ -3,7 +3,7 @@ title: June '21 Heartbeat
 date: 2021-06-16
 description: |
   Monthly updates are here! Making sense of the MLOps Landscape, MLOps 
-  Community love, our MLOps philosophy, DVC Studio , R for DVC, new learning
+  Community love, our MLOps philosophy, DVC Studio, R for DVC, new learning
   opportunities, team members and more!
 descriptionLong: |
   This month you will find:
@@ -58,7 +58,7 @@ below). If you're into MLOps and you're NOT a apart of the MLOps Community, you
 should be. You can join the
 [MLOPS Slack channel here](https://www.notion.so/iterative/June-Heartbeat-5c0515af1539444cb612b1acd44c37ca#75acbfba729e42c5b3f0dbad1ae25dc2).
 
-> I have recently came across with DVC by listening to MLOps Coffe Sessions #6
+> I have recently came across with DVC by listening to MLOps Coffee Sessions #6
 > with David Aponte and Elle O'Brien (Such an interesting talk! 💯). This tool
 > integrates smoothly with Git, tracks models & datasets, and also has an online
 > UI DVC Studio 🚀. Is there any use case of MLflow that DVC can't handle? I
