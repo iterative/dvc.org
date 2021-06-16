@@ -187,9 +187,12 @@ the community, promote Data Science, and help people develop their skills. In
 his spare time he likes to play guitar, badminton, ski, and mix cocktails. 🍸
 Cheers Mikhail!
 
-[Jervis Hui](https://www.linkedin.com/in/jervishui/) joins us from New York City
-in a marketing capacity. Jervis graduated from Stanford with a degree in
-Management Science and engineering and has worked for a decade in tech startups.
+[Jervis Hui](https://www.linkedin.com/in/jervishui/) is joining the go-to-market
+team at Iterative and is from NYC. He's worked in product marketing at various
+Silicon Valley tech companies over the years and is excited to bring his
+experience to the open source world of Iterative. He's passionate about D&I in
+hiring and looks forward to learning from everyone! We're excited to have Jervis
+on board! 🎉
 
 https://media.giphy.com/media/Kzo0heGPi6xwjpC5JL/giphy.gif
 
