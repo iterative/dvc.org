@@ -56,7 +56,7 @@ You can find more comments from LJ Miranda and others in response to a
 from André Godinho in the [MLOps Community](https://mlops.community/) Slack (see
 below). If you're into MLOps and you're NOT a apart of the MLOps Community, you
 should be. You can join the
-[MLOPS Slack channel here](https://www.notion.so/iterative/June-Heartbeat-5c0515af1539444cb612b1acd44c37ca#75acbfba729e42c5b3f0dbad1ae25dc2).
+[MLOPS Slack channel here](https://mlops-community.slack.com/join/shared_invite/zt-o96abp9z-sRYKWb96wGK9vdhUvbSrsQ#/shared-invite/email).
 
 > I have recently came across with DVC by listening to MLOps Coffee Sessions #6
 > with David Aponte and Elle O'Brien (Such an interesting talk! 💯). This tool
