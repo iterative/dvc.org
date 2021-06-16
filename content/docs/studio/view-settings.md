@@ -13,8 +13,8 @@ In this section, you will:
 - [Understand when you need to configure your views](#scenarios-when-view-settings-are-required)
 - [Learn how to configure the view settings](#configuring-view-settings)
 
-Then, in the [next section](/doc/studio/teams), you will learn about how you can
-create and manage teams for collaborating on your views.
+In the [next section](/doc/studio/teams), you will learn how you can create and
+manage teams for collaborating on your ML experiments.
 
 ## Scenarios when views settings are required
 
@@ -30,6 +30,10 @@ Alternatively, you could create views from:
 
 In each of these scenarios, you will need to configure additional settings for
 DVC Studio to be able to access the data required for visualization.
+
+Additionally, you can also configure view settings to
+[change the name](#view-name) of your view and to
+[define the tracking scope](#tracking-scope) for your view.
 
 ### Non-DVC repositories
 
@@ -58,48 +62,63 @@ grant DVC Studio access to the data remote.
 
 ## Configuring view settings
 
-For any of the scenarios defined above, specify the additional settings as
-described below. You can access these settings at any time after creating the
-view. For this, click on the
+You can configure a view's settings at any time after creating the view. For
+this, click on the
 ![](https://static.iterative.ai/img/studio/view_open_settings_icon_v2.png) icon
 in the view. In the menu that opens up, click on `Settings`.
 
-- **Custom metrics and parameters:** If you want to connect custom files, you
-  can add them by clicking the `Add file` button. Enter the full file path, and
-  specify whether the file is for `Metrics` or `Parameters`.
+### View name
 
-- **Monorepo:** If you have connected to a
-  [monorepo](https://en.wikipedia.org/wiki/Monorepo), then specify the full path
-  to the sub-directory that contains the DVC repo for which you want to create
-  the view.
+To change the view name, enter the new name for your view as shown below.
 
-- **Data remotes:** If you need to set up DVC data remotes for your view, you
-  will need to do it after your view has been created. First, create your view
-  without specifying the data remotes. Once your view is created, open its
-  settings. Open the `Data remotes / cloud storage credentials` section. The
-  data remotes that are used in your DVC repo will be listed. Now, click on
-  `Add new credentials`. In the form that opens up, select the provider (Amazon
-  S3, GCP, etc.). Depending on the provider, you will be asked for more details
-  such as the credentials name, username, password etc.
+![](https://static.iterative.ai/img/studio/view_settings_view_name.png)
 
-  ![](https://static.iterative.ai/img/studio/s3_remote_settings.png)
+### Project directory
 
-  For details on what permissions are required, refer to the DVC documentation
-  on
-  [supported storage types](/doc/command-reference/remote/add#supported-storage-types).
+If you have connected to a [monorepo](https://en.wikipedia.org/wiki/Monorepo),
+then specify the full path to the sub-directory that contains the DVC repo for
+which you want to create the view.
 
-  Note that DVC Studio uses the credentials only to read plots/metrics files if
-  they are not saved into Git. It does not access any other data in your remote
-  storage. And you do not need to provide the credentials if any DVC data remote
-  in not used in your Git repository.
+![](https://static.iterative.ai/img/studio/view_settings_sub_directory.png)
 
-You can then connect to this DVC repository and create a view as described in
-the [Create View](/doc/studio/create-view) section later. DVC Studio
-automatically detects metrics, plots, and hyperparameters files specified in the
-project's `dvc.yaml`. Each time you push a commit to this DVC repository, your
-view will reflect the new changes.
+### Data remotes / cloud storage credentials
 
-To visualize such custom data, simply
-[specify the custom files](/doc/studio/view-settings#configuring-view-settings)
-to use, and DVC Studio will efficiently generate tables and plots for your
-custom input.
+If you need to set up DVC data remotes for your view, you will need to do it
+after your view has been created. First, create your view without specifying the
+data remotes. Once your view is created, open its settings. Open the
+`Data remotes / cloud storage credentials` section. The data remotes that are
+used in your DVC repo will be listed.
+
+![](https://static.iterative.ai/img/studio/view_settings_credentials.png)
+
+Now, click on `Add new credentials`. In the form that opens up, select the
+provider (Amazon S3, GCP, etc.). Depending on the provider, you will be asked
+for more details such as the credentials name, username, password etc.
+
+![](https://static.iterative.ai/img/studio/s3_remote_settings.png)
+
+For details on what permissions are required, refer to the DVC documentation on
+[supported storage types](/doc/command-reference/remote/add#supported-storage-types).
+
+Note that DVC Studio uses the credentials only to read plots/metrics files if
+they are not saved into Git. It does not access any other data in your remote
+storage. And you do not need to provide the credentials if any DVC data remote
+in not used in your Git repository.
+
+### Tracking scope
+
+DVC Studio can track upto 200 metrics, parameters, and files. If you have more
+than 200 values in your Git repository, you can specify which ones to track and
+which ones to leave out. To ensure that a value is include, make sure that it is
+selected in the tracking scope. Any value that is not selected may not display
+in your view.
+
+![](https://static.iterative.ai/img/studio/view_settings_tracking_scope.png)
+
+### Custom metrics and parameters
+
+If you want to connect custom files, you can add them by clicking the `Add file`
+button. Enter the full file path, and specify whether the file is for `Metrics`
+or `Parameters`.
+
+![](https://static.iterative.ai/img/studio/view_settings_custom_files.png)

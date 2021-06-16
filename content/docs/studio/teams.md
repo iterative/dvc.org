@@ -15,6 +15,9 @@ In this section, you will:
 - [Understand the privileges (access permissions) of different roles](#roles)
 - [Learn how to manage the team and its views](#manage-your-team-and-its-views)
 
+In the [next section](/doc/studio/account-management), you will learn how to
+manage your account, including your Git integrations and cloud credentials.
+
 ## Create a team
 
 To create a team, click on the drop down next to `Personal`. All the teams that

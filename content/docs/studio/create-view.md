@@ -17,8 +17,12 @@ into a view to explore the ML experiments and their results.
 
 ## Create a View
 
-You can create views from your Git repositories, just like the `Demo` view you
-saw in the last section. To create a new view, follow these steps.
+You can create views from your Git repositories. DVC Studio automatically
+detects metrics, plots, and hyperparameters files specified in the project's
+`dvc.yaml`. If you are working with a non-DVC repository, you will need to
+specify the custom files with your metrics and parameters.
+
+To create a new view, follow these steps.
 
 1. Sign in to your [DVC Studio](https://studio.iterative.ai/) dashboard using
    GitHub, GitLab or Bitbucket.
