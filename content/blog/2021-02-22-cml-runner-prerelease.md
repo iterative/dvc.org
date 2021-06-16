@@ -161,7 +161,7 @@ add this step to your workflow:
 ```yaml
 steps:
   - uses: actions/checkout@v2
-  - uses: iterative/cml-action@v1
+  - uses: iterative/setup-cml@v1
 ```
 
 [More details are in the docs!](https://github.com/iterative/setup-cml)

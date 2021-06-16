@@ -81,7 +81,7 @@ export const HamburgerMenu: React.FC<
         <li className={styles.section}>
           <Link
             href="/features"
-            className={styles.sectionLink}
+            className={styles.sectionHeading}
             onClick={handleItemClick('features')}
           >
             Features
@@ -90,7 +90,7 @@ export const HamburgerMenu: React.FC<
         <li className={styles.section}>
           <Link
             href={docsPage}
-            className={styles.sectionLink}
+            className={styles.sectionHeading}
             onClick={handleItemClick('doc')}
           >
             Doc
@@ -99,7 +99,7 @@ export const HamburgerMenu: React.FC<
         <li className={styles.section}>
           <Link
             href="/blog"
-            className={styles.sectionLink}
+            className={styles.sectionHeading}
             onClick={handleItemClick('blog')}
           >
             Blog
@@ -108,7 +108,7 @@ export const HamburgerMenu: React.FC<
         <li className={styles.section}>
           <Link
             href="/community"
-            className={styles.sectionLink}
+            className={styles.sectionHeading}
             onClick={handleItemClick('community')}
           >
             Community
@@ -175,7 +175,7 @@ export const HamburgerMenu: React.FC<
         <li className={styles.section}>
           <Link
             href="/support"
-            className={styles.sectionLink}
+            className={styles.sectionHeading}
             onClick={handleItemClick('support')}
           >
             Support
@@ -231,6 +231,44 @@ export const HamburgerMenu: React.FC<
               >
                 <TwitterIcon className={styles.subSectionLinkImage} />
                 <span className={styles.subSectionLinkTitle}>Twitter</span>
+              </Link>
+            </li>
+          </ul>
+        </li>
+        <li className={styles.section}>
+          <p className={styles.sectionHeading}>All Tools</p>
+          <ul className={styles.subSections}>
+            <li className={styles.subSection}>
+              <Link
+                href="https://studio.iterative.ai/"
+                className={styles.subSectionLink}
+              >
+                <img
+                  className={styles.subSectionLinkImage}
+                  src="/img/studio-icon.svg"
+                  alt="Studio logo"
+                />
+                <span className={styles.subSectionLinkTitle}>Studio</span>
+              </Link>
+            </li>
+            <li className={styles.subSection}>
+              <Link href="/" className={styles.subSectionLink}>
+                <img
+                  className={styles.subSectionLinkImage}
+                  src="/img/logo.svg"
+                  alt="DVC logo"
+                />
+                <span className={styles.subSectionLinkTitle}>DVC</span>
+              </Link>
+            </li>
+            <li className={styles.subSection}>
+              <Link href="https://cml.dev/" className={styles.subSectionLink}>
+                <img
+                  className={styles.subSectionLinkImage}
+                  src="/img/cml-icon.svg"
+                  alt="CML logo"
+                />
+                <span className={styles.subSectionLinkTitle}>CML</span>
               </Link>
             </li>
           </ul>

@@ -85,6 +85,9 @@ $ dvc stage add --name train --deps data/MNIST --deps train.py \
               --params seed,lr,weight_decay --live dvclive python train.py
 ```
 
+The `--live dvclive` option enables our special logger [DVCLive](/doc/dvclive),
+which helps you register checkpoints from your code.
+
 The checkpoints need to be enabled in DVC at the pipeline level. The
 `-c / --checkpoint` option of the `dvc stage add` command defines the checkpoint
 file or directory. The checkpoint file, _model.pt_, is an output from one
@@ -147,11 +150,15 @@ Now we need to enable checkpoints at the code level. We are interested in
 tracking the metrics along with each checkpoint, so we'll need to add a few
 lines of code.
 
-In the `train.py` file, import the `dvclive` package with the other imports:
+In the `train.py` file, import the [`dvclive`](/doc/dvclive) package with the
+other imports:
 
 ```python
 import dvclive
 ```
+
+> It's also possible to use DVC's Python API to register checkpoints, or to use
+> custom code to do so. See `dvc.api.make_checkpoint()` for details.
 
 Then update the following lines of code in the `main` method inside of the
 training epoch loop.

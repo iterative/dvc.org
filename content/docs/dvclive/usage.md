@@ -3,8 +3,8 @@
 We will use sample [MNIST classification](http://yann.lecun.com/exdb/mnist/)
 training code in order to see how one can introduce Dvclive into the workflow.
 
-> Note that [keras](https://keras.io/about/#installation-amp-compatibility) is
-> required throughout these examples.
+> Note that [Keras](https://keras.io/about/#installation-amp-compatibility) is
+> used in the code examples below.
 
 ```python
 # train.py

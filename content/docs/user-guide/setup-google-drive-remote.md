@@ -195,6 +195,12 @@ authentication is needed.
                  gdrive_service_account_json_file_path path/to/file.json
    ```
 
+3. Share the Google Drive folders that you want to use with the service account.
+   Navigate to your Google Drive folder's sharing options and add the service
+   account as an editor (read/write) or viewer (read-only):
+
+![](/img/gdrive-share-with-service-account.png)
+
 ## Authorization
 
 On the first usage of a GDrive [remote](/doc/command-reference/remote), for
