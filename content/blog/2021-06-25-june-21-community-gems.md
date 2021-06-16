@@ -102,7 +102,7 @@ Chunk-level deduplication is on our todo list.
 
 For the second part of the question, you can use data management with DVC and
 have your own pipelines. Just treat it as Git for data then be sure to
-`dvc add/push/pull` and you should be set. Hooks, like `pre-commit` or
+`dvc {add,push,pull}` and you should be set. Hooks, like `pre-commit` or
 `post-pipeline-run`, are a good way to go about it.
 
 ### [Q: Is there a way to tell DVC to use a different profile instead of the default profile when running S3 commands?](https://discord.com/channels/485586884165107732/563406153334128681/846857498094469120)
