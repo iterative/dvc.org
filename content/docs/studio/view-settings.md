@@ -10,13 +10,13 @@ them.
 
 In this section, you will:
 
-- [Understand what settings you can configure for your views](#view-settings)
+- [Understand when you need to configure your views](#scenarios-when-view-settings-are-required)
 - [Learn how to configure the view settings](#configuring-view-settings)
 
 Then, in the [next section](/doc/studio/teams), you will learn about how you can
 create and manage teams for collaborating on your views.
 
-## View settings
+## Scenarios when views settings are required
 
 If you are connecting to a DVC repo which is at the root of the Git repository
 and does not reference remote/cloud storage, then you can successfully visualize

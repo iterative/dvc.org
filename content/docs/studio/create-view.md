@@ -108,6 +108,14 @@ Click on the link to `Configure Git integrations settings`. This will open the
 Click on the `Configure` button, and you will be redirected to the GitHub page
 to install and authorize the DVC Studio GitHub app.
 
-> Note that you do not have to authorize DVC Studio on all the repositories in
-> your GitHub organization. You can limit access to only repositories that you
-> want to use with DVC Studio.
+![](https://static.iterative.ai/img/studio/authorize_app_on_github.png)
+
+You can specify the level of authorization that you want to grant to DVC Studio:
+
+- To authorize DVC Studio on all the repositories in your GitHub account, select
+  `All repositories`.
+- To limit access to only specific repositories, select
+  `Only select repositories`. Then select the repositories which you want to use
+  with DVC Studio.
+
+Finally, click on `Install & Authorize`.

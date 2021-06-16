@@ -49,10 +49,13 @@ repositories as CSV, JSON or YAML files. You can add these values to your Git
 repositories in two ways:
 
 1. **Set up DVC repositories**: You can use [DVC](https://dvc.org/) and Git to
-   version your code, data and models all within your Git repositories. By using
-   DVC, you can be sure not to bloat your repositories with large volumes of
-   data or huge models. These large assets reside in the cloud or other remote
-   storage locations. You will simply track their version info in Git.
+   version your code, data and models all within your Git repositories. Data
+   Version Control, or DVC, is a data and ML experiment management tool that
+   takes advantage of the existing engineering toolset that you're already
+   familiar with (Git, CI/CD, etc.). By using DVC, you can be sure not to bloat
+   your repositories with large volumes of data or huge models. These large
+   assets reside in the cloud or other remote storage locations. You will simply
+   track their version info in Git.
 
    DVC also enables you to
    [share your data and model files](/doc/use-cases/sharing-data-and-model-files),
