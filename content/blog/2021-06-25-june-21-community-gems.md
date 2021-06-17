@@ -2,7 +2,7 @@
 title: June '21 Community Gems
 date: 2021-06-25
 description: |
-  A roundup of technical Q&A's from the DVC community. 
+  A roundup of technical Q&A's from the DVC community.
   This month: remote storage integration, hyperparameter tuning,
   best practices for managing experiments and more.
 descriptionLong: |
@@ -20,8 +20,8 @@ tags:
 
 ### [Q: Is it possible to plot multiple experiments together?](https://discord.com/channels/485586884165107732/563406153334128681/834387923482181653)
 
-You can use experiment names in the `dvc plots` commands. You need
-to use the `diff` command to compare multiple plots. Try
+You can use experiment names in the `dvc plots` commands. You need to use the
+`diff` command to compare multiple plots. Try
 `dvc plots diff exp-6ef18 exp-b17b4 exp-26e88`.
 
 Thanks to @PythonF from Discord for asking this question that led to this Gem!
@@ -58,7 +58,7 @@ Right now, we support GitHub and GitLab.
 Azure DevOps and GCP (Google Cloud Platform) support are on the roadmap. Stay
 tuned for more updates!
 
-### [Q: I pushed a lot of files using `dvc push` to my DVC remote, but there are a few that couldn't be pushed at the time. If I run `dvc push` again, will it just upload the missing files?]()
+### [Q: I pushed a lot of files using `dvc push` to my DVC remote, but there are a few that couldn't be pushed at the time. If I run `dvc push` again, will it just upload the missing files?](https://discord.com/channels/485586884165107732/563406153334128681/842662337159757854)
 
 Thanks for the question @petek!
 
@@ -69,21 +69,9 @@ checks to make sure that the other files were uploaded successfully before, but
 as far as the actual data transfer goes, only the missing files will be
 uploaded.
 
-### [Q: After running `dvc repro`, I want to use `dvc add` on specific outputs of the pipeline, but I get this error: `output 'train' is already specified in stage: '../dvc.yaml`. Is there a way to manually add and pull data using the file versioning?](https://discord.com/channels/485586884165107732/485596304961962003/841688323663855616)
+### [Q: Let's say I have a DVC pipeline with two stages, can I only pull the second one and keep the first one for other uses? Can I pull some specific output from the pipeline?](https://discord.com/channels/485586884165107732/485596304961962003/841688323663855616)
 
-Since the _dvc.lock_ file already has the data versioned, you could do a
-`dvc push`.
-
-If you want to keep the flexibility of adding and pulling data manually, there
-are a few things you can do. `dvc add` is specifically for tracking raw data. If
-you have a pipeline output, it will already be tracked with the combination of
-the _dvc.yaml_ and _dvc.lock_ files. This lets you push and pull your pipeline
-outputs without needing to run the `dvc add` command.
-
-If you don't want DVC to track some of the specific outputs, you can mark them
-as `cache: false` in your _dvc.yaml_.
-
-You can also push or pull specific output from a pipeline with
+You can pull specific outputs from a pipeline with
 `dvc pull path/to/specific/output`. This is similar to how you can use `dvc add`
 to work with specific files and directories.
 
