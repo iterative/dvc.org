@@ -20,8 +20,8 @@ tags:
 
 ### [Q: Is it possible to plot multiple experiments together?](https://discord.com/channels/485586884165107732/563406153334128681/834387923482181653)
 
-You can use experiment names in the `dvc plots` commands. You need
-to use the `diff` command to compare multiple plots. Try
+You can use experiment names in the `dvc plots` commands. You need to use the
+`diff` command to compare multiple plots. Try
 `dvc plots diff exp-6ef18 exp-b17b4 exp-26e88`.
 
 Thanks to @PythonF from Discord for asking this question that led to this Gem!
