@@ -18,7 +18,7 @@ tags:
   - Remote Storage
 ---
 
-### [Q: Is it possible to plot metrics from multiple experiments together?](https://discord.com/channels/485586884165107732/563406153334128681/834387923482181653)
+### [Q: Is it possible to plot multiple experiments together?](https://discord.com/channels/485586884165107732/563406153334128681/834387923482181653)
 
 You should be able to use experiment names in the `dvc plots` commands. You need
 to use the `diff` flag to compare multiple plots. Try
