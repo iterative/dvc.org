@@ -83,7 +83,7 @@ outputs without needing to run the `dvc add` command.
 If you don't want DVC to track some of the specific outputs, you can mark them
 as `cache: false` in your _dvc.yaml_.
 
-You can also pull specific output from a pipeline with
+You can also push or pull specific output from a pipeline with
 `dvc pull path/to/specific/output`. This is similar to how you can use `dvc add`
 to work with specific files and directories.
 
