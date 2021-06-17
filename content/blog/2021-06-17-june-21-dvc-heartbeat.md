@@ -70,12 +70,11 @@ be. You can join their Slack
 Drilling down to the next level, I give you
 [this tutorial](https://medium.com/geekculture/exploring-dvc-for-machine-learning-pipelines-in-research-part-1-3ebc2ca35a18)
 by [Neda Sultova](https://www.linkedin.com/in/neda-sultova-597a811a8/). Not only
-is it a great tutorial of DVC in and of itself, but Neda begins with her use
-case in her postion at [Helmholtz AI](https://www.helmholtz.ai/). She clearly
-defines the framework for deciding on what tools will bridge the gaps and
-increase efficiency for her team. Among the needs are reproducibility, workflow
-integration, exchangeable backend, framework agnostic, open source, and the
-ability of the solution to be tweaked to the team's needs.
+is it a great tutorial of DVC in and of itself, but Neda also defines a clear
+framework for the decision making process at
+[Helmholtz AI](https://www.helmholtz.ai/). Among the needs are reproducibility,
+workflow integration, exchangeable backend, framework agnostic, open source, and
+the ability of the solution to be tweaked to the team's needs.
 
 <external-link
 href="https://medium.com/geekculture/exploring-dvc-for-machine-learning-pipelines-in-research-part-1-3ebc2ca35a18"
