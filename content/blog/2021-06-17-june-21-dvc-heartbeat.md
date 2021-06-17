@@ -1,6 +1,6 @@
 ﻿---
 title: June '21 Heartbeat
-date: 2021-06-16
+date: 2021-06-17
 description: |
   Monthly updates are here! Making sense of the MLOps Landscape, MLOps 
   Community love, our MLOps philosophy, DVC Studio, R for DVC, new learning
@@ -11,9 +11,9 @@ descriptionLong: |
   🧐 Our MLOps philosophy
   📖 MLOps learning opportunities,
   💻 R with DVC, 
-  🎥 conference videos from our team members,
-  🚀 info on our growing team, and more!
-picture: 2021-06-16/june21cover.png
+  🎥 Conference videos from our team members,
+  🚀 Info on our growing team, and more!
+picture: 2021-06-17/june21cover.png
 author: jeny_defigueiredo
 commentsUrl: https://discuss.dvc.org/t/june-21-heartbeat/793?
 tags:
@@ -32,7 +32,7 @@ the content from our community.
 
 ![So many choices...](https://media.giphy.com/media/Uni2jYCihB3fG/giphy.gif)
 
-## LJ Miranda Triad of order
+## LJ Miranda's Triad of order
 
 The MLOps tool landscape can be confusing to say the least.  
 [LJ Miranda](https://twitter.com/ljvmiranda921), in a well written
@@ -46,7 +46,7 @@ right tools. It's not just about the tools, it's about the people!
 As you can see DVC makes it into the "Trial" loop, but we think we will be be
 making it into the adoption region in relatively short order. 😉🚀
 
-![](/uploads/images/2021-06-16/LJMiranda.png)_Making sense of the MLOps
+![](/uploads/images/2021-06-17/LJMiranda.png) _Making sense of the MLOps
 Landscape_
 
 ## Found in the MLOps Community
@@ -54,9 +54,9 @@ Landscape_
 You can find more comments from LJ Miranda and others in response to a
 [great question](https://mlops-community.slack.com/?redir=%2Farchives%2FC015J2Y9RLM%2Fp1622714574054300)
 from André Godinho in the [MLOps Community](https://mlops.community/) Slack (see
-below). If you're into MLOps and you're NOT a apart of the MLOps Community, you
-should be. You can join the
-[MLOPS Slack channel here](https://mlops-community.slack.com/join/shared_invite/zt-o96abp9z-sRYKWb96wGK9vdhUvbSrsQ#/shared-invite/email).
+below). If you're into MLOps and you're NOT a part of this Community, you should
+be. You can join their Slack
+[here](https://mlops-community.slack.com/join/shared_invite/zt-o96abp9z-sRYKWb96wGK9vdhUvbSrsQ#/shared-invite/email).
 
 > I have recently came across with DVC by listening to MLOps Coffee Sessions #6
 > with David Aponte and Elle O'Brien (Such an interesting talk! 💯). This tool
@@ -65,17 +65,17 @@ should be. You can join the
 > find DVC to give more rise to creativity as it integrates really well with
 > Git. - André Godinho
 
-## Neda Sultova Tutorial
+## Neda Sultova's Tutorial and Tool Rubric
 
 Drilling down to the next level, I give you
 [this tutorial](https://medium.com/geekculture/exploring-dvc-for-machine-learning-pipelines-in-research-part-1-3ebc2ca35a18)
 by [Neda Sultova](https://www.linkedin.com/in/neda-sultova-597a811a8/). Not only
-is it a great tutorial of DVC in and of itself, but Neda started with her use
-case and the framework for deciding on what tools will bridge the gaps and
-increase efficiency for her team at [Helmholtz AI](https://www.helmholtz.ai/).
-Among the needs are reproducibility, workflow integration, exchangeable backend,
-framework agnostic, open source and the ability of the solution to be tweaked to
-the team's needs.
+is it a great tutorial of DVC in and of itself, but Neda begins with her use
+case in her postion at [Helmholtz AI](https://www.helmholtz.ai/). She clearly
+defines the framework for deciding on what tools will bridge the gaps and
+increase efficiency for her team. Among the needs are reproducibility, workflow
+integration, exchangeable backend, framework agnostic, open source, and the
+ability of the solution to be tweaked to the team's needs.
 
 <external-link
 href="https://medium.com/geekculture/exploring-dvc-for-machine-learning-pipelines-in-research-part-1-3ebc2ca35a18"
@@ -89,9 +89,9 @@ image="/uploads/images/2021-06-15/neda-sultova.png"/>
 And at last I bring you to
 ["The Road to AI Hell Starts with Good MLOps Intentions" ](https://thenewstack.io/the-road-to-ai-hell-starts-with-good-mlops-intentions/)
 by our CEO [Dmitry Petrov](https://twitter.com/FullStackML) which explains our
-philosophy in the MLOps space. You will learn about Dmitry's experience that led
-to our tools, what we think is the right way to solve MLOps challenges, and how
-we do it.
+philosophy in the MLOps space. You will learn about the experiences that led to
+developing our tools, what we think is the right way to solve MLOps challenges,
+and how we do it.
 
 > Teams made up of data scientists and developers should be able to define their
 > own workflow based on their business requirements and team preferences, just
@@ -109,9 +109,9 @@ image="/uploads/images/2021-06-15/ai-hell.png"/>
 
 # Big News! 🚀🚀🚀
 
-In case you missed it, June 3rd we introduced our latest tool that offers a GUI
-to display your team's work with DVC and CML: DVC Studio! We know this has been
-on our Community's wishlist and now it's here! You can check out all its
+In case you missed it, June 3rd we introduced our latest tool: DVC Studio! A web
+application that GUI display your team's work with DVC and CML. We know this has
+been on our Community's wishlist and now it's here! You can check out all its
 features and [give it a try here](https://studio.iterative.ai/). Or check out
 the introduction video below.
 
@@ -123,9 +123,9 @@ https://youtu.be/hKf4twg832g
 
 Are you or someone on your team an R user?
 [João Santiago](https://twitter.com/jcpsantiago) who has contributed to DVC,
-recently came up with dvcru to provide utility functions for DVC pipelines using
-R scripts. Additionally the project aims to show typical workflows they enable
-as well as provide project templates. Check out all the R goodness in
+recently came up with "dvcru" to provide utility functions for DVC pipelines
+using R scripts. Additionally the project aims to show typical workflows they
+enable as well as provide project templates. Check out all the R goodness in
 [this Github Repository](https://github.com/jcpsantiago/dvcru).
 
 <external-link
@@ -139,7 +139,7 @@ image="/uploads/images/2021-06-15/r.png"/>
 
 Next up we have [Milecia McGregor](https://twitter.com/FlippedCoding) presenting
 and live coding at [PyData SoCal](https://www.meetup.com/PyData-SoCal/)
-organized by [Pramit Choudhary](https://twitter.com/MaverickPramit). Checkout
+organized by [Pramit Choudhary](https://twitter.com/MaverickPramit). Check out
 her talk on "Reproducible ML Experiments (with Git and DVC)" and all the great
 questions that ensued.
 
