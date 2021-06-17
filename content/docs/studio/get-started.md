@@ -73,7 +73,9 @@ repositories in two ways:
    instance, if you have an ML project for which you generate and save metrics
    either manually or using some ML tracking tools, then you can create a view
    for this project by specifying the file (within your Git repo) which contains
-   your saved metrics.
+   your saved metrics. Refer to the section on
+   [view settings](/doc/studio/view-settings#non-dvc-repositories) to learn how
+   to specify the custom files.
 
    So as you can see, DVC Studio does not necessarily require you to work with
    DVC repositories. It simply requires your metrics and hyperparameters to be

@@ -538,7 +538,9 @@
         "label": "Configure View",
         "slug": "view-settings"
       },
-      "teams"
+      "teams",
+      "account-management",
+      "troubleshooting"
     ]
   },
   {

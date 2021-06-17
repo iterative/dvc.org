@@ -40,9 +40,9 @@ Additionally, you can also configure view settings to
 In the section on
 [preparing your repositories](/doc/studio/get-started#preparing-your-repositories),
 you saw that you can use DVC Studio with DVC as well as non-DVC repositories. If
-you are conecting to a non-DVC repository, then you will need to specify the
-custom files that contain the metrics and hyperparameters that you want to
-visualize.
+you are conecting to a non-DVC repository, then you will need to
+[specify the custom files](#custom-metrics-and-parameters) that contain the
+metrics and hyperparameters that you want to visualize.
 
 ### Monorepo
 
