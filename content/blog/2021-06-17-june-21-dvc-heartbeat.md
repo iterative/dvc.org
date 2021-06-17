@@ -2,8 +2,8 @@
 title: June '21 Heartbeat
 date: 2021-06-17
 description: |
-  Monthly updates are here! Making sense of the MLOps Landscape, MLOps 
-  Community love, our MLOps philosophy, DVC Studio, R for DVC, new learning
+  Monthly updates are here! Making sense of the MLOps Landscape, Community 
+  love, our MLOps philosophy, DVC Studio, R for DVC, new learning
   opportunities, team members and more!
 descriptionLong: |
   This month you will find:
