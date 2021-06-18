@@ -37,7 +37,8 @@ your Git repository. In the figure above, you can see that `avg_prec` and
 You can dive deep into all the experiments committed to the repo. For this, open
 the view by clicking the view name (in this case, `example-get-started`). An
 experiements table will be generated for you to visualize and interact with your
-ML experiments. The [Components of a View](/doc/studio/components-of-a-view)
+ML experiments. The
+[Components of a View](/doc/studio/explore-experiments#components-of-a-view)
 section provides details on what is displayed in this table and how you can
 interact with it.
 
