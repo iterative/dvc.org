@@ -23,6 +23,21 @@ details.
 [![](https://sourcerer.io/fame/shcheklein/iterative/dvc.org/images/6)](https://sourcerer.io/fame/shcheklein/iterative/dvc.org/links/6)
 [![](https://sourcerer.io/fame/shcheklein/iterative/dvc.org/images/7)](https://sourcerer.io/fame/shcheklein/iterative/dvc.org/links/7)
 
+## Developing with [Codespaces](https://docs.github.com/en/codespaces)
+
+Our repository has GitHub Codespaces enabled:
+
+![](https://docs.github.com/assets/images/help/codespaces/open-with-codespaces-button.png)
+
+Once the codespace has been [created], you can follow the [Development
+environment] instructions from it's [Terminal].
+
+[created]:
+  https://docs.github.com/en/codespaces/developing-in-codespaces/creating-a-codespace
+[development environment]:
+  https://dvc.org/doc/user-guide/contributing/docs#development-environment
+[terminal]: https://code.visualstudio.com/docs/editor/integrated-terminal
+
 # Writing a blog post
 
 Please, [contact us](mailto:support@dvc.org) if you'd like to write something
