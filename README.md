@@ -23,9 +23,10 @@ details.
 [![](https://sourcerer.io/fame/shcheklein/iterative/dvc.org/images/6)](https://sourcerer.io/fame/shcheklein/iterative/dvc.org/links/6)
 [![](https://sourcerer.io/fame/shcheklein/iterative/dvc.org/images/7)](https://sourcerer.io/fame/shcheklein/iterative/dvc.org/links/7)
 
-## Developing with [Codespaces](https://docs.github.com/en/codespaces)
+## Developing online
 
-Our repository has GitHub Codespaces enabled:
+Our repository has GitHub [Codespaces](https://docs.github.com/en/codespaces)
+enabled:
 
 ![](https://docs.github.com/assets/images/help/codespaces/open-with-codespaces-button.png)
 
