@@ -1,6 +1,6 @@
 ﻿---
 title: June '21 Heartbeat
-date: 2021-06-17
+date: 2021-06-18
 description: |
   Monthly updates are here! Making sense of the MLOps Landscape, Community 
   love, our MLOps philosophy, DVC Studio, R for DVC, new learning
@@ -13,7 +13,7 @@ descriptionLong: |
   💻 R with DVC, 
   🎥 Conference videos from our team members,
   🚀 Info on our growing team, and more!
-picture: 2021-06-17/june21cover.png
+picture: 2021-06-18/june21cover.png
 author: jeny_defigueiredo
 commentsUrl: https://discuss.dvc.org/t/june-21-heartbeat/793?
 tags:
@@ -46,7 +46,7 @@ right tools. It's not just about the tools, it's about the people!
 As you can see DVC makes it into the "Trial" loop, but we think we will be be
 making it into the adoption region in relatively short order. 😉🚀
 
-![](/uploads/images/2021-06-17/LJMiranda.png) _Making sense of the MLOps
+![](/uploads/images/2021-06-18/LJMiranda.png) _Making sense of the MLOps
 Landscape_
 
 ## Found in the MLOps Community
