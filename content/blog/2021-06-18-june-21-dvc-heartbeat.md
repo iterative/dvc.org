@@ -81,7 +81,7 @@ href="https://medium.com/geekculture/exploring-dvc-for-machine-learning-pipeline
 title="Exploring DVC for Machine Learning Pipelines in Research (Part 1)"
 description="The first of a multi-part series on the search and decision making process for MLOps tools at Helmholtz AI."
 link="https://medium.com"
-image="/uploads/images/2021-06-15/neda-sultova.png"/>
+image="/uploads/images/2021-06-18/neda-sultova.png"/>
 
 ## Our Philosophy
 
@@ -104,7 +104,7 @@ href="https://thenewstack.io/the-road-to-ai-hell-starts-with-good-mlops-intentio
 title="The Road to AI Hell Starts with Good MLOps Intentions"
 description="Dmitry Petrov explains the journey and philosophy at the heart of Iterative.ai's MLOps tools."
 link="https://thenewstack.io"
-image="/uploads/images/2021-06-15/ai-hell.png"/>
+image="/uploads/images/2021-06-18/ai-hell.png"/>
 
 # Big News! 🚀🚀🚀
 
@@ -132,7 +132,7 @@ href="https://github.com/jcpsantiago/dvcru"
 title="dvcru"
 description="João Santiago's repository for dvcru, providing utility functions for DVC Pipelines using R scripts."
 link="https://github.com"
-image="/uploads/images/2021-06-15/r.png"/>
+image="/uploads/images/2021-06-18/r.png"/>
 
 ## Milecia McGregor at PyData SoCal
 
@@ -226,7 +226,7 @@ href="https://www.meetup.com/DVC-Community-Virtual-Meetups/events/278729121/"
 title="dvcru"
 description="June DVC Office Hours with Sami Jawhar of Kernel presenting experiment use cases."
 link="https://meetup.com"
-image="/uploads/images/2021-06-15/meetup.png"/>
+image="/uploads/images/2021-06-18/meetup.png"/>
 
 ## Tweet Love ❤️
 
