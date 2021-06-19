@@ -39,7 +39,8 @@ $ ls <path>
 The `url` argument specifies the address of the DVC or Git repository containing
 the data source. Both HTTP and SSH protocols are supported (e.g.
 `[user@]server:project.git`). `url` can also be a local file system path
-(including the current project e.g. `.`).
+(including the current project e.g. `.`). Any path inside a DVC project will be
+resolved to the project's root.
 
 The optional `path` argument is used to specify a directory to list within the
 Git repo at `url` (including paths inside tracked directories). It's similar to
