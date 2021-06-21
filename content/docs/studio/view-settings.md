@@ -92,13 +92,22 @@ used in your DVC repo will be listed.
 ![](https://static.iterative.ai/img/studio/view_settings_credentials.png)
 
 Now, click on `Add new credentials`. In the form that opens up, select the
-provider (Amazon S3, GCP, etc.). Depending on the provider, you will be asked
-for more details such as the credentials name, username, password etc.
+provider (Amazon S3, GCP, etc.). For details on what types of remote storage
+(protocols) are supported, refer to the DVC documentation on
+[supported storage types](/doc/command-reference/remote/add#supported-storage-types).
+
+Depending on the provider, you will be asked for more details such as the
+credentials name, username, password etc. Note that for each supported storage
+type, the required details may be different.
 
 ![](https://static.iterative.ai/img/studio/s3_remote_settings.png)
 
-For details on what permissions are required, refer to the DVC documentation on
-[supported storage types](/doc/command-reference/remote/add#supported-storage-types).
+You will also have to ensure that the credentials you enter have the required
+permissions on the cloud / remote storage. In the DVC documentation on
+[supported storage types](/doc/command-reference/remote/add#supported-storage-types),
+expand the section for the storage type you want to add. There, you will find
+the details of the permissions that you need to grant to the account
+(credentials) that you are configuring on DVC Studio.
 
 Note that DVC Studio uses the credentials only to read plots/metrics files if
 they are not saved into Git. It does not access any other data in your remote
