@@ -64,8 +64,8 @@ grant DVC Studio access to the data remote.
 
 You can configure a view's settings at any time after creating the view. For
 this, click on the
-![](https://static.iterative.ai/img/studio/view_open_settings_icon_v2.png) icon
-in the view. In the menu that opens up, click on `Settings`.
+![](https://static.iterative.ai/img/studio/view_open_settings_icon.png) icon in
+the view. In the menu that opens up, click on `Settings`.
 
 ### View name
 

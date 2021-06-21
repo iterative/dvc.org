@@ -24,7 +24,7 @@ A table will be generated as shown below. This includes metrics, hyperparameters
 and information about the datasets. All these values are flattened and neatly
 presented for you.
 
-![](https://static.iterative.ai/img/studio/view_components_v2.png)
+![](https://static.iterative.ai/img/studio/view_components.png)
 
 In this tabular display, you will not only see your complete experiment history,
 you can also generate plots, visualize trends, compare experiments, and even run

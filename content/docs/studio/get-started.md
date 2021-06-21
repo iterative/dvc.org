@@ -26,7 +26,7 @@ signing in to DVC Studio, you will see that there already exists a `Demo` view
 that connects to an example DVC project. Use this view to explore the features
 that DVC Studio has to offer.
 
-![](https://static.iterative.ai/img/studio/login_home_v2.png) _When you first
+![](https://static.iterative.ai/img/studio/login_home.png) _When you first
 login, an example view is already created for you to explore, and you can add
 more views._
 

@@ -38,11 +38,11 @@ To create a new view, follow these steps.
 3. Open the organization whose repository you want to connect to. You can also
    use the search bar to directly look for a repository.
 
-   ![](https://static.iterative.ai/img/studio/select_repo_v2.png)
+   ![](https://static.iterative.ai/img/studio/select_repo.png)
 
 4. Specify additional connection settings if required.
 
-   ![](https://static.iterative.ai/img/studio/view_settings_v2.png)
+   ![](https://static.iterative.ai/img/studio/view_settings.png)
 
 > View settings must be configured if you are connecting to a non-DVC
 > repository, if your metrics are in some custom files, if you are connecting to
@@ -57,10 +57,10 @@ You should now see that a view has been added in your dashboard.
    project requires any of the additional settings, then remember to configure
    them by opening the view settings. Otherwise, your view may not work as
    expected. To go to view settings, click on the
-   ![](https://static.iterative.ai/img/studio/view_open_settings_icon_v2.png)
-   icon in the view. In the menu that opens up, click on `Settings`.
+   ![](https://static.iterative.ai/img/studio/view_open_settings_icon.png) icon
+   in the view. In the menu that opens up, click on `Settings`.
 
-![](https://static.iterative.ai/img/studio/view_open_settings_v2.png)
+![](https://static.iterative.ai/img/studio/view_open_settings.png)
 
 ## Create multiple views from a single Git repository
 
@@ -82,7 +82,7 @@ You can share your views on the web. Simply click on the button labelled
 `Private` next to the name of the view. In the menu that pops up, turn on
 `Share to Web`.
 
-![](https://static.iterative.ai/img/studio/view_share_v2.png)
+![](https://static.iterative.ai/img/studio/view_share.png)
 
 You can change a shared (public) view and make it private by turning off
 `Share to web`.

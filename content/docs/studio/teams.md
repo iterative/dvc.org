@@ -23,11 +23,11 @@ manage your account, including your Git integrations and cloud credentials.
 To create a team, click on the drop down next to `Personal`. All the teams that
 you have created so far will be listed within "Teams" in the drop down menu. If
 you have not created any team so far, this list will be empty. Now, click on
-`Create a team`. ![](https://static.iterative.ai/img/studio/team_create_v2.png)
+`Create a team`. ![](https://static.iterative.ai/img/studio/team_create.png)
 
 You will be asked to enter the URL namespace for your team. Enter a unique name.
 The URL for your team will be formed using this name.
-![](https://static.iterative.ai/img/studio/team_enter_name_v2.png)
+![](https://static.iterative.ai/img/studio/team_enter_name.png)
 
 Then, click the `Create team` button on the top right corner.
 
@@ -44,7 +44,7 @@ GitHub, GitLab or Bitbucket account.
 
 You can add multiple collaborators. Each collaborator can be assigned the Admin,
 Edit, or View role. Refer to the [Roles](#roles) section below for more details
-about the roles. ![](https://static.iterative.ai/img/studio/team_roles_v2.png)
+about the roles. ![](https://static.iterative.ai/img/studio/team_roles.png)
 
 Once you have added the people that you wish to add to your team, click on
 `Send Invites and Close` on the top right corner.
@@ -104,7 +104,7 @@ that of any other collaborator who has been assigned the `Admin` role.
 
 Once you have created the team, the team's page opens up.
 
-![](https://static.iterative.ai/img/studio/team_page_v2.png)
+![](https://static.iterative.ai/img/studio/team_page.png)
 
 On this page, you can perform three types of tasks:
 
@@ -121,4 +121,4 @@ On this page, you can perform three types of tasks:
   team. Note that these settings are applicable to the team and are thus
   different from [view settings](/doc/studio/view-settings).
 
-  ![](https://static.iterative.ai/img/studio/team_settings_v2.png)
+  ![](https://static.iterative.ai/img/studio/team_settings.png)
