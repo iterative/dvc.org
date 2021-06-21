@@ -15,7 +15,7 @@
     },
     "events": {
       "title": "Events",
-      "description": "Learn more about DVC and meet our team virtually! We're appearing at conferences, meetups, and talks around the world.",
+      "description": "Learn more about DVC and meet our team virtually or in person! We're appearing at conferences, meetups, and talks around the world.",
       "mobileDescription": "Come to hear more about DVC"
     },
     "learn": {
@@ -77,6 +77,14 @@
       "city": "Virtual",
       "date": "2021-06-24",
       "pictureUrl": "/img/community/events/office-hours-meetup.png"
+    },
+    {
+      "url": "https://global.pydata.org/talks/devops-for-science-using-continuous-integration-for-rigorous-and-reproducible-analysis",
+      "title": "PyData Global",
+      "description": "Elle O'Brien presents 'DevOps for science: using continuous integration for rigorous and reproducible analysis'",
+      "city": "Virtual",
+      "date": "2020-11-14",
+      "pictureUrl": "/img/community/events/pydata.png"
     }
   ],
   "stats": {
