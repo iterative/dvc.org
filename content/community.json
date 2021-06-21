@@ -15,7 +15,7 @@
     },
     "events": {
       "title": "Events",
-      "description": "Learn more about DVC and meet us in person! We're appearing at conferences, meetups, and talks around the world.",
+      "description": "Learn more about DVC and meet our team virtually! We're appearing at conferences, meetups, and talks around the world.",
       "mobileDescription": "Come to hear more about DVC"
     },
     "learn": {
@@ -71,20 +71,12 @@
   ],
   "events": [
     {
-      "url": "https://dssconf.pl/",
-      "title": "Data Science Summit",
-      "description": "Paweł Redzyński will talk about Continuous Machine Learning.",
+      "url": "https://www.meetup.com/DVC-Community-Virtual-Meetups/events/278729121/",
+      "title": "DVC June Office Hours Meetup",
+      "description": "At this month's Meetup, Community member and Contribuotor, Sami Jawhar, will show experiment use cases with DVC",
       "city": "Virtual",
-      "date": "2020-10-16",
-      "pictureUrl": "/img/community/events/dssp.png"
-    },
-    {
-      "url": "https://global.pydata.org/talks/devops-for-science-using-continuous-integration-for-rigorous-and-reproducible-analysis",
-      "title": "PyData Global",
-      "description": "Elle O'Brien presents 'DevOps for science: using continuous integration for rigorous and reproducible analysis'",
-      "city": "Virtual",
-      "date": "2020-11-14",
-      "pictureUrl": "/img/community/events/pydata.png"
+      "date": "2021-06-24",
+      "pictureUrl": "/img/community/events/office-hours-meetup.png"
     }
   ],
   "stats": {
