@@ -112,7 +112,7 @@ const Events: React.FC<{ theme: ICommunitySectionTheme }> = ({ theme }) => {
             ))
           ) : (
             <div className={styles.eventsPlaceholder}>
-              No upcoming events. Subscribe to be up to date!{' '}
+              Subscribe to be up to date!{' '}
               <span role="img" aria-label="Subscribe below">
                 👇
               </span>
