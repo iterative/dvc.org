@@ -14,6 +14,7 @@ usage: dvc get [-h] [-q | -v] [-o <path>] [--rev <commit>] [-j <number>]
 positional arguments:
   url              Location of DVC or Git repository to download from
   path             Path to a file or directory within the repository
+                   relative to the root of the repo
 ```
 
 ## Description
