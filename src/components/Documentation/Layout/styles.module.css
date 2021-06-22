@@ -58,7 +58,7 @@
     position: fixed;
     display: block;
     z-index: 2;
-    top: 78px;
+    top: var(--layout-header-height);
     bottom: 0;
     left: 0;
     right: 60px;

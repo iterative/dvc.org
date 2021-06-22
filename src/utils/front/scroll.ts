@@ -18,15 +18,8 @@ export const getScrollPosition = (): number =>
 export const getScrollNode = (): Element =>
   document.scrollingElement || document.documentElement
 
-export const getHeaderHeightAt = (scrollPosition?: number): number => {
-  let header = getCustomProperty('--layout-header-height')
-
-  if (
-    document.getElementById('header')?.dataset.collapsed ||
-    (scrollPosition !== undefined && headerIsCollapsedAt(scrollPosition))
-  ) {
-    header = getCustomProperty('--layout-header-height-collapsed')
-  }
+export const getHeaderHeightAt = (): number => {
+  const header = getCustomProperty('--layout-header-height')
 
   return header as number
 }
@@ -52,7 +45,8 @@ const scrollToPosition = (node: Element, opts?: ScrollOptions): void => {
   const htmlNode = getScrollNode()
   const nodeOffset = node.getBoundingClientRect()
   const nodePosition = htmlNode.scrollTop + nodeOffset.top + (opts?.offset || 0)
-  const headerHeight = getHeaderHeightAt(nodePosition)
+  // const headerHeight = getHeaderHeightAt(nodePosition)
+  const headerHeight = getHeaderHeightAt()
   const scrollTo = Math.floor(nodePosition - headerHeight)
 
   if (!opts?.smooth) {

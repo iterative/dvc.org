@@ -11,7 +11,7 @@
   );
   z-index: 10;
   position: sticky;
-  top: var(--layout-header-height-collapsed);
+  top: var(--layout-header-height);
 
   @media (--xs-scr) {
     position: relative;

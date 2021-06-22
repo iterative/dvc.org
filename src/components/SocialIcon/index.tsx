@@ -3,16 +3,23 @@ import Link from '../Link'
 import { ReactComponent as TwitterIcon } from './twitter.svg'
 import { ReactComponent as GithubIcon } from './github.svg'
 import { ReactComponent as LinkedInIcon } from './linkedin.svg'
+import { ReactComponent as LinkedInNoBgIcon } from './linkedin-no-bg.svg'
+import { ReactComponent as DiscordIcon } from './discord.svg'
+import { ReactComponent as YoutubeIcon } from './youtube.svg'
 
 const icons: { [site: string]: JSX.Element } = {
   linkedin: <LinkedInIcon />,
+  linkedinNoBg: <LinkedInNoBgIcon />,
   github: <GithubIcon />,
-  twitter: <TwitterIcon viewBox="5 5 30 30" />
+  twitter: <TwitterIcon viewBox="5 5 30 30" />,
+  discord: <DiscordIcon />,
+  youtube: <YoutubeIcon />
 }
 
 export interface ISocialIcon {
   url: string
   site?: string
+  label?: string
 }
 
 export interface ISocialIconProps extends ISocialIcon {
@@ -29,12 +36,13 @@ export interface ISocialIconProps extends ISocialIcon {
 const SocialIcon: React.FC<ISocialIconProps> = ({
   site,
   url,
-  className
+  className,
+  label
 }): JSX.Element | null => {
   /* eslint-disable-next-line */
   const icon: JSX.Element = icons[site!]
   return icon ? (
-    <Link href={url} className={className} aria-label={site}>
+    <Link href={url} className={className} aria-label={label || site}>
       {icon}
     </Link>
   ) : null

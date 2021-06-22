@@ -59,7 +59,7 @@ The [add](/doc/command-reference/remote/add),
 [modify](/doc/command-reference/remote/modify),
 [remove](/doc/command-reference/remote/remove), and
 [rename](/doc/command-reference/remote/rename) subcommands read or modify DVC
-[config files](/doc/command-reference/config), where DVC remotes are setup.
+[config files](/doc/command-reference/config), where DVC remotes are set up.
 Alternatively, `dvc config` can be used, or the config files can be edited
 manually.
 
