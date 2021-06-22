@@ -99,7 +99,7 @@ all the current plots, without comparisons.
 
 - `--html-template <path>` - provide path to custom HTML page template. For
   detailed instructions see the
-  [plotting guide](/doc/user-guide/plotting-in-offline-environments).
+  [plotting guide](/doc/command-reference/plots#html-templates).
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 

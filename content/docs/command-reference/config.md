@@ -242,9 +242,9 @@ to learn more about the state file (database) that is used for optimization.
 
 ### plots
 
-- `plots.html_template` - set the HTML template for the default plots. For
-  instructions see the
-  [plotting guide](/doc/user-guide/plotting-in-offline-environments).
+- `plots.html_template` - sets a custom HTML template path for the plots. The
+  path should be relative to `.dvc/` folder. For the usage and format of this
+  file, see [HTML templates](/doc/command-reference/plots#html-templates)
 
 ## Example: Add an S3 remote, and set it as default
 
