@@ -1,6 +1,17 @@
 # Run Experiments
 
-You can run your ML experiments directly from DVC Studio.
+The process of building ML models often involves retraining the model several
+times while tuning data and hyperparameters. ML teams evalutate the results
+(metrics) of these iterations to determine the right datasets and
+hyperparameters for the given ML task. With DVC Studio, this experimentation
+process becomes easier as you can use the visual UI to make and deploy changes
+instead of manually updating code each time. This means that you can change your
+hyperparameters or select a different dataset and re-run your model training
+using DVC Studio.
+
+Note that to automatically run the model training process when you change
+data/hyperparameters, a CI system needs to be set up. DVC Studio uses your
+regular CI/CD setup (e.g. GitHub Actions) to run the experiments.
 
 ## Section outline
 
@@ -14,9 +25,6 @@ additional settings that you can configure for your views.
 
 ## How DVC Studio runs ML experiments
 
-If your Git repository is To run experiments from DVC Studio, you need to set up
-your regular your regular CI/CD set-up is used to run the experiments. You will
-
 If your Git repository is integrated with a CI/CD setup (e.g. GitHub Actions),
 then on each Git commit, the CI/CD setup will get invoked. If this setup
 includes a model training process, it will be triggered, which means that your
@@ -24,14 +32,14 @@ ML experiment will run automatically. You simply submit the data and
 hyperparameter changes for your new experiment using the DVC Studio UI, and your
 regular CI/CD setup will get invoked to run the experiments.
 
-The model training can happen on any cloud or Kubernetes. For more details on
-how to set up CI/CD pipelines for your ML project, refer to
-[CML](https://cml.dev).
+For more details on how to set up CI/CD pipelines for your ML project, refer to
+[CML](https://cml.dev). You can use any cloud or Kubernetes for the model
+training process. CML also generates a report after the CI/CD setup executes.
 
-> Note that due to access restrictions, you cannot run experiments on the demo
-> view (`example-get-started`) that is provided to you by default. Once you
-> create views for your ML project repositories, you can follow the instructions
-> given below to run experiments directly from DVC Studio.
+> Due to access restrictions, you cannot run experiments on the demo view
+> (`example-get-started`) that is provided to you by default. Once you create
+> views for your ML project repositories, you can follow the instructions given
+> below to run experiments directly from DVC Studio.
 
 ## Submit a new experiment
 
@@ -40,24 +48,27 @@ or read below for details.
 
 https://www.youtube.com/watch?v=nXJXR-zBvHQ
 
-To run experiments from DVC Studio, select the commit that you want to use and
-click the `Run` button. A form will let you specify all the changes that you
-want to make to your experiment. On this form, there are 2 types of inputs that
-you can change:
+To run experiments from DVC Studio, first you need to determine the Git commit
+(experiment) on which you want to iterate. Select the commit that you want to
+use and click the `Run` button. A form will let you specify all the changes that
+you want to make to your experiment. On this form, there are 2 types of inputs
+that you can change:
 
-1. **Input data files**: You can change datasets as well as metrics and model
-   files. The list of files that you can change will depend on your ML project.
-   For instance, in the `example-get-started` project, you can change the
-   `data.xml` file. If you select the
+1. **Input data files**: You can change datasets that are used for model
+   training. The list of files that you can change will depend on your ML
+   project. For instance, in the `example-get-started` project, you can change
+   the `data.xml` file. DVC Studio identifies and all the files used in your
+   project, which means that if you select the
    `Show all input parameters (including hidden)` option, then you can also
    change the hidden files such as the `model.pkl` model file and the
    `scores.json` metrics file. You can also choose not to change any input data
    files if you only wish to change the values of one or more hyperparameters.
-2. **Hyperparameters**: You can change the values of the hyperparameters that
-   are defined in your ML project. For instance, in the `example-get-started`
-   project, you can change `max_features` (the maximum number of features that
-   the model uses), `ngrams`, etc. You can also choose not to change any
-   hyperparameters if you only wish to change one or more input data files.
+2. **Hyperparameters**: DVC Studio lists all the hyperparameters of your project
+   and you can change their values as per the new experiement that you want to
+   run. For instance, in the `example-get-started` project, you can change
+   `max_features` (the maximum number of features that the model uses),
+   `ngrams`, etc. You can also choose not to change any hyperparameters if you
+   only wish to change one or more input data files.
 
 The default values of the input data files and hyperparameters in this form are
 extracted from your selected commit.
@@ -81,8 +92,14 @@ CI/CD setup will get invoked. If this setup includes a model training process,
 it will be triggered, which means that your ML experiment will run
 automatically. The model training can happen on any cloud or Kubernetes. For
 more details on how to set up CI/CD pipelines for your ML project, refer to
-[CML](https://cml.dev).
+[CML](https://cml.dev). You can also create CML reports with metrics, plots or
+other details at the end of each experiment run.
 
 Once the experiment completes, its metrics will be available in the view table.
 You can then generate plots and trend charts for it, or compare it with the
-other experiments.
+other experiments. If a CML report has been defined in your CI/CD flow, you can
+access the report by clicking on the CML report icon next to the Git commit
+message in the view table. The `CML Report` tooltip appears over the CML report
+icon on mouse hover.
+
+![](https://static.iterative.ai/img/studio/cml_report_icon.png)
