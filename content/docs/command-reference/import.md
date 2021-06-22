@@ -47,11 +47,10 @@ the data source. Both HTTP and SSH protocols are supported (e.g.
 `[user@]server:project.git`). `url` can also be a local file system path
 (including the current project e.g. `.`).
 
-The `path` argument is used to specify the location of the target to download
-within the source repository at `url`. `path` can specify any file or directory
-tracked by either Git or DVC (including paths inside tracked directories). Note
-that DVC-tracked targets must be found in a `dvc.yaml` or `.dvc` file of the
-repo.
+The `path` argument specifies a file or directory to download (paths inside
+tracked directories are supported), relative to the root of the repo at `url`.
+It can be tracked by either Git or DVC. Note that DVC-tracked targets must be
+found in a `dvc.yaml` or `.dvc` file of the repo.
 
 ⚠️ Source DVC repos should have a default
 [DVC remote](/doc/command-reference/remote) containing the target data for this
