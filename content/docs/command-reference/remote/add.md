@@ -147,11 +147,12 @@ they're effective depends on each storage platform.
 
 ```dvc
 $ dvc remote add -d myremote azure://mycontainer/path
+$ dvc remote modify myremote account_name 'myuser'
 ```
 
-By default, DVC authenticates using an Azure
-[default credential](https://docs.microsoft.com/en-us/python/api/azure-identity/azure.identity.defaultazurecredential)
-(if any). This uses certain environment variables or a signed in Microsoft
+By default, DVC authenticates using an `account_name` and its
+[default credential](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html)
+(if any), which uses certain environment variables or a signed-in Microsoft
 application. To use a custom authentication method, use the parameters described
 in `dvc remote modify`.
 
