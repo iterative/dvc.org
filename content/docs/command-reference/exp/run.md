@@ -69,8 +69,8 @@ committing them to the Git repo. Unnecessary ones can be removed with
 ## Checkpoints
 
 To track successive steps in a longer or deeper <abbr>experiment</abbr>, you can
-register checkpoints from your code. Each `dvc exp run`
-will resume from the last checkpoint.
+register checkpoints from your code. Each `dvc exp run` will resume from the
+last checkpoint.
 
 First, mark at least stage <abbr>output</abbr> with `checkpoint: true` in
 `dvc.yaml`. This is needed so that the experiment can resume later, based on the
