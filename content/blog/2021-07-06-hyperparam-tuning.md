@@ -27,7 +27,7 @@ A few things DVC makes easier to do include:
 - You get a record of every change without a bunch of Git commits
 
 For hyperparameter tuning, this means you can play with values and code changes without losing track of which changes made the best model. We'll do an example of this with grid search in DVC first.
-### Grid Search
+## Grid Search
 
 Using grid search in hyperparameter tuning means you have an exhaustive list of hyperparameter values you want to cycle through. Grid search will cover every combination of those hyperparameter values.
 
@@ -41,43 +41,98 @@ After you've cloned the repo and installed all of the dependencies, you should b
 
 This will trigger the training process to run and it will record the accuracy of your model. You can check out the results of your experiment with the following command.
 
-`dvc exp show`
+`dvc exp show --no-timestamp --include-params train.n_est,train.min_split`
+
+_We're adding a few options here to make the table view clearer. We aren't showing timestamps and we're only looking at two hyperparameter values. You can run `dvc exp show` to see the entire table._
 
 This will produce a table similar to this.
 
 ```
-┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━━┳
-┃ Experiment              ┃ Created      ┃ avg_prec ┃ roc_auc ┃ prepare.split ┃
-┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━╇
-│ workspace               │ -            │ 0.51682  │ 0.93819 │ 0.2           │
-│ master                  │ Jun 10, 2021 │ 0.56447  │ 0.94713 │ 0.2           │
-│ ├── d03d49e [exp-722c8] │ Jun 12, 2021 │ 0.51682  │ 0.93819 │ 0.2           │
-│ ├── 61bacf8 [exp-f14f4] │ Jun 12, 2021 │ 0.58955  │ 0.94289 │ 0.2           │
-│ ├── 66de4fa [exp-56c16] │ Jun 12, 2021 │ 0.58571  │ 0.94375 │ 0.2           │
-│ ├── 3d19024 [exp-1a0f8] │ Jun 12, 2021 │ 0.59073  │ 0.94257 │ 0.2           │
-│ ├── 72a7a07 [exp-f37a4] │ Jun 12, 2021 │ 0.5945   │ 0.94371 │ 0.2           │
-│ ├── c51190f [exp-bf4d9] │ Jun 12, 2021 │ 0.59518  │ 0.94622 │ 0.2           │
-│ ├── 408a3e1 [exp-95890] │ Jun 12, 2021 │ 0.59229  │ 0.94515 │ 0.2           │
+┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
+┃ Experiment              ┃ avg_prec ┃ roc_auc ┃ train.n_est ┃ train.min_split ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━┩
+│ workspace               │ 0.51682  │ 0.93819 │ 175         │ 64              │
+│ master                  │ 0.56447  │ 0.94713 │ 100         │ 64              │
+│ └── a1e8716 [exp-09074] │ 0.57333  │ 0.94801 │ 100         │ 32              │
+└─────────────────────────┴──────────┴─────────┴─────────────┴─────────────────┘
 ```
 
-Explain queues
+### Start tuning
 
-Show automated grid search script
+Now that you've seen how to run an experiment, we're going to write a small script to automate grid search for us using DVC. We'll do this by creating queues.
 
-Show table
+A queue is how DVC allows us to create experiments that won't be run until later. That way we can cycle through multiple hyperparameters quickly instead of manually updating a config file with new hyperparameter values for each experiment run. The command syntax for creating queues looks like this:
 
+`dvc exp run --queue -set-param train.min_split=8`
+
+In the example queue above, we're updating the `train.min_split` value that's inside of the `params.yaml` file. This file holds all of the hyperparameter values and is where DVC looks to determine if any values have changed. With the command above, we're automatically updating that value in the `params.yaml` using a queued experiment.
+
+Now we can make the script. You can add a new file to the `src` directory called `tuning.py`. Inside of the file, add the following code.
+
+```python
+import subprocess
+import random
+
+# Automated grid search experiments
+n_est_values = [250, 300, 350, 400, 450, 500]
+min_split_values = [100, 110, 120, 130, 140, 150]
+
+for val in n_est_values:
+    subprocess.run(["dvc", "exp", "run", "--queue", "--set-param", f"train.n_est={val}"])
+
+for val in min_split_values:
+    subprocess.run(["dvc", "exp", "run", "--queue", "--set-param", f"train.min_split={val}"])
+```
+
+This is a simple grid search. We have two hyperparameters we want to tune: `n_est` and `min_split`. So we have arrays with a few values in them to mimic the exhaustive search a grid search can handle. Then we loop through the values and create queued experiments for them using `subprocess`.
+
+You can run this script now and generate your queue with this command.
+
+`python src/tuning.py`
+
+You'll see some outputs in the terminal telling you that your experiments have been queued. Then you can run them all with the following command.
+
+`dvc exp run --run-all`
+
+This will run every experiment that has been queued. Once all of those have run, take a look at your metrics for each experiment.
+
+`dvc exp show`
+
+Your table should look similar to this when you run `dvc exp show`.
+
+```bash
+table
+```
+
+Now you can see how your precision changed with each hyperparameter value update. This is a quick implementation of grid search in DVC. You could read the hyperparameter values from a different file or data source or make this tuning script as fancy as you like. The main thing you need is the `dvc exp run --queue -set-param <param>` command to execute when you add new values.
 ### Random Search
 
-Description of random search
+Another commonly used method for tuning hyperparameters is random search. This takes random values for hyperparameters and builds the model with them. It's not an exhaustive search like grid search and it typically outperforms grid search, especially when a small subset of the hyperparameters produce the biggest difference in your model.
 
-Add this to existing DVC implementation for grid search
+We're going to add an example of random search to the `tuning.py` file we created for grid search. This will add queued experiments with the randomly selected hyperparameter values. Add the following code to `tuning.py` below the grid search implementation.
 
-Show automated random search script
+```python
+# Automated random search experiments
+rand_n_est_values = random.sample(range(250, 500), 10)
+rand_min_split_values = random.sample(range(100, 150), 10)
 
-Show table
+for val in rand_n_est_values:
+    subprocess.run(["dvc", "exp", "run", "--queue", "--set-param", f"train.n_est={val}"])
+
+for val in rand_min_split_values:
+    subprocess.run(["dvc", "exp", "run", "--queue", "--set-param", f"train.min_split={val}"])
+```
+
+This random search could be far more complex with a Gaussian or Bayesian distribution to handle the hyperparameter values, but we're keeping it super simple by choosing random numbers to focus on reproducibility. This will generate ten experiments with random values for each hyperparameter.
+
+You can run these new experiments with `dvc exp run --run-all` and then take a look at the results with `dvc exp show`. Your table should look something like this.
+
+```bash
+table
+```
+
+This shows the difference in the randomly selected values and the values from grid search. You might find a better value with random search because it jumps around a range of values which might hit the optimum faster than it would with a grid search.
 
 ## Conclusion
 
-Quick pros/cons of each tuning method
-
-How reproducibility helps with hyperparameter tuning
+With the comparison between grid search and random search, you can see how reproducibility can help you find the best model for your project. You'll be able to see all of the hyperparameter changes and code changes that created each model. This gives you the ability to fine tune your model because you can go to any experiment and resume training with different values, code, or data.
