@@ -14,7 +14,6 @@ usage: dvc get [-h] [-q | -v] [-o <path>] [--rev <commit>] [-j <number>]
 positional arguments:
   url              Location of DVC or Git repository to download from
   path             Path to a file or directory within the repository
-                   relative to the root of the repo
 ```
 
 ## Description
@@ -38,9 +37,9 @@ the data source. Both HTTP and SSH protocols are supported (e.g.
 (including the current project e.g. `.`).
 
 The `path` argument specifies a file or directory to download (paths inside
-tracked directories are supported), relative to the root of the repo at `url`.
-It can be tracked by either Git or DVC. Note that DVC-tracked targets must be
-found in a `dvc.yaml` or `.dvc` file of the repo.
+tracked directories are supported). It should be relative to the root of the
+repo (absolute paths are supported when `url` is local). Note that DVC-tracked
+targets must be found in a `dvc.yaml` or `.dvc` file of the repo.
 
 ⚠️ DVC repos should have a default [DVC remote](/doc/command-reference/remote)
 containing the target actual for this command to work. The only exception is for

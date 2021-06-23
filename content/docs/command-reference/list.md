@@ -15,7 +15,6 @@ usage: dvc list [-h] [-q | -v] [-R] [--dvc-only]
 positional arguments:
   url            Location of DVC or Git repository to list from
   path           Path to a file or directory in the repository
-                 relative to the root of the repo
 ```
 
 ## Description
@@ -44,9 +43,9 @@ the data source. Both HTTP and SSH protocols are supported (e.g.
 resolved to the project's root.
 
 The optional `path` argument specifies a file or directory to list (paths inside
-tracked directories are supported), relative to the root of the repo at `url`.
-This is similar to providing a path to listing commands such as `ls` or
-`aws s3 ls`.
+tracked directories are supported). It should be relative to the root of the
+repo (absolute paths are supported when `url` is local). This is similar to
+providing a path to listing commands such as `ls` or `aws s3 ls`.
 
 Only the root directory is listed by default, but the `-R` option can be used to
 list files recursively.
