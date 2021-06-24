@@ -280,8 +280,7 @@ file:///Users/usr/src/plots/classes.csv.html
 
 ### Example for the HTML template
 
-First, download the Vega libraries and put them to a directory you produce the
-plots.
+Download the Vega libraries and put them to a directory you produce the plots.
 
 ```dvc
 $ wget https://cdn.jsdelivr.net/npm/vega@5.10.0 -O my_vega.js
@@ -306,16 +305,19 @@ Create the following HTML file with your text editor:
 
 Note that this is a standard HTML file with only `{plot_divs}` as a placeholder
 for the generated plots. `<script>` tags in this file point to local JavaScript
-libraries. Supposing this template named as `.dvc/page_template.html`, we can
-then use it like:
+libraries we downloaded above. Supposing this template named as
+`.dvc/page_template.html`, we can then use it like:
 
 ```dvc
 $ dvc plots show --html-template .dvc/page_template.html
 ```
 
-You can also provide it as a default by setting the configuration variable
-`plots.html_template`.
+You can also make it the default html template by setting the configuration
+variable `plots.html_template`.
 
 ```dvc
 $ dvc config plots.html_template page_template.html
 ```
+
+Note that the path supplied to `dvc config plots.html_template` is relative to
+`.dvc/` directory.
