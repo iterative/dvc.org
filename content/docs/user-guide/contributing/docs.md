@@ -59,7 +59,7 @@ the website engine itself. Source code and content files need to be properly
 formatted and linted as well, which is also ensured by the full setup below.
 
 Make sure you have a recent LTS version of [Node.js](https://nodejs.org/en/)
-(`>=12.0.0`), and install [Yarn](https://yarnpkg.com/):
+(`>=12.0.0`, `<=15.x`), and install [Yarn](https://yarnpkg.com/):
 
 ```dvc
 $ npm install -g yarn
