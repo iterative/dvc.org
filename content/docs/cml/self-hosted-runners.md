@@ -46,7 +46,7 @@ jobs:
           --cloud-region us-west \
           --cloud-type=t2.micro \
           --labels=cml-runner
-  name: model-training
+  model-training:
     needs: deploy-runner
     runs-on: [self-hosted,cml-runner]
     container: docker://dvcorg/cml-py3:latest
