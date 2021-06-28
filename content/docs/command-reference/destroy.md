@@ -16,14 +16,12 @@ usage: dvc destroy [-h] [-q | -v] [-f]
 directory from the <abbr>project</abbr>.
 
 Note that the <abbr>cache directory</abbr> will be removed as well, unless it's
-set to an [external location][external-cache] (by default a local cache is
-located in `.dvc/cache`). If you have setup
+set to an [external
+location][/doc/user-guide/managing-external-data#setting-up-an-external-cache]
+(by default a local cache is located in `.dvc/cache`). If you have setup
 [symlinks](/doc/user-guide/large-dataset-optimization) (from cache to workspace)
 in your project, DVC will replace them with the latest versions of the actual
 files and directories first, so that your data is intact after destruction.
-
-[external-cache]:
-  /doc/user-guide/managing-external-data#setting-up-an-external-cache
 
 > Refer to [Project Structure](/doc/user-guide/project-structure) for more
 > details on the directories and files deleted by this command.
