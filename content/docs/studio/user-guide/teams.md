@@ -6,17 +6,12 @@ define teams with one or more team members. The team members are also called
 collaborators, and you can assign different roles to them. The views that you
 create in your team's page will be accessible to all members of the team.
 
-## Section outline
-
 In this section, you will:
 
 - [Learn how to create a team](#create-a-team)
 - [Learn how to invite collboarators (team members)](#invite-collaborators)
 - [Understand the privileges (access permissions) of different roles](#roles)
 - [Learn how to manage the team and its views](#manage-your-team-and-its-views)
-
-In the [next section](/doc/studio/account-management), you will learn how to
-manage your account, including your Git integrations and cloud credentials.
 
 ## Create a team
 
@@ -110,8 +105,9 @@ On this page, you can perform three types of tasks:
 
 - **Add a view.** Click on the `View` menu item to add views to the team's page.
   The process for adding a view is the same as that for adding personal views
-  ([instructions](/doc/studio/create-view)). However, the views that you create
-  within the team will be accessible to all members (collaborators) of the team.
+  ([instructions](/doc/studio/user-guide/create-view)). However, the views that
+  you create within the team will be accessible to all members (collaborators)
+  of the team.
 
 - **Edit collaborators.** You can click on the `Team` menu item to edit the
   collaborators in the team.
@@ -119,6 +115,6 @@ On this page, you can perform three types of tasks:
 - **Change settings.** Finally, you can click on the `Settings` menu item to
   change the team name, add credentials for the data remotes, and delete the
   team. Note that these settings are applicable to the team and are thus
-  different from [view settings](/doc/studio/view-settings).
+  different from [view settings](/doc/studio/user-guide/view-settings).
 
   ![](https://static.iterative.ai/img/studio/team_settings.png)

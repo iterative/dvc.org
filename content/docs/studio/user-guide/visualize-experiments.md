@@ -2,23 +2,11 @@
 
 You can visualize and compare experiments using a variety of tools. As you saw
 in the section on
-[preparing your repositories](/doc/studio/get-started#prepare-your-repositories),
-DVC Studio identifes datasets, metrics and hyperparameters defined in your Git
+[preparing your repositories](/doc/studio/user-guide/prepare-repositories), DVC
+Studio identifes datasets, metrics and hyperparameters defined in your Git
 repositories. These values are stored in your Git repositories as CSV, JSON or
 YAML files. With DVC Studio, you can visualize and compare these values in your
 experiments using plots, charts, etc.
-
-## Section outline
-
-In this section, you will learn how to:
-
-- [Generate metric plots](#generate-metric-plots)
-- [Generate trend charts](#generate-trend-charts)
-- [Compare experiments](#compare-experiments)
-
-Then, in the [next section](/doc/studio/run-experiments), you will learn how to
-run new experiments by changing datasets and hyperparameters and committing the
-changes into Git from the DVC Studio UI.
 
 ## Generate metric plots
 

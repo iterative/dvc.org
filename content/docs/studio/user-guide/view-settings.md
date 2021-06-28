@@ -6,16 +6,6 @@ be required depending on how your Git repository has been set up. This section
 provides you details of what settings are essential and how you can configure
 them.
 
-## Section outline
-
-In this section, you will:
-
-- [Understand when you need to configure your views](#scenarios-when-view-settings-are-required)
-- [Learn how to configure the view settings](#configuring-view-settings)
-
-In the [next section](/doc/studio/teams), you will learn how you can create and
-manage teams for collaborating on your ML experiments.
-
 ## Scenarios when views settings are required
 
 If you are connecting to a DVC repo which is at the root of the Git repository
@@ -38,9 +28,9 @@ Additionally, you can also configure view settings to
 ### Non-DVC repositories
 
 In the section on
-[preparing your repositories](/doc/studio/get-started#preparing-your-repositories),
-you saw that you can use DVC Studio with DVC as well as non-DVC repositories. If
-you are conecting to a non-DVC repository, then you will need to
+[preparing your repositories](/doc/studio/user-guide/prepare-repositories), you
+saw that you can use DVC Studio with DVC as well as non-DVC repositories. If you
+are conecting to a non-DVC repository, then you will need to
 [specify the custom files](#custom-metrics-and-parameters) that contain the
 metrics and hyperparameters that you want to visualize.
 

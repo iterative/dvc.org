@@ -1,24 +1,10 @@
 # Explore ML Experiments
 
-You can dive deep into the views shown in your DVC Studio dashboard to explore
-all the ML experiments, visualize and compare them, and run new experiments.
-
-## Section outline
-
-In this section, you will:
-
-- [Learn how to open the details of a view](#open-a-view)
-- [Understand the different components of a view](#components-of-a-view)
-
-Then, in the [next section](/doc/studio/visualize-experiments), you will explore
-the different tools that you can use to visualize and compare experiments.
-
-## Open a view
-
 When you create a view by connecting to a Git repository, the view is added to
-your DVC Studio dashboard. You can dive deep into all the experiments committed
-to the repository. For this, open the view by clicking the view name (in this
-case, `example-get-started`).
+your DVC Studio dashboard. You can dive deep into the views shown in your DVC
+Studio dashboard to explore all the ML experiments, visualize and compare them,
+and run new experiments. For this, open the view by clicking the view name (in
+this case, `example-get-started`).
 
 A table will be generated as shown below. This includes metrics, hyperparameters
 and information about the datasets. All these values are flattened and neatly
@@ -83,5 +69,6 @@ The table also contains buttons to visualize, compare and run experiments.
   your browser window.
 - **Compare:** Compare different experiments side by side.
 - **Run:** Run experiments by selecting any one commit. Refer
-  [here](/doc/studio/run-experiments) for details on how to run experiments.
+  [here](/doc/studio/user-guide/run-experiments) for details on how to run
+  experiments.
 - **Trends:** Generate trend charts to show metric evolution over time.

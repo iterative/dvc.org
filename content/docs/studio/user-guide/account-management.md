@@ -2,7 +2,7 @@
 
 To manage your user account, click on your avatar on the top right corner of DVC
 Studio. In the menu that comes up, click on `Profile`. Your user profile page
-will open. This page has multiple sections that are descrobed below.
+will open. This page has multiple sections that are described below.
 
 ## Account
 
@@ -29,12 +29,6 @@ Here, you can see all the credentials you have added for your cloud / data
 remotes. You can also add new credentials as well as edit or delete existing
 credentials. The credentials that you add here will become available to use with
 your views.
-
-## Experimental features
-
-This section lists the experimental features, which are features that are not
-yet part of the default DVC Studio configuration. You can enable / disable the
-experimental features on your account.
 
 ## Delete account
 

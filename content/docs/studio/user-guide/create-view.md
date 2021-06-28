@@ -1,19 +1,11 @@
 # Create and Share a View
 
 Views are interactive representations of the information stored in your Git
-repositories.
-
-## Section outline
-
-In this section, you will learn how to:
+repositories. In this section, you will learn how to:
 
 - [Create a view](#create-a-view)
 - [Create multiple views from a single Git repository](#create-multiple-views-from-a-single-git-repository)
 - [Share a view](#share-a-view)
-- [Install and authorize DVC Studio GitHub app](#dvc-studio-github-app-installation)
-
-Then, in the [next section](/doc/studio/explore-experiments), you will dive deep
-into a view to explore the ML experiments and their results.
 
 ## Create a View
 
@@ -32,7 +24,7 @@ To create a new view, follow these steps.
 
 > To create views from your GitHub repositories, you must install the DVC Studio
 > GitHub app. Refer to the section on
-> [GitHub app installation](#dvc-studio-github-app-installation) for more
+> [GitHub app installation](/doc/studio/user-guide/install-github-app) for more
 > details.
 
 3. Open the organization whose repository you want to connect to. You can also
@@ -49,14 +41,15 @@ To create a new view, follow these steps.
 > a monorepo, or if your metrics are in cloud or other remote storage. However,
 > you can configure the view settings after the view has been created. So, you
 > can `Skip and Continue` now. Refer to the
-> [View Settings](/doc/studio/view-settings) section for more details.
+> [View Settings](/doc/studio/user-guide/view-settings) section for more
+> details.
 
 You should now see that a view has been added in your dashboard.
 
-5. Configure [view settings](/doc/studio/view-settings) if required. If your
-   project requires any of the additional settings, then remember to configure
-   them by opening the view settings. Otherwise, your view may not work as
-   expected. To go to view settings, click on the
+5. Configure [view settings](/doc/studio/user-guide/view-settings) if required.
+   If your project requires any of the additional settings, then remember to
+   configure them by opening the view settings. Otherwise, your view may not
+   work as expected. To go to view settings, click on the
    ![](https://static.iterative.ai/img/studio/view_open_settings_icon.png) icon
    in the view. In the menu that opens up, click on `Settings`.
 
@@ -73,8 +66,9 @@ for multiple ML projects. If you want to create views for each of those ML
 projects, simply create multiple views for this monorepo, and for each view,
 specify a different sub-directory.
 
-Refer to the [View Settings](/doc/studio/view-settings) section for more details
-on how to configure different settings (and sub-directores) for the views.
+Refer to the [View Settings](/doc/studio/user-guide/view-settings) section for
+more details on how to configure different settings (and sub-directores) for the
+views.
 
 ## Share a view
 
@@ -91,35 +85,5 @@ Views that are shared on the web can be opened by anyone, including people who
 are not logged in to DVC Studio. These anonymous users have the `Visitor` role.
 Their access is limited to opening the view, applying filters, and
 showing/hiding columns for themselves without making permanent changes to the
-view. Refer to the [Roles](/doc/studio/teams#roles) section for details on the
-features available for different roles.
-
-## DVC Studio GitHub app installation
-
-If you are using a GitHub account, you will have to install the DVC Studio
-GitHub app on the GitHub repositories/organizations that you want to use with
-DVC Studio. When you try to create a view, if the app is not already installed,
-DVC Studio will not be able to fetch the list of your GitHub repositories. In
-this case, you will be prompted to configure Git integrations as shown below.
-
-![](https://static.iterative.ai/img/studio/configure_git_integrations.png)
-
-Click on the link to `Configure Git integrations settings`. This will open the
-`Git integrations` section of your profile page.
-
-![](https://static.iterative.ai/img/studio/configure_github.png)
-
-Click on the `Configure` button, and you will be redirected to the GitHub page
-to install and authorize the DVC Studio GitHub app.
-
-![](https://static.iterative.ai/img/studio/authorize_app_on_github.png)
-
-You can specify the level of authorization that you want to grant to DVC Studio:
-
-- To authorize DVC Studio on all the repositories in your GitHub account, select
-  `All repositories`.
-- To limit access to only specific repositories, select
-  `Only select repositories`. Then select the repositories which you want to use
-  with DVC Studio.
-
-Finally, click on `Install & Authorize`.
+view. Refer to the [Roles](/doc/studio/user-guide/teams#roles) section for
+details on the features available for different roles.

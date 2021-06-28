@@ -13,16 +13,6 @@ Note that to automatically run the model training process when you change
 data/hyperparameters, a CI system needs to be set up. DVC Studio uses your
 regular CI/CD setup (e.g. GitHub Actions) to run the experiments.
 
-## Section outline
-
-In this section, you will:
-
-- [Understand how DVC Studio runs your ML experiments](#how-dvc-studio-runs-ml-experiments)
-- [Learn how to submit new experiments](#submit-a-new-experiment)
-
-Then, in the [next section](/doc/studio/view-settings), you will learn about
-additional settings that you can configure for your views.
-
 ## How DVC Studio runs ML experiments
 
 If your Git repository is integrated with a CI/CD setup (e.g. GitHub Actions),
