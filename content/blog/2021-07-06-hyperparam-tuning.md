@@ -22,16 +22,17 @@ tags:
 
 When you're starting to build a new machine learning model and you're deciding
 on the model architecture, there are a number of issues that arise. You have to
-monitor every code change you make, any differences in your data, and any
-hyperparameter value updates.
+monitor every code change you make, note any differences in your data, and keep
+up with hyperparameter value updates.
 
-This makes it important for you to be able to track all of these changes so you
-can reproduce your experiments without wondering how you got your model. Having
-reproducibility in your training gives you the ability to go back to any point
-in your process to see which values gave you the best results.
+This means it's important for you to be able to track all of these changes so
+you can reproduce your experiments without wondering which changes gave you the
+best model. Having reproducibility in your training gives you the ability to go
+back to any point in your process to see which changes gave you the best
+results.
 
-We're going to go through an example of hyperparameter tuning with
-reproducibility using DVC. You can add this to any existing project you're
+In this tutorial, we're going to go through an example of hyperparameter tuning
+with reproducibility using DVC. You can add this to any existing project you're
 working on or start from a fresh project.
 
 ## Background on Hyperparameters
@@ -42,10 +43,11 @@ your model. This includes things like the number of layers in a neural network
 or the learning rate for gradient descent.
 
 These parameters are different from model parameters because we can't get them
-from training our model. They are used to _create_ the model. Optimizing these
-means running training steps for different kinds of models to see how accurate
-the results are. We can only get the best hyperparameters from iterating through
-different values and seeing how they effect our accuracy.
+from training our model. They are used to _create_ the model we train with.
+Optimizing these values means running training steps for different kinds of
+models to see how accurate the results are. We can get the best model from
+iterating through different hyperparameters values and seeing how they effect
+our accuracy.
 
 That's why we do hyperparameter tuning. There are a couple common methods that
 we'll do some code examples with: grid search and random search.
@@ -62,13 +64,14 @@ A few things DVC makes easier to do include:
 
 - Letting you make changes without worrying about finding them later
 - Onboarding other engineers to a project
-- You get a record of every change without a bunch of Git commits
+- Sharing experiments with other engineers on different machines
 
 For hyperparameter tuning, this means you can play with values and code changes
-without losing track of which changes made the best model. We'll do an example
-of this with grid search in DVC first.
+without losing track of which changes made the best model and also have other
+engineers take a look. We'll do an example of this with grid search in DVC
+first.
 
-## Grid Search
+## Working with DVC
 
 Using grid search in hyperparameter tuning means you have an exhaustive list of
 hyperparameter values you want to cycle through. Grid search will cover every
@@ -82,20 +85,28 @@ DVC pipeline was created.
 
 ### Run an experiment
 
-After you've cloned the repo and installed all of the dependencies, you should
-be able to open your terminal and run an experiment with the following command.
+First make sure you're in a virtual environment with a command similar to this.
+
+`python -m venv .venv`
+
+After you've cloned the repo, install all of the dependencies with this command.
+
+`pip install -r requirements.txt`
+
+You should be able to open your terminal and run an experiment with the
+following command.
 
 `dvc exp run`
 
-This will trigger the training process to run and it will record the accuracy of
-your model. You can check out the results of your experiment with the following
-command.
+This will trigger the training process to run and it will record the precision
+of your model. You can check out the results of your experiment with the
+following command.
 
 `dvc exp show --no-timestamp --include-params train.n_est,train.min_split`
 
 _We're adding a few options here to make the table view clearer. We aren't
 showing timestamps and we're only looking at two hyperparameter values. You can
-run `dvc exp show` to see the entire table._
+run `dvc exp show` without the options to see the entire table._
 
 This will produce a table similar to this.
 
@@ -109,7 +120,7 @@ This will produce a table similar to this.
 └─────────────────────────┴──────────┴─────────┴─────────────┴─────────────────┘
 ```
 
-### Start tuning
+### Start tuning with grid search
 
 Now that you've seen how to run an experiment, we're going to write a small
 script to automate grid search for us using DVC. We'll do this by creating
@@ -204,8 +215,8 @@ for val in rand_min_split_values:
 ```
 
 This random search could be far more complex with a Gaussian or Bayesian
-distribution to handle the hyperparameter values, but we're keeping it super
-simple by choosing random numbers to focus on reproducibility. This will
+distribution to handle the hyperparameter value selections, but we're keeping it
+super simple by choosing random numbers to focus on reproducibility. This will
 generate ten experiments with random values for each hyperparameter.
 
 You can run these new experiments with `dvc exp run --run-all` and then take a
