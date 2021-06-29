@@ -1,6 +1,6 @@
 # Visualize and Compare Experiments
 
-You can visualize and compare experiments using a variety of tools.
+You can visualize and compare experiments using using plots, charts, etc.
 
 ## Generate metric plots
 
@@ -18,7 +18,7 @@ commits), and click on the 'Show plots' button.
 The plots will appear below the tabular display. If you have selected more than
 one experiment, you can use the plots to compare them.
 
-![](https://static.iterative.ai/img/studio/plots_v2.png)
+![](https://static.iterative.ai/img/studio/plots.png)
 
 ## Generate trend charts
 
@@ -27,7 +27,7 @@ the course of the different experiments. For each metric, the trend charts show
 how the metric changed from one commit to another. You can include one or more
 branches in the trend chart.
 
-![](https://static.iterative.ai/img/studio/trends_v2.png)
+![](https://static.iterative.ai/img/studio/trends.png)
 
 ## Compare experiments
 
@@ -35,4 +35,4 @@ To compare different experiments, select two experiments (represented by the
 commits), and click on the `Compare` button. The metrics, parameters and files
 in the selected experiments will be displayed side by side for easy comparison.
 
-![](https://static.iterative.ai/img/studio/compare_v2.png)
+![](https://static.iterative.ai/img/studio/compare.png)
