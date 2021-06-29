@@ -70,9 +70,8 @@ please see `dvc plots`.
 - `--no-header` - lets DVC know that CSV or TSV `targets` do not have a header.
   A 0-based numeric index can be used to identify each column instead of names.
 
-- `--html-template <path>` - provide path to the custom HTML page template. For
-  detailed instructions see the
-  [plotting guide](/doc/command-reference/plots#html-templates).
+- `--html-template <path>` - path to a
+  [custom HTML template](/doc/command-reference/plots#html-templates).
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
