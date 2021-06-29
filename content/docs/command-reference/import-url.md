@@ -84,7 +84,6 @@ DVC supports several types of external locations (protocols):
 | `webdav`  | WebDav to file\*             | `webdavs://example.com/endpoint/path`         |
 | `webhdfs` | HDFS REST API\*              | `webhdfs://user@example.com/path/to/data.csv` |
 | `local`   | Local path                   | `/path/to/local/data`                         |
-| `remote`  | Remote path\*                | `remote://remote-name/data`                   |
 
 > If you installed DVC via `pip` and plan to use cloud services as remote
 > storage, you might need to install these optional dependencies: `[s3]`,
@@ -100,11 +99,6 @@ DVC supports several types of external locations (protocols):
 - In case of HTTP,
   [ETag](https://en.wikipedia.org/wiki/HTTP_ETag#Strong_and_weak_validation) is
   necessary to track if the specified URL changed.
-
-- `remote://myremote/path/to/file` notation just means that a DVC
-  [remote](/doc/command-reference/remote) `myremote` is defined and when DVC is
-  running. DVC automatically expands this URL into a regular S3, SSH, GS, etc
-  URL by appending `/path/to/file` to the `myremote`'s configured base path.
 
 Another way to understand the `dvc import-url` command is as a shortcut for
 generating a pipeline stage with and external dependency. This is discussed in

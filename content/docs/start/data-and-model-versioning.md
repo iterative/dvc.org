@@ -8,7 +8,7 @@ Git.'
 # Get Started: Data Versioning
 
 How cool would it be to make Git handle arbitrarily large files and directories
-with the same performance that you get with small code files? Imagine doing a
+with the same performance it has with small code files? Imagine doing a
 `git clone` and seeing data files and machine learning models in the workspace.
 Or switching to a different version of a 100Gb file in less than a second with a
 `git checkout`.
