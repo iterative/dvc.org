@@ -2,7 +2,7 @@
 
 DVC Studio creates views by identifying datasets, metrics and hyperparameters
 defined in your Git repositories. These values are stored in your Git
-repositories as CSV, JSON or YAML files. You can add these values to your Git
+repositories as JSON or YAML files. You can add these values to your Git
 repositories in two ways:
 
 1. **Set up DVC repositories**: You can use [DVC](https://dvc.org/) and Git to
@@ -26,7 +26,7 @@ repositories in two ways:
 
 2. **Specify custom files with your metrics and parameters**: If you are working
    with a non-DVC repository, you can still create views for it provided that
-   the metrics and hyperparameters are stored in CSV, JSON or YAML files. For
+   the metrics and hyperparameters are stored in JSON or YAML files. For
    instance, if you have an ML project for which you generate and save metrics
    either manually or using some ML tracking tools, then you can create a view
    for this project by specifying the file (within your Git repo) which contains

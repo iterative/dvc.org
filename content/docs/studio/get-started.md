@@ -48,10 +48,10 @@ more views._
 
 You should now see that a view has been added in your dashboard.
 
-7. Configure [view settings](/doc/studio/user-guide/view-settings) if required.
-   If your project requires any of the additional settings, then remember to
-   configure them by opening the view settings. Otherwise, your view may not
-   work as expected. To go to view settings, click on the
+7. If your project requires any of the additional settings, then remember to
+   configure them by opening the
+   [view settings](/doc/studio/user-guide/view-settings). Otherwise, your view
+   may not work as expected. To go to view settings, click on the
    ![](https://static.iterative.ai/img/studio/view_open_settings_icon.png) icon
    in the view. In the menu that opens up, click on `Settings`.
 
@@ -66,4 +66,4 @@ You should now see that a view has been added in your dashboard.
    [submit new experiments from DVC Studio](/doc/studio/user-guide/run-experiments).
 
 10. You can also make the view public by
-    [sharing it on the web](/doc/studio/user-guide/views/share-view),
+    [sharing it on the web](/doc/studio/user-guide/views/share-view).

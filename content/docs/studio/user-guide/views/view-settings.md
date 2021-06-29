@@ -44,9 +44,10 @@ with your view.
 ### Data remotes (cloud/remote storage)
 
 The metrics and parameters that you want to include in the view may also be
-present in a data remote (cloud storage or another location outside the Git
-repo). If you want to include such data in your views, then you will have to
-grant DVC Studio access to the data remote.
+present in a [data remote](/doc/command-reference/remote#description) (cloud
+storage or another location outside the Git repo). If you want to include such
+data in your views, then you will have to grant DVC Studio access to the data
+remote.
 
 ## Configuring view settings
 
@@ -71,11 +72,12 @@ which you want to create the view.
 
 ### Data remotes / cloud storage credentials
 
-If you need to set up DVC data remotes for your view, you will need to do it
-after your view has been created. First, create your view without specifying the
-data remotes. Once your view is created, open its settings. Open the
-`Data remotes / cloud storage credentials` section. The data remotes that are
-used in your DVC repo will be listed.
+If you need to provide credentials for
+[DVC data remotes](/doc/command-reference/remote#description), you will need to
+do it after your view has been created. First, create your view without
+specifying the data remotes. Once your view is created, open its settings. Open
+the `Data remotes / cloud storage credentials` section. The data remotes that
+are used in your DVC repo will be listed.
 
 ![](https://static.iterative.ai/img/studio/view_settings_credentials.png)
 
@@ -106,16 +108,16 @@ in not used in your Git repository.
 
 DVC Studio can track upto 200 metrics, parameters, and files. If you have more
 than 200 values in your Git repository, you can specify which ones to track and
-which ones to leave out. To ensure that a value is include, make sure that it is
-selected in the tracking scope. Any value that is not selected may not display
-in your view.
+which ones to leave out. To ensure that a value is included, make sure that it
+is selected in the tracking scope. Any value that is not selected may not
+display in your view.
 
 ![](https://static.iterative.ai/img/studio/view_settings_tracking_scope.png)
 
 ### Custom metrics and parameters
 
 If you want to connect custom files, you can add them by clicking the `Add file`
-button. Enter the full file path, and specify whether the file is for `Metrics`
-or `Parameters`.
+button. Enter the full file path within your Git repository, and specify whether
+the file is for `Metrics` or `Parameters`.
 
 ![](https://static.iterative.ai/img/studio/view_settings_custom_files.png)

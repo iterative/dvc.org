@@ -1,4 +1,4 @@
-# DVC Studio GitHub app installation
+# DVC Studio GitHub App Installation
 
 If you are using a GitHub account, you will have to install the DVC Studio
 GitHub app on the GitHub repositories/organizations that you want to use with

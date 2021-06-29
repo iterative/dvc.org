@@ -63,8 +63,8 @@ that of any other collaborator who has been assigned the `Admin` role.
 | ------------------------------------------ | ------- | ------ | ------ | ----- |
 | Open a team's view                         | Yes\*   | Yes    | Yes    | Yes   |
 | Apply filters                              | Yes\*   | Yes    | Yes    | Yes   |
-| Show / Hide columns                        | Yes\*   | Yes    | Yes    | Yes   |
-| Save the View filters and columns settings | No      | No     | Yes    | Yes   |
+| Show / hide columns                        | Yes\*   | Yes    | Yes    | Yes   |
+| Save the view filters and columns settings | No      | No     | Yes    | Yes   |
 | Run experiments                            | No      | No     | Yes    | Yes   |
 | View CML reports                           | No      | No     | Yes    | Yes   |
 | Share a view                               | No      | No     | Yes    | Yes   |
@@ -103,9 +103,9 @@ On this page, you can perform three types of tasks:
 
 - **Add a view.** Click on the `View` menu item to add views to the team's page.
   The process for adding a view is the same as that for adding personal views
-  ([instructions](/doc/studio/user-guide/create-view)). However, the views that
-  you create within the team will be accessible to all members (collaborators)
-  of the team.
+  ([instructions](/doc/studio/user-guide/views/create-view)). However, the views
+  that you create within the team will be accessible to all members
+  (collaborators) of the team.
 
 - **Edit collaborators.** You can click on the `Team` menu item to edit the
   collaborators in the team.
@@ -113,6 +113,6 @@ On this page, you can perform three types of tasks:
 - **Change settings.** Finally, you can click on the `Settings` menu item to
   change the team name, add credentials for the data remotes, and delete the
   team. Note that these settings are applicable to the team and are thus
-  different from [view settings](/doc/studio/user-guide/view-settings).
+  different from [view settings](/doc/studio/user-guide/views/view-settings).
 
   ![](https://static.iterative.ai/img/studio/team_settings.png)

@@ -33,16 +33,19 @@ what columns and values to display.
 ![](https://static.iterative.ai/img/studio/view_components_2.gif)
 
 - **Filters:** You can filter the commits that you want to display by the
-  following fields: - **Branch:** The Git branch - **Tag:** The Git tag -
-  **Author:** Author of the Git commit - **Metric:** Values of different
-  metrics. For instance, you can display only those experiments for which the
-  value of `avg_prec` is greater than `0.9`. - **Metric delta:** Change in the
-  value of the metric. For instance, you can use this filter to only display
-  those experiments for which the value of `avg_prec` changed by more than `0.1`
-  compared to the baseline experiment. - **Param:** Values of different
-  parameters - **File size:** Size of the data, model and other files
-  corresponding to your experiments - **File changed:** Whether or not any given
-  file changed in the experiment
+  following fields:
+  - **Branch:** The Git branch
+  - **Tag:** The Git tag
+  - **Author:** Author of the Git commit
+  - **Metric:** Values of different metrics. For instance, you can display only
+    those experiments for which the value of `avg_prec` is greater than `0.9`.
+  - **Metric delta:** Change in the value of the metric. For instance, you can
+    use this filter to only display those experiments for which the value of
+    `avg_prec` changed by more than `0.1` compared to the baseline experiment.
+  - **Param:** Values of different parameters
+  - **File size:** Size of the data, model and other files corresponding to your
+    experiments
+  - **File changed:** Whether or not any given file changed in the experiment
 - **Columns:** Select the columns you want to display and hide the rest.
   Additionally, you can click and drag the columns in the table to rearrange
   them as per your preferences.

@@ -1,6 +1,6 @@
 # Share a View
 
-To share a view on the web (ie, to make the view public), click on the button
+To share a view on the web (i.e., to make the view public), click on the button
 labelled `Private` next to the name of the view. In the menu that pops up, turn
 on `Share to Web`.
 
