@@ -80,11 +80,10 @@ The default remote is cleaned (see `dvc config core.remote`) unless the
   [experimental](/doc/user-guide/experiment-management) data (including
   checkpoints).
 
-- `-p <paths>`, `--projects <paths>` - if a single remote or a single cache is
-  shared among different projects (e.g. as described
-  [here](/doc/use-cases/sharing-resources-efficiently)), this option can be used
-  to specify a list of them (each project is a path) to keep data that is
-  currently referenced from them.
+- `-p <paths>`, `--projects <paths>` - if a single remote or a single
+  [cache is shared](/doc/user-guide/how-to/share-a-dvc-cache) among different
+  projects, this option can be used to specify a list of them (each project is a
+  path) to keep data that is currently referenced from them.
 
 - `-c`, `--cloud` - remove files in remote storage in addition to local cache.
   **This option is dangerous.** The default remote is used unless a specific one
