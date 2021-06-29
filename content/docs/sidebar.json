@@ -521,7 +521,7 @@
     "icon": "studio",
     "children": [
       {
-        "label": "How DVC Studio works",
+        "label": "How It Works",
         "slug": "overview"
       },
       "get-started",
@@ -529,18 +529,29 @@
         "label": "User Guide",
         "slug": "user-guide",
         "source": "user-guide/index.md",
+
         "children": [
           {
-            "label": "Prepare your repositories",
+            "label": "Prepare Your Repositories",
             "slug": "prepare-repositories"
           },
           {
-            "label": "Create and Share View",
-            "slug": "create-view"
+            "label": "Views",
+            "slug": "views",
+            "source": false,
+            "children": [
+              "what-is-a-view",
+              "create-view",
+              {
+                "label": "Configure View",
+                "slug": "view-settings"
+              },
+              "share-view"
+            ]
           },
-          "install-github-app",
+
           {
-            "label": "Explore ML experiments",
+            "label": "Explore ML Experiments",
             "slug": "explore-experiments"
           },
           {
@@ -548,12 +559,9 @@
             "slug": "visualize-experiments"
           },
           "run-experiments",
-          {
-            "label": "Configure View",
-            "slug": "view-settings"
-          },
           "teams",
-          "account-management"
+          "account-management",
+          "install-github-app"
         ]
       },
       "troubleshooting"

@@ -57,17 +57,13 @@ You should now see that a view has been added in your dashboard.
 
 ![](https://static.iterative.ai/img/studio/view_open_settings.png)
 
-8. You can also create multiple views from a single Git repository and apply
-   different settings to them.
+8. You can also
+   [create multiple views from a single Git repository](/doc/studio/user-guide/views/create-view#create-multiple-views-from-a-single-git-repository).
 
-9. To share your views on the web, click on the button labelled `Private` next
-   to the name of the view. In the menu that pops up, turn on `Share to Web`.
+9. After creating a view, you can use it to
+   [explore the ML experiments](/doc/studio/user-guide/explore-experiments) as
+   well as
+   [submit new experiments from DVC Studio](/doc/studio/user-guide/run-experiments).
 
-10. You can dive deep into all the experiments committed to the repo. For this,
-    open the view by clicking the view name (in this case,
-    `example-get-started`). An experiements table will be generated for you to
-    visualize and interact with your ML experiments as well as submit new
-    experiments. The
-    [Components of a View](/doc/studio/user-guide/explore-experiments#components-of-a-view)
-    section provides details on what is displayed in this table and how you can
-    interact with it.
+10. You can also make the view public by
+    [sharing it on the web](/doc/studio/user-guide/views/share-view),

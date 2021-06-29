@@ -1,15 +1,13 @@
 # Teams
 
-So far, you have seen how you can create personal and public views. In this
-section, we will illustrate how you can create teams. In DVC Studio, you can
-define teams with one or more team members. The team members are also called
-collaborators, and you can assign different roles to them. The views that you
-create in your team's page will be accessible to all members of the team.
+You can define teams with one or more team members. The team members are also
+called collaborators, and you can assign different roles to them. The views that
+you create in your team's page will be accessible to all members of the team.
 
 In this section, you will:
 
 - [Learn how to create a team](#create-a-team)
-- [Learn how to invite collboarators (team members)](#invite-collaborators)
+- [Learn how to invite collaborators (team members)](#invite-collaborators)
 - [Understand the privileges (access permissions) of different roles](#roles)
 - [Learn how to manage the team and its views](#manage-your-team-and-its-views)
 

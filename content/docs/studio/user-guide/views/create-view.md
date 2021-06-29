@@ -1,18 +1,4 @@
-# Create and Share a View
-
-Views are interactive representations of the information stored in your Git
-repositories. In this section, you will learn how to:
-
-- [Create a view](#create-a-view)
-- [Create multiple views from a single Git repository](#create-multiple-views-from-a-single-git-repository)
-- [Share a view](#share-a-view)
-
-## Create a View
-
-You can create views from your Git repositories. DVC Studio automatically
-detects metrics, plots, and hyperparameters files specified in the project's
-`dvc.yaml`. If you are working with a non-DVC repository, you will need to
-specify the custom files with your metrics and parameters.
+# Create a View
 
 To create a new view, follow these steps.
 
@@ -67,23 +53,5 @@ projects, simply create multiple views for this monorepo, and for each view,
 specify a different sub-directory.
 
 Refer to the [View Settings](/doc/studio/user-guide/view-settings) section for
-more details on how to configure different settings (and sub-directores) for the
-views.
-
-## Share a view
-
-You can share your views on the web. Simply click on the button labelled
-`Private` next to the name of the view. In the menu that pops up, turn on
-`Share to Web`.
-
-![](https://static.iterative.ai/img/studio/view_share.png)
-
-You can change a shared (public) view and make it private by turning off
-`Share to web`.
-
-Views that are shared on the web can be opened by anyone, including people who
-are not logged in to DVC Studio. These anonymous users have the `Visitor` role.
-Their access is limited to opening the view, applying filters, and
-showing/hiding columns for themselves without making permanent changes to the
-view. Refer to the [Roles](/doc/studio/user-guide/teams#roles) section for
-details on the features available for different roles.
+more details on how to configure different settings (and sub-directories) for
+the views.

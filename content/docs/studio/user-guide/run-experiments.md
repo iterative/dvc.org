@@ -1,26 +1,17 @@
 # Run Experiments
 
-The process of building ML models often involves retraining the model several
-times while tuning data and hyperparameters. ML teams evalutate the results
-(metrics) of these iterations to determine the right datasets and
-hyperparameters for the given ML task. With DVC Studio, this experimentation
-process becomes easier as you can use the visual UI to make and deploy changes
-instead of manually updating code each time. This means that you can change your
-hyperparameters or select a different dataset and re-run your model training
-using DVC Studio.
-
-Note that to automatically run the model training process when you change
-data/hyperparameters, a CI system needs to be set up. DVC Studio uses your
-regular CI/CD setup (e.g. GitHub Actions) to run the experiments.
+You can change your hyperparameters or select a different dataset and re-run
+your model training using DVC Studio.
 
 ## How DVC Studio runs ML experiments
 
-If your Git repository is integrated with a CI/CD setup (e.g. GitHub Actions),
-then on each Git commit, the CI/CD setup will get invoked. If this setup
+DVC Studio uses your regular CI/CD setup (e.g. GitHub Actions) to run the
+experiments. This means that to enable experimentation from DVC Studio, you need
+to integrate your Git repository with a CI/CD setup (e.g. GitHub Actions).
+
+Then, on each Git commit, the CI/CD setup will get invoked. If this setup
 includes a model training process, it will be triggered, which means that your
-ML experiment will run automatically. You simply submit the data and
-hyperparameter changes for your new experiment using the DVC Studio UI, and your
-regular CI/CD setup will get invoked to run the experiments.
+ML experiment will run automatically.
 
 For more details on how to set up CI/CD pipelines for your ML project, refer to
 [CML](https://cml.dev). You can use any cloud or Kubernetes for the model
@@ -54,7 +45,7 @@ that you can change:
    `scores.json` metrics file. You can also choose not to change any input data
    files if you only wish to change the values of one or more hyperparameters.
 2. **Hyperparameters**: DVC Studio lists all the hyperparameters of your project
-   and you can change their values as per the new experiement that you want to
+   and you can change their values as per the new experiment that you want to
    run. For instance, in the `example-get-started` project, you can change
    `max_features` (the maximum number of features that the model uses),
    `ngrams`, etc. You can also choose not to change any hyperparameters if you

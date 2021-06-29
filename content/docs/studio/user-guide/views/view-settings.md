@@ -2,9 +2,7 @@
 
 You can configure additional settings for your views. Some of these settings,
 such as view name, are optional. Some other settings, such as data remotes, may
-be required depending on how your Git repository has been set up. This section
-provides you details of what settings are essential and how you can configure
-them.
+be required depending on how your Git repository has been set up.
 
 ## Scenarios when views settings are required
 
@@ -30,7 +28,7 @@ Additionally, you can also configure view settings to
 In the section on
 [preparing your repositories](/doc/studio/user-guide/prepare-repositories), you
 saw that you can use DVC Studio with DVC as well as non-DVC repositories. If you
-are conecting to a non-DVC repository, then you will need to
+are connecting to a non-DVC repository, then you will need to
 [specify the custom files](#custom-metrics-and-parameters) that contain the
 metrics and hyperparameters that you want to visualize.
 

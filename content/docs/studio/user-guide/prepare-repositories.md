@@ -1,4 +1,4 @@
-# Prepare your repositories
+# Prepare Your Repositories
 
 DVC Studio creates views by identifying datasets, metrics and hyperparameters
 defined in your Git repositories. These values are stored in your Git
@@ -33,10 +33,3 @@ repositories in two ways:
    your saved metrics. Refer to the section on
    [view settings](/doc/studio/user-guide/view-settings#non-dvc-repositories) to
    learn how to specify the custom files.
-
-   So as you can see, DVC Studio does not necessarily require you to work with
-   DVC repositories. It simply requires your metrics and hyperparameters to be
-   available in data files in your Git repositories. This video further
-   illustrates this concept.
-
-   https://www.youtube.com/watch?v=5xM5az78Lrg

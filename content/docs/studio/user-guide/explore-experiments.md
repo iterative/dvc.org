@@ -12,10 +12,6 @@ presented for you.
 
 ![](https://static.iterative.ai/img/studio/view_components.png)
 
-In this tabular display, you will not only see your complete experiment history,
-you can also generate plots, visualize trends, compare experiments, and even run
-new experiments.
-
 ## Components of a view
 
 The tabular display has different components that show you the complete

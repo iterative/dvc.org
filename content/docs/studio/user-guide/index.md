@@ -1,8 +1,13 @@
 # User Guide
 
 In this user guide, you will find step by step instructions for all the things
-that you can do with DVC Studio. First, you will learn how to prepare your Git
-repositories with DVC Studio. Then, you will learn how to connect to your Git
-repositories and create views; explore, visualize and compare your ML
-experiments; submit new experiments; and manage your views, teams and user
-profile.
+that you can do with DVC Studio.
+
+The topics here range from the basic (how to connect to your Git repositories)
+to more advanced things you can do such as running experiments. We also include
+guides for getting your Git repositories ready for using with DVC Studio, with
+or without DVC. This includes guides on how to prepare your repositories, how to
+install and authorize the DVC Studio GitHub app, etc.
+
+Please choose from the navigation sidebar to the left, or click the `Next`
+button below ↘
