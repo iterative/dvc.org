@@ -43,15 +43,15 @@ more views._
 > a monorepo, or if your metrics are in cloud or other remote storage. However,
 > you can configure the view settings after the view has been created. So, you
 > can `Skip and Continue` now. Refer to the
-> [View Settings](/doc/studio/user-guide/view-settings) section for more
+> [View Settings](/doc/studio/user-guide/views/view-settings) section for more
 > details.
 
 You should now see that a view has been added in your dashboard.
 
 7. If your project requires any of the additional settings, then remember to
    configure them by opening the
-   [view settings](/doc/studio/user-guide/view-settings). Otherwise, your view
-   may not work as expected. To go to view settings, click on the
+   [view settings](/doc/studio/user-guide/views/view-settings). Otherwise, your
+   view may not work as expected. To go to view settings, click on the
    ![](https://static.iterative.ai/img/studio/view_open_settings_icon.png) icon
    in the view. In the menu that opens up, click on `Settings`.
 
