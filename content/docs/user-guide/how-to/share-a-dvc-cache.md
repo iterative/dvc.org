@@ -7,15 +7,17 @@ description: >-
 
 # How to Share a DVC Cache
 
-There are 2 main reasons to setup a shared <abbr>DVC cache</abbr>:
+[Configuring](/doc/command-reference/config#cache) the project's
+<abbr>cache</abbr> in a location shared by other projects helps avoid file
+duplication and can reduce data transfers between different data locations. Some
+scenarios:
 
-1. You have distributed copies of a DVC repository in a single shared server
-   with multiple users. A shared cache is necessary to avoid duplicating the
-   project's data on the single local storage available to all.
-2. Your team works with multiple projects in environments with limited storage,
-   which share a large storage unit. Everyone needs to use the shared drive
-   anyway, and combining the cache locations will also prevent data duplication
-   (across projects).
+- Multiple users have copies of the same project on a single machine.
+- Different projects use the same data, so it makes sense to centralize its
+  local storage.
+- There's a shared NAS drive or storage server mounted over the network.
+- You need to seamlessly share data between your working machine and a shared
+  GPU server (for training ML models).
 
 ## Preparation
 
