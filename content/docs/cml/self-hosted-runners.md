@@ -25,7 +25,7 @@ environmental variables for passing your cloud service credentials to the
 workflow.
 
 ```yaml
-name: "Train-in-the-cloud"
+name: 'Train-in-the-cloud'
 on: [push]
 
 jobs:
@@ -34,7 +34,7 @@ jobs:
     steps:
       - uses: iterative/setup-cml@v1
       - uses: actions/checkout@v2
-      - name: "Deploy runner on EC2"
+      - name: 'Deploy runner on EC2'
         shell: bash
         env:
           repo_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
@@ -46,22 +46,22 @@ jobs:
           --cloud-region us-west \
           --cloud-type=t2.micro \
           --labels=cml-runner
-  name: model-training
+  model-training:
     needs: deploy-runner
-    runs-on: [self-hosted,cml-runner]
+    runs-on: [self-hosted, cml-runner]
     container: docker://dvcorg/cml-py3:latest
     steps:
-    - uses: actions/checkout@v2
-    - name: "Train my model"
-      env:
-        repo_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-      run: |
-        pip install -r requirements.txt
-        python train.py
+      - uses: actions/checkout@v2
+      - name: 'Train my model'
+        env:
+          repo_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+        run: |
+          pip install -r requirements.txt
+          python train.py
 
-        # Publish report with CML
-        cat metrics.txt > report.md
-        cml-send-comment report.md
+          # Publish report with CML
+          cat metrics.txt > report.md
+          cml-send-comment report.md
 ```
 
 In the above workflow, the step `deploy-runner` launches an EC2 `t2-micro`
