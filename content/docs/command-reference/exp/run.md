@@ -2,9 +2,6 @@
 
 Run or resume an [experiment](/doc/command-reference/exp).
 
-> Similar to `dvc repro` but for
-> [experimentation](/doc/user-guide/experiment-management).
-
 ## Synopsis
 
 ```usage
