@@ -1,26 +1,18 @@
 import React from 'react'
 
-import Markdown from './Markdown'
-import RightPanel from './RightPanel'
+import MarkdownMain from '../Markdown/Main'
+import RightPanel from '../RightPanel'
 
-import { getItemByPath } from '../../utils/shared/sidebar'
-
-export interface IHeading {
-  slug: string
-  text: string
-}
-
-export const getGithubLink = (source: string): string =>
-  `https://github.com/iterative/dvc.org/blob/master/content${source}`
+import { IHeading, getGithubLink } from '../'
+import { getItemByPath } from '../../../utils/shared/sidebar'
 
 interface IDocumentationProps {
   path: string
   headings: Array<IHeading>
-  htmlAst: object
 }
 
 const Documentation: React.FC<IDocumentationProps> = ({
-  htmlAst,
+  children,
   path,
   headings
 }) => {
@@ -29,13 +21,14 @@ const Documentation: React.FC<IDocumentationProps> = ({
 
   return (
     <>
-      <Markdown
-        htmlAst={htmlAst}
+      <MarkdownMain
         prev={prev}
         next={next}
         githubLink={githubLink}
         tutorials={tutorials}
-      />
+      >
+        {children}
+      </MarkdownMain>
       <RightPanel
         headings={headings}
         githubLink={githubLink}

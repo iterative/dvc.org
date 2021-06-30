@@ -95,6 +95,11 @@
     "source": "user-guide/index.md",
     "children": [
       {
+        "label": "Glossary",
+        "slug": "glossary",
+        "source": "basic-concepts"
+      },
+      {
         "label": "What is DVC?",
         "slug": "what-is-dvc"
       },
