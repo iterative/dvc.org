@@ -8,7 +8,7 @@ Git.'
 # Get Started: Data Versioning
 
 How cool would it be to make Git handle arbitrarily large files and directories
-with the same performance that you get with small code files? Imagine doing a
+with the same performance it has with small code files? Imagine doing a
 `git clone` and seeing data files and machine learning models in the workspace.
 Or switching to a different version of a 100Gb file in less than a second with a
 `git checkout`.
@@ -250,10 +250,8 @@ In cases where you process very large datasets, you need an efficient mechanism
 versions. Do you use network attached storage (NAS)? Or a large external volume?
 You can learn more about advanced workflows using these links:
 
-- A
-  [shared cache](/doc/use-cases/shared-development-server#configure-the-shared-cache)
-  can be set up to store, version and access a lot of data on a large shared
-  volume efficiently.
+- A [shared cache](/doc/user-guide/how-to/share-a-dvc-cache) can be set up to
+  store, version and access a lot of data on a large shared volume efficiently.
 - A quite advanced scenario is to track and version data directly on the remote
   storage (e.g. S3). See
   [Managing External Data](https://dvc.org/doc/user-guide/managing-external-data)

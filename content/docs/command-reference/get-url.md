@@ -57,11 +57,6 @@ DVC supports several types of (local or) remote data sources (protocols):
 - HDFS, HTTP, WebDav, and WebHDFS **do not** support downloading entire
   directories, only single files.
 
-- `remote://myremote/path/to/file` notation just means that a DVC
-  [remote](/doc/command-reference/remote) `myremote` is defined and when DVC is
-  running. DVC automatically expands this URL into a regular S3, SSH, GS, etc
-  URL by appending `/path/to/file` to the `myremote`'s configured base path.
-
 Another way to understand the `dvc get-url` command is as a tool for downloading
 data files. On GNU/Linux systems for example, instead of `dvc get-url` with
 HTTP(S) it's possible to instead use:
