@@ -49,11 +49,13 @@ Thanks to @Chandana for asking this question about experiments!
 
 ### [Q: Is there a way to list all the experiments I have on my DVC remote that have not been committed to Git?](https://discord.com/channels/485586884165107732/563406153334128681/836705209039978538)
 
-Yes! The command `dvc exp list --all origin` lists all of the experiments for a
-local clone of the repo.
+Yes! You can quickly look at all of the experiments with: `dvc exp list --all`.
+
+The command `dvc exp list --all origin` lists all of the experiments for a local
+clone of the repo.
 
 If you want to list the experiments in any repo, the command
-`dvc exp list --all git_remote` will do that for you.
+`dvc exp list --all <git repo URL>` will do that for you.
 
 Thanks again @Chandana for this gem!
 
