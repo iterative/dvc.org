@@ -16,6 +16,7 @@
 }
 
 .contentBlock {
+  position: relative;
   overflow-y: scroll;
   margin-bottom: 27px;
 

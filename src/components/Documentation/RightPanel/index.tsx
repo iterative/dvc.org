@@ -88,40 +88,28 @@ const RightPanel: React.FC<IRightPanelProps> = ({
       window.removeEventListener('resize', updateHeadingsPosition)
     }
   }, [updateCurrentHeader])
+
   useEffect(initHeadingsPosition, [headings])
+
   useEffect(updateCurrentHeader, [headingsOffsets, documentHeight])
 
   const contentBlockRef = useRef<HTMLDivElement>(null)
-  const [
-    isScrollToCurrentHeadingHappened,
-    setIsScrollToCurrentHeadingHappened
-  ] = useState(false)
   useEffect(() => {
-    if (isScrollToCurrentHeadingHappened) {
-      return
-    }
-    if (!document.location.hash) {
-      setIsScrollToCurrentHeadingHappened(true)
-      return
-    }
     if (currentHeadingSlug) {
-      setIsScrollToCurrentHeadingHappened(true)
       const currentHeadingSlugElem = document.getElementById(
         `link-${currentHeadingSlug}`
       )
       const contentBlockElem = contentBlockRef.current
-      if (currentHeadingSlugElem && contentBlockElem) {
+      if (currentHeadingSlugElem?.parentElement && contentBlockElem) {
         const hasVerticalScrollbar =
           contentBlockElem.scrollHeight > contentBlockElem.clientHeight
         if (hasVerticalScrollbar) {
-          currentHeadingSlugElem.scrollIntoView({
-            block: 'start',
-            inline: 'nearest'
-          })
+          currentHeadingSlugElem.parentElement.scrollTop =
+            currentHeadingSlugElem.offsetTop
         }
       }
     }
-  })
+  }, [currentHeadingSlug])
 
   return (
     <div className={styles.container}>
