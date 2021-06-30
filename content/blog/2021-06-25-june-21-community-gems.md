@@ -1,21 +1,23 @@
 ---
 title: June '21 Community Gems
-date: 2021-06-25
+date: 2021-06-30
 description: |
   A roundup of technical Q&A's from the DVC community.
-  This month: remote storage integration, hyperparameter tuning,
-  best practices for managing experiments and more.
+  This month: DVC pipeline configs, working with remotes,
+  file handling and more.
 descriptionLong: |
-  A roundup of technical Q&A's from the DVC community. 
-  This month: remote storage integration, hyperparameter tuning,
-  best practices for managing experiments and more.
-picture: 2021-05-25/gems-cover.png
+  A roundup of technical Q&A's from the DVC community.
+  This month: DVC pipeline configs, working with remotes,
+  file handling and more.
+picture: 2021-06-30/gems-cover.png
 author: milecia_mcgregor
 commentsUrl: https://discuss.dvc.org/t/june-21-community-gems/779
 tags:
   - Community
+  - Plots
   - Pipelines
-  - Remote Storage
+  - CML
+  - Git
 ---
 
 ### [Q: Is it possible to plot multiple experiments together?](https://discord.com/channels/485586884165107732/563406153334128681/834387923482181653)
@@ -27,15 +29,18 @@ You can use experiment names in the `dvc plots` commands. You need to use the
 Thanks to @PythonF from Discord for asking this question that led to this Gem!
 💎
 
-### [Q: Where are the configs for an experiment being pushed in Git when I run `dvc exp push`?](https://discord.com/channels/485586884165107732/563406153334128681/837773937390649364)
+### [Q: Where is the list of experiment being pushed in Git when I run `dvc exp push`?](https://discord.com/channels/485586884165107732/563406153334128681/837773937390649364)
 
 It uses custom Git refs internally, similar to the way GitHub handles PRs. It’s
 a custom DVC Git ref pointing to a Git commit. Here's an example.
 
-```bash
+```dvc
 $ git show-ref exp-26220
 c42f48168830148b946f6a75d1bdbb25cda46f35 refs/exps/f1/37703af59ba1b80e77505a762335805d05d212/exp-26220
 ```
+
+If you want to see your local experiments (that have not been pushed), you can
+run `dvc exp list --all`.
 
 You can read more about how we handle our custom Git refs in
 [this blog post](https://dvc.org/blog/experiment-refs).
@@ -44,8 +49,11 @@ Thanks to @Chandana for asking this question about experiments!
 
 ### [Q: Is there a way to list all the experiments I have on my DVC remote that have not been committed to Git?](https://discord.com/channels/485586884165107732/563406153334128681/836705209039978538)
 
-Yes! The command `dvc exp list gitremote --all` lists all of the experiments for
-the default remote in the Git repo.
+Yes! The command `dvc exp list --all origin` lists all of the experiments for a
+local clone of the repo.
+
+If you want to list the experiments in any repo, the command
+`dvc exp list --all git_remote` will do that for you.
 
 Thanks again @Chandana for this gem!
 
@@ -90,18 +98,19 @@ Chunk-level deduplication is on our todo list.
 
 For the second part of the question, you can use data management with DVC and
 have your own pipelines. Just treat it as Git for data then be sure to
-`dvc {add,push,pull}` and you should be set. Hooks, like `pre-commit` or
-`post-pipeline-run`, are a good way to go about it.
+`dvc add`, `dvc push`, `dvc pull` and you should be set. Hooks, like
+`pre-commit` or `post-pipeline-run`, are a good way to go about it.
 
-### [Q: Is there a way to tell DVC to use a different profile instead of the default profile when running S3 commands?](https://discord.com/channels/485586884165107732/563406153334128681/846857498094469120)
+### [Q: Is there a way to tell DVC to use a different profile instead of the default profile when interacting with S3?](https://discord.com/channels/485586884165107732/563406153334128681/846857498094469120)
 
-When you have a remote that is not on your main AWS profile and when you access
-it via the `awscli` using something like `aws s3 --profile=second_profile ls`,
-you'll need to update your remote config in DVC.
+When you have a remote that is not on your default AWS profile and when you
+access it via the `awscli` using something like
+`aws s3 --profile=second_profile ls`, you'll need to update your remote config
+in DVC.
 
 You can run a command like:
 
-```bash
+```dvc
 $ dvc remote modify myremote profile myprofile
 ```
 
@@ -114,7 +123,7 @@ Great question @Avi!
 https://media.giphy.com/media/l0IycQmt79g9XzOWQ/giphy.gif
 
 At our July Office Hours Meetup we will be demo-ing pipelines as well as CML.
-[RSVP for the Meetup here](https://www.meetup.com/DVC-Community-Virtual-Meetups/events/277245660/?isFirstPublish=true)
+[RSVP for the Meetup here](https://www.meetup.com/DVC-Community-Virtual-Meetups/events/279024694/)
 to stay up to date with specifics as we get closer to the event!
 
 [Join us in Discord](https://discord.com/invite/dvwXA2N) to get all your DVC and
