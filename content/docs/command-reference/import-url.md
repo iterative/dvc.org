@@ -86,9 +86,9 @@ DVC supports several types of external locations (protocols):
 
 > If you installed DVC via `pip` and plan to use cloud services as remote
 > storage, you might need to install these optional dependencies: `[s3]`,
-> `[azure]`, `[gs]`, `[oss]`, `[ssh]`. Alternatively, use `[all]` to
-> include them all. The command should look like this: `pip install "dvc[s3]"`.
-> (This example installs `boto3` library along with DVC to support S3 storage.)
+> `[azure]`, `[gs]`, `[oss]`, `[ssh]`. Alternatively, use `[all]` to include
+> them all. The command should look like this: `pip install "dvc[s3]"`. (This
+> example installs `boto3` library along with DVC to support S3 storage.)
 
 \* Notes on remote locations:
 
