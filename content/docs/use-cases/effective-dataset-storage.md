@@ -13,9 +13,15 @@ storage (S3, GDrive, SSH, etc.), with custom auth and sharing config.
 
 **Solves** (scenarios):
 
-- Multiple users work on the same shared server.
-- A centralized data storage unit or cluster
-- There's a single environment with access to production data.
+- You want to move data from your machine to an external drive or storage
+  service, without losing the ability to use it locally.
+- You need to design a system for multiple users collaborating on the same
+  datasets.
+- You want to combine several data stores into a central location to avoid
+  duplication and improve control.
+- Your team shares access to a GPU server for ML model training, how do you
+  connect it to different data environments (test, shadow, production) to run
+  [experiments]?
 
 **Lools like**:
 
