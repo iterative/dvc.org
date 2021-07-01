@@ -13,7 +13,7 @@ const Glossary: React.FC = () => {
     })
     .map(
       ({ name, desc }: { name: string; desc: string }) =>
-        `<p><strong>${name}</strong>: ${desc.replace(/<p\/?>/, '')}</p>`
+        `<p><strong>${name}</strong>: ${desc.replace(/<\/?p>/g, '')}</p>`
     )
     .join('')
 
