@@ -1,6 +1,7 @@
 import React from 'react'
 
 import DocWithJsx from '../../../templates/doc-jsx'
+import AutoLinkHeader from '../../../components/Documentation/WithJSX/AutoLinkHeader'
 import useGlossary from '../../../utils/front/glossary'
 
 const Glossary: React.FC = () => {
@@ -19,7 +20,7 @@ const Glossary: React.FC = () => {
 
   return (
     <DocWithJsx slug="/doc/user-guide/glossary" headings={[]}>
-      <h1 id="glossary">Glossary</h1>
+      <AutoLinkHeader id="glossary">Glossary</AutoLinkHeader>
       <div dangerouslySetInnerHTML={{ __html: html }} />
     </DocWithJsx>
   )
