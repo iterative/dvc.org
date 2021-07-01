@@ -66,7 +66,10 @@ Another great question from @Chandana!
 Right now, we support GitHub and GitLab.
 
 Azure DevOps and GCP (Google Cloud Platform) support are on the roadmap. Stay
-tuned for more updates!
+tuned for more updates! You can stay up to date with our Azure DevOps progress
+on [this issue on GitHub](https://github.com/iterative/cml/issues/142). You can
+also follow along with GCP updates with
+[this issue](https://github.com/iterative/terraform-provider-iterative/issues/64).
 
 ### [Q: I pushed a lot of files using `dvc push` to my DVC remote, but there are a few that couldn't be pushed at the time. If I run `dvc push` again, will it just upload the missing files?](https://discord.com/channels/485586884165107732/563406153334128681/842662337159757854)
 
@@ -96,7 +99,8 @@ DVC, you don't have to worry about getting duplicate data.
 
 DVC supports file-level deduplication right now, so if your data is in a shape
 of directory with files, then all unique files will only be stored once.
-Chunk-level deduplication is on our todo list.
+Chunk-level deduplication is on our todo list. You can see how it's going in
+[this issue we have on GitHub](https://github.com/iterative/dvc/issues/829).
 
 For the second part of the question, you can use data management with DVC and
 have your own pipelines. Just treat it as Git for data then be sure to
