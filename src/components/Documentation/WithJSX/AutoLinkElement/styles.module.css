@@ -1,0 +1,9 @@
+.autoLinkEl {
+  svg {
+    visibility: hidden;
+  }
+
+  &:hover svg {
+    visibility: visible;
+  }
+}
