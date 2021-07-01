@@ -61,8 +61,10 @@ Another great question from @Chandana!
 Right now, we support GitHub and GitLab.
 
 Azure DevOps and GCP (Google Cloud Platform) support are on the roadmap. Stay
-tuned for more updates! You can stay up to date with our Azure DevOps progress
-on [this issue on GitHub](https://github.com/iterative/cml/issues/142). You can
+tuned for more updates!
+
+You can stay up to date with our Azure DevOps progress on
+[this issue on GitHub](https://github.com/iterative/cml/issues/142). You can
 also follow along with GCP updates with
 [this issue](https://github.com/iterative/terraform-provider-iterative/issues/64).
 
