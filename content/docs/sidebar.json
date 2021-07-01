@@ -82,12 +82,12 @@
           }
         ]
       },
+      "effective-dataset-storage",
       {
         "label": "Sharing Data and Model Files",
         "slug": "sharing-data-and-model-files"
       },
-      "data-registries",
-      "managing-datasets"
+      "data-registries"
     ]
   },
   {
