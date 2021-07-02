@@ -87,7 +87,8 @@ DVC pipeline was created.
 
 First make sure you're in a virtual environment with a command similar to this.
 
-`python -m venv .venv`
+```dvc
+python -m venv .venv
 
 After you've cloned the repo, install all of the dependencies with this command.
 
