@@ -65,6 +65,11 @@ A few things DVC makes easier to do include:
 - Letting you make changes without worrying about finding them later
 - Onboarding other engineers to a project
 - Sharing experiments with other engineers on different machines
+- Track experiments and results in your Git repo and compare from the command
+  line - no need for other services to retrieve your experiments or compare
+  results.
+- Version the entire pipeline (including data, code, and commands run) - detect
+  changes to dependencies and only re-run the impacted steps.
 
 For hyperparameter tuning, this means you can play with values and code changes
 without losing track of which changes made the best model and also have other
@@ -148,7 +153,7 @@ import random
 
 # Automated grid search experiments
 n_est_values = [250, 300, 350, 400, 450, 500]
-min_split_values = [100, 110, 120, 130, 140, 150]
+min_split_values = [8, 16, 32, 64, 128, 256]
 
 for val in n_est_values:
     subprocess.run(["dvc", "exp", "run", "--queue", "--set-param", f"train.n_est={val}"])
