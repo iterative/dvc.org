@@ -23,6 +23,9 @@ set to an
 in your project, DVC will replace them with the latest versions of the actual
 files and directories first, so that your data is intact after destruction.
 
+[external cache]:
+  /doc/use-cases/shared-development-server#configure-the-external-shared-cache
+
 > Refer to [Project Structure](/doc/user-guide/project-structure) for more
 > details on the directories and files deleted by this command.
 
