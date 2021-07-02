@@ -92,7 +92,9 @@ DVC pipeline was created.
 
 First make sure you're in a virtual environment with a command similar to this.
 
-`python -m venv .venv`
+```dvc
+$ python -m venv .venv
+```
 
 After you've cloned the repo, install all of the dependencies with this command.
 
@@ -136,7 +138,9 @@ later. That way we can cycle through multiple hyperparameters quickly instead of
 manually updating a config file with new hyperparameter values for each
 experiment run. The command syntax for creating queues looks like this:
 
-`dvc exp run --queue -set-param train.min_split=8`
+```dvc
+dvc exp run --queue -set-param train.min_split=8
+```
 
 In the example queue above, we're updating the `train.min_split` value that's
 inside of the `params.yaml` file. This file holds all of the hyperparameter
@@ -174,12 +178,16 @@ You can run this script now and generate your queue with this command.
 You'll see some outputs in the terminal telling you that your experiments have
 been queued. Then you can run them all with the following command.
 
-`dvc exp run --run-all`
+```dvc
+dvc exp run --run-all
+```
 
 This will run every experiment that has been queued. Once all of those have run,
 take a look at your metrics for each experiment.
 
-`dvc exp show`
+```dvc
+dvc exp show
+```
 
 Your table should look similar to this when you run `dvc exp show`.
 
