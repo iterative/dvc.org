@@ -31,22 +31,26 @@ specified by its `path` in a `repo` (<abbr>DVC project</abbr>), is stored.
 The URL is formed by reading the project's
 [remote configuration](/doc/command-reference/config#remote) and the `dvc.yaml`
 or `.dvc` file where the given `path` is found (`outs` field). The schema of the
-URL returned depends on the
-[type](/doc/command-reference/remote/add#supported-storage-types) of the
-`remote` used (see the [Parameters](#parameters) section).
+URL returned depends on the [type][storage-types] of the `remote` used (see the
+[Parameters](#parameters) section).
 
 If the target is a directory, the returned URL will end in `.dir`. Refer to
-[Structure of cache directory](/doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory)
-and `dvc add` to learn more about how DVC handles data directories.
+[Structure of cache directory] and `dvc add` to learn more about how DVC handles
+data directories.
 
 ⚠️ This function does not check for the actual existence of the file or
 directory in the remote storage.
 
 💡 Having the resource's URL, it should be possible to download it directly with
-an appropriate library, such as
-[`boto3`](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3.html#S3.Object.download_fileobj)
-or
-[`paramiko`](https://docs.paramiko.org/en/stable/api/sftp.html#paramiko.sftp_client.SFTPClient.get).
+an appropriate library, such as [`boto3`] or [`paramiko`].
+
+[storage-types]: /doc/command-reference/remote/add#supported-storage-types
+[structure of cache directory]:
+  /doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory
+[`boto3`]:
+  https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3.html#S3.Object.download_fileobj
+[`paramiko`]:
+  https://docs.paramiko.org/en/stable/api/sftp.html#paramiko.sftp_client.SFTPClient.get
 
 ## Parameters
 
@@ -88,9 +92,8 @@ The script above prints
 `https://remote.dvc.org/dataset-registry/a3/04afb96060aad90176268345e10355`
 
 This URL represents the location where the data is stored, and is built by
-reading the corresponding `.dvc` file
-([`get-started/data.xml.dvc`](https://github.com/iterative/dataset-registry/blob/master/get-started/data.xml.dvc))
-where the `md5` file hash is stored,
+reading the corresponding `.dvc` file ([`get-started/data.xml.dvc`]) where the
+`md5` file hash is stored,
 
 ```yaml
 outs:
@@ -98,11 +101,14 @@ outs:
     path: get-started/data.xml
 ```
 
-and the project configuration
-([`.dvc/config`](https://github.com/iterative/dataset-registry/blob/master/.dvc/config))
-where the remote URL is saved:
+and the project configuration ([`.dvc/config`]) where the remote URL is saved:
 
 ```ini
 ['remote "storage"']
 url = https://remote.dvc.org/dataset-registry
 ```
+
+[`.dvc/config`]:
+  https://github.com/iterative/dataset-registry/blob/master/.dvc/config
+[`get-started/data.xml.dvc`]:
+  https://github.com/iterative/dataset-registry/blob/master/get-started/data.xml.dvc
