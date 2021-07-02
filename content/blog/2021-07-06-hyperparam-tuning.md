@@ -112,14 +112,15 @@ run `dvc exp show` without the options to see the entire table._
 This will produce a table similar to this.
 
 ```
+
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
-┃ Experiment              ┃ avg_prec ┃ roc_auc ┃ train.n_est ┃ train.min_split ┃
+┃ Experiment ┃ avg_prec ┃ roc_auc ┃ train.n_est ┃ train.min_split ┃
 ┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━┩
-│ workspace               │ 0.51682  │ 0.93819 │ 175         │ 64              │
-│ master                  │ 0.56447  │ 0.94713 │ 100         │ 64              │
-│ └── a1e8716 [exp-09074] │ 0.57333  │ 0.94801 │ 100         │ 32              │
+│ workspace │ 0.51682 │ 0.93819 │ 175 │ 64 │ │ master │ 0.56447 │ 0.94713 │ 100
+│ 64 │ │ └── a1e8716 [exp-09074] │ 0.57333 │ 0.94801 │ 100 │ 32 │
 └─────────────────────────┴──────────┴─────────┴─────────────┴─────────────────┘
-```
+
+````
 
 ### Start tuning with grid search
 
@@ -156,7 +157,7 @@ for val in n_est_values:
 
 for val in min_split_values:
     subprocess.run(["dvc", "exp", "run", "--queue", "--set-param", f"train.min_split={val}"])
-```
+````
 
 This is a simple grid search. We have two hyperparameters we want to tune:
 `n_est` and `min_split`. So we have arrays with a few values in them to mimic
