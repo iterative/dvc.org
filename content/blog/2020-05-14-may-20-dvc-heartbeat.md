@@ -1,5 +1,5 @@
 ---
-title: May '20 DVC❤️Heartbeat
+title: May ’20 DVC❤️Heartbeat
 date: 2020-05-14
 description: |
   Catch up on new DVC releases, talks, and projects in our community.

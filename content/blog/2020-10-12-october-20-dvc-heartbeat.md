@@ -1,5 +1,5 @@
 ---
-title: October '20 Heartbeat
+title: October ’20 Heartbeat
 date: 2020-10-12
 description: |
   This month, hear about our international talks, 
