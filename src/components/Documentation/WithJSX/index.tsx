@@ -6,16 +6,12 @@ import RightPanel from '../RightPanel'
 import { IHeading, getGithubLink } from '../'
 import { getItemByPath } from '../../../utils/shared/sidebar'
 
-interface IDocumentationProps {
+interface IWithJSXProps {
   path: string
   headings: Array<IHeading>
 }
 
-const Documentation: React.FC<IDocumentationProps> = ({
-  children,
-  path,
-  headings
-}) => {
+const WithJSX: React.FC<IWithJSXProps> = ({ children, path, headings }) => {
   const { source, prev, next, tutorials } = getItemByPath(path)
   const githubLink = getGithubLink(source)
 
@@ -38,4 +34,4 @@ const Documentation: React.FC<IDocumentationProps> = ({
   )
 }
 
-export default Documentation
+export default WithJSX

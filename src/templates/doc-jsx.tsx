@@ -5,7 +5,7 @@ import SEO from '../components/SEO'
 
 import Documentation from '../components/Documentation/WithJSX'
 
-export interface IJSXDocPageProps {
+interface IJSXDocPageProps {
   title?: string
   description?: string
   slug: string
