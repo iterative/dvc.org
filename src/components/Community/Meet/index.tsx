@@ -147,7 +147,7 @@ const Meet: React.FC<{ theme: ICommunitySectionTheme }> = ({ theme }) => {
               <div className={styles.stats}>
                 <div className={styles.statLine}>
                   <div className={styles.statValue}>{data.stats.users}</div>
-                  <div className={styles.statLabel}>registered developers</div>
+                  <div className={styles.statLabel}>community members</div>
                 </div>
                 <div className={styles.statLine}>
                   <div className={styles.statValue}>{data.stats.messages}</div>

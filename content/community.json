@@ -59,7 +59,7 @@
       "title": "Building an ML Platform from Scratch: Live Coding Session",
       "author": "Alon Gubkin",
       "date": "2021-06-11",
-      "pictureUrl": "/img/community/ugc/marcel.jpg"
+      "pictureUrl": "/img/community/ugc/alon-gubkin.png"
     },
     {
       "url": "https://medium.com/@7genblogger/reflinks-vs-symlinks-vs-hard-links-and-how-they-can-help-machine-learning-projects-b77b89cdbab1",
@@ -71,12 +71,12 @@
   ],
   "events": [
     {
-      "url": "https://www.meetup.com/DVC-Community-Virtual-Meetups/events/278729121/",
-      "title": "DVC June Office Hours Meetup",
-      "description": "At this month's Meetup, Community member and Contribuotor, Sami Jawhar, will show experiment use cases with DVC",
+      "url": "https://www.meetup.com/DVC-Community-Virtual-Meetups/events/279153207/",
+      "title": "DVC Learn - Getting Started with Data Version Control",
+      "description": "New to DVC or kicking the tires?  Bring your questions; this Meetup is for you!",
       "city": "Virtual",
-      "date": "2021-06-24",
-      "pictureUrl": "/img/community/events/office-hours-meetup.png"
+      "date": "2021-07-14",
+      "pictureUrl": "/img/community/events/dvc_learn.png"
     },
     {
       "url": "https://www.meetup.com/DVC-Community-Virtual-Meetups/events/279024694/?isFirstPublish=true",
@@ -85,10 +85,18 @@
       "city": "Virtual",
       "date": "2021-07-28",
       "pictureUrl": "/img/community/events/office-hours-meetup.png"
+    },
+    {
+      "url": "https://www.igniteinnovationfl.com/",
+      "title": "Ignite Innovation Developer Conference",
+      "description": "Milecia McGregor will present on Using Reproducible Experiments To Create Better Machine Learning Models",
+      "city": "Virtual",
+      "date": "2021-08-06",
+      "pictureUrl": "/img/community/events/ignite-innovation.png"
     }
   ],
   "stats": {
     "users": "5500+",
-    "messages": "13K+"
+    "messages": "1800+"
   }
 }
