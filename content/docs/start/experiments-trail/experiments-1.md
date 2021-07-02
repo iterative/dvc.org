@@ -14,13 +14,18 @@ once they're no longer needed.
 Previously, we learned how to tune [ML pipelines](/doc/start/data-pipelines) and
 [compare the changes](/doc/start/metrics-parameters-plots). Let's further
 increase the number of features in the `featurize` stage to see how it compares.
+
+In this section, we will explore the basic features of DVC experiment
+management with `[get-started-experiments]` project. 
+
+get-started-experiments: https://github.com/iterative/get-started-experiments
+
 <details>
 ## Installing and Configuring the Project
 
-These commands are run in the
-[`get-started-experiments`](https://github.com/iterative/get-started-experiments)
-project. You can run the commands in this document after cloning the repository
-and installing the requirements.
+These commands are run in the `[get-started-experiments]` project. You can run
+the commands in this document after cloning the repository and installing the
+requirements.
 
 ### Clone the project and create venv
 
@@ -30,45 +35,69 @@ Please clone the project and create a virtual environment.
 > the rest of your system. This prevents version conflicts.
 
 ```dvc
-$ git clone https://github.com/iterative/get-started-experiments -b git-init
+$ git clone https://github.com/iterative/get-started-experiments -b source-code
 $ cd get-started-experiments
 $ virtualenv .venv
 $ . .venv/bin/activate
 $ python -m pip install -r requirements.txt
 ```
 
-### Create the pipeline
+### Get the data set
 
-DVC tracks the dependencies across project elements with pipelines. Experiments
-also need a pipeline to run.  
-
-We create a two stage pipeline to expand the dataset from a `tar.gz` file
-to a directory and specify the training command to depend on dataset and a
-parameter, and produce a metrics file.
+The repository you cloned doesn't contain the dataset. In order to get
+`fashion-mnist.tar.gz` from the `dataset-registry`, we use `dvc get` to
+download the missing data files.  `dvc get` is similar to `wget` but works with
+Git+DVC repositories to download binary files.
 
 ```dvc
-$ dvc stage add -n expand \
-                -d data/fashion-mnist.tar.gz \
-                -o data/images \
-                tar xvzf data/fashion-mnist.tar.gz
+$ dvc get https://github.com/iterative/dataset-registry \
+          fashion-mnist/images.tar.gz -o data/images.tar.gz
+```
+
+Then we extract this file that contains labeled images. 
+
+```dvc
+$ tar -xvzf data/images.tar.gz --directory data/
+``` 
+
+### Specifying the experiment
+
+We first initialize DVC inside the project to create an experiment.
+
+```dvc
+$ dvc init
+```
+
+DVC experiments are run by specifying their commands, outputs, parameters and
+dependencies. We add an experiment command by `dvc stage add`. 
+
+
+```dvc
 $ dvc stage add -n train \
-                -p conv_units \
+                -p model.conv_units \
+                -p train.conv_units \
                 -d data/images \
                 -m metrics.json \
                 python3 train.py 
 ```
 
-### Get the data set
+The command tells DVC to create an experiment named `train`, with two
+parameters and a data dependency to `data/images`. The command produces
+`metrics.json` as a special type of output. 
 
-The repository you cloned doesn't contain the dataset. DVC tracks the datafiles
-separately from the text files.  In order to get `fashion-mnist.tar.gz` from
-the `dataset-registry`, we ask DVC to pull the missing data files. 
+DVC creates `dvc.yaml` file and modifies `.gitignore` for Git to ignore certain
+artifacts. 
 
 ```dvc
-$ dvc pull
+$ git add dvc.yaml .gitignore
+$ git commit -m "added data and the experiment" 
 ```
 
-</details> ## Running experiments ### Running with default parameters
+</details>
+
+## Running experiments 
+
+### Running with default parameters
 
 The purpose of `dvc exp` commands is to run the pipeline for ephemeral
 experiments. By _ephemeral_ we mean the experiments can be run without
