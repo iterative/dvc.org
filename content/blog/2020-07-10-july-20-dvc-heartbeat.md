@@ -1,5 +1,5 @@
 ---
-title: July '20 Heartbeat
+title: July ’20 Heartbeat
 date: 2020-07-10
 description: |
   Catch up on new DVC releases, talks, and projects in our

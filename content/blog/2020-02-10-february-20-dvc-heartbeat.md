@@ -1,5 +1,5 @@
 ---
-title: February '20 DVC❤️Heartbeat
+title: February ’20 DVC❤️Heartbeat
 date: 2020-02-10
 description: |
   DVC talks around the world,
