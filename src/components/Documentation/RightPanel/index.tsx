@@ -1,6 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, createRef } from 'react'
 import cn from 'classnames'
 import throttle from 'lodash/throttle'
+import debounce from 'lodash/debounce'
 
 import { IHeading } from '../'
 import Link from '../../Link'
@@ -34,6 +35,31 @@ const RightPanel: React.FC<IRightPanelProps> = ({
   const [currentHeadingSlug, setCurrentHeadingSlug] = useState<string | null>(
     null
   )
+  const generateHeadingId = (slug: string): string => `links-${slug}`
+  const tableOfContentsRefs: {
+    [key: string]: React.RefObject<HTMLDivElement>
+  } = headings
+    .map(({ slug }) => ({
+      id: generateHeadingId(slug),
+      ref: createRef()
+    }))
+    .reduce((acc, curr) => {
+      return {
+        ...acc,
+        [curr.id]: curr.ref
+      }
+    }, {})
+
+  const scrollSidebar = (): void => {
+    if (currentHeadingSlug && tableOfContentsRefs) {
+      const target =
+        tableOfContentsRefs[generateHeadingId(currentHeadingSlug)].current
+      if (target) {
+        ;(target.parentNode as HTMLDivElement).scrollTop =
+          target.offsetTop - (target.parentNode as HTMLDivElement).offsetTop
+      }
+    }
+  }
   const updateCurrentHeader = (): void => {
     const currentScroll = getScrollPosition()
     const coordinateKeys = Object.keys(headingsOffsets)
@@ -78,7 +104,10 @@ const RightPanel: React.FC<IRightPanelProps> = ({
   }
 
   useEffect(() => {
-    const throttledSetCurrentHeader = throttle(updateCurrentHeader, 100)
+    const throttledSetCurrentHeader = (): void => {
+      throttle(updateCurrentHeader, 100)()
+      debounce(scrollSidebar, 100)()
+    }
 
     document.addEventListener('scroll', throttledSetCurrentHeader)
     window.addEventListener('resize', updateHeadingsPosition)
@@ -107,7 +136,7 @@ const RightPanel: React.FC<IRightPanelProps> = ({
     if (currentHeadingSlug) {
       setIsScrollToCurrentHeadingHappened(true)
       const currentHeadingSlugElem = document.getElementById(
-        `link-${currentHeadingSlug}`
+        generateHeadingId(currentHeadingSlug)
       )
       const contentBlockElem = contentBlockRef.current
       if (currentHeadingSlugElem && contentBlockElem) {
@@ -133,7 +162,11 @@ const RightPanel: React.FC<IRightPanelProps> = ({
           </div>
           <div className={styles.contentBlock} ref={contentBlockRef}>
             {headings.map(({ slug, text }) => (
-              <div id={`link-${slug}`} key={`link-${slug}`}>
+              <div
+                id={generateHeadingId(slug)}
+                key={generateHeadingId(slug)}
+                ref={tableOfContentsRefs[generateHeadingId(slug)]}
+              >
                 <Link
                   className={cn(
                     styles.headingLink,
