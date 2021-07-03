@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, createRef } from 'react'
 import cn from 'classnames'
 import throttle from 'lodash/throttle'
+import debounce from 'lodash/debounce'
 
 import { IHeading } from '../'
 import Link from '../../Link'
@@ -51,10 +52,11 @@ const RightPanel: React.FC<IRightPanelProps> = ({
       }
     }, {})
 
-  const scrollSidebar = (newCurrentHeadingSlug: string): void => {
+  const scrollSidebar = (newCurrentHeadingSlug?: string): void => {
     if (currentHeadingSlug && tableOfContentsRefs) {
-      const target =
-        tableOfContentsRefs[generateHeadingId(newCurrentHeadingSlug)].current
+      const target = newCurrentHeadingSlug
+        ? tableOfContentsRefs[generateHeadingId(newCurrentHeadingSlug)].current
+        : tableOfContentsRefs[generateHeadingId(currentHeadingSlug)].current
       if (target) {
         ;(target.parentNode as HTMLDivElement).scrollTop =
           target.offsetTop - (target.parentNode as HTMLDivElement).offsetTop
@@ -63,7 +65,6 @@ const RightPanel: React.FC<IRightPanelProps> = ({
   }
 
   const updateCurrentHeader = (): void => {
-    console.log('...updateCurrentHeader')
     const currentScroll = getScrollPosition()
     const coordinateKeys = Object.keys(headingsOffsets)
 
@@ -80,11 +81,7 @@ const RightPanel: React.FC<IRightPanelProps> = ({
       ? headingsOffsets[filteredKeys[filteredKeys.length - 1]]
       : null
 
-    console.log('...newCurrentHeadingSlug: ', newCurrentHeadingSlug)
     setCurrentHeadingSlug(newCurrentHeadingSlug)
-    if (newCurrentHeadingSlug) {
-      scrollSidebar(newCurrentHeadingSlug)
-    }
   }
 
   const updateHeadingsPosition = (): void => {
@@ -111,7 +108,10 @@ const RightPanel: React.FC<IRightPanelProps> = ({
   }
 
   useEffect(() => {
-    const throttledSetCurrentHeader = throttle(updateCurrentHeader, 100)
+    const throttledSetCurrentHeader = (): void => {
+      throttle(updateCurrentHeader, 100)()
+      debounce(scrollSidebar, 100)()
+    }
 
     document.addEventListener('scroll', throttledSetCurrentHeader)
     window.addEventListener('resize', updateHeadingsPosition)
@@ -123,18 +123,6 @@ const RightPanel: React.FC<IRightPanelProps> = ({
   }, [updateCurrentHeader])
   useEffect(initHeadingsPosition, [headings])
   useEffect(updateCurrentHeader, [headingsOffsets, documentHeight])
-
-  // useEffect(() => {
-  //   if (currentHeadingSlug && tableOfContentsRefs) {
-  //     console.log(`scroll into view! ${generateHeadingId(currentHeadingSlug)}`)
-  //     console.log(
-  //       tableOfContentsRefs[generateHeadingId(currentHeadingSlug)].current
-  //     )
-  //     tableOfContentsRefs[
-  //       generateHeadingId(currentHeadingSlug)
-  //     ].current?.scrollIntoView()
-  //   }
-  // }, [currentHeadingSlug])
 
   const contentBlockRef = useRef<HTMLDivElement>(null)
   const [
@@ -167,6 +155,7 @@ const RightPanel: React.FC<IRightPanelProps> = ({
       }
     }
   })
+  console.log(currentHeadingSlug)
   return (
     <div className={styles.container}>
       {headings.length > 0 && (
