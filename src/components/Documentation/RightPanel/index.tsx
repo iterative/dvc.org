@@ -52,11 +52,10 @@ const RightPanel: React.FC<IRightPanelProps> = ({
       }
     }, {})
 
-  const scrollSidebar = (newCurrentHeadingSlug?: string): void => {
+  const scrollSidebar = (): void => {
     if (currentHeadingSlug && tableOfContentsRefs) {
-      const target = newCurrentHeadingSlug
-        ? tableOfContentsRefs[generateHeadingId(newCurrentHeadingSlug)].current
-        : tableOfContentsRefs[generateHeadingId(currentHeadingSlug)].current
+      const target =
+        tableOfContentsRefs[generateHeadingId(currentHeadingSlug)].current
       if (target) {
         ;(target.parentNode as HTMLDivElement).scrollTop =
           target.offsetTop - (target.parentNode as HTMLDivElement).offsetTop
@@ -155,7 +154,6 @@ const RightPanel: React.FC<IRightPanelProps> = ({
       }
     }
   })
-  console.log(currentHeadingSlug)
   return (
     <div className={styles.container}>
       {headings.length > 0 && (
