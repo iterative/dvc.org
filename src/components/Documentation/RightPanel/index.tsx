@@ -53,17 +53,17 @@ const RightPanel: React.FC<IRightPanelProps> = ({
 
   const scrollSidebar = (newCurrentHeadingSlug: string): void => {
     if (currentHeadingSlug && tableOfContentsRefs) {
-      tableOfContentsRefs[
-        generateHeadingId(newCurrentHeadingSlug)
-      ].current?.scrollIntoView({
-        behavior: 'smooth',
-        block: 'nearest',
-        inline: 'start'
-      })
+      const target =
+        tableOfContentsRefs[generateHeadingId(newCurrentHeadingSlug)].current
+      if (target) {
+        ;(target.parentNode as HTMLDivElement).scrollTop =
+          target.offsetTop - (target.parentNode as HTMLDivElement).offsetTop
+      }
     }
   }
 
   const updateCurrentHeader = (): void => {
+    console.log('...updateCurrentHeader')
     const currentScroll = getScrollPosition()
     const coordinateKeys = Object.keys(headingsOffsets)
 
@@ -80,6 +80,7 @@ const RightPanel: React.FC<IRightPanelProps> = ({
       ? headingsOffsets[filteredKeys[filteredKeys.length - 1]]
       : null
 
+    console.log('...newCurrentHeadingSlug: ', newCurrentHeadingSlug)
     setCurrentHeadingSlug(newCurrentHeadingSlug)
     if (newCurrentHeadingSlug) {
       scrollSidebar(newCurrentHeadingSlug)
