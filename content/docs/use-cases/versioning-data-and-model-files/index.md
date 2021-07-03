@@ -63,7 +63,7 @@ Benefits of our approach include:
   transferring large files.
 
 - **Collaboration**: Easily distribute your project development and share its
-  data [internally](/doc/use-cases/shared-development-server) and
+  data [internally](/doc/user-guide/how-to/share-a-dvc-cache) and
   [remotely](/doc/use-cases/sharing-data-and-model-files), or
   [reuse](/doc/start/data-and-model-access) it in other places.
 

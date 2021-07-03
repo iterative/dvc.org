@@ -1,5 +1,5 @@
 ---
-title: August '20 Heartbeat
+title: August ’20 Heartbeat
 date: 2020-08-10
 description: |
   Catch our monthly updates- featuring the CML release, DVC meetup recap, 

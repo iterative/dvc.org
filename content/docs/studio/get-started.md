@@ -1,73 +1,69 @@
 # Get Started with DVC Studio
 
-Here, we will walk you through a tutorial to use DVC Studio for collaboration on
-your ML projects. You will need access to a GitHub, GitLab or Bitbucket account
-which has access to the Git repositories you want to connect. DVC Studio creates
-[views](#dvc-studio-views-page) from repositories when you connect to them.
-
-The following video provides you a quick overview of DVC Studio.
+The following video provides you a quick overview of how to use DVC Studio.
 
 https://www.youtube.com/watch?v=hKf4twg832g
 
-## Preparing your repositories
+1. Sign in to your [DVC Studio](https://studio.iterative.ai/) dashboard using
+   GitHub, GitLab or Bitbucket.
 
-DVC Studio identifies datasets, metrics and hyperparameters in your Git
-repositories. These values can either be in DVC repositories or you can add
-custom files with the required values. Read more about the different ways in
-which you can prepare your Git repository for use with DVC Studio
-[here](/doc/studio/view-settings#non-dvc-repositories).
+   The DVC Studio views dashboard opens.
 
-## DVC Studio Views page
+2. If this is the first time you are signing in to DVC Studio, you will see that
+   there already exists a `Demo` view that connects to an example DVC project.
+   Use this view to explore the features that DVC Studio has to offer.
 
-By identifying the datasets, metrics and hyperparameters in your Git
-repositories, DVC Studio creates a **view**, which is an interactive, tabular
-representation of all your ML experiments. In this view, you will not only see
-your complete experiment history, you can also generate plots, compare
-experiments, and run new experiments.
-
-In your browser, open <https://studio.iterative.ai>. Sign in with your Github,
-GitLab, or Bitbucket account.
-
-![](https://static.iterative.ai/img/studio/login_home_v2.png) _When you first
+![](https://static.iterative.ai/img/studio/login_home.png) _When you first
 login, an example view is already created for you to explore, and you can add
 more views._
 
-When you first login, you will find that there already exists a `Demo` view
-connecting to an example DVC project. Use this view to explore the features that
-DVC Studio has to offer.
+3. Each view on this dashboard displays the metrics that DVC Studio identified
+   in your Git repository. In the figure above, you can see that `avg_prec` and
+   `roc_auc` metrics are displayed.
 
-DVC Studio automatically identifies datasets, metrics and hyperparameters in
-your ML experiments. Each view on the dashboard displays the metrics. In the
-figure above, you can see that `avg_prec` and `roc_auc` metrics are displayed.
+4. To create a new view, click on `Add a View`. All the organizations that you
+   have access to will be listed.
 
-## Components of a view
+> To create views from your GitHub repositories, you must install the DVC Studio
+> GitHub app. Refer to the section on
+> [GitHub app installation](/doc/studio/user-guide/install-github-app) for more
+> details.
 
-You can dive deep into all the experiments committed to the repo. For this, open
-the view by clicking the view name (in this case, `example-get-started`).
+5. Open the organization whose repository you want to connect to. You can also
+   use the search bar to directly look for a repository.
 
-A table will be generated as shown below. This includes metrics, hyperparameters
-and information about the datasets. All these values are flattened and neatly
-presented for you to evaluate and compare the experiments.
+   ![](https://static.iterative.ai/img/studio/select_repo.png)
 
-![](https://static.iterative.ai/img/studio/view_components_v2.png)
+6. Specify additional connection settings if required.
 
-This tabular display has the following components:
+   ![](https://static.iterative.ai/img/studio/view_settings.png)
 
-- The branches in your Git repository.
-- All commits in each branch. Each commit, corresponding to a single row in the
-  table, represents an experiment.
-- Values of all the metrics, files and parameters in the given commits;
-  corresponding to the table columns.
-- Various buttons for performing actions:
-  - **Filters:** Filter commits
-  - **Columns:** Select columns to display
-  - **Show plots:** Show plots for the selected commits
-  - **Compare:** Compare different experiments
-  - **Run:** Run experiments by selecting any one commit (Refer
-    [here](/doc/studio/run-experiments) for how to run experiments)
-  - **Trends:** Generate trend charts to show metric evolution over time
-  - **Delta mode:** Toggle between absolute values and difference from the first
-    row
+> View settings must be configured if you are connecting to a non-DVC
+> repository, if your metrics are in some custom files, if you are connecting to
+> a monorepo, or if your metrics are in cloud or other remote storage. However,
+> you can configure the view settings after the view has been created. So, you
+> can `Skip and Continue` now. Refer to the
+> [View Settings](/doc/studio/user-guide/views/view-settings) section for more
+> details.
 
-You can connect to additional repositories and add more views as needed. You'll
-find out how to do this in the next section.
+You should now see that a view has been added in your dashboard.
+
+7. If your project requires any of the additional settings, then remember to
+   configure them by opening the
+   [view settings](/doc/studio/user-guide/views/view-settings). Otherwise, your
+   view may not work as expected. To go to view settings, click on the
+   ![](https://static.iterative.ai/img/studio/view_open_settings_icon.png) icon
+   in the view. In the menu that opens up, click on `Settings`.
+
+![](https://static.iterative.ai/img/studio/view_open_settings.png)
+
+8. You can also
+   [create multiple views from a single Git repository](/doc/studio/user-guide/views/create-view#create-multiple-views-from-a-single-git-repository).
+
+9. After creating a view, you can use it to
+   [explore the ML experiments](/doc/studio/user-guide/explore-experiments) as
+   well as
+   [submit new experiments from DVC Studio](/doc/studio/user-guide/run-experiments).
+
+10. You can also make the view public by
+    [sharing it on the web](/doc/studio/user-guide/views/share-view).

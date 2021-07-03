@@ -2,12 +2,13 @@
 
 > ⚠️ This is an advanced feature for very specific situations and not
 > recommended except if there's absolutely no other alternative. In most cases
-> alternatives like the
-> [to-cache](/doc/command-reference/add#example-transfer-to-the-cache) or
-> [to-remote](/doc/command-reference/add#example-transfer-to-remote-storage)
-> strategies of `dvc add` and `dvc import-url` are more convenient. **Note**
-> that external outputs are not pushed or pulled from/to
-> [remote storage](/doc/command-reference/remote).
+> alternatives like the [to-cache] or [to-remote] strategies of `dvc add` and
+> `dvc import-url` are more convenient. **Note** that external outputs are not
+> pushed or pulled from/to [remote storage].
+
+[to-cache]: /doc/command-reference/add#example-transfer-to-the-cache
+[to-remote]: /doc/command-reference/add#example-transfer-to-remote-storage
+[remote storage]: /doc/command-reference/remote
 
 There are cases when data is so large, or its processing is organized in such a
 way, that its impossible to handle it in the local machine disk. For example
@@ -39,16 +40,17 @@ their remote URLs or external paths to `dvc add`, or put them in `dvc.yaml`
 > external cache, because it may cause data collisions: the hash of an external
 > output could collide with that of a local file with different content.
 
-> Note that [remote storage](/doc/command-reference/remote) is a different
-> feature.
+> Note that [remote storage] is a different feature.
 
 ## Setting up an external cache
 
 DVC requires that the project's <abbr>cache</abbr> is configured in the same
 external location as the data that will be tracked (external outputs). This
-avoids transferring files to the local environment and enables
-[file linking](/doc/user-guide/large-dataset-optimization) within the external
-storage.
+avoids transferring files to the local environment and enables [file links]
+within the external storage.
+
+[file links]:
+  /doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache
 
 As an example, let's create a directory external to the workspace and set it up
 as cache:
@@ -65,7 +67,7 @@ location, e.g. `s3://mybucket/cache` or `ssh://user@example.com/cache` (see the
 examples below).
 
 > ⚠️ An external cache could be
-> [shared](/doc/use-cases/shared-development-server) among copies of a DVC
+> [shared](/doc/user-guide/how-to/share-a-dvc-cache) among copies of a DVC
 > project. Please **do not** use external outputs in that scenario, as
 > `dvc checkout` in any project would overwrite the working data for all
 > projects.
@@ -183,9 +185,8 @@ custom cache location for local paths outside of your project.
 
 > Except for external data on different storage devices or partitions mounted on
 > the same file system (e.g. `/mnt/raid/data`). In that case please setup an
-> external cache in that same drive to enable
-> [file links](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
-> and avoid copying data.
+> external cache in that same drive to enable [file links] and avoid copying
+> data.
 
 ```dvc
 $ dvc add --external /home/shared/existing-data

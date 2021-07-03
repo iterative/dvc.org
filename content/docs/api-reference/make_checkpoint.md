@@ -110,8 +110,8 @@ Experiment results have been applied to your workspace.
 > ⚠️ it's important to handle interruptions or any other errors in your code for
 > DVC checkpoints to behave as expected.
 
-In this example we killed the process (with Ctrl + C) after 3 checkpoints (at 0,
-100, and 200 `i_`). The <abbr>cache</abbr> will contain those 3 versions of
+In this example we killed the process (with `[Ctrl] C`) after 3 checkpoints (at
+0, 100, and 200 `i_`). The <abbr>cache</abbr> will contain those 3 versions of
 `int.txt`.
 
 ```dvc

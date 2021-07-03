@@ -51,5 +51,7 @@
   "^/doc/command-reference/lock$                                                          /doc/command-reference/freeze",
   "^/doc/command-reference/unlock$                                                        /doc/command-reference/unfreeze",
 
+  "^/doc/studio/view-settings$                                                            /doc/studio/user-guide/views/view-settings",
+
   "^/(.+)/$                                                                               /$1"
 ]

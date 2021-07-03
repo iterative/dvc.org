@@ -9,7 +9,7 @@ import { logEvent } from '../../utils/front/ga'
 
 import styles from './styles.module.css'
 
-const VERSION = `2.4.1`
+const VERSION = `2.4.3`
 
 enum OS {
   UNKNOWN = '...',
@@ -37,12 +37,12 @@ const itemsByOs = {
   },
   [OS.LINUX]: {
     title: 'Linux Deb',
-    url: `https://github.com/iterative/dvc/releases/download/${VERSION}/dvc_${VERSION}_amd64.deb`,
+    url: `/deb/pool/stable/d/dv/dvc_${VERSION}_amd64.deb`,
     download: true
   },
   [OS.LINUX_RPM]: {
     title: 'Linux RPM',
-    url: `https://github.com/iterative/dvc/releases/download/${VERSION}/dvc-${VERSION}-1.x86_64.rpm`,
+    url: `/rpm/dvc-${VERSION}-1.x86_64.rpm`,
     download: true
   }
 }
