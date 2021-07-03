@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, createRef } from 'react'
 import cn from 'classnames'
 import throttle from 'lodash/throttle'
 
@@ -34,6 +34,35 @@ const RightPanel: React.FC<IRightPanelProps> = ({
   const [currentHeadingSlug, setCurrentHeadingSlug] = useState<string | null>(
     null
   )
+
+  const generateHeadingId = (slug: string): string => `links-${slug}`
+
+  const tableOfContentsRefs: {
+    [key: string]: React.RefObject<HTMLDivElement>
+  } = headings
+    .map(({ slug }) => ({
+      id: generateHeadingId(slug),
+      ref: createRef()
+    }))
+    .reduce((acc, curr) => {
+      return {
+        ...acc,
+        [curr.id]: curr.ref
+      }
+    }, {})
+
+  const scrollSidebar = (newCurrentHeadingSlug: string): void => {
+    if (currentHeadingSlug && tableOfContentsRefs) {
+      tableOfContentsRefs[
+        generateHeadingId(newCurrentHeadingSlug)
+      ].current?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'nearest',
+        inline: 'start'
+      })
+    }
+  }
+
   const updateCurrentHeader = (): void => {
     const currentScroll = getScrollPosition()
     const coordinateKeys = Object.keys(headingsOffsets)
@@ -52,6 +81,9 @@ const RightPanel: React.FC<IRightPanelProps> = ({
       : null
 
     setCurrentHeadingSlug(newCurrentHeadingSlug)
+    if (newCurrentHeadingSlug) {
+      scrollSidebar(newCurrentHeadingSlug)
+    }
   }
 
   const updateHeadingsPosition = (): void => {
@@ -91,6 +123,18 @@ const RightPanel: React.FC<IRightPanelProps> = ({
   useEffect(initHeadingsPosition, [headings])
   useEffect(updateCurrentHeader, [headingsOffsets, documentHeight])
 
+  // useEffect(() => {
+  //   if (currentHeadingSlug && tableOfContentsRefs) {
+  //     console.log(`scroll into view! ${generateHeadingId(currentHeadingSlug)}`)
+  //     console.log(
+  //       tableOfContentsRefs[generateHeadingId(currentHeadingSlug)].current
+  //     )
+  //     tableOfContentsRefs[
+  //       generateHeadingId(currentHeadingSlug)
+  //     ].current?.scrollIntoView()
+  //   }
+  // }, [currentHeadingSlug])
+
   const contentBlockRef = useRef<HTMLDivElement>(null)
   const [
     isScrollToCurrentHeadingHappened,
@@ -107,7 +151,7 @@ const RightPanel: React.FC<IRightPanelProps> = ({
     if (currentHeadingSlug) {
       setIsScrollToCurrentHeadingHappened(true)
       const currentHeadingSlugElem = document.getElementById(
-        `link-${currentHeadingSlug}`
+        generateHeadingId(currentHeadingSlug)
       )
       const contentBlockElem = contentBlockRef.current
       if (currentHeadingSlugElem && contentBlockElem) {
@@ -122,7 +166,6 @@ const RightPanel: React.FC<IRightPanelProps> = ({
       }
     }
   })
-
   return (
     <div className={styles.container}>
       {headings.length > 0 && (
@@ -133,7 +176,11 @@ const RightPanel: React.FC<IRightPanelProps> = ({
           </div>
           <div className={styles.contentBlock} ref={contentBlockRef}>
             {headings.map(({ slug, text }) => (
-              <div id={`link-${slug}`} key={`link-${slug}`}>
+              <div
+                id={generateHeadingId(slug)}
+                key={generateHeadingId(slug)}
+                ref={tableOfContentsRefs[generateHeadingId(slug)]}
+              >
                 <Link
                   className={cn(
                     styles.headingLink,
