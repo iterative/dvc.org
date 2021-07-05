@@ -68,6 +68,21 @@ We first initialize DVC inside the project to create an experiment.
 $ dvc init
 ```
 
+Now, we can add the dataset to the project:
+
+```dvc
+$ dvc add data/images
+```
+
+This creates a `data/images.dvc` file that contains all the relevant metadata of
+the directory. You can add and commit the corresponding `.dvc` file and changes
+in `.gitignore` that hides the `data/images/` directory from Git.
+
+```dvc
+$ git add data/.gitignore data/images.dvc
+$ git commit -m "Dataset added"
+```
+
 DVC experiments are run by specifying their commands, outputs, parameters and
 dependencies. We add an experiment command by `dvc stage add`.
 
@@ -92,22 +107,29 @@ $ git add dvc.yaml .gitignore
 $ git commit -m "added data and the experiment"
 ```
 
+DVC is ready to run the experiments now!
+
 </details>
 
-## Running experiments
-
-### Running with default parameters
+## Running the experiment with default parameters
 
 The purpose of `dvc exp` commands is to run the pipeline for ephemeral
 experiments. By _ephemeral_ we mean the experiments can be run without
 committing parameter and dependency changes to Git. Instead the artifacts
 produced for each experiment is tracked by DVC and persisted on demand.
 
-Running the pipeline with default values requires only the command:
+Running the experiment with default hyperparameter values requires only the
+command:
 
 ```dvc
 $ dvc exp run
-TK
+...
+Reproduced experiment(s): exp-7683f
+Experiment results have been applied to your workspace.
+
+To promote an experiment to a Git branch run:
+
+        dvc exp branch <exp>
 ```
 
 It runs the pipeline starting from the basic dependencies and produces
@@ -135,7 +157,7 @@ features.
 
 </details>
 
-### Running by setting parameters
+## Running the experiment by setting parameters
 
 Now let's do some more experimentation.
 
@@ -144,22 +166,31 @@ the files manually. We use this feature to set the convolutional units in
 `train.py`.
 
 ```dvc
-$ dvc exp run --set-param conv_units=24
-TK
-```
+$ dvc exp run --set-param model.conv_units=24
+...
+Reproduced experiment(s): exp-6c06d
+Experiment results have been applied to your workspace.
 
-Note that the pipeline didn't run the earliest stage. Only the stages that
-depend on the updated parameter and subsequent stages are run.
+To promote an experiment to a Git branch run:
+
+        dvc exp branch <exp>
+```
 
 When you run `dvc exp run` with `--set-param`, it updates the parameter file. We
 can see the effect of it by looking at the diff.
 
 ```dvc
 $ git diff params.yaml
-TK
 ```
 
-### Run multiple experiments in parallel
+```git
+-model:
+-  conv_units: 16
++model:
++  conv_units: 24
+```
+
+## Run multiple experiments in parallel
 
 Instead of running the experiments one-by-one, we can define them first to run
 them in a batch. This is especially handy when you have long running
@@ -168,19 +199,22 @@ experiments.
 We add experiments to the queue using the `--queue` option of `dvc exp run`. We
 also use `-S` (`--set-param`) to set a value for the parameter.
 
-```dvc
-$ dvc exp run --queue -S conv_units=32
-$ dvc exp run --queue -S conv_units=64
-$ dvc exp run --queue -S conv_units=128
-$ dvc exp run --queue -S conv_units=256
-```
+````dvc
+$ dvc exp run --queue -S model.conv_units=32
+Queued experiment '6518f17' for future execution.
+$ dvc exp run --queue -S model.conv_units=64
+Queued experiment '30eb9b2' for future execution.
+$ dvc exp run --queue -S model.conv_units=128
+Queued experiment 'ac66940' for future execution.
+$ dvc exp run --queue -S model.conv_units=256
+Queued experiment '8bb6049' for future execution.```
 
 Next, run all (`--run-all`) queued experiments in parallel (using `--jobs`):
 
 ```dvc
 $ dvc exp run --run-all --jobs 2
 TK
-```
+````
 
 ## Comparing experiments
 
@@ -227,12 +261,15 @@ $ git add .
 $ git commit -m "Successful experiment"
 ```
 
-## Go Further
+It may also be desirable to commit a particular experiment to a Git branch
+directly, without bringing to the workspace.
 
-You can continue to experiment with
-[the project](https://github.com/iterative/get-started-experiments). Please see
-the `README.md` file of the project for these. Don't forget to
-[notify us](https://dvc.org/chat) if you happen to find good parameters.
+```dvc
+$ dvc exp branch exp-
+TK
+```
+
+## Go Further
 
 There are many other features of `dvc exp`, like cleaning up the unused
 experiments, sharing them without committing into Git or getting differences
