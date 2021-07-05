@@ -45,7 +45,8 @@ $ python -m pip install -r requirements.txt
 
 The repository you cloned doesn't contain the dataset. In order to get
 `fashion-mnist.tar.gz` from the `dataset-registry`, we use `dvc pull` to update
-the missing data files. `dvc pull` is used in DVC repositories to update the missing data dependencies. 
+the missing data files. `dvc pull` is used in DVC repositories to update the
+missing data dependencies.
 
 ```dvc
 $ dvc pull
@@ -194,7 +195,12 @@ $ git commit -m "Successful experiment"
 
 ### Preparing an experiments pipeline
 
-At the beginning of this document, we assumed that there is already a configured DVC project to simplify the introduction. DVC experiments are a feature added in DVC 2.0 and requires a DVC pipeline is defined in the project. In this section we'll show how to configure a project to run DVC experiments. You can get detailed information about these commands in other sections of DVC documentation.
+At the beginning of this document, we assumed that there is already a configured
+DVC project to simplify the introduction. DVC experiments are a feature added in
+DVC 2.0 and requires a DVC pipeline is defined in the project. In this section
+we'll show how to configure a project to run DVC experiments. You can get
+detailed information about these commands in other sections of DVC
+documentation.
 
 If DVC is not initialized before in the project, you can do so by:
 
@@ -202,15 +208,17 @@ If DVC is not initialized before in the project, you can do so by:
 $ dvc init
 ```
 
-DVC also requires commands to be run and their dependencies to be defined as stages. We use `dvc stage add` to add a stage and set its dependencies. 
+DVC also requires commands to be run and their dependencies to be defined as
+stages. We use `dvc stage add` to add a stage and set its dependencies.
 
 ```dvc
 $ dvc stage add
 TK
 ```
 
-Note that the parameters (added with `-p`) are in the default parameters file `params.yaml` and used in the code as normal, by reading the file. DVC only tracks the changes and updates them with `--set-param`. 
-
+Note that the parameters (added with `-p`) are in the default parameters file
+`params.yaml` and used in the code as normal, by reading the file. DVC only
+tracks the changes and updates them with `--set-param`.
 
 ## Go Further
 
