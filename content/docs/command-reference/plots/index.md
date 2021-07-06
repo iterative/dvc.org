@@ -171,7 +171,7 @@ Internet access is not available.
 > DVC.
 
 You can create an HTML file with `<script>` references to local Vega libraries.
-Use `{plot_divs}` as a placeholder for DVC to inject the plot images. See
+Use `{plot_divs}` as a placeholder for DVC to inject the plot content. See
 [this example](/doc/command-reference/plots#example-for-the-html-template) for
 details.
 
@@ -280,6 +280,10 @@ file:///Users/usr/src/plots/classes.csv.html
 
 ### Example for the HTML template
 
+There may be times when you need to produce plots without Internet access, or
+want to customize the plots output to put some extra content, like banners or
+extra text. DVC allows to replace the HTML file that contains the final plots.
+
 Download the Vega libraries into the directory where you'll produce the
 `dvc plots`.
 
@@ -305,7 +309,7 @@ Create the following HTML file with your text editor:
 ```
 
 Note that this is a standard HTML file with only `{plot_divs}` as a placeholder
-for the generated plots. `<script>` tags in this file point to the local
+for DVC to inject plots. `<script>` tags in this file point to the local
 JavaScript libraries we downloaded above. Supposing this template was named
 `.dvc/page_template.html`, we can use it like this:
 
