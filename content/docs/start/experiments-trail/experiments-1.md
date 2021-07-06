@@ -114,7 +114,7 @@ DVC is ready to run the experiments now!
 
 ## Running the experiment with default parameters
 
-The purpose of `dvc exp` commands is to run the pipeline for ephemeral
+The purpose of `dvc exp` subcommands is to run the pipeline for ephemeral
 experiments. By _ephemeral_ we mean the experiments can be run without
 committing parameter and dependency changes to Git. Instead the artifacts
 produced for each experiment are tracked by DVC and persisted on demand.
@@ -141,7 +141,7 @@ It runs the pipeline starting from the basic dependencies and produces
 ### If you used `dvc repro` before
 
 Earlier versions of DVC uses `dvc repro` to run the pipeline. If you already
-have a DVC project, you may be used to `dvc repro`.
+have a DVC project, you may already be using `dvc repro`.
 
 In DVC 2.0 `dvc exp run` supersedes `dvc repro`. Both of these commands run the
 pipeline.
@@ -149,12 +149,12 @@ pipeline.
 We use `dvc repro` to run the pipeline as found in the <abbr>workspace</abbr>.
 All the parameters and dependencies are retrieved from the current workspace. It
 doesn't use any special objects to track the experiments. When you have large
-number of experiments that you don't want to commit into Git, it's better to use
-`dvc exp run`. It allows to change the parameters quickly, can track the history
-of artifacts and has facilities to compare these experiments easily.
+number of experiments that you don't want to commit all to Git, it's better to
+use `dvc exp run`. It allows to change the parameters quickly, can track the
+history of artifacts and has facilities to compare these experiments easily.
 
-`dvc repro` is still available to run the pipeline that don't need these extra
-features.
+`dvc repro` is still available to run the pipeline when these extra features are
+not needed.
 
 </details>
 
