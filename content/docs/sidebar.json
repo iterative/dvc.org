@@ -86,8 +86,8 @@
         "label": "Sharing Data and Model Files",
         "slug": "sharing-data-and-model-files"
       },
-      "data-registries",
-      "data-storage-layers"
+      "data-storage-layers",
+      "data-registries"
     ]
   },
   {
