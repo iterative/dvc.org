@@ -94,11 +94,9 @@ $ dvc stage add -n train \
                 python3 src/train.py
 ```
 
-The command tells DVC to create an experiment named `train`, with two parameters
-and a dependency to `data/images`. The command produces `metrics.json` as a
-special type of output. Basically it tells DVC that for any change in
-`data/images/`, `model.conv_units` or `train.epochs`, we run an experiment using
-`src/train.py` that produces a new `metrics.json` file.
+The command tells DVC to create an experiment named `train`, and that for any
+change in `data/images/`, `model.conv_units` or `train.epochs`, we run an
+experiment using `src/train.py` that produces a new `metrics.json` file.
 
 DVC creates `dvc.yaml` file and modifies `.gitignore` for Git to ignore certain
 artifacts.
@@ -193,14 +191,13 @@ $ git diff params.yaml
 
 ## Run multiple experiments in parallel
 
-Instead of running the experiments one-by-one, we can define them first to run
-them in a batch. This is especially handy when you have long running
-experiments.
+Instead of running the experiments one-by-one, we can define them to run in a
+batch. This is especially handy when you have long running experiments.
 
 We add experiments to the queue using the `--queue` option of `dvc exp run`. We
 also use `-S` (`--set-param`) to set a value for the parameter.
 
-````dvc
+```dvc
 $ dvc exp run --queue -S model.conv_units=32
 Queued experiment '6518f17' for future execution.
 $ dvc exp run --queue -S model.conv_units=64
@@ -215,15 +212,15 @@ Next, run all (`--run-all`) queued experiments in parallel (using `--jobs`):
 
 ```dvc
 $ dvc exp run --run-all --jobs 2
-````
+```
 
-It runs all the experiments with different processes.
+It runs all the experiments, with the specified number of processes in parallel.
 
 ## Comparing experiments
 
-The pipeline is run several times with different parameters. To compare all of
-these experiments, we use `dvc exp show`. This command presents the parameters
-and metrics produced in experiments in a nicely formatted table.
+The experiments are run several times with different parameters. We use
+`dvc exp show` to compare all of these experiments. This command presents the
+parameters and metrics produced in experiments in a nicely formatted table.
 
 ```dvc
 $ dvc exp show
@@ -231,14 +228,15 @@ $ dvc exp show
 
 ![](/img/start-dvc-exp-show-210704.png)
 
-By default it shows all the parameters and the metrics along with the timestamp.
-If you have large number of parameters, metrics or experiments, this may lead to
-a cluttered view. You can limit the table to specific metrics, or parameters, or
+By default it shows all the parameters and the metrics with the timestamp. If
+you have large number of parameters, metrics or experiments, this may lead to a
+cluttered view. You can limit the table to specific metrics, or parameters, or
 hide the timestamp column with `--include-metrics`, `--include-params`, or
 `--no-timestamp` options of the command, respectively.
 
 ```dvc
-$ dvc exp show --no-timestamp --include-params model.conv_units --include-metrics acc
+$ dvc exp show --no-timestamp \
+  --include-params model.conv_units --include-metrics acc
 ```
 
 ![](/img/start-dvc-exp-show-no-timestamp-210704.png)
@@ -278,7 +276,7 @@ To switch to the new branch run:
 
 You can then checkout and continue from working this branch as usual.
 
-## A note on experiment names
+## Note on experiment names
 
 When you create an experiment, DVC generates a hash value from the contents of
 the experiment. This is shown when you use `--queue` option, e.g.,
@@ -289,9 +287,9 @@ Queued experiment '6518f17' for future execution.
 ```
 
 After _running_ the experiment, DVC uses another auto-generated name to refer to
-the experiment. Typically these start with `exp-` by default, and can be set via
+the experiment. Typically these start with `exp-`, and can be set via
 `--name / -n` option of `dvc exp run`. So when you add an experiment by setting
-the name, you can see the hash value:
+the name, you can see the hash value as _queued experiment_:
 
 ```dvc
 $ dvc exp run --queue --name cnn-512 -S model.conv_units=512
