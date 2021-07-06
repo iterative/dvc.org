@@ -61,3 +61,25 @@ pick the VPC that manages that precise security group.
 We still don't provide a way of specifying VPCs other than the default one, but
 it's an issue that we're currently working on:
 https://github.com/iterative/terraform-provider-iterative/issues/107
+
+### [Q: Is it possible to rename and modify a file inside a directory tracked by DVC in one commit/change?](https://discord.com/channels/485586884165107732/485596304961962003/849589484517588992)
+
+If you modify the name and modify the file, you just need to run `dvc commit` or
+`dvc add` and then commit the change into Git.
+
+This was a good question for everyone. Thanks @snowpong!
+
+### [Q: How can I list the experiments I've queued?](https://discord.com/channels/485586884165107732/485596304961962003/856882434138570753)
+
+This is a great question to help us all understand something so thanks @adwivedi
+
+To look at your queued experiments, run `dvc exp show`. All of the queued
+experiments will be marked with an asterisk `*`.
+
+Queued experiments are not shown with the `dvc exp list` command at the moment.
+
+### [Q: ]()
+
+### [Q: ]()
+
+### [Q: ]()
