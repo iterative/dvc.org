@@ -58,22 +58,30 @@ Then we extract this file that contains labeled images.
 $ tar -xvzf data/images.tar.gz --directory data/
 ```
 
+The repository already contains the necessary configuration to run the
+experiments. If you would like to learn how to configure a project to run DVC
+experiments, please refer to the last section.
+
 </details>
 
-## Running experiments
-
-### Running with default parameters
+## Running the experiments with default parameters
 
 The purpose of `dvc exp` commands is to run the pipeline for ephemeral
 experiments. By _ephemeral_ we mean the experiments can be run without
 committing parameter and dependency changes to Git. Instead the artifacts
-produced for each experiment is tracked by DVC and persisted on demand.
+produced for each experiment are tracked by DVC and persisted on demand.
 
-Running the pipeline with default values requires only the command:
+Running the experiments with default values requires only the command:
 
 ```dvc
 $ dvc exp run
-TK
+...
+Reproduced experiment(s): exp-7683f
+Experiment results have been applied to your workspace.
+
+To promote an experiment to a Git branch run:
+
+        dvc exp branch <exp>
 ```
 
 It runs the pipeline starting from the basic dependencies and produces
@@ -101,7 +109,7 @@ features.
 
 </details>
 
-### Running by setting parameters
+## Running the experiments by setting parameters
 
 Now let's do some more experimentation.
 
@@ -111,18 +119,27 @@ the files manually. We use this feature to set the convolutional units in
 
 ```dvc
 $ dvc exp run --set-param conv_units=24
-TK
-```
+...
+Reproduced experiment(s): exp-6c06d
+Experiment results have been applied to your workspace.
 
-Note that the pipeline didn't run the earliest stage. Only the stages that
-depend on the updated parameter and subsequent stages are run.
+To promote an experiment to a Git branch run:
+
+        dvc exp branch <exp>
+```
 
 When you run `dvc exp run` with `--set-param`, it updates the parameter file. We
 can see the effect of it by looking at the diff.
 
 ```dvc
 $ git diff params.yaml
-TK
+```
+
+```git
+-model:
+-  conv_units: 16
++model:
++  conv_units: 24
 ```
 
 ### Run multiple experiments in parallel
@@ -135,10 +152,14 @@ We add experiments to the queue using the `--queue` option of `dvc exp run`. We
 also use `-S` (`--set-param`) to set a value for the parameter.
 
 ```dvc
-$ dvc exp run --queue -S conv_units=32
-$ dvc exp run --queue -S conv_units=64
-$ dvc exp run --queue -S conv_units=128
-$ dvc exp run --queue -S conv_units=256
+$ dvc exp run --queue -S model.conv_units=32
+Queued experiment '6518f17' for future execution.
+$ dvc exp run --queue -S model.conv_units=64
+Queued experiment '30eb9b2' for future execution.
+$ dvc exp run --queue -S model.conv_units=128
+Queued experiment 'ac66940' for future execution.
+$ dvc exp run --queue -S model.conv_units=256
+Queued experiment '8bb6049' for future execution.
 ```
 
 Next, run all (`--run-all`) queued experiments in parallel (using `--jobs`):
