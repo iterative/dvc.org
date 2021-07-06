@@ -12,21 +12,19 @@ your repo doesn't become polluted with all of them. You can discard experiments
 once they're no longer needed.
 
 Previously, we learned how to tune [ML pipelines](/doc/start/data-pipelines) and
-[compare the changes](/doc/start/metrics-parameters-plots). Let's further
-increase the number of features in the `featurize` stage to see how it compares.
+[compare the changes](/doc/start/metrics-parameters-plots). In this section, we
+will explore the basic features of DVC experiment management with
+[`get-started-experiments`][gse] project.
 
-In this section, we will explore the basic features of DVC experiment management
-with `[get-started-experiments]` project.
-
-get-started-experiments: https://github.com/iterative/get-started-experiments
+[gse]: https://github.com/iterative/get-started-experiments
 
 <details>
 
 ### Installing and Configuring the Project
 
-These commands are run in the `[get-started-experiments]` project. You can run
-the commands in this document after cloning the repository and installing the
-requirements.
+These commands are run in the [`get-started-experiments`][gse] project. You can
+run the commands in this document after cloning the repository and installing
+the requirements.
 
 ### Clone the project and create virtual environment
 
@@ -46,8 +44,8 @@ $ python -m pip install -r requirements.txt
 ### Get the data set
 
 The repository you cloned doesn't contain the dataset. In order to get
-`fashion-mnist.tar.gz` from the `dataset-registry`, we use `dvc get` to download
-the missing data files. `dvc get` is similar to `wget` but works with Git+DVC
+`fashion-mnist.tar.gz` from `dataset-registry`, we use `dvc get` to download the
+missing data files. `dvc get` is similar to `wget` but works with Git+DVC
 repositories to download binary files.
 
 ```dvc
@@ -61,7 +59,7 @@ Then we extract this file that contains labeled images.
 $ tar -xvzf data/images.tar.gz --directory data/
 ```
 
-### Specifying the experiment
+### Specify the experiment
 
 We first initialize DVC inside the project to create an experiment.
 
@@ -69,15 +67,15 @@ We first initialize DVC inside the project to create an experiment.
 $ dvc init
 ```
 
-Now, we can add the dataset to the project:
+Then we add the dataset to the project:
 
 ```dvc
 $ dvc add data/images
 ```
 
 This creates a `data/images.dvc` file that contains all the relevant metadata of
-the directory. You can add and commit the corresponding `.dvc` file and changes
-in `.gitignore` that hides the `data/images/` directory from Git.
+the directory. You can add and commit `data/images.dvc` file, and changes in
+`.gitignore` that hides the `data/images/` directory from Git.
 
 ```dvc
 $ git add data/.gitignore data/images.dvc
@@ -85,7 +83,7 @@ $ git commit -m "Dataset added"
 ```
 
 DVC experiments are run by specifying their commands, outputs, parameters and
-dependencies. We add an experiment command by `dvc stage add`.
+dependencies. We specify an experiment command by `dvc stage add`.
 
 ```dvc
 $ dvc stage add -n train \
@@ -97,8 +95,10 @@ $ dvc stage add -n train \
 ```
 
 The command tells DVC to create an experiment named `train`, with two parameters
-and a data dependency to `data/images`. The command produces `metrics.json` as a
-special type of output.
+and a dependency to `data/images`. The command produces `metrics.json` as a
+special type of output. Basically it tells DVC that for any change in
+`data/images/`, `model.conv_units` or `train.epochs`, we run an experiment using
+`src/train.py` that produces a new `metrics.json` file.
 
 DVC creates `dvc.yaml` file and modifies `.gitignore` for Git to ignore certain
 artifacts.
