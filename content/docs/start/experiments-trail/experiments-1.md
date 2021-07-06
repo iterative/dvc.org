@@ -21,7 +21,8 @@ with `[get-started-experiments]` project.
 get-started-experiments: https://github.com/iterative/get-started-experiments
 
 <details>
-## Installing and Configuring the Project
+
+### Installing and Configuring the Project
 
 These commands are run in the `[get-started-experiments]` project. You can run
 the commands in this document after cloning the repository and installing the
@@ -116,7 +117,7 @@ DVC is ready to run the experiments now!
 The purpose of `dvc exp` commands is to run the pipeline for ephemeral
 experiments. By _ephemeral_ we mean the experiments can be run without
 committing parameter and dependency changes to Git. Instead the artifacts
-produced for each experiment is tracked by DVC and persisted on demand.
+produced for each experiment are tracked by DVC and persisted on demand.
 
 Running the experiment with default hyperparameter values requires only the
 command:
@@ -207,14 +208,16 @@ Queued experiment '30eb9b2' for future execution.
 $ dvc exp run --queue -S model.conv_units=128
 Queued experiment 'ac66940' for future execution.
 $ dvc exp run --queue -S model.conv_units=256
-Queued experiment '8bb6049' for future execution.```
+Queued experiment '8bb6049' for future execution.
+```
 
 Next, run all (`--run-all`) queued experiments in parallel (using `--jobs`):
 
 ```dvc
 $ dvc exp run --run-all --jobs 2
-TK
 ````
+
+It runs all the experiments with different processes.
 
 ## Comparing experiments
 
@@ -226,7 +229,7 @@ and metrics produced in experiments in a nicely formatted table.
 $ dvc exp show
 ```
 
-TK
+![](/img/start-dvc-exp-show-210704.png)
 
 By default it shows all the parameters and the metrics along with the timestamp.
 If you have large number of parameters, metrics or experiments, this may lead to
@@ -235,9 +238,10 @@ hide the timestamp column with `--include-metrics`, `--include-params`, or
 `--no-timestamp` options of the command, respectively.
 
 ```dvc
-$ dvc exp show --no-timestamp --include-params conv_units --include-metrics acc
-TK
+$ dvc exp show --no-timestamp --include-params model.conv_units --include-metrics acc
 ```
+
+![](/img/start-dvc-exp-show-no-timestamp-210704.png)
 
 ## Persisting experiments
 
@@ -249,8 +253,8 @@ history.
 experiment to the <abbr>workspace</abbr>.
 
 ```dvc
-$ dvc exp apply
-TK
+$ dvc exp apply exp-cb13f
+Changes for experiment 'exp-cb13f' have been applied to your current workspace.
 ```
 
 We can see the changes in the repository and commit them to Git.
@@ -265,9 +269,61 @@ It may also be desirable to commit a particular experiment to a Git branch
 directly, without bringing to the workspace.
 
 ```dvc
-$ dvc exp branch exp-
-TK
+$ dvc exp branch exp-05e87 "cnn-256"
+Git branch 'cnn-256' has been created from experiment 'exp-05e87'.
+To switch to the new branch run:
+
+        git checkout cnn-256
 ```
+
+You can then checkout and continue from working this branch as usual.
+
+## A note on experiment names
+
+When you create an experiment, DVC generates a hash value from the contents of
+the experiment. This is shown when you use `--queue` option, e.g.,
+
+```dvc
+$ dvc exp run --queue -S model.conv_units=32
+Queued experiment '6518f17' for future execution.
+```
+
+After _running_ the experiment, DVC uses another auto-generated name to refer to
+the experiment. Typically these start with `exp-` by default, and can be set via
+`--name / -n` option of `dvc exp run`. So when you add an experiment by setting
+the name, you can see the hash value:
+
+```dvc
+$ dvc exp run --queue --name cnn-512 -S model.conv_units=512
+Queued experiment '86bd8f9' for future execution.
+```
+
+In `dvc exp show` you can see both of these names:
+
+```dvc
+$ dvc exp show --no-pager --no-timestamp \
+      --include-metrics loss --include-params model.conv_units
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━━━━━┓
+┃ Experiment              ┃ loss    ┃ model.conv_units ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━━━━┩
+│ workspace               │ 0.23534 │ 64               │
+│ 3973b6b                 │ -       │ 16               │
+│ ├── aeaabb0 [exp-cb13f] │ 0.23534 │ 64               │
+│ ├── d0ee7ce [exp-5dccf] │ 0.23818 │ 32               │
+│ ├── 1533e4d [exp-88874] │ 0.24039 │ 128              │
+│ ├── b1f41d3 [cnn-256]   │ 0.23296 │ 256              │
+│ ├── 07e927f [exp-6c06d] │ 0.23279 │ 24               │
+│ ├── b2b8586 [exp-2a1d5] │ 0.25036 │ 16               │
+│ └── *86bd8f9            │ -       │ 512              │
+└─────────────────────────┴─────────┴──────────────────┘
+```
+
+When an experiment is not run yet, only the former hash value is shown.
+
+You can refer to the experiment in `dvc exp apply` or `dvc exp branch` after
+running the experiment with the name starting with `exp-`, or the name you have
+supplied with `dvc exp run --name`.
 
 ## Go Further
 
