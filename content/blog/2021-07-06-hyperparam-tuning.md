@@ -152,18 +152,19 @@ Now we can make the script. You can add a new file to the `src` directory called
 `tuning.py`. Inside of the file, add the following code.
 
 ```python
+import itertools
 import subprocess
 import random
 
 # Automated grid search experiments
-n_est_values = [250, 300, 350, 400, 450, 500]
-min_split_values = [8, 16, 32, 64, 128, 256]
+param_grid = {
+    "n_est_values": [250, 300, 350, 400, 450, 500],
+    "min_split_values": [8, 16, 32, 64, 128, 256]
+}
+param_combos = [dict(zip(param_grid.keys(), v)) for v in itertools.product(*param_grid.values())]
 
-for val in n_est_values:
-    subprocess.run(["dvc", "exp", "run", "--queue", "--set-param", f"train.n_est={val}"])
-
-for val in min_split_values:
-    subprocess.run(["dvc", "exp", "run", "--queue", "--set-param", f"train.min_split={val}"])
+for params in param_combos:
+  subprocess.run(["dvc", "exp", "run", "--queue", "-S", f"train.n_est={params['n_est_values']}", "-S", f"train.min_split={params['min_split_values']}"])
 ```
 
 This is a simple grid search. We have two hyperparameters we want to tune:
@@ -217,14 +218,15 @@ grid search implementation.
 
 ```python
 # Automated random search experiments
-rand_n_est_values = random.sample(range(250, 500), 10)
-rand_min_split_values = random.sample(range(100, 150), 10)
+num_exps = 10
 
-for val in rand_n_est_values:
-    subprocess.run(["dvc", "exp", "run", "--queue", "--set-param", f"train.n_est={val}"])
-
-for val in rand_min_split_values:
-    subprocess.run(["dvc", "exp", "run", "--queue", "--set-param", f"train.min_split={val}"])
+for _ in range(num_exps):
+    params = {
+        "rand_n_est_value": random.randint(250, 500),
+        "rand_min_split_value": random.choice([8, 16, 32, 64, 128, 256])
+    }
+    subprocess.run(["dvc", "exp", "run", "--queue", "-S",
+                   f"train.n_est={params['rand_n_est_value']}", "-S", f"train.min_split={params['rand_min_split_value']}"])
 ```
 
 This random search could be far more complex with a Gaussian or Bayesian
@@ -237,7 +239,31 @@ look at the results with `dvc exp show`. Your table should look something like
 this.
 
 ```bash
-table
+┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━┓
+┃ Experiment              ┃ Created      ┃ avg_prec ┃ roc_auc ┃ train.min_split ┃ train.n_est ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━┩
+│ workspace               │ -            │ 0.51682  │ 0.93819 │ 64              │ 175         │
+│ ├── d075700 [exp-d1a08] │ 02:00 PM     │ 0.55283  │ 0.93396 │ 16              │ 450         │
+│ ├── ab1e718 [exp-3ad29] │ 02:00 PM     │ 0.54889  │ 0.93361 │ 32              │ 450         │
+│ ├── 35cb92c [exp-4edb8] │ 02:00 PM     │ 0.53681  │ 0.93608 │ 64              │ 450         │
+│ ├── f0f44e8 [exp-dc6c7] │ 02:00 PM     │ 0.53642  │ 0.93525 │ 128             │ 450         │
+│ ├── f72003e [exp-8a616] │ 02:00 PM     │ 0.53295  │ 0.93445 │ 256             │ 450         │
+│ ├── ec7412f [exp-d9be9] │ 02:00 PM     │ 0.55759  │ 0.93662 │ 8               │ 500         │
+│ ├── ec679bd [exp-fcbbb] │ 01:59 PM     │ 0.55663  │ 0.93458 │ 16              │ 500         │
+│ ├── e4ee5d2 [exp-46e22] │ 01:59 PM     │ 0.55034  │ 0.93511 │ 32              │ 500         │
+│ ├── 70d8bd6 [exp-7a9c0] │ 01:59 PM     │ 0.53798  │ 0.93688 │ 64              │ 500         │
+│ ├── 20b4384 [exp-cf185] │ 01:59 PM     │ 0.5388   │ 0.9361  │ 128             │ 500         │
+│ ├── 625c8e8 [exp-2dbca] │ 01:59 PM     │ 0.53002  │ 0.93545 │ 256             │ 500         │
+│ ├── cc2145e [exp-fc010] │ 01:59 PM     │ 0.54061  │ 0.93757 │ 64              │ 300         │
+│ ├── e55fb54 [exp-be8d1] │ 01:59 PM     │ 0.5371   │ 0.93637 │ 64              │ 471         │
+│ ├── cd2594c [exp-6e703] │ 01:59 PM     │ 0.53744  │ 0.93653 │ 64              │ 468         │
+│ ├── 0a9e6d5 [exp-87563] │ 01:59 PM     │ 0.5296   │ 0.93564 │ 256             │ 476         │
+│ ├── a9cef73 [exp-a419a] │ 01:59 PM     │ 0.5542   │ 0.93437 │ 32              │ 298         │
+│ ├── 064712e [exp-2b641] │ 01:59 PM     │ 0.54498  │ 0.93335 │ 32              │ 352         │
+│ ├── e757262 [exp-b8014] │ 01:59 PM     │ 0.53701  │ 0.93625 │ 64              │ 446         │
+│ ├── 2d2dacb [exp-8f420] │ 01:59 PM     │ 0.52887  │ 0.93612 │ 128             │ 417         │
+│ ├── 2ca648e [exp-16e93] │ 01:58 PM     │ 0.53519  │ 0.93708 │ 128             │ 280         │
+│ ├── 19906b5 [exp-5385e] │ 01:58 PM     │ 0.55489  │ 0.93678 │ 8               │ 279         │
 ```
 
 This shows the difference in the randomly selected values and the values from
