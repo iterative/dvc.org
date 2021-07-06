@@ -1,5 +1,5 @@
 ---
-title: December '20 Heartbeat
+title: December ’20 Heartbeat
 date: 2020-12-18
 description: |
   Monthly updates are here- read all about 
