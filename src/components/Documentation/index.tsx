@@ -10,6 +10,9 @@ export interface IHeading {
   text: string
 }
 
+export const getGithubLink = (source: string): string =>
+  `https://github.com/iterative/dvc.org/blob/master/content${source}`
+
 interface IDocumentationProps {
   path: string
   headings: Array<IHeading>
@@ -22,7 +25,7 @@ const Documentation: React.FC<IDocumentationProps> = ({
   headings
 }) => {
   const { source, prev, next, tutorials } = getItemByPath(path)
-  const githubLink = `https://github.com/iterative/dvc.org/blob/master/content${source}`
+  const githubLink = getGithubLink(source)
 
   return (
     <>
