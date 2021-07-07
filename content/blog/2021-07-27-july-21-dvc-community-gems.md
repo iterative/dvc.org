@@ -3,21 +3,21 @@ title: July '21 Community Gems
 date: 2021-07-27
 description: |
   A roundup of technical Q&A's from the DVC community.
-  This month: DVC pipeline configs, working with remotes,
-  file handling and more.
+  This month: self-hosted runners, DVC commits,
+  troubleshooting remotes, and more.
 descriptionLong: |
   A roundup of technical Q&A's from the DVC community.
-  This month: DVC pipeline configs, working with remotes,
-  file handling and more.
+  This month: self-hosted runners, DVC commits,
+  troubleshooting remotes, and more.
 picture: 2021-07-27/gems-cover.png
 author: milecia_mcgregor
 commentsUrl: https://discuss.dvc.org/t/july-21-community-gems/779
 tags:
   - Community
-  - Plots
-  - Pipelines
+  - Runners
+  - Remotes
   - CML
-  - Git
+  - DVC
   - Gems
 ---
 
@@ -71,15 +71,62 @@ This was a good question for everyone. Thanks @snowpong!
 
 ### [Q: How can I list the experiments I've queued?](https://discord.com/channels/485586884165107732/485596304961962003/856882434138570753)
 
-This is a great question to help us all understand something so thanks @adwivedi
+This is a great question to help us all understand something so thanks
+@adwivedi.
 
 To look at your queued experiments, run `dvc exp show`. All of the queued
 experiments will be marked with an asterisk `*`.
 
-Queued experiments are not shown with the `dvc exp list` command at the moment.
+_Queued experiments are not shown with the `dvc exp list` command at the
+moment._
 
-### [Q: ]()
+### [Q: I have two machines and a central repo on Azure. With my second machine, I want to pull the dataset from the first machine. How can I pull the data with DVC?](https://discord.com/channels/485586884165107732/485596304961962003/859034882297823233)
 
-### [Q: ]()
+Make sure that you have configured a DVC remote and run `dvc push` from your
+first machine. You should be able to find the files on the remote storage where
+you pushed them to after running that command. Then you can run `dvc pull` on
+your second machine and this should give you the dataset you pushed from the
+first machine.
 
-### [Q: ]()
+You will run into some issues if your remote isn't configured properly on the
+second machine. Check your `.dvc/config` file for the second machine to make
+sure there aren't any errors. It could be something as simple as a connection
+string without the necessary quotation marks!
+
+Thanks so much for this question @raharth!
+
+### [Q: `dvc push` says, "Everything is up to date." However, I modified my dataset and this is confirmed with `dvc status`, where it lists a "modified" entry on the changed outs. How can I force a push of my changes?](https://discord.com/channels/485586884165107732/485596304961962003/857931383476977695)
+
+You need to run `dvc add` to create a `.dvc` file to track the new data. Then
+run `dvc commit` to commit your changes to the cache.
+
+Good question @BSVogler.
+
+### [Q: I'm trying to use the DVC API in a Jupyter notebook. Can I simulate a `dvc push` command via the API?](https://discord.com/channels/485586884165107732/485596304961962003/856979475068878898)
+
+Nice job working with the Python API @harry134!
+
+You can use the `Repo` API like this.
+
+```dvc
+from dvc.repo import Repo
+
+repo = Repo()
+repo.pull()
+```
+
+The API isn't production ready, so documentation is lacking at the moment.
+Although, we do use it internally all the time, so you can use it with caution
+too.
+
+---
+
+https://media.giphy.com/media/l0Iyl55kTeh71nTXy/giphy.gif
+
+At our August Office Hours Meetup, we'll be **PUT SOMETHING HERE WHEN WE GET
+IT**. [RSVP for the Meetup here]**UPDATE MEETUP
+LINK**(https://www.meetup.com/DVC-Community-Virtual-Meetups/events/279024694/)
+to stay up to date with specifics as we get closer to the event!
+
+[Join us in Discord](https://discord.com/invite/dvwXA2N) to get answers for your
+DVC and CML questions!
