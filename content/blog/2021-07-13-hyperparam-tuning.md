@@ -1,13 +1,13 @@
 ---
 title: Tuning Hyperparameters with Reproducible Experiments
-date: 2021-07-06
+date: 2021-07-13
 description: |
   It's easy to lose track of which changes gave you the best result when you start exploring multiple model architectures. Tracking the changes in your hyperparameter values, along with code and data changes, will help you build a more efficient model by giving you an exact reproduction of the conditions that made the model better.
 
 descriptionLong: |
   Since hyperparameter tuning is a common task in ML, it's important to know the values and changes that lead to the model you want to push to production. When you add reproducibility to your project with DVC, you'll be able to track all of the changes you make that give you the optimum model.
 
-picture: 2021-07-06/tuning-hyperparams.png
+picture: 2021-07-13/tuning-hyperparams.png
 pictureComment: Tuning Hyperparameters with Reproducible Experiments
 author: milecia_mcgregor
 commentsUrl: https://discuss.dvc.org/t/utilizing-custom-git-references-in-dvc/727
@@ -65,11 +65,9 @@ A few things DVC makes easier to do include:
 - Letting you make changes without worrying about finding them later
 - Onboarding other engineers to a project
 - Sharing experiments with other engineers on different machines
-- Track experiments and results in your Git repo and compare from the command
-  line - no need for other services to retrieve your experiments or compare
-  results.
-- Version the entire pipeline (including data, code, and commands run) - detect
-  changes to dependencies and only re-run the impacted steps.
+- Tracking experiments and results in your Git repo and compare them from the
+  command line
+- Versioning the entire pipeline (including data, code, and commands run)
 
 For hyperparameter tuning, this means you can play with values and code changes
 without losing track of which changes made the best model and also have other
@@ -105,7 +103,8 @@ following command.
 
 `dvc exp run`
 
-This will trigger the training process to run and it will record the precision
+This will trigger the training process to run and it will record the
+[average precision](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html)
 of your model. You can check out the results of your experiment with the
 following command.
 
@@ -139,7 +138,7 @@ manually updating a config file with new hyperparameter values for each
 experiment run. The command syntax for creating queues looks like this:
 
 ```dvc
-dvc exp run --queue -set-param train.min_split=8
+dvc exp run --queue --set-param train.min_split=8
 ```
 
 In the example queue above, we're updating the `train.min_split` value that's
@@ -157,14 +156,13 @@ import subprocess
 import random
 
 # Automated grid search experiments
-param_grid = {
-    "n_est_values": [250, 300, 350, 400, 450, 500],
-    "min_split_values": [8, 16, 32, 64, 128, 256]
-}
-param_combos = [dict(zip(param_grid.keys(), v)) for v in itertools.product(*param_grid.values())]
+n_est_values = [250, 300, 350, 400, 450, 500]
+min_split_values = [8, 16, 32, 64, 128, 256]
 
-for params in param_combos:
-  subprocess.run(["dvc", "exp", "run", "--queue", "-S", f"train.n_est={params['n_est_values']}", "-S", f"train.min_split={params['min_split_values']}"])
+# Iterate over all combinations of hyperparameter values.
+for n_est, min_split in itertools.product(n_est_values, min_split_values):
+    # Execute "dvc exp run --queue --set-param train.n_est=<n_est> -S train.min_split=<min_split>".
+    subprocess.run(["dvc", "exp", "run", "--queue", "--set-param", f"train.n_est={n_est}", "--set-param", f"train.min_split={min_split}"])
 ```
 
 This is a simple grid search. We have two hyperparameters we want to tune:
@@ -187,29 +185,51 @@ This will run every experiment that has been queued. Once all of those have run,
 take a look at your metrics for each experiment.
 
 ```dvc
-dvc exp show
+dvc exp show --include-params=train.min_split,train.n_est --no-timestamp
 ```
 
-Your table should look similar to this when you run `dvc exp show`.
+Your table should look similar to this when you run the command above. We've
+included the `--include-params` and `--no-timestamp` options to give us a table
+that's easier to read.
 
 ```bash
-table
+┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━┓
+┃ Experiment              ┃ avg_prec ┃ roc_auc ┃ train.min_split ┃ train.n_est ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━┩
+│ workspace               │        - │       - │ 64              │ 175         │
+│ master                  │  0.56447 │ 0.94713 │ 64              │ 100         │
+│ ├── 69b2b6a [exp-7a4a4] │  0.55514 │ 0.93507 │ 8               │ 350         │
+│ ├── 4374026 [exp-f6067] │  0.54568 │ 0.93197 │ 16              │ 350         │
+│ ├── be91808 [exp-55151] │  0.54692 │ 0.93346 │ 32              │ 350         │
+│ ├── 780e265 [exp-d864c] │  0.53356 │ 0.93591 │ 64              │ 350         │
+│ ├── 178fd7d [exp-3758e] │  0.53168 │ 0.93438 │ 128             │ 350         │
+│ ├── 907c222 [exp-0dbdd] │  0.52278 │ 0.93287 │ 256             │ 350         │
+│ ├── ec60206 [exp-5df5f] │  0.55315 │ 0.93795 │ 8               │ 400         │
+│ ├── 367d0fc [exp-f9edb] │  0.55135 │ 0.93455 │ 16              │ 400         │
+│ ├── 45a2ee6 [exp-24f26] │  0.54877 │ 0.93467 │ 32              │ 400         │
+│ ├── 967a9c2 [exp-67a0c] │  0.53505 │ 0.93703 │ 64              │ 400         │
+│ ├── bccfed8 [exp-83d3e] │  0.52921 │ 0.93681 │ 128             │ 400         │
+│ ├── a3e4182 [exp-9ecac] │  0.52573 │ 0.93606 │ 256             │ 400         │
+│ ├── 6b8424c [exp-42ba9] │  0.55812 │ 0.93587 │ 8               │ 450         │
+│ ├── d075700 [exp-d1a08] │  0.55283 │ 0.93396 │ 16              │ 450         │
+│ ├── ab1e718 [exp-3ad29] │  0.54889 │ 0.93361 │ 32              │ 450         │
+│ ├── 35cb92c [exp-4edb8] │  0.53681 │ 0.93608 │ 64              │ 450         │
+│ ├── f0f44e8 [exp-dc6c7] │  0.53642 │ 0.93525 │ 128             │ 450         │
 ```
 
 Now you can see how your precision changed with each hyperparameter value
 update. This is a quick implementation of grid search in DVC. You could read the
 hyperparameter values from a different file or data source or make this tuning
 script as fancy as you like. The main thing you need is the
-`dvc exp run --queue -set-param <param>` command to execute when you add new
+`dvc exp run --queue --set-param <param>` command to execute when you add new
 values.
 
 ### Random Search
 
 Another commonly used method for tuning hyperparameters is random search. This
-takes random values for hyperparameters and builds the model with them. It's not
-an exhaustive search like grid search and it typically outperforms grid search,
-especially when a small subset of the hyperparameters produce the biggest
-difference in your model.
+takes random values for hyperparameters and builds the model with them. It
+usually takes less time than an exhaustive grid search and it can perform better
+if run for a similar amount of time as a grid search.
 
 We're going to add an example of random search to the `tuning.py` file we
 created for grid search. This will add queued experiments with the randomly
@@ -221,49 +241,43 @@ grid search implementation.
 num_exps = 10
 
 for _ in range(num_exps):
+    random.seed(0)
     params = {
         "rand_n_est_value": random.randint(250, 500),
-        "rand_min_split_value": random.choice([8, 16, 32, 64, 128, 256])
+        "rand_min_split_value": random.choice([8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192])
     }
-    subprocess.run(["dvc", "exp", "run", "--queue", "-S",
-                   f"train.n_est={params['rand_n_est_value']}", "-S", f"train.min_split={params['rand_min_split_value']}"])
+    subprocess.run(["dvc", "exp", "run", "--queue", "--set-param",
+                   f"train.n_est={params['rand_n_est_value']}", "--set-param", f"train.min_split={params['rand_min_split_value']}"])
 ```
 
-This random search could be far more complex with a Gaussian or Bayesian
-distribution to handle the hyperparameter value selections, but we're keeping it
-super simple by choosing random numbers to focus on reproducibility. This will
-generate ten experiments with random values for each hyperparameter.
+This random search could be far more complex with Bayesian optimization to
+handle the hyperparameter value selections, but we're keeping it super simple by
+choosing random numbers to focus on reproducibility. This will generate ten
+experiments with random values for each hyperparameter.
 
 You can run these new experiments with `dvc exp run --run-all` and then take a
-look at the results with `dvc exp show`. Your table should look something like
-this.
+look at the results with
+`dvc exp show --include-params=train.min_split,train.n_est --no-timestamp`. Your
+table should look something like this.
 
 ```bash
-┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━┓
-┃ Experiment              ┃ Created      ┃ avg_prec ┃ roc_auc ┃ train.min_split ┃ train.n_est ┃
-┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━┩
-│ workspace               │ -            │ 0.51682  │ 0.93819 │ 64              │ 175         │
-│ ├── d075700 [exp-d1a08] │ 02:00 PM     │ 0.55283  │ 0.93396 │ 16              │ 450         │
-│ ├── ab1e718 [exp-3ad29] │ 02:00 PM     │ 0.54889  │ 0.93361 │ 32              │ 450         │
-│ ├── 35cb92c [exp-4edb8] │ 02:00 PM     │ 0.53681  │ 0.93608 │ 64              │ 450         │
-│ ├── f0f44e8 [exp-dc6c7] │ 02:00 PM     │ 0.53642  │ 0.93525 │ 128             │ 450         │
-│ ├── f72003e [exp-8a616] │ 02:00 PM     │ 0.53295  │ 0.93445 │ 256             │ 450         │
-│ ├── ec7412f [exp-d9be9] │ 02:00 PM     │ 0.55759  │ 0.93662 │ 8               │ 500         │
-│ ├── ec679bd [exp-fcbbb] │ 01:59 PM     │ 0.55663  │ 0.93458 │ 16              │ 500         │
-│ ├── e4ee5d2 [exp-46e22] │ 01:59 PM     │ 0.55034  │ 0.93511 │ 32              │ 500         │
-│ ├── 70d8bd6 [exp-7a9c0] │ 01:59 PM     │ 0.53798  │ 0.93688 │ 64              │ 500         │
-│ ├── 20b4384 [exp-cf185] │ 01:59 PM     │ 0.5388   │ 0.9361  │ 128             │ 500         │
-│ ├── 625c8e8 [exp-2dbca] │ 01:59 PM     │ 0.53002  │ 0.93545 │ 256             │ 500         │
-│ ├── cc2145e [exp-fc010] │ 01:59 PM     │ 0.54061  │ 0.93757 │ 64              │ 300         │
-│ ├── e55fb54 [exp-be8d1] │ 01:59 PM     │ 0.5371   │ 0.93637 │ 64              │ 471         │
-│ ├── cd2594c [exp-6e703] │ 01:59 PM     │ 0.53744  │ 0.93653 │ 64              │ 468         │
-│ ├── 0a9e6d5 [exp-87563] │ 01:59 PM     │ 0.5296   │ 0.93564 │ 256             │ 476         │
-│ ├── a9cef73 [exp-a419a] │ 01:59 PM     │ 0.5542   │ 0.93437 │ 32              │ 298         │
-│ ├── 064712e [exp-2b641] │ 01:59 PM     │ 0.54498  │ 0.93335 │ 32              │ 352         │
-│ ├── e757262 [exp-b8014] │ 01:59 PM     │ 0.53701  │ 0.93625 │ 64              │ 446         │
-│ ├── 2d2dacb [exp-8f420] │ 01:59 PM     │ 0.52887  │ 0.93612 │ 128             │ 417         │
-│ ├── 2ca648e [exp-16e93] │ 01:58 PM     │ 0.53519  │ 0.93708 │ 128             │ 280         │
-│ ├── 19906b5 [exp-5385e] │ 01:58 PM     │ 0.55489  │ 0.93678 │ 8               │ 279         │
+┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━┓
+┃ Experiment              ┃ avg_prec ┃ roc_auc ┃ train.min_split ┃ train.n_est ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━┩
+│ workspace               │        - │       - │ 64              │ 175         │
+│ master                  │  0.56447 │ 0.94713 │ 64              │ 100         │
+│ ├── 1915b84 [exp-4283b] │   0.5388 │  0.9361 │ 128             │ 500         │
+│ ├── 24e6c9e [exp-c4860] │  0.53002 │ 0.93545 │ 256             │ 500         │
+│ ├── 3ae504e [exp-7e418] │  0.53758 │ 0.93638 │ 64              │ 463         │
+│ ├── 49b7c02 [exp-cf515] │  0.49634 │  0.9332 │ 8192            │ 387         │
+│ ├── 5fc8bc3 [exp-5e658] │  0.49841 │ 0.93339 │ 4096            │ 323         │
+│ ├── bc9d108 [exp-9e60f] │  0.51678 │  0.9395 │ 512             │ 411         │
+│ ├── b2c9882 [exp-0efc9] │  0.53135 │ 0.93565 │ 256             │ 484         │
+│ ├── 55c4603 [exp-fa6eb] │  0.53161 │ 0.93715 │ 64              │ 377         │
+│ ├── 93ecf97 [exp-3742c] │  0.53153 │ 0.93703 │ 64              │ 383         │
+│ ├── 9a313c9 [exp-f90bc] │  0.53277 │ 0.93442 │ 256             │ 453         │
+│ ├── 3a1b8bd [exp-418f8] │  0.52326 │ 0.93363 │ 256             │ 306         │
+│ ├── 61d0692 [exp-e5645] │  0.49891 │ 0.93263 │ 8192            │ 372         │
 ```
 
 This shows the difference in the randomly selected values and the values from
