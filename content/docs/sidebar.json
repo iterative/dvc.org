@@ -35,6 +35,14 @@
     },
     "children": [
       {
+        "slug": "experiments-trail/experiments-1",
+        "label": "Experiments Trail (Alternative 1)"
+      },
+      {
+        "slug": "experiments-trail/experiments-2",
+        "label": "Experiments Trail (Alternative 2)"
+      },
+      {
         "slug": "data-and-model-versioning",
         "tutorials": {
           "katacoda": "https://katacoda.com/dvc/courses/get-started/versioning"
