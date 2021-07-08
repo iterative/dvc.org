@@ -4,29 +4,23 @@ title: 'Get Started: Experiments'
 
 # Get Started with Experiments
 
-<abbr>Experiments</abbr> proliferate quickly in ML projects where there are many
-parameters to tune or other permutations of the code. We can organize such
-projects and keep only what we ultimately need with `dvc experiments`. DVC can
-track experiments for you so there's no need to commit each one to Git. This way
-your repo doesn't become polluted with all of them. You can discard experiments
-once they're no longer needed.
-
-Previously, we learned how to tune [ML pipelines](/doc/start/data-pipelines) and
-[compare the changes](/doc/start/metrics-parameters-plots). In this section, we
-will explore the basic features of DVC experiment management with
-[`get-started-experiments`][gse] project.
+<abbr>Experiments</abbr> grow in numbers where there are many parameters to
+tune. We can organize such experiments and keep only what we ultimately need
+with `dvc experiments`. DVC can track experiments for you so there's no need to
+commit each one to Git. We explore the basic features of DVC experiment
+management with [`get-started-experiments`][gse] project in this section.
 
 [gse]: https://github.com/iterative/get-started-experiments
 
 <details>
 
-### Installing and Configuring the Project
+### ⚙️ Installing and Configuring the Project
 
 These commands are run in the [`get-started-experiments`][gse] project. You can
 run the commands in this document after cloning the repository and installing
 the requirements.
 
-### Clone the project and create virtual environment
+### 👥 Clone the project and create virtual environment
 
 Please clone the project and create a virtual environment.
 
@@ -41,7 +35,7 @@ $ . .venv/bin/activate
 $ python -m pip install -r requirements.txt
 ```
 
-### Get the data set
+### 📀 Get the data set
 
 The repository you cloned doesn't contain the dataset. In order to get
 `fashion-mnist.tar.gz` from `dataset-registry`, we use `dvc get` to download the
@@ -59,7 +53,7 @@ Then we extract this file that contains labeled images.
 $ tar -xvzf data/images.tar.gz --directory data/
 ```
 
-### Specify the experiment
+### 🏹 Specify the experiment
 
 We first initialize DVC inside the project to create an experiment.
 
@@ -110,7 +104,7 @@ DVC is ready to run the experiments now!
 
 </details>
 
-## Running the experiment with default parameters
+## 👟 Running the experiment with default parameters
 
 The purpose of `dvc exp` subcommands is to run the pipeline for ephemeral
 experiments. By _ephemeral_ we mean the experiments can be run without
@@ -136,7 +130,7 @@ It runs the pipeline starting from the basic dependencies and produces
 
 <details>
 
-### If you used `dvc repro` before
+### 📜 If you used `dvc repro` before
 
 Earlier versions of DVC uses `dvc repro` to run the pipeline. If you already
 have a DVC project, you may already be using `dvc repro`.
@@ -156,7 +150,7 @@ not needed.
 
 </details>
 
-## Running the experiment by setting parameters
+## 🧥 Running the experiment by setting parameters
 
 Now let's do some more experimentation.
 
@@ -189,7 +183,7 @@ $ git diff params.yaml
 +  conv_units: 24
 ```
 
-## Run multiple experiments in parallel
+## 🏃‍♂️🏃🏾‍♂️🏃🏻‍♂️ Run multiple experiments in parallel
 
 Instead of running the experiments one-by-one, we can define them to run in a
 batch. This is especially handy when you have long running experiments.
@@ -241,7 +235,7 @@ $ dvc exp show --no-timestamp \
 
 ![](/img/start-dvc-exp-show-no-timestamp-210704.png)
 
-## Persisting experiments
+## 🔏 Persisting experiments
 
 After selecting a experiments from the table, you can commit the hyperparameters
 and other dependencies that produced this successful experiment to your Git
@@ -276,7 +270,7 @@ To switch to the new branch run:
 
 You can then checkout and continue from working this branch as usual.
 
-## Note on experiment names
+## 📛 Note on experiment names
 
 When you create an experiment, DVC generates a hash value from the contents of
 the experiment. This is shown when you use `--queue` option, e.g.,
@@ -323,7 +317,7 @@ You can refer to the experiment in `dvc exp apply` or `dvc exp branch` after
 running the experiment with the name starting with `exp-`, or the name you have
 supplied with `dvc exp run --name`.
 
-## Go Further
+## 🪐 Go Further
 
 There are many other features of `dvc exp`, like cleaning up the unused
 experiments, sharing them without committing into Git or getting differences
