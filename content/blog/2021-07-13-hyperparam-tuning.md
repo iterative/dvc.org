@@ -228,8 +228,8 @@ takes random values for hyperparameters and builds the model with them. It
 usually takes less time than an exhaustive grid search and it can perform better
 if run for a similar amount of time as a grid search.
 
-We're going to add a example of random search in a new file called
-`random_search.py` simialr to the file we created for grid search. This will add
+We're going to add an example of random search in a new file called
+`random_search.py` similar to the file we created for grid search. This will add
 queued experiments with the randomly selected hyperparameter values. Add the
 following code to `random_search.py`.
 
