@@ -242,13 +242,11 @@ num_exps = 10
 random.seed(0)
 
 for _ in range(num_exps):
-    params = {
-        "rand_n_est_value": random.randint(250, 500),
-        "rand_min_split_value": random.choice([8, 16, 32, 64, 128, 256])
-    }
+    rand_n_est_values =  random.randint(250, 500),
+    rand_min_split_values = random.choice([8, 16, 32, 64, 128, 256])
     subprocess.run(["dvc", "exp", "run", "--queue",
-                    "--set-params", f"train.n_est={params['rand_n_est_value']}",
-                    "--set-params", f"train.min_split={params['rand_min_split_value']}"])
+                    "--set-params", f"train.n_est={rand_n_est_values}",
+                    "--set-params", f"train.min_split={rand_min_split_values}"])
 ```
 
 This search could be far more complex with Bayesian optimization to handle the
