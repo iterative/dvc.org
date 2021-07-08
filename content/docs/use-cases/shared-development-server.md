@@ -7,7 +7,7 @@ multiple users or processes. This enables near-instantaneous
 <abbr>workspace</abbr> restoration and switching speeds for everyone – a
 **checkout for data**.
 
-![](/img/shared-server.png) _Data store shared by DVC projects_
+![](/img/shared-server.png '=700') _Data store shared by DVC projects_
 
 ## Preparation
 

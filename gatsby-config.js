@@ -49,6 +49,13 @@ const plugins = [
       path: path.join(__dirname, 'static', 'uploads')
     }
   },
+  {
+    resolve: 'gatsby-source-filesystem',
+    options: {
+      name: 'img',
+      path: path.join(__dirname, 'static')
+    }
+  },
   'community-page',
   {
     resolve: 'gatsby-transformer-remark',

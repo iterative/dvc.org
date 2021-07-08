@@ -5,7 +5,8 @@ machine learning models. How do we keep track of changes in data, source code,
 and ML models together? What's the best way to organize and store variations of
 these files and directories?
 
-![](/img/data-ver-complex.png) _Exponential complexity of data science projects_
+![](/img/data-ver-complex.png '=700') _Exponential complexity of data science
+projects_
 
 Another problem in the field has to do with bookkeeping: being able to identify
 past data inputs and processes to understand their results, for knowledge
