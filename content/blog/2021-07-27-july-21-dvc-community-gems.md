@@ -64,8 +64,8 @@ https://github.com/iterative/terraform-provider-iterative/issues/107
 
 ### [Q: Is it possible to rename and modify a file inside a directory tracked by DVC in one commit/change?](https://discord.com/channels/485586884165107732/485596304961962003/849589484517588992)
 
-If you modify the name and modify the file, you just need to run `dvc commit` or
-`dvc add` and then commit the change into Git.
+If you modify the name and modify the file, you just need to run `dvc commit`
+and then commit the change into Git.
 
 This was a good question for everyone. Thanks @snowpong!
 
@@ -80,7 +80,7 @@ experiments will be marked with an asterisk `*`.
 _Queued experiments are not shown with the `dvc exp list` command at the
 moment._
 
-### [Q: I have two machines and a central repo on Azure. With my second machine, I want to pull the dataset from the first machine. How can I pull the data with DVC?](https://discord.com/channels/485586884165107732/485596304961962003/859034882297823233)
+### [Q: I have two machines and a central remote. With my second machine, I want to pull the dataset from the first machine. How can I pull the data with DVC?](https://discord.com/channels/485586884165107732/485596304961962003/859034882297823233)
 
 Make sure that you have configured a DVC remote and run `dvc push` from your
 first machine. You should be able to find the files on the remote storage where
@@ -97,8 +97,7 @@ Thanks so much for this question @raharth!
 
 ### [Q: `dvc push` says, "Everything is up to date." However, I modified my dataset and this is confirmed with `dvc status`, where it lists a "modified" entry on the changed outs. How can I force a push of my changes?](https://discord.com/channels/485586884165107732/485596304961962003/857931383476977695)
 
-You need to run `dvc add` to create a `.dvc` file to track the new data. Then
-run `dvc commit` to commit your changes to the cache.
+You need to run `dvc commit` to commit your changes to the cache.
 
 Good question @BSVogler.
 
@@ -112,7 +111,7 @@ You can use the `Repo` API like this.
 from dvc.repo import Repo
 
 repo = Repo()
-repo.pull()
+repo.push()
 ```
 
 The API isn't production ready, so documentation is lacking at the moment.
