@@ -7,7 +7,7 @@ description: |
 descriptionLong: |
   It's easy to lose track of which changes gave you the best result when you start exploring multiple model architectures. Tracking the changes in your hyperparameter values, along with code and data changes, will help you build a more efficient model by giving you an exact reproduction of the conditions that made the model better. We'll go through an example of grid search and random search using DVC.
 
-picture: 2021-07-13/tuning-hyperparams.png
+picture: 2021-07-13/hyperparameters-july-website.png
 pictureComment: Tuning Hyperparameters with Reproducible Experiments
 author: milecia_mcgregor
 commentsUrl: https://discuss.dvc.org/t/utilizing-custom-git-references-in-dvc/727
