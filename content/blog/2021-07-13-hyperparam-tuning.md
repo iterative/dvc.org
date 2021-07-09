@@ -46,8 +46,8 @@ These parameters are different from model parameters because we can't get them
 from training our model. They are used to _create_ the model we train with.
 Optimizing these values means running training steps for different kinds of
 models to see how accurate the results are. We can get the best model from
-iterating through different hyperparameters values and seeing how they effect
-our accuracy.
+iterating through different hyperparameter values and seeing how they effect our
+accuracy.
 
 That's why we do hyperparameter tuning. There are a couple common methods that
 we'll do some code examples with: grid search and random search.
@@ -56,7 +56,7 @@ we'll do some code examples with: grid search and random search.
 
 Let's start by talking about DVC a bit because we'll be using it to add
 reproducibility to our tuning process. This is the tool we'll be using to track
-changes in our data, code, and hyperparamters. With DVC, we can add some
+changes in our data, code, and hyperparameters. With DVC, we can add some
 automation to the tuning process and be able to find and restore any really good
 models that emerge.
 
@@ -65,9 +65,6 @@ A few things DVC makes easier to do:
 - Letting you make changes without worrying about finding them later
 - Onboarding other engineers to a project
 - Sharing experiments with other engineers on different machines
-- Tracking experiments and results in your Git repo and compare based on
-  parameters from the command line
-- Versioning the entire pipeline (including data, code, and commands run)
 
 For hyperparameter tuning, this means you can play with their values without
 losing track of which changes made the best model and also have other engineers
@@ -267,18 +264,17 @@ table should look something like this.
 ┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━┩
 │ workspace               │        - │       - │ 64              │ 175         │
 │ master                  │  0.56447 │ 0.94713 │ 64              │ 100         │
-│ ├── 1915b84 [exp-4283b] │   0.5388 │  0.9361 │ 128             │ 500         │
-│ ├── 24e6c9e [exp-c4860] │  0.53002 │ 0.93545 │ 256             │ 500         │
-│ ├── 3ae504e [exp-7e418] │  0.53758 │ 0.93638 │ 64              │ 463         │
-│ ├── 49b7c02 [exp-cf515] │  0.49634 │  0.9332 │ 8192            │ 387         │
-│ ├── 5fc8bc3 [exp-5e658] │  0.49841 │ 0.93339 │ 4096            │ 323         │
-│ ├── bc9d108 [exp-9e60f] │  0.51678 │  0.9395 │ 512             │ 411         │
-│ ├── b2c9882 [exp-0efc9] │  0.53135 │ 0.93565 │ 256             │ 484         │
-│ ├── 55c4603 [exp-fa6eb] │  0.53161 │ 0.93715 │ 64              │ 377         │
-│ ├── 93ecf97 [exp-3742c] │  0.53153 │ 0.93703 │ 64              │ 383         │
-│ ├── 9a313c9 [exp-f90bc] │  0.53277 │ 0.93442 │ 256             │ 453         │
-│ ├── 3a1b8bd [exp-418f8] │  0.52326 │ 0.93363 │ 256             │ 306         │
-│ ├── 61d0692 [exp-e5645] │  0.49891 │ 0.93263 │ 8192            │ 372         │
+│ ├── a0595d9 [exp-bdc32] │  0.53676 │ 0.93661 │ 64              │ 466         │
+│ ├── 7bfecdf [exp-ade4d] │  0.53598 │ 0.93636 │ 64              │ 444         │
+│ ├── 905858e [exp-ea1e9] │  0.55186 │ 0.93499 │ 32              │ 260         │
+│ ├── a663a99 [exp-be4f9] │   0.5387 │ 0.93594 │ 128             │ 497         │
+│ ├── 89435a1 [exp-3aa24] │  0.53124 │ 0.93706 │ 64              │ 374         │
+│ ├── 1b498b9 [exp-35373] │  0.55082 │ 0.93449 │ 32              │ 485         │
+│ ├── ae5712f [exp-20859] │  0.53911 │  0.9368 │ 64              │ 497         │
+│ ├── 2e1da9b [exp-36a6a] │  0.53005 │ 0.93516 │ 128             │ 341         │
+│ ├── 62ed587 [exp-907af] │  0.55465 │ 0.93397 │ 16              │ 478         │
+│ ├── bfeb1b6 [exp-b0c9e] │  0.54642 │ 0.93379 │ 16              │ 379         │
+│ ├── 4a1f79a [exp-6be72] │  0.51682 │ 0.93819 │ 64              │ 175         │
 ```
 
 This shows the difference in the randomly selected values and the values from
