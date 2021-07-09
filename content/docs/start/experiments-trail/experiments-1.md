@@ -111,22 +111,17 @@ experiments. By _ephemeral_ we mean the experiments can be run without
 committing parameter and dependency changes to Git. Instead the artifacts
 produced for each experiment are tracked by DVC and persisted on demand.
 
-Running the experiment with default hyperparameter values requires only the
-command:
+Running the experiment with default project settings requires only the command:
 
 ```dvc
 $ dvc exp run
 ...
 Reproduced experiment(s): exp-7683f
 Experiment results have been applied to your workspace.
-
-To promote an experiment to a Git branch run:
-
-        dvc exp branch <exp>
+...
 ```
 
-It runs the pipeline starting from the basic dependencies and produces
-`metrics.json` file for the default state.
+It runs the specified command that writes the metrics values to `metrics.json`.
 
 <details>
 
@@ -202,13 +197,12 @@ $ dvc exp run --queue -S model.conv_units=256
 Queued experiment '8bb6049' for future execution.
 ```
 
-Next, run all (`--run-all`) queued experiments in parallel (using `--jobs`):
+Next, run all (`--run-all`) queued experiments in parallel. You can specify the
+number of parallel processes using `--jobs`:
 
 ```dvc
 $ dvc exp run --run-all --jobs 2
 ```
-
-It runs all the experiments, with the specified number of processes in parallel.
 
 ## Comparing experiments
 
@@ -237,7 +231,7 @@ $ dvc exp show --no-timestamp \
 
 ## 🔏 Persisting experiments
 
-After selecting a experiments from the table, you can commit the hyperparameters
+After selecting an experiment from the table, you can commit the hyperparameters
 and other dependencies that produced this successful experiment to your Git
 history.
 
