@@ -50,6 +50,36 @@ Git?)
 
 ## Pushing experiments to remotes
 
+You can push an experiment to a Git repository using `dvc exp push`.
+
+```dvc
+$ dvc exp push origin exp-abc123
+```
+
+It requires the Git remote name and experiment name as arguments.
+
+It pushes the DVC tracked files in DVC cache to DVC remote automatically. If you
+want to prevent this behavior and not push these files, you can use `--no-cache`
+flag.
+
+DVC uses the default remote for pushing files in the DVC cache. If there is not
+a default DVC remote, it asks to define one by `dvc remote default <remote>`. If
+you don't want to have a default remote, or if there are more than one DVC
+remote defined in the project, you can select the remote that will be used by
+`--remote / -r` option.
+
+DVC is able to use multiple processes to push DVC-cached files. Set the number
+of jobs with `--jobs / -j` option. Please note that increase in performance is
+dependent to available bandwidth and remote (cloud) server configurations. For
+very large number of jobs, you may have side effects in your local network or
+system.
+
+DVC has a caching mechanism called _Run-Cache_ that stores the artifacts from
+intermediate stages. For example, if there is an intermediate step that applies
+data-augmentation on the dataset and you would like to push these artifacts as
+well as the end products of the experiments, you can use `--run-cache` flag to
+push all of these to the DVC remote.
+
 ## Listing experiments in remotes
 
 ## Pulling experiments from remotes
