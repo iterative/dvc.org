@@ -12,8 +12,4 @@ restylers:
         '--use-tabs=false',
         '--prose-wrap=always',
       ]
-    include:
-      - './*.{js,md}'
-      - 'pages/**/*.js'
-      - 'content/**/*.md'
-      - 'src/**/*.js'
+    include: ['**/*.{js,json,md,yaml,yml}']
