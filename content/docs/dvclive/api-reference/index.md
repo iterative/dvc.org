@@ -1,7 +1,7 @@
 # API Reference
 
 [DVCLive](https://github.com/iterative/dvclive) is a Python library, which can
-be installed vía `pip`: `pip install dvclive`.
+be installed with: `pip install dvclive`.
 
 This reference provides the details about the functions in the API module
 `dvclive`, which can be imported any regular way, for example:
