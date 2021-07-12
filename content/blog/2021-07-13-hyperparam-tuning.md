@@ -2,17 +2,18 @@
 title: Tuning Hyperparameters with Reproducible Experiments
 date: 2021-07-13
 description: |
-  Since hyperparameter tuning is a common task in ML, it's important to know the values and changes that lead to the model you want to push to production. When you use DVC, you'll be able to track all of the changes you make that give you the optimum model. We'll show examples of grid search and random search.
+  Using DVC, you'll be able to track the changes that give you an ideal model.
 
 descriptionLong: |
-  It's easy to lose track of which changes gave you the best result when you start exploring multiple model architectures. Tracking the changes in your hyperparameter values, along with code and data changes, will help you build a more efficient model by giving you an exact reproduction of the conditions that made the model better. We'll go through an example of grid search and random search using DVC.
+  It's easy to lose track of which changes gave you the best result when you start exploring multiple model architectures. Tracking the changes in your hyperparameter values, along wzith code and data changes, will help you build a more efficient model by giving you an exact reproduction of the conditions that made the model better. We'll go through an example of grid search and random search using DVC.
 
 picture: 2021-07-13/hyperparameters-july-website.png
 pictureComment: Tuning Hyperparameters with Reproducible Experiments
 author: milecia_mcgregor
-commentsUrl: https://discuss.dvc.org/t/utilizing-custom-git-references-in-dvc/727
+commentsUrl: https://discuss.dvc.org/t/tuning-hyperparameters-with-reproducible-experiments/821
 tags:
   - MLOps
+  - DVC
   - Git
   - Experiments
   - Reproducibility
@@ -86,19 +87,25 @@ $ python -m venv .venv
 
 After you've cloned the repo, install all of the dependencies with this command.
 
-`pip install -r requirements.txt`
+```
+pip install -r requirements.txt
+```
 
 You should be able to open your terminal and run an experiment with the
 following command.
 
-`dvc exp run`
+```dvc
+$ dvc exp run
+```
 
 This will trigger the training process to run and it will record the
 [average precision](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html)
 of your model. You can check out the results of your experiment with the
 following command.
 
-`dvc exp show --no-timestamp --include-params train.n_est,train.min_split`
+```dvc
+$ dvc exp show --no-timestamp --include-params train.n_est,train.min_split
+```
 
 _We're adding a few options here to make the table view clearer. We aren't
 showing timestamps and we're only looking at two hyperparameter values. You can
@@ -131,7 +138,7 @@ new hyperparameter values for each experiment run. The command syntax for
 creating queues looks like this:
 
 ```dvc
-dvc exp run --queue --set-param train.min_split=8
+$ dvc exp run --queue --set-param train.min_split=8
 ```
 
 In the example queue above, we're updating the `train.min_split` value that's
@@ -166,20 +173,22 @@ and create queued experiments for them using `subprocess`.
 
 You can run this script now and generate your queue with this command.
 
-`python src/grid_search.py`
+```python
+$ python src/grid_search.py
+```
 
 You'll see some outputs in the terminal telling you that your experiments have
 been queued. Then you can run them all with the following command.
 
 ```dvc
-dvc exp run --run-all
+$ dvc exp run --run-all
 ```
 
 This will run every experiment that has been queued. Once all of those have run,
 take a look at your metrics for each experiment.
 
 ```dvc
-dvc exp show --include-params=train.min_split,train.n_est --no-timestamp
+$ dvc exp show --include-params=train.min_split,train.n_est --no-timestamp
 ```
 
 Your table should look similar to this when you run the command above. We've
