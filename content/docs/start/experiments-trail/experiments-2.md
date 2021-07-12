@@ -163,7 +163,7 @@ number of parallel processes using `--jobs`:
 $ dvc exp run --run-all --jobs 2
 ```
 
-## Comparing experiments
+## ↔️ Comparing experiments
 
 The experiments are run several times with different parameters. We use
 `dvc exp show` to compare all of these experiments. This command presents the
@@ -307,7 +307,7 @@ tracks the changes and updates them with `--set-param`.
 
 DVC is ready to run the experiments now!
 
-## Go Further
+## 🪐 Go Further
 
 There are many other features of `dvc exp`, like cleaning up the unused
 experiments, sharing them without committing into Git or getting differences

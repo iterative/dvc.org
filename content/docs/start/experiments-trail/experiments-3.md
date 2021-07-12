@@ -201,7 +201,7 @@ number of parallel processes using `--jobs`:
 $ dvc exp run --run-all --jobs 2
 ```
 
-## Comparing experiments
+## ↔️ Comparing experiments
 
 The experiments are run several times with different parameters. We use
 `dvc exp show` to compare all of these experiments. This command presents the
@@ -308,7 +308,7 @@ You can refer to the experiment in `dvc exp apply` or `dvc exp branch` after
 running the experiment with the name starting with `exp-`, or the name you have
 supplied with `dvc exp run --name`.
 
-## Go Further
+## 🪐 Go Further
 
 There are many other features of `dvc exp`, like cleaning up the unused
 experiments, sharing them without committing into Git or getting differences
