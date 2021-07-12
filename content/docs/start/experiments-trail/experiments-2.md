@@ -20,13 +20,13 @@ will explore the basic features of DVC experiment management with
 
 <details>
 
-## Installing the Project
+## ⚙️ Installing the Project
 
 These commands are run in the [`get-started-experiments`][gse] project. You can
 run the commands in this document after cloning the repository and installing
 the requirements.
 
-### Clone the project and create virtual environment
+### 👥 Clone the project and create virtual environment
 
 Please clone the project and create a virtual environment.
 
@@ -41,7 +41,7 @@ $ . .venv/bin/activate
 $ python -m pip install -r requirements.txt
 ```
 
-### Get the data set
+### 📀 Get the data set
 
 The repository we cloned doesn't contain the dataset. In order to get the
 dataset we use `dvc pull` to update the missing data files. `dvc pull` is used
@@ -63,33 +63,28 @@ experiments, please refer to the last section.
 
 </details>
 
-## Running the experiment with default parameters
+## 👟 Running the experiment with default parameters
 
 The purpose of `dvc exp` subcommands is to run the pipeline for ephemeral
 experiments. By _ephemeral_ we mean the experiments can be run without
 committing parameter and dependency changes to Git. Instead the artifacts
 produced for each experiment are tracked by DVC and persisted on demand.
 
-Running the experiment with default hyperparameter values requires only the
-command:
+Running the experiment with default project settings requires only the command:
 
 ```dvc
 $ dvc exp run
 ...
 Reproduced experiment(s): exp-7683f
 Experiment results have been applied to your workspace.
-
-To promote an experiment to a Git branch run:
-
-        dvc exp branch <exp>
+...
 ```
 
-It runs the pipeline starting from the basic dependencies and produces
-`metrics.json` file for the default state.
+It runs the specified command that writes the metrics values to `metrics.json`.
 
 <details>
 
-### If you used `dvc repro` before
+### 📜 If you used `dvc repro` before
 
 Earlier versions of DVC uses `dvc repro` to run the pipeline. If you already
 have a DVC project, you may already be using `dvc repro`.
@@ -109,7 +104,7 @@ not needed.
 
 </details>
 
-## Running the experiment by setting parameters
+## 🧥 Running the experiment by setting parameters
 
 Now let's do some more experimentation.
 
@@ -142,7 +137,7 @@ $ git diff params.yaml
 +  conv_units: 24
 ```
 
-## Run multiple experiments in parallel
+## 🏃‍♂️🏃🏾‍♂️🏃🏻‍♂️ Run multiple experiments in parallel
 
 Instead of running the experiments one-by-one, we can define them to run in a
 batch. This is especially handy when you have long running experiments.
@@ -161,13 +156,12 @@ $ dvc exp run --queue -S model.conv_units=256
 Queued experiment '8bb6049' for future execution.
 ```
 
-Next, run all (`--run-all`) queued experiments in parallel (using `--jobs`):
+Next, run all (`--run-all`) queued experiments in parallel. You can specify the
+number of parallel processes using `--jobs`:
 
 ```dvc
 $ dvc exp run --run-all --jobs 2
 ```
-
-It runs all the experiments, with the specified number of processes in parallel.
 
 ## Comparing experiments
 
@@ -194,9 +188,9 @@ $ dvc exp show --no-timestamp \
 
 ![](/img/start-dvc-exp-show-no-timestamp-210704.png)
 
-## Persisting experiments
+## 🔏 Persisting experiments
 
-After selecting a experiments from the table, you can commit the hyperparameters
+After selecting an experiment from the table, you can commit the hyperparameters
 and other dependencies that produced this successful experiment to your Git
 history.
 
@@ -229,7 +223,7 @@ To switch to the new branch run:
 
 You can then checkout and continue from working this branch as usual.
 
-## Note on experiment names
+## 📛 Note on experiment names
 
 When you create an experiment, DVC generates a hash value from the contents of
 the experiment. This is shown when you use `--queue` option, e.g.,
@@ -276,7 +270,7 @@ You can refer to the experiment in `dvc exp apply` or `dvc exp branch` after
 running the experiment with the name starting with `exp-`, or the name you have
 supplied with `dvc exp run --name`.
 
-## Preparing a project for DVC experiments
+## ⏲ Preparing a project for DVC experiments
 
 At the beginning of this document, we assumed that there is already a configured
 DVC project to simplify the introduction. DVC experiments are a feature added in
