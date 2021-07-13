@@ -9,8 +9,8 @@ Modify the configuration of a [data remote](/doc/command-reference/remote).
 ## Synopsis
 
 ```usage
-usage: dvc remote modify [-h] [--global | --system | --project | --local] [-q | -v]
-                         [-u]
+usage: dvc remote modify [-h] [--global | --system | --project | --local]
+                         [-q | -v] [-u]
                          name option [value]
 
 positional arguments:
@@ -528,19 +528,22 @@ more information.
                       path/to/file.json
   ```
 
-- `gdrive_service_account_user_email` - email of a user account to
-  [impersonate](https://developers.google.com/admin-sdk/directory/v1/guides/delegation)
-  with the service account. Optional when `gdrive_use_service_account` is on.
-  DVC requires domain-wide authority delegated to service account to include
-  following OAuth Scopes (authorised in Google Workspace Admin console):
+- `gdrive_service_account_user_email` - email of a user account whose authority
+  should be [delegated] to the service account.
+
+  ```dvc
+  $ dvc remote modify myremote \
+                 gdrive_service_account_user_email 'myemail-addr'
+  ```
+
+  Domain-wide delegation of authority is required to include the following OAuth
+  Scopes (authorized in Google Workspace Admin console):
 
   - `https://www.googleapis.com/auth/drive`
   - `https://www.googleapis.com/auth/drive.appdata`
 
-  ```dvc
-  $ dvc remote modify myremote \
-                      gdrive_service_account_user_email 'myemail-addr'
-  ```
+[delegated]:
+  https://developers.google.com/admin-sdk/directory/v1/guides/delegation
 
 </details>
 

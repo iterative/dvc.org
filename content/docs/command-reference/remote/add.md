@@ -8,8 +8,8 @@ Add a new [data remote](/doc/command-reference/remote).
 ## Synopsis
 
 ```usage
-usage: dvc remote add [-h] [--global | --system | --project | --local] [-q | -v]
-                      [-d] [-f]
+usage: dvc remote add [-h] [--global | --system | --project | --local]
+                      [-q | -v] [-d] [-f]
                       name url
 
 positional arguments:

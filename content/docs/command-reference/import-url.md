@@ -76,7 +76,6 @@ DVC supports several types of external locations (protocols):
 | --------- | ---------------------------- | --------------------------------------------- |
 | `s3`      | Amazon S3                    | `s3://bucket/data`                            |
 | `azure`   | Microsoft Azure Blob Storage | `azure://container/data`                      |
-| `gdrive`  | Google Drive                 | `gdrive://<folder-id>/data`                   |
 | `gs`      | Google Cloud Storage         | `gs://bucket/data`                            |
 | `ssh`     | SSH server                   | `ssh://user@example.com/path/to/data`         |
 | `hdfs`    | HDFS to file\*               | `hdfs://user@example.com/path/to/data.csv`    |
@@ -87,9 +86,9 @@ DVC supports several types of external locations (protocols):
 
 > If you installed DVC via `pip` and plan to use cloud services as remote
 > storage, you might need to install these optional dependencies: `[s3]`,
-> `[azure]`, `[gdrive]`, `[gs]`, `[oss]`, `[ssh]`. Alternatively, use `[all]` to
-> include them all. The command should look like this: `pip install "dvc[s3]"`.
-> (This example installs `boto3` library along with DVC to support S3 storage.)
+> `[azure]`, `[gs]`, `[oss]`, `[ssh]`. Alternatively, use `[all]` to include
+> them all. The command should look like this: `pip install "dvc[s3]"`. (This
+> example installs `boto3` library along with DVC to support S3 storage.)
 
 \* Notes on remote locations:
 

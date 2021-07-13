@@ -1,8 +1,8 @@
 {
   "hero": [
     {
-      "pictureDesktop": "/img/community/hiring_cm_desktop.png",
-      "pictureMobile": "/img/community/hiring_cm_mobile.png",
+      "pictureDesktop": "/img/community/hiring_da_desktop.png",
+      "pictureMobile": "/img/community/hiring_da_mobile.png",
       "url": "https://docs.google.com/document/d/13r0KaxRdQR6srOZdIzL9ZgBL4eOdPCl7foc3cxx0xjA/edit?usp=sharing",
       "expires": false
     }
@@ -48,47 +48,71 @@
   ],
   "userContent": [
     {
-      "url": "https://medium.com/acing-ai/ml-ops-data-science-version-control-5935c49d1b76",
-      "title": "ML Ops: Data Science Version Control",
-      "author": "Vimarsh Karbhari",
-      "date": "2020-04-23",
-      "pictureUrl": "/img/community/ugc/medium_logo.png"
+      "url": "https://www.sicara.ai/blog/dvc-streamlit-webui-ml",
+      "title": "How to Build Customizable Web UI for ML with Streamlit on top of DVC",
+      "author": "Antoine Toubhans",
+      "date": "2021-06-22",
+      "pictureUrl": "/img/community/ugc/streamlit.png"
     },
     {
-      "url": "https://mribeirodantas.xyz/blog/index.php/2020/03/05/r-dvc-and-rmarkdown/",
-      "title": "Manage your Data Science Project in R",
-      "author": "Marcel Ribeiro-Dantas",
-      "date": "2020-03-05",
-      "pictureUrl": "/img/community/ugc/marcel.jpg"
+      "url": "https://www.youtube.com/watch?v=s8Jj9gzQ3xA",
+      "title": "Building an ML Platform from Scratch: Live Coding Session",
+      "author": "Alon Gubkin",
+      "date": "2021-06-11",
+      "pictureUrl": "/img/community/ugc/alon-gubkin.png"
     },
     {
-      "url": "https://blog.codecentric.de/en/2020/01/remote-training-gitlab-ci-dvc/",
-      "title": "Remote training with GitLab-CI and DVC",
-      "author": "Marcel Mikl and Bert Besser",
-      "date": "2020-01-28",
-      "pictureUrl": "/img/community/ugc/codecentric.png"
+      "url": "https://medium.com/@7genblogger/reflinks-vs-symlinks-vs-hard-links-and-how-they-can-help-machine-learning-projects-b77b89cdbab1",
+      "title": "Reflinks vs Symlinks vs Hard Links, and How They Can Help Machine Learning Projects",
+      "author": "David Herron",
+      "date": "2021-04-28",
+      "pictureUrl": "/img/community/ugc/reflinks.png"
     }
   ],
   "events": [
     {
-      "url": "https://www.meetup.com/DVC-Community-Virtual-Meetups/events/278729121/",
-      "title": "DVC June Office Hours Meetup",
-      "description": "At this month's Meetup, Community member and Contribuotor, Sami Jawhar, will show experiment use cases with DVC",
+      "url": "https://www.meetup.com/DVC-Community-Virtual-Meetups/events/279153207/",
+      "title": "DVC Learn - Getting Started with Data Version Control",
+      "description": "New to DVC or kicking the tires?  Bring your questions; this Meetup is for you!",
       "city": "Virtual",
-      "date": "2021-06-24",
+      "date": "2021-07-14",
+      "pictureUrl": "/img/community/events/dvc_learn.png"
+    },
+    {
+      "url": "https://hasgeek.com/fifthelephant/mlops-conference/schedule",
+      "title": "HasGeek",
+      "description": "Milecia McGregor presents at HasGeek Conference from Fifth Elephant on Tuning Hyperparameters with DVC Experiments",
+      "city": "Virtual, Miami, FL",
+      "date": "2021-07-23",
+      "pictureUrl": "/img/community/events/hasgeek.png"
+    },
+    {
+      "url": "https://www.datasciencego.com/virtual",
+      "title": "Jervis Hui presents Top 3 Requirements for Effective MLOps",
+      "description": "On day two of this three day Conference, Jervis Hui presents on must haves for effective productionalization of Data Science Projects",
+      "city": "Virtual",
+      "date": "2021-07-24",
+      "pictureUrl": "/img/community/events/dsgo.png"
+    },
+    {
+      "url": "https://www.meetup.com/DVC-Community-Virtual-Meetups/events/279024694/?isFirstPublish=true",
+      "title": "DVC July Office Hours Meetup",
+      "description": "For our R loving community members, João Santiago introduces 'dvcru' and DVC Studio demo, discussion and feedback",
+      "city": "Virtual",
+      "date": "2021-07-28",
       "pictureUrl": "/img/community/events/office-hours-meetup.png"
     },
     {
-      "url": "https://global.pydata.org/talks/devops-for-science-using-continuous-integration-for-rigorous-and-reproducible-analysis",
-      "title": "PyData Global",
-      "description": "Elle O'Brien presents 'DevOps for science: using continuous integration for rigorous and reproducible analysis'",
+      "url": "https://www.igniteinnovationfl.com/",
+      "title": "Ignite Innovation Developer Conference",
+      "description": "Milecia McGregor will present on Using Reproducible Experiments To Create Better Machine Learning Models",
       "city": "Virtual",
-      "date": "2020-11-14",
-      "pictureUrl": "/img/community/events/pydata.png"
+      "date": "2021-08-06",
+      "pictureUrl": "/img/community/events/ignite-innovation.png"
     }
   ],
   "stats": {
-    "users": "1800+",
-    "messages": "50K+"
+    "users": "5500+",
+    "messages": "1800+"
   }
 }

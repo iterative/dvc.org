@@ -15,7 +15,7 @@ descriptionLong: |
   🚀 Info on our growing team, and more!
 picture: 2021-06-18/june21cover.png
 author: jeny_defigueiredo
-commentsUrl: https://discuss.dvc.org/t/june-21-heartbeat/793?
+commentsUrl: https://discuss.dvc.org/t/june-21-heartbeat/793
 tags:
   - Heartbeat
   - DVC
