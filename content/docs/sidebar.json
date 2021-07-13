@@ -591,6 +591,10 @@
           {
             "slug": "init",
             "label": "init()"
+          },
+          {
+            "slug": "log",
+            "label": "log()"
           }
         ]
       }
