@@ -21,12 +21,25 @@
 
   &::-webkit-scrollbar {
     -webkit-appearance: none;
-    width: 7px;
+    width: 0px;
   }
 
   &::-webkit-scrollbar-thumb {
     border-radius: 5px;
     background-color: #7e7e7e;
+  }
+
+  &.overflowTop {
+    box-shadow: inset 0px 5px 10px -10px #7e7e7e;
+  }
+
+  &.overflowBottom {
+    box-shadow: inset 0px -5px 10px -10px #7e7e7e;
+  }
+
+  &.overflowTopBottom {
+    box-shadow: inset 0px 5px 10px -10px #7e7e7e,
+      inset 0px -5px 10px -10px #7e7e7e;
   }
 }
 

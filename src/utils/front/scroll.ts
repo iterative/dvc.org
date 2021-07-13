@@ -31,6 +31,32 @@ export const useHeaderIsScrolled = (): boolean => {
 
   return headerIsCollapsedAt(y)
 }
+export const getOverflowTop = (
+  container: Element | null,
+  element: Element | null
+): number | undefined => {
+  if (!container || !element) {
+    return
+  }
+
+  const containerNodeOffset = container.getBoundingClientRect()
+  const elementNodeOffset = element.getBoundingClientRect()
+
+  return containerNodeOffset.top - elementNodeOffset.top
+}
+export const getOverflowBottom = (
+  container: Element | null,
+  element: Element | null
+): number | undefined => {
+  if (!container || !element) {
+    return
+  }
+
+  const containerNodeOffset = container.getBoundingClientRect()
+  const elementNodeOffset = element.getBoundingClientRect()
+
+  return elementNodeOffset.bottom - containerNodeOffset.bottom
+}
 
 type ScrollOptions = {
   offset?: number
@@ -41,20 +67,26 @@ type ScrollOptions = {
   ease?: (value: number) => number
 }
 
-const scrollToPosition = (node: Element, opts?: ScrollOptions): void => {
-  const htmlNode = getScrollNode()
+const scrollToPosition = (
+  node: Element,
+  opts?: ScrollOptions,
+  parent?: Element | null
+): void => {
+  const parentNode = parent || getScrollNode()
   const nodeOffset = node.getBoundingClientRect()
-  const nodePosition = htmlNode.scrollTop + nodeOffset.top + (opts?.offset || 0)
+  const parentNodeOffset = parentNode.getBoundingClientRect()
+  const top = nodeOffset.top - Math.max(parentNodeOffset.top, 0)
+  const nodePosition = parentNode.scrollTop + top + (opts?.offset || 0)
   // const headerHeight = getHeaderHeightAt(nodePosition)
   const headerHeight = getHeaderHeightAt()
   const scrollTo = Math.floor(nodePosition - headerHeight)
 
   if (!opts?.smooth) {
-    requestAnimationFrame(() => (htmlNode.scrollTop = scrollTo))
+    requestAnimationFrame(() => (parentNode.scrollTop = scrollTo))
     return
   }
 
-  scroll.top(htmlNode, scrollTo, {
+  scroll.top(parentNode, scrollTo, {
     duration: opts?.duration,
     ease: opts?.ease
   })
@@ -62,20 +94,21 @@ const scrollToPosition = (node: Element, opts?: ScrollOptions): void => {
 
 export const scrollIntoLayout = (
   node: Element | null,
-  opts?: ScrollOptions
+  opts?: ScrollOptions,
+  parent?: Element | null
 ): void => {
   if (!node) {
     return
   }
 
   if (!opts?.waitImages) {
-    return scrollToPosition(node, opts)
+    return scrollToPosition(node, opts, parent)
   }
 
   const contentRoot = document.getElementById(CONTENT_ROOT_ID)
   if (contentRoot) {
     allImagesLoadedInContainer(contentRoot).then(() =>
-      scrollToPosition(node, opts)
+      scrollToPosition(node, opts, parent)
     )
   }
 }

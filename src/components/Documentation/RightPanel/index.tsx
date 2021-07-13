@@ -6,7 +6,14 @@ import { IHeading } from '../'
 import Link from '../../Link'
 import Tutorials from '../TutorialsLinks'
 
-import { getScrollPosition, getHeaderHeight } from '../../../utils/front/scroll'
+import {
+  getScrollPosition,
+  getHeaderHeight,
+  scrollIntoLayout,
+  getOverflowTop,
+  getOverflowBottom,
+  ease
+} from '../../../utils/front/scroll'
 import { allImagesLoadedInContainer } from '../../../utils/front/images'
 
 import sharedStyles from '../styles.module.css'
@@ -34,6 +41,11 @@ const RightPanel: React.FC<IRightPanelProps> = ({
   const [currentHeadingSlug, setCurrentHeadingSlug] = useState<string | null>(
     null
   )
+  const [firstHeadingElem, setFirstHeadingElem] = useState<HTMLDivElement>(null)
+  const [lastHeadingElem, setLastHeadingElem] = useState<HTMLDivElement>(null)
+  const [overflowTop, setOverflowTop] = useState<boolean>(false)
+  const [overflowBottom, setOverflowBottom] = useState<boolean>(false)
+  const contentBlockRef = useRef<HTMLDivElement>(null)
   const updateCurrentHeader = (): void => {
     const currentScroll = getScrollPosition()
     const coordinateKeys = Object.keys(headingsOffsets)
@@ -52,6 +64,23 @@ const RightPanel: React.FC<IRightPanelProps> = ({
       : null
 
     setCurrentHeadingSlug(newCurrentHeadingSlug)
+
+    if (newCurrentHeadingSlug) {
+      const currentHeadingSlugElem = document.getElementById(
+        `link-${newCurrentHeadingSlug}`
+      )
+      const contentBlockElem = contentBlockRef.current
+
+      scrollIntoLayout(
+        currentHeadingSlugElem,
+        {
+          smooth: true,
+          duration: 100,
+          ease: ease.inOutCube
+        },
+        contentBlockElem
+      )
+    }
   }
 
   const updateHeadingsPosition = (): void => {
@@ -71,6 +100,21 @@ const RightPanel: React.FC<IRightPanelProps> = ({
     setDocumentHeight(document.documentElement.clientHeight)
   }
 
+  const updateOverflow = (): void => {
+    const contentBlockElem = contentBlockRef.current
+
+    const testOverflowTop = getOverflowTop(contentBlockElem, firstHeadingElem)
+    setOverflowTop(testOverflowTop !== undefined && testOverflowTop > 0)
+
+    const testOverflowBottom = getOverflowBottom(
+      contentBlockElem,
+      lastHeadingElem
+    )
+    setOverflowBottom(
+      testOverflowBottom !== undefined && testOverflowBottom > 0
+    )
+  }
+
   const initHeadingsPosition = (): void => {
     const root = document.querySelector('#markdown-root')
 
@@ -79,19 +123,31 @@ const RightPanel: React.FC<IRightPanelProps> = ({
 
   useEffect(() => {
     const throttledSetCurrentHeader = throttle(updateCurrentHeader, 100)
+    const throttledSetOverflow = throttle(updateOverflow, 100)
 
     document.addEventListener('scroll', throttledSetCurrentHeader)
     window.addEventListener('resize', updateHeadingsPosition)
 
+    const contentBlockElem = contentBlockRef.current
+    if (contentBlockElem) {
+      contentBlockElem.addEventListener('scroll', throttledSetOverflow)
+    }
+
     return (): void => {
       document.removeEventListener('scroll', throttledSetCurrentHeader)
       window.removeEventListener('resize', updateHeadingsPosition)
+      contentBlockElem.removeEventListener('scroll', throttledSetOverflow)
     }
   }, [updateCurrentHeader])
   useEffect(initHeadingsPosition, [headings])
+  useEffect(() => {
+    setFirstHeadingElem(document.getElementById(`link-${headings[0].slug}`))
+    setLastHeadingElem(
+      document.getElementById(`link-${headings[headings.length - 1].slug}`)
+    )
+  }, [headings])
   useEffect(updateCurrentHeader, [headingsOffsets, documentHeight])
 
-  const contentBlockRef = useRef<HTMLDivElement>(null)
   const [
     isScrollToCurrentHeadingHappened,
     setIsScrollToCurrentHeadingHappened
@@ -131,7 +187,17 @@ const RightPanel: React.FC<IRightPanelProps> = ({
             <h5 className={styles.header}>Content</h5>
             <hr className={styles.separator} />
           </div>
-          <div className={styles.contentBlock} ref={contentBlockRef}>
+          <div
+            className={cn(
+              styles.contentBlock,
+              overflowTop
+                ? overflowBottom
+                  ? styles.overflowTopBottom
+                  : styles.overflowTop
+                : overflowBottom && styles.overflowBottom
+            )}
+            ref={contentBlockRef}
+          >
             {headings.map(({ slug, text }) => (
               <div id={`link-${slug}`} key={`link-${slug}`}>
                 <Link
