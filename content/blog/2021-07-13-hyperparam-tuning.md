@@ -269,7 +269,7 @@ look at the results with
 table should look something like this.
 
 ```dvc
-                                                                                    
+┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━┓
 ┃ Experiment              ┃ avg_prec ┃ roc_auc ┃ train.min_split ┃ train.n_est ┃
 ┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━┩
 │ workspace               │  0.52048 │  0.9032 │ 2               │ 50          │
