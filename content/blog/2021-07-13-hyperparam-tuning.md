@@ -99,7 +99,7 @@ $ dvc exp run
 ```
 
 This will trigger the training process to run and it will record the
-[average precision](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html)
+[ROC-AUC](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html)
 of your model. You can check out the results of your experiment with the
 following command.
 
@@ -199,25 +199,26 @@ that's easier to read.
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━┓
 ┃ Experiment              ┃ avg_prec ┃ roc_auc ┃ train.min_split ┃ train.n_est ┃
 ┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━┩
-│ workspace               │        - │       - │ 64              │ 175         │
-│ master                  │  0.56447 │ 0.94713 │ 64              │ 100         │
-│ ├── 69b2b6a [exp-7a4a4] │  0.55514 │ 0.93507 │ 8               │ 350         │
-│ ├── 4374026 [exp-f6067] │  0.54568 │ 0.93197 │ 16              │ 350         │
-│ ├── be91808 [exp-55151] │  0.54692 │ 0.93346 │ 32              │ 350         │
-│ ├── 780e265 [exp-d864c] │  0.53356 │ 0.93591 │ 64              │ 350         │
-│ ├── 178fd7d [exp-3758e] │  0.53168 │ 0.93438 │ 128             │ 350         │
-│ ├── 907c222 [exp-0dbdd] │  0.52278 │ 0.93287 │ 256             │ 350         │
-│ ├── ec60206 [exp-5df5f] │  0.55315 │ 0.93795 │ 8               │ 400         │
-│ ├── 367d0fc [exp-f9edb] │  0.55135 │ 0.93455 │ 16              │ 400         │
-│ ├── 45a2ee6 [exp-24f26] │  0.54877 │ 0.93467 │ 32              │ 400         │
-│ ├── 967a9c2 [exp-67a0c] │  0.53505 │ 0.93703 │ 64              │ 400         │
-│ ├── bccfed8 [exp-83d3e] │  0.52921 │ 0.93681 │ 128             │ 400         │
-│ ├── a3e4182 [exp-9ecac] │  0.52573 │ 0.93606 │ 256             │ 400         │
-│ ├── 6b8424c [exp-42ba9] │  0.55812 │ 0.93587 │ 8               │ 450         │
-│ ├── d075700 [exp-d1a08] │  0.55283 │ 0.93396 │ 16              │ 450         │
-│ ├── ab1e718 [exp-3ad29] │  0.54889 │ 0.93361 │ 32              │ 450         │
-│ ├── 35cb92c [exp-4edb8] │  0.53681 │ 0.93608 │ 64              │ 450         │
-│ ├── f0f44e8 [exp-dc6c7] │  0.53642 │ 0.93525 │ 128             │ 450         │
+│ workspace               │  0.52048 │  0.9032 │ 2               │ 50          │
+│ master                  │  0.60405 │  0.9608 │ 64              │ 100         │
+│ ├── 42a9260 [exp-f9e49] │  0.54846 │ 0.91206 │ 8               │ 250         │
+│ ├── 0c288c1 [exp-c5713] │  0.54185 │ 0.93044 │ 16              │ 250         │
+│ ├── 1c353e7 [exp-3f751] │  0.55319 │ 0.92868 │ 32              │ 250         │
+│ ├── 60796ce [exp-55888] │  0.54404 │ 0.93304 │ 64              │ 250         │
+│ ├── 219cf69 [exp-7a497] │  0.53845 │ 0.92718 │ 128             │ 250         │
+│ ├── f509e5b [exp-82ef5] │  0.50472 │ 0.92853 │ 256             │ 250         │
+│ ├── 1b53d09 [exp-3bed2] │  0.54946 │ 0.91384 │ 8               │ 300         │
+│ ├── e1ca859 [exp-909bb] │   0.5484 │ 0.92869 │ 16              │ 300         │
+│ ├── 37ba228 [exp-f1bdf] │  0.55312 │ 0.92852 │ 32              │ 300         │
+│ ├── feb556b [exp-d8013] │  0.54658 │ 0.93048 │ 64              │ 300         │
+│ ├── 749f791 [exp-26de4] │  0.53962 │ 0.92486 │ 128             │ 300         │
+│ ├── 4e23773 [exp-9056d] │  0.51303 │ 0.92699 │ 256             │ 300         │
+│ ├── 39e22d1 [exp-87876] │  0.54422 │ 0.91657 │ 8               │ 350         │
+│ ├── ba81a66 [exp-23668] │  0.54991 │ 0.93008 │ 16              │ 350         │
+│ ├── 1d2f576 [exp-87c15] │  0.55072 │ 0.92795 │ 32              │ 350         │
+│ ├── f0953f9 [exp-1e8e5] │   0.5419 │ 0.92925 │ 64              │ 350         │
+│ ├── b05f4b0 [exp-9b101] │  0.53563 │ 0.92575 │ 128             │ 350         │
+│ ├── f339587 [exp-6cc38] │  0.51523 │ 0.92821 │ 256             │ 350         │
 ```
 
 Now you can see how your precision changed with each hyperparameter value
@@ -253,8 +254,8 @@ for _ in range(num_exps):
         "rand_min_split_value": random.choice([8, 16, 32, 64, 128, 256])
     }
     subprocess.run(["dvc", "exp", "run", "--queue",
-                    "--set-params", f"train.n_est={params['rand_n_est_value']}",
-                    "--set-params", f"train.min_split={params['rand_min_split_value']}"])
+                    "--set-param", f"train.n_est={params['rand_n_est_value']}",
+                    "--set-param", f"train.min_split={params['rand_min_split_value']}"])
 ```
 
 This search could be far more complex with Bayesian optimization to handle the
@@ -268,22 +269,21 @@ look at the results with
 table should look something like this.
 
 ```dvc
-┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━┓
+                                                                                    
 ┃ Experiment              ┃ avg_prec ┃ roc_auc ┃ train.min_split ┃ train.n_est ┃
 ┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━┩
-│ workspace               │        - │       - │ 64              │ 175         │
-│ master                  │  0.56447 │ 0.94713 │ 64              │ 100         │
-│ ├── a0595d9 [exp-bdc32] │  0.53676 │ 0.93661 │ 64              │ 466         │
-│ ├── 7bfecdf [exp-ade4d] │  0.53598 │ 0.93636 │ 64              │ 444         │
-│ ├── 905858e [exp-ea1e9] │  0.55186 │ 0.93499 │ 32              │ 260         │
-│ ├── a663a99 [exp-be4f9] │   0.5387 │ 0.93594 │ 128             │ 497         │
-│ ├── 89435a1 [exp-3aa24] │  0.53124 │ 0.93706 │ 64              │ 374         │
-│ ├── 1b498b9 [exp-35373] │  0.55082 │ 0.93449 │ 32              │ 485         │
-│ ├── ae5712f [exp-20859] │  0.53911 │  0.9368 │ 64              │ 497         │
-│ ├── 2e1da9b [exp-36a6a] │  0.53005 │ 0.93516 │ 128             │ 341         │
-│ ├── 62ed587 [exp-907af] │  0.55465 │ 0.93397 │ 16              │ 478         │
-│ ├── bfeb1b6 [exp-b0c9e] │  0.54642 │ 0.93379 │ 16              │ 379         │
-│ ├── 4a1f79a [exp-6be72] │  0.51682 │ 0.93819 │ 64              │ 175         │
+│ workspace               │  0.52048 │  0.9032 │ 2               │ 50          │
+│ master                  │  0.60405 │  0.9608 │ 64              │ 100         │
+│ ├── 0bc1cee [exp-8ecb5] │  0.54349 │ 0.93367 │ 64              │ 466         │
+│ ├── 664ef89 [exp-f2970] │  0.54597 │ 0.93325 │ 64              │ 444         │
+│ ├── e7aca60 [exp-7df7a] │   0.5564 │ 0.92834 │ 32              │ 260         │
+│ ├── 3561232 [exp-342cc] │  0.54692 │ 0.92549 │ 128             │ 497         │
+│ ├── c3a39ae [exp-76683] │  0.54317 │ 0.92996 │ 64              │ 374         │
+│ ├── 86c4fd9 [exp-64e82] │  0.55184 │ 0.93014 │ 32              │ 485         │
+│ ├── 50208a9 [exp-7e213] │  0.54068 │ 0.93276 │ 64              │ 497         │
+│ ├── cf21185 [exp-53a8f] │  0.53634 │ 0.92569 │ 128             │ 341         │
+│ ├── 735a673 [exp-86273] │  0.56368 │ 0.93011 │ 16              │ 478         │
+│ ├── 13d0893 [exp-55c79] │  0.55131 │ 0.92963 │ 16              │ 379         │
 ```
 
 This shows the difference in the randomly selected values and the values from
