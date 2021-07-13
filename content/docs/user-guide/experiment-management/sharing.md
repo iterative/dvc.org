@@ -82,6 +82,55 @@ push all of these to the DVC remote.
 
 ## Listing experiments in remotes
 
+DVC stores the experiments in Git repositories. In order to list an experiment
+in a repository, you can use `dvc exp list` command.
+
+With no command line options, this command lists the experiments in the current
+repository. You can supply a Git remote name to list the experiments.
+
+```dvc
+$ dvc exp list origin
+main:
+	cnn-128
+	cnn-32
+	cnn-64
+	cnn-96
+```
+
+`dvc exp list <git-remote>` lists the experiments that are referenced by the
+_current commit._ If you would like to list all experiments referenced from
+other branches and commit, use `--all` flag.
+
+```dvc
+$ dvc exp list origin --all
+0b5bedd:
+	exp-9edbe
+0f73830:
+	exp-280e9
+	exp-4cd96
+	exp-65d0a
+172b1b9:
+	exp-7424d
+190e697:
+	exp-ec039
+3426c9e:
+	exp-0680e
+39afbbc:
+	exp-21155
+        ...
+```
+
+When you don't need the parent commits', you can just get the names with
+`--names-only` option.
+
+```dvc
+$ dvc exp list origin --names-only
+cnn-128
+cnn-32
+cnn-64
+cnn-96
+```
+
 ## Pulling experiments from remotes
 
 ## Creating a separate directory for an experiment
