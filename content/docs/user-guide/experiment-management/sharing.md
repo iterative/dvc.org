@@ -1,19 +1,19 @@
 # Sharing Experiments
 
 DVC has storing and sharing facilities like remotes or shared cache for tracked
-objects. In this section we discuss an alternative way to share the experiments
+files. In this section we discuss an alternative way to share the experiments
 without committing them to Git history or branch.
 
 ## Prepare remotes to share experiments
 
-There are two types of remotes to store experiment objects. Git remotes are the
+There are two types of remotes to store experiment objects: Git remotes are the
 locations that store Git repositories. A Github/Gitlab/Bitbucket repository is
-an example for Git remote.
+an example of a Git remote.
 
 The other type of remote is the DVC remote which we add to a project using
 `dvc remote add` and manage using `dvc remote` subcommands. Basically DVC
-remotes have the same structure as <abbr>cache</abbr>, but live in the cloud.
-DVC uses these central locations to store and fetch binary files that doesn't
+remotes have the same structure as <abbr>DVC cache</abbr>, but live in the
+cloud. DVC uses these locations to store and fetch binary files that doesn't
 normally fit into Git repositories.
 
 DVC experiments use both kinds of these remotes to store objects.
@@ -66,24 +66,26 @@ DVC uses the default remote for pushing files in the DVC cache. If there is not
 a default DVC remote, it asks to define one by `dvc remote default <remote>`. If
 you don't want to have a default remote, or if there are more than one DVC
 remote defined in the project, you can select the remote that will be used by
-`--remote / -r` option.
+`--remote` / `-r` option.
 
-DVC is able to use multiple processes to push DVC-cached files. Set the number
-of jobs with `--jobs / -j` option. Please note that increase in performance is
-dependent to available bandwidth and remote (cloud) server configurations. For
-very large number of jobs, you may have side effects in your local network or
-system.
+DVC is uses multiple processes to push DVC-cached files. By default DVC uses `4
+
+- cpu_count()`processes to push the files. You can set the number of processes with`--jobs`/`-j`
+  option. Please note that increase in performance is dependent to available
+  bandwidth and remote (cloud) server configurations. For very large number of
+  jobs, you may have side effects in your local network or system.
 
 DVC has a caching mechanism called _Run-Cache_ that stores the artifacts from
 intermediate stages. For example, if there is an intermediate step that applies
-data-augmentation on the dataset and you would like to push these artifacts as
+data-augmentation on your dataset and you would like to push these artifacts as
 well as the end products of the experiments, you can use `--run-cache` flag to
-push all of these to the DVC remote.
+push all of these to the DVC remote. `--run-cache` flag pushes all artifacts
+referenced in `dvc.lock` file.
 
 ## Listing experiments in remotes
 
-DVC stores the experiments in Git repositories. In order to list an experiment
-in a repository, you can use `dvc exp list` command.
+DVC stores the experiments in Git repositories. In order to list experiments in
+a repository, you can use `dvc exp list` command.
 
 With no command line options, this command lists the experiments in the current
 repository. You can supply a Git remote name to list the experiments.
@@ -151,11 +153,22 @@ particular remote, you can specify it with `--remote` / `-r` option.
 
 DVC can use more than one process to pull DVC tracked files from remotes. You
 can set the number of processes to pull by `--jobs` / `-j` option. By default
-DVC uses `4 * cpu_count()` processes for non-SSH remotes, and `4` for SSH
-remotes.
+DVC uses `4 * cpu_count()` processes for non-SSH remotes, and `4` processes for
+SSH remotes.
 
 If there is already an experiment in the current repository with the name you're
 trying to pull, DVC won't overwrite it unless you supply `--force` flag.
+
+## Pulling all experiments from a remote
+
+Assuming all experiments have distinct names, you can create a loop to pull all
+experiments from `origin` like the following.
+
+```dvc
+dvc exp list --all --names-only | while read -r expname ; do
+    dvc exp pull origin ${expname}
+done
+```
 
 ## Creating a separate directory for an experiment
 
@@ -183,16 +196,18 @@ $ dvc exp list origin
 main:
    ...
    exp-abc12
+   ...
 ```
 
-If there is no central remote, and there is no means to set up one, you can
-define the original repository's DVC cache as a _remote_ in the clone.
+If there is no DVC remote in the original repository, and there is no means to
+set up one, you can define the original repository's DVC cache as a _remote_ in
+the clone.
 
 ```dvc
 $ dvc remote add --local --default storage ~/my-project/.dvc/cache
 ```
 
-If there is central remote for the project, assuming all DVC cache in
+If there is a DVC remote for the project, assuming all DVC cache in
 `~/my-project` repository is pushed to it, you can pull an experiment in the
 clone:
 
@@ -212,7 +227,7 @@ artifacts.
 
 ---
 
-BELOW is from GS:Experiments
+> BELOW is from GS:Experiments and will be removed
 
 ## Sharing Experiment
 
