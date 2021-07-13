@@ -160,17 +160,17 @@ header (first row) are equivalent to field names.
 
 ## HTML templates
 
-It's possible to supply an HTML file to
-`dvc plot show` and `dvc plot diff` by using the the `--html-template` option.
-This allows you to customize the container where DVC will inject plots it generates.
+It's possible to supply an HTML file to `dvc plot show` and `dvc plot diff` by
+using the the `--html-template` option. This allows you to customize the
+container where DVC will inject plots it generates.
 
 > ⚠️ This is a separate feature from
 > [custom Vega templates](/doc/command-reference/plots#custom-templates).
 
 The only requirement for this HTML file is to specify the place to inject plots
-with a `{plot_divs}` marker.
-See an [example](/doc/command-reference/plots#example-for-the-html-template) that
-uses this feature to render DVC plots without an Internet connection, below.
+with a `{plot_divs}` marker. See an
+[example](/doc/command-reference/plots#example-for-the-html-template) that uses
+this feature to render DVC plots without an Internet connection, below.
 
 ## Options
 
