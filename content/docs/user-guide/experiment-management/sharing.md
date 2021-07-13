@@ -133,6 +133,30 @@ cnn-96
 
 ## Pulling experiments from remotes
 
+When you clone a DVC repository from a Git remote, it doesn't clone any
+experiments. In order to get the experiments, use `dvc exp pull` command with
+the Git remote and the experiment name.
+
+```dvc
+$ dvc exp pull origin cnn-64
+```
+
+It pulls all the text files from Git repository and DVC tracked files from DVC
+remote. You need to have both of these remote configured in your project. See
+[above](#prepare-remotes-to-share-experiments) for information regarding remote
+configuration.
+
+When you don't have a default DVC remote, or would like to ask DVC to use a
+particular remote, you can specify it with `--remote` / `-r` option.
+
+DVC can use more than one process to pull DVC tracked files from remotes. You
+can set the number of processes to pull by `--jobs` / `-j` option. By default
+DVC uses `4 * cpu_count()` processes for non-SSH remotes, and `4` for SSH
+remotes.
+
+If there is already an experiment in the current repository with the name you're
+trying to pull, DVC won't overwrite it unless you supply `--force` flag.
+
 ## Creating a separate directory for an experiment
 
 A very common use case for experiments is to create a separate local directory
