@@ -68,12 +68,11 @@ you don't want to have a default remote, or if there are more than one DVC
 remote defined in the project, you can select the remote that will be used by
 `--remote` / `-r` option.
 
-DVC is uses multiple processes to push DVC-cached files. By default DVC uses `4
-
-- cpu_count()`processes to push the files. You can set the number of processes with`--jobs`/`-j`
-  option. Please note that increase in performance is dependent to available
-  bandwidth and remote (cloud) server configurations. For very large number of
-  jobs, you may have side effects in your local network or system.
+DVC uses multiple threads to push DVC-cached files. By default DVC uses 4x
+`cpu_count()` threads to push the files. You can set the number of threads
+with`--jobs`/`-j` option. Please note that increase in performance is dependent
+to available bandwidth and remote (cloud) server configurations. For very large
+number of jobs, you may have side effects in your local network or system.
 
 DVC has a caching mechanism called _Run-Cache_ that stores the artifacts from
 intermediate stages. For example, if there is an intermediate step that applies
@@ -151,10 +150,9 @@ configuration.
 When you don't have a default DVC remote, or would like to ask DVC to use a
 particular remote, you can specify it with `--remote` / `-r` option.
 
-DVC can use more than one process to pull DVC tracked files from remotes. You
-can set the number of processes to pull by `--jobs` / `-j` option. By default
-DVC uses `4 * cpu_count()` processes for non-SSH remotes, and `4` processes for
-SSH remotes.
+DVC can use more than one thread to pull DVC tracked files from remotes. You can
+set the number of threads to pull by `--jobs` / `-j` option. By default DVC uses
+4 x `cpu_count()` threads for non-SSH remotes, and 4 threads for SSH remotes.
 
 If there is already an experiment in the current repository with the name you're
 trying to pull, DVC won't overwrite it unless you supply `--force` flag.
@@ -165,8 +163,8 @@ Assuming all experiments have distinct names, you can create a loop to pull all
 experiments from `origin` like the following.
 
 ```dvc
-dvc exp list --all --names-only | while read -r expname ; do
-    dvc exp pull origin ${expname}
+$ dvc exp list --all --names-only | while read -r expname ; do \
+    dvc exp pull origin ${expname} \
 done
 ```
 
