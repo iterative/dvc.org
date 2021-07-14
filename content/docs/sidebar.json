@@ -595,6 +595,10 @@
           {
             "slug": "log",
             "label": "log()"
+          },
+          {
+            "slug": "next_step",
+            "label": "next_step()"
           }
         ]
       }
