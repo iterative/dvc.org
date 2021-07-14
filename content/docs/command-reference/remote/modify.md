@@ -334,7 +334,7 @@ storage. Whether they're effective depends on each storage platform.
 - `account_name` (required) - storage account name
 
   ```dvc
-  $ dvc remote modify myremote account_name 'myuser'
+  $ dvc remote modify myremote account_name 'your_storage_account_name'
   ```
 
 By default, DVC authenticates using an `account_name` and its
@@ -343,7 +343,7 @@ By default, DVC authenticates using an `account_name` and its
 application. To use a custom authentication method, use the following parameters
 (listed in order of precedence):
 
-1. `connection_string` is used for authentication if given (all others params
+1. `connection_string` is used for authentication if given (all others parameters
    are ignored).
 2. If `tenant_id` and `client_id` or `client_secret` are given, Active Directory
    (AD)
@@ -406,7 +406,42 @@ application. To use a custom authentication method, use the following parameters
   ```dvc
   $ dvc remote modify myremote allow_anonymous_login true
   ```
+**Authentication examples:**
 
+Authentication example with `connection_string`:
+
+```dvc
+$ dvc remote add -d myremote azure://mycontainer/object
+$ dvc remote modify --local myremote connection_string 'storageaccountaccesskeyconnectionstring'
+$ dvc remote push
+```
+  
+Authentication example with currently logged in az cli user/identity:
+
+```dvc
+$ dvc remote add -d myremote azure://mycontainer/object
+$ dvc remote modify myremote account_name 'mystorageaccountname'
+$ dvc remote push
+```
+  
+Authentication example with `account_key`:
+
+```dvc
+$ dvc remote add -d myremote azure://mycontainer/object
+$ dvc remote modify --local myremote account_name 'mystorageaccountname'
+$ dvc remote modify --local myremote account_key 'mystorageaccountaccesskey'
+$ dvc remote push
+```
+  
+Authentication example with `sas_token`:
+
+```dvc
+$ dvc remote add -d myremote azure://mycontainer/object
+$ dvc remote modify --local myremote account_name 'mystorageaccountname'
+$ dvc remote modify --local myremote sas_token 'mysastoken'
+$ dvc remote push
+```  
+  
 Note that Azure remotes can also authenticate via environment variables (instead
 of `dvc remote modify`). These are tried if none of the params above are set.
 
@@ -419,7 +454,7 @@ $ export AZURE_STORAGE_CONNECTION_STRING='mysecret'
 For account name and key/token auth:
 
 ```dvc
-$ export AZURE_STORAGE_ACCOUNT='myuser'
+$ export AZURE_STORAGE_ACCOUNT='mystorageaccount'
 # and
 $ export AZURE_STORAGE_KEY='mysecret'
 # or
