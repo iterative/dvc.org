@@ -292,7 +292,7 @@ $ wget https://cdn.jsdelivr.net/npm/vega-lite@4.8.1 -O my_vega_lite.js
 $ wget https://cdn.jsdelivr.net/npm/vega-embed@6.5.1 -O my_vega_embed.js
 ```
 
-Create the following HTML file with your text editor:
+Create the following HTML file and save it in `.dvc/plots/mypage.html`:
 
 ```html
 <html>
@@ -319,7 +319,7 @@ You can also make it the default HTML template by setting it as `dvc config`
 parameter `plots.html_template`.
 
 ```dvc
-$ dvc config plots.html_template page_template.html
+$ dvc config plots.html_template plots/mypage.html
 ```
 
 Note that the path supplied to `dvc config plots.html_template` is relative to
