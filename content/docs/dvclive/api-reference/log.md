@@ -30,6 +30,10 @@ timestamp step  loss
 Each subsequent call to `dvclive.log(name, val)` will add a new row to
 `{path}/{name}.tsv`.
 
+💡 If `name` contains slashes (i.e. `train/loss`), the required subfolders will
+be created and the file will be saved inside the last subfolder (i.e.
+`{path}/train/loss.tsv`).
+
 💡 If you call `dvclive.log` without calling [`dvclive.init()`](init.md) first,
 `dvclive` will automatically initialize itself using either default values or
 environment variables (when used alongside `DVC`).
