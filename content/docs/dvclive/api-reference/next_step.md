@@ -14,7 +14,7 @@ import dvclive
 
 for step in range(3):
     dvclive.log("metric", step * step)
-    dvclive.nex_step()
+    dvclive.next_step()
 ```
 
 ## Description
