@@ -128,7 +128,7 @@ API connections, and its
    ENABLE APIS AND SERVICES**. Find and select the "Google Drive API" in the API
    Library, and click on the **ENABLE** button.
 
-   ![](/img/gdrive-enable-apis-and-services.png '=700')
+   ![](/img/gdrive-enable-apis-and-services.png)
 
 4. Go back to **APIs & Services** in the left sidebar, and select **OAuth
    consent screen**. Chose a **User Type** and click **CREATE**. On the next
@@ -139,7 +139,7 @@ API connections, and its
    credentials** dropdown to select **OAuth client ID**. Chose **Desktop app**
    and click **Create** to proceed with a default client name.
 
-   ![](/img/gdrive-create-credentials.png '=700')
+   ![](/img/gdrive-create-credentials.png)
 
 6. The newly generated **client ID** and **client secret** should be shown to
    you now, and you can always come back to **Credentials** to fetch them.
@@ -199,7 +199,7 @@ authentication is needed.
    Navigate to your Google Drive folder's sharing options and add the service
    account as an editor (read/write) or viewer (read-only):
 
-![](/img/gdrive-share-with-service-account.png '=700')
+![](/img/gdrive-share-with-service-account.png)
 
 ## Authorization
 
