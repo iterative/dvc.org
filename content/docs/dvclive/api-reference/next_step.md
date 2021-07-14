@@ -22,7 +22,7 @@ for step in range(3):
 Each call to `dvclive.next_step` will generate a _summary_ of the metrics
 previously logged with `dvclive.log` and increase the `_step` count. The
 _summary metrics_ will be saved to `{path}.json`, being `path` the one defined
-in [dvclive.init](init.md).
+in [dvclive.init](/doc/dvclive/api-reference/init).
 
 The resulting summary of the above code block would be:
 
@@ -34,10 +34,10 @@ The resulting summary of the above code block would be:
 ```
 
 💡 If you use `dvclive` alingside `DVC`, `dvclive.next_step()` will create a
-[checkpoint](../../user-guide/experiment-management/checkpoints.md).
+[checkpoint](/doc/user-guide/experiment-management/checkpoints).
 
 ## Exceptions
 
 - `dvclive.error.InitializationError` - If `dvclive` has not been properly
-  initialized (i.e. by calling [dvclive.init](init.md) or
-  [dvclive.log](log.md)).
+  initialized (i.e. by calling [dvclive.init](/doc/dvclive/api-reference/init)
+  or [dvclive.log](/doc/dvclive/api-reference/log)).
