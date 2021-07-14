@@ -48,7 +48,7 @@ removed.
 
 - `summary` (`True` by default) - if `True`, upon each
   [`dvclive.next_step`](/doc/dvclive/api-reference/next_step) call, DVCLive will
-  dump a `.json` file containing a summary of all the metrics gathered. The file
+  dump a `.json` file containing all the metrics gathered in that step. The file
   will be located at `{path}.json`.
 
 - `html` (`True` by default) - works only when DVCLive is used alongside DVC. If
