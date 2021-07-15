@@ -2,57 +2,67 @@
 
 Applying DevOps methodologies to machine learning (MLOps) and data management
 (DataOps) is increasingly common. This means resource orchestration
-(provisioning servers), testing, and deployment to production (CI/CD --
-continuous integration and continuous delivery), as well as monitoring &
-feedback.
+(provisioning servers for model training), model testing (validating model
+inference), and model deployment to production, as well as monitoring &
+feedback. [DVC](/) can manage data/models and reproducible pipelines, while
+[CML] can assist with orchestration, testing and monitoring.
+
+[cml]: https://cml.dev
 
 ![](https://static.iterative.ai/img/ml-pipeline.png) _Basic ML pipeline_
 
-The main benefits of CI/CD for ML are detailed below.
+The main benefits of CI/CD (continuous integration and continuous delivery) for
+ML are detailed below.
 
-### Automating Quality Assurance (QA)
+Firstly, we can automate and enforce testing. This includes enforcing integrity
+with application-specific tests:
 
-This concerns automating & enforcing testing. For example:
+- **Data**: for example, validation against a schema or verifying pipeline
+  consistency -- correct shapes, data types, etc.
+- **Models**: for example, input/output and performance validation -- all
+  dependencies present for inference to run, and model scores within thresholds.
 
-- Enforcing data integrity with application-specific tests (such as validation
-  against a schema or verifying pipeline consistency).
-- Enforcing model integrity with application-specific tests (such as
-  input/output and performance validation).
-- When data or code is added/changed in a pull request (PR), automatically
-  running validation tests in the cloud.
-- Automatically generate metrics reports.
+Typically, this requires **infrastructure orchestration**: making CI systems
+provision and launch a GPU instance, train a model, cleanly terminate, and pull
+results back. In particular:
 
-### Continuous Machine Learning (CML)
+- **Provisioning**: When data or code is added/changed in a pull request (PR),
+  automatically running validation tests in the cloud.
+- **Metrics**: Automatically generating metrics reports.
 
-This concerns training in the cloud. For example:
+Finally, this can be taken a step further with entire **experiments**/research
+being run online:
 
-- Infrastructure orchestration: make CI systems provision and launch a GPU
-  instance, train a model, cleanly terminate, and pull results back.
 - Fine-tune on a schedule: set up jobs to pull in new data from regularly
   updated external sources to retrain/refine deployed models.
 - Run a hyperparameter search: keep heavyweight resources and big data on CI
   servers running overnight, and put your laptop to sleep.
-
-## Helpful Tools
 
 Normally, CI/CD is hard to set up, configure, and maintain -- especially for
 data and ML pipelines.
 
 ![](https://static.iterative.ai/img/ml-vs-cicd.png) _Traditional ML meets CI/CD_
 
-DVC and CML can alleviate most (in not all) of the management headache
+[DVC](/) and [CML] can alleviate most (in not all) of the management headache
 ([hidden technical debt](https://papers.nips.cc/paper/2015/file/86df7dcfd896fcaf2674f757a2463eba-Paper.pdf))
 in ML. You can automate all of the above without needing any additional
 configuration. Here are a few feature highlights:
 
-**Models, Data, and Metrics as Code**: DVC removes the need to manage databases,
-use special file/folder structures, or write bespoke interfacing code. Instead,
-DVC works alongside Git to manage data files and folders as painlessly as code.
+**Models, Data, and Metrics as Code**: DVC removes the need to create versioning
+databases, use special file/folder structures, or write bespoke interfacing
+code. Instead, DVC works alongside Git to manage data files and folders as
+painlessly as code. DVC stores meta-information in Git ("codifying" data and ML
+models) while pushing the actual data content to
+[cloud storage](/doc/use-cases/sharing-data-and-model-files). In addition to
+simplifying data syncing in CI/CD, DVC also provides metrics-driven navigation
+in Git repositories --
+[tabulating and plotting](/doc/start/metrics-parameters-plots) model metrics
+changes across commits.
 
-**Low friction**: Our sister project [CML](https://cml.dev) provides lightweight
-machine resource orchestration that lets you use pre-existing infrastructure.
-DVC and CML both provide abstraction/codification and require no external
-services.
+**Low friction**: Our sister project CML provides
+[lightweight machine resource orchestration](https://cml.dev/doc/self-hosted-runners)
+that lets you use pre-existing infrastructure. DVC and CML both provide
+abstraction/codification and require no external services.
 
 **Data Validation**: It is common practice for tests to be triggered each time a
 code change is pushed to a repository branch. DVC can be used in a similar
@@ -65,13 +75,13 @@ deploy and deliver new versions several times a day -- and even before the
 weekend -- without fear of bugs/regressions.
 
 **Metrics (Model Validation)**: Whenever a change is committed, DVC can check
-that the pipeline (including data, parameters, code, and metrics) is up to date,
-thereby ensuring that Git commits and model artefacts are in sync. DVC can also
-run benchmarks against previously deployed models before a new one is
-[released into production](/doc/use-cases/data-registries).
-[CML](https://cml.dev) provides useful tools to make this process easy --
-including reporting metric changes with interactive graphs and tables in pull
-request comments.
+that the [pipeline](/doc/start/data-pipelines) (including data, parameters,
+code, and metrics) is up to date, thereby ensuring that Git commits and model
+artefacts are in sync. DVC can also run benchmarks against previously deployed
+models before a new one is
+[released into production](/doc/use-cases/data-registries). CML provides useful
+tools to make this process easy -- including reporting metric changes with
+interactive graphs and tables in pull request comments.
 
 **Refine in the Cloud**: Rather than frequently updating models locally (e.g.
 based on new data from regular feeds), DVC and CML let you retrain/refine in the
