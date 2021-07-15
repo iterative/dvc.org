@@ -7,12 +7,12 @@ description: |
   Meetup and a cipher. Can you figure it out?
 descriptionLong: |
   This month you will find:
-  📈 DVC + Streamlit = ❤️,
-  🇯🇵 DVC in Japanese,
-  📖 A new Udacity Course that includes DVC,
-  🧑🏽‍💻 More and more jobs requiring DVC
-  🧪 June Meetup on Experiments,
-  🚀 New team member, a secret code and more!
+  - 📈 DVC + Streamlit = ❤️,
+  - 🇯🇵 DVC in Japanese,
+  - 📖 A new Udacity Course that includes DVC,
+  - 🧑🏽‍💻 More and more jobs requiring DVC
+  - 🧪 June Meetup on Experiments,
+  - 🚀 New team member, a secret code and more!
 picture: 2021-07-16/july21cover.png
 author: jeny_defigueiredo
 commentsUrl: https://discuss.dvc.org/t/july-heartbeat/825
@@ -30,28 +30,22 @@ tags:
 
 # From the Community
 
-<span style="color:purple">A</span>s usual we have a ton of goodness from the
+<span style="color:purple">**A**</span>s usual we have a ton of goodness from the
 Community! Let's jump in!
 
-## Antoine Toubhans Post Combining Streamlit and DVC!
+## Antoine Toubhans' Post Combining Streamlit and DVC!
 
 [Antoine Toubhans](https://www.linkedin.com/in/antoine-toubhans-92262119/) of
 [Sicara](https://www.sicara.fr/) wrote a fantastic and detailed tutorial
+entitled 
+[**How to Build Customizable Web UI for Machine Learning with Streamlit and DVC**](https://www.sicara.ai/blog/dvc-streamlit-webui-ml) 
 bringing together the best of DVC and integrating it with Streamlit to provide a
-customizable UI. The tutorial goes through the steps of setting up a pipeline,
-spltting a dataset, training and evaluating a model, tracking changes to data
-and model, dvc <span style="color:purple">m</span>etrics and plots and then
-bridging the gap in visualizations using Streamlit. You won't want to miss this
-one!
+customizable UI. The tutorial <span style="color:purple">**g**</span>oes 
+through the steps of setting up a pipeline, spltting a dataset, training and 
+evaluating a model, tracking changes to data and model, dvc <span style="color:purple">**m**</span>etrics 
+and plots and then bridging the gap in visualizations using <span style="color:purple">**S**</span>treamlit. You won't want to miss this one!
 
-<external-link
-href="https://www.sicara.ai/blog/dvc-streamlit-webui-ml"
-title="How to Build Customizable Web UI for Machine Learning with Streamlit and DVC"
-description="Antoine Toubhans shares a detailed tutorial on using DVC with Streamlit to provide a customizable UI"
-link="https://www.sicara.ai/"
-image="/uploads/images/2021-07-16/streamlit.png"/>
-
-https://media.giphy.com/media/l0MYGtVSzAqKfkcEg/giphy.gif
+![](/uploads/images/2021-07-16/streamlit2.png)_DVC + Streamlit = ♥️!_
 
 ## DVC and CML in Japanese!
 
@@ -59,67 +53,70 @@ For our friends that speak Japanese,
 [these slides](https://www.slideshare.net/yusukeshibui/testing-machine-learningdevelopment)
 created by
 [Yusuke Shibui](https://www.slideshare.net/yusukeshibui?utm_campaign=profiletracking&utm_medium=sssite&utm_source=ssslideview)
-walk you through a <span style="color:purple">m</span>achine learning to
-production project using DVC and CML. We love seeing our tools being used all
+walk you through a machine learning to
+production project using D<span style="color:purple">**V**</span>C and C<span style="color:purple">**M**</span>L. We love seeing our tools being used all
 around the world! 🌏
 
-![](/uploads/images/2021-07-16/in-japanese.png)
+![](/uploads/images/2021-07-16/in-japanese.png)_DVC and CML in Japanese!_
 
-## Miguel Méndez DVC Tutorial
+## Miguel Méndez' DVC Tutorial
 
 [Miguel Méndez](https://www.linkedin.com/in/miguel-mendez/) and his team at
-[Gradiant](https://www.gradiant.org/en/) struggled with reproducibility before
-using DVC for versioning their image dataset and annotations. The dataset and
-annotaions are held in a shared storage space and used by the whole team. DVC
-enables the team to track changes and know what versions of the dataset produce
-the best results. His tutorial walks you through the steps to set it up!
+[Gradiant](https://www.gradiant.org/en/) <span style="color:purple">**s**</span>truggled
+with reproducibility before using DVC for versioning their image 
+dataset and annotations. The dataset and annotaions are held in a shared 
+storage space and used by the whole team. DVC enables the team to track changes
+and know what versions of the dataset produce the best results. His tutorial
+walks you through the steps to set it up!
 
 <external-link
 href="https://mmeendez8.github.io/2021/07/01/dvc-tutorial.html"
 title="Version Control Your Dataset with DVC"
-description="Miguel Méndez tutorial on using DVC for versioning datasets and providing reproducibility"
+description="Miguel Méndez' tutorial on using DVC for versioning datasets and providing reproducibility"
 link="https://github.io"
 image="/uploads/images/2021-07-16/git-dvc.png"/>
 
 ## Jobs requiring DVC!
 
 We have been seeing an uptick in the number of jobs requiring knowledge of DVC.
-It's exciting to see that our tools are helping these companies in their MLOps
-workflows! 🎉
+It's exciting to see that our tools are helpin<span style="color:purple">**g**</span> 
+these companies in their MLOps workflows! 🎉
 
 ![](/uploads/images/2021-07-16/job-descriptions.png)
 
 # Learning Opportunities
 
-With all those DVC job opportunities out there, you better get on it! 😉
+With all those DVC job opportunities out there, you <span style="color:purple">**b**</span>etter
+get on it! 😉
 
 ## A New Udacity Course Incorporating DVC!
 
 Just this month a new
 [Udacity](https://www.udacity.com/course/machine-learning-dev-ops-engineer-nanodegree--nd0821)
 nannodegree program came out entitled
-[**Machine Learning DevOps Engineer**](https://www.udacity.com/course/machine-learning-dev-ops-engineer-nanodegree--nd0821)
+[**Machine Learning DevOps Engineer**](https://www.udacity.com/course/machine-learning-dev-ops-engineer-nanodegree--nd0821),
 that teaches DVC as part of the program. This course includes sections on:
 
 - Clean Code Principles
-- Building a Reproducible Model Workflow
+- Building a Reproducible <span style="color:purple">**M**</span>odel Workflow
 - Deploying a Scalable ML Pipeline in Production
 - Automated Model Scoring and Monitoring
 
 <external-link
 href="https://www.udacity.com/course/machine-learning-dev-ops-engineer-nanodegree--nd0821"
-title="Machine Learning DevOpsEngineer"
+title="Machine Learning DevOps Engineer"
 description="A new nanodegree program offered by Udacity teaching DVC as part of the curriculum"
 link="https://udacity.com"
 image="/uploads/images/2021-07-16/udacity.png"/>
 
-## DVC Learn
+## DVC Lea<span style="color:purple">**r**</span>n
 
 This week we kicked off our new DVC Learn Meetup series with
-[**Milecia McGregor**](https://twitter.com/FlippedCoding). These set of three,
-short, half-hour classes are designed to get you up and running in DVC. If you
-are just getting started with DVC or kicking the tires, this Meetup series is
-for you! Our next class on August 4th will get you started with experiments.
+[**Milecia McGregor**](https://twitter.com/FlippedCoding). This set of three,
+short, half-hour classes are designed to get you up and running
+in DVC. If you are just getting started with <span style="color:purple">**D**</span>VC 
+or kicking the tires, this Meetup series is for you! Our next class on August 
+4th will get you started with experiments.
 
 If you are interested in weighing in on what kinds of educational content you
 would like to see from us, we'd be grateful if you'd fill out
@@ -140,10 +137,9 @@ New research presented in the
 practices for providing reproducibility in research datasets. This is necessary
 to pinpoint the version of the dataset that grounds any research. In this work
 the authors reviewed 39 use cases from 33 organizations to arrive at six
-principles for versioning datasets. These include Revision, Release,
-<span style="color:purple">G</span>ranularity,
-<span style="color:purple">M</span>anifestation, Provenance and Citation. See
-the full work below. 👇🏼
+principles for versioning datasets. These include **Revision**, **Release**,
+**Granularity**, **Manifestation**, <span style="color:purple">**P**</span>**rovenance** 
+and **Citation**. See the full work below. 👇🏼
 
 <external-link
 href="https://datascience.codata.org/articles/10.5334/dsj-2021-012/"
@@ -156,36 +152,28 @@ image="/uploads/images/2021-07-16/dsj.png"/>
 
 The June Office Hours Meetup was 🔥! Amazing discussion on experiments ignited
 by [Sami Jawhar](https://www.linkedin.com/in/sami-jawhar-a58b9849/) of
-[Kenel](https://www.kernel.com/) around experiment use cases and workflows.  
-You can find the repo for his presentation
-[here](https://github.com/sjawhar/dvc-cloud-runner) and watch all the great
-<span style="color:purple">D</span>VC discussion below.
+[Kernel](https://www.kernel.com/) around experiment use cases and workflows.  
+You can 
+[find the repo for his presentation here](https://github.com/sjawhar/dvc-cloud-runner) 
+and watch all the great DVC discussion below.
 
 https://youtu.be/DxZdWq3Weng
 
 # DVC News
 
-<span style="color:purple">S</span>ummer and vaccinations mean travel! ☀️💉 And
+<span style="color:purple">**S**</span>ummer and vaccinations mean travel! ☀️💉 And
 that travel has enabled some of our team members to get together! Pictured below
 are Dmitry Petrov, Alexander Guschin, Max Shmakov, Mikhail Rozhkov, Sergey
 Kryukov, Mikhail Sveshnikov, and Guro Bokum... But not necessarily in that
 order.
 
 The first person to guess the correct order of our teammates starting from the
-upper right of the picture going clockwise, and post in the corresponding
-[Twitter](https://twitter.com/DVCorg) Heartbeat post will win some DVC SWAG!
-Hint: If you've bee wondering why there are random puple letters in this blog
+upper right of the picture moving clockwise, **and** post in the corresponding
+[Twitter](https://twitter.com/DVCorg) Heartbeat post, will win some DVC SWAG!
+Hint: If you've been wondering why there are random purple letters in this blog
 post, they're a clue to this cipher. 🧐
 
-![](/uploads/images/2021-07-17/team.jpg) _Team Meetup in Moscow!_
-
-## Jobs requiring DVC!
-
-We have been seeing an uptick in the number of jobs requiring knowledge of DVC.
-It's exciting to see that our tools are helping these companies in their MLOps
-workflows! 🎉
-
-![](/uploads/images/2021-07-16/job-descriptions.png)
+![](/uploads/images/2021-07-16/team.jpg) _Team Meetup in Moscow!_
 
 ## New Team Member
 
@@ -193,8 +181,9 @@ workflows! 🎉
 is the third teammate joining us from Spain! 🇪🇸 And also the third David! He
 hails from Galicia and has been an active member of our Community for over two
 years. We are so excited to have him join the team as a software enginer where
-he will work to improve DVC Live. When he's not contributing to DVC, David likes
-to go climbing, surfing or just hiking whenever he can.
+he will wor<span style="color:purple">**k**</span> to improve DVC Live. When 
+he's not contributing to DVC, David likes to go climbing, surfing or just 
+hiking whenever he can!  Welcome David!
 
 ## Open Positions
 
@@ -223,7 +212,9 @@ July 28th at 2:00 pm UTC (7:00 am PDT), where
 [Billie](https://www.billie.io/) will present "DVThis" a set of utility
 functions for DVC pipelines using R scripts. Additionally the project aims to
 document the usual workflows of a DVC pipeline using these scripts and create
-templates for the use of DVC and R together. Additionally team member
+templates for the use of DVC and R together. 
+
+Following Santiago, team member
 [Tapa Dipti Sitaula](https://www.linkedin.com/in/tapa-dipti-sitaula/) will give
 a demo of DVC Studio! Bring your questions; we look forward to seeing you!
 
