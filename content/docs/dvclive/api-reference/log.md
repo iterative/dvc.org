@@ -4,7 +4,7 @@ Generates _plot metrics_ by saving the given `name`: `val` pair to a `.tsv`
 file.
 
 ```py
- def log(name: str, val: Union[int, float], step: int = None) -> None:
+ def log(name: str, val: float, step: int = None):
 ```
 
 #### Usage:

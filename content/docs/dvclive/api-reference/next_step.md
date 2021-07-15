@@ -4,7 +4,7 @@ Signals that the current step has ended and saves _summary metrics_ to a
 `.json`.
 
 ```py
-def next_step() -> None:
+def next_step()
 ```
 
 #### Usage:

@@ -9,7 +9,7 @@ def init(
     step: int = 0,
     summary: bool = True,
     html: bool = True,
-) -> MetricLogger:
+)
 ```
 
 #### Usage:
