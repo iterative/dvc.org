@@ -53,7 +53,7 @@ removed.
 
 - `html` (`True` by default) - works only when DVCLive is used alongside DVC. If
   `True`, upon each [`dvclive.next_step`](/doc/dvclive/api-reference/next_step)
-  call, DVC will prepare an html report with all the _plot metrics_ logged in
+  call, DVC will prepare an html report with all the _metrics logs_ logged in
   `path`.
 
 ## Exceptions
