@@ -334,7 +334,7 @@ storage. Whether they're effective depends on each storage platform.
 - `account_name` (required) - storage account name
 
   ```dvc
-  $ dvc remote modify myremote account_name 'your_storage_account_name'
+  $ dvc remote modify myremote account_name 'mystorageaccountname'
   ```
 
 By default, DVC authenticates using an `account_name` and its
@@ -343,8 +343,8 @@ By default, DVC authenticates using an `account_name` and its
 application. To use a custom authentication method, use the following parameters
 (listed in order of precedence):
 
-1. `connection_string` is used for authentication if given (all others parameters
-   are ignored).
+1. `connection_string` is used for authentication if given (all others params
+   are ignored / should be removed from the config).
 2. If `tenant_id` and `client_id` or `client_secret` are given, Active Directory
    (AD)
    [service principal](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal)
