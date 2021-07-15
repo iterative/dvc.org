@@ -13,9 +13,11 @@ Then, on each Git commit, the CI/CD setup will get invoked. If this setup
 includes a model training process, it will be triggered, which means that your
 ML experiment will run automatically.
 
-For more details on how to set up CI/CD pipelines for your ML project, refer to
-[CML](https://cml.dev). You can use any cloud or Kubernetes for the model
-training process. CML also generates a report after the CI/CD setup executes.
+For more details on how to set up
+[CI/CD pipelines for your ML project](/doc/use-cases/ci-cd-for-machine-learning),
+refer to [CML](https://cml.dev). You can use any cloud or Kubernetes for the
+model training process. CML also generates a report after the CI/CD setup
+executes.
 
 > Due to access restrictions, you cannot run experiments on the demo view
 > (`example-get-started`) that is provided to you by default. Once you create
@@ -72,9 +74,10 @@ If your project is integrated with a CI/CD setup (e.g. GitHub Actions), the
 CI/CD setup will get invoked. If this setup includes a model training process,
 it will be triggered, which means that your ML experiment will run
 automatically. The model training can happen on any cloud or Kubernetes. For
-more details on how to set up CI/CD pipelines for your ML project, refer to
-[CML](https://cml.dev). You can also create CML reports with metrics, plots or
-other details at the end of each experiment run.
+more details on how to set up
+[CI/CD pipelines for your ML project](/doc/use-cases/ci-cd-for-machine-learning),
+refer to [CML](https://cml.dev). You can also create CML reports with metrics,
+plots or other details at the end of each experiment run.
 
 Once the experiment completes, its metrics will be available in the view table.
 You can then generate plots and trend charts for it, or compare it with the
