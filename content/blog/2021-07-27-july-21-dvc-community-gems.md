@@ -11,14 +11,13 @@ descriptionLong: |
   troubleshooting remotes, and more.
 picture: 2021-07-27/gems-cover.png
 author: milecia_mcgregor
-commentsUrl: https://discuss.dvc.org/t/july-21-community-gems/779
+commentsUrl: https://discuss.dvc.org/t/july-21-community-gems/823
 tags:
   - Community
   - Runners
   - Remotes
   - CML
   - DVC
-  - Gems
 ---
 
 ### [Q: I'm trying to use the `--reuse` option of `cml-runner`. If I launch 2 CML experiments in parallel, will CML use the same runner or spin up another one if the existing one is in use?](https://discord.com/channels/485586884165107732/728693131557732403/850340190434492445)
@@ -107,7 +106,7 @@ Nice job working with the Python API @harry134!
 
 You can use the `Repo` API like this.
 
-```dvc
+```python
 from dvc.repo import Repo
 
 repo = Repo()
