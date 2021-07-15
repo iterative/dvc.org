@@ -47,8 +47,8 @@ a model, tracking changes to data and model, dvc
 gap in visualizations using <span style="color:purple">**S**</span>treamlit. You
 won't want to miss this one!
 
-![DVC and Streamlit](/uploads/images/2021-07-16/streamlit2.png) _DVC + Streamlit = ♥️!
-[Source link](https://www.sicara.ai/blog/dvc-streamlit-webui-ml)_
+![DVC and Streamlit](/uploads/images/2021-07-16/streamlit2.png) _DVC + Streamlit
+= ♥️! [Source link](https://www.sicara.ai/blog/dvc-streamlit-webui-ml)_
 
 ## DVC and CML in Japanese!
 
@@ -61,7 +61,8 @@ D<span style="color:purple">**V**</span>C and
 C<span style="color:purple">**M**</span>L. We love seeing our tools being used
 all around the world! 🌏
 
-![DVC and CML in Japanese](/uploads/images/2021-07-16/in-japanese.png) _DVC and CML in Japanese!
+![DVC and CML in Japanese](/uploads/images/2021-07-16/in-japanese.png) _DVC and
+CML in Japanese!
 [Source link](https://www.slideshare.net/yusukeshibui/testing-machine-learningdevelopment)_
 
 ## Miguel Méndez' DVC Tutorial
