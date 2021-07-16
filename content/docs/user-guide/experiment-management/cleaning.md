@@ -1,10 +1,12 @@
 # Cleaning Up Experiments
 
-## Cleaning Local Experiments
+## Removing Local Experiments
 
-## Cleaning Experiments in Remotes
+## Removing Experiments in Remotes
 
-## Cleaning DVC tracked Experiment Objects
+## Deleting Experiment Objects in DVC Cache
+
+## Deleting Queued Experiments
 
 ---
 
