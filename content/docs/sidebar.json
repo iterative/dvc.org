@@ -139,7 +139,13 @@
         "label": "Experiment Management",
         "slug": "experiment-management",
         "source": "experiment-management/index.md",
-        "children": ["sharing", "checkpoints"]
+        "children": [
+          {
+            "slug": "sharing",
+            "label": "Sharing Experiments"
+          },
+          "checkpoints"
+        ]
       },
       "setup-google-drive-remote",
       "large-dataset-optimization",
@@ -535,7 +541,6 @@
         "label": "User Guide",
         "slug": "user-guide",
         "source": "user-guide/index.md",
-
         "children": [
           {
             "label": "Prepare Your Repositories",
@@ -555,7 +560,6 @@
               "share-view"
             ]
           },
-
           {
             "label": "Explore ML Experiments",
             "slug": "explore-experiments"
