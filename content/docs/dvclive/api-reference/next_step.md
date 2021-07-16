@@ -26,11 +26,12 @@ is available or not.
 
 If `summary` is True, on each `dvclive.next_step()` call, `dvclive` will
 generate a _summary_ of the metrics previously logged with `dvclive.log` and
-increase the `_step` count. The _metrics summary_ will be saved to
-`{path}.json`, being `path` the one defined in
-[dvclive.init](/doc/dvclive/api-reference/init).
+increase the `_step` count.
 
-The resulting summary of the above code block would be:
+The _metrics summary_ (usable by `dvc metrics`) will be saved to `{path}.json`,
+being `path` the one defined in [dvclive.init](/doc/dvclive/api-reference/init).
+
+The resulting _summary_ of the above code block would be:
 
 ```json
 {

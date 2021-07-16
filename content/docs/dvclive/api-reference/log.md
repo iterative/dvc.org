@@ -1,7 +1,7 @@
 # dvclive.log()
 
-Generates _plot metrics_ by saving the given `name`: `val` pair to a `.tsv`
-file.
+Generates _metrics logs_ (usable by `dvc plots`) by saving the given `name`:
+`val` pair to a `.tsv` file.
 
 ```py
  def log(name: str, val: float, step: int = None):
@@ -30,6 +30,8 @@ timestamp step  loss
 Each subsequent call to `dvclive.log(name, val)` will add a new row to
 `{path}/{name}.tsv`.
 
+The created file `{path}/{name}.tsv` is usable by `dvc plots`.
+
 💡 If `name` contains slashes (i.e. `train/loss`), the required subfolders will
 be created and the file will be saved inside the last subfolder (i.e.
 `{path}/train/loss.tsv`).
@@ -41,7 +43,7 @@ variables (when used alongside `DVC`).
 
 ## Parameters
 
-- `name` - The _plot metrics_ will be saved in `{path}/{name}.tsv`.
+- `name` - The _metrics logs_ will be saved in `{path}/{name}.tsv`.
 
 - `val` - The value to be added in the `name` column of a new row.
 
