@@ -1,13 +1,13 @@
 ---
 title: Tuning Hyperparameters with Reproducible Experiments
-date: 2021-07-13
+date: 2021-07-19
 description: |
   Using DVC, you'll be able to track the changes that give you an ideal model.
 
 descriptionLong: |
   We'll go through an example of grid search and random search using DVC.
 
-picture: 2021-07-13/hyperparameters-july-website.png
+picture: 2021-07-19/hyperparameters-july-website.png
 pictureComment: Tuning Hyperparameters with Reproducible Experiments
 author: milecia_mcgregor
 commentsUrl: https://discuss.dvc.org/t/tuning-hyperparameters-with-reproducible-experiments/821
@@ -113,12 +113,12 @@ run `dvc exp show` without the options to see the entire table._
 
 This will produce a table similar to this.
 
-```dvc
+```dvctable
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
-┃ Experiment              ┃ avg_prec ┃ roc_auc ┃ train.n_est ┃ train.min_split ┃
+┃ neutral:**Experiment**              ┃ metric:**avg_prec** ┃ metric:**roc_auc** ┃ param:**train.min_split** ┃ param:**train.n_est** ┃
 ┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━┩
-│ workspace               │ 0.51682  │ 0.93819 │ 175         │ 64              │
-│ master                  │ 0.56447  │ 0.94713 │ 100         │ 64              │
+│ **workspace**               │ **0.51682**  │ **0.93819** │ **175**         │ **64**              │
+│ **master**                  │ **0.56447**  │ **0.94713** │ **100**         │ **64**              │
 │ └── a1e8716 [exp-09074] │ 0.57333  │ 0.94801 │ 100         │ 32              │
 └─────────────────────────┴──────────┴─────────┴─────────────┴─────────────────┘
 ```
