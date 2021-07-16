@@ -239,6 +239,12 @@ to learn more about the state file (database) that is used for optimization.
   updates the timestamp on that entry. This way, when the database needs a
   cleanup, DVC can sort entries chronologically, and remove the oldest ones.
 
+### plots
+
+- `plots.html_template` - sets a
+  [custom HTML template](/doc/command-reference/plots#html-templates) for
+  `dvc plots`. Accepts a path relative to the `.dvc/` folder.
+
 ## Example: Add an S3 remote, and set it as default
 
 > 💡 Before adding an S3 remote, be sure to
