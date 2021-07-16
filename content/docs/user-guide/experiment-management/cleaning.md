@@ -1,12 +1,34 @@
 # Cleaning Up Experiments
 
+Although DVC uses minimal resources to keep track of the experiments, they may
+clutter tables and the workspace. DVC allows to remove particular experiments
+from the workspace or delete all not-yet-persisted experiments at once.
+
 ## Removing Local Experiments
+
+When you want to discard an experiment you can use `dvc exp remove` and supply
+the experiment name.
+
+```dvc
+$ dvc exp list
+main:
+    cnn-32
+    cnn-64
+    cnn-128
+$ dvc exp remove cnn-32
+$ dvc exp list
+main:
+    cnn-64
+    cnn-128
+```
 
 ## Removing Experiments in Remotes
 
-## Deleting Experiment Objects in DVC Cache
+## Deleting Experiment-Related Objects in DVC Cache
 
 ## Deleting Queued Experiments
+
+## Deleting Associated Objects
 
 ---
 
