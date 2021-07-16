@@ -5,7 +5,7 @@ description: |
   Using DVC, you'll be able to track the changes that give you an ideal model.
 
 descriptionLong: |
-  It's easy to lose track of which changes gave you the best result when you start exploring multiple model architectures. Tracking the changes in your hyperparameter values, along wzith code and data changes, will help you build a more efficient model by giving you an exact reproduction of the conditions that made the model better. We'll go through an example of grid search and random search using DVC.
+  We'll go through an example of grid search and random search using DVC.
 
 picture: 2021-07-13/hyperparameters-july-website.png
 pictureComment: Tuning Hyperparameters with Reproducible Experiments
@@ -87,8 +87,8 @@ $ python -m venv .venv
 
 After you've cloned the repo, install all of the dependencies with this command.
 
-```
-pip install -r requirements.txt
+```dvc
+$ pip install -r requirements.txt
 ```
 
 You should be able to open your terminal and run an experiment with the
@@ -173,7 +173,7 @@ and create queued experiments for them using `subprocess`.
 
 You can run this script now and generate your queue with this command.
 
-```python
+```dvc
 $ python src/grid_search.py
 ```
 
@@ -195,12 +195,12 @@ Your table should look similar to this when you run the command above. We've
 included the `--include-params` and `--no-timestamp` options to give us a table
 that's easier to read.
 
-```dvc
+```dvctable
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━┓
-┃ Experiment              ┃ avg_prec ┃ roc_auc ┃ train.min_split ┃ train.n_est ┃
+┃ neutral:**Experiment**              ┃ metric:**avg_prec** ┃ metric:**roc_auc** ┃ param:**train.min_split** ┃ param:**train.n_est** ┃
 ┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━┩
-│ workspace               │  0.67038 │ 0.96693 │ 64              │ 100         │
-│ try-large-dataset       │  0.67038 │ 0.96693 │ 64              │ 100         │
+│ **workspace**               │  **0.67038** │ **0.96693** │ **64**              │ **100**         │
+│ **try-large-dataset**       │  **0.67038** │ **0.96693** │ **64**              │ **100**         │
 │ ├── 4899d41 [exp-ae5ed] │   0.6888 │ 0.97028 │ 8               │ 250         │
 │ ├── bcdd8ed [exp-56613] │  0.68733 │ 0.96773 │ 16              │ 250         │
 │ ├── 703f20b [exp-caa84] │  0.68942 │  0.9698 │ 32              │ 250         │
@@ -264,12 +264,12 @@ look at the results with
 `dvc exp show --include-params=train.min_split,train.n_est --no-timestamp`. Your
 table should look something like this.
 
-```dvc
+```dvctable
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━┓
-┃ Experiment              ┃ avg_prec ┃ roc_auc ┃ train.min_split ┃ train.n_est ┃
+┃ neutral:**Experiment**              ┃ metric:**avg_prec** ┃ metric:**roc_auc** ┃ param:**train.min_split** ┃ param:**train.n_est** ┃
 ┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━┩
-│ workspace               │  0.67038 │ 0.96693 │ 64              │ 100         │
-│ try-large-dataset       │  0.67038 │ 0.96693 │ 64              │ 100         │
+│ **workspace**               │  **0.67038** │ **0.96693** │ **64**              │ **100**         │
+│ **try-large-dataset**       │  **0.67038** │ **0.96693** │ **64**              │ **100**         │
 │ ├── fc28c0c [exp-45902] │  0.68358 │ 0.96956 │ 64              │ 466         │
 │ ├── f13ac72 [exp-b9dfa] │  0.68275 │ 0.96914 │ 64              │ 444         │
 │ ├── a8cbc8f [exp-b0aeb] │  0.68989 │ 0.97003 │ 32              │ 260         │
