@@ -43,8 +43,8 @@ removed.
   more details.
 
 - `resume` - (`False` by default) - if `True`, DVCLive will try to read the
-  previous step from the path dir and start from that point (unless a `step` is
-  passed explicitly).
+  previous step from the `path` directory and start from that point (unless a
+  `step` is passed explicitly).
   [`dvclive.next_step`](/doc/dvclive/api-reference/next_step) calls will
   increment the `step`.
 
