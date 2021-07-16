@@ -17,10 +17,11 @@ ML are detailed below.
 Firstly, we can automate and enforce testing. This includes enforcing integrity
 with application-specific tests:
 
-- **Data**: for example, validation against a schema or verifying pipeline
-  consistency -- correct shapes, data types, etc.
-- **Models**: for example, input/output and performance validation -- all
-  dependencies present for inference to run, and model scores within thresholds.
+- **Data validation**: for example, validation against a schema or verifying
+  pipeline consistency -- correct shapes, data types, etc.
+- **Model validation**: for example, input/output and performance validation --
+  all dependencies present for inference to run, and model scores within
+  thresholds.
 
 Typically, this requires **infrastructure orchestration**: making CI systems
 provision and launch a GPU instance, train a model, cleanly terminate, and pull
@@ -43,19 +44,17 @@ data and ML pipelines.
 
 ![](https://static.iterative.ai/img/ml-vs-cicd.png) _Traditional ML meets CI/CD_
 
-[DVC](/) and [CML] can alleviate most (in not all) of the management headache
-([hidden technical debt](https://papers.nips.cc/paper/2015/file/86df7dcfd896fcaf2674f757a2463eba-Paper.pdf))
+[DVC](/) and [CML] removes most of this
+[management headache](https://papers.nips.cc/paper/2015/file/86df7dcfd896fcaf2674f757a2463eba-Paper.pdf)
 in ML. You can automate all of the above without needing any additional
 configuration. Here are a few feature highlights:
 
 **Models, Data, and Metrics as Code**: DVC removes the need to create versioning
 databases, use special file/folder structures, or write bespoke interfacing
-code. Instead, DVC works alongside Git to manage data files and folders as
-painlessly as code. DVC stores meta-information in Git ("codifying" data and ML
+code. Instead, DVC stores meta-information in Git ("codifying" data and ML
 models) while pushing the actual data content to
-[cloud storage](/doc/use-cases/sharing-data-and-model-files). In addition to
-simplifying data syncing in CI/CD, DVC also provides metrics-driven navigation
-in Git repositories --
+[cloud storage](/doc/use-cases/sharing-data-and-model-files). DVC also provides
+metrics-driven navigation in Git repositories --
 [tabulating and plotting](/doc/start/metrics-parameters-plots) model metrics
 changes across commits.
 
