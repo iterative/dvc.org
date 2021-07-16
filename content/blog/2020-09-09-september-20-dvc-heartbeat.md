@@ -1,5 +1,5 @@
 ---
-title: September '20 Heartbeat
+title: September ’20 Heartbeat
 date: 2020-09-09
 description: |
   This month, catch us on the Software Engineering Daily Podcast, 

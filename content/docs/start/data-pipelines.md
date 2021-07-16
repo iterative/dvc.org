@@ -332,18 +332,12 @@ $ dvc dag
         +-----------+
         | featurize |
         +-----------+
-         **        **
-       **            *
-      *               **
-+-------+               *
-| train |             **
-+-------+            *
-         **        **
-           **    **
-             *  *
-        +----------+
-        | evaluate |
-        +----------+
+              *
+              *
+              *
+          +-------+
+          | train |
+          +-------+
 ```
 
 > Refer to `dvc dag` to explore other ways this command can visualize a

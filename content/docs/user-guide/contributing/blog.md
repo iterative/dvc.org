@@ -112,7 +112,7 @@ https://youtu.be/4h6I9_xeYA4
 And now lets move onto ...
 ```
 
-You can ember a preview of any other website using `<external-link>` tag:
+You can embed a preview of any other website using `<external-link>` tag:
 
 ```md
 ... Check out this great project:

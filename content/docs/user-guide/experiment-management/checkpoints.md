@@ -230,26 +230,10 @@ Epoch 4: acc=0.8538
 Updating lock file 'dvc.lock'
 Checkpoint experiment iteration '0911c09'.
 
-file:///Users/milecia/Repos/checkpoints-tutorial/dvclive.html
-Epoch 5: loss=0.416655033826828
-Epoch 5: acc=0.8777
-Updating lock file 'dvc.lock'
-Checkpoint experiment iteration 'd665a31'.
-
-file:///Users/milecia/Repos/checkpoints-tutorial/dvclive.html
-Epoch 6: loss=0.36601492762565613
-Epoch 6: acc=0.8943
-Updating lock file 'dvc.lock'
-Checkpoint experiment iteration '5eb4025'.
-
-file:///Users/milecia/Repos/checkpoints-tutorial/dvclive.html
-Epoch 7: loss=0.3324562609195709
-Epoch 7: acc=0.9044
-Updating lock file 'dvc.lock'
-Checkpoint experiment iteration 'd90179a'.
+...
 ```
 
-After a few epochs have completed, stop the training process with `Ctrl + C`.
+After a few epochs have completed, stop the training process with `[Ctrl] C`.
 Now it's time to take a look at the metrics we're working with.
 
 _If you don't have a number of training epochs defined and you don't terminate

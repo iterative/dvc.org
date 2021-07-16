@@ -37,7 +37,6 @@ DVC supports several types of (local or) remote data sources (protocols):
 | --------- | ---------------------------- | --------------------------------------------- |
 | `s3`      | Amazon S3                    | `s3://bucket/data`                            |
 | `azure`   | Microsoft Azure Blob Storage | `azure://container/data`                      |
-| `gdrive`  | Google Drive                 | `gdrive://<folder-id>/data`                   |
 | `gs`      | Google Cloud Storage         | `gs://bucket/data`                            |
 | `ssh`     | SSH server                   | `ssh://user@example.com/path/to/data`         |
 | `hdfs`    | HDFS to file\*               | `hdfs://user@example.com/path/to/data.csv`    |
@@ -48,19 +47,14 @@ DVC supports several types of (local or) remote data sources (protocols):
 
 > If you installed DVC via `pip` and plan to use cloud services as remote
 > storage, you might need to install these optional dependencies: `[s3]`,
-> `[azure]`, `[gdrive]`, `[gs]`, `[oss]`, `[ssh]`. Alternatively, use `[all]` to
-> include them all. The command should look like this: `pip install "dvc[s3]"`.
-> (This example installs `boto3` library along with DVC to support S3 storage.)
+> `[azure]`, `[gs]`, `[oss]`, `[ssh]`. Alternatively, use `[all]` to include
+> them all. The command should look like this: `pip install "dvc[s3]"`. (This
+> example installs `boto3` library along with DVC to support S3 storage.)
 
 \* Notes on remote locations:
 
 - HDFS, HTTP, WebDav, and WebHDFS **do not** support downloading entire
   directories, only single files.
-
-- `remote://myremote/path/to/file` notation just means that a DVC
-  [remote](/doc/command-reference/remote) `myremote` is defined and when DVC is
-  running. DVC automatically expands this URL into a regular S3, SSH, GS, etc
-  URL by appending `/path/to/file` to the `myremote`'s configured base path.
 
 Another way to understand the `dvc get-url` command is as a tool for downloading
 data files. On GNU/Linux systems for example, instead of `dvc get-url` with

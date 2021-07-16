@@ -100,7 +100,7 @@
       },
       {
         "slug": "project-structure",
-        "source": "user-guide/project-structure/index.md",
+        "source": "project-structure/index.md",
         "children": [
           {
             "label": "Pipelines Files (dvc.yaml)",
@@ -131,13 +131,14 @@
           "stop-tracking-data",
           "update-tracked-data",
           "add-deps-or-outs-to-a-stage",
-          "merge-conflicts"
+          "merge-conflicts",
+          "share-a-dvc-cache"
         ]
       },
       {
         "label": "Experiment Management",
         "slug": "experiment-management",
-        "source": "user-guide/experiment-management/index.md",
+        "source": "experiment-management/index.md",
         "children": ["checkpoints"]
       },
       "setup-google-drive-remote",
@@ -172,6 +173,11 @@
       {
         "label": "Anonymized Usage Analytics",
         "slug": "analytics"
+      },
+      {
+        "label": "Glossary",
+        "slug": "glossary",
+        "source": "basic-concepts"
       }
     ]
   },
@@ -520,21 +526,51 @@
     "source": "studio/index.md",
     "icon": "studio",
     "children": [
+      {
+        "label": "How It Works",
+        "slug": "overview"
+      },
       "get-started",
       {
-        "label": "Create and Share View",
-        "slug": "create-view"
+        "label": "User Guide",
+        "slug": "user-guide",
+        "source": "user-guide/index.md",
+
+        "children": [
+          {
+            "label": "Prepare Your Repositories",
+            "slug": "prepare-repositories"
+          },
+          {
+            "label": "Views",
+            "slug": "views",
+            "source": false,
+            "children": [
+              "what-is-a-view",
+              "create-view",
+              {
+                "label": "Configure View",
+                "slug": "view-settings"
+              },
+              "share-view"
+            ]
+          },
+
+          {
+            "label": "Explore ML Experiments",
+            "slug": "explore-experiments"
+          },
+          {
+            "label": "Visualize and Compare",
+            "slug": "visualize-experiments"
+          },
+          "run-experiments",
+          "teams",
+          "account-management",
+          "install-github-app"
+        ]
       },
-      {
-        "label": "Configure View",
-        "slug": "view-settings"
-      },
-      {
-        "label": "Visualize and Compare",
-        "slug": "visualize-experiments"
-      },
-      "run-experiments",
-      "teams"
+      "troubleshooting"
     ]
   },
   {

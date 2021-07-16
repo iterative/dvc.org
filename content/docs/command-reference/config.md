@@ -190,10 +190,9 @@ This section contains the following options, which affect the project's
 - `cache.shared` - permissions for newly created or downloaded cache files and
   directories. The only accepted value right now is `group`, which makes DVC use
   `664` (rw-rw-r--) for files and `775` (rwxrwxr-x) for directories. This is
-  useful when using a
-  [shared development server](/doc/use-cases/shared-development-server). The
-  default permissions for cache files is system dependent. In Linux and macOS
-  for example, they're determined using
+  useful when [sharing a cache](/doc/user-guide/how-to/share-a-dvc-cache) among
+  projects. The default permissions for cache files is system dependent. In
+  Linux and macOS for example, they're determined using
   [`os.umask`](https://docs.python.org/3/library/os.html#os.umask).
 
 The following parameters allow setting an
@@ -239,6 +238,12 @@ to learn more about the state file (database) that is used for optimization.
   When an entry in the database is used (e.g. during the `dvc status`), DVC
   updates the timestamp on that entry. This way, when the database needs a
   cleanup, DVC can sort entries chronologically, and remove the oldest ones.
+
+### plots
+
+- `plots.html_template` - sets a
+  [custom HTML template](/doc/command-reference/plots#html-templates) for
+  `dvc plots`. Accepts a path relative to the `.dvc/` folder.
 
 ## Example: Add an S3 remote, and set it as default
 

@@ -1,10 +1,6 @@
 # exp run
 
-Run an [experiment](/doc/command-reference/exp): reproduce a variation of a
-committed [pipeline](/doc/command-reference/dag) in a hidden project branch.
-
-> Similar to `dvc repro` but for
-> [experimentation](/doc/user-guide/experiment-management).
+Run or resume an [experiment](/doc/command-reference/exp).
 
 ## Synopsis
 
@@ -68,37 +64,29 @@ committing them to the Git repo. Unnecessary ones can be removed with
 
 ## Checkpoints
 
-To track successive steps in a longer <abbr>experiment</abbr>, you can register
-checkpoints with DVC during your code or script runtime (similar to a logger).
+To track successive steps in a longer or deeper <abbr>experiment</abbr>, you can
+register checkpoints from your code. Each `dvc exp run` will resume from the
+last checkpoint.
 
-To do so, first mark stage `outs` with `checkpoint: true` in `dvc.yaml`. At
-least one checkpoint <abbr>output</abbr> is needed so that the experiment can
-later continue from that output's last cached state.
+First, mark at least stage <abbr>output</abbr> with `checkpoint: true` in
+`dvc.yaml`. This is needed so that the experiment can resume later, based on the
+<abbr>cached</abbr> output(s) (circular dependency).
 
-⚠️ Note that using the `checkpoint` field in `dvc.yaml` is not compatible with
+⚠️ Note that using `checkpoint` in `dvc.yaml` makes it incompatible with
 `dvc repro`.
 
-Then, in your code either call the `dvc.api.make_checkpoint()` function
-(Python), or write a signal file (any programming language) following the same
-steps as `make_checkpoint()` — please refer to its reference for details.
+Then, use the `dvc.api.make_checkpoint()` function (Python code), or write a
+signal file (any programming language) following the same steps as that
+function.
 
 You can now use `dvc exp run` to begin the experiment. All checkpoints
-registered at runtime will be preserved even if the process gets interrupted
-(e.g. with `[Ctrl] C`, or by an error\*). A "wrap-up" checkpoint will be added
-(if needed), so that no changes remain in the workspace. Subsequent uses of
-`dvc exp run` will resume from this point (using the latest cached versions of
-all outputs).
+registered at runtime will be preserved, even if the process gets interrupted
+(e.g. with `[Ctrl] C`, or by an error). Without interruption, a "wrap-up"
+checkpoint will be added (if needed), so that changes to pipeline outputs don't
+remain in the workspace.
 
-> \* Stage command(s) should return a non-error exit code (`0`) for the final
-> checkpoint to happen.
-
-List previous checkpoints with `dvc exp show`. To continue from a previous
-checkpoint, you must first `dvc exp apply` it before using `dvc exp run`. For
-`--queue` or `--temp` runs (see next section), use `--rev` instead to specify
-the checkpoint to continue from.
-
-Alternatively, use `--reset` to start over (discards previous checkpoints and
-their outputs). This is useful for re-training ML models, for example.
+Subsequent uses of `dvc exp run` will continue from the latest checkpoint (using
+the latest cached versions of all outputs).
 
 <details>
 
@@ -108,6 +96,14 @@ Instead of a single commit, checkpoint experiments have multiple commits under
 the custom Git reference (in `.git/refs/exps`), similar to a branch.
 
 </details>
+
+List previous checkpoints with `dvc exp show`. To resume from a previous
+checkpoint, you must first `dvc exp apply` it before using `dvc exp run`. For
+`--queue` or `--temp` runs (see next section), use `--rev` instead to specify
+the checkpoint to continue from.
+
+Alternatively, use `--reset` to start over (discards previous checkpoints and
+their outputs). This is useful for re-training ML models, for example.
 
 ## Queueing and parallel execution
 
