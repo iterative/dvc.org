@@ -5,8 +5,8 @@ library for monitoring the progress of metrics during training of machine
 learning models. You can simply
 [install it](https://github.com/iterative/dvclive#installation) with `pip`.
 
-DVCLive integrates seamlessly with [DVC](/docs/index.md) and the logs/summaries
-it produces can be fed as `dvc plots`/`dvc metrics`.
+DVCLive integrates seamlessly with `DVC` and the logs/summaries it produces can
+be fed as `dvc plots`/`dvc metrics`.
 
 However, `DVC` is not needed to work with `dvclive` logs/summaries, and since
 they're saved as easily parsable TSV/JSON files, you can use your preferred
@@ -18,8 +18,8 @@ We have created DVCLive with Git and MLOps principles in mind:
   that can be versioned by Git or other version control tools.
 - **Distributed**. No services or servers are required. Metrics are stored in a
   Git repository as text files, or pointers to files in `DVC` storage.
-- **GitOps API**. logs/summaries are generated through DVC using Git commit SHAs
-  or branch names, e.g.: `dvc plots diff --target logs master`.
+- **GitOps API**. logs/summaries are generated through `DVC` using Git commit
+  SHAs or branch names, e.g.: `dvc plots diff --target logs master`.
 - **Automation**. DVCLive logs/summaries are easy to use by any automation,
   DevOps, or MLOps tool such as CI/CD (including
   [CML](https://dvc.org/doc/cml)), custom scripts, or ML platforms.
