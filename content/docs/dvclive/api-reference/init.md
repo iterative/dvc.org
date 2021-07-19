@@ -42,7 +42,7 @@ removed.
 
 - `resume` - (`False` by default) - if `True`, DVCLive will try to read the
   previous `step` from the `path` directory and start from that point (unless a
-  `step` is passed explicitly).
+  `step`, other than `0`, is passed explicitly).
 
 - `summary` (`True` by default) - if `True`, upon each
   [`dvclive.next_step`](/doc/dvclive/api-reference/next_step) call, DVCLive will
