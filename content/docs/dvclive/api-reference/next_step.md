@@ -24,9 +24,9 @@ Each call to `dvclive.next_step` will behave depending on the selected
 [init parameters](/doc/dvclive/api-reference/init#parameters) and whether `DVC`
 is available or not.
 
-If `summary` is True, on each `dvclive.next_step()` call, `dvclive` will
-generate a _summary_ of the metrics previously logged with `dvclive.log` and
-increase the `_step` count.
+If `summary` is True, on each `dvclive.next_step()` call, DVCLive will generate
+a summary of the values previously logged with
+[dvclive.log](/doc/dvclive/api-reference/log), and increase the `step` count.
 
 The _metrics summary_ (usable by `dvc metrics`) will be saved to `{path}.json`,
 being `path` the one defined in [dvclive.init](/doc/dvclive/api-reference/init).
