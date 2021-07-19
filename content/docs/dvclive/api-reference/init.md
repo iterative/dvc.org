@@ -38,15 +38,12 @@ removed.
   usable by `dvc metrics`) will be saved in a single `{path}.json` file.
 
 - `step` (`0` by default) - the `step` values in _metrics logs_ files will start
-  incrementing from this value. Check
-  [`dvclive.log` description](/doc/dvclive/api-reference/log#description) for
-  more details.
+  incrementing from this value (see
+  [`dvclive.log`](/doc/dvclive/api-reference/log).
 
 - `resume` - (`False` by default) - if `True`, DVCLive will try to read the
   previous `step` from the `path` directory and start from that point (unless a
   `step` is passed explicitly).
-  [`dvclive.next_step`](/doc/dvclive/api-reference/next_step) calls will
-  increment the `step`.
 
 - `summary` (`True` by default) - if `True`, upon each
   [`dvclive.next_step`](/doc/dvclive/api-reference/next_step) call, DVCLive will

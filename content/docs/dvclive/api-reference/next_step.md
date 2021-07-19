@@ -40,10 +40,16 @@ The resulting _summary_ of the above code block would be:
 }
 ```
 
-If `dvclive` is used alongside `DVC`, on each `dvclive.next_step()`, `dvclive`
-will create a [checkpoint](/doc/user-guide/experiment-management/checkpoints).
-In addition, if `html` is True, on each `dvclive.next_step()` call, `DVC` will
-prepare an _html report_ with all the _metrics logs_ logged in `path`.
+### DVC Integration
+
+When `dvclive` is used alongside `DVC`, each `dvclive.next_step` call will have
+additional features.
+
+By default, on each `dvclive.next_step` call, `DVC` will create a new
+[checkpoint](/doc/user-guide/experiment-management/checkpoints).
+
+In addition, if `html` is True, on each `dvclive.next_step` call, `DVC` will
+prepare an HTML report with all the _metrics logs_ logged in `path`.
 
 ## Exceptions
 
