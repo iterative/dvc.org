@@ -334,7 +334,7 @@ storage. Whether they're effective depends on each storage platform.
 - `account_name` (required) - storage account name
 
   ```dvc
-  $ dvc remote modify myremote account_name 'mystorageaccountname'
+  $ dvc remote modify myremote account_name 'myaccount'
   ```
 
 By default, DVC authenticates using an `account_name` and its
@@ -454,7 +454,7 @@ $ export AZURE_STORAGE_CONNECTION_STRING='mysecret'
 For account name and key/token auth:
 
 ```dvc
-$ export AZURE_STORAGE_ACCOUNT='mystorageaccount'
+$ export AZURE_STORAGE_ACCOUNT='myaccount'
 # and
 $ export AZURE_STORAGE_KEY='mysecret'
 # or
