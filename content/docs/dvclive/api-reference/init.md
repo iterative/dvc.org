@@ -35,7 +35,7 @@ removed.
   respectively).
 
 - `step` (`0` by default) - the `step` values in _metrics logs_ files will start
-  incrementing from this value (see [`dvclive.log`].
+  incrementing from this value (see [`dvclive.log()`].
 
 - `resume` - (`False` by default) - if `True`, DVCLive will try to read the
   previous `step` from the `path` directory and start from that point (unless a
