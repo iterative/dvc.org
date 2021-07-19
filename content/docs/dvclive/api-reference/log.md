@@ -36,8 +36,8 @@ The created file `{path}/{name}.tsv` is usable by `dvc plots`.
 be created and the file will be saved inside the last subfolder (i.e.
 `{path}/train/loss.tsv`).
 
-💡 If you call `dvclive.log` without calling
-[`dvclive.init`](/doc/dvclive/api-reference/init) first, `dvclive` will
+💡 If you call `dvclive.log()` without calling
+[`dvclive.init()`](/doc/dvclive/api-reference/init) first, `dvclive` will
 automatically initialize itself using either default values or environment
 variables (when used alongside `DVC`).
 

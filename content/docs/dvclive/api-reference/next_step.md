@@ -20,7 +20,7 @@ for step in range(3):
 
 ## Description
 
-Each call to `dvclive.next_step` will behave depending on the selected
+Each call to `dvclive.next_step()` will behave depending on the selected
 [init parameters](/doc/dvclive/api-reference/init#parameters) and whether `DVC`
 is available or not.
 
@@ -41,17 +41,17 @@ The _metrics summary_ will be saved to `{path}.json`. Here's an example:
 
 ### DVC Integration
 
-When `dvclive` is used alongside `DVC`, each `dvclive.next_step` call will have
-additional features.
+When `dvclive` is used alongside `DVC`, each `dvclive.next_step()` call will
+have additional features.
 
-By default, on each `dvclive.next_step` call, `DVC` will create a new
+By default, on each `dvclive.next_step()` call, `DVC` will create a new
 [checkpoint](/doc/user-guide/experiment-management/checkpoints).
 
-In addition, if `html` is True, on each `dvclive.next_step` call, `DVC` will
+In addition, if `html` is True, on each `dvclive.next_step()` call, `DVC` will
 prepare an HTML report with all the _metrics logs_ logged in `path`.
 
 ## Exceptions
 
 - `dvclive.error.InitializationError` - If `dvclive` has not been properly
-  initialized (i.e. by calling [dvclive.init](/doc/dvclive/api-reference/init)
-  or [dvclive.log](/doc/dvclive/api-reference/log)).
+  initialized (i.e. by calling [dvclive.init()](/doc/dvclive/api-reference/init)
+  or [dvclive.log()](/doc/dvclive/api-reference/log)).
