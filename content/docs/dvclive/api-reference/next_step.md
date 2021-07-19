@@ -20,18 +20,14 @@ for step in range(3):
 
 ## Description
 
-Each call to `dvclive.next_step` will behave depending on the selected
-[init parameters](/doc/dvclive/api-reference/init#parameters) and whether `DVC`
-is available or not.
+Each call to `dvclive.next_step()` will behave depending on the parameters
+selected in [`dvclive.init()`] and whether `DVC` is available or not.
 
-If `summary` is True, on each `dvclive.next_step()` call, `dvclive` will
-generate a _summary_ of the metrics previously logged with `dvclive.log` and
-increase the `_step` count.
+If `summary` is True, on each `dvclive.next_step()` call, DVCLive will generate
+a summary of the values previously logged with [`dvclive.log()`], and increase
+the `step` count.
 
-The _metrics summary_ (usable by `dvc metrics`) will be saved to `{path}.json`,
-being `path` the one defined in [dvclive.init](/doc/dvclive/api-reference/init).
-
-The resulting _summary_ of the above code block would be:
+The _metrics summary_ will be saved to `{path}.json`. Here's an example:
 
 ```json
 {
@@ -40,13 +36,25 @@ The resulting _summary_ of the above code block would be:
 }
 ```
 
-If `dvclive` is used alongside `DVC`, on each `dvclive.next_step()`, `dvclive`
-will create a [checkpoint](/doc/user-guide/experiment-management/checkpoints).
+> 💡 These JSON files can be visualized with `dvc metrics`.
+
+### DVC Integration
+
+When `dvclive` is used alongside `DVC`, each `dvclive.next_step()` call will
+have additional features.
+
+By default, on each `dvclive.next_step()` call, `DVC` will create a new
+[checkpoint](/doc/user-guide/experiment-management/checkpoints).
+
 In addition, if `html` is True, on each `dvclive.next_step()` call, `DVC` will
-prepare an _html report_ with all the _metrics logs_ logged in `path`.
+prepare an HTML report with all the _metrics logs_ logged in `path`.
 
 ## Exceptions
 
 - `dvclive.error.InitializationError` - If `dvclive` has not been properly
-  initialized (i.e. by calling [dvclive.init](/doc/dvclive/api-reference/init)
-  or [dvclive.log](/doc/dvclive/api-reference/log)).
+  initialized (i.e. by calling [`dvclive.init()`] or [`dvclive.log()`]).
+
+...
+
+[`dvclive.init()`]: /doc/dvclive/api-reference/init
+[`dvclive.log()`]: /doc/dvclive/api-reference/log
