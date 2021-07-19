@@ -412,7 +412,7 @@ Authentication example with `connection_string`:
 
 ```dvc
 $ dvc remote add -d myremote azure://mycontainer/object
-$ dvc remote modify --local myremote connection_string 'storageaccountaccesskeyconnectionstring'
+$ dvc remote modify --local myremote connection_string 'mysecret'
 $ dvc remote push
 ```
   
@@ -420,7 +420,7 @@ Authentication example with currently logged in az cli user/identity:
 
 ```dvc
 $ dvc remote add -d myremote azure://mycontainer/object
-$ dvc remote modify myremote account_name 'mystorageaccountname'
+$ dvc remote modify myremote account_name 'myaccount'
 $ dvc remote push
 ```
   
@@ -428,8 +428,8 @@ Authentication example with `account_key`:
 
 ```dvc
 $ dvc remote add -d myremote azure://mycontainer/object
-$ dvc remote modify --local myremote account_name 'mystorageaccountname'
-$ dvc remote modify --local myremote account_key 'mystorageaccountaccesskey'
+$ dvc remote modify --local myremote account_name 'myaccount'
+$ dvc remote modify --local myremote account_key 'mysecret'
 $ dvc remote push
 ```
   
@@ -437,8 +437,8 @@ Authentication example with `sas_token`:
 
 ```dvc
 $ dvc remote add -d myremote azure://mycontainer/object
-$ dvc remote modify --local myremote account_name 'mystorageaccountname'
-$ dvc remote modify --local myremote sas_token 'mysastoken'
+$ dvc remote modify --local myremote account_name 'myaccount'
+$ dvc remote modify --local myremote sas_token 'mysecret'
 $ dvc remote push
 ```  
   
