@@ -5,7 +5,7 @@ downloaded from external sources. [DVC](https://dvc.org) is a common way to
 bring data to your CML runner. DVC also lets you visualize how metrics differ
 between commits to make reports like this:
 
-![](/img/dvc_cml_long_report.png '=700')
+![](/img/dvc_cml_long_report.png)
 
 The `.github/workflows/cml.yaml` file to create this report is:
 

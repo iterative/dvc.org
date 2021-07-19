@@ -511,16 +511,16 @@ a specific user. Please refer to
 [Using service accounts](https://cloud.google.com/iam/docs/service-accounts) for
 more information.
 
-- `gdrive_use_service_account` - instructs DVC to authenticate using a service
-  account instead of OAuth. Make sure that the service account has read/write
-  access (as needed) to the file structure in the remote `url`.
+- `gdrive_use_service_account` - authenticate using a service account. Make sure
+  that the service account has read/write access (as needed) to the file
+  structure in the remote `url`.
 
   ```dvc
   $ dvc remote modify myremote gdrive_use_service_account true
   ```
 
 - `gdrive_service_account_json_file_path` - path to the Google Project's service
-  account `.json` key file, when `gdrive_use_service_account` is on.
+  account `.json` key file (credentials).
 
   ```dvc
   $ dvc remote modify --local myremote \
@@ -528,16 +528,15 @@ more information.
                       path/to/file.json
   ```
 
-- `gdrive_service_account_user_email` - email of a user account whose authority
-  should be [delegated] to the service account.
+- `gdrive_service_account_user_email` - the authority of a user account can be
+  [delegated] to the service account if needed.
 
   ```dvc
   $ dvc remote modify myremote \
                  gdrive_service_account_user_email 'myemail-addr'
   ```
 
-  Domain-wide delegation of authority is required to include the following OAuth
-  Scopes (authorized in Google Workspace Admin console):
+  ⚠️ DVC requires the following OAuth Scopes:
 
   - `https://www.googleapis.com/auth/drive`
   - `https://www.googleapis.com/auth/drive.appdata`
