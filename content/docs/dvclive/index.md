@@ -1,18 +1,25 @@
 # dvclive
 
-[`dvclive`](/doc/dvclive) is an open-source Python library for monitoring the
-progress of metrics during training of machine learning models.
+[`dvclive`](https://github.com/iterative/dvclive) is an open-source Python
+library for monitoring the progress of metrics during training of machine
+learning models. You can simply
+[install it](https://github.com/iterative/dvclive#installation) with `pip`.
 
-Dvclive integrates seamlessly with [DVC](https://dvc.org/) and the logs it
-produces can be fed as `dvc plots`. However, `dvc` is not needed to work with
-`dvclive` logs, and since they're saved as easily parsable TSV files, you can
-use your preferred visualization method.
+DVCLive integrates seamlessly with [DVC](/docs/index.md) and the logs/summaries
+it produces can be fed as `dvc plots`/`dvc metrics`.
 
-We have created Dvclive with two principles in mind:
+However, `DVC` is not needed to work with `dvclive` logs/summaries, and since
+they're saved as easily parsable TSV/JSON files, you can use your preferred
+visualization method.
 
-- **No dependencies.** While you can install optional integrations for various
-  frameworks, the basic `dvclive` installation doesn't have requirements besides
-  [Python](https://www.python.org/).
-- **DVC integration.** `dvc` recognizes when its being used along with
-  `dvclive`. This enables useful features automatically, like producing model
-  training summaries, among others.
+We have created DVCLive with Git and MLOps principles in mind:
+
+- **Codification of data**. Tracked metrics are stored in readable text files
+  that can be versioned by Git or other version control tools.
+- **Distributed**. No services or servers are required. Metrics are stored in a
+  Git repository as text files, or pointers to files in `DVC` storage.
+- **GitOps API**. logs/summaries are generated through DVC using Git commit SHAs
+  or branch names, e.g.: `dvc plots diff --target logs master`.
+- **Automation**. DVCLive logs/summaries are easy to use by any automation,
+  DevOps, or MLOps tool such as CI/CD (including
+  [CML](https://dvc.org/doc/cml)), custom scripts, or ML platforms.
