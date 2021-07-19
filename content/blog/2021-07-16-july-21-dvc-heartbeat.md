@@ -47,8 +47,9 @@ a model, tracking changes to data and model, dvc
 gap in visualizations using <span style="color:purple">**S**</span>treamlit. You
 won't want to miss this one!
 
-![DVC and Streamlit](/uploads/images/2021-07-16/streamlit2.png) _DVC + Streamlit
-= ♥️! [Source link](https://www.sicara.ai/blog/dvc-streamlit-webui-ml)_
+![DVC and Streamlit](/uploads/images/2021-07-16/streamlit2.png '=700') _DVC +
+Streamlit = ♥️!
+[Source link](https://www.sicara.ai/blog/dvc-streamlit-webui-ml)_
 
 ## DVC and CML in Japanese!
 
@@ -89,7 +90,7 @@ It's exciting to see that our tools are
 helpin<span style="color:purple">**g**</span> these companies in their MLOps
 workflows! 🎉
 
-![](/uploads/images/2021-07-16/job-descriptions.png)
+![](/uploads/images/2021-07-16/job-descriptions.png ')
 
 # Learning Opportunities
 
@@ -181,7 +182,8 @@ upper right of the picture moving clockwise, **and** post in the corresponding
 Hint: If you've been wondering why there are random purple letters in this blog
 post, they're a clue to this cipher. 🧐
 
-![](/uploads/images/2021-07-16/team.jpg) _Team Meetup in Moscow!_
+![](/uploads/images/2021-07-16/team.png '=700') _Team Meetup in Moscow! (hand
+signals obscured for our UK friends, because we care! 🤗)_
 
 ## New Team Member
 
