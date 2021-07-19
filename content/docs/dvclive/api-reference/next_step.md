@@ -28,10 +28,7 @@ If `summary` is True, on each `dvclive.next_step()` call, DVCLive will generate
 a summary of the values previously logged with
 [dvclive.log](/doc/dvclive/api-reference/log), and increase the `step` count.
 
-The _metrics summary_ (usable by `dvc metrics`) will be saved to `{path}.json`,
-being `path` the one defined in [dvclive.init](/doc/dvclive/api-reference/init).
-
-The resulting _summary_ of the above code block would be:
+The _metrics summary_ will be saved to `{path}.json`. Here's an example:
 
 ```json
 {
@@ -39,6 +36,8 @@ The resulting _summary_ of the above code block would be:
   "metric": 0.9
 }
 ```
+
+> 💡 These JSON files can be visualized with `dvc metrics`.
 
 ### DVC Integration
 
