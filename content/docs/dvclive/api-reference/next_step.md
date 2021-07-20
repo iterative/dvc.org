@@ -40,13 +40,13 @@ The resulting _summary_ of the above code block would be:
 }
 ```
 
-If `dvclive` is used alongside `DVC`, on each `dvclive.next_step()`, `dvclive`
-will create a [checkpoint](/doc/user-guide/experiment-management/checkpoints).
-In addition, if `html` is True, on each `dvclive.next_step()` call, `DVC` will
+If DVCLive is used alongside `DVC`, on each `dvclive.next_step()`, DVCLive will
+create a [checkpoint](/doc/user-guide/experiment-management/checkpoints). In
+addition, if `html` is True, on each `dvclive.next_step()` call, `DVC` will
 prepare an _html report_ with all the _metrics logs_ logged in `path`.
 
 ## Exceptions
 
-- `dvclive.error.InitializationError` - If `dvclive` has not been properly
+- `dvclive.error.InitializationError` - If DVCLive has not been properly
   initialized (i.e. by calling [dvclive.init](/doc/dvclive/api-reference/init)
   or [dvclive.log](/doc/dvclive/api-reference/log)).

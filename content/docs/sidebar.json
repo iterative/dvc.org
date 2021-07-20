@@ -574,13 +574,13 @@
     ]
   },
   {
-    "label": "Dvclive",
+    "label": "DVCLive",
     "slug": "dvclive",
     "source": "dvclive/index.md",
     "children": [
       "usage",
       {
-        "label": "Dvclive with DVC",
+        "label": "DVCLive with DVC",
         "slug": "dvclive-with-dvc"
       },
       {
