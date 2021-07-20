@@ -173,14 +173,18 @@ const DownloadButton: React.FC<IDownloadButtonProps> = ({ openTop }) => {
       >
         <img className={styles.triangle} src="/img/triangle.svg" alt="" />
       </TwoRowsButton>
-      {isOpened && (
-        <div className={cn(styles.dropdown, openTop && styles.openTop)}>
-          <DownloadButtonDropdownItems
-            onClick={download}
-            userOS={userOS.current}
-          />
-        </div>
-      )}
+      <div
+        className={cn(
+          styles.dropdown,
+          isOpened && styles.open,
+          openTop && styles.openTop
+        )}
+      >
+        <DownloadButtonDropdownItems
+          onClick={download}
+          userOS={userOS.current}
+        />
+      </div>
     </span>
   )
 }
