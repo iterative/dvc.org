@@ -14,7 +14,6 @@ author: milecia_mcgregor
 commentsUrl: https://discuss.dvc.org/t/may-21-community-gems/767
 tags:
   - Discord
-  - Gems
   - DVC
   - CML
   - Remote Storage
