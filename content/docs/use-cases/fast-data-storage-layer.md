@@ -45,16 +45,16 @@ To unify data storage across multiple projects, you can configure a [shared
 cache]. This compounds the deduplication and performance benefits. Having
 separated data storage from other aspects of your projects, you can treat it as
 an independent infrastructure layer, using Ceph,
-[EFS](https://aws.amazon.com/efs/), object storage (e.g. S3,
-[GCS](https://cloud.google.com/storage/), Azure), or any other platform.
+[EFS](https://aws.amazon.com/efs/), or any other platform.
 
 ![](/img/shared-server.png) _Data storage shared by DVC projects_
 
 To balance speed and cost, you can also use a `dvc remote` (or several) as
-secondary storage. Data only needed in older
-[versions](/doc/use-cases/versioning-data-and-model-files) of your project can
-be kept there. Remote storage is also a great way to back up and
-[share datasets and ML models](/doc/use-cases/sharing-data-and-model-files).
+secondary storage (e.g. an object store like S3,
+[GCS](https://cloud.google.com/storage/), or Azure Blob Storage). Data only
+needed in older [versions](/doc/use-cases/versioning-data-and-model-files) of
+your project can be kept there. Remote storage is also a great way to back up
+and [share datasets and ML models](/doc/use-cases/sharing-data-and-model-files).
 
 ## Example: Shared Development Server
 
