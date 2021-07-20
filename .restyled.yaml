@@ -10,10 +10,6 @@ restylers:
         '--print-width=80',
         '--tab-width=2',
         '--use-tabs=false',
-        '--prose-wrap=always',
+        '--prose-wrap=always'
       ]
-    include:
-      - './*.{js,md}'
-      - 'pages/**/*.js'
-      - 'content/**/*.md'
-      - 'src/**/*.js'
+    include: ['**/*.{js,json,md,yaml,yml}']
