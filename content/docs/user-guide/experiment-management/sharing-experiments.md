@@ -36,9 +36,6 @@ $ dvc remote list
 storage https://remote.dvc.org/get-started-experiments
 ```
 
-_Q: What about neither, `cache: false` objects, and objects tracked both by DVC
-and Git?_
-
 ## Uploading experiments to remotes
 
 You can upload an experiment and its files to both remotes using `dvc exp push`
@@ -82,10 +79,10 @@ You can supply a Git remote name to list the experiments:
 ```dvc
 $ dvc exp list origin
 main:
-	cnn-128
-	cnn-32
-	cnn-64
-	cnn-96
+    cnn-128
+    cnn-32
+    cnn-64
+    cnn-96
 ```
 
 Note that by default this only lists experiments derived from the current commit
@@ -95,14 +92,14 @@ Note that by default this only lists experiments derived from the current commit
 ```dvc
 $ dvc exp list origin --all
 0b5bedd:
-	exp-9edbe
+    exp-9edbe
 0f73830:
-	exp-280e9
-	exp-4cd96
-	...
+    exp-280e9
+    exp-4cd96
+    ...
 main:
-	cnn-128
-	...
+    cnn-128
+    ...
 ```
 
 When you don't need to see the parent commits, you can list experiment names
