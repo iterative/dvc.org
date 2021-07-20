@@ -1,10 +1,10 @@
-# Datasets Cache
+# Fast Data Storage Layer
 
-Datasets used in data science tend to exceed typical storage and computing
-capacities. Valuable time is wasted waiting for downloads, and the wait repeats
-across environments. Combined storage needs expand rapidly as more people and
-projects acquire the same data, creating duplication and increasing cost. Is
-there an effective way to perform this process?
+Datasets used in data science tend to exceed typical storage and networking
+capacities. Storage needs expand rapidly as more people and projects acquire the
+same data, creating duplication and increasing cost. Valuable time is wasted
+waiting for downloads, and the wait repeats across environments. Is there an
+effective way to perform this process?
 
 ![](/img/storage-layers.png) _Data storage infrastructure_
 
@@ -55,8 +55,6 @@ secondary storage. Data only needed in older
 [versions](/doc/use-cases/versioning-data-and-model-files) of your project can
 be kept there. Remote storage is also a great way to back up and
 [share datasets and ML models](/doc/use-cases/sharing-data-and-model-files).
-
-<!-- Advances scenarios? 1. No storage; 2. Only remote -->
 
 ## Example: Shared Development Server
 
