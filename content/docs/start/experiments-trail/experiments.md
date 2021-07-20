@@ -32,7 +32,7 @@ Please clone the project and create a virtual environment.
 > rest of your system. This prevents version conflicts.
 
 ```dvc
-$ git clone https://github.com/iterative/get-started-experiments -b pipeline-added
+$ git clone https://github.com/iterative/get-started-experiments -b get-started
 $ cd get-started-experiments
 $ virtualenv .venv
 $ . .venv/bin/activate
@@ -113,7 +113,7 @@ Running the experiment with default project settings requires only the command:
 ```dvc
 $ dvc exp run
 ...
-Reproduced experiment(s): exp-7683f
+Reproduced experiment(s): exp-b28f0
 Experiment results have been applied to your workspace.
 ...
 ```
@@ -153,12 +153,9 @@ the files manually. We use this feature to set the convolutional units in
 ```dvc
 $ dvc exp run --set-param model.conv_units=24
 ...
-Reproduced experiment(s): exp-6c06d
+Reproduced experiment(s): exp-7b56f
 Experiment results have been applied to your workspace.
-
-To promote an experiment to a Git branch run:
-
-        dvc exp branch <exp>
+...
 ```
 
 When you run `dvc exp run` with `--set-param`, it updates the parameter file. We
@@ -185,13 +182,13 @@ also use `-S` (`--set-param`) to set a value for the parameter.
 
 ```dvc
 $ dvc exp run --queue -S model.conv_units=32
-Queued experiment '6518f17' for future execution.
+Queued experiment '3cac8c6' for future execution.
 $ dvc exp run --queue -S model.conv_units=64
-Queued experiment '30eb9b2' for future execution.
+Queued experiment '23660b6' for future execution.
 $ dvc exp run --queue -S model.conv_units=128
-Queued experiment 'ac66940' for future execution.
+Queued experiment '6591a57' for future execution.
 $ dvc exp run --queue -S model.conv_units=256
-Queued experiment '8bb6049' for future execution.
+Queued experiment '9109ea9' for future execution.
 ```
 
 Next, run all (`--run-all`) queued experiments in parallel. You can specify the
