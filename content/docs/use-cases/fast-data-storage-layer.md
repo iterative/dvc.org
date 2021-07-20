@@ -12,16 +12,16 @@ DVC's built-in data <abbr>caching</abbr> enables you to implement a simple and
 efficient storage layer globally — for all your team's projects. This approach
 can help in situations such as:
 
-- You need to speed up data transfers from a massive object store on the cloud,
-  or to move a growing data store out of your machine without slowing things
-  down. How do you plug in something in the middle (like a NAS drive) to
-  existing projects?
+- You want to speed up data transfers from a massive object store which is
+  currently on the cloud, or to move a growing dataset out of your machine
+  without slowing things down. How do you plug in something in the middle (like
+  a NAS drive) to existing projects?
 
 - Upgrading your storage platform is expensive. Can you pay only for fast access
   to the data sets that are needed regularly?
 
 - You want to de-duplicate files automatically when multiple people are working
-  on the same datasets (for example, on a
+  on the same data (for example, on a
   [shared development server](#example-shared-development-server)).
 
 - Your team shares access to a GPU server for machine learning
