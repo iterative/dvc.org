@@ -110,7 +110,7 @@ of the source Git repo. Instead, it's exported in the `dvc.yaml` file as an
 > serves as an [ETL](https://en.wikipedia.org/wiki/Extract,_transform,_load)
 > pipeline or as an HTTP/RESTful API (web service) that provides predictions
 > upon request. This can be automated leveraging DVC with
-> [CI/CD](https://en.wikipedia.org/wiki/CI/CD) tools.
+> [CI/CD](/doc/use-cases/ci-cd-for-machine-learning) tools.
 
 The same example applies to raw data or intermediate artifacts as well.
 
