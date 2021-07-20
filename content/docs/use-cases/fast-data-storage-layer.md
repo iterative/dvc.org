@@ -17,8 +17,8 @@ can help in situations such as:
   without slowing things down. How do you plug in something in the middle (like
   a NAS drive) to existing projects?
 
-- Upgrading your storage platform is expensive. Can you pay only for fast access
-  to the data sets that are needed regularly?
+- Upgrading your entire storage platform is expensive. Can you pay only for fast
+  access to the data sets your team uses frequently?
 
 - You want to de-duplicate files automatically when multiple people are working
   on the same data (for example, on a
