@@ -1,31 +1,27 @@
 # Sharing Experiments
 
-DVC has storing and sharing facilities like remotes or shared cache for tracked
-files. In this section we discuss an alternative way to share the experiments
-without committing them to Git history or branch.
+There are two types of remotes that can store experiments. Git remotes are
+distributed copies of the Git repository, for example on GitHub or GitLab.
 
-## Prepare remotes to share experiments
+[DVC remotes](/doc/command-reference/remote) on the other hand are
+storage-specific locations (e.g. Amazon S3 or Google Drive) which we can
+configure with `dvc remote`. DVC uses them to store and fetch large files that
+don't normally fit inside Git repos.
 
-There are two types of remotes to store experiment objects: Git remotes are the
-locations that store Git repositories. A Github/Gitlab/Bitbucket repository is
-an example of a Git remote.
+DVC needs both kinds of remotes for backing up and sharing experiments.
 
-The other type of remote is the DVC remote which we add to a project using
-`dvc remote add` and manage using `dvc remote` subcommands. Basically DVC
-remotes have the same structure as <abbr>DVC cache</abbr>, but live in the
-cloud. DVC uses these locations to store and fetch binary files that doesn't
-normally fit into Git repositories.
+Experiment files that are normally tracked in Git (like code versions) are
+shared using Git remotes, and files or directories tracked with DVC (like
+datasets) are shared using DVC remotes.
 
-DVC experiments use both kinds of these remotes to store objects.
+> See [Git remotes guide] and `dvc remote add` for information on setting them
+> up.
 
-Experiment objects that are normally tracked in Git are shared using Git
-remotes, and files tracked with DVC are shared using DVC remotes. Therefore both
-of these sharing facilities should be set up for experiment sharing to work
-correctly.
+[git remotes guide]:
+  https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes
 
-Normally, there should already be a Git repository set up as `origin` when you
-clone the project. To view Git remotes in a project, you can use `git remote -v`
-command.
+Normally, there should already be a Git remote called `origin` when you clone a
+repo. Use `git remote -v` to list your Git remotes:
 
 ```dvc
 $ git remote -v
@@ -33,61 +29,55 @@ origin  https://github.com/iterative/get-started-experiments (fetch)
 origin  https://github.com/iterative/get-started-experiments (push)
 ```
 
-On the other hand, cached DVC files are stored in DVC remotes. You can get the
-location of DVC remotes in a project using `dvc remote list` command.
+Similarly, you can see the DVC remotes in you project using `dvc remote list`:
 
 ```dvc
 $ dvc remote list
 storage https://remote.dvc.org/get-started-experiments
 ```
 
-If there is not a DVC remote set up for your project, please refer to
-`dvc remote add` documentation to add a remote to share DVC-cached files in the
-experiments.
+_Q: What about neither, `cache: false` objects, and objects tracked both by DVC
+and Git?_
 
-(Q: What about neither, `cache: false` objects and objects tracked both DVC and
-Git?)
+## Uploading experiments to remotes
 
-## Pushing experiments to remotes
-
-You can push an experiment to a Git repository using `dvc exp push`.
+You can upload an experiment and its files to both remotes using `dvc exp push`
+(requires the Git remote name and experiment name as arguments).
 
 ```dvc
 $ dvc exp push origin exp-abc123
 ```
 
-It requires the Git remote name and experiment name as arguments.
+> Use `dvc exp show` to find experiment names.
 
-It pushes the DVC tracked files in DVC cache to DVC remote automatically. If you
-want to prevent this behavior and not push these files, you can use `--no-cache`
-flag.
+This pushes the necessary DVC-tracked files from the cache to the default DVC
+remote (similar to `dvc push`). You can prevent this behavior by using the
+`--no-cache` option to the command above.
 
-DVC uses the default remote for pushing files in the DVC cache. If there is not
-a default DVC remote, it asks to define one by `dvc remote default <remote>`. If
-you don't want to have a default remote, or if there are more than one DVC
-remote defined in the project, you can select the remote that will be used by
-`--remote` / `-r` option.
+If there's no default DVC remote, it will ask you to define one with
+`dvc remote default`. If you don't want a default remote, or if you want to use
+a different remote, you can specify one with the `--remote` (`-r`) option.
 
-DVC uses multiple threads to push DVC-cached files. By default DVC uses 4x
-`cpu_count()` threads to push the files. You can set the number of threads
-with`--jobs`/`-j` option. Please note that increase in performance is dependent
-to available bandwidth and remote (cloud) server configurations. For very large
-number of jobs, you may have side effects in your local network or system.
+DVC can use multiple threads to upload files (4 per CPU core by default). You
+can set the number with `--jobs` (`-j`). Please note that increases in
+performance also depend on the connection bandwidth and remote configurations.
 
-DVC has a caching mechanism called _Run-Cache_ that stores the artifacts from
+DVC has a mechanism called the [run-cache] that stores the artifacts from
 intermediate stages. For example, if there is an intermediate step that applies
 data-augmentation on your dataset and you would like to push these artifacts as
 well as the end products of the experiments, you can use `--run-cache` flag to
 push all of these to the DVC remote. `--run-cache` flag pushes all artifacts
 referenced in `dvc.lock` file.
 
-## Listing experiments in remotes
+[run-cache]: /doc/user-guide/project-structure/internal-files#run-cache
 
-DVC stores the experiments in Git repositories. In order to list experiments in
-a repository, you can use `dvc exp list` command.
+## Listing experiments remotely
 
-With no command line options, this command lists the experiments in the current
-repository. You can supply a Git remote name to list the experiments.
+In order to list experiments in a DVC project, you can use the `dvc exp list`
+command. With no command line options, it lists the experiments in the current
+project.
+
+You can supply a Git remote name to list the experiments:
 
 ```dvc
 $ dvc exp list origin
@@ -98,9 +88,9 @@ main:
 	cnn-96
 ```
 
-`dvc exp list <git-remote>` lists the experiments that are referenced by the
-_current commit._ If you would like to list all experiments referenced from
-other branches and commit, use `--all` flag.
+Note that by default this only lists experiments derived from the current commit
+(local `HEAD` or default remote branch). You can list all the experiments
+(derived from from every branch and commit) with the `--all` option:
 
 ```dvc
 $ dvc exp list origin --all
@@ -109,20 +99,14 @@ $ dvc exp list origin --all
 0f73830:
 	exp-280e9
 	exp-4cd96
-	exp-65d0a
-172b1b9:
-	exp-7424d
-190e697:
-	exp-ec039
-3426c9e:
-	exp-0680e
-39afbbc:
-	exp-21155
-        ...
+	...
+main:
+	cnn-128
+	...
 ```
 
-When you don't need the parent commits', you can just get the names with
-`--names-only` option.
+When you don't need to see the parent commits, you can list experiment names
+only, with `--names-only`:
 
 ```dvc
 $ dvc exp list origin --names-only
@@ -132,35 +116,32 @@ cnn-64
 cnn-96
 ```
 
-## Pulling experiments from remotes
+## Downloading experiments from remotes
 
-When you clone a DVC repository from a Git remote, it doesn't clone any
-experiments. In order to get the experiments, use `dvc exp pull` command with
-the Git remote and the experiment name.
+When you clone a DVC repository, it doesn't fetch any experiments by default. In
+order to get them, use `dvc exp pull` (with the Git remote and the experiment
+name), for example:
 
 ```dvc
 $ dvc exp pull origin cnn-64
 ```
 
-It pulls all the text files from Git repository and DVC tracked files from DVC
-remote. You need to have both of these remote configured in your project. See
-[above](#prepare-remotes-to-share-experiments) for information regarding remote
-configuration.
+This pulls all the necessary files from both remotes. Again, you need to have
+both of these configured (see this
+[earlier section](#prepare-remotes-to-share-experiments)).
 
-When you don't have a default DVC remote, or would like to ask DVC to use a
-particular remote, you can specify it with `--remote` / `-r` option.
+You can specify a remote to pull from with `--remote` (`-r`).
 
-DVC can use more than one thread to pull DVC tracked files from remotes. You can
-set the number of threads to pull by `--jobs` / `-j` option. By default DVC uses
-4 x `cpu_count()` threads for non-SSH remotes, and 4 threads for SSH remotes.
+DVC can use multiple threads to download files (4 per CPU core typically). You
+can set the number with `--jobs` (`-j`).
 
-If there is already an experiment in the current repository with the name you're
-trying to pull, DVC won't overwrite it unless you supply `--force` flag.
+If an experiment being pulled already exists in the local project, DVC won't
+overwrite it unless you supply `--force`.
 
-## Pulling all experiments from a remote
+### Pulling all experiments
 
-Assuming all experiments have distinct names, you can create a loop to pull all
-experiments from `origin` like the following.
+You can create a loop to pull all experiments from `origin` (Git remote) like
+this:
 
 ```dvc
 $ dvc exp list --all --names-only | while read -r expname ; do \
@@ -168,57 +149,54 @@ $ dvc exp list --all --names-only | while read -r expname ; do \
 done
 ```
 
-## Creating a separate directory for an experiment
+## Example: Creating a directory for an experiment
 
-A very common use case for experiments is to create a separate local directory
-for your work. You can do so by `dvc exp apply` and `dvc exp branch` commands,
-but here we'll see how to use `dvc exp pull` to copy an experiment.
+A good way to isolate experiments is to create a separate home directory for
+each one.
 
-Suppose there is project in `~/my-project` that you have many experiments and
-would like to have a copy of a particular experiment named `exp-abc12` in this
-project.
+> Another alternative is to use `dvc exp apply` and `dvc exp branch`, but here
+> we'll see how to use `dvc exp pull` to copy an experiment.
 
-You first clone the repository to another directory:
+Suppose there is a <abbr>DVC repository</abbr> in `~/my-project` with multiple
+experiments. Let's create a copy of experiment `exp-abc12` from there.
+
+First, clone the repo into another directory:
 
 ```dvc
-$ git clone ~/my-project ~/my-successful-experiment
-$ cd ~/my-successful-experiment
+$ git clone ~/my-project ~/my-experiment
+$ cd ~/my-experiment
 ```
 
-Git sets `origin` of cloned repository to `~/my-project`, so when you list the
-experiments in this new clone, you can see your all experiments in
-`~/my-project`.
+Git sets the `origin` remote of the cloned repo to `~/my-project`, so you can
+see your all experiments from `~/my-experiment` like this:
 
 ```dvc
 $ dvc exp list origin
 main:
-   ...
-   exp-abc12
-   ...
+	exp-abc12
+	...
 ```
 
-If there is no DVC remote in the original repository, and there is no means to
-set up one, you can define the original repository's DVC cache as a _remote_ in
-the clone.
+If there is no DVC remote in the original repository, you can define its
+<abbr>cache</abbr> as the clone's `dvc remote`:
 
 ```dvc
 $ dvc remote add --local --default storage ~/my-project/.dvc/cache
 ```
 
-If there is a DVC remote for the project, assuming all DVC cache in
-`~/my-project` repository is pushed to it, you can pull an experiment in the
-clone:
+If there is a DVC remote for the project, assuming the experiments have been
+pushed there, you can pull the one in question:
 
 ```dvc
 $ dvc exp pull origin exp-abc12
 ```
 
-Then we can apply this experiment and get a workspace that contains all your
-experiment files:
+Then we can `dvc apply` this experiment and get a <abbr>workspace</abbr> that
+contains all of its files:
 
 ```dvc
 $ dvc exp apply exp-abc12
 ```
 
-Now you have a dedicated directory for your experiment that contains all your
-artifacts.
+Now you have a dedicated directory for your experiment, containing all its
+artifacts!
