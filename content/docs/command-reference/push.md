@@ -60,7 +60,7 @@ in the cache (compared to the default remote.) It can be used to see what files
 
 ## Options
 
-- `-a`, `--all-branches` - determines the files to download by examining
+- `-a`, `--all-branches` - determines the files to upload by examining
   `dvc.yaml` and `.dvc` metafiles in all Git branches, as well as in the
   workspace. It's useful if branches are used to track experiments. Note that
   this can be combined with `-T` below, for example using the `-aT` flags.
