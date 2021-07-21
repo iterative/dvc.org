@@ -59,12 +59,7 @@ DVC can use multiple threads to upload files (4 per CPU core by default). You
 can set the number with `--jobs` (`-j`). Please note that increases in
 performance also depend on the connection bandwidth and remote configurations.
 
-DVC has a mechanism called the [run-cache] that stores the artifacts from
-intermediate stages. For example, if there is an intermediate step that applies
-data-augmentation on your dataset and you would like to push these artifacts as
-well as the end products of the experiments, you can use `--run-cache` flag to
-push all of these to the DVC remote. `--run-cache` flag pushes all artifacts
-referenced in `dvc.lock` file.
+> 📖 See also the [run-cache] mechanism.
 
 [run-cache]: /doc/user-guide/project-structure/internal-files#run-cache
 
@@ -135,16 +130,18 @@ can set the number with `--jobs` (`-j`).
 If an experiment being pulled already exists in the local project, DVC won't
 overwrite it unless you supply `--force`.
 
-### Pulling all experiments
+### Example: Pushing or pulling multiple experiments
 
-You can create a loop to pull all experiments from `origin` (Git remote) like
-this:
+You can create a loop to upload or download all experiments like this:
 
 ```dvc
 $ dvc exp list --all --names-only | while read -r expname ; do \
     dvc exp pull origin ${expname} \
 done
 ```
+
+> Without `--all`, only the experiments derived from the current commit will be
+> pushed/pulled.
 
 ## Example: Creating a directory for an experiment
 
