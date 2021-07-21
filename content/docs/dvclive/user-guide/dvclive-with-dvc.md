@@ -5,6 +5,8 @@ ways.
 
 The logs/summaries DVCLive produces can be fed as `dvc plots`/`dvc metrics`.
 
+## Setup
+
 We will refer to a training script (`train.py`) already using `dvclive`:
 
 ```python
@@ -72,6 +74,8 @@ Run the training with `dvc repro`:
 $ dvc repro train
 ```
 
+## Outputs
+
 After that's finished, you should see the following content in the project:
 
 ```bash
@@ -80,14 +84,19 @@ dvc.lock  training_metrics       training_metrics.json
 dvc.yaml  training_metrics.html  train.py
 ```
 
-If you open `training_metrics.html` in a browser, you'll see a plot for metrics
-logged during the model training!
+In addition to the
+[outputs described in the Quickstart](/docs/dvclive/user-guide/quickstart#outputs),
+DVC generates an _HTML report_. If you open `training_metrics.html` in a
+browser, you'll see a plot for metrics logged during the model training!
 
 ![](/img/dvclive_report.png)
 
-💡 When used alongside DVC, DVCLive is also capable of creating _checkpoint_
-signal files used by [experiments](/doc/user-guide/experiment-management). See
-this example [repository](https://github.com/iterative/dvc-checkpoints-mnist) to
-see how.
+When used alongside DVC, DVCLive is also capable of creating _checkpoint_ signal
+files used by <abbr>experiments<abbr> .
+
+You can learn more how to use them in the
+[Checkpoints User Guide](/docs/user-guide/experiment-management/checkpoints) and
+in this example
+[repository](https://github.com/iterative/dvc-checkpoints-mnist).
 
 [`dvclive.init()`]: /doc/dvclive/api-reference/init
