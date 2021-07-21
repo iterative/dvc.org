@@ -60,7 +60,8 @@
         }
       },
       {
-        "slug": "experiments",
+        "slug": "experiments-trail/experiments",
+        "label": "Experiments Trail",
         "tutorials": {
           "katacoda": "https://katacoda.com/dvc/courses/get-started/experiments"
         }
