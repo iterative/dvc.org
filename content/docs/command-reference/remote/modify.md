@@ -3,14 +3,14 @@
 Modify the configuration of a [data remote](/doc/command-reference/remote).
 
 > This command is commonly needed after `dvc remote add` or
-> [default](/doc/command-reference/remote/default) to setup credentials or other
-> customizations to each remote storage type.
+> [default](/doc/command-reference/remote/default) to set up credentials or
+> other customizations to each remote storage type.
 
 ## Synopsis
 
 ```usage
-usage: dvc remote modify [-h] [--global | --system | --project | --local] [-q | -v]
-                         [-u]
+usage: dvc remote modify [-h] [--global | --system | --project | --local]
+                         [-q | -v] [-u]
                          name option [value]
 
 positional arguments:
@@ -185,11 +185,15 @@ parameters to customize the authentication method:
   $ dvc remote modify myremote use_ssl false
   ```
 
-- `ssl_verify` - whether or not to verify SSL certificates. By default SSL
-  certificates are verified.
+- `ssl_verify` - whether or not to verify SSL certificates, or a path to a
+  custom CA certificates bundle to do so (implies `true`). The certs in
+  [AWS CLI config](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html#cli-configure-files-settings)
+  (if any) are used by default.
 
   ```dvc
   $ dvc remote modify myremote ssl_verify false
+  # or
+  $ dvc remote modify myremote ssl_verify path/to/ca_bundle.pem
   ```
 
 > The credentials file path, access key and secret, and other options contains
@@ -317,7 +321,8 @@ storage. Whether they're effective depends on each storage platform.
 
 ### Click for Microsoft Azure Blob Storage
 
-- `url` - remote location, in the `azure://<container>/<object>` format:
+- `url` (required) - remote location, in the `azure://<container>/<object>`
+  format:
 
   ```dvc
   $ dvc remote modify myremote url azure://mycontainer/path
@@ -326,11 +331,17 @@ storage. Whether they're effective depends on each storage platform.
   Note that if the given container name isn't found in your account, DVC will
   attempt to create it.
 
-By default, DVC authenticates using an Azure
+- `account_name` (required) - storage account name
+
+  ```dvc
+  $ dvc remote modify myremote account_name 'myuser'
+  ```
+
+By default, DVC authenticates using an `account_name` and its
 [default credential](https://docs.microsoft.com/en-us/python/api/azure-identity/azure.identity.defaultazurecredential)
-(if any). This uses certain environment variables or other auth sources. Use the
-following parameters (listed in order or precedence) to customize the
-authentication method:
+(if any), which uses certain environment variables or a signed-in Microsoft
+application. To use a custom authentication method, use the following parameters
+(listed in order of precedence):
 
 1. `connection_string` is used for authentication if given (all others params
    are ignored).
@@ -338,9 +349,10 @@ authentication method:
    (AD)
    [service principal](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal)
    auth is performed.
-3. The storage `account_name` is tried next, along with `account_key` or
-   `sas_token` (in that order). If neither key nor token is provided, DVC will
-   try to connect anonymously.
+3. DVC will try next to connect with `account_key` or `sas_token` (in this
+   order) if either are provided.
+4. If `allow_anonymous_login` is set to `True`, then DVC will try to connect
+   [anonymously](https://docs.microsoft.com/en-us/azure/storage/blobs/anonymous-read-access-configure).
 
 > The authentication values below may contain sensitive user info. Therefore,
 > it's safer to use the `--local` flag so they're written to a Git-ignored
@@ -375,24 +387,24 @@ authentication method:
   $ dvc remote modify --local myremote client_secret 'client-secret'
   ```
 
-- `account_name` - storage account name. May work by itself (via
-  [anonymous auth](https://docs.microsoft.com/en-us/azure/storage/blobs/anonymous-read-access-configure))
-  or along with either `account_key` or `sas_token` along with this):
-
-  ```dvc
-  $ dvc remote modify --local myremote account_name 'myuser'
-  ```
-
-* `account_key` - storage account key (for `account_name`):
+* `account_key` - storage account key:
 
   ```dvc
   $ dvc remote modify --local myremote account_key 'mysecret'
   ```
 
-* `sas_token` - shared access signature token (for `account_name`):
+* `sas_token` - shared access signature token:
 
   ```dvc
   $ dvc remote modify --local myremote sas_token 'mysecret'
+  ```
+
+* `allow_anonymous_login` - whether to fall back to anonymous login if no other
+  auth params are given (besides `account_name`). This will only work with
+  public buckets:
+
+  ```dvc
+  $ dvc remote modify myremote allow_anonymous_login true
   ```
 
 Note that Azure remotes can also authenticate via environment variables (instead
@@ -424,14 +436,14 @@ $ export AZURE_CLIENT_CERTIFICATE_PATH='/path/to/certificate'
 
 For simple username/password login:
 
-```
+```dvc
 $ export AZURE_CLIENT_ID='client-id'
 $ export AZURE_USERNAME='myuser'
 $ export AZURE_PASSWORD='mysecret'
 ```
 
-> See
-> [all the env vars](https://docs.microsoft.com/en-us/python/api/azure-identity/azure.identity.environmentcredential)
+> See also description here for some
+> [env vars](https://docs.microsoft.com/en-us/python/api/azure-identity/azure.identity.environmentcredential)
 > available.
 
 </details>
@@ -441,8 +453,8 @@ $ export AZURE_PASSWORD='mysecret'
 ### Click for Google Drive
 
 Please see
-[Setup a Google Drive DVC Remote](/doc/user-guide/setup-google-drive-remote) for
-a full guide on using Google Drive as DVC remote storage.
+[Set up a Google Drive DVC Remote](/doc/user-guide/setup-google-drive-remote)
+for a full guide on using Google Drive as DVC remote storage.
 
 - `url` - remote location. See
   [valid URL format](/doc/user-guide/setup-google-drive-remote#url-format).
@@ -499,16 +511,16 @@ a specific user. Please refer to
 [Using service accounts](https://cloud.google.com/iam/docs/service-accounts) for
 more information.
 
-- `gdrive_use_service_account` - instructs DVC to authenticate using a service
-  account instead of OAuth. Make sure that the service account has read/write
-  access (as needed) to the file structure in the remote `url`.
+- `gdrive_use_service_account` - authenticate using a service account. Make sure
+  that the service account has read/write access (as needed) to the file
+  structure in the remote `url`.
 
   ```dvc
   $ dvc remote modify myremote gdrive_use_service_account true
   ```
 
 - `gdrive_service_account_json_file_path` - path to the Google Project's service
-  account `.json` key file, when `gdrive_use_service_account` is on.
+  account `.json` key file (credentials).
 
   ```dvc
   $ dvc remote modify --local myremote \
@@ -516,14 +528,21 @@ more information.
                       path/to/file.json
   ```
 
-- `gdrive_service_account_user_email` - email of a user account to
-  [impersonate](https://developers.google.com/admin-sdk/directory/v1/guides/delegation)
-  with the service account. Optional when `gdrive_use_service_account` is on.
+- `gdrive_service_account_user_email` - the authority of a user account can be
+  [delegated] to the service account if needed.
 
   ```dvc
   $ dvc remote modify myremote \
-                      gdrive_service_account_user_email 'myemail-addr'
+                 gdrive_service_account_user_email 'myemail-addr'
   ```
+
+  ⚠️ DVC requires the following OAuth Scopes:
+
+  - `https://www.googleapis.com/auth/drive`
+  - `https://www.googleapis.com/auth/drive.appdata`
+
+[delegated]:
+  https://developers.google.com/admin-sdk/directory/v1/guides/delegation
 
 </details>
 
@@ -901,11 +920,13 @@ by HDFS. Read more about by expanding the WebHDFS section in
   > `password` is specified, DVC will not prompt the user to enter a password
   > for this remote.
 
-- `ssl_verify` - allows to disable SSH verification, which is enabled by
-  default.
+- `ssl_verify` - whether or not to verify SSL certificates, or a path to a
+  custom CA bundle to do so (`true` by default).
 
   ```dvc
   $ dvc remote modify myremote ssl_verify false
+  # or
+  $ dvc remote modify myremote ssl_verify path/to/ca_bundle.pem
   ```
 
 </details>
@@ -960,6 +981,15 @@ by HDFS. Read more about by expanding the WebHDFS section in
 
   ```dvc
   $ dvc remote modify myremote ask_password true
+  ```
+
+- `ssl_verify` - whether or not to verify SSL certificates, or a path to a
+  custom CA bundle to do so (`true` by default).
+
+  ```dvc
+  $ dvc remote modify myremote ssl_verify false
+  # or
+  $ dvc remote modify myremote ssl_verify path/to/ca_bundle.pem
   ```
 
 - `cert_path` - path to certificate used for WebDAV server authentication, if

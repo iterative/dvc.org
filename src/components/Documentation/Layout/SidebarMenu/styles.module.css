@@ -1,7 +1,7 @@
 .menu {
   position: sticky;
-  top: calc(var(--layout-header-height-collapsed) + 60px);
-  height: calc(100vh - var(--layout-header-height-collapsed) - 60px);
+  top: calc(var(--layout-header-height) + 60px);
+  height: calc(100vh - var(--layout-header-height) - 60px);
   overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
 

@@ -6,7 +6,9 @@ changed by this command.
 ## Synopsis
 
 ```usage
-usage: dvc remote rename [-h] [--global | --system | --project | --local] [-q | -v]
+usage: dvc remote rename [-h]
+                         [--global | --system | --project | --local]
+                         [-q | -v]
                          name new
 
 positional arguments:

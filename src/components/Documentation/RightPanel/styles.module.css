@@ -1,6 +1,6 @@
 .container {
   position: sticky;
-  top: var(--layout-header-height-collapsed);
+  top: var(--layout-header-height);
   flex-shrink: 0;
   box-sizing: border-box;
   width: 170px;

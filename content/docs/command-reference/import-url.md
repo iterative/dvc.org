@@ -4,7 +4,7 @@ Track a file or directory found in an external location (`s3://`, `/local/path`,
 etc.), and download it to the local project, or make a copy in
 [remote storage](/doc/command-reference/remote).
 
-> See `dvc import` to download and tack data/model files or directories from
+> See `dvc import` to download and track data/model files or directories from
 > other <abbr>DVC repositories</abbr> (e.g. hosted on GitHub).
 
 ## Synopsis
@@ -76,7 +76,6 @@ DVC supports several types of external locations (protocols):
 | --------- | ---------------------------- | --------------------------------------------- |
 | `s3`      | Amazon S3                    | `s3://bucket/data`                            |
 | `azure`   | Microsoft Azure Blob Storage | `azure://container/data`                      |
-| `gdrive`  | Google Drive                 | `gdrive://<folder-id>/data`                   |
 | `gs`      | Google Cloud Storage         | `gs://bucket/data`                            |
 | `ssh`     | SSH server                   | `ssh://user@example.com/path/to/data`         |
 | `hdfs`    | HDFS to file\*               | `hdfs://user@example.com/path/to/data.csv`    |
@@ -84,13 +83,12 @@ DVC supports several types of external locations (protocols):
 | `webdav`  | WebDav to file\*             | `webdavs://example.com/endpoint/path`         |
 | `webhdfs` | HDFS REST API\*              | `webhdfs://user@example.com/path/to/data.csv` |
 | `local`   | Local path                   | `/path/to/local/data`                         |
-| `remote`  | Remote path\*                | `remote://remote-name/data`                   |
 
 > If you installed DVC via `pip` and plan to use cloud services as remote
 > storage, you might need to install these optional dependencies: `[s3]`,
-> `[azure]`, `[gdrive]`, `[gs]`, `[oss]`, `[ssh]`. Alternatively, use `[all]` to
-> include them all. The command should look like this: `pip install "dvc[s3]"`.
-> (This example installs `boto3` library along with DVC to support S3 storage.)
+> `[azure]`, `[gs]`, `[oss]`, `[ssh]`. Alternatively, use `[all]` to include
+> them all. The command should look like this: `pip install "dvc[s3]"`. (This
+> example installs `boto3` library along with DVC to support S3 storage.)
 
 \* Notes on remote locations:
 
@@ -100,11 +98,6 @@ DVC supports several types of external locations (protocols):
 - In case of HTTP,
   [ETag](https://en.wikipedia.org/wiki/HTTP_ETag#Strong_and_weak_validation) is
   necessary to track if the specified URL changed.
-
-- `remote://myremote/path/to/file` notation just means that a DVC
-  [remote](/doc/command-reference/remote) `myremote` is defined and when DVC is
-  running. DVC automatically expands this URL into a regular S3, SSH, GS, etc
-  URL by appending `/path/to/file` to the `myremote`'s configured base path.
 
 Another way to understand the `dvc import-url` command is as a shortcut for
 generating a pipeline stage with and external dependency. This is discussed in
@@ -172,7 +165,7 @@ in the [Get Started](/doc/start).
 
 <details>
 
-### Click and expand to setup example
+### Click and expand to set up example
 
 Start by cloning our example repo if you don't already have it. Then move into
 the repo and checkout the
@@ -289,7 +282,7 @@ $ rm -f code.zip
 
 <details>
 
-### Click and expand to setup the environment
+### Click and expand to set up the environment
 
 Let's install the requirements. But before we do that, we **strongly** recommend
 creating a
@@ -368,8 +361,8 @@ to your project without downloading it to the local file system (for using it
 later/elsewhere). The `--to-remote` option let you skip the download, while
 storing the imported data [remotely](/doc/command-reference/remote).
 
-Let's setup a sample remote and create an import `.dvc` file without downloading
-the target data, transferring it directly to remote storage instead:
+Let's set up a sample remote and create an import `.dvc` file without
+downloading the target data, transferring it directly to remote storage instead:
 
 ```dvc
 $ mkdir /tmp/dvcstore

@@ -1,0 +1,25 @@
+name: Update download links
+on:
+  schedule:
+    - cron: '0 0 * * *'
+jobs:
+  update:
+    runs-on: ubuntu-18.04
+    steps:
+    - uses: actions/checkout@v2
+    - name: Update
+      id: update
+      shell: bash
+      run: |
+        url=https://api.github.com/repos/iterative/dvc/releases/latest
+        version=$(curl --silent $url | jq -r .tag_name)
+        path=src/components/DownloadButton/index.tsx
+        sed -i "s/^const VERSION = .*$/const VERSION = \`$version\`/g" $path
+        echo "::set-output name=changes::$(git diff)"
+        echo "::set-output name=version::$version"
+    - name: Create PR
+      if: ${{ steps.update.outputs.changes != '' }}
+      uses: peter-evans/create-pull-request@v3
+      with:
+        commit-message: dvc ${{ steps.update.outputs.version }}
+        title: dvc ${{ steps.update.outputs.version }}

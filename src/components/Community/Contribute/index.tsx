@@ -52,7 +52,7 @@ const Contribute: React.FC<{ theme: ICommunitySectionTheme }> = ({ theme }) => {
               }
             >
               Let&apos;s build something great together. Become a DVC
-              contributor!.
+              contributor!
             </CommunityBlock>
           </div>
           <div className={sharedStyles.item}>

@@ -2,14 +2,14 @@
 title: December '20 Community Gems
 date: 2020-12-30
 description: |
-  A roundup of technical Q&A's from the DVC community. 
-  This month, read about custom DVC plots, teamwork 
-  with DVC, CML without Docker, and maintaining 
+  A roundup of technical Q&A's from the DVC community.
+  This month, read about custom DVC plots, teamwork
+  with DVC, CML without Docker, and maintaining
   several pipelines in parallel!
 descriptionLong: |
-  A roundup of technical Q&A's from the DVC community. 
-  This month, read about custom DVC plots, teamwork 
-  with DVC, CML without Docker, and maintaining 
+  A roundup of technical Q&A's from the DVC community.
+  This month, read about custom DVC plots, teamwork
+  with DVC, CML without Docker, and maintaining
   several pipelines in parallel!
 picture: 2020-12-30/cover.png
 author: elle_obrien
@@ -72,7 +72,7 @@ No problem- what you'll want to do is edit your `dvc.yaml` case and then run
 `dvc commit dvc.yaml` to store the change.
 
 `dvc commit` is a helpful function that updates your `dvc.lock` file and `.dvc`
-files as needed, which foces DVC to accept any modifications to tracked data
+files as needed, which forces DVC to accept any modifications to tracked data
 currently in your workspace. That should cover the case where you have a metric
 file from your last pipeline run in your workspace, but forgot to add it to the
 `dvc.yaml` as an output!
@@ -209,8 +209,8 @@ A few other pointers:
 Generally, no- the container `dvcorg/cml:latest` should have the latest DVC
 release and the latest CML release (you can see where DVC and CML are installed
 from in our
-[Dockerfile](https://github.com/iterative/cml/blob/master/docker/Dockerfile)).
-So besides the time it takes for releases to be published on various package
+[Dockerfile](https://github.com/iterative/cml/blob/master/Dockerfile)). So
+besides the time it takes for releases to be published on various package
 managers, there shouldn't be any lag. That means experimental features are ready
 to play on your runner!
 

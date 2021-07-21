@@ -1,25 +1,37 @@
 # DVC Studio
 
-[`DVC Studio`](https://studio.iterative.ai/) is a comprehensive and interactive
-collaboration tool for your Machine Learning projects.
+[`DVC Studio`](https://studio.iterative.ai/) is a web application that you can
+[access online](https://studio.iterative.ai/) or even host on-prem. It works
+with the data, metrics and hyperparameters that you add to your ML project
+repositories. Using the power of leading open-source tools DVC, CML and Git, it
+enables you to seamlessly manage data and models, run and track experiments, and
+visualize and share results.
 
-Using the power of leading open-source tools DVC, CML and Git, it enables you to
-seamlessly manage data and models, run and track experiments, and visualize and
-share results.
+<cards>
 
-Project website: https://studio.iterative.ai
+  <card href="/doc/studio/overview" heading="How DVC Studio works">
+    Learn how DVC Studio works closely with the Git ecosystem
+  </card>
 
-![](https://static.iterative.ai/img/studio/main.png) _DVC Studio experiments
-dashboard_
+  <card href="/doc/studio/get-started" heading="Get started">
+    A step-by-step tutorial to get started with DVC Studio
+  </card>
 
-Use DVC, CML and Studio to:
+  <card href="/doc/studio/user-guide" heading="User guide">
+    Non-exhaustive list things you can do with DVC Studio
+  </card>
 
-- **Visualize, collaborate, and do everything that a regular ML tracking tool
-  does.**
+  <card href="/doc/studio/troubleshooting" heading="Troubleshooting">
+    Learn how to troubleshoot some common problem scenarios
+  </card>
 
-- **Keep your code, data and model connected at all times.**
+</cards>
 
-- **Use the power of Git to track and preserve all your experiments.**
+**Why DVC Studio?**
 
-- **Run [CI/CD](https://en.wikipedia.org/wiki/CI/CD) for your ML projects on
-  cloud resources of your choice without any new tools.**
+- Simplify ML experiment tracking, visualization, and collaboration on top of
+  Git.
+- Keep your code, data and model connected at all times.
+- Apply your existing software engineering stack for ML teams.
+- Automate your ML process by transitioning to a no-code interface for running
+  experiments on cloud resources of your choice.

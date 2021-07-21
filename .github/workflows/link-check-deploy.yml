@@ -4,32 +4,29 @@ name: Check new links against deployment
 on:
   - deployment
   - deployment_status
-
 jobs:
   run:
     name: Initialize
     runs-on: ubuntu-latest
-    if: github.event.deployment.ref != 'master' && github.event.deployment_status.state == 'success'
-
+    if:
+      github.event.deployment.ref != 'master' &&
+      github.event.deployment_status.state == 'success'
     steps:
       - uses: actions/checkout@v2
-
       - id: build_check
         uses: LouisBrunner/checks-action@v1.0.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           name: Report
           status: queued
-
       - name: Run Link Check
         id: check
-        uses: 'iterative/link-check.action@v0.7'
+        uses: iterative/link-check.action@v0.8
         with:
           diff: true
-          configFile: 'config/link-check/config.yml'
+          configFile: config/link-check/config.yml
           rootURL: '${{ github.event.deployment.payload.web_url }}'
           output: checksAction
-
       - uses: LouisBrunner/checks-action@v1.0.0
         if: ${{ success() }}
         with:
@@ -38,7 +35,6 @@ jobs:
           status: completed
           conclusion: ${{ steps.check.outputs.conclusion }}
           output: ${{ steps.check.outputs.output }}
-
       - uses: LouisBrunner/checks-action@v1.0.0
         if: ${{ failure() }}
         with:

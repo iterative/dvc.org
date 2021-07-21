@@ -5,18 +5,17 @@ title: 'Get Started: Metrics, Parameters, and Plots'
 # Get Started: Metrics, Parameters, and Plots
 
 DVC makes it easy to track [metrics](/doc/command-reference/metrics), update
-[parameters](/doc/command-reference/params), and visualize performance with
-[plots](/doc/command-reference/plots). These concepts are introduced below, and
-[Experiments](/doc/start/experiments) shows how to combine them to run and
-compare many iterations of your ML project.
+<abbr>parameters</abbr>, and visualize performance with
+[plots](/doc/command-reference/plots). These concepts are introduced below.
 
-Read on to see how it's done!
+> All of the above can be combined into <abbr>experiments</abbr> to run and
+> compare many iterations of your ML project.
 
 ## Collecting metrics
 
 First, let's see what is the mechanism to capture values for these ML
 attributes. Let's add a final evaluation stage to our
-[pipeline](/doc/start/data-pipelines):
+[pipeline from before](/doc/start/data-pipelines):
 
 ```dvc
 $ dvc run -n evaluate \
@@ -33,7 +32,7 @@ $ dvc run -n evaluate \
 ### 💡 Expand to see what happens under the hood.
 
 The `-M` option here specifies a metrics file, while `--plots-no-cache`
-specifies a plots file produced by this stage that will not be
+specifies a plots file (produced by this stage) which will not be
 <abbr>cached</abbr> by DVC. `dvc run` generates a new stage in the `dvc.yaml`
 file:
 
@@ -57,8 +56,8 @@ evaluate:
 The biggest difference to previous stages in our pipeline is in two new
 sections: `metrics` and `plots`. These are used to mark certain files containing
 ML "telemetry". Metrics files contain scalar values (e.g. `AUC`) and plots files
-contain matrices and data series (e.g. `ROC curves` or model loss plots) that
-are meant to be visualized and compared.
+contain matrices and data series (e.g. `ROC curves` or model loss plots) meant
+to be visualized and compared.
 
 > With `cache: false`, DVC skips caching the output, as we want `scores.json`,
 > `prc.json`, and `roc.json` to be versioned by Git.
@@ -70,15 +69,17 @@ writes the model's
 [ROC-AUC](https://scikit-learn.org/stable/modules/model_evaluation.html#receiver-operating-characteristic-roc)
 and
 [average precision](https://scikit-learn.org/stable/modules/model_evaluation.html#precision-recall-and-f-measures)
-to `scores.json`, which is marked as a metrics file with `-M`:
+to `scores.json`, which in turn is marked as a `metrics` file with `-M`. Its
+contents are:
 
 ```json
 { "avg_prec": 0.5204838673030754, "roc_auc": 0.9032012604172255 }
 ```
 
-It also writes `precision`, `recall`, and `thresholds` arrays (obtained using
+`evaluate.py` also writes `precision`, `recall`, and `thresholds` arrays
+(obtained using
 [`precision_recall_curve`](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_recall_curve.html))
-into plots file `prc.json`:
+into the plots file `prc.json`:
 
 ```json
 {
@@ -94,9 +95,9 @@ Similarly, it writes arrays for the
 [roc_curve](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_curve.html)
 into `roc.json` for an additional plot.
 
-> DVC doesn't force you to use any specific file names, or even format or
-> structure of a metrics or plots file - it's pretty much user and case defined.
-> Please refer to `dvc metrics` and `dvc plots` for more details.
+> DVC doesn't force you to use any specific file names, nor does it enforce a
+> format or structure of a metrics or plots file. It's completely
+> user/case-defined. Refer to `dvc metrics` and `dvc plots` for more details.
 
 You can view tracked metrics and plots with DVC. Let's start with the metrics:
 
@@ -133,9 +134,10 @@ $ git add scores.json prc.json roc.json
 $ git commit -a -m "Create evaluation stage"
 ```
 
-Later we will see how these and other can be used to compare and visualize
-different pipeline iterations. For now, let's see how can we capture another
-important piece of information that will be useful for comparison: parameters.
+Later we will see how to
+[compare and visualize different pipeline iterations](#comparing-iterations).
+For now, let's see how can we capture another important piece of information
+which will be useful for comparison: parameters.
 
 ## Defining stage parameters
 
@@ -162,7 +164,7 @@ featurize:
 
 <details>
 
-### 💡 Expand to recall how it was generated.
+### ⚙️ Expand to recall how it was generated.
 
 The `featurize` stage
 [was created](/doc/start/data-pipelines#dependency-graphs-dags) with this
@@ -179,13 +181,12 @@ $ dvc run -n featurize \
 
 </details>
 
-The `params` section defines the [parameter](/doc/command-reference/params)
-dependencies of the `featurize` stage. By default DVC reads those values
-(`featurize.max_features` and `featurize.ngrams`) from a `params.yaml` file. But
-as with metrics and plots, parameter file names and structure can also be user
-and case defined.
+The `params` section defines the parameter dependencies of the `featurize`
+stage. By default, DVC reads those values (`featurize.max_features` and
+`featurize.ngrams`) from a `params.yaml` file. But as with metrics and plots,
+parameter file names and structure can also be user- and case-defined.
 
-This is how our `params.yaml` file looks like:
+Here's the contents of our `params.yaml` file:
 
 ```yaml
 prepare:
@@ -215,25 +216,25 @@ We are definitely not happy with the AUC value we got so far! Let's edit the
 +  ngrams: 2
 ```
 
-And the beauty of `dvc.yaml` is that all you need to do now is to run:
+The beauty of `dvc.yaml` is that all you need to do now is run:
 
 ```dvc
 $ dvc repro
 ```
 
-It'll analyze the changes, use existing cache of previous runs, and execute only
-the commands that are needed to get the new results (model, metrics, plots).
+It'll analyze the changes, use existing results from the <abbr>run-cache</abbr>,
+and execute only the commands needed to produce new results (model, metrics,
+plots).
 
 The same logic applies to other possible adjustments — edit source code, update
-datasets — you do the changes, use `dvc repro`, and DVC runs what needs to be
-run.
+datasets — you do the changes, use `dvc repro`, and DVC runs what needs to be.
 
 ## Comparing iterations
 
 Finally, let's see how the updates improved performance. DVC has a few commands
-to see metrics and parameter changes, and to visualize plots, for one or more
-pipeline iterations. Let's compare the current "bigrams" run with the last
-committed "baseline" iteration:
+to see changes in and visualize metrics, parameters, and plots. These commands
+can work for one or across multiple pipeline iteration(s). Let's compare the
+current "bigrams" run with the last committed "baseline" iteration:
 
 ```dvc
 $ dvc params diff
@@ -271,5 +272,9 @@ file:///Users/dvc/example-get-started/plots.html
 > [Git revisions](https://git-scm.com/docs/gitrevisions) (commits, tags, branch
 > names) to compare.
 
-In the next page, learn advanced ways to track, organize, and compare more
-experiment iterations.
+🌟 Check out this YouTube video with a tutorial covering metrics! 🌟
+
+https://youtu.be/bu3l75eQlQo
+
+On the next page, you can learn advanced ways to track, organize, and compare
+more experiment iterations.

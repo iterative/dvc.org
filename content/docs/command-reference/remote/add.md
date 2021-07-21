@@ -8,8 +8,8 @@ Add a new [data remote](/doc/command-reference/remote).
 ## Synopsis
 
 ```usage
-usage: dvc remote add [-h] [--global | --system | --project | --local] [-q | -v]
-                      [-d] [-f]
+usage: dvc remote add [-h] [--global | --system | --project | --local]
+                      [-q | -v] [-d] [-f]
                       name url
 
 positional arguments:
@@ -121,7 +121,7 @@ For object storage that supports an S3-compatible API (e.g.
 [Minio](https://min.io/),
 [DigitalOcean Spaces](https://www.digitalocean.com/products/spaces/),
 [IBM Cloud Object Storage](https://www.ibm.com/cloud/object-storage) etc.),
-configure the `endpointurl` parameter. For example, let's setup a DigitalOcean
+configure the `endpointurl` parameter. For example, let's set up a DigitalOcean
 "space" (equivalent to a bucket in S3) called `mystore` that uses the `nyc3`
 region:
 
@@ -147,11 +147,12 @@ they're effective depends on each storage platform.
 
 ```dvc
 $ dvc remote add -d myremote azure://mycontainer/path
+$ dvc remote modify myremote account_name 'myuser'
 ```
 
-By default, DVC authenticates using an Azure
+By default, DVC authenticates using an `account_name` and its
 [default credential](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html)
-(if any). This uses certain environment variables or a signed in Microsoft
+(if any), which uses certain environment variables or a signed-in Microsoft
 application. To use a custom authentication method, use the parameters described
 in `dvc remote modify`.
 
@@ -178,8 +179,8 @@ Enter verification code: # <- enter resulting code
 ```
 
 See `dvc remote modify` for a list of other GDrive parameters, or
-[Setup a Google Drive DVC Remote](/doc/user-guide/setup-google-drive-remote) for
-a full guide on using Google Drive as DVC remote storage.
+[Set up a Google Drive DVC Remote](/doc/user-guide/setup-google-drive-remote)
+for a full guide on using Google Drive as DVC remote storage.
 
 Note that GDrive remotes are not "trusted" by default. This means that the
 [`verify`](/doc/command-reference/remote/modify#available-parameters-for-all-remotes)
@@ -217,7 +218,7 @@ parameters, use the parameters described in `dvc remote modify`.
 
 ### Click for Aliyun OSS
 
-First you need to setup OSS storage on Aliyun Cloud. Then, use an S3 style URL
+First you need to set up OSS storage on Aliyun Cloud. Then, use an S3 style URL
 for OSS storage, and configure the
 [endpoint](https://www.alibabacloud.com/help/doc-detail/31837.html):
 
@@ -237,7 +238,7 @@ $ dvc remote modify myremote --local oss_key_secret 'mysecret'
 
 **Testing your OSS storage using docker**
 
-Start a container running an OSS emulator, and setup the environment variables,
+Start a container running an OSS emulator, and set up the environment variables,
 for example:
 
 ```dvc
@@ -278,7 +279,7 @@ Please check that you are able to connect both ways with tools like `ssh` and
 ### Click for HDFS
 
 HDFS might require additional setup. Our assumption with HDFS is that the client
-is setup to use it and DVC can rely on the same libraries. See more details
+is set up to use it and DVC can rely on the same libraries. See more details
 [here](https://github.com/iterative/dvc/issues/5858#issuecomment-824216700).
 
 💡 Using an HDFS cluster as remote storage is also supported via the WebHDFS

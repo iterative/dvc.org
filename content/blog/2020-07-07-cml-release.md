@@ -105,7 +105,7 @@ with **GitHub Actions** and **GitLab CI**. We've created functions to:
    Ali**) and deploy CI runners using
    [Docker Machine](https://github.com/docker/machine).
 3. Bring datasets from cloud storage to runners (using **DVC**) for model
-   trainin, as well as save the resulting model in cloud storage.
+   training, as well as save the resulting model in cloud storage.
 
 ![Auto-generated metrics-driven report in GitLab Merge Request](/uploads/images/2020-07-07/cml-report-metrics.png)
 

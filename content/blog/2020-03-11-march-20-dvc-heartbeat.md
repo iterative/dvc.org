@@ -1,5 +1,5 @@
 ---
-title: March '20 DVC❤️Heartbeat
+title: March ’20 DVC❤️Heartbeat
 date: 2020-03-11
 description: |
   DVC discussions around the web,
@@ -72,11 +72,11 @@ startup Zymergen, and formerly Twitter). Dmitry wrote:
 > data scientists worked to get a realistic chance at adoption. So I ignored, or
 > even explicitly avoided, checking DVC out as the buzz grew. I’ve finally
 > checked it out and… it looks like maybe this has legs? Metrics tied to
-> branches / versions are a great feature. Tying the idea of git-like braches to
-> training multiple models makes the value prop clear. The implementation, using
-> Git for code and datafile index storage, while leveraging scalable data stores
-> for data, and trying to reduce overall storage cost by being clever about
-> reuse, looks sane. A lot of what they have to say in
+> branches / versions are a great feature. Tying the idea of git-like branches
+> to training multiple models makes the value prop clear. The implementation,
+> using Git for code and datafile index storage, while leveraging scalable data
+> stores for data, and trying to reduce overall storage cost by being clever
+> about reuse, looks sane. A lot of what they have to say in
 > https://dvc.org/doc/understanding-dvc rings true.
 
 Check out the full blog here:

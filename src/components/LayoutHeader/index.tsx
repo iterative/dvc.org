@@ -19,12 +19,7 @@ import styles from './styles.module.css'
 import LayoutAlert from './alert'
 
 const LayoutHeader: React.FC<Required<ILayoutModifiable>> = ({ modifiers }) => {
-  const {
-    opened,
-    handleToggle,
-    handleKeyDown,
-    handleItemClick
-  } = useHamburgerMenu()
+  const { opened, handleToggle, handleItemClick } = useHamburgerMenu()
   const scrolled = useHeaderIsScrolled()
   const hasCollapsedModifier = includes(modifiers, LayoutModifiers.Collapsed)
   const hasHideAlertModifier = includes(modifiers, LayoutModifiers.HideAlert)
@@ -46,7 +41,7 @@ const LayoutHeader: React.FC<Required<ILayoutModifiable>> = ({ modifiers }) => {
           )}
           <LayoutWidthContainer
             className={cn(styles.container, collapsed && styles.collapsed)}
-            wide={includes(modifiers, LayoutModifiers.Wide)}
+            wide
           >
             <Link
               href="/"
@@ -56,22 +51,27 @@ const LayoutHeader: React.FC<Required<ILayoutModifiable>> = ({ modifiers }) => {
             >
               <LogoSVG className={styles.logo} />
             </Link>
+            <Link
+              className={styles.company}
+              href="https://iterative.ai/"
+              target="_blank"
+            >
+              by <span className={styles.companyName}>iterative.ai</span>
+            </Link>
             <Nav />
           </LayoutWidthContainer>
         </div>
       </header>
-      <HamburgerMenu
-        opened={opened}
-        collapsed={collapsed}
-        handleToggle={handleToggle}
-        handleKeyDown={handleKeyDown}
-        handleItemClick={handleItemClick}
-      />
       <HamburgerButton
         opened={opened}
         collapsed={collapsed}
         handleClick={handleToggle}
-        handleKeyDown={handleKeyDown}
+      />
+      <HamburgerMenu
+        opened={opened}
+        collapsed={collapsed}
+        handleToggle={handleToggle}
+        handleItemClick={handleItemClick}
       />
     </>
   )

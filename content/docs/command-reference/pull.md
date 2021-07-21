@@ -140,7 +140,7 @@ pipeline stages, such as the <abbr>DVC project</abbr> created for the
 
 <details>
 
-### Click and expand to setup the project
+### Click and expand to set up the project
 
 Start by cloning our example repo if you don't already have it:
 
@@ -188,7 +188,7 @@ $ dvc pull train
 > Please delete the `.dvc/cache` directory first (with `rm -Rf .dvc/cache`) to
 > follow this example if you tried the previous ones.
 
-Our [pipeline](/doc/command-reference/dag) has been setup with these
+Our [pipeline](/doc/command-reference/dag) has been set up with these
 [stages](/doc/command-reference/run): `prepare`, `featurize`, `train`,
 `evaluate`.
 
