@@ -578,10 +578,20 @@
     "slug": "dvclive",
     "source": "dvclive/index.md",
     "children": [
-      "usage",
       {
-        "label": "DVCLive with DVC",
-        "slug": "dvclive-with-dvc"
+        "label": "User Guide",
+        "slug": "user-guide",
+        "source": "dvclive/user-guide/index.md",
+        "children": [
+          {
+            "slug": "quickstart",
+            "label": "Quickstart"
+          },
+          {
+            "label": "DVCLive with DVC",
+            "slug": "dvclive-with-dvc"
+          }       
+        ]
       },
       {
         "label": "API Reference",
