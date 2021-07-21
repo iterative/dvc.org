@@ -16,9 +16,9 @@ two high-level features:
 To start using the integration you just need to add few modifications to your
 training loop in **any** Pytorch project.
 
-You will need to add [`dvclive.log()`] calls to each placewhere you would like
-to store metrics and one single call to [`dvclive.next_step()`] to indicate that
-the epoch has ended.
+You need to add [`dvclive.log()`] calls to each place where you would like to
+log metrics and one single [`dvclive.next_step()`] call to indicate that the
+epoch has ended.
 
 To ilustrate with some code, extracted from the
 [official PyTorch ImageNet example](https://github.com/pytorch/examples/blob/master/imagenet/main.py):
