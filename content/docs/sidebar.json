@@ -99,11 +99,6 @@
         "slug": "what-is-dvc"
       },
       {
-        "slug": "basic-concepts",
-        "source": false,
-        "children": ["workspace"]
-      },
-      {
         "slug": "project-structure",
         "source": "project-structure/index.md",
         "children": [
