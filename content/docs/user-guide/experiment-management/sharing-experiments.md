@@ -178,7 +178,10 @@ If there is no DVC remote in the original repository, you can define its
 $ dvc remote add --local --default storage ~/my-project/.dvc/cache
 ```
 
-If there is a DVC remote for the project, assuming the experiments have been
+> ⚠️ `--local` is important here, so that the configuration change doesn't get
+> to the original repo accidentally.
+
+If there's a DVC remote for the project, assuming the experiments have been
 pushed there, you can pull the one in question:
 
 ```dvc
