@@ -594,6 +594,29 @@
         ]
       },
       {
+        "label": "Integrations",
+        "slug": "integrations",
+        "source": "integrations/index.md",
+        "children": [
+          {
+            "slug": "mmcv",
+            "label": "MMCV"
+          },
+          {
+            "slug": "pytorch",
+            "label": "Pytorch"
+          },
+          {
+            "slug": "tensorflow-keras",
+            "label": "TensorFlow / Keras"
+          },
+          {
+            "slug": "xgboost",
+            "label": "XGBoost"
+          }
+        ]
+      },
+      {
         "label": "API Reference",
         "slug": "api-reference",
         "source": "api-reference/index.md",

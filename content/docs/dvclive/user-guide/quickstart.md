@@ -54,6 +54,8 @@ for epoch in range(NUM_EPOCHS):
     dvclive.next_step()
 ```
 
+## Outputs
+
 After you run your training code, you should see the following content in the
 project:
 
