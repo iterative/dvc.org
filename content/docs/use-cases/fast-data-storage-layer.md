@@ -48,6 +48,8 @@ frequency required.
 
 ![](/img/shared-server.png) _Data storage shared by DVC projects_
 
+<!-- Simplify/ make more general? Not local, symlinks only -->
+
 To balance speed and cost, you can also use a `dvc remote` (or several) as
 secondary storage (e.g. an object store like S3,
 [GCS](https://cloud.google.com/storage/), or Azure Blob Storage). Data only
@@ -56,24 +58,38 @@ your project can be kept there. Remote storage is also a great way to back up
 and [share datasets and ML models](/doc/use-cases/sharing-data-and-model-files).
 
 > 🔒 Another benefit of having a clear organization of your near and remote
-> storage locations is to manage user access and data security policies
-> centrally.
+> storage locations is to manage user access, as well as centralizing data
+> security policies.
 
-Using DVC to implement a layered data storage, you preserve the flexibility to
-redesign the solution in the future without having to change directory
-structures or code. Advanced setups range from a no-storage system (where data
-pipelines are [prepared for later] instantiation) to remote-only architectures
-(e.g. for putting ML models in production).
+Using DVC to implement a layered data storage system also gives you flexibility
+to redesign the solution in the future without having to change directory
+structures or code.
 
-[prepared for later]:
+<details>
+
+## Click to explore a range of advanced implementations
+
+- On one extreme, you can [prepare your data requirements] in a lightweight
+  system without mass storage (0 layers).
+- Connect a primary storage to your local machine or network to transition into
+  a typical (1 layer) working DVC environment.
+- Add a complex remote layer by connecting to multiple cloud storage services,
+  and backup certain data on different ones (2-layer solution). DVC can
+  synchronize them with your <abbr>cache</abbr> when needed.
+- On the other end, you can have a single-layer, remote-only architecture, e.g.
+  for deploying trained ML models to production applications.
+
+[prepare your data requirements]:
   https://dvc.org/doc/command-reference/add#example-transfer-to-remote-storage
+
+</details>
 
 ## Example: Shared Development Server
 
-Some teams may prefer using a single shared machine to run their experiments.
-This allows better resource utilization, such as GPU access and centralized data
-storage. Each person can work in their own separate <abbr>workspace</abbr> as
-usual, and DVC will handle the data linking.
+Some teams prefer using a single shared machine to run their experiments. This
+allows better resource utilization (quick transfers, central storage, GPU
+access, etc.) in a simple way. Each person can work in separate
+<abbr>workspaces</abbr> as usual, and DVC will handle the data linking.
 
 ⚙️ Start by configuring a [shared cache].
 
