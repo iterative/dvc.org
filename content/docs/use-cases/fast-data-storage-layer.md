@@ -125,8 +125,8 @@ A       raw
 A       clean
 # ... work on processing clean data ...
 
-$ dvc run -n process_data
-          -d process.py -d clean -o processed
+$ dvc run -n process_data \
+          -d process.py -d clean -o processed \
           ./process.py clean processed
 
 $ git add process.py dvc.yaml dvc.lock .gitignore
