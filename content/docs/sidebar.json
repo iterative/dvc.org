@@ -604,7 +604,7 @@
           },
           {
             "slug": "pytorch",
-            "label": "Pytorch"
+            "label": "PyTorch"
           },
           {
             "slug": "tensorflow-keras",

@@ -49,7 +49,8 @@ log_config = dict(
 This will use the registered `DvcliveLoggerHook` to generate metrics _logs_ and
 _summaries_ during training.
 
-> 💡You can use the DVCLive - MMCV integration alongside DVC. See
+> 💡Without requiring additional modifications to your training code, you can
+> use the DVCLive - MMCV integration alongside DVC. See
 > [DVCLive with DVC](/doc/dvclive/user-guide/dvclive-with-dvc) for more info.
 
 ## Example repository
