@@ -14,11 +14,11 @@ can help in situations such as:
 
 - You want to speed up data transfers from a massive object store which is
   currently on the cloud, or to move a growing dataset out of your machine
-  without slowing things down. How do you plug in something in the middle (like
-  a NAS drive) to existing projects?
+  without slowing things down. How can you use something in the middle (like a
+  NAS drive)?
 
 - Upgrading your entire storage platform is expensive. Can you pay only for fast
-  access to the data sets your team uses frequently?
+  access to frequently-used data?
 
 - You want to de-duplicate files automatically when multiple people are working
   on the same data (for example, on a
@@ -26,26 +26,25 @@ can help in situations such as:
 
 - Your team shares access to a GPU server for machine learning
   [experiments](/doc/user-guide/experiment-management). How can you switch the
-  working datasets quickly, without re-downloading every time?
+  data inputs quickly, without re-downloading every time?
 
-## How it works
-
-DVC converts your raw data, intermediate artifacts, and final results (e.g.
-machine learning models) into unique storage objects. This optimizes storage by
-avoiding file duplication. <abbr>Cached</abbr> files are mapped back to your
-<abbr>workspace</abbr> using [file links] to minimize transfers.
+<abbr>DVC projects</abbr> transform raw data, intermediate artifacts, and final
+results (e.g. machine learning models) into unique storage objects. This
+optimizes storage by avoiding file duplication. And to minimize transfers,
+<abbr>cached</abbr> files are [linked] back to your <abbr>workspace</abbr>.
 
 > 📖 See [Dataset Optimization](/doc/user-guide/large-dataset-optimization) for
 > more details.
 
-[file links]:
+[linked]:
   /doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache
 
-To unify data storage across multiple projects, you can configure a [shared
-cache]. This compounds the deduplication and performance benefits. Having
-separated data storage from other aspects of your projects, you can treat it as
-an independent infrastructure layer, using Ceph,
-[EFS](https://aws.amazon.com/efs/), or any other platform.
+**You can unify all your data across projects by setting up a [shared cache] as
+primary storage.** This compounds the deduplication and performance benefits.
+Having separated data storage from other aspects of your projects, you can treat
+it as an independent infrastructure layer which can use Ceph,
+[EFS](https://aws.amazon.com/efs/), etc. depending on the access speed and
+frequency required.
 
 ![](/img/shared-server.png) _Data storage shared by DVC projects_
 
@@ -55,6 +54,19 @@ secondary storage (e.g. an object store like S3,
 needed in older [versions](/doc/use-cases/versioning-data-and-model-files) of
 your project can be kept there. Remote storage is also a great way to back up
 and [share datasets and ML models](/doc/use-cases/sharing-data-and-model-files).
+
+> 🔒 Another benefit of having a clear organization of your near and remote
+> storage locations is to manage user access and data security policies
+> centrally.
+
+Using DVC to implement a layered data storage, you preserve the flexibility to
+redesign the solution in the future without having to change directory
+structures or code. Advanced setups range from a no-storage system (where data
+pipelines are [prepared for later] instantiation) to remote-only architectures
+(e.g. for putting ML models in production).
+
+[prepared for later]:
+  https://dvc.org/doc/command-reference/add#example-transfer-to-remote-storage
 
 ## Example: Shared Development Server
 
