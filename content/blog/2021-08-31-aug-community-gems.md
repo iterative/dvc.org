@@ -38,11 +38,48 @@ You have a few options with DVC for this.
 
 Great question @Ravi Kumar!
 
-### [Q: ]()
+### [Q: Is there a recommended way to specify multiple pipelines in DVC?](https://discord.com/channels/485586884165107732/485596304961962003/864230750325047316)
 
-### [Q: ]()
+There are a few different ways to approach this.
 
-### [Q: ]()
+- `dvc.yaml` files can be in any sub-directory or nested sub-directory in the
+  project structure and DVC will find them.
+- DVC will process them just the same as if they were one DVC file i.e.
+  dependencies between stages in different `dvc.yaml` files are still respected.
+- Each `dvc.yaml` file will have its own `dvc.lock` file in the same directory.
+- Splitting a `dvc.yaml` file into multiple files is encouraged where there are
+  clear logical groupings between stages. It avoids confusion, improves
+  readability, and shortens commands by avoiding long paths preceding every
+  filename.
+
+If you want to see the rest of the explanation,
+[check out this PR we have up](https://github.com/iterative/dvc.org/issues/2494).
+Please feel free to add a comment or emoji on this PR so we know how to
+prioritize this content for you!
+
+Thanks @Tups!
+
+### [Q: Is there way to allow different pipelines to have common dependencies and outputs in DVC pipelines?](https://discord.com/channels/485586884165107732/563406153334128681/867747202306146335)
+
+Good question @vgodie!
+
+It is possible to have overlapping dependencies, but not overlapping outputs.
+Having overlapping outputs introduces uncertainty into DVC commands, like
+`dvc checkout`.
+
+### [Q: How does the CML runner functionality to restart workflows if it's been shut down by AWS (e.g. spot instances) work?](https://discord.com/channels/485586884165107732/728693131557732403/862641924200857660)
+
+You shouldn't have to do anything. Spot instances sends a `SIGINT` that we
+handle to restart the workflow. We have been supporting graceful shutdown by
+unregistering runers for a while now.
+
+The main difference now is that we restart workflows with unfinished jobs.
+
+We know for sure this isn't working in Azure. Azure is not doing a graceful
+shutdown, but a shutdown now, even when stopping the instance within the Azure
+console.
+
+Thanks for such a good question @andee96!
 
 ### [Q: ]()
 
