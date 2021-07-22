@@ -608,11 +608,7 @@
           },
           {
             "slug": "tensorflow-keras",
-            "label": "TensorFlow / Keras"
-          },
-          {
-            "slug": "xgboost",
-            "label": "XGBoost"
+            "label": "TensorFlow/Keras"
           }
         ]
       },

@@ -53,7 +53,7 @@ This will generate the metrics logs and summaries as described in the
   weights will be saved (`model.save_weights(model_file)`), else the full model
   is saved (`model.save(model_file)`)
 
-- Example:
+Example:
 
 ```python
 from dvclive.keras import DvcLiveCallback
@@ -62,7 +62,9 @@ model.fit(
     train_dataset,
     epochs=num_epochs,
     validation_data=validation_dataset,
-    callbacks=[DvcLiveCallback(model_file="my_model_weights.h5"), save_weights_only=True])
+    callbacks=[DvcLiveCallback(
+        model_file="my_model_weights.h5",
+        save_weights_only=True)])
 ```
 
 ## Example repository
