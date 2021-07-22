@@ -1,6 +1,7 @@
 const remark = require('remark')
 const remarkHTML = require('remark-html')
 const is404Regexp = /^\/404/
+const isDocsRegexp = /^\/doc/
 const trailingSlashRegexp = /\/$/
 
 const alertLandingArray = ['/enterprise']
@@ -25,6 +26,7 @@ const setPageContext = (page, actions) => {
     context: {
       ...page.context,
       is404: is404Regexp.test(page.path),
+      isDocs: isDocsRegexp.test(page.path),
       isAlertLanding
     }
   })

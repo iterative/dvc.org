@@ -100,7 +100,7 @@
       },
       {
         "slug": "project-structure",
-        "source": "user-guide/project-structure/index.md",
+        "source": "project-structure/index.md",
         "children": [
           {
             "label": "Pipelines Files (dvc.yaml)",
@@ -138,7 +138,7 @@
       {
         "label": "Experiment Management",
         "slug": "experiment-management",
-        "source": "user-guide/experiment-management/index.md",
+        "source": "experiment-management/index.md",
         "children": ["checkpoints"]
       },
       "setup-google-drive-remote",
@@ -173,6 +173,11 @@
       {
         "label": "Anonymized Usage Analytics",
         "slug": "analytics"
+      },
+      {
+        "label": "Glossary",
+        "slug": "glossary",
+        "source": "basic-concepts"
       }
     ]
   },
@@ -577,6 +582,25 @@
       {
         "label": "Dvclive with DVC",
         "slug": "dvclive-with-dvc"
+      },
+      {
+        "label": "API Reference",
+        "slug": "api-reference",
+        "source": "api-reference/index.md",
+        "children": [
+          {
+            "slug": "init",
+            "label": "init()"
+          },
+          {
+            "slug": "log",
+            "label": "log()"
+          },
+          {
+            "slug": "next_step",
+            "label": "next_step()"
+          }
+        ]
       }
     ]
   }
