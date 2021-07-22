@@ -37,11 +37,13 @@ computer vision research and supports many research projects as below:
 To start using the integration you just need to add the following code to your
 config file of **any** OpenMMlab project:
 
-```python
+```git
 log_config = dict(
-    interval=0,
+    interval=100,
     hooks=[
-        dict(type='DvcliveLoggerHook')
+-        dict(type='TextLoggerHook')
++        dict(type='TextLoggerHook'),
++        dict(type='DvcliveLoggerHook')
     ]
 )
 ```
