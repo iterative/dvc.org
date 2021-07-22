@@ -18,9 +18,9 @@ dvclive.log("loss", 0.9)
 ## Description
 
 The first call to `dvclive.log(name, val)` will create a new file in
-`{path}/{name}.tsv` including the header and first row.
+`{path}/{name}.dvclive.tsv` including the header and first row.
 
-For example `dvclive.log("loss", 0.9)` will create `{path}/loss.tsv`:
+For example `dvclive.log("loss", 0.9)` will create `{path}/loss.dvclive.tsv`:
 
 ```
 timestamp step  loss
@@ -28,13 +28,13 @@ timestamp step  loss
 ```
 
 Each subsequent call to `dvclive.log(name, val)` will add a new row to
-`{path}/{name}.tsv`.
+`{path}/{name}.dvclive.tsv`.
 
-The created file `{path}/{name}.tsv` is usable by `dvc plots`.
+The created file `{path}/{name}.dvclive.tsv` is usable by `dvc plots`.
 
 💡 If `name` contains slashes (i.e. `train/loss`), the required subfolders will
 be created and the file will be saved inside the last subfolder (i.e.
-`{path}/train/loss.tsv`).
+`{path}/train/loss.dvclive.tsv`).
 
 💡 If you call `dvclive.log()` without calling [`dvclive.init()`] first,
 `dvclive` will automatically initialize itself using either default values or
@@ -42,7 +42,7 @@ environment variables (when used alongside `DVC`).
 
 ## Parameters
 
-- `name` - The _metrics logs_ will be saved in `{path}/{name}.tsv`.
+- `name` - The _metrics logs_ will be saved in `{path}/{name}.dvclive.tsv`.
 
 - `val` - The value to be added in the `name` column of a new row.
 
