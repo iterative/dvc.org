@@ -1,6 +1,7 @@
 name: Download Link Check
 
 on:
+  pull_request: # here for testing
   deployment_status:
   schedule:
     - cron: '0 1-23 * * *'
@@ -9,9 +10,9 @@ jobs:
   run:
     name: Initialize
     runs-on: ubuntu-latest
-    if:
-      github.event.deployment.ref != 'master' &&
-      github.event.deployment_status.state == 'success'
+    # if:
+    # github.event.deployment.ref != 'master' &&
+    # github.event.deployment_status.state == 'success'
     steps:
       - uses: actions/checkout@v2
       - name: Download Link Checker
@@ -22,12 +23,14 @@ jobs:
             lychee-summary.txt https://dvc.org/
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-      - name: Create Issue From File
-        uses: peter-evans/create-issue-from-file@v3
-        with:
-          title: Link Checker Report
-          content-filepath: ./lychee/out.md
-          labels: website, automated issue
+      # - name: Create Issue From File
+      #   uses: peter-evans/create-issue-from-file@v3
+      #   with:
+      #     title: Link Checker Report
+      #     content-filepath: ./lychee/out.md
+      #     labels: website, automated issue
+      - name: Create Report for Broken Links
+        run: echo "create issue here"
       - name: Create SUCCESSFUL_LINK_AMOUNT env
         run: |
           text=$(grep Successful lychee-summary.txt)
@@ -36,9 +39,11 @@ jobs:
       - if:
           ${{ hashFiles('out.md') == '' }} && ${{ env.SUCCESSFUL_LINK_AMOUNT !=
           '4' }}
-        name: Create Issue From File
-        uses: peter-evans/create-issue-from-file@v3
-        with:
-          title: Link Checker Report
-          content-filepath: ./lychee-summary.md
-          labels: website, automated issue
+        # name: Create Issue From File
+        # uses: peter-evans/create-issue-from-file@v3
+        # with:
+        #   title: Link Checker Report
+        #   content-filepath: ./lychee-summary.md
+        #   labels: website, automated issue
+        name: Create Report for Missing Links
+        run: echo "create issue here"
