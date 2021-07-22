@@ -3,7 +3,7 @@
 The DVCLive - MMCV integration allows you to easily add experiment tracking
 capabilities to your OpenMMlab projects.
 
-The DVCLive - MMCV integration is
+The integration is
 [maintained in the MMCV repository](https://github.com/open-mmlab/mmcv/blob/master/mmcv/runner/hooks/logger/dvclive.py).
 
 ## About MMCV

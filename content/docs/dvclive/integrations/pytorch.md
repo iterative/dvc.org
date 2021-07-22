@@ -5,8 +5,8 @@ capabilities to your Pytorch projects.
 
 ## About PyTorch
 
-[PyTorch](https://github.com/pytorch/pytorch) is a Python package that provides
-two high-level features:
+[PyTorch](https://pytorch.org/) is a Python package that provides two high-level
+features:
 
 - Tensor computation (like NumPy) with strong GPU acceleration
 - Deep neural networks built on a tape-based autograd system
