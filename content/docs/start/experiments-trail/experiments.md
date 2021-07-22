@@ -49,23 +49,16 @@ in DVC repositories to update the missing data dependencies.
 $ dvc pull
 ```
 
-Then we extract this file that contains labeled images.
-
-```dvc
-$ tar -xvzf data/images.tar.gz --directory data/
-```
-
 The repository already contains the necessary configuration to run the
-experiments. If you would like to learn how to configure a project to run DVC
-experiments, please refer to the last section.
+experiments.
 
 <details>
 
 ## ⏲ Preparing a project for DVC experiments
 
 In this document we assume that there is already a configured DVC project to
-simplify the introduction. DVC experiments are a feature added in DVC 2.0 and
-requires a DVC pipeline defined in the project.
+simplify the introduction. DVC experiments require a DVC pipeline defined in the
+project.
 
 Please refer to [install](/doc/install) if DVC is not installed in your system.
 
@@ -91,22 +84,20 @@ The command tells DVC to create an experiment named `train`, and that for any
 change in `data/images/`, `model.conv_units` or `train.epochs`, we run an
 experiment using `src/train.py` that produces a new `metrics.json` file.
 
-Note that the parameters (added with `-p`) are in the default parameters file
-`params.yaml` and used in the code as normal, by reading the file. DVC only
-tracks the changes and updates them with `--set-param`. For other files that
-contain the parameters, DVC expects the filename to be provided similar to
-`-p myparams.yaml:epochs`.
+You can get more information on [pipelines], and [parameters] in other sections
+of this guide.
 
-DVC is ready to run the experiments now!
+[pipelines]: /doc/start/data-pipelines
+[parameters]: /doc/start/metrics-parameters-plots
 
 </details>
 
 ## 👟 Running the experiment with default parameters
 
-The purpose of `dvc exp` subcommands is to run the pipeline for ephemeral
-experiments. By _ephemeral_ we mean the experiments can be run without
-committing parameter and dependency changes to Git. Instead the artifacts
-produced for each experiment are tracked by DVC and persisted on demand.
+The purpose of `dvc exp` subcommands is to run the pipeline for experiments
+without committing parameter and dependency changes to Git. Instead the
+artifacts produced for each experiment are tracked by DVC and persisted on
+demand.
 
 Running the experiment with default project settings requires only the command:
 
@@ -172,6 +163,8 @@ $ git diff params.yaml
 +  conv_units: 24
 ```
 
+<details>
+
 ## 🏃‍♂️🏃🏾‍♂️🏃🏻‍♂️ Run multiple experiments in parallel
 
 Instead of running the experiments one-by-one, we can define them to run in a
@@ -198,6 +191,8 @@ number of parallel processes using `--jobs`:
 $ dvc exp run --run-all --jobs 2
 ```
 
+</details>
+
 ## ↔️ Comparing experiments
 
 The experiments are run several times with different parameters. We use
@@ -208,7 +203,20 @@ parameters and metrics produced in experiments in a nicely formatted table.
 $ dvc exp show
 ```
 
-![](/img/start-dvc-exp-show-210704.png)
+```dvctable
+┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━┓
+┃ white:**Experiment**    ┃ white:**Created**┃    yellow:**loss** ┃    yellow:**acc** ┃ blue:**train.epochs** ┃ blue:**model.conv_units** ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━┩
+│ workspace               │ -            │ 0.23508 │ 0.9151 │ 10           │ 24               │
+│ 7317bc6                 │ Jul 18, 2021 │       - │      - │ 10           │ 16               │
+│ ├── e2647ef [exp-ee8a4] │ 05:14 PM     │ 0.23146 │ 0.9145 │ 10           │ 64               │
+│ ├── 15c9451 [exp-a9be6] │ 05:14 PM     │ 0.25231 │ 0.9102 │ 10           │ 32               │
+│ ├── 9c32227 [exp-17dd9] │ 04:46 PM     │ 0.23687 │ 0.9167 │ 10           │ 256              │
+│ ├── 8a9cb15 [exp-29d93] │ 04:46 PM     │ 0.24459 │ 0.9134 │ 10           │ 128              │
+│ ├── dfc536f [exp-a1bd9] │ 03:35 PM     │ 0.23508 │ 0.9151 │ 10           │ 24               │
+│ └── 1a1d858 [exp-6dccf] │ 03:21 PM     │ 0.23282 │ 0.9152 │ 10           │ 16               │
+└─────────────────────────┴──────────────┴─────────┴────────┴──────────────┴──────────────────┘
+```
 
 By default it shows all the parameters and the metrics with the timestamp. If
 you have large number of parameters, metrics or experiments, this may lead to a
@@ -221,7 +229,20 @@ $ dvc exp show --no-timestamp \
   --include-params model.conv_units --include-metrics acc
 ```
 
-![](/img/start-dvc-exp-show-no-timestamp-210704.png)
+```dvctable
+┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━━━━━┓
+┃ white:**Experiment**              ┃    yellow:**acc** ┃ blue:**model.conv_units** ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━━━━━┩
+│ workspace               │ 0.9151 │ 24               │
+│ 7317bc6                 │      - │ 16               │
+│ ├── e2647ef [exp-ee8a4] │ 0.9145 │ 64               │
+│ ├── 15c9451 [exp-a9be6] │ 0.9102 │ 32               │
+│ ├── 9c32227 [exp-17dd9] │ 0.9167 │ 256              │
+│ ├── 8a9cb15 [exp-29d93] │ 0.9134 │ 128              │
+│ ├── dfc536f [exp-a1bd9] │ 0.9151 │ 24               │
+│ └── 1a1d858 [exp-6dccf] │ 0.9152 │ 16               │
+└─────────────────────────┴────────┴──────────────────┘
+```
 
 ## 🔏 Persisting experiments
 
