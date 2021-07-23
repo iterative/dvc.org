@@ -111,7 +111,7 @@ $ git commit -m "Cleanup raw data"
 $ git push
 ```
 
-> 📖 Learn more about `dvc add` and `dvc run`.
+> 📖 Learn more about `dvc add`, `dvc stage add`, and `dvc repro`.
 
 The data gets <abbr>cached</abbr> in the shared location. Your colleagues can
 `dvc checkout` your work, and have both the `raw` and `clean` data file-linked
