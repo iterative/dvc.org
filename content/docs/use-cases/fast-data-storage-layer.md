@@ -102,8 +102,9 @@ Let's say you are cleaning up raw data for later stages:
 
 ```dvc
 $ dvc add raw
-$ dvc run -n clean_data -d cleanup.py -d raw -o clean \
-          ./cleanup.py raw clean
+$ dvc stage add -n clean_data -d cleanup.py -d raw -o clean \
+                ./cleanup.py raw clean
+$ dvc repro
 
 $ git add cleanup.py raw.dvc dvc.yaml dvc.lock .gitignore
 $ git commit -m "Cleanup raw data"
@@ -125,9 +126,10 @@ A       raw
 A       clean
 # ... work on processing clean data ...
 
-$ dvc run -n process_data
-          -d process.py -d clean -o processed
-          ./process.py clean processed
+$ dvc stage add -n process_data
+                -d process.py -d clean -o processed
+                ./process.py clean processed
+$ dvc repro
 
 $ git add process.py dvc.yaml dvc.lock .gitignore
 $ git commit -m "Process data"
