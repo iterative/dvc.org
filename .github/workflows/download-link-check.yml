@@ -19,8 +19,8 @@ jobs:
         uses: lycheeverse/lychee-action@v1.0.8
         with:
           args:
-            -v --include https:\/\/s3-us-east-2\.amazonaws\.com\/dvc --output
-            lychee-summary.txt https://dvc.org/
+            -v --include https:\/\/s3-us-east-2\.amazonaws\.com\/dvc
+            https://dvc.org/
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
       # - name: Create Issue From File
@@ -33,17 +33,15 @@ jobs:
         run: echo "create issue here"
       - name: Create SUCCESSFUL_LINK_AMOUNT env
         run: |
-          text=$(grep Successful lychee-summary.txt)
+          text=$(grep Successful ./lychee/out.md)
           amount="${text//[^0-9]/}"
           echo SUCCESSFUL_LINK_AMOUNT=$amount >> $GITHUB_ENV
-      - if:
-          ${{ hashFiles('out.md') == '' }} && ${{ env.SUCCESSFUL_LINK_AMOUNT !=
-          '4' }}
+      - if: ${{ env.SUCCESSFUL_LINK_AMOUNT != '4' }}
         # name: Create Issue From File
         # uses: peter-evans/create-issue-from-file@v3
         # with:
         #   title: Link Checker Report
-        #   content-filepath: ./lychee-summary.md
+        #   content-filepath: ./lychee/out.md
         #   labels: website, automated issue
         name: Create Report for Missing Links
         run: echo "create issue here"
