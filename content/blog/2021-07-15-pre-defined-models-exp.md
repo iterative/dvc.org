@@ -31,15 +31,14 @@ specific application.
 
 ## Initialize the pre-trained model
 
-We'll be fine-tuning the AlexNet model to work
+We'll be fine-tuning the AlexNet model and the SqueezeNet model to work with an
+image dataset containing bees and ants. You can find the code we're working with
+in [this repo](https://github.com/iterative/pretrained-model-demo).
 
-### Reshaping the final layers
+## Add a DVC pipeline
 
-When we fine-tune this final layer, it should have the same number of outputs as
-the number of classes in the new dataset.
+### Fine-tuning AlexNet
 
-## Define for the optimization algorithm which parameters we want to update during training
-
-## Run the training step
+### Fine-tuning SqueezeNet
 
 ## Conclusion
