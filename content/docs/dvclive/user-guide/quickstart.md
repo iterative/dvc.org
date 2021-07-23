@@ -33,7 +33,7 @@ dvclive.next_step()
 
 See [`dvclive.next_step()`] for details.
 
-## Putting al together
+## Putting all together
 
 Using the above steps, you can easily include DVCLive in your training code:
 

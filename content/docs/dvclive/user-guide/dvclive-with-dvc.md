@@ -91,6 +91,8 @@ browser, you'll see a plot for metrics logged during the model training!
 
 ![](/img/dvclive_report.png)
 
+## Checkpoints
+
 When used alongside DVC, DVCLive is also capable of creating _checkpoint_ signal
 files used by <abbr>experiments<abbr> .
 
