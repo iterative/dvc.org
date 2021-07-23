@@ -34,7 +34,7 @@ computer vision research and supports many research projects as below:
 
 ## Usage
 
-To start using the integration you just need to add the following code to your
+To start using the integration you just need to add the following line to your
 config file of **any** OpenMMlab project:
 
 ```git
