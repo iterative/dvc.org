@@ -1,6 +1,6 @@
 # Experiment Management
 
-⚠️ This feature is available since DVC 2.0 ⚠️
+⚠️ This feature is available on DVC 2.0 and above ⚠️
 
 Data science and ML are iterative processes that require a large number of
 attempts to reach a certain level of a metric. Experimentation is part of the
