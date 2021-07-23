@@ -81,11 +81,29 @@ console.
 
 Thanks for such a good question @andee96!
 
-### [Q: ]()
+### [Q: Can I change the endpoint defined here <https://github.com/iterative/cml/blob/master/src/utils.js#L56>? Or does `cml-publish` always save the artifacts on this endpoint?](https://discord.com/channels/485586884165107732/728693131557732403/864444303169421322)
 
-### [Q: ]()
+Good question @Nwp8nice!
 
-### [Q: ]()
+If you use GitLab you can use the `--native` option to upload to GitLab instead.
+
+It would be nice to be able to offer an alternative link so if you're
+interested, a PR would be awesome! :blush:
+
+### [Q: Is CML used for creating the MLOps workflows, like Apache Airflow?](https://discord.com/channels/485586884165107732/728693131557732403/866624571519664128)
+
+This is a really good question @Ravi Kumar!
+
+CML relies on CI/CD engines like GitHub Actions or GitLab CI/CD, but doesn't
+replace them. It's just a lightweight wrapper and not a complete workflow
+ecosystem like Airflow.
+
+### [Q: Does CML have the ability to run long-run instances, e.g. can I run AWS instance via GitHub Actions that works more than 6 hours?](https://discord.com/channels/485586884165107732/728693131557732403/866730530262351873)
+
+You can definitely run it for 6 hours. The GitHub limit is 72 hours for
+self-hosted runners and GitLab has no limit on self-hosted runners.
+
+Thanks @sergechuvakin!
 
 ---
 
