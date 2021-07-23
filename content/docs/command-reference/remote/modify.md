@@ -406,17 +406,19 @@ application. To use a custom authentication method, use the following parameters
   ```dvc
   $ dvc remote modify myremote allow_anonymous_login true
   ```
-**Authentication examples:**
-  
+
+  **Authentication examples:**
+
 Authentication example with currently logged in az cli user/identity:
-  
+
 ```dvc
 $ dvc remote add -d myremote azure://mycontainer/object
 $ dvc remote modify myremote account_name 'myaccount'
 $ dvc remote push
 ```
-Note: the above example requires at least
-  `Storage Blob Data Contributor` role on `myaccount`.
+
+Note: the above example requires at least `Storage Blob Data Contributor` role
+on `myaccount`.
 
 Authentication example with `connection_string`:
 
@@ -425,7 +427,7 @@ $ dvc remote add -d myremote azure://mycontainer/object
 $ dvc remote modify --local myremote connection_string 'mysecret'
 $ dvc remote push
 ```
-  
+
 Authentication example with `account_key`:
 
 ```dvc
@@ -434,7 +436,7 @@ $ dvc remote modify --local myremote account_name 'myaccount'
 $ dvc remote modify --local myremote account_key 'mysecret'
 $ dvc remote push
 ```
-  
+
 Authentication example with `sas_token`:
 
 ```dvc
@@ -442,8 +444,8 @@ $ dvc remote add -d myremote azure://mycontainer/object
 $ dvc remote modify --local myremote account_name 'myaccount'
 $ dvc remote modify --local myremote sas_token 'mysecret'
 $ dvc remote push
-```  
-  
+```
+
 Note that Azure remotes can also authenticate via environment variables (instead
 of `dvc remote modify`). These are tried if none of the params above are set.
 
