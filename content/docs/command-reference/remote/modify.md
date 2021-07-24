@@ -337,11 +337,39 @@ storage. Whether they're effective depends on each storage platform.
   $ dvc remote modify myremote account_name 'myuser'
   ```
 
-By default, DVC authenticates using an `account_name` and its
-[default credential](https://docs.microsoft.com/en-us/python/api/azure-identity/azure.identity.defaultazurecredential)
-(if any), which uses certain environment variables or a signed-in Microsoft
-application. To use a custom authentication method, use the following parameters
-(listed in order of precedence):
+By default, DVC authenticates using an `account_name` and its [default
+credential] (if any), which uses environment variables (e.g. set by `az cli`) or
+a Microsoft application.
+
+[default credential]:
+  https://docs.microsoft.com/en-us/python/api/azure-identity/azure.identity.defaultazurecredential
+
+<details>
+
+#### For Windows users
+
+When using default authentication, you may need to enable some of these
+exclusion parameters depending on your setup
+([details][azure-default-cred-params]):
+
+[azure-default-cred-params]:
+  https://docs.microsoft.com/en-us/python/api/azure-identity/azure.identity.defaultazurecredential?view=azure-python#parameters
+
+```dvc
+$ dvc remote modify --system myremote
+                    exclude_environment_credential true
+$ dvc remote modify --system myremote
+                    exclude_visual_studio_code_credential true
+$ dvc remote modify --system myremote
+                    exclude_shared_token_cache_credential true
+$ dvc remote modify --system myremote
+                    exclude_managed_identity_credential true
+```
+
+</details>
+
+To use a custom authentication method, use the following parameters (listed in
+order of precedence):
 
 1. `connection_string` is used for authentication if given (all others params
    are ignored).
@@ -406,23 +434,6 @@ application. To use a custom authentication method, use the following parameters
   ```dvc
   $ dvc remote modify myremote allow_anonymous_login true
   ```
-  
-* When using `dvc` on windows with authentication through `az cli`
-  some or all of the following exclude params may have to be set, depending on your setup.
-  
-  See https://docs.microsoft.com/en-us/python/api/azure-identity/azure.identity.defaultazurecredential?view=azure-python for
-  further details.
-  * `exclude_environment_credential` - exclude an already configured service principal.
-  * `exclude_visual_studio_code_credential` - exclude credentials stored in VS Code.
-  * `exclude_shared_token_cache_credential` - exclude cached shared tokens.
-  * `exclude_managed_identity_credential` - exclude the managed identity from the credential.
-  
-    ```dvc
-    $ dvc remote modify --local myremote exclude_environment_credential true
-    $ dvc remote modify --local myremote exclude_visual_studio_code_credential true
-    $ dvc remote modify --local myremote exclude_shared_token_cache_credential true
-    $ dvc remote modify --local myremote exclude_managed_identity_credential true
-    ```
 
 Note that Azure remotes can also authenticate via environment variables (instead
 of `dvc remote modify`). These are tried if none of the params above are set.
