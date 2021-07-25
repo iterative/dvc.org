@@ -10,6 +10,7 @@ import { matchMedia } from '../../../utils/front/breakpoints'
 import { focusElementWithHotkey } from '../../../utils/front/focusElementWithHotkey'
 
 import styles from './styles.module.css'
+import { useWindowSize } from 'react-use'
 
 const Layout: LayoutComponent = ({ children, ...restProps }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -19,13 +20,15 @@ const Layout: LayoutComponent = ({ children, ...restProps }) => {
 
   const toggleMenu = useCallback(() => setIsMenuOpen(!isMenuOpen), [isMenuOpen])
 
+  const windowSize = useWindowSize()
+
   useEffect(() => {
     if (matchMedia('--xs-scr')) {
       return
     }
     const closeEventListener = focusElementWithHotkey('#doc-search', '/')
     return closeEventListener
-  }, [])
+  }, [windowSize])
 
   return (
     <MainLayout
