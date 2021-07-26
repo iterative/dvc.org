@@ -171,11 +171,14 @@ is installed when `yarn` runs (see [dev env](#development-environment)).
   paragraphs, but this is discouraged: try to keep items short.
 
 - Markdown: Syntax highlighting in fenced code blocks should use the `usage`
-  `dvc`, `yaml`, or `diff` custom languages. `usage` is employed to show the
-  `dvc --help` output for each command reference. `dvc` can be used to show
-  examples of commands and their output in a terminal session. `yaml` is used to
-  show samples of <abbr>DVC files</abbr>, or other YAML contents. `diff` is used
-  mainly for examples of `git diff` output.
+  `dvc`, `dvctable`, `yaml`, or `diff` custom languages. `usage` is employed to
+  show the `dvc --help` output for each command reference. `dvc` can be used to
+  show examples of commands and their output in a terminal session. `dvctable`
+  is used for creating colored, bold, or italic table cells. (You can see an
+  [example](https://dvc.org/doc/start/experiments) of `dvctable` in our "Get
+  Started" section.) `yaml` is used to show samples of <abbr>DVC files</abbr>,
+  or other YAML contents. `diff` is used mainly for examples of `git diff`
+  output.
 
 > Check out the `.md` source code of any command reference to get a better idea,
 > for example in
