@@ -19,7 +19,7 @@ jobs:
         uses: lycheeverse/lychee-action@v1.0.8
         with:
           args:
-            -v --include https:\/\/s3-us-east-2\.amazonaws\.com\/dvc
+            --verbose --include https://s3-us-east-2.amazonaws.com/dvc
             https://dvc.org/
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
@@ -33,8 +33,9 @@ jobs:
         run: echo "create issue here"
       - name: Create SUCCESSFUL_LINK_AMOUNT env
         run: |
-          text=$(grep Successful ./lychee/out.md)
-          amount="${text//[^0-9]/}"
+          echo "$(cat /tmp/lychee/out.md)"
+          echo text=$(grep Successful /tmp/lychee/out.md)
+          echo amount="${text//[^0-9]/}"
           echo SUCCESSFUL_LINK_AMOUNT=$amount >> $GITHUB_ENV
       - if: ${{ env.SUCCESSFUL_LINK_AMOUNT != '4' }}
         # name: Create Issue From File
