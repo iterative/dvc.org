@@ -1,52 +1,46 @@
 # Fast Data Storage Layer
 
 Datasets used in data science tend to exceed typical storage and networking
-capacities. Storage needs expand rapidly as more people and projects acquire the
-same data, creating duplication and increasing cost. Valuable time is wasted
-waiting for downloads, and the wait repeats across environments. Is there an
-effective way to perform this process?
+capacities. Storage needs expand rapidly as more people acquire the same data,
+creating duplication (increasing cost). Valuable time is wasted waiting for
+downloads in each environment.
 
-![](/img/dataset-copies.png) _Manual organization of data files_
+![](/img/dataset-copies.png) _Slow synchronization of data storage_
 
-DVC's built-in data <abbr>caching</abbr> enables you to implement a simple and
-efficient storage layer globally — for all your team's projects. This approach
-can help in situations such as:
+DVC's built-in data <abbr>caching</abbr> lets you implement a simple and
+efficient storage layer globally -- for your entire team. This approach can help
+to
 
-- You want to speed up data transfers from a massive object store which is
-  currently on the cloud, or to move a growing dataset out of your machine
-  without slowing things down. How can you use something in the middle (like a
-  NAS drive)?
+- speed up data transfers from massive object stores currently on the cloud, or
+  move a growing dataset out of your machine without slowing things down.
 
-- Upgrading your entire storage platform is expensive. Can you pay only for fast
-  access to frequently-used data?
+- pay only for fast access to frequently-used data (upgrading your entire
+  storage platform is expensive).
 
-- You want to de-duplicate files automatically when multiple people are working
-  on the same data (for example, on a
+- de-duplicate files automatically when multiple people are working on the same
+  data (for example on a
   [shared development server](#example-shared-development-server)).
 
-- Your team shares access to a GPU server for machine learning
-  [experiments](/doc/user-guide/experiment-management). How can you switch the
-  data inputs quickly, without re-downloading every time?
-
-**You can unify all your data across <abbr>projects</abbr> by setting up a
-[shared DVC cache].** This deduplicates your entire data store and minimizes
-transfers by linking your files and directories. DVC can also manage
-[remote storage](/doc/command-reference/remote) on platforms like Amazon S3 or
-Google Drive, in order to [share](/doc/use-cases/sharing-data-and-model-files)
-and back up your datasets or ML models.
-
-> 📖 See more information on the
-> [dataset optimization](/doc/user-guide/large-dataset-optimization) built into
-> DVC.
+- switch data inputs quickly (without re-downloading) on a shared GPU server for
+  machine learning [experiments](/doc/user-guide/experiment-management).
 
 ![](/img/storage-layers.png) _Data storage middleware for multiple projects_
 
+You can unify all your data across projects by setting up a [shared DVC cache]
+in a near location (network, external drive). This deduplicates your entire data
+store and minimizes transfers by
+[linking](/doc/user-guide/large-dataset-optimization) your working files and
+directories.
+
 Now that your team shares a primary storage, it can be managed independently as
-part of your infrastructure -- provisioned depending on data access speed
-requirements. It also lets you implement _data security_ policies in a central
-location. And importantly, you have the flexibility to change storage providers
-at any time, without having to change the directory structures or code of your
-projects.
+part of your infrastructure; provisioned depending on data access speed and cost
+requirements. You have the flexibility to change storage providers at any time,
+without having to change the directory structures or code of your projects.
+
+> DVC can also manage [remote storage](/doc/command-reference/remote) on
+> platforms like Amazon S3 or Google Drive, in order to
+> [share datasets and ML models](/doc/use-cases/sharing-data-and-model-files) or
+> and back them up.
 
 ## Example: Shared development server
 
