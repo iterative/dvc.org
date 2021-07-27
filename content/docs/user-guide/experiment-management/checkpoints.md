@@ -469,6 +469,10 @@ with the following command:
 $ dvc exp gc --workspace --force
 ```
 
+Checkout the video covering this Checkpoints doc.
+
+https://youtu.be/PcDo-hCvYpw
+
 Now that you know how to use checkpoints in DVC, you'll be able to resume
 training from different checkpoints to try out new hyperparameters or code and
 you'll be able to track all of the changes you make while trying to create the
