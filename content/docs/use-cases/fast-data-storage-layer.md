@@ -45,61 +45,27 @@ without having to change the directory structures or code of your projects.
 ## Example: Shared development server
 
 Some teams prefer using a single shared machine to run their experiments. This
-allows better resource utilization (quick transfers, central storage, GPU
-access, etc.) in a simple way. Each person can work in separate
-<abbr>workspaces</abbr>, and DVC will handle the data linking.
+is a simple way to improve resource utilization (quick transfers, central
+storage, GPU access, etc.). Everyone can still work in a separate
+<abbr>workspace</abbr> (e.g. in their user home folders).
+
+> ⚠️ In fact it's not recommended to share a single workspace among users, as it
+> may produce file permission issues.
 
 ![](/img/shared-server.png) _Data storage shared by DVC projects_
 
-⚙️ Start by configuring a [shared DVC cache].
+Start by configuring a [shared DVC cache]. Now when colleagues make changes to
+the project, you can get the latest results with `dvc checkout`. DVC links data
+files and directories to your workspace instantly, so data artifacts are never
+moved or copied.
 
 [shared dvc cache]: /doc/user-guide/how-to/share-a-dvc-cache
 
-> ⚠️ It's not recommended to share a single workspace among users, as it may
-> produce file permission issues.
-
-Let's say you are cleaning up raw data for later stages:
-
-```dvc
-$ dvc add raw
-$ dvc stage add -n clean_data -d cleanup.py -d raw -o clean \
-                ./cleanup.py raw clean
-$ dvc repro
-
-$ git add cleanup.py raw.dvc dvc.yaml dvc.lock .gitignore
-$ git commit -m "Cleanup raw data"
-$ git push
-```
-
-> 📖 Learn more about `dvc add`, `dvc stage add`, and `dvc repro`.
-
-The data gets <abbr>cached</abbr> in the shared location. Your colleagues can
-`dvc checkout` your work, and have both the `raw` and `clean` data file-linked
-to their workspace automatically. Imagine that they then decide to continue
-building this [pipeline](/doc/command-reference/dag), and process the clean
-data:
-
 ```dvc
 $ git pull
 $ dvc checkout
-A       raw
-A       clean
-# ... work on processing clean data ...
-
-$ dvc stage add -n process_data
-                -d process.py -d clean -o processed
-                ./process.py clean processed
-$ dvc repro
-
-$ git add process.py dvc.yaml dvc.lock .gitignore
-$ git commit -m "Process data"
-$ git push
+A       data/new
+M       data/labels
 ```
 
-You can just as easily make their work appear in your workspace with:
-
-```dvc
-$ git pull
-$ dvc checkout
-A       processed
-```
+> 📖 Learn more about [data versioning](/doc/start/data-and-model-versioning).
