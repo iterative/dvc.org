@@ -290,3 +290,7 @@ $ dvc exp show -n 2 --no-timestamp \
 > `dvc exp gc` only removes references to the experiments; not the cached
 > objects associated with them. To clean up the <abbr>cache</abbr>, use
 > `dvc gc`.
+
+Checkout our video on Experiments.
+
+https://youtu.be/N11KcrtbVDY
