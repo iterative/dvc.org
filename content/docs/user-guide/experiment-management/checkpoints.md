@@ -473,3 +473,15 @@ Now that you know how to use checkpoints in DVC, you'll be able to resume
 training from different checkpoints to try out new hyperparameters or code and
 you'll be able to track all of the changes you make while trying to create the
 best possible model.
+
+## checkpoint backup
+
+`DVC_EXP_AUTO_PUSH` env var is intended to help backup the experiments results
+which helps to recover from interruptions that happened in the middle of a model
+trainning. `DVC_EXP_AUTO_PUSH` can be set to a remote git repository address,
+and then during the training process, remote backup will be done automatically
+after every iteration. This includes Git references of experiments backup to
+this repository and model caches, checkpoint files backup to the default dvc remote
+cache.
+
+
