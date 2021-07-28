@@ -369,6 +369,8 @@ $ dvc remote modify --system myremote
 
 </details>
 
+> See some [Azure auth examples](#example-some-azure-authentication-methods).
+
 To use a custom authentication method, use the following parameters (listed in
 order of precedence):
 
