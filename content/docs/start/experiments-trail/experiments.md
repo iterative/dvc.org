@@ -4,17 +4,12 @@ title: 'Get Started: Experiments'
 
 # Get Started with Experiments
 
-<abbr>Experiments</abbr> proliferate quickly in ML projects where there are many
-parameters to tune or other permutations of the code. We can organize such
-projects and keep only what we ultimately need with `dvc experiments`. DVC can
-track experiments for you so there's no need to commit each one to Git. This way
-your repo doesn't become polluted with all of them. You can discard experiments
-once they're no longer needed.
+<abbr>Experiments</abbr> grow rapidly in number in ML projects. DVC can track
+these experiments, list their most relevant parameters and metrics, and commit
+only the ones that we need to Git.
 
-Previously, we learned how to tune [ML pipelines](/doc/start/data-pipelines) and
-[compare the changes](/doc/start/metrics-parameters-plots). In this section, we
-will explore the basic features of DVC experiment management with
-[`get-started-experiments`][gse] project.
+In this section, we will explore the basic features of DVC experiment management
+with [`get-started-experiments`][gse] project.
 
 [gse]: https://github.com/iterative/get-started-experiments
 
