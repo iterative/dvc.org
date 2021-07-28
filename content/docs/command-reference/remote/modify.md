@@ -337,11 +337,39 @@ storage. Whether they're effective depends on each storage platform.
   $ dvc remote modify myremote account_name 'myaccount'
   ```
 
-By default, DVC authenticates using an `account_name` and its
-[default credential](https://docs.microsoft.com/en-us/python/api/azure-identity/azure.identity.defaultazurecredential)
-(if any), which uses certain environment variables or a signed-in Microsoft
-application. To use a custom authentication method, use the following parameters
-(listed in order of precedence):
+By default, DVC authenticates using an `account_name` and its [default
+credential] (if any), which uses environment variables (e.g. set by `az cli`) or
+a Microsoft application.
+
+[default credential]:
+  https://docs.microsoft.com/en-us/python/api/azure-identity/azure.identity.defaultazurecredential
+
+<details>
+
+#### For Windows users
+
+When using default authentication, you may need to enable some of these
+exclusion parameters depending on your setup
+([details][azure-default-cred-params]):
+
+[azure-default-cred-params]:
+  https://docs.microsoft.com/en-us/python/api/azure-identity/azure.identity.defaultazurecredential?view=azure-python#parameters
+
+```dvc
+$ dvc remote modify --system myremote
+                    exclude_environment_credential true
+$ dvc remote modify --system myremote
+                    exclude_visual_studio_code_credential true
+$ dvc remote modify --system myremote
+                    exclude_shared_token_cache_credential true
+$ dvc remote modify --system myremote
+                    exclude_managed_identity_credential true
+```
+
+</details>
+
+To use a custom authentication method, use the following parameters (listed in
+order of precedence):
 
 1. `connection_string` is used for authentication if given (all others params
    are ignored).
@@ -548,16 +576,16 @@ a specific user. Please refer to
 [Using service accounts](https://cloud.google.com/iam/docs/service-accounts) for
 more information.
 
-- `gdrive_use_service_account` - instructs DVC to authenticate using a service
-  account instead of OAuth. Make sure that the service account has read/write
-  access (as needed) to the file structure in the remote `url`.
+- `gdrive_use_service_account` - authenticate using a service account. Make sure
+  that the service account has read/write access (as needed) to the file
+  structure in the remote `url`.
 
   ```dvc
   $ dvc remote modify myremote gdrive_use_service_account true
   ```
 
 - `gdrive_service_account_json_file_path` - path to the Google Project's service
-  account `.json` key file, when `gdrive_use_service_account` is on.
+  account `.json` key file (credentials).
 
   ```dvc
   $ dvc remote modify --local myremote \
@@ -565,16 +593,15 @@ more information.
                       path/to/file.json
   ```
 
-- `gdrive_service_account_user_email` - email of a user account whose authority
-  should be [delegated] to the service account.
+- `gdrive_service_account_user_email` - the authority of a user account can be
+  [delegated] to the service account if needed.
 
   ```dvc
   $ dvc remote modify myremote \
                  gdrive_service_account_user_email 'myemail-addr'
   ```
 
-  Domain-wide delegation of authority is required to include the following OAuth
-  Scopes (authorized in Google Workspace Admin console):
+  ⚠️ DVC requires the following OAuth Scopes:
 
   - `https://www.googleapis.com/auth/drive`
   - `https://www.googleapis.com/auth/drive.appdata`

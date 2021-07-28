@@ -358,6 +358,27 @@
         }
       }
 
+      .language-dvctable {
+        .token.hide {
+          display: none;
+        }
+
+        .token.bg-white {
+          color: #000;
+          background-color: #eee;
+        }
+
+        .token.bg-yellow {
+          color: #000;
+          background-color: #fffed7;
+        }
+
+        .token.bg-blue {
+          color: #000;
+          background-color: #d7feff;
+        }
+      }
+
       .token.input {
         user-select: none;
       }

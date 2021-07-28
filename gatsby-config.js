@@ -5,6 +5,7 @@ const path = require('path')
 
 require('./config/prismjs/dvc')
 require('./config/prismjs/usage')
+require('./config/prismjs/dvctable')
 
 const apiMiddleware = require('./src/server/middleware/api')
 const redirectsMiddleware = require('./src/server/middleware/redirects')

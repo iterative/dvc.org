@@ -4,7 +4,7 @@ title: 'Get Started: Experiments'
 
 # Get Started: Experiments
 
-⚠️ This feature is only available in DVC 2.0 ⚠️
+_New in DVC 2.0_
 
 <abbr>Experiments</abbr> proliferate quickly in ML projects where there are many
 parameters to tune or other permutations of the code. We can organize such
@@ -108,11 +108,14 @@ compares any number of experiments in one table:
 ```dvc
 $ dvc exp show --no-timestamp \
                --include-params train.n_est,train.min_split
+```
+
+```dvctable
 ┏━━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
-┃ Experiment    ┃ avg_prec ┃ roc_auc ┃ train.n_est┃ train.min_split ┃
+┃ neutral:**Experiment**    ┃ metric:**avg_prec** ┃ metric:**roc_auc** ┃ param:**train.n_est**┃ param:**train.min_split** ┃
 ┡━━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━┩
-│ workspace     │  0.56191 │ 0.93345 │ 50         │ 2               │
-│ master        │  0.55259 │ 0.91536 │ 50         │ 2               │
+│ **workspace**     │  **0.56191** │ **0.93345** │ **50**         │ **2**               │
+│ **master**        │  **0.55259** │ **0.91536** │ **50**         │ **2**               │
 │ ├── exp-bfe64 │  0.57833 │ 0.95555 │ 50         │ 8               │
 │ ├── exp-b8082 │  0.59806 │ 0.95287 │ 50         │ 64              │
 │ ├── exp-c7250 │  0.58876 │ 0.94524 │ 100        │ 2               │
@@ -227,11 +230,14 @@ Let's take another look at the experiments table:
 ```dvc
 $ dvc exp show --no-timestamp \
                --include-params train.n_est,train.min_split
+```
+
+```dvctable
 ┏━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
-┃ Experiment ┃ avg_prec ┃ roc_auc ┃ train.n_est┃ train.min_split ┃
+┃ neutral:**Experiment** ┃ metric:**avg_prec** ┃ metric:**roc_auc** ┃ param:**train.n_est**┃ param:**train.min_split** ┃
 ┡━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━┩
-│ workspace  │  0.60405 │  0.9608 │ 100        │ 64              │
-│ master     │  0.60405 │  0.9608 │ 100        │ 64              │
+│ **workspace**  │  **0.60405** │  **0.9608** │ **100**        │ **64**              │
+│ **master**     │  **0.60405** │  **0.9608** │ **100**        │ **64**              │
 └────────────┴──────────┴─────────┴────────────┴─────────────────┘
 ```
 
@@ -243,12 +249,15 @@ experiments from the previous _n_ commits:
 ```dvc
 $ dvc exp show -n 2 --no-timestamp \
                     --include-params train.n_est,train.min_split
+```
+
+```dvctable
 ┏━━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
-┃ Experiment    ┃ avg_prec ┃ roc_auc ┃ train.n_est┃ train.min_split ┃
+┃ neutral:**Experiment**    ┃ metric:**avg_prec** ┃ metric:**roc_auc** ┃ param:**train.n_est**┃ param:**train.min_split** ┃
 ┡━━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━┩
-│ workspace     │  0.60405 │  0.9608 │ 100        │ 64              │
-│ master        │  0.60405 │  0.9608 │ 100        │ 64              │
-│ 64d74b2       │  0.55259 │ 0.91536 │ 50         │ 2               │
+│ **workspace**     │  **0.60405** │  **0.9608** │ **100**        │ **64**              │
+│ **master**        │  **0.60405** │  **0.9608** │ **100**        │ **64**              │
+│ **64d74b2**       │  **0.55259** │ **0.91536** │ **50**         │ **2**               │
 │ ├── exp-bfe64 │  0.57833 │ 0.95555 │ 50         │ 8               │
 │ ├── exp-b8082 │  0.59806 │ 0.95287 │ 50         │ 64              │
 │ ├── exp-c7250 │  0.58876 │ 0.94524 │ 100        │ 2               │
@@ -266,12 +275,15 @@ Eventually, old experiments may clutter the experiments table.
 $ dvc exp gc --workspace
 $ dvc exp show -n 2 --no-timestamp \
                     --include-params train.n_est,train.min_split
+```
+
+```dvctable
 ┏━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
-┃ Experiment ┃ avg_prec ┃ roc_auc ┃ train.n_est┃ train.min_split ┃
+┃ neutral:**Experiment** ┃ metric:**avg_prec** ┃ metric:**roc_auc** ┃ param:**train.n_est**┃ param:**train.min_split** ┃
 ┡━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━┩
-│ workspace  │  0.60405 │  0.9608 │ 100        │ 64              │
-│ master     │  0.60405 │  0.9608 │ 100        │ 64              │
-│ 64d74b2    │  0.55259 │ 0.91536 │ 50         │ 2               │
+│ **workspace**  │  **0.60405** │  **0.9608** │ **100**        │ **64**              │
+│ **master**     │  **0.60405** │  **0.9608** │ **100**        │ **64**              │
+│ **64d74b2**    │  **0.55259** │ **0.91536** │ **50**         │ **2**               │
 └────────────┴──────────┴─────────┴────────────┴─────────────────┘
 ```
 

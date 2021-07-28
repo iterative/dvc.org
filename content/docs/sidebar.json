@@ -574,14 +574,33 @@
     ]
   },
   {
-    "label": "Dvclive",
+    "label": "DVCLive",
     "slug": "dvclive",
     "source": "dvclive/index.md",
     "children": [
       "usage",
       {
-        "label": "Dvclive with DVC",
+        "label": "DVCLive with DVC",
         "slug": "dvclive-with-dvc"
+      },
+      {
+        "label": "API Reference",
+        "slug": "api-reference",
+        "source": "api-reference/index.md",
+        "children": [
+          {
+            "slug": "init",
+            "label": "init()"
+          },
+          {
+            "slug": "log",
+            "label": "log()"
+          },
+          {
+            "slug": "next_step",
+            "label": "next_step()"
+          }
+        ]
       }
     ]
   }
