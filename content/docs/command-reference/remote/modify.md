@@ -331,7 +331,8 @@ storage. Whether they're effective depends on each storage platform.
   Note that if the given container name isn't found in your account, DVC will
   attempt to create it.
 
-- `account_name` (required) - storage account name
+- `account_name` - storage account name. Required for every authentication
+  method except `connection_string` (which already includes it).
 
   ```dvc
   $ dvc remote modify myremote account_name 'myaccount'
@@ -371,8 +372,8 @@ $ dvc remote modify --system myremote
 To use a custom authentication method, use the following parameters (listed in
 order of precedence):
 
-1. `connection_string` is used for authentication if given (all others params
-   are ignored).
+1. `connection_string` is used for authentication if given (`account_name` is
+   ignored).
 2. If `tenant_id` and `client_id` or `client_secret` are given, Active Directory
    (AD)
    [service principal](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal)
@@ -434,17 +435,19 @@ order of precedence):
   ```dvc
   $ dvc remote modify myremote allow_anonymous_login true
   ```
-**Authentication examples:**
-  
+
+  **Authentication examples:**
+
 Authentication example with currently logged in az cli user/identity:
-  
+
 ```dvc
 $ dvc remote add -d myremote azure://mycontainer/object
 $ dvc remote modify myremote account_name 'myaccount'
 $ dvc remote push
 ```
-Note: the above example requires at least
-  `Storage Blob Data Contributor` role on `myaccount`.
+
+Note: the above example requires at least `Storage Blob Data Contributor` role
+on `myaccount`.
 
 Authentication example with `connection_string`:
 
@@ -453,7 +456,7 @@ $ dvc remote add -d myremote azure://mycontainer/object
 $ dvc remote modify --local myremote connection_string 'mysecret'
 $ dvc remote push
 ```
-  
+
 Authentication example with `account_key`:
 
 ```dvc
@@ -462,7 +465,7 @@ $ dvc remote modify --local myremote account_name 'myaccount'
 $ dvc remote modify --local myremote account_key 'mysecret'
 $ dvc remote push
 ```
-  
+
 Authentication example with `sas_token`:
 
 ```dvc
@@ -470,8 +473,8 @@ $ dvc remote add -d myremote azure://mycontainer/object
 $ dvc remote modify --local myremote account_name 'myaccount'
 $ dvc remote modify --local myremote sas_token 'mysecret'
 $ dvc remote push
-```  
-  
+```
+
 Note that Azure remotes can also authenticate via environment variables (instead
 of `dvc remote modify`). These are tried if none of the params above are set.
 
