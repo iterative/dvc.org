@@ -23,6 +23,8 @@ This tutorial is going to cover how to implement checkpoints in an ML project
 using DVC. We're going to train a model to identify handwritten digits based on
 the MNIST dataset.
 
+https://youtu.be/PcDo-hCvYpw
+
 <details>
 
 ## ⚙️ Setting up the project
@@ -468,10 +470,6 @@ with the following command:
 ```dvc
 $ dvc exp gc --workspace --force
 ```
-
-Checkout the video covering this Checkpoints doc.
-
-https://youtu.be/PcDo-hCvYpw
 
 Now that you know how to use checkpoints in DVC, you'll be able to resume
 training from different checkpoints to try out new hyperparameters or code and
