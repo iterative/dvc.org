@@ -374,14 +374,17 @@ order of precedence):
 
 1. `connection_string` is used for authentication if given (`account_name` is
    ignored).
-2. If `tenant_id` and `client_id` or `client_secret` are given, Active Directory
-   (AD)
-   [service principal](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal)
-   auth is performed.
+2. If `tenant_id` and `client_id`, `client_secret` are given, Active Directory
+   (AD) [service principal] auth is performed.
 3. DVC will try next to connect with `account_key` or `sas_token` (in this
    order) if either are provided.
 4. If `allow_anonymous_login` is set to `True`, then DVC will try to connect
-   [anonymously](https://docs.microsoft.com/en-us/azure/storage/blobs/anonymous-read-access-configure).
+   [anonymously].
+
+[service principal]:
+  https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal
+[anonymously]:
+  https://docs.microsoft.com/en-us/azure/storage/blobs/anonymous-read-access-configure
 
 > The authentication values below may contain sensitive user info. Therefore,
 > it's safer to use the `--local` flag so they're written to a Git-ignored
@@ -392,34 +395,35 @@ order of precedence):
   (recommended).
 
   ```dvc
-  $ dvc remote modify --local myremote connection_string 'mysecret'
+  $ dvc remote modify --local
+                        myremote connection_string 'mysecret'
   ```
 
 * `tenant_id` - tenant ID for AD _service principal_ authentication (requires
   `client_id` and `client_secret` along with this):
 
   ```dvc
-  $ dvc remote modify --local myremote tenant_id 'directory-id'
+  $ dvc remote modify --local myremote tenant_id 'mytenant'
   ```
 
 * `client_id` - client ID for _service principal_ authentication (when
   `tenant_id` is set):
 
   ```dvc
-  $ dvc remote modify --local myremote client_id 'client-id'
+  $ dvc remote modify --local myremote client_id 'myclient'
   ```
 
 * `client_secret` - client Secret for _service principal_ authentication (when
   `tenant_id` is set):
 
   ```dvc
-  $ dvc remote modify --local myremote client_secret 'client-secret'
+  $ dvc remote modify --local myremote client_secret 'mysecret'
   ```
 
 * `account_key` - storage account key:
 
   ```dvc
-  $ dvc remote modify --local myremote account_key 'mysecret'
+  $ dvc remote modify --local myremote account_key 'mykey'
   ```
 
 * `sas_token` - shared access signature token:
@@ -435,45 +439,6 @@ order of precedence):
   ```dvc
   $ dvc remote modify myremote allow_anonymous_login true
   ```
-
-  **Authentication examples:**
-
-Authentication example with currently logged in az cli user/identity:
-
-```dvc
-$ dvc remote add -d myremote azure://mycontainer/object
-$ dvc remote modify myremote account_name 'myaccount'
-$ dvc remote push
-```
-
-Note: the above example requires at least `Storage Blob Data Contributor` role
-on `myaccount`.
-
-Authentication example with `connection_string`:
-
-```dvc
-$ dvc remote add -d myremote azure://mycontainer/object
-$ dvc remote modify --local myremote connection_string 'mysecret'
-$ dvc remote push
-```
-
-Authentication example with `account_key`:
-
-```dvc
-$ dvc remote add -d myremote azure://mycontainer/object
-$ dvc remote modify --local myremote account_name 'myaccount'
-$ dvc remote modify --local myremote account_key 'mysecret'
-$ dvc remote push
-```
-
-Authentication example with `sas_token`:
-
-```dvc
-$ dvc remote add -d myremote azure://mycontainer/object
-$ dvc remote modify --local myremote account_name 'myaccount'
-$ dvc remote modify --local myremote sas_token 'mysecret'
-$ dvc remote push
-```
 
 Note that Azure remotes can also authenticate via environment variables (instead
 of `dvc remote modify`). These are tried if none of the params above are set.
@@ -1111,4 +1076,43 @@ url = s3://mybucket/path
 profile = myuser
 [core]
 remote = myremote
+```
+
+## Example: Some Azure authentication methods
+
+Using a default identity (e.g. credentials set by `az cli`):
+
+```dvc
+$ dvc remote add -d myremote azure://mycontainer/object
+$ dvc remote modify myremote account_name 'myaccount'
+$ dvc remote push
+```
+
+> Note that this may require the `Storage Blob Data Contributor` and other roles
+> on the account.
+
+Using a `connection_string`:
+
+```dvc
+$ dvc remote add -d myremote azure://mycontainer/object
+$ dvc remote modify --local myremote connection_string 'mysecret'
+$ dvc remote push
+```
+
+Using `account_key`:
+
+```dvc
+$ dvc remote add -d myremote azure://mycontainer/object
+$ dvc remote modify --local myremote account_name 'myaccount'
+$ dvc remote modify --local myremote account_key 'mysecret'
+$ dvc remote push
+```
+
+Using `sas_token`:
+
+```dvc
+$ dvc remote add -d myremote azure://mycontainer/object
+$ dvc remote modify --local myremote account_name 'myaccount'
+$ dvc remote modify --local myremote sas_token 'mysecret'
+$ dvc remote push
 ```
