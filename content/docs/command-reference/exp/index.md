@@ -1,6 +1,6 @@
 # experiments
 
-⚠️ This feature is only available in DVC 2.0 ⚠️
+_New in DVC 2.0_
 
 A set of commands to generate and manage <abbr>experiments</abbr>:
 [run](/doc/command-reference/exp/run), [show](/doc/command-reference/exp/show),

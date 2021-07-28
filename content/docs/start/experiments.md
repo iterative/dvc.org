@@ -4,7 +4,7 @@ title: 'Get Started: Experiments'
 
 # Get Started: Experiments
 
-⚠️ This feature is only available in DVC 2.0 ⚠️
+_New in DVC 2.0_
 
 <abbr>Experiments</abbr> proliferate quickly in ML projects where there are many
 parameters to tune or other permutations of the code. We can organize such

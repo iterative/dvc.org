@@ -337,11 +337,39 @@ storage. Whether they're effective depends on each storage platform.
   $ dvc remote modify myremote account_name 'myuser'
   ```
 
-By default, DVC authenticates using an `account_name` and its
-[default credential](https://docs.microsoft.com/en-us/python/api/azure-identity/azure.identity.defaultazurecredential)
-(if any), which uses certain environment variables or a signed-in Microsoft
-application. To use a custom authentication method, use the following parameters
-(listed in order of precedence):
+By default, DVC authenticates using an `account_name` and its [default
+credential] (if any), which uses environment variables (e.g. set by `az cli`) or
+a Microsoft application.
+
+[default credential]:
+  https://docs.microsoft.com/en-us/python/api/azure-identity/azure.identity.defaultazurecredential
+
+<details>
+
+#### For Windows users
+
+When using default authentication, you may need to enable some of these
+exclusion parameters depending on your setup
+([details][azure-default-cred-params]):
+
+[azure-default-cred-params]:
+  https://docs.microsoft.com/en-us/python/api/azure-identity/azure.identity.defaultazurecredential?view=azure-python#parameters
+
+```dvc
+$ dvc remote modify --system myremote
+                    exclude_environment_credential true
+$ dvc remote modify --system myremote
+                    exclude_visual_studio_code_credential true
+$ dvc remote modify --system myremote
+                    exclude_shared_token_cache_credential true
+$ dvc remote modify --system myremote
+                    exclude_managed_identity_credential true
+```
+
+</details>
+
+To use a custom authentication method, use the following parameters (listed in
+order of precedence):
 
 1. `connection_string` is used for authentication if given (all others params
    are ignored).
