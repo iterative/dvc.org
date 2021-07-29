@@ -139,13 +139,7 @@
         "label": "Experiment Management",
         "slug": "experiment-management",
         "source": "experiment-management/index.md",
-        "children": [
-          "experiments",
-          "checkpoints",
-          "persistent-experiments",
-          "organization",
-          "run-cache"
-        ]
+        "children": ["experiments", "checkpoints", "organization", "run-cache"]
       },
       "setup-google-drive-remote",
       "large-dataset-optimization",

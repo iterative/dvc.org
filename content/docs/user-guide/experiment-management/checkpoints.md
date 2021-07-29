@@ -1,5 +1,7 @@
 # Checkpoints
 
+_New in DVC 2.0_
+
 To track successive steps in a longer experiment, you can register checkpoints
 from your code at runtime. This is especially helpful in machine learning, for
 example to track the progress in deep learning techniques such as evolving

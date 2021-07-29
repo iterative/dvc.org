@@ -1,5 +1,7 @@
 ## Experiments
 
+_New in DVC 2.0_
+
 `dvc exp` commands let you automatically track a variation to an established
 [data pipeline](/doc/command-reference/dag). You can create multiple isolated
 experiments this way, as well as review, compare, and restore them later, or
@@ -16,3 +18,15 @@ roll back to the baseline. The basic workflow goes like this:
 - Use `dvc exp apply` to roll back to the best one.
 - Make the selected experiment persistent by committing its results to Git. This
   cleans the slate so you can repeat the process.
+
+## Persistent Experiments
+
+When your experiments are good enough to save or share, you may want to store
+them persistently as Git commits in your <abbr>repository</abbr>.
+
+Whether the results were produced with `dvc repro` directly, or after a
+`dvc exp` workflow (refer to previous sections), the `dvc.yaml` and `dvc.lock`
+pair in the <abbr>workspace</abbr> will codify the experiment as a new project
+version. The right <abbr>outputs</abbr> (including
+[metrics](/doc/command-reference/metrics)) should also be present, or available
+via `dvc checkout`.
