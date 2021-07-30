@@ -24,9 +24,30 @@ main:
 
 ## Removing Experiments in Remotes
 
+As you push the experiments with `dvc exp push`, remotes may be become cluttered with experiment references. 
+
+DVC doesn't provide a shortcut for cleaning up the experiments in remotes but you can use Git plumbing commands to remove these references from remotes. 
+
+First get the list of experiments with their hash values.
+
+```dvc
+$ git ls-remote origin "refs/exps/*"
+```
+
+Then we can use `git push -d` as any other Git reference:
+
+```dvc
+$ git push -d origin refs/exps/path/to/ref
+```
+
+
 ## Deleting Experiment-Related Objects in DVC Cache
 
+
+
 ## Deleting Queued Experiments
+
+
 
 ## Deleting Associated Objects
 
