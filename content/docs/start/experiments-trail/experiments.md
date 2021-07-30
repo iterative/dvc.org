@@ -4,9 +4,9 @@ title: 'Get Started: Experiments'
 
 # Get Started with Experiments
 
-<abbr>Experiments</abbr> grow rapidly in number in ML projects. DVC can track
-these experiments, list their most relevant parameters and metrics, and commit
-only the ones that we need to Git.
+In machine learning projects, number of <abbr>experiments</abbr> grow rapidly.
+DVC can track these experiments, list their most relevant parameters and
+metrics, and commit only the ones that we need to Git.
 
 In this section, we will explore the basic features of DVC experiment management
 with [`get-started-experiments`][gse] project.
@@ -144,8 +144,13 @@ Experiment results have been applied to your workspace.
 ...
 ```
 
-When you run `dvc exp run` with `--set-param`, it updates the parameter file. We
-can see the effect of it by looking at the diff.
+<details>
+
+### How DVC updates the parameters?
+
+When you run `dvc exp run` with `--set-param`, it updates the parameter file.
+(Default: `params.yaml`) We can see the effect of DVC updating the parameters by
+looking at the diff.
 
 ```dvc
 $ git diff params.yaml
@@ -158,9 +163,11 @@ $ git diff params.yaml
 +  conv_units: 24
 ```
 
+</details>
+
 <details>
 
-## 🏃‍♂️🏃🏾‍♂️🏃🏻‍♂️ Run multiple experiments in parallel
+## 👟👟 Run multiple experiments in parallel
 
 Instead of running the experiments one-by-one, we can define them to run in a
 batch. This is especially handy when you have long running experiments.
