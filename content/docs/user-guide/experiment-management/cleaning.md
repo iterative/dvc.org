@@ -22,6 +22,52 @@ main:
     cnn-128
 ```
 
+## Removing Multiple Local Experiments 
+
+When the local project becomes cluttered with too many experiments, you can delete all of them at once with `dvc exp gc`. 
+
+This command takes a _scope_ argument. The scope can be `workspace`, `all-branches`, `all-tags`, `all-commits`. Scope determines the experiments to _keep_, i.e., experiments out of the scope of the given flag are removed.
+
+Supplying `--workspace` flag to `dvc exp gc` causes all experiments to be removed **except**  those in the current workspace. 
+
+```dvc
+$ git branch
+* main
+  other
+  another
+$ dvc exp list
+main:
+   exp-abc000
+   exp-abc111
+   exp-abc222
+other:
+   exp-def000
+   exp-def111
+another:
+   exp-ghi555
+   exp-ghi666
+   exp-ghi777
+```
+
+Now to delete all the experiments not referenced in the current workspace:
+
+```dvc
+$ dvc exp gc --workspace
+$ dvc exp list
+main:
+   exp-abc000
+   exp-abc111
+   exp-abc222
+```
+
+All experiments not in the workspace are deleted. 
+
+- [ ] `--all-braches` example
+- [ ] `--all-tags` example
+- [ ] `--all-commits` example
+
+
+
 ## Removing Experiments in Remotes
 
 As you push the experiments with `dvc exp push`, remotes may be become cluttered with experiment references. 
