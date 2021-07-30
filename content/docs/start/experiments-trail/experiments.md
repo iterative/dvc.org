@@ -13,6 +13,8 @@ with [`get-started-experiments`][gse] project.
 
 [gse]: https://github.com/iterative/get-started-experiments
 
+<details>
+
 ## ⚙️ Installing the Example Project
 
 These commands are run in the [`get-started-experiments`][gse] project. You can
@@ -46,8 +48,6 @@ $ dvc pull
 
 The repository already contains the necessary configuration to run the
 experiments.
-
-<details>
 
 ## ⏲ Preparing a project for DVC experiments
 
