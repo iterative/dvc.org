@@ -39,7 +39,7 @@ without having to change the directory structures or code of your projects.
 
 > DVC can also manage [remote storage](/doc/command-reference/remote) on
 > platforms like Amazon S3 or Google Drive, in order to
-> [share datasets and ML models](/doc/use-cases/sharing-data-and-model-files) or
+> [share datasets and ML models](/doc/use-cases/sharing-data-and-model-files)
 > and back them up.
 
 ## Example: Shared development server
