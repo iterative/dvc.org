@@ -98,7 +98,7 @@ metrics and plots.
 
 ## Templating
 
-⚠️ This feature is only available in DVC 2.0 ⚠️
+_New in DVC 2.0_
 
 `dvc.yaml` supports a templating format to insert values from different sources
 in the YAML structure itself. These sources can be
@@ -227,7 +227,7 @@ ${param.list[0]} # List elements via index in [] (square brackets)
 
 ## `foreach` stages
 
-⚠️ This feature is only available in DVC 2.0 ⚠️
+_New in DVC 2.0_
 
 You can define more than one stage in a single `dvc.yaml` entry with the
 following syntax. A `foreach` element accepts a list or dictionary with values

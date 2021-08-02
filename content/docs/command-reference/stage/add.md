@@ -250,15 +250,15 @@ data science experiments.
   affect any DVC operations.
 
 - `--live <path>` - specify the directory `path` for
-  [Dvclive](/doc/dvclive/dvclive-with-dvc) to write logs in. `path` will be
+  [DVCLive](/doc/dvclive/dvclive-with-dvc) to write logs in. `path` will be
   tracked (<abbr>cached</abbr>) by DVC. Saved in the `live` field of `dvc.yaml`.
 
-- `--live-no-cache <path>` - the same as `-o` except that the `path` is not
+- `--live-no-cache <path>` - the same as `--live` except that the `path` is not
   tracked by DVC. Useful if you prefer to track it with Git.
 
-- `--live-no-summary` - passes `summary=False` to Dvclive config.
+- `--live-no-summary` - passes `summary=False` to DVCLive config.
 
-- `--live-no-html` - passes `html=False` to Dvclive config.
+- `--live-no-html` - passes `html=False` to DVCLive config.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
