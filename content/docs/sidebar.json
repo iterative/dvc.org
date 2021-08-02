@@ -590,25 +590,29 @@
           {
             "label": "DVCLive with DVC",
             "slug": "dvclive-with-dvc"
-          }
-        ]
-      },
-      {
-        "label": "ML Frameworks",
-        "slug": "ml-frameworks",
-        "source": "ml-frameworks/index.md",
-        "children": [
-          {
-            "slug": "keras",
-            "label": "Keras"
           },
           {
-            "slug": "mmcv",
-            "label": "MMCV"
-          },
-          {
-            "slug": "pytorch",
-            "label": "PyTorch"
+            "label": "ML Frameworks",
+            "slug": "ml-frameworks",
+            "source": "dvclive/user-guide/ml-frameworks/index.md",
+            "children": [
+              {
+                "slug": "keras",
+                "label": "Keras"
+              },
+              {
+                "slug": "mmcv",
+                "label": "MMCV"
+              },
+              {
+                "slug": "pytorch",
+                "label": "PyTorch"
+              },
+              {
+                "slug": "tensorflow",
+                "label": "TensorFlow"
+              }
+            ]
           }
         ]
       },

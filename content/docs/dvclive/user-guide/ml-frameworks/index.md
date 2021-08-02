@@ -5,10 +5,11 @@ _ML training code_.
 
 We currently support the following _ML Frameworks_:
 
-- [Keras](/docs/dvclive/ml-frameworks/keras)
-- [MMCV](/docs/dvclive/ml-frameworks/mmcv)
-- [Pytorch](/docs/dvclive/ml-frameworks/pytorch)
-- [XGBoost](/docs/dvclive/ml-frameworks/xgboost)
+- [Keras](/docs/dvclive/user-guide/ml-frameworks/keras)
+- [MMCV](/docs/dvclive/user-guide/ml-frameworks/mmcv)
+- [Pytorch](/docs/dvclive/user-guide/ml-frameworks/pytorch)
+- [TensorFlow](/docs/dvclive/user-guide/ml-frameworks/tensorflow)
+- [XGBoost](/docs/dvclive/user-guide/ml-frameworks/xgboost)
 
 The DVCLive team is happy to extend the integrations as needed. Please check the
 existing

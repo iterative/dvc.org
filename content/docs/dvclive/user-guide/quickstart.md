@@ -91,7 +91,7 @@ $ cat dvclive.json
 There are other ways to use DVCLive:
 
 - [DVCLive with DVC](/docs/dvclive/user-guide/dvclive-with-dvc)
-- [DVCLive with _ML Frameworks_](/docs/dvclive/ml-frameworks/)
+- [DVCLive with _ML Frameworks_](/docs/dvclive/user-guide/ml-frameworks/)
 
 [`dvclive.init()`]: /doc/dvclive/api-reference/init
 [`dvclive.log()`]: /doc/dvclive/api-reference/log

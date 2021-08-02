@@ -35,7 +35,7 @@ This will generate the metrics logs and summaries as described in the
 [Quickstart](/docs/dvclive/user-guide/quickstart#outputs).
 
 > 💡Without requiring additional modifications to your training code, you can
-> use the DVCLive - TensorFlow/Keras integration alongside DVC. See
+> use the DVCLive - Keras integration alongside DVC. See
 > [DVCLive with DVC](/doc/dvclive/user-guide/dvclive-with-dvc) for more info.
 
 ## Parameters
@@ -63,7 +63,7 @@ model.fit(
 
 ## Example repository
 
-You can find a fully working example using the DVCLive - TensorFlow/Keras
-integration in the following link:
+You can find a fully working example using the DVCLive - Keras integration in
+the following link:
 
 https://github.com/iterative/example-ml-frameworks/tree/keras
