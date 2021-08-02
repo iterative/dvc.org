@@ -48,7 +48,7 @@ First, let's create a `.dvcignore` file with some patterns in it, and some files
 to check against it:
 
 ```dvc
-$ echo "file*\n\!file2" >> .dvcignore
+$ echo $"file*\n\!file2" >> .dvcignore
 $ cat .dvcignore
 file*
 !file2
