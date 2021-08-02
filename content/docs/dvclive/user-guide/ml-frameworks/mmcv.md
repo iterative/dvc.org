@@ -35,6 +35,23 @@ _summaries_ during training.
 > use the DVCLive - MMCV integration alongside DVC. See
 > [DVCLive with DVC](/doc/dvclive/user-guide/dvclive-with-dvc) for more info.
 
+## Parameters
+
+- `model_file` - The name of the file where the model will be saved at the end
+  of each `step`.
+
+Example:
+
+```python
+log_config = dict(
+    interval=100,
+    hooks=[
+        dict(type='TextLoggerHook'),
+        dict(type='DvcliveLoggerHook', model_file="my_model.pth")
+    ]
+)
+```
+
 ## Example repository
 
 You can find a fully working example using the DVCLive - MMCV integration

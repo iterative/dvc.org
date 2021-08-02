@@ -611,6 +611,10 @@
               {
                 "slug": "tensorflow",
                 "label": "TensorFlow"
+              },
+              {
+                "slug": "xgboost",
+                "label": "XGBoost"
               }
             ]
           }
