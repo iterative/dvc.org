@@ -14,7 +14,7 @@ applications.
 ## Usage
 
 To start using the integration you just need to add a few lines to your training
-loop in **any** TensorFlow project.
+code in **any** TensorFlow project.
 
 > 💡 If you prefer the Keras API, check the
 > [DVCLive - Keras](/docs/dvclive/user-guide/ml-frameworks/keras) page.

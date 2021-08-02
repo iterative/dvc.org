@@ -15,13 +15,15 @@ management to hyperparameter training to deployment solutions.
 ## Usage
 
 To start using the integration you just need to add a few lines to your training
-loop in **any** Keras project.
+code in **any** Keras project.
 
 You just need to add the `DvcLiveCallback` to the callbacks list passed to your
 `model`:
 
 ```git
 +from dvclive.keras import DvcLiveCallback
+
+. . .
 
 model.fit(
     train_dataset,

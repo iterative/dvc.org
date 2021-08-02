@@ -7,7 +7,7 @@ We currently support the following _ML Frameworks_:
 
 - [Keras](/docs/dvclive/user-guide/ml-frameworks/keras)
 - [MMCV](/docs/dvclive/user-guide/ml-frameworks/mmcv)
-- [Pytorch](/docs/dvclive/user-guide/ml-frameworks/pytorch)
+- [PyTorch](/docs/dvclive/user-guide/ml-frameworks/pytorch)
 - [TensorFlow](/docs/dvclive/user-guide/ml-frameworks/tensorflow)
 - [XGBoost](/docs/dvclive/user-guide/ml-frameworks/xgboost)
 
