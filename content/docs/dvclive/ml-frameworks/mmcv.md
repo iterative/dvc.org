@@ -9,7 +9,8 @@ The integration is
 ## About MMCV
 
 [MMCV](https://github.com/open-mmlab/mmcv) is a foundational library for
-computer vision research.
+computer vision research and supports many research projects part of
+[OpenMMLab](https://github.com/open-mmlab).
 
 ## Usage
 

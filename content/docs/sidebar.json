@@ -594,10 +594,14 @@
         ]
       },
       {
-        "label": "Integrations",
-        "slug": "integrations",
-        "source": "integrations/index.md",
+        "label": "ML Frameworks",
+        "slug": "ml-frameworks",
+        "source": "ml-frameworks/index.md",
         "children": [
+          {
+            "slug": "keras",
+            "label": "Keras"
+          },
           {
             "slug": "mmcv",
             "label": "MMCV"
@@ -605,10 +609,6 @@
           {
             "slug": "pytorch",
             "label": "PyTorch"
-          },
-          {
-            "slug": "tensorflow-keras",
-            "label": "TensorFlow/Keras"
           }
         ]
       },

@@ -1,18 +1,12 @@
-# TensorFlow/Keras
+# Keras
 
-The DVCLive - TensorFlow / Keras integration allows you to easily add experiment
-tracking capabilities to your Pytorch projects.
+The DVCLive - Keras integration allows you to easily add experiment tracking
+capabilities to your Keras projects.
 
 The integration is
 [maintained in the DVCLive repository](https://github.com/iterative/dvclive/blob/master/dvclive/keras.py)
 
-## About TensorFlow/Keras
-
-[TensorFlow](https://www.tensorflow.org/) is an end-to-end open source platform
-for machine learning. It has a comprehensive, flexible ecosystem of tools,
-libraries, and community resources that lets researchers push the
-state-of-the-art in ML and developers easily build and deploy ML-powered
-applications.
+## About Keras
 
 [Keras](https://keras.io/) is a central part of the tightly-connected TensorFlow
 2.0 ecosystem, covering every step of the machine learning workflow, from data
@@ -21,7 +15,7 @@ management to hyperparameter training to deployment solutions.
 ## Usage
 
 To start using the integration you just need to add a few lines to your training
-loop in **any** TensorFlow/Keras project.
+loop in **any** Keras project.
 
 You just need to add the `DvcLiveCallback` to the callbacks list passed to your
 `model`:
