@@ -77,13 +77,21 @@ DVC doesn't provide a shortcut for cleaning up the experiments in remotes but yo
 First get the list of experiments with their hash values.
 
 ```dvc
-$ git ls-remote origin "refs/exps/*"
+$ git ls-remote origin 'refs/exps/*'
 ```
 
 Then we can use `git push -d` as any other Git reference:
 
 ```dvc
 $ git push -d origin refs/exps/path/to/ref
+```
+
+If you want to delete **all** experiments in a remote, you can use a loop:
+
+```dvc
+$ git ls-remote origin 'refs/exps/*' | cut -f 2 | while read exppath ; do 
+   git push -d origin "${exppath}"
+done
 ```
 
 
