@@ -7,9 +7,7 @@ def init(
     path: str = None,
     resume: bool = False,
     step: int = 0,
-    summary: bool = True,
-    html: bool = True,
-)
+    summary: bool = True)
 ```
 
 #### Usage:
@@ -44,11 +42,6 @@ all existing `.tsv` files, `{path}.json` and `{path.html}`.
 - `summary` (`True` by default) - if `True`, upon each [`dvclive.next_step()`]
   call, DVCLive will generate a _metrics summary_ (usable by `dvc metrics`). The
   _summary_ will be located at `{path}.json`.
-
-- `html` (`True` by default) - works only when DVCLive is used alongside DVC. If
-  `True`, upon each [`dvclive.next_step()`] call, DVC will prepare an _html
-  report_ with all the _metrics logs_ logged in `path`. The _html report_ will
-  be located at `{path}.html`.
 
 ## Exceptions
 
