@@ -5,7 +5,8 @@ capacities. Storage needs expand rapidly as more people acquire the same data,
 creating duplication (increasing cost). Valuable time is wasted waiting for
 downloads in each environment.
 
-![](/img/dataset-copies.png) _Slow transferring to/from data storage_
+![](/img/dataset-copies.png) _Users wait for repeated transfers and produce
+multiple data copies locally._
 
 DVC's built-in data <abbr>caching</abbr> lets you implement a simple and
 efficient storage layer globally -- for your entire team. This approach can help
@@ -30,13 +31,14 @@ You can have a single storage for all you projects by setting up a [shared DVC
 cache] in a near location (network, external drive, etc.). This de-duplicates
 files across datasets and prevents repetitive transfers by
 [linking](/doc/user-guide/large-dataset-optimization) your working files and
-directories. DVC can also help you back up and
+directories. Data security policies can be implemented reliably, as data never
+leaves the central storage. DVC can also help you back up and
 [share data and ML models](/doc/use-cases/sharing-data-and-model-files) on
 external/remote locations.
 
 Now that your team shares a primary storage, it can be managed independently as
 part of your infrastructure; provisioned depending on data access speed and cost
-requirements. You have the flexibility to change storage providers at any time,
+requirements. You have the flexibility to switch storage providers at any time,
 without having to change the directory structures or code of your projects.
 
 ### What's next?
@@ -47,7 +49,7 @@ the cache directory]. If you're completely new to DVC, see our
 structured storage and
 [data versioning](/doc/use-cases/versioning-data-and-model-files) allow. And
 check out the following example for a specific solution provided by a layered
-storage pattern.
+storage architecture.
 
 [structure of the cache directory]:
   /doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory
@@ -58,9 +60,6 @@ Some teams prefer using a single shared machine to run their experiments. This
 is a simple way to improve resource utilization (quick transfers, central
 storage, GPU access, etc.). Everyone can still work in a separate
 <abbr>workspace</abbr> (e.g. in their user home folders).
-
-> ⚠️ It's not recommended to share a single workspace among users, as it may
-> produce file permission issues.
 
 ![](/img/shared-server.png) _Data storage shared by DVC projects_
 
