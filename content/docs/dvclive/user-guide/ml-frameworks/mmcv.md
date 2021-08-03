@@ -51,11 +51,3 @@ log_config = dict(
     ]
 )
 ```
-
-## Example repository
-
-You can find a fully working example using the DVCLive - MMCV integration
-alongside [MMClassification](https://github.com/open-mmlab/mmclassification) in
-the following link:
-
-https://github.com/iterative/example-ml-frameworks/tree/mmclassification
