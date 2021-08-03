@@ -56,12 +56,5 @@ This will generate the metrics logs and summaries as described in the
 > use the DVCLive - PyTorch integration alongside DVC. See
 > [DVCLive with DVC](/doc/dvclive/user-guide/dvclive-with-dvc) for more info.
 
-## Example repository
-
-You can find a fully working example using the DVCLive - PyTorch integration in
-the following link:
-
-https://github.com/iterative/example-ml-frameworks/tree/pytorch
-
 [`dvclive.log()`]: /doc/dvclive/api-reference/log
 [`dvclive.next_step()`]: /doc/dvclive/api-reference/next_step
