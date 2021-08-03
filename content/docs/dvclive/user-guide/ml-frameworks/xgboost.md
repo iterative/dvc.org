@@ -4,7 +4,7 @@ The DVCLive - XGBoost integration allows you to easily add experiment tracking
 capabilities to your XGBoost projects.
 
 The integration is
-[maintained in the DVCLive repository](https://github.com/iterative/dvclive/blob/master/dvclive/xgboost.py)
+[maintained in the DVCLive repository](https://github.com/iterative/dvclive/blob/master/dvclive/xgb.py)
 
 ## About XGBoost
 
@@ -40,3 +40,19 @@ This will generate the metrics logs and summaries as described in the
 > 💡Without requiring additional modifications to your training code, you can
 > use the DVCLive - XGBoost integration alongside DVC. See
 > [DVCLive with DVC](/doc/dvclive/user-guide/dvclive-with-dvc) for more info.
+
+## Parameters
+
+- `model_file` - The name of the file where the model will be saved at the end
+  of each `step`.
+
+Example:
+
+```python
+xgboost.train(
+    param,
+    dtrain,
+   num_round=5,
+   callbacks=[DvcLiveCallback("eval_data", model_file="model.json")],
+   evals=[(dval, "eval_data")])
+```
