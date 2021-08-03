@@ -22,15 +22,19 @@ main:
     cnn-128
 ```
 
-## Removing Multiple Local Experiments 
+## Removing Multiple Local Experiments
 
-When the local project becomes cluttered with too many experiments, you can delete all of them at once with `dvc exp gc`. 
+When the local project becomes cluttered with too many experiments, you can
+delete all of them at once with `dvc exp gc`.
 
-This command takes a _scope_ argument. The scope can be `workspace`, `all-branches`, `all-tags`, `all-commits`. Scope determines the experiments to _keep_, i.e., experiments out of the scope of the given flag are removed.
+This command takes a _scope_ argument. The scope can be `workspace`,
+`all-branches`, `all-tags`, `all-commits`. Scope determines the experiments to
+_keep_, i.e., experiments out of the scope of the given flag are removed.
 
 ### Keeping experiments in the workspace
 
-Supplying `--workspace` flag to `dvc exp gc` causes all experiments to be removed **except**  those in the current workspace. 
+Supplying `--workspace` flag to `dvc exp gc` causes all experiments to be
+removed **except** those in the current workspace.
 
 ```dvc
 $ dvc exp list --all
@@ -47,7 +51,8 @@ another:
    exp-ccc777
 ```
 
-Issuing `dvc exp gc --workspace` removes experiments in `other` and `another` branches in this example. 
+Issuing `dvc exp gc --workspace` removes experiments in `other` and `another`
+branches in this example.
 
 ```dvc
 $ dvc exp gc --workspace
@@ -60,7 +65,7 @@ main:
 
 ### Keeping experiments in all branches
 
-DVC can create a branch for an experiment using `dvc exp branch` command. 
+DVC can create a branch for an experiment using `dvc exp branch` command.
 
 In cases where you want to clean up the experiments _except_ those in the
 branches, you can use `--all-branches` flag.
@@ -86,7 +91,7 @@ $ dvc exp show --all-branches
 ```
 
 Supplying `--all-branches` keeps only the experiments in branch tips. Any
-experiment that's not promoted to a branch is removed this way. 
+experiment that's not promoted to a branch is removed this way.
 
 ```dvc
 $ dvc exp gc --all-branches
@@ -108,8 +113,6 @@ The resulting `dvc exp show` table is as the following:
 └─────────────────────────┴──────────────┴────────┴──────────────────┘
 ```
 
-
-
 ### Keeping experiments in all tags
 
 - [ ] `--all-tags` example
@@ -118,15 +121,13 @@ The resulting `dvc exp show` table is as the following:
 
 - [ ] `--all-commits` example
 
-
-
-
-
 ## Removing Experiments in Remotes
 
-As you push the experiments with `dvc exp push`, remotes may be become cluttered with experiment references. 
+As you push the experiments with `dvc exp push`, remotes may be become cluttered
+with experiment references.
 
-DVC doesn't provide a shortcut for cleaning up the experiments in remotes but you can use Git plumbing commands to remove these references from remotes. 
+DVC doesn't provide a shortcut for cleaning up the experiments in remotes but
+you can use Git plumbing commands to remove these references from remotes.
 
 First get the list of experiments with their hash values.
 
@@ -143,26 +144,24 @@ $ git push -d origin refs/exps/path/to/ref
 If you want to delete **all** experiments in a remote, you can use a loop:
 
 ```dvc
-$ git ls-remote origin 'refs/exps/*' | cut -f 2 | while read exppath ; do 
+$ git ls-remote origin 'refs/exps/*' | cut -f 2 | while read exppath ; do
    git push -d origin "${exppath}"
 done
 ```
-
 
 ## Deleting Experiment-Related Objects in DVC Cache
 
 Note that `dvc exp gc` and `dvc exp remove` doesn't delete any objects in the
 DVC <abbr>cache</abbr>. In order to remove the cache objects, e.g. model files,
 intermediate artifacts, etc. related with the experiments, you can use `dvc gc`
-command. 
-
+command.
 
 ## Deleting All Queued Experiments
 
 When you created experiments to be run in the queue with `--queue` option of
-`dvc exp run`, and later decide not to run them, you can remove by either `dvc
-exp gc --queued` or `dvc exp remove --queue`. Both of these commands remove
-_all_ queued experiments. 
+`dvc exp run`, and later decide not to run them, you can remove by either
+`dvc exp gc --queued` or `dvc exp remove --queue`. Both of these commands remove
+_all_ queued experiments.
 
 ```dvc
 $ dvc exp run --queue -S param=10
@@ -171,6 +170,7 @@ $ dvc exp run --queue -S param=20
 Queued experiment '68808d5' for future execution.
 $ dvc exp show
 ```
+
 ```dvctable
 ┏━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━┓
 ┃ Experiment   ┃ Created      ┃ param ┃
@@ -182,11 +182,11 @@ $ dvc exp show
 └──────────────┴──────────────┴───────┘
 ```
 
-You can delete these queued experiments with `dvc exp remove --queue`. 
+You can delete these queued experiments with `dvc exp remove --queue`.
 
 ```dvc
 $ dvc exp remove --queue
-$ dvc exp show 
+$ dvc exp show
 ```
 
 ```dvctable
@@ -198,12 +198,7 @@ $ dvc exp show
 └──────────────┴──────────────┴───────┘
 ```
 
-
-
-
 # #Deletini Associated Objects
-
-
 
 ---
 
