@@ -5,7 +5,7 @@ capacities. Storage needs expand rapidly as more people acquire the same data,
 creating duplication (increasing cost). Valuable time is wasted waiting for
 downloads in each environment.
 
-![](/img/dataset-copies.png) _Slow synchronization of data storage_
+![](/img/dataset-copies.png) _Slow transferring to/from data storage_
 
 DVC's built-in data <abbr>caching</abbr> lets you implement a simple and
 efficient storage layer globally -- for your entire team. This approach can help
@@ -17,30 +17,40 @@ to
 - pay only for fast access to frequently-used data (upgrading your entire
   storage platform is expensive).
 
-- de-duplicate files automatically when multiple people are working on the same
-  data (for example on a
+- avoid downloading data again and duplicating files when multiple people are
+  working on the same data (for example on a
   [shared development server](#example-shared-development-server)).
 
-- switch data inputs quickly (without re-downloading) on a shared GPU server for
-  machine learning [experiments](/doc/user-guide/experiment-management).
+- switch data inputs quickly (without re-downloading) on a shared server used
+  for machine learning [experiments](/doc/user-guide/experiment-management).
 
 ![](/img/storage-layers.png) _Data storage middleware for multiple projects_
 
-You can unify all your data across projects by setting up a [shared DVC cache]
-in a near location (network, external drive). This deduplicates your entire data
-store and minimizes transfers by
+You can have a single storage for all you projects by setting up a [shared DVC
+cache] in a near location (network, external drive, etc.). This de-duplicates
+files across datasets and prevents repetitive transfers by
 [linking](/doc/user-guide/large-dataset-optimization) your working files and
-directories.
+directories. DVC can also help you back up and
+[share data and ML models](/doc/use-cases/sharing-data-and-model-files) on
+external/remote locations.
 
 Now that your team shares a primary storage, it can be managed independently as
 part of your infrastructure; provisioned depending on data access speed and cost
 requirements. You have the flexibility to change storage providers at any time,
 without having to change the directory structures or code of your projects.
 
-> DVC can also manage [remote storage](/doc/command-reference/remote) on
-> platforms like Amazon S3 or Google Drive, in order to
-> [share datasets and ML models](/doc/use-cases/sharing-data-and-model-files)
-> and back them up.
+### What's next?
+
+For details about how DVC caches your files and directories, see [Structure of
+the cache directory]. If you're completely new to DVC, see our
+[Get Started](/doc/start) pages to get familiar with the main features that
+structured storage and
+[data versioning](/doc/use-cases/versioning-data-and-model-files) allow. And
+check out the following example for a specific solution provided by a layered
+storage pattern.
+
+[structure of the cache directory]:
+  /doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory
 
 ## Example: Shared development server
 
@@ -49,8 +59,8 @@ is a simple way to improve resource utilization (quick transfers, central
 storage, GPU access, etc.). Everyone can still work in a separate
 <abbr>workspace</abbr> (e.g. in their user home folders).
 
-> ⚠️ In fact it's not recommended to share a single workspace among users, as it
-> may produce file permission issues.
+> ⚠️ It's not recommended to share a single workspace among users, as it may
+> produce file permission issues.
 
 ![](/img/shared-server.png) _Data storage shared by DVC projects_
 
@@ -67,5 +77,3 @@ $ dvc checkout
 A       data/new
 M       data/labels
 ```
-
-> 📖 Learn more about [data versioning](/doc/start/data-and-model-versioning).
