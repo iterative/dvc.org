@@ -121,9 +121,9 @@ too.
 
 https://media.giphy.com/media/l0Iyl55kTeh71nTXy/giphy.gif
 
-At our August Office Hours Meetup, we'll be **PUT SOMETHING HERE WHEN WE GET
-IT**. [RSVP for the Meetup here]**UPDATE MEETUP
-LINK**(https://www.meetup.com/DVC-Community-Virtual-Meetups/events/279024694/)
+At our August Office Hours Meetup, we'll be learning about DVC and Streamlit
+integration.
+[RSVP for the Meetup here](https://www.meetup.com/DVC-Community-Virtual-Meetups/events/279723437/)
 to stay up to date with specifics as we get closer to the event!
 
 [Join us in Discord](https://discord.com/invite/dvwXA2N) to get answers for your
