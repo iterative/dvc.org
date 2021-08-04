@@ -9,9 +9,9 @@ command.
 usage: dvc run [-h] [-q | -v] [-n <name>] [--no-exec] [--no-run-cache]
                [--no-commit] [-d <path>] [-o <filename>] [-O <filename>]
                [-p [<filename>:]<params_list>] [-m <path>] [-M <path>]
-               [--plots <path>] [--plots-no-cache <path>] [--live <path>]
-               [--live-no-cache <path>] [--live-no-summary] [--live-no-html]
-               [-w <path>] [-f] [--outs-persist <filename>]
+               [--plots-no-cache <path>] [--live] [--live-no-cache]
+               [--live-path <path>] [--live-no-summary]
+               [--live-no-html] [-w <path>] [-f]
                [--outs-persist-no-cache <filename>] [-c <filename>]
                [--always-changed] [--external] [--desc <text>]
                command
@@ -269,16 +269,18 @@ $ dvc run -n second_stage './another_script.sh $MYENVVAR'
 - `--desc <text>` - user description of the stage (optional). This doesn't  
   affect any DVC operations.
 
-- `--live <path>` - specify the directory `path` for
-  [Dvclive](/doc/dvclive/dvclive-with-dvc) to write logs in. `path` will be
-  tracked (<abbr>cached</abbr>) by DVC. Saved in the `live` field of `dvc.yaml`.
+- `--live` - Enables [DVCLive](/doc/dvclive/dvclive-with-dvc).
 
-- `--live-no-cache <path>` - the same as `-o` except that the `path` is not
+- `--live-no-cache` - the same as `--live` except that the DVCLive `path` is not
   tracked by DVC. Useful if you prefer to track it with Git.
 
-- `--live-no-summary` - passes `summary=False` to Dvclive config.
+- `--live-path <path>` - specify the directory `path` for DVCLive to write logs
+  in. By default, `dvclive` will be used as `path`. Saved in the `live` field of
+  `dvc.yaml`.
 
-- `--live-no-html` - passes `html=False` to Dvclive config.
+- `--live-no-summary` - passes `summary=False` to DVCLive config.
+
+- `--live-no-html` - passes `html=False` to DVCLive config.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
