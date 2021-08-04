@@ -35,7 +35,7 @@ dataset.
 You can follow along with the steps here or you can clone the repo directly from
 GitHub and play with it. To clone the repo, run the following commands.
 
-```bash
+```dvc
 $ git clone https://github.com/iterative/checkpoints-tutorial
 $ cd checkpoints-tutorial
 ```
@@ -43,7 +43,7 @@ $ cd checkpoints-tutorial
 It is highly recommended you create a virtual environment for this example. You
 can do that by running:
 
-```bash
+```dvc
 $ python3 -m venv .venv
 ```
 
@@ -56,7 +56,7 @@ following commands.
 Once you have your environment set up, you can install the dependencies by
 running:
 
-```bash
+```dvc
 $ pip install -r requirements.txt
 ```
 
@@ -133,7 +133,7 @@ stages:
 Before we go any further, this is a great point to add these changes to your Git
 history. You can do that with the following commands:
 
-```bash
+```dvc
 $ git add .
 $ git commit -m "created DVC pipeline"
 ```
@@ -448,7 +448,7 @@ Untracked files:
 
 All that's left to do is to `git commit` the changes:
 
-```bash
+```dvc
 $ git commit -m 'saved files from experiment'
 ```
 
