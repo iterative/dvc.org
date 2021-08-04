@@ -139,7 +139,7 @@
         "label": "Experiment Management",
         "slug": "experiment-management",
         "source": "experiment-management/index.md",
-        "children": ["checkpoints"]
+        "children": ["sharing-experiments", "checkpoints"]
       },
       "setup-google-drive-remote",
       "large-dataset-optimization",
@@ -535,7 +535,6 @@
         "label": "User Guide",
         "slug": "user-guide",
         "source": "user-guide/index.md",
-
         "children": [
           {
             "label": "Prepare Your Repositories",
@@ -555,7 +554,6 @@
               "share-view"
             ]
           },
-
           {
             "label": "Explore ML Experiments",
             "slug": "explore-experiments"
@@ -574,14 +572,33 @@
     ]
   },
   {
-    "label": "Dvclive",
+    "label": "DVCLive",
     "slug": "dvclive",
     "source": "dvclive/index.md",
     "children": [
       "usage",
       {
-        "label": "Dvclive with DVC",
+        "label": "DVCLive with DVC",
         "slug": "dvclive-with-dvc"
+      },
+      {
+        "label": "API Reference",
+        "slug": "api-reference",
+        "source": "api-reference/index.md",
+        "children": [
+          {
+            "slug": "init",
+            "label": "init()"
+          },
+          {
+            "slug": "log",
+            "label": "log()"
+          },
+          {
+            "slug": "next_step",
+            "label": "next_step()"
+          }
+        ]
       }
     ]
   }

@@ -272,5 +272,9 @@ file:///Users/dvc/example-get-started/plots.html
 > [Git revisions](https://git-scm.com/docs/gitrevisions) (commits, tags, branch
 > names) to compare.
 
+🌟 Check out this YouTube video with a tutorial covering metrics! 🌟
+
+https://youtu.be/bu3l75eQlQo
+
 On the next page, you can learn advanced ways to track, organize, and compare
 more experiment iterations.

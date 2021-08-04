@@ -71,14 +71,6 @@
   ],
   "events": [
     {
-      "url": "https://www.meetup.com/DVC-Community-Virtual-Meetups/events/279153207/",
-      "title": "DVC Learn - Getting Started with Data Version Control",
-      "description": "New to DVC or kicking the tires?  Bring your questions; this Meetup is for you!",
-      "city": "Virtual",
-      "date": "2021-07-14",
-      "pictureUrl": "/img/community/events/dvc_learn.png"
-    },
-    {
       "url": "https://hasgeek.com/fifthelephant/mlops-conference/schedule",
       "title": "HasGeek",
       "description": "Milecia McGregor presents at HasGeek Conference from Fifth Elephant on Tuning Hyperparameters with DVC Experiments",
@@ -103,12 +95,36 @@
       "pictureUrl": "/img/community/events/office-hours-meetup.png"
     },
     {
+      "url": "https://www.conf42.com/Machine_Learning_2021_Milecia_McGregor_Convolutional_Neural_Networks",
+      "title": "Conference 42: Machine Learning 2021",
+      "description": "Milecia McGregor will present Convolutional Neural Networks in Action",
+      "city": "Virtual",
+      "date": "2021-07-29",
+      "pictureUrl": "/img/community/events/conf42.png"
+    },
+    {
+      "url": "https://www.meetup.com/DVC-Community-Virtual-Meetups/events/279447414/",
+      "title": "DVC Learn - Getting Started: Experiments",
+      "description": "Milecia McGregor will continue the next class of DVC Learn on setting up experiments",
+      "city": "Virtual",
+      "date": "2021-08-04",
+      "pictureUrl": "/img/community/events/dvc_learn.png"
+    },
+    {
       "url": "https://www.igniteinnovationfl.com/",
       "title": "Ignite Innovation Developer Conference",
       "description": "Milecia McGregor will present on Using Reproducible Experiments To Create Better Machine Learning Models",
       "city": "Virtual",
       "date": "2021-08-06",
       "pictureUrl": "/img/community/events/ignite-innovation.png"
+    },
+    {
+      "url": "https://www.meetup.com/DVC-Community-Virtual-Meetups/events/279446210/",
+      "title": "DVC Learn - Getting Started: Metrics",
+      "description": "Milecia McGregor will continue the next class of DVC Learn on how to check metrics",
+      "city": "Virtual",
+      "date": "2021-08-18",
+      "pictureUrl": "/img/community/events/dvc_learn.png"
     }
   ],
   "stats": {

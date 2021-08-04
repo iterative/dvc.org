@@ -1,10 +1,6 @@
 # exp run
 
-Run an [experiment](/doc/command-reference/exp): reproduce a variation of a
-committed [pipeline](/doc/command-reference/dag) in a hidden project branch.
-
-> Similar to `dvc repro` but for
-> [experimentation](/doc/user-guide/experiment-management).
+Run or resume an [experiment](/doc/command-reference/exp).
 
 ## Synopsis
 
