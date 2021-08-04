@@ -111,13 +111,13 @@ command options for the DVC integration:
 
 Run the training with `dvc repro`:
 
-```bash
+```dvc
 $ dvc repro train
 ```
 
 After that's finished, you should see the following content in the project:
 
-```bash
+```dvc
 $ ls
 dvc.lock  training_metrics       training_metrics.json
 dvc.yaml  training_metrics.html  train.py
