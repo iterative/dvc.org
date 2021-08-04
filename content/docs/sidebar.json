@@ -139,12 +139,7 @@
         "label": "Experiment Management",
         "slug": "experiment-management",
         "source": "experiment-management/index.md",
-        "children": [
-          "experiments",
-          "sharing-experiments",
-          "checkpoints",
-          "organization"
-        ]
+        "children": ["dvc-experiments", "sharing-experiments", "checkpoints"]
       },
       "setup-google-drive-remote",
       "large-dataset-optimization",

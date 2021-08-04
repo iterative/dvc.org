@@ -1,4 +1,4 @@
-## Experiments
+## DVC Experiments
 
 _New in DVC 2.0_
 
