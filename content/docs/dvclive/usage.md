@@ -100,7 +100,7 @@ given directory path (in this case `./training_metrics`).
 
 After running the code, the `training_metrics` should be created:
 
-```bash
+```dvc
 $ ls
 training_metrics  training_metrics.json  train.py
 ```
@@ -111,14 +111,14 @@ well, containing information about the latest training step. You can prevent its
 creation by sending `summary = False` to `dvclive.init()` (see all the
 [options](#initial-configuration)).
 
-```bash
+```dvc
 $ ls training_metrics
 accuracy.tsv  loss.tsv  val_accuracy.tsv  val_loss.tsv
 ```
 
 Each file contains metrics values logged in each epoch. For example:
 
-```bash
+```dvc
 $ cat training_metrics/accuracy.tsv
 timestamp	step	accuracy
 1614129197192	0	0.7612833380699158
