@@ -75,9 +75,8 @@ unregistering runners for a while now.
 
 The main difference now is that we restart workflows with unfinished jobs.
 
-We know for sure this isn't working in Azure. Azure is not doing a graceful
-shutdown, but a shutdown now, even when stopping the instance within the Azure
-console.
+We know for sure this isn't working in Azure. Azure does not do a graceful
+shutdown -- even when stopping the instance within the Azure console.
 
 Thanks for such a good question @andee96!
 
