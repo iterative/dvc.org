@@ -98,7 +98,7 @@ GitLab CI/CD, not replace them. It's a lightweight wrapper and not a complete
 replacement workflow ecosystem like Airflow. We don't like reinventing working
 wheels.
 
-### [Q: Does CML have the ability to run long-run instances, e.g. can I run AWS instance via GitHub Actions that works more than 6 hours?](https://discord.com/channels/485586884165107732/728693131557732403/866730530262351873)
+### [Q: Does CML have the ability to cope with long-running instances, e.g. launching an AWS instance via GitHub Actions that lasts more than 72 hours?](https://discord.com/channels/485586884165107732/728693131557732403/866730530262351873)
 
 You can definitely run it for 6 hours. The GitHub limit is 72 hours for
 self-hosted runners and GitLab has no limit on self-hosted runners.
