@@ -6,8 +6,8 @@ the documentation content, or (rare) changes to the JS engine we use to run the
 website.
 
 In case of a minor change, you can use the **Edit on GitHub** button to open the
-source code page. Use thethe Edit button (pencil icon) to edit the file
-in-place, and then **Commit changes** from the bottom of the page.
+source code page. Use the Edit button (pencil icon) to edit the file in-place,
+and then **Commit changes** from the bottom of the page.
 
 > Please see our
 > [Writing a Blog Post guide](https://dvc.org/doc/user-guide/contributing/blog)
@@ -71,7 +71,7 @@ $ yarn
 ```
 
 > In Windows, you may need to install [Python], [Visual Studio Build Tools], and
-> [Windows SDK] beforehand for some dependencies.
+> [Windows SDK] beforehand for dependencies.
 
 [windows sdk]:
   https://developer.microsoft.com/en-us/windows/downloads/windows-10-sdk/
@@ -149,8 +149,8 @@ Some available variables:
 
 ## Doc style guidelines (JavaScript and Markdown)
 
-Some the rules below are be applied automatically by a pre-commit Git hook that
-is installed when `yarn` runs (see [dev env](#development-environment)).
+Following rules are applied automatically by a pre-commit Git hook that is
+installed when `yarn` runs (see [dev env](#development-environment)).
 
 - No trailing white spaces are allowed.
 
@@ -173,9 +173,9 @@ is installed when `yarn` runs (see [dev env](#development-environment)).
   create a link to that API method automatically. (No need to use `[]()`
   explicitly to create them.)
 
-- Markdown: Neither bullet lists nor each item's should be too long (3 sentence
+- Markdown: Bullet lists and their items shouldn't be too long (3 sentence
   paragraphs max.) Full sentence bullets should begin with a capital letter and
-  end in period `.` otherwise they can be all lower case and have no ending
+  end in period `.`. Otherwise, they can be all lower case and have no ending
   punctuation. Bullets can be separated by an empty line if they contain several
   paragraphs, but this is discouraged: try to keep items short.
 
@@ -202,9 +202,9 @@ We try to use a casual and fun tone in our docs. We also avoid authoritative
 language such as "As you can see, clearly this is what happened, of course" etc.
 which while good-intentioned, may scare readers off.
 
-We prefer human-friendly language than exact jargon, as long as it's correct,
-even if using general terminology. Example: avoid Git jargon such as _revision_
-or _reference_, preferring the more basic concept _commit_.
+We prefer human-friendly language rather than exact jargon as long as it's
+correct. Example: avoid Git jargon such as _revision_ or _reference_, preferring
+the more basic concept _commit_.
 
 The [command reference](/doc/command-reference) contains some of our most
 technical documents where specialized language is used the most, but even there,
@@ -213,7 +213,7 @@ we use expandable sections for complex implementation details.
 Start by writing the essence in simple terms, and complete it with
 clarifications, edge cases, or other precisions in a separate iteration.
 
-We use **bold** text for emphasis, and _italics_ for special terms.
+We use **bold** text for emphasis and _italics_ for special terms.
 
 We also use "emoji" symbols sparingly for visibility on certain notes. Mainly:
 
