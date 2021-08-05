@@ -93,9 +93,10 @@ interested, a PR would be awesome! :blush:
 
 This is a really good question @Ravi Kumar!
 
-CML relies on CI/CD engines like GitHub Actions or GitLab CI/CD, but doesn't
-replace them. It's just a lightweight wrapper and not a complete workflow
-ecosystem like Airflow.
+CML is intended to augment existing CI/CD engines like GitHub Actions or
+GitLab CI/CD, not replace them. It's a lightweight wrapper and not a complete
+replacement workflow ecosystem like Airflow. We don't like reinventing working
+wheels.
 
 ### [Q: Does CML have the ability to run long-run instances, e.g. can I run AWS instance via GitHub Actions that works more than 6 hours?](https://discord.com/channels/485586884165107732/728693131557732403/866730530262351873)
 
