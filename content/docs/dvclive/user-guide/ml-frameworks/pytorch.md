@@ -1,6 +1,6 @@
 # PyTorch
 
-The DVCLive - Pytorch integration allows you to easily add experiment tracking
+DVCLive allows you to easily add experiment tracking
 capabilities to your Pytorch projects.
 
 ## About PyTorch
