@@ -100,8 +100,10 @@ wheels.
 
 ### [Q: Does CML have the ability to cope with long-running instances, e.g. launching an AWS instance via GitHub Actions that lasts more than 72 hours?](https://discord.com/channels/485586884165107732/728693131557732403/866730530262351873)
 
-You can definitely run it for 6 hours. The GitHub limit is 72 hours for
-self-hosted runners and GitLab has no limit on self-hosted runners.
+Once the GitHub Actions limit of 72 hours is reached for self-hosted
+runners, CML will handle restarting the Action and reconnecting to
+the runner. Meanwhile, on GitLab there is no time limit to circumvent
+for self-hosted runners.
 
 Thanks @sergechuvakin!
 
