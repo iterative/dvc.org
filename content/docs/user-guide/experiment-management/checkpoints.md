@@ -23,6 +23,8 @@ This tutorial is going to cover how to implement checkpoints in an ML project
 using DVC. We're going to train a model to identify handwritten digits based on
 the MNIST dataset.
 
+https://youtu.be/PcDo-hCvYpw
+
 <details>
 
 ## ⚙️ Setting up the project
