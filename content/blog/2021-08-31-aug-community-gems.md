@@ -67,7 +67,7 @@ It is possible to have overlapping dependencies, but not overlapping outputs.
 Having overlapping outputs introduces uncertainty into DVC commands, like
 `dvc checkout`.
 
-### [Q: How does the CML runner functionality to restart workflows if it's been shut down by AWS (e.g. spot instances) work?](https://discord.com/channels/485586884165107732/728693131557732403/862641924200857660)
+### [Q: How does the CML runner restart workflows if it's been shut down by AWS (e.g. spot instances)?](https://discord.com/channels/485586884165107732/728693131557732403/862641924200857660)
 
 You shouldn't have to do anything. Spot instances sends a `SIGINT` that we
 handle to restart the workflow. We have been supporting graceful shutdown by
