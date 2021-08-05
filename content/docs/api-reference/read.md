@@ -57,7 +57,7 @@ These are loaded to memory directly (without using any disc space).
   the target data. _Default_: The
   [default remote](/doc/command-reference/remote/default) of `repo` is used if a
   `remote` argument is not given. For local projects, the <abbr>cache</abbr> is
-  tied before the default remote.
+  tried before the default remote.
 
 - `mode` - specifies the mode in which the file is opened. Defaults to `"r"`
   (read). Mirrors the namesake parameter in builtin
