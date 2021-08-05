@@ -31,29 +31,30 @@ parameters.
 
 You have a few options with DVC for this.
 
-- Set up an external cache on your object storage
-  bucket. [Check out this doc to learn more](https://dvc.org/doc/user-guide/managing-external-data#setting-up-an-external-cache)!
-- Track a large dataset in an external location without downloading it locally.
+- Set up an external cache on your object storage bucket.
+  [Check out this doc to learn more](https://dvc.org/doc/user-guide/managing-external-data#setting-up-an-external-cache)!
+- Track a large dataset in an external location to download later.
   [This doc will tell you more](https://dvc.org/doc/command-reference/add#example-transfer-to-remote-storage).
 
 Great question @Ravi Kumar!
 
 ### [Q: Is there a recommended way to specify multiple pipelines in DVC?](https://discord.com/channels/485586884165107732/485596304961962003/864230750325047316)
 
-There are a few different ways to approach this.
+You'll want to keep each pipeline in a separate `dvc.yaml` if you want to work
+with multiple pipelines. Here's a bit of explanation:
 
+- Splitting a `dvc.yaml` file into multiple files is encouraged where there are
+  clear logical groupings between stages. It avoids confusion, improves
+  readability, and shortens commands by avoiding long paths preceding every
+  filename.
 - `dvc.yaml` files can be in any sub-directory or nested sub-directory in the
   project structure and DVC will find them.
 - DVC will process them just the same as if they were one DVC file i.e.
   dependencies between stages in different `dvc.yaml` files are still respected.
 - Each `dvc.yaml` file will have its own `dvc.lock` file in the same directory.
-- Splitting a `dvc.yaml` file into multiple files is encouraged where there are
-  clear logical groupings between stages. It avoids confusion, improves
-  readability, and shortens commands by avoiding long paths preceding every
-  filename.
 
 If you want to see the rest of the explanation,
-[check out this PR we have up](https://github.com/iterative/dvc.org/issues/2494).
+[check out this user guide PR we have up](https://github.com/iterative/dvc.org/issues/2494).
 Please feel free to add a comment or emoji on this PR so we know how to
 prioritize this content for you!
 
@@ -87,23 +88,23 @@ Good question @Nwp8nice!
 If you use GitLab you can use the `--native` option to upload to GitLab instead.
 
 It would be nice to be able to offer an alternative link so if you're
-interested, a PR would be awesome! :blush:
+interested, a PR for [this issue](https://github.com/iterative/cml/issues/291)
+would be awesome! :blush:
 
 ### [Q: Is CML used for creating the MLOps workflows, like Apache Airflow?](https://discord.com/channels/485586884165107732/728693131557732403/866624571519664128)
 
 This is a really good question @Ravi Kumar!
 
-CML is intended to augment existing CI/CD engines like GitHub Actions or
-GitLab CI/CD, not replace them. It's a lightweight wrapper and not a complete
+CML is intended to augment existing CI/CD engines like GitHub Actions or GitLab
+CI/CD, not replace them. It's a lightweight wrapper and not a complete
 replacement workflow ecosystem like Airflow. We don't like reinventing working
 wheels.
 
 ### [Q: Does CML have the ability to cope with long-running instances, e.g. launching an AWS instance via GitHub Actions that lasts more than 72 hours?](https://discord.com/channels/485586884165107732/728693131557732403/866730530262351873)
 
-Once the GitHub Actions limit of 72 hours is reached for self-hosted
-runners, CML will handle restarting the Action and reconnecting to
-the runner. Meanwhile, on GitLab there is no time limit to circumvent
-for self-hosted runners.
+Once the GitHub Actions limit of 72 hours is reached for self-hosted runners,
+CML will handle restarting the Action and reconnecting to the runner. Meanwhile,
+on GitLab there is no time limit to circumvent for self-hosted runners.
 
 Thanks @sergechuvakin!
 
