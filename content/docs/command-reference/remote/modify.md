@@ -331,28 +331,62 @@ storage. Whether they're effective depends on each storage platform.
   Note that if the given container name isn't found in your account, DVC will
   attempt to create it.
 
-- `account_name` (required) - storage account name
+- `account_name` - storage account name. Required for every authentication
+  method except `connection_string` (which already includes it).
 
   ```dvc
-  $ dvc remote modify myremote account_name 'myuser'
+  $ dvc remote modify myremote account_name 'myaccount'
   ```
 
-By default, DVC authenticates using an `account_name` and its
-[default credential](https://docs.microsoft.com/en-us/python/api/azure-identity/azure.identity.defaultazurecredential)
-(if any), which uses certain environment variables or a signed-in Microsoft
-application. To use a custom authentication method, use the following parameters
-(listed in order of precedence):
+By default, DVC authenticates using an `account_name` and its [default
+credential] (if any), which uses environment variables (e.g. set by `az cli`) or
+a Microsoft application.
 
-1. `connection_string` is used for authentication if given (all others params
-   are ignored).
-2. If `tenant_id` and `client_id` or `client_secret` are given, Active Directory
-   (AD)
-   [service principal](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal)
-   auth is performed.
+[default credential]:
+  https://docs.microsoft.com/en-us/python/api/azure-identity/azure.identity.defaultazurecredential
+
+<details>
+
+#### For Windows users
+
+When using default authentication, you may need to enable some of these
+exclusion parameters depending on your setup
+([details][azure-default-cred-params]):
+
+[azure-default-cred-params]:
+  https://docs.microsoft.com/en-us/python/api/azure-identity/azure.identity.defaultazurecredential?view=azure-python#parameters
+
+```dvc
+$ dvc remote modify --system myremote
+                    exclude_environment_credential true
+$ dvc remote modify --system myremote
+                    exclude_visual_studio_code_credential true
+$ dvc remote modify --system myremote
+                    exclude_shared_token_cache_credential true
+$ dvc remote modify --system myremote
+                    exclude_managed_identity_credential true
+```
+
+</details>
+
+> See some [Azure auth examples](#example-some-azure-authentication-methods).
+
+To use a custom authentication method, use the following parameters (listed in
+order of precedence):
+
+1. `connection_string` is used for authentication if given (`account_name` is
+   ignored).
+2. If `tenant_id` and `client_id`, `client_secret` are given, Active Directory
+   (AD) [service principal] auth is performed.
 3. DVC will try next to connect with `account_key` or `sas_token` (in this
    order) if either are provided.
 4. If `allow_anonymous_login` is set to `True`, then DVC will try to connect
-   [anonymously](https://docs.microsoft.com/en-us/azure/storage/blobs/anonymous-read-access-configure).
+   [anonymously].
+
+[service principal]:
+  https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal
+[anonymously]:
+  https://docs.microsoft.com/en-us/azure/storage/blobs/anonymous-read-access-configure
 
 > The authentication values below may contain sensitive user info. Therefore,
 > it's safer to use the `--local` flag so they're written to a Git-ignored
@@ -363,34 +397,35 @@ application. To use a custom authentication method, use the following parameters
   (recommended).
 
   ```dvc
-  $ dvc remote modify --local myremote connection_string 'mysecret'
+  $ dvc remote modify --local
+                        myremote connection_string 'mysecret'
   ```
 
 * `tenant_id` - tenant ID for AD _service principal_ authentication (requires
   `client_id` and `client_secret` along with this):
 
   ```dvc
-  $ dvc remote modify --local myremote tenant_id 'directory-id'
+  $ dvc remote modify --local myremote tenant_id 'mytenant'
   ```
 
 * `client_id` - client ID for _service principal_ authentication (when
   `tenant_id` is set):
 
   ```dvc
-  $ dvc remote modify --local myremote client_id 'client-id'
+  $ dvc remote modify --local myremote client_id 'myclient'
   ```
 
 * `client_secret` - client Secret for _service principal_ authentication (when
   `tenant_id` is set):
 
   ```dvc
-  $ dvc remote modify --local myremote client_secret 'client-secret'
+  $ dvc remote modify --local myremote client_secret 'mysecret'
   ```
 
 * `account_key` - storage account key:
 
   ```dvc
-  $ dvc remote modify --local myremote account_key 'mysecret'
+  $ dvc remote modify --local myremote account_key 'mykey'
   ```
 
 * `sas_token` - shared access signature token:
@@ -419,7 +454,7 @@ $ export AZURE_STORAGE_CONNECTION_STRING='mysecret'
 For account name and key/token auth:
 
 ```dvc
-$ export AZURE_STORAGE_ACCOUNT='myuser'
+$ export AZURE_STORAGE_ACCOUNT='myaccount'
 # and
 $ export AZURE_STORAGE_KEY='mysecret'
 # or
@@ -1043,4 +1078,43 @@ url = s3://mybucket/path
 profile = myuser
 [core]
 remote = myremote
+```
+
+## Example: Some Azure authentication methods
+
+Using a default identity (e.g. credentials set by `az cli`):
+
+```dvc
+$ dvc remote add -d myremote azure://mycontainer/object
+$ dvc remote modify myremote account_name 'myaccount'
+$ dvc remote push
+```
+
+> Note that this may require the `Storage Blob Data Contributor` and other roles
+> on the account.
+
+Using a `connection_string`:
+
+```dvc
+$ dvc remote add -d myremote azure://mycontainer/object
+$ dvc remote modify --local myremote connection_string 'mysecret'
+$ dvc remote push
+```
+
+Using `account_key`:
+
+```dvc
+$ dvc remote add -d myremote azure://mycontainer/object
+$ dvc remote modify --local myremote account_name 'myaccount'
+$ dvc remote modify --local myremote account_key 'mysecret'
+$ dvc remote push
+```
+
+Using `sas_token`:
+
+```dvc
+$ dvc remote add -d myremote azure://mycontainer/object
+$ dvc remote modify --local myremote account_name 'myaccount'
+$ dvc remote modify --local myremote sas_token 'mysecret'
+$ dvc remote push
 ```
