@@ -52,7 +52,7 @@ Example:
 xgboost.train(
     param,
     dtrain,
-   num_round=5,
-   callbacks=[DvcLiveCallback("eval_data", model_file="model.json")],
-   evals=[(dval, "eval_data")])
+    num_round=5,
+    callbacks=[DvcLiveCallback("eval_data", model_file="model.json")],
+    evals=[(dval, "eval_data")])
 ```
