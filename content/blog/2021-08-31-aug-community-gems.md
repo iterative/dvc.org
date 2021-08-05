@@ -71,7 +71,7 @@ Having overlapping outputs introduces uncertainty into DVC commands, like
 
 You shouldn't have to do anything. Spot instances sends a `SIGINT` that we
 handle to restart the workflow. We have been supporting graceful shutdown by
-unregistering runers for a while now.
+unregistering runners for a while now.
 
 The main difference now is that we restart workflows with unfinished jobs.
 
