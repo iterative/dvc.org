@@ -18,6 +18,80 @@ If this is the first time you're introduced to Machine Learning experimentation,
 it may be better to start with the
 [Experiment's Trail](/doc/start/experiments/).
 
+## The Pipeline
+
+DVC uses pipelines composed of <abbr>stages</abbr>. Stages are isolated and
+interdependent steps that has a command, a set of dependencies, and output.
+Stages can depend onto each other and can build a <abbr>DAG</abbr>. 
+
+DVC employs the pipeline to run the experiment commands. Each pipeline has an
+end-point, which is the last command in the pipeline. The output of this last
+command is considered the output of experiment. Additionally DVC tracks
+artifacts from intermediate stages, and doesn't reproduce them if their
+dependents have not changed. 
+
+DVC pipelines are a detailed topic that we cover in [Get Started][gs-pipelines]
+and the [User's Guide][ug-pipeline-files]. Here we assume that there is already
+a pipeline defined in `dvc.yaml` file in the <abbr>project</abbr>. 
+
+### Running the pipeline
+
+The pipeline defined in `dvc.yaml` file is run with default settings using: 
+
+```dvc
+$ dvc exp run
+```
+
+If all dependencies and the experiment output are not changed and available in
+the workspace, the `dvc exp run` doesn't rerun the commands. 
+
+Otherwise, for a set of stages in the form of:
+
+```
+     S0 (first)
+     |
+     |
+     S1
+     |
+     |
+    ...
+     |
+     |
+     SN (last)
+```
+
+If the (code, data, parameter, etc.) dependencies of an intermediate stage `Si`
+have changed, the subsequent stages depending on `Si` will run. 
+
+### Running a Single Stage
+
+In some cases you may need to run a single stage in the pipeline. The
+`--single-item` (`-s`) flag allows to run the associated command of a single
+stage. 
+
+If the pipeline has `extract`, `transform`, `train`, `evaluate` stages and you
+only want to run the transform stage to check its outputs, you can do so by: 
+
+```dvc
+$ dvc exp run --single-stage transform
+```
+
+### Running all Pipelines
+
+In larger projects, there may be more than a single `dvc.yaml` file that contains multiple pipelines. In this case, you can run all pipelines with a single command. 
+
+```dvc
+$ dvc exp run --all-pipelines
+```
+
+- [ ] Q: What's the order of these pipelines?
+
+### Interactive Reproduction
+
+### Recursive Dependencies
+
+### Improvements over `dvc repro`
+
 ## Parameters
 
 Before running an experiment, you'll probably want to make modifications such as
@@ -120,18 +194,6 @@ the checkpoint to continue from.
 
 Alternatively, use `--reset` to start over (discards previous checkpoints and
 their outputs). This is useful for re-training ML models, for example.
-
-## The Pipeline
-
-### Running a Single Stage
-
-### Running all Pipelines
-
-### Interactive Reproduction
-
-### Recursive Dependencies
-
-### Improvements over `dvc repro`
 
 ## Git and Experiments
 
