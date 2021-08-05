@@ -76,7 +76,7 @@ timestamp	step	{metric_name}
 1614129198848	2	0.8907166719436646
 ```
 
-And also a _summary_ with all the metrics:
+And also a _summary_ with the latest metrics:
 
 ```bash
 $ cat dvclive.json
