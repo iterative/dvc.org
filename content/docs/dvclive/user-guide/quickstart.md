@@ -62,7 +62,7 @@ project:
 ```bash
 $ ls
 dvclive        train.py
-dvcelive.json
+dvclive.json
 ```
 
 For each `{metric_name}`, DVCLive produces metrics _logs_ under
