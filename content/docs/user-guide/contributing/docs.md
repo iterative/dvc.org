@@ -71,7 +71,7 @@ $ yarn
 ```
 
 > In Windows, you may need to install [Python], [Visual Studio Build Tools], and
-> [Windows SDK] beforehand for some packages.
+> [Windows SDK] beforehand for some dependencies.
 
 [windows sdk]:
   https://developer.microsoft.com/en-us/windows/downloads/windows-10-sdk/
