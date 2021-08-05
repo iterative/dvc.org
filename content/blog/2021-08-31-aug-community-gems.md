@@ -32,7 +32,7 @@ parameters.
 You have a few options with DVC for this.
 
 - Set up an external cache on your object storage
-  bucket.[Check out this doc to learn more](https://dvc.org/doc/user-guide/managing-external-data#setting-up-an-external-cache)!
+  bucket. [Check out this doc to learn more](https://dvc.org/doc/user-guide/managing-external-data#setting-up-an-external-cache)!
 - Track a large dataset in an external location without downloading it locally.
   [This doc will tell you more](https://dvc.org/doc/command-reference/add#example-transfer-to-remote-storage).
 
