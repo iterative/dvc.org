@@ -27,22 +27,22 @@ const itemsByOs = {
   },
   [OS.OSX]: {
     title: 'macOS',
-    url: `/osxpkg/dvc-${VERSION}.pkg`,
+    url: `/download/osx/dvc-${VERSION}`,
     download: true
   },
   [OS.WINDOWS]: {
     title: 'Windows',
-    url: `/exe/dvc-${VERSION}.exe`,
+    url: `/download/win/dvc-${VERSION}`,
     download: true
   },
   [OS.LINUX]: {
     title: 'Linux Deb',
-    url: `/deb/pool/stable/d/dv/dvc_${VERSION}_amd64.deb`,
+    url: `/download/linux-deb/dvc-${VERSION}`,
     download: true
   },
   [OS.LINUX_RPM]: {
     title: 'Linux RPM',
-    url: `/rpm/dvc-${VERSION}-1.x86_64.rpm`,
+    url: `/download/linux-rpm/dvc-${VERSION}`,
     download: true
   }
 }
