@@ -2,9 +2,9 @@ name: Download Link Check
 
 on:
   pull_request: # here for testing
-  deployment_status:
-  schedule:
-    - cron: '0 1-23 * * *'
+  # deployment_status:
+  # schedule:
+  #   - cron: '0 1-23 * * *'
 
 jobs:
   run:
@@ -19,8 +19,8 @@ jobs:
         uses: lycheeverse/lychee-action@v1.0.8
         with:
           args:
-            --verbose --include https://s3-us-east-2.amazonaws.com/dvc
-            https://dvc.org/
+            --verbose https://dvc.org/ --base-url https://dvc.org/ --include
+            /download/
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
       # - name: Create Issue From File
@@ -29,20 +29,3 @@ jobs:
       #     title: Link Checker Report
       #     content-filepath: ./lychee/out.md
       #     labels: website, automated issue
-      - name: Create Report for Broken Links
-        run: echo "create issue here"
-      - name: Create SUCCESSFUL_LINK_AMOUNT env
-        run: |
-          echo "$(cat /tmp/lychee/out.md)"
-          echo text=$(grep Successful /tmp/lychee/out.md)
-          echo amount="${text//[^0-9]/}"
-          echo SUCCESSFUL_LINK_AMOUNT=$amount >> $GITHUB_ENV
-      - if: ${{ env.SUCCESSFUL_LINK_AMOUNT != '4' }}
-        # name: Create Issue From File
-        # uses: peter-evans/create-issue-from-file@v3
-        # with:
-        #   title: Link Checker Report
-        #   content-filepath: ./lychee/out.md
-        #   labels: website, automated issue
-        name: Create Report for Missing Links
-        run: echo "create issue here"
