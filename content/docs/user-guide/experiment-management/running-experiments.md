@@ -75,9 +75,19 @@ single command.
 $ dvc exp run --all-pipelines
 ```
 
-- [ ] Q: What's the order of these pipelines?
+Note that the order to run these pipelines is not specified. If you have a
+pipeline in `my-dir/dvc.yaml` and `another-dir/dvc.yaml`, either of these
+pipelines can be run first.
 
 ### Interactive Reproduction
+
+When you want to have more granular control over which stages are run, you can
+use `--interactive` flag. This allows you to confirm each stage before running.
+
+```dvc
+$ dvc exp run --interactive
+Going to reproduce stage: 'train'. Are you sure you want to continue? [y/n]
+```
 
 ### Recursive Dependencies
 
