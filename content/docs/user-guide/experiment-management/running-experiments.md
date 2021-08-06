@@ -52,6 +52,22 @@ For a pipeline composed of `extract`, `transform`, `train`, `evaluate`, if a
 dependency of `train` stage has changed, the dependent stages (`evaluate`) are
 also run.
 
+### Specifying Targets
+
+By default `dvc exp run` uses `dvc.yaml` file in the current directory. You can
+specify other directories or pipeline elements to run. These are specified as
+the last element of the command.
+
+Pipelines can be of the following:
+
+- A particular `dvc.yaml` file: `dvc exp run my-project/dvc.yaml`
+- A directory that contains a `dvc.yaml` file: `dvc exp run my-project`
+- A stage from the default `dvc.yaml` file: `dvc exp run extract`
+- A stage from a specific `dvc.yaml` file:
+  `dvc exp run my-project/dvc.yaml:extract`
+- A set of stages from the default `dvc.yaml` file:
+  `dvc exp run --glob 'train-*'`
+
 ### Running a Single Stage
 
 In some cases you may need to run a single stage in the pipeline. The
@@ -89,7 +105,18 @@ $ dvc exp run --interactive
 Going to reproduce stage: 'train'. Are you sure you want to continue? [y/n]
 ```
 
-### Recursive Dependencies
+### Recursive Search for Pipelines
+
+If you have a directory tree containing multiple pipelines and want to reproduce
+all starting from a root directory, you can do so by `--recursive` (`-R`) flag.
+For a directory tree, it starts from the root and descends into subdirectories.
+
+```dvc
+$ dvc exp run -R my-sub-project/
+```
+
+The above command begins from `my-sub-project/dvc.yaml`, and proceeds to
+`my-sub-project/sub-module/...` to run all the pipelines.
 
 ### Improvements over `dvc repro`
 
