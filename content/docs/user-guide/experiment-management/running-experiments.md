@@ -22,55 +22,44 @@ it may be better to start with the
 
 DVC uses pipelines composed of <abbr>stages</abbr>. Stages are isolated and
 interdependent steps that has a command, a set of dependencies, and output.
-Stages can depend onto each other and can build a <abbr>DAG</abbr>. 
+Stages can depend onto each other and can build a <abbr>DAG</abbr>.
 
 DVC employs the pipeline to run the experiment commands. Each pipeline has an
 end-point, which is the last command in the pipeline. The output of this last
 command is considered the output of experiment. Additionally DVC tracks
 artifacts from intermediate stages, and doesn't reproduce them if their
-dependents have not changed. 
+dependents have not changed.
 
 DVC pipelines are a detailed topic that we cover in [Get Started][gs-pipelines]
 and the [User's Guide][ug-pipeline-files]. Here we assume that there is already
-a pipeline defined in `dvc.yaml` file in the <abbr>project</abbr>. 
+a pipeline defined in `dvc.yaml` file in the <abbr>project</abbr>.
+
+[gs-pipelines]: /doc/start/data-pipelines
+[ug-pipeline-files]: /doc/user-guide/project-structure/pipelines-files
 
 ### Running the pipeline
 
-The pipeline defined in `dvc.yaml` file is run with default settings using: 
+The pipeline defined in `dvc.yaml` file is run with default settings using:
 
 ```dvc
 $ dvc exp run
 ```
 
 If all dependencies and the experiment output are not changed and available in
-the workspace, the `dvc exp run` doesn't rerun the commands. 
+the workspace, the `dvc exp run` doesn't rerun the commands.
 
-Otherwise, for a set of stages in the form of:
-
-```
-     S0 (first)
-     |
-     |
-     S1
-     |
-     |
-    ...
-     |
-     |
-     SN (last)
-```
-
-If the (code, data, parameter, etc.) dependencies of an intermediate stage `Si`
-have changed, the subsequent stages depending on `Si` will run. 
+For a pipeline composed of `extract`, `transform`, `train`, `evaluate`, if a
+dependency of `train` stage has changed, the dependent stages (`evaluate`) are
+also run.
 
 ### Running a Single Stage
 
 In some cases you may need to run a single stage in the pipeline. The
 `--single-item` (`-s`) flag allows to run the associated command of a single
-stage. 
+stage.
 
 If the pipeline has `extract`, `transform`, `train`, `evaluate` stages and you
-only want to run the transform stage to check its outputs, you can do so by: 
+only want to run the transform stage to check its outputs, you can do so by:
 
 ```dvc
 $ dvc exp run --single-stage transform
@@ -78,7 +67,9 @@ $ dvc exp run --single-stage transform
 
 ### Running all Pipelines
 
-In larger projects, there may be more than a single `dvc.yaml` file that contains multiple pipelines. In this case, you can run all pipelines with a single command. 
+In larger projects, there may be more than a single `dvc.yaml` file that
+contains multiple pipelines. In this case, you can run all pipelines with a
+single command.
 
 ```dvc
 $ dvc exp run --all-pipelines
