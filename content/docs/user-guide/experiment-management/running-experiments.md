@@ -120,7 +120,35 @@ The above command begins from `my-sub-project/dvc.yaml`, and proceeds to
 
 ### Improvements over `dvc repro`
 
-## Parameters
+The classical way of running the pipeline is using `dvc repro`. DVC introduced
+`dvc exp` as an _experiment management_ feature in version 2.0. _Experiment
+management_ involves more than executing the pipelines.
+
+In the following sections, we describe the features that make `dvc exp run` more
+suitable for machine learning experimentation.
+
+## (Hyper)parameters
+
+<abbr>Hyperparameters</abbr> are the values that modify the structure of an ML
+model and various aspects of project. Machine learning experimentation involves
+searching hyperparameters that solves the problem at hand in a better way.
+
+Hyperparameter dependencies in the pipelines are set using `--parameter` (`-p`)
+option. When a stage is added to the pipeline using `dvc stage add`, the
+parameters are also specified along with code and data dependencies.
+
+These parameters are read from text files by the code. DVC keeps track of these
+parameter files, and parses them to collect individual parameters. By default,
+the name of the parameter file is `params.yaml`. When a parameter is changed in
+parameter file, DVC invalidates the stage that depends on it and runs the
+experiment with the new hyperparameter value.
+
+```dvc
+$ dvc stage add -n train \
+                 ...
+                -p learning_rate \
+                 ...
+```
 
 Before running an experiment, you'll probably want to make modifications such as
 data and code updates, or <abbr>hyperparameter</abbr> tuning. For the latter,
