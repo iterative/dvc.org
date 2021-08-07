@@ -317,7 +317,7 @@ the experiment. This is shown when you use `--queue` option, e.g.,
 ```dvc
 $ dvc exp run --queue -S model.conv_units=32
 Queued experiment '6518f17' for future execution.
-```
+````
 
 After _running_ the experiment, DVC uses another auto-generated name to refer to
 the experiment. Typically these start with `exp-`, and can be set via
