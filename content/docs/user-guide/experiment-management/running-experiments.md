@@ -143,17 +143,57 @@ the name of the parameter file is `params.yaml`. When a parameter is changed in
 parameter file, DVC invalidates the stage that depends on it and runs the
 experiment with the new hyperparameter value.
 
+For a parameters file named `params.yaml` with the contents:
+
+```yaml
+---
+model:
+  learning_rate: 0.0001
+```
+
+You can specify the parameter dependency as:
+
 ```dvc
 $ dvc stage add -n train \
                  ...
-                -p learning_rate \
+                --parameter model.learning_rate \
                  ...
 ```
 
-Before running an experiment, you'll probably want to make modifications such as
-data and code updates, or <abbr>hyperparameter</abbr> tuning. For the latter,
-you can use the `--set-param` (`-S`) option of this command to change
-`dvc param` values on-the fly.
+> ⚠️ The parameters specified in the params file are supposed to be read by the
+> code and used in to modify the models and other attributes of the project. DVC
+> does not (and cannot) check whether the parameters are actually used in the
+> project. It only tracks their updates in a granular and language-independent
+> way.
+
+### Updating parameters in experiments
+
+DVC allows to update the parameters from the command line when you are running
+the experiments. The `--set-param` (`-S`) option takes a parameter name and a
+value to update the file.
+
+````dvc
+$ dvc exp run --set-param model.learning_rate=0.0002
+```
+
+The command updates the parameter in `params.yaml` and runs the pipeline that depend on this parameter value.
+
+It also attaches these parameter values to the experiments, so that you can review the experiments along with their parameters with `dvc exp show` and `dvc exp diff`.
+
+### Using a non-default parameter file
+
+When you have a parameter value named _other than_ `params.yaml`, you need to specify its name in both stage description, and `dvc exp run`.
+
+DVC allows to use multiple parameters in YAML 1.2, JSON, TOML, and Python files. You can specify the parameter file name in `dvc stage add` command as:
+
+```dvc
+$ dvc stage add ... \
+                -p myparams.toml:learning_rate \
+                ... \
+```
+
+While running the experiment, you also need to specify the parameters file name.
+
 
 ### Setting Multiple Parameters for Experiments
 
@@ -271,7 +311,7 @@ the experiment. This is shown when you use `--queue` option, e.g.,
 ```dvc
 $ dvc exp run --queue -S model.conv_units=32
 Queued experiment '6518f17' for future execution.
-```
+````
 
 After _running_ the experiment, DVC uses another auto-generated name to refer to
 the experiment. Typically these start with `exp-`, and can be set via
