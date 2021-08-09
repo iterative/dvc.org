@@ -254,10 +254,9 @@ $ dvc exp run --queue -S units=256
 Queued experiment '4109ead' for future execution.
 ```
 
-Each experiment in the queue is derived from the workspace at the time of `dvc exp run --queue` command. If you make changes in the workspace after `dvc exp run --queue` command, they are not reflected to the experiments.
+Each experiment in the queue is derived from the workspace at the time of `dvc exp run --queue` command. If you make changes in the workspace after `dvc exp run --queue` command, they are not reflected in the experiment.
 
 To prevent the side effects, queued experiments are run in temporary directories under `.dvc/tmp/exps`. Please see [Git and Experiments](#git-and-experiments) section for details.
-
 
 Experiments in the queue are run by specifying `--run-all` flag.
 
@@ -279,7 +278,7 @@ DVC allows to run the experiments in parallel by specifying the number of experi
 $ dvc exp run --run-all --jobs 4
 ```
 
-Each experiment is run _serially_ its own temporary directory. This means if there are common stages across these experiments that need to be run, each experiment runs those separately. For example, for a pipeline composed of the stages `A -> B -> C`, if `dvc exp run --queue -S param=value1` invalidates stage `A`, all the pipeline is run in all experiments.
+Each experiment is run _serially_ in its own temporary directory. If there are common stages across these experiments that need to be run, each experiment runs those separately. For example, for a pipeline composed of the stages `A -> B -> C`, if `dvc exp run --queue -S param=value1` invalidates stage `A`, all the pipeline is run in all experiments.
 
 
 ⚠️ Parallel runs are experimental and may be unstable at this time. ⚠️ Make sure
@@ -291,23 +290,22 @@ CPU cores).
 
 If you want to isolate the experiments in their own directory, you can do so by `--temp` flag. This allows to continue your work while running the experiment.
 
-
-
-------
-
-
-> Note that queuing an experiment that uses checkpoints implies `--reset`,
-> unless a `--rev` is provided (refer to the previous section).
-
-💡 You can also run a single experiment outside the workspace with
-`dvc exp run --temp`, for example to continue working on the project meanwhile
-(e.g. on another terminal).
+- [ ] Example for temp
 
 > ⚠️ Note that only tracked files and directories will be included in
 > `--queue/temp` experiments. To include untracked files, stage them with
 > `git add` first (before `dvc exp run`). Feel free to `git reset` them
 > afterwards. Git-ignored files/dirs are explicitly excluded from runs outside
 > the workspace to avoid committing unwanted files into experiments.
+
+
+### Cleaning Up the Experiment Queue
+
+You can use `dvc exp remove --queue` or `dvc exp gc --queued` to remove the
+experiments from the queue. For detailed information,
+experiments, see the [section on Cleaning-Up the Experiments][ug-clean-up].
+
+[ug-clean-up]: /doc/user-guide/experiment-management/cleaning-up-experiments
 
 <details>
 
@@ -318,9 +316,10 @@ pre-experiment commits.
 
 </details>
 
-### Cleaning Up the Experiment Queue
-
 ## Checkpoints
+
+> Note that queuing an experiment that uses checkpoints implies `--reset`,
+> unless a `--rev` is provided (refer to the previous section).
 
 To track successive steps in a longer or deeper <abbr>experiment</abbr>, you can
 register checkpoints from your code. Each `dvc exp run` will resume from the
