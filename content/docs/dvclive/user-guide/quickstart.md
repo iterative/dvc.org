@@ -59,7 +59,7 @@ for epoch in range(NUM_EPOCHS):
 After you run your training code, you should see the following content in the
 project:
 
-```bash
+```dvc
 $ ls
 dvclive        train.py
 dvclive.json
@@ -68,7 +68,7 @@ dvclive.json
 For each `{metric_name}`, DVCLive produces metrics _logs_ under
 `dvclive/{metric_name}.dvclive.tsv`:
 
-```bash
+```dvc
 $ cat dvclive/{metric_name}.dvclive.tsv
 timestamp	step	{metric_name}
 1614129197192	0	0.7612833380699158
@@ -78,7 +78,7 @@ timestamp	step	{metric_name}
 
 And also a _summary_ with the latest metrics:
 
-```bash
+```dvc
 $ cat dvclive.json
 {
   "step": 2,
