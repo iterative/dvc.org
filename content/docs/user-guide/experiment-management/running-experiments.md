@@ -287,6 +287,14 @@ you're using a number of jobs that your environment can handle (no more than the
 CPU cores).
 
 
+### Experiments outside of the Workspace
+
+If you want to isolate the experiments in their own directory, you can do so by `--temp` flag. This allows to continue your work while running the experiment.
+
+
+
+------
+
 
 > Note that queuing an experiment that uses checkpoints implies `--reset`,
 > unless a `--rev` is provided (refer to the previous section).
