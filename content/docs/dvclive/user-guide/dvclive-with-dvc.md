@@ -110,7 +110,7 @@ DVC generates an _HTML report_.
 If you open `training_metrics.html` in a browser, you'll see a plot for metrics
 being logged during the model training!
 
-![](/img/dvclive_report.png)
+![](/img/dvclive-html-report.png)
 
 > Note that you should manually refresh the page.
 
