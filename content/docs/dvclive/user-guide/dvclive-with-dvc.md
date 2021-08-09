@@ -31,10 +31,6 @@ for epoch in range(NUM_EPOCHS):
     dvclive.next_step()
 ```
 
-> 💡 When using DVCLive in a DVC project, there is no need for manual
-> initialization of DVCLive (no [`dvclive.init()`] call). DVCLive will use the
-> settings provided by DVC.
-
 Let's use `dvc stage add` to create a stage to wrap this code (don't forget to
 `dvc init` first):
 
