@@ -194,16 +194,47 @@ $ dvc stage add ... \
 
 While running the experiment, you also need to specify the parameters file name.
 
-## Parameters
+```dvc
+$ dvc exp run -S myparams.toml:learning_rate = 0.0001
+```
 
-Before running an experiment, you'll probably want to make modifications such as
-data and code updates, or <abbr>hyperparameter</abbr> tuning. For the latter,
-you can use the `--set-param` (`-S`) option of this command to change
-`dvc param` values on-the fly.
+DVC updates the specified value in the file and runs the experiment.
 
 ### Setting Multiple Parameters for Experiments
 
+You can set more than a single parameter with `--set-param` (`-S`) option in `dvc exp run`.
+
+It's possible to use multiple `-S` options:
+
+```dvc
+$ dvc exp run -S learning_rate=0.001 -S units=128
+```
+
+Another way is to supply a comma-delimited list to `-S`:
+
+```dvc
+$ dvc exp run -S learning_rate=0.001,units=128
+```
+
 ### How DVC updates the parameters?
+
+DVC updates the parameters by parsing the parameters file and updating the specified value. Because of this it restricts the set of formats accepted to YAML 1.2, TOML, JSON and Python.
+
+When you specify a parameter, you can see its effects using `git diff`.
+
+```dvc
+$ dvc exp run -S units=128
+...
+$ git diff params.yaml
+```
+```git
+-units: 32
++units: 128
+```
+
+> ⚠️ Note that DVC doesn't check whether the parameters you specified with
+> `--set-param` option is already in the parameters file. If there is a typo in
+> the parameter name, it will be added as another parameter.
 
 ## The Experiments Queue
 
