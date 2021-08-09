@@ -5,7 +5,7 @@ descriptions, and comprehensive usage examples for `dvc` commands. For a list of
 commands, type `dvc -h`.
 
 💡 To execute any DVC command in a different directory, use
-`dvc --cd <path> ...` before the actual command and it's options/arguments (this
+`dvc --cd <path> ...` before the actual command and its options/arguments (this
 does not change directories in your terminal).
 
 ## Typical DVC workflow
