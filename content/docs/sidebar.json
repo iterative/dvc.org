@@ -601,6 +601,10 @@
                 "label": "Keras"
               },
               {
+                "slug": "lightgbm",
+                "label": "LightGBM"
+              },
+              {
                 "slug": "mmcv",
                 "label": "MMCV"
               },

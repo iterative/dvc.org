@@ -6,6 +6,7 @@ _ML training code_.
 We currently support the following _ML Frameworks_:
 
 - [Keras](/docs/dvclive/user-guide/ml-frameworks/keras)
+- [LightGBM](/docs/dvclive/user-guide/ml-frameworks/lightgbm)
 - [MMCV](/docs/dvclive/user-guide/ml-frameworks/mmcv)
 - [PyTorch](/docs/dvclive/user-guide/ml-frameworks/pytorch)
 - [TensorFlow](/docs/dvclive/user-guide/ml-frameworks/tensorflow)
