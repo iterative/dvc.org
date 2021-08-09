@@ -11,7 +11,7 @@ We currently support the following _ML Frameworks_:
 - [TensorFlow](/docs/dvclive/user-guide/ml-frameworks/tensorflow)
 - [XGBoost](/docs/dvclive/user-guide/ml-frameworks/xgboost)
 
-The DVCLive team is happy to extend the integrations as needed. Please check the
-existing
-[issues related to integrations](https://github.com/iterative/dvclive/issues?q=is%3Aissue+is%3Aopen+label%3Aintegrations)
+The DVCLive team is happy to extend the list with more _ML Frameworks_ as
+needed. Please check the
+[existing issues](https://github.com/iterative/dvclive/issues?q=is%3Aissue+is%3Aopen+label%3Aintegrations)
 or create a new issue to start a discussion!

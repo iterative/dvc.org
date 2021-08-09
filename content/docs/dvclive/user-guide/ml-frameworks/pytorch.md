@@ -1,7 +1,7 @@
 # PyTorch
 
-DVCLive allows you to easily add experiment tracking
-capabilities to your Pytorch projects.
+DVCLive allows you to easily add experiment tracking capabilities to your
+Pytorch projects.
 
 ## About PyTorch
 
@@ -13,8 +13,8 @@ features:
 
 ## Usage
 
-To start using the integration you just need to add few modifications to your
-training code in **any** PyTorch project.
+To start using DVCLive you just need to add few modifications to your training
+code in **any** PyTorch project.
 
 You need to add [`dvclive.log()`] calls to each place where you would like to
 log metrics and one single [`dvclive.next_step()`] call to indicate that the
@@ -53,7 +53,7 @@ This will generate the metrics logs and summaries as described in the
 [Quickstart](/docs/dvclive/user-guide/quickstart#outputs).
 
 > 💡Without requiring additional modifications to your training code, you can
-> use the DVCLive - PyTorch integration alongside DVC. See
+> use DVCLive alongside DVC. See
 > [DVCLive with DVC](/doc/dvclive/user-guide/dvclive-with-dvc) for more info.
 
 [`dvclive.log()`]: /doc/dvclive/api-reference/log

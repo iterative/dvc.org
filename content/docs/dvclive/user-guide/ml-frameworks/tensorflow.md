@@ -1,7 +1,7 @@
 # TensorFlow
 
-The DVCLive - TensorFlow integration allows you to easily add experiment
-tracking capabilities to your TensorFlow projects.
+DVCLive allows you to easily add experiment tracking capabilities to your
+TensorFlow projects.
 
 ## About TensorFlow
 
@@ -13,8 +13,8 @@ applications.
 
 ## Usage
 
-To start using the integration you just need to add a few lines to your training
-code in **any** TensorFlow project.
+To start using DVCLive you just need to add a few lines to your training code in
+**any** TensorFlow project.
 
 > 💡 If you prefer the Keras API, check the
 > [DVCLive - Keras](/docs/dvclive/user-guide/ml-frameworks/keras) page.
@@ -53,7 +53,7 @@ This will generate the metrics logs and summaries as described in the
 [Quickstart](/docs/dvclive/user-guide/quickstart#outputs).
 
 > 💡Without requiring additional modifications to your training code, you can
-> use the DVCLive - TensorFlow integration alongside DVC. See
+> use DVCLive alongside DVC. See
 > [DVCLive with DVC](/doc/dvclive/user-guide/dvclive-with-dvc) for more info.
 
 [`dvclive.log()`]: /doc/dvclive/api-reference/log

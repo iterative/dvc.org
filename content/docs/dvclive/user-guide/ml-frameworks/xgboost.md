@@ -1,10 +1,7 @@
 # XGBoost
 
-The DVCLive - XGBoost integration allows you to easily add experiment tracking
-capabilities to your XGBoost projects.
-
-The integration is
-[maintained in the DVCLive repository](https://github.com/iterative/dvclive/blob/master/dvclive/xgb.py)
+DVCLive allows you to easily add experiment tracking capabilities to your
+XGBoost projects.
 
 ## About XGBoost
 
@@ -14,11 +11,12 @@ machine learning algorithms under the Gradient Boosting framework.
 
 ## Usage
 
-To start using the integration you just need to add a few lines to your training
-code in **any** XGBoost project.
+To start using DVCLive you just need to add a few lines to your training code in
+**any** XGBoost project.
 
-You just need to add the `DvcLiveCallback` to the callbacks list passed to the
-`xgboost.train` call:
+You just need to add the
+[`DvcLiveCallback`](<(https://github.com/iterative/dvclive/blob/master/dvclive/xgb.py)>)
+to the callbacks list passed to the `xgboost.train` call:
 
 ```git
 +from dvclive.xgboost import DvcLiveCallback
@@ -38,7 +36,7 @@ This will generate the metrics logs and summaries as described in the
 [Quickstart](/docs/dvclive/user-guide/quickstart#outputs).
 
 > 💡Without requiring additional modifications to your training code, you can
-> use the DVCLive - XGBoost integration alongside DVC. See
+> use DVCLive alongside DVC. See
 > [DVCLive with DVC](/doc/dvclive/user-guide/dvclive-with-dvc) for more info.
 
 ## Parameters

@@ -1,10 +1,7 @@
 # MMCV
 
-The DVCLive - MMCV integration allows you to easily add experiment tracking
-capabilities to your OpenMMlab projects.
-
-The integration is
-[maintained in the DVCLive repository](https://github.com/iterative/dvclive/blob/master/dvclive/mmcv.py)
+DVCLive allows you to easily add experiment tracking capabilities to your
+OpenMMlab projects.
 
 ## About MMCV
 
@@ -14,7 +11,7 @@ computer vision research and supports many research projects part of
 
 ## Usage
 
-To start using the integration you just need to add the following line to your
+To start using the DVCLive you just need to add the following line to your
 config file of **any** OpenMMlab project:
 
 ```git
@@ -28,11 +25,12 @@ log_config = dict(
 )
 ```
 
-This will use the registered `DvcliveLoggerHook` to generate metrics _logs_ and
-_summaries_ during training.
+This will use the registered
+[`DvcliveLoggerHook`](<(https://github.com/iterative/dvclive/blob/master/dvclive/mmcv.py)>)
+to generate metrics _logs_ and _summaries_ during training.
 
 > 💡Without requiring additional modifications to your training code, you can
-> use the DVCLive - MMCV integration alongside DVC. See
+> use DVCLive alongside DVC. See
 > [DVCLive with DVC](/doc/dvclive/user-guide/dvclive-with-dvc) for more info.
 
 ## Parameters

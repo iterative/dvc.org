@@ -1,10 +1,7 @@
 # Keras
 
-The DVCLive - Keras integration allows you to easily add experiment tracking
-capabilities to your Keras projects.
-
-The integration is
-[maintained in the DVCLive repository](https://github.com/iterative/dvclive/blob/master/dvclive/keras.py)
+DVCLive allows you to easily add experiment tracking capabilities to your Keras
+projects.
 
 ## About Keras
 
@@ -14,11 +11,12 @@ management to hyperparameter training to deployment solutions.
 
 ## Usage
 
-To start using the integration you just need to add a few lines to your training
-code in **any** Keras project.
+To start using DVCLive you just need to add a few lines to your training code in
+**any** Keras project.
 
-You just need to add the `DvcLiveCallback` to the callbacks list passed to your
-`model`:
+You just need to add the
+[`DvcLiveCallback`](<(https://github.com/iterative/dvclive/blob/master/dvclive/keras.py)>)
+to the callbacks list passed to your `model`:
 
 ```git
 +from dvclive.keras import DvcLiveCallback
@@ -37,7 +35,7 @@ This will generate the metrics logs and summaries as described in the
 [Quickstart](/docs/dvclive/user-guide/quickstart#outputs).
 
 > 💡Without requiring additional modifications to your training code, you can
-> use the DVCLive - Keras integration alongside DVC. See
+> use DVCLive alongside DVC. See
 > [DVCLive with DVC](/doc/dvclive/user-guide/dvclive-with-dvc) for more info.
 
 ## Parameters
@@ -65,7 +63,7 @@ model.fit(
 
 ## Example repository
 
-You can find a fully working example using the DVCLive - Keras integration in
-the following link:
+You can find a fully working example using the DVCLive and Keras in the
+following link:
 
 https://github.com/iterative/example-ml-frameworks/tree/keras
