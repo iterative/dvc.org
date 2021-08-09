@@ -1,11 +1,11 @@
 ---
-title: Using Experiments to Improve Pre-trained Models
+title: Using Experiments for Transfer Learning
 date: 2021-08-24
 description: |
-There are times it will be easier to take a pretrained model and fine-tune it to work with your data. You can do that with DVC experiments.
+You can work with pretrained models and fine-tune them with DVC experiments.
 descriptionLong: |
-When you're working with a pretrained model and you want to test different fine-tuning values, using DVC experiments can help you do that faster.
-picture: 2021-08-17/pretrained-models.png
+Running experiments to get the best tuning for a model can make it difficult to see which changes led to a better result. That's why we will be using DVC to track changes in the code and the data.
+picture: 2021-08-24/pretrained-models.png
 pictureComment: Using Experiments to Improve Pre-trained Models
 author: milecia_mcgregor
 commentsUrl: https://discuss.dvc.org/t/pretrained-model-experiments/727
@@ -51,13 +51,16 @@ In the `pretrained_model_tuner.py` file, you'll find the code that defines both
 the AlexNet and SqueezeNet models. We start by initializing these models so we
 can get the number of model features and the input size we need for fine-tuning.
 
+_You can find the original code and tutorial over at
+[this post](https://pytorch.org/tutorials/beginner/finetuning_torchvision_models_tutorial.html)._
+
 Since the project has everything we need to initialize the models, we can start
 training and comparing the differences between them with the ants/bees dataset.
 Running experiments to get the best tuning for each model can make it difficult
-to see which changes led to a better result. That's why will be using DVC to
+to see which changes led to a better result. That's why we will be using DVC to
 track changes in the code and the data.
 
-## Add a DVC pipeline
+## Put DVC in place
 
 Before we begin training, let's set up a DVC pipeline. We'll do that by running
 the following command.
@@ -73,7 +76,7 @@ Make sure you set up a
 [virtual environment](https://python.readthedocs.io/en/stable/library/venv.html)
 and install the dependencies with:
 
-```bash
+```dvc
 $ pip install -r requirements.txt
 ```
 
@@ -98,13 +101,19 @@ training.
 We'll add a stage for the training step in this example. To do that, run:
 
 ```dvc
-$ dvc stage add --name train --deps data/hymenoptera_data --deps pretrained_model_tuner.py --metrics-no-cache --params lr,momentum results.json python pretrained_model_tuner.py
+$ dvc stage add --name train \
+ --deps data/hymenoptera_data \
+ --deps pretrained_model_tuner.py \
+ --metrics-no-cache \
+ --params lr,momentum,model_name results.json \
+ python pretrained_model_tuner.py
 ```
 
 Let's break down the different parts of this command.
 
 - `--name` is the title of the stage
-- `--deps` defines the files and directories that a stage needs in order to run
+- `--deps` short for dependencies, defines the files and directories that a
+  stage needs in order to run
 - `--params` defines the hyperparameters for the model
 - `--metrics-no-cache` specifies the metrics file produced by the stage, but DVC
   doesn't track it
