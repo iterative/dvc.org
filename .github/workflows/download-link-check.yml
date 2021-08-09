@@ -1,4 +1,4 @@
-name: Download Link Check
+name: DVC Download Link Check
 
 on:
   deployment_status:
@@ -25,6 +25,6 @@ jobs:
       - name: Create Issue From File
         uses: peter-evans/create-issue-from-file@v3
         with:
-          title: Link Checker Report
+          title: DVC Download Link Checker Report
           content-filepath: ./lychee/out.md
           labels: website, automated issue
