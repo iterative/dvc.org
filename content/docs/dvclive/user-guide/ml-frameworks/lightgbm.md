@@ -14,7 +14,7 @@ To start using DVCLive you just need to add a few lines to your training code in
 **any** LightGBM project.
 
 You just need to add the
-[`DvcLiveCallback`](<(https://github.com/iterative/dvclive/blob/master/dvclive/lgbm.py)>)
+[`DvcLiveCallback`](https://github.com/iterative/dvclive/blob/master/dvclive/lgbm.py)
 to the callbacks list passed to the `lightgbm.train` call:
 
 ```git
