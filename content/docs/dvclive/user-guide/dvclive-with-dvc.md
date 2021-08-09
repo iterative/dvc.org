@@ -110,6 +110,8 @@ being logged during the model training!
 
 ![](/img/dvclive_report.png)
 
+> Note that you should manually refresh the page.
+
 ### Checkpoints
 
 When used alongside DVC, DVCLive can create _checkpoint_ signal files used by
