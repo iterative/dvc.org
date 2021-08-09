@@ -53,6 +53,4 @@ environment variables (when used alongside `DVC`).
 
 - `dvclive.error.DvcLiveError` - If the provided `val` has not supported type.
 
-...
-
 [`dvclive.init()`]: /doc/dvclive/api-reference/init

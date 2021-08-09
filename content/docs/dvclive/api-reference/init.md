@@ -54,7 +54,5 @@ all existing `.tsv` files, `{path}.json` and `{path.html}`.
 
 - `dvclive.error.DvcLiveError` - If the directory `path` can't be created.
 
-...
-
 [`dvclive.log()`]: /doc/dvclive/api-reference/log
 [`dvclive.next_step()`]: /doc/dvclive/api-reference/next_step
