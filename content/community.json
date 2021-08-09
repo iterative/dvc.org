@@ -71,20 +71,44 @@
   ],
   "events": [
     {
-      "url": "https://www.meetup.com/DVC-Community-Virtual-Meetups/events/278729121/",
-      "title": "DVC June Office Hours Meetup",
-      "description": "At this month's Meetup, Community member and Contribuotor, Sami Jawhar, will show experiment use cases with DVC",
+      "url": "https://www.meetup.com/DVC-Community-Virtual-Meetups/events/279446210/",
+      "title": "DVC Learn Meetup - Sharing Experiments",
+      "description": "At this third session of DVC Learn, you will learn how to set up remote storage and share experiments with team members.",
       "city": "Virtual",
-      "date": "2021-06-24",
+      "date": "2021-08-18",
+      "pictureUrl": "/img/community/events/dvc_learn.png"
+    },
+    {
+      "url": "https://www.meetup.com/DVC-Community-Virtual-Meetups/events/279723437/",
+      "title": "DVC August Office Hours Meetup",
+      "description": "At this month's Office Hours, Community member, Antoine Toubhans, presents DVC + Streamlit = ♥",
+      "city": "Virtual",
+      "date": "2021-08-19",
       "pictureUrl": "/img/community/events/office-hours-meetup.png"
     },
     {
-      "url": "https://global.pydata.org/talks/devops-for-science-using-continuous-integration-for-rigorous-and-reproducible-analysis",
-      "title": "PyData Global",
-      "description": "Elle O'Brien presents 'DevOps for science: using continuous integration for rigorous and reproducible analysis'",
+      "url": "https://www.musiccitytech.com/",
+      "title": "Music City Tech Conference",
+      "description": "Milecia McGregor presents *Tuning Hyperparameters in Reproducible Experiments* using grid search and random search with DVC.",
       "city": "Virtual",
-      "date": "2020-11-14",
-      "pictureUrl": "/img/community/events/pydata.png"
+      "date": "2021-09-15",
+      "pictureUrl": "/img/community/events/music_city_tech.png"
+    },
+    {
+      "url": "https://www.dataconla.com/",
+      "title": "DataCon LA Conference",
+      "description": "Milecia McGregor presents *Tuning Hyperparameters in Reproducible Experiments* using grid search and random search with DVC.",
+      "city": "Virtual",
+      "date": "2021-09-17",
+      "pictureUrl": "/img/community/events/datacon_la.png"
+    },
+    {
+      "url": "https://devopsdays.org/events/2021-houston/welcome/",
+      "title": "DevOps Days Houston",
+      "description": "Milecia McGregor presents on *Tuning Hyperparameters in Reproducible Experiments* using grid search and random search with DVC.",
+      "city": "Live",
+      "date": "2021-09-21",
+      "pictureUrl": "/img/community/events/devops_days_Houston.png"
     }
   ],
   "stats": {
