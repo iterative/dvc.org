@@ -10,8 +10,8 @@ jobs:
     name: Initialize
     runs-on: ubuntu-latest
     if:
-      github.event.deployment.ref != 'master' &&
-      github.event.deployment_status.state == 'success'
+      github.event_name == 'schedule' || (github.event.deployment.ref !=
+      'master' && github.event.deployment_status.state == 'success')
     steps:
       - uses: actions/checkout@v2
       - name: Download Link Checker
