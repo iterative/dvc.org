@@ -27,6 +27,9 @@ Thanks for the question @naeljaneLiblikas!
 DVC does not support TOML files for metrics. TOML files are only used for
 parameters.
 
+We do have an [open issue](https://github.com/iterative/dvc/issues/6402) for
+this so you can keep up with any updates.
+
 ### [Q: How can I use object storage as a data source for MLOps with DVC?](https://discord.com/channels/485586884165107732/485596304961962003/866393535296176148)
 
 You have a few options with DVC for this.
@@ -67,6 +70,12 @@ Good question @vgodie!
 It is possible to have overlapping dependencies, but not overlapping outputs.
 Having overlapping outputs introduces uncertainty into DVC commands, like
 `dvc checkout`.
+
+Sometimes people want to have overlapping directory outputs (different stages
+that wrote many different files in the same directory). They might have a series
+of stages that append to the same file. In this case, we suggest creating new
+files and combining them in a final stage so they are consistently written in
+the same order.
 
 ### [Q: How does the CML runner restart workflows if it's been shut down by AWS (e.g. spot instances)?](https://discord.com/channels/485586884165107732/728693131557732403/862641924200857660)
 
@@ -112,7 +121,8 @@ Thanks @sergechuvakin!
 
 https://media.giphy.com/media/l0IycQmt79g9XzOWQ/giphy.gif
 
-At our September Office Hours Meetup we will be do something.
+At our September Office Hours Meetup we will be doing a live demo of running
+experiments to fine-tune an existing model to work on a different dataset.
 [RSVP for the Meetup here](https://www.meetup.com/DVC-Community-Virtual-Meetups/events/279024694/)
 to stay up to date with specifics as we get closer to the event!
 
