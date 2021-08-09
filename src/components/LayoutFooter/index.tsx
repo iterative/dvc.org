@@ -15,7 +15,7 @@ import { ReactComponent as CmlSVG } from '../../../static/img/cml-icon.svg'
 import { ReactComponent as StudioSVG } from '../../../static/img/studio-icon.svg'
 import { ReactComponent as IterativeSVG } from '../../../static/img/iterative-icon.svg'
 
-import styles from './styles.module.css'
+import * as styles from './styles.module.css'
 
 const docsPage = getFirstPage()
 

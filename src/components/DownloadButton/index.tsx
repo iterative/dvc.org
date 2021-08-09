@@ -7,7 +7,7 @@ import Link from '../Link'
 import isClient from '../../utils/front/isClient'
 import { logEvent } from '../../utils/front/ga'
 
-import styles from './styles.module.css'
+import * as styles from './styles.module.css'
 
 const DVC_PUBLIC_S3_LINK =
   'https://s3-us-east-2.amazonaws.com/dvc-public/dvc-pkgs'
@@ -81,43 +81,41 @@ const getUserOS = (): OS => {
   return OSName
 }
 
-const DownloadButtonDropdownItems: React.FC<IDownloadButtonDropdownItemsProps> = ({
-  onClick,
-  userOS
-}) => {
-  return (
-    <div className={styles.links}>
-      {dropdownItems.map((os, index) => {
-        if (os === null) {
+const DownloadButtonDropdownItems: React.FC<IDownloadButtonDropdownItemsProps> =
+  ({ onClick, userOS }) => {
+    return (
+      <div className={styles.links}>
+        {dropdownItems.map((os, index) => {
+          if (os === null) {
+            return (
+              <div
+                className={styles.dropdownDelimiter}
+                key={`delimiter-${index}`}
+              />
+            )
+          }
+
+          const item = itemsByOs[os]
+
           return (
-            <div
-              className={styles.dropdownDelimiter}
-              key={`delimiter-${index}`}
-            />
+            <Link
+              download={item.download}
+              key={os}
+              className={cn(
+                styles.dropdownItem,
+                os === userOS && styles.active,
+                'link-with-focus'
+              )}
+              href={item.url}
+              onClick={(): void => onClick(os)}
+            >
+              {item.title}
+            </Link>
           )
-        }
-
-        const item = itemsByOs[os]
-
-        return (
-          <Link
-            download={item.download}
-            key={os}
-            className={cn(
-              styles.dropdownItem,
-              os === userOS && styles.active,
-              'link-with-focus'
-            )}
-            href={item.url}
-            onClick={(): void => onClick(os)}
-          >
-            {item.title}
-          </Link>
-        )
-      })}
-    </div>
-  )
-}
+        })}
+      </div>
+    )
+  }
 
 const DownloadButton: React.FC<IDownloadButtonProps> = ({ openTop }) => {
   const userOS = useRef(getUserOS())

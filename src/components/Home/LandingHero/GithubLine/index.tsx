@@ -2,7 +2,7 @@ import React from 'react'
 import Link from '../../../Link'
 import useStars from '../../../../gatsby/hooks/stars'
 
-import styles from './styles.module.css'
+import * as styles from './styles.module.css'
 
 const GithubLine: React.FC = () => {
   const stars = useStars()

@@ -9,7 +9,7 @@ import GithubLine from './GithubLine'
 import { scrollIntoLayout, ease } from '../../../utils/front/scroll'
 import { logEvent } from '../../../utils/front/ga'
 
-import styles from './styles.module.css'
+import * as styles from './styles.module.css'
 
 interface ILandingHeroProps {
   scrollToRef: React.RefObject<HTMLElement>

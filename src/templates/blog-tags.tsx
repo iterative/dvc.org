@@ -46,7 +46,7 @@ const BlogTagsPage: React.FC<IBlogTagsPageData> = ({
 export default BlogTagsPage
 
 export const pageQuery = graphql`
-  query($tag: String, $skip: Int, $limit: Int) {
+  query ($tag: String, $skip: Int, $limit: Int) {
     posts: allBlogPost(
       sort: { fields: [date], order: DESC }
       filter: { tags: { in: [$tag] } }

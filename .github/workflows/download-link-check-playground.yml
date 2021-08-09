@@ -1,0 +1,19 @@
+# - name: Create Report for Broken Links
+#   run: echo "create issue here"
+# - name: Create SUCCESSFUL_LINK_AMOUNT env
+#   run: |
+#     echo "$(cat /tmp/lychee/out.md)"
+#     echo text=$(grep Successful /tmp/lychee/out.md)
+#     echo amount="${text//[^0-9]/}"
+#     echo SUCCESSFUL_LINK_AMOUNT=$amount >> $GITHUB_ENV
+# - if: ${{ env.SUCCESSFUL_LINK_AMOUNT != '4' }}
+#   # name: Create Issue From File
+#   # uses: peter-evans/create-issue-from-file@v3
+#   # with:
+#   #   title: Link Checker Report
+#   #   content-filepath: ./lychee/out.md
+#   #   labels: website, automated issue
+#   name: Create Report for Missing Links
+#   run: echo "create issue here"
+# '${{ github.event.deployment.payload.web_url ||
+#             'https://dvc.org/' }}'

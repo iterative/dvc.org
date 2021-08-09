@@ -5,7 +5,7 @@ import CollapsibleText from './CollapsibleText'
 import LayoutWidthContainer from '../../LayoutWidthContainer'
 import ShowOnly from '../../ShowOnly'
 
-import styles from './styles.module.css'
+import * as styles from './styles.module.css'
 
 const Heading1: React.FC = () => (
   <div className={styles.caseHeader}>
@@ -86,15 +86,15 @@ const UseCases: React.ForwardRefRenderFunction<HTMLElement> = (_, ref) => {
           <div className={styles.rightColumn}>
             <ShowOnly on="desktop">
               <div className={styles.cases}>
-                <div className={styles.case}>
+                <div className={styles.useCase}>
                   <Heading1 />
                   <Description1 />
                 </div>
-                <div className={styles.case}>
+                <div className={styles.useCase}>
                   <Heading2 />
                   <Description2 />
                 </div>
-                <div className={styles.case}>
+                <div className={styles.useCase}>
                   <Heading3 />
                   <Description3 />
                 </div>
@@ -102,18 +102,18 @@ const UseCases: React.ForwardRefRenderFunction<HTMLElement> = (_, ref) => {
             </ShowOnly>
 
             <ShowOnly on="mobile">
-              <div className={styles.cases}>
+              <div className={styles.useCase}>
                 <div className={styles.case}>
                   <CollapsibleText header={<Heading1 />}>
                     <Description1 />
                   </CollapsibleText>
                 </div>
-                <div className={styles.case}>
+                <div className={styles.useCase}>
                   <CollapsibleText header={<Heading2 />}>
                     <Description2 />
                   </CollapsibleText>
                 </div>
-                <div className={styles.case}>
+                <div className={styles.useCase}>
                   <CollapsibleText header={<Heading3 />}>
                     <Description3 />
                   </CollapsibleText>

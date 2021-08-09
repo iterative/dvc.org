@@ -5,7 +5,7 @@ import LayoutHeader from '../LayoutHeader'
 import LayoutFooter from '../LayoutFooter'
 import { handleFirstTab } from '../../utils/front/accessibility'
 
-import styles from './styles.module.css'
+import * as styles from './styles.module.css'
 
 export enum LayoutModifiers {
   Wide,

@@ -6,7 +6,7 @@ import Main from './Main'
 import Link from '../../Link'
 import Tooltip from './Tooltip'
 
-import styles from './styles.module.css'
+import * as styles from './styles.module.css'
 
 const Details: React.FC<{
   children: Array<{ props: { children: ReactNode } } | string>
@@ -34,7 +34,7 @@ const Details: React.FC<{
    */
   return (
     <Collapsible
-      trigger={(triggerChildren as unknown) as ReactElement}
+      trigger={triggerChildren as unknown as ReactElement}
       transitionTime={200}
     >
       {filteredChildren.slice(1)}

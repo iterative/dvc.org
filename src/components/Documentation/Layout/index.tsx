@@ -8,7 +8,7 @@ import SearchForm from './SearchForm'
 import SidebarMenu from './SidebarMenu'
 import { matchMedia } from '../../../utils/front/breakpoints'
 
-import styles from './styles.module.css'
+import * as styles from './styles.module.css'
 
 const Layout: LayoutComponent = ({ children, ...restProps }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)

@@ -7,7 +7,7 @@ import cn from 'classnames'
 import Paginator, { IPaginatorPageInfo } from '../../Paginator'
 import Item, { IBlogPostData } from './Item'
 
-import styles from './styles.module.css'
+import * as styles from './styles.module.css'
 
 export interface IBlogFeedPostList {
   nodes: Array<IBlogPostData>

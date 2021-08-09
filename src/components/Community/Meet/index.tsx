@@ -16,8 +16,8 @@ import {
 } from '../../../utils/front/api'
 
 import { useCommunityData } from '../../../utils/front/community'
-import sharedStyles from '../styles.module.css'
-import styles from './styles.module.css'
+import * as sharedStyles from '../styles.module.css'
+import * as styles from './styles.module.css'
 
 const logIssueAll = (): void => logEvent('community', 'issue', 'all')
 const logTopicAll = (): void => logEvent('community', 'topic', 'all')
@@ -30,9 +30,10 @@ const Topic: React.FC<{ color: string } & IDiscussTopic> = ({
   comments,
   color
 }) => {
-  const logTopic = useCallback(() => logEvent('community', 'forum', title), [
-    title
-  ])
+  const logTopic = useCallback(
+    () => logEvent('community', 'forum', title),
+    [title]
+  )
 
   return (
     <div className={sharedStyles.line}>
@@ -67,9 +68,10 @@ const Issue: React.FC<{ color: string } & IGithubIssue> = ({
   comments,
   color
 }) => {
-  const logIssue = useCallback(() => logEvent('community', 'issue', title), [
-    title
-  ])
+  const logIssue = useCallback(
+    () => logEvent('community', 'issue', title),
+    [title]
+  )
 
   return (
     <div className={sharedStyles.line}>

@@ -1,15 +1,15 @@
-import Image, { FixedObject } from 'gatsby-image'
+import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image'
 import React from 'react'
 
 import Link from '../../Link'
 import { pluralizeComments } from '../../../utils/front/i18n'
 
-import styles from './styles.module.css'
+import * as styles from './styles.module.css'
 import SocialIcon, { ISocialIcon } from '../../SocialIcon'
 
 interface IBlogFeedMetaProps {
   avatar: {
-    fixed: FixedObject
+    gatsbyImageData: IGatsbyImageData
   }
   commentsUrl?: string
   commentsCount?: number
@@ -30,7 +30,11 @@ const FeedMeta: React.FC<IBlogFeedMetaProps> = ({
 }) => {
   return (
     <div className={styles.wrapper}>
-      <Image fixed={avatar.fixed} className={styles.avatar} />
+      <GatsbyImage
+        alt=""
+        image={avatar.gatsbyImageData}
+        className={styles.avatar}
+      />
       <ul className={styles.list}>
         <li className={styles.segment}>{name}</li>
         {links && (

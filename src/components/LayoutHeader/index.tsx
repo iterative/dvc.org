@@ -14,7 +14,7 @@ import {
 
 import { useHeaderIsScrolled } from '../../utils/front/scroll'
 import { ReactComponent as LogoSVG } from '../../../static/img/logo.svg'
-import styles from './styles.module.css'
+import * as styles from './styles.module.css'
 
 import LayoutAlert from './alert'
 

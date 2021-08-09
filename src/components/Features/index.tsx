@@ -6,7 +6,7 @@ import HeroSection from '../HeroSection'
 import Link from '../Link'
 import PromoSection from '../PromoSection'
 
-import styles from './styles.module.css'
+import * as styles from './styles.module.css'
 
 const FeaturesPage: React.FC = () => (
   <>
