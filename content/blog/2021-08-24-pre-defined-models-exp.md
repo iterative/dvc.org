@@ -346,6 +346,9 @@ Then you'll be able to make a decision on which way to go with your fine-tuning
 efforts and make a decision on which model works best for your project. In this
 case, it seems like SqueezeNet might be the winner!
 
+You can take all of the DVC setup and apply this to your own custom fine-tuning
+use case.
+
 ## Conclusion
 
 When you're working with pretrained models, it can be hard to fine-tune them to
