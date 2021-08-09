@@ -99,6 +99,8 @@ DVCLive, allowing to
 [compare and visualize](/docs/studio/user-guide/visualize-experiments)
 experiments using DVCLive in DVC Studio.
 
+![](/img/dvclive-studio-plots.png)
+
 ### HTML report
 
 In addition to the
