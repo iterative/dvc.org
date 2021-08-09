@@ -194,6 +194,12 @@ $ dvc stage add ... \
 
 While running the experiment, you also need to specify the parameters file name.
 
+## Parameters
+
+Before running an experiment, you'll probably want to make modifications such as
+data and code updates, or <abbr>hyperparameter</abbr> tuning. For the latter,
+you can use the `--set-param` (`-S`) option of this command to change
+`dvc param` values on-the fly.
 
 ### Setting Multiple Parameters for Experiments
 
@@ -311,7 +317,7 @@ the experiment. This is shown when you use `--queue` option, e.g.,
 ```dvc
 $ dvc exp run --queue -S model.conv_units=32
 Queued experiment '6518f17' for future execution.
-````
+```
 
 After _running_ the experiment, DVC uses another auto-generated name to refer to
 the experiment. Typically these start with `exp-`, and can be set via
@@ -349,3 +355,4 @@ When an experiment is not run yet, only the former hash value is shown.
 You can refer to the experiment in `dvc exp apply` or `dvc exp branch` after
 running the experiment with the name starting with `exp-`, or the name you have
 supplied with `dvc exp run --name`.
+````
