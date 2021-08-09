@@ -238,16 +238,58 @@ $ git diff params.yaml
 
 ## The Experiments Queue
 
-The `--queue` option lets you create an experiment as usual, except that nothing
-is actually run. Instead, the experiment is put in a wait-list for later
-execution. `dvc exp show` will mark queued experiments with an asterisk `*`.
+The `--queue` flag in `dvc exp run` invocation tells to create an experiment in the experiment queue. When you add an experiment to the queue
+nothing is actually run. Instead, the experiment is put in a wait-list for
+later execution. `dvc exp show` will mark queued experiments with an asterisk
+`*`.
+
+```dvc
+$ dvc exp run --queue -S units=10
+Queued experiment '1cac8ca' for future execution.
+$ dvc exp run --queue -S units=64
+Queued experiment '23660bb' for future execution.
+$ dvc exp run --queue -S units=128
+Queued experiment '3591a5c' for future execution.
+$ dvc exp run --queue -S units=256
+Queued experiment '4109ead' for future execution.
+```
+
+Each experiment in the queue is derived from the workspace at the time of `dvc exp run --queue` command. If you make changes in the workspace after `dvc exp run --queue` command, they are not reflected to the experiments.
+
+To prevent the side effects, queued experiments are run in temporary directories under `.dvc/tmp/exps`. Please see [Git and Experiments](#git-and-experiments) section for details.
+
+
+Experiments in the queue are run by specifying `--run-all` flag.
+
+```dvc
+$ dvc exp run --run-all
+...
+```
+
+`--run-all` runs all the experiments in the queue one-by-one. The order of execution is independent of their creation order, and can be considered random in effect.
+
+
+To execute the experiments in parallel, please see the next section.
+
+### Running Experiments in Parallel
+
+DVC allows to run the experiments in parallel by specifying the number of experiment processes:
+
+```dvc
+$ dvc exp run --run-all --jobs 4
+```
+
+Each experiment is run _serially_ its own temporary directory. This means if there are common stages across these experiments that need to be run, each experiment runs those separately. For example, for a pipeline composed of the stages `A -> B -> C`, if `dvc exp run --queue -S param=value1` invalidates stage `A`, all the pipeline is run in all experiments.
+
+
+⚠️ Parallel runs are experimental and may be unstable at this time. ⚠️ Make sure
+you're using a number of jobs that your environment can handle (no more than the
+CPU cores).
+
+
 
 > Note that queuing an experiment that uses checkpoints implies `--reset`,
 > unless a `--rev` is provided (refer to the previous section).
-
-Use `dvc exp run --run-all` to process the queue. This is done outside your
-<abbr>workspace</abbr> (in temporary dirs in `.dvc/tmp/exps`) to preserve any
-changes between/after queueing runs.
 
 💡 You can also run a single experiment outside the workspace with
 `dvc exp run --temp`, for example to continue working on the project meanwhile
@@ -267,21 +309,6 @@ A custom [Git stash](https://www.git-scm.com/docs/git-stash) is used to queue
 pre-experiment commits.
 
 </details>
-
-Adding `-j` (`--jobs`), experiment queues can be run in parallel for better
-performance (creates a tmp dir for each job).
-
-⚠️ Parallel runs are experimental and may be unstable at this time. ⚠️ Make sure
-you're using a number of jobs that your environment can handle (no more than the
-CPU cores).
-
-> Note that each job runs the entire pipeline (or `targets`) serially. DVC makes
-> no attempt to distribute stage commands among jobs. The order in which they
-> were queued is also not preserved when running them.
-
-### Adding Experiments to the Queue
-
-### Running Experiments in Parallel
 
 ### Cleaning Up the Experiment Queue
 
@@ -386,4 +413,7 @@ When an experiment is not run yet, only the former hash value is shown.
 You can refer to the experiment in `dvc exp apply` or `dvc exp branch` after
 running the experiment with the name starting with `exp-`, or the name you have
 supplied with `dvc exp run --name`.
-````
+
+```
+
+```
