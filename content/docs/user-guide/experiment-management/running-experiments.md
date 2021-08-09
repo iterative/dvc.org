@@ -161,7 +161,7 @@ $ dvc stage add -n train \
 ```
 
 > ⚠️ The parameters specified in the params file are supposed to be read by the
-> code and used in to modify the models and other attributes of the project. DVC
+> code and used to modify the models and other attributes of the project. DVC
 > does not (and cannot) check whether the parameters are actually used in the
 > project. It only tracks their updates in a granular and language-independent
 > way.
@@ -172,7 +172,7 @@ DVC allows to update the parameters from the command line when you are running
 the experiments. The `--set-param` (`-S`) option takes a parameter name and a
 value to update the file.
 
-````dvc
+```dvc
 $ dvc exp run --set-param model.learning_rate=0.0002
 ```
 
