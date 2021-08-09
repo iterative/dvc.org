@@ -89,7 +89,7 @@
     {
       "url": "https://www.musiccitytech.com/",
       "title": "Music City Tech Conference",
-      "description": "Milecia McGregor presents *Tuning Hyperparameters in Reproducible Experiments* using grid search and random search with DVC.",
+      "description": "Milecia McGregor presents Tuning Hyperparameters in Reproducible Experiments using grid search and random search with DVC.",
       "city": "Virtual",
       "date": "2021-09-15",
       "pictureUrl": "/img/community/events/music_city_tech.png"
@@ -97,7 +97,7 @@
     {
       "url": "https://www.dataconla.com/",
       "title": "DataCon LA Conference",
-      "description": "Milecia McGregor presents *Tuning Hyperparameters in Reproducible Experiments* using grid search and random search with DVC.",
+      "description": "Milecia McGregor presents Tuning Hyperparameters in Reproducible Experiments using grid search and random search with DVC.",
       "city": "Virtual",
       "date": "2021-09-17",
       "pictureUrl": "/img/community/events/datacon_la.png"
@@ -105,7 +105,7 @@
     {
       "url": "https://devopsdays.org/events/2021-houston/welcome/",
       "title": "DevOps Days Houston",
-      "description": "Milecia McGregor presents on *Tuning Hyperparameters in Reproducible Experiments* using grid search and random search with DVC.",
+      "description": "Milecia McGregor presents on Tuning Hyperparameters in Reproducible Experiments using grid search and random search with DVC.",
       "city": "Live",
       "date": "2021-09-21",
       "pictureUrl": "/img/community/events/devops_days_Houston.png"
