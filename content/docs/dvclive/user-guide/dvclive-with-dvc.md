@@ -89,7 +89,8 @@ dvc.yaml  training_metrics.html  train.py
 The `.tsv` files generated under `training_metrics` can be visualized with
 `dvc plots`.
 
-In addition, `training_metrics.json` can be used by `dvc metrics`.
+In addition, `training_metrics.json` can be used by `dvc metrics` and visualized
+with `dvc exp show`/`dvc exp diff`.
 
 ### DVC Studio
 
