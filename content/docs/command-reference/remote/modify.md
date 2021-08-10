@@ -481,6 +481,12 @@ $ export AZURE_PASSWORD='mysecret'
 > [env vars](https://docs.microsoft.com/en-us/python/api/azure-identity/azure.identity.environmentcredential)
 > available.
 
+Also some options can be propagated from the azure config file (which is managed
+through
+[az config](https://docs.microsoft.com/en-us/cli/azure/config?view=azure-cli-latest)).
+The default directory where the config will be searched is `~/.azure` but it can
+be customized through `AZURE_CONFIG_DIR` variable.
+
 </details>
 
 <details>
