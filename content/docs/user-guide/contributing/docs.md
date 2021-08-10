@@ -79,7 +79,6 @@ project dependencies with Yarn:
 $ yarn
 ```
 
-
 You may need to resolve dependencies at this point by running:
 
 ```dvc
