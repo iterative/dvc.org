@@ -59,6 +59,15 @@ formatted and linted as well, which is also ensured by the full setup below.
 Make sure you have a recent LTS version of [Node.js](https://nodejs.org/en/)
 (`>=12.0.0`, `<=15.x`), and install [Yarn](https://yarnpkg.com/):
 
+> In Windows, you may need to install [Python], [Visual Studio Build Tools], and
+> [Windows SDK] additionally for dependencies.
+
+[windows sdk]:
+  https://developer.microsoft.com/en-us/windows/downloads/windows-10-sdk/
+[visual studio build tools]:
+  https://visualstudio.microsoft.com/downloads/#build-tools-for-visual-studio-2019
+[python]: https://www.python.org/downloads/
+
 ```dvc
 $ npm install -g yarn
 ```
@@ -70,14 +79,6 @@ project dependencies with Yarn:
 $ yarn
 ```
 
-> In Windows, you may need to install [Python], [Visual Studio Build Tools], and
-> [Windows SDK] beforehand for dependencies.
-
-[windows sdk]:
-  https://developer.microsoft.com/en-us/windows/downloads/windows-10-sdk/
-[visual studio build tools]:
-  https://visualstudio.microsoft.com/downloads/#build-tools-for-visual-studio-2019
-[python]: https://www.python.org/downloads/
 
 You may need to resolve dependencies at this point by running:
 
