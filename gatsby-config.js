@@ -5,6 +5,7 @@ const path = require('path')
 
 require('./config/prismjs/dvc')
 require('./config/prismjs/usage')
+require('./config/prismjs/dvctable')
 
 const apiMiddleware = require('./src/server/middleware/api')
 const redirectsMiddleware = require('./src/server/middleware/redirects')
@@ -47,6 +48,13 @@ const plugins = [
     options: {
       name: 'images',
       path: path.join(__dirname, 'static', 'uploads')
+    }
+  },
+  {
+    resolve: 'gatsby-source-filesystem',
+    options: {
+      name: 'img',
+      path: path.join(__dirname, 'static')
     }
   },
   'community-page',
@@ -115,7 +123,12 @@ const plugins = [
   },
   'gatsby-transformer-sharp',
   'gatsby-plugin-sharp',
-  'gatsby-plugin-catch-links',
+  {
+    resolve: 'gatsby-plugin-catch-links',
+    options: {
+      excludePattern: /\/doc\/cml/
+    }
+  },
   {
     resolve: 'gatsby-plugin-manifest',
     options: {

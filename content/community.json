@@ -71,44 +71,44 @@
   ],
   "events": [
     {
-      "url": "https://www.meetup.com/DVC-Community-Virtual-Meetups/events/279153207/",
-      "title": "DVC Learn - Getting Started with Data Version Control",
-      "description": "New to DVC or kicking the tires?  Bring your questions; this Meetup is for you!",
+      "url": "https://www.meetup.com/DVC-Community-Virtual-Meetups/events/279446210/",
+      "title": "DVC Learn Meetup - Sharing Experiments",
+      "description": "At this third session of DVC Learn, you will learn how to set up remote storage and share experiments with team members.",
       "city": "Virtual",
-      "date": "2021-07-14",
+      "date": "2021-08-18",
       "pictureUrl": "/img/community/events/dvc_learn.png"
     },
     {
-      "url": "https://hasgeek.com/fifthelephant/mlops-conference/schedule",
-      "title": "HasGeek",
-      "description": "Milecia McGregor presents at HasGeek Conference from Fifth Elephant on Tuning Hyperparameters with DVC Experiments",
-      "city": "Virtual, Miami, FL",
-      "date": "2021-07-23",
-      "pictureUrl": "/img/community/events/hasgeek.png"
-    },
-    {
-      "url": "https://www.datasciencego.com/virtual",
-      "title": "Jervis Hui presents Top 3 Requirements for Effective MLOps",
-      "description": "On day two of this three day Conference, Jervis Hui presents on must haves for effective productionalization of Data Science Projects",
+      "url": "https://www.meetup.com/DVC-Community-Virtual-Meetups/events/279723437/",
+      "title": "DVC August Office Hours Meetup",
+      "description": "At this month's Office Hours, Community member, Antoine Toubhans, presents DVC + Streamlit = ♥",
       "city": "Virtual",
-      "date": "2021-07-24",
-      "pictureUrl": "/img/community/events/dsgo.png"
-    },
-    {
-      "url": "https://www.meetup.com/DVC-Community-Virtual-Meetups/events/279024694/?isFirstPublish=true",
-      "title": "DVC July Office Hours Meetup",
-      "description": "For our R loving community members, João Santiago introduces 'dvcru' and DVC Studio demo, discussion and feedback",
-      "city": "Virtual",
-      "date": "2021-07-28",
+      "date": "2021-08-19",
       "pictureUrl": "/img/community/events/office-hours-meetup.png"
     },
     {
-      "url": "https://www.igniteinnovationfl.com/",
-      "title": "Ignite Innovation Developer Conference",
-      "description": "Milecia McGregor will present on Using Reproducible Experiments To Create Better Machine Learning Models",
+      "url": "https://www.musiccitytech.com/",
+      "title": "Music City Tech Conference",
+      "description": "Milecia McGregor presents Tuning Hyperparameters in Reproducible Experiments using grid search and random search with DVC.",
       "city": "Virtual",
-      "date": "2021-08-06",
-      "pictureUrl": "/img/community/events/ignite-innovation.png"
+      "date": "2021-09-15",
+      "pictureUrl": "/img/community/events/music_city_tech.png"
+    },
+    {
+      "url": "https://www.dataconla.com/",
+      "title": "DataCon LA Conference",
+      "description": "Milecia McGregor presents Tuning Hyperparameters in Reproducible Experiments using grid search and random search with DVC.",
+      "city": "Virtual",
+      "date": "2021-09-17",
+      "pictureUrl": "/img/community/events/datacon_la.png"
+    },
+    {
+      "url": "https://devopsdays.org/events/2021-houston/welcome/",
+      "title": "DevOps Days Houston",
+      "description": "Milecia McGregor presents on Tuning Hyperparameters in Reproducible Experiments using grid search and random search with DVC.",
+      "city": "Live",
+      "date": "2021-09-21",
+      "pictureUrl": "/img/community/events/devops_days_Houston.png"
     }
   ],
   "stats": {
