@@ -308,7 +308,20 @@ CPU cores).
 If you want to isolate the experiments in their own directory, you can do so by
 `--temp` flag. This allows to continue your work while running the experiment.
 
-- [ ] Example for temp
+```dvc
+$ nohup dvc exp run --temp &
+[1] 30473
+nohup: ignoring input and appending output to 'nohup.out'
+```
+
+The command checks out all DVC-tracked files and Git-tracked files into a
+temporary directory under `.dvc/tmp/exps/` and runs the experiment there. It
+creates a `nohup.log` file in the project directory. If you want to specify the
+output filename, you can use redirection. 
+
+```dvc
+$ nohup dvc exp run --temp > my-experiment-$(date +"%F-%H-%M-%S").log
+```
 
 > ⚠️ Note that only tracked files and directories will be included in
 > `--queue/temp` experiments. To include untracked files, stage them with
@@ -382,8 +395,11 @@ in the general case.
 > discuss adding checkpoints to the code manually.
 
 If you are writing the project in Python, the easiest way to signal DVC to
-capture the checkpoint is to use `dvc.api.make_checkpoint()` function. The
-function
+capture the checkpoint is to use `dvc.api.make_checkpoint()` function. It
+creates a checkpoint and records all artifacts changed after the previous
+checkpoint as another experiment. 
+
+
 
 Then, use the `dvc.api.make_checkpoint()` function (Python code), or write a
 signal file (any programming language) following the same steps as that
