@@ -317,7 +317,7 @@ nohup: ignoring input and appending output to 'nohup.out'
 The command checks out all DVC-tracked files and Git-tracked files into a
 temporary directory under `.dvc/tmp/exps/` and runs the experiment there. It
 creates a `nohup.log` file in the project directory. If you want to specify the
-output filename, you can use redirection. 
+output filename, you can use redirection.
 
 ```dvc
 $ nohup dvc exp run --temp > my-experiment-$(date +"%F-%H-%M-%S").log
@@ -398,15 +398,15 @@ code and stores each successive checkpoint.
 If you are writing the project in Python, the easiest way to signal DVC to
 capture the checkpoint is to use `dvc.api.make_checkpoint()` function. It
 creates a checkpoint and records all artifacts changed after the previous
-checkpoint as another experiment. 
+checkpoint as another experiment.
 
 The following snippet shows an example that uses a Keras custom callback class.
-The callback signals DVC to create a checkpoint at the end of each checkpoint. 
+The callback signals DVC to create a checkpoint at the end of each checkpoint.
 
 ```python
 class DVCCheckpointsCallback(tf.keras.callbacks.Callback):
     def on_epoch_end(self, epoch, logs=None):
-            
+
             dvc.api.make_checkpoint()
 ...
 
@@ -416,7 +416,7 @@ history = model.fit(
         )
 ```
 
-A similar approach can be taken in PyTorch when using a loop to train a model: 
+A similar approach can be taken in PyTorch when using a loop to train a model:
 
 ```python
    for epoch in range(1, EPOCHS+1):
@@ -432,7 +432,7 @@ A similar approach can be taken in PyTorch when using a loop to train a model:
 
 So, even if you're not using one of these libraries, you can use checkpoints in
 your project at each epoch/step by first recording all intermediate artifacts
-and metrics, then calling `dvc.api.make_checkpoint()`. 
+and metrics, then calling `dvc.api.make_checkpoint()`.
 
 #### Adding Checkpoints to Non-Python Code
 
@@ -443,13 +443,13 @@ and waits DVC to delete it.
 
 - [ ] Write an R example here
 
-The following Julia snippet creates a signal file to create a checkpoint. 
+The following Julia snippet creates a signal file to create a checkpoint.
 
 ```julia
 
 dvc_root =  get(ENV, "DVC_ROOT", "")
 
-if dvc_root != "" 
+if dvc_root != ""
    signal_file_path = joinpath(dvc_root, ".dvc", "tmp", "DVC_CHECKPOINT")
    open(signal_file_path, "w") do io
            write(io, "")
@@ -462,7 +462,7 @@ if dvc_root != ""
 ### Running the Experiments with Checkpoints
 
 Running the experiments with checkpoints is no different than running the
-experiments pipeline. 
+experiments pipeline.
 
 ```dvc
 $ dvc exp run -S param=value
@@ -495,7 +495,6 @@ Instead of a single commit, checkpoint experiments have multiple commits under
 the custom Git reference (in `.git/refs/exps`), similar to a branch.
 
 </details>
-
 
 ## Git and Experiments
 
