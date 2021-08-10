@@ -107,12 +107,12 @@ The resulting cache dir looks like this:
 
 ```dvc
 .dvc/cache/
-├── 19
-│   └── 6a322c107c2572335158503c64bfba.dir
-├── d4
-│   └── 1d8cd98f00b204e9800998ecf8427e
-└── 20
-    └── 0b40427ee0998e9802335d98f08cd98f
+├── 40
+│   └── 2e97968614f583ece3b35555971f64
+├── 6f
+│   └── db5336fce0dbfd669f83065f107551.dir
+└── de
+    └── 7371b0119f4f75f9de703c7c3bac16
 ```
 
 The files in the directory are cached normally. The directory itself gets a
@@ -120,9 +120,9 @@ similar entry, which with the `.dir` extension. It contains the mapping of files
 inside (as a JSON array), identified by their hash values:
 
 ```dvc
-$ cat .dvc/cache/19/6a322c107c2572335158503c64bfba.dir
-[{"md5": "200b40427ee0998e9802335d98f08cd98f", "relpath": "cat.jpeg"},
-{"md5": "d41d8cd98f00b204e9800998ecf8427e", "relpath": "index.jpeg"}]
+$ cat .dvc/cache/6f/db5336fce0dbfd669f83065f107551.dir
+[{"md5": "de7371b0119f4f75f9de703c7c3bac16", "relpath": "cat.jpeg"},
+{"md5": "402e97968614f583ece3b35555971f64", "relpath": "index.jpeg"}]
 ```
 
 That's how DVC knows that the other two cached files belong in the directory.

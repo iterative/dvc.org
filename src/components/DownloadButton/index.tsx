@@ -27,22 +27,22 @@ const itemsByOs = {
   },
   [OS.OSX]: {
     title: 'macOS',
-    url: `/osxpkg/dvc-${VERSION}.pkg`,
+    url: `/download/osx/dvc-${VERSION}`,
     download: true
   },
   [OS.WINDOWS]: {
     title: 'Windows',
-    url: `/exe/dvc-${VERSION}.exe`,
+    url: `/download/win/dvc-${VERSION}`,
     download: true
   },
   [OS.LINUX]: {
     title: 'Linux Deb',
-    url: `/deb/pool/stable/d/dv/dvc_${VERSION}_amd64.deb`,
+    url: `/download/linux-deb/dvc-${VERSION}`,
     download: true
   },
   [OS.LINUX_RPM]: {
     title: 'Linux RPM',
-    url: `/rpm/dvc-${VERSION}-1.x86_64.rpm`,
+    url: `/download/linux-rpm/dvc-${VERSION}`,
     download: true
   }
 }
@@ -106,6 +106,7 @@ const DownloadButtonDropdownItems: React.FC<IDownloadButtonDropdownItemsProps> =
               'link-with-focus'
             )}
             href={item.url}
+            optOutPreRedirect={true}
             onClick={(): void => onClick(os)}
           >
             {item.title}
@@ -173,14 +174,18 @@ const DownloadButton: React.FC<IDownloadButtonProps> = ({ openTop }) => {
       >
         <img className={styles.triangle} src="/img/triangle.svg" alt="" />
       </TwoRowsButton>
-      {isOpened && (
-        <div className={cn(styles.dropdown, openTop && styles.openTop)}>
-          <DownloadButtonDropdownItems
-            onClick={download}
-            userOS={userOS.current}
-          />
-        </div>
-      )}
+      <div
+        className={cn(
+          styles.dropdown,
+          isOpened && styles.open,
+          openTop && styles.openTop
+        )}
+      >
+        <DownloadButtonDropdownItems
+          onClick={download}
+          userOS={userOS.current}
+        />
+      </div>
     </span>
   )
 }

@@ -25,8 +25,8 @@ dvclive.init()
 It's usage is optional and focused on configuring the behavior of subsequent
 calls to [`dvclive.log()`] and [`dvclive.next_step()`].
 
-⚠️ If `path` already exists when this functions is called, it's contents will be
-removed.
+⚠️ If `path` already exists when this functions is called, a cleanup will remove
+all existing `.tsv` files, `{path}.json` and `{path.html}`.
 
 ## Parameters
 
@@ -53,8 +53,6 @@ removed.
 ## Exceptions
 
 - `dvclive.error.DvcLiveError` - If the directory `path` can't be created.
-
-...
 
 [`dvclive.log()`]: /doc/dvclive/api-reference/log
 [`dvclive.next_step()`]: /doc/dvclive/api-reference/next_step
