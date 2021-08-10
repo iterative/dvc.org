@@ -176,15 +176,20 @@ value to update the file.
 $ dvc exp run --set-param model.learning_rate=0.0002
 ```
 
-The command updates the parameter in `params.yaml` and runs the pipeline that depend on this parameter value.
+The command updates the parameter in `params.yaml` and runs the pipeline that
+depend on this parameter value.
 
-It also attaches these parameter values to the experiments, so that you can review the experiments along with their parameters with `dvc exp show` and `dvc exp diff`.
+It also attaches these parameter values to the experiments, so that you can
+review the experiments along with their parameters with `dvc exp show` and
+`dvc exp diff`.
 
 ### Using a non-default parameter file
 
-When you have a parameter value named _other than_ `params.yaml`, you need to specify its name in both stage description, and `dvc exp run`.
+When you have a parameter value named _other than_ `params.yaml`, you need to
+specify its name in both stage description, and `dvc exp run`.
 
-DVC allows to use multiple parameters in YAML 1.2, JSON, TOML, and Python files. You can specify the parameter file name in `dvc stage add` command as:
+DVC allows to use multiple parameters in YAML 1.2, JSON, TOML, and Python files.
+You can specify the parameter file name in `dvc stage add` command as:
 
 ```dvc
 $ dvc stage add ... \
@@ -202,7 +207,8 @@ DVC updates the specified value in the file and runs the experiment.
 
 ### Setting Multiple Parameters for Experiments
 
-You can set more than a single parameter with `--set-param` (`-S`) option in `dvc exp run`.
+You can set more than a single parameter with `--set-param` (`-S`) option in
+`dvc exp run`.
 
 It's possible to use multiple `-S` options:
 
@@ -218,7 +224,9 @@ $ dvc exp run -S learning_rate=0.001,units=128
 
 ### How DVC updates the parameters?
 
-DVC updates the parameters by parsing the parameters file and updating the specified value. Because of this it restricts the set of formats accepted to YAML 1.2, TOML, JSON and Python.
+DVC updates the parameters by parsing the parameters file and updating the
+specified value. Because of this it restricts the set of formats accepted to
+YAML 1.2, TOML, JSON and Python.
 
 When you specify a parameter, you can see its effects using `git diff`.
 
@@ -227,6 +235,7 @@ $ dvc exp run -S units=128
 ...
 $ git diff params.yaml
 ```
+
 ```git
 -units: 32
 +units: 128
@@ -238,10 +247,10 @@ $ git diff params.yaml
 
 ## The Experiments Queue
 
-The `--queue` flag in `dvc exp run` invocation tells to create an experiment in the experiment queue. When you add an experiment to the queue
-nothing is actually run. Instead, the experiment is put in a wait-list for
-later execution. `dvc exp show` will mark queued experiments with an asterisk
-`*`.
+The `--queue` flag in `dvc exp run` invocation tells to create an experiment in
+the experiment queue. When you add an experiment to the queue nothing is
+actually run. Instead, the experiment is put in a wait-list for later execution.
+`dvc exp show` will mark queued experiments with an asterisk `*`.
 
 ```dvc
 $ dvc exp run --queue -S units=10
@@ -254,9 +263,13 @@ $ dvc exp run --queue -S units=256
 Queued experiment '4109ead' for future execution.
 ```
 
-Each experiment in the queue is derived from the workspace at the time of `dvc exp run --queue` command. If you make changes in the workspace after `dvc exp run --queue` command, they are not reflected in the experiment.
+Each experiment in the queue is derived from the workspace at the time of
+`dvc exp run --queue` command. If you make changes in the workspace after
+`dvc exp run --queue` command, they are not reflected in the experiment.
 
-To prevent the side effects, queued experiments are run in temporary directories under `.dvc/tmp/exps`. Please see [Git and Experiments](#git-and-experiments) section for details.
+To prevent the side effects, queued experiments are run in temporary directories
+under `.dvc/tmp/exps`. Please see [Git and Experiments](#git-and-experiments)
+section for details.
 
 Experiments in the queue are run by specifying `--run-all` flag.
 
@@ -265,30 +278,35 @@ $ dvc exp run --run-all
 ...
 ```
 
-`--run-all` runs all the experiments in the queue one-by-one. The order of execution is independent of their creation order, and can be considered random in effect.
-
+`--run-all` runs all the experiments in the queue one-by-one. The order of
+execution is independent of their creation order, and can be considered random
+in effect.
 
 To execute the experiments in parallel, please see the next section.
 
 ### Running Experiments in Parallel
 
-DVC allows to run the experiments in parallel by specifying the number of experiment processes:
+DVC allows to run the experiments in parallel by specifying the number of
+experiment processes:
 
 ```dvc
 $ dvc exp run --run-all --jobs 4
 ```
 
-Each experiment is run _serially_ in its own temporary directory. If there are common stages across these experiments that need to be run, each experiment runs those separately. For example, for a pipeline composed of the stages `A -> B -> C`, if `dvc exp run --queue -S param=value1` invalidates stage `A`, all the pipeline is run in all experiments.
-
+Each experiment is run _serially_ in its own temporary directory. If there are
+common stages across these experiments that need to be run, each experiment runs
+those separately. For example, for a pipeline composed of the stages
+`A -> B -> C`, if `dvc exp run --queue -S param=value1` invalidates stage `A`,
+all the pipeline is run in all experiments.
 
 ⚠️ Parallel runs are experimental and may be unstable at this time. ⚠️ Make sure
 you're using a number of jobs that your environment can handle (no more than the
 CPU cores).
 
-
 ### Experiments outside of the Workspace
 
-If you want to isolate the experiments in their own directory, you can do so by `--temp` flag. This allows to continue your work while running the experiment.
+If you want to isolate the experiments in their own directory, you can do so by
+`--temp` flag. This allows to continue your work while running the experiment.
 
 - [ ] Example for temp
 
@@ -298,39 +316,74 @@ If you want to isolate the experiments in their own directory, you can do so by 
 > afterwards. Git-ignored files/dirs are explicitly excluded from runs outside
 > the workspace to avoid committing unwanted files into experiments.
 
-
 ### Cleaning Up the Experiment Queue
 
 You can use `dvc exp remove --queue` or `dvc exp gc --queued` to remove the
-experiments from the queue. For detailed information,
-experiments, see the [section on Cleaning-Up the Experiments][ug-clean-up].
+experiments from the queue. For detailed information see the [section on
+Cleaning-Up the Experiments][ug-clean-up].
 
 [ug-clean-up]: /doc/user-guide/experiment-management/cleaning-up-experiments
 
-<details>
+### How are experiments queued?
 
-### ⚙️ How are experiments queued?
-
-A custom [Git stash](https://www.git-scm.com/docs/git-stash) is used to queue
-pre-experiment commits.
-
-</details>
+The experiments are created similar to
+[Git stash](https://www.git-scm.com/docs/git-stash) when queued. The last
+experiment is found in `.git/refs/exps`, and the earlier ones are in the reflog.
+During `--run-all`, these references are checked out to `.dvc/exps/temp/` and
+run there.
 
 ## Checkpoints
-
-> Note that queuing an experiment that uses checkpoints implies `--reset`,
-> unless a `--rev` is provided (refer to the previous section).
 
 To track successive steps in a longer or deeper <abbr>experiment</abbr>, you can
 register checkpoints from your code. Each `dvc exp run` will resume from the
 last checkpoint.
 
-First, mark at least stage <abbr>output</abbr> with `checkpoint: true` in
-`dvc.yaml`. This is needed so that the experiment can resume later, based on the
-<abbr>cached</abbr> output(s) (circular dependency).
+Checkpoints provide a way to train models iteratively, keeping the metrics
+associated with each epoch.
 
-⚠️ Note that using `checkpoint` in `dvc.yaml` makes it incompatible with
-`dvc repro`.
+### Creating Checkpoints
+
+#### Adding Checkpoints to the Pipeline
+
+There are various ways to add checkpoints to a project. In common, these all
+involve marking a stage <abbr>output</abbr> with `checkpoint: true` in
+`dvc.yaml`. This is needed so that the experiment can resume later, based on the
+<abbr>cached</abbr> output(s).
+
+If you are adding a new stage with `dvc stage add`, you can mark its output(s)
+with `--checkpoints` (`-c`) option. DVC will add a `checkpoint: true` to the
+stage output in `dvc.yaml`.
+
+Otherwise, if you are adding a checkpoint to an already existing project, you
+can edit `dvc.yaml` and add a `checkpoint: true` to the stage output as shown
+below:
+
+```yaml
+stages:
+  ...
+  train:
+    ...
+    outs:
+      - model.pt:
+          checkpoint: true
+  ...
+```
+
+#### Adding Checkpoints to the Code
+
+DVC is agnostic when it comes to modifying your model. Checkpoints are basically
+a mechanism to associate outputs of a pipeline with its metrics. Reading the
+model from previous iteration and writing a new model as a file is not automated
+in the general case.
+
+> 💡 DVC provides several automated ways to capture checkpoints for various
+> popular ML libraries in [DVClive](https://dvc.org/doc/dvclive). It may be more
+> productive to use checkpoints via DVClive if you're just starting. Here we
+> discuss adding checkpoints to the code manually.
+
+If you are writing the project in Python, the easiest way to signal DVC to
+capture the checkpoint is to use `dvc.api.make_checkpoint()` function. The
+function
 
 Then, use the `dvc.api.make_checkpoint()` function (Python code), or write a
 signal file (any programming language) following the same steps as that
@@ -344,6 +397,9 @@ remain in the workspace.
 
 Subsequent uses of `dvc exp run` will continue from the latest checkpoint (using
 the latest cached versions of all outputs).
+
+> Note that queuing an experiment that uses checkpoints implies `--reset`,
+> unless a `--rev` is provided (refer to the previous section).
 
 <details>
 
@@ -382,7 +438,7 @@ the experiment. This is shown when you use `--queue` option, e.g.,
 ```dvc
 $ dvc exp run --queue -S model.conv_units=32
 Queued experiment '6518f17' for future execution.
-````
+```
 
 After _running_ the experiment, DVC uses another auto-generated name to refer to
 the experiment. Typically these start with `exp-`, and can be set via
