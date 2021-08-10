@@ -41,13 +41,15 @@ The _metrics summary_ will be saved to `{path}.json`. Here's an example:
 ### DVC Integration
 
 When `dvclive` is used alongside `DVC`, each `dvclive.next_step()` call will
-have additional features.
+have additional features. See
+[DVCLive with DVC](/doc/dvclive/user-guide/dvclive-with-dvc)
 
-By default, on each `dvclive.next_step()` call, `DVC` will create a new
-[checkpoint](/doc/user-guide/experiment-management/checkpoints).
+By default, on each `dvclive.next_step()` call, `DVC` will prepare an HTML
+report with all the _metrics logs_ logged in `path`.
 
-In addition, if `html` is True, on each `dvclive.next_step()` call, `DVC` will
-prepare an HTML report with all the _metrics logs_ logged in `path`.
+When `checkpoints` are enabled in the <abbr>pipeline<abbr>, `DVC` will create a
+new [checkpoint](/doc/user-guide/experiment-management/checkpoints) on each
+`dvclive.next_step()` call.
 
 ## Exceptions
 
