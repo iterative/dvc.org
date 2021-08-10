@@ -3,12 +3,12 @@ title: August '21 Community Gems
 date: 2021-08-31
 description: |
   A roundup of technical Q&A's from the DVC community.
-  This month: DVC pipeline configs, working with remotes,
-  file handling and more.
+  This month: separate DVC pipelines, working with CML,
+  object storage as a data source, and more.
 descriptionLong: |
   A roundup of technical Q&A's from the DVC community.
-  This month: DVC pipeline configs, working with remotes,
-  file handling and more.
+  This month: separate DVC pipelines, working with CML,
+  object storage as a data source, and more.
 picture: 2021-08-31/gems-cover.png
 author: milecia_mcgregor
 commentsUrl: https://discuss.dvc.org/t/august-21-community-gems/45342t5t4egrf4w
@@ -24,27 +24,54 @@ tags:
 
 Thanks for the question @naeljaneLiblikas!
 
-DVC does not support TOML files for metrics. TOML files are only used for
-parameters.
+DVC does not support TOML files for metrics. TOML files are supported for
+parameters only at the moment.
 
 We do have an [open issue](https://github.com/iterative/dvc/issues/6402) for
-this so you can keep up with any updates.
+this. Please feel free to add any comments or emojis to this issue so we know
+how to prioritize it!
 
-### [Q: How can I use object storage as a data source for MLOps with DVC?](https://discord.com/channels/485586884165107732/485596304961962003/866393535296176148)
+### [Q: Is there a way to store the results of the experiments table in a CSV file?](https://discord.com/channels/485586884165107732/485596304961962003/872554861340803092)
 
-You have a few options with DVC for this.
+Take a look at the `--show-json` option of `dvc exp show`. This will print the
+table in JSON format and you can write a script to save it to another file.
 
-- Set up an external cache on your object storage bucket.
-  [Check out this doc to learn more](https://dvc.org/doc/user-guide/managing-external-data#setting-up-an-external-cache)!
-- Track a large dataset in an external location to download later.
-  [This doc will tell you more](https://dvc.org/doc/command-reference/add#example-transfer-to-remote-storage).
+We have an [open feature request](https://github.com/iterative/dvc/issues/5446)
+to add CSV support. Give us some feedback so we know how to prioritize this on
+our roadmap!
 
-Great question @Ravi Kumar!
+There's another workaround you could test out using our Python API, just keep in
+mind that it isn't public and it's not as user-friendly as it could be.
+Although, you can try something like this:
+
+```python
+import itertools
+import dvc.api
+
+exps = itertools.chain.from_iterable(dvc.api.Repo().experiments.ls().values())
+
+def get_exp_info(exp):
+  exp_dict = {"exp": exp}
+  with dvc.api.open("params.yaml", rev=exp) as p:
+    params = yaml.load(p, Loader=yaml.Loader)
+    exp_dict.update(params)
+  with dvc.api.open("scores.json", rev=exp) as s:
+    metrics = json.load(s)
+    exp_dict.update(metrics)
+  return exp_dict
+
+exps_list = [get_exp_info(exp) for exp in exps]
+
+df = pd.DataFrame.from_records(exps_list)
+```
+
+Great question @Jess\_!
 
 ### [Q: Is there a recommended way to specify multiple pipelines in DVC?](https://discord.com/channels/485586884165107732/485596304961962003/864230750325047316)
 
 You'll want to keep each pipeline in a separate `dvc.yaml` if you want to work
-with multiple pipelines. Here's a bit of explanation:
+with multiple pipelines. This is a recommendation and is not required to specify
+different pipelines. Here's a bit of explanation:
 
 - Splitting a `dvc.yaml` file into multiple files is encouraged where there are
   clear logical groupings between stages. It avoids confusion, improves
@@ -85,12 +112,9 @@ unregistering runners for a while now.
 
 The main difference now is that we restart workflows with unfinished jobs.
 
-We know for sure this isn't working in Azure. Azure does not do a graceful
-shutdown -- even when stopping the instance within the Azure console.
-
 Thanks for such a good question @andee96!
 
-### [Q: Can I change the endpoint defined here <https://github.com/iterative/cml/blob/master/src/utils.js#L56>? Or does `cml-publish` always save the artifacts on this endpoint?](https://discord.com/channels/485586884165107732/728693131557732403/864444303169421322)
+### [Q: Can I change an endpoint that is being? Or does `cml-publish` always save the artifacts on this endpoint?](https://discord.com/channels/485586884165107732/728693131557732403/864444303169421322)
 
 Good question @Nwp8nice!
 
@@ -98,7 +122,7 @@ If you use GitLab you can use the `--native` option to upload to GitLab instead.
 
 It would be nice to be able to offer an alternative link so if you're
 interested, a PR for [this issue](https://github.com/iterative/cml/issues/291)
-would be awesome! :blush:
+would be awesome! 😊
 
 ### [Q: Is CML used for creating the MLOps workflows, like Apache Airflow?](https://discord.com/channels/485586884165107732/728693131557732403/866624571519664128)
 
