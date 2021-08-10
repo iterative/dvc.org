@@ -1,0 +1,23 @@
+name: DVC Download Link Check
+
+on:
+  deployment_status:
+
+jobs:
+  run:
+    name: Initialize
+    runs-on: ubuntu-latest
+    if:
+      github.event.deployment.ref != 'master' &&
+      github.event.deployment_status.state == 'success'
+    steps:
+      - uses: actions/checkout@v2
+      - name: Download Link Checker
+        uses: lycheeverse/lychee-action@v1.0.8
+        with:
+          args:
+            --verbose "${{ github.event.deployment.payload.web_url }}"
+            --base-url "${{ github.event.deployment.payload.web_url }}"
+            --include /download/
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}

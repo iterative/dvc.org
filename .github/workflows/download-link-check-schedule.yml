@@ -1,7 +1,6 @@
 name: DVC Download Link Check
 
 on:
-  deployment_status:
   schedule:
     - cron: '0 1-23 * * *'
 
@@ -9,9 +8,6 @@ jobs:
   run:
     name: Initialize
     runs-on: ubuntu-latest
-    if:
-      github.event_name == 'schedule' || (github.event.deployment.ref !=
-      'master' && github.event.deployment_status.state == 'success')
     steps:
       - uses: actions/checkout@v2
       - name: Download Link Checker
