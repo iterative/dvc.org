@@ -1,4 +1,4 @@
-# Fast Data Storage Layer
+# Secure Data and Model Caching Hub
 
 Datasets used in data science tend to exceed typical storage and networking
 capacities. Storage needs expand rapidly as more people acquire the same data,
