@@ -51,6 +51,6 @@ environment variables (when used alongside `DVC`).
 
 ## Exceptions
 
-- `dvclive.error.DvcLiveError` - If the provided `val` has not supported type.
+- `dvclive.error.InvalidMetricTypeError` - If the provided `val` has not supported type.
 
 [`dvclive.init()`]: /doc/dvclive/api-reference/init
