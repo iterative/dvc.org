@@ -63,8 +63,8 @@ $ DVC_PAGER=more dvc dag
 For a persistent change, define `DVC_PAGER` in the shell configuration. For
 example in Bash, we could add the following line to `~/.bashrc`:
 
-```bash
-export DVC_PAGER=more
+```dvc
+$ export DVC_PAGER=more
 ```
 
 ## Options

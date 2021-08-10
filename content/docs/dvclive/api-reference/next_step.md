@@ -56,7 +56,5 @@ new [checkpoint](/doc/user-guide/experiment-management/checkpoints) on each
 - `dvclive.error.InitializationError` - If `dvclive` has not been properly
   initialized (i.e. by calling [`dvclive.init()`] or [`dvclive.log()`]).
 
-...
-
 [`dvclive.init()`]: /doc/dvclive/api-reference/init
 [`dvclive.log()`]: /doc/dvclive/api-reference/log

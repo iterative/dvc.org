@@ -12,6 +12,7 @@ export type ILinkProps = {
   target?: undefined | '_blank'
   state?: unknown
   scrollOptions?: object
+  optOutPreRedirect?: undefined | true
 } & React.AnchorHTMLAttributes<HTMLAnchorElement>
 
 const PROTOCOL_REGEXP = /^https?:\/\//
@@ -23,6 +24,7 @@ const ResultLinkComponent: React.FC<ILinkProps> = ({
   children,
   rel,
   target,
+  download = false,
   ...restProps
 }) => {
   // Handle all situations where a basic `a` must be used over Gatsby Link
@@ -34,6 +36,7 @@ const ResultLinkComponent: React.FC<ILinkProps> = ({
   const hrefIsRelativeFragment = href.startsWith('#')
 
   if (
+    download ||
     !hrefIsRelative ||
     hrefIsMailto ||
     hrefHasTarget ||
@@ -54,7 +57,13 @@ const ResultLinkComponent: React.FC<ILinkProps> = ({
     }
 
     return (
-      <a href={href} rel={rel} target={target} {...restProps}>
+      <a
+        download={download}
+        href={href}
+        rel={rel}
+        target={target}
+        {...restProps}
+      >
         {children}
       </a>
     )
@@ -76,8 +85,14 @@ const scrollToHash = (hash: string, scrollOptions = {}): void => {
   }
 }
 
-const Link: React.FC<ILinkProps> = ({ href, scrollOptions, ...restProps }) => {
+const Link: React.FC<ILinkProps> = ({
+  href,
+  scrollOptions,
+  optOutPreRedirect,
+  ...restProps
+}) => {
   const currentLocation = useLocation()
+
   const onClick = useCallback(
     (e: React.MouseEvent<HTMLAnchorElement>) => {
       if (restProps.onClick) {
@@ -103,7 +118,7 @@ const Link: React.FC<ILinkProps> = ({ href, scrollOptions, ...restProps }) => {
 
   const location = new URL(href)
 
-  if (location.host === currentLocation.host) {
+  if (location.host === currentLocation.host && !optOutPreRedirect) {
     // Replace link href with redirect if it exists
     const [, redirectUrl] = getRedirect(location.host, location.pathname)
 
