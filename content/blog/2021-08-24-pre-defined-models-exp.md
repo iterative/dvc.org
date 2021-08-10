@@ -2,9 +2,9 @@
 title: Using Experiments for Transfer Learning
 date: 2021-08-24
 description: |
-You can work with pretrained models and fine-tune them with DVC experiments.
+  You can work with pretrained models and fine-tune them with DVC experiments.
 descriptionLong: |
-Running experiments to get the best tuning for a model can make it difficult to see which changes led to a better result. That's why we will be using DVC to track changes in the code and the data.
+  Running experiments to get the best tuning for a model can make it difficult to see which changes led to a better result. That's why we will be using DVC to track changes in the code and the data.
 picture: 2021-08-24/pretrained-models.png
 pictureComment: Using Experiments to Improve Pre-trained Models
 author: milecia_mcgregor
@@ -22,8 +22,9 @@ There are plenty of machine learning models available that have been trained to
 solve one problem and the knowledge gained from that can be applied to a new,
 yet related problem. For example, a model like AlexNet has been trained on
 millions of images so you could potentially use this to classify cars, animals,
-or even people. This is called transfer learning and it can save a lot of time
-on developing a model from scratch.
+or even people. This is called
+[transfer learning](https://towardsdatascience.com/a-comprehensive-hands-on-guide-to-transfer-learning-with-real-world-applications-in-deep-learning-212bf3b2f27a)
+and it can save a lot of time on developing a model from scratch.
 
 For us to take advantage of transfer learning, we can use fine-tuning to adopt
 the model to our new problem. In many cases, we start by replacing the last
@@ -135,6 +136,10 @@ stages:
       - results.json:
           cache: false
 ```
+
+The reason we need this `dvc.yaml` file is so DVC knows what to pay attention to
+in our workflow. It will start managing data, understand which metrics to pay
+attention to, and what the expected output for each step is.
 
 With the `train` stage defined, let's look at where the metrics actually come
 from in the code. If you open `pretrained_model_tuner`, you'll see a line where
