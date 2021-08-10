@@ -149,7 +149,7 @@ Some available variables:
 
 ## Doc style guidelines (JavaScript and Markdown)
 
-Following rules are applied automatically by a pre-commit Git hook that is
+Some of the following rules are applied automatically by a pre-commit Git hook that is
 installed when `yarn` runs (see [dev env](#development-environment)).
 
 - No trailing white spaces are allowed.
