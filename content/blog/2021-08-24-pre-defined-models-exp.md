@@ -4,7 +4,7 @@ date: 2021-08-24
 description: |
   You can work with pretrained models and fine-tune them with DVC experiments.
 descriptionLong: |
-  Running experiments to get the best tuning for a model can make it difficult to see which changes led to a better result. That's why we will be using DVC to track changes in the code and the data.
+  DVC experiments help fine-tune models by tracking code and data changes.
 picture: 2021-08-24/pretrained-models.png
 pictureComment: Using Experiments to Improve Pre-trained Models
 author: milecia_mcgregor
@@ -52,8 +52,8 @@ In the `pretrained_model_tuner.py` file, you'll find the code that defines both
 the AlexNet and SqueezeNet models. We start by initializing these models so we
 can get the number of model features and the input size we need for fine-tuning.
 
-_You can find the original code and tutorial over at
-[this post](https://pytorch.org/tutorials/beginner/finetuning_torchvision_models_tutorial.html)._
+You can find the original code and tutorial over at
+[this post](https://pytorch.org/tutorials/beginner/finetuning_torchvision_models_tutorial.html).
 
 Since the project has everything we need to initialize the models, we can start
 training and comparing the differences between them with the ants/bees dataset.
@@ -61,45 +61,34 @@ Running experiments to get the best tuning for each model can make it difficult
 to see which changes led to a better result. That's why we will be using DVC to
 track changes in the code and the data.
 
-## Put DVC in place
-
-Before we begin training, let's set up a DVC pipeline. We'll do that by running
-the following command.
-
-```dvc
-$ dvc init
-```
-
-This creates the `.dvc/` directory for configuration, the default cache
-location, and other necessary files and directories for DVC to work.
-
-Make sure you set up a
-[virtual environment](https://python.readthedocs.io/en/stable/library/venv.html)
-and install the dependencies with:
-
-```dvc
-$ pip install -r requirements.txt
-```
-
-Now that you have DVC initialized, this is a good place to commit your changes.
-
-```git
-$ git status
-$ git add .
-$ git commit -m "added DVC pipeline"
-```
-
-With DVC in place, we need to add a stage to the pipeline so that we can train
-the model with DVC tracking each experiment.
-
-### Adding the train stage
+## Adding the train stage
 
 Stages in DVC let us define individual data processes and can be used to build
 detailed machine learning pipelines. You have the ability to define the
 different steps of model creation like preprocessing, featurization, and
 training.
 
-We'll add a stage for the training step in this example. To do that, run:
+We currently have a `train` stage in the `dvc.yaml` file. If you take a look at
+it, you'll see something like:
+
+```yaml
+stages:
+  train:
+    cmd: python pretrained_model_tuner.py
+    deps:
+      - data/hymenoptera_data
+      - pretrained_model_tuner.py
+    metrics:
+      - results.json:
+          cache: false
+```
+
+The reason we need this `dvc.yaml` file is so DVC knows what to pay attention to
+in our workflow. It will start managing data, understand which metrics to pay
+attention to, and what the expected output for each step is.
+
+You'll typically add stages to `dvc.yaml` using the `dvc stage add` command.
+That would look similar to this:
 
 ```dvc
 $ dvc stage add --name train \
@@ -121,25 +110,6 @@ Let's break down the different parts of this command.
 
 After the metrics specification, there's the `python pretrained_model_tuner.py`
 and this defines the command for executing the training script.
-
-This will generate a new stage in the `dvc.yaml` file. If you take a look at it,
-you'll see something like:
-
-```yaml
-stages:
-  train:
-    cmd: python pretrained_model_tuner.py
-    deps:
-      - data/hymenoptera_data
-      - pretrained_model_tuner.py
-    metrics:
-      - results.json:
-          cache: false
-```
-
-The reason we need this `dvc.yaml` file is so DVC knows what to pay attention to
-in our workflow. It will start managing data, understand which metrics to pay
-attention to, and what the expected output for each step is.
 
 With the `train` stage defined, let's look at where the metrics actually come
 from in the code. If you open `pretrained_model_tuner`, you'll see a line where
