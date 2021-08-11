@@ -441,7 +441,11 @@ If your project is written in another language, you can mimic the behavior of
 special file named `DVC_CHECKPOINT` inside `.dvc/tmp/` to signal the checkpoint,
 and waits DVC to delete it.
 
-- [ ] Write an R example here
+```r
+
+dvcroot <- Sys.getenv(c("DVC_ROOT"))[1]
+
+```
 
 The following Julia snippet creates a signal file to create a checkpoint.
 
