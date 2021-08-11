@@ -115,13 +115,14 @@ The resulting `dvc exp show` table is as the following:
 
 ### Keeping experiments in all tags
 
-When you tag the experiment commits by `git tag`, 
-`dvc exp show --all-tags` presents them along with the tags. If you want the
-delete _all experiments without tags_, you can issue a `dvc exp gc --all-tags` command. 
+When you tag the experiment commits by `git tag`, `dvc exp show --all-tags`
+presents them along with the tags. If you want the delete _all experiments
+without tags_, you can issue a `dvc exp gc --all-tags` command.
 
 ```dvc
 $ dvc exp show --all-tags
 ```
+
 ```dvctable
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━━━━━━┓
 ┃ Experiment              ┃    acc ┃ model.conv_units  ┃
@@ -155,14 +156,11 @@ $ dvc exp show --all-tags
 └─────────────────────────┴────────┴───────────────────┘
 ```
 
-
 ### Keeping experiments in all commits
 
 When you want to delete _all the experiments not associated with a Git commit_,
 you can do so by `--all-commits` flag. It deletes the experiments in the
-workspace that are not committed to the history. 
-
-
+workspace that are not committed to the history.
 
 ## Removing Experiments in Remotes
 
