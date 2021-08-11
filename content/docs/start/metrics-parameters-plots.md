@@ -11,6 +11,8 @@ DVC makes it easy to track [metrics](/doc/command-reference/metrics), update
 > All of the above can be combined into <abbr>experiments</abbr> to run and
 > compare many iterations of your ML project.
 
+https://youtu.be/bu3l75eQlQo
+
 ## Collecting metrics
 
 First, let's see what is the mechanism to capture values for these ML
@@ -271,10 +273,6 @@ file:///Users/dvc/example-get-started/plots.html
 > All these commands also accept
 > [Git revisions](https://git-scm.com/docs/gitrevisions) (commits, tags, branch
 > names) to compare.
-
-🌟 Check out this YouTube video with a tutorial covering metrics! 🌟
-
-https://youtu.be/bu3l75eQlQo
 
 On the next page, you can learn advanced ways to track, organize, and compare
 more experiment iterations.
