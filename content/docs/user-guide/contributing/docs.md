@@ -60,7 +60,7 @@ Make sure you have a recent LTS version of [Node.js](https://nodejs.org/en/)
 (`>=12.0.0`, `<=15.x`), and install [Yarn](https://yarnpkg.com/):
 
 > In Windows, you may need to install [Python], [Visual Studio Build Tools], and
-> [Windows SDK] additionally for dependencies.
+> the [Windows SDK] first.
 
 [windows sdk]:
   https://developer.microsoft.com/en-us/windows/downloads/windows-10-sdk/
