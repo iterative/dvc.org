@@ -78,9 +78,16 @@ stages:
     deps:
       - data/hymenoptera_data
       - pretrained_model_tuner.py
-    metrics:
-      - results.json:
-          cache: false
+    params:
+      - lr
+      - momentum
+    outs:
+      - model.pt:
+          checkpoint: true
+    live:
+      dvclive:
+        summary: true
+        html: true
 ```
 
 The reason we need this `dvc.yaml` file is so DVC knows what to pay attention to
