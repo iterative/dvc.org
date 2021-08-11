@@ -115,11 +115,54 @@ The resulting `dvc exp show` table is as the following:
 
 ### Keeping experiments in all tags
 
-- [ ] `--all-tags` example
+When you tag the experiment commits by `git tag`, 
+`dvc exp show --all-tags` presents them along with the tags. If you want the
+delete _all experiments without tags_, you can issue a `dvc exp gc --all-tags` command. 
+
+```dvc
+$ dvc exp show --all-tags
+```
+```dvctable
+┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━━━━━━┓
+┃ Experiment              ┃    acc ┃ model.conv_units  ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━━━━━━┩
+│ workspace               │ 0.9067 │ 16                │
+│ ├── 2fc4f81 [exp-a1b3c4]│ 0.9037 │ 48                │
+│ └── 21beb69 [exp-d4e3ff]│ 0.9367 │ 128               │
+│ my-experiments          │ 0.9067 │ 16                │
+│ ├── 2fc4f81 [cnn-32]    │ 0.9067 │ 32                │
+│ ├── 5bc84a3 [cnn-64]    │ 0.9158 │ 64                │
+│ ├── 206cba6 [cnn-96]    │ 0.9260 │ 96                │
+│ └── 21beb69 [cnn-128]   │ 0.9379 │ 128               │
+└─────────────────────────┴────────┴───────────────────┘
+```
+
+```dvc
+$ dvc exp gc --all-tags
+$ dvc exp show --all-tags
+```
+
+```dvctable
+┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━━━━━━┓
+┃ Experiment              ┃    acc ┃ model.conv_units  ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━━━━━━┩
+│ workspace               │ 0.9067 │ 16                │
+│ my-experiments          │ 0.9067 │ 16                │
+│ ├── 2fc4f81 [cnn-32]    │ 0.9067 │ 32                │
+│ ├── 5bc84a3 [cnn-64]    │ 0.9158 │ 64                │
+│ ├── 206cba6 [cnn-96]    │ 0.9260 │ 96                │
+│ └── 21beb69 [cnn-128]   │ 0.9379 │ 128               │
+└─────────────────────────┴────────┴───────────────────┘
+```
+
 
 ### Keeping experiments in all commits
 
-- [ ] `--all-commits` example
+When you want to delete _all the experiments not associated with a Git commit_,
+you can do so by `--all-commits` flag. It deletes the experiments in the
+workspace that are not committed to the history. 
+
+
 
 ## Removing Experiments in Remotes
 
