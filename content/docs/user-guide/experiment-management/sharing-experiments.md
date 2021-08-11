@@ -1,37 +1,27 @@
 # Sharing Experiments
 
-There are two types of remotes that can store experiments. Git remotes are
-distributed copies of the Git repository, for example on GitHub or GitLab.
+Two types of _remotes_ are needed to upload experiments for sharing.
+[Git remotes](https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes)
+are distributed copies of the Git repository, hosted for example on GitHub or
+GitLab. Small files like experimental code and
+[DVC metafiles](/doc/user-guide/project-structure) files will go there.
+[DVC remotes](/doc/command-reference/remote) on the other hand are data storage
+locations (e.g. Amazon S3 or Google Drive). You can use them to back up and
+[share data](/doc/use-cases/sharing-data-and-model-files) files and directories
+that don't fit inside Git repos.
 
-[DVC remotes](/doc/command-reference/remote) on the other hand are
-storage-specific locations (e.g. Amazon S3 or Google Drive) which we can
-configure with `dvc remote`. DVC uses them to store and fetch large files that
-don't normally fit inside Git repos.
-
-DVC needs both kinds of remotes for backing up and sharing experiments.
-
-Experiment files that are normally tracked in Git (like code versions) are
-shared using Git remotes, and files or directories tracked with DVC (like
-datasets) are shared using DVC remotes.
-
-> See [Git remotes guide] and `dvc remote add` for information on setting them
-> up.
+> See this [Git remotes guide] and `dvc remote add` for ifo. on setting them up.
 
 [git remotes guide]:
   https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes
 
-Normally, there should already be a Git remote called `origin` when you clone a
-repo. Use `git remote -v` to list your Git remotes:
+You can list your remotes with `git remote -v` and `dvc remote list`:
 
 ```dvc
 $ git remote -v
 origin  https://github.com/iterative/get-started-experiments (fetch)
 origin  https://github.com/iterative/get-started-experiments (push)
-```
 
-Similarly, you can see the DVC remotes in you project using `dvc remote list`:
-
-```dvc
 $ dvc remote list
 storage https://remote.dvc.org/get-started-experiments
 ```
