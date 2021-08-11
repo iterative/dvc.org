@@ -16,6 +16,8 @@ once they're no longer needed.
 > 📖 See [Experiment Management](/doc/user-guide/experiment-management) for more
 > information on DVC's approach.
 
+https://youtu.be/FHQq_zZz5ms
+
 ## Running experiments
 
 Previously, we learned how to tune [ML pipelines](/doc/start/data-pipelines) and

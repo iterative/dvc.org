@@ -9,9 +9,6 @@ import { logEvent } from '../../utils/front/ga'
 
 import * as styles from './styles.module.css'
 
-const DVC_PUBLIC_S3_LINK =
-  'https://s3-us-east-2.amazonaws.com/dvc-public/dvc-pkgs'
-const DVC_REPO_S3_LINK = 'https://s3-us-east-2.amazonaws.com/dvc-s3-repo'
 const VERSION = `2.5.4`
 
 enum OS {
@@ -30,22 +27,22 @@ const itemsByOs = {
   },
   [OS.OSX]: {
     title: 'macOS',
-    url: `${DVC_PUBLIC_S3_LINK}/osxpkg/dvc-${VERSION}.pkg`,
+    url: `/download/osx/dvc-${VERSION}`,
     download: true
   },
   [OS.WINDOWS]: {
     title: 'Windows',
-    url: `${DVC_PUBLIC_S3_LINK}/exe/dvc-${VERSION}.exe`,
+    url: `/download/win/dvc-${VERSION}`,
     download: true
   },
   [OS.LINUX]: {
     title: 'Linux Deb',
-    url: `${DVC_REPO_S3_LINK}/deb/pool/stable/d/dv/dvc_${VERSION}_amd64.deb`,
+    url: `/download/linux-deb/dvc-${VERSION}`,
     download: true
   },
   [OS.LINUX_RPM]: {
     title: 'Linux RPM',
-    url: `${DVC_REPO_S3_LINK}/rpm/dvc-${VERSION}-1.x86_64.rpm`,
+    url: `/download/linux-rpm/dvc-${VERSION}`,
     download: true
   }
 }
@@ -107,6 +104,7 @@ const DownloadButtonDropdownItems: React.FC<IDownloadButtonDropdownItemsProps> =
                 'link-with-focus'
               )}
               href={item.url}
+              optOutPreRedirect={true}
               onClick={(): void => onClick(os)}
             >
               {item.title}
