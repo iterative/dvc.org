@@ -443,7 +443,16 @@ and waits DVC to delete it.
 
 ```r
 
-dvcroot <- Sys.getenv(c("DVC_ROOT"))[1]
+dvcroot <- Sys.getenv("DVC_ROOT")
+
+if (dvcroot != "") {
+    signalfilepath = file.path(dvcroot, ".dvc", "tmp", "DVC_CHECKPOINT")
+    file.create(signalfilepath)
+    while (file.exists(signalfilepath)) {
+      Sys.sleep(0.01)
+    }
+
+}
 
 ```
 
@@ -493,7 +502,7 @@ their outputs). This is useful for re-training ML models, for example.
 
 <details>
 
-### ⚙️ How are checkpoints captured?
+### How are checkpoints captured?
 
 Instead of a single commit, checkpoint experiments have multiple commits under
 the custom Git reference (in `.git/refs/exps`), similar to a branch.
@@ -558,7 +567,3 @@ When an experiment is not run yet, only the former hash value is shown.
 You can refer to the experiment in `dvc exp apply` or `dvc exp branch` after
 running the experiment with the name starting with `exp-`, or the name you have
 supplied with `dvc exp run --name`.
-
-```
-
-```
