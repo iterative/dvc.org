@@ -7804,10 +7804,10 @@ gatsby-source-filesystem@^3.10.0:
     valid-url "^1.0.9"
     xstate "^4.14.0"
 
-gatsby-source-github-api@^0.2.1:
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/gatsby-source-github-api/-/gatsby-source-github-api-0.2.1.tgz#80390254644054214debe5e9fdcdac7d316506c0"
-  integrity sha512-mu4ek8KjtiSjI0Wj9afeylSGdcOmD0piUy/RpEbuu5B+fj8LRW3h+SBvzwYmQhSsxYnwCXc2gjci6Efu2iQwzQ==
+gatsby-source-github-api@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/gatsby-source-github-api/-/gatsby-source-github-api-1.0.0.tgz#7ad889adf787f6ce40225576ef44b57c987a97cf"
+  integrity sha512-LodydqSivxmV5SkiNmc68jEKfrExWaDxRWIHVUJuH0lOq2OhSePSkWXNLXW7aDZMbsiVE7QjDWu3xQEhdP2q1Q==
   dependencies:
     graphql-fetch "^1.0.1"
     uuid "^3.1.0"
