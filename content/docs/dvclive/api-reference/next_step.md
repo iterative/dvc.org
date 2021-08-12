@@ -47,8 +47,8 @@ have additional features. See
 By default, on each `dvclive.next_step()` call, `DVC` will prepare an HTML
 report with all the _metrics logs_ logged in `path`.
 
-When [checkpoints](<(/doc/user-guide/experiment-management/checkpoints)>) are
-enabled in the <abbr>pipeline</abbr> , `DVC` will create a new _checkpoint_ on
+When [checkpoints](/doc/user-guide/experiment-management/checkpoints) are
+enabled in the <abbr>pipeline</abbr>, `DVC` will create a new checkpoint on
 each `dvclive.next_step()` call.
 
 ## Exceptions
