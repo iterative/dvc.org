@@ -46,7 +46,9 @@ compare the results of both models at the end.
 
 We'll be fine-tuning the AlexNet model and the SqueezeNet model to classify
 images of bees and ants. You can find the project we're working with in
-[this repo](https://github.com/iterative/pretrained-model-demo).
+[this repo](https://github.com/iterative/pretrained-model-demo),
+which is based on the tutorial over at
+[this post](https://pytorch.org/tutorials/beginner/finetuning_torchvision_models_tutorial.html).
 
 In the `pretrained_model_tuner.py` file, you'll find the code that defines both
 the AlexNet and SqueezeNet models. We start by initializing these models so we
