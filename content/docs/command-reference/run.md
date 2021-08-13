@@ -270,8 +270,9 @@ $ dvc run -n second_stage './another_script.sh $MYENVVAR'
   affect any DVC operations.
 
 - `--live <path>` - specify the directory `path` for
-  [DVCLive](/doc/dvclive/dvclive-with-dvc) to write logs in. `path` will be
-  tracked (<abbr>cached</abbr>) by DVC. Saved in the `live` field of `dvc.yaml`.
+  [DVCLive](/doc/dvclive/user-guide/dvclive-with-dvc) to write logs in. `path`
+  will be tracked (<abbr>cached</abbr>) by DVC. Saved in the `live` field of
+  `dvc.yaml`.
 
 - `--live-no-cache <path>` - the same as `--live` except that the `path` is not
   tracked by DVC. Useful if you prefer to track it with Git.
