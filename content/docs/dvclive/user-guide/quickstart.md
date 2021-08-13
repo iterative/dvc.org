@@ -65,6 +65,8 @@ dvclive        train.py
 dvclive.json
 ```
 
+### Metrics Logs
+
 For each `{metric_name}`, DVCLive produces metrics _logs_ under
 `dvclive/{metric_name}.dvclive.tsv`:
 
@@ -76,7 +78,11 @@ timestamp	step	{metric_name}
 1614129198848	2	0.8907166719436646
 ```
 
-And also a _summary_ with the latest metrics:
+### Metrics Summary
+
+In addition, when [`summary`](/doc/dvclive/api-reference/init#parameters) is
+enabled (True by default), DVCLive generates a metrics _summary_ with the latest
+metrics:
 
 ```dvc
 $ cat dvclive.json
