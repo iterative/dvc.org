@@ -68,10 +68,10 @@ dvclive.json
 ### Metrics Logs
 
 For each `{metric_name}`, DVCLive produces metrics _logs_ under
-`dvclive/{metric_name}.dvclive.tsv`:
+`dvclive/{metric_name}.tsv`:
 
 ```dvc
-$ cat dvclive/{metric_name}.dvclive.tsv
+$ cat dvclive/{metric_name}.tsv
 timestamp	step	{metric_name}
 1614129197192	0	0.7612833380699158
 1614129198031	1	0.8736833333969116
