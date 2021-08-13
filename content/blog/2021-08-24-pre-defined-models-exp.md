@@ -46,16 +46,13 @@ compare the results of both models at the end.
 
 We'll be fine-tuning the AlexNet model and the SqueezeNet model to classify
 images of bees and ants. You can find the project we're working with in
-[this repo](https://github.com/iterative/pretrained-model-demo),
-which is based on the tutorial over at
+[this repo](https://github.com/iterative/pretrained-model-demo), which is based
+on the tutorial over at
 [this post](https://pytorch.org/tutorials/beginner/finetuning_torchvision_models_tutorial.html).
 
 In the `pretrained_model_tuner.py` file, you'll find the code that defines both
 the AlexNet and SqueezeNet models. We start by initializing these models so we
 can get the number of model features and the input size we need for fine-tuning.
-
-You can find the original code and tutorial over at
-[this post](https://pytorch.org/tutorials/beginner/finetuning_torchvision_models_tutorial.html).
 
 Since the project has everything we need to initialize the models, we can start
 training and comparing the differences between them with the ants/bees dataset.
@@ -83,11 +80,15 @@ stages:
     params:
       - lr
       - momentum
+      - model_name
+      - num_classes
+      - batch_size
+      - num_epochs
     outs:
       - model.pt:
           checkpoint: true
     live:
-      dvclive:
+      results:
         summary: true
         html: true
 ```
@@ -96,32 +97,8 @@ The reason we need this `dvc.yaml` file is so DVC knows what to pay attention to
 in our workflow. It will start managing data, understand which metrics to pay
 attention to, and what the expected output for each step is.
 
-You'll typically add stages to `dvc.yaml` using the `dvc stage add` command.
-That would look similar to this:
-
-```dvc
-$ dvc stage add --name train \
---deps data/hymenoptera \
---deps pretrained_model_tuner.py \
---params lr,momentum,model_name,num_classes,batch_size,num_epochs \
---checkpoints model.pt \
---live dvclive \
-python pretrained_model_tuner.py
-```
-
-Let's break down the different parts of this command.
-
-- `--name` is the title of the stage
-- `--deps` short for dependencies, defines the files and directories that a
-  stage needs in order to run
-- `--params` defines the hyperparameters for the model
-- `--checkpoints` enables checkpoints inside DVC experiments to collect metrics
-  from each training epoch
-- `--live` enables `dvclive` logging
-
-After the `dvclive` specification, there's the
-`python pretrained_model_tuner.py` and this defines the command for executing
-the training script.
+You'll typically add stages to `dvc.yaml` using the `dvc stage add` command and
+this is one of the ways you can add new stages or update existing ones.
 
 With the `train` stage defined, let's look at where the metrics actually come
 from in the code. If you open `pretrained_model_tuner`, you'll see a line where
@@ -131,9 +108,6 @@ each epoch using `dvclive` logging.
 
 ```python
 if phase == 'train':
-    with open("results.json", "w") as fd:
-        json.dump({'acc': '{:.4f}'.format(epoch_acc), 'loss': '{:.4f}'.format(epoch_loss)}, fd, indent=4)
-
         torch.save(model.state_dict(), "model.pt")
 
         dvclive.log('acc', epoch_acc.item())
