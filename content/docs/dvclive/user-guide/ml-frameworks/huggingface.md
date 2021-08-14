@@ -1,11 +1,12 @@
 # Hugging Face
 
-DVCLive allows you to easily add experiment tracking capabilities to your Hugging Face
-projects.
+DVCLive allows you to easily add experiment tracking capabilities to your
+Hugging Face projects.
 
 ## About Hugging Face
 
-[Hugging Face](https://huggingface.co/) is an open-source ecosystem of natural language processing (NLP) technologies.
+[Hugging Face](https://huggingface.co/) is an open-source ecosystem of natural
+language processing (NLP) technologies.
 
 ## Usage
 
