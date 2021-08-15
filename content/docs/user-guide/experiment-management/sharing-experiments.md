@@ -26,7 +26,7 @@ $ dvc remote list
 storage https://remote.dvc.org/get-started-experiments
 ```
 
-## Uploading experiments to remotes
+## Uploading experiments
 
 You can upload an experiment and its files to both remotes using `dvc exp push`
 (requires the Git remote name and experiment name as arguments).
@@ -53,7 +53,7 @@ performance also depend on the connection bandwidth and remote configurations.
 
 [run-cache]: /doc/user-guide/project-structure/internal-files#run-cache
 
-## Listing experiments remotely
+## Listing remote experiments
 
 In order to list experiments in a DVC project, you can use the `dvc exp list`
 command. With no command line options, it lists the experiments in the current
@@ -98,7 +98,7 @@ cnn-64
 cnn-96
 ```
 
-## Downloading experiments from remotes
+## Downloading experiments
 
 When you clone a DVC repository, it doesn't fetch any experiments by default. In
 order to get them, use `dvc exp pull` (with the Git remote and the experiment
@@ -120,7 +120,7 @@ can set the number with `--jobs` (`-j`).
 If an experiment being pulled already exists in the local project, DVC won't
 overwrite it unless you supply `--force`.
 
-### Example: Pushing or pulling multiple experiments
+## Example: Sharing multiple experiments
 
 You can create a loop to upload or download all experiments like this:
 
@@ -130,8 +130,7 @@ $ dvc exp list --all --names-only | while read -r expname ; do \
 done
 ```
 
-> Without `--all`, only the experiments derived from the current commit will be
-> pushed/pulled.
+## Example: Dedicated experiment directories
 
 ## Example: Creating a directory for an experiment
 
