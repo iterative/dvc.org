@@ -10,7 +10,7 @@ locations (e.g. Amazon S3 or Google Drive). You can use them to back up and
 [share data](/doc/use-cases/sharing-data-and-model-files) files and directories
 that don't fit inside Git repos.
 
-> See this [Git remotes guide] and `dvc remote add` for ifo. on setting them up.
+> See this [Git remotes guide] and `dvc remote add` for info. on setting them up.
 
 [git remotes guide]:
   https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes
