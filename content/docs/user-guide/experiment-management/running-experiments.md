@@ -68,14 +68,14 @@ Pipelines can be of the following:
 - A set of stages from the default `dvc.yaml` file:
   `dvc exp run --glob 'train-*'`
 
-### Running a Single Stage
+#### Running a Stage Independently
 
-In some cases you may need to run a single stage in the pipeline. The
-`--single-item` (`-s`) flag allows to run the associated command of a single
-stage.
+In some cases you may need to run a single stage in the pipeline, without
+running the depending stages. The `--single-item` (`-s`) flag allows
+to run the associated command of a single stage.
 
-If the pipeline has `extract`, `transform`, `train`, `evaluate` stages and you
-only want to run the transform stage to check its outputs, you can do so by:
+> Example: If the pipeline has `extract`, `transform`, `train`, `evaluate` stages and you
+> only want to run the transform stage to check its outputs, you can do so by:
 
 ```dvc
 $ dvc exp run --single-stage transform
