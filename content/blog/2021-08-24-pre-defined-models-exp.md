@@ -175,7 +175,8 @@ Now let's update the hyperparameters and run another experiment. There are
 several ways to do this with DVC:
 
 - Change the hyperparameter values directly in `params.yaml`
-- Update the values using the `--set-param` option on `dvc exp run`
+- Update the values using the `--set-param` or the shorthand `-S` option on
+  `dvc exp run`
 - Queue multiple experiments with different values using the `--queue` option on
   `dvc exp run`
 
@@ -190,7 +191,9 @@ momentum: 0.017
 ```
 
 Now run another experiment with `dvc exp run` and take a look at the metrics
-with `dvc exp show`. Your table should look something like this now.
+with `dvc exp show`. Your table should look something like this now. Since we're
+using checkpoints, note that we continue training additional epochs on top of
+your previous experiment.
 
 ```dvctable
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━┳━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━┓
@@ -215,11 +218,10 @@ with `dvc exp show`. Your table should look something like this now.
 
 Finding good values for hyperparameters can take a few iterations, even when
 you're working with a pretrained model. So we'll run one more experiment to
-fine-tune this AlexNet model. This time we'll do it using the `--set-param`
-option.
+fine-tune this AlexNet model. This time we'll do it using the `-S` option.
 
 ```dvc
-$ dvc exp run --set-param lr=0.025 --set-param momentum=0.5 --set-param num_epochs=2
+$ dvc exp run -S lr=0.025 -S momentum=0.5 -S num_epochs=2
 ```
 
 The updated table will have values similar to this.
@@ -256,9 +258,11 @@ This is a good time to note that DVC is not only tracking the changes of your
 hyperparameters for each experiment, it also tracks any code changes and dataset
 changes as well.
 
-Let's run one experiment with `dvc exp run` just to show the difference in the
-metrics between the two models. You should see results similar to this in your
-table.
+Let's run one experiment with `dvc exp run --reset` just to show the difference
+in the metrics between the two models. Remember, since we're using checkpoints
+it continues training on top of the previous experiment. That's why we're using
+the `--reset` option here so that we can start a fresh experiment for the new
+model. You should see results similar to this in your table.
 
 ```dvctable
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━┳━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━┓
@@ -266,16 +270,12 @@ table.
 ┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━╇━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━╇━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━┩
 │ **workspace**               │ -        │   **13** │ **0.86066** │ **0.36708** │        **87.417** │ **0.025** │ **0.5**      │ **squeezenet** │ **2**           │ **8**          │ **2**          │
 │ **main**                    │ **10:27 AM** │    **1** │ **0.88525** │ **0.28284** │        **82.143** │ **0.01**  │ **0.09**     │ **squeezenet** │ **2**           │ **8**          │ **2**          │
-│ │ ╓ ca84fbb [exp-7aacc] │ 11:28 AM │   13 │ 0.86066 │ 0.36708 │        87.417 │ 0.025 │ 0.5      │ squeezenet │ 2           │ 8          │ 2          │
-│ │ ╟ a13e12d             │ 11:27 AM │   13 │ 0.86066 │ 0.36708 │        87.417 │ 0.025 │ 0.5      │ squeezenet │ 2           │ 8          │ 2          │
-│ │ ╟ e13e677 (3c943f9)   │ 11:26 AM │   12 │  0.7418 │ 0.58166 │        29.316 │ 0.025 │ 0.5      │ squeezenet │ 2           │ 8          │ 2          │
-│ │ ╓ 3c943f9 [exp-8ee91] │ 10:58 AM │   11 │ 0.86885 │  2.0228 │        76.401 │ 0.025 │ 0.5      │ alexnet    │ 2           │ 8          │ 2          │
-│ │ ╟ c00a0d9             │ 10:58 AM │   11 │ 0.86885 │  2.0228 │        76.401 │ 0.025 │ 0.5      │ alexnet    │ 2           │ 8          │ 2          │
-│ │ ╟ 5164d1e (a08e6af)   │ 10:57 AM │   10 │    0.75 │  3.2936 │         25.18 │ 0.025 │ 0.5      │ alexnet    │ 2           │ 8          │ 2          │
-│ │ ╓ a08e6af [exp-3d114] │ 10:53 AM │    9 │ 0.93033 │ 0.18789 │        230.64 │ 0.009 │ 0.017    │ alexnet    │ 2           │ 8          │ 5          │
-│ │ ╟ 8d8b6ce             │ 10:53 AM │    9 │ 0.93033 │ 0.18789 │        230.64 │ 0.009 │ 0.017    │ alexnet    │ 2           │ 8          │ 5          │
-│ │ ╟ cb2d304             │ 10:52 AM │    8 │ 0.88115 │ 0.43169 │        179.65 │ 0.009 │ 0.017    │ alexnet    │ 2           │ 8          │ 5          │
-│ │ ╟ 8f6728f             │ 10:51 AM │    7 │ 0.89754 │ 0.31478 │        127.99 │ 0.009 │ 0.017    │ alexnet    │ 2           │ 8          │ 5          │
+│ │ ╓ a771043 [exp-3d76f] │ 10:46 AM     │    1 │ 0.89754 │ 0.28754 │        82.447 │ 0.025 │ 0.5      │ squeezenet │ 2           │ 8          │ 2          │
+│ │ ╟ 39e3ce6             │ 10:46 AM     │    1 │ 0.89754 │ 0.28754 │        82.447 │ 0.025 │ 0.5      │ squeezenet │ 2           │ 8          │ 2          │
+│ ├─╨ 707a0aa             │ 10:45 AM     │    0 │  0.7459 │ 0.63368 │        28.104 │ 0.025 │ 0.5      │ squeezenet │ 2           │ 8          │ 2          │
+│ │ ╓ c12efe1 [exp-44404] │ 10:43 AM     │    7 │ 0.79918 │  3.2234 │        25.293 │ 0.025 │ 0.5      │ alexnet    │ 2           │ 8          │ 1          │
+│ │ ╟ 302417a (4f6d314)   │ 10:42 AM     │    7 │ 0.79918 │  3.2234 │        25.293 │ 0.025 │ 0.5      │ alexnet    │ 2           │ 8          │ 1          │
+│ │ ╓ 4f6d314 [exp-67bae] │ 10:35 AM     │    6 │ 0.82377 │  2.3404 │        75.994 │ 0.025 │ 0.5      │ alexnet    │ 2           │ 8          │ 2          │
 ```
 
 The newest experiment has an accuracy that's significantly different since we
@@ -287,14 +287,14 @@ This time, we'll take advantage of queues in DVC to set up the experiments and
 then run them at the same time. To set up a queue, we'll run this command.
 
 ```dvc
-$ dvc exp run --queue --set-param lr=0.0001 --set-param momentum=0.9 --set-param num_epochs=2
+$ dvc exp run --queue -S lr=0.0001 -S momentum=0.9 -S num_epochs=2
 ```
 
 Running this sets up an experiment for future execution so we'll go ahead a run
 this command one more time with different values.
 
 ```dvc
-$ dvc exp run --queue --set-param lr=0.001 --set-param momentum=0.09 --set-param num_epochs=2
+$ dvc exp run --queue -S lr=0.001 -S momentum=0.09 -S num_epochs=2
 ```
 
 You can check out the details for the queues you have in place by looking at the
