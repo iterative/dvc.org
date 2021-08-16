@@ -81,10 +81,10 @@ to run the associated command of a single stage.
 $ dvc exp run --single-stage transform
 ```
 
-### Running all Pipelines
+#### Running all Pipelines
 
-In larger projects, there may be more than a single `dvc.yaml` file that
-contains multiple pipelines. In this case, you can run all pipelines with a
+In larger projects, there may be more than a single `dvc.yaml` file defining
+multiple pipelines. In this case, you can run all pipelines with a
 single command.
 
 ```dvc
@@ -98,7 +98,8 @@ pipelines can be run first.
 ### Interactive Reproduction
 
 When you want to have more granular control over which stages are run, you can
-use `--interactive` flag. This allows you to confirm each stage before running.
+use `--interactive` flag. This flag allows you to confirm each stage before
+running.
 
 ```dvc
 $ dvc exp run --interactive
