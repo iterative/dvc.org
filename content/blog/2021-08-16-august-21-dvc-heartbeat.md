@@ -13,7 +13,7 @@ descriptionLong: |
   - 📖 Doc Updates,
   - 🎥 July Meetup Video available,
   - 🚀 and more!
-picture: 2021-07-16/august21cover.png
+picture: 2021-08-16/august21cover.png
 author: jeny_defigueiredo
 commentsUrl: https://discuss.dvc.org/t/august-heartbeat/843
 tags:
