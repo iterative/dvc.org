@@ -3,20 +3,20 @@
 ## Motivation
 
 Machine Learning and Data Science projects usually involve experimentation.
-Motivation of these experiments can range from finding good hyperparameters to
-checking data and concept drift. DVC 2 introduced a new set of commands to
+These experiments' goals can range from finding good hyperparameters to
+testing for data and concept drift. DVC 2 introduced a new set of commands to
 manage experiments with minimum boilerplate. It allows to run experiments
 defined by pipelines, track their associated data and model files, set
 parameters for each, push experiment parameters and code to Git remotes without
-committing them, create branches and persist them.
+committing them, create branches and persist them in Git. 
 
-In this part of the DVC User's Guide we will explain how DVC runs the
-experiments, setting parameters, running the experiments in parallel, or in
-temporary directories.
+In this part of the DVC User's Guide we explain how DVC runs the experiments,
+set the parameters, use multiple jobs to run the experiments in parallel, or
+running them in temporary directories. 
 
-If this is the first time you're introduced to Machine Learning experimentation,
-it may be better to start with the
-[Experiment's Trail](/doc/start/experiments/).
+If this is the first time you are introduced into Machine Learning
+experimentation, you may find a quicker introduction to the most salient
+features in the [Experiment's Trail](/doc/start/experiments/).
 
 ## The Pipeline
 
