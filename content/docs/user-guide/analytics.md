@@ -59,4 +59,6 @@ $ dvc config core.analytics false
 
 This will disable it for the <abbr>project</abbr>. Alternatively, you can use
 the `--global` or `--system` options of `dvc config` to disable analytics for
-the active user or for everyone in the system, respectively.
+the active user or for everyone in the system, respectively. You could also set
+environment variable `DVC_NO_ANALYTICS` to disable analytics (will override
+config).
