@@ -153,7 +153,7 @@ be successful using our tools! Updates include:
 
 ## Batuhan Taskaya's Refactor Project hits First Page in HackerNews!
 
-A [Refactor Project](https://github.com/isidentical/refactor) created by team
+A python refactoring tool, [refactor](https://github.com/isidentical/refactor), created by team
 Member [Batuhan Taskaya](https://twitter.com/isidentical) (AKA @isidentical),
 was shared by someone on HackerNews and made it to the main page! You can
 [catch all the comments here](https://news.ycombinator.com/item?id=28027016)!
