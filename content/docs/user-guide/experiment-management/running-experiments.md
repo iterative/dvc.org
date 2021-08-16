@@ -62,7 +62,6 @@ the last element of the command.
 Pipelines can be of the following:
 
 - A particular `dvc.yaml` file: `dvc exp run my-project/dvc.yaml`
-- A directory that contains a `dvc.yaml` file: `dvc exp run my-project`
 - A stage from the default `dvc.yaml` file: `dvc exp run extract`
 - A stage from a specific `dvc.yaml` file:
   `dvc exp run my-project/dvc.yaml:extract`
