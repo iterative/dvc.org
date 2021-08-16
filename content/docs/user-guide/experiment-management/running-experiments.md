@@ -38,20 +38,22 @@ a pipeline defined in `dvc.yaml` file in the <abbr>project</abbr>.
 
 ### Running the pipeline
 
-The pipeline defined in `dvc.yaml` file is run with default settings using:
+You can run the pipeline defined in `dvc.yaml` file with the default settings
+using:
 
 ```dvc
 $ dvc exp run
 ```
 
-If all dependencies and the experiment output are not changed and available in
-the workspace, the `dvc exp run` doesn't rerun the commands.
+If there are no missing or changed outputs in the the workspace, the `dvc exp
+run` doesn't rerun the commands. DVC keeps track of the dependency graph and
+runs only the stages with missing or changed dependencies. 
 
-For a pipeline composed of `extract`, `transform`, `train`, `evaluate`, if a
-dependency of `train` stage has changed, the dependent stages (`evaluate`) are
-also run.
+> Example: For a pipeline composed of `extract`, `transform`, `train`,
+> `evaluate`, if a dependency of `train` stage has changed, the dependent
+> stages (`evaluate`) are also run.
 
-### Specifying Targets
+#### Running Specific Stages
 
 By default `dvc exp run` uses `dvc.yaml` file in the current directory. You can
 specify other directories or pipeline elements to run. These are specified as
