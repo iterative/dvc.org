@@ -20,15 +20,14 @@ features in the [Experiment's Trail](/doc/start/experiments/).
 
 ## The Pipeline
 
-DVC uses pipelines composed of <abbr>stages</abbr>. Stages are isolated and
+DVC uses pipelines composed of <abbr>stages</abbr>. Stages are granular and
 interdependent steps that has a command, a set of dependencies, and output.
-Stages can depend onto each other and can build a <abbr>DAG</abbr>.
+Stages can depend onto each other via their outputs that build a <abbr>DAG</abbr>.
 
 DVC employs the pipeline to run the experiment commands. Each pipeline has an
-end-point, which is the last command in the pipeline. The output of this last
-command is considered the output of experiment. Additionally DVC tracks
-artifacts from intermediate stages, and doesn't reproduce them if their
-dependents have not changed.
+end-point, which is the last command in the pipeline. DVC also tracks artifacts
+from the intermediate stages, and doesn't reproduce them if their dependents
+have not changed.
 
 DVC pipelines are a detailed topic that we cover in [Get Started][gs-pipelines]
 and the [User's Guide][ug-pipeline-files]. Here we assume that there is already
