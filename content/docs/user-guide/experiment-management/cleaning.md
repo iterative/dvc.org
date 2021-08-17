@@ -1,13 +1,13 @@
 # Cleaning Up Experiments
 
 Although DVC uses minimal resources to keep track of the experiments, they may
-clutter tables and the workspace. DVC allows to remove particular experiments
+clutter tables and the workspace. DVC allows to remove specific experiments
 from the workspace or delete all not-yet-persisted experiments at once.
 
-## Removing Local Experiments
+## Removing Specific Local Experiments
 
-When you want to discard an experiment you can use `dvc exp remove` and supply
-the experiment name.
+When you want to discard experiments by their name, you can use `dvc exp remove`
+and supply the experiment name.
 
 ```dvc
 $ dvc exp list
@@ -15,21 +15,23 @@ main:
     cnn-32
     cnn-64
     cnn-128
-$ dvc exp remove cnn-32
+$ dvc exp remove cnn-32 cnn-64
 $ dvc exp list
 main:
-    cnn-64
     cnn-128
 ```
 
 ## Removing Multiple Local Experiments
 
-When the local project becomes cluttered with too many experiments, you can
-delete all of them at once with `dvc exp gc`.
+After you've completed a set of experiments, it may be easier to decide which of
+these to keep rather than which of these to remove. You can use `dvc exp gc` to
+select a set of experiments to keep and the rest of them are _garbage collected._
+
 
 This command takes a _scope_ argument. The scope can be `workspace`,
-`all-branches`, `all-tags`, `all-commits`. Scope determines the experiments to
-_keep_, i.e., experiments out of the scope of the given flag are removed.
+`all-branches`, `all-tags`, `all-commits`. In garbage collection, the scope
+determines the experiments to _keep_, i.e., experiments out of the scope of the
+given flag are removed.
 
 ### Keeping experiments in the workspace
 
@@ -76,7 +78,7 @@ $ dvc exp show --all-branches
 
 ```dvctable
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━━━━━┓
-┃ Experiment              ┃ Created      ┃    acc ┃ model.conv_units ┃
+┃ white:**Experiment**    ┃ white:**Created**      ┃    yellow:**acc** ┃ blue:**model.conv_units** ┃
 ┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━━━━━┩
 │ workspace               │ -            │      - │ 64               │
 │ cnn-48                  │ 09:11 AM     │ 0.9131 │ 48               │
