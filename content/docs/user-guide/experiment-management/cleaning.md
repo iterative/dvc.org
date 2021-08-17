@@ -1,8 +1,8 @@
 # Cleaning Up Experiments
 
 Although DVC uses minimal resources to keep track of the experiments, they may
-clutter tables and the workspace. DVC allows to remove specific experiments
-from the workspace or delete all not-yet-persisted experiments at once.
+clutter tables and the workspace. DVC allows to remove specific experiments from
+the workspace or delete all not-yet-persisted experiments at once.
 
 ## Removing Specific Local Experiments
 
@@ -25,8 +25,8 @@ main:
 
 After you've completed a set of experiments, it may be easier to decide which of
 these to keep rather than which of these to remove. You can use `dvc exp gc` to
-select a set of experiments to keep and the rest of them are _garbage collected._
-
+select a set of experiments to keep and the rest of them are _garbage
+collected._
 
 This command takes a _scope_ argument. The scope can be `workspace`,
 `all-branches`, `all-tags`, `all-commits`. In garbage collection, the scope
@@ -169,12 +169,12 @@ workspace that are not committed to the history.
 Note that `dvc exp gc` and `dvc exp remove` doesn't delete any objects in the
 DVC <abbr>cache</abbr>. In order to remove the cache objects, e.g. model files,
 intermediate artifacts, etc. related with the experiments, you can use `dvc gc`
-command. 
+command.
 
 `dvc gc` receives the same _scoping_ flags, `--workspace`, `--all-branches`,
-etc. After a `dvc exp gc --workspace` command, you can supply `dvc gc
---workspace` to remove all the experiment artifacts from the cache as well. 
-
+etc. After a `dvc exp gc --workspace` command, you can supply
+`dvc gc --workspace` to remove all the experiment artifacts from the cache as
+well.
 
 ## Removing Experiments in Remotes
 
@@ -209,7 +209,8 @@ done
 ## Deleting All Queued Experiments
 
 When you created experiments to be run in the queue with `--queue` option of
-`dvc exp run`, and later decide not to run them, you can remove them by `dvc exp remove --queue`. 
+`dvc exp run`, and later decide not to run them, you can remove them by
+`dvc exp remove --queue`.
 
 ```dvc
 $ dvc exp run --queue -S param=10
