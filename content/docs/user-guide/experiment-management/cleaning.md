@@ -164,6 +164,18 @@ When you want to delete _all the experiments not associated with a Git commit_,
 you can do so by `--all-commits` flag. It deletes the experiments in the
 workspace that are not committed to the history.
 
+### Deleting Experiment-Related Objects in DVC Cache
+
+Note that `dvc exp gc` and `dvc exp remove` doesn't delete any objects in the
+DVC <abbr>cache</abbr>. In order to remove the cache objects, e.g. model files,
+intermediate artifacts, etc. related with the experiments, you can use `dvc gc`
+command. 
+
+`dvc gc` receives the same _scoping_ flags, `--workspace`, `--all-branches`,
+etc. After a `dvc exp gc --workspace` command, you can supply `dvc gc
+--workspace` to remove all the experiment artifacts from the cache as well. 
+
+
 ## Removing Experiments in Remotes
 
 As you push the experiments with `dvc exp push`, remotes may be become cluttered
@@ -176,12 +188,14 @@ First get the list of experiments with their hash values.
 
 ```dvc
 $ git ls-remote origin 'refs/exps/*'
+98b237f8d8da0964c9fa60c6b27f1dd4a214dabf        refs/exps/17/2b1b9c885f10a73c76bd457a04878bee0e6d6f/exp-7424d
+794854926931e84ebc90e829dbc09b3085391659        refs/exps/19/0e697aa566482ebdb8bdb65401382e76b1bce5/exp-ec039
 ```
 
 Then we can use `git push -d` as any other Git reference:
 
 ```dvc
-$ git push -d origin refs/exps/path/to/ref
+$ git push -d origin refs/exps/17/2b1b9c885f10a73c76bd457a04878bee0e6d6f/exp-7424d
 ```
 
 If you want to delete **all** experiments in a remote, you can use a loop:
@@ -192,19 +206,10 @@ $ git ls-remote origin 'refs/exps/*' | cut -f 2 | while read exppath ; do
 done
 ```
 
-## Deleting Experiment-Related Objects in DVC Cache
-
-Note that `dvc exp gc` and `dvc exp remove` doesn't delete any objects in the
-DVC <abbr>cache</abbr>. In order to remove the cache objects, e.g. model files,
-intermediate artifacts, etc. related with the experiments, you can use `dvc gc`
-command.
-
 ## Deleting All Queued Experiments
 
 When you created experiments to be run in the queue with `--queue` option of
-`dvc exp run`, and later decide not to run them, you can remove by either
-`dvc exp gc --queued` or `dvc exp remove --queue`. Both of these commands remove
-_all_ queued experiments.
+`dvc exp run`, and later decide not to run them, you can remove them by `dvc exp remove --queue`. 
 
 ```dvc
 $ dvc exp run --queue -S param=10
