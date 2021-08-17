@@ -108,7 +108,7 @@ Last but not least, we bring you a great article from
 [Andreas Malekos](https://www.linkedin.com/in/andreasmalekos/), Chief Scientist
 at [Continuum Industries](https://www.continuum.industries/). In
 [the post](https://neptune.ai/blog/mlops-tool-stack-continuum-industries) he
-outlines the tool stack and MLOPs platform they use to do their work automating
+outlines the tool stack and MLOps platform they use to do their work automating
 and optimizing the design of linear infrastructure assets like water pipelines,
 overhead transmission lines, subsea power lines, or telecommunication cables.
 
@@ -135,8 +135,8 @@ our open source projects mature.
 
 Our docs team made up of
 [Jorge Orpinel](https://www.linkedin.com/in/jorgeorpinel/),
-[Emre Şahin](https://www.linkedin.com/in/iemresahin/),
-[Casper de la Costa](https://www.cdcl.ml), and
+[Emre Şahin](https://emresahin.net) , [Casper de la Costa](https://www.cdcl.ml),
+and
 [David de la Iglesia-Castro,](https://www.linkedin.com/in/david-de-la-iglesia-castro-b4b67b20a/)
 has been hard at work updating our docs to make sure you have what you need to
 be successful using our tools! Updates include:
