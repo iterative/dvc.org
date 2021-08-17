@@ -130,11 +130,11 @@ still a lot going on!
 ## Docs Updates
 
 This month we are introducing docs updates so that you will always be aware of
-the what has changed as our open source projects mature.
+what has changed as our open source projects mature.
 
 Our docs team made up of
 [Jorge Orpinel](https://www.linkedin.com/in/jorgeorpinel/),
-[Emre Şahin](https://emresahin.net) , [Casper de la Costa](https://www.cdcl.ml),
+[Emre Şahin](https://emresahin.net), [Casper de la Costa](https://www.cdcl.ml),
 and
 [David de la Iglesia-Castro,](https://www.linkedin.com/in/david-de-la-iglesia-castro-b4b67b20a/)
 has been hard at work updating our docs to make sure you have what you need to
@@ -143,12 +143,12 @@ be successful using our tools! Updates include:
 - Complete [DVCLive docs](https://dvc.org/doc/dvclive/user-guide)
 - [Command Reference Remote Modify](https://dvc.org/doc/command-reference/remote/modify)
 - We have a new [Glossary page](https://dvc.org/doc/user-guide/glossary) and a
-  fist Basic Concepts page
-  ([_DVC Wokspace_](https://dvc.org/doc/user-guide/basic-concepts/workspace))
+  first Basic Concepts page
+  ([_DVC Workspace_](https://dvc.org/doc/user-guide/basic-concepts/workspace))
 - [CML Docs migration to CML.Dev](https://cml.dev/doc)
-- [Added Videos to Get Started Metrics and Experiments pages](https://dvc.org/doc/start)
+- [Added Videos to Get Started: Metrics and Experiments pages](https://dvc.org/doc/start)
   and
-- [Checkpoints Guide](https://dvc.org/doc/user-guide/experiment-management/checkpoints)
+  [Checkpoints Guide](https://dvc.org/doc/user-guide/experiment-management/checkpoints)
 - Authentication examples for
   [Azure Blob remote storage](https://dvc.org/doc/command-reference/remote/modify#example-some-azure-authentication-methods)
   from Community member @meierale ❤️
