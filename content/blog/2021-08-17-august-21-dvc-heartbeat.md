@@ -129,9 +129,8 @@ still a lot going on!
 
 ## Docs Updates
 
-This month we are introducing docs updates! We will be including this in each
-month's Heartbeat so that you will always be aware of the what has changed as
-our open source projects mature.
+This month we are introducing docs updates so that you will always be aware of
+the what has changed as our open source projects mature.
 
 Our docs team made up of
 [Jorge Orpinel](https://www.linkedin.com/in/jorgeorpinel/),
@@ -141,15 +140,18 @@ and
 has been hard at work updating our docs to make sure you have what you need to
 be successful using our tools! Updates include:
 
-- [DVC Live User Guide](https://dvc.org/doc/dvclive/user-guide)
+- Complete [DVCLive docs](https://dvc.org/doc/dvclive/user-guide)
 - [Command Reference Remote Modify](https://dvc.org/doc/command-reference/remote/modify)
-- [Added Videos to Get Started Metrics and Experiments pages](https://dvc.org/doc/start)
-- [Added Video to Experiment Management: Checkpoints](https://dvc.org/doc/user-guide/experiment-management/checkpoints)
-- [A new Sharing Experiments Guide](https://dvc.org/doc/user-guide/experiment-management/sharing-experiments)
-- [Authentication examples for Azure Blob storage](https://dvc.org/doc/command-reference/remote/modify)
-  from Community member @meierale
-- [Clarification on how to set up Google Drive](https://dvc.org/doc/command-reference/remote/modify)
+- We have a new [Glossary page](https://dvc.org/doc/user-guide/glossary) and a
+  fist Basic Concepts page
+  ([_DVC Wokspace_](https://dvc.org/doc/user-guide/basic-concepts/workspace))
 - [CML Docs migration to CML.Dev](https://cml.dev/doc)
+- [Added Videos to Get Started Metrics and Experiments pages](https://dvc.org/doc/start)
+  and
+- [Checkpoints Guide](https://dvc.org/doc/user-guide/experiment-management/checkpoints)
+- Authentication examples for
+  [Azure Blob remote storage](https://dvc.org/doc/command-reference/remote/modify#example-some-azure-authentication-methods)
+  from Community member @meierale ❤️
 
 ## Batuhan Taskaya's Refactor Project hits First Page in HackerNews!
 
