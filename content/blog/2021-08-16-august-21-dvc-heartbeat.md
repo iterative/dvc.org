@@ -1,6 +1,6 @@
 ﻿---
 title: August'21 Heartbeat
-date: 2021-08-16
+date: 2021-08-17
 description: |
   Monthly updates are here! The new data centricity focus, a comparison of DVC, 
   MLFlow and Metaflow, tutorials and tool stacks, doc updates and more!
@@ -13,7 +13,7 @@ descriptionLong: |
   - 📖 Doc Updates,
   - 🎥 July Meetup Video available,
   - 🚀 and more!
-picture: 2021-08-16/august21cover.png
+picture: 2021-08-17/august21cover.png
 author: jeny_defigueiredo
 commentsUrl: https://discuss.dvc.org/t/august-heartbeat/843
 tags:
@@ -44,7 +44,7 @@ techniques to ensure quality data for ML projects. If the adroit summaries of
 complex concepts doesn't thrill you, the links to no less than 63 (😱) resources
 will get you on your way to data-centric nirvana.
 
-![Data Centric Framework](/uploads/images/2021/08-16/lj-miranda-data-centric.png)
+![Data Centric Framework](/uploads/images/2021/08-17/lj-miranda-data-centric.png)
 _LJ Miranda's Framework for putting data-centric machine learning into context
 [Source link](https://ljvmiranda921.github.io/notebook/2021/07/30/data-centric-ml/)_
 
@@ -62,7 +62,7 @@ well as her
 [Comparison Table](https://github.com/hzdr/mlops_comparison/blob/master/Content/Comparison_table.pdf).
 They will not disappoint!
 
-![Machine Learning Lifecycle](/uploads/images/2021-08-16/neda-sultova-2.png)
+![Machine Learning Lifecycle](/uploads/images/2021-08-17/neda-sultova-2.png)
 _Machine Learning Lifecycle
 [Source link](https://medium.com/geekculture/comparing-metaflow-mlflow-and-dvc-e84be6db2e2)_
 
@@ -90,17 +90,17 @@ href="https://www.analyticsvidhya.com/blog/2021/06/mlops-tracking-ml-experiments
 title="Tracking ML Experiments With Data Version Control"
 description="Amit Kulkarni's tutorial on getting started with DVC and tracking eperiments"
 link="https://analyticsvidhya.com"
-image="/uploads/images/2021-08-16/a-v.png"/> <external-link
+image="/uploads/images/2021-08-17/a-v.png"/> <external-link
 href="https://www.analyticsvidhya.com/blog/2021/06/mlops-versioning-datasets-with-git-dvc/"
 title="MLOps | Versioning Datasets with Git & DVC"
 description="Amit Kulkarni's tutorial on how to DVC works with Git to version your datasets."
 link="https://analyticsvidhya.com"
-image="/uploads/images/2021-08-16/a-v.png"/> <external-link
+image="/uploads/images/2021-08-17/a-v.png"/> <external-link
 href="https://www.analyticsvidhya.com/blog/2021/04/bring-devops-to-data-science-with-continuous-mlops/"
 title="Bring DevOps To Data Science With MLOps"
 description="Amit Kulkarni's tutorial on how to use CML to bring the CI/CD functionality of DevOps to your data science projects."
 link="https://analyticsvidhya.com"
-image="/uploads/images/2021-08-16/a-v.png"/>
+image="/uploads/images/2021-08-17/a-v.png"/>
 
 ## Andreas Malekos' MLOps Tool Stack at Continuum Industries
 
@@ -116,7 +116,7 @@ Amongst their tool stack are DVC and CML, and the article outlines what they
 like (!🙈Spoiler alert🙊! DVC making repeatability achievable) and the things
 that they don't like that still need to be improved.
 
-![Continuum Industries MLOps Tool Stack](/uploads/images/2021-08-16/continuum-tool-stack.png)
+![Continuum Industries MLOps Tool Stack](/uploads/images/2021-08-17/continuum-tool-stack.png)
 _Continuum Industries MLOps Tool Stack
 [Source link](https://neptune.ai/wp-content/uploads/Continuum-Industries-tool-stack-final.png)_
 
@@ -153,7 +153,7 @@ be successful using our tools! Updates include:
 
 ## Batuhan Taskaya's Refactor Project hits First Page in HackerNews!
 
-A python refactoring tool, [refactor](https://github.com/isidentical/refactor), created by team
+A [Refactor Project](https://github.com/isidentical/refactor) created by team
 Member [Batuhan Taskaya](https://twitter.com/isidentical) (AKA @isidentical),
 was shared by someone on HackerNews and made it to the main page! You can
 [catch all the comments here](https://news.ycombinator.com/item?id=28027016)!
@@ -204,7 +204,7 @@ href="https://www.meetup.com/DVC-Community-Virtual-Meetups/events/279723437/"
 title="DVC Office Hours - DVC and Streamlit Integration"
 description="Antoine Toubhans of Sicara shares his tutorial for using Streamlit with DVC to create a customizable web UI"
 link="https://meetup.com"
-image="/uploads/images/2021-08-16/streamlit-oh.png"/>
+image="/uploads/images/2021-08-17/streamlit-oh.png"/>
 
 ## Learning Opportunities
 
@@ -222,7 +222,7 @@ would like to see from us, we'd be grateful if you'd fill out
 [**this survey**](https://docs.google.com/forms/d/e/1FAIpQLSdmwjs0ZkxDdODfZTvSwP2bVW4JAVVdxiYhQPyW5dSbsZC8qg/viewform?pli=1)
 to help us plan! 🙏🏼
 
-![DVC Online Course survey](/uploads/images/2021/08-16/survey.png) _Help us plan
+![DVC Online Course survey](/uploads/images/2021/08-17/survey.png) _Help us plan
 our Online Course! 🙏🏼
 [Source link](https://docs.google.com/forms/d/e/1FAIpQLSdmwjs0ZkxDdODfZTvSwP2bVW4JAVVdxiYhQPyW5dSbsZC8qg/viewform?pli=1))_
 
