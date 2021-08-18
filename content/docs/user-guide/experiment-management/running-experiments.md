@@ -50,9 +50,9 @@ If there are no missing or changed outputs in the the workspace, the
 `dvc exp run` doesn't rerun the commands. DVC keeps track of the dependency
 graph and runs only the stages with missing or changed dependencies.
 
-> Example: For a pipeline composed of `extract`, `transform`, `train`,
-> `evaluate`, if a dependency of `train` stage has changed, the dependent stages
-> (`evaluate`) are also run.
+> 📬 For a pipeline composed of `extract`, `transform`, `train`, `evaluate`
+> stages, if a dependency of `transform` stage has changed, the dependent stages
+> (`train`, `evaluate`) are also run.
 
 #### Running Specific Stages
 
@@ -67,13 +67,12 @@ the last element of the command.
 
 #### Running a Stage Independently
 
-In some cases you may need to run a single stage in the pipeline, without
-running the depending stages. The `--single-item` (`-s`) flag allows to run the
-associated command of a single stage.
+In some cases you may need to run a stage without invoking its dependents. The
+`--single-item` (`-s`) flag allows to run the command of a single stage.
 
-> Example: If the pipeline has `extract`, `transform`, `train`, `evaluate`
-> stages and you only want to run the transform stage to check its outputs, you
-> can do so by:
+> 📬 If the pipeline has `extract`, `transform`, `train`, `evaluate` stages and
+> you only want to run the transform stage to check its outputs, you can do so
+> by:
 
 ```dvc
 $ dvc exp run --single-stage transform
@@ -93,7 +92,7 @@ Note that the order to run these pipelines is not specified. If you have a
 pipeline in `my-dir/dvc.yaml` and `another-dir/dvc.yaml`, either of these
 pipelines can be run first.
 
-### Interactive Reproduction
+#### Interactive Reproduction
 
 When you want to have more granular control over which stages are run, you can
 use `--interactive` flag. This flag allows you to confirm each stage before
@@ -104,7 +103,7 @@ $ dvc exp run --interactive
 Going to reproduce stage: 'train'. Are you sure you want to continue? [y/n]
 ```
 
-### Improvements over `dvc repro`
+#### Improvements over `dvc repro`
 
 The classical way of running the pipeline is using `dvc repro`. DVC introduced
 `dvc exp` as an _experiment management_ feature in version 2.0. _Experiment
@@ -117,7 +116,7 @@ suitable for machine learning experimentation.
 
 <abbr>Hyperparameters</abbr> are the values that modify the structure of an ML
 model and various aspects of project. Machine learning experimentation involves
-searching hyperparameters that solves the problem at hand in a better way.
+searching hyperparameters that improves the models or solutions.
 
 Hyperparameter dependencies in the pipelines are set using `--parameter` (`-p`)
 option. When a stage is added to the pipeline using `dvc stage add`, the
@@ -132,7 +131,6 @@ experiment with the new hyperparameter value.
 For a parameters file named `params.yaml` with the contents:
 
 ```yaml
----
 model:
   learning_rate: 0.0001
 ```
@@ -152,7 +150,7 @@ $ dvc stage add -n train \
 > project. It only tracks their updates in a granular and language-independent
 > way.
 
-### Updating parameters in experiments
+#### Updating parameters in experiments
 
 DVC allows to update the parameters from the command line when you are running
 the experiments. The `--set-param` (`-S`) option takes a parameter name and a
@@ -169,13 +167,13 @@ It also attaches these parameter values to the experiments, so that you can
 review the experiments along with their parameters with `dvc exp show` and
 `dvc exp diff`.
 
-### Using a non-default parameter file
+#### Using a non-default parameter file
 
 When you have a parameter value named _other than_ `params.yaml`, you need to
 specify its name in both stage description, and `dvc exp run`.
 
-DVC allows to use multiple parameters in YAML 1.2, JSON, TOML, and Python files.
-You can specify the parameter file name in `dvc stage add` command as:
+DVC allows to use multiple parameter files in YAML 1.2, JSON, TOML, and Python
+formats. You can specify the parameter file name in `dvc stage add` command as:
 
 ```dvc
 $ dvc stage add ... \
@@ -191,7 +189,7 @@ $ dvc exp run -S myparams.toml:learning_rate = 0.0001
 
 DVC updates the specified value in the file and runs the experiment.
 
-### Setting Multiple Parameters for Experiments
+#### Setting Multiple Parameters for Experiments
 
 You can set more than a single parameter with `--set-param` (`-S`) option in
 `dvc exp run`.
@@ -208,7 +206,7 @@ Another way is to supply a comma-delimited list to `-S`:
 $ dvc exp run -S learning_rate=0.001,units=128
 ```
 
-### How DVC updates the parameters?
+#### How DVC updates the parameters?
 
 DVC updates the parameters by parsing the parameters file and updating the
 specified value. Because of this it restricts the set of formats accepted to
@@ -233,9 +231,9 @@ $ git diff params.yaml
 
 ## The Experiments Queue
 
-The `--queue` flag in `dvc exp run` invocation tells to create an experiment in
-the experiment queue. When you add an experiment to the queue nothing is
-actually run. Instead, the experiment is put in a wait-list for later execution.
+The `--queue` flag in `dvc exp run` tells to create an experiment in the
+experiment queue. When you add an experiment to the queue nothing is actually
+run. Instead, the experiment is put in a wait-list for later execution.
 `dvc exp show` will mark queued experiments with an asterisk `*`.
 
 ```dvc
@@ -250,12 +248,11 @@ Queued experiment '4109ead' for future execution.
 ```
 
 Each experiment in the queue is derived from the workspace at the time of
-`dvc exp run --queue` command. If you make changes in the workspace after
-`dvc exp run --queue` command, they are not reflected in the experiment.
+`dvc exp run --queue` command. If you make changes in the workspace after adding
+an experiment to the queue, they are not reflected in the experiment.
 
 To prevent the side effects, queued experiments are run in temporary directories
-under `.dvc/tmp/exps`. Please see [Git and Experiments](#git-and-experiments)
-section for details.
+under `.dvc/tmp/exps`.
 
 Experiments in the queue are run by specifying `--run-all` flag.
 
@@ -265,12 +262,9 @@ $ dvc exp run --run-all
 ```
 
 `--run-all` runs all the experiments in the queue one-by-one. The order of
-execution is independent of their creation order, and can be considered random
-in effect.
+execution is independent of their creation order.
 
-To execute the experiments in parallel, please see the next section.
-
-### Running Experiments in Parallel
+#### Running Experiments in Parallel
 
 DVC allows to run the experiments in parallel by specifying the number of
 experiment processes:
@@ -279,11 +273,11 @@ experiment processes:
 $ dvc exp run --run-all --jobs 4
 ```
 
-Each experiment is run _serially_ in its own temporary directory. If there are
-common stages across these experiments that need to be run, each experiment runs
-those separately. For example, for a pipeline composed of the stages
-`A -> B -> C`, if `dvc exp run --queue -S param=value1` invalidates stage `A`,
-all the pipeline is run in all experiments.
+Each of these experiments is run _serially_ in its own temporary directory. If
+there are common stages across these experiments, they are run separately. For
+example, for a pipeline composed of the stages `A -> B -> C`, if
+`dvc exp run --queue -S param=value1` invalidates stage `A`, all the pipeline is
+run in all experiments.
 
 ⚠️ Parallel runs are experimental and may be unstable at this time. ⚠️ Make sure
 you're using a number of jobs that your environment can handle (no more than the
