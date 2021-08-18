@@ -27,6 +27,11 @@ experiments across <abbr>repository</abbr> copies via Git (and DVC) remotes.
 A working `git_remote` name (e.g. `origin`) or valid Git repo's URL is required,
 as well as an `experiment` name or hash (see `dvc exp run`) to push.
 
+> ⚠️ Only [SSH Git URLs] are valid for `git_remote`.
+
+[ssh git urls]:
+  https://git-scm.com/book/en/v2/Git-on-the-Server-The-Protocols#_the_protocols
+
 The first action of `dvc exp push` is to upload the `experiment` to the Git
 remote so it can be pulled later from other repo clones (equivalent to
 `git push <git_remote> refs/exps/<experiment>`). Use `dvc exp list <git_remote>`

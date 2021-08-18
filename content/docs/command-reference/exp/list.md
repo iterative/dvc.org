@@ -24,8 +24,13 @@ If a working `git_remote` name (e.g. `origin`) or valid Git repo's URL is
 provided, lists experiments in that <abbr>repository</abbr> instead (if any,
 based on the `dvc remote default`).
 
-> Note that this utility doesn't require an existing <abbr>DVC project</abbr> to
-> run from when a `git_remote` URL is given.
+> ⚠️ Note that only [SSH Git URLs] are valid for `git_remote`.
+
+[ssh git urls]:
+  https://git-scm.com/book/en/v2/Git-on-the-Server-The-Protocols#_the_protocols
+
+> This utility doesn't require an existing <abbr>DVC project</abbr> to run from
+> when a `git_remote` URL is given.
 
 Only experiments derived from the `HEAD` commit are listed by default (see the
 options below).

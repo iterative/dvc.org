@@ -27,6 +27,11 @@ experiments across <abbr>repository</abbr> copies via Git (and DVC) remotes.
 A working `git_remote` name (e.g. `origin`) or valid Git repo's URL is required,
 as well as an `experiment` name or hash (see `dvc exp run`) to pull.
 
+> ⚠️ Only [SSH Git URLs] are valid for `git_remote`.
+
+[ssh git urls]:
+  https://git-scm.com/book/en/v2/Git-on-the-Server-The-Protocols#_the_protocols
+
 The first action of `dvc exp pull` is to download the `experiment` so it's
 available in the local repository (equivalent to
 `git fetch <git_remote> refs/exps/<experiment>`). Use `dvc exp show` to explore
