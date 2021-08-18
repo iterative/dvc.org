@@ -281,130 +281,105 @@ The `url` and `rev_lock` subfields under `repo` are used to save the origin and
 
 ## Example: Chained imports
 
-DVC supports importing data importing data that was imported into the source
-repo, as long as all repos in the import chain are accessible from the final
-destination repo. Each source repo's default DVC remote must also be accessible
-from the final destination repo.
+DVC supports importing data that was itself imported into the source repo, as
+long as all the repos in the import chain (and their default remote storage) are
+accessible from the final destination repo.
 
-Consider an example where we start with two DVC repos, A and B, with the
-following contents:
+Consider an example with 3 DVC repos (A, B, and C). DVC repo `/repo/a` contains
+a `data.csv` file tracked with `dvc add`:
 
 ```
 /repo/a
-├── foo
-└── foo.dvc
-
-/repo/b
-├── bar
-└── bar.dvc
+├── data.csv
+└── data.csv.dvc
 ```
 
-Now, we create a third DVC repo, C, with the following contents:
-
-```
-/repo/c
-└── dir
-    ├── bar
-    ├── bar.dvc
-    ├── foo
-    ├── foo.dvc
-    ├── subdir
-    │   └── baz
-    └── subdir.dvc
-```
-
-Repo C, contains a data directory tracked with `dvc add` (`dir/subdir`), as well
-as two separate imports (`dir/foo` and `dir/bar`). The imports were created via:
+In repo B, we import `data.csv` from A and into a subdirectory:
 
 ```dvc
-# In repo C
-$ dvc import /repo/a foo -o dir/foo
-$ dvc import /repo/b bar -o dir/bar
+$ dvc import /repo/a data.csv --out training/data.csv
 ```
 
-If we examine the contents of `dir/foo.dvc`, we can see that it is imported from
-repo A:
+The project may of course have other files, for example:
+
+```
+/repo/b
+└── training
+    ├── data.csv
+    ├── data.csv.dvc
+    ├── labels
+    │   ├── test.txt
+    │   └── truth.txt
+    └── labels.dvc
+```
+
+> Notice that the `training/labels` directory is also tracked by DVC separately.
+
+If we examine `training/data.csv.dvc`, we can see that that the import source is
+repo A (`/repo/a`):
 
 ```yaml
-# dir/foo.dvc
-md5: d652071a8f0fd9f5c74d9348a468dec5
-frozen: true
 deps:
-- path: foo
+- path: data.csv
   repo:
     url: /repo/a
     rev_lock: 32ab3ddc8a0b5cbf7ed8cb252f93915a34b130eb
 outs:
 - md5: acbd18db4cc2f85cedef654fccc4a4d8
-  size: 3
-  path: foo
-outs:
-- md5: 630bd47b538d2a513c7d267d07e0bc44.dir
-  size: 3
-  nfiles: 1
-  path: subdir
+  size: 3234523
+  path: data.csv
 ```
 
-Now, lets say that we want to create a fourth DVC repo, D, and run the following
-command:
+Now lets imagine that we run the following command in our third repo, C:
 
 ```dvc
-# In repo D
-$ dvc import /repo/c dir
+$ dvc import /repo/b training
 ```
 
-This will result in the following directory structure, which contains two
-chained imports:
-
-- `foo` is imported from A into C into D
-- `bar` is imported from B into C into D
+This will result in the following directory structure, which contains a chained
+import and a regular one:
 
 ```
 /repo/d
-├── dir
-│   ├── bar
-│   ├── foo
-│   └── subdir
-│       └── baz
-└── dir.dvc
+├── training
+│   ├── data.csv
+│   └── labels
+│       ├── test.txt
+│       └── truth.txt
+└── training.dvc
 ```
 
-If we examine `dir.dvc`, we can see that it only references repo C.
+- `training/data.csv` is imported from A into B into C
+- `training/labels/` is imported from B into C directly
+
+However, `training.dvc` only references repo B (`/repo/b`):
 
 ```yaml
-# dir.dvc
-md5: bfdac3f7c77bdd89dcd1f6d22f5e39c5
-frozen: true
 deps:
-  - path: dir
+  - path: training
     repo:
-      url: /repo/c
+      url: /repo/b
       rev_lock: 15136ed84b59468b68fd66b8141b41c5be682ced
 outs:
   - md5: e784c380dd9aa9cb13fbe22e62d7b2de.dir
     size: 27
-    nfiles: 4
-    path: dir
+    nfiles: 3
+    path: training
 ```
 
-Each time that we run `dvc import dir` (from C), `dvc update dir` or
-`dvc pull dir`, DVC will first look up the contents of `dir` in repo C. At that
-point in time, DVC will see that `foo` and `bar` are chained imports from repos
-A and B, and then continue resolving the chain as needed (by looking up `foo`
-from A, and `bar` from B).
+Each time that we `dvc import` or `dvc update`* `training/` into C (or even
+`dvc pull` it) DVC will first look up the contents of `training` in B and notice
+that `training/data.csv` is itself an import. It will then resolve the chain as
+needed (finding `data.csv` in A).
 
-This means that all three repos A, B and C must be reachable when DVC commands
-are run from repo D, otherwise the import chain resolution would fail, and the
-`dvc import` command will error out.
+> \*Note that when running `dvc update training` from repo C, DVC will only
+> check whether or not `training/` changed in repo B. So if `data.csv` has only
+> changed in A, `training/data.csv` won't be updated in C until
+> `dvc update training/data.csv` has been run in B.
 
-⚠️ When fetching files imported from the chain, DVC will fetch them from their
-original source locations. This means that the default DVC remotes for all repos
-in the import chain must be accessible from the final destination repo. So in
-this example, a user running `dvc pull` from repo D must have the appropriate
-credentials to access the default remotes for all three source repos (A, B and
-C).
+This means both repos A and B must be reachable when `dvc import` runs in repo
+C, otherwise the import chain resolution would fail.
 
-> Note that when running `dvc update dir` from repo D, DVC will only check
-> whether or not `dir/` has changed in repo C. This means that even if `foo` has
-> changed in repo A, that change will not be propagated to repo D until
-> `dvc update dir/foo` has been run in repo C.
+The [default DVC remotes](/doc/command-reference/remote/default) for all repos
+in the import chain must also be accessible (repo C needs to have all the
+appropriate credentials).
