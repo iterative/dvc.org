@@ -52,11 +52,6 @@ tracked directories are supported). It should be relative to the root of the
 repo (absolute paths are supported when `url` is local). Note that DVC-tracked
 targets must be found in a `dvc.yaml` or `.dvc` file of the repo.
 
-⚠️ Source DVC repos should have a default
-[DVC remote](/doc/command-reference/remote) containing the target data for this
-command to work. The only exception is for local repos, where DVC will try to
-copy the data from its <abbr>cache</abbr> first.
-
 > See `dvc import-url` to download and track data from other supported locations
 > such as S3, SSH, HTTP, etc.
 
@@ -69,14 +64,19 @@ enable DVC efficiently determining whether the local copy is out of date.
 To actually [version the data](/doc/start/data-and-model-versioning), `git add`
 (and `git commit`) the import `.dvc` file.
 
-Note that `dvc repro` doesn't check or update import `.dvc` files (see
-`dvc freeze`), use `dvc update` to bring the import up to date from the data
-source.
+⚠️ Relevant notes and limitation:
 
-DVC includes limited support for chained imports (importing data that was
-imported into the source repo at `url`).
-
-> See [Chained imports](#example-chained-imports) below for more details.
+- Source DVC repos should have a default
+  [DVC remote](/doc/command-reference/remote) containing the target data for
+  this command to work.
+- The only exception to the above requirement is for local repos, where DVC will
+  try to copy the data from its <abbr>cache</abbr> first.
+- Limited support for [chained imports](#example-chained-imports) is available
+  (importing data that was itself imported into the source repo from another
+  one).
+- Note that `dvc repro` doesn't check or update import `.dvc` files (see
+  `dvc freeze`), use `dvc update` to bring the import up to date from the data
+  source.
 
 ## Options
 
