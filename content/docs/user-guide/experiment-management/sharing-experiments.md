@@ -28,7 +28,7 @@ origin  git@github.com:iterative/get-started-experiments.git (fetch)
 origin  git@github.com:iterative/get-started-experiments.git (push)
 
 $ dvc remote list
-storage https://remote.dvc.org/get-started-experiments
+storage s3://mybucket/my-dvc-store
 ```
 
 ## Uploading experiments to remotes
