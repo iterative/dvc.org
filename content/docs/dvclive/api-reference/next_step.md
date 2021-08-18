@@ -54,7 +54,5 @@ prepare an HTML report with all the _metrics logs_ logged in `path`.
 - `dvclive.error.InitializationError` - If `dvclive` has not been properly
   initialized (i.e. by calling [`dvclive.init()`] or [`dvclive.log()`]).
 
-...
-
 [`dvclive.init()`]: /doc/dvclive/api-reference/init
 [`dvclive.log()`]: /doc/dvclive/api-reference/log

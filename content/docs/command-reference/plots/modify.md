@@ -27,8 +27,8 @@ The path to the metrics file `target` is required. It must be listed in a
 the display properties to `dvc.yaml`.
 
 Property names are passed as [options](#options) to this command (prefixed with
-`--`). These are based on the full
-[Vega specification](https://vega.github.io/vega/docs/specification/).
+`--`). These are based on the [Vega-Lite](https://vega.github.io/vega-lite/)
+specification.
 
 Note that a secondary use of this command is to convert output or simple
 `dvc metrics` file into a plots file (see an
