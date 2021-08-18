@@ -47,12 +47,14 @@ The `dvc experiments` features are designed to support these main approaches:
    them in batches.
 1. Make experiments [persistent] by committing them to your
    <abbr>repository</abbr> history.
+1. Easily [share experiments] using Git and DVC remotes.
 
 [experiments]: /doc/user-guide/experiment-management/dvc-experiments
 [queue]: /doc/command-reference/exp/run#queueing-and-parallel-execution
 [checkpoints]: /doc/user-guide/experiment-management/checkpoints
 [persistent]:
   /doc/user-guide/experiment-management/dvc-experiments#persistent-experiments
+[share and isolate]: /doc/user-guide/experiment-management/sharing-experiments
 
 > 👨‍💻 See [Get Started: Experiments](/doc/start/experiments) for a hands-on
 > introduction to DVC experiments.

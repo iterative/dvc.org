@@ -7,9 +7,7 @@ def init(
     path: str = None,
     resume: bool = False,
     step: int = 0,
-    summary: bool = True,
-    html: bool = True,
-)
+    summary: bool = True)
 ```
 
 #### Usage:
@@ -26,7 +24,7 @@ It's usage is optional and focused on configuring the behavior of subsequent
 calls to [`dvclive.log()`] and [`dvclive.next_step()`].
 
 ⚠️ If `path` already exists when this functions is called, a cleanup will remove
-all existing `.tsv` files, `{path}.json` and `{path.html}`.
+all existing DVCLive related files.
 
 ## Parameters
 
@@ -45,14 +43,9 @@ all existing `.tsv` files, `{path}.json` and `{path.html}`.
   call, DVCLive will generate a _metrics summary_ (usable by `dvc metrics`). The
   _summary_ will be located at `{path}.json`.
 
-- `html` (`True` by default) - works only when DVCLive is used alongside DVC. If
-  `True`, upon each [`dvclive.next_step()`] call, DVC will prepare an _html
-  report_ with all the _metrics logs_ logged in `path`. The _html report_ will
-  be located at `{path}.html`.
-
 ## Exceptions
 
-- `dvclive.error.DvcLiveError` - If the directory `path` can't be created.
+None
 
 [`dvclive.log()`]: /doc/dvclive/api-reference/log
 [`dvclive.next_step()`]: /doc/dvclive/api-reference/next_step

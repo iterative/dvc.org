@@ -10,8 +10,12 @@ locations (e.g. Amazon S3 or Google Drive). You can use them to back up and
 [share data](/doc/use-cases/sharing-data-and-model-files) files and directories
 that don't fit inside Git repos.
 
-> See this [Git remotes guide] and `dvc remote add` for ifo. on setting them up.
+> See this [Git remotes guide] and `dvc remote add` for info. on setting them
+> up.  
+> ⚠️ Note that only [SSH Git URLs] support DVC experiment sharing.
 
+[ssh git urls]:
+  https://git-scm.com/book/en/v2/Git-on-the-Server-The-Protocols#_the_protocols
 [git remotes guide]:
   https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes
 
@@ -19,11 +23,11 @@ You can list your remotes with `git remote -v` and `dvc remote list`:
 
 ```dvc
 $ git remote -v
-origin  https://github.com/iterative/get-started-experiments (fetch)
-origin  https://github.com/iterative/get-started-experiments (push)
+origin  git@github.com:iterative/get-started-experiments.git (fetch)
+origin  git@github.com:iterative/get-started-experiments.git (push)
 
 $ dvc remote list
-storage https://remote.dvc.org/get-started-experiments
+storage s3://mybucket/my-dvc-store
 ```
 
 ## Uploading experiments
