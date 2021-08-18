@@ -138,7 +138,7 @@ done
 ## Example: Dedicated experiment directories
 
 A good way to isolate experiments is to create a separate directory outside the
-current <abbr>repository</abbr>  for each one.
+current <abbr>repository</abbr> for each one.
 
 > Another alternative is to use `dvc exp apply` and `dvc exp branch`, but here
 > we'll see how to use `dvc exp pull` to copy an experiment.
