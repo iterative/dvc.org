@@ -283,7 +283,7 @@ run in all experiments.
 you're using a number of jobs that your environment can handle (no more than the
 CPU cores).
 
-### Experiments outside of the Workspace
+#### Experiments in temporary directories
 
 If you want to isolate the experiments in their own directory, you can do so by
 `--temp` flag. This allows to continue your work while running the experiment.
@@ -309,21 +309,75 @@ $ nohup dvc exp run --temp > my-experiment-$(date +"%F-%H-%M-%S").log
 > afterwards. Git-ignored files/dirs are explicitly excluded from runs outside
 > the workspace to avoid committing unwanted files into experiments.
 
-### Cleaning Up the Experiment Queue
+#### Cleaning Up the Experiment Queue
 
-You can use `dvc exp remove --queue` or `dvc exp gc --queued` to remove the
-experiments from the queue. For detailed information see the [section on
-Cleaning-Up the Experiments][ug-clean-up].
+You can use `dvc exp remove --queue` to remove the experiments from the queue.
+For detailed information see the [section on Cleaning-Up the
+Experiments][ug-clean-up].
 
 [ug-clean-up]: /doc/user-guide/experiment-management/cleaning-up-experiments
 
-### How are experiments queued?
+#### How are experiments queued?
 
 The experiments are created similar to
 [Git stash](https://www.git-scm.com/docs/git-stash) when queued. The last
-experiment is found in `.git/refs/exps`, and the earlier ones are in the reflog.
-During `--run-all`, these references are checked out to `.dvc/exps/temp/` and
-run there.
+experiment queued is found in `.git/refs/exps`, and the earlier ones are in the
+reflog. During `--run-all`, these references are checked out to
+`.dvc/exps/temp/` and run there.
+
+#### Experiment Names
+
+Each experiment creates and tracks a project variation based on your
+<abbr>workspace</abbr> changes. Experiments will have an auto-generated name
+like `exp-bfe64` by default, which can be customized using the `--name` (`-n`)
+option.
+
+When you create an experiment, DVC generates a hash value from the contents of
+the experiment. This is shown when you use `--queue` option, e.g.,
+
+```dvc
+$ dvc exp run --queue -S model.conv_units=32
+Queued experiment '6518f17' for future execution.
+```
+
+After _running_ the experiment, DVC uses another auto-generated name to refer to
+the experiment. Typically these start with `exp-`, and can be set via
+`--name / -n` option of `dvc exp run`. So when you add an experiment by setting
+the name, you can see the hash value as _queued experiment_:
+
+```dvc
+$ dvc exp run --queue --name cnn-512 -S model.conv_units=512
+Queued experiment '86bd8f9' for future execution.
+```
+
+In `dvc exp show` you can see both of these names:
+
+```dvc
+$ dvc exp show --no-pager --no-timestamp \
+      --include-metrics loss --include-params model.conv_units
+```
+
+```dvctable
+┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━━━━━┓
+┃ neutral:**Experiment**              ┃ metric:**loss**    ┃ param:**model.conv_units** ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━━━━┩
+│ workspace               │ 0.23534 │ 64               │
+│ 3973b6b                 │ -       │ 16               │
+│ ├── aeaabb0 [exp-cb13f] │ 0.23534 │ 64               │
+│ ├── d0ee7ce [exp-5dccf] │ 0.23818 │ 32               │
+│ ├── 1533e4d [exp-88874] │ 0.24039 │ 128              │
+│ ├── b1f41d3 [cnn-256]   │ 0.23296 │ 256              │
+│ ├── 07e927f [exp-6c06d] │ 0.23279 │ 24               │
+│ ├── b2b8586 [exp-2a1d5] │ 0.25036 │ 16               │
+│ └── *86bd8f9            │ -       │ 512              │
+└─────────────────────────┴─────────┴──────────────────┘
+```
+
+When an experiment is not run yet, only the former hash value is shown.
+
+You can refer to the experiment in `dvc exp apply` or `dvc exp branch` after
+running the experiment with the name starting with `exp-`, or the name you have
+supplied with `dvc exp run --name`.
 
 ## Checkpoints
 
@@ -331,12 +385,10 @@ To track successive steps in a longer or deeper <abbr>experiment</abbr>, you can
 register checkpoints from your code. Each `dvc exp run` will resume from the
 last checkpoint.
 
-Checkpoints provide a way to train models iteratively, keeping the metrics
-associated with each epoch.
+Checkpoints provide a way to train models iteratively, keeping the metrics,
+models and other artifacts associated with each epoch.
 
-### Creating Checkpoints
-
-#### Adding Checkpoints to the Pipeline
+#### Adding Checkpoints to the pipeline
 
 There are various ways to add checkpoints to a project. In common, these all
 involve marking a stage <abbr>output</abbr> with `checkpoint: true` in
@@ -362,18 +414,18 @@ stages:
   ...
 ```
 
-#### Adding Checkpoints to Python Code
+#### Adding Checkpoints to Python code
 
-DVC is agnostic when it comes to modifying your model. Checkpoints are basically
-a mechanism to associate outputs of a pipeline with its metrics. Reading the
-model from previous iteration and writing a new model as a file are not handled
-by DVC. DVC captures the signal produced by the machine learning experimentation
-code and stores each successive checkpoint.
+DVC is agnostic when it comes to the language you use in your project.
+Checkpoints are basically a mechanism to associate outputs of a pipeline with
+its metrics. Reading the model from previous iteration and writing a new model
+as a file are not handled by DVC. DVC captures the signal produced by the
+machine learning experimentation code and stores each successive checkpoint.
 
-> 💡 DVC provides several automated ways to capture checkpoints for various
-> popular ML libraries in [DVClive](https://dvc.org/doc/dvclive). It may be more
-> productive to use checkpoints via DVClive if you're just starting. Here we
-> discuss adding checkpoints to the code manually.
+> 💡 DVC provides several automated ways to capture checkpoints for popular ML
+> libraries in [DVClive](https://dvc.org/doc/dvclive). It may be more productive
+> to use checkpoints via DVClive. Here we discuss adding checkpoints to a
+> project manually.
 
 If you are writing the project in Python, the easiest way to signal DVC to
 capture the checkpoint is to use `dvc.api.make_checkpoint()` function. It
@@ -386,7 +438,6 @@ The callback signals DVC to create a checkpoint at the end of each checkpoint.
 ```python
 class DVCCheckpointsCallback(tf.keras.callbacks.Callback):
     def on_epoch_end(self, epoch, logs=None):
-
             dvc.api.make_checkpoint()
 ...
 
@@ -410,16 +461,16 @@ A similar approach can be taken in PyTorch when using a loop to train a model:
     ...
 ```
 
-So, even if you're not using one of these libraries, you can use checkpoints in
-your project at each epoch/step by first recording all intermediate artifacts
-and metrics, then calling `dvc.api.make_checkpoint()`.
+Even if you're not using these libraries, you can use checkpoints in your
+project at each epoch/step by first recording all intermediate artifacts and
+metrics, then calling `dvc.api.make_checkpoint()`.
 
 #### Adding Checkpoints to Non-Python Code
 
-If your project is written in another language, you can mimic the behavior of
-`make_checkpoint` in your project. In essence `make_checkpoint` creates a
-special file named `DVC_CHECKPOINT` inside `.dvc/tmp/` to signal the checkpoint,
-and waits DVC to delete it.
+If you use another language in your project, you can mimic the behavior of
+`make_checkpoint`. In essence `make_checkpoint` creates a special file named
+`DVC_CHECKPOINT` inside `.dvc/tmp/` to signal DVC, and waits the file to be
+removed.
 
 ```r
 
@@ -452,7 +503,7 @@ if dvc_root != ""
    end;
 ```
 
-### Running the Experiments with Checkpoints
+#### Running the Experiments with Checkpoints
 
 Running the experiments with checkpoints is no different than running the
 experiments pipeline.
@@ -480,70 +531,7 @@ their outputs). This is useful for re-training ML models, for example.
 > Note that queuing an experiment that uses checkpoints implies `--reset`,
 > unless a `--rev` is provided (refer to the previous section).
 
-<details>
-
-### How are checkpoints captured?
+#### How are checkpoints captured?
 
 Instead of a single commit, checkpoint experiments have multiple commits under
 the custom Git reference (in `.git/refs/exps`), similar to a branch.
-
-</details>
-
-## Git and Experiments
-
-Experiments are custom
-[Git references](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
-(found in `.git/refs/exps`) with a single commit based on `HEAD` (not checked
-out by DVC). Note that these commits are not pushed to the Git remote by default
-
-## Experiment Names
-
-Each experiment creates and tracks a project variation based on your
-<abbr>workspace</abbr> changes. Experiments will have an auto-generated name
-like `exp-bfe64` by default, which can be customized using the `--name` (`-n`)
-option.
-
-When you create an experiment, DVC generates a hash value from the contents of
-the experiment. This is shown when you use `--queue` option, e.g.,
-
-```dvc
-$ dvc exp run --queue -S model.conv_units=32
-Queued experiment '6518f17' for future execution.
-```
-
-After _running_ the experiment, DVC uses another auto-generated name to refer to
-the experiment. Typically these start with `exp-`, and can be set via
-`--name / -n` option of `dvc exp run`. So when you add an experiment by setting
-the name, you can see the hash value as _queued experiment_:
-
-```dvc
-$ dvc exp run --queue --name cnn-512 -S model.conv_units=512
-Queued experiment '86bd8f9' for future execution.
-```
-
-In `dvc exp show` you can see both of these names:
-
-```dvc
-$ dvc exp show --no-pager --no-timestamp \
-      --include-metrics loss --include-params model.conv_units
-
-┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━━━━━┓
-┃ Experiment              ┃ loss    ┃ model.conv_units ┃
-┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━━━━┩
-│ workspace               │ 0.23534 │ 64               │
-│ 3973b6b                 │ -       │ 16               │
-│ ├── aeaabb0 [exp-cb13f] │ 0.23534 │ 64               │
-│ ├── d0ee7ce [exp-5dccf] │ 0.23818 │ 32               │
-│ ├── 1533e4d [exp-88874] │ 0.24039 │ 128              │
-│ ├── b1f41d3 [cnn-256]   │ 0.23296 │ 256              │
-│ ├── 07e927f [exp-6c06d] │ 0.23279 │ 24               │
-│ ├── b2b8586 [exp-2a1d5] │ 0.25036 │ 16               │
-│ └── *86bd8f9            │ -       │ 512              │
-└─────────────────────────┴─────────┴──────────────────┘
-```
-
-When an experiment is not run yet, only the former hash value is shown.
-
-You can refer to the experiment in `dvc exp apply` or `dvc exp branch` after
-running the experiment with the name starting with `exp-`, or the name you have
-supplied with `dvc exp run --name`.
