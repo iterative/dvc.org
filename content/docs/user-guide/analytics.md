@@ -63,4 +63,3 @@ the active user or for everyone in the system, respectively.
 
 Another way to disable analytics is to set the environment variable
 `DVC_NO_ANALYTICS` (will override config).
-
