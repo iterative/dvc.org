@@ -15,7 +15,7 @@ positional arguments:
 ## Description
 
 Deletes one or more experiments, indicated by name (see `dvc exp run`) or
-revision (only queued experiments).
+commit SHA (only queued experiments).
 
 With `--queue`, the list of experiments awaiting execution is cleared instead.
 
