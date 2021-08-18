@@ -3,16 +3,16 @@
 ## Motivation
 
 Machine Learning and Data Science projects usually involve experimentation.
-These experiments' goals can range from finding good hyperparameters to
-testing for data and concept drift. DVC 2 introduced a new set of commands to
-manage experiments with minimum boilerplate. It allows to run experiments
-defined by pipelines, track their associated data and model files, set
-parameters for each, push experiment parameters and code to Git remotes without
-committing them, create branches and persist them in Git. 
+These experiments' goals can range from finding good hyperparameters to testing
+for data and concept drift. DVC 2 introduced a new set of commands to manage
+experiments with minimum boilerplate. It allows to run experiments defined by
+pipelines, track their associated data and model files, set parameters for each,
+push experiment parameters and code to Git remotes without committing them,
+create branches and persist them in Git.
 
 In this part of the DVC User's Guide we explain how DVC runs the experiments,
 set the parameters, use multiple jobs to run the experiments in parallel, or
-running them in temporary directories. 
+running them in temporary directories.
 
 If this is the first time you are introduced into Machine Learning
 experimentation, you may find a quicker introduction to the most salient
@@ -22,7 +22,8 @@ features in the [Experiment's Trail](/doc/start/experiments/).
 
 DVC uses pipelines composed of <abbr>stages</abbr>. Stages are granular and
 interdependent steps that has a command, a set of dependencies, and output.
-Stages can depend onto each other via their outputs that build a <abbr>DAG</abbr>.
+Stages can depend onto each other via their outputs that build a
+<abbr>DAG</abbr>.
 
 DVC employs the pipeline to run the experiment commands. Each pipeline has an
 end-point, which is the last command in the pipeline. DVC also tracks artifacts
@@ -45,37 +46,34 @@ using:
 $ dvc exp run
 ```
 
-If there are no missing or changed outputs in the the workspace, the `dvc exp
-run` doesn't rerun the commands. DVC keeps track of the dependency graph and
-runs only the stages with missing or changed dependencies. 
+If there are no missing or changed outputs in the the workspace, the
+`dvc exp run` doesn't rerun the commands. DVC keeps track of the dependency
+graph and runs only the stages with missing or changed dependencies.
 
 > Example: For a pipeline composed of `extract`, `transform`, `train`,
-> `evaluate`, if a dependency of `train` stage has changed, the dependent
-> stages (`evaluate`) are also run.
+> `evaluate`, if a dependency of `train` stage has changed, the dependent stages
+> (`evaluate`) are also run.
 
 #### Running Specific Stages
 
 By default `dvc exp run` uses `dvc.yaml` file in the current directory. You can
-specify other directories or pipeline elements to run. These are specified as
+specify `dvc.yaml` in other directories or stages to run. These are specified as
 the last element of the command.
-
-Pipelines can be of the following:
 
 - A particular `dvc.yaml` file: `dvc exp run my-project/dvc.yaml`
 - A stage from the default `dvc.yaml` file: `dvc exp run extract`
 - A stage from a specific `dvc.yaml` file:
   `dvc exp run my-project/dvc.yaml:extract`
-- A set of stages from the default `dvc.yaml` file:
-  `dvc exp run --glob 'train-*'`
 
 #### Running a Stage Independently
 
 In some cases you may need to run a single stage in the pipeline, without
-running the depending stages. The `--single-item` (`-s`) flag allows
-to run the associated command of a single stage.
+running the depending stages. The `--single-item` (`-s`) flag allows to run the
+associated command of a single stage.
 
-> Example: If the pipeline has `extract`, `transform`, `train`, `evaluate` stages and you
-> only want to run the transform stage to check its outputs, you can do so by:
+> Example: If the pipeline has `extract`, `transform`, `train`, `evaluate`
+> stages and you only want to run the transform stage to check its outputs, you
+> can do so by:
 
 ```dvc
 $ dvc exp run --single-stage transform
@@ -84,8 +82,8 @@ $ dvc exp run --single-stage transform
 #### Running all Pipelines
 
 In larger projects, there may be more than a single `dvc.yaml` file defining
-multiple pipelines. In this case, you can run all pipelines with a
-single command.
+multiple pipelines. In this case, you can run all pipelines with a single
+command.
 
 ```dvc
 $ dvc exp run --all-pipelines
@@ -105,19 +103,6 @@ running.
 $ dvc exp run --interactive
 Going to reproduce stage: 'train'. Are you sure you want to continue? [y/n]
 ```
-
-### Recursive Search for Pipelines
-
-If you have a directory tree containing multiple pipelines and want to reproduce
-all starting from a root directory, you can do so by `--recursive` (`-R`) flag.
-For a directory tree, it starts from the root and descends into subdirectories.
-
-```dvc
-$ dvc exp run -R my-sub-project/
-```
-
-The above command begins from `my-sub-project/dvc.yaml`, and proceeds to
-`my-sub-project/sub-module/...` to run all the pipelines.
 
 ### Improvements over `dvc repro`
 
