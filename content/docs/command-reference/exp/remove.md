@@ -5,7 +5,7 @@ Delete specific `dvc experiments` from the <abbr>project</abbr>.
 ## Synopsis
 
 ```usage
-usage: dvc experiments remove [-h] [-q | -v] [--queue | -w | -A] 
+usage: dvc experiments remove [-h] [-q | -v] [--queue | -A]
                       [<experiment> [<experiment> ...]]
 
 positional arguments:
@@ -24,9 +24,6 @@ With `--queue`, the list of experiments awaiting execution is cleared instead.
 
 - `--queue` - remove all experiments that haven't been run yet (defined via
   `dvc exp run --queue`).
-
-- `-w`, `--workspace` - remove all experiments based on current commits(defined via
-  `dvc exp run -w`).
 
 - `-A`, `--all` - remove all experiments in this repo(defined via
   `dvc exp run -A`).
@@ -63,7 +60,7 @@ $ dvc exp list
 master:
         exp-e6c97
         exp-23d5a
-$ dvc exp remove -w
+$ dvc exp remove -A
 
 $ dvc exp list
 
