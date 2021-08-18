@@ -249,10 +249,9 @@ data science experiments.
 - `--desc <text>` - user description of the stage (optional). This doesn't  
   affect any DVC operations.
 
-- `--live <path>` - specify the directory `path` for
-  [DVCLive](/doc/dvclive/user-guide/dvclive-with-dvc) to write logs in. `path`
-  will be tracked (<abbr>cached</abbr>) by DVC. Saved in the `live` field of
-  `dvc.yaml`.
+- `--live <path>` - specify the directory `path` for `DVCLive` to write logs in.
+  `path` will be tracked (<abbr>cached</abbr>) by DVC. Saved in the `live` field
+  of `dvc.yaml`.
 
 - `--live-no-cache <path>` - the same as `--live` except that the `path` is not
   tracked by DVC. Useful if you prefer to track it with Git.

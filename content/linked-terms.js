@@ -22,5 +22,9 @@ module.exports = [
   {
     matches: 'dvc experiments',
     url: '/doc/command-reference/exp'
+  },
+  {
+    matches: 'DVCLive',
+    url: '/doc/dvclive'
   }
 ]

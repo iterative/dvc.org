@@ -87,8 +87,8 @@ $ dvc stage add --name train --deps data/MNIST --deps train.py \
               --params seed,lr,weight_decay --live dvclive python train.py
 ```
 
-The `--live dvclive` option enables our special logger [DVCLive](/doc/dvclive),
-which helps you register checkpoints from your code.
+The `--live dvclive` option enables our special logger `DVCLive`, which helps
+you register checkpoints from your code.
 
 The checkpoints need to be enabled in DVC at the pipeline level. The
 `-c / --checkpoint` option of the `dvc stage add` command defines the checkpoint
