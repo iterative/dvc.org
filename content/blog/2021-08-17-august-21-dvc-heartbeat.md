@@ -141,7 +141,6 @@ has been hard at work updating our docs to make sure you have what you need to
 be successful using our tools! Updates include:
 
 - Complete [DVCLive docs](https://dvc.org/doc/dvclive/user-guide)
-- [Command Reference Remote Modify](https://dvc.org/doc/command-reference/remote/modify)
 - We have a new [Glossary page](https://dvc.org/doc/user-guide/glossary) and a
   first Basic Concepts page
   ([_DVC Workspace_](https://dvc.org/doc/user-guide/basic-concepts/workspace))
