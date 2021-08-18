@@ -19,8 +19,8 @@ You can list your remotes with `git remote -v` and `dvc remote list`:
 
 ```dvc
 $ git remote -v
-origin  https://github.com/iterative/get-started-experiments (fetch)
-origin  https://github.com/iterative/get-started-experiments (push)
+origin  git@github.com:iterative/get-started-experiments.git (fetch)
+origin  git@github.com:iterative/get-started-experiments.git (push)
 
 $ dvc remote list
 storage https://remote.dvc.org/get-started-experiments
