@@ -54,7 +54,7 @@ The `dvc experiments` features are designed to support these main approaches:
 [checkpoints]: /doc/user-guide/experiment-management/checkpoints
 [persistent]:
   /doc/user-guide/experiment-management/dvc-experiments#persistent-experiments
- [share and isolate]: /doc/user-guide/experiment-management/sharing-experiments
+[share and isolate]: /doc/user-guide/experiment-management/sharing-experiments
 
 > 👨‍💻 See [Get Started: Experiments](/doc/start/experiments) for a hands-on
 > introduction to DVC experiments.

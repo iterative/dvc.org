@@ -17,9 +17,8 @@ positional arguments:
 
 ## Description
 
-The `dvc exp push` and `dvc exp pull` commands are the means for
-[sharing experiments] across <abbr>repository</abbr> copies via Git and DVC
-remotes.
+The `dvc exp push` and `dvc exp pull` commands are the means for [sharing
+experiments] across <abbr>repository</abbr> copies via Git and DVC remotes.
 
 [sharing experiments]: /doc/user-guide/experiment-management/sharing-experiments
 
