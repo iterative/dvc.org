@@ -1,12 +1,12 @@
 ---
-title: Switching the Problem for Your Pre-trained Models
+title: Switching the Dataset for Your Pre-trained Models
 date: 2021-09-14
 description: |
   You can easily switch datasets for pre-trained models with DVC.
 descriptionLong: |
   Sometimes your problem definition changes and you need to update your dataset.
 picture: 2021-09-14/cats-and-dogs.png
-pictureComment: Switching the Problem for Your Pre-trained Models
+pictureComment: Switching the Dataset for Your Pre-trained Models
 author: milecia_mcgregor
 commentsUrl: https://discuss.dvc.org/t/tuning-hyperparameters-with-reproducible-experiments/821
 tags:
@@ -31,10 +31,22 @@ new experiments.
 
 ## The original pre-trained model
 
+For this post, we'll be changing the dataset from bees and ants to cats and
+dogs. You can clone
+[the GitHub repo](https://github.com/iterative/pretrained-model-demo) and check
+out [this post](https://dvc.org/blog/transfer-learning-experiments) on how we
+experimented with both AlexNet and SqueezeNet for an image classification model.
+
+We'll take the model training a step further and see what happens when we
+completely change the dataset. Then compare the results to the model we get from
+starting with AlexNet or SqueezeNet.
+
 ## Updating the dataset with DVC
 
 ## Running new experiments on the pre-trained model
 
 ## The updated model
+
+## Building a new model from AlexNet or SqueezeNet
 
 ## Conclusion
