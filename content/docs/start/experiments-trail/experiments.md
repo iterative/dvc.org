@@ -21,7 +21,7 @@ These commands are run in the [`get-started-experiments`][gse] project. You can
 run the commands in this document after cloning the repository and installing
 the requirements.
 
-### 👥 Clone the project and create virtual environment
+### ⚡ Clone the project and create virtual environment
 
 Please clone the project and create a virtual environment.
 
@@ -36,7 +36,7 @@ $ . .venv/bin/activate
 $ python -m pip install -r requirements.txt
 ```
 
-### 📀 Get the data set
+### ✅ Get the data set
 
 The repository we cloned doesn't contain the dataset. In order to get the
 dataset we use `dvc pull` to update the missing data files. `dvc pull` is used
@@ -49,7 +49,7 @@ $ dvc pull
 The repository already contains the necessary configuration to run the
 experiments.
 
-## ⏲ Preparing a project for DVC experiments
+## 💡 Preparing a project for DVC experiments
 
 In this document we assume that there is already a configured DVC project to
 simplify the introduction. DVC experiments require a DVC pipeline defined in the
@@ -108,7 +108,7 @@ It runs the specified command that writes the metrics values to `metrics.json`.
 
 <details>
 
-### 📜 If you used `dvc repro` before
+### 📖 If you used `dvc repro` before
 
 Earlier versions of DVC uses `dvc repro` to run the pipeline. If you already
 have a DVC project, you may already be using `dvc repro`.
@@ -128,7 +128,7 @@ not needed.
 
 </details>
 
-## 🧥 Running the experiment by setting parameters
+## ⏲ Running the experiment by setting parameters
 
 Now let's do some more experimentation.
 
@@ -328,7 +328,7 @@ You can refer to the experiment in `dvc exp apply` or `dvc exp branch` after
 running the experiment with the name starting with `exp-`, or the name you have
 supplied with `dvc exp run --name`.
 
-## 🪐 Go Further
+## ⭐ Go Further
 
 There are many other features of `dvc exp`, like cleaning up the unused
 experiments, sharing them without committing into Git or getting differences
