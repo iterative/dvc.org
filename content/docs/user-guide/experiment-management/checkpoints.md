@@ -240,21 +240,23 @@ Now it's time to take a look at the metrics we're working with.
 _If you don't have a number of training epochs defined and you don't terminate
 the process, the experiment will run for 100 epochs._
 
-### checkpoint backup
+### Caching checkpoints
 
-We can auto push the checkpoint refs to some git remote repository and cache to the
-default DVC remote. To enable this, two envs need to be setted:
+We can automatically push the checkpoints' code & data to your Git & DVC remotes
+while an experiment is running. To enable this, two environment variables need
+to be set:
 
-`DVC_EXP_GIT_REMOTE`: Remote Git repo for the exp refs to back up, can be a URL or 
-a name (origin, myremote, etc). 
-`DVC_EXP_AUTO_PUSH`: trigger of the auto push. (true, 1, y, yes) for Ture.
+- `DVC_EXP_AUTO_PUSH`: Enable auto push (`true`, `1`, `y`, `yes`)
+- `DVC_EXP_GIT_REMOTE`: Git repository (can be a URL or a name such as `origin`,
+  `myremote`, etc.)
 
-and a default DVC remote is also needed. Remote backup will be done automatically
-after every iteration. There is a validation in the beginning of the iteration, 
-if one of `DVC_EXP_GIT_REMOTE` and DVC default remote cache is not setted , it 
-will raise exception and error out. But if the validation passed and the auto push 
-fails during the running it will only give a warning and continue the process.
+Note that a default DVC remote is also needed so that the corresponding data can
+be pushed. With this configuration, `dvc exp push` will be done automatically
+after every iteration.
 
+⚠️ If either Git or DVC remotes are missing, the experiment will fail. However,
+if a checkpoint push doesn't succeed (due to rate limiting etc.) a warning will
+be printed, but the experiment will continue running as normal.
 
 ## Viewing checkpoints
 
