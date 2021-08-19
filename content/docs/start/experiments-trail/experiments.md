@@ -146,27 +146,6 @@ Experiment results have been applied to your workspace.
 
 <details>
 
-### How DVC updates the parameters?
-
-When you run `dvc exp run` with `--set-param`, it updates the parameter file.
-(Default: `params.yaml`) We can see the effect of DVC updating the parameters by
-looking at the diff.
-
-```dvc
-$ git diff params.yaml
-```
-
-```git
--model:
--  conv_units: 16
-+model:
-+  conv_units: 24
-```
-
-</details>
-
-<details>
-
 ## 👟👟 Run multiple experiments in parallel
 
 Instead of running the experiments one-by-one, we can define them to run in a
