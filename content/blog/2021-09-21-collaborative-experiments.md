@@ -31,7 +31,28 @@ remotes.
 
 ## Getting the project
 
+To follow along, you can fork [this repo]() as one of your own GitHub repos.
+That way you'll have push and pull access when we start working with DVC. This
+project already has DVC initialized and set up to run experiments, but if you
+want to follow along with a project you're currently working on, make sure to
+check out the steps to initialize a DVC pipeline in
+[the Getting Started doc](https://dvc.org/doc/start).
+
 ## Setting up your DVC remotes
+
+When you want to share the progress you've made with training your model, that
+usually means you need to find a way to bundle the code, data, and
+hyperparameters. This could be a complicated process if you're working with GBs
+worth of data or you have a large number of hyperparameters.
+
+That's one of the uses for DVC and why we'll be working with remotes. To start
+with, make sure your GitHub remote is configured correctly. It should use the
+SSH version of the URL. This is so DVC can authenticate the pushes and pulls
+from GitHub it needs as part of experiment sharing.
+
+The way DVC works is by storing custom Git refs in your repo with metadata that
+defines the experiment. You can learn more about how DVC uses custom Git refs in
+[this post](https://dvc.org/blog/experiment-refs).
 
 ## Pulling experiments
 
