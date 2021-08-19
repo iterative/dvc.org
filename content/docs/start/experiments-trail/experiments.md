@@ -281,53 +281,6 @@ To switch to the new branch run:
 
 You can then checkout and continue from working this branch as usual.
 
-## 📛 Note on experiment names
-
-When you create an experiment, DVC generates a hash value from the contents of
-the experiment. This is shown when you use `--queue` option, e.g.,
-
-```dvc
-$ dvc exp run --queue -S model.conv_units=32
-Queued experiment '6518f17' for future execution.
-```
-
-After _running_ the experiment, DVC uses another auto-generated name to refer to
-the experiment. Typically these start with `exp-`, and can be set via
-`--name / -n` option of `dvc exp run`. So when you add an experiment by setting
-the name, you can see the hash value as _queued experiment_:
-
-```dvc
-$ dvc exp run --queue --name cnn-512 -S model.conv_units=512
-Queued experiment '86bd8f9' for future execution.
-```
-
-In `dvc exp show` you can see both of these names:
-
-```dvc
-$ dvc exp show --no-pager --no-timestamp \
-      --include-metrics loss --include-params model.conv_units
-
-┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━━━━━┓
-┃ Experiment              ┃ loss    ┃ model.conv_units ┃
-┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━━━━┩
-│ workspace               │ 0.23534 │ 64               │
-│ 3973b6b                 │ -       │ 16               │
-│ ├── aeaabb0 [exp-cb13f] │ 0.23534 │ 64               │
-│ ├── d0ee7ce [exp-5dccf] │ 0.23818 │ 32               │
-│ ├── 1533e4d [exp-88874] │ 0.24039 │ 128              │
-│ ├── b1f41d3 [cnn-256]   │ 0.23296 │ 256              │
-│ ├── 07e927f [exp-6c06d] │ 0.23279 │ 24               │
-│ ├── b2b8586 [exp-2a1d5] │ 0.25036 │ 16               │
-│ └── *86bd8f9            │ -       │ 512              │
-└─────────────────────────┴─────────┴──────────────────┘
-```
-
-When an experiment is not run yet, only the former hash value is shown.
-
-You can refer to the experiment in `dvc exp apply` or `dvc exp branch` after
-running the experiment with the name starting with `exp-`, or the name you have
-supplied with `dvc exp run --name`.
-
 ## ⭐ Go Further
 
 There are many other features of `dvc exp`, like cleaning up the unused
