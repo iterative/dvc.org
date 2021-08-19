@@ -8,7 +8,7 @@ descriptionLong: |
 picture: 2021-08-24/pretrained-models.png
 pictureComment: Using Experiments to Improve Pre-trained Models
 author: milecia_mcgregor
-commentsUrl: https://discuss.dvc.org/t/pretrained-model-experiments/727
+commentsUrl: https://discuss.dvc.org/t/using-experiments-for-transfer-learning/846
 tags:
   - MLOps
   - Experiments
