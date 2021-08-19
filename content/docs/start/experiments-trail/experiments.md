@@ -8,8 +8,8 @@ In machine learning projects, number of <abbr>experiments</abbr> grow rapidly.
 DVC can track these experiments, list their most relevant parameters and
 metrics, and commit only the ones that we need to Git.
 
-In this section, we will explore the basic features of DVC experiment management
-with [`get-started-experiments`][gse] project.
+In this section, we explore the basic features of DVC experiment management with
+[`get-started-experiments`][gse] project.
 
 [gse]: https://github.com/iterative/get-started-experiments
 
@@ -80,7 +80,7 @@ change in `data/images/`, `model.conv_units` or `train.epochs`, we run an
 experiment using `src/train.py` that produces a new `metrics.json` file.
 
 You can get more information on [pipelines], and [parameters] in other sections
-of this guide.
+of the documentation.
 
 [pipelines]: /doc/start/data-pipelines
 [parameters]: /doc/start/metrics-parameters-plots
@@ -227,28 +227,8 @@ $ dvc exp show --no-timestamp \
 
 ## 🔏 Persisting experiments
 
-After selecting an experiment from the table, you can commit the hyperparameters
-and other dependencies that produced this successful experiment to your Git
-history.
-
-`dvc exp apply` brings back all specific artifacts and parameters from the
-experiment to the <abbr>workspace</abbr>.
-
-```dvc
-$ dvc exp apply exp-cb13f
-Changes for experiment 'exp-cb13f' have been applied to your current workspace.
-```
-
-We can see the changes in the repository and commit them to Git.
-
-```dvc
-$ git diff
-$ git add .
-$ git commit -m "Successful experiment"
-```
-
-It may also be desirable to commit a particular experiment to a Git branch
-directly, without bringing to the workspace.
+After selecting an experiment from the table, you can create a Git branch that
+contains the experiment with all its related files.
 
 ```dvc
 $ dvc exp branch exp-05e87 "cnn-256"
