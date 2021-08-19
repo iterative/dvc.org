@@ -9,7 +9,7 @@ import { logEvent } from '../../utils/front/ga'
 
 import styles from './styles.module.css'
 
-const VERSION = `2.6.3`
+const VERSION = `3.6.3`
 
 enum OS {
   UNKNOWN = '...',
