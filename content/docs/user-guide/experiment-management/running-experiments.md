@@ -8,7 +8,7 @@ running them in queues or temporary directories.
 > experimentation, you may find a quicker introduction to the most salient
 > features of DVC in [Get Started: Experiments](/doc/start/experiments/).
 
-## The Pipeline
+## The pipeline
 
 DVC relies on <abbr>pipelines</abbr> that codify experiment workflows (code,
 <abbr>stages</abbr>, <abbr>parameters</abbr>, <abbr>outputs</abbr>, etc.) in a
@@ -22,68 +22,69 @@ DVC relies on <abbr>pipelines</abbr> that codify experiment workflows (code,
 
 ### Running the pipeline
 
-You can run the pipeline defined in `dvc.yaml` file with the default settings
-using:
+You can run the pipeline using default settings using `dvc exp run`:
 
 ```dvc
 $ dvc exp run
 ```
 
-If there are no missing or changed outputs in the the workspace, the
-`dvc exp run` doesn't rerun the commands. DVC keeps track of the dependency
-graph and runs only the stages with missing or changed dependencies.
+If there are no missing or changed outputs in the the workspace, DVC doesn't
+rerun the commands. DVC keeps track of the dependency graph and runs only the
+stages with missing or changed dependencies.
 
-> 📬 For a pipeline composed of `extract`, `transform`, `train`, `evaluate`
-> stages, if a dependency of `transform` stage has changed, the dependent stages
-> (`train`, `evaluate`) are also run.
+> Example: for a pipeline composed of `prepare`, `train`, and `evaluate` stages,
+> if a dependency of `prepare` stage has changed, the dependent stages (`train`,
+> `evaluate`) are also run.
 
-#### Running Specific Stages
+#### Running specific stages
 
-By default `dvc exp run` uses `dvc.yaml` file in the current directory. You can
-specify `dvc.yaml` in other directories or stages to run. These are specified as
-the last element of the command.
+By default DVC uses `./dvc.yaml` (in the current directory). You can specify
+`dvc.yaml` files in other directories, or even specific stages to run. These are
+given as the last argument to the `dvc exp run`. Examples:
 
-- A particular `dvc.yaml` file: `dvc exp run my-project/dvc.yaml`
-- A stage from the default `dvc.yaml` file: `dvc exp run extract`
-- A stage from a specific `dvc.yaml` file:
-  `dvc exp run my-project/dvc.yaml:extract`
+```dvc
+$ dvc exp run my-project/dvc.yaml  # a specific dvc.yaml file
 
-#### Running a Stage Independently
+$ dvc exp run extract  # a specific stage (from `./dvc.yaml`)
+
+$ dvc exp run my-project/dvc.yaml:extract
+  # ^ a stage from a specific dvc.yaml file
+```
+
+#### Running stages independently
 
 In some cases you may need to run a stage without invoking its dependents. The
 `--single-item` (`-s`) flag allows to run the command of a single stage.
 
-> 📬 If the pipeline has `extract`, `transform`, `train`, `evaluate` stages and
-> you only want to run the transform stage to check its outputs, you can do so
-> by:
+> Example: for a pipeline composed of `prepare`, `train`, and `evaluate` stages
+> and you only want to run the `train` stage to check its outputs, you can do
+> so by:
+>
+> ```dvc
+> $ dvc exp run --single-stage train
+> ```
 
-```dvc
-$ dvc exp run --single-stage transform
-```
+#### Running all pipelines
 
-#### Running all Pipelines
-
-In larger projects, there may be more than a single `dvc.yaml` file defining
-multiple pipelines. In this case, you can run all pipelines with a single
-command.
+<abbr>DVC projects</abbr> support more than a single pipeline in one or more
+`dvc.yaml` files. In this case, you can run all pipelines with a single command:
 
 ```dvc
 $ dvc exp run --all-pipelines
 ```
 
-Note that the order to run these pipelines is not specified. If you have a
-pipeline in `my-dir/dvc.yaml` and `another-dir/dvc.yaml`, either of these
-pipelines can be run first.
+> Note that the order in which pipelines are executed is not guaranteed; Only
+> the internal order of stage execution is.
 
-#### Interactive Reproduction
+#### Interactive reproduction
 
 When you want to have more granular control over which stages are run, you can
-use `--interactive` flag. This flag allows you to confirm each stage before
-running.
+use the `--interactive` option. This flag allows you to confirm each stage
+before running.
 
 ```dvc
 $ dvc exp run --interactive
-Going to reproduce stage: 'train'. Are you sure you want to continue? [y/n]
+Going to reproduce stage: 'train'... continue? [y/n]
 ```
 
 #### Improvements over `dvc repro`
