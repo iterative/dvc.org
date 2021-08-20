@@ -30,7 +30,7 @@ $ dvc remote list
 storage s3://mybucket/my-dvc-store
 ```
 
-## Uploading experiments to remotes
+## Uploading experiments
 
 You can upload an experiment and its files to both remotes using `dvc exp push`
 (requires the Git remote name and experiment name as arguments).
@@ -57,7 +57,7 @@ performance also depend on the connection bandwidth and remote configurations.
 
 [run-cache]: /doc/user-guide/project-structure/internal-files#run-cache
 
-## Listing experiments remotely
+## Listing remote experiments
 
 In order to list experiments in a DVC project, you can use the `dvc exp list`
 command. With no command line options, it lists the experiments in the current
@@ -102,7 +102,7 @@ cnn-64
 cnn-96
 ```
 
-## Downloading experiments from remotes
+## Downloading experiments
 
 When you clone a DVC repository, it doesn't fetch any experiments by default. In
 order to get them, use `dvc exp pull` (with the Git remote and the experiment
@@ -124,9 +124,10 @@ can set the number with `--jobs` (`-j`).
 If an experiment being pulled already exists in the local project, DVC won't
 overwrite it unless you supply `--force`.
 
-### Example: Pushing or pulling multiple experiments
+## Example: Sharing multiple experiments
 
-You can create a loop to upload or download all experiments like this:
+You can create a loop to push or pull all experiments. For example in a Linux
+terminal:
 
 ```dvc
 $ dvc exp list --all --names-only | while read -r expname ; do \
@@ -134,21 +135,17 @@ $ dvc exp list --all --names-only | while read -r expname ; do \
 done
 ```
 
-> Without `--all`, only the experiments derived from the current commit will be
-> pushed/pulled.
+## Example: Dedicated experiment directories
 
-## Example: Creating a directory for an experiment
-
-A good way to isolate experiments is to create a separate home directory for
-each one.
+A good way to isolate experiments is to create a separate directory outside the
+current <abbr>repository</abbr> for each one.
 
 > Another alternative is to use `dvc exp apply` and `dvc exp branch`, but here
 > we'll see how to use `dvc exp pull` to copy an experiment.
 
-Suppose there is a <abbr>DVC repository</abbr> in `~/my-project` with multiple
-experiments. Let's create a copy of experiment `exp-abc12` from there.
-
-First, clone the repo into another directory:
+Suppose there is a DVC repo in `~/my-project` with multiple experiments. Let's
+create a copy of experiment `exp-abc12` from it. First, clone the repo into
+another directory:
 
 ```dvc
 $ git clone ~/my-project ~/my-experiment
@@ -165,29 +162,25 @@ main:
 	...
 ```
 
-If there is no DVC remote in the original repository, you can define its
-<abbr>cache</abbr> as the clone's `dvc remote`:
+If the original repository doesn't have a `dvc remote`, you can define its
+<abbr>cache</abbr> as the clone's remote storage:
 
 ```dvc
 $ dvc remote add --local --default storage ~/my-project/.dvc/cache
 ```
 
-> ⚠️ `--local` is important here, so that the configuration change doesn't get
-> to the original repo accidentally.
+> ⚠️ `--local` is important here, so that the configuration changes don't
+> accidentally get to the original repo.
 
-If there's a DVC remote for the project, assuming the experiments have been
-pushed there, you can pull the one in question:
+Having a DVC remote (and assuming the experiments have been pushed or cached
+there) you can `dvc exp pull` the one in question; You can then can
+`dvc exp apply` it and get a <abbr>workspace</abbr> that contains all of its
+files:
 
 ```dvc
 $ dvc exp pull origin exp-abc12
-```
-
-Then we can `dvc apply` this experiment and get a <abbr>workspace</abbr> that
-contains all of its files:
-
-```dvc
 $ dvc exp apply exp-abc12
 ```
 
-Now you have a dedicated directory for your experiment, containing all its
+Now you have a separate repo directory for your experiment, containing all its
 artifacts!
