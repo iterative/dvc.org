@@ -10,21 +10,14 @@ running them in queues or temporary directories.
 
 ## The Pipeline
 
-DVC uses pipelines composed of <abbr>stages</abbr>. Stages are granular and
-interdependent steps that has a command, a set of dependencies, and output.
-Stages can depend onto each other via their outputs that build a
-<abbr>DAG</abbr>.
+DVC relies on <abbr>pipelines</abbr> that codify experiment workflows (code,
+<abbr>stages</abbr>, <abbr>parameters</abbr>, <abbr>outputs</abbr>, etc.) in a
+`dvc.yaml` file. These contain the commands to run the experiments.
 
-DVC employs the pipeline to run the experiment commands. Each pipeline has an
-end-point, which is the last command in the pipeline. DVC also tracks artifacts
-from the intermediate stages, and doesn't reproduce them if their dependents
-have not changed.
+> 📖 See [Get Started: Data Pipelines](/doc/start/data-pipeline) for an
+> introduction. Here we assume that there's already a working `dvc.yaml` file in
+> the <abbr>project</abbr>.
 
-DVC pipelines are a detailed topic that we cover in [Get Started][gs-pipelines]
-and the [User's Guide][ug-pipeline-files]. Here we assume that there is already
-a pipeline defined in `dvc.yaml` file in the <abbr>project</abbr>.
-
-[gs-pipelines]: /doc/start/data-pipelines
 [ug-pipeline-files]: /doc/user-guide/project-structure/pipelines-files
 
 ### Running the pipeline
