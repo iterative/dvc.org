@@ -126,7 +126,7 @@ overwrite it unless you supply `--force`.
 
 ## Example: Sharing multiple experiments
 
-You can create a loop to push or pull all experiments. For example on Linux
+You can create a loop to push or pull all experiments. For example in a Linux
 terminal:
 
 ```dvc
