@@ -1,5 +1,15 @@
 # Experiment Management
 
+<!--
+Machine Learning and Data Science projects usually involve experimentation.
+These experiments' goals can range from finding good hyperparameters to testing
+for data and concept drift. DVC 2.0 introduced a new set of commands to manage
+experiments with minimum boilerplate. It allows to run experiments defined by
+pipelines, track their associated data and model files, set parameters for each,
+push experiment parameters and code to Git remotes without committing them,
+create branches and persist them in Git.
+-->
+
 _New in DVC 2.0_
 
 Data science and ML are iterative processes that require a large number of

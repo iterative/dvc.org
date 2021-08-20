@@ -1,22 +1,12 @@
 # Running Experiments
 
-## Motivation
+In this part of the DVC User's Guide we explain how DVC executes experiments,
+setting their parameters, using multiple jobs to run them in parallel, and
+running them in queues or temporary directories.
 
-Machine Learning and Data Science projects usually involve experimentation.
-These experiments' goals can range from finding good hyperparameters to testing
-for data and concept drift. DVC 2 introduced a new set of commands to manage
-experiments with minimum boilerplate. It allows to run experiments defined by
-pipelines, track their associated data and model files, set parameters for each,
-push experiment parameters and code to Git remotes without committing them,
-create branches and persist them in Git.
-
-In this part of the DVC User's Guide we explain how DVC runs the experiments,
-set the parameters, use multiple jobs to run the experiments in parallel, or
-running them in temporary directories.
-
-If this is the first time you are introduced into Machine Learning
-experimentation, you may find a quicker introduction to the most salient
-features in the [Experiment's Trail](/doc/start/experiments/).
+> 📖 If this is the first time you are introduced into Data Science
+> experimentation, you may find a quicker introduction to the most salient
+> features of DVC in [Get Started: Experiments](/doc/start/experiments/).
 
 ## The Pipeline
 
