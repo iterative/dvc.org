@@ -1,12 +1,12 @@
 # Running Experiments
 
-In this part of the DVC User's Guide we explain how DVC executes experiments,
-setting their parameters, using multiple jobs to run them in parallel, and
-running them in queues or temporary directories.
+We explain how DVC codifies and executes experiments, setting their parameters,
+using multiple jobs to run them in parallel, and running them in queues, among
+other details.
 
-> 📖 If this is the first time you are introduced into Data Science
-> experimentation, you may find a quicker introduction to the most salient
-> features of DVC in [Get Started: Experiments](/doc/start/experiments/).
+> 📖 If this is the first time you are introduced into data science
+> experimentation, you may want to check the basics in
+> [Get Started: Experiments](/doc/start/experiments/) first.
 
 ## The pipeline
 
@@ -14,15 +14,16 @@ DVC relies on <abbr>pipelines</abbr> that codify experiment workflows (code,
 <abbr>stages</abbr>, <abbr>parameters</abbr>, <abbr>outputs</abbr>, etc.) in a
 `dvc.yaml` file. These contain the commands to run the experiments.
 
-> 📖 See [Get Started: Data Pipelines](/doc/start/data-pipeline) for an
-> introduction. Here we assume that there's already a working `dvc.yaml` file in
-> the <abbr>project</abbr>.
+> 📖 See [Get Started: Data Pipelines](/doc/start/data-pipeline) for an intro to
+> this topic.  
+> Here we assume that there's already a working `dvc.yaml` file in the
+> <abbr>project</abbr>.
 
 [ug-pipeline-files]: /doc/user-guide/project-structure/pipelines-files
 
 ### Running the pipeline
 
-You can run the pipeline using default settings using `dvc exp run`:
+You can run the pipeline using default settings with `dvc exp run`:
 
 ```dvc
 $ dvc exp run
@@ -50,6 +51,9 @@ $ dvc exp run extract  # a specific stage (from `./dvc.yaml`)
 $ dvc exp run my-project/dvc.yaml:extract
   # ^ a stage from a specific dvc.yaml file
 ```
+
+> 📖 See [reproduction `targets`](/doc/command-reference/repro#options) for all
+> the details.
 
 ### Running stages independently
 
@@ -169,10 +173,21 @@ $ dvc exp run -S learning_rate=0.001,units=128
 
 ## The experiments queue
 
-The `--queue` flag in `dvc exp run` tells to create an experiment in the
-experiment queue. When you add an experiment to the queue nothing is actually
-run. Instead, the experiment is put in a wait-list for later execution.
-`dvc exp show` will mark queued experiments with an asterisk `*`.
+The `--queue` option of `dvc exp run` tells DVC to append an experiment for
+later execution. Nothing is actually run yet.
+
+<details>
+
+### How are experiments queued?
+
+Queued experiments are created similar to
+[Git stash](https://www.git-scm.com/docs/git-stash). The last experiment queued
+is found in `.git/refs/exps`, and earlier ones are in its [reflog].
+
+[reflog]:
+  https://git-scm.com/docs/gitglossary#Documentation/gitglossary.txt-aiddefreflogareflog
+
+</details>
 
 ```dvc
 $ dvc exp run --queue -S units=10
@@ -185,46 +200,23 @@ $ dvc exp run --queue -S units=256
 Queued experiment '4109ead' for future execution.
 ```
 
-Each experiment in the queue is derived from the workspace at the time of
-`dvc exp run --queue` command. If you make changes in the workspace after adding
-an experiment to the queue, they are not reflected in the experiment.
+> `dvc exp show` will mark queued experiments with an asterisk `*`.
 
-To prevent the side effects, queued experiments are run in temporary directories
-under `.dvc/tmp/exps`.
+Each experiment is derived from the workspace at the time it's queued. If you
+make changes in the workspace afterwards, they won't be reflected in queued
+experiments (once run).
 
-Experiments in the queue are run by specifying `--run-all` flag.
+<details>
 
-```dvc
-$ dvc exp run --run-all
-...
-```
+### How are queued experiments isolated? (Temporary directories)
 
-`--run-all` runs all the experiments in the queue one-by-one. The order of
-execution is independent of their creation order.
+To guarantee that queued experiments derive from their original workspace, DVC
+creates a copy of it in `.dvc/tmp/exps/`, where the experiment will run. All
+these workspaces share the main project <abbr>cache</abbr>.
 
-#### Running Experiments in Parallel
-
-DVC allows to run the experiments in parallel by specifying the number of
-experiment processes:
-
-```dvc
-$ dvc exp run --run-all --jobs 4
-```
-
-Each of these experiments is run _serially_ in its own temporary directory. If
-there are common stages across these experiments, they are run separately. For
-example, for a pipeline composed of the stages `A -> B -> C`, if
-`dvc exp run --queue -S param=value1` invalidates stage `A`, all the pipeline is
-run in all experiments.
-
-⚠️ Parallel runs are experimental and may be unstable at this time. ⚠️ Make sure
-you're using a number of jobs that your environment can handle (no more than the
-CPU cores).
-
-#### Experiments in temporary directories
-
-If you want to isolate the experiments in their own directory, you can do so by
-`--temp` flag. This allows to continue your work while running the experiment.
+If you want to isolate an experiments this way without queuing it, you can use
+the `--temp` option. This allows you to continue working while a long experiment
+runs.
 
 ```dvc
 $ nohup dvc exp run --temp &
@@ -232,38 +224,51 @@ $ nohup dvc exp run --temp &
 nohup: ignoring input and appending output to 'nohup.out'
 ```
 
-The command checks out all DVC-tracked files and Git-tracked files into a
-temporary directory under `.dvc/tmp/exps/` and runs the experiment there. It
-creates a `nohup.log` file in the project directory. If you want to specify the
-output filename, you can use redirection.
+> The above example creates a `nohup.log` file in the original workspace with
+> the output of the DVC process.
+
+Note that Git-ignored files/dirs are explicitly excluded from queued/temp runs
+to avoid committing unwanted files into final ([persisted]) experiments.
+
+[persisted]: /doc/user-guide/experiment-management#persistent-experiments
+
+</details>
+
+Run them all one-by-one with the `--run-all` flag. The order of execution is
+independent of their creation order.
 
 ```dvc
-$ nohup dvc exp run --temp > my-experiment-$(date +"%F-%H-%M-%S").log
+$ dvc exp run --run-all
 ```
 
 > ⚠️ Note that only tracked files and directories will be included in
-> `--queue/temp` experiments. To include untracked files, stage them with
-> `git add` first (before `dvc exp run`). Feel free to `git reset` them
-> afterwards. Git-ignored files/dirs are explicitly excluded from runs outside
-> the workspace to avoid committing unwanted files into experiments.
+> `--queue/temp` experiments. To include untracked files, stage them with `git
+> add` first (before `dvc exp run`) and `git reset` them afterwards.
 
-#### Cleaning Up the Experiment Queue
+To remove all experiments from the queue and start over, you can use
+`dvc exp remove --queue`. 📖 See [Cleaning-Up Experiments][clean-up] for
+details.
 
-You can use `dvc exp remove --queue` to remove the experiments from the queue.
-For detailed information see the [section on Cleaning-Up the
-Experiments][ug-clean-up].
+[clean-up]: /doc/user-guide/experiment-management/cleaning-up-experiments
 
-[ug-clean-up]: /doc/user-guide/experiment-management/cleaning-up-experiments
+### Running experiments in parallel
 
-#### How are experiments queued?
+DVC allows to run queued experiments in parallel by specifying a number of
+execution processes (`--jobs`):
 
-The experiments are created similar to
-[Git stash](https://www.git-scm.com/docs/git-stash) when queued. The last
-experiment queued is found in `.git/refs/exps`, and the earlier ones are in the
-reflog. During `--run-all`, these references are checked out to
-`.dvc/exps/temp/` and run there.
+```dvc
+$ dvc exp run --run-all --jobs 4
+```
 
-#### Experiment Names
+> Note that since each experiment runs in an independent temporary directory,
+> common <abbr>stages</abbr> across experiment pipelines are always run
+> separately even if they share param values or other dependencies.
+
+⚠️ Parallel runs are experimental and may be unstable at this time. ⚠️ Make sure
+you're using a number of jobs that your environment can handle (no more than the
+CPU cores).
+
+### Experiment names
 
 Each experiment creates and tracks a project variation based on your
 <abbr>workspace</abbr> changes. Experiments will have an auto-generated name
@@ -326,7 +331,7 @@ last checkpoint.
 Checkpoints provide a way to train models iteratively, keeping the metrics,
 models and other artifacts associated with each epoch.
 
-#### Adding Checkpoints to the pipeline
+### Adding checkpoints to the pipeline
 
 There are various ways to add checkpoints to a project. In common, these all
 involve marking a stage <abbr>output</abbr> with `checkpoint: true` in
@@ -352,7 +357,7 @@ stages:
   ...
 ```
 
-#### Adding Checkpoints to Python code
+### Adding checkpoints to Python code
 
 DVC is agnostic when it comes to the language you use in your project.
 Checkpoints are basically a mechanism to associate outputs of a pipeline with
@@ -403,7 +408,7 @@ Even if you're not using these libraries, you can use checkpoints in your
 project at each epoch/step by first recording all intermediate artifacts and
 metrics, then calling `dvc.api.make_checkpoint()`.
 
-#### Adding Checkpoints to Non-Python Code
+### Adding checkpoints to non-Python code
 
 If you use another language in your project, you can mimic the behavior of
 `make_checkpoint`. In essence `make_checkpoint` creates a special file named
@@ -441,7 +446,7 @@ if dvc_root != ""
    end;
 ```
 
-#### Running the Experiments with Checkpoints
+### Running checkpoint experiments
 
 Running the experiments with checkpoints is no different than running the
 experiments pipeline.
@@ -469,7 +474,7 @@ their outputs). This is useful for re-training ML models, for example.
 > Note that queuing an experiment that uses checkpoints implies `--reset`,
 > unless a `--rev` is provided (refer to the previous section).
 
-#### How are checkpoints captured?
+### How are checkpoints captured?
 
 Instead of a single commit, checkpoint experiments have multiple commits under
 the custom Git reference (in `.git/refs/exps`), similar to a branch.
