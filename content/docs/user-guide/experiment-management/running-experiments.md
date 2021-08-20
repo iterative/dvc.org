@@ -36,7 +36,7 @@ stages with missing or changed dependencies.
 > if a dependency of `prepare` stage has changed, the dependent stages (`train`,
 > `evaluate`) are also run.
 
-#### Running specific stages
+### Running specific stages
 
 By default DVC uses `./dvc.yaml` (in the current directory). You can specify
 `dvc.yaml` files in other directories, or even specific stages to run. These are
@@ -51,7 +51,7 @@ $ dvc exp run my-project/dvc.yaml:extract
   # ^ a stage from a specific dvc.yaml file
 ```
 
-#### Running stages independently
+### Running stages independently
 
 In some cases you may need to run a stage without invoking its dependents. The
 `--single-item` (`-s`) flag allows to run the command of a single stage.
@@ -64,7 +64,7 @@ In some cases you may need to run a stage without invoking its dependents. The
 > $ dvc exp run --single-stage train
 > ```
 
-#### Running all pipelines
+### Running all pipelines
 
 <abbr>DVC projects</abbr> support more than a single pipeline in one or more
 `dvc.yaml` files. In this case, you can run all pipelines with a single command:
@@ -76,7 +76,7 @@ $ dvc exp run --all-pipelines
 > Note that the order in which pipelines are executed is not guaranteed; Only
 > the internal order of stage execution is.
 
-#### Interactive reproduction
+### Interactive reproduction
 
 When you want to have more granular control over which stages are run, you can
 use the `--interactive` option. This flag allows you to confirm each stage
@@ -92,99 +92,80 @@ Going to reproduce stage: 'train'... continue? [y/n]
 
 ## (Hyper)parameters
 
-<abbr>Hyperparameters</abbr> are the values that modify the structure of an ML
-model and various aspects of project. Machine learning experimentation involves
-searching hyperparameters that improves the models or solutions.
+<abbr>Parameters</abbr> are the values that modify the underlying code's
+behavior, producing different experiment results. Machine learning
+experimentation, for example, involves searching hyperparameters that improve
+the resulting model metrics.
 
-Hyperparameter dependencies in the pipelines are set using `--parameter` (`-p`)
-option. When a stage is added to the pipeline using `dvc stage add`, the
-parameters are also specified along with code and data dependencies.
+In DVC projects, parameters should be read by the code from _parameter files_
+(`params.yaml` by default). DVC parses these files to track individual param
+values. When a tracked param is changed, `dvc exp run` invalidates any stages
+that depend on it, and reruns the experiment.
 
-These parameters are read from text files by the code. DVC keeps track of these
-parameter files, and parses them to collect individual parameters. By default,
-the name of the parameter file is `params.yaml`. When a parameter is changed in
-parameter file, DVC invalidates the stage that depends on it and runs the
-experiment with the new hyperparameter value.
+> Parameters can be defined in `dvc.yaml` directly or through `dvc stage add`.  
+> 📖 See `dvc params` for more details.
 
-For a parameters file named `params.yaml` with the contents:
+For a params file named `params.yaml` with the contents
 
 ```yaml
 model:
   learning_rate: 0.0001
 ```
 
-You can specify the parameter dependency as:
+You can specify the parameter dependency as
 
 ```dvc
 $ dvc stage add -n train \
-                 ...
                 --parameter model.learning_rate \
-                 ...
+                --outs ...
 ```
 
-> ⚠️ The parameters specified in the params file are supposed to be read by the
-> code and used to modify the models and other attributes of the project. DVC
-> does not (and cannot) check whether the parameters are actually used in the
-> project. It only tracks their updates in a granular and language-independent
-> way.
+> ⚠️ DVC does not check whether the parameters are actually used in your code.
 
-#### Updating parameters in experiments
+<details>
 
-DVC allows to update the parameters from the command line when you are running
-the experiments. The `--set-param` (`-S`) option takes a parameter name and a
-value to update the file.
+#### Non-default parameter files
+
+DVC allows param files in YAML 1.2, JSON, TOML, and Python formats. When your
+parameters file is named something other than `params.yaml`, you need to specify
+it in both stage description and `dvc exp run`. For example using
+`myparams.toml`:
+
+```dvc
+$ dvc stage add -n train \
+                -p myparams.toml:learning_rate \
+                ...
+
+$ dvc exp run -S myparams.toml:learning_rate = 0.0001
+```
+
+</details>
+
+### Updating experiment parameters on-the-fly
+
+DVC allows to update the parameters from command line when running
+`dvc experiments`. The `--set-param` (`-S`) option takes a parameter name and
+its value, and updates the params file before the run.
 
 ```dvc
 $ dvc exp run --set-param model.learning_rate=0.0002
 ```
 
-The command updates the parameter in `params.yaml` and runs the pipeline that
-depend on this parameter value.
+> Note that parameters are attached to experiments so you can view them together
+> with `dvc exp show` and `dvc exp diff`.
 
-It also attaches these parameter values to the experiments, so that you can
-review the experiments along with their parameters with `dvc exp show` and
-`dvc exp diff`.
-
-#### Using a non-default parameter file
-
-When you have a parameter value named _other than_ `params.yaml`, you need to
-specify its name in both stage description, and `dvc exp run`.
-
-DVC allows to use multiple parameter files in YAML 1.2, JSON, TOML, and Python
-formats. You can specify the parameter file name in `dvc stage add` command as:
-
-```dvc
-$ dvc stage add ... \
-                -p myparams.toml:learning_rate \
-                ... \
-```
-
-While running the experiment, you also need to specify the parameters file name.
-
-```dvc
-$ dvc exp run -S myparams.toml:learning_rate = 0.0001
-```
-
-DVC updates the specified value in the file and runs the experiment.
-
-#### Setting Multiple Parameters for Experiments
-
-You can set more than a single parameter with `--set-param` (`-S`) option in
-`dvc exp run`.
-
-It's possible to use multiple `-S` options:
+To set more than one param for the same experiment, use the `-S` option multiple
+times, or supply a comma-delimited list to `-S`:
 
 ```dvc
 $ dvc exp run -S learning_rate=0.001 -S units=128
-```
-
-Another way is to supply a comma-delimited list to `-S`:
-
-```dvc
+# is equivalent to
 $ dvc exp run -S learning_rate=0.001,units=128
 ```
 
-#### How DVC updates the parameters?
+<details>
+
+#### How does DVC update parameters?
 
 DVC updates the parameters by parsing the parameters file and updating the
 specified value. Because of this it restricts the set of formats accepted to
@@ -203,11 +184,13 @@ $ git diff params.yaml
 +units: 128
 ```
 
+</details>
+
 > ⚠️ Note that DVC doesn't check whether the parameters you specified with
 > `--set-param` option is already in the parameters file. If there is a typo in
 > the parameter name, it will be added as another parameter.
 
-## The Experiments Queue
+## The experiments queue
 
 The `--queue` flag in `dvc exp run` tells to create an experiment in the
 experiment queue. When you add an experiment to the queue nothing is actually
