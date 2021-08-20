@@ -163,32 +163,9 @@ $ dvc exp run -S learning_rate=0.001 -S units=128
 $ dvc exp run -S learning_rate=0.001,units=128
 ```
 
-<details>
-
-#### How does DVC update parameters?
-
-DVC updates the parameters by parsing the parameters file and updating the
-specified value. Because of this it restricts the set of formats accepted to
-YAML 1.2, TOML, JSON and Python.
-
-When you specify a parameter, you can see its effects using `git diff`.
-
-```dvc
-$ dvc exp run -S units=128
-...
-$ git diff params.yaml
-```
-
-```git
--units: 32
-+units: 128
-```
-
-</details>
-
-> ⚠️ Note that DVC doesn't check whether the parameters you specified with
-> `--set-param` option is already in the parameters file. If there is a typo in
-> the parameter name, it will be added as another parameter.
+> ⚠️ Note that DVC doesn't check whether parameters given to `--set-param` are
+> already in the parameters file. If there is a typo, a new or different param
+> will be added/changed.
 
 ## The experiments queue
 
