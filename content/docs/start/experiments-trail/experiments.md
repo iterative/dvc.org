@@ -38,9 +38,8 @@ $ python -m pip install -r requirements.txt
 
 ### ✅ Get the data set
 
-The repository we cloned doesn't contain the dataset. In order to get the
-dataset we use `dvc pull` to update the missing data files. `dvc pull` is used
-in DVC repositories to update the missing data dependencies.
+The repository we cloned doesn't contain the dataset. We use `dvc pull` to
+update the missing data files.
 
 ```dvc
 $ dvc pull
@@ -51,11 +50,11 @@ experiments.
 
 ## 💡 Preparing a project for DVC experiments
 
-In this document we assume that there is already a configured DVC project to
-simplify the introduction. DVC experiments require a DVC pipeline defined in the
-project.
+If DVC is not installed to the system, please refer to [install](/doc/install).
 
-Please refer to [install](/doc/install) if DVC is not installed in your system.
+In this getting started page, we assume that there is already a configured DVC
+project to simplify the introduction. DVC experiments require a DVC pipeline
+defined in the project.
 
 If DVC is not initialized before in the project, you can do so by:
 
@@ -75,12 +74,13 @@ $ dvc stage add -n train \
                 python3 src/train.py
 ```
 
-The command tells DVC to create an experiment named `train`, and that for any
-change in `data/images/`, `model.conv_units` or `train.epochs`, we run an
-experiment using `src/train.py` that produces a new `metrics.json` file.
+The command tells DVC to create an experiment named `train`, and for any change
+in `data/images/` directory, `model.conv_units` or `train.epochs` parameters, we
+(re)run an experiment using `src/train.py` that produces a new `metrics.json`
+file.
 
-You can get more information on [pipelines], and [parameters] in other sections
-of the documentation.
+You can learn more about [pipelines], and [parameters] in other sections of the
+documentation.
 
 [pipelines]: /doc/start/data-pipelines
 [parameters]: /doc/start/metrics-parameters-plots
@@ -89,12 +89,12 @@ of the documentation.
 
 ## 👟 Running the experiment with default parameters
 
-The purpose of `dvc exp` subcommands is to run the pipeline for experiments
-without committing parameter and dependency changes to Git. Instead the
-artifacts produced for each experiment are tracked by DVC and persisted on
-demand.
+The purpose of `dvc exp` subcommands is to run the experiments without
+committing parameter and dependency changes to Git. The artifacts like models,
+metrics produced by each experiment are tracked by DVC and persisted on demand.
 
-Running the experiment with default project settings requires only the command:
+Running the experiment with the default project settings requires only the
+command:
 
 ```dvc
 $ dvc exp run
@@ -104,7 +104,12 @@ Experiment results have been applied to your workspace.
 ...
 ```
 
-It runs the specified command that writes the metrics values to `metrics.json`.
+It runs the specified command (`python train.py`) in `dvc.yaml`. That command
+writes the metrics values to `metrics.json`.
+
+This experiment is then associated with the values found in parameters file
+(`params.yaml`), and other dependencies (`data/images/`) with these produced
+metrics.
 
 <details>
 
@@ -113,15 +118,14 @@ It runs the specified command that writes the metrics values to `metrics.json`.
 Earlier versions of DVC uses `dvc repro` to run the pipeline. If you already
 have a DVC project, you may already be using `dvc repro`.
 
-In DVC 2.0 `dvc exp run` supersedes `dvc repro`. Both of these commands run the
-pipeline.
-
-We use `dvc repro` to run the pipeline as found in the <abbr>workspace</abbr>.
-All the parameters and dependencies are retrieved from the current workspace. It
-doesn't use any special objects to track the experiments. When you have large
-number of experiments that you don't want to commit all to Git, it's better to
-use `dvc exp run`. It allows to change the parameters quickly, can track the
-history of artifacts and has facilities to compare these experiments easily.
+In DVC 2.0 `dvc exp run` supersedes `dvc repro`. We use `dvc repro` to run the
+pipeline as found in the <abbr>workspace</abbr>. All the parameters and
+dependencies are retrieved from the current workspace. It doesn't use any
+special objects to track the experiments or associate parameters with metrics.
+When you have large number of experiments that you don't want to commit all to
+Git, it's better to use `dvc exp run`. It allows to change the parameters
+quickly, can track the history of artifacts and has facilities to compare these
+experiments easily.
 
 `dvc repro` is still available to run the pipeline when these extra features are
 not needed.
