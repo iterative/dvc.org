@@ -250,9 +250,9 @@ to be set:
 - `DVC_EXP_GIT_REMOTE`: Git repository (can be a URL or a name such as `origin`,
   `myremote`, etc.)
 
-Note that a `dvc remote default` is also needed so that the corresponding data can
-be pushed. With this configuration, `dvc exp push` will be done automatically
-after every iteration.
+Note that a `dvc remote default` is also needed so that the corresponding data
+can be pushed. With this configuration, `dvc exp push` will be done
+automatically after every iteration.
 
 ⚠️ If either Git or DVC remotes are missing, the experiment will fail. However,
 if a checkpoint push doesn't succeed (due to rate limiting etc.) a warning will
