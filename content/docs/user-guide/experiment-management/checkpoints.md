@@ -250,7 +250,7 @@ to be set:
 - `DVC_EXP_GIT_REMOTE`: Git repository (can be a URL or a name such as `origin`,
   `myremote`, etc.)
 
-Note that a default DVC remote is also needed so that the corresponding data can
+Note that a `dvc remote default` is also needed so that the corresponding data can
 be pushed. With this configuration, `dvc exp push` will be done automatically
 after every iteration.
 
