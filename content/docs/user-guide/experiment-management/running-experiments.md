@@ -87,14 +87,8 @@ $ dvc exp run --interactive
 Going to reproduce stage: 'train'... continue? [y/n]
 ```
 
-#### Improvements over `dvc repro`
-
-The classical way of running the pipeline is using `dvc repro`. DVC introduced
-`dvc exp` as an _experiment management_ feature in version 2.0. _Experiment
-management_ involves more than executing the pipelines.
-
-In the following sections, we describe the features that make `dvc exp run` more
-suitable for machine learning experimentation.
+> Note that `dvc exp run` is an experimentation-specific alternative to
+> `dvc repro`.
 
 ## (Hyper)parameters
 
