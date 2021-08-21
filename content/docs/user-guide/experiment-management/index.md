@@ -8,6 +8,9 @@ experiments with minimum boilerplate. It allows to run experiments defined by
 pipelines, track their associated data and model files, set parameters for each,
 push experiment parameters and code to Git remotes without committing them,
 create branches and persist them in Git.
+
+Each experiment represents a project variation based on the changes in your
+current <abbr>workspace</abbr>.
 -->
 
 _New in DVC 2.0_

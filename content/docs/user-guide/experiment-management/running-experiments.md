@@ -29,13 +29,12 @@ You can run the pipeline using default settings with `dvc exp run`:
 $ dvc exp run
 ```
 
-If there are no missing or changed outputs in the the workspace, DVC doesn't
-rerun the commands. DVC keeps track of the dependency graph and runs only the
-stages with missing or changed dependencies.
+DVC keeps track of the dependency graph and runs only the stages with changed
+dependencies or missing outputs.
 
 > Example: for a pipeline composed of `prepare`, `train`, and `evaluate` stages,
-> if a dependency of `prepare` stage has changed, the dependent stages (`train`,
-> `evaluate`) are also run.
+> if a dependency of `prepare` stage has changed, the downstream stages
+> (`train`, `evaluate`) are also run.
 
 ### Running specific stages
 
@@ -61,8 +60,8 @@ In some cases you may need to run a stage without invoking its dependents. The
 `--single-item` (`-s`) flag allows to run the command of a single stage.
 
 > Example: for a pipeline composed of `prepare`, `train`, and `evaluate` stages
-> and you only want to run the `train` stage to check its outputs, you can do
-> so by:
+> and you only want to run the `train` stage to check its outputs, you can do so
+> by:
 >
 > ```dvc
 > $ dvc exp run --single-stage train
@@ -242,8 +241,8 @@ $ dvc exp run --run-all
 ```
 
 > ⚠️ Note that only tracked files and directories will be included in
-> `--queue/temp` experiments. To include untracked files, stage them with `git
-> add` first (before `dvc exp run`) and `git reset` them afterwards.
+> `--queue/temp` experiments. To include untracked files, stage them with
+> `git add` first (before `dvc exp run`) and `git reset` them afterwards.
 
 To remove all experiments from the queue and start over, you can use
 `dvc exp remove --queue`. 📖 See [Cleaning-Up Experiments][clean-up] for
@@ -267,60 +266,6 @@ $ dvc exp run --run-all --jobs 4
 ⚠️ Parallel runs are experimental and may be unstable at this time. ⚠️ Make sure
 you're using a number of jobs that your environment can handle (no more than the
 CPU cores).
-
-### Experiment names
-
-Each experiment creates and tracks a project variation based on your
-<abbr>workspace</abbr> changes. Experiments will have an auto-generated name
-like `exp-bfe64` by default, which can be customized using the `--name` (`-n`)
-option.
-
-When you create an experiment, DVC generates a hash value from the contents of
-the experiment. This is shown when you use `--queue` option, e.g.,
-
-```dvc
-$ dvc exp run --queue -S model.conv_units=32
-Queued experiment '6518f17' for future execution.
-```
-
-After _running_ the experiment, DVC uses another auto-generated name to refer to
-the experiment. Typically these start with `exp-`, and can be set via
-`--name / -n` option of `dvc exp run`. So when you add an experiment by setting
-the name, you can see the hash value as _queued experiment_:
-
-```dvc
-$ dvc exp run --queue --name cnn-512 -S model.conv_units=512
-Queued experiment '86bd8f9' for future execution.
-```
-
-In `dvc exp show` you can see both of these names:
-
-```dvc
-$ dvc exp show --no-pager --no-timestamp \
-      --include-metrics loss --include-params model.conv_units
-```
-
-```dvctable
-┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━━━━━┓
-┃ neutral:**Experiment**              ┃ metric:**loss**    ┃ param:**model.conv_units** ┃
-┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━━━━┩
-│ workspace               │ 0.23534 │ 64               │
-│ 3973b6b                 │ -       │ 16               │
-│ ├── aeaabb0 [exp-cb13f] │ 0.23534 │ 64               │
-│ ├── d0ee7ce [exp-5dccf] │ 0.23818 │ 32               │
-│ ├── 1533e4d [exp-88874] │ 0.24039 │ 128              │
-│ ├── b1f41d3 [cnn-256]   │ 0.23296 │ 256              │
-│ ├── 07e927f [exp-6c06d] │ 0.23279 │ 24               │
-│ ├── b2b8586 [exp-2a1d5] │ 0.25036 │ 16               │
-│ └── *86bd8f9            │ -       │ 512              │
-└─────────────────────────┴─────────┴──────────────────┘
-```
-
-When an experiment is not run yet, only the former hash value is shown.
-
-You can refer to the experiment in `dvc exp apply` or `dvc exp branch` after
-running the experiment with the name starting with `exp-`, or the name you have
-supplied with `dvc exp run --name`.
 
 ## Checkpoints
 
