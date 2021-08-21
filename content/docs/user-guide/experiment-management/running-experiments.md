@@ -267,134 +267,16 @@ $ dvc exp run --run-all --jobs 4
 you're using a number of jobs that your environment can handle (no more than the
 CPU cores).
 
-## Checkpoints
+## Checkpoint experiments
 
 To track successive steps in a longer or deeper <abbr>experiment</abbr>, you can
-register checkpoints from your code. Each `dvc exp run` will resume from the
-last checkpoint.
+register checkpoints from your code.
 
-Checkpoints provide a way to train models iteratively, keeping the metrics,
-models and other artifacts associated with each epoch.
+📖 See [Checkpoints](/doc/user-guide/experiment-management/checkpoints) to learn
+about this feature.
 
-### Adding checkpoints to the pipeline
-
-There are various ways to add checkpoints to a project. In common, these all
-involve marking a stage <abbr>output</abbr> with `checkpoint: true` in
-`dvc.yaml`. This is needed so that the experiment can resume later, based on the
-<abbr>cached</abbr> output(s).
-
-If you are adding a new stage with `dvc stage add`, you can mark its output(s)
-with `--checkpoints` (`-c`) option. DVC will add a `checkpoint: true` to the
-stage output in `dvc.yaml`.
-
-Otherwise, if you are adding a checkpoint to an already existing project, you
-can edit `dvc.yaml` and add a `checkpoint: true` to the stage output as shown
-below:
-
-```yaml
-stages:
-  ...
-  train:
-    ...
-    outs:
-      - model.pt:
-          checkpoint: true
-  ...
-```
-
-### Adding checkpoints to Python code
-
-DVC is agnostic when it comes to the language you use in your project.
-Checkpoints are basically a mechanism to associate outputs of a pipeline with
-its metrics. Reading the model from previous iteration and writing a new model
-as a file are not handled by DVC. DVC captures the signal produced by the
-machine learning experimentation code and stores each successive checkpoint.
-
-> 💡 DVC provides several automated ways to capture checkpoints for popular ML
-> libraries in [DVClive](https://dvc.org/doc/dvclive). It may be more productive
-> to use checkpoints via DVClive. Here we discuss adding checkpoints to a
-> project manually.
-
-If you are writing the project in Python, the easiest way to signal DVC to
-capture the checkpoint is to use `dvc.api.make_checkpoint()` function. It
-creates a checkpoint and records all artifacts changed after the previous
-checkpoint as another experiment.
-
-The following snippet shows an example that uses a Keras custom callback class.
-The callback signals DVC to create a checkpoint at the end of each checkpoint.
-
-```python
-class DVCCheckpointsCallback(tf.keras.callbacks.Callback):
-    def on_epoch_end(self, epoch, logs=None):
-            dvc.api.make_checkpoint()
-...
-
-history = model.fit(
-          ...
-        callbacks=[DVCCheckpointsCallback(), ...]
-        )
-```
-
-A similar approach can be taken in PyTorch when using a loop to train a model:
-
-```python
-   for epoch in range(1, EPOCHS+1):
-      ...
-      for x_batch, y_batch in train_loader:
-          train(model, x_batch, y_batch)
-      torch.save(model.state_dict(), "model.pt")
-      # Evaluate and checkpoint.
-      evaluate(model, x_test, y_test)
-      dvc.api.make_checkpoint()
-    ...
-```
-
-Even if you're not using these libraries, you can use checkpoints in your
-project at each epoch/step by first recording all intermediate artifacts and
-metrics, then calling `dvc.api.make_checkpoint()`.
-
-### Adding checkpoints to non-Python code
-
-If you use another language in your project, you can mimic the behavior of
-`make_checkpoint`. In essence `make_checkpoint` creates a special file named
-`DVC_CHECKPOINT` inside `.dvc/tmp/` to signal DVC, and waits the file to be
-removed.
-
-```r
-
-dvcroot <- Sys.getenv("DVC_ROOT")
-
-if (dvcroot != "") {
-    signalfilepath = file.path(dvcroot, ".dvc", "tmp", "DVC_CHECKPOINT")
-    file.create(signalfilepath)
-    while (file.exists(signalfilepath)) {
-      Sys.sleep(0.01)
-    }
-
-}
-
-```
-
-The following Julia snippet creates a signal file to create a checkpoint.
-
-```julia
-
-dvc_root =  get(ENV, "DVC_ROOT", "")
-
-if dvc_root != ""
-   signal_file_path = joinpath(dvc_root, ".dvc", "tmp", "DVC_CHECKPOINT")
-   open(signal_file_path, "w") do io
-           write(io, "")
-   end;
-   while isfile(signal_file_path)
-        sleep()
-   end;
-```
-
-### Running checkpoint experiments
-
-Running the experiments with checkpoints is no different than running the
-experiments pipeline.
+Running the experiments containing checkpoints is no different than with regular
+ones, e.g.:
 
 ```dvc
 $ dvc exp run -S param=value
@@ -406,20 +288,13 @@ gets interrupted (e.g. with `Ctrl+C`, or by an error). Without interruption, a
 outputs don't remain in the workspace.
 
 Subsequent uses of `dvc exp run` will continue from the latest checkpoint (using
-the latest cached versions of all outputs).
-
-You can list previous checkpoints with `dvc exp show`. To resume from a previous
-checkpoint, you must first `dvc exp apply` it before using `dvc exp run`. For
-`--queue` or `--temp` runs, use `--rev` to specify the checkpoint to continue
-from.
+the latest cached versions of all outputs). To resume from a previous checkpoint
+(list them with `dvc exp show`), you must first `dvc exp apply` it before the
+`dvc exp run`. For `--queue` or `--temp` runs, use `--rev` to specify the
+checkpoint to continue from.
 
 Alternatively, use `--reset` to start over (discards previous checkpoints and
 their outputs). This is useful for re-training ML models, for example.
 
 > Note that queuing an experiment that uses checkpoints implies `--reset`,
 > unless a `--rev` is provided (refer to the previous section).
-
-### How are checkpoints captured?
-
-Instead of a single commit, checkpoint experiments have multiple commits under
-the custom Git reference (in `.git/refs/exps`), similar to a branch.
