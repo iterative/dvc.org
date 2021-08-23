@@ -208,11 +208,11 @@ note that we continue training additional epochs on top of your previous
 experiment. You'll see what it takes to start training from scratch later.
 
 ```dvctable
-┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━┳━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━━━┓
-┃ neutral:**Experiment**              ┃ metric:**step** ┃ metric:**val_acc** ┃ metric:**val_loss** ┃     metric:**acc** ┃    metric:**loss** ┃ metric:**training_time** ┃ param:**lr**    ┃ param:**momentum** ┃ param:**model_name** ┃
+┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━┳━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━━━┓
+┃ neutral:**Experiment**              ┃ metric:**step** ┃     metric:**acc** ┃    metric:**loss** ┃ metric:**training_time** ┃ metric:**val_acc** ┃ metric:**val_loss** ┃ param:**lr**    ┃ param:**momentum** ┃ param:**model_name** ┃
 ┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━╇━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━━━━┩
 │ **workspace**               │    **9** │ **0.91803** │ **0.27989** │        **228.59** │ **0.82353** │  **0.69077** │ **0.009** │ **0.017**    │ **alexnet**    │
-│ **main**                    │    - │       - │       - │             - │       - │        - │ **0.001** │ **0.09**     │ **alexnet**    │
+│ **main**                    │    **-** │       **-** │       **-** │             **-** │       **-** │        **-** │ **0.001** │ **0.09**     │ **alexnet**    │
 │ │ ╓ 2361cff [exp-c0b11] │    9 │ 0.91803 │ 0.27989 │        228.59 │ 0.82353 │  0.69077 │ 0.009 │ 0.017    │ alexnet    │
 │ │ ╟ 7686d2f             │    8 │ 0.90984 │ 0.23496 │        177.65 │ 0.87582 │  0.50887 │ 0.009 │ 0.017    │ alexnet    │
 │ │ ╟ 671f8cd             │    7 │ 0.88934 │ 0.39237 │         126.7 │ 0.86928 │  0.47856 │ 0.009 │ 0.017    │ alexnet    │
@@ -237,19 +237,19 @@ $ dvc exp run -S lr=0.025 -S momentum=0.5 -S num_epochs=2
 The updated table will have values similar to this.
 
 ```dvctable
-┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━┳━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━━━┓
-┃ neutral:**Experiment**              ┃ metric:**step** ┃ metric:**val_acc** ┃ metric:**val_loss** ┃     metric:**acc** ┃    metric:**loss** ┃ metric:**training_time** ┃ param:**lr**    ┃ param:**momentum** ┃ param:**model_name** ┃
-┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━╇━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━╇━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━━━━┩
-│ **workspace**               │   **11** │ **0.88525** │  **1.1355**  │  **76.799** │  **0.9085** │        **1.7642** │ **0.025** │ **0.5**      │ **alexnet**    │
-│ **main**                    │    - │       - │        - │       - │       - │             - │ **0.001** │ **0.09**     │ **alexnet**    │
-│ │ ╓ 54e87bc [exp-52406] │   11 │ 0.88525 │  1.1355  │  76.799 │  0.9085 │        1.7642 │ 0.025 │ 0.5      │ alexnet    │
-│ │ ╟ b2b9ad0 (2361cff)   │   10 │ 0.79098 │  2.9427  │  25.715 │  0.8366 │        1.4148 │ 0.025 │ 0.5      │ alexnet    │
-│ │ ╓ 2361cff [exp-c0b11] │    9 │ 0.91803 │ 0.27989  │  228.59 │ 0.82353 │       0.69077 │ 0.009 │ 0.017    │ alexnet    │
-│ │ ╟ 7686d2f             │    8 │ 0.90984 │ 0.23496  │  177.65 │ 0.87582 │       0.50887 │ 0.009 │ 0.017    │ alexnet    │
-│ │ ╟ 671f8cd             │    7 │ 0.88934 │ 0.39237  │   126.7 │ 0.86928 │       0.47856 │ 0.009 │ 0.017    │ alexnet    │
-│ │ ╟ ea1bf61             │    6 │ 0.84836 │  0.4195  │  75.834 │ 0.91503 │       0.30885 │ 0.009 │ 0.017    │ alexnet    │
-│ │ ╟ a9f8dab (bf81637)   │    5 │ 0.79508 │ 0.72891  │  25.219 │ 0.66667 │        1.0311 │ 0.009 │ 0.017    │ alexnet    │
-│ │ ╓ bf81637 [exp-a1f53] │    4 │ 0.92623 │ 0.19567  │  229.18 │  0.9085 │       0.25145 │ 0.001 │ 0.09     │ alexnet    │
+┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━┳━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━━━┓
+┃ neutral:**Experiment**              ┃ metric:**step** ┃     metric:**acc** ┃    metric:**loss**  ┃ metric:**training_time** ┃ metric:**val_acc** ┃ metric:**val_loss** ┃ param:**lr**    ┃ param:**momentum** ┃ param:**model_name** ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━╇━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━━━━┩
+│ **workspace**               │   **11** │ **0.88525** │  **1.1355**  │        **76.799** │  **0.9085** │   **1.7642** │ **0.025** │ **0.5**      │ **alexnet**    │
+│ **main**                    │    **-** │       **-** │        **-** │             **-** │       **-** │        **-** │ **0.001** │ **0.09**     │ **alexnet**    │
+│ │ ╓ 54e87bc [exp-52406] │   11 │ 0.88525 │  1.1355  │        76.799 │  0.9085 │   1.7642 │ 0.025 │ 0.5      │ alexnet    │
+│ │ ╟ b2b9ad0 (2361cff)   │   10 │ 0.79098 │  2.9427  │        25.715 │  0.8366 │   1.4148 │ 0.025 │ 0.5      │ alexnet    │
+│ │ ╓ 2361cff [exp-c0b11] │    9 │ 0.91803 │ 0.27989  │        228.59 │ 0.82353 │  0.69077 │ 0.009 │ 0.017    │ alexnet    │
+│ │ ╟ 7686d2f             │    8 │ 0.90984 │ 0.23496  │        177.65 │ 0.87582 │  0.50887 │ 0.009 │ 0.017    │ alexnet    │
+│ │ ╟ 671f8cd             │    7 │ 0.88934 │ 0.39237  │         126.7 │ 0.86928 │  0.47856 │ 0.009 │ 0.017    │ alexnet    │
+│ │ ╟ ea1bf61             │    6 │ 0.84836 │  0.4195  │        75.834 │ 0.91503 │  0.30885 │ 0.009 │ 0.017    │ alexnet    │
+│ │ ╟ a9f8dab (bf81637)   │    5 │ 0.79508 │ 0.72891  │        25.219 │ 0.66667 │   1.0311 │ 0.009 │ 0.017    │ alexnet    │
+│ │ ╓ bf81637 [exp-a1f53] │    4 │ 0.92623 │ 0.19567  │        229.18 │  0.9085 │  0.25145 │ 0.001 │ 0.09     │ alexnet    │
 ```
 
 If you take a look at the metrics and the corresponding hyperparameter values,
@@ -274,8 +274,8 @@ the `--reset` option here so that we can start a fresh experiment for the new
 model. You should see results similar to this in your table.
 
 ```dvctable
-┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━┳━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━━━┓
-┃ neutral:**Experiment**              ┃ metric:**step** ┃ metric:**val_acc** ┃ metric:**val_loss** ┃     metric:**acc** ┃    metric:**loss** ┃ metric:**training_time** ┃ param:**lr**    ┃ param:**momentum** ┃ param:**model_name** ┃
+┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━┳━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━━━┓
+┃ neutral:**Experiment**              ┃ metric:**step** ┃     metric:**acc** ┃    metric:**loss** ┃ metric:**training_time** ┃ metric:**val_acc** ┃ metric:**val_loss** ┃ param:**lr**    ┃ param:**momentum** ┃ param:**model_name** ┃
 ┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━╇━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━━━━┩
 │ **workspace**               │    **1** │ **0.85656** │ **0.35667** │        **83.414** │ **0.87582** │  **0.34273** │ **0.025** │ **0.5**      │ **squeezenet** │
 │ **main**                    │    - │       - │       - │             - │       - │        - │ **0.001** │ **0.09**     │ **squeezenet** │
@@ -309,8 +309,8 @@ You can check out the details for the queues you have in place by looking at the
 experiments table with `dvc exp show`. You'll see something like this.
 
 ```dvctable
-┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━┳━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━━━┓
-┃ neutral:**Experiment**              ┃ metric:**step** ┃ metric:**val_acc** ┃ metric:**val_loss** ┃     metric:**acc** ┃    metric:**loss** ┃ metric:**training_time** ┃ param:**lr**    ┃ param:**momentum** ┃ param:**model_name** ┃
+┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━┳━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━━━┓
+┃ neutral:**Experiment**              ┃ metric:**step** ┃     metric:**acc** ┃    metric:**loss** ┃ metric:**training_time** ┃ metric:**val_acc** ┃ metric:**val_loss** ┃ param:**lr**    ┃ param:**momentum** ┃ param:**model_name** ┃
 ┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━╇━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━━━━┩
 │ **workspace**               │    **1** │ **0.85656** │ **0.35667** │        **83.414** │ **0.87582** │  **0.34273** │ **0.025** │ **0.5**      │ **squeezenet** │
 │ **main**                    │    - │       - │       - │             - │       - │        - │ **0.001** │ **0.09**     │ **squeezenet** │
@@ -338,8 +338,8 @@ Now if you take a look at your table, you'll see the metrics from those 3
 experiments.
 
 ```dvctable
-┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━┳━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━━━┓
-┃ neutral:**Experiment**              ┃ metric:**step** ┃ metric:**val_acc** ┃ metric:**val_loss** ┃     metric:**acc** ┃    metric:**loss** ┃ metric:**training_time** ┃ param:**lr**    ┃ param:**momentum** ┃ param:**model_name** ┃
+┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━┳━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━━━┓
+┃ neutral:**Experiment**              ┃ metric:**step** ┃     metric:**acc** ┃    metric:**loss** ┃ metric:**training_time** ┃ metric:**val_acc** ┃ metric:**val_loss** ┃ param:**lr**     ┃ param:**momentum** ┃ param:**model_name** ┃
 ┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━╇━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━━━━┩
 │ **workspace**               │    **5** │ **0.76639** │ **0.49865** │        **85.705** │ **0.81699** │   **0.4518** │ **0.001**  │ **0.09**     │ **squeezenet** │
 │ **main**                    │    - │       - │       - │             - │       - │        - │ **0.001**  │ **0.09**     │ **squeezenet** │
