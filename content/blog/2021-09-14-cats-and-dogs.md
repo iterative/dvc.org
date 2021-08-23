@@ -43,6 +43,27 @@ starting with AlexNet or SqueezeNet.
 
 ## Updating the dataset with DVC
 
+To add the new cats and dogs dataset to the project, we'll use one of the DVC
+commands.
+
+```dvc
+dvc get https://github.com/iterative/dataset-registry use-cases/cats-dogs
+```
+
+You can use this command to download files or directories that are tracked by
+DVC or Git. This downloads a sample dataset with images of cats and dogs. Now we
+need to do some minor updates to our `pretrained_model_tuner.py` script. The
+first thing we need to do is update the location that the data is coming from.
+
+```python
+data_dir = "./cats-dogs/data/validation"
+```
+
+This is the directory that was downloaded from the DVC remote and it has images
+for cats and dogs. Next we need to update the script to handle the train and
+validation data a little differently since we only have one folder for all of
+the data.
+
 ## Running new experiments on the pre-trained model
 
 ## The updated model
