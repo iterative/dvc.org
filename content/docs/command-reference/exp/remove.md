@@ -49,7 +49,6 @@ master:
         exp-e6c97
         exp-1dad0
         exp-1df77
-        exp-23d5a
 ```
 
 To remove any of them, give their names to `dvc exp remove`. Or use the `--all`
@@ -61,7 +60,6 @@ $ dvc exp remove exp-1dad0 exp-1df77
 $ dvc exp list
 master:
         exp-e6c97
-        exp-23d5a
 
 $ dvc exp remove -A
 
@@ -96,4 +94,22 @@ $ dvc exp show --include-params=train.min_split --no-pager
 │ master                │ Aug 02, 2021 │ -      │  0.53252 │  0.9107 │ 2               │
 │ └── 5751540 [split32] │ 04:57 PM     │ Queued │        - │       - │ 32              │
 └───────────────────────┴──────────────┴────────┴──────────┴─────────┴─────────────────┘
+```
+
+We can also remove all of the experiments from a remote Git repository:
+
+```dvc
+$ dvc exp push myremote exp-e6c97
+Pushed experiment 'exp-e6c97'to Git remote 'myremote'.
+$ dvc exp push myremote exp-9fcef
+Pushed experiment 'exp-9fcef'to Git remote 'myremote'.
+
+$ dvc exp list myremote
+master:
+        exp-aaa23
+        exp-e6c97
+
+$ dvc exp remote -r myremote
+$ dvc exp list myremote
+$
 ```
