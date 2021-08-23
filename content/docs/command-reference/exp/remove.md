@@ -5,7 +5,7 @@ Delete specific experiments from the <abbr>project</abbr>.
 ## Synopsis
 
 ```usage
-usage: dvc exp remove [-h] [-q | -v] [--queue | -A]
+usage: dvc exp remove [-h] [-q | -v] [--queue | -A | -g <git_remote>]
                       [<name> [<name> ...]]
 
 positional arguments:
@@ -27,6 +27,9 @@ With `--queue`, the list of experiments awaiting execution is cleared instead.
   `dvc exp run --queue`).
 
 - `-A`, `--all` - remove all experiments (includes `--queue`).
+
+- `-g`, `--git-remote` - Name of the Git remote to GC all of the experiment
+  branches.
 
 - `-h`, `--help` - shows the help message and exit.
 
