@@ -54,7 +54,32 @@ The way DVC works is by storing custom Git refs in your repo with metadata that
 defines the experiment. You can learn more about how DVC uses custom Git refs in
 [this post](https://dvc.org/blog/experiment-refs).
 
+Next, you'll need to set up a remote to your data location. This could be an AWS
+S3 bucket, a Google Drive, or Blob Storage in Azure. For this example, we'll be
+using an S3 bucket to get stored data.
+
+Now that you know what we're doing, let's run the command to set up our DVC
+remote.
+
+```dvc
+dvc remote add -d cloud_remote s3://mybucket/path
+```
+
+This adds the remote storage for DVC to track and now we'll be able to push and
+pull the exact code and data to reproduce any experiment from end to end. With
+your Git remote and DVC remote in place, you can start pulling data and
+experiments from the cloud to your local machine.
+
 ## Pulling experiments
+
+If you're picking up an existing project, there will likely already be
+experiments present in the repo for you to take a look at. To pull an experiment
+to your local machine to start new experiments from, you'll need an experiment
+ID for the following command.
+
+```dvc
+dvc exp pull origin exp-f3867
+```
 
 ## Pushing experiments
 
