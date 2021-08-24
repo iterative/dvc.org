@@ -329,7 +329,7 @@ The [`dvclive.next_step()`](/doc/dvclive/api-reference/next_step) line tells DVC
 that it can take a snapshot of the entire workspace and version it with Git.
 It's important that with this approach only code with metadata is versioned in
 Git (as an ephemeral commit), while the actual model weight file will be stored
-in the DVC data cache.
+in the DVC data <abbr>cache</abbr>.
 
 ## Running experiments
 
@@ -376,6 +376,24 @@ Now it's time to take a look at the metrics we're working with.
 
 _If you don't have a number of training epochs defined and you don't terminate
 the process, the experiment will run for 100 epochs._
+
+### Caching checkpoints
+
+We can automatically push the checkpoints' code & data to your Git & DVC remotes
+while an experiment is running. To enable this, two environment variables need
+to be set:
+
+- `DVC_EXP_AUTO_PUSH`: Enable auto push (`true`, `1`, `y`, `yes`)
+- `DVC_EXP_GIT_REMOTE`: Git repository (can be a URL or a name such as `origin`,
+  `myremote`, etc.)
+
+Note that a `dvc remote default` is also needed so that the corresponding data
+can be pushed. With this configuration, `dvc exp push` will be done
+automatically after every iteration.
+
+⚠️ If either Git or DVC remotes are missing, the experiment will fail. However,
+if a checkpoint push doesn't succeed (due to rate limiting etc.) a warning will
+be printed, but the experiment will continue running as normal.
 
 ## Viewing checkpoints
 

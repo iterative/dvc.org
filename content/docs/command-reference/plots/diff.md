@@ -87,9 +87,8 @@ all the current plots, without comparisons.
 
 - `--title <text>` - plot title.
 
-- `--show-vega` - produce a
-  [Vega specification](https://vega.github.io/vega/docs/specification/) file
-  instead of HTML. See `dvc plots` for more info.
+- `--show-vega` - produce a [Vega-Lite](https://vega.github.io/vega-lite/) spec
+  file instead of HTML. See `dvc plots` for more info.
 
 - `--open` - opens the generated plot in the browser automatically.
 

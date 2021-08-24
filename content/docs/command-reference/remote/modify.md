@@ -291,7 +291,7 @@ Authentication example:
 $ dvc remote add -d myremote s3://mybucket/path
 $ export AWS_ACCESS_KEY_ID='mykey'
 $ export AWS_SECRET_ACCESS_KEY='mysecret'
-$ dvc remote push
+$ dvc push
 ```
 
 For more on the supported env vars, please see the
@@ -369,16 +369,22 @@ $ dvc remote modify --system myremote
 
 </details>
 
+To use a custom authentication method, you can either use this command to
+configure the appropriate auth params, use environment variables, or rely on an
+Azure config file (in that order). More details below.
+
 > See some [Azure auth examples](#example-some-azure-authentication-methods).
 
-To use a custom authentication method, use the following parameters (listed in
-order of precedence):
+#### Authenticate with DVC config parameters
+
+The following parameters are listed in the order they are used by DVC when
+attempting to authenticate with Azure:
 
 1. `connection_string` is used for authentication if given (`account_name` is
    ignored).
 2. If `tenant_id` and `client_id`, `client_secret` are given, Active Directory
    (AD) [service principal] auth is performed.
-3. DVC will try next to connect with `account_key` or `sas_token` (in this
+3. DVC will next try to connect with `account_key` or `sas_token` (in this
    order) if either are provided.
 4. If `allow_anonymous_login` is set to `True`, then DVC will try to connect
    [anonymously].
@@ -442,8 +448,10 @@ order of precedence):
   $ dvc remote modify myremote allow_anonymous_login true
   ```
 
-Note that Azure remotes can also authenticate via environment variables (instead
-of `dvc remote modify`). These are tried if none of the params above are set.
+#### Authenticate with environment variables
+
+Azure remotes can also authenticate via env vars (instead of
+`dvc remote modify`). These are tried if none of the params above are set.
 
 For Azure connection string:
 
@@ -480,6 +488,15 @@ $ export AZURE_PASSWORD='mysecret'
 > See also description here for some
 > [env vars](https://docs.microsoft.com/en-us/python/api/azure-identity/azure.identity.environmentcredential)
 > available.
+
+#### Authenticate with an Azure config file
+
+As a final option (if no params or env vars are set), some of the auth methods
+can propagate from an Azure configuration file (typically managed with
+[az config](https://docs.microsoft.com/en-us/cli/azure/config)):
+`connection_string`, `account_name`, `account_key`, `sas_token` and
+`container_name`. The default directory where it will be searched for is
+`~/.azure` but this can be customized with the `AZURE_CONFIG_DIR` env var.
 
 </details>
 
@@ -1087,7 +1104,7 @@ Using a default identity (e.g. credentials set by `az cli`):
 ```dvc
 $ dvc remote add -d myremote azure://mycontainer/object
 $ dvc remote modify myremote account_name 'myaccount'
-$ dvc remote push
+$ dvc push
 ```
 
 > Note that this may require the `Storage Blob Data Contributor` and other roles
@@ -1098,7 +1115,7 @@ Using a `connection_string`:
 ```dvc
 $ dvc remote add -d myremote azure://mycontainer/object
 $ dvc remote modify --local myremote connection_string 'mysecret'
-$ dvc remote push
+$ dvc push
 ```
 
 Using `account_key`:
@@ -1107,7 +1124,7 @@ Using `account_key`:
 $ dvc remote add -d myremote azure://mycontainer/object
 $ dvc remote modify --local myremote account_name 'myaccount'
 $ dvc remote modify --local myremote account_key 'mysecret'
-$ dvc remote push
+$ dvc push
 ```
 
 Using `sas_token`:
@@ -1116,5 +1133,5 @@ Using `sas_token`:
 $ dvc remote add -d myremote azure://mycontainer/object
 $ dvc remote modify --local myremote account_name 'myaccount'
 $ dvc remote modify --local myremote sas_token 'mysecret'
-$ dvc remote push
+$ dvc push
 ```
