@@ -598,6 +598,10 @@
             "source": "dvclive/user-guide/ml-frameworks/index.md",
             "children": [
               {
+                "slug": "huggingface",
+                "label": "Hugging Face"
+              },
+              {
                 "slug": "keras",
                 "label": "Keras"
               },
