@@ -260,8 +260,10 @@ $ dvc exp run --run-all --jobs 4
 ```
 
 > Note that since each experiment runs in an independent temporary directory,
-> common <abbr>stages</abbr> across experiment pipelines are always run
-> separately even if they share param values or other dependencies.
+> common <abbr>stages</abbr> may sometimes be executed several times depending
+> on the state of the [run-cache] at that time.
+
+[run-cache]: /doc/user-guide/project-structure/internal-files#run-cache
 
 ⚠️ Parallel runs are experimental and may be unstable at this time. ⚠️ Make sure
 you're using a number of jobs that your environment can handle (no more than the
