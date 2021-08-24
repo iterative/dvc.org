@@ -241,9 +241,8 @@ describe('getRedirects', () => {
   })
 
   describe('Does not accidentally redirect to an external site', () => {
-    itRedirects('https://dvc.org//google.com/', '/google.com')
     itRedirects('//google.com/', '/google.com')
-    itRedirects('///evil.com/', '/evil.com')
+    itRedirects('https://dvc.org//google.com/', '/google.com')
     itRedirects('/////////evil.com/', '/evil.com')
   })
 })
