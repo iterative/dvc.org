@@ -194,7 +194,7 @@ The [`dvclive.next_step()`](/doc/dvclive/api-reference/next_step) line tells DVC
 that it can take a snapshot of the entire workspace and version it with Git.
 It's important that with this approach only code with metadata is versioned in
 Git (as an ephemeral commit), while the actual model weight file will be stored
-in the DVC data cache.
+in the DVC data <abbr>cache</abbr>.
 
 ## Running experiments
 
