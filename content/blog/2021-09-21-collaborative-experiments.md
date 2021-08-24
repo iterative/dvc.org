@@ -83,6 +83,22 @@ dvc exp pull origin exp-f3867
 
 ## Pushing experiments
 
+Now that you've pulled down an existing experiment and run your own experiments
+based off of it, you can push these new experiments to the remote. DVC handles
+both the GitHub and data storage pushes with this command.
+
+```dvc
+dvc exp push origin exp-p4202
+```
+
 ## Listing your remote experiments
+
+Since you have a few experiments in your remotes, it might help to know what you
+have available. You can take a look at all of the experiments with the following
+command.
+
+```dvc
+dvc exp list origin --all
+```
 
 ## Conclusion
