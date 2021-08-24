@@ -240,7 +240,8 @@ describe('getRedirects', () => {
     )
   })
 
-  describe('Does not have an open redirect bug on trailing slash removal', () => {
+  describe('Does not accidentally redirect to an external site', () => {
     itRedirects('//google.com/', '/google.com')
+    itRedirects('///evil.com/', '/evil.com')
   })
 })
