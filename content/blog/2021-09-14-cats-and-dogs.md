@@ -46,6 +46,8 @@ starting with AlexNet or SqueezeNet.
 To add the new cats and dogs dataset to the project, we'll use one of the DVC
 commands.
 
+TODO: make a new remote with this same data in a different directory setup
+
 ```dvc
 dvc get https://github.com/iterative/dataset-registry use-cases/cats-dogs
 ```
@@ -56,15 +58,74 @@ need to do some minor updates to our `pretrained_model_tuner.py` script. The
 first thing we need to do is update the location that the data is coming from.
 
 ```python
-data_dir = "./cats-dogs/data/validation"
+data_dir = "./cats-dogs/data/"
 ```
 
 This is the directory that was downloaded from the DVC remote and it has images
-for cats and dogs. Next we need to update the script to handle the train and
-validation data a little differently since we only have one folder for all of
-the data.
+for cats and dogs. The data is in a similar format to the ants and bees
+directories so there aren't any code changes we need to make.
 
 ## Running new experiments on the pre-trained model
+
+With the updated data, we can start training with the existing model and see how
+well the results are. To run a new experiment, open your terminal and make sure
+you have a virtual environment enabled. Then run this command:
+
+```dvc
+dvc exp run
+```
+
+You should see a table with results similar to this.
+
+```dvctable
+┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━┳━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━┓
+┃ neutral:**Experiment**              ┃ neutral:**Created**      ┃ metric:**step** ┃     metric:**acc** ┃    metric:**loss** ┃ metric:**training_time** ┃ metric:**val_acc** ┃ metric:**val_loss** ┃ param:**lr**    ┃ param:**momentum** ┃ param:**model_name** ┃ param:**num_classes** ┃ param:**batch_size** ┃ param:**num_epochs** ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━╇━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━┩
+│ **workspace**               │ **-**            │    **4** │ **0.92152** │ **0.19878** │        **285.73** │ **0.98639** │  **0.07654** │ **0.001** │ **0.09**     │ **squeezenet** │ **2**           │ **8**          │ **5**          │
+│ **main**                    │ **Aug 23, 2021** │    **-** │       **-** │       **-** │             **-** │       **-** │        **-** │ **0.001** │ **0.09**     │ **squeezenet** │ **2**           │ **8**          │ **5**          │
+│ │ ╓ 2aa1a21 [exp-cf53a] │ 03:16 PM     │    4 │ 0.92152 │ 0.19878 │        285.73 │ 0.98639 │  0.07654 │ 0.001 │ 0.09     │ squeezenet │ 2           │ 8          │ 5          │
+│ │ ╟ 50db8c9             │ 03:15 PM     │    3 │ 0.89367 │  0.2482 │        222.05 │ 0.97279 │  0.10205 │ 0.001 │ 0.09     │ squeezenet │ 2           │ 8          │ 5          │
+│ │ ╟ af0d5ce             │ 03:14 PM     │    2 │ 0.88608 │ 0.29015 │        159.61 │ 0.97279 │  0.10118 │ 0.001 │ 0.09     │ squeezenet │ 2           │ 8          │ 5          │
+│ │ ╟ 3507269             │ 03:13 PM     │    1 │ 0.83544 │ 0.35114 │        96.977 │ 0.93197 │  0.21541 │ 0.001 │ 0.09     │ squeezenet │ 2           │ 8          │ 5          │
+│ ├─╨ 50964cb             │ 03:12 PM     │    0 │ 0.73924 │ 0.50988 │        35.207 │ 0.94558 │  0.18173 │ 0.001 │ 0.09     │ squeezenet │ 2           │ 8          │ 5          │
+└─────────────────────────┴──────────────┴──────┴─────────┴─────────┴───────────────┴─────────┴──────────┴───────┴──────────┴────────────┴─────────────┴────────────┴────────────┘
+```
+
+The SqueezeNet model did really well on the cats and dogs data! Let's check out
+how the AlexNet model will perform. We'll do that with another DVC command. In
+this command, we'll update the `model_name` hyperparameter and we'll reset our
+experiments.
+
+_Since we're running experiments with checkpoints we have to reset the
+checkpoints or else the experiment will continue training from the last
+checkpoint._
+
+```dvc
+dvc exp run --reset -S model_name=alexnet
+```
+
+This sets the new model to AlexNet and we start training from scratch. To make
+the table easier to read, we'll show a subset of all the columns avaiable.
+Here's what your table should look like after you run this command to show it:
+
+```dvc
+dvc exp show --no-timestamp --include-params lr,momentum,model_name
+```
+
+```dvctable
+┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━┳━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━━━┓
+┃ neutral:**Experiment**              ┃ metric:**step** ┃     metric:**acc** ┃    metric:**loss** ┃ metric:**training_time** ┃ metric:**val_acc** ┃ metric:**val_loss** ┃ param:**lr**    ┃ param:**momentum** ┃ param:**model_name** ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━╇━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━━━━┩
+│ **workspace**               │    **4** │  **0.9519** │ **0.14025** │        **253.63** │ **0.96599** │ **0.083774** │ **0.001** │ **0.09**     │ **alexnet**    │
+│ **main**                    │    **-** │       **-** │       **-** │             **-** │       **-** │        **-** │ **0.001** │ **0.09**     │ **squeezenet** │
+│ │ ╓ 29a86ed [exp-5b8ed] │    4 │  0.9519 │ 0.14025 │        253.63 │ 0.96599 │ 0.083774 │ 0.001 │ 0.09     │ alexnet    │
+│ │ ╟ d4cb472             │    3 │ 0.94684 │ 0.16196 │        195.99 │ 0.96599 │ 0.078774 │ 0.001 │ 0.09     │ alexnet    │
+│ │ ╟ 42f73c3             │    2 │  0.9443 │ 0.16979 │        141.24 │ 0.96599 │  0.07966 │ 0.001 │ 0.09     │ alexnet    │
+│ │ ╟ da7649a             │    1 │ 0.92911 │ 0.20591 │          84.2 │ 0.97279 │  0.09051 │ 0.001 │ 0.09     │ alexnet    │
+│ ├─╨ 2bd9e1c             │    0 │ 0.82532 │ 0.35116 │        29.487 │ 0.97279 │  0.09532 │ 0.001 │ 0.09     │ alexnet    │
+│ │ ╓ 2aa1a21 [exp-cf53a] │    4 │ 0.92152 │ 0.19878 │        285.73 │ 0.98639 │  0.07654 │ 0.001 │ 0.09     │ squeezenet │
+│ │ ╟ 50db8c9             │    3 │ 0.89367 │  0.2482 │        222.05 │ 0.97279 │  0.10205 │ 0.001 │ 0.09     │ squeezenet │
+```
 
 ## The updated model
 
