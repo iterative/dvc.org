@@ -239,4 +239,8 @@ describe('getRedirects', () => {
       '/doc/use-cases/versioning-data-and-model-files'
     )
   })
+
+  describe('Does not have an open redirect bug on trailing slash removal', () => {
+    itRedirects('//google.com/', '/google.com')
+  })
 })
