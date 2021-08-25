@@ -199,8 +199,6 @@ $ dvc exp run --queue -S units=256
 Queued experiment '4109ead' for future execution.
 ```
 
-> `dvc exp show` will mark queued experiments with an asterisk `*`.
-
 Each experiment is derived from the workspace at the time it's queued. If you
 make changes in the workspace afterwards, they won't be reflected in queued
 experiments (once run).
@@ -227,9 +225,13 @@ nohup: ignoring input and appending output to 'nohup.out'
 > the output of the DVC process.
 
 Note that Git-ignored files/dirs are explicitly excluded from queued/temp runs
-to avoid committing unwanted files into final ([persisted]) experiments.
+to avoid committing unwanted files into Git (e.g. once successful experiments
+are [persisted]).
 
 [persisted]: /doc/user-guide/experiment-management#persistent-experiments
+
+> 💡 To include untracked files, stage them with `git add` first (before
+> `dvc exp run`) and `git reset` them afterwards.
 
 </details>
 
@@ -240,15 +242,8 @@ independent of their creation order.
 $ dvc exp run --run-all
 ```
 
-> ⚠️ Note that only tracked files and directories will be included in
-> `--queue/temp` experiments. To include untracked files, stage them with
-> `git add` first (before `dvc exp run`) and `git reset` them afterwards.
-
 To remove all experiments from the queue and start over, you can use
-`dvc exp remove --queue`. 📖 See [Cleaning-Up Experiments][clean-up] for
-details.
-
-[clean-up]: /doc/user-guide/experiment-management/cleaning-up-experiments
+`dvc exp remove --queue`.
 
 ### Running experiments in parallel
 
