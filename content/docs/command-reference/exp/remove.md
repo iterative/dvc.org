@@ -14,8 +14,8 @@ positional arguments:
 
 ## Description
 
-Deletes one or more experiments, indicated by name (see `dvc exp run`) or
-commit SHA (only queued experiments).
+Deletes one or more experiments, indicated by name (see `dvc exp run`) or ID
+(only queued experiments).
 
 With `--queue`, the list of experiments awaiting execution is cleared instead.
 
@@ -67,41 +67,34 @@ $ dvc exp list
 
 Nothing is listed after the last `dvc exp list` because they're all gone.
 
-For those experiments in the queue, things are pretty similiar. Let us first
-create some queued experiments.
+The same applies to queued experiments but they won't have a name to give to
+`dvc exp remove` yet unless you specify one. Alternatively, you can use their ID
+instead (shown when queued and by `dvc exp show`). Let's queue a few experiments
+in different ways and then delete some of them:
 
 ```dvc
-$ dvc exp run --queue -S train.min_split=64 --name split64
+$ dvc exp run --queue -S train.min_split=64
 Queued experiment 'e41d5b4' for future execution.
 $ dvc exp run --queue -S train.min_split=32 --name split32
 Queued experiment '5751540' for future execution.
 $ dvc exp run --queue -S train.min_split=16 --name split16
 Queued experiment '8de9a6c' for future execution.
-$ dvc exp run --queue -S train.min_split=128
-Queued experiment 'dbca012' for future execution.
-$ dvc exp show --include-params=train.min_split --no-pager
-┏━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
-┃ Experiment            ┃ Created      ┃ State  ┃ avg_prec ┃ roc_auc ┃ train.min_split ┃
-┡━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━━━┩
-│ workspace             │ -            │ -      │  0.57553 │ 0.94652 │ 2               │
-│ master                │ Aug 02, 2021 │ -      │  0.53252 │  0.9107 │ 2               │
-│ ├── dbca012           │ 04:57 PM     │ Queued │        - │       - │ 128             │
-│ ├── 8de9a6c [split16] │ 04:57 PM     │ Queued │        - │       - │ 16              │
-│ ├── 5751540 [split32] │ 04:57 PM     │ Queued │        - │       - │ 32              │
-│ └── e41d5b4 [split64] │ 04:57 PM     │ Queued │        - │       - │ 64              │
-└───────────────────────┴──────────────┴────────┴──────────┴─────────┴─────────────────┘
 
-$ dvc exp remove dbca012
-$ dvc exp remove split16
+$ dvc exp remove e41d5b4 split16
 $ dvc exp show --include-params=train.min_split --no-pager
+```
+
+```table
 ┏━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
 ┃ Experiment            ┃ Created      ┃ State  ┃ avg_prec ┃ roc_auc ┃ train.min_split ┃
 ┡━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━━━┩
 │ workspace             │ -            │ -      │  0.57553 │ 0.94652 │ 2               │
 │ master                │ Aug 02, 2021 │ -      │  0.53252 │  0.9107 │ 2               │
-│ ├── 5751540 [split32] │ 04:57 PM     │ Queued │        - │       - │ 32              │
-│ └── e41d5b4 [split64] │ 04:57 PM     │ Queued │        - │       - │ 64              │
+│ └── 5751540 [split32] │ 04:57 PM     │ Queued │        - │       - │ 32              │
 └───────────────────────┴──────────────┴────────┴──────────┴─────────┴─────────────────┘
+```
+
+```dvc
 $ dvc exp remove --queue
 $ dvc exp show --include-params=train.min_split --no-pager
 ┏━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
