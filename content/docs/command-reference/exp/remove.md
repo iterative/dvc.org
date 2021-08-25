@@ -27,8 +27,6 @@ With `--queue`, the list of experiments awaiting execution is cleared instead.
 
 - `-A`, `--all` - remove all experiments (includes `--queue`).
 
-- `-f`, `--force` - force garbage collection. Skip confirmation prompt.
-
 - `-h`, `--help` - shows the help message and exit.
 
 - `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if no
