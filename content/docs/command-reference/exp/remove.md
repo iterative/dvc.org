@@ -25,8 +25,7 @@ With `--queue`, the list of experiments awaiting execution is cleared instead.
 - `--queue` - remove all experiments that haven't been run yet (defined via
   `dvc exp run --queue`).
 
-- `-A`, `--all` - remove all experiments in this repo(defined via
-  `dvc exp run -A`).
+- `-A`, `--all` - remove all experiments in this project.
 
 - `-f`, `--force` - force garbage collection. Skip confirmation prompt.
 
