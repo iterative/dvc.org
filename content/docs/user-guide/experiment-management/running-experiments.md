@@ -225,7 +225,8 @@ nohup: ignoring input and appending output to 'nohup.out'
 > the output of the DVC process.
 
 Note that Git-ignored files/dirs are explicitly excluded from queued/temp runs
-to avoid committing unwanted files into final ([persisted]) experiments.
+to avoid committing unwanted files into Git (e.g. once successful experiments
+are [persisted]).
 
 [persisted]: /doc/user-guide/experiment-management#persistent-experiments
 
