@@ -50,7 +50,8 @@ master:
         exp-23d5a
 ```
 
-To remove any of them, just give their names to `dvc exp remove`:
+To remove any of them, give their names to `dvc exp remove`. Or use the `--all`
+(`-A`) option to remove them all at once:
 
 ```dvc
 $ dvc exp remove exp-1dad0 exp-1df77
@@ -59,9 +60,10 @@ $ dvc exp list
 master:
         exp-e6c97
         exp-23d5a
+
 $ dvc exp remove -A
 
 $ dvc exp list
-
-$
 ```
+
+Nothing is listed after the last `dvc exp list` because they're all gone.
