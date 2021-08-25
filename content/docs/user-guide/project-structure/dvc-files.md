@@ -18,6 +18,7 @@ outs:
   - md5: a304afb96060aad90176268345e10355
     path: data.xml
     desc: Cats and dogs dataset
+    remote: myremote
 
 # Comments and user metadata are supported.
 meta:
@@ -65,6 +66,7 @@ The following subfields may be present under `outs` entries:
 | `cache`                         | Whether or not this file or directory is <abbr>cached</abbr> (`true` by default). See the `--no-commit` option of `dvc add`.                                                                                                                                                                                                          |
 | `persist`                       | Whether the output file/dir should remain in place while `dvc repro` runs (`false` by default: outputs are deleted when `dvc repro` starts)                                                                                                                                                                                           |
 | `desc`                          | (Optional) user description for this output (supported in metrics and plots too). This doesn't affect any DVC operations.                                                                                                                                                                                                             |
+| `remote`                        | (Optional) name of the remote to use for pushing/fetching                                                                                                                                                                                                                                                                             |
 
 ## Dependency entries
 

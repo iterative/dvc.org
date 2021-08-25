@@ -106,6 +106,14 @@ that.
   the `--remote` option is not used, DVC will compare against the default remote
   (specified in the `core.remote` config option).
 
+  Order of priority of remotes:
+
+  1. `remote` specified in a corresponding dvcfile for particular output.
+  2. `--remote` CLI option.
+  3. `core.remote`config option (see `dvc remote default`).
+
+  See `dvc remote` for more information on how to configure remotes.
+
 - `-a`, `--all-branches` - compares cache content against all Git branches, as
   well as the current workspace. This basically runs the same status command in
   every branch of this repo. The corresponding branches are shown in the status

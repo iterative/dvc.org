@@ -60,9 +60,13 @@ directories), `.dvc` files, and stage names (found in `dvc.yaml`).
 The `--all-branches`, `--all-tags`, and `--all-commits` options enable fetching
 files/dirs referenced in multiple Git commits.
 
-The default remote is used (see
-[`dvc config core.remote`](/doc/command-reference/config#core)) unless a
-specific one is given with `--remote`.
+Order of priority of remotes:
+
+1. `remote` specified in a corresponding dvcfile for particular output.
+2. `--remote` CLI option.
+3. `core.remote`config option (see `dvc remote default`).
+
+See `dvc remote` for more information on how to configure remotes.
 
 ## Options
 

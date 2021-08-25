@@ -385,6 +385,7 @@ validation and auto-completion.
 | `persist`    | Whether the output file/dir should remain in place while `dvc repro` runs (`false` by default: outputs are deleted when `dvc repro` starts                                                                                                                                         |
 | `desc`       | (Optional) user description for this output. This doesn't affect any DVC operations.                                                                                                                                                                                               |
 | `checkpoint` | Set to `true` to let DVC know that this output is associated with [in-code checkpoints](/doc/user-guide/experiment-management#checkpoints-in-source-code). These outputs are reverted to their last cached version at `dvc exp run` and also `persist` during the stage execution. |
+| `remote`     | (Optional) name of the remote to use for pushing/fetching.                                                                                                                                                                                                                         |
 
 ⚠️ Note that using the `checkpoint` field in `dvc.yaml` is not compatible with
 `dvc repro`.

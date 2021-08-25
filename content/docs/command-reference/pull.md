@@ -53,9 +53,13 @@ project's cache                  ++ | dvc pull |
  workspace
 ```
 
-The default remote is used (see `dvc remote default`) unless a specific one is
-given with `--remote`. See `dvc remote` for more information on how to configure
-a remote.
+Order of priority of remotes:
+
+1. `remote` specified in a corresponding dvcfile for particular output.
+2. `--remote` CLI option.
+3. `core.remote`config option (see `dvc remote default`).
+
+See `dvc remote` for more information on how to configure remotes.
 
 Without arguments, it downloads all files and directories referenced in the
 current workspace (found in `dvc.yaml` and `.dvc` files) that are missing from

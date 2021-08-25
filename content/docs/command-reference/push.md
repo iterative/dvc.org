@@ -33,9 +33,13 @@ use cases for these commands.
 > Those should be uploaded with `git push`. `dvc import` data is also ignored by
 > this command.
 
-The default remote is used (see `dvc remote default`) unless a specific one is
-given with `--remote`. See `dvc remote` for more information on how to configure
-them.
+Order of priority of remotes:
+
+1. `remote` specified in a corresponding dvcfile for particular output.
+2. `--remote` CLI option.
+3. `core.remote`config option (see `dvc remote default`).
+
+See `dvc remote` for more information on how to configure remotes.
 
 Without arguments, it uploads the files and directories referenced in the
 current workspace (found in all `dvc.yaml` and `.dvc` files) that are missing
