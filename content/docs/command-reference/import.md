@@ -300,7 +300,7 @@ In repo B, we import `data.csv` from A and into a subdirectory:
 $ dvc import /repo/a data.csv --out training/data.csv
 ```
 
-The project may of course have other files, for example:
+Project B may of course contain other files unique to itself, for example:
 
 ```
 /repo/b
@@ -313,21 +313,22 @@ The project may of course have other files, for example:
     └── labels.dvc
 ```
 
-> Notice that the `training/labels` directory is also tracked by DVC separately.
+> Notice that the `training/labels` directory (not an import) is also tracked in
+> B separately.
 
 If we examine `training/data.csv.dvc`, we can see that that the import source is
 repo A (`/repo/a`):
 
 ```yaml
 deps:
-- path: data.csv
-  repo:
-    url: /repo/a
-    rev_lock: 32ab3ddc8a0b5cbf7ed8cb252f93915a34b130eb
+  - path: data.csv
+    repo:
+      url: /repo/a
+      rev_lock: 32ab3ddc8a0b5cbf7ed8cb252f93915a34b130eb
 outs:
-- md5: acbd18db4cc2f85cedef654fccc4a4d8
-  size: 3234523
-  path: data.csv
+  - md5: acbd18db4cc2f85cedef654fccc4a4d8
+    size: 3234523
+    path: data.csv
 ```
 
 Now lets imagine that we run the following command in our third repo, C:
@@ -367,7 +368,7 @@ outs:
     path: training
 ```
 
-Each time that we `dvc import` or `dvc update`* `training/` into C (or even
+Each time that we `dvc import` or `dvc update`\* `training/` into C (or even
 `dvc pull` it) DVC will first look up the contents of `training` in B and notice
 that `training/data.csv` is itself an import. It will then resolve the chain as
 needed (finding `data.csv` in A).
