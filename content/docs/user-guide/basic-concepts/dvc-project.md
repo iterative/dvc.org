@@ -26,7 +26,7 @@ will contain all the [DVC files and directories][dvc-metafiles] including the
 from these DVC metafiles are also considered part of the project (for example
 [metrics files](/doc/command-reference/metrics)).
 
-[dvc-metafiles]: /doc/user-guide/dvc-files-and-directories
+[dvc-metafiles]: /doc/user-guide/project-structure
 
 > `dvc destroy` can be used to remove all DVC-specific files from the directory,
 > in effect deleting the DVC project.
