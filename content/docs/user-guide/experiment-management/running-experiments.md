@@ -199,8 +199,6 @@ $ dvc exp run --queue -S units=256
 Queued experiment '4109ead' for future execution.
 ```
 
-> `dvc exp show` will mark queued experiments with an asterisk `*`.
-
 Each experiment is derived from the workspace at the time it's queued. If you
 make changes in the workspace afterwards, they won't be reflected in queued
 experiments (once run).
