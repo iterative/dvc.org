@@ -139,6 +139,6 @@ $ dvc exp show
 ```
 
 If we use `dvc exp run` again, the process will start from 200 (since that's
-what the workspace reflects).
+what the <abbr>workspace</abbr> reflects).
 
 See `dvc experiments` for more details on managing <abbr>experiments</abbr>.
