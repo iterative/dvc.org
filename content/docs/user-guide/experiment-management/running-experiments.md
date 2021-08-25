@@ -14,8 +14,8 @@ DVC relies on <abbr>pipelines</abbr> that codify experiment workflows (code,
 <abbr>stages</abbr>, <abbr>parameters</abbr>, <abbr>outputs</abbr>, etc.) in a
 `dvc.yaml` file. These contain the commands to run the experiments.
 
-> 📖 See [Get Started: Data Pipelines](/doc/start/data-pipeline) for an intro to
-> this topic.  
+> 📖 See [Get Started: Data Pipelines](/doc/start/data-pipelines) for an intro
+> to this topic.  
 > Here we assume that there's already a working `dvc.yaml` file in the
 > <abbr>project</abbr>.
 
