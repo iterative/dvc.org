@@ -5,6 +5,7 @@ _ML training code_.
 
 We currently support the following _ML Frameworks_:
 
+- [Catalyst](/docs/dvclive/user-guide/ml-frameworks/catalyst)
 - [Hugging Face](/docs/dvclive/user-guide/ml-frameworks/huggingface)
 - [Keras](/docs/dvclive/user-guide/ml-frameworks/keras)
 - [LightGBM](/docs/dvclive/user-guide/ml-frameworks/lightgbm)
