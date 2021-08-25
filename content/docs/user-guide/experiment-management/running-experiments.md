@@ -243,10 +243,7 @@ $ dvc exp run --run-all
 ```
 
 To remove all experiments from the queue and start over, you can use
-`dvc exp remove --queue`. 📖 See [Cleaning-Up Experiments][clean-up] for
-details.
-
-[clean-up]: /doc/user-guide/experiment-management/cleaning-up-experiments
+`dvc exp remove --queue`.
 
 ### Running experiments in parallel
 
