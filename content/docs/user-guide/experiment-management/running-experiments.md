@@ -230,6 +230,9 @@ are [persisted]).
 
 [persisted]: /doc/user-guide/experiment-management#persistent-experiments
 
+> 💡 To include untracked files, stage them with `git add` first (before
+> `dvc exp run`) and `git reset` them afterwards.
+
 </details>
 
 Run them all one-by-one with the `--run-all` flag. The order of execution is
@@ -238,10 +241,6 @@ independent of their creation order.
 ```dvc
 $ dvc exp run --run-all
 ```
-
-> ⚠️ Note that only tracked files and directories will be included in
-> `--queue/temp` experiments. To include untracked files, stage them with
-> `git add` first (before `dvc exp run`) and `git reset` them afterwards.
 
 To remove all experiments from the queue and start over, you can use
 `dvc exp remove --queue`. 📖 See [Cleaning-Up Experiments][clean-up] for
