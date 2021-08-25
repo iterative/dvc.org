@@ -65,7 +65,7 @@ This is the directory that was downloaded from the DVC remote and it has images
 for cats and dogs. The data is in a similar format to the ants and bees
 directories so there aren't any code changes we need to make.
 
-## Running new experiments on the pre-trained model
+## Running new experiments on the pre-trained model with SqueezeNet
 
 With the updated data, we can start training with the existing model and see how
 well the results are. To run a new experiment, open your terminal and make sure
@@ -92,9 +92,12 @@ You should see a table with results similar to this.
 ```
 
 The SqueezeNet model did really well on the cats and dogs data! Let's check out
-how the AlexNet model will perform. We'll do that with another DVC command. In
-this command, we'll update the `model_name` hyperparameter and we'll reset our
-experiments.
+how the AlexNet model will perform. We'll do that with another DVC command.
+
+## Updating the model to AlexNet
+
+In this command, we'll update the `model_name` hyperparameter and we'll reset
+our experiments.
 
 _Since we're running experiments with checkpoints we have to reset the
 checkpoints or else the experiment will continue training from the last
@@ -127,8 +130,9 @@ dvc exp show --no-timestamp --include-params lr,momentum,model_name
 │ │ ╟ 50db8c9             │    3 │ 0.89367 │  0.2482 │        222.05 │ 0.97279 │  0.10205 │ 0.001 │ 0.09     │ squeezenet │
 ```
 
-## The updated model
-
-## Building a new model from AlexNet or SqueezeNet
-
 ## Conclusion
+
+When you want to change large datasets quickly and start tracking how they
+affect our model, using a DVC remote makes it easy to do so on different
+computers. You'll be able to quickly upload and download GBs of data and see how
+changes affect individual experiments.
