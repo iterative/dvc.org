@@ -86,8 +86,11 @@
         "label": "Sharing Data and Model Files",
         "slug": "sharing-data-and-model-files"
       },
-      "data-registries",
-      "shared-development-server"
+      {
+        "label": "Fast and Secure Data Caching Hub",
+        "slug": "fast-data-caching-hub"
+      },
+      "data-registries"
     ]
   },
   {
