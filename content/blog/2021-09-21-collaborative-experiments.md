@@ -56,19 +56,29 @@ defines the experiment. You can learn more about how DVC uses custom Git refs in
 
 Next, you'll need to set up a remote to your data location. This could be an AWS
 S3 bucket, a Google Drive, or Blob Storage in Azure. For this example, we'll be
-using an S3 bucket to get stored data.
+using a Google Drive folder as the remote to handle data storage.
 
 Now that you know what we're doing, let's run the command to set up our DVC
 remote.
 
 ```dvc
-dvc remote add -d cloud_remote s3://mybucket/path
+dvc remote add -d cloud_remote gdrive://1k6aUYWphOulJlXgq4XbfKExWGyymTpEl
 ```
 
 This adds the remote storage for DVC to track and now we'll be able to push and
 pull the exact code and data to reproduce any experiment from end to end. With
 your Git remote and DVC remote in place, you can start pulling data and
 experiments from the cloud to your local machine.
+
+You can learn more about the Google Drive setup in
+[the docs](https://dvc.org/doc/command-reference/remote/add). The main thing you
+need to know is that you need the folder id for the remote location you want to
+set up. You can find that id in the URL for that folder. It'll look similar to
+this.
+
+```dvc
+https://drive.google.com/drive/folders/1k6aUYWphOulJlXgq4XbfKExWGyymTpEl?usp=sharing
+```
 
 ## Pulling experiments
 
