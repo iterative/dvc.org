@@ -21,13 +21,13 @@ tags:
 
 You might be in the middle of training a model and then the business problem
 shifts. Now you have this model that has been going through the training process
-with one dataset and now you need to use a different one.
+with one dataset and you need to use a different dataset.
 
 There's likely something that your model learned that might be useful on this
-new dataset, even though you'll have to restart the training process. We'll do
-an example of updating a pre-trained model to use a different dataset. By the
+new dataset, so you might not have to restart the entire training process. We'll
+do an example of updating a pre-trained model to use a different dataset. By the
 end of this, you should see how you can handle this quickly and start running
-new experiments.
+new experiments to get a better model.
 
 ## The original pre-trained model
 
@@ -36,6 +36,12 @@ dogs. You can clone
 [the GitHub repo](https://github.com/iterative/pretrained-model-demo) and check
 out [this post](https://dvc.org/blog/transfer-learning-experiments) on how we
 experimented with both AlexNet and SqueezeNet for an image classification model.
+
+If you followed along with the transfer learning post, you'll know that the
+models we're working with are both pre-trained models. They are both trained on
+the [ImageNet dataset](https://www.image-net.org/) which has over 14 million
+images. So we've already spent some time training these models on one dataset
+and now we want to try with another.
 
 We'll take the model training a step further and see what happens when we
 completely change the dataset. Then compare the results to the model we get from
