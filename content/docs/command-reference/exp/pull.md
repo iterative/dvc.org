@@ -11,7 +11,7 @@ usage: dvc exp pull [-h] [-q | -v] [-f] [--no-cache]
                     git_remote experiment
 
 positional arguments:
-  git_remote          Git remote name or repo URL
+  git_remote          Git remote name or SSH Git URL
   experiment          Experiment to pull
 ```
 
@@ -24,12 +24,10 @@ experiments across <abbr>repository</abbr> copies via Git (and DVC) remotes.
 > these are saved under custom Git references. See **How does DVC track
 > experiments?** in `dvc exp run` to learn more about DVC experiment storage.
 
-A working `git_remote` name (e.g. `origin`) or valid Git repo's URL is required,
+A working `git_remote` name (e.g. `origin`) or valid [SSH Git URL] is required,
 as well as an `experiment` name or hash (see `dvc exp run`) to pull.
 
-> ⚠️ Only [SSH Git URLs] are valid for `git_remote`.
-
-[ssh git urls]:
+[ssh git url]:
   https://git-scm.com/book/en/v2/Git-on-the-Server-The-Protocols#_the_protocols
 
 The first action of `dvc exp pull` is to download the `experiment` so it's
