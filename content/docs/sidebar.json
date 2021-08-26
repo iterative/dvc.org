@@ -595,6 +595,10 @@
             "source": "dvclive/user-guide/ml-frameworks/index.md",
             "children": [
               {
+                "slug": "fastai",
+                "label": "Fastai"
+              },
+              {
                 "slug": "catalyst",
                 "label": "Catalyst"
               },
