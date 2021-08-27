@@ -643,6 +643,10 @@
         "source": "api-reference/index.md",
         "children": [
           {
+            "slug": "get_step",
+            "label": "get_step()"
+          },
+          {
             "slug": "init",
             "label": "init()"
           },
