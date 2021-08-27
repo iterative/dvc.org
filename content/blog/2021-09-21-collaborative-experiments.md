@@ -112,3 +112,8 @@ dvc exp list origin --all
 ```
 
 ## Conclusion
+
+It's a lot easier to get help from someone on a project when you can share
+everything with them. When you use DVC, you can bundle your data and code
+changes for each experiment and push those to a remote for somebody else to
+check out.
