@@ -59,3 +59,4 @@ on each `dvclive.next_step()` call.
 
 [`dvclive.init()`]: /doc/dvclive/api-reference/init
 [`dvclive.log()`]: /doc/dvclive/api-reference/log
+[`step`]: /doc/dvclive/api-reference/get_step
