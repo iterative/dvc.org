@@ -19,6 +19,6 @@ while dvclive.get_step() < 3:
 ## Description
 
 DVCLive uses a internal property called `step` that it's associated to each
-metric logged with [`dvclive.log()`]. 
+metric logged with [`dvclive.log()`].
 
 Each call to `dvclive.next_step()` increases the `step` count.

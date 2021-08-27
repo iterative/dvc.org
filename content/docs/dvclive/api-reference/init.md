@@ -38,6 +38,5 @@ all existing DVCLive related files.
   call, DVCLive will generate a _metrics summary_ (usable by `dvc metrics`). The
   _summary_ will be located at `{path}.json`.
 
-
 [`dvclive.log()`]: /doc/dvclive/api-reference/log
 [`dvclive.next_step()`]: /doc/dvclive/api-reference/next_step
