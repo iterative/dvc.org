@@ -23,11 +23,11 @@ You might be in the middle of training a model and then the business problem
 shifts. Now you have this model that has been going through the training process
 with one dataset and you need to use a different dataset.
 
-There's likely something that your model learned that might be useful on this
-new dataset, so you might not have to restart the entire training process. We'll
-do an example of updating a pre-trained model to use a different dataset. By the
-end of this, you should see how you can handle this quickly and start running
-new experiments to get a better model.
+There's likely something that your model learned that can be useful on this new
+dataset, so you might not have to restart the entire training process. We'll do
+an example of updating a pre-trained model to use a different dataset with DVC.
+By the end of this, you should see how you can handle this quickly and start
+running new experiments to get a better model.
 
 ## The original pre-trained model
 
@@ -52,16 +52,17 @@ starting with AlexNet or SqueezeNet.
 To add the new cats and dogs dataset to the project, we'll use one of the DVC
 commands.
 
-TODO: make a new remote with this same data in a different directory setup
-
 ```dvc
-dvc get https://github.com/iterative/dataset-registry use-cases/cats-dogs
+dvc get https://github.com/iterative/dataset-registry blog-examples/cats-dogs
 ```
 
-You can use this command to download files or directories that are tracked by
-DVC or Git. This downloads a sample dataset with images of cats and dogs. Now we
-need to do some minor updates to our `pretrained_model_tuner.py` script. The
-first thing we need to do is update the location that the data is coming from.
+This downloads a sample dataset with images of cats and dogs. You can use this
+command to download files or directories that are tracked by DVC or Git. This
+command can be used from anywhere in the file system, as long as DVC is
+installed.
+
+Now we need to make a minor update to our `pretrained_model_tuner.py` script. We
+need to update the location that the data is coming from.
 
 ```python
 data_dir = "./cats-dogs/data/"
@@ -69,9 +70,9 @@ data_dir = "./cats-dogs/data/"
 
 This is the directory that was downloaded from the DVC remote and it has images
 for cats and dogs. The data is in a similar format to the ants and bees
-directories so there aren't any code changes we need to make.
+directories so there aren't any other code changes we need to make.
 
-## Running new experiments on the pre-trained model with SqueezeNet
+## Running new experiments on SqueezeNet
 
 With the updated data, we can start training with the existing model and see how
 well the results are. To run a new experiment, open your terminal and make sure
@@ -100,7 +101,7 @@ You should see a table with results similar to this.
 The SqueezeNet model did really well on the cats and dogs data! Let's check out
 how the AlexNet model will perform. We'll do that with another DVC command.
 
-## Updating the model to AlexNet
+## Changing the model to AlexNet
 
 In this command, we'll update the `model_name` hyperparameter and we'll reset
 our experiments.
