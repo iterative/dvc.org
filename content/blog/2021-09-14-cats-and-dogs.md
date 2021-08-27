@@ -53,7 +53,7 @@ To add the new cats and dogs dataset to the project, we'll use one of the DVC
 commands.
 
 ```dvc
-dvc get https://github.com/iterative/dataset-registry blog-examples/cats-dogs
+dvc get https://github.com/iterative/dataset-registry blog/cats-dogs
 ```
 
 This downloads a sample dataset with images of cats and dogs. You can use this
