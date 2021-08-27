@@ -46,8 +46,9 @@ environment variables (when used alongside `DVC`).
 
 - `val` - The value to be added in the `name` column of a new row.
 
-- `step` (`None` by default) - The value to be added in the `step` column of a
-  new row. If `None`, the value of the internal `step` property will be used.
+- `step` (`None` by default) - The value to be added in the
+  [`step`](/doc/dvclive/api-reference/get_step) column of a new row. If `None`,
+  the value of the internal `step` property will be used.
 
 ## Exceptions
 
@@ -55,4 +56,3 @@ environment variables (when used alongside `DVC`).
   have a supported type
 
 [`dvclive.init()`]: /doc/dvclive/api-reference/init
-[`step`]: /doc/dvclive/api-reference/get_step

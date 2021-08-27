@@ -25,7 +25,7 @@ selected in [`dvclive.init()`] and whether `DVC` is available or not.
 
 If `summary` is True, on each `dvclive.next_step()` call, DVCLive will generate
 a summary of the values previously logged with [`dvclive.log()`], and increase
-the `step` count.
+the [`step`](/doc/dvclive/api-reference/get_step) count.
 
 The _metrics summary_ will be saved to `{path}.json`. Here's an example:
 
@@ -59,4 +59,3 @@ on each `dvclive.next_step()` call.
 
 [`dvclive.init()`]: /doc/dvclive/api-reference/init
 [`dvclive.log()`]: /doc/dvclive/api-reference/log
-[`step`]: /doc/dvclive/api-reference/get_step
