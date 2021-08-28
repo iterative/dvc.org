@@ -103,12 +103,17 @@ $ dvc exp push myremote exp-e6c97
 Pushed experiment 'exp-e6c97'to Git remote 'myremote'.
 $ dvc exp push myremote exp-9fcef
 Pushed experiment 'exp-9fcef'to Git remote 'myremote'.
+$ dvc exp push myremote exp-1dad0
+Pushed experiment 'exp-1dad0'to Git remote 'myremote'.
 
 $ dvc exp list myremote
 master:
-        exp-aaa23
+        exp-1dad0
+        exp-9fcef
         exp-e6c97
 
-$ dvc exp remote -r myremote
+$ dvc exp remote -g myremote exp-9fcef exp-e6c97
 $ dvc exp list myremote
+master:
+        exp-1dad0
 ```
