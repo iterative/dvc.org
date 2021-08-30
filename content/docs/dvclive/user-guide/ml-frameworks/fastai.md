@@ -3,9 +3,9 @@
 DVCLive allows you to easily add experiment tracking capabilities to your Fastai
 projects.
 
-## About Fastai
+## About Fast.ai
 
-[Fastai](https://docs.fast.ai/) is a deep learning library which provides
+[Fast.ai](https://docs.fast.ai/) is a deep learning library which provides
 practitioners with high-level components that can quickly and easily provide
 state-of-the-art results in standard deep learning domains, and provides
 researchers with low-level components that can be mixed and matched to build new
@@ -14,10 +14,10 @@ approaches.
 ## Usage
 
 To start using DVCLive you just need to add a few lines to your training code in
-**any** Fastai project.
+**any** Fast.ai project.
 
 You just need to add the
-[`DvcLiveCallback`](https://github.com/iterative/dvclive/blob/master/dvclive/catalyst.py)
+[`DvcLiveCallback`](https://github.com/iterative/dvclive/blob/master/dvclive/fastai.py)
 to the callbacks list passed to your `learner`:
 
 ```git
