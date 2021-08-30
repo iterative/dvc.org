@@ -1,4 +1,4 @@
-# Fastai
+# Fast.ai
 
 DVCLive allows you to easily add experiment tracking capabilities to your Fastai
 projects.
