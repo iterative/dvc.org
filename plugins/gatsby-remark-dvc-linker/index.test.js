@@ -5,6 +5,7 @@ const visit = require('unist-util-visit')
 const gatsbyRemarkDvcLinker = require('.')
 const apiLinker = require('./apiLinker')
 const commandLinker = require('./commandLinker')
+const liveLinker = require('./liveLinker')
 
 const { buildAst } = require('./helpers')
 
@@ -24,10 +25,21 @@ describe('gatsby-remark-dvc-linker', () => {
     url: '[`dvc get`](/doc/command-reference/get)'
   }
 
+  live = {
+    inlineCode: '`dvclive.init()`',
+    url: '[`dvclive.init()`](/doc/dvclive/api-reference/init)'
+  }
+
   it('composes apiLinker and commandLinker', () => {
     const ast = buildAst(`${api.inlineCode} ${command.inlineCode}`)
     gatsbyRemarkDvcLinker({ markdownAST: ast })
     expect(ast).toEqual(buildAst(`${api.url} ${command.url}`))
+  })
+
+  it('transforms DVCLive API reference to a link', () => {
+    const ast = buildAst(live.inlineCode)
+    visit(ast, 'inlineCode', flow([Array, liveLinker, constant(undefined)]))
+    expect(ast).toEqual(buildAst(live.url))
   })
 
   describe('apiLinker', () => {
