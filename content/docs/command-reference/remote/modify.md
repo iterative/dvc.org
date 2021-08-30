@@ -291,7 +291,7 @@ Authentication example:
 $ dvc remote add -d myremote s3://mybucket/path
 $ export AWS_ACCESS_KEY_ID='mykey'
 $ export AWS_SECRET_ACCESS_KEY='mysecret'
-$ dvc remote push
+$ dvc push
 ```
 
 For more on the supported env vars, please see the
@@ -1087,7 +1087,7 @@ Using a default identity (e.g. credentials set by `az cli`):
 ```dvc
 $ dvc remote add -d myremote azure://mycontainer/object
 $ dvc remote modify myremote account_name 'myaccount'
-$ dvc remote push
+$ dvc push
 ```
 
 > Note that this may require the `Storage Blob Data Contributor` and other roles
@@ -1098,7 +1098,7 @@ Using a `connection_string`:
 ```dvc
 $ dvc remote add -d myremote azure://mycontainer/object
 $ dvc remote modify --local myremote connection_string 'mysecret'
-$ dvc remote push
+$ dvc push
 ```
 
 Using `account_key`:
@@ -1107,7 +1107,7 @@ Using `account_key`:
 $ dvc remote add -d myremote azure://mycontainer/object
 $ dvc remote modify --local myremote account_name 'myaccount'
 $ dvc remote modify --local myremote account_key 'mysecret'
-$ dvc remote push
+$ dvc push
 ```
 
 Using `sas_token`:
@@ -1116,5 +1116,5 @@ Using `sas_token`:
 $ dvc remote add -d myremote azure://mycontainer/object
 $ dvc remote modify --local myremote account_name 'myaccount'
 $ dvc remote modify --local myremote sas_token 'mysecret'
-$ dvc remote push
+$ dvc push
 ```
