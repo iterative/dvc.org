@@ -52,5 +52,5 @@ from dvclive.fastai import DvcLiveCallback
 learn = tabular_learner(data_loader, metrics=accuracy)
 learn.fit_one_cycle(
   n_epoch=2,
-  cbs=[DvcLiveCallback()])
+  cbs=[DvcLiveCallback(model_file='model.pth')])
 ```
