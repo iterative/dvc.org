@@ -2,7 +2,7 @@ name: DVC Download Link Check
 
 on:
   schedule:
-    - cron: '0 1-23 * * *'
+    - cron: '0 0-23 * * *'
 
 jobs:
   run:
