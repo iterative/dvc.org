@@ -103,7 +103,9 @@ const UseCases: React.ForwardRefRenderFunction<HTMLElement> = (_, ref) => {
 
             <ShowOnly on="mobile">
               <div className={styles.useCase}>
-                <div className={styles.case}>
+                <div
+                //  className={styles.case}
+                >
                   <CollapsibleText header={<Heading1 />}>
                     <Description1 />
                   </CollapsibleText>

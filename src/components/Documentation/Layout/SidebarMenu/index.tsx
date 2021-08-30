@@ -91,10 +91,12 @@ const SidebarMenuItem: React.FC<ISidebarMenuItemProps> = ({
     isExpanded && styles.active,
     isRootParent && 'docSearch-lvl0',
     'link-with-focus',
-    style ? styles[style] : styles.sidebarDefault,
-    isLeafItem && styles.leafItem,
+    // style ? styles[style] : styles.sidebarDefault,
+    style && styles[style],
+    // isLeafItem && styles.leafItem,
     // Limit the default bullet to items with no special icon
-    icon ? undefined : styles.withDefaultBullet
+    // icon ? undefined : styles.withDefaultBullet
+    icon && undefined
   )
 
   const bulletIconClassName = cn(

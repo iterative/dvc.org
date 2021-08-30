@@ -27,7 +27,11 @@ const LayoutHeader: React.FC<Required<ILayoutModifiable>> = ({ modifiers }) => {
 
   return (
     <>
-      <header className={styles.wrapper} id="header" data-collapsed={collapsed}>
+      <header
+        //  className={styles.wrapper}
+        id="header"
+        data-collapsed={collapsed}
+      >
         <div
           className={cn(
             styles.placeholder,

@@ -15,7 +15,9 @@ const GithubLine: React.FC = () => {
         GitHub
       </Link>
       {stars && (
-        <span className={styles.starCount}>
+        <span
+        //  className={styles.starCount}
+        >
           <img className={styles.starIcon} src="/img/star_small.svg" alt="" />
           <span className={styles.count}>{stars}</span>
         </span>

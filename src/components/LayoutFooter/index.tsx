@@ -153,7 +153,10 @@ const FooterLists: React.FC = () => (
         <h2 className={styles.heading}>{header}</h2>
         <ul className={styles.links}>
           {links.map(({ text, target, href, icon }, i) => (
-            <li className={styles.linkItem} key={i}>
+            <li
+              // className={styles.linkItem}
+              key={i}
+            >
               <Link target={target} href={href} className={styles.link}>
                 {icon}
                 {text}
@@ -183,7 +186,9 @@ const FooterSocialIcons: React.FC = () => (
 const LayoutFooter: React.FC = () => (
   <footer className={styles.wrapper}>
     <LayoutWidthContainer className={cn(styles.container)} wide>
-      <div className={styles.top}>
+      <div
+      //  className={styles.top}
+      >
         <Link className={styles.logo} href="/" title="dvc.org">
           <LogoSVG />
         </Link>

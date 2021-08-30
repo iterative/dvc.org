@@ -52,7 +52,10 @@ const MainLayout: LayoutComponent = ({
   return (
     <>
       <LayoutHeader modifiers={modifiers} />
-      <div id="layoutContent" className={styles.pageContent}>
+      <div
+        id="layoutContent"
+        //  className={styles.pageContent}
+      >
         {children}
       </div>
       <LayoutFooter />
