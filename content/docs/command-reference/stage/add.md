@@ -257,9 +257,12 @@ data science experiments.
 - `--live-no-cache <path>` - the same as `--live` except that the `path` is not
   tracked by DVC. Useful if you prefer to track it with Git.
 
-- `--live-no-summary` - passes `summary=False` to DVCLive config.
+- `--live-no-summary` - deactivates DVCLive
+  [summary](/doc/dvclive/user-guide/quickstart#metrics-summary) generation.
 
-- `--live-no-html` - passes `html=False` to DVCLive config.
+- `--live-no-html` - deactivates DVCLive
+  [HTML report](/doc/dvclive/user-guide/dvclive-with-dvc#html-report)
+  generation.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 

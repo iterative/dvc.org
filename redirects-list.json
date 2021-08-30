@@ -35,6 +35,7 @@
   "^/doc/tutorials(/.*)?                                                                  /doc/start",
 
   "^/doc/use-cases/data-and-model-files-versioning/?$                                     /doc/use-cases/versioning-data-and-model-files",
+  "^/doc/doc/use-cases/shared-development-server$                                         /doc/use-cases/fast-data-storage-layer#example-shared-development-server",
   "^/doc/user-guide/updating-tracked-files$                                               /doc/user-guide/how-to/update-tracked-data",
   "^/doc/user-guide/how-to/update-tracked-files$                                          /doc/user-guide/how-to/update-tracked-data",
   "^/doc/user-guide/merge-conflicts$                                                      /doc/user-guide/how-to/merge-conflicts",
