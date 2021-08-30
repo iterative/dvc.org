@@ -53,7 +53,7 @@ const matchRedirectList = (host, pathname) => {
   for (const { matchPathname, regex, replace, code } of getRedirects()) {
     const matchTarget = matchPathname ? pathname : wholeUrl
     if (regex.test(matchTarget)) {
-      return [code, matchTarget.replace(regex, replace)]
+      return [code, matchTarget.replace(regex, replace).replace(/^\/+/, '/')]
     }
   }
 
