@@ -163,7 +163,7 @@ times, or supply a comma-delimited list to `-S`:
 ```dvc
 $ dvc exp run -S learning_rate=0.001 -S units=128
 # is equivalent to
-$ dvc exp run -S learning_rate=0.001,units=128
+$ dvc exp run -S learning_rate=0.001 -S units=128
 ```
 
 > ⚠️ Note that DVC doesn't check whether parameters given to `--set-param` are
