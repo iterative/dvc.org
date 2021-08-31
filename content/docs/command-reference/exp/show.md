@@ -75,26 +75,26 @@ metric or param.
   Accepts a comma-separated `list` of param names. Shell style wildcards
   supported: `*`, `?`, `[seq]`, `[!seq]`, and `**` If a `path:` prefix is
   included in the name, the wildcard pattern will **not** be matched against
-  that prexif but only against the rest of the name.
+  that prefix but only against the rest of the name.
 
 - `--exclude-params <list>` - hide the specified `dvc params` from the table
   (all param will be shown except for these). Accepts a comma-separated `list`
   of param names. Shell style wildcards supported: `*`, `?`, `[seq]`, `[!seq]`,
   and `**` If a `path:` prefix is included in the name, the wildcard pattern
-  will **not** be matched against that prexif but only against the rest of the
+  will **not** be matched against that prefix but only against the rest of the
   name.
 
 - `--include-metrics <list>` - show the specified `dvc metrics` in the table
   only. Accepts a comma-separated `list` of metric names. Shell style wildcards
   supported: `*`, `?`, `[seq]`, `[!seq]`, and `**`. If a `path:` prefix is
   included in the name, the wildcard pattern will **not** be matched against
-  that prexif but only against the rest of the name.
+  that prefix but only against the rest of the name.
 
 - `--exclude-metrics <list>` - hide the specified `dvc metrics` from the table
   (all param will be shown except for these). Accepts a comma-separated `list`
   of metric names. Shell style wildcards supported: `*`, `?`, `[seq]`, `[!seq]`,
   and `**`. If a `path:` prefix is included in the name, the wildcard pattern
-  will **not** be matched against that prexif but only against the rest of the
+  will **not** be matched against that prefix but only against the rest of the
   name.
 
 - `--sort-by <name>` - sort experiments by the specified metric or param
