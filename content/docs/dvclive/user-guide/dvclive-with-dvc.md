@@ -66,7 +66,7 @@ command options for the DVC integration:
 - `--live-no-html` - deactivates [HTML report](#html-report) generation.
 
 > Note that these are convenience CLI options. You can still use
-> [`dvclive.init()`] manually, which will override any options sent to
+> `dvclive.init()` manually, which will override any options sent to
 > `dvc stage add`. Just be careful to match the `--live` value (CLI) and `path`
 > argument (code). Also, note that summary files are never tracked by DVC
 > automatically.
@@ -127,5 +127,4 @@ You can learn more about how to use them in the
 in this example
 [repository](https://github.com/iterative/dvc-checkpoints-mnist).
 
-[`dvclive.init()`]: /doc/dvclive/api-reference/init
 [`dvclive configuration`]: /doc/dvclive/api-reference/init#parameters

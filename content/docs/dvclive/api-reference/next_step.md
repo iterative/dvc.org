@@ -21,11 +21,11 @@ for step in range(3):
 ## Description
 
 Each call to `dvclive.next_step()` will behave depending on the parameters
-selected in [`dvclive.init()`] and whether `DVC` is available or not.
+selected in `dvclive.init()` and whether `DVC` is available or not.
 
 If `summary` is True, on each `dvclive.next_step()` call, DVCLive will generate
-a summary of the values previously logged with [`dvclive.log()`], and increase
-the `step` count.
+a summary of the values previously logged with `dvclive.log()`, and increase the
+`step` count.
 
 The _metrics summary_ will be saved to `{path}.json`. Here's an example:
 
@@ -55,7 +55,4 @@ on each `dvclive.next_step()` call.
 ## Exceptions
 
 - `dvclive.error.InitializationError` - If `dvclive` has not been properly
-  initialized (i.e. by calling [`dvclive.init()`] or [`dvclive.log()`]).
-
-[`dvclive.init()`]: /doc/dvclive/api-reference/init
-[`dvclive.log()`]: /doc/dvclive/api-reference/log
+  initialized (i.e. by calling `dvclive.init()` or `dvclive.log()`).

@@ -6,6 +6,7 @@ const visit = require('unist-util-visit')
 
 const apiLinker = require('./apiLinker')
 const commandLinker = require('./commandLinker')
+const liveLinker = require('./liveLinker')
 const simpleLinker = require('./simpleLinker')
 
 // Lifting up the AST visitor in order not to repeat the
@@ -14,7 +15,14 @@ module.exports = ({ markdownAST }) => {
   visit(
     markdownAST,
     'inlineCode',
-    flow([Array, commandLinker, apiLinker, simpleLinker, constant(undefined)])
+    flow([
+      Array,
+      liveLinker,
+      commandLinker,
+      apiLinker,
+      simpleLinker,
+      constant(undefined)
+    ])
   )
   return markdownAST
 }

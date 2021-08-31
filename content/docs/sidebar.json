@@ -86,8 +86,11 @@
         "label": "Sharing Data and Model Files",
         "slug": "sharing-data-and-model-files"
       },
-      "data-registries",
-      "shared-development-server"
+      {
+        "label": "Fast and Secure Data Caching Hub",
+        "slug": "fast-data-caching-hub"
+      },
+      "data-registries"
     ]
   },
   {
@@ -139,7 +142,11 @@
         "label": "Experiment Management",
         "slug": "experiment-management",
         "source": "experiment-management/index.md",
-        "children": ["sharing-experiments", "checkpoints"]
+        "children": [
+          "running-experiments",
+          "sharing-experiments",
+          "checkpoints"
+        ]
       },
       "setup-google-drive-remote",
       "large-dataset-optimization",
@@ -594,6 +601,18 @@
             "slug": "ml-frameworks",
             "source": "dvclive/user-guide/ml-frameworks/index.md",
             "children": [
+              {
+                "slug": "fastai",
+                "label": "Fast.ai"
+              },
+              {
+                "slug": "catalyst",
+                "label": "Catalyst"
+              },
+              {
+                "slug": "huggingface",
+                "label": "Hugging Face"
+              },
               {
                 "slug": "keras",
                 "label": "Keras"
