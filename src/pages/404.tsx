@@ -3,7 +3,7 @@ import React from 'react'
 import NotFound from '../components/NotFound'
 import SEO from '../components/SEO'
 // to be deleted, here to test caching!
-// another tbd comment
+
 const NotFoundPage: React.FC = () => (
   <>
     <SEO
