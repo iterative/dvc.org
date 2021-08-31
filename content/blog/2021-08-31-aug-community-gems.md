@@ -9,7 +9,7 @@ descriptionLong: |
   A roundup of technical Q&A's from the DVC community.
   This month: separate DVC pipelines, working with CML,
   handling metrics, and more.
-picture: 2021-08-31/gems-cover.png
+picture: 2021-08-31/Community-Gems-0830-August.png
 author: milecia_mcgregor
 commentsUrl: https://discuss.dvc.org/t/august-21-community-gems/838
 tags:
