@@ -602,6 +602,10 @@
             "source": "dvclive/user-guide/ml-frameworks/index.md",
             "children": [
               {
+                "slug": "fastai",
+                "label": "Fast.ai"
+              },
+              {
                 "slug": "catalyst",
                 "label": "Catalyst"
               },
