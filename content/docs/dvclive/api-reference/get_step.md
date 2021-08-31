@@ -19,9 +19,6 @@ while dvclive.get_step() < 3:
 ## Description
 
 DVCLive uses the `step` to track the progress of each metric logged with
-[`dvclive.log()`].
+`dvclive.log()`.
 
-Each call to [`dvclive.next_step()`] increases the `step` count.
-
-[`dvclive.log()`]: /doc/dvclive/api-reference/log
-[`dvclive.next_step()`]: /doc/dvclive/api-reference/next_step
+Each call to `dvclive.next_step()` increases the `step` count.
