@@ -190,6 +190,10 @@ previous version, which is why all `Old` values are `—`.
 
 ## Examples: Python parameters file
 
+> ⚠️ Note that complex expressions (those not supported by
+> [ast.literal_eval](https://docs.python.org/3/library/ast.html#ast.literal_eval))
+> inside the Python parameters file won't be parsed.
+
 Consider this Python parameters file named `params.py`:
 
 ```python
@@ -203,6 +207,8 @@ LIST = [1, 2, 3]
 SET = {4, 5, 6}
 TUPLE = (10, 100)
 NONE = None
+
+DICT_EXP = dict(a=1, b=2) # Will NOT be found due to the expression
 
 # DVC can retrieve class constants and variables defined in __init__
 class TrainConfig:
