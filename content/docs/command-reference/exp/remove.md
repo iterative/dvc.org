@@ -5,7 +5,7 @@ Delete specific `dvc experiments` from the <abbr>project</abbr>.
 ## Synopsis
 
 ```usage
-usage: dvc exp remove [-h] [-q | -v] [--queue]
+usage: dvc exp remove [-h] [-q | -v] [--queue | -A]
                       [experiment [experiment ...]]
 
 positional arguments:
@@ -25,7 +25,7 @@ With `--queue`, the list of experiments awaiting execution is cleared instead.
 - `--queue` - remove all experiments that haven't been run yet (defined via
   `dvc exp run --queue`).
 
-- `-f`, `--force` - force garbage collection. Skip confirmation prompt.
+- `-A`, `--all` - remove all experiments (includes `--queue`).
 
 - `-h`, `--help` - shows the help message and exit.
 
@@ -45,9 +45,11 @@ master:
         exp-e6c97
         exp-1dad0
         exp-1df77
+        exp-23d5a
 ```
 
-To remove any of them, just give their names to `dvc exp remove`:
+To remove any of them, give their names to `dvc exp remove`. Or use the `--all`
+(`-A`) option to remove them all at once:
 
 ```dvc
 $ dvc exp remove exp-1dad0 exp-1df77
@@ -55,4 +57,11 @@ $ dvc exp remove exp-1dad0 exp-1df77
 $ dvc exp list
 master:
         exp-e6c97
+        exp-23d5a
+
+$ dvc exp remove -A
+
+$ dvc exp list
 ```
+
+Nothing is listed after the last `dvc exp list` because they're all gone.
