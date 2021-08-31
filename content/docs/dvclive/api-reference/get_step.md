@@ -18,8 +18,8 @@ while dvclive.get_step() < 3:
 
 ## Description
 
-DVCLive uses an internal property called `step` that it's associated to each
-metric logged with [`dvclive.log()`].
+DVCLive uses the `step` to track the progress of each metric logged with
+[`dvclive.log()`].
 
 Each call to [`dvclive.next_step()`] increases the `step` count.
 
