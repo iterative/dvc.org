@@ -53,13 +53,11 @@ project's cache                  ++ | dvc pull |
  workspace
 ```
 
-Order of priority of remotes:
+The `dvc remote` used is determined in order, based on
 
-1. `remote` specified in a corresponding dvcfile for particular output.
-2. `--remote` CLI option.
-3. `core.remote`config option (see `dvc remote default`).
-
-See `dvc remote` for more information on how to configure remotes.
+1. the `remote` fields in the `dvc.yaml` or `.dvc` files.
+2. the value passed to the `--remote` option via CLI.
+3. the value of the `core.remote` config option (see `dvc remote default`).
 
 Without arguments, it downloads all files and directories referenced in the
 current workspace (found in `dvc.yaml` and `.dvc` files) that are missing from
