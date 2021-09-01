@@ -85,7 +85,7 @@ $ dvc exp remove e41d5b4 split16
 $ dvc exp show --include-params=train.min_split --no-pager
 ```
 
-```table
+```dvctable
 ┏━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
 ┃ Experiment            ┃ Created      ┃ State  ┃ avg_prec ┃ roc_auc ┃ train.min_split ┃
 ┡━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━━━┩
