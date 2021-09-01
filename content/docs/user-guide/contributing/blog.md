@@ -1,7 +1,7 @@
 # Writing Blog Posts
 
 To create a new post, you need to create a PR to the DVC website
-[project](https://github.com/iterative/dvc.org).
+[project](https://github.com/iterative/dvc.org). Ouch!
 
 ## Prepare your environment
 
