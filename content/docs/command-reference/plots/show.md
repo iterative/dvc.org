@@ -8,7 +8,7 @@ Generate [plot](/doc/command-reference/plots) from a metrics file.
 usage: dvc plots show [-h] [-q | -v] [-t <name_or_path>] [-x <field>]
                       [-y <field>] [--no-header] [--title <text>]
                       [--x-label <text>] [--y-label <text>] [-o <path>]
-                      [--show-vega] [--open]
+                      [--show-vega] [--open] [--html-template <path>]
                       [targets [targets ...]]
 
 positional arguments:
@@ -61,14 +61,16 @@ please see `dvc plots`.
 
 - `--title <text>` - plot title.
 
-- `--show-vega` - produce a
-  [Vega specification](https://vega.github.io/vega/docs/specification/) file
-  instead of HTML. See `dvc plots` for more info.
+- `--show-vega` - produce a [Vega-Lite](https://vega.github.io/vega-lite/) spec
+  file instead of HTML. See `dvc plots` for more info.
 
 - `--open` - opens the generated plot in the browser automatically.
 
 - `--no-header` - lets DVC know that CSV or TSV `targets` do not have a header.
   A 0-based numeric index can be used to identify each column instead of names.
+
+- `--html-template <path>` - path to a
+  [custom HTML template](/doc/command-reference/plots#html-templates).
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -200,14 +202,13 @@ $ dvc plots show --no-header logs.csv -y 2
 file:///Users/usr/src/plots/logs.csv.html
 ```
 
-## Example: Vega specification file
+## Example: Vega-Lite specification file
 
 In many automation scenarios (like CI/CD for ML), it is convenient to output the
-[Vega specification](https://vega.github.io/vega/docs/specification/) file
-instead of rendering an HTML plot. For example, to generating another image
-format like PNG or JPEG, or to include it differently into a web/mobile app. The
-`--show-vega` option prevents wrapping this plot spec in HTML. Note that the
-resulting file is JSON:
+[Vega-Lite](https://vega.github.io/vega-lite/) spec file instead of rendering an
+HTML plot. For example, to generating another image format like PNG or JPEG, or
+to include it differently into a web/mobile app. The `--show-vega` option
+prevents wrapping this plot spec in HTML. Note that the resulting file is JSON:
 
 ```dvc
 $ dvc plots show --show-vega logs.csv -y accuracy

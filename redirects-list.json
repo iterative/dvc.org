@@ -20,6 +20,10 @@
   "^/((?:exe|osxpkg)/.+)                                                                  https://s3-us-east-2.amazonaws.com/dvc-public/dvc-pkgs/$1 303",
   "^/((?:deb|rpm)/.+)                                                                     https://s3-us-east-2.amazonaws.com/dvc-s3-repo/$1 303",
   "^/(?:help|chat)/?$                                                                     https://discordapp.com/invite/dvwXA2N 303",
+  "^/download/osx/dvc-(.+)$                                                               https://s3-us-east-2.amazonaws.com/dvc-public/dvc-pkgs/osxpkg/dvc-$1.pkg 303",
+  "^/download/win/dvc-(.+)$                                                               https://s3-us-east-2.amazonaws.com/dvc-public/dvc-pkgs/exe/dvc-$1.exe 303",
+  "^/download/linux-deb/dvc-(.+)$                                                         https://s3-us-east-2.amazonaws.com/dvc-s3-repo/deb/pool/stable/d/dv/dvc_$1_amd64.deb 303",
+  "^/download/linux-rpm/dvc-(.+)$                                                         https://s3-us-east-2.amazonaws.com/dvc-s3-repo/rpm/dvc-$1-1.x86_64.rpm 303",
   "^/(?:docs|documentation)(/.*)?$                                                        /doc$1",
 
   "^/doc/get-started(/.*)?$                                                               /doc/start",
@@ -31,6 +35,7 @@
   "^/doc/tutorials(/.*)?                                                                  /doc/start",
 
   "^/doc/use-cases/data-and-model-files-versioning/?$                                     /doc/use-cases/versioning-data-and-model-files",
+  "^/doc/doc/use-cases/shared-development-server$                                         /doc/use-cases/fast-data-storage-layer#example-shared-development-server",
   "^/doc/user-guide/updating-tracked-files$                                               /doc/user-guide/how-to/update-tracked-data",
   "^/doc/user-guide/how-to/update-tracked-files$                                          /doc/user-guide/how-to/update-tracked-data",
   "^/doc/user-guide/merge-conflicts$                                                      /doc/user-guide/how-to/merge-conflicts",
@@ -49,6 +54,8 @@
   "^/doc/command-reference/pipeline/list$                                                 /doc/command-reference/dag",
   "^/doc/command-reference/lock$                                                          /doc/command-reference/freeze",
   "^/doc/command-reference/unlock$                                                        /doc/command-reference/unfreeze",
+
+  "^/doc/cml(/.*)?$                                                                       https://cml.dev/doc$1",
 
   "^/doc/studio/view-settings$                                                            /doc/studio/user-guide/views/view-settings",
 

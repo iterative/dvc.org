@@ -33,9 +33,18 @@
   right: 0;
   top: calc(100% + 3px);
   display: flex;
+  visibility: hidden;
+  opacity: 0;
   flex-direction: column;
   background-color: #fff;
   box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.15);
+  transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+
+  &.open {
+    visibility: visible;
+    opacity: 1;
+    z-index: 1;
+  }
 
   &.openTop {
     bottom: calc(100% + 3px);

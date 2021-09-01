@@ -5,6 +5,7 @@ const path = require('path')
 
 require('./config/prismjs/dvc')
 require('./config/prismjs/usage')
+require('./config/prismjs/dvctable')
 
 const apiMiddleware = require('./src/server/middleware/api')
 const redirectsMiddleware = require('./src/server/middleware/redirects')
@@ -122,7 +123,12 @@ const plugins = [
   },
   'gatsby-transformer-sharp',
   'gatsby-plugin-sharp',
-  'gatsby-plugin-catch-links',
+  {
+    resolve: 'gatsby-plugin-catch-links',
+    options: {
+      excludePattern: /\/doc\/cml/
+    }
+  },
   {
     resolve: 'gatsby-plugin-manifest',
     options: {
@@ -264,6 +270,7 @@ module.exports = {
   plugins,
   siteMetadata: {
     description,
+    author: 'Iterative',
     keywords,
     siteUrl: 'https://dvc.org',
     title
