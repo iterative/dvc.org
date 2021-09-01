@@ -208,8 +208,8 @@ done
 
 ## Removing queued experiments
 
-When you've created experiments to be run in the queue with `dvc exp run --queue`
-and later decide not to run them, you can remove them with
+When you've created experiments to be run in the queue with
+`dvc exp run --queue` and later decide not to run them, you can remove them with
 `dvc exp remove --queue`.
 
 ```dvc
