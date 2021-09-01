@@ -158,7 +158,7 @@ $ dvc exp run --set-param model.learning_rate=0.0002
 > with `dvc exp show` and `dvc exp diff`.
 
 To set more than one param for the same experiment, use the `-S` option multiple
-times, or supply a comma-delimited list to `-S`:
+times:
 
 ```dvc
 $ dvc exp run -S learning_rate=0.001 -S units=128
