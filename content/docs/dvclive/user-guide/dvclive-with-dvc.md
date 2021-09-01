@@ -66,7 +66,7 @@ command options for the DVC integration:
 - `--live-no-html` - deactivates [HTML report](#html-report) generation.
 
 > Note that these are convenience CLI options. You can still use
-> [`dvclive.init()`] manually, which will override any options sent to
+> `dvclive.init()` manually, which will override any options sent to
 > `dvc stage add`. Just be careful to match the `--live` value (CLI) and `path`
 > argument (code). Also, note that summary files are never tracked by DVC
 > automatically.
@@ -120,12 +120,12 @@ being logged during the model training!
 When used alongside DVC, DVCLive can create _checkpoint_ signal files used by
 DVC <abbr>experiments<abbr>.
 
-This will save the metrics, plots, models, etc. associated to each `step`.
+This will save the metrics, plots, models, etc. associated to each
+[`step`](/doc/dvclive/api-reference/get_step).
 
 You can learn more about how to use them in the
 [Checkpoints User Guide](/docs/user-guide/experiment-management/checkpoints) and
 in this example
 [repository](https://github.com/iterative/dvc-checkpoints-mnist).
 
-[`dvclive.init()`]: /doc/dvclive/api-reference/init
 [`dvclive configuration`]: /doc/dvclive/api-reference/init#parameters
