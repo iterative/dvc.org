@@ -241,18 +241,20 @@ to learn more about the state file (database) that is used for optimization.
   
 - `state.dir` - specify a specific location for storing the state. This is
   necessary when using `dvc` on a NFS or some other mounted volume.
-  By default, store SQLite-based remote indexes and state's
+  (By default, store SQLite-based remote indexes and state's
   `links` and `md5s` caches in the repository itself to avoid any
-  possible state corruption in 'shared cache dir' scenario. Use this 
-  override with care.
+  possible state corruption in 'shared cache dir' scenario.) 
+  Use this override with care.
   
 ### index
-See
-[Internal directories and files](/doc/user-guide/project-structure/internal-files), specifically
-.dvc/tmp/index to learn more about the remote index files.
 
-- `index.dir` - overwrite the default location of the directory for remote index files 
-  that are used for optimizing dvc push, dvc pull, dvc fetch and dvc status -c operations.
+See
+[Internal directories and files](/doc/user-guide/project-structure/internal-files), 
+specifically `.dvc/tmp/index` to learn more about the remote index files.
+
+- `index.dir` - overwrite the default location of the directory for remote index 
+  files that are used for optimizing `dvc push`, `dvc pull`, `dvc fetch` and 
+  `dvc status -c` operations.
   This may be necessary when using `dvc` on a NFS or some other mounted volume.
   Use this override with care.
 
