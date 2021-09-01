@@ -4,7 +4,7 @@ Although DVC uses minimal resources to keep track of the experiments, they may
 clutter tables and the workspace. DVC allows to remove specific experiments from
 the workspace or delete all not-yet-persisted experiments at once.
 
-## Removing Specific Local Experiments
+## Removing specific experiments
 
 When you want to discard experiments by their name, you can use `dvc exp remove`
 and supply the experiment name.
@@ -21,7 +21,7 @@ main:
     cnn-128
 ```
 
-## Removing Multiple Local Experiments
+## Removing multiple experiments
 
 After you've completed a set of experiments, it may be easier to decide which of
 these to keep rather than which of these to remove. You can use `dvc exp gc` to
@@ -176,7 +176,7 @@ etc. After a `dvc exp gc --workspace` command, you can supply
 `dvc gc --workspace` to remove all the experiment artifacts from the cache as
 well.
 
-## Removing Experiments in Remotes
+## Removing experiments from remotes
 
 As you push the experiments with `dvc exp push`, remotes may be become cluttered
 with experiment references.
@@ -206,10 +206,10 @@ $ git ls-remote origin 'refs/exps/*' | cut -f 2 | while read exppath ; do
 done
 ```
 
-## Deleting All Queued Experiments
+## Removing queued experiments
 
-When you created experiments to be run in the queue with `--queue` option of
-`dvc exp run`, and later decide not to run them, you can remove them by
+When you've created experiments to be run in the queue with `dvc exp run --queue`
+and later decide not to run them, you can remove them with
 `dvc exp remove --queue`.
 
 ```dvc
