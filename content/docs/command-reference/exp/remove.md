@@ -68,9 +68,9 @@ $ dvc exp list
 Nothing is listed after the last `dvc exp list` because they're all gone.
 
 The same applies to queued experiments but these won't have a name to give to
-`dvc exp remove` yet (unless you specified one). Alternatively, you can use their ID
-(shown when queued, and by `dvc exp show`). Let's queue a few experiments
-and then delete some of them:
+`dvc exp remove` yet (unless you specified one). Alternatively, you can use
+their ID (shown when queued, and by `dvc exp show`). Let's queue a few
+experiments and then delete some of them:
 
 ```dvc
 $ dvc exp run --queue -S train.min_split=64
