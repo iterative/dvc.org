@@ -13,4 +13,5 @@ restylers:
         '--prose-wrap=always',
         '--loglevel=debug'
       ]
-    include: ['**/*.{md}']
+    include: 
+      - **/*.md'
