@@ -146,6 +146,7 @@
         "children": [
           "running-experiments",
           "sharing-experiments",
+          "cleaning-experiments",
           "checkpoints"
         ]
       },
