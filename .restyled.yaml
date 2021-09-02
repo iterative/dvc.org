@@ -13,4 +13,4 @@ restylers:
         '--prose-wrap=always',
         '--loglevel=debug'
       ]
-    include: ['**/*.{js,json,md,yaml,yml}']
+    include: ['**/*.{md}']
