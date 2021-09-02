@@ -14,4 +14,4 @@ restylers:
         '--loglevel=debug'
       ]
     include: 
-      - '**/*.{md}'
+      - "**/*.{md}"
