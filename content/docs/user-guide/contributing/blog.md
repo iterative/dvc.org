@@ -1,6 +1,6 @@
 # Writing Blog Posts
 
-To create a new post, you need to create a PR to the DVC website
+To create a new post, you need to create a PR to the DVC website super mega ultra great
 [project](https://github.com/iterative/dvc.org).
 
 ## Prepare your environment
@@ -9,7 +9,7 @@ Set up the
 [Development environment](/doc/user-guide/contributing/docs#development-environment)
 to see how your content will look like after you publish it. The `yarn author`
 command will build a subset of the website with only the latest blog post, while
-`yarn develop` lets you preview the whole site at the cost of a longer build
+`yarn develop` lets you preview the whole site at the cost of a longer build 
 time. Both commands start up a development server which will continue to update
 as you add new content.
 
