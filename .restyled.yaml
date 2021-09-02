@@ -10,8 +10,12 @@ restylers:
         '--print-width=80',
         '--tab-width=2',
         '--use-tabs=false',
-        '--prose-wrap=always',
-        '--loglevel=debug'
+        '--prose-wrap=always'
       ]
     include: 
-      - "**/*.{md}"
+      - "**/*.md"
+      - "**/*.jsx"
+      - "**/*.tsx"
+      - "**/*.js"
+      - "**/*.ts"
+      - "**/*.json"
