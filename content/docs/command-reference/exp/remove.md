@@ -28,8 +28,8 @@ With `--queue`, the list of experiments awaiting execution is cleared instead.
 
 - `-A`, `--all` - remove all experiments (includes `--queue`).
 
-- `-g`, `--git-remote` - Name of the Git remote to GC all of the experiment
-  branches.
+- `-g`, `--git-remote` - Name or URL of the Git remote to remove the
+  experiment from
 
 - `-h`, `--help` - shows the help message and exit.
 
