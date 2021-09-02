@@ -83,8 +83,8 @@ After that's finished, you should see the following content in the project:
 
 ```dvc
 $ ls
-dvc.lock  training_metrics       training_metrics.json
-dvc.yaml  training_metrics.html  train.py
+dvc.lock  training_metrics       train.py
+dvc.yaml  training_metrics.json
 ```
 
 The `.tsv` files generated under `training_metrics` can be visualized with
@@ -108,8 +108,8 @@ In addition to the
 [outputs described in the Quickstart](/doc/dvclive/user-guide/quickstart#outputs),
 DVC generates an _HTML report_.
 
-If you open `training_metrics.html` in a browser, you'll see a plot for metrics
-being logged during the model training!
+If you open `training_metrics_dvc_plots/index.html` in a browser, you'll see a
+plot for metrics being logged during the model training!
 
 ![](/img/dvclive-html-report.png)
 
