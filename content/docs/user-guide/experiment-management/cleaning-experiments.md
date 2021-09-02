@@ -78,7 +78,7 @@ $ dvc exp show --all-branches
 
 ```dvctable
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━━━━━┓
-┃ white:**Experiment**    ┃ white:**Created**      ┃    yellow:**acc** ┃ blue:**model.conv_units** ┃
+┃ neutral:**Experiment**              ┃ neutral:**Created**      ┃    metric:**acc** ┃ param:**model.conv_units** ┃
 ┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━━━━━┩
 │ workspace               │ -            │      - │ 64               │
 │ cnn-48                  │ 09:11 AM     │ 0.9131 │ 48               │
@@ -106,7 +106,7 @@ The resulting `dvc exp show` table is as the following:
 
 ```dvctable
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━━━━━┓
-┃ Experiment              ┃ Created      ┃    acc ┃ model.conv_units ┃
+┃ neutral:**Experiment**              ┃ neutral:**Created**      ┃    metric:**acc** ┃ metric:**model.conv_units** ┃
 ┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━━━━━┩
 │ workspace               │ -            │      - │ 64               │
 │ cnn-48                  │ 09:11 AM     │ 0.9131 │ 48               │
@@ -127,7 +127,7 @@ $ dvc exp show --all-tags
 
 ```dvctable
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━━━━━━┓
-┃ Experiment              ┃    acc ┃ model.conv_units  ┃
+┃ neutral:**Experiment**              ┃    metric:**acc** ┃ metric:**model.conv_units**  ┃
 ┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━━━━━━┩
 │ workspace               │ 0.9067 │ 16                │
 │ ├── 2fc4f81 [exp-a1b3c4]│ 0.9037 │ 48                │
@@ -147,7 +147,7 @@ $ dvc exp show --all-tags
 
 ```dvctable
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━━━━━━┓
-┃ Experiment              ┃    acc ┃ model.conv_units  ┃
+┃ neutral:**Experiment**              ┃    metric:**acc** ┃ metric:**model.conv_units**  ┃
 ┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━━━━━━┩
 │ workspace               │ 0.9067 │ 16                │
 │ my-experiments          │ 0.9067 │ 16                │
@@ -222,7 +222,7 @@ $ dvc exp show
 
 ```dvctable
 ┏━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━┓
-┃ Experiment   ┃ Created      ┃ param ┃
+┃ neutral:**Experiment**   ┃ neutral:**Created**      ┃ metric:**param** ┃
 ┡━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━┩
 │ workspace    │ -            │ -     │
 │ 04abbb7      │ Jul 21, 2021 │ -     │
@@ -240,7 +240,7 @@ $ dvc exp show
 
 ```dvctable
 ┏━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━┓
-┃ Experiment   ┃ Created      ┃ param ┃
+┃ neutral:**Experiment**   ┃ neutral:**Created**      ┃ metric:**param** ┃
 ┡━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━┩
 │ workspace    │ -            │ -     │
 │ 04abbb7      │ Jul 21, 2021 │ -     │
