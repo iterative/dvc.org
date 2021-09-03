@@ -31,11 +31,12 @@ remotes.
 
 ## Getting the project
 
-To follow along, you can fork [this repo]() as one of your own GitHub repos.
-That way you'll have push and pull access when we start working with DVC. This
-project already has DVC initialized and set up to run experiments, but if you
-want to follow along with a project you're currently working on, make sure to
-check out the steps to initialize a DVC pipeline in
+To follow along, you can fork
+[this repo](https://github.com/iterative/dvc-learn-project) as one of your own
+GitHub repos. That way you'll have push and pull access when we start working
+with DVC. This project already has DVC initialized and set up to run
+experiments, but if you want to follow along with a project you're currently
+working on, make sure to check out the steps to initialize a DVC pipeline in
 [the Getting Started doc](https://dvc.org/doc/start).
 
 ## Setting up your DVC remotes
@@ -65,10 +66,10 @@ remote.
 dvc remote add -d cloud_remote gdrive://1k6aUYWphOulJlXgq4XbfKExWGyymTpEl
 ```
 
-This adds the remote storage for DVC to track and now we'll be able to push and
-pull the exact code and data to reproduce any experiment from end to end. With
-your Git remote and DVC remote in place, you can start pulling data and
-experiments from the cloud to your local machine.
+This adds the remote storage named `cloud_remote` for DVC to track and we'll be
+able to push and pull the exact code and data to reproduce any experiment from
+end to end. With your Git remote and DVC remote in place, you can start pulling
+data and experiments from the cloud to your local machine.
 
 You can learn more about the Google Drive setup in
 [the docs](https://dvc.org/doc/command-reference/remote/add). The main thing you
@@ -80,36 +81,60 @@ this.
 https://drive.google.com/drive/folders/1k6aUYWphOulJlXgq4XbfKExWGyymTpEl?usp=sharing
 ```
 
-## Pulling experiments
+## Listing your remote experiments
 
-If you're picking up an existing project, there will likely already be
-experiments present in the repo for you to take a look at. To pull an experiment
-to your local machine to start new experiments from, you'll need an experiment
-ID for the following command.
+When you're working with a team on an existing project, you might want to see
+the experiments already in the remotes so you know what's available. You can
+take a look at all of the experiments with the following command.
 
 ```dvc
-dvc exp pull origin exp-f3867
+dvc exp list origin --all
 ```
+
+You'll get a list of all of the experiments across different Git branches that
+have been pushed with DVC. The output will look similar to this.
+
+```dvc
+21784fa:
+        exp-c8dcf
+main:
+        exp-b3667
+        exp-d382a
+```
+
+Now you'll be able to pick which experiment you want to reproduce and start
+testing with.
+
+## Pulling experiments
+
+If you're picking up an existing project, there will likely be a specific
+experiment you'll get started with. To pull an experiment to your local machine,
+you'll need an experiment id for the following command.
+
+```dvc
+dvc exp pull origin exp-b3667
+```
+
+The `exp-b3667` comes from the `dvc exp list` command we ran earlier and now you
+have all of the data and code associated with that experiment on your machine.
+
+From here, you can start running new experiments with different models,
+hyperparameters, or even datasets.
 
 ## Pushing experiments
 
-Now that you've pulled down an existing experiment and run your own experiments
-based off of it, you can push these new experiments to the remote. DVC handles
-both the GitHub and data storage pushes with this command.
+Once you're done with your new experiments, you can push these to the same
+remote you pulled from. DVC handles both the GitHub and data storage pushes with
+this command.
 
 ```dvc
 dvc exp push origin exp-p4202
 ```
 
-## Listing your remote experiments
-
-Since you have a few experiments in your remotes, it might help to know what you
-have available. You can take a look at all of the experiments with the following
-command.
-
-```dvc
-dvc exp list origin --all
-```
+This will push the custom Git refs to your repo and it will push any artifacts,
+like your data or model output, to the DVC remote location. Now you can easily
+share your work with other engineers to get feedback faster and finish projects
+sooner.
 
 ## Conclusion
 
