@@ -2,9 +2,9 @@
 title: Switching the Dataset for Your Pre-trained Models
 date: 2021-09-14
 description: |
-  You can easily switch datasets for pre-trained models with DVC.
+  You can easily make changes to your dataset using DVC to handle data versioning.
 descriptionLong: |
-  Sometimes your problem definition changes and you need to update your dataset.
+  When there are changes to your dataset, it helps to be able to track them with your models and DVC helps with data versioning.
 picture: 2021-09-14/cats-and-dogs.png
 pictureComment: Switching the Dataset for Your Pre-trained Models
 author: milecia_mcgregor
