@@ -14,7 +14,7 @@ tags:
   - DVC
   - Git
   - Experiments
-  - Pre-trained models
+  - Data Versioning
 ---
 
 ## Intro
