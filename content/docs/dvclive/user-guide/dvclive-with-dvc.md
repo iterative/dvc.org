@@ -66,7 +66,7 @@ command options for the DVC integration:
 - `--live-no-html` - deactivates [HTML report](#html-report) generation.
 
 > Note that these are convenience CLI options. You can still use
-> [`dvclive.init()`] manually, which will override any options sent to
+> `dvclive.init()` manually, which will override any options sent to
 > `dvc stage add`. Just be careful to match the `--live` value (CLI) and `path`
 > argument (code). Also, note that summary files are never tracked by DVC
 > automatically.
@@ -83,8 +83,8 @@ After that's finished, you should see the following content in the project:
 
 ```dvc
 $ ls
-dvc.lock  training_metrics       training_metrics.json
-dvc.yaml  training_metrics.html  train.py
+dvc.lock  training_metrics       train.py
+dvc.yaml  training_metrics.json
 ```
 
 The `.tsv` files generated under `training_metrics` can be visualized with
@@ -108,24 +108,22 @@ In addition to the
 [outputs described in the Quickstart](/doc/dvclive/user-guide/quickstart#outputs),
 DVC generates an _HTML report_.
 
-If you open `training_metrics.html` in a browser, you'll see a plot for metrics
-being logged during the model training!
+If you open `training_metrics_dvc_plots/index.html` in a browser, you'll see a
+plot for metrics being logged during the model training!
 
 ![](/img/dvclive-html-report.png)
-
-> Note that you should manually refresh the page.
 
 ### Checkpoints
 
 When used alongside DVC, DVCLive can create _checkpoint_ signal files used by
 DVC <abbr>experiments<abbr>.
 
-This will save the metrics, plots, models, etc. associated to each `step`.
+This will save the metrics, plots, models, etc. associated to each
+[`step`](/doc/dvclive/api-reference/get_step).
 
 You can learn more about how to use them in the
 [Checkpoints User Guide](/docs/user-guide/experiment-management/checkpoints) and
 in this example
 [repository](https://github.com/iterative/dvc-checkpoints-mnist).
 
-[`dvclive.init()`]: /doc/dvclive/api-reference/init
 [`dvclive configuration`]: /doc/dvclive/api-reference/init#parameters
