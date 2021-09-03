@@ -60,13 +60,14 @@ in a way that makes it accessible to every developer.
 
 ![DVC Studio](/uploads/images/2021/09-07/dvc-studio-view.png)
 
-DVC, CML and now DVC Studio are open source tools that streamline the workflow
-of data scientists. They integrate ML workflows into current practices for
-software development in a way that eliminates the need for many features of
-proprietary AI platforms such as AWS SageMaker, Microsoft Azure ML and Google
-Vertex AI by extending traditional software tools like Git and CI/CD platforms
-to meet the needs of ML researchers and ML engineers. In essence, they provide
-an open platform based on best DevOps practices to operationalize ML and AI.
+DVC and CML are open source tools, that now along with DVC Studio, streamline
+the workflow of data scientists. They integrate ML workflows into current
+practices for software development in a way that eliminates the need for many
+features of proprietary AI platforms such as AWS SageMaker, Microsoft Azure ML
+and Google Vertex AI by extending traditional software tools like Git and CI/CD
+platforms to meet the needs of ML researchers and ML engineers. In essence, they
+provide an open platform based on best DevOps practices to operationalize ML and
+AI.
 
 > "DVC and CML are open source tools that streamline the workflow of data
 > scientists. They integrate ML workflows into current practices for software
