@@ -15,6 +15,7 @@ const metaImage = {
 }
 
 const DefaultSEO: React.FC<IDefaultSEOProps> = ({ pathname }) => {
+  console.log('DefaultSEO', pathname)
   const siteMeta = getSiteMeta()
   const siteUrl = siteMeta.siteUrl
   const metaTitle = siteMeta.title
