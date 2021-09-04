@@ -44,7 +44,7 @@ data and ML pipelines.
 
 ![](https://static.iterative.ai/img/ml-vs-cicd.png) _Traditional ML meets CI/CD_
 
-[DVC](/) and [CML] removes most of this
+[DVC](/) and [CML] remove most of this
 [management headache](https://papers.nips.cc/paper/2015/file/86df7dcfd896fcaf2674f757a2463eba-Paper.pdf)
 in ML. You can automate all of the above without needing any additional
 configuration. Here are a few feature highlights:
