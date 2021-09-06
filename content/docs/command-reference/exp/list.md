@@ -10,7 +10,7 @@ usage: dvc exp list [-h] [-q | -v] [--rev <rev>]
                     [git_remote]
 
 positional arguments:
-  git_remote    Optional Git remote name or SSH Git URL
+  git_remote    Optional Git remote name or valid Git URL
 ```
 
 ## Description

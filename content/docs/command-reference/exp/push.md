@@ -11,7 +11,7 @@ usage: dvc exp push [-h] [-q | -v] [-f] [--no-cache]
                     git_remote experiment
 
 positional arguments:
-  git_remote          Git remote name or SSH Git URL
+  git_remote          Git remote name or valid Git URL
   experiment          Experiment to push
 ```
 
