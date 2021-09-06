@@ -296,9 +296,9 @@ Create the following HTML file and save it in `.dvc/plots/mypage.html`:
 ```html
 <html>
   <head>
-    <script src="../my_vega.js" type="text/javascript"></script>
-    <script src="../my_vega_lite.js" type="text/javascript"></script>
-    <script src="../my_vega_embed.js" type="text/javascript"></script>
+    <script src="../path/to/my_vega.js" type="text/javascript"></script>
+    <script src="../path/to/my_vega_lite.js" type="text/javascript"></script>
+    <script src="../path/to/my_vega_embed.js" type="text/javascript"></script>
   </head>
   <body>
     {plot_divs}
