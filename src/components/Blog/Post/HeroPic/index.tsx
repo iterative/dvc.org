@@ -2,34 +2,42 @@ import Image from 'gatsby-image'
 import React from 'react'
 
 import { BLOG } from '../../../../consts'
-import {
-  IBlogPostHeroPic,
-  IGatsbyImageProps
-} from '../../../../templates/blog-post'
+import { IFluidObject } from '../../../../templates/blog-post'
 
 import styles from './styles.module.css'
 
-const NonStretchedImage: React.FC<IGatsbyImageProps> = props => {
-  let normalizedProps = props
+interface INonStretchedImageProps {
+  fluid: IFluidObject
+  style?: object
+}
+
+interface IHeroPicProps {
+  picture: {
+    fluid: IFluidObject
+  }
+  pictureComment?: string
+}
+
+const NonStretchedImage: React.FC<INonStretchedImageProps> = props => {
+  let style = {}
   if (props.fluid && props.fluid.presentationWidth) {
-    const presetantionWidth = props.fluid?.presentationWidth
+    const presetantionWidth = props.fluid.presentationWidth
     const width =
       presetantionWidth < BLOG.imageMaxWidthHero
         ? presetantionWidth / 2
         : presetantionWidth
-    normalizedProps = {
-      ...props,
-      style: {
-        ...(props.style || {}),
-        maxWidth: width,
-        margin: '0 auto'
-      }
+    style = {
+      ...(props.style || {}),
+
+      maxWidth: width,
+      margin: '0 auto'
     }
   }
-  return <Image {...normalizedProps} />
+
+  return <Image style={style} {...props} />
 }
 
-const HeroPic: React.FC<IBlogPostHeroPic> = ({ pictureComment, picture }) => {
+const HeroPic: React.FC<IHeroPicProps> = ({ pictureComment, picture }) => {
   return (
     <div className={styles.pictureWrapper}>
       <div className={styles.picture}>

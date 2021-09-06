@@ -4,7 +4,7 @@ match: [workspace]
 tooltip: >-
   Directory containing all your DVC project files, e.g. raw data, source code,
   ML models. One project version at a time is visible in the workspace.  
-  See [full concept](/doc/user-guide/basic-concepts/workspace).
+  [More info](/doc/user-guide/basic-concepts/workspace)
 ---
 
 # Workspace

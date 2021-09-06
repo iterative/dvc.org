@@ -87,6 +87,10 @@
         "slug": "sharing-data-and-model-files"
       },
       {
+        "label": "CI/CD for Machine Learning",
+        "slug": "ci-cd-for-machine-learning"
+      },
+      {
         "label": "Fast and Secure Data Caching Hub",
         "slug": "fast-data-caching-hub"
       },
@@ -145,6 +149,7 @@
         "children": [
           "running-experiments",
           "sharing-experiments",
+          "cleaning-experiments",
           "checkpoints"
         ]
       },
@@ -646,6 +651,10 @@
         "slug": "api-reference",
         "source": "api-reference/index.md",
         "children": [
+          {
+            "slug": "get_step",
+            "label": "get_step()"
+          },
           {
             "slug": "init",
             "label": "init()"
