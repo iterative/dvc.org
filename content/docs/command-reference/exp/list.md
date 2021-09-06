@@ -20,9 +20,13 @@ or commit they're based on. This is similar to `dvc exp show --no-pager`, but
 limited to experiment names and with very simple formatting. See also
 `dvc exp run`.
 
-If a working `git_remote` name (e.g. `origin`) or valid [SSH Git URL] is
-provided, lists experiments in that <abbr>repository</abbr> instead (if any,
-based on the `dvc remote default`).
+If a working `git_remote` name (e.g. `origin`) or valid Git URL is provided,
+lists experiments in that <abbr>repository</abbr> instead (if any, based on the
+`dvc remote default`).
+
+> ⚠️ You must be properly authenticated in order to have _read_ permissions on
+> the `git_remote` or the provided Git URL. This means that, for private
+> repositories, you would need to use an [SSH Git URL].
 
 [ssh git url]:
   https://git-scm.com/book/en/v2/Git-on-the-Server-The-Protocols#_the_protocols

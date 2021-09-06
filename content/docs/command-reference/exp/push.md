@@ -24,8 +24,13 @@ experiments across <abbr>repository</abbr> copies via Git (and DVC) remotes.
 > these are saved under custom Git references. See **How does DVC track
 > experiments?** in `dvc exp run` to learn more about DVC experiment storage.
 
-A working `git_remote` name (e.g. `origin`) or valid [SSH Git URL] is required,
-as well as an `experiment` name or hash (see `dvc exp run`) to pull.
+A working `git_remote` name (e.g. `origin`) or valid Git URL is required, as
+well as an `experiment` name or hash (see `dvc exp run`) to pull.
+
+> ⚠️ You must be properly authenticated in order to have _write_ permissions on
+> the `git_remote` or the provided Git URL. This means that, unless you are
+> hosting a private git server that allows unauthenticated pushing, you would
+> need to use an [SSH Git URL].
 
 [ssh git url]:
   https://git-scm.com/book/en/v2/Git-on-the-Server-The-Protocols#_the_protocols
