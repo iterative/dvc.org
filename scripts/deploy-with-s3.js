@@ -69,8 +69,9 @@ const {
   cleanEntry
 } = require('./s3-utils')
 const { move } = require('fs-extra')
-const { downloadAllFromS3, uploadAllToS3, cleanAllLocal } =
-  withEntries(cacheDirs)
+const { downloadAllFromS3, uploadAllToS3, cleanAllLocal } = withEntries(
+  cacheDirs
+)
 
 function run(command) {
   execSync(command, {

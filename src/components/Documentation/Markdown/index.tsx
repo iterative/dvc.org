@@ -34,7 +34,7 @@ const Details: React.FC<{
    */
   return (
     <Collapsible
-      trigger={triggerChildren as unknown as ReactElement}
+      trigger={(triggerChildren as unknown) as ReactElement}
       transitionTime={200}
     >
       {filteredChildren.slice(1)}

@@ -1,4 +1,4 @@
-import { FixedObject, FluidObject } from 'gatsby-image'
+import { FixedObject, FluidObject, GatsbyImageProps } from 'gatsby-image'
 
 import { graphql } from 'gatsby'
 import React from 'react'
@@ -8,9 +8,20 @@ import Post from '../components/Blog/Post'
 
 import { ISocialIcon } from '../components/SocialIcon'
 
-export interface IFluidObject extends FluidObject {
+interface IFluidObject extends FluidObject {
   presentationWidth: number
   presentationHeight: number
+}
+
+export interface IGatsbyImageProps extends GatsbyImageProps {
+  fluid?: IFluidObject
+}
+
+export interface IBlogPostHeroPic {
+  picture?: {
+    fluid: IFluidObject
+  }
+  pictureComment?: string
 }
 
 export interface IBlogPostData {

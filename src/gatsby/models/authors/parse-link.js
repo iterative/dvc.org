@@ -65,10 +65,11 @@ function parseLink(input) {
   switch (typeof input) {
     // Handle shorthand string links
     case 'string':
-      const { groups } =
-        /^(?<scheme>.*?\/\/)?(?:www\.)?(?<host>[^\/]*)(?<pathname>.*?)\/?$/.exec(
-          input
-        )
+      const {
+        groups
+      } = /^(?<scheme>.*?\/\/)?(?:www\.)?(?<host>[^\/]*)(?<pathname>.*?)\/?$/.exec(
+        input
+      )
 
       // Extract groups into variables and assign defaults to non-matches
       return (processors[groups.host] || defaultProcessor)(groups)

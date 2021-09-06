@@ -32,7 +32,7 @@ const BlogHomePage: React.FC<IBlogHomePageProps> = ({
 export default BlogHomePage
 
 export const pageQuery = graphql`
-  query ($skip: Int, $limit: Int) {
+  query($skip: Int, $limit: Int) {
     posts: allBlogPost(
       sort: { fields: [date], order: DESC }
       skip: $skip
