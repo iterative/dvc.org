@@ -66,8 +66,8 @@ const Item: React.FC<IBlogFeedItemProps> = ({
       )}
     >
       <Link href={slug} className={styles.pictureLink}>
-        {picture ? (
-          image && <Image fluid={image} className={styles.picture} />
+        {image ? (
+          <Image fluid={image} className={styles.picture} />
         ) : (
           <Placeholder className={styles.picture} />
         )}
