@@ -239,8 +239,8 @@ to learn more about the state file (database) that is used for optimization.
   updates the timestamp on that entry. This way, when the database needs a
   cleanup, DVC can sort entries chronologically, and remove the oldest ones.
   
-- `state.dir` - specify a specific location for storing the state. This is
-  necessary when using `dvc` on a NFS or some other mounted volume.
+- `state.dir` - specify a custom location for the state file. This is
+  necessary when using DVC on NFS or other mounted volumes.
   (By default, store SQLite-based remote indexes and state's
   `links` and `md5s` caches in the repository itself to avoid any
   possible state corruption in 'shared cache dir' scenario.) 
@@ -248,14 +248,12 @@ to learn more about the state file (database) that is used for optimization.
   
 ### index
 
-See
+See `.dvc/tmp/index` in 
 [Internal directories and files](/doc/user-guide/project-structure/internal-files), 
-specifically `.dvc/tmp/index` to learn more about the remote index files.
+to learn more about remote index files.
 
-- `index.dir` - overwrite the default location of the directory for remote index 
-  files that are used for optimizing `dvc push`, `dvc pull`, `dvc fetch` and 
-  `dvc status -c` operations.
-  This may be necessary when using `dvc` on a NFS or some other mounted volume.
+- `index.dir` - specify a custom location for the directory where remote index 
+  files will be stored. This may be necessary when using DVC on NFS or other mounted volumes.
   Use this override with care.
 
 ### plots
