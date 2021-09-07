@@ -58,7 +58,7 @@ continuous integration/continuous delivery (CI/CD) platforms to meet the needs
 of both developers and ML engineers. The entire ML stack needs to be reinvented
 in a way that makes it accessible to every developer.
 
-![DVC Studio](/uploads/images/2021/09-07/dvc-studio-view.png)
+![DVC Studio](/uploads/images/2021/09-07/dvc-studio.png)
 
 DVC and CML are open source tools, that now along with DVC Studio, streamline
 the workflow of data scientists. They integrate ML workflows into current
