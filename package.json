@@ -56,6 +56,7 @@
     "gatsby-plugin-parent-resolvers": "^1.0.1",
     "gatsby-source-github-api": "^1.0.0",
     "github-markdown-css": "^4.0.0",
+    "graphql": "^15.4.0",
     "iso-url": "^0.4.7",
     "isomorphic-fetch": "^2.2.1",
     "lodash": "^4.17.21",
@@ -88,7 +89,8 @@
     "slick-carousel": "^1.8.1",
     "title-case": "^3.0.2",
     "unist-util-visit": "2.0.2",
-    "upath": "^1.2.0"
+    "upath": "^1.2.0",
+    "webpack": "^5.24.2"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
@@ -163,9 +165,7 @@
     "unist-util-remove-position": "^2.0.1"
   },
   "resolutions": {
-    "graphql": "^15.4.0",
-    "graphql-compose": "^7.25.0",
-    "webpack": "^5.24.2"
+    "graphql-compose": "^7.25.0"
   },
   "husky": {
     "hooks": {
