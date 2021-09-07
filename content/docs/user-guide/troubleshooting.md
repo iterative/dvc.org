@@ -92,17 +92,16 @@ using:
 $ dvc checkout --relink
 ```
 
-## Invalid authentication for Git Remote {#git-auth}
+## HTTP Git authentication is not supported {#git-auth}
 
-Some DVC commands accept `git_remote` as argument. In order to run those
-commands, you must be properly authenticated to have _read_ (`dvc exp list`,
-`dvc exp pull`) or _write_ (`dvc exp push`) permissions on the provided Git
-Remote name or Git URL.
+[Experiment sharing](/doc/user-guide/experiment-management/sharing-experiments)
+commands accept a `git_remote` argument. In order to access the Git remote,
+you may need to authenticate for _reading_ (`dvc exp list`,
+`dvc exp pull`) or _writing_ (`dvc exp push`) permissions.
 
-Unless you are hosting a private git server that allows unauthenticated HTTP
-read/write, you would need to use an [SSH Git URL] for using `dvc exp list` /
-`dvc exp pull` **in private repositories** and for using `dvc exp push` **in any
-case**.
+This means that unless the Git server allows unauthenticated HTTP
+read/write, you should use an [SSH Git URL] when pushing experiments,
+and when listing or pulling experiments from private repositories.
 
 [ssh git url]:
   https://git-scm.com/book/en/v2/Git-on-the-Server-The-Protocols#_the_protocols
