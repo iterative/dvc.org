@@ -96,8 +96,8 @@ $ dvc checkout --relink
 
 [Experiment sharing](/doc/user-guide/experiment-management/sharing-experiments)
 commands accept a `git_remote` argument. In order to access the Git remote,
-you may need to authenticate for _reading_ (`dvc exp list`,
-`dvc exp pull`) or _writing_ (`dvc exp push`) permissions.
+you may need to authenticate for _write_ (`dvc exp push`) or
+_read_ (`dvc exp list`, `dvc exp pull`) permissions.
 
 This means that unless the Git server allows unauthenticated HTTP
 read/write, you should use an [SSH Git URL] when pushing experiments,
