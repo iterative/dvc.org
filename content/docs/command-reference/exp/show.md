@@ -65,7 +65,7 @@ metric or param.
 - `-A`, `--all-commits` - include experiments derived from all Git commits, as
   well as from the last one. This prints all experiments in the project.
 
-- `-n <num>`, `--num <num>` Show the last `num` commits from HEAD.
+- `-n <num>`, `--num <num>` - show the last `num` commits from HEAD.
 
 - `--no-pager` - do not enter the pager screen. Writes the entire table to
   standard output. Useful to redirect the output to a file, or use your own
