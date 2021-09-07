@@ -92,7 +92,7 @@ using:
 $ dvc checkout --relink
 ```
 
-## Invalid authentication for Git Remote
+## Invalid authentication for Git Remote {#git-auth}
 
 Some DVC commands accept `git_remote` as argument. In order to run those
 commands, you must be properly authenticated having _read_ (`dvc exp list`,
