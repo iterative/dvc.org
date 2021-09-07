@@ -25,7 +25,7 @@ experiments across <abbr>repository</abbr> copies via Git (and DVC) remotes.
 > experiments?** in `dvc exp run` to learn more about DVC experiment storage.
 
 A working `git_remote` name (e.g. `origin`) or valid Git URL is required, as
-well as an `experiment` name or hash (see `dvc exp run`) to pull.
+well as an `experiment` name or hash (see `dvc exp run`) to push.
 
 The first action of `dvc exp push` is to upload the `experiment` to the Git
 remote so it can be pulled later from other repo clones (equivalent to
