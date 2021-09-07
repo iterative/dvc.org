@@ -91,3 +91,18 @@ using:
 ```dvc
 $ dvc checkout --relink
 ```
+
+## Invalid authentication for Git Remote
+
+Some DVC commands accept `git_remote` as argument. In order to run those
+commands, you must be properly authenticated having _read_ (`dvc exp list`,
+`dvc exp pull`) or _write_ (`dvc exp push`) permissions on the provided Git
+Remote name or Git URL.
+
+This means that, unless you are hosting a private git server that allows
+unauthenticated HTTP read/write, you would need to use an [SSH Git URL] for
+using `dvc exp list` / `dvc exp pull` **in private repositories** and for using
+`dvc exp push` **in any case**.
+
+[ssh git url]:
+  https://git-scm.com/book/en/v2/Git-on-the-Server-The-Protocols#_the_protocols
