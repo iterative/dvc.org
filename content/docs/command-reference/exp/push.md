@@ -11,7 +11,7 @@ usage: dvc exp push [-h] [-q | -v] [-f] [--no-cache]
                     git_remote experiment
 
 positional arguments:
-  git_remote          Git remote name or valid Git URL
+  git_remote          Git remote name or Git URL (SSH auth only)
   experiment          Experiment to push
 ```
 
@@ -24,7 +24,7 @@ experiments across <abbr>repository</abbr> copies via Git (and DVC) remotes.
 > these are saved under custom Git references. See **How does DVC track
 > experiments?** in `dvc exp run` to learn more about DVC experiment storage.
 
-A working `git_remote` name (e.g. `origin`) or valid Git URL is required, as
+A working `git_remote` name (e.g. `origin`) or valid Git URL is required (only SSH authentication is supported), as
 well as an `experiment` name or hash (see `dvc exp run`) to push.
 
 The first action of `dvc exp push` is to upload the `experiment` to the Git

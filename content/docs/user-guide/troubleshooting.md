@@ -100,8 +100,8 @@ you may need to authenticate for _write_ (`dvc exp push`) or
 _read_ (`dvc exp list`, `dvc exp pull`) permissions.
 
 This means that unless the Git server allows unauthenticated HTTP
-read/write, you should use an [SSH Git URL] when pushing experiments,
-and when listing or pulling experiments from private repositories.
+write/read, you should use an [SSH Git URL] when pushing, listing,
+or pushing experiments.
 
 [ssh git url]:
   https://git-scm.com/book/en/v2/Git-on-the-Server-The-Protocols#_the_protocols
