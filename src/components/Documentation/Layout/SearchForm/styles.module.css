@@ -2,13 +2,6 @@
   box-sizing: border-box;
   height: 60px;
   padding-top: 10px;
-  background: rgb(238, 244, 248);
-  background: linear-gradient(
-    180deg,
-    rgba(238, 244, 248, 1) 0%,
-    rgba(238, 244, 248, 1) 86%,
-    rgba(238, 244, 248, 0) 100%
-  );
   z-index: 10;
   position: sticky;
   top: var(--layout-header-height);

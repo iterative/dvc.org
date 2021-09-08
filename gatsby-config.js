@@ -271,6 +271,7 @@ module.exports = {
   plugins,
   siteMetadata: {
     description,
+    author: 'Iterative',
     keywords,
     siteUrl: 'https://dvc.org',
     title

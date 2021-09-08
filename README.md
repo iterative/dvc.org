@@ -12,16 +12,9 @@ Contributions are welcome!
 
 Please see our
 [Contributing guide](https://dvc.org/doc/user-guide/contributing/docs) for more
-details.
+details. Thanks to all our contributors!
 
-[![](https://sourcerer.io/fame/shcheklein/iterative/dvc.org/images/0)](https://sourcerer.io/fame/shcheklein/iterative/dvc.org/links/0)
-[![](https://sourcerer.io/fame/shcheklein/iterative/dvc.org/images/1)](https://sourcerer.io/fame/shcheklein/iterative/dvc.org/links/1)
-[![](https://sourcerer.io/fame/shcheklein/iterative/dvc.org/images/2)](https://sourcerer.io/fame/shcheklein/iterative/dvc.org/links/2)
-[![](https://sourcerer.io/fame/shcheklein/iterative/dvc.org/images/3)](https://sourcerer.io/fame/shcheklein/iterative/dvc.org/links/3)
-[![](https://sourcerer.io/fame/shcheklein/iterative/dvc.org/images/4)](https://sourcerer.io/fame/shcheklein/iterative/dvc.org/links/4)
-[![](https://sourcerer.io/fame/shcheklein/iterative/dvc.org/images/5)](https://sourcerer.io/fame/shcheklein/iterative/dvc.org/links/5)
-[![](https://sourcerer.io/fame/shcheklein/iterative/dvc.org/images/6)](https://sourcerer.io/fame/shcheklein/iterative/dvc.org/links/6)
-[![](https://sourcerer.io/fame/shcheklein/iterative/dvc.org/images/7)](https://sourcerer.io/fame/shcheklein/iterative/dvc.org/links/7)
+[![Contributors](https://contrib.rocks/image?repo=iterative/dvc.org)](https://github.com/iterative/dvc.org/graphs/contributors)
 
 # Writing a blog post
 
