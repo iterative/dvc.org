@@ -19,10 +19,11 @@ tags:
 
 ## Intro
 
-Sharing experiments for machine learning is something that commonly happens. You
-might have a new engineer join the team and you want to get their workspace
-ready quickly. There might be times when someone might have an idea they could
-try on your model if they could access your current progress.
+Sharing experiments to build machine learning model is important in order to
+create the best model as quickly as possible. You might have a new engineer join
+the team and you want to get their workspace ready quickly. Situations come up
+where you want to run experiments in differnt environments and you need to
+reproduce them.
 
 Setting up DVC remotes lets you share all of the data, code, and hyperparameters
 associated with each experiment so anyone can pick up where you left off in the
@@ -34,9 +35,16 @@ remotes.
 To follow along, you can fork
 [this repo](https://github.com/iterative/dvc-learn-project) as one of your own
 GitHub repos. That way you'll have push and pull access when we start working
-with DVC. This project already has DVC initialized and set up to run
-experiments, but if you want to follow along with a project you're currently
-working on, make sure to check out the steps to initialize a DVC pipeline in
+with DVC. You do need to run the following command to be able to use the DVC
+CLI.
+
+```dvc
+dvc init
+```
+
+This project already has DVC files set up to run experiments, but if you want to
+follow along with a project you're currently working on, make sure to check out
+the steps to initialize a DVC pipeline in
 [the Getting Started doc](https://dvc.org/doc/start).
 
 ## Setting up your DVC remotes
@@ -51,13 +59,29 @@ with, make sure your GitHub remote is configured correctly. It should use the
 SSH version of the URL. This is so DVC can authenticate the pushes and pulls
 from GitHub it needs as part of experiment sharing.
 
+_We do have HTTPS support coming. You can follow our progress in
+[this GitHub issue](https://github.com/iterative/dvc/pull/6493) and add your own
+feedback._
+
 The way DVC works is by storing custom Git refs in your repo with metadata that
 defines the experiment. You can learn more about how DVC uses custom Git refs in
 [this post](https://dvc.org/blog/experiment-refs).
 
 Next, you'll need to set up a remote to your data location. This could be an AWS
-S3 bucket, a Google Drive, or Blob Storage in Azure. For this example, we'll be
-using a Google Drive folder as the remote to handle data storage.
+S3 bucket, a Google Drive, or
+[one of the other supported storage types](https://dvc.org/doc/command-reference/remote/add#supported-storage-types).
+For this example, we'll be using a Google Drive folder as the remote to handle
+data storage.
+
+You can learn more about the Google Drive setup in
+[the docs](https://dvc.org/doc/command-reference/remote/add). The main thing you
+need to know is that you need the folder id for the remote location you want to
+set up. You can find that id in the URL for that folder. It'll look similar to
+this.
+
+```dvc
+https://drive.google.com/drive/folders/1k6aUYWphOulJlXgq4XbfKExWGyymTpEl?usp=sharing
+```
 
 Now that you know what we're doing, let's run the command to set up our DVC
 remote.
@@ -70,16 +94,6 @@ This adds the remote storage named `cloud_remote` for DVC to track and we'll be
 able to push and pull the exact code and data to reproduce any experiment from
 end to end. With your Git remote and DVC remote in place, you can start pulling
 data and experiments from the cloud to your local machine.
-
-You can learn more about the Google Drive setup in
-[the docs](https://dvc.org/doc/command-reference/remote/add). The main thing you
-need to know is that you need the folder id for the remote location you want to
-set up. You can find that id in the URL for that folder. It'll look similar to
-this.
-
-```dvc
-https://drive.google.com/drive/folders/1k6aUYWphOulJlXgq4XbfKExWGyymTpEl?usp=sharing
-```
 
 ## Listing your remote experiments
 
