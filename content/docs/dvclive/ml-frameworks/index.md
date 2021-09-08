@@ -5,15 +5,15 @@ _ML training code_.
 
 We currently support the following _ML Frameworks_:
 
-- [Catalyst](/docs/dvclive/user-guide/ml-frameworks/catalyst)
-- [Fast.ai](/docs/dvclive/user-guide/ml-frameworks/fastai)
-- [Hugging Face](/docs/dvclive/user-guide/ml-frameworks/huggingface)
-- [Keras](/docs/dvclive/user-guide/ml-frameworks/keras)
-- [LightGBM](/docs/dvclive/user-guide/ml-frameworks/lightgbm)
-- [MMCV](/docs/dvclive/user-guide/ml-frameworks/mmcv)
-- [PyTorch](/docs/dvclive/user-guide/ml-frameworks/pytorch)
-- [TensorFlow](/docs/dvclive/user-guide/ml-frameworks/tensorflow)
-- [XGBoost](/docs/dvclive/user-guide/ml-frameworks/xgboost)
+- [Catalyst](/docs/dvclive/ml-frameworks/catalyst)
+- [Fast.ai](/docs/dvclive/ml-frameworks/fastai)
+- [Hugging Face](/docs/dvclive/ml-frameworks/huggingface)
+- [Keras](/docs/dvclive/ml-frameworks/keras)
+- [LightGBM](/docs/dvclive/ml-frameworks/lightgbm)
+- [MMCV](/docs/dvclive/ml-frameworks/mmcv)
+- [PyTorch](/docs/dvclive/ml-frameworks/pytorch)
+- [TensorFlow](/docs/dvclive/ml-frameworks/tensorflow)
+- [XGBoost](/docs/dvclive/ml-frameworks/xgboost)
 
 The DVCLive team is happy to extend the list with more _ML Frameworks_ as
 needed. Please check the
