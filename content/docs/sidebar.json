@@ -589,60 +589,53 @@
     "source": "dvclive/index.md",
     "children": [
       {
-        "label": "User Guide",
-        "slug": "user-guide",
-        "source": "dvclive/user-guide/index.md",
+        "label": "Get Started",
+        "slug": "get-started"
+      },
+      {
+        "label": "DVCLive with DVC",
+        "slug": "dvclive-with-dvc"
+      },
+      {
+        "label": "ML Frameworks",
+        "slug": "ml-frameworks",
+        "source": "dvclive/ml-frameworks/index.md",
         "children": [
           {
-            "slug": "quickstart",
-            "label": "Quickstart"
+            "slug": "catalyst",
+            "label": "Catalyst"
           },
           {
-            "label": "DVCLive with DVC",
-            "slug": "dvclive-with-dvc"
+            "slug": "fastai",
+            "label": "Fast.ai"
           },
           {
-            "label": "ML Frameworks",
-            "slug": "ml-frameworks",
-            "source": "dvclive/user-guide/ml-frameworks/index.md",
-            "children": [
-              {
-                "slug": "fastai",
-                "label": "Fast.ai"
-              },
-              {
-                "slug": "catalyst",
-                "label": "Catalyst"
-              },
-              {
-                "slug": "huggingface",
-                "label": "Hugging Face"
-              },
-              {
-                "slug": "keras",
-                "label": "Keras"
-              },
-              {
-                "slug": "lightgbm",
-                "label": "LightGBM"
-              },
-              {
-                "slug": "mmcv",
-                "label": "MMCV"
-              },
-              {
-                "slug": "pytorch",
-                "label": "PyTorch"
-              },
-              {
-                "slug": "tensorflow",
-                "label": "TensorFlow"
-              },
-              {
-                "slug": "xgboost",
-                "label": "XGBoost"
-              }
-            ]
+            "slug": "huggingface",
+            "label": "Hugging Face"
+          },
+          {
+            "slug": "keras",
+            "label": "Keras"
+          },
+          {
+            "slug": "lightgbm",
+            "label": "LightGBM"
+          },
+          {
+            "slug": "mmcv",
+            "label": "MMCV"
+          },
+          {
+            "slug": "pytorch",
+            "label": "PyTorch"
+          },
+          {
+            "slug": "tensorflow",
+            "label": "TensorFlow"
+          },
+          {
+            "slug": "xgboost",
+            "label": "XGBoost"
           }
         ]
       },
