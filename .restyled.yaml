@@ -12,7 +12,7 @@ restylers:
         '--trailing-comma=none',
         '--use-tabs=false'
       ]
-    include:
+    include: # matching '**/*.{js,jsx,md,tsx,ts,json}'
       - '**/*.md'
       - '**/*.jsx'
       - '**/*.tsx'
