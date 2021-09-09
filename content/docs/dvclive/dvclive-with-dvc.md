@@ -109,7 +109,7 @@ In addition to the
 generates an _HTML report_.
 
 If you open `training_metrics_dvc_plots/index.html` in a browser, you'll see a
-plot for metrics being logged during the model training!
+plot for metrics automatically updated during the model training!
 
 ![](/img/dvclive-html.gif)
 
