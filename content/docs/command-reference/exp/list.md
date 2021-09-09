@@ -10,7 +10,7 @@ usage: dvc exp list [-h] [-q | -v] [--rev <rev>]
                     [git_remote]
 
 positional arguments:
-  git_remote    Optional Git remote name or valid Git URL
+  git_remote    Optional Git remote name or authenticated Git URL
 ```
 
 ## Description
@@ -20,12 +20,11 @@ or commit they're based on. This is similar to `dvc exp show --no-pager`, but
 limited to experiment names and with very simple formatting. See also
 `dvc exp run`.
 
-If a working `git_remote` name (e.g. `origin`) or valid Git URL is provided,
-lists experiments in that <abbr>repository</abbr> instead (if any, based on the
-`dvc remote default`).
+If a working `git_remote` name (e.g. `origin`) or authenticated Git URL is
+provided, lists experiments in that <abbr>repository</abbr> instead (if any).
 
-> This utility doesn't require an existing <abbr>DVC project</abbr> to run from
-> when a `git_remote` URL is given.
+> Note that this utility doesn't require an existing <abbr>DVC project</abbr> to
+> run from when a `git_remote` URL is given.
 
 Only experiments derived from the `HEAD` commit are listed by default (see the
 options below).
