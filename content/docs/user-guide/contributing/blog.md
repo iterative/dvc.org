@@ -1,7 +1,7 @@
 # Writing Blog Posts
 
-To create a new post, you need to create a PR to the DVC website super mega ultra great
-[project](https://github.com/iterative/dvc.org).
+To create a new post, you need to create a PR to the DVC website super mega
+ultra great [project](https://github.com/iterative/dvc.org).
 
 ## Prepare your environment
 
@@ -41,7 +41,6 @@ tags:
   - Version Control
   - AI
 ---
-
 ```
 
 - `title` (**required**) - title of the post.
