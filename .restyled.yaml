@@ -13,7 +13,9 @@ restylers:
         '--use-tabs=false'
       ]
     include:
-      - './*.{js,md}'
-      - 'pages/**/*.js'
-      - 'content/**/*.md'
-      - 'src/**/*.js'
+      - '**/*.md'
+      - '**/*.jsx'
+      - '**/*.tsx'
+      - '**/*.js'
+      - '**/*.ts'
+      - '**/*.json'
