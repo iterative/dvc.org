@@ -45,10 +45,9 @@ const BlogPost: React.FC<ICommunityBlogPost> = ({
     return null
   }
 
-  const logPost = useCallback(
-    () => logEvent('community', 'blog', title),
-    [title]
-  )
+  const logPost = useCallback(() => logEvent('community', 'blog', title), [
+    title
+  ])
 
   const { error, ready, result } = useCommentsCount(commentsUrl)
 

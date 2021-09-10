@@ -3,13 +3,19 @@ restylers:
     arguments:
       [
         '--write',
-        '--trailing-comma=none',
-        '--no-semi',
         '--arrow-parens=avoid',
-        '--single-quote=true',
         '--print-width=80',
+        '--prose-wrap=always',
+        '--no-semi',
+        '--single-quote=true',
         '--tab-width=2',
-        '--use-tabs=false',
-        '--prose-wrap=always'
+        '--trailing-comma=none',
+        '--use-tabs=false'
       ]
-    include: ['**/*.{js,json,md,yaml,yml}']
+    include: # matching '**/*.{js,jsx,md,tsx,ts,json}'
+      - '**/*.md'
+      - '**/*.jsx'
+      - '**/*.tsx'
+      - '**/*.js'
+      - '**/*.ts'
+      - '**/*.json'
