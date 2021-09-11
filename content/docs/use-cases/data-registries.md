@@ -58,8 +58,8 @@ $ git commit -m "Track 1.8 GB 10,000 song dataset in music/"
 
 The actual data is stored in the project's <abbr>cache</abbr>, and can be
 [pushed](/docs/command-reference/push) to one or more
-[remote storage](/docs/command-reference/remote) locations so the registry can be
-accessed from other locations and by other people:
+[remote storage](/docs/command-reference/remote) locations so the registry can
+be accessed from other locations and by other people:
 
 ```dvc
 $ dvc remote add -d myremote s3://mybucket/dvcstore
