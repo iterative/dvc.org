@@ -21,16 +21,16 @@ Advantages of data registries:
 - **Reusability**: reproduce and organize _feature stores_ with a simple CLI
   (`dvc get` and `dvc import` commands, similar to software package management
   systems like `pip`).
-- **Persistence**: [remote storage](/doc/command-reference/remote) (e.g. an S3
+- **Persistence**: [remote storage](/docs/command-reference/remote) (e.g. an S3
   bucket) tracked by the DVC registry improves data security. There are less
   chances someone can delete or rewrite an ML model, for example.
 - **Storage optimization**: centralize data
-  [shared](/doc/use-cases/sharing-data-and-model-files) by multiple projects in
+  [shared](/docs/use-cases/sharing-data-and-model-files) by multiple projects in
   a single location (distributed copies are possible too). This simplifies data
   management and optimizes space requirements.
 - **Data as code**: leverage Git workflows such as commits, branching, pull
   requests, reviews, and even
-  [CI/CD for your data and models lifecycle](/doc/use-cases/ci-cd-for-machine-learning).
+  [CI/CD for your data and models lifecycle](/docs/use-cases/ci-cd-for-machine-learning).
   Think "Git for cloud storage".
 - **Security**: registries can be setup with read-only remote storage (e.g. an
   HTTP server).
@@ -57,8 +57,8 @@ $ git commit -m "Track 1.8 GB 10,000 song dataset in music/"
 ```
 
 The actual data is stored in the project's <abbr>cache</abbr>, and can be
-[pushed](/doc/command-reference/push) to one or more
-[remote storage](/doc/command-reference/remote) locations so the registry can be
+[pushed](/docs/command-reference/push) to one or more
+[remote storage](/docs/command-reference/remote) locations so the registry can be
 accessed from other locations and by other people:
 
 ```dvc
@@ -204,7 +204,7 @@ $ tree --filelimit=10
 ```
 
 And let's not forget to `dvc push` data changes to the
-[remote storage](/doc/command-reference/remote), so others can obtain them!
+[remote storage](/docs/command-reference/remote), so others can obtain them!
 
 ```dvc
 $ dvc push
