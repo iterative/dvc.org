@@ -2,18 +2,18 @@
 
 Mature data science required constant research and improvement. This implies
 continuous experimentation on any stage of the data lifecycle, from acquisition
-to processing and usage, for example to train machine learning models. But
-keeping track of all these experiments is challenging, not to mention being able
-to reproduce them again in the future.
+to processing and usage, for example to retrain machine learning models for
+better accuracy. Keeping track of all these experiments is challenging, not to
+mention being able to find and reproduce them again in the future.
 
-At it's core, DVC helps you version not only data but the
-[entire pipeline](/doc/user-guide/project-structure/pipelines-files) that
-transforms and utilizes it. On top of this, DVC includes a layer of
-[experiment management](/doc/user-guide/experiment-management) features to
-capture any variations to your pipeline automatically. These
-<abbr>experiment</abbr> can then be handled easily, either individually or in
-bulk. Note that at no point so far will you need to worry about the underlying
-versioning layer (Git). Some things you can do:
+The core of DVC lets you codify your project's
+[data pipelines](/doc/user-guide/project-structure/pipelines-files) in order to
+track and version your data and models while capturing their provenance. On top
+of that, DVC provides a layer of
+[experiment management](/doc/user-guide/experiment-management) features to take
+automatic snapshots of any relevant variations in your project. These
+<abbr>experiments</abbr> can then be handled with simple commands. Some things
+you can do with `dvc experiments`:
 
 - Automatic bookkeeping of all changes to the project before you run each
   experiment.
@@ -23,7 +23,10 @@ versioning layer (Git). Some things you can do:
   by <abbr>parameters</abbr> or <abbr>metrics</abbr>).
 - Restore experimental results instantly to continue working on that idea.
 - Reproduce any experiment in other environments or in the future if needed.
-- Select the experiments that you want to preserve as regular project versions
-  (Git commits).
 - Discard project variations that are no longer useful, either individually or
   in bulk.
+- Select the experiments that you want to preserve as regular project versions
+  (Git commits).
+
+Except for the last action, at no point do you need to worry about the
+underlying versioning layer (Git).
