@@ -241,7 +241,7 @@ to learn more about the state file (database) that is used for optimization.
   
 - `state.dir` - specify a custom location for the state file. This may be
   necessary when using DVC on NFS or other mounted volumes.
-  Use this override with care.
+  ⚠️ Make sure no other project shares the same `state.dir` location.
   
 ### index
 
@@ -251,7 +251,7 @@ to learn more about remote index files.
 
 - `index.dir` - specify a custom location for the directory where remote index 
   files will be stored. This may be necessary when using DVC on NFS or other mounted volumes.
-  Use this override with care.
+  ⚠️ Make sure no other project shares the same `index.dir` location.
 
 ### plots
 
