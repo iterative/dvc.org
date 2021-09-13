@@ -241,9 +241,6 @@ to learn more about the state file (database) that is used for optimization.
   
 - `state.dir` - specify a custom location for the state file. This may be
   necessary when using DVC on NFS or other mounted volumes.
-  (By default, store SQLite-based remote indexes and state's
-  `links` and `md5s` caches in the repository itself to avoid any
-  possible state corruption in 'shared cache dir' scenario.) 
   Use this override with care.
   
 ### index
