@@ -164,10 +164,6 @@ times:
 $ dvc exp run -S learning_rate=0.001 -S units=128
 ```
 
-> ⚠️ Note that DVC doesn't check whether parameters given to `--set-param` are
-> already in the parameters file. If there is a typo, a new or different param
-> will be added/changed.
-
 ## The experiments queue
 
 The `--queue` option of `dvc exp run` tells DVC to append an experiment for
