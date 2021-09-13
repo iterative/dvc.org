@@ -3,8 +3,8 @@ title: September'21 Heartbeat
 date: 2021-09-14
 description: |
   Monthly updates are here! Awesome new tutorials and guides form the 
-  Community, cats out of the bag on VS Code extension, doc updates, DVC +
-  Streamlit Meetup, and more!
+  Community, cat's out of the bag on VS Code extension, doc updates, DVC +
+  Streamlit Meetup video, and more!
 descriptionLong: |
   This month you will find:
   - 🛠 New Tutorials and Guides,
