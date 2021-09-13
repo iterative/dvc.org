@@ -49,7 +49,7 @@ large scale AI powered applications. The series includes:
 Sahu's 4 part series on the Fundamentals of MLOps
 [Source link](https://ljvmiranda921.github.io/notebook/2021/07/30/data-centric-ml/)_
 
-If you follow the steps through this series you will learn how to build and
+If you follow the steps through this series, you will learn how to build and
 deploy an end-to-end ML project - all the steps leading to production!
 
 ### Miguel Méndez' Tutorial on DVC + MMdetection
@@ -59,19 +59,19 @@ This month [Miguel Méndez](https://www.linkedin.com/in/miguel-mendez/) of
 using the [MMdetection]() framework in conjunction with DVC to design the
 pipeline, version models and monitor training progress. This follows his
 [first guide](https://mmeendez8.github.io/2021/07/01/dvc-tutorial.html) covering
-how to version your datasets with DVC which we shared in the
+how to version your datasets with DVC, which we shared in the
 [July Heartbeat.](https://dvc.org/blog/july-21-dvc-heartbeat)
 
 In
-[this new guide](https://mmeendez8.github.io/2021/08/30/mmdet-dvc-tutorial.html)
+[this new guide,](https://mmeendez8.github.io/2021/08/30/mmdet-dvc-tutorial.html)
 you'll gain a thorough understanding of the steps, have access to
-[his repo](https://github.com/mmeendez8/mmdetection_dvc) for the project and
+[his repo](https://github.com/mmeendez8/mmdetection_dvc) for the project, and
 find his thoughts on scaling hyperparameter tuning through this
 [open issue](https://github.com/iterative/dvc/issues/5477#issuecomment-905440724)
 about exeperiments that we are trying to resolve. Join the conversation! We'd
 love your input!
 
-![DVC + MMdetection](uploads/images/2021-09-14/mmdetection.png) _Miguel Méndez
+![DVC + MMdetection](uploads/images/2021-09-14/mmdetection.png) _Miguel Méndez'
 second guide in a series using DVC in an object detecton project
 [Source link](https://mmeendez8.github.io/2021/08/30/mmdet-dvc-tutorial.html)_
 
@@ -85,7 +85,7 @@ you through set up, pipeline and versioning, experiments and sharing through our
 built in shared caching, so that you and your teammates can reduce resource use
 when focusing on a subset of datasets as you move through your project.
 
-![DVC (Git for Data): A complete Intro](/uploads/images/2021/09-14/hrittik-roy.png)
+![DVC (Git for Data): A complete Intro](/uploads/images/2021-09-14/hrittik-roy.png)
 _Hrittik Roy's Complete Intro on DVC
 [Source link](https://dev.to/hrittikhere/dvc-git-for-data-a-complete-intro-4626)_
 
@@ -98,13 +98,12 @@ Newsletters. You can find the article
 [right here.](https://medium.com/@andreykurenkov/the-best-ai-newsletters-483dc75134b)
 Be sure to check it out and get reading...
 
-<external-link href="<external-link
+<external-link 
 href="https://www.meetup.com/DVC-Community-Virtual-Meetups/events/279723437/"
 title="One PhD student’s curated list of 21 newsletters to help you keep up with AI news and research"
 description="Andrey Kurenkov's curated list of the best AI newsletters"
 link="https://medium.com.com"
-image="/uploads/images/2021-09-14/andrey-wordcloud.png"
-/>
+image="/uploads/images/2021-09-14/andrey-wordcloud.png"/>
 
 # DVC News
 
@@ -147,7 +146,7 @@ you:
 
 Status: Must read. 📖
 
-![Fast and Secure Data Cachin Hub](/uploads/images/2021/09-14/fcaching.gif)
+![Fast and Secure Data Cachin Hub](/uploads/images/2021-09-14/fcaching.gif)
 _Fast and Secure Data Cachin Hub
 [Source link](https://dvc.org/doc/use-cases/fast-data-caching-hub#fast-and-secure-data-caching-hub)_
 
@@ -159,8 +158,8 @@ Is this your life?
 [Source link](https://dvc.org/doc/use-cases/ci-cd-for-machine-learning#continuous-integration-and-deployment-for-machine-learning)_
 
 Our latest doc,
-[Continuous Integration and Deployment for Machine Learning,](https://dvc.org/doc/use-cases/ci-cd-for-machine-learning#continuous-integration-and-deployment-for-machine-learning)]
-shows you how to move from the above chaos to CI/CD bliss through:
+[Continuous Integration and Deployment for Machine Learning,](https://dvc.org/doc/use-cases/ci-cd-for-machine-learning#continuous-integration-and-deployment-for-machine-learning)
+shows you how to move from the above chaos to CI/CD victory through:
 
 - ✅ Data validation
 - ✅ Model validation
@@ -183,10 +182,10 @@ sure to check it out!
 
 ### 📖 Hugging Face Integration with DVC Live
 
-Thanks to the contribution of [@pacifikus](https://github.com/pacifikus),
 [Hugging Face](https://huggingface.co/) fans now have an integration with
 DVCLive! Checkout how to
 [get set up here!](https://dvc.org/doc/dvclive/ml-frameworks/huggingface#hugging-face)
+Thanks [@pacifikus](https://github.com/pacifikus), for the contribution! 🙏🏼
 
 ## Next Meetup
 
@@ -206,7 +205,7 @@ image="/uploads/images/2021-09-14/pretrained-models.png"/>
 
 ## Learning Opportunities
 
-Our August Meetup video is out, so if you weren't able to make it you can catch
+Our August Meetup video is out, so if you weren't able to make it, you can catch
 all the details on [Antoine Toubhan's](https://twitter.com/AntoineToubhans)
 tutorial on
 [DVC + Streamlit = ❤️](https://www.sicara.ai/blog/dvc-streamlit-webui-ml)
