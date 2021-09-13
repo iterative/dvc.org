@@ -659,6 +659,10 @@
           {
             "slug": "next_step",
             "label": "next_step()"
+          },
+          {
+            "slug": "set_step",
+            "label": "set_step()"
           }
         ]
       }
