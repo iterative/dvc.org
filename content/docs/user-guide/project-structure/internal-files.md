@@ -42,11 +42,11 @@ operation.
 - `.dvc/tmp/md5s`: This directory is used for optimization. It contains a SQLite
   database that stores hash values for files tracked in a DVC project. It also
   saves the corresponding timestamps and inodes, to avoid unnecessary file hash
-  computations.
+  computations.<sup>[note 1](#sqlite-default)</sup>
 
 - `.dvc/tmp/links`: This directory contains a SQLite database that stores a list
   of file links created by DVC (from cache to <abbr>workspace</abbr>). It's used
-  to cleanup your workspace when calling `dvc checkout`.
+  to cleanup your workspace when calling `dvc checkout`.<sup>[note 1](#sqlite-default)</sup>
 
 - `.dvc/tmp/updater`: This file is used store the latest available version of
   DVC. It's used to remind the user to upgrade when the installed version is
@@ -62,6 +62,13 @@ operation.
 
 - `.dvc/tmp/exps`: This directory will contain workspace copies used for
   temporary or parallel <abbr>experiments</abbr> (see `dvc exp run`).
+  
+<a name="sqlite-default">Note 1</a>: To avoid any possible state corruption,by default the SQLite-based 
+remote indexes and state's `links` and `md5s` are cached internally in the 
+repository itself. This may however be overriden if necessary, 
+like in case of using an NFS or other mounted volume where SQLite encounters
+file permission errors. See https://dvc.org/doc/command-reference/config for
+further details.
 
 ## Structure of the cache directory
 
