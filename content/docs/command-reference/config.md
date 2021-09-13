@@ -239,7 +239,7 @@ to learn more about the state file (database) that is used for optimization.
   updates the timestamp on that entry. This way, when the database needs a
   cleanup, DVC can sort entries chronologically, and remove the oldest ones.
   
-- `state.dir` - specify a custom location for the state file. This is
+- `state.dir` - specify a custom location for the state file. This may be
   necessary when using DVC on NFS or other mounted volumes.
   (By default, store SQLite-based remote indexes and state's
   `links` and `md5s` caches in the repository itself to avoid any
