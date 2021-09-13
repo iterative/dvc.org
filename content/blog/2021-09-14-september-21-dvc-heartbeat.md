@@ -55,7 +55,7 @@ deploy an end-to-end ML project - all the steps leading to production!
 ### Miguel Méndez' Tutorial on DVC + MMdetection
 
 This month [Miguel Méndez](https://www.linkedin.com/in/miguel-mendez/) of
-[Gradient](https://www.gradiant.org/en//) brings us a guide on object detection
+[Gradiant](https://www.gradiant.org/en//) brings us a guide on object detection
 using the [MMdetection]() framework in conjunction with DVC to design the
 pipeline, version models and monitor training progress. This follows his
 [first guide](https://mmeendez8.github.io/2021/07/01/dvc-tutorial.html) covering
