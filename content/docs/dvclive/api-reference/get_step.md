@@ -21,4 +21,8 @@ while dvclive.get_step() < 3:
 DVCLive uses the `step` to track the progress of each metric logged with
 `dvclive.log()`.
 
-Each call to `dvclive.next_step()` increases the `step` count.
+Each call to `dvclive.next_step()` increases the `step` count, making `[0, N)`
+the default range of `step` values.
+
+> 💡 You can alter the default range of `step` values by calling
+> `dvclive.set_step()`
