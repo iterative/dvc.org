@@ -71,7 +71,7 @@ find his thoughts on scaling hyperparameter tuning through this
 about exeperiments that we are trying to resolve. Join the conversation! We'd
 love your input!
 
-![DVC + MMdetection](uploads/images/2021-09-14/mmdetection.png) _Miguel Méndez'
+![DVC + MMdetection](/uploads/images/2021-09-14/mmdetection.png) _Miguel Méndez'
 second guide in a series using DVC in an object detecton project
 [Source link](https://mmeendez8.github.io/2021/08/30/mmdet-dvc-tutorial.html)_
 
