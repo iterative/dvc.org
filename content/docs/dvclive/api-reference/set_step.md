@@ -29,7 +29,7 @@ the provided `step` value.
 
 ## Example
 
-Given the above code snippet, the
+Given the [Usage](#usage) code snippet above, the
 [metrics logs](/doc/dvclive/get-started#metrics-logs) generated for `metric_1`
 would be:
 
