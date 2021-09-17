@@ -1,5 +1,5 @@
 ---
-name: Batuhan Taskay
+name: Batuhan Taskaya
 avatar: batuhan_taskaya.png
 links:
   - https://twitter.com/isidentical
