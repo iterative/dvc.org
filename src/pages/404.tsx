@@ -3,6 +3,8 @@ import React from 'react'
 import NotFound from '../components/NotFound'
 import SEO from '../components/SEO'
 
+// tbd comment
+
 const NotFoundPage: React.FC = () => (
   <>
     <SEO
