@@ -71,48 +71,88 @@
   ],
   "events": [
     {
-      "url": "https://www.meetup.com/DVC-Community-Virtual-Meetups/events/279446210/",
-      "title": "DVC Learn Meetup - Sharing Experiments",
-      "description": "At this third session of DVC Learn, you will learn how to set up remote storage and share experiments with team members.",
+      "url": "https://www.meetup.com/DVC-Community-Virtual-Meetups/events/280814318/",
+      "title": "DVC Learn Meetup - Getting Started with Data Version Control",
+      "description": "At this first session of DVC Learn, you will learn the about the importance of reporducibility and how to get started using DVC.",
       "city": "Virtual",
-      "date": "2021-08-18",
+      "date": "2021-10-06",
       "pictureUrl": "/img/community/events/dvc_learn.png"
     },
     {
-      "url": "https://www.meetup.com/DVC-Community-Virtual-Meetups/events/279723437/",
-      "title": "DVC August Office Hours Meetup",
-      "description": "At this month's Office Hours, Community member, Antoine Toubhans, presents DVC + Streamlit = ♥",
+      "url": "https://mlsummit.ai/program/",
+      "title": "ML Summit Berlin",
+      "description": "Milecia McGregor will present Using Reproducible Experiments to Create Better Models with DVC",
       "city": "Virtual",
-      "date": "2021-08-19",
+      "date": "2021-10-11",
+      "pictureUrl": "/img/community/events/MLSummit.png"
+    },
+    {
+      "url": "https://www.meetup.com/DVC-Community-Virtual-Meetups/events/280809274/",
+      "title": "DVC October Office Hours - MLOps Tool Stack and Internal Kaggle Competition!",
+      "description": "Hear from two Community members on how they use DVC and CML - one with geo-spatial data projects and the other creating an internal Kaggle competition for solving fraud detection problems",
+      "city": "Virtual",
+      "date": "2021-10-14",
       "pictureUrl": "/img/community/events/office-hours-meetup.png"
     },
     {
-      "url": "https://www.musiccitytech.com/",
-      "title": "Music City Tech Conference",
-      "description": "Milecia McGregor presents Tuning Hyperparameters in Reproducible Experiments using grid search and random search with DVC.",
+      "url": "https://2021.allthingsopen.org/",
+      "title": "All Things Open Conference",
+      "description": "Milecia McGregor presents Using Reproducible Experiements to Create Better Models with DVC.",
       "city": "Virtual",
-      "date": "2021-09-15",
-      "pictureUrl": "/img/community/events/music_city_tech.png"
+      "date": "2021-10-19",
+      "pictureUrl": "/img/community/events/atoblack.png"
     },
     {
-      "url": "https://www.dataconla.com/",
-      "title": "DataCon LA Conference",
-      "description": "Milecia McGregor presents Tuning Hyperparameters in Reproducible Experiments using grid search and random search with DVC.",
+      "url": "https://www.meetup.com/DVC-Community-Virtual-Meetups/events/280814318/",
+      "title": "DVC Learn Meetup - Getting Started - Experiments",
+      "description": "In this second lesson, you will learn all about getting started with DVC Experiments.  Join us to learn and meet others learning DVC.",
       "city": "Virtual",
-      "date": "2021-09-17",
-      "pictureUrl": "/img/community/events/datacon_la.png"
+      "date": "2021-10-20",
+      "pictureUrl": "/img/community/events/dvc_learn.png"
     },
     {
-      "url": "https://devopsdays.org/events/2021-houston/welcome/",
-      "title": "DevOps Days Houston",
-      "description": "Milecia McGregor presents on Tuning Hyperparameters in Reproducible Experiments using grid search and random search with DVC.",
-      "city": "Live",
-      "date": "2021-09-21",
-      "pictureUrl": "/img/community/events/devops_days_Houston.png"
+      "url": "https://www.scale.bythebay.io/",
+      "title": "Scale by the Bay",
+      "description": "Milecia McGregor will present at Scale by the Bay Conference on Using Reproducible Experiments to Create Better Models",
+      "city": "Virtual",
+      "date": "2021-10-28",
+      "pictureUrl": "/img/community/events/bay.png"
+    },
+    {
+      "url": "https://pydata.org/global2021/",
+      "title": "PyData Global",
+      "description": "Milecia McGregor presents on Using Reproducible Experiments to Create Better Machine Learning Models",
+      "city": "Virtual",
+      "date": "2021-10-29",
+      "pictureUrl": "/img/community/events/pydata-global.png"
+    },
+    {
+      "url": "https://www.meetup.com/DVC-Community-Virtual-Meetups/events/280814351/",
+      "title": "DVC Learn Meetup - Getting Started - Sharing Experiments",
+      "description": "In this final lesson, you will learn all about how to get started sharing experiments with your team.  Join us to learn and meet others learning DVC.",
+      "city": "Virtual",
+      "date": "2021-11-03",
+      "pictureUrl": "/img/community/events/dvc_learn.png"
+    },
+    {
+      "url": "https://odsc.com/california/",
+      "title": "ODSC West",
+      "description": "Milecia McGregor will present at ODSC West on Using Reproducible Experiments to Create Better Models.",
+      "city": "Virtual",
+      "date": "2021-11-03",
+      "pictureUrl": "/img/community/events/odscblack.png"
+    },
+    {
+      "url": "https://it-nonstop.net/speakers/milecia-mcgregor/",
+      "title": "DataArt IT NonStop Conference",
+      "description": "Milecia McGregor will present on Tuning Hyperparameters with Reproducible Experiments.",
+      "city": "Virtual",
+      "date": "2021-11-18",
+      "pictureUrl": "/img/community/events/it-nonstop.png"
     }
   ],
   "stats": {
-    "users": "5500+",
+    "users": "5900+",
     "messages": "1800+"
   }
 }
