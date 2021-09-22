@@ -3,7 +3,7 @@ import React from 'react'
 import SocialIcon from '../../../SocialIcon'
 import { ISocialIconProps } from '../../../SocialIcon'
 
-import styles from './styles.module.css'
+import * as styles from './styles.module.css'
 
 const socialIconData: Array<ISocialIconProps> = [
   {

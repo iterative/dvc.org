@@ -9,8 +9,8 @@ import Tutorials from '../TutorialsLinks'
 import { getScrollPosition, getHeaderHeight } from '../../../utils/front/scroll'
 import { allImagesLoadedInContainer } from '../../../utils/front/images'
 
-import sharedStyles from '../styles.module.css'
-import styles from './styles.module.css'
+import * as sharedStyles from '../styles.module.css'
+import * as styles from './styles.module.css'
 
 interface IRightPanelProps {
   headings: Array<IHeading>

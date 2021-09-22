@@ -3,7 +3,7 @@ import { nanoid } from 'nanoid'
 
 import { logEvent } from '../../../utils/front/ga'
 
-import styles from './styles.module.css'
+import * as styles from './styles.module.css'
 
 const Form: React.FC = () => {
   const hiddenInputRef = useRef<HTMLInputElement>(null)

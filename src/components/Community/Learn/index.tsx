@@ -15,8 +15,8 @@ import { useCommunityData } from '../../../utils/front/community'
 import getPosts from '../../../queries/posts'
 import { pluralizeComments } from '../../../utils/front/i18n'
 
-import sharedStyles from '../styles.module.css'
-import styles from './styles.module.css'
+import * as sharedStyles from '../styles.module.css'
+import * as styles from './styles.module.css'
 
 const docsPage = getFirstPage()
 

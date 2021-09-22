@@ -10,7 +10,7 @@ import { ReactComponent as LogoSVG } from '../../../static/img/logo-white.svg'
 import { ReactComponent as TwitterIcon } from '../SocialIcon/twitter.svg'
 import { ReactComponent as GithubIcon } from '../SocialIcon/github.svg'
 
-import styles from './styles.module.css'
+import * as styles from './styles.module.css'
 
 const docsPage = getFirstPage()
 

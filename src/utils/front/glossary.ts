@@ -9,17 +9,25 @@ interface IGlossary {
   contents: Array<IGlossaryEntry>
 }
 
-const useGlossary = (): IGlossary =>
-  useStaticQuery(graphql`
+const useGlossary = (): IGlossary => {
+  const data = useStaticQuery(graphql`
     query GlossaryEntries {
       allGlossaryEntry {
-        contents: nodes {
-          desc: tooltip
+        nodes {
+          tooltip
           name
           match
         }
       }
     }
-  `).allGlossaryEntry
-
+  `)
+  return {
+    contents: data.allGlossaryEntry.nodes.map(
+      (node: { name: string; tooltip: string; match: Array<string> }) => ({
+        ...node,
+        desc: node.tooltip
+      })
+    )
+  }
+}
 export default useGlossary
