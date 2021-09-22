@@ -79,7 +79,35 @@ $ dvc exp run --all-pipelines
 > Note that the order in which pipelines are executed is not guaranteed; Only
 > the internal order of stage execution is.
 
-### Interactive reproduction
+### Running pipelines recursively
+
+DVC supports pipelines defined in more than one `dvc.yaml` file. These can
+reside in nested folders and you may want to run all these in a single command.
+
+```
+$ tree
+.
+├── dir
+│   ├── deeper-dir
+│   │   └── dvc.yaml
+│   ├── dvc.lock
+│   └── dvc.yaml
+├── dvc.lock
+└── dvc.yaml
+```
+
+In this example, if you want to run the pipelines defined in `dir/dvc.yaml` and
+`dir/deeper-dir/dvc.yaml` in a single command, you can issue:
+
+```dvc
+$ dvc exp run --recursive dir/
+```
+
+It will run all the pipelines under `dir/`. You may also use `.` as a directory,
+so `dvc exp run -R .` to run all the pipelines recursively, starting from the
+current directory.
+
+### Running stages interactively
 
 When you want to have more granular control over which stages are run, you can
 use the `--interactive` option. This flag allows you to confirm each stage
