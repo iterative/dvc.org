@@ -54,3 +54,46 @@ DVC will take care of the artifacts added to DVC cache, and the rest (params,
 code, text files) will be pushed the Git repository.
 
 ## Create a Git branch for your experiment
+
+You may desire to keep the experiments in their separate Git branches. You can
+use `dvc exp branch` to create a new branch from the experiment and keep all
+code and artifacts in a new branch.
+
+```dvc
+$ dvc exp show --include-params=my_param
+```
+
+```dvctable
+┏━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━┓
+┃ Experiment            ┃ Created      ┃     auc ┃ my_param   ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━┩
+│ workspace             │ -            │ 0.61314 │ 3          │
+│ experiments-tag       │ Oct 19, 2020 │ 0.61314 │ 3          │
+│ ├── exp-e6c97         │ Oct 20, 2020 │ 0.69830 │ 2          │
+│ └── exp-1df77         │ Oct 22, 2020 │ 0.51676 │ 1          │
+└───────────────────────┴──────────────┴─────────┴────────────┘
+```
+
+Suppose you want to continue to work on `exp-e6c97` in a separate branch. You
+give a new name to this branch and create a new branch with it.
+
+```dvc
+$ dvc exp branch exp-e6c97 my-successful-experiment
+Git branch 'my-successful-experiment' has been created from experiment 'exp-e6c97'.
+To switch to the new branch run:
+        git checkout my-successful-experiment
+```
+
+Note that DVC doesn't checkout the new branch. You can create as many branches
+from the experiments, and checkout them manually by:
+
+```dvc
+$ git checkout my-successful-experiment
+```
+
+Your workspace now contains the files from the experiment. To update the DVC
+tracked files, you may need to checkout from the cache.
+
+```dvc
+$ dvc checkout
+```
