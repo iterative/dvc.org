@@ -25,8 +25,3 @@ you can do with `dvc experiments`:
 - Reproduce any experiment in other environments or in the future if needed.
 - Discard project variations that are no longer useful, either individually or
   in bulk.
-- Select the experiments that you want to preserve as regular project versions
-  (Git commits).
-
-Except for the last action, at no point do you need to worry about the
-underlying versioning layer (Git).
