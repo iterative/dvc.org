@@ -3,7 +3,7 @@ import React, { useState, useCallback } from 'react'
 import TwoRowsButton from '../../../TwoRowsButton'
 import { logEvent } from '../../../../utils/front/ga'
 
-import * as styles from './styles.module.css'
+import styles from './styles.module.css'
 
 const Video: React.FC<{ id: string }> = ({ id }) => {
   const [isWatching, setWatching] = useState(false)

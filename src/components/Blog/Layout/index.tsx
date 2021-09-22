@@ -2,7 +2,7 @@ import React from 'react'
 import SEO from '../../SEO'
 import MainLayout, { LayoutComponent } from '../../MainLayout'
 
-import * as styles from './styles.module.css'
+import styles from './styles.module.css'
 
 const keywords =
   'git, data, version control, machine learning models management, datasets'

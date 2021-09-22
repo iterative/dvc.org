@@ -1,4 +1,4 @@
-import { GatsbyImage } from 'gatsby-plugin-image'
+import Image from 'gatsby-image'
 import React from 'react'
 
 import { BLOG } from '../../../../consts'
@@ -7,7 +7,7 @@ import {
   IGatsbyImageProps
 } from '../../../../templates/blog-post'
 
-import * as styles from './styles.module.css'
+import styles from './styles.module.css'
 
 const NonStretchedImage: React.FC<IGatsbyImageProps> = props => {
   let normalizedProps = props
@@ -26,14 +26,14 @@ const NonStretchedImage: React.FC<IGatsbyImageProps> = props => {
       }
     }
   }
-  return <GatsbyImage {...normalizedProps} />
+  return <Image {...normalizedProps} />
 }
 
 const HeroPic: React.FC<IBlogPostHeroPic> = ({ pictureComment, picture }) => {
   return (
     <div className={styles.pictureWrapper}>
       <div className={styles.picture}>
-        <NonStretchedImage image={picture.gatsbyImageData} />
+        <NonStretchedImage fluid={picture?.fluid} />
       </div>
       {pictureComment && (
         <div

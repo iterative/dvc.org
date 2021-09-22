@@ -5,7 +5,7 @@ import LayoutHeader from '../LayoutHeader'
 import LayoutFooter from '../LayoutFooter'
 import { handleFirstTab } from '../../utils/front/accessibility'
 
-import * as styles from './styles.module.css'
+import styles from './styles.module.css'
 
 export enum LayoutModifiers {
   Wide,
@@ -52,10 +52,7 @@ const MainLayout: LayoutComponent = ({
   return (
     <>
       <LayoutHeader modifiers={modifiers} />
-      <div
-        id="layoutContent"
-        //  className={styles.pageContent}
-      >
+      <div id="layoutContent" className={styles.pageContent}>
         {children}
       </div>
       <LayoutFooter />

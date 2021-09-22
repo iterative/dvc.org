@@ -4,7 +4,7 @@ import { useLocation } from '@reach/router'
 import { handleFrontRedirect } from '../../utils/shared/redirects'
 import { scrollIntoLayout, getScrollNode } from '../../utils/front/scroll'
 
-import * as styles from './styles.module.css'
+import styles from './styles.module.css'
 
 export const useAnchorNavigation = (): void => {
   const location = useLocation()

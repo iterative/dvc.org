@@ -16,8 +16,8 @@ import {
 } from '../../../utils/front/api'
 
 import { useCommunityData } from '../../../utils/front/community'
-import * as sharedStyles from '../styles.module.css'
-import * as styles from './styles.module.css'
+import sharedStyles from '../styles.module.css'
+import styles from './styles.module.css'
 
 const logIssueAll = (): void => logEvent('community', 'issue', 'all')
 const logTopicAll = (): void => logEvent('community', 'topic', 'all')
@@ -84,9 +84,7 @@ const Issue: React.FC<{ color: string } & IGithubIssue> = ({
       >
         {title}
       </Link>
-      <div
-      // className={styles.meta}
-      >
+      <div className={styles.meta}>
         <Link
           className={sharedStyles.commentsLink}
           href={url}

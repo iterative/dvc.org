@@ -6,7 +6,7 @@ import Link from '../../Link'
 import { useCommunityData } from '../../../utils/front/community'
 import { logEvent } from '../../../utils/front/ga'
 
-import * as styles from './styles.module.css'
+import styles from './styles.module.css'
 
 const logHero = (): void => logEvent('community', 'hero')
 

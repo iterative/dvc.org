@@ -8,7 +8,7 @@ import { ReactComponent as Facebook } from './icons/facebook.svg'
 import { ReactComponent as Subscribe } from './icons/subscribe.svg'
 import { ReactComponent as Twitter } from './icons/twitter.svg'
 
-import * as styles from './styles.module.css'
+import styles from './styles.module.css'
 
 function openWindow(e: React.MouseEvent, href: string): void {
   e.preventDefault()

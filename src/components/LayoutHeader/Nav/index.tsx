@@ -6,7 +6,7 @@ import LinkItems from './LinkItems'
 
 import { logEvent } from '../../../utils/front/ga'
 
-import * as styles from './styles.module.css'
+import styles from './styles.module.css'
 
 const Nav: React.FC = () => (
   <div className={styles.wrapper}>

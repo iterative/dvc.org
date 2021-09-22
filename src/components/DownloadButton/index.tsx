@@ -7,9 +7,9 @@ import Link from '../Link'
 import isClient from '../../utils/front/isClient'
 import { logEvent } from '../../utils/front/ga'
 
-import * as styles from './styles.module.css'
+import styles from './styles.module.css'
 
-const VERSION = `2.7.0`
+const VERSION = `2.7.4`
 
 enum OS {
   UNKNOWN = '...',
@@ -81,9 +81,7 @@ const getUserOS = (): OS => {
 const DownloadButtonDropdownItems: React.FC<IDownloadButtonDropdownItemsProps> =
   ({ onClick, userOS }) => {
     return (
-      <div
-      // className={styles.links}
-      >
+      <div className={styles.links}>
         {dropdownItems.map((os, index) => {
           if (os === null) {
             return (

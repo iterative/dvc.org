@@ -1,6 +1,6 @@
+import { FixedObject, FluidObject, GatsbyImageProps } from 'gatsby-image'
+
 import { graphql } from 'gatsby'
-import { FluidObject, GatsbyImageProps } from 'gatsby-image'
-import { getSrc, IGatsbyImageData } from 'gatsby-plugin-image'
 import React from 'react'
 
 import SEO from '../components/SEO'
@@ -45,7 +45,7 @@ export interface IBlogPostData {
   author: {
     name: string
     avatar: {
-      gatsbyImageData: IGatsbyImageData
+      fixed: FixedObject
     }
     links: Array<ISocialIcon>
   }
@@ -60,12 +60,13 @@ interface IBlogPostPageProps {
 const BlogPostPage: React.FC<IBlogPostPageProps> = ({ data }) => {
   const post = data.blogPost
   const { title, description, picture } = post
+
   return (
     <>
       <SEO
         title={title}
         description={description}
-        image={picture && getSrc(picture)}
+        image={picture && picture.fluid}
       />
       <Post {...post} />
     </>
@@ -94,16 +95,15 @@ export const pageQuery = graphql`
           site
         }
         avatar {
-          gatsbyImageData(
-            width: 40
-            height: 40
-            transformOptions: { cropFocus: CENTER }
-            layout: FIXED
-          )
+          fixed(width: 40, height: 40, quality: 50, cropFocus: CENTER) {
+            ...GatsbyImageSharpFixed_withWebp
+          }
         }
       }
       picture {
-        gatsbyImageData(width: 850, quality: 90)
+        fluid(maxWidth: 850, quality: 90) {
+          ...GatsbyImageSharpFluid_withWebp
+        }
       }
       pictureComment
     }

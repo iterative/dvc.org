@@ -69,6 +69,7 @@ const SEO: React.FC<ISEOProps> = ({
   }
 
   if (keywords) {
+    console.log(keywords)
     prebuildMeta.push({
       name: 'keywords',
       content: keywords

@@ -9,7 +9,7 @@ import Contribute from './Contribute'
 import Learn from './Learn'
 import Events from './Events'
 
-import * as styles from './styles.module.css'
+import styles from './styles.module.css'
 
 const themes = {
   green: { backgroundColor: '#C2E6EE', color: '#13ADC7' },

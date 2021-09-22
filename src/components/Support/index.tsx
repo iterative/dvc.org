@@ -9,7 +9,7 @@ import PromoSection from '../PromoSection'
 import Link from '../Link'
 import Popover from './Popover'
 
-import * as styles from './styles.module.css'
+import styles from './styles.module.css'
 
 const SupportPage: React.FC = () => (
   <>

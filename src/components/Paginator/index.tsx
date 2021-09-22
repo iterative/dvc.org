@@ -11,7 +11,7 @@ import {
 
 import { ReactComponent as ArrowSVG } from './arrow.svg'
 
-import * as styles from './styles.module.css'
+import styles from './styles.module.css'
 
 export interface IPaginatorPageInfo {
   currentPage: number

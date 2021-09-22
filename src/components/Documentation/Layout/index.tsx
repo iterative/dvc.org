@@ -9,7 +9,7 @@ import SidebarMenu from './SidebarMenu'
 import { matchMedia } from '../../../utils/front/breakpoints'
 import { focusElementWithHotkey } from '../../../utils/front/focusElementWithHotkey'
 
-import * as styles from './styles.module.css'
+import styles from './styles.module.css'
 import { useWindowSize } from 'react-use'
 
 const Layout: LayoutComponent = ({ children, ...restProps }) => {

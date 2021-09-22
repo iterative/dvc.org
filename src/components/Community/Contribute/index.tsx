@@ -8,7 +8,7 @@ import CommunitySection from '../Section'
 import { logEvent } from '../../../utils/front/ga'
 
 import { useCommunityData } from '../../../utils/front/community'
-import * as sharedStyles from '../styles.module.css'
+import sharedStyles from '../styles.module.css'
 
 const logPR = (): void => logEvent('community', 'contribute-pr')
 const logBlogpost = (): void => logEvent('community', 'contribute-blogpost')

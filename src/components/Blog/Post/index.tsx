@@ -18,7 +18,7 @@ import Share from './Share'
 import PageContent from '../../PageContent'
 import SubscribeSection from '../../SubscribeSection'
 
-import * as styles from './styles.module.css'
+import styles from './styles.module.css'
 
 const Post: React.FC<IBlogPostData> = ({
   html,

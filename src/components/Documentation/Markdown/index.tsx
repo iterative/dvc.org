@@ -6,7 +6,7 @@ import Main from './Main'
 import Link from '../../Link'
 import Tooltip from './Tooltip'
 
-import * as styles from './styles.module.css'
+import styles from './styles.module.css'
 
 const Details: React.FC<{
   children: Array<{ props: { children: ReactNode } } | string>

@@ -8,7 +8,7 @@ import Link from '../../Link'
 
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
-import * as styles from './styles.module.css'
+import styles from './styles.module.css'
 
 const LearnMore: React.FC<{ href: string }> = ({ href }) => (
   <div className={styles.learnMoreContainer}>

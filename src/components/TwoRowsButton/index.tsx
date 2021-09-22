@@ -1,7 +1,7 @@
 import React from 'react'
 import cn from 'classnames'
 
-import * as styles from './styles.module.css'
+import styles from './styles.module.css'
 
 type ITwoRowsButtonProps = {
   mode: 'azure' | 'purple' | 'outline'

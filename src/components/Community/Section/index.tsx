@@ -7,7 +7,7 @@ import { useWindowSize } from 'react-use'
 import { isTriggeredFromKB } from '../../../utils/front/keyboard'
 import { screens } from '../../../../config/postcss/media'
 
-import * as styles from './styles.module.css'
+import styles from './styles.module.css'
 
 export interface ICommunitySection {
   anchor: string

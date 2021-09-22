@@ -3,7 +3,7 @@ import cn from 'classnames'
 
 import LayoutWidthContainer from '../LayoutWidthContainer'
 
-import * as styles from './styles.module.css'
+import styles from './styles.module.css'
 
 interface IPromoSectionProps {
   title: string

@@ -6,7 +6,7 @@ import { logEvent } from '../../../../utils/front/ga'
 
 import { ReactComponent as ExternalLinkIcon } from '../../../../../static/img/external-link-icon.svg'
 
-import * as styles from './styles.module.css'
+import styles from './styles.module.css'
 
 interface IOtherToolsLinkData {
   href: string

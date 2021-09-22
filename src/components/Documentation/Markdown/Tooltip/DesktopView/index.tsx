@@ -4,7 +4,7 @@ import Portal from '@reach/portal'
 import throttle from 'lodash/throttle'
 
 import { getHeaderHeight } from '../../../../../utils/front/scroll'
-import * as styles from './styles.module.css'
+import styles from './styles.module.css'
 
 interface IDesktopViewProps {
   description: string

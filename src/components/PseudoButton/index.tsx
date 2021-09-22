@@ -3,7 +3,7 @@ import React from 'react'
 
 import Link, { ILinkProps } from '../Link'
 
-import * as styles from './styles.module.css'
+import styles from './styles.module.css'
 
 type IPseudoButtonProps = {
   children: React.ReactNode

@@ -2,7 +2,7 @@ import React from 'react'
 import Link from '../../../Link'
 import useStars from '../../../../gatsby/hooks/stars'
 
-import * as styles from './styles.module.css'
+import styles from './styles.module.css'
 
 const GithubLine: React.FC = () => {
   const stars = useStars()
@@ -15,9 +15,7 @@ const GithubLine: React.FC = () => {
         GitHub
       </Link>
       {stars && (
-        <span
-        //  className={styles.starCount}
-        >
+        <span className={styles.starCount}>
           <img className={styles.starIcon} src="/img/star_small.svg" alt="" />
           <span className={styles.count}>{stars}</span>
         </span>

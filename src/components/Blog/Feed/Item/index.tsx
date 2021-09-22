@@ -2,13 +2,13 @@ import React, { useEffect, useRef } from 'react'
 import { useRafState, useWindowSize } from 'react-use'
 import { graphql } from 'gatsby'
 import Link from '../../../Link'
-import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image'
+import Image, { FixedObject, FluidObject } from 'gatsby-image'
 import cn from 'classnames'
 import { ISocialIcon } from '../../../SocialIcon'
 
 import FeedMeta from '../../FeedMeta'
 
-import * as styles from './styles.module.css'
+import styles from './styles.module.css'
 
 import { ReactComponent as Placeholder } from './placeholder.svg'
 
@@ -21,13 +21,13 @@ export interface IBlogPostData {
   description: string
   descriptionLong: string
   picture?: {
-    big: IGatsbyImageData
-    small: IGatsbyImageData
+    big: FluidObject
+    small: FluidObject
   }
   author: {
     name: string
     avatar: {
-      gatsbyImageData: IGatsbyImageData
+      fixed: FixedObject
     }
     links: Array<ISocialIcon>
   }
@@ -66,8 +66,8 @@ const Item: React.FC<IBlogFeedItemProps> = ({
       )}
     >
       <Link href={slug} className={styles.pictureLink}>
-        {image ? (
-          <GatsbyImage alt="" image={image} className={styles.picture} />
+        {picture ? (
+          <Image fluid={image} className={styles.picture} />
         ) : (
           <Placeholder className={styles.picture} />
         )}
@@ -104,16 +104,22 @@ export const query = graphql`
     description
     descriptionLong
     picture {
-      big: gatsbyImageData(
-        width: 650
-        height: 450
-        transformOptions: { cropFocus: CENTER }
-      )
-      small: gatsbyImageData(
-        width: 300
-        height: 250
-        transformOptions: { cropFocus: CENTER }
-      )
+      big: fluid(
+        maxWidth: 650
+        maxHeight: 450
+        cropFocus: CENTER
+        quality: 90
+      ) {
+        ...GatsbyImageSharpFluid_withWebp
+      }
+      small: fluid(
+        maxWidth: 300
+        maxHeight: 250
+        cropFocus: CENTER
+        quality: 90
+      ) {
+        ...GatsbyImageSharpFluid_withWebp
+      }
     }
     author {
       name
@@ -122,12 +128,9 @@ export const query = graphql`
         site
       }
       avatar {
-        gatsbyImageData(
-          width: 40
-          height: 40
-          transformOptions: { cropFocus: CENTER }
-          layout: FIXED
-        )
+        fixed(width: 40, height: 40, quality: 50, cropFocus: CENTER) {
+          ...GatsbyImageSharpFixed_withWebp
+        }
       }
     }
   }
