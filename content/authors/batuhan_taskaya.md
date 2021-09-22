@@ -5,4 +5,4 @@ links:
   - https://twitter.com/isidentical
 ---
 
-Community Manager at [DVC](https://dvc.org)
+Software Engineer at [DVC](https://dvc.org)
