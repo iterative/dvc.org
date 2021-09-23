@@ -24,7 +24,7 @@ Some things you can do with `dvc experiments`:
 - Queue experiments for future execution, and run in parallel if needed.
 - List and compare previous experiments in a consolidated way (order and filter
   by <abbr>parameters</abbr> or <abbr>metrics</abbr>).
-- Restore experimental results instantly to continue working on that idea.
-- Reproduce any experiment in other environments or in the future if needed.
+- Restore any experiment results from the <abbr>cache</abbr>, or reproduce them
+  from source.
 - Discard project variations that are no longer useful, either individually or
   in bulk.
