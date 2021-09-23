@@ -21,8 +21,7 @@ Some things you can do with `dvc experiments`:
 
 - Automatic bookkeeping of changes to data dependencies, code, parameters,
   artifacts and metrics when you run each experiment.
-- Define one or more experiments for future execution (locally or on a remote
-  machine).
+- Queue experiments for future execution, and run in parallel if needed.
 - List and compare previous experiments in a consolidated way (order and filter
   by <abbr>parameters</abbr> or <abbr>metrics</abbr>).
 - Restore experimental results instantly to continue working on that idea.
