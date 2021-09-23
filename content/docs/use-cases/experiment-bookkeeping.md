@@ -19,8 +19,8 @@ data & ML models while capturing their provenance.
 
 Some things you can do with `dvc experiments`:
 
-- Automatic bookkeeping of all changes to the project before you run each
-  experiment.
+- Automatic bookkeeping of changes to data dependencies, code, parameters,
+  artifacts and metrics when you run each experiment.
 - Define one or more experiments for future execution (locally or on a remote
   machine).
 - List and compare previous experiments in a consolidated way (order and filter
