@@ -26,5 +26,4 @@ Some things you can do with `dvc experiments`:
   by <abbr>parameters</abbr> or <abbr>metrics</abbr>).
 - Restore any experiment results from the <abbr>cache</abbr>, or reproduce them
   from source.
-- Discard project variations that are no longer useful, either individually or
-  in bulk.
+- Save, share, or discard experiments individually or in bulk.
