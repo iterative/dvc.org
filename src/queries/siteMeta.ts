@@ -24,7 +24,6 @@ export default function siteMeta(): ISiteMeta {
       }
     `
   )
-  console.log(siteMetadata)
 
   return siteMetadata
 }
