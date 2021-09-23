@@ -1,20 +1,23 @@
 # Data Science Experiment Bookkeeping
 
 Iterating on data science implies a large number of attempts at tuning
-parameters, improving code, trying different data, and collecting metrics.
-Keeping track of all these experiments is challenging but essential, as we need
+parameters, improving code, trying different data, and collecting metrics, for
+example when optimizing a machine learning model's accuracy. Keeping track of
+all these <abbr>experiments</abbr> is challenging but essential, as we'll need
 to compare, visualize, share, and _productionize_ the results. We also want to
-be able to connect any captured metrics back to the experimental setup that
-originated them.
+be able to reconnect any metrics snapshot back to their original setup.
 
-The core of DVC lets you codify your project's
-[data pipelines](/doc/user-guide/project-structure/pipelines-files) in order to
-track and version your data and models while capturing their provenance. On top
-of that, DVC provides a layer of
-[experiment management features](/doc/user-guide/experiment-management) to take
-automatic snapshots of any relevant variations in your project. These
-<abbr>experiments</abbr> can then be handled with simple commands. Some things
-you can do with `dvc experiments`:
+DVC provides a layer of
+[experiment management](/doc/user-guide/experiment-management) features to take
+automatic snapshots of any variations in your project, and handle them with
+simple terminal commands. This is made possible by DVC's inherent codification
+of your project, which enables
+[tracking and versioning](/doc/use-cases/versioning-data-and-model-files) its
+data & ML models while capturing their provenance.
+
+![]() _Figure_
+
+Some things you can do with `dvc experiments`:
 
 - Automatic bookkeeping of all changes to the project before you run each
   experiment.
