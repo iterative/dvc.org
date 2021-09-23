@@ -8,23 +8,23 @@ interface ISiteMeta {
 }
 
 export default function siteMeta(): ISiteMeta {
-  const { allFile: nodes } = useStaticQuery(
+  const {
+    site: { siteMetadata }
+  } = useStaticQuery(
     graphql`
-      query TestQuery {
-        allFile(limit: 1) {
-          nodes {
-            absolutePath
+      query SiteMetadata {
+        site {
+          siteMetadata {
+            title
+            description
+            keywords
+            siteUrl
           }
         }
       }
     `
   )
-  console.log(nodes)
+  console.log(siteMetadata)
 
-  return {
-    title: 'title',
-    description: 'description',
-    keywords: 'keywords',
-    siteUrl: 'https://dvc.org'
-  }
+  return siteMetadata
 }
