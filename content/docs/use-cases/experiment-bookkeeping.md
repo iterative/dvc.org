@@ -19,11 +19,18 @@ data & ML models while capturing their provenance.
 
 Some things you can do with `dvc experiments`:
 
-- Automatic bookkeeping of changes to data dependencies, code, parameters,
-  artifacts and metrics when you run each experiment.
+- Automatic bookkeeping of changes to data dependencies, code,
+  <abbr>parameters</abbr>, artifacts and <abbr>metrics</abbr> when you run each
+  experiment.
 - Queue experiments for future execution, and run in parallel if needed.
 - List and compare previous experiments in a consolidated way (order and filter
-  by <abbr>parameters</abbr> or <abbr>metrics</abbr>).
+  by parameters or metrics).
 - Restore any experiment results from the <abbr>cache</abbr>, or reproduce them
   from source.
 - Save, share, or discard experiments individually or in bulk.
+
+<!-- Why DVC -->
+
+![]() _Figure_
+
+<!-- With Git? -->
