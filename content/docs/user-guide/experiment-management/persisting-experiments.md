@@ -10,18 +10,11 @@ this section we'll see how to bring them to the standard Git workflow with
 
 ## Bring Experiment results to your workspace
 
-If it's not run with `--temp` or `--queue` flags, `dvc exp run` leaves the final
-artifacts in your workspace. This is for convenience. However if there are more
-than one experiment you have run, like
-
-```dvc
-$ dvc exp run -S my_param=1
-$ dvc exp run -S my_param=2
-$ dvc exp run -S my_param=3
-```
-
-only the final experiment's results are found in the workspace. In this case,
-you may need to bring the previous experiments' results with `dvc exp apply`.
+Typically, `dvc exp run` leaves the experiment
+results in your workspace for convenience. However, you may have run
+multiple experiments and wish to go back to a specific one. In this case,
+you can restore a previous experiment's results with `dvc exp apply`.
+Let's see an example:
 
 ```dvc
 $ dvc exp show --include-params=my_param
@@ -47,7 +40,7 @@ Changes for experiment 'exp-e6c97' have been applied...
 ```
 
 Now, if you list the experiments again with `dvc exp show`, you'll see that the
-workspace contains the experiment with `my_param=2` and its `auc` metric.
+workspace contains the experiment with `my_param` of `2` and corresponding `auc` value.
 
 You can use standard Git commands to add, commit and push to a Git repository.
 DVC will take care of the artifacts added to DVC cache, and the rest (params,
