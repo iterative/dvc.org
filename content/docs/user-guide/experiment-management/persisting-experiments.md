@@ -10,11 +10,10 @@ this section we'll see how to bring them to the standard Git workflow with
 
 ## Bring Experiment results to your workspace
 
-Typically, `dvc exp run` leaves the experiment
-results in your workspace for convenience. However, you may have run
-multiple experiments and wish to go back to a specific one. In this case,
-you can restore a previous experiment's results with `dvc exp apply`.
-Let's see an example:
+Typically, `dvc exp run` leaves the experiment results in your workspace for
+convenience. However, you may have run multiple experiments and wish to go back
+to a specific one. In this case, you can restore a previous experiment's results
+with `dvc exp apply`. Let's see an example:
 
 ```dvc
 $ dvc exp show --include-params=my_param
@@ -40,12 +39,13 @@ Changes for experiment 'exp-e6c97' have been applied...
 ```
 
 Now, if you list the experiments again with `dvc exp show`, you'll see that the
-workspace contains the experiment with `my_param` of `2` and corresponding `auc` value.
+workspace contains the experiment with `my_param` of `2` and corresponding `auc`
+value.
 
-You can now use standard Git commands (e.g. `git add/commit/push`)
-to version this experiment directly in the <abbr>repository</abbr>.
-DVC-tracked data and artifacts are already in the DVC cache, and the rest (params,
-code and config files, etc.) can be stored in Git.
+You can now use standard Git commands (e.g. `git add/commit/push`) to version
+this experiment directly in the <abbr>repository</abbr>. DVC-tracked data and
+artifacts are already in the DVC cache, and the rest (params, code and config
+files, etc.) can be stored in Git.
 
 ## Create a Git branch for your experiment
 
