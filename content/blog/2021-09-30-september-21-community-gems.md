@@ -88,7 +88,7 @@ this. Use `git init` and `dvc init` in the project folders and then you can pull
 them down, modify, commit and push commit back.
 
 This is the most seure way to handle this use case, but you have another option.
-You can `dvc pull` from the sub-directory, then make your changes in the
+You can `dvc pull -R` from the sub-directory, then make your changes in the
 sub-directory, and `dvc add` the changes. Then you can do a `git commit` and
 `dvc push` to manage those changes.
 
