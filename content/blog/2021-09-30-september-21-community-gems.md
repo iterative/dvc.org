@@ -53,8 +53,9 @@ Thanks for bringing this up @mattlbeck!
 Right now DVC just uses whichever remote is configured in a respective commit
 that you've checked out.
 
-To clarify things a bit more, if you run `dvc push/pull` in a workspace with new
-a remote, that new remote will be used for `-a`, `-T`, and `--all-commits`.
+To clarify things a bit more, if you run `dvc push/pull` in a workspace with a
+new remote, that new remote will be used for `--all-branches`, `--all-tags`,
+and `--all-commits`.
 
 ### [Is there a command to execute only a few specific stages in a DVC pipeline?](https://discord.com/channels/485586884165107732/485596304961962003/888054401640562698)
 
