@@ -33,10 +33,10 @@ remotes.
 ## Getting the project
 
 To follow along, you can fork
-[this repo](https://github.com/iterative/dvc-learn-project) as one of your own
-GitHub repos. That way you'll have push and pull access when we start working
-with DVC. You do need to run the following command to be able to use the DVC
-CLI.
+[this repo](https://github.com/iterative/example-dvc-experiments) as one of your
+own GitHub repos. That way you'll have push and pull access when we start
+working with DVC. You do need to run the following command to be able to use the
+DVC CLI.
 
 ```dvc
 dvc init
@@ -58,10 +58,6 @@ That's one of the uses for DVC and why we'll be working with remotes. To start
 with, make sure your GitHub remote is configured correctly. It should use the
 SSH version of the URL. This is so DVC can authenticate the pushes and pulls
 from GitHub it needs as part of experiment sharing.
-
-_We do have HTTPS support coming. You can follow our progress in
-[this GitHub issue](https://github.com/iterative/dvc/pull/6493) and add your own
-feedback._
 
 The way DVC works is by storing custom Git refs in your repo with metadata that
 defines the experiment. You can learn more about how DVC uses custom Git refs in
@@ -146,9 +142,10 @@ dvc exp push origin exp-p4202
 ```
 
 This will push the custom Git refs to your repo and it will push any artifacts,
-like your data or model output, to the DVC remote location. Now you can easily
-share your work with other engineers to get feedback faster and finish projects
-sooner.
+like your data or model output, to the DVC remote location. If you have
+checkpoints enabled, it will also push the checkpoints of an experiment. Now you
+can easily share your work with other engineers to get feedback faster and
+finish projects sooner.
 
 ## Conclusion
 
