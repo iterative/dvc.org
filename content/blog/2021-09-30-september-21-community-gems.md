@@ -54,8 +54,8 @@ Right now DVC just uses whichever remote is configured in a respective commit
 that you've checked out.
 
 To clarify things a bit more, if you run `dvc push/pull` in a workspace with a
-new remote, that new remote will be used for `--all-branches`, `--all-tags`,
-and `--all-commits`.
+new remote, that new remote will be used for `--all-branches`, `--all-tags`, and
+`--all-commits`.
 
 ### [Is there a command to execute only a few specific stages in a DVC pipeline?](https://discord.com/channels/485586884165107732/485596304961962003/888054401640562698)
 
@@ -83,34 +83,34 @@ for more details.
 
 ### [When working with a data registry, is it possible to pull a specific project folder, modify it, then push Git changes and `dvc push` to the remote storage without pulling data from all the directories?](https://discord.com/channels/485586884165107732/485596304961962003/887427010044002345)
 
-This is definitely possible. You can use a Git sub-repo and a DVC sub-repo to do
-this. Use `git init` and `dvc init` in the project folders and then you can pull
-them down, modify, commit and push commit back.
+This is definitely possible. A common way to handle this use case, but you have
+another option. You can `dvc pull -R` from the sub-directory, then make your
+changes in the sub-directory, and `dvc add` the changes. Then you can do a
+`git commit` and `dvc push` to manage those changes.
 
-This is the most seure way to handle this use case, but you have another option.
-You can `dvc pull -R` from the sub-directory, then make your changes in the
-sub-directory, and `dvc add` the changes. Then you can do a `git commit` and
-`dvc push` to manage those changes.
+You can also use a Git sub-repo and a DVC sub-repo to do this if each folder has
+a distinct project. Use `git init` and `dvc init` in the project folders and
+then you can pull them down, modify, commit and push commit back.
 
 Really good question @ross.tsenov!
 
-### [Is it possible to auto-generate reports with metrics and plots when the data is stored in an AWS bucket instead of GitHub?](https://discord.com/channels/485586884165107732/728693131557732403/877072469188575262)
+### [Is it possible to auto-generate reports with metrics and plots by running DVC in a CML job?](https://discord.com/channels/485586884165107732/728693131557732403/877072469188575262)
 
 Thanks for asking @Masmoudi!
 
-If the metrics and plots are not being stored in S3, then you may be able to
-generate your reports with GitHub Actions and use `cml-publish` and
-`cml-send-comment` to post them to GitHub.
-
 When you need to retrieve data, you can run `dvc pull` to get it from the S3
 bucket. If you run into an error with this, try adding
-`uses: iterative/setup-dvc@v1` to the `dvc pull` command.
+`uses: iterative/setup-dvc@v1` to the `dvc pull` command. This could happen
+because the default CML action doesn't install DVC.
+
+If you want more details on how CML works in GitHub, check out
+[the docs](https://cml.dev/doc/start/github#the-cml-github-action)!
 
 ### [What mechanism can I use in GitLab to trigger a CI pipeline periodically so that models get re-trained and logged to DVC automatically?](https://discord.com/channels/485586884165107732/728693131557732403/887306645883990037)
 
-You can use [pipeline
-schedules](https://docs.gitlab.com/ee/ci/pipelines/schedules.html) to train your
-model periodically and `dvc push` the results.
+You can use
+[pipeline schedules](https://docs.gitlab.com/ee/ci/pipelines/schedules.html) to
+train your model periodically and `dvc push` the results.
 
 Good question @mihaj!
 
