@@ -30,8 +30,8 @@ $ dvc exp show --include-params=my_param
 └───────────────────────┴──────────────┴─────────┴────────────┘
 ```
 
-Here, the results found in the workspace in the respective row. When you want to
-bring another experiment from the listed experiments, you can do so with:
+The results found in the workspace can be found in the respective row. When you want to
+bring another experiment to the workspace, you can refer to it using it's name or ID, e.g.:
 
 ```dvc
 $ dvc exp apply exp-e6c97
@@ -51,7 +51,7 @@ files, etc.) can be stored in Git.
 
 You may desire to keep the experiments in their separate Git branches. You can
 use `dvc exp branch` to create a new branch from the experiment and keep all
-code and artifacts in a new branch.
+code and artifacts separate from your current one.
 
 ```dvc
 $ dvc exp show --include-params=my_param
@@ -69,7 +69,7 @@ $ dvc exp show --include-params=my_param
 ```
 
 Suppose you want to continue to work on `exp-e6c97` in a separate branch. You
-give a new name to this branch and create a new branch with it.
+can create a new Git branch by specifying the experiment and giving a new name for it:
 
 ```dvc
 $ dvc exp branch exp-e6c97 my-successful-experiment
@@ -78,16 +78,12 @@ To switch to the new branch run:
         git checkout my-successful-experiment
 ```
 
-Note that DVC doesn't checkout the new branch. You can create as many branches
-from the experiments, and checkout them manually by:
+Note that DVC doesn't checkout the new branch. You can one or more branches
+from existing experiments, and switch into any one manually like this:
 
 ```dvc
 $ git checkout my-successful-experiment
-```
-
-Your workspace now contains the files from the experiment. To update the DVC
-tracked files, you may need to checkout from the cache.
-
-```dvc
 $ dvc checkout
 ```
+
+Your workspace now contains all the files from the experiment.
