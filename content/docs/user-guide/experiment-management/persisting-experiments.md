@@ -42,9 +42,10 @@ Changes for experiment 'exp-e6c97' have been applied...
 Now, if you list the experiments again with `dvc exp show`, you'll see that the
 workspace contains the experiment with `my_param` of `2` and corresponding `auc` value.
 
-You can use standard Git commands to add, commit and push to a Git repository.
-DVC will take care of the artifacts added to DVC cache, and the rest (params,
-code, text files) will be pushed the Git repository.
+You can now use standard Git commands (e.g. `git add/commit/push`)
+to version this experiment directly in the <abbr>repository</abbr>.
+DVC-tracked data and artifacts are already in the DVC cache, and the rest (params,
+code and config files, etc.) can be stored in Git.
 
 ## Create a Git branch for your experiment
 
