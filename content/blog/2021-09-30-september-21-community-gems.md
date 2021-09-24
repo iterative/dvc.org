@@ -116,7 +116,7 @@ Good question @mihaj!
 
 ---
 
-https://media.giphy.com/media/QMsS2IxP812wbn4WeE/giphy.gif
+https://media.giphy.com/media/8UF0EXzsc0Ckg/giphy.gif
 
 At our October Office Hours Meetup we will be doing a thing.
 [RSVP for the Meetup here](https://www.meetup.com/DVC-Community-Virtual-Meetups/events/279024694/)
