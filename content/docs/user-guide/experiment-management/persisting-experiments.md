@@ -30,8 +30,9 @@ $ dvc exp show --include-params=my_param
 └───────────────────────┴──────────────┴─────────┴────────────┘
 ```
 
-The results found in the workspace can be found in the respective row. When you want to
-bring another experiment to the workspace, you can refer to it using it's name or ID, e.g.:
+The results found in the workspace can be found in the respective row. When you
+want to bring another experiment to the workspace, you can refer to it using
+it's name or ID, e.g.:
 
 ```dvc
 $ dvc exp apply exp-e6c97
@@ -69,7 +70,8 @@ $ dvc exp show --include-params=my_param
 ```
 
 Suppose you want to continue to work on `exp-e6c97` in a separate branch. You
-can create a new Git branch by specifying the experiment and giving a new name for it:
+can create a new Git branch by specifying the experiment and giving a new name
+for it:
 
 ```dvc
 $ dvc exp branch exp-e6c97 my-successful-experiment
@@ -78,8 +80,8 @@ To switch to the new branch run:
         git checkout my-successful-experiment
 ```
 
-Note that DVC doesn't checkout the new branch. You can one or more branches
-from existing experiments, and switch into any one manually like this:
+Note that DVC doesn't checkout the new branch. You can one or more branches from
+existing experiments, and switch into any one manually like this:
 
 ```dvc
 $ git checkout my-successful-experiment
