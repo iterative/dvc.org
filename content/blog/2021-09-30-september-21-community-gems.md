@@ -109,7 +109,7 @@ bucket. If you run into an error with this, try adding
 ### [What mechanism can I use in GitLab to trigger a CI pipeline periodically so that models get re-trained and logged to DVC automatically?](https://discord.com/channels/485586884165107732/728693131557732403/887306645883990037)
 
 You can use [pipeline
-schedules][https://docs.gitlab.com/ee/ci/pipelines/schedules.html] to train your
+schedules](https://docs.gitlab.com/ee/ci/pipelines/schedules.html) to train your
 model periodically and `dvc push` the results.
 
 Good question @mihaj!
