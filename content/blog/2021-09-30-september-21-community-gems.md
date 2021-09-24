@@ -106,7 +106,7 @@ When you need to retrieve data, you can run `dvc pull` to get it from the S3
 bucket. If you run into an error with this, try adding
 `uses: iterative/setup-dvc@v1` to the `dvc pull` command.
 
-### [What mechanism can I use to trigger a CI pipeline periodically so that models get re-trained and logged to DVC automatically?](https://discord.com/channels/485586884165107732/728693131557732403/887306645883990037)
+### [What mechanism can I use in GitLab to trigger a CI pipeline periodically so that models get re-trained and logged to DVC automatically?](https://discord.com/channels/485586884165107732/728693131557732403/887306645883990037)
 
 You can use [pipeline
 schedules][https://docs.gitlab.com/ee/ci/pipelines/schedules.html] to train your
