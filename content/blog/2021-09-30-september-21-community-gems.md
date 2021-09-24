@@ -118,8 +118,9 @@ Good question @mihaj!
 
 https://media.giphy.com/media/8UF0EXzsc0Ckg/giphy.gif
 
-At our October Office Hours Meetup we will be doing a thing.
-[RSVP for the Meetup here](https://www.meetup.com/DVC-Community-Virtual-Meetups/events/279024694/)
+At our October Office Hours Meetup we will be going over how to get started with
+data version control.
+[RSVP for the Meetup here](https://www.meetup.com/DVC-Community-Virtual-Meetups/events/280814318/)
 to stay up to date with specifics as we get closer to the event!
 
 [Join us in Discord](https://discord.com/invite/dvwXA2N) to get all your DVC and
