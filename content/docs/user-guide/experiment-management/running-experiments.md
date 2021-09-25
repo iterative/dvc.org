@@ -103,9 +103,11 @@ In this example, if you want to run the pipelines defined in `dir/dvc.yaml` and
 $ dvc exp run --recursive dir/
 ```
 
-It will run all the pipelines under `dir/`. You may also use `.` as a directory,
-so `dvc exp run -R .` to run all the pipelines recursively, starting from the
-current directory.
+It will run all the pipelines under `dir/`.
+
+You may also use `.` as target (e.g.
+`dvc exp run -R .`) to run all pipelines in the entire project
+(recursively starting from the current directory).
 
 ### Running stages interactively
 
