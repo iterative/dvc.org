@@ -105,9 +105,8 @@ $ dvc exp run --recursive dir/
 
 It will run all the pipelines under `dir/`.
 
-You may also use `.` as target (e.g.
-`dvc exp run -R .`) to run all pipelines in the entire project
-(recursively starting from the current directory).
+You may also use `.` as target (e.g. `dvc exp run -R .`) to run all pipelines in
+the entire project (recursively starting from the current directory).
 
 ### Running stages interactively
 
