@@ -35,6 +35,8 @@ In this post, we're going to go through an example of hyperparameter tuning with
 reproducibility using DVC. You can add this to any existing project you're
 working on or start from a fresh project.
 
+https://youtu.be/W48Tvx2p-xE
+
 ## Background on Hyperparameters
 
 Before jumping straight into training and experiments, let's briefly go over
