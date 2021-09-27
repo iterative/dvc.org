@@ -19,11 +19,10 @@ tags:
 
 ## Intro
 
-Sharing experiments to build machine learning model is important in order to
-create the best model as quickly as possible. You might have a new engineer join
-the team and you want to get their workspace ready quickly. Situations come up
-where you want to run experiments in differnt environments and you need to
-reproduce them.
+Sharing experiments to compare machine learning models is important when you're
+working with a team of engineers. You might have a new engineer join the team
+and you want to get their workspace ready quickly. Or you might need to change
+computers to access better resources to run experiments on.
 
 Setting up DVC remotes lets you share all of the data, code, and hyperparameters
 associated with each experiment so anyone can pick up where you left off in the
