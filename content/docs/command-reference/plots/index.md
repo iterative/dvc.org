@@ -53,12 +53,12 @@ rendered using `<img>` tags directly.
 
 Image-type plots are included in HTML as-is, without additional processing.
 
-> We recommend to track these source image files with DVC instead of Git,
-> to prevent the repository from bloating.
+> We recommend to track these source image files with DVC instead of Git, to
+> prevent the repository from bloating.
 
-Structured plots can be read from JSON, YAML 1.2, CSV, or TSV
-files. DVC expects to see an array (or multiple arrays) of objects (usually
-_float numbers_) in the file.
+Structured plots can be read from JSON, YAML 1.2, CSV, or TSV files. DVC expects
+to see an array (or multiple arrays) of objects (usually _float numbers_) in the
+file.
 
 In tabular file formats such as CSV and TSV, each column is an array.
 `dvc plots` subcommands can produce plots for a specified column or a set of
