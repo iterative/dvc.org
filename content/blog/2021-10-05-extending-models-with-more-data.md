@@ -129,7 +129,7 @@ That means we should probably add more data to the training dataset.
 
 Let's add the `train` data for `cats` to the corresponding directory in
 `data/hymenoptera_data` and go through another experiment run with a different
-learning rate. With this new data, can run another experiment. One important
+learning rate. With this new data, we can run another experiment. One important
 thing to note here is that we're using checkpoints in our experiments. That's
 how we get the metrics for each training epoch.
 
