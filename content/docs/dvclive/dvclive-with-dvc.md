@@ -62,7 +62,7 @@ command options for the DVC integration:
 - `--live-no-cache <path>` - specify a DVCLive log directory `path` but don't
   tracked it with DVC. Useful if you prefer to track it with Git.
 - `--live-no-summary` - deactivates
-  [summary](/doc/dvclive/user-guide/quickstart#metrics-summary) generation.
+  [summary](/doc/dvclive/get-started#metrics-summary) generation.
 - `--live-no-html` - deactivates [HTML report](#html-report) generation.
 
 > Note that these are convenience CLI options. You can still use
@@ -105,13 +105,13 @@ experiments using DVCLive in DVC Studio.
 ### HTML report
 
 In addition to the
-[outputs described in the Quickstart](/doc/dvclive/user-guide/quickstart#outputs),
-DVC generates an _HTML report_.
+[outputs described in the Quickstart](/doc/dvclive/get-started#outputs), DVC
+generates an _HTML report_.
 
 If you open `training_metrics_dvc_plots/index.html` in a browser, you'll see a
-plot for metrics being logged during the model training!
+plot for metrics automatically updated during the model training!
 
-![](/img/dvclive-html-report.png)
+![](/img/dvclive-html.gif)
 
 ### Checkpoints
 
