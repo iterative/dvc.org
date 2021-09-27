@@ -97,8 +97,9 @@ $ tree
 └── dvc.yaml
 ```
 
-In this example, if you want to run the pipelines defined in `dir/dvc.yaml` and
-`dir/deeper-dir/dvc.yaml` in a single command, you can issue:
+To run the pipelines defined in `dir/dvc.yaml` as well as the ones in
+`dir/deeper-dir/dvc.yaml` with a single command, you can target
+the `dir/` directory with the `--recursive` (`-R`) option:
 
 ```dvc
 $ dvc exp run --recursive dir/
