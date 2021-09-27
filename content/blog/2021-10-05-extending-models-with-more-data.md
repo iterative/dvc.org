@@ -232,7 +232,7 @@ do some other experiments. We can look at a comparison between the experiments
 with the `cats` data and both the `cats` and `dogs` data.
 
 ```dvc
-dvc plots diff exp-54e8a exp-82f70
+dvc plots diff exp-23593 exp-54e8a exp-82f70
 ```
 
 ![plot of differences between model with just cats data and model with both cats and dogs data](2021-10-05/with-cats-and-dogs-data.png)
