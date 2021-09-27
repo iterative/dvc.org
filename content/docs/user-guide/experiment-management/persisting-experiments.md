@@ -1,14 +1,13 @@
 # Persisting Experiments
 
-DVC runs experiments outside of the
-standard Git stage/commit workflow for quick iteration. 
-In this section we'll see how to bring the experiments we run to the standard Git workflow with
-`dvc exp branch` and `dvc exp apply`.
+DVC runs experiments outside of the standard Git stage/commit workflow for quick
+iteration. In this section we'll see how to bring the experiments we run to the
+standard Git workflow with `dvc exp branch` and `dvc exp apply`.
 
 ## Create a Git branch for your experiment
 
-You can use `dvc exp branch` to create a new branch from the experiment and keep all
-code and artifacts separate from your current one.
+You can use `dvc exp branch` to create a new branch from the experiment and keep
+all code and artifacts separate from your current one.
 
 ```dvc
 $ dvc exp show --include-params=my_param
@@ -64,7 +63,7 @@ $ dvc exp show --include-params=my_param
 │ workspace             │ -            │ 0.61314 │ 3          │
 │ experiments-tag       │ Oct 19, 2020 │ 0.61314 │ 3          │
 │ ├── exp-e6c97         │ Oct 20, 2020 │ 0.69830 │ 2          │
-│ └── exp-1df77         │ Oct 22, 2020 │ 0.51676 │ 1          │g 
+│ └── exp-1df77         │ Oct 22, 2020 │ 0.51676 │ 1          │g
 └───────────────────────┴──────────────┴─────────┴────────────┘
 ```
 
@@ -84,5 +83,5 @@ value.
 You can now use standard Git commands (e.g. `git add/commit/push`) to version
 this experiment directly in the <abbr>repository</abbr>. DVC-tracked data and
 artifacts are already in the DVC cache, and the rest (params, code and config
-files, etc.) can be stored in Git. Please note that you may need to run `dvc
-push` to copy the DVC cache contents to your DVC remote to share or backup.
+files, etc.) can be stored in Git. Please note that you may need to run
+`dvc push` to copy the DVC cache contents to your DVC remote to share or backup.
