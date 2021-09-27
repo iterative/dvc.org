@@ -93,7 +93,7 @@ dvc exp show --no-timestamp --include-metrics step,acc,val_acc,loss,val_loss --i
 The `--no-timestamp` hides the timestamps from table. The `--includes-metrics`
 option lets us choose which metrics we want to show in the table. The
 `--includes-params` option does the same for hyperparameters. This gives us a
-table that's eaiser to read quickly.
+table that's easier to read quickly.
 
 ```dvctable
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━┳━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━┳━━━━━━━━━━┓
