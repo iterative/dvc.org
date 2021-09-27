@@ -38,15 +38,16 @@ processing code, and can be defined in `dvc.yaml` (`plots` field) for tracking
 (optional).
 
 DVC can work with two types of plots files:
+
 1. Data series files, which can be JSON, YAML, CSV or TSV.
 2. Image files, like JPEG, GIF, or PNG.
 
-DVC generates plots as static HTML webpages that can be open with a web browser. They
-can also be saved as SVG or PNG image files from the browser.
+DVC generates plots as static HTML webpages that can be open with a web browser.
+They can also be saved as SVG or PNG image files from the browser.
 
 Data-series plots utilize [Vega-Lite](https://vega.github.io/vega-lite/) for
-rendering (declarative JSON grammar for defining graphics). Image-type
-plots are rendered using `<img>` tags directly.
+rendering (declarative JSON grammar for defining graphics). Image-type plots are
+rendered using `<img>` tags directly.
 
 ### Supported file formats
 
