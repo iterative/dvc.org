@@ -184,7 +184,7 @@ your browser. You'll see something similar to this.
 
 ![plots comparing the accuracy, validation accuracy, loss, and validation loss for all epochs of each experiment](2021-10-05/with-cats-data.png)
 
-There's a huge difference in the accuracy of our model after we've add this
+There's a huge difference in the accuracy of our model after we've added this
 additional data. Let's see if we can make it even better by adding the `dogs`
 data.
 
