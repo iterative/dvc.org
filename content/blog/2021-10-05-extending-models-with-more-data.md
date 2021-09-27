@@ -121,7 +121,7 @@ table that's easier to read quickly.
 You'll notice that the validation accuracy is really low. That's because the
 training metrics are based on bees and ants while the validation metrics are
 based on bees, ants, cats, and dogs. If we looked at the validation metrics by
-class, they'd likely be better for bees and ants than cats and dogs
+class, they'd likely be better for bees and ants than cats and dogs.
 
 That means we should probably add more data to the training dataset.
 
