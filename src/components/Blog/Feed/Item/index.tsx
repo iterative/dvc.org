@@ -22,7 +22,6 @@ export interface IBlogPostData {
   descriptionLong: string
   picture?: {
     big: IGatsbyImageData
-    small: IGatsbyImageData
   }
   author: {
     name: string
@@ -55,7 +54,7 @@ const Item: React.FC<IBlogFeedItemProps> = ({
     }
   }, [width])
 
-  const image = picture ? (big ? picture.big : picture.small) : undefined
+  const image = picture?.big
 
   return (
     <div
@@ -107,11 +106,6 @@ export const query = graphql`
       big: gatsbyImageData(
         width: 650
         height: 450
-        transformOptions: { cropFocus: CENTER }
-      )
-      small: gatsbyImageData(
-        width: 300
-        height: 250
         transformOptions: { cropFocus: CENTER }
       )
     }
