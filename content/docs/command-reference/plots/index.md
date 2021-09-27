@@ -49,14 +49,14 @@ Data-series plots utilize [Vega-Lite](https://vega.github.io/vega-lite/) for
 rendering (declarative JSON grammar for defining graphics). Image-type plots are
 rendered using `<img>` tags directly.
 
-### Supported file formats
+## Supported file formats
 
-Image type plots are included in HTML as is, without additional processing.
+Image-type plots are included in HTML as-is, without additional processing.
 
-> ⚠️ When using image plots we recommend to store them in DVC cache and not in
-> Git history, to prevent the repository size from bloating.
+> We recommend to track these source image files with DVC instead of Git,
+> to prevent the repository from bloating.
 
-Data series plots can be organized as data series in JSON, YAML 1.2, CSV, or TSV
+Structured plots can be read from JSON, YAML 1.2, CSV, or TSV
 files. DVC expects to see an array (or multiple arrays) of objects (usually
 _float numbers_) in the file.
 
@@ -96,9 +96,9 @@ names in the `train` array below:
 }
 ```
 
-## Plot templates
+## Plot templates (data series only)
 
-Users have the ability to change the way data series plots are displayed by
+Users have the ability to change the way data-series plots are displayed by
 modifying the [Vega-Lite specification](https://vega.github.io/vega-lite/), thus
 generating plots in the style that best fits the their needs. This keeps
 <abbr>DVC projects</abbr> programming language agnostic, as it's independent
