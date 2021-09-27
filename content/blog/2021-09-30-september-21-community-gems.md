@@ -83,9 +83,9 @@ for more details.
 
 ### [When working with a data registry, is it possible to pull a specific project folder, modify it, then push Git changes and `dvc push` to the remote storage without pulling data from all the directories?](https://discord.com/channels/485586884165107732/485596304961962003/887427010044002345)
 
-This is definitely possible. A common way to handle this use case, but you have
-another option. You can `dvc pull -R` from the sub-directory, then make your
-changes in the sub-directory, and `dvc add` the changes. Then you can do a
+This is definitely possible. The most common way to handle this is by working in
+the specific folder. You can `dvc pull -R` from the sub-directory, then make
+your changes in the sub-directory, and `dvc add` the changes. Then you can do a
 `git commit` and `dvc push` to manage those changes.
 
 You can also use a Git sub-repo and a DVC sub-repo to do this if each folder has
