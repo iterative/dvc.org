@@ -118,9 +118,12 @@ table that's easier to read quickly.
 └─────────────────────────┴──────┴─────────┴─────────┴─────────┴──────────┴───────┴──────────┘
 ```
 
-You'll notice that the validation accuracy doesn't seem right compared to the
-model accuracy. That means we should probably add more data to the training
-dataset.
+You'll notice that the validation accuracy is really low. That's because the
+training metrics are based on bees and ants while the validation metrics are
+based on bees, ants, cats, and dogs. If we looked at the validation metrics by
+class, they'd likely be better for bees and ants than cats and dogs
+
+That means we should probably add more data to the training dataset.
 
 ## Adding the cats data to the training dataset
 
@@ -226,10 +229,18 @@ Now we'll have all three experiments to compare.
 └─────────────────────────┴──────┴─────────┴─────────┴─────────┴──────────┴───────┴──────────┘
 ```
 
-Suprisingly, it looks like the model did better with just the `cats` data. This
-is a sign that we probably need to change some of the hyperparameter values and
-do some other experiments. We can look at a comparison between the experiments
-with the `cats` data and both the `cats` and `dogs` data.
+These results make sense for the experiments we've run. We're paying attention
+to the validation accuracy here because this gives us a fair comparison of
+what's happening as we add more data.
+
+The first experiment's training metrics are for bees and ants. The second
+experiment's training metrics are for bees, ants, and cats. And the third
+experiment's training metrics are for all four classes. So we can't really
+compare these metrics. That's why it looks like this last experiment has some
+model overfitting happening.
+
+We can look at a comparison between the experiments with the `cats` data and
+both the `cats` and `dogs` data.
 
 ```dvc
 dvc plots diff exp-23593 exp-54e8a exp-82f70
