@@ -12,8 +12,8 @@ DVC's built-in data <abbr>caching</abbr> lets you implement a simple and
 efficient storage layer globally -- for your entire team. This approach can help
 to
 
-- speed up data transfers from massive object stores currently on the cloud, or
-  move a growing dataset out of your machine without slowing things down.
+- speed up data transfers from massive object stores on the cloud, or share data
+  across multiple on-premise machines without slowing things down.
 
 - pay only for fast access to frequently-used data (upgrading your entire
   storage platform is expensive).
