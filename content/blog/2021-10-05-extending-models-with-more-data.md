@@ -67,22 +67,15 @@ This will make a new directory called `./cats-dogs/data/` that was downloaded
 from the DVC remote and it has images for cats and dogs. Now we can slowly add
 in the new data to the existing data.
 
-Before we do that though, let's move the `train` and `val` data out of the
-`hymenoptera_data` folder into the root `data` folder. That way we are working
-in a more generic directory. Then we'll move the `val` data for `cats` and
-`dogs` from the `/cats-dogs/data/` directory to the corresponding directory in
-`data`.
+We'll start by moving the `val` data for `cats` and `dogs` from the
+`/cats-dogs/data/` directory to the corresponding directory in
+`data/hymenoptera_data`.
 
-That leaves one minor code change to make. If you open
-`pretrained_model_tuner.py`, you'll see a variable called `data_dir`. Update the
-value to:
+_Just a quick note, cats and dogs don't really belong in the `hymenoptera`
+directory since that's specific to ants and bees, but it's the easiest and
+fastest way to add the data for this tutorial._
 
-```python
-data_dir = "./data"
-```
-
-Since we're getting the data from the updated directory and we have the new data
-in place, we can start training our model.
+With this new data in place, we can start training our model.
 
 ## Running new experiments with generic data
 
