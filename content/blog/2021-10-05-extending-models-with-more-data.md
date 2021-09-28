@@ -229,8 +229,7 @@ what's happening as we add more data.
 The first experiment's training metrics are for bees and ants. The second
 experiment's training metrics are for bees, ants, and cats. And the third
 experiment's training metrics are for all four classes. So we can't really
-compare these metrics. That's why it looks like this last experiment has some
-model overfitting happening.
+compare these metrics.
 
 We can look at a comparison between the experiments with the `cats` data and
 both the `cats` and `dogs` data.
@@ -241,8 +240,9 @@ dvc plots diff exp-23593 exp-54e8a exp-82f70
 
 ![plot of differences between model with just cats data and model with both cats and dogs data](2021-10-05/with-cats-and-dogs-data.png)
 
-There's definitely something happening with the validation metrics, so keep
-running experiments until you get your model tuned like you need it!
+The results you see line up with what is expected for the validation metrics
+based on how we added the data to the training set. Now you can keep running
+experiments until you get your model tuned like you need it!
 
 ## Conclusion
 
