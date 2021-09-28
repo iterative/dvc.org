@@ -99,7 +99,7 @@ then you can pull them down, modify, commit and push commit back.
 
 Really good question @ross.tsenov!
 
-### [Is it possible to auto-generate reports with metrics and plots by running DVC in a CML job?](https://discord.com/channels/485586884165107732/728693131557732403/877072469188575262)
+### [Is it possible to auto-generate reports with metrics and plots by running DVC in a CML job when the data is stored in AWS bucket instead of GitHub?](https://discord.com/channels/485586884165107732/728693131557732403/877072469188575262)
 
 Thanks for asking @Masmoudi!
 
