@@ -14,7 +14,7 @@ jobs:
         uses: lycheeverse/lychee-action@v1.0.8
         with:
           args:
-            --verbose https://dvc.org/ --base-url https://dvc.org/ --include
+            --verbose https://dvc.org/ --base https://dvc.org/ --include
             /download/
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}

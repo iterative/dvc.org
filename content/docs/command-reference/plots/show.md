@@ -204,11 +204,13 @@ file:///Users/usr/src/plots/logs.csv.html
 
 ## Example: Vega-Lite specification file
 
-In many automation scenarios (like CI/CD for ML), it is convenient to output the
-[Vega-Lite](https://vega.github.io/vega-lite/) spec file instead of rendering an
-HTML plot. For example, to generating another image format like PNG or JPEG, or
-to include it differently into a web/mobile app. The `--show-vega` option
-prevents wrapping this plot spec in HTML. Note that the resulting file is JSON:
+In many automation scenarios (like
+[CI/CD for ML](/doc/use-cases/ci-cd-for-machine-learning)), it is convenient to
+output the [Vega-Lite](https://vega.github.io/vega-lite/) spec file instead of
+rendering an HTML plot. For example, to generating another image format like PNG
+or JPEG, or to include it differently into a web/mobile app. The `--show-vega`
+option prevents wrapping this plot spec in HTML. Note that the resulting file is
+JSON:
 
 ```dvc
 $ dvc plots show --show-vega logs.csv -y accuracy

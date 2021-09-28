@@ -73,8 +73,9 @@ Benefits of our approach include:
   approved, and why.
 
 - **GitOps**: Connect your data science projects with the Git-powered universe.
-  Git workflows open the door to advanced tools such as continuous integration
-  (like [CML](https://cml.dev/) CI/CD), specialized patterns such as
+  Git workflows open the door to advanced
+  [CI/CD](/doc/use-cases/ci-cd-for-machine-learning) tools (like
+  [CML](https://cml.dev)), specialized patterns such as
   [data registries](/doc/use-cases/data-registries), and other best practices.
 
 In summary, data science and ML are iterative processes where the lifecycles of
