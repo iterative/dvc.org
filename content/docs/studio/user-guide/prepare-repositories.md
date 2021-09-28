@@ -18,8 +18,9 @@ repositories in two ways:
    [share your data and model files](/doc/use-cases/sharing-data-and-model-files),
    [create data registries](/doc/use-cases/data-registries),
    [create data pipelines](/doc/start/data-pipelines), connect them with
-   [CML](/doc/cml) for CI/CD in machine learning, and so on. Find more about the
-   features and benefits of DVC [here](/doc/start).
+   [CML](https://cml.dev) for
+   [CI/CD in machine learning](/doc/use-cases/ci-cd-for-machine-learning), and
+   so on. Find more about the features and benefits of DVC [here](/doc/start).
 
    Refer to the [DVC documentation](https://dvc.org/doc) to initialize a DVC
    repository.

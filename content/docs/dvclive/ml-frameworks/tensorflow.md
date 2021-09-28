@@ -50,8 +50,8 @@ for epoch in range(epochs):
 ```
 
 This will generate the metrics logs and summaries as described in the
-[Quickstart](/docs/dvclive/user-guide/quickstart#outputs).
+[Get Started](/docs/dvclive/get-started#outputs).
 
 > 💡Without requiring additional modifications to your training code, you can
 > use DVCLive alongside DVC. See
-> [DVCLive with DVC](/doc/dvclive/user-guide/dvclive-with-dvc) for more info.
+> [DVCLive with DVC](/doc/dvclive/dvclive-with-dvc) for more info.

@@ -1,4 +1,4 @@
-# Quickstart
+# Get Started
 
 DVCLive is a simple Python library whose interface consists of three main
 methods.
@@ -96,5 +96,5 @@ $ cat dvclive.json
 
 There are other ways to use DVCLive:
 
-- [DVCLive with DVC](/docs/dvclive/user-guide/dvclive-with-dvc)
-- [DVCLive with _ML Frameworks_](/docs/dvclive/user-guide/ml-frameworks/)
+- [DVCLive with DVC](/docs/dvclive/dvclive-with-dvc)
+- [DVCLive with _ML Frameworks_](/docs/dvclive/ml-frameworks)

@@ -6,7 +6,7 @@ Delete specific `dvc experiments` from the <abbr>project</abbr>.
 
 ```usage
 usage: dvc exp remove [-h] [-q | -v] [--queue | -A]
-                      [experiment [experiment ...]]
+                      [<name> [<name> ...]]
 
 positional arguments:
    experiment    Experiments to remove.
@@ -85,9 +85,9 @@ $ dvc exp remove e41d5b4 split16
 $ dvc exp show --include-params=train.min_split --no-pager
 ```
 
-```table
+```dvctable
 ┏━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
-┃ Experiment            ┃ Created      ┃ State  ┃ avg_prec ┃ roc_auc ┃ train.min_split ┃
+┃ neutral:**Experiment**            ┃ neutral:**Created**      ┃ neutral:**State**  ┃ metric:**avg_prec** ┃ metric:**roc_auc** ┃ metric:**train.min_split** ┃
 ┡━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━━━┩
 │ workspace             │ -            │ -      │  0.57553 │ 0.94652 │ 2               │
 │ master                │ Aug 02, 2021 │ -      │  0.53252 │  0.9107 │ 2               │

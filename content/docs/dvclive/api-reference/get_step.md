@@ -3,7 +3,7 @@
 Returns the current `step` value.
 
 ```py
-def get_step()
+def get_step() -> int:
 ```
 
 #### Usage:
