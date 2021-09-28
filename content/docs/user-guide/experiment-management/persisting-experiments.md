@@ -29,23 +29,23 @@ can create a new Git branch by specifying the experiment and giving a new name
 for it:
 
 ```dvc
-$ dvc exp branch exp-e6c97 my-successful-experiment
-Git branch 'my-successful-experiment' has been created from experiment 'exp-e6c97'.
+$ dvc exp branch exp-e6c97 my-branch
+Git branch 'my-branch' has been created from experiment 'exp-e6c97'.
 To switch to the new branch run:
-        git checkout my-successful-experiment
+        git checkout my-branch
 ```
 
 Note that DVC doesn't checkout the new branch. You can one or more branches from
 existing experiments, and switch into any one manually like this:
 
 ```dvc
-$ git checkout my-successful-experiment
+$ git checkout my-branch
 $ dvc checkout
 ```
 
 Your workspace now contains all the files from the experiment.
 
-# Bring Experiment results to your workspace
+## Bring Experiment results to your workspace
 
 Typically, `dvc exp run` leaves the experiment results in your workspace for
 convenience. However, you may have run multiple experiments and wish to go back
