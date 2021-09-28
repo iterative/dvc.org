@@ -20,9 +20,14 @@ tags:
   - Git
 ---
 
-### [If I already have several projects and want to build a data registry out of those?](https://discord.com/channels/485586884165107732/563406153334128681/879651401318400021)
+### [If I already have several projects and want to build a data registry out of those, how would I do that?](https://discord.com/channels/485586884165107732/563406153334128681/879651401318400021)
 
 Great question from @m41n314c!
+
+There are a couple of ways you can do this.
+
+The recommended and most secure approach is to move your data to a new repo or
+import the data from source repos, like a distributed data registry.
 
 You can import into the registry from your other projects with `dvc import` and
 `dvc add`. Keep in mind that imported data stays stored with the original source
