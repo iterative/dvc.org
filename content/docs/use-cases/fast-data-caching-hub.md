@@ -13,7 +13,7 @@ efficient storage layer globally -- for your entire team. This approach can help
 to
 
 - speed up data transfers from massive object stores on the cloud, or share data
-  across multiple on-premise machines without slowing things down.
+  across multiple machines without slowing things down.
 
 - pay only for fast access to frequently-used data (upgrading your entire
   storage platform is expensive).
