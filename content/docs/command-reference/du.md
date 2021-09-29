@@ -1,9 +1,10 @@
 # du
 
-List disk usage of project contents, including files, models, and directories tracked by DVC
-and by Git.
+List disk usage of project contents, including files, models, and directories
+tracked by DVC and by Git.
 
-> Useful to check if there is enough space on your local disk before doing a `dvc pull`.
+> Useful to check if there is enough space on your local disk before doing a
+> `dvc pull`.
 
 ## Synopsis
 
@@ -29,7 +30,6 @@ This is usefull to check if there is enough space on your locak disk before
 [pulling](/doc/command-reference/pull) a repository.
 
 Only the total disk usage is displayed when you set the `-s` option.
-
 
 ## Options
 
