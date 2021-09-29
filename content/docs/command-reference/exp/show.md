@@ -115,7 +115,8 @@ metric or param.
 - `--show-json` - prints the command's output in easily parsable JSON format,
   instead of a human-readable table.
 
-- `--show-csv` - prints the command's output in CSV format instead of a human-readable table.
+- `--show-csv` - prints the command's output in CSV format instead of a
+  human-readable table.
 
 - `--precision <n>` -
   [round](https://docs.python.org/3/library/functions.html#round) decimal values
