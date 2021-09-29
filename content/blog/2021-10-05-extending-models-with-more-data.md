@@ -58,7 +58,7 @@ model improves as we run experiments.
 To add the new cats and dogs dataset to the project, we'll use this DVC command.
 
 ```dvc
-dvc get https://github.com/iterative/dataset-registry blog/cats-dogs
+$ dvc get https://github.com/iterative/dataset-registry blog/cats-dogs
 ```
 
 This downloads a sample dataset with images of cats and dogs. You can use this
@@ -87,13 +87,15 @@ results are. To run a new experiment, open your terminal and make sure you have
 a virtual environment enabled. Then run this command:
 
 ```dvc
-dvc exp run
+$ dvc exp run
 ```
 
 Once the training epochs are finished, run the following command.
 
 ```dvc
-dvc exp show --no-timestamp --include-metrics step,acc,val_acc,loss,val_loss --include-params lr,momentum
+$ dvc exp show --no-timestamp \
+--include-metrics step,acc,val_acc,loss,val_loss \
+--include-params lr,momentum
 ```
 
 The `--no-timestamp` hides the timestamps from table. The `--includes-metrics`
@@ -134,7 +136,7 @@ epoch, we need to reset our experiment. That's what we're going to do with this
 command.
 
 ```dvc
-dvc exp run --reset
+$ dvc exp run --reset
 ```
 
 This will reset all of the existing checkpoints and excute the training script.
@@ -142,7 +144,9 @@ Once it's finished, let's take a look at the metrics table with this command.
 It's the same as the one we ran last time.
 
 ```dvc
-dvc exp show --no-timestamp --include-metrics step,acc,val_acc,loss,val_loss --include-params lr,momentum
+$ dvc exp show --no-timestamp \
+--include-metrics step,acc,val_acc,loss,val_loss \
+--include-params lr,momentum
 ```
 
 Now you'll have a table that shows both experiments and you can see how much
@@ -170,7 +174,7 @@ added the `cats` data and after. If you run this in your terminal, you'll get a
 plot comparing the two experiments.
 
 ```dvc
-dvc plots diff exp-23593 exp-54e8a
+$ dvc plots diff exp-23593 exp-54e8a
 ```
 
 The `exp-23593` and `exp-54e8a` values are the ids for the experiments you want
@@ -192,14 +196,16 @@ new experiment with all of the new data included. We'll still need to reset the
 experiment like before, so run the following command.
 
 ```dvc
-dvc exp run --reset
+$ dvc exp run --reset
 ```
 
 Once the training epochs are finished, we can take one more look at that metrics
 table.
 
 ```dvc
-dvc exp show --no-timestamp --include-metrics step,acc,val_acc,loss,val_loss --include-params lr,momentum
+$ dvc exp show --no-timestamp \
+--include-metrics step,acc,val_acc,loss,val_loss \
+--include-params lr,momentum
 ```
 
 Now we'll have all three experiments to compare.
@@ -238,7 +244,7 @@ We can look at a comparison between the experiments with the `cats` data and
 both the `cats` and `dogs` data.
 
 ```dvc
-dvc plots diff exp-23593 exp-54e8a exp-82f70
+$ dvc plots diff exp-23593 exp-54e8a exp-82f70
 ```
 
 ![plot of differences between model with just cats data and model with both cats and dogs data](2021-10-05/with-cats-and-dogs-data.png)
