@@ -85,8 +85,7 @@ DVC supports pipelines defined in more than one `dvc.yaml` file. These can
 reside in subfolders inside the workspace, and you may want to run all of them at once.
 Example project:
 
-```
-$ tree
+```dvc
 .
 ├── dir
 │   ├── deeper-dir
