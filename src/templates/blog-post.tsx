@@ -1,5 +1,4 @@
 import { graphql } from 'gatsby'
-import { FluidObject, GatsbyImageProps } from 'gatsby-image'
 import { getSrc, IGatsbyImageData } from 'gatsby-plugin-image'
 import React from 'react'
 
@@ -8,19 +7,8 @@ import Post from '../components/Blog/Post'
 
 import { ISocialIcon } from '../components/SocialIcon'
 
-interface IFluidObject extends FluidObject {
-  presentationWidth: number
-  presentationHeight: number
-}
-
-export interface IGatsbyImageProps extends GatsbyImageProps {
-  fluid?: IFluidObject
-}
-
 export interface IBlogPostHeroPic {
-  picture?: {
-    fluid: IFluidObject
-  }
+  picture?: IGatsbyImageData
   pictureComment?: string
 }
 
@@ -35,12 +23,7 @@ export interface IBlogPostData {
   descriptionLong?: string
   commentsUrl?: string
   tags?: string[]
-  picture?: {
-    fluid: IFluidObject
-    resize: {
-      src: string
-    }
-  }
+  picture?: IGatsbyImageData
   pictureComment?: string
   author: {
     name: string

@@ -2,7 +2,6 @@ const remark = require('remark')
 const remarkHTML = require('remark-html')
 const is404Regexp = /^\/404/
 const isDocsRegexp = /^\/doc/
-const trailingSlashRegexp = /\/$/
 
 const alertLandingArray = ['/enterprise/']
 
