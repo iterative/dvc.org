@@ -20,6 +20,7 @@ const deployOptions = DEPLOY_OPTIONS
   : {
       download: true,
       build: true,
+      retry: true,
       upload: true,
       clean: true,
       clearCloudflareCache: true
@@ -99,18 +100,24 @@ async function main() {
     try {
       run('yarn build')
     } catch (buildError) {
-      // Sometimes gatsby build fails because of bad cache.
-      // Clear it and try again.
+      if (deployOptions.retry) {
+        // Sometimes gatsby build fails because of bad cache.
+        // Clear it and try again.
 
-      console.error('------------------------\n\n')
-      console.error('The first Gatsby build attempt failed!\n')
-      console.error(buildError)
-      console.error('\nRetrying with a cleared cache:\n')
+        console.error('------------------------\n\n')
+        console.error('The first Gatsby build attempt failed!\n')
+        console.error(buildError)
+        console.error('\nRetrying with a cleared cache:\n')
 
-      // Clear only .cache so we re-use images
-      await cleanEntry(cacheDirs[1])
+        // Clear only .cache so we re-use images
+        await cleanEntry(cacheDirs[1])
 
-      run('yarn build')
+        run('yarn build')
+      } else {
+        throw new Error(
+          'The first Gatsby build attempt failed, and DEPLOY_OPTIONS does not include "retry"'
+        )
+      }
     }
   }
 

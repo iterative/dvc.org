@@ -4,7 +4,7 @@ const is404Regexp = /^\/404/
 const isDocsRegexp = /^\/doc/
 const trailingSlashRegexp = /\/$/
 
-const alertLandingArray = ['/enterprise']
+const alertLandingArray = ['/enterprise/']
 
 const markdownProcessor = remark().use(remarkHTML).processSync
 function markdownToHtml(input) {
@@ -12,17 +12,11 @@ function markdownToHtml(input) {
 }
 
 const setPageContext = (page, actions) => {
-  const pagePath =
-    page.path !== '/' && trailingSlashRegexp.test(page.path)
-      ? page.path.replace(trailingSlashRegexp, '')
-      : page.path
-
-  const isAlertLanding = alertLandingArray.includes(pagePath)
+  const isAlertLanding = alertLandingArray.includes(page.path)
 
   actions.deletePage(page)
   actions.createPage({
     ...page,
-    path: pagePath,
     context: {
       ...page.context,
       is404: is404Regexp.test(page.path),
