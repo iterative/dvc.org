@@ -82,8 +82,8 @@ $ dvc exp run --all-pipelines
 ### Running pipelines recursively
 
 DVC supports pipelines defined in more than one `dvc.yaml` file. These can
-reside in subfolders inside the workspace, and you may want to run all of them at once.
-Example project:
+reside in subfolders inside the workspace, and you may want to run all of them
+at once. Example project:
 
 ```dvc
 .
@@ -97,8 +97,8 @@ Example project:
 ```
 
 To run the pipelines defined in `dir/dvc.yaml` as well as the ones in
-`dir/deeper-dir/dvc.yaml` with a single command, you can target
-the `dir/` directory with the `--recursive` (`-R`) option:
+`dir/deeper-dir/dvc.yaml` with a single command, you can target the `dir/`
+directory with the `--recursive` (`-R`) option:
 
 ```dvc
 $ dvc exp run --recursive dir/
