@@ -41,9 +41,12 @@ interact with the registry.
 
 ### [Is there a way to share data across multiple on-premise machines so that users can train models individually?](https://discord.com/channels/485586884165107732/563406153334128681/879718738163826698)
 
-This is a good scenario to try out
-[sharing a DVC cache](https://dvc.org/doc/use-cases/fast-data-caching-hub). You
-can have a single storage location mounted on each workstation to serve as a
+This is a good scenario to try out one of these use cases:
+
+- [Configuring a DVC cache](https://dvc.org/doc/user-guide/how-to/share-a-dvc-cache)
+- [Sharing a development server](https://dvc.org/doc/use-cases/fast-data-caching-hub)
+
+You can have a single storage location mounted on each workstation to serve as a
 central cache.
 
 That way all of your machine learning engineers can work with the same data in a
