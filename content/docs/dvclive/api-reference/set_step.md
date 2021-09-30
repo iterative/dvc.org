@@ -12,7 +12,7 @@ def set_step(step: int):
 import dvclive
 
 for step in [0, 10, 20]:
-    dvclive.set_step(step)
+    dvclive.set_step(step=step)
     dvclive.log("metric_1", 0.9)
     dvclive.log("metric_2", 0.7)
 ```
