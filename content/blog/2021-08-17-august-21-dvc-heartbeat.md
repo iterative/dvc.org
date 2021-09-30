@@ -1,8 +1,8 @@
 ﻿---
 title: August'21 Heartbeat
 date: 2021-08-17
-description: |
-  Monthly updates are here! The new data centricity focus, a comparison of DVC, 
+description: >
+  Monthly updates are here! The new data centricity focus, a comparison of DVC,
   MLFlow and Metaflow, tutorials and tool stacks, doc updates and more!
 descriptionLong: |
   This month you will find:

@@ -1,12 +1,12 @@
 ﻿---
 title: March ’21 Heartbeat
 date: 2021-03-15
-description: |
+description: >
   Monthly updates are here! News, use cases, videos, journal publications and
   more!
 descriptionLong: |
-  Monthly updates are here! Read all about our growing team, 
-  our CEO's interview on TFIR, Elle's talk at DataTalks.Club Conference and 
+  Monthly updates are here! Read all about our growing team,
+  our CEO's interview on TFIR, Elle's talk at DataTalks.Club Conference and
   more!
 picture: 2021-03-15/mar21cover.png
 author: jeny_defigueiredo

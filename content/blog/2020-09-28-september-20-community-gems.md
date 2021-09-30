@@ -1,12 +1,12 @@
 ---
 title: September '20 Community Gems
 date: 2020-09-28
-description: |
-  A roundup of technical Q&A's from the DVC community. This month, we discuss 
-  customizing your DVC plots, the difference between external dependencies
-  and outputs, and how to save models and data in CI.
+description: >
+  A roundup of technical Q&A's from the DVC community. This month, we discuss
+  customizing your DVC plots, the difference between external dependencies and
+  outputs, and how to save models and data in CI.
 descriptionLong: |
-  A roundup of technical Q&A's from the DVC community. This month, we discuss 
+  A roundup of technical Q&A's from the DVC community. This month, we discuss
   customizing your DVC plots, the difference between external dependencies
   and outputs, and how to save models and data in CI.
 picture: 2020-09-28/Gems_Sept_20.png

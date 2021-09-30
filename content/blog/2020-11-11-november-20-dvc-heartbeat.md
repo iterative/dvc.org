@@ -1,7 +1,7 @@
 ---
 title: November ’20 Heartbeat
 date: 2020-11-11
-description: |
+description: >
   Catch our monthly updates- featuring new video docs and talks, new jobs at
   DVC, and must-read contributions from the community about MLOps, data science
   with R, and ML in production.

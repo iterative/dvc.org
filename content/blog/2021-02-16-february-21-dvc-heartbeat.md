@@ -1,11 +1,11 @@
 ﻿---
 title: February ’21 Heartbeat
 date: 2021-02-16
-description: |
-  Monthly updates are here! Read all about our growing team, 
-  our CEO's interview on The New Stack, integration with spaCy and more!
+description: >
+  Monthly updates are here! Read all about our growing team, our CEO's interview
+  on The New Stack, integration with spaCy and more!
 descriptionLong: |
-  Monthly updates are here! Read all about our growing team, 
+  Monthly updates are here! Read all about our growing team,
   our CEO's interview on The New Stack, integration with spaCy and more!
 picture: 2021-02-16/feb21cover.png
 author: jeny_defigueiredo

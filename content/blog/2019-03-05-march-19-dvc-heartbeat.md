@@ -1,7 +1,7 @@
 ---
 title: March ’19 DVC❤️Heartbeat
 date: 2019-03-05
-description: |
+description: >
   The very first issue of the DVC Heartbeat! News, links, Discord discussions
   from the community.
 descriptionLong: |

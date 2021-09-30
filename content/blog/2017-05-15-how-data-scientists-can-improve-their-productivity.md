@@ -1,7 +1,7 @@
 ---
 title: How Data Scientists Can Improve Their Productivity
 date: 2017-05-15
-description: |
+description: >
   Data science and machine learning are iterative processes. It is never
   possible to successfully complete a data science project in a single pass.
 descriptionLong: |

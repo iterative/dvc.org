@@ -1,8 +1,8 @@
 ﻿---
 title: July '21 Heartbeat
 date: 2021-07-16
-description: |
-  Monthly updates are here! Great new tutorials from the Community, uptick in 
+description: >
+  Monthly updates are here! Great new tutorials from the Community, uptick in
   jobs requiring DVC, awesome Community discussion on experiments at our June
   Meetup and a cipher. Can you figure it out?
 descriptionLong: |
