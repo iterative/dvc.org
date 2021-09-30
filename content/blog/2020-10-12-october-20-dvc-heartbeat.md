@@ -4,7 +4,7 @@ date: 2020-10-12
 description: >
   This month, hear about our international talks,  new video docs on our YouTube
   channel,  and the best tutorials from our community.
-descriptionLong: |
+descriptionLong: >
   This month, hear about our international talks, new video docs on our YouTube
   channel, and the best tutorials from our community.
 picture: 2020-10-12/cover.png

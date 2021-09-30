@@ -4,7 +4,7 @@ date: 2021-02-17
 description: >
   Today, we're announcing DVC 2.0 pre-release. We'll share lessons from our
   journey and how these will be reflected in the coming release.
-descriptionLong: |
+descriptionLong: >
   The new release is a result of our learning from our users. There are four
   major features coming:
 

@@ -4,7 +4,7 @@ date: 2017-05-15
 description: >
   Data science and machine learning are iterative processes. It is never
   possible to successfully complete a data science project in a single pass.
-descriptionLong: |
+descriptionLong: >
   The iteration time is a critical parameter in data science process. The
   quicker you iterate, the more you can check ideas and build a better model.
   The productivity of data scientists can be improved by speeding up iteration

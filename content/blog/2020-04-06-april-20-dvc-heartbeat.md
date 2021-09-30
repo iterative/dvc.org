@@ -6,7 +6,7 @@ description: >
   month, learn what we're up to in MLOps, CI/CD, and the intersection of data
   science and software engineering.
 
-descriptionLong: |
+descriptionLong: >
   Every month we share news, findings, interesting reads, community takeaways,
   and everything else along the way.
 

@@ -4,7 +4,7 @@ date: 2020-06-29
 description: >
   A roundup of technical Q&A's from the DVC community. This month, we discuss
   migrating to DVC 1.0, the new pipeline format, and our Python API.
-descriptionLong: |
+descriptionLong: >
   A roundup of technical Q&A's from the DVC community. This month, we discuss
   migrating to DVC 1.0, the new pipeline format, and our Python API.
 picture: 2020-06-29/Gems_June_20.png

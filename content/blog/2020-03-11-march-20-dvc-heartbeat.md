@@ -4,7 +4,7 @@ date: 2020-03-11
 description: >
   DVC discussions around the web, our growing team, and recommended reading from
   the open source community.
-descriptionLong: |
+descriptionLong: >
   Every month we share news, findings, interesting reads, community takeaways,
   and everything else along the way.
 

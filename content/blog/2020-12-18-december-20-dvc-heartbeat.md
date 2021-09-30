@@ -5,7 +5,7 @@ description: >
   Monthly updates are here- read all about  our brand new video docs, the DVC
   Udemy course, open jobs with our team, and  essential reading about Git-flow
   with DVC.
-descriptionLong: |
+descriptionLong: >
   Monthly updates are here- read all about our brand new video docs, the DVC
   Udemy course, open jobs with our team, and essential reading about Git-flow
   with DVC.

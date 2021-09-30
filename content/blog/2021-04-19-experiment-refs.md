@@ -6,10 +6,10 @@ description: >
   versioning of lightweight ML experiments. In this post, we’ll dive into how
   exactly these new experiments work.
 
-descriptionLong: |
-  In [DVC 2.0](/blog/dvc-2-0-release), we’ve introduced a new feature set
-  aimed at simplifying the versioning of lightweight ML experiments. In this
-  post, we’ll show how DVC leverages the power of Git references to track each
+descriptionLong: >
+  In [DVC 2.0](/blog/dvc-2-0-release), we’ve introduced a new feature set aimed
+  at simplifying the versioning of lightweight ML experiments. In this post,
+  we’ll show how DVC leverages the power of Git references to track each
   experiment, while also completely abstracting away the need for you to
   manually manage a potentially unlimited number of Git feature branches or
   tags.

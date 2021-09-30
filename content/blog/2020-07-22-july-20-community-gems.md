@@ -5,7 +5,7 @@ description: >
   A roundup of technical Q&A's from the DVC community. This month, we discuss
   getting started with CML, configuring your DVC cache, and how to request a
   tutorial video.
-descriptionLong: |
+descriptionLong: >
   A roundup of technical Q&A's from the DVC community. This month, we discuss
   getting started with CML, configuring your DVC cache, and how to request a
   tutorial video.

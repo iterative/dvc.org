@@ -3,8 +3,8 @@ title: February '20 Community Gems
 date: 2020-02-19
 description: >
   Great discussions and technical Q&A's from our users.
-descriptionLong: |
-  Look here every month for great discussions and technical Q&A's from our users 
+descriptionLong: >
+  Look here every month for great discussions and technical Q&A's from our users
   and core development team.
 picture: 2020-02-19/feb20_gems_header_gr.png
 author: elle_obrien

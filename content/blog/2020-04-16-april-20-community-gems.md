@@ -4,7 +4,7 @@ date: 2020-04-16
 description: >
   A roundup of technical Q&A's from the DVC community. This month, we discuss
   the DVC cache, pipelines, cloud storage options and concurrency.
-descriptionLong: |
+descriptionLong: >
   A roundup of technical Q&A's from the DVC community. This month, we discuss
   the DVC cache, cloud storage options and concurrency.
 picture: 2020-04-16/DVC_Gems_April_20.png

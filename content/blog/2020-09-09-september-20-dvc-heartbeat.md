@@ -5,10 +5,10 @@ description: >
   This month, catch us on the Software Engineering Daily Podcast, check out our
   favorite DVC and CML tutorials and projects, and  celebrate 1000 YouTube
   subscribers!
-descriptionLong: |
-  This month, catch us on the Software Engineering Daily Podcast,
-  check out our favorite DVC and CML tutorials and projects, and
-  celebrate 1000 YouTube subscribers!
+descriptionLong: >
+  This month, catch us on the Software Engineering Daily Podcast, check out our
+  favorite DVC and CML tutorials and projects, and celebrate 1000 YouTube
+  subscribers!
 picture: 2020-09-09/header.png
 author: elle_obrien
 commentsUrl: https://discuss.dvc.org/t/september-20-heartbeat/488
