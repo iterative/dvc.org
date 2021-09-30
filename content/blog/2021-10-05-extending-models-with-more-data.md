@@ -1,11 +1,11 @@
 ---
 title: Adding Data to Build a More Generic Model
 date: 2021-10-05
-description: |
+description: >
   You can easily make changes to your dataset using
   DVC to handle data versioning. This will let you
   extend your models to handle more generic data.
-descriptionLong: |
+descriptionLong: >
   When you have an existing model trained for one
   problem, you might want to extend it to handle
   other problems. When you have data versioning,
