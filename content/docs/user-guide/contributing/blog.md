@@ -41,7 +41,6 @@ tags:
   - Version Control
   - AI
 ---
-
 ```
 
 - `title` (**required**) - title of the post.
