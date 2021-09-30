@@ -6,8 +6,8 @@ standard Git workflow with `dvc exp branch` and `dvc exp apply`.
 
 ## Create a Git branch for your experiment
 
-You can use `dvc exp branch` to create a new branch from the experiment and keep
-all code and artifacts separate from your current one.
+You can use `dvc exp branch` to create a new branch from an experiment, and keep
+all its code and artifacts separate from your current <abbr>workspace</abbr>.
 
 ```dvc
 $ dvc exp show --include-params=my_param
@@ -35,7 +35,7 @@ To switch to the new branch run:
         git checkout my-branch
 ```
 
-Note that DVC doesn't checkout the new branch. You can one or more branches from
+Note that DVC doesn't switch into the new branch. You can create one or more branches from
 existing experiments, and switch into any one manually like this:
 
 ```dvc
@@ -45,7 +45,7 @@ $ dvc checkout
 
 Your workspace now contains all the files from the experiment.
 
-## Bring Experiment results to your workspace
+## Bring experiment results to your workspace
 
 Typically, `dvc exp run` leaves the experiment results in your workspace for
 convenience. However, you may have run multiple experiments and wish to go back
@@ -67,8 +67,8 @@ $ dvc exp show --include-params=my_param
 └───────────────────────┴──────────────┴─────────┴────────────┘
 ```
 
-The results found in the workspace can be found in the respective row. When you
-want to bring another experiment to the workspace, you can refer to it using
+The results found in the workspace are shown in the respective row. When you
+want to bring another experiment to the workspace, you can reference it using
 it's name or ID, e.g.:
 
 ```dvc
@@ -83,5 +83,7 @@ value.
 You can now use standard Git commands (e.g. `git add/commit/push`) to version
 this experiment directly in the <abbr>repository</abbr>. DVC-tracked data and
 artifacts are already in the DVC cache, and the rest (params, code and config
-files, etc.) can be stored in Git. Please note that you may need to run
-`dvc push` to copy the DVC cache contents to your DVC remote to share or backup.
+files, etc.) can be stored in Git.
+
+> Please note that you need to
+`dvc push` in order to share or backup the DVC cache contents.
