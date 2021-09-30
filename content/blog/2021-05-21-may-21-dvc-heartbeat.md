@@ -7,11 +7,11 @@ description: >
   growth, and more!
 descriptionLong: |
   This month you will find:
-    🚀 info on our growing team
-    📖 MLOps learning opportunities,
-    🔃 tutorials with integrations,
-    🎥 conference videos from our team members,
-    💥 Discord server growth, and more!
+  🚀 info on our growing team
+  📖 MLOps learning opportunities,
+  🔃 tutorials with integrations,
+  🎥 conference videos from our team members,
+  💥 Discord server growth, and more!
 picture: 2021-05-21/may21cover.png
 author: jeny_defigueiredo
 commentsUrl: https://discuss.dvc.org/t/dvc-may-2021-heartbeat/
