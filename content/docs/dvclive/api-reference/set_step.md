@@ -21,14 +21,14 @@ for step in [0, 10, 20]:
 
 DVCLive uses the `step` to track the progress of each metric logged with
 `dvclive.log()`. You can alter the default `step` range `[0, N)` by using
-`dvclive.set_step(step)`.
+`dvclive.set_step()`.
 
-Each metric logged in between `dvclive.set_step(step)` calls will be associated
-to the provided `step` value.
+Each metric logged in between `dvclive.set_step()` calls will be associated to
+the provided `step` value.
 
 ## Example
 
-Given the above code snippet, the
+Given the [Usage](#usage) code snippet above, the
 [metrics logs](/doc/dvclive/get-started#metrics-logs) generated for `metric_1`
 would be:
 
