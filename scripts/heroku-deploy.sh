@@ -3,6 +3,8 @@ NEWPWD="/tmp/gatsby-build"
 mkdir $NEWPWD
 mv $OLDPWD $NEWPWD
 ln -s $NEWPWD $OLDPWD
+echo $PATH
+ls $OLDPWD
 cd $NEWPWD
 which node
-node ./scripts/deploy-with-s3.js
+./scripts/deploy-with-s3.js
