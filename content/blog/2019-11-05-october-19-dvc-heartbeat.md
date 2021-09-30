@@ -1,7 +1,7 @@
 ---
 title: October ’19 DVC❤️Heartbeat
 date: 2019-11-05
-description: |
+description: >
   Every month we are sharing here our news, findings, interesting reads,
   community takeaways, and everything along the way.
 descriptionLong: |

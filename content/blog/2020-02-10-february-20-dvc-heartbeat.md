@@ -1,9 +1,8 @@
 ---
 title: February ’20 DVC❤️Heartbeat
 date: 2020-02-10
-description: |
-  DVC talks around the world,
-  new team members, and full-stack machine learning.
+description: >
+  DVC talks around the world, new team members, and full-stack machine learning.
 descriptionLong: |
   Every month we share news, findings, interesting reads, community takeaways,
   and everything else along the way.

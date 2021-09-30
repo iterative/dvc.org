@@ -1,13 +1,13 @@
 ---
 title: November '20 Community Gems
 date: 2020-11-25
-description: |
-  A roundup of technical Q&A's from the DVC community. This month, learn how
-  to clean your cache and use Git hooks with DVC. And here's an early holiday 
-  gift- new Bitbucket support for CML!
+description: >
+  A roundup of technical Q&A's from the DVC community. This month, learn how to
+  clean your cache and use Git hooks with DVC. And here's an early holiday gift-
+  new Bitbucket support for CML!
 descriptionLong: |
   A roundup of technical Q&A's from the DVC community. This month, learn how
-  to clean your cache and use Git hooks with DVC. And here's an early holiday 
+  to clean your cache and use Git hooks with DVC. And here's an early holiday
   gift- new Bitbucket support for CML!
 picture: 2020-11-25/cover.png
 author: elle_obrien

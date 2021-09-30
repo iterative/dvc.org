@@ -1,12 +1,12 @@
 ---
 title: March '21 Community Gems
 date: 2021-03-31
-description: |
-  A roundup of technical Q&A's from the DVC community. 
-  This month: remote storage integration, hyperparameter tuning,
-  best practices for managing experiments and more.
+description: >
+  A roundup of technical Q&A's from the DVC community. This month: remote
+  storage integration, hyperparameter tuning, best practices for managing
+  experiments and more.
 descriptionLong: |
-  A roundup of technical Q&A's from the DVC community. 
+  A roundup of technical Q&A's from the DVC community.
   This month: remote storage integration, hyperparameter tuning,
   best practices for managing experiments and more.
 picture: 2021-03-31/gems-cover.png

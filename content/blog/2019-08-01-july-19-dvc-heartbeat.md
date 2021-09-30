@@ -1,7 +1,7 @@
 ---
 title: July ’19 DVC❤️Heartbeat
 date: 2019-08-01
-description: |
+description: >
   As we continue to grow DVC together with our fantastic contributors, we enjoy
   more and more insights, discussions, and articles either created or brought to
   us by our community.

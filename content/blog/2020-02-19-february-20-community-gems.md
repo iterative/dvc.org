@@ -1,7 +1,7 @@
 ---
 title: February '20 Community Gems
 date: 2020-02-19
-description: |
+description: >
   Great discussions and technical Q&A's from our users.
 descriptionLong: |
   Look here every month for great discussions and technical Q&A's from our users 

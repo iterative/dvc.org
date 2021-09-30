@@ -1,12 +1,12 @@
 ﻿---
 title: April ’21 Heartbeat
 date: 2021-04-16
-description: |
-  Monthly updates are here! Loads from the Community, use cases, videos, 
-  5 new hires, and more!
+description: >
+  Monthly updates are here! Loads from the Community, use cases, videos, 5 new
+  hires, and more!
 descriptionLong: |
   Monthly updates are here! Read all about new lessons and a tutorials from
-  our community, DVC's use in longevity research, our CEO's interviews and 
+  our community, DVC's use in longevity research, our CEO's interviews and
   talk at the Toronto Machine Learning Society, new team members, and more!
 picture: 2021-04-16/april21cover.png
 author: jeny_defigueiredo

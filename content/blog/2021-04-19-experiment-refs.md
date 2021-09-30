@@ -1,10 +1,10 @@
 ---
 title: Git Custom References for ML Experiments
 date: 2021-04-19
-description: |
+description: >
   In DVC 2.0, we’ve introduced a new feature set aimed at simplifying the
-  versioning of lightweight ML experiments. In this post, we’ll dive into
-  how exactly these new experiments work.
+  versioning of lightweight ML experiments. In this post, we’ll dive into how
+  exactly these new experiments work.
 
 descriptionLong: |
   In [DVC 2.0](/blog/dvc-2-0-release), we’ve introduced a new feature set

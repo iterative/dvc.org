@@ -1,12 +1,11 @@
 ---
 title: August ’20 Heartbeat
 date: 2020-08-10
-description: |
-  Catch our monthly updates- featuring the CML release, DVC meetup recap, 
-  a new video tutorial series, and the best reading about pipelines and
-  DataOps.
+description: >
+  Catch our monthly updates- featuring the CML release, DVC meetup recap,  a new
+  video tutorial series, and the best reading about pipelines and DataOps.
 descriptionLong: |
-  Catch our monthly updates- featuring the CML release, DVC meetup recap, 
+  Catch our monthly updates- featuring the CML release, DVC meetup recap,
   a new video tutorial series, and the best reading about pipelines and
   DataOps.
 picture: 2020-08-10/header.png

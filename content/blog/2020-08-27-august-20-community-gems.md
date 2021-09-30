@@ -1,12 +1,12 @@
 ---
 title: August '20 Community Gems
 date: 2020-08-27
-description: |
-  A roundup of technical Q&A's from the DVC community. This month, we discuss 
+description: >
+  A roundup of technical Q&A's from the DVC community. This month, we discuss
   using CI/CD to validate models, advanced DVC pipeline scenarios, and how CML
   adds pictures to your GitHub and GitLab comments.
 descriptionLong: |
-  A roundup of technical Q&A's from the DVC community. This month, we discuss 
+  A roundup of technical Q&A's from the DVC community. This month, we discuss
   using CI/CD to validate models, advanced DVC pipeline scenarios, and how CML
   adds pictures to your GitHub and GitLab comments.
 picture: 2020-08-27/Gems_Aug_20.png

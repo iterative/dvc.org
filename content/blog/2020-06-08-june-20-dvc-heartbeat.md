@@ -1,10 +1,10 @@
 ---
 title: June ’20 Heartbeat
 date: 2020-06-08
-description: |
-  Catch up on new DVC releases, talks, and projects in our community.
-  This month, learn about finishing touches on DVC 1.0, DVC in biomedical
-  research, recommended reading and upcoming MLOps talks.
+description: >
+  Catch up on new DVC releases, talks, and projects in our community. This
+  month, learn about finishing touches on DVC 1.0, DVC in biomedical research,
+  recommended reading and upcoming MLOps talks.
 descriptionLong: |
   Catch up on new DVC releases, talks, and projects in our community.
   This month, learn about finishing touches on DVC 1.0, DVC in biomedical

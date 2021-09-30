@@ -1,7 +1,7 @@
 ---
 title: ML Model Ensembling with Fast Iterations
 date: 2017-08-23
-description: |
+description: >
   Here we'll talk about tools that help tackling common technical challenges of
   building pipelines for the ensemble learning.
 descriptionLong: |

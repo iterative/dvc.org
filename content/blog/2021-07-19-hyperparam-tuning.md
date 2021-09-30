@@ -1,12 +1,10 @@
 ---
 title: Tuning Hyperparameters with Reproducible Experiments
 date: 2021-07-19
-description: |
+description: >
   Using DVC, you'll be able to track the changes that give you an ideal model.
-
 descriptionLong: |
   We'll go through an example of grid search and random search using DVC.
-
 picture: 2021-07-19/hyperparameters-july-website.png
 pictureComment: Tuning Hyperparameters with Reproducible Experiments
 author: milecia_mcgregor

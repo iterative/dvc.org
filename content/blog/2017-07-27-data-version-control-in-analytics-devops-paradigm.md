@@ -1,7 +1,7 @@
 ---
 title: Data Version Control in Analytics DevOps Paradigm
 date: 2017-07-27
-description: |
+description: >
   Why DevOps matters in data science, what specific challenges data scientists
   face in the day to day work, and how do we setup a better environment for the
   team.

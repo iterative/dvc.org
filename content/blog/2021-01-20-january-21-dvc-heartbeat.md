@@ -1,14 +1,13 @@
 ---
 title: January ’21 Heartbeat
 date: 2021-01-20
-description: |
-  Monthly updates are here! read all about 
-  our new R language tutorial, putting DVC 
-  to work on an image segmentation pipeline,
-  and a new fast way to setup your DVC remote.
+description: >
+  Monthly updates are here! read all about  our new R language tutorial, putting
+  DVC  to work on an image segmentation pipeline, and a new fast way to setup
+  your DVC remote.
 descriptionLong: |
-  Monthly updates are here! read all about 
-  our new R language tutorial, putting DVC 
+  Monthly updates are here! read all about
+  our new R language tutorial, putting DVC
   to work on an image segmentation pipeline,
   and a new fast way to setup your DVC remote.
 picture: 2021-01-20/cover.png

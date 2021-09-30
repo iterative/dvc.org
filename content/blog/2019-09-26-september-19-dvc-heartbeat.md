@@ -1,7 +1,7 @@
 ---
 title: September ’19 DVC❤️Heartbeat
 date: 2019-09-26
-description: |
+description: >
   Announcing our first meetup in San Francisco, kicking off Google Season of
   Docs program, sharing Open Source Summit experience, and more news, links, and
   gems.

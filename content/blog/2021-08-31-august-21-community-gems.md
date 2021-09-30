@@ -1,10 +1,9 @@
 ---
 title: August '21 Community Gems
 date: 2021-08-31
-description: |
-  A roundup of technical Q&A's from the DVC community.
-  This month: separate DVC pipelines, working with CML,
-  handling metrics, and more.
+description: >
+  A roundup of technical Q&A's from the DVC community. This month: separate DVC
+  pipelines, working with CML, handling metrics, and more.
 descriptionLong: |
   A roundup of technical Q&A's from the DVC community.
   This month: separate DVC pipelines, working with CML,
