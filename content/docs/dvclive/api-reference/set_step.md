@@ -20,11 +20,25 @@ for step in [0, 10, 20]:
 ## Description
 
 DVCLive uses the `step` to track the progress of each metric logged with
-`dvclive.log()`. You can use `dvclive.set_step()` to increase the `step` count
-by any number.
+`dvclive.log()`. You can use `dvclive.set_step()` to set the `step` value to any
+number.
 
 Each metric logged in between `dvclive.set_step()` calls will be associated to
 the provided `step` value.
+
+### DVC Integration
+
+When `dvclive` is used alongside `DVC`, each `dvclive.set_step()` call will have
+additional features.
+
+By default, on each `dvclive.set_step()` call, `DVC` will prepare an
+[HTML report](/doc/dvclive/user-guide/dvclive-with-dvc#html-report) with all the
+_metrics logs_ logged in `path`.
+
+When [checkpoints](/doc/user-guide/experiment-management/checkpoints) are
+enabled in the <abbr>pipeline</abbr>, `DVC` will
+[create a new checkpoint](/doc/dvclive/user-guide/dvclive-with-dvc#checkpoints)
+on each `dvclive.set_step()` call.
 
 ## Example
 
