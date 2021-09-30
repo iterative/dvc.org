@@ -1,16 +1,14 @@
 ---
 title: December ’20 Heartbeat
 date: 2020-12-18
-description: |
-  Monthly updates are here- read all about 
-  our brand new video docs, the DVC Udemy 
-  course, open jobs with our team, and 
-  essential reading about Git-flow with DVC.
+description: >
+  Monthly updates are here- read all about  our brand new video docs, the DVC
+  Udemy course, open jobs with our team, and  essential reading about Git-flow
+  with DVC.
 descriptionLong: |
-  Monthly updates are here- read all about 
-  our brand new video docs, the DVC Udemy 
-  course, open jobs with our team, and 
-  essential reading about Git-flow with DVC.
+  Monthly updates are here- read all about our brand new video docs, the DVC
+  Udemy course, open jobs with our team, and essential reading about Git-flow
+  with DVC.
 picture: 2020-12-18/cover.png
 pictureComment: |
   This holiday season, show your loved ones

@@ -1,10 +1,9 @@
 ---
 title: DVC 2.0 Pre-Release
 date: 2021-02-17
-description: |
+description: >
   Today, we're announcing DVC 2.0 pre-release. We'll share lessons from our
   journey and how these will be reflected in the coming release.
-
 descriptionLong: |
   The new release is a result of our learning from our users. There are four
   major features coming:
@@ -16,7 +15,6 @@ descriptionLong: |
   📍 ML model checkpoints
 
   📈 Dvc-live - new open-source library for metrics logging
-
 picture: 2021-02-18/dvc-2-0-pre-release.png
 pictureComment: DVC 2.0 Pre-Release
 author: dmitry_petrov

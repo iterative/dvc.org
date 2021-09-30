@@ -1,14 +1,12 @@
 ---
 title: October ’20 Heartbeat
 date: 2020-10-12
-description: |
-  This month, hear about our international talks, 
-  new video docs on our YouTube channel, 
-  and the best tutorials from our community.
+description: >
+  This month, hear about our international talks,  new video docs on our YouTube
+  channel,  and the best tutorials from our community.
 descriptionLong: |
-  This month, hear about our international talks, 
-  new video docs on our YouTube channel, 
-  and the best tutorials from our community.
+  This month, hear about our international talks, new video docs on our YouTube
+  channel, and the best tutorials from our community.
 picture: 2020-10-12/cover.png
 pictureComment:
   Double DeeVee! One of these birds is on a layover before heading to Germany.

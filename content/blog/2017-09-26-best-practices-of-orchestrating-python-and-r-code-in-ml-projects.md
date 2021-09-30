@@ -1,7 +1,7 @@
 ---
 title: Best practices of orchestrating Python and R code in ML projects
 date: 2017-09-26
-description: |
+description: >
   What is the best way to integrate R and Python languages in one data science
   project? What are the best practices?
 descriptionLong: |

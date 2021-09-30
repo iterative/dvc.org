@@ -1,7 +1,7 @@
 ---
 title: January '20 Community Gems
 date: 2020-01-20
-description: |
+description: >
   Great discussions and technical Q&A's from our users.
 descriptionLong: |
   Every month we share news, findings, interesting reads, community takeaways,

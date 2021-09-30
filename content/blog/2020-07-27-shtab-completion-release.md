@@ -1,10 +1,9 @@
 ---
 title: '(Tab) Complete Any Python Application in 1 Minute or Less'
 date: 2020-07-27
-description: |
+description: >
   We've made a painless tab-completion script generator for Python applications!
   Find out how to take advantage of it in this blog post.
-
 descriptionLong: |
   We've made a painless tab-completion script generator for Python applications!
   It's called `shtab` and it currently works with `argparse`, `docopt`, and

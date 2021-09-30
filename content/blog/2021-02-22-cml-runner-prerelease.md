@@ -2,7 +2,7 @@
 title:
   'CML Pre-Release Notes: Automatically Train Models in the Cloud with CML 0.3.0'
 date: 2021-02-22
-description: |
+description: >
   New features are here to make launching cloud compute for continuous
   integration workflows shorter, sweeter and easier than ever. Plus, a new
   GitHub Action to setup CML means more ways to use CML without our Docker
