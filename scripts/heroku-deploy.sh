@@ -1,6 +1,9 @@
-#!/usr/bin/env sh
-mkdir /tmp/gatsby-build
-mv $OLDPWD /tmp/gatsby-build
-ln -s /tmp/gatsby-build $OLDPWD
-cd /tmp/gatsby-build
+#!/usr/bin/env bash
+NEWPWD="/tmp/gatsby-build"
+echo $OLDPWD
+echo $NEWPWD
+mkdir $NEWPWD
+mv $OLDPWD $NEWPWD
+ln -s $NEWPWD $OLDPWD
+cd $NEWPWD
 node ./scripts/deploy-with-s3.js
