@@ -25,15 +25,15 @@ repo. Use `git remote -v` to list your Git remotes:
 
 ```dvc
 $ git remote -v
-origin  https://github.com/iterative/get-started-experiments (fetch)
-origin  https://github.com/iterative/get-started-experiments (push)
+origin  https://github.com/iterative/example-dvc-experiments (fetch)
+origin  https://github.com/iterative/example-dvc-experiments (push)
 ```
 
 Similarly, you can see the DVC remotes in you project using `dvc remote list`:
 
 ```dvc
 $ dvc remote list
-storage https://remote.dvc.org/get-started-experiments
+storage https://remote.dvc.org/example-dvc-experiments
 ```
 
 ## Uploading experiments to remotes

@@ -1,14 +1,13 @@
 ---
 title: 'New Video! 🎥 Reimagining DevOps for Machine Learning'
 date: 2020-03-31
-description: |
+description: >
   A talk about CI/CD with fuzzy animals.
-descriptionLong: |
-  As machine learning matures, we need to find better ways to
-  integrate data science with software development. In this talk
-  for DivOps, a conference about the future of DevOps, DVC data
-  scientist Elle O'Brien discusses how CI/CD can adapt to
-  machine learning. This is MLOps, explained with fuzzy animals.
+descriptionLong: >
+  As machine learning matures, we need to find better ways to integrate data
+  science with software development. In this talk for DivOps, a conference about
+  the future of DevOps, DVC data scientist Elle O'Brien discusses how CI/CD can
+  adapt to machine learning. This is MLOps, explained with fuzzy animals.
 picture: 2020-03-31/cover_image.png
 author: elle_obrien
 commentsUrl: https://discuss.dvc.org/t/new-video-reimagining-devops-for-machine-learning/341
