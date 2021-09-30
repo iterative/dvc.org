@@ -1,11 +1,11 @@
 ---
 title: September '21 Community Gems
 date: 2021-09-30
-description: |
+description: >
   A roundup of technical Q&A's from the DVC and CML communities.
   This month: data registries, working with DVC remotes,
   queued experiments, and more.
-descriptionLong: |
+descriptionLong: >
   A roundup of technical Q&A's from the DVC and CML community.
   This month: data registries, working with DVC remotes,
   queued experiments, and more.
