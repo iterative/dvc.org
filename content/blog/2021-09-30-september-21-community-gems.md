@@ -20,25 +20,6 @@ tags:
   - Git
 ---
 
-### [If I already have several projects and want to build a data registry out of those, how would I do that?](https://discord.com/channels/485586884165107732/563406153334128681/879651401318400021)
-
-Great question from @m41n314c!
-
-There are a couple of ways you can do this.
-
-The recommended and most secure approach is to move your data to a new repo or
-import the data from source repos, like a distributed data registry.
-
-You can import into the registry from your other projects with `dvc import` and
-`dvc add`. Keep in mind that imported data stays stored with the original source
-repo, so people will need to have access to that repo and remote to access the
-imported data in the registry.
-
-Look at the
-[Data Registry use case](https://dvc.org/doc/use-cases/data-registries) where
-you can learn more about data registry management and how other projects can
-interact with the registry.
-
 ### [Is there a way to share data across multiple on-premise machines so that users can train models individually?](https://discord.com/channels/485586884165107732/563406153334128681/879718738163826698)
 
 This is a good scenario to try out one of these use cases:
