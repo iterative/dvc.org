@@ -35,8 +35,8 @@ To switch to the new branch run:
         git checkout my-branch
 ```
 
-Note that DVC doesn't switch into the new branch. You can create one or more branches from
-existing experiments, and switch into any one manually like this:
+Note that DVC doesn't switch into the new branch. You can create one or more
+branches from existing experiments, and switch into any one manually like this:
 
 ```dvc
 $ git checkout my-branch
@@ -85,5 +85,5 @@ this experiment directly in the <abbr>repository</abbr>. DVC-tracked data and
 artifacts are already in the DVC cache, and the rest (params, code and config
 files, etc.) can be stored in Git.
 
-> Please note that you need to
-`dvc push` in order to share or backup the DVC cache contents.
+> Please note that you need to `dvc push` in order to share or backup the DVC
+> cache contents.
