@@ -4,10 +4,9 @@ date: 2021-03-15
 description: >
   Monthly updates are here! News, use cases, videos, journal publications and
   more!
-descriptionLong: |
-  Monthly updates are here! Read all about our growing team,
-  our CEO's interview on TFIR, Elle's talk at DataTalks.Club Conference and
-  more!
+descriptionLong: >
+  Monthly updates are here! Read all about our growing team, our CEO's interview
+  on TFIR, Elle's talk at DataTalks.Club Conference and more!
 picture: 2021-03-15/mar21cover.png
 author: jeny_defigueiredo
 commentsUrl: https://discuss.dvc.org/t/march-21-heartbeat/703

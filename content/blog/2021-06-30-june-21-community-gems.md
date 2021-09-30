@@ -4,10 +4,9 @@ date: 2021-06-30
 description: >
   A roundup of technical Q&A's from the DVC community. This month: DVC pipeline
   configs, working with remotes, file handling and more.
-descriptionLong: |
-  A roundup of technical Q&A's from the DVC community.
-  This month: DVC pipeline configs, working with remotes,
-  file handling and more.
+descriptionLong: >
+  A roundup of technical Q&A's from the DVC community. This month: DVC pipeline
+  configs, working with remotes, file handling and more.
 picture: 2021-06-30/gems-cover.png
 author: milecia_mcgregor
 commentsUrl: https://discuss.dvc.org/t/june-21-community-gems/779

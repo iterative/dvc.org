@@ -4,9 +4,9 @@ date: 2021-02-16
 description: >
   Monthly updates are here! Read all about our growing team, our CEO's interview
   on The New Stack, integration with spaCy and more!
-descriptionLong: |
-  Monthly updates are here! Read all about our growing team,
-  our CEO's interview on The New Stack, integration with spaCy and more!
+descriptionLong: >
+  Monthly updates are here! Read all about our growing team, our CEO's interview
+  on The New Stack, integration with spaCy and more!
 picture: 2021-02-16/feb21cover.png
 author: jeny_defigueiredo
 commentsUrl: https://discuss.dvc.org/t/february-21-heartbeat/669

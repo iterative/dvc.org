@@ -4,7 +4,7 @@ date: 2020-06-26
 description: >
   A virtual poster for SciPy 2020 about sharing versioned datasets and ML models
   with DVC.
-descriptionLong: |
+descriptionLong: >
   A virtual poster for SciPy 2020 about sharing versioned datasets and ML models
   with DVC.
 picture: 2020-06-26/SciPy_2020.png

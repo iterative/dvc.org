@@ -5,7 +5,7 @@ description: >
   Catch our monthly updates- featuring new video docs and talks, new jobs at
   DVC, and must-read contributions from the community about MLOps, data science
   with R, and ML in production.
-descriptionLong: |
+descriptionLong: >
   Catch our monthly updates- featuring new video docs and talks, new jobs at
   DVC, and must-read contributions from the community about MLOps, data science
   with R, and ML in production.

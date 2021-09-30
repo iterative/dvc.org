@@ -4,10 +4,9 @@ date: 2021-07-27
 description: >
   A roundup of technical Q&A's from the DVC community. This month: self-hosted
   runners, DVC commits, troubleshooting remotes, and more.
-descriptionLong: |
-  A roundup of technical Q&A's from the DVC community.
-  This month: self-hosted runners, DVC commits,
-  troubleshooting remotes, and more.
+descriptionLong: >
+  A roundup of technical Q&A's from the DVC community. This month: self-hosted
+  runners, DVC commits, troubleshooting remotes, and more.
 picture: 2021-07-27/gems-cover.png
 author: milecia_mcgregor
 commentsUrl: https://discuss.dvc.org/t/july-21-community-gems/823

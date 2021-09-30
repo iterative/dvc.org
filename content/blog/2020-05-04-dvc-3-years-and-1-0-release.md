@@ -5,7 +5,7 @@ description: >
   Today, we've got three big announcements: 🎉 3rd-year anniversary of DVC, 🚀
   DVC 1.0 pre-release is ready and ⭐ 5000 GitHub starts.
 
-descriptionLong: |
+descriptionLong: >
   Today, we've got three big announcements.
 
   🎉 3rd-year anniversary of DVC

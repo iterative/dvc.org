@@ -5,7 +5,7 @@ description: >
   Announcing our first meetup in San Francisco, kicking off Google Season of
   Docs program, sharing Open Source Summit experience, and more news, links, and
   gems.
-descriptionLong: |
+descriptionLong: >
   Every month we are sharing here our news, findings, interesting reads,
   community takeaways, and everything along the way.
 

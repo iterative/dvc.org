@@ -5,7 +5,7 @@ description: >
   A roundup of technical Q&A's from the DVC community. This month: best
   practices for config files, pipeline dependency management,and caching data
   for CI/CD. Plus a new CML feature to launch cloud compute with Terraform!
-descriptionLong: |
+descriptionLong: >
   A roundup of technical Q&A's from the DVC community. This month: best
   practices for config files, pipeline dependency management,and caching data
   for CI/CD. Plus a new CML feature to launch cloud compute with Terraform!

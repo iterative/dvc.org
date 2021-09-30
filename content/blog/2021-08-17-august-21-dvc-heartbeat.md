@@ -4,15 +4,10 @@ date: 2021-08-17
 description: >
   Monthly updates are here! The new data centricity focus, a comparison of DVC,
   MLFlow and Metaflow, tutorials and tool stacks, doc updates and more!
-descriptionLong: |
-  This month you will find:
-  - 🧑🏽‍💻 Data-centric for the win,
-  - 🧐 Comparison of DVC, MLFlow and Metaflow,
-  - 🛠 Tutorials and Tool Stacks,
-  - 📈 DVC + Streamlit = ❤️,
-  - 📖 Doc Updates,
-  - 🎥 July Meetup Video available,
-  - 🚀 and more!
+descriptionLong: >
+  This month you will find: - 🧑🏽‍💻 Data-centric for the win, - 🧐 Comparison of
+  DVC, MLFlow and Metaflow, - 🛠 Tutorials and Tool Stacks, - 📈 DVC + Streamlit
+  = ❤️, - 📖 Doc Updates, - 🎥 July Meetup Video available, - 🚀 and more!
 picture: 2021-08-17/august21cover.png
 author: jeny_defigueiredo
 commentsUrl: https://discuss.dvc.org/t/august-heartbeat/843

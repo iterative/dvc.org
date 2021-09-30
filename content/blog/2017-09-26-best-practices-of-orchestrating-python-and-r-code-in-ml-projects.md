@@ -4,7 +4,7 @@ date: 2017-09-26
 description: >
   What is the best way to integrate R and Python languages in one data science
   project? What are the best practices?
-descriptionLong: |
+descriptionLong: >
   Today, data scientists are generally divided among two languages — some prefer
   R, some prefer Python. I will try to find an answer to a question: “What is
   the best way to integrate both languages in one data science project? What are

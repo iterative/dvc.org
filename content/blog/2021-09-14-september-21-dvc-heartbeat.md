@@ -5,12 +5,17 @@ description: >
   Monthly updates are here! Awesome new tutorials and guides from the Community,
   cat's out of the bag on VS Code extension, doc updates, DVC + Streamlit Meetup
   video, and more!
-descriptionLong: |
+descriptionLong: >
   This month you will find:
+
   - 🛠 New Tutorials and Guides,
+
   - 🤫 VS Code extension,
+
   - 📖 Doc Updates!,
+
   - 🎥 August Meetup Video available,
+
   - 🚀 and more!
 picture: 2021-09-14/september21cover.png
 author: jeny_defigueiredo
