@@ -1,7 +1,7 @@
 ---
 title: 'New Video! 🎥 Reimagining DevOps for Machine Learning'
 date: 2020-03-31
-description: |
+description: >
   A talk about CI/CD with fuzzy animals.
 descriptionLong: |
   As machine learning matures, we need to find better ways to

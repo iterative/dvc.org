@@ -1,16 +1,14 @@
 ---
 title: The Road to Hell Starts with Good MLOps Intentions
 date: 2021-09-07
-description: |
-  Why we believe extending best practices of software engineering to machine 
-  learning projects will streamline ML and AI development and keep all of us
-  off the road to hell.
-
+description: >
+  Why we believe extending best practices of software engineering to machine
+  learning projects will streamline ML and AI development and keep all of us off
+  the road to hell.
 descriptionLong: |
-  Our philosophy on how ML and AI should be developed.  Why we believe extending 
-  the best practices of software engineering to the machine learning space will 
+  Our philosophy on how ML and AI should be developed.  Why we believe extending
+  the best practices of software engineering to the machine learning space will
   ultimately be the most effective solution for MLOps.
-
 picture: 2021-09-07/hell.png
 pictureComment: Let's avoid hell, shall we?
 author: dmitry_petrov

@@ -1,13 +1,12 @@
 ---
 title: January '21 Community Gems
 date: 2021-01-26
-description: |
-  A roundup of technical Q&A's from the DVC community. 
-  This month: parallelize your data transfer, 
-  compressed datasets, and DVC pipelines in CI/CD.
+description: >
+  A roundup of technical Q&A's from the DVC community. This month: parallelize
+  your data transfer,  compressed datasets, and DVC pipelines in CI/CD.
 descriptionLong: |
-  A roundup of technical Q&A's from the DVC community. 
-  This month: parallelize your data transfer, 
+  A roundup of technical Q&A's from the DVC community.
+  This month: parallelize your data transfer,
   compressed datasets, and DVC pipelines in CI/CD.
 picture: 2021-01-28/gems-cover.png
 author: elle_obrien

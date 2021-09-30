@@ -1,12 +1,12 @@
 ---
 title: May '21 Community Gems
 date: 2021-05-28
-description: |
-  A roundup of technical Q&A's from the DVC and CML community. 
-  This month: remote storage integration, removing old experiments,
-  ideas for running CML pipeline reports and more.
+description: >
+  A roundup of technical Q&A's from the DVC and CML community. This month:
+  remote storage integration, removing old experiments, ideas for running CML
+  pipeline reports and more.
 descriptionLong: |
-  A roundup of technical Q&A's from the [DVC](#dvc) and [CML](#cml) community. 
+  A roundup of technical Q&A's from the [DVC](#dvc) and [CML](#cml) community.
   This month: remote storage integration, removing old experiments,
   ideas for running CML pipeline reports and more.
 picture: 2021-05-28/gems-cover.png

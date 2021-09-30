@@ -1,7 +1,7 @@
 ---
 title: June ’19 DVC❤️Heartbeat
 date: 2019-06-26
-description: |
+description: >
   First DVC user survey, sharing our PyCon experience, new portion of Discord
   discussions, and articles either created or brought to us by our community.
 descriptionLong: |

@@ -1,18 +1,14 @@
 ---
 title: February '21 Community Gems
 date: 2021-02-26
-description: |
-  A roundup of technical Q&A's from the DVC community. 
-  This month: best practices for config files, pipeline
-  dependency management,and caching data for CI/CD.
-  Plus a new CML feature to launch cloud compute with 
-  Terraform!
+description: >
+  A roundup of technical Q&A's from the DVC community. This month: best
+  practices for config files, pipeline dependency management,and caching data
+  for CI/CD. Plus a new CML feature to launch cloud compute with Terraform!
 descriptionLong: |
-  A roundup of technical Q&A's from the DVC community. 
-  This month: best practices for config files, pipeline
-  dependency management,and caching data for CI/CD.
-  Plus a new CML feature to launch cloud compute with 
-  Terraform!
+  A roundup of technical Q&A's from the DVC community. This month: best
+  practices for config files, pipeline dependency management,and caching data
+  for CI/CD. Plus a new CML feature to launch cloud compute with Terraform!
 picture: 2021-02-26/feb-gems-cover.png
 author: elle_obrien
 commentsUrl: https://discuss.dvc.org/t/february-21-community-gems/686

@@ -1,10 +1,9 @@
 ---
 title: June '21 Community Gems
 date: 2021-06-30
-description: |
-  A roundup of technical Q&A's from the DVC community.
-  This month: DVC pipeline configs, working with remotes,
-  file handling and more.
+description: >
+  A roundup of technical Q&A's from the DVC community. This month: DVC pipeline
+  configs, working with remotes, file handling and more.
 descriptionLong: |
   A roundup of technical Q&A's from the DVC community.
   This month: DVC pipeline configs, working with remotes,
