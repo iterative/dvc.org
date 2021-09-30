@@ -142,8 +142,8 @@ It's the same as the one we ran last time.
 
 ```dvc
 $ dvc exp show --no-timestamp \
---include-metrics step,acc,val_acc,loss,val_loss \
---include-params lr,momentum
+    --include-metrics step,acc,val_acc,loss,val_loss \
+    --include-params lr,momentum
 ```
 
 Now you'll have a table that shows both experiments and you can see how much
