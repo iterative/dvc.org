@@ -5,11 +5,14 @@ description: >
   Monthly updates are here! Great new tutorials from the Community, uptick in
   jobs requiring DVC, awesome Community discussion on experiments at our June
   Meetup and a cipher. Can you figure it out?
-descriptionLong: >
-  This month you will find: - 📈 DVC + Streamlit = ❤️, - 🇯🇵 DVC in Japanese, -
-  📖 A new Udacity Course that includes DVC, - 🧑🏽‍💻 More and more jobs
-  requiring DVC - 🧪 June Meetup on Experiments, - 🚀 New team member, a secret
-  code and more!
+descriptionLong: |
+  This month you will find:
+  - 📈 DVC + Streamlit = ❤️,
+  - 🇯🇵 DVC in Japanese,
+  - 📖 A new Udacity Course that includes DVC,
+  - 🧑🏽‍💻 More and more jobs requiring DVC
+  - 🧪 June Meetup on Experiments,
+  - 🚀 New team member, a secret code and more!
 picture: 2021-07-16/july21cover.png
 author: jeny_defigueiredo
 commentsUrl: https://discuss.dvc.org/t/july-heartbeat/825
