@@ -1,8 +1,8 @@
 # dvclive.next_step()
 
-Signals that the current step has ended. Check the
-[init parameters](/doc/dvclive/api-reference/init#parameters) for configuring
-the behavior.
+Signals that the current step has ended increases `step` value by 1(one). Check
+the [init parameters](/doc/dvclive/api-reference/init#parameters) for
+configuring the behavior.
 
 ```py
 def next_step()

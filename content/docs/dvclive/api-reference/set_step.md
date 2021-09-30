@@ -1,6 +1,6 @@
 # dvclive.set_step()
 
-Updates the `step` value.
+Signals that the current step has ended and updates `step` with the given value.
 
 ```py
 def set_step(step: int):
