@@ -12,7 +12,8 @@ descriptionLong: |
   📖 MLOps learning opportunities,
   💻 R with DVC,
   🎥 Conference videos from our team members,
-  🚀 Info on our growing team, and more!picture: 2021-06-18/june21cover.png
+  🚀 Info on our growing team, and more!
+picture: 2021-06-18/june21cover.png
 author: jeny_defigueiredo
 commentsUrl: https://discuss.dvc.org/t/june-21-heartbeat/793
 tags:
