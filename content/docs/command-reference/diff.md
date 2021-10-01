@@ -30,9 +30,9 @@ branch or tag name, Git commit hash, etc.
 It defaults to comparing the current workspace and the last commit (`HEAD`), if
 arguments `a_rev` and `b_rev` are not specified.
 
-Options `--json` and `--show-hash` can be used to modify format of the
-output of this command. See the [Options](#options) and [Examples](#examples)
-sections below for more details.
+Options `--json` and `--show-hash` can be used to modify format of the output of
+this command. See the [Options](#options) and [Examples](#examples) sections
+below for more details.
 
 `dvc diff` does not have an effect when the repository is not tracked by Git,
 for example when `dvc init` was used with the `--no-scm` option.
@@ -56,8 +56,8 @@ for example when `dvc init` was used with the `--no-scm` option.
   $ dvc diff --targets t1.json t2.yaml -- HEAD v1
   ```
 
-- `--json` - prints the command's output in easily parsable JSON format,
-  instead of a human-readable table.
+- `--json` - prints the command's output in easily parsable JSON format, instead
+  of a human-readable table.
 
 - `--md` - prints the command's output in Markdown table format.
 

@@ -62,8 +62,8 @@ specified with the `--targets` option.
 
 - `--deps` - include only parameters that are stage dependencies.
 
-- `--json` - prints the command's output in easily parsable JSON format,
-  instead of a human-readable table.
+- `--json` - prints the command's output in easily parsable JSON format, instead
+  of a human-readable table.
 
 - `--md` - prints the command's output in the Markdown table format.
 

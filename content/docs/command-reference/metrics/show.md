@@ -44,8 +44,8 @@ compares them with a previous version.
   well as in the workspace. This prints metrics in the entire commit history of
   the project.
 
-- `--json` - prints the command's output in easily parsable JSON format,
-  instead of a human-readable table.
+- `--json` - prints the command's output in easily parsable JSON format, instead
+  of a human-readable table.
 
 - `--md` - prints the command's output in Markdown table format.
 

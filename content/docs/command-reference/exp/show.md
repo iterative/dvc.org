@@ -112,8 +112,8 @@ metric or param.
 - `--sha` - display Git commit (SHA) hashes instead of branch, tag, or
   experiment names.
 
-- `--json` - prints the command's output in easily parsable JSON format,
-  instead of a human-readable table.
+- `--json` - prints the command's output in easily parsable JSON format, instead
+  of a human-readable table.
 
 - `--csv` - prints the command's output in CSV format instead of a
   human-readable table.

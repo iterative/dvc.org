@@ -142,8 +142,8 @@ that.
   [remote storage](/doc/command-reference/remote) to compare against (see
   `dvc remote list`. Implies `--cloud`.
 
-- `--json` - prints the command's output in easily parsable JSON format,
-  instead of a human-readable table.
+- `--json` - prints the command's output in easily parsable JSON format, instead
+  of a human-readable table.
 
 - `-j <number>`, `--jobs <number>` - parallelism level for DVC to access data
   from remote storage. This only applies when the `--cloud` option is used, or a
