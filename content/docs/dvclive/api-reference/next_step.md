@@ -38,8 +38,3 @@ When [checkpoints](/doc/user-guide/experiment-management/checkpoints) are
 enabled in the <abbr>pipeline</abbr>, `DVC` will
 [create a new checkpoint](/doc/dvclive/user-guide/dvclive-with-dvc#checkpoints)
 on each `dvclive.next_step()` call.
-
-## Exceptions
-
-- `dvclive.error.InitializationError` - If `dvclive` has not been properly
-  initialized (i.e. by calling `dvclive.init()` or `dvclive.log()`).
