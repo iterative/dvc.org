@@ -26,10 +26,10 @@ number.
 Each metric logged in between `dvclive.set_step()` calls will be associated to
 the provided `step` value.
 
-### DVC Integration
+### DVC integration
 
 When `dvclive` is used alongside `DVC`, each `dvclive.set_step()` call will have
-additional features.
+additional outcomes.
 
 By default, on each `dvclive.set_step()` call, `DVC` will prepare an
 [HTML report](/doc/dvclive/user-guide/dvclive-with-dvc#html-report) with all the
@@ -47,7 +47,7 @@ Given the [Usage](#usage) code snippet above, the
 would be:
 
 ```dvc
-cat dvclive/metric_1.tsv
+$ cat dvclive/metric_1.tsv
 timestamp	step	metric_1
 1614129197192	0	0.9
 1614129198031   10	0.9
