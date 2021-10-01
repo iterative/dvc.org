@@ -54,8 +54,8 @@ all the current experiments (without comparisons).
 
 - `--param-deps` - include only parameters that are stage dependencies.
 
-- `--json` - prints the command's output in easily parsable JSON format,
-  instead of a human-readable table.
+- `--json` - prints the command's output in easily parsable JSON format, instead
+  of a human-readable table.
 
 - `--md` - prints the command's output in the Markdown table format
   ([GFM](https://github.github.com/gfm/#tables-extension-)).
