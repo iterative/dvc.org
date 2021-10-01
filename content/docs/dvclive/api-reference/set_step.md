@@ -28,7 +28,7 @@ the provided `step` value.
 ### DVC integration
 
 When `dvclive` is used alongside `DVC`, each `dvclive.set_step()` call will have
-additional outcomes.
+additional effects.
 
 By default, on each `dvclive.set_step()` call, `DVC` will prepare an
 [HTML report](/doc/dvclive/user-guide/dvclive-with-dvc#html-report) with all the
