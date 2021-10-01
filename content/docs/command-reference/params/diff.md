@@ -11,7 +11,7 @@ the <abbr>DVC repository</abbr>, or between a commit and the
 ```usage
 usage: dvc params diff [-h] [-q | -v]
                        [--targets [<paths> [<paths> ...]]] [--all]
-                       [--deps] [--show-json] [--show-md] [--no-path]
+                       [--deps] [--json] [--md] [--no-path]
 
 positional arguments:
   a_rev          Old Git commit to compare (defaults to HEAD)
@@ -62,10 +62,10 @@ specified with the `--targets` option.
 
 - `--deps` - include only parameters that are stage dependencies.
 
-- `--show-json` - prints the command's output in easily parsable JSON format,
+- `--json` - prints the command's output in easily parsable JSON format,
   instead of a human-readable table.
 
-- `--show-md` - prints the command's output in the Markdown table format.
+- `--md` - prints the command's output in the Markdown table format.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 

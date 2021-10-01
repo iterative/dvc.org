@@ -7,7 +7,7 @@ Show changes in [metrics](/doc/command-reference/metrics) and
 
 ```usage
 usage: dvc exp diff [-h] [-q | -v] [--all] [--param-deps]
-                    [--show-json] [--show-md] [--old]
+                    [--json] [--md] [--old]
                     [--no-path] [--precision <n>]
                     [a_rev] [b_rev]
 positional arguments:
@@ -54,10 +54,10 @@ all the current experiments (without comparisons).
 
 - `--param-deps` - include only parameters that are stage dependencies.
 
-- `--show-json` - prints the command's output in easily parsable JSON format,
+- `--json` - prints the command's output in easily parsable JSON format,
   instead of a human-readable table.
 
-- `--show-md` - prints the command's output in the Markdown table format
+- `--md` - prints the command's output in the Markdown table format
   ([GFM](https://github.github.com/gfm/#tables-extension-)).
 
 - `--old` - include the "Old" value column in addition to the new "Value" (and

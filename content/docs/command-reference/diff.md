@@ -9,7 +9,7 @@ workspace.
 ```usage
 usage: dvc diff [-h] [-q | -v]
                 [--targets [<paths> [<paths> ...]]]
-                [--show-json] [--show-hash] [--show-md]
+                [--json] [--show-hash] [--md]
                 [a_rev] [b_rev]
 
 positional arguments:
@@ -30,7 +30,7 @@ branch or tag name, Git commit hash, etc.
 It defaults to comparing the current workspace and the last commit (`HEAD`), if
 arguments `a_rev` and `b_rev` are not specified.
 
-Options `--show-json` and `--show-hash` can be used to modify format of the
+Options `--json` and `--show-hash` can be used to modify format of the
 output of this command. See the [Options](#options) and [Examples](#examples)
 sections below for more details.
 
@@ -56,10 +56,10 @@ for example when `dvc init` was used with the `--no-scm` option.
   $ dvc diff --targets t1.json t2.yaml -- HEAD v1
   ```
 
-- `--show-json` - prints the command's output in easily parsable JSON format,
+- `--json` - prints the command's output in easily parsable JSON format,
   instead of a human-readable table.
 
-- `--show-md` - prints the command's output in Markdown table format.
+- `--md` - prints the command's output in Markdown table format.
 
 - `--show-hash` - print file and directory hash values along with their path.
   Useful for debug purposes.
@@ -188,7 +188,7 @@ Let's use the same command as above, but with JSON output and including hash
 values:
 
 ```dvc
-$ dvc diff --show-json --show-hash \
+$ dvc diff --json --show-hash \
            baseline-experiment bigrams-experiment
 ```
 

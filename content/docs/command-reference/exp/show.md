@@ -14,7 +14,7 @@ usage: dvc exp show [-h] [-q | -v] [-a] [-T] [-A] [-n <num>]
                     [--exclude-params <params_list>] [--param-deps]
                     [--sort-by <metric/param>]
                     [--sort-order {asc,desc}] [--no-timestamp] [--sha]
-                    [--show-json] [--show-csv] [--precision <n>]
+                    [--json] [--csv] [--precision <n>]
 ```
 
 ## Description
@@ -112,10 +112,10 @@ metric or param.
 - `--sha` - display Git commit (SHA) hashes instead of branch, tag, or
   experiment names.
 
-- `--show-json` - prints the command's output in easily parsable JSON format,
+- `--json` - prints the command's output in easily parsable JSON format,
   instead of a human-readable table.
 
-- `--show-csv` - prints the command's output in CSV format instead of a
+- `--csv` - prints the command's output in CSV format instead of a
   human-readable table.
 
 - `--precision <n>` -
