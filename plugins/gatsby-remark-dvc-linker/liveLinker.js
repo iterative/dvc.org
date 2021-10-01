@@ -3,7 +3,7 @@
 const { createLinkNode } = require('./helpers')
 const { getItemByPath } = require('../../src/utils/shared/sidebar')
 
-const LIVE_API_REGEXP = /dvclive.([a-z-._]*\(\)$)?|DVCLive\(\)/
+const LIVE_API_REGEXP = /dvclive.([a-z-._]*\(\)$)?/
 const METHOD_REGEXP = /^[a-z-._]*\(\)$/
 const INIT_REGEXP = /DVCLive\(\)/
 const API_ROOT = '/doc/dvclive/api-reference/'
@@ -12,7 +12,10 @@ module.exports = astNode => {
   const node = astNode[0]
   const parent = astNode[2]
 
-  if (parent.type !== 'link' && LIVE_API_REGEXP.test(node.value)) {
+  if (
+    (parent.type !== 'link' && LIVE_API_REGEXP.test(node.value)) ||
+    INIT_REGEXP.test(node.value)
+  ) {
     let method
     if (INIT_REGEXP.test(node.value)) {
       method = 'init'
