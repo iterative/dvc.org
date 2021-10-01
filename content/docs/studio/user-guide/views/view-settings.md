@@ -104,15 +104,19 @@ they are not saved into Git. It does not access any other data in your remote
 storage. And you do not need to provide the credentials if any DVC data remote
 in not used in your Git repository.
 
-### Tracking scope
+### Mandatory columns
 
-DVC Studio can track upto 200 metrics, parameters, and files. If you have more
-than 200 values in your Git repository, you can specify which ones to track and
-which ones to leave out. To ensure that a value is included, make sure that it
-is selected in the tracking scope. Any value that is not selected may not
-display in your view.
+If your repository has more than 200 columns, you can specify which columns are
+mandatory to import. DVC Studio will also import the unselected columns, but
+upto a maximum of 200 columns. This means that any column that is not selected
+may not be imported, and hence may not be displayed in your view.
 
 ![](https://static.iterative.ai/img/studio/view_settings_tracking_scope.png)
+
+Note that some non-mandatory columns will also be imported if there are less
+than 200 mandatory columns. If you would like to hide specific columns from your
+view, you can do so in the view itself. For this, refer to
+[Display preferences -> Columns](/doc/studio/user-guide/explore-experiments#display-preferences).
 
 ### Custom metrics and parameters
 
