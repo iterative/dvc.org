@@ -118,6 +118,13 @@ than 200 mandatory columns. If you would like to hide specific columns from your
 view, you can do so in the view itself. For this, refer to
 [Display preferences -> Columns](/doc/studio/user-guide/explore-experiments#display-preferences).
 
+If your view is missing some required columns or includes columns that you do
+not want, refer to the following troubleshooting sections to understand why this
+may have happened.
+
+- [View does not contain the columns that I want](/doc/studio/troubleshooting#view-does-not-contain-the-columns-that-i-want)
+- [View contains columns that I did not import](/doc/studio/troubleshooting#view-contains-columns-that-i-did-not-import)
+
 ### Custom metrics and parameters
 
 If you want to connect custom files, you can add them by clicking the `Add file`
