@@ -1,7 +1,7 @@
 # PyTorch Lightning
 
 DVCLive allows you to easily add experiment tracking capabilities to your
-Hugging Face projects.
+PyTorch Lightning projects.
 
 ## About PyTorch Lightning
 
