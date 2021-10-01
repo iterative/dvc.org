@@ -19,7 +19,9 @@ We will refer to a training script (`train.py`) already using `dvclive`:
 ```python
 # train.py
 
-import dvclive
+from dvclive import DVCLive
+
+dvclive = DVCLive()
 
 for epoch in range(NUM_EPOCHS):
     train_model(...)
@@ -65,11 +67,7 @@ command options for the DVC integration:
   [summary](/doc/dvclive/get-started#metrics-summary) generation.
 - `--live-no-html` - deactivates [HTML report](#html-report) generation.
 
-> Note that these are convenience CLI options. You can still use
-> `dvclive.init()` manually, which will override any options sent to
-> `dvc stage add`. Just be careful to match the `--live` value (CLI) and `path`
-> argument (code). Also, note that summary files are never tracked by DVC
-> automatically.
+> Note that summary files are never tracked by DVC
 
 Run the training with `dvc repro`:
 
