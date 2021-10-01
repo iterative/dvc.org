@@ -19,9 +19,8 @@ for step in [0, 10, 20]:
 
 ## Description
 
-DVCLive uses the `step` to track the progress of each metric logged with
-`dvclive.log()`. You can use `dvclive.set_step()` to set the `step` value to any
-number.
+DVCLive uses the `step` value to track the progress of each metric logged with
+`dvclive.log()`. You can use `dvclive.set_step()` to set `step` to any value.
 
 Each metric logged in between `dvclive.set_step()` calls will be associated to
 the provided `step` value.
