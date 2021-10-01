@@ -11,7 +11,9 @@ def next_step()
 #### Usage:
 
 ```py
-import dvclive
+from dvclive import DVCLive
+
+dvclive = DVCLive()
 
 for step in range(3):
     dvclive.log("metric", 0.9)
@@ -20,23 +22,8 @@ for step in range(3):
 
 ## Description
 
-Each call to `dvclive.next_step()` will behave depending on the parameters
-selected in `dvclive.init()` and whether `DVC` is available or not.
-
-If `summary` is True, on each `dvclive.next_step()` call, DVCLive will generate
-a summary of the values previously logged with `dvclive.log()`, and increase the
-[`step`](/doc/dvclive/api-reference/get_step) count.
-
-The _metrics summary_ will be saved to `{path}.json`. Here's an example:
-
-```json
-{
-  "step": 2,
-  "metric": 0.9
-}
-```
-
-> 💡 These JSON files can be visualized with `dvc metrics`.
+Each call to `dvclive.next_step()` will behave depending on whether `DVC` is
+available or not.
 
 ### DVC Integration
 

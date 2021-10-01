@@ -1,7 +1,6 @@
 # Get Started
 
-DVCLive is a simple Python library whose interface consists of three main
-methods.
+DVCLive is a simple Python library whose interface consists of three main steps.
 
 ## Steps
 

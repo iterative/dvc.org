@@ -1,7 +1,7 @@
 # dvclive.log()
 
-Generates _metrics logs_ (usable by `dvc plots`) by saving the given `name`:
-`val` pair to a `.tsv` file.
+Generates [_metrics logs_](/doc/dvclive/get-started#metrics-logs) (usable by
+`dvc plots`) by saving the given `name`: `val` pair to a `.tsv` file.
 
 ```py
  def log(name: str, val: float, step: int = None):
@@ -10,7 +10,9 @@ Generates _metrics logs_ (usable by `dvc plots`) by saving the given `name`:
 #### Usage:
 
 ```py
-import dvclive
+from dvclive import DVCLive
+
+dvclive = DVCLive()
 
 dvclive.log("loss", 0.9)
 ```
@@ -36,18 +38,17 @@ The created file `{path}/{name}.tsv` is usable by `dvc plots`.
 be created and the file will be saved inside the last subfolder (i.e.
 `{path}/train/loss.tsv`).
 
-💡 If you call `dvclive.log()` without calling `dvclive.init()` first, `dvclive`
-will automatically initialize itself using either default values or environment
-variables (when used alongside `DVC`).
+If `summary` is True, `dvclive.log()` DVCLive will update the
+[_metrics summary_](/doc/dvclive/get-started#metrics-summary) with the latest
+value logged.
+
+The updated summary `{path}.json` is usable by `dvc metrics`.
 
 ## Parameters
 
 - `name` - The _metrics logs_ will be saved in `{path}/{name}.tsv`.
 
 - `val` - The value to be added in the `name` column of a new row.
-
-- `step` (`None` by default) - The value to be added in the `step` column of a
-  new row. If `None`, the value of `dvclive.get_step()` will be used.
 
 ## Exceptions
 
