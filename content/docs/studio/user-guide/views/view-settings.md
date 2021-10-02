@@ -111,7 +111,7 @@ mandatory to import. DVC Studio will also import the unselected columns, but
 upto a maximum of 200 columns. This means that any column that is not selected
 may not be imported, and hence may not be displayed in your view.
 
-![](https://static.iterative.ai/img/studio/view_settings_tracking_scope.png)
+![](https://static.iterative.ai/img/studio/view_settings_mandatory_columns.png)
 
 Note that some non-mandatory columns will also be imported if there are less
 than 200 mandatory columns. If you would like to hide specific columns from your
