@@ -118,6 +118,18 @@ options:
   ```dvc
   $ dvc remote modify myremote region us-east-2
   ```
+  
+- `read_timeout` - change S3 read_timeout:
+
+  ```dvc
+  $ dvc remote modify myremote read_timeout 10000
+  ```
+  
+- `connect_timeout` - change S3 connect_timeout:
+
+  ```dvc
+  $ dvc remote modify myremote connect_timeout 10000
+  ```
 
 By default, DVC authenticates using your AWS CLI
 [configuration](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html)
