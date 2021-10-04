@@ -236,24 +236,168 @@ $ dvc exp show --sort-by auc --sort-order desc
 └───────────────────────┴────────┴──────────────────┘
 ```
 
-## Get a JSON or CSV list of experiments to use in scripts
+## Get experiments table in JSON
 
 There may be times when a machine readable format for the experiments is
-required. In its default settings `dvc exp show` lists the experiments in
-visually appealing way that's not suitable to parse in scripts. To get a list of
-experiments with their params and metrics, you can use `--show-json` or
+required. In its default settings `dvc exp show` lists the experiments in a
+visually appealing way that may not be suitable to parse in scripts. To get a
+list of experiments with their params and metrics, you can use `--show-json` or
 `--show-csv` flags.
 
-These flags lead `dvc exp show` to output a JSON or CSV list suitable to pass to
-other commands, e.g., you can use `jq` to filter certain elements, or write a
-custom script to get a custom set of experiments for further processing.
+```dvc
+$ dvc exp show --show-json | jq
+```
 
-An example might be to use these commands to get the name of the best experiment
-automatically.
+```json
+{
+  "workspace": {
+    "baseline": {
+      "data": {
+        "timestamp": null,
+        "params": {
+          "params.yaml": {
+            "data": {
+              "train": {
+                "epochs": 10
+              },
+              "model": {
+                "conv_units": 16
+              }
+            }
+          }
+        },
+        "queued": false,
+        "running": false,
+        "executor": null,
+        "metrics": {
+          "metrics.json": {
+            "data": {
+              "loss": 0.236574187874794,
+              "acc": 0.9126999974250793
+            }
+          }
+        }
+      }
+    }
+  },
+  "23ceb4a6623d46a5c906f265b5846ef2f332f756": {
+    "baseline": {...}
+    "ca55d7d4763d74bfeac2ca08369489c2881c03ac": {...}
+    "6d13f334bbdd6ea40412d4ce9b5d81d6abb731ee": {...}
+    "69503c61df98752b07772415e0715655dc4ccaa0": {...}
+    "49779aa9c863a5503008eae08b03a6e707f8ddad": {...}
+  }
+}
+```
+
+The result is a JSON dictionary with the keys `workspace` and the Git commit IDs
+in SHA-256 digest. These commit IDs are those that the experiments are
+originated from. These commits contain a `baseline` key that denotes the
+baseline experiment of that particular commit and experiment IDs in SHA-256
+digest. The example output above is shortened to show this structure.
+
+Each experiment entry has the following structure:
+
+```json
+"49779aa9c863a5503008eae08b03a6e707f8ddad": {
+      "data": {
+        "timestamp": "2021-09-09T12:53:51",
+        "params": {
+          "params.yaml": {
+            "data": {
+              "train": {
+                "epochs": 10
+              },
+              "model": {
+                "conv_units": 96
+              }
+            }
+          }
+        },
+        "queued": false,
+        "running": false,
+        "executor": null,
+        "metrics": {
+          "metrics.json": {
+            "data": {
+              "loss": 0.2309877723455429,
+              "acc": 0.916100025177002
+            }
+          }
+        },
+        "name": "cnn-96"
+      }
+    }
+```
+
+Thus, you can get all details of the experiments in JSON and reuse them in other
+commands. To show the metrics in the workspace and other commits, for example:
 
 ```dvc
-$ dvc exp show --sort-by auc --sort-order desc --show-csv | head -n 1 | cut -d ',' -f 1
+$ dvc exp show --show-json | jq '.[].baseline.data.metrics'
+{
+  "metrics.json": {
+    "data": {
+      "loss": 0.236574187874794,
+      "acc": 0.9126999974250793
+    }
+  }
+}
+{
+  "metrics.json": {
+    "data": {
+      "loss": 0.236574187874794,
+      "acc": 0.9126999974250793
+    }
+  }
+}
 ```
+
+## Get experiments table in CSV
+
+`dvc exp show` can also output the table in CSV, with `--show-csv`. It includes
+all the data found in the table.
+
+```dvc
+$ dvc exp show --show-csv
+```
+
+```csv
+Experiment,rev,typ,Created,parent,loss,acc,train.epochs,model.conv_units
+,workspace,baseline,,,0.236574187874794,0.9126999974250793,10,16
+baseline-experiment,23ceb4a,baseline,2021-09-06T23:38:07,,0.236574187874794,0.9126999974250793,10,16
+cnn-32,ca55d7d,branch_commit,2021-09-09T13:06:07,,0.2370404303073883,0.916700005531311,10,32
+cnn-64,6d13f33,branch_commit,2021-09-09T13:06:05,,0.2338544875383377,0.9153000116348267,10,64
+cnn-128,69503c6,branch_commit,2021-09-09T12:53:51,,0.2324332743883133,0.9160000085830688,10,128
+cnn-96,49779aa,branch_base,2021-09-09T12:53:51,,0.2309877723455429,0.916100025177002,10,96
+```
+
+You can supply this output to other commands as well. For example with [csvkit],
+you can get a summary statistics about the experiments.
+
+```dvc
+$ dvc exp show --show-csv | csvstat
+...
+7. "acc"
+
+        Type of data:          Number
+        Contains null values:  False
+        Unique values:         5
+        Smallest value:        0.9127
+        Largest value:         0.9167
+        Sum:                   5.4895
+        Mean:                  0.914917
+        Median:                0.91565
+        StDev:                 0.001774
+        Most common values:    0.9127 (2x)
+                               0.9167 (1x)
+                               0.9153 (1x)
+                               0.9161 (1x)
+                               0.916 (1x)
+...
+```
+
+[csvkit]: https://csvkit.readthedocs.io/en/latest/
 
 ## Compare two experiments
 
