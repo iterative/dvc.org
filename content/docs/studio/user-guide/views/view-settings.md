@@ -21,7 +21,7 @@ DVC Studio to be able to access the data required for visualization.
 
 Additionally, you can also configure view settings to
 [change the name](#view-name) of your view and to
-[define the tracking scope](#tracking-scope) for your view.
+[select mandatory columns](#mandatory-columns) to import in your view.
 
 ### Non-DVC repositories
 
