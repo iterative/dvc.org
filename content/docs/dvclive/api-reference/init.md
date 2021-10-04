@@ -1,9 +1,9 @@
-# DVCLive()
+# MetricLogger()
 
 Initializes a DVCLive logger.
 
 ```py
-class DVCLive:
+class MetricLogger:
     DEFAULT_DIR = "dvclive"
 
     def __init__(
@@ -17,9 +17,9 @@ class DVCLive:
 #### Usage:
 
 ```py
-from dvclive import DVCLive
+from dvclive import MetricLogger
 
-dvclive = DVCLive()
+dvclive = MetricLogger()
 ```
 
 ## Description

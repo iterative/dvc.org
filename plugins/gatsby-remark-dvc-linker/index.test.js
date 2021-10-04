@@ -31,8 +31,8 @@ describe('gatsby-remark-dvc-linker', () => {
   }
 
   liveInit = {
-    inlineCode: '`DVCLive()`',
-    url: '[`DVCLive()`](/doc/dvclive/api-reference/init)'
+    inlineCode: '`MetricLogger()`',
+    url: '[`MetricLogger()`](/doc/dvclive/api-reference/init)'
   }
 
   it('composes apiLinker and commandLinker', () => {

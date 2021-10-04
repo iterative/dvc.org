@@ -19,9 +19,9 @@ We will refer to a training script (`train.py`) already using `dvclive`:
 ```python
 # train.py
 
-from dvclive import DVCLive
+from dvclive import MetricLogger
 
-dvclive = DVCLive()
+dvclive = MetricLogger()
 
 for epoch in range(NUM_EPOCHS):
     train_model(...)

@@ -9,12 +9,12 @@ To get it up and running you just need to follow these steps:
 ### 1. Initialize DVCLive
 
 ```python
-from dvclive import DVCLive
+from dvclive import MetricLogger
 
-dvclive = DVCLive()
+dvclive = MetricLogger()
 ```
 
-See `DVCLive()` for details.
+See `MetricLogger()` for details.
 
 ### 2. Log metrics
 
@@ -39,9 +39,9 @@ Using the above steps, you can easily include DVCLive in your training code:
 ```python
 # train.py
 
-from dvclive import DVCLive
+from dvclive import MetricLogger
 
-dvclive = DVCLive()
+dvclive = MetricLogger()
 
 for epoch in range(NUM_EPOCHS):
     train_model(...)
