@@ -152,7 +152,7 @@ $ dvc exp show
 
 ```dvctable
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━┓
-┃ white:**Experiment**    ┃ white:**Created**┃    yellow:**loss** ┃    yellow:**acc** ┃ blue:**train.epochs** ┃ blue:**model.conv_units** ┃
+┃ white:**Experiment**              ┃ white:**Created**      ┃ yellow:**loss**    ┃ yellow:**acc**    ┃ blue:**train.epochs** ┃ blue:**model.conv_units** ┃
 ┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━┩
 │ workspace               │ -            │ 0.23508 │ 0.9151 │ 10           │ 24               │
 │ 7317bc6                 │ Jul 18, 2021 │       - │      - │ 10           │ 16               │
