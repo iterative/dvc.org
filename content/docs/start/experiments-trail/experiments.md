@@ -51,7 +51,7 @@ experiments.
 
 </details>
 
-## 👟 Running the experiment with default parameters
+## ⚙️ Running the experiment with default parameters
 
 The purpose of `dvc exp` subcommands is to run the experiments without
 committing parameter and dependency changes to Git. The artifacts like models,
@@ -112,7 +112,7 @@ Experiment results have been applied to your workspace.
 
 <details>
 
-## 👟👟 Run multiple experiments in parallel
+## ⚙️⚙️ Run multiple experiments in parallel
 
 Instead of running the experiments one-by-one, we can define them to run in a
 batch. This is especially handy when you have long running experiments.
@@ -140,7 +140,7 @@ $ dvc exp run --run-all --jobs 2
 
 </details>
 
-## ↔️ Comparing experiments
+## 🙏️ Comparing experiments
 
 The experiments are run several times with different parameters. We use
 `dvc exp show` to compare all of these experiments. This command presents the
