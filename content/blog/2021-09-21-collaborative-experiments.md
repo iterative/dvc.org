@@ -65,18 +65,12 @@ defines the experiment. You can learn more about how DVC uses custom Git refs in
 Next, you'll need to set up a remote to your data location. This could be an AWS
 S3 bucket, a Google Drive, or
 [one of the other supported storage types](https://dvc.org/doc/command-reference/remote/add#supported-storage-types).
-For this example, we'll be using a Google Drive folder as the remote to handle
-data storage.
+For this example, we'll be using an AWS S3 bucket as the remote to handle data
+storage.
 
-You can learn more about the Google Drive setup in
-[the docs](https://dvc.org/doc/command-reference/remote/add). The main thing you
-need to know is that you need the folder id for the remote location you want to
-set up. You can find that id in the URL for that folder. It'll look similar to
-this.
-
-```dvc
-https://drive.google.com/drive/folders/1k6aUYWphOulJlXgq4XbfKExWGyymTpEl?usp=sharing
-```
+You can learn more about the S3 bucket setup in
+[the docs](https://dvc.org/doc/command-reference/remote/add). The main things
+you need are the bucket name and path. You can find that in your AWS dashboard.
 
 Now that you know what we're doing, let's run the command to set up our DVC
 remote.
