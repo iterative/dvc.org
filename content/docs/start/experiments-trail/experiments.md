@@ -4,9 +4,10 @@ title: 'Get Started: Experiments'
 
 # Get Started with Experiments
 
-In machine learning projects, number of <abbr>experiments</abbr> grow rapidly.
-DVC can track these experiments, list their most relevant parameters and
-metrics, and commit only the ones that we need to Git.
+In machine learning projects, the number of <abbr>experiments</abbr> grows
+rapidly. DVC can track these experiments, list and compare their most relevant
+parameters and metrics, navigate among them, and commit only the ones that we
+need to Git.
 
 In this section, we explore the basic features of DVC experiment management with
 [`get-started-experiments`][gse] project.
@@ -15,7 +16,7 @@ In this section, we explore the basic features of DVC experiment management with
 
 <details>
 
-## ⚙️ Installing the Example Project
+### ⚙️ Installing the Example Project
 
 These commands are run in the [`get-started-experiments`][gse] project. You can
 run the commands in this document after cloning the repository and installing
@@ -25,8 +26,8 @@ the requirements.
 
 Please clone the project and create a virtual environment.
 
-> We create a virtual environment to keep the libraries we use isolated from the
-> rest of your system. This prevents version conflicts.
+> We strongly recommend to create a virtual environment to keep the libraries we
+> use isolated from the rest of your system. This prevents version conflicts.
 
 ```dvc
 $ git clone https://github.com/iterative/get-started-experiments -b get-started
@@ -47,43 +48,6 @@ $ dvc pull
 
 The repository already contains the necessary configuration to run the
 experiments.
-
-## 💡 Preparing a project for DVC experiments
-
-If DVC is not installed to the system, please refer to [install](/doc/install).
-
-In this getting started page, we assume that there is already a configured DVC
-project to simplify the introduction. DVC experiments require a DVC pipeline
-defined in the project.
-
-If DVC is not initialized before in the project, you can do so by:
-
-```dvc
-$ dvc init
-```
-
-DVC also requires commands to be run and their dependencies to be defined as
-stages. We use `dvc stage add` to add a stage and set its dependencies.
-
-```dvc
-$ dvc stage add -n train \
-                -p model.conv_units \
-                -p train.epochs \
-                -d data/images \
-                -m metrics.json \
-                python3 src/train.py
-```
-
-The command tells DVC to create an experiment named `train`, and for any change
-in `data/images/` directory, `model.conv_units` or `train.epochs` parameters, we
-(re)run an experiment using `src/train.py` that produces a new `metrics.json`
-file.
-
-You can learn more about [pipelines], and [parameters] in other sections of the
-documentation.
-
-[pipelines]: /doc/start/data-pipelines
-[parameters]: /doc/start/metrics-parameters-plots
 
 </details>
 
@@ -118,17 +82,15 @@ metrics.
 Earlier versions of DVC uses `dvc repro` to run the pipeline. If you already
 have a DVC project, you may already be using `dvc repro`.
 
-In DVC 2.0 `dvc exp run` supersedes `dvc repro`. We use `dvc repro` to run the
-pipeline as found in the <abbr>workspace</abbr>. All the parameters and
-dependencies are retrieved from the current workspace. It doesn't use any
-special objects to track the experiments or associate parameters with metrics.
+We use `dvc repro` to run the pipeline as found in the <abbr>workspace</abbr>.
+All the parameters and dependencies are retrieved from the current workspace. It
+doesn't use any special objects to track the experiments or associate parameters
+with metrics.
+
 When you have large number of experiments that you don't want to commit all to
 Git, it's better to use `dvc exp run`. It allows to change the parameters
 quickly, can track the history of artifacts and has facilities to compare these
 experiments easily.
-
-`dvc repro` is still available to run the pipeline when these extra features are
-not needed.
 
 </details>
 
@@ -242,7 +204,8 @@ To switch to the new branch run:
         git checkout cnn-256
 ```
 
-You can then checkout and continue from working this branch as usual.
+You can then checkout and continue working from this branch, or merge the branch
+your `main` branch with usual Git commands. .
 
 ## ⭐ Go Further
 
