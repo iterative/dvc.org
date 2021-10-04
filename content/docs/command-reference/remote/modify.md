@@ -909,7 +909,7 @@ by HDFS. Read more about by expanding the WebHDFS section in
   - `basic` -
     [basic authentication scheme](https://tools.ietf.org/html/rfc7617). `user`
     and `password` (or `ask_password`) parameters should also be configured.
-  - `digest` (**deprecated** in 2.7.1) -
+  - `digest` (**removed** in 2.7.1) -
     [digest Access Authentication Scheme](https://tools.ietf.org/html/rfc7616).
     `user` and `password` (or `ask_password`) parameters should also be
     configured.
