@@ -2,6 +2,9 @@
 
 Modify display properties of [plot metrics](/doc/command-reference/plots) files.
 
+> ⚠️ Note that this command can modify only data series plots. Image type plots
+> will not be affected.
+
 ## Synopsis
 
 ```usage
