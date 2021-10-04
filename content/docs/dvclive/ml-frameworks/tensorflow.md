@@ -27,6 +27,10 @@ To ilustrate with some code, extracted from the
 [official TensorFlow guide](https://www.tensorflow.org/guide/keras/writing_a_training_loop_from_scratch):
 
 ```git
++ from dvclive import Live
+
++ dvclive = Live()
+
 for epoch in range(epochs):
     start_time = time.time()
     for step, (x_batch_train, y_batch_train) in enumerate(train_dataset):

@@ -9,9 +9,9 @@ def next_step()
 #### Usage:
 
 ```py
-from dvclive import DVCLive
+from dvclive import Live
 
-dvclive = DVCLive()
+dvclive = Live()
 
 for step in range(3):
     dvclive.log("metric", 0.9)

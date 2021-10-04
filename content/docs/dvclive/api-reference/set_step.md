@@ -9,7 +9,9 @@ def set_step(step: int):
 #### Usage:
 
 ```py
-import dvclive
+from dvclive import Live
+
+dvclive = Live()
 
 for step in [0, 10, 20]:
     dvclive.set_step(step)

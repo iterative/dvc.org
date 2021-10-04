@@ -9,9 +9,9 @@ def get_step() -> int:
 #### Usage:
 
 ```py
-from dvclive import DVCLive
+from dvclive import Live
 
-dvclive = DVCLive()
+dvclive = Live()
 
 while dvclive.get_step() < 3:
     dvclive.log("metric", 0.9)

@@ -649,8 +649,8 @@
         "source": "api-reference/index.md",
         "children": [
           {
-            "slug": "init",
-            "label": "DVCLive()"
+            "slug": "live",
+            "label": "Live()"
           },
           {
             "slug": "log",

@@ -10,9 +10,9 @@ Generates [_metrics logs_](/doc/dvclive/get-started#metrics-logs) (usable by
 #### Usage:
 
 ```py
-from dvclive import DVCLive
+from dvclive import Live
 
-dvclive = DVCLive()
+dvclive = Live()
 
 dvclive.log("loss", 0.9)
 ```

@@ -18,7 +18,7 @@ module.exports = astNode => {
   ) {
     let method
     if (INIT_REGEXP.test(node.value)) {
-      method = 'init'
+      method = 'live'
     } else {
       const parts = node.value.split('.')
       const isMethod = parts[1] && METHOD_REGEXP.test(parts[1])

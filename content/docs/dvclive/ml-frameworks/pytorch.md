@@ -24,9 +24,13 @@ To ilustrate with some code, extracted from the
 [official PyTorch ImageNet example](https://github.com/pytorch/examples/blob/master/imagenet/main.py):
 
 ```git
++ from dvclive import Live
+
++ dvclive = Live()
+
 for epoch in range(args.start_epoch, args.epochs):
     lr = adjust_learning_rate(optimizer, epoch, args)
-+   dvclive.log("learning_rate", lr)
++    dvclive.log("learning_rate", lr)
 
     train_acc1 = train(
         train_loader, model, criterion, optimizer, epoch, args)

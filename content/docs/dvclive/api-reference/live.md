@@ -1,9 +1,9 @@
-# MetricLogger()
+# Live()
 
 Initializes a DVCLive logger.
 
 ```py
-class MetricLogger:
+class Live:
     DEFAULT_DIR = "dvclive"
 
     def __init__(
@@ -17,9 +17,9 @@ class MetricLogger:
 #### Usage:
 
 ```py
-from dvclive import MetricLogger
+from dvclive import Live
 
-dvclive = MetricLogger()
+dvclive = Live()
 ```
 
 ## Description
@@ -37,7 +37,9 @@ all existing DVCLive related files.
 
 If `None` and DVC is enabled (see
 [DVCLive with DVC](/docs/dvclive/dvclive-with-dvc)), the `path` set by DVC will
-be used. Otherwise the default value (`dvclive`) will be used.
+be used.
+
+Otherwise the default value (`dvclive`) will be used.
 
 - `resume` - (`False` by default) - if `True`, DVCLive will try to read the
   previous `step` from the `path` directory and start from that point.
