@@ -48,6 +48,7 @@ what columns and values to display.
   - **File changed:** Whether or not any given file changed in the experiment
 - **Columns:** Select the columns you want to display and hide the rest.
   ![](https://static.iterative.ai/img/studio/show_hide_columns.gif)
+  
   Additionally, you can click and drag the columns in the table to rearrange
   them as per your preferences.
 
