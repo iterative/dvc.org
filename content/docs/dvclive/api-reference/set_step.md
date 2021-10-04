@@ -1,6 +1,6 @@
 # dvclive.set_step()
 
-Signals that the current step has ended and updates `step` with the given value.
+Signals that the current step has ended and sets `step` to the given value.
 
 ```py
 def set_step(step: int):
@@ -22,8 +22,8 @@ for step in [0, 10, 20]:
 DVCLive uses the `step` value to track the progress of each metric logged with
 `dvclive.log()`. You can use `dvclive.set_step()` to set `step` to any value.
 
-Each metric logged in between `dvclive.set_step()` calls will be associated to
-the provided `step` value.
+Each metric logged in between `dvclive.set_step()` (or `dvclive.next_step()`)
+calls will be associated to the provided `step` value.
 
 ### DVC integration
 
@@ -31,13 +31,13 @@ When `dvclive` is used alongside `DVC`, each `dvclive.set_step()` call will have
 additional effects.
 
 By default, on each `dvclive.set_step()` call, `DVC` will prepare an
-[HTML report](/doc/dvclive/user-guide/dvclive-with-dvc#html-report) with all the
-_metrics logs_ logged in `path`.
+[HTML report](/doc/dvclive/dvclive-with-dvc#html-report) with all the _metrics
+logs_ logged in `path`.
 
 When [checkpoints](/doc/user-guide/experiment-management/checkpoints) are
 enabled in the <abbr>pipeline</abbr>, `DVC` will
-[create a new checkpoint](/doc/dvclive/user-guide/dvclive-with-dvc#checkpoints)
-on each `dvclive.set_step()` call.
+[create a new checkpoint](/doc/dvclive/dvclive-with-dvc#checkpoints) on each
+`dvclive.set_step()` call.
 
 ## Example
 
