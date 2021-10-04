@@ -26,13 +26,8 @@ describe('gatsby-remark-dvc-linker', () => {
   }
 
   live = {
-    inlineCode: '`dvclive.log()`',
-    url: '[`dvclive.log()`](/doc/dvclive/api-reference/log)'
-  }
-
-  liveInit = {
-    inlineCode: '`Live()`',
-    url: '[`Live()`](/doc/dvclive/api-reference/live)'
+    inlineCode: '`dvclive.init()`',
+    url: '[`dvclive.init()`](/doc/dvclive/api-reference/init)'
   }
 
   it('composes apiLinker and commandLinker', () => {
@@ -41,18 +36,10 @@ describe('gatsby-remark-dvc-linker', () => {
     expect(ast).toEqual(buildAst(`${api.url} ${command.url}`))
   })
 
-  describe('liveLinker', () => {
-    it('transforms DVCLive API reference to a link', () => {
-      const ast = buildAst(live.inlineCode)
-      visit(ast, 'inlineCode', flow([Array, liveLinker, constant(undefined)]))
-      expect(ast).toEqual(buildAst(live.url))
-    })
-
-    it('transforms DVCLive init reference to a link', () => {
-      const ast = buildAst(liveInit.inlineCode)
-      visit(ast, 'inlineCode', flow([Array, liveLinker, constant(undefined)]))
-      expect(ast).toEqual(buildAst(liveInit.url))
-    })
+  it('transforms DVCLive API reference to a link', () => {
+    const ast = buildAst(live.inlineCode)
+    visit(ast, 'inlineCode', flow([Array, liveLinker, constant(undefined)]))
+    expect(ast).toEqual(buildAst(live.url))
   })
 
   describe('apiLinker', () => {
