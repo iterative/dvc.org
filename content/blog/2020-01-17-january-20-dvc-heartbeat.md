@@ -1,9 +1,9 @@
 ---
 title: January ’20 DVC❤️Heartbeat
 date: 2020-01-17
-description: |
+description: >
   Reaching 100 contributors, PyData LA, and more news from the DVC community.
-descriptionLong: |
+descriptionLong: >
   Every month we share news, findings, interesting reads, community takeaways,
   and everything else along the way. Some of those are related to our brainchild
   [DVC](https://dvc.org) and its journey. The others are a collection of
