@@ -47,8 +47,17 @@ what columns and values to display.
     experiments
   - **File changed:** Whether or not any given file changed in the experiment
 - **Columns:** Select the columns you want to display and hide the rest.
+  ![](https://static.iterative.ai/img/studio/show_hide_columns.gif)
   Additionally, you can click and drag the columns in the table to rearrange
   them as per your preferences.
+
+  If your view is missing some required columns or includes columns that you do
+  not want, refer to the following troubleshooting sections to understand why
+  this may have happened.
+
+  - [View does not contain the columns that I want](/doc/studio/troubleshooting#view-does-not-contain-the-columns-that-i-want)
+  - [View contains columns that I did not import](/doc/studio/troubleshooting#view-contains-columns-that-i-did-not-import)
+
 - **Selected only:** Use this toggle switch to show/hide experiments that you
   have not selected.
 - **Delta mode:** Toggle between absolute values and difference from the first
