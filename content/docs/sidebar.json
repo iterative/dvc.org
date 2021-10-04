@@ -630,6 +630,10 @@
             "label": "PyTorch"
           },
           {
+            "slug": "pytorch-lightning",
+            "label": "PyTorch Lightning"
+          },
+          {
             "slug": "tensorflow",
             "label": "TensorFlow"
           },
