@@ -12,6 +12,7 @@ We currently support the following _ML Frameworks_:
 - [LightGBM](/docs/dvclive/ml-frameworks/lightgbm)
 - [MMCV](/docs/dvclive/ml-frameworks/mmcv)
 - [PyTorch](/docs/dvclive/ml-frameworks/pytorch)
+- [PyTorch Lightning](/docs/dvclive/ml-frameworks/pytorch-lightning)
 - [TensorFlow](/docs/dvclive/ml-frameworks/tensorflow)
 - [XGBoost](/docs/dvclive/ml-frameworks/xgboost)
 

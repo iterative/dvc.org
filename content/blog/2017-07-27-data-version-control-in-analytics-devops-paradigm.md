@@ -5,7 +5,7 @@ description: >
   Why DevOps matters in data science, what specific challenges data scientists
   face in the day to day work, and how do we setup a better environment for the
   team.
-descriptionLong: |
+descriptionLong: >
   The eternal dream of almost every Data Scientist today is to spend all the
   time exploring new datasets, engineering new features, inventing and
   validating cool new algorithms and strategies. However, daily routines of a

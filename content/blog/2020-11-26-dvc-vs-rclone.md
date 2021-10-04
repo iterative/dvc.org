@@ -4,14 +4,14 @@ date: 2020-11-26
 description: >
   DVC 1.0 optimized data synchronization to and from remote storage. Here's how
   we did it.
-descriptionLong: |
-  Synchronizing data to and from remote storage requires addressing an
-  often overlooked performance bottleneck: Determining which files to upload
-  and download. Here we'll outline the general methods used to solve this
-  problem, and investigate each method's effects on performance by comparing
-  benchmark results from DVC and rclone. We'll then conclude with a more
-  in-depth explanation of the optimizations made in DVC 1.0 which enabled us
-  to outperform both older DVC releases as well as general data sync tools like
+descriptionLong: >
+  Synchronizing data to and from remote storage requires addressing an often
+  overlooked performance bottleneck: Determining which files to upload and
+  download. Here we'll outline the general methods used to solve this problem,
+  and investigate each method's effects on performance by comparing benchmark
+  results from DVC and rclone. We'll then conclude with a more in-depth
+  explanation of the optimizations made in DVC 1.0 which enabled us to
+  outperform both older DVC releases as well as general data sync tools like
   rclone.
 commentsUrl: https://discuss.dvc.org/t/cloud-data-sync-methods-and-benchmark-dvc-vs-rclone/562
 tags:

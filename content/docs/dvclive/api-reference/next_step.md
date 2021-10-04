@@ -1,8 +1,6 @@
 # dvclive.next_step()
 
-Signals that the current step has ended. Check the
-[init parameters](/doc/dvclive/api-reference/init#parameters) for configuring
-the behavior.
+Signals that the current step has ended and increases `step` value by 1 (one).
 
 ```py
 def next_step()
@@ -38,10 +36,10 @@ The _metrics summary_ will be saved to `{path}.json`. Here's an example:
 
 > 💡 These JSON files can be visualized with `dvc metrics`.
 
-### DVC Integration
+### DVC integration
 
 When `dvclive` is used alongside `DVC`, each `dvclive.next_step()` call will
-have additional features.
+have additional effects.
 
 By default, on each `dvclive.next_step()` call, `DVC` will prepare an
 [HTML report](/doc/dvclive/user-guide/dvclive-with-dvc#html-report) with all the

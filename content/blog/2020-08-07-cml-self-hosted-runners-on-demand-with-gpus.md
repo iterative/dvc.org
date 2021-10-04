@@ -4,11 +4,10 @@ date: 2020-08-07
 description: >
   Use your own GPUs with GitHub Actions & GitLab for continuous machine
   learning.
-descriptionLong: |
+descriptionLong: >
   Training models often requires special hardware, like extra memory or GPUs.
-  How can we make a CI/CD pipeline with this hardware?
-  Find out how to set up your own self-hosted runners on-demand with GPUs for
-  fast training.
+  How can we make a CI/CD pipeline with this hardware? Find out how to set up
+  your own self-hosted runners on-demand with GPUs for fast training.
 picture: 2020-08-07/header.png
 author: david_g_ortega
 commentsUrl: https://discuss.dvc.org/t/cml-self-hosted-runners-on-demand-with-gpus/462

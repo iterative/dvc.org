@@ -4,7 +4,7 @@ date: 2018-10-18
 description: >
   In the Machine Learning (ML) field tools and techniques for best practices are
   just starting to be developed.
-descriptionLong: |
+descriptionLong: >
   In the Machine Learning (ML) field tools and techniques for best practices are
   just starting to be developed. At the PyTorch developer conference (PTDC-18),
   several speakers including **Jerome Pesenti, VP of AI from Facebook** and

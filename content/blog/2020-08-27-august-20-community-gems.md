@@ -5,7 +5,7 @@ description: >
   A roundup of technical Q&A's from the DVC community. This month, we discuss
   using CI/CD to validate models, advanced DVC pipeline scenarios, and how CML
   adds pictures to your GitHub and GitLab comments.
-descriptionLong: |
+descriptionLong: >
   A roundup of technical Q&A's from the DVC community. This month, we discuss
   using CI/CD to validate models, advanced DVC pipeline scenarios, and how CML
   adds pictures to your GitHub and GitLab comments.

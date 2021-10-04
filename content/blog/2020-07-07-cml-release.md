@@ -4,7 +4,7 @@ date: 2020-07-07
 description: >
   Today we're launching Continuous Machine Learning (CML), a new open-source
   project for CI/CD with ML. Let's bring the power of DevOps to ML or MLOps.
-descriptionLong: |
+descriptionLong: >
   Today we're launching Continuous Machine Learning (CML), a new open-source
   project for CI/CD with ML. Use it to automate parts of your ML workflow,
   including model training and evaluation, comparing ML experiments across your

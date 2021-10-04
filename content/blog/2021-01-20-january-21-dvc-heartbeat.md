@@ -5,11 +5,10 @@ description: >
   Monthly updates are here! read all about  our new R language tutorial, putting
   DVC  to work on an image segmentation pipeline, and a new fast way to setup
   your DVC remote.
-descriptionLong: |
-  Monthly updates are here! read all about
-  our new R language tutorial, putting DVC
-  to work on an image segmentation pipeline,
-  and a new fast way to setup your DVC remote.
+descriptionLong: >
+  Monthly updates are here! read all about our new R language tutorial, putting
+  DVC to work on an image segmentation pipeline, and a new fast way to setup
+  your DVC remote.
 picture: 2021-01-20/cover.png
 author: elle_obrien
 commentsUrl: https://discuss.dvc.org/t/dvc-heartbeat-jan-21/632
