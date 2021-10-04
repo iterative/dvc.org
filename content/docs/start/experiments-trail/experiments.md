@@ -165,7 +165,7 @@ $ dvc exp show
 └─────────────────────────┴──────────────┴─────────┴────────┴──────────────┴──────────────────┘
 ```
 
-By default it shows all the parameters and the metrics with the timestamp. If
+By default, it shows all the parameters and the metrics with the timestamp. If
 you have large number of parameters, metrics or experiments, this may lead to a
 cluttered view. You can limit the table to specific metrics, or parameters, or
 hide the timestamp column with `--include-metrics`, `--include-params`, or
@@ -193,7 +193,8 @@ $ dvc exp show --no-timestamp \
 
 ## 🔏 Persisting experiments
 
-After selecting an experiment from the table, you can create a Git branch that
+After selecting an experiment from the table, it's possible to apply the
+experiment results to your workspace, or you can create a Git branch that
 contains the experiment with all its related files.
 
 ```dvc
