@@ -36,9 +36,9 @@ The created file `{path}/{name}.tsv` is usable by `dvc plots`.
 be created and the file will be saved inside the last subfolder (i.e.
 `{path}/train/loss.tsv`).
 
-💡 If you call `dvclive.log()` without calling [`dvclive.init()`] first,
-`dvclive` will automatically initialize itself using either default values or
-environment variables (when used alongside `DVC`).
+💡 If you call `dvclive.log()` without calling `dvclive.init()` first, `dvclive`
+will automatically initialize itself using either default values or environment
+variables (when used alongside `DVC`).
 
 ## Parameters
 
@@ -47,11 +47,9 @@ environment variables (when used alongside `DVC`).
 - `val` - The value to be added in the `name` column of a new row.
 
 - `step` (`None` by default) - The value to be added in the `step` column of a
-  new row. If `None`, the value of the internal `_step` property will be used.
+  new row. If `None`, the value of `dvclive.get_step()` will be used.
 
 ## Exceptions
 
 - `dvclive.error.InvalidMetricTypeError` - thrown if the provided `val` does not
   have a supported type
-
-[`dvclive.init()`]: /doc/dvclive/api-reference/init

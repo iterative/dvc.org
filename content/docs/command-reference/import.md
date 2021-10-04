@@ -52,11 +52,6 @@ tracked directories are supported). It should be relative to the root of the
 repo (absolute paths are supported when `url` is local). Note that DVC-tracked
 targets must be found in a `dvc.yaml` or `.dvc` file of the repo.
 
-⚠️ Source DVC repos should have a default
-[DVC remote](/doc/command-reference/remote) containing the target data for this
-command to work. The only exception is for local repos, where DVC will try to
-copy the data from its <abbr>cache</abbr> first.
-
 > See `dvc import-url` to download and track data from other supported locations
 > such as S3, SSH, HTTP, etc.
 
@@ -69,12 +64,19 @@ enable DVC efficiently determining whether the local copy is out of date.
 To actually [version the data](/doc/start/data-and-model-versioning), `git add`
 (and `git commit`) the import `.dvc` file.
 
-Note that `dvc repro` doesn't check or update import `.dvc` files (see
-`dvc freeze`), use `dvc update` to bring the import up to date from the data
-source.
+⚠️ Relevant notes and limitation:
 
-Also note that chained imports (importing data that was imported into the source
-repo at `url`) are not supported.
+- Source DVC repos should have a default
+  [DVC remote](/doc/command-reference/remote) containing the target data for
+  this command to work.
+- The only exception to the above requirement is for local repos, where DVC will
+  try to copy the data from its <abbr>cache</abbr> first.
+- Limited support for [chained imports](#example-chained-imports) is available
+  (importing data that was itself imported into the source repo from another
+  one).
+- Note that `dvc repro` doesn't check or update import `.dvc` files (see
+  `dvc freeze`), use `dvc update` to bring the import up to date from the data
+  source.
 
 ## Options
 
@@ -276,3 +278,109 @@ outs:
 
 The `url` and `rev_lock` subfields under `repo` are used to save the origin and
 [version](https://git-scm.com/docs/revisions) of the dependency, respectively.
+
+## Example: Chained imports
+
+DVC supports importing data that was itself imported into the source repo, as
+long as all the repos in the import chain (and their default remote storage) are
+accessible from the final destination repo.
+
+Consider an example with 3 DVC repos (A, B, and C). DVC repo `/repo/a` contains
+a `data.csv` file tracked with `dvc add`:
+
+```
+/repo/a
+├── data.csv
+└── data.csv.dvc
+```
+
+In repo B, we import `data.csv` from A and into a subdirectory:
+
+```dvc
+$ dvc import /repo/a data.csv --out training/data.csv
+```
+
+Project B may of course contain other files unique to itself, for example:
+
+```
+/repo/b
+└── training
+    ├── data.csv
+    ├── data.csv.dvc
+    ├── labels
+    │   ├── test.txt
+    │   └── truth.txt
+    └── labels.dvc
+```
+
+> Notice that the `training/labels` directory (not an import) is also tracked in
+> B separately.
+
+If we examine `training/data.csv.dvc`, we can see that that the import source is
+repo A (`/repo/a`):
+
+```yaml
+deps:
+  - path: data.csv
+    repo:
+      url: /repo/a
+      rev_lock: 32ab3ddc8a0b5cbf7ed8cb252f93915a34b130eb
+outs:
+  - md5: acbd18db4cc2f85cedef654fccc4a4d8
+    size: 3234523
+    path: data.csv
+```
+
+Now lets imagine that we run the following command in our third repo, C:
+
+```dvc
+$ dvc import /repo/b training
+```
+
+This will result in the following directory structure, which contains a chained
+import and a regular one:
+
+```
+/repo/d
+├── training
+│   ├── data.csv
+│   └── labels
+│       ├── test.txt
+│       └── truth.txt
+└── training.dvc
+```
+
+- `training/data.csv` is imported from A into B into C
+- `training/labels/` is imported from B into C directly
+
+However, `training.dvc` only references repo B (`/repo/b`):
+
+```yaml
+deps:
+  - path: training
+    repo:
+      url: /repo/b
+      rev_lock: 15136ed84b59468b68fd66b8141b41c5be682ced
+outs:
+  - md5: e784c380dd9aa9cb13fbe22e62d7b2de.dir
+    size: 27
+    nfiles: 3
+    path: training
+```
+
+Each time that we `dvc import` or `dvc update`\* `training/` into C (or even
+`dvc pull` it) DVC will first look up the contents of `training` in B and notice
+that `training/data.csv` is itself an import. It will then resolve the chain as
+needed (finding `data.csv` in A).
+
+> \*Note that when running `dvc update training` from repo C, DVC will only
+> check whether or not `training/` changed in repo B. So if `data.csv` has only
+> changed in A, `training/data.csv` won't be updated in C until
+> `dvc update training/data.csv` has been run in B.
+
+This means both repos A and B must be reachable when `dvc import` runs in repo
+C, otherwise the import chain resolution would fail.
+
+The [default DVC remotes](/doc/command-reference/remote/default) for all repos
+in the import chain must also be accessible (repo C needs to have all the
+appropriate credentials).

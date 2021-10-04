@@ -31,7 +31,7 @@ to generate metrics _logs_ and _summaries_ during training.
 
 > 💡Without requiring additional modifications to your training code, you can
 > use DVCLive alongside DVC. See
-> [DVCLive with DVC](/doc/dvclive/user-guide/dvclive-with-dvc) for more info.
+> [DVCLive with DVC](/doc/dvclive/dvclive-with-dvc) for more info.
 
 ## Parameters
 

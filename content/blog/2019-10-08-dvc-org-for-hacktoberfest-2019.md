@@ -1,10 +1,10 @@
 ---
 title: DVC.org for Hacktoberfest 2019
 date: 2019-10-08
-description: |
+description: >
   Our favorite month of the year Hacktoberfest is already in full swing and we
   at DVC.org are so excited to be a part of it!
-descriptionLong: |
+descriptionLong: >
   Our favorite month of the year
   [Hacktoberfest](https://hacktoberfest.digitalocean.com/) is already in full
   swing and we at [DVC.org](https://dvc.org) are so excited to be a part of it!

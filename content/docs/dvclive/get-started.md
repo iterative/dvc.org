@@ -1,4 +1,4 @@
-# Quickstart
+# Get Started
 
 DVCLive is a simple Python library whose interface consists of three main
 methods.
@@ -15,7 +15,7 @@ import dvclive
 dvclive.init()
 ```
 
-See [`dvclive.init()`] for details.
+See `dvclive.init()` for details.
 
 ### 2. Log metrics
 
@@ -23,7 +23,7 @@ See [`dvclive.init()`] for details.
 dvclive.log(metric_name, value)
 ```
 
-See [`dvclive.log()`] for details.
+See `dvclive.log()` for details.
 
 ### 3. Increase the step number
 
@@ -31,7 +31,7 @@ See [`dvclive.log()`] for details.
 dvclive.next_step()
 ```
 
-See [`dvclive.next_step()`] for details.
+See `dvclive.next_step()` for details.
 
 ## Putting all together
 
@@ -96,9 +96,5 @@ $ cat dvclive.json
 
 There are other ways to use DVCLive:
 
-- [DVCLive with DVC](/docs/dvclive/user-guide/dvclive-with-dvc)
-- [DVCLive with _ML Frameworks_](/docs/dvclive/user-guide/ml-frameworks/)
-
-[`dvclive.init()`]: /doc/dvclive/api-reference/init
-[`dvclive.log()`]: /doc/dvclive/api-reference/log
-[`dvclive.next_step()`]: /doc/dvclive/api-reference/next_step
+- [DVCLive with DVC](/docs/dvclive/dvclive-with-dvc)
+- [DVCLive with _ML Frameworks_](/docs/dvclive/ml-frameworks)

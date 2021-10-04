@@ -23,11 +23,11 @@ You can list your remotes with `git remote -v` and `dvc remote list`:
 
 ```dvc
 $ git remote -v
-origin  git@github.com:iterative/get-started-experiments.git (fetch)
-origin  git@github.com:iterative/get-started-experiments.git (push)
+origin  git@github.com:iterative/example-dvc-experiments.git (fetch)
+origin  git@github.com:iterative/example-dvc-experiments.git (push)
 
 $ dvc remote list
-storage s3://mybucket/my-dvc-store
+storage https://remote.dvc.org/example-dvc-experiments
 ```
 
 ## Uploading experiments to remotes
