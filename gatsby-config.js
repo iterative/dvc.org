@@ -259,11 +259,7 @@ if (process.env.CONTEXT === 'production') {
 
 if (process.env.ANALYZE) {
   plugins.push({
-    resolve: 'gatsby-plugin-webpack-bundle-analyzer',
-    options: {
-      analyzerPort: 4000,
-      production: process.env.NODE_ENV === 'production'
-    }
+    resolve: 'gatsby-plugin-webpack-bundle-analyser-v2'
   })
 }
 
