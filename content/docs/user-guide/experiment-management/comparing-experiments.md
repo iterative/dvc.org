@@ -399,14 +399,149 @@ $ dvc exp show --show-csv | csvstat
 
 [csvkit]: https://csvkit.readthedocs.io/en/latest/
 
-## Compare two experiments
+## Compare specific experiments
+
+In addition to showing a summary table of experiments, DVC provides a command to
+compare pairwise experiments. `dvc exp diff` is used to compare the experiments
+by the change in their metrics and params.
+
+```dvc
+$ dvc exp diff
+Path          Metric    Value    Change
+metrics.json  acc       0.9151   0.0024
+metrics.json  loss      0.23867  0.0020977
+
+Path         Param             Value    Change
+params.yaml  model.conv_units  256      240
+```
+
+Without experiment names, `dvc exp diff` shows the change between the last
+experiment and the last commit. So if the command doesn't print an output, there
+might be no experiment since the previous commit or it didn't produce changes in
+results. If you want to see all the parameters and metrics regardless of whether
+they have changed, you can use `--all` flag.
+
+```dvc
+$ dvc exp diff --all
+Path          Metric    Value    Change
+metrics.json  acc       0.9151   0.0024
+metrics.json  loss      0.23867  0.0020977
+
+Path         Param             Value    Change
+params.yaml  model.conv_units  256      240
+params.yaml  train.epochs      10       0
+```
 
 ## Compare an experiment with the workspace
 
+When you want to compare two experiments, either the baseline experiment in a
+commit, branch, tag or an attached experiment with ID, you can supply their
+names to `dvc exp diff`.
+
+```
+$ dvc exp diff exp-25a26 cnn-64
+Path          Metric    Value    Change
+metrics.json  acc       0.9153   0.00020003
+metrics.json  loss      0.23385  -0.0048174
+
+Path         Param             Value    Change
+params.yaml  model.conv_units  64       -192
+```
+
 ## Customize the output of diff table
+
+By default `dvc exp diff` shows the metrics up to 5 significant digits. If you
+want to set this to another value, you can use `--precision` option.
+
+You can also hide the path of metrics and params files by `--no-path` flag. If
+there is a single parameter or metrics file, it prints a cleaner table.
+
+By using the both options, you can get:
+
+```dvc
+$ dvc exp diff exp-25a26 cnn-64 --no-path --precision 2
+Metric    Value    Change
+acc       0.92     0.0002
+loss      0.23     -0.0048
+
+Param             Value    Change
+model.conv_units  64       -192
+```
 
 ### Get a JSON list of changes to use in scripts
 
+Parsing the `dvc exp diff` output may not be feasible due to the custom
+structure. When you want to use the output in other commands, `dvc exp diff` can
+output in JSON with `--show-json` flag.
+
+```dvc
+$ dvc exp diff exp-25a26 cnn-64 --show-json | jq
+```
+
+```json
+{
+  "metrics": {
+    "metrics.json": {
+      "loss": {
+        "old": 0.2386719286441803,
+        "new": 0.2338544875383377,
+        "diff": -0.00481744110584259
+      },
+      "acc": {
+        "old": 0.9150999784469604,
+        "new": 0.9153000116348267,
+        "diff": 0.00020003318786621094
+      }
+    }
+  },
+  "params": {
+    "params.yaml": {
+      "model.conv_units": {
+        "old": 256,
+        "new": 64,
+        "diff": -192
+      }
+    }
+  }
+}
+```
+
+The output is a JSON dictionary with two keys, `metrics` and `params`, which
+have dictionaries as values. `metrics` and `params` dictionaries has keys for
+each of the metrics or params file, and for each file metrics and parameters are
+listed as keys.
+
+As an example, we can get only a specific metric from the `dvc exp diff` output
+by
+
+```dvc
+$ dvc exp diff exp-25a26 cnn-64 --show-json | jq '.metrics."metrics.json".acc'
+```
+
+```json
+{
+  "old": 0.9150999784469604,
+  "new": 0.9153000116348267,
+  "diff": 0.00020003318786621094
+}
+```
+
 ### Get a Markdown table for the differences
 
-### Ignore the path
+`dvc exp diff` has also an option to output a [Github-Flavored Markdown][gfm]
+table to embed in the reports directly.
+
+[gfm]: https://github.github.com/gfm/
+
+```dvc
+$ dvc exp diff exp-25a26 cnn-64 --show-md
+| Path         | Metric | Value   | Change     |
+| ------------ | ------ | ------- | ---------- |
+| metrics.json | acc    | 0.9153  | 0.00020003 |
+| metrics.json | loss   | 0.23385 | -0.0048174 |
+
+
+| Path        | Param            | Value | Change |
+| ----------- | ---------------- | ----- | ------ |
+| params.yaml | model.conv_units | 64    | -192   |
+```
