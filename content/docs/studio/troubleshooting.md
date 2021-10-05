@@ -112,10 +112,10 @@ There are two possible reasons for this:
    Currently DVC Studio cannot import over 200 columns. If you have a large
    repository (with more than 200 mandatory columns), one solution is to split
    the metrics/hyperparameters/files that you want to display over multiple
-   subdirectories in your git repository. For reach subdirectory, you can create
-   a new view in Studio that's limited to that subdirectory.
+   subdirectories in your git repository. For each subdirectory, you can create
+   a new view that is limited to that subdirectory.
 
-   To create views in the case of a monorepo,
+   To create views for subdirectories,
    [specify the project directory in view settings](/doc/studio/user-guide/views/view-settings#project-directory).
 
    If this solution does not work for your use case, please create a support
