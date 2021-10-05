@@ -3,7 +3,7 @@
 After running the experiments, it's desirable to compare them by their
 parameters and the corresponding results. DVC provides three commands to list,
 tabulate and compare the experiments. In this section, we discuss various use
-cases and options to streamline the work in experimentation.
+cases and options to streamline experimentation.
 
 ## List experiments in the workspace
 
@@ -22,7 +22,7 @@ refs/tags/baseline-experiment:
 ```
 
 If you want to list all the experiments in the repository independent of the
-commits. you can use `--all` flag.
+commits, you can use `--all` flag.
 
 ```dvc
 $ dvc exp list --all
@@ -38,8 +38,8 @@ b99a33e:
 ## List experiments in another Git remote
 
 As we discuss in [Sharing Experiments], you can use `dvc exp push` to upload
-experiments to Git remotes. If you want to get a list of uploaded experiments,
-you can use `dvc exp list` and supply a Git remote name.
+experiments to Git remotes. `dvc exp list` can be used to list the experiments
+in a Git remote.
 
 ```dvc
 $ dvc exp list origin
