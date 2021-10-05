@@ -131,7 +131,7 @@ There are two possible reasons for this:
 
    ![](https://static.iterative.ai/img/studio/show_hide_columns.gif)
 
-## View contains columns that I did not import
+## View contains columns that I did not mark as mandatory to import
 
 This is not an error. Columns that you select as mandatory in view settings are
 guaranteed to be imported. However, columns that are not selected can still be
