@@ -1,7 +1,7 @@
 # Comparing Experiments
 
-After running the experiments, it's important to compare them by their
-parameters and the metrics they produced. DVC provides three commands to list,
+After running the experiments, it's desirable to compare them by their
+parameters and the corresponding results. DVC provides three commands to list,
 tabulate and compare the experiments. In this section, we discuss various use
 cases and options to streamline the work in experimentation.
 
@@ -37,7 +37,7 @@ b99a33e:
 
 ## List experiments in another Git remote
 
-As we discussed in [Sharing Experiments], you can use `dvc exp push` to upload
+As we discuss in [Sharing Experiments], you can use `dvc exp push` to upload
 experiments to Git remotes. If you want to get a list of uploaded experiments,
 you can use `dvc exp list` and supply a Git remote name.
 
