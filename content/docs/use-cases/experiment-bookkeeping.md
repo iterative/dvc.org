@@ -33,3 +33,9 @@ metrics, etc.). This is possible by the codification of your data pipelines,
 which enables DVC to
 [track and version](/doc/use-cases/versioning-data-and-model-files) all this
 data.
+
+You can enjoy the full power of `dvc experiments` on any machine without need
+for special infrastructure or servers. The only other software required is Git,
+which is used internally for these features. No need to worry about Git during
+experimentation though! Everything your team may need for a regular version
+control workflow later will still be available.
