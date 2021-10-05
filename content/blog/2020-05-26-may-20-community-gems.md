@@ -1,14 +1,14 @@
 ---
 title: May '20 Community Gems
 date: 2020-05-26
-description: |
+description: >
   A roundup of technical Q&A's from the DVC community. This month, we discuss
-  development best practices, sharing models and data across projects,
-  and using DVC with teams.
-descriptionLong: |
+  development best practices, sharing models and data across projects, and using
+  DVC with teams.
+descriptionLong: >
   A roundup of technical Q&A's from the DVC community. This month, we discuss
-  development best practices, sharing models and data across projects,
-  and using DVC with teams.
+  development best practices, sharing models and data across projects, and using
+  DVC with teams.
 picture: 2020-05-26/May_20_Gems_Header.png
 author: elle_obrien
 commentsUrl: https://discuss.dvc.org/t/may-20-community-gems/398
