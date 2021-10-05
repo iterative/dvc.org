@@ -1,9 +1,9 @@
 ---
 title: What data scientists need to know about DevOps
 date: 2020-07-16
-description: |
-  A philosophical and practical guide to using continuous integration
-  (via GitHub Actions) to build an automatic model training system.
+description: >
+  A philosophical and practical guide to using continuous integration (via
+  GitHub Actions) to build an automatic model training system.
 picture: 2020-07-16/unicorn_floatie.jpg
 pictureComment: |
   The unicorn! A mythical data scientist who can code, write unit tests

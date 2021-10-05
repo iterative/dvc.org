@@ -136,7 +136,7 @@ endpointurl = https://object-storage.example.com
 specific subcommand for this:
 
 ```dvc
-$ dvc remote rename newremote oldremote
+$ dvc remote rename oldremote newremote
 ```
 
 ## Example: Remove a remote

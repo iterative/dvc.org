@@ -70,12 +70,6 @@ project dependencies with Yarn:
 $ yarn
 ```
 
-You may need to resolve dependencies at this point by running:
-
-```dvc
-$ npm install
-```
-
 Launch the server locally with:
 
 ```dvc

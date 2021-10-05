@@ -1,11 +1,11 @@
 ---
 title: May ’19 DVC❤️Heartbeat
 date: 2019-05-21
-description: |
+description: >
   DVC accepted into Google Season of Docs 🎉, Dmitry's talk at the O’Reilly AI
   Conference, new portion of Discord gems, and articles either created or
   brought to us by our community.
-descriptionLong: |
+descriptionLong: >
   Every month we are sharing here our news, findings, interesting reads,
   community takeaways, and everything along the way.
 

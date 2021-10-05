@@ -159,7 +159,7 @@ a Microsoft application.
 
 To use a custom authentication method, use the parameters described in
 `dvc remote modify`. See some
-[examples](#example-some-azure-authentication-methods).
+[examples](/doc/command-reference/remote/modify#example-some-azure-authentication-methods).
 
 </details>
 
