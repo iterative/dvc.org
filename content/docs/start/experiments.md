@@ -41,8 +41,9 @@ $ python -m pip install -r requirements.txt
 
 #### Get the data set
 
-The repository we cloned doesn't contain the dataset. We use `dvc pull` to
-update the missing data files.
+The repository we cloned doesn't contain the dataset. Instead of storing the
+data in Git repository, we use DVC to retrieve from a shared data store. In this
+case, we use `dvc pull` to update the missing data files.
 
 ```dvc
 $ dvc pull
