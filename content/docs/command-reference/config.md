@@ -223,34 +223,33 @@ connection settings, and configuring a remote is the way that can be done.
 
 ### state
 
-See
-[Internal directories and files](/doc/user-guide/project-structure/internal-files)
-to learn more about the state file (database) that is used for optimization.
+> 📖 See
+> [Internal directories and files](/doc/user-guide/project-structure/internal-files)
+> to learn more about the state databases.
 
-- `state.row_limit` - maximum number of entries in the state database, which
-  affects the physical size of the state file itself, as well as the performance
-  of certain DVC operations. The default is 10,000,000 rows. The bigger the
-  limit, the longer the file hash history that DVC can keep, in order to avoid
-  sequential hash recalculations.
+- `state.row_limit` - maximum number of entries in state databases. This affects
+  the physical size of the state files, as well as the performance of certain
+  DVC operations. The default is 10,000,000 rows. The bigger the limit, the
+  longer the file hash history that DVC can keep, for example.
 
-- `state.row_cleanup_quota` - percentage of the state database that is going to
-  be deleted when it hits the `state.row_limit`. Default quota is set to 50%.
-  When an entry in the database is used (e.g. during the `dvc status`), DVC
-  updates the timestamp on that entry. This way, when the database needs a
-  cleanup, DVC can sort entries chronologically, and remove the oldest ones.
-- `state.dir` - specify a custom location for the state file directories (the
-  `links` and `md5s` directory which by default reside in `./dvc/tmp`). This may
-  be necessary when using DVC on NFS or other mounted volumes.
+- `state.row_cleanup_quota` - percentage of the state database to be deleted
+  when it reaches the `state.row_limit`. The default quota is 50%. DVC removes
+  the oldest entries (created when `dvc status` is used, for example).
+
+- `state.dir` - specify a custom location for the state databases (directories),
+  by default `.dvc/tmp/index` and `.dvc/tmp/md5`. This may be necessary when
+  using DVC on NFS or other mounted volumes where SQLite encounters file
+  permission errors.
 
 ### index
 
-See `.dvc/tmp/index` in
-[Internal directories and files](/doc/user-guide/project-structure/internal-files),
-to learn more about remote index files.
+> 📖 See
+> [Internal directories and files](/doc/user-guide/project-structure/internal-files)
+> to learn more about remote index files.
 
 - `index.dir` - specify a custom location for the directory where remote index
-  files will be stored. This may be necessary when using DVC on NFS or other
-  mounted volumes.
+  files will be stored, by default in `.dvc/tmp/index`. This may be necessary
+  when using DVC on NFS or other mounted volumes.
 
 ### plots
 
