@@ -213,10 +213,9 @@ $ dvc exp show --no-timestamp --include-params=model.conv_units --exclude-metric
 │ └── 69503c6 [cnn-128] │  0.916 │ 128              │
 └───────────────────────┴────────┴──────────────────┘
 
-By default `dvc exp show` lists the experiments by the timestamp. You can sort
+By default `dvc exp show` sorts the experiments by their timestamp. You can sort
 the columns by params or metrics by the option `--sort-by` and `--sort-order`.
-`--sort-by` takes a metric or parameter name as defined in `dvc.yaml` and
-`--sort-order` takes either `asc` or `desc`.
+`--sort-by` takes a metric or parameter name, and `--sort-order` takes either `asc` or `desc`.
 
 ```dvc
 $ dvc exp show --sort-by auc --sort-order desc
