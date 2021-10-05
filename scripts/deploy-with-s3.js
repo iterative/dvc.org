@@ -5,7 +5,7 @@ const path = require('path')
 const PRODUCTION_PREFIX = 'dvc-org-prod'
 const { mkdirSync } = require('fs')
 
-const { DEPLOY_OPTIONS } = process.env
+const { DEPLOY_OPTIONS, USE_PRODUCTION_CACHE } = process.env
 const clearCloudflareCache = require('./clear-cloudflare-cache')
 
 // Generate deploy options from a comma separated string in the DEPLOY_OPTIONS
@@ -87,7 +87,10 @@ async function main() {
   // This greatly speeds up PR initial build time.
 
   if (deployOptions.download) {
-    if (emptyPrefix) {
+    if (USE_PRODUCTION_CACHE) {
+      console.warn('USE_PRODUCTION_CACHE is set, downloading from production')
+      await downloadAllFromS3(PRODUCTION_PREFIX)
+    } else if (emptyPrefix) {
       console.warn(
         `The current prefix "${s3Prefix}" is empty! Attempting to fall back on production cache.`
       )
