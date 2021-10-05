@@ -239,7 +239,7 @@ $ dvc exp show --sort-by auc --sort-order desc
 There may be times when a machine readable format for the experiments is
 required. In its default settings `dvc exp show` lists the experiments in a
 visually appealing way that may not be suitable to parse in scripts. To get a
-list of experiments with their params and metrics, you can use `--json` or
+list of experiments in a machine readable format, you can use `--json` or
 `--csv` flags.
 
 ```dvc
@@ -542,4 +542,11 @@ $ dvc exp diff exp-25a26 cnn-64 --md
 | Path        | Param            | Value | Change |
 | ----------- | ---------------- | ----- | ------ |
 | params.yaml | model.conv_units | 64    | -192   |
+```
+
+You can use this output to automatically update the documents with a command
+like:
+
+```dvc
+$ dvc exp diff exp-25a26 cnn-64 --md | xargs --replace=DIFFTABLE -- sed -i -e 's/EXPERIMENT_RESULT/DIFFTABLE/' my-template.md
 ```
