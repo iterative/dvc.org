@@ -84,9 +84,7 @@ const Issue: React.FC<{ color: string } & IGithubIssue> = ({
       >
         {title}
       </Link>
-      <div
-      // className={styles.meta}
-      >
+      <div className={styles.meta}>
         <Link
           className={sharedStyles.commentsLink}
           href={url}
