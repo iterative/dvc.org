@@ -110,11 +110,10 @@ There are two possible reasons for this:
 
    **What if there are more than 200 mandatory columns?**  
    Currently DVC Studio cannot import over 200 columns. If you have a large
-   repository (with more than 200 mandatory columns), one solution is to create
-   a mono repo - if your ML project can be divided into sub-projects, create a
-   [monorepo](https://en.wikipedia.org/wiki/Monorepo) where each sub-project
-   resides in a separate directory in the monorepo. Then, for each sub-project,
-   create a view.
+   repository (with more than 200 mandatory columns), one solution is to split
+   the metrics/hyperparameters/files that you want to display over multiple
+   subdirectories in your git repository. For reach subdirectory, you can create
+   a new view in Studio that's limited to that subdirectory.
 
    To create views in the case of a monorepo,
    [specify the project directory in view settings](/doc/studio/user-guide/views/view-settings#project-directory).
