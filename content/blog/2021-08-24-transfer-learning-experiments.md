@@ -27,6 +27,8 @@ or even people. This is called
 [transfer learning](https://towardsdatascience.com/a-comprehensive-hands-on-guide-to-transfer-learning-with-real-world-applications-in-deep-learning-212bf3b2f27a)
 and it can save a lot of time on developing a model from scratch.
 
+https://youtu.be/S3Hm_BPLie0
+
 For us to take advantage of transfer learning, we can use fine-tuning to adopt
 the model to our new problem. In many cases, we start by replacing the last
 layer of the model. With the AlexNet example, this might mean the last layer was
