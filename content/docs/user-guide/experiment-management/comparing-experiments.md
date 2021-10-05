@@ -73,8 +73,7 @@ b99a33e:
 to feed its output to other commands. You can get only the names of the
 experiments via `--names-only` flag.
 
-The following example uses `--names-only` flag to get all experiments from a Git
-remote.
+For example, to get all the experiment names from a Git remote:
 
 ```dvc
 $ for experiment in $(dvc exp list origin --names-only --all) ; do
