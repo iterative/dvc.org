@@ -3,6 +3,7 @@
 require('dotenv').config()
 const path = require('path')
 const PRODUCTION_PREFIX = 'dvc-org-prod'
+const { mkdirSync } = require('fs')
 
 const { DEPLOY_OPTIONS } = process.env
 const clearCloudflareCache = require('./clear-cloudflare-cache')
@@ -94,6 +95,8 @@ async function main() {
     } else {
       await downloadAllFromS3(s3Prefix)
     }
+    // Mitigate https://github.com/gatsbyjs/gatsby/issues/33262
+    mkdirSync('.cache/json', { recursive: true })
   }
 
   if (deployOptions.build) {
