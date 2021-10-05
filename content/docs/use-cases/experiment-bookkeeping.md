@@ -27,10 +27,9 @@ include:
 
 ![]() _Figure_
 
-This is made possible by the inherent codification of your data pipelines in
-DVC, which enables
-[tracking and versioning](/doc/use-cases/versioning-data-and-model-files) their
-data & ML models while capturing their provenance. `dvc experiments` use the
-same process, but do all the versioning for you, so there's no need to worry
-about things like Git during experimentation phases. Everything you need for a
-regular version control workflow will still be available later.
+`dvc experiments` automatically captures all the changes to your project (code,
+data, parameters, etc.), as well as its artifacts and other results (ML models,
+metrics, etc.). This is possible by the codification of your data pipelines,
+which enables DVC to
+[track and version](/doc/use-cases/versioning-data-and-model-files) all this
+data.
