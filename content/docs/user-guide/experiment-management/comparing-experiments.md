@@ -122,8 +122,8 @@ refs/tags/baseline-experiment:
 
 ## Show a table of experiments
 
-We do the experiments to compare and select the more successful of them. You can
-get a table of experiments with `dvc exp show` that shows all the parameters and
+Experimentation is about selecting the best from many trials. You can get a
+table of experiments with `dvc exp show` that shows all the parameters and
 metrics in a nicely formatted table.
 
 ```dvc
