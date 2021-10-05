@@ -175,7 +175,7 @@ $ dvc exp show --include-params train.epochs --include-metrics auc,precision
 Alternatively you can exclude certain parameters and metrics to appear in the
 table by `--exclude-params` and `--exclude-metrics` options. Similar to the
 include options, these take comma-separated names defined in `dvc.yaml` and
-don't show those columns.
+hide those columns.
 
 ```dvc
 $ dvc exp show --exclude-params train.epochs --exclude-metrics auc
