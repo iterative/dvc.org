@@ -18,13 +18,13 @@ In this section, we explore the basic features of DVC experiment management with
 
 <details>
 
-### ⚙️ Installing the Example Project
+### Installing the Example Project
 
 These commands are run in the [`get-started-experiments`][gse] project. You can
 run the commands in this document after cloning the repository and installing
 the requirements.
 
-### ⚡ Clone the project and create virtual environment
+#### Clone the project and create virtual environment
 
 Please clone the project and create a virtual environment.
 
@@ -39,7 +39,7 @@ $ . .venv/bin/activate
 $ python -m pip install -r requirements.txt
 ```
 
-### ✅ Get the data set
+#### Get the data set
 
 The repository we cloned doesn't contain the dataset. We use `dvc pull` to
 update the missing data files.
@@ -53,7 +53,7 @@ experiments.
 
 </details>
 
-## ⚙️ Running the experiment with default parameters
+## Running the experiment with default parameters
 
 The purpose of `dvc exp` subcommands is to run the experiments without
 committing parameter and dependency changes to Git. The artifacts like models,
@@ -79,7 +79,7 @@ metrics.
 
 <details>
 
-### 📖 If you used `dvc repro` before
+### If you used `dvc repro` before
 
 Earlier versions of DVC uses `dvc repro` to run the pipeline. If you already
 have a DVC project, you may already be using `dvc repro`.
@@ -96,7 +96,7 @@ experiments easily.
 
 </details>
 
-## ⏲ Running the experiment by setting parameters
+## Running the experiment by setting parameters
 
 Now let's do some more experimentation.
 
@@ -114,7 +114,7 @@ Experiment results have been applied to your workspace.
 
 <details>
 
-## ⚙️⚙️ Run multiple experiments in parallel
+### Run multiple experiments in parallel
 
 Instead of running the experiments one-by-one, we can define them to run in a
 batch. This is especially handy when you have long running experiments.
@@ -142,7 +142,7 @@ $ dvc exp run --run-all --jobs 2
 
 </details>
 
-## 🙏️ Comparing experiments
+## Comparing experiments
 
 The experiments are run several times with different parameters. We use
 `dvc exp show` to compare all of these experiments. This command presents the
@@ -193,7 +193,9 @@ $ dvc exp show --no-timestamp \
 └─────────────────────────┴────────┴──────────────────┘
 ```
 
-## 🔏 Persisting experiments
+<details>
+
+### Persisting experiments
 
 After selecting an experiment from the table, it's possible to apply the
 experiment results to your workspace, or you can create a Git branch that
@@ -208,9 +210,11 @@ To switch to the new branch run:
 ```
 
 You can then checkout and continue working from this branch, or merge the branch
-your `main` branch with usual Git commands. .
+your `main` branch with usual Git commands.
 
-## ⭐ Go Further
+</details>
+
+## Go Further
 
 There are many other features of `dvc exp`, like cleaning up the unused
 experiments, sharing them without committing into Git or getting differences
