@@ -7,13 +7,13 @@ import SocialIcon, { ISocialIcon } from '../SocialIcon'
 import ShowOnly from '../ShowOnly'
 import { getFirstPage } from '../../utils/shared/sidebar'
 
-import { ReactComponent as LogoSVG } from '../../../static/img/logo.svg'
+import { ReactComponent as LogoSVG } from '../../../static/img/dvc_icon-color--square_vector.svg'
 import { ReactComponent as GithubSVG } from '../SocialIcon/github.svg'
 import { ReactComponent as TwitterSVG } from '../SocialIcon/twitter.svg'
 import { ReactComponent as DiscordSVG } from '../SocialIcon/discord.svg'
-import { ReactComponent as CmlSVG } from '../../../static/img/cml-icon.svg'
-import { ReactComponent as StudioSVG } from '../../../static/img/studio-icon.svg'
-import { ReactComponent as IterativeSVG } from '../../../static/img/iterative-icon.svg'
+import { ReactComponent as CmlSVG } from '../../../static/img/cml_icon-color--square_vector.svg'
+import { ReactComponent as StudioSVG } from '../../../static/img/studio_icon-color--square_vector.svg'
+import { ReactComponent as IterativeSVG } from '../../../static/img/iterative_icon-color--square_vector.svg'
 
 import * as styles from './styles.module.css'
 
