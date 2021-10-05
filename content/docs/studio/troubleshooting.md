@@ -129,7 +129,7 @@ There are two possible reasons for this:
 
    ###### Show/hide columns
 
-   ![](https://static.iterative.ai/img/studio/show_hide_columns.gif)
+   ![Showing and hiding columns](https://static.iterative.ai/img/studio/show_hide_columns.gif)
 
 ## View contains columns that I did not mark as mandatory to import
 

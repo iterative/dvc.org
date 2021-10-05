@@ -106,10 +106,11 @@ in not used in your Git repository.
 
 ### Mandatory columns
 
-If your repository has more than 200 columns, you can specify which columns are
-mandatory to import. DVC Studio will also import the unselected columns, but
-upto a maximum of 200 columns. This means that any column that is not selected
-may not be imported, and hence may not be displayed in your view.
+If your repository exceeds 200 columns, DVC Studio will import a subset. The
+columns that are not imported will not be available to display in your view. In
+the settings for "Mandatory columns", You can select which columns are mandatory
+to import. DVC Studio will also import unselected columns up to a maximum
+of 200.
 
 ![](https://static.iterative.ai/img/studio/view_settings_mandatory_columns.png)
 
