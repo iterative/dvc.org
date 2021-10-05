@@ -9,6 +9,8 @@ rapidly. DVC can track these experiments, list and compare their most relevant
 parameters and metrics, navigate among them, and commit only the ones that we
 need to Git.
 
+https://youtu.be/FHQq_zZz5ms
+
 In this section, we explore the basic features of DVC experiment management with
 [`get-started-experiments`][gse] project.
 
