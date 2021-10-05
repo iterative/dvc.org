@@ -241,11 +241,11 @@ $ dvc exp show --sort-by auc --sort-order desc
 There may be times when a machine readable format for the experiments is
 required. In its default settings `dvc exp show` lists the experiments in a
 visually appealing way that may not be suitable to parse in scripts. To get a
-list of experiments with their params and metrics, you can use `--show-json` or
-`--show-csv` flags.
+list of experiments with their params and metrics, you can use `--json` or
+`--csv` flags.
 
 ```dvc
-$ dvc exp show --show-json | jq
+$ dvc exp show --json | jq
 ```
 
 ```json
@@ -334,7 +334,7 @@ Thus, you can get all details of the experiments in JSON and reuse them in other
 commands. To show the metrics in the workspace and other commits, for example:
 
 ```dvc
-$ dvc exp show --show-json | jq '.[].baseline.data.metrics'
+$ dvc exp show --json | jq '.[].baseline.data.metrics'
 {
   "metrics.json": {
     "data": {
@@ -355,11 +355,11 @@ $ dvc exp show --show-json | jq '.[].baseline.data.metrics'
 
 ## Get experiments table in CSV
 
-`dvc exp show` can also output the table in CSV, with `--show-csv`. It includes
-all the data found in the table.
+`dvc exp show` can also output the table in CSV, with `--csv`. It includes all
+the data found in the table.
 
 ```dvc
-$ dvc exp show --show-csv
+$ dvc exp show --csv
 ```
 
 ```csv
@@ -376,7 +376,7 @@ You can supply this output to other commands as well. For example with [csvkit],
 you can get a summary statistics about the experiments.
 
 ```dvc
-$ dvc exp show --show-csv | csvstat
+$ dvc exp show --csv | csvstat
 ...
 7. "acc"
 
@@ -472,10 +472,10 @@ model.conv_units  64       -192
 
 Parsing the `dvc exp diff` output may not be feasible due to the custom
 structure. When you want to use the output in other commands, `dvc exp diff` can
-output in JSON with `--show-json` flag.
+output in JSON with `--json` flag.
 
 ```dvc
-$ dvc exp diff exp-25a26 cnn-64 --show-json | jq
+$ dvc exp diff exp-25a26 cnn-64 --json | jq
 ```
 
 ```json
@@ -515,7 +515,7 @@ As an example, we can get only a specific metric from the `dvc exp diff` output
 by
 
 ```dvc
-$ dvc exp diff exp-25a26 cnn-64 --show-json | jq '.metrics."metrics.json".acc'
+$ dvc exp diff exp-25a26 cnn-64 --json | jq '.metrics."metrics.json".acc'
 ```
 
 ```json
@@ -534,7 +534,7 @@ table to embed in the reports directly.
 [gfm]: https://github.github.com/gfm/
 
 ```dvc
-$ dvc exp diff exp-25a26 cnn-64 --show-md
+$ dvc exp diff exp-25a26 cnn-64 --md
 | Path         | Metric | Value   | Change     |
 | ------------ | ------ | ------- | ---------- |
 | metrics.json | acc    | 0.9153  | 0.00020003 |
