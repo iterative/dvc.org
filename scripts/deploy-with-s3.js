@@ -95,8 +95,6 @@ async function main() {
     } else {
       await downloadAllFromS3(s3Prefix)
     }
-    // Mitigate https://github.com/gatsbyjs/gatsby/issues/33262
-    mkdirSync('.cache/json', { recursive: true })
   }
 
   if (deployOptions.build) {
