@@ -43,3 +43,5 @@ may need for a regular version control workflow later will still be available.
 On top of that, DVC Experiment features are language agnostic. You can expect
 the same convenience and performance whether you are using Jupyter Notebooks or
 Scala, CSV dataframes or HDFS file partitions, JSON or YAML config files.
+
+> 📖 Ready to dive in? See [Get Started: Experiments](/doc/start/experiments).
