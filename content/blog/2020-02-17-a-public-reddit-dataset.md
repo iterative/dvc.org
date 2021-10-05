@@ -2,9 +2,9 @@
 title:
   AITA for making this? A public dataset of Reddit posts about moral dilemmas
 date: 2020-02-17
-description: |
+description: >
   Releasing an open natural language dataset based on r/AmItheAsshole.
-descriptionLong: |
+descriptionLong: >
   Delve into an open natural language dataset of posts about moral dilemmas from
   [r/AmItheAsshole](https://www.reddit.com/r/AmItheAsshole/). Use this dataset
   for whatever you want- here's how to get it and start playing.

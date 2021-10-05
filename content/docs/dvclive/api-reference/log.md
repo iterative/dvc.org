@@ -46,9 +46,6 @@ variables (when used alongside `DVC`).
 
 - `val` - The value to be added in the `name` column of a new row.
 
-- `step` (`None` by default) - The value to be added in the `step` column of a
-  new row. If `None`, the value of `dvclive.get_step()` will be used.
-
 ## Exceptions
 
 - `dvclive.error.InvalidMetricTypeError` - thrown if the provided `val` does not

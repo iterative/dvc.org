@@ -3,12 +3,11 @@ title: |
   NEW VIDEO! 🎥 MLOps Tutorial #1:
   Intro to continuous integration for ML
 date: 2020-07-24
-description: |
-  A video tutorial abut using continuous integration in data
-  science and machine learning projects. This tutorial shows
-  how to use GitHub Actions and Continuous Machine Learning
-  (CML) to create your own automated model training and
-  evaluation system.
+description: >
+  A video tutorial abut using continuous integration in data science and machine
+  learning projects. This tutorial shows how to use GitHub Actions and
+  Continuous Machine Learning (CML) to create your own automated model training
+  and evaluation system.
 picture: 2020-07-24/blog_header.png
 author: elle_obrien
 commentsUrl: https://discuss.dvc.org/t/new-video-mlops-tutorial-1-intro-to-continuous-integration-for-ml/454

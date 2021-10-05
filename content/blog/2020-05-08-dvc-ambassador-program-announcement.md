@@ -1,10 +1,10 @@
 ---
 title: 'Join the DVC Ambassador Program!'
 date: 2020-05-08
-description: |
+description: >
   We're launching our ambassador program for people all around the world to get
   involved in the DVC community.
-descriptionLong: |
+descriptionLong: >
   We're launching our ambassador program for people all around the world to get
   involved in the DVC community. Our first ambassador, Marcel Ribeiro-Dantas,
   shares a guest blog about how ambassadors support open source projects through
