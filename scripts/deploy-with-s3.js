@@ -3,8 +3,9 @@
 require('dotenv').config()
 const path = require('path')
 const PRODUCTION_PREFIX = 'dvc-org-prod'
+const { mkdirSync } = require('fs')
 
-const { DEPLOY_OPTIONS } = process.env
+const { DEPLOY_OPTIONS, USE_PRODUCTION_CACHE } = process.env
 const clearCloudflareCache = require('./clear-cloudflare-cache')
 
 // Generate deploy options from a comma separated string in the DEPLOY_OPTIONS
@@ -20,6 +21,7 @@ const deployOptions = DEPLOY_OPTIONS
   : {
       download: true,
       build: true,
+      retry: true,
       upload: true,
       clean: true,
       clearCloudflareCache: true
@@ -69,9 +71,8 @@ const {
   cleanEntry
 } = require('./s3-utils')
 const { move } = require('fs-extra')
-const { downloadAllFromS3, uploadAllToS3, cleanAllLocal } = withEntries(
-  cacheDirs
-)
+const { downloadAllFromS3, uploadAllToS3, cleanAllLocal } =
+  withEntries(cacheDirs)
 
 function run(command) {
   execSync(command, {
@@ -86,7 +87,10 @@ async function main() {
   // This greatly speeds up PR initial build time.
 
   if (deployOptions.download) {
-    if (emptyPrefix) {
+    if (USE_PRODUCTION_CACHE) {
+      console.warn('USE_PRODUCTION_CACHE is set, downloading from production')
+      await downloadAllFromS3(PRODUCTION_PREFIX)
+    } else if (emptyPrefix) {
       console.warn(
         `The current prefix "${s3Prefix}" is empty! Attempting to fall back on production cache.`
       )
@@ -100,18 +104,24 @@ async function main() {
     try {
       run('yarn build')
     } catch (buildError) {
-      // Sometimes gatsby build fails because of bad cache.
-      // Clear it and try again.
+      if (deployOptions.retry) {
+        // Sometimes gatsby build fails because of bad cache.
+        // Clear it and try again.
 
-      console.error('------------------------\n\n')
-      console.error('The first Gatsby build attempt failed!\n')
-      console.error(buildError)
-      console.error('\nRetrying with a cleared cache:\n')
+        console.error('------------------------\n\n')
+        console.error('The first Gatsby build attempt failed!\n')
+        console.error(buildError)
+        console.error('\nRetrying with a cleared cache:\n')
 
-      // Clear only .cache so we re-use images
-      await cleanEntry(cacheDirs[1])
+        // Clear only .cache so we re-use images
+        await cleanEntry(cacheDirs[1])
 
-      run('yarn build')
+        run('yarn build')
+      } else {
+        throw new Error(
+          'The first Gatsby build attempt failed, and DEPLOY_OPTIONS does not include "retry"'
+        )
+      }
     }
   }
 
