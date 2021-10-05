@@ -194,8 +194,8 @@ $ dvc exp show --exclude-params train.epochs --exclude-metrics auc
 └───────────────────────┴──────────────┴────────┴──────────────────┘
 ```
 
-Another column that appear in `dvc exp show` table is the timestamp column. You
-may want to hide it with `--no-timestamp` option.
+By default, `dvc exp show` also has a column for the timestamp. You may want to
+hide it with `--no-timestamp` option.
 
 ```dvc
 $ dvc exp show --no-timestamp --include-params=model.conv_units --exclude-metrics=loss
