@@ -39,3 +39,7 @@ for special infrastructure or servers. The only other software required is Git,
 which is used internally for these features. No need to worry about Git during
 experimentation though! Everything your team may need for a regular version
 control workflow later will still be available.
+
+On top od that, every DVC feature is language agnostic and Experiments is no
+exception. You can expect the same convenience and performance whether you are
+using Jupyter Notebooks or Scala, CSV dataframes or HDFS file partitions.
