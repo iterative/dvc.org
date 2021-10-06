@@ -82,11 +82,10 @@ experiment run. Otherwise, it won't apply the experiments due to possible
 conflicts.
 
 Now, if you list the experiments again with `dvc exp show`, you'll see that the
-workspace contains the experiment with `my_param` of `2` and corresponding `auc`
-value.
+workspace contains the results of `exp-e6c97`.
 
-You can now use standard Git commands (e.g. `git add/commit/push`) to version
-this experiment directly in the <abbr>repository</abbr>. DVC-tracked data and
+You can use standard Git commands (e.g. `git add/commit/push`) to version this
+experiment directly in the <abbr>repository</abbr>. DVC-tracked data and
 artifacts are already in the DVC cache, and the rest (params, code and config
 files, etc.) can be stored in Git.
 
