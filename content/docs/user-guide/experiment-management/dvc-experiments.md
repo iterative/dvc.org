@@ -9,14 +9,17 @@ later, or roll back to the baseline. The basic workflow goes like this:
 
 - Modify stage <abbr>parameters</abbr> or other dependencies (e.g. input data,
   source code) of committed stages.
-- Use `dvc exp run` (instead of `repro`) to execute the pipeline. The results
-  are reflected in your <abbr>workspace</abbr>, and tracked automatically.
+- [Run experiments] with `dvc exp run` (instead of `repro`) to execute the
+  pipeline. The results are reflected in your <abbr>workspace</abbr>, and
+  tracked automatically.
 - Use `dvc metrics` to identify the best experiment(s).
 - Visualize, compare experiments with `dvc exp show` or `dvc exp diff`. Repeat
   🔄
 - Use `dvc exp apply` to roll back to the best one.
 - Make the selected experiment persistent by committing its results to Git. This
   cleans the slate so you can repeat the process.
+
+[run experiments]: /doc/user-guide/experiment-management/running-experiments
 
 ## Persistent Experiments
 

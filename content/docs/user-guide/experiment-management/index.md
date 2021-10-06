@@ -36,9 +36,9 @@ _New in DVC 2.0_
 
 The `dvc experiments` features are designed to support these main approaches:
 
-1. Create [experiments] that derive from your latest project version without
-   polluting your Git history. DVC tracks them for you, letting you list and
-   compare them. The best ones can be made persistent, and the rest left as
+1. [Run] and capture [experiments] that derive from your latest project version
+   without polluting your Git history. DVC tracks them for you, letting you list
+   and compare them. The best ones can be made persistent, and the rest left as
    history or cleared.
 1. [Queue] and process series of experiments based on a parameter search or
    other modifications to your baseline.
@@ -49,6 +49,7 @@ The `dvc experiments` features are designed to support these main approaches:
    <abbr>repository</abbr> history.
 1. Easily [share experiments] using Git and DVC remotes.
 
+[run]: /doc/user-guide/experiment-management/running-experiments
 [experiments]: /doc/user-guide/experiment-management/dvc-experiments
 [queue]:
   /doc/user-guide/experiment-management/running-experiments#the-experiments-queue
@@ -57,11 +58,11 @@ The `dvc experiments` features are designed to support these main approaches:
   /doc/user-guide/experiment-management/dvc-experiments#persistent-experiments
 [share and isolate]: /doc/user-guide/experiment-management/sharing-experiments
 
+📖 More information in the
+[full guide](/doc/user-guide/experiment-management/dvc-experiments).
+
 > 👨‍💻 See [Get Started: Experiments](/doc/start/experiments) for a hands-on
 > introduction to DVC experiments.
-
-More information in the
-[full guide](/doc/user-guide/experiment-management/dvc-experiments).
 
 ### Organization Patterns
 
@@ -85,6 +86,3 @@ main alternatives:
 DVC takes care of arranging `dvc exp` experiments and the data
 <abbr>cache</abbr> under the hood so there's no need to decide on the above
 until your `dvc experiments` are made [persistent].
-
-[persistent]:
-  /doc/user-guide/experiment-management/dvc-experiments#persistent-experiments

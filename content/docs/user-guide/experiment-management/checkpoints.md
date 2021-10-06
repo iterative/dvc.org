@@ -435,7 +435,10 @@ new set of checkpoints under a new experiment branch.
 ## Committing checkpoints to Git
 
 When you terminate training, you'll see a few commands in the terminal that will
-allow you to add these changes to Git, making them persistent:
+allow you to add these changes to Git, making them [persistent]:
+
+[persistent]:
+  /doc/user-guide/experiment-management/dvc-experiments#persistent-experiments
 
 ```dvc
 To track the changes with git, run:

@@ -266,12 +266,8 @@ CPU cores).
 ## Checkpoint experiments
 
 To track successive steps in a longer or deeper <abbr>experiment</abbr>, you can
-register checkpoints from your code.
-
-📖 See [Checkpoints](/doc/user-guide/experiment-management/checkpoints) to learn
-about this feature.
-
-Running the experiments containing checkpoints is no different than with regular
+register [checkpoints](/doc/user-guide/experiment-management/checkpoints) from
+your code. Running checkpoint experiments is no different than with regular
 ones, e.g.:
 
 ```dvc
@@ -294,3 +290,6 @@ their outputs). This is useful for re-training ML models, for example.
 
 > Note that queuing an experiment that uses checkpoints implies `--reset`,
 > unless a `--rev` is provided (refer to the previous section).
+
+> 📖 See [Checkpoints](/doc/user-guide/experiment-management/checkpoints) to
+> learn more about this feature.
