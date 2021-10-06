@@ -145,9 +145,34 @@ because the manual stage doesn't generate the expected output.
 You can then manually copy, modify, and commit your new `lexicon_modified.txt`
 and run `dvc repro` again to run the rest of the pipeline.
 
-### []()
+### [What is the workflow if I want to remove some files from my dataset registry?](https://discord.com/channels/485586884165107732/485596304961962003/895192983366942740)
 
-### []()
+You can delete the files and then re-add them using `dvc add` or `dvc commit`.
+It should be faster to re-add, as DVC won't re-add them to the cache nor will it
+try to hash them. You can use either of those DVC commands to manage these
+deletions.
+
+Good question @MadsO!
+
+### [We want to access a private Git repo using `dvc.api.read()`. How do I pass the credentials to DVC so that we can read DVC files from this repo?](https://discord.com/channels/485586884165107732/485596304961962003/894533078389784577)
+
+Great question about the API @dashmote!
+
+DVC uses the credentials regular Git would use, so you either need to pass SSH
+keys into your Docker container or use GitHub's SSH URL.
+
+You could pass your credentials into your container as environment variables and
+then do something like:
+
+```dvc
+username = os.environ["GITHUB_USERNAME"]
+token = os.environ["GITHUB_TOKEN"]
+dvc.api.read(..., repo=f"https://{username}:{token}/...", ...)
+```
+
+The other option is to use the
+`https://username:token@github.com/username/repo.git` URL format when you call
+the API method.
 
 ### []()
 
