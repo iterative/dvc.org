@@ -1,8 +1,8 @@
 # Persisting Experiments
 
-DVC runs experiments outside of the standard Git stage/commit workflow for quick
-iteration. In this section we'll see how to bring the experiments we run to the
-standard Git workflow with `dvc exp branch` and `dvc exp apply`.
+DVC runs experiments outside of the Git stage/commit cycle for quick iteration.
+In this section, we describe how to bring them to the standard Git workflow with
+`dvc exp branch` and `dvc exp apply`.
 
 ## Create a Git branch for your experiment
 
@@ -18,7 +18,7 @@ $ dvc exp show --include-params=my_param
 ┃ neutral:**Experiment**            ┃ neutral:**Created**      ┃     metric:**auc** ┃ param:**my_param**   ┃
 ┡━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━┩
 │ workspace             │ -            │ 0.61314 │ 3          │
-│ experiments-tag       │ Oct 19, 2020 │ 0.61314 │ 3          │
+│ new-experiments       │ Oct 19, 2020 │ 0.61314 │ 3          │
 │ ├── exp-e6c97         │ Oct 20, 2020 │ 0.69830 │ 2          │
 │ └── exp-1df77         │ Oct 22, 2020 │ 0.51676 │ 1          │
 └───────────────────────┴──────────────┴─────────┴────────────┘
@@ -36,7 +36,8 @@ To switch to the new branch run:
 ```
 
 Note that DVC doesn't switch into the new branch. You can create one or more
-branches from existing experiments, and switch into any one manually like this:
+branches from the existing experiments, and switch into any one manually like
+this:
 
 ```dvc
 $ git checkout my-branch
@@ -61,7 +62,7 @@ $ dvc exp show --include-params=my_param
 ┃ neutral:**Experiment**            ┃ neutral:**Created**      ┃     metric:**auc** ┃ param:**my_param**   ┃
 ┡━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━┩
 │ workspace             │ -            │ 0.61314 │ 3          │
-│ experiments-tag       │ Oct 19, 2020 │ 0.61314 │ 3          │
+│ new-experiments       │ Oct 19, 2020 │ 0.61314 │ 3          │
 │ ├── exp-e6c97         │ Oct 20, 2020 │ 0.69830 │ 2          │
 │ └── exp-1df77         │ Oct 22, 2020 │ 0.51676 │ 1          │g
 └───────────────────────┴──────────────┴─────────┴────────────┘
@@ -75,6 +76,10 @@ it's name or ID, e.g.:
 $ dvc exp apply exp-e6c97
 Changes for experiment 'exp-e6c97' have been applied...
 ```
+
+⚠️ Note that, `dvc exp apply` requires you're at the same commit that the
+experiment run. Otherwise, it won't apply the experiments due to possible
+conflicts.
 
 Now, if you list the experiments again with `dvc exp show`, you'll see that the
 workspace contains the experiment with `my_param` of `2` and corresponding `auc`
