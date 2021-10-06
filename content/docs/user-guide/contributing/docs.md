@@ -56,9 +56,9 @@ changes before submitting them, and it's quite necessary when making changes to
 the website engine itself. Source code and content files need to be properly
 formatted and linted as well, which is also ensured by the full setup below.
 
-Make sure you have [Python](https://www.python.org/downloads/) 3.6+, a recent LTS version of
-[Node.js](https://nodejs.org/en/) (`>=12.0.0`, `<=15.x`), and install
-[Yarn](https://yarnpkg.com/):
+Make sure you have [Python](https://www.python.org/downloads/) 3.6+, a recent
+LTS version of [Node.js](https://nodejs.org/en/) (`>=12.0.0`, `<=15.x`), and
+install [Yarn](https://yarnpkg.com/):
 
 > In Windows, you may need to install [Visual Studio Build Tools], and the
 > [Windows SDK] first.
@@ -202,9 +202,9 @@ We try to use a casual and fun tone in our docs. We also avoid authoritative
 language such as "As you can see, clearly this is what happened, of course" etc.
 which while good-intentioned, may scare readers off.
 
-We prefer general, human-friendly language rather than exact jargon as long as it's
-correct. Example: avoid Git jargon such as _revision_ or _reference_, preferring
-the more basic terms _commit_ or _version_.
+We prefer general, human-friendly language rather than exact jargon as long as
+it's correct. Example: avoid Git jargon such as _revision_ or _reference_,
+preferring the more basic terms _commit_ or _version_.
 
 The [command reference](/doc/command-reference) contains some of our most
 technical documents where specialized language is used the most, but even there,
@@ -213,7 +213,7 @@ we use expandable sections for complex implementation details.
 Start by writing the essence in simple terms, and complete it with
 clarifications, edge cases, or other precisions in a separate iteration.
 
-We use **bold** text for emphasis and _italics_ for special terms.
+We use **bold** text for emphasis, and _italics_ for special terms.
 
 We also use "emoji" symbols sparingly for visibility on certain notes. Mainly:
 
