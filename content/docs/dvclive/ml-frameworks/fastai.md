@@ -18,7 +18,8 @@ To start using DVCLive you just need to add a few lines to your training code in
 
 You just need to add the
 [`DvcLiveCallback`](https://github.com/iterative/dvclive/blob/master/dvclive/fastai.py)
-to the callbacks list passed to your `learner`:
+to the callbacks list passed to your
+[`Learner`](https://docs.fast.ai/learner.html#Learner):
 
 ```git
 +from dvclive.fastai import DvcLiveCallback
