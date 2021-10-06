@@ -78,6 +78,26 @@ This experiment is then associated with the values found in parameters file
 (`params.yaml`), and other dependencies (`data/images/`) with these produced
 metrics.
 
+You can review the experiment results with `dvc exp show` and see these metrics
+and results in a nicely formatted table:
+
+```dvc
+$ dvc exp show
+```
+
+```dvctable
+┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━┓
+┃ white:**Experiment**              ┃ white:**Created**      ┃ yellow:**loss**    ┃ yellow:**acc**    ┃ blue:**train.epochs** ┃ blue:**model.conv_units** ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━┩
+│ workspace               │ -            │ 0.23282 │ 0.9152 │ 10           │ 16               │
+│ 7317bc6                 │ Jul 18, 2021 │       - │      - │ 10           │ 16               │
+│ └── 1a1d858 [exp-6dccf] │ 03:21 PM     │ 0.23282 │ 0.9152 │ 10           │ 16               │
+└─────────────────────────┴──────────────┴─────────┴────────┴──────────────┴──────────────────┘
+```
+
+The `workspace` row in the table shows the results of the most recent experiment
+that's available in the <bbr>workspace</abbr>.
+
 <details>
 
 ### If you used `dvc repro` before
