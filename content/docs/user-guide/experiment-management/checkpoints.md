@@ -153,10 +153,10 @@ tracking the metrics along with each checkpoint, so we'll need to add a few
 lines of code.
 
 In the `train.py` file, import the [`dvclive`](/doc/dvclive) package with the
-other imports:
+other imports::
 
 ```python
-import dvclive
+from dvclive import Live
 ```
 
 > It's also possible to use DVC's Python API to register checkpoints, or to use
@@ -166,6 +166,8 @@ Then update the following lines of code in the `main` method inside of the
 training epoch loop.
 
 ```git
++ dvclive = Live()
+
 # Iterate over training epochs.
 for i in range(1, EPOCHS+1):
     # Train in batches.
