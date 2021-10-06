@@ -35,21 +35,9 @@
     },
     "children": [
       {
-        "slug": "data-management",
+        "slug": "data-and-model-management",
         "tutorials": {
           "katacoda": "https://katacoda.com/dvc/courses/get-started/data-management"
-        }
-      },
-      {
-        "slug": "data-and-model-versioning",
-        "tutorials": {
-          "katacoda": "https://katacoda.com/dvc/courses/get-started/versioning"
-        }
-      },
-      {
-        "slug": "data-and-model-access",
-        "tutorials": {
-          "katacoda": "https://katacoda.com/dvc/courses/get-started/accessing"
         }
       },
       {

@@ -166,31 +166,41 @@ files.
 
 ## Pushing to/pulling from remotes
 
-- Push the cache to the remote we created
-- Clone the repository to somewhere (e.g. ssh or local folder)
-- Pull the cache
-
-Having DVC-tracked data and models stored remotely, it can be downloaded when
-needed in other copies of this <abbr>project</abbr> with `dvc pull`. Usually, we
-run it after `git clone` and `git pull`.
-
-<details>
-
-### ⚙️ Expand to delete locally cached data.
-
-If you've run `dvc push`, you can delete the cache (`.dvc/cache`) and
-`data/data.xml` to experiment with `dvc pull`:
+To demonstrate how we share the data files with DVC, let's clone the project to
+a local directory.
 
 ```dvc
-$ rm -rf .dvc/cache
-$ rm -f data/data.xml
+$ cd ..
+$ git clone example-data-management example-data-management-clone
 ```
 
-</details>
+You can see that the clone doesn't contain the data files by checking the size
+of both:
+
+```dvc
+$ du -hs example-data-management
+$ du -hs example-data-management-clone
+```
+
+Now, we'll get the data files from the remote we configured earlier with a
+single command.
+
+```dvc
+$ cd example-data-management-clone
+$ dvc pull
+```
+
+> Note that `dvc pull` downloads only the files necessary in the workspace. To
+> obtain all the cache files from all commits, use `--all-commits` flag.
 
 ```dvc
 $ dvc pull
 ```
+
+This is how we share the data and model files as attached to the repository.
+Another person can just clone the Git repository and (if they have valid
+credentials to access the DVC remote), `dvc pull` the files required to run the
+project.
 
 > 📖 See also
 > [Sharing Data and Model Files](/doc/use-cases/sharing-data-and-model-files)
@@ -198,140 +208,63 @@ $ dvc pull
 
 ## Accessing public datasets and registries
 
-- Get the Fashion MNIST data from dataset-registry
+Earlier, we got the data files with `wget` and downloaded to a directory in the
+repository. DVC also provides an easier way to access the data files by the Git
+repository they belong to.
 
-Having initialized a project in the previous section, we can get the data file
-(which we'll be using later) like this:
+For example, instead of downloading the dataset from a web URL, we can use its
+reference in a Git repository:
 
 ```dvc
 $ dvc get https://github.com/iterative/dataset-registry \
-          get-started/data.xml -o data/data.xml
+          mnist/mnist.zip -o data/mnist.zip
 ```
 
-We use the fancy `dvc get` command to jump ahead a bit and show how a Git repo
-becomes a source for datasets or models Ѡwhat we call a "data/model registry".
-`dvc get` can download any file or directory tracked in a <abbr>DVC
-repository</abbr>. It's like `wget`, but for DVC or Git repos. In this case we
-download the latest version of the `data.xml` file from the
-[dataset registry](https://github.com/iterative/dataset-registry) repo as the
-data source.
+If you observe the text file at
+https://github.com/iterative/dataset-registry/mnist/mnist.zip.dvc, you'll see
+that it's identical to the files `dvc add` produces. Similarly, you can publish
+your dataset and models in Github by configuring a public DVC remote for them,
+for anyone to access your work via the repository.
 
-> # Get Started: Data and Model Access
->
-> We've learned how to _track_ data and models with DVC, and how to commit their
-> versions to Git. The next questions are: How can we _use_ these artifacts
-> outside of the project? How do we download a model to deploy it? How to
-> download a specific version of a model? Or reuse datasets across different
-> projects?
->
-> > These questions tend to come up when you browse the files that DVC saves to
-> > remote storage (e.g.
-> > `s3://dvc-public/remote/get-started/fb/89904ef053f04d64eafcc3d70db673` 😱
-> > instead of the original file name such as `model.pkl` or `data.xml`).
->
-> Read on or watch our video to see how to find and access models and datasets
-> with DVC.
->
-> https://youtu.be/EE7Gk84OZY8
->
-> Remember those `.dvc` files `dvc add` generates? Those files (and `dvc.lock`,
-> which we'll cover later) have their history in Git. DVC's remote storage
-> config is also saved in Git, and contains all the information needed to access
-> and download any version of datasets, files, and models. It means that a Git
-> repository with <abbr>DVC files</abbr> becomes an entry point, and can be used
-> instead of accessing files directly.
->
-> ## Find a file or directory
->
-> You can use `dvc list` to explore a <abbr>DVC repository</abbr> hosted on any
-> Git server. For example, let's see what's in the `get-started/` directory of
-> our [dataset-registry](https://github.com/iterative/dataset-registry) repo:
->
-> ```dvc
-> $ dvc list https://github.com/iterative/dataset-registry get-started
-> .gitignore
-> data.xml
-> data.xml.dvc
-> ```
->
-> The benefit of this command over browsing a Git hosting website is that the
-> list includes files and directories tracked by both Git and DVC (`data.xml` is
-> not visible if you
-> [check GitHub](https://github.com/iterative/dataset-registry/tree/master/get-started)).
->
-> ## Download
->
-> One way is to simply download the data with `dvc get`. This is useful when
-> working outside of a <abbr>DVC project</abbr> environment, for example in an
-> automated ML model deployment task:
->
-> ```dvc
-> $ dvc get https://github.com/iterative/dataset-registry \
->           use-cases/cats-dogs
-> ```
->
-> When working inside another DVC project though, this is not the best strategy
-> because the connection between the projects is lost — others won't know where
-> the data came from or whether new versions are available.
->
-> ## Import file or directory
->
-> `dvc import` also downloads any file or directory, while also creating a
-> `.dvc` file (which can be saved in the project):
->
-> ```dvc
-> $ dvc import https://github.com/iterative/dataset-registry \
->              get-started/data.xml -o data/data.xml
-> ```
->
-> This is similar to `dvc get` + `dvc add`, but the resulting `.dvc` files
-> includes metadata to track changes in the source repository. This allows you
-> to bring in changes from the data source later using `dvc update`.
->
-> <details>
->
-> #### 💡 Expand to see what happens under the hood.
->
-> > Note that the
-> > [dataset registry](https://github.com/iterative/dataset-registry) repository
-> > doesn't actually contain a `get-started/data.xml` file. Like `dvc get`,
-> > `dvc import` downloads from [remote storage](/doc/command-reference/remote).
->
-> `.dvc` files created by `dvc import` have special fields, such as the data
-> source `repo` and `path` (under `deps`):
->
-> ```git
-> +deps:
-> +- path: get-started/data.xml
-> +  repo:
-> +    url: https://github.com/iterative/dataset-registry
-> +    rev_lock: f31f5c4cdae787b4bdeb97a717687d44667d9e62
->  outs:
->  - md5: a304afb96060aad90176268345e10355
->    path: data.xml
-> ```
->
-> The `url` and `rev_lock` subfields under `repo` are used to save the origin
-> and [version](https://git-scm.com/docs/revisions) of the dependency,
-> respectively.
->
-> </details>
->
-> ## Python API
->
-> It's also possible to integrate your data or models directly in source code
-> with DVC's [Python API](/doc/api-reference). This lets you access the data
-> contents directly from within an application at runtime. For example:
->
-> ```py
-> import dvc.api
->
-> with dvc.api.open(
->     'get-started/data.xml',
->     repo='https://github.com/iterative/dataset-registry'
-> ) as fd:
->     # fd is a file descriptor which can be processed normally
-> ```
+Read on or watch our video to see how to find and access models and datasets
+with DVC.
+
+https://youtu.be/EE7Gk84OZY8
+
+### Find a file or directory
+
+You can use `dvc list` to explore a <abbr>DVC repository</abbr> hosted on any
+Git server. For example, let's see what's in the `mnist/` directory of our
+[dataset-registry](https://github.com/iterative/dataset-registry) repo:
+
+```dvc
+$ dvc list https://github.com/iterative/dataset-registry
+mnist/
+```
+
+The benefit of this command over browsing a Git hosting website is that the list
+includes files and directories tracked by both Git and DVC (`mnist.zip` is not
+visible if you
+[check GitHub](https://github.com/iterative/dataset-registry/tree/master/mnist)).
+
+## Track the data and models automatically
+
+As `dvc get` can download the contents from a DVC repository, `dvc import` can
+also download any file or directory, while also creating a `.dvc` file that
+tracks the contents _from URL._
+
+```dvc
+$ dvc import https://github.com/iterative/dataset-registry \
+             mnist/mnist.zip -o data/mnist.zip
+```
+
+This is similar to `dvc get` + `dvc add`, but the resulting `.dvc` files
+includes metadata to track changes in the source repository. This allows you to
+bring in changes from the data source later using `dvc update`.
+
+`.dvc` files created by `dvc import` have special fields, such as the data
+source `repo` and `path`, hence when the source changes DVC can follow the
+origin and update the local datasets.
 
 ## Removing data from DVC projects
 
