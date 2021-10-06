@@ -98,6 +98,7 @@ async function main() {
     } else {
       await downloadAllFromS3(s3Prefix)
     }
+    mkdirSync('.cache/json', { recursive: true })
   }
 
   if (deployOptions.build) {
