@@ -56,9 +56,11 @@ experiments.
 
 ## Running the experiment with default parameters
 
-The purpose of `dvc exp` subcommands is to run the experiments without
-committing parameter and dependency changes to Git. The artifacts like models,
-metrics produced by each experiment are tracked by DVC and persisted on demand.
+The purpose of `dvc exp` subcommands is to let you run, capture, compare the
+machine learning experiments at once as you iterate on your code, data, and
+hyperparameters. The artifacts like models, metrics produced by each experiment
+are tracked by DVC and the associated parameters and metrics can be committed to
+Git as text files.
 
 Running the experiment with the default project settings requires only the
 command:
