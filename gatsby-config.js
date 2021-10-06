@@ -25,13 +25,6 @@ const keywords = [
 ]
 
 const plugins = [
-  {
-    resolve: `gatsby-plugin-typescript`,
-    options: {
-      isTSX: true,
-      allExtensions: true
-    }
-  },
   'gatsby-plugin-postcss',
   'gatsby-plugin-react-helmet',
   'gatsby-plugin-sitemap',
