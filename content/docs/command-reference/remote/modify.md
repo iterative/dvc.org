@@ -909,7 +909,7 @@ by HDFS. Read more about by expanding the WebHDFS section in
   - `basic` -
     [basic authentication scheme](https://tools.ietf.org/html/rfc7617). `user`
     and `password` (or `ask_password`) parameters should also be configured.
-  - `digest` -
+  - `digest` (**removed** in 2.7.1) -
     [digest Access Authentication Scheme](https://tools.ietf.org/html/rfc7616).
     `user` and `password` (or `ask_password`) parameters should also be
     configured.
@@ -940,8 +940,7 @@ by HDFS. Read more about by expanding the WebHDFS section in
                         custom_auth_header 'My-Header'
   ```
 
-- `user` - user name to use when the `auth` parameter is set to `basic` or
-  `digest`.
+- `user` - user name to use when the `auth` parameter is set to `basic`.
 
   ```dvc
   $ dvc remote modify --local myremote user myuser

@@ -631,6 +631,10 @@
             "label": "PyTorch"
           },
           {
+            "slug": "pytorch-lightning",
+            "label": "PyTorch Lightning"
+          },
+          {
             "slug": "tensorflow",
             "label": "TensorFlow"
           },
@@ -660,6 +664,10 @@
           {
             "slug": "next_step",
             "label": "next_step()"
+          },
+          {
+            "slug": "set_step",
+            "label": "set_step()"
           }
         ]
       }
