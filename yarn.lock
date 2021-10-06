@@ -7043,6 +7043,22 @@ gatsby-cli@^4.0.0-zz-next.2:
     yoga-layout-prebuilt "^1.10.0"
     yurnalist "^2.1.0"
 
+gatsby-core-utils@^2.14.0:
+  version "2.14.0"
+  resolved "https://registry.yarnpkg.com/gatsby-core-utils/-/gatsby-core-utils-2.14.0.tgz#ad0030d11776073cdc6a119f4b81e150f3921aef"
+  integrity sha512-HDMb1XMqysup9raLYWB0wIQU568R9qPounF7iAwjf2esFUVV5mdBTvxEpune/7yG0RmwhNPhgrEZo2rBHeJf7A==
+  dependencies:
+    "@babel/runtime" "^7.15.4"
+    ci-info "2.0.0"
+    configstore "^5.0.1"
+    file-type "^16.5.3"
+    fs-extra "^10.0.0"
+    got "^11.8.2"
+    node-object-hash "^2.3.9"
+    proper-lockfile "^4.1.2"
+    tmp "^0.2.1"
+    xdg-basedir "^4.0.0"
+
 gatsby-core-utils@^3.0.0-zz-next.2:
   version "3.0.0-zz-next.2"
   resolved "https://registry.yarnpkg.com/gatsby-core-utils/-/gatsby-core-utils-3.0.0-zz-next.2.tgz#66cae5b5aae8316ec167056452661aa385ee21af"
@@ -7105,16 +7121,16 @@ gatsby-plugin-catch-links@^4.0.0-zz-next.1:
     "@babel/runtime" "^7.15.4"
     escape-string-regexp "^1.0.5"
 
-gatsby-plugin-feed@^3.14.0:
-  version "3.14.0"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-feed/-/gatsby-plugin-feed-3.14.0.tgz#3f95ab550a4a2a0c8af053a0a79791cca3eff386"
-  integrity sha512-d9fkaDyPN9ol6qL8WhojFm2p4VOn+tbz1EnTMr4nhDsn3l3Fyv6XV6xUsqeCclHwIwcK4Nj3mB07l6tDaBl9uQ==
+gatsby-plugin-feed@^4.0.0-zz-next.2:
+  version "4.0.0-zz-next.2"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-feed/-/gatsby-plugin-feed-4.0.0-zz-next.2.tgz#3434abf7917bba93c8092a7bfa255b45664de4df"
+  integrity sha512-Qf8detNf+XIozdU03ypUtIRni7klZs0sJtG6aU++p3dIqWb+2LNyl7r1PmUEOsMRfUvrAseDHm81z49MPvzAxg==
   dependencies:
     "@babel/runtime" "^7.15.4"
     "@hapi/joi" "^15.1.1"
     common-tags "^1.8.0"
     fs-extra "^10.0.0"
-    gatsby-plugin-utils "^1.14.0"
+    gatsby-plugin-utils "^2.0.0-zz-next.2"
     lodash.merge "^4.6.2"
     rss "^1.2.2"
 
@@ -7259,14 +7275,6 @@ gatsby-plugin-typescript@^4.0.0-zz-next.2:
     "@babel/preset-typescript" "^7.15.0"
     "@babel/runtime" "^7.15.4"
     babel-plugin-remove-graphql-queries "^4.0.0-zz-next.2"
-
-gatsby-plugin-utils@^1.14.0:
-  version "1.14.0"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-utils/-/gatsby-plugin-utils-1.14.0.tgz#7813ce967a0bc2fd89560706db879fbf5b894795"
-  integrity sha512-lYzr9R9yTH/PzgRTWB878yB1xBlJULvyosEoF8LnE62+UyuPXxv+e/frfwZCeCoqsqstuciR0yaMELIPYMna+Q==
-  dependencies:
-    "@babel/runtime" "^7.15.4"
-    joi "^17.4.2"
 
 gatsby-plugin-utils@^2.0.0-zz-next.2:
   version "2.0.0-zz-next.8"
@@ -7520,13 +7528,13 @@ gatsby-telemetry@^3.0.0-zz-next.2:
     lodash "^4.17.21"
     node-fetch "^2.6.1"
 
-gatsby-transformer-remark@^5.0.0-zz-next.2:
-  version "5.0.0-zz-next.2"
-  resolved "https://registry.yarnpkg.com/gatsby-transformer-remark/-/gatsby-transformer-remark-5.0.0-zz-next.2.tgz#779cb26c228be7b6861f4a07e034c0f6818449c2"
-  integrity sha512-3CldlkwBqbYWrveEe3qOxEX9Lm/4XWZ79/kxiRa745wKSh5OUM1qr2gkArIqbi2P/P2d9BlFgCCIcRNIrgCr1w==
+gatsby-transformer-remark@^4.11.0:
+  version "4.11.0"
+  resolved "https://registry.yarnpkg.com/gatsby-transformer-remark/-/gatsby-transformer-remark-4.11.0.tgz#80c2f7473cc757f763abd1c0942436ffcb7a2365"
+  integrity sha512-K00qbvSVq5puyDmZZp+WOU8CmBJRpjmJt1t8yl30My66PiDT8u242xVYUE0qdsKEr2gz5npE0w4nj/5Hgtfw7Q==
   dependencies:
     "@babel/runtime" "^7.15.4"
-    gatsby-core-utils "^3.0.0-zz-next.2"
+    gatsby-core-utils "^2.14.0"
     gray-matter "^4.0.2"
     hast-util-raw "^6.0.2"
     hast-util-to-html "^7.1.2"
