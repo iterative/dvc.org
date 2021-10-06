@@ -5,9 +5,9 @@ parameters, improving code, trying different data, and collecting metrics, for
 example when optimizing a machine learning model's accuracy. Keeping track of
 all these <abbr>experiments</abbr> is challenging but essential, as we'll need
 to compare, visualize, share, and _productionize_ the results. We also want to
-be able to reconnect any metrics snapshot back to their original setup.
+be able to reconnect any recorded metrics back to their original setup.
 
-![]() _Figure_
+![](/img/lose-experimentation.png) _Lose experimentation_
 
 DVC provides a layer of
 [experiment management](/doc/user-guide/experiment-management) features to take
@@ -27,7 +27,7 @@ include:
   scratch.
 - Promote, save, share, or discard experiments individually or in bulk.
 
-![]() _Figure_
+![]() _Structured experiment records_
 
 DVC Experiments automatically capture all the changes to your project (code,
 data, parameters, etc.), as well as its results (ML models, metrics, other
