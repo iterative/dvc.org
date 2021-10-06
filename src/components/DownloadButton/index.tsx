@@ -81,7 +81,9 @@ const getUserOS = (): OS => {
 const DownloadButtonDropdownItems: React.FC<IDownloadButtonDropdownItemsProps> =
   ({ onClick, userOS }) => {
     return (
-      <div className={styles.links}>
+      <div
+      // className={styles.links}
+      >
         {dropdownItems.map((os, index) => {
           if (os === null) {
             return (

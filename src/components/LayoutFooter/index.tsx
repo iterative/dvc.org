@@ -153,7 +153,10 @@ const FooterLists: React.FC = () => (
         <h2 className={styles.heading}>{header}</h2>
         <ul className={styles.links}>
           {links.map(({ text, target, href, icon }, i) => (
-            <li className={styles.linkItem} key={i}>
+            <li
+              // className={styles.linkItem}
+              key={i}
+            >
               <Link target={target} href={href} className={styles.link}>
                 {icon}
                 {text}
