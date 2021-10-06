@@ -7,7 +7,7 @@ all these <abbr>experiments</abbr> is challenging but essential, as we'll need
 to compare, visualize, share, and _productionize_ the results. We also want to
 be able to reconnect any recorded metrics back to their original setup.
 
-![](/img/lose-experimentation.png) _Lose experimentation_
+![](/img/lose-experimentation.png) _Loose experimentation_
 
 DVC provides a layer of
 [experiment management](/doc/user-guide/experiment-management) features to take
@@ -27,7 +27,7 @@ include:
   scratch.
 - Promote, save, share, or discard experiments individually or in bulk.
 
-![]() _Structured experiment records_
+![](/img/labeled-samples.jpg) _Structured experiment records_
 
 DVC Experiments automatically capture all the changes to your project (code,
 data, parameters, etc.), as well as its results (ML models, metrics, other
