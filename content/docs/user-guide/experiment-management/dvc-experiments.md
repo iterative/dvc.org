@@ -3,9 +3,9 @@
 _New in DVC 2.0_
 
 `dvc exp` commands let you automatically track a variation to an established
-[data pipeline](/doc/command-reference/dag). You can create multiple isolated
-experiments this way, as well as review, compare, and restore them later, or
-roll back to the baseline. The basic workflow goes like this:
+[data pipeline](/doc/command-reference/dag) baseline. You can create multiple
+isolated experiments this way, as well as review, compare, and restore them
+later, or roll back to the baseline. The basic workflow goes like this:
 
 - Modify stage <abbr>parameters</abbr> or other dependencies (e.g. input data,
   source code) of committed stages.

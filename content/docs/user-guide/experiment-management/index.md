@@ -50,7 +50,8 @@ The `dvc experiments` features are designed to support these main approaches:
 1. Easily [share experiments] using Git and DVC remotes.
 
 [experiments]: /doc/user-guide/experiment-management/dvc-experiments
-[queue]: /doc/command-reference/exp/run#queueing-and-parallel-execution
+[queue]:
+  /doc/user-guide/experiment-management/running-experiments#the-experiments-queue
 [checkpoints]: /doc/user-guide/experiment-management/checkpoints
 [persistent]:
   /doc/user-guide/experiment-management/dvc-experiments#persistent-experiments
