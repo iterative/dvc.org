@@ -20,8 +20,12 @@ for step in range(3):
 
 ## Description
 
-Each call to `dvclive.next_step()` will behave depending on whether `DVC` is
-available or not.
+DVCLive uses the `step` value to track the progress of each metric logged with
+`dvclive.log()`. You can use `dvclive.next_step()` to increase the `step` by 1
+(one).
+
+Each metric logged in between `dvclive.next_step()` (or `dvclive.set_step()`)
+calls will be associated to the updated `step` value.
 
 ### DVC integration
 
@@ -32,7 +36,8 @@ By default, on each `dvclive.next_step()` call, `DVC` will prepare an
 [HTML report](/doc/dvclive/user-guide/dvclive-with-dvc#html-report) with all the
 _metrics logs_ logged in `path`.
 
-When [checkpoints](/doc/user-guide/experiment-management/checkpoints) are
-enabled in the <abbr>pipeline</abbr>, `DVC` will
+In addition, when
+[checkpoints](/doc/user-guide/experiment-management/checkpoints) are enabled in
+the <abbr>pipeline</abbr>, `DVC` will
 [create a new checkpoint](/doc/dvclive/user-guide/dvclive-with-dvc#checkpoints)
 on each `dvclive.next_step()` call.

@@ -39,7 +39,10 @@ If `None` and DVC is enabled (see
 [DVCLive with DVC](/docs/dvclive/dvclive-with-dvc)), the `path` set by DVC will
 be used.
 
-Otherwise the default value (`dvclive`) will be used.
+If `None` and DVC is **not** enabled, the default value (`dvclive`) will be
+used.
+
+Otherwise the provided `path` value will be used.
 
 - `resume` - (`False` by default) - if `True`, DVCLive will try to read the
   previous `step` from the `path` directory and start from that point.

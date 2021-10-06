@@ -41,8 +41,8 @@ $ dvc stage add -n train --live training_metrics
                 -d train.py python train.py
 ```
 
-`dvc.yaml` will contain a new `train` stage with the [`DVCLive configuration`]
-(in the `live` field):
+`dvc.yaml` will contain a new `train` stage with the DVCLive configuration (in
+the `live` field):
 
 ```yaml
 stages:
@@ -62,14 +62,14 @@ for DVCLive to write logs in, and DVC will now
 command options for the DVC integration:
 
 - `--live-no-cache <path>` - specify a DVCLive log directory `path` but don't
-  tracked it with DVC. Useful if you prefer to track it with Git.
+  track it with DVC. Useful if you prefer to track it with Git.
 - `--live-no-summary` - deactivates
   [summary](/doc/dvclive/get-started#metrics-summary) generation.
 - `--live-no-html` - deactivates [HTML report](#html-report) generation.
 
 > Note that summary files are never tracked by DVC
 
-Run the training with `dvc repro`:
+Run the training with `dvc repro` or `dvc exp run`:
 
 ```dvc
 $ dvc repro train
@@ -123,5 +123,3 @@ You can learn more about how to use them in the
 [Checkpoints User Guide](/docs/user-guide/experiment-management/checkpoints) and
 in this example
 [repository](https://github.com/iterative/dvc-checkpoints-mnist).
-
-[`dvclive configuration`]: /doc/dvclive/api-reference/init#parameters

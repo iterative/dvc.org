@@ -41,10 +41,15 @@ This will generate the metrics logs and summaries as described in the
 
 ## Parameters
 
-- `model_file` - The name of the file where the model will be saved at the end
-  of each `step`.
+- `model_file` - (`None` by default) - The name of the file where the model will
+  be saved at the end of each `step`.
 
-Example:
+- `**kwargs` - Any additional arguments will be passed to
+  [`Live`](/docs/dvclive/api-reference/live).
+
+## Examples
+
+- Using `model_file`.
 
 ```python
 from dvclive.fastai import DvcLiveCallback
@@ -53,4 +58,15 @@ learn = tabular_learner(data_loader, metrics=accuracy)
 learn.fit_one_cycle(
   n_epoch=2,
   cbs=[DvcLiveCallback(model_file='model.pth')])
+```
+
+- Using `**kwargs` to customize [`Live`](/docs/dvclive/api-reference/live).
+
+```python
+from dvclive.fastai import DvcLiveCallback
+
+learn = tabular_learner(data_loader, metrics=accuracy)
+learn.fit_one_cycle(
+  n_epoch=2,
+  cbs=[DvcLiveCallback(path='custom_path', summary=False)])
 ```

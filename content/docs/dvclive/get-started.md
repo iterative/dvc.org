@@ -14,7 +14,7 @@ from dvclive import Live
 dvclive = Live()
 ```
 
-See `Live()` for details.
+See [`Live()`](/doc/dvclive/api-reference/live) for details.
 
 ### 2. Log metrics
 

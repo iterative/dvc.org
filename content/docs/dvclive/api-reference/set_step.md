@@ -36,8 +36,9 @@ By default, on each `dvclive.set_step()` call, `DVC` will prepare an
 [HTML report](/doc/dvclive/dvclive-with-dvc#html-report) with all the _metrics
 logs_ logged in `path`.
 
-When [checkpoints](/doc/user-guide/experiment-management/checkpoints) are
-enabled in the <abbr>pipeline</abbr>, `DVC` will
+In addition, when
+[checkpoints](/doc/user-guide/experiment-management/checkpoints) are enabled in
+the <abbr>pipeline</abbr>, `DVC` will
 [create a new checkpoint](/doc/dvclive/dvclive-with-dvc#checkpoints) on each
 `dvclive.set_step()` call.
 
