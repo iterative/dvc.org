@@ -18,7 +18,7 @@ In this section, we explore the basic features of DVC experiment management with
 
 <details>
 
-### Installing the Example Project
+### ⚙️ Installing the example project
 
 These commands are run in the [`get-started-experiments`][gse] project. You can
 run the commands in this document after cloning the repository and installing
@@ -100,7 +100,7 @@ that's available in the <bbr>workspace</abbr>.
 
 <details>
 
-### If you used `dvc repro` before
+### ℹ️ If you used `dvc repro` before
 
 Earlier versions of DVC uses `dvc repro` to run the pipeline. If you already
 have a DVC project, you may already be using `dvc repro`.
@@ -135,7 +135,7 @@ Experiment results have been applied to your workspace.
 
 <details>
 
-### Run multiple experiments in parallel
+### ⚙️ Run multiple experiments in parallel
 
 Instead of running the experiments one-by-one, we can define them to run in a
 batch. This is especially handy when you have long running experiments.
@@ -216,7 +216,7 @@ $ dvc exp show --no-timestamp \
 
 <details>
 
-### Persisting experiments
+### ✅ Persisting experiments
 
 After selecting an experiment from the table, it's possible to apply the
 experiment results to your workspace, or you can create a Git branch that
