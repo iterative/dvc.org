@@ -32,11 +32,11 @@ When `dvclive` is used alongside `DVC`, each `Live.next_step()` call will have
 additional effects.
 
 By default, on each `Live.next_step()` call, `DVC` will prepare an
-[HTML report](/doc/dvclive/user-guide/dvclive-with-dvc#html-report) with all the
-_metrics logs_ logged in `path`.
+[HTML report](/doc/dvclive/dvclive-with-dvc#html-report) with all the _metrics
+logs_ logged in `path`.
 
 In addition, when
 [checkpoints](/doc/user-guide/experiment-management/checkpoints) are enabled in
 the <abbr>pipeline</abbr>, `DVC` will
-[create a new checkpoint](/doc/dvclive/user-guide/dvclive-with-dvc#checkpoints)
-on each `Live.next_step()` call.
+[create a new checkpoint](/doc/dvclive/dvclive-with-dvc#checkpoints) on each
+`Live.next_step()` call.
