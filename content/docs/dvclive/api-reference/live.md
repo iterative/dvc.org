@@ -27,7 +27,7 @@ dvclive = Live()
 It's usage is focused on configuring the behavior of subsequent calls to
 `dvclive.log()`.
 
-⚠️ If `path` already exists when this functions is called, a cleanup will remove
+⚠️ If `path` already exists, `Live()` will remove
 all existing DVCLive related files.
 
 ## Parameters
