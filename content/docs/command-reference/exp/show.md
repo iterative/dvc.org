@@ -1,6 +1,6 @@
 # exp show
 
-Print a customizable table of `dvc experiments`, their metrics and parameters.
+Print a customizable table of experiments, their metrics and parameters.
 
 > Press `q` to exit.
 
