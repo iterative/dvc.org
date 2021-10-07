@@ -15,7 +15,8 @@ To start using DVCLive you just need to add a few lines to your training code in
 
 You just need to pass the
 [`DvcLiveLogger`](https://github.com/iterative/dvclive/blob/master/dvclive/lightning.py)
-to your `trainer`:
+to your
+[`Trainer`](https://pytorch-lightning.readthedocs.io/en/latest/common/trainer.html):
 
 ```git
 +from dvclive.lightning import DvcLiveLogger
