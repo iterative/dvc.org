@@ -75,4 +75,5 @@ And start tracking it again:
 $ dvc add train.tsv
 $ git add train.tsv.dvc .gitignore
 $ git commit -m "new train data"
+$ dvc push
 ```
