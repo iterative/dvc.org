@@ -2,19 +2,19 @@
 title: October '21 Community Gems
 date: 2021-10-26
 description: >
-  A roundup of technical Q&A's from the DVC and CML communities. This month:
-  data registries, working with DVC remotes, queued experiments, and more.
+  A roundup of technical Q&A's from the DVC and CML communities. This month: DVC
+  stages, working with outputs, DVC API, and more.
 descriptionLong: >
-  A roundup of technical Q&A's from the DVC and CML community. This month: data
-  registries, working with DVC remotes, queued experiments, and more.
+  A roundup of technical Q&A's from the DVC and CML community. This month: DVC
+  stages, working with outputs, DVC API, and more.
 picture: 2021-10-26/gems-cover.png
 author: milecia_mcgregor
 commentsUrl: https://discuss.dvc.org/t/october-21-community-gems/871
 tags:
-  - Data Registry
-  - DVC Remotes
-  - Queued Experiments
-  - Pipelines
+  - DVC stages
+  - Output files
+  - DVC API
+  - Multiple models
   - Git
 ---
 
@@ -174,13 +174,21 @@ The other option is to use the
 `https://username:token@github.com/username/repo.git` URL format when you call
 the API method.
 
-### []()
+### [Is there a clean way to handle multiple models in the same repo that are run using the same pipeline?](https://discord.com/channels/485586884165107732/563406153334128681/895368479853649930)
 
-### []()
+The simpliest way is to copy the `dvc.yaml` into each model's separate
+directory.
+
+Another potential solution is try templating. You can
+[learn more about templating in the docs](https://dvc.org/doc/user-guide/project-structure/pipelines-files#templating).
+It essentially lets you add variables to the `dvc.yaml` to dynamically set
+values for your stages.
+
+Thanks for the great question @omarelb!
 
 ---
 
-https://media.giphy.com/media/8UF0EXzsc0Ckg/giphy.gif
+https://media.giphy.com/media/26u4lOMA8JKSnL9Uk/giphy.gif
 
 At our November Office Hours Meetup we will be going over how to do stuff.
 [RSVP for the Meetup here](https://www.meetup.com/DVC-Community-Virtual-Meetups/events/280814318/)
