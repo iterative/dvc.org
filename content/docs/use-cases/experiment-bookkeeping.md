@@ -15,7 +15,7 @@ automatic snapshots of any variations in your project, and handle them with
 simple terminal [commands](/doc/command-reference/exp). Some things you can do
 include:
 
-- Rapid iteration on experiment ideas by capturing project baseline variations
+- Rapid iteration on experiment ideas by capturing variations from a baseline
   with a simple command (`dvc exp run`).
 - Automatic bookkeeping of changes to data dependencies, code,
   <abbr>parameters</abbr>, artifacts and <abbr>metrics</abbr> when you run each
