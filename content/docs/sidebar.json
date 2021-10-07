@@ -650,23 +650,26 @@
         "children": [
           {
             "slug": "live",
-            "label": "Live()"
-          },
-          {
-            "slug": "log",
-            "label": "log()"
-          },
-          {
-            "slug": "get_step",
-            "label": "get_step()"
-          },
-          {
-            "slug": "next_step",
-            "label": "next_step()"
-          },
-          {
-            "slug": "set_step",
-            "label": "set_step()"
+            "label": "Live()",
+            "source": "api-reference/live/index.md",
+            "children": [
+              {
+                "slug": "log",
+                "label": "log()"
+              },
+              {
+                "slug": "get_step",
+                "label": "get_step()"
+              },
+              {
+                "slug": "next_step",
+                "label": "next_step()"
+              },
+              {
+                "slug": "set_step",
+                "label": "set_step()"
+              }
+            ]
           }
         ]
       }

@@ -1,4 +1,4 @@
-# dvclive.log()
+# Live.log()
 
 Generates [_metrics logs_](/doc/dvclive/get-started#metrics-logs) (usable by
 `dvc plots`) by saving the given `name`: `val` pair to a `.tsv` file.
@@ -12,24 +12,24 @@ Generates [_metrics logs_](/doc/dvclive/get-started#metrics-logs) (usable by
 ```py
 from dvclive import Live
 
-dvclive = Live()
+live = Live()
 
-dvclive.log("loss", 0.9)
+live.log("loss", 0.9)
 ```
 
 ## Description
 
-The first call to `dvclive.log(name, val)` will create a new file in
+The first call to `live.log(name, val)` will create a new file in
 `{path}/{name}.tsv` including the header and first row.
 
-For example `dvclive.log("loss", 0.9)` will create `{path}/loss.tsv`:
+For example `live.log("loss", 0.9)` will create `{path}/loss.tsv`:
 
 ```
 timestamp step  loss
 1623671484747 0 0.9
 ```
 
-Each subsequent call to `dvclive.log(name, val)` will add a new row to
+Each subsequent call to `live.log(name, val)` will add a new row to
 `{path}/{name}.tsv`.
 
 The created file `{path}/{name}.tsv` is usable by `dvc plots`.
@@ -38,7 +38,7 @@ The created file `{path}/{name}.tsv` is usable by `dvc plots`.
 be created and the file will be saved inside the last subfolder (i.e.
 `{path}/train/loss.tsv`).
 
-If `summary` is True, `dvclive.log()` DVCLive will update the
+If `summary` is True, `Live.log()` DVCLive will update the
 [_metrics summary_](/doc/dvclive/get-started#metrics-summary) with the latest
 value logged.
 
@@ -53,7 +53,7 @@ The updated summary `{path}.json` is usable by `dvc metrics`.
 ## Exceptions
 
 - `dvclive.error.InvalidMetricTypeError` - thrown if the provided `val` does not
-  have a supported type
+  have a supported type.
 
 - `dvclive.error.DataAlreadyLoggedError` - thrown if the provided `name` has
-  already been logged in the same `step`.
+  already been logged whithin the same `step`.

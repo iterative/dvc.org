@@ -16,8 +16,8 @@ features:
 To start using DVCLive you just need to add few modifications to your training
 code in **any** PyTorch project.
 
-You need to add `dvclive.log()` calls to each place where you would like to log
-metrics and one single `dvclive.next_step()` call to indicate that the epoch has
+You need to add `Live.log()` calls to each place where you would like to log
+metrics and one single `Live.next_step()` call to indicate that the epoch has
 ended.
 
 To ilustrate with some code, extracted from the
@@ -26,18 +26,18 @@ To ilustrate with some code, extracted from the
 ```git
 + from dvclive import Live
 
-+ dvclive = Live()
++ live = Live()
 
 for epoch in range(args.start_epoch, args.epochs):
     lr = adjust_learning_rate(optimizer, epoch, args)
-+    dvclive.log("learning_rate", lr)
++    live.log("learning_rate", lr)
 
     train_acc1 = train(
         train_loader, model, criterion, optimizer, epoch, args)
-+    dvclive.log("train/accuracy", train_acc1)
++    live.log("train/accuracy", train_acc1)
 
     val_acc1 = validate(val_loader, model, criterion, args)
-+    dvclive.log("validation/accuracy", val_acc1)
++    live.log("validation/accuracy", val_acc1)
 
     is_best = val_acc1 > best_acc1
     best_acc1 = max(val_acc1, best_acc1)
@@ -50,7 +50,7 @@ for epoch in range(args.start_epoch, args.epochs):
         'optimizer' : optimizer.state_dict(),
     }, is_best)
 
-+    dvclive.next_step()
++    live.next_step()
 ```
 
 This will generate the metrics logs and summaries as described in the

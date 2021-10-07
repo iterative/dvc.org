@@ -19,8 +19,8 @@ To start using DVCLive you just need to add a few lines to your training code in
 > 💡 If you prefer the Keras API, check the
 > [DVCLive - Keras](/docs/dvclive/user-guide/ml-frameworks/keras) page.
 
-You need to add `dvclive.log()` calls to each place where you would like to log
-metrics and one single `dvclive.next_step()` call to indicate that the epoch has
+You need to add `Live.log()` calls to each place where you would like to log
+metrics and one single `Live.next_step()` call to indicate that the epoch has
 ended.
 
 To ilustrate with some code, extracted from the
@@ -29,7 +29,7 @@ To ilustrate with some code, extracted from the
 ```git
 + from dvclive import Live
 
-+ dvclive = Live()
++ live = Live()
 
 for epoch in range(epochs):
     start_time = time.time()
@@ -41,16 +41,16 @@ for epoch in range(epochs):
         optimizer.apply_gradients(zip(grads, model.trainable_weights))
         train_acc_metric.update_state(y_batch_train, logits)
 
-+    dvclive.log("train/accuracy", float(train_acc_metric.result())
++    live.log("train/accuracy", float(train_acc_metric.result())
     train_acc_metric.reset_states()
 
     for x_batch_val, y_batch_val in val_dataset:
         val_logits = model(x_batch_val, training=False)
         val_acc_metric.update_state(y_batch_val, val_logits)
-+    dvclive.log("val/accuracy", float(val_acc_metric.result())
++    live.log("val/accuracy", float(val_acc_metric.result())
     val_acc_metric.reset_states()
 
-+    dvclive.next_step()
++    live.next_step()
 ```
 
 This will generate the metrics logs and summaries as described in the

@@ -21,16 +21,16 @@ We will refer to a training script (`train.py`) already using `dvclive`:
 
 from dvclive import Live
 
-dvclive = Live()
+live = Live()
 
 for epoch in range(NUM_EPOCHS):
     train_model(...)
     metrics = evaluate_model(...)
 
     for metric_name, value in metrics.items():
-        dvclive.log(metric_name, value)
+        live.log(metric_name, value)
 
-    dvclive.next_step()
+    live.next_step()
 ```
 
 Let's use `dvc stage add` to create a stage to wrap this code (don't forget to

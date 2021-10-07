@@ -26,8 +26,8 @@ describe('gatsby-remark-dvc-linker', () => {
   }
 
   live = {
-    inlineCode: '`dvclive.log()`',
-    url: '[`dvclive.log()`](/doc/dvclive/api-reference/log)'
+    inlineCode: '`Live.log()`',
+    url: '[`Live.log()`](/doc/dvclive/api-reference/live/log)'
   }
 
   it('composes apiLinker and commandLinker', () => {

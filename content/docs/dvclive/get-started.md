@@ -11,7 +11,7 @@ To get it up and running you just need to follow these steps:
 ```python
 from dvclive import Live
 
-dvclive = Live()
+live = Live()
 ```
 
 See [`Live()`](/doc/dvclive/api-reference/live) for details.
@@ -19,18 +19,18 @@ See [`Live()`](/doc/dvclive/api-reference/live) for details.
 ### 2. Log metrics
 
 ```python
-dvclive.log(metric_name, value)
+live.log(metric_name, value)
 ```
 
-See `dvclive.log()` for details.
+See `Live.log()` for details.
 
 ### 3. Increase the step number
 
 ```python
-dvclive.next_step()
+live.next_step()
 ```
 
-See `dvclive.next_step()` for details.
+See `Live.next_step()` for details.
 
 ## Putting all together
 
@@ -41,16 +41,16 @@ Using the above steps, you can easily include DVCLive in your training code:
 
 from dvclive import Live
 
-dvclive = Live()
+live = Live()
 
 for epoch in range(NUM_EPOCHS):
     train_model(...)
     metrics = evaluate_model(...)
 
     for metric_name, value in metrics.items():
-        dvclive.log(metric_name, value)
+        live.log(metric_name, value)
 
-    dvclive.next_step()
+    live.next_step()
 ```
 
 ## Outputs
@@ -79,7 +79,7 @@ timestamp	step	{metric_name}
 
 ### Metrics Summary
 
-In addition, when [`summary`](/doc/dvclive/api-reference/init#parameters) is
+In addition, when [`summary`](/doc/dvclive/api-reference/live/#parameters) is
 enabled (True by default), DVCLive generates a metrics _summary_ with the latest
 metrics:
 
