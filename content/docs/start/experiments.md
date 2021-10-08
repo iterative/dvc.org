@@ -54,14 +54,6 @@ experiments.
 
 </details>
 
-## Running the experiment with default parameters
-
-The purpose of `dvc exp` subcommands is to let you run, capture, compare the
-machine learning experiments at once as you iterate on your code, data, and
-hyperparameters. The artifacts like models, metrics produced by each experiment
-are tracked by DVC and the associated parameters and metrics can be committed to
-Git as text files.
-
 Running the experiment with the default project settings requires only the
 command:
 
@@ -79,6 +71,12 @@ writes the metrics values to `metrics.json`.
 This experiment is then associated with the values found in parameters file
 (`params.yaml`), and other dependencies (`data/images/`) with these produced
 metrics.
+
+The purpose of `dvc exp` family of commands is to let you run, capture, compare
+the machine learning experiments at once as you iterate on your code, data,
+models, and hyperparameters. The artifacts like models, metrics produced by each
+experiment are tracked by DVC and the associated parameters and metrics can be
+committed to Git as text files.
 
 You can review the experiment results with `dvc exp show` and see these metrics
 and results in a nicely formatted table:
@@ -98,7 +96,10 @@ $ dvc exp show
 ```
 
 The `workspace` row in the table shows the results of the most recent experiment
-that's available in the <bbr>workspace</abbr>.
+that's available in the <bbr>workspace</abbr>. The table also shows each
+experiment in a separate row, along with the Git commit IDs they are attached
+to. We can see that the experiment we run has a name `exp-6dccf` and run from
+the commit ID `7317bc6`.
 
 <details>
 
@@ -118,8 +119,6 @@ quickly, can track the history of artifacts and has facilities to compare these
 experiments easily.
 
 </details>
-
-## Running the experiment by setting parameters
 
 Now let's do some more experimentation.
 
@@ -165,7 +164,7 @@ $ dvc exp run --run-all --jobs 2
 
 </details>
 
-## Comparing experiments
+## Comparing and persisting experiments
 
 The experiments are run several times with different parameters. We use
 `dvc exp show` to compare all of these experiments. This command presents the
@@ -216,10 +215,6 @@ $ dvc exp show --no-timestamp \
 └─────────────────────────┴────────┴──────────────────┘
 ```
 
-<details>
-
-### ✅ Persisting experiments
-
 After selecting an experiment from the table, it's possible to apply the
 experiment results to your workspace, or you can create a Git branch that
 contains the experiment with all its related files.
@@ -234,8 +229,6 @@ To switch to the new branch run:
 
 You can then checkout and continue working from this branch, or merge the branch
 your `main` branch with usual Git commands.
-
-</details>
 
 ## Go Further
 
