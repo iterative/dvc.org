@@ -31,7 +31,6 @@ files.
 
 ## Attributes
 
-- `step` - Number used to track the progress of the training.
 - `dir` - Location of the
   [_metrics logs_](/doc/dvclive/get-started#metrics-logs) directory.
 - `summary_path` - Location of the
