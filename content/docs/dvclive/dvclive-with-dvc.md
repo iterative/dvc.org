@@ -120,6 +120,4 @@ This will save the metrics, plots, models, etc. associated to each
 [`step`](/doc/dvclive/api-reference/get_step).
 
 You can learn more about how to use them in the
-[Checkpoints User Guide](/docs/user-guide/experiment-management/checkpoints) and
-in this example
-[repository](https://github.com/iterative/dvc-checkpoints-mnist).
+[Checkpoints User Guide](/docs/user-guide/experiment-management/checkpoints).
