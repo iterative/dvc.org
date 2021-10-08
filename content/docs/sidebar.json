@@ -245,6 +245,7 @@
         "slug": "doctor"
       },
       {
+        "label": "exp",
         "slug": "exp",
         "source": "exp/index.md",
         "children": [
