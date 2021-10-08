@@ -147,7 +147,6 @@
         "slug": "experiment-management",
         "source": "experiment-management/index.md",
         "children": [
-          "dvc-experiments",
           "running-experiments",
           "sharing-experiments",
           "cleaning-experiments",
