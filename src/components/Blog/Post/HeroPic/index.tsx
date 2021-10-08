@@ -1,40 +1,20 @@
-import { GatsbyImage } from 'gatsby-plugin-image'
+import { GatsbyImage, getImage } from 'gatsby-plugin-image'
+import { IGatsbyImageDataParent } from 'gatsby-plugin-image/dist/src/components/hooks'
 import React from 'react'
 
-import { BLOG } from '../../../../consts'
-import {
-  IBlogPostHeroPic,
-  IGatsbyImageProps
-} from '../../../../templates/blog-post'
+import { IBlogPostHeroPic } from '../../../../templates/blog-post'
 
 import * as styles from './styles.module.css'
 
-const NonStretchedImage: React.FC<IGatsbyImageProps> = props => {
-  let normalizedProps = props
-  if (props.fluid && props.fluid.presentationWidth) {
-    const presetantionWidth = props.fluid?.presentationWidth
-    const width =
-      presetantionWidth < BLOG.imageMaxWidthHero
-        ? presetantionWidth / 2
-        : presetantionWidth
-    normalizedProps = {
-      ...props,
-      style: {
-        ...(props.style || {}),
-        maxWidth: width,
-        margin: '0 auto'
-      }
-    }
-  }
-  return <GatsbyImage {...normalizedProps} />
-}
-
 const HeroPic: React.FC<IBlogPostHeroPic> = ({ pictureComment, picture }) => {
+  const image = getImage(picture as IGatsbyImageDataParent)
   return (
     <div className={styles.pictureWrapper}>
-      <div className={styles.picture}>
-        <NonStretchedImage image={picture.gatsbyImageData} />
-      </div>
+      {image && (
+        <div className={styles.picture}>
+          <GatsbyImage image={image} alt="Hero Picture" />
+        </div>
+      )}
       {pictureComment && (
         <div
           className={styles.pictureComment}

@@ -27,7 +27,7 @@ const logDocumentationAll = (): void =>
 interface ICommunityBlogPost {
   color: string
   commentsUrl?: string
-  pictureUrl: string | null
+  pictureUrl?: string
   date: string
   title: string
   url: string

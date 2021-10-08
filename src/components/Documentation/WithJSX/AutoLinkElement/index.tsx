@@ -2,7 +2,7 @@ import React from 'react'
 import * as styles from './styles.module.css'
 
 interface IElementProps {
-  attributes?: object
+  attributes?: Record<string, unknown>
   el?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'span'
 }
 
@@ -28,7 +28,7 @@ const Element: React.FC<IElementProps> = ({ children, el, attributes }) => {
 interface IAutoLinkHeaderProps {
   id: string
   el?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'span'
-  anchorStyle?: object
+  anchorStyle?: Record<string, unknown>
 }
 
 const AutoLinkElement: React.FC<IAutoLinkHeaderProps> = ({

@@ -7,7 +7,7 @@ import * as styles from './styles.module.css'
 declare global {
   // eslint-disable-next-line @typescript-eslint/interface-name-prefix
   interface Window {
-    docsearch?: (opts: object) => void
+    docsearch?: (opts: Record<string, unknown>) => void
   }
 }
 

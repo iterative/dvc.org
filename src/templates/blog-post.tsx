@@ -1,14 +1,15 @@
 import { graphql } from 'gatsby'
-import { getSrc, IGatsbyImageData } from 'gatsby-plugin-image'
+import { IGatsbyImageData } from 'gatsby-plugin-image'
 import React from 'react'
 
 import SEO from '../components/SEO'
 import Post from '../components/Blog/Post'
 
 import { ISocialIcon } from '../components/SocialIcon'
+import { IGatsbyImageDataParent } from 'gatsby-plugin-image/dist/src/components/hooks'
 
 export interface IBlogPostHeroPic {
-  picture?: IGatsbyImageData
+  picture?: IGatsbyImageDataParent
   pictureComment?: string
 }
 
@@ -23,7 +24,7 @@ export interface IBlogPostData {
   descriptionLong?: string
   commentsUrl?: string
   tags?: string[]
-  picture?: IGatsbyImageData
+  picture?: IGatsbyImageDataParent
   pictureComment?: string
   author: {
     name: string
@@ -45,11 +46,7 @@ const BlogPostPage: React.FC<IBlogPostPageProps> = ({ data }) => {
   const { title, description, picture } = post
   return (
     <>
-      <SEO
-        title={title}
-        description={description}
-        image={picture && getSrc(picture)}
-      />
+      <SEO title={title} description={description} image={picture} />
       <Post {...post} />
     </>
   )
