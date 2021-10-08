@@ -12,9 +12,11 @@ optimization, etc. DVC helps you codify and manage all of your
    version without having to track them manually. DVC does that automatically,
    letting you list and compare them. The best ones can be made persistent, and
    the rest archived.
+
 2. Place in-code [checkpoints](#checkpoints-in-source-code) that mark a series
    of variations, forming a deep experiment. DVC helps you capture them at
    runtime, and manage them in batches.
+
 3. Make experiments or checkpoints [persistent](#persistent-experiments) by
    committing them to your <abbr>repository</abbr>. Or create these versions
    from scratch like typical project changes.
@@ -22,6 +24,10 @@ optimization, etc. DVC helps you codify and manage all of your
    At this point you may also want to consider the different
    [ways to organize](#organization-patterns) experiments in your project (as
    Git branches, as folders, etc.).
+
+4. Easily [share experiments] using Git and DVC remotes.
+
+[share experiments]: /doc/user-guide/experiment-management/sharing-experiments
 
 DVC also provides specialized features to codify and analyze experiments.
 [Parameters](/doc/command-reference/params) are simple values you can tweak in a
