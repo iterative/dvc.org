@@ -1,10 +1,10 @@
 ---
 title: ML Model Ensembling with Fast Iterations
 date: 2017-08-23
-description: |
+description: >
   Here we'll talk about tools that help tackling common technical challenges of
   building pipelines for the ensemble learning.
-descriptionLong: |
+descriptionLong: >
   In many real-world Machine Learning projects, there is a need to ensemble
   complex models as well as maintain pipelines. As we will demonstrate, DVC is a
   good tool that helps tackling common technical challenges of building

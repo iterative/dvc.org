@@ -1,6 +1,6 @@
 # exp show
 
-Print a customizable table of `dvc experiments`, their metrics and parameters.
+Print a customizable table of experiments, their metrics and parameters.
 
 > Press `q` to exit.
 
@@ -14,7 +14,7 @@ usage: dvc exp show [-h] [-q | -v] [-a] [-T] [-A] [-n <num>]
                     [--exclude-params <params_list>] [--param-deps]
                     [--sort-by <metric/param>]
                     [--sort-order {asc,desc}] [--no-timestamp] [--sha]
-                    [--show-json] [--precision <n>]
+                    [--show-json] [--show-csv] [--precision <n>]
 ```
 
 ## Description
@@ -65,6 +65,8 @@ metric or param.
 - `-A`, `--all-commits` - include experiments derived from all Git commits, as
   well as from the last one. This prints all experiments in the project.
 
+- `-n <num>`, `--num <num>` - show the last `num` commits from HEAD.
+
 - `--no-pager` - do not enter the pager screen. Writes the entire table to
   standard output. Useful to redirect the output to a file, or use your own
   paginator.
@@ -112,6 +114,9 @@ metric or param.
 
 - `--show-json` - prints the command's output in easily parsable JSON format,
   instead of a human-readable table.
+
+- `--show-csv` - prints the command's output in CSV format instead of a
+  human-readable table.
 
 - `--precision <n>` -
   [round](https://docs.python.org/3/library/functions.html#round) decimal values

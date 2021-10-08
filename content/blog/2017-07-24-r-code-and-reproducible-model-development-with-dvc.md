@@ -1,11 +1,11 @@
 ---
 title: R code and reproducible model development with DVC
 date: 2017-07-24
-description: |
+description: >
   There are a lot of example on how to use Data Version Control (DVC) with a
   Python project. In this document I would like to see how it can be used with a
   project in R.
-descriptionLong: |
+descriptionLong: >
   In this document we will briefly explore possibilities of a new open source
   tool that could help with achieving code simplicity, readability and faster
   model development.

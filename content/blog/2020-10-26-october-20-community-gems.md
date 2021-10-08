@@ -1,14 +1,14 @@
 ---
 title: October '20 Community Gems
 date: 2020-10-26
-description: |
-  A roundup of technical Q&A's from the DVC community. This month, learn how
-  DVC files work, how to use DVC plots for multi-class classification problems,
-  and how to deal with some spooky error messages 👻.
-descriptionLong: |
-  A roundup of technical Q&A's from the DVC community. This month, learn how
-  DVC files work, how to use DVC plots for multi-class classification problems,
-  and how to deal with some spooky error messages 👻.
+description: >
+  A roundup of technical Q&A's from the DVC community. This month, learn how DVC
+  files work, how to use DVC plots for multi-class classification problems, and
+  how to deal with some spooky error messages 👻.
+descriptionLong: >
+  A roundup of technical Q&A's from the DVC community. This month, learn how DVC
+  files work, how to use DVC plots for multi-class classification problems, and
+  how to deal with some spooky error messages 👻.
 picture: 2020-10-26/Gems_Oct_20.png
 pictureComment: |
   Happy Halloween from Pirate DeeVee!

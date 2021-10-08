@@ -18,14 +18,14 @@ positional arguments:
 
 ## Description
 
-Provides a way to execute and track `dvc experiments` in your
+Provides a way to execute and track <abbr>experiments</abbr> in your
 <abbr>project</abbr> without polluting it with unnecessary commits, branches,
 directories, etc.
 
-> `dvc exp run` is equivalent to `dvc repro` for <abbr>experiments</abbr>. It
-> has the same behavior when it comes to `targets` and stage execution (restores
-> the dependency graph, etc.). See the command [options](#options) for more on
-> the differences.
+> `dvc exp run` is equivalent to `dvc repro` for experiments. It has the same
+> behavior when it comes to `targets` and stage execution (restores the
+> dependency graph, etc.). See the command [options](#options) for more on the
+> differences.
 
 Before running an experiment, you'll probably want to make modifications such as
 data and code updates, or <abbr>hyperparameter</abbr> tuning. For the latter,

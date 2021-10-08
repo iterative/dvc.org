@@ -245,7 +245,7 @@ export const HamburgerMenu: React.FC<
               >
                 <img
                   className={styles.subSectionLinkImage}
-                  src="/img/studio-icon.svg"
+                  src="/img/studio_icon-color--square_vector.svg"
                   alt="Studio logo"
                 />
                 <span className={styles.subSectionLinkTitle}>Studio</span>
@@ -255,7 +255,7 @@ export const HamburgerMenu: React.FC<
               <Link href="/" className={styles.subSectionLink}>
                 <img
                   className={styles.subSectionLinkImage}
-                  src="/img/logo.svg"
+                  src="/img/dvc_icon-color--square_vector.svg"
                   alt="DVC logo"
                 />
                 <span className={styles.subSectionLinkTitle}>DVC</span>
@@ -265,7 +265,7 @@ export const HamburgerMenu: React.FC<
               <Link href="https://cml.dev/" className={styles.subSectionLink}>
                 <img
                   className={styles.subSectionLinkImage}
-                  src="/img/cml-icon.svg"
+                  src="/img/cml_icon-color--square_vector.svg"
                   alt="CML logo"
                 />
                 <span className={styles.subSectionLinkTitle}>CML</span>

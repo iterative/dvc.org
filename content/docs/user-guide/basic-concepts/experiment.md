@@ -7,6 +7,5 @@ tooltip: >-
   experiments](/doc/start/experiments), having [built-in
   mechanisms](/doc/user-guide/experiment-management) like the
   [run-cache](/doc/user-guide/project-structure/internal-files#run-cache) and
-  the [`dvc experiments`](/doc/command-reference/exp) commands (available on DVC
-  2.0 and above).
+  the `dvc exp` commands (available on DVC 2.0 and above).
 ---

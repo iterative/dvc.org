@@ -1,0 +1,26 @@
+name: DVC Download Link Check
+
+on:
+  schedule:
+    - cron: '0 0-23 * * *'
+
+jobs:
+  run:
+    name: Initialize
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Download Link Checker
+        uses: lycheeverse/lychee-action@v1.0.8
+        with:
+          args:
+            --verbose https://dvc.org/ --base https://dvc.org/ --include
+            /download/
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      - name: Create Issue From File
+        uses: peter-evans/create-issue-from-file@v3
+        with:
+          title: DVC Download Link Checker Report
+          content-filepath: ./lychee/out.md
+          labels: website, link-checker

@@ -1,12 +1,12 @@
 ﻿---
 title: Introducing DVC Studio
 date: 2021-06-02
-description: |
+description: >
   🚀 We are excited to release DVC Studio, the online UI for DVC and CML. Use
   DVC Studio for ML versioning, visualization, teamwork and no-code automation
   on top of DVC and Git. Read all about the exciting features and watch videos
   to get started quickly.
-descriptionLong: |
+descriptionLong: >
   With [DVC Studio](https://studio.iterative.ai), you can use Git and
   [DVC](https://dvc.org) to track your code, ML models, metrics,
   hyperparameters, and data, all together.

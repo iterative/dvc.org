@@ -239,4 +239,10 @@ describe('getRedirects', () => {
       '/doc/use-cases/versioning-data-and-model-files'
     )
   })
+
+  describe('Does not accidentally redirect to an external site', () => {
+    itRedirects('//google.com/', '/google.com')
+    itRedirects('https://dvc.org//google.com/', '/google.com')
+    itRedirects('/////////evil.com/', '/evil.com')
+  })
 })
