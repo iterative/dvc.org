@@ -21,11 +21,11 @@ optimization, etc. DVC helps you codify and manage all of your
    committing them to your <abbr>repository</abbr>. Or create these versions
    from scratch like typical project changes.
 
-   At this point you may also want to consider the different
-   [ways to organize](#organization-patterns) experiments in your project (as
-   Git branches, as folders, etc.).
+   > At this point you may also want to consider the different
+   > [ways to organize](#organization-patterns) experiments in your project as
+   > well.
 
-4. Easily [share experiments] using Git and DVC remotes.
+4. Easily [share experiments] across your team.
 
 [share experiments]: /doc/user-guide/experiment-management/sharing-experiments
 
