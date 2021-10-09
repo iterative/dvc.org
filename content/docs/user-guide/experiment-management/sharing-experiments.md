@@ -57,13 +57,11 @@ performance also depend on the connection bandwidth and remote configurations.
 
 [run-cache]: /doc/user-guide/project-structure/internal-files#run-cache
 
-## Listing remote experiments
+## Listing experiments on remotes
 
-In order to list experiments in a DVC project, you can use the `dvc exp list`
-command. With no command line options, it lists the experiments in the current
-project.
-
-You can supply a Git remote name to list the experiments:
+You can use the `dvc exp list` command to list experiments. (with no arguments
+it lists the experiments in the current project. You can supply a Git remote
+name to list the experiments that have been pushed there:
 
 ```dvc
 $ dvc exp list origin
@@ -89,17 +87,6 @@ $ dvc exp list origin --all
 main:
     cnn-128
     ...
-```
-
-When you don't need to see the parent commits, you can list experiment names
-only, with `--names-only`:
-
-```dvc
-$ dvc exp list origin --names-only
-cnn-128
-cnn-32
-cnn-64
-cnn-96
 ```
 
 ## Downloading experiments
