@@ -147,6 +147,7 @@
         "slug": "experiment-management",
         "source": "experiment-management/index.md",
         "children": [
+          "dvc-experiments",
           "running-experiments",
           "sharing-experiments",
           "cleaning-experiments",
@@ -245,7 +246,7 @@
         "slug": "doctor"
       },
       {
-        "label": "exp",
+        "label": "experiments",
         "slug": "exp",
         "source": "exp/index.md",
         "children": [

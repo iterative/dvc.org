@@ -20,7 +20,7 @@ can be referenced by name or hash (see `dvc exp run` for details).
 
 This is typically used after choosing a target `experiment` with `dvc exp show`
 or `dvc exp diff`, and before committing it to Git (making it
-[persistent](/doc/user-guide/experiment-management#persistent-experiments)).
+[persistent](/doc/user-guide/experiment-management/dvc-experiments#persistent-experiments)).
 
 `dvc exp apply` changes any files (code, data, <abbr>parameters</abbr>,
 <abbr>metrics</abbr>, etc.) needed to reflect the experiment conditions and

@@ -18,14 +18,14 @@ positional arguments:
 
 ## Description
 
-Provides a way to execute and track <abbr>experiments</abbr> in your
+Provides a way to execute and track `dvc experiments` in your
 <abbr>project</abbr> without polluting it with unnecessary commits, branches,
 directories, etc.
 
-> `dvc exp run` is equivalent to `dvc repro` for experiments. It has the same
-> behavior when it comes to `targets` and stage execution (restores the
-> dependency graph, etc.). See the command [options](#options) for more on the
-> differences.
+> `dvc exp run` is equivalent to `dvc repro` for <abbr>experiments</abbr>. It
+> has the same behavior when it comes to `targets` and stage execution (restores
+> the dependency graph, etc.). See the command [options](#options) for more on
+> the differences.
 
 Before running an experiment, you'll probably want to make modifications such as
 data and code updates, or <abbr>hyperparameter</abbr> tuning. For the latter,
@@ -44,7 +44,7 @@ option.
 Experiments are custom
 [Git references](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
 (found in `.git/refs/exps`) with a single commit based on `HEAD` (not checked
-out by DVC). Note that these commits are not pushed to the Git remote by default
+out by DVC). Note that these commits are not pushed to Git remotes by default
 (see `dvc exp push`).
 
 </details>
@@ -55,8 +55,8 @@ and compare multiple experiments, use `dvc exp show` or `dvc exp diff`
 to restore the results of any other experiment instead.
 
 Successful experiments can be made
-[persistent](/doc/user-guide/experiment-management#persistent-experiments) by
-committing them to the Git repo. Unnecessary ones can be removed with
+[persistent](/doc/user-guide/experiment-management/dvc-experiments#persistent-experiments)
+by committing them to the Git repo. Unnecessary ones can be removed with
 `dvc exp remove`or `dvc exp gc` (or abandoned).
 
 > Note that experiment data will remain in the <abbr>cache</abbr> until you use
