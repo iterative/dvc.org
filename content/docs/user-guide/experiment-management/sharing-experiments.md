@@ -1,25 +1,25 @@
 # Sharing Experiments
 
-Two types of _remotes_ are needed to upload experiments for sharing.
-[Git remotes](https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes)
-are distributed copies of the Git repository, hosted for example on GitHub or
-GitLab. Small files like experimental code and
-[DVC metafiles](/doc/user-guide/project-structure) files will go there.
-[DVC remotes](/doc/command-reference/remote) on the other hand are data storage
-locations (e.g. Amazon S3 or Google Drive). You can use them to back up and
-[share data](/doc/use-cases/sharing-data-and-model-files) files and directories
-that don't fit inside Git repos.
+> ⚠️ Note: Since a Git repository is required for experiment management
+> features, in order to share them you will also need to have a [Git remote]
+> setup. Only [SSH Git URLs] are supported.
 
-> See this [Git remotes guide] and `dvc remote add` for info. on setting them
-> up.  
-> ⚠️ Note that only [SSH Git URLs] support DVC experiment sharing.
-
+[git remote]: https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes
 [ssh git urls]:
   https://git-scm.com/book/en/v2/Git-on-the-Server-The-Protocols#_the_protocols
-[git remotes guide]:
-  https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes
 
-You can list your remotes with `git remote -v` and `dvc remote list`:
+Sharing experiments is similar to [sharing regular project data] and artifacts
+by pushing (uploading) and pulling (downloading) from remotes. DVC-tracked data,
+models, etc. are in your project's <abbr>cache</abbr> and thus will be
+transferred to/from [DVC remote storage](/doc/command-reference/remote) (e.g.
+Amazon S3 or Google Drive). Small files like experimental code and
+[DVC metafiles](/doc/user-guide/project-structure) files are stored and shared
+with Git automatically (you don't need to worry about using Git directly).
+
+[sharing regular project data]: /doc/use-cases/sharing-data-and-model-files
+
+Start by making sure you have your remotes setup with `git remote -v` and
+`dvc remote list`:
 
 ```dvc
 $ git remote -v
