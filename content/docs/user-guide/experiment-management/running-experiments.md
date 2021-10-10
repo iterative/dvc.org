@@ -146,9 +146,9 @@ $ dvc exp run -S myparams.toml:learning_rate = 0.0001
 
 ### Updating experiment parameters on-the-fly
 
-DVC allows to update the parameters from command line when running
-`dvc experiments`. The `--set-param` (`-S`) option takes a parameter name and
-its value, and updates the params file before the run.
+DVC allows to update the parameters from command line when running experiments.
+The `--set-param` (`-S`) option takes a parameter name and its value, and
+updates the params file before the run.
 
 ```dvc
 $ dvc exp run --set-param model.learning_rate=0.0002

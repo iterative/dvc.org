@@ -58,7 +58,9 @@ stages:
 
 The code in `iterate.py` will execute continuously increment an integer number
 saved in `int.txt` (starting at 0). At 0 and every 100 loops, it makes a
-checkpoint for `dvc experiments`:
+checkpoint for [DVC experiments]:
+
+[dvc experiments]: /doc/user-guide/experiment-management#experiments
 
 ```py
 import os
@@ -140,4 +142,5 @@ $ dvc exp show
 If we use `dvc exp run` again, the process will start from 200 (since that's
 what the <abbr>workspace</abbr> reflects).
 
-See `dvc experiments` for more details on managing <abbr>experiments</abbr>.
+See [Experiment Management](/doc/user-guide/experiment-management) for more
+details on managing <abbr>experiments</abbr>.
