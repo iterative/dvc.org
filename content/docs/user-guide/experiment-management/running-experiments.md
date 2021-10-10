@@ -146,9 +146,9 @@ $ dvc exp run -S myparams.toml:learning_rate = 0.0001
 
 ### Updating experiment parameters on-the-fly
 
-DVC allows to update the parameters from command line when running experiments.
-The `--set-param` (`-S`) option takes a parameter name and its value, and
-updates the params file before the run.
+DVC allows to update the parameters from command line when running
+`dvc experiments`. The `--set-param` (`-S`) option takes a parameter name and
+its value, and updates the params file before the run.
 
 ```dvc
 $ dvc exp run --set-param model.learning_rate=0.0002
@@ -226,7 +226,8 @@ Note that Git-ignored files/dirs are explicitly excluded from queued/temp runs
 to avoid committing unwanted files into Git (e.g. once successful experiments
 are [persisted]).
 
-[persisted]: /doc/user-guide/experiment-management#persistent-experiments
+[persisted]:
+  /doc/user-guide/experiment-management/dvc-experiments#persistent-experiments
 
 > 💡 To include untracked files, stage them with `git add` first (before
 > `dvc exp run`) and `git reset` them afterwards.
@@ -265,12 +266,8 @@ CPU cores).
 ## Checkpoint experiments
 
 To track successive steps in a longer or deeper <abbr>experiment</abbr>, you can
-register checkpoints from your code.
-
-📖 See [Checkpoints](/doc/user-guide/experiment-management/checkpoints) to learn
-about this feature.
-
-Running the experiments containing checkpoints is no different than with regular
+register [checkpoints](/doc/user-guide/experiment-management/checkpoints) from
+your code. Running checkpoint experiments is no different than with regular
 ones, e.g.:
 
 ```dvc
@@ -293,3 +290,6 @@ their outputs). This is useful for re-training ML models, for example.
 
 > Note that queuing an experiment that uses checkpoints implies `--reset`,
 > unless a `--rev` is provided (refer to the previous section).
+
+> 📖 See [Checkpoints](/doc/user-guide/experiment-management/checkpoints) to
+> learn more about this feature.
