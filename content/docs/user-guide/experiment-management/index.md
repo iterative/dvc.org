@@ -34,7 +34,8 @@ scene. But there's no easy way to explore it.
 
 _New in DVC 2.0_
 
-The `dvc experiments` features are designed to support these main approaches:
+DVC experiment management features are designed to support these main
+approaches:
 
 1. [Run] and capture [experiments] that derive from your latest project version
    without polluting your Git history. DVC tracks them for you, letting you list
@@ -83,4 +84,4 @@ main alternatives:
 
 DVC takes care of arranging `dvc exp` experiments and the data
 <abbr>cache</abbr> under the hood so there's no need to decide on the above
-until your `dvc experiments` are made [persistent].
+until your experiments are made [persistent].

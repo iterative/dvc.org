@@ -18,7 +18,7 @@ positional arguments:
 
 ## Description
 
-Provides a way to execute and track `dvc experiments` in your
+Provides a way to execute and track <abbr>experiments</abbr> in your
 <abbr>project</abbr> without polluting it with unnecessary commits, branches,
 directories, etc.
 
