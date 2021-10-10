@@ -1,10 +1,13 @@
 # Persisting Experiments
 
 DVC runs experiments outside of the Git stage/commit cycle for quick iteration.
+When your experiments are good enough to save or share, you may want to store
+them persistently as Git commits in your repository.
+
 In this section, we describe how to bring them to the standard Git workflow with
 `dvc exp branch` and `dvc exp apply`.
 
-## Create a Git branch for your experiment
+## Create a Git branch from an experiment
 
 You can use `dvc exp branch` to create a new branch from an experiment, and keep
 all its code and artifacts separate from your current <abbr>workspace</abbr>.
@@ -78,8 +81,8 @@ Changes for experiment 'exp-e6c97' have been applied...
 ```
 
 ⚠️ Note that, `dvc exp apply` requires you're at the same commit that the
-experiment run. Otherwise, it won't apply the experiments due to possible
-conflicts.
+experiment run. Otherwise, it won't apply the experiment due to possible
+conflicts in text files.
 
 Now, if you list the experiments again with `dvc exp show`, you'll see that the
 workspace contains the results of `exp-e6c97`.
