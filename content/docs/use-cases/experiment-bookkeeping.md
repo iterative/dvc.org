@@ -35,10 +35,10 @@ artifacts). This is possible because DVC helps you codify data pipelines, which
 enables [tracking & versioning](/doc/use-cases/versioning-data-and-model-files)
 all this data.
 
-You can enjoy the full power of `dvc experiments` on any machine, without need
-for special infrastructure or servers. The only other software required is Git,
-but you don't need to worry about how it's used internally! Everything your team
-may need for a regular version control workflow later will still be available.
+You can enjoy the full power of DVC Experiments on any machine, without need for
+special infrastructure or servers. The only other software required is Git, but
+you don't need to worry about how it's used internally! Everything your team may
+need for a regular version control workflow later will still be available.
 
 On top of that, DVC Experiment features are language agnostic. You can expect
 the same convenience and performance whether you are using Jupyter Notebooks or
