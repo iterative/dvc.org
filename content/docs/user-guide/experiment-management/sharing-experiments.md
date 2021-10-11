@@ -63,7 +63,7 @@ performance also depend on the connection bandwidth and remote configurations.
 
 [run-cache]: /doc/user-guide/project-structure/internal-files#run-cache
 
-## Listing experiments on remotes
+## Listing experiments saved on remotes
 
 You can use the `dvc exp list` command to list experiments. (with no arguments
 it lists the experiments in the current project. You can supply a Git remote
