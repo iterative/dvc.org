@@ -14,7 +14,7 @@ positional arguments:
   COMMAND
     show         Generate plot from a metrics file.
     diff         Plot differences in metrics between commits.
-    modify       Modify plot properties associated with a target file. Does not affect image type plots.
+    modify       Modify display properties of data-series plots (has no effect on image-type plots).
 ```
 
 ## Types of metrics
