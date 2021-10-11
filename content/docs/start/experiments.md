@@ -8,7 +8,7 @@ _New in DVC 2.0_
 
 <abbr>Experiments</abbr> proliferate quickly in ML projects where there are many
 parameters to tune or other permutations of the code. We can organize such
-projects and keep only what we ultimately need with `dvc experiments`. DVC can
+projects and keep only what we ultimately need with `dvc exp` commands. DVC can
 track experiments for you so there's no need to commit each one to Git. This way
 your repo doesn't become polluted with all of them. You can discard experiments
 once they're no longer needed.

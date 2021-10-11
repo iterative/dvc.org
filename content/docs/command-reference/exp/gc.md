@@ -1,6 +1,6 @@
 # exp gc
 
-Remove unnecessary `dvc experiments` from the <abbr>project</abbr>.
+Remove unnecessary experiments from the <abbr>project</abbr>.
 
 ## Synopsis
 
@@ -29,8 +29,8 @@ separately to delete it.
 ## Options
 
 - `-w`, `--workspace` - keep _only_ experiments derived from the last commit
-  (`HEAD`, default base for `dvc experiments`). This option is enabled
-  automatically with the other scope options (below).
+  (`HEAD`, default base for experiments). This option is enabled automatically
+  with the other scope options (below).
 
 - `-a`, `--all-branches` - keep experiments derived from all Git branches, as
   well as from the last commit (implies `-w`). Note that this can be combined

@@ -23,4 +23,4 @@ jobs:
         with:
           title: DVC Download Link Checker Report
           content-filepath: ./lychee/out.md
-          labels: website, automated issue
+          labels: website, link-checker

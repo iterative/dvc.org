@@ -1,6 +1,6 @@
 # exp remove
 
-Delete specific `dvc experiments` from the <abbr>project</abbr>.
+Delete specific experiments from the <abbr>project</abbr>.
 
 ## Synopsis
 

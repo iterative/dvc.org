@@ -3,7 +3,7 @@
 ML checkpoints are an important part of deep learning because ML engineers like
 to save the model files at certain points during a training process.
 
-With DVC experiments and checkpoints, you can:
+With checkpoint experiments, you can:
 
 - Implement the best practice in deep learning to save your model weights as
   checkpoints.
@@ -27,7 +27,7 @@ https://youtu.be/PcDo-hCvYpw
 
 <details>
 
-## ⚙️ Setting up the project
+### ⚙️ Setting up the project
 
 You can follow along with the steps here or you can clone the repo directly from
 GitHub and play with it. To clone the repo, run the following commands.

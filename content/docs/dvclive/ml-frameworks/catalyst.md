@@ -16,7 +16,8 @@ To start using DVCLive you just need to add a few lines to your training code in
 
 You just need to add the
 [`DvcLiveCallback`](https://github.com/iterative/dvclive/blob/master/dvclive/catalyst.py)
-to the callbacks list passed to your `runner`:
+to the callbacks list passed to your
+[`Runner`](https://catalyst-team.github.io/catalyst/core/runner.html):
 
 ```git
 +from dvclive.catalyst import DvcLiveCallback

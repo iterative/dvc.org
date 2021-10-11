@@ -15,7 +15,8 @@ To start using DVCLive you just need to add a few lines to your training code in
 
 You just need to add the
 [`DvcLiveCallback`](https://github.com/iterative/dvclive/blob/master/dvclive/huggingface.py)
-to the callbacks list passed to your `trainer`:
+to the callbacks list passed to your
+[`Trainer`](https://huggingface.co/transformers/main_classes/trainer.html):
 
 ```git
 +from dvclive.huggingface import DvcLiveCallback
