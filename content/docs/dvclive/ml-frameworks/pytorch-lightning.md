@@ -39,16 +39,21 @@ This will generate the metrics logs and summaries as described in the
 
 ## Parameters
 
-- `run_name` - Optional name of the run, used in PyTorch Lightning to get
-  version.
-- `prefix` - Optional string that adds to each metric name.
-- `experiment` - Optional DVCLive object which will be used instead of
+- `run_name` - (`None` by default) - Name of the run, used in PyTorch Lightning
+  to get version.
+
+- `prefix` - (`None` by default) - string that adds to each metric name.
+
+- `experiment` - (`None` by default) -
+  [`Live`](/docs/dvclive/api-reference/live) object to be used instead of
   initializing a new one.
 
-You can also pass any argument of dvclive object described in the
-[dvclive.init()](/docs/dvclive/api-reference/init).
+- `**kwargs` - Any additional arguments will be passed to
+  [`Live`](/docs/dvclive/api-reference/live).
 
-Example:
+## Examples
+
+- Using `**kwargs` to customize [`Live`](/docs/dvclive/api-reference/live).
 
 ```python
 from dvclive.lightning import DvcLiveLogger
