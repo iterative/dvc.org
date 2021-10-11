@@ -1,4 +1,4 @@
-# experiments
+# exp
 
 _New in DVC 2.0_
 
@@ -19,7 +19,7 @@ A set of commands to generate and manage <abbr>experiments</abbr>:
 ## Synopsis
 
 ```usage
-usage: dvc experiments [-h] [-q | -v]
+usage: dvc exp [-h] [-q | -v]
           {show,apply,diff,run,gc,branch,list,push,pull,remove}
           ...
 
