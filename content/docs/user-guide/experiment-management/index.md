@@ -12,24 +12,6 @@ the other end, [metrics](/doc/command-reference/metrics) (and
 [plots](/doc/command-reference/plots)) let you define, visualize, and compare
 quantitative measures of your results.
 
-<details>
-
-## 💡 Run Cache: Automatic Log of Stage Runs
-
-Every time you [reproduce](/doc/command-reference/repro) a pipeline with DVC, it
-logs the unique signature of each stage run (in `.dvc/cache/runs` by default).
-If it never happened before, the stage command(s) are executed normally. Every
-subsequent time a [stage](/doc/command-reference/run) runs under the same
-conditions, the previous results can be restored instantly, without wasting time
-or computing resources.
-
-✅ This built-in feature is called <abbr>run-cache</abbr> and it can
-dramatically improve performance. It's enabled out-of-the-box (can be disabled),
-which means DVC is already saving all of your tests and experiments behind the
-scene. But there's no easy way to explore it.
-
-</details>
-
 ## DVC Experiments
 
 _New in DVC 2.0_
@@ -85,3 +67,17 @@ main alternatives:
 DVC takes care of arranging `dvc exp` experiments and the data
 <abbr>cache</abbr> under the hood so there's no need to decide on the above
 until your experiments are made [persistent].
+
+## Run Cache: Automatic Log of Stage Runs
+
+Every time you [reproduce](/doc/command-reference/repro) a pipeline with DVC, it
+logs the unique signature of each stage run (in `.dvc/cache/runs` by default).
+If it never happened before, the stage command(s) are executed normally. Every
+subsequent time a [stage](/doc/command-reference/run) runs under the same
+conditions, the previous results can be restored instantly, without wasting time
+or computing resources.
+
+✅ This built-in feature is called <abbr>run-cache</abbr> and it can
+dramatically improve performance. It's enabled out-of-the-box (can be disabled),
+which means DVC is already saving all of your tests and experiments behind the
+scene. But there's no easy way to explore it.
