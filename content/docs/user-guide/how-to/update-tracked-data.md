@@ -86,4 +86,3 @@ latest version of the modified or replaced data.
 $ git push
 $ dvc push
 ```
-
