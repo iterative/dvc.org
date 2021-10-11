@@ -75,5 +75,15 @@ And start tracking it again:
 $ dvc add train.tsv
 $ git add train.tsv.dvc .gitignore
 $ git commit -m "new train data"
+```
+
+## If you're using Git and DVC remotes
+
+Don't forget to push your updates to your remote repo for everyone to have the
+latest version of the modified or replaced data.
+
+```dvc
+$ git push
 $ dvc push
 ```
+
