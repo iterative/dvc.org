@@ -1,24 +1,27 @@
 # Sharing Experiments
 
-> ⚠️ Note: Since a Git repository is required for experiment management
-> features, in order to share them you will also need to have a [Git remote]
-> setup. Only [SSH Git URLs] are supported.
+If your team shares [Git remotes] on a Git server or hosting (e.g. GitHub,
+GitLab, etc.) to collaborate on projects, then you can also use it to save and
+share DVC Experiments. You will also need DVC
+[remote storage](/doc/command-reference/remote) setup.
 
-[git remote]: https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes
-[ssh git urls]:
-  https://git-scm.com/book/en/v2/Git-on-the-Server-The-Protocols#_the_protocols
+[git remotes]: https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes
+
+<details>
+
+## ⚙️ Expand to learn more.
 
 Sharing experiments is similar to [sharing regular project data] and artifacts
-by pushing (uploading) and pulling (downloading) from remotes. DVC-tracked data,
-models, etc. are in your project's <abbr>cache</abbr> and thus will be
-transferred to/from [DVC remote storage](/doc/command-reference/remote) (e.g.
-Amazon S3 or Google Drive). Small files like experimental code and
-[DVC metafiles](/doc/user-guide/project-structure) files are stored and shared
-with Git automatically (you don't need to worry about using Git directly).
+by synchronizing from remotes. DVC-tracked data, models, etc. are in your
+project's <abbr>cache</abbr> and thus will be transferred to/from
+[remote storage](/doc/command-reference/remote) (e.g. Amazon S3 or Google
+Drive). Small files like experimental code and
+[DVC metafiles](/doc/user-guide/project-structure) files are uploaded or
+downloaded with Git automatically as needed.
 
 [sharing regular project data]: /doc/use-cases/sharing-data-and-model-files
 
-Start by making sure you have your remotes setup with `git remote -v` and
+You can check you have all the necessary remotes setup with `git remote -v` and
 `dvc remote list`:
 
 ```dvc
@@ -30,24 +33,27 @@ $ dvc remote list
 storage s3://mybucket/my-dvc-store
 ```
 
+</details>
+
+> ⚠️ Note that only [SSH Git URLs] are compatible with DVC Experiment sharing.
+
+[ssh git urls]:
+  https://git-scm.com/book/en/v2/Git-on-the-Server-The-Protocols#_the_protocols
+
 ## Uploading experiments
 
-You can upload an experiment and its files to both remotes using `dvc exp push`
-(requires the Git remote name and experiment name as arguments).
+You can upload an experiment with all of it's files and data using
+`dvc exp push` (requires a Git remote name and experiment name as arguments).
+
+> 💡 You can use `dvc exp show` to find experiment names.
 
 ```dvc
 $ dvc exp push origin exp-abc123
 ```
 
-> Use `dvc exp show` to find experiment names.
-
-This pushes the necessary DVC-tracked files from the cache to the default DVC
-remote (similar to `dvc push`). You can prevent this behavior by using the
-`--no-cache` option to the command above.
-
-If there's no default DVC remote, it will ask you to define one with
-`dvc remote default`. If you don't want a default remote, or if you want to use
-a different remote, you can specify one with the `--remote` (`-r`) option.
+The [default DVC remote](/doc/command-reference/remote/default) is used unless
+one is specified with the `--remote` (`-r`) option. To prevent pushing
+DVC-tracked files to remote storage altogether, use the `--no-cache` option.
 
 DVC can use multiple threads to upload files (4 per CPU core by default). You
 can set the number with `--jobs` (`-j`). Please note that increases in
