@@ -18,7 +18,7 @@ tags:
   - Git
 ---
 
-### [Is a command to force reproduce a specific stage of a DVC pipeline?](https://discord.com/channels/485586884165107732/563406153334128681/893056918699008000)
+### [Is there a command to force reproduce a specific stage of a DVC pipeline?](https://discord.com/channels/485586884165107732/563406153334128681/893056918699008000)
 
 Good question @wickeat!
 
@@ -37,33 +37,7 @@ Let's say we have this scenario:
 - It needs to be featurized (does not depend on previous days' data)
 - Subsequent stage depends on all days
 
-There are a few ways you could do this. The simplest is a parametrized pipeline
-with a `dvc.yaml` that could look something like:
-
-```dvc
-vars:
-  - day: "20211001"
-stages:
-  featurize:
-    cmd: python featurize.py ${day}
-    deps:
-    - raw/${day}.csv
-    outs:
-    - intermediate/${day}.csv
-  combine:
-    cmd: python combine.py
-    deps:
-    - intermediate
-    outs:
-    - combined.csv
-```
-
-You could also put the day variable into a parameters file if you don't want to
-update directly in `dvc.yaml`. Check out the
-[docs on templating](https://dvc.org/doc/user-guide/project-structure/pipelines-files#templating)
-to learn more.
-
-The last way we'll cover is to keep all of the previous days and use the
+The recommended approach is to keep all of the previous days and use the
 `foreach` syntax, which ensures your DAG still knows about all the previously
 processed days:
 
@@ -88,20 +62,17 @@ stages:
     - combined.csvÏ
 ```
 
-Out of all these approaches, `foreach` might be the better way to go about it.
 That way if you adjusted something in your featurize script, for example, it
 would automatically reprocess every day's data.
 
 ### [What is the best practice for storing `stdout`?](https://discord.com/channels/485586884165107732/563406153334128681/893903023355613214)
 
-There are a couple of ways to do this.
+The best practice when using DVC is to pipe each command `stdout` into a
+different file with a unique name, like a timestamp, in a directory that becomes
+the stage output.
 
-You could pipe the `stdout` to a file and then upload it like an output.
-
-Or even better in the case of DVC, pipe each command `stdout` into a different
-file with a unique name, like a timestamp, in a directory that becomes the stage
-output. If optimizing storage space is a concern in case the `stdout` dumps grow
-a lot, this is the best approach.
+If optimizing storage space is a concern, in case the `stdout` dumps grow a lot,
+this is what we recommend.
 
 That was a helpful question. Thanks @gregk0!
 
@@ -145,21 +116,28 @@ because the manual stage doesn't generate the expected output.
 You can then manually copy, modify, and commit your new `lexicon_modified.txt`
 and run `dvc repro` again to run the rest of the pipeline.
 
-### [What is the workflow if I want to remove some files from my dataset registry?](https://discord.com/channels/485586884165107732/485596304961962003/895192983366942740)
+### [What is the workflow if I want to remove some files from my dataset registry with DVC?](https://discord.com/channels/485586884165107732/485596304961962003/895192983366942740)
+
+In this case, assume that the data was added as a folder containing images,
+which means that there is a single `.dvc` for the whole folder.
 
 You can delete the files and then re-add them using `dvc add` or `dvc commit`.
-It should be faster to re-add, as DVC won't re-add them to the cache nor will it
-try to hash them. You can use either of those DVC commands to manage these
-deletions.
+It should be faster to commit, as DVC won't re-add the files to the cache nor
+will it try to hash them. You can use either of those DVC commands to manage
+these deletions.
 
 Good question @MadsO!
 
-### [We want to access a private Git repo using `dvc.api.read()`. How do I pass the credentials to DVC so that we can read DVC files from this repo?](https://discord.com/channels/485586884165107732/485596304961962003/894533078389784577)
+### [We want to access a private Git repo using `dvc.api.read()` in a Docker container. How do I pass the credentials to DVC so that we can read DVC files from this repo?](https://discord.com/channels/485586884165107732/485596304961962003/894533078389784577)
 
 Great question about the API @dashmote!
 
 DVC uses the credentials regular Git would use, so you either need to pass SSH
-keys into your Docker container or use GitHub's SSH URL.
+keys into your Docker container and use GitHub's SSH URL.
+
+The other option is to use the
+`https://username:token@github.com/username/repo.git` URL format when you call
+the API method.
 
 You could pass your credentials into your container as environment variables and
 then do something like:
@@ -170,14 +148,9 @@ token = os.environ["GITHUB_TOKEN"]
 dvc.api.read(..., repo=f"https://{username}:{token}/...", ...)
 ```
 
-The other option is to use the
-`https://username:token@github.com/username/repo.git` URL format when you call
-the API method.
-
 ### [Is there a clean way to handle multiple models in the same repo that are run using the same pipeline?](https://discord.com/channels/485586884165107732/563406153334128681/895368479853649930)
 
-The simpliest way is to copy the `dvc.yaml` into each model's separate
-directory.
+The simplest way is to copy the `dvc.yaml` into each model's separate directory.
 
 Another potential solution is try templating. You can
 [learn more about templating in the docs](https://dvc.org/doc/user-guide/project-structure/pipelines-files#templating).
