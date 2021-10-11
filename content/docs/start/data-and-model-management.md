@@ -268,5 +268,33 @@ origin and update the local datasets.
 
 ## Removing data from DVC projects
 
-- Remove certain folders from workspace
-- Delete the corresponding cache files
+DVC copies the file contents to cache. Normally, all files referred by `.dvc`
+files have their contents backed up in the cache, and if you have uploaded them,
+they may have copies in the remotes as well.
+
+You may want to delete these files from your local setup when you no longer need
+them. It's possible to manually delete a `.dvc` file, but this won't remove the
+content from cache. DVC provides two commands to remove a file from tracking,
+and to remove the content from cache.
+
+You can un-add a file from DVC using `dvc remove` command. When you don't want
+to track `data/mnist.zip` with DVC, you can remove it using
+
+```dvc
+$ dvc remove data/mnist.zip.dvc
+```
+
+This command won't delete `data/mnist.zip` from the repository. It only removes
+the tracking file, and updates `.gitignore`. It's the inverse operation of
+`dvc add` for files.
+
+`dvc remove` won't delete the cache contents either. If you the want to delete
+the cache contents that doesn't have links from the workspace, DVC provides
+`dvc gc` to clean up the cache.
+
+```dvc
+$ dvc gc --workspace
+```
+
+Note that, `dvc gc` requires a _scope_ argument to delete the files. It doesn't
+operate on a default scope to prevent data loss.
