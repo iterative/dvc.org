@@ -88,8 +88,7 @@
     "slick-carousel": "^1.8.1",
     "title-case": "^3.0.2",
     "unist-util-visit": "2.0.2",
-    "upath": "^2.0.1",
-    "webpack": "^5.58.1"
+    "upath": "^2.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.15.8",
