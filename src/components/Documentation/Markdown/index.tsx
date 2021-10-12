@@ -1,4 +1,11 @@
-import React, { ReactNode, ReactElement } from 'react'
+import React, {
+  useEffect,
+  useState,
+  ReactNode,
+  ReactElement,
+  useContext
+} from 'react'
+import { nanoid } from 'nanoid'
 import { Node } from 'unist'
 import rehypeReact from 'rehype-react'
 import Collapsible from 'react-collapsible'
@@ -8,6 +15,7 @@ import Link from '../../Link'
 import Tooltip from './Tooltip'
 
 import * as styles from './styles.module.css'
+import { TogglesContext, TogglesProvider } from './ToggleProvider'
 
 const Details: React.FC<Record<string, never>> = ({ children }) => {
   const filteredChildren: ReactNode[] = (
@@ -96,6 +104,86 @@ const Card: React.FC<{
   )
 }
 
+const ToggleTab: React.FC<{
+  id: string
+  title: string
+  ind: number
+  onChange: () => void
+  checked: boolean
+}> = ({ children, id, checked, ind, onChange, title }) => {
+  const inputId = `tab-${id}-${ind}`
+
+  return (
+    <>
+      <input
+        id={inputId}
+        type="radio"
+        name={`toggle-${id}`}
+        onChange={onChange}
+        checked={checked}
+      />
+      <label className={styles.tabHeading} htmlFor={inputId}>
+        {title}
+      </label>
+      {children}
+    </>
+  )
+}
+
+const Toggle: React.FC<{
+  children: Array<{ props: { title: string } } | string>
+}> = ({ children }) => {
+  const [toggleId, setToggleId] = useState('')
+  const {
+    addNewToggle = (): null => null,
+    updateToggleInd = (): null => null,
+    togglesData = {}
+  } = useContext(TogglesContext)
+  const tabs: Array<{ props: { title: string } } | string> = children.filter(
+    child => child !== '\n'
+  )
+  const tabsTitles = tabs.map(tab =>
+    typeof tab === 'object' ? tab.props.title : ''
+  )
+
+  useEffect(() => {
+    if (toggleId === '') {
+      const newId = nanoid()
+      addNewToggle(newId, tabsTitles)
+      setToggleId(newId)
+    }
+
+    if (toggleId && !togglesData[toggleId]) {
+      addNewToggle(toggleId, tabsTitles)
+    }
+  }, [togglesData])
+
+  return (
+    <div className={styles.toggle}>
+      {tabs.map((tab, i) => (
+        <ToggleTab
+          ind={i}
+          key={i}
+          title={tabsTitles[i]}
+          id={toggleId}
+          checked={
+            i === (togglesData[toggleId] ? togglesData[toggleId].checkedInd : 0)
+          }
+          onChange={(): void => updateToggleInd(toggleId, i)}
+        >
+          {tab}
+        </ToggleTab>
+      ))}
+    </div>
+  )
+}
+
+const Tab: React.FC = ({ children }) => (
+  <div className={styles.tab}>{children}</div>
+)
+
+// Rehype's typedefs don't allow for custom components, even though they work
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const renderAst = new (rehypeReact as any)({
   createElement: React.createElement,
   Fragment: React.Fragment,
@@ -104,7 +192,9 @@ const renderAst = new (rehypeReact as any)({
     abbr: Abbr,
     card: Card,
     cards: Cards,
-    details: Details
+    details: Details,
+    toggle: Toggle,
+    tab: Tab
   }
 }).Compiler
 
@@ -125,7 +215,7 @@ const Markdown: React.FC<IMarkdownProps> = ({
 }) => {
   return (
     <Main prev={prev} next={next} tutorials={tutorials} githubLink={githubLink}>
-      {renderAst(htmlAst)}
+      <TogglesProvider>{renderAst(htmlAst)}</TogglesProvider>
     </Main>
   )
 }

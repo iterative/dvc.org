@@ -3,7 +3,7 @@
 ML checkpoints are an important part of deep learning because ML engineers like
 to save the model files at certain points during a training process.
 
-With DVC experiments and checkpoints, you can:
+With checkpoint experiments, you can:
 
 - Implement the best practice in deep learning to save your model weights as
   checkpoints.
@@ -27,7 +27,7 @@ https://youtu.be/PcDo-hCvYpw
 
 <details>
 
-## ⚙️ Setting up the project
+### ⚙️ Setting up the project
 
 You can follow along with the steps here or you can clone the repo directly from
 GitHub and play with it. To clone the repo, run the following commands.
@@ -153,10 +153,10 @@ tracking the metrics along with each checkpoint, so we'll need to add a few
 lines of code.
 
 In the `train.py` file, import the [`dvclive`](/doc/dvclive) package with the
-other imports:
+other imports::
 
 ```python
-import dvclive
+from dvclive import Live
 ```
 
 > It's also possible to use DVC's Python API to register checkpoints, or to use
@@ -166,6 +166,8 @@ Then update the following lines of code in the `main` method inside of the
 training epoch loop.
 
 ```git
++ dvclive = Live()
+
 # Iterate over training epochs.
 for i in range(1, EPOCHS+1):
     # Train in batches.

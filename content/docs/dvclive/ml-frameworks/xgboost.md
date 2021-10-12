@@ -41,16 +41,25 @@ This will generate the metrics logs and summaries as described in the
 
 ## Parameters
 
-- `model_file` - The name of the file where the model will be saved at the end
-  of each `step`.
+- `model_file` - (`None` by default) - The name of the file where the model will
+  be saved at the end of each `step`.
 
-Example:
+- `**kwargs` - Any additional arguments will be passed to
+  [`Live`](/docs/dvclive/api-reference/live).
+
+## Examples
+
+- Using `**kwargs` to customize [`Live`](/docs/dvclive/api-reference/live).
 
 ```python
 xgboost.train(
     param,
     dtrain,
     num_round=5,
-    callbacks=[DvcLiveCallback("eval_data", model_file="model.json")],
+    callbacks=[
+      DvcLiveCallback(
+        "eval_data",
+        path="custom_path",
+        summary=False)],
     evals=[(dval, "eval_data")])
 ```
