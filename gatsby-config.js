@@ -218,28 +218,6 @@ const plugins = [
   }
 ]
 
-if (process.env.GITHUB_TOKEN) {
-  plugins.push({
-    resolve: `gatsby-source-github-api`,
-    options: {
-      // token: required by the GitHub API
-      token: process.env.GITHUB_TOKEN,
-
-      // GraphQLquery: defaults to a search query
-      graphQLQuery: `
-          {
-            repository(owner: "iterative", name: "dvc") {
-              stargazers {
-                totalCount
-              }
-            }
-          }
-        `,
-      variables: {}
-    }
-  })
-}
-
 if (process.env.CONTEXT === 'production') {
   plugins.push({
     resolve: 'gatsby-plugin-google-analytics',
