@@ -105,6 +105,7 @@ storage. And you do not need to provide the credentials if any DVC data remote
 in not used in your Git repository.
 
 ### Mandatory columns
+##### (Tracking scope)
 
 If your repository exceeds 200 columns, DVC Studio will import a subset. The
 columns that are not imported will not be available to display in your view. In
@@ -125,6 +126,8 @@ may have happened.
 
 - [View does not contain the columns that I want](/doc/studio/troubleshooting#view-does-not-contain-the-columns-that-i-want)
 - [View contains columns that I did not import](/doc/studio/troubleshooting#view-contains-columns-that-i-did-not-import)
+
+Note: The **Mandatory columns** section was earlier called **Tracking scope**.
 
 ### Custom metrics and parameters
 
