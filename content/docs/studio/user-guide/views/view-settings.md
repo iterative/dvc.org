@@ -105,6 +105,7 @@ storage. And you do not need to provide the credentials if any DVC data remote
 in not used in your Git repository.
 
 ### Mandatory columns
+
 ##### (Tracking scope)
 
 If your repository exceeds 200 columns, DVC Studio will import a subset. The
