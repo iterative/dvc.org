@@ -21,6 +21,8 @@ include:
   <abbr>parameters</abbr>, artifacts and <abbr>metrics</abbr> when you run each
   experiment.
 - Queue experiments for future execution, and run them in parallel if needed.
+- Create deep [checkpoints](/doc/user-guide/experiment-management/checkpoints)
+  from your code if needed, and track [live metrics](/doc/dvclive).
 - List and compare previous experiments in a consolidated way (order and filter
   by parameters or metrics).
 - Restore any experiment results from <abbr>cache</abbr>, or reproduce them from
