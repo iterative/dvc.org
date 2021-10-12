@@ -111,7 +111,7 @@ const Events: React.FC<{ theme: ICommunitySectionTheme }> = ({ theme }) => {
               </div>
             ))
           ) : (
-            <div className={styles.eventsPlaceholder}>
+            <div className={cn(styles.eventsPlaceholder, sharedStyles.gray)}>
               Subscribe to be up to date!{' '}
               <span role="img" aria-label="Subscribe below">
                 👇
