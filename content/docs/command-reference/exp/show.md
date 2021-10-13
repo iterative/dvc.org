@@ -104,8 +104,8 @@ metric or param.
   sorting. This only affects the ordering of experiments derived from the same
   parent commit. Parent commits are always sorted chronologically.
 
-- `--sort-order {asc,desc}` - sort order to use with `--sort-by` (defaults to
-  descending).
+- `--sort-order {asc,desc}` - sort order to use with `--sort-by`. Defaults to
+  ascending (`asc`).
 
 - `--no-timestamp` - do not show experiment timestamps.
 
