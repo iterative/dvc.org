@@ -217,19 +217,19 @@ Generating lock file 'dvc.lock'
 Updating lock file 'dvc.lock'
 Checkpoint experiment iteration 'd99d81c'.
 
-file:///Users/milecia/Repos/checkpoints-tutorial/dvclive.html
+file:///Users/milecia/Repos/checkpoints-tutorial/dvclive_dvc_plots/index.html
 Epoch 2: loss=1.25374174118042
 Epoch 2: acc=0.7738
 Updating lock file 'dvc.lock'
 Checkpoint experiment iteration '963b396'.
 
-file:///Users/milecia/Repos/checkpoints-tutorial/dvclive.html
+file:///Users/milecia/Repos/checkpoints-tutorial/dvclive_dvc_plots/index.html
 Epoch 3: loss=0.7242147922515869
 Epoch 3: acc=0.8284
 Updating lock file 'dvc.lock'
 Checkpoint experiment iteration 'd630b92'.
 
-file:///Users/milecia/Repos/checkpoints-tutorial/dvclive.html
+file:///Users/milecia/Repos/checkpoints-tutorial/dvclive_dvc_plots/index.html
 Epoch 4: loss=0.5083536505699158
 Epoch 4: acc=0.8538
 Updating lock file 'dvc.lock'
