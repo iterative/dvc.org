@@ -169,10 +169,10 @@ $ dvc exp show --include-params=featurize
 └───────────────────────┴──────────────┴─────────┴────────────────────────┴──────────────────┘
 ```
 
-Sort experiments by the `auc` metric, in ascending order:
+Sort experiments by the `auc` metric, in descending order:
 
 ```dvc
-$ dvc exp show --include-params=featurize --sort-by=auc --sort-order=asc
+$ dvc exp show --include-params=featurize --sort-by=auc --sort-order=desc
 ┏━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━┓
 ┃ Experiment            ┃ Created      ┃     auc ┃ featurize.max_features ┃ featurize.ngrams ┃
 ┡━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━┩
@@ -187,7 +187,7 @@ $ dvc exp show --include-params=featurize --sort-by=auc --sort-order=asc
 To see all experiments throughout the Git history:
 
 ```dvc
-$ dvc exp show --all-commits --include-params=featurize --sort-by=auc --sort-order=asc
+$ dvc exp show --all-commits --include-params=featurize --sort-by=auc --sort-order=desc
 ┏━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━┓
 ┃ Experiment            ┃ Created      ┃     auc ┃ featurize.max_features ┃ featurize.ngrams ┃
 ┡━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━┩
