@@ -121,10 +121,9 @@ and run `dvc repro` again to run the rest of the pipeline.
 In this case, assume that the data was added as a folder containing images,
 which means that there is a single `.dvc` for the whole folder.
 
-You can delete the files and then re-add them using `dvc commit`.
-It should be faster to commit, as DVC won't re-add the files to the cache nor
-will it try to hash them. You can use either of those DVC commands to manage
-these deletions.
+You can delete the files and then re-add them using `dvc commit`. It should be
+faster to commit, as DVC won't re-add the files to the cache nor will it try to
+hash them.
 
 Good question @MadsO!
 
@@ -132,8 +131,9 @@ Good question @MadsO!
 
 Great question about the API @dashmote!
 
-DVC uses the credentials regular Git would use, so you either need to pass SSH
-keys into your Docker container and use GitHub's SSH URL.
+There are a couple different ways to handle this.
+
+The first option is to pass GitHub SSH keys into your Docker container.
 
 The other option is to use the
 `https://username:token@github.com/username/repo.git` URL format when you call
