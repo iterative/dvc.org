@@ -59,7 +59,7 @@ stages:
     deps:
     - intermediate
     outs:
-    - combined.csvÏ
+    - combined.csv
 ```
 
 That way if you adjusted something in your featurize script, for example, it
