@@ -173,7 +173,8 @@ that is installed when `yarn` runs (see [dev env](#development-environment)).
   create a link to that API method automatically. (No need to use `[]()`
   explicitly to create them.)
 
-- Markdown: Bullet lists and their items shouldn't be too long (3 sentence
+- Markdown: Bullet lists shouldn't be too long (5-7 items max., ideally).
+- Markdown: The text in each bullet item also shouldn't be too long (3 sentence
   paragraphs max.) Full sentence bullets should begin with a capital letter and
   end in period `.`. Otherwise, they can be all lower case and have no ending
   punctuation. Bullets can be separated by an empty line if they contain several
