@@ -121,7 +121,7 @@ and run `dvc repro` again to run the rest of the pipeline.
 In this case, assume that the data was added as a folder containing images,
 which means that there is a single `.dvc` for the whole folder.
 
-You can delete the files and then re-add them using `dvc add` or `dvc commit`.
+You can delete the files and then re-add them using `dvc commit`.
 It should be faster to commit, as DVC won't re-add the files to the cache nor
 will it try to hash them. You can use either of those DVC commands to manage
 these deletions.
