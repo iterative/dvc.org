@@ -12,17 +12,17 @@ need to Git.
 https://youtu.be/FHQq_zZz5ms
 
 In this section, we explore the basic features of DVC experiment management with
-[`get-started-experiments`][gse] project.
+the [`example-dvc-experiments`][ede] project.
 
-[gse]: https://github.com/iterative/get-started-experiments
+[ede]: https://github.com/iterative/example-dvc-experiments
 
 <details>
 
 ### ⚙️ Installing the example project
 
-These commands are run in the [`get-started-experiments`][gse] project. You can
-run the commands in this document after cloning the repository and installing
-the requirements.
+These commands are run in the [`example-dvc-experiments`][ede] project. You can
+run the commands in this document after cloning the repository, installing the
+requirements, and pulling the data.
 
 #### Clone the project and create virtual environment
 
@@ -32,8 +32,8 @@ Please clone the project and create a virtual environment.
 > use isolated from the rest of your system. This prevents version conflicts.
 
 ```dvc
-$ git clone https://github.com/iterative/get-started-experiments -b get-started
-$ cd get-started-experiments
+$ git clone https://github.com/iterative/example-dvc-experiments -b get-started
+$ cd example-dvc-experiments
 $ virtualenv .venv
 $ . .venv/bin/activate
 $ python -m pip install -r requirements.txt
@@ -72,11 +72,11 @@ This experiment is then associated with the values found in parameters file
 (`params.yaml`), and other dependencies (`data/images/`) with these produced
 metrics.
 
-The purpose of `dvc exp` family of commands is to let you run, capture, compare
-the machine learning experiments at once as you iterate on your code, data,
-models, and hyperparameters. The artifacts like models, metrics produced by each
-experiment are tracked by DVC and the associated parameters and metrics can be
-committed to Git as text files.
+The purpose of the `dvc exp` family of commands is to let you run, capture, and
+compare the machine learning experiments at once as you iterate on your project.
+The artifacts like models and metrics produced by each experiment are tracked by
+DVC, and the associated parameters and metrics can be committed to Git as text
+files.
 
 You can review the experiment results with `dvc exp show` and see these metrics
 and results in a nicely formatted table:
@@ -110,10 +110,9 @@ have a DVC project, you may already be using `dvc repro`.
 
 We use `dvc repro` to run the pipeline as found in the <abbr>workspace</abbr>.
 All the parameters and dependencies are retrieved from the current workspace. It
-doesn't use any special objects to track the experiments or associate parameters
-with metrics.
+doesn't use any specialized mechanism to track experiments.
 
-When you have large number of experiments that you don't want to commit all to
+When you have a large number of experiments that you don't want to commit all to
 Git, it's better to use `dvc exp run`. It allows to change the parameters
 quickly, can track the history of artifacts and has facilities to compare these
 experiments easily.
@@ -167,8 +166,7 @@ $ dvc exp run --run-all --jobs 2
 ## Comparing and persisting experiments
 
 The experiments are run several times with different parameters. We use
-`dvc exp show` to compare all of these experiments. This command presents the
-parameters and metrics produced in experiments in a nicely formatted table.
+`dvc exp show` to compare all of these experiments.
 
 ```dvc
 $ dvc exp show
@@ -190,8 +188,8 @@ $ dvc exp show
 ```
 
 By default, it shows all the parameters and the metrics with the timestamp. If
-you have large number of parameters, metrics or experiments, this may lead to a
-cluttered view. You can limit the table to specific metrics, or parameters, or
+you have a large number of parameters, metrics or experiments, this may lead to
+a cluttered view. You can limit the table to specific metrics, or parameters, or
 hide the timestamp column with `--include-metrics`, `--include-params`, or
 `--no-timestamp` options of the command, respectively.
 
@@ -215,8 +213,7 @@ $ dvc exp show --no-timestamp \
 └─────────────────────────┴────────┴──────────────────┘
 ```
 
-After selecting an experiment from the table, it's possible to apply the
-experiment results to your workspace, or you can create a Git branch that
+After selecting an experiment from the table you can create a Git branch that
 contains the experiment with all its related files.
 
 ```dvc
@@ -228,7 +225,7 @@ To switch to the new branch run:
 ```
 
 You can then checkout and continue working from this branch, or merge the branch
-your `main` branch with usual Git commands.
+into your `main` branch with the usual Git commands.
 
 ## Go Further
 
