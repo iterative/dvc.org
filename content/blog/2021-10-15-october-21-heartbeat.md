@@ -2,8 +2,9 @@
 title: October '21 Heartbeat
 date: 2021-10-15
 description: >
-  Monthly updates are here! The word of the month is workflows, new and old (but
-  good) videos, new learning opportunities, team members and more!
+  Monthly updates are here! The word of the month is workflows! Checkout
+  how  Community members improve their workflows with DVC and CML. Find out news
+  from the team, new learning opportunities, and more!
 descriptionLong: |
   This month you will find:
   🗺 MLOps workflows,
@@ -187,7 +188,7 @@ meet in San Francisco!
 
 ![Europe Iterative Team Members meet in Amsterdam](/uploads/images/2021-10-15/amsterdam.jpg)
 _Iterative Team Members meet in Amsterdam
-([Source: David Ortega](https://www.linkedin.com/search/results/all/?keywords=david%20g%20ortega&origin=RICH_QUERY_SUGGESTION&position=0&searchId=5f6ebf96-b8a4-4219-97e1-38cdae34f767&sid=3_x))_
+([Source: David Ortega](https://www.linkedin.com/in/gortegadavid/)))_
 
 ## New Team Members
 
@@ -255,7 +256,7 @@ for all to use!
 updated code and streamlined information on Cloud Storage Provider credentials
 and GitHub Actions set up.
 
-```python
+```yaml
 name: CML & DVC
 on: [push]
 jobs:
@@ -322,7 +323,7 @@ include information on how to use our
 feature as well. We look forward to seeing you there!
 
 <external-link
-href="(https://www.meetup.com/DVC-Community-Virtual-Meetups/events/280814336/"
+href="https://www.meetup.com/DVC-Community-Virtual-Meetups/events/280814336/"
 title="DVC Learn - Getting Started with Running Experiments"
 description="Milecia McGregor shows us how to get started with DVC Experiments and Checkpoints"
 link="https://meetup.com"
