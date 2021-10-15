@@ -240,9 +240,9 @@ current "bigrams" run with the last committed "baseline" iteration:
 
 ```dvc
 $ dvc params diff
-Path         Param                   Old    New
-params.yaml  featurize.max_features  500    1500
-params.yaml  featurize.ngrams        1      2
+Path         Param                   HEAD  workspace
+params.yaml  featurize.max_features  500   1500
+params.yaml  featurize.ngrams        1     2
 ```
 
 `dvc params diff` can show how params in the workspace differ vs. the last
@@ -252,9 +252,9 @@ commit.
 
 ```dvc
 $ dvc metrics diff
-Path         Metric    Old      New      Change
-scores.json  avg_prec  0.52048  0.55259  0.03211
-scores.json  roc_auc   0.9032   0.91536  0.01216
+Path         Metric    Head     workspace  Change
+scores.json  avg_prec  0.52048  0.55259    0.03211
+scores.json  roc_auc   0.9032   0.91536    0.01216
 ```
 
 And finally, we can compare both `precision recall` and `roc` curves with a

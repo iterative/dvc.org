@@ -118,13 +118,13 @@ $ git diff
 
 To see the change, let's run `dvc metrics diff`. This compares our current
 <abbr>workspace</abbr> (including uncommitted local changes) metrics to what we
-had in the previous commit:
+had in the latest commit (HEAD):
 
 ```dvc
 $ dvc metrics diff
-Path          Metric    Value    Change
-metrics.json  AUC       0.9671   0.0028
-metrics.json  TP        531      4
+Path          Metric    HEAD    workspace  Change
+metrics.json  AUC       0.9643  0.9671     0.0028
+metrics.json  TP        527     531        4
 ```
 
 ## Example: compare metrics among specific versions
@@ -133,8 +133,8 @@ Metrics files committed with Git can be compared by referencing the commits (any
 two [revisions](https://git-scm.com/docs/revisions)):
 
 ```dvc
-$ dvc metrics diff --targets metrics.json -- HEAD c7bef55
-Path       Metric    Value    Change
-eval.json  ACU       0.66729  0.01614
-eval.json  TP        516      -12
+$ dvc metrics diff --targets metrics.json -- 305fb8b c7bef55
+Path          Metric    305fb8b  c7bef55  Change
+metrics.json  AUC       0.9643   0.9743   0.0100
+metrics.json  TP        527      516      -11
 ```

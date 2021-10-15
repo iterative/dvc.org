@@ -106,25 +106,25 @@ Let's now print parameter values that we are tracking in this
 
 ```dvc
 $ dvc params diff
-Path         Param           Old   New
-params.yaml  lr              —     0.0041
-params.yaml  process.bow     —     15000
-params.yaml  process.thresh  —     0.98
-params.yaml  train.epochs    —     70
-params.yaml  train.layers    —     9
+Path         Param           HEAD   workspace
+params.yaml  lr              —      0.0041
+params.yaml  process.bow     —      15000
+params.yaml  process.thresh  —      0.98
+params.yaml  train.epochs    —      70
+params.yaml  train.layers    —      9
 ```
 
 The command above shows the difference in parameters between the workspace and
 the last committed version of the params file `params.yaml`. Since it did not
-exist before, all `Old` values are `—`.
+exist before, all `HEAD` values are `—`.
 
 In a project with parameters file history (params present in various Git
-commits), you will see both `Old` and `New` values. However, the parameters
-won't be shown if there are no changes:
+commits), you will see both `HEAD` and `workspace` values. However, the
+parameters won't be shown if there are no changes:
 
 ```dvc
 $ dvc params diff
-Path         Param         Old     New
+Path         Param         HEAD    workspace
 params.yaml  lr            0.0041  0.0043
 params.yaml  train.layers  9       7
 params.yaml  train.epochs  70      110
@@ -134,7 +134,7 @@ Specify `--all` option to see all the parameters including not changed ones:
 
 ```dvc
 $ dvc params diff --all
-Path         Param           Old     New
+Path         Param           HEAD    workspace
 params.yaml  lr              0.0041  0.0043
 params.yaml  process.bow     15000   15000
 params.yaml  process.thresh  0.98    0.98
@@ -148,7 +148,7 @@ additional command line parameter:
 
 ```dvc
 $ dvc params diff e12b167
-Path         Param         Old     New
+Path         Param         HEAD    e12b167
 params.yaml  lr            0.0038  0.0043
 params.yaml  train.epochs  70      110
 ```
@@ -161,8 +161,8 @@ To see the difference between two specific commits, both need to be specified:
 
 ```dvc
 $ dvc params diff e12b167 HEAD^
-Path         Param         Old     New
-params.yaml  lr            0.0038  0.0041
-params.yaml  train.layers  10      9
-params.yaml  train.epochs  50      70
+Path         Param         e12b167  HEAD^
+params.yaml  lr            0.0038   0.0041
+params.yaml  train.layers  10       9
+params.yaml  train.epochs  50       70
 ```
