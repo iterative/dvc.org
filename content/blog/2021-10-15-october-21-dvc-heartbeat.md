@@ -2,16 +2,14 @@
 title: October '21 Heartbeat
 date: 2021-10-15
 description: >
-  Monthly updates are here! Making sense of the MLOps Landscape, Community love,
-  our MLOps philosophy, DVC Studio, R for DVC, new learning opportunities, team
-  members and more!
+  Monthly updates are here! The word of the month is workflows, Community love,
+  , new learning opportunities, team members and more!
 descriptionLong: |
   This month you will find:
   🗺 Navigating the MLOps Landscape,
   🧐 Our MLOps philosophy
   📖 MLOps learning opportunities,
-  💻 R with DVC,
-  🎥 Conference videos from our team members,
+  🎥 Meetup and Conference videos,
   🚀 Info on our growing team, and more!
 picture: 2021-10-15/october21cover.png
 author: jeny_defigueiredo
@@ -44,14 +42,14 @@ synthesizes the ideas of some of the best known thinkers in the space to build a
 thorough architecture of machine learning best practices. You won't want to miss
 this post and wrap your head around these diagrams!
 
-![CI/CD for Machine Learning](/uploads/images/2021-10-15/manhaes.png) _Ricardo
+![CI/CD for Machine Learning](/uploads/images/2021-10-15/manhaes.jpeg) _Ricardo
 Manhães Savii's Continuous Delivery for Machine Learning
 [Source link](https://medium.com/@ricardosavii/trying-to-turn-machine-learning-into-value-de9f28cde056))_
 
 ## Rappibank How to build an efficient machine learing project workflow
 
 Continuing the theme of ML workflow Complexity
-[Daniel Baena](https://www.linkedin.com/in/data-box-science/) wrote a
+[**Daniel Baena**](https://www.linkedin.com/in/data-box-science/) wrote a
 [great overview and tutorial piece](https://medium.com/rappibank/how-to-build-an-efficient-machine-learning-project-workflow-using-data-version-control-dvc-aaeaa9cfb79b)
 outlining the challenges that his team at
 [Rappi Bank](https://bank.rappi.com.br/) encountered and found ways to solve
@@ -68,59 +66,127 @@ with DVC.
 href="https://medium.com/rappibank/how-to-build-an-efficient-machine-learning-project-workflow-using-data-version-control-dvc-aaeaa9cfb79b"
 title="How to Build an Efficient Machine Learning Project Workflow Usign Data Version Control (DVC)"
 description="Daniel Baena's overview of common MLOps challenges encoutered at Rappi Bank and how they are solved with DVC."
-link="https://medium.com.com"
-image="/uploads/images/2021-10-15/baena.png"/>
+link="https://medium.com"
+image="/uploads/images/2021-10-15/baena.jpeg"/>
 
 ## DAGsHub - Production Oriented Work
 
-Next up [Nir Barazida](https://twitter.com/barazida) from
+Next up [**Nir Barazida**](https://twitter.com/barazida) from
 [DAGsHub](https://dagshub.com/)
 (https://dagshub.com/docs/workshops/production_oriented_work/?utm_content=bufferef4d6&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer
+created a video on Production-oriented work using a monorepo strategy and f
+ocusing on moving from research to production ready code using Git and DVC. If
+you are a data scientis trying to wrap your head around going from your notebook
+to production, this may help!
 
-## ML Veersioning with DVC: How to Mange Machine Learning Data
+<external-link 
+href="https://dagshub.com/docs/workshops/production_oriented_work/?utm_content=bufferef4d6&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer"
+title="Production-Oriented Work with Git, DVC and DAGsHub"
+description="Nir Barazida's tutorial and video on who to use a monorepo strategy and go from your notebook to production-ready code."
+link="https://dagshub.com"
+image="/uploads/images/2021-10-15/dagshub.png"/>
 
-1. [https://appsilon.com/ml-data-versioning-with-dvc/]
+## ML Data Versioning with DVC: How to Mange Machine Learning Data
+
+[**Piotr Storożenko**](https://www.linkedin.com/in/piotr-storo%C5%BCenko-438087128/)
+of
+[Appsilon](https://appsilon.com/)(https://appsilon.com/ml-data-versioning-with-dvc/)
+wrote [a great tutorial](https://appsilon.com/ml-data-versioning-with-dvc/)
+taking into account the many challenges data scientists and ML engineers
+encounter in their data versioning efforts and how DVC solves them. ...need
+something else here>>>
+
+![Data Versioning Challenges](/uploads/images/2021-10-15/version-challenges.png)
+_Piotr Storożenko's ML Data Versioning with DVC: How to Manage Machine Learning
+Data [Source link](https://appsilon.com/ml-data-versioning-with-dvc/)_
 
 # Learning Opportunities
 
-## Gravi Raja 10 week course and MLOp COmmunity on October 20th.
+## Raviraja Ganta's 10 week course on Basic MLOps
 
-## Josh Willis viedoe on COVID simulations with DVC in the tool stack
+Twitter and LinkedIn were a blaze in the last month when
+[**Raviraja Ganta**](https://www.linkedin.com/in/ravirajag/) announced his
+[10 Week Course](https://www.ravirajag.dev/blog/mlops-summary) on MLOps basics.
+This course is chock full of resoures and practical tutorials to build your
+MLOps platform and knowledge. [Week 3](https://www.ravirajag.dev/blog/mlops-dvc)
+of the course is about DVC and it's ability to solve your versioning and
+reproducibility challenges. Be sure to check out
+[the course repo](https://github.com/graviraja/MLOps-Basics) as well!
 
-https://mlconf.com/sessions/the-covid-scenario-pipeline-high-stakes-data-science/
+Finally [_MLOps Community_](https://mlops.community/) is hosting him to speak
+about his course on October 20th.
+[Sign up to attend here!](https://airtable.com/shrh5eGdEbcBsdEdq)
 
-## September Office Hours Video - Transfer Learnign with Milecia McGregor
+![Raviraja Ganta's 10 Week MLOps Course](/uploads/images/2021-10-15/ganta.png)
+_Raviraja Ganta's 10 Week Course on MLOps Basics
+[Source link](https://www.ravirajag.dev/blog/mlops-summary)_
 
-## Continuously Learning on the Job as a Data Scientist
+## Josh Willis video on COVID simulations with DVC in the tool stack
 
-https://towardsdatascience.com/the-what-where-and-how-about-continuously-learning-on-the-job-as-a-data-scientist-b0a31ea4ac48
+This week
+[this Tweet comment](https://twitter.com/josh_wills/status/1441456258746249216)
+came through which led me to
+[this work](https://mlconf.com/sessions/the-covid-scenario-pipeline-high-stakes-data-science/)
+by [**Josh Wills**](https://twitter.com/josh_wills) Josh was tapped by
+[**DJ Patil**](https://twitter.com/dpatil) to participate in some COVID
+simulation research early on in the pandemic in which he used DVC. In his
+presentation about the project he tells of the tools he used and challenges of
+the use case. Nice DVC shout out at 19:56! Ah, the fruits of a Twitter 🐰🕳!
+
+https://www.youtube.com/watch?v=tu7N8M-jwPU&t=10s
+
+## September Office Hours Video - Transfer Learning with Milecia McGregor
+
+If you missed last month's Office Hours Meetup, you can now catch the video!
+[**Milecia's**](https://twitter.com/FlippedCoding) presentation was based on
+[her blog post](https://dvc.org/blog/transfer-learning-experiments) on the same
+topic: Using Experiments for Transfer Learning. If you're curious about transfer
+learning in general, AlexNet, SqueezeNet and using DVC experiments and
+checkpoints to track all that you do, this video's for you!
+
+https://www.youtube.com/watch?v=RmJbyQ36zVk
+
+## Qouc-Tien Au's piece on Continuously Learning on the Job as a Data Scientist
+
+[This Towards Data Science](https://towardsdatascience.com/the-what-where-and-how-about-continuously-learning-on-the-job-as-a-data-scientist-b0a31ea4ac48)
+article by [**Quoc Tien Au**](https://www.linkedin.com/in/quoctienau/) entitled
+"The What, Where, and How about continuously learning on the job as a data
+scientist," speaks to some higher points on the need to have a mindset for
+continuous learning in the Data Science field. It's packed with great thought
+processes and resources on what to learn, where to learn and how to keep
+learning while still getting your work done. Who stuggles with this? 😅
+
+https://media.giphy.com/media/icJCVO3GPDbCvvfgpf/giphy.gif
 
 # DVC News
 
-## Amsterdam Meetup
+## Amsterdam Off-site
+
+Most of our team members from Europe got together in Amsterdam recently for a
+couple days of brainstorming and team bonding.
 
 With cyphe again
 
 ## New Team Members
 
-[Jordan Weber](https://www.linkedin.com/in/jordanwweber/) joins us from Los
+[**Jordan Weber**](https://www.linkedin.com/in/jordanwweber/) joins us from Los
 Angeles, California as our new Chief of Staff. She has previously held similar
 roles and venture captial and FinTech firms. In Jordan's free time she enjoys
 cooking, tennis, dance and hiking! 🎾
 
-[Ken Thom](https://www.linkedin.com/in/kenthom/) joins us from Palo Alto,
+[**Ken Thom**](https://www.linkedin.com/in/kenthom/) joins us from Palo Alto,
 California as our new Director of Operations. His past work includes business
 operations, product management, software and hardware development. In his spare
 time he likes to spend time with his family, swim, ski and hike! 🥾
 
-[Jon Burdo](https://www.linkedin.com/in/jon-burdo-59730a83/) joins us from
+[**Jon Burdo**](https://www.linkedin.com/in/jon-burdo-59730a83/) joins us from
 Boston, Massachusetts as a Senior Software engineer. He's been working for the
 past few years as a machine learnng engineer with a focus on NLP. In his last
 role he used DVC and loved it, which is how he eventually ended up here! 🎉 In
 his spare time Jon likes learning about open source software, tinkering with
 Linux and inline skating.
 
-[Stephanie Roy](https://www.linkedin.com/in/stephroy1/) joins the team as a
+[**Stephanie Roy**](https://www.linkedin.com/in/stephroy1/) joins the team as a
 Senior Software Engineer from Quebec, Canada. Our first Canadian team member!
 She has previously worked at LogMeln on one of their mobile apps. In her spare
 time Stephanie likes taking care of her plants in her indoor grow house, playing
@@ -154,8 +220,8 @@ month!
 
 ### 📖 PyTorch Lightning
 
-We all have Ilia Sirotkin
-[Ilia Sirotkin](https://www.linkedin.com/search/results/all/?keywords=ilia%20sirotkin&origin=RICH_QUERY_SUGGESTION&position=0&searchId=e7bb3154-797a-44a5-a209-90ffece95246&sid=GeC)
+We all have
+[**Ilia Sirotkin**](https://www.linkedin.com/search/results/all/?keywords=ilia%20sirotkin&origin=RICH_QUERY_SUGGESTION&position=0&searchId=e7bb3154-797a-44a5-a209-90ffece95246&sid=GeC)
 to thank for his contribution to our docs. He created the
 [PyTorch Lightning integration docs](https://dvc.org/doc/dvclive/ml-frameworks/pytorch-lightning#pytorch-lightning)
 for all to use!
@@ -168,7 +234,7 @@ Actions set up.
 
 ### 📖 Shtab
 
-Team member [Casper da Costa-Luis](https://www.cdcl.ml/) has
+Team member [**Casper da Costa-Luis**](https://www.cdcl.ml/) has
 [updated the docs on his shtab/](https://docs.iterative.ai/shtab/) python tab-
 completion script generator project. For more info checkout
 [the original blog post](https://dvc.org/blog/shtab-completion-release) about it
@@ -186,9 +252,10 @@ forward to seeing you there!
 
 Be sure to join us at the
 [November Office Hours Meetup](https://www.meetup.com/DVC-Community-Virtual-Meetups/events/281355245/)
-where [Maykon Shots]() will join us and present on how he uses DVC and CML to
-create an internal Kaggle competition for his team to arrive at their best
-models in their work for the larger bank in Brazil.
+where [**Maykon Shots**](https://www.linkedin.com/in/maykon-schots/) will join
+us and present on how he uses DVC and CML to create an internal Kaggle
+competition for his team to arrive at their best models in their work for the
+larger bank in Brazil.
 
 ## Tweet Love ❤️
 
