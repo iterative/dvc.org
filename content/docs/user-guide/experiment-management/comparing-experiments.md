@@ -65,7 +65,7 @@ b99a33e:
         exp-93150
 ```
 
-[sharing experiments]: /doc/guide/experiment-management/sharing-experiments
+[sharing experiments]: /doc/user-guide/experiment-management/sharing-experiments
 
 ## List experiment names to use in scripts
 
