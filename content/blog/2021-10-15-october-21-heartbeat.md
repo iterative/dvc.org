@@ -7,11 +7,15 @@ description: >
   from the team, new learning opportunities, and more!
 descriptionLong: |
   This month you will find:
-  🗺 MLOps workflows,
-  🤔 Lots of ways to learn,
-  🎥 Meetup and Conference videos,
-  📖 Docs updates,
-  🚀 Info on our growing team, and more!
+    🗺 MLOps workflows,
+
+    🤔 Lots of ways to learn,
+
+    🎥 Meetup and Conference videos,
+
+    📖 Docs updates,
+    
+    🚀 Info on our growing team, and more!
 picture: 2021-10-15/october21cover.png
 author: jeny_defigueiredo
 commentsUrl: https://discuss.dvc.org/t/october-21-heartbeat/916
