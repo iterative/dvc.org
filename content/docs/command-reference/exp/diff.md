@@ -1,7 +1,7 @@
 # exp diff
 
 Show changes in [metrics](/doc/command-reference/metrics) and
-[parameters](/doc/command-reference/params) between `dvc experiments`.
+[parameters](/doc/command-reference/params) between experiments.
 
 ## Synopsis
 
@@ -19,9 +19,9 @@ positional arguments:
 # Description
 
 Provides a quick way to compare `dvc params` and `dvc metrics` between two
-`dvc experiments` by printing a table of differences. By default, it includes
-the params/metrics file "Path", "Param" or "Metric" name, the new "Value", and
-the difference ("Change") for numeric values. Example:
+experiments by printing a table of differences. By default, it includes the
+params/metrics file "Path", "Param" or "Metric" name, the new "Value", and the
+difference ("Change") for numeric values. Example:
 
 ```dvc
 $ dvc exp diff

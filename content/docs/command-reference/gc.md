@@ -73,9 +73,11 @@ The default remote is cleaned (see `dvc config core.remote`) unless the
   that is never referenced from the workspace or from any Git commit can still
   be stored in the project's cache).
 
-  > \* Except `dvc experiments`
+  > \* Not including [DVC experiments](
 
-- `--all-experiments` keep cached objects referenced in all `dvc experiments`,
+[dvc experiments]: /doc/user-guide/experiment-management#experiments
+
+- `--all-experiments` keep cached objects referenced in all [DVC experiments],
   as well as in the workspace (implying `-w`). This preserves the project's
   [experimental](/doc/user-guide/experiment-management) data (including
   checkpoints).

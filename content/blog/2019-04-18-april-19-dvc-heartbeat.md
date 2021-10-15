@@ -1,11 +1,11 @@
 ---
 title: April ’19 DVC❤️Heartbeat
 date: 2019-04-18
-description: |
+description: >
   DVC creator Dmitry Petrov is giving a talk on PyCon 2019 🎤, new DVC logo
   design, new Discord discussions, interesting reads that caught our eye, and
   everything along the way.
-descriptionLong: |
+descriptionLong: >
   Every month we are sharing here our news, findings, interesting reads,
   community takeaways, and everything along the way.
 
