@@ -2,8 +2,8 @@
 title: October '21 Heartbeat
 date: 2021-10-15
 description: >
-  Monthly updates are here! The word of the month is workflows, new and old but
-  good videos, new learning opportunities, team members and more!
+  Monthly updates are here! The word of the month is workflows, new and old (but
+  good) videos, new learning opportunities, team members and more!
 descriptionLong: |
   This month you will find:
   🗺 MLOps workflows,
@@ -43,7 +43,9 @@ best practices. You won't want to miss this post and wrap your head around these
 diagrams!
 
 ![CI/CD for Machine Learning](/uploads/images/2021-10-15/manhaes.png) _Ricardo
-Manhães Savii's Continuous Delivery for Machine Learning
+Manhães Savii's Addendum to François
+Chollet's](https://medium.com/@francois.chollet) figure on result of machine
+learning
 ([Source link](https://medium.com/@ricardosavii/trying-to-turn-machine-learning-into-value-de9f28cde056))_
 
 ## RappiBank: How to build an efficient machine learing project workflow
@@ -55,13 +57,13 @@ outlining the challenges that his team at
 [RappiBank](https://bank.rappi.com.br/) encountered and found ways to solve with
 DVC including:
 
-- confusing experiment files with different names?
-- disjointed messaging about training and models and dataset changes?
+- confusing experiment files with different names
+- disjointed messaging about training and models and dataset changes
 - holdinging in your head or own notes progress that is not visible to the rest
-  of the team?
-- heavy run and re-run times without a modularized system?
+  of the team
+- heavy run and re-run times without a modularized system
 
-Daniel shows how all of these things can be solved using DVC.
+Daniel shows how all of these things can be solved using DVC.🏆
 
 <external-link 
 href="https://medium.com/rappibank/how-to-build-an-efficient-machine-learning-project-workflow-using-data-version-control-dvc-aaeaa9cfb79b"
@@ -73,10 +75,10 @@ image="/uploads/images/2021-10-15/baena.jpeg"/>
 ## DAGsHub: Production Oriented Work
 
 Next up, [**Nir Barazida**](https://twitter.com/barazida) from
-[DAGsHub](https://dagshub.com/) [created a
-video]((https://dagshub.com/docs/workshops/production_oriented_work/?utm_content=bufferef4d6&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer)
+[DAGsHub](https://dagshub.com/)
+[created a video](https://dagshub.com/docs/workshops/production_oriented_work/?utm_content=bufferef4d6&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer)
 on Production-oriented work using a monorepo strategy and focusing on moving
-from research to production ready code using Git and DVC. If you are a data
+from research to production-ready code using Git and DVC. If you are a data
 scientist trying to wrap your head around going from your notebook to
 production, this may help!
 
@@ -93,12 +95,19 @@ image="/uploads/images/2021-10-15/dagshub.jpg"/>
 of [Appsilon](https://appsilon.com/) wrote
 [a great tutorial](https://appsilon.com/ml-data-versioning-with-dvc/) taking
 into account the many challenges data scientists and ML engineers encounter in
-their data versioning efforts and how DVC solves them. Do these scenarios look
-familiar?
+their data versioning efforts and how DVC solves them. Do these scenarios from
+his article look familiar?
 
-![Data Versioning Challenges](/uploads/images/2021-10-15/version-challenges.png)
-_Piotr Storożenko's ML Data Versioning with DVC: How to Manage Machine Learning
-Data ([Source link](https://appsilon.com/ml-data-versioning-with-dvc/))_
+> Was it in `model_3final.pth` or `model_last.pth` that I used a bigger lerning
+> rate?
+>
+> When did I start using data preprocessing, during `model_2a.pth` or
+> `model_2aa.pth`
+>
+> Is `model_7.pth` trained on the new dataset or on the old one?`
+>
+> Oh, gosh, which set of parameters and data have I used to train `model_2.pth`?
+> It was pretty good in the end…”
 
 # Learning Opportunities
 
@@ -130,8 +139,8 @@ led me to
 by [**Josh Wills.**](https://twitter.com/josh_wills) Josh was tapped by
 [**DJ Patil**](https://twitter.com/dpatil) to participate in some COVID
 simulation research early on in the pandemic in which he used DVC. In his
-presentation about the project he tells of the tools he used and challenges of
-the use case. Nice DVC shout out at 19:56! Ah, the fruits of a Twitter 🐰🕳!
+presentation about the project, he tells of the tools he used and challenges of
+the use case. Nice DVC shout out at 19:56! Ah, the fruits of a Twitter 🐇🕳!
 
 https://www.youtube.com/watch?v=tu7N8M-jwPU&t=10s
 
@@ -167,19 +176,25 @@ https://media.giphy.com/media/icJCVO3GPDbCvvfgpf/giphy.gif
 Most of our team members from Europe got together in Amsterdam recently for a
 couple days of brainstorming and team bonding. They went on a Treasure Hunt, ate
 Ramen (a favorite among our team) and had great discussions on how to make our
-tools and our team even better!
+tools and our team even better! Pictured below from front of the room left,
+going clockwise (to the back of the room and back up) are David Ortega, Helio
+Machado, David de la Iglesia Castro, Laurens Duijvesteijn, Ruslan Kupriev
+(hidden), Dmitry Petrov, Jelle Bouwman, Batuhan Taskaya,Svetlana Sachkovskaya,
+and Paweł Redzyński.
+
+Be sure to check out this section next month as our Americas team members will
+meet in San Francisco!
 
 ![Europe Iterative Team Members meet in Amsterdam](/uploads/images/2021-10-15/amsterdam.jpg)
-_Pictured: David Ortega, Helio Machado, David de la Iglesia Castro, Laurens
-Duijvesteijn, Ruslan Kupriev (hidden), Dmitry Petrov, Jelle Bouwman, Batuhan
-Taskaya,Svetlana Sachkovskaya, and Paweł Redzyński _
+_Iterative Team Members meet in Amsterdam
+([Source: David Ortega](https://www.linkedin.com/search/results/all/?keywords=david%20g%20ortega&origin=RICH_QUERY_SUGGESTION&position=0&searchId=5f6ebf96-b8a4-4219-97e1-38cdae34f767&sid=3_x))_
 
 ## New Team Members
 
 [**Jordan Weber**](https://www.linkedin.com/in/jordanwweber/) joins us from Los
 Angeles, California as our new Chief of Staff. She has previously held similar
 roles at venture captial and FinTech firms. In Jordan's free time she enjoys
-cooking, tennis, dance and hiking! 🎾
+cooking, tennis, dance, and hiking! 🎾
 
 [**Ken Thom**](https://www.linkedin.com/in/kenthom/) joins us from Palo Alto,
 California as our new Director of Operations. His past work includes business
@@ -204,7 +219,7 @@ Welcome to all our new team members! We are so glad you are here! 🙌🏼
 ## Open Positions
 
 And wouldn't you know it? We're still hiring!
-[Use this link](https://www.notion.so/iterative/iterative-ai-is-hiring-852cb978129645e1906e2c9a878a4d22)
+[Use this link](https://iterative.notion.site/Iterative-ai-is-Hiring-852cb978129645e1906e2c9a878a4d22)
 to find details of all the positions including:
 
 - Senior Software Engineer (ML, Labeling, Python)
@@ -224,8 +239,7 @@ https://media.giphy.com/media/120jXUxrHF5QJ2/giphy.gif
 
 ## Docs Updates
 
-Here are a couple of important docs updates you may want to take a look at this
-month!
+Here are a few important docs updates you may want to take a look at this month!
 
 ### 📖 PyTorch Lightning
 
@@ -301,18 +315,32 @@ as well.
 ## Next Meetups
 
 For the second class of
-[DVC Learn](https://www.meetup.com/DVC-Community-Virtual-Meetups/events/280814336/)
+[DVC Learn,](https://www.meetup.com/DVC-Community-Virtual-Meetups/events/280814336/)
 join us to learn about getting started running experiments! This lesson will
 include information on how to use our
 [checkpoints](https://dvc.org/doc/user-guide/experiment-management/checkpoints)
 feature as well. We look forward to seeing you there!
 
+<external-link
+href="(https://www.meetup.com/DVC-Community-Virtual-Meetups/events/280814336/"
+title="DVC Learn - Getting Started with Running Experiments"
+description="Milecia McGregor shows us how to get started with DVC Experiments and Checkpoints"
+link="https://meetup.com"
+image="/uploads/images/2021-10-15/dvc_learn.png"/>
+
 Be sure to join us at the
 [November Office Hours Meetup,](https://www.meetup.com/DVC-Community-Virtual-Meetups/events/281355245/)
 where [**Maykon Shots**](https://www.linkedin.com/in/maykon-schots/) will talk
-about how he use DVC and CML to create an internal Kaggle competition for his
+about how he used DVC and CML to create an internal Kaggle competition for his
 team to arrive at their best models in their work for the largest bank in
 Brazil.
+
+<external-link
+href="https://www.meetup.com/DVC-Community-Virtual-Meetups/events/281355245//"
+title="DVC Office Hours - Creating an Internal Kaggle Competition with DVC and CML"
+description="Maykon Shots shows us how he used DVC and CML to create an internal Kaggle competition for his team"
+link="https://meetup.com"
+image="/uploads/images/2021-10-15/office-hours-meetup.png"/>
 
 ## Tweet Love ❤️
 
