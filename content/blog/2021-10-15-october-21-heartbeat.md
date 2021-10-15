@@ -7,6 +7,7 @@ description: >
   from the team, new learning opportunities, and more!
 descriptionLong: |
   This month you will find:
+    
     🗺 MLOps workflows,
 
     🤔 Lots of ways to learn,
@@ -14,7 +15,7 @@ descriptionLong: |
     🎥 Meetup and Conference videos,
 
     📖 Docs updates,
-    
+
     🚀 Info on our growing team, and more!
 picture: 2021-10-15/october21cover.png
 author: jeny_defigueiredo
