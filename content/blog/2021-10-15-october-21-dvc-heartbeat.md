@@ -48,7 +48,7 @@ Chollet's](https://medium.com/@francois.chollet) figure on result of machine
 learning
 ([Source link](https://medium.com/@ricardosavii/trying-to-turn-machine-learning-into-value-de9f28cde056))_
 
-## RappiBank: How to build an efficient machine learing project workflow
+## RappiBank: How to build an efficient machine learning project workflow
 
 Continuing the theme of ML workflow Complexity,
 [**Daniel Baena**](https://www.linkedin.com/in/data-box-science/) wrote a
@@ -59,8 +59,8 @@ DVC including:
 
 - confusing experiment files with different names
 - disjointed messaging about training and models and dataset changes
-- holdinging in your head or own notes progress that is not visible to the rest
-  of the team
+- holding in your head or own notes progress that is not visible to the rest of
+  the team
 - heavy run and re-run times without a modularized system
 
 Daniel shows how all of these things can be solved using DVC.🏆
