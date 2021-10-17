@@ -1,8 +1,8 @@
 # Sharing Experiments
 
-If your team shares [Git remotes] on a Git server or hosting (e.g. GitHub,
-GitLab, etc.) to collaborate on projects, then you can also use it to save and
-share DVC Experiments. You will also need DVC
+If your team uses [Git remotes] on a Git server or hosting (e.g. GitHub, GitLab,
+etc.) to collaborate on projects, then you can also use them to save and share
+DVC Experiments remotely. You will also need DVC
 [remote storage](/doc/command-reference/remote) setup.
 
 [git remotes]: https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes
