@@ -18,7 +18,6 @@ refs/tags/baseline-experiment:
         cnn-64
         cnn-96
         cnn-128
-
 ```
 
 If you want to list all the experiments in the repository independent of the
