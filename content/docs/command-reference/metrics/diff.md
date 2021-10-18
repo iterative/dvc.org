@@ -118,7 +118,7 @@ $ git diff
 
 To see the change, let's run `dvc metrics diff`. This compares our current
 <abbr>workspace</abbr> (including uncommitted local changes) metrics to what we
-had in the latest commit (HEAD):
+had in the latest commit (`HEAD`):
 
 ```dvc
 $ dvc metrics diff

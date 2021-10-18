@@ -252,7 +252,7 @@ commit.
 
 ```dvc
 $ dvc metrics diff
-Path         Metric    Head     workspace  Change
+Path         Metric    HEAD     workspace  Change
 scores.json  avg_prec  0.52048  0.55259    0.03211
 scores.json  roc_auc   0.9032   0.91536    0.01216
 ```
