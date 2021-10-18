@@ -118,18 +118,18 @@ options:
   ```dvc
   $ dvc remote modify myremote region us-east-2
   ```
-  
+
 - `read_timeout` - set the time in seconds till a timeout exception is thrown
-  when attempting to read from a connection (60 by default). Let's set it to
-  5 minutes for example:
+  when attempting to read from a connection (60 by default). Let's set it to 5
+  minutes for example:
 
   ```dvc
   $ dvc remote modify myremote read_timeout 300
   ```
-  
+
 - `connect_timeout` - set the time in seconds till a timeout exception is thrown
-  when attempting to make a connection (60 by default). Let's set it to
-  5 minutes for example:
+  when attempting to make a connection (60 by default). Let's set it to 5
+  minutes for example:
 
   ```dvc
   $ dvc remote modify myremote connect_timeout 300
