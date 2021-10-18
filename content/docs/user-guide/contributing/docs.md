@@ -85,6 +85,17 @@ Launch the server locally with:
 $ yarn develop
 ```
 
+> ⚠️ Do you get an error from `gatsby-plugin-manifest` about unsupported image
+> formats? You may be running into
+> [this issue](https://github.com/gatsbyjs/gatsby/issues/20698). You can fix it
+> by reinstalling `node_modules` with a flag that forces `sharp` to ignore your
+> globally installed `libvips`:
+>
+> ```
+> $ rm -r node_modules
+> $ SHARP_IGNORE_GLOBAL_LIBVIPS=true yarn
+> ```
+
 This will start the server on the default port, `8000`. Visit
 `http://localhost:8000/` and navigate to the page in question. This will also
 enable the pre-commit Git hook that will be formatting and linting your code and
