@@ -94,7 +94,7 @@ const footerListsData: Array<IFooterListData> = [
       },
       {
         href: 'https://iterative.ai/brand',
-        text: 'Logos'
+        text: 'Media Kit'
       }
     ]
   },
