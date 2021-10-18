@@ -10,6 +10,9 @@ DVC Studio.
 - [View got created, but does not contain any data](#view-got-created-but-does-not-contain-any-data)
 - [View does not contain the columns that I want](#view-does-not-contain-the-columns-that-i-want)
 - [View contains columns that I did not import](#view-contains-columns-that-i-did-not-import)
+- [Error: Failed to push experiment to repository](#error-failed-to-push-experiment-to-repository)
+
+## Support
 
 If you need further help, please send us a message using `Help` on the
 [project website](https://studio.iterative.ai). You can also create a support
@@ -143,3 +146,24 @@ If you would like to explicitly hide columns, you can simply hide them in the
 view. Once you show/hide columns, you can save the changes. Check out the
 [above video](#showhide-columns) to see how you can show/hide columns. Once you
 show/hide columns, remember to save the changes.
+
+## Error: Failed to push experiment to repository
+
+This is a non-specific error with a range of possible causes. To resolve it,
+please check:
+
+- Your account is able to push to the repository.
+- The repository is **not** marked as archived / read only.
+- In case of GitHub/GitLab/BitBucket enterprise organizations: there is no IP
+  whitelisting policy in place which limits access to the organization's
+  resources.
+- Whether [GitHub][gh-status], [GitLab][gl-status], or [BitBucket][bb-status]
+  are experiencing service disruptions. In case of an on-prem deployment, please
+  check with your administrator.
+
+[gh-status]: https://www.githubstatus.com/
+[gl-status]: https://status.gitlab.com/
+[bb-status]: https://bitbucket.status.atlassian.com/
+
+If you get this error and none of the above applies, please
+[get in touch with us](#support).
