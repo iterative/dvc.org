@@ -33,7 +33,7 @@ include:
 
 DVC Experiments automatically capture all the changes to your project (code,
 data, parameters, etc.), as well as to results (ML models, metrics, any
-artifacts). This is possible because your data pipelines are codified with DVC,
+artifacts). This is possible because your data processes are codified with DVC,
 which enables
 [tracking & versioning](/doc/use-cases/versioning-data-and-model-files) all of
 this data.
