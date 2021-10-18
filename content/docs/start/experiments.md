@@ -42,8 +42,8 @@ $ python -m pip install -r requirements.txt
 #### Get the data set
 
 The repository we cloned doesn't contain the dataset. Instead of storing the
-data in Git repository, we use DVC to retrieve from a shared data store. In this
-case, we use `dvc pull` to update the missing data files.
+data in the Git repository, we use DVC to retrieve from a shared data store. In
+this case, we use `dvc pull` to update the missing data files.
 
 ```dvc
 $ dvc pull
@@ -68,7 +68,7 @@ Experiment results have been applied to your workspace.
 It runs the specified command (`python train.py`) in `dvc.yaml`. That command
 writes the metrics values to `metrics.json`.
 
-This experiment is then associated with the values found in parameters file
+This experiment is then associated with the values found in the parameters file
 (`params.yaml`), and other dependencies (`data/images/`) with these produced
 metrics.
 
@@ -96,10 +96,10 @@ $ dvc exp show
 ```
 
 The `workspace` row in the table shows the results of the most recent experiment
-that's available in the <bbr>workspace</abbr>. The table also shows each
+that's available in the <abbr>workspace</abbr>. The table also shows each
 experiment in a separate row, along with the Git commit IDs they are attached
-to. We can see that the experiment we run has a name `exp-6dccf` and run from
-the commit ID `7317bc6`.
+to. We can see that the experiment we run has a name `exp-6dccf` and was run
+from the commit ID `7317bc6`.
 
 <details>
 
@@ -213,7 +213,7 @@ $ dvc exp show --no-timestamp \
 └─────────────────────────┴────────┴──────────────────┘
 ```
 
-After selecting an experiment from the table you can create a Git branch that
+After selecting an experiment from the table, you can create a Git branch that
 contains the experiment with all its related files.
 
 ```dvc
