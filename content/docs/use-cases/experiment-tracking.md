@@ -29,6 +29,15 @@ include:
   scratch.
 - Promote, save, share, or discard experiments individually or in bulk.
 
+## Advantages of DVC's approach
+
+DVC Experiments automatically capture all the changes to your project (code,
+data, parameters, etc.), as well as to results (ML models, metrics, any
+artifacts). This is possible because your data pipelines are codified with DVC,
+which enables
+[tracking & versioning](/doc/use-cases/versioning-data-and-model-files) all of
+this data.
+
 |           | DVC         | MLFlow      | Neptune     | wanDB       |
 | --------- | ----------- | ----------- | ----------- | ----------- |
 | Interface | CLI         | Web         | ???         | CLI         |
@@ -37,12 +46,6 @@ include:
 | Support   | ✔️          | ✔️          | ✔️          | ❌          |
 | Pricing?  | Free        | $$          | $           | Free        |
 
-DVC Experiments automatically capture all the changes to your project (code,
-data, parameters, etc.), as well as its results (ML models, metrics, other
-artifacts). This is possible because DVC helps you codify data pipelines, which
-enables [tracking & versioning](/doc/use-cases/versioning-data-and-model-files)
-all this data.
-
 You can enjoy the full power of DVC Experiments on any machine, without need for
 special infrastructure or servers. The only other software required is Git, but
 you don't need to worry about how it's used internally! Everything your team may
@@ -50,6 +53,6 @@ need for a regular version control workflow later will still be available.
 
 On top of that, DVC Experiment features are language agnostic. You can expect
 the same convenience and performance whether you are using Jupyter Notebooks or
-Scala, CSV dataframes or HDFS file partitions, JSON or YAML config files.
+Scala, CSV data frames or HDFS partitions, JSON or YAML config files.
 
 > 📖 Ready to dive in? See [Get Started: Experiments](/doc/start/experiments).
