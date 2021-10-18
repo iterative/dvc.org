@@ -1,4 +1,4 @@
-# Data Science Experiment Bookkeeping
+# Data Science Experiment Tracking
 
 Iterating on data science implies a large number of attempts at tuning
 parameters, improving code, trying different data, and collecting metrics, for
