@@ -16,13 +16,13 @@ simple terminal [commands](/doc/command-reference/exp). Some things you can do
 include:
 
 - Rapid iteration on experiment ideas by capturing variations from a baseline
-  with a simple command (`dvc exp run`).
+  with a controlled execution command (`dvc exp run`).
 - Automatic bookkeeping of changes to data dependencies, code,
   <abbr>parameters</abbr>, artifacts and <abbr>metrics</abbr> when you run each
   experiment.
-- Queue experiments for future execution, and run them in parallel if needed.
+- Queue experiments for future execution (and run them in parallel if needed).
 - Create deep [checkpoints](/doc/user-guide/experiment-management/checkpoints)
-  from your code if needed, and track [live metrics](/doc/dvclive).
+  from your code, and track [live metrics](/doc/dvclive).
 - List and compare previous experiments in a consolidated way (order and filter
   by parameters or metrics).
 - Restore any experiment results from <abbr>cache</abbr>, or reproduce them from
