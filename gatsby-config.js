@@ -50,7 +50,15 @@ const plugins = [
       path: path.join(__dirname, 'static')
     }
   },
-  'gatsby-plugin-image',
+  {
+    resolve: 'gatsby-plugin-image',
+    options: {
+      defaults: {
+        placeholder: 'blurred'
+      }
+    }
+  },
+
   'community-page',
   {
     resolve: 'gatsby-transformer-remark',
