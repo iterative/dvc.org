@@ -115,8 +115,8 @@ params.yaml  train.layers    —      9
 ```
 
 The command above shows the difference in parameters between the workspace and
-the last committed version (`HEAD`) of the params file `params.yaml`. Since it did not
-exist before, all `HEAD` values are `—`.
+the last committed version (`HEAD`) of the params file `params.yaml`. Since it
+did not exist before, all `HEAD` values are `—`.
 
 In a project with parameters file history (params present in various Git
 commits), you will see both `HEAD` and `workspace` values. However, the
