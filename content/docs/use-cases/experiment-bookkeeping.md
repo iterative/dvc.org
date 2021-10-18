@@ -29,7 +29,13 @@ include:
   scratch.
 - Promote, save, share, or discard experiments individually or in bulk.
 
-![](/img/labeled-samples.jpg) _Structured experiment records_
+|           | DVC         | MLFlow      | Neptune     | wanDB       |
+| --------- | ----------- | ----------- | ----------- | ----------- |
+| Interface | CLI         | Web         | ???         | CLI         |
+| Storage   | File-based  | Database    | Database    | Database    |
+| Licensing | Open Source | Proprietary | Proprietary | Open Source |
+| Support   | ✔️          | ✔️          | ✔️          | ❌          |
+| Pricing?  | Free        | $$          | $           | Free        |
 
 DVC Experiments automatically capture all the changes to your project (code,
 data, parameters, etc.), as well as its results (ML models, metrics, other
