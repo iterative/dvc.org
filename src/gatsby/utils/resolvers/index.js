@@ -46,12 +46,11 @@ function sourcePathResolver({
           }
         }
 
-    return context.nodeModel.runQuery({
+    return context.nodeModel.findOne({
       query: {
         filter
       },
-      type,
-      firstOnly: true
+      type
     })
   }
 }
