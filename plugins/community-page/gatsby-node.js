@@ -2,17 +2,6 @@ const moment = require('moment')
 const { getExpirationFields } = require('../../src/utils/shared/expiration')
 const content = require('../../content/community.json')
 
-function expiredNodesLog(typeName, nodes) {
-  if (nodes.length > 0) {
-    return `${nodes.length} ${typeName}:\n${nodes
-      .map(
-        ({ sourceIndex, title, expires }) =>
-          `- #${sourceIndex}:${title ? ` "${title}"` : ''} expired ${expires}`
-      )
-      .join('\n')}\n`
-  }
-}
-
 const expirableFields = {
   date: {
     type: 'Date',
@@ -137,44 +126,5 @@ module.exports = {
     })
 
     return Promise.all([heroesPromise, eventsPromise, restPromise])
-  },
-  async onPostBuild({ graphql }) {
-    const query = await graphql(`
-      query ExpiredItemQuery {
-        events: allCommunityEvent(
-          filter: { expired: { eq: true } }
-          sort: { fields: [sourceIndex] }
-        ) {
-          nodes {
-            expires(formatString: "YYYY-MM-DD")
-            sourceIndex
-            title
-          }
-        }
-        heroes: allCommunityHero(
-          filter: { expired: { eq: true } }
-          sort: { fields: [sourceIndex] }
-        ) {
-          nodes {
-            sourceIndex
-            expires(formatString: "YYYY-MM-DD")
-          }
-        }
-      }
-    `)
-
-    // Only log anything if there's an expired node of any type
-    const typeLogs = []
-    for (const [name, { nodes }] of Object.entries(query.data)) {
-      if (nodes.length === 0) continue
-      typeLogs.push(expiredNodesLog(name, nodes))
-    }
-
-    if (typeLogs.length > 0) {
-      const typeLogsString = typeLogs.join('\n')
-      console.warn(
-        `There are expired Nodes in community.json!\n${typeLogsString}`
-      )
-    }
   }
 }
