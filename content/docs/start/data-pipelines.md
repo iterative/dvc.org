@@ -21,12 +21,12 @@ machine learning pipeline.
 
 Watch and learn, or follow along with the code example below!
 
-https://youtu.be/71IGzyH95UY
-
-## Pipeline stages
-
 Use `dvc stage add` to create _stages_. These represent processes (source code
 tracked with Git) which form the steps of a _pipeline_. Stages also connect code
+to its corresponding data _input_ and _output_. Let's start by creating a stage
+to extract the data file in the project.
+to its corresponding data _input_ and _output_. Let's start by creating a stage
+to extract the data file in the project.
 to its corresponding data _input_ and _output_. Let's start by creating a stage
 to extract the data file in the project.
 
@@ -37,14 +37,18 @@ to extract the data file in the project.
 Get the sample code like this:
 
 ```dvc
-$ git clone https://github.com/iterative/example-dvc-pipelines -b get-started
+$ wget https://code.dvc.org/get-started/code.zip
+$ unzip code.zip
+$ rm -f code.zip
 $ tree
 .
 ├── params.yaml
-├── transform.py
-├── data/mnist.zip.dvc
-├── requirements.txt
-└── train.py
+└── src
+    ├── evaluate.py
+    ├── featurization.py
+    ├── prepare.py
+    ├── requirements.txt
+    └── train.py
 ```
 
 Now let's install the requirements:
@@ -54,33 +58,26 @@ Now let's install the requirements:
 > first.
 
 ```dvc
-$ pip install -r requirements.txt
+$ pip install -r src/requirements.txt
 ```
 
-Now, you can download the data set we'll use in the project:
-
-```dvc
-$ dvc pull
-```
-
-For details on how to use DVC as a data management tool, please refer to
-[Data Management Trail](/doc/start/data-and-model-management)
+Please also add or commit the source code directory with Git at this point.
 
 </details>
 
-If you inspect the code in `transform.py`, you'll see that it requires a set of
-image files. The downloaded data file is in zip format. We need a stage to
-convert the downloaded file into a directory.
-
 ```dvc
-$ dvc stage add -n extract \
-          -d data/mnist.zip \
-          -o data/images \
-          tar xvzf data/mnist.tar.gz data/images
+$ dvc run -n prepare \
+          -p prepare.seed,prepare.split \
+          -d src/prepare.py -d data/data.xml \
+          -o data/prepared \
+          python src/prepare.py data/data.xml
 ```
 
-A `dvc.yaml` file is generated. It includes information about the command we ran
-(`tar xvzf ...`), its <abbr>dependencies</abbr>, and <abbr>outputs</abbr>.
+A `dvc.yaml` file is generated. It includes information about the command we run
+(`python src/prepare.py data/data.xml`), its <abbr>dependencies</abbr>, and
+<abbr>outputs</abbr>.
+
+
 
 <details>
 
@@ -88,60 +85,64 @@ A `dvc.yaml` file is generated. It includes information about the command we ran
 
 The command options used above mean the following:
 
-- `-n extract` specifies a name for the stage. If you open the `dvc.yaml` file
-  you will see a section named `extract`.
+- `-n prepare` specifies a name for the stage. If you open the `dvc.yaml` file
+  you will see a section named `prepare`.
 
-- `-d data/mnist.tar.gz` mean that the stage depends on this file to work. If
-  this file change later, DVC will know that this stage needs to be
-  [reproduced](#reproduce).
+- `-p prepare.seed,prepare.split` defines special types of dependencies —
+  [parameters](/doc/command-reference/params). We'll get to them later in the
+  [Metrics, Parameters, and Plots](/doc/start/metrics-parameters-plots) page,
+  but the idea is that the stage can depend on field values from a parameters
+  file (`params.yaml` by default):
 
-- `-o data/images` specifies an output directory for the command. This is how
-  the <abbr>workspace</abbr> should look like now:
+```yaml
+prepare:
+  split: 0.20
+  seed: 20170428
+```
+
+- `-d src/prepare.py` and `-d data/data.xml` mean that the stage depends on
+  these files to work. Notice that the source code itself is marked as a
+  dependency. If any of these files change later, DVC will know that this stage
+  needs to be [reproduced](#reproduce).
+
+- `-o data/prepared` specifies an output directory for this script, which writes
+  two files in it. This is how the <abbr>workspace</abbr> should look like now:
 
   ```git
    .
    ├── data
-   │   ├── mnist.tar.gz
-   │   ├── mnist.tar.gz.dvc
+   │   ├── data.xml
+   │   ├── data.xml.dvc
+  +│   └── prepared
+  +│       ├── test.tsv
+  +│       └── train.tsv
   +├── dvc.yaml
   +├── dvc.lock
    ├── params.yaml
-   ├── ...
+   └── src
+       ├── ...
   ```
 
-- The last line, `tar xvzf data/mnist.tar.gz ...` is the command to run in this
-  stage, and it's saved to `dvc.yaml`, as shown below.
+- The last line, `python src/prepare.py data/data.xml` is the command to run in
+  this stage, and it's saved to `dvc.yaml`, as shown below.
 
-The resulting `extract` stage contains all of the information above:
+The resulting `prepare` stage contains all of the information above:
 
 ```yaml
 stages:
-  extract:
-    cmd: tar xvzf data/mnist.tar.gz ...
+  prepare:
+    cmd: python src/prepare.py data/data.xml
     deps:
-      - data/mnist.tar.gz
+      - src/prepare.py
+      - data/data.xml
+    params:
+      - prepare.seed
+      - prepare.split
     outs:
-      - data/images
+      - data/prepared
 ```
 
 </details>
-
-After adding the stage, we can run it using:
-
-```dvc
-$ dvc repro
-```
-
-Note the command output is identical with the `tar` command we set as the stage
-command.
-
-The `data` directory now contains `images` directory, which has `test` and
-`train` subdirectories, each with a directory named after a class label (digit).
-You can see the directory hierarchy below:
-
-```dvc
-$ tree -d data
-```
 
 There's no need to use `dvc add` for DVC to track stage outputs (`data/prepared`
 in this case); `dvc stage add` and `dvc repro` takes care of this. You only need
