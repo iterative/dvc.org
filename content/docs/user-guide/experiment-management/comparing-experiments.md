@@ -1,27 +1,24 @@
 # Comparing Experiments
 
-After running the experiments, it's desirable to compare them by their
-parameters and the corresponding results. DVC provides three commands to list,
-tabulate and compare the experiments. In this section, we discuss various use
-cases and options to streamline experimentation.
+You'll need a way to compare experiments based on their results and
+corresponding parameters. DVC provides commands to list, tabulate and contrast
+them. Let's see how they can help you streamline the experimentation process.
 
 ## List experiments in the workspace
 
-After running the experiments, you can get a list of them by `dvc exp list`.
-Without any options, `dvc exp list` lists the experiments after the most recent
-commit.
+You can get a list of existing experiments in the repository with
+`dvc exp list`. Without any options, this command lists the experiments after
+the most recent commit. (Git `HEAD`).
 
 ```dvc
 $ dvc exp list
 refs/tags/baseline-experiment:
-        cnn-32
         cnn-64
-        cnn-96
         cnn-128
 ```
 
-If you want to list all the experiments in the repository independent of the
-commits, you can use `--all` flag.
+If you want to list all the experiments in the repository independent of parent
+commits, use the `--all` flag.
 
 ```dvc
 $ dvc exp list --all
@@ -30,7 +27,7 @@ refs/tags/baseline-experiment:
         cnn-128
         cnn-32
         cnn-96
-b99a33e:
+main:
         exp-93150
 ```
 
@@ -39,6 +36,8 @@ b99a33e:
 As we discuss in [Sharing Experiments], you can use `dvc exp push` to upload
 experiments to Git remotes. `dvc exp list` can be used to list the experiments
 in a Git remote.
+
+[sharing experiments]: /doc/user-guide/experiment-management/sharing-experiments
 
 ```dvc
 $ dvc exp list origin
@@ -49,20 +48,8 @@ refs/tags/baseline-experiment:
         cnn-96
 ```
 
-This command lists the experiments originated from `HEAD`. If you want to see
-all the experiments in the repository, you need to add `--all` argument to this
-command as well.
-
-```dvc
-$ dvc exp list origin --all
-refs/tags/baseline-experiment:
-        cnn-128
-        cnn-32
-        cnn-64
-        cnn-96
-b99a33e:
-        exp-93150
-```
+This command lists the experiments originated from `HEAD`. You can add any other
+options to the remote command, including `--all`. (see previous section).
 
 [sharing experiments]: /doc/user-guide/experiment-management/sharing-experiments
 
@@ -80,12 +67,13 @@ $ for experiment in $(dvc exp list origin --names-only --all) ; do
 done
 ```
 
-## List experiments of a particular commit, tag or branch
+## List experiments based on a commit, tag or branch
 
-If you want to get experiments for a particular tag or commit, `--rev` option
-allows to specify a particular Git reference to list the experiments. You can
-get the list of experiments in a Git repository attached to a particular commit
-with:
+The `--rev` option allows to specify a Git reference (commit, tag or branch
+name) to list the experiments attached to it.
+
+For example, to list of experiments in a Git repository stemmed from a
+particular commit.
 
 ```dvc
 $ dvc exp list origin --rev 23ceb4a
@@ -96,7 +84,7 @@ $ dvc exp list origin --rev 23ceb4a
         cnn-96
 ```
 
-`--rev` can be used for tags as well.
+The `--rev` option can be used for tags as well.
 
 ```dvc
 $ dvc exp list origin --rev baseline-experiment
@@ -106,9 +94,6 @@ refs/tags/baseline-experiment:
         cnn-64
         cnn-96
 ```
-
-If you need to specify whether a particular reference is a tag or branch, you
-can also supply the full Git reference:
 
 ```dvc
 $ dvc exp list origin --rev refs/tags/baseline-experiment
@@ -122,7 +107,7 @@ refs/tags/baseline-experiment:
 ## Show a table of experiments
 
 Experimentation is about selecting the best from many trials. You can get a
-table of experiments with `dvc exp show` that shows all the parameters and
+table of experiments with `dvc exp show`, which displays all the parameters and
 metrics in a nicely formatted table.
 
 ```dvc
@@ -159,7 +144,7 @@ comma-separated metrics and parameter names as defined in `dvc.yaml`.
 $ dvc exp show --include-params train.epochs --include-metrics auc,precision
 ```
 
-````dvctable
+`````dvctable
 ┏━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━┓
 ┃ neutral:**Experiment**            ┃ neutral:**Created**      ┃    metric:**loss** ┃    metric:**acc** ┃ param:**train.epochs** ┃
 ┡━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━┩
@@ -178,7 +163,7 @@ hide those columns.
 
 ```dvc
 $ dvc exp show --exclude-params train.epochs --exclude-metrics auc
-````
+```
 
 ```dvctable
 ┏━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━━━━━┓
@@ -218,7 +203,7 @@ the columns by params or metrics by the option `--sort-by` and `--sort-order`.
 
 ```dvc
 $ dvc exp show --sort-by auc --sort-order desc
-````
+`````
 
 ```dvctable
 ┏━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━━━━━┓
