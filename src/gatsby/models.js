@@ -5,7 +5,6 @@ const authors = require('./models/authors')
 const imageSourcePaths = require('./models/image-source-paths')
 const glossary = require('./models/glossary')
 const github = require('./models/github')
-const pruneCache = require('./models/prune-cache')
 
 const models = [
   markdownContent,
@@ -14,8 +13,7 @@ const models = [
   authors,
   imageSourcePaths,
   glossary,
-  github,
-  pruneCache
+  github
 ]
 
 module.exports = models
