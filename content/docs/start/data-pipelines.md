@@ -24,11 +24,10 @@ Watch and learn, or follow along with the code example below!
 Use `dvc stage add` to create _stages_. These represent processes (source code
 tracked with Git) which form the steps of a _pipeline_. Stages also connect code
 to its corresponding data _input_ and _output_. Let's start by creating a stage
-to extract the data file in the project.
-to its corresponding data _input_ and _output_. Let's start by creating a stage
-to extract the data file in the project.
-to its corresponding data _input_ and _output_. Let's start by creating a stage
-to extract the data file in the project.
+to extract the data file in the project. to its corresponding data _input_ and
+_output_. Let's start by creating a stage to extract the data file in the
+project. to its corresponding data _input_ and _output_. Let's start by creating
+a stage to extract the data file in the project.
 
 <details>
 
@@ -76,8 +75,6 @@ $ dvc run -n prepare \
 A `dvc.yaml` file is generated. It includes information about the command we run
 (`python src/prepare.py data/data.xml`), its <abbr>dependencies</abbr>, and
 <abbr>outputs</abbr>.
-
-
 
 <details>
 
