@@ -91,6 +91,10 @@ const footerListsData: Array<IFooterListData> = [
         href: 'https://iterative.ai/about#career',
         text: 'Career',
         target: '_blank'
+      },
+      {
+        href: 'https://iterative.ai/brand',
+        text: 'Media Kit'
       }
     ]
   },
