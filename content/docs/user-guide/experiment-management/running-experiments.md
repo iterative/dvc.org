@@ -156,6 +156,7 @@ model:
   learning_rate: 0.001
 
 $ dvc exp run --set-param model.learning_rate=0.0002
+...
 ```
 
 > Note that parameters are attached to experiments so you can view them together
