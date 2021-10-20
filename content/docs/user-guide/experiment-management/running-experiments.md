@@ -151,6 +151,10 @@ DVC allows to update the parameters from command line when running
 its value, and updates the params file before the run.
 
 ```dvc
+$ cat params.yaml
+model:
+  learning_rate: 0.001
+
 $ dvc exp run --set-param model.learning_rate=0.0002
 ```
 
