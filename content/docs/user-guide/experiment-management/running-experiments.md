@@ -81,33 +81,14 @@ $ dvc exp run --all-pipelines
 
 ### Running pipelines recursively
 
-DVC supports pipelines defined in more than one `dvc.yaml` file. These can
-reside in subfolders inside the workspace, and you may want to run all of them
-at once. Example project:
-
-```dvc
-.
-├── dir
-│   ├── deeper-dir
-│   │   └── dvc.yaml
-│   ├── dvc.lock
-│   └── dvc.yaml
-├── dvc.lock
-└── dvc.yaml
-```
-
-To run the pipelines defined in `dir/dvc.yaml` as well as the ones in
-`dir/deeper-dir/dvc.yaml` with a single command, you can target the `dir/`
-directory with the `--recursive` (`-R`) option:
+When your pipeline is defined in recursive subfolders, you can selectively run
+them using the `--recursive` option.
 
 ```dvc
 $ dvc exp run --recursive dir/
 ```
 
-It will run all the pipelines under `dir/`.
-
-You may also use `.` as target (e.g. `dvc exp run -R .`) to run all pipelines in
-the entire project (recursively starting from the current directory).
+It will run all the pipelines under `dir/`, and its subdirectories.
 
 ### Running stages interactively
 
