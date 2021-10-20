@@ -10,7 +10,7 @@ Compare [metrics](/doc/command-reference/metrics) between two commits in the
 ```usage
 usage: dvc metrics diff [-h] [-q | -v]
                         [--targets [<paths> [<paths> ...]]] [-R]
-                        [--all] [--show-json] [--show-md] [--no-path]
+                        [--all] [--json] [--md] [--no-path]
                         [--old] [--precision <n>]
                         [a_rev] [b_rev]
 
@@ -66,10 +66,10 @@ all the current metrics (without comparisons).
 
 - `--all` - list all metrics, including those without changes.
 
-- `--show-json` - prints the command's output in JSON format (machine-readable)
+- `--json` - prints the command's output in JSON format (machine-readable)
   instead of a human-readable table.
 
-- `--show-md` - prints the command's output in the Markdown table format
+- `--md` - prints the command's output in the Markdown table format
   ([GFM](https://github.github.com/gfm/#tables-extension-)).
 
 - `--old` - include the "Old" value column in addition to the new "Value" (and
