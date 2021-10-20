@@ -1,15 +1,13 @@
 ---
 title: December '20 Community Gems
 date: 2020-12-30
-description: |
-  A roundup of technical Q&A's from the DVC community.
-  This month, read about custom DVC plots, teamwork
-  with DVC, CML without Docker, and maintaining
+description: >
+  A roundup of technical Q&A's from the DVC community. This month, read about
+  custom DVC plots, teamwork with DVC, CML without Docker, and maintaining
   several pipelines in parallel!
-descriptionLong: |
-  A roundup of technical Q&A's from the DVC community.
-  This month, read about custom DVC plots, teamwork
-  with DVC, CML without Docker, and maintaining
+descriptionLong: >
+  A roundup of technical Q&A's from the DVC community. This month, read about
+  custom DVC plots, teamwork with DVC, CML without Docker, and maintaining
   several pipelines in parallel!
 picture: 2020-12-30/cover.png
 author: elle_obrien

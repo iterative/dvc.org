@@ -1,9 +1,9 @@
 ---
 title: Using Experiments for Transfer Learning
 date: 2021-08-24
-description: |
+description: >
   You can work with pretrained models and fine-tune them with DVC experiments.
-descriptionLong: |
+descriptionLong: >
   DVC experiments help fine-tune models by tracking code and data changes.
 picture: 2021-08-24/pretrained-models.png
 pictureComment: Using Experiments to Improve Pre-trained Models
@@ -14,6 +14,7 @@ tags:
   - Experiments
   - Reproducibility
   - DVC
+  - Pre-trained Models
 ---
 
 ## Intro
@@ -25,6 +26,8 @@ millions of images so you could potentially use this to classify cars, animals,
 or even people. This is called
 [transfer learning](https://towardsdatascience.com/a-comprehensive-hands-on-guide-to-transfer-learning-with-real-world-applications-in-deep-learning-212bf3b2f27a)
 and it can save a lot of time on developing a model from scratch.
+
+https://youtu.be/S3Hm_BPLie0
 
 For us to take advantage of transfer learning, we can use fine-tuning to adopt
 the model to our new problem. In many cases, we start by replacing the last

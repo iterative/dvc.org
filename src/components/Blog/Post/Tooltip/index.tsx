@@ -10,7 +10,8 @@ import {
 
 import React from 'react'
 
-import styles from './styles.module.css'
+import '@reach/tooltip/styles.css'
+import * as styles from './styles.module.css'
 
 const centered: Position = (triggerRect, tooltipRect) => {
   if (!triggerRect || !tooltipRect) {

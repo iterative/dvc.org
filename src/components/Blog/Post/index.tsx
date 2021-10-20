@@ -18,7 +18,7 @@ import Share from './Share'
 import PageContent from '../../PageContent'
 import SubscribeSection from '../../SubscribeSection'
 
-import styles from './styles.module.css'
+import * as styles from './styles.module.css'
 
 const Post: React.FC<IBlogPostData> = ({
   html,
@@ -84,9 +84,7 @@ const Post: React.FC<IBlogPostData> = ({
             </div>
           </div>
 
-          {picture && (
-            <HeroPic picture={picture} pictureComment={pictureComment} />
-          )}
+          <HeroPic picture={picture} pictureComment={pictureComment} />
 
           <div className={styles.content}>
             <Markdown html={html} />

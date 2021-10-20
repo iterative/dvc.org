@@ -21,7 +21,7 @@ DVC Studio to be able to access the data required for visualization.
 
 Additionally, you can also configure view settings to
 [change the name](#view-name) of your view and to
-[define the tracking scope](#tracking-scope) for your view.
+[select mandatory columns](#mandatory-columns) to import in your view.
 
 ### Non-DVC repositories
 
@@ -104,15 +104,31 @@ they are not saved into Git. It does not access any other data in your remote
 storage. And you do not need to provide the credentials if any DVC data remote
 in not used in your Git repository.
 
-### Tracking scope
+### Mandatory columns
 
-DVC Studio can track upto 200 metrics, parameters, and files. If you have more
-than 200 values in your Git repository, you can specify which ones to track and
-which ones to leave out. To ensure that a value is included, make sure that it
-is selected in the tracking scope. Any value that is not selected may not
-display in your view.
+##### (Tracking scope)
 
-![](https://static.iterative.ai/img/studio/view_settings_tracking_scope.png)
+If your repository exceeds 200 columns, DVC Studio will import a subset. The
+columns that are not imported will not be available to display in your view. In
+the settings for "Mandatory columns", You can select which columns are mandatory
+to import. DVC Studio will also import unselected columns up to a maximum
+of 200.
+
+![](https://static.iterative.ai/img/studio/view_settings_mandatory_columns.png)
+
+Note that some non-mandatory columns will also be imported if there are less
+than 200 mandatory columns. If you would like to hide specific columns from your
+view, you can do so in the view itself. For this, refer to
+[Display preferences -> Columns](/doc/studio/user-guide/explore-experiments#display-preferences).
+
+If your view is missing some required columns or includes columns that you do
+not want, refer to the following troubleshooting sections to understand why this
+may have happened.
+
+- [View does not contain the columns that I want](/doc/studio/troubleshooting#view-does-not-contain-the-columns-that-i-want)
+- [View contains columns that I did not import](/doc/studio/troubleshooting#view-contains-columns-that-i-did-not-import)
+
+Note: The **Mandatory columns** section was earlier called **Tracking scope**.
 
 ### Custom metrics and parameters
 

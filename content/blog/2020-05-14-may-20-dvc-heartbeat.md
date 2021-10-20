@@ -1,13 +1,12 @@
 ---
 title: May ’20 DVC❤️Heartbeat
 date: 2020-05-14
-description: |
-  Catch up on new DVC releases, talks, and projects in our community.
-  This month, learn about new features in the DVC 1.0 release, ways
-  to get involved, and more from the intersection of data science
-  and software engineering.
+description: >
+  Catch up on new DVC releases, talks, and projects in our community. This
+  month, learn about new features in the DVC 1.0 release, ways to get involved,
+  and more from the intersection of data science and software engineering.
 
-descriptionLong: |
+descriptionLong: >
   Every month we share news, findings, interesting reads, community takeaways,
   and everything else along the way.
 

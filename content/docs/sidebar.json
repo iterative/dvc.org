@@ -61,6 +61,7 @@
       },
       {
         "slug": "experiments",
+        "label": "Experiments",
         "tutorials": {
           "katacoda": "https://katacoda.com/dvc/courses/get-started/experiments"
         }
@@ -245,7 +246,7 @@
         "slug": "doctor"
       },
       {
-        "label": "experiments",
+        "label": "exp",
         "slug": "exp",
         "source": "exp/index.md",
         "children": [
@@ -630,6 +631,10 @@
             "label": "PyTorch"
           },
           {
+            "slug": "pytorch-lightning",
+            "label": "PyTorch Lightning"
+          },
+          {
             "slug": "tensorflow",
             "label": "TensorFlow"
           },
@@ -645,20 +650,27 @@
         "source": "api-reference/index.md",
         "children": [
           {
-            "slug": "get_step",
-            "label": "get_step()"
-          },
-          {
-            "slug": "init",
-            "label": "init()"
-          },
-          {
-            "slug": "log",
-            "label": "log()"
-          },
-          {
-            "slug": "next_step",
-            "label": "next_step()"
+            "slug": "live",
+            "label": "Live()",
+            "source": "api-reference/live/index.md",
+            "children": [
+              {
+                "slug": "log",
+                "label": "log()"
+              },
+              {
+                "slug": "get_step",
+                "label": "get_step()"
+              },
+              {
+                "slug": "next_step",
+                "label": "next_step()"
+              },
+              {
+                "slug": "set_step",
+                "label": "set_step()"
+              }
+            ]
           }
         ]
       }
