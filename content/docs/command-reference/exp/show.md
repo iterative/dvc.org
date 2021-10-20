@@ -15,6 +15,7 @@ usage: dvc exp show [-h] [-q | -v] [-a] [-T] [-A] [-n <num>]
                     [--sort-by <metric/param>]
                     [--sort-order {asc,desc}] [--no-timestamp] [--sha]
                     [--json] [--csv] [--md] [--precision <n>]
+```
 
 ## Description
 
