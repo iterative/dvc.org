@@ -96,15 +96,12 @@ $ dvc exp show --include-params=train.min_split --no-pager
 └───────────────────────┴──────────────┴────────┴──────────┴─────────┴─────────────────┘
 ```
 
-We can also remove all of the experiments from a remote Git repository:
+We can also remove experiments from a remote Git repository:
 
 ```dvc
 $ dvc exp push myremote exp-e6c97
-Pushed experiment 'exp-e6c97'to Git remote 'myremote'.
 $ dvc exp push myremote exp-9fcef
-Pushed experiment 'exp-9fcef'to Git remote 'myremote'.
 $ dvc exp push myremote exp-1dad0
-Pushed experiment 'exp-1dad0'to Git remote 'myremote'.
 
 $ dvc exp list myremote
 master:
