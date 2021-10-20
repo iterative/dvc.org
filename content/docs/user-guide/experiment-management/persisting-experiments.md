@@ -80,9 +80,8 @@ $ dvc exp apply exp-e6c97
 Changes for experiment 'exp-e6c97' have been applied...
 ```
 
-⚠️ Note that, `dvc exp apply` requires you're at the same commit that the
-experiment run. Otherwise, it won't apply the experiment due to possible
-conflicts in text files.
+> ⚠️ Note that `dvc exp apply` requires your project version (Git `HEAD`)
+> to be the same as when the experiment was run.
 
 Now, if you list the experiments again with `dvc exp show`, you'll see that the
 workspace contains the results of `exp-e6c97`.
