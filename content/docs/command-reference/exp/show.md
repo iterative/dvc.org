@@ -6,7 +6,7 @@ Print a customizable table of experiments, their metrics and parameters.
 
 ## Synopsis
 
-```usage
+````usage
 usage: dvc exp show [-h] [-q | -v] [-a] [-T] [-A] [-n <num>]
                     [--no-pager] [--include-metrics <metrics_list>]
                     [--exclude-metrics <metrics_list>]
@@ -35,7 +35,7 @@ $ dvc exp show
 │ ├── exp-bfe64 │  0.57833 │ 0.95555 │ 50         │ 8               │
 │ └── exp-ad5b1 │  0.56191 │ 0.93345 │ 50         │ 2               │
 └───────────────┴──────────┴─────────┴────────────┴─────────────────┘
-```
+````
 
 Your terminal will enter a
 [paginated screen](/doc/command-reference/dag#paginating-the-output) by default,
