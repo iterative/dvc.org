@@ -6,7 +6,7 @@ Print a customizable table of experiments, their metrics and parameters.
 
 ## Synopsis
 
-````usage
+```usage
 usage: dvc exp show [-h] [-q | -v] [-a] [-T] [-A] [-n <num>]
                     [--no-pager] [--include-metrics <metrics_list>]
                     [--exclude-metrics <metrics_list>]
@@ -15,6 +15,7 @@ usage: dvc exp show [-h] [-q | -v] [-a] [-T] [-A] [-n <num>]
                     [--sort-by <metric/param>]
                     [--sort-order {asc,desc}] [--no-timestamp] [--sha]
                     [--json] [--csv] [--md] [--precision <n>]
+```
 
 ## Description
 
