@@ -133,9 +133,11 @@ Great question about the API @dashmote!
 
 There are a couple different ways to handle this.
 
-The first option is to pass GitHub SSH keys into your Docker container.
+The first option is to use SSH. You'll need to pass GitHub SSH keys into your
+Docker container and use the `git@github.com:username/repo.git` URL format when
+you call the API method.
 
-The other option is to use the
+The other option is to use HTTP. You need to use the
 `https://username:token@github.com/username/repo.git` URL format when you call
 the API method.
 
