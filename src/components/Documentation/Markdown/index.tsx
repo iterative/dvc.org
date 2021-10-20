@@ -1,4 +1,12 @@
-import React, { ReactNode, ReactElement } from 'react'
+import React, {
+  useEffect,
+  useState,
+  ReactNode,
+  ReactElement,
+  useContext
+} from 'react'
+import { nanoid } from 'nanoid'
+import { Node } from 'unist'
 import rehypeReact from 'rehype-react'
 import Collapsible from 'react-collapsible'
 
@@ -6,12 +14,13 @@ import Main from './Main'
 import Link from '../../Link'
 import Tooltip from './Tooltip'
 
-import styles from './styles.module.css'
+import * as styles from './styles.module.css'
+import { TogglesContext, TogglesProvider } from './ToggleProvider'
 
-const Details: React.FC<{
-  children: Array<{ props: { children: ReactNode } } | string>
-}> = ({ children }) => {
-  const filteredChildren: ReactNode[] = children.filter(child => child !== '\n')
+const Details: React.FC<Record<string, never>> = ({ children }) => {
+  const filteredChildren: ReactNode[] = (
+    children as Array<{ props: { children: ReactNode } } | string>
+  ).filter(child => child !== '\n')
   const firstChild = filteredChildren[0] as JSX.Element
 
   if (!/^h.$/.test(firstChild.type)) {
@@ -34,7 +43,7 @@ const Details: React.FC<{
    */
   return (
     <Collapsible
-      trigger={(triggerChildren as unknown) as ReactElement}
+      trigger={triggerChildren as unknown as ReactElement}
       transitionTime={200}
     >
       {filteredChildren.slice(1)}
@@ -42,8 +51,8 @@ const Details: React.FC<{
   )
 }
 
-const Abbr: React.FC<{ children: [string] }> = ({ children }) => {
-  return <Tooltip text={children[0]} />
+const Abbr: React.FC<Record<string, never>> = ({ children }) => {
+  return <Tooltip text={(children as string[])[0]} />
 }
 
 const Cards: React.FC = ({ children }) => {
@@ -95,21 +104,102 @@ const Card: React.FC<{
   )
 }
 
-const renderAst = new rehypeReact({
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  createElement: React.createElement as any,
+const ToggleTab: React.FC<{
+  id: string
+  title: string
+  ind: number
+  onChange: () => void
+  checked: boolean
+}> = ({ children, id, checked, ind, onChange, title }) => {
+  const inputId = `tab-${id}-${ind}`
+
+  return (
+    <>
+      <input
+        id={inputId}
+        type="radio"
+        name={`toggle-${id}`}
+        onChange={onChange}
+        checked={checked}
+      />
+      <label className={styles.tabHeading} htmlFor={inputId}>
+        {title}
+      </label>
+      {children}
+    </>
+  )
+}
+
+const Toggle: React.FC<{
+  children: Array<{ props: { title: string } } | string>
+}> = ({ children }) => {
+  const [toggleId, setToggleId] = useState('')
+  const {
+    addNewToggle = (): null => null,
+    updateToggleInd = (): null => null,
+    togglesData = {}
+  } = useContext(TogglesContext)
+  const tabs: Array<{ props: { title: string } } | string> = children.filter(
+    child => child !== '\n'
+  )
+  const tabsTitles = tabs.map(tab =>
+    typeof tab === 'object' ? tab.props.title : ''
+  )
+
+  useEffect(() => {
+    if (toggleId === '') {
+      const newId = nanoid()
+      addNewToggle(newId, tabsTitles)
+      setToggleId(newId)
+    }
+
+    if (toggleId && !togglesData[toggleId]) {
+      addNewToggle(toggleId, tabsTitles)
+    }
+  }, [togglesData])
+
+  return (
+    <div className={styles.toggle}>
+      {tabs.map((tab, i) => (
+        <ToggleTab
+          ind={i}
+          key={i}
+          title={tabsTitles[i]}
+          id={toggleId}
+          checked={
+            i === (togglesData[toggleId] ? togglesData[toggleId].checkedInd : 0)
+          }
+          onChange={(): void => updateToggleInd(toggleId, i)}
+        >
+          {tab}
+        </ToggleTab>
+      ))}
+    </div>
+  )
+}
+
+const Tab: React.FC = ({ children }) => (
+  <div className={styles.tab}>{children}</div>
+)
+
+// Rehype's typedefs don't allow for custom components, even though they work
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const renderAst = new (rehypeReact as any)({
+  createElement: React.createElement,
   Fragment: React.Fragment,
   components: {
-    details: Details,
-    abbr: Abbr,
     a: Link,
+    abbr: Abbr,
     card: Card,
-    cards: Cards
+    cards: Cards,
+    details: Details,
+    toggle: Toggle,
+    tab: Tab
   }
 }).Compiler
 
 interface IMarkdownProps {
-  htmlAst: object
+  htmlAst: Node
   githubLink: string
   tutorials: { [type: string]: string }
   prev?: string
@@ -125,7 +215,7 @@ const Markdown: React.FC<IMarkdownProps> = ({
 }) => {
   return (
     <Main prev={prev} next={next} tutorials={tutorials} githubLink={githubLink}>
-      {renderAst(htmlAst)}
+      <TogglesProvider>{renderAst(htmlAst)}</TogglesProvider>
     </Main>
   )
 }

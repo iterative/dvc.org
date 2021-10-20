@@ -57,6 +57,7 @@ const plugins = [
       path: path.join(__dirname, 'static')
     }
   },
+  'gatsby-plugin-image',
   'community-page',
   {
     resolve: 'gatsby-transformer-remark',
@@ -122,7 +123,14 @@ const plugins = [
     }
   },
   'gatsby-transformer-sharp',
-  'gatsby-plugin-sharp',
+  {
+    resolve: 'gatsby-plugin-sharp',
+    options: {
+      defaults: {
+        placeholder: 'blurred'
+      }
+    }
+  },
   {
     resolve: 'gatsby-plugin-catch-links',
     options: {
@@ -224,28 +232,6 @@ const plugins = [
   }
 ]
 
-if (process.env.GITHUB_TOKEN) {
-  plugins.push({
-    resolve: `gatsby-source-github-api`,
-    options: {
-      // token: required by the GitHub API
-      token: process.env.GITHUB_TOKEN,
-
-      // GraphQLquery: defaults to a search query
-      graphQLQuery: `
-          {
-            repository(owner: "iterative", name: "dvc") {
-              stargazers {
-                totalCount
-              }
-            }
-          }
-        `,
-      variables: {}
-    }
-  })
-}
-
 if (process.env.CONTEXT === 'production') {
   plugins.push({
     resolve: 'gatsby-plugin-google-analytics',
@@ -258,11 +244,7 @@ if (process.env.CONTEXT === 'production') {
 
 if (process.env.ANALYZE) {
   plugins.push({
-    resolve: 'gatsby-plugin-webpack-bundle-analyzer',
-    options: {
-      analyzerPort: 4000,
-      production: process.env.NODE_ENV === 'production'
-    }
+    resolve: 'gatsby-plugin-webpack-bundle-analyser-v2'
   })
 }
 

@@ -3,6 +3,8 @@
 List project contents, including files, models, and directories tracked by DVC
 and by Git.
 
+> Aliased to `dvc ls`.
+
 > Useful to find data to `dvc get`, `dvc import`, or for `dvc.api` functions.
 
 ## Synopsis

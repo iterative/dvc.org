@@ -1,6 +1,6 @@
 # exp show
 
-Print a customizable table of `dvc experiments`, their metrics and parameters.
+Print a customizable table of experiments, their metrics and parameters.
 
 > Press `q` to exit.
 
@@ -14,8 +14,7 @@ usage: dvc exp show [-h] [-q | -v] [-a] [-T] [-A] [-n <num>]
                     [--exclude-params <params_list>] [--param-deps]
                     [--sort-by <metric/param>]
                     [--sort-order {asc,desc}] [--no-timestamp] [--sha]
-                    [--json] [--csv] [--precision <n>]
-```
+                    [--json] [--csv] [--md] [--precision <n>]
 
 ## Description
 
@@ -104,8 +103,8 @@ metric or param.
   sorting. This only affects the ordering of experiments derived from the same
   parent commit. Parent commits are always sorted chronologically.
 
-- `--sort-order {asc,desc}` - sort order to use with `--sort-by` (defaults to
-  descending).
+- `--sort-order {asc,desc}` - sort order to use with `--sort-by`. Defaults to
+  ascending (`asc`).
 
 - `--no-timestamp` - do not show experiment timestamps.
 
@@ -117,6 +116,8 @@ metric or param.
 
 - `--csv` - prints the command's output in CSV format instead of a
   human-readable table.
+
+- `--md` - prints the command's output in Markdown table format.
 
 - `--precision <n>` -
   [round](https://docs.python.org/3/library/functions.html#round) decimal values

@@ -16,7 +16,8 @@ To start using DVCLive you just need to add a few lines to your training code in
 
 You just need to add the
 [`DvcLiveCallback`](https://github.com/iterative/dvclive/blob/master/dvclive/catalyst.py)
-to the callbacks list passed to your `runner`:
+to the callbacks list passed to your
+[`Runner`](https://catalyst-team.github.io/catalyst/core/runner.html):
 
 ```git
 +from dvclive.catalyst import DvcLiveCallback
@@ -42,10 +43,15 @@ This will generate the metrics logs and summaries as described in the
 
 ## Parameters
 
-- `model_file` - The name of the file where the model will be saved at the end
-  of each `step`.
+- `model_file` - (`None` by default) - The name of the file where the model will
+  be saved at the end of each `step`.
 
-Example:
+- `**kwargs` - Any additional arguments will be passed to
+  [`Live`](/docs/dvclive/api-reference/live).
+
+## Examples
+
+- Using `model_file`.
 
 ```python
 from dvclive.catalyst import DvcLiveCallback
@@ -57,4 +63,19 @@ runner.train(
     loaders=loaders,
     num_epochs=2,
     callbacks=[DvcLiveCallback("model.pth")])
+```
+
+- Using `**kwargs` to customize [`Live`](/docs/dvclive/api-reference/live).
+
+```python
+from dvclive.catalyst import DvcLiveCallback
+
+runner.train(
+    model=model,
+    criterion=criterion,
+    optimizer=optimizer,
+    loaders=loaders,
+    num_epochs=2,
+    callbacks=[
+      DvcLiveCallback(path="custom_path", summary=False)])
 ```

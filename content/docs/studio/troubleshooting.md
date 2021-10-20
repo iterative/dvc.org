@@ -3,6 +3,17 @@
 Here we provide help for some of the problems that you may encounter when using
 DVC Studio.
 
+- [Error: No data found to visualize](#error-no-data-found-to-visualize)
+- [Error: No DVC repo was found at the root](#error-no-dvc-repo-was-found-at-the-root)
+- [Error: Non-DVC sub-directory of a monorepo](#error-non-dvc-sub-directory-of-a-monorepo)
+- [Error: No commits were found for the sub-directory](#error-no-commits-were-found-for-the-sub-directory)
+- [View got created, but does not contain any data](#view-got-created-but-does-not-contain-any-data)
+- [View does not contain the columns that I want](#view-does-not-contain-the-columns-that-i-want)
+- [View contains columns that I did not import](#view-contains-columns-that-i-did-not-import)
+- [Error: Failed to push experiment to repository](#error-failed-to-push-experiment-to-repository)
+
+## Support
+
 If you need further help, please send us a message using `Help` on the
 [project website](https://studio.iterative.ai). You can also create a support
 ticket on [GitHub](https://github.com/iterative/studio-support) or join the
@@ -88,3 +99,71 @@ metrics or hyperparameters that you want to visualize.
 Refer to the [DVC documentation](https://dvc.org/doc) for help on making commits
 to a DVC repository. Instructions on how to specify custom files can be found
 [here](/doc/studio/user-guide/views/view-settings#configuring-view-settings).
+
+## View does not contain the columns that I want
+
+There are two possible reasons for this:
+
+1. **The required columns were not imported:** DVC Studio will import up to 200
+   columns (metrics, hyperparameters and files) from your Git repository. If
+   your repository has more than 200 columns, you should
+   [select the columns that are mandatory to import](/doc/studio/user-guide/views/view-settings#mandatory-columns).
+   DVC Studio will also import the unselected columns, but only up to a maximum
+   of 200 columns.
+
+   **What if there are more than 200 mandatory columns?** Currently DVC Studio
+   cannot import over 200 columns. If you have a large repository (with more
+   than 200 mandatory columns), one solution is to split the
+   metrics/<wbr>hyperparameters/<wbr>files that you want to display over
+   multiple subdirectories in your git repository. For each subdirectory, you
+   can create a new view that is limited to that subdirectory.
+
+   To create views for subdirectories,
+   [specify the project directory in view settings](/doc/studio/user-guide/views/view-settings#project-directory).
+
+   If this solution does not work for your use case, please create a support
+   ticket in the
+   [DVC Studio support GitHub repository](https://github.com/iterative/studio-support).
+
+2. **The required columns are hidden:** In the view, you can hide the columns
+   that you do not want to display. If any column that you want is not visible,
+   make sure you have not hidden it. The following video shows how you can
+   show/hide columns. Once you show/hide columns, remember to save the changes.
+
+   ###### Show/hide columns
+
+   ![Showing and hiding columns](https://static.iterative.ai/img/studio/show_hide_columns.gif)
+
+## View contains columns that I did not mark as mandatory to import
+
+This is not an error. Columns that you select as mandatory in view settings are
+guaranteed to be imported. However, columns that are not selected can still be
+imported and included in the view - if you have selected less than 200 columns,
+DVC Studio will also import DVC Studio will also import some of the unselected
+columns, up to a total of 200 columns.
+
+If you would like to explicitly hide columns, you can simply hide them in the
+view. Once you show/hide columns, you can save the changes. Check out the
+[above video](#showhide-columns) to see how you can show/hide columns. Once you
+show/hide columns, remember to save the changes.
+
+## Error: Failed to push experiment to repository
+
+This is a non-specific error with a range of possible causes. To resolve it,
+please check:
+
+- Your account is able to push to the repository.
+- The repository is **not** marked as archived / read only.
+- In case of GitHub/GitLab/BitBucket enterprise organizations: there is no IP
+  whitelisting policy in place which limits access to the organization's
+  resources.
+- Whether [GitHub][gh-status], [GitLab][gl-status], or [BitBucket][bb-status]
+  are experiencing service disruptions. In case of an on-prem deployment, please
+  check with your administrator.
+
+[gh-status]: https://www.githubstatus.com/
+[gl-status]: https://status.gitlab.com/
+[bb-status]: https://bitbucket.status.atlassian.com/
+
+If you get this error and none of the above applies, please
+[get in touch with us](#support).

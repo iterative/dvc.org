@@ -6,8 +6,8 @@ the documentation content, or (rare) changes to the JS engine we use to run the
 website.
 
 In case of a minor change, you can use the **Edit on GitHub** button to open the
-source code page. Use thethe Edit button (pencil icon) to edit the file
-in-place, and then **Commit changes** from the bottom of the page.
+source code page. Use the Edit button (pencil icon) to edit the file in-place,
+and then **Commit changes** from the bottom of the page.
 
 > Please see our
 > [Writing a Blog Post guide](https://dvc.org/doc/user-guide/contributing/blog)
@@ -56,8 +56,17 @@ changes before submitting them, and it's quite necessary when making changes to
 the website engine itself. Source code and content files need to be properly
 formatted and linted as well, which is also ensured by the full setup below.
 
-Make sure you have a recent LTS version of [Node.js](https://nodejs.org/en/)
-(`>=12.0.0`, `<=15.x`), and install [Yarn](https://yarnpkg.com/):
+Make sure you have [Python](https://www.python.org/downloads/) 3.6+, a recent
+LTS version of [Node.js](https://nodejs.org/en/) (`>=12.0.0`, `<=15.x`), and
+install [Yarn](https://yarnpkg.com/):
+
+> In Windows, you may need to install [Visual Studio Build Tools], and the
+> [Windows SDK] first.
+
+[windows sdk]:
+  https://developer.microsoft.com/en-us/windows/downloads/windows-10-sdk/
+[visual studio build tools]:
+  https://visualstudio.microsoft.com/downloads/#build-tools-for-visual-studio-2019
 
 ```dvc
 $ npm install -g yarn
@@ -134,8 +143,8 @@ Some available variables:
 
 ## Doc style guidelines (JavaScript and Markdown)
 
-Some the rules below are be applied automatically by a pre-commit Git hook that
-is installed when `yarn` runs (see [dev env](#development-environment)).
+Some of the following rules are applied automatically by a pre-commit Git hook
+that is installed when `yarn` runs (see [dev env](#development-environment)).
 
 - No trailing white spaces are allowed.
 
@@ -158,9 +167,11 @@ is installed when `yarn` runs (see [dev env](#development-environment)).
   create a link to that API method automatically. (No need to use `[]()`
   explicitly to create them.)
 
-- Markdown: Neither bullet lists nor each item's should be too long (3 sentence
+- Markdown: Bullet lists shouldn't be too long (5-7 items max., ideally).
+
+- Markdown: The text in each bullet item also shouldn't be too long (3 sentence
   paragraphs max.) Full sentence bullets should begin with a capital letter and
-  end in period `.` otherwise they can be all lower case and have no ending
+  end in period `.`. Otherwise, they can be all lower case and have no ending
   punctuation. Bullets can be separated by an empty line if they contain several
   paragraphs, but this is discouraged: try to keep items short.
 
@@ -187,9 +198,9 @@ We try to use a casual and fun tone in our docs. We also avoid authoritative
 language such as "As you can see, clearly this is what happened, of course" etc.
 which while good-intentioned, may scare readers off.
 
-We prefer human-friendly language than exact jargon, as long as it's correct,
-even if using general terminology. Example: avoid Git jargon such as _revision_
-or _reference_, preferring the more basic concept _commit_.
+We prefer general, human-friendly language rather than exact jargon as long as
+it's correct. Example: avoid Git jargon such as _revision_ or _reference_,
+preferring the more basic terms _commit_ or _version_.
 
 The [command reference](/doc/command-reference) contains some of our most
 technical documents where specialized language is used the most, but even there,

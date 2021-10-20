@@ -35,10 +35,17 @@ to generate metrics _logs_ and _summaries_ during training.
 
 ## Parameters
 
-- `model_file` - The name of the file where the model will be saved at the end
-  of each `step`.
+## Parameters
 
-Example:
+- `model_file` - (`None` by default) - The name of the file where the model will
+  be saved at the end of each `step`.
+
+- `**kwargs` - Any additional arguments will be passed to
+  [`Live`](/docs/dvclive/api-reference/live).
+
+## Examples
+
+- Using `model_file`.
 
 ```python
 log_config = dict(
@@ -46,6 +53,21 @@ log_config = dict(
     hooks=[
         dict(type='TextLoggerHook'),
         dict(type='DvcliveLoggerHook', model_file="my_model.pth")
+    ]
+)
+```
+
+- Using `**kwargs` to customize [`Live`](/docs/dvclive/api-reference/live).
+
+```python
+log_config = dict(
+    interval=100,
+    hooks=[
+        dict(type='TextLoggerHook'),
+        dict(
+            type='DvcliveLoggerHook',
+            path="custom_path",
+            summary=False)
     ]
 )
 ```

@@ -119,6 +119,38 @@ options:
   $ dvc remote modify myremote region us-east-2
   ```
 
+- `read_timeout` - set the time in seconds till a timeout exception is thrown
+  when attempting to read from a connection (60 by default). Let's set it to 5
+  minutes for example:
+
+  ```dvc
+  $ dvc remote modify myremote read_timeout 300
+  ```
+
+- `connect_timeout` - set the time in seconds till a timeout exception is thrown
+  when attempting to make a connection (60 by default). Let's set it to 5
+  minutes for example:
+
+  ```dvc
+  $ dvc remote modify myremote connect_timeout 300
+  ```
+
+- `read_timeout` - set the time in seconds till a timeout exception is thrown
+  when attempting to read from a connection (60 by default). Let's set it to 5
+  minutes for example:
+
+  ```dvc
+  $ dvc remote modify myremote read_timeout 300
+  ```
+
+- `connect_timeout` - set the time in seconds till a timeout exception is thrown
+  when attempting to make a connection (60 by default). Let's set it to 5
+  minutes for example:
+
+  ```dvc
+  $ dvc remote modify myremote connect_timeout 300
+  ```
+
 By default, DVC authenticates using your AWS CLI
 [configuration](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html)
 (if set). This uses the default AWS credentials file. Use the following
@@ -909,7 +941,7 @@ by HDFS. Read more about by expanding the WebHDFS section in
   - `basic` -
     [basic authentication scheme](https://tools.ietf.org/html/rfc7617). `user`
     and `password` (or `ask_password`) parameters should also be configured.
-  - `digest` -
+  - `digest` (**removed** in 2.7.1) -
     [digest Access Authentication Scheme](https://tools.ietf.org/html/rfc7616).
     `user` and `password` (or `ask_password`) parameters should also be
     configured.
@@ -940,8 +972,7 @@ by HDFS. Read more about by expanding the WebHDFS section in
                         custom_auth_header 'My-Header'
   ```
 
-- `user` - user name to use when the `auth` parameter is set to `basic` or
-  `digest`.
+- `user` - user name to use when the `auth` parameter is set to `basic`.
 
   ```dvc
   $ dvc remote modify --local myremote user myuser

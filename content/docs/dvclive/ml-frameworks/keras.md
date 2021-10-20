@@ -16,7 +16,8 @@ To start using DVCLive you just need to add a few lines to your training code in
 
 You just need to add the
 [`DvcLiveCallback`](https://github.com/iterative/dvclive/blob/master/dvclive/keras.py)
-to the callbacks list passed to your `model`:
+to the callbacks list passed to your
+[`Model`](https://keras.io/api/models/model/):
 
 ```git
 +from dvclive.keras import DvcLiveCallback
@@ -40,14 +41,19 @@ This will generate the metrics logs and summaries as described in the
 
 ## Parameters
 
-- `model_file` - The name of the file where the model will be saved at the end
-  of each `step`.
+- `model_file` - (`None` by default) - The name of the file where the model will
+  be saved at the end of each `step`.
 
 - `save_weights_only` (`False` by default) - if True, then only the model's
   weights will be saved (`model.save_weights(model_file)`), else the full model
   is saved (`model.save(model_file)`)
 
-Example:
+- `**kwargs` - Any additional arguments will be passed to
+  [`Live`](/docs/dvclive/api-reference/live).
+
+## Examples
+
+- Using `model_file` and `save_weights_only`.
 
 ```python
 from dvclive.keras import DvcLiveCallback
@@ -61,9 +67,16 @@ model.fit(
         save_weights_only=True)])
 ```
 
-## Example repository
+- Using `**kwargs` to customize [`Live`](/docs/dvclive/api-reference/live).
 
-You can find a fully working example using the DVCLive and Keras in the
-following link:
+```python
+from dvclive.keras import DvcLiveCallback
 
-https://github.com/iterative/example-ml-frameworks/tree/keras
+model.fit(
+    train_dataset,
+    epochs=num_epochs,
+    validation_data=validation_dataset,
+    callbacks=[DvcLiveCallback(
+        path="custom_path",
+        summary=False)])
+```

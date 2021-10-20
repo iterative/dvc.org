@@ -5,8 +5,8 @@ import startCase from 'lodash/startCase'
 
 import Link from '../../Link'
 
-import sharedStyles from '../styles.module.css'
-import styles from './styles.module.css'
+import * as sharedStyles from '../styles.module.css'
+import * as styles from './styles.module.css'
 
 interface ITutorialsLinksProps {
   compact?: boolean

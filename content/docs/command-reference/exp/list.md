@@ -1,6 +1,6 @@
 # exp list
 
-List `dvc experiments` in a <abbr>DVC repository</abbr> (remote or local).
+List experiments in a <abbr>DVC repository</abbr> (remote or local).
 
 ## Synopsis
 

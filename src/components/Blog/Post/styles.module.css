@@ -82,6 +82,19 @@
     border-radius: 3px;
     background-color: rgba(27, 31, 35, 0.05);
   }
+
+  ul {
+    padding-left: 2em;
+    margin-bottom: 16px;
+  }
+
+  li {
+    margin: 16px 0;
+
+    + li {
+      margin-top: 0.25em;
+    }
+  }
 }
 
 .share {

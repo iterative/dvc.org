@@ -11,7 +11,7 @@ export type ILinkProps = {
   href: string
   target?: undefined | '_blank'
   state?: unknown
-  scrollOptions?: object
+  scrollOptions?: Record<string, unknown>
   optOutPreRedirect?: undefined | true
 } & React.AnchorHTMLAttributes<HTMLAnchorElement>
 
