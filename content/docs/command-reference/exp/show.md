@@ -36,7 +36,7 @@ $ dvc exp show
 │ ├── exp-bfe64 │  0.57833 │ 0.95555 │ 50         │ 8               │
 │ └── exp-ad5b1 │  0.56191 │ 0.93345 │ 50         │ 2               │
 └───────────────┴──────────┴─────────┴────────────┴─────────────────┘
-````
+```
 
 Your terminal will enter a
 [paginated screen](/doc/command-reference/dag#paginating-the-output) by default,
