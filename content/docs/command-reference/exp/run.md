@@ -258,7 +258,7 @@ experiment we just ran (`exp-44136`).
 
 You could modify a params file just like any other <abbr>dependency</abbr> and
 run an experiment on that basis. Since this is a common need, `dvc exp run`
-comes with the `--set-param` (`-S`) option built-in to update existing 
+comes with the `--set-param` (`-S`) option built-in to update existing
 parameters. This saves you the need to manually edit the params file.
 
 ```dvc
