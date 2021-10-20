@@ -14,8 +14,7 @@ usage: dvc exp show [-h] [-q | -v] [-a] [-T] [-A] [-n <num>]
                     [--exclude-params <params_list>] [--param-deps]
                     [--sort-by <metric/param>]
                     [--sort-order {asc,desc}] [--no-timestamp] [--sha]
-                    [--show-json] [--show-csv] [--show-md]
-                    [--precision <n>]
+                    [--json] [--csv] [--md] [--precision <n>]
 ```
 
 ## Description
@@ -105,21 +104,21 @@ metric or param.
   sorting. This only affects the ordering of experiments derived from the same
   parent commit. Parent commits are always sorted chronologically.
 
-- `--sort-order {asc,desc}` - sort order to use with `--sort-by` (defaults to
-  descending).
+- `--sort-order {asc,desc}` - sort order to use with `--sort-by`. Defaults to
+  ascending (`asc`).
 
 - `--no-timestamp` - do not show experiment timestamps.
 
 - `--sha` - display Git commit (SHA) hashes instead of branch, tag, or
   experiment names.
 
-- `--show-json` - prints the command's output in easily parsable JSON format,
-  instead of a human-readable table.
+- `--json` - prints the command's output in easily parsable JSON format, instead
+  of a human-readable table.
 
-- `--show-csv` - prints the command's output in CSV format instead of a
+- `--csv` - prints the command's output in CSV format instead of a
   human-readable table.
 
-- `--show-md` - prints the command's output in Markdown table format.
+- `--md` - prints the command's output in Markdown table format.
 
 - `--precision <n>` -
   [round](https://docs.python.org/3/library/functions.html#round) decimal values

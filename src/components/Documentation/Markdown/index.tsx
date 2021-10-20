@@ -6,6 +6,7 @@ import React, {
   useContext
 } from 'react'
 import { nanoid } from 'nanoid'
+import { Node } from 'unist'
 import rehypeReact from 'rehype-react'
 import Collapsible from 'react-collapsible'
 
@@ -13,13 +14,13 @@ import Main from './Main'
 import Link from '../../Link'
 import Tooltip from './Tooltip'
 
-import styles from './styles.module.css'
+import * as styles from './styles.module.css'
 import { TogglesContext, TogglesProvider } from './ToggleProvider'
 
-const Details: React.FC<{
-  children: Array<{ props: { children: ReactNode } } | string>
-}> = ({ children }) => {
-  const filteredChildren: ReactNode[] = children.filter(child => child !== '\n')
+const Details: React.FC<Record<string, never>> = ({ children }) => {
+  const filteredChildren: ReactNode[] = (
+    children as Array<{ props: { children: ReactNode } } | string>
+  ).filter(child => child !== '\n')
   const firstChild = filteredChildren[0] as JSX.Element
 
   if (!/^h.$/.test(firstChild.type)) {
@@ -42,7 +43,7 @@ const Details: React.FC<{
    */
   return (
     <Collapsible
-      trigger={(triggerChildren as unknown) as ReactElement}
+      trigger={triggerChildren as unknown as ReactElement}
       transitionTime={200}
     >
       {filteredChildren.slice(1)}
@@ -50,8 +51,8 @@ const Details: React.FC<{
   )
 }
 
-const Abbr: React.FC<{ children: [string] }> = ({ children }) => {
-  return <Tooltip text={children[0]} />
+const Abbr: React.FC<Record<string, never>> = ({ children }) => {
+  return <Tooltip text={(children as string[])[0]} />
 }
 
 const Cards: React.FC = ({ children }) => {
@@ -181,23 +182,24 @@ const Tab: React.FC = ({ children }) => (
   <div className={styles.tab}>{children}</div>
 )
 
-const renderAst = new rehypeReact({
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  createElement: React.createElement as any,
+// Rehype's typedefs don't allow for custom components, even though they work
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const renderAst = new (rehypeReact as any)({
+  createElement: React.createElement,
   Fragment: React.Fragment,
   components: {
-    details: Details,
-    abbr: Abbr,
     a: Link,
+    abbr: Abbr,
     card: Card,
     cards: Cards,
+    details: Details,
     toggle: Toggle,
     tab: Tab
   }
 }).Compiler
 
 interface IMarkdownProps {
-  htmlAst: object
+  htmlAst: Node
   githubLink: string
   tutorials: { [type: string]: string }
   prev?: string

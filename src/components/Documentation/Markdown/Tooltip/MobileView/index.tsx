@@ -4,7 +4,7 @@ import Portal from '@reach/portal'
 
 import { isTriggeredFromKB } from '../../../../../utils/front/keyboard'
 
-import styles from './styles.module.css'
+import * as styles from './styles.module.css'
 
 interface IMobileViewProps {
   description: string

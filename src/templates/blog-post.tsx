@@ -1,26 +1,15 @@
-import { FixedObject, FluidObject, GatsbyImageProps } from 'gatsby-image'
-
 import { graphql } from 'gatsby'
+import { IGatsbyImageData } from 'gatsby-plugin-image'
 import React from 'react'
 
 import SEO from '../components/SEO'
 import Post from '../components/Blog/Post'
 
 import { ISocialIcon } from '../components/SocialIcon'
-
-interface IFluidObject extends FluidObject {
-  presentationWidth: number
-  presentationHeight: number
-}
-
-export interface IGatsbyImageProps extends GatsbyImageProps {
-  fluid?: IFluidObject
-}
+import { IGatsbyImageDataParent } from 'gatsby-plugin-image/dist/src/components/hooks'
 
 export interface IBlogPostHeroPic {
-  picture?: {
-    fluid: IFluidObject
-  }
+  picture?: IGatsbyImageDataParent
   pictureComment?: string
 }
 
@@ -35,17 +24,12 @@ export interface IBlogPostData {
   descriptionLong?: string
   commentsUrl?: string
   tags?: string[]
-  picture?: {
-    fluid: IFluidObject
-    resize: {
-      src: string
-    }
-  }
+  picture?: IGatsbyImageDataParent
   pictureComment?: string
   author: {
     name: string
     avatar: {
-      fixed: FixedObject
+      gatsbyImageData: IGatsbyImageData
     }
     links: Array<ISocialIcon>
   }
@@ -60,14 +44,9 @@ interface IBlogPostPageProps {
 const BlogPostPage: React.FC<IBlogPostPageProps> = ({ data }) => {
   const post = data.blogPost
   const { title, description, picture } = post
-
   return (
     <>
-      <SEO
-        title={title}
-        description={description}
-        image={picture && picture.fluid}
-      />
+      <SEO title={title} description={description} image={picture} />
       <Post {...post} />
     </>
   )
@@ -95,15 +74,16 @@ export const pageQuery = graphql`
           site
         }
         avatar {
-          fixed(width: 40, height: 40, quality: 50, cropFocus: CENTER) {
-            ...GatsbyImageSharpFixed_withWebp
-          }
+          gatsbyImageData(
+            width: 40
+            height: 40
+            transformOptions: { cropFocus: CENTER }
+            layout: FIXED
+          )
         }
       }
       picture {
-        fluid(maxWidth: 850, quality: 90) {
-          ...GatsbyImageSharpFluid_withWebp
-        }
+        gatsbyImageData(width: 850, quality: 90)
       }
       pictureComment
     }

@@ -1,3 +1,4 @@
+const { graphql } = require('@octokit/graphql')
 /*
    GitHub Static Data
 
@@ -23,18 +24,26 @@ module.exports = {
       Query: {
         staticGithubData: {
           type: 'StaticGithubData',
-          async resolve(source, args, context) {
-            const nodes = await context.nodeModel.getAllNodes({
-              type: 'GithubData'
-            })
-            const node = nodes[0]
-            return node
-              ? {
-                  stars: node.rawResult.data.repository.stargazers.totalCount
-                }
-              : {
-                  stars: 8888
-                }
+          async resolve() {
+            const { GITHUB_TOKEN } = process.env
+            if (GITHUB_TOKEN) {
+              const query = await graphql(
+                `
+                  {
+                    repository(owner: "iterative", name: "dvc") {
+                      stargazers {
+                        totalCount
+                      }
+                    }
+                  }
+                `,
+                { headers: { authorization: `token ${GITHUB_TOKEN}` } }
+              )
+
+              const stars = query.repository.stargazers.totalCount
+              return { stars }
+            }
+            return { stars: 8888 }
           }
         }
       }

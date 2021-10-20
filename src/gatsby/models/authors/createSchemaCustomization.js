@@ -41,7 +41,7 @@ async function createAuthorSchemaCustomization(api) {
             }
           },
           async resolve(source, args, context) {
-            const query = await context.nodeModel.runQuery({
+            const query = await context.nodeModel.findAll({
               query: {
                 filter: {
                   author: {
@@ -58,11 +58,9 @@ async function createAuthorSchemaCustomization(api) {
               type: 'BlogPost'
             })
 
-            const nodes = args.limit ? query.slice(0, args.limit) : query
-
             return {
-              totalCount: query.length,
-              nodes
+              totalCount: await query.totalCount(),
+              nodes: query.entries.slice(0, args.limit)
             }
           }
         }

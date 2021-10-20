@@ -3,9 +3,11 @@ import React from 'react'
 
 import Link from '../Link'
 
-import styles from './styles.module.css'
+import * as styles from './styles.module.css'
 
-const LayoutAlert: React.FC<{ collapsed: boolean }> = ({ collapsed }) => (
+const LayoutAlert: React.FC<{ collapsed: boolean }> | false = ({
+  collapsed
+}) => (
   <div className={cn(styles.alert, collapsed && styles.collapsed)}>
     <span role="img" aria-label="rocket">
       🚀

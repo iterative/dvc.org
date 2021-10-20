@@ -16,7 +16,7 @@ declare module '*.css' {
 declare module '*.svg' {
   interface IReactSVGR {
     default: string
-    ReactComponent: React.StatelessComponent<React.SVGAttributes<SVGElement>>
+    ReactComponent: React.FC<React.SVGAttributes<SVGElement>>
   }
   const svg: IReactSVGR
   export = svg
@@ -26,7 +26,7 @@ declare module 'scroll' {
   type ScrollTo = (
     node: Element,
     position: number,
-    options: {},
+    options: Record<string, unknown>,
     cb?: (err: Error | null, position: number) => void
   ) => () => void
   type ScrollModule = {

@@ -9,6 +9,9 @@ rapidly. DVC can track these experiments, list and compare their most relevant
 parameters and metrics, navigate among them, and commit only the ones that we
 need to Git.
 
+> ⚠️This video is out-of-date and will be updated soon! Where there are
+> discrepancies between docs and video, please follow the docs.
+
 https://youtu.be/FHQq_zZz5ms
 
 In this section, we explore the basic features of DVC experiment management with
@@ -217,8 +220,8 @@ After selecting an experiment from the table, you can create a Git branch that
 contains the experiment with all its related files.
 
 ```dvc
-$ dvc exp branch exp-05e87 "cnn-256"
-Git branch 'cnn-256' has been created from experiment 'exp-05e87'.
+$ dvc exp branch exp-17dd9 "cnn-256"
+Git branch 'cnn-256' has been created from experiment 'exp-17dd9'.
 To switch to the new branch run:
 
         git checkout cnn-256

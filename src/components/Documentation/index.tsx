@@ -1,4 +1,5 @@
 import React from 'react'
+import { Node } from 'unist'
 
 import Markdown from './Markdown'
 import RightPanel from './RightPanel'
@@ -16,7 +17,7 @@ export const getGithubLink = (source: string): string =>
 interface IDocumentationProps {
   path: string
   headings: Array<IHeading>
-  htmlAst: object
+  htmlAst: Node
 }
 
 const Documentation: React.FC<IDocumentationProps> = ({
