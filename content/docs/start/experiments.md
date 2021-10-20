@@ -220,8 +220,8 @@ After selecting an experiment from the table, you can create a Git branch that
 contains the experiment with all its related files.
 
 ```dvc
-$ dvc exp branch exp-05e87 "cnn-256"
-Git branch 'cnn-256' has been created from experiment 'exp-05e87'.
+$ dvc exp branch exp-17dd9 "cnn-256"
+Git branch 'cnn-256' has been created from experiment 'exp-17dd9'.
 To switch to the new branch run:
 
         git checkout cnn-256
