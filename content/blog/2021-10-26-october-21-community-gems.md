@@ -1,21 +1,22 @@
 ---
 title: October '21 Community Gems
 date: 2021-10-26
-description: >
+description: |
   A roundup of technical Q&A's from the DVC and CML communities. This month: DVC
   stages, working with outputs, DVC API, and more.
-descriptionLong: >
+descriptionLong: |
   A roundup of technical Q&A's from the DVC and CML community. This month: DVC
   stages, working with outputs, DVC API, and more.
 picture: 2021-10-26/gems-cover.png
 author: milecia_mcgregor
-commentsUrl: https://discuss.dvc.org/t/october-21-community-gems/871
+commentsUrl: https://discuss.dvc.org/t/october-21-community-gems/931
 tags:
-  - DVC stages
-  - Output files
+  - DVC Stages
+  - Data Versioning
   - DVC API
-  - Multiple models
-  - Git
+  - Pipelines
+  - Git Repos
+  - Community
 ---
 
 ### [Is there a command to force reproduce a specific stage of a DVC pipeline?](https://discord.com/channels/485586884165107732/563406153334128681/893056918699008000)
@@ -41,7 +42,7 @@ The recommended approach is to keep all of the previous days and use the
 `foreach` syntax, which ensures your DAG still knows about all the previously
 processed days:
 
-```dvc
+```yaml
 stages:
   featurize:
     foreach:
@@ -51,21 +52,21 @@ stages:
     do:
       cmd: python featurize.py ${item}
       deps:
-      - raw/${item}.csv
+        - raw/${item}.csv
       outs:
-      - intermediate/${item}.csv
+        - intermediate/${item}.csv
   combine:
     cmd: python combine.py
     deps:
-    - intermediate
+      - intermediate
     outs:
-    - combined.csv
+      - combined.csv
 ```
 
 That way if you adjusted something in your featurize script, for example, it
 would automatically reprocess every day's data.
 
-### [What is the best practice for storing `stdout`?](https://discord.com/channels/485586884165107732/563406153334128681/893903023355613214)
+### [What is the best practice for capturing and saving `stdout`?](https://discord.com/channels/485586884165107732/563406153334128681/893903023355613214)
 
 The best practice when using DVC is to pipe each command `stdout` into a
 different file with a unique name, like a timestamp, in a directory that becomes
@@ -94,7 +95,7 @@ stages.
 If you want to link the first stage to the rest of the pipeline, you could have
 your 2nd stage be something like:
 
-```dvc
+```yaml
 manual:
   cmd: |
     # To generate lexicon_modified.txt:
@@ -102,9 +103,9 @@ manual:
     # 2. Check and modify lexicon_modified.txt.
     # 3. Run `dvc commit manual`.
   deps:
-  - lexicon.txt
+    - lexicon.txt
   outs:
-  - lexicon_modified.txt
+    - lexicon_modified.txt
 ```
 
 To clarify, if you put that `manual` stage into your `dvc.yaml`, it should
@@ -119,11 +120,12 @@ and run `dvc repro` again to run the rest of the pipeline.
 ### [What is the workflow if I want to remove some files from my dataset registry with DVC?](https://discord.com/channels/485586884165107732/485596304961962003/895192983366942740)
 
 In this case, assume that the data was added as a folder containing images,
-which means that there is a single `.dvc` for the whole folder.
+which means that there is a single `.dvc` for the whole folder. You don't need
+to remove the `.dvc` file that's tracking the data in that folder.
 
-You can delete the files and then re-add them using `dvc commit`. It should be
-faster to commit, as DVC won't re-add the files to the cache nor will it try to
-hash them.
+You can delete the files you want to remove and then re-add the folder using
+`dvc commit`. It should be faster to commit, as DVC won't re-add the files to
+the cache nor will it try to hash them.
 
 Good question @MadsO!
 
@@ -144,17 +146,75 @@ the API method.
 You could pass your credentials into your container as environment variables and
 then do something like:
 
-```dvc
+```python
 username = os.environ["GITHUB_USERNAME"]
 token = os.environ["GITHUB_TOKEN"]
 dvc.api.read(..., repo=f"https://{username}:{token}/...", ...)
 ```
 
-### [Is there a clean way to handle multiple models in the same repo that are run using the same pipeline?](https://discord.com/channels/485586884165107732/563406153334128681/895368479853649930)
+### [Is there a clean way to handle multiple models in the same repo that are trained using the same pipeline?](https://discord.com/channels/485586884165107732/563406153334128681/895368479853649930)
 
-The simplest way is to copy the `dvc.yaml` into each model's separate directory.
+Let's say your project looks something like this:
 
-Another potential solution is try templating. You can
+```dvc
+├── data
+│   ├── customer_1
+│   │   ├── input_data.txt
+│   │   ├── input_params.yaml
+│   │   └── output
+│   │       └── model.pkl
+│   └── customer_2
+│       ├── input_data.txt
+│       ├── input_params.yaml
+│       └── output
+│           └── model.pkl
+├── dvc.lock
+├── dvc.yaml
+└── train_model.py
+```
+
+The simplest way is to copy the `dvc.yaml` into each model's separate directory,
+like this:
+
+```dvc
+├── data
+│   ├── customer_1
+│   │   ├── input_data.txt
+│   │   ├── input_params.yaml
+│   │   ├── dvc.yaml
+│   │   ├── dvc.lock
+│   │   └── output
+│   │       └── model.pkl
+│   └── customer_2
+│       ├── input_data.txt
+│       ├── input_params.yaml
+│       ├── dvc.yaml
+│       ├── dvc.lock
+│       └── output
+│           └── model.pkl
+└── train_model.py
+```
+
+Another potential solution is try templating. We'll have a `dvc.yaml` in the
+root of the project and add `vars` to define the model you want to train. Then
+we'll update the `train` stage to use the `vars` like this:
+
+```yaml
+vars:
+  - model_name: 'customer_2'
+
+stages:
+  train:
+    cmd: python train.py
+    deps:
+      - data/${model_name}/input_data.txt
+    params:
+      - data/${model_name}/input_params.yaml:
+          - batch_size
+          - ...
+```
+
+You can
 [learn more about templating in the docs](https://dvc.org/doc/user-guide/project-structure/pipelines-files#templating).
 It essentially lets you add variables to the `dvc.yaml` to dynamically set
 values for your stages.
@@ -165,8 +225,9 @@ Thanks for the great question @omarelb!
 
 https://media.giphy.com/media/26u4lOMA8JKSnL9Uk/giphy.gif
 
-At our November Office Hours Meetup we will be going over how to do stuff.
-[RSVP for the Meetup here](https://www.meetup.com/DVC-Community-Virtual-Meetups/events/280814318/)
+At our November Office Hours Meetup we will be going over internal Kaggle
+competitions and PyTorch Lightening integration.
+[RSVP for the Meetup here](https://www.meetup.com/DVC-Community-Virtual-Meetups/events/281355245/)
 to stay up to date with specifics as we get closer to the event!
 
 [Join us in Discord](https://discord.com/invite/dvwXA2N) to get all your DVC and
