@@ -91,7 +91,7 @@ $ yarn develop
 > by reinstalling `node_modules` with a flag that forces `sharp` to ignore your
 > globally installed `libvips`:
 >
-> ```
+> ```dvc
 > $ rm -r node_modules
 > $ SHARP_IGNORE_GLOBAL_LIBVIPS=true yarn
 > ```
