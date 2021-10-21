@@ -21,6 +21,8 @@ machine learning pipeline.
 
 Watch and learn, or follow along with the code example below!
 
+https://youtu.be/71IGzyH95UY
+
 Use `dvc stage add` to create _stages_. These represent processes (source code
 tracked with Git) which form the steps of a _pipeline_. Stages also connect code
 to its corresponding data _input_ and _output_. Let's start by creating a stage
