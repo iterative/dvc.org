@@ -67,11 +67,11 @@ Please also add or commit the source code directory with Git at this point.
 </details>
 
 ```dvc
-$ dvc run -n prepare \
-          -p prepare.seed,prepare.split \
-          -d src/prepare.py -d data/data.xml \
-          -o data/prepared \
-          python src/prepare.py data/data.xml
+$ dvc stage add -n prepare \
+                -p prepare.seed,prepare.split \
+                -d src/prepare.py -d data/data.xml \
+                -o data/prepared \
+                python src/prepare.py data/data.xml
 ```
 
 A `dvc.yaml` file is generated. It includes information about the command we run
@@ -144,14 +144,14 @@ stages:
 </details>
 
 There's no need to use `dvc add` for DVC to track stage outputs (`data/prepared`
-in this case); `dvc stage add` and `dvc repro` takes care of this. You only need
+in this case); `dvc stage add` and `dvc exp run` takes care of this. You only need
 to run `dvc push` if you want to save them to
 [remote storage](/doc/start/data-and-model-versioning#storing-and-sharing),
 (usually along with `git commit` to version `dvc.yaml` itself).
 
 ## Dependency graphs (DAGs)
 
-By using `dvc run` multiple times, and specifying <abbr>outputs</abbr> of a
+By using `dvc stage add` multiple times, and specifying <abbr>outputs</abbr> of a
 stage as <abbr>dependencies</abbr> of another one, we can describe a sequence of
 commands which gets to a desired result. This is what we call a _data pipeline_
 or [_dependency graph_](https://en.wikipedia.org/wiki/Directed_acyclic_graph).
@@ -160,16 +160,17 @@ Let's create a second stage chained to the outputs of `prepare`, to perform
 feature extraction:
 
 ```dvc
-$ dvc run -n featurize \
-          -p featurize.max_features,featurize.ngrams \
-          -d src/featurization.py -d data/prepared \
-          -o data/features \
-          python src/featurization.py data/prepared data/features
+$ dvc stage add -n featurize \
+                -p featurize.max_features,featurize.ngrams \
+                -d src/featurization.py -d data/prepared \
+                -o data/features \
+                python src/featurization.py data/prepared data/features
 ```
 
 The `dvc.yaml` file is updated automatically and should include two stages now.
 
 <details>
+
 
 ### 💡 Expand to see what happens under the hood.
 
@@ -209,11 +210,11 @@ Let's add the training itself. Nothing new this time; just the same `dvc run`
 command with the same set of options:
 
 ```dvc
-$ dvc run -n train \
-          -p train.seed,train.n_est,train.min_split \
-          -d src/train.py -d data/features \
-          -o model.pkl \
-          python src/train.py data/features model.pkl
+$ dvc stage add -n train \
+                -p train.seed,train.n_est,train.min_split \
+                -d src/train.py -d data/features \
+                -o model.pkl \
+                python src/train.py data/features model.pkl
 ```
 
 Please check the `dvc.yaml` again, it should have one more stage now.
@@ -223,13 +224,13 @@ Please check the `dvc.yaml` again, it should have one more stage now.
 This should be a good time to commit the changes with Git. These include
 `.gitignore`, `dvc.lock`, and `dvc.yaml` — which describe our pipeline.
 
-## Reproduce
+## Run the pipeline
 
 The whole point of creating this `dvc.yaml` file is the ability to easily
 reproduce a pipeline:
 
 ```dvc
-$ dvc repro
+$ dvc exp run
 ```
 
 <details>
@@ -240,12 +241,14 @@ Let's try to play a little bit with it. First, let's try to change one of the
 parameters for the training stage:
 
 1. Open `params.yaml` and change `n_est` to `100`, and
-2. (re)run `dvc repro`.
+2. (re)run `dvc exp run`.
+
+>> Link to experiments trail here
 
 You should see:
 
 ```dvc
-$ dvc repro
+$ dvc exp run
 Stage 'prepare' didn't change, skipping
 Stage 'featurize' didn't change, skipping
 Running stage 'train' with command: ...
@@ -254,10 +257,13 @@ Running stage 'train' with command: ...
 DVC detected that only `train` should be run, and skipped everything else! All
 the intermediate results are being reused.
 
-Now, let's change it back to `50` and run `dvc repro` again:
+Now, let's change it back to `50` and run `dvc exp run` again:
+
+>> It looks these manual changes are a bit tedious. We can replace these with
+>> code or data changes that can't be captured with `dvc exp run -S`
 
 ```dvc
-$ dvc repro
+$ dvc exp run
 Stage 'prepare' didn't change, skipping
 Stage 'featurize' didn't change, skipping
 ```
