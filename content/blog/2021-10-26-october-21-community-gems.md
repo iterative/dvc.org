@@ -11,11 +11,9 @@ picture: 2021-10-26/gems-cover.png
 author: milecia_mcgregor
 commentsUrl: https://discuss.dvc.org/t/october-21-community-gems/931
 tags:
-  - DVC Stages
   - Data Versioning
   - DVC API
   - Pipelines
-  - Git Repos
   - Community
 ---
 
