@@ -2,10 +2,10 @@
 
 Iterating on data science implies a large number of attempts at tuning
 parameters, improving code, trying different data, and collecting metrics, for
-example when optimizing a machine learning model's accuracy. Keeping track of
-all these <abbr>experiments</abbr> is challenging but essential, as we'll need
-to compare, visualize, share, and _productionize_ the results. We also want to
-be able to reconnect any recorded metrics back to their original setup.
+example to optimize an ML model's accuracy. Keeping track of all these
+<abbr>experiments</abbr> is challenging but essential, as we'll need to compare,
+visualize, reproduce, share, and _productionize_ the results. We also want to be
+able to reconnect the lineage of recorded metrics back to their original setup.
 
 ![](/img/lose-experimentation.png) _Loose experimentation_
 
@@ -29,7 +29,7 @@ include:
   scratch.
 - Promote, save, share, or discard experiments individually or in bulk.
 
-## Advantages of DVC's approach
+## Tracking experiments with DVC
 
 DVC Experiments automatically capture all the changes to your project (code,
 data, parameters, etc.), as well as to results (ML models, metrics, any
@@ -38,13 +38,20 @@ which enables
 [tracking & versioning](/doc/use-cases/versioning-data-and-model-files) all of
 this data.
 
-|           | DVC         | MLFlow      | Neptune     | wanDB       |
-| --------- | ----------- | ----------- | ----------- | ----------- |
-| Interface | CLI         | Web         | ???         | CLI         |
-| Storage   | File-based  | Database    | Database    | Database    |
-| Licensing | Open Source | Proprietary | Proprietary | Open Source |
-| Support   | ✔️          | ✔️          | ✔️          | ❌          |
-| Pricing?  | Free        | $$          | $           | Free        |
+|                 | DVC Experiments             | MLFlow      | Neptune     | Weights & Balances |
+| --------------- | --------------------------- | ----------- | ----------- | ------------------ |
+| Interface       | Terminal + [Web UI][studio] | Web + CLI   | Web + CLI   | Web + CLI          |
+| Platform        | Any (language agnostic)     | ?           | ?           | ?                  |
+| Infrastructure  | None (just Git & DVC)       | Special     | SAS         | SAS                |
+| Code versioning | Git                         | Custom      | Custom      | Custom             |
+| Data storage    | User (yours)                | Theirs      | Theirs      | Theirs             |
+| Licensing       | Open Source                 | Open Source | Proprietary | Open Source        |
+| Pricing?        | Free\*                      | $$          | $           | Free?              |
+
+> \* All of DVC features are free to use on terminal. The [Studio] (web UI) is
+> free for individuals.
+
+[studio]: https://studio.iterative.ai/
 
 You can enjoy the full power of DVC Experiments on any machine, without need for
 special infrastructure or servers. The only other software required is Git, but
@@ -53,6 +60,7 @@ need for a regular version control workflow later will still be available.
 
 On top of that, DVC Experiment features are language agnostic. You can expect
 the same convenience and performance whether you are using Jupyter Notebooks or
-Scala, CSV data frames or HDFS partitions, JSON or YAML config files.
+Scala, CSV data frames or HDFS partitions. DVC also uses standard formats like
+JSON and YAML config files that are easy to reuse and port on any other system.
 
 > 📖 Ready to dive in? See [Get Started: Experiments](/doc/start/experiments).
