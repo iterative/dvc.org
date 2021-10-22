@@ -75,6 +75,16 @@ the stage output.
 If optimizing storage space is a concern, in case the `stdout` dumps grow a lot,
 this is what we recommend.
 
+Here's an example of what that might look like if you're using a tool like `tee`
+in the terminal.
+
+```bash
+$ train_stage_output | tee -a 20211021_model.pkl
+```
+
+This will output the `stdout` from the train stage in the terminal and also save
+it in a new file with the timestamp as part of the title.
+
 That was a helpful question. Thanks @gregk0!
 
 ### [There is a file in our pipeline that needs to be manually modified and then used as the input to other stages in the pipeline. What would be the best approach for this with DVC?](https://discord.com/channels/485586884165107732/563406153334128681/894577842363445308)
