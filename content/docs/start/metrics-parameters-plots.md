@@ -4,6 +4,8 @@ title: 'Get Started: Metrics, Parameters, and Plots'
 
 # Get Started: Metrics, Parameters, and Plots
 
+> > ⁉️ We should start with "Why?" Why users need this feature?
+
 DVC makes it easy to track [metrics](/doc/command-reference/metrics), update
 <abbr>parameters</abbr>, and visualize performance with
 [plots](/doc/command-reference/plots). These concepts are introduced below.
@@ -15,12 +17,17 @@ https://youtu.be/bu3l75eQlQo
 
 ## Collecting metrics
 
+> > ⁉️ No need to mention pipelines here.
+
 First, let's see what is the mechanism to capture values for these ML
 attributes. Let's add a final evaluation stage to our
 [pipeline from before](/doc/start/data-pipelines):
 
+> > ⁉️ `--plots-no-cache` and `--metrics-no-cache` seems advanced topics. We
+> > need a simpler project, or simple way to demonstrate metrics and plots.
+
 ```dvc
-$ dvc run -n evaluate \
+$ dvc stage add -n evaluate \
           -d src/evaluate.py -d model.pkl -d data/features \
           -M scores.json \
           --plots-no-cache prc.json \
@@ -65,6 +72,9 @@ to be visualized and compared.
 > `prc.json`, and `roc.json` to be versioned by Git.
 
 </details>
+
+> > ⁉️ We can specify the exact position in the file, or we can show how it
+> > works by quoting that section in a hidden section.
 
 [`evaluate.py`](https://github.com/iterative/example-get-started/blob/master/src/evaluate.py)
 writes the model's
@@ -131,6 +141,9 @@ file:///Users/dvc/example-get-started/plots.html
 
 Let's save this iteration, so we can compare it later:
 
+> > ⁉️ These will be converted to experiments. So may need to
+> > `dvc exp branch/apply` here, instead of committing to Git.
+
 ```dvc
 $ git add scores.json prc.json roc.json
 $ git commit -a -m "Create evaluation stage"
@@ -142,6 +155,10 @@ For now, let's see how can we capture another important piece of information
 which will be useful for comparison: parameters.
 
 ## Defining stage parameters
+
+> > ⁉️ I believe we can move this topic to the beginning, and discuss within the
+> > context of `dvc exp run -S` shortly. This can be the transition between
+> > experiments and metrics/plots.
 
 It's pretty common for data science pipelines to include configuration files
 that define adjustable parameters to train a model, do pre-processing, etc. DVC
@@ -174,11 +191,11 @@ The `featurize` stage
 `--params`):
 
 ```dvc
-$ dvc run -n featurize \
-          -p featurize.max_features,featurize.ngrams \
-          -d src/featurization.py -d data/prepared \
-          -o data/features \
-          python src/featurization.py data/prepared data/features
+$ dvc stage add -n featurize \
+                -p featurize.max_features,featurize.ngrams \
+                -d src/featurization.py -d data/prepared \
+                -o data/features \
+                python src/featurization.py data/prepared data/features
 ```
 
 </details>
