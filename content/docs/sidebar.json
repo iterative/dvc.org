@@ -150,6 +150,7 @@
         "children": [
           "running-experiments",
           "sharing-experiments",
+          "persisting-experiments",
           "cleaning-experiments",
           "checkpoints"
         ]
