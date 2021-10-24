@@ -79,16 +79,8 @@ $ dvc exp run --all-pipelines
 > Note that the order in which pipelines are executed is not guaranteed; Only
 > the internal order of stage execution is.
 
-### Running pipelines recursively
-
-When your pipeline is defined in recursive subfolders, you can selectively run
-them using the `--recursive` option.
-
-```dvc
-$ dvc exp run --recursive dir/
-```
-
-It will run all the pipelines under `dir/`, and its subdirectories.
+> ℹ️ When your pipeline is defined in recursive subfolders, you can selectively
+> run them using the `--recursive` option.
 
 ### Running stages interactively
 
