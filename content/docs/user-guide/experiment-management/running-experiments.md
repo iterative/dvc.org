@@ -79,7 +79,11 @@ $ dvc exp run --all-pipelines
 > Note that the order in which pipelines are executed is not guaranteed; Only
 > the internal order of stage execution is.
 
-### Interactive reproduction
+> (ℹ️) When your `dvc.yaml` files are organized inside recursive subfolders, you
+> can selectively run the pipeline(s) using `--recursive` (takes a parent
+> directory as argument).
+
+### Running stages interactively
 
 When you want to have more granular control over which stages are run, you can
 use the `--interactive` option. This flag allows you to confirm each stage
