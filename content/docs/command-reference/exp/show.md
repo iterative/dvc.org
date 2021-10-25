@@ -15,6 +15,7 @@ usage: dvc exp show [-h] [-q | -v] [-a] [-T] [-A] [-n <num>]
                     [--sort-by <metric/param>]
                     [--sort-order {asc,desc}] [--no-timestamp] [--sha]
                     [--json] [--csv] [--md] [--precision <n>]
+                    [--only-changed]
 ```
 
 ## Description
@@ -72,6 +73,9 @@ metric or param.
   paginator.
 
 - `--param-deps` - include only parameters that are stage dependencies.
+
+- `--only-changed` - Only show metrics/params with values varying across
+  the selected experiments.
 
 - `--include-params <list>` - show the specified `dvc params` in the table only.
   Accepts a comma-separated `list` of param names. Shell style wildcards
@@ -169,6 +173,21 @@ $ dvc exp show --include-params=featurize
 │ ├── exp-1dad0         │ Oct 09, 2020 │ 0.57756 │ 2000                   │ 2                │
 │ └── exp-1df77         │ Oct 09, 2020 │ 0.51676 │ 500                    │ 2                │
 └───────────────────────┴──────────────┴─────────┴────────────────────────┴──────────────────┘
+```
+
+You can also filter out the metrics and parameters that didn't change:
+
+```dvc
+$ dvc exp show --only-changed
+┏━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ Experiment            ┃ Created      ┃     auc ┃ featurize.max_features ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ workspace             │ -            │ 0.61314 │ 1500                   │
+│ 10-bigrams-experiment │ Jun 20, 2020 │ 0.61314 │ 1500                   │
+│ ├── exp-e6c97         │ Oct 21, 2020 │ 0.61314 │ 1500                   │
+│ ├── exp-1dad0         │ Oct 09, 2020 │ 0.57756 │ 2000                   │
+│ └── exp-1df77         │ Oct 09, 2020 │ 0.51676 │ 500                    │
+└───────────────────────┴──────────────┴─────────┴────────────────────────┘
 ```
 
 Sort experiments by the `auc` metric, in ascending order:
