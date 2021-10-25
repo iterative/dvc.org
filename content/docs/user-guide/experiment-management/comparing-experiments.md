@@ -17,8 +17,8 @@ refs/tags/baseline-experiment:
         cnn-128
 ```
 
-If you want to list all the experiments in the repository independent of parent
-commits, use the `--all` flag.
+If you want to list all the experiments in the repository regardless of the parent
+commit, use the `--all` flag.
 
 ```dvc
 $ dvc exp list --all
@@ -42,10 +42,8 @@ in a Git remote.
 ```dvc
 $ dvc exp list origin
 refs/tags/baseline-experiment:
-        cnn-128
         cnn-32
         cnn-64
-        cnn-96
 ```
 
 This command lists the experiments originated from `HEAD`. You can add any other
@@ -508,12 +506,12 @@ $ dvc exp diff exp-25a26 cnn-64 --json | jq '.metrics."metrics.json".acc'
 }
 ```
 
-### Get a Markdown table for the differences
+### Get the comparison in Markdown table format
 
 `dvc exp diff` has also an option to output a [Github-Flavored Markdown][gfm]
 table to embed in the reports directly.
 
-[gfm]: https://github.github.com/gfm/
+[gfm]: https://github.github.com/gfm/#tables-extension-
 
 ```dvc
 $ dvc exp diff exp-25a26 cnn-64 --md
