@@ -6,21 +6,21 @@ version, and reproduce your data science and machine learning workflows.'
 
 # Get Started: Data Pipelines
 
->> ⁉️ It may be worthwhile to start with the question: "Why pipelines?"
+> > ⁉️ It may be worthwhile to start with the question: "Why pipelines?"
 
 Versioning large data files and directories for data science is great, but not
 enough. How is data filtered, transformed, or used to train ML models? DVC
 introduces a mechanism to capture _data pipelines_ — series of data processes
 that produce a final result.
 
->> ⁉️ What is data process? Why do we tie "pipelines" with "code" or "data"
->> here? They are more general ideas, we can have a pipeline that downloads data
->> from a URL using `wget` and checks whether it has changed, for example. (like
->> `dvc get` or `dvc import-url`, but simpler.)
+> > ⁉️ What is data process? Why do we tie "pipelines" with "code" or "data"
+> > here? They are more general ideas, we can have a pipeline that downloads
+> > data from a URL using `wget` and checks whether it has changed, for example.
+> > (like `dvc get` or `dvc import-url`, but simpler.)
 
->> I see that we are introducing pipelines to an ML/DS audience, but the idea is
->> more general and I believe we can tell this here. It's also possible to tell
->> this within ML/DS context in broader terms. 
+> > I see that we are introducing pipelines to an ML/DS audience, but the idea
+> > is more general and I believe we can tell this here. It's also possible to
+> > tell this within ML/DS context in broader terms.
 
 DVC pipelines and their data can also be easily versioned (using Git). This
 allows you to better organize projects, and reproduce your workflow and results
@@ -30,38 +30,38 @@ machine learning pipeline.
 
 [etl]: https://en.wikipedia.org/wiki/Extract,_transform,_load
 
->> We need a figure here. 
+> > We need a figure here.
 
 Watch and learn, or follow along with the code example below!
 
 https://youtu.be/71IGzyH95UY
 
->> ✍️ DVC has features to handle pipelines easily. You can create stages
->> associated with commands, code, data and (hyper)parameters. It can run the
->> commands, and cache the outputs. DVC handles relationships
->> between these stages, so when these associated
->> elements change, the stage is invalidated and run. If no dependencies are
->> changed, it can report this and reuse the cached results. 
+> > ✍️ DVC has features to handle pipelines easily. You can create stages
+> > associated with commands, code, data and (hyper)parameters. It can run the
+> > commands, and cache the outputs. DVC handles relationships between these
+> > stages, so when these associated elements change, the stage is invalidated
+> > and run. If no dependencies are changed, it can report this and reuse the
+> > cached results.
 
 Use `dvc stage add` to create _stages_. These represent processes (source code
 tracked with Git) which form the steps of a _pipeline_.
 
->> ⁉️ Adding _data process_ to the concepts doesn't seem to serve well. Instead
->> we can continue like: "Stages represent commands to run, along with their
->> dependencies like data and code files, and outputs like model and plot files."
+> > ⁉️ Adding _data process_ to the concepts doesn't seem to serve well. Instead
+> > we can continue like: "Stages represent commands to run, along with their
+> > dependencies like data and code files, and outputs like model and plot
+> > files."
 
->> ⁉️ I believe we don't need the following sentence if we write as the previous
->> one. 
+> > ⁉️ I believe we don't need the following sentence if we write as the
+> > previous one.
 
-Stages also connect code
-to its corresponding data _input_ and _output_. 
+Stages also connect code to its corresponding data _input_ and _output_.
 
 <details>
 
 ### ⚙️ Expand to download example code.
 
->> ⁉️ I think it might be easier to grasp the concept if we use a simpler
->> pipeline with 3 stages, with not many parameters, metrics and such. 
+> > ⁉️ I think it might be easier to grasp the concept if we use a simpler
+> > pipeline with 3 stages, with not many parameters, metrics and such.
 
 Get the sample code like this:
 
@@ -94,8 +94,7 @@ Please also add or commit the source code directory with Git at this point.
 
 </details>
 
-
->> ⁉️ The first stage we create may be a simpler one. 
+> > ⁉️ The first stage we create may be a simpler one.
 
 ```dvc
 $ dvc stage add -n prepare \
@@ -105,7 +104,7 @@ $ dvc stage add -n prepare \
                 python src/prepare.py data/data.xml
 ```
 
->> ⁉️ We can move `dvc.yaml` discussion in a hidden section. 
+> > ⁉️ We can move `dvc.yaml` discussion in a hidden section.
 
 A `dvc.yaml` file is generated. It includes information about the command we run
 (`python src/prepare.py data/data.xml`), its <abbr>dependencies</abbr>, and
@@ -115,10 +114,10 @@ A `dvc.yaml` file is generated. It includes information about the command we run
 
 ### 💡 Expand to see what happens under the hood.
 
->> ⁉️ I think, the short descriptions of options can be in the main text instead
->> of `dvc.yaml` above. Also, the project should contain a simple pipeline that
->> starts with `-d` and `-o`, then add `-p`, `-m` to the mix in a later stage.
->> The first example of `stage add` is too complex here. 
+> > ⁉️ I think, the short descriptions of options can be in the main text
+> > instead of `dvc.yaml` above. Also, the project should contain a simple
+> > pipeline that starts with `-d` and `-o`, then add `-p`, `-m` to the mix in a
+> > later stage. The first example of `stage add` is too complex here.
 
 The command options used above mean the following:
 
@@ -181,39 +180,39 @@ stages:
 
 </details>
 
->> ⁉️ The following information can also be hidden, or deleted. We assume this
->> GS trail will be standalone, no need to mention `dvc add` here. 
+> > ⁉️ The following information can also be hidden, or deleted. We assume this
+> > GS trail will be standalone, no need to mention `dvc add` here.
 
 There's no need to use `dvc add` for DVC to track stage outputs (`data/prepared`
-in this case); `dvc stage add` and `dvc exp run` takes care of this. You only need
-to run `dvc push` if you want to save them to
+in this case); `dvc stage add` and `dvc exp run` takes care of this. You only
+need to run `dvc push` if you want to save them to
 [remote storage](/doc/start/data-and-model-versioning#storing-and-sharing),
 (usually along with `git commit` to version `dvc.yaml` itself).
 
->> ⁉️ Here, it may be more natural to tell the Run-Cache and `dvc push` as
->> pushing "pipeline artifacts" instead of "storing and sharing". 
+> > ⁉️ Here, it may be more natural to tell the Run-Cache and `dvc push` as
+> > pushing "pipeline artifacts" instead of "storing and sharing".
 
->> `dvc push` can
->> push the individual stages, and their associated code and data, so you don't
->> have to re-run them in other machines. 
+> > `dvc push` can push the individual stages, and their associated code and
+> > data, so you don't have to re-run them in other machines.
 
 ## Dependency graphs (DAGs)
 
-By using `dvc stage add` multiple times, and specifying <abbr>outputs</abbr> of a
-stage as <abbr>dependencies</abbr> of another one, we can describe a sequence of
-commands which gets to a desired result. This is what we call a _data pipeline_
-or [_dependency graph_](https://en.wikipedia.org/wiki/Directed_acyclic_graph).
+By using `dvc stage add` multiple times, and specifying <abbr>outputs</abbr> of
+a stage as <abbr>dependencies</abbr> of another one, we can describe a sequence
+of commands which gets to a desired result. This is what we call a _data
+pipeline_ or
+[_dependency graph_](https://en.wikipedia.org/wiki/Directed_acyclic_graph).
 
->> ⁉️ All pipelines are DAGs, but not all DAGs are pipelines, so these two are
->> not identical. DAG reference seems complicating, rather than simplifying to
->> me. 
+> > ⁉️ All pipelines are DAGs, but not all DAGs are pipelines, so these two are
+> > not identical. DAG reference seems complicating, rather than simplifying to
+> > me.
 
 Let's create a second stage chained to the outputs of `prepare`, to perform
 feature extraction:
 
->> ⁉️ The second stage is almost identical with the first. It may be necessary
->> for the project, but pedagogically we're spending reader's attention here
->> unnecessarily here. 
+> > ⁉️ The second stage is almost identical with the first. It may be necessary
+> > for the project, but pedagogically we're spending reader's attention here
+> > unnecessarily here.
 
 ```dvc
 $ dvc stage add -n featurize \
@@ -226,7 +225,6 @@ $ dvc stage add -n featurize \
 The `dvc.yaml` file is updated automatically and should include two stages now.
 
 <details>
-
 
 ### 💡 Expand to see what happens under the hood.
 
@@ -262,11 +260,11 @@ The changes to the `dvc.yaml` should look like this:
 
 ### ⚙️ Expand to add more stages.
 
->> ⁉️ Another pipeline from the same. The first three stages look almost
->> identical.
+> > ⁉️ Another pipeline from the same. The first three stages look almost
+> > identical.
 
-Let's add the training itself. Nothing new this time; just the same `dvc stage add`
-command with the same set of options:
+Let's add the training itself. Nothing new this time; just the same
+`dvc stage add` command with the same set of options:
 
 ```dvc
 $ dvc stage add -n train \
@@ -276,8 +274,8 @@ $ dvc stage add -n train \
                 python src/train.py data/features model.pkl
 ```
 
->> ⁉️ The wording below is a bit _distrustful._ In case of an error, DVC should
->> report it. 
+> > ⁉️ The wording below is a bit _distrustful._ In case of an error, DVC should
+> > report it.
 
 Please check the `dvc.yaml` again, it should have one more stage now.
 
@@ -305,7 +303,7 @@ parameters for the training stage:
 1. Open `params.yaml` and change `n_est` to `100`, and
 2. (re)run `dvc exp run`.
 
->> Link to experiments trail here
+> > Link to experiments trail here
 
 You should see:
 
@@ -321,8 +319,8 @@ the intermediate results are being reused.
 
 Now, let's change it back to `50` and run `dvc exp run` again:
 
->> It looks these manual changes are a bit tedious. We can replace these with
->> code or data changes that can't be captured with `dvc exp run -S`
+> > It looks these manual changes are a bit tedious. We can replace these with
+> > code or data changes that can't be captured with `dvc exp run -S`
 
 ```dvc
 $ dvc exp run
@@ -371,8 +369,8 @@ stages:
 
 </details>
 
-DVC pipelines (`dvc.yaml` file, `dvc stage add`, and `dvc exp run` commands) solve a few
-important problems:
+DVC pipelines (`dvc.yaml` file, `dvc stage add`, and `dvc exp run` commands)
+solve a few important problems:
 
 - _Automation_: run a sequence of steps in a "smart" way which makes iterating
   on your project faster. DVC automatically determines which parts of a project
