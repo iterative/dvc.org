@@ -2,10 +2,10 @@
 title: October '21 Community Gems
 date: 2021-10-26
 description: |
-  A roundup of technical Q&A's from the DVC and CML communities. This month: DVC
+  A roundup of technical Q&A's from the DVC community. This month: DVC
   stages, working with outputs, DVC API, and more.
 descriptionLong: |
-  A roundup of technical Q&A's from the DVC and CML community. This month: DVC
+  A roundup of technical Q&A's from the DVC community. This month: DVC
   stages, working with outputs, DVC API, and more.
 picture: 2021-10-26/gems-cover.png
 author: milecia_mcgregor
@@ -73,11 +73,21 @@ the stage output.
 If optimizing storage space is a concern, in case the `stdout` dumps grow a lot,
 this is what we recommend.
 
-Here's an example of what that might look like if you're using a tool like `tee`
-in the terminal.
+Here's an example of what that might look like if you're using a tool like
+`tee`.
 
-```bash
-$ train_stage_output | tee -a 20211021_model.pkl
+```yaml
+train:
+  cmd: python src/train.py data/features model.pkl | tee -a 20211021_model.pkl
+  deps:
+    - data/features
+    - src/train.py
+  params:
+    - train.min_split
+    - train.n_est
+    - train.seed
+  outs:
+    - models/20211026_model.pkl
 ```
 
 This will output the `stdout` from the train stage in the terminal and also save
@@ -132,8 +142,15 @@ which means that there is a single `.dvc` for the whole folder. You don't need
 to remove the `.dvc` file that's tracking the data in that folder.
 
 You can delete the files you want to remove and then re-add the folder using
-`dvc commit`. It should be faster to commit, as DVC won't re-add the files to
-the cache nor will it try to hash them.
+`dvc commit`. Here's what an example of what that flow might look like.
+
+- You `git clone` your data registry.
+- Then `dvc pull` your data.
+- Delete the files you want to remove.
+- Run `dvc commit` and `git commit` to save your changes.
+
+It should be faster to commit, as DVC won't re-add the files to the cache nor
+will it try to hash them.
 
 Good question @MadsO!
 
