@@ -246,9 +246,9 @@ Reproduced experiment(s): exp-44136
 Experiment results have been applied to your workspace.
 
 $ dvc metrics diff
-Path         Metric    Old      New      Change
-scores.json  avg_prec  0.60405  0.56103  -0.04302
-scores.json  roc_auc   0.9608   0.94003  -0.02077
+Path         Metric    HEAD     workspace  Change
+scores.json  avg_prec  0.60405  0.56103    -0.04302
+scores.json  roc_auc   0.9608   0.94003    -0.02077
 ```
 
 The `dvc metrics diff` command shows the difference in performance for the
