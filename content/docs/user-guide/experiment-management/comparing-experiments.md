@@ -65,13 +65,13 @@ $ for experiment in $(dvc exp list origin --names-only --all) ; do
 done
 ```
 
-## List experiments based on a commit, tag or branch
+## List experiments based on a specific commit, tag or branch
 
-The `--rev` option allows to specify a Git reference (commit, tag or branch
-name) to list the experiments attached to it.
+The `--rev` option allows to specify a Git commit, tag or branch
+name to list the experiments based on to it. 
 
 For example, to list of experiments in a Git repository stemmed from a
-particular commit.
+particular commit:
 
 ```dvc
 $ dvc exp list origin --rev 23ceb4a
@@ -82,7 +82,7 @@ $ dvc exp list origin --rev 23ceb4a
         cnn-96
 ```
 
-The `--rev` option can be used for tags as well.
+or a tag:
 
 ```dvc
 $ dvc exp list origin --rev baseline-experiment
@@ -92,6 +92,8 @@ refs/tags/baseline-experiment:
         cnn-64
         cnn-96
 ```
+
+or a fully specified Git reference:
 
 ```dvc
 $ dvc exp list origin --rev refs/tags/baseline-experiment
@@ -104,9 +106,9 @@ refs/tags/baseline-experiment:
 
 ## Show a table of experiments
 
-Experimentation is about selecting the best from many trials. You can get a
-table of experiments with `dvc exp show`, which displays all the parameters and
-metrics in a nicely formatted table.
+Experimentation is about generating many possibilities before selecting a few of
+them. You can get a table of experiments with `dvc exp show`, which displays all
+the parameters and metrics in a nicely formatted table.
 
 ```dvc
 $ dvc exp show
@@ -126,8 +128,8 @@ $ dvc exp show
 ```
 
 `dvc exp show` tabulates the experiments only in the workspace and the `HEAD` of
-the current branch. If you want to get all the experiments, you can use `--all`
-flag.
+the current branch. You can use `--all` flag to show all the experiments in the
+project instead. 
 
 ## Customize the table of experiments
 
@@ -136,7 +138,7 @@ and metrics. `dvc exp show` provides several options to select the parameters
 and metrics to be shown in the tables.
 
 The `--include-params` and `--include-metrics` options take a list of
-comma-separated metrics and parameter names as defined in `dvc.yaml`.
+comma-separated parameter or metrics names (defined in `dvc.yaml`).
 
 ```dvc
 $ dvc exp show --include-params train.epochs --include-metrics auc,precision
@@ -154,10 +156,8 @@ $ dvc exp show --include-params train.epochs --include-metrics auc,precision
 │ └── 69503c6 [cnn-128] │ Sep 09, 2021 │ 0.23243 │  0.916 │ 10           │
 └───────────────────────┴──────────────┴─────────┴────────┴──────────────┘
 
-Alternatively you can exclude certain parameters and metrics to appear in the
-table by `--exclude-params` and `--exclude-metrics` options. Similar to the
-include options, these take comma-separated names defined in `dvc.yaml` and
-hide those columns.
+Alternatively, you can exclude certain parameters and metrics from the
+table by `--exclude-params` and `--exclude-metrics` options. These also take a comma-separated list. 
 
 ```dvc
 $ dvc exp show --exclude-params train.epochs --exclude-metrics auc
@@ -225,7 +225,7 @@ list of experiments in a machine readable format, you can use `--json` or
 `--csv` flags.
 
 ```dvc
-$ dvc exp show --json | jq
+$ dvc exp show --json 
 ```
 
 ```json
@@ -448,14 +448,14 @@ Param             Value    Change
 model.conv_units  64       -192
 ```
 
-### Get a JSON list of changes to use in scripts
+### Get the comparison in JSON
 
 Parsing the `dvc exp diff` output may not be feasible due to the custom
 structure. When you want to use the output in other commands, `dvc exp diff` can
 output in JSON with `--json` flag.
 
 ```dvc
-$ dvc exp diff exp-25a26 cnn-64 --json | jq
+$ dvc exp diff exp-25a26 cnn-64 --json 
 ```
 
 ```json
@@ -491,8 +491,7 @@ have dictionaries as values. `metrics` and `params` dictionaries has keys for
 each of the metrics or params file, and for each file metrics and parameters are
 listed as keys.
 
-As an example, we can get only a specific metric from the `dvc exp diff` output
-by
+As an example, we can get only a specific metric [jq]:
 
 ```dvc
 $ dvc exp diff exp-25a26 cnn-64 --json | jq '.metrics."metrics.json".acc'
