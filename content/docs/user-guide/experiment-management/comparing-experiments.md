@@ -25,8 +25,6 @@ $ dvc exp list --all
 refs/tags/baseline-experiment:
         cnn-64
         cnn-128
-        cnn-32
-        cnn-96
 main:
         exp-93150
 ```
