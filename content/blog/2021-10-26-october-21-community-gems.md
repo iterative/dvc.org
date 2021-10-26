@@ -7,7 +7,7 @@ description: |
 descriptionLong: |
   A roundup of technical Q&A's from the DVC community. This month: DVC
   stages, working with outputs, DVC API, and more.
-picture: 2021-10-26/gems-cover.png
+picture: 2021-10-27/oct-community-gems.png
 author: milecia_mcgregor
 commentsUrl: https://discuss.dvc.org/t/october-21-community-gems/931
 tags:
