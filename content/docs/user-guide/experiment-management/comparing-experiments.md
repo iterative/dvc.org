@@ -8,7 +8,7 @@ them. Let's see how they can help you streamline the experimentation process.
 
 You can get a list of existing experiments in the repository with
 `dvc exp list`. Without any options, this command lists the experiments after
-the most recent commit. (Git `HEAD`).
+the most recent commit (Git `HEAD`).
 
 ```dvc
 $ dvc exp list
