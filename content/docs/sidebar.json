@@ -53,18 +53,42 @@
         }
       },
       {
-        "label": "Metrics, Parameters, and Plots",
-        "slug": "metrics-parameters-plots",
-        "tutorials": {
-          "katacoda": "https://katacoda.com/dvc/courses/get-started/params-metrics-plots"
-        }
-      },
-      {
         "slug": "experiments",
+        "source": "start/experiments/index.md",
         "label": "Experiments",
         "tutorials": {
           "katacoda": "https://katacoda.com/dvc/courses/get-started/experiments"
-        }
+        },
+        "children": [
+          {
+            "slug": "introduction",
+            "label": "Introduction"
+          },
+          {
+            "slug": "comparing-persisting",
+            "label": "Comparing and Persisting"
+          },
+          {
+            "slug": "parameters",
+            "label": "(Hyper)Parameters"
+          },
+          {
+            "slug": "metrics",
+            "label": "Tracking Metrics"
+          },
+          {
+            "slug": "visualization",
+            "label": "Visualization"
+          },
+          {
+            "slug": "dvclive",
+            "label": "DVCLive"
+          },
+          {
+            "slug": "checkpoints",
+            "label": "Checkpoints"
+          }
+        ]
       }
     ]
   },
