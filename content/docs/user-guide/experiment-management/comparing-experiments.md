@@ -66,7 +66,7 @@ done
 ## List experiments based on a specific commit, tag or branch
 
 The `--rev` option allows to specify a Git commit, tag or branch
-name to list the experiments based on to it. 
+name to list the experiments based on it. 
 
 For example, to list of experiments in a Git repository stemmed from a
 particular commit:
