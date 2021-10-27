@@ -94,23 +94,7 @@ const DefaultSEO: React.FC<IDefaultSEOProps> = ({ pathname }) => {
       titleTemplate={`%s | ${metaTitle}`}
       meta={meta}
       link={[
-        {
-          rel: 'shortcut icon',
-          type: 'image/vnd.microsoft.icon',
-          href: '/favicon.ico'
-        },
-        {
-          rel: 'icon',
-          type: 'image/png',
-          href: '/favicon-32x32.png',
-          sizes: '32x32'
-        },
-        {
-          rel: 'icon',
-          type: 'image/png',
-          href: '/favicon-16x16.png',
-          sizes: '16x16'
-        },
+        { rel: 'mask-icon', href: '/safari-pinned-tab.svg', color: '#13adc7' },
         {
           rel: 'canonical',
           href: fullUrl
