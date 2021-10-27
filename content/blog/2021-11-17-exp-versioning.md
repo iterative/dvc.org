@@ -31,9 +31,9 @@ These are problems that have been solved in the past with version control, but
 typical software version control tools like Git aren't enough for ML
 experimentation:
 
-* Data and models aren't easily tracked with Git.
-* There are too many experiments to track with any Git branching workflow.
-* Machine learning pipelines take too long to reproduce on the fly.
+- Data and models aren't easily tracked with Git.
+- There are too many experiments to track with any Git branching workflow.
+- Machine learning pipelines take too long to reproduce on the fly.
 
 When tracking ML experiments, you need to:
 
@@ -49,7 +49,7 @@ to the needs mentioned above, you would:
 
 1. Choose what parameters and metrics to log and when to record them. No easy
    way to log anything besides scalar values.
-2. Organize and compare experiments on your own. Spreadsheets might enable 
+2. Organize and compare experiments on your own. Spreadsheets might enable
    categorization and sorting.
 3. Reproduce experiments using existing version control practices.
 
@@ -91,8 +91,8 @@ We can learn from software version control even though it is not enough by
 itself to track ML experiments. Let's look at a history of version control (from
 https://ericsink.com/vcbe/html/history_of_version_control.html):
 
-| Generation | Networking  | Operations         | Concurrency         | 
-| ---------- |-------------|--------------------|---------------------|
+| Generation | Networking  | Operations         | Concurrency         |
+| ---------- | ----------- | ------------------ | ------------------- |
 | First      | None        | One file at a time | Locks               |
 | Second     | Centralized | Multi-file         | Merge before commit |
 | Third      | Distributed | Changesets         | Commit before merge |
@@ -102,7 +102,7 @@ See also https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control.
 Now let's compare to experiment tracking:
 
 | Generation | Platform                   | Logging        | Organization | Reproducibility | Collaboration |
-| ---------- |----------------------------|----------------|--------------|-----------------|---------------|
+| ---------- | -------------------------- | -------------- | ------------ | --------------- | ------------- |
 | First      | Spreadsheet, notebook      | Scalar values  | None         | None            | None          |
 | Second     | API + database + dashboard | Multi-artifact | Labels       | Manual          | Centralized   |
 | Third      | DVC + Git                  | Changesets     | Git-based    | Automatic       | Distributed   |
