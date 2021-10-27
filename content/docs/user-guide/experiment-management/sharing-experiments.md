@@ -128,7 +128,7 @@ $ dvc exp list --all --names-only | while read -r expname ; do \
 done
 ```
 
-## Example: Dedicated experiment directories
+## 👨‍🏫 Example: Dedicated experiment directories
 
 A good way to isolate experiments is to create a separate directory outside the
 current <abbr>repository</abbr> for each one.
