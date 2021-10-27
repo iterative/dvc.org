@@ -41,7 +41,7 @@ meaningful measures for the experimental results.
 
 ## Experiments
 
-> Note: these features require a Git repository.
+> Note: these features require a Git-enabled DVC <abbr>repository</abbr>.
 
 `dvc exp` commands let you automatically track a variation to an established
 [data pipeline](/doc/command-reference/dag). You can create multiple isolated
