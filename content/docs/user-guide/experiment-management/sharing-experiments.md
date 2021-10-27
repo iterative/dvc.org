@@ -42,8 +42,8 @@ storage s3://mybucket/my-dvc-store
 
 ## Uploading experiments
 
-You can upload an experiment with all of it's files and data using
-`dvc exp push` (requires a Git remote name and experiment name as arguments).
+You can upload an experiment with all of its files and data using `dvc exp push`
+(requires a Git remote name and experiment name as arguments).
 
 > 💡 You can use `dvc exp show` to find experiment names.
 
