@@ -76,8 +76,8 @@ metric or param.
 
 - `--only-changed` - Only show metrics/params with values varying across the
   selected experiments. When used along with
-  `--include-params`/`--include-metrics`, this option prevails over the specific
-  values passed to those options. For example, given
+  `--include-params`/`--include-metrics`, `--only-changed` prevails over the
+  specific values passed to `--include`. For example, given
   `--only-changed --include-params=foo`, if `foo` doesn't vary across the
   selected experiments, it won't be shown in the final table.
 
