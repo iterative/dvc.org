@@ -17,7 +17,7 @@ refs/tags/baseline-experiment:
         cnn-128
 ```
 
-If you want to list all the experiments in the repository regardless of the
+If you want to list all the experiments in the repository regardless of their
 parent commit, use the `--all` flag.
 
 ```dvc
@@ -129,7 +129,7 @@ project instead.
 
 The table output may become cluttered if you have a large number of parameters
 and metrics. `dvc exp show` provides several options to select the parameters
-and metrics to be shown in the tables.
+and metrics to be shown in the table.
 
 The `--include-params` and `--include-metrics` options take a list of
 comma-separated parameter or metrics names (defined in `dvc.yaml`).
