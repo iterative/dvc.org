@@ -13313,10 +13313,10 @@ repeat-string@^1.0.0, repeat-string@^1.5.4, repeat-string@^1.6.1:
   resolved "https://registry.yarnpkg.com/repeat-string/-/repeat-string-1.6.1.tgz#8dcae470e1c88abc2d600fff4a776286da75e637"
   integrity sha1-jcrkcOHIirwtYA//Sndihtp15jc=
 
-repo-link-check@^0.7.1:
-  version "0.7.3"
-  resolved "https://registry.yarnpkg.com/repo-link-check/-/repo-link-check-0.7.3.tgz#15b53269315ece182696595db0a5abf7beb5bb22"
-  integrity sha512-dIbDGDceOCBtDtlqNFrv+ZCcS91Qr3u4NBmuMxmgehGqqW1L2oyzjlAo7mOxsXq3LLo1wwp4pAfGM20vAxEfog==
+repo-link-check@^0.8.0:
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/repo-link-check/-/repo-link-check-0.8.0.tgz#0613151e5d48800a61245acfe28abf466afe77c0"
+  integrity sha512-v9i/go/athEugxbFocyVIgRZeKodGlTYrw1gywKQBNCSuMcmSBONh2/BCFQAe8DMa68+c2tvKixyw9LOhn7vKQ==
   dependencies:
     bottleneck "^2.19.5"
     commander "^6.1.0"

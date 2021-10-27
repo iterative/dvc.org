@@ -236,8 +236,8 @@ connection settings, and configuring a remote is the way that can be done.
   when it reaches the `state.row_limit`. The default quota is 50%. DVC removes
   the oldest entries (created when `dvc status` is used, for example).
 
-- `state.dir` - specify a custom location for the state databases (directories),
-  by default `.dvc/tmp/index` and `.dvc/tmp/md5`. This may be necessary when
+- `state.dir` - specify a custom location for the state databases (`links/` and
+  `md5/` directories), by default in `.dvc/tmp`. This may be necessary when
   using DVC on NFS or other mounted volumes where SQLite encounters file
   permission errors.
 

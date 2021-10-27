@@ -361,7 +361,7 @@ table with the checkpoints you want to compare. You'll see something similar to
 this in your terminal.
 
 ```
-Path          Metric    Old      New      Change
+Path          Metric    d90179a  726d32f  Change
 dvclive.json  acc       0.9044   0.8185   -0.0859
 dvclive.json  loss      0.33246  0.83515  0.50269
 dvclive.json  step      6        8        2
