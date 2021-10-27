@@ -117,7 +117,7 @@ can set the number with `--jobs` (`-j`).
 If an experiment being pulled already exists in the local project, DVC won't
 overwrite it unless you supply `--force`.
 
-## Example: Sharing multiple experiments
+## 👨‍🏫 Example: Sharing multiple experiments
 
 You can create a loop to push or pull all experiments. For example in a Linux
 terminal:
