@@ -75,7 +75,11 @@ metric or param.
 - `--param-deps` - include only parameters that are stage dependencies.
 
 - `--only-changed` - Only show metrics/params with values varying across the
-  selected experiments.
+  selected experiments. When used along with
+  `--include-params`/`--include-metrics`, this option prevails over the specific
+  values passed to those options. For example, given
+  `--only-changed --include-params=foo`, if `foo` doesn't vary across the
+  selected experiments, it won't be shown in the final table.
 
 - `--include-params <list>` - show the specified `dvc params` in the table only.
   Accepts a comma-separated `list` of param names. Shell style wildcards
