@@ -74,9 +74,7 @@ particular commit:
 ```dvc
 $ dvc exp list origin --rev 23ceb4a
 23ceb4a:
-        cnn-128
         cnn-32
-        cnn-64
         cnn-96
 ```
 
@@ -85,10 +83,8 @@ or a tag:
 ```dvc
 $ dvc exp list origin --rev baseline-experiment
 refs/tags/baseline-experiment:
-        cnn-128
-        cnn-32
         cnn-64
-        cnn-96
+        cnn-128
 ```
 
 or a fully specified Git reference:
