@@ -17,8 +17,8 @@ refs/tags/baseline-experiment:
         cnn-128
 ```
 
-If you want to list all the experiments in the repository regardless of the parent
-commit, use the `--all` flag.
+If you want to list all the experiments in the repository regardless of the
+parent commit, use the `--all` flag.
 
 ```dvc
 $ dvc exp list --all
@@ -65,8 +65,8 @@ done
 
 ## List experiments based on a specific commit, tag or branch
 
-The `--rev` option allows to specify a Git commit, tag or branch
-name to list the experiments based on it. 
+The `--rev` option allows to specify a Git commit, tag or branch name to list
+the experiments based on it.
 
 For example, to list of experiments in a Git repository stemmed from a
 particular commit:
@@ -123,7 +123,7 @@ $ dvc exp show
 
 `dvc exp show` tabulates the experiments only in the workspace and the `HEAD` of
 the current branch. You can use `--all` flag to show all the experiments in the
-project instead. 
+project instead.
 
 ## Customize the table of experiments
 
@@ -149,7 +149,7 @@ $ dvc exp show --include-params train.epochs --include-metrics auc,precision
 └───────────────────────┴──────────────┴─────────┴────────┴──────────────┘
 
 Alternatively, you can exclude certain parameters and metrics from the
-table by `--exclude-params` and `--exclude-metrics` options. These also take a comma-separated list. 
+table by `--exclude-params` and `--exclude-metrics` options. These also take a comma-separated list.
 
 ```dvc
 $ dvc exp show --exclude-params train.epochs --exclude-metrics auc
@@ -211,7 +211,7 @@ list of experiments in a machine readable format, you can use `--json` or
 `--csv` flags.
 
 ```dvc
-$ dvc exp show --json 
+$ dvc exp show --json
 ```
 
 ```json
@@ -439,7 +439,7 @@ structure. When you want to use the output in other commands, `dvc exp diff` can
 output in JSON with `--json` flag.
 
 ```dvc
-$ dvc exp diff exp-25a26 cnn-64 --json 
+$ dvc exp diff exp-25a26 cnn-64 --json
 ```
 
 ```json
