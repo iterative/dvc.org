@@ -175,7 +175,8 @@ $ dvc exp show --include-params=featurize
 └───────────────────────┴──────────────┴─────────┴────────────────────────┴──────────────────┘
 ```
 
-You can also filter out the metrics and parameters that didn't change:
+You can also filter out the metrics and parameters that are the same
+across the shown experiments:
 
 ```dvc
 $ dvc exp show --only-changed
