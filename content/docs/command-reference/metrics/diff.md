@@ -10,7 +10,7 @@ Compare [metrics](/doc/command-reference/metrics) between two commits in the
 ```usage
 usage: dvc metrics diff [-h] [-q | -v]
                         [--targets [<paths> [<paths> ...]]] [-R]
-                        [--all] [--show-json] [--show-md] [--no-path]
+                        [--all] [--json] [--md] [--no-path]
                         [--old] [--precision <n>]
                         [a_rev] [b_rev]
 
@@ -66,10 +66,10 @@ all the current metrics (without comparisons).
 
 - `--all` - list all metrics, including those without changes.
 
-- `--show-json` - prints the command's output in JSON format (machine-readable)
+- `--json` - prints the command's output in JSON format (machine-readable)
   instead of a human-readable table.
 
-- `--show-md` - prints the command's output in the Markdown table format
+- `--md` - prints the command's output in the Markdown table format
   ([GFM](https://github.github.com/gfm/#tables-extension-)).
 
 - `--old` - include the "Old" value column in addition to the new "Value" (and
@@ -118,13 +118,13 @@ $ git diff
 
 To see the change, let's run `dvc metrics diff`. This compares our current
 <abbr>workspace</abbr> (including uncommitted local changes) metrics to what we
-had in the previous commit:
+had in the latest commit (`HEAD`):
 
 ```dvc
 $ dvc metrics diff
-Path          Metric    Value    Change
-metrics.json  AUC       0.9671   0.0028
-metrics.json  TP        531      4
+Path          Metric    HEAD    workspace  Change
+metrics.json  AUC       0.9643  0.9671     0.0028
+metrics.json  TP        527     531        4
 ```
 
 ## Example: compare metrics among specific versions
@@ -133,8 +133,8 @@ Metrics files committed with Git can be compared by referencing the commits (any
 two [revisions](https://git-scm.com/docs/revisions)):
 
 ```dvc
-$ dvc metrics diff --targets metrics.json -- HEAD c7bef55
-Path       Metric    Value    Change
-eval.json  ACU       0.66729  0.01614
-eval.json  TP        516      -12
+$ dvc metrics diff --targets metrics.json -- 305fb8b c7bef55
+Path          Metric    305fb8b  c7bef55  Change
+metrics.json  AUC       0.9643   0.9743   0.0100
+metrics.json  TP        527      516      -11
 ```

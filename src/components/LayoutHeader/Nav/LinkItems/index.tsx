@@ -12,7 +12,7 @@ import { getFirstPage } from '../../../../utils/shared/sidebar'
 
 const docsPage = getFirstPage()
 
-import styles from './styles.module.css'
+import * as styles from './styles.module.css'
 
 type PopupName = 'CommunityPopup' | 'OtherToolsPopup'
 

@@ -15,7 +15,7 @@ import { ReactComponent as CmlSVG } from '../../../static/img/cml_icon-color--sq
 import { ReactComponent as StudioSVG } from '../../../static/img/studio_icon-color--square_vector.svg'
 import { ReactComponent as IterativeSVG } from '../../../static/img/iterative_icon-color--square_vector.svg'
 
-import styles from './styles.module.css'
+import * as styles from './styles.module.css'
 
 const docsPage = getFirstPage()
 
@@ -91,6 +91,10 @@ const footerListsData: Array<IFooterListData> = [
         href: 'https://iterative.ai/about#career',
         text: 'Career',
         target: '_blank'
+      },
+      {
+        href: 'https://iterative.ai/brand',
+        text: 'Media Kit'
       }
     ]
   },
@@ -153,7 +157,10 @@ const FooterLists: React.FC = () => (
         <h2 className={styles.heading}>{header}</h2>
         <ul className={styles.links}>
           {links.map(({ text, target, href, icon }, i) => (
-            <li className={styles.linkItem} key={i}>
+            <li
+              // className={styles.linkItem}
+              key={i}
+            >
               <Link target={target} href={href} className={styles.link}>
                 {icon}
                 {text}
@@ -183,7 +190,9 @@ const FooterSocialIcons: React.FC = () => (
 const LayoutFooter: React.FC = () => (
   <footer className={styles.wrapper}>
     <LayoutWidthContainer className={cn(styles.container)} wide>
-      <div className={styles.top}>
+      <div
+      //  className={styles.top}
+      >
         <Link className={styles.logo} href="/" title="dvc.org">
           <LogoSVG />
         </Link>

@@ -10,7 +10,7 @@ import Diagram from './Diagram'
 import UseCases from './UseCases'
 import { logEvent } from '../../utils/front/ga'
 
-import styles from './styles.module.css'
+import * as styles from './styles.module.css'
 
 const Home: React.FC = () => {
   const diagramSectionRef = useRef<HTMLElement>(null)
