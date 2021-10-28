@@ -38,20 +38,23 @@ which enables
 [tracking & versioning](/doc/use-cases/versioning-data-and-model-files) all of
 this data.
 
-|                | DVC Experiments          | MLFlow               | Weights & Balances | Neptune      |
-| -------------- | ------------------------ | -------------------- | ------------------ | ------------ |
-| UI             | Terminal + [Web][studio] | Web                  | Web                | Web?         |
-| Integration    | Any (language agnostic)  | Python API           | Python API         | Python?      |
-| Infrastructure | None (just Git & DVC)    | on-prem/SAS          | SAS/on-prem        | SAS?         |
-| Versioning     | Git (portable)           | Custom               | Custom             | Custom       |
-| Storage        | User (yours)             | Cloud (yours)        | Theirs             | Theirs?      |
-| Licensing      | Open Source              | Open Source          | Proprietary        | Open Source? |
-| Cost           | Free\* + storage         | Free [+ $ cloud][mp] | [$$$][np]          | [$$][wp]     |
+|                | DVC Experiments          | MLFlow             | Weights & Balances | Neptune      |
+| -------------- | ------------------------ | ------------------ | ------------------ | ------------ |
+| UI             | Terminal + [Web][studio] | Web                | Web                | Web?         |
+| Integration    | Any (language agnostic)  | Python API         | Python API         | Python?      |
+| Infrastructure | None (just Git & DVC)    | on-prem/SAS        | SAS/on-prem        | SAS?         |
+| Versioning     | Git (portable)           | Custom             | Custom             | Custom       |
+| Storage        | User (yours)             | Cloud (yours)      | Theirs             | Theirs?      |
+| Licensing      | Open Source              | Open Source        | Proprietary        | Open Source? |
+| Cost           | Free\* + storage         | Free [+ cloud][mp] | [$$$][np]          | [$$][wp]     |
 
 > \* All of DVC features are free to use on terminal. The [Studio] (web UI) is
 > free for individuals.
 
 [studio]: https://studio.iterative.ai/
+[np]: https://neptune.ai/pricing
+[wp]: https://wandb.ai/site/pricing
+[mp]: https://databricks.com/product/pricing
 
 You can enjoy the full power of DVC Experiments on any machine, without need for
 special infrastructure or servers. The only other software required is Git, but
