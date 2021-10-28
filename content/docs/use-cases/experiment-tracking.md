@@ -45,6 +45,7 @@ this data.
 | Infrastructure | None (just Git & DVC)    | on-prem/SAS        | SAS/on-prem        | SAS?         |
 | Versioning     | Git (portable)           | Custom             | Custom             | Custom       |
 | Storage        | User (yours)             | Cloud (yours)      | Theirs             | Theirs?      |
+| Collaboration  | Distributed              | Centralized        | Centralized        | Centralized? |
 | Licensing      | Open Source              | Open Source        | Proprietary        | Open Source? |
 | Cost           | Free\* + storage         | Free [+ cloud][mp] | [$$$][np]          | [$$][wp]     |
 
