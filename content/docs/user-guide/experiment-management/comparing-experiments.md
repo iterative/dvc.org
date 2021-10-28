@@ -287,7 +287,7 @@ Each experiment entry has the following structure:
             }
           }
         },
-        "name": "cnn-96"
+        "name": "cnn-64"
       }
     }
 ```
