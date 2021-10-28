@@ -38,15 +38,15 @@ which enables
 [tracking & versioning](/doc/use-cases/versioning-data-and-model-files) all of
 this data.
 
-|                 | DVC Experiments             | MLFlow      | Neptune     | Weights & Balances |
-| --------------- | --------------------------- | ----------- | ----------- | ------------------ |
-| Interface       | Terminal + [Web UI][studio] | Web + CLI   | Web + CLI   | Web + CLI          |
-| Platform        | Any (language agnostic)     | ?           | ?           | ?                  |
-| Infrastructure  | None (just Git & DVC)       | Special     | SAS         | SAS                |
-| Code versioning | Git                         | Custom      | Custom      | Custom             |
-| Data storage    | User (yours)                | Theirs      | Theirs      | Theirs             |
-| Licensing       | Open Source                 | Open Source | Proprietary | Open Source        |
-| Pricing?        | Free\*                      | $$          | $           | Free?              |
+|                | DVC Experiments          | MLFlow               | Weights & Balances | Neptune      |
+| -------------- | ------------------------ | -------------------- | ------------------ | ------------ |
+| UI             | Terminal + [Web][studio] | Web                  | Web                | Web?         |
+| Integration    | Any (language agnostic)  | Python API           | Python API         | Python?      |
+| Infrastructure | None (just Git & DVC)    | on-prem/SAS          | SAS/on-prem        | SAS?         |
+| Versioning     | Git (portable)           | Custom               | Custom             | Custom       |
+| Storage        | User (yours)             | Cloud (yours)        | Theirs             | Theirs?      |
+| Licensing      | Open Source              | Open Source          | Proprietary        | Open Source? |
+| Cost           | Free\* + storage         | Free [+ $ cloud][mp] | [$$$][np]          | [$$][wp]     |
 
 > \* All of DVC features are free to use on terminal. The [Studio] (web UI) is
 > free for individuals.
