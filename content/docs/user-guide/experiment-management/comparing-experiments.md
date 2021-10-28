@@ -292,8 +292,8 @@ Each experiment entry has the following structure:
     }
 ```
 
-Thus, you can get all details of the experiments in JSON and reuse them in other
-commands. To show the metrics in the workspace and other commits, for example:
+As an example, let's feed our experiments to JSON-parsing tool [jq](https://stedolan.github.io/jq/)
+and filter through only metrics:
 
 ```dvc
 $ dvc exp show --json | jq '.[].baseline.data.metrics'
