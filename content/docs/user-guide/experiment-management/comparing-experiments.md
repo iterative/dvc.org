@@ -408,7 +408,7 @@ Path         Param             Value    Change
 params.yaml  model.conv_units  64       -192
 ```
 
-## Customize the output of diff table
+## Customize the comparison output
 
 By default `dvc exp diff` shows the metrics up to 5 significant digits. If you
 want to set this to another value, you can use `--precision` option.
