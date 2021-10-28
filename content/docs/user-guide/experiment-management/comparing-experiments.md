@@ -410,13 +410,10 @@ params.yaml  model.conv_units  64       -192
 
 ## Customize the comparison output
 
-By default `dvc exp diff` shows the metrics up to 5 significant digits. If you
-want to set this to another value, you can use `--precision` option.
-
-You can also hide the path of metrics and params files by `--no-path` flag. If
-there is a single parameter or metrics file, it prints a cleaner table.
-
-By using the both options, you can get:
+You can hide the file path of metrics and parameter files the `--no-path` option
+-- produces cleaner output for single params/metrics files, for example.
+You can also customize the amount of significant digits shown for numeric
+values with the `--precision` option (5 by default).
 
 ```dvc
 $ dvc exp diff exp-25a26 cnn-64 --no-path --precision 2
