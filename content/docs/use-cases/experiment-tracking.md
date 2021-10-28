@@ -7,7 +7,7 @@ example to optimize an ML model's accuracy. Keeping track of all these
 visualize, reproduce, share, and _productionize_ the results. We also want to be
 able to reconnect the lineage of recorded metrics back to their original setup.
 
-![](/img/lose-experimentation.png) _Loose experimentation_
+![](/img/natural-experimentation.png) _Loose experimentation_
 
 DVC provides a layer of
 [experiment management](/doc/user-guide/experiment-management) features to take
