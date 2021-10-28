@@ -7,8 +7,8 @@ them. Let's see how they can help you streamline the experimentation process.
 ## List experiments in the workspace
 
 You can get a list of existing experiments in the repository with
-`dvc exp list`. Without any options, this command lists the experiments based
-on the latest commit of the current branch (Git `HEAD`).
+`dvc exp list`. Without any options, this command lists the experiments based on
+the latest commit of the current branch (Git `HEAD`).
 
 ```dvc
 $ dvc exp list
@@ -292,8 +292,8 @@ Each experiment entry has the following structure:
     }
 ```
 
-As an example, let's feed our experiments to JSON-parsing tool [jq](https://stedolan.github.io/jq/)
-and filter through only metrics:
+As an example, let's feed our experiments to JSON-parsing tool
+[jq](https://stedolan.github.io/jq/) and filter through only metrics:
 
 ```dvc
 $ dvc exp show --json | jq '.[].baseline.data.metrics'
@@ -411,9 +411,9 @@ params.yaml  model.conv_units  64       -192
 ## Customize the comparison output
 
 You can hide the file path of metrics and parameter files the `--no-path` option
--- produces cleaner output for single params/metrics files, for example.
-You can also customize the amount of significant digits shown for numeric
-values with the `--precision` option (5 by default).
+-- produces cleaner output for single params/metrics files, for example. You can
+also customize the amount of significant digits shown for numeric values with
+the `--precision` option (5 by default).
 
 ```dvc
 $ dvc exp diff exp-25a26 cnn-64 --no-path --precision 2
