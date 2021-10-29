@@ -190,9 +190,9 @@ The line `torch.save(model.state_dict(), "model.pt")` updates the checkpoint
 file.
 
 You can read about what the line `dvclive.log(k, v)` does in the
-[`dvclive.log()`](/doc/dvclive/api-reference/log) reference.
+[`Live.log()`](/doc/dvclive/api-reference/live/log) reference.
 
-The [`dvclive.next_step()`](/doc/dvclive/api-reference/next_step) line tells DVC
+The [`Live.next_step()`](/doc/dvclive/api-reference/live/next_step) line tells DVC
 that it can take a snapshot of the entire workspace and version it with Git.
 It's important that with this approach only code with metadata is versioned in
 Git (as an ephemeral commit), while the actual model weight file will be stored
