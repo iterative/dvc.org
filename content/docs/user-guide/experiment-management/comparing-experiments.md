@@ -35,8 +35,6 @@ As we discuss in [Sharing Experiments], you can use `dvc exp push` to upload
 experiments to Git remotes. `dvc exp list` can be used to list the experiments
 in a Git remote.
 
-[sharing experiments]: /doc/user-guide/experiment-management/sharing-experiments
-
 ```dvc
 $ dvc exp list origin
 refs/tags/baseline-experiment:
