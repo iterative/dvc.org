@@ -34,6 +34,7 @@ module.exports = [
   'metrics',
   'params diff',
   'params',
+  'ls',
   'list',
   'install',
   'init',
