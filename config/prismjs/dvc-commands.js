@@ -56,6 +56,7 @@ module.exports = [
   'exp branch',
   'exp apply',
   'exp',
+  'experiments',
   'doctor',
   'diff',
   'destroy',
