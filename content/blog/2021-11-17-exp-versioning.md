@@ -58,8 +58,8 @@ store it, and a dashboard to compare and visualize. You can log all types of
 artifacts, label and compare experiments in a dashboard, and collect logged
 artifacts to reproduce the experiment.
 
-However, as projects grow, these experiment tracking tools leave a lot up to
-you and start to feel cumbersome:
+However, as projects grow, these experiment tracking tools leave a lot up to you
+and start to feel cumbersome:
 
 - You need to decide what is important to log. Much of the information is the
   same between experiments, and it's not clear what changed in each.
