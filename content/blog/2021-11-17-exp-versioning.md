@@ -101,21 +101,12 @@ Now let's compare to experiment tracking:
 | Second     | API + database + dashboard | Multi-artifact | Labels       | Manual          | Centralized   |
 | Third      | DVC + Git                  | Changesets     | Git-based    | Automatic       | Distributed   |
 
-Centralized services made it hard to collaborate in the previous generation of
-version control. With experiment tracking, it's hard now to stay organized on a
-team project. If you start locally, it's not easy to later share your results
-with the team. Even if you start as a team, you may be sifting through
-experiments from others or spending time cleaning up experiments you never meant
-for others to see. What happens if the server goes down or if you have sensitive
-data that you need to self-host but don't know how?
-
-Similarly, treating each experiment as an independent collection of artifacts
-repeats the same old version control mistakes. This results in a piecemeal view
-of the project that's difficult to reconstruct, wastes space by duplicating
-unchanged artifacts, and has no concept of what has actually changed.
-
 DVC experiments borrow from modern version control and apply its principles and
-technology to experiment tracking.
+technology to experiment tracking. They build on Git's distributed nature so
+that you aren't locked in to the experiment server you chose at the start of the
+project. They also only track experiment changes, maintaining awareness of what
+is actually different about each experiment while avoiding duplicate storage of
+unchanged artifacts.
 
 # Start Versioning Experiments
 
@@ -210,8 +201,9 @@ To switch to the new branch run:
         git checkout conv-units-32
 ```
 
-Reproducing experiments will check for cached inputs and outputs and skip
-recomputing data that's been generated before.
+Reproducing experiments can be automated since your experiment pipeline is
+codified, and DVC will check for cached inputs and outputs and skip recomputing
+data that's been generated before.
 
 ```
 $ dvc exp run
