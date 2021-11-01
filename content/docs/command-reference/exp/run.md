@@ -55,7 +55,7 @@ and compare multiple experiments, use `dvc exp show` or `dvc exp diff`
 to restore the results of any other experiment instead.
 
 Successful experiments can be made
-[persistent](/doc/user-guide/experiment-management/dvc-experiments#persistent-experiments)
+[persistent](/doc/user-guide/experiment-management/experiments-overview#persistent-experiments)
 by committing them to the Git repo. Unnecessary ones can be removed with
 `dvc exp remove`or `dvc exp gc` (or abandoned).
 

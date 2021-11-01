@@ -18,7 +18,7 @@ positional arguments:
 Makes a named Git
 [`branch`](https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging)
 containing the target `experiment` (making it
-[persistent](/doc/user-guide/experiment-management/dvc-experiments#persistent-experiments)).
+[persistent](/doc/user-guide/experiment-management/experiments-overview#persistent-experiments)).
 For [checkpoint experiments](/doc/command-reference/exp/run#checkpoints), the
 new branch will contain multiple commits (the checkpoints).
 

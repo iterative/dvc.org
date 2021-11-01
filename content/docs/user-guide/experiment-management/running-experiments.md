@@ -232,7 +232,7 @@ to avoid committing unwanted files into Git (e.g. once successful experiments
 are [persisted]).
 
 [persisted]:
-  /doc/user-guide/experiment-management/dvc-experiments#persistent-experiments
+  /doc/user-guide/experiment-management/experiments-overview#persistent-experiments
 
 > 💡 To include untracked files, stage them with `git add` first (before
 > `dvc exp run`) and `git reset` them afterwards.

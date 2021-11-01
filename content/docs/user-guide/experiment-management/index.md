@@ -32,15 +32,15 @@ approaches:
    <abbr>repository</abbr> history.
 
 [run]: /doc/user-guide/experiment-management/running-experiments
-[experiments]: /doc/user-guide/experiment-management/dvc-experiments
+[experiments]: /doc/user-guide/experiment-management/experiments-overview
 [queue]:
   /doc/user-guide/experiment-management/running-experiments#the-experiments-queue
 [checkpoints]: /doc/user-guide/experiment-management/checkpoints
 [persistent]:
-  /doc/user-guide/experiment-management/dvc-experiments#persistent-experiments
+  /doc/user-guide/experiment-management/experiments-overview#persistent-experiments
 
 📖 More information in the
-[full guide](/doc/user-guide/experiment-management/dvc-experiments).
+[full guide](/doc/user-guide/experiment-management/experiments-overview).
 
 > 👨‍💻 See [Get Started: Experiments](/doc/start/experiments) for a hands-on
 > introduction to DVC experiments.

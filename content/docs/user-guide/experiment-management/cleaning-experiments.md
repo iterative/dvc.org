@@ -5,7 +5,7 @@ clutter tables and the workspace. DVC allows to remove specific experiments from
 the workspace or delete all not-yet-[persisted] experiments at once.
 
 [persisted]:
-  /doc/user-guide/experiment-management/dvc-experiments#persistent-experiments
+  /doc/user-guide/experiment-management/experiments-overview#persistent-experiments
 
 ## Removing specific experiments
 

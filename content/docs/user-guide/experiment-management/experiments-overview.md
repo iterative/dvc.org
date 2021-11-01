@@ -1,6 +1,4 @@
-## DVC Experiments
-
-_New in DVC 2.0_
+## DVC Experiments Overview
 
 `dvc exp` commands let you automatically track a variation to an established
 [data pipeline](/doc/command-reference/dag) baseline. You can create multiple
