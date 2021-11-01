@@ -3,7 +3,7 @@ import React, { useCallback } from 'react'
 import { logEvent } from '../../../utils/front/ga'
 import { scrollIntoLayout, ease } from '../../../utils/front/scroll'
 
-import styles from './styles.module.css'
+import * as styles from './styles.module.css'
 
 interface ILearnMoreProps {
   scrollToRef: React.RefObject<HTMLElement>

@@ -10,8 +10,8 @@ import Section from '../Section'
 import { logEvent } from '../../../utils/front/ga'
 import { useCommunityData } from '../../../utils/front/community'
 
-import sharedStyles from '../styles.module.css'
-import styles from './styles.module.css'
+import * as sharedStyles from '../styles.module.css'
+import * as styles from './styles.module.css'
 
 export interface IEvent {
   theme: ICommunitySectionTheme
@@ -111,7 +111,7 @@ const Events: React.FC<{ theme: ICommunitySectionTheme }> = ({ theme }) => {
               </div>
             ))
           ) : (
-            <div className={styles.eventsPlaceholder}>
+            <div className={cn(styles.eventsPlaceholder, sharedStyles.gray)}>
               Subscribe to be up to date!{' '}
               <span role="img" aria-label="Subscribe below">
                 👇

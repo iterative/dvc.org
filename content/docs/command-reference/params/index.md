@@ -176,12 +176,12 @@ param values available in the <abbr>workspace</abbr>:
 
 ```dvc
 $ dvc params diff
-Path         Param           Old    New
-params.yaml  lr              —      0.0041
-params.yaml  process.bow     —      15000
-params.yaml  process.thresh  —      0.98
-params.yaml  train.epochs    —      70
-params.yaml  train.layers    —      9
+Path         Param           HEAD  workspace
+params.yaml  lr              —     0.0041
+params.yaml  process.bow     —     15000
+params.yaml  process.thresh  —     0.98
+params.yaml  train.epochs    —     70
+params.yaml  train.layers    —     9
 ```
 
 This command shows the difference in parameters between the workspace and the

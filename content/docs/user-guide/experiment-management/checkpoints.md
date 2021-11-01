@@ -189,14 +189,13 @@ for i in range(1, EPOCHS+1):
 The line `torch.save(model.state_dict(), "model.pt")` updates the checkpoint
 file.
 
-You can read about what the line `dvclive.log(k, v)` does in the
-[`dvclive.log()`](/doc/dvclive/api-reference/log) reference.
+You can read about what the line `dvclive.log(k, v)` does in the `Live.log()`
+reference.
 
-The [`dvclive.next_step()`](/doc/dvclive/api-reference/next_step) line tells DVC
-that it can take a snapshot of the entire workspace and version it with Git.
-It's important that with this approach only code with metadata is versioned in
-Git (as an ephemeral commit), while the actual model weight file will be stored
-in the DVC data <abbr>cache</abbr>.
+The `Live.next_step()`line tells DVC that it can take a snapshot of the entire
+workspace and version it with Git. It's important that with this approach only
+code with metadata is versioned in Git (as an ephemeral commit), while the
+actual model weight file will be stored in the DVC data <abbr>cache</abbr>.
 
 ## Running experiments
 
@@ -217,19 +216,19 @@ Generating lock file 'dvc.lock'
 Updating lock file 'dvc.lock'
 Checkpoint experiment iteration 'd99d81c'.
 
-file:///Users/milecia/Repos/checkpoints-tutorial/dvclive.html
+file:///Users/milecia/Repos/checkpoints-tutorial/dvclive_dvc_plots/index.html
 Epoch 2: loss=1.25374174118042
 Epoch 2: acc=0.7738
 Updating lock file 'dvc.lock'
 Checkpoint experiment iteration '963b396'.
 
-file:///Users/milecia/Repos/checkpoints-tutorial/dvclive.html
+file:///Users/milecia/Repos/checkpoints-tutorial/dvclive_dvc_plots/index.html
 Epoch 3: loss=0.7242147922515869
 Epoch 3: acc=0.8284
 Updating lock file 'dvc.lock'
 Checkpoint experiment iteration 'd630b92'.
 
-file:///Users/milecia/Repos/checkpoints-tutorial/dvclive.html
+file:///Users/milecia/Repos/checkpoints-tutorial/dvclive_dvc_plots/index.html
 Epoch 4: loss=0.5083536505699158
 Epoch 4: acc=0.8538
 Updating lock file 'dvc.lock'
@@ -361,7 +360,7 @@ table with the checkpoints you want to compare. You'll see something similar to
 this in your terminal.
 
 ```
-Path          Metric    Old      New      Change
+Path          Metric    d90179a  726d32f  Change
 dvclive.json  acc       0.9044   0.8185   -0.0859
 dvclive.json  loss      0.33246  0.83515  0.50269
 dvclive.json  step      6        8        2

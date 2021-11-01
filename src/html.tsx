@@ -2,9 +2,9 @@
 import React from 'react'
 
 interface IHTMLProps {
-  htmlAttributes: object
+  htmlAttributes: Record<string, unknown>
   headComponents: Array<React.ReactNode>
-  bodyAttributes: object
+  bodyAttributes: Record<string, unknown>
   preBodyComponents: Array<React.ReactNode>
   body: string
   postBodyComponents: Array<React.ReactNode>
