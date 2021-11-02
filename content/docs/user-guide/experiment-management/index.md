@@ -65,6 +65,8 @@ DVC takes care of arranging `dvc exp` experiments and the data
 <abbr>cache</abbr> under the hood so there's no need to decide on the above
 until your experiments are made [persistent].
 
+[persistent]: /doc/user-guide/experiment-management/persisting-experiments
+
 ## Run Cache: Automatic Log of Stage Runs
 
 Every time you [reproduce](/doc/command-reference/repro) a pipeline with DVC, it

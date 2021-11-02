@@ -1,4 +1,4 @@
-## DVC Experiments Overview
+# DVC Experiments Overview
 
 `dvc exp` commands let you automatically track a variation to a committed
 project version (baseline). You can create independent groups of experiments
@@ -14,25 +14,8 @@ goes like this:
   experiment(s).
 - Visualize and compare experiments with `dvc exp show` or `dvc exp diff`.
   Repeat 🔄
-- Make certain experiments [persistent](#persistent-experiments) by committing
-  their results to Git. This cleans the slate so you can repeat the process
-  later.
+- Make certain experiments [persistent] by committing their results to Git. This
+  cleans the slate so you can repeat the process later.
 
 [run experiments]: /doc/user-guide/experiment-management/running-experiments
 [persistent]: /doc/user-guide/experiment-management/persisting-experiments
-
-## Persistent Experiments
-
-📖 See [full guide][persistent].
-
-When your experiments are good enough to save or share, you may want to store
-them persistently as Git commits in your <abbr>repository</abbr>.
-
-Whether the results were produced with `dvc repro` directly, or after a
-`dvc exp` workflow, `dvc.yaml` and `dvc.lock` will define the experiment as a
-new project version. The right <abbr>outputs</abbr> (including
-[metrics](/doc/command-reference/metrics)) should also be present, or available
-via `dvc checkout`.
-
-Use `dvc exp apply` and `dvc exp branch` to persist experiments in your Git
-history.

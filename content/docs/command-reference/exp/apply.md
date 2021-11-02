@@ -19,8 +19,7 @@ been made after the experiment was run (`HEAD` hasn't moved). The `experiment`
 can be referenced by name or hash (see `dvc exp run` for details).
 
 This is typically used after choosing a target `experiment` with `dvc exp show`
-or `dvc exp diff`, and before committing it to Git (making it
-[persistent](/doc/user-guide/experiment-management/experiments-overview#persistent-experiments)).
+or `dvc exp diff`, and before committing it to Git (making it [persistent].
 
 `dvc exp apply` changes any files (code, data, <abbr>parameters</abbr>,
 <abbr>metrics</abbr>, etc.) needed to reflect the experiment conditions and
@@ -30,9 +29,11 @@ results in the workspace.
 the experiment in question, in which case they are overwritten (unless
 `--no-force` is used).
 
-Note that the history of
-[checkpoints](/doc/command-reference/exp/run#checkpoints) found in the
-`experiment` is **not** preserved when applying and committing it.
+Note that the history of [checkpoints] found in the `experiment` is **not**
+preserved when applying and committing it.
+
+[persistent]: /doc/user-guide/experiment-management/persisting-experiments
+[checkpoints]: /doc/command-reference/exp/run#checkpoints
 
 ## Options
 

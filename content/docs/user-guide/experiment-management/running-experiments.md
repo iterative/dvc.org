@@ -231,8 +231,7 @@ Note that Git-ignored files/dirs are explicitly excluded from queued/temp runs
 to avoid committing unwanted files into Git (e.g. once successful experiments
 are [persisted]).
 
-[persisted]:
-  /doc/user-guide/experiment-management/experiments-overview#persistent-experiments
+[persistent]: /doc/user-guide/experiment-management/persisting-experiments
 
 > 💡 To include untracked files, stage them with `git add` first (before
 > `dvc exp run`) and `git reset` them afterwards.

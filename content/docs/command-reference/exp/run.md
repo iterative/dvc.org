@@ -54,13 +54,14 @@ and compare multiple experiments, use `dvc exp show` or `dvc exp diff`
 (`plots diff` also accepts experiment names as `revisions`). Use `dvc exp apply`
 to restore the results of any other experiment instead.
 
-Successful experiments can be made
-[persistent](/doc/user-guide/experiment-management/experiments-overview#persistent-experiments)
-by committing them to the Git repo. Unnecessary ones can be removed with
-`dvc exp remove`or `dvc exp gc` (or abandoned).
+Successful experiments can be made [persistent] by committing them to the Git
+repo. Unnecessary ones can be removed with `dvc exp remove`or `dvc exp gc` (or
+abandoned).
 
 > Note that experiment data will remain in the <abbr>cache</abbr> until you use
 > regular `dvc gc` to clean it up.
+
+[persistent]: /doc/user-guide/experiment-management/persisting-experiments
 
 ## Checkpoints
 

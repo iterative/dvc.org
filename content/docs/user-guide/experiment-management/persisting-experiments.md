@@ -1,11 +1,9 @@
 # Persisting Experiments
 
-DVC runs experiments outside of the Git stage/commit cycle for quick iteration.
-When your experiments are good enough to save or share, you may want to store
-them persistently as Git commits in your repository.
-
-In this section, we describe how to bring them to the standard Git workflow with
-`dvc exp branch` and `dvc exp apply`.
+DVC Experiments run outside of the regular Git workflow for faster iteration and
+to avoid polluting your <abbr>repository</abbr>'s history. Once experiments are
+good enough to keep or distribute, you may want to store them persistently as
+Git commits.
 
 ## Create a Git branch from an experiment
 
