@@ -1,6 +1,6 @@
 # Comparing Experiments
 
-You'll need a way to compare experiments based on their results and
+You'll need a way to compare experiment results and track their
 corresponding parameters. DVC provides commands to list, tabulate and contrast
 them. Let's see how they can help you streamline the experimentation process.
 
