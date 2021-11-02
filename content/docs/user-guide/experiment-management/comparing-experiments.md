@@ -115,9 +115,8 @@ $ dvc exp show
 └───────────────────────┴──────────────┴─────────┴────────┴──────────────┴──────────────────┘
 ```
 
-`dvc exp show` tabulates the experiments only in the workspace and the `HEAD` of
-the current branch. You can use `--all` flag to show all the experiments in the
-project instead.
+`dvc exp show` only tabulates experiments in the workspace and in `HEAD`.
+You can use `--all` flag to show all the experiments in the project instead.
 
 ## Customize the table of experiments
 
