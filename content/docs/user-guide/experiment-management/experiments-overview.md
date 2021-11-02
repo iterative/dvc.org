@@ -1,5 +1,11 @@
 # DVC Experiments Overview
 
+DVC Experiments are captures automatically by DVC when you [run them].
+
+[run them]: /doc/user-guide/experiment-management/running-experiments
+
+## Basic Workflow
+
 `dvc exp` commands let you automatically track a variation to a committed
 project version (baseline). You can create independent groups of experiments
 this way, as well as review, compare, and restore them later. The basic workflow
