@@ -10,7 +10,7 @@ descriptionLong: >
   scale.
 picture:
 pictureComment:
-author: milecia_mcgregor
+author: dave_berenbaum
 commentsUrl:
 tags:
   - MLOps
