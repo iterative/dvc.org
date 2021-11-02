@@ -8,10 +8,10 @@ descriptionLong: >
   With DVC experiments, you can take ML experiment tracking to the next level,
   making it easy and powerful to save, compare, and reproduce experiments at
   scale.
-picture: ???
-pictureComment: Keep your experiments from floating away
-author: dave_berenbaum
-commentsUrl: https://discuss.dvc.org/t/exp-versioning/???
+picture:
+pictureComment:
+author: milecia_mcgregor
+commentsUrl:
 tags:
   - MLOps
   - DVC
