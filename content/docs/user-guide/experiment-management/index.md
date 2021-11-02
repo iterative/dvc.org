@@ -1,8 +1,8 @@
 # Experiment Management
 
-Data science and ML are iterative processes that require a large number of
-attempts to reach a certain level of a metric. Experimentation is part of the
-development of data features, hyperspace exploration, deep learning
+Data science and machine learning are iterative processes that require a large
+number of attempts to reach a certain level of a metric. Experimentation is part
+of the development of data features, hyperspace exploration, deep learning
 optimization, etc.
 
 Some of DVC's base features already help you codify and analyze experiments.
@@ -12,35 +12,30 @@ the other end, [metrics](/doc/command-reference/metrics) (and
 [plots](/doc/command-reference/plots)) let you define, visualize, and compare
 quantitative measures of your results.
 
-## DVC Experiments
+## Experimentation methods in DVC
 
 _New in DVC 2.0_
 
-DVC experiment management features are designed to support these main
-approaches:
+DVC experiment management features build on top of base DVC features to form a
+comprehensive framework to organize, execute, manage, and share ML experiments.
+They support support these main approaches:
 
-1. [Run] and capture [experiments] that derive from your latest project version
-   without polluting your Git history. DVC tracks them for you, letting you list
-   and compare them. The best ones can be made persistent, and the rest left as
-   history or cleared.
-1. [Queue] and process series of experiments based on a parameter search or
-   other modifications to your baseline.
-1. Generate [checkpoints] during your code execution to analyze the internal
-   progress of deep experiments. DVC captures them at runtime, and can manage
-   them in batches.
-1. Make experiments [persistent] by committing them to your
-   <abbr>repository</abbr> history.
+- Compare params and metrics of existing project versions (for example different
+  Git branches) against each other or against new results in your workspace
+  (without committing them).
 
-[run]: /doc/user-guide/experiment-management/running-experiments
+- [Run and capture] multiple experiments (derived from any project version as
+  baseline) without polluting your Git history. DVC tracks them for you, letting
+  you compare and share them. 📖 More info in the [Experiments
+  Overview][experiments].
+
+- Generate [checkpoints] during your code execution to analyze the internal
+  progress of deep experiments. DVC captures [live metrics](/doc/dvclive) at
+  runtime, and lets you manage them in batches.
+
+[run and capture]: /doc/user-guide/experiment-management/running-experiments
 [experiments]: /doc/user-guide/experiment-management/experiments-overview
-[queue]:
-  /doc/user-guide/experiment-management/running-experiments#the-experiments-queue
 [checkpoints]: /doc/user-guide/experiment-management/checkpoints
-[persistent]:
-  /doc/user-guide/experiment-management/experiments-overview#persistent-experiments
-
-📖 More information in the
-[full guide](/doc/user-guide/experiment-management/experiments-overview).
 
 > 👨‍💻 See [Get Started: Experiments](/doc/start/experiments) for a hands-on
 > introduction to DVC experiments.
@@ -55,10 +50,12 @@ main alternatives:
   other. Helpful if the Git [revisions](https://git-scm.com/docs/revisions) can
   be easily visualized, for example with tools
   [like GitHub](https://docs.github.com/en/github/visualizing-repository-data-with-graphs/viewing-a-repositorys-network).
+
 - **Directories** - the project's "space dimension" can be structured with
   directories (folders) to organize experiments. Useful when you want to see all
   your experiments at the same time (without switching versions) by just
   exploring the file system.
+
 - **Hybrid** - combining an intuitive directory structure with a good repo
   branching strategy tends to be the best option for complex projects.
   Completely independent experiments live in separate directories, while their
