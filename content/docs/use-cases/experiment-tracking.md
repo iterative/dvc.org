@@ -1,5 +1,7 @@
 # Machine Learning Experiment Tracking
 
+<!-- The essential unit of progress in an ML project is an experiment -->
+
 Iterating on data science implies a large number of attempts involving tuning
 parameters, improving code, trying different data, and collecting metrics; for
 example to optimize the accuracy of an ML model. Keeping track of all these
@@ -22,19 +24,19 @@ information.
 You can handle experiments them with simple terminal
 [commands](/doc/command-reference/exp). What you can do includes:
 
-- Rapid iteration on experiment ideas by capturing variations from a baseline
-  with a controlled execution command (`dvc exp run`).
+- Rapid iteration on experiment ideas (variations from a baseline) with a
+  controlled execution command (`dvc exp run`).
 - Automatic bookkeeping of changes to data dependencies, code,
-  <abbr>parameters</abbr>, artifacts and <abbr>metrics</abbr> when you run each
-  experiment.
+  <abbr>parameters</abbr>, artifacts and <abbr>metrics</abbr> on each experiment
+  run.
 - Queue experiments for future execution (and run them in parallel if needed).
 - Create deep [checkpoints](/doc/user-guide/experiment-management/checkpoints)
   from your code, and track [live metrics](/doc/dvclive).
-- List and compare previous experiments in a consolidated way (order and filter
-  by parameters or metrics).
+- Review and compare previous experiments or checkpoints based on params or
+  metrics.
 - Restore any experiment results from <abbr>cache</abbr>, or reproduce them from
   scratch.
-- Promote, save, share, or discard experiments individually or in bulk.
+- Save, share, or discard experiments individually or in bulk.
 
 Unlike tools that focus on experiment navigation, DVC's approach also guarantees
 reproducibility by integrating with Git directly (instead of saving fragile
@@ -51,6 +53,9 @@ optional hosting like GitHub or GitLab.
 | Collaboration     | Distributed<br/>(Git hosting) | Centralized           | Centralized                 | Centralized        |
 | Licensing         | Open Source                   | Open Source           | Proprietary<br/>+ OS client | Proprietary        |
 | Cost              | Free + [storage]              | Free [+ cloud][mp]    | [$$$][np]                   | [$$][wp]           |
+
+<!-- how are we defining 'Centralized' for collaboration? I think it might be stronger if we phrase it differently -->
+<!-- Pipeline integration is one key difference imo (maybe worth a new row?) . You would need to use complementary tool for pipelines in both MLFlow ans Wandb -->
 
 [studio]: https://studio.iterative.ai/
 [storage]: /doc/command-reference/remote/add#supported-storage-types
@@ -70,5 +75,7 @@ CSV data frames or HDFS.
 💡 Note that other experiment tracking tools can be complementary with DVC, for
 example as more detailed experiment logging systems with specialized analytics
 and visualizations.
+
+<!-- Mention Studio and CI/CD? (CML) -->
 
 > 📖 Ready to dive in? See [Get Started: Experiments](/doc/start/experiments).
