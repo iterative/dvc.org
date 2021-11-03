@@ -38,10 +38,34 @@ You can handle experiments them with simple terminal
   scratch.
 - Save, share, or discard experiments individually or in bulk.
 
-Unlike tools that focus on experiment navigation, DVC's approach also guarantees
+```dvctable
+┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━┓
+┃ white:**Experiment**              ┃ white:**Created**      ┃ yellow:**loss**    ┃ yellow:**acc**    ┃ blue:**train.epochs** ┃ blue:**model.conv_units** ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━┩
+│ workspace               │ -            │ 0.23508 │ 0.9151 │ 10           │ 24               │
+│ 7317bc6                 │ Jul 18, 2021 │       - │      - │ 10           │ 16               │
+│ ├── e2647ef [exp-ee8a4] │ 05:14 PM     │ 0.23146 │ 0.9145 │ 10           │ 64               │
+│ ├── 15c9451 [exp-a9be6] │ 05:14 PM     │ 0.25231 │ 0.9102 │ 10           │ 32               │
+│ ├── 9c32227 [exp-17dd9] │ 04:46 PM     │ 0.23687 │ 0.9167 │ 10           │ 256              │
+│ ├── 8a9cb15 [exp-29d93] │ 04:46 PM     │ 0.24459 │ 0.9134 │ 10           │ 128              │
+└─────────────────────────┴──────────────┴─────────┴────────┴──────────────┴──────────────────┘
+```
+
+![]() _Organized experiments in DVC_
+
+Unlike tools that focus on experiment navigation, DVC's approach guarantees
 reproducibility by integrating with Git directly (instead of saving fragile
 versioning metadata). This enables distributed collaboration along the way, via
 optional hosting like GitHub or GitLab.
+
+DVC projects are lightweight and local-first (no need for special servers or
+services). This means you control where and how your data is saved and shared.
+They can also make more efficient use of storage via <abbr>caching</abbr>, which
+prevents repetitive data transfers for every experiment run.
+
+On top of all that, DVC is completely language agnostic. You can expect the same
+convenience and performance whether you are using Jupyter Notebooks or Scala,
+CSV data frames or HDFS.
 
 |                   | DVC Experiments               | MLFlow                | Weights & Biases            | Neptune            |
 | ----------------- | ----------------------------- | --------------------- | --------------------------- | ------------------ |
@@ -62,15 +86,6 @@ optional hosting like GitHub or GitLab.
 [np]: https://neptune.ai/pricing
 [wp]: https://wandb.ai/site/pricing
 [mp]: https://databricks.com/product/pricing
-
-DVC projects are lightweight and local-first (no need for special servers or
-services). This means you control where and how your data is saved and shared.
-They can also make more efficient use of storage via <abbr>caching</abbr>, which
-prevents repetitive data transfers for every experiment run.
-
-On top of all that, DVC is completely language agnostic. You can expect the same
-convenience and performance whether you are using Jupyter Notebooks or Scala,
-CSV data frames or HDFS.
 
 💡 Note that other experiment tracking tools can be complementary with DVC, for
 example as more detailed experiment logging systems with specialized analytics
