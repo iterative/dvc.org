@@ -29,42 +29,48 @@ include:
   scratch.
 - Promote, save, share, or discard experiments individually or in bulk.
 
-## Tracking experiments with DVC
-
-DVC Experiments automatically capture all the changes to your project (code,
-data, parameters, etc.), as well as to results (ML models, metrics, any
-artifacts). This is possible because your data processes are codified with DVC,
-which enables
+DVC Experiments can capture all the relevant changes to your project
+automatically (code, data, parameters, ML models, metrics, etc.) because your
+data processes are codified with DVC, which enables
 [tracking & versioning](/doc/use-cases/versioning-data-and-model-files) all of
-this data.
+this information.
 
-|                | DVC Experiments          | MLFlow             | Weights & Balances | Neptune      |
-| -------------- | ------------------------ | ------------------ | ------------------ | ------------ |
-| UI             | Terminal + [Web][studio] | Web                | Web                | Web?         |
-| Integration    | Any (language agnostic)  | Python API         | Python API         | Python?      |
-| Infrastructure | None (just Git & DVC)    | on-prem/SAS        | SAS/on-prem        | SAS?         |
-| Versioning     | Git (portable)           | Custom             | Custom             | Custom       |
-| Storage        | User (yours)             | Cloud (yours)      | Theirs             | Theirs?      |
-| Collaboration  | Distributed              | Centralized        | Centralized        | Centralized? |
-| Licensing      | Open Source              | Open Source        | Proprietary        | Open Source? |
-| Cost           | Free\* + storage         | Free [+ cloud][mp] | [$$$][np]          | [$$][wp]     |
+Unlike tools that focus on experiment navigation, DVC's approach also guarantees
+reproducibility by integrating with Git directly (instead of saving fragile
+versioning metadata). This enables distributed collaboration along the way, via
+optional hosting like GitHub or GitLab.
+
+|                   | DVC Experiments               | MLFlow                | Weights & Biases            | Neptune            |
+| ----------------- | ----------------------------- | --------------------- | --------------------------- | ------------------ |
+| UI                | Terminal<br/>+ [Web][studio]  | Web (local or hosted) | Web                         | Web                |
+| Infrastructure    | None (just Git)               | Web server            | SaaS                        | SaaS               |
+| Versioning        | Git (standard, robust)        | Metadata (fragile)    | Metadata (fragile)          | Metadata (fragile) |
+| Language Support  | Any<br/>(agnostic)            | Several (REST)        | Python only                 | Python only        |
+| Compute & Storage | User (yours)                  | User (yours)          | Theirs                      | Theirs             |
+| Collaboration     | Distributed<br/>(Git hosting) | Centralized           | Centralized                 | Centralized        |
+| Licensing         | Open Source                   | Open Source           | Proprietary<br/>+ OS client | Proprietary        |
+| Cost              | Free + [storage]              | Free [+ cloud][mp]    | [$$$][np]                   | [$$][wp]           |
 
 > \* All of DVC features are free to use on terminal. The [Studio] (web UI) is
 > free for individuals.
 
 [studio]: https://studio.iterative.ai/
+[storage]: /doc/command-reference/remote/add#supported-storage-types
 [np]: https://neptune.ai/pricing
 [wp]: https://wandb.ai/site/pricing
 [mp]: https://databricks.com/product/pricing
 
-You can enjoy the full power of DVC Experiments on any machine, without need for
-special infrastructure or servers. The only other software required is Git, but
-you don't need to worry about how it's used internally! Everything your team may
-need for a regular version control workflow later will still be available.
+DVC projects are lightweight and local-first (no need for special servers or
+services). This means you control where and how your data is saved and shared.
+They can also make more efficient use of storage via <abbr>caching</abbr>, which
+prevents repetitive data transfers for every experiment run.
 
-On top of that, DVC Experiment features are language agnostic. You can expect
-the same convenience and performance whether you are using Jupyter Notebooks or
-Scala, CSV data frames or HDFS partitions. DVC also uses standard formats like
-JSON and YAML config files that are easy to reuse and port on any other system.
+On top of all that, DVC is completely language agnostic. You can expect the same
+convenience and performance whether you are using Jupyter Notebooks or Scala,
+CSV data frames or HDFS partitions.
+
+💡 Note that other experiment tracking tools can be complementary with DVC, for
+example as more detailed experiment logging systems with built-in analytics and
+visualizations.
 
 > 📖 Ready to dive in? See [Get Started: Experiments](/doc/start/experiments).
