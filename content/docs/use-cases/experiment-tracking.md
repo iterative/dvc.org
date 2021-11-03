@@ -1,19 +1,26 @@
 # Machine Learning Experiment Tracking
 
-Iterating on data science implies a large number of attempts at tuning
-parameters, improving code, trying different data, and collecting metrics, for
-example to optimize an ML model's accuracy. Keeping track of all these
-<abbr>experiments</abbr> is challenging but essential, as we'll need to compare,
-visualize, reproduce, share, and _productionize_ the results. We also want to be
-able to reconnect the lineage of recorded metrics back to their original setup.
+Iterating on data science implies a large number of attempts involving tuning
+parameters, improving code, trying different data, and collecting metrics; for
+example to optimize the accuracy of an ML model. Keeping track of all these
+changes is challenging but essential, as we may need to review, compare,
+reproduce, and share the <abbr>experiments</abbr>. We'll probably also want to
+reconnect model metrics back to their original setup, and reproduce them if
+needed.
 
 ![](/img/natural-experimentation.png) _Loose experimentation_
 
 DVC provides a layer of
-[experiment management](/doc/user-guide/experiment-management) features to take
-automatic snapshots of any variations in your project, and handle them with
-simple terminal [commands](/doc/command-reference/exp). Some things you can do
-include:
+[experiment management](/doc/user-guide/experiment-management) features to
+assist the full lifecycle of the ML modeling process. **DVC Experiments** can
+run and capture all the relevant changes to your project automatically (code,
+data, parameters, ML models, metrics, etc.) because your data processes are
+codified with DVC, which enables
+[tracking & versioning](/doc/use-cases/versioning-data-and-model-files) all this
+information.
+
+You can handle experiments them with simple terminal
+[commands](/doc/command-reference/exp). What you can do includes:
 
 - Rapid iteration on experiment ideas by capturing variations from a baseline
   with a controlled execution command (`dvc exp run`).
@@ -28,12 +35,6 @@ include:
 - Restore any experiment results from <abbr>cache</abbr>, or reproduce them from
   scratch.
 - Promote, save, share, or discard experiments individually or in bulk.
-
-DVC Experiments can capture all the relevant changes to your project
-automatically (code, data, parameters, ML models, metrics, etc.) because your
-data processes are codified with DVC, which enables
-[tracking & versioning](/doc/use-cases/versioning-data-and-model-files) all of
-this information.
 
 Unlike tools that focus on experiment navigation, DVC's approach also guarantees
 reproducibility by integrating with Git directly (instead of saving fragile
@@ -51,9 +52,6 @@ optional hosting like GitHub or GitLab.
 | Licensing         | Open Source                   | Open Source           | Proprietary<br/>+ OS client | Proprietary        |
 | Cost              | Free + [storage]              | Free [+ cloud][mp]    | [$$$][np]                   | [$$][wp]           |
 
-> \* All of DVC features are free to use on terminal. The [Studio] (web UI) is
-> free for individuals.
-
 [studio]: https://studio.iterative.ai/
 [storage]: /doc/command-reference/remote/add#supported-storage-types
 [np]: https://neptune.ai/pricing
@@ -67,10 +65,10 @@ prevents repetitive data transfers for every experiment run.
 
 On top of all that, DVC is completely language agnostic. You can expect the same
 convenience and performance whether you are using Jupyter Notebooks or Scala,
-CSV data frames or HDFS partitions.
+CSV data frames or HDFS.
 
 💡 Note that other experiment tracking tools can be complementary with DVC, for
-example as more detailed experiment logging systems with built-in analytics and
-visualizations.
+example as more detailed experiment logging systems with specialized analytics
+and visualizations.
 
 > 📖 Ready to dive in? See [Get Started: Experiments](/doc/start/experiments).
