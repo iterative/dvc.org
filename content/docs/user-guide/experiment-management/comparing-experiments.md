@@ -1,8 +1,8 @@
 # Comparing Experiments
 
-You'll need a way to compare experiment results and track their
-corresponding parameters. DVC provides commands to list, tabulate and contrast
-them. Let's see how they can help you streamline the experimentation process.
+You'll need a way to compare experiment results and track their corresponding
+parameters. DVC provides commands to list, tabulate and contrast them. Let's see
+how they can help you streamline the experimentation process.
 
 ## List experiments in the workspace
 
@@ -115,8 +115,8 @@ $ dvc exp show
 └───────────────────────┴──────────────┴─────────┴────────┴──────────────┴──────────────────┘
 ```
 
-`dvc exp show` only tabulates experiments in the workspace and in `HEAD`.
-You can use `--all` flag to show all the experiments in the project instead.
+`dvc exp show` only tabulates experiments in the workspace and in `HEAD`. You
+can use `--all` flag to show all the experiments in the project instead.
 
 ## Customize the table of experiments
 
