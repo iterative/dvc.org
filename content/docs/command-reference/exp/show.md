@@ -77,8 +77,8 @@ metric or param.
 - `--only-changed` - show only parameters and metrics with values that vary
   across experiments. Note that this option takes precedence over
   `--include-params` and `--include-metrics`, for example given
-  `--include-params=foo --only-changed`, param `foo` would still be hidden
-  if its value is the same in all experiments.
+  `--include-params=foo --only-changed`, param `foo` would still be hidden if
+  its value is the same in all experiments.
 
 - `--include-params <list>` - show the specified `dvc params` in the table only.
   Accepts a comma-separated `list` of param names. Shell style wildcards
