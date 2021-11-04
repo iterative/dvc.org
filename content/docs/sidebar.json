@@ -149,6 +149,7 @@
         "source": "experiment-management/index.md",
         "children": [
           "running-experiments",
+          "comparing-experiments",
           "sharing-experiments",
           "persisting-experiments",
           "cleaning-experiments",

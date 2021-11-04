@@ -15,6 +15,7 @@ usage: dvc exp show [-h] [-q | -v] [-a] [-T] [-A] [-n <num>]
                     [--sort-by <metric/param>]
                     [--sort-order {asc,desc}] [--no-timestamp] [--sha]
                     [--json] [--csv] [--md] [--precision <n>]
+                    [--only-changed]
 ```
 
 ## Description
@@ -72,6 +73,12 @@ metric or param.
   paginator.
 
 - `--param-deps` - include only parameters that are stage dependencies.
+
+- `--only-changed` - show only parameters and metrics with values that vary
+  across experiments. Note that this option takes precedence over
+  `--include-params` and `--include-metrics`, for example given
+  `--include-params=foo --only-changed`, param `foo` would still be hidden if
+  its value is the same in all experiments.
 
 - `--include-params <list>` - show the specified `dvc params` in the table only.
   Accepts a comma-separated `list` of param names. Shell style wildcards
@@ -169,6 +176,22 @@ $ dvc exp show --include-params=featurize
 │ ├── exp-1dad0         │ Oct 09, 2020 │ 0.57756 │ 2000                   │ 2                │
 │ └── exp-1df77         │ Oct 09, 2020 │ 0.51676 │ 500                    │ 2                │
 └───────────────────────┴──────────────┴─────────┴────────────────────────┴──────────────────┘
+```
+
+You can also filter out any metrics and parameters that do not change across the
+shown experiments:
+
+```dvc
+$ dvc exp show --only-changed
+┏━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ Experiment            ┃ Created      ┃     auc ┃ featurize.max_features ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ workspace             │ -            │ 0.61314 │ 1500                   │
+│ 10-bigrams-experiment │ Jun 20, 2020 │ 0.61314 │ 1500                   │
+│ ├── exp-e6c97         │ Oct 21, 2020 │ 0.61314 │ 1500                   │
+│ ├── exp-1dad0         │ Oct 09, 2020 │ 0.57756 │ 2000                   │
+│ └── exp-1df77         │ Oct 09, 2020 │ 0.51676 │ 500                    │
+└───────────────────────┴──────────────┴─────────┴────────────────────────┘
 ```
 
 Sort experiments by the `auc` metric, in ascending order:
