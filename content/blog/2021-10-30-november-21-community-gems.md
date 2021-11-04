@@ -50,7 +50,18 @@ repo.experiments.show()
 etc...
 ```
 
-### []()
+### [How can you check if a DVC tracked directory has changes?](https://discord.com/channels/485586884165107732/563406153334128681/899693929560158218)
+
+Good question from @edran!
+
+You can check which directories have been changed by running:
+
+```dvc
+$ dvc status
+```
+
+We're working on adding granularity support for this command and should have a
+release for this in the next few months.
 
 ### []()
 
