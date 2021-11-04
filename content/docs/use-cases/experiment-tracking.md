@@ -1,7 +1,5 @@
 # Machine Learning Experiment Tracking
 
-<!-- The essential unit of progress in an ML project is an experiment -->
-
 Iterating on data science implies a large number of attempts involving tuning
 parameters, improving code, trying different data, and collecting metrics; for
 example to optimize the accuracy of an ML model. Keeping track of all these
@@ -78,9 +76,6 @@ CSV data frames or HDFS.
 | Licensing         | Open Source                   | Open Source           | Proprietary<br/>+ OS client | Proprietary        |
 | Cost              | Free + [storage]              | Free [+ cloud][mp]    | [$$$][np]                   | [$$][wp]           |
 
-<!-- how are we defining 'Centralized' for collaboration? I think it might be stronger if we phrase it differently -->
-<!-- Pipeline integration is one key difference imo (maybe worth a new row?) . You would need to use complementary tool for pipelines in both MLFlow ans Wandb -->
-
 [studio]: https://studio.iterative.ai/
 [storage]: /doc/command-reference/remote/add#supported-storage-types
 [np]: https://neptune.ai/pricing
@@ -90,7 +85,5 @@ CSV data frames or HDFS.
 💡 Note that other experiment tracking tools can be complementary with DVC, for
 example as more detailed experiment logging systems with specialized analytics
 and visualizations.
-
-<!-- Mention Studio and CI/CD? (CML) -->
 
 > 📖 Ready to dive in? See [Get Started: Experiments](/doc/start/experiments).
