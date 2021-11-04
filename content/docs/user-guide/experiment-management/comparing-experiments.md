@@ -142,8 +142,9 @@ $ dvc exp show --include-params train.epochs --include-metrics auc,precision
 └───────────────────────┴──────────────┴─────────┴────────┴──────────────┘
 ```
 
-Alternatively, you can exclude certain parameters and metrics from the
-table by `--exclude-params` and `--exclude-metrics` options. These also take a comma-separated list.
+Alternatively, you can exclude certain parameters and metrics from the table by
+`--exclude-params` and `--exclude-metrics` options. These also take a
+comma-separated list.
 
 ```dvc
 $ dvc exp show --exclude-params train.epochs --exclude-metrics auc
@@ -180,11 +181,12 @@ $ dvc exp show --no-timestamp --include-params=model.conv_units --exclude-metric
 
 By default `dvc exp show` sorts the experiments by their timestamp. You can sort
 the columns by params or metrics by the option `--sort-by` and `--sort-order`.
-`--sort-by` takes a metric or parameter name, and `--sort-order` takes either `asc` or `desc`.
+`--sort-by` takes a metric or parameter name, and `--sort-order` takes either
+`asc` or `desc`.
 
 ```dvc
 $ dvc exp show --sort-by auc --sort-order desc
-`````
+```
 
 ```dvctable
 ┏━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━━━━━┓
