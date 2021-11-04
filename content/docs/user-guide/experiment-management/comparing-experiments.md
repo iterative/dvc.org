@@ -197,8 +197,9 @@ $ dvc exp show --sort-by auc --sort-order desc
 
 ## Get experiments table in JSON
 
-It's also possible to output the table of experiments in a machine-readable format,
-for example to parse in scripts. To do so, use the `--json` or `--csv` options.
+It's also possible to output the table of experiments in a machine-readable
+format, for example to parse in scripts. To do so, use the `--json` or `--csv`
+options.
 
 ```dvc
 $ dvc exp show --json
@@ -326,8 +327,8 @@ cnn-64,6d13f33,branch_commit,2021-09-09T13:06:05,,0.2338544875383377,0.915300011
 cnn-128,69503c6,branch_commit,2021-09-09T12:53:51,,0.2324332743883133,0.9160000085830688,10,128
 ```
 
-For example, let's parse the CSV output with [csvkit] to
-get a statistical summary about the experiments:
+For example, let's parse the CSV output with [csvkit] to get a statistical
+summary about the experiments:
 
 ```dvc
 $ dvc exp show --csv | csvstat
@@ -356,8 +357,8 @@ $ dvc exp show --csv | csvstat
 ## Compare specific experiments
 
 In addition to showing a summary table of experiments, DVC provides the
-`dvc exp diff` command to compare pairs of experiments by the difference
-in their metrics and params.
+`dvc exp diff` command to compare pairs of experiments by the difference in
+their metrics and params.
 
 ```dvc
 $ dvc exp diff
