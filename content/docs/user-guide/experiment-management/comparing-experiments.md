@@ -131,7 +131,7 @@ comma-separated parameter or metrics names (defined in `dvc.yaml`).
 $ dvc exp show --include-params train.epochs --include-metrics auc,precision
 ```
 
-`````dvctable
+```dvctable
 ┏━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━┓
 ┃ neutral:**Experiment**            ┃ neutral:**Created**      ┃    metric:**loss** ┃    metric:**acc** ┃ param:**train.epochs** ┃
 ┡━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━┩
@@ -140,6 +140,7 @@ $ dvc exp show --include-params train.epochs --include-metrics auc,precision
 │ ├── 6d13f33 [cnn-64]  │ Sep 09, 2021 │ 0.23385 │ 0.9153 │ 10           │
 │ └── 69503c6 [cnn-128] │ Sep 09, 2021 │ 0.23243 │  0.916 │ 10           │
 └───────────────────────┴──────────────┴─────────┴────────┴──────────────┘
+```
 
 Alternatively, you can exclude certain parameters and metrics from the
 table by `--exclude-params` and `--exclude-metrics` options. These also take a comma-separated list.
@@ -166,7 +167,7 @@ hide it with `--no-timestamp` option.
 $ dvc exp show --no-timestamp --include-params=model.conv_units --exclude-metrics=loss
 ```
 
-````dvctable
+```dvctable
 ┏━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━━━━━┓
 ┃ neutral:**Experiment**            ┃    metric:**acc** ┃ param:**model.conv_units** ┃
 ┡━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━━━━━┩
@@ -175,6 +176,7 @@ $ dvc exp show --no-timestamp --include-params=model.conv_units --exclude-metric
 │ ├── 6d13f33 [cnn-64]  │ 0.9153 │ 64               │
 │ └── 69503c6 [cnn-128] │  0.916 │ 128              │
 └───────────────────────┴────────┴──────────────────┘
+```
 
 By default `dvc exp show` sorts the experiments by their timestamp. You can sort
 the columns by params or metrics by the option `--sort-by` and `--sort-order`.
