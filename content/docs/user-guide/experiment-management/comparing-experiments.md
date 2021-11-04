@@ -481,7 +481,6 @@ $ dvc exp diff exp-25a26 cnn-64 --json | jq '.metrics."metrics.json".acc'
 
 ### Get the comparison in Markdown table format
 
-`dvc exp diff` has also an option to output a [Github-Flavored Markdown][gfm]
 table to embed in the reports directly.
 
 [gfm]: https://github.github.com/gfm/#tables-extension-
