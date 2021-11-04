@@ -51,13 +51,13 @@ What this will be is a place for people in the greater MLOps Community to come
 and work out their architecture issues. This could be a small piece of the
 puzzle or the greater architecture of your entire workflow and tool stack.  
 What we aim to provide you is a place to work it out and all the components you
-need to create it fast (Or as fast as possible, given that this is complicated
+need to create it fast (or as fast as possible, given that this is complicated
 stuff!). Your work in here will likely help other Community members struggling
 with the same issues.
 
 ### Who is this board for?
 
-Everyone! You don't just have to use Iterative tools to use this board. We know
+Everyone! You don't have to use only Iterative tools to use this board. We know
 that our tools are good building blocks in your MLOps tools stack, but there are
 many other tools. And our tools integrate with many. Feel free to work out your
 diagram even if it does not use our tools. We're all in this together!
@@ -73,7 +73,7 @@ diagram even if it does not use our tools. We're all in this together!
    few and far between.
 2. Stake your ground in Miro's infinite board.
 
-https://media.giphy.com/media/vbwBqdnVGAF2mNyq62/giphy.gif
+   https://media.giphy.com/media/vbwBqdnVGAF2mNyq62/giphy.gif
 
 3. Make a copy of the Label and fill out the items on it as they pertain to your
    diagram. Include your contact info (email, Discord, LinkedIn, Twitter).
@@ -84,10 +84,15 @@ https://media.giphy.com/media/vbwBqdnVGAF2mNyq62/giphy.gif
 5. Checkout the Iterative tools request board - grab a request and get to work!
    Anyone that has completed one of the desired diagrams will get some swag! 🤩
    Email Jeny@iterative.ai when complete with a link to the diagram.
+
+   ![Iterative Tool Diagram Requests](/uploads/images/2021-11-23/tool-request-board.png)
+   _Design a diagram for one of our requests and get some SWAG!
+   ([Source link](https://www.ravirajag.dev/blog/mlops-summary))_
+
 6. Other tool companies can put up a request board as well
 7. If you already have a diagram created that you would like to share, you can
    copy the image over to the board. Be sure to add the label and put it in a
-   frame. Frames enable a link to exactly that place with in the Miro board and
+   frame. Frames enable a link to exactly that place within the Miro board and
    help keep things organized.
 
 - [Miro video on collaboration](https://www.youtube.com/watch?v=Zc2c6HquANE)
