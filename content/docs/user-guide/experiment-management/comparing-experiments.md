@@ -197,11 +197,8 @@ $ dvc exp show --sort-by auc --sort-order desc
 
 ## Get experiments table in JSON
 
-There may be times when a machine readable format for the experiments is
-required. In its default settings `dvc exp show` lists the experiments in a
-visually appealing way that may not be suitable to parse in scripts. To get a
-list of experiments in a machine readable format, you can use `--json` or
-`--csv` flags.
+It's also possible to output the table of experiments in a machine-readable format,
+for example to parse in scripts. To do so, use the `--json` or `--csv` options.
 
 ```dvc
 $ dvc exp show --json
@@ -329,8 +326,8 @@ cnn-64,6d13f33,branch_commit,2021-09-09T13:06:05,,0.2338544875383377,0.915300011
 cnn-128,69503c6,branch_commit,2021-09-09T12:53:51,,0.2324332743883133,0.9160000085830688,10,128
 ```
 
-You can supply this output to other commands as well. For example with [csvkit],
-you can get a summary statistics about the experiments.
+For example, let's parse the CSV output with [csvkit] to
+get a statistical summary about the experiments:
 
 ```dvc
 $ dvc exp show --csv | csvstat
@@ -358,9 +355,9 @@ $ dvc exp show --csv | csvstat
 
 ## Compare specific experiments
 
-In addition to showing a summary table of experiments, DVC provides a command to
-compare pairwise experiments. `dvc exp diff` is used to compare the experiments
-by the change in their metrics and params.
+In addition to showing a summary table of experiments, DVC provides the
+`dvc exp diff` command to compare pairs of experiments by the difference
+in their metrics and params.
 
 ```dvc
 $ dvc exp diff
@@ -396,7 +393,7 @@ commit, branch, tag or an attached experiment with ID, you can supply their
 names to `dvc exp diff`.
 
 ```
-$ dvc exp diff exp-25a26 cnn-64
+$ dvc exp diff cnn-128 cnn-64
 Path          Metric    Value    Change
 metrics.json  acc       0.9153   0.00020003
 metrics.json  loss      0.23385  -0.0048174
@@ -465,13 +462,10 @@ have dictionaries as values. `metrics` and `params` dictionaries has keys for
 each of the metrics or params file, and for each file metrics and parameters are
 listed as keys.
 
-As an example, we can get only a specific metric [jq]:
+As an example, we can get only a specific metric with [jq]:
 
 ```dvc
 $ dvc exp diff exp-25a26 cnn-64 --json | jq '.metrics."metrics.json".acc'
-```
-
-```json
 {
   "old": 0.9150999784469604,
   "new": 0.9153000116348267,
