@@ -7,7 +7,7 @@ Show changes in [metrics](/doc/command-reference/metrics) and
 
 ```usage
 usage: dvc exp diff [-h] [-q | -v] [--all] [--param-deps]
-                    [--json] [--md] [--old]
+                    [--json] [--md]
                     [--no-path] [--precision <n>]
                     [a_rev] [b_rev]
 positional arguments:
