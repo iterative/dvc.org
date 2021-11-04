@@ -422,9 +422,8 @@ model.conv_units  64       -192
 
 ### Get the comparison in JSON
 
-Parsing the output of `dvc exp diff` may not be easy when
-you want to use it in other commands. `dvc exp diff` can
-output in JSON with `--json` flag.
+Parsing the output of `dvc exp diff` may not be easy when you want to use it in
+other commands. `dvc exp diff` can output in JSON with `--json` flag.
 
 ```dvc
 $ dvc exp diff exp-25a26 cnn-64 --json
