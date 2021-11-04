@@ -94,7 +94,16 @@ information.
 └─────────────────────────┴──────┴─────────┴─────────┴─────────┴──────────┴───────┴──────────┘
 ```
 
-### []()
+### [What's the recommended way to remove data that has been imported using `dvc import`?](https://discord.com/channels/485586884165107732/485596304961962003/898462029650735134)
+
+Great question @MadsO!
+
+This works the exact same as when you've added data with `dvc add`. So to remove
+data, you would run this command:
+
+```dvc
+$ dvc remove
+```
 
 ### []()
 
