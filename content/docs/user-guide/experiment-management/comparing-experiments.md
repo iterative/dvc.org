@@ -6,7 +6,7 @@ how they can help you streamline the experimentation process.
 
 ## List experiments in the workspace
 
-You can get a list of existing experiments in the repository with
+You can get a list of existing experiments in the <abbr>repository</abbr> with
 `dvc exp list`. Without any options, this command lists the experiments based on
 the latest commit of the current branch (Git `HEAD`).
 
@@ -17,8 +17,8 @@ refs/tags/baseline-experiment:
         cnn-128
 ```
 
-If you want to list all the experiments in the repository regardless of their
-parent commit, use the `--all` flag.
+If you want to list all the experiments in the repo regardless of their parent
+commit, use the `--all` flag.
 
 ```dvc
 $ dvc exp list --all
@@ -29,11 +29,11 @@ main:
         exp-93150
 ```
 
-## List experiments in another Git remote
+## List experiments saved remotely
 
-As we discuss in [Sharing Experiments], you can use `dvc exp push` to upload
-experiments to Git remotes. `dvc exp list` can be used to list the experiments
-in a Git remote.
+Experiments can be [shared] (with `dvc exp push`) from another location. To
+review experiments uploaded to a remote <abbr>repository</abbr> (which you may
+not have locally), provide a Git remote name to `dvc exp list`.
 
 ```dvc
 $ dvc exp list origin
@@ -42,10 +42,10 @@ refs/tags/baseline-experiment:
         cnn-64
 ```
 
-This command lists the experiments originated from `HEAD`. You can add any other
-options to the remote command, including `--all`. (see previous section).
+This command lists remote experiments originated from `HEAD`. You can add any
+other options to the remote command, including `--all` (see previous section).
 
-[sharing experiments]: /doc/user-guide/experiment-management/sharing-experiments
+[shared]: /doc/user-guide/experiment-management/sharing-experiments
 
 ## List experiment names to use in scripts
 

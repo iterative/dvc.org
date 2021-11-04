@@ -59,41 +59,13 @@ DVC can use multiple threads to upload files (4 per CPU core by default). You
 can set the number with `--jobs` (`-j`). Please note that increases in
 performance also depend on the connection bandwidth and remote configurations.
 
+Once pushed, you can easily [list remote experiments] (with `dvc exp list`).
+
 > 📖 See also the [run-cache] mechanism.
 
+[list remote experiments]:
+  /doc/user-guide/experiment-management/comparing-experiments#list-experiments-saved-remotely
 [run-cache]: /doc/user-guide/project-structure/internal-files#run-cache
-
-## Listing experiments saved on remotes
-
-You can use the `dvc exp list` command to list experiments. (with no arguments
-it lists the experiments in the current project. You can supply a Git remote
-name to list the experiments that have been pushed there:
-
-```dvc
-$ dvc exp list origin
-main:
-    cnn-128
-    cnn-32
-    cnn-64
-    cnn-96
-```
-
-Note that by default this only lists experiments derived from the current commit
-(local `HEAD` or default remote branch). You can list all the experiments
-(derived from from every branch and commit) with the `--all` option:
-
-```dvc
-$ dvc exp list origin --all
-0b5bedd:
-    exp-9edbe
-0f73830:
-    exp-280e9
-    exp-4cd96
-    ...
-main:
-    cnn-128
-    ...
-```
 
 ## Downloading experiments
 
@@ -102,7 +74,7 @@ order to get them, use `dvc exp pull` (with the Git remote and the experiment
 name), for example:
 
 ```dvc
-$ dvc exp pull origin cnn-64
+$ dvc exp pull origin cnn-32
 ```
 
 This pulls all the necessary files from both remotes. Again, you need to have
