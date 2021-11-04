@@ -36,9 +36,9 @@ you can use the `--set-param` (`-S`) option of this command to change
 
 Each experiment creates and tracks a project variation based on the changes in
 your <abbr>workspace</abbr>. The results of the last `dvc exp run` will be
-reflected in the workspace. Experiments will have an auto-generated name like
-`exp-bfe64` by default, which can be customized using the `--name` (`-n`)
-option.
+reflected in the workspace. Experiments will have an auto-generated ID like
+`exp-bfe64` by default. A custom name can be given instead, using the `--name`
+(`-n`) option
 
 To display and compare multiple experiments, use `dvc exp show` or
 `dvc exp diff` (`plots diff` also accepts experiment names as `revisions`). Use
