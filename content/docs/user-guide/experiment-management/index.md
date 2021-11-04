@@ -40,7 +40,7 @@ They support support these main approaches:
 > 👨‍💻 See [Get Started: Experiments](/doc/start/experiments) for a hands-on
 > introduction to DVC experiments.
 
-### Organization Patterns
+### Organization patterns
 
 It's up to you to decide how to organize completed experiments. These are the
 main alternatives:
