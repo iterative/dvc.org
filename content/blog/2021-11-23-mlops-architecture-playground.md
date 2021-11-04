@@ -43,7 +43,9 @@ So digesting these things and attending other community events where a Miro
 board was used to collaborate and solve problems, I came up with the idea for
 the **MLOps Architecture Playground** in Miro.
 
-https://media.giphy.com/media/xUOxfecWsLzAYSUP6w/giphy.gif
+![MLOps Architecture Playground by Iterative.ai](/uploads/images/2021-11-23/mlops-playground.png)
+_Join us in the MLOps Archtecture Playground!
+([Source link](https://www.ravirajag.dev/blog/mlops-summary))_
 
 ### What?
 
@@ -54,6 +56,8 @@ What we aim to provide you is a place to work it out and all the components you
 need to create it fast (or as fast as possible, given that this is complicated
 stuff!). Your work in here will likely help other Community members struggling
 with the same issues.
+
+https://media.giphy.com/media/xUOxfecWsLzAYSUP6w/giphy.gif
 
 ### Who is this board for?
 
