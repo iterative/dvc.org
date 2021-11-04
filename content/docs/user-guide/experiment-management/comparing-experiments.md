@@ -422,8 +422,8 @@ model.conv_units  64       -192
 
 ### Get the comparison in JSON
 
-Parsing the `dvc exp diff` output may not be feasible due to the custom table
-layout. When you want to use the output in other commands, `dvc exp diff` can
+Parsing the output of `dvc exp diff` may not be easy when
+you want to use it in other commands. `dvc exp diff` can
 output in JSON with `--json` flag.
 
 ```dvc
