@@ -58,6 +58,10 @@ const BlogPostPage: React.FC<IBlogPostPageProps> = ({ data }) => {
         image={picture}
         meta={[
           {
+            name: 'twitter:card',
+            content: 'summary_large_image'
+          },
+          {
             name: 'og:type',
             content: 'article'
           },
