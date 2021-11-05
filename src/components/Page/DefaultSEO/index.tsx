@@ -36,6 +36,10 @@ const DefaultSEO: React.FC<IDefaultSEOProps> = ({ pathname }) => {
       content: fullUrl
     },
     {
+      property: 'og:site_name',
+      content: metaTitle
+    },
+    {
       property: 'og:title',
       content: metaTitle
     },
@@ -60,16 +64,24 @@ const DefaultSEO: React.FC<IDefaultSEOProps> = ({ pathname }) => {
       content: metaImage.height
     },
     {
-      property: 'og:image:secure_url',
-      content: siteUrl + metaImage.src
+      property: 'og:image:type',
+      content: 'image/png'
+    },
+    {
+      property: 'og:locale',
+      content: 'en_US'
     },
     {
       name: 'twitter:site',
-      content: '@dvcORG'
+      content: '@DVCorg'
+    },
+    {
+      name: 'twitter:creator',
+      content: '@DVCorg'
     },
     {
       name: 'twitter:card',
-      content: `summary`
+      content: 'summary'
     },
     {
       name: 'twitter:title',
@@ -82,6 +94,10 @@ const DefaultSEO: React.FC<IDefaultSEOProps> = ({ pathname }) => {
     {
       name: 'twitter:image',
       content: encodeURI(`${siteUrl}${metaImage.src}`)
+    },
+    {
+      name: 'twitter:image:alt',
+      content: 'The DVC logo on a gray background'
     }
   ]
 

@@ -3,7 +3,7 @@ import Helmet from 'react-helmet'
 
 import { IPaginatorPageInfo } from '../Paginator'
 import getSiteMeta from '../../queries/siteMeta'
-import { getSrc, IGatsbyImageData } from 'gatsby-plugin-image'
+import { getSrc, getImage, IGatsbyImageData } from 'gatsby-plugin-image'
 
 export type MetaProps = JSX.IntrinsicElements['meta']
 
@@ -12,6 +12,7 @@ interface ISEOProps {
   defaultMetaTitle?: boolean
   description?: string
   keywords?: string
+  imageAlt?: string
   image?: IGatsbyImageData
   meta?: MetaProps[]
   pageInfo?: IPaginatorPageInfo
@@ -24,6 +25,7 @@ const SEO: React.FC<ISEOProps> = ({
   description,
   keywords,
   image,
+  imageAlt = '',
   meta = [],
   pageInfo,
   children
@@ -74,6 +76,7 @@ const SEO: React.FC<ISEOProps> = ({
 
   if (image) {
     const imageUrl = siteMeta.siteUrl + getSrc(image)
+    const imageData = getImage(image)
 
     prebuildMeta.push(
       {
@@ -81,20 +84,24 @@ const SEO: React.FC<ISEOProps> = ({
         content: imageUrl
       },
       {
-        property: 'og:image:secure_url',
-        content: imageUrl
+        name: 'og:image:alt',
+        content: imageAlt
       },
       {
         property: 'og:image:width',
-        content: String(image.width)
+        content: String(imageData?.width)
       },
       {
         property: 'og:image:height',
-        content: String(image.height)
+        content: String(imageData?.height)
       },
       {
         name: 'twitter:image',
         content: imageUrl
+      },
+      {
+        name: 'twitter:image:alt',
+        content: imageAlt
       }
     )
   }
