@@ -114,7 +114,7 @@ You can start experimenting from any Git repo. If you tell DVC how your project
 is organized, it can manage your entire experiment lifecycle and ensure that
 everything is recorded and synced with your Git history.
 
-```
+```dvc
 $ dvc exp init -i
 This command will guide you to set up a default stage in dvc.yaml.
 See https://dvc.org/doc/user-guide/project-structure/pipelines-files.
@@ -184,7 +184,7 @@ Experiments are tracked by DVC so you don't need to create commits or branches
 for each one, yet they are also Git compatible and can be converted into Git
 branches or merged into your existing ones.
 
-```
+```dvc
 $ dvc exp show
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━┓
 ┃ Experiment              ┃ Created      ┃    loss ┃    acc ┃ train.epochs ┃
@@ -214,7 +214,7 @@ Reproducing experiments can be automated since your experiment pipeline is
 codified, and DVC will check for cached inputs and outputs and skip recomputing
 data that's been generated before.
 
-```
+```dvc
 $ dvc exp run
 'data/images.dvc' didn't change, skipping
 Stage 'default' didn't change, skipping
