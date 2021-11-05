@@ -186,19 +186,28 @@ branches or merged into your existing ones.
 
 ```
 $ dvc exp show
-┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━┓
-┃ Experiment              ┃ Created      ┃   loss ┃    acc ┃ train.epochs ┃ model.conv_units ┃
-┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━┩
-│ workspace               │ -            │ 3.8639 │ 0.7102 │ 10           │ 16               │
-│ added-data              │ Sep 04, 2021 │      - │      - │ 10           │ 16               │
-│ ├── b15858d [exp-b5ad8] │ 10:17 PM     │ 3.8639 │ 0.7102 │ 10           │ 16               │
-│ └── dddabdd [exp-d3d64] │ 04:45 PM     │ 4.1705 │ 0.7114 │ 10           │ 32               │
-└─────────────────────────┴──────────────┴────────┴────────┴──────────────┴──────────────────┘
-$ dvc exp branch exp-d3d64 conv-units-32
-Git branch 'conv-units-32' has been created from experiment 'exp-d3d64'.
+┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━┓
+┃ Experiment              ┃ Created      ┃    loss ┃    acc ┃ train.epochs ┃
+model.conv_units ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━┩
+│ workspace               │ -            │ 0.25183 │ 0.9137 │ 10           │ 64
+│
+│ dvc-init                │ Oct 23, 2021 │       - │      - │ 10           │ 16
+│
+│ ├── 9a4ff1c [exp-333c9] │ 10:40 AM     │ 0.25183 │ 0.9137 │ 10           │ 64
+│
+│ ├── 138e6ea [exp-55e90] │ 10:28 AM     │ 0.25784 │ 0.9084 │ 10           │ 32
+│
+│ └── 51b0324 [exp-2b728] │ 10:17 AM     │ 0.25829 │ 0.9058 │ 10           │ 16
+│
+└─────────────────────────┴──────────────┴─────────┴────────┴──────────────┴──────────────────┘
+
+$ dvc exp branch exp-333c9 conv-units-64
+Git branch 'conv-units-64' has been created from experiment 'exp-333c9'.
 To switch to the new branch run:
 
-        git checkout conv-units-32
+        git checkout conv-units-64
+
 ```
 
 Reproducing experiments can be automated since your experiment pipeline is
