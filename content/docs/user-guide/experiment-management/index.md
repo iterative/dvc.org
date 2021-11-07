@@ -25,7 +25,7 @@ optimization, etc. DVC helps you codify and manage all of your
    > [ways to organize](#organization-patterns) experiments in your project as
    > well.
 
-4. Easily [share experiments] across your team.
+4. [Share experiments] across your team seamlessly.
 
 [share experiments]: /doc/user-guide/experiment-management/sharing-experiments
 
@@ -40,8 +40,6 @@ meaningful measures for the experimental results.
 > introduction to DVC experiments.
 
 ## Experiments
-
-> Note: these features require a Git-enabled DVC <abbr>repository</abbr>.
 
 `dvc exp` commands let you automatically track a variation to an established
 [data pipeline](/doc/command-reference/dag). You can create multiple isolated
@@ -59,6 +57,8 @@ roll back to the baseline. The basic workflow goes like this:
 - Use `dvc exp apply` to roll back to the best one.
 - Make the selected experiment persistent by committing its results to Git. This
   cleans the slate so you can repeat the process.
+
+> Note that these features won't work if you don't use Git to version your code.
 
 ## Checkpoints in source code
 
@@ -96,7 +96,7 @@ These are the main alternatives:
 - **Git tags and branches** - use the repo's "time dimension" to distribute your
   experiments. This makes the most sense for experiments that build on each
   other. Helpful if the Git [revisions](https://git-scm.com/docs/revisions) can
-  be easily visualized, for example with tools
+  be visualized easily, for example with tools
   [like GitHub](https://docs.github.com/en/github/visualizing-repository-data-with-graphs/viewing-a-repositorys-network).
 - **Directories** - the project's "space dimension" can be structured with
   directories (folders) to organize experiments. Useful when you want to see all

@@ -1,9 +1,11 @@
 # Sharing Experiments
 
-If your team uses [Git remotes] on a Git server or hosting (e.g. GitHub, GitLab,
-etc.) to collaborate on projects, then you can also use them to save and share
-DVC Experiments remotely. You will also need DVC
-[remote storage](/doc/command-reference/remote) setup.
+If your team uses Git server or hosting (e.g. GitHub, GitLab, etc.) to
+collaborate on projects, you can also use them to save and share DVC
+Experiments.
+
+> You will need both [Git remotes] and DVC
+> [remote storage](/doc/command-reference/remote) for this.
 
 [git remotes]: https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes
 
@@ -42,8 +44,9 @@ storage s3://mybucket/my-dvc-store
 
 ## Uploading experiments
 
-You can upload an experiment with all of its files and data using `dvc exp push`
-(requires a Git remote name and experiment name as arguments).
+You can upload an experiment with all of its files and data using
+`dvc exp push`, which takes a Git remote name and an experiment ID or name as
+arguments.
 
 > 💡 You can use `dvc exp show` to find experiment names.
 
