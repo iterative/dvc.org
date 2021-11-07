@@ -11,7 +11,7 @@ Compare [metrics](/doc/command-reference/metrics) between two commits in the
 usage: dvc metrics diff [-h] [-q | -v]
                         [--targets [<paths> [<paths> ...]]] [-R]
                         [--all] [--json] [--md] [--no-path]
-                        [--old] [--precision <n>]
+                        [--precision <n>]
                         [a_rev] [b_rev]
 
 positional arguments:
@@ -71,9 +71,6 @@ all the current metrics (without comparisons).
 
 - `--md` - prints the command's output in the Markdown table format
   ([GFM](https://github.github.com/gfm/#tables-extension-)).
-
-- `--old` - include the "Old" value column in addition to the new "Value" (and
-  "Change"). Useful when the values are not numeric, for example
 
 - `--no-path` - hide the "Path" column that lists the param/metrics file
   location. Useful when only one metrics file exists, for example
