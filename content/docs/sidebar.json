@@ -150,6 +150,7 @@
         "children": [
           "running-experiments",
           "comparing-experiments",
+          "listing-experiments",
           "sharing-experiments",
           "persisting-experiments",
           "cleaning-experiments",
