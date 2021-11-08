@@ -95,9 +95,9 @@ These are the main alternatives:
 
 - **Git tags and branches** - use the repo's "time dimension" to distribute your
   experiments. This makes the most sense for experiments that build on each
-  other. Helpful if the Git [revisions](https://git-scm.com/docs/revisions) can
-  be visualized easily, for example with tools
-  [like GitHub](https://docs.github.com/en/github/visualizing-repository-data-with-graphs/viewing-a-repositorys-network).
+  other. Git-based experiment structures are especially helpful along with Git
+  history exploration tools
+  [like in GitHub](https://docs.github.com/en/github/visualizing-repository-data-with-graphs/viewing-a-repositorys-network).
 - **Directories** - the project's "space dimension" can be structured with
   directories (folders) to organize experiments. Useful when you want to see all
   your experiments at the same time (without switching versions) by just
