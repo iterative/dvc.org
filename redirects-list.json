@@ -19,6 +19,7 @@
 
   "^https://s\\.dvc\\.org/g/exp/run(.*)?$                                                https://dvc.org/doc/user-guide/experiment-management/running-experiments$1",
   "^https://s\\.dvc\\.org/g/exp/(.*)?$                                                   https://dvc.org/doc/user-guide/experiment-management/$1",
+  "^https://s\\.dvc\\.org/g/pipeline-files/(.*)?$                                        https://dvc.org/doc/user-guide/project-structure/pipelines-files/$1",
   "^https://s\\.dvc\\.org/g/(.*)?$                                                       https://dvc.org/doc/user-guide/$1",
   "^https://s\\.dvc\\.org/s/(.*)?$                                                       https://dvc.org/doc/start/$1",
   "^https://s\\.dvc\\.org/c/(.*)?$                                                       https://dvc.org/doc/use-cases/$1",
