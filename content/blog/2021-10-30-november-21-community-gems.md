@@ -2,18 +2,16 @@
 title: November '21 Community Gems
 date: 2021-11-30
 description: |
-  A roundup of technical Q&A's from the DVC community. This month: DVC
-  stages, working with outputs, DVC API, and more.
+  A roundup of technical Q&A's from the DVC and CML community. This month: CML runners, working with data, DVC Studio, and more.
 descriptionLong: |
-  A roundup of technical Q&A's from the DVC community. This month: DVC
-  stages, working with outputs, DVC API, and more.
+  A roundup of technical Q&A's from the DVC and CML community. This month: CML runners, working with data, DVC Studio, and more.
 picture: 2021-11-30/nov-community-gems.png
 author: milecia_mcgregor
 commentsUrl: https://discuss.dvc.org/t/october-21-community-gems/931
 tags:
   - Data Versioning
-  - DVC API
-  - Pipelines
+  - DVC Studio
+  - CML
   - Community
 ---
 
