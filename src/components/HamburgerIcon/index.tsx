@@ -1,7 +1,7 @@
 import cn from 'classnames'
 import React from 'react'
 
-import styles from './styles.module.css'
+import * as styles from './styles.module.css'
 
 interface IHamburgerProps {
   opened?: boolean

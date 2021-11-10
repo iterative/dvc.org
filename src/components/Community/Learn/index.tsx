@@ -15,8 +15,8 @@ import { useCommunityData } from '../../../utils/front/community'
 import getPosts from '../../../queries/posts'
 import { pluralizeComments } from '../../../utils/front/i18n'
 
-import sharedStyles from '../styles.module.css'
-import styles from './styles.module.css'
+import * as sharedStyles from '../styles.module.css'
+import * as styles from './styles.module.css'
 
 const docsPage = getFirstPage()
 
@@ -27,7 +27,7 @@ const logDocumentationAll = (): void =>
 interface ICommunityBlogPost {
   color: string
   commentsUrl?: string
-  pictureUrl: string | null
+  pictureUrl?: string
   date: string
   title: string
   url: string
@@ -45,9 +45,10 @@ const BlogPost: React.FC<ICommunityBlogPost> = ({
     return null
   }
 
-  const logPost = useCallback(() => logEvent('community', 'blog', title), [
-    title
-  ])
+  const logPost = useCallback(
+    () => logEvent('community', 'blog', title),
+    [title]
+  )
 
   const { error, ready, result } = useCommentsCount(commentsUrl)
 

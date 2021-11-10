@@ -20,9 +20,9 @@ positional arguments:
 The `dvc exp push` and `dvc exp pull` commands are the means for sharing
 experiments across <abbr>repository</abbr> copies via Git (and DVC) remotes.
 
-> Plain `git push` and `git fetch` don't work with `dvc experiments` because
-> these are saved under custom Git references. See **How does DVC track
-> experiments?** in `dvc exp run` to learn more about DVC experiment storage.
+> Plain `git push` and `git fetch` don't work with experiments because these are
+> saved under custom Git references. See **How does DVC track experiments?** in
+> `dvc exp run` to learn more about DVC experiment storage.
 
 A working `git_remote` name (e.g. `origin`) or Git URL is required, as well as
 an `experiment` name or hash (see `dvc exp run`) to pull.

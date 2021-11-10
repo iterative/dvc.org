@@ -5,7 +5,7 @@ import SubscribeForm from './Form'
 import { default as Glyph1Src } from './glyph-1.svg'
 import { default as Glyph2Src } from './glyph-2.svg'
 
-import styles from './styles.module.css'
+import * as styles from './styles.module.css'
 
 const SubscribeSection: React.FC = () => (
   <div className={styles.wrapper} id="subscribe">

@@ -6,9 +6,8 @@ export interface IPaginatorLocationContextValue {
   }
 }
 
-export const PaginatorLocationContext = createContext<IPaginatorLocationContextValue | null>(
-  null
-)
+export const PaginatorLocationContext =
+  createContext<IPaginatorLocationContextValue | null>(null)
 
 export const usePaginatorContext = (): IPaginatorLocationContextValue | null =>
   useContext(PaginatorLocationContext)

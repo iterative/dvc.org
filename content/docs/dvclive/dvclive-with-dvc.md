@@ -19,16 +19,18 @@ We will refer to a training script (`train.py`) already using `dvclive`:
 ```python
 # train.py
 
-import dvclive
+from dvclive import Live
+
+live = Live()
 
 for epoch in range(NUM_EPOCHS):
     train_model(...)
     metrics = evaluate_model(...)
 
     for metric_name, value in metrics.items():
-        dvclive.log(metric_name, value)
+        live.log(metric_name, value)
 
-    dvclive.next_step()
+    live.next_step()
 ```
 
 Let's use `dvc stage add` to create a stage to wrap this code (don't forget to
@@ -39,8 +41,8 @@ $ dvc stage add -n train --live training_metrics
                 -d train.py python train.py
 ```
 
-`dvc.yaml` will contain a new `train` stage with the [`DVCLive configuration`]
-(in the `live` field):
+`dvc.yaml` will contain a new `train` stage with the DVCLive configuration (in
+the `live` field):
 
 ```yaml
 stages:
@@ -60,18 +62,14 @@ for DVCLive to write logs in, and DVC will now
 command options for the DVC integration:
 
 - `--live-no-cache <path>` - specify a DVCLive log directory `path` but don't
-  tracked it with DVC. Useful if you prefer to track it with Git.
+  track it with DVC. Useful if you prefer to track it with Git.
 - `--live-no-summary` - deactivates
   [summary](/doc/dvclive/get-started#metrics-summary) generation.
 - `--live-no-html` - deactivates [HTML report](#html-report) generation.
 
-> Note that these are convenience CLI options. You can still use
-> `dvclive.init()` manually, which will override any options sent to
-> `dvc stage add`. Just be careful to match the `--live` value (CLI) and `path`
-> argument (code). Also, note that summary files are never tracked by DVC
-> automatically.
+> Note that summary files are never tracked by DVC
 
-Run the training with `dvc repro`:
+Run the training with `dvc repro` or `dvc exp run`:
 
 ```dvc
 $ dvc repro train
@@ -122,8 +120,4 @@ This will save the metrics, plots, models, etc. associated to each
 [`step`](/doc/dvclive/api-reference/get_step).
 
 You can learn more about how to use them in the
-[Checkpoints User Guide](/docs/user-guide/experiment-management/checkpoints) and
-in this example
-[repository](https://github.com/iterative/dvc-checkpoints-mnist).
-
-[`dvclive configuration`]: /doc/dvclive/api-reference/init#parameters
+[Checkpoints User Guide](/docs/user-guide/experiment-management/checkpoints).

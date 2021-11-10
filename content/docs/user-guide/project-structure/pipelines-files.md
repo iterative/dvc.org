@@ -98,7 +98,7 @@ metrics and plots.
 
 ## Templating
 
-_New in DVC 2.0_
+_New in DVC 2.0 (see `dvc version`)_
 
 `dvc.yaml` supports a templating format to insert values from different sources
 in the YAML structure itself. These sources can be
@@ -227,7 +227,7 @@ ${param.list[0]} # List elements via index in [] (square brackets)
 
 ## `foreach` stages
 
-_New in DVC 2.0_
+_New in DVC 2.0 (see `dvc version`)_
 
 You can define more than one stage in a single `dvc.yaml` entry with the
 following syntax. A `foreach` element accepts a list or dictionary with values
@@ -361,7 +361,7 @@ These are the fields that are accepted in each stage:
 | `always_changed` | Whether or not this stage is considered as changed by commands such as `dvc status` and `dvc repro`. `false` by default                                                                                                                                                                   |
 | `meta`           | (Optional) arbitrary metadata can be added manually with this field. Any YAML content is supported. `meta` contents are ignored by DVC, but they can be meaningful for user processes that read or write `.dvc` files directly.                                                           |
 | `desc`           | (Optional) user description for this stage. This doesn't affect any DVC operations.                                                                                                                                                                                                       |
-| `live`           | (Optional) [Dvclive](/doc/dvclive/user-guide/dvclive-with-dvc) configuration field                                                                                                                                                                                                        |
+| `live`           | (Optional) [DVCLive](/doc/dvclive/dvclive-with-dvc) configuration field                                                                                                                                                                                                                   |
 
 `dvc.yaml` files also support `# comments`.
 

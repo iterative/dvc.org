@@ -305,27 +305,28 @@ $ dvc remote add -d myremote hdfs://user@example.com/path
 **HDFS and WebHDFS:**
 
 Both remotes, HDFS and WebHDFS, allow using a Hadoop cluster as a remote
-repository. However, HDFS relies on `pyarrow` which in turn requires `libhdfs`,
-an interface to the Java Hadoop client, that must be installed separately.
-Meanwhile, WebHDFS has no need for this requirement as it communicates with the
-Hadoop cluster via a HTTP REST API using the Python libraries `HdfsCLI` and
-`requests`. The latter remote should be preferred by users who seek easier and
-more portable setups, at the expense of performance due to the added overhead of
-HTTP.
+repository. However, HDFS requires `libhdfs`, an interface to the Java Hadoop
+client, that must be installed separately. Meanwhile, WebHDFS has no need for
+this requirement as it communicates with the Hadoop cluster via a REST API.
 
-One last note: WebHDFS does require enabling the HTTP REST API in the cluster by
-setting the configuration property `dfs.webhdfs.enabled` to `true` in
-`hdfs-site.xml`.
+If your cluster is secured, then WebHDFS is commonly used with Kerberos and
+HTTPS, to enable these simply set `use_https` and `kerberos` to `true`. This
+will require you to run `kinit` before invoking DVC to make sure you have an
+active kerberos session.
+
+One last note: WebHDFS requires enabling the REST API in the cluster by setting
+the configuration property `dfs.webhdfs.enabled` to `true` in `hdfs-site.xml`.
 
 ```dvc
-$ dvc remote add -d myremote webhdfs://user@example.com/path
-$ dvc remote modify --local myremote user myuser
-$ dvc remote modify --local myremote token 'mytoken'
+$ dvc remote add -d myremote webhdfs://example.com/path
+$ dvc remote modify myremote use_https true
+$ dvc remote modify myremote kerberos true
+$ dvc remote modify --local myremote token SOME_BASE64_ENCODED_TOKEN
 ```
 
-> The user name and password may contain sensitive user info. Therefore, it's
-> safer to add it with the `--local` option, so it's written to a Git-ignored
-> config file. See `dvc remote modify` for a full list of WebHDFS parameters.
+> If `token` is used, it may contain sensitive user info. Therefore, it's safer
+> to add it with the `--local` option, so it's written to a Git-ignored config
+> file. See `dvc remote modify` for a full list of WebHDFS parameters.
 
 </details>
 

@@ -13,8 +13,8 @@ import {
 } from '../HamburgerMenu'
 
 import { useHeaderIsScrolled } from '../../utils/front/scroll'
-import { ReactComponent as LogoSVG } from '../../../static/img/logo.svg'
-import styles from './styles.module.css'
+import { ReactComponent as LogoSVG } from '../../../static/img/dvc_icon-color--square_vector.svg'
+import * as styles from './styles.module.css'
 
 import LayoutAlert from './alert'
 
@@ -27,7 +27,7 @@ const LayoutHeader: React.FC<Required<ILayoutModifiable>> = ({ modifiers }) => {
 
   return (
     <>
-      <header className={styles.wrapper} id="header" data-collapsed={collapsed}>
+      <header id="header" data-collapsed={collapsed}>
         <div
           className={cn(
             styles.placeholder,

@@ -1,11 +1,10 @@
 ---
 title: November ’19 DVC❤️Heartbeat
 date: 2019-12-14
-description: |
+description: >
   Co-hosting our first ever meetup, sharing our Hacktoberfest experience, 4K ⭐,
-  fresh Discord gems and other
-  news.
-descriptionLong: |
+  fresh Discord gems and other news.
+descriptionLong: >
   Every month we are sharing here our news, findings, interesting reads,
   community takeaways, and everything along the way.
 

@@ -1,16 +1,16 @@
 ﻿---
 title: May ’21 Heartbeat
 date: 2021-05-21
-description: |
-  Monthly updates are here! We've hit 30 team members! MLOps learning 
-  opportunities, tutorials with integrations, conference videos, Discord 
-  server growth, and more!
+description: >
+  Monthly updates are here! We've hit 30 team members! MLOps learning
+  opportunities, tutorials with integrations, conference videos, Discord  server
+  growth, and more!
 descriptionLong: |
   This month you will find:
-  🚀 info on our growing team 
+  🚀 info on our growing team
   📖 MLOps learning opportunities,
-  🔃 tutorials with integrations, 
-  🎥 conference videos from our team members, 
+  🔃 tutorials with integrations,
+  🎥 conference videos from our team members,
   💥 Discord server growth, and more!
 picture: 2021-05-21/may21cover.png
 author: jeny_defigueiredo

@@ -1,9 +1,9 @@
 ---
 title: DVC 3 Years 🎉 and 1.0 Pre-release 🚀
 date: 2020-05-04
-description: |
-  Today, we've got three big announcements: 🎉 3rd-year anniversary of DVC,
-  🚀 DVC 1.0 pre-release is ready and ⭐ 5000 GitHub starts.
+description: >
+  Today, we've got three big announcements: 🎉 3rd-year anniversary of DVC, 🚀
+  DVC 1.0 pre-release is ready and ⭐ 5000 GitHub starts.
 
 descriptionLong: |
   Today, we've got three big announcements.
