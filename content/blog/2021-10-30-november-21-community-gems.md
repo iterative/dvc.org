@@ -7,7 +7,7 @@ descriptionLong: |
   A roundup of technical Q&A's from the DVC and CML community. This month: CML runners, working with data, DVC Studio, and more.
 picture: 2021-11-30/nov-community-gems.png
 author: milecia_mcgregor
-commentsUrl: https://discuss.dvc.org/t/october-21-community-gems/931
+commentsUrl: https://discuss.dvc.org/t/november-21-community-gems/964
 tags:
   - Data Versioning
   - DVC Studio
