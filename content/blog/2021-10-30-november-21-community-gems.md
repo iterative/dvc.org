@@ -60,6 +60,19 @@ You can check which directories have been changed by running:
 $ dvc status
 ```
 
+This will give you an output similar to this in your terminal:
+
+```dvc
+train:
+        changed deps:
+                modified:           src/train.py
+        changed outs:
+                deleted:            model.pkl
+evaluate:
+        changed deps:
+                deleted:            model.pkl
+```
+
 We're working on adding granularity support for this command and should have a
 release for this in the next few months.
 
@@ -105,13 +118,74 @@ data, you would run this command:
 $ dvc remove
 ```
 
-### []()
+### [How can I associate my Tensorboard experiment results, metrics, configs, etc. with DVC versioned datasets?](https://discord.com/channels/485586884165107732/563406153334128681/901272438468407326)
 
-### []()
+There are a few approaches you can take to work with DVC datasets and
+Tensorboard.
 
-### []()
+If you want to keep running your experiments with Tensorboard, you can use
+`dvc import` to associate the experiment results and metrics with your datasets.
 
-### []()
+Or you could check out the `dvc exp` features. This lets you run the experiments
+and track everything with just DVC.
+
+There's also the [DVCLive](https://dvc.org/doc/dvclive) library that will let
+you store your Tensorboard metrics and plots in the DVC format so they will be
+tracked and associated with the dataset and the DVC pipeline.
+
+Thanks for this awesome question @jackkwok!
+
+### [When I run the `dvc remove` command, does it only remove .dvc files?](https://discord.com/channels/485586884165107732/563406153334128681/905382438786715648)
+
+A really good question from @flowy!
+
+That is correct. Running `dvc remove` only removes DVC tracked files and
+directories. It will also remove the entry from `.gitignore` and handles the
+`dvc.yaml`.
+
+If you still see a directory after you've removed a file from DVC, that is
+because it's tracked by Git, not DVC.
+
+For example, if you run something like `dvc remove folder_name/file.dvc`, only
+the `.dvc` file will be removed. You'll be left with an empty directory.
+
+You will still have to remove the folder via Git with a command like:
+
+```dvc
+$ git rm -r folder_name
+```
+
+### [Can DVC Studio be connected to a self-managed GitLab repo?](https://discord.com/channels/485586884165107732/841856466897469441/907468264882462800)
+
+Very good question about Studio @Sra!
+
+Right now this only works if it's an on-premise network or a private VPC
+network.
+
+We are working on bringing custom-domain GitLab as a feature very soon! You can
+follow
+[this GitHub issue](https://github.com/iterative/studio-support/issues/12) and
+leave comments for anything you'd like to see!
+
+### [Is there a way to extend default job execution time for a CML runner?](https://discord.com/channels/485586884165107732/728693131557732403/904660123161600021)
+
+There is definitely a way to do this!
+
+You can extend the max time in your CI by adding something like this:
+
+```dvc
+train:
+    timeout-minutes: 5000
+```
+
+If you're using GitLab, the same update would look similar to this:
+
+```dvc
+train:
+  timeout: 72 hours
+```
+
+Thanks for this question @evergreengt!
 
 ---
 
