@@ -260,6 +260,10 @@
             "slug": "show"
           },
           {
+            "label": "exp init",
+            "slug": "init"
+          },
+          {
             "label": "exp diff",
             "slug": "diff"
           },
