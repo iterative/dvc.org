@@ -46,6 +46,8 @@ meaningful measures for the experimental results.
 experiments this way, as well as review, compare, and restore them later, or
 roll back to the baseline. The basic workflow goes like this:
 
+> Note that these features won't work if you don't version your code with Git.
+
 - Modify stage <abbr>parameters</abbr> or other dependencies (e.g. input data,
   source code) of committed stages.
 - Use `dvc exp run` (instead of `repro`) to execute the pipeline. The results
@@ -57,8 +59,6 @@ roll back to the baseline. The basic workflow goes like this:
 - Use `dvc exp apply` to roll back to the best one.
 - Make the selected experiment persistent by committing its results to Git. This
   cleans the slate so you can repeat the process.
-
-> Note that these features won't work if you don't use Git to version your code.
 
 ## Checkpoints in source code
 

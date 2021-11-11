@@ -4,26 +4,22 @@ If your team uses Git server or hosting (e.g. GitHub, GitLab, etc.) to
 collaborate on projects, you can also use them to save and share DVC
 Experiments.
 
-> You will need both [Git remotes] and DVC
-> [remote storage](/doc/command-reference/remote) for this.
-
-[git remotes]: https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes
-
 <details>
 
 ## ⚙️ Expand to learn more.
 
 Sharing experiments is similar to [sharing regular project data] and artifacts
-by synchronizing from remotes. DVC-tracked data, models, etc. are in your
-project's <abbr>cache</abbr> and thus will be transferred to/from
+by synchronizing via DVC and Git remotes. DVC-tracked data, models, etc. are in
+your project's <abbr>cache</abbr> and thus will be transferred to/from
 [remote storage](/doc/command-reference/remote) (e.g. Amazon S3 or Google
 Drive). Small files like experimental code and
 [DVC metafiles](/doc/user-guide/project-structure) files are uploaded or
-downloaded with Git automatically as needed.
+downloaded from [Git remotes] by DVC.
 
 [sharing regular project data]: /doc/use-cases/sharing-data-and-model-files
+[git remotes]: https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes
 
-You can check you have all the necessary remotes setup with `git remote -v` and
+You can check you have the necessary remotes setup with `git remote -v` and
 `dvc remote list`:
 
 ```dvc
@@ -92,7 +88,7 @@ can set the number with `--jobs` (`-j`).
 If an experiment being pulled already exists in the local project, DVC won't
 overwrite it unless you supply `--force`.
 
-## 👨‍🏫 Example: Sharing multiple experiments
+## Example: Sharing multiple experiments
 
 You can create a loop to push or pull all experiments. For example in a Linux
 terminal:
@@ -103,7 +99,7 @@ $ dvc exp list --all --names-only | while read -r expname ; do \
 done
 ```
 
-## 👨‍🏫 Example: Dedicated experiment directories
+## Example: Dedicated experiment directories
 
 A good way to isolate experiments is to create a separate directory outside the
 current <abbr>repository</abbr> for each one.
