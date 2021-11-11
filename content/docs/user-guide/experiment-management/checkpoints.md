@@ -192,7 +192,7 @@ file.
 You can read about what the line `dvclive.log(k, v)` does in the `Live.log()`
 reference.
 
-The `Live.next_step()`line tells DVC that it can take a snapshot of the entire
+The `Live.next_step()` line tells DVC that it can take a snapshot of the entire
 workspace and version it with Git. It's important that with this approach only
 code with metadata is versioned in Git (as an ephemeral commit), while the
 actual model weight file will be stored in the DVC data <abbr>cache</abbr>.
