@@ -33,7 +33,7 @@ storage s3://mybucket/my-dvc-store
 
 </details>
 
-> ⚠️ Note that only [SSH Git URLs] are compatible with DVC Experiment sharing.
+> ⚠️ Note that DVC can only authenticate with Git remotes using [SSH URLs].
 
 [ssh git urls]:
   https://git-scm.com/book/en/v2/Git-on-the-Server-The-Protocols#_the_protocols
