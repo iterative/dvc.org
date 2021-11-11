@@ -26,13 +26,14 @@ experiments. When tracking ML experiments, you need to not only version code,
 but to:
 
 - Log experiment information (like parameters and metrics).
-- Reproduce costly experiments (including data, code, pipelines, and models).
+- Reproduce costly experiments (including data, code, models, and pipelines).
 - Organize and compare many experiments.
 
-Over the last few years, experiment tracking tools have come a long way, usually
-providing an API to log experiment information, a database to store it, and a
-dashboard to compare and visualize. We can learn from these tools and apply
-modern version control practices to:
+Over the last few years, experiment tracking tools have come a long way so that
+users no longer need to log experiment info in spreadsheets or notebooks.
+Experiment tracking tools usually provide an API to log experiment information,
+a database to store it, and a dashboard to compare and visualize. We can learn
+from these tools and apply modern version control practices to:
 
 - Keep experiment information in your code repo so you can track changes
   introduced by each experiment the same way you version code.
@@ -46,10 +47,11 @@ to address experiment tracking needs.
 
 # Start Experiment Versioning
 
-Using DVC, you can start versioning experiments from any Git repo. If you tell
-DVC how your project is organized, it can manage your entire experiment
-lifecycle and ensure that everything is recorded and synced with your Git
-history.
+Using DVC, you can [start](https://dvc.org/doc/command-reference/exp/init)
+versioning experiments from any Git repo. If you tell DVC how your project is
+organized, it can
+[manage your entire experiment lifecycle](https://dvc.org/doc/use-cases/experiment-tracking)
+and ensure that everything is recorded and synced with your Git history.
 
 ```dvc
 $ dvc exp init -i
@@ -140,10 +142,12 @@ index baad571a2..57d098495 100644
 +  conv_units: 128
 ```
 
-Many experiment tracking databases do not capture the pipeline to run the
-experiment end to end. With experiment versioning, your entire experiment is
-codified. Notice that the `dvc exp init` command above generated a `dvc.yaml`
-file that tracks the experiment pipeline:
+Many experiment tracking databases do not capture everything you need to
+reproduce an experiment, especially the pipeline to run the experiment end to
+end. With experiment versioning, it's important to codify your experiment
+pipeline so that anyone can reproduce the experiment. Notice that the
+`dvc exp init` command above generated a `dvc.yaml` file that describes the
+experiment pipeline:
 
 ```dvc
 $ cat dvc.yaml
@@ -197,16 +201,16 @@ code version control is insufficient for experiments, DVC adds features specific
 to ML needs.
 
 Large data and models aren't easily tracked in Git, so DVC tracks them using
-your own storage, yet they are Git-compatible. For example, the above command
-tracks the `models` folder in DVC, making Git ignore it yet storing and
-versioning it so you can back up versions anywhere and check them out alongside
-your experiment code.
+your own storage, yet they are Git-compatible. For example, the above
+`dvc exp init` command tracks the `models` folder in DVC, making Git ignore it
+yet storing and versioning it so you can back up versions anywhere and check
+them out alongside your experiment code.
 
 Codifying the entire experiment pipeline is a good first step towards
-reproducibility, but it still leaves the user to reconstruct that pipeline, and
-ML pipelines often take too long to reproduce on the fly anyway. DVC can
-reproduce the experiment with a single command, and it will check for cached
-inputs and outputs and skip recomputing data that's been generated before.
+reproducibility, but it still leaves the user to execute that pipeline, and ML
+pipelines often take to reproduce on the fly. DVC can reproduce the experiment
+with a single command, and it will check for cached inputs and outputs and skip
+recomputing data that's been generated before.
 
 ```dvc
 $ dvc exp run
@@ -223,9 +227,7 @@ To promote an experiment to a Git branch run:
 
 While Git branching is a flexible way to organize and manage experiments, there
 are often too many experiments to fit any Git branching workflow. DVC tracks
-experiments so you don't need to create commits or branches for each one, yet
-they are also Git compatible and can be converted into Git branches or merged
-into your existing ones.
+experiments so you don't need to create commits or branches for each one:
 
 ```dvc
 $ dvc exp show
@@ -244,7 +246,11 @@ model.conv_units ┃
 │ └── 51b0324 [exp-2b728] │ 10:17 AM     │ 0.25829 │ 0.9058 │ 10           │ 16
 │
 └─────────────────────────┴──────────────┴─────────┴────────┴──────────────┴──────────────────┘
+```
 
+These experiments can be converted into Git branches:
+
+```dvc
 $ dvc exp branch exp-333c9 conv-units-64
 Git branch 'conv-units-64' has been created from experiment 'exp-333c9'.
 To switch to the new branch run:
@@ -253,17 +259,40 @@ To switch to the new branch run:
 
 ```
 
+# History of Experiment Tracking
+
+There are parallels between the history of version control and the history of
+experiment tracking. Let's look at the history of version control (from
+https://ericsink.com/vcbe/html/history_of_version_control.html):
+
+| Generation | Networking  | Operations         | Concurrency         |
+| ---------- | ----------- | ------------------ | ------------------- |
+| First      | None        | One file at a time | Locks               |
+| Second     | Centralized | Multi-file         | Merge before commit |
+| Third      | Distributed | Changesets         | Commit before merge |
+
+See also https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control.
+
+By borrowing from distributed version control systems, we can similarly advance
+the next generation of experiment tracking:
+
+| Generation | Platform                   | Logging        | Reproducibility | Collaboration |
+| ---------- | -------------------------- | -------------- | --------------- | ------------- |
+| First      | Spreadsheet, notebook      | Scalar values  | None            | None          |
+| Second     | API + database + dashboard | Multi-artifact | Manual          | Centralized   |
+| Third      | Version control            | Changesets     | Automatic       | Distributed   |
+
 # What Next?
 
 Experiment versioning is still in its early days. Look out for future
 announcements about:
 
-- Deep learning challenges like live monitoring, checkpointing, and iterative
-  training.
-- Visualizing and comparing experiment results in other tools like VSCode and
-  Studio.
-- Orchestrating experiments on other machines.
+- Deep learning features like [live monitoring](https://dvc.org/doc/dvclive) and
+  [checkpointing](https://dvc.org/doc/user-guide/experiment-management/checkpoints).
+- Visualizing and comparing experiment results in other tools like VS Code and
+  [DVC Studio](https://studio.iterative.ai/).
+- Orchestrating experiments on other
+  [machines](https://github.com/iterative/dvc/wiki/Remote-executors).
 
-What do you want to see for the next generation of experiment tracking? Try out
-experiment versioning, share your thoughts, and help build the future of ML
-developer tools.
+What do you want to see for the next generation of experiment tracking? Let us
+know in the comments!
