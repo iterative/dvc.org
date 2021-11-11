@@ -86,7 +86,7 @@ $ dvc exp init './another_script.sh $MYENVVAR'
   experiment produces. The default is `plots`.
 
 - `--live` - override the directory `path` for
-  [DVCLive](/doc/dvclive/user-guide/dvclive-with-dvc), which your experiment
+  [DVCLive](/doc/dvclive/dvclive-with-dvc), which your experiment
   will write logs to. The default is `dvclive` directory, which only comes to
   effect when used with `--type=live`.
 
@@ -133,5 +133,3 @@ $ dvc exp init './another_script.sh $MYENVVAR'
 #### Default stage
 
 #### Dvclive stage
-
-diff --git a/content/docs/sidebar.json b/content/docs/sidebar.json
