@@ -325,7 +325,7 @@ $ dvc remote modify --local myremote token SOME_BASE64_ENCODED_TOKEN
 > `--local` option, so it's written to a Git-ignored config file. See
 > `dvc remote modify` for a full list of WebHDFS parameters.
 
-💡 You may want to tun `kinit` before using the remote to make sure you have an
+💡 You may want to run `kinit` before using the remote to make sure you have an
 active kerberos session.
 
 </details>

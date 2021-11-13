@@ -912,16 +912,16 @@ by HDFS. Read more about by expanding the WebHDFS section in
     https://hadoop.apache.org/docs/r3.1.0/api/org/apache/hadoop/fs/SWebHdfs.html
 
 - `ssl_verify` - whether to verify SSL requests. Defaults to `true` when
-  `use_https` is enabled, to `false` otherwise.
+  `use_https` is enabled, `false` otherwise.
 
   ```dvc
   $ dvc remote modify myremote ssl_verify false
   ```
 
-- `token` - Hadoop [delegation token]. It must be the base64-encoded, URL-safe
-  token as returned by the [WebHDFS API]. If the cluster is secured, Kerberos
-  must be enabled (set `kerberos` to `true`) for this to work. This parameter is
-  incompatible with providing a `user` and with `proxy_to`.
+- `token` - Hadoop [delegation token] (as returned by the [WebHDFS API]). If the
+  cluster is secured, Kerberos must be enabled (set `kerberos` to `true`) for
+  this to work. This parameter is incompatible with providing a `user` and with
+  `proxy_to`.
 
   ```dvc
   $ dvc remote modify myremote token "mysecret"
