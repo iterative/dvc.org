@@ -69,9 +69,9 @@ CSV data frames or HDFS.
 | ----------------- | ----------------------------- | --------------------- | --------------------------- | ------------------ |
 | UI                | Terminal<br/>+ [Web][studio]  | Web (local or hosted) | Web                         | Web                |
 | Infrastructure    | None (just Git)               | Web server            | SaaS                        | SaaS               |
-| Versioning        | Git (standard, robust)        | Metadata (fragile)    | Metadata (fragile)          | Metadata (fragile) |
+| Versioning        | Git (standard, robust)        | Proprietary metadata | Proprietary metadata | Proprietary metadata |
 | Language Support  | Any<br/>(agnostic)            | Several (REST)        | Python only                 | Python only        |
-| Compute & Storage | User (yours)                  | User (yours)          | Theirs                      | Theirs             |
+| Compute & Storage | User (yours)                  | User (yours)          | Hosted (theirs)             | Hosted (theirs)    |
 | Collaboration     | Distributed<br/>(Git hosting) | Centralized           | Centralized                 | Centralized        |
 | Licensing         | Open Source                   | Open Source           | Proprietary<br/>+ OS client | Proprietary        |
 | Cost              | Free + [storage]              | Free [+ cloud][mp]    | [$$$][np]                   | [$$][wp]           |
