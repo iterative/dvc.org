@@ -141,17 +141,15 @@ That is correct. Running `dvc remove` only removes DVC tracked files and
 directories. It will also remove the entry from `.gitignore` and handles the
 `dvc.yaml`.
 
-If you still see a directory after you've removed a file from DVC, that is
-because it's tracked by Git, not DVC.
+If you still see a directory after you've removed a file from either DVC or Git,
+that is because neither removes empty directories from your filesystem.
 
 For example, if you run something like `dvc remove folder_name/file.dvc`, only
-the `.dvc` file will be removed. You'll be left with an empty directory.
-
-You will still have to remove the folder via Git with a command like:
+the `.dvc` file will be removed. If there is nothing else in the folder, you'll
+be left with an empty directory. You can remove it with a command like:
 
 ```dvc
-$ git rm -r folder_name
-```
+$ rmdir folder_name
 
 ### [Can DVC Studio be connected to a self-managed GitLab repo?](https://discord.com/channels/485586884165107732/841856466897469441/907468264882462800)
 
