@@ -134,7 +134,7 @@
     }
 
     &::before {
-      content: '';
+      content: "";
       position: absolute;
       top: 5px;
       bottom: -3px;
@@ -182,7 +182,7 @@
     list-style: none;
 
     &::before {
-      content: '•';
+      content: "•";
       color: var(--color-black);
       position: absolute;
       margin-left: -30px;
@@ -199,7 +199,7 @@
     list-style: none;
 
     &::before {
-      content: counter(ol) '.';
+      content: counter(ol) ".";
       position: absolute;
       margin-left: -30px;
       color: var(--color-black);
@@ -222,7 +222,7 @@
     font-weight: 400;
 
     &::before {
-      content: '...';
+      content: "...";
       letter-spacing: 0.6em;
       font-size: 28px;
     }
@@ -284,16 +284,16 @@
   td {
     border-bottom: 1px solid var(--color-light-gray);
     font-feature-settings: tnum;
-    padding: 10px 15px 10px;
+    padding: 10px 15px;
   }
 
   th {
     font-feature-settings: tnum;
-    padding: 10px 15px 10px;
+    padding: 10px 15px;
     background: var(--color-lighter-blue);
 
     &:first-child {
-      border-radius: 4px 0 0 0;
+      border-radius: 4px 0 0;
     }
 
     &:last-child {
@@ -315,11 +315,11 @@
 
   /* based on coy theme */
 
-  pre[class*='language-'] {
+  pre[class*="language-"] {
     background: #40354d;
 
     /* this code fixes hilghlight with scroll */
-    code[class*='language-'] {
+    code[class*="language-"] {
       float: left;
       min-width: 100%;
       padding: 0;
@@ -329,7 +329,7 @@
     }
 
     /* DVC's command outputs are a different color */
-    code[class*='language-dvc'] {
+    code[class*="language-dvc"] {
       color: #ccc;
     }
 
@@ -346,7 +346,7 @@
         font-weight: normal;
 
         .token.line {
-          color: rgb(204, 204, 204);
+          color: rgb(204 204 204);
         }
 
         .token.dvc {
@@ -354,7 +354,7 @@
         }
 
         .token.comment {
-          color: rgb(204, 204, 204);
+          color: rgb(204 204 204);
         }
       }
 

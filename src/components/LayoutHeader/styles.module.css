@@ -18,7 +18,7 @@
   left: 0;
   right: 0;
   background-color: #fff;
-  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.15);
+  box-shadow: 0 2px 3px 0 rgb(0 0 0 / 15%);
 }
 
 .container {
@@ -77,8 +77,6 @@
   );
   background-size: 100%;
   background-clip: text;
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
   -webkit-text-fill-color: transparent;
   -moz-text-fill-color: transparent;
   margin-left: 6px;

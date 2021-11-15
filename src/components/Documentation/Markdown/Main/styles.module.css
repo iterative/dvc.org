@@ -56,7 +56,7 @@
       margin-top: 0;
     }
 
-    a[target='_blank'] {
+    a[target="_blank"] {
       white-space: nowrap;
 
       &::after {
@@ -66,7 +66,7 @@
         width: 12px;
         height: 12px;
         margin-left: 1px;
-        content: url(/img/external-link.svg);
+        content: url("/img/external-link.svg");
       }
     }
 
@@ -82,7 +82,7 @@
       margin: 16px 0;
     }
 
-    pre[class*='language-'] {
+    pre[class*="language-"] {
       background: #40354d;
       color: #ccc;
 
@@ -249,7 +249,7 @@
   margin: 5px 0 0 10px;
 
   @media (--md-scr) {
-    margin: 0 0 15px 0;
+    margin: 0 0 15px;
   }
 
   @media only screen and (min-width: 1200px) {
@@ -266,7 +266,7 @@
 
   @media (--md-scr) {
     float: none;
-    margin: 0 0 15px 0;
+    margin: 0 0 15px;
   }
 
   @media only screen and (max-width: 1200px) {
@@ -275,7 +275,7 @@
 }
 
 .githubIcon {
-  background-image: url(/img/github_icon.svg);
+  background-image: url("/img/github_icon.svg");
 }
 
 .navButtons {
@@ -313,7 +313,7 @@
   width: 1em;
   height: 1em;
   line-height: 1;
-  background-image: url(/img/arrow.svg);
+  background-image: url("/img/arrow.svg");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
