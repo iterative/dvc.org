@@ -3,10 +3,9 @@
 Iterating on data science implies a large number of attempts involving tuning
 parameters, improving code, trying different data, and collecting metrics; for
 example to optimize the accuracy of an ML model. Keeping track of all these
-changes is challenging but essential, as we may need to review, compare,
-and share the <abbr>experiments</abbr>. We'll probably also want to
-reconnect model metrics back to their original setup, and reproduce them if
-needed.
+changes is challenging but essential, as we may need to review, compare, and
+share the <abbr>experiments</abbr>. We'll probably also want to reconnect model
+metrics back to their original setup, and reproduce them if needed.
 
 ![](/img/natural-experimentation.png) _Loose experimentation_
 
@@ -65,16 +64,16 @@ On top of all that, DVC is completely language agnostic. You can expect the same
 convenience and performance whether you are using Jupyter Notebooks or Scala,
 CSV data frames or HDFS.
 
-|                   | DVC Experiments               | MLFlow                | Weights & Biases            | Neptune            |
-| ----------------- | ----------------------------- | --------------------- | --------------------------- | ------------------ |
-| UI                | Terminal<br/>+ [Web][studio]  | Web (local or hosted) | Web                         | Web                |
-| Infrastructure    | None (just Git)               | Web server            | SaaS                        | SaaS               |
-| Versioning        | Git (standard, robust)        | Proprietary metadata | Proprietary metadata | Proprietary metadata |
-| Language Support  | Any<br/>(agnostic)            | Several (REST)        | Python only                 | Python only        |
-| Compute & Storage | User (yours)                  | User (yours)          | Hosted (theirs)             | Hosted (theirs)    |
-| Collaboration     | Distributed<br/>(Git hosting) | Centralized           | Centralized                 | Centralized        |
-| Licensing         | Open Source                   | Open Source           | Proprietary<br/>+ OS client | Proprietary        |
-| Cost              | Free + [storage]              | Free [+ cloud][mp]    | [$$$][np]                   | [$$][wp]           |
+|                   | DVC Experiments               | MLFlow                | Weights & Biases            | Neptune              |
+| ----------------- | ----------------------------- | --------------------- | --------------------------- | -------------------- |
+| UI                | Terminal<br/>+ [Web][studio]  | Web (local or hosted) | Web                         | Web                  |
+| Infrastructure    | None (just Git)               | Web server            | SaaS                        | SaaS                 |
+| Versioning        | Git (standard, robust)        | Proprietary metadata  | Proprietary metadata        | Proprietary metadata |
+| Language Support  | Any<br/>(agnostic)            | Several (REST)        | Python only                 | Python only          |
+| Compute & Storage | User (yours)                  | User (yours)          | Hosted (theirs)             | Hosted (theirs)      |
+| Collaboration     | Distributed<br/>(Git hosting) | Centralized           | Centralized                 | Centralized          |
+| Licensing         | Open Source                   | Open Source           | Proprietary<br/>+ OS client | Proprietary          |
+| Cost              | Free + [storage]              | Free [+ cloud][mp]    | [$$$][np]                   | [$$][wp]             |
 
 [studio]: https://studio.iterative.ai/
 [storage]: /doc/command-reference/remote/add#supported-storage-types
