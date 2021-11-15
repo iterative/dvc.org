@@ -294,5 +294,7 @@ announcements about:
 - Orchestrating experiments on other
   [machines](https://github.com/iterative/dvc/wiki/Remote-executors).
 
-What do you want to see for the next generation of experiment tracking? Let us
-know in the comments!
+What do you want to see for the next generation of experiment tracking? Join our
+upcoming
+[meetup](https://www.meetup.com/DVC-Community-Virtual-Meetups/events/282064369/)
+to discuss, or let us know in the comments!
