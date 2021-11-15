@@ -1,12 +1,11 @@
-# Comparing Experiments
+# Reviewing and Comparing Experiments
 
-You'll need a way to compare experiment results and track their corresponding
-parameters. DVC provides commands to list, tabulate and contrast them. Let's see
-how they can help you streamline the experimentation process.
+DVC provides commands to list, tabulate and contrast experiments. Let's see how
+they can help you streamline the experimentation process.
 
-## List experiments in the workspace
+## List experiments in the project
 
-You can get a list of existing experiments in the repository with
+You can get a list of existing experiments in the <abbr>repository</abbr> with
 `dvc exp list`. Without any options, this command lists the experiments based on
 the latest commit of the current branch (Git `HEAD`).
 
@@ -17,8 +16,8 @@ refs/tags/baseline-experiment:
         cnn-128
 ```
 
-If you want to list all the experiments in the repository regardless of their
-parent commit, use the `--all` flag.
+If you want to list all the experiments in the repo regardless of their parent
+commit, use the `--all` flag.
 
 ```dvc
 $ dvc exp list --all
@@ -29,11 +28,11 @@ main:
         exp-93150
 ```
 
-## List experiments in another Git remote
+## List experiments saved remotely
 
-As we discuss in [Sharing Experiments], you can use `dvc exp push` to upload
-experiments to Git remotes. `dvc exp list` can be used to list the experiments
-in a Git remote.
+Experiments can be [shared] (with `dvc exp push`) from another location. To
+review experiments uploaded to a remote <abbr>repository</abbr> (which you may
+not have locally), provide a Git remote name to `dvc exp list`.
 
 ```dvc
 $ dvc exp list origin
@@ -42,18 +41,17 @@ refs/tags/baseline-experiment:
         cnn-64
 ```
 
-This command lists the experiments originated from `HEAD`. You can add any other
-options to the remote command, including `--all`. (see previous section).
+This command lists remote experiments originated from `HEAD`. You can add any
+other options to the remote command, including `--all` (see previous section).
 
-[sharing experiments]: /doc/user-guide/experiment-management/sharing-experiments
+[shared]: /doc/user-guide/experiment-management/sharing-experiments
 
 ## List experiment names to use in scripts
 
-`dvc exp list` may be printing more than the necessary information when it comes
-to feed its output to other commands. You can get only the names of the
-experiments via `--names-only` flag.
-
-For example, to get all the experiment names from a Git remote:
+`dvc exp list` may be printing too much information when it comes to feed its
+output to other commands. You can get only the names of the experiments via the
+`--names-only` flag. For example, to get all the experiment names from a remote
+(`origin`):
 
 ```dvc
 $ for experiment in $(dvc exp list origin --names-only --all) ; do
@@ -61,33 +59,25 @@ $ for experiment in $(dvc exp list origin --names-only --all) ; do
 done
 ```
 
-## List experiments based on a specific commit, tag or branch
+## List experiments from a specific project version
 
 The `--rev` option allows to specify a Git commit, tag or branch name to list
-the experiments based on it.
-
-For example, to list of experiments in a Git repository stemmed from a
-particular commit:
+the experiments that are based on it. For example:
 
 ```dvc
+# from a commit:
 $ dvc exp list origin --rev 23ceb4a
 23ceb4a:
         cnn-32
         cnn-96
-```
 
-or a tag:
-
-```dvc
+# from a tag:
 $ dvc exp list origin --rev baseline-experiment
 refs/tags/baseline-experiment:
         cnn-64
         cnn-128
-```
 
-or a fully specified Git reference:
-
-```dvc
+# from a fully specified Git reference:
 $ dvc exp list origin --rev refs/tags/baseline-experiment
 refs/tags/baseline-experiment:
         cnn-64
@@ -366,29 +356,29 @@ their metrics and params.
 
 ```dvc
 $ dvc exp diff
-Path          Metric    Value    Change
-metrics.json  acc       0.9151   0.0024
-metrics.json  loss      0.23867  0.0020977
+Path          Metric  HEAD     workspace  Change
+metrics.json  acc     0.9127   0.9151     0.0024
+metrics.json  loss    0.23657  0.23867    0.0020977
 
-Path         Param             Value    Change
-params.yaml  model.conv_units  256      240
+Path         Param             HEAD  workspace  Change
+params.yaml  model.conv_units  16    256        240
 ```
 
 Without experiment names, `dvc exp diff` shows the change between the last
-experiment and the last commit. So if the command doesn't print an output, there
-might be no experiment since the previous commit or it didn't produce changes in
-results. If you want to see all the parameters and metrics regardless of whether
-they have changed, you can use `--all` flag.
+experiment (`workspace`) and the last commit (`HEAD`). So if the command doesn't
+print an output, there might be no experiment since the previous commit or it
+didn't produce changes in results. If you want to see all the parameters and
+metrics regardless of whether they have changed, you can use `--all` flag.
 
 ```dvc
 $ dvc exp diff --all
-Path          Metric    Value    Change
-metrics.json  acc       0.9151   0.0024
-metrics.json  loss      0.23867  0.0020977
+Path          Metric  HEAD     workspace  Change
+metrics.json  acc     0.9127   0.9151     0.0024
+metrics.json  loss    0.23657  0.23867    0.0020977
 
-Path         Param             Value    Change
-params.yaml  model.conv_units  256      240
-params.yaml  train.epochs      10       0
+Path         Param             HEAD  workspace  Change
+params.yaml  model.conv_units  16    256        240
+params.yaml  train.epochs      10    10         0
 ```
 
 ## Compare an experiment with the workspace
@@ -399,12 +389,12 @@ names to `dvc exp diff`.
 
 ```
 $ dvc exp diff cnn-128 cnn-64
-Path          Metric    Value    Change
-metrics.json  acc       0.9153   0.00020003
-metrics.json  loss      0.23385  -0.0048174
+Path          Metric  cnn-128  cnn-64   Change
+metrics.json  acc     0.9151   0.9153   0.00020003
+metrics.json  loss    0.23867  0.23385  -0.0048174
 
-Path         Param             Value    Change
-params.yaml  model.conv_units  64       -192
+Path         Param             cnn-128  cnn-64  Change
+params.yaml  model.conv_units  128      64      -64
 ```
 
 ## Customize the comparison output
@@ -416,12 +406,12 @@ the `--precision` option (5 by default).
 
 ```dvc
 $ dvc exp diff exp-25a26 cnn-64 --no-path --precision 2
-Metric    Value    Change
-acc       0.92     0.0002
-loss      0.23     -0.0048
+Metric    exp-25a26  cnn-64  Change
+acc       0.92       0.92    0.0002
+loss      0.23       0.23    -0.0048
 
-Param             Value    Change
-model.conv_units  64       -192
+Param             exp-25a26  Value  Change
+model.conv_units  256        64     -192
 ```
 
 ### Get the comparison in JSON
@@ -486,15 +476,15 @@ table to embed in the reports directly.
 
 ```dvc
 $ dvc exp diff exp-25a26 cnn-64 --md
-| Path         | Metric | Value   | Change     |
-| ------------ | ------ | ------- | ---------- |
-| metrics.json | acc    | 0.9153  | 0.00020003 |
-| metrics.json | loss   | 0.23385 | -0.0048174 |
+| Path         | Metric | exp-25a26 | cnn-64  | Change     |
+| ------------ | ------ | --------- | ------- | ---------- |
+| metrics.json | acc    | 0.9151    | 0.9153  | 0.00020003 |
+| metrics.json | loss   | 0.23867   | 0.23385 | -0.0048174 |
 
 
-| Path        | Param            | Value | Change |
-| ----------- | ---------------- | ----- | ------ |
-| params.yaml | model.conv_units | 64    | -192   |
+| Path        | Param            | exp-25a26 | cnn-64 | Change |
+| ----------- | ---------------- | --------- | ------ | ------ |
+| params.yaml | model.conv_units | 256       | 64     | -192   |
 ```
 
 You can use this output to automatically update the documents with a command
