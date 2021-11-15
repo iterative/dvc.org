@@ -4,7 +4,7 @@ Iterating on data science implies a large number of attempts involving tuning
 parameters, improving code, trying different data, and collecting metrics; for
 example to optimize the accuracy of an ML model. Keeping track of all these
 changes is challenging but essential, as we may need to review, compare,
-reproduce, and share the <abbr>experiments</abbr>. We'll probably also want to
+and share the <abbr>experiments</abbr>. We'll probably also want to
 reconnect model metrics back to their original setup, and reproduce them if
 needed.
 
