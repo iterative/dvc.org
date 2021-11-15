@@ -1,8 +1,7 @@
 # Sharing Experiments
 
-If your team uses Git server or hosting (e.g. GitHub, GitLab, etc.) to
-collaborate on projects, you can also use them to save and share DVC
-Experiments.
+DVC can rely on existing Git servers or hosting (e.g. GitHub, GitLab, etc.) to
+save and share DVC Experiments.
 
 <details>
 
@@ -14,7 +13,7 @@ your project's <abbr>cache</abbr> and thus will be transferred to/from
 [remote storage](/doc/command-reference/remote) (e.g. Amazon S3 or Google
 Drive). Small files like experimental code and
 [DVC metafiles](/doc/user-guide/project-structure) files are uploaded or
-downloaded from [Git remotes] by DVC.
+downloaded to/from [Git remotes] by DVC.
 
 [sharing regular project data]: /doc/use-cases/sharing-data-and-model-files
 [git remotes]: https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes
@@ -98,6 +97,11 @@ $ dvc exp list --all --names-only | while read -r expname ; do \
     dvc exp pull origin ${expname} \
 done
 ```
+
+> 📖 See also [Listing experiments].
+
+[listing experiments]:
+  /doc/user-guide/experiment-management/comparing-experiments#list-experiments-in-the-project
 
 ## Example: Dedicated experiment directories
 
