@@ -1,11 +1,11 @@
 # Machine Learning Experiment Tracking
 
-Iterating on data science implies a large number of attempts involving tuning
-parameters, improving code, trying different data, and collecting metrics; for
-example to optimize the accuracy of an ML model. Keeping track of all these
-changes is challenging but essential, as we may need to review, compare, and
-share the <abbr>experiments</abbr>. We'll probably also want to reconnect model
-metrics back to their original setup, and reproduce them if needed.
+Making progress on data science projects implies a large number of
+<abbr>experiments</abbr> -- attempts at tuning parameters, improving code,
+trying different data, collecting new metrics, etc. Keeping track of all these
+changes is challenging but essential, as we'll want to review, compare, and
+share them. We'll probably also want to recover the condition that produced
+certain model metrics, and reproduce them if needed.
 
 ![](/img/natural-experimentation.png) _Loose experimentation_
 
@@ -60,9 +60,14 @@ services). This means you control where and how your data is saved and shared.
 They can also make more efficient use of storage via <abbr>caching</abbr>, which
 prevents repetitive data transfers for every experiment run.
 
+<!-- Other tools can be very lightweight. It's more about the experience. -->
+<!-- We're not highlighting data (versioning) enough. -->
+
 On top of all that, DVC is completely language agnostic. You can expect the same
 convenience and performance whether you are using Jupyter Notebooks or Scala,
 CSV data frames or HDFS.
+
+<!-- ALT table criteria: basic questions like how to run exp/ how it's saved/ what is captures (automatically) (data, code, metrics), where is the data, etc... -->
 
 |                   | DVC Experiments               | MLFlow                | Weights & Biases            | Neptune              |
 | ----------------- | ----------------------------- | --------------------- | --------------------------- | -------------------- |
@@ -75,6 +80,9 @@ CSV data frames or HDFS.
 | Licensing         | Open Source                   | Open Source           | Proprietary<br/>+ OS client | Proprietary          |
 | Cost              | Free + [storage]              | Free [+ cloud][mp]    | [$$$][np]                   | [$$][wp]             |
 
+<!-- how are we defining 'Centralized' for collaboration? I think it might be stronger if we phrase it differently -->
+<!-- Pipeline integration is one key difference imo (maybe worth a new row?) . You would need to use complementary tool for pipelines in both MLFlow and Wandb -->
+
 [studio]: https://studio.iterative.ai/
 [storage]: /doc/command-reference/remote/add#supported-storage-types
 [np]: https://neptune.ai/pricing
@@ -84,5 +92,7 @@ CSV data frames or HDFS.
 💡 Note that other experiment tracking tools can be complementary with DVC, for
 example as more detailed experiment logging systems with specialized analytics
 and visualizations.
+
+<!-- Mention Studio and CI/CD? (CML) -->
 
 > 📖 Ready to dive in? See [Get Started: Experiments](/doc/start/experiments).
