@@ -30,7 +30,7 @@ The `targets` are the files or [directories](#adding-entire-directories) to add.
 They get stored in the <abbr>cache</abbr> by default (use the `--no-commit`
 option to avoid this, and `dvc commit` to finish the process when needed).
 
-> See also `dvc.yaml` and `dvc run` for more advanced ways to track and version
+> See also `dvc.yaml` and `dvc n` for more advanced ways to track and version
 > intermediate and final results (like ML models).
 
 After checking that each `target` hasn't been added before (or tracked with
@@ -253,13 +253,13 @@ outs:
 
 This allows us to treat the entire directory structure as a single data
 artifact. For example, you can pass it as a <abbr>dependency</abbr> to a
-`dvc run` stage definition:
+stage definition:
 
 ```dvc
-$ dvc run -n train \
-          -d train.py -d pics \
-          -M metrics.json -o model.h5 \
-          python train.py
+$ dvc stage add -n train \
+                -d train.py -d pics \
+                -M metrics.json -o model.h5 \
+                python train.py
 ```
 
 > To try this example, see the
@@ -292,7 +292,7 @@ pics
 
 Note that no top-level `.dvc` file is generated, which is typically less
 convenient. For example, we cannot use the directory structure as one unit with
-`dvc run` or other commands.
+`dvc stage add` or other commands.
 
 ## Example .dvcignore
 
