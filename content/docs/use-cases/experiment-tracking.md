@@ -72,21 +72,19 @@ On top of all that, DVC is completely language agnostic. You can expect the same
 convenience and performance whether you're using Jupyter Notebooks or Scala, CSV
 data frames or HDFS.
 
-|                   | DVC Experiments               | MLFlow                | Weights & Biases            | Neptune              |
-| ----------------- | ----------------------------- | --------------------- | --------------------------- | -------------------- |
-| UI                | Terminal                      | Web (local or hosted) | Web                         | Web                  |
-| Infrastructure    | None (just Git)               | Web server            | SaaS                        | SaaS                 |
-| Versioning        | Git (standard, robust)        | Proprietary metadata  | Proprietary metadata        | Proprietary metadata |
-| Language Support  | Any<br/>(agnostic)            | Several (REST)        | Python only                 | Python only          |
-| Compute & Storage | User (yours)                  | User (yours)          | Hosted (theirs)             | Hosted (theirs)      |
-| Collaboration     | Distributed<br/>(Git hosting) | Centralized           | Centralized                 | Centralized          |
-| Licensing         | Open Source                   | Open Source           | Proprietary<br/>+ OS client | Proprietary          |
-| Cost              | Free + [storage]              | Free [+ cloud][mp]    | [$$$][np]                   | [$$][wp]             |
+|                   | DVC Experiments        | MLFlow                  | Weights & Biases     | TensorBoard     |
+| ----------------- | ---------------------- | ----------------------- | -------------------- | --------------- |
+| UI                | Terminal               | Web (local or hosted)   | Web (hosted)         | Web (hosted)    |
+| Infrastructure    | None (just Git)        | Web server              | SaaS                 | SaaS            |
+| Versioning        | Git (standard, robust) | Proprietary metadata    | Proprietary metadata | None            |
+| Language Support  | Any<br/>(agnostic)     | Several (REST)          | Python only          | Python only     |
+| Compute & Storage | User (yours)           | User (yours)            | Hosted (theirs)      | Hosted (theirs) |
+| Licensing         | Open Source            | Open Source             | Proprietary          | Open Source     |
+| Cost              | Free + [storage]       | Free + [cloud][dbricks] | [$$$][wandb]         | Free (limited)  |
 
 [storage]: /doc/command-reference/remote/add#supported-storage-types
-[np]: https://neptune.ai/pricing
-[wp]: https://wandb.ai/site/pricing
-[mp]: https://databricks.com/product/pricing
+[dbricks]: https://databricks.com/product/pricing
+[wandb]: https://wandb.ai/site/pricing
 
 > 💡 Note that other experiment tracking tools can be complementary with DVC,
 > for example for more detailed experiment logging with specialized analytics
