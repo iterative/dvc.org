@@ -72,18 +72,20 @@ On top of all that, DVC is completely language agnostic. You can expect the same
 convenience and performance whether you're using Jupyter Notebooks or Scala, CSV
 data frames or HDFS.
 
-|                   | DVC Experiments        | MLFlow                  | Weights & Biases     | TensorBoard     |
-| ----------------- | ---------------------- | ----------------------- | -------------------- | --------------- |
-| UI                | Terminal               | Web (local or hosted)   | Web (hosted)         | Web (hosted)    |
-| Infrastructure    | None (just Git)        | Web server              | SaaS                 | SaaS            |
-| Versioning        | Git (standard, robust) | Proprietary metadata    | Proprietary metadata | None            |
-| Language Support  | Any<br/>(agnostic)     | Several (REST)          | Python only          | Python only     |
-| Compute & Storage | User (yours)           | User (yours)            | Hosted (theirs)      | Hosted (theirs) |
-| Licensing         | Open Source            | Open Source             | Proprietary          | Open Source     |
-| Cost              | Free + [storage]       | Free + [cloud][dbricks] | [$$$][wandb]         | Free (limited)  |
+|                       | DVC Experiments                         | MLFlow                                         | Weights & Biases          | TensorBoard             |
+| --------------------- | --------------------------------------- | ---------------------------------------------- | ------------------------- | ----------------------- |
+| Experiment definition | `dvc.yaml` metafiles                    | Implicit (in code)                             | Implicit                  | Implicit                |
+| How to run it         | `dvc exp run` any terminal command      | Code integration                               | Code (Python only)        | Code (Python)           |
+| Data storage          | [User][storage] (yours e.g. cloud)      | User (yours)                                   | Hosted (theirs)           | Limited hosted (theirs) |
+| Compute               | User (e.g [CI/CD][cml])                 | User or [hosted][dbricks]                      | User (e.g. local)         | User (local)            |
+| What can be tracked   | code & data, params, metrics, artifacts | data, params, metrics                          | data, params, environment | params and metrics      |
+| Visualization         | Terminal + [web][dvc studio]            | Web app                                        | Website                   | Website                 |
+| How it's captured     | Custom Git commit                       | Database                                       | Database                  | Metadata files          |
+| What you pay          | Your resources + optional [web UI]      | Your resources + [hosting][dbricks] (optional) | [Subscription][wandb]     | Your resources          |
 
 [storage]: /doc/command-reference/remote/add#supported-storage-types
 [dbricks]: https://databricks.com/product/pricing
+[web ui]: https://studio.iterative.ai/#pricing
 [wandb]: https://wandb.ai/site/pricing
 
 > 💡 Note that other experiment tracking tools can be complementary with DVC,
