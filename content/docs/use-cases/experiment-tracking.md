@@ -54,6 +54,8 @@ DVC experiment tracking features enable:
 
 ![]() _Organized experiments in DVC_
 
+> 📖 Ready to dive in? See [Get Started: Experiments](/doc/start/experiments).
+
 Unlike tools that focus on experiment navigation, DVC's approach guarantees
 reproducibility by working on top of Git, instead of on being a side system with
 fragile links to Git. This means that your [data is
@@ -86,8 +88,14 @@ data frames or HDFS.
 [wp]: https://wandb.ai/site/pricing
 [mp]: https://databricks.com/product/pricing
 
-💡 Note that other experiment tracking tools can be complementary with DVC, for
-example as more detailed experiment logging systems with specialized analytics
-and visualizations.
+> 💡 Note that other experiment tracking tools can be complementary with DVC,
+> for example for more detailed experiment logging with specialized analytics
+> and visualizations.
 
-> 📖 Ready to dive in? See [Get Started: Experiments](/doc/start/experiments).
+To complete your stack, we also offer [DVC Studio], an advanced web interface to
+collaborate on DVC projects online, including full experiment management
+support. You can also integrate with CI/CD using [CML], and run experiments
+straight from Studio!
+
+[dvc studio]: /doc/studio
+[cml]: https://cml.dev/
