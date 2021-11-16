@@ -9,31 +9,35 @@ certain model metrics, and reproduce them if needed.
 
 ![](/img/natural-experimentation.png) _Loose experimentation_
 
-DVC provides a layer of
-[experiment management](/doc/user-guide/experiment-management) features to
-assist the full lifecycle of the ML modeling process. **DVC Experiments** can
-run and capture all the relevant changes to your project automatically (code,
-data, parameters, ML models, metrics, etc.) because your data processes are
-codified with DVC, which enables
-[tracking & versioning](/doc/use-cases/versioning-data-and-model-files) all this
-information.
+DVC provides a layer of [experiment management] features to simplify ML
+modeling. Running **DVC Experiments** in your project automatically captures all
+the relevant changes (to code, data, parameters, etc.) because your data
+processes are [codified] with DVC, which enables tracking and [versioning
+everything].
 
-You can handle experiments them with simple terminal
-[commands](/doc/command-reference/exp). What you can do includes:
+DVC experiment tracking features enable:
 
-- Rapid iteration on experiment ideas (variations from a baseline) with a
-  controlled execution command (`dvc exp run`).
+- Rapid iteration on experiment ideas (variations from a baseline) with
+  controlled [execution]
 - Automatic bookkeeping of changes to data dependencies, code,
   <abbr>parameters</abbr>, artifacts and <abbr>metrics</abbr> on each experiment
-  run.
+  run
 - Queue experiments for future execution (and run them in parallel if needed).
-- Create deep [checkpoints](/doc/user-guide/experiment-management/checkpoints)
-  from your code, and track [live metrics](/doc/dvclive).
-- Review and compare previous experiments or checkpoints based on params or
-  metrics.
-- Restore any experiment results from <abbr>cache</abbr>, or reproduce them from
+- Create deep learning [checkpoints] from your code, and track
+  [live metrics](/doc/dvclive).
+- [Review and compare] experiments or checkpoints based on params or metrics.
+- Restore experimental results from <abbr>cache</abbr>, or reproduce them from
   scratch.
 - Save, share, or discard experiments individually or in bulk.
+
+[experiment management]: /doc/user-guide/experiment-management
+[codified]: /doc/user-guide/project-structure/pipelines-files
+[versioning everything]: /doc/use-cases/versioning-data-and-model-files
+[commands]: /doc/command-reference/exp
+[execution]: /doc/user-guide/experiment-management/running-experiments
+[checkpoints]: /doc/user-guide/experiment-management/checkpoints
+[review and compare]:
+  /doc/user-guide/experiment-management/comparing-experiments
 
 ```dvctable
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━┓
