@@ -55,27 +55,24 @@ DVC experiment tracking features enable:
 ![]() _Organized experiments in DVC_
 
 Unlike tools that focus on experiment navigation, DVC's approach guarantees
-reproducibility by integrating with Git directly (instead of saving fragile
-versioning metadata). This enables distributed collaboration along the way, via
-optional hosting like GitHub or GitLab.
+reproducibility by working on top of Git, instead of on being a side system with
+fragile links to Git. This means that your [data is
+tracked][versioning everything] from within project versions (without storing it
+in Git). It also enables distributed collaboration along the way, via optional
+hosting like GitHub or GitLab.
 
-DVC projects are lightweight and local-first (no need for special servers or
-services). This means you control where and how your data is saved and shared.
-They can also make more efficient use of storage via <abbr>caching</abbr>, which
-prevents repetitive data transfers for every experiment run.
-
-<!-- Other tools can be very lightweight. It's more about the experience. -->
-<!-- We're not highlighting data (versioning) enough. -->
+DVC projects provide a seamless, local-first experience (no need for running
+servers, special services, or loading websites). You control where and how your
+data is saved and shared. DVC also improves storage efficiency via
+<abbr>caching</abbr>, preventing repetitive data transfers on every experiment.
 
 On top of all that, DVC is completely language agnostic. You can expect the same
-convenience and performance whether you are using Jupyter Notebooks or Scala,
-CSV data frames or HDFS.
-
-<!-- ALT table criteria: basic questions like how to run exp/ how it's saved/ what is captures (automatically) (data, code, metrics), where is the data, etc... -->
+convenience and performance whether you're using Jupyter Notebooks or Scala, CSV
+data frames or HDFS.
 
 |                   | DVC Experiments               | MLFlow                | Weights & Biases            | Neptune              |
 | ----------------- | ----------------------------- | --------------------- | --------------------------- | -------------------- |
-| UI                | Terminal<br/>+ [Web][studio]  | Web (local or hosted) | Web                         | Web                  |
+| UI                | Terminal                      | Web (local or hosted) | Web                         | Web                  |
 | Infrastructure    | None (just Git)               | Web server            | SaaS                        | SaaS                 |
 | Versioning        | Git (standard, robust)        | Proprietary metadata  | Proprietary metadata        | Proprietary metadata |
 | Language Support  | Any<br/>(agnostic)            | Several (REST)        | Python only                 | Python only          |
@@ -84,10 +81,6 @@ CSV data frames or HDFS.
 | Licensing         | Open Source                   | Open Source           | Proprietary<br/>+ OS client | Proprietary          |
 | Cost              | Free + [storage]              | Free [+ cloud][mp]    | [$$$][np]                   | [$$][wp]             |
 
-<!-- how are we defining 'Centralized' for collaboration? I think it might be stronger if we phrase it differently -->
-<!-- Pipeline integration is one key difference imo (maybe worth a new row?) . You would need to use complementary tool for pipelines in both MLFlow and Wandb -->
-
-[studio]: https://studio.iterative.ai/
 [storage]: /doc/command-reference/remote/add#supported-storage-types
 [np]: https://neptune.ai/pricing
 [wp]: https://wandb.ai/site/pricing
@@ -96,7 +89,5 @@ CSV data frames or HDFS.
 💡 Note that other experiment tracking tools can be complementary with DVC, for
 example as more detailed experiment logging systems with specialized analytics
 and visualizations.
-
-<!-- Mention Studio and CI/CD? (CML) -->
 
 > 📖 Ready to dive in? See [Get Started: Experiments](/doc/start/experiments).
