@@ -116,22 +116,15 @@ data, you would run this command:
 $ dvc remove
 ```
 
-### [How can I associate my Tensorboard experiment results, metrics, configs, etc. with DVC versioned datasets?](https://discord.com/channels/485586884165107732/563406153334128681/901272438468407326)
+### [When using a CML, are GitHub Actions, GitLab, and BitBucket the only options for CI?](https://discord.com/channels/485586884165107732/728693131557732403/909847110306914345)
 
-There are a few approaches you can take to work with DVC datasets and
-Tensorboard.
+Currently, `cml runner` does not support CircleCI or droneCI self–hosted runners
+and you would have to deploy them manually.
 
-If you want to keep running your experiments with Tensorboard, you can use
-`dvc import` to associate the experiment results and metrics with your datasets.
+You can still use `cml send-comment`, `cml pr`, and the other CML tools with any
+CI platform.
 
-Or you could check out the `dvc exp` features. This lets you run the experiments
-and track everything with just DVC.
-
-There's also the [DVCLive](https://dvc.org/doc/dvclive) library that will let
-you store your Tensorboard metrics and plots in the DVC format so they will be
-tracked and associated with the dataset and the DVC pipeline.
-
-Thanks for this awesome question @jackkwok!
+Thanks for this awesome question @tpietruszka!
 
 ### [When I run the `dvc remove` command, does it only remove .dvc files?](https://discord.com/channels/485586884165107732/563406153334128681/905382438786715648)
 
@@ -148,7 +141,7 @@ For example, if you run something like `dvc remove folder_name/file.dvc`, only
 the `.dvc` file will be removed. If there is nothing else in the folder, you'll
 be left with an empty directory. You can remove it with a command like:
 
-```dvc
+````dvc
 $ rmdir folder_name
 
 ### [Can DVC Studio be connected to a self-managed GitLab repo?](https://discord.com/channels/485586884165107732/841856466897469441/907468264882462800)
@@ -172,7 +165,7 @@ You can extend the max time in your CI by adding something like this:
 ```dvc
 train:
     timeout-minutes: 5000
-```
+````
 
 If you're using GitLab, the same update would look similar to this:
 
