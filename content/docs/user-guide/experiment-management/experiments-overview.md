@@ -1,10 +1,29 @@
 # DVC Experiments Overview
 
-DVC Experiments are captures automatically by DVC when you [run them].
+DVC Experiments are captures automatically by DVC when you [run them]. Each
+experiment creates and tracks a project variation based on the changes in your
+<abbr>workspace</abbr>. Experiments preserve the latest commit in the current
+branch (Git `HEAD`) as their parent or _baseline_.
+
+<details>
+
+### ⚙️ How does DVC track experiments?
+
+Experiments are custom [Git references] (found in `.git/refs/exps`) with a
+single commit based on `HEAD` (not checked out by DVC). Note that these commits
+are not pushed to Git remotes by default (see `dvc exp push`).
+
+</details>
+
+Experiments will have an auto-generated ID like `exp-bfe64` by default. A custom
+name can be given instead (using the `--name`/`-n` option of `dvc exp run`).
+
+> ID or name can be used to reference experiments with `dvc exp` subcommands.
 
 [run them]: /doc/user-guide/experiment-management/running-experiments
+[git references]: https://git-scm.com/book/en/v2/Git-Internals-Git-References
 
-## Basic Workflow
+## Basic workflow
 
 `dvc exp` commands let you automatically track a variation to a committed
 project version (baseline). You can create independent groups of experiments

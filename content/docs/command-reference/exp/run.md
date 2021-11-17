@@ -32,36 +32,25 @@ data and code updates, or <abbr>hyperparameter</abbr> tuning. For the latter,
 you can use the `--set-param` (`-S`) option of this command to change
 `dvc param` values on-the fly.
 
-Each experiment creates and tracks a project variation based on your
-<abbr>workspace</abbr> changes. Experiments will have an auto-generated name
-like `exp-bfe64` by default, which can be customized using the `--name` (`-n`)
-option.
+📖 See [DVC Experiments Overview][exp-overview] for more information.
 
-<details>
+Each experiment creates and tracks a project variation based on the changes in
+your <abbr>workspace</abbr>. The results of the last `dvc exp run` will be
+reflected in the workspace. Experiments will have an auto-generated ID like
+`exp-bfe64` by default. A custom name can be given instead, using the `--name`
+(`-n`) option
 
-### ⚙️ How does DVC track experiments?
+To display and compare multiple experiments, use `dvc exp show` or
+`dvc exp diff` (`plots diff` also accepts experiment names as `revisions`). Use
+`dvc exp apply` to restore the results of any experiment, for example to [commit
+them][persisting] to Git. Unnecessary experiments can be removed with
+`dvc exp remove`or `dvc exp gc` (or abandoned).
 
-Experiments are custom
-[Git references](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
-(found in `.git/refs/exps`) with a single commit based on `HEAD` (not checked
-out by DVC). Note that these commits are not pushed to Git remotes by default
-(see `dvc exp push`).
+> Note that experiment data will remain in the local <abbr>cache</abbr> until
+> you use regular `dvc gc` to clean it up.
 
-</details>
-
-The results of the last `dvc exp run` can be seen in the workspace. To display
-and compare multiple experiments, use `dvc exp show` or `dvc exp diff`
-(`plots diff` also accepts experiment names as `revisions`). Use `dvc exp apply`
-to restore the results of any other experiment instead.
-
-Successful experiments can be made [persistent] by committing them to the Git
-repo. Unnecessary ones can be removed with `dvc exp remove`or `dvc exp gc` (or
-abandoned).
-
-> Note that experiment data will remain in the <abbr>cache</abbr> until you use
-> regular `dvc gc` to clean it up.
-
-[persistent]: /doc/user-guide/experiment-management/persisting-experiments
+[exp-overview]: /doc/user-guide/experiment-management/experiments-overview
+[persisting]: /doc/user-guide/experiment-management/persisting-experiments
 
 ## Checkpoints
 
