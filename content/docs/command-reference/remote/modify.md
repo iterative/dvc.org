@@ -156,10 +156,14 @@ By default, DVC authenticates using your AWS CLI
 (if set). This uses the default AWS credentials file. Use the following
 parameters to customize the authentication method:
 
+> If any values given to the parameters below contain sensitive user info, add
+> them with the `--local` option, so they're written to a Git-ignored config
+> file.
+
 - `profile` - credentials profile name to access S3:
 
   ```dvc
-  $ dvc remote modify myremote profile myprofile
+  $ dvc remote modify --local myremote profile myprofile
   ```
 
 - `credentialpath` - S3 credentials file path:
@@ -228,10 +232,6 @@ parameters to customize the authentication method:
   $ dvc remote modify myremote ssl_verify path/to/ca_bundle.pem
   ```
 
-> The credentials file path, access key and secret, and other options contains
-> sensitive user info. Therefore, it's safer to add it with the `--local`
-> option, so it's written to a Git-ignored config file.
-
 **Operational details**
 
 Make sure you have the following permissions enabled: `s3:ListBucket`,
@@ -274,7 +274,7 @@ methods that are performed by DVC (`list_objects_v2` or `list_objects`,
 
   ```dvc
   $ dvc remote modify myremote grant_read \
-          id=aws-canonical-user-id,id=another-aws-canonical-user-id
+        id=aws-canonical-user-id,id=another-aws-canonical-user-id
   ```
 
 - `grant_read_acp`\* - grants `READ_ACP` permissions at object level access
@@ -282,7 +282,7 @@ methods that are performed by DVC (`list_objects_v2` or `list_objects`,
 
   ```dvc
   $ dvc remote modify myremote grant_read_acp \
-          id=aws-canonical-user-id,id=another-aws-canonical-user-id
+        id=aws-canonical-user-id,id=another-aws-canonical-user-id
   ```
 
 - `grant_write_acp`\* - grants `WRITE_ACP` permissions at object level access
@@ -290,7 +290,7 @@ methods that are performed by DVC (`list_objects_v2` or `list_objects`,
 
   ```dvc
   $ dvc remote modify myremote grant_write_acp \
-          id=aws-canonical-user-id,id=another-aws-canonical-user-id
+        id=aws-canonical-user-id,id=another-aws-canonical-user-id
   ```
 
 - `grant_full_control`\* - grants `FULL_CONTROL` permissions at object level
@@ -299,7 +299,7 @@ methods that are performed by DVC (`list_objects_v2` or `list_objects`,
 
   ```dvc
   $ dvc remote modify myremote grant_full_control \
-          id=aws-canonical-user-id,id=another-aws-canonical-user-id
+        id=aws-canonical-user-id,id=another-aws-canonical-user-id
   ```
 
   > \* `grant_read`, `grant_read_acp`, `grant_write_acp` and
@@ -341,7 +341,8 @@ For more on the supported env vars, please see the
   [IBM Cloud Object Storage](https://www.ibm.com/cloud/object-storage) etc.):
 
   ```dvc
-  $ dvc remote modify myremote endpointurl https://storage.example.com
+  $ dvc remote modify myremote \
+                      endpointurl https://storage.example.com
   ```
 
 Any other S3 parameter (see previous section) can also be set for S3-compatible
@@ -352,6 +353,10 @@ storage. Whether they're effective depends on each storage platform.
 <details>
 
 ### Click for Microsoft Azure Blob Storage
+
+> If any values given to the parameters below contain sensitive user info, add
+> them with the `--local` option, so they're written to a Git-ignored config
+> file.
 
 - `url` (required) - remote location, in the `azure://<container>/<object>`
   format:
@@ -426,17 +431,13 @@ attempting to authenticate with Azure:
 [anonymously]:
   https://docs.microsoft.com/en-us/azure/storage/blobs/anonymous-read-access-configure
 
-> The authentication values below may contain sensitive user info. Therefore,
-> it's safer to use the `--local` flag so they're written to a Git-ignored
-> [config file](https://dvc.org/doc/command-reference/config).
-
 - `connection_string` - Azure Storage
   [connection string](http://azure.microsoft.com/en-us/documentation/articles/storage-configure-connection-string/)
   (recommended).
 
   ```dvc
-  $ dvc remote modify --local
-                        myremote connection_string 'mysecret'
+  $ dvc remote modify --local myremote \
+                              connection_string 'mysecret'
   ```
 
 * `tenant_id` - tenant ID for AD _service principal_ authentication (requires
@@ -536,6 +537,10 @@ can propagate from an Azure configuration file (typically managed with
 
 ### Click for Google Drive
 
+> If any values given to the parameters below contain sensitive user info, add
+> them with the `--local` option, so they're written to a Git-ignored config
+> file.
+
 Please see
 [Set up a Google Drive DVC Remote](/doc/user-guide/setup-google-drive-remote)
 for a full guide on using Google Drive as DVC remote storage.
@@ -553,22 +558,22 @@ for a full guide on using Google Drive as DVC remote storage.
   Also requires using `gdrive_client_secret`.
 
   ```dvc
-  $ dvc remote modify myremote gdrive_client_id 'client-id'
+  $ dvc remote modify --local myremote gdrive_client_id 'client-id'
   ```
 
 - `gdrive_client_secret` - Client secret for authentication with OAuth 2.0 when
   using a custom Google Client project. Also requires using `gdrive_client_id`.
 
   ```dvc
-  $ dvc remote modify myremote \
-        gdrive_client_secret 'client-secret'
+  $ dvc remote modify --local myremote \
+                      gdrive_client_secret 'client-secret'
   ```
 
 - `gdrive_user_credentials_file` - path where DVC stores OAuth credentials to
   access Google Drive data. `.dvc/tmp/gdrive-user-credentials.json` by default.
 
   ```dvc
-  $ dvc remote modify myremote \
+  $ dvc remote modify --local myremote \
         gdrive_user_credentials_file .dvc/tmp/mycredentials.json
   ```
 
@@ -616,8 +621,8 @@ more information.
   [delegated] to the service account if needed.
 
   ```dvc
-  $ dvc remote modify myremote \
-                 gdrive_service_account_user_email 'myemail-addr'
+  $ dvc remote modify --local myremote \
+                      gdrive_service_account_user_email 'myemail-addr'
   ```
 
   ⚠️ DVC requires the following OAuth Scopes:
@@ -633,6 +638,10 @@ more information.
 <details>
 
 ### Click for Google Cloud Storage
+
+> If any values given to the parameters below contain sensitive user info, add
+> them with the `--local` option, so they're written to a Git-ignored config
+> file.
 
 - `url` - remote location, in the `gs://<bucket>/<object>` format:
 
@@ -664,10 +673,6 @@ more information.
           credentialpath '/home/.../project-XXX.json'
   ```
 
-> The `credentialpath` value may contain personal user info. Therefore, it's
-> convenient to use the `--local` flag so it's written to a Git-ignored
-> [config file](https://dvc.org/doc/command-reference/config).
-
 Alternatively, the `GOOGLE_APPLICATION_CREDENTIALS` environment variable can be
 set:
 
@@ -680,6 +685,10 @@ $ export GOOGLE_APPLICATION_CREDENTIALS='.../project-XXX.json'
 <details>
 
 ### Click for Aliyun OSS
+
+> If any values given to the parameters below contain sensitive user info, add
+> them with the `--local` option, so they're written to a Git-ignored config
+> file.
 
 - `url` - remote location, in the `oss://<bucket>/<object>` format:
 
@@ -707,10 +716,6 @@ $ export GOOGLE_APPLICATION_CREDENTIALS='.../project-XXX.json'
   $ dvc remote modify --local myremote oss_key_secret 'mysecret'
   ```
 
-> The key ID and secret key contain sensitive user info. Therefore, it's safer
-> to add them with the `--local` option, so they're written to a Git-ignored
-> config file.
-
 Note that OSS remotes can also be configured via environment variables (instead
 of `dvc remote modify`). These are tried if none of the params above are set.
 The available ones are shown below:
@@ -726,6 +731,10 @@ $ export OSS_ENDPOINT='endpoint'
 <details>
 
 ### Click for SSH
+
+> If any values given to the parameters below contain sensitive user info, add
+> them with the `--local` option, so they're written to a Git-ignored config
+> file.
 
 - `url` - remote location, in a regular
   [SSH format](https://tools.ietf.org/id/draft-salowey-secsh-uri-00.html#sshsyntax).
@@ -783,10 +792,6 @@ $ export OSS_ENDPOINT='endpoint'
   $ dvc remote modify --local myremote password mypassword
   ```
 
-> The user name and password (may) contain sensitive user info. Therefore, it's
-> safer to add them with the `--local` option, so they're written to a
-> Git-ignored config file.
-
 - `ask_password` - ask for a private key passphrase or a password to access the
   remote.
 
@@ -824,6 +829,10 @@ $ export OSS_ENDPOINT='endpoint'
 Read more about by expanding the WebHDFS section in
 [`dvc remote add`](/doc/command-reference/remote/add#supported-storage-types).
 
+> If any values given to the parameters below contain sensitive user info, add
+> them with the `--local` option, so they're written to a Git-ignored config
+> file.
+
 - `url` - remote location:
 
   ```dvc
@@ -835,9 +844,6 @@ Read more about by expanding the WebHDFS section in
   ```dvc
   $ dvc remote modify --local myremote user myuser
   ```
-
-> The user name may contain sensitive user info. Therefore, it's safer to add it
-> with the `--local` option, so it's written to a Git-ignored config file.
 
 - `kerb_ticket` - path to the Kerberos ticket cache for Kerberos-secured HDFS
   clusters
@@ -856,6 +862,10 @@ Read more about by expanding the WebHDFS section in
 💡 WebHDFS serves as an alternative for using the same remote storage supported
 by HDFS. Read more about by expanding the WebHDFS section in
 [`dvc remote add`](/doc/command-reference/remote/add#supported-storage-types).
+
+> If any values given to the parameters below contain sensitive user info, add
+> them with the `--local` option, so they're written to a Git-ignored config
+> file.
 
 - `url` - remote location.
 
@@ -879,7 +889,8 @@ by HDFS. Read more about by expanding the WebHDFS section in
   `false` this setting is ignored.
 
   ```dvc
-  $ dvc remote modify myremote kerberos_principal some_principal_name
+  $ dvc remote modify --local myremote \
+                              kerberos_principal some_principal_name
   ```
 
 - `proxy_to` - user to proxy as. Proxy user feature must be enabled on the
@@ -890,7 +901,7 @@ by HDFS. Read more about by expanding the WebHDFS section in
   kerberos must be enabled for this to work.
 
   ```dvc
-  $ dvc remote modify myremote proxy_to some_proxy_user
+  $ dvc remote modify --local myremote proxy_to some_proxy_user
   ```
 
 - `ssl_verify` - whether to verify SSL requests. Default is true when
@@ -910,7 +921,8 @@ by HDFS. Read more about by expanding the WebHDFS section in
   used.
 
   ```dvc
-  $ dvc remote modify myremote token SOME_BASE64_ENCODED_TOKEN
+  $ dvc remote modify --local myremote \
+                              token SOME_BASE64_ENCODED_TOKEN
   ```
 
 - `use_https` - whether to use `swebhdfs` or not. Note that DVC still expects
@@ -926,6 +938,10 @@ by HDFS. Read more about by expanding the WebHDFS section in
 <details>
 
 ### Click for HTTP
+
+> If any values given to the parameters below contain sensitive user info, add
+> them with the `--local` option, so they're written to a Git-ignored config
+> file.
 
 - `url` - remote location:
 
@@ -970,7 +986,7 @@ by HDFS. Read more about by expanding the WebHDFS section in
 
   ```dvc
   $ dvc remote modify --local myremote \
-                        custom_auth_header 'My-Header'
+                      custom_auth_header 'My-Header'
   ```
 
 - `user` - user name to use when the `auth` parameter is set to `basic`.
@@ -989,10 +1005,6 @@ by HDFS. Read more about by expanding the WebHDFS section in
   ```dvc
   $ dvc remote modify --local myremote password mypassword
   ```
-
-> The user name and password (may) contain sensitive user info. Therefore, it's
-> safer to add them with the `--local` option, so they're written to a
-> Git-ignored config file.
 
 - `ask_password` - ask each time for the password to use for any `auth` method.
 
@@ -1018,6 +1030,10 @@ by HDFS. Read more about by expanding the WebHDFS section in
 <details>
 
 ### Click for WebDAV
+
+> If any values given to the parameters below contain sensitive user info, add
+> them with the `--local` option, so they're written to a Git-ignored config
+> file.
 
 - `url` - remote location:
 
@@ -1051,10 +1067,6 @@ by HDFS. Read more about by expanding the WebHDFS section in
   ```dvc
   $ dvc remote modify --local myremote password mypassword
   ```
-
-> The user name, password, and token (may) contain sensitive user info.
-> Therefore, it's safer to add them with the `--local` option, so they're
-> written to a Git-ignored config file.
 
 > Note that `user/password` and `token` authentication are incompatible. You
 > should authenticate against your WebDAV remote by either `user/password` or
