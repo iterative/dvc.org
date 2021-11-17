@@ -50,11 +50,11 @@ and
 [here,](https://medium.com/@thanakornpanyapiang/data-versioning-with-dvc-a474af1247f5)
 [**Thanakorn Panyapiang**](https://www.linkedin.com/in/tpanyapiang/) first
 explains why data versioning is so important to successful machine learning
-projects and then takes us through a tutorial on DVC showing how to install and
-initiate DVC and then on to tracking, pushing to remote storage, modifying and
-switching the data. In the future look out for more posts on the other features
-of DVC, including pipelines, metrics, experiments and continuous integration
-through CML from Thanakorn!
+projects. Next he takes us through a tutorial of DVC showing how to install and
+initiate DVC. Finally he covers tracking, pushing to remote storage, modifying
+and switching the data. In the future look out for more posts on the other
+features of DVC, including pipelines, metrics, experiments and continuous
+integration through CML from Thanakorn!
 
 <external-link 
 href="https://medium.com/@thanakornpanyapiang/data-versioning-with-dvc-a474af1247f5/"
@@ -82,12 +82,12 @@ tracking and versioning and CML for CI/CD. 🚦Go!👉🏽
 
 ## COVID Genomics Apache Airflow and DVC Integration
 
-[In this blog post](https://covidgenomics.com/blog/airflow_dvc/)
+[In this blog post,](https://covidgenomics.com/blog/airflow_dvc/)
 [**Piotr Styczyński**](https://www.linkedin.com/in/piotrstyczynski/) of
 [COVID Genomics](https://covidgenomics.com/) shares how they use Airflow and DVC
-together in their work to model SARS Cov-2 and optimizing RT-PCR tests.  
-They needed to update the data used for the training model daily and automate
-their processses to make sure the whole process is up-to-date.
+together in their work to model SARS Cov-2 and optimizing RT-PCR tests. They
+needed to update the data used for the training model daily and automate their
+processses to make sure the whole process stays up-to-date.
 
 Be sure to check out the very detailed tutorial with lots of delicious code and
 two repositories [here](https://github.com/covid-genomics/airflow-dvc) and
@@ -175,6 +175,8 @@ description="Atinuke Oluwabamikemi Kayode helps you navigate the common terminal
 link="https://iambami.dev"
 image="/uploads/images/2021-11-17/kayode.jpeg"/>
 
+### Vincent Driessen: A Successful Git Branching Architecture
+
 For a deeper dive into how Git and versioning works, checkout
 [A Successful Git Branching Model](https://nvie.com/posts/a-successful-git-branching-model/)
 piece by [**Vincent Driessen**](https://twitter.com/nvie) which explains in
@@ -187,12 +189,14 @@ capabilities for data, models and experimentation.
 _Vincent Driessen's Git Model Branch
 ([Source link](https://nvie.com/posts/a-successful-git-branching-model/))_
 
+### Nir Barazida: Notebook to Production
+
 [**Nir Barazida**](https://twitter.com/barazida) of
 [DAGsHub](https://dagshub.com/) brings us a blog post on
 [Notebook to Production](https://dagshub.com/blog/notebook-to-production-ready-machine-learning/)
-which explains why you should and how you can move your code from notebooks to
+which explains why you should, and how you can, move your code from notebooks to
 scripts when working on production ready ml projects. You'll see how DVC is used
-to version everything in the process so your team will always know what version
+to version everything in the process so your team will always know which version
 of all the possible elements that go into your project produced or failed to
 produce the best results.
 
@@ -220,9 +224,9 @@ https://media.giphy.com/media/hL9q5k9dk9l0wGd4e0/giphy.gif
 
 The group of us from the Americas met in San Francisco last week. We had a great
 time getting to know each other better and working on ways and processes to make
-our tools even better for you! Amidst our working we also took time out to visit
-Alcatraz, go on a scavenger hunt and eat some great food! Pictured below from
-left front, going clockwise: Jorge Orpinel, Stephanie Roy, Ivan Shcheklein,
+our tools even better for you! Amidst our working, we also took time out to
+visit Alcatraz, go on a scavenger hunt, and eat some great food! Pictured below
+from left front, going clockwise: Jorge Orpinel, Stephanie Roy, Ivan Shcheklein,
 Dmitry Petrov, Dave Berenbaum, Jervis Hui, Ken Thom, Jon Burdo, Peter Rowlands,
 Julie Galvan, Jeny De Figueiredo, Jordan Weber, and Maria Khalusova! 🎉
 
@@ -237,7 +241,7 @@ joins us from Montreal, Canada as a Senior Developer Advocate. Previously at Jet
 Brains for 14 years, Maria brings a ton of experience in developer advocacy and
 product management. She has already dove in working on CML and the upcoming
 releases. She also organizes PyData Montreal. In her free time Maria likes to
-spend time with her two kids, walk their mixed bull dog and garden. 👩🏻‍🌾 Welcome
+spend time with her two kids, walk their mixed bull dog, and garden. 👩🏻‍🌾 Welcome
 Maria!
 
 ## Open Positions
@@ -264,8 +268,9 @@ https://media.giphy.com/media/ZcQXsVrAuKMePTJYG6/giphy.gif
 ## Docs Updates
 
 This month's important doc updates come from CML! The CML team has been on fire
-🔥 building new things. You will want to keep your eyes tuned to CML.dev and our
-social media channels for big news before the end of the year!
+🔥 building new things. You will want to keep your eyes tuned to
+[CML.dev](https://cml.dev/) and our social media channels for big news before
+the end of the year!
 
 ### 📖 CML: Self-hosted Runners
 
@@ -281,7 +286,7 @@ The new
 [Command Reference: send-comment](https://cml.dev/doc/ref/send-comment#command-reference-send-comment)
 doc provides a way for you to post a markdown comment on a commit and flags for
 associating the comment with another pull/merge request or if a `cml pr` was
-used earlier your workflow.
+used earlier in your workflow.
 
 ### 📖 Branding Assets
 
@@ -299,8 +304,8 @@ _Iterative.AI branded assets from your next blog post 😉
 
 Be sure to join us at the
 [December Office Hours Meetup,](https://www.meetup.com/DVC-Community-Virtual-Meetups/events/282064369/)
-where we will be showing a demo on a new featureS! We can't say more just yet
-🤐, but be sure to RSVP!
+where we will be showing a demo on a new feature! We can't say more just yet 🤐,
+but be sure to RSVP!
 
 <external-link
 href="https://www.meetup.com/DVC-Community-Virtual-Meetups/events/282064369/"
@@ -311,7 +316,8 @@ image="/uploads/images/2021-10-15/office-hours-meetup.png"/>
 
 ## Tweet Love ❤️
 
-Last but never least, I leave you with this tweet:
+Last but never least, I leave you with this great tweet from Paige Bailey, this
+time about CML's docs:
 
 https://twitter.com/DynamicWebPaige/status/1459395186027470849?s=20
 
