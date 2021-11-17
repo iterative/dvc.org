@@ -7,6 +7,8 @@
 - [Install on Windows](/doc/install/windows)
 - [Install on Linux](/doc/install/linux)
 
+To check whether DVC is installed or which version you have, use `dvc version`.
+
 ## Install as a Python library
 
 DVC can be used as a Python library, simply install it with a package manager

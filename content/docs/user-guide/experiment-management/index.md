@@ -12,9 +12,9 @@ the other end, [metrics](/doc/command-reference/metrics) (and
 [plots](/doc/command-reference/plots)) let you define, visualize, and compare
 quantitative measures of your results.
 
-## Experimentation methods in DVC
+## Experimentation in DVC
 
-_New in DVC 2.0_
+_New in DVC 2.0 (see `dvc version`)_
 
 DVC experiment management features build on top of base DVC features to form a
 comprehensive framework to organize, execute, manage, and share ML experiments.
