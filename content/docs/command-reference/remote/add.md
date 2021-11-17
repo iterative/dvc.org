@@ -237,7 +237,7 @@ To set key id, key secret and endpoint (or any other OSS parameter), use
 your secrets to Git:
 
 ```dvc
-$ dvc remote modif --localy myremote oss_key_id 'mykey'
+$ dvc remote modify --local myremote oss_key_id 'mykey'
 $ dvc remote modify --local myremote oss_key_secret 'mysecret'
 ```
 
