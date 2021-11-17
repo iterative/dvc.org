@@ -252,8 +252,8 @@ outs:
 > info.
 
 This allows us to treat the entire directory structure as a single data
-artifact. For example, you can pass it as a <abbr>dependency</abbr> to a
-stage definition:
+artifact. For example, you can pass it as a <abbr>dependency</abbr> to a stage
+definition:
 
 ```dvc
 $ dvc stage add -n train \
