@@ -138,6 +138,13 @@ HuggingFace, DVC and CML to create an MLOps workflow, extending the power of Git
 and GitHub without the need for external platforms or complicated
 infrastructure.
 
+<external-link 
+href="https://pybcn.org/events/pyday_bcn/pyday_bcn_2021/"
+title="Python Barcelona"
+description="Join David de la Iglesia Castro for his workshop entitled Making MLOps Uncool Again."
+link="https://pybcn.org"
+image="/uploads/images/2021-11-17/py-barcelona.png"/>
+
 ## October Office Hours Video: Continuum Industries Tool Stack with Ivan Chan
 
 If you missed last month's Office Hours
