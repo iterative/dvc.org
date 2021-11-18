@@ -34,8 +34,7 @@ these step(s) during the process of tracking each file or directory:
 - Store the file contents in the cache.
 
 > Skipping these steps is typically done to avoid caching unfinished data, for
-> example when exploring different data or
-> [stages](/doc/command-reference/run)).
+> example when [experimenting](/doc/command-reference/exp).
 
 More specifically, scenarios for `dvc commit` include:
 
@@ -132,7 +131,7 @@ $ dvc pull -aT
 Sometimes we want to iterate through multiple changes to configuration, code, or
 data, trying different ways to improve the output of a stage. To avoid filling
 the <abbr>cache</abbr> with undesired intermediate results, we can run a single
-stage with `dvc run --no-commit`, or reproduce an entire pipeline using
+stage with `dvc exp run --no-commit`, or reproduce an entire pipeline using
 `dvc repro --no-commit`. This prevents data from being pushed to cache. When
 development of the stage is finished, `dvc commit` can be used to store data
 files in the cache.
