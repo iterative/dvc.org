@@ -20,16 +20,16 @@ tags:
 ## Intro
 
 Sharing experiments to compare machine learning models is important when you're
-working with a team of engineers. You might have a new engineer join the team
-and you want to get their workspace ready quickly. Or you might need to change
-computers to access better resources to run experiments on.
+working with a team of engineers. You might need to get another opinion on an
+experiments results. You might need to share a modified dataset or even share
+the exact reproduction of a specific experiment.
 
 Setting up DVC remotes in addition to your Git remotes lets you share all of the
 data, code, and hyperparameters associated with each experiment so anyone can
 pick up where you left off in the training process. We'll go through an example
 of sharing an experiment with DVC remotes.
 
-## Getting the project
+## Forking the project
 
 To follow along, you can fork
 [this repo](https://github.com/iterative/example-dvc-experiments) as one of your
@@ -40,7 +40,7 @@ with them and you're welcome to check them out!
 To get the branch we'll use in this post, you can run this command.
 
 ```dvc
-$ git clone https://github.com/iterative/example-dvc-experiments/ -b get-started
+$ git clone git@github.com:iterative/example-dvc-experiments.git -b get-started
 ```
 
 This project already has DVC files set up to run experiments, but if you want to
@@ -67,31 +67,31 @@ defines the experiment. You can learn more about how DVC uses custom Git refs in
 Next, you'll need to set up a remote to your data location. This could be an AWS
 S3 bucket, a Google Drive, or
 [one of the other supported storage types](https://dvc.org/doc/command-reference/remote/add#supported-storage-types).
-For this example, we'll be using a Google Drive folder as the remote to handle
-pushing data.
 
 An important thing to note about the project we're working with is that there is
 already a remote set up for you to pull from. You can see this in `.dvc/config`.
 You'll need to set up a separate remote to push changes to since this remote
 doesn't allow push access.
 
-Now that you know what we're doing, let's run the command to set up our DVC
-remote.
+For this example, we'll be using a Google Drive folder as the remote to handle
+pushing data. Now that you know what we're doing, let's run the command to set
+up the DVC remote to push to.
 
 ```dvc
 $ dvc remote add cloud_remote gdrive://1k6aUYWphOulJlXgq4XbfKExWGyymTpEl
 ```
 
 This adds the remote storage named `cloud_remote` for DVC to track and we'll be
-able to push and pull the exact code and data to reproduce any experiment from
-end to end. With your Git remote and DVC remote in place, you can start pulling
-data and experiments from the cloud to your local machine.
+able to push and pull the exact code and data to reproduce any experiment. With
+your Git remote and DVC remotes in place, you can start pulling data and
+experiments from the cloud to your local machine.
 
 ## Listing your remote experiments
 
 When you're working with a team on an existing project, you might want to see
 the experiments already in the remotes so you know what's available. You can
-take a look at all of the experiments with the following command.
+take a look at all of the experiments we have associated with this repo with the
+following command.
 
 ```dvc
 $ dvc exp list origin --all
@@ -129,9 +129,9 @@ hyperparameters, or even datasets.
 
 ## Pushing experiments
 
-Once you're done with your new experiments, you can push these to the same
-remote you pulled from. DVC handles both the GitHub and data storage pushes with
-this command.
+Once you're done with your new experiments, you can push these to the Google
+Drive remote we set up earlier. DVC handles both the GitHub and data storage
+pushes with this command.
 
 ```dvc
 dvc exp push origin exp-p4202
