@@ -30,8 +30,8 @@ The `targets` are the files or [directories](#adding-entire-directories) to add.
 They get stored in the <abbr>cache</abbr> by default (use the `--no-commit`
 option to avoid this, and `dvc commit` to finish the process when needed).
 
-> See also `dvc.yaml` and `dvc stage add` for more advanced ways to track and version
-> intermediate and final results (like ML models).
+> See also `dvc.yaml` and `dvc stage add` for more advanced ways to track and
+> version intermediate and final results (like ML models).
 
 After checking that each `target` hasn't been added before (or tracked with
 other DVC commands), a few actions are taken under the hood:
