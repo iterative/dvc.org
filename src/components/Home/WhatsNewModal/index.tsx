@@ -10,8 +10,6 @@ import { ReactComponent as CloseSvg } from '../../../../static/img/close-icon.sv
 
 import * as styles from './styles.module.css'
 
-const version = '2.8.3'
-
 const WhatsNewModal: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
   let pageCloseEventListener: () => void = () => null
@@ -64,7 +62,7 @@ const WhatsNewModal: React.FC = () => {
         className={cn(styles.container, isModalOpen && styles.containerOpen)}
       >
         <div
-          aria-label={`What's new in ${version}`}
+          aria-label={"What's new"}
           tabIndex={0}
           role="dialog"
           aria-modal="true"
@@ -73,18 +71,15 @@ const WhatsNewModal: React.FC = () => {
             onClick={handleButtonClick}
             className={cn(styles.button, isModalOpen && styles.buttonExit)}
           >
-            {!isModalOpen && `What's new in ${version}`}
+            {!isModalOpen && `What's new`}
             {isModalOpen && <CloseSvg width={20} height={20} />}
           </button>
           <div className={styles.modal}>
-            <h2 className={styles.title}>
-              LiveTask, experiment name check, try reflink and more in DVC 2.8.3
-            </h2>
+            <h2 className={styles.title}>Experiment Versioning</h2>
             <Video id="UbL7VUpv1Bs" />
             <p className={styles.text}>
-              When you have an existing model trained for one problem, you might
-              want to extend it to handle other problems. When you have data
-              versioning. <Link href="/blog">Read more</Link>
+              Versioning ML experiments combines the benefits of version control
+              and experiment tracking. <Link href="/blog">Read more</Link>
             </p>
           </div>
         </div>
