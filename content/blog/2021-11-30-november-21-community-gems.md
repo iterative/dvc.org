@@ -134,15 +134,19 @@ That is correct. Running `dvc remove` only removes DVC tracked files and
 directories. It will also remove the entry from `.gitignore` and handles the
 `dvc.yaml`.
 
-If you still see a directory after you've removed a file from either DVC or Git,
-that is because neither removes empty directories from your filesystem.
-
 For example, if you run something like `dvc remove folder_name/file.dvc`, only
-the `.dvc` file will be removed. If there is nothing else in the folder, you'll
-be left with an empty directory. You can remove it with a command like:
+the `.dvc` file will be removed. So your updated directory would likely still
+have `folder_name/file` since that was the file being tracked.
 
-````dvc
+If you wanted to remove the tracked file as well, you would need to run
+`dvc remove --outs`. This command removes the outputs of any target.
+
+If there is nothing else in the folder, you'll be left with an empty directory.
+You can remove it with a command like:
+
+```dvc
 $ rmdir folder_name
+```
 
 ### [Can DVC Studio be connected to a self-managed GitLab repo?](https://discord.com/channels/485586884165107732/841856466897469441/907468264882462800)
 
@@ -165,7 +169,7 @@ You can extend the max time in your CI by adding something like this:
 ```dvc
 train:
     timeout-minutes: 5000
-````
+```
 
 If you're using GitLab, the same update would look similar to this:
 
