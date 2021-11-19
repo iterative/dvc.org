@@ -144,7 +144,7 @@ If you wanted to remove the tracked file as well, you would need to run
 If there is nothing else in the folder, you'll be left with an empty directory.
 You can remove it and stop tracking in Git with a command like:
 
-```dvc
+````dvc
 $ git rm -r folder_name
 
 ### [Can DVC Studio be connected to a self-managed GitLab repo?](https://discord.com/channels/485586884165107732/841856466897469441/907468264882462800)
@@ -168,7 +168,7 @@ You can extend the max time in your CI by adding something like this:
 ```dvc
 train:
     timeout-minutes: 5000
-```
+````
 
 If you're using GitLab, the same update would look similar to this:
 
