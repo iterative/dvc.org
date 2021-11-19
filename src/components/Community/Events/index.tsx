@@ -76,7 +76,8 @@ const Event: React.FC<IEvent> = ({
       <div className={cn(sharedStyles.meta, styles.meta)}>
         <div className={sharedStyles.line}>{description}</div>
         <div className={sharedStyles.line}>
-          {city}, {format(new Date(date), 'MMMM d')}
+          {city},{' '}
+          {format(new Date(date.slice(0, 10).replace(/-/g, '/')), 'MMMM d')}
         </div>
       </div>
     </Block>
