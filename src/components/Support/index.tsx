@@ -28,8 +28,8 @@ const SupportPage: React.FC = () => (
             </div>
             <div className={styles.featureDescription}>
               Join data science practitioners in our welcoming{' '}
-              <span className={styles.accent}>DVC community</span>. It’s the
-              fastest way to ask for a help.
+              <span className={styles.accent}>DVC Community</span>. It’s the
+              fastest way to get help.
             </div>
             <div className={styles.featureFooter}>
               <Link
