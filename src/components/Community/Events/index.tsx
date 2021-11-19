@@ -36,7 +36,7 @@ const Event: React.FC<IEvent> = ({
     () => logEvent('community', 'event', title),
     [title]
   )
-
+  console.log(date)
   return (
     <Block
       action={

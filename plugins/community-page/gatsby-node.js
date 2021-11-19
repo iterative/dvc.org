@@ -111,6 +111,7 @@ module.exports = {
             expires,
             expired
           }
+          console.log(date, moment(date).toDate())
           return createNode({
             id: createNodeId(`Event >>> ${date} >>> ${title}`),
             ...fields,
