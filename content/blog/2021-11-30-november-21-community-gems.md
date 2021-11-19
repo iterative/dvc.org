@@ -142,11 +142,10 @@ If you wanted to remove the tracked file as well, you would need to run
 `dvc remove --outs`. This command removes the outputs of any target.
 
 If there is nothing else in the folder, you'll be left with an empty directory.
-You can remove it with a command like:
+You can remove it and stop tracking in Git with a command like:
 
 ```dvc
-$ rmdir folder_name
-```
+$ git rm -r folder_name
 
 ### [Can DVC Studio be connected to a self-managed GitLab repo?](https://discord.com/channels/485586884165107732/841856466897469441/907468264882462800)
 
