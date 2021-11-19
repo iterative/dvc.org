@@ -43,7 +43,7 @@
   border-radius: 99px;
   font-family: var(--font-brandon);
   transition: all 0.25s ease-in-out;
-  animation: gradient 3s infinite ease-in-out;
+  animation: gradient 2s infinite ease-in-out;
 
   @media (--xs-scr) {
     left: 15px;
@@ -103,7 +103,7 @@
     background-position: center;
   }
 
-  66% {
+  50% {
     background-position: right center;
   }
 }

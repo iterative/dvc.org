@@ -3,7 +3,6 @@ import React, { useState } from 'react'
 import cn from 'classnames'
 import FocusLock from 'react-focus-lock'
 
-import Video from '../UseCases/Video'
 import Link from '../../Link'
 
 import { ReactComponent as CloseSvg } from '../../../../static/img/close-icon.svg'
@@ -76,7 +75,6 @@ const WhatsNewModal: React.FC = () => {
           </button>
           <div className={styles.modal}>
             <h2 className={styles.title}>Experiment Versioning</h2>
-            <Video id="UbL7VUpv1Bs" />
             <p className={styles.text}>
               Versioning ML experiments combines the benefits of version control
               and experiment tracking. <Link href="/blog">Read more</Link>
