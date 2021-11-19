@@ -1,9 +1,9 @@
 ---
 title: Don't Just Track Your Experiments, Version Them
-date: 2021-11-17
+date: 2021-11-30
 description: >
-  Versioning ML experiments combines the benefits of version control and
-  experiment tracking.
+  Versioning experiments combines the benefits of version control and experiment
+  tracking.
 descriptionLong: >
   With experiment versioning, you can take ML experiment tracking to the next
   level, making it easy and powerful to save, compare, and reproduce experiments
