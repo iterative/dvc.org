@@ -93,10 +93,18 @@
       "city": "Virtual",
       "date": "2021-12-08",
       "pictureUrl": "/img/community/events/MLSummit.png"
+    },
+    {
+      "url": "hhttps://www.meetup.com/DVC-Community-Virtual-Meetups/events/282064369/",
+      "title": "DVC Office Hours - New Feature Demo",
+      "description": "At this meetup we have a demo of a new DVC feature.  We're looking forward to seeing you!",
+      "city": "Virtual",
+      "date": "2021-12-09",
+      "pictureUrl": "/img/community/events/office-hours-event.png"
     }
   ],
   "stats": {
     "users": "6250+",
-    "messages": "1800+"
+    "messages": "1500+"
   }
 }
