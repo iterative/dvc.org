@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/no-noninteractive-tabindex */
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { StaticImage } from 'gatsby-plugin-image'
 import cn from 'classnames'
 import FocusLock from 'react-focus-lock'
 
@@ -55,6 +56,12 @@ const WhatsNewModal: React.FC = () => {
     }
   }
 
+  useEffect(() => {
+    return (): void => {
+      document.body.style.overflow = 'visible'
+    }
+  }, [])
+
   return (
     <FocusLock disabled={!isModalOpen}>
       <div
@@ -74,10 +81,22 @@ const WhatsNewModal: React.FC = () => {
             {isModalOpen && <CloseSvg width={20} height={20} />}
           </button>
           <div className={styles.modal}>
-            <h2 className={styles.title}>Experiment Versioning</h2>
+            <Link
+              className={styles.title}
+              href="/blog/ml-experiment-versioning"
+            >
+              <h2>ML Experiment Versioning</h2>
+            </Link>
+            <StaticImage
+              alt="a description of blog image"
+              src="../../../../static/uploads/images/2021-10-28/oct-community-gems.png"
+              className={styles.image}
+              width={420}
+            />
             <p className={styles.text}>
-              Versioning ML experiments combines the benefits of version control
-              and experiment tracking. <Link href="/blog">Read more</Link>
+              Versioning machine learning experiments combines the benefits of
+              version control and experiment tracking.{' '}
+              <Link href="/blog/ml-experiment-versioning">Read more.</Link>
             </p>
           </div>
         </div>

@@ -133,15 +133,23 @@
   }
 
   .title {
+    @mixin focus;
+
+    display: flex;
     font-size: 30px;
     line-height: 45px;
     margin-bottom: 15px;
+    text-decoration: none;
     color: var(--color-gray-hover);
 
     @media (--xs-scr) {
       font-size: 25px;
       line-height: 35px;
     }
+  }
+
+  .image {
+    width: 100%;
   }
 
   .text {
