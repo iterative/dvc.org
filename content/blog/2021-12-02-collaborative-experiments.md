@@ -31,16 +31,17 @@ of sharing an experiment with DVC remotes.
 
 ## Forking the project
 
-To follow along, you can fork
+To follow along, fork
 [this repo](https://github.com/iterative/example-dvc-experiments) as one of your
 own GitHub repos. That way you'll have pull access when we start working with
-DVC. This repo has a few different branches that have experiments associated
-with them and you're welcome to check them out!
+DVC. This repo has different tags that show the progression of the project and
+you're welcome to check them out!
 
-To get the branch we'll use in this post, you can run this command.
+To get the branch we'll use in this post, you can run this command to clone your
+forked repo. Make sure to replace `<your_github>` with your GitHub name.
 
 ```dvc
-$ git clone git@github.com:iterative/example-dvc-experiments.git -b get-started
+$ git clone git@github.com:<your_github>/example-dvc-experiments.git -b get-started
 ```
 
 This project already has DVC files set up to run experiments, but if you want to
@@ -86,19 +87,30 @@ able to push and pull the exact code and data to reproduce any experiment. With
 your Git remote and DVC remotes in place, you can start pulling data and
 experiments from the cloud to your local machine.
 
+_Note: Make sure you have write permissions to the Git remote!_
+
 ## Listing your remote experiments
 
 When you're working with a team on an existing project, you might want to see
-the experiments already in the remotes so you know what's available. You can
-take a look at all of the experiments we have associated with this repo with the
-following command.
+the experiments already in the remotes so you know what's available. To take a
+look at the experiments we have run in the repo you forked, you'll have to set
+up a new Git upsteam remote to reference the original repo. You can do that with
+the following command.
 
 ```dvc
-$ dvc exp list origin --all
+$ git remote add upstream https://github.com/iterative/example-dvc-experiment
+```
+
+Now you can take a look at all of the experiments we have associated with this
+repo with the following command.
+
+```dvc
+$ dvc exp list upstream --all
 ```
 
 You'll get a list of all of the experiments across different Git branches that
-have been pushed with DVC. The output will look similar to this.
+have been pushed with DVC in the original repo. The output will look similar to
+this.
 
 ```dvc
 21784fa:
@@ -118,7 +130,7 @@ experiment you'll get started with. To pull an experiment to your local machine,
 you'll need an experiment id for the following command.
 
 ```dvc
-dvc exp pull origin exp-b3667
+dvc exp pull upstream exp-b3667
 ```
 
 The `exp-b3667` comes from the `dvc exp list` command we ran earlier and now you
@@ -137,11 +149,11 @@ pushes with this command.
 dvc exp push origin exp-p4202
 ```
 
-This will push the custom Git refs to your repo and it will push any artifacts,
-like your data or model output, to the DVC remote location. If you have
-checkpoints enabled, it will also push the checkpoints of an experiment. Now you
-can easily share your work with other engineers to get feedback faster and
-finish projects sooner.
+This will push the custom Git refs to your forked repo and it will push any
+artifacts, like your data or model output, to the DVC remote location. If you
+have checkpoints enabled, it will also push the checkpoints of an experiment.
+Now you can easily share your work with other engineers to get feedback faster
+and finish projects sooner.
 
 ## Conclusion
 
