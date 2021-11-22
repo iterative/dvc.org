@@ -1,7 +1,7 @@
 import React from 'react'
 import cn from 'classnames'
 
-import styles from './styles.module.css'
+import * as styles from './styles.module.css'
 
 interface IPageContentProps {
   className?: string

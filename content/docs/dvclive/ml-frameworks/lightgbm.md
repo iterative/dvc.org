@@ -40,10 +40,15 @@ This will generate the metrics logs and summaries as described in the
 
 ## Parameters
 
-- `model_file` - The name of the file where the model will be saved at the end
-  of each `step`.
+- `model_file` - (`None` by default) - The name of the file where the model will
+  be saved at the end of each `step`.
 
-Example:
+- `**kwargs` - Any additional arguments will be passed to
+  [`Live`](/docs/dvclive/api-reference/live).
+
+## Examples
+
+- Using `model_file`.
 
 ```python
 lightgbm.train(
@@ -52,4 +57,17 @@ lightgbm.train(
     valid_sets=[validation_data],
     num_round=5,
     callbacks=[DvcLiveCallback(model_file="lgbm_model.txt")])
+```
+
+- Using `**kwargs` to customize [`Live`](/docs/dvclive/api-reference/live).
+
+```python
+lightgbm.train(
+    param,
+    train_data,
+    valid_sets=[validation_data],
+    num_round=5,
+    callbacks=[DvcLiveCallback(
+      path="custom_path",
+      summary=False)])
 ```

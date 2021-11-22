@@ -57,6 +57,7 @@ const plugins = [
       path: path.join(__dirname, 'static')
     }
   },
+  'gatsby-plugin-image',
   'community-page',
   {
     resolve: 'gatsby-transformer-remark',
@@ -122,7 +123,14 @@ const plugins = [
     }
   },
   'gatsby-transformer-sharp',
-  'gatsby-plugin-sharp',
+  {
+    resolve: 'gatsby-plugin-sharp',
+    options: {
+      defaults: {
+        placeholder: 'blurred'
+      }
+    }
+  },
   {
     resolve: 'gatsby-plugin-catch-links',
     options: {
@@ -139,7 +147,54 @@ const plugins = [
       name: 'dvc.org',
       short_name: 'dvc.org',
       start_url: '/',
-      theme_color: '#eff4f8'
+      theme_color: '#eff4f8',
+      icons: [
+        {
+          src: '/apple-touch-icon-48x48.png',
+          sizes: '48x48',
+          type: 'image/png'
+        },
+        {
+          src: '/apple-touch-icon-72x72.png',
+          sizes: '72x72',
+          type: 'image/png'
+        },
+        {
+          src: '/apple-touch-icon-96x96.png',
+          sizes: '96x96',
+          type: 'image/png'
+        },
+        {
+          src: '/apple-touch-icon-144x144.png',
+          sizes: '144x144',
+          type: 'image/png'
+        },
+        {
+          src: '/apple-touch-icon.png',
+          sizes: '180x180',
+          type: 'image/png'
+        },
+        {
+          src: '/apple-touch-icon-192x192.png',
+          sizes: '192x192',
+          type: 'image/png'
+        },
+        {
+          src: '/apple-touch-icon-256x256.png',
+          sizes: '256x256',
+          type: 'image/png'
+        },
+        {
+          src: '/apple-touch-icon-384x384.png',
+          sizes: '384x384',
+          type: 'image/png'
+        },
+        {
+          src: '/apple-touch-icon-512x512.png',
+          sizes: '512x512',
+          type: 'image/png'
+        }
+      ]
       /* eslint-enable @typescript-eslint/camelcase */
     }
   },
@@ -224,28 +279,6 @@ const plugins = [
   }
 ]
 
-if (process.env.GITHUB_TOKEN) {
-  plugins.push({
-    resolve: `gatsby-source-github-api`,
-    options: {
-      // token: required by the GitHub API
-      token: process.env.GITHUB_TOKEN,
-
-      // GraphQLquery: defaults to a search query
-      graphQLQuery: `
-          {
-            repository(owner: "iterative", name: "dvc") {
-              stargazers {
-                totalCount
-              }
-            }
-          }
-        `,
-      variables: {}
-    }
-  })
-}
-
 if (process.env.CONTEXT === 'production') {
   plugins.push({
     resolve: 'gatsby-plugin-google-analytics',
@@ -258,11 +291,7 @@ if (process.env.CONTEXT === 'production') {
 
 if (process.env.ANALYZE) {
   plugins.push({
-    resolve: 'gatsby-plugin-webpack-bundle-analyzer',
-    options: {
-      analyzerPort: 4000,
-      production: process.env.NODE_ENV === 'production'
-    }
+    resolve: 'gatsby-plugin-webpack-bundle-analyser-v2'
   })
 }
 

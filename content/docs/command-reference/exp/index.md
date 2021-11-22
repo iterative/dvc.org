@@ -1,6 +1,6 @@
-# experiments
+# exp
 
-_New in DVC 2.0_
+_New in DVC 2.0 (see `dvc version`)_
 
 A set of commands to generate and manage <abbr>experiments</abbr>:
 [run](/doc/command-reference/exp/run), [show](/doc/command-reference/exp/show),
@@ -12,14 +12,14 @@ A set of commands to generate and manage <abbr>experiments</abbr>:
 [pull](/doc/command-reference/exp/pull), and
 [list](/doc/command-reference/exp/list).
 
-> Aliased to `dvc exp`.
+> Alias of `dvc experiments`.
 
 > Requires that Git is being used to version the project.
 
 ## Synopsis
 
 ```usage
-usage: dvc experiments [-h] [-q | -v]
+usage: dvc exp [-h] [-q | -v]
           {show,apply,diff,run,gc,branch,list,push,pull,remove}
           ...
 

@@ -43,8 +43,8 @@ numeric difference between the metrics in different experiments, for example an
 
 ```dvc
 $ dvc metrics diff
-    Path       Metric    Value      Change
-summary.json   AUC      0.801807   0.037826
+Path          Metric    HEAD      workspace  Change
+metrics.json  AUC       0.763981  0.801807   0.037826
 ```
 
 `dvc metrics` subcommands by default use the metrics files specified in
@@ -130,8 +130,9 @@ When there are metrics file changes (before committing them with Git), the
 
 ```dvc
 $ dvc metrics diff
-Path       Metric    Value    Change
-eval.json  ACU       0.66729  0.01614
-eval.json  error     0.16982  0.00322
-eval.json  TP        516      -12
+
+Path       Metric    HEAD     workspace  Change
+eval.json  ACU       0.65115  0.66729    0.01614
+eval.json  error     0.1666   0.16982    0.00322
+eval.json  TP        528      516        -12
 ```

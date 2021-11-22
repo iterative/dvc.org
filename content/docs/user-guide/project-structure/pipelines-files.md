@@ -98,7 +98,7 @@ metrics and plots.
 
 ## Templating
 
-_New in DVC 2.0_
+_New in DVC 2.0 (see `dvc version`)_
 
 `dvc.yaml` supports a templating format to insert values from different sources
 in the YAML structure itself. These sources can be
@@ -227,7 +227,7 @@ ${param.list[0]} # List elements via index in [] (square brackets)
 
 ## `foreach` stages
 
-_New in DVC 2.0_
+_New in DVC 2.0 (see `dvc version`)_
 
 You can define more than one stage in a single `dvc.yaml` entry with the
 following syntax. A `foreach` element accepts a list or dictionary with values
@@ -361,7 +361,7 @@ These are the fields that are accepted in each stage:
 | `always_changed` | Whether or not this stage is considered as changed by commands such as `dvc status` and `dvc repro`. `false` by default                                                                                                                                                                   |
 | `meta`           | (Optional) arbitrary metadata can be added manually with this field. Any YAML content is supported. `meta` contents are ignored by DVC, but they can be meaningful for user processes that read or write `.dvc` files directly.                                                           |
 | `desc`           | (Optional) user description for this stage. This doesn't affect any DVC operations.                                                                                                                                                                                                       |
-| `live`           | (Optional) [Dvclive](/doc/dvclive/user-guide/dvclive-with-dvc) configuration field                                                                                                                                                                                                        |
+| `live`           | (Optional) [Dvclive](/doc/dvclive/dvclive-with-dvc) configuration field                                                                                                                                                                                                                   |
 
 `dvc.yaml` files also support `# comments`.
 
@@ -379,13 +379,13 @@ validation and auto-completion.
 > These include a subset of the fields in `.dvc` file
 > [output entries](/doc/user-guide/project-structure/dvc-files#output-entries).
 
-| Field        | Description                                                                                                                                                                                                                                                                                   |
-| ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `cache`      | Whether or not this file or directory is <abbr>cached</abbr> (`true` by default). See the `--no-commit` option of `dvc add`.                                                                                                                                                                  |
-| `remote`     | (Optional) name of the remote to use for pushing/fetching.                                                                                                                                                                                                                                    |
-| `persist`    | Whether the output file/dir should remain in place while `dvc repro` runs (`false` by default: outputs are deleted when `dvc repro` starts                                                                                                                                                    |
-| `checkpoint` | (Optional) Set to `true` to let DVC know that this output is associated with [in-code checkpoints](/doc/user-guide/experiment-management#checkpoints-in-source-code). These outputs are reverted to their last cached version at `dvc exp run` and also `persist` during the stage execution. |
-| `desc`       | (Optional) user description for this output. This doesn't affect any DVC operations.                                                                                                                                                                                                          |
+| Field        | Description                                                                                                                                                                                                                                                                    |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `cache`      | Whether or not this file or directory is <abbr>cached</abbr> (`true` by default). See the `--no-commit` option of `dvc add`.                                                                                                                                                   |
+| `remote`     | (Optional) name of the remote to use for pushing/fetching.                                                                                                                                                                                                                     |
+| `persist`    | Whether the output file/dir should remain in place while `dvc repro` runs (`false` by default: outputs are deleted when `dvc repro` starts                                                                                                                                     |
+| `checkpoint` | (Optional) Set to `true` to let DVC know that this output is associated with [in-code checkpoints](/doc/user-guide/experiment-management/checkpoints). These outputs are reverted to their last cached version at `dvc exp run` and also `persist` during the stage execution. |
+| `desc`       | (Optional) user description for this output. This doesn't affect any DVC operations.                                                                                                                                                                                           |
 
 ⚠️ Note that using the `checkpoint` field in `dvc.yaml` is not compatible with
 `dvc repro`.

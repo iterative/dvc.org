@@ -10,8 +10,8 @@ import Section from '../Section'
 import { logEvent } from '../../../utils/front/ga'
 import { useCommunityData } from '../../../utils/front/community'
 
-import sharedStyles from '../styles.module.css'
-import styles from './styles.module.css'
+import * as sharedStyles from '../styles.module.css'
+import * as styles from './styles.module.css'
 
 export interface IEvent {
   theme: ICommunitySectionTheme
@@ -76,7 +76,8 @@ const Event: React.FC<IEvent> = ({
       <div className={cn(sharedStyles.meta, styles.meta)}>
         <div className={sharedStyles.line}>{description}</div>
         <div className={sharedStyles.line}>
-          {city}, {format(new Date(date), 'MMMM d')}
+          {city},{' '}
+          {format(new Date(date.slice(0, 10).replace(/-/g, '/')), 'MMMM d')}
         </div>
       </div>
     </Block>
@@ -111,7 +112,7 @@ const Events: React.FC<{ theme: ICommunitySectionTheme }> = ({ theme }) => {
               </div>
             ))
           ) : (
-            <div className={styles.eventsPlaceholder}>
+            <div className={cn(styles.eventsPlaceholder, sharedStyles.gray)}>
               Subscribe to be up to date!{' '}
               <span role="img" aria-label="Subscribe below">
                 👇

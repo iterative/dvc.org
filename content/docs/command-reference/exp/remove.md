@@ -1,11 +1,11 @@
 # exp remove
 
-Delete specific `dvc experiments` from the <abbr>project</abbr>.
+Delete specific experiments from the <abbr>project</abbr>.
 
 ## Synopsis
 
 ```usage
-usage: dvc exp remove [-h] [-q | -v] [--queue | -A]
+usage: dvc exp remove [-h] [-q | -v] [--queue | -A | -g <git_remote>]
                       [<name> [<name> ...]]
 
 positional arguments:
@@ -28,6 +28,9 @@ With `--queue`, the list of experiments awaiting execution is cleared instead.
 
 - `-A`, `--all` - remove all experiments (includes `--queue`).
 
+- `-g`, `--git-remote` - Name or URL of the Git remote to remove the experiment
+  from
+
 - `-h`, `--help` - shows the help message and exit.
 
 - `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if no
@@ -46,7 +49,6 @@ master:
         exp-e6c97
         exp-1dad0
         exp-1df77
-        exp-23d5a
 ```
 
 To remove any of them, give their names to `dvc exp remove`. Or use the `--all`
@@ -58,7 +60,6 @@ $ dvc exp remove exp-1dad0 exp-1df77
 $ dvc exp list
 master:
         exp-e6c97
-        exp-23d5a
 
 $ dvc exp remove -A
 
@@ -93,4 +94,23 @@ $ dvc exp show --include-params=train.min_split --no-pager
 │ master                │ Aug 02, 2021 │ -      │  0.53252 │  0.9107 │ 2               │
 │ └── 5751540 [split32] │ 04:57 PM     │ Queued │        - │       - │ 32              │
 └───────────────────────┴──────────────┴────────┴──────────┴─────────┴─────────────────┘
+```
+
+We can also remove experiments from a remote Git repository:
+
+```dvc
+$ dvc exp push myremote exp-e6c97
+$ dvc exp push myremote exp-9fcef
+$ dvc exp push myremote exp-1dad0
+
+$ dvc exp list myremote
+master:
+        exp-1dad0
+        exp-9fcef
+        exp-e6c97
+
+$ dvc exp remote -g myremote exp-9fcef exp-e6c97
+$ dvc exp list myremote
+master:
+        exp-1dad0
 ```

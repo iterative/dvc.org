@@ -37,16 +37,23 @@ operation.
 - `.dvc/tmp`: Directory for miscellaneous temporary files
 
 - `.dvc/tmp/index`: Directory for remote index files that are used for
-  optimizing `dvc push`, `dvc pull`, `dvc fetch` and `dvc status -c` operations
+  optimizing `dvc push`, `dvc pull`, `dvc fetch` and `dvc status -c` operations.
+
+  > This location may be overridden with `dvc config index.dir`.
 
 - `.dvc/tmp/md5s`: This directory is used for optimization. It contains a SQLite
-  database that stores hash values for files tracked in a DVC project. It also
-  saves the corresponding timestamps and inodes, to avoid unnecessary file hash
-  computations.
+  state database that stores hash values for files tracked in a DVC project. It
+  also saves the corresponding timestamps and inodes to avoid unnecessary file
+  hash computations. <sup>[note 2](#sqlite-default)</sup>
 
-- `.dvc/tmp/links`: This directory contains a SQLite database that stores a list
-  of file links created by DVC (from cache to <abbr>workspace</abbr>). It's used
-  to cleanup your workspace when calling `dvc checkout`.
+  > This parent location may be overridden with `dvc config state.dir`.
+
+- `.dvc/tmp/links`: This directory is used to cleanup your workspace when
+  calling `dvc checkout`. It contains a SQLite state database that stores a list
+  of file links created by DVC (from cache to <abbr>workspace</abbr>).
+  <sup>[note 2](#sqlite-default)</sup>
+
+  > This parent location may be overridden with `dvc config state.dir`.
 
 - `.dvc/tmp/updater`: This file is used store the latest available version of
   DVC. It's used to remind the user to upgrade when the installed version is
@@ -129,9 +136,9 @@ That's how DVC knows that the other two cached files belong in the directory.
 
 ### Run-cache
 
-`dvc repro` and `dvc run` by default populate and reutilize a log of stages that
-have been run in the project. It is found in the `runs/` directory inside the
-cache (or [remote storage](/doc/command-reference/remote)).
+`dvc exp run` and `dvc repro` by default populate and reutilize a log of stages
+that have been run in the project. It is found in the `runs/` directory inside
+the cache (or [remote storage](/doc/command-reference/remote)).
 
 Runs are identified as combinations of exact <abbr>dependency</abbr> contents
 (or [parameter](/doc/command-reference/params) values), and the literal

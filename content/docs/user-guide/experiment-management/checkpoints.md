@@ -1,38 +1,43 @@
 # Checkpoints
 
-ML checkpoints are an important part of deep learning because ML engineers like
-to save the model files at certain points during a training process.
+_New in DVC 2.0_
 
-With DVC experiments and checkpoints, you can:
+To track successive steps in a longer experiment, you can register checkpoints
+from your code at runtime. This is especially helpful in machine learning, for
+example to track the progress in deep learning techniques such as evolving
+neural networks.
 
-- Implement the best practice in deep learning to save your model weights as
+_Checkpoint experiments_ track a series of variations (the checkpoints) and
+their execution can be stopped and resumed as needed. You interact with them
+using the `--rev` and `--reset` options of `dvc exp run` (see also the
+`checkpoint` field in `dvc.yaml` `outs`). They can help you
+
+- implement the best practice in deep learning to save your model weights as
   checkpoints.
-- Track all code and data changes corresponding to the checkpoints.
-- See when metrics start diverging and revert to the optimal checkpoint.
-- Automate the process of tracking every training epoch.
+- track all code and data changes corresponding to the checkpoints.
+- see when metrics start diverging and revert to the optimal checkpoint.
+- automate the process of tracking every training epoch.
 
-[The way checkpoints are implemented by DVC](/blog/experiment-refs) utilizes
-_ephemeral_ experiment commits and experiment branches within DVC. They are
-created using the metadata from experiments and are tracked with the `exps`
-custom Git reference.
+> Experiments and checkpoints are [implemented](/blog/experiment-refs) with
+> hidden Git experiment commits branches.
 
-You can add experiments to your Git history by committing the experiment you
-want to track, which you'll see later in this tutorial.
+Like with regular experiments, checkpoints can become persistent by
+[committing them to Git](#committing-checkpoints-to-git).
 
-This tutorial is going to cover how to implement checkpoints in an ML project
-using DVC. We're going to train a model to identify handwritten digits based on
-the MNIST dataset.
+This guide covers how to implement checkpoints in an ML project using DVC. We're
+going to train a model to identify handwritten digits based on the MNIST
+dataset.
 
 https://youtu.be/PcDo-hCvYpw
 
 <details>
 
-## ⚙️ Setting up the project
+### ⚙️ Setting up the project
 
 You can follow along with the steps here or you can clone the repo directly from
 GitHub and play with it. To clone the repo, run the following commands.
 
-```bash
+```dvc
 $ git clone https://github.com/iterative/checkpoints-tutorial
 $ cd checkpoints-tutorial
 ```
@@ -40,7 +45,7 @@ $ cd checkpoints-tutorial
 It is highly recommended you create a virtual environment for this example. You
 can do that by running:
 
-```bash
+```dvc
 $ python3 -m venv .venv
 ```
 
@@ -53,7 +58,7 @@ following commands.
 Once you have your environment set up, you can install the dependencies by
 running:
 
-```bash
+```dvc
 $ pip install -r requirements.txt
 ```
 
@@ -64,9 +69,9 @@ everything you need to get started with experiments and checkpoints.
 
 ## Setting up a DVC pipeline
 
-DVC versions data and it also can version the machine learning model weights
-file as checkpoints during the training process. To enable this, you will need
-to set up a DVC pipeline to train your model.
+DVC versions data and it also can version the ML model weights file as
+checkpoints during the training process. To enable this, you will need to set up
+a DVC pipeline to train your model.
 
 Adding a DVC pipeline only takes a few commands. At the root of the project,
 run:
@@ -130,7 +135,7 @@ stages:
 Before we go any further, this is a great point to add these changes to your Git
 history. You can do that with the following commands:
 
-```bash
+```dvc
 $ git add .
 $ git commit -m "created DVC pipeline"
 ```
@@ -153,10 +158,10 @@ tracking the metrics along with each checkpoint, so we'll need to add a few
 lines of code.
 
 In the `train.py` file, import the [`dvclive`](/doc/dvclive) package with the
-other imports:
+other imports::
 
 ```python
-import dvclive
+from dvclive import Live
 ```
 
 > It's also possible to use DVC's Python API to register checkpoints, or to use
@@ -166,6 +171,8 @@ Then update the following lines of code in the `main` method inside of the
 training epoch loop.
 
 ```git
++ dvclive = Live()
+
 # Iterate over training epochs.
 for i in range(1, EPOCHS+1):
     # Train in batches.
@@ -187,14 +194,13 @@ for i in range(1, EPOCHS+1):
 The line `torch.save(model.state_dict(), "model.pt")` updates the checkpoint
 file.
 
-You can read about what the line `dvclive.log(k, v)` does in the
-[`dvclive.log()`](/doc/dvclive/api-reference/log) reference.
+You can read about what the line `dvclive.log(k, v)` does in the `Live.log()`
+reference.
 
-The [`dvclive.next_step()`](/doc/dvclive/api-reference/next_step) line tells DVC
-that it can take a snapshot of the entire workspace and version it with Git.
-It's important that with this approach only code with metadata is versioned in
-Git (as an ephemeral commit), while the actual model weight file will be stored
-in the DVC data <abbr>cache</abbr>.
+The `Live.next_step()` line tells DVC that it can take a snapshot of the entire
+workspace and version it with Git. It's important that with this approach only
+code with metadata is versioned in Git (as an ephemeral commit), while the
+actual model weight file will be stored in the DVC data <abbr>cache</abbr>.
 
 ## Running experiments
 
@@ -215,19 +221,19 @@ Generating lock file 'dvc.lock'
 Updating lock file 'dvc.lock'
 Checkpoint experiment iteration 'd99d81c'.
 
-file:///Users/milecia/Repos/checkpoints-tutorial/dvclive.html
+file:///Users/milecia/Repos/checkpoints-tutorial/dvclive_dvc_plots/index.html
 Epoch 2: loss=1.25374174118042
 Epoch 2: acc=0.7738
 Updating lock file 'dvc.lock'
 Checkpoint experiment iteration '963b396'.
 
-file:///Users/milecia/Repos/checkpoints-tutorial/dvclive.html
+file:///Users/milecia/Repos/checkpoints-tutorial/dvclive_dvc_plots/index.html
 Epoch 3: loss=0.7242147922515869
 Epoch 3: acc=0.8284
 Updating lock file 'dvc.lock'
 Checkpoint experiment iteration 'd630b92'.
 
-file:///Users/milecia/Repos/checkpoints-tutorial/dvclive.html
+file:///Users/milecia/Repos/checkpoints-tutorial/dvclive_dvc_plots/index.html
 Epoch 4: loss=0.5083536505699158
 Epoch 4: acc=0.8538
 Updating lock file 'dvc.lock'
@@ -359,7 +365,7 @@ table with the checkpoints you want to compare. You'll see something similar to
 this in your terminal.
 
 ```
-Path          Metric    Old      New      Change
+Path          Metric    d90179a  726d32f  Change
 dvclive.json  acc       0.9044   0.8185   -0.0859
 dvclive.json  loss      0.33246  0.83515  0.50269
 dvclive.json  step      6        8        2
@@ -427,39 +433,28 @@ new set of checkpoints under a new experiment branch.
 └─────────────────────────┴──────────┴──────┴─────────┴────────┴────────┴────────┴──────────────┘
 ```
 
-## Adding checkpoints to Git
+## Committing checkpoints to Git
 
 When you terminate training, you'll see a few commands in the terminal that will
-allow you to add these changes to Git.
+allow you to add these changes to Git, making them [persistent]:
 
-```
+[persistent]:
+  /doc/user-guide/experiment-management/dvc-experiments#persistent-experiments
+
+```dvc
 To track the changes with git, run:
 
         git add dvclive.json dvc.yaml .gitignore train.py dvc.lock
 
-Reproduced experiment(s): exp-263da
-Experiment results have been applied to your workspace.
-
-To promote an experiment to a Git branch run:
-
-        dvc exp branch <exp>
+...
 ```
 
-You can run the following command to save your experiments to the Git history.
+Running the command above will stage the checkpoint experiment with Git. You can
+take a look at what would be committed first with `git status`. You should see
+something similar to this in your terminal:
 
-```bash
-$ git add dvclive.json dvc.yaml .gitignore train.py dvc.lock
-```
-
-You can take a look at what will be committed to your Git history by running:
-
-```bash
+```dvc
 $ git status
-```
-
-You should see something similar to this in your terminal.
-
-```
 Changes to be committed:
   (use "git restore --staged <file>..." to unstage)
         new file:   .gitignore
@@ -476,9 +471,9 @@ Untracked files:
         predictions.json
 ```
 
-All that's left is to commit these changes with the following command:
+All that's left to do is to `git commit` the changes:
 
-```bash
+```dvc
 $ git commit -m 'saved files from experiment'
 ```
 

@@ -1,13 +1,13 @@
 # exp diff
 
 Show changes in [metrics](/doc/command-reference/metrics) and
-[parameters](/doc/command-reference/params) between `dvc experiments`.
+[parameters](/doc/command-reference/params) between experiments.
 
 ## Synopsis
 
 ```usage
 usage: dvc exp diff [-h] [-q | -v] [--all] [--param-deps]
-                    [--show-json] [--show-md] [--old]
+                    [--json] [--md]
                     [--no-path] [--precision <n>]
                     [a_rev] [b_rev]
 positional arguments:
@@ -19,18 +19,18 @@ positional arguments:
 # Description
 
 Provides a quick way to compare `dvc params` and `dvc metrics` between two
-`dvc experiments` by printing a table of differences. By default, it includes
-the params/metrics file "Path", "Param" or "Metric" name, the new "Value", and
-the difference ("Change") for numeric values. Example:
+experiments by printing a table of differences. By default, it includes the
+params/metrics file "Path", "Param" or "Metric" name, the new "Value", and the
+difference ("Change") for numeric values. Example:
 
 ```dvc
 $ dvc exp diff
-Path         Metric    Value    Change
-scores.json  roc_auc   0.93345  0.018087
-scores.json  grade     B-       —
+Path         Metric   HEAD      workspace  Change
+scores.json  roc_auc  0.915363  0.93345    0.018087
+scores.json  grade    B         B-         —
 
-Path         Param         Value    Change
-params.yaml  max_features  3000     1500
+Path         Param         HEAD  workspace  Change
+params.yaml  max_features  1500  3000       1500
 ```
 
 > This is similar to combining the reports from `dvc params diff` and
@@ -54,14 +54,11 @@ all the current experiments (without comparisons).
 
 - `--param-deps` - include only parameters that are stage dependencies.
 
-- `--show-json` - prints the command's output in easily parsable JSON format,
-  instead of a human-readable table.
+- `--json` - prints the command's output in easily parsable JSON format, instead
+  of a human-readable table.
 
-- `--show-md` - prints the command's output in the Markdown table format
+- `--md` - prints the command's output in the Markdown table format
   ([GFM](https://github.github.com/gfm/#tables-extension-)).
-
-- `--old` - include the "Old" value column in addition to the new "Value" (and
-  "Change"). Useful when the values are not numeric, for example
 
 - `--no-path` - hide the "Path" column that lists the param/metrics file
   location. Useful when only one metrics or params file exists, for example
@@ -101,10 +98,11 @@ to its baseline (`10-bigrams-experiment`, current `HEAD`) like this:
 
 ```dvc
 $ dvc exp diff exp-1dad0
-Path         Metric    Value    Change
-scores.json  auc       0.61314  0.035575
-Path         Param                   Value    Change
-params.yaml  featurize.max_features  1500     -500
+Path         Metric  HEAD      exp-1dad0  Change
+scores.json  auc     0.577565  0.61314    0.035575
+
+Path         Param                   HEAD  exp-1dad0  Change
+params.yaml  featurize.max_features  2000  1500       -500
 ```
 
 To compare two specific experiments (values are shown for the second one by
@@ -112,10 +110,11 @@ default):
 
 ```dvc
 $ dvc exp diff exp-1dad0 exp-1df77
-Path         Metric    Value    Change
-scores.json  auc       0.51676  -0.060799
-Path         Param                   Value    Change
-params.yaml  featurize.max_features  500      -1500
+Path         Metric  exp-1dad0  exp-1df77   Change
+scores.json  auc     0.577559   0.51676     -0.060799
+
+Path         Param                   exp-1dad0  exp-1df77  Change
+params.yaml  featurize.max_features  2000       500        -1500
 ```
 
 To compare an experiment to the
@@ -124,9 +123,10 @@ tag (or any other [revision](https://git-scm.com/docs/revisions)):
 
 ```dvc
 $ dvc exp diff exp-1dad0 7-ml-pipeline
-Path         Metric    Value    Change
-scores.json  auc       None     diff not supported
-Path         Param                   Value    Change
-params.yaml  featurize.max_features  500      -1500
-params.yaml  featurize.ngrams        1        -1
+Path         Metric  exp-1dad0  7-ml-pipeline  Change
+scores.json  auc     0.577559   None           diff not supported
+
+Path         Param                   exp-1dad0  7-ml-pipeline  Change
+params.yaml  featurize.max_features  2000       500            -1500
+params.yaml  featurize.ngrams        2          1              -1
 ```

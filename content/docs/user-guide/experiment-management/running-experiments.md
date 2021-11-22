@@ -79,7 +79,11 @@ $ dvc exp run --all-pipelines
 > Note that the order in which pipelines are executed is not guaranteed; Only
 > the internal order of stage execution is.
 
-### Interactive reproduction
+> (ℹ️) When your `dvc.yaml` files are organized inside recursive subfolders, you
+> can selectively run the pipeline(s) using `--recursive` (takes a parent
+> directory as argument).
+
+### Running stages interactively
 
 When you want to have more granular control over which stages are run, you can
 use the `--interactive` option. This flag allows you to confirm each stage
@@ -146,12 +150,17 @@ $ dvc exp run -S myparams.toml:learning_rate = 0.0001
 
 ### Updating experiment parameters on-the-fly
 
-DVC allows to update the parameters from command line when running
-`dvc experiments`. The `--set-param` (`-S`) option takes a parameter name and
-its value, and updates the params file before the run.
+DVC allows to update parameters from command line when running experiments. The
+`--set-param` (`-S`) option takes an existing parameter name and its value, and
+updates the params file before the run.
 
 ```dvc
+$ cat params.yaml
+model:
+  learning_rate: 0.001
+
 $ dvc exp run --set-param model.learning_rate=0.0002
+...
 ```
 
 > Note that parameters are attached to experiments so you can view them together
@@ -163,10 +172,6 @@ times:
 ```dvc
 $ dvc exp run -S learning_rate=0.001 -S units=128
 ```
-
-> ⚠️ Note that DVC doesn't check whether parameters given to `--set-param` are
-> already in the parameters file. If there is a typo, a new or different param
-> will be added/changed.
 
 ## The experiments queue
 
@@ -265,12 +270,8 @@ CPU cores).
 ## Checkpoint experiments
 
 To track successive steps in a longer or deeper <abbr>experiment</abbr>, you can
-register checkpoints from your code.
-
-📖 See [Checkpoints](/doc/user-guide/experiment-management/checkpoints) to learn
-about this feature.
-
-Running the experiments containing checkpoints is no different than with regular
+register [checkpoints](/doc/user-guide/experiment-management/checkpoints) from
+your code. Running checkpoint experiments is no different than with regular
 ones, e.g.:
 
 ```dvc
@@ -293,3 +294,6 @@ their outputs). This is useful for re-training ML models, for example.
 
 > Note that queuing an experiment that uses checkpoints implies `--reset`,
 > unless a `--rev` is provided (refer to the previous section).
+
+> 📖 See [Checkpoints](/doc/user-guide/experiment-management/checkpoints) to
+> learn more about this feature.

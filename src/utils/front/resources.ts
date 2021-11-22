@@ -32,7 +32,7 @@ const createStylesheet = (
   return node
 }
 
-const resourcesCache: { [url: string]: Promise<undefined> } = {}
+const resourcesCache: { [url: string]: Promise<void> } = {}
 const resourceNodeCreators: {
   [regex: string]: typeof createScript | typeof createStylesheet
 } = {
