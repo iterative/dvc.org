@@ -87,12 +87,14 @@ const WhatsNewModal: React.FC = () => {
             >
               <h2>ML Experiment Versioning</h2>
             </Link>
-            <StaticImage
-              alt="a description of blog image"
-              src="../../../../static/uploads/images/2021-10-28/oct-community-gems.png"
-              className={styles.image}
-              width={420}
-            />
+            <Link href="/blog/ml-experiment-versioning">
+              <StaticImage
+                alt="a description of blog image"
+                src="../../../../static/uploads/images/2021-10-28/oct-community-gems.png"
+                className={styles.image}
+                width={420}
+              />
+            </Link>
             <p className={styles.text}>
               Versioning machine learning experiments combines the benefits of
               version control and experiment tracking.{' '}
