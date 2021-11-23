@@ -348,6 +348,16 @@ $ dvc exp show --csv | csvstat
 
 [csvkit]: https://csvkit.readthedocs.io/en/latest/
 
+## Show the experiments table as a Parallel Coordinates plot
+
+`dvc exp show` can also generate a Parallel Coordinates plot, with `--html`.
+
+```dvc
+$ dvc exp show --html
+```
+
+![](/img/exp_parallel_coordiantes.gif) _Parallel Coordiantes Plot_
+
 ## Compare specific experiments
 
 In addition to showing a summary table of experiments, DVC provides the
