@@ -565,8 +565,7 @@ for a full guide on using Google Drive as DVC remote storage.
   using a custom Google Client project. Also requires using `gdrive_client_id`.
 
   ```dvc
-  $ dvc remote modify myremote \
-                      gdrive_client_secret 'client-secret'
+  $ dvc remote modify myremote gdrive_client_secret 'client-secret'
   ```
 
 - `gdrive_user_credentials_file` - path where DVC stores OAuth credentials to
@@ -621,7 +620,7 @@ more information.
   [delegated] to the service account if needed.
 
   ```dvc
-  $ dvc remote modify --local myremote \
+  $ dvc remote modify myremote \
                       gdrive_service_account_user_email 'myemail-addr'
   ```
 
@@ -889,8 +888,7 @@ by HDFS. Read more about by expanding the WebHDFS section in
   `false` this setting is ignored.
 
   ```dvc
-  $ dvc remote modify --local myremote \
-                              kerberos_principal some_principal_name
+  $ dvc remote modify myremote kerberos_principal some_principal_name
   ```
 
 - `proxy_to` - user to proxy as. Proxy user feature must be enabled on the
@@ -901,7 +899,7 @@ by HDFS. Read more about by expanding the WebHDFS section in
   kerberos must be enabled for this to work.
 
   ```dvc
-  $ dvc remote modify --local myremote proxy_to some_proxy_user
+  $ dvc remote modify myremote proxy_to some_proxy_user
   ```
 
 - `ssl_verify` - whether to verify SSL requests. Default is true when
