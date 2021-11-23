@@ -9,7 +9,7 @@
 > [virtual environment](https://python.readthedocs.io/en/stable/library/venv.html)
 > or using
 > [pipx](https://packaging.python.org/guides/installing-stand-alone-command-line-tools/)
-> (on Python 3.6+) to encapsulate your local environment.
+> (on Python 3.7+) to encapsulate your local environment.
 
 ```dvc
 $ pip install dvc

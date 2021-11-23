@@ -7,7 +7,7 @@ releases, you can install it from our code repository GitHub.
 > [virtual environment](https://python.readthedocs.io/en/stable/library/venv.html)
 > or using
 > [pipx](https://packaging.python.org/guides/installing-stand-alone-command-line-tools/)
-> (on Python 3.6+) to encapsulate your local environment.
+> (on Python 3.7+) to encapsulate your local environment.
 
 ```dvc
 # Should be installed before DVC. See details below.
