@@ -283,9 +283,12 @@ Please check that you are able to connect both ways with tools like `ssh` and
 
 ### Click for HDFS
 
-HDFS might require additional setup. Our assumption with HDFS is that the client
-is set up to use it and DVC can rely on the same libraries. See more details
-[here](https://github.com/iterative/dvc/issues/5858#issuecomment-824216700).
+⚠️ Using HDFS with a Hadoop cluster might require additional setup. Our
+assumption is that the client is set up to use it. Specifically, [`libhdfs`]
+should be installed.
+
+[`libhdfs`]:
+  https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/LibHdfs.html
 
 💡 Using an HDFS cluster as remote storage is also supported via the WebHDFS
 API. Read more about it by expanding the WebHDFS section below.
@@ -302,13 +305,8 @@ $ dvc remote add -d myremote hdfs://user@example.com/path
 
 ### Click for WebHDFS
 
-**HDFS and WebHDFS:**
-
-Both HDFS and WebHDFS allow using a Hadoop cluster as remote storage. However,
-HDFS requires `libhdfs`, a Python library to use the Java Hadoop client, and it
-must be installed separately. WebHDFS has no need for this, as it uses a REST
-API, but that must be enabled in the cluster by setting the configuration
-property `dfs.webhdfs.enabled` to `true` in `hdfs-site.xml`.
+⚠️ Using WebHDFS requires to enable REST API access in the cluster: set the
+config property `dfs.webhdfs.enabled` to `true` in `hdfs-site.xml`.
 
 If your cluster is secured, then WebHDFS is commonly used with Kerberos and
 HTTPS. To enable these for the DVC remote, set `use_https` and `kerberos` to
