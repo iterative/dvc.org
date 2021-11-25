@@ -4,59 +4,58 @@ Making progress on data science projects requires a large number of
 <abbr>experiments</abbr> -- attempts at tuning parameters, trying different
 data, improving code, collecting new metrics, etc. Keeping track of all these
 changes is challenging but essential, as we may need to review, compare, and
-share them later. We also want to be able to recover the conditions that
-produced certain results before, and reproduce them if needed.
+share them. We also want to be able to recover the conditions that produced
+certain results before, and reproduce them if needed.
 
 ![](/img/natural-experimentation.png) _Loose experimentation_
 
-DVC provides a layer of [experiment management] features that don't require
-special services, running servers, or loading websites. Running **DVC
-Experiments** in your workspace automatically captures all the relevant changes
-(code, data, parameters, etc.) because your data processes are [codified] with
-DVC, which enables to [version everything].
+DVC provides a layer of [experiment management] features out-of-the-box (no need
+for special services, servers, or websites). Running **DVC Experiments** in your
+workspace captures all the relevant changes automatically (input data, code,
+hyperparameters, artifacts, etc.) to be reviewed and restored later. This is
+possible because the entire experimental process is [codified] with DVC.
 
-Unlike tools that focus on experiment navigation, DVC's approach guarantees
-reproducibility by working on top of Git instead of a separate system with
-fragile links to Git (see a
-[full comparison](#comparison-of-popular-experiment-tracking-tools)). This means
-that your [data is tracked][version everything] from within project versions
-(without storing it in Git). It also enables [distributed collaboration] along
-the way, via optional hosting like GitHub or GitLab.
+Unlike tools that focus on experiment navigation (see a
+[comparison](#comparison-of-popular-experiment-tracking-tools) below), DVC's
+approach guarantees reproducibility by working on top of Git instead of as a
+separate system with fragile revision links. Experiments are associated with the
+project versions from which they came, and DVC stores their data efficiently for
+you. This enables [distributed collaboration] along the way.
 
 [experiment management]: /doc/user-guide/experiment-management
 [codified]: /doc/user-guide/project-structure/pipelines-files
-[version everything]: /doc/use-cases/versioning-data-and-model-files
-[distributed collaboration]: /doc/user-guide/experiment-management
+[versioning everything]: /doc/use-cases/versioning-data-and-model-files
+[distributed collaboration]:
+  /doc/user-guide/experiment-management/sharing-experiments
 
 ```dvctable
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┓
 ┃ white:**Experiment**              ┃ yellow:**loss**    ┃ yellow:**acc**    ┃ blue:**epochs**       ┃ blue:**model.conv_u** ┃
 ┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━┩
 │ workspace               │ 0.23508 │ 0.9151 │ 10           │ 24           │
-│ 7317bc6                 │       - │      - │ 10           │ 16           │
+│ main                    │       - │      - │ 10           │ 16           │
 │ ├── e2647ef [exp-ee8a4] │ 0.23146 │ 0.9145 │ 10           │ 64           │
 │ ├── 15c9451 [exp-a9be6] │ 0.25231 │ 0.9102 │ 10           │ 32           │
-│ ├── 9c32227 [exp-17dd9] │ 0.23687 │ 0.9167 │ 10           │ 256          │
-│ ├── 8a9cb15 [exp-29d93] │ 0.24459 │ 0.9134 │ 10           │ 128          │
+│ └── 9c32227 [exp-17dd9] │ 0.23687 │ 0.9167 │ 10           │ 256          │
+│ 7317bc6                 │       - │      - │ 100          │ 16           │
+│ ├── 299dc5e [monograms] │ 0.24838 │ 0.9176 │ 100          │ 128          │
+│ └── 8a9cb15 [bigrams]   │ 0.24459 │ 0.9134 │ 100          │ 64           │
 └─────────────────────────┴─────────┴────────┴──────────────┴──────────────┘
 ```
 
-![]() _Organized experiments in DVC_
+![]() _DVC Experiments are organized along project versions._
 
-DVC experiment tracking features enable:
+DVC experiment tracking benefits:
 
-- Rapid iteration on experiment ideas (variations from a baseline) with
-  controlled [execution]
-- Automatic bookkeeping of changes to data dependencies, code,
-  <abbr>parameters</abbr>, artifacts and <abbr>metrics</abbr> on each experiment
-  run
+- Quickly iterate on experiment ideas (variations from a baseline).
+- Automatic bookkeeping of data dependencies, code, <abbr>parameters</abbr>,
+  artifacts and <abbr>metrics</abbr>
 - Queue experiments for future execution (and run them in parallel if needed).
 - Create deep learning [checkpoints] from your code, and track
   [live metrics](/doc/dvclive).
-- [Review and compare] experiments or checkpoints based on params or metrics.
-- Restore experimental results from <abbr>cache</abbr>, or reproduce them from
-  scratch.
-- Save, share, or discard experiments individually or in bulk.
+- [Review and compare] results based on params or metrics; Restore them from
+  <abbr>cache</abbr> or reproduce them from scratch.
+- Share or discard experiments individually or in bulk.
 
 [execution]: /doc/user-guide/experiment-management/running-experiments
 [checkpoints]: /doc/user-guide/experiment-management/checkpoints
