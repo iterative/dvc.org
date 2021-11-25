@@ -70,11 +70,9 @@ DVC experiment tracking benefits include:
 
 DVC Experiments provide a seamless, local-first experience. You control where
 and how your data is saved and shared. DVC also improves storage efficiency via
-<abbr>caching</abbr>, preventing repetitive data transfers on every experiment.
-
-Additionally, DVC is completely language agnostic. You can expect the same
-convenience and performance whether you're using Jupyter Notebooks or Scala, CSV
-data frames or HDFS.
+<abbr>caching</abbr>, preventing repetitive data transfers per experiment. And
+DVC is completely language agnostic: all these features work whether you're
+using Jupyter notebooks or Scala, CSV data frames or HDFS.
 
 |                       | DVC Experiments                         | MLFlow                                       | Weights & Biases          | TensorBoard             |
 | --------------------- | --------------------------------------- | -------------------------------------------- | ------------------------- | ----------------------- |
@@ -93,13 +91,12 @@ data frames or HDFS.
 [wandb]: https://wandb.ai/site/pricing
 
 > 💡 Note that other experiment tracking tools can be complementary with DVC,
-> for example for more detailed experiment logging with specialized analytics
-> and visualizations.
+> for example as detailed experiment logging with specialized visualizations.
 
 To complete your stack, we also offer [DVC Studio], an advanced web interface to
 collaborate on DVC projects online, including full experiment management
-support. You can also integrate with CI/CD using [CML], and run experiments
-straight from Studio!
+support. You can also integrate with CI/CD using [CML], and run your experiments
+there straight from Studio!
 
 [dvc studio]: /doc/studio
 [cml]: https://cml.dev/
