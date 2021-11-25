@@ -18,15 +18,12 @@ possible because the entire experimental process is [codified] with DVC.
 Unlike tools that focus on experiment navigation (see a
 [comparison](#comparison-of-popular-experiment-tracking-tools) below), DVC's
 approach guarantees reproducibility by working on top of Git instead of as a
-separate system with fragile revision links. Experiments are associated with the
-project versions from which they came, and DVC stores their data efficiently for
-you. This enables [distributed collaboration] along the way.
+separate system with fragile revision links. Experiments tracked by DVC are
+associated with the baseline project versions from which they came.
 
 [experiment management]: /doc/user-guide/experiment-management
 [codified]: /doc/user-guide/project-structure/pipelines-files
 [versioning everything]: /doc/use-cases/versioning-data-and-model-files
-[distributed collaboration]:
-  /doc/user-guide/experiment-management/sharing-experiments
 
 ```dvctable
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┓
@@ -45,22 +42,27 @@ you. This enables [distributed collaboration] along the way.
 
 ![]() _DVC Experiments are organized along project versions._
 
-DVC experiment tracking benefits:
+DVC experiment tracking benefits include:
 
-- Quickly iterate on experiment ideas (variations from a baseline).
-- Automatic bookkeeping of data dependencies, code, <abbr>parameters</abbr>,
-  artifacts and <abbr>metrics</abbr>
+- Quickly iterate on experiment ideas, with automatic bookkeeping of data
+  dependencies, code, <abbr>parameters</abbr>, artifacts, ML models, and their
+  <abbr>metrics</abbr>.
 - Queue experiments for future execution (and run them in parallel if needed).
 - Create deep learning [checkpoints] from your code, and track
   [live metrics](/doc/dvclive).
 - [Review and compare] results based on params or metrics; Restore them from
   <abbr>cache</abbr> or reproduce them from scratch.
-- Share or discard experiments individually or in bulk.
+- Leverage Git's [distributed collaboration] and tools from services such as
+  GitHub or GitLab.
 
 [execution]: /doc/user-guide/experiment-management/running-experiments
 [checkpoints]: /doc/user-guide/experiment-management/checkpoints
 [review and compare]:
   /doc/user-guide/experiment-management/comparing-experiments
+[distributed collaboration]:
+  /doc/user-guide/experiment-management/sharing-experiments
+
+<br/>
 
 > 📖 Ready to dive in? See [Get Started: Experiments](/doc/start/experiments).
 
