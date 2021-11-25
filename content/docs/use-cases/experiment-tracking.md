@@ -75,16 +75,16 @@ Additionally, DVC is completely language agnostic. You can expect the same
 convenience and performance whether you're using Jupyter Notebooks or Scala, CSV
 data frames or HDFS.
 
-|                       | DVC Experiments                         | MLFlow                                         | Weights & Biases          | TensorBoard             |
-| --------------------- | --------------------------------------- | ---------------------------------------------- | ------------------------- | ----------------------- |
-| Experiment definition | `dvc.yaml` metafiles                    | Implicit (in code)                             | Implicit                  | Implicit                |
-| How to run it         | `dvc exp run` any terminal command      | Code integration                               | Code (Python only)        | Code (Python)           |
-| Data storage          | [User][storage] (yours e.g. cloud)      | User (yours)                                   | Hosted (theirs)           | Limited hosted (theirs) |
-| Compute               | User (e.g. [CI/CD][cml])                | User or [hosted][dbricks]                      | User                      | User                    |
-| What can be tracked   | code & data, params, metrics, artifacts | data, params, metrics                          | data, params, environment | params and metrics      |
-| Visualization         | Terminal + [web][dvc studio]            | Web app                                        | Website                   | Website                 |
-| How it's captured     | Custom Git commit                       | Database                                       | Database                  | Metadata files          |
-| What you pay for      | Your resources + optional [web UI]      | Your resources + optional [hosting][dbricks]   | [Subscription][wandb]     | Your resources          |
+|                       | DVC Experiments                         | MLFlow                                       | Weights & Biases          | TensorBoard             |
+| --------------------- | --------------------------------------- | -------------------------------------------- | ------------------------- | ----------------------- |
+| Experiment definition | `dvc.yaml` metafiles                    | Implicit (in code)                           | Implicit                  | Implicit                |
+| How to run it         | `dvc exp run` any terminal command      | Code integration                             | Code (Python only)        | Code (Python)           |
+| Data storage          | [User][storage] (yours e.g. cloud)      | User (yours)                                 | Hosted (theirs)           | Limited hosted (theirs) |
+| Compute               | User (e.g. [CI/CD][cml])                | User or [hosted][dbricks]                    | User                      | User                    |
+| What can be tracked   | code & data, params, metrics, artifacts | data, params, metrics                        | data, params, environment | params and metrics      |
+| Visualization         | Terminal + [web][dvc studio]            | Web app                                      | Website                   | Website                 |
+| How it's captured     | Custom Git commit                       | Database                                     | Database                  | Metadata files          |
+| What you pay for      | Your resources + optional [web UI]      | Your resources + optional [hosting][dbricks] | [Subscription][wandb]     | Your resources          |
 
 [storage]: /doc/command-reference/remote/add#supported-storage-types
 [dbricks]: https://databricks.com/product/pricing
