@@ -15,9 +15,18 @@ Experiments** in your workspace automatically captures all the relevant changes
 (code, data, parameters, etc.) because your data processes are [codified] with
 DVC, which enables to [version everything].
 
+Unlike tools that focus on experiment navigation, DVC's approach guarantees
+reproducibility by working on top of Git instead of a separate system with
+fragile links to Git (see a
+[full comparison](#comparison-of-popular-experiment-tracking-tools)). This means
+that your [data is tracked][version everything] from within project versions
+(without storing it in Git). It also enables [distributed collaboration] along
+the way, via optional hosting like GitHub or GitLab.
+
 [experiment management]: /doc/user-guide/experiment-management
 [codified]: /doc/user-guide/project-structure/pipelines-files
 [version everything]: /doc/use-cases/versioning-data-and-model-files
+[distributed collaboration]: /doc/user-guide/experiment-management
 
 ```dvctable
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┓
@@ -56,14 +65,15 @@ DVC experiment tracking features enable:
 
 > 📖 Ready to dive in? See [Get Started: Experiments](/doc/start/experiments).
 
-Unlike tools that focus on experiment navigation, DVC's approach guarantees
-reproducibility by working on top of Git, instead of on being a side system with
-fragile links to Git. This means that your [data is tracked][version everything]
-from within project versions (without storing it in Git). It also enables
-distributed collaboration along the way, via optional hosting like GitHub or
-GitLab.
+### Comparison of popular experiment tracking tools
 
-Here's a comparison of other popular experiment tracking tools:
+DVC Experiments provide a seamless, local-first experience. You control where
+and how your data is saved and shared. DVC also improves storage efficiency via
+<abbr>caching</abbr>, preventing repetitive data transfers on every experiment.
+
+Additionally, DVC is completely language agnostic. You can expect the same
+convenience and performance whether you're using Jupyter Notebooks or Scala, CSV
+data frames or HDFS.
 
 |                       | DVC Experiments                         | MLFlow                                         | Weights & Biases          | TensorBoard             |
 | --------------------- | --------------------------------------- | ---------------------------------------------- | ------------------------- | ----------------------- |
@@ -80,14 +90,6 @@ Here's a comparison of other popular experiment tracking tools:
 [dbricks]: https://databricks.com/product/pricing
 [web ui]: https://studio.iterative.ai/#pricing
 [wandb]: https://wandb.ai/site/pricing
-
-DVC projects provide a seamless, local-first experience. You control where and
-how your data is saved and shared. DVC also improves storage efficiency via
-<abbr>caching</abbr>, preventing repetitive data transfers on every experiment.
-
-On top of all that, DVC is completely language agnostic. You can expect the same
-convenience and performance whether you're using Jupyter Notebooks or Scala, CSV
-data frames or HDFS.
 
 > 💡 Note that other experiment tracking tools can be complementary with DVC,
 > for example for more detailed experiment logging with specialized analytics
