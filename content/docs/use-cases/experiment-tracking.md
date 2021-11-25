@@ -80,7 +80,7 @@ data frames or HDFS.
 | Experiment definition | `dvc.yaml` metafiles                    | Implicit (in code)                             | Implicit                  | Implicit                |
 | How to run it         | `dvc exp run` any terminal command      | Code integration                               | Code (Python only)        | Code (Python)           |
 | Data storage          | [User][storage] (yours e.g. cloud)      | User (yours)                                   | Hosted (theirs)           | Limited hosted (theirs) |
-| Compute               | User (e.g [CI/CD][cml])                 | User or [hosted][dbricks]                      | User (e.g. local)         | User (local)            |
+| Compute               | User (e.g. [CI/CD][cml])                | User or [hosted][dbricks]                      | User                      | User                    |
 | What can be tracked   | code & data, params, metrics, artifacts | data, params, metrics                          | data, params, environment | params and metrics      |
 | Visualization         | Terminal + [web][dvc studio]            | Web app                                        | Website                   | Website                 |
 | How it's captured     | Custom Git commit                       | Database                                       | Database                  | Metadata files          |
