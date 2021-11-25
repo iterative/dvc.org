@@ -84,7 +84,7 @@ data frames or HDFS.
 | What can be tracked   | code & data, params, metrics, artifacts | data, params, metrics                          | data, params, environment | params and metrics      |
 | Visualization         | Terminal + [web][dvc studio]            | Web app                                        | Website                   | Website                 |
 | How it's captured     | Custom Git commit                       | Database                                       | Database                  | Metadata files          |
-| What you pay          | Your resources + optional [web UI]      | Your resources + [hosting][dbricks] (optional) | [Subscription][wandb]     | Your resources          |
+| What you pay for      | Your resources + optional [web UI]      | Your resources + optional [hosting][dbricks]   | [Subscription][wandb]     | Your resources          |
 
 [storage]: /doc/command-reference/remote/add#supported-storage-types
 [dbricks]: https://databricks.com/product/pricing
