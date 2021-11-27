@@ -48,111 +48,63 @@
   ],
   "userContent": [
     {
+      "url": "https://medium.com/@shanakachathuranga/end-to-end-machine-learning-pipeline-with-mlops-tools-mlflow-dvc-flask-heroku-evidentlyai-github-c38b5233778c",
+      "title": "End to End Machine Learning Pipeline with MLOps Tools",
+      "author": "Shanaka Chathuranga",
+      "date": "2021-10-03",
+      "pictureUrl": "/img/community/ugc/shanaka-square.png"
+    },
+    {
+      "url": "https://medium.com/rappibank/how-to-build-an-efficient-machine-learning-project-workflow-using-data-version-control-dvc-aaeaa9cfb79b",
+      "title": "How to Build an Efficient Machine Learning Project Workflow Using DVC",
+      "author": "Daniel Baena",
+      "date": "2021-09-23",
+      "pictureUrl": "/img/community/ugc/baena.jpeg"
+    },
+    {
       "url": "https://www.sicara.ai/blog/dvc-streamlit-webui-ml",
       "title": "How to Build Customizable Web UI for ML with Streamlit on top of DVC",
       "author": "Antoine Toubhans",
       "date": "2021-06-22",
       "pictureUrl": "/img/community/ugc/streamlit.png"
-    },
-    {
-      "url": "https://www.youtube.com/watch?v=s8Jj9gzQ3xA",
-      "title": "Building an ML Platform from Scratch: Live Coding Session",
-      "author": "Alon Gubkin",
-      "date": "2021-06-11",
-      "pictureUrl": "/img/community/ugc/alon-gubkin.png"
-    },
-    {
-      "url": "https://medium.com/@7genblogger/reflinks-vs-symlinks-vs-hard-links-and-how-they-can-help-machine-learning-projects-b77b89cdbab1",
-      "title": "Reflinks vs Symlinks vs Hard Links, and How They Can Help Machine Learning Projects",
-      "author": "David Herron",
-      "date": "2021-04-28",
-      "pictureUrl": "/img/community/ugc/reflinks.png"
     }
   ],
   "events": [
-    {
-      "url": "https://www.meetup.com/DVC-Community-Virtual-Meetups/events/280814318/",
-      "title": "DVC Learn Meetup - Getting Started with Data Version Control",
-      "description": "At this first session of DVC Learn, you will learn the about the importance of reporducibility and how to get started using DVC.",
-      "city": "Virtual",
-      "date": "2021-10-06",
-      "pictureUrl": "/img/community/events/dvc_learn.png"
-    },
-    {
-      "url": "https://mlsummit.ai/program/",
-      "title": "ML Summit Berlin",
-      "description": "Milecia McGregor will present Using Reproducible Experiments to Create Better Models with DVC",
-      "city": "Virtual",
-      "date": "2021-10-11",
-      "pictureUrl": "/img/community/events/MLSummit.png"
-    },
-    {
-      "url": "https://www.meetup.com/DVC-Community-Virtual-Meetups/events/280809274/",
-      "title": "DVC October Office Hours - MLOps Tool Stack and Internal Kaggle Competition!",
-      "description": "Hear from two Community members on how they use DVC and CML - one with geo-spatial data projects and the other creating an internal Kaggle competition for solving fraud detection problems",
-      "city": "Virtual",
-      "date": "2021-10-14",
-      "pictureUrl": "/img/community/events/office-hours-meetup.png"
-    },
-    {
-      "url": "https://2021.allthingsopen.org/",
-      "title": "All Things Open Conference",
-      "description": "Milecia McGregor presents Using Reproducible Experiements to Create Better Models with DVC.",
-      "city": "Virtual",
-      "date": "2021-10-19",
-      "pictureUrl": "/img/community/events/atoblack.png"
-    },
-    {
-      "url": "https://www.meetup.com/DVC-Community-Virtual-Meetups/events/280814318/",
-      "title": "DVC Learn Meetup - Getting Started - Experiments",
-      "description": "In this second lesson, you will learn all about getting started with DVC Experiments.  Join us to learn and meet others learning DVC.",
-      "city": "Virtual",
-      "date": "2021-10-20",
-      "pictureUrl": "/img/community/events/dvc_learn.png"
-    },
-    {
-      "url": "https://www.scale.bythebay.io/",
-      "title": "Scale by the Bay",
-      "description": "Milecia McGregor will present at Scale by the Bay Conference on Using Reproducible Experiments to Create Better Models",
-      "city": "Virtual",
-      "date": "2021-10-28",
-      "pictureUrl": "/img/community/events/bay.png"
-    },
-    {
-      "url": "https://pydata.org/global2021/",
-      "title": "PyData Global",
-      "description": "Milecia McGregor presents on Using Reproducible Experiments to Create Better Machine Learning Models",
-      "city": "Virtual",
-      "date": "2021-10-29",
-      "pictureUrl": "/img/community/events/pydata-global.png"
-    },
-    {
-      "url": "https://www.meetup.com/DVC-Community-Virtual-Meetups/events/280814351/",
-      "title": "DVC Learn Meetup - Getting Started - Sharing Experiments",
-      "description": "In this final lesson, you will learn all about how to get started sharing experiments with your team.  Join us to learn and meet others learning DVC.",
-      "city": "Virtual",
-      "date": "2021-11-03",
-      "pictureUrl": "/img/community/events/dvc_learn.png"
-    },
-    {
-      "url": "https://odsc.com/california/",
-      "title": "ODSC West",
-      "description": "Milecia McGregor will present at ODSC West on Using Reproducible Experiments to Create Better Models.",
-      "city": "Virtual",
-      "date": "2021-11-03",
-      "pictureUrl": "/img/community/events/odscblack.png"
-    },
     {
       "url": "https://it-nonstop.net/speakers/milecia-mcgregor/",
       "title": "DataArt IT NonStop Conference",
       "description": "Milecia McGregor will present on Tuning Hyperparameters with Reproducible Experiments.",
       "city": "Virtual",
-      "date": "2021-11-18",
+      "date": "2021-11-19",
       "pictureUrl": "/img/community/events/it-nonstop.png"
+    },
+    {
+      "url": "https://pybcn.org/events/pyday_bcn/pyday_bcn_2021/",
+      "title": "Python Barcelona Conference",
+      "description": "David de la Iglesia Castro presents Making MLOps Uncool Again.",
+      "city": "In Person",
+      "date": "2021-11-27",
+      "pictureUrl": "/img/community/events/py-barcelona.png"
+    },
+    {
+      "url": "https://mlsummit.ai/program/",
+      "title": "ML Summit Online",
+      "description": "Milecia McGregor will present Using Reproducible Experiments to Create Better Models with DVC",
+      "city": "Virtual",
+      "date": "2021-12-08",
+      "pictureUrl": "/img/community/events/MLSummit.png"
+    },
+    {
+      "url": "hhttps://www.meetup.com/DVC-Community-Virtual-Meetups/events/282064369/",
+      "title": "DVC Office Hours - New Feature Demo",
+      "description": "At this meetup we have a demo of a new DVC feature.  We're looking forward to seeing you!",
+      "city": "Virtual",
+      "date": "2021-12-09",
+      "pictureUrl": "/img/community/events/office-hours-event.png"
     }
   ],
   "stats": {
-    "users": "5900+",
-    "messages": "1800+"
+    "users": "6250+",
+    "messages": "1500+"
   }
 }
