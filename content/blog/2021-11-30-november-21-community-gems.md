@@ -2,7 +2,8 @@
 title: November '21 Community Gems
 date: 2021-11-30
 description: >
-  In this month's roundup: CML runners, working with data, DVC Studio, and more.
+  A roundup of technical Q&A's from the DVC and CML community. This month: CML
+  runners, working with data, DVC Studio, and more.
 descriptionLong: >
   A roundup of technical Q&A's from the DVC and CML community. This month: CML
   runners, working with data, DVC Studio, and more.
@@ -12,6 +13,7 @@ commentsUrl: https://discuss.dvc.org/t/november-21-community-gems/964
 tags:
   - Data Versioning
   - DVC Studio
+  - DVC
   - CML
   - Community
 ---
@@ -61,15 +63,15 @@ $ dvc status
 
 This will give you an output similar to this in your terminal:
 
-```dvc
+```yaml
 train:
-        changed deps:
-                modified:           src/train.py
-        changed outs:
-                deleted:            model.pkl
+  changed deps:
+    modified: src/train.py
+  changed outs:
+    deleted: model.pkl
 evaluate:
-        changed deps:
-                deleted:            model.pkl
+  changed deps:
+    deleted: model.pkl
 ```
 
 We're working on adding granularity support for this command and should have a
@@ -167,14 +169,14 @@ There is definitely a way to do this!
 
 You can extend the max time in your CI by adding something like this:
 
-```dvc
+```yaml
 train:
-    timeout-minutes: 5000
+  timeout-minutes: 5000
 ```
 
 If you're using GitLab, the same update would look similar to this:
 
-```dvc
+```yaml
 train:
   timeout: 72 hours
 ```
