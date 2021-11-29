@@ -233,12 +233,12 @@ $ dvc remote modify myremote oss_endpoint endpoint
 ```
 
 To set key id, key secret and endpoint (or any other OSS parameter), use
-`dvc remote modify`. Example usage is show below. Make sure to use the `--local`
-option to avoid committing your secrets with Git:
+`dvc remote modify` as show below. Use the `--local` option to avoid committing
+your secrets to Git:
 
 ```dvc
-$ dvc remote modify myremote --local oss_key_id 'mykey'
-$ dvc remote modify myremote --local oss_key_secret 'mysecret'
+$ dvc remote modify --local myremote oss_key_id 'mykey'
+$ dvc remote modify --local myremote oss_key_secret 'mysecret'
 ```
 
 **Testing your OSS storage using docker**
@@ -319,12 +319,13 @@ $ dvc remote modify myremote kerberos true
 $ dvc remote modify --local myremote token SOME_BASE64_ENCODED_TOKEN
 ```
 
-> `token` contains sensitive user info. Therefore, it's safer to set it with the
-> `--local` option, so it's written to a Git-ignored config file. See
-> `dvc remote modify` for a full list of WebHDFS parameters.
-
 💡 You may want to run `kinit` before using the remote to make sure you have an
 active kerberos session.
+
+> `token` contains sensitive user info. Therefore, it's safer to add it with the
+> `--local` option, so it's written to a Git-ignored config file.
+
+> See `dvc remote modify` for a full list of WebHDFS parameters.
 
 </details>
 
@@ -366,7 +367,7 @@ $ dvc remote add -d myremote \
 ### Click for local remote
 
 A "local remote" is a directory in the machine's file system. Not to be confused
-with the `--local` option of `dvc remote` commands!
+with the `--local` option of `dvc remote` (and other config) commands!
 
 > While the term may seem contradictory, it doesn't have to be. The "local" part
 > refers to the type of location where the storage is: another directory in the
