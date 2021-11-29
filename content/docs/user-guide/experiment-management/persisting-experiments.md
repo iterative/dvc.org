@@ -78,8 +78,11 @@ $ dvc exp apply exp-e6c97
 Changes for experiment 'exp-e6c97' have been applied...
 ```
 
-> ⚠️ Note that `dvc exp apply` requires your project version (Git `HEAD`) to be
-> the same as when the experiment was run.
+⚠️ Conflicting changes in the workspace are overwritten unless `--no-force` is
+used.
+
+> Note that `dvc exp apply` requires your project version (Git `HEAD`) to be the
+> same as when the experiment was run.
 
 Now, if you list the experiments again with `dvc exp show`, you'll see that the
 workspace contains the results of `exp-e6c97`.
