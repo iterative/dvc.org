@@ -48,6 +48,10 @@
   @media (--xs-scr) {
     left: 15px;
     bottom: 15px;
+    width: 113px;
+    height: 45px;
+    font-size: 16px;
+    line-height: 15px;
   }
 
   &::before {
@@ -66,30 +70,58 @@
 
   &:hover {
     cursor: pointer;
+    box-shadow: 0 4px 8px rgba(46, 49, 55, 0.1),
+      0 0 2px rgba(46, 49, 55, 0.2);
 
     &::before {
       opacity: 1;
     }
   }
 
+  &:focus {
+    box-shadow: none;
+  }
+
   &Exit {
     border-radius: 50%;
     padding: 14px;
-    width: 48px;
-    height: 48px;
+    width: 64px;
+    height: 64px;
+    left: 18px;
+    bottom: 18px;
     background: var(--color-gray-dark);
     box-shadow: 0 1px 2px rgba(46, 49, 55, 0.1), 0 0 1px rgba(46, 49, 55, 0.5);
 
+    @media (--xs-scr) {
+      width: 50px;
+      height: 50px;
+      bottom: 16px;
+      left: calc(50vw - 32px);
+    }
+
     &:hover {
-      background: var(--color-gray);
+      background: var(--color-gray-hover);
+      box-shadow: 0 4px 8px rgba(46, 49, 55, 0.1),
+        0 0 2px rgba(46, 49, 55, 0.2);
 
       &::before {
         opacity: 0;
       }
     }
 
+    &:focus {
+      box-shadow: none;
+    }
+
     svg {
+      width: 24px;
+      height: 24px;
       fill: currentColor;
+
+      @media (--xs-scr) {
+        width: 20px;
+        height: 20px;
+      }
 
       path {
         fill: currentColor;
@@ -111,13 +143,13 @@
 .modal {
   box-sizing: border-box;
   position: absolute;
-  left: 62px;
-  bottom: 62px;
+  left: 50px;
+  bottom: 50px;
   background: #fff;
   box-shadow: 0 8px 16px rgba(46, 49, 55, 0.1), 0 0 2px rgba(46, 49, 55, 0.2);
-  width: 460px;
+  width: 560px;
   border-radius: 16px;
-  padding: 20px;
+  padding: 24px;
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
@@ -126,10 +158,19 @@
     cursor: initial;
   }
 
+  @media (--md-scr) {
+    width: 520px;
+  }
+
   @media (--xs-scr) {
-    width: 250px;
-    left: 47px;
-    bottom: 47px;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    padding: 16px 16px 74px;
+  }
+
+  @media (--xxs-scr) {
+    padding-top: 26px;
   }
 
   .title {
@@ -138,13 +179,14 @@
     display: flex;
     font-size: 30px;
     line-height: 45px;
-    margin-bottom: 15px;
+    margin-bottom: 16px;
     text-decoration: none;
     color: var(--color-gray-hover);
 
     @media (--xs-scr) {
-      font-size: 25px;
-      line-height: 35px;
+      font-size: 20px;
+      line-height: 30px;
+      margin-bottom: 8px;
     }
   }
 
@@ -155,7 +197,7 @@
   .text {
     font-size: 18px;
     line-height: 24px;
-    margin-top: 15px;
+    margin-top: 16px;
     color: var(--color-gray-dark);
 
     a {
@@ -168,6 +210,7 @@
 
     @media (--xs-scr) {
       font-size: 16px;
+      margin-top: 8px;
     }
   }
 }
