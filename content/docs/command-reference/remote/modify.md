@@ -866,70 +866,80 @@ by HDFS. Read more about by expanding the WebHDFS section in
 > them with the `--local` option, so they're written to a Git-ignored config
 > file.
 
-- `url` - remote location.
+- `url` - remote location:
 
   ```dvc
   $ dvc remote modify myremote url webhdfs://user@example.com/path
   ```
 
-  Only provide the `user` parameter if you are not using `kerberos` or `token`
-  authentication, since those authentication methods already contain the user
-  information.
+  > Do not provide a `user` in the URL with `kerberos` or `token`
+  > authentication.
 
-- `kerberos` - whether or not to enable kerberos authentication. Defaults to
-  `false`. Example:
+- `user` - user name to access the remote. Do not set this with `kerberos` or
+  `token` authentication.
+
+  ```dvc
+  $ dvc remote modify --local myremote user myuser
+  ```
+
+- `kerberos` - enable Kerberos authentication (`false` by default):
 
   ```dvc
   $ dvc remote modify myremote kerberos true
   ```
 
-- `kerberos_principal` - kerberos principal to use. Useful if you have multiple
-  kerberos principals, for example for service accounts. If `kerberos` is
-  `false` this setting is ignored.
+- `kerberos_principal` - [Kerberos principal] to use, in case you have multiple
+  ones (for example service accounts). Only used if `kerberos` is `true`.
 
   ```dvc
-  $ dvc remote modify myremote kerberos_principal some_principal_name
+  $ dvc remote modify myremote kerberos_principal myprincipal
   ```
 
-- `proxy_to` - user to proxy as. Proxy user feature must be enabled on the
-  cluster, and the user must have the correct rights. For more information see
-  [the Hadoop documentation](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/Superusers.html).
-  This setting is incompatible with `token`, since if a delegation token is used
-  the proxy user is embedded in the token information. If the cluster is secured
-  kerberos must be enabled for this to work.
+  [kerberos principal]:
+    https://web.mit.edu/kerberos/krb5-1.5/krb5-1.5.4/doc/krb5-user/What-is-a-Kerberos-Principal_003f.html
+
+- `proxy_to` - Hadoop [superuser] to proxy as. _Proxy user_ feature must be
+  enabled on the cluster, and the user must have the correct access rights. If
+  the cluster is secured, Kerberos must be enabled (set `kerberos` to `true`)
+  for this to work. This parameter is incompatible with `token`.
 
   ```dvc
-  $ dvc remote modify myremote proxy_to some_proxy_user
+  $ dvc remote modify myremote proxy_to myuser
   ```
 
-- `ssl_verify` - whether to verify SSL requests. Default is true when
-  `use_https` is enabled.
+  [superuser]:
+    https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/Superusers.html
+
+- `use_https` - enables SWebHdfs. Note that DVC still expects the protocol in
+  `url` to be `webhdfs://`, and will fail if `swebhdfs://` is used.
+
+  ```dvc
+  $ dvc remote modify myremote use_https true
+  ```
+
+  [swebhdfs]:
+    https://hadoop.apache.org/docs/r3.1.0/api/org/apache/hadoop/fs/SWebHdfs.html
+
+- `ssl_verify` - whether to verify SSL requests. Defaults to `true` when
+  `use_https` is enabled, `false` otherwise.
 
   ```dvc
   $ dvc remote modify myremote ssl_verify false
   ```
 
-- `token` - delegation token. For more information see
-  [the Hadoop documentation](https://hadoop.apache.org/docs/current/hadoop-aws/tools/hadoop-aws/delegation_tokens.html#Background:_Hadoop_Delegation_Tokens.).
-  This setting is incompatible with `proxy_to` or providing a `user` in the
-  `url` since that information is encoded in the token itself. This token must
-  be the base64 encoded URL safe token such as that
-  [returned by the WebHDFS API](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#Get_Delegation_Token).
-  On a secured cluster kerberos must be enabled for delegation tokens to be
-  used.
+- `token` - Hadoop [delegation token] (as returned by the [WebHDFS API]). If the
+  cluster is secured, Kerberos must be enabled (set `kerberos` to `true`) for
+  this to work. This parameter is incompatible with providing a `user` and with
+  `proxy_to`.
 
   ```dvc
-  $ dvc remote modify --local myremote \
-                              token SOME_BASE64_ENCODED_TOKEN
+  $ dvc remote modify myremote token "mysecret"
   ```
 
-- `use_https` - whether to use `swebhdfs` or not. Note that DVC still expects
-  the protocol string in the `url` to be `webhdfs` and will fail if `swebhdfs`
-  is used.
-
-  ```dvc
-  $ dvc remote modify myremote use_https true
-  ```
+  [delegation token]:
+    https://hadoop.apache.org/docs/stable/hadoop-aws/tools/hadoop-aws/delegation_tokens.html
+  [webhdfs api]:
+    https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#Delegation_Token_Operations
 
 </details>
 
