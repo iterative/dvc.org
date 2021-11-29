@@ -116,10 +116,7 @@ const plugins = [
   {
     resolve: 'gatsby-plugin-svgr',
     options: {
-      ref: true,
-      svgoConfig: {
-        plugins: [{ removeViewBox: false }]
-      }
+      ref: true
     }
   },
   'gatsby-transformer-sharp',
