@@ -21,8 +21,8 @@
       right: 0;
       width: 20px;
       height: 20px;
-      background-image: url('/img/click.png');
-      content: '';
+      background-image: url("/img/click.png");
+      content: "";
       font-family: monospace;
       transition: transform 200ms;
     }
