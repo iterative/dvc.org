@@ -1,10 +1,11 @@
 ---
 title: November '21 Community Gems
 date: 2021-11-30
-description: |
-  A roundup of technical Q&A's from the DVC and CML community. This month: CML runners, working with data, DVC Studio, and more.
-descriptionLong: |
-  A roundup of technical Q&A's from the DVC and CML community. This month: CML runners, working with data, DVC Studio, and more.
+description: >
+  In this month's roundup: CML runners, working with data, DVC Studio, and more.
+descriptionLong: >
+  A roundup of technical Q&A's from the DVC and CML community. This month: CML
+  runners, working with data, DVC Studio, and more.
 picture: 2021-11-30/nov-community-gems.png
 author: milecia_mcgregor
 commentsUrl: https://discuss.dvc.org/t/november-21-community-gems/964
@@ -43,9 +44,9 @@ Here's an example of running an experiment with the Repo API.
 from dvc.repo import Repo
 
 repo = Repo()
-repo.add()
+repo.experiments.run()
 repo.experiments.show()
-etc...
+# etc...
 ```
 
 ### [How can you check if a DVC tracked directory has changes?](https://discord.com/channels/485586884165107732/563406153334128681/899693929560158218)
@@ -126,7 +127,7 @@ CI platform.
 
 Thanks for this awesome question @tpietruszka!
 
-### [When I run the `dvc remove` command, does it only remove .dvc files?](https://discord.com/channels/485586884165107732/563406153334128681/905382438786715648)
+### [When I run the `dvc remove` command, does it only remove `.dvc` files?](https://discord.com/channels/485586884165107732/563406153334128681/905382438786715648)
 
 A really good question from @flowy!
 
@@ -146,12 +147,13 @@ You can remove it and stop tracking in Git with a command like:
 
 ```dvc
 $ git rm -r folder_name
+```
 
 ### [Can DVC Studio be connected to a self-managed GitLab repo?](https://discord.com/channels/485586884165107732/841856466897469441/907468264882462800)
 
 Very good question about Studio @Sra!
 
-Right now this only works if it's an on-premise network or a private VPC
+Right now this only works if it's an on-premises network or a private VPC
 network.
 
 We are working on bringing custom-domain GitLab as a feature very soon! You can
