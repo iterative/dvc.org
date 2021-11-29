@@ -1,9 +1,9 @@
 ---
 title: Running Collaborative Experiments
 date: 2021-12-02
-description: |
+description: >
   Sharing experiments with teammates can help you build models more efficiently.
-descriptionLong: |
+descriptionLong: >
   You can use DVC remotes to share experiments and their data across machines.
 picture: 2021-12-02/collaborative-experiments.png
 pictureComment: Running Collaborative Experiments
@@ -130,7 +130,7 @@ experiment you'll get started with. To pull an experiment to your local machine,
 you'll need an experiment id for the following command.
 
 ```dvc
-dvc exp pull upstream exp-b3667
+$ dvc exp pull upstream exp-b3667
 ```
 
 The `exp-b3667` comes from the `dvc exp list` command we ran earlier and now you
@@ -146,7 +146,7 @@ Drive remote we set up earlier. DVC handles both the GitHub and data storage
 pushes with this command.
 
 ```dvc
-dvc exp push origin exp-p4202
+$ dvc exp push origin exp-p4202
 ```
 
 This will push the custom Git refs to your forked repo and it will push any
