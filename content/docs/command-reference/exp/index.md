@@ -3,8 +3,8 @@
 _New in DVC 2.0_
 
 A set of commands to generate and manage <abbr>experiments</abbr>:
-[init](/doc/command-reference/exp/init),
-[run](/doc/command-reference/exp/run), [show](/doc/command-reference/exp/show),
+[init](/doc/command-reference/exp/init), [run](/doc/command-reference/exp/run),
+[show](/doc/command-reference/exp/show),
 [diff](/doc/command-reference/exp/diff),
 [apply](/doc/command-reference/exp/apply),
 [branch](/doc/command-reference/exp/branch),
