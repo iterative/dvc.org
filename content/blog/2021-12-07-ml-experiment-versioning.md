@@ -38,12 +38,12 @@ meta-information. A link may be added in one or the other to keep track.
 
 ML experiment versioning combines experiment tracking and version control:
 
-- Experiments as code: Track meta-information in the code repository and version
-  it like code.
-- Versioned reproducibility: Save and restore experiment state, and track
+- **Experiments as code**: Track meta-information in the code repository and
+  version it like code.
+- **Versioned reproducibility**: Save and restore experiment state, and track
   changes to only execute what's new.
-- Distributed experiments: Organize locally and choose what to share, reusing
-  your existing repo structure.
+- **Distributed experiments**: Organize locally and choose what to share,
+  reusing your existing repo structure.
 
 ```
 +---------------------+    +------------------+
@@ -163,7 +163,7 @@ restore the experiment state exactly as it was in your workspace. DVC
 [saves the state of the experiment](https://dvc.org/blog/experiment-refs) and
 restores it for you:
 
-```
+```dvc
 $ dvc exp apply exp-333c9
 
 Changes for experiment 'exp-333c9' have been applied to your current workspace.
@@ -176,7 +176,7 @@ Versioned reproducibility means tracking changes to the experiment state. DVC
 can determine what changes were introduced by the experiment and only run what's
 necessary.
 
-```
+```dvc
 $ dvc exp run --set-param model.conv_units=128
 'data/images.tar.gz.dvc' didn't change, skipping
 Stage 'extract' didn't change, skipping
