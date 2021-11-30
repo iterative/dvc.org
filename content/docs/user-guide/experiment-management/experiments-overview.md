@@ -31,18 +31,17 @@ project version (baseline). You can create independent groups of experiments
 this way, as well as review, compare, and restore them later. The basic workflow
 goes like this:
 
-- Modify <abbr>parameters</abbr> or other dependencies (input data, source code,
-  stage definitions, etc.) of committed stages.
-- [Run experiments] with `dvc exp run` (instead of `repro`) to execute the
-  pipeline. The results are reflected in your <abbr>workspace</abbr>, and
-  tracked automatically.
-- Use [metrics](/doc/command-reference/metrics) to identify the best
-  experiment(s).
-- Review and [compare] experiments with `dvc exp show` or `dvc exp diff`. Repeat
+- Modify hyperparameters or other dependencies (input data, source code,
+  commands to execute, etc.). Leave these changes un-committed in Git.
+- [Run experiments] with `dvc exp run` (instead of `repro`). The results are
+  reflected in your <abbr>workspace</abbr>, and tracked automatically.
+- Review and [compare] experiments with `dvc exp show` or `dvc exp diff`, using
+  [metrics](/doc/command-reference/metrics) to identify the best one(s). Repeat
   🔄
 - Make certain experiments [persistent] by committing their results to Git. This
   lets you repeat the process from that point.
 
 [run experiments]: /doc/user-guide/experiment-management/running-experiments
+[pipeline]: /doc/user-guide/project-structure/pipelines-files
 [compare]: /doc/user-guide/experiment-management/comparing-experiments
 [persistent]: /doc/user-guide/experiment-management/persisting-experiments
