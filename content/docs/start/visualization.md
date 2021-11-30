@@ -15,3 +15,7 @@ several options to generate and keep track of the plots:
 
 In this document, we'll focus on the first option and briefly describe the other
 two. Please see `dvc plots` and the DVCLive documentation for details.
+
+- [ ] Configure the plots to use dvclive output
+- [ ] Generate a plot file and open it in the browser
+- [ ] Generate a plot image and use `dvc plot` on it
