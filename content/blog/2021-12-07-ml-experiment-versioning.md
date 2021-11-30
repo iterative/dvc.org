@@ -1,14 +1,16 @@
 ---
-title: Don't Just Track Your Experiments, Version Them
+title: Don't Just Track Your ML Experiments, Version Them
 date: 2021-12-07
 description: >
-  Versioning experiments combines the benefits of version control and experiment
-  tracking.
+  ML experiment brings together the benefits of traditional code versioning and
+  modern day experiment tracking, super charging your ability to reproduce and
+  iterate on your work.
 descriptionLong: >
-  With experiment versioning, you can take ML experiment tracking to the next
-  level, making it easy and powerful to save, compare, and reproduce experiments
-  at scale in ways that neither traditional software version control nor
-  existing experiment tracking tools can.
+  ML experiment versioning takes experiment tracking to the next level.  Track
+  experiments as code, reproduce and incrementally update experiments, and keep
+  experiments distributed to share however you want.  Iterate on your
+  experiments at scale in ways that neither traditional software version control
+  nor existing experiment tracking tools can.
 picture:
 pictureComment:
 author: dave_berenbaum
@@ -21,48 +23,53 @@ tags:
   - Experiment Versioning
 ---
 
-Experiment tracking tools solve problems not handled by version control tools
-like Git. Instead of being built to track only code, they log experiment
-information like parameters, metrics, and even binary artifacts like serialized
-models. They also can organize and compare many experiments, whereas Git may
-become messy and is limited to comparing two versions at a time.
+Experiment tracking tools help manage machine learning projects where version
+control tools like Git are insufficient. They log parameters and metrics, and
+they may store binary artifacts like input data or model weights so that you can
+reproduce experiments and retrieve results. They enable you to navigate all this
+meta-information, for example with dashboards to organize and compare many
+experiments.
 
-Git is still better than experiment tracking tools for code. It tracks
-incremental changes instead of having to log all code files as artifacts for
-each experiment. Therefore, ML experiments get split between Git for code and
-experiment tracking tools for everything else. A link may be added in one or the
-other to keep track.
+Git can't manage or compare all that experiment meta-information, but it is
+still better for code. For example, Git tracks incremental changes instead of
+having to log all code files as artifacts for each experiment. Therefore,
+experiments get split between Git for code and experiment tracking tools for
+meta-information. A link may be added in one or the other to keep track.
 
-Experiment versioning combines experiment tracking and version control:
+ML experiment versioning combines experiment tracking and version control:
 
-- Track all experiment information, but do it in the code repo and version it
-  like code.
-- Save pipeline to guarantee reproducibility and track changes to execute only
-  modified parts.
-- Organize experiments locally and choose what to share, reusing your existing
-  repo structure without cluttering the repo history.
+- Experiments as code: Track meta-information in the code repository and version
+  it like code.
+- Versioned reproducibility: Save and restore experiment state, and track
+  changes to only execute what's new.
+- Distributed experiments: Organize locally and choose what to share, reusing
+  your existing repo structure.
 
-+---------------------+ +------------------+ | | | | | Experiment Tracking | |
-Code Versioning | | | | | +---------------------+ +---------/--------+ \ /  
- \ /  
- \- /-  
- \ /  
- \ /  
- +-----\------------------+  
- | |  
- | Experiment Versioning |  
- | |  
- +------------------------+
+```
++---------------------+    +------------------+
+|                     |    |                  |
+| Experiment Tracking |    |  Code Versioning |
+|                     |    |                  |
++---------------------+    +---------/--------+
+            \                       /
+             \                     /
+              \-                 /-
+                \               /
+                 \             /
+            +-----\------------------+
+            |                        |
+            | Experiment Versioning  |
+            |                        |
+            +------------------------+
+```
 
-# Experiments as Code
+# ML Experiments as Code
 
 Experiment versioning treats experiments as code. Experiment tracking tools log
-parameters and metrics to a database through API calls. In experiment
-versioning, they are saved in files.
+parameters, metrics, and artifacts to a database through API calls. In
+experiment versioning, they are saved in files.
 
-This might mean a little more work to set up your code to read parameters from a
-YAML file or write metrics to a JSON file. However, once you set up your repo in
-this structure, you start to see the benefits of this approach.
+You can choose your own file formats and paths, which you can configure in DVC:
 
 ```dvc
 $ dvc exp init -i
@@ -84,32 +91,17 @@ Path to a model file/directory [models, n to omit]:
 Path to a parameters file [params.yaml, n to omit]:
 Path to a metrics file [metrics.json, n to omit]:
 Path to a plots file/directory [plots, n to omit]: logs.csv
-──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-default:
-  cmd: python src/train.py
-  deps:
-  - data/images/
-  - src/train.py
-  params:
-  - model
-  - train
-  outs:
-  - models
-  metrics:
-  - metrics.json:
-      cache: false
-  plots:
-  - logs.csv:
-      cache: false
-Do you want to add the above contents to dvc.yaml? [y/n]: y
-
-Created default stage in dvc.yaml. To run, use "dvc exp run".
-See https://dvc.org/doc/user-guide/experiment-management/running-experiments.
 ```
 
-Experiment information lives in readable files that are always available, and
-your code can stay clean. You can read, save, and version your experiment
-parameters and metrics:
+This might mean a little more work to set up your code to read parameters from
+`params.yaml` or write metrics to `metrics.json`. DVC adds
+[data versioning](https://dvc.org/doc/start/data-and-model-versioning) support
+to track artifacts like data and models within your repo.
+
+Once you set up your repo in this structure, you start to see the benefits of
+this approach. Experiment meta-information lives in readable files that are
+always available, and your code can stay clean. You can read, save, and version
+your meta-information:
 
 ```dvc
 $ cat params.yaml
@@ -141,89 +133,7 @@ index baad571a2..57d098495 100644
 +  conv_units: 128
 ```
 
-To version experiments as code, you need to track not only parameters and
-metrics, but everything associated with the experiment. Experiment tracking
-tools support logging arbitrary artifacts like data and models, which aren't
-always easily tracked in Git. Experiment versioning adds proper versioning
-support for these artifacts while maintaining metadata about those artifacts
-within your code repo to track changes. For example, you can see that a single
-image was removed from a directory of 70,000 images.
-
-```dvc
-$ git diff
-diff --git a/data/images.dvc b/data/images.dvc
-index 853b29143..78628ff48 100644
---- a/data/images.dvc
-+++ b/data/images.dvc
-@@ -1,5 +1,5 @@
- outs:
--- md5: 0ebacd64e04c0e4a97d8fa48a4d707e6.dir
--  size: 35401667
--  nfiles: 70000
-+- md5: ef1169c037524932f3c74a3e175f2eb1.dir
-+  size: 35401107
-+  nfiles: 69999
-   path: images
-```
-
-# Pipeline Versioning
-
-Reproducing experiments requires not only artifacts like data and models, but
-also the pipeline to run the experiment end to end. Pipelines are a nascent
-feature in most experiment tracking tools, if they are supported at all. To
-properly version the pipeline, it first needs to be codified, including the
-steps or stages run. Each stage should include info about the commands,
-dependencies, and outputs needed to reproduce each stage and to piece together
-the pipeline. Like other artifacts, metadata about the pipeline is saved in
-plain-text files to track in the code repo.
-
-```dvc
-$ cat dvc.yaml
-stages:
-  default:
-    cmd: python src/train.py
-    deps:
-    - data/images
-    - src/train.py
-    params:
-    - model
-    - train
-    outs:
-    - models
-    metrics:
-    - metrics.json:
-        cache: false
-    plots:
-    - logs.csv:
-        cache: false
-```
-
-Codifying the entire experiment pipeline is a good first step towards
-reproducibility, but it still leaves the user to execute that pipeline, and ML
-pipelines often take too long to reproduce on the fly. Versioning the pipeline
-means tracking changes to it. If a pipeline stage's commands and dependencies
-have not changed, its outputs may be recovered so that it does not have to be
-executed again.
-
-```dvc
-$ dvc exp run
-'data/images.dvc' didn't change, skipping
-Stage 'default' didn't change, skipping
-
-Reproduced experiment(s): exp-333c9
-Experiment results have been applied to your workspace.
-
-To promote an experiment to a Git branch run:
-
-        dvc exp branch <exp> <branch>
-```
-
-# Distributed Experiments
-
-Experiment tracking tools log experiments to a central database and show them in
-a dashboard. This enables comparison that would be difficult in Git. Distributed
-experiments are recorded in the local code repo like leaves or twigs growing
-from Git branches.
+DVC enables you to compare experiments at a glance:
 
 ```dvc
 $ dvc exp show
@@ -243,29 +153,68 @@ $ dvc exp show
 └─────────────────────────┴──────────────┴─────────┴────────┴──────────────┴──────────────────┘
 ```
 
-You may push and pull what you want to share. When collaborating, only a small
-selection of experiments may be worth sharing, and you may not know until after
-you run and compare them. Pushing an experiment shares all the experiment
-information and code so that they stay in sync and are shared with the same
-people, and it's already organized using Git branches.
+# Versioned reproducibility
+
+To reproduce an ML experiment, you need to piece together the meta-information
+to run the pipeline end to end. Experiment tracking databases save the
+artifacts, but you still need to put them all back in the right place. Since
+experiment versioning keeps all the meta-information in your repo, you can
+restore the experiment state exactly as it was in your workspace. DVC
+[saves the state of the experiment](https://dvc.org/blog/experiment-refs) and
+restores it for you:
+
+```
+$ dvc exp apply exp-333c9
+
+Changes for experiment 'exp-333c9' have been applied to your current workspace.
+```
+
+In ML experimentation, you need not only reproducibility, but also flexibility
+to update your experiments incrementally. Data drift, new ideas, bug fixes, etc.
+all mean running a new experiment, and you can't always start from scratch.
+Versioned reproducibility means tracking changes to the experiment state. DVC
+can determine what changes were introduced by the experiment and only run what's
+necessary.
+
+```
+$ dvc exp run --set-param model.conv_units=128
+'data/images.tar.gz.dvc' didn't change, skipping
+Stage 'extract' didn't change, skipping
+Running stage 'train':
+> python3 src/train.py
+79/79 [==============================] - 1s 14ms/step - loss: 0.2552 - acc: 0.9180
+Updating lock file 'dvc.lock'
+
+Reproduced experiment(s): exp-be916
+Experiment results have been applied to your workspace.
+
+To promote an experiment to a Git branch run:
+
+        dvc exp branch <exp> <branch>
+
+```
+
+# Distributed Experiments
+
+Experiment tracking tools log experiments to a central database and show them in
+a dashboard. This makes it easy to share them with teammates and compare
+experiments. However, it introduces a problem - in an active experimentation
+phase, you may create hundreds of experiments. Team members may be overwhelmed,
+and the tool loses one of its core purposes - sharing experiments between team
+members.
+
+Experiment versioning piggybacks on Git and its distributed nature. All the
+experiments you run are stored in your local repo, and only the best experiments
+are promoted to the central repo (GitHub for example) to share with teammates.
+Distributed experiments are shared with the same people as your code repo, so
+you don't need to replicate your project permissions or worry about security
+risks.
+
+With DVC, you can push experiments just like Git branches:
 
 ```dvc
 $ dvc exp push origin exp-333c9
 Pushed experiment 'exp-333c9'to Git remote 'origin'.
-```
-
-While Git branching is a flexible way to organize experiments, there are often
-too many experiments to fit any Git branching workflow. Experiments must act
-like leaves that may be blown away easily, yet also like twigs that may grow
-into branches:
-
-```dvc
-$ dvc exp branch exp-333c9 conv-units-64
-Git branch 'conv-units-64' has been created from experiment 'exp-333c9'.
-To switch to the new branch run:
-
-        git checkout conv-units-64
-
 ```
 
 # What Next?
@@ -284,8 +233,6 @@ announcements about:
   [checkpointing](https://dvc.org/doc/user-guide/experiment-management/checkpoints).
 - Visualizing and comparing experiment results in other tools like VS Code and
   [DVC Studio](https://studio.iterative.ai/).
-- Orchestrating experiments on other
-  [machines](https://github.com/iterative/dvc/wiki/Remote-executors).
 
 What do you want to see for the next generation of experiment tracking? Join our
 upcoming
