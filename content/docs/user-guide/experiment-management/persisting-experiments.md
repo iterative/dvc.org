@@ -71,7 +71,7 @@ $ dvc exp show --include-params=my_param
 
 The results found in the workspace are shown in the respective row. When you
 want to bring another experiment to the workspace, you can reference it using
-it's name or ID, e.g.:
+it's name, e.g.:
 
 ```dvc
 $ dvc exp apply exp-e6c97
