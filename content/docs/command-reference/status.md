@@ -140,7 +140,7 @@ that.
 
 - `-r <name>`, `--remote <name>` - name of the
   [remote storage](/doc/command-reference/remote) to compare against (see
-  `dvc remote list`. Implies `--cloud`.
+  `dvc remote list`). Implies `--cloud`.
 
 - `--json` - prints the command's output in easily parsable JSON format, instead
   of a human-readable table.
