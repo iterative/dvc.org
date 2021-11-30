@@ -6,11 +6,11 @@ description: >
   modern day experiment tracking, super charging your ability to reproduce and
   iterate on your work.
 descriptionLong: >
-  ML experiment versioning takes experiment tracking to the next level.  Track
+  ML experiment versioning takes experiment tracking to the next level. Track
   experiments as code, reproduce and incrementally update experiments, and keep
-  experiments distributed to share however you want.  Iterate on your
-  experiments at scale in ways that neither traditional software version control
-  nor existing experiment tracking tools can.
+  experiments distributed to share however you want. Iterate on your experiments
+  at scale in ways that neither traditional software version control nor
+  existing experiment tracking tools can.
 picture:
 pictureComment:
 author: dave_berenbaum
@@ -43,7 +43,7 @@ ML experiment versioning combines experiment tracking and version control:
 - **Versioned reproducibility**: Save and restore experiment state, and track
   changes to only execute what's new.
 - **Distributed experiments**: Organize locally and choose what to share,
-  reusing your existing repo structure.
+  reusing your existing repo setup.
 
 ```
 +---------------------+    +------------------+
@@ -93,10 +93,10 @@ Path to a metrics file [metrics.json, n to omit]:
 Path to a plots file/directory [plots, n to omit]: logs.csv
 ```
 
-This might mean a little more work to set up your code to read parameters from
-`params.yaml` or write metrics to `metrics.json`. DVC adds
-[data versioning](https://dvc.org/doc/start/data-and-model-versioning) support
-to track artifacts like data and models within your repo.
+This might mean a little more work to set up your code to read parameters from a
+file or write metrics to another file. To track artifacts like data and models
+in your repo, DVC adds
+[data versioning](https://dvc.org/doc/start/data-and-model-versioning) support.
 
 Once you set up your repo in this structure, you start to see the benefits of
 this approach. Experiment meta-information lives in readable files that are
@@ -133,7 +133,7 @@ index baad571a2..57d098495 100644
 +  conv_units: 128
 ```
 
-DVC enables you to compare experiments at a glance:
+With DVC, you can compare lots of experiments at a glance:
 
 ```dvc
 $ dvc exp show
@@ -160,8 +160,8 @@ to run the pipeline end to end. Experiment tracking databases save the
 artifacts, but you still need to put them all back in the right place. Since
 experiment versioning keeps all the meta-information in your repo, you can
 restore the experiment state exactly as it was in your workspace. DVC
-[saves the state of the experiment](https://dvc.org/blog/experiment-refs) and
-restores it for you:
+[saves the state of the experiment](https://dvc.org/blog/experiment-refs), and
+it can restore it for you:
 
 ```dvc
 $ dvc exp apply exp-333c9
@@ -171,10 +171,10 @@ Changes for experiment 'exp-333c9' have been applied to your current workspace.
 
 In ML experimentation, you need not only reproducibility, but also flexibility
 to update your experiments incrementally. Data drift, new ideas, bug fixes, etc.
-all mean running a new experiment, and you can't always start from scratch.
-Versioned reproducibility means tracking changes to the experiment state. DVC
-can determine what changes were introduced by the experiment and only run what's
-necessary.
+all mean running a new experiment, and you don't have time to always start from
+scratch. Versioned reproducibility means tracking changes to the experiment
+state. DVC can determine what changes were introduced by the experiment and only
+run what's necessary.
 
 ```dvc
 $ dvc exp run --set-param model.conv_units=128
