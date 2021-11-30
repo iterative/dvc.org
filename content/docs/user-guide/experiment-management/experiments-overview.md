@@ -51,3 +51,17 @@ goes like this:
 [pipeline]: /doc/user-guide/project-structure/pipelines-files
 [compare]: /doc/user-guide/experiment-management/comparing-experiments
 [persistent]: /doc/user-guide/experiment-management/persisting-experiments
+
+## Initialize DVC Experiments on any project
+
+DVC Experiments features build on basic semantics of <abbr>DVC projects</abbr>.
+This means that minimal formalities are required, such as codifying a pipeline
+with `dvc.yaml` (even if it has a single <abbr>stage</abbr> that represents your
+entire process). Another typical preparation step is to create or modify a
+structured <abbr>parameters</abbr> file.
+
+`dvc exp init` lets you onboard any existing data science project to use DVC
+Experiments without having to worry bootstrapping DVC manually. It will prompt
+you a few simple questions and create a simple `dvc.yaml` file as well as other
+<abbr>metafiles</abbr> with sane default values. You can review these and commit
+them to Git to begin using DVC Experiments.
