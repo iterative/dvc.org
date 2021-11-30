@@ -6,9 +6,9 @@ of the development of data features, hyperspace exploration, deep learning
 optimization, etc.
 
 Some of DVC's base features already help you codify and analyze experiments.
-[Parameters](/doc/command-reference/params) are simple values you can tweak in a
-formatted text file; They cause different behaviors in your code and models. On
-the other end, [metrics](/doc/command-reference/metrics) (and
+[Parameters](/doc/command-reference/params) are simple values in a formatted
+text file which you can tweak and use in your code. On the other end,
+[metrics](/doc/command-reference/metrics) (and
 [plots](/doc/command-reference/plots)) let you define, visualize, and compare
 quantitative measures of your results.
 
