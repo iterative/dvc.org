@@ -38,10 +38,11 @@ goes like this:
   tracked automatically.
 - Use [metrics](/doc/command-reference/metrics) to identify the best
   experiment(s).
-- Visualize and compare experiments with `dvc exp show` or `dvc exp diff`.
-  Repeat 🔄
+- Review and [compare] experiments with `dvc exp show` or `dvc exp diff`. Repeat
+  🔄
 - Make certain experiments [persistent] by committing their results to Git. This
   cleans the slate so you can repeat the process later.
 
 [run experiments]: /doc/user-guide/experiment-management/running-experiments
+[compare]: /doc/user-guide/experiment-management/comparing-experiments
 [persistent]: /doc/user-guide/experiment-management/persisting-experiments
