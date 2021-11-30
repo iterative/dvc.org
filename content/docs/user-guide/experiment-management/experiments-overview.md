@@ -16,13 +16,19 @@ are not pushed to Git remotes by default (see `dvc exp push`).
 
 </details>
 
-Experiments will have an auto-generated name like `exp-bfe64` by default. A
+[run them]: /doc/user-guide/experiment-management/running-experiments
+[git references]: https://git-scm.com/book/en/v2/Git-Internals-Git-References
+
+## Properties
+
+DVC Experiments will have an auto-generated name like `exp-bfe64` by default. A
 custom name can be given instead (using the `--name`/`-n` option of
 `dvc exp run`). These names can be used to reference experiments in other
 `dvc exp` subcommands.
 
-[run them]: /doc/user-guide/experiment-management/running-experiments
-[git references]: https://git-scm.com/book/en/v2/Git-Internals-Git-References
+All experiments created by DVC will be associated to the latest commit (Git
+`HEAD`) at the time that they were run. This is called the experiment's
+_baseline_.
 
 ## Basic workflow
 
