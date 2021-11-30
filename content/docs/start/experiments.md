@@ -19,13 +19,38 @@ the [`example-dvc-experiments`][ede] project.
 
 [ede]: https://github.com/iterative/example-dvc-experiments
 
+## Initializing a project into DVC experiments
+
+If you already have a DVC project, that's great. You can start to use `dvc exp`
+commands right away to create experiments in your project. (See the [user's
+guide] for detailed information.) In this section, we'll focus how to structure
+an ML project into a DVC experiments project with `dvc exp init`.
+
+A typical machine learning project has some data, a set of scripts that trains a
+model, a bunch of hyperparameters that modify these models. DVC makes certain
+assumptions about the names of these elements to initialize an experimentation
+project with:
+
+```dvc
+$ dvc exp init python src/train.py
+```
+
+Here, `python src/train.py` describes how our project runs the training script.
+It could be any other command. For DVC, this defines how you run an experiment.
+
+You can also set code (default: `src`), data (`data/`), models (`models/`),
+hyperparameters (`params.yaml`), metrics (`metrics.json`), and plots (`plots/`)
+dependencies if they differ from the defaults.
+
+We run these experiments in [`example-dvc-experiments`][ede] project, and it's
+structured around these defaults so we don't specify any custom paths.
+
 <details>
 
 ### ⚙️ Installing the example project
 
-These commands are run in the [`example-dvc-experiments`][ede] project. You can
-run the commands in this document after cloning the repository, installing the
-requirements, and pulling the data.
+You can run the commands in this document after cloning the repository,
+installing the requirements, and pulling the data.
 
 #### Clone the project and create virtual environment
 
@@ -42,6 +67,8 @@ $ . .venv/bin/activate
 $ python -m pip install -r requirements.txt
 ```
 
+</details>
+
 #### Get the data set
 
 The repository we cloned doesn't contain the dataset. Instead of storing the
@@ -51,11 +78,6 @@ this case, we use `dvc pull` to update the missing data files.
 ```dvc
 $ dvc pull
 ```
-
-The repository already contains the necessary configuration to run the
-experiments.
-
-</details>
 
 Running the experiment with the default project settings requires only the
 command:
@@ -68,8 +90,8 @@ Experiment results have been applied to your workspace.
 ...
 ```
 
-It runs the specified command (`python train.py`) in `dvc.yaml`. That command
-writes the metrics values to `metrics.json`.
+It runs the command we specified (`python train.py`), and creates models, plots
+and metrics in respective directories.
 
 This experiment is then associated with the values found in the parameters file
 (`params.yaml`), and other dependencies (`data/images/`) with these produced
