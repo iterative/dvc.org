@@ -3,7 +3,8 @@
 DVC Experiments are captures automatically by DVC when you [run them]. Each
 experiment creates and tracks a project variation based on the changes in your
 <abbr>workspace</abbr>. Experiments preserve the latest commit in the current
-branch (Git `HEAD`) as their parent or _baseline_.
+branch (Git `HEAD`) as their parent or _baseline_, but do not form part of the
+regular Git tree or workflow (unless you make them [persistent]).
 
 <details>
 
