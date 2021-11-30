@@ -138,6 +138,55 @@ Experiment results have been applied to your workspace.
 
 <details>
 
+### ℹ️ More information about (Hyper)parameters and metrics
+
+It's pretty common for data science pipelines to include configuration files
+that define adjustable parameters to train a model, do pre-processing, etc. DVC
+provides a mechanism for stages to depend on the values of specific sections of
+such a file (YAML, JSON, TOML, and Python formats are supported).
+
+The `train` stage is created with the following `dvc stage add` command. Notice
+the arguments with `-p` option (short for `--params`)
+
+```dvc
+dvc stage add -n train \
+                -d data/images/ \
+                -d src/train.py \
+                -p model.conv_units \
+                -p train.epochs \
+                -o models/model.h5 \
+                --live metrics \
+                python3 src/train.py
+```
+
+The `params` section defines the parameter dependencies of the `train` stage. By
+default, DVC reads those values (`model.conv_units` and `train.epochs`) from
+`params.yaml` file. You can also set the parameter file name by supplying it
+before the parameter name, like `-p myparams.json:model.units`.
+
+Here is the contents of `params.yaml` file:
+
+```yaml
+train:
+  epochs: 10
+model:
+  conv_units: 16
+```
+
+When you use `--set-param`option for `dvc exp run`, DVC updates these values
+with the values you set in the command line before running the experiment.
+
+Metrics are what you use to evaluate your models. DVC allows any scalar values
+to be used as metrics. It's able to track the metrics we defined in the code
+with the Keras integration introduced recently. Before that, we were using
+`--metrics` and `--metrics-no-cache` options of `dvc stage add` to define
+metrics to DVC, and write the metrics in the code manually. Please see
+`dvc metrics` for this kind of explicitly defined metrics.
+
+</details>
+
+<details>
+
 ### ⚙️ Run multiple experiments in parallel
 
 Instead of running the experiments one-by-one, we can define them to run in a
