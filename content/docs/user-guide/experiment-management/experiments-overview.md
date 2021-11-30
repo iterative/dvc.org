@@ -16,10 +16,10 @@ are not pushed to Git remotes by default (see `dvc exp push`).
 
 </details>
 
-Experiments will have an auto-generated ID like `exp-bfe64` by default. A custom
-name can be given instead (using the `--name`/`-n` option of `dvc exp run`).
-
-> ID or name can be used to reference experiments with `dvc exp` subcommands.
+Experiments will have an auto-generated name like `exp-bfe64` by default. A
+custom name can be given instead (using the `--name`/`-n` option of
+`dvc exp run`). These names can be used to reference experiments in other
+`dvc exp` subcommands.
 
 [run them]: /doc/user-guide/experiment-management/running-experiments
 [git references]: https://git-scm.com/book/en/v2/Git-Internals-Git-References
