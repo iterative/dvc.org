@@ -20,18 +20,18 @@ DVC experiment management features build on top of base DVC features to form a
 comprehensive framework to organize, execute, manage, and share ML experiments.
 They support support these main approaches:
 
-- Compare params and metrics of existing project versions (for example different
-  Git branches) against each other or against new results in your workspace
-  (without committing them).
+- Compare parameters and metrics of existing project versions (for example
+  different Git branches) against each other or against new, uncommitted results
+  in your workspace. One tool to do so is `dvc exp diff`.
 
 - [Run and capture] multiple experiments (derived from any project version as
   baseline) without polluting your Git history. DVC tracks them for you, letting
   you compare and share them. 📖 More info in the [Experiments
   Overview][experiments].
 
-- Generate [checkpoints] during your code execution to analyze the internal
-  progress of deep experiments. DVC captures [live metrics](/doc/dvclive) at
-  runtime, and lets you manage them in batches.
+- Generate [checkpoints] at runtime to keep track of the internal progress of
+  deeper experiments. DVC captures [live metrics](/doc/dvclive), which you can
+  manage in batches.
 
 [run and capture]: /doc/user-guide/experiment-management/running-experiments
 [experiments]: /doc/user-guide/experiment-management/experiments-overview
