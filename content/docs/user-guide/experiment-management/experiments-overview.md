@@ -13,15 +13,14 @@ polluting Git namespaces and bloating the repo unnecessarily.
 
 ### ⚙️ How does DVC track experiments?
 
-Experiments are custom [Git references] (found in `.git/refs/exps`) with one or
-more commits based on `HEAD`. These commits are hidden and not checked out by
-DVC. Note that these are not pushed to Git remotes by default either (see
-`dvc exp push`).
+Experiments are custom [Git references](/blog/experiment-refs) (found in
+`.git/refs/exps`) with one or more commits based on `HEAD`. These commits are
+hidden and not checked out by DVC. Note that these are not pushed to Git remotes
+by default either (see `dvc exp push`).
 
 </details>
 
 [run them]: /doc/user-guide/experiment-management/running-experiments
-[git references]: https://git-scm.com/book/en/v2/Git-Internals-Git-References
 
 ## Properties
 
@@ -36,10 +35,10 @@ _baseline_.
 
 ## Basic workflow
 
-`dvc exp` commands let you automatically track a variation to a committed
-project version (baseline). You can create independent groups of experiments
-this way, as well as review, compare, and restore them later. The basic workflow
-goes like this:
+`dvc exp` commands let you automatically track a variation of a project version
+(the baseline). You can create independent groups of experiments this way, as
+well as review, compare, and restore them later. The basic workflow goes like
+this:
 
 - Modify hyperparameters or other dependencies (input data, source code,
   commands to execute, etc.). Leave these changes un-committed in Git.
