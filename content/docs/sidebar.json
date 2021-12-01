@@ -95,8 +95,8 @@
         "label": "Fast and Secure Data Caching Hub",
         "slug": "fast-data-caching-hub"
       },
-      "data-registries",
-      "experiment-tracking"
+      "experiment-tracking",
+      "data-registries"
     ]
   },
   {
