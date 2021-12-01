@@ -62,13 +62,17 @@ main alternatives:
   generated with [`foreach` stages], for example), while their progress can be
   found in different branches.
 
-[`foreach` stages]:
-  /doc/user-guide/project-structure/pipelines-files#foreach-stages
+- **Labels** - in general, you can record experiments in a separate system and
+  structure them using custom labeling. This is typical in dedicated experiment
+  tracking tools. A possible problem with this approach is that it's easy to
+  lose the connection between your project history and the experiments logged.
 
 DVC takes care of arranging `dvc exp` experiments and the data
 <abbr>cache</abbr> under the hood so there's no need to decide on the above
 until your experiments are made [persistent].
 
+[`foreach` stages]:
+  /doc/user-guide/project-structure/pipelines-files#foreach-stages
 [persistent]: /doc/user-guide/experiment-management/persisting-experiments
 
 ## Run Cache: Automatic Log of Stage Runs
