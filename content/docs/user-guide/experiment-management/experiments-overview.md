@@ -10,9 +10,10 @@ regular Git tree or workflow (unless you make them [persistent]).
 
 ### ⚙️ How does DVC track experiments?
 
-Experiments are custom [Git references] (found in `.git/refs/exps`) with a
-single commit based on `HEAD` (not checked out by DVC). Note that these commits
-are not pushed to Git remotes by default (see `dvc exp push`).
+Experiments are custom [Git references] (found in `.git/refs/exps`) with one or
+more commits based on `HEAD`. These commits are hidden and not checked out by
+DVC. Note that these are not pushed to Git remotes by default either (see
+`dvc exp push`).
 
 </details>
 
