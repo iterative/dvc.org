@@ -58,8 +58,12 @@ main alternatives:
 
 - **Hybrid** - combining an intuitive directory structure with a good repo
   branching strategy tends to be the best option for complex projects.
-  Completely independent experiments live in separate directories, while their
-  progress can be found in different branches.
+  Completely independent experiments live in separate directories (and can be
+  generated with [`foreach` stages], for example), while their progress can be
+  found in different branches.
+
+[`foreach` stages]:
+  /doc/user-guide/project-structure/pipelines-files#foreach-stages
 
 DVC takes care of arranging `dvc exp` experiments and the data
 <abbr>cache</abbr> under the hood so there's no need to decide on the above
