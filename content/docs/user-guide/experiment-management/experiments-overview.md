@@ -1,8 +1,8 @@
 # DVC Experiments Overview
 
-DVC Experiments are captures automatically by DVC when you [run them]. Each
-experiment creates and tracks a project variation based on the changes in your
-<abbr>workspace</abbr>.
+DVC Experiments are captured automatically by DVC when [run]. Each experiment
+creates and tracks a variation of your data science project based on the changes
+in your <abbr>workspace</abbr>.
 
 Experiments preserve a connection to the latest commit in the current branch
 (Git `HEAD`) as their parent or _baseline_, but do not form part of the regular
@@ -60,8 +60,9 @@ this:
 DVC Experiments features build on basic semantics of <abbr>DVC projects</abbr>.
 This means that minimal formalities are required, such as codifying a pipeline
 with `dvc.yaml` (even if it has a single <abbr>stage</abbr> that represents your
-entire process). Another typical preparation step is to create or modify a
-structured <abbr>parameters</abbr> file.
+entire process). Other typical preparation step are to write (or update) a
+structured <abbr>parameters</abbr> file, and to track metrics output by your
+code or ML models.
 
 `dvc exp init` lets you onboard any existing data science project to use DVC
 Experiments without having to worry bootstrapping DVC manually. It will prompt
