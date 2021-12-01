@@ -16,14 +16,14 @@ development process.
 
 DVC provides a layer of [experiment management] features out-of-the-box (no need
 for special services, servers, or websites). Running **DVC Experiments** in your
-workspace captures all the relevant changes automatically (input data, code,
+workspace captures all complete changesets automatically (input data, code,
 hyperparameters, artifacts, etc.) to be reviewed and restored later. This is
 possible because the entire experimental process is [codified] with DVC.
 
-Unlike tools that focus on experiment navigation (see a
-[comparison](#comparison-of-popular-experiment-tracking-tools) below), DVC's
-approach guarantees reproducibility by working on top of Git instead of as a
-separate system with fragile revision links. Experiments tracked by DVC are
+Unlike other tools, which focus experiment navigation by logging only artifacts
+(see a [comparison](#comparison-of-popular-experiment-tracking-tools) below),
+DVC's approach guarantees reproducibility by working on top of Git instead of as
+a separate system with fragile revision links. Experiments tracked by DVC are
 associated with the baseline project versions from which they came.
 
 [experiment management]: /doc/user-guide/experiment-management
@@ -31,18 +31,18 @@ associated with the baseline project versions from which they came.
 [versioning everything]: /doc/use-cases/versioning-data-and-model-files
 
 ```dvctable
-┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┓
-┃ white:**Experiment**              ┃ yellow:**loss**    ┃ yellow:**acc**    ┃ blue:**epochs**       ┃ blue:**model.conv_u** ┃
-┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━┩
-│ workspace               │ 0.23508 │ 0.9151 │ 10           │ 24           │
-│ main                    │       - │      - │ 10           │ 16           │
-│ ├── e2647ef [exp-ee8a4] │ 0.23146 │ 0.9145 │ 10           │ 64           │
-│ ├── 15c9451 [exp-a9be6] │ 0.25231 │ 0.9102 │ 10           │ 32           │
-│ └── 9c32227 [exp-17dd9] │ 0.23687 │ 0.9167 │ 10           │ 256          │
-│ 7317bc6                 │       - │      - │ 100          │ 16           │
-│ ├── 299dc5e [monograms] │ 0.24838 │ 0.9176 │ 100          │ 128          │
-│ └── 8a9cb15 [bigrams]   │ 0.24459 │ 0.9134 │ 100          │ 64           │
-└─────────────────────────┴─────────┴────────┴──────────────┴──────────────┘
+┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━┓
+┃ white:**Experiment**              ┃ yellow:**loss**    ┃ yellow:**acc**    ┃ blue:**epochs** ┃ blue:**model.conv_u** ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━┩
+│ workspace               │ 0.23508 │ 0.9151 │ 10     │ 24           │
+│ main                    │       - │      - │ 10     │ 16           │
+│ ├── e2647ef [exp-ee8a4] │ 0.23146 │ 0.9145 │ 10     │ 64           │
+│ ├── 15c9451 [exp-a9be6] │ 0.25231 │ 0.9102 │ 10     │ 32           │
+│ └── 9c32227 [exp-17dd9] │ 0.23687 │ 0.9167 │ 10     │ 256          │
+│ 7317bc6                 │       - │      - │ 100    │ 16           │
+│ ├── 299dc5e [monograms] │ 0.24838 │ 0.9176 │ 100    │ 128          │
+│ └── 8a9cb15 [bigrams]   │ 0.24459 │ 0.9134 │ 100    │ 64           │
+└─────────────────────────┴─────────┴────────┴────────┴──────────────┘
 ```
 
 ![]() _DVC Experiments are organized along project versions._
