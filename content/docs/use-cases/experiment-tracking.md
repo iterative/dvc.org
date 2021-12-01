@@ -4,8 +4,13 @@ Making progress on data science projects requires a large number of
 <abbr>experiments</abbr> -- attempts at tuning parameters, trying different
 data, improving code, collecting new metrics, etc. Keeping track of all these
 changes is challenging but essential, as we may need to review, compare, and
-share them. We also want to be able to recover the conditions that produced
-certain results before, and reproduce them if needed.
+share them; and to recover the conditions that produced certain results before,
+reproducing them elsewhere if needed.
+
+Tracking experiments traditionally meant logging scalar values with generic
+tools such as notebooks and spreadsheets. But as experiments evolve and many
+more are recorded, these ledgers can soon become disconnected from the
+development process.
 
 ![](/img/natural-experimentation.png) _Loose experimentation_
 
