@@ -57,15 +57,19 @@ this:
 
 ## Initialize DVC Experiments on any project
 
-DVC Experiments features build on basic semantics of <abbr>DVC projects</abbr>.
-This means that minimal formalities are required, such as codifying a pipeline
-with `dvc.yaml` (even if it has a single <abbr>stage</abbr> that represents your
-entire process). Other typical preparation step are to write (or update) a
-structured <abbr>parameters</abbr> file, and to track metrics output by your
-code or ML models.
+DVC Experiments build on basic semantics of <abbr>DVC projects</abbr>. This
+means that minimal formalities are required.
 
 `dvc exp init` lets you onboard any existing data science project to use DVC
 Experiments without having to worry bootstrapping DVC manually. It will prompt
-you a few simple questions and create a simple `dvc.yaml` file as well as other
-<abbr>metafiles</abbr> with sane default values. You can review these and commit
-them to Git to begin using DVC Experiments.
+you wth a few simple questions and create a basic `dvc.yaml` file, as well as
+other <abbr>metafiles</abbr> with sane default values. You can review these
+files and commit them to Git to begin using DVC Experiments quickly.
+
+One of the important steps this takes care of is to [codify a pipeline] (even if
+it has a single <abbr>stage</abbr> that represents your entire process). Other
+typical preparation step are to write (or update) a structured
+<abbr>parameters</abbr> file, and to track <abbr>metrics</abbr> output by your
+code or ML models.
+
+[codify a pipeline]: /doc/user-guide/project-structure/pipelines-files
