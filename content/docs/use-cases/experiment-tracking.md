@@ -3,28 +3,29 @@
 Making progress on data science projects requires a large number of
 <abbr>experiments</abbr> -- attempts at tuning parameters, trying different
 data, improving code, collecting new metrics, etc. Keeping track of all these
-changes is challenging but essential, as we may need to review, compare, and
-share them; and to recover the conditions that produced certain results before,
-reproducing them elsewhere if needed.
+changes is essential, as we may need to review, compare, and share them; and to
+recover the conditions that produced certain results before in order to
+reproduce or update them.
 
 Tracking experiments traditionally meant logging scalar values with generic
 tools such as notebooks and spreadsheets. But as experiments evolve and many
-more are recorded, these ledgers can soon become disconnected from the
-development process.
+more are recorded, they can easily become disconnected and impossible to go back
+to.
 
 ![](/img/natural-experimentation.png) _Loose experimentation_
 
 DVC provides a layer of [experiment management] features out-of-the-box (no need
 for special services, servers, or websites). Running **DVC Experiments** in your
-workspace captures all complete changesets automatically (input data, code,
-hyperparameters, artifacts, etc.) to be reviewed and restored later. This is
-possible because the entire experimental process is [codified] with DVC.
+workspace captures relevant changesets automatically (input data, code,
+hyperparameters, artifacts, etc.), which can be reviewed and restored later.
+This is possible because your entire ML pipeline is [codified] with DVC.
 
-Unlike other tools, which focus experiment navigation by logging only artifacts
-(see a [comparison](#comparison-of-popular-experiment-tracking-tools) below),
-DVC's approach guarantees reproducibility by working on top of Git instead of as
-a separate system with fragile revision links. Experiments tracked by DVC are
-associated with the baseline project versions from which they came.
+Other tools (see a
+[comparison](#comparison-of-popular-experiment-tracking-tools) below) tend to
+focus on experiment navigation, mainly logging metrics and artifacts that result
+from your pipelines, along with fragile links to code revisions. DVC's approach
+guarantees reproducibility by working on top of Git instead of as a parallel
+system.
 
 [experiment management]: /doc/user-guide/experiment-management
 [codified]: /doc/user-guide/project-structure/pipelines-files
@@ -47,7 +48,7 @@ associated with the baseline project versions from which they came.
 
 ![]() _DVC Experiments are organized along project versions._
 
-DVC experiment tracking benefits include:
+Some benefits of tracking experiment with DVC:
 
 - Quickly iterate on experiment ideas, with automatic bookkeeping of data
   dependencies, code, <abbr>parameters</abbr>, artifacts, ML models, and their
