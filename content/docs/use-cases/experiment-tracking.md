@@ -77,33 +77,22 @@ Some benefits of tracking experiment with DVC:
 
 > 📖 Ready to dive in? See [Get Started: Experiments](/doc/start/experiments).
 
-## Comparison of popular experiment tracking tools
-
 DVC Experiments provide a seamless, local-first experience. You control where
 and how your data is saved and shared. DVC also improves storage efficiency via
 <abbr>caching</abbr>, preventing repetitive data transfers. And DVC is
 completely language agnostic: expect the same features whether you're using
 Jupyter notebooks or Scala, CSV data frames or HDFS.
 
-|                             | DVC Experiments                                           | MLFlow                                       | Weights & Biases               | TensorBoard                               |
-| --------------------------- | --------------------------------------------------------- | -------------------------------------------- | ------------------------------ | ----------------------------------------- |
-| **Integration**             | Write `dvc.yaml` metafile(s)                              | Change your code                             | Change your code (Python only) | Change your code (Python only)            |
-| How to run experiments      | `dvc exp run` any shell command                           | Run modified code                            | Run modified Python code       | Run modified Python code                  |
-| **Experiment organization** | Git tree ([flexible][organization])                       | Labels                                       | Labels                         | Labels or file-based                      |
-| **What is recorded**        | Changesets                                                | Artifacts                                    | Artifacts                      | Params and metrics                        |
-| **Data storage**            | User-defined ([flexible][storage])                        | Usually hosted (yours)                       | Hosted (theirs)                | User or [limited hosting][tbdev] (theirs) |
-| **Where is the metadata**   | Code repository (Git)                                     | User database                                | Proprietary database           | Metadata files                            |
-| **Execution environment**   | Local or [hosted runners]                                 | Local or [hosted][dbricks] runners           | Local or deployed              | Local                                     |
-| **UI**                      | Terminal + [web UI][dvc studio]                           | Web app                                      | Web UI (SaaS)                  | Web UI                                    |
-| **What you pay for**        | Your resources + optional [web UI] (free for small teams) | Your resources + optional [hosting][dbricks] | [Subscription][wandb]          | Your resources                            |
+|                   | DVC Experiments   | Existing tools                |
+| ----------------- | ----------------- | ----------------------------- |
+| **Organization**  | Git-based         | Labeling / file-based         |
+| **Approach**      | [Data versioning] | Logging artifacts and metrics |
+| **Execution**     | `dvc exp run`     | Code API (usually Python)     |
+| **UI**            | Terminal + [web]  | Web (usually SaaS)            |
+| **Collaboration** | Distributed       | Centralized                   |
 
-[organization]: /doc/user-guide/experiment-management#organization-patterns
-[storage]: /doc/command-reference/remote/add#supported-storage-types
-[hosted runners]: https://cml.dev/doc/self-hosted-runners
-[dbricks]: https://databricks.com/product/pricing
-[web ui]: https://studio.iterative.ai/#pricing
-[wandb]: https://wandb.ai/site/pricing
-[tbdev]: https://tensorboard.dev/
+[data versioning]: /doc/use-cases/versioning-data-and-model-files
+[web]: /doc/studio
 
 > 💡 Note that other experiment tracking tools can be complementary with DVC,
 > for example as detailed experiment logging with specialized visualizations.
