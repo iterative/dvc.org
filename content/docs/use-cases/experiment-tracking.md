@@ -85,17 +85,17 @@ and how your data is saved and shared. DVC also improves storage efficiency via
 completely language agnostic: expect the same features whether you're using
 Jupyter notebooks or Scala, CSV data frames or HDFS.
 
-|                          | DVC Experiments                                           | MLFlow                                       | Weights & Biases               | TensorBoard                               |
-| ------------------------ | --------------------------------------------------------- | -------------------------------------------- | ------------------------------ | ----------------------------------------- |
-| How it's integrated      | Write `dvc.yaml` metafile(s)                              | Change your code                             | Change your code (Python only) | Change your code (Python only)            |
-| How to run experiments   | `dvc exp run` any shell command                           | Run modified code                            | Run modified Python code       | Run modified Python code                  |
-| How they're organized    | Git tree ([flexible][organization])                       | Labels                                       | Labels                         | Labels or file-based                      |
-| What is recorded         | Changesets                                                | Artifacts                                    | Artifacts                      | Params and metrics                        |
-| Where is data stored     | User-defined ([flexible][storage])                        | Usually hosted (yours)                       | Hosted (theirs)                | User or [limited hosting][tbdev] (theirs) |
-| Where is the metadata    | Code repository (Git)                                     | User database                                | Proprietary database (SaaS)    | Metadata files                            |
-| Who computes             | User or [hosted runners]                                  | User or [hosted][dbricks] runners            | User (local)                   | User (local)                              |
-| How people interact with | Terminal + [web UI][dvc studio]                           | Web app                                      | Web UI                         | Web UI                                    |
-| What you pay for         | Your resources + optional [web UI] (free for small teams) | Your resources + optional [hosting][dbricks] | [Subscription][wandb]          | Your resources                            |
+|                             | DVC Experiments                                           | MLFlow                                       | Weights & Biases               | TensorBoard                               |
+| --------------------------- | --------------------------------------------------------- | -------------------------------------------- | ------------------------------ | ----------------------------------------- |
+| **Integration**             | Write `dvc.yaml` metafile(s)                              | Change your code                             | Change your code (Python only) | Change your code (Python only)            |
+| How to run experiments      | `dvc exp run` any shell command                           | Run modified code                            | Run modified Python code       | Run modified Python code                  |
+| **Experiment organization** | Git tree ([flexible][organization])                       | Labels                                       | Labels                         | Labels or file-based                      |
+| **What is recorded**        | Changesets                                                | Artifacts                                    | Artifacts                      | Params and metrics                        |
+| **Data storage**            | User-defined ([flexible][storage])                        | Usually hosted (yours)                       | Hosted (theirs)                | User or [limited hosting][tbdev] (theirs) |
+| **Where is the metadata**   | Code repository (Git)                                     | User database                                | Proprietary database           | Metadata files                            |
+| **Execution environment**   | Local or [hosted runners]                                 | Local or [hosted][dbricks] runners           | Local or deployed              | Local                                     |
+| **UI**                      | Terminal + [web UI][dvc studio]                           | Web app                                      | Web UI (SaaS)                  | Web UI                                    |
+| **What you pay for**        | Your resources + optional [web UI] (free for small teams) | Your resources + optional [hosting][dbricks] | [Subscription][wandb]          | Your resources                            |
 
 [organization]: /doc/user-guide/experiment-management#organization-patterns
 [storage]: /doc/command-reference/remote/add#supported-storage-types
