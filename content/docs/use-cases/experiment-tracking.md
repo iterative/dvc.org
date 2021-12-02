@@ -53,15 +53,16 @@ Some benefits of tracking experiment with DVC:
 - Quickly iterate on experiment ideas, with automatic bookkeeping of data
   dependencies, code, <abbr>parameters</abbr>, artifacts, ML models, and their
   <abbr>metrics</abbr>.
-- Queue experiments for future execution (and run them in parallel if needed).
+- Use a controlled [execution mechanism]; Run one or queue many experiments (and
+  run them in parallel if needed).
 - Create deep learning [checkpoints] from your code, and track
   [live metrics](/doc/dvclive).
 - [Review and compare] results based on params or metrics; Restore them from
   <abbr>cache</abbr> or reproduce them from scratch.
-- Leverage Git's [distributed collaboration] and tools from services such as
+- Leverage Git's [distributed collaboration] and mature industry tools such as
   GitHub or GitLab.
 
-[execution]: /doc/user-guide/experiment-management/running-experiments
+[execution mechanism]: /doc/user-guide/experiment-management/running-experiments
 [checkpoints]: /doc/user-guide/experiment-management/checkpoints
 [review and compare]:
   /doc/user-guide/experiment-management/comparing-experiments
