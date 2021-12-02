@@ -46,7 +46,11 @@ system.
 └─────────────────────────┴─────────┴────────┴────────┴──────────────┘
 ```
 
-![]() _DVC Experiments are organized along project versions._
+<div style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 700px;">
+  <em style="color: #6a737d; font-size: 0.9em; display: block; text-align: center;">
+    _DVC Experiments are organized along project versions._
+  </em>
+</div>
 
 Some benefits of tracking experiment with DVC:
 
@@ -59,8 +63,8 @@ Some benefits of tracking experiment with DVC:
   [live metrics](/doc/dvclive).
 - [Review and compare] results based on params or metrics; Restore them from
   <abbr>cache</abbr> or reproduce them from scratch.
-- Leverage Git's [distributed collaboration] and mature industry tools such as
-  GitHub or GitLab.
+- Leverage Git Ops ([distributed collaboration]) and services such as GitHub or
+  GitLab.
 
 [execution mechanism]: /doc/user-guide/experiment-management/running-experiments
 [checkpoints]: /doc/user-guide/experiment-management/checkpoints
