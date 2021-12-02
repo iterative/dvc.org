@@ -3,7 +3,7 @@
   --color-gray-light: #b0b8c5;
   --color-gray: #838d93;
   --color-gray-dark: #5f6c72;
-  --color-gray-opaque: rgba(131, 141, 147, 0.5);
+  --color-gray-opaque: rgb(131 141 147 / 50%);
   --color-gray-hover: #40364d;
   --color-light-gray: #d9e2e8;
   --color-azure: #13adc7;
@@ -16,9 +16,9 @@
   --color-purple-hover: #745cb7;
   --color-orange: #e37046;
   --color-orange-bright: #f46837;
-  --font-brandon: 'BrandonGrotesque', 'Tahoma', 'Arial', sans-serif;
-  --font-mono: 'SFMono-Regular', 'Consolas', 'Liberation Mono', 'Menlo',
-    'Courier', monospace;
+  --font-brandon: "BrandonGrotesque", "Tahoma", "Arial", sans-serif;
+  --font-mono: "SFMono-Regular", "Consolas", "Liberation Mono", "Menlo",
+    "Courier", monospace;
   --layout-width: 1005px;
   --layout-width-wide: 1200px;
   --layout-header-height: 72px;
@@ -93,6 +93,5 @@ body.user-is-tabbing .link-with-focus {
 
 /* Prevent mobile browsers from changing font-size */
 * {
-  -webkit-text-size-adjust: none;
   text-size-adjust: none;
 }

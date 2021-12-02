@@ -17,7 +17,7 @@
   font-family: var(--font-brandon);
   color: var(--color-black);
   background-color: #fff;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 3px rgb(0 0 0 / 10%);
 
   &.calculated {
     opacity: 1;
@@ -25,7 +25,7 @@
 
   &::after {
     position: absolute;
-    content: '';
+    content: "";
     display: block;
     height: 12px;
     width: 12px;

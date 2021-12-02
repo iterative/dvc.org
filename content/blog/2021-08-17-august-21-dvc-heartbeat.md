@@ -44,7 +44,7 @@ techniques to ensure quality data for ML projects. If the adroit summaries of
 complex concepts doesn't thrill you, the links to no less than 63 (😱) resources
 will get you on your way to data-centric nirvana.
 
-![Data Centric Framework](/uploads/images/2021/08-17/lj-miranda-data-centric.png)
+![Data Centric Framework](/uploads/images/2021-08-17/lj-miranda-data-centric.png)
 _LJ Miranda's Framework for putting data-centric machine learning into context
 [Source link](https://ljvmiranda921.github.io/notebook/2021/07/30/data-centric-ml/)_
 
@@ -223,7 +223,7 @@ would like to see from us, we'd be grateful if you'd fill out
 [**this survey**](https://docs.google.com/forms/d/e/1FAIpQLSdmwjs0ZkxDdODfZTvSwP2bVW4JAVVdxiYhQPyW5dSbsZC8qg/viewform?pli=1)
 to help us plan! 🙏🏼
 
-![DVC Online Course survey](/uploads/images/2021/08-17/survey.png) _Help us plan
+![DVC Online Course survey](/uploads/images/2021-08-17/survey.png) _Help us plan
 our Online Course! 🙏🏼
 [Source link](https://docs.google.com/forms/d/e/1FAIpQLSdmwjs0ZkxDdODfZTvSwP2bVW4JAVVdxiYhQPyW5dSbsZC8qg/viewform?pli=1))_
 

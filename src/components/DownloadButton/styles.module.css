@@ -37,7 +37,7 @@
   opacity: 0;
   flex-direction: column;
   background-color: #fff;
-  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.15);
+  box-shadow: 0 2px 3px 0 rgb(0 0 0 / 15%);
   transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
 
   &.open {
@@ -72,6 +72,6 @@
 }
 
 .dropdownDelimiter {
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgb(0 0 0 / 10%);
   height: 1px;
 }

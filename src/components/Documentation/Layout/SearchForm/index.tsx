@@ -5,7 +5,7 @@ import { loadResource } from '../../../../utils/front/resources'
 import * as styles from './styles.module.css'
 
 declare global {
-  // eslint-disable-next-line @typescript-eslint/interface-name-prefix
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   interface Window {
     docsearch?: (opts: Record<string, unknown>) => void
   }

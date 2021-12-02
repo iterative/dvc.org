@@ -66,8 +66,8 @@ answers user questions - we've been told our user support is one of DVC's
 Many of these folks put hours into their code contribution. We're grateful for
 their tenacity and generosity.
 
-![](/static/uploads/images/2020-05-04/vera-sativa.png)_Vera - 100th DVC
-contributor [on GitHub](https://github.com/verasativa/)._
+![](/uploads/images/2020-05-04/vera-sativa.png)_Vera - 100th DVC contributor
+[on GitHub](https://github.com/verasativa/)._
 
 **Documentation contributors.** Another
 [124 people contributed](https://github.com/iterative/dvc.org/graphs/contributors)

@@ -1,9 +1,8 @@
 :global {
   .Collapsible {
     margin-bottom: 10px;
-    background-color: rgba(36, 173, 197, 0.2);
+    background-color: rgb(36 173 197 / 20%);
     border-radius: 15px;
-    -moz-border-radius: 15px;
     padding: 10px;
   }
 
@@ -22,8 +21,8 @@
       right: 0;
       width: 20px;
       height: 20px;
-      background-image: url('/img/click.png');
-      content: '';
+      background-image: url("/img/click.png");
+      content: "";
       font-family: monospace;
       transition: transform 200ms;
     }
@@ -34,9 +33,8 @@
   }
 
   .Collapsible__contentInner {
-    background-color: rgba(36, 173, 197, 0);
+    background-color: rgb(36 173 197 / 0%);
     border-radius: 15px;
-    -moz-border-radius: 15px;
     padding: 10px;
   }
 }
@@ -44,11 +42,7 @@
 .cards {
   display: flex;
   flex-flow: column nowrap;
-  margin: 1rem 0;
-
-  & > div {
-    padding: 0.5rem 0.1rem;
-  }
+  margin: 1rem -0.5rem;
 
   @media screen and (min-width: 1024px) {
     margin: 2rem -0.5rem;
@@ -56,7 +50,6 @@
 
     .cardWrapper {
       flex: 1 0 50%;
-      padding: 0.5rem;
       min-height: 7rem;
     }
 
@@ -66,8 +59,15 @@
   }
 }
 
+.cardWrapper {
+  margin: 0.5rem 0;
+  display: flex;
+}
+
 .card {
+  flex: 1 0;
   border: 1px solid #d6d6d6;
+  margin: 0 0.5rem;
   border-radius: 10px;
   padding: 0.75rem 1rem;
   display: flex;
@@ -163,7 +163,7 @@ a.card {
 .tab {
   margin: 0;
   padding: 10px 10px 10px 20px;
-  background-color: rgba(27, 31, 35, 0.05);
+  background-color: rgb(27 31 35 / 5%);
   height: 0;
   opacity: 0;
   position: absolute;
