@@ -6,11 +6,12 @@ description: >
   modern day experiment tracking, super charging your ability to reproduce and
   iterate on your work.
 descriptionLong: >
-  ML experiment versioning takes experiment tracking to the next level. Track
-  experiments as code, reproduce and incrementally update experiments, and keep
-  experiments distributed to share however you want. Iterate on your experiments
-  at scale in ways that neither traditional software version control nor
-  existing experiment tracking tools can.
+  ML experiment versioning takes experiment tracking to the next level by adding
+  the benefits of version control. Track your parameters and metrics as code,
+  make updates incrementally, and keep everything distributed to share however
+  you want. Iterate on your ML projects at scale in ways that neither
+  traditional software version control nor existing experiment tracking tools
+  can.
 picture:
 pictureComment:
 author: dave_berenbaum
@@ -23,18 +24,18 @@ tags:
   - Experiment Versioning
 ---
 
-Experiment tracking tools help manage machine learning projects where version
-control tools like Git are insufficient. They log parameters and metrics, and
-they may store binary artifacts like input data or model weights so that you can
-reproduce experiments and retrieve results. They enable you to navigate all this
-meta-information, for example with dashboards to organize and compare many
-experiments.
+[Experiment tracking tools](https://dvc.org/doc/use-cases/experiment-tracking)
+help manage machine learning projects where version control tools like Git are
+insufficient. They log parameters and metrics, and they may store binary
+artifacts like input data or model weights so that you can reproduce experiments
+and retrieve results. They enable you to navigate all this meta-information, for
+example with dashboards to organize and compare many experiments.
 
 Git can't manage or compare all that experiment meta-information, but it is
-still better for code. For example, Git tracks incremental changes instead of
-having to log all code files as artifacts for each experiment. Therefore,
-experiments get split between Git for code and experiment tracking tools for
-meta-information. A link may be added in one or the other to keep track.
+still better for code. Tools like GitHub make distributed collaboration easy,
+and you can see incremental code changes. Therefore, experiments get split
+between Git for code and experiment tracking tools for meta-information. A link
+may be added in one or the other to keep track.
 
 ML experiment versioning combines experiment tracking and version control:
 
@@ -65,9 +66,12 @@ ML experiment versioning combines experiment tracking and version control:
 
 # ML Experiments as Code
 
-Experiment versioning treats experiments as code. Experiment tracking tools log
-parameters, metrics, and artifacts to a database through API calls. In
-experiment versioning, they are saved in files.
+Experiment versioning treats experiments as code. It saves all metrics,
+hyperparameters, and artifact information in text files that can be versioned by
+Git (DVC [data versioning](https://dvc.org/doc/start/data-and-model-versioning)
+backs up the artifacts themselves anywhere). You do not need a centralized
+database or online services. Git becomes a store for experiment
+meta-information.
 
 You can choose your own file formats and paths, which you can configure in DVC:
 
@@ -92,11 +96,6 @@ Path to a parameters file [params.yaml, n to omit]:
 Path to a metrics file [metrics.json, n to omit]:
 Path to a plots file/directory [plots, n to omit]: logs.csv
 ```
-
-This might mean a little more work to set up your code to read parameters from a
-file or write metrics to another file. To track artifacts like data and models
-in your repo, DVC adds
-[data versioning](https://dvc.org/doc/start/data-and-model-versioning) support.
 
 Once you set up your repo in this structure, you start to see the benefits of
 this approach. Experiment meta-information lives in readable files that are
@@ -169,12 +168,11 @@ $ dvc exp apply exp-333c9
 Changes for experiment 'exp-333c9' have been applied to your current workspace.
 ```
 
-In ML experimentation, you need not only reproducibility, but also flexibility
-to update your experiments incrementally. Data drift, new ideas, bug fixes, etc.
-all mean running a new experiment, and you don't have time to always start from
-scratch. Versioned reproducibility means tracking changes to the experiment
-state. DVC can determine what changes were introduced by the experiment and only
-run what's necessary.
+Reproducibility is nice, but data drift, new business requirements, bug fixes,
+etc. all mean running a slightly modified experiment. You don't have time to
+always start from scratch. Versioned reproducibility means tracking changes to
+the experiment state. DVC can determine what changes were introduced by the
+experiment and only run what's necessary.
 
 ```dvc
 $ dvc exp run --set-param model.conv_units=128
@@ -221,10 +219,10 @@ Pushed experiment 'exp-333c9'to Git remote 'origin'.
 
 There are parallels between the
 [history of version control](https://ericsink.com/vcbe/html/history_of_version_control.html)
-and the history of experiment tracking. Git's distributed nature and incremental
-change tracking were major advances over the centralized, file-based version
-control systems of previous generations. Experiment versioning can similarly
-advance the next generation of experiment tracking.
+and the current state of experiment tracking. Git's distributed nature and
+incremental change tracking were major advances over the centralized, file-based
+version control systems of previous generations. Experiment versioning can
+similarly advance the next generation of experiment tracking.
 
 Experiment versioning is still in its early days. Look out for future
 announcements about:
