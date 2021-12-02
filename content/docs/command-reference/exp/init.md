@@ -15,18 +15,21 @@ usage: dvc exp init [-h] [-q | -v] [--run] [--interactive] [-f]
 
 ## Description
 
-`dvc exp init` helps you quickly get started with experiments, with the command
-to run and tracks data, params, source code, models, metrics and plots by
-default.
+`dvc exp init` helps you quickly get started with experiments. It reduces
+boilerplate for initializing [pipeline](/doc/command-reference/dag) stages in a
+`dvc.yaml` file by assuming sane defaults about the location of your data,
+[parameters](/doc/command-reference/params), source code,
+[models](/doc/command-reference/), [metrics](/doc/command-reference/metrics) and
+[plots](/doc/command-reference/plots), which can be customized through config.
 
-It reduces boilerplate for initializing [pipeline](/doc/command-reference/dag)
-stages in a `dvc.yaml` file by assuming sane defaults about the location of your
-data, parameters, source code, models, metrics and plots, which can be
-customized through config.
+It also offers guided `--interactive` mode for creating a stage to be
+[`exp run`](/doc/command-reference/exp/run) later. `dvc exp init` supports
+creating different types of stages, eg: live if you are using
+[dvclive](/doc/dvclive) to monitor and checkpoint progress during training of
+machine learning models.
 
-It also offers guided `--interactive` mode for creating a stage to be `exp run`
-later. `dvc exp init` supports creating different types of stages, eg: live if
-you are using dvclive to track metrics and plots, etc.
+This command is intended to be light-weight and simple and lacks many bells and
+whistles that `dvc stage add` provides.
 
 ### The `command` argument
 
@@ -77,7 +80,8 @@ $ dvc exp init './another_script.sh $MYENVVAR'
   [parameter dependencies](/doc/command-reference/params) which your experiment
   depends on. The default parameters file name is `params.yaml`. Note that
   `dvc exp init` may fail if the parameters file does not exist at the time of
-  the invocation.
+  the invocation, as DVC reads the file to find parameters to track for the
+  stage.
 
 - `--metrics` - override the path to metrics file to track, which your
   experiment produces. Default is `metrics.json` file.
@@ -85,10 +89,9 @@ $ dvc exp init './another_script.sh $MYENVVAR'
 - `--plots` - override the path to plots file or directory, which your
   experiment produces. The default is `plots`.
 
-- `--live` - override the directory `path` for
-  [DVCLive](/doc/dvclive/dvclive-with-dvc), which your experiment will write
-  logs to. The default is `dvclive` directory, which only comes to effect when
-  used with `--type=live`.
+- `--live` - override the directory `path` for [DVCLive](/doc/dvclive), which
+  your experiment will write logs to. The default is `dvclive` directory, which
+  only comes to effect when used with `--type=live`.
 
 - `--type` - selects the type of the stage to create. Currently it provides two
   different kinds of stages: `default` and `live`. If unspecified, `default`
@@ -98,9 +101,10 @@ $ dvc exp init './another_script.sh $MYENVVAR'
   itself, and does not track live-created artifacts (unless explicitly
   specified).
 
-  With `--type=live`, `dvc exp init` will create a stage where `metrics` and
-  `plots` are tracked by `dvclive` itself (unless `--metrics` and `--plots` are
-  explicitly provided).
+  `live` stage is intended for use in deep-learning scenarios, where metrics and
+  plots are tracked by [dvclive](/doc/dvclive) and supports tracking progress
+  while training a deep-learning model with
+  [checkpoints](/doc/command-reference/exp/run#checkpoints).
 
 - `-n <stage>`, `--name <stage>` - specify a custom name for the stage generated
   by this command (e.g. `-n train`). By default, the name of the stage depends
