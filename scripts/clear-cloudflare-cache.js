@@ -42,9 +42,9 @@ module.exports = async function () {
         authorization: `Bearer ${CLOUDFLARE_TOKEN}`,
         'content-type': 'application/json'
       },
-      /* eslint-disable @typescript-eslint/camelcase */
+      /* eslint-disable @typescript-eslint/naming-convention */
       body: JSON.stringify({ purge_everything: true })
-      /* eslint-enable @typescript-eslint/camelcase */
+      /* eslint-enable @typescript-eslint/naming-convention */
     }
   )
 

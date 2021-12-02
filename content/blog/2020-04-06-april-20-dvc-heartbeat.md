@@ -44,9 +44,9 @@ COVID-19 pandemic: although there are new challenges (like caring for families
 while working from home) we've been able to weather the transition to fully
 remote work relatively well.
 
-![](/static/uploads/images/2020-04-06/laptop_on_boat.jpeg)_Before social
-distancing started, DVC technical writer Jorge Orpinel Pérez has worked from a
-canoe. Check out more photos from his workations
+![](/uploads/images/2020-04-06/laptop_on_boat.jpeg)_Before social distancing
+started, DVC technical writer Jorge Orpinel Pérez has worked from a canoe. Check
+out more photos from his workations
 [on Instagram](https://www.instagram.com/workationer/)._
 
 **DVC sponsors DivOps.** In a time when many conferences are going remote out of
@@ -162,8 +162,7 @@ our attention.
   It's got nice coverage of DVC, code examples, and some deeply enjoyable
   artwork.
 
-![](/static/uploads/images/2020-04-06/monolith.jpeg)_From Juan Juan López
-López's
+![](/uploads/images/2020-04-06/monolith.jpeg)_From Juan Juan López López's
 [blog](https://medium.com/packlinkeng/a-complete-guide-about-how-to-break-the-data-monolith-caa2ab2d01f6)._
 
 Thanks for reading. As always, let us know what you're making with DVC and what
