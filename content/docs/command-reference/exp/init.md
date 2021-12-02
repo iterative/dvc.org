@@ -126,7 +126,26 @@ $ dvc exp init './another_script.sh $MYENVVAR'
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
-## Setting up custom config/Sharing configs
+### Setting up custom paths
+
+`dvc exp init` supports
+[setting up custom workspace paths by setting up DVC config](/doc/command-reference/config#exp),
+where you can add an `exp` section to the config file to point to the paths for
+your code, data, models, parameters, metrics, plots (either images or tabular
+data to be plotted), and dvclive outputs.
+
+```dvc
+$ dvc config exp.data datasets/
+$ dvc config exp.params config.yaml
+$ dvc config exp.code scripts/train.py
+$ dvc config exp.models trained_models/
+$ dvc config exp.metrics reports.json
+$ dvc config exp.plots viz/
+```
+
+You can leave some configurations to use default values. This can be useful in a
+system or global config so that you can avoid repeating these paths if all of
+your projects share a similar structure.
 
 ## Non-interactive mode
 
