@@ -283,9 +283,12 @@ Please check that you are able to connect both ways with tools like `ssh` and
 
 ### Click for HDFS
 
-HDFS might require additional setup. Our assumption with HDFS is that the client
-is set up to use it and DVC can rely on the same libraries. See more details
-[here](https://github.com/iterative/dvc/issues/5858#issuecomment-824216700).
+⚠️ Using HDFS with a Hadoop cluster might require additional setup. Our
+assumption is that the client is set up to use it. Specifically, [`libhdfs`]
+should be installed.
+
+[`libhdfs`]:
+  https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/LibHdfs.html
 
 💡 Using an HDFS cluster as remote storage is also supported via the WebHDFS
 API. Read more about it by expanding the WebHDFS section below.
@@ -302,20 +305,12 @@ $ dvc remote add -d myremote hdfs://user@example.com/path
 
 ### Click for WebHDFS
 
-**HDFS and WebHDFS:**
-
-Both remotes, HDFS and WebHDFS, allow using a Hadoop cluster as a remote
-repository. However, HDFS requires `libhdfs`, an interface to the Java Hadoop
-client, that must be installed separately. Meanwhile, WebHDFS has no need for
-this requirement as it communicates with the Hadoop cluster via a REST API.
+⚠️ Using WebHDFS requires to enable REST API access in the cluster: set the
+config property `dfs.webhdfs.enabled` to `true` in `hdfs-site.xml`.
 
 If your cluster is secured, then WebHDFS is commonly used with Kerberos and
-HTTPS, to enable these simply set `use_https` and `kerberos` to `true`. This
-will require you to run `kinit` before invoking DVC to make sure you have an
-active kerberos session.
-
-One last note: WebHDFS requires enabling the REST API in the cluster by setting
-the configuration property `dfs.webhdfs.enabled` to `true` in `hdfs-site.xml`.
+HTTPS. To enable these for the DVC remote, set `use_https` and `kerberos` to
+`true`.
 
 ```dvc
 $ dvc remote add -d myremote webhdfs://example.com/path
@@ -323,6 +318,9 @@ $ dvc remote modify myremote use_https true
 $ dvc remote modify myremote kerberos true
 $ dvc remote modify --local myremote token SOME_BASE64_ENCODED_TOKEN
 ```
+
+💡 You may want to run `kinit` before using the remote to make sure you have an
+active kerberos session.
 
 > `token` contains sensitive user info. Therefore, it's safer to add it with the
 > `--local` option, so it's written to a Git-ignored config file.
