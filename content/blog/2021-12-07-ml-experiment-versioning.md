@@ -12,10 +12,10 @@ descriptionLong: >
   you want. Iterate on your ML projects at scale in ways that neither
   traditional software version control nor existing experiment tracking tools
   can.
-picture:
-pictureComment:
+picture: 2021-12-07/experiment-versioning-cover.png
+pictureComment: Keep your team organized with ML experiment versioning.
 author: dave_berenbaum
-commentsUrl:
+commentsUrl: https://discuss.dvc.org/t/dont-just-track-your-experiments-version-them/996
 tags:
   - MLOps
   - DVC
@@ -46,7 +46,7 @@ ML experiment versioning combines experiment tracking and version control:
 - **Distributed experiments**: Organize locally and choose what to share,
   reusing your existing repo setup.
 
-![Experiment Versioning](/img/exp-versioning.png)
+![Experiment Versioning](2021-12-07/exp-versioning.png)
 
 # ML Experiments as Code
 
@@ -152,7 +152,7 @@ etc. all mean running a slightly modified experiment. You don't have time to
 always start from scratch. Versioned reproducibility means tracking changes to
 the experiment state. DVC can determine what changes were introduced by the
 experiment and only run what's necessary. It only saves those changes, so you
-don't waste time or storage saving duplicate copies of data.
+don't waste time or storage on duplicate copies of data.
 
 ```dvc
 $ dvc exp run --set-param model.conv_units=128
