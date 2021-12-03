@@ -3,12 +3,8 @@
 DVC can rely on existing Git servers or hosting (e.g. GitHub, GitLab, etc.) to
 save and share DVC Experiments.
 
-<details>
-
-## ⚙️ Expand to learn more.
-
 Sharing experiments is similar to [sharing regular project data] and artifacts
-by synchronizing via DVC and Git remotes. DVC-tracked data, models, etc. are in
+by synchronizing with DVC and Git remotes. DVC-tracked data, models, etc. are in
 your project's <abbr>cache</abbr> and thus will be transferred to/from
 [remote storage](/doc/command-reference/remote) (e.g. Amazon S3 or Google
 Drive). Small files like experimental code and
@@ -29,8 +25,6 @@ origin  git@github.com:iterative/get-started-experiments.git (push)
 $ dvc remote list
 storage s3://mybucket/my-dvc-store
 ```
-
-</details>
 
 > ⚠️ Note that DVC can only authenticate with Git remotes using [SSH URLs].
 
