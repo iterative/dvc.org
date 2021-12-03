@@ -51,13 +51,14 @@ DVC can use multiple threads to upload files (4 per CPU core by default). You
 can set the number with `--jobs` (`-j`). Please note that increases in
 performance also depend on the connection bandwidth and remote configurations.
 
-Once pushed, you can easily [list remote experiments] (with `dvc exp list`).
+Once pushed, you can easily [list remote experiments] (with `dvc exp list`). To
+pus
 
-> 📖 See also the [run-cache] mechanism.
+> See also [How to Share Many Experiments][share many].
 
 [list remote experiments]:
   /doc/user-guide/experiment-management/comparing-experiments#list-experiments-saved-remotely
-[run-cache]: /doc/user-guide/project-structure/internal-files#run-cache
+[share many]: /doc/user-guide/how-to/share-many-experiments
 
 ## Downloading experiments
 
@@ -80,22 +81,6 @@ can set the number with `--jobs` (`-j`).
 
 If an experiment being pulled already exists in the local project, DVC won't
 overwrite it unless you supply `--force`.
-
-## Example: Sharing multiple experiments
-
-You can create a loop to push or pull all experiments. For example in a Linux
-terminal:
-
-```dvc
-$ dvc exp list --all --names-only | while read -r expname ; do \
-    dvc exp pull origin ${expname} \
-done
-```
-
-> 📖 See also [Listing experiments].
-
-[listing experiments]:
-  /doc/user-guide/experiment-management/comparing-experiments#list-experiments-in-the-project
 
 ## Example: Dedicated experiment directories
 
