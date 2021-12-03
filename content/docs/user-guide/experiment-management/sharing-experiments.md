@@ -1,21 +1,38 @@
 # Sharing Experiments
 
-DVC can rely on existing Git servers or hosting (e.g. GitHub, GitLab, etc.) to
-save and share DVC Experiments.
+Saving and sharing experiments is similar to [sharing regular project versions],
+done by synchronizing with DVC and Git remotes. DVC takes care of pushing and
+pulling to/from Git in the case of experiments, however.
 
-Sharing experiments is similar to [sharing regular project data] and artifacts
-by synchronizing with DVC and Git remotes. DVC-tracked data, models, etc. are in
-your project's <abbr>cache</abbr> and thus will be transferred to/from
-[remote storage](/doc/command-reference/remote) (e.g. Amazon S3 or Google
-Drive). Small files like experimental code and
-[DVC metafiles](/doc/user-guide/project-structure) files are uploaded or
-downloaded to/from [Git remotes] by DVC.
+```
+  ┌────────────────┐      ┌─────────────────┐
+  ├────────────────┤      │                 │
+  │   DVC remote   │      │    Git remote   │
+  │    storage     │      ├─────────────────┤
+  └────────────────┘      └─────────────────┘
+           ▲                       ▲
+           │     dvc exp push      │
+           │                       │
+  ┌────────┴────────┐     ┌────────┴────────┐
+  │   Cached data   │     │    Code and     │
+  │    artifacts    │     │    metafiles    │
+  │                 │     │                 │
+  └─────────────────┘     └─────────────────┘
+```
 
-[sharing regular project data]: /doc/use-cases/sharing-data-and-model-files
+Specifically, data, models, etc. are tracked and <abbr>cached</abbr> by DVC and
+thus will be transferred to/from [remote storage](/doc/command-reference/remote)
+(e.g. Amazon S3 or Google Drive). Small files like code and
+[DVC metafiles](/doc/user-guide/project-structure) are uploaded or downloaded
+to/from [Git remotes] by DVC.
+
+[sharing regular project versions]: /doc/use-cases/sharing-data-and-model-files
 [git remotes]: https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes
 
-You can check you have the necessary remotes setup with `git remote -v` and
-`dvc remote list`:
+## Preparation
+
+Make sure that you have the necessary remotes setup. Let's confirm with
+`git remote -v` and `dvc remote list`:
 
 ```dvc
 $ git remote -v
