@@ -24,12 +24,12 @@ tags:
   - Experiment Versioning
 ---
 
-[Experiment tracking tools](https://dvc.org/doc/use-cases/experiment-tracking)
-help manage machine learning projects where version control tools like Git are
-insufficient. They log parameters and metrics, and they may store binary
-artifacts like input data or model weights so that you can reproduce experiments
-and retrieve results. They enable you to navigate all this meta-information, for
-example with dashboards to organize and compare many experiments.
+Experiment tracking tools help manage machine learning projects where version
+control tools like Git are insufficient. They log parameters and metrics, and
+they may store binary artifacts like input data or model weights so that you can
+reproduce experiments and retrieve results. They enable you to navigate all this
+meta-information, for example with dashboards to organize and compare many
+experiments.
 
 Git can't manage or compare all that experiment meta-information, but it is
 still better for code. Tools like GitHub make distributed collaboration easy,
@@ -46,23 +46,7 @@ ML experiment versioning combines experiment tracking and version control:
 - **Distributed experiments**: Organize locally and choose what to share,
   reusing your existing repo setup.
 
-```
-+---------------------+    +------------------+
-|                     |    |                  |
-| Experiment Tracking |    |  Code Versioning |
-|                     |    |                  |
-+---------------------+    +---------/--------+
-            \                       /
-             \                     /
-              \-                 /-
-                \               /
-                 \             /
-            +-----\------------------+
-            |                        |
-            | Experiment Versioning  |
-            |                        |
-            +------------------------+
-```
+![Experiment Versioning](/img/exp-versioning.png)
 
 # ML Experiments as Code
 
@@ -134,21 +118,16 @@ index baad571a2..57d098495 100644
 
 With DVC, you can compare lots of experiments at a glance:
 
-```dvc
+```dvctable
 $ dvc exp show
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━┓
-┃ Experiment              ┃ Created      ┃    loss ┃    acc ┃ train.epochs ┃ model.conv_units ┃
+┃ neutral:**Experiment**              ┃ neutral:**Created**      ┃    metric:**loss** ┃    metric:**acc** ┃ param:**train.epochs** ┃ param:**model.conv_units** ┃
 ┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━┩
-│ workspace               │ -            │ 0.25183 │ 0.9137 │ 10           │ 64
-│
-│ mybranch                │ Oct 23, 2021 │       - │      - │ 10           │ 16
-│
+│ **workspace**               │ **-**            │ **0.25183** │ **0.9137** │ **10**           │ **64**
+│ **mybranch**                │ **Oct 23, 2021** │       **-** │      **-** │ **10**           │ **16**
 │ ├── 9a4ff1c [exp-333c9] │ 10:40 AM     │ 0.25183 │ 0.9137 │ 10           │ 64
-│
 │ ├── 138e6ea [exp-55e90] │ 10:28 AM     │ 0.25784 │ 0.9084 │ 10           │ 32
-│
 │ └── 51b0324 [exp-2b728] │ 10:17 AM     │ 0.25829 │ 0.9058 │ 10           │ 16
-│
 └─────────────────────────┴──────────────┴─────────┴────────┴──────────────┴──────────────────┘
 ```
 
@@ -172,7 +151,8 @@ Reproducibility is nice, but data drift, new business requirements, bug fixes,
 etc. all mean running a slightly modified experiment. You don't have time to
 always start from scratch. Versioned reproducibility means tracking changes to
 the experiment state. DVC can determine what changes were introduced by the
-experiment and only run what's necessary.
+experiment and only run what's necessary. It only saves those changes, so you
+don't waste time or storage saving duplicate copies of data.
 
 ```dvc
 $ dvc exp run --set-param model.conv_units=128
