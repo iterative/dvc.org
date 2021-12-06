@@ -22,21 +22,25 @@ tags:
 
 No problem @fireballpoint1! This happens sometimes.
 
-You should be able to run the following command in your terminal and then re-enter your credentials.
+You should be able to run the following command in your terminal and then
+re-enter your credentials.
 
 ```bash
 $ rm .dvc/tmp/gdrive-user-credentials.json
 ```
 
-That should give you a chance to enter the correct credentials when you try to `dvc pull` again.
+That should give you a chance to enter the correct credentials when you try to
+`dvc pull` again.
 
 ### [Can I add a `dvc remote` which refers to NAS by IP so I don't have to mount on every computer?](https://discord.com/channels/485586884165107732/563406153334128681/912667503283564544)
 
 That's a new question for us @Krzysztof Begiedza!
 
-If you enable the SSH service on your NAS, you can configure DVC to use it as an SSH remote.
+If you enable the SSH service on your NAS, you can configure DVC to use it as an
+SSH remote.
 
-There should also be DSM packages for webdav as well, if you prefer that over SSH. Just make sure that your URL looks similar to this.
+There should also be DSM packages for webdav as well, if you prefer that over
+SSH. Just make sure that your URL looks similar to this.
 
 ```dvc
 url = webdav://<ip>/<path>
@@ -46,7 +50,8 @@ url = webdav://<ip>/<path>
 
 Great question @Clemens!
 
-You would `dvc import` the relevant files into each of your individual projects and run `dvc pull` in there. DVC will then only pull the relevant files.
+You would `dvc import` the relevant files into each of your individual projects
+and run `dvc pull` in there. DVC will then only pull the relevant files.
 
 The command for that pull would be similar to this.
 
@@ -54,13 +59,85 @@ The command for that pull would be similar to this.
 $ dvc pull path/to/specific/file
 ```
 
-### []()
+### [What is the fastest way to get the specific value of a metric of an experiment based on experiment id?](https://discord.com/channels/485586884165107732/563406153334128681/916328260856590346)
 
-### []()
+That's a really good question @Kwon-Young!
 
-### []()
+You can always look through experiment metrics with `dvc exp show` and this
+shows you all of the experiments you've run.
 
-### []()
+To get the metrics for a specific experiment or set of experiments, you'll need
+the experiment ids and then you can use the Python API like this example.
+
+```python
+from dvc.repo import Repo
+
+dvc = Repo(".")  # or Repo("path/to/repo/dir")
+metrics = dvc.metrics.show(revs=["exp-name1", "exp-name2", ...])
+```
+
+This returns a Python dictionary that contains what gets displayed in
+`dvc metrics show --json` except you're able to specify the experiments you
+want.
+
+### [If I have a DVC pipeline with many stages as well as `foreach` in every stage, is it possibile to run the whole pipeline but only for one element of the `foreach`?](https://discord.com/channels/485586884165107732/563406153334128681/915986804577026088)
+
+Another great question from @vgodie!
+
+If your stages look something like this for example:
+
+```yaml
+stages:
+  cleanups:
+    foreach: # List of simple values
+      - raw1
+      - labels1
+      - raw2
+    do:
+      cmd: clean.py "${item}"
+      outs:
+        - ${item}.cln
+  train:
+    foreach:
+      - epochs: 3
+        thresh: 10
+      - epochs: 10
+        thresh: 15
+    do:
+      cmd: python train.py ${item.epochs} ${item.thresh}
+```
+
+You should try the following command:
+
+```dvc
+$ dvc repro cleanups@labels1
+```
+
+This will run your whole pipeline, but only with `labels1` in the `cleanups`
+stage.
+
+### [Is it possible to pull experiments from the remote without checking out the base commit of those experiments?](https://discord.com/channels/485586884165107732/485596304961962003/910481311905505290)
+
+Thanks for the question @mattlbeck!
+
+You should be able to do this with `dvc exp pull origin exp-name`.
+
+If you have experiments with the same name on different commits, using
+`exp-name` won't work since it defaults to selecting the one based on your
+current commit if there are duplicate names.
+
+To work around this, you can use the full refname, like
+`refs/exps/e7/78ad744e8d0cd59ddqc65d5d698cf102533f85/exp-6cb7`, to specify the
+experiments that you want to work with.
+
+### [Is it possible to create a dependency between pipeline stages without creating output files, like directly depending on a stage name?](https://discord.com/channels/485586884165107732/485596304961962003/912827234849529856)
+
+This is a really good question @mevatron!
+
+Unfortunately there is no support for that.
+
+A work-around we recommend is to create a dummy output that you could reference
+as a dependency downstream.
 
 ### []()
 
@@ -69,8 +146,8 @@ $ dvc pull path/to/specific/file
 https://media.giphy.com/media/jS27LWasgUIYrXtP83/giphy.gif
 
 At our January Office Hours Meetup we will be doing a new thing!
-[RSVP for the Meetup here]()
-to stay up to date with specifics as we get closer to the event!
+[RSVP for the Meetup here]() to stay up to date with specifics as we get closer
+to the event!
 
 [Join us in Discord](https://discord.com/invite/dvwXA2N) to get all your DVC and
 CML questions answered!
