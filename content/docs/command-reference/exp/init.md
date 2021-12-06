@@ -107,9 +107,7 @@ $ dvc exp init './another_script.sh $MYENVVAR'
   [checkpoints](/doc/command-reference/exp/run#checkpoints).
 
 - `-n <stage>`, `--name <stage>` - specify a custom name for the stage generated
-  by this command (e.g. `-n train`). By default, the name of the stage depends
-  on `--type` of the stage that is being created. If
-  `--type=default, the name of the stage will be `default`, and in case of `--type=dl`, the name of the stage will be `dl`.
+  by this command (e.g. `-n train`). The default is `train`.
 
   Note that the stage name can only contain letters, numbers, dash `-` and
   underscore `_`.
