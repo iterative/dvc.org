@@ -113,7 +113,7 @@ const LandingHero: React.FC<ILandingHeroProps> = ({ scrollToRef }) => {
         </div> */}
       {/* </ShowOnly> */}
       <div className={styles.video}>
-        <Video id="UbL7VUpv1Bs" />
+        <Video id="z0s42TxH9oM" />
       </div>
     </div>
   )
