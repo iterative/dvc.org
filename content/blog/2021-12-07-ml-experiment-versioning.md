@@ -21,6 +21,8 @@ tags:
   - Experiment Versioning
 ---
 
+https://youtu.be/z0s42TxH9oM
+
 Experiment tracking tools help manage machine learning projects where version
 control tools like Git aren't enough. They log parameters and metrics, and they
 store artifacts like input data or model weights, so that you can reproduce
@@ -99,7 +101,7 @@ $ cat metrics.json
 
 You can see what changed in parameters, code, or anything else:
 
-```dvc
+```diff
 $ git diff HEAD~1 -- params.yaml
 diff --git a/params.yaml b/params.yaml
 index baad571a2..57d098495 100644
@@ -168,7 +170,6 @@ Experiment results have been applied to your workspace.
 To promote an experiment to a Git branch run:
 
         dvc exp branch <exp> <branch>
-
 ```
 
 # Distributed Experiments
@@ -216,4 +217,5 @@ announcements about:
 What do you want to see for the next generation of experiment tracking? Join our
 upcoming
 [meetup](https://www.meetup.com/DVC-Community-Virtual-Meetups/events/282064369/)
-to discuss, or let us know in the comments!
+to discuss, join our [Discord community](https://discord.com/invite/dvwXA2N), or
+let us know in the comments!
