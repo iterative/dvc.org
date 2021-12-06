@@ -28,7 +28,7 @@
   position: relative;
 
   @media (--md-scr) {
-    padding: 0 15px 0;
+    padding: 0 15px;
   }
 
   @media (--lg-scr) {
@@ -80,7 +80,20 @@
     font-size: 0.75em;
     padding: 0.2em 0.3em;
     border-radius: 3px;
-    background-color: rgba(27, 31, 35, 0.05);
+    background-color: rgb(27 31 35 / 5%);
+  }
+
+  ul {
+    padding-left: 2em;
+    margin-bottom: 16px;
+  }
+
+  li {
+    margin: 16px 0;
+
+    + li {
+      margin-top: 0.25em;
+    }
   }
 }
 
@@ -118,13 +131,13 @@
 
 .content {
   @media (--md-scr) {
-    margin: 0 15px 0;
+    margin: 0 15px;
     padding: 30px 0 0;
   }
 
   @media (--lg-scr) {
     max-width: 700px;
-    margin: 0 auto 0;
+    margin: 0 auto;
     padding: 40px 0 0;
   }
 }

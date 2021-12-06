@@ -2,293 +2,240 @@
 title: 'Get Started: Experiments'
 ---
 
-# Get Started: Experiments
+# Get Started with Experiments
 
-_New in DVC 2.0_
+In machine learning projects, the number of <abbr>experiments</abbr> grows
+rapidly. DVC can track these experiments, list and compare their most relevant
+parameters and metrics, navigate among them, and commit only the ones that we
+need to Git.
 
-<abbr>Experiments</abbr> proliferate quickly in ML projects where there are many
-parameters to tune or other permutations of the code. We can organize such
-projects and keep only what we ultimately need with `dvc exp` commands. DVC can
-track experiments for you so there's no need to commit each one to Git. This way
-your repo doesn't become polluted with all of them. You can discard experiments
-once they're no longer needed.
-
-> 📖 See [Experiment Management](/doc/user-guide/experiment-management) for more
-> information on DVC's approach.
+> ⚠️This video is out-of-date and will be updated soon! Where there are
+> discrepancies between docs and video, please follow the docs.
 
 https://youtu.be/FHQq_zZz5ms
 
-## Running experiments
+In this section, we explore the basic features of DVC experiment management with
+the [`example-dvc-experiments`][ede] project.
 
-Previously, we learned how to tune [ML pipelines](/doc/start/data-pipelines) and
-[compare the changes](/doc/start/metrics-parameters-plots). Let's further
-increase the number of features in the `featurize` stage to see how it compares.
+[ede]: https://github.com/iterative/example-dvc-experiments
 
-`dvc exp run` makes it easy to change <abbr>hyperparameters</abbr> and run a new
-experiment:
+<details>
+
+### ⚙️ Installing the example project
+
+These commands are run in the [`example-dvc-experiments`][ede] project. You can
+run the commands in this document after cloning the repository, installing the
+requirements, and pulling the data.
+
+#### Clone the project and create virtual environment
+
+Please clone the project and create a virtual environment.
+
+> We strongly recommend to create a virtual environment to keep the libraries we
+> use isolated from the rest of your system. This prevents version conflicts.
 
 ```dvc
-$ dvc exp run --set-param featurize.max_features=3000
+$ git clone https://github.com/iterative/example-dvc-experiments -b get-started
+$ cd example-dvc-experiments
+$ virtualenv .venv
+$ . .venv/bin/activate
+$ python -m pip install -r requirements.txt
+```
+
+#### Get the data set
+
+The repository we cloned doesn't contain the dataset. Instead of storing the
+data in the Git repository, we use DVC to retrieve from a shared data store. In
+this case, we use `dvc pull` to update the missing data files.
+
+```dvc
+$ dvc pull
+```
+
+The repository already contains the necessary configuration to run the
+experiments.
+
+</details>
+
+Running the experiment with the default project settings requires only the
+command:
+
+```dvc
+$ dvc exp run
+...
+Reproduced experiment(s): exp-b28f0
+Experiment results have been applied to your workspace.
+...
+```
+
+It runs the specified command (`python train.py`) in `dvc.yaml`. That command
+writes the metrics values to `metrics.json`.
+
+This experiment is then associated with the values found in the parameters file
+(`params.yaml`), and other dependencies (`data/images/`) with these produced
+metrics.
+
+The purpose of the `dvc exp` family of commands is to let you run, capture, and
+compare the machine learning experiments at once as you iterate on your project.
+The artifacts like models and metrics produced by each experiment are tracked by
+DVC, and the associated parameters and metrics can be committed to Git as text
+files.
+
+You can review the experiment results with `dvc exp show` and see these metrics
+and results in a nicely formatted table:
+
+```dvc
+$ dvc exp show
+```
+
+```dvctable
+┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━┓
+┃ white:**Experiment**              ┃ white:**Created**      ┃ yellow:**loss**    ┃ yellow:**acc**    ┃ blue:**train.epochs** ┃ blue:**model.conv_units** ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━┩
+│ workspace               │ -            │ 0.23282 │ 0.9152 │ 10           │ 16               │
+│ 7317bc6                 │ Jul 18, 2021 │       - │      - │ 10           │ 16               │
+│ └── 1a1d858 [exp-6dccf] │ 03:21 PM     │ 0.23282 │ 0.9152 │ 10           │ 16               │
+└─────────────────────────┴──────────────┴─────────┴────────┴──────────────┴──────────────────┘
+```
+
+The `workspace` row in the table shows the results of the most recent experiment
+that's available in the <abbr>workspace</abbr>. The table also shows each
+experiment in a separate row, along with the Git commit IDs they are attached
+to. We can see that the experiment we run has a name `exp-6dccf` and was run
+from the commit ID `7317bc6`.
+
+<details>
+
+### ℹ️ If you used `dvc repro` before
+
+Earlier versions of DVC uses `dvc repro` to run the pipeline. If you already
+have a DVC project, you may already be using `dvc repro`.
+
+We use `dvc repro` to run the pipeline as found in the <abbr>workspace</abbr>.
+All the parameters and dependencies are retrieved from the current workspace. It
+doesn't use any specialized mechanism to track experiments.
+
+When you have a large number of experiments that you don't want to commit all to
+Git, it's better to use `dvc exp run`. It allows to change the parameters
+quickly, can track the history of artifacts and has facilities to compare these
+experiments easily.
+
+</details>
+
+Now let's do some more experimentation.
+
+DVC allows to update the parameters defined in the pipeline without modifying
+the files manually. We use this feature to set the convolutional units in
+`train.py`.
+
+```dvc
+$ dvc exp run --set-param model.conv_units=24
+...
+Reproduced experiment(s): exp-7b56f
+Experiment results have been applied to your workspace.
+...
 ```
 
 <details>
 
-### 💡 Expand to see what happens under the hood.
+### ⚙️ Run multiple experiments in parallel
 
-`dvc exp run` is similar to `dvc repro` but with some added conveniences for
-running experiments. The `--set-param` (or `-S`) flag sets the values for
-<abbr>parameters<abbr> as a shortcut for editing `params.yaml`.
+Instead of running the experiments one-by-one, we can define them to run in a
+batch. This is especially handy when you have long running experiments.
 
-Check that the `featurize.max_features` value has been updated in `params.yaml`:
-
-```git
- featurize:
--  max_features: 1500
-+  max_features: 3000
-```
-
-Any edits to <abbr>dependencies</abbr> (parameters or source code) will be
-reflected in the experiment run.
-
-</details>
-
-`dvc exp diff` compares experiments:
+We add experiments to the queue using the `--queue` option of `dvc exp run`. We
+also use `-S` (`--set-param`) to set a value for the parameter.
 
 ```dvc
-$ dvc exp diff
-Path         Metric    Value    Change
-scores.json  avg_prec  0.56191  0.009322
-scores.json  roc_auc   0.93345  0.018087
-
-Path         Param                   Value    Change
-params.yaml  featurize.max_features  3000     1500
+$ dvc exp run --queue -S model.conv_units=32
+Queued experiment '3cac8c6' for future execution.
+$ dvc exp run --queue -S model.conv_units=64
+Queued experiment '23660b6' for future execution.
+$ dvc exp run --queue -S model.conv_units=128
+Queued experiment '6591a57' for future execution.
+$ dvc exp run --queue -S model.conv_units=256
+Queued experiment '9109ea9' for future execution.
 ```
 
-## Queueing experiments
-
-So far, we have been tuning the `featurize` stage, but there are also parameters
-for the `train` stage (which trains a
-[random forest classifier](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html)).
-
-These are the `train` parameters from `params.yaml`:
-
-```yaml
-train:
-  seed: 20170428
-  n_est: 50
-  min_split: 2
-```
-
-Let's set up experiments with different hyperparameters. We can use the
-`--queue` flag to define all the combinations we want to try without executing
-anything (yet):
-
-```dvc
-$ dvc exp run --queue -S train.min_split=8
-Queued experiment 'd3f6d1e' for future execution.
-$ dvc exp run --queue -S train.min_split=64
-Queued experiment 'f1810e0' for future execution.
-$ dvc exp run --queue -S train.min_split=2 -S train.n_est=100
-Queued experiment '7323ea2' for future execution.
-$ dvc exp run --queue -S train.min_split=8 -S train.n_est=100
-Queued experiment 'c605382' for future execution.
-$ dvc exp run --queue -S train.min_split=64 -S train.n_est=100
-Queued experiment '0cdee86' for future execution.
-```
-
-Next, run all (`--run-all`) queued experiments in parallel (using `--jobs`):
+Next, run all (`--run-all`) queued experiments in parallel. You can specify the
+number of parallel processes using `--jobs`:
 
 ```dvc
 $ dvc exp run --run-all --jobs 2
 ```
 
-## Comparing many experiments
+</details>
 
-To compare all of these experiments, we need more than `diff`. `dvc exp show`
-compares any number of experiments in one table:
+## Comparing and persisting experiments
+
+The experiments are run several times with different parameters. We use
+`dvc exp show` to compare all of these experiments.
+
+```dvc
+$ dvc exp show
+```
+
+```dvctable
+┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━┓
+┃ white:**Experiment**              ┃ white:**Created**      ┃ yellow:**loss**    ┃ yellow:**acc**    ┃ blue:**train.epochs** ┃ blue:**model.conv_units** ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━┩
+│ workspace               │ -            │ 0.23508 │ 0.9151 │ 10           │ 24               │
+│ 7317bc6                 │ Jul 18, 2021 │       - │      - │ 10           │ 16               │
+│ ├── e2647ef [exp-ee8a4] │ 05:14 PM     │ 0.23146 │ 0.9145 │ 10           │ 64               │
+│ ├── 15c9451 [exp-a9be6] │ 05:14 PM     │ 0.25231 │ 0.9102 │ 10           │ 32               │
+│ ├── 9c32227 [exp-17dd9] │ 04:46 PM     │ 0.23687 │ 0.9167 │ 10           │ 256              │
+│ ├── 8a9cb15 [exp-29d93] │ 04:46 PM     │ 0.24459 │ 0.9134 │ 10           │ 128              │
+│ ├── dfc536f [exp-a1bd9] │ 03:35 PM     │ 0.23508 │ 0.9151 │ 10           │ 24               │
+│ └── 1a1d858 [exp-6dccf] │ 03:21 PM     │ 0.23282 │ 0.9152 │ 10           │ 16               │
+└─────────────────────────┴──────────────┴─────────┴────────┴──────────────┴──────────────────┘
+```
+
+By default, it shows all the parameters and the metrics with the timestamp. If
+you have a large number of parameters, metrics or experiments, this may lead to
+a cluttered view. You can limit the table to specific metrics, or parameters, or
+hide the timestamp column with `--include-metrics`, `--include-params`, or
+`--no-timestamp` options of the command, respectively.
 
 ```dvc
 $ dvc exp show --no-timestamp \
-               --include-params train.n_est,train.min_split
+  --include-params model.conv_units --include-metrics acc
 ```
 
 ```dvctable
-┏━━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
-┃ neutral:**Experiment**    ┃ metric:**avg_prec** ┃ metric:**roc_auc** ┃ param:**train.n_est**┃ param:**train.min_split** ┃
-┡━━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━┩
-│ **workspace**     │  **0.56191** │ **0.93345** │ **50**         │ **2**               │
-│ **master**        │  **0.55259** │ **0.91536** │ **50**         │ **2**               │
-│ ├── exp-bfe64 │  0.57833 │ 0.95555 │ 50         │ 8               │
-│ ├── exp-b8082 │  0.59806 │ 0.95287 │ 50         │ 64              │
-│ ├── exp-c7250 │  0.58876 │ 0.94524 │ 100        │ 2               │
-│ ├── exp-b9cd4 │  0.57953 │ 0.95732 │ 100        │ 8               │
-│ ├── exp-98a96 │  0.60405 │  0.9608 │ 100        │ 64              │
-│ └── exp-ad5b1 │  0.56191 │ 0.93345 │ 50         │ 2               │
-└───────────────┴──────────┴─────────┴────────────┴─────────────────┘
+┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━━━━━┓
+┃ white:**Experiment**              ┃    yellow:**acc** ┃ blue:**model.conv_units** ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━━━━━┩
+│ workspace               │ 0.9151 │ 24               │
+│ 7317bc6                 │      - │ 16               │
+│ ├── e2647ef [exp-ee8a4] │ 0.9145 │ 64               │
+│ ├── 15c9451 [exp-a9be6] │ 0.9102 │ 32               │
+│ ├── 9c32227 [exp-17dd9] │ 0.9167 │ 256              │
+│ ├── 8a9cb15 [exp-29d93] │ 0.9134 │ 128              │
+│ ├── dfc536f [exp-a1bd9] │ 0.9151 │ 24               │
+│ └── 1a1d858 [exp-6dccf] │ 0.9152 │ 16               │
+└─────────────────────────┴────────┴──────────────────┘
 ```
 
-Each experiment is given an arbitrary name by default (although we can specify
-one with `dvc exp run -n`.) We can see that `exp-98a96` performed best among
-both of our metrics, with 100 estimators and a minimum of 64 samples to split a
-node.
-
-> See `dvc exp show --help` for more info on its options.
-
-## Persisting experiments
-
-Now that we know the best parameters, let's keep that experiment and ignore the
-rest.
-
-`dvc exp apply` rolls back the <abbr>workspace<abbr> to the specified
-experiment:
+After selecting an experiment from the table, you can create a Git branch that
+contains the experiment with all its related files.
 
 ```dvc
-$ dvc exp apply exp-98a96
-Changes for experiment 'exp-98a96' have been applied to your workspace.
+$ dvc exp branch exp-17dd9 "cnn-256"
+Git branch 'cnn-256' has been created from experiment 'exp-17dd9'.
+To switch to the new branch run:
+
+        git checkout cnn-256
 ```
 
-<details>
+You can then checkout and continue working from this branch, or merge the branch
+into your `main` branch with the usual Git commands.
 
-### 💡 Expand to see what happens under the hood.
+## Go Further
 
-`dvc exp apply` is similar to `dvc checkout`, but works with experiments
-instead. DVC tracks everything in the pipeline for each experiment (parameters,
-metrics, dependencies, and outputs), retrieving things later as needed.
+There are many other features of `dvc exp`, like cleaning up the unused
+experiments, sharing them without committing into Git or getting differences
+between two experiments.
 
-Check that `scores.json` reflects the metrics in the table above:
-
-```json
-{ "avg_prec": 0.6040544652105823, "roc_auc": 0.9608017142900953 }
-```
-
-</details>
-
-Once an experiment has been applied to the workspace, it is no different from
-reproducing the result without `dvc exp run`. Let's make it persistent in our
-regular pipeline by committing it in our Git branch:
-
-```dvc
-$ git add dvc.lock params.yaml prc.json roc.json scores.json
-$ git commit -a -m "Preserve best random forest experiment"
-```
-
-## Sharing experiments
-
-After committing the best experiments to our Git branch, we can
-[store and share](/doc/start/data-and-model-versioning#storing-and-sharing) them
-remotely like any other iteration of the pipeline.
-
-```dvc
-dvc push
-git push
-```
-
-<details>
-
-### 💡 Important information on storing experiments remotely.
-
-The commands in this section require both a `dvc remote default` and a
-[Git remote](https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes). A
-DVC remote stores the experiment data, and a Git remote stores the code,
-parameters, and other metadata associated with the experiment. DVC supports
-various types of remote storage (local file system, SSH, Amazon S3, Google Cloud
-Storage, HTTP, HDFS, etc.). The Git remote is often a central Git server
-(GitHub, GitLab, BitBucket, etc.).
-
-</details>
-
-Experiments that have not been made persistent will not be stored or shared
-remotely through `dvc push` or `git push`.
-
-`dvc exp push` enables storing and sharing any experiment remotely.
-
-```dvc
-$ dvc exp push gitremote exp-bfe64
-Pushed experiment 'exp-bfe64' to Git remote 'gitremote'.
-```
-
-`dvc exp list` shows all experiments that have been saved.
-
-```dvc
-$ dvc exp list gitremote --all
-72ed9cd:
-        exp-bfe64
-```
-
-`dvc exp pull` retrieves the experiment from a Git remote.
-
-```dvc
-$ dvc exp pull gitremote exp-bfe64
-Pulled experiment 'exp-bfe64' from Git remote 'gitremote'.
-```
-
-> All these commands take a Git remote as an argument. A `dvc remote default` is
-> also required to share the experiment data.
-
-## Cleaning up
-
-Let's take another look at the experiments table:
-
-```dvc
-$ dvc exp show --no-timestamp \
-               --include-params train.n_est,train.min_split
-```
-
-```dvctable
-┏━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
-┃ neutral:**Experiment** ┃ metric:**avg_prec** ┃ metric:**roc_auc** ┃ param:**train.n_est**┃ param:**train.min_split** ┃
-┡━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━┩
-│ **workspace**  │  **0.60405** │  **0.9608** │ **100**        │ **64**              │
-│ **master**     │  **0.60405** │  **0.9608** │ **100**        │ **64**              │
-└────────────┴──────────┴─────────┴────────────┴─────────────────┘
-```
-
-Where did all the experiments go? By default, `dvc exp show` only shows
-experiments since the last commit, but don't worry. The experiments remain
-<abbr>cached</abbr> and can be shown or applied. For example, use `-n` to show
-experiments from the previous _n_ commits:
-
-```dvc
-$ dvc exp show -n 2 --no-timestamp \
-                    --include-params train.n_est,train.min_split
-```
-
-```dvctable
-┏━━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
-┃ neutral:**Experiment**    ┃ metric:**avg_prec** ┃ metric:**roc_auc** ┃ param:**train.n_est**┃ param:**train.min_split** ┃
-┡━━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━┩
-│ **workspace**     │  **0.60405** │  **0.9608** │ **100**        │ **64**              │
-│ **master**        │  **0.60405** │  **0.9608** │ **100**        │ **64**              │
-│ **64d74b2**       │  **0.55259** │ **0.91536** │ **50**         │ **2**               │
-│ ├── exp-bfe64 │  0.57833 │ 0.95555 │ 50         │ 8               │
-│ ├── exp-b8082 │  0.59806 │ 0.95287 │ 50         │ 64              │
-│ ├── exp-c7250 │  0.58876 │ 0.94524 │ 100        │ 2               │
-│ ├── exp-98a96 │  0.60405 │  0.9608 │ 100        │ 64              │
-│ ├── exp-b9cd4 │  0.57953 │ 0.95732 │ 100        │ 8               │
-│ └── exp-ad5b1 │  0.56191 │ 0.93345 │ 50         │ 2               │
-└───────────────┴──────────┴─────────┴────────────┴─────────────────┘
-```
-
-Eventually, old experiments may clutter the experiments table.
-
-`dvc exp gc` removes all references to old experiments:
-
-```dvc
-$ dvc exp gc --workspace
-$ dvc exp show -n 2 --no-timestamp \
-                    --include-params train.n_est,train.min_split
-```
-
-```dvctable
-┏━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
-┃ neutral:**Experiment** ┃ metric:**avg_prec** ┃ metric:**roc_auc** ┃ param:**train.n_est**┃ param:**train.min_split** ┃
-┡━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━┩
-│ **workspace**  │  **0.60405** │  **0.9608** │ **100**        │ **64**              │
-│ **master**     │  **0.60405** │  **0.9608** │ **100**        │ **64**              │
-│ **64d74b2**    │  **0.55259** │ **0.91536** │ **50**         │ **2**               │
-└────────────┴──────────┴─────────┴────────────┴─────────────────┘
-```
-
-> `dvc exp gc` only removes references to the experiments; not the cached
-> objects associated with them. To clean up the <abbr>cache</abbr>, use
-> `dvc gc`.
+Please see the section on
+[Experiment Management](/doc/user-guide/experiment-management) in the User's
+Guide or `dvc exp` and subcommands in the Command Reference.

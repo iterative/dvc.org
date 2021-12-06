@@ -9,7 +9,7 @@ and remote storage.
 
 ```usage
 usage: dvc status [-h] [-v] [-j <number>] [-q] [-c] [-r <name>] [-a] [-T]
-                  [--all-commits] [-d] [-R] [--show-json]
+                  [--all-commits] [-d] [-R] [--json]
                   [targets [targets ...]]
 
 positional arguments:
@@ -140,10 +140,10 @@ that.
 
 - `-r <name>`, `--remote <name>` - name of the
   [remote storage](/doc/command-reference/remote) to compare against (see
-  `dvc remote list`. Implies `--cloud`.
+  `dvc remote list`). Implies `--cloud`.
 
-- `--show-json` - prints the command's output in easily parsable JSON format,
-  instead of a human-readable table.
+- `--json` - prints the command's output in easily parsable JSON format, instead
+  of a human-readable table.
 
 - `-j <number>`, `--jobs <number>` - parallelism level for DVC to access data
   from remote storage. This only applies when the `--cloud` option is used, or a

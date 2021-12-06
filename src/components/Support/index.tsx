@@ -9,7 +9,7 @@ import PromoSection from '../PromoSection'
 import Link from '../Link'
 import Popover from './Popover'
 
-import styles from './styles.module.css'
+import * as styles from './styles.module.css'
 
 const SupportPage: React.FC = () => (
   <>
@@ -28,8 +28,8 @@ const SupportPage: React.FC = () => (
             </div>
             <div className={styles.featureDescription}>
               Join data science practitioners in our welcoming{' '}
-              <span className={styles.accent}>DVC community</span>. It’s the
-              fastest way to ask for a help.
+              <span className={styles.accent}>DVC Community</span>. It’s the
+              fastest way to get help.
             </div>
             <div className={styles.featureFooter}>
               <Link

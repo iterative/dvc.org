@@ -48,7 +48,7 @@
   }
 
   &.outline {
-    border-color: rgba(176, 184, 197, 0.47);
+    border-color: rgb(176 184 197 / 47%);
     color: var(--color-gray-hover);
     background-color: var(--color-light-blue);
 

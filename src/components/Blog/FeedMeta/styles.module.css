@@ -37,9 +37,10 @@
   margin-right: 14px;
 
   &::before {
-    content: '• ';
+    content: "•";
     position: absolute;
     right: 100%;
+    width: 0.55em;
   }
 }
 

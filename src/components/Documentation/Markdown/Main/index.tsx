@@ -6,9 +6,9 @@ import Link from '../../../Link'
 import Tutorials from '../../TutorialsLinks'
 import { getPathWithSource } from '../../../../utils/shared/sidebar'
 
-import 'github-markdown-css/github-markdown.css'
-import sharedStyles from '../../styles.module.css'
-import styles from './styles.module.css'
+import 'github-markdown-css/github-markdown-light.css'
+import * as sharedStyles from '../../styles.module.css'
+import * as styles from './styles.module.css'
 
 const isInsideCodeBlock = (node: Element): boolean => {
   while (node?.parentNode) {

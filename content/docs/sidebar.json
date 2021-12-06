@@ -61,6 +61,7 @@
       },
       {
         "slug": "experiments",
+        "label": "Experiments",
         "tutorials": {
           "katacoda": "https://katacoda.com/dvc/courses/get-started/experiments"
         }
@@ -148,7 +149,9 @@
         "source": "experiment-management/index.md",
         "children": [
           "running-experiments",
+          "comparing-experiments",
           "sharing-experiments",
+          "persisting-experiments",
           "cleaning-experiments",
           "checkpoints"
         ]

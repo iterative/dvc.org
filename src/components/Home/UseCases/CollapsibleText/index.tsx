@@ -3,7 +3,7 @@ import { Collapse } from 'react-collapse'
 
 import { isTriggeredFromKB } from '../../../../utils/front/keyboard'
 
-import styles from './styles.module.css'
+import * as styles from './styles.module.css'
 
 interface ICollapsibleTextProps {
   children: React.ReactNode

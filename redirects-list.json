@@ -17,6 +17,14 @@
   "^https://error\\.dvc\\.org/(.*)?                                                       https://dvc.org/doc/user-guide/troubleshooting#$1 303",
   "^https://(code|data|remote)\\.dvc\\.org/(.+)                                           https://s3-us-east-2.amazonaws.com/dvc-public/$1/$2 303",
 
+  "^https://s\\.dvc\\.org/g/exp/run(.*)?$                                                https://dvc.org/doc/user-guide/experiment-management/running-experiments$1 302",
+  "^https://s\\.dvc\\.org/g/exp/(.*)?$                                                   https://dvc.org/doc/user-guide/experiment-management/$1 302",
+  "^https://s\\.dvc\\.org/g/pipeline-files/(.*)?$                                        https://dvc.org/doc/user-guide/project-structure/pipelines-files/$1 302",
+  "^https://s\\.dvc\\.org/g/(.*)?$                                                       https://dvc.org/doc/user-guide/$1 302",
+  "^https://s\\.dvc\\.org/s/(.*)?$                                                       https://dvc.org/doc/start/$1 302",
+  "^https://s\\.dvc\\.org/c/(.*)?$                                                       https://dvc.org/doc/use-cases/$1 302",
+  "^https://s\\.dvc\\.org/r/(.*)?$                                                       https://dvc.org/doc/command-reference/$1 302",
+
   "^/((?:exe|osxpkg)/.+)                                                                  https://s3-us-east-2.amazonaws.com/dvc-public/dvc-pkgs/$1 303",
   "^/((?:deb|rpm)/.+)                                                                     https://s3-us-east-2.amazonaws.com/dvc-s3-repo/$1 303",
   "^/(?:help|chat)/?$                                                                     https://discordapp.com/invite/dvwXA2N 303",
@@ -35,7 +43,7 @@
   "^/doc/tutorials(/.*)?                                                                  /doc/start",
 
   "^/doc/use-cases/data-and-model-files-versioning/?$                                     /doc/use-cases/versioning-data-and-model-files",
-  "^/doc/doc/use-cases/shared-development-server$                                         /doc/use-cases/fast-data-storage-layer#example-shared-development-server",
+  "^/doc/use-cases/shared-development-server$                                             /doc/use-cases/fast-data-storage-layer#example-shared-development-server",
   "^/doc/user-guide/updating-tracked-files$                                               /doc/user-guide/how-to/update-tracked-data",
   "^/doc/user-guide/how-to/update-tracked-files$                                          /doc/user-guide/how-to/update-tracked-data",
   "^/doc/user-guide/merge-conflicts$                                                      /doc/user-guide/how-to/merge-conflicts",
@@ -54,6 +62,8 @@
   "^/doc/command-reference/pipeline/list$                                                 /doc/command-reference/dag",
   "^/doc/command-reference/lock$                                                          /doc/command-reference/freeze",
   "^/doc/command-reference/unlock$                                                        /doc/command-reference/unfreeze",
+  "^/doc/command-reference/experiments$                                                   /doc/command-reference/exp",
+  "^/doc/command-reference/ls$                                                            /doc/command-reference/list 303",
 
   "^/doc/cml(/.*)?$                                                                       https://cml.dev/doc$1",
 
