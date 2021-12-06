@@ -248,8 +248,6 @@ to be similar to `git checkout`. All we need to do in our case is to
 additionally run `dvc checkout` to get the right data into the
 <abbr>workspace</abbr>.
 
-![](/img/versioning.png)
-
 There are two ways of doing this: a full workspace checkout or checkout of a
 specific data or model file. Let's consider the full checkout first. It's pretty
 straightforward:

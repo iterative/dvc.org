@@ -40,12 +40,13 @@ restored using `dvc fetch`, as long as they have previously been uploaded with
 
 ### Removing data in remote storage
 
-If `--cloud` option is provided, command deletes unused data not only in local
-DVC cache, but also in remote storage. It means it can be dangerous since in
-most cases removing data locally and in remote storage is irreversible.
+If the `--cloud` option is provided, this command deletes unused data from the
+[default remote storage](/doc/command-reference/remote/default) **in addition**
+to deleting it from the local DVC cache. To specify a DVC remote to delete from,
+use `--remote` as well.
 
-The default remote is cleaned (see `dvc config core.remote`) unless the
-`--remote` option is used.
+> ⚠️ This is dangerous -- cloud/remote data deletion is irreversible unless
+> there is another DVC remote or a manual backup.
 
 ## Options
 

@@ -128,7 +128,7 @@
   border: solid 1px transparent;
   background-color: #fff;
   color: #b4b9c4;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 4px 0 rgb(0 0 0 / 8%);
   transform: translateZ(0);
   opacity: 0.3;
   transition: opacity 3s, border 0.5s, color 1s;
