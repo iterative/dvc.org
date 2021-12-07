@@ -55,11 +55,11 @@ DVC Experiments build on basic semantics of <abbr>DVC projects</abbr>. This
 means that minimal formalities are required.
 
 `dvc exp init` lets you onboard any existing data science project to use DVC
-Experiments without having to worry bootstrapping DVC manually. This creates a
-simple `dvc.yaml` file for you, as well as other other <abbr>metafiles</abbr>
-with sane default values. For more control `dvc exp init --interactive` (or
-`-i`) will prompt you with a few simple questions to populate the aforementioned
-DVC metafiles.
+Experiments without having to worry about bootstrapping DVC manually. This
+creates a simple `dvc.yaml` file for you, as well as other other
+<abbr>metafiles</abbr> with sane default values. For more control
+`dvc exp init --interactive` (or `-i`) will prompt you with a few simple
+questions to populate the aforementioned DVC metafiles.
 
 One of the important steps this takes care of is to [codify a pipeline] (even if
 it has a single <abbr>stage</abbr> that represents your entire process). Other
