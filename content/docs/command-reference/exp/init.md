@@ -35,6 +35,11 @@ training of machine learning models.
 This command is intended to be a quick way to start running experiments. To
 create more complex stages and pipeliens, use `dvc stage add`.
 
+> 📖 More context in [Experiments Overview].
+
+[experiments overview]:
+  /doc/user-guide/experiment-management/experiments-overview
+
 ### The `command` argument
 
 The `command` argument is optional, if you are using `--interactive` mode. The
