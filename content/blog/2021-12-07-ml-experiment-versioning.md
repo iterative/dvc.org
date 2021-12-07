@@ -46,7 +46,7 @@ benefits of both, like:
 - **Distributed experiments**: Organize locally and choose what to share,
   reusing your existing repo setup.
 
-![Experiment Versioning](2021-12-07/exp-versioning.png)
+![Experiment Versioning](/uploads/images/2021-12-07/exp-versioning.png)
 
 # ML Experiments as Code
 
