@@ -2,33 +2,31 @@
 
 Making progress on data science projects requires a large number of
 <abbr>experiments</abbr> -- attempts at tuning parameters, trying different
-data, improving code, collecting new metrics, etc. Keeping track of all these
-changes is essential, as we may need to review, compare, and share them; and to
-recover the conditions that produced certain results before in order to
-reproduce or update them.
+data, improving code, collecting better metrics, etc. Keeping track of all these
+changes is essential, as we may want to inspect them when comparing outcomes.
+Recovering these conditions later will be necessary to reproduce results or
+resume a line of work.
 
 Tracking experiments traditionally meant logging scalar values with generic
 tools such as notebooks and spreadsheets. But as experiments evolve and many
-more are recorded, they can easily become disconnected and impossible to go back
-to.
+more are recorded, they can easily become disconnected to your project and
+impossible to manage.
 
 ![](/img/natural-experimentation.png) _Loose experimentation_
 
 DVC provides a layer of [experiment management] features out-of-the-box (no need
-for special services, servers, or websites). Running **DVC Experiments** in your
-workspace captures relevant changesets automatically (input data, code,
-hyperparameters, artifacts, etc.), which can be reviewed and restored later.
-This is possible because your entire ML pipeline is [codified] with DVC.
+for special servers or websites). Running **DVC Experiments** in your workspace
+captures relevant changesets automatically (input data, source code,
+hyperparameters, artifacts, etc.). This is possible because your entire ML
+pipeline is [codified with DVC].
 
-Other tools (see a
-[comparison](#comparison-of-popular-experiment-tracking-tools) below) tend to
-focus on experiment navigation, mainly logging metrics and artifacts that result
-from your pipelines, along with fragile links to code revisions. DVC's approach
-guarantees reproducibility by working on top of Git instead of as a parallel
-system.
+Other tools tend to focus on experiment navigation by saving metrics and
+artifacts that result from your pipelines, along with fragile links to code
+revisions. DVC's approach guarantees reproducibility by working on top of Git
+instead, and not as a parallel system.
 
 [experiment management]: /doc/user-guide/experiment-management
-[codified]: /doc/user-guide/project-structure/pipelines-files
+[codified with dvc]: /doc/user-guide/project-structure/pipelines-files
 [versioning everything]: /doc/use-cases/versioning-data-and-model-files
 
 ```dvctable
@@ -46,13 +44,14 @@ system.
 └─────────────────────────┴─────────┴────────┴────────┴──────────────┘
 ```
 
-<div style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 700px;">
+<div style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 700px; margin-bottom: 16px;">
   <em style="color: #6a737d; font-size: 0.9em; display: block; text-align: center;">
-    _DVC Experiments are organized along project versions._
+    _DVC Experiments are organized along project versions (Git commits,
+    branches, tags, etc.)_
   </em>
 </div>
 
-Some benefits of tracking experiment with DVC:
+Major benefits of tracking experiment with DVC:
 
 - Quickly iterate on experiment ideas, with automatic bookkeeping of data
   dependencies, code, <abbr>parameters</abbr>, artifacts, ML models, and their
@@ -63,44 +62,51 @@ Some benefits of tracking experiment with DVC:
   [live metrics](/doc/dvclive).
 - [Review and compare] results based on params or metrics; Restore them from
   <abbr>cache</abbr> or reproduce them from scratch.
-- Leverage Git Ops ([distributed collaboration]) and services such as GitHub or
-  GitLab.
+- Adopt or stay on a Git workflow ([distributed collaboration][shared]) and
+  services such as GitHub.
+- Enable [Experiment Versioning] practices.
 
 [execution mechanism]: /doc/user-guide/experiment-management/running-experiments
 [checkpoints]: /doc/user-guide/experiment-management/checkpoints
 [review and compare]:
   /doc/user-guide/experiment-management/comparing-experiments
-[distributed collaboration]:
-  /doc/user-guide/experiment-management/sharing-experiments
+[experiment versioning]: /blog/ml-experiment-versioning
 
 <br/>
 
-> 📖 Ready to dive in? See [Get Started: Experiments](/doc/start/experiments).
+> 📖 Ready to dive in? [Get started with experiments](/doc/start/experiments)!
 
-DVC Experiments provide a seamless, local-first experience. You control where
-and how your data is saved and shared. DVC also improves storage efficiency via
-<abbr>caching</abbr>, preventing repetitive data transfers. And DVC is
-completely language agnostic: expect the same features whether you're using
-Jupyter notebooks or Scala, CSV data frames or HDFS.
+Among other differentiators (below), DVC Experiments are unique in the space in
+that they provides a simple yet flexible, local-first experience. Your code is
+unchanged and you control where data is saved and [shared]. DVC also improves
+storage efficiency and saves you time via <abbr>caching</abbr>, preventing
+repetitive data transfers or having to retrain models on-the-fly.
 
 |                   | DVC Experiments   | Existing tools                |
 | ----------------- | ----------------- | ----------------------------- |
-| **Organization**  | Git-based         | Labeling / file-based         |
-| **Approach**      | [Data versioning] | Logging artifacts and metrics |
-| **Execution**     | `dvc exp run`     | Code API (usually Python)     |
 | **UI**            | Terminal + [web]  | Web (usually SaaS)            |
+| **Logging**       | Git-based         | Custom formats                |
+| **Storage**       | [Data versioning] | Logging artifacts and metrics |
+| **Execution**     | `dvc exp run`     | Code API (usually Python)     |
 | **Collaboration** | Distributed       | Centralized                   |
 
 [data versioning]: /doc/use-cases/versioning-data-and-model-files
 [web]: /doc/studio
 
-> 💡 Note that other experiment tracking tools can be complementary with DVC,
-> for example as detailed experiment logging with specialized visualizations.
+> 💡 Note that other experiment tracking tools can be complementary to DVC, for
+> example for detailed experiment environment logging with specialized
+> visualizations.
+
+Finally, DVC is completely language agnostic, offering the same functionality
+whether you're using Jupyter notebooks or Scala, CSV data frames or HDFS.
+
+---
 
 To complete your stack, we also offer [DVC Studio], an advanced web interface to
 collaborate on DVC projects online, including full experiment management
 support. You can also integrate with CI/CD using [CML], and run your experiments
 there straight from Studio!
 
+[shared]: /doc/user-guide/experiment-management/sharing-experiments
 [dvc studio]: /doc/studio
 [cml]: https://cml.dev/
