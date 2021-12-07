@@ -54,20 +54,18 @@ this:
 DVC Experiments build on basic semantics of <abbr>DVC projects</abbr>. This
 means that minimal formalities are required.
 
-`dvc exp init` lets you onboard any existing data science project to use DVC
-Experiments without having to worry about bootstrapping DVC manually. This
-creates a simple `dvc.yaml` file for you, as well as other other
-<abbr>metafiles</abbr> with sane default values. For more control
-`dvc exp init --interactive` (or `-i`) will prompt you with a few simple
-questions to populate the aforementioned DVC metafiles.
+`dvc exp init` lets you quickly onboard an existing data science project to use
+DVC Experiments, without having to worry about bootstrapping DVC manually. You
+can either supply a `command` to execute your experiments or use the
+`--interactive` flag (`-i`) to be prompted for that and other optional
+customizations.
 
-One of the important steps this takes care of is to [codify a pipeline] (even if
-it has a single <abbr>stage</abbr> that represents your entire process). Other
-typical preparation step are to write (or update) a structured
-<abbr>parameters</abbr> file, and to track <abbr>metrics</abbr> output by your
-code or ML models.
+This creates a simple `dvc.yaml` file for you. It uses sane default locations
+for your project's <abbr>dependencies</abbr> (data, parameters, source code) and
+<abbr>outputs</abbr> (ML models or other artifacts, <abbr>metrics</abbr>, etc.)
+-- which you can customize via `-i` or other options of `dvc exp init`.
 
-You can review these files and commit them to Git to begin using DVC Experiments
-quickly. Now you can move on to [running your experiments][run].
+You can review the results (and commit them to Git) to begin using DVC
+Experiments. Now you can move on to [running your experiments][run] (next).
 
 [codify a pipeline]: /doc/user-guide/project-structure/pipelines-files

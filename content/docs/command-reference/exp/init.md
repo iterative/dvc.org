@@ -3,7 +3,8 @@
 Codify project using [DVC metafiles](/doc/user-guide/project-structure) to run
 [experiments](/doc/user-guide/experiment-management).
 
-> Requires having used `dvc init` to create a <abbr>DVC repository</abbr>.
+> Requires a <abbr>DVC repository</abbr>, created with `git init` and
+> `dvc init`.
 
 ## Synopsis
 
