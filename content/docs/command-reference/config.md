@@ -221,6 +221,30 @@ connection settings, and configuring a remote is the way that can be done.
 > hash overlaps: the hash of an external <abbr>output</abbr> could collide with
 > that of a local file with different content.
 
+### exp
+
+This section overrides default configured workspace paths in `dvc exp init`,
+that helps to avoid repeating these paths if all of your projects share a
+similar structure.
+
+The section contains following options, which are only used as a default and can
+be overidden explicitly through CLI arguments or through responses in prompts
+(in `--interactive` mode).
+
+- `exp.code` - path to your source file or directory.
+
+- `exp.data` - path to your data file or directory to track.
+
+- `exp.models` - path to your models file or directory.
+
+- `exp.metrics` - path to your metrics file.
+
+- `exp.params` - path to your parameters file.
+
+- `exp.plots` - path to your plots file or directory.
+
+- `exp.live` - path to your dvclive outputs.
+
 ### state
 
 > 📖 See
