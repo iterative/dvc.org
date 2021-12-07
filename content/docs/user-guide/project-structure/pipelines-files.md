@@ -20,8 +20,8 @@ so you may modify, write, or generate stages and pipelines on your own.
 
 ## Stages
 
-The `stages` list contains a list of user-defined stages. Here's a simple one
-named `transpose`:
+The list of `stages` contains one or more user-defined stages. Here's a simple
+one named `transpose`:
 
 ```yaml
 stages:
@@ -32,6 +32,8 @@ stages:
     outs:
       - columns.txt
 ```
+
+> See also `dvc stage add`, a helper command to write stages in `dvc.yaml`.
 
 The most important part of a stage it's the terminal command(s) it executes
 (`cmd` field). This is what DVC runs when the stage is reproduced (see

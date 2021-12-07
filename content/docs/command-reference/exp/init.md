@@ -1,6 +1,7 @@
 # exp init
 
-Codify project using [DVC metafiles](/doc/user-guide/project-structure) to run
+Codify an existing project using
+[DVC metafiles](/doc/user-guide/project-structure) to run
 [experiments](/doc/user-guide/experiment-management).
 
 ## Synopsis
@@ -17,37 +18,52 @@ usage: dvc exp init [-h] [-q | -v] [--run] [--interactive] [-f]
 ## Description
 
 `dvc exp init` helps you quickly get started with experiments. It reduces
-boilerplate for initializing [pipeline](/doc/command-reference/dag) stages in a
-`dvc.yaml` file by assuming defaults about the location of your data,
-[parameters](/doc/command-reference/params), source code, models,
-[metrics](/doc/command-reference/metrics) and
-[plots](/doc/command-reference/plots), which can be customized through config.
+boilerplate DVC procedures by creating a `dvc.yaml` file that assumes default
+location of your input data, <abbr>parameters</abbr>, source code, models,
+<abbr>metrics</abbr> and [plots](/doc/command-reference/plots). These locations
+can be customized through the options of this command or via config files.
+Standard repository structure:
 
-It also offers guided `--interactive` mode for creating a stage to be
-[`exp run`](/doc/command-reference/exp/run) later. `dvc exp init` supports
-creating different types of stages, eg: `dl` if you are doing deep learning,
-which uses [dvclive](/doc/dvclive) to monitor and checkpoint progress during
-training of machine learning models.
+```
+├── data/
+├── metrics.json
+├── models/
+├── params.yaml  # required
+├── plots/
+└── src/
+```
 
-This command is intended to be a quick way to start running experiments. To
-create more complex stages and pipeliens, use `dvc stage add`.
+> Note that `params.yaml` is the only required file (see `dvc params`).
+
+To use this feature, provide a `command` argument or use the `--interactive`
+(`-i`) mode and answer a few prompts (most of them optional). This wraps the
+command that runs your experiment(s) as a <abbr>stage</abbr> that `dvc exp run`
+can execute.
+
+Different types of stages are supported, such as `dl` (deep learning) which uses
+[DVSLive](/doc/dvclive) to monitor [checkpoints] during training of ML models.
+
+> This command is intended as a quick way to start running experiments. To
+> codify complex data pipelines, see the `dvc.yaml` specification.
+
+[checkpoints]: /doc/user-guide/experiment-management/checkpoints
 
 ### The `command` argument
 
-The `command` argument is optional, if you are using `--interactive` mode. The
-`command` sent to `dvc exp init` can be anything your terminal would accept and
-run directly, for example a shell built-in, expression, or binary found in
-`PATH`. Please remember that any flags sent after the `command` are interpreted
-by the command itself, not by `dvc exp init`.
+The `command` given to `dvc exp init` can be anything your system terminal would
+accept and run directly, for example a shell built-in, an expression, or a
+binary found in `PATH`. Please note that any flags sent after the `command` will
+typically become part of the command itself and ignored by `dvc exp init` (so
+put the command last).
 
 ⚠️ While DVC is platform-agnostic, the commands defined in your
 [pipeline](/doc/command-reference/dag) stages may only work on some operating
-systems and require certain software packages to be installed.
+systems and require certain software packages or libraries.
 
-Wrap the command with double quotes `"` if there are special characters in it
-like `|` (pipe) or `<`, `>` (redirection), otherwise they would apply to
-`dvc exp init` itself. Use single quotes `'` instead if there are environment
-variables in it that should be evaluated dynamically. Examples:
+Surround the command with double quotes `"` if it includes special characters
+like `|` or `<`, `>` -- otherwise they would apply to `dvc exp init` itself. Use
+single quotes `'` instead if there are environment variables in it that should
+be evaluated dynamically.
 
 ```dvc
 $ dvc exp init "./a_script.sh > /dev/null 2>&1"
@@ -56,10 +72,13 @@ $ dvc exp init './another_script.sh $MYENVVAR'
 
 ## Options
 
-- `-i`, `--interactive` - prompts user for the command to execute and different
-  paths for tracking outputs and dependencies, unless they are provided through
-  arguments explicitly. Interactive mode allows users to set those locations
-  from default values or omit them.
+- `-i`, `--interactive` - prompts user for the `command` to execute and for the
+  different paths where dependencies and outputs can be found, unless they are
+  provided through arguments explicitly. Interactive mode allows users to set
+  those locations from default values or omit them.
+
+- `--type` - selects the type of the stage to create. Currently it provides two
+  alternatives: `dl` and `default` (no need to specify this one).
 
 - `--explicit` - `dvc exp init` assumes default location of your outputs and
   dependencies (which can be overriden from the config). By using `--explicit`,
@@ -93,10 +112,6 @@ $ dvc exp init './another_script.sh $MYENVVAR'
 - `--live` - override the directory `path` for [DVCLive](/doc/dvclive), which
   your experiment will write logs to. The default is `dvclive` directory, which
   only comes to effect when used with `--type=dl`.
-
-- `--type` - selects the type of the stage to create. Currently it provides two
-  different kinds of stages: `default` and `dl`. If unspecified, `default` stage
-  is created.
 
   `default` stage creates a stage with `metrics` and `plots` tracked by DVC
   itself, and does not track live-created artifacts (unless explicitly

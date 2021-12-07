@@ -253,16 +253,16 @@
         "source": "exp/index.md",
         "children": [
           {
+            "label": "exp init",
+            "slug": "init"
+          },
+          {
             "label": "exp run",
             "slug": "run"
           },
           {
             "label": "exp show",
             "slug": "show"
-          },
-          {
-            "label": "exp init",
-            "slug": "init"
           },
           {
             "label": "exp diff",
