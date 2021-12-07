@@ -20,7 +20,8 @@
 }
 
 .title {
-  padding-right: 2em;
+  /* padding-right: 2em; */
+  padding-right: 30px;
   font-family: var(--font-brandon);
   font-size: 40px;
   font-weight: 500;
@@ -143,6 +144,21 @@
   padding: 0 10px 0 12px;
   font-size: 15px;
   font-weight: 700;
+}
+
+.video {
+  align-self: center;
+  flex-basis: 50%;
+
+  @media (--sm-scr) {
+    max-width: 412px;
+    width: 100%;
+    margin: 40px 0 0;
+  }
+
+  @media (--xxs-scr) {
+    margin: 20px 0 0;
+  }
 }
 
 .github {
