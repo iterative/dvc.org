@@ -116,10 +116,7 @@ const plugins = [
   {
     resolve: 'gatsby-plugin-svgr',
     options: {
-      ref: true,
-      svgoConfig: {
-        plugins: [{ removeViewBox: false }]
-      }
+      ref: true
     }
   },
   'gatsby-transformer-sharp',
@@ -140,7 +137,7 @@ const plugins = [
   {
     resolve: 'gatsby-plugin-manifest',
     options: {
-      /* eslint-disable @typescript-eslint/camelcase */
+      /* eslint-disable @typescript-eslint/naming-convention */
       background_color: '#eff4f8',
       display: 'minimal-ui',
       icon: 'static/favicon-512x512.png',
@@ -195,7 +192,7 @@ const plugins = [
           type: 'image/png'
         }
       ]
-      /* eslint-enable @typescript-eslint/camelcase */
+      /* eslint-enable @typescript-eslint/naming-convention */
     }
   },
   {
@@ -226,7 +223,7 @@ const plugins = [
               return Object.assign(
                 {},
                 {
-                  /* eslint-disable-next-line @typescript-eslint/camelcase */
+                  /* eslint-disable-next-line @typescript-eslint/naming-convention */
                   custom_elements: [{ 'content:encoded': html }],
                   title: node.title,
                   date: node.date,

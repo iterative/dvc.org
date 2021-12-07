@@ -78,44 +78,45 @@ const getUserOS = (): OS => {
   return OSName
 }
 
-const DownloadButtonDropdownItems: React.FC<IDownloadButtonDropdownItemsProps> =
-  ({ onClick, userOS }) => {
-    return (
-      <div
-      // className={styles.links}
-      >
-        {dropdownItems.map((os, index) => {
-          if (os === null) {
-            return (
-              <div
-                className={styles.dropdownDelimiter}
-                key={`delimiter-${index}`}
-              />
-            )
-          }
-
-          const item = itemsByOs[os]
-
+const DownloadButtonDropdownItems: React.FC<
+  IDownloadButtonDropdownItemsProps
+> = ({ onClick, userOS }) => {
+  return (
+    <div
+    // className={styles.links}
+    >
+      {dropdownItems.map((os, index) => {
+        if (os === null) {
           return (
-            <Link
-              download={item.download}
-              key={os}
-              className={cn(
-                styles.dropdownItem,
-                os === userOS && styles.active,
-                'link-with-focus'
-              )}
-              href={item.url}
-              optOutPreRedirect={true}
-              onClick={(): void => onClick(os)}
-            >
-              {item.title}
-            </Link>
+            <div
+              className={styles.dropdownDelimiter}
+              key={`delimiter-${index}`}
+            />
           )
-        })}
-      </div>
-    )
-  }
+        }
+
+        const item = itemsByOs[os]
+
+        return (
+          <Link
+            download={item.download}
+            key={os}
+            className={cn(
+              styles.dropdownItem,
+              os === userOS && styles.active,
+              'link-with-focus'
+            )}
+            href={item.url}
+            optOutPreRedirect={true}
+            onClick={(): void => onClick(os)}
+          >
+            {item.title}
+          </Link>
+        )
+      })}
+    </div>
+  )
+}
 
 const DownloadButton: React.FC<IDownloadButtonProps> = ({ openTop }) => {
   const userOS = useRef(getUserOS())

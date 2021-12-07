@@ -89,7 +89,7 @@
   max-height: 166px;
 
   &.overflown::after {
-    content: '';
+    content: "";
     position: absolute;
     right: 0;
     bottom: 0;
@@ -97,8 +97,8 @@
     height: 30px;
     background: linear-gradient(
       0deg,
-      rgba(238, 244, 248, 1) 0%,
-      rgba(238, 244, 248, 0) 100%
+      rgb(238 244 248 / 100%) 0%,
+      rgb(238 244 248 / 0%) 100%
     );
   }
 
