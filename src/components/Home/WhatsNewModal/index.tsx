@@ -90,9 +90,10 @@ const WhatsNewModal: React.FC = () => {
             <Link href="/blog/ml-experiment-versioning">
               <StaticImage
                 alt="a description of blog image"
-                src="../../../../static/uploads/images/2021-10-28/oct-community-gems.png"
+                src="../../../../static/uploads/images/2021-12-07/experiment-versioning-cover.png"
                 className={styles.image}
                 width={420}
+                objectFit="contain"
               />
             </Link>
             <p className={styles.text}>
