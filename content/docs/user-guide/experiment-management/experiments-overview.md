@@ -37,15 +37,14 @@ this:
 
 - Modify hyperparameters or other dependencies (input data, source code,
   commands to execute, etc.). Leave these changes un-committed in Git.
-- [Run experiments] with `dvc exp run` (instead of `repro`). The results are
-  reflected in your <abbr>workspace</abbr>, and tracked automatically.
+- [Run experiments][run] with `dvc exp run` (instead of `repro`). The results
+  are reflected in your <abbr>workspace</abbr>, and tracked automatically.
 - Review and [compare] experiments with `dvc exp show` or `dvc exp diff`, using
   [metrics](/doc/command-reference/metrics) to identify the best one(s). Repeat
   🔄
 - Make certain experiments [persistent] by committing their results to Git. This
   lets you repeat the process from that point.
 
-[run experiments]: /doc/user-guide/experiment-management/running-experiments
 [pipeline]: /doc/user-guide/project-structure/pipelines-files
 [compare]: /doc/user-guide/experiment-management/comparing-experiments
 [persistent]: /doc/user-guide/experiment-management/persisting-experiments
@@ -56,15 +55,19 @@ DVC Experiments build on basic semantics of <abbr>DVC projects</abbr>. This
 means that minimal formalities are required.
 
 `dvc exp init` lets you onboard any existing data science project to use DVC
-Experiments without having to worry bootstrapping DVC manually. It will prompt
-you with a few simple questions and create a basic `dvc.yaml` file, as well as
-other <abbr>metafiles</abbr> with sane default values. You can review these
-files and commit them to Git to begin using DVC Experiments quickly.
+Experiments without having to worry bootstrapping DVC manually. This creates a
+simple `dvc.yaml` file for you, as well as other other <abbr>metafiles</abbr>
+with sane default values. For more control `dvc exp init --interactive` (or
+`-i`) will prompt you with a few simple questions to populate the aforementioned
+DVC metafiles.
 
 One of the important steps this takes care of is to [codify a pipeline] (even if
 it has a single <abbr>stage</abbr> that represents your entire process). Other
 typical preparation step are to write (or update) a structured
 <abbr>parameters</abbr> file, and to track <abbr>metrics</abbr> output by your
 code or ML models.
+
+You can review these files and commit them to Git to begin using DVC Experiments
+quickly. Now you can move on to [running your experiments][run].
 
 [codify a pipeline]: /doc/user-guide/project-structure/pipelines-files
