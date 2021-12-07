@@ -9,6 +9,8 @@ Experiments preserve a connection to the latest commit in the current branch
 Git tree or workflow (unless you make them [persistent]). This prevents
 polluting Git namespaces and bloating the repo unnecessarily.
 
+[run]: /doc/user-guide/experiment-management/running-experiments
+
 <details>
 
 ### ⚙️ How does DVC track experiments?
@@ -18,20 +20,13 @@ Experiments are custom [Git references](/blog/experiment-refs) (found in
 hidden and not checked out by DVC. Note that these are not pushed to Git remotes
 by default either (see `dvc exp push`).
 
+Note that DVC Experiments require a unique name to identify them. DVC will
+usually auto-generate one by default, such as `exp-bfe64` (based on the
+experiment's hash). A custom name can be set instead, using the `--name`/`-n`
+option of `dvc exp run`. These names can be used to reference experiments in
+other `dvc exp` subcommands.
+
 </details>
-
-[run them]: /doc/user-guide/experiment-management/running-experiments
-
-## Properties
-
-DVC Experiments will have an auto-generated name like `exp-bfe64` by default. A
-custom name can be given instead (using the `--name`/`-n` option of
-`dvc exp run`). These names can be used to reference experiments in other
-`dvc exp` subcommands.
-
-All experiments created by DVC will be associated to the latest commit (Git
-`HEAD`) at the time that they were run. This is called the experiment's
-_baseline_.
 
 ## Basic workflow
 
@@ -62,7 +57,7 @@ means that minimal formalities are required.
 
 `dvc exp init` lets you onboard any existing data science project to use DVC
 Experiments without having to worry bootstrapping DVC manually. It will prompt
-you wth a few simple questions and create a basic `dvc.yaml` file, as well as
+you with a few simple questions and create a basic `dvc.yaml` file, as well as
 other <abbr>metafiles</abbr> with sane default values. You can review these
 files and commit them to Git to begin using DVC Experiments quickly.
 
