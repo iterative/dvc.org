@@ -16,7 +16,7 @@ another directory when working in a subdirectory of the project.
 
 Use this command to build fixed paths to dependencies, files, or stage
 <abbr>outputs</abbr>. This is useful when creating shell scripts that generate
-`dvc.yaml` files programmatically or with the `dvc run` helper.
+`dvc.yaml` files programmatically or with the `dvc stage add` helper.
 
 ## Options
 
@@ -50,8 +50,8 @@ references by making all paths relative to the root directory.
 $ dvc root
 ../../../
 
-$ dvc run -d $(dvc root)/data/file.cvs ... \
-    python $(dvc root)/scripts/something.py
+$ dvc stage add -d $(dvc root)/data/file.cvs ... \
+      python $(dvc root)/scripts/something.py
 ```
 
 The same can be applied to non-DVC commands:
