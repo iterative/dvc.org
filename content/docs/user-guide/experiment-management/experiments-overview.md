@@ -45,27 +45,28 @@ this:
 - Make certain experiments [persistent] by committing their results to Git. This
   lets you repeat the process from that point.
 
-[pipeline]: /doc/user-guide/project-structure/pipelines-files
 [compare]: /doc/user-guide/experiment-management/comparing-experiments
 [persistent]: /doc/user-guide/experiment-management/persisting-experiments
 
 ## Initialize DVC Experiments on any project
 
-DVC Experiments build on basic semantics of <abbr>DVC projects</abbr>. This
-means that minimal formalities are required.
+To use DVC Experiments you need a <abbr>DVC project</abbr> with a minimal
+structure and configuration. To avoid having to bootstrap DVC manually, the
+`dvc exp init` command lets you quickly onboard an existing project to the DVC
+Experiments workflow.
 
-`dvc exp init` lets you quickly onboard an existing data science project to use
-DVC Experiments, without having to worry about bootstrapping DVC manually. You
-can either supply a `command` to execute your experiments or use the
-`--interactive` flag (`-i`) to be prompted for that and other optional
-customizations.
+It will create a simple `dvc.yaml` metafile, which codifies your planned
+experiments. This includes the locations for expected <abbr>dependencies</abbr>
+(data, parameters, source code) and <abbr>outputs</abbr> (ML models,
+<abbr>metrics</abbr>, etc.). These assume [sane defaults] but can be customized
+with the options of `dvc exp init`.
 
-This creates a simple `dvc.yaml` file for you. It uses sane default locations
-for your project's <abbr>dependencies</abbr> (data, parameters, source code) and
-<abbr>outputs</abbr> (ML models or other artifacts, <abbr>metrics</abbr>, etc.)
--- which you can customize via `-i` or other options of `dvc exp init`.
+💡 We recommend adding the `-i` flag to use its `--interactive` mode. This will
+ask you how to run the experiments, and guide you through customizing the
+aforementioned locations (optional).
 
-You can review the results (and commit them to Git) to begin using DVC
-Experiments. Now you can move on to [running your experiments][run] (next).
+You can review the resulting changes to your repo (and commit them to Git) to
+begin using DVC Experiments. Now you can move on to [running experiments][run]
+(next).
 
-[codify a pipeline]: /doc/user-guide/project-structure/pipelines-files
+[sane defaults]: /doc/command-reference/exp/init#description
