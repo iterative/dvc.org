@@ -7,7 +7,7 @@ title: 'Get Started: Experiments'
 In machine learning projects, the number of <abbr>experiments</abbr> grows
 rapidly. DVC can track these experiments, list and compare their most relevant
 parameters and metrics, navigate among them, and commit only the ones that we
-need to Git.
+need to Git to version them with their lineage.
 
 > ⚠️This video is out-of-date and will be updated soon! Where there are
 > discrepancies between docs and video, please follow the docs.
