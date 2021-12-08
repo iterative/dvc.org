@@ -50,8 +50,10 @@ plots (`plots/`) dependencies if they differ from the defaults.
 
 ### ⚙️ Installing the example project
 
-You can run the commands in this document after cloning the repository,
-installing the requirements, and pulling the data.
+You can run the commands in this document after [installing] DVC, cloning the
+example repository, installing the requirements, and pulling the data.
+
+[installing]: /doc/install
 
 #### Clone the project and create virtual environment
 
