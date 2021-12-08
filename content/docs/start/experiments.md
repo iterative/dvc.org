@@ -133,8 +133,8 @@ from the commit ID `7317bc6`.
 
 ### ℹ️ If you used `dvc repro` before
 
-Earlier versions of DVC uses `dvc repro` to run the pipeline. If you already
-have a DVC project, you may already be using `dvc repro`.
+Earlier versions of DVC uses `dvc repro` to run the pipeline. `dvc exp run`
+supersedes `dvc repro` for most of the use cases. 
 
 We use `dvc repro` to run the pipeline as found in the <abbr>workspace</abbr>.
 All the parameters and dependencies are retrieved from the current workspace. It
