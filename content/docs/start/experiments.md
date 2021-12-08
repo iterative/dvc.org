@@ -38,9 +38,12 @@ $ dvc exp init python src/train.py
 Here, `python src/train.py` describes how the project runs the training script.
 It could be any other command. For DVC, this defines how you run an experiment.
 
-You can also set code (default: `src`), data (`data/`), models (`models/`),
-hyperparameters (`params.yaml`), metrics (`metrics.json`), and plots (`plots/`)
-dependencies if they differ from the defaults.
+You can also set source code (default: `src`), data (`data/`), models
+(`models/`), hyperparameters (`params.yaml`), metrics (`metrics.json`), and
+plots (`plots/`) dependencies if they differ from the defaults.
+
+> We are using defaults in the example project, but you may find easier to set
+> these project options with `dvc exp init --interactive`.
 
 We run these experiments in [`example-dvc-experiments`][ede] project, and it's
 structured around these defaults so we don't specify any custom paths.
