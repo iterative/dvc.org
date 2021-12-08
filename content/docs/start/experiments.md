@@ -43,8 +43,8 @@ You can also set source code (default: `src`), data (`data/`), models
 plots (`plots/`) dependencies if they differ from the defaults.
 
 > We are using the default configuration of `dvc exp init` in the example
-> project, but you may find easier to set these project options with `dvc exp
-> init --interactive` if they happen to be different from the defaults. 
+> project, but you may find easier to set these project options with
+> `dvc exp init --interactive` if they happen to be different from the defaults.
 
 <details>
 
