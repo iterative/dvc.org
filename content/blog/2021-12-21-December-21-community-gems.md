@@ -139,7 +139,22 @@ Unfortunately there is no support for that.
 A work-around we recommend is to create a dummy output that you could reference
 as a dependency downstream.
 
-### []()
+### [Is there a feature for DVC to only sample and cache a subset of the tracked dataset?](https://discord.com/channels/485586884165107732/485596304961962003/917778575845900340)
+
+Really great question @Abdi!
+
+You should be able to use the streaming capability of the DVC API to achieve
+this goal.
+
+Here is an exaple of a Python script that would do this:
+
+```python
+from dvc.api import open as dvcopen
+
+with dvcopen('data','{repo_url}') as fd:
+    for line in fd:
+        print(line)
+```
 
 ---
 
