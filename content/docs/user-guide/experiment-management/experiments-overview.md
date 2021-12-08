@@ -6,8 +6,8 @@ in your <abbr>workspace</abbr>.
 
 Experiments preserve a connection to the latest commit in the current branch
 (Git `HEAD`) as their parent or _baseline_, but do not form part of the regular
-Git tree or workflow (unless you make them [persistent]). This prevents
-polluting Git namespaces and bloating the repo unnecessarily.
+Git tree (unless you make them [persistent]). This prevents bloating your repo
+with temporary commits and branches.
 
 [run]: /doc/user-guide/experiment-management/running-experiments
 
