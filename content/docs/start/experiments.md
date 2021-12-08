@@ -35,7 +35,7 @@ project with:
 $ dvc exp init python src/train.py
 ```
 
-Here, `python src/train.py` describes how our project runs the training script.
+Here, `python src/train.py` describes how the project runs the training script.
 It could be any other command. For DVC, this defines how you run an experiment.
 
 You can also set code (default: `src`), data (`data/`), models (`models/`),
