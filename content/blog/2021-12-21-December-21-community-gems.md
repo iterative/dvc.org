@@ -2,19 +2,19 @@
 title: December '21 Community Gems
 date: 2021-12-21
 description: >
-  A roundup of technical Q&A's from the DVC and CML community. This month: CML
-  runners, working with data, DVC Studio, and more.
+  A roundup of technical Q&A's from the DVC community. This month: comparing
+  experiments, working with data, working with pipelines, and more.
 descriptionLong: >
-  A roundup of technical Q&A's from the DVC and CML community. This month: CML
-  runners, working with data, DVC Studio, and more.
+  A roundup of technical Q&A's from the DVC community. This month: comparing
+  experiments, working with data, working with pipelines, and more.
 picture: 2021-12-21/dec-community-gems.png
 author: milecia_mcgregor
 commentsUrl: https://discuss.dvc.org/t/december-21-community-gems/964
 tags:
   - Data Versioning
-  - DVC Studio
-  - DVC
-  - CML
+  - DVC Remotes
+  - DVC API
+  - DVC Stages
   - Community
 ---
 
@@ -130,14 +130,20 @@ To work around this, you can use the full refname, like
 `refs/exps/e7/78ad744e8d0cd59ddqc65d5d698cf102533f85/exp-6cb7`, to specify the
 experiments that you want to work with.
 
-### [Is it possible to create a dependency between pipeline stages without creating output files, like directly depending on a stage name?](https://discord.com/channels/485586884165107732/485596304961962003/912827234849529856)
+### [How should I handle checkpoints in PyTorch Lightning with DVCLive?](YouTube link here)
 
-This is a really good question @mevatron!
+This is a really good question that came from one of our Office Hours talks!
+Thanks Ilya Sirotkin!
 
-Unfortunately there is no support for that.
+We have an [open issue](https://github.com/iterative/dvclive/issues/170) we
+encourage you to follow for more details and to even contribute!
 
-A work-around we recommend is to create a dummy output that you could reference
-as a dependency downstream.
+Python Lightning handles callbacks differently from many other libraries. This
+affects the way metrics logging is executed and how models are saved.
+
+You can write a custom callback to control saving everything and track it with
+DVC and this is the workaround we suggest. You can implement the
+`after_save_checkpoint` method and save the model file.
 
 ### [Is there a feature for DVC to only sample and cache a subset of the tracked dataset?](https://discord.com/channels/485586884165107732/485596304961962003/917778575845900340)
 
