@@ -30,7 +30,7 @@ which uses [dvclive](/doc/dvclive) to monitor and checkpoint progress during
 training of machine learning models.
 
 This command is intended to be a quick way to start running experiments. To
-create more complex stages and pipeliens, use `dvc stage add`.
+create more complex stages and pipelines, use `dvc stage add`.
 
 ### The `command` argument
 
