@@ -1,9 +1,10 @@
 # exp
 
-_New in DVC 2.0_
+_New in DVC 2.0 (see `dvc version`)_
 
 A set of commands to generate and manage <abbr>experiments</abbr>:
-[run](/doc/command-reference/exp/run), [show](/doc/command-reference/exp/show),
+[init](/doc/command-reference/exp/init), [run](/doc/command-reference/exp/run),
+[show](/doc/command-reference/exp/show),
 [diff](/doc/command-reference/exp/diff),
 [apply](/doc/command-reference/exp/apply),
 [branch](/doc/command-reference/exp/branch),
@@ -12,7 +13,7 @@ A set of commands to generate and manage <abbr>experiments</abbr>:
 [pull](/doc/command-reference/exp/pull), and
 [list](/doc/command-reference/exp/list).
 
-> Aliased to `dvc exp`.
+> Alias of `dvc experiments`.
 
 > Requires that Git is being used to version the project.
 
@@ -20,7 +21,7 @@ A set of commands to generate and manage <abbr>experiments</abbr>:
 
 ```usage
 usage: dvc exp [-h] [-q | -v]
-          {show,apply,diff,run,gc,branch,list,push,pull,remove}
+          {show,apply,diff,run,gc,branch,list,push,pull,remove,init}
           ...
 
 positional arguments:
@@ -37,6 +38,7 @@ positional arguments:
     push                Push a local experiment to a Git remote.
     pull                Pull an experiment from a Git remote.
     remove              Remove local experiments.
+    init                Codify project using DVC metafiles to run experiments.
 ```
 
 ## Description

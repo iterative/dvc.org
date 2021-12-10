@@ -38,7 +38,7 @@
   border: solid 1px var(--color-lighter-blue);
   border-radius: 200px;
   background-color: #fff;
-  background-image: url('/img/search.svg');
+  background-image: url("/img/search.svg");
   background-repeat: no-repeat;
   background-position: 15px center;
   font-size: 16px;

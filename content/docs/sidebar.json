@@ -149,7 +149,9 @@
         "source": "experiment-management/index.md",
         "children": [
           "running-experiments",
+          "comparing-experiments",
           "sharing-experiments",
+          "persisting-experiments",
           "cleaning-experiments",
           "checkpoints"
         ]
@@ -257,6 +259,10 @@
           {
             "label": "exp show",
             "slug": "show"
+          },
+          {
+            "label": "exp init",
+            "slug": "init"
           },
           {
             "label": "exp diff",

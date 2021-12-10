@@ -56,8 +56,8 @@ changes before submitting them, and it's quite necessary when making changes to
 the website engine itself. Source code and content files need to be properly
 formatted and linted as well, which is also ensured by the full setup below.
 
-Make sure you have [Python](https://www.python.org/downloads/) 3.6+, a recent
-LTS version of [Node.js](https://nodejs.org/en/) (`>=12.0.0`, `<=15.x`), and
+Make sure you have [Python](https://www.python.org/downloads/) 3.7+, a recent
+LTS version of [Node.js](https://nodejs.org/en/) (`>=14.0.0`, `<=16.x`), and
 install [Yarn](https://yarnpkg.com/):
 
 > In Windows, you may need to install [Visual Studio Build Tools], and the

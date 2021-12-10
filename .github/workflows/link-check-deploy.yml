@@ -13,6 +13,8 @@ jobs:
       github.event.deployment_status.state == 'success'
     steps:
       - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
       - id: build_check
         uses: LouisBrunner/checks-action@v1.0.0
         with:
@@ -21,7 +23,7 @@ jobs:
           status: queued
       - name: Run Link Check
         id: check
-        uses: iterative/link-check.action@v0.8
+        uses: iterative/link-check.action@v0.9
         with:
           diff: true
           configFile: config/link-check/config.yml

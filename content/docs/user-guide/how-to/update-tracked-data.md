@@ -49,6 +49,10 @@ Add the new version of the file back with DVC:
 $ dvc add train.tsv
 $ git add train.tsv.dvc
 $ git commit -m "modify train data"
+
+# If you have remote storage and/or an upstream repo:
+$ dvc push
+$ git push
 ```
 
 ## Replacing files
@@ -75,4 +79,8 @@ And start tracking it again:
 $ dvc add train.tsv
 $ git add train.tsv.dvc .gitignore
 $ git commit -m "new train data"
+
+# If you have remote storage and/or an upstream repo:
+$ dvc push
+$ git push
 ```

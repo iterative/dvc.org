@@ -176,12 +176,12 @@ param values available in the <abbr>workspace</abbr>:
 
 ```dvc
 $ dvc params diff
-Path         Param           Old    New
-params.yaml  lr              —      0.0041
-params.yaml  process.bow     —      15000
-params.yaml  process.thresh  —      0.98
-params.yaml  train.epochs    —      70
-params.yaml  train.layers    —      9
+Path         Param           HEAD  workspace
+params.yaml  lr              —     0.0041
+params.yaml  process.bow     —     15000
+params.yaml  process.thresh  —     0.98
+params.yaml  train.epochs    —     70
+params.yaml  train.layers    —     9
 ```
 
 This command shows the difference in parameters between the workspace and the
@@ -207,6 +207,7 @@ LIST = [1, 2, 3]
 SET = {4, 5, 6}
 TUPLE = (10, 100)
 NONE = None
+UNARY_OP = -1
 
 # Complex expressions will be ignored.
 DICT_EXP = dict(a=1, b=2)

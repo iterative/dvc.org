@@ -43,10 +43,38 @@ interface IBlogPostPageProps {
 
 const BlogPostPage: React.FC<IBlogPostPageProps> = ({ data }) => {
   const post = data.blogPost
-  const { title, description, picture } = post
+  const {
+    title,
+    description,
+    picture,
+    author: { name },
+    date
+  } = post
   return (
     <>
-      <SEO title={title} description={description} image={picture} />
+      <SEO
+        title={title}
+        description={description}
+        image={picture}
+        meta={[
+          {
+            name: 'twitter:card',
+            content: 'summary_large_image'
+          },
+          {
+            name: 'og:type',
+            content: 'article'
+          },
+          {
+            name: 'article:author',
+            content: name
+          },
+          {
+            name: 'article:published_time',
+            content: new Date(date).toISOString().slice(0, 10)
+          }
+        ]}
+      />
       <Post {...post} />
     </>
   )

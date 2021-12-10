@@ -9,7 +9,7 @@ feedback. [DVC](/) can manage data/models and reproducible pipelines, while
 
 [cml]: https://cml.dev
 
-![](/static/img/cicd4ml-0.png '=408') _Basic ML pipeline_
+![](/img/cicd4ml-0.png '=408') _Basic ML pipeline_
 
 The main benefits of CI/CD (continuous integration and continuous delivery) for
 ML are detailed below.
@@ -42,7 +42,7 @@ being run online:
 Normally, CI/CD is hard to set up, configure, and maintain -- especially for
 data and ML pipelines.
 
-![](/static/img/cicd4ml-1.png '=374') _Traditional ML meets CI/CD_
+![](/img/cicd4ml.png '=460') _Traditional ML meets CI/CD_
 
 [DVC](/) and [CML] remove most of this
 [management headache](https://papers.nips.cc/paper/2015/file/86df7dcfd896fcaf2674f757a2463eba-Paper.pdf)
