@@ -43,8 +43,8 @@ can execute.
 Different types of stages are supported, such as `dl` (deep learning) which uses
 [DVSLive](/doc/dvclive) to monitor [checkpoints] during training of ML models.
 
-> This command is intended as a quick way to start running experiments. To
-> codify complex data pipelines, see the `dvc.yaml` specification.
+> This command is intended as a quick way to start running experiments. See the
+> `dvc.yaml` specification for complex data pipelines.
 
 [checkpoints]: /doc/user-guide/experiment-management/checkpoints
 
