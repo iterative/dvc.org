@@ -46,7 +46,7 @@ SSH. Just make sure that your URL looks similar to this.
 url = webdav://<ip>/<path>
 ```
 
-### [Can you selectively "dvc pull" data files?](https://discord.com/channels/485586884165107732/563406153334128681/913713923667148850)
+### [Can you selectively `dvc pull` data files?](https://discord.com/channels/485586884165107732/563406153334128681/913713923667148850)
 
 Great question @Clemens!
 
@@ -164,7 +164,7 @@ with dvcopen('data','{repo_url}') as fd:
 
 ---
 
-https://media.giphy.com/media/jS27LWasgUIYrXtP83/giphy.gif
+https://media.giphy.com/media/h5Ct5uxV5RfwY/giphy.gif
 
 At our January Office Hours Meetup we will be doing a new thing!
 [RSVP for the Meetup here]() to stay up to date with specifics as we get closer
