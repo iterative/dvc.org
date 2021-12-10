@@ -15,25 +15,21 @@ positional arguments:
 ## Description
 
 Restores an `experiment` into the workspace as long as no more Git commits have
-been made after the target experiment (`HEAD` hasn't moved). The experiment can
-be referenced by name or hash (see `dvc exp run` for details).
+been made after the target experiment (`HEAD` hasn't moved). The `experiment`
+can be referenced by name or hash (see `dvc exp run` for details). This changes
+any files (code, data, <abbr>parameters</abbr>, <abbr>metrics</abbr>, etc.)
+needed to reflect the experiment conditions and results in the workspace.
 
-Specifically, `dvc exp apply` changes any files (code, data,
-<abbr>parameters</abbr>, <abbr>metrics</abbr>, etc.) needed to reflect the
-experiment conditions and results in the workspace. Current changes to the
-workspace are preserved except if they conflict with the experiment in question.
-
-⚠️ Conflicting changes in the workspace are overwritten unless unless
-`--no-force` is used.
+⚠️ Conflicting changes in the workspace are overwritten unless `--no-force` is
+used.
 
 This is typically used after choosing a target `experiment` with `dvc exp show`
-or `dvc exp diff`, and before committing it to Git (making it [persistent].
+or `dvc exp diff`, and before committing it to Git (making it
+[persistent](/doc/user-guide/experiment-management#persistent-experiments)).
 
-> Note that if a history of [checkpoints] is found in the `experiment`, it will
-> **not** be preserved when applying and committing it.
-
-[persistent]: /doc/user-guide/experiment-management/persisting-experiments
-[checkpoints]: /doc/user-guide/experiment-management/checkpoints
+Note that the history of
+[checkpoints](/doc/command-reference/exp/run#checkpoints) found in the
+`experiment` is **not** preserved when applying and committing it.
 
 ## Options
 
