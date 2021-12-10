@@ -278,7 +278,7 @@ export const HamburgerMenu: React.FC<
                   src="/img/mlem-icon.svg"
                   alt="MLEM logo"
                 />
-                <span className={styles.subSectionLinkTitle}>CML</span>
+                <span className={styles.subSectionLinkTitle}>MLEM</span>
               </Link>
             </li>
           </ul>
