@@ -2,5 +2,13 @@
   height: 700px;
   overflow-y: auto;
   overflow-x: hidden;
-  margin-top: 20px;
+  margin-top: 40px;
+
+  @media (--xs-scr) {
+    margin-top: 20px;
+  }
+
+  iframe {
+    margin-top: -32px;
+  }
 }
