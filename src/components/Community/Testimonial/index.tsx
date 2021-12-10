@@ -3,6 +3,7 @@ import LayoutWidthContainer from '../../LayoutWidthContainer'
 import Section from '../Section'
 import IframeResizer from 'iframe-resizer-react'
 
+import * as styles from './styles.module.css'
 import * as sharedStyles from '../styles.module.css'
 import { ICommunitySectionTheme } from '..'
 
@@ -22,14 +23,16 @@ const Testimonial: React.FC<{ theme: ICommunitySectionTheme }> = ({
         mobileDescription={description}
         title="Testimonials"
       >
-        <IframeResizer
-          title="testimonialto"
-          id="testimonialto-iterative-open-source-community-shout-outs-light"
-          src="https://embed.testimonial.to/w/iterative-open-source-community-shout-outs?theme=light&card=base&loadMore=on&initialCount=20"
-          frameBorder="0"
-          width="100%"
-          height="100%"
-        ></IframeResizer>
+        <div className={styles.iframeContainer}>
+          <IframeResizer
+            title="testimonialto"
+            id="testimonialto-iterative-open-source-community-shout-outs-light"
+            src="https://embed.testimonial.to/w/iterative-open-source-community-shout-outs?theme=light&card=small&loadMore=on&initialCount=20"
+            frameBorder="0"
+            width="100%"
+            height="100%"
+          ></IframeResizer>
+        </div>
       </Section>
     </LayoutWidthContainer>
   )

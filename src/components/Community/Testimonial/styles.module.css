@@ -1,0 +1,6 @@
+.iframeContainer {
+  height: 700px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin-top: 40px;
+}
