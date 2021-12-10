@@ -384,8 +384,8 @@ params.yaml  train.epochs      10    10         0
 ## Compare an experiment with the workspace
 
 When you want to compare two experiments, either the baseline experiment in a
-commit, branch, tag or an attached experiment with ID, you can supply their
-names to `dvc exp diff`.
+commit, branch, or tag; or an attached experiment by name, you can supply any of
+these references to `dvc exp diff`.
 
 ```
 $ dvc exp diff cnn-128 cnn-64
