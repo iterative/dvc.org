@@ -46,6 +46,13 @@ const otherToolsPopupData: Array<IOtherToolsLinkData> = [
     iconClass: styles.cmlIcon,
     description: 'Open-source CI/CD for ML projects',
     href: 'https://cml.dev/'
+  },
+  {
+    title: 'MLEM',
+    iconClass: styles.mlemIcon,
+    description:
+      'Open-source model registry and deployment tool for ML projects',
+    href: 'https://mlem.ai/'
   }
 ]
 
