@@ -37,7 +37,7 @@ Terraform and run your existing training script on it.
 ## Getting Started
 
 For this tutorial I have picked
-[The BeeImage Dataset: Annotated Honey Bee Images](https://www.kaggle.com/jenny18/honey-bee-annotated-images)
+[The BeeImage Dataset](https://www.kaggle.com/jenny18/honey-bee-annotated-images)
 that contains 5,100+ bee images annotated with location, date, time, subspecies,
 health condition, caste, and pollen. I've downloaded the images, created a
 project and trained a simple CNN model locally to classify different subspecies.
