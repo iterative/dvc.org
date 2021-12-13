@@ -34,8 +34,7 @@ these step(s) during the process of tracking each file or directory:
 - Store the file contents in the cache.
 
 > Skipping these steps is typically done to avoid caching unfinished data, for
-> example when exploring different data or
-> [stages](/doc/command-reference/stage)
+> example when exploring different data or <abbr>stages</abbr>.
 
 More specifically, scenarios for `dvc commit` include:
 
