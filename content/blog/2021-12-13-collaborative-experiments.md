@@ -1,14 +1,14 @@
 ---
 title: Running Collaborative Experiments
-date: 2021-12-02
+date: 2021-12-13
 description: >
   Sharing experiments with teammates can help you build models more efficiently.
 descriptionLong: >
   You can use DVC remotes to share experiments and their data across machines.
-picture: 2021-12-02/collaborative-experiments.png
+picture: 2021-12-13/collaborative-exps.png
 pictureComment: Running Collaborative Experiments
 author: milecia_mcgregor
-commentsUrl: https://discuss.dvc.org/t/tuning-hyperparameters-with-reproducible-experiments/821
+commentsUrl: https://discuss.dvc.org/t/collaborative-experiments/1002
 tags:
   - MLOps
   - DVC
