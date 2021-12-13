@@ -271,6 +271,16 @@ export const HamburgerMenu: React.FC<
                 <span className={styles.subSectionLinkTitle}>CML</span>
               </Link>
             </li>
+            <li className={styles.subSection}>
+              <Link href="https://mlem.ai/" className={styles.subSectionLink}>
+                <img
+                  className={styles.subSectionLinkImage}
+                  src="/img/mlem-icon.svg"
+                  alt="MLEM logo"
+                />
+                <span className={styles.subSectionLinkTitle}>MLEM</span>
+              </Link>
+            </li>
           </ul>
         </li>
       </ul>
