@@ -47,8 +47,8 @@ clone [my repo from GitHub](https://github.com/MKhalusova/bees).
 Let's pretend that the model I trained is good enough so that I would like to
 continue iterating on it in the cloud. Run more epochs? Change some
 hyperparameters? Add more layers? The first question that we should ask
-ourselves when we plan The Big Move is what exactly are we going to need to
-train this model in a cloud environment?
+ourselves when we plan *The Big Move* is "what exactly are we going to need to
+train this model in a cloud environment?"
 
 Some of the important puzzle pieces you already have locally. These are:
 
