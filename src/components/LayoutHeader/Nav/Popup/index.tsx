@@ -23,6 +23,7 @@ interface ICommunityLinkData {
 
 const communityPopupData: Array<ICommunityLinkData> = [
   { text: 'Meet the Community', href: '/community' },
+  { text: 'Testimonials', href: '/community#testimonial' },
   { text: 'Contribute', href: '/community#contribute' },
   { text: 'Learn', href: '/community#learn' },
   { text: 'Events', href: '/community#events' }
