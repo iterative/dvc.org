@@ -9,7 +9,7 @@ descriptionLong: >
   experiments, working with data, working with pipelines, and more.
 picture: 2021-12-21/dec-community-gems.png
 author: milecia_mcgregor
-commentsUrl: https://discuss.dvc.org/t/december-21-community-gems/964
+commentsUrl: https://discuss.dvc.org/t/december-21-community-gems/1001
 tags:
   - Data Versioning
   - DVC Remotes
@@ -133,7 +133,7 @@ experiments that you want to work with.
 ### [How should I handle checkpoints in PyTorch Lightning with DVCLive?](YouTube link here)
 
 This is a really good question that came from one of our Office Hours talks!
-Thanks Ilya Sirotkin!
+Thanks [Ilia Sirotkin](https://www.linkedin.com/in/sirily/)!
 
 We have an [open issue](https://github.com/iterative/dvclive/issues/170) we
 encourage you to follow for more details and to even contribute!
