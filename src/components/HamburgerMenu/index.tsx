@@ -170,6 +170,20 @@ export const HamburgerMenu: React.FC<
                 <span className={styles.subSectionLinkTitle}>Events</span>
               </Link>
             </li>
+            <li className={styles.subSection}>
+              <Link
+                href="/community#testimonial"
+                className={styles.subSectionLink}
+                onClick={handleItemClick('community')}
+              >
+                <img
+                  className={styles.subSectionLinkImage}
+                  src="/img/community/icon-community.svg"
+                  alt=""
+                />
+                <span className={styles.subSectionLinkTitle}>Testimonials</span>
+              </Link>
+            </li>
           </ul>
         </li>
         <li className={styles.section}>
