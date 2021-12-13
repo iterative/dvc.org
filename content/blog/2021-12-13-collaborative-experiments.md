@@ -5,7 +5,7 @@ description: >
   Sharing experiments with teammates can help you build models more efficiently.
 descriptionLong: >
   You can use DVC remotes to share experiments and their data across machines.
-picture: 2021-12-13/collaborative-exps.png
+picture: 2021-12-13/collaborative_exps.png
 pictureComment: Running Collaborative Experiments
 author: milecia_mcgregor
 commentsUrl: https://discuss.dvc.org/t/collaborative-experiments/1002
