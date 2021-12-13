@@ -1,8 +1,8 @@
 # Running Experiments
 
-We explain how DVC codifies and executes experiments, setting their parameters,
-using multiple jobs to run them in parallel, and running them in queues, among
-other details.
+We explain how to execute DVC Experiments, setting their parameters, using
+multiple jobs to run them in parallel, and running them in queues, among other
+details.
 
 > 📖 If this is the first time you are introduced into data science
 > experimentation, you may want to check the basics in
@@ -231,7 +231,7 @@ Note that Git-ignored files/dirs are explicitly excluded from queued/temp runs
 to avoid committing unwanted files into Git (e.g. once successful experiments
 are [persisted]).
 
-[persisted]: /doc/user-guide/experiment-management#persistent-experiments
+[persisted]: /doc/user-guide/experiment-management/persisting-experiments
 
 > 💡 To include untracked files, stage them with `git add` first (before
 > `dvc exp run`) and `git reset` them afterwards.
