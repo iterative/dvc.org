@@ -2,12 +2,16 @@
   height: 700px;
   overflow-y: auto;
   overflow-x: hidden;
-  margin-top: 40px;
+  margin: 40px 50px 0;
   -ms-overflow-style: none;
   scrollbar-width: none;
 
   &::-webkit-scrollbar {
     display: none;
+  }
+
+  @media (--md-scr) {
+    margin: 40px 25px 0;
   }
 
   @media (--sm-scr) {
