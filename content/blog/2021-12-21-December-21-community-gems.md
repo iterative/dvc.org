@@ -138,7 +138,7 @@ Thanks [Ilia Sirotkin](https://www.linkedin.com/in/sirily/)!
 We have an [open issue](https://github.com/iterative/dvclive/issues/170) we
 encourage you to follow for more details and to even contribute!
 
-Python Lightning handles callbacks differently from many other libraries. This
+Python Lightning handles checkpoints differently from other libraries. This
 affects the way metrics logging is executed and how models are saved.
 
 You can write a custom callback to control saving everything and track it with
