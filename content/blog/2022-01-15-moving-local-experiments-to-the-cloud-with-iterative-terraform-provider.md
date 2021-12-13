@@ -58,7 +58,7 @@ Some of the important puzzle pieces you already have locally. These are:
 - Python environment with all required libraries.
 
 In addition to that you will need an account with your cloud provider of choice.
-In this tutorial I'll be provisioning infrastructure on AWS. You can create an
+In this tutorial I'll be provisioning infrastructure on Amazon Web Services (AWS). You can create an
 AWS account yourself, or ask your DevOps team to provide you with one. Make sure
 to
 [store your authentication credentials](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html)
