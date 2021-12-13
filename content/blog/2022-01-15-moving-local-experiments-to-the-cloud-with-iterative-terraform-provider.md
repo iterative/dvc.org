@@ -1,20 +1,22 @@
 ---
- title: Moving Local Experiments to the Cloud with Iterative Terraform Provider
- date: 2022-01-15
- description: >
-   In this tutorial you'll learn how you can move a locally run machine learning
-   experiment to a remote machine on AWS with the help of Iterative Terraform Provider.
- descriptionLong: >
-   In this tutorial you'll learn how you can move a locally run machine learning
-   experiment to a remote machine on AWS with the help of Iterative Terraform Provider.
- picture: 2022-01-15/massimiliano-latella-6ufBhNungOk-unsplash.jpg
- author: maria_khalusova
-#  todo: commentsUrl: 
- tags:
-   - MLOps
-   - Iterative Terraform Provider
-   - AWS
- ---
+title: Moving Local Experiments to the Cloud with Iterative Terraform Provider
+date: 2022-01-15
+description: >
+  In this tutorial you'll learn how you can move a locally run machine learning
+  experiment to a remote machine on AWS with the help of Iterative Terraform
+  Provider.
+descriptionLong: >
+  In this tutorial you'll learn how you can move a locally run machine learning
+  experiment to a remote machine on AWS with the help of Iterative Terraform
+  Provider.
+picture: 2022-01-15/massimiliano-latella-6ufBhNungOk-unsplash.jpg
+author: maria_khalusova
+#  todo: commentsUrl:
+tags:
+  - MLOps
+  - Iterative Terraform Provider
+  - AWS
+---
 
 There's a number of good reasons one might want to train a machine learning model locally. It's quick and easy to set up a new project on a local machine, you don't have to worry about how much money you'll spend while using this compute resource, your data may be small or you start with a sample, you may want to start with simple models initially, etc. On top of that, a local machine is just deeply familiar, as opposed to the multitude of available cloud services which can be intimidating unless you have a decent background in DevOps.
 
