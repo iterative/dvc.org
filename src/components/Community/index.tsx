@@ -28,8 +28,8 @@ const Community: React.FC = () => {
     <>
       <PageContent className={styles.content}>
         <Hero />
-        <Testimonial theme={themes.purple} />
         <Meet theme={themes.purple} />
+        <Testimonial theme={themes.purple} />
         <Contribute theme={themes.orange} />
         <Learn theme={themes.green} />
         <Events theme={themes.purple} />
