@@ -148,6 +148,7 @@
         "slug": "experiment-management",
         "source": "experiment-management/index.md",
         "children": [
+          "experiments-overview",
           "running-experiments",
           "comparing-experiments",
           "sharing-experiments",
