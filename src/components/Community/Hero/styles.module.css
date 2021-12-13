@@ -12,6 +12,7 @@
 
 .pictureContainer {
   display: flex;
+  align-items: center;
 }
 
 .picture {
