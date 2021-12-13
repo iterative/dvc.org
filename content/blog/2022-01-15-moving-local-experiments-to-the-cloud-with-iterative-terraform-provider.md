@@ -68,15 +68,15 @@ Iterative Terraform Provider.
 
 ## What is Terraform?
 
-[Terraform](https://www.terraform.io) is an open-source infrastructure as code
+[Terraform](https://www.terraform.io) is an open-source infrastructure-as-code
 tool that you'll need to download and install with [homebrew](https://brew.sh/)
 for this tutorial: `brew install terraform`. With Terraform, you can create a
-configuration file in which you declaratively describe what infrastructure you’d
+configuration file in which you declaratively describe what infrastructure you'd
 like to have. This means that you do not need to write the instructions on what
-exact steps need to be taken and in which order. Instead, you describe what your
+exact steps need to be taken. Instead, you describe what your
 infrastructure should ultimately look like. Behind the scenes, Terraform will
-figure out what needs to be done to achieve that. If you've cloned the repo,
-you'll find the `main.tf`file in the root of the project - that's where we will
+figure out what needs to be done. If you've cloned the repo,
+you'll find the `main.tf`file in the root of the project -- that's where we will
 be configuring Terraform.
 
 ## Iterative Terraform Provider
@@ -84,11 +84,12 @@ be configuring Terraform.
 Terraform can orchestrate a plethora of various resources for you, but for the
 majority of projects you only need a few. That's why instead of shipping all the
 integrations in one bundle, you install a barebones Terraform distribution and
-then plug in support for whatever resources you need with so-called providers.
+then plug in support for whatever resources you need with so-called
+[*providers*](https://www.terraform.io/docs/extend/how-terraform-works.html).
 For this tutorial we will only need one provider -
 [Iterative Terraform Provider](https://registry.terraform.io/providers/iterative/iterative/latest).
 It enables full lifecycle management of computing resources for machine learning
-pipelines from AWS, as well as Azure, Google Cloud Platform, and more. The
+pipelines from AWS, Microsoft Azure, Google Cloud Platform, and more. The
 Iterative Provider has a couple of advantages for machine learning pipelines.
 Namely,
 
@@ -97,9 +98,9 @@ Namely,
   another, if you want to.
 - It is designed not only to provision infrastructure but to execute your
   scripts on it too, all via a single configuration.
-- It helps to share data between your local machine and a remote one.
-- Once your training is complete, the remote resources will be terminated
-  preventing the situation when an unused machine is left to ramp up the costs.
+- It helps to sync data between your local machine and a remote one.
+- Once your training is complete, the remote resources will be terminated,
+  avoiding unused machines quietly ramping up costs.
 
 To start using the Iterative Provider we need to let Terraform know about it by
 adding the following in our `main.tf`:
@@ -117,10 +118,9 @@ provider "iterative" {}
 ```
 
 Once you describe what providers you'll be using in your `main.tf`, run the
-`terraform init` command. If you have cloned the example repo, you should to run
+`terraform init` command. If you have cloned the example repo, you should run
 this command before doing anything else. This will initialize your working
-directory containing Terraform configuration file, and download the required
-provider.
+directory and download the required provider.
 
 ## Configuring `iterative_task`
 
@@ -133,7 +133,7 @@ we'll need to configure. This resource will:
 4. Automatically terminate compute resources upon task completion.
 
 This is exactly what we need to run a model training process! Let's see how we
-can configure the iterative_task. First, I'll show you what my configuration
+can configure the `iterative_task`. First, I'll show you what my configuration
 file looks like, and then we'll unpack what's going on here:
 
 ```
@@ -148,7 +148,7 @@ terraform {
 provider "iterative" {}
 
 resource "iterative_task" "tpi-examples-basic" {
-    name      = "tpi-examples-basic "
+    name      = "tpi-examples-basic"
     cloud     = "aws"
     region    = "us-east-2"
     machine   = "l+k80"
@@ -164,17 +164,17 @@ resource "iterative_task" "tpi-examples-basic" {
 }
 ```
 
-Every terraform resource needs a name, and mine is called `tpi-examples-basic`
+Every Terraform resource needs a name, and mine is called `tpi-examples-basic`
 here. This name is only used within the configuration file and it can be
 whatever you want. Inside of the resource block, we specify the resource
 arguments:
 
 - _name_ (**required**): this is a name that will be used to set up the cloud
-  resources, and it does not have to be the same as the iterative_task name.
+  resources, and it does not have to be the same as the `iterative_task` name.
   However, try to make it unique, it shouldn’t be in conflict with names of
   existing cloud resources.
-- _cloud_ (**required**): cloud provider to run the task on. This can be aws,
-  gcp, az, or k8s.
+- _cloud_ (**required**): cloud provider to run the task on. This can be `aws`,
+  `gcp`, `az`, or `k8s`.
 - _region_: you can choose the region where the compute resources should be
   allocated.
 - _machine_: if you know the exact kind of machine that you'd like to use, you
@@ -192,10 +192,9 @@ arguments:
   i.e. this is where we define a script that should be run on a provisioned
   machine.
 
-Tke a look at the script. In the simplest scenario, all we need to do on a new
+Take a look at the script. In the simplest scenario, all we need to do on a new
 machine to run the training script is to set up the Python environment with
-required libraries, and run the script. And that's exactly what the script here
-does (granted you have a `requirements.txt` file). If you simply want to train
+required libraries. If you simply want to train
 your model on a machine with more memory, this may be enough. However, if you
 want your training code to leverage GPUs, the script will look a bit more
 complex.
@@ -261,15 +260,16 @@ You can monitor what's going on by running
 `terraform refresh && terraform show`. Once you see that the task has
 successfully finished, go ahead and run `terraform destroy` to destroy all
 remote objects managed by your configuration and sync back your shared files. If
-you write metrics to a file, then you'll get the new metrics synced back to your
+you write metrics to a file (e.g. `metrics.json`), then you'll get the new metrics synced back to your
 local machine.
 
 Now if you want to try another experiment, you can change your code, run
 `terraform apply` again, and when the training is finished, commit your code
-together with the updated metrics.json. This can help you move from prototyping
+together with the updated `metrics.json`. This can help you move from prototyping
 locally to leveraging more powerful cloud machines without the hassle of full
 MLOps setup. At the same time, once you're ready to start working on your
-production pipelines and CI/CD, this should also make the transition smoother.
+[production pipelines and CI/CD](https://dvc.org/doc/use-cases/ci-cd-for-machine-learning),
+this should also make the transition smoother.
 
 In this tutorial we have covered the simplest example with no GPU or Docker, and
 one that involves leveraging GPUs with the help of `nvidia-docker` and
