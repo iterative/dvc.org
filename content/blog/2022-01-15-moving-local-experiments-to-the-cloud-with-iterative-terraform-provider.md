@@ -21,8 +21,8 @@ tags:
 There's a number of good reasons one might want to train a machine learning
 model locally. It's quick and easy to set up a new project on a local machine,
 you don't have to worry about how much money you'll spend while using this
-compute resource, your data may be small or you start with a sample, you may
-want to start with simple models initially, etc. On top of that, a local machine
+compute resource, your dataset may be a small sample, or you may
+want to start with simple models. On top of that, a local machine
 is just deeply familiar, as opposed to the multitude of available cloud services
 which can be intimidating unless you have a decent background in DevOps.
 
