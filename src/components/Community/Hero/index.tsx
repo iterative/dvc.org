@@ -34,10 +34,14 @@ const Hero: React.FC = () => {
         }}
       >
         <ShowOnly on="desktop">
-          <img className={styles.picture} src={hero.pictureDesktop} alt="" />
+          <div className={styles.pictureContainer}>
+            <img className={styles.picture} src={hero.pictureDesktop} alt="" />
+          </div>
         </ShowOnly>
         <ShowOnly on="mobile">
-          <img className={styles.picture} src={hero.pictureMobile} alt="" />
+          <div className={styles.pictureContainer}>
+            <img className={styles.picture} src={hero.pictureMobile} alt="" />
+          </div>
         </ShowOnly>
       </Link>
     </LayoutWidthContainer>

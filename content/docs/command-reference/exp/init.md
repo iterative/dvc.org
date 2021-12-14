@@ -4,6 +4,9 @@ Codify an existing project using
 [DVC metafiles](/doc/user-guide/project-structure) to run
 [experiments](/doc/user-guide/experiment-management).
 
+> Requires a <abbr>DVC repository</abbr>, created with `git init` and
+> `dvc init`.
+
 ## Synopsis
 
 ```usage
@@ -47,6 +50,11 @@ Different types of stages are supported, such as `dl` (deep learning) which uses
 > `dvc.yaml` specification for complex data pipelines.
 
 [checkpoints]: /doc/user-guide/experiment-management/checkpoints
+
+> 📖 More context in [Experiments Overview].
+
+[experiments overview]:
+  /doc/user-guide/experiment-management/experiments-overview
 
 ### The `command` argument
 

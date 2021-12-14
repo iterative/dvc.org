@@ -170,6 +170,20 @@ export const HamburgerMenu: React.FC<
                 <span className={styles.subSectionLinkTitle}>Events</span>
               </Link>
             </li>
+            <li className={styles.subSection}>
+              <Link
+                href="/community#testimonial"
+                className={styles.subSectionLink}
+                onClick={handleItemClick('community')}
+              >
+                <img
+                  className={styles.subSectionLinkImage}
+                  src="/img/community/icon-community.svg"
+                  alt=""
+                />
+                <span className={styles.subSectionLinkTitle}>Testimonials</span>
+              </Link>
+            </li>
           </ul>
         </li>
         <li className={styles.section}>
@@ -269,6 +283,16 @@ export const HamburgerMenu: React.FC<
                   alt="CML logo"
                 />
                 <span className={styles.subSectionLinkTitle}>CML</span>
+              </Link>
+            </li>
+            <li className={styles.subSection}>
+              <Link href="https://mlem.ai/" className={styles.subSectionLink}>
+                <img
+                  className={styles.subSectionLinkImage}
+                  src="/img/mlem-icon.svg"
+                  alt="MLEM logo"
+                />
+                <span className={styles.subSectionLinkTitle}>MLEM</span>
               </Link>
             </li>
           </ul>

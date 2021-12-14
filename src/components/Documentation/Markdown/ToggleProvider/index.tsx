@@ -1,11 +1,19 @@
 import React, { createContext, useEffect, useState } from 'react'
 
 interface ITogglesData {
-  [key: string]: { texts: string[]; checkedInd: number }
+  [key: string]: {
+    texts: string[]
+    checkedInd: number
+    parentText: string | null
+  }
 }
 
 interface ITogglesContext {
-  addNewToggle?: (id: string, texts: string[]) => void
+  addNewToggle?: (
+    id: string,
+    texts: string[],
+    parentText: string | null
+  ) => void
   updateToggleInd?: (id: string, newInd: number) => void
   togglesData?: ITogglesData
 }
@@ -14,6 +22,11 @@ export const TogglesContext = createContext<ITogglesContext>({})
 
 const makeTextUrlFriendly = (val: string): string =>
   val.replace(/[^\w\-\._~]/g, '-').replace(/-+/g, '-')
+
+const convertTabTextToQueryText = (
+  text: string,
+  parentText: string | null
+): string => makeTextUrlFriendly(`${parentText ? `${parentText} ` : ''}${text}`)
 
 const getUrlQueryVal = (query: string, param: string): string => {
   const params = new URLSearchParams(query)
@@ -29,10 +42,13 @@ const setUrlQuery = (href: string, param: string, value: string): void => {
 
 const getSelectedIndexBasedOffQueryVal = (
   texts: string[],
-  queryVal: string
+  queryVal: string,
+  parentText: string | null
 ): number => {
-  const urlFriendlyTexts = texts.map(makeTextUrlFriendly)
-  const index = urlFriendlyTexts.indexOf(queryVal)
+  const urlFriendlyTexts = texts.map(text =>
+    convertTabTextToQueryText(text, parentText)
+  )
+  const index = urlFriendlyTexts.findIndex(text => queryVal.startsWith(text))
   return index > -1 ? index : 0
 }
 
@@ -45,7 +61,11 @@ export const TogglesProvider: React.FC = ({ children }) => {
     setLastSelectedTab(tab)
   }, [])
 
-  const addNewToggle = (id: string, texts: string[]): void => {
+  const addNewToggle = (
+    id: string,
+    texts: string[],
+    parentText: string | null
+  ): void => {
     let lastSelected = lastSelectedTab
     const togglesDataCopy: ITogglesData = { ...togglesData }
 
@@ -55,7 +75,12 @@ export const TogglesProvider: React.FC = ({ children }) => {
 
     togglesDataCopy[id] = {
       texts,
-      checkedInd: getSelectedIndexBasedOffQueryVal(texts, lastSelected)
+      checkedInd: getSelectedIndexBasedOffQueryVal(
+        texts,
+        lastSelected,
+        parentText
+      ),
+      parentText
     }
     setTogglesData(togglesDataCopy)
   }
@@ -65,16 +90,11 @@ export const TogglesProvider: React.FC = ({ children }) => {
     const selectedTabText = togglesDataCopy[id].texts[newInd]
     togglesDataCopy[id] = { ...togglesDataCopy[id], checkedInd: newInd }
 
-    for (const [toggleId, { texts }] of Object.entries(togglesDataCopy)) {
-      if (texts.includes(selectedTabText)) {
-        togglesDataCopy[toggleId] = {
-          ...togglesDataCopy[toggleId],
-          checkedInd: togglesDataCopy[id].texts.indexOf(selectedTabText)
-        }
-      }
-    }
-
-    setUrlQuery(window.location.href, 'tab', selectedTabText)
+    setUrlQuery(
+      window.location.href,
+      'tab',
+      convertTabTextToQueryText(selectedTabText, togglesDataCopy[id].parentText)
+    )
     setLastSelectedTab(selectedTabText)
     setTogglesData(togglesDataCopy)
   }
