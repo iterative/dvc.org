@@ -30,12 +30,13 @@ Standard repository structure:
 ├── data/
 ├── metrics.json
 ├── models/
-├── params.yaml  # required
+├── params.yaml  # required by default
 ├── plots/
 └── src/
 ```
 
-> Note that `params.yaml` is the only required file (see `dvc params`).
+> Note that by default `dvc exp init` expects at least a `params.yaml` file
+> present. It can be avoided via the `--params` or `-i` options.
 
 You must provide a command that runs your experiments(s). This can be done
 either directly with the `command` argument, or by using the `--interactive`
