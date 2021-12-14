@@ -209,9 +209,10 @@ with dvcopen('data','{repo_url}') as fd:
 
 https://media.giphy.com/media/h5Ct5uxV5RfwY/giphy.gif
 
-At our January Office Hours Meetup we will be doing a new thing!
-[RSVP for the Meetup here]() to stay up to date with specifics as we get closer
-to the event!
+At our January Office Hours Meetup we will be looking at machine learning
+workflows and Neovim-DVC plugin!
+[RSVP for the Meetup here](https://www.meetup.com/DVC-Community-Virtual-Meetups/events/282663146/)
+to stay up to date with specifics as we get closer to the event!
 
 [Join us in Discord](https://discord.com/invite/dvwXA2N) to get all your DVC and
 CML questions answered!
