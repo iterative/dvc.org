@@ -18,7 +18,7 @@ In this section, we explore the basic features of DVC experiment management with
 the [`example-dvc-experiments`][ede] project.
 [ede]: https://github.com/iterative/example-dvc-experiments
 
-<details> 
+<details>
 
 ### Initializing a project into DVC experiments
 
