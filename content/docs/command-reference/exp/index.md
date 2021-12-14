@@ -38,7 +38,8 @@ positional arguments:
     push                Push a local experiment to a Git remote.
     pull                Pull an experiment from a Git remote.
     remove              Remove local experiments.
-    init                Codify project using DVC metafiles to run experiments.
+    init                Codify a project using DVC metafiles to run
+                        experiments.
 ```
 
 ## Description

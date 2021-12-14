@@ -24,7 +24,8 @@ usage: dvc exp init [-h] [-q | -v] [--run] [--interactive] [-f]
 boilerplate DVC procedures by creating a `dvc.yaml` file that assumes default
 location of your input data, <abbr>parameters</abbr>, source code, models,
 <abbr>metrics</abbr> and [plots](/doc/command-reference/plots). These locations
-can be customized through the options of this command or via config files.
+can be customized through the [options](#options) below or via config files.
+
 Standard repository structure:
 
 ```
@@ -38,23 +39,19 @@ Standard repository structure:
 
 > Note that `params.yaml` is the only required file (see `dvc params`).
 
-To use this feature, provide a `command` argument or use the `--interactive`
-(`-i`) mode and answer a few prompts (most of them optional). This wraps the
-command that runs your experiment(s) as a <abbr>stage</abbr> that `dvc exp run`
-can execute.
+You must provide a command that runs your experiments(s). This can be done
+either directly with the `command` argument, or by using the `--interactive`
+(`-i`) mode which will prompt you for it. This command will be wrapped as a
+<abbr>stage</abbr> that `dvc exp run` can execute.
 
 Different types of stages are supported, such as `dl` (deep learning) which uses
-[DVSLive](/doc/dvclive) to monitor [checkpoints] during training of ML models.
+[DVCLive](/doc/dvclive) to monitor [checkpoints] during training of ML models.
 
-> This command is intended as a quick way to start running experiments. See the
-> `dvc.yaml` specification for complex data pipelines.
+> `dvc exp init` is intended as a quick way to start running [DVC Experiments].
+> See the `dvc.yaml` specification for complex data pipelines.
 
 [checkpoints]: /doc/user-guide/experiment-management/checkpoints
-
-> 📖 More context in [Experiments Overview].
-
-[experiments overview]:
-  /doc/user-guide/experiment-management/experiments-overview
+[dvc experiments]: /doc/user-guide/experiment-management/experiments-overview
 
 ### The `command` argument
 
@@ -64,9 +61,9 @@ binary found in `PATH`. Please note that any flags sent after the `command` will
 typically become part of the command itself and ignored by `dvc exp init` (so
 put the command last).
 
-⚠️ While DVC is platform-agnostic, the commands defined in your
-[pipeline](/doc/command-reference/dag) stages may only work on some operating
-systems and require certain software packages or libraries.
+⚠️ While DVC is platform-agnostic, the commands defined in `dvc.yaml` may only
+work on some operating systems and require certain software packages or
+libraries in the environment.
 
 Surround the command with double quotes `"` if it includes special characters
 like `|` or `<`, `>` -- otherwise they would apply to `dvc exp init` itself. Use
