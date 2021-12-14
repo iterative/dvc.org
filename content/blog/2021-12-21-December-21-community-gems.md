@@ -145,6 +145,49 @@ You can write a custom callback to control saving everything and track it with
 DVC and this is the workaround we suggest. You can implement the
 `after_save_checkpoint` method and save the model file.
 
+The way this works is by breaking your training process into small stages. You
+should specify the stage’s checkpoint as the output of the stage and set it as a
+dependency for the next stage. That way if something breaks, the `dvc repro`
+command will resume your experiment from the last stage.
+
+Your pipeline might look something like this:
+
+```yaml
+stages:
+  stage_0:
+    cmd: python train.py
+    outs:
+      - checkpoints/checkpoint_epoch=0.ckpt
+  next:
+    foreach:
+      - prev: 0
+        next: 1
+      - prev: 1
+        next: 2
+    do:
+      cmd: python train.py --checkpoint ${item.prev}
+      deps:
+        - checkpoints/checkpoint_epoch=${item.prev}.ckpt
+      outs:
+        - checkpoints/checkpoint_epoch=${item.next}.ckpt
+```
+
+Then you'll need to reuse the `ModelCheckpoint` that is included in
+`pytorch_lightning` to capture the checkpoints. Here's a snippet of what that
+could look like in your training script:
+
+```python
+# set checkpoint path
+ckpt_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "checkpoints"))
+
+# checkpoints will be saved to checkpoints/checkpoint_epoch={epoch_number}.ckpt
+cp = pl.callbacks.model_checkpoint.ModelCheckpoint(
+    monitor="train_loss_epoch",
+    save_top_k=1,
+    dirpath=ckpt_path,
+    filename='checkpoint_{epoch}')
+```
+
 ### [Is there a feature for DVC to only sample and cache a subset of the tracked dataset?](https://discord.com/channels/485586884165107732/485596304961962003/917778575845900340)
 
 Really great question @Abdi!
