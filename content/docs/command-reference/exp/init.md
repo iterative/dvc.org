@@ -24,7 +24,7 @@ location of your input data, <abbr>parameters</abbr>, source code, models,
 <abbr>metrics</abbr> and [plots](/doc/command-reference/plots). These locations
 can be customized through the [options](#options) below or via config files.
 
-Standard repository structure:
+Assumed repository structure:
 
 ```
 ├── data/
@@ -38,10 +38,10 @@ Standard repository structure:
 > Note that by default `dvc exp init` expects at least a `params.yaml` file
 > present. It can be avoided via the `--params` or `-i` options.
 
-You must provide a command that runs your experiments(s). This can be done
-either directly with the `command` argument, or by using the `--interactive`
-(`-i`) mode which will prompt you for it. This command will be wrapped as a
-<abbr>stage</abbr> that `dvc exp run` can execute.
+You must provide a command that runs your experiment(s). It can be given either
+directly [as an argument](#the-command-argument), or by using the
+`--interactive` (`-i`) mode which will prompt you for it. This command will be
+wrapped as a <abbr>stage</abbr> that `dvc exp run` can execute.
 
 Different types of stages are supported, such as `dl` (deep learning) which uses
 [DVCLive](/doc/dvclive) to monitor [checkpoints] during training of ML models.
@@ -54,14 +54,14 @@ Different types of stages are supported, such as `dl` (deep learning) which uses
 
 ### The `command` argument
 
-The `command` given to `dvc exp init` can be anything your system terminal would
+The command given to `dvc exp init` can be anything your system terminal would
 accept and run directly, for example a shell built-in, an expression, or a
-binary found in `PATH`. Please note that any flags sent after the `command` will
-typically become part of the command itself and ignored by `dvc exp init` (so
-put the command last).
+binary found in `PATH`. Please note that any flags sent after the `command`
+argument will normally become part of that command itself and ignored by
+`dvc exp init` (so provide it last).
 
-⚠️ While DVC is platform-agnostic, the commands defined in `dvc.yaml` may only
-work on some operating systems and require certain software packages or
+⚠️ While DVC is platform-agnostic, commands defined in `dvc.yaml` (`cmd` field)
+may only work on some operating systems and require certain software packages or
 libraries in the environment.
 
 Surround the command with double quotes `"` if it includes special characters
@@ -76,12 +76,11 @@ $ dvc exp init './another_script.sh $MYENVVAR'
 
 ## Options
 
-- `-i`, `--interactive` - prompts user for the `command` to execute and for the
-  different paths where dependencies and outputs can be found, unless they are
-  provided through arguments explicitly. Interactive mode allows users to set
-  those locations from default values or omit them.
+- `-i`, `--interactive` - prompts user for a command that runs your
+  experiment(s) (see [details](#the-command-argument)) and to confirm or define
+  the paths that conform your repo's structure.
 
-- `--run` - automatically run the experiment after codifying it (same as
+- `--run` - automatically run the experiment after creating the stage (same as
   `dvc exp run`).
 
 - `--type` - selects the type of the stage to create. Currently it provides two
