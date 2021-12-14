@@ -1,8 +1,6 @@
 # exp init
 
-Codify an existing project using
-[DVC metafiles](/doc/user-guide/project-structure) to run
-[experiments](/doc/user-guide/experiment-management).
+Quickly setup any project to use [DVC Experiments].
 
 > Requires a <abbr>DVC repository</abbr>, created with `git init` and
 > `dvc init`.
