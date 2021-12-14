@@ -1,10 +1,12 @@
 import React, {
   useEffect,
   useState,
+  useRef,
   ReactNode,
   ReactElement,
   useContext
 } from 'react'
+import cn from 'classnames'
 import { nanoid } from 'nanoid'
 import { Node } from 'unist'
 import rehypeReact from 'rehype-react'
@@ -145,21 +147,29 @@ const Toggle: React.FC<{
   const tabsTitles = tabs.map(tab =>
     typeof tab === 'object' ? tab.props.title : ''
   )
+  const toggleEl = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
+    const tabParent =
+      toggleEl.current && toggleEl.current.closest('.toggle .tab')
+    const labelParentText =
+      tabParent &&
+      tabParent.previousElementSibling &&
+      tabParent.previousElementSibling.textContent
+
     if (toggleId === '') {
       const newId = nanoid()
-      addNewToggle(newId, tabsTitles)
+      addNewToggle(newId, tabsTitles, labelParentText)
       setToggleId(newId)
     }
 
     if (toggleId && !togglesData[toggleId]) {
-      addNewToggle(toggleId, tabsTitles)
+      addNewToggle(toggleId, tabsTitles, labelParentText)
     }
   }, [togglesData])
 
   return (
-    <div className={styles.toggle}>
+    <div className={cn('toggle', styles.toggle)} ref={toggleEl}>
       {tabs.map((tab, i) => (
         <ToggleTab
           ind={i}
@@ -179,7 +189,7 @@ const Toggle: React.FC<{
 }
 
 const Tab: React.FC = ({ children }) => (
-  <div className={styles.tab}>{children}</div>
+  <div className={cn('tab', styles.tab)}>{children}</div>
 )
 
 // Rehype's typedefs don't allow for custom components, even though they work
