@@ -15,7 +15,7 @@ descriptionLong: |
 
     🎙 Speech Diarization,
 
-    🧐 Research paper on MLOps AnitPatterns,
+    🧐 Research paper on MLOps AntiPatterns,
 
     📖 Docs updates,
 
@@ -44,23 +44,23 @@ month. Let's not waste a heartbeat and get right to it! 😉
 
 ## DVC + CML + RASA = ❤️
 
-[Matthew Upson](https://twitter.com/m_a_upson), Founder at
+[**Matthew Upson**](https://twitter.com/m_a_upson), Founder at
 [MantisNLP,](https://mantisnlp.com/) an AI consultancy focused on NLP, along
 with his team, put out the
 [first blog post](https://medium.com/mantisnlp/mlops-for-conversational-ai-with-rasa-dvc-and-cml-part-i-beec756e8e7f)
 in a series showing how to use DVC and CML along with Rasa in developing
 conversational AI. This post sets the scene for the following more detailed
-parts, but lays out DVC's use for generating the DAG as well logging metrics and
-CML to do the testing. We're looking forward to the next installments!
+parts, but lays out DVC's use for generating the DAG as well as logging metrics
+and CML to do the testing. We're looking forward to the next installments!
 
 ![Heartbeat!](https://media.giphy.com/media/HYrBxW4xsPSP3wsUTk/giphy.gif)
 
 ## Curious about Speaker Diarization?
 
-[The co-authored article entitled](https://blogs.cisco.com/developer/speakerdiarization01)
+[The co-authored article entitled,](https://blogs.cisco.com/developer/speakerdiarization01)
 “Who Said That?” A Technical Intro to Speaker Diarization," by
-[Dario Cazzani](https://www.linkedin.com/in/dariocazzani/), and
-[Alex Huang](https://github.com/alhuang10), machine learning engineers at
+[**Dario Cazzani**](https://www.linkedin.com/in/dariocazzani/), and
+[**Alex Huang**](https://github.com/alhuang10), machine learning engineers at
 [Cisco,](https://www.cisco.com/) provides an introduction to the topic of
 Speaker Diarization, or who spoke when, in audio recordings. Their team's
 solution takes you through the fingerprinting of voices, clustering to assign
@@ -78,7 +78,7 @@ _Dario Cazzani and team's process for assinging speaker labels to audio files
 
 ## Using DVC in Academic Research on a Compartmental Infectious Disease Model
 
-[Matthew Segal,](https://www.linkedin.com/in/matthew-segal-aa132093/)
+[**Matthew Segal**,](https://www.linkedin.com/in/matthew-segal-aa132093/)
 [in his post,](https://mattsegal.dev/devops-academic-research.html) "DevOps in
 Academic Research," reviews his work of applying some of the tried and true
 practices in DevOps to data science projects using a
@@ -121,10 +121,10 @@ In his post,
 [What is MLOps - Everything You Need to Know to Get Started,](https://towardsdatascience.com/what-is-mlops-everything-you-must-know-to-get-started-523f2d0b8bd8)
 [**Harshit Tyagi**](https://www.linkedin.com/in/tyagiharshit/) provides an
 overview of MLOps and why it's necessary for today's ML and AI to production
-projects. You will learn the different parts of the puzzle that make up MLOps
+projects. You will learn the different parts of the puzzle that make up MLOps,
 and review the machine learning life cycle. In the post, Harshit also provides a
 video of the concepts as well as an interview with our CEO,
-[Dmitry Petrov.](https://twitter.com/FullStackML) Be sure to check it out!
+[**Dmitry Petrov**.](https://twitter.com/FullStackML) Be sure to check it out!
 
 ![What is MLOps](/uploads/images/2021-12-15/harshit-tyagi.jpeg '=800') _Harshit
 Tyagi's ML Systems Engineering and Operations with their Stakeholders
@@ -132,23 +132,23 @@ Tyagi's ML Systems Engineering and Operations with their Stakeholders
 
 ## Using AntiPatterns to avoid MLOps Mistakes
 
-[Nikhil Maralidhar,](https://www.linkedin.com/in/nikhilmuralidhar/) et. al., in
-their survey paper,
+[**Nikhil Maralidhar**,](https://www.linkedin.com/in/nikhilmuralidhar/) et. al.,
+in their survey paper,
 [Using AntiPatterns to avoid MLOps Mistakes,](https://arxiv.org/abs/2107.00079)
 aim to develop a vocabulary for anti-patterns found in machine learning projects
 in the financial services industry. In the paper, they also give recommendations
-for acheiving MLOps at an enterprise scale using documentation and management.
-Luckily, our tools help you to solve some of these challenges!
+for acheiving MLOps at an enterprise scale using processes for documentation and
+management. Luckily, our tools help you to solve some of these challenges!
 
 You can also catch Nikhil's interview with
-[Ben Lorica](https://twitter.com/bigdata) from
+[**Ben Lorica**](https://twitter.com/bigdata) from
 [The Data Exchange](https://thedataexchange.media/)
 [podcast here.](https://thedataexchange.media/mlops-anti-patterns/)
 
 <external-link 
 href="https://arxiv.org/abs/2107.00079"
 title="Using AntiPatterns to avoid MLOps Mistakes"
-description="Nikhil Maralidhar, et. al. paper on AntiPatterns in MLOps in the Financial Service industry and recommendations for improving machine learning operations."
+description="Nikhil Maralidhar, et. al. paper on AntiPatterns in MLOps in the Financial Services industry and recommendations for improving machine learning operations."
 link="https://arxiv.org"
 image="/uploads/images/2021-12-15/arxiv.png"/>
 
@@ -198,10 +198,10 @@ https://media.giphy.com/media/5qy3GWYwCydByEn3O6/giphy.gif
 And don't miss
 [the latest Use Case on Machine Learning Experiment Tracking,](https://dvc.org/doc/use-cases/experiment-tracking)
 which outlines going from the traditional, painful, note taking, to more
-advanced methods and compares how DVC can take you to the next level!
+advanced methods, and compares how DVC can take you to the next level!
 
 ![Machine Learning Experiment Tracking](/uploads/images/2021-12-15/natural-experimentation.png)
-_Tired of this?
+_Tired of this? Check out our docs!
 ([Source link](https://dvc.org/doc/use-cases/experiment-tracking))_
 
 ## DVC Online Course Update!
@@ -210,7 +210,9 @@ The course is in editing mode and this week we are getting the second cuts for
 review. The first course will focus on DVC for Data Scientists and Analysts. The
 course is on track to be out by the end of the year! It will be 100% **FREE**
 and available from our websites. We are so excited about how it's coming to
-life! 🚀 Note the the Udemy channel in Discord has now changed to
+life! 🚀
+
+👀 Note the the Udemy channel in Discord has now changed to
 #iterative-online-course. We're getting ready!
 
 https://media.giphy.com/media/xUOxfh6ZM75efM3Bqo/giphy.gif
@@ -219,11 +221,11 @@ https://media.giphy.com/media/xUOxfh6ZM75efM3Bqo/giphy.gif
 
 Be sure to join us at the
 [January Office Hours Meetup,](https://www.meetup.com/DVC-Community-Virtual-Meetups/events/282663146/)
-where [Gennaro Todesco,](https://www.linkedin.com/in/gennarotedesco/) Senior
-Data Scientist at [Billie.io](https://www.billie.io/) will present his workflow
-with DVC and CML, and his Neovim-DVC plug-in.
-[Tezan Sahu,](https://www.linkedin.com/in/tezan-sahu/) will follow presenting a
-workflow from a series of tutorials that we shared from him in the
+where [**Gennaro Todesco**,](https://www.linkedin.com/in/gennarotedesco/) Senior
+Data Scientist at [Billie.io,](https://www.billie.io/) will present his workflow
+with DVC and CML, and his Neovim-DVC plugin.
+[**Tezan Sahu**,](https://www.linkedin.com/in/tezan-sahu/) will follow
+presenting a workflow from a series of tutorials that we shared from him in the
 [September Heartbeat,](https://dvc.org/blog/september-21-dvc-heartbeat)
 including DVC, PyCaret, MLFlow and FastAPI.
 
