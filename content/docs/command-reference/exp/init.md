@@ -82,61 +82,63 @@ $ dvc exp init './another_script.sh $MYENVVAR'
   provided through arguments explicitly. Interactive mode allows users to set
   those locations from default values or omit them.
 
+- `--run` - automatically run the experiment after codifying it (same as
+  `dvc exp run`).
+
 - `--type` - selects the type of the stage to create. Currently it provides two
   alternatives: `dl` and `default` (no need to specify this one).
 
-- `--explicit` - `dvc exp init` assumes default location of your outputs and
-  dependencies (which can be overriden from the config). By using `--explicit`,
-  it will not use those default values while initializing experiments. In
-  `--interactive` mode, prompt won't set default value and all the values for
-  the prompt needs to be explicitly provided, or omitted.
+  `dl` stages are intended for use in deep-learning scenarios, where metrics and
+  plots are tracked with [DVCLive](/doc/dvclive). This also supports logging
+  [checkpoints](/doc/command-reference/exp/run#checkpoints) during the training
+  of DL models.
 
-- `--code` - override the a path to your source file or directory which your
-  experiment depends on. The default is `src` directory for your code.
+- `--code` - set the path to the file or directory where the source code that
+  your experiment depends on can be found (if any). Overrides other
+  configuration and default value (`src/`).
 
-- `--data` - override the path to your data file or directory to track, which
-  your experiment depends on. The default is `data` directory.
+- `--params` - set the path to the file or directory where the
+  </abbr>parameters</abbr> that your experiment depends on can be found.
+  Overrides other configuration and default value (`params.yaml`).
 
-- `--params` - override the path to
-  [parameter dependencies](/doc/command-reference/params) which your experiment
-  depends on. The default parameters file name is `params.yaml`. Note that
-  `dvc exp init` may fail if the parameters file does not exist at the time of
-  the invocation, as DVC reads the file to find parameters to track for the
-  stage.
+  > Note that `dvc exp init` fails if the parameters file does not exist at the
+  > time of the invocation. This is because DVC reads that file to find params
+  > to include in the stage.
 
-- `--model` - override the path to your models file or directory to track, which
-  your experiment produces. `dvc exp init` assumes `models` directory by
-  default.
+- `--data` - set the path to the data file or directory that your experiment
+  depends on can be found (if any). Overrides other configuration and default
+  value (`data/`).
 
-- `--metrics` - override the path to metrics file to track, which your
-  experiment produces. Default is `metrics.json` file.
+- `--model` - set the path to the file or directory where the model(s) produced
+  by your experiment can be found (if any). Overrides other configuration and
+  default value (`models/`).
 
-- `--plots` - override the path to plots file or directory, which your
-  experiment produces. The default is `plots`.
+  > 💡 This could be used for any artifacts produced by your experiment.
 
-- `--live` - override the directory `path` for [DVCLive](/doc/dvclive), which
-  your experiment will write logs to. The default is `dvclive` directory, which
-  only comes to effect when used with `--type=dl`.
+- `--metrics` - set the path to the file or directory where the metrics produced
+  by your experiment can be found (if any). Overrides other configuration and
+  default value (`metrics.json`).
 
-  `default` stage creates a stage with `metrics` and `plots` tracked by DVC
-  itself, and does not track live-created artifacts (unless explicitly
-  specified).
+- `--plots` - set the path to the file or directory where the plots produced by
+  your experiment can be found (if any). Overrides other configuration and
+  default value (`plots/`).
 
-  `dl` stage is intended for use in deep-learning scenarios, where metrics and
-  plots are tracked by [dvclive](/doc/dvclive) and supports tracking progress
-  while training a deep-learning model with
-  [checkpoints](/doc/command-reference/exp/run#checkpoints).
+- `--live` - configure the `path` directory for [DVCLive](/doc/dvclive). This is
+  where experiment logs will be written. Overrides other configuration and
+  default value (`dvclive/`).
+
+  > This only has an effect when used with `--type=dl`.
+
+- `--explicit` - do not assume default locations of project dependencies and
+  outputs. You'll have to provide specific locations via other options or config
+  files. If combined with `--interactive`, prompts won't have default values.
 
 - `-n <stage>`, `--name <stage>` - specify a custom name for the stage generated
-  by this command (e.g. `-n train`). The default is `train`.
-
-  Note that the stage name can only contain letters, numbers, dash `-` and
-  underscore `_`.
+  by this command. The default is `train`. It can only contain letters, numbers,
+  dash `-` and underscore `_` (same as `dvc stage add --name`).
 
 - `-f`, `--force` - overwrite an existing stage in `dvc.yaml` file without
-  asking for confirmation.
-
-- `--run` - runs the experiment after initializing it.
+  asking for confirmation (same as `dvc stage add --force`).
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
