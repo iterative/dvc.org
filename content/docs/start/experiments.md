@@ -15,8 +15,8 @@ need to Git to version them with their lineage.
 https://youtu.be/FHQq_zZz5ms
 
 In this section, we explore the basic features of DVC experiment management with
-the [`example-dvc-experiments`][ede] project.
-[ede]: https://github.com/iterative/example-dvc-experiments
+the [`example-dvc-experiments`][ede] project. [ede]:
+https://github.com/iterative/example-dvc-experiments
 
 <details>
 
@@ -24,8 +24,8 @@ the [`example-dvc-experiments`][ede] project.
 
 If you already have a DVC project, that's great. You can start to use `dvc exp`
 commands right away to create experiments in your project. (See the [user's
-guide] for detailed information.) In this section, we focus how to structure
-an ML project into a DVC experiments project with `dvc exp init`.
+guide] for detailed information.) In this section, we focus how to structure an
+ML project into a DVC experiments project with `dvc exp init`.
 
 [user's guide]: /doc/user-guide/experiment-management/
 
