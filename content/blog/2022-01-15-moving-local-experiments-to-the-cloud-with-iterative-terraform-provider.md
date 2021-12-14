@@ -42,7 +42,7 @@ that contains 5,100+ bee images annotated with location, date, time, subspecies,
 health condition, caste, and pollen. I've downloaded the images, created a
 project and trained a simple CNN model locally to classify different subspecies.
 If you want to follow along, you can use your own data and training code, or
-clone [my repo from GitHub](https://github.com/MKhalusova/bees).
+clone [the example repo from GitHub](https://github.com/MKhalusova/bees).
 
 Let's pretend that the model I trained is good enough so that I would like to
 continue iterating on it in the cloud. Run more epochs? Change some
@@ -69,8 +69,8 @@ Iterative Terraform Provider.
 ## What is Terraform?
 
 [Terraform](https://www.terraform.io) is an open-source infrastructure-as-code
-tool that you'll need to download and install with [homebrew](https://brew.sh/)
-for this tutorial: `brew install terraform`. With Terraform, you can create a
+tool that you'll need to [download and install](https://www.terraform.io/downloads.html)
+for this tutorial. With Terraform, you can create a
 configuration file in which you declaratively describe what infrastructure you'd
 like to have. This means that you do not need to write the instructions on what
 exact steps need to be taken. Instead, you describe what your
@@ -86,8 +86,8 @@ majority of projects you only need a few. That's why instead of shipping all the
 integrations in one bundle, you install a barebones Terraform distribution and
 then plug in support for whatever resources you need with so-called
 [*providers*](https://www.terraform.io/docs/extend/how-terraform-works.html).
-For this tutorial we will only need one provider -
-[Iterative Terraform Provider](https://registry.terraform.io/providers/iterative/iterative/latest).
+For this tutorial we will only need 
+[Iterative Provider](https://registry.terraform.io/providers/iterative/iterative/latest).
 It enables full lifecycle management of computing resources for machine learning
 pipelines from AWS, Microsoft Azure, Google Cloud Platform, and more. The
 Iterative Provider has a couple of advantages for machine learning pipelines.
@@ -105,7 +105,7 @@ Namely,
 To start using the Iterative Provider we need to let Terraform know about it by
 adding the following in our `main.tf`:
 
-```
+```hcl
 terraform {
     required_providers {
         iterative = {
@@ -136,7 +136,7 @@ This is exactly what we need to run a model training process! Let's see how we
 can configure the `iterative_task`. First, I'll show you what my configuration
 file looks like, and then we'll unpack what's going on here:
 
-```
+```hcl
 terraform {
     required_providers {
         iterative = {
@@ -166,8 +166,8 @@ resource "iterative_task" "tpi-examples-basic" {
 
 Every Terraform resource needs a name, and mine is called `tpi-examples-basic`
 here. This name is only used within the configuration file and it can be
-whatever you want. Inside of the resource block, we specify the resource
-arguments:
+whatever you want. Inside of the resource block, we specify the 
+[resource arguments](https://registry.terraform.io/providers/iterative/iterative/latest/docs/resources/task#argument-reference):
 
 - _name_ (**required**): this is a name that will be used to set up the cloud
   resources, and it does not have to be the same as the `iterative_task` name.
@@ -204,7 +204,7 @@ complex.
 Setting up the environment to leverage GPU devices is a bit involved as you need
 to make sure you have the required drivers, NVIDIA-docker, and CUDA.
 
-```
+```hcl
 resource "iterative_task" "tpi-examples-gpu" {
     name      = "tpi-examples-gpu"
     cloud     = "aws"
