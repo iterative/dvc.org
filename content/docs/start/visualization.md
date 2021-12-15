@@ -82,11 +82,13 @@ Then we add this callback to `fit` callbacks.
 ```python
 model.fit(
  ...
- callbacks=[DvcLiveCallback(model_file=f"{OUTPUT_DIR}/model.h5")],
+ callbacks=[DvcLiveCallback()],
  ...)
 ```
 
-With these two changes, we can see the plots showing the defined metrics in our model. 
+With these two changes, we can see the plots showing the defined metrics in our
+model. 
+
 
 
 
