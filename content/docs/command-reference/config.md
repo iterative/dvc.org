@@ -96,8 +96,17 @@ multiple projects or users, respectively.
 
 ## Configuration sections
 
-The following config sections are written by this command to the project config
-file (in `.dvc/config` by default), and they support the options below:
+The following config sections are written by this command to the appropriate
+config file (`.dvc/config` by default), supporting different config options
+within:
+
+- [`core`](#core)
+- [`remote`](#remote)
+- [`cache`](#cache)
+- [`exp`](#exp)
+- [`plots`](#plots)
+- [`state`](#state)
+- [`index`](#index)
 
 ### core
 
@@ -245,6 +254,12 @@ be overidden explicitly through CLI arguments or through responses in prompts
 
 - `exp.live` - path to your dvclive outputs.
 
+### plots
+
+- `plots.html_template` - sets a
+  [custom HTML template](/doc/command-reference/plots#html-templates) for
+  `dvc plots`. Accepts a path relative to the `.dvc/` folder.
+
 ### state
 
 > 📖 See
@@ -274,12 +289,6 @@ be overidden explicitly through CLI arguments or through responses in prompts
 - `index.dir` - specify a custom location for the directory where remote index
   files will be stored, by default in `.dvc/tmp/index`. This may be necessary
   when using DVC on NFS or other mounted volumes.
-
-### plots
-
-- `plots.html_template` - sets a
-  [custom HTML template](/doc/command-reference/plots#html-templates) for
-  `dvc plots`. Accepts a path relative to the `.dvc/` folder.
 
 ## Example: Add an S3 remote, and set it as default
 
