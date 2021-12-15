@@ -105,8 +105,8 @@ within:
   remotes
 - [`cache`](#cache) - contains the options that affect the project's
   <abbr>cache</abbr>.
-- [`exp`](#exp) - overrides default configured workspace paths in
-  `dvc exp init`.
+- [`exp`](#exp) - options to change the default repo paths assumed by
+  `dvc exp init`
 - [`plots`](#plots) - contains an option to set custom HTML templates.
 - [`state`](#state) - see [Internal directories and files][internals] to learn
   more about the state database.
@@ -234,26 +234,24 @@ connection settings, and configuring a remote is the way that can be done.
 
 ### exp
 
-Overriding default configured workspace paths in `dvc exp init` helps to avoid
-repeating these paths if all of your projects share a similar structure.
+Sets the default paths assumed by `dvc exp init`. This can help avoid overriding
+them repeatedly with that command's options, for example if all of your
+experiments or projects use a similar structure.
 
-The section contains following options, which are only used as a default and can
-be overidden explicitly through CLI arguments or through responses in prompts
-(in `--interactive` mode).
+- `exp.code` - path to your source file or directory <abbr>dependency</abbr>.
 
-- `exp.code` - path to your source file or directory.
+- `exp.params` - path to your <abbr>parameters</abbr> file.
 
-- `exp.data` - path to your data file or directory to track.
+- `exp.data` - path to your data file or directory dependency.
 
-- `exp.models` - path to your models file or directory.
+- `exp.models` - path to your model/artifact(s) file or directory
+  <abbr>output</abbr>.
 
-- `exp.metrics` - path to your metrics file.
+- `exp.metrics` - path to your metrics file output.
 
-- `exp.params` - path to your parameters file.
+- `exp.plots` - path to your plots file or directory output.
 
-- `exp.plots` - path to your plots file or directory.
-
-- `exp.live` - path to your dvclive outputs.
+- `exp.live` - path to your [DVCLive](/doc/dvclive) output logs.
 
 ### plots
 
