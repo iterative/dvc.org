@@ -1,6 +1,6 @@
 # freeze
 
-Freeze [stages](/doc/command-reference/run) until `dvc unfreeze` is used on
+Freeze [stages](/doc/command-reference/stage) until `dvc unfreeze` is used on
 them. Frozen stages are never executed by `dvc repro`.
 
 ## Synopsis
@@ -14,7 +14,7 @@ positional arguments:
 
 ## Description
 
-`dvc freeze` causes the [stages](/doc/command-reference/run) indicated as
+`dvc freeze` causes the [stages](/doc/command-reference/stage) indicated as
 `targets` to be considered _not changed_ by `dvc status` and `dvc repro`. Stage
 reproduction will not regenerate <abbr>outputs</abbr> of frozen stages, even if
 their <abbr>dependencies</abbr> have changed, and even if `--force` is used.
@@ -44,10 +44,10 @@ First, let's create a dummy stage that copies `foo` to `bar`:
 ```dvc
 $ echo foo > foo
 $ dvc add foo
-$ dvc run -n make_copy -d foo -o bar cp foo bar
+$ dvc stage add -n make_copy -d foo -o bar cp foo bar
 ```
 
-> See `dvc run` for more details.
+> See `dvc stage add` for more details.
 
 Then, let's change the file `foo` that the stage `make_copy` depends on:
 
