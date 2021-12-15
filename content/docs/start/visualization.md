@@ -71,13 +71,15 @@ A major requirement for deep learning projects is to see in which epoch training
 loss and validation loss differs. DVC helps in that regard with its integrations
 to major deep learning libraries via DVCLive.
 
-The example project uses Keras to train a classifier, and fortunately we have a DVCLive callback that visualizes the training and validation loss for each epoch. We first import the callback from DVCLive.
+The example project uses Keras to train a classifier, and fortunately we have a
+DVCLive callback that visualizes the training and validation loss for each
+epoch. We first import the callback from DVCLive.
 
 ```python
 from dvclive.keras import DvcLiveCallback
 ```
 
-Then we add this callback to `fit` callbacks. 
+Then we add this callback to `fit` callbacks.
 
 ```python
 model.fit(
@@ -87,11 +89,12 @@ model.fit(
 ```
 
 With these two changes, we can see the plots showing the defined metrics in our
-model. 
+model. You can see the HTML report with your browser in
+`training_metrics/index.html` file.
 
+<<IMAGE_GOES_HERE>>
 
+DVCLive has other capabilities, like saving the model every epoch or modifying
+these default values. Please refer to [DVClive documentation] for details.
 
-
-- [ ] Configure the plots to use dvclive output
-- [ ] Generate a plot file and open it in the browser
-- [ ] Generate a plot image and use `dvc plot` on it
+[dvclive documentation]: /doc/dvclive/dvclive-with-dvc
