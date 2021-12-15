@@ -100,17 +100,22 @@ The following config sections are written by this command to the appropriate
 config file (`.dvc/config` by default), supporting different config options
 within:
 
-- [`core`](#core)
-- [`remote`](#remote)
-- [`cache`](#cache)
-- [`exp`](#exp)
-- [`plots`](#plots)
-- [`state`](#state)
-- [`index`](#index)
+- [`core`](#core) - main section with the general config options
+- [`remote`](#remote) - sections in the config file that describe particular
+  remotes
+- [`cache`](#cache) - contains the options that affect the project's
+  <abbr>cache</abbr>.
+- [`exp`](#exp) - overrides default configured workspace paths in
+  `dvc exp init`.
+- [`plots`](#plots) - contains an option to set custom HTML templates.
+- [`state`](#state) - see [Internal directories and files][internals] to learn
+  more about the state database.
+- [`index`](#index) - see [Internal directories and files][internals] to learn
+  more about remote index files.
+
+[internals]: (/doc/user-guide/project-structure/internal-files)
 
 ### core
-
-This is the main section with the general config options:
 
 - `core.remote` - name of the remote storage to use by default.
 
@@ -147,15 +152,12 @@ This is the main section with the general config options:
 
 ### remote
 
-These are sections in the config file that describe particular remotes. They
-contain a `url` value, and can also specify `user`, `port`, `keyfile`,
-`timeout`, `ask_password`, and other cloud-specific key/value pairs for each
-remote. See `dvc remote` for more information.
+All `remote` sections contain a `url` value, and can also specify `user`,
+`port`, `keyfile`, `timeout`, `ask_password`, and other cloud-specific key/value
+pairs for each remote. See `dvc remote add` and `dvc remote modify` for more
+information.
 
 ### cache
-
-This section contains the following options, which affect the project's
-<abbr>cache</abbr>:
 
 - `cache.dir` - set/unset cache directory location. A correct value is either an
   absolute path, or a path **relative to the config file location**. The default
@@ -232,9 +234,8 @@ connection settings, and configuring a remote is the way that can be done.
 
 ### exp
 
-This section overrides default configured workspace paths in `dvc exp init`,
-that helps to avoid repeating these paths if all of your projects share a
-similar structure.
+Overriding default configured workspace paths in `dvc exp init` helps to avoid
+repeating these paths if all of your projects share a similar structure.
 
 The section contains following options, which are only used as a default and can
 be overidden explicitly through CLI arguments or through responses in prompts
@@ -262,10 +263,6 @@ be overidden explicitly through CLI arguments or through responses in prompts
 
 ### state
 
-> 📖 See
-> [Internal directories and files](/doc/user-guide/project-structure/internal-files)
-> to learn more about the state databases.
-
 - `state.row_limit` - maximum number of entries in state databases. This affects
   the physical size of the state files, as well as the performance of certain
   DVC operations. The default is 10,000,000 rows. The bigger the limit, the
@@ -281,10 +278,6 @@ be overidden explicitly through CLI arguments or through responses in prompts
   permission errors.
 
 ### index
-
-> 📖 See
-> [Internal directories and files](/doc/user-guide/project-structure/internal-files)
-> to learn more about remote index files.
 
 - `index.dir` - specify a custom location for the directory where remote index
   files will be stored, by default in `.dvc/tmp/index`. This may be necessary
