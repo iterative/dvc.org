@@ -178,7 +178,7 @@ under `repo`:
 
 ```yaml
 deps:
-  - path: data/data.xml
+  - path: use-cases/cats-dogs
     repo:
       url: git@github.com:iterative/dataset-registry.git
       rev: cats-dogs-v1
@@ -193,7 +193,7 @@ will not have an effect on the import `.dvc` file. You may force-update it to a
 different commit with `dvc update --rev`:
 
 ```dvc
-$ dvc update --rev cats-dogs-v2
+$ dvc update --rev cats-dogs-v2 cats-dogs.dvc
 ```
 
 > In the above example, the value for `rev` in the new `.dvc` file will be
