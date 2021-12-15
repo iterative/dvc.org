@@ -51,7 +51,7 @@ with his team, put out the
 in a series showing how to use DVC and CML along with Rasa in developing
 conversational AI. This post sets the scene for the following more detailed
 parts, but lays out DVC's use for generating the DAG as well as logging metrics
-and CML to do the testing. We're looking forward to the next installments!
+and using CML to do the testing. We're looking forward to the next installments!
 
 ![Heartbeat!](https://media.giphy.com/media/HYrBxW4xsPSP3wsUTk/giphy.gif)
 
@@ -91,29 +91,27 @@ tests
 [(with a guide link),](https://mattsegal.dev/pytest-on-github-actions.html)
 contiunuous integration, and data management (where he recommends DVC).
 
-![Map Pipeline](/uploads/images/2021-12-15/matt-segal.png '=800') _Working to
+![Map Pipeline](/uploads/images/2021-12-15/matt-segal.png '=500') _Working to
 develop a pipeline
 ([Source link](https://mattsegal.dev/devops-academic-research.html))_
 
 ## Are you confused by how many MLOps tools there are?
 
+![Thoughtworks Trianglethoughtwork](/uploads/images/2021-12-15/thoughtworks-mlops-landscape.png 'Thoughtworks Platform vs. Specialist Triangle :wrap-right ==450')
+
 Well
 [Thoughtworks](https://www.thoughtworks.com/?utm_source=google-search&utm_medium=paid-media&utm_campaign=always-on-brand_2021-11&utm_term=thoughtworks&utm_content=RSAad1&gclid=Cj0KCQiA2NaNBhDvARIsAEw55hg2li5srltu8ppVsxLzcnv-pYWRmvnCk_jmljiC2ocyM4tc7EUEt9gaAoVWEALw_wcB)
 included DVC in its recent
 [Thoughtworks Guide to MLOps Platforms](https://www.thoughtworks.com/what-we-do/data-and-ai/cd4ml/guide-to-evaluating-mlops-platforms).
-While being included is great, things move so fast that they seemed to miss our
-experiment capabilities and the CI/CD capabilities for machine learning of CML.
-🤔
-
-![Thoughtworks Trianglethoughtwork](/uploads/images/2021-12-15/thoughtworks-mlops-landscape.png)
-_Thoughtworks Platform vs. Specialits Triangle
-([Source link](https://github.com/thoughtworks/mlops-platforms#mlops-platforms))_
+While being included is great, things move so fast that they seemed to have
+missed our experiment capabilities and the CI/CD capabilities for machine
+learning of CML.🤔
 
 And if they only knew what's to come! 🚀 Lots planned in the new year!
 
-![They don't know DVC has more tools coming](/uploads/images/2021-12-15/more-tools.png '=500')
+![They don't know DVC has more tools coming](/uploads/images/2021-12-15/more-tools.png ' =800')
 _Dmitry Petrov's meme
-([Source link](https://twitter.com/FullStackML/status/1465428233336201218?s=20))_
+([Source Link](https://twitter.com/FullStackML/status/1465428233336201218?s=20))_
 
 ## What is MLOps - Everything You Must Know to Get Started
 
