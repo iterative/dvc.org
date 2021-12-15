@@ -157,7 +157,7 @@ resource "iterative_task" "tpi-examples-basic" {
     script = <<-END
     #!/bin/bash
     sudo apt update
-    sudo apt-get install -y software-properties-common build-essential python3-pip
+    sudo apt-get install -y python3-pip
     pip3 install -r requirements.txt
     python3 src/train.py
     END
@@ -215,7 +215,7 @@ resource "iterative_task" "tpi-examples-gpu" {
     script = <<-END
     #!/bin/bash
     sudo apt update
-    sudo apt-get install -y software-properties-common build-essential ubuntu-drivers-common
+    sudo apt-get install -y ubuntu-drivers-common
     sudo ubuntu-drivers autoinstall
 
     sudo curl -fsSL https://get.docker.com -o get-docker.sh && sudo sh get-docker.sh &&
