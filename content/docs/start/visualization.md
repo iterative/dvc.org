@@ -67,7 +67,9 @@ DVC automatically shows the image in an HTML page.
 
 <<IMAGE_GOES_HERE>>
 
-A major requirement for deep learning projects is to see in which epoch training loss and validation loss differs. DVC helps in that regard with its integrations to major deep learning libraries via DVCLive. 
+A major requirement for deep learning projects is to see in which epoch training
+loss and validation loss differs. DVC helps in that regard with its integrations
+to major deep learning libraries via DVCLive.
 
 We use the following code snippet to see the training loss 
 
