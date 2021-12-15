@@ -15,8 +15,8 @@ need to Git to version them with their lineage.
 https://youtu.be/FHQq_zZz5ms
 
 In this section, we explore the basic features of DVC experiment management with
-the [`example-dvc-experiments`][ede] project.
-[ede]: https://github.com/iterative/example-dvc-experiments
+the [`example-dvc-experiments`][ede] project. [ede]:
+https://github.com/iterative/example-dvc-experiments
 
 <details>
 
@@ -24,8 +24,8 @@ the [`example-dvc-experiments`][ede] project.
 
 If you already have a DVC project, that's great. You can start to use `dvc exp`
 commands right away to create experiments in your project. (See the [user's
-guide] for detailed information.) In this section, we focus how to structure
-an ML project into a DVC experiments project with `dvc exp init`.
+guide] for detailed information.) In this section, we focus how to structure an
+ML project into a DVC experiments project with `dvc exp init`.
 
 [user's guide]: /doc/user-guide/experiment-management/
 
@@ -157,24 +157,16 @@ that define adjustable parameters to train a model, do pre-processing, etc. DVC
 provides a mechanism for stages to depend on the values of specific sections of
 such a file (YAML, JSON, TOML, and Python formats are supported).
 
-The `train` stage is created with the following `dvc stage add` command. Notice
-the arguments with `-p` option (short for `--params`)
+We initialize an experiment using:
 
 ```dvc
-dvc stage add -n train \
-                -d data/images/ \
-                -d src/train.py \
-                -p model.conv_units \
-                -p train.epochs \
-                -o models/model.h5 \
-                --live metrics \
-                python3 src/train.py
+$ dvc exp init python src/train.py
 ```
 
-The `params` section defines the parameter dependencies of the `train` stage. By
-default, DVC reads those values (`model.conv_units` and `train.epochs`) from
-`params.yaml` file. You can also set the parameter file name by supplying it
-before the parameter name, like `-p myparams.json:model.units`.
+DVC assumes there is a parameters file named `params.yaml` in your project. (You
+can specify the file name with `--params` option, or with `--interactive` flag
+.) By default, DVC parses this file and creates dependencies to the variables
+(`model.conv_units` and `train.epochs`) found in the file.
 
 Here is the contents of `params.yaml` file:
 
@@ -190,10 +182,10 @@ with the values you set in the command line before running the experiment.
 
 Metrics are what you use to evaluate your models. DVC allows any scalar values
 to be used as metrics. It's able to track the metrics we defined in the code
-with the Keras integration introduced recently. Before that, we were using
-`--metrics` and `--metrics-no-cache` options of `dvc stage add` to define
-metrics to DVC, and write the metrics in the code manually. Please see
-`dvc metrics` for this kind of explicitly defined metrics.
+with the Keras integration introduced recently. You can also specify a custom
+metrics file using `--metrics` option of `dvc exp init`, and write the metrics
+in the code manually. Please see `dvc metrics` for this kind of explicitly
+defined metrics.
 
 </details>
 
