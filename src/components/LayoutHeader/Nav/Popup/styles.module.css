@@ -45,6 +45,10 @@
   background-image: url("../../../../../static/img/studio_icon-color--square_vector.svg");
 }
 
+.mlemIcon {
+  background-image: url("../../../../../static/img/mlem-icon.svg");
+}
+
 .communityPopup {
   row-gap: 4px;
   width: 260px;

@@ -14,6 +14,7 @@ import { ReactComponent as DiscordSVG } from '../SocialIcon/discord.svg'
 import { ReactComponent as CmlSVG } from '../../../static/img/cml_icon-color--square_vector.svg'
 import { ReactComponent as StudioSVG } from '../../../static/img/studio_icon-color--square_vector.svg'
 import { ReactComponent as IterativeSVG } from '../../../static/img/iterative_icon-color--square_vector.svg'
+import { ReactComponent as MlemSVG } from '../../../static/img/mlem-icon.svg'
 
 import * as styles from './styles.module.css'
 
@@ -116,6 +117,12 @@ const footerListsData: Array<IFooterListData> = [
         href: 'https://studio.iterative.ai/',
         text: 'Studio',
         icon: <StudioSVG className={styles.productIcon} />,
+        target: '_blank'
+      },
+      {
+        href: 'https://mlem.ai/',
+        text: 'MLEM',
+        icon: <MlemSVG className={styles.productIcon} />,
         target: '_blank'
       }
     ]

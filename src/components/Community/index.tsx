@@ -10,6 +10,7 @@ import Learn from './Learn'
 import Events from './Events'
 
 import * as styles from './styles.module.css'
+import Testimonial from './Testimonial'
 
 const themes = {
   green: { backgroundColor: '#C2E6EE', color: '#13ADC7' },
@@ -22,17 +23,20 @@ export interface ICommunitySectionTheme {
   color: string
 }
 
-const Community: React.FC = () => (
-  <>
-    <PageContent className={styles.content}>
-      <Hero />
-      <Meet theme={themes.purple} />
-      <Contribute theme={themes.orange} />
-      <Learn theme={themes.green} />
-      <Events theme={themes.purple} />
-    </PageContent>
-    <SubscribeSection />
-  </>
-)
+const Community: React.FC = () => {
+  return (
+    <>
+      <PageContent className={styles.content}>
+        <Hero />
+        <Meet theme={themes.purple} />
+        <Testimonial theme={themes.purple} />
+        <Contribute theme={themes.orange} />
+        <Learn theme={themes.green} />
+        <Events theme={themes.purple} />
+      </PageContent>
+      <SubscribeSection />
+    </>
+  )
+}
 
 export default Community

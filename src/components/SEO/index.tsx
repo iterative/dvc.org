@@ -1,11 +1,10 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import Helmet from 'react-helmet'
+import { IGatsbyImageData } from 'gatsby-plugin-image'
 
-import { IPaginatorPageInfo } from '../Paginator'
 import getSiteMeta from '../../queries/siteMeta'
-import { getSrc, getImage, IGatsbyImageData } from 'gatsby-plugin-image'
-
-export type MetaProps = JSX.IntrinsicElements['meta']
+import { IPaginatorPageInfo } from '../Paginator'
+import { buildMetadata, MetaProps } from './helper'
 
 interface ISEOProps {
   title?: string
@@ -31,86 +30,38 @@ const SEO: React.FC<ISEOProps> = ({
   children
 }) => {
   const siteMeta = getSiteMeta()
-  const prebuildMeta: MetaProps[] = []
-
-  if (pageInfo && pageInfo.currentPage > 1) {
-    title = `${title || siteMeta.title} page ${pageInfo.currentPage}`
-  }
-
-  if (title && !defaultMetaTitle) {
-    prebuildMeta.push(
-      {
-        property: 'og:title',
-        content: title
-      },
-      {
-        name: 'twitter:title',
-        content: title
-      }
+  const pageTitle = useMemo(() => {
+    return pageInfo && pageInfo.currentPage > 1
+      ? `${title || siteMeta.title} page ${pageInfo.currentPage}`
+      : title
+  }, [title, siteMeta, pageInfo])
+  const prebuildMeta = useMemo(() => {
+    return buildMetadata(
+      siteMeta.siteUrl,
+      pageTitle,
+      defaultMetaTitle,
+      description,
+      keywords,
+      image,
+      imageAlt
     )
-  }
-
-  if (description) {
-    prebuildMeta.push(
-      {
-        name: 'description',
-        content: description
-      },
-      {
-        property: 'og:description',
-        content: description
-      },
-      {
-        name: 'twitter:description',
-        content: description
-      }
-    )
-  }
-
-  if (keywords) {
-    prebuildMeta.push({
-      name: 'keywords',
-      content: keywords
-    })
-  }
-
-  if (image) {
-    const imageUrl = siteMeta.siteUrl + getSrc(image)
-    const imageData = getImage(image)
-
-    prebuildMeta.push(
-      {
-        property: 'og:image',
-        content: imageUrl
-      },
-      {
-        name: 'og:image:alt',
-        content: imageAlt
-      },
-      {
-        property: 'og:image:width',
-        content: String(imageData?.width)
-      },
-      {
-        property: 'og:image:height',
-        content: String(imageData?.height)
-      },
-      {
-        name: 'twitter:image',
-        content: imageUrl
-      },
-      {
-        name: 'twitter:image:alt',
-        content: imageAlt
-      }
-    )
-  }
+  }, [
+    siteMeta,
+    pageTitle,
+    defaultMetaTitle,
+    description,
+    keywords,
+    image,
+    imageAlt
+  ])
 
   return (
-    <Helmet title={title} meta={[...prebuildMeta, ...meta]}>
+    <Helmet title={pageTitle} meta={[...prebuildMeta, ...meta]}>
       {children}
     </Helmet>
   )
 }
+
+export * from './helper'
 
 export default SEO

@@ -95,6 +95,7 @@
         "label": "Fast and Secure Data Caching Hub",
         "slug": "fast-data-caching-hub"
       },
+      "experiment-tracking",
       "data-registries"
     ]
   },
@@ -136,6 +137,7 @@
         "slug": "experiment-management",
         "source": "experiment-management/index.md",
         "children": [
+          "experiments-overview",
           "running-experiments",
           "comparing-experiments",
           "sharing-experiments",
@@ -259,6 +261,10 @@
           {
             "label": "exp show",
             "slug": "show"
+          },
+          {
+            "label": "exp init",
+            "slug": "init"
           },
           {
             "label": "exp diff",

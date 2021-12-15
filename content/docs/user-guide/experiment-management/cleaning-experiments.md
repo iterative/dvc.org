@@ -2,7 +2,9 @@
 
 Although DVC uses minimal resources to keep track of the experiments, they may
 clutter tables and the workspace. DVC allows to remove specific experiments from
-the workspace or delete all not-yet-persisted experiments at once.
+the workspace or delete all not-yet-[persisted] experiments at once.
+
+[persisted]: /doc/user-guide/experiment-management/persisting-experiments
 
 ## Removing specific experiments
 
