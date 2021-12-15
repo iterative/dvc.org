@@ -71,7 +71,23 @@ A major requirement for deep learning projects is to see in which epoch training
 loss and validation loss differs. DVC helps in that regard with its integrations
 to major deep learning libraries via DVCLive.
 
-We use the following code snippet to see the training loss 
+The example project uses Keras to train a classifier, and fortunately we have a DVCLive callback that visualizes the training and validation loss for each epoch. We first import the callback from DVCLive.
+
+```python
+from dvclive.keras import DvcLiveCallback
+```
+
+Then we add this callback to `fit` callbacks. 
+
+```python
+model.fit(
+ ...
+ callbacks=[DvcLiveCallback(model_file=f"{OUTPUT_DIR}/model.h5")],
+ ...)
+```
+
+With these two changes, we can see the plots showing the defined metrics in our model. 
+
 
 
 - [ ] Configure the plots to use dvclive output
