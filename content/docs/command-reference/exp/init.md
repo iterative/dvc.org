@@ -3,6 +3,9 @@
 Codify project using [DVC metafiles](/doc/user-guide/project-structure) to run
 [experiments](/doc/user-guide/experiment-management).
 
+> Requires a <abbr>DVC repository</abbr>, created with `git init` and
+> `dvc init`.
+
 ## Synopsis
 
 ```usage
@@ -31,6 +34,11 @@ training of machine learning models.
 
 This command is intended to be a quick way to start running experiments. To
 create more complex stages and pipelines, use `dvc stage add`.
+
+> 📖 More context in [Experiments Overview].
+
+[experiments overview]:
+  /doc/user-guide/experiment-management/experiments-overview
 
 ### The `command` argument
 

@@ -23,6 +23,7 @@ interface ICommunityLinkData {
 
 const communityPopupData: Array<ICommunityLinkData> = [
   { text: 'Meet the Community', href: '/community' },
+  { text: 'Testimonials', href: '/community#testimonial' },
   { text: 'Contribute', href: '/community#contribute' },
   { text: 'Learn', href: '/community#learn' },
   { text: 'Events', href: '/community#events' }
@@ -46,6 +47,13 @@ const otherToolsPopupData: Array<IOtherToolsLinkData> = [
     iconClass: styles.cmlIcon,
     description: 'Open-source CI/CD for ML projects',
     href: 'https://cml.dev/'
+  },
+  {
+    title: 'MLEM',
+    iconClass: styles.mlemIcon,
+    description:
+      'Open-source model registry and deployment tool for ML projects',
+    href: 'https://mlem.ai/'
   }
 ]
 

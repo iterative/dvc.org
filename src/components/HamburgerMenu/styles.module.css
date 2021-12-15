@@ -152,6 +152,8 @@ a.sectionHeading {
 
 .subSections {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
   padding-bottom: 15px;
 }
 
@@ -160,6 +162,14 @@ a.sectionHeading {
 
   & + & {
     margin-left: 15px;
+  }
+
+  &:nth-child(n + 5) {
+    margin-top: 15px;
+  }
+
+  &:nth-child(4n + 1) {
+    margin-left: 0;
   }
 }
 

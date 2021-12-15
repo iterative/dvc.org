@@ -6,6 +6,7 @@
   "scripts": {
     "develop": "gatsby develop",
     "dev": "gatsby develop",
+    "clean": "gatsby clean",
     "author": "LIMIT_BLOG_PAGES=1 SKIP_DOCS=true gatsby develop",
     "build": "gatsby build",
     "start": "node ./src/server/index.js",
@@ -143,6 +144,7 @@
     "gatsby-transformer-sharp": "^4.3.0",
     "hast-util-select": "^4.0.0",
     "husky": "^4.2.3",
+    "iframe-resizer-react": "^1.1.0",
     "jest": "^27.4.0",
     "lint-staged": "^12.1.2",
     "postcss-color-mod-function": "^3.0.3",
