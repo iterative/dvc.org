@@ -18,11 +18,12 @@ usage: dvc exp init [-h] [-q | -v] [--run] [--interactive] [-f]
 
 ## Description
 
-`dvc exp init` helps you quickly get started with experiments. It reduces
-boilerplate DVC procedures by creating a `dvc.yaml` file that assumes default
-location of your input data, <abbr>parameters</abbr>, source code, models,
+`dvc exp init` helps you get started with DVC Experiments quickly. It reduces
+boilerplate DVC procedures by creating a `dvc.yaml` file that assumes standard
+locations of your input data, <abbr>parameters</abbr>, source code, models,
 <abbr>metrics</abbr> and [plots](/doc/command-reference/plots). These locations
-can be customized through the [options](#options) below or via config files.
+can be customized through the [options](#options) below or via
+[configuration](/doc/command-reference/config#exp).
 
 Assumed repository structure:
 
@@ -36,7 +37,7 @@ Assumed repository structure:
 ```
 
 > Note that by default `dvc exp init` expects at least a `params.yaml` file
-> present. It can be avoided via the `--params` or `-i` options.
+> present. It can be avoided via the `--params`, `-i`, or `--explicit` options.
 
 You must provide a command that runs your experiment(s). It can be given either
 directly [as an argument](#the-command-argument), or by using the
