@@ -177,20 +177,12 @@ When using this option, the import `.dvc` file will also have a `rev` subfield
 under `repo`:
 
 ```yaml
-md5: 7ff366c716a376ec009054f1c141dc17
-frozen: true
 deps:
-- path: use-cases/cats-dogs
-  repo:
-    url: git@github.com:iterative/dataset-registry.git
-    rev: cats-dogs-v1
-    ^^^^^^^^^^^^^^^^^
-    rev_lock: 0547f5883fb18e523e35578e2f0d19648c8f2d5c
-outs:
-- md5: b6923e1e4ad16ea1a7e2b328842d56a2.dir
-  size: 41149064
-  nfiles: 1800
-  path: cats-dogs
+  - path: use-cases/cats-dogs
+    repo:
+      url: git@github.com:iterative/dataset-registry.git
+      rev: cats-dogs-v1
+      rev_lock: 0547f5883fb18e523e35578e2f0d19648c8f2d5c
 ```
 
 If `rev` is a Git branch or tag (where the underlying commit changes), the data
