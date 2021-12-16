@@ -77,7 +77,7 @@ const ResultLinkComponent: React.FC<ILinkProps> = ({
 }
 
 const scrollToHash = (hash: string, scrollOptions = {}): void => {
-  if (hash && /^[A-Za-z][-A-Za-z0-9_:.]*$/.test(hash)) {
+  if (hash && /^#[A-Za-z][-A-Za-z0-9_:.]*$/.test(hash)) {
     scrollIntoLayout(document.querySelector(hash), {
       waitImages: true,
       ...scrollOptions
