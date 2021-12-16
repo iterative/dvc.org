@@ -109,7 +109,9 @@ metric or param.
 - `--sort-by <name>` - sort experiments by the specified metric or param
   (`name`). Only one visible column (either metric or param) can be used for
   sorting. This only affects the ordering of experiments derived from the same
-  parent commit. Parent commits are always sorted chronologically.
+  parent commit. Parent commits are always sorted chronologically. When combined
+  with the `--html` flag, `name` will be used to set the color of the lines in
+  parallel coordinates plot.
 
 - `--sort-order {asc,desc}` - sort order to use with `--sort-by`. Defaults to
   ascending (`asc`).
@@ -126,6 +128,14 @@ metric or param.
   human-readable table.
 
 - `--md` - prints the command's output in Markdown table format.
+
+- `--html` - generates an interactive parallel coordinates plot from the table.
+
+- `-o <folder>, --out <folder>` - destination folder of the `html` plot. By
+  default, `dvc_plots`.
+
+- `--open` - opens the generated `html` plot in the browser automatically. Only
+  used if `--html` was also passed.
 
 - `--precision <n>` -
   [round](https://docs.python.org/3/library/functions.html#round) decimal values
@@ -235,8 +245,32 @@ $ dvc exp show --all-commits --include-params=featurize --sort-by=auc --sort-ord
 └───────────────────────┴──────────────┴─────────┴────────────────────────┴──────────────────┘
 ```
 
-Note that in the final example, Git commits remain in chronological order. The
+Note that in the last example, Git commits remain in chronological order. The
 sorting only applies to experiment groups (sharing a parent commit).
+
+To generate an interactive parallel coordinates plot from the table:
+
+```dvc
+$ dvc exp show --html
+```
+
+![](/img/ref_parallel_coordinates.png) _Parallel Coordinates Plot_
+
+Use `--sort-by` to customize the colors of the lines:
+
+```dvc
+$ dvc exp show --html --sort-by accuracy
+```
+
+![](/img/ref_parallel_coordinates_sort_by.png) _Colorized by accuracy_
+
+Combine with other flags for further filtering:
+
+```dvc
+$ dvc exp show --html --sort-by accuracy --exclude-metrics loss
+```
+
+![](/img/ref_parallel_coordinates_exclude.png) _Excluded loss column_
 
 📖 See [Metrics, Parameters, and Plots](/doc/start/metrics-parameters-plots) for
 an introduction to parameters, metrics, plots.
