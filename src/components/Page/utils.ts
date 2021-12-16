@@ -10,7 +10,7 @@ export const useAnchorNavigation = (): void => {
   const location = useLocation()
 
   useEffect(() => {
-    if (location.hash) {
+    if (location.hash && /^[A-Za-z][-A-Za-z0-9_:.]*$/.test(location.hash)) {
       const node = document.querySelector(location.hash)
 
       if (node) {
