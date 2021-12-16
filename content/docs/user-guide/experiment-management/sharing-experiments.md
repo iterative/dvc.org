@@ -2,7 +2,7 @@
 
 Saving and sharing experiments is similar to [sharing regular project versions],
 done by synchronizing with DVC and Git remotes. DVC takes care of pushing and
-pulling to/from Git in the case of experiments, however.
+pulling to/from Git remotes in the case of experiments, however.
 
 ```
   ┌────────────────┐      ┌─────────────────┐
@@ -23,8 +23,8 @@ pulling to/from Git in the case of experiments, however.
 Specifically, data, models, etc. are tracked and <abbr>cached</abbr> by DVC and
 thus will be transferred to/from [remote storage](/doc/command-reference/remote)
 (e.g. Amazon S3 or Google Drive). Small files like code and
-[DVC metafiles](/doc/user-guide/project-structure) are uploaded or downloaded
-to/from [Git remotes] by DVC.
+[DVC metafiles](/doc/user-guide/project-structure) are tracked by Git, so DVC
+uploads and downloads them to/from your existing [Git remotes].
 
 [sharing regular project versions]: /doc/use-cases/sharing-data-and-model-files
 [git remotes]: https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes
