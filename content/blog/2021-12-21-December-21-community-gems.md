@@ -25,7 +25,7 @@ No problem @fireballpoint1! This happens sometimes.
 You should be able to run the following command in your terminal and then
 re-enter your credentials.
 
-```bash
+```dvc
 $ rm .dvc/tmp/gdrive-user-credentials.json
 ```
 
@@ -42,8 +42,8 @@ SSH remote.
 There should also be DSM packages for webdav as well, if you prefer that over
 SSH. Just make sure that your URL looks similar to this.
 
-```dvc
-url = webdav://<ip>/<path>
+```
+webdav://<ip>/<path>
 ```
 
 ### [Can you selectively `dvc pull` data files?](https://discord.com/channels/485586884165107732/563406153334128681/913713923667148850)
@@ -195,12 +195,12 @@ Really great question @Abdi!
 You should be able to use the streaming capability of the DVC API to achieve
 this goal.
 
-Here is an exaple of a Python script that would do this:
+Here is an example of a Python script that would do this:
 
 ```python
 from dvc.api import open as dvcopen
 
-with dvcopen('data','{repo_url}') as fd:
+with dvcopen('data',f'{repo_url}') as fd:
     for line in fd:
         print(line)
 ```
