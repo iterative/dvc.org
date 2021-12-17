@@ -131,9 +131,8 @@ $ dvc pull -aT
 Sometimes we want to iterate through multiple changes to configuration, code, or
 data, trying different ways to improve the output of a stage. To avoid filling
 the <abbr>cache</abbr> with undesired intermediate results, you can
-stage, or reproduce an entire pipeline by supplying `--no-commit` option to
-`dvc repro`. This prevents data from being pushed to the cache. When development
-of stage is finished, `dvc commit` can be used to store data files in the cache.
+use the `--no-commit` option of `dvc repro`. Once your progress is good
+enough, `dvc commit` can be used to store data files in the cache.
 
 In the `featurize` stage, `src/featurization.py` is executed. A useful change to
 make is adjusting the parameters for that script. The parameters are defined in
