@@ -91,10 +91,8 @@ metric or param.
 - `--sort-order {asc,desc}` - sort order to use with `--sort-by`. Defaults to
   ascending (`asc`).
 
-- `--no-timestamp` - do not show neutral:**Experiment** timestamps.
-
 - `--sha` - display Git commit (SHA) hashes instead of branch, tag, or
-  neutral:**Experiment** names.
+  experiment names.
 
 - `--json` - prints the command's output in easily parsable JSON format, instead
   of a human-readable table.
