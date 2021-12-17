@@ -13,8 +13,9 @@ several options to generate and keep track of the plots:
 - DVC can keep track of image files produced as plot outputs from the
   training/evaluation scripts.
 
-We'll add visualization to [`example-dvc-experiments`][ede] project. You may
-refer to the [earlier section] to install it.
+We'll add visualization to [`example-dvc-experiments`][ede] project. If you
+would like to try these yourself, please refer to the project [README] about how
+to install.
 
 One of the important plots that shows the classification performance is the
 confusion matrix. DVC uses Vega-Lite to plot the text files. In order to produce
