@@ -245,10 +245,12 @@ $ dvc exp show --all-commits --include-params=featurize --sort-by=auc --sort-ord
 └───────────────────────┴──────────────┴─────────┴────────────────────────┴──────────────────┘
 ```
 
-Note that in the last example, Git commits remain in chronological order. The
+Note that in this example, Git commits remain in chronological order. The
 sorting only applies to experiment groups (sharing a parent commit).
 
-To generate an interactive parallel coordinates plot from the table:
+## Example: Parallel coordinates plot (PCP)
+
+To generate an interactive PCP based on the experiments and their parameters:
 
 ```dvc
 $ dvc exp show --html
