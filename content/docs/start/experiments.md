@@ -24,7 +24,7 @@ https://github.com/iterative/example-dvc-experiments
 
 If you already have a DVC project, that's great. You can start to use `dvc exp`
 commands right away to create experiments in your project. (See the [user's
-guide] for detailed information.) In this section, we focus how to structure an
+guide] for detailed information.) Here, we briefly discuss how to structure an
 ML project into a DVC experiments project with `dvc exp init`.
 
 [user's guide]: /doc/user-guide/experiment-management/
