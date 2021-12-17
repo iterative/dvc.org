@@ -37,8 +37,6 @@ to see experiments in the remote.
 This command will also try to [push](/doc/command-reference/push) all
 <abbr>cached</abbr> data associated with the experiment to DVC
 [remote storage](/doc/command-reference/remote), unless `--no-cache` is used.
-The default remote is used (see `dvc remote default`) unless a specific one is
-given with `--remote`.
 
 ## Options
 

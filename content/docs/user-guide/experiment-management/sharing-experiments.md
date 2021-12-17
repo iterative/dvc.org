@@ -69,14 +69,6 @@ arguments.
 $ dvc exp push origin exp-abc123
 ```
 
-The [default DVC remote](/doc/command-reference/remote/default) is used unless
-one is specified with the `--remote` (`-r`) option. To prevent pushing
-DVC-tracked files to remote storage altogether, use the `--no-cache` option.
-
-DVC can use multiple threads to upload files (4 per CPU core by default). You
-can set the number with `--jobs` (`-j`). Please note that increases in
-performance also depend on the connection bandwidth and remote configurations.
-
 Once pushed, you can easily [list remote experiments] (with `dvc exp list`). To
 pus
 
@@ -99,11 +91,6 @@ $ dvc exp pull origin cnn-32
 This pulls all the necessary files from both remotes. Again, you need to have
 both of these configured (see this
 [earlier section](#prepare-remotes-to-share-experiments)).
-
-You can specify a remote to pull from with `--remote` (`-r`).
-
-DVC can use multiple threads to download files (4 per CPU core typically). You
-can set the number with `--jobs` (`-j`).
 
 If an experiment being pulled already exists in the local project, DVC won't
 overwrite it unless you supply `--force`.

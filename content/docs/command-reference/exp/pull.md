@@ -37,8 +37,6 @@ your local experiments.
 By default, this command will also try to [pull](/doc/command-reference/pull)
 all <abbr>cached</abbr> data associated with the experiment to DVC
 [remote storage](/doc/command-reference/remote), unless `--no-cache` is used.
-The default remote is used (see `dvc remote default`) unless a specific one is
-given with `--remote`.
 
 > 💡 Note that `git push <git_remote> --delete <experiment>` can be used to
 > delete a pushed experiment.
