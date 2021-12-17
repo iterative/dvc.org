@@ -136,8 +136,8 @@ from the commit ID `7317bc6`.
 
 Now let's do some more experimentation.
 
-DVC allows to update the parameters defined in the pipeline without modifying
-the files manually. We use this feature to set the convolutional units in
+DVC allows to update the parameters defined in the project without modifying the
+files manually. We use this feature to set the convolutional units in
 `train.py`.
 
 ```dvc
@@ -152,8 +152,8 @@ Experiment results have been applied to your workspace.
 
 ### ℹ️ More information about (Hyper)parameters and metrics
 
-It's pretty common for data science pipelines to include configuration files
-that define adjustable parameters to train a model, do pre-processing, etc. DVC
+It's pretty common for data science projects to include configuration files that
+define adjustable parameters to train a model, do pre-processing, etc. DVC
 provides a mechanism for stages to depend on the values of specific sections of
 such a file (YAML, JSON, TOML, and Python formats are supported).
 
