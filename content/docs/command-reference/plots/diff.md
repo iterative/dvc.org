@@ -10,7 +10,7 @@ usage: dvc plots diff [-h] [-q | -v]
                       [--targets [<paths> [<paths> ...]]]
                       [-t <name_or_path>] [-x <field>] [-y <field>]
                       [--no-header] [--title <text>]
-                      [--x-label <text>] [--y-label <text>] [-o <path>]
+                      [--x-label <text>] [--y-label <text>] [-o <folder>]
                       [--show-vega] [--open] [--html-template <path>]
                       [revisions [revisions ...]]
 
