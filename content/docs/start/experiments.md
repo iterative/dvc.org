@@ -23,7 +23,7 @@ find easier to try these in our [Katacoda] environment.
 
 <details>
 
-### Initializing a project into DVC experiments
+### ⚙️ Initializing a project into DVC experiments
 
 If you already have a DVC project, that's great. You can start to use `dvc exp`
 commands right away to create experiments in your project. (See the [user's
