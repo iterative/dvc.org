@@ -6,8 +6,8 @@ title: 'Get Started: Experiments'
 
 In machine learning projects, the number of <abbr>experiments</abbr> grows
 rapidly. DVC can track these experiments, list and compare their most relevant
-parameters and metrics, navigate among them, and commit the ones that we
-need to Git to version them with their lineage.
+parameters and metrics, navigate among them, and commit the ones that we need to
+Git to version them with their lineage.
 
 > ⚠️This video is out-of-date and will be updated soon! Where there are
 > discrepancies between docs and video, please follow the docs.
@@ -31,15 +31,14 @@ ML project into a DVC experiments project with `dvc exp init`.
 
 A typical machine learning project has some data, a set of scripts that trains a
 model, a bunch of hyperparameters that modify these models. DVC makes certain
-assumptions about the names of these elements to initialize an experimentation
-project with:
+assumptions about the names of these elements to initialize a project with:
 
 ```dvc
 $ dvc exp init python src/train.py
 ```
 
-Here, `python src/train.py` describes how the project runs the training script.
-It could be any other command. For DVC, this defines how you run an experiment.
+Here, `python src/train.py` describes how you run experiments. It could be any
+other command.
 
 You can also set source code (default: `src`), data (`data/`), models
 (`models/`), hyperparameters (`params.yaml`), metrics (`metrics.json`), and
