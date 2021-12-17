@@ -53,42 +53,6 @@ plots (`plots/`) dependencies if they differ from the defaults.
 
 </details>
 
-<details>
-
-### ⚙️ Installing the example project
-
-You can run the commands in this document after [installing] DVC, cloning the
-example repository, installing the requirements, and pulling the data.
-
-[installing]: /doc/install
-
-#### Clone the project and create virtual environment
-
-Please clone the project and create a virtual environment.
-
-> We strongly recommend to create a virtual environment to keep the libraries we
-> use isolated from the rest of your system. This prevents version conflicts.
-
-```dvc
-$ git clone https://github.com/iterative/example-dvc-experiments -b get-started
-$ cd example-dvc-experiments
-$ virtualenv .venv
-$ . .venv/bin/activate
-$ python -m pip install -r requirements.txt
-```
-
-</details>
-
-#### Get the data set
-
-The repository we cloned doesn't contain the dataset. Instead of storing the
-data in the Git repository, we use DVC to retrieve from a shared data store. In
-this case, we use `dvc pull` to update the missing data files.
-
-```dvc
-$ dvc pull
-```
-
 Running the experiment with the default project settings requires only the
 command:
 
