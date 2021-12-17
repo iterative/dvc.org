@@ -246,7 +246,7 @@ $ dvc exp show --all-commits --only-changed --sort-by=auc
 ```
 
 Note that in the final example, Git commits remain in chronological order. The
-sorting only applies to neutral:**Experiment** groups (sharing a parent commit).
+sorting only applies to experiment groups (sharing a parent commit).
 
 📖 See [Metrics, Parameters, and Plots](/doc/start/metrics-parameters-plots) for
 an introduction to parameters, metrics, plots.
