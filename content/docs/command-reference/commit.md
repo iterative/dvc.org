@@ -130,7 +130,7 @@ $ dvc pull -aT
 
 Sometimes we want to iterate through multiple changes to configuration, code, or
 data, trying different ways to improve the output of a stage. To avoid filling
-the <abbr>cache</abbr> with undesired intermediate results, we can run a single
+the <abbr>cache</abbr> with undesired intermediate results, you can
 stage, or reproduce an entire pipeline by supplying `--no-commit` option to
 `dvc repro`. This prevents data from being pushed to the cache. When development
 of stage is finished, `dvc commit` can be used to store data files in the cache.
