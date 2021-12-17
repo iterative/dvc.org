@@ -8,12 +8,10 @@ Print a customizable table of experiments, their metrics and parameters.
 
 ```usage
 usage: dvc exp show [-h] [-q | -v] [-a] [-T] [-A] [-n <num>]
-                    [--no-pager] [--include-metrics <metrics_list>]
-                    [--exclude-metrics <metrics_list>]
-                    [--include-params <params_list>]
-                    [--exclude-params <params_list>] [--param-deps]
+                    [--no-pager] [--drop <columns_list>]
+                    [--keep <columns_list>] [--param-deps]
                     [--sort-by <metric/param>]
-                    [--sort-order {asc,desc}] [--no-timestamp] [--sha]
+                    [--sort-order {asc,desc}] [--sha]
                     [--json] [--csv] [--md] [--precision <n>]
                     [--only-changed]
 ```
@@ -48,7 +46,7 @@ which you can typically exit by typing `Q`. Use `--no-pager` to print the table
 to standard output.
 
 By default, the printed experiments table will include columns for all metrics
-and params from the entire project. The `--param-deps`, `--include-metrics`, and
+and params from the entire project. The `--param-deps`, `--drop`, `--keep` and
 other [options](#options) can determine which ones should be displayed.
 
 Experiments in the table are first grouped (by parent commit). They are then
@@ -78,36 +76,12 @@ metric or param.
 - `--param-deps` - include only parameters that are stage dependencies.
 
 - `--only-changed` - show only parameters and metrics with values that vary
-  across experiments. Note that this option takes precedence over
-  `--include-params` and `--include-metrics`, for example given
-  `--include-params=foo --only-changed`, param `foo` would still be hidden if
-  its value is the same in all experiments.
+  across experiments.
 
-- `--include-params <list>` - show the specified `dvc params` in the table only.
-  Accepts a comma-separated `list` of param names. Shell style wildcards
-  supported: `*`, `?`, `[seq]`, `[!seq]`, and `**` If a `path:` prefix is
-  included in the name, the wildcard pattern will **not** be matched against
-  that prefix but only against the rest of the name.
+- `--drop <list>` - remove the columns matching the specified regex patterns.
 
-- `--exclude-params <list>` - hide the specified `dvc params` from the table
-  (all param will be shown except for these). Accepts a comma-separated `list`
-  of param names. Shell style wildcards supported: `*`, `?`, `[seq]`, `[!seq]`,
-  and `**` If a `path:` prefix is included in the name, the wildcard pattern
-  will **not** be matched against that prefix but only against the rest of the
-  name.
-
-- `--include-metrics <list>` - show the specified `dvc metrics` in the table
-  only. Accepts a comma-separated `list` of metric names. Shell style wildcards
-  supported: `*`, `?`, `[seq]`, `[!seq]`, and `**`. If a `path:` prefix is
-  included in the name, the wildcard pattern will **not** be matched against
-  that prefix but only against the rest of the name.
-
-- `--exclude-metrics <list>` - hide the specified `dvc metrics` from the table
-  (all param will be shown except for these). Accepts a comma-separated `list`
-  of metric names. Shell style wildcards supported: `*`, `?`, `[seq]`, `[!seq]`,
-  and `**`. If a `path:` prefix is included in the name, the wildcard pattern
-  will **not** be matched against that prefix but only against the rest of the
-  name.
+- `--keep <list>` - prevent the columns matching the specified regex patterns to
+  be removed by any of the other options.
 
 - `--sort-by <name>` - sort experiments by the specified metric or param
   (`name`). Only one visible column (either metric or param) can be used for
@@ -147,109 +121,129 @@ metric or param.
 > can find the actual source code.
 
 Let's say we have run 3 experiments in our project. The basic usage shows the
-workspace (Git working tree) and experiments derived from `HEAD`
-(`10-bigrams-experiment` branch in this case), and all of their metrics and
-params (scroll right to see all):
+workspace (Git working tree) and experiments derived from `HEAD` (`master`
+branch in this case), and all of their metrics and params (scroll right to see
+all):
 
 ```dvc
 $ dvc exp show
 ```
 
 ```dvctable
-┏━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━┓
-┃ neutral:**Experiment**            ┃ neutral:**Created**      ┃     metric:**auc** ┃ param:**featurize.max_fea…** ┃ param:**featurize.ngrams** ┃ param:**prepare.seed** ┃ param:**prepare.split** ┃ param:**train.n_estimators** ┃ param:**train.seed** ┃
-┡━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━┩
-│ workspace             │ -            │ 0.61314 │ 1500               │ 2                │ 20170428     │ 0.2           │ 50                 │ 20170428   │
-│ 10-bigrams-experiment │ Jun 20, 2020 │ 0.61314 │ 1500               │ 2                │ 20170428     │ 0.2           │ 50                 │ 20170428   │
-│ ├── exp-e6c97         │ Oct 21, 2020 │ 0.61314 │ 1500               │ 2                │ 20170428     │ 0.2           │ 50                 │ 20170428   │
-│ ├── exp-1dad0         │ Oct 09, 2020 │ 0.57756 │ 2000               │ 2                │ 20170428     │ 0.2           │ 50                 │ 20170428   │
-│ └── exp-1df77         │ Oct 09, 2020 │ 0.51676 │ 500                │ 2                │ 20170428     │ 0.2           │ 50                 │ 20170428   │
-└───────────────────────┴──────────────┴─────────┴────────────────────┴──────────────────┴──────────────┴───────────────┴────────────────────┴────────────┘
+┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
+┃ Experiment              ┃ Created      ┃ avg_prec ┃ roc_auc ┃ prepare.split ┃ prepare.seed ┃ featurize.max_features ┃ featurize.ngrams ┃ train.seed ┃ train.n_est ┃ train.min_split ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━┩
+│ workspace               │ -            │  0.60405 │  0.9608 │ 0.2           │ 20170428     │ 3000                   │ 2                │ 20170428   │ 100         │ 64              │
+│ master                  │ May 29, 2021 │  0.60405 │  0.9608 │ 0.2           │ 20170428     │ 3000                   │ 2                │ 20170428   │ 100         │ 64              │
+│ ├── d384680 [exp-bc055] │ 08:03 PM     │  0.51799 │ 0.92333 │ 0.2           │ 20170428     │ 500                    │ 2                │ 20170428   │ 100         │ 64              │
+│ ├── 6b338f8 [exp-3315b] │ 08:03 PM     │  0.58589 │   0.945 │ 0.2           │ 20170428     │ 2000                   │ 2                │ 20170428   │ 100         │ 64              │
+│ └── d7fdde2 [exp-1b262] │ 08:03 PM     │  0.56447 │ 0.94713 │ 0.2           │ 20170428     │ 1500                   │ 2                │ 20170428   │ 100         │ 64              │
+└─────────────────────────┴──────────────┴──────────┴─────────┴───────────────┴──────────────┴────────────────────────┴──────────────────┴────────────┴─────────────┴─────────────────┘
 ```
 
 > You can exit this screen with `Q`, typically.
 
-Let's limit the param columns to only include the `featurize` group:
-
-```dvc
-$ dvc exp show --include-params=featurize
-```
-
-```dvctable
-┏━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━┓
-┃ neutral:**Experiment**            ┃ neutral:**Created**      ┃     metric:**auc** ┃ param:**featurize.max_features** ┃ param:**featurize.ngrams** ┃
-┡━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━┩
-│ workspace             │ -            │ 0.61314 │ 1500                   │ 2                │
-│ 10-bigrams-experiment │ Jun 20, 2020 │ 0.61314 │ 1500                   │ 2                │
-│ ├── exp-e6c97         │ Oct 21, 2020 │ 0.61314 │ 1500                   │ 2                │
-│ ├── exp-1dad0         │ Oct 09, 2020 │ 0.57756 │ 2000                   │ 2                │
-│ └── exp-1df77         │ Oct 09, 2020 │ 0.51676 │ 500                    │ 2                │
-└───────────────────────┴──────────────┴─────────┴────────────────────────┴──────────────────┘
-```
-
-You can also filter out any metrics and parameters that do not change across the
-shown experiments:
+As a quick way of reducing noise, `--only-changed` will drop any column with
+values that do not change across the shown experiments:
 
 ```dvc
 $ dvc exp show --only-changed
 ```
 
 ```dvctable
-┏━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃ neutral:**Experiment**            ┃ neutral:**Created**      ┃     metric:**auc** ┃ param:**featurize.max_features** ┃
-┡━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━┩
-│ workspace             │ -            │ 0.61314 │ 1500                   │
-│ 10-bigrams-experiment │ Jun 20, 2020 │ 0.61314 │ 1500                   │
-│ ├── exp-e6c97         │ Oct 21, 2020 │ 0.61314 │ 1500                   │
-│ ├── exp-1dad0         │ Oct 09, 2020 │ 0.57756 │ 2000                   │
-│ └── exp-1df77         │ Oct 09, 2020 │ 0.51676 │ 500                    │
-└───────────────────────┴──────────────┴─────────┴────────────────────────┘
+┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ Experiment              ┃ Created      ┃ avg_prec ┃ roc_auc ┃ featurize.max_features ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ workspace               │ -            │  0.60405 │  0.9608 │ 3000                   │
+│ master                  │ May 29, 2021 │  0.60405 │  0.9608 │ 3000                   │
+│ ├── d7fdde2 [exp-1b262] │ 08:03 PM     │  0.56447 │ 0.94713 │ 1500                   │
+│ ├── 6b338f8 [exp-3315b] │ 08:03 PM     │  0.58589 │   0.945 │ 2000                   │
+│ └── d384680 [exp-bc055] │ 08:03 PM     │  0.51799 │ 0.92333 │ 500                    │
+└─────────────────────────┴──────────────┴──────────┴─────────┴────────────────────────┘
+```
+
+You can also use `--drop` to filter columns matching specific regex patterns:
+
+```dvc
+$ dvc exp show --drop 'prepare'
+```
+
+```dvctable
+┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
+┃ Experiment              ┃ Created      ┃ avg_prec ┃ roc_auc ┃ featurize.max_features ┃ featurize.ngrams ┃ train.seed ┃ train.n_est ┃ train.min_split ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━┩
+│ workspace               │ -            │  0.60405 │  0.9608 │ 3000                   │ 2                │ 20170428   │ 100         │ 64              │
+│ master                  │ May 29, 2021 │  0.60405 │  0.9608 │ 3000                   │ 2                │ 20170428   │ 100         │ 64              │
+│ ├── 6b338f8 [exp-3315b] │ 08:03 PM     │  0.58589 │   0.945 │ 2000                   │ 2                │ 20170428   │ 100         │ 64              │
+│ ├── d384680 [exp-bc055] │ 08:03 PM     │  0.51799 │ 0.92333 │ 500                    │ 2                │ 20170428   │ 100         │ 64              │
+│ └── d7fdde2 [exp-1b262] │ 08:03 PM     │  0.56447 │ 0.94713 │ 1500                   │ 2                │ 20170428   │ 100         │ 64              │
+└─────────────────────────┴──────────────┴──────────┴─────────┴────────────────────────┴──────────────────┴────────────┴─────────────┴─────────────────┘
+```
+
+Combine `--only-changed` with `--drop` and/or `--keep`:
+
+```dvc
+$ dvc exp show --only-changed --drop 'Created' --keep 'train.(?!seed)'
+```
+
+```dvctable
+┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
+┃ Experiment              ┃ avg_prec ┃ roc_auc ┃ featurize.max_features ┃ train.n_est ┃ train.min_split ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━┩
+│ workspace               │  0.60405 │  0.9608 │ 3000                   │ 100         │ 64              │
+│ master                  │  0.60405 │  0.9608 │ 3000                   │ 100         │ 64              │
+│ ├── d384680 [exp-bc055] │  0.51799 │ 0.92333 │ 500                    │ 100         │ 64              │
+│ ├── 6b338f8 [exp-3315b] │  0.58589 │   0.945 │ 2000                   │ 100         │ 64              │
+│ └── d7fdde2 [exp-1b262] │  0.56447 │ 0.94713 │ 1500                   │ 100         │ 64              │
+└─────────────────────────┴──────────┴─────────┴────────────────────────┴─────────────┴─────────────────┘
 ```
 
 Sort experiments by the `auc` metric, in ascending order:
 
 ```dvc
-$ dvc exp show --include-params=featurize --sort-by=auc --sort-order=asc
+$ dvc exp show --only-changed --sort-by=roc_auc
 ```
 
 ```dvctable
-┏━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━┓
-┃ neutral:**Experiment**            ┃ neutral:**Created**      ┃     metric:**auc** ┃ param:**featurize.max_features** ┃ param:**featurize.ngrams** ┃
-┡━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━┩
-│ workspace             │ -            │ 0.61314 │ 1500                   │ 2                │
-│ 10-bigrams-experiment │ Jun 20, 2020 │ 0.61314 │ 1500                   │ 2                │
-│ ├── exp-1df77         │ Oct 09, 2020 │ 0.51676 │ 500                    │ 2                │
-│ ├── exp-1dad0         │ Oct 09, 2020 │ 0.57756 │ 2000                   │ 2                │
-│ └── exp-e6c97         │ Oct 21, 2020 │ 0.61314 │ 1500                   │ 2                │
-└───────────────────────┴──────────────┴─────────┴────────────────────────┴──────────────────┘
+┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ Experiment              ┃ Created      ┃ avg_prec ┃ roc_auc ┃ featurize.max_features ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ workspace               │ -            │  0.60405 │  0.9608 │ 3000                   │
+│ master                  │ May 29, 2021 │  0.60405 │  0.9608 │ 3000                   │
+│ ├── d384680 [exp-bc055] │ 08:03 PM     │  0.51799 │ 0.92333 │ 500                    │
+│ ├── 6b338f8 [exp-3315b] │ 08:03 PM     │  0.58589 │   0.945 │ 2000                   │
+│ └── d7fdde2 [exp-1b262] │ 08:03 PM     │  0.56447 │ 0.94713 │ 1500                   │
+└─────────────────────────┴──────────────┴──────────┴─────────┴────────────────────────┘
 ```
 
 To see all experiments throughout the Git history:
 
 ```dvc
-$ dvc exp show --all-commits --include-params=featurize --sort-by=auc --sort-order=asc
+$ dvc exp show --all-commits --only-changed --sort-by=auc
 ```
 
 ```dvctable
-┏━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━┓
-┃ neutral:**Experiment**            ┃ neutral:**Created**      ┃     metric:**auc** ┃ param:**featurize.max_features** ┃ param:**featurize.ngrams** ┃
-┡━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━┩
-│ workspace             │ -            │ 0.61314 │ 1500                   │ 2                │
-│ 10-bigrams-experiment │ Jun 20, 2020 │ 0.61314 │ 1500                   │ 2                │
-│ ├── exp-1df77         │ Oct 09, 2020 │ 0.51676 │ 500                    │ 2                │
-│ ├── exp-1dad0         │ Oct 09, 2020 │ 0.57756 │ 2000                   │ 2                │
-│ └── exp-e6c97         │ Oct 21, 2020 │ 0.61314 │ 1500                   │ 2                │
-│ 10-bigrams-model      │ Jun 20, 2020 │ 0.54175 │ 1500                   │ 2                │
-│ └── exp-069d9         │ Sep 24, 2020 │ 0.51076 │ 2500                   │ 2                │
-│ 9-evaluation          │ Jun 20, 2020 │ 0.54175 │ 500                    │ 1                │
-│ 8-ml-pipeline         │ Jun 20, 2020 │       - │ 500                    │ 1                │
-│ 6-prep-stage          │ Jun 20, 2020 │       - │ 500                    │ 1                │
-│ 5-source-code         │ Jun 20, 2020 │       - │ 500                    │ 1                │
-│ 4-import-data         │ Jun 20, 2020 │       - │ 1500                   │ 2                │
-│ 2-track-data          │ Jun 20, 2020 │       - │ 1500                   │ 2                │
-│ 3-config-remote       │ Jun 20, 2020 │       - │ 1500                   │ 2                │
-│ 1-dvc-init            │ Jun 20, 2020 │       - │ 1500                   │ 2                │
-│ 0-git-init            │ Jun 20, 2020 │       - │ 1500                   │ 2                │
+┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
+┃ Experiment              ┃ Created      ┃ avg_prec ┃ roc_auc ┃ featurize.max_features ┃ featurize.ngrams ┃ train.n_est ┃ train.min_split ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━┩
+│ workspace               │ -            │  0.60405 │  0.9608 │ 3000                   │ 2                │ 100         │ 64              │
+│ try-large-dataset       │ Jun 01, 2021 │  0.67038 │ 0.96693 │ 3000                   │ 2                │ 100         │ 64              │
+│ master                  │ May 29, 2021 │  0.60405 │  0.9608 │ 3000                   │ 2                │ 100         │ 64              │
+│ ├── d384680 [exp-bc055] │ 08:03 PM     │  0.51799 │ 0.92333 │ 500                    │ 2                │ 100         │ 64              │
+│ ├── 6b338f8 [exp-3315b] │ 08:03 PM     │  0.58589 │   0.945 │ 2000                   │ 2                │ 100         │ 64              │
+│ └── d7fdde2 [exp-1b262] │ 08:03 PM     │  0.56447 │ 0.94713 │ 1500                   │ 2                │ 100         │ 64              │
+│ cc51022                 │ May 28, 2021 │  0.55259 │ 0.91536 │ 1500                   │ 2                │ 50          │ 2               │
+│ 7ab3585                 │ May 27, 2021 │  0.52048 │  0.9032 │ 1500                   │ 2                │ 50          │ 2               │
+│ 53b2d9d                 │ May 25, 2021 │  0.52048 │  0.9032 │ 500                    │ 1                │ 50          │ 2               │
+│ 872cd6c                 │ May 24, 2021 │        - │       - │ 500                    │ 1                │ 50          │ 2               │
+│ 8188b34                 │ May 23, 2021 │        - │       - │ 500                    │ 1                │ 50          │ 2               │
+│ 9244ec3                 │ May 22, 2021 │        - │       - │ 500                    │ 1                │ 50          │ 2               │
+│ 08a3b89                 │ May 21, 2021 │        - │       - │ -                      │ -                │ -           │ -               │
+│ 16ba2cd                 │ May 20, 2021 │        - │       - │ -                      │ -                │ -           │ -               │
+│ f0c0269                 │ May 18, 2021 │        - │       - │ -                      │ -                │ -           │ -               │
+│ 3e07290                 │ May 17, 2021 │        - │       - │ -                      │ -                │ -           │ -               │
+│ 90b2aea                 │ May 16, 2021 │        - │       - │ -                      │ -                │ -           │ -               │
+└─────────────────────────┴──────────────┴──────────┴─────────┴────────────────────────┴──────────────────┴─────────────┴─────────────────┘
 └───────────────────────┴──────────────┴─────────┴────────────────────────┴──────────────────┘
 ```
 
