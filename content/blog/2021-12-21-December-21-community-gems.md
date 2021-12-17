@@ -130,7 +130,7 @@ To work around this, you can use the full refname, like
 `refs/exps/e7/78ad744e8d0cd59ddqc65d5d698cf102533f85/exp-6cb7`, to specify the
 experiments that you want to work with.
 
-### [How should I handle checkpoints in PyTorch Lightning with DVCLive?](YouTube link here)
+### [How should I handle checkpoints in PyTorch Lightning with DVCLive?](https://drive.google.com/file/d/1t0wPowk-PUinNjV4xchrzPZh7xsI8i37/view?usp=sharing)
 
 This is a really good question that came from one of our Office Hours talks!
 Thanks [Ilia Sirotkin](https://www.linkedin.com/in/sirily/)!
