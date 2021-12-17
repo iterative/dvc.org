@@ -62,9 +62,8 @@ all the current plots, without comparisons.
   $ dvc plots diff --targets t1.json t2.csv -- HEAD v1 v2
   ```
 
-- `-o <path>, --out <path>` - name of the generated file. By default, the output
-  file name is equal to the input file name with a `.html` file extension (or
-  `.json` when using `--show-vega`).
+- `-o <folder>, --out <folder>` - destination folder of the `html` plot. By
+  default, `dvc_plots`.
 
 - `-t <name_or_path>, --template <name_or_path>` -
   [plot template](/doc/command-reference/plots#plot-templates) to be injected
@@ -112,7 +111,7 @@ To compare uncommitted changes of a metrics file and its last committed version:
 
 ```dvc
 $ dvc plots diff --targets logs.csv --x-label x
-file:///Users/usr/src/plots/logs.html
+file:///Users/usr/src/dvc_plots/index.html
 ```
 
 ![](/img/plots_auc.svg)
@@ -123,7 +122,7 @@ Compare two specific versions (commit hashes, tags, or branches):
 
 ```dvc
 $ dvc plots diff HEAD 0135527 --targets logs.csv
-file:///Users/usr/src/plots/logs.csv.html
+file:///Users/usr/src/dvc_plots/index.html
 ```
 
 ![](/img/plots_diff.svg)
@@ -153,7 +152,7 @@ separate plots. It can be enabled with `-t` (`--template`):
 
 ```dvc
 $ dvc plots diff -t confusion --targets classes.csv -x predicted
-file:///Users/usr/src/test/plot_old/classes.csv.html
+file:///Users/usr/src/test/dvc_plots/index.html
 ```
 
 ![](/img/plots_diff_confusion.svg)

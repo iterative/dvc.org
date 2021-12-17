@@ -36,7 +36,7 @@ please see `dvc plots`.
 
 ## Options
 
-- `-o <folder>, --out <folder>` - destination folder of the `html` plot. By 
+- `-o <folder>, --out <folder>` - destination folder of the `html` plot. By
   default, `dvc_plots`.
 
 - `-t <name_or_path>, --template <name_or_path>` -
@@ -208,8 +208,8 @@ In many automation scenarios (like
 output the [Vega-Lite](https://vega.github.io/vega-lite/) spec file instead of
 rendering an HTML plot. For example, to generating another image format like PNG
 or JPEG, or to include it differently into a web/mobile app. The `--show-vega`
-option prevents wrapping this plot spec in HTML. Note that the command will 
-write the JSON output in the terminal:
+option prevents wrapping this plot spec in HTML. Note that the command will
+print the JSON in the terminal:
 
 ```dvc
 $ dvc plots show --show-vega logs.csv -y accuracy > logs.csv.json
