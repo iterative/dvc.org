@@ -49,7 +49,7 @@ By default, the printed experiments table will include columns for all metrics
 and params from the entire project. The `--param-deps`, `--drop`, `--keep` and
 other [options](#options) can determine which ones should be displayed.
 
-Experiments in the table are first grouped (by parent commit). They are then
+experiments in the table are first grouped (by parent commit). They are then
 sorted inside each group, chronologically by default. The `--sort-by` and
 `--sort-order` options can change this ordering, based on any single, visible
 metric or param.
@@ -91,10 +91,10 @@ metric or param.
 - `--sort-order {asc,desc}` - sort order to use with `--sort-by`. Defaults to
   ascending (`asc`).
 
-- `--no-timestamp` - do not show experiment timestamps.
+- `--no-timestamp` - do not show neutral:**Experiment** timestamps.
 
 - `--sha` - display Git commit (SHA) hashes instead of branch, tag, or
-  experiment names.
+  neutral:**Experiment** names.
 
 - `--json` - prints the command's output in easily parsable JSON format, instead
   of a human-readable table.
@@ -131,7 +131,7 @@ $ dvc exp show
 
 ```dvctable
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
-┃ Experiment              ┃ Created      ┃ avg_prec ┃ roc_auc ┃ prepare.split ┃ prepare.seed ┃ featurize.max_features ┃ featurize.ngrams ┃ train.seed ┃ train.n_est ┃ train.min_split ┃
+┃ neutral:**Experiment**              ┃ neutral:**Created**      ┃ metric:**avg_prec** ┃ metric:**roc_auc** ┃ param:**prepare.split** ┃ param:**prepare.seed** ┃ param:**featurize.max_features** ┃ param:**featurize.ngrams** ┃ param:**train.seed** ┃ param:**train.n_est** ┃ param:**train.min_split** ┃
 ┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━┩
 │ workspace               │ -            │  0.60405 │  0.9608 │ 0.2           │ 20170428     │ 3000                   │ 2                │ 20170428   │ 100         │ 64              │
 │ master                  │ May 29, 2021 │  0.60405 │  0.9608 │ 0.2           │ 20170428     │ 3000                   │ 2                │ 20170428   │ 100         │ 64              │
@@ -152,7 +152,7 @@ $ dvc exp show --only-changed
 
 ```dvctable
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃ Experiment              ┃ Created      ┃ avg_prec ┃ roc_auc ┃ featurize.max_features ┃
+┃ neutral:**Experiment**              ┃ neutral:**Created**      ┃ metric:**avg_prec** ┃ metric:**roc_auc** ┃ param:**featurize.max_features** ┃
 ┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━┩
 │ workspace               │ -            │  0.60405 │  0.9608 │ 3000                   │
 │ master                  │ May 29, 2021 │  0.60405 │  0.9608 │ 3000                   │
@@ -170,7 +170,7 @@ $ dvc exp show --drop 'prepare'
 
 ```dvctable
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
-┃ Experiment              ┃ Created      ┃ avg_prec ┃ roc_auc ┃ featurize.max_features ┃ featurize.ngrams ┃ train.seed ┃ train.n_est ┃ train.min_split ┃
+┃ neutral:**Experiment**              ┃ neutral:**Created**      ┃ metric:**avg_prec** ┃ metric:**roc_auc** ┃ param:**featurize.max_features** ┃ param:**featurize.ngrams** ┃ param:**train.seed** ┃ param:**train.n_est** ┃ param:**train.min_split** ┃
 ┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━┩
 │ workspace               │ -            │  0.60405 │  0.9608 │ 3000                   │ 2                │ 20170428   │ 100         │ 64              │
 │ master                  │ May 29, 2021 │  0.60405 │  0.9608 │ 3000                   │ 2                │ 20170428   │ 100         │ 64              │
@@ -183,12 +183,12 @@ $ dvc exp show --drop 'prepare'
 Combine `--only-changed` with `--drop` and/or `--keep`:
 
 ```dvc
-$ dvc exp show --only-changed --drop 'Created' --keep 'train.(?!seed)'
+$ dvc exp show --only-changed --drop 'neutral:**Created**' --keep 'train.(?!seed)'
 ```
 
 ```dvctable
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
-┃ Experiment              ┃ avg_prec ┃ roc_auc ┃ featurize.max_features ┃ train.n_est ┃ train.min_split ┃
+┃ neutral:**Experiment**              ┃ metric:**avg_prec** ┃ metric:**roc_auc** ┃ param:**featurize.max_features** ┃ param:**train.n_est** ┃ param:**train.min_split** ┃
 ┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━┩
 │ workspace               │  0.60405 │  0.9608 │ 3000                   │ 100         │ 64              │
 │ master                  │  0.60405 │  0.9608 │ 3000                   │ 100         │ 64              │
@@ -201,12 +201,12 @@ $ dvc exp show --only-changed --drop 'Created' --keep 'train.(?!seed)'
 Sort experiments by the `auc` metric, in ascending order:
 
 ```dvc
-$ dvc exp show --only-changed --sort-by=roc_auc
+$ dvc exp show --only-changed --sort-by=metric:**roc_auc**
 ```
 
 ```dvctable
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃ Experiment              ┃ Created      ┃ avg_prec ┃ roc_auc ┃ featurize.max_features ┃
+┃ neutral:**Experiment**              ┃ neutral:**Created**      ┃ metric:**avg_prec** ┃ metric:**roc_auc** ┃ param:**featurize.max_features** ┃
 ┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━┩
 │ workspace               │ -            │  0.60405 │  0.9608 │ 3000                   │
 │ master                  │ May 29, 2021 │  0.60405 │  0.9608 │ 3000                   │
@@ -224,7 +224,7 @@ $ dvc exp show --all-commits --only-changed --sort-by=auc
 
 ```dvctable
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
-┃ Experiment              ┃ Created      ┃ avg_prec ┃ roc_auc ┃ featurize.max_features ┃ featurize.ngrams ┃ train.n_est ┃ train.min_split ┃
+┃ neutral:**Experiment**              ┃ neutral:**Created**      ┃ metric:**avg_prec** ┃ metric:**roc_auc** ┃ param:**featurize.max_features** ┃ param:**featurize.ngrams** ┃ param:**train.n_est** ┃ param:**train.min_split** ┃
 ┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━┩
 │ workspace               │ -            │  0.60405 │  0.9608 │ 3000                   │ 2                │ 100         │ 64              │
 │ try-large-dataset       │ Jun 01, 2021 │  0.67038 │ 0.96693 │ 3000                   │ 2                │ 100         │ 64              │
@@ -248,7 +248,7 @@ $ dvc exp show --all-commits --only-changed --sort-by=auc
 ```
 
 Note that in the final example, Git commits remain in chronological order. The
-sorting only applies to experiment groups (sharing a parent commit).
+sorting only applies to neutral:**Experiment** groups (sharing a parent commit).
 
 📖 See [Metrics, Parameters, and Plots](/doc/start/metrics-parameters-plots) for
 an introduction to parameters, metrics, plots.
