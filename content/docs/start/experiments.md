@@ -15,8 +15,11 @@ Git to version them with their lineage.
 https://youtu.be/FHQq_zZz5ms
 
 In this section, we explore the basic features of DVC experiment management with
-the [`example-dvc-experiments`][ede] project. [ede]:
-https://github.com/iterative/example-dvc-experiments
+the [`example-dvc-experiments`][ede] project. Please refer to the [README] file
+to install the project if you want to try these commands yourself. You may also
+find easier to try these in our [Katacoda] environment.
+
+[ede]: https://github.com/iterative/example-dvc-experiments
 
 <details>
 
