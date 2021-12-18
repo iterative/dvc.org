@@ -33,8 +33,20 @@ const parseHeadings = text => {
   return matches
 }
 
-const createPages = async ({ graphql, actions }) => {
-  // DOCS
+const defaultGetTemplate = (template, defaultTemplate) =>
+  template
+    ? require.resolve(path.resolve('src', 'templates', template + '.tsx'))
+    : defaultTemplate
+
+const createPages = async (
+  { graphql, actions },
+  {
+    defaultTemplate = path.resolve('src', 'templates', 'doc.tsx'),
+    getTemplate = defaultGetTemplate,
+    disable
+  }
+) => {
+  if (disable) return
   const docsResponse = await graphql(
     `
       {
@@ -42,9 +54,13 @@ const createPages = async ({ graphql, actions }) => {
           edges {
             node {
               id
-              rawMarkdownBody
               slug
               template
+              parent {
+                ... on MarkdownRemark {
+                  rawMarkdownBody
+                }
+              }
             }
           }
         }
@@ -56,19 +72,20 @@ const createPages = async ({ graphql, actions }) => {
     throw docsResponse.errors
   }
 
-  const docComponent = require.resolve('../../../templates/doc.tsx')
-
   docsResponse.data.docs.edges.forEach(doc => {
     const {
-      node: { id, slug, rawMarkdownBody, template }
+      node: {
+        id,
+        slug,
+        template,
+        parent: { rawMarkdownBody }
+      }
     } = doc
     const headings = parseHeadings(rawMarkdownBody)
 
     if (slug) {
       actions.createPage({
-        component: template
-          ? require.resolve(path.resolve('src', 'templates', template + '.tsx'))
-          : docComponent,
+        component: getTemplate(template, defaultTemplate),
         path: slug,
         context: {
           id,

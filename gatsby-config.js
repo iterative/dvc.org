@@ -37,6 +37,13 @@ const plugins = [
   'gatsby-plugin-sitemap',
   'gatsby-plugin-twitter',
   {
+    resolve: 'gatsby-theme-iterative-docs',
+    options: {
+      docComponent: require.resolve('./src/templates/doc.tsx'),
+      disable: Boolean(process.env.SKIP_DOCS)
+    }
+  },
+  {
     resolve: 'gatsby-source-filesystem',
     options: {
       name: 'content',
