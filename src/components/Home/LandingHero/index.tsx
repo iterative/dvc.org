@@ -1,5 +1,4 @@
-// import React, { useEffect, useCallback, useState } from 'react'
-import React, { useCallback } from 'react'
+import React, { useEffect, useCallback, useState } from 'react'
 import cn from 'classnames'
 
 import ShowOnly from '../../ShowOnly'
@@ -7,7 +6,6 @@ import Link from '../../Link'
 import DownloadButton from '../../DownloadButton'
 import TwoRowsButton from '../../TwoRowsButton'
 import GithubLine from './GithubLine'
-import Video from '../UseCases/Video'
 import { scrollIntoLayout, ease } from '../../../utils/front/scroll'
 import { logEvent } from '../../../utils/front/ga'
 
@@ -18,16 +16,16 @@ interface ILandingHeroProps {
 }
 
 const LandingHero: React.FC<ILandingHeroProps> = ({ scrollToRef }) => {
-  // const [activeCommand, setActiveCommand] = useState(0)
+  const [activeCommand, setActiveCommand] = useState(0)
 
-  // useEffect(() => {
-  //   const interval = setInterval(
-  //     () => setActiveCommand(prev => (prev + 1) % 4),
-  //     3000
-  //   )
+  useEffect(() => {
+    const interval = setInterval(
+      () => setActiveCommand(prev => (prev + 1) % 4),
+      3000
+    )
 
-  //   return (): void => clearInterval(interval)
-  // }, [])
+    return (): void => clearInterval(interval)
+  }, [])
 
   const scrollToUseCases = useCallback(() => {
     logEvent('button', 'how-it-works')
@@ -84,8 +82,8 @@ const LandingHero: React.FC<ILandingHeroProps> = ({ scrollToRef }) => {
         </div>
       </div>
 
-      {/* <ShowOnly on="desktop"> */}
-      {/* <div className={styles.commands}>
+      <ShowOnly on="desktop">
+        <div className={styles.commands}>
           <div
             className={cn(styles.command, activeCommand === 0 && styles.active)}
           >
@@ -110,11 +108,8 @@ const LandingHero: React.FC<ILandingHeroProps> = ({ scrollToRef }) => {
           >
             <span className={styles.line}>$ dvc push</span>
           </div>
-        </div> */}
-      {/* </ShowOnly> */}
-      <div className={styles.video}>
-        <Video id="z0s42TxH9oM" />
-      </div>
+        </div>
+      </ShowOnly>
     </div>
   )
 }
