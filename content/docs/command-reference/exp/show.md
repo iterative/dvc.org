@@ -46,10 +46,10 @@ which you can typically exit by typing `Q`. Use `--no-pager` to print the table
 to standard output.
 
 By default, the printed experiments table will include columns for all metrics
-and params from the entire project. The `--param-deps`, `--drop`, `--keep` and
+and params from the entire project. The `--only-changed`, `--drop`, `--keep` and
 other [options](#options) can determine which ones should be displayed.
 
-experiments in the table are first grouped (by parent commit). They are then
+Experiments in the table are first grouped (by parent commit). They are then
 sorted inside each group, chronologically by default. The `--sort-by` and
 `--sort-order` options can change this ordering, based on any single, visible
 metric or param.
@@ -163,7 +163,7 @@ $ dvc exp show --only-changed
 You can also use `--drop` to filter columns matching specific regex patterns:
 
 ```dvc
-$ dvc exp show --drop 'prepare'
+$ dvc exp show --drop prepare
 ```
 
 ```dvctable
@@ -181,7 +181,7 @@ $ dvc exp show --drop 'prepare'
 Combine `--only-changed` with `--drop` and/or `--keep`:
 
 ```dvc
-$ dvc exp show --only-changed --drop 'neutral:**Created**' --keep 'train.(?!seed)'
+$ dvc exp show --only-changed --drop Created --keep 'train.(?!seed)'
 ```
 
 ```dvctable
@@ -199,7 +199,7 @@ $ dvc exp show --only-changed --drop 'neutral:**Created**' --keep 'train.(?!seed
 Sort experiments by the `auc` metric, in ascending order:
 
 ```dvc
-$ dvc exp show --only-changed --sort-by=metric:**roc_auc**
+$ dvc exp show --only-changed --sort-by=roc_auc
 ```
 
 ```dvctable
