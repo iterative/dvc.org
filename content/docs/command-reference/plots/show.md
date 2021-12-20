@@ -7,7 +7,7 @@ Generate [plot](/doc/command-reference/plots) from a metrics file.
 ```usage
 usage: dvc plots show [-h] [-q | -v] [-t <name_or_path>] [-x <field>]
                       [-y <field>] [--no-header] [--title <text>]
-                      [--x-label <text>] [--y-label <text>] [-o <folder>]
+                      [--x-label <text>] [--y-label <text>] [-o <path>]
                       [--show-vega] [--open] [--html-template <path>]
                       [targets [targets ...]]
 
@@ -36,7 +36,7 @@ please see `dvc plots`.
 
 ## Options
 
-- `-o <folder>, --out <folder>` - destination folder of the `html` plot. By
+- `-o <path>, --out <path>` - destination directory of the `html` plot. By
   default, `dvc_plots`.
 
 - `-t <name_or_path>, --template <name_or_path>` -
