@@ -36,13 +36,7 @@ const plugins = [
   'gatsby-plugin-react-helmet',
   'gatsby-plugin-sitemap',
   'gatsby-plugin-twitter',
-  {
-    resolve: 'gatsby-theme-iterative-docs',
-    options: {
-      docComponent: require.resolve('./src/templates/doc.tsx'),
-      disable: Boolean(process.env.SKIP_DOCS)
-    }
-  },
+  'gatsby-theme-iterative-docs',
   {
     resolve: 'gatsby-source-filesystem',
     options: {

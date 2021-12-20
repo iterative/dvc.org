@@ -33,18 +33,9 @@ const parseHeadings = text => {
   return matches
 }
 
-const defaultGetTemplate = (template, defaultTemplate) =>
-  template
-    ? require.resolve(path.resolve('src', 'templates', template + '.tsx'))
-    : defaultTemplate
-
 const createPages = async (
   { graphql, actions },
-  {
-    defaultTemplate = path.resolve('src', 'templates', 'doc.tsx'),
-    getTemplate = defaultGetTemplate,
-    disable
-  }
+  { defaultTemplate, getTemplate, disable }
 ) => {
   if (disable) return
   const docsResponse = await graphql(
