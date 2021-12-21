@@ -25,19 +25,20 @@ locations of your input data, <abbr>parameters</abbr>, source code, models,
 can be customized through the [options](#options) below or via
 [configuration](/doc/command-reference/config#exp).
 
-Assumed repository structure:
+Repository structure assumed by default:
 
 ```
 ├── data/
 ├── metrics.json
 ├── models/
-├── params.yaml  # required by default
+├── params.yaml  # required
 ├── plots/
 └── src/
 ```
 
-> Note that by default `dvc exp init` expects at least a `params.yaml` file
-> present. It can be avoided via the `--params`, `-i`, or `--explicit` options.
+> Note that `dvc exp init` expects at least a `params.yaml` file present. DVC
+> reads it to find parameters to include in the [stage definition]. It can
+> however be omitted when using the `--explicit` and/or `-i` flags.
 
 You must provide a command that runs your experiment(s). It can be given either
 directly [as an argument](#the-command-argument), or by using the
@@ -50,6 +51,8 @@ Different types of stages are supported, such as `dl` (deep learning) which uses
 > `dvc exp init` is intended as a quick way to start running [DVC Experiments].
 > See the `dvc.yaml` specification for complex data pipelines.
 
+[stage definition]:
+  /doc/user-guide/project-structure/pipelines-files#stage-entries
 [checkpoints]: /doc/user-guide/experiment-management/checkpoints
 [dvc experiments]: /doc/user-guide/experiment-management/experiments-overview
 
@@ -100,9 +103,8 @@ $ dvc exp init './another_script.sh $MYENVVAR'
   </abbr>parameters</abbr> that your experiment depends on can be found.
   Overrides other configuration and default value (`params.yaml`).
 
-  > Note that `dvc exp init` fails if the parameters file does not exist at the
-  > time of the invocation. This is because DVC reads that file to find params
-  > to include in the stage.
+  > Note that `dvc exp init` will fail if the params file does not exist. This
+  > is because DVC reads it to find params to include in the [stage definition].
 
 - `--data` - set the path to the data file or directory that your experiment
   depends on can be found (if any). Overrides other configuration and default
