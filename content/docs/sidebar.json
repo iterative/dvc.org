@@ -562,7 +562,7 @@
             "slug": "prepare-repositories"
           },
           {
-            "label": "Views",
+            "label": "Views and experiments",
             "slug": "views",
             "source": false,
             "children": [
@@ -572,18 +572,18 @@
                 "label": "Configure View",
                 "slug": "view-settings"
               },
+              {
+                "label": "Explore ML Experiments",
+                "slug": "explore-experiments"
+              },
+              {
+                "label": "Visualize and Compare",
+                "slug": "visualize-experiments"
+              },
+              "run-experiments",
               "share-view"
             ]
           },
-          {
-            "label": "Explore ML Experiments",
-            "slug": "explore-experiments"
-          },
-          {
-            "label": "Visualize and Compare",
-            "slug": "visualize-experiments"
-          },
-          "run-experiments",
           "teams",
           "account-management",
           "install-github-app"
