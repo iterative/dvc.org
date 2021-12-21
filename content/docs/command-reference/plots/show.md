@@ -212,8 +212,7 @@ option prevents wrapping this plot spec in HTML, printing the resulting JSON to
 standard output instead:
 
 ```dvc
-$ dvc plots show --show-vega logs.csv -y accuracy > logs.csv.json
-$ cat logs.csv.json
+$ dvc plots show --show-vega logs.csv -y accuracy
 ```
 
 ```json
