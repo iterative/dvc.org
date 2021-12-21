@@ -1,6 +1,6 @@
 # unfreeze
 
-Unfreeze [stages](/doc/command-reference/run) so that `dvc repro` can execute
+Unfreeze [stages](/doc/command-reference/stage) so that `dvc repro` can execute
 them. See `dvc freeze` for more information.
 
 ## Synopsis
@@ -42,10 +42,10 @@ First, let's create a dummy stage that copies `foo` to `bar`:
 ```dvc
 $ echo foo > foo
 $ dvc add foo
-$ dvc run -n make_copy -d foo -o bar cp foo bar
+$ dvc stage add -n make_copy -d foo -o bar cp foo bar
 ```
 
-> See `dvc run` for more details.
+> See `dvc stage add` for more details.
 
 Then, let's change the file `foo` that the stage `make_copy` depends on, and
 freeze the stage as well, to see what's the project status after that:
