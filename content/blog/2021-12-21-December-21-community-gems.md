@@ -18,7 +18,7 @@ tags:
   - Community
 ---
 
-### [While doing a `dvc pull`, I accidentally entered the verification from the wrong Google account. How can I edit that?](https://discord.com/channels/485586884165107732/563406153334128681/908437162150739978)
+### ['m using Google Drive as a remote storage and accidentally entered the verification from the wrong Google account. How can I edit that?](https://discord.com/channels/485586884165107732/563406153334128681/908437162150739978)
 
 No problem @fireballpoint1! This happens sometimes.
 
@@ -37,10 +37,12 @@ That should give you a chance to enter the correct credentials when you try to
 That's a new question for us @Krzysztof Begiedza!
 
 If you enable the SSH service on your NAS, you can configure DVC to use it as an
-SSH remote.
+SSH remote with `dvc remote add`.
 
-There should also be DSM packages for webdav as well, if you prefer that over
-SSH. Just make sure that your URL looks similar to this.
+There should also be DSM (Synology DiskStation Manager) packages for webdav as
+well, if you prefer that over SSH. Just make sure that when you run
+`dvc remote add -d storage <URL>`, your remote storage URL looks similar to
+this.
 
 ```
 webdav://<ip>/<path>
@@ -50,14 +52,19 @@ webdav://<ip>/<path>
 
 Great question @Clemens!
 
-You would `dvc import` the relevant files into each of your individual projects
-and run `dvc pull` in there. DVC will then only pull the relevant files.
+You would run `dvc pull <file>` to get the files you want. You could also use
+the `--glob` option on `dvc pull` and DVC will only pull the relevant files.
 
 The command for that pull would be similar to this.
 
 ```dvc
 $ dvc pull path/to/specific/file
 ```
+
+You could also make a
+[data registry](https://dvc.org/doc/use-cases/data-registries) and use
+`dvc import` in other projects to get a specific dataset. That way you don't
+have to do a granular pull.
 
 ### [What is the fastest way to get the specific value of a metric of an experiment based on experiment id?](https://discord.com/channels/485586884165107732/563406153334128681/916328260856590346)
 
@@ -80,7 +87,7 @@ This returns a Python dictionary that contains what gets displayed in
 `dvc metrics show --json` except you're able to specify the experiments you
 want.
 
-### [If I have a DVC pipeline with many stages as well as `foreach` in every stage, is it possibile to run the whole pipeline but only for one element of the `foreach`?](https://discord.com/channels/485586884165107732/563406153334128681/915986804577026088)
+### [Is it possible to run the whole pipeline but only for one element of the `foreach`?](https://discord.com/channels/485586884165107732/563406153334128681/915986804577026088)
 
 Another great question from @vgodie!
 
@@ -188,7 +195,7 @@ cp = pl.callbacks.model_checkpoint.ModelCheckpoint(
     filename='checkpoint_{epoch}')
 ```
 
-### [Is there a feature for DVC to only sample and cache a subset of the tracked dataset?](https://discord.com/channels/485586884165107732/485596304961962003/917778575845900340)
+### [Is there a feature for DVC to only sample and cache a subset of the tracked dataset, e.g. 10000 lines of a large file?](https://discord.com/channels/485586884165107732/485596304961962003/917778575845900340)
 
 Really great question @Abdi!
 
