@@ -9,7 +9,7 @@ import TwoRowsButton from '../../TwoRowsButton'
 import GithubLine from './GithubLine'
 import Video from '../UseCases/Video'
 import { scrollIntoLayout, ease } from '../../../utils/front/scroll'
-import { logEvent } from '../../../utils/front/ga'
+import { logEvent } from '../../../utils/front/plausible'
 
 import * as styles from './styles.module.css'
 
@@ -30,7 +30,7 @@ const LandingHero: React.FC<ILandingHeroProps> = ({ scrollToRef }) => {
   // }, [])
 
   const scrollToUseCases = useCallback(() => {
-    logEvent('button', 'how-it-works')
+    logEvent('Button', { Item: 'how-it-works' })
     scrollIntoLayout(scrollToRef?.current, {
       smooth: true,
       duration: 800,

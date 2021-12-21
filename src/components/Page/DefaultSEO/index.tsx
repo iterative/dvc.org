@@ -116,7 +116,13 @@ const DefaultSEO: React.FC<IDefaultSEOProps> = ({ pathname }) => {
           href: fullUrl
         }
       ]}
-    />
+    >
+      <script
+        defer
+        data-domain="dvc.org"
+        src="https://plausible.io/js/plausible.js"
+      ></script>
+    </Helmet>
   )
 }
 
