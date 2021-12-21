@@ -129,8 +129,8 @@ $ dvc exp init './another_script.sh $MYENVVAR'
   > This only has an effect when used with `--type=dl`.
 
 - `--explicit` - do not assume default locations of project dependencies and
-  outputs. You'll have to provide specific locations via other options or config
-  files. If combined with `--interactive`, prompts won't have default values.
+  outputs. You'll have to provide specific locations via other options or
+  `dvc config exp`. In `--interactive` this removes default values from prompts.
 
 - `-n <stage>`, `--name <stage>` - specify a custom name for the stage generated
   by this command. The default is `train`. It can only contain letters, numbers,
