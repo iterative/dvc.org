@@ -40,8 +40,8 @@ Repository structure assumed by default:
 > reads it to find parameters to include in the [stage definition]. It can
 > however be omitted when using the `--explicit` and/or `-i` flags.
 
-You must provide a command that runs your experiment(s). It can be given either
-directly [as an argument](#the-command-argument), or by using the
+You must always provide a command that runs your experiment(s). It can be given
+either directly [as an argument](#the-command-argument), or by using the
 `--interactive` (`-i`) mode which will prompt you for it. This command will be
 wrapped as a <abbr>stage</abbr> that `dvc exp run` can execute.
 
@@ -83,6 +83,10 @@ $ dvc exp init './another_script.sh $MYENVVAR'
 - `-i`, `--interactive` - prompts user for a command that runs your
   experiment(s) (see [details](#the-command-argument)) and to confirm or define
   the paths that conform your repo's structure.
+
+- `-n <stage>`, `--name <stage>` - specify a custom name for the stage generated
+  by this command. The default is `train`. It can only contain letters, numbers,
+  dash `-` and underscore `_` (same as `dvc stage add --name`).
 
 - `--run` - automatically run the experiment after creating the stage (same as
   `dvc exp run`).
@@ -133,10 +137,6 @@ $ dvc exp init './another_script.sh $MYENVVAR'
 - `--explicit` - do not assume default locations of project dependencies and
   outputs. You'll have to provide specific locations via other options or
   `dvc config exp`. In `--interactive` this removes default values from prompts.
-
-- `-n <stage>`, `--name <stage>` - specify a custom name for the stage generated
-  by this command. The default is `train`. It can only contain letters, numbers,
-  dash `-` and underscore `_` (same as `dvc stage add --name`).
 
 - `-f`, `--force` - overwrite an existing stage in `dvc.yaml` file without
   asking for confirmation (same as `dvc stage add --force`).
