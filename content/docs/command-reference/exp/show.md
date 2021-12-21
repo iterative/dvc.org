@@ -142,7 +142,7 @@ $ dvc exp show
 > You can exit this screen with `Q`, typically.
 
 As a quick way of reducing noise, `--only-changed` will drop any column with
-values that do not change across the shown experiments:
+values that do not change across experiments:
 
 ```dvc
 $ dvc exp show --only-changed
