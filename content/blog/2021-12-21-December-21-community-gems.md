@@ -18,7 +18,7 @@ tags:
   - Community
 ---
 
-### ['m using Google Drive as a remote storage and accidentally entered the verification from the wrong Google account. How can I edit that?](https://discord.com/channels/485586884165107732/563406153334128681/908437162150739978)
+### [I'm using Google Drive as a remote storage and accidentally entered the verification from the wrong Google account. How can I edit that?](https://discord.com/channels/485586884165107732/563406153334128681/908437162150739978)
 
 No problem @fireballpoint1! This happens sometimes.
 
