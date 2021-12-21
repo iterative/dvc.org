@@ -7,7 +7,7 @@ import LayoutWidthContainer from '../../LayoutWidthContainer'
 import Link from '../../Link'
 import Block from '../Block'
 import Section from '../Section'
-import { logEvent } from '../../../utils/front/ga'
+import { logEvent } from '../../../utils/front/plausible'
 import { useCommunityData } from '../../../utils/front/community'
 
 import * as sharedStyles from '../styles.module.css'
@@ -33,7 +33,7 @@ const Event: React.FC<IEvent> = ({
   url
 }) => {
   const logEventClick = useCallback(
-    () => logEvent('community', 'event', title),
+    () => logEvent('Community', { Section: 'event', Event: title }),
     [title]
   )
 
