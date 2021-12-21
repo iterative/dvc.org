@@ -2,7 +2,7 @@ import React from 'react'
 import cn from 'classnames'
 
 import Link from '../../../Link'
-import { logEvent } from '../../../../utils/front/ga'
+import { logEvent } from '../../../../utils/front/plausible'
 
 import { ReactComponent as ExternalLinkIcon } from '../../../../../static/img/external-link-icon.svg'
 
@@ -77,7 +77,7 @@ export const CommunityPopup: React.FC<{
         href={href}
         key={i}
         onClick={(): void => {
-          logEvent('menu', 'community')
+          logEvent('Nav', { Item: 'community' })
           closePopup()
         }}
       >
