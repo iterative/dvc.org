@@ -15,9 +15,9 @@ positional arguments:
 
 ## Description
 
-Makes a named Git [`branch`] containing the target `experiment` (making it
-[persistent]. For [checkpoint experiments], the new branch will contain multiple
-commits (the checkpoints).
+Makes a given Git [`branch`] containing the target `experiment`. This makes the
+experiment into a [regular commit], or several in the case of [checkpoint
+experiments] (one per checkpoint).
 
 The new `branch` will be based on the experiment's parent commit (`HEAD` at the
 time that the experiment was run). Note that DVC **does not** switch into the
@@ -33,7 +33,7 @@ version.
 
 [`branch`]:
   https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging
-[persistent]: /doc/user-guide/experiment-management/persisting-experiments
+[regular commit]: /doc/user-guide/experiment-management/persisting-experiments
 [checkpoint experiments]: /doc/command-reference/exp/run#checkpoints
 [stored and shared]: /doc/use-cases/sharing-data-and-model-files
 
