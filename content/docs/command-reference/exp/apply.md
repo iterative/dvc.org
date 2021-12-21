@@ -14,17 +14,20 @@ positional arguments:
 
 ## Description
 
-Restores an `experiment` into the workspace as long as no more Git commits have
-been made after the target experiment (`HEAD` hasn't moved). The experiment can
-be referenced by name or hash (see `dvc exp run` for details).
+Restores an `experiment` into the workspace, as long as we're on the same
+project baseline (Git `HEAD`) as when the target experiment was run. The
+experiment can be referenced by name or hash (see `dvc exp run` for details).
 
-Specifically, `dvc exp apply` changes any files (code, data,
-<abbr>parameters</abbr>, <abbr>metrics</abbr>, etc.) needed to reflect the
-experiment conditions and results in the workspace. Current changes to the
-workspace are preserved except if they conflict with the experiment in question.
+Specifically, `dvc exp apply` checks out any files or directories needed to
+reflect the experiment conditions and results. This can include both with DVC
+and Git: code, data, <abbr>parameters</abbr>, <abbr>metrics</abbr>, etc.
 
-⚠️ Conflicting changes in the workspace are overwritten unless unless
-`--no-force` is used.
+> Note that existing changes in the workspace that don't conflict the
+> `experiment` are left alone. This may result in a mix of other changes with
+> the ones applied by this command.
+
+⚠️ Conflicting changes in the workspace are overwritten unless `--no-force` is
+used.
 
 This is typically used after choosing a target `experiment` with `dvc exp show`
 or `dvc exp diff`, and before committing it to Git (making it [persistent].
