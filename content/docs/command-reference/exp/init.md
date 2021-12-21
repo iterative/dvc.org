@@ -147,3 +147,56 @@ $ dvc exp init './another_script.sh $MYENVVAR'
   problems arise, otherwise 1.
 
 - `-v`, `--verbose` - displays detailed tracing information.
+
+## Example: interactive mode
+
+Let's prepare a raw data ingestion script to start running experiments on it.
+
+```dvc
+$ dvc exp init --interactive --name ingest
+This command will guide you to set up a train stage in dvc.yaml.
+See https://s.dvc.org/g/pipeline-files.
+
+Command to execute: python src/ingest.py
+
+Enter the paths for dependencies and outputs of the command.
+DVC assumes the following workspace structure:
+├── data
+├── metrics.json
+├── models
+├── params.yaml
+├── plots
+└── src
+
+Path to a code file/directory [src, n to omit]: src/in.py
+Path to a data file/directory [data, n to omit]: data/raw
+Path to a model file/directory [models, n to omit]: n
+Path to a parameters file [params.yaml, n to omit]:
+Path to a metrics file [metrics.json, n to omit]: n
+Path to a plots file/directory [plots, n to omit]: n
+...
+```
+
+Notice that the code and data locations were specified above, to avoid using the
+defaults which are too broad. `params.yaml` exists in the workspace and is used
+by our code in question, so the default is used. Models, metrics, and plots are
+omitted as there are none for an ingestion process.
+
+The resulting `dvc.yaml` file is simply:
+
+```yaml
+ingest:
+  cmd: python src/in.py
+  deps:
+    - data/raw
+    - src/in.py
+```
+
+> This <abbr>stage</abbr> could also be defined with `dvc stage add` like this:
+>
+> ```dvc
+> $ dvc stage add -n ingest -d data/raw -d src/in.py python src/in.py
+> ```
+
+The next step would be to tune `params.yaml` or improve `src/in.py` directly,
+and start [running experiments](/doc/command-reference/exp/run).
