@@ -168,7 +168,7 @@ $ dvc exp show --drop prepare
 
 ```dvctable
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
-┃ neutral:**Experiment**              ┃ neutral:**Created**      ┃ metric:**avg_prec** ┃ metric:**roc_auc** ┃ param:**featurize.max_features** ┃ param:**featurize.ngrams** ┃ param:**featurize.ngrams** ┃ param:**train.n_est** ┃ param:**train.min_split** ┃
+┃ neutral:**Experiment**              ┃ neutral:**Created**      ┃ metric:**avg_prec** ┃ metric:**roc_auc** ┃ param:**featurize.max_features** ┃ param:**featurize.ngrams** ┃ param:**train.seed** ┃ param:**train.n_est** ┃ param:**train.min_split** ┃
 ┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━┩
 │ workspace               │ -            │  0.60405 │  0.9608 │ 3000                   │ 2                │ 20170428   │ 100         │ 64              │
 │ master                  │ May 29, 2021 │  0.60405 │  0.9608 │ 3000                   │ 2                │ 20170428   │ 100         │ 64              │
@@ -186,7 +186,7 @@ $ dvc exp show --drop 'avg_prec|train.min_split'
 
 ```dvctable
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━┓
-┃ neutral:**Experiment**               ┃ neutral:**Created**      ┃ metric:**roc_auc** ┃ param:**prepare.split** ┃ param:**prepare.seed** ┃ param:**featurize.max_features** ┃ param:**featurize.ngrams** ┃ param:**train.seed** ┃ param:**train.n_est** ┃
+┃ neutral:**Experiment**              ┃ neutral:**Created**      ┃ metric:**roc_auc** ┃ param:**prepare.split** ┃ param:**prepare.seed** ┃ param:**featurize.max_features** ┃ param:**featurize.ngrams** ┃ param:**train.seed** ┃ param:**train.n_est** ┃
 ┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━┩
 │ workspace               │ -            │  0.9608 │ 0.2           │ 20170428     │ 3000                   │ 2                │ 20170428   │ 100         │
 │ master                  │ May 29, 2021 │  0.9608 │ 0.2           │ 20170428     │ 3000                   │ 2                │ 20170428   │ 100         │
