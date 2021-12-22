@@ -89,7 +89,7 @@ _Luigi_, etc.
   experiments. Data versions exist as metadata in Git, as opposed to using
   external databases or APIs, so no additional services are required.
 
-- DVC doesn't need to run any services. There's no built-in GUI as a result, but 
+- DVC doesn't need to run any services. There's no built-in GUI as a result, but
   we also have our sister project [Studio](/doc/studio) to fill that gap.
 
 - DVC can generate images with experiment workflow visualizations.
