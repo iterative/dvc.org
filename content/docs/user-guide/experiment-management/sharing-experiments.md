@@ -12,19 +12,19 @@ with DVC and Git remotes. But DVC takes care of pushing and pulling to/from Git
 remotes in the case of experiments.
 
 ```
-  ┌────────────────┐      ┌─────────────────┐
-  ├────────────────┤      │                 │
-  │   DVC remote   │      │    Git remote   │
-  │    storage     │      ├─────────────────┤
-  └────────────────┘      └─────────────────┘
-           ▲                       ▲
-           │     dvc exp push      │
-           │                       │
-  ┌────────┴────────┐     ┌────────┴────────┐
-  │   Cached data   │     │    Code and     │
-  │    artifacts    │     │    metafiles    │
-  │                 │     │                 │
-  └─────────────────┘     └─────────────────┘
+  ┌────────────────┐     ┌────────────────┐
+  ├────────────────┤     │                │  Remote locations
+  │   DVC remote   │     │   Git remote   │
+  │    storage     │     ├────────────────┤
+  └────────────────┘     └────────────────┘
+          ▲                       ▲
+          │      dvc exp push     │
+          │      dvc exp pull     │
+          ▼                       ▼
+  ┌─────────────────┐    ┌────────────────┐
+  │                 │    │   Code and     │
+  │   Cached data   │    │   metafiles    │  Local project
+  └─────────────────┘    └────────────────┘
 ```
 
 > Specifically, data, models, etc. are tracked and <abbr>cached</abbr> by DVC
