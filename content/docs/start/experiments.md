@@ -193,12 +193,10 @@ $ dvc exp show
 By default, it shows all the parameters and the metrics with the timestamp. If
 you have a large number of parameters, metrics or experiments, this may lead to
 a cluttered view. You can limit the table to specific metrics, or parameters, or
-hide the timestamp column with `--include-metrics`, `--include-params`, or
-`--no-timestamp` options of the command, respectively.
+hide the timestamp column using the `--drop` option of the command.
 
 ```dvc
-$ dvc exp show --no-timestamp \
-  --include-params model.conv_units --include-metrics acc
+$ dvc exp show --drop 'Created|train|loss'
 ```
 
 ```dvctable
