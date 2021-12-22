@@ -138,7 +138,6 @@ const DownloadButton: React.FC<IDownloadButtonProps> = ({ openTop }) => {
   )
   const download = (os: OS): void => {
     setOpened(false)
-    console.log(os)
     logEvent('Download Button', { OS: os })
   }
 
