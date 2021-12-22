@@ -35,10 +35,14 @@
 
 .header {
   display: flex;
+  text-align: left;
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  font-family: var(--font-brandon);
 }
 
 .title {
-  font-family: var(--font-brandon);
   font-size: 40px;
   font-weight: 500;
   line-height: 60px;
