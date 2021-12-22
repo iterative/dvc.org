@@ -196,8 +196,8 @@ $ dvc exp show --drop 'avg_prec|train.min_split'
 └─────────────────────────┴──────────────┴─────────┴───────────────┴──────────────┴────────────────────────┴──────────────────┴────────────┴─────────────┘
 ```
 
-If combined `--only-changed` has the least priority, `--drop` comes next,
-and `--keep` has the last word:
+If combined `--only-changed` has the least priority, `--drop` comes next, and
+`--keep` has the last word:
 
 ```dvc
 $ dvc exp show --only-changed --drop Created --keep 'train.(?!seed)'
