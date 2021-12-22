@@ -80,7 +80,8 @@ metric or param.
 
 - `--drop <regex>` - remove the matching columns.
 
-- `--keep <regex>` - prevent the matching columns to be removed by any of the other options.
+- `--keep <regex>` - prevent the matching columns to be removed by any of the
+  other options.
 
 - `--sort-by <name>` - sort experiments by the specified metric or param
   (`name`). Only one visible column (either metric or param) can be used for
@@ -177,7 +178,8 @@ $ dvc exp show --drop prepare
 └─────────────────────────┴──────────────┴──────────┴─────────┴────────────────────────┴──────────────────┴────────────┴─────────────┴─────────────────┘
 ```
 
-You can use [regex][regex] to match columns. For example, to remove multiple columns:
+You can use [regex][regex] to match columns. For example, to remove multiple
+columns:
 
 ```dvc
 $ dvc exp show --drop 'avg_prec|train.min_split'
