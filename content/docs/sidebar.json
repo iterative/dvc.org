@@ -562,7 +562,7 @@
             "slug": "prepare-repositories"
           },
           {
-            "label": "Views and experiments",
+            "label": "Views and Experiments",
             "slug": "views",
             "source": false,
             "children": [
