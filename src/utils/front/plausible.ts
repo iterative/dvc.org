@@ -13,6 +13,9 @@ export const logEvent = (
   props?: { [key: string]: string }
 ): void => {
   if (!window.plausible) return
-
-  window.plausible(eventName, props ? { props } : props)
+  if (props) {
+    window.plausible(eventName, { props })
+  } else {
+    window.plausible(eventName)
+  }
 }
