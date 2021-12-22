@@ -160,7 +160,7 @@ $ dvc exp show --only-changed
 └─────────────────────────┴──────────────┴──────────┴─────────┴────────────────────────┘
 ```
 
-You can also use `--drop` to filter columns matching a specific [regex][regex]:
+You can also use `--drop` to filter specific columns:
 
 ```dvc
 $ dvc exp show --drop prepare
@@ -196,7 +196,8 @@ $ dvc exp show --drop 'avg_prec|train.min_split'
 └─────────────────────────┴──────────────┴─────────┴───────────────┴──────────────┴────────────────────────┴──────────────────┴────────────┴─────────────┘
 ```
 
-Combine `--only-changed` with `--drop` and/or `--keep`:
+If combined `--only-changed` has the least priority, `--drop` comes next,
+and `--keep` has the last word:
 
 ```dvc
 $ dvc exp show --only-changed --drop Created --keep 'train.(?!seed)'
