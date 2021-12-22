@@ -1,9 +1,10 @@
 # Sharing Experiments
 
-Regular <abbr>DVC repository</abbr> versions are typically synchronized among
-team members per regular Git workflow. [DVC Experiments] are directly woven into
-this commit history. But they also intend to avoid cluttering shared repos, so
-by default they will only exist in the local environment where they were [run].
+In a regular Git workflow, <abbr>DVC repository</abbr> versions are typically
+synchronized among team members. And [DVC Experiments] are internally connected
+to this commit history. But to avoid cluttering everyone's copies of the repo,
+by default experiments will only exist in the local environment where they were
+[created].
 
 You must explicitly save or share experiments individually on other locations.
 This is done similarly to [sharing regular project versions], by synchronizing
@@ -34,7 +35,7 @@ remotes in the case of experiments.
 > existing [Git remotes].
 
 [dvc experiments]: /doc/user-guide/experiment-management/experiments-overview
-[run]: /doc/user-guide/experiment-management/running-experiments
+[created]: /doc/user-guide/experiment-management/running-experiments
 [sharing regular project versions]: /doc/use-cases/sharing-data-and-model-files
 [git remotes]: https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes
 
