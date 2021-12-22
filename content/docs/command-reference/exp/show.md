@@ -46,8 +46,8 @@ which you can typically exit by typing `Q`. Use `--no-pager` to print the table
 to standard output.
 
 By default, the printed experiments table will include columns for all metrics
-and params from the entire project. The `--only-changed`, `--drop`, `--keep` and
-other [options](#options) can determine which ones should be displayed.
+and params from the entire project. The `--only-changed`, `--drop`, `--keep`,
+and other [options](#options) can determine which ones should be displayed.
 
 Experiments in the table are first grouped (by parent commit). They are then
 sorted inside each group, chronologically by default. The `--sort-by` and
@@ -160,7 +160,7 @@ $ dvc exp show --only-changed
 └─────────────────────────┴──────────────┴──────────┴─────────┴────────────────────────┘
 ```
 
-You can also use `--drop` to filter columns matching a specific [regex][regex]:
+You can also use `--drop` to filter specific columns:
 
 ```dvc
 $ dvc exp show --drop prepare
@@ -196,7 +196,8 @@ $ dvc exp show --drop 'avg_prec|train.min_split'
 └─────────────────────────┴──────────────┴─────────┴───────────────┴──────────────┴────────────────────────┴──────────────────┴────────────┴─────────────┘
 ```
 
-Combine `--only-changed` with `--drop` and/or `--keep`:
+If combined `--only-changed` has the least priority, `--drop` comes next, and
+`--keep` has the last word:
 
 ```dvc
 $ dvc exp show --only-changed --drop Created --keep 'train.(?!seed)'
