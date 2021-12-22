@@ -156,7 +156,8 @@ hide commits and branches. So, it is possible that the commits or branches you
 do not see in your view were manually hidden by you or someone else in your
 team.
 
-You can unhide hidden commits to display them in your view. For details, refer
+You can unhide hidden commits/branches to display them in your view. For
+details, refer to
 [Display preferences -> Hide commits](/doc/studio/user-guide/views/explore-experiments#hide-commits).
 
 However, if the commit/branch that is missing is not in the hidden commits list
