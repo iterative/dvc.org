@@ -78,10 +78,12 @@ metric or param.
 - `--only-changed` - show only parameters and metrics with values that vary
   across experiments.
 
-- `--drop <regex>` - remove the matching columns.
+- `--drop <regex>` - remove the matching columns. This option has higher
+  priority than `--only-changed`. If both options are combined, `--drop` will
+  remove matching columns even if their values vary across experiments.
 
 - `--keep <regex>` - prevent the matching columns to be removed by any of the
-  other options.
+  other options, including `--only-changed` and `--drop`.
 
 - `--sort-by <name>` - sort experiments by the specified metric or param
   (`name`). Only one visible column (either metric or param) can be used for
