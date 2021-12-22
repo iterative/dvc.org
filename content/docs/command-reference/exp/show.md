@@ -46,7 +46,7 @@ which you can typically exit by typing `Q`. Use `--no-pager` to print the table
 to standard output.
 
 By default, the printed experiments table will include columns for all metrics
-and params from the entire project. The `--only-changed`, `--drop`, `--keep` and
+and params from the entire project. The `--only-changed`, `--drop`, `--keep`, and
 other [options](#options) can determine which ones should be displayed.
 
 Experiments in the table are first grouped (by parent commit). They are then
