@@ -159,9 +159,8 @@ team.
 You can unhide hidden commits/branches to display them in your view. For
 details, refer to
 [Display preferences -> Hide commits](/doc/studio/user-guide/views/explore-experiments#hide-commits).
-
-However, if the commit/branch that is missing is not in the hidden commits list
-also, then please [raise a support request](#support).
+However, if the missing commit/branch is not in the hidden commits list, then
+please [raise a support request](#support).
 
 ## Error: Failed to push experiment to repository
 
