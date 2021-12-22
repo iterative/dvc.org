@@ -12,7 +12,7 @@ import * as styles from './styles.module.css'
 const VERSION = `2.9.2`
 
 enum OS {
-  UNKNOWN = '...',
+  UNKNOWN = 'unknown',
   OSX = 'osx',
   WINDOWS = 'win',
   LINUX = 'linux',
