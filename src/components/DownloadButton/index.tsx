@@ -12,7 +12,7 @@ import * as styles from './styles.module.css'
 const VERSION = `2.9.2`
 
 enum OS {
-  UNKNOWN = '...',
+  UNKNOWN = 'unknown',
   OSX = 'osx',
   WINDOWS = 'win',
   LINUX = 'linux',
@@ -138,6 +138,7 @@ const DownloadButton: React.FC<IDownloadButtonProps> = ({ openTop }) => {
   )
   const download = (os: OS): void => {
     setOpened(false)
+    console.log(os)
     logEvent('Download Button', { OS: os })
   }
 
