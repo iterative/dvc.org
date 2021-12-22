@@ -78,10 +78,9 @@ metric or param.
 - `--only-changed` - show only parameters and metrics with values that vary
   across experiments.
 
-- `--drop <regex>` - remove the columns matching the specified [regex][regex].
+- `--drop <regex>` - remove the matching columns.
 
-- `--keep <regex>` - prevent the columns matching the specified [regex][regex]
-  to be removed by any of the other options.
+- `--keep <regex>` - prevent the matching columns to be removed by any of the other options.
 
 - `--sort-by <name>` - sort experiments by the specified metric or param
   (`name`). Only one visible column (either metric or param) can be used for
@@ -178,7 +177,7 @@ $ dvc exp show --drop prepare
 └─────────────────────────┴──────────────┴──────────┴─────────┴────────────────────────┴──────────────────┴────────────┴─────────────┴─────────────────┘
 ```
 
-You can use `|` in order to remove a list of columns:
+You can use [regex][regex] to match columns. For example, to remove multiple columns:
 
 ```dvc
 $ dvc exp show --drop 'avg_prec|train.min_split'
@@ -215,7 +214,7 @@ $ dvc exp show --only-changed --drop Created --keep 'train.(?!seed)'
 └─────────────────────────┴──────────┴─────────┴────────────────────────┴─────────────┴─────────────────┘
 ```
 
-Sort experiments by the `auc` metric, in descending order:
+Sort experiments by the `roc_auc` metric, in descending order:
 
 ```dvc
 $ dvc exp show --only-changed --sort-by=roc_auc --sort-order desc
@@ -236,7 +235,7 @@ $ dvc exp show --only-changed --sort-by=roc_auc --sort-order desc
 To see all experiments throughout the Git history:
 
 ```dvc
-$ dvc exp show --all-commits --only-changed --sort-by=auc
+$ dvc exp show --all-commits --only-changed --sort-by=roc_auc
 ```
 
 ```dvctable
