@@ -276,16 +276,6 @@ const plugins = [
   }
 ]
 
-if (process.env.CONTEXT === 'production') {
-  plugins.push({
-    resolve: 'gatsby-plugin-google-analytics',
-    options: {
-      respectDNT: true,
-      trackingId: process.env.GA_ID
-    }
-  })
-}
-
 if (process.env.ANALYZE) {
   plugins.push({
     resolve: 'gatsby-plugin-webpack-bundle-analyser-v2'
