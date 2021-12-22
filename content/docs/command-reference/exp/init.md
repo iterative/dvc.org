@@ -150,14 +150,15 @@ $ dvc exp init './another_script.sh $MYENVVAR'
 
 ## Example: interactive mode
 
-Let's prepare a raw data ingestion script to start running experiments on it.
+Let's prepare an ML model training script to start running experiments on it.
+The easiest route is using interactive mode and answering a few questions:
 
 ```dvc
-$ dvc exp init --interactive --name ingest
+$ dvc exp init --interactive
 This command will guide you to set up a train stage in dvc.yaml.
 See https://s.dvc.org/g/pipeline-files.
 
-Command to execute: python src/ingest.py
+Command to execute: python src/train.py
 
 Enter the paths for dependencies and outputs of the command.
 DVC assumes the following workspace structure:
@@ -168,35 +169,44 @@ DVC assumes the following workspace structure:
 ├── plots
 └── src
 
-Path to a code file/directory [src, n to omit]: src/in.py
-Path to a data file/directory [data, n to omit]: data/raw
-Path to a model file/directory [models, n to omit]: n
+Path to a code file/directory [src, n to omit]: src/train.py
+Path to a data file/directory [data, n to omit]: data/features
+Path to a model file/directory [models, n to omit]: models/predict.h5
 Path to a parameters file [params.yaml, n to omit]:
-Path to a metrics file [metrics.json, n to omit]: n
+Path to a metrics file [metrics.json, n to omit]:
 Path to a plots file/directory [plots, n to omit]: n
 ...
 ```
 
-Notice that the code and data locations were specified above, to avoid using the
-defaults which are too broad. `params.yaml` exists in the workspace and is used
-by our code in question, so the default is used. Models, metrics, and plots are
-omitted as there are none for an ingestion process.
+In this example the code, data, and model locations were specified above to
+avoid using the defaults (which are too broad). `params.yaml` and `metrics.json`
+are accepted (pressed Enter) for <abbr>parameters</abbr> and
+<abbr>metrics</abbr>. Plots are omitted (entered `n`) as none will be written.
 
-The resulting `dvc.yaml` file is simply:
+The resulting `dvc.yaml` file codifies the meta-information you provided in
+DVC's format:
 
 ```yaml
-ingest:
-  cmd: python src/in.py
+train:
+  cmd: python src/train.py
   deps:
-    - data/raw
-    - src/in.py
+    - data/features
+    - src/train.py
+  params:
+    - epochs
+  outs:
+    - models/predict.h5
+  metrics:
+    - metrics.json:
+        cache: false
 ```
 
-> This <abbr>stage</abbr> could also be defined with `dvc stage add` like this:
+> Notes:
 >
-> ```dvc
-> $ dvc stage add -n ingest -d data/raw -d src/in.py python src/in.py
-> ```
+> - `train` is the default stage name unless you provide one with the `--name`
+>   option.
+> - The `epochs` param was obtained from the `params.yaml` file. Any other param
+>   keys found there would all be listed under `params:` automatically.
 
-The next step would be to tune `params.yaml` or improve `src/in.py` directly,
+The next step would be to tune `params.yaml` or improve `src/train.py` directly,
 and start [running experiments](/doc/command-reference/exp/run).
