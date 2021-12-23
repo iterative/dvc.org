@@ -1,4 +1,3 @@
-const path = require('path')
 const GithubSlugger = require('github-slugger')
 
 const slugger = new GithubSlugger()
