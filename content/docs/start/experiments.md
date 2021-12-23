@@ -111,7 +111,7 @@ Experiment results have been applied to your workspace.
 
 <details>
 
-### ℹ️ More information about (Hyper)parameters and metrics
+### ℹ️ More information about (Hyper)parameters
 
 It's pretty common for data science projects to include configuration files that
 define adjustable parameters to train a model, do pre-processing, etc. DVC
@@ -135,14 +135,7 @@ model:
 When you use `--set-param`option for `dvc exp run`, DVC updates these values
 with the values you set in the command line before running the experiment.
 
-Metrics are what you use to evaluate your models. DVC allows any scalar values
-to be used as metrics. It's able to track the metrics we defined in the code
-with the Keras integration introduced recently. You can also specify a custom
-metrics file using `--metrics` option of `dvc exp init`, and write the metrics
-in the code manually. Please see `dvc metrics` for this kind of explicitly
-defined metrics.
-
-</details>
+</details> 
 
 <details>
 
@@ -204,6 +197,21 @@ a cluttered view. You can limit the table to specific metrics, or parameters, or
 hide the timestamp column with `--include-metrics`, `--include-params`, or
 `--no-timestamp` options of the command, respectively.
 
+<details>
+
+### ℹ️ More information about metrics
+
+Metrics are what you use to evaluate your models. DVC allows any scalar values
+to be used as metrics. It's able to track the metrics we defined in the code
+with the Keras integration introduced recently. You can also specify a custom
+metrics file using `--metrics` option of `dvc exp init`, and write the metrics
+in the code manually. Please see `dvc metrics` for this kind of explicitly
+defined metrics.
+
+</details>
+
+
+
 ```dvc
 $ dvc exp show --no-timestamp \
   --include-params model.conv_units --include-metrics acc
@@ -237,6 +245,7 @@ To switch to the new branch run:
 
 You can then checkout and continue working from this branch, or merge the branch
 into your `main` branch with the usual Git commands.
+
 
 ## Go Further
 
