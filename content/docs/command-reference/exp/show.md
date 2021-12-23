@@ -273,4 +273,4 @@ sorting only applies to experiment groups (sharing a parent commit).
 📖 See [Metrics, Parameters, and Plots](/doc/start/metrics-parameters-plots) for
 an introduction to parameters, metrics, plots.
 
-[regex]: https://en.wikipedia.org/wiki/Regular_expression
+[regex]: https://regexone.com/
