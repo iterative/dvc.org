@@ -193,9 +193,9 @@ $ dvc exp show
 
 By default, it shows all the parameters and the metrics with the timestamp. If
 you have a large number of parameters, metrics or experiments, this may lead to
-a cluttered view. You can limit the table to specific metrics, or parameters, or
-hide the timestamp column with `--include-metrics`, `--include-params`, or
-`--no-timestamp` options of the command, respectively.
+a cluttered view. You can show specific columns with `--keep`, hide with
+`--drop`, show only those columns with changed values across the runs with
+`--only-changed`, or hide the timestamp column with `--no-timestamp` options.
 
 <details>
 
