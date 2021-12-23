@@ -49,9 +49,8 @@ source code (default: `src`), data (`data/`), models (`models/`), plots
 (`plots/`), and files for hyperparameters (`params.yaml`), metrics
 (`metrics.json`) with the options supplied to `dvc exp init`.
 
-> We are using the default configuration of `dvc exp init` in the example
-> project, but you may find easier to set these project options with
-> `dvc exp init --interactive` if they happen to be different from the defaults.
+You can also set these options in a dialog format with
+`dvc exp init --interactive`.
 
 </details>
 
