@@ -350,11 +350,13 @@ $ dvc exp show --csv | csvstat
 
 ## Show the experiments table as a Parallel Coordinates plot
 
-`dvc exp show` can also generate an interactive Parallel Coordinates plot, with
-`--html`.
+`dvc exp show` can also generate an interactive
+[Parallel Coordinates Plot](/doc/command-reference/exp/show#parallel-coordinates-plot),
+with `--pcp`.
 
-The `--html` option can be combined with the other flags of `dvc exp show`. For
-example, the flag `--sort-by` would set the color of the lines.
+The `--pcp` option can be combined with the other flags of `dvc exp show`. For
+example, the color of the lines will be determined by the values in the column
+passed to `--sort-by`.
 
 ```dvc
 $ dvc exp show --sort-by accuracy --exclude-metrics loss --html
