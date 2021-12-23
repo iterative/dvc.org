@@ -115,8 +115,8 @@ Experiment results have been applied to your workspace.
 
 It's pretty common for data science projects to include configuration files that
 define adjustable parameters to train a model, do pre-processing, etc. DVC
-provides a mechanism for stages to depend on the values of specific sections of
-such a file (YAML, JSON, TOML, and Python formats are supported).
+provides a mechanism for stages to depend on the variables of from such a file
+(YAML, JSON, TOML, and Python formats are supported).
 
 We initialize an experiment using:
 
