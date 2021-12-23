@@ -14,22 +14,26 @@ positional arguments:
 
 ## Description
 
-Restores an `experiment` into the workspace as long as no more Git commits have
-been made after the target experiment (`HEAD` hasn't moved). The `experiment`
-can be referenced by name or hash (see `dvc exp run` for details). This changes
-any files (code, data, <abbr>parameters</abbr>, <abbr>metrics</abbr>, etc.)
-needed to reflect the experiment conditions and results in the workspace.
+Restores an `experiment` into the workspace, as long as we're on the same
+project baseline (Git `HEAD`) as when the target experiment was run. The
+experiment can be referenced by name or hash (see `dvc exp run` for details).
+
+Specifically, `dvc exp apply` restores any files or directories needed to
+reflect the experiment conditions and results. This means checking out files
+tracked both with DVC and Git: code, raw data, <abbr>parameters</abbr>,
+<abbr>metrics</abbr>, resulting artifacts, etc.
 
 ⚠️ Conflicting changes in the workspace are overwritten unless `--no-force` is
 used.
 
 This is typically used after choosing a target `experiment` with `dvc exp show`
-or `dvc exp diff`, and before committing it to Git (making it
-[persistent](/doc/user-guide/experiment-management#persistent-experiments)).
+or `dvc exp diff`, and before committing it to Git (making it [persistent].
 
-Note that the history of
-[checkpoints](/doc/command-reference/exp/run#checkpoints) found in the
-`experiment` is **not** preserved when applying and committing it.
+> Note that any [checkpoints] found in the `experiment` will **not** be
+> preserved when applying and committing it. Use `dvc exp branch` instead.
+
+[persistent]: /doc/user-guide/experiment-management/persisting-experiments
+[checkpoints]: /doc/user-guide/experiment-management/checkpoints
 
 ## Options
 

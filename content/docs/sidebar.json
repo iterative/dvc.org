@@ -133,18 +133,6 @@
         ]
       },
       {
-        "label": "How To",
-        "slug": "how-to",
-        "source": false,
-        "children": [
-          "stop-tracking-data",
-          "update-tracked-data",
-          "add-deps-or-outs-to-a-stage",
-          "merge-conflicts",
-          "share-a-dvc-cache"
-        ]
-      },
-      {
         "label": "Experiment Management",
         "slug": "experiment-management",
         "source": "experiment-management/index.md",
@@ -156,6 +144,18 @@
           "persisting-experiments",
           "cleaning-experiments",
           "checkpoints"
+        ]
+      },
+      {
+        "slug": "how-to",
+        "source": false,
+        "children": [
+          "stop-tracking-data",
+          "update-tracked-data",
+          "add-deps-or-outs-to-a-stage",
+          "merge-conflicts",
+          "share-a-dvc-cache",
+          "share-many-experiments"
         ]
       },
       "setup-google-drive-remote",
@@ -255,6 +255,10 @@
         "source": "exp/index.md",
         "children": [
           {
+            "label": "exp init",
+            "slug": "init"
+          },
+          {
             "label": "exp run",
             "slug": "run"
           },
@@ -263,12 +267,12 @@
             "slug": "show"
           },
           {
-            "label": "exp init",
-            "slug": "init"
-          },
-          {
             "label": "exp diff",
             "slug": "diff"
+          },
+          {
+            "label": "exp list",
+            "slug": "list"
           },
           {
             "label": "exp apply",
@@ -293,10 +297,6 @@
           {
             "label": "exp pull",
             "slug": "pull"
-          },
-          {
-            "label": "exp list",
-            "slug": "list"
           }
         ]
       },

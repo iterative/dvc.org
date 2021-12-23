@@ -41,8 +41,9 @@ refs/tags/baseline-experiment:
         cnn-64
 ```
 
-This command lists remote experiments originated from `HEAD`. You can add any
-other options to the remote command, including `--all` (see previous section).
+This command lists remote experiments based on that repo's `HEAD`. You can use
+`--all` to list all experiments, or add any other supported option to the remote
+`dvc exp list` command.
 
 [shared]: /doc/user-guide/experiment-management/sharing-experiments
 
@@ -384,8 +385,8 @@ params.yaml  train.epochs      10    10         0
 ## Compare an experiment with the workspace
 
 When you want to compare two experiments, either the baseline experiment in a
-commit, branch, tag or an attached experiment with ID, you can supply their
-names to `dvc exp diff`.
+commit, branch, or tag; or an attached experiment by name, you can supply any of
+these references to `dvc exp diff`.
 
 ```
 $ dvc exp diff cnn-128 cnn-64
