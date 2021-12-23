@@ -41,8 +41,9 @@ refs/tags/baseline-experiment:
         cnn-64
 ```
 
-This command lists remote experiments originated from `HEAD`. You can add any
-other options to the remote command, including `--all` (see previous section).
+This command lists remote experiments based on that repo's `HEAD`. You can use
+`--all` to list all experiments, or add any other supported option to the remote
+`dvc exp list` command.
 
 [shared]: /doc/user-guide/experiment-management/sharing-experiments
 
