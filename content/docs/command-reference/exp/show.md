@@ -63,9 +63,9 @@ params used in experiments.
 
 ![](/img/user_guide_parallel_coordinates.gif) _Parallel Coordinates Plot_
 
-The interactivity of the plot allows the user to extract different insights from
-the data. For example, the order of the columns can make some patterns more
-easily visible.
+The interactivity of the plot allows you to extract different insights from the
+data. For example, the order of the columns can make some patterns more easily
+visible.
 
 ## Options
 
