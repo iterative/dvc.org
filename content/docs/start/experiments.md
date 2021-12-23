@@ -135,7 +135,7 @@ model:
 When you use `--set-param`option for `dvc exp run`, DVC updates these values
 with the values you set in the command line before running the experiment.
 
-</details> 
+</details>
 
 <details>
 
@@ -210,8 +210,6 @@ defined metrics.
 
 </details>
 
-
-
 ```dvc
 $ dvc exp show --no-timestamp \
   --include-params model.conv_units --include-metrics acc
@@ -245,7 +243,6 @@ To switch to the new branch run:
 
 You can then checkout and continue working from this branch, or merge the branch
 into your `main` branch with the usual Git commands.
-
 
 ## Go Further
 
