@@ -229,6 +229,19 @@ $ dvc exp show --no-timestamp --keep 'conv_units|acc'
 └─────────────────────────┴────────┴──────────────────┘
 ```
 
+<details>
+
+### ℹ️ More information about metrics
+
+Metrics are what you use to evaluate your models. DVC allows any scalar values
+to be used as metrics. It's able to track the metrics we defined in the code
+with the Keras integration introduced recently. You can also specify a custom
+metrics file using `--metrics` option of `dvc exp init`, and write the metrics
+in the code manually. Please see `dvc metrics` for this kind of explicitly
+defined metrics.
+
+</details>
+
 After selecting an experiment from the table, you can create a Git branch that
 contains the experiment with all its related files.
 
