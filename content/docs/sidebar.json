@@ -255,6 +255,10 @@
         "source": "exp/index.md",
         "children": [
           {
+            "label": "exp init",
+            "slug": "init"
+          },
+          {
             "label": "exp run",
             "slug": "run"
           },
@@ -263,12 +267,12 @@
             "slug": "show"
           },
           {
-            "label": "exp init",
-            "slug": "init"
-          },
-          {
             "label": "exp diff",
             "slug": "diff"
+          },
+          {
+            "label": "exp list",
+            "slug": "list"
           },
           {
             "label": "exp apply",
@@ -293,10 +297,6 @@
           {
             "label": "exp pull",
             "slug": "pull"
-          },
-          {
-            "label": "exp list",
-            "slug": "list"
           }
         ]
       },
