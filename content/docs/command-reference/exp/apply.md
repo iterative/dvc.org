@@ -18,9 +18,10 @@ Restores an `experiment` into the workspace, as long as we're on the same
 project baseline (Git `HEAD`) as when the target experiment was run. The
 experiment can be referenced by name or hash (see `dvc exp run` for details).
 
-Specifically, `dvc exp apply` checks out any files or directories needed to
-reflect the experiment conditions and results. This can include both with DVC
-and Git: code, data, <abbr>parameters</abbr>, <abbr>metrics</abbr>, etc.
+Specifically, `dvc exp apply` restores any files or directories needed to
+reflect the experiment conditions and results. This means checking out files
+tracked both with DVC and Git: code, raw data, <abbr>parameters</abbr>,
+<abbr>metrics</abbr>, resulting artifacts, etc.
 
 ⚠️ This command will destroy any existing changes in the workspace (Git working
 tree) unless the `--no-force` flag is used.
