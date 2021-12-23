@@ -61,7 +61,7 @@ be generated using the data from the table.
 This plot is useful to explore the relationships between the metrics _and_
 params used in experiments.
 
-![](/img/user_guide_parallel_coordinates.gif) _Parallel Coordinates Plot_
+![](/img/pcp_interaction.gif) _Parallel Coordinates Plot_
 
 The interactivity of the plot allows you to extract different insights from the
 data. For example, the order of the columns can make some patterns more easily
@@ -268,30 +268,30 @@ sorting only applies to experiment groups (sharing a parent commit).
 To generate an interactive PCP based on the experiments and their parameters:
 
 ```dvc
-$ dvc exp show --pcp
+$ dvc exp show --all-branches --pcp
 ```
 
-![](/img/ref_parallel_coordinates.png) _Parallel Coordinates Plot_
+![](/img/ref_pcp_default.png) _Parallel Coordinates Plot_
 
 The color of the lines is determined by the value of the column you select with
 `--sort-by`:
 
 ```dvc
-$ dvc exp show --pcp --sort-by accuracy
+$ dvc exp show --all-branches --pcp --sort-by roc_auc
 ```
 
 > When `--sort-by` is not supplied, the color of the lines will be determined by
 > the `Experiment` column.
 
-![](/img/ref_parallel_coordinates_sort_by.png) _Colorized by accuracy_
+![](/img/ref_pcp_sortby.png) _Colorized by roc_auc_
 
 Combine with other flags for further filtering:
 
 ```dvc
-$ dvc exp show --pcp --sort-by accuracy --exclude-metrics loss
+$ dvc exp show --all-branches --pcp --sort-by roc_auc --exclude-metrics avg_prec
 ```
 
-![](/img/ref_parallel_coordinates_exclude.png) _Excluded loss column_
+![](/img/ref_pcp_filter.png) _Excluded avg_prec column_
 
 📖 See [Metrics, Parameters, and Plots](/doc/start/metrics-parameters-plots) for
 an introduction to parameters, metrics, plots.

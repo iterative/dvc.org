@@ -359,10 +359,10 @@ example, the color of the lines will be determined by the values in the column
 passed to `--sort-by`.
 
 ```dvc
-$ dvc exp show --sort-by accuracy --exclude-metrics loss --html
+$ dvc exp show --pcp --all-branches --sort-by roc_auc
 ```
 
-![](/img/user_guide_parallel_coordinates.gif) _Parallel Coordinates Plot_
+![](/img/pcp_interaction.gif) _Parallel Coordinates Plot_
 
 ## Compare specific experiments
 
