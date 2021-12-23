@@ -23,8 +23,8 @@ reflect the experiment conditions and results. This means checking out files
 tracked both with DVC and Git: code, raw data, <abbr>parameters</abbr>,
 <abbr>metrics</abbr>, resulting artifacts, etc.
 
-⚠️ This command will destroy any existing changes in the workspace (Git working
-tree) unless the `--no-force` flag is used.
+⚠️ Conflicting changes in the workspace are overwritten unless `--no-force` is
+used.
 
 This is typically used after choosing a target `experiment` with `dvc exp show`
 or `dvc exp diff`, and before committing it to Git (making it [persistent].
