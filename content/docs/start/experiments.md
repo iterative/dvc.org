@@ -118,16 +118,10 @@ define adjustable parameters to train a model, do pre-processing, etc. DVC
 provides a mechanism for stages to depend on the variables of from such a file
 (YAML, JSON, TOML, and Python formats are supported).
 
-We initialize an experiment using:
-
-```dvc
-$ dvc exp init python src/train.py
-```
-
-DVC assumes there is a parameters file named `params.yaml` in your project. (You
-can specify the file name with `--params` option, or with `--interactive` flag
-.) By default, DVC parses this file and creates dependencies to the variables
-(`model.conv_units` and `train.epochs`) found in the file.
+Recall that, when we initialize an experiment using `dvc exp init` DVC assumes
+there is a parameters file named `params.yaml` in your project. DVC parses this
+file and creates dependencies to the variables (`model.conv_units` and
+`train.epochs`) found in the file.
 
 Here is the contents of `params.yaml` file:
 
