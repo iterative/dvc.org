@@ -28,8 +28,8 @@ tree) unless the `--no-force` flag is used.
 This is typically used after choosing a target `experiment` with `dvc exp show`
 or `dvc exp diff`, and before committing it to Git (making it [persistent].
 
-> Note that if a history of [checkpoints] is found in the `experiment`, it will
-> **not** be preserved when applying and committing it.
+> Note that any [checkpoints] found in the `experiment` will **not** be
+> preserved when applying and committing it. Use `dvc exp branch` instead.
 
 [persistent]: /doc/user-guide/experiment-management/persisting-experiments
 [checkpoints]: /doc/user-guide/experiment-management/checkpoints
