@@ -72,12 +72,6 @@ This experiment is then associated with the values found in the parameters file
 (`params.yaml`), and other dependencies (`data/images/`) with these produced
 metrics.
 
-The purpose of the `dvc exp` family of commands is to let you run, capture, and
-compare the machine learning experiments at once as you iterate on your project.
-The artifacts like models and metrics produced by each experiment are tracked by
-DVC, and the associated parameters and metrics can be committed to Git as text
-files.
-
 You can review the experiment results with `dvc exp show` and see these metrics
 and results in a nicely formatted table:
 
