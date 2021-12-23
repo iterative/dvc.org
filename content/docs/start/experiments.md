@@ -32,9 +32,10 @@ project into a DVC experiments project with `dvc exp init`.
 
 [user's guide]: /doc/user-guide/experiment-management/
 
-A typical machine learning project has some data, a set of scripts that trains a
-model, a bunch of hyperparameters that modify these models. DVC makes certain
-assumptions about the names of these elements to initialize a project with:
+A typical machine learning project has data, a set of scripts that trains a
+model, a bunch of hyperparameters that modify these models, and outputs metrics
+and plots to evaluate the models. DVC makes certain assumptions about the names
+of these elements to initialize a project with:
 
 ```dvc
 $ dvc exp init python src/train.py
