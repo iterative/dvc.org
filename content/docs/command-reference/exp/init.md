@@ -155,8 +155,7 @@ The easiest route is using interactive mode and answering a few questions:
 
 ```dvc
 $ dvc exp init --interactive
-This command will guide you to set up a train stage in dvc.yaml.
-See https://s.dvc.org/g/pipeline-files.
+This command will guide you to set up a train stage in dvc.yaml...
 
 Command to execute: python src/train.py
 
