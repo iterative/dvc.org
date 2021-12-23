@@ -44,7 +44,7 @@ name like `exp-bfe64` by default, which can be customized using the `--name`
 Experiments are custom
 [Git references](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
 (found in `.git/refs/exps`) with a single commit based on `HEAD` (not checked
-out by DVC). Note that these commits are not pushed to the Git remote by default
+out by DVC). Note that these commits are not pushed to Git remotes by default
 (see `dvc exp push`).
 
 </details>
