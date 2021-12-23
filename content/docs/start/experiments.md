@@ -211,8 +211,7 @@ defined metrics.
 </details>
 
 ```dvc
-$ dvc exp show --no-timestamp \
-  --include-params model.conv_units --include-metrics acc
+$ dvc exp show --no-timestamp --keep 'conv_units|acc'
 ```
 
 ```dvctable
