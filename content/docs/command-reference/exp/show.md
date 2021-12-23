@@ -58,7 +58,7 @@ metric or param.
 When the `--pcp` option is passed, an interactive Parallel Coordinates Plot will
 be generated using the data from the table.
 
-This plot is usefull to exploring the relationships between the metrics _and_
+This plot is useful to explore the relationships between the metrics _and_
 params used in experiments.
 
 ![](/img/user_guide_parallel_coordinates.gif) _Parallel Coordinates Plot_
