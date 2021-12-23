@@ -15,7 +15,7 @@ usage: dvc exp show [-h] [-q | -v] [-a] [-T] [-A] [-n <num>]
                     [--sort-by <metric/param>]
                     [--sort-order {asc,desc}] [--no-timestamp] [--sha]
                     [--json] [--csv] [--md] [--precision <n>]
-                    [--only-changed]
+                    [--pcp] [--only-changed]
 ```
 
 ## Description
@@ -52,6 +52,20 @@ Experiments in the table are first grouped (by parent commit). They are then
 sorted inside each group, chronologically by default. The `--sort-by` and
 `--sort-order` options can change this ordering, based on any single, visible
 metric or param.
+
+### Parallel Coordinates Plot
+
+When the `--pcp` option is passed, an interactive Parallel Coordinates Plot will
+be generated using the data from the table.
+
+This plot is usefull to exploring the relationships between the metrics _and_
+params used in experiments.
+
+![](/img/user_guide_parallel_coordinates.gif) _Parallel Coordinates Plot_
+
+The interactivity of the plot allows the user to extract different insights from
+the data. For example, the order of the columns can make some patterns more
+easily visible.
 
 ## Options
 
@@ -109,9 +123,10 @@ metric or param.
 - `--sort-by <name>` - sort experiments by the specified metric or param
   (`name`). Only one visible column (either metric or param) can be used for
   sorting. This only affects the ordering of experiments derived from the same
-  parent commit. Parent commits are always sorted chronologically. When combined
-  with the `--html` flag, `name` will be used to set the color of the lines in
-  parallel coordinates plot.
+  parent commit. Parent commits are always sorted chronologically.
+
+  When combined with the `--pcp` flag, the values of the column `name` will be
+  used to determine the color of the lines in the Parallel Coordinates Plot.
 
 - `--sort-order {asc,desc}` - sort order to use with `--sort-by`. Defaults to
   ascending (`asc`).
@@ -129,14 +144,6 @@ metric or param.
 
 - `--md` - prints the command's output in Markdown table format.
 
-- `--html` - generates an interactive parallel coordinates plot from the table.
-
-- `-o <folder>, --out <folder>` - destination folder of the `html` plot. By
-  default, `dvc_plots`.
-
-- `--open` - opens the generated `html` plot in the browser automatically. Only
-  used if `--html` was also passed.
-
 - `--precision <n>` -
   [round](https://docs.python.org/3/library/functions.html#round) decimal values
   to `n` digits of precision (5 by default). Applies to metrics only.
@@ -147,6 +154,14 @@ metric or param.
   problems arise, otherwise 1.
 
 - `-v`, `--verbose` - displays detailed tracing information.
+
+- `--pcp` - generates an interactive Parallel Coordinates Plot from the table.
+
+- `-o <folder>, --out <folder>` - destination folder of the `--pcp` plot. By
+  default, `dvc_plots`.
+
+- `--open` - opens the generated `--pcp` plot in the browser automatically. Only
+  used if `--pcp` was also passed.
 
 ## Examples
 
@@ -253,23 +268,27 @@ sorting only applies to experiment groups (sharing a parent commit).
 To generate an interactive PCP based on the experiments and their parameters:
 
 ```dvc
-$ dvc exp show --html
+$ dvc exp show --pcp
 ```
 
 ![](/img/ref_parallel_coordinates.png) _Parallel Coordinates Plot_
 
-Use `--sort-by` to customize the colors of the lines:
+The color of the lines is determined by the value of the column you select with
+`--sort-by`:
 
 ```dvc
-$ dvc exp show --html --sort-by accuracy
+$ dvc exp show --pcp --sort-by accuracy
 ```
+
+> When `--sort-by` is not supplied, the color of the lines will be determined by
+> the `Experiment` column.
 
 ![](/img/ref_parallel_coordinates_sort_by.png) _Colorized by accuracy_
 
 Combine with other flags for further filtering:
 
 ```dvc
-$ dvc exp show --html --sort-by accuracy --exclude-metrics loss
+$ dvc exp show --pcp --sort-by accuracy --exclude-metrics loss
 ```
 
 ![](/img/ref_parallel_coordinates_exclude.png) _Excluded loss column_
