@@ -45,7 +45,7 @@ After running the experiment, with `dvc exp run`, DVC will produce
 `plots/confusion.csv` file that can be shown in the web browser:
 
 ```dvc
-$ dvc plots show plots/confusion.csv --template confusion
+$ dvc plots show plots/confusion.csv --template confusion -x actual -y predicted
 file:///Users/.../example-dvc-experiments/plots/confusion.json.html
 ```
 
