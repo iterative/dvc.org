@@ -155,10 +155,11 @@ visible.
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
-- `--pcp` - generates an interactive [parallel coordinates plot](#parallel-coordinates-plot) from the table.
+- `--pcp` - generates an interactive
+  [parallel coordinates plot](#parallel-coordinates-plot) from the table.
 
-- `-o <folder>, --out <folder>` - when used with `--pcp`, specifies a destination
-  `folder` of the plot. By default its `dvc_plots`.
+- `-o <folder>, --out <folder>` - when used with `--pcp`, specifies a
+  destination `folder` of the plot. By default its `dvc_plots`.
 
 - `--open` - when used with `--pcp`, opens the generated plot in a browser
   automatically.
@@ -265,8 +266,8 @@ sorting only applies to experiment groups (sharing a parent commit).
 
 ## Example: Parallel coordinates plot (PCP)
 
-To generate an interactive [PCP](#parallel-coordinates-plot) based on the experiments
-and their parameters:
+To generate an interactive [PCP](#parallel-coordinates-plot) based on the
+experiments and their parameters:
 
 ```dvc
 $ dvc exp show --all-branches --pcp
