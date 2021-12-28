@@ -23,9 +23,9 @@ DVC Studio can work with two types of plots files in your repository:
    directly in DVC Studio.
 
 You can define multiple plots in a single repository. Below is an example
-snippet from a `dvc.yaml` file showing the `evaluate` stage of the dvc pipeline.
+snippet from a `dvc.yaml` file showing the `evaluate` stage of the DVC pipeline.
 
-```
+```yaml
   evaluate:
     cmd: python src/evaluate.py
     deps:
