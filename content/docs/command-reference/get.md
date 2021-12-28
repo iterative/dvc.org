@@ -55,7 +55,7 @@ name.
 
 ## Options
 
-- `-o <path>`, `--out <path>` - specify a path to the desired location in the
+- `-o <path>`, `--out <path>` - specify a `path` to the desired location in the
   workspace to place the downloaded file or directory (instead of using the
   current working directory). Directories specified in the path will be created
   by this command.
