@@ -3,7 +3,7 @@
 You can visualize and compare experiments using using plots, images, charts,
 etc.
 
-## Generate plots
+## Display plots and images
 
 You can visualize certain metrics of machine learning experiments as plots.
 Usual plot examples are AUC curves, loss functions, and confusion matrices,
