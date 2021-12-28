@@ -274,8 +274,8 @@ $ dvc exp show --all-branches --pcp
 
 ![](/img/ref_pcp_default.png) _Parallel Coordinates Plot_
 
-The color of the lines is determined by the value of the column you select with
-`--sort-by`:
+Using `--sort-by` will reorder the plot experiments as expected, and determine
+the color of the lines that represent them:
 
 ```dvc
 $ dvc exp show --all-branches --pcp --sort-by roc_auc
@@ -289,7 +289,8 @@ $ dvc exp show --all-branches --pcp --sort-by roc_auc
 Combine with other flags for further filtering:
 
 ```dvc
-$ dvc exp show --all-branches --pcp --sort-by roc_auc --exclude-metrics avg_prec
+$ dvc exp show --all-branches --pcp --sort-by roc_auc
+               --exclude-metrics avg_prec
 ```
 
 ![](/img/ref_pcp_filter.png) _Excluded avg_prec column_
