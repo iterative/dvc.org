@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react'
+import React, { useState, useCallback, useRef } from 'react'
 
 import TwoRowsButton from '../../../TwoRowsButton'
 import { logEvent } from '../../../../utils/front/plausible'
@@ -7,10 +7,14 @@ import * as styles from './styles.module.css'
 
 const Video: React.FC<{ id: string }> = ({ id }) => {
   const [isWatching, setWatching] = useState(false)
+  const iframeRef = useRef<HTMLIFrameElement>()
 
   const watchVideo = useCallback(() => {
     logEvent('Button', { Item: 'video' })
     setWatching(true)
+    if (iframeRef.current) {
+      iframeRef.current.src = `https://www.youtube.com/embed/${id}?rel=0&amp;controls=0&amp;showinfo=0;&autoplay=1`
+    }
   }, [])
 
   return (
@@ -34,12 +38,12 @@ const Video: React.FC<{ id: string }> = ({ id }) => {
           </div>
         )}
         <iframe
+          ref={iframeElement => {
+            iframeRef.current = iframeElement
+          }}
           title="Video"
           width="560"
           height="315"
-          src={`https://www.youtube.com/embed/${id}?rel=0&amp;controls=0&amp;showinfo=0;${
-            isWatching ? `&autoplay=1` : ''
-          }`}
           frameBorder="0"
           allow="autoplay; encrypted-media"
           allowFullScreen
