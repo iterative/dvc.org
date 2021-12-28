@@ -1,4 +1,5 @@
 /* eslint-env jest */
+const buildSidebarHelpers = require('./build-sidebar-helpers')
 
 describe('SidebarMenu/helper', () => {
   beforeEach(() => {
@@ -19,8 +20,7 @@ describe('SidebarMenu/helper', () => {
         }
       ]
 
-      jest.doMock('../../../content/docs/sidebar.json', () => rawData)
-      const sidebarData = require('./sidebar').structure
+      const sidebarData = buildSidebarHelpers(rawData).structure
 
       expect(sidebarData).toEqual(result)
     })
@@ -38,8 +38,7 @@ describe('SidebarMenu/helper', () => {
         }
       ]
 
-      jest.doMock('../../../content/docs/sidebar.json', () => rawData)
-      const sidebarData = require('./sidebar').structure
+      const sidebarData = buildSidebarHelpers(rawData).structure
 
       expect(sidebarData).toEqual(result)
     })
@@ -57,8 +56,7 @@ describe('SidebarMenu/helper', () => {
         }
       ]
 
-      jest.doMock('../../../content/docs/sidebar.json', () => rawData)
-      const sidebarData = require('./sidebar').structure
+      const sidebarData = buildSidebarHelpers(rawData).structure
 
       expect(sidebarData).toEqual(result)
     })
@@ -76,8 +74,7 @@ describe('SidebarMenu/helper', () => {
         }
       ]
 
-      jest.doMock('../../../content/docs/sidebar.json', () => rawData)
-      const sidebarData = require('./sidebar').structure
+      const sidebarData = buildSidebarHelpers(rawData).structure
 
       expect(sidebarData).toEqual(result)
     })
@@ -104,8 +101,7 @@ describe('SidebarMenu/helper', () => {
         }
       ]
 
-      jest.doMock('../../../content/docs/sidebar.json', () => rawData)
-      const sidebarData = require('./sidebar').structure
+      const sidebarData = buildSidebarHelpers(rawData).structure
 
       expect(sidebarData).toEqual(result)
     })
@@ -148,8 +144,7 @@ describe('SidebarMenu/helper', () => {
         }
       ]
 
-      jest.doMock('../../../content/docs/sidebar.json', () => rawData)
-      const sidebarData = require('./sidebar').structure
+      const sidebarData = buildSidebarHelpers(rawData).structure
 
       expect(sidebarData).toEqual(result)
     })
@@ -188,8 +183,7 @@ describe('SidebarMenu/helper', () => {
         }
       ]
 
-      jest.doMock('../../../content/docs/sidebar.json', () => rawData)
-      const sidebarData = require('./sidebar').structure
+      const sidebarData = buildSidebarHelpers(rawData).structure
 
       expect(sidebarData).toEqual(result)
     })
@@ -228,8 +222,7 @@ describe('SidebarMenu/helper', () => {
         }
       ]
 
-      jest.doMock('../../../content/docs/sidebar.json', () => rawData)
-      const sidebarData = require('./sidebar').structure
+      const sidebarData = buildSidebarHelpers(rawData).structure
 
       expect(sidebarData).toEqual(result)
     })
@@ -284,8 +277,7 @@ describe('SidebarMenu/helper', () => {
         }
       ]
 
-      jest.doMock('../../../content/docs/sidebar.json', () => rawData)
-      const sidebarData = require('./sidebar').structure
+      const sidebarData = buildSidebarHelpers(rawData).structure
 
       expect(sidebarData).toEqual(result)
     })
@@ -293,9 +285,7 @@ describe('SidebarMenu/helper', () => {
     it("Throws error if external item doesn't have a url field", () => {
       const rawData = [{ type: 'external' }]
 
-      jest.doMock('../../../content/docs/sidebar.json', () => rawData)
-
-      expect(() => require('./sidebar')).toThrow(
+      expect(() => buildSidebarHelpers(rawData)).toThrow(
         new Error("'url' field is required in external sidebar.json entries")
       )
     })
@@ -303,9 +293,7 @@ describe('SidebarMenu/helper', () => {
     it("Throws error if local item doesn't have slug field", () => {
       const rawData = [{}]
 
-      jest.doMock('../../../content/docs/sidebar.json', () => rawData)
-
-      expect(() => require('./sidebar')).toThrow(
+      expect(() => buildSidebarHelpers(rawData)).toThrow(
         new Error("'slug' field is required in local sidebar.json entries")
       )
     })
@@ -314,9 +302,7 @@ describe('SidebarMenu/helper', () => {
     it("Throws error if item has source: false and doesn't have children", () => {
       const rawData = [{ slug: 'item-name', source: false }]
 
-      jest.doMock('../../../content/docs/sidebar.json', () => rawData)
-
-      expect(() => require('./sidebar')).toThrow(
+      expect(() => buildSidebarHelpers(rawData)).toThrow(
         new Error(
           'Local sidebar.json entries with no source must have children'
         )
@@ -336,8 +322,7 @@ describe('SidebarMenu/helper', () => {
         next: undefined
       }
 
-      jest.doMock('../../../content/docs/sidebar.json', () => rawData)
-      const { getItemByPath } = require('./sidebar')
+      const { getItemByPath } = buildSidebarHelpers(rawData)
 
       expect(getItemByPath('/doc')).toEqual(result)
     })
@@ -372,8 +357,7 @@ describe('SidebarMenu/helper', () => {
         next: undefined
       }
 
-      jest.doMock('../../../content/docs/sidebar.json', () => rawData)
-      const { getItemByPath } = require('./sidebar')
+      const { getItemByPath } = buildSidebarHelpers(rawData)
 
       expect(getItemByPath('/doc/item')).toEqual(result)
       expect(getItemByPath('/doc/item/nested')).toEqual(result)
@@ -391,8 +375,7 @@ describe('SidebarMenu/helper', () => {
         '/doc/item-name/nested-item/subnested-item'
       ]
 
-      jest.doMock('../../../content/docs/sidebar.json', () => rawData)
-      const { getParentsListFromPath } = require('./sidebar')
+      const { getParentsListFromPath } = buildSidebarHelpers(rawData)
 
       expect(getParentsListFromPath(path)).toEqual(result)
     })
