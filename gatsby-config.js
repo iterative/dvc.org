@@ -4,7 +4,7 @@ require('dotenv').config()
 const path = require('path')
 
 require('./config/prismjs/dvc')
-require('./config/prismjs/usage')
+// require('./config/prismjs/usage')
 require('./config/prismjs/dvctable')
 
 const apiMiddleware = require('./src/server/middleware/api')

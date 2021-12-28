@@ -70,6 +70,15 @@
       }
     }
 
+    a.token.args {
+      color: var(--color-light-blue);
+    }
+
+    a.token.args:hover {
+      outline: 1px solid green;
+      text-decoration: none;
+    }
+
     :global(a.gatsby-resp-image-link)::after {
       content: unset;
     }
