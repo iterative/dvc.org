@@ -61,7 +61,7 @@ but you can see the code in [Github][misclassified-example-code]
 We can see the misclassification examples in the browser:
 
 ```dvc
-$ dvc plots show plots/misclassified.png --open
+$ dvc plots show plots/confusion.png
 ```
 
 DVC automatically shows the image in an HTML page.
