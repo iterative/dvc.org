@@ -78,8 +78,8 @@ from your views in DVC Studio.
   your project structure will not take up space in your view anymore. To hide a
   commit or branch, click on the 3-dot menu next to the commit or branch name
   and click on `Hide commit` (or `Hide branch`).
-- **DVC Studio auto-hides non-experiments:** DVC Studio identifies commits that
-  do not change metrics and will auto-hide such non-experiment commits.
+- **DVC Studio auto-hides irrelevant commits:** DVC Studio identifies commits
+  that do not change metrics and will auto-hide such commits.
 - **Unhide commits:** You can unhide commits as needed, so that you don't lose
   any experimentation history. To display all hidden commits, click on the
   `Show hidden commits` toggle (refer [the above gif](#display-preferences)).
