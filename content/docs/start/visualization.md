@@ -93,7 +93,7 @@ With these two changes, we can see the plots showing the defined metrics in our
 model. You can see the HTML report with your browser in
 `training_metrics/index.html` file.
 
-<<IMAGE_GOES_HERE>>
+![dvclive](/img/start_visualization_dvclive.png)
 
 DVCLive has other capabilities, like saving the model every epoch or modifying
 these default values. Please refer to [DVClive documentation] for details.
