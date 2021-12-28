@@ -52,7 +52,7 @@ file:///Users/.../example-dvc-experiments/plots/confusion.json.html
 The file contains the following plot that shows the performance of the CNN
 classifier:
 
-<<IMAGE_GOES_HERE>>
+![confusion matrix](/img/start_visualization_confusion1.png)
 
 Now, let's produce another plot to see misclassified examples from each class.
 This procedure is a bit more complex than creating a CSV file, and skipped here,
