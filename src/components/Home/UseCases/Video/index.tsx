@@ -7,7 +7,7 @@ import * as styles from './styles.module.css'
 
 const Video: React.FC<{ id: string }> = ({ id }) => {
   const [isWatching, setWatching] = useState(false)
-  const iframeRef = useRef<HTMLIFrameElement>()
+  const iframeRef = useRef<HTMLIFrameElement | null>()
 
   const watchVideo = useCallback(() => {
     logEvent('Button', { Item: 'video' })
