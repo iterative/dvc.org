@@ -1,25 +1,3 @@
-/* eslint-env node */
-/*
-  These helpers normalize sidebar structure and create all the resources needed.
-  This prevents future recalculations.
-
-  Target structure example:
-
-  {
-    label: "Add Files or Directories",
-    path: "/doc/start/add-files",
-    source: "/doc/start/add-files.md",
-    prev: "/doc/start/configure",
-    next: "/doc/start/share-data",
-    icon: "house",
-    style: "customClass",
-    tutorials: {
-      katacoda: "https://www.katacoda.com/dvc/courses/get-started"
-    }
-    children: []
-  }
-*/
-
 const { PATH_ROOT } = require('./constants')
 
 function findItemByField(data, field, targetValue) {

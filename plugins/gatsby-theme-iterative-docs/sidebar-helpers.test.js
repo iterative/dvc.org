@@ -1,4 +1,3 @@
-/* eslint-env jest */
 const normalizeSidebar = require('./normalize-sidebar')
 const { getItemByPath, getParentsListFromPath } = require('./sidebar-helpers')
 
