@@ -4,7 +4,8 @@ import { navigate } from '@reach/router'
 
 import Link from '../../../Link'
 import Tutorials from '../../TutorialsLinks'
-import { getPathWithSource } from '../../../../utils/shared/sidebar'
+import { getPathWithSource } from '../../../../../plugins/gatsby-theme-iterative-docs/sidebar-helpers'
+import sidebar from '../../../../../plugins/gatsby-theme-iterative-docs/src/sidebar'
 
 import 'github-markdown-css/github-markdown-light.css'
 import * as sharedStyles from '../../styles.module.css'
@@ -96,7 +97,7 @@ const Main: React.FC<IMainProps> = ({
         </Link>
         <Link
           className={styles.navButton}
-          href={next ? getPathWithSource(next) : '#'}
+          href={next ? getPathWithSource(sidebar, next) : '#'}
         >
           <span>Next</span>
           <i className={cn(styles.navButtonIcon, styles.next)} />

@@ -1,7 +1,10 @@
 /* eslint-env node */
 
 const { createLinkNode } = require('./helpers')
-const { getItemByPath } = require('../../src/utils/shared/sidebar')
+const {
+  getItemByPath
+} = require('../gatsby-theme-iterative-docs/sidebar-helpers')
+const sidebar = require('../gatsby-theme-iterative-docs/resolve-sidebar')
 
 const LIVE_API_REGEXP = /Live.([a-z-._]*\(\)$)?/
 const METHOD_REGEXP = /^[a-z-._]*\(\)$/
@@ -17,7 +20,7 @@ module.exports = astNode => {
     const method = isMethod && parts[1].slice(0, -2)
     const url = `${API_ROOT}${method}`
 
-    const isMethodPageExists = getItemByPath(url)
+    const isMethodPageExists = getItemByPath(sidebar, url)
     if (isMethodPageExists) {
       createLinkNode(url, astNode)
     }

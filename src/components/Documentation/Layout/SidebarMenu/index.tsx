@@ -14,10 +14,10 @@ import { ReactComponent as CMLIcon } from './cml_bw_logo.svg'
 import { ReactComponent as StudioIcon } from './studio_gray_icon.svg'
 
 import {
-  structure,
   getParentsListFromPath,
   getPathWithSource
-} from '../../../../utils/shared/sidebar'
+} from '../../../../../plugins/gatsby-theme-iterative-docs/sidebar-helpers'
+import sidebar from '../../../../../plugins/gatsby-theme-iterative-docs/src/sidebar'
 
 import 'perfect-scrollbar/css/perfect-scrollbar.css'
 import * as styles from './styles.module.css'
@@ -123,7 +123,7 @@ const SidebarMenuItem: React.FC<ISidebarMenuItemProps> = ({
       </Link>
     ) : (
       <Link
-        href={getPathWithSource(path)}
+        href={getPathWithSource(sidebar, path)}
         id={path}
         className={className}
         onClick={currentLevelOnClick}
@@ -226,7 +226,7 @@ const SidebarMenu: React.FC<ISidebarMenuProps> = ({ currentPath, onClick }) => {
     >
       <div className={styles.sections}>
         <div className={styles.sectionLinks}>
-          {structure.map(item => (
+          {sidebar.map(item => (
             <SidebarMenuItem
               key={item.path}
               activePaths={

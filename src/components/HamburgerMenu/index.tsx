@@ -5,14 +5,15 @@ import HamburgerIcon from '../HamburgerIcon'
 import Link from '../Link'
 import { logEvent } from '../../utils/front/plausible'
 
-import { getFirstPage } from '../../utils/shared/sidebar'
+import { getFirstPage } from '../../../plugins/gatsby-theme-iterative-docs/sidebar-helpers'
+import sidebar from '../../../plugins/gatsby-theme-iterative-docs/src/sidebar'
 import { ReactComponent as LogoSVG } from '../../../static/img/logo-white.svg'
 import { ReactComponent as TwitterIcon } from '../SocialIcon/twitter.svg'
 import { ReactComponent as GithubIcon } from '../SocialIcon/github.svg'
 
 import * as styles from './styles.module.css'
 
-const docsPage = getFirstPage()
+const docsPage = getFirstPage(sidebar)
 
 export type HamburgerHelpers = {
   opened: boolean

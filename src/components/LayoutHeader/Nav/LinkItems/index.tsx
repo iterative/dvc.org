@@ -8,9 +8,10 @@ import { ReactComponent as ArrowUpSVG } from '../../../../../static/img/arrow-up
 import { ReactComponent as ArrowDownSVG } from '../../../../../static/img/arrow-down-icon.svg'
 
 import { logEvent } from '../../../../utils/front/plausible'
-import { getFirstPage } from '../../../../utils/shared/sidebar'
+import { getFirstPage } from '../../../../../plugins/gatsby-theme-iterative-docs/sidebar-helpers'
+import sidebar from '../../../../../plugins/gatsby-theme-iterative-docs/src/sidebar'
 
-const docsPage = getFirstPage()
+const docsPage = getFirstPage(sidebar)
 
 import * as styles from './styles.module.css'
 

@@ -1,7 +1,10 @@
 /* eslint-env node */
 
 const { createLinkNode } = require('./helpers')
-const { getItemByPath } = require('../../src/utils/shared/sidebar')
+const {
+  getItemByPath
+} = require('../gatsby-theme-iterative-docs/sidebar-helpers')
+const sidebar = require('../gatsby-theme-iterative-docs/resolve-sidebar')
 
 const DVC_REGEXP = /dvc\s+[a-z][a-z-.]*/
 const COMMAND_REGEXP = /^[a-z][a-z-]*$/
@@ -16,11 +19,14 @@ module.exports = astNode => {
     let url
 
     const hasThirdSegment = parts[2] && COMMAND_REGEXP.test(parts[2])
-    const isCommandPageExists = getItemByPath(`${COMMAND_ROOT}${parts[1]}`)
+    const isCommandPageExists = getItemByPath(
+      sidebar,
+      `${COMMAND_ROOT}${parts[1]}`
+    )
     const isSubcommandPageExists =
       isCommandPageExists &&
       hasThirdSegment &&
-      getItemByPath(`${COMMAND_ROOT}${parts[1]}/${parts[2]}`)
+      getItemByPath(sidebar, `${COMMAND_ROOT}${parts[1]}/${parts[2]}`)
 
     if (isSubcommandPageExists) {
       url = `${COMMAND_ROOT}${parts[1]}/${parts[2]}`

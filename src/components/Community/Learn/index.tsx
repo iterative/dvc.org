@@ -9,7 +9,8 @@ import Block from '../Block'
 import Section from '../Section'
 
 import { logEvent } from '../../../utils/front/plausible'
-import { getFirstPage } from '../../../utils/shared/sidebar'
+import { getFirstPage } from '../../../../plugins/gatsby-theme-iterative-docs/sidebar-helpers'
+import sidebar from '../../../../plugins/gatsby-theme-iterative-docs/src/sidebar'
 import { useCommentsCount } from '../../../utils/front/api'
 import { useCommunityData } from '../../../utils/front/community'
 import getPosts from '../../../queries/posts'
@@ -18,7 +19,7 @@ import { pluralizeComments } from '../../../utils/front/i18n'
 import * as sharedStyles from '../styles.module.css'
 import * as styles from './styles.module.css'
 
-const docsPage = getFirstPage()
+const docsPage = getFirstPage(sidebar)
 
 const log = (section: string, value: string) =>
   logEvent('Community', { Section: 'learn', [`Learn ${section}`]: value })

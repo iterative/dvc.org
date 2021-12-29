@@ -1,11 +1,7 @@
 /* eslint-env jest */
-const buildSidebarHelpers = require('./build-sidebar-helpers')
+const normalizeSidebar = require('./normalize-sidebar')
 
 describe('SidebarMenu/helper', () => {
-  beforeEach(() => {
-    jest.resetModules()
-  })
-
   describe('default', () => {
     it('Resolves shortcuts to full syntax', () => {
       const rawData = ['item-name']
@@ -20,7 +16,7 @@ describe('SidebarMenu/helper', () => {
         }
       ]
 
-      const sidebarData = buildSidebarHelpers(rawData).structure
+      const sidebarData = normalizeSidebar(rawData)
 
       expect(sidebarData).toEqual(result)
     })
@@ -38,7 +34,7 @@ describe('SidebarMenu/helper', () => {
         }
       ]
 
-      const sidebarData = buildSidebarHelpers(rawData).structure
+      const sidebarData = normalizeSidebar(rawData)
 
       expect(sidebarData).toEqual(result)
     })
@@ -56,7 +52,7 @@ describe('SidebarMenu/helper', () => {
         }
       ]
 
-      const sidebarData = buildSidebarHelpers(rawData).structure
+      const sidebarData = normalizeSidebar(rawData)
 
       expect(sidebarData).toEqual(result)
     })
@@ -74,7 +70,7 @@ describe('SidebarMenu/helper', () => {
         }
       ]
 
-      const sidebarData = buildSidebarHelpers(rawData).structure
+      const sidebarData = normalizeSidebar(rawData)
 
       expect(sidebarData).toEqual(result)
     })
@@ -101,7 +97,7 @@ describe('SidebarMenu/helper', () => {
         }
       ]
 
-      const sidebarData = buildSidebarHelpers(rawData).structure
+      const sidebarData = normalizeSidebar(rawData)
 
       expect(sidebarData).toEqual(result)
     })
@@ -144,7 +140,7 @@ describe('SidebarMenu/helper', () => {
         }
       ]
 
-      const sidebarData = buildSidebarHelpers(rawData).structure
+      const sidebarData = normalizeSidebar(rawData)
 
       expect(sidebarData).toEqual(result)
     })
@@ -183,7 +179,7 @@ describe('SidebarMenu/helper', () => {
         }
       ]
 
-      const sidebarData = buildSidebarHelpers(rawData).structure
+      const sidebarData = normalizeSidebar(rawData)
 
       expect(sidebarData).toEqual(result)
     })
@@ -222,7 +218,7 @@ describe('SidebarMenu/helper', () => {
         }
       ]
 
-      const sidebarData = buildSidebarHelpers(rawData).structure
+      const sidebarData = normalizeSidebar(rawData)
 
       expect(sidebarData).toEqual(result)
     })
@@ -277,7 +273,7 @@ describe('SidebarMenu/helper', () => {
         }
       ]
 
-      const sidebarData = buildSidebarHelpers(rawData).structure
+      const sidebarData = normalizeSidebar(rawData)
 
       expect(sidebarData).toEqual(result)
     })
@@ -285,7 +281,7 @@ describe('SidebarMenu/helper', () => {
     it("Throws error if external item doesn't have a url field", () => {
       const rawData = [{ type: 'external' }]
 
-      expect(() => buildSidebarHelpers(rawData)).toThrow(
+      expect(() => normalizeSidebar(rawData)).toThrow(
         new Error("'url' field is required in external sidebar.json entries")
       )
     })
@@ -293,7 +289,7 @@ describe('SidebarMenu/helper', () => {
     it("Throws error if local item doesn't have slug field", () => {
       const rawData = [{}]
 
-      expect(() => buildSidebarHelpers(rawData)).toThrow(
+      expect(() => normalizeSidebar(rawData)).toThrow(
         new Error("'slug' field is required in local sidebar.json entries")
       )
     })
@@ -302,82 +298,11 @@ describe('SidebarMenu/helper', () => {
     it("Throws error if item has source: false and doesn't have children", () => {
       const rawData = [{ slug: 'item-name', source: false }]
 
-      expect(() => buildSidebarHelpers(rawData)).toThrow(
+      expect(() => normalizeSidebar(rawData)).toThrow(
         new Error(
           'Local sidebar.json entries with no source must have children'
         )
       )
-    })
-  })
-
-  describe('getItemByPath', () => {
-    it('Returns first child for the /doc path', () => {
-      const rawData = ['item-name']
-      const result = {
-        label: 'Item Name',
-        path: '/doc/item-name',
-        source: '/docs/item-name.md',
-        tutorials: {},
-        prev: undefined,
-        next: undefined
-      }
-
-      const { getItemByPath } = buildSidebarHelpers(rawData)
-
-      expect(getItemByPath('/doc')).toEqual(result)
-    })
-
-    // eslint-disable-next-line max-len
-    it('Returns first child with source for all parents with source:false', () => {
-      const rawData = [
-        {
-          slug: 'item',
-          source: false,
-          children: [
-            {
-              slug: 'nested',
-              source: false,
-              children: [
-                {
-                  slug: 'subnested',
-                  source: false,
-                  children: ['leaf-item']
-                }
-              ]
-            }
-          ]
-        }
-      ]
-      const result = {
-        label: 'Leaf Item',
-        path: '/doc/item/nested/subnested/leaf-item',
-        source: '/docs/item/nested/subnested/leaf-item.md',
-        tutorials: {},
-        prev: undefined,
-        next: undefined
-      }
-
-      const { getItemByPath } = buildSidebarHelpers(rawData)
-
-      expect(getItemByPath('/doc/item')).toEqual(result)
-      expect(getItemByPath('/doc/item/nested')).toEqual(result)
-      expect(getItemByPath('/doc/item/nested/subnested')).toEqual(result)
-    })
-  })
-
-  describe('getParentsListFromPath', () => {
-    it("Returns array of current and parent's paths", () => {
-      const rawData = []
-      const path = '/doc/item-name/nested-item/subnested-item'
-      const result = [
-        '/doc/item-name',
-        '/doc/item-name/nested-item',
-        '/doc/item-name/nested-item/subnested-item'
-      ]
-
-      const { getParentsListFromPath } = buildSidebarHelpers(rawData)
-
-      expect(getParentsListFromPath(path)).toEqual(result)
     })
   })
 })
