@@ -9,7 +9,7 @@ const {
 const buildSidebarRedirects = (list, redirects = []) => {
   list.forEach(item => {
     if (!item.source && item.children) {
-      const redirectToChild = findChildWithSource(sidebar, item)
+      const redirectToChild = findChildWithSource(item)
 
       redirects.push(`^${item.path}/?$ ${redirectToChild.path} 307`)
     }
