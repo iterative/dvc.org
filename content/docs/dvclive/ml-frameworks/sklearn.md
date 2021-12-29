@@ -32,8 +32,8 @@ y_score = clf.predict_proba(X_test)[:, 1]
 ```
 
 DVCLive provides a set of
-[Scikit-learn utilities](/doc/dvclive/api-reference/sklearn.md) that allow you
-to generate `dvc plots` from the labels and predictions.
+[Scikit-learn utilities](/doc/dvclive/api-reference/sklearn) that allow you to
+generate `dvc plots` from the labels and predictions.
 
 ```python
 ...
