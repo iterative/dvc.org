@@ -1,4 +1,4 @@
-declare interface INormalizedSidebarItem {
+export interface INormalizedSidebarItem {
   label: string
   path: string
   source?: string
@@ -10,6 +10,7 @@ declare interface INormalizedSidebarItem {
     katacoda: string
   }
   children?: INormalizedSidebarItem[]
+  type?: string
 }
 
 declare const sidebar: INormalizedSidebarItem[]

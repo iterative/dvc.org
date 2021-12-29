@@ -17,7 +17,9 @@ import {
   getParentsListFromPath,
   getPathWithSource
 } from '../../../../../plugins/gatsby-theme-iterative-docs/sidebar-helpers'
-import sidebar from '../../../../../plugins/gatsby-theme-iterative-docs/src/sidebar'
+import sidebar, {
+  INormalizedSidebarItem
+} from '../../../../../plugins/gatsby-theme-iterative-docs/src/sidebar'
 
 import 'perfect-scrollbar/css/perfect-scrollbar.css'
 import * as styles from './styles.module.css'
@@ -31,26 +33,15 @@ const ICONS: { [key: string]: React.FC<{ className?: string }> } = {
 }
 
 interface ISidebarMenuItemProps {
-  children?: Array<{ label: string; path: string; source: boolean | string }>
-  label: string
-  path: string
-  source: boolean | string
+  item: INormalizedSidebarItem
   onClick: (isLeafItemClicked: boolean) => void
   activePaths?: Array<string>
-  type?: string
-  style?: string
-  icon?: string
 }
 
 const SidebarMenuItem: React.FC<ISidebarMenuItemProps> = ({
-  children,
-  label,
-  path,
+  item: { children, label, path, style, icon, type },
   activePaths,
-  onClick,
-  style,
-  icon,
-  type
+  onClick
 }) => {
   const [isExpanded, setIsExpanded] = useState(
     activePaths && includes(activePaths, path)
@@ -154,7 +145,7 @@ const SidebarMenuItem: React.FC<ISidebarMenuItemProps> = ({
                 key={item.path}
                 activePaths={activePaths}
                 onClick={onClick}
-                {...item}
+                item={item}
               />
             ))}
           </Collapse>
@@ -233,7 +224,7 @@ const SidebarMenu: React.FC<ISidebarMenuProps> = ({ currentPath, onClick }) => {
                 includes(activePaths, item.path) ? activePaths : undefined
               }
               onClick={onClick}
-              {...item}
+              item={item}
             />
           ))}
         </div>
