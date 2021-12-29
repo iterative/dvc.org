@@ -643,6 +643,10 @@
             "label": "PyTorch Lightning"
           },
           {
+            "slug": "sklearn",
+            "label": "Scikit-Learn"
+          },
+          {
             "slug": "tensorflow",
             "label": "TensorFlow"
           },
@@ -679,6 +683,11 @@
                 "label": "set_step()"
               }
             ]
+          },
+          {
+            "slug": "sklearn",
+            "label": "sklearn",
+            "source": "api-reference/sklearn.md"
           }
         ]
       }
