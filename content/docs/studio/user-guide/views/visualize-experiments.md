@@ -26,16 +26,16 @@ You can define multiple plots in a single repository. Below is an example
 snippet from a `dvc.yaml` file showing the `evaluate` stage of the DVC pipeline.
 
 ```yaml
-  evaluate:
-    cmd: python src/evaluate.py
-    deps:
+evaluate:
+  cmd: python src/evaluate.py
+  deps:
     - output/data.pkl
     - output/model.h5
     - src/evaluate.py
-    metrics:
+  metrics:
     - output/metrics.json:
         cache: false
-    plots:
+  plots:
     - output/predictions.json:
         cache: false
         template: confusion

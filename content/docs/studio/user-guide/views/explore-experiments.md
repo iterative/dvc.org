@@ -18,9 +18,11 @@ The tabular display has different components that show you the complete
 experiment history as well as enable to you to generate plots, compare
 experiments, run new experiments, etc. The major components of a view are:
 
-- [Git history, which represents your experimentation history](#git-history)
-- [Display preferences to show/hide branches, commits and columns, and re-arrange your view](#display-preferences)
-- [Buttons to visualize, compare and run experiments](#visualize-compare-and-run-experiments)
+- [Git history](#git-history) - represents your experimentation history.
+- [Display preferences](#display-preferences) - show/hide branches, commits and
+  columns, and re-arrange your view.
+- Buttons to
+  [visualize, compare, and run experiments](#visualize-compare-and-run-experiments).
 
 ### Git history
 
@@ -36,7 +38,7 @@ which commits and columns to display.
 
 ![](https://static.iterative.ai/img/studio/view_components_2.gif)
 
-#### **Filters:**
+#### Filters:
 
 You can filter the commits that you want to display by the following fields:
 
@@ -53,7 +55,7 @@ You can filter the commits that you want to display by the following fields:
   experiments
 - **File changed:** Whether or not any given file changed in the experiment
 
-#### **Columns:**
+#### Columns:
 
 Select the columns you want to display and hide the rest.
 ![Showing and hiding columns](https://static.iterative.ai/img/studio/show_hide_columns.gif)
@@ -68,18 +70,18 @@ may have happened.
 - [View does not contain the columns that I want](/doc/studio/troubleshooting#view-does-not-contain-the-columns-that-i-want)
 - [View contains columns that I did not import](/doc/studio/troubleshooting#view-contains-columns-that-i-did-not-import)
 
-#### **Hide commits:**
+#### Hide commits:
 
 The following functionality are available for you to hide irrelevant commits
 from your views in DVC Studio.
 
-- **Hide commits and branches manually:** You can hide irrelevant commits, and
-  even entire branches. This means that commits you made simply to re-organize
-  your project structure will not take up space in your view anymore. To hide a
-  commit or branch, click on the 3-dot menu next to the commit or branch name
-  and click on `Hide commit` (or `Hide branch`).
 - **DVC Studio auto-hides irrelevant commits:** DVC Studio identifies commits
-  that do not change metrics and will auto-hide such commits.
+  where metrics, files and hyperparameters did not change and hides them
+  automatically.
+- **Hide commits and branches manually:** You can selectively hide commits and
+  branches. This can be useful useful if there are commits that do not add much
+  value in your view. To hide a commit or branch, click on the 3-dot menu next
+  to the commit or branch name and click on `Hide commit` or `Hide branch`.
 - **Unhide commits:** You can unhide commits as needed, so that you don't lose
   any experimentation history. To display all hidden commits, click on the
   `Show hidden commits` toggle (refer [the above gif](#display-preferences)).
@@ -87,15 +89,15 @@ from your views in DVC Studio.
   To unhide any commit, click on the 3-dot menu for that commit and click on
   `Show commit`.
 
-#### **Selected only:**
+#### Selected only:
 
 Use this toggle switch to show/hide experiments that you have not selected.
 
-#### **Delta mode:**
+#### Delta mode:
 
 Toggle between absolute values and difference from the first row.
 
-#### **Save changes:**
+#### Save changes:
 
 Save your filters or column display preferences so that these preferences remain
 intact even after you log out of DVC Studio and log back in later.
