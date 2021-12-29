@@ -17,7 +17,10 @@ import Link from '../../Link'
 import Tooltip from './Tooltip'
 
 import * as styles from './styles.module.css'
-import { TogglesContext, TogglesProvider } from './ToggleProvider'
+import {
+  TogglesContext,
+  TogglesProvider
+} from '../../../../plugins/gatsby-theme-iterative-docs/src/components/ToggleProvider'
 
 const Details: React.FC<Record<string, never>> = ({ children }) => {
   const filteredChildren: ReactNode[] = (
