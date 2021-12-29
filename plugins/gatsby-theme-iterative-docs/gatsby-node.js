@@ -11,7 +11,8 @@ exports.pluginOptionsSchema = ({ Joi }) => {
     getTemplate: Joi.function().default(() => defaultGetTemplate),
     defaultTemplate: Joi.string().default(
       path.resolve('src', 'templates', 'doc.tsx')
-    )
+    ),
+    remark: Joi.boolean().default(true)
   })
 }
 
