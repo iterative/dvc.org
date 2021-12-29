@@ -1,9 +1,9 @@
-declare interface NormalizedSidebarItem {
+declare interface INormalizedSidebarItem {
   label: string
   path: string
   source: boolean | string
 }
 
-declare const sidebar: NormalizedSidebarItem[]
+declare const sidebar: INormalizedSidebarItem[]
 
 export default sidebar

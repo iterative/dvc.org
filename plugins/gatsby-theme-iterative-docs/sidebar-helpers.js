@@ -20,7 +20,7 @@
   }
 */
 
-const { PATH_ROOT, FILE_ROOT, FILE_EXTENSION } = require('./constants')
+const { PATH_ROOT } = require('./constants')
 
 function findItemByField(data, field, targetValue) {
   if (data.length) {
