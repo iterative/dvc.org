@@ -4,7 +4,7 @@ const { createLinkNode } = require('./helpers')
 const {
   getItemByPath
 } = require('../gatsby-theme-iterative-docs/sidebar-helpers')
-const sidebar = require('../gatsby-theme-iterative-docs/resolve-sidebar')
+const sidebar = require('../../src/gatsby-theme-iterative-docs/sidebar')
 
 const DVC_REGEXP = /dvc\s+[a-z][a-z-.]*/
 const COMMAND_REGEXP = /^[a-z][a-z-]*$/

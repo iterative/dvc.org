@@ -4,7 +4,7 @@ const { createLinkNode } = require('./helpers')
 const {
   getItemByPath
 } = require('../gatsby-theme-iterative-docs/sidebar-helpers')
-const sidebar = require('../gatsby-theme-iterative-docs/resolve-sidebar')
+const sidebar = require('../../src/gatsby-theme-iterative-docs/sidebar')
 
 const LIVE_API_REGEXP = /Live.([a-z-._]*\(\)$)?/
 const METHOD_REGEXP = /^[a-z-._]*\(\)$/
