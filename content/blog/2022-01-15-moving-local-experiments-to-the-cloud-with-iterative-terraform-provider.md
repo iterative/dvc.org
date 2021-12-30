@@ -42,7 +42,7 @@ that contains 5,100+ bee images annotated with location, date, time, subspecies,
 health condition, caste, and pollen. I've downloaded the images, created a
 project and trained a simple CNN model locally to classify different subspecies.
 If you want to follow along, you can use your own data and training code, or
-clone [the example repo from GitHub](https://github.com/MKhalusova/bees).
+clone [the example repo from GitHub](https://github.com/iterative/bees).
 
 Let's pretend that the model I trained is good enough so that I would like to
 continue iterating on it in the cloud. Run more epochs? Change some
