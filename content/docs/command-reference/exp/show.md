@@ -1,6 +1,7 @@
 # exp show
 
-Print a customizable table of experiments, their metrics and parameters.
+Displays your experiments in a customizable table or
+[parallel coordinates plot](#example-parallel-coordinates-plot-pcp).
 
 > Press `q` to exit.
 
