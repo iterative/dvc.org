@@ -49,5 +49,3 @@ declare module 'ease-component' {
 declare module 'iso-url' {
   export const URL: typeof window.URL
 }
-
-declare module 'html-to-react'

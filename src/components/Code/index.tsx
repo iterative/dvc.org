@@ -1,8 +1,6 @@
 import React from 'react'
 import cn from 'classnames'
 
-import { htmlToReact } from '../../utils'
-
 import dvc from '../../../config/prismjs/dvc-commands'
 
 const dvcRegex = new RegExp(`dvc (?:${dvc.join('|')})`, 'ig')
@@ -33,7 +31,7 @@ export const wrapWithTags = (text: string) => {
 
 const formatText = (text: string) => {
   const wrapped = wrapWithTags(text)
-  return htmlToReact(wrapped)
+  return wrapped
 }
 
 const Code: React.FC<{ className: string }> = ({ className, children }) => {
@@ -42,7 +40,12 @@ const Code: React.FC<{ className: string }> = ({ className, children }) => {
       ? children.join('')
       : String(children) || ''
     const ReactText = formatText(codeText)
-    return <code className={cn(className)}>{ReactText}</code>
+    return (
+      <code
+        className={cn(className)}
+        dangerouslySetInnerHTML={{ __html: ReactText }}
+      ></code>
+    )
   }
   return <code className={cn(className)}>{children}</code>
 }
