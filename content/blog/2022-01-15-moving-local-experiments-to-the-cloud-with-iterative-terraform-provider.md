@@ -38,7 +38,7 @@ Terraform and run your existing training script on it.
 
 For this tutorial I have picked
 [The BeeImage Dataset](https://www.kaggle.com/jenny18/honey-bee-annotated-images)
-that contains 5,100+ bee images annotated with location, date, time, subspecies,
+which contains over 5,100 bee images annotated with location, date, time, subspecies,
 health condition, caste, and pollen. I've downloaded the images, created a
 project and trained a simple CNN model locally to classify different subspecies.
 If you want to follow along, you can use your own data and training code, or
@@ -130,7 +130,8 @@ we'll need to configure. This resource will:
 1. Create cloud resources (storage, machines) for the task.
 2. If specified, upload a directory to the cloud storage.
 3. Run the given script until completion or timeout in the cloud.
-4. Automatically terminate compute resources upon task completion.
+4. Download results.
+5. Automatically terminate compute resources upon task completion.
 
 This is exactly what we need to run a model training process! Let's see how we
 can configure the `iterative_task`. First, I'll show you what my configuration
