@@ -95,6 +95,7 @@
         "label": "Fast and Secure Data Caching Hub",
         "slug": "fast-data-caching-hub"
       },
+      "experiment-tracking",
       "data-registries"
     ]
   },
@@ -132,7 +133,20 @@
         ]
       },
       {
-        "label": "How To",
+        "label": "Experiment Management",
+        "slug": "experiment-management",
+        "source": "experiment-management/index.md",
+        "children": [
+          "experiments-overview",
+          "running-experiments",
+          "comparing-experiments",
+          "sharing-experiments",
+          "persisting-experiments",
+          "cleaning-experiments",
+          "checkpoints"
+        ]
+      },
+      {
         "slug": "how-to",
         "source": false,
         "children": [
@@ -140,20 +154,8 @@
           "update-tracked-data",
           "add-deps-or-outs-to-a-stage",
           "merge-conflicts",
-          "share-a-dvc-cache"
-        ]
-      },
-      {
-        "label": "Experiment Management",
-        "slug": "experiment-management",
-        "source": "experiment-management/index.md",
-        "children": [
-          "running-experiments",
-          "comparing-experiments",
-          "sharing-experiments",
-          "persisting-experiments",
-          "cleaning-experiments",
-          "checkpoints"
+          "share-a-dvc-cache",
+          "share-many-experiments"
         ]
       },
       "setup-google-drive-remote",
@@ -253,6 +255,10 @@
         "source": "exp/index.md",
         "children": [
           {
+            "label": "exp init",
+            "slug": "init"
+          },
+          {
             "label": "exp run",
             "slug": "run"
           },
@@ -263,6 +269,10 @@
           {
             "label": "exp diff",
             "slug": "diff"
+          },
+          {
+            "label": "exp list",
+            "slug": "list"
           },
           {
             "label": "exp apply",
@@ -287,10 +297,6 @@
           {
             "label": "exp pull",
             "slug": "pull"
-          },
-          {
-            "label": "exp list",
-            "slug": "list"
           }
         ]
       },
@@ -556,7 +562,7 @@
             "slug": "prepare-repositories"
           },
           {
-            "label": "Views",
+            "label": "Views and Experiments",
             "slug": "views",
             "source": false,
             "children": [
@@ -566,18 +572,18 @@
                 "label": "Configure View",
                 "slug": "view-settings"
               },
+              {
+                "label": "Explore ML Experiments",
+                "slug": "explore-experiments"
+              },
+              {
+                "label": "Visualize and Compare",
+                "slug": "visualize-experiments"
+              },
+              "run-experiments",
               "share-view"
             ]
           },
-          {
-            "label": "Explore ML Experiments",
-            "slug": "explore-experiments"
-          },
-          {
-            "label": "Visualize and Compare",
-            "slug": "visualize-experiments"
-          },
-          "run-experiments",
           "teams",
           "account-management",
           "install-github-app"

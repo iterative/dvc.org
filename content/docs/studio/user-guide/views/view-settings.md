@@ -119,7 +119,7 @@ of 200.
 Note that some non-mandatory columns will also be imported if there are less
 than 200 mandatory columns. If you would like to hide specific columns from your
 view, you can do so in the view itself. For this, refer to
-[Display preferences -> Columns](/doc/studio/user-guide/explore-experiments#display-preferences).
+[Display preferences -> Columns](/doc/studio/user-guide/views/explore-experiments#columns).
 
 If your view is missing some required columns or includes columns that you do
 not want, refer to the following troubleshooting sections to understand why this

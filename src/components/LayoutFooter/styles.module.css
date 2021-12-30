@@ -4,7 +4,7 @@
 }
 
 .div {
-  background-image: url(../../../static/img/cml_icon-color--square_vector.svg);
+  background-image: url("../../../static/img/cml_icon-color--square_vector.svg");
 }
 
 .container {
@@ -121,7 +121,7 @@
   align-items: center;
   font-size: 18px;
   line-height: 30px;
-  color: rgba(255, 255, 255, 0.75);
+  color: rgb(255 255 255 / 75%);
   text-decoration: none;
   letter-spacing: 0.02em;
   padding: 4px 0;
@@ -176,7 +176,7 @@
 .companyLabel {
   font-size: 18px;
   line-height: 30px;
-  color: rgba(255, 255, 255, 0.75);
+  color: rgb(255 255 255 / 75%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -210,8 +210,6 @@
   );
   background-size: 100%;
   background-clip: text;
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
   -webkit-text-fill-color: transparent;
   -moz-text-fill-color: transparent;
 

@@ -4,11 +4,11 @@ import LayoutWidthContainer from '../../LayoutWidthContainer'
 import ShowOnly from '../../ShowOnly'
 import Link from '../../Link'
 import { useCommunityData } from '../../../utils/front/community'
-import { logEvent } from '../../../utils/front/ga'
+import { logEvent } from '../../../utils/front/plausible'
 
 import * as styles from './styles.module.css'
 
-const logHero = (): void => logEvent('community', 'hero')
+const logHero = (): void => logEvent('Community', { Section: 'hero' })
 
 export interface IHero {
   url: string
@@ -34,10 +34,14 @@ const Hero: React.FC = () => {
         }}
       >
         <ShowOnly on="desktop">
-          <img className={styles.picture} src={hero.pictureDesktop} alt="" />
+          <div className={styles.pictureContainer}>
+            <img className={styles.picture} src={hero.pictureDesktop} alt="" />
+          </div>
         </ShowOnly>
         <ShowOnly on="mobile">
-          <img className={styles.picture} src={hero.pictureMobile} alt="" />
+          <div className={styles.pictureContainer}>
+            <img className={styles.picture} src={hero.pictureMobile} alt="" />
+          </div>
         </ShowOnly>
       </Link>
     </LayoutWidthContainer>

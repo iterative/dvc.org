@@ -5,15 +5,17 @@ import LayoutWidthContainer from '../../LayoutWidthContainer'
 import Link from '../../Link'
 import CommunityBlock from '../Block'
 import CommunitySection from '../Section'
-import { logEvent } from '../../../utils/front/ga'
+import { logEvent } from '../../../utils/front/plausible'
 
 import { useCommunityData } from '../../../utils/front/community'
 import * as sharedStyles from '../styles.module.css'
 
-const logPR = (): void => logEvent('community', 'contribute-pr')
-const logBlogpost = (): void => logEvent('community', 'contribute-blogpost')
-const logTalk = (): void => logEvent('community', 'contribute-talk')
-const logAmbassador = (): void => logEvent('community', 'contribute-ambassador')
+const log = (type: string): void =>
+  logEvent('Community', { Section: 'contribute', Contribute: type })
+const logPR = (): void => log('pr')
+const logBlogpost = (): void => log('blogpost')
+const logTalk = (): void => log('talk')
+const logAmbassador = (): void => log('ambassador')
 
 const Contribute: React.FC<{ theme: ICommunitySectionTheme }> = ({ theme }) => {
   const {

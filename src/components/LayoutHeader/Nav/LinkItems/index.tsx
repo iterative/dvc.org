@@ -7,7 +7,7 @@ import { OtherToolsPopup, CommunityPopup } from '../Popup'
 import { ReactComponent as ArrowUpSVG } from '../../../../../static/img/arrow-up-icon.svg'
 import { ReactComponent as ArrowDownSVG } from '../../../../../static/img/arrow-down-icon.svg'
 
-import { logEvent } from '../../../../utils/front/ga'
+import { logEvent } from '../../../../utils/front/plausible'
 import { getFirstPage } from '../../../../utils/shared/sidebar'
 
 const docsPage = getFirstPage()
@@ -188,7 +188,7 @@ const LinkItems: React.FC = ({}) => {
             </>
           ) : (
             <Link
-              onClick={(): void => logEvent('menu', item.eventType)}
+              onClick={(): void => logEvent('Nav', { Item: item.eventType })}
               href={item.href}
               className={styles.link}
             >

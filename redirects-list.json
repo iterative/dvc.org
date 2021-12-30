@@ -19,7 +19,7 @@
 
   "^https://s\\.dvc\\.org/g/exp/run(.*)?$                                                https://dvc.org/doc/user-guide/experiment-management/running-experiments$1 302",
   "^https://s\\.dvc\\.org/g/exp/(.*)?$                                                   https://dvc.org/doc/user-guide/experiment-management/$1 302",
-  "^https://s\\.dvc\\.org/g/pipeline-files/(.*)?$                                        https://dvc.org/doc/user-guide/project-structure/pipelines-files/$1 302",
+  "^https://s\\.dvc\\.org/g/pipeline-files$                                              https://dvc.org/doc/user-guide/project-structure/pipelines-files 302",
   "^https://s\\.dvc\\.org/g/(.*)?$                                                       https://dvc.org/doc/user-guide/$1 302",
   "^https://s\\.dvc\\.org/s/(.*)?$                                                       https://dvc.org/doc/start/$1 302",
   "^https://s\\.dvc\\.org/c/(.*)?$                                                       https://dvc.org/doc/use-cases/$1 302",
@@ -68,6 +68,9 @@
   "^/doc/cml(/.*)?$                                                                       https://cml.dev/doc$1",
 
   "^/doc/studio/view-settings$                                                            /doc/studio/user-guide/views/view-settings",
+  "^/doc/studio/user-guide/explore-experiments$                                           /doc/studio/user-guide/views/explore-experiments",
+  "^/doc/studio/user-guide/visualize-experiments$                                         /doc/studio/user-guide/views/visualize-experiments",
+  "^/doc/studio/user-guide/run-experiments$                                               /doc/studio/user-guide/views/run-experiments",
 
   "^/(.+)/$                                                                               /$1"
 ]

@@ -80,7 +80,7 @@ To actually [version the data](/doc/start/data-and-model-versioning), `git add`
 
 ## Options
 
-- `-o <path>`, `--out <path>` - specify a path to the desired location in the
+- `-o <path>`, `--out <path>` - specify a `path` to the desired location in the
   workspace to place the downloaded file or directory (instead of using the
   current working directory). Directories specified in the path must already
   exist, otherwise this command will fail.
@@ -178,7 +178,7 @@ under `repo`:
 
 ```yaml
 deps:
-  - path: data/data.xml
+  - path: use-cases/cats-dogs
     repo:
       url: git@github.com:iterative/dataset-registry.git
       rev: cats-dogs-v1
@@ -193,7 +193,7 @@ will not have an effect on the import `.dvc` file. You may force-update it to a
 different commit with `dvc update --rev`:
 
 ```dvc
-$ dvc update --rev cats-dogs-v2
+$ dvc update --rev cats-dogs-v2 cats-dogs.dvc
 ```
 
 > In the above example, the value for `rev` in the new `.dvc` file will be

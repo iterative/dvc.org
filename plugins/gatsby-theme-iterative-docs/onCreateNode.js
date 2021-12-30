@@ -1,10 +1,22 @@
 const path = require('path')
 
-async function createMarkdownDocsNode(api, { parentNode, createChildNode }) {
-  const splitDir = parentNode.relativeDirectory.split('/')
+function onCreateNode(
+  {
+    node,
+    getNode,
+    createNodeId,
+    createContentDigest,
+    actions: { createNode, createParentChildLink }
+  },
+  { disable }
+) {
+  if (disable || node.internal.type !== 'MarkdownRemark') {
+    return
+  }
+  const parentNode = getNode(node.parent)
+  const splitDir = parentNode.relativeDirectory.split(path.sep)
   if (splitDir[0] !== 'docs') return
 
-  const { node, createNodeId, createContentDigest } = api
   const { name, relativePath } = parentNode
   splitDir[0] = 'doc'
 
@@ -30,7 +42,8 @@ async function createMarkdownDocsNode(api, { parentNode, createChildNode }) {
     }
   }
 
-  return createChildNode(docNode)
+  createNode(docNode)
+  createParentChildLink({ parent: node, child: docNode })
 }
 
-module.exports = createMarkdownDocsNode
+module.exports = onCreateNode

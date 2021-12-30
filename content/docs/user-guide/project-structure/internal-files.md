@@ -134,11 +134,11 @@ $ cat .dvc/cache/6f/db5336fce0dbfd669f83065f107551.dir
 
 That's how DVC knows that the other two cached files belong in the directory.
 
-### Run-cache
+## Run-cache
 
-`dvc repro` and `dvc run` by default populate and reutilize a log of stages that
-have been run in the project. It is found in the `runs/` directory inside the
-cache (or [remote storage](/doc/command-reference/remote)).
+`dvc exp run` and `dvc repro` by default populate and reutilize a log of stages
+that have been run in the project. It is found in the `runs/` directory inside
+the cache (or [remote storage](/doc/command-reference/remote)).
 
 Runs are identified as combinations of exact <abbr>dependency</abbr> contents
 (or [parameter](/doc/command-reference/params) values), and the literal
