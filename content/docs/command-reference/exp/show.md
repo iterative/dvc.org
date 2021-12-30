@@ -54,9 +54,9 @@ sorted inside each group, chronologically by default. The `--sort-by` and
 metric or param.
 
 When the `--pcp` option is passed, an interactive parallel coordinates plot will
-be generated using the same data from the table. This plot is useful to explore the
-relationships between the metrics and params used in experiments. You can reorder
-the columns to make some patterns more easily visible.
+be generated using the same data from the table. This plot is useful to explore
+the relationships between the metrics and params used in experiments. You can
+reorder the columns to make some patterns more easily visible.
 
 ![](/img/pcp_interaction.gif) _Parallel Coordinates Plot_
 
