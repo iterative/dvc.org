@@ -17,7 +17,7 @@ const encodeChars = (rawText: string) => {
 }
 const pipe = (...args: any[]) => args.reduce((acc, el) => el(acc))
 const linkify = (str: string) => {
-  return `<a class="token args" href='#${str.replaceAll('-', '_')}'>${str}</a>`
+  return `<a class="token args" href='#${str.replaceAll(' ', '_')}'>${str}</a>`
 }
 
 const wrapUsage = (text: string) =>

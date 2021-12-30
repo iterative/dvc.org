@@ -66,6 +66,7 @@ const plugins = [
       plugins: [
         'gatsby-remark-embedder',
         'gatsby-remark-dvc-linker',
+        'gatsby-remark-args-linker',
         {
           resolve: 'gatsby-remark-prismjs',
           options: {
