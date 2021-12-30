@@ -10,6 +10,7 @@ DVC Studio.
 - [View got created, but does not contain any data](#view-got-created-but-does-not-contain-any-data)
 - [View does not contain the columns that I want](#view-does-not-contain-the-columns-that-i-want)
 - [View contains columns that I did not import](#view-contains-columns-that-i-did-not-import)
+- [View does not contain some of my commits or branches](#view-does-not-contain-some-of-my-commits-or-branches)
 - [Error: Failed to push experiment to repository](#error-failed-to-push-experiment-to-repository)
 
 ## Support
@@ -146,6 +147,20 @@ If you would like to explicitly hide columns, you can simply hide them in the
 view. Once you show/hide columns, you can save the changes. Check out the
 [above video](#showhide-columns) to see how you can show/hide columns. Once you
 show/hide columns, remember to save the changes.
+
+## View does not contain some of my commits or branches
+
+This is likely not an error. DVC Studio identifies commits that do not change
+metrics, files or hyperparameters and will auto-hide such commits. You can also
+manually hide commits and branches. So, it is possible that the commits or
+branches you do not see in your view were manually hidden by you or someone else
+in your team.
+
+You can unhide commits/branches to display them in your view. For details, refer
+to
+[Display preferences -> Hide commits](/doc/studio/user-guide/views/explore-experiments#hide-commits).
+However, if the missing commit/branch is not in the hidden commits list, then
+please [raise a support request](#support).
 
 ## Error: Failed to push experiment to repository
 

@@ -3,7 +3,8 @@
 _New in DVC 2.0 (see `dvc version`)_
 
 A set of commands to generate and manage <abbr>experiments</abbr>:
-[run](/doc/command-reference/exp/run), [show](/doc/command-reference/exp/show),
+[init](/doc/command-reference/exp/init), [run](/doc/command-reference/exp/run),
+[show](/doc/command-reference/exp/show),
 [diff](/doc/command-reference/exp/diff),
 [apply](/doc/command-reference/exp/apply),
 [branch](/doc/command-reference/exp/branch),
@@ -20,23 +21,24 @@ A set of commands to generate and manage <abbr>experiments</abbr>:
 
 ```usage
 usage: dvc exp [-h] [-q | -v]
-          {show,apply,diff,run,gc,branch,list,push,pull,remove}
+          {show,apply,diff,run,gc,branch,list,push,pull,remove,init}
           ...
 
 positional arguments:
   COMMAND
+    init                Quickly setup any project to use DVC Experiments.
+    run                 Reproduce complete or partial experiment pipelines.
     show                Print experiments.
-    apply               Apply the changes from an experiment to your
-                        workspace.
     diff                Show changes between experiments in the DVC
                         repository.
-    run                 Reproduce complete or partial experiment pipelines.
-    gc                  Garbage collect unneeded experiments.
-    branch              Promote an experiment to a Git branch.
     list                List local and remote experiments.
+    apply               Apply the changes from an experiment to your
+                        workspace.
+    branch              Promote an experiment to a Git branch.
+    remove              Remove local experiments.
+    gc                  Garbage collect unneeded experiments.
     push                Push a local experiment to a Git remote.
     pull                Pull an experiment from a Git remote.
-    remove              Remove local experiments.
 ```
 
 ## Description

@@ -30,8 +30,8 @@ The `targets` are the files or [directories](#adding-entire-directories) to add.
 They get stored in the <abbr>cache</abbr> by default (use the `--no-commit`
 option to avoid this, and `dvc commit` to finish the process when needed).
 
-> See also `dvc.yaml` and `dvc run` for more advanced ways to track and version
-> intermediate and final results (like ML models).
+> See also `dvc.yaml` and `dvc stage add` for more advanced ways to track and
+> version intermediate and final results (like ML models).
 
 After checking that each `target` hasn't been added before (or tracked with
 other DVC commands), a few actions are taken under the hood:
@@ -153,15 +153,17 @@ not.
   > Additionally, this typically requires an external cache setup (see link
   > above).
 
-- `-o <path>`, `--out <path>` - destination `path` to make a local target copy,
-  or to [transfer](#example-transfer-to-cache) an external target into the cache
-  (and link to workspace). Note that this can be combined with `--to-remote` to
-  avoid storing the data locally, while still adding it to the project.
+- `-o <path>`, `--out <path>` - specify a `path` to the desired location in the
+  workspace to place the `targets` (instead of using the current working
+  directory). Directories specified in the path will be created by this command.
 
-- `--to-remote` - import an external target, but don't move it into the
-  workspace, nor cache it. [Transfer it](#example-transfer-to-remote-storage) it
-  directly to remote storage (the default one, unless `-r` is specified)
-  instead. Use `dvc pull` to get the data locally.
+  > Note that this can be combined with `--to-remote` to avoid storing the data
+  > locally, in which case the give `path` is only used in `dvc.yaml`.
+
+- `--to-remote` - add an external target, but don't move it into the workspace,
+  nor cache it. [Transfer it](#example-transfer-to-remote-storage) it directly
+  to remote storage (the default one, unless `-r` is specified) instead. Use
+  `dvc pull` to get the data locally.
 
 - `-r <name>`, `--remote <name>` - name of the
   [remote storage](/doc/command-reference/remote) to transfer external target to
@@ -252,14 +254,14 @@ outs:
 > info.
 
 This allows us to treat the entire directory structure as a single data
-artifact. For example, you can pass it as a <abbr>dependency</abbr> to a
-`dvc run` stage definition:
+artifact. For example, you can pass it as a <abbr>dependency</abbr> to a stage
+definition:
 
 ```dvc
-$ dvc run -n train \
-          -d train.py -d pics \
-          -M metrics.json -o model.h5 \
-          python train.py
+$ dvc stage add -n train \
+                -d train.py -d pics \
+                -M metrics.json -o model.h5 \
+                python train.py
 ```
 
 > To try this example, see the
@@ -292,7 +294,7 @@ pics
 
 Note that no top-level `.dvc` file is generated, which is typically less
 convenient. For example, we cannot use the directory structure as one unit with
-`dvc run` or other commands.
+`dvc stage add` or other commands.
 
 ## Example .dvcignore
 

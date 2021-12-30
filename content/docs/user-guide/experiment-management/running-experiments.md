@@ -1,8 +1,8 @@
 # Running Experiments
 
-We explain how DVC codifies and executes experiments, setting their parameters,
-using multiple jobs to run them in parallel, and running them in queues, among
-other details.
+We explain how to execute DVC Experiments, setting their parameters, using
+multiple jobs to run them in parallel, and running them in queues, among other
+details.
 
 > 📖 If this is the first time you are introduced into data science
 > experimentation, you may want to check the basics in
@@ -231,7 +231,7 @@ Note that Git-ignored files/dirs are explicitly excluded from queued/temp runs
 to avoid committing unwanted files into Git (e.g. once successful experiments
 are [persisted]).
 
-[persisted]: /doc/user-guide/experiment-management#persistent-experiments
+[persisted]: /doc/user-guide/experiment-management/persisting-experiments
 
 > 💡 To include untracked files, stage them with `git add` first (before
 > `dvc exp run`) and `git reset` them afterwards.
@@ -270,12 +270,8 @@ CPU cores).
 ## Checkpoint experiments
 
 To track successive steps in a longer or deeper <abbr>experiment</abbr>, you can
-register checkpoints from your code.
-
-📖 See [Checkpoints](/doc/user-guide/experiment-management/checkpoints) to learn
-about this feature.
-
-Running the experiments containing checkpoints is no different than with regular
+register [checkpoints](/doc/user-guide/experiment-management/checkpoints) from
+your code. Running checkpoint experiments is no different than with regular
 ones, e.g.:
 
 ```dvc
@@ -298,3 +294,6 @@ their outputs). This is useful for re-training ML models, for example.
 
 > Note that queuing an experiment that uses checkpoints implies `--reset`,
 > unless a `--rev` is provided (refer to the previous section).
+
+> 📖 See [Checkpoints](/doc/user-guide/experiment-management/checkpoints) to
+> learn more about this feature.
