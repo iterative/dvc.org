@@ -53,19 +53,12 @@ sorted inside each group, chronologically by default. The `--sort-by` and
 `--sort-order` options can change this ordering, based on any single, visible
 metric or param.
 
-### Parallel Coordinates Plot
-
-When the `--pcp` option is passed, an interactive Parallel Coordinates Plot will
-be generated using the data from the table.
-
-This plot is useful to explore the relationships between the metrics _and_
-params used in experiments.
+When the `--pcp` option is passed, an interactive parallel coordinates plot will
+be generated using the same data from the table. This plot is useful to explore the
+relationships between the metrics and params used in experiments. You can reorder
+the columns to make some patterns more easily visible.
 
 ![](/img/pcp_interaction.gif) _Parallel Coordinates Plot_
-
-The interactivity of the plot allows you to extract different insights from the
-data. For example, the order of the columns can make some patterns more easily
-visible.
 
 ## Options
 
@@ -124,9 +117,6 @@ visible.
   (`name`). Only one visible column (either metric or param) can be used for
   sorting. This only affects the ordering of experiments derived from the same
   parent commit. Parent commits are always sorted chronologically.
-
-  When combined with the `--pcp` flag, the values of the column `name` will be
-  used to determine the color of the lines in the Parallel Coordinates Plot.
 
 - `--sort-order {asc,desc}` - sort order to use with `--sort-by`. Defaults to
   ascending (`asc`).
@@ -281,9 +271,6 @@ the color of the lines that represent them:
 ```dvc
 $ dvc exp show --all-branches --pcp --sort-by roc_auc
 ```
-
-> When `--sort-by` is not supplied, the color of the lines will be determined by
-> the `Experiment` column.
 
 ![](/img/ref_pcp_sortby.png) _Colorized by roc_auc_
 

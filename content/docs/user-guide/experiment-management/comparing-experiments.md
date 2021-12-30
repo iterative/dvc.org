@@ -191,13 +191,10 @@ $ dvc exp show --sort-by auc --sort-order desc
 
 ## Parallel Coordinates Plot
 
-`dvc exp show` can also generate an interactive
-[Parallel Coordinates Plot](/doc/command-reference/exp/show#parallel-coordinates-plot),
-with `--pcp`.
-
-The `--pcp` option can be combined with the other flags of `dvc exp show`. For
-example, the color of the lines will be determined by the values in the column
-passed to `--sort-by`.
+You can also generate an interactive parallel coordinates plot with
+`dvc exp show --pcp`. This flag can be combined with other options of the
+command. For example, use  `--sort-by` to sort the experiments and determine
+the color of the lines that represent them.
 
 ```dvc
 $ dvc exp show --pcp --all-branches --sort-by roc_auc
