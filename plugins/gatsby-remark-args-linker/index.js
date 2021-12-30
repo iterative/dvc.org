@@ -1,5 +1,7 @@
 const visit = require('unist-util-visit')
 
+const argsRegex = new RegExp(/\-{1,2}[a-zA-Z-]*/, 'ig')
+
 function patch(context, key, value) {
   if (!context[key]) {
     context[key] = value
@@ -16,9 +18,8 @@ module.exports = ({ markdownAST }) => {
       node.children.some(
         item =>
           item.type === 'paragraph' &&
-          item.children.some(
-            ch => ch.type === 'inlineCode' && String(ch.value).startsWith('-')
-          )
+          item.children[0]?.type === 'inlineCode' &&
+          String(item.children[0]?.value).startsWith('-')
       ),
     listItemNode => {
       const paragraphNode = listItemNode.children.find(
@@ -29,7 +30,7 @@ module.exports = ({ markdownAST }) => {
       )
       const value = inlineCodeNode.value
       if (String(value).startsWith('-')) {
-        const id = value
+        const id = value.match(argsRegex)[0]
         const data = patch(listItemNode, `data`, {})
 
         patch(data, `id`, id)
