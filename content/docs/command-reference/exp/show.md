@@ -53,10 +53,11 @@ sorted inside each group, chronologically by default. The `--sort-by` and
 `--sort-order` options can change this ordering, based on any single, visible
 metric or param.
 
-When the `--pcp` option is passed, an interactive parallel coordinates plot will
-be generated using the same data from the table. This plot is useful to explore the
-relationships between the metrics and params used in experiments. You can reorder
-the columns to make some patterns more easily visible.
+When the `--pcp` option is passed, an interactive
+[parallel coordinates plot](#example-parallel-coordinates-plot-pcp) will be
+generated using the same data from the table. This plot is useful to explore the
+relationships between the metrics and params used in experiments. You can
+reorder the columns to make some patterns more easily visible.
 
 ![](/img/pcp_interaction.gif) _Parallel Coordinates Plot_
 
@@ -146,7 +147,8 @@ the columns to make some patterns more easily visible.
 - `-v`, `--verbose` - displays detailed tracing information.
 
 - `--pcp` - generates an interactive
-  [parallel coordinates plot](#parallel-coordinates-plot) from the table.
+  [parallel coordinates plot](#example-parallel-coordinates-plot-pcp) from the
+  table.
 
 - `-o <folder>, --out <folder>` - when used with `--pcp`, specifies a
   destination `folder` of the plot. By default its `dvc_plots`.
@@ -256,8 +258,9 @@ sorting only applies to experiment groups (sharing a parent commit).
 
 ## Example: Parallel coordinates plot (PCP)
 
-To generate an interactive [PCP](#parallel-coordinates-plot) based on the
-experiments and their parameters:
+To generate an interactive
+[PCP](/doc/user-guide/experiment-management/comparing-experiments#parallel-coordinates-plot)
+based on the experiments and their parameters:
 
 ```dvc
 $ dvc exp show --all-branches --pcp
