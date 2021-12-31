@@ -109,7 +109,7 @@ master:
         exp-9fcef
         exp-e6c97
 
-$ dvc exp remote -g myremote exp-9fcef exp-e6c97
+$ dvc exp remove -g myremote exp-9fcef exp-e6c97
 $ dvc exp list myremote
 master:
         exp-1dad0
