@@ -1,12 +1,13 @@
 # Get Started
 
-DVCLive is a simple Python library whose interface consists of three main steps.
+DVCLive is a simple Python library for logging data in a format usable by DVC.
 
-## Steps
+> If you use one of the supported [ML Frameworks](/doc/dvclive/ml-frameworks),
+> you can jump directly to it's corresponding page.
 
-To get it up and running you just need to follow these steps:
+## Workflow
 
-### 1. Initialize DVCLive
+### Initialize DVCLive
 
 ```python
 from dvclive import Live
@@ -16,25 +17,37 @@ live = Live()
 
 See [`Live()`](/doc/dvclive/api-reference/live) for details.
 
-### 2. Log metrics
+### Log data
 
 ```python
-live.log(metric_name, value)
+live.log("acc", 0.9)
 ```
 
 See `Live.log()` for details.
 
-### 3. Increase the step number
+### (Optionally) Update the step number
 
 ```python
 live.next_step()
 ```
 
-See `Live.next_step()` for details.
+See `Live.next_step()` and `Live.set_step()` for details.
+
+### No step
+
+In ML scenarios where there are no iterations (steps) as part of the training
+process, there is no need to update the step number.
+
+When you don't update the step number in your code, DVCLive will **not**
+generate:
+
+- [linear plots](/doc/dvclive/get-started#linear-plots)
+- [html report](/doc/dvclive/dvclive-with-dvc#html-report)
+- [checkpoints](/doc/dvclive/dvclive-with-dvc#checkpoints)
 
 ## Putting all together
 
-Using the above steps, you can easily include DVCLive in your training code:
+Joining the above snippets, you can include DVCLive in your training code:
 
 ```python
 # train.py
@@ -64,9 +77,25 @@ dvclive        train.py
 dvclive.json
 ```
 
-### Metrics Logs
+### Summary
 
-For each `{metric_name}`, DVCLive produces metrics _logs_ under
+When [`summary`](/doc/dvclive/api-reference/live/#parameters) is enabled (True
+by default), DVCLive generates a summary with the latest metrics:
+
+```dvc
+$ cat dvclive.json
+{
+  "step": 2,
+  "{metric_name}": 0.8907166719436646,
+}
+```
+
+> If you don't update the step number, the `step` entry won't be present in the
+> summary.
+
+### Linear plots
+
+In addition, for each `{metric_name}`, DVCLive produces a linear plot under
 `dvclive/{metric_name}.tsv`:
 
 ```dvc
@@ -77,19 +106,7 @@ timestamp	step	{metric_name}
 1614129198848	2	0.8907166719436646
 ```
 
-### Metrics Summary
-
-In addition, when [`summary`](/doc/dvclive/api-reference/live/#parameters) is
-enabled (True by default), DVCLive generates a metrics _summary_ with the latest
-metrics:
-
-```dvc
-$ cat dvclive.json
-{
-  "step": 2,
-  "{metric_name}": 0.8907166719436646
-}
-```
+> If you don't update the step number, the Metrics Logs won't be generated.
 
 ## What next?
 

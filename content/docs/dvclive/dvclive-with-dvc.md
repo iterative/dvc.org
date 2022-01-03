@@ -4,7 +4,7 @@ Even though DVCLive does not require DVC, they can integrate in several useful
 ways:
 
 - The [_outputs_](#outputs) DVCLive produces can be fed as
-  `dvc plots`/`dvc metrics`, making it easier to add metrics logging to DVC
+  `dvc metrics`/`dvc plots`, making it easier to add metrics logging to DVC
   <abbr>stages</abbr>. Those same outputs can be visualized in
   [_DVC Studio_](#dvc-studio)
 - You can monitor model performance in realtime with the
@@ -111,6 +111,8 @@ plot for metrics automatically updated during the model training!
 
 ![](/img/dvclive-html.gif)
 
+> If you don't update the step number, the HTML report won't be generated.
+
 ### Checkpoints
 
 When used alongside DVC, DVCLive can create _checkpoint_ signal files used by
@@ -121,3 +123,5 @@ This will save the metrics, plots, models, etc. associated to each
 
 You can learn more about how to use them in the
 [Checkpoints User Guide](/docs/user-guide/experiment-management/checkpoints).
+
+> If you don't update the step number, checkpoints won't be created.

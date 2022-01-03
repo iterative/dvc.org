@@ -1,10 +1,7 @@
 # Live.log()
 
-Generates [_metrics logs_](/doc/dvclive/get-started#metrics-logs) (usable by
-`dvc plots`) by saving the given `name`: `val` pair to a `.tsv` file.
-
 ```py
- def log(name: str, val: float, step: int = None):
+ def log(name: str, val: float):
 ```
 
 #### Usage:
@@ -19,10 +16,16 @@ live.log("loss", 0.9)
 
 ## Description
 
-The first call to `live.log(name, val)` will create a new file in
-`{path}/{name}.tsv` including the header and first row.
+If `summary` is True, `Live.log()` DVCLive will update the
+[summary](/doc/dvclive/get-started#summary) with the latest value logged.
 
-For example `live.log("loss", 0.9)` will create `{path}/loss.tsv`:
+💡 The summary `{path}.json` is usable by `dvc metrics`.
+
+### Step updates
+
+The first `step` update (with `Live.next_step()` or `Live.set_step()`) will
+create a new [linear plot](/doc/dvclive/get-started#linear-plots) in
+`{path}/{name}.tsv`:
 
 ```
 timestamp step  loss
@@ -32,23 +35,17 @@ timestamp step  loss
 Each subsequent call to `live.log(name, val)` will add a new row to
 `{path}/{name}.tsv`.
 
-The created file `{path}/{name}.tsv` is usable by `dvc plots`.
+💡 The linear plot `{path}/{name}.tsv` is usable by `dvc plots`.
 
-💡 If `name` contains slashes (e.g. `train/loss`), the required subdirectories
-will be created and the file will be saved inside the last one (e.g.
-`{path}/train/loss.tsv`).
-
-If `summary` is True, `Live.log()` DVCLive will update the
-[_metrics summary_](/doc/dvclive/get-started#metrics-summary) with the latest
-value logged.
-
-The updated summary `{path}.json` is usable by `dvc metrics`.
+If `name` contains slashes (e.g. `train/loss`), the required subdirectories will
+be created and the file will be saved inside the last one (e.g.
+`{path}/train/loss.tsv)`.
 
 ## Parameters
 
-- `name` - The _metrics logs_ will be saved in `{path}/{name}.tsv`.
+- `name` - Name of the metric being logged.
 
-- `val` - The value to be added in the `name` column of a new row.
+- `val` - The value to be logged.
 
 ## Exceptions
 

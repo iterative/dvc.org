@@ -1,7 +1,5 @@
 # Live.get_step()
 
-Returns the current `step` value.
-
 ```py
 def get_step() -> int:
 ```

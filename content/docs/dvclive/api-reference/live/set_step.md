@@ -1,7 +1,5 @@
 # dvclive.set_step()
 
-Signals that the current step has ended and sets `step` to the given value.
-
 ```py
 def set_step(step: int):
 ```
@@ -33,8 +31,8 @@ When `dvclive` is used alongside `DVC`, each `Live.set_step()` call will have
 additional effects.
 
 By default, on each `Live.set_step()` call, `DVC` will prepare an
-[HTML report](/doc/dvclive/dvclive-with-dvc#html-report) with all the _metrics
-logs_ logged in `path`.
+[HTML report](/doc/dvclive/dvclive-with-dvc#html-report) with all
+[linear plots](/doc/dvclive/get-started#linear-plots).
 
 In addition, when
 [checkpoints](/doc/user-guide/experiment-management/checkpoints) are enabled in
@@ -45,7 +43,7 @@ the <abbr>pipeline</abbr>, `DVC` will
 ## Example
 
 Given the [Usage](#usage) code snippet above, the
-[metrics logs](/doc/dvclive/get-started#metrics-logs) generated for `metric_1`
+[linear plot](/doc/dvclive/get-started#linear-plots) generated for `metric_1`
 would be:
 
 ```dvc
