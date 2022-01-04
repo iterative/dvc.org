@@ -105,7 +105,7 @@ const SidebarMenuItem: React.FC<ISidebarMenuItemProps> = ({
     isLeafItem && styles.sidebarLeafBullet
   )
 
-  const buttonIconJSX = isLeafItem ? (
+  const bulletIconJSX = isLeafItem ? (
     <span className={bulletIconClassName}></span>
   ) : (
     <button onClick={bulletIconClick} className={bulletIconClassName}></button>
@@ -134,7 +134,7 @@ const SidebarMenuItem: React.FC<ISidebarMenuItemProps> = ({
         className={className}
         onClick={currentLevelOnClick}
       >
-        {iconElement ? iconElement : buttonIconJSX}
+        {iconElement ? iconElement : bulletIconJSX}
         {label}
       </Link>
     )
