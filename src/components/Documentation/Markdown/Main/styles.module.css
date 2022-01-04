@@ -72,6 +72,7 @@
 
     a.token.args {
       color: var(--color-light-blue);
+      outline-color: var(--color-light-blue-hover);
     }
 
     :global(a.gatsby-resp-image-link)::after {
