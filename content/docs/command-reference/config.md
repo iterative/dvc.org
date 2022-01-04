@@ -151,9 +151,9 @@ within:
 
 ### remote
 
-All `remote` sections contain a `url` value, and can also specify `user`,
+All `remote` sections contain a `url` value and can also specify `user`,
 `port`, `keyfile`, `timeout`, `ask_password`, and other cloud-specific key/value
-pairs for each remote. See `dvc remote add` and `dvc remote modify` for more
+pairs. See `dvc remote add` and `dvc remote modify` for more
 information.
 
 ### cache
