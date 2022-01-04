@@ -103,8 +103,7 @@ within:
 - [`core`](#core) - main section with the general config options
 - [`remote`](#remote) - sections in the config file that describe particular
   remotes
-- [`cache`](#cache) - contains the options that affect the project's
-  <abbr>cache</abbr>.
+- [`cache`](#cache) - options that affect the project's <abbr>cache</abbr>
 - [`exp`](#exp) - options to change the default repo paths assumed by
   `dvc exp init`
 - [`plots`](#plots) - contains an option to set custom HTML templates.
