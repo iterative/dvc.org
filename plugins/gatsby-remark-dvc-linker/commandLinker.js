@@ -11,7 +11,6 @@ const COMMAND_ROOT = '/doc/command-reference/'
 module.exports = astNode => {
   const node = astNode[0]
   const parent = astNode[2]
-
   if (parent.type !== 'link' && DVC_REGEXP.test(node.value)) {
     const parts = node.value.split(/\s+/)
     const baseUrl = `${COMMAND_ROOT}${parts[1]}`
@@ -20,20 +19,15 @@ module.exports = astNode => {
     if (isCommandPageExists) {
       url = baseUrl
     }
-    if (parts.length > 2) {
-      for (const arg of parts.slice(2)) {
-        if (arg && COMMAND_REGEXP.test(arg)) {
-          if (getItemByPath(`${url}/${arg}`)) {
-            url = `${url}/${arg}`
-          }
-        } else if (arg && ARGS_REGEXP.test(arg)) {
-          const id = arg.match(ARGS_REGEXP)[0]
-          url = `${url}#${id}`
-          break
-        }
+    for (const arg of parts.slice(2)) {
+      if (arg && COMMAND_REGEXP.test(arg) && getItemByPath(`${url}/${arg}`)) {
+        url = `${url}/${arg}`
+      } else if (arg && ARGS_REGEXP.test(arg)) {
+        const id = arg.match(ARGS_REGEXP)[0]
+        url = `${url}#${id}`
+        break
       }
     }
-
     createLinkNode(url, astNode)
   }
 
