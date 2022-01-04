@@ -5,6 +5,7 @@ const { getItemByPath } = require('../../src/utils/shared/sidebar')
 
 const DVC_REGEXP = /dvc\s+[a-z][a-z-.]*/
 const COMMAND_REGEXP = /^[a-z][a-z-]*$/
+const ARGS_REGEXP = new RegExp(/\-{1,2}[a-zA-Z-]*/, 'ig')
 const COMMAND_ROOT = '/doc/command-reference/'
 
 module.exports = astNode => {
@@ -13,21 +14,24 @@ module.exports = astNode => {
 
   if (parent.type !== 'link' && DVC_REGEXP.test(node.value)) {
     const parts = node.value.split(/\s+/)
+    const baseUrl = `${COMMAND_ROOT}${parts[1]}`
     let url
-
-    const hasThirdSegment = parts[2] && COMMAND_REGEXP.test(parts[2])
     const isCommandPageExists = getItemByPath(`${COMMAND_ROOT}${parts[1]}`)
-    const isSubcommandPageExists =
-      isCommandPageExists &&
-      hasThirdSegment &&
-      getItemByPath(`${COMMAND_ROOT}${parts[1]}/${parts[2]}`)
-
-    if (isSubcommandPageExists) {
-      url = `${COMMAND_ROOT}${parts[1]}/${parts[2]}`
-    } else if (isCommandPageExists && hasThirdSegment) {
-      url = `${COMMAND_ROOT}${parts[1]}#${parts[2]}`
-    } else if (isCommandPageExists) {
-      url = `${COMMAND_ROOT}${parts[1]}`
+    if (isCommandPageExists) {
+      url = baseUrl
+    }
+    if (parts.length > 2) {
+      for (const arg of parts.slice(2)) {
+        if (arg && COMMAND_REGEXP.test(arg)) {
+          if (getItemByPath(`${url}/${arg}`)) {
+            url = `${url}/${arg}`
+          }
+        } else if (arg && ARGS_REGEXP.test(arg)) {
+          const id = arg.match(ARGS_REGEXP)[0]
+          url = `${url}#${id}`
+          break
+        }
+      }
     }
 
     createLinkNode(url, astNode)
