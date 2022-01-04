@@ -78,6 +78,14 @@
       content: unset;
     }
 
+    li .anchor svg {
+      visibility: hidden;
+    }
+
+    li:hover .anchor svg {
+      visibility: visible;
+    }
+
     .anchor {
       margin-left: -24px;
     }
