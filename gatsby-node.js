@@ -1,4 +1,5 @@
 require('dotenv').config()
+const path = require('path')
 
 const { setPageContext } = require('./src/gatsby/common')
 
@@ -39,4 +40,14 @@ exports.onCreateWebpackConfig = ({ stage, actions, getConfig }) => {
     }
     actions.replaceWebpackConfig(config)
   }
+  actions.setWebpackConfig({
+    resolve: {
+      alias: {
+        'gatsby-theme-iterative-docs': path.resolve(
+          'plugins',
+          'gatsby-theme-iterative-docs'
+        )
+      }
+    }
+  })
 }
