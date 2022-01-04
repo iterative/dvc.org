@@ -15,6 +15,23 @@ const encodeChars = (rawText: string) => {
   return rawText.replaceAll('<', '&lt;')
 }
 const pipe = (...args: any[]) => args.reduce((acc, el) => el(acc))
+const linkifyArgs = (args: string) => {
+  if (args.includes('|')) {
+    const argsArr = args.split('|')
+    const argsWrappedArr = argsArr.map(linkifyArg)
+    return argsWrappedArr.join('|')
+  }
+  return linkifyArg(args)
+}
+
+const linkifyArg = (arg: string) => {
+  const dashArgs = arg.match(argsRegex)
+  if (!dashArgs) return arg
+  if (dashArgs.length > 1) {
+    return linkify(arg)
+  }
+  return `<a class="token args" href='#${dashArgs[0]}'>${arg}</a>`
+}
 const linkify = (str: string) => {
   return str.replace(argsRegex, linker)
 }
@@ -26,11 +43,12 @@ const wrapUsage = (text: string) =>
   text.replace(usageRegex, `<span class="token usage">$&</span>`)
 const wrapDvc = (text: string) =>
   text.replace(dvcRegex, `<span class="token dvc">$&</span>`)
-const linkifyArgs = (text: string) => text.replace(squareArgsRegex, linkify)
+const linkifyArgsSquared = (text: string) =>
+  text.replace(squareArgsRegex, linkifyArgs)
 
 export const wrapWithTags = (text: string) => {
   text = encodeChars(text)
-  return pipe(text, wrapUsage, wrapDvc, linkifyArgs)
+  return pipe(text, wrapUsage, wrapDvc, linkifyArgsSquared)
 }
 
 const formatText = (text: string) => {
