@@ -203,7 +203,7 @@ want your training code to leverage GPUs, the script will look a bit different.
 
 There are several ways you can leverage GPU devices on a remote machine. You can install all 
 the required drivers and dependencies "manually" via a script, you can use an existing Docker image 
-or build your own, or, in the case of AWS, you can take advantage of an existing pre-configured Deep Learning AMI. 
+or build your own, or, in the case of AWS, you can take advantage of an [existing pre-configured Deep Learning AMI](https://docs.aws.amazon.com/dlami/latest/devguide/options.html). 
 In this tutorial, we'll use an AMI, as it is the quickest way to start using GPUs on an AWS EC2 machine.
 
 ```hcl
@@ -228,19 +228,6 @@ To use a Deep Learning AMI, you need to configure it via the `image` argument th
 the following structure: `{user}@{owner}:{architecture}:{name}`.
 You can learn more about AMIs in the official 
 [AWS documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html).
-
----
-**NOTE**
-
-One way to find a suitable AMI, is by searching in AWS Console: 
-![AMI Catalog](/uploads/images/2022-01-15/AMI_catalog.png)
-
-Alternatively, you can use search for AMIs using [`aws ec2 describe-images` CLI command](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/usingsharedamis-finding.html#usingsharedamis-finding-cli) with some filters, 
-e.g.: 
-```
-aws ec2 describe-images --image-ids=ami-0476bba883df7cca6 --region=us-east-2
-```
----
 
 The Deep Learning image that you choose may require larger disk size than the provided default,
 so you may need to increase it. The image I picked (see screenshot above) 
