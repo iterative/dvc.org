@@ -87,6 +87,10 @@
       visibility: visible;
     }
 
+    li .anchor:focus svg {
+      visibility: visible;
+    }
+
     .anchor {
       margin-left: -24px;
     }
