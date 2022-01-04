@@ -8,7 +8,10 @@ const usageRegex = new RegExp(
   `(^|\n)\s*(usage|positional arguments|optional arguments)`,
   'ig'
 )
-const squareArgsRegex = new RegExp(/(?<=\[).+?(?=\])/, 'ig')
+const squareArgsRegex = new RegExp(
+  /(?<=\[)(?:[^\]\[]+|\[(?:[^\]\[]+|\[[^\]\[]*\])*\])*(?=\])/,
+  'ig'
+) // regex that matches a square bracketed argument that allows two levels of nested square brackets
 const argsRegex = new RegExp(/\-{1,2}[a-zA-Z-]*/, 'ig')
 
 const encodeChars = (rawText: string) => {
