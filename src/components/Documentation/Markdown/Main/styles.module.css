@@ -214,6 +214,24 @@
         background-color: #d7feff;
       }
     }
+
+    pre[class*="language-dvctablehorizontals"] {
+      code {
+        display: inline-block;
+        line-height: 20px;
+      }
+
+      .token.rows {
+        background-image: linear-gradient(
+          transparent 50%,
+          rgb(256 256 256 / 10%) 50%
+        );
+        background-size: 100% 40px;
+        display: block;
+        background-origin: content-box;
+        background-attachment: local;
+      }
+    }
   }
 
   details p {
