@@ -104,7 +104,7 @@
 
   &:focus {
     outline-color: var(--color-gray-light);
-    outline-offset: 1px;
+    outline-offset: 0;
   }
 
   &:hover {
