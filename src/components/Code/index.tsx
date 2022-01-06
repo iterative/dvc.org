@@ -1,5 +1,4 @@
 import React from 'react'
-import cn from 'classnames'
 
 import dvc from '../../../config/prismjs/dvc-commands'
 
@@ -59,7 +58,11 @@ const formatText = (text: string) => {
   return wrapped
 }
 
-const Code: React.FC<{ className: string }> = ({ className, children }) => {
+const Code: React.FC<{ className: string }> = ({
+  className,
+  children,
+  ...restProps
+}) => {
   if (className === 'language-usage') {
     const codeText = Array.isArray(children)
       ? children.join('')
@@ -67,12 +70,17 @@ const Code: React.FC<{ className: string }> = ({ className, children }) => {
     const ReactText = formatText(codeText)
     return (
       <code
-        className={cn(className)}
+        {...restProps}
+        className={className}
         dangerouslySetInnerHTML={{ __html: ReactText }}
       ></code>
     )
   }
-  return <code className={cn(className)}>{children}</code>
+  return (
+    <code className={className} {...restProps}>
+      {children}
+    </code>
+  )
 }
 
 export default Code
