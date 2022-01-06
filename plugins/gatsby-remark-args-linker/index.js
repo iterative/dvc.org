@@ -1,9 +1,10 @@
 const visit = require('unist-util-visit')
+const _ = require('lodash')
 
 const argsRegex = new RegExp(/\-{1,2}[a-zA-Z-]*/, 'ig')
 
 function patch(context, key, value) {
-  if (!context[key]) {
+  if (!_.has(context, key)) {
     context[key] = value
   }
 
