@@ -65,11 +65,36 @@ as an intermediate output. It doesn't have to be saved in Git or DVC becasue
 it's easily reproduced and the DVC internals should be able to take care of
 detecting that the package didn't change.
 
-### []()
+### [Does DVC track dependencies which are in the `dvc.yaml` pipeline?](https://discord.com/channels/485586884165107732/563406153334128681/920659549835370497)
 
-### []()
+Thanks for another great question @rie!
 
-### []()
+DVC doesn't track the pipeline dependencies, only the outputs. If you want DVC
+to track a pure data dependency, that's not an output of a different stage, you
+need to track it with `dvc add ...`
+
+### [What is the difference between Kubeflow pipelines and DVC pipelines?](https://discord.com/channels/485586884165107732/563406153334128681/922728960478035978)
+
+This is a fantastic question! Thanks for asking @ramakrishnamamidi!
+
+A major difference is that DVC focuses primarily on ML _development_ and adding
+lightweight functionality on top of existing projects, which might be reusable
+in deployment in some cases.
+
+Kubeflow focuses on _deployment_ and building on top of Kuberenetes, which could
+be used during development but requires more up-front effort.
+
+### [Could DVC be a good alternative to LFS for game development?](https://discord.com/channels/485586884165107732/485586884165107734/928336349487067196)
+
+Thanks for such an interesting question @CB!
+
+Yes! We have community members that use DVC to handle their large files in game
+development.
+
+There are several other use cases we've seen for DVC outside of machine learning
+and data science. Some users have used DVC to track build artifacts for
+deployment systems and tracking performance data alongside other design
+iterations and simulation tools.
 
 ### []()
 
