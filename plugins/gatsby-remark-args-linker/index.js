@@ -46,7 +46,7 @@ module.exports = (
         const firstArgNode = paragraphNode.children[0]
         const value = firstArgNode.value
         const id = value.match(argsRegex)[0]
-        addIdAttrToNode(listItemNode, id)
+        addIdAttrToNode(firstArgNode, id)
 
         const data = patch(listItemNode, `data`, {})
         patch(data, `htmlAttributes`, {})
@@ -82,7 +82,7 @@ module.exports = (
           const secondArgNode = paragraphNode.children[2]
           const value = secondArgNode.value
           const id = value.match(argsRegex)[0]
-          addIdAttrToNode(paragraphNode, id)
+          addIdAttrToNode(secondArgNode, id)
         }
       }
     }
