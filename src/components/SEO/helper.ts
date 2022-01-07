@@ -70,7 +70,7 @@ export const buildMetadata = (
     })
   }
   if (image) {
-    const imageUrl = siteUrl + getSrc(image)
+    const imageUrl = siteUrl + (getSrc(image) || image)
     const imageData = getImage(image)
     prebuildMeta.push(...getMetaImage(imageUrl, imageAlt, imageData))
   }

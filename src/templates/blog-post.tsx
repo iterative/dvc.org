@@ -55,7 +55,7 @@ const BlogPostPage: React.FC<IBlogPostPageProps> = ({ data }) => {
       <SEO
         title={title}
         description={description}
-        image={picture}
+        image={`/blog/${picture.fields.sourcePath}`}
         meta={[
           {
             name: 'twitter:card',
@@ -111,6 +111,9 @@ export const pageQuery = graphql`
         }
       }
       picture {
+        fields {
+          sourcePath
+        }
         gatsbyImageData(width: 850, quality: 90)
       }
       pictureComment
