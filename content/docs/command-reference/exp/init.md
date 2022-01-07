@@ -114,7 +114,7 @@ $ dvc exp init './another_script.sh $MYENVVAR'
   depends on can be found (if any). Overrides other configuration and default
   value (`data/`).
 
-- `--model` - set the path to the file or directory where the model(s) produced
+- `--models` - set the path to the file or directory where the model(s) produced
   by your experiment can be found (if any). Overrides other configuration and
   default value (`models/`).
 
