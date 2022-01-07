@@ -23,7 +23,7 @@ const keywords = [
   'machine learning',
   'models management'
 ]
-
+console.log('HEROKU_APP_NAME: ', process.env.HEROKU_APP_NAME)
 const plugins = [
   {
     resolve: `gatsby-plugin-typescript`,
