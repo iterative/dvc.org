@@ -14,7 +14,6 @@ import Collapsible from 'react-collapsible'
 
 import Main from './Main'
 import Link from '../../Link'
-import Code from '../../Code'
 import Tooltip from './Tooltip'
 
 import * as styles from './styles.module.css'
@@ -205,8 +204,7 @@ const renderAst = new (rehypeReact as any)({
     cards: Cards,
     details: Details,
     toggle: Toggle,
-    tab: Tab,
-    code: Code
+    tab: Tab
   }
 }).Compiler
 
