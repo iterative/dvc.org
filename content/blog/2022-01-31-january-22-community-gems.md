@@ -2,19 +2,19 @@
 title: January '22 Community Gems
 date: 2022-01-31
 description: >
-  A roundup of technical Q&A's from the DVC community. This month: comparing
-  experiments, working with data, working with pipelines, and more.
+  A roundup of technical Q&A's from the DVC and CML communities. This month: DVC
+  Studio data, DVC for non-ML projects, getting started with CML, and more.
 descriptionLong: >
-  A roundup of technical Q&A's from the DVC community. This month: comparing
-  experiments, working with data, working with pipelines, and more.
-picture: 2021-12-21/dec-community-gems.png
+  A roundup of technical Q&A's from the DVC and CML communities. This month: DVC
+  Studio data, DVC for non-ML projects, getting started with CML, and more.
+picture: 2022-01-31/jan-community-gems.png
 author: milecia_mcgregor
-commentsUrl: https://discuss.dvc.org/t/january-22-community-gems/1001
+commentsUrl: https://discuss.dvc.org/t/january-22-community-gems/1020
 tags:
-  - Data Versioning
+  - DVC Studio
+  - CML
   - DVC Remotes
-  - DVC API
-  - DVC Stages
+  - Pipelines
   - Community
 ---
 
@@ -96,15 +96,91 @@ and data science. Some users have used DVC to track build artifacts for
 deployment systems and tracking performance data alongside other design
 iterations and simulation tools.
 
-### []()
+### [Does DVC run on JSON/YAML configuration files for all things?](https://discord.com/channels/485586884165107732/563406153334128681/928779586622332938)
 
-### []()
+This is a great question about large projects with a lot of dependencies from
+@SolemnSimulacrum!
 
-### []()
+All of the dependencies you list in `dvc run` are in fact configured in the
+`dvc.yaml` file. `dvc run` is a convenience for adding a pipeline stage to this
+file and then doing `dvc repro` on that stage. It's completely acceptable and
+even encouraged to directly edit `dvc.yaml` if that's easier.
+
+For example, if you are currently executing a command like this:
+
+```dvc
+dvc run -f -n prune \
+        -d ./DepFiles_0/ \
+        -d ./DepFiles_1/ \
+        -d ./DepFiles_2/ \
+        -d ./src/.py \
+        -d ./packages/.py \
+        -d ./scripts/.py \
+        -d ./data/.npy \
+```
+
+You could add those directly to the `dvc.yaml` like this:
+
+```yaml
+stages:
+  train:
+    cmd: python recommender_sys.py
+    deps:
+      - ./DepFiles_0/
+      - ./DepFiles_1/
+      - ./DepFiles_2/
+      - ./src/.py
+      - ./packages/.py
+      - ./scripts/.py
+      - ./data/.npy
+    params:
+      - lr
+      - momentum
+      - algorithm
+      - num_classes
+      - batch_size
+      - num_epochs
+    outs:
+      - model.pt
+    metrics:
+      - results.json:
+          cache: false
+    plots:
+      - predictions.json:
+          cache: false
+```
+
+### [I'm setting up MLOps at my company from scratch and we use GitLab and Cloudera DS workbench. What are the best resources to get started with CML?](https://discord.com/channels/485586884165107732/728693131557732403/923785806848614461)
+
+This is a great question from @dvc!
+
+We recommend you start with the CML docs website: https://cml.dev/
+
+You can find some tutorials on our blog: https://dvc.org/blog
+
+Or you can check out the videos on our YouTube channel:
+https://www.youtube.com/channel/UC37rp97Go-xIX3aNFVHhXfQ
+
+And of course, always feel welcome to join the Discord community and get answers
+directly from the team: https://discord.com/invite/dvwXA2N
+
+### [I understand that this is a discoverability layer over my DVC repo in GitHub. Will any of my data be stored on your servers?](https://discord.com/channels/485586884165107732/841856466897469441/923714473603256420)
+
+This is a great question about DVC Studio from @johnnyaug!
+
+DVC Studio only stores metrics, plots, and metadata about your pipelines in the
+databases to be able to serve this as a table. We don't read actual data and we
+don't store code.
+
+An important thing to note is that if you have plots from `dvc plots show` that
+are images, JSON files, or vega specs, those could be saved on out end as well
+to serve them to UI.
+
+We're working on documentation for this as well!
 
 ---
 
-https://media.giphy.com/media/h5Ct5uxV5RfwY/giphy.gif
+https://media.giphy.com/media/zCME2Cd20Czvy/giphy.gif
 
 At our February Office Hours Meetup we will be ...!
 [RSVP for the Meetup here](https://www.meetup.com/DVC-Community-Virtual-Meetups/events/282663146/)
