@@ -90,16 +90,16 @@ const WhatsNewModal: React.FC = () => {
             <Link className={styles.title} href={latestPost.slug}>
               <h2>{latestPost.title}</h2>
             </Link>
-            <Link href={latestPost.slug}>
-              {latestPost.picture && (
+            {latestPost.picture && (
+              <Link href={latestPost.slug}>
                 <GatsbyImage
                   className={styles.image}
                   alt=""
                   objectFit="contain"
                   image={latestPost.picture.gatsbyImageData}
                 />
-              )}
-            </Link>
+              </Link>
+            )}
             <p className={styles.text}>
               {latestPost.description}{' '}
               <Link href={latestPost.slug}>Read more.</Link>
