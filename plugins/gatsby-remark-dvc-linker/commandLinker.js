@@ -13,22 +13,26 @@ module.exports = astNode => {
   const parent = astNode[2]
   if (parent.type !== 'link' && DVC_REGEXP.test(node.value)) {
     const parts = node.value.split(/\s+/)
-    const baseUrl = `${COMMAND_ROOT}${parts[1]}`
+    const index = parts.findIndex(part => String(part).trim() === 'dvc')
+    const commandIndex = index + 1
+    const argsStartIndex = index + 2
+    const command = parts[commandIndex]
+    const baseUrl = `${COMMAND_ROOT}${command}`
     let url
-    const isCommandPageExists = getItemByPath(`${COMMAND_ROOT}${parts[1]}`)
+    const isCommandPageExists = getItemByPath(baseUrl)
     if (isCommandPageExists) {
       url = baseUrl
-    }
-    for (const arg of parts.slice(2)) {
-      if (arg && COMMAND_REGEXP.test(arg) && getItemByPath(`${url}/${arg}`)) {
-        url = `${url}/${arg}`
-      } else if (arg && ARGS_REGEXP.test(arg)) {
-        const id = arg.match(ARGS_REGEXP)[0]
-        url = `${url}#${id}`
-        break
+      for (const arg of parts.slice(argsStartIndex)) {
+        if (arg && COMMAND_REGEXP.test(arg) && getItemByPath(`${url}/${arg}`)) {
+          url = `${url}/${arg}`
+        } else if (arg && ARGS_REGEXP.test(arg)) {
+          const id = arg.match(ARGS_REGEXP)[0]
+          url = `${url}#${id}`
+          break
+        }
       }
+      createLinkNode(url, astNode)
     }
-    createLinkNode(url, astNode)
   }
 
   return astNode
