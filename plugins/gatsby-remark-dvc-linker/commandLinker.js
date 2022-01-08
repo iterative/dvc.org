@@ -14,15 +14,13 @@ module.exports = astNode => {
   if (parent.type !== 'link' && DVC_REGEXP.test(node.value)) {
     const parts = node.value.split(/\s+/)
     const index = parts.findIndex(part => String(part).trim() === 'dvc')
-    const commandIndex = index + 1
-    const argsStartIndex = index + 2
-    const command = parts[commandIndex]
+    const command = parts[index + 1]
     const baseUrl = `${COMMAND_ROOT}${command}`
     let url
     const isCommandPageExists = getItemByPath(baseUrl)
     if (isCommandPageExists) {
       url = baseUrl
-      for (const arg of parts.slice(argsStartIndex)) {
+      for (const arg of parts.slice(index + 2)) {
         if (arg && COMMAND_REGEXP.test(arg) && getItemByPath(`${url}/${arg}`)) {
           url = `${url}/${arg}`
         } else if (arg && ARGS_REGEXP.test(arg)) {
@@ -34,6 +32,5 @@ module.exports = astNode => {
       createLinkNode(url, astNode)
     }
   }
-
   return astNode
 }
