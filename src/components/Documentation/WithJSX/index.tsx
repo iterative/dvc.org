@@ -4,8 +4,7 @@ import MarkdownMain from '../Markdown/Main'
 import RightPanel from '../RightPanel'
 
 import { IHeading, getGithubLink } from '../'
-import { getItemByPath } from '../../../../plugins/gatsby-theme-iterative-docs/sidebar-helpers'
-import sidebar from '../../../../plugins/gatsby-theme-iterative-docs/src/sidebar'
+import { getItemByPath } from '../../../utils/shared/sidebar'
 
 interface IWithJSXProps {
   path: string
@@ -13,7 +12,7 @@ interface IWithJSXProps {
 }
 
 const WithJSX: React.FC<IWithJSXProps> = ({ children, path, headings }) => {
-  const { source, prev, next, tutorials } = getItemByPath(sidebar, path)
+  const { source, prev, next, tutorials } = getItemByPath(path)
   const githubLink = getGithubLink(source)
 
   return (

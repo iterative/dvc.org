@@ -14,12 +14,10 @@ import { ReactComponent as CMLIcon } from './cml_bw_logo.svg'
 import { ReactComponent as StudioIcon } from './studio_gray_icon.svg'
 
 import {
+  structure,
   getParentsListFromPath,
   getPathWithSource
-} from '../../../../../plugins/gatsby-theme-iterative-docs/sidebar-helpers'
-import sidebar, {
-  INormalizedSidebarItem
-} from '../../../../../plugins/gatsby-theme-iterative-docs/src/sidebar'
+} from '../../../../utils/shared/sidebar'
 
 import 'perfect-scrollbar/css/perfect-scrollbar.css'
 import * as styles from './styles.module.css'
@@ -33,15 +31,26 @@ const ICONS: { [key: string]: React.FC<{ className?: string }> } = {
 }
 
 interface ISidebarMenuItemProps {
-  item: INormalizedSidebarItem
+  children?: Array<{ label: string; path: string; source: boolean | string }>
+  label: string
+  path: string
+  source: boolean | string
   onClick: (isLeafItemClicked: boolean) => void
   activePaths?: Array<string>
+  type?: string
+  style?: string
+  icon?: string
 }
 
 const SidebarMenuItem: React.FC<ISidebarMenuItemProps> = ({
-  item: { children, label, path, style, icon, type },
+  children,
+  label,
+  path,
   activePaths,
-  onClick
+  onClick,
+  style,
+  icon,
+  type
 }) => {
   const [isExpanded, setIsExpanded] = useState(
     activePaths && includes(activePaths, path)
@@ -96,6 +105,12 @@ const SidebarMenuItem: React.FC<ISidebarMenuItemProps> = ({
     isLeafItem && styles.sidebarLeafBullet
   )
 
+  const bulletIconJSX = isLeafItem ? (
+    <span className={bulletIconClassName}></span>
+  ) : (
+    <button onClick={bulletIconClick} className={bulletIconClassName}></button>
+  )
+
   const parentElement =
     type === 'external' ? (
       <Link
@@ -114,22 +129,12 @@ const SidebarMenuItem: React.FC<ISidebarMenuItemProps> = ({
       </Link>
     ) : (
       <Link
-        href={getPathWithSource(sidebar, path)}
+        href={getPathWithSource(path)}
         id={path}
         className={className}
         onClick={currentLevelOnClick}
       >
-        {iconElement ? (
-          iconElement
-        ) : (
-          <span
-            className={bulletIconClassName}
-            onClick={bulletIconClick}
-            onKeyDown={bulletIconClick}
-            role="button"
-            tabIndex={0}
-          ></span>
-        )}
+        {iconElement ? iconElement : bulletIconJSX}
         {label}
       </Link>
     )
@@ -145,7 +150,7 @@ const SidebarMenuItem: React.FC<ISidebarMenuItemProps> = ({
                 key={item.path}
                 activePaths={activePaths}
                 onClick={onClick}
-                item={item}
+                {...item}
               />
             ))}
           </Collapse>
@@ -217,14 +222,14 @@ const SidebarMenu: React.FC<ISidebarMenuProps> = ({ currentPath, onClick }) => {
     >
       <div className={styles.sections}>
         <div className={styles.sectionLinks}>
-          {sidebar.map(item => (
+          {structure.map(item => (
             <SidebarMenuItem
               key={item.path}
               activePaths={
                 includes(activePaths, item.path) ? activePaths : undefined
               }
               onClick={onClick}
-              item={item}
+              {...item}
             />
           ))}
         </div>

@@ -5,8 +5,7 @@ import LayoutWidthContainer from '../LayoutWidthContainer'
 import Link from '../Link'
 import SocialIcon, { ISocialIcon } from '../SocialIcon'
 import ShowOnly from '../ShowOnly'
-import { getFirstPage } from '../../../plugins/gatsby-theme-iterative-docs/sidebar-helpers'
-import sidebar from '../../../plugins/gatsby-theme-iterative-docs/src/sidebar'
+import { getFirstPage } from '../../utils/shared/sidebar'
 
 import { ReactComponent as LogoSVG } from '../../../static/img/dvc_icon-color--square_vector.svg'
 import { ReactComponent as GithubSVG } from '../SocialIcon/github.svg'
@@ -19,7 +18,7 @@ import { ReactComponent as MlemSVG } from '../../../static/img/mlem-icon.svg'
 
 import * as styles from './styles.module.css'
 
-const docsPage = getFirstPage(sidebar)
+const docsPage = getFirstPage()
 
 interface IFooterLinkData {
   href: string

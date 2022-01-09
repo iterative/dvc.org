@@ -1,8 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import { Node } from 'unist'
-import { getItemByPath } from '../../plugins/gatsby-theme-iterative-docs/sidebar-helpers'
-import sidebar from '../../plugins/gatsby-theme-iterative-docs/src/sidebar'
+import { getItemByPath } from '../utils/shared/sidebar'
 
 import SEO from '../components/SEO'
 
@@ -36,7 +35,7 @@ const DocPage: React.FC<IDocPageProps> = ({
     }
   } = data
 
-  const { label } = getItemByPath(sidebar, slug)
+  const { label } = getItemByPath(slug)
 
   return (
     <>

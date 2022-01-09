@@ -1,10 +1,7 @@
 /* eslint-env node */
 
 const { navigate } = require('@reach/router')
-const sidebar = require('../../gatsby-theme-iterative-docs/sidebar')
-const {
-  findChildWithSource
-} = require('../../../plugins/gatsby-theme-iterative-docs/sidebar-helpers')
+const { structure, findChildWithSource } = require('./sidebar')
 
 const buildSidebarRedirects = (list, redirects = []) => {
   list.forEach(item => {
@@ -42,7 +39,7 @@ const getRedirects = (() => {
     if (!allRedirects) {
       allRedirects = [
         ...require('../../../redirects-list.json'),
-        ...buildSidebarRedirects(sidebar)
+        ...buildSidebarRedirects(structure)
       ].map(processRedirectString)
     }
 

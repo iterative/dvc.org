@@ -4,8 +4,7 @@ import { Node } from 'unist'
 import Markdown from './Markdown'
 import RightPanel from './RightPanel'
 
-import { getItemByPath } from '../../../plugins/gatsby-theme-iterative-docs/sidebar-helpers'
-import sidebar from '../../../plugins/gatsby-theme-iterative-docs/src/sidebar'
+import { getItemByPath } from '../../utils/shared/sidebar'
 
 export interface IHeading {
   slug: string
@@ -26,7 +25,7 @@ const Documentation: React.FC<IDocumentationProps> = ({
   path,
   headings
 }) => {
-  const { source, prev, next, tutorials } = getItemByPath(sidebar, path)
+  const { source, prev, next, tutorials } = getItemByPath(path)
   const githubLink = getGithubLink(source)
 
   return (

@@ -1,6 +1,5 @@
 import React from 'react'
-import { getItemByPath } from '../../plugins/gatsby-theme-iterative-docs/sidebar-helpers'
-import sidebar from '../../plugins/gatsby-theme-iterative-docs/src/sidebar'
+import { getItemByPath } from '../utils/shared/sidebar'
 
 import SEO from '../components/SEO'
 
@@ -20,7 +19,7 @@ const JSXDocPage: React.FC<IJSXDocPageProps> = ({
   slug,
   headings
 }) => {
-  const { label } = getItemByPath(sidebar, slug)
+  const { label } = getItemByPath(slug)
   return (
     <>
       <SEO title={title || label} description={description} />
