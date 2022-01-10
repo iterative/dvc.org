@@ -11,6 +11,7 @@ const apiMiddleware = require('./src/server/middleware/api')
 const redirectsMiddleware = require('./src/server/middleware/redirects')
 const makeFeedHtml = require('./plugins/utils/makeFeedHtml')
 const { BLOG } = require('./src/consts')
+const { linkIcon } = require('./static/icons')
 
 const title = 'Data Version Control · DVC'
 const description =
@@ -66,7 +67,12 @@ const plugins = [
       plugins: [
         'gatsby-remark-embedder',
         'gatsby-remark-dvc-linker',
-        'gatsby-remark-args-linker',
+        {
+          resolve: 'gatsby-remark-args-linker',
+          options: {
+            icon: linkIcon
+          }
+        },
         {
           resolve: 'gatsby-remark-prismjs',
           options: {
@@ -98,7 +104,8 @@ const plugins = [
           resolve: 'gatsby-remark-autolink-headers',
           options: {
             enableCustomId: true,
-            isIconAfterHeader: true
+            isIconAfterHeader: true,
+            icon: linkIcon
           }
         },
         {
