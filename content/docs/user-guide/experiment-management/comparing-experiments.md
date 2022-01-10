@@ -194,15 +194,24 @@ $ dvc exp show --sort-by auc --sort-order desc
 
 You can also generate an interactive
 [parallel coordinates plot](https://en.wikipedia.org/wiki/Parallel_coordinates)
-with `dvc exp show --pcp`. This flag can be combined with other options of the
-command. For example, use `--sort-by` to sort the experiments and determine the
-color of the lines that represent them.
+with `dvc exp show --pcp`.
+
+This plot is useful to explore the relationships between the metrics and params
+used in experiments. You can reorder the columns to make some patterns more
+easily visible.
+
+The `--pcp` flag can be combined with other options of the command. For example,
+use `--sort-by` to sort the experiments and determine the color of the lines
+that represent them.
 
 ```dvc
 $ dvc exp show --pcp --all-branches --sort-by roc_auc
 ```
 
 ![](/img/pcp_interaction.gif) _Parallel Coordinates Plot_
+
+> You can see more
+> [examples in the command reference](/doc/command-reference/exp/show#example-parallel-coordinates-plot-pcp).
 
 ## Get experiments table in CSV
 
