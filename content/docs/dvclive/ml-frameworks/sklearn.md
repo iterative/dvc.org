@@ -12,10 +12,10 @@ evaluation, and many other utilities.
 
 ## Usage
 
-To start using DVCLive you just need to add few modifications to your training
+To start using DVCLive, add a few modifications to your training
 code in **any** Scikit-learn project.
 
-To ilustrate with some code, given the following example:
+To illustrate with some code, let's consider the following example:
 
 ```python
 from sklearn.datasets import make_classification
@@ -33,11 +33,9 @@ y_score = clf.predict_proba(X_test)[:, 1]
 
 DVCLive provides a set of
 [Scikit-learn utilities](/doc/dvclive/api-reference/sklearn) that allow you to
-generate `dvc plots` from the labels and predictions.
+generate `dvc plots` from your labels and predictions.
 
 ```python
-...
-
 from dvclive.sklearn import (
     log_confusion_matrix,
     log_precision_recall,
@@ -47,13 +45,10 @@ from dvclive.sklearn import (
 roc = log_roc(y_test, y_score, "roc.json")
 prc = log_precision_recall(y_test, y_score, "prc.json")
 cm = log_confusion_matrix(y_test, y_pred, "cm.json")
-
 ```
 
-Joining the above snippets into a single script named `train.py`, we can
-integrate with DVC without further modifications to the script.
-
-We just need to define a `dvc.yaml` stage as follows:
+We can integrate with DVC by joining the above snippets into a single script
+(e.g. named `train.py`). We also need to write a `dvc.yaml` file as follows:
 
 ```yaml
 stages:
