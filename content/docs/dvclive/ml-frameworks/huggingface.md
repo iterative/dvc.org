@@ -1,21 +1,16 @@
 # Hugging Face
 
-DVCLive allows you to easily add experiment tracking capabilities to your
-Hugging Face projects.
-
-## About Hugging Face
-
-[Hugging Face](https://huggingface.co/) is an open-source ecosystem of natural
-language processing (NLP) technologies.
+DVCLive allows you to add experiment tracking capabilities to your
+[Hugging Face](https://huggingface.co/) projects.
 
 ## Usage
 
-To start using DVCLive you just need to add a few lines to your training code in
-**any** Hugging Face project.
+To start using DVCLive, add a few lines to your training code in **any**
+[Hugging Face](https://huggingface.co/) project.
 
-You just need to add the
+Include the
 [`DvcLiveCallback`](https://github.com/iterative/dvclive/blob/master/dvclive/huggingface.py)
-to the callbacks list passed to your
+int the callbacks list passed to your
 [`Trainer`](https://huggingface.co/transformers/main_classes/trainer.html):
 
 ```git
