@@ -12,8 +12,8 @@ evaluation, and many other utilities.
 
 ## Usage
 
-To start using DVCLive, add a few modifications to your training
-code in **any** Scikit-learn project.
+To start using DVCLive, add a few modifications to your training code in **any**
+Scikit-learn project.
 
 To illustrate with some code, let's consider the following example:
 
