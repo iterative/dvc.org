@@ -5,7 +5,7 @@ description: >
   Sharing experiments with teammates can help you build models more efficiently.
 descriptionLong: >
   You can use DVC remotes to share experiments and their data across machines.
-picture: 2022-01-18/stale-models.png
+picture: 2022-01-20/stale-models.png
 pictureComment: Preventing Stale Models in Production
 author: milecia_mcgregor
 commentsUrl: https://discuss.dvc.org/t/stale-models/1002
@@ -32,6 +32,12 @@ production.
 ## Forking the project
 
 We'll start by forking [this repo for the project]().
+
+## Getting the data
+
+The dataset we'll be working with can be found in
+[this data registry](https://github.com/iterative/dataset-registry/tree/master/blog)
+We'll be working with images of cats and dogs.
 
 ## Look at data drift
 
