@@ -84,4 +84,4 @@ And we will be able to use `dvc plots` commands:
 $ dvc plots show
 ```
 
-![](/img/sklearn-plots.png)
+![](/img/dvclive-sklearn.png)
