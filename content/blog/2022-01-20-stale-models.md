@@ -31,7 +31,8 @@ production.
 
 ## Forking the project
 
-We'll start by forking [this repo for the project]().
+We'll start by forking
+[this repo for the project](https://github.com/iterative/stale-model-example).
 
 ## Getting the data
 
@@ -39,7 +40,17 @@ The dataset we'll be working with can be found in
 [this data registry](https://github.com/iterative/dataset-registry/tree/master/blog)
 We'll be working with images of cats and dogs.
 
+To get this data on our local machine, run the following command:
+
+```dvc
+$ dvc get https://github.com/iterative/dataset-registry blog/cats-dogs
+```
+
 ## Look at data drift
+
+We'll be using [evidently.ai](https://docs.evidentlyai.com/) to monitor for data
+drift. Another option for tracking data drift is
+[Aporia](https://docs.aporia.com/).
 
 ## Run experiment with new data
 
