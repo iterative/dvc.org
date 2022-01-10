@@ -1,0 +1,97 @@
+:root {
+  --color-black: #24292e;
+  --color-gray-light: #b0b8c5;
+  --color-gray: #838d93;
+  --color-gray-dark: #5f6c72;
+  --color-gray-opaque: rgb(131 141 147 / 50%);
+  --color-gray-hover: #40364d;
+  --color-light-gray: #d9e2e8;
+  --color-azure: #13adc7;
+  --color-azure-hover: #13a3bd;
+  --color-blue: #0366d6;
+  --color-lighter-blue: #dde7ee;
+  --color-light-blue: #eef4f8;
+  --color-light-blue-hover: #e4eaee;
+  --color-purple: #945dd6;
+  --color-purple-hover: #745cb7;
+  --color-orange: #e37046;
+  --color-orange-bright: #f46837;
+  --font-brandon: "BrandonGrotesque", "Tahoma", "Arial", sans-serif;
+  --font-mono: "SFMono-Regular", "Consolas", "Liberation Mono", "Menlo",
+    "Courier", monospace;
+  --layout-width: 1005px;
+  --layout-width-wide: 1200px;
+  --layout-header-height: 72px;
+  --layout-alert-height: 35px;
+
+  @media (--md-scr) {
+    --layout-header-height: 64px;
+  }
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: var(--font-brandon);
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--color-black);
+}
+
+/* Focus state styles for interactive elements */
+
+button:focus,
+input:focus,
+select:focus,
+textarea:focus,
+a:focus {
+  outline: 2px dotted var(--color-gray-hover);
+  outline-offset: 5px;
+}
+
+*::-moz-focus-inner {
+  border: 0;
+}
+
+body:not(.user-is-tabbing) button:focus,
+body:not(.user-is-tabbing) input:focus,
+body:not(.user-is-tabbing) select:focus,
+body:not(.user-is-tabbing) textarea:focus,
+body:not(.user-is-tabbing) a:focus {
+  outline: none;
+}
+
+body.user-is-tabbing .btn-with-focus {
+  &:focus {
+    color: #fff;
+    background-color: var(--color-orange);
+    border-color: var(--color-orange);
+    outline: none;
+  }
+
+  &--white:focus {
+    color: var(--color-black);
+    background: #fff;
+    border-color: #fff;
+  }
+}
+
+.link-with-focus {
+  border: 2px dotted transparent;
+}
+
+body.user-is-tabbing .link-with-focus {
+  &:focus {
+    outline: none;
+    border: 2px dotted;
+  }
+}
+
+/* Prevent mobile browsers from changing font-size */
+* {
+  text-size-adjust: none;
+}

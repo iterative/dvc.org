@@ -1,8 +1,8 @@
 import React from 'react'
 
-import MainLayout from '../MainLayout'
+import MainLayout from 'gatsby-theme-iterative-docs/src/components/MainLayout'
 import DefaultSEO from './DefaultSEO'
-import DocumentationLayout from '../Documentation/Layout'
+import DocumentationLayout from 'gatsby-theme-iterative-docs/src/components/Documentation/Layout'
 import AlertLandingLayout from '../AlertLandingLayout'
 import Layout from '../Blog/Layout'
 

@@ -4,7 +4,7 @@ import { graphql } from 'gatsby'
 import Link from '../../../Link'
 import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image'
 import cn from 'classnames'
-import { ISocialIcon } from '../../../SocialIcon'
+import { ISocialIcon } from 'gatsby-theme-iterative-docs/src/components/SocialIcon'
 
 import FeedMeta from '../../FeedMeta'
 

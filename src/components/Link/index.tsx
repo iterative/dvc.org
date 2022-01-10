@@ -2,9 +2,12 @@ import React, { useCallback } from 'react'
 import { URL } from 'iso-url'
 import { useLocation } from '@reach/router'
 import GatsbyLink from 'gatsby-link'
-import { getRedirect } from '../../utils/shared/redirects'
-import { scrollIntoLayout, getScrollNode } from '../../utils/front/scroll'
-import safeQuerySelector from '../../utils/front/safeQuerySelector'
+import { getRedirect } from 'gatsby-theme-iterative-docs/src/utils/shared/redirects'
+import {
+  scrollIntoLayout,
+  getScrollNode
+} from 'gatsby-theme-iterative-docs/src/utils/front/scroll'
+import safeQuerySelector from 'gatsby-theme-iterative-docs/src/utils/front/safeQuerySelector'
 
 export type ILinkProps = {
   children: React.ReactNode

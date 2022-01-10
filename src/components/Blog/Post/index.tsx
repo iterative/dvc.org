@@ -5,9 +5,9 @@ import { useWindowScroll, useWindowSize } from 'react-use'
 
 import { IBlogPostData } from '../../../templates/blog-post'
 
-import { useCommentsCount } from '../../../utils/front/api'
-import { pluralizeComments } from '../../../utils/front/i18n'
-import tagToSlug from '../../../utils/shared/tagToSlug'
+import { useCommentsCount } from 'gatsby-theme-iterative-docs/src/utils/front/api'
+import { pluralizeComments } from 'gatsby-theme-iterative-docs/src/utils/front/i18n'
+import tagToSlug from 'gatsby-theme-iterative-docs/src/utils/shared/tagToSlug'
 
 import Markdown from './Markdown'
 import FeedMeta from '../FeedMeta'

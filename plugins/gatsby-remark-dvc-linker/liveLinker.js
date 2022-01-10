@@ -3,8 +3,7 @@
 const { createLinkNode } = require('./helpers')
 const {
   getItemByPath
-} = require('../gatsby-theme-iterative-docs/sidebar-helpers')
-const sidebar = require('../../src/gatsby-theme-iterative-docs/sidebar')
+} = require('../../plugins/gatsby-theme-iterative-docs/src/utils/shared/sidebar')
 
 const LIVE_API_REGEXP = /Live.([a-z-._]*\(\)$)?/
 const METHOD_REGEXP = /^[a-z-._]*\(\)$/
@@ -20,7 +19,7 @@ module.exports = astNode => {
     const method = isMethod && parts[1].slice(0, -2)
     const url = `${API_ROOT}${method}`
 
-    const isMethodPageExists = getItemByPath(sidebar, url)
+    const isMethodPageExists = getItemByPath(url)
     if (isMethodPageExists) {
       createLinkNode(url, astNode)
     }

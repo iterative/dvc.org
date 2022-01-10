@@ -10,7 +10,7 @@ exports.pluginOptionsSchema = ({ Joi }) => {
     disable: Joi.boolean().default(Boolean(process.env.SKIP_DOCS)),
     getTemplate: Joi.function().default(() => defaultGetTemplate),
     defaultTemplate: Joi.string().default(
-      path.resolve('src', 'templates', 'doc.tsx')
+      require.resolve('./src/templates/doc.tsx')
     ),
     remark: Joi.boolean().default(true)
   })
@@ -32,6 +32,18 @@ exports.createSchemaCustomization = async api => {
       }
     })
   ])
+}
+
+exports.onCreateWebpackConfig = ({ actions }) => {
+  actions.setWebpackConfig({
+    resolve: {
+      alias: {
+        [path.resolve(__dirname, 'sidebar')]: require.resolve('./src/sidebar'),
+        [path.resolve(__dirname, 'redirects')]:
+          require.resolve('./src/redirects')
+      }
+    }
+  })
 }
 
 exports.createPages = require('./createPages.js')

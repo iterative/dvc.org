@@ -1,5 +1,8 @@
 import React from 'react'
-import MainLayout, { LayoutComponent, LayoutModifiers } from '../MainLayout'
+import MainLayout, {
+  LayoutComponent,
+  LayoutModifiers
+} from 'gatsby-theme-iterative-docs/src/components/MainLayout'
 
 const alertComponentModifiers: LayoutModifiers[] = [
   LayoutModifiers.Collapsed,

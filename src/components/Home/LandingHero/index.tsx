@@ -1,13 +1,16 @@
 import React, { useEffect, useCallback, useState } from 'react'
 import cn from 'classnames'
 
-import ShowOnly from '../../ShowOnly'
+import ShowOnly from 'gatsby-theme-iterative-docs/src/components/ShowOnly'
 import Link from '../../Link'
 import DownloadButton from '../../DownloadButton'
 import TwoRowsButton from '../../TwoRowsButton'
 import GithubLine from './GithubLine'
-import { scrollIntoLayout, ease } from '../../../utils/front/scroll'
-import { logEvent } from '../../../utils/front/plausible'
+import {
+  scrollIntoLayout,
+  ease
+} from 'gatsby-theme-iterative-docs/src/utils/front/scroll'
+import { logEvent } from 'gatsby-theme-iterative-docs/src/utils/front/plausible'
 
 import * as styles from './styles.module.css'
 

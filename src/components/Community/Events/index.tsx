@@ -3,11 +3,11 @@ import cn from 'classnames'
 import format from 'date-fns/format'
 
 import { ICommunitySectionTheme } from '../'
-import LayoutWidthContainer from '../../LayoutWidthContainer'
+import LayoutWidthContainer from 'gatsby-theme-iterative-docs/src/components/LayoutWidthContainer'
 import Link from '../../Link'
 import Block from '../Block'
 import Section from '../Section'
-import { logEvent } from '../../../utils/front/plausible'
+import { logEvent } from 'gatsby-theme-iterative-docs/src/utils/front/plausible'
 import { useCommunityData } from '../../../utils/front/community'
 
 import * as sharedStyles from '../styles.module.css'

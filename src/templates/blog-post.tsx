@@ -2,10 +2,10 @@ import { graphql } from 'gatsby'
 import { IGatsbyImageData } from 'gatsby-plugin-image'
 import React from 'react'
 
-import SEO from '../components/SEO'
+import SEO from 'gatsby-theme-iterative-docs/src/components/SEO'
 import Post from '../components/Blog/Post'
 
-import { ISocialIcon } from '../components/SocialIcon'
+import { ISocialIcon } from 'gatsby-theme-iterative-docs/src/components/SocialIcon'
 import { IGatsbyImageDataParent } from 'gatsby-plugin-image/dist/src/components/hooks'
 
 export interface IBlogPostHeroPic {

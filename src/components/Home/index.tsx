@@ -9,7 +9,7 @@ import LearnMore from './LearnMore'
 import LandingHero from './LandingHero'
 import Diagram from './Diagram'
 import UseCases from './UseCases'
-import { logEvent } from '../../utils/front/plausible'
+import { logEvent } from 'gatsby-theme-iterative-docs/src/utils/front/plausible'
 
 import * as styles from './styles.module.css'
 

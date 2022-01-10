@@ -3,8 +3,7 @@
 const { createLinkNode } = require('./helpers')
 const {
   getItemByPath
-} = require('../gatsby-theme-iterative-docs/sidebar-helpers')
-const sidebar = require('../../src/gatsby-theme-iterative-docs/sidebar')
+} = require('../../plugins/gatsby-theme-iterative-docs/src/utils/shared/sidebar')
 
 const DVC_REGEXP = /dvc\s+[a-z][a-z-.]*/
 const COMMAND_REGEXP = /^[a-z][a-z-]*$/
@@ -19,14 +18,11 @@ module.exports = astNode => {
     let url
 
     const hasThirdSegment = parts[2] && COMMAND_REGEXP.test(parts[2])
-    const isCommandPageExists = getItemByPath(
-      sidebar,
-      `${COMMAND_ROOT}${parts[1]}`
-    )
+    const isCommandPageExists = getItemByPath(`${COMMAND_ROOT}${parts[1]}`)
     const isSubcommandPageExists =
       isCommandPageExists &&
       hasThirdSegment &&
-      getItemByPath(sidebar, `${COMMAND_ROOT}${parts[1]}/${parts[2]}`)
+      getItemByPath(`${COMMAND_ROOT}${parts[1]}/${parts[2]}`)
 
     if (isSubcommandPageExists) {
       url = `${COMMAND_ROOT}${parts[1]}/${parts[2]}`

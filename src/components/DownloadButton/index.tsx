@@ -4,8 +4,8 @@ import cn from 'classnames'
 import TwoRowsButton from '../TwoRowsButton'
 import Link from '../Link'
 
-import isClient from '../../utils/front/isClient'
-import { logEvent } from '../../utils/front/plausible'
+import isClient from 'gatsby-theme-iterative-docs/src/utils/front/isClient'
+import { logEvent } from 'gatsby-theme-iterative-docs/src/utils/front/plausible'
 
 import * as styles from './styles.module.css'
 
