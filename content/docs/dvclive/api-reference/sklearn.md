@@ -24,16 +24,17 @@ log_confusion_matrix(y_true, y_score, "cm.json")
 
 ### Description
 
-Stores the predictions and labels in the format expected by the DVC
-[confusion matrix template](/doc/command-reference/plots#example-confusion-matrix).
+Stores the predictions and labels in the format expected by the confusion matrix
+[template](/doc/command-reference/plots#plot-templates-data-series-only) of
+`dvc plots`.
 
 ### Parameters
 
-- `y_true` - Ground truth (correct) target values.
+- `y_true` - ground truth (correct) target values
 
-- `y_score` - Estimated targets as returned by a classifier..
+- `y_score` - estimated targets as returned by a classifier
 
-- `output_file` - The name of the file where the `.json` plot will be saved.
+- `output_file` - name of the file where the JSON plot will be saved
 
 ## sklearn.log_roc
 
