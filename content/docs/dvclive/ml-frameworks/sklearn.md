@@ -30,14 +30,18 @@ generate `dvc plots` from your labels and predictions.
 
 ```python
 from dvclive.sklearn import (
+    log_calibration,
     log_confusion_matrix,
+    log_det,
     log_precision_recall,
     log_roc,
 )
 
-roc = log_roc(y_test, y_score, "roc.json")
-prc = log_precision_recall(y_test, y_score, "prc.json")
+cc = log_calibration(y_test, y_score, "calibration.json")
 cm = log_confusion_matrix(y_test, y_pred, "cm.json")
+det = log_det(y_test, y_score, "det.json")
+prc = log_precision_recall(y_test, y_score, "prc.json")
+roc = log_roc(y_test, y_score, "roc.json")
 ```
 
 We can integrate with DVC by joining the above snippets into a single script
@@ -48,6 +52,13 @@ stages:
   train:
     cmd: python train.py
     plots:
+      - calibration.json:
+          cache: false
+          x: prob_pred
+          y: prob_true
+          x_label: Mean Predicted Probability
+          y_label: Fraction of Positives
+          title: Calibration Curve
       - cm.json:
           cache: false
           template: confusion
@@ -59,6 +70,11 @@ stages:
           x: recall
           y: precision
           title: Precision Recall Curve
+      - det.json:
+          cache: false
+          x: fpr
+          y: fnr
+          title: DET curve
       - roc.json:
           cache: false
           x: fpr
