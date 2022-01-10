@@ -1,20 +1,12 @@
 # TensorFlow
 
-DVCLive allows you to easily add experiment tracking capabilities to your
-TensorFlow projects.
-
-## About TensorFlow
-
-[TensorFlow](https://www.tensorflow.org/) is an end-to-end open source platform
-for machine learning. It has a comprehensive, flexible ecosystem of tools,
-libraries, and community resources that lets researchers push the
-state-of-the-art in ML and developers easily build and deploy ML-powered
-applications.
+DVCLive allows you to add experiment tracking capabilities to your
+[TensorFlow](https://www.tensorflow.org/) projects.
 
 ## Usage
 
 To start using DVCLive you just need to add a few lines to your training code in
-**any** TensorFlow project.
+**any** [TensorFlow](https://www.tensorflow.org/) project.
 
 > 💡 If you prefer the Keras API, check the
 > [DVCLive - Keras](/docs/dvclive/user-guide/ml-frameworks/keras) page.
@@ -23,7 +15,7 @@ You need to add `Live.log()` calls to each place where you would like to log
 metrics and one single `Live.next_step()` call to indicate that the epoch has
 ended.
 
-To ilustrate with some code, extracted from the
+let's consider the following example, extracted from the
 [official TensorFlow guide](https://www.tensorflow.org/guide/keras/writing_a_training_loop_from_scratch):
 
 ```git

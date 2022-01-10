@@ -1,18 +1,12 @@
 # MMCV
 
-DVCLive allows you to easily add experiment tracking capabilities to your
-OpenMMlab projects.
-
-## About MMCV
-
-[MMCV](https://github.com/open-mmlab/mmcv) is a foundational library for
-computer vision research and supports many research projects part of
-[OpenMMLab](https://github.com/open-mmlab).
+DVCLive allows you to add experiment tracking capabilities to your
+[OpenMMlab](https://github.com/open-mmlab) projects.
 
 ## Usage
 
-To start using the DVCLive you just need to add the following line to your
-config file of **any** OpenMMlab project:
+To start using the DVCLive, add the following line to your config file of
+**any** [OpenMMlab](https://github.com/open-mmlab) project:
 
 ```git
 log_config = dict(
@@ -32,8 +26,6 @@ to generate metrics _logs_ and _summaries_ during training.
 > 💡Without requiring additional modifications to your training code, you can
 > use DVCLive alongside DVC. See
 > [DVCLive with DVC](/doc/dvclive/dvclive-with-dvc) for more info.
-
-## Parameters
 
 ## Parameters
 
