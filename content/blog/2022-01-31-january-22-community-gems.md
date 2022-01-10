@@ -22,9 +22,10 @@ tags:
 
 Thanks for asking @mihaj!
 
-You can stream files using the DVC API. The are two methods that you'll likely
-want to check out. First there's `dvc.api.open`. This opens a file tracked by
-DVC and generates a corresponding file object. Here's a quick example:
+You can stream files using the [DVC API](https://dvc.org/doc/api-reference).
+There are two methods that you'll likely want to check out. First there's
+`dvc.api.open()`. This opens a file tracked by DVC and generates a corresponding
+file object. Here's a quick example:
 
 ```python
 import dvc.api
@@ -37,7 +38,7 @@ with dvc.api.open(
 ```
 
 The simplest way to return the contents from a DVC tracked file would be to use
-`dvc.api.read`. The returned content can be a bytearray or string. Here's a
+`dvc.api.read()`. The returned content can be a bytearray or string. Here's a
 little example of this being used:
 
 ```python
@@ -70,7 +71,7 @@ detecting that the package didn't change.
 Thanks for another great question @rie!
 
 DVC doesn't track the pipeline dependencies, only the outputs. If you want DVC
-to track a pure data dependency, that's not an output of a different stage, you
+to track a pure data dependency that's not an output of a different stage, you
 need to track it with `dvc add ...`
 
 ### [What is the difference between Kubeflow pipelines and DVC pipelines?](https://discord.com/channels/485586884165107732/563406153334128681/922728960478035978)
@@ -93,8 +94,8 @@ development.
 
 There are several other use cases we've seen for DVC outside of machine learning
 and data science. Some users have used DVC to track build artifacts for
-deployment systems and tracking performance data alongside other design
-iterations and simulation tools.
+deployment systems and to track performance data alongside design iterations and
+simulation tools.
 
 ### [Does DVC run on JSON/YAML configuration files for all things?](https://discord.com/channels/485586884165107732/563406153334128681/928779586622332938)
 
@@ -164,7 +165,7 @@ https://www.youtube.com/channel/UC37rp97Go-xIX3aNFVHhXfQ
 And of course, always feel welcome to join the Discord community and get answers
 directly from the team: https://discord.com/invite/dvwXA2N
 
-### [I understand that this is a discoverability layer over my DVC repo in GitHub. Will any of my data be stored on your servers?](https://discord.com/channels/485586884165107732/841856466897469441/923714473603256420)
+### [I understand that DVC Studio is a discoverability layer over my DVC repo in GitHub. Will any of my data be stored on your servers?](https://discord.com/channels/485586884165107732/841856466897469441/923714473603256420)
 
 This is a great question about DVC Studio from @johnnyaug!
 
@@ -173,7 +174,7 @@ databases to be able to serve this as a table. We don't read actual data and we
 don't store code.
 
 An important thing to note is that if you have plots from `dvc plots show` that
-are images, JSON files, or vega specs, those could be saved on out end as well
+are images, JSON files, or vega specs, those could be saved on our end as well
 to serve them to UI.
 
 We're working on documentation for this as well!
