@@ -104,24 +104,6 @@ experiment in a separate row, along with the Git commit IDs they are attached
 to. We can see that the experiment we run has a name `exp-6dccf` and was run
 from the commit ID `7317bc6`.
 
-<details>
-
-### ℹ️ If you used `dvc repro` before
-
-Earlier versions of DVC uses `dvc repro` to run the pipeline. If you already
-have a DVC project, you may already be using `dvc repro`.
-
-We use `dvc repro` to run the pipeline as found in the <abbr>workspace</abbr>.
-All the parameters and dependencies are retrieved from the current workspace. It
-doesn't use any specialized mechanism to track experiments.
-
-When you have a large number of experiments that you don't want to commit all to
-Git, it's better to use `dvc exp run`. It allows to change the parameters
-quickly, can track the history of artifacts and has facilities to compare these
-experiments easily.
-
-</details>
-
 Now let's do some more experimentation.
 
 DVC allows to update the parameters defined in the pipeline without modifying
@@ -193,12 +175,10 @@ $ dvc exp show
 By default, it shows all the parameters and the metrics with the timestamp. If
 you have a large number of parameters, metrics or experiments, this may lead to
 a cluttered view. You can limit the table to specific metrics, or parameters, or
-hide the timestamp column with `--include-metrics`, `--include-params`, or
-`--no-timestamp` options of the command, respectively.
+hide the timestamp column (`Created`) using the `--drop` option of the command.
 
 ```dvc
-$ dvc exp show --no-timestamp \
-  --include-params model.conv_units --include-metrics acc
+$ dvc exp show --drop 'Created|train|loss'
 ```
 
 ```dvctable

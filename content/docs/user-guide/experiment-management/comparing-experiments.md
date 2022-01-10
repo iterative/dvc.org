@@ -190,7 +190,74 @@ $ dvc exp show --sort-by auc --sort-order desc
 └───────────────────────┴────────┴──────────────────┘
 ```
 
-## Get experiments table in JSON
+## Parallel Coordinates Plot
+
+You can also generate an interactive
+[parallel coordinates plot](https://en.wikipedia.org/wiki/Parallel_coordinates)
+with `dvc exp show --pcp`.
+
+This plot is useful to explore the relationships between the metrics and params
+used in experiments. You can reorder the columns to make some patterns more
+easily visible.
+
+The `--pcp` flag can be combined with other options of the command. For example,
+use `--sort-by` to sort the experiments and determine the color of the lines
+that represent them.
+
+```dvc
+$ dvc exp show --pcp --all-branches --sort-by roc_auc
+```
+
+![](/img/pcp_interaction.gif) _Parallel Coordinates Plot_
+
+> You can see more
+> [examples in the command reference](/doc/command-reference/exp/show#example-parallel-coordinates-plot-pcp).
+
+## Get experiments table in CSV
+
+`dvc exp show` can also output the table in CSV, with `--csv`. It includes all
+the data found in the table.
+
+```dvc
+$ dvc exp show --csv
+```
+
+```csv
+Experiment,rev,typ,Created,parent,loss,acc,train.epochs,model.conv_units
+,workspace,baseline,,,0.236574187874794,0.9126999974250793,10,16
+baseline-experiment,23ceb4a,baseline,2021-09-06T23:38:07,,0.236574187874794,0.9126999974250793,10,16
+cnn-64,6d13f33,branch_commit,2021-09-09T13:06:05,,0.2338544875383377,0.9153000116348267,10,64
+cnn-128,69503c6,branch_commit,2021-09-09T12:53:51,,0.2324332743883133,0.9160000085830688,10,128
+```
+
+For example, let's parse the CSV output with [csvkit] to get a statistical
+summary about the experiments:
+
+```dvc
+$ dvc exp show --csv | csvstat
+...
+7. "acc"
+
+        Type of data:          Number
+        Contains null values:  False
+        Unique values:         5
+        Smallest value:        0.9127
+        Largest value:         0.9167
+        Sum:                   5.4895
+        Mean:                  0.914917
+        Median:                0.91565
+        StDev:                 0.001774
+        Most common values:    0.9127 (2x)
+                               0.9167 (1x)
+                               0.9153 (1x)
+                               0.9161 (1x)
+                               0.916 (1x)
+...
+```
+
+[csvkit]: https://csvkit.readthedocs.io/en/latest/
+
+## Get table data in JSON
 
 It's also possible to output the table of experiments in a machine-readable
 format, for example to parse in scripts. To do so, use the `--json` or `--csv`
@@ -304,50 +371,6 @@ $ dvc exp show --json | jq '.[].baseline.data.metrics'
   }
 }
 ```
-
-## Get experiments table in CSV
-
-`dvc exp show` can also output the table in CSV, with `--csv`. It includes all
-the data found in the table.
-
-```dvc
-$ dvc exp show --csv
-```
-
-```csv
-Experiment,rev,typ,Created,parent,loss,acc,train.epochs,model.conv_units
-,workspace,baseline,,,0.236574187874794,0.9126999974250793,10,16
-baseline-experiment,23ceb4a,baseline,2021-09-06T23:38:07,,0.236574187874794,0.9126999974250793,10,16
-cnn-64,6d13f33,branch_commit,2021-09-09T13:06:05,,0.2338544875383377,0.9153000116348267,10,64
-cnn-128,69503c6,branch_commit,2021-09-09T12:53:51,,0.2324332743883133,0.9160000085830688,10,128
-```
-
-For example, let's parse the CSV output with [csvkit] to get a statistical
-summary about the experiments:
-
-```dvc
-$ dvc exp show --csv | csvstat
-...
-7. "acc"
-
-        Type of data:          Number
-        Contains null values:  False
-        Unique values:         5
-        Smallest value:        0.9127
-        Largest value:         0.9167
-        Sum:                   5.4895
-        Mean:                  0.914917
-        Median:                0.91565
-        StDev:                 0.001774
-        Most common values:    0.9127 (2x)
-                               0.9167 (1x)
-                               0.9153 (1x)
-                               0.9161 (1x)
-                               0.916 (1x)
-...
-```
-
-[csvkit]: https://csvkit.readthedocs.io/en/latest/
 
 ## Compare specific experiments
 
