@@ -24,10 +24,9 @@ log_confusion_matrix(y_true, y_score, "cm.json")
 
 ### Description
 
-Stores the predictions and labels in the format expected by the confusion
-matrix
-[template](/doc/command-reference/plots#plot-templates-data-series-only)
-of `dvc plots`.
+Stores the predictions and labels in the format expected by the confusion matrix
+[template](/doc/command-reference/plots#plot-templates-data-series-only) of
+`dvc plots`.
 
 ### Parameters
 
