@@ -3,13 +3,6 @@
 DVCLive allows you to easily add experiment tracking capabilities to your
 Scikit-learn projects.
 
-## About Scikit-learn
-
-[Scikit-learn](https://scikit-learn.org/) is an open source machine learning
-library that supports supervised and unsupervised learning. It also provides
-various tools for model fitting, data preprocessing, model selection, model
-evaluation, and many other utilities.
-
 ## Usage
 
 To start using DVCLive, add a few modifications to your training code in **any**
