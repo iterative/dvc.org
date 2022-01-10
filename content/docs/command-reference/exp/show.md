@@ -1,6 +1,7 @@
 # exp show
 
-Print a customizable table of experiments, their metrics and parameters.
+Displays your experiments in a customizable table or
+[parallel coordinates plot](/doc/user-guide/experiment-management/comparing-experiments#parallel-coordinates-plot).
 
 > Press `q` to exit.
 
@@ -13,7 +14,7 @@ usage: dvc exp show [-h] [-q | -v] [-a] [-T] [-A] [-n <num>]
                     [--sort-by <metric/param>]
                     [--sort-order {asc,desc}] [--sha]
                     [--json] [--csv] [--md] [--precision <n>]
-                    [--only-changed]
+                    [--pcp] [--only-changed]
 ```
 
 ## Description
@@ -53,6 +54,12 @@ Experiments in the table are first grouped (by parent commit). They are then
 sorted inside each group, chronologically by default. The `--sort-by` and
 `--sort-order` options can change this ordering, based on any single, visible
 metric or param.
+
+When the `--pcp` option is passed, an interactive
+[parallel coordinates plot](/doc/user-guide/experiment-management/comparing-experiments#parallel-coordinates-plot)
+will be generated using the same data from the table.
+
+![](/img/pcp_interaction.gif) _Parallel Coordinates Plot_
 
 ## Options
 
@@ -114,6 +121,14 @@ metric or param.
   problems arise, otherwise 1.
 
 - `-v`, `--verbose` - displays detailed tracing information.
+
+- `--pcp` - generates an interactive parallel coordinates plot from the table.
+
+- `-o <folder>, --out <folder>` - when used with `--pcp`, specifies a
+  destination `folder` of the plot. By default its `dvc_plots`.
+
+- `--open` - when used with `--pcp`, opens the generated plot in a browser
+  automatically.
 
 ## Examples
 
@@ -267,8 +282,37 @@ $ dvc exp show --all-commits --only-changed --sort-by=roc_auc
 └───────────────────────┴──────────────┴─────────┴────────────────────────┴──────────────────┘
 ```
 
-Note that in the final example, Git commits remain in chronological order. The
+Note that in this example, Git commits remain in chronological order. The
 sorting only applies to experiment groups (sharing a parent commit).
+
+## Example: Parallel coordinates plot (PCP)
+
+To generate an interactive parallel coordiantes plot based on the experiments
+and their parameters:
+
+```dvc
+$ dvc exp show --all-branches --pcp
+```
+
+![](/img/ref_pcp_default.png) _Parallel Coordinates Plot_
+
+Using `--sort-by` will reorder the plot experiments as expected, and determine
+the color of the lines that represent them:
+
+```dvc
+$ dvc exp show --all-branches --pcp --sort-by roc_auc
+```
+
+![](/img/ref_pcp_sortby.png) _Colorized by roc_auc_
+
+Combine with other flags for further filtering:
+
+```dvc
+$ dvc exp show --all-branches --pcp --sort-by roc_auc
+               --exclude-metrics avg_prec
+```
+
+![](/img/ref_pcp_filter.png) _Excluded avg_prec column_
 
 📖 See [Metrics, Parameters, and Plots](/doc/start/metrics-parameters-plots) for
 an introduction to parameters, metrics, plots.
