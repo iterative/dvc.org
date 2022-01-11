@@ -91,6 +91,10 @@
       visibility: visible;
     }
 
+    li .anchor {
+      line-height: unset;
+    }
+
     .anchor {
       margin-left: -24px;
     }
