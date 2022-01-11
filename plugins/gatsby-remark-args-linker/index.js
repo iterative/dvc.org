@@ -28,7 +28,7 @@ module.exports = (
   if (!pathname) return markdownAST
   const parentNode = getNode(markdownNode.parent)
   let isPath =
-    pathname === 'string'
+    typeof pathname === 'string'
       ? parentNode.relativeDirectory.startsWith(pathname)
       : Array.isArray(pathname)
       ? pathname.some(p => parentNode.relativeDirectory.startsWith(p))
@@ -38,12 +38,9 @@ module.exports = (
     markdownAST,
     node =>
       node.type === 'listItem' &&
-      node.children.some(
-        item =>
-          item.type === 'paragraph' &&
-          item.children[0]?.type === 'inlineCode' &&
-          String(item.children[0]?.value).startsWith('-')
-      ),
+      node.children[0]?.type === 'paragraph' &&
+      node.children[0]?.children[0]?.type === 'inlineCode' &&
+      String(node.children[0].children[0]?.value).startsWith('-'),
     listItemNode => {
       const isParagraphNode = listItemNode.children?.[0].type === 'paragraph'
       if (!isParagraphNode) return
