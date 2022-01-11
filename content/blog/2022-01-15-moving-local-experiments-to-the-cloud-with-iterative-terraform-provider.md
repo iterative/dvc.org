@@ -107,11 +107,7 @@ adding the following in our `main.tf`:
 
 ```hcl
 terraform {
-    required_providers {
-        iterative = {
-            source = "iterative/iterative",
-        }
-    }
+    required_providers { iterative = { source = "iterative/iterative", version = ">= 0.9.9" } }
 }
 
 provider "iterative" {}
@@ -139,11 +135,7 @@ file looks like, and then we'll unpack what's going on here:
 
 ```hcl
 terraform {
-    required_providers {
-        iterative = {
-            source = "iterative/iterative",
-        }
-    }
+    required_providers { iterative = { source = "iterative/iterative", version = ">= 0.9.9" } }
 }
 
 provider "iterative" {}
@@ -153,12 +145,12 @@ resource "iterative_task" "tpi-examples-basic" {
     cloud     = "aws"
     region    = "us-east-2"
     machine   = "l+k80"
-    directory = "."
 
+    workdir { input = "." }
     script = <<-END
     #!/bin/bash
     sudo apt update
-    sudo apt-get install -y python3-pip
+    sudo apt install -y python3-pip
     pip3 install -r requirements.txt
     python3 src/train.py
     END
@@ -185,7 +177,7 @@ whatever you want. Inside of the resource block, we specify the
   [l+k80](https://registry.terraform.io/providers/iterative/iterative/latest/docs/resources/task#l+k80)
   stands for a "Large, with (at least) 12 CPU cores, 112 GB of RAM and 2 GPU
   devices".
-- _directory_: Specify a directory on your local machine relative to your
+- _workdir_: Specify a directory on your local machine relative to your
   project folder which you would like to sync with the remote machine. This way
   you can share your whole project or parts of it with a remote machine. In my
   example, I am sharing the whole project.
@@ -214,8 +206,8 @@ resource "iterative_task" "tpi-examples-gpu" {
     machine   = "l+k80"
     disk_size = "130"
     image     = "ubuntu@898082745236:x86_64:Deep Learning AMI (Ubuntu 18.04) Version 54.0"
-    directory = "."
-
+    
+    workdir { input = "." }
     script = <<-END
     #!/bin/bash
     pip3 install -r requirements.txt
