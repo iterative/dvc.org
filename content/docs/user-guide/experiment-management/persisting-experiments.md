@@ -15,14 +15,14 @@ $ dvc exp show --include-params=my_param
 ```
 
 ```dvctable
-┏━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━┓
-┃ neutral:**Experiment**            ┃ neutral:**Created**      ┃     metric:**auc** ┃ param:**my_param**   ┃
-┡━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━┩
-│ workspace             │ -            │ 0.61314 │ 3          │
-│ new-experiments       │ Oct 19, 2020 │ 0.61314 │ 3          │
-│ ├── exp-e6c97         │ Oct 20, 2020 │ 0.69830 │ 2          │
-│ └── exp-1df77         │ Oct 22, 2020 │ 0.51676 │ 1          │
-└───────────────────────┴──────────────┴─────────┴────────────┘
+ ─────────────────────────────────────────────────────────
+  neutral:**Experiment**             neutral:**Created**            metric:**auc**   param:**my_param**
+ ─────────────────────────────────────────────────────────
+  workspace              -              0.61314   3
+  new-experiments        Oct 19, 2020   0.61314   3
+  ├── exp-e6c97          Oct 20, 2020   0.69830   2
+  └── exp-1df77          Oct 22, 2020   0.51676   1
+ ─────────────────────────────────────────────────────────
 ```
 
 Suppose you want to continue to work on `exp-e6c97` in a separate branch. You
@@ -59,14 +59,14 @@ $ dvc exp show --include-params=my_param
 ```
 
 ```dvctable
-┏━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━┓
-┃ neutral:**Experiment**            ┃ neutral:**Created**      ┃     metric:**auc** ┃ param:**my_param**   ┃
-┡━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━┩
-│ workspace             │ -            │ 0.61314 │ 3          │
-│ new-experiments       │ Oct 19, 2020 │ 0.61314 │ 3          │
-│ ├── exp-e6c97         │ Oct 20, 2020 │ 0.69830 │ 2          │
-│ └── exp-1df77         │ Oct 22, 2020 │ 0.51676 │ 1          │g
-└───────────────────────┴──────────────┴─────────┴────────────┘
+ ───────────────────────────────────────────────────────────
+  neutral:**Experiment**              neutral:**Created**            metric:**auc**   param:**my_param**
+ ───────────────────────────────────────────────────────────
+  workspace               -              0.61314   3
+  new-experiments         Oct 19, 2020   0.61314   3
+  ├── exp-e6c97           Oct 20, 2020   0.69830   2
+  └── exp-1df77           Oct 22, 2020   0.51676   1
+ ───────────────────────────────────────────────────────────
 ```
 
 The results found in the workspace are shown in the respective row. When you

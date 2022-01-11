@@ -96,14 +96,14 @@ $ dvc exp show
 ```
 
 ```dvctable
-┏━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━┓
-┃ neutral:**Experiment**            ┃ neutral:**Created**      ┃    metric:**loss** ┃    metric:**acc** ┃ param:**train.epochs** ┃ param:**model.conv_units** ┃
-┡━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━┩
-│ workspace             │ -            │ 0.23657 │ 0.9127 │ 10           │ 16               │
-│ baseline-experiment   │ Sep 06, 2021 │ 0.23657 │ 0.9127 │ 10           │ 16               │
-│ ├── 6d13f33 [cnn-64]  │ Sep 09, 2021 │ 0.23385 │ 0.9153 │ 10           │ 64               │
-│ ├── 69503c6 [cnn-128] │ Sep 09, 2021 │ 0.23243 │  0.916 │ 10           │ 128              │
-└───────────────────────┴──────────────┴─────────┴────────┴──────────────┴──────────────────┘
+ ───────────────────────────────────────────────────────────────────────────────────────────
+  neutral:**Experiment**              neutral:**Created**           metric:**loss**      metric:**acc**   param:**train.epochs**   param:**model.conv_units**
+ ───────────────────────────────────────────────────────────────────────────────────────────
+  workspace               -              0.23657   0.9127   10             16
+  baseline-experiment     Sep 06, 2021   0.23657   0.9127   10             16
+  ├── 6d13f33 [cnn-64]    Sep 09, 2021   0.23385   0.9153   10             64
+  ├── 69503c6 [cnn-128]   Sep 09, 2021   0.23243    0.916   10             128
+ ───────────────────────────────────────────────────────────────────────────────────────────
 ```
 
 `dvc exp show` only tabulates experiments in the workspace and in `HEAD`. You
@@ -123,14 +123,14 @@ $ dvc exp show --include-params train.epochs --include-metrics auc,precision
 ```
 
 ```dvctable
-┏━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━┓
-┃ neutral:**Experiment**            ┃ neutral:**Created**      ┃    metric:**loss** ┃    metric:**acc** ┃ param:**train.epochs** ┃
-┡━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━┩
-│ workspace             │ -            │ 0.23657 │ 0.9127 │ 10           │
-│ baseline-experiment   │ Sep 06, 2021 │ 0.23657 │ 0.9127 │ 10           │
-│ ├── 6d13f33 [cnn-64]  │ Sep 09, 2021 │ 0.23385 │ 0.9153 │ 10           │
-│ └── 69503c6 [cnn-128] │ Sep 09, 2021 │ 0.23243 │  0.916 │ 10           │
-└───────────────────────┴──────────────┴─────────┴────────┴──────────────┘
+ ────────────────────────────────────────────────────────────────────────
+  neutral:**Experiment**              neutral:**Created**           metric:**loss**      metric:**acc**   param:**train.epochs**
+ ────────────────────────────────────────────────────────────────────────
+  workspace               -              0.23657   0.9127   10
+  baseline-experiment     Sep 06, 2021   0.23657   0.9127   10
+  ├── 6d13f33 [cnn-64]    Sep 09, 2021   0.23385   0.9153   10
+  └── 69503c6 [cnn-128]   Sep 09, 2021   0.23243    0.916   10
+ ────────────────────────────────────────────────────────────────────────
 ```
 
 Alternatively, you can exclude certain parameters and metrics from the table by
@@ -142,14 +142,14 @@ $ dvc exp show --exclude-params train.epochs --exclude-metrics auc
 ```
 
 ```dvctable
-┏━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━━━━━┓
-┃ neutral:**Experiment**            ┃ neutral:**Created**      ┃    metric:**acc** ┃ param:**model.conv_units** ┃
-┡━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━━━━━┩
-│ workspace             │ -            │ 0.9127 │ 16               │
-│ baseline-experiment   │ Sep 06, 2021 │ 0.9127 │ 16               │
-│ ├── 6d13f33 [cnn-64]  │ Sep 09, 2021 │ 0.9153 │ 64               │
-│ └── 69503c6 [cnn-128] │ Sep 09, 2021 │  0.916 │ 128              │
-└───────────────────────┴──────────────┴────────┴──────────────────┘
+ ──────────────────────────────────────────────────────────────────
+  neutral:**Experiment**              neutral:**Created**           metric:**acc**   param:**model.conv_units**
+ ──────────────────────────────────────────────────────────────────
+  workspace               -              0.9127   16
+  baseline-experiment     Sep 06, 2021   0.9127   16
+  ├── 6d13f33 [cnn-64]    Sep 09, 2021   0.9153   64
+  └── 69503c6 [cnn-128]   Sep 09, 2021    0.916   128
+ ──────────────────────────────────────────────────────────────────
 ```
 
 By default, `dvc exp show` also has a column for the timestamp. You may want to
@@ -160,14 +160,14 @@ $ dvc exp show --no-timestamp --include-params=model.conv_units --exclude-metric
 ```
 
 ```dvctable
-┏━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━━━━━┓
-┃ neutral:**Experiment**            ┃    metric:**acc** ┃ param:**model.conv_units** ┃
-┡━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━━━━━┩
-│ workspace             │ 0.9127 │ 16               │
-│ baseline-experiment   │ 0.9127 │ 16               │
-│ ├── 6d13f33 [cnn-64]  │ 0.9153 │ 64               │
-│ └── 69503c6 [cnn-128] │  0.916 │ 128              │
-└───────────────────────┴────────┴──────────────────┘
+ ───────────────────────────────────────────────────
+  neutral:**Experiment**                 metric:**acc**   param:**model.conv_units**
+ ───────────────────────────────────────────────────
+  workspace               0.9127   16
+  baseline-experiment     0.9127   16
+  ├── 6d13f33 [cnn-64]    0.9153   64
+  └── 69503c6 [cnn-128]    0.916   128
+ ───────────────────────────────────────────────────
 ```
 
 By default `dvc exp show` sorts the experiments by their timestamp. You can sort
@@ -180,14 +180,14 @@ $ dvc exp show --sort-by auc --sort-order desc
 ```
 
 ```dvctable
-┏━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━━━━━┓
-┃ neutral:**Experiment**            ┃    metric:**acc** ┃ param:**model.conv_units** ┃
-┡━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━━━━━┩
-│ workspace             │ 0.9127 │ 16               │
-│ baseline-experiment   │ 0.9127 │ 16               │
-│ ├── 6d13f33 [cnn-64]  │ 0.9153 │ 64               │
-│ └── 69503c6 [cnn-128] │  0.916 │ 128              │
-└───────────────────────┴────────┴──────────────────┘
+ ───────────────────────────────────────────────────
+  neutral:**Experiment**                 metric:**acc**   param:**model.conv_units**
+ ───────────────────────────────────────────────────
+  workspace               0.9127   16
+  baseline-experiment     0.9127   16
+  ├── 6d13f33 [cnn-64]    0.9153   64
+  └── 69503c6 [cnn-128]    0.916   128
+ ───────────────────────────────────────────────────
 ```
 
 ## Parallel Coordinates Plot
