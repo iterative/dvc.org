@@ -22,9 +22,18 @@ const addIdAttrToNode = (node, id) => {
 }
 
 module.exports = (
-  { markdownAST },
-  { icon = '', className = 'anchor', isIconAfterHeader = false }
+  { markdownAST, getNode, markdownNode },
+  { icon = '', className = 'anchor', isIconAfterHeader = false, pathname = '' }
 ) => {
+  if (!pathname) return markdownAST
+  const parentNode = getNode(markdownNode.parent)
+  let isPath =
+    pathname === 'string'
+      ? parentNode.relativeDirectory.startsWith(pathname)
+      : Array.isArray(pathname)
+      ? pathname.some(p => parentNode.relativeDirectory.startsWith(p))
+      : false
+  if (!isPath) return markdownAST
   visit(
     markdownAST,
     node =>

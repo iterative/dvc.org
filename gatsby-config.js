@@ -70,7 +70,9 @@ const plugins = [
         {
           resolve: 'gatsby-remark-args-linker',
           options: {
-            icon: linkIcon
+            icon: linkIcon,
+            // Pathname can also be array of paths. eg: ['docs/command-reference;', 'docs/api']
+            pathname: 'docs/command-reference'
           }
         },
         {
