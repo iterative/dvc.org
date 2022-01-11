@@ -1,7 +1,6 @@
 const path = require('path')
 const tagToSlug = require('../../../utils/shared/tagToSlug')
 const { BLOG } = require('../../../consts')
-const Jimp = require('jimp')
 // Since blog pages and their indexes require a ton of image resizes, it's
 // useful to have an option to only generate a minimal set of these pages when
 // developing. Set LIMIT_BLOG_PAGES to anything truthy and this module will
@@ -116,19 +115,9 @@ const createPages = async ({ graphql, actions }) => {
   const blogPostTemplate = path.resolve('./src/templates/blog-post.tsx')
 
   const blogPagesPromise = Promise.all(
-    posts.map(({ id, slug, picture }, index) => {
+    posts.map(({ id, slug }, index) => {
       const previous = index === posts.length - 1 ? null : posts[index + 1]
       const next = index === 0 ? null : posts[index - 1]
-
-      Jimp.read(`./static/uploads/${picture.fields.sourcePath}`)
-        .then(lenna => {
-          return lenna
-            .resize(800, Jimp.AUTO)
-            .write(`./public/blog/${picture.fields.sourcePath}`)
-        })
-        .catch(err => {
-          console.error(err)
-        })
 
       actions.createPage({
         component: blogPostTemplate,
