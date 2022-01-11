@@ -58,11 +58,11 @@ model = pickle.loads(
 
 Thanks for the question @alphaomega!
 
-The best way to handle any package dependencies will be to include a
-requirements.txt file with the specific versions your pipeline needs.
+The best way to handle any package dependencies is to include a requirements.txt
+file with the specific versions your pipeline needs.
 
 Another approach you can take is having a stage that dumps the package version
-as an intermediate output. It doesn't have to be saved in Git or DVC becasue
+as an intermediate output. It doesn't have to be saved in Git or DVC because
 it's easily reproduced and the DVC internals should be able to take care of
 detecting that the package didn't change.
 
@@ -79,10 +79,10 @@ need to track it with `dvc add ...`
 This is a fantastic question! Thanks for asking @ramakrishnamamidi!
 
 A major difference is that DVC focuses primarily on ML _development_ and adding
-lightweight functionality on top of existing projects, which might be reusable
-in deployment in some cases.
+lightweight functionality on top of existing projects, which may be reusable in
+deployment in some cases.
 
-Kubeflow focuses on _deployment_ and building on top of Kuberenetes, which could
+Kubeflow focuses on _deployment_ and building on top of Kubernetes, which could
 be used during development but requires more up-front effort.
 
 ### [Could DVC be a good alternative to LFS for game development?](https://discord.com/channels/485586884165107732/485586884165107734/928336349487067196)
@@ -93,9 +93,14 @@ Yes! We have community members that use DVC to handle their large files in game
 development.
 
 There are several other use cases we've seen for DVC outside of machine learning
-and data science. Some users have used DVC to track build artifacts for
+and data science. Some people have used DVC to track build artifacts for
 deployment systems and to track performance data alongside design iterations and
 simulation tools.
+
+You should check out our
+[#beyond-ml](https://discord.com/channels/485586884165107732/918159153824952320)
+Discord channel to stay up to date with the other use cases the community is
+coming p with!
 
 ### [Does DVC run on JSON/YAML configuration files for all things?](https://discord.com/channels/485586884165107732/563406153334128681/928779586622332938)
 
@@ -110,7 +115,7 @@ even encouraged to directly edit `dvc.yaml` if that's easier.
 For example, if you are currently executing a command like this:
 
 ```dvc
-dvc run -f -n prune \
+dvc run -n prune \
         -d ./DepFiles_0/ \
         -d ./DepFiles_1/ \
         -d ./DepFiles_2/ \
@@ -124,8 +129,7 @@ You could add those directly to the `dvc.yaml` like this:
 
 ```yaml
 stages:
-  train:
-    cmd: python recommender_sys.py
+  prune:
     deps:
       - ./DepFiles_0/
       - ./DepFiles_1/
@@ -134,36 +138,20 @@ stages:
       - ./packages/.py
       - ./scripts/.py
       - ./data/.npy
-    params:
-      - lr
-      - momentum
-      - algorithm
-      - num_classes
-      - batch_size
-      - num_epochs
-    outs:
-      - model.pt
-    metrics:
-      - results.json:
-          cache: false
-    plots:
-      - predictions.json:
-          cache: false
 ```
 
 ### [I'm setting up MLOps at my company from scratch and we use GitLab and Cloudera DS workbench. What are the best resources to get started with CML?](https://discord.com/channels/485586884165107732/728693131557732403/923785806848614461)
 
 This is a great question from @dvc!
 
-We recommend you start with the CML docs website: https://cml.dev/
+We recommend you start with the [CML docs website](https://cml.dev/).
 
-You can find some tutorials on our blog: https://dvc.org/blog
+You can find some tutorials on [our blog](https://dvc.org/blog).
 
-Or you can check out the videos on our YouTube channel:
-https://www.youtube.com/channel/UC37rp97Go-xIX3aNFVHhXfQ
+Or you can check out the videos on
+[our YouTube channel](https://www.youtube.com/channel/UC37rp97Go-xIX3aNFVHhXfQ)
 
-And of course, always feel welcome to join the Discord community and get answers
-directly from the team: https://discord.com/invite/dvwXA2N
+And of course, you can always ask questions in the Discord community!
 
 ### [I understand that DVC Studio is a discoverability layer over my DVC repo in GitHub. Will any of my data be stored on your servers?](https://discord.com/channels/485586884165107732/841856466897469441/923714473603256420)
 
