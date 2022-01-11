@@ -685,9 +685,9 @@
             ]
           },
           {
-            "slug": "sklearn",
-            "label": "sklearn",
-            "source": "api-reference/sklearn.md"
+            "slug": "plots",
+            "label": "plots",
+            "source": "api-reference/plots.md"
           }
         ]
       }

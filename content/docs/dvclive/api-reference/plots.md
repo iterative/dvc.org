@@ -6,7 +6,7 @@ in the format expected by `dvc plots`.
 
 ![](/img/dvclive-sklearn.png)
 
-See [usage example](/doc/dvclive/ml-frameworks/sklearn).
+> See also a [detailed usage example](/doc/dvclive/ml-frameworks/sklearn).
 
 ## log_calibration_curve
 
