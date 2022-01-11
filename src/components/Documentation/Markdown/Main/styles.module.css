@@ -70,8 +70,29 @@
       }
     }
 
+    a.token.arg {
+      color: var(--color-light-blue);
+      outline-color: var(--color-light-blue-hover);
+    }
+
     :global(a.gatsby-resp-image-link)::after {
       content: unset;
+    }
+
+    li .anchor svg {
+      visibility: hidden;
+    }
+
+    li:hover .anchor svg {
+      visibility: visible;
+    }
+
+    li .anchor:focus svg {
+      visibility: visible;
+    }
+
+    li .anchor {
+      line-height: unset;
     }
 
     .anchor {
