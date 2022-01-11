@@ -20,7 +20,7 @@ const boldAndItalicConfig = {
 
 Prism.languages.dvctable = {
   rows: {
-    pattern: /((?<=^|\n)\s[^─][\s\S]*?(:?\n|$))+/,
+    pattern: /((?<=^|\n)[^─]{2}[\s\S]*?(:?\n|$))+/,
     inside: {
       'bg-white': {
         pattern: getTableTextBgColorRegex('(white|neutral)'),
