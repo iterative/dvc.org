@@ -1,12 +1,12 @@
-# Scikit-learn utilities
-
-See [detailed usage examples](/doc/dvclive/ml-frameworks/sklearn).
+# Plotting utilities
 
 Generates
 [Scikit-learn visualizations](https://scikit-learn.org/stable/visualizations.html)
 in the format expected by `dvc plots`.
 
 ![](/img/dvclive-sklearn.png)
+
+See [usage example](/doc/dvclive/ml-frameworks/sklearn).
 
 ## log_calibration_curve
 
@@ -23,7 +23,7 @@ def log_calibration_curve(y_true, y_prob, output_file, **kwargs):
 #### Usage:
 
 ```py
-from dvclive.sklearn import log_calibration_curve
+from dvclive.plots import log_calibration_curve
 
 y_true = [1, 1, 2, 2]
 y_prob = [0.1, 0.4, 0.35, 0.8]
@@ -64,7 +64,7 @@ def log_confusion_matrix(y_true, y_pred, output_file):
 #### Usage:
 
 ```py
-from dvclive.sklearn import log_confusion_matrix
+from dvclive.plots import log_confusion_matrix
 
 y_true = [1, 1, 2, 2]
 y_pred = [2, 1, 1, 2]
@@ -102,7 +102,7 @@ def log_det(y_true, y_score, output_file, **kwargs):
 #### Usage:
 
 ```py
-from dvclive.sklearn import log_det
+from dvclive.plots import log_det
 
 y_true = [1, 1, 2, 2]
 y_score = [0.1, 0.4, 0.35, 0.8]
@@ -144,7 +144,7 @@ def log_precision_recall(y_true, probas_pred, output_file, **kwargs):
 #### Usage:
 
 ```py
-from dvclive.sklearn import log_precision_recall
+from dvclive.plots import log_precision_recall
 
 y_true = [1, 1, 2, 2]
 probas_pred = [0.1, 0.4, 0.35, 0.8]
@@ -186,7 +186,7 @@ def log_roc(y_true, y_score, output_file, **kwargs):
 #### Usage:
 
 ```py
-from dvclive.sklearn import log_roc
+from dvclive.plots import log_roc
 
 y_true = [1, 1, 2, 2]
 y_score = [0.1, 0.4, 0.35, 0.8]

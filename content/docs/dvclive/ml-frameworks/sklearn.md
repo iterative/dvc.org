@@ -1,12 +1,12 @@
 # Scikit-learn
 
-DVCLive allows you to easily add experiment tracking capabilities to your
-Scikit-learn projects.
+DVCLive allows you to add experiment tracking capabilities to your
+[Scikit-learn](https://scikit-learn.org/) projects.
 
 ## Usage
 
 To start using DVCLive, add a few modifications to your training code in **any**
-Scikit-learn project.
+[Scikit-learn](https://scikit-learn.org/) project.
 
 To illustrate with some code, let's consider the following example:
 
@@ -24,9 +24,8 @@ y_pred = clf.predict(X_test)
 y_score = clf.predict_proba(X_test)[:, 1]
 ```
 
-DVCLive provides a set of
-[Scikit-learn utilities](/doc/dvclive/api-reference/sklearn) that allow you to
-generate `dvc plots` from your labels and predictions.
+DVCLive provides a set of [plotting utilities](/doc/dvclive/api-reference/plots)
+that allow you to generate `dvc plots` from your labels and predictions.
 
 ```python
 from dvclive.sklearn import (
