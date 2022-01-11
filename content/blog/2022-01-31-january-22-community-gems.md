@@ -116,6 +116,7 @@ For example, if you are currently executing a command like this:
 
 ```dvc
 dvc run -n prune \
+        -o model.pt \
         -d ./DepFiles_0/ \
         -d ./DepFiles_1/ \
         -d ./DepFiles_2/ \
@@ -123,6 +124,7 @@ dvc run -n prune \
         -d ./packages/.py \
         -d ./scripts/.py \
         -d ./data/.npy \
+        python script.py
 ```
 
 You could add those directly to the `dvc.yaml` like this:
@@ -130,6 +132,7 @@ You could add those directly to the `dvc.yaml` like this:
 ```yaml
 stages:
   prune:
+    cmd: python script.py
     deps:
       - ./DepFiles_0/
       - ./DepFiles_1/
@@ -138,6 +141,8 @@ stages:
       - ./packages/.py
       - ./scripts/.py
       - ./data/.npy
+    outs:
+      - model.pt
 ```
 
 ### [I'm setting up MLOps at my company from scratch and we use GitLab and Cloudera DS workbench. What are the best resources to get started with CML?](https://discord.com/channels/485586884165107732/728693131557732403/923785806848614461)
