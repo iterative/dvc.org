@@ -1,13 +1,13 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import cn from 'classnames'
 
-import MainLayout, { LayoutComponent, LayoutModifiers } from '../../MainLayout'
-import LayoutWidthContainer from '../../LayoutWidthContainer'
-import HamburgerIcon from '../../HamburgerIcon'
+import MainLayout, { LayoutComponent, LayoutModifiers } from '../MainLayout'
+import LayoutWidthContainer from 'gatsby-theme-iterative-docs/src/components/LayoutWidthContainer'
+import HamburgerIcon from 'gatsby-theme-iterative-docs/src/components/HamburgerIcon'
 import SearchForm from './SearchForm'
 import SidebarMenu from './SidebarMenu'
-import { matchMedia } from '../../../utils/front/breakpoints'
-import { focusElementWithHotkey } from '../../../utils/front/focusElementWithHotkey'
+import { matchMedia } from 'gatsby-theme-iterative-docs/src/utils/front/breakpoints'
+import { focusElementWithHotkey } from 'gatsby-theme-iterative-docs/src/utils/front/focusElementWithHotkey'
 
 import * as styles from './styles.module.css'
 import { useWindowSize } from 'react-use'

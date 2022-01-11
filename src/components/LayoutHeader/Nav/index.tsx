@@ -1,6 +1,6 @@
 import React from 'react'
 
-import PseudoButton from '../../../../components/PseudoButton'
+import PseudoButton from '../../PseudoButton'
 import SocialIcons from './SocialIcons'
 import LinkItems from './LinkItems'
 

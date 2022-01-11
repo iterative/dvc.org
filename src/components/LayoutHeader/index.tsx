@@ -10,7 +10,7 @@ import {
   HamburgerMenu,
   HamburgerButton,
   useHamburgerMenu
-} from '../../../components/HamburgerMenu'
+} from '../HamburgerMenu'
 
 import { useHeaderIsScrolled } from 'gatsby-theme-iterative-docs/src/utils/front/scroll'
 import { ReactComponent as LogoSVG } from '../../../../static/img/dvc_icon-color--square_vector.svg'
