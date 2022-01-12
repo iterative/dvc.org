@@ -72,18 +72,18 @@ The `dvc remote` used is determined in order, based on
   [remote storage](/doc/command-reference/remote) to fetch from (see
   `dvc remote list`).
 
-- `--run-cache` - downloads all available history of
-  [stage runs](/doc/user-guide/project-structure/internal-files#run-cache) from
-  the remote repository. See the same option in `dvc push`.
+- `-d`, `--with-deps` - only meaningful when specifying `targets`. This
+  determines files to download by resolving all dependencies of the targets: DVC
+  searches backward from the targets in the corresponding pipelines. This will
+  not fetch files referenced in later stages than the `targets`.
 
 - `-R`, `--recursive` - determines the files to fetch by searching each target
   directory and its subdirectories for `dvc.yaml` and `.dvc` files to inspect.
   If there are no directories among the `targets`, this option has no effect.
 
-- `-d`, `--with-deps` - only meaningful when specifying `targets`. This
-  determines files to download by resolving all dependencies of the targets: DVC
-  searches backward from the targets in the corresponding pipelines. This will
-  not fetch files referenced in later stages than the `targets`.
+- `--run-cache` - downloads all available history of
+  [stage runs](/doc/user-guide/project-structure/internal-files#run-cache) from
+  the remote repository. See the same option in `dvc push`.
 
 - `-j <number>`, `--jobs <number>` - parallelism level for DVC to download data
   from remote storage. The default value is `4 * cpu_count()`. For SSH remotes,

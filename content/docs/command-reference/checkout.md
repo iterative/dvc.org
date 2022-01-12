@@ -75,16 +75,16 @@ the [pipeline](/doc/command-reference/dag) must be reproduced (using
 - `--summary` - display a short summary of the changes done by this command in
   the workspace, instead of a full list of changes.
 
-- `-R`, `--recursive` - determines the files to checkout by searching each
-  target directory and its subdirectories for `dvc.lock` and `.dvc` files to
-  inspect. If there are no directories among the `targets`, this option has no
-  effect.
-
 - `-d`, `--with-deps` - only meaningful when specifying `targets`. This
   determines files to update by resolving all dependencies of the target stages
   or `.dvc` files: DVC searches backward from the targets in the corresponding
   pipelines. This will not checkout files referenced in later stages than the
   `targets`.
+
+- `-R`, `--recursive` - determines the files to checkout by searching each
+  target directory and its subdirectories for `dvc.lock` and `.dvc` files to
+  inspect. If there are no directories among the `targets`, this option has no
+  effect.
 
 - `-f`, `--force` - does not prompt when removing workspace files. Changing the
   current set of DVC files with `git checkout` can result in the need for DVC to

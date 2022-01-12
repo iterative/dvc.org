@@ -69,16 +69,16 @@ guarantee reproducibility in those cases.
 
 ## Options
 
-- `-R`, `--recursive` - determines the files to commit by searching each target
-  directory and its subdirectories for stages (in `dvc.yaml`) or `.dvc` files to
-  inspect. If there are no directories among the `targets`, this option has no
-  effect.
-
 - `-d`, `--with-deps` - only meaningful when specifying `targets`. This
   determines files to commit by resolving all dependencies of the target stages
   or `.dvc` files: DVC searches backward from the targets in the corresponding
   pipelines. This will not commit files referenced in later stages than the
   `targets`.
+
+- `-R`, `--recursive` - determines the files to commit by searching each target
+  directory and its subdirectories for stages (in `dvc.yaml`) or `.dvc` files to
+  inspect. If there are no directories among the `targets`, this option has no
+  effect.
 
 - `-f`, `--force` - commit data even if hash values for dependencies or outputs
   did not change.
