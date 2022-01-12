@@ -109,7 +109,7 @@ $ dvc exp show --all-commits --include-params=featurize
 
 ```dvctable
  ────────────────────────────────────────────────────────────────────────────────────────────
-  **Experiment**              **Created**            **auc**   **featurize.max_features**   **featurize.ngrams**
+  neutral:**Experiment**              neutral:**Created**            metric:**auc**   param:**featurize.max_features**   param:**featurize.ngrams**
  ────────────────────────────────────────────────────────────────────────────────────────────
   workspace               -              0.57756   2000                     2
   master                  05:39 PM       0.57756   2000                     2
