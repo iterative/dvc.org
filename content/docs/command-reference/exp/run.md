@@ -22,10 +22,7 @@ Provides a way to execute and track <abbr>experiments</abbr> in your
 <abbr>project</abbr> without polluting it with unnecessary commits, branches,
 directories, etc.
 
-> `dvc exp run` is equivalent to `dvc repro` for experiments. It has the same
-> behavior when it comes to `targets` and stage execution (restores the
-> dependency graph, etc.). See the command [options](#options) for more on the
-> differences.
+> 📖 See full [Running Experiments] guide.
 
 Before running an experiment, you'll probably want to make modifications such as
 data and code updates, or <abbr>hyperparameter</abbr> tuning. For the latter,
@@ -36,6 +33,12 @@ Each experiment creates and tracks a project variation based on your
 <abbr>workspace</abbr> changes. Experiments will have a unique, auto-generated
 name like `exp-bfe64` by default, which can be customized using the `--name`
 (`-n`) option.
+
+> `dvc exp run` has the same behavior as `dvc repro` when it comes to `targets`
+> and stage execution (restores the dependency graph, etc.).  
+> See the command [options](#options) for more on the differences.
+
+[running experiments]: /doc/user-guide/experiment-management/running-experiments
 
 <details>
 
@@ -151,7 +154,7 @@ CPU cores).
 ## Options
 
 > In addition to the following, `dvc exp run` accepts all the options in
-> `dvc repro`, with the exception that `--no-commit` has no effect here.
+> `dvc repro`, with the exception that `--no-commit` has no effect.
 
 - `-S [<filename>:]<param_name>=<param_value>`,
   `--set-param [<filename>:]<param_name>=<param_value>` - set the value of
