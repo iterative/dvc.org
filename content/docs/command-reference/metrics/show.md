@@ -51,7 +51,7 @@ compares them with a previous version.
 
 - `-R`, `--recursive` - determines the metrics files to show by searching each
   target directory and its subdirectories for `dvc.yaml` files to inspect. If
-  there are no directories among the `targets`, this option is ignored.
+  there are no directories among the `targets`, this option has no effect.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 

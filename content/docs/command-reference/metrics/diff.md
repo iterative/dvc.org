@@ -61,8 +61,8 @@ all the current metrics (without comparisons).
   ```
 
 - `-R`, `--recursive` - determines the metrics files to use by searching each
-  target directory and its subdirectories for DVC-tracked files to inspect. If
-  there are no directories among the `targets`, this option is ignored.
+  target directory and its subdirectories for `dvc.yaml` files to inspect. If
+  there are no directories among the `targets`, this option has no effect.
 
 - `--all` - list all metrics, including those without changes.
 

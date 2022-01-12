@@ -12,7 +12,7 @@ usage: dvc fetch [-h] [-q | -v] [-j <number>] [-r <name>] [-a] [-T]
 
 positional arguments:
   targets       Limit command scope to these tracked files/directories,
-                .dvc files, or stage names.
+                stages, or .dvc files.
 ```
 
 ## Description
@@ -55,7 +55,7 @@ Without arguments, it downloads all files and directories referenced in the
 current workspace (found in `dvc.yaml` and `.dvc` files) that are missing from
 the workspace. Any `targets` given to this command limit what to fetch. It
 accepts paths to tracked files or directories (including paths inside tracked
-directories), `.dvc` files, and stage names (found in `dvc.yaml`).
+directories), `.dvc` files, and <abbr>stage</abbr> names (found in `dvc.yaml`).
 
 The `--all-branches`, `--all-tags`, and `--all-commits` options enable fetching
 files/dirs referenced in multiple Git commits.
@@ -76,15 +76,14 @@ The `dvc remote` used is determined in order, based on
   [stage runs](/doc/user-guide/project-structure/internal-files#run-cache) from
   the remote repository. See the same option in `dvc push`.
 
-- `-d`, `--with-deps` - determines files to download by tracking dependencies to
-  the `targets`. If none are provided, this option is ignored. By traversing all
-  stage dependencies, DVC searches backward from the target stages in the
-  corresponding pipelines. This means DVC will not fetch files referenced in
-  later stages than the `targets`.
-
 - `-R`, `--recursive` - determines the files to fetch by searching each target
   directory and its subdirectories for `dvc.yaml` and `.dvc` files to inspect.
-  If there are no directories among the `targets`, this option is ignored.
+  If there are no directories among the `targets`, this option has no effect.
+
+- `-d`, `--with-deps` - only meaningful when specifying `targets`. This
+  determines files to download by resolving all dependencies of the targets: DVC
+  searches backward from the targets in the corresponding pipelines. This will
+  not fetch files referenced in later stages than the `targets`.
 
 - `-j <number>`, `--jobs <number>` - parallelism level for DVC to download data
   from remote storage. The default value is `4 * cpu_count()`. For SSH remotes,

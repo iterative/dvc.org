@@ -128,8 +128,9 @@ not.
 
 - `-R`, `--recursive` - determines the files to add by searching each target
   directory and its subdirectories for data files. If there are no directories
-  among the `targets`, this option is ignored. For each file found, a new `.dvc`
-  file is created using the process described in this command's description.
+  among the `targets`, this option has no effect. For each file found, a new
+  `.dvc` file is created using the process outlined in this command's
+  description.
 
 - `--no-commit` - do not store `targets` in the cache (the `.dvc` file is still
   created). Use `dvc commit` to finish the operation (similar to `git commit`

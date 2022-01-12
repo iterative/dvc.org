@@ -129,14 +129,12 @@ that.
 - `-R`, `--recursive` - determines the files to check status for by searching
   each target directory and its subdirectories for stages (in `dvc.yaml`) and
   `.dvc` files to inspect. If there are no directories among the targets, this
-  option is ignored.
+  option has no effect.
 
-- `-d`, `--with-deps` - determines files to check by tracking dependencies to
-  the `targets`. If none are provided, this option is ignored. By traversing all
-  stage dependencies, DVC searches backward from the target stages in the
-  corresponding pipelines. This means DVC will not show changes occurring in
-  later stages than the `targets`. Applies whether or not `--cloud` is
-  specified.
+- `-d`, `--with-deps` - only meaningful when specifying `targets`. This
+  determines files to check by resolving all dependencies of the targets: DVC
+  searches backward from the targets in the corresponding pipelines. This will
+  not show changes occurring in later stages than the `targets`.
 
 - `-r <name>`, `--remote <name>` - name of the
   [remote storage](/doc/command-reference/remote) to compare against (see
