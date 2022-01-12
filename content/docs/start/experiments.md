@@ -129,7 +129,7 @@ specific variables from a file.
 
 By default, DVC assumes that a parameters file named `params.yaml` is available
 in your project. DVC parses this file and creates dependencies to the variables
-(`model.conv_units` and `train.epochs`) found in the file.
+found in it: `model.conv_units` and `train.epochs`
 
 Here is the contents of `params.yaml` file:
 
