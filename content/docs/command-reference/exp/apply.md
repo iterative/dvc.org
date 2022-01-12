@@ -61,7 +61,7 @@ $ dvc exp show --include-params=featurize
 
 ```dvctable
  ────────────────────────────────────────────────────────────────────────────────────────────
-  **Experiment**              **Created**            **auc**   **featurize.max_features**   **featurize.ngrams**
+  neutral:**Experiment**              neutral:**Created**            metric:**auc**   param:**featurize.max_features**   param:**featurize.ngrams**
  ────────────────────────────────────────────────────────────────────────────────────────────
   workspace               -              0.61314   1500                     2
   10-bigrams-experiment   Jun 20, 2020   0.61314   1500                     2
