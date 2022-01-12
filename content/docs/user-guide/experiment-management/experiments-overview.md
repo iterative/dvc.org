@@ -61,7 +61,7 @@ experiments. This includes the locations for expected <abbr>dependencies</abbr>
 <abbr>metrics</abbr>, etc.). These assume [sane defaults] but can be customized
 with the options of `dvc exp init`.
 
-💡 We recommend adding the `-i` flag to use its `--interactive` mode. This will
+💡 We recommend adding the `-i` flag to use its [interactive mode]. This will
 ask you how to run the experiments, and guide you through customizing the
 aforementioned locations (optional).
 
@@ -70,3 +70,4 @@ begin using DVC Experiments. Now you can move on to [running experiments][run]
 (next).
 
 [sane defaults]: /doc/command-reference/exp/init#description
+[interactive mode]: /doc/command-reference/exp/init#example-interactive-mode
