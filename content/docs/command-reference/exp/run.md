@@ -33,11 +33,6 @@ change param values on-the fly.
 > and stage execution (restores the dependency graph, etc.). See the command
 > [options](#options) for more on the differences.
 
-The results of the last `dvc exp run` can be seen in the workspace. To display
-and compare multiple experiments, use `dvc exp show` or `dvc exp diff`
-(`plots diff` also accepts experiment names as `revisions`). Use `dvc exp apply`
-to restore the results of any other experiment instead.
-
 Successful experiments can be made
 [persistent](/doc/user-guide/experiment-management#persistent-experiments) by
 committing them to the Git repo. Unnecessary ones can be removed with

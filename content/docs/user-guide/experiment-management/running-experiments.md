@@ -15,9 +15,7 @@ DVC relies on <abbr>pipelines</abbr> that codify experiment workflows (code,
 `dvc.yaml` file. These contain the commands to run the experiments.
 
 > 📖 See [Get Started: Data Pipelines](/doc/start/data-pipelines) for an intro
-> to this topic.  
-> Here we assume that there's already a working `dvc.yaml` file in the
-> <abbr>project</abbr>.
+> to this topic.
 
 [ug-pipeline-files]: /doc/user-guide/project-structure/pipelines-files
 
@@ -96,6 +94,22 @@ Going to reproduce stage: 'train'... continue? [y/n]
 
 > Note that `dvc exp run` is an experimentation-specific alternative to
 > `dvc repro`.
+
+### Working with the results
+
+The results of the last `dvc exp run` can be seen in the <abbr>workspace</abbr>
+and are stored and tracked internally by DVC.
+
+To display and compare multiple experiments, use `dvc exp show` or
+`dvc exp diff`. `plots diff` also accepts experiments as `revisions`. See
+[Reviewing and Comparing Experiments][reviewing] for more details.
+
+Use `dvc exp apply` to restore the results of any other experiment instead. See
+[Bring experiment results to your workspace][apply] for more.
+
+[reviewing]: /doc/user-guide/experiment-management/comparing-experiments
+[apply]:
+  /doc/user-guide/experiment-management/persisting-experiments#bring-experiment-results-to-your-workspace
 
 ## (Hyper)parameters
 
