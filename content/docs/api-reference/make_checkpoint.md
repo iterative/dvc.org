@@ -130,7 +130,7 @@ $ dvc exp show
 
 ```dvctable
  ──────────────────────────────
-  **Experiment**      **Created**
+  neutral:**Experiment**      neutral:**Created**
  ──────────────────────────────
   workspace       -
   master          Feb 10, 2021
