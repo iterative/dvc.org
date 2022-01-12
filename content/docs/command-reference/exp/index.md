@@ -46,8 +46,9 @@ positional arguments:
 `dvc exp` subcommands provide specialized ways to create and manage data
 science/ machine learning experiments.
 
-📖 See [Experiment Management](/doc/user-guide/experiment-management) for more
-info.
+📖 See
+[DVC Experiments Overview](/doc/user-guide/experiment-management/experiments-overview)
+for more info.
 
 > ⚠️ Note that DVC assumes that experiments are deterministic (see **Avoiding
 > unexpected behavior** in `dvc stage add`).

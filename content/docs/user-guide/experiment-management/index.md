@@ -45,27 +45,42 @@ They support support these main approaches:
 It's up to you to decide how to organize completed experiments. These are the
 main alternatives:
 
-- **Git tags and branches** - use the repo's "time dimension" to distribute your
-  experiments. This makes the most sense for experiments that build on each
-  other. Git-based experiment structures are especially helpful along with Git
-  history exploration tools
-  [like GitHub](https://docs.github.com/en/github/visualizing-repository-data-with-graphs/viewing-a-repositorys-network).
+<toggle>
+<tab title="Git tags and branches">
 
-- **Directories** - the project's "space dimension" can be structured with
-  directories (folders) to organize experiments. Useful when you want to see all
-  your experiments at the same time (without switching versions) by just
-  exploring the file system.
+Use the repo's "time dimension" to distribute your experiments. This makes the
+most sense for experiments that build on each other. Git-based experiment
+structures are especially helpful along with Git history exploration tools [like
+GitHub].
 
-- **Hybrid** - combining an intuitive directory structure with a good repo
-  branching strategy tends to be the best option for complex projects.
-  Completely independent experiments live in separate directories (and can be
-  generated with [`foreach` stages], for example), while their progress can be
-  found in different branches.
+[like github]:
+  https://docs.github.com/en/github/visualizing-repository-data-with-graphs/viewing-a-repositorys-network
 
-- **Labels** - in general, you can record experiments in a separate system and
-  structure them using custom labeling. This is typical in dedicated experiment
-  tracking tools. A possible problem with this approach is that it's easy to
-  lose the connection between your project history and the experiments logged.
+</tab>
+<tab title="Directories">
+
+The project's "space dimension" can be structured with directories (folders) to
+organize experiments. Useful when you want to see all your experiments at the
+same time (without switching versions) by just exploring the file system.
+
+</tab>
+<tab title="Hybrid">
+
+Combining an intuitive directory structure with a good repo branching strategy
+tends to be the best option for complex projects. Completely independent
+experiments live in separate directories (and can be generated with [`foreach`
+stages], for example), while their progress can be found in different branches.
+
+</tab>
+<tab title="Labels">
+
+In general, you can record experiments in a separate system and structure them
+using custom labeling. This is typical in dedicated experiment tracking tools. A
+possible problem with this approach is that it's easy to lose the connection
+between your project history and the experiments logged.
+
+</tab>
+</toggle>
 
 DVC takes care of arranging `dvc exp` experiments and the data
 <abbr>cache</abbr> under the hood so there's no need to decide on the above
