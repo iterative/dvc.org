@@ -124,7 +124,7 @@ Experiment results have been applied to your workspace.
 
 It's pretty common for data science projects to include configuration files that
 define adjustable parameters to train a model, adjust model architecture, do
-pre-processing, etc. DVC provides a mechanism for stages to depend on the
+pre-processing, etc. DVC provides a mechanism for experiments to depend on the
 specific variables from a file.
 
 By default, DVC assumes a parameters file named `params.yaml` is available in
