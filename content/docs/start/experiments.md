@@ -140,8 +140,9 @@ model:
   conv_units: 16
 ```
 
-When you use `--set-param` option for `dvc exp run`, DVC updates these values
-with the values you set in the command line before running the experiment.
+When you use `--set-param` option for `dvc exp run`, DVC updates the parameters
+in `params.yaml` with the values you set in the command line before running the
+experiment.
 
 </details>
 
