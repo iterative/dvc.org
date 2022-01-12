@@ -326,7 +326,7 @@ You should seem something similar to this in your terminal.
 
 ```dvctable
  ───────────────────────────────────────────────────────────────────────────────────────────────
-  **Experiment**                **Created**    **step**   **loss**      **acc**      **seed**     **lr**       **weight_decay**
+  neutral:**Experiment**                neutral:**Created**    neutral:**step**   metric:**loss**      metric:**acc**      param:**seed**     param:**lr**       param:**weight_decay**
  ───────────────────────────────────────────────────────────────────────────────────────────────
   workspace                 -          8      0.83515   0.8185   473987   1e-05    0
   main                      01:19 PM   -      -         -        473987   0.0001   0
