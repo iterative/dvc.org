@@ -42,8 +42,10 @@ They support support these main approaches:
 
 ### Organization patterns
 
-It's up to you to decide how to organize completed experiments. These are the
-main alternatives:
+It's up to you to decide how to organize completed experiments. DVC takes care
+of arranging `dvc exp` experiments and the data <abbr>cache</abbr> under the
+hood so there's no need to decide until your experiments are made [persistent].
+These are the main alternatives:
 
 <toggle>
 <tab title="Git tags and branches">
@@ -81,10 +83,6 @@ between your project history and the experiments logged.
 
 </tab>
 </toggle>
-
-DVC takes care of arranging `dvc exp` experiments and the data
-<abbr>cache</abbr> under the hood so there's no need to decide on the above
-until your experiments are made [persistent].
 
 [`foreach` stages]:
   /doc/user-guide/project-structure/pipelines-files#foreach-stages
