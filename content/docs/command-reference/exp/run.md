@@ -1,6 +1,7 @@
 # exp run
 
-Run or resume an [experiment](/doc/command-reference/exp).
+Run or resume a
+[DVC Experiment](/doc/user-guide/experiment-management/experiments-overview).
 
 ## Synopsis
 
@@ -39,18 +40,6 @@ name like `exp-bfe64` by default, which can be customized using the `--name`
 > See the command [options](#options) for more on the differences.
 
 [running experiments]: /doc/user-guide/experiment-management/running-experiments
-
-<details>
-
-### ⚙️ How does DVC track experiments?
-
-Experiments are custom
-[Git references](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
-(found in `.git/refs/exps`) with a single commit based on `HEAD` (not checked
-out by DVC). Note that these commits are not pushed to Git remotes by default
-(see `dvc exp push`).
-
-</details>
 
 The results of the last `dvc exp run` can be seen in the workspace. To display
 and compare multiple experiments, use `dvc exp show` or `dvc exp diff`
