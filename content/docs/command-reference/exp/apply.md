@@ -128,7 +128,7 @@ $ dvc exp show --include-params=featurize
 
 ```dvctable
  ─────────────────────────────────────────────────────────────────────────────
-  **Experiment**   **Created**        **auc**   **featurize.max_features**   **featurize.ngrams**
+  neutral:**Experiment**   neutral:**Created**        metric:**auc**   param:**featurize.max_features**   param:**featurize.ngrams**
  ─────────────────────────────────────────────────────────────────────────────
   workspace    -          0.69830   2000                     2
   master       04:31 PM   0.69830   2000                     2
