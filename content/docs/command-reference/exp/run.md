@@ -23,22 +23,15 @@ Provides a way to execute and track <abbr>experiments</abbr> in your
 <abbr>project</abbr> without polluting it with unnecessary commits, branches,
 directories, etc.
 
-> 📖 See full [Running Experiments] guide.
+> 📖 See full [Running Experiments] guide for more information.
 
 Before running an experiment, you'll probably want to make modifications such as
 <abbr>parameter</abbr> tuning. You can use the `--set-param` (`-S`) option to
 change param values on-the fly.
 
-Each experiment creates and tracks a project variation based on your
-<abbr>workspace</abbr> changes. Experiments will have a unique, auto-generated
-name like `exp-bfe64` by default, which can be customized using the `--name`
-(`-n`) option.
-
 > `dvc exp run` has the same behavior as `dvc repro` when it comes to `targets`
-> and stage execution (restores the dependency graph, etc.).  
-> See the command [options](#options) for more on the differences.
-
-[running experiments]: /doc/user-guide/experiment-management/running-experiments
+> and stage execution (restores the dependency graph, etc.). See the command
+> [options](#options) for more on the differences.
 
 The results of the last `dvc exp run` can be seen in the workspace. To display
 and compare multiple experiments, use `dvc exp show` or `dvc exp diff`
@@ -52,6 +45,8 @@ committing them to the Git repo. Unnecessary ones can be removed with
 
 > Note that experiment data will remain in the <abbr>cache</abbr> until you use
 > regular `dvc gc` to clean it up.
+
+[running experiments]: /doc/user-guide/experiment-management/running-experiments
 
 ## Checkpoints
 
