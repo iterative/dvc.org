@@ -127,8 +127,8 @@ define adjustable parameters to train a model, adjust model architecture, do
 pre-processing, etc. DVC provides a mechanism for experiments to depend on the
 specific variables from a file.
 
-By default, DVC assumes a parameters file named `params.yaml` is available in
-your project. DVC parses this file and creates dependencies to the variables
+By default, DVC assumes that a parameters file named `params.yaml` is available
+in your project. DVC parses this file and creates dependencies to the variables
 (`model.conv_units` and `train.epochs`) found in the file.
 
 Here is the contents of `params.yaml` file:
