@@ -405,7 +405,7 @@ new set of checkpoints under a new experiment branch.
 
 ```dvctable
  ───────────────────────────────────────────────────────────────────────────────────────────────
-  Experiment                Created    step   loss      acc      seed     lr       weight_decay
+  neutral:**Experiment**                neutral:**Created**    neutral:**step**   metric:**loss**      metric:**acc**      param:**seed**     param:**lr**       param:**weight_decay**
  ───────────────────────────────────────────────────────────────────────────────────────────────
   workspace                 -          6      2.0912    0.5607   473987   1e-05    0
   main                      01:19 PM   -      -         -        473987   0.0001   0
