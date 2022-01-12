@@ -99,7 +99,7 @@ Going to reproduce stage: 'train'... continue? [y/n]
 
 ## (Hyper)parameters
 
-<abbr>Parameters</abbr> are the values that modify the underlying code's
+ML <abbr>parameters</abbr> are the values that modify the underlying code's
 behavior, producing different experiment results. Machine learning
 experimentation, for example, involves searching hyperparameters that improve
 the resulting model metrics.

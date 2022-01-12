@@ -26,9 +26,8 @@ directories, etc.
 > 📖 See full [Running Experiments] guide.
 
 Before running an experiment, you'll probably want to make modifications such as
-data and code updates, or <abbr>hyperparameter</abbr> tuning. For the latter,
-you can use the `--set-param` (`-S`) option of this command to change
-`dvc param` values on-the fly.
+<abbr>parameter</abbr> tuning. You can use the `--set-param` (`-S`) option to
+change param values on-the fly.
 
 Each experiment creates and tracks a project variation based on your
 <abbr>workspace</abbr> changes. Experiments will have a unique, auto-generated
