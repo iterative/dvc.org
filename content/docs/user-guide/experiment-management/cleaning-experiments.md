@@ -2,9 +2,9 @@
 
 Although DVC uses minimal resources to keep track of the experiments, they may
 clutter tables and the workspace. DVC allows to remove specific experiments from
-the workspace or delete all not-yet-[persisted] experiments at once.
+the workspace or delete the ones that are not [final] yet.
 
-[persisted]: /doc/user-guide/experiment-management/persisting-experiments
+[final]: /doc/user-guide/experiment-management/persisting-experiments
 
 ## Removing specific experiments
 
@@ -30,10 +30,13 @@ these to keep rather than which of these to remove. You can use `dvc exp gc` to
 select a set of experiments to keep and the rest of them are _garbage
 collected._
 
-This command takes a _scope_ argument. The scope can be `workspace`,
-`all-branches`, `all-tags`, `all-commits`. In garbage collection, the scope
-determines the experiments to _keep_, i.e., experiments out of the scope of the
-given flag are removed.
+This command takes a `scope` argument. It accepts "workspace", "all-branches",
+"all-tags", or "all-commits". This determines the experiments to _keep_, i.e.
+experiments not in scope are removed.
+
+> ⚠️ Note that experiment remains in the <abbr>cache</abbr> until you use
+> regular `dvc gc` separately to clean it up (if it's not needed by committed
+> versions).
 
 ### Keeping experiments in the workspace
 

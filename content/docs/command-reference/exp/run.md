@@ -33,15 +33,12 @@ change param values on-the fly.
 > and stage execution (restores the dependency graph, etc.). See the command
 > [options](#options) for more on the differences.
 
-Successful experiments can be made
-[persistent](/doc/user-guide/experiment-management#persistent-experiments) by
-committing them to the Git repo. Unnecessary ones can be removed with
-`dvc exp remove`or `dvc exp gc` (or abandoned).
-
-> Note that experiment data will remain in the <abbr>cache</abbr> until you use
-> regular `dvc gc` to clean it up.
+Successful experiments can be [made persistent] by committing them to the Git
+repo. Unnecessary ones can be [cleared].
 
 [running experiments]: /doc/user-guide/experiment-management/running-experiments
+[persistent]: /doc/user-guide/experiment-management/persisting-experiments
+[cleared]: /doc/user-guide/experiment-management/cleaning-experiments
 
 ## Checkpoints
 
