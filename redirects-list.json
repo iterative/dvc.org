@@ -72,5 +72,7 @@
   "^/doc/studio/user-guide/visualize-experiments$                                         /doc/studio/user-guide/views/visualize-experiments",
   "^/doc/studio/user-guide/run-experiments$                                               /doc/studio/user-guide/views/run-experiments",
 
+  "^/test-image-redirect                                                                  /social-share.png",
+
   "^/(.+)/$                                                                               /$1"
 ]
