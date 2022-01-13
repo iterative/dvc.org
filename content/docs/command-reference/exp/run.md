@@ -175,7 +175,7 @@ $ dvc exp run -S prepare.split=0.25 -S featurize.max_features=2000
 Reproduced experiment(s): exp-18bf6
 ```
 
-To see the results, we can use `dvc exp diff`, which compares both params and
+To see the results, you can use `dvc exp diff`. It compares both params and
 metrics to the previous project version:
 
 ```dvc
