@@ -36,21 +36,22 @@ change param values on-the fly.
 Successful experiments can be [made persistent] by committing them to the Git
 repo. Unnecessary ones can be [cleared].
 
-It's also possible to run special [checkpoint experiments] for deep learning ML.
-
-> 📖 See also [Running checkpoint experiments].
-
-It's also possible to use `dvc exp run --queue` to schedule experiments for
-later execution. `dvc exp run --run-all` will actually run them later, either
-one by one (default) or in parallel (using the `--jobs` option).
+It's possible to schedule experiments for later execution with
+`dvc exp run --queue`. To actually run them, use `dvc exp run --run-all`. This
+can execute them one by one (default) or in parallel (using the `--jobs`
+option).
 
 > Note that queuing an experiment that uses checkpoints implies `--reset`,
 > unless a `--rev` is provided (refer to the previous section).
 
 > 📖 Learn more about the [experiments queue].
 
+It's also possible to run special [checkpoint experiments] for deep learning ML.
+
+> 📖 See [Running checkpoint experiments].
+
 [running experiments]: /doc/user-guide/experiment-management/running-experiments
-[persistent]: /doc/user-guide/experiment-management/persisting-experiments
+[made persistent]: /doc/user-guide/experiment-management/persisting-experiments
 [cleared]: /doc/user-guide/experiment-management/cleaning-experiments
 [checkpoint experiments]: /doc/user-guide/experiment-management/checkpoints
 [running checkpoint experiments]:
