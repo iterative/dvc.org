@@ -41,9 +41,6 @@ It's possible to schedule experiments for later execution with
 can execute them one by one (default) or in parallel (using the `--jobs`
 option).
 
-> Note that queuing an experiment that uses checkpoints implies `--reset`,
-> unless a `--rev` is provided (refer to the previous section).
-
 > 📖 Learn more about the [experiments queue].
 
 It's also possible to run special [checkpoint experiments] for deep learning ML.
@@ -80,8 +77,10 @@ It's also possible to run special [checkpoint experiments] for deep learning ML.
 
 - `--queue` - place this experiment at the end of a line for future execution,
   but don't actually run it yet. Use `dvc exp run --run-all` to process the
-  queue. For checkpoint experiments, this implies `--reset` unless a `--rev` is
-  provided.
+  queue.
+
+  > For checkpoint experiments, this implies `--reset` unless a `--rev` is
+  > provided.
 
 - `--run-all` - run all queued experiments (see `--queue`) and outside your
   workspace (in `.dvc/tmp/exps`). Use `-j` to execute them
@@ -94,7 +93,7 @@ It's also possible to run special [checkpoint experiments] for deep learning ML.
 - `-r <commit>`, `--rev <commit>` - continue an experiment from a specific
   checkpoint name or hash (`commit`) in `--queue` or `--temp` runs.
 
-- `--reset` - deletes `checkpoint` outputs before running this experiment
+- `--reset` - deletes `checkpoint: true` outputs before running this experiment
   (regardless of `dvc.lock`). Useful for ML model re-training.
 
 - `-f`, `--force` - reproduce pipelines even if no changes were found (same as
