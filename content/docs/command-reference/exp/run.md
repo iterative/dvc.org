@@ -58,18 +58,6 @@ one by one (default) or in parallel (using the `--jobs` option).
 [experiments queue]:
   /doc/user-guide/experiment-management/running-experiments#the-experiments-queue
 
-Adding `-j` (`--jobs`),
-[experiment queues](/doc/user-guide/experiment-management/running-experiments#the-experiments-queue)
-can be run in parallel for better performance (creates a tmp dir for each job).
-
-⚠️ Parallel runs are experimental and may be unstable at this time. ⚠️ Make sure
-you're using a number of jobs that your environment can handle (no more than the
-CPU cores).
-
-> Note that each job runs the entire pipeline (or `targets`) serially. DVC makes
-> no attempt to distribute stage commands among jobs. The order in which they
-> were queued is also not preserved when running them.
-
 ## Options
 
 > In addition to the following, `dvc exp run` accepts all the options in
