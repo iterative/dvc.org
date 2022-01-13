@@ -110,8 +110,8 @@ It's also possible to run special [checkpoint experiments] for deep learning ML.
 
 ## Examples
 
-> These examples are based on our [Get Started](/doc/start/experiments), where
-> you can find the actual source code.
+> This is based on our [Get Started](/doc/start/experiments), where you can find
+> the actual source code.
 
 <details>
 
@@ -166,19 +166,16 @@ experiment we just ran (`exp-44136`).
 
 ## Example: Modify parameters on-the-fly
 
-You could modify a params file just like any other <abbr>dependency</abbr> and
-run an experiment on that basis. Since this is a common need, `dvc exp run`
-comes with the `--set-param` (`-S`) option built-in to update existing
-parameters. This saves you the need to manually edit the params file.
+`dvc exp run--set-param` (`-S`) saves you the need to manually edit the params
+file before running an experiment.
 
 ```dvc
 $ dvc exp run -S prepare.split=0.25 -S featurize.max_features=2000
 ...
 Reproduced experiment(s): exp-18bf6
-Experiment results have been applied to your workspace.
 ```
 
-To see the results, we can use `dvc exp diff` which compares both params and
+To see the results, we can use `dvc exp diff`, which compares both params and
 metrics to the previous project version:
 
 ```dvc
