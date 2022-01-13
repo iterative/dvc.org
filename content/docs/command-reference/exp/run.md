@@ -36,43 +36,16 @@ change param values on-the fly.
 Successful experiments can be [made persistent] by committing them to the Git
 repo. Unnecessary ones can be [cleared].
 
+It's also possible to run special [checkpoint experiments] for deep learning ML.
+
+> 📖 See also [Running checkpoint experiments][run-checkpoints].
+
 [running experiments]: /doc/user-guide/experiment-management/running-experiments
 [persistent]: /doc/user-guide/experiment-management/persisting-experiments
 [cleared]: /doc/user-guide/experiment-management/cleaning-experiments
-
-## Checkpoints
-
-To track successive steps in a longer or deeper <abbr>experiment</abbr>, you can
-register checkpoints from your code. Each `dvc exp run` will resume from the
-last checkpoint.
-
-First, mark at least stage <abbr>output</abbr> with `checkpoint: true` in
-`dvc.yaml`. This is needed so that the experiment can resume later, based on the
-<abbr>cached</abbr> output(s) (circular dependency).
-
-⚠️ Note that using `checkpoint` in `dvc.yaml` makes it incompatible with
-`dvc repro`.
-
-Then, use the `dvc.api.make_checkpoint()` function (Python code), or write a
-signal file (any programming language) following the same steps as that
-function.
-
-You can now use `dvc exp run` to begin the experiment. All checkpoints
-registered at runtime will be preserved, even if the process gets interrupted
-(e.g. with `[Ctrl] C`, or by an error). Without interruption, a "wrap-up"
-checkpoint will be added (if needed), so that changes to pipeline outputs don't
-remain in the workspace.
-
-Subsequent uses of `dvc exp run` will continue from the latest checkpoint (using
-the latest cached versions of all outputs).
-
-List previous checkpoints with `dvc exp show`. To resume from a previous
-checkpoint, you must first `dvc exp apply` it before using `dvc exp run`. For
-`--queue` or `--temp` runs (see next section), use `--rev` instead to specify
-the checkpoint to continue from.
-
-Alternatively, use `--reset` to start over (discards previous checkpoints and
-their outputs). This is useful for re-training ML models, for example.
+[checkpoint experiments]: /doc/user-guide/experiment-management/checkpoints
+[running checkpoint experiments]:
+  /doc/user-guide/experiment-management/running-experiments#checkpoint-experiments
 
 ## Queueing and parallel execution
 

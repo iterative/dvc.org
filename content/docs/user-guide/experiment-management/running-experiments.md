@@ -284,9 +284,15 @@ CPU cores).
 ## Checkpoint experiments
 
 To track successive steps in a longer or deeper <abbr>experiment</abbr>, you can
-register [checkpoints](/doc/user-guide/experiment-management/checkpoints) from
-your code. Running checkpoint experiments is no different than with regular
-ones, e.g.:
+register "checkpoints" from your code. These combine DVC Experiments with code
+logging. The latter can be achieved either with [DVCLive](/doc/dvclive), by
+using `dvc.api.make_checkpoint()` (Python code), or writing signal files (any
+programming language) following the same steps as `make_checkpoint()`.
+
+> 📖 See [Checkpoints](/doc/user-guide/experiment-management/checkpoints) to
+> learn more about this feature.
+
+Running checkpoint experiments is no different than with regular ones, e.g.:
 
 ```dvc
 $ dvc exp run -S param=value
@@ -308,6 +314,3 @@ their outputs). This is useful for re-training ML models, for example.
 
 > Note that queuing an experiment that uses checkpoints implies `--reset`,
 > unless a `--rev` is provided (refer to the previous section).
-
-> 📖 See [Checkpoints](/doc/user-guide/experiment-management/checkpoints) to
-> learn more about this feature.

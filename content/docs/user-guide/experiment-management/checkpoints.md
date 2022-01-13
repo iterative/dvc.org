@@ -73,38 +73,36 @@ running:
 $ pip install -r requirements.txt
 ```
 
-This will download all of the packages you need to run the example. Now you have
-everything you need to get started with experiments and checkpoints.
+This will download all of the packages you need to run the example.
+
+To initialize this project as a <abbr>DVC repository</abbr>, use `dvc init`. Now
+you have everything you need to get started with experiments and checkpoints.
 
 </details>
 
 ## Setting up a DVC pipeline
 
-DVC versions data and it also can version the ML model weights file as
-checkpoints during the training process. To enable this, you will need to set up
-a DVC pipeline to train your model.
+DVC can version data as well as the ML model weights file in checkpoints during
+the training process. To enable this, you will need to set up a
+[DVC pipeline](/doc/start/data-pipelines) to train your model.
 
-Adding a DVC pipeline only takes a few commands. At the root of the project,
-run:
-
-```dvc
-$ dvc init
-```
-
-This sets up the files you need for your DVC pipeline to work.
-
-Now we need to add a stage for training our model within a DVC pipeline. We'll
-do that with `dvc stage add`, which we'll explain more later. For now, run the
-following command:
+Now we need to add a training stage to `dvc.yaml` including `checkpoint: true`
+in its <abbr>output</abbr>. This tells DVC which <abbr>cached</abbr> output(s)
+to use to resume the experiment later (a circular dependency). We'll do this
+with `dvc stage add`.
 
 ```dvc
-$ dvc stage add --name train --deps data/MNIST --deps train.py \
-              --checkpoints model.pt --plots-no-cache predictions.json \
-              --params seed,lr,weight_decay --live dvclive python train.py
+$ dvc stage add --name train \
+                --deps data/MNIST --deps train.py \
+                --params seed,lr,weight_decay \
+                --checkpoints model.pt \
+                --plots-no-cache predictions.json \
+                --live dvclive \
+                python train.py
 ```
 
-The `--live dvclive` option enables our special logger [DVCLive](/doc/dvclive),
-which helps you register checkpoints from your code.
+💡 The `--live dvclive` option enables our special logger
+[DVCLive](/doc/dvclive), which helps you register checkpoints from code.
 
 The checkpoints need to be enabled in DVC at the pipeline level. The
 `-c / --checkpoint` option of the `dvc stage add` command defines the checkpoint
@@ -142,6 +140,9 @@ stages:
         summary: true
         html: true
 ```
+
+⚠️ Note that enabling checkpoints in a `dvc.yaml` file makes it incompatible
+with `dvc repro`.
 
 Before we go any further, this is a great point to add these changes to your Git
 history. You can do that with the following commands:
