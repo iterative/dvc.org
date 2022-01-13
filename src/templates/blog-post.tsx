@@ -7,7 +7,7 @@ import Post from '../components/Blog/Post'
 
 import { ISocialIcon } from '../components/SocialIcon'
 import { IGatsbyImageDataParent } from 'gatsby-plugin-image/dist/src/components/hooks'
-// import { isProduction } from '../server/utils'
+import { isProduction } from '../server/utils'
 
 export interface IBlogPostHeroPic {
   picture?: IGatsbyImageDataParent
@@ -47,7 +47,7 @@ const BlogPostPage: React.FC<IBlogPostPageProps> = ({ data }) => {
   const {
     title,
     description,
-    // picture,
+    picture,
     author: { name },
     date
   } = post
@@ -56,7 +56,7 @@ const BlogPostPage: React.FC<IBlogPostPageProps> = ({ data }) => {
       <SEO
         title={title}
         description={description}
-        image="/test-image-redirect"
+        image={isProduction ? `/blog/${picture.fields.sourcePath}` : picture}
         meta={[
           {
             name: 'twitter:card',
