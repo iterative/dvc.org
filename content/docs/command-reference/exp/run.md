@@ -66,15 +66,6 @@ remain in the workspace.
 Subsequent uses of `dvc exp run` will continue from the latest checkpoint (using
 the latest cached versions of all outputs).
 
-<details>
-
-### ⚙️ How are checkpoints captured?
-
-Instead of a single commit, checkpoint experiments have multiple commits under
-the custom Git reference (in `.git/refs/exps`), similar to a branch.
-
-</details>
-
 List previous checkpoints with `dvc exp show`. To resume from a previous
 checkpoint, you must first `dvc exp apply` it before using `dvc exp run`. For
 `--queue` or `--temp` runs (see next section), use `--rev` instead to specify

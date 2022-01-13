@@ -2,15 +2,9 @@
 
 _New in DVC 2.0_
 
-To track successive steps in a longer experiment, you can register checkpoints
-from your code at runtime. This is especially helpful in machine learning, for
-example to track the progress in deep learning techniques such as evolving
-neural networks.
-
-_Checkpoint experiments_ track a series of variations (the checkpoints) and
-their execution can be stopped and resumed as needed. You interact with them
-using the `--rev` and `--reset` options of `dvc exp run` (see also the
-`checkpoint` field in `dvc.yaml` `outs`). They can help you
+To track successive steps in a longer machine learning experiment, you can
+register checkpoints from your code at runtime, for example to track the
+progress with deep learning techniques. They can help you
 
 - implement the best practice in deep learning to save your model weights as
   checkpoints.
@@ -18,8 +12,25 @@ using the `--rev` and `--reset` options of `dvc exp run` (see also the
 - see when metrics start diverging and revert to the optimal checkpoint.
 - automate the process of tracking every training epoch.
 
-> Experiments and checkpoints are [implemented](/blog/experiment-refs) with
-> hidden Git experiment commits branches.
+Checkpoint [execution] can be stopped and resumed as needed. You interact with
+them using the `--rev` and `--reset` options of `dvc exp run` (see also the
+`checkpoint` field in `dvc.yaml` `outs`).
+
+[execution]:
+  /doc/user-guide/experiment-management/running-experiments#checkpoint-experiments
+
+<details>
+
+### ⚙️ How are checkpoints captured?
+
+Instead of a single reference like [regular experiments], checkpoint experiments
+have multiple commits under the custom Git reference (in `.git/refs/exps`),
+similar to a branch.
+
+[regular experiments]:
+  /doc/user-guide/experiment-management/experiments-overview
+
+</details>
 
 Like with regular experiments, checkpoints can become persistent by
 [committing them to Git](#committing-checkpoints-to-git).
