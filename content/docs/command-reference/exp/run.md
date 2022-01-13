@@ -38,7 +38,16 @@ repo. Unnecessary ones can be [cleared].
 
 It's also possible to run special [checkpoint experiments] for deep learning ML.
 
-> 📖 See also [Running checkpoint experiments][run-checkpoints].
+> 📖 See also [Running checkpoint experiments].
+
+It's also possible to use `dvc exp run --queue` to schedule experiments for
+later execution. `dvc exp run --run-all` will actually run them later, either
+one by one (default) or in parallel (using the `--jobs` option).
+
+> Note that queuing an experiment that uses checkpoints implies `--reset`,
+> unless a `--rev` is provided (refer to the previous section).
+
+> 📖 Learn more about the [experiments queue].
 
 [running experiments]: /doc/user-guide/experiment-management/running-experiments
 [persistent]: /doc/user-guide/experiment-management/persisting-experiments
@@ -46,41 +55,12 @@ It's also possible to run special [checkpoint experiments] for deep learning ML.
 [checkpoint experiments]: /doc/user-guide/experiment-management/checkpoints
 [running checkpoint experiments]:
   /doc/user-guide/experiment-management/running-experiments#checkpoint-experiments
+[experiments queue]:
+  /doc/user-guide/experiment-management/running-experiments#the-experiments-queue
 
-## Queueing and parallel execution
-
-The `--queue` option lets you create an experiment as usual, except that nothing
-is actually run. Instead, the experiment is put in a wait-list for later
-execution. `dvc exp show` will mark queued experiments with an asterisk `*`.
-
-> Note that queuing an experiment that uses checkpoints implies `--reset`,
-> unless a `--rev` is provided (refer to the previous section).
-
-Use `dvc exp run --run-all` to process the queue. This is done outside your
-<abbr>workspace</abbr> (in temporary dirs in `.dvc/tmp/exps`) to preserve any
-changes between/after queueing runs.
-
-💡 You can also run a single experiment outside the workspace with
-`dvc exp run --temp`, for example to continue working on the project meanwhile
-(e.g. on another terminal).
-
-> ⚠️ Note that only tracked files and directories will be included in
-> `--queue/temp` experiments. To include untracked files, stage them with
-> `git add` first (before `dvc exp run`). Feel free to `git reset` them
-> afterwards. Git-ignored files/dirs are explicitly excluded from runs outside
-> the workspace to avoid committing unwanted files into experiments.
-
-<details>
-
-### ⚙️ How are experiments queued?
-
-A custom [Git stash](https://www.git-scm.com/docs/git-stash) is used to queue
-pre-experiment commits.
-
-</details>
-
-Adding `-j` (`--jobs`), experiment queues can be run in parallel for better
-performance (creates a tmp dir for each job).
+Adding `-j` (`--jobs`),
+[experiment queues](/doc/user-guide/experiment-management/running-experiments#the-experiments-queue)
+can be run in parallel for better performance (creates a tmp dir for each job).
 
 ⚠️ Parallel runs are experimental and may be unstable at this time. ⚠️ Make sure
 you're using a number of jobs that your environment can handle (no more than the

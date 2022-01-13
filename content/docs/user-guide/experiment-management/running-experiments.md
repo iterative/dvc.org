@@ -177,8 +177,8 @@ $ dvc exp run --set-param model.learning_rate=0.0002
 ...
 ```
 
-> Note that parameters are attached to experiments so you can view them together
-> with `dvc exp show` and `dvc exp diff`.
+> Note that parameters are attached to experiments so they're shown together
+> when [reviewing] them (e.g. in `dvc exp show`).
 
 To set more than one param for the same experiment, use the `-S` option multiple
 times:
@@ -191,6 +191,17 @@ $ dvc exp run -S learning_rate=0.001 -S units=128
 
 The `--queue` option of `dvc exp run` tells DVC to append an experiment for
 later execution. Nothing is actually run yet.
+
+```dvc
+$ dvc exp run --queue -S units=10
+Queued experiment '1cac8ca' for future execution.
+$ dvc exp run --queue -S units=64
+Queued experiment '23660bb' for future execution.
+$ dvc exp run --queue -S units=128
+Queued experiment '3591a5c' for future execution.
+$ dvc exp run --queue -S units=256
+Queued experiment '4109ead' for future execution.
+```
 
 <details>
 
@@ -205,32 +216,29 @@ is found in `.git/refs/exps`, and earlier ones are in its [reflog].
 
 </details>
 
-```dvc
-$ dvc exp run --queue -S units=10
-Queued experiment '1cac8ca' for future execution.
-$ dvc exp run --queue -S units=64
-Queued experiment '23660bb' for future execution.
-$ dvc exp run --queue -S units=128
-Queued experiment '3591a5c' for future execution.
-$ dvc exp run --queue -S units=256
-Queued experiment '4109ead' for future execution.
-```
+Each experiment is derived from the <abbr>workspace</abbr> at the time it's
+queued. If you make changes in the workspace afterwards, they won't be reflected
+in queued experiments (once run).
 
-Each experiment is derived from the workspace at the time it's queued. If you
-make changes in the workspace afterwards, they won't be reflected in queued
-experiments (once run).
+Run them all one-by-one with the `--run-all` flag. For isolation, this is done
+outside your <abbr>workspace</abbr> (in temporary directories).
+
+> Note that the order of execution is independent of their creation order.
+
+```dvc
+$ dvc exp run --run-all
+```
 
 <details>
 
-### How are queued experiments isolated? (Temporary directories)
+### How are queued experiments isolated?
 
-To guarantee that queued experiments derive from their original workspace, DVC
-creates a copy of it in `.dvc/tmp/exps/`, where the experiment will run. All
-these workspaces share the main project <abbr>cache</abbr>.
+DVC creates a copy of the experiment's original workspace in `.dvc/tmp/exps/`
+and runs it there. All workspaces share the single project <abbr>cache</abbr>,
+however.
 
-If you want to isolate an experiments this way without queuing it, you can use
-the `--temp` option. This allows you to continue working while a long experiment
-runs.
+💡 To isolate any experiment (without queuing it), you can use the `--temp`
+flag. This allows you to continue working while a long experiment runs, e.g.:
 
 ```dvc
 $ nohup dvc exp run --temp &
@@ -238,26 +246,16 @@ $ nohup dvc exp run --temp &
 nohup: ignoring input and appending output to 'nohup.out'
 ```
 
-> The above example creates a `nohup.log` file in the original workspace with
-> the output of the DVC process.
-
-Note that Git-ignored files/dirs are explicitly excluded from queued/temp runs
-to avoid committing unwanted files into Git (e.g. once successful experiments
-are [persisted]).
-
-[persisted]: /doc/user-guide/experiment-management/persisting-experiments
+Note that Git-ignored files/dirs are excluded from queued/temp runs to avoid
+committing unwanted files into Git (e.g. once successful experiments are
+[persisted]).
 
 > 💡 To include untracked files, stage them with `git add` first (before
 > `dvc exp run`) and `git reset` them afterwards.
 
+[persisted]: /doc/user-guide/experiment-management/persisting-experiments
+
 </details>
-
-Run them all one-by-one with the `--run-all` flag. The order of execution is
-independent of their creation order.
-
-```dvc
-$ dvc exp run --run-all
-```
 
 To remove all experiments from the queue and start over, you can use
 `dvc exp remove --queue`.
