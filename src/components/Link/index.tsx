@@ -4,6 +4,7 @@ import { useLocation } from '@reach/router'
 import GatsbyLink from 'gatsby-link'
 import { getRedirect } from '../../utils/shared/redirects'
 import { scrollIntoLayout, getScrollNode } from '../../utils/front/scroll'
+import safeQuerySelector from '../../utils/front/safeQuerySelector'
 
 export type ILinkProps = {
   children: React.ReactNode
@@ -78,7 +79,7 @@ const ResultLinkComponent: React.FC<ILinkProps> = ({
 
 const scrollToHash = (hash: string, scrollOptions = {}): void => {
   if (hash) {
-    scrollIntoLayout(document.querySelector(hash), {
+    scrollIntoLayout(safeQuerySelector(hash), {
       waitImages: true,
       ...scrollOptions
     })

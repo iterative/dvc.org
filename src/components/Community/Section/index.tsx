@@ -4,7 +4,6 @@ import { useLocation } from '@reach/router'
 import { Collapse } from 'react-collapse'
 import { useWindowSize } from 'react-use'
 
-import { isTriggeredFromKB } from '../../../utils/front/keyboard'
 import { screens } from '../../../../config/postcss/media'
 
 import * as styles from './styles.module.css'
@@ -38,14 +37,6 @@ const Section: React.FC<ICommunitySection> = ({
     () => setIsContentVisible(!isContentVisible),
     [isContentVisible]
   )
-  const toggleFromKeyboard = useCallback(
-    (e: React.KeyboardEvent) => {
-      if (isTriggeredFromKB(e)) {
-        toggleVisibility()
-      }
-    },
-    [toggleVisibility]
-  )
   const { width } = useWindowSize()
   const location = useLocation()
 
@@ -62,13 +53,10 @@ const Section: React.FC<ICommunitySection> = ({
       className={cn(styles.container, background && styles.hasBg)}
       id={anchor}
     >
-      <div
+      <button
         className={styles.header}
         style={{ color }}
         onClick={toggleVisibility}
-        onKeyDown={toggleFromKeyboard}
-        role="button"
-        tabIndex={0}
       >
         <img className={styles.icon} src={icon} alt="" />
         <div>
@@ -85,7 +73,7 @@ const Section: React.FC<ICommunitySection> = ({
             {mobileDescription}
           </div>
         </div>
-      </div>
+      </button>
       {background && <img className={styles.picture} src={background} alt="" />}
 
       {isTablet ? (

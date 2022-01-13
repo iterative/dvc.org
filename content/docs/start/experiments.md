@@ -89,13 +89,13 @@ $ dvc exp show
 ```
 
 ```dvctable
-┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━┓
-┃ white:**Experiment**              ┃ white:**Created**      ┃ yellow:**loss**    ┃ yellow:**acc**    ┃ blue:**train.epochs** ┃ blue:**model.conv_units** ┃
-┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━┩
-│ workspace               │ -            │ 0.23282 │ 0.9152 │ 10           │ 16               │
-│ 7317bc6                 │ Jul 18, 2021 │       - │      - │ 10           │ 16               │
-│ └── 1a1d858 [exp-6dccf] │ 03:21 PM     │ 0.23282 │ 0.9152 │ 10           │ 16               │
-└─────────────────────────┴──────────────┴─────────┴────────┴──────────────┴──────────────────┘
+ ─────────────────────────────────────────────────────────────────────────────────────────────
+  white:**Experiment**                white:**Created**           yellow:**loss**      yellow:**acc**   blue:**train.epochs**   blue:**model.conv_units**
+ ─────────────────────────────────────────────────────────────────────────────────────────────
+  workspace                 -              0.23282   0.9152   10             16
+  7317bc6                   Jul 18, 2021         -        -   10             16
+  └── 1a1d858 [exp-6dccf]   03:21 PM       0.23282   0.9152   10             16
+ ─────────────────────────────────────────────────────────────────────────────────────────────
 ```
 
 The `workspace` row in the table shows the results of the most recent experiment
@@ -103,24 +103,6 @@ that's available in the <abbr>workspace</abbr>. The table also shows each
 experiment in a separate row, along with the Git commit IDs they are attached
 to. We can see that the experiment we run has a name `exp-6dccf` and was run
 from the commit ID `7317bc6`.
-
-<details>
-
-### ℹ️ If you used `dvc repro` before
-
-Earlier versions of DVC uses `dvc repro` to run the pipeline. If you already
-have a DVC project, you may already be using `dvc repro`.
-
-We use `dvc repro` to run the pipeline as found in the <abbr>workspace</abbr>.
-All the parameters and dependencies are retrieved from the current workspace. It
-doesn't use any specialized mechanism to track experiments.
-
-When you have a large number of experiments that you don't want to commit all to
-Git, it's better to use `dvc exp run`. It allows to change the parameters
-quickly, can track the history of artifacts and has facilities to compare these
-experiments easily.
-
-</details>
 
 Now let's do some more experimentation.
 
@@ -135,6 +117,32 @@ Reproduced experiment(s): exp-7b56f
 Experiment results have been applied to your workspace.
 ...
 ```
+
+<details>
+
+### ℹ️ More information about (Hyper)parameters
+
+It's pretty common for data science projects to include configuration files that
+define adjustable parameters to train a model, adjust model architecture, do
+pre-processing, etc. DVC provides a mechanism for experiments to depend on the
+specific variables from a file.
+
+By default, DVC assumes that a parameters file named `params.yaml` is available
+in your project. DVC parses this file and creates dependencies to the variables
+found in it: `model.conv_units` and `train.epochs`. Example:
+
+```yaml
+train:
+  epochs: 10
+model:
+  conv_units: 16
+```
+
+When you use `dvc exp run --set-param`, DVC updates the parameters in
+`params.yaml` with the values you set in the command line before running the
+experiment.
+
+</details>
 
 <details>
 
@@ -176,44 +184,42 @@ $ dvc exp show
 ```
 
 ```dvctable
-┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━┓
-┃ white:**Experiment**              ┃ white:**Created**      ┃ yellow:**loss**    ┃ yellow:**acc**    ┃ blue:**train.epochs** ┃ blue:**model.conv_units** ┃
-┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━┩
-│ workspace               │ -            │ 0.23508 │ 0.9151 │ 10           │ 24               │
-│ 7317bc6                 │ Jul 18, 2021 │       - │      - │ 10           │ 16               │
-│ ├── e2647ef [exp-ee8a4] │ 05:14 PM     │ 0.23146 │ 0.9145 │ 10           │ 64               │
-│ ├── 15c9451 [exp-a9be6] │ 05:14 PM     │ 0.25231 │ 0.9102 │ 10           │ 32               │
-│ ├── 9c32227 [exp-17dd9] │ 04:46 PM     │ 0.23687 │ 0.9167 │ 10           │ 256              │
-│ ├── 8a9cb15 [exp-29d93] │ 04:46 PM     │ 0.24459 │ 0.9134 │ 10           │ 128              │
-│ ├── dfc536f [exp-a1bd9] │ 03:35 PM     │ 0.23508 │ 0.9151 │ 10           │ 24               │
-│ └── 1a1d858 [exp-6dccf] │ 03:21 PM     │ 0.23282 │ 0.9152 │ 10           │ 16               │
-└─────────────────────────┴──────────────┴─────────┴────────┴──────────────┴──────────────────┘
+ ─────────────────────────────────────────────────────────────────────────────────────────────
+  white:**Experiment**                white:**Created**           yellow:**loss**      yellow:**acc**   blue:**train.epochs**   blue:**model.conv_units**
+ ─────────────────────────────────────────────────────────────────────────────────────────────
+  workspace                 -              0.23508   0.9151   10             24
+  7317bc6                   Jul 18, 2021         -        -   10             16
+  ├── e2647ef [exp-ee8a4]   05:14 PM       0.23146   0.9145   10             64
+  ├── 15c9451 [exp-a9be6]   05:14 PM       0.25231   0.9102   10             32
+  ├── 9c32227 [exp-17dd9]   04:46 PM       0.23687   0.9167   10             256
+  ├── 8a9cb15 [exp-29d93]   04:46 PM       0.24459   0.9134   10             128
+  ├── dfc536f [exp-a1bd9]   03:35 PM       0.23508   0.9151   10             24
+  └── 1a1d858 [exp-6dccf]   03:21 PM       0.23282   0.9152   10             16
+ ─────────────────────────────────────────────────────────────────────────────────────────────
 ```
 
 By default, it shows all the parameters and the metrics with the timestamp. If
 you have a large number of parameters, metrics or experiments, this may lead to
 a cluttered view. You can limit the table to specific metrics, or parameters, or
-hide the timestamp column with `--include-metrics`, `--include-params`, or
-`--no-timestamp` options of the command, respectively.
+hide the timestamp column (`Created`) using the `--drop` option of the command.
 
 ```dvc
-$ dvc exp show --no-timestamp \
-  --include-params model.conv_units --include-metrics acc
+$ dvc exp show --drop 'Created|train|loss'
 ```
 
 ```dvctable
-┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━━━━━┓
-┃ white:**Experiment**              ┃    yellow:**acc** ┃ blue:**model.conv_units** ┃
-┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━━━━━┩
-│ workspace               │ 0.9151 │ 24               │
-│ 7317bc6                 │      - │ 16               │
-│ ├── e2647ef [exp-ee8a4] │ 0.9145 │ 64               │
-│ ├── 15c9451 [exp-a9be6] │ 0.9102 │ 32               │
-│ ├── 9c32227 [exp-17dd9] │ 0.9167 │ 256              │
-│ ├── 8a9cb15 [exp-29d93] │ 0.9134 │ 128              │
-│ ├── dfc536f [exp-a1bd9] │ 0.9151 │ 24               │
-│ └── 1a1d858 [exp-6dccf] │ 0.9152 │ 16               │
-└─────────────────────────┴────────┴──────────────────┘
+ ─────────────────────────────────────────────────────
+  white:**Experiment**                   yellow:**acc**   blue:**model.conv_units**
+ ─────────────────────────────────────────────────────
+  workspace                 0.9151   24
+  7317bc6                        -   16
+  ├── e2647ef [exp-ee8a4]   0.9145   64
+  ├── 15c9451 [exp-a9be6]   0.9102   32
+  ├── 9c32227 [exp-17dd9]   0.9167   256
+  ├── 8a9cb15 [exp-29d93]   0.9134   128
+  ├── dfc536f [exp-a1bd9]   0.9151   24
+  └── 1a1d858 [exp-6dccf]   0.9152   16
+ ─────────────────────────────────────────────────────
 ```
 
 After selecting an experiment from the table, you can create a Git branch that

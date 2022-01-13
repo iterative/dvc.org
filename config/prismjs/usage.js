@@ -9,5 +9,13 @@ Prism.languages.usage = {
   },
   usage: {
     pattern: /(^|\n)\s*(usage|positional arguments|optional arguments)/
+  },
+  args: {
+    pattern: /(?<=\[)(?:[^\]\[]+|\[(?:[^\]\[]+|\[[^\]\[]*\])*\])*(?=\])/,
+    inside: {
+      arg: {
+        pattern: /\-{1,2}[^|]*/
+      }
+    }
   }
 }

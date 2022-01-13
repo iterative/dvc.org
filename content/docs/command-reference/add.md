@@ -153,15 +153,17 @@ not.
   > Additionally, this typically requires an external cache setup (see link
   > above).
 
-- `-o <path>`, `--out <path>` - destination `path` to make a local target copy,
-  or to [transfer](#example-transfer-to-cache) an external target into the cache
-  (and link to workspace). Note that this can be combined with `--to-remote` to
-  avoid storing the data locally, while still adding it to the project.
+- `-o <path>`, `--out <path>` - specify a `path` to the desired location in the
+  workspace to place the `targets` (instead of using the current working
+  directory). Directories specified in the path will be created by this command.
 
-- `--to-remote` - import an external target, but don't move it into the
-  workspace, nor cache it. [Transfer it](#example-transfer-to-remote-storage) it
-  directly to remote storage (the default one, unless `-r` is specified)
-  instead. Use `dvc pull` to get the data locally.
+  > Note that this can be combined with `--to-remote` to avoid storing the data
+  > locally, in which case the give `path` is only used in `dvc.yaml`.
+
+- `--to-remote` - add an external target, but don't move it into the workspace,
+  nor cache it. [Transfer it](#example-transfer-to-remote-storage) it directly
+  to remote storage (the default one, unless `-r` is specified) instead. Use
+  `dvc pull` to get the data locally.
 
 - `-r <name>`, `--remote <name>` - name of the
   [remote storage](/doc/command-reference/remote) to transfer external target to

@@ -87,13 +87,13 @@ $ dvc exp show --include-params=train.min_split --no-pager
 ```
 
 ```dvctable
-┏━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
-┃ neutral:**Experiment**            ┃ neutral:**Created**      ┃ neutral:**State**  ┃ metric:**avg_prec** ┃ metric:**roc_auc** ┃ metric:**train.min_split** ┃
-┡━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━━━┩
-│ workspace             │ -            │ -      │  0.57553 │ 0.94652 │ 2               │
-│ master                │ Aug 02, 2021 │ -      │  0.53252 │  0.9107 │ 2               │
-│ └── 5751540 [split32] │ 04:57 PM     │ Queued │        - │       - │ 32              │
-└───────────────────────┴──────────────┴────────┴──────────┴─────────┴─────────────────┘
+ ──────────────────────────────────────────────────────────────────────────────────────
+  neutral:**Experiment**              neutral:**Created**        neutral:**State**    metric:**avg_prec**   metric:**roc_auc**   metric:**train.min_split**
+ ──────────────────────────────────────────────────────────────────────────────────────
+  workspace               -              -         0.57553   0.94652   2
+  master                  Aug 02, 2021   -         0.53252    0.9107   2
+  └── 5751540 [split32]   04:57 PM       Queued          -         -   32
+ ──────────────────────────────────────────────────────────────────────────────────────
 ```
 
 We can also remove experiments from a remote Git repository:
@@ -109,7 +109,7 @@ master:
         exp-9fcef
         exp-e6c97
 
-$ dvc exp remote -g myremote exp-9fcef exp-e6c97
+$ dvc exp remove -g myremote exp-9fcef exp-e6c97
 $ dvc exp list myremote
 master:
         exp-1dad0

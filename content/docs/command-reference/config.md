@@ -96,12 +96,25 @@ multiple projects or users, respectively.
 
 ## Configuration sections
 
-The following config sections are written by this command to the project config
-file (in `.dvc/config` by default), and they support the options below:
+The following config sections are written by this command to the appropriate
+config file (`.dvc/config` by default), supporting different config options
+within:
+
+- [`core`](#core) - main section with the general config options
+- [`remote`](#remote) - sections in the config file that describe particular
+  remotes
+- [`cache`](#cache) - options that affect the project's <abbr>cache</abbr>
+- [`exp`](#exp) - options to change the default repo paths assumed by
+  `dvc exp init`
+- [`plots`](#plots) - contains an option to set custom HTML templates.
+- [`state`](#state) - see [Internal directories and files][internals] to learn
+  more about the state database.
+- [`index`](#index) - see [Internal directories and files][internals] to learn
+  more about remote index files.
+
+[internals]: (/doc/user-guide/project-structure/internal-files)
 
 ### core
-
-This is the main section with the general config options:
 
 - `core.remote` - name of the remote storage to use by default.
 
@@ -138,15 +151,11 @@ This is the main section with the general config options:
 
 ### remote
 
-These are sections in the config file that describe particular remotes. They
-contain a `url` value, and can also specify `user`, `port`, `keyfile`,
-`timeout`, `ask_password`, and other cloud-specific key/value pairs for each
-remote. See `dvc remote` for more information.
+All `remote` sections contain a `url` value and can also specify `user`, `port`,
+`keyfile`, `timeout`, `ask_password`, and other cloud-specific key/value pairs.
+See `dvc remote add` and `dvc remote modify` for more information.
 
 ### cache
-
-This section contains the following options, which affect the project's
-<abbr>cache</abbr>:
 
 - `cache.dir` - set/unset cache directory location. A correct value is either an
   absolute path, or a path **relative to the config file location**. The default
@@ -223,33 +232,32 @@ connection settings, and configuring a remote is the way that can be done.
 
 ### exp
 
-This section overrides default configured workspace paths in `dvc exp init`,
-that helps to avoid repeating these paths if all of your projects share a
-similar structure.
+Sets the default paths assumed by `dvc exp init`. This can help avoid overriding
+them repeatedly with that command's options, for example if all of your
+experiments or projects use a similar structure.
 
-The section contains following options, which are only used as a default and can
-be overidden explicitly through CLI arguments or through responses in prompts
-(in `--interactive` mode).
+- `exp.code` - path to your source file or directory <abbr>dependency</abbr>.
 
-- `exp.code` - path to your source file or directory.
+- `exp.params` - path to your <abbr>parameters</abbr> file.
 
-- `exp.data` - path to your data file or directory to track.
+- `exp.data` - path to your data file or directory dependency.
 
-- `exp.models` - path to your models file or directory.
+- `exp.models` - path to your model/artifact(s) file or directory
+  <abbr>output</abbr>.
 
-- `exp.metrics` - path to your metrics file.
+- `exp.metrics` - path to your metrics file output.
 
-- `exp.params` - path to your parameters file.
+- `exp.plots` - path to your plots file or directory output.
 
-- `exp.plots` - path to your plots file or directory.
+- `exp.live` - path to your [DVCLive](/doc/dvclive) output logs.
 
-- `exp.live` - path to your dvclive outputs.
+### plots
+
+- `plots.html_template` - sets a
+  [custom HTML template](/doc/command-reference/plots#html-templates) for
+  `dvc plots`. Accepts a path relative to the `.dvc/` folder.
 
 ### state
-
-> 📖 See
-> [Internal directories and files](/doc/user-guide/project-structure/internal-files)
-> to learn more about the state databases.
 
 - `state.row_limit` - maximum number of entries in state databases. This affects
   the physical size of the state files, as well as the performance of certain
@@ -266,10 +274,6 @@ be overidden explicitly through CLI arguments or through responses in prompts
   permission errors.
 
 ### index
-
-> 📖 See
-> [Internal directories and files](/doc/user-guide/project-structure/internal-files)
-> to learn more about remote index files.
 
 - `index.dir` - specify a custom location for the directory where remote index
   files will be stored, by default in `.dvc/tmp/index`. This may be necessary

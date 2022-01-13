@@ -10,9 +10,11 @@ import Documentation from '../components/Documentation'
 interface IDocPageProps {
   data: {
     page: {
-      htmlAst: Node
-      title?: string
       description?: string
+      title?: string
+      parent: {
+        htmlAst: Node
+      }
     }
   }
   pageContext: {
@@ -26,7 +28,11 @@ const DocPage: React.FC<IDocPageProps> = ({
   pageContext: { slug, headings }
 }) => {
   const {
-    page: { htmlAst, title, description }
+    page: {
+      description,
+      title,
+      parent: { htmlAst }
+    }
   } = data
 
   const { label } = getItemByPath(slug)
@@ -44,9 +50,13 @@ export default DocPage
 export const pageQuery = graphql`
   query DocPage($id: String!) {
     page: docsPage(id: { eq: $id }) {
-      title
       description
-      htmlAst
+      title
+      parent {
+        ... on MarkdownRemark {
+          htmlAst
+        }
+      }
     }
   }
 `

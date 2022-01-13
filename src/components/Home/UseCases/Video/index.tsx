@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react'
 
 import TwoRowsButton from '../../../TwoRowsButton'
-import { logEvent } from '../../../../utils/front/ga'
+import { logEvent } from '../../../../utils/front/plausible'
 
 import * as styles from './styles.module.css'
 
@@ -9,7 +9,7 @@ const Video: React.FC<{ id: string }> = ({ id }) => {
   const [isWatching, setWatching] = useState(false)
 
   const watchVideo = useCallback(() => {
-    logEvent('button', 'video')
+    logEvent('Button', { Item: 'video' })
     setWatching(true)
   }, [])
 
@@ -37,7 +37,7 @@ const Video: React.FC<{ id: string }> = ({ id }) => {
           title="Video"
           width="560"
           height="315"
-          src={`https://www.youtube.com/embed/${id}?rel=0&amp;controls=0&amp;showinfo=0;${
+          src={`https://www.youtube-nocookie.com/embed/${id}?rel=0&amp;controls=0&amp;showinfo=0;${
             isWatching ? `&autoplay=1` : ''
           }`}
           frameBorder="0"

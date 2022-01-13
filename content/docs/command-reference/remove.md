@@ -20,8 +20,8 @@ the corresponding `.gitignore` entries (based on the `outs` fields removed).
 > `dvc remove` doesn't remove files from the DVC <abbr>cache</abbr> or
 > [remote storage](/doc/command-reference/remote). Use `dvc gc` for that.
 
-It takes one or more stage names (see `-n` option of `dvc run`) or `.dvc` file
-names as `targets`.
+It takes one or more stage names (see `-n` option of `dvc stage add`) or `.dvc`
+file names as `targets`.
 
 If there are no stages left in `dvc.yaml` after the removal, then both
 `dvc.yaml` and `dvc.lock` are deleted. `.gitignore` is also deleted if there are

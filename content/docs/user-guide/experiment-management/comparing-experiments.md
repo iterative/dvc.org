@@ -41,8 +41,9 @@ refs/tags/baseline-experiment:
         cnn-64
 ```
 
-This command lists remote experiments originated from `HEAD`. You can add any
-other options to the remote command, including `--all` (see previous section).
+This command lists remote experiments based on that repo's `HEAD`. You can use
+`--all` to list all experiments, or add any other supported option to the remote
+`dvc exp list` command.
 
 [shared]: /doc/user-guide/experiment-management/sharing-experiments
 
@@ -95,14 +96,14 @@ $ dvc exp show
 ```
 
 ```dvctable
-┏━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━┓
-┃ neutral:**Experiment**            ┃ neutral:**Created**      ┃    metric:**loss** ┃    metric:**acc** ┃ param:**train.epochs** ┃ param:**model.conv_units** ┃
-┡━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━┩
-│ workspace             │ -            │ 0.23657 │ 0.9127 │ 10           │ 16               │
-│ baseline-experiment   │ Sep 06, 2021 │ 0.23657 │ 0.9127 │ 10           │ 16               │
-│ ├── 6d13f33 [cnn-64]  │ Sep 09, 2021 │ 0.23385 │ 0.9153 │ 10           │ 64               │
-│ ├── 69503c6 [cnn-128] │ Sep 09, 2021 │ 0.23243 │  0.916 │ 10           │ 128              │
-└───────────────────────┴──────────────┴─────────┴────────┴──────────────┴──────────────────┘
+ ───────────────────────────────────────────────────────────────────────────────────────────
+  neutral:**Experiment**              neutral:**Created**           metric:**loss**      metric:**acc**   param:**train.epochs**   param:**model.conv_units**
+ ───────────────────────────────────────────────────────────────────────────────────────────
+  workspace               -              0.23657   0.9127   10             16
+  baseline-experiment     Sep 06, 2021   0.23657   0.9127   10             16
+  ├── 6d13f33 [cnn-64]    Sep 09, 2021   0.23385   0.9153   10             64
+  ├── 69503c6 [cnn-128]   Sep 09, 2021   0.23243    0.916   10             128
+ ───────────────────────────────────────────────────────────────────────────────────────────
 ```
 
 `dvc exp show` only tabulates experiments in the workspace and in `HEAD`. You
@@ -122,14 +123,14 @@ $ dvc exp show --include-params train.epochs --include-metrics auc,precision
 ```
 
 ```dvctable
-┏━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━┓
-┃ neutral:**Experiment**            ┃ neutral:**Created**      ┃    metric:**loss** ┃    metric:**acc** ┃ param:**train.epochs** ┃
-┡━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━┩
-│ workspace             │ -            │ 0.23657 │ 0.9127 │ 10           │
-│ baseline-experiment   │ Sep 06, 2021 │ 0.23657 │ 0.9127 │ 10           │
-│ ├── 6d13f33 [cnn-64]  │ Sep 09, 2021 │ 0.23385 │ 0.9153 │ 10           │
-│ └── 69503c6 [cnn-128] │ Sep 09, 2021 │ 0.23243 │  0.916 │ 10           │
-└───────────────────────┴──────────────┴─────────┴────────┴──────────────┘
+ ────────────────────────────────────────────────────────────────────────
+  neutral:**Experiment**              neutral:**Created**           metric:**loss**      metric:**acc**   param:**train.epochs**
+ ────────────────────────────────────────────────────────────────────────
+  workspace               -              0.23657   0.9127   10
+  baseline-experiment     Sep 06, 2021   0.23657   0.9127   10
+  ├── 6d13f33 [cnn-64]    Sep 09, 2021   0.23385   0.9153   10
+  └── 69503c6 [cnn-128]   Sep 09, 2021   0.23243    0.916   10
+ ────────────────────────────────────────────────────────────────────────
 ```
 
 Alternatively, you can exclude certain parameters and metrics from the table by
@@ -141,14 +142,14 @@ $ dvc exp show --exclude-params train.epochs --exclude-metrics auc
 ```
 
 ```dvctable
-┏━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━━━━━┓
-┃ neutral:**Experiment**            ┃ neutral:**Created**      ┃    metric:**acc** ┃ param:**model.conv_units** ┃
-┡━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━━━━━┩
-│ workspace             │ -            │ 0.9127 │ 16               │
-│ baseline-experiment   │ Sep 06, 2021 │ 0.9127 │ 16               │
-│ ├── 6d13f33 [cnn-64]  │ Sep 09, 2021 │ 0.9153 │ 64               │
-│ └── 69503c6 [cnn-128] │ Sep 09, 2021 │  0.916 │ 128              │
-└───────────────────────┴──────────────┴────────┴──────────────────┘
+ ──────────────────────────────────────────────────────────────────
+  neutral:**Experiment**              neutral:**Created**           metric:**acc**   param:**model.conv_units**
+ ──────────────────────────────────────────────────────────────────
+  workspace               -              0.9127   16
+  baseline-experiment     Sep 06, 2021   0.9127   16
+  ├── 6d13f33 [cnn-64]    Sep 09, 2021   0.9153   64
+  └── 69503c6 [cnn-128]   Sep 09, 2021    0.916   128
+ ──────────────────────────────────────────────────────────────────
 ```
 
 By default, `dvc exp show` also has a column for the timestamp. You may want to
@@ -159,14 +160,14 @@ $ dvc exp show --no-timestamp --include-params=model.conv_units --exclude-metric
 ```
 
 ```dvctable
-┏━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━━━━━┓
-┃ neutral:**Experiment**            ┃    metric:**acc** ┃ param:**model.conv_units** ┃
-┡━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━━━━━┩
-│ workspace             │ 0.9127 │ 16               │
-│ baseline-experiment   │ 0.9127 │ 16               │
-│ ├── 6d13f33 [cnn-64]  │ 0.9153 │ 64               │
-│ └── 69503c6 [cnn-128] │  0.916 │ 128              │
-└───────────────────────┴────────┴──────────────────┘
+ ───────────────────────────────────────────────────
+  neutral:**Experiment**                 metric:**acc**   param:**model.conv_units**
+ ───────────────────────────────────────────────────
+  workspace               0.9127   16
+  baseline-experiment     0.9127   16
+  ├── 6d13f33 [cnn-64]    0.9153   64
+  └── 69503c6 [cnn-128]    0.916   128
+ ───────────────────────────────────────────────────
 ```
 
 By default `dvc exp show` sorts the experiments by their timestamp. You can sort
@@ -179,17 +180,84 @@ $ dvc exp show --sort-by auc --sort-order desc
 ```
 
 ```dvctable
-┏━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━━━━━┓
-┃ neutral:**Experiment**            ┃    metric:**acc** ┃ param:**model.conv_units** ┃
-┡━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━━━━━┩
-│ workspace             │ 0.9127 │ 16               │
-│ baseline-experiment   │ 0.9127 │ 16               │
-│ ├── 6d13f33 [cnn-64]  │ 0.9153 │ 64               │
-│ └── 69503c6 [cnn-128] │  0.916 │ 128              │
-└───────────────────────┴────────┴──────────────────┘
+ ───────────────────────────────────────────────────
+  neutral:**Experiment**                 metric:**acc**   param:**model.conv_units**
+ ───────────────────────────────────────────────────
+  workspace               0.9127   16
+  baseline-experiment     0.9127   16
+  ├── 6d13f33 [cnn-64]    0.9153   64
+  └── 69503c6 [cnn-128]    0.916   128
+ ───────────────────────────────────────────────────
 ```
 
-## Get experiments table in JSON
+## Parallel Coordinates Plot
+
+You can also generate an interactive
+[parallel coordinates plot](https://en.wikipedia.org/wiki/Parallel_coordinates)
+with `dvc exp show --pcp`.
+
+This plot is useful to explore the relationships between the metrics and params
+used in experiments. You can reorder the columns to make some patterns more
+easily visible.
+
+The `--pcp` flag can be combined with other options of the command. For example,
+use `--sort-by` to sort the experiments and determine the color of the lines
+that represent them.
+
+```dvc
+$ dvc exp show --pcp --all-branches --sort-by roc_auc
+```
+
+![](/img/pcp_interaction.gif) _Parallel Coordinates Plot_
+
+> You can see more
+> [examples in the command reference](/doc/command-reference/exp/show#example-parallel-coordinates-plot-pcp).
+
+## Get experiments table in CSV
+
+`dvc exp show` can also output the table in CSV, with `--csv`. It includes all
+the data found in the table.
+
+```dvc
+$ dvc exp show --csv
+```
+
+```csv
+Experiment,rev,typ,Created,parent,loss,acc,train.epochs,model.conv_units
+,workspace,baseline,,,0.236574187874794,0.9126999974250793,10,16
+baseline-experiment,23ceb4a,baseline,2021-09-06T23:38:07,,0.236574187874794,0.9126999974250793,10,16
+cnn-64,6d13f33,branch_commit,2021-09-09T13:06:05,,0.2338544875383377,0.9153000116348267,10,64
+cnn-128,69503c6,branch_commit,2021-09-09T12:53:51,,0.2324332743883133,0.9160000085830688,10,128
+```
+
+For example, let's parse the CSV output with [csvkit] to get a statistical
+summary about the experiments:
+
+```dvc
+$ dvc exp show --csv | csvstat
+...
+7. "acc"
+
+        Type of data:          Number
+        Contains null values:  False
+        Unique values:         5
+        Smallest value:        0.9127
+        Largest value:         0.9167
+        Sum:                   5.4895
+        Mean:                  0.914917
+        Median:                0.91565
+        StDev:                 0.001774
+        Most common values:    0.9127 (2x)
+                               0.9167 (1x)
+                               0.9153 (1x)
+                               0.9161 (1x)
+                               0.916 (1x)
+...
+```
+
+[csvkit]: https://csvkit.readthedocs.io/en/latest/
+
+## Get table data in JSON
 
 It's also possible to output the table of experiments in a machine-readable
 format, for example to parse in scripts. To do so, use the `--json` or `--csv`
@@ -304,50 +372,6 @@ $ dvc exp show --json | jq '.[].baseline.data.metrics'
 }
 ```
 
-## Get experiments table in CSV
-
-`dvc exp show` can also output the table in CSV, with `--csv`. It includes all
-the data found in the table.
-
-```dvc
-$ dvc exp show --csv
-```
-
-```csv
-Experiment,rev,typ,Created,parent,loss,acc,train.epochs,model.conv_units
-,workspace,baseline,,,0.236574187874794,0.9126999974250793,10,16
-baseline-experiment,23ceb4a,baseline,2021-09-06T23:38:07,,0.236574187874794,0.9126999974250793,10,16
-cnn-64,6d13f33,branch_commit,2021-09-09T13:06:05,,0.2338544875383377,0.9153000116348267,10,64
-cnn-128,69503c6,branch_commit,2021-09-09T12:53:51,,0.2324332743883133,0.9160000085830688,10,128
-```
-
-For example, let's parse the CSV output with [csvkit] to get a statistical
-summary about the experiments:
-
-```dvc
-$ dvc exp show --csv | csvstat
-...
-7. "acc"
-
-        Type of data:          Number
-        Contains null values:  False
-        Unique values:         5
-        Smallest value:        0.9127
-        Largest value:         0.9167
-        Sum:                   5.4895
-        Mean:                  0.914917
-        Median:                0.91565
-        StDev:                 0.001774
-        Most common values:    0.9127 (2x)
-                               0.9167 (1x)
-                               0.9153 (1x)
-                               0.9161 (1x)
-                               0.916 (1x)
-...
-```
-
-[csvkit]: https://csvkit.readthedocs.io/en/latest/
-
 ## Compare specific experiments
 
 In addition to showing a summary table of experiments, DVC provides the
@@ -384,8 +408,8 @@ params.yaml  train.epochs      10    10         0
 ## Compare an experiment with the workspace
 
 When you want to compare two experiments, either the baseline experiment in a
-commit, branch, tag or an attached experiment with ID, you can supply their
-names to `dvc exp diff`.
+commit, branch, or tag; or an attached experiment by name, you can supply any of
+these references to `dvc exp diff`.
 
 ```
 $ dvc exp diff cnn-128 cnn-64

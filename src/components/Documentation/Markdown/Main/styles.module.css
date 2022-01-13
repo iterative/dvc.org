@@ -70,8 +70,29 @@
       }
     }
 
+    a.token.arg {
+      color: var(--color-light-blue);
+      outline-color: var(--color-light-blue-hover);
+    }
+
     :global(a.gatsby-resp-image-link)::after {
       content: unset;
+    }
+
+    li .anchor svg {
+      visibility: hidden;
+    }
+
+    li:hover .anchor svg {
+      visibility: visible;
+    }
+
+    li .anchor:focus svg {
+      visibility: visible;
+    }
+
+    li .anchor {
+      line-height: unset;
     }
 
     .anchor {
@@ -212,6 +233,24 @@
       .token.bg-blue {
         color: #000;
         background-color: #d7feff;
+      }
+    }
+
+    pre[class*="language-dvctable"] {
+      code {
+        display: inline-block;
+        line-height: 20px;
+      }
+
+      .token.rows {
+        background-image: linear-gradient(
+          transparent 50%,
+          rgb(256 256 256 / 10%) 50%
+        );
+        background-size: 100% 40px;
+        display: block;
+        background-origin: content-box;
+        background-attachment: local;
       }
     }
   }
