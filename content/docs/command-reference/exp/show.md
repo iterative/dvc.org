@@ -128,7 +128,8 @@ will be generated using the same data from the table.
   destination `folder` of the plot. By default its `dvc_plots`.
 
 - `--open` - when used with `--pcp`, opens the generated plot in a browser
-  automatically.
+  automatically. You can enable `dvc config plots.auto_open` to make this the
+  default behavior.
 
 ## Examples
 
