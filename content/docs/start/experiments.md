@@ -89,13 +89,13 @@ $ dvc exp show
 ```
 
 ```dvctable
-┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━┓
-┃ white:**Experiment**              ┃ white:**Created**      ┃ yellow:**loss**    ┃ yellow:**acc**    ┃ blue:**train.epochs** ┃ blue:**model.conv_units** ┃
-┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━┩
-│ workspace               │ -            │ 0.23282 │ 0.9152 │ 10           │ 16               │
-│ 7317bc6                 │ Jul 18, 2021 │       - │      - │ 10           │ 16               │
-│ └── 1a1d858 [exp-6dccf] │ 03:21 PM     │ 0.23282 │ 0.9152 │ 10           │ 16               │
-└─────────────────────────┴──────────────┴─────────┴────────┴──────────────┴──────────────────┘
+ ─────────────────────────────────────────────────────────────────────────────────────────────
+  white:**Experiment**                white:**Created**           yellow:**loss**      yellow:**acc**   blue:**train.epochs**   blue:**model.conv_units**
+ ─────────────────────────────────────────────────────────────────────────────────────────────
+  workspace                 -              0.23282   0.9152   10             16
+  7317bc6                   Jul 18, 2021         -        -   10             16
+  └── 1a1d858 [exp-6dccf]   03:21 PM       0.23282   0.9152   10             16
+ ─────────────────────────────────────────────────────────────────────────────────────────────
 ```
 
 The `workspace` row in the table shows the results of the most recent experiment
@@ -117,6 +117,32 @@ Reproduced experiment(s): exp-7b56f
 Experiment results have been applied to your workspace.
 ...
 ```
+
+<details>
+
+### ℹ️ More information about (Hyper)parameters
+
+It's pretty common for data science projects to include configuration files that
+define adjustable parameters to train a model, adjust model architecture, do
+pre-processing, etc. DVC provides a mechanism for experiments to depend on the
+specific variables from a file.
+
+By default, DVC assumes that a parameters file named `params.yaml` is available
+in your project. DVC parses this file and creates dependencies to the variables
+found in it: `model.conv_units` and `train.epochs`. Example:
+
+```yaml
+train:
+  epochs: 10
+model:
+  conv_units: 16
+```
+
+When you use `dvc exp run --set-param`, DVC updates the parameters in
+`params.yaml` with the values you set in the command line before running the
+experiment.
+
+</details>
 
 <details>
 
@@ -158,18 +184,18 @@ $ dvc exp show
 ```
 
 ```dvctable
-┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━┓
-┃ white:**Experiment**              ┃ white:**Created**      ┃ yellow:**loss**    ┃ yellow:**acc**    ┃ blue:**train.epochs** ┃ blue:**model.conv_units** ┃
-┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━┩
-│ workspace               │ -            │ 0.23508 │ 0.9151 │ 10           │ 24               │
-│ 7317bc6                 │ Jul 18, 2021 │       - │      - │ 10           │ 16               │
-│ ├── e2647ef [exp-ee8a4] │ 05:14 PM     │ 0.23146 │ 0.9145 │ 10           │ 64               │
-│ ├── 15c9451 [exp-a9be6] │ 05:14 PM     │ 0.25231 │ 0.9102 │ 10           │ 32               │
-│ ├── 9c32227 [exp-17dd9] │ 04:46 PM     │ 0.23687 │ 0.9167 │ 10           │ 256              │
-│ ├── 8a9cb15 [exp-29d93] │ 04:46 PM     │ 0.24459 │ 0.9134 │ 10           │ 128              │
-│ ├── dfc536f [exp-a1bd9] │ 03:35 PM     │ 0.23508 │ 0.9151 │ 10           │ 24               │
-│ └── 1a1d858 [exp-6dccf] │ 03:21 PM     │ 0.23282 │ 0.9152 │ 10           │ 16               │
-└─────────────────────────┴──────────────┴─────────┴────────┴──────────────┴──────────────────┘
+ ─────────────────────────────────────────────────────────────────────────────────────────────
+  white:**Experiment**                white:**Created**           yellow:**loss**      yellow:**acc**   blue:**train.epochs**   blue:**model.conv_units**
+ ─────────────────────────────────────────────────────────────────────────────────────────────
+  workspace                 -              0.23508   0.9151   10             24
+  7317bc6                   Jul 18, 2021         -        -   10             16
+  ├── e2647ef [exp-ee8a4]   05:14 PM       0.23146   0.9145   10             64
+  ├── 15c9451 [exp-a9be6]   05:14 PM       0.25231   0.9102   10             32
+  ├── 9c32227 [exp-17dd9]   04:46 PM       0.23687   0.9167   10             256
+  ├── 8a9cb15 [exp-29d93]   04:46 PM       0.24459   0.9134   10             128
+  ├── dfc536f [exp-a1bd9]   03:35 PM       0.23508   0.9151   10             24
+  └── 1a1d858 [exp-6dccf]   03:21 PM       0.23282   0.9152   10             16
+ ─────────────────────────────────────────────────────────────────────────────────────────────
 ```
 
 By default, it shows all the parameters and the metrics with the timestamp. If
@@ -182,18 +208,18 @@ $ dvc exp show --drop 'Created|train|loss'
 ```
 
 ```dvctable
-┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━━━━━┓
-┃ white:**Experiment**              ┃    yellow:**acc** ┃ blue:**model.conv_units** ┃
-┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━━━━━┩
-│ workspace               │ 0.9151 │ 24               │
-│ 7317bc6                 │      - │ 16               │
-│ ├── e2647ef [exp-ee8a4] │ 0.9145 │ 64               │
-│ ├── 15c9451 [exp-a9be6] │ 0.9102 │ 32               │
-│ ├── 9c32227 [exp-17dd9] │ 0.9167 │ 256              │
-│ ├── 8a9cb15 [exp-29d93] │ 0.9134 │ 128              │
-│ ├── dfc536f [exp-a1bd9] │ 0.9151 │ 24               │
-│ └── 1a1d858 [exp-6dccf] │ 0.9152 │ 16               │
-└─────────────────────────┴────────┴──────────────────┘
+ ─────────────────────────────────────────────────────
+  white:**Experiment**                   yellow:**acc**   blue:**model.conv_units**
+ ─────────────────────────────────────────────────────
+  workspace                 0.9151   24
+  7317bc6                        -   16
+  ├── e2647ef [exp-ee8a4]   0.9145   64
+  ├── 15c9451 [exp-a9be6]   0.9102   32
+  ├── 9c32227 [exp-17dd9]   0.9167   256
+  ├── 8a9cb15 [exp-29d93]   0.9134   128
+  ├── dfc536f [exp-a1bd9]   0.9151   24
+  └── 1a1d858 [exp-6dccf]   0.9152   16
+ ─────────────────────────────────────────────────────
 ```
 
 After selecting an experiment from the table, you can create a Git branch that

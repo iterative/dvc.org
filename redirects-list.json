@@ -56,7 +56,7 @@
   "^/doc/user-guide/dvcignore$                                                            /doc/user-guide/project-structure/dvcignore-files",
   "^/doc/understanding-dvc(/.*)?$                                                         /doc/user-guide/what-is-dvc",
   "^/doc/commands-reference(/.*)?$                                                        /doc/command-reference$1",
-  "^/doc/command-reference/completion$                                                    /doc/install/completion",
+  "^/doc/command-reference/completion$                                                    /doc/install/completion 302",
   "^/doc/command-reference/plot$                                                          /doc/command-reference/plots",
   "^/doc/command-reference/pipeline$                                                      /doc/command-reference/dag",
   "^/doc/command-reference/pipeline/show$                                                 /doc/command-reference/dag",
@@ -64,7 +64,7 @@
   "^/doc/command-reference/lock$                                                          /doc/command-reference/freeze",
   "^/doc/command-reference/unlock$                                                        /doc/command-reference/unfreeze",
   "^/doc/command-reference/experiments$                                                   /doc/command-reference/exp",
-  "^/doc/command-reference/ls$                                                            /doc/command-reference/list 303",
+  "^/doc/command-reference/ls$                                                            /doc/command-reference/list 302",
 
   "^/doc/cml(/.*)?$                                                                       https://cml.dev/doc$1",
 

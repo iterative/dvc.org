@@ -333,6 +333,11 @@
       color: #ccc;
     }
 
+    code[class*="language-dvctable"] {
+      display: inline-block;
+      line-height: 24px;
+    }
+
     :global {
       .gatsby-highlight-code-line {
         display: block;
@@ -359,6 +364,17 @@
       }
 
       .language-dvctable {
+        .token.rows {
+          background-image: linear-gradient(
+            transparent 50%,
+            rgb(256 256 256 / 10%) 50%
+          );
+          background-size: 100% 48px;
+          display: block;
+          background-origin: content-box;
+          background-attachment: local;
+        }
+
         .token.hide {
           display: none;
         }
