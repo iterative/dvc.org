@@ -61,8 +61,8 @@ all the current metrics (without comparisons).
   ```
 
 - `-R`, `--recursive` - determines the metrics files to use by searching each
-  target directory and its subdirectories for valid metrics files to inspect. If
-  there are no directories among the `--targets`, this option has no effect.
+  target directory and its subdirectories for valid metrics files. If there are
+  no directories among the `--targets`, this option has no effect.
 
 - `--all` - list all metrics, including those without changes.
 
