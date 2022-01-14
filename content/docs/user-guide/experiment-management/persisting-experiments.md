@@ -108,15 +108,17 @@ most sense for experiments that build on each other. Git-based experiment
 structures are especially helpful along with Git history exploration tools [like
 GitHub].
 
-[like github]:
-  https://docs.github.com/en/github/visualizing-repository-data-with-graphs/viewing-a-repositorys-network
-
 </tab>
 <tab title="Directories">
 
 The project's "space dimension" can be structured with directories (folders) to
 organize experiments. Useful when you want to see all your experiments at the
 same time (without switching versions) by just exploring the file system.
+
+(ℹ️) When your `dvc.yaml` files are organized inside recursive subfolders, you
+can run their pipeline(s) using `dvc run --recursive`.
+
+> 📖 See also [Running all pipelines]
 
 </tab>
 <tab title="Hybrid">
@@ -139,4 +141,7 @@ between your project history and the experiments logged.
 
 [`foreach` stages]:
   /doc/user-guide/project-structure/pipelines-files#foreach-stages
-[persistent]: /doc/user-guide/experiment-management/persisting-experiments
+[like github]:
+  https://docs.github.com/en/github/visualizing-repository-data-with-graphs/viewing-a-repositorys-network
+[running all pipelines]:
+  /doc/user-guide/experiment-management/running-experiments#running-all-pipelines

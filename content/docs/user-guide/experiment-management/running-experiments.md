@@ -79,9 +79,13 @@ $ dvc exp run --all-pipelines
 > Note that the order in which pipelines are executed is not guaranteed; Only
 > the internal order of stage execution is.
 
-> (ℹ️) When your `dvc.yaml` files are organized inside recursive subfolders, you
-> can selectively run the pipeline(s) using `--recursive` (takes a parent
-> directory as argument).
+(ℹ️) When your `dvc.yaml` files are organized inside recursive subfolders, you
+can run their pipeline(s) using `dvc run --recursive`.
+
+> 📖 Learn more about final experiment [organization patterns].
+
+[organization patterns]:
+  /doc/user-guide/experiment-management/persisting-experiments#organization-patterns
 
 ### Running stages interactively
 
