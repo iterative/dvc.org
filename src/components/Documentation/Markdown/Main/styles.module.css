@@ -236,7 +236,7 @@
       }
     }
 
-    pre[class*="language-dvctablehorizontals"] {
+    pre[class*="language-dvctable"] {
       code {
         display: inline-block;
         line-height: 20px;

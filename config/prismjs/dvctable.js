@@ -1,9 +1,6 @@
 /* eslint-env node */
 const Prism = require('prismjs')
 
-const getTableCellBgColorRegex = color =>
-  new RegExp(String.raw`(?<=[│┃])\s+${color}:(?:(?![│┃]).)+(?=[│┃])`)
-
 const getTableTextBgColorRegex = color => new RegExp(String.raw`${color}:\S+`)
 
 const boldAndItalicConfig = {
@@ -22,39 +19,8 @@ const boldAndItalicConfig = {
 }
 
 Prism.languages.dvctable = {
-  'bg-white': {
-    pattern: getTableCellBgColorRegex('(white|neutral)'),
-    inside: {
-      hide: {
-        pattern: /(white|neutral):/
-      },
-      ...boldAndItalicConfig
-    }
-  },
-  'bg-yellow': {
-    pattern: getTableCellBgColorRegex('(yellow|metric)'),
-    inside: {
-      hide: {
-        pattern: /(yellow|metric):/
-      },
-      ...boldAndItalicConfig
-    }
-  },
-  'bg-blue': {
-    pattern: getTableCellBgColorRegex('(blue|param)'),
-    inside: {
-      hide: {
-        pattern: /(blue|param):/
-      },
-      ...boldAndItalicConfig
-    }
-  },
-  ...boldAndItalicConfig
-}
-
-Prism.languages.dvctablehorizontals = {
   rows: {
-    pattern: /((?<=^|\n)\s[^─][\s\S]*?(:?\n|$))+/,
+    pattern: /((?<=^|\n)[^─]{2}[\s\S]*?(:?\n|$))+/,
     inside: {
       'bg-white': {
         pattern: getTableTextBgColorRegex('(white|neutral)'),
