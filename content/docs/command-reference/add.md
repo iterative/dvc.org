@@ -382,8 +382,7 @@ as if it was in your project, but without downloading it locally (for now). The
 [remotely](/doc/command-reference/remote) so it can be
 [pulled](/doc/command-reference/plots) later.
 
-Let's set up a sample remote and add the `data.xml` to our remote storage from
-the given remote location:
+Let's add the `data.xml` to our remote storage from the given remote location:
 
 ```dvc
 $ dvc add https://data.dvc.org/get-started/data.xml -o data.xml \
