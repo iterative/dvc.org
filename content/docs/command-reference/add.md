@@ -386,12 +386,7 @@ Let's set up a sample remote and add the `data.xml` to our remote storage from
 the given remote location:
 
 ```dvc
-$ mkdir /tmp/dvcstore
-$ dvc remote add myremote /tmp/dvcstore
-
-$ dvc add https://data.dvc.org/get-started/data.xml -o data.xml \
-                 --to-remote -r myremote
-...
+$ dvc add https://data.dvc.org/get-started/data.xml -o data.xml
 ```
 
 The only difference that dataset is transferred straight to remote, so DVC won't
@@ -408,7 +403,7 @@ Whenever anyone wants to actually download the added data (for example from a
 system that can handle it), they can use `dvc pull` as usual:
 
 ```dvc
-$ dvc pull data.xml.dvc -r tmp_remote
+$ dvc pull data.xml.dvc
 
 A       data.xml
 1 file added and 1 file fetched
