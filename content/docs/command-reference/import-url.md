@@ -365,7 +365,8 @@ Let's set up a sample remote and create an import `.dvc` file without
 downloading the target data, transferring it directly to remote storage instead:
 
 ```dvc
-$ dvc import-url https://data.dvc.org/get-started/data.xml data.xml
+$ dvc import-url https://data.dvc.org/get-started/data.xml data.xml \
+                 --to-remote
 ```
 
 The only change in our local <abbr>workspace</abbr> is a newly created import
