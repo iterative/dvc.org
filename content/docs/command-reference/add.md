@@ -386,7 +386,8 @@ Let's set up a sample remote and add the `data.xml` to our remote storage from
 the given remote location:
 
 ```dvc
-$ dvc add https://data.dvc.org/get-started/data.xml -o data.xml
+$ dvc add https://data.dvc.org/get-started/data.xml -o data.xml \
+          --to-remote
 ```
 
 The only difference that dataset is transferred straight to remote, so DVC won't
