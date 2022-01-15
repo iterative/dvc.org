@@ -408,7 +408,7 @@ Whenever anyone wants to actually download the added data (for example from a
 system that can handle it), they can use `dvc pull` as usual:
 
 ```dvc
- $ dvc pull data.xml.dvc -r tmp_remote
+$ dvc pull data.xml.dvc -r tmp_remote
 
 A       data.xml
 1 file added and 1 file fetched
