@@ -38,9 +38,16 @@ exports.onCreateWebpackConfig = ({ actions }) => {
   actions.setWebpackConfig({
     resolve: {
       alias: {
-        [path.resolve(__dirname, 'sidebar')]: require.resolve('./src/sidebar'),
-        [path.resolve(__dirname, 'redirects')]:
-          require.resolve('./src/redirects')
+        [path.resolve(__dirname, 'sidebar')]: path.resolve(
+          'src',
+          'gatsby-theme-iterative-docs',
+          'sidebar'
+        ),
+        [path.resolve(__dirname, 'redirects')]: path.resolve(
+          'src',
+          'gatsby-theme-iterative-docs',
+          'redirects'
+        )
       }
     }
   })
