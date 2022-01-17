@@ -6,13 +6,13 @@ data from a `dvc remote`.
 ## Synopsis
 
 ```usage
-usage: dvc exp pull [-h] [-q | -v] [-f] [--no-cache]
-                    [-r <name>] [-j <number>] [--run-cache]
+usage: dvc exp pull [-h] [-q | -v] [-A] [--rev <commit>] [-n <num>] [-f]
+                    [--no-cache] [-r <name>] [-j <number>] [--run-cache]
                     git_remote experiment
 
 positional arguments:
   git_remote          Git remote name or Git URL
-  experiment          Experiment to pull
+  experiment          Experiments to pull
 ```
 
 ## Description
@@ -42,6 +42,16 @@ all <abbr>cached</abbr> data associated with the experiment to DVC
 > delete a pushed experiment.
 
 ## Options
+
+- `-A`, `--all-commits` - pull all experiments in the repository (overrides
+  `--rev` and `--num`).
+
+- `--rev <commit>` - pull experiments derived from the specified `<commit>` as
+  baseline.
+
+- `-n <num>`, `--num <num>` - show experiments from the previous `num` commits
+  (before the `--rev` baseline). For example `-n -2` includes experiments from
+  `HEAD` and its 2 first ancestors.
 
 - `-f`, `--force` - rewrite the `experiment` commit if it already exists in the
   local repo. Equivalent to `git push --force` (rewrites history)
