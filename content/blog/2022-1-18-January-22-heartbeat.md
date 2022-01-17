@@ -72,8 +72,8 @@ image="/uploads/images/2022-01-18/diego-jardim.png"/>
 
 [**Carl W. Handlin Wallace**](https://www.linkedin.com/in/carlhandlin/) of
 [RappiBank](https://www.rappibank.pe/) wrote a
-[great article](https://medium.com/rappibank/reproducible-data-science-and-why-it-matters-e4e62fd60b9a)
-for their company [Medium](https://medium.com) profile on the importance of
+[great article](https://medium.com/rappibank/reproducible-data-science-and-why-it-matters-e4e62fd60b9a/)
+for their company [Medium](https://medium.com/) profile on the importance of
 reproducibility, AKA replicability, in science in general, and the challenges in
 Data Science in particular. As he points out, from
 [Nature's survey,](https://doi.org/10.1038/533452a) over half of all researchers
@@ -88,7 +88,7 @@ resources!
 ![Proposed Reproducibility Framework for Data Science](/uploads/images/2022-01-18/carl-handlin-rappibank.png '=800')
 
 _Carl W. Handlin Wallace's Proposed Reproducibility Framework for Data Science
-([Source link](https://medium.com/rappibank/reproducible-data-science-and-why-it-matters-e4e62fd60b9a))_
+([Source link](https://medium.com/rappibank/reproducible-data-science-and-why-it-matters-e4e62fd60b9a/))_
 
 ## Abid Ali Awan - Tips & Tricks of Deploying Deep Learning Webapp on Heroku Cloud
 
