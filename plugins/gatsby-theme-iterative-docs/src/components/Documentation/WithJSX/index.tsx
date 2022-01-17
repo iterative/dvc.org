@@ -3,8 +3,9 @@ import React from 'react'
 import MarkdownMain from '../Markdown/Main'
 import RightPanel from '../RightPanel'
 
-import { IHeading, getGithubLink } from '../'
+import { IHeading } from '../'
 import { getItemByPath } from '../../../utils/shared/sidebar'
+import { getGithubLink } from '../../../getGithubLink'
 
 interface IWithJSXProps {
   path: string
