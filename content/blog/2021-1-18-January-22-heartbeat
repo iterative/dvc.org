@@ -3,8 +3,8 @@ title: January '22 Heartbeat
 date: 2022-01-18
 description: >
   Monthly updates are here! You will find great tutorials and workflows from  
-  the Community, Online course is now open,decision making strategies for MLOps
-  tools, and more! Welcome to 2022!🎇
+  the Community, Online course is now open, decision making strategies
+  for  MLOps tools, and more! Welcome to 2022!🎇
 
 descriptionLong: |
   This month you will find:
@@ -22,7 +22,7 @@ descriptionLong: |
     💻 Online Course is live,
 
     🚀 Info on our growing team, and more!
-picture: 2022-01-18/Frame61draft.png
+picture: 2022-01-18/Frame 61draft.png
 author: jeny_defigueiredo
 commentsUrl: https://discuss.dvc.org/t/january-22-heartbeat/1025
 tags:
@@ -38,8 +38,8 @@ tags:
 
 # From the Community
 
-Happy New Year! Hope you got some good R&R and stayed healthy at the end 2021,
-because 2022 has lots of great things in store!
+Happy New Year! Hope you got some good R&R and stayed healthy at the end of
+2021, because 2022 has lots of great things in store!
 
 ![Heartbeat!](https://media.giphy.com/media/7ILAGpJWoQYWA0j60C/giphy.gif)
 
@@ -51,7 +51,7 @@ of his two part series,
 [Poatek](https://poatek.com/) takes us through the basics of MLOps and the
 stages of implementation and maturity of an MLOps pipeline. He closes by
 introducing us to some tools to help a team progress through these stages, which
-includes DVC and CML.
+include DVC and CML.
 
 [In Part 2](https://poatek.com/2021/12/29/mlops-a-complete-and-hands-on-introduction-part-2/)
 he delves into more detail and code on how to set up version control of
@@ -72,10 +72,10 @@ image="/uploads/images/2022-01-18/diego-jardim.png"/>
 [**Carl W. Handlin Wallce**](https://www.linkedin.com/in/carlhandlin/) of
 [RappiBank](https://www.rappibank.pe/) wrote a
 [great article](https://medium.com/rappibank/reproducible-data-science-and-why-it-matters-e4e62fd60b9a)
-for their company [Medium](https://medium.com) on the importance of
-reproducibility, AKA replicability, in science in general and the challenges in
+for their company [Medium](https://medium.com) profile on the importance of
+reproducibility, AKA replicability, in science in general, and the challenges in
 Data Science in particular. As he points out, from
-[Nature's survey](https://doi.org/10.1038/533452a) over half of all researchers
+[Nature's survey,](https://doi.org/10.1038/533452a) over half of all researchers
 have failed to reproduce even their own work, let alone that of another
 scientist. While initiatives like
 [Papers With Code](https://paperswithcode.com/) are helping to encourage
@@ -118,7 +118,7 @@ running experiments from the DVC Studio UI.
 _Amit Kulkarni's DVC Studio tutorial
 ([Source link](https://www.analyticsvidhya.com/blog/2022/01/overview-of-mlops-with-open-source-tools/))_
 
-# GitHub Goodness
+# GitHub Goodness 😎
 
 https://media.giphy.com/media/3ohzdIuqJoo8QdKlnW/giphy.gif
 
@@ -184,7 +184,7 @@ in NLP than any other category, reinforcement learning to become increasingly
 important, the rise of synthetic data, and powerful new AI tools being built for
 video. My favorite prediction:
 
-> Responsible AI' will begin to shift from a vague carch-all term to an
+> Responsible AI' will begin to shift from a vague catch-all term to an
 > operationalized set of enterprise practices."  
 > That's good news!
 
@@ -199,7 +199,7 @@ image="/uploads/images/2022-01-18/forbes.jpeg"/>
 
 You may remember [**Chip Huyen**](https://twitter.com/chipro) from
 [MLOps Tooling Landscape v2](https://huyenchip.com/2020/12/30/mlops-v2.html) and
-[DVC's inclusion in Machine Learning Systems Design Lecture series](https://docs.google.com/presentation/d/15ZrLFzimfy-8ob7mJ0qHPNyVoTtSfKBF5gPPG5f0Lz8/edit#slide=id.p).
+[DVC's inclusion in her Machine Learning Systems Design Lecture series](https://docs.google.com/presentation/d/15ZrLFzimfy-8ob7mJ0qHPNyVoTtSfKBF5gPPG5f0Lz8/edit#slide=id.p).
 But at the turn of the new year, she published a new blog post entitled
 [Real-time machine learning: Challenges and Solutions.](https://huyenchip.com/2022/01/02/real-time-machine-learning-challenges-and-solutions.html)
 The article describes her learning from working with approximately 30 companies
@@ -225,7 +225,7 @@ _Chip Huyen's Statelyss vs.Stateful Training
 ![Git, SQL, CLI](/uploads/images/2022-01-18/git-sql-cli.jpeg 'Git, SQL, CLI :wrap-left ==300')
 If you're interested in becoming a machine learning engineer and you're not
 familiar with [**Vicki Boykis**,](https://twitter.com/vboykis) you should be.
-She has an amazing blog years of well-written, funny, technical content on
+She has an amazing blog with years of well-written, funny, technical content on
 machine learning. Her latest piece entitled
 [Git, SQL, CLI](https://vickiboykis.com/2022/01/09/git-sql-cli/) tells why she
 thinks these three tools are fundamental tools for any technical job. We think
@@ -239,9 +239,10 @@ You can register for the FREE new course
 [here on the Iterative website](https://learn.iterative.ai). The course is
 currently in beta mode. We already have some things we are working on to make it
 even better, but we would love your feedback! 🙏🏼 So far we have had some minor
-glitches and a lot of positive feedback! But we want your critiques too! Whoever
-can give us feedback on any three modules by February 6th will receive some
-fresh new swag!
+glitches and a lot of positive feedback! But we want your critiques too!
+
+**Whoever can give us feedback on any three modules by February 6th will receive
+some fresh new swag!**
 
 We are already planning our next course!
 
@@ -252,7 +253,7 @@ Our Senior Developer Advocate
 on `exp init` and experiment versioning entitled
 [Versioning Machine Learning Experiments vs Tracking Them.](https://www.kdnuggets.com/2021/12/versioning-machine-learning-experiments-tracking.html)
 The command helps you quickly set up a pipeline and codify your experiments with
-all of the factors that contributed to each of them including data, code,
+all of the factors that contributed to each of them, including data, code,
 pipeline, model version and all hyperparameters. This is a step above other
 experiment tracking tools and enables you achieve true reproducibility.
 
@@ -267,7 +268,7 @@ image="/uploads/images/2022-01-18/kdnuggets.jpeg"/>
 
 We have a few new team members this month!
 
-[Daniele Trifirò](https://github.com/dtrifiro) is our first team member from
+[**Daniele Trifirò**](https://github.com/dtrifiro) is our first team member from
 Italy! He joins us as a Senior Software Engineer. Daniele has a background in
 Physics/Astrophysics and worked for 4 years as a researcher in the LIGO
 Scientific collaboration and then went on to positions at Cloudian and illimity.
@@ -275,19 +276,19 @@ It was at illimity where he "fell in love" with DVC! In his free time Daniele
 likes to listening to and sometimes playing music himself, as well as rock
 climbing. 🧗🏼‍♂️
 
-[Thomas Kunwar](https://github.com/yathomasi) is a software engineer joining the
-team from Nepal. He's been working as a fullstack developer specializing on the
-MERN stack and has lead a team on multiple projects. In his free time Thomas
+[**Thomas Kunwar**](https://github.com/yathomasi) is a software engineer joining
+the team from Nepal. He's been working as a fullstack developer specializing on
+the MERN stack and has lead a team on multiple projects. In his free time Thomas
 enjoys trekking, watching and playing sports, watching movies, and learning.
 Welcome Thomas! 👏🏼
 
-[Madhur Tandon](https://github.com/madhur-tandon) joins our team as a Software
-Engineer from Delhi, India. He is active in open source and some of his famous
-contributions are to projects such as Pyodide (the Python Scientific Stack
-compiled to WebAssembly) and Jupyterlite (a Jupyter distribution running in the
-browser). He has also been a speaker in PyData and JupyterCon. Talk to him about
-his solo trip to SF, his experiences at Mozilla or about books, Indian
-governance, food and crypto. When not working, he is working out!💪🏼
+[**Madhur Tandon**](https://github.com/madhur-tandon) joins our team as a
+Software Engineer from Delhi, India. He is active in open source and some of his
+famous contributions are to projects such as Pyodide (the Python Scientific
+Stack compiled to WebAssembly) and Jupyterlite (a Jupyter distribution running
+in the browser). He has also been a speaker in PyData and JupyterCon. Talk to
+him about his solo trip to SF, his experiences at Mozilla or about books, Indian
+governance, food, and crypto. When not working, he is working out!💪🏼
 
 ## Open Positions
 
