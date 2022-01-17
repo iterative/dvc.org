@@ -8,8 +8,8 @@ Displays your experiments in a customizable table or
 ## Synopsis
 
 ```usage
-usage: dvc exp show [-h] [-q | -v] [-a] [-T] [-A] [-n <num>]
-                    [--no-pager] [--drop <regex>]
+usage: dvc exp show [-h] [-q | -v] [-a] [-T] [-A] [--rev <commit>]
+                    [-n <num>] [--no-pager] [--drop <regex>]
                     [--keep <regex>] [--param-deps]
                     [--sort-by <metric/param>]
                     [--sort-order {asc,desc}] [--sha]
@@ -74,7 +74,11 @@ will be generated using the same data from the table.
 - `-A`, `--all-commits` - include experiments derived from all Git commits, as
   well as from the last one. This prints all experiments in the project.
 
-- `-n <num>`, `--num <num>` - show the last `num` commits from HEAD.
+- `--rev <commit>` - "Show experiments derived from the specified revision.
+  Defaults to HEAD if none of `--rev`,`-a`,`-A`,`-T` is specified."
+
+- `-n <num>`, `--num <num>` - show experiments from the `<rev>` commit and `num`
+  commits before it. (`-1` for the whole history of the `<rev>`)
 
 - `--no-pager` - do not enter the pager screen. Writes the entire table to
   standard output. Useful to redirect the output to a file, or use your own
