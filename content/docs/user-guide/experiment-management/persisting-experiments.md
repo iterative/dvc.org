@@ -106,7 +106,9 @@ main alternatives:
 Use the repo's "time dimension" to distribute your experiments. This makes the
 most sense for experiments that build on each other. Git-based experiment
 structures are especially helpful along with Git history exploration tools [like
-GitHub].
+GitHub]. Example:
+
+![](/img/exp-branches.png)
 
 </tab>
 <tab title="Directories">
@@ -114,6 +116,17 @@ GitHub].
 The project's "space dimension" can be structured with directories (folders) to
 organize experiments. Useful when you want to see all your experiments at the
 same time (without switching versions) by just exploring the file system.
+Example:
+
+```
+├── data
+│   └── labels.raw
+├── dvc.yaml
+└── experiments
+    ├── cnn_128
+    ├── cnn_64
+    └── linear
+```
 
 (ℹ️) When your `dvc.yaml` files are organized inside recursive subfolders, you
 can run their pipeline(s) using `dvc run --recursive`.
@@ -125,11 +138,37 @@ can run their pipeline(s) using `dvc run --recursive`.
 
 Combining an intuitive directory structure with a good repo branching strategy
 tends to be the best option for complex projects. Completely independent
-experiments live in separate directories (and can be generated with [`foreach`
-stages], for example), while their progress can be found in different branches.
+experiments live in separate directories, while their progress can be found in
+different branches. Example:
+
+<cards>
+
+  <card href="/doc/start">
+    v0.1.0
+
+    ```
+    └── experiments
+        ├── cnn_128
+        └── cnn_64
+    ```
+
+  </card>
+
+  <card href="/doc/user-guide">
+    v0.2.0
+
+    ```
+    └── experiments
+        ├── cnn_128
+        └── cnn_512
+    ```
+
+  </card>
+
+</cards>
 
 </tab>
-<tab title="Labels">
+<tab title="Labels (ad hoc)">
 
 In general, you can record experiments in a separate system and structure them
 using custom labeling. This is typical in dedicated experiment tracking tools. A
@@ -139,8 +178,6 @@ between your project history and the experiments logged.
 </tab>
 </toggle>
 
-[`foreach` stages]:
-  /doc/user-guide/project-structure/pipelines-files#foreach-stages
 [like github]:
   https://docs.github.com/en/github/visualizing-repository-data-with-graphs/viewing-a-repositorys-network
 [running all pipelines]:
