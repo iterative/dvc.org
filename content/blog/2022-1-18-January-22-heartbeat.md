@@ -39,7 +39,7 @@ tags:
 
 # From the Community
 
-Happy New Year! Hope you got some good R&R and stayed healthy at the end of
+Happy New Year! Hope you got some good rest and stayed healthy at the end of
 2021, because 2022 has lots of great things in store!
 
 ![Heartbeat!](https://media.giphy.com/media/7ILAGpJWoQYWA0j60C/giphy.gif)
@@ -47,7 +47,7 @@ Happy New Year! Hope you got some good R&R and stayed healthy at the end of
 ## Diego Jardim - MLOps: A Complete Hands-On Introduction
 
 [In Part 1](https://poatek.com/2021/12/20/mlops-a-complete-and-hands-on-introduction-part-1/)
-of his two part series,
+of his two-part series,
 [**Diego Jardim**](https://www.linkedin.com/in/diegosevero/) of
 [Poatek](https://poatek.com/) takes us through the basics of MLOps and the
 stages of implementation and maturity of an MLOps pipeline. He closes by
@@ -56,21 +56,21 @@ include DVC and CML.
 
 [In Part 2](https://poatek.com/2021/12/29/mlops-a-complete-and-hands-on-introduction-part-2/)
 he delves into more detail and code on how to set up version control of
-everything with DVC and automation of experimentation and reporting with CML.
-Finally he uses FastAPI and Herouku for model serving and deployment. You can
-find all the scripts for the project in
+everything with DVC as well as automation of experimentation and reporting with
+CML. Finally, he uses FastAPI and Heroku for model serving and deployment. You
+can find all the scripts for the project in
 [this GitHub repository.](https://github.com/dsjardim/fraud-detection-mlops)
 
 <external-link 
-href="https:/https://poatek.com/2021/12/29/mlops-a-complete-and-hands-on-introduction-part-2/"
+href="https://poatek.com/2021/12/29/mlops-a-complete-and-hands-on-introduction-part-2/"
 title="MLOps: A Complete Hands-On Tutorial"
-description="In his 2-part series, Diego Jardim of Paotek introduces concepts and stages of MLOps and provides a tutorial on how to create and MLOps pipeline."
+description="In his 2-part series, Diego Jardim of Paotek introduces concepts and stages of MLOps and provides a tutorial on how to create an MLOps pipeline."
 link="https://poatek.com/"
 image="/uploads/images/2022-01-18/diego-jardim.png"/>
 
 ## Carl W. Handlin Wallace - Reproducible Data Science and Why it Matters
 
-[**Carl W. Handlin Wallce**](https://www.linkedin.com/in/carlhandlin/) of
+[**Carl W. Handlin Wallace**](https://www.linkedin.com/in/carlhandlin/) of
 [RappiBank](https://www.rappibank.pe/) wrote a
 [great article](https://medium.com/rappibank/reproducible-data-science-and-why-it-matters-e4e62fd60b9a)
 for their company [Medium](https://medium.com) profile on the importance of
@@ -80,8 +80,8 @@ Data Science in particular. As he points out, from
 have failed to reproduce even their own work, let alone that of another
 scientist. While initiatives like
 [Papers With Code](https://paperswithcode.com/) are helping to encourage
-reproducibilty in the industry, there's still work to be done. He notes DVC as a
-part of the solution to this problem along with other tools to round out the
+reproducibility in the industry, there's still work to be done. He notes DVC as
+a part of the solution to this problem along with other tools to round out the
 whole picture. Check out the article for good food for thought and other
 resources!
 
@@ -97,8 +97,8 @@ _Carl W. Handlin Wallace's Proposed Reproducibility Framework for Data Science
 [**Abid Ali Awan**'s](https://www.linkedin.com/in/1abidaliawan/)
 [article in KDNuggets](https://www.kdnuggets.com/2021/12/tips-tricks-deploying-dl-webapps-heroku.html)  
 guides you on how to create a smooth process to deploy a deep learning web
-application with Heroku. In the guide he covers integration with DVC and
-optimizing storage using Docker, Git & CLI based deployment, how to deal with
+application with Heroku. In the guide, he covers integration with DVC and
+optimizing storage using Docker, Git & CLI-based deployment, how to deal with
 error code H10, and tweaking Python packages to stay within the 500 MB Heroku
 limitation. If you've been looking for a way to create a deep learning web app,
 this may help!
@@ -112,8 +112,8 @@ from the Community,
 up process of DVC Studio and MLFlow and their ability to ease the operational
 aspects of machine learning teams by providing a clear way to solve the
 formidable task of tracking all the factors that go into the iterative process.
-Amit covers the easy set up process, adding a view, model comparison, and
-running experiments from the DVC Studio UI.
+Amit covers the easy setup process, adding a view, model comparison, and running
+experiments from the DVC Studio UI.
 
 ![DVC Studio Experiment Tracker UI](/uploads/images/2022-01-18/amit-kulkarni-studio.png '=800')
 _Amit Kulkarni's DVC Studio tutorial
@@ -123,7 +123,7 @@ _Amit Kulkarni's DVC Studio tutorial
 
 https://media.giphy.com/media/3ohzdIuqJoo8QdKlnW/giphy.gif
 
-In case you missed it we now have have an
+In case you missed it we now have an
 [Awesome Iterative Projects Repository.](https://github.com/iterative/awesome-iterative-projects)
 This repository is a list of projects relying on Iterative tools to achieve
 awesomeness. Recent additions to the list include:
@@ -144,7 +144,7 @@ our Community:
 - [Awesome MLOps](https://github.com/visenger/awesome-mlops): an awesome list of
   references for MLOps.
 - [Project Atlas - São Paulo](https://github.com/mateuspicanco/project-atlas-sao-paulo)
-  : a Data Science and Engineering intiative that aims to develop relevant and
+  : a Data Science and Engineering initiative that aims to develop relevant and
   curated Geospatial features of São Paulo, Brazil (includes DVC).
 - [NN Template](https://github.com/lucmos/nn-template): Generic template to
   bootstrap your PyTorch project (includes DVC)
@@ -158,8 +158,7 @@ you about Thoughtworks' guide to MLOps Platforms. If you prefer video content,
 you may like
 [this webinar](https://www.thoughtworks.com/what-we-do/data-and-ai/cd4ml/guide-to-evaluating-mlops-platforms1?utm_source=linkedin&utm_medium=social-organic&utm_campaign=tw-webinars_2021-12&gh_src=463a2f181us)
 from [**Ryan Dawson**](https://www.linkedin.com/in/ryan-dawson-501ab9123/) on
-CD4ML covering the the process of identifying the best tools for your team's
-needs.
+CD4ML covering the process of identifying the best tools for your team's needs.
 
 ![MLOPs Tool evaluation process](/uploads/images/2022-01-18/ryan-dawson-thoughtworks-cd4ml.png '=800')
 _Ryan Dawson's MLOps tool evaluation process
@@ -196,7 +195,7 @@ description="Rob Toews predicts the rise of NLP, reinforcement learning, operati
 link="https://forbes.com"
 image="/uploads/images/2022-01-18/forbes.jpeg"/>
 
-### Chip Huyen's latest Blog Post
+### Chip Huyen's Latest Blog Post
 
 You may remember [**Chip Huyen**](https://twitter.com/chipro) from
 [MLOps Tooling Landscape v2](https://huyenchip.com/2020/12/30/mlops-v2.html) and
@@ -215,10 +214,10 @@ CML can help you with your stateful training!
 
 She and her team are running a [survey](https://forms.gle/dDvgF7QgpPdvJE5b8) to
 better understand the adoption and challenges of real-time ML. We enourage your
-particpation!
+participation!
 
 ![Stateful Training](/uploads/images/2022-01-18/stateful-training.png '=800')
-_Chip Huyen's Statelyss vs.Stateful Training
+_Chip Huyen's Stateless vs.Stateful Training
 ([Source link](https://huyenchip.com/2022/01/02/real-time-machine-learning-challenges-and-solutions.html))_
 
 ### Vicki Boykis' Top three Fundamental Tools for a Machine Learning Engineer
@@ -256,12 +255,12 @@ on `exp init` and experiment versioning entitled
 The command helps you quickly set up a pipeline and codify your experiments with
 all of the factors that contributed to each of them, including data, code,
 pipeline, model version and all hyperparameters. This is a step above other
-experiment tracking tools and enables you achieve true reproducibility.
+experiment tracking tools and enables you to achieve true reproducibility.
 
 <external-link 
 href="https://www.kdnuggets.com/2021/12/versioning-machine-learning-experiments-tracking.html"
 title="Versioning Machine Learning Experiments vs Tracking Them"
-description="Maria Khalusova's tutorial on DVC's `exp init` command and the next level of experiment tracking that delivers true reproducibiity."
+description="Maria Khalusova's tutorial on DVC's `exp init` command and the next level of experiment tracking that delivers true reproducibility."
 link="https://kdnuggets.com"
 image="/uploads/images/2022-01-18/kdnuggets.jpeg"/>
 
@@ -274,11 +273,11 @@ Italy! He joins us as a Senior Software Engineer. Daniele has a background in
 Physics/Astrophysics and worked for 4 years as a researcher in the LIGO
 Scientific collaboration and then went on to positions at Cloudian and illimity.
 It was at illimity where he "fell in love" with DVC! In his free time Daniele
-likes to listening to and sometimes playing music himself, as well as rock
+likes listening to and sometimes playing music himself, as well as rock
 climbing. 🧗🏼‍♂️
 
 [**Thomas Kunwar**](https://github.com/yathomasi) is a software engineer joining
-the team from Nepal. He's been working as a fullstack developer specializing on
+the team from Nepal. He's been working as a fullstack developer specializing in
 the MERN stack and has lead a team on multiple projects. In his free time Thomas
 enjoys trekking, watching and playing sports, watching movies, and learning.
 Welcome Thomas! 👏🏼
