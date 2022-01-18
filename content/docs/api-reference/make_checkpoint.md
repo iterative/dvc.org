@@ -1,13 +1,10 @@
 # dvc.api.make_checkpoint()
 
-Make an in-code [checkpoint].
+Make an [in-code checkpoint](/doc/user-guide/experiment-management/checkpoints).
 
 ```py
 def make_checkpoint()
 ```
-
-[checkpoint]:
-  /doc/user-guide/experiment-management/running-experiments#checkpoint-experiments
 
 #### Usage:
 
