@@ -34,8 +34,8 @@ Each subsequent call to `live.log(name, val)` will add a new row to
 
 The created file `{path}/{name}.tsv` is usable by `dvc plots`.
 
-💡 If `name` contains slashes (i.e. `train/loss`), the required subfolders will
-be created and the file will be saved inside the last subfolder (i.e.
+💡 If `name` contains slashes (e.g. `train/loss`), the required subdirectories
+will be created and the file will be saved inside the last one (e.g.
 `{path}/train/loss.tsv`).
 
 If `summary` is True, `Live.log()` DVCLive will update the
