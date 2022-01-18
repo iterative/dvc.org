@@ -136,7 +136,7 @@ $ dvc run -n download_data \
   want to "DVCfy" this state of the project (see also `dvc commit`).
 
 - `--to-remote` - import an external target, but don't move it into the
-  workspace, nor cache it. [Transfer](#example-import-straight-to-the-remote) it
+  workspace, nor cache it. [Transfer](#example-transfer-to-remote-storage) it
   directly to remote storage (the default one, unless `-r` is specified)
   instead. Use `dvc pull` to get the data locally.
 
@@ -361,16 +361,12 @@ to your project without downloading it to the local file system (for using it
 later/elsewhere). The `--to-remote` option let you skip the download, while
 storing the imported data [remotely](/doc/command-reference/remote).
 
-Let's set up a sample remote and create an import `.dvc` file without
-downloading the target data, transferring it directly to remote storage instead:
+Let's create an import `.dvc` file without downloading the target data,
+transferring it directly to remote storage instead:
 
 ```dvc
-$ mkdir /tmp/dvcstore
-$ dvc remote add myremote /tmp/dvcstore
-
 $ dvc import-url https://data.dvc.org/get-started/data.xml data.xml \
-                 --to-remote -r myremote
-...
+                 --to-remote
 ```
 
 The only change in our local <abbr>workspace</abbr> is a newly created import
@@ -384,8 +380,8 @@ data.xml.dvc
 Whenever anyone wants to actually download the imported data (for example from a
 system that can handle it), they can use `dvc pull` as usual:
 
-```
- $ dvc pull data.xml.dvc -r tmp_remote
+```dvc
+$ dvc pull data.xml.dvc
 
 A       data.xml
 1 file added and 1 file fetched
