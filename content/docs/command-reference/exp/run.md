@@ -30,26 +30,32 @@ directories, etc.
 Use the `--set-param` (`-S`) option as a shortcut to change
 <abbr>parameter</abbr> values [on-the-fly] before running the experiment.
 
-It's possible to [queue experiments] for later execution with the `--queue` flag
-(nothing is actually executed). To run them, use `dvc exp run --run-all`. Queued
-experiments are run one by one by default, but can be run in parallel using the
-`--jobs` option.
+It's possible to [queue experiments] for later execution with the `--queue`
+flag. To actually run them, use `dvc exp run --run-all`. Queued experiments are
+run sequentially by default, but can be run in parallel using the `--jobs`
+option.
+
+> ⚠️ Parallel runs are experimental and may be unstable. Make sure you're using
+> a number of jobs that your environment can handle (no more than the CPU
+> cores).
 
 It's also possible to run special [checkpoint experiments] that log the
 execution progress (useful for deep learning ML). The `--rev` and `--reset`
-options are specific to these.
+options have special uses for these.
 
 > 📖 See the [Running Experiments] guide for more details on all these features.
 
-Successful experiments can be [made persistent] by restoring them via
-`dvc exp branch` or `dvc exp apply` and committing them to the Git repo.
-Unnecessary ones can be [cleared] with `dvc exp gc`.
+[Review] run experiments with `dvc exp show`. Successful ones can be [made
+persistent] by restoring them via `dvc exp branch` or `dvc exp apply` and
+committing them to the Git repo. Unnecessary ones can be [cleared] with
+`dvc exp gc`.
 
 [on-the-fly]: #example-modify-parameters-on-the-fly
 [queue experiments]:
   /doc/user-guide/experiment-management/running-experiments#the-experiments-queue
 [checkpoint experiments]: /doc/user-guide/experiment-management/checkpoints
 [running experiments]: /doc/user-guide/experiment-management/running-experiments
+[review]: /doc/user-guide/experiment-management/comparing-experiments
 [made persistent]: /doc/user-guide/experiment-management/persisting-experiments
 [cleared]: /doc/user-guide/experiment-management/cleaning-experiments
 
@@ -87,6 +93,10 @@ Unnecessary ones can be [cleared] with `dvc exp gc`.
   parallel. Only has an effect along with `--run-all`. Defaults to 1 (the queue
   is processed serially).
 
+  > Note that since queued experiments are run isolated from each other, common
+  > stages may sometimes be executed several times depending on the state of the
+  > [run-cache] at that time.
+
 - `-r <commit>`, `--rev <commit>` - continue an experiment from a specific
   checkpoint name or hash (`commit`) in `--queue` or `--temp` runs.
 
@@ -104,6 +114,8 @@ Unnecessary ones can be [cleared] with `dvc exp gc`.
   regardless of this flag.
 
 - `-v`, `--verbose` - displays detailed tracing information.
+
+[run-cache]: /doc/user-guide/project-structure/internal-files#run-cache
 
 ## Examples
 

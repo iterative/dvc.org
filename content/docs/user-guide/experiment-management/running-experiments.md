@@ -44,23 +44,6 @@ once.
 [reproduction targets]: /doc/command-reference/repro#options
 [dependency graph]: /doc/command-reference/dag#directed-acyclic-graph
 
-## Experiment results
-
-The results of the last `dvc exp run` can be seen in the <abbr>workspace</abbr>.
-They are stored and tracked internally by DVC.
-
-To display and compare multiple experiments along with their
-<abbr>parameters</abbr> and <abbr>metrics</abbr>, use `dvc exp show` or
-`dvc exp diff`. `plots diff` also accepts experiments as `revisions`. See
-[Reviewing and Comparing Experiments][reviewing] for more details.
-
-Use `dvc exp apply` to restore the results of any other experiment instead. See
-[Bring experiment results to your workspace][apply] for more info.
-
-[reviewing]: /doc/user-guide/experiment-management/comparing-experiments
-[apply]:
-  /doc/user-guide/experiment-management/persisting-experiments#bring-experiment-results-to-your-workspace
-
 ## Tuning (hyper)parameters
 
 Parameters are the values that modify the behavior of coded processes -- in this
@@ -93,6 +76,23 @@ $ dvc exp run -S learning_rate=0.001 -S units=128  # set multiple params
 ...
 ```
 
+## Experiment results
+
+The results of the last `dvc exp run` can be seen in the <abbr>workspace</abbr>.
+They are stored and tracked internally by DVC.
+
+To display and compare multiple experiments along with their
+<abbr>parameters</abbr> and <abbr>metrics</abbr>, use `dvc exp show` or
+`dvc exp diff`. `plots diff` also accepts experiments as `revisions`. See
+[Reviewing and Comparing Experiments][reviewing] for more details.
+
+Use `dvc exp apply` to restore the results of any other experiment instead. See
+[Bring experiment results to your workspace][apply] for more info.
+
+[reviewing]: /doc/user-guide/experiment-management/comparing-experiments
+[apply]:
+  /doc/user-guide/experiment-management/persisting-experiments#bring-experiment-results-to-your-workspace
+
 ## The experiments queue
 
 The `--queue` option of `dvc exp run` tells DVC to append an experiment for
@@ -122,22 +122,22 @@ is found in `.git/refs/exps`, and earlier ones are in its [reflog].
 
 </details>
 
-Each experiment is derived from the <abbr>workspace</abbr> at the time it's
-queued. If you make changes in the workspace afterwards, they won't be reflected
-in queued experiments (once run).
-
-Run them all one-by-one with the `--run-all` flag. For isolation, this is done
-outside your <abbr>workspace</abbr> (in temporary directories).
-
-> Note that the order of execution is independent of their creation order.
+Run them all with the `--run-all` flag:
 
 ```dvc
 $ dvc exp run --run-all
+...
 ```
+
+> Note that the order of execution is independent of their creation order.
+
+Their execution happens outside your <abbr>workspace</abbr> in temporary
+directories for isolation, so each experiment is derived from the workspace at
+the time it was queued.
 
 <details>
 
-### How are queued experiments isolated?
+### How are experiments isolated?
 
 DVC creates a copy of the experiment's original workspace in `.dvc/tmp/exps/`
 and runs it there. All workspaces share the single project <abbr>cache</abbr>,
@@ -154,36 +154,17 @@ nohup: ignoring input and appending output to 'nohup.out'
 
 Note that Git-ignored files/dirs are excluded from queued/temp runs to avoid
 committing unwanted files into Git (e.g. once successful experiments are
-[persisted]).
-
-> 💡 To include untracked files, stage them with `git add` first (before
-> `dvc exp run`) and `git reset` them afterwards.
+[persisted]). To include untracked files, stage them with `git add` first
+(before `dvc exp run`) and `git reset` them afterwards.
 
 [persisted]: /doc/user-guide/experiment-management/persisting-experiments
 
 </details>
 
-To remove all experiments from the queue and start over, you can use
-`dvc exp remove --queue`.
+💡 To clear the experiments queue and start over, use `dvc exp remove --queue`.
 
-### Running experiments in parallel
-
-DVC allows to run queued experiments in parallel by specifying a number of
-execution processes (`--jobs`):
-
-```dvc
-$ dvc exp run --run-all --jobs 4
-```
-
-> Note that since each experiment runs in an independent temporary directory,
-> common <abbr>stages</abbr> may sometimes be executed several times depending
-> on the state of the [run-cache] at that time.
-
-[run-cache]: /doc/user-guide/project-structure/internal-files#run-cache
-
-⚠️ Parallel runs are experimental and may be unstable at this time. ⚠️ Make sure
-you're using a number of jobs that your environment can handle (no more than the
-CPU cores).
+> 📖 See the `dvc exp run` reference for more options related to experiments
+> queue, such as running them in parallel with `--jobs`.
 
 ## Checkpoint experiments
 
