@@ -23,38 +23,36 @@ Provides a way to execute and track <abbr>experiments</abbr> in your
 <abbr>project</abbr> without polluting it with unnecessary commits, branches,
 directories, etc.
 
-> 📖 See full [Running Experiments] guide for more information.
-
-Before running an experiment, you'll probably want to make modifications such as
-<abbr>parameter</abbr> tuning. You can use the `--set-param` (`-S`) option to
-change param values on-the fly.
-
 > `dvc exp run` has the same behavior as `dvc repro` when it comes to `targets`
 > and stage execution (restores the dependency graph, etc.). See the command
 > [options](#options) for more on the differences.
 
-Successful experiments can be [made persistent] by committing them to the Git
-repo. Unnecessary ones can be [cleared].
+Use the `--set-param` (`-S`) option as a shortcut to change
+<abbr>parameter</abbr> values [on-the-fly] before running the experiment.
 
-It's possible to schedule experiments for later execution with
-`dvc exp run --queue`. To actually run them, use `dvc exp run --run-all`. This
-can execute them one by one (default) or in parallel (using the `--jobs`
-option).
+It's possible to [queue experiments] for later execution with the `--queue` flag
+(nothing is actually executed). To run them, use `dvc exp run --run-all`. Queued
+experiments are run one by one by default, but can be run in parallel using the
+`--jobs` option.
 
-> 📖 Learn more about the [experiments queue].
+It's also possible to run special [checkpoint experiments] that log the
+execution progress (useful for deep learning ML). The `--rev` and `--reset`
+options are specific to these.
 
-It's also possible to run special [checkpoint experiments] for deep learning ML.
+> 📖 See the [Running Experiments] guide for more details on all these features.
 
-> 📖 See [Running checkpoint experiments].
+Successful experiments can be [made persistent] by restoring them via
+`dvc exp branch` or `dvc exp apply` and committing them to the Git repo.
+Unnecessary ones can be [cleared] with `dvc exp gc`.
 
+[on-the-fly]:
+  /doc/user-guide/experiment-management/running-experiments#updating-experiment-parameters-on-the-fly
+[queue experiments]:
+  /doc/user-guide/experiment-management/running-experiments#the-experiments-queue
+[checkpoint experiments]: /doc/user-guide/experiment-management/checkpoints
 [running experiments]: /doc/user-guide/experiment-management/running-experiments
 [made persistent]: /doc/user-guide/experiment-management/persisting-experiments
 [cleared]: /doc/user-guide/experiment-management/cleaning-experiments
-[checkpoint experiments]: /doc/user-guide/experiment-management/checkpoints
-[running checkpoint experiments]:
-  /doc/user-guide/experiment-management/running-experiments#checkpoint-experiments
-[experiments queue]:
-  /doc/user-guide/experiment-management/running-experiments#the-experiments-queue
 
 ## Options
 
