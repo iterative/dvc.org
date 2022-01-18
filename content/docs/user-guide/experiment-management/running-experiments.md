@@ -8,104 +8,53 @@ details.
 > experimentation, you may want to check the basics in
 > [Get Started: Experiments](/doc/start/experiments/) first.
 
-## The pipeline
+## Pipelines files
 
-DVC relies on <abbr>pipelines</abbr> that codify experiment workflows (code,
-<abbr>stages</abbr>, <abbr>parameters</abbr>, <abbr>outputs</abbr>, etc.) in a
-`dvc.yaml` file. These contain the commands to run the experiments.
+DVC relies on `dvc.yaml` files that contain the commands to run the
+experiment(s). These files codify _pipelines_ that specify the
+<abbr>stages</abbr> of experiment workflows (code, <abbr>parameters</abbr>,
+<abbr>outputs</abbr>, etc.).
 
 > 📖 See [Get Started: Data Pipelines](/doc/start/data-pipelines) for an intro
 > to this topic.
 
-[ug-pipeline-files]: /doc/user-guide/project-structure/pipelines-files
+### Running the pipeline(s)
 
-### Running the pipeline
-
-You can run the pipeline using default settings with `dvc exp run`:
+You can run the pipeline using `dvc exp run`. It uses `./dvc.yaml` (in the
+current directory) by default:
 
 ```dvc
 $ dvc exp run
+...
+Reproduced experiment(s): exp-44136
 ```
 
-DVC keeps track of the dependency graph and runs only the stages with changed
-dependencies or missing outputs.
+DVC keeps track of the [dependency graph] among stages. It only runs the ones
+with changed dependencies or outputs missing from the <abbr>cache</abbr>. You
+can limit this to certain [reproduction targets] or even single stages
+(`--single-item` flag).
 
-> Example: for a pipeline composed of `prepare`, `train`, and `evaluate` stages,
-> if a dependency of `prepare` stage has changed, the downstream stages
-> (`train`, `evaluate`) are also run.
+<abbr>DVC projects</abbr> actually supports more than one pipeline, in one or
+more `dvc.yaml` files. The `--all-pipelines` option lets you run them all at
+once.
 
-### Running specific stages
+> 📖 `dvc exp run` is an experiment-specific alternative to `dvc repro` where
+> you can learn more about these and other pipeline-related options.
 
-By default DVC uses `./dvc.yaml` (in the current directory). You can specify
-`dvc.yaml` files in other directories, or even specific stages to run. These are
-given as the last argument to the `dvc exp run`. Examples:
+[reproduction targets]: /doc/command-reference/repro#options
+[dependency graph]: /doc/command-reference/dag#directed-acyclic-graph
 
-```dvc
-$ dvc exp run my-project/dvc.yaml  # a specific dvc.yaml file
+## Experiment results
 
-$ dvc exp run extract  # a specific stage (from `./dvc.yaml`)
-
-$ dvc exp run my-project/dvc.yaml:extract
-  # ^ a stage from a specific dvc.yaml file
-```
-
-> 📖 See [reproduction `targets`](/doc/command-reference/repro#options) for all
-> the details.
-
-### Running stages independently
-
-In some cases you may need to run a stage without invoking its dependents. The
-`--single-item` (`-s`) flag allows to run the command of a single stage.
-
-> Example: for a pipeline composed of `prepare`, `train`, and `evaluate` stages
-> and you only want to run the `train` stage to check its outputs, you can do so
-> by:
->
-> ```dvc
-> $ dvc exp run --single-stage train
-> ```
-
-### Running all pipelines
-
-<abbr>DVC projects</abbr> support more than a single pipeline in one or more
-`dvc.yaml` files. In this case, you can run all pipelines with a single command:
-
-```dvc
-$ dvc exp run --all-pipelines
-```
-
-> Note that the order in which pipelines are executed is not guaranteed; Only
-> the internal order of stage execution is.
-
-> (ℹ️) When your `dvc.yaml` files are organized inside recursive subfolders, you
-> can selectively run the pipeline(s) using `--recursive` (takes a parent
-> directory as argument).
-
-### Running stages interactively
-
-When you want to have more granular control over which stages are run, you can
-use the `--interactive` option. This flag allows you to confirm each stage
-before running.
-
-```dvc
-$ dvc exp run --interactive
-Going to reproduce stage: 'train'... continue? [y/n]
-```
-
-> Note that `dvc exp run` is an experimentation-specific alternative to
-> `dvc repro`.
-
-### Working with the results
-
-The results of the last `dvc exp run` can be seen in the <abbr>workspace</abbr>
-and are stored and tracked internally by DVC.
+The results of the last `dvc exp run` can be seen in the <abbr>workspace</abbr>.
+They are stored and tracked internally by DVC.
 
 To display and compare multiple experiments, use `dvc exp show` or
 `dvc exp diff`. `plots diff` also accepts experiments as `revisions`. See
 [Reviewing and Comparing Experiments][reviewing] for more details.
 
 Use `dvc exp apply` to restore the results of any other experiment instead. See
-[Bring experiment results to your workspace][apply] for more.
+[Bring experiment results to your workspace][apply] for more info.
 
 [reviewing]: /doc/user-guide/experiment-management/comparing-experiments
 [apply]:
