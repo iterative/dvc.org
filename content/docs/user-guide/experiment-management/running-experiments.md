@@ -12,7 +12,7 @@ details.
 
 DVC relies on `dvc.yaml` files that contain the commands to run the
 experiment(s). These files codify _pipelines_ that specify the
-<abbr>stages</abbr> of experiment workflows (code, <abbr>parameters</abbr>,
+<abbr>stages</abbr> of experiment workflows (code, <abbr>dependencies</abbr>,
 <abbr>outputs</abbr>, etc.).
 
 > 📖 See [Get Started: Data Pipelines](/doc/start/data-pipelines) for an intro
@@ -49,7 +49,8 @@ once.
 The results of the last `dvc exp run` can be seen in the <abbr>workspace</abbr>.
 They are stored and tracked internally by DVC.
 
-To display and compare multiple experiments, use `dvc exp show` or
+To display and compare multiple experiments along with their
+<abbr>parameters</abbr> and <abbr>metrics</abbr>, use `dvc exp show` or
 `dvc exp diff`. `plots diff` also accepts experiments as `revisions`. See
 [Reviewing and Comparing Experiments][reviewing] for more details.
 
@@ -60,81 +61,36 @@ Use `dvc exp apply` to restore the results of any other experiment instead. See
 [apply]:
   /doc/user-guide/experiment-management/persisting-experiments#bring-experiment-results-to-your-workspace
 
-## (Hyper)parameters
+## Tuning (hyper)parameters
 
-ML <abbr>parameters</abbr> are the values that modify the underlying code's
-behavior, producing different experiment results. Machine learning
-experimentation, for example, involves searching hyperparameters that improve
-the resulting model metrics.
+Parameters are the values that modify the behavior of coded processes -- in this
+case producing different experiment results. Machine learning experimentation
+often involves defining and searching hyperparameter spaces to improve the
+resulting model metrics.
 
-In DVC projects, parameters should be read by the code from _parameter files_
-(`params.yaml` by default). DVC parses these files to track individual param
-values. When a tracked param is changed, `dvc exp run` invalidates any stages
-that depend on it, and reruns the experiment.
+In DVC project source code, <abbr>parameters</abbr> should be read from _params
+files_ (`params.yaml` by default) and defined in `dvc.yaml`. When a tracked
+param value has changed, `dvc exp run` invalidates any stages that depend on it,
+and reproduces them.
 
-> Parameters can be defined in `dvc.yaml` directly or through `dvc stage add`.  
 > 📖 See `dvc params` for more details.
-
-For a params file named `params.yaml` with the contents
-
-```yaml
-model:
-  learning_rate: 0.0001
-```
-
-You can specify the parameter dependency as
-
-```dvc
-$ dvc stage add -n train \
-                --parameter model.learning_rate \
-                --outs ...
-```
-
-> ⚠️ DVC does not check whether the parameters are actually used in your code.
-
-<details>
-
-#### Non-default parameter files
-
-DVC allows param files in YAML 1.2, JSON, TOML, and Python formats. When your
-parameters file is named something other than `params.yaml`, you need to specify
-it in both stage description and `dvc exp run`. For example using
-`myparams.toml`:
-
-```dvc
-$ dvc stage add -n train \
-                -p myparams.toml:learning_rate \
-                ...
-
-$ dvc exp run -S myparams.toml:learning_rate = 0.0001
-```
-
-</details>
-
-### Updating experiment parameters on-the-fly
 
 You could manually edit a params file and run an experiment on that basis. Since
 this is a common sequence, the built-in option `dvc exp run --set-param` (`-S`)
-is provided as a shortcut. It takes an existing param name and its value, and
-updates the file before the run for you.
+is provided as a shortcut. It takes an existing param name and value, and
+updates the file on-the-fly before execution.
 
 ```dvc
 $ cat params.yaml
 model:
   learning_rate: 0.001
+  units=64
 
 $ dvc exp run --set-param model.learning_rate=0.0002
 ...
-```
 
-> Note that parameters are attached to experiments so they're shown together
-> when [reviewing] them (e.g. in `dvc exp show`).
-
-To set more than one param for the same experiment, use the `-S` option multiple
-times:
-
-```dvc
-$ dvc exp run -S learning_rate=0.001 -S units=128
+$ dvc exp run -S learning_rate=0.001 -S units=128  # set multiple params
+...
 ```
 
 ## The experiments queue

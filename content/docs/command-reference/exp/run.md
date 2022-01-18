@@ -45,8 +45,7 @@ Successful experiments can be [made persistent] by restoring them via
 `dvc exp branch` or `dvc exp apply` and committing them to the Git repo.
 Unnecessary ones can be [cleared] with `dvc exp gc`.
 
-[on-the-fly]:
-  /doc/user-guide/experiment-management/running-experiments#updating-experiment-parameters-on-the-fly
+[on-the-fly]: #example-modify-parameters-on-the-fly
 [queue experiments]:
   /doc/user-guide/experiment-management/running-experiments#the-experiments-queue
 [checkpoint experiments]: /doc/user-guide/experiment-management/checkpoints
