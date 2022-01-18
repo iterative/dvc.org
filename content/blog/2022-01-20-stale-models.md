@@ -2,9 +2,13 @@
 title: Preventing Stale Models in Production
 date: 2022-01-20
 description: >
-  Sharing experiments with teammates can help you build models more efficiently.
+  We're going to look at how you can prevent stale models from remaining in
+  production when the data starts to differ from the training data.
 descriptionLong: >
-  You can use DVC remotes to share experiments and their data across machines.
+  Every model that gets deployed to production experiences some type of drift as
+  the data on production starts to differ from the data the model was trained
+  on. That's why we're going to look at how you can prevent stale models from
+  remaining in production.
 picture: 2022-01-20/stale-models.png
 pictureComment: Preventing Stale Models in Production
 author: milecia_mcgregor
