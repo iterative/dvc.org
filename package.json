@@ -52,6 +52,7 @@
     "fs-extra": "^10.0.0",
     "gatsby": "^4.3.0",
     "gatsby-link": "^4.3.0",
+    "gatsby-plugin-algolia": "^0.25.0",
     "gatsby-plugin-image": "^2.3.0",
     "gatsby-plugin-parent-resolvers": "^1.0.1",
     "github-markdown-css": "^5.0.0",
