@@ -21,39 +21,34 @@ the [`example-dvc-experiments`][ede] project.
 
 <details>
 
-### ⚙️ Installing the example project
+### ⚙️ Initializing a project into DVC experiments
 
-These commands are run in the [`example-dvc-experiments`][ede] project. You can
-run the commands in this document after cloning the repository, installing the
-requirements, and pulling the data.
+If you already have a DVC project, that's great. You can start to use `dvc exp`
+commands right away to run experiments in your project. (See the [user's guide]
+for detailed information.) Here, we briefly discuss how to structure an ML
+project into a DVC experiments project with `dvc exp init`.
 
-#### Clone the project and create virtual environment
+[user's guide]: /doc/user-guide/experiment-management/
 
-Please clone the project and create a virtual environment.
-
-> We strongly recommend to create a virtual environment to keep the libraries we
-> use isolated from the rest of your system. This prevents version conflicts.
-
-```dvc
-$ git clone https://github.com/iterative/example-dvc-experiments -b get-started
-$ cd example-dvc-experiments
-$ virtualenv .venv
-$ . .venv/bin/activate
-$ python -m pip install -r requirements.txt
-```
-
-#### Get the data set
-
-The repository we cloned doesn't contain the dataset. Instead of storing the
-data in the Git repository, we use DVC to retrieve from a shared data store. In
-this case, we use `dvc pull` to update the missing data files.
+A typical machine learning project has data, a set of scripts that trains a
+model, a bunch of hyperparameters that modify these models, and outputs metrics
+and plots to evaluate the models. DVC makes certain assumptions about the names
+of these elements to initialize a project with:
 
 ```dvc
-$ dvc pull
+$ dvc exp init python src/train.py
 ```
 
-The repository already contains the necessary configuration to run the
-experiments.
+Here, `python src/train.py` describes how you run experiments. It could be any
+other command.
+
+If your project uses different names for them, you can set directories for
+source code (default: `src`), data (`data/`), models (`models/`), plots
+(`plots/`), and files for hyperparameters (`params.yaml`), metrics
+(`metrics.json`) with the options supplied to `dvc exp init`.
+
+You can also set these options in a dialog format with
+`dvc exp init --interactive`.
 
 </details>
 
@@ -68,18 +63,12 @@ Experiment results have been applied to your workspace.
 ...
 ```
 
-It runs the specified command (`python train.py`) in `dvc.yaml`. That command
-writes the metrics values to `metrics.json`.
+It runs the command we specified (`python train.py`), and creates models, plots
+and metrics in respective directories.
 
 This experiment is then associated with the values found in the parameters file
 (`params.yaml`), and other dependencies (`data/images/`) with these produced
 metrics.
-
-The purpose of the `dvc exp` family of commands is to let you run, capture, and
-compare the machine learning experiments at once as you iterate on your project.
-The artifacts like models and metrics produced by each experiment are tracked by
-DVC, and the associated parameters and metrics can be committed to Git as text
-files.
 
 You can review the experiment results with `dvc exp show` and see these metrics
 and results in a nicely formatted table:
