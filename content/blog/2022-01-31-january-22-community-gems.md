@@ -84,6 +84,10 @@ DVC doesn't track the pipeline dependencies in the cache or storage, only the
 outputs. If you want DVC to track a pure data dependency that's not an output of
 a different stage, you need to track it with `dvc add ...`
 
+The output of a pipeline might be something like `data.dvc`, while a pure
+dependency might be a file that's just a part of the project, like `script.py`.
+That's why you'll need to use the `dvc add` command to track this.
+
 ### [What is the difference between Kubeflow pipelines and DVC pipelines?](https://discord.com/channels/485586884165107732/563406153334128681/922728960478035978)
 
 This is a fantastic question! Thanks for asking @ramakrishnamamidi!
