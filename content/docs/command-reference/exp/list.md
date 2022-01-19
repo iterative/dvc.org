@@ -39,6 +39,9 @@ options below).
 
 - `--all` - list all experiments in the repository (overrides `--rev`).
 
+- `--names-only` - print only the names of the experiments without their parent
+  Git commit.
+
 - `-h`, `--help` - shows the help message and exit.
 
 - `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if no
