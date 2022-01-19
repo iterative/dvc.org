@@ -58,21 +58,31 @@ model = pickle.loads(
 
 Thanks for the question @alphaomega!
 
-The best way to handle any package dependencies is to include a requirements.txt
-file with the specific versions your pipeline needs.
+The best way to handle any package dependencies is to include a
+`requirements.txt` file with the specific versions your pipeline needs.
 
 Another approach you can take is having a stage that dumps the package version
 as an intermediate output. It doesn't have to be saved in Git or DVC because
-it's easily reproduced and the DVC internals should be able to take care of
-detecting that the package didn't change.
+it's easily reproduced and DVC should be able to take care of detecting that the
+package didn't change. Here's an example of a stage that does this.
 
-### [Does DVC track dependencies which are in the `dvc.yaml` pipeline?](https://discord.com/channels/485586884165107732/563406153334128681/920659549835370497)
+```yaml
+stages:
+  package_version:
+    cmd: tail -1 /path/to/file/version.txt > package_version.txt
+    deps:
+      - /path/to/file/version.txt
+    outs:
+      - package_version.txt
+```
+
+### [Does DVC save dependencies which are in the `dvc.yaml` pipeline to the cache?](https://discord.com/channels/485586884165107732/563406153334128681/920659549835370497)
 
 Thanks for another great question @rie!
 
-DVC doesn't track the pipeline dependencies, only the outputs. If you want DVC
-to track a pure data dependency that's not an output of a different stage, you
-need to track it with `dvc add ...`
+DVC doesn't track the pipeline dependencies in the cache or storage, only the
+outputs. If you want DVC to track a pure data dependency that's not an output of
+a different stage, you need to track it with `dvc add ...`
 
 ### [What is the difference between Kubeflow pipelines and DVC pipelines?](https://discord.com/channels/485586884165107732/563406153334128681/922728960478035978)
 
@@ -115,7 +125,7 @@ even encouraged to directly edit `dvc.yaml` if that's easier.
 For example, if you are currently executing a command like this:
 
 ```dvc
-dvc run -n prune \
+$ dvc run -n prune \
         -o model.pt \
         -d ./DepFiles_0/ \
         -d ./DepFiles_1/ \
