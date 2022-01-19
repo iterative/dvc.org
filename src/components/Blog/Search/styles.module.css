@@ -1,0 +1,13 @@
+.search {
+  position: relative;
+  margin: 0.6em auto;
+  max-width: 1005px;
+
+  @media (--md-scr) {
+    max-width: 650px;
+  }
+
+  @media (--sm-scr) {
+    padding: 0 15px;
+  }
+}
