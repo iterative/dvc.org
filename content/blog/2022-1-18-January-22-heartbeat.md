@@ -22,7 +22,7 @@ descriptionLong: |
     💻 Online Course is live,
 
     🚀 Info on our growing team, and more!
-picture: 2022-01-18/Frame 61draft.png
+picture: 2022-01-18/heartbeat-january.png
 author: jeny_defigueiredo
 commentsUrl: https://discuss.dvc.org/t/january-22-heartbeat/1025
 tags:
