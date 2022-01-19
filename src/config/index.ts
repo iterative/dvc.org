@@ -1,9 +1,9 @@
 const config = {
   algolia: {
-    appId: process.env.ALGOLIA_APP_ID,
-    searchKey: process.env.ALGOLIA_SEARCH_KEY,
+    appId: String(process.env.GATSBY_ALGOLIA_APP_ID),
+    searchKey: String(process.env.GATSBY_ALGOLIA_SEARCH_KEY),
     adminKey: process.env.ALGOLIA_ADMIN_KEY,
-    indexName: process.env.ALGOLIA_INDEX_NAME || 'dev_blogs'
+    indexName: process.env.GATSBY_ALGOLIA_INDEX_NAME || 'dev_blogs'
   }
 }
 

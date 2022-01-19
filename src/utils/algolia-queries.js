@@ -4,7 +4,7 @@ const escapeStringRegexp = require('escape-string-regexp')
 require('dotenv').config()
 
 const pagePath = `content/blog`
-const indexName = process.env.ALGOLIA_INDEX_NAME || 'dev_blogs'
+const indexName = process.env.GATSBY_ALGOLIA_INDEX_NAME || 'dev_blogs'
 
 const pageQuery = `{
   pages: allMarkdownRemark(
@@ -19,16 +19,22 @@ const pageQuery = `{
           title
           description
         }
-        excerpt(pruneLength: 5000)
+        childBlogPost {
+          slug
+        }
+        excerpt(pruneLength: 1000)
       }
     }
   }
 }`
 
-function pageToAlgoliaRecord({ node: { id, frontmatter, ...rest } }) {
+function pageToAlgoliaRecord({
+  node: { id, frontmatter, childBlogPost, ...rest }
+}) {
   return {
     objectID: id,
     ...frontmatter,
+    ...childBlogPost,
     ...rest
   }
 }
