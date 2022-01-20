@@ -35,34 +35,22 @@ production.
 
 ## Setting up the project
 
-Here's the scenario we'll be going through. You have a model that you've trained
-and deployed to production and it's been doing a great job helping driving
-business decisions. You know that you have new data coming in every few weeks so
-you ocassionally check that your model's predictions still make sense.
-
-Eventually you notice that there is a difference in the model's performance.
-That's when you use your monitoring tools to see if there was any data drift
-happening. Once you see that there is some data drift, then you take the new
-data from production and update your model.
+We'll be working with a project from
+[Evidently.ai](https://evidentlyai.com/blog/tutorial-1-model-analytics-in-production)
+that demonstrates what it would be like to work with a production model that
+experiences data drift over time. We'll take this to the next level by adding
+some automation with DVC and sharing the results with others on your team using
+DVC Studio.
 
 So we'll start by cloning
 [this repo for the project](https://github.com/iterative/stale-model-example).
-This project is a simple image classifier based on the AlexNet model for images
-of cats and dogs.
+This project is based on the one created by
+[Evidently.ai](https://github.com/evidentlyai/evidently/blob/main/examples/data_stories/bicycle_demand_monitoring.ipynb)
+with some modifications to work with DVC.
 
-Next we need the dataset we'll be working with. You can take a look at the `dvc`
-file in
-[this data registry](https://github.com/iterative/dataset-registry/tree/master/blog).
-To get the data on your local machine, run the following command:
-
-```dvc
-$ dvc get https://github.com/iterative/dataset-registry blog/cats-dogs
-```
-
-You'll notice that there is a model already in this project. This represents an
-existing model that's on production. This model has been trained on the cats and
-dogs dataset. Now we're finding out there are new images in the production data
-and we need to update our model to account for this data drift.
+The reason we're adding DVC and Studio to this project is to automate the way
+our model evaluation pipeline runs and to be able to share and review the
+results for each experiment run we do.
 
 ## Set up data drift reports
 
