@@ -170,7 +170,10 @@ not.
   (can only be used with `--to-remote`).
 
 - `-j <number>`, `--jobs <number>` - Only used if `--to-remote` is also passed.
-  Parallelism level for DVC to upload data to remote storage. The default value is 4 * cpu_count(). For SSH remotes, the default is 4. Note that the default value can be set using the jobs config option with dvc remote modify. Using more jobs may speed up the operation.
+  Parallelism level for DVC to upload data to remote storage. The default value
+  is 4 \* cpu_count(). For SSH remotes, the default is 4. Note that the default
+  value can be set using the jobs config option with dvc remote modify. Using
+  more jobs may speed up the operation.
 
 - `--desc <text>` - user description of the data (optional). This doesn't affect
   any DVC operations.
