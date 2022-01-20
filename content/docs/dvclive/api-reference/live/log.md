@@ -56,4 +56,4 @@ The updated summary `{path}.json` is usable by `dvc metrics`.
   have a supported type.
 
 - `dvclive.error.DataAlreadyLoggedError` - thrown if the provided `name` has
-  already been logged whithin the same `step`.
+  already been logged within the same `step`.

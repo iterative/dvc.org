@@ -26,8 +26,8 @@ live = Live()
 Its parameters are focused on configuring the behavior of subsequent calls to
 [`Live()` methods](#methods).
 
-⚠️ If `path` already exists, `Live()` will remove all existing DVCLive related
-files.
+⚠️ `Live()` will remove all existing DVCLive related files under `path` unless
+`resume=True`.
 
 ## Attributes
 
