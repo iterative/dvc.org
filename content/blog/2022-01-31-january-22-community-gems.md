@@ -69,11 +69,15 @@ package didn't change. Here's an example of a stage that does this.
 ```yaml
 stages:
   package_version:
-    cmd: tail -1 /path/to/file/version.txt > package_version.txt
+    cmd: pip freeze | grep "package_name==" > package_name_version.txt
     deps:
       - /path/to/file/version.txt
     outs:
-      - package_version.txt
+      - package_name_version.txt
+  train:
+    cmd: python train.py
+    deps:
+      - package_name_version.txt
 ```
 
 ### [Does DVC save dependencies which are in the `dvc.yaml` pipeline to the cache?](https://discord.com/channels/485586884165107732/563406153334128681/920659549835370497)
