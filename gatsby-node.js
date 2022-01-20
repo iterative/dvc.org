@@ -1,66 +1,13 @@
 require('dotenv').config()
 
-const { statSync } = require('fs')
-const { readdir } = require('fs/promises')
 const path = require('path')
+// const { copyFile, mkdir, stat } = require('fs/promises')
 const Jimp = require('jimp')
 
 const { setPageContext } = require('./src/gatsby/common')
 
 const models = require('./src/gatsby/models.js')
 const callOnModels = require('./src/gatsby/utils/models')
-const { isProduction } = require('./src/server/utils')
-
-exports.onPreBootstrap = async () => {
-  if (!isProduction) {
-    return
-  }
-
-  const getDirectories = async path => {
-    try {
-      const files = await readdir(path)
-      const directoryPaths = files.filter(file =>
-        statSync(path + '/' + file).isDirectory()
-      )
-      return directoryPaths
-    } catch (err) {
-      console.error(err)
-    }
-  }
-
-  const getFiles = async pathName => {
-    try {
-      const files = await readdir(pathName)
-      const filePaths = files.filter(file =>
-        statSync(pathName + '/' + file).isFile()
-      )
-      return filePaths.map(file => path.join(pathName, file))
-    } catch (err) {
-      console.error(err)
-    }
-  }
-
-  const directories = await getDirectories('./static/uploads/images')
-  const allImages = await Promise.all(
-    directories.map(
-      async dir => await getFiles(path.join('./static/uploads/images', dir))
-    )
-  )
-
-  allImages.flat().forEach(imageName => {
-    if (imageName.endsWith('png')) {
-      Jimp.read(imageName)
-        .then(lenna => {
-          return lenna
-            .resize(800, Jimp.AUTO)
-            .write(imageName.replace('uploads', 'blog'))
-        })
-        .catch(err => {
-          console.error(err)
-        })
-    }
-  })
-}
 
 exports.createSchemaCustomization = api =>
   callOnModels(models, 'createSchemaCustomization', api)
@@ -95,5 +42,112 @@ exports.onCreateWebpackConfig = ({ stage, actions, getConfig }) => {
       miniCssExtractPlugin.options.ignoreOrder = true
     }
     actions.replaceWebpackConfig(config)
+  }
+}
+
+// const checkIfDirExists = async folderPath => {
+//   try {
+//     await stat(folderPath)
+//     return true
+//   } catch (err) {
+//     if (err.code === 'ENOENT') {
+//       return false
+//     }
+//   }
+// }
+
+// const mkDirIfItDoesNotExist = async folderPath => {
+//   const doesDirExist = await checkIfDirExists(folderPath)
+//   if (!doesDirExist) {
+//     return mkdir(folderPath)
+//   }
+// }
+
+// exports.onPostBuild = async ({ graphql }) => {
+//   try {
+//     const {
+//       data: {
+//         allBlogPost: { nodes }
+//       }
+//     } = await graphql(`
+//       query GetBlogMainImages {
+//         allBlogPost {
+//           nodes {
+//             picture {
+//               gatsbyImageData(width: 850)
+//             }
+//             date
+//           }
+//         }
+//       }
+//     `)
+
+//     await mkDirIfItDoesNotExist('./public/blog/images')
+
+//     await Promise.all(
+//       nodes.map(async node => {
+//         const date = node.date.slice(0, 10)
+
+//         return mkDirIfItDoesNotExist(`./public/blog/images/${date}`)
+//       })
+//     )
+
+//     await Promise.all(
+//       nodes.map(async node => {
+//         const imagePath = node.picture.gatsbyImageData.images.fallback.src
+//         const date = node.date.slice(0, 10)
+//         return copyFile(
+//           path.join(__dirname, 'public', imagePath),
+//           path.join(
+//             __dirname,
+//             '/public/blog/images',
+//             date,
+//             path.basename(imagePath)
+//           )
+//         )
+//       })
+//     )
+//   } catch (err) {
+//     console.error(err)
+//   }
+// }
+
+exports.onPostBuild = async ({ graphql }) => {
+  try {
+    const {
+      data: {
+        allBlogPost: { nodes }
+      }
+    } = await graphql(`
+      query GetBlogMainImages {
+        allBlogPost {
+          nodes {
+            picture {
+              fields {
+                sourcePath
+              }
+            }
+            date
+          }
+        }
+      }
+    `)
+
+    await Promise.all(
+      nodes.map(async node => {
+        const imagePath = node.picture.fields.sourcePath
+        return Jimp.read(path.join(__dirname, 'static', 'uploads', imagePath))
+          .then(lenna => {
+            return lenna
+              .resize(850, Jimp.AUTO)
+              .write(path.join(__dirname, 'public', 'blog', imagePath))
+          })
+          .catch(err => {
+            console.error(err)
+          })
+      })
+    )
+  } catch (err) {
+    console.error(err)
   }
 }
