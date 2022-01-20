@@ -20,18 +20,20 @@ export default function Search({ indices }: { indices: Array<any> }) {
   useClickOutside(rootRef, () => setFocus(false))
 
   return (
-    <div className={styles.search} ref={rootRef}>
-      <InstantSearch
-        searchClient={searchClient}
-        indexName={indices[0].name}
-        onSearchStateChange={({ query }) => setQuery(query)}
-      >
-        <SearchBox setFocus={setFocus} />
-        <SearchResult
-          show={!!query && query.length > 0 && hasFocus}
-          indices={indices}
-        />
-      </InstantSearch>
+    <div className={styles.searchContainer} ref={rootRef}>
+      <div className={styles.search}>
+        <InstantSearch
+          searchClient={searchClient}
+          indexName={indices[0].name}
+          onSearchStateChange={({ query }) => setQuery(query)}
+        >
+          <SearchBox setFocus={setFocus} />
+          <SearchResult
+            show={!!query && query.length > 0 && hasFocus}
+            indices={indices}
+          />
+        </InstantSearch>
+      </div>
     </div>
   )
 }

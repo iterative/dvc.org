@@ -2,8 +2,10 @@
   display: flex;
   align-items: center;
   margin-top: 16px;
-  margin-bottom: 16px;
+
+  /* margin-bottom: 16px; */
   height: 40px;
+  width: 100%;
 }
 
 .searchInput {

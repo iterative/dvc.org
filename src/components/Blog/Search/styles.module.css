@@ -1,6 +1,5 @@
-.search {
-  position: relative;
-  margin: 0.6em auto;
+.searchContainer {
+  margin: 0 auto;
   max-width: 1005px;
 
   @media (--md-scr) {
@@ -9,5 +8,11 @@
 
   @media (--sm-scr) {
     padding: 0 15px;
+  }
+
+  .search {
+    position: relative;
+    display: flex;
+    justify-content: center;
   }
 }

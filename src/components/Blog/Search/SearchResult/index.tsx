@@ -19,23 +19,28 @@ const HitCount = connectStateResults(({ searchResults }) => {
     <div className={styles.hitCount}>
       {hitCount} result{hitCount !== 1 ? `s` : ``}
     </div>
-  ) : null
+  ) : (
+    'No Results!!!'
+  )
 })
 
 const PageHit = ({ hit }: { hit: { slug: string } }) => (
-  <div>
-    <Link to={hit.slug}>
-      <h4>
-        <Highlight attribute="title" hit={hit} tagName="mark" />
-      </h4>
-    </Link>
-    <Snippet attribute="excerpt" hit={hit} tagName="mark" />
-  </div>
+  <Link to={hit.slug}>
+    <h4>
+      <Highlight attribute="title" hit={hit} tagName="mark" />
+    </h4>
+    <p>
+      <Snippet attribute="excerpt" hit={hit} tagName="mark" />
+    </p>
+  </Link>
 )
 
 const HitsInIndex = ({ index }: { index: { name: string } }) => (
   <Index indexName={index.name}>
-    <HitCount />
+    <div className={styles.searchResultHeader}>
+      <h3>Blog Posts</h3>
+      <HitCount />
+    </div>
     <Hits className={styles.hits} hitComponent={PageHit} />
   </Index>
 )
@@ -48,9 +53,11 @@ const SearchResult = ({
   show: boolean
 }) => (
   <div className={cn(styles.searchResult, show && styles.searchResultShow)}>
-    {indices.map(index => (
-      <HitsInIndex index={index} key={index.name} />
-    ))}
+    <div className={styles.searchResultContent}>
+      {indices.map(index => (
+        <HitsInIndex index={index} key={index.name} />
+      ))}
+    </div>
     <PoweredBy className={styles.aisPoweredBy} />
   </div>
 )
