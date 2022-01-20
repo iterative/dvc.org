@@ -67,7 +67,7 @@ command options for the DVC integration:
   [summary](/doc/dvclive/get-started#metrics-summary) generation.
 - `--live-no-html` - deactivates [HTML report](#html-report) generation.
 
-> Note that summary files are never tracked by DVC
+> Note that DVC will not track summary files or the HTML report.
 
 Run the training with `dvc repro` or `dvc exp run`:
 
