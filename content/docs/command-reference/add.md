@@ -171,7 +171,7 @@ not.
 
 - `-j <number>`, `--jobs <number>` - parallelism level for DVC to track data
   files or directories. The default value is `4 * cpu_count()`.
- 
+
 - `--desc <text>` - user description of the data (optional). This doesn't affect
   any DVC operations.
 
