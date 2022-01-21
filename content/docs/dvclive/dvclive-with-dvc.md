@@ -3,14 +3,15 @@
 Even though DVCLive does not require DVC, they can integrate in several useful
 ways:
 
-- The [_outputs_](#outputs) DVCLive produces can be fed as
-  `dvc metrics`/`dvc plots`, making it easier to add metrics logging to DVC
-  <abbr>stages</abbr>. Those same outputs can be visualized in
-  [_DVC Studio_](#dvc-studio)
+- The [outputs](#outputs) DVCLive produces are recognized by `dvc exp`,
+  `dvc metrics` and `dvc plots`. Those same outputs can be visualized in
+  [DVC Studio](#dvc-studio).
+
 - You can monitor model performance in realtime with the
-  [_HTML report_](#html-report) that DVCLive generates when used alongside DVC.
-- DVCLive is also capable of generating [_checkpoint_](#checkpoints) signal
-  files used by DVC <abbr>experiments<abbr>.
+  [HTML report](#html-report) that DVCLive generates when used alongside DVC.
+
+- DVCLive is also capable of generating [checkpoint](#checkpoints) signal files
+  used by DVC <abbr>experiments<abbr>.
 
 ## Setup
 
@@ -102,12 +103,10 @@ experiments using DVCLive in DVC Studio.
 
 ### HTML report
 
-In addition to the
-[outputs described in the Quickstart](/doc/dvclive/get-started#outputs), DVC
-generates an _HTML report_.
+When `html: true`, DVC generates an _HTML report_.
 
 If you open `training_metrics_dvc_plots/index.html` in a browser, you'll see a
-plot for metrics automatically updated during the model training!
+plot for the logged data automatically updated during the model training!
 
 ![](/img/dvclive-html.gif)
 
@@ -118,7 +117,7 @@ plot for metrics automatically updated during the model training!
 When used alongside DVC, DVCLive can create _checkpoint_ signal files used by
 DVC <abbr>experiments<abbr>.
 
-This will save the metrics, plots, models, etc. associated to each
+This will save all the outputs (metrics, plots, models, etc.) associated to each
 [`step`](/doc/dvclive/api-reference/get_step).
 
 You can learn more about how to use them in the
