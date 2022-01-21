@@ -73,11 +73,6 @@ const createPages = async ({ graphql, actions }) => {
           nodes {
             slug
             id
-            picture {
-              fields {
-                sourcePath
-              }
-            }
           }
         }
       }
