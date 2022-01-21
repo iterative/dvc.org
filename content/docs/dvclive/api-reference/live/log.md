@@ -16,7 +16,7 @@ live.log("loss", 0.9)
 
 ## Description
 
-If `summary` is True, `Live.log()` DVCLive will update the
+If `summary` is True, `live.log(name, val)` will update the
 [summary](/doc/dvclive/get-started#summary) with the latest value logged.
 
 💡 The summary `{path}.json` is usable by `dvc metrics`.
@@ -39,7 +39,7 @@ Each subsequent call to `live.log(name, val)` will add a new row to
 
 If `name` contains slashes (e.g. `train/loss`), the required subdirectories will
 be created and the file will be saved inside the last one (e.g.
-`{path}/train/loss.tsv)`.
+`{path}/train/loss.tsv`).
 
 ## Parameters
 
