@@ -18,8 +18,8 @@ live.log("acc", 0.9)
 ## Description
 
 If [`summary`](/doc/dvclive/api-reference/live/#parameters) is enabled, on each
-`live.log(name, val)` call DVCLive will add a `name` entry in `{path.json}` with the
-corresponding `val`:
+`live.log(name, val)` call DVCLive will add a `name` entry in `{path.json}` with
+the corresponding `val`:
 
 ```dvc
 $ cat dvclive.json
@@ -55,7 +55,7 @@ Each subsequent call to `live.log(name, val)` will add a new row to
 
 - `name` - Name of the scalar being logged.
 
-- `val` - The value to be logged.
+- `val` - The value of the scalar being logged.
 
 ## Exceptions
 
