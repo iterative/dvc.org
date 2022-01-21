@@ -107,3 +107,20 @@ experiments.
 [git credentials]: https://git-scm.com/docs/gitcredentials
 [ssh git url]:
   https://git-scm.com/book/en/v2/Git-on-the-Server-The-Protocols#_the_protocols
+
+## Failed to open pickled cache {#pickle}
+
+You may encounter this error when using DVC with multiple Python versions within
+a single local repository, such as when you use multiple virtual environments to
+test behavior across a range of Python versions. In certain cases it is possible
+that DVC may generate internal (temporary) files that are incompatibile with
+older Python versions (i.e. DVC run in Python 3.8 may generate files which is
+incompatible with DVC in Python 3.7).
+
+In the event that this occurs, it is safe to remove the relevant temporary
+file(s), and retry the DVC command. Specifically, the following directories (and
+their file contents) can be safely removed in this situation:
+
+- `.dvc/tmp/md5s`
+- `.dvc/tmp/links`
+- `.dvc/tmp/index`
