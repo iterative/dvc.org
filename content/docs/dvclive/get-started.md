@@ -1,6 +1,7 @@
 # Get Started
 
-DVCLive is a simple Python library for logging data in a format usable by DVC.
+DVCLive is a Python library for logging machine learning metrics and other
+metadata in simple file formats, which is fully compatible with DVC.
 
 > If you use one of the supported [ML Frameworks](/doc/dvclive/ml-frameworks),
 > you can jump directly to it's corresponding page.
