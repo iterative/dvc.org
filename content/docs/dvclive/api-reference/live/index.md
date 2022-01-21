@@ -28,8 +28,7 @@ Initializes a DVCLive logger.
 
 ## Attributes
 
-- `dir` - Location of the [linear plots](/doc/dvclive/get-started#linear-plots)
-  directory.
+- `dir` - Location of the [outputs](/doc/dvclive/get-started#outputs) directory.
 - `summary_path` - Location of the
   [summary](/doc/dvclive/get-started#metrics-summary).
 - `html_path` - Location of the
@@ -65,6 +64,8 @@ Initializes a DVCLive logger.
 ## Methods
 
 - `Live.log()`
+- `Live.log_image()`
+- `Live.log_plot()`
 - `Live.get_step()`
 - `Live.next_step()`
 - `Live.set_step()`

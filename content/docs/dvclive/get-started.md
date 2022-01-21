@@ -85,8 +85,8 @@ dvclive        train.py
 dvclive.json
 ```
 
-The contents of `dvclive` folder and `dvclive.json` would vary depending on the
-type of data you have logged. See `Live.log()`, `Live.log_image()` and
+The contents of the `dvclive` folder and `dvclive.json` would vary depending on
+the type of data you have logged. See `Live.log()`, `Live.log_image()` and
 `Live.log_plot()` for more details.
 
 ## What next?
