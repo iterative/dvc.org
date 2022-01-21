@@ -20,7 +20,7 @@ const HitCount = connectStateResults(({ searchResults }) => {
       {hitCount} result{hitCount !== 1 ? `s` : ``}
     </div>
   ) : (
-    'No Results!!!'
+    <span>No Results!!!</span>
   )
 })
 
@@ -41,7 +41,9 @@ const HitsInIndex = ({ index }: { index: { name: string } }) => (
       <h3>Blog Posts</h3>
       <HitCount />
     </div>
-    <Hits className={styles.hits} hitComponent={PageHit} />
+    <div className={styles.hits}>
+      <Hits hitComponent={PageHit} />
+    </div>
   </Index>
 )
 

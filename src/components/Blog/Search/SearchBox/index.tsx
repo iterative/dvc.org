@@ -1,10 +1,15 @@
-import React from 'react'
+import React, { PropsWithChildren } from 'react'
+import { SearchBoxProvided } from 'react-instantsearch-core'
 import { connectSearchBox } from 'react-instantsearch-dom'
 
 import * as styles from './styles.module.css'
 
+interface ISearchBox extends SearchBoxProvided {
+  setFocus: (arg0: boolean) => void
+}
+
 const SearchBox = connectSearchBox(
-  ({ refine, currentRefinement, setFocus }) => (
+  ({ refine, currentRefinement, setFocus }: PropsWithChildren<ISearchBox>) => (
     <form className={styles.form}>
       <input
         className={styles.searchInput}
