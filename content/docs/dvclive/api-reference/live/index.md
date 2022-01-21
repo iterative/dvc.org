@@ -46,9 +46,15 @@ Initializes a DVCLive logger.
 - `resume` - If `True`, DVCLive will try to read the previous `step` from the
   `path` directory and start from that point. _Default_: `False`.
 
+  ⚠️ Don't change the default value unless you are going to update the `step`
+  value during training.
+
 - `summary` - If `True`, upon each `Live.log()` call, DVCLive will generate a
   summary (usable by `dvc metrics`). The summary will be located at
   `{path}.json`. _Default_: `True`.
+
+  ⚠️ Don't change the default value unless you are going to update the `step`
+  value during training.
 
 ## Exceptions
 
