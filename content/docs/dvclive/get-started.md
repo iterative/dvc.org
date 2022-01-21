@@ -33,18 +33,6 @@ live.next_step()
 
 See `Live.next_step()` and `Live.set_step()` for details.
 
-### No step
-
-In ML scenarios where there are no iterations (steps) as part of the training
-process, there is no need to update the step number.
-
-When you don't update the step number in your code, DVCLive will **not**
-generate:
-
-- [linear plots](/doc/dvclive/get-started#linear-plots)
-- [html report](/doc/dvclive/dvclive-with-dvc#html-report)
-- [checkpoints](/doc/dvclive/dvclive-with-dvc#checkpoints)
-
 ## Putting all together
 
 Joining the above snippets, you can include DVCLive in your training code:
