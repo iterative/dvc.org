@@ -6,11 +6,10 @@ import SEO from '../components/SEO'
 import Post from '../components/Blog/Post'
 
 import { ISocialIcon } from '../components/SocialIcon'
-import { IGatsbyImageDataParent } from 'gatsby-plugin-image/dist/src/components/hooks'
 import { isProduction } from '../server/utils'
 
 export interface IBlogPostHeroPic {
-  picture?: IGatsbyImageDataParent
+  picture?: IGatsbyImageData
   pictureComment?: string
 }
 
@@ -25,7 +24,10 @@ export interface IBlogPostData {
   descriptionLong?: string
   commentsUrl?: string
   tags?: string[]
-  picture?: IGatsbyImageDataParent
+  picture?: {
+    gatsbyImageData: IGatsbyImageData
+    fields: { sourcePath: string }
+  }
   pictureComment?: string
   author: {
     name: string
@@ -56,7 +58,14 @@ const BlogPostPage: React.FC<IBlogPostPageProps> = ({ data }) => {
       <SEO
         title={title}
         description={description}
-        image={isProduction ? `/blog/${picture.fields.sourcePath}` : picture}
+        image={
+          picture &&
+          (isProduction
+            ? `/blog/${picture.fields.sourcePath}`
+            : picture.gatsbyImageData)
+        }
+        imageHeight={picture?.gatsbyImageData.height}
+        imageWidth={picture?.gatsbyImageData.width}
         meta={[
           {
             name: 'twitter:card',
