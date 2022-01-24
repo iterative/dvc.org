@@ -350,7 +350,7 @@ workspace first for this.
 The `--out` option lets you specify a path inside your <abbr>workspace</abbr> to
 [link] a data target after having <abbr>cached</abbr> it though. This means that
 you can target paths that are currently external, since they will end up being
-local to the project anyway. This is useful for example if the local environment
+local to the project. This is useful for example if the local environment
 doesn't have enough space, but you have set up an [external cache] that can
 handle it.
 
@@ -384,30 +384,25 @@ outs:
 ## Example: Transfer to remote storage
 
 When you have a large dataset in an external location, you may want to track it
-as if it was in your project, but without downloading it locally (for now). The
-`--to-remote` option lets you do so, while storing a copy
-[remotely](/doc/command-reference/remote) so it can be
-[pulled](/doc/command-reference/plots) later.
+in your <abbr>project</abbr> without downloading it (yet), for example if
+there's not enough space in your current environment.
 
-Let's add the `data.xml` to our remote storage from the given remote location:
+The `--to-remote` option lets you bootstrap the data locally by creating a
+`.dvc` file, while storing a copy [remotely](/doc/command-reference/remote).
+This way it can be [pulled](/doc/command-reference/plots) later, for example on
+a system tht can handle it.
+
+Let's add a `data.xml` file via HTTP in this way. The dataset is transferred
+straight to remote storage where it can be managed by DVC from now on.
 
 ```dvc
 $ dvc add https://data.dvc.org/get-started/data.xml -o data.xml \
           --to-remote
 ```
 
-The only difference that dataset is transferred straight to remote, so DVC won't
-control the remote location you gave but rather continue managing your remote
-storage where the data is now on. The operation will still be resulted with an
-`.dvc` file:
-
-```dvc
-$ ls
-data.xml.dvc
-```
-
-Whenever anyone wants to actually download the added data (for example from a
-system that can handle it), they can use `dvc pull` as usual:
+Even when nothing is downloaded locally, the operation still creates a `.dvc`
+file in the <abbr>workspace</abbr>. So whenever anyone wants to actually
+download the data, they can use `dvc pull` as usual:
 
 ```dvc
 $ dvc pull data.xml.dvc
@@ -416,6 +411,6 @@ A       data.xml
 1 file added and 1 file fetched
 ```
 
-> For a similar operation that actually keeps a connection to the data source,
-> please see an
+> For a similar operation, but keeping a connection to the data source, please
+> see this
 > [`import-url` example](/doc/command-reference/import-url#example-transfer-to-remote-storage).

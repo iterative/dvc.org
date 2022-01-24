@@ -357,28 +357,25 @@ Running stage 'prepare' with command:
 ## Example: Transfer to remote storage
 
 When you have a large dataset in an external location, you may want to import it
-to your project without downloading it to the local file system (for using it
-later/elsewhere). The `--to-remote` option let you skip the download, while
-storing the imported data [remotely](/doc/command-reference/remote).
+to your <abbr>project</abbr> without downloading it (yet), for example if
+there's not enough space in your current environment.
 
-Let's create an import `.dvc` file without downloading the target data,
-transferring it directly to remote storage instead:
+The `--to-remote` option lets you bootstrap the import by creating its `.dvc`
+file, while storing a data copy [remotely](/doc/command-reference/remote). This
+way it can be [pulled](/doc/command-reference/plots) later, for example on a
+system tht can handle it.
+
+Let's import a `data.xml` file via HTTP in this way. The dataset is transferred
+straight to remote storage where it can be managed by DVC from now on.
 
 ```dvc
 $ dvc import-url https://data.dvc.org/get-started/data.xml data.xml \
                  --to-remote
 ```
 
-The only change in our local <abbr>workspace</abbr> is a newly created import
-`.dvc` file:
-
-```dvc
-$ ls
-data.xml.dvc
-```
-
-Whenever anyone wants to actually download the imported data (for example from a
-system that can handle it), they can use `dvc pull` as usual:
+Even when nothing is downloaded locally, the operation still creates a `.dvc`
+file in the <abbr>workspace</abbr>. So whenever anyone wants to actually
+download the data, they can use `dvc pull` as usual:
 
 ```dvc
 $ dvc pull data.xml.dvc
