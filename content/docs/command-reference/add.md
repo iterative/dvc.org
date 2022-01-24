@@ -164,9 +164,9 @@ not.
   > in which case the given `path` is only recorded in `dvc.yaml` for now.
 
 - `--to-remote` - add an external target, but neither move it into the workspace
-  nor cache it yet. [Transfer it](#example-transfer-to-remote-storage) it
-  directly to remote storage (the default one, unless `-r` is specified)
-  instead. Use `dvc pull` to get the data locally.
+  nor cache it yet. [Transfer it](#example-transfer-to-remote-storage) directly
+  to remote storage (the default one, unless `-r` is specified) instead. Use
+  `dvc pull` to get the data locally.
 
 - `-r <name>`, `--remote <name>` - name of the
   [remote storage](/doc/command-reference/remote) to transfer external target to
