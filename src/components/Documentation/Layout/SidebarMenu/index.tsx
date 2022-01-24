@@ -105,6 +105,12 @@ const SidebarMenuItem: React.FC<ISidebarMenuItemProps> = ({
     isLeafItem && styles.sidebarLeafBullet
   )
 
+  const bulletIconJSX = isLeafItem ? (
+    <span className={bulletIconClassName}></span>
+  ) : (
+    <button onClick={bulletIconClick} className={bulletIconClassName}></button>
+  )
+
   const parentElement =
     type === 'external' ? (
       <Link
@@ -128,17 +134,7 @@ const SidebarMenuItem: React.FC<ISidebarMenuItemProps> = ({
         className={className}
         onClick={currentLevelOnClick}
       >
-        {iconElement ? (
-          iconElement
-        ) : (
-          <span
-            className={bulletIconClassName}
-            onClick={bulletIconClick}
-            onKeyDown={bulletIconClick}
-            role="button"
-            tabIndex={0}
-          ></span>
-        )}
+        {iconElement ? iconElement : bulletIconJSX}
         {label}
       </Link>
     )

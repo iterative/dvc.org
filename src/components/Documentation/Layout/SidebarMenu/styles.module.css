@@ -96,13 +96,15 @@
   left: 0;
   top: 9px;
   display: block;
+  border: none;
   height: 8px;
   width: 8px;
   background: url("/img/triangle_dark.svg") no-repeat center center;
-  transition: 0.5s all;
+  transition: 0.5s transform;
 
   &:focus {
-    outline: none;
+    outline-color: var(--color-gray-light);
+    outline-offset: 0;
   }
 
   &:hover {

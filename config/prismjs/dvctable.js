@@ -1,8 +1,11 @@
 /* eslint-env node */
 const Prism = require('prismjs')
 
-const getTableBgColorRegex = color =>
-  new RegExp(String.raw`(?<=[│┃])\s+\*{0,2}${color}:(?:(?![│┃]).)+(?=[│┃])`)
+const getTableCellBgColorRegex = color =>
+  new RegExp(String.raw`(?<=[│┃])\s+${color}:(?:(?![│┃]).)+(?=[│┃])`)
+
+const getTableTextBgColorRegex = color => new RegExp(String.raw`${color}:\S+`)
+
 const boldAndItalicConfig = {
   bold: {
     pattern: /\*\*(?:(?!\*\*).)+\*\*/,
@@ -20,7 +23,7 @@ const boldAndItalicConfig = {
 
 Prism.languages.dvctable = {
   'bg-white': {
-    pattern: getTableBgColorRegex('(white|neutral)'),
+    pattern: getTableCellBgColorRegex('(white|neutral)'),
     inside: {
       hide: {
         pattern: /(white|neutral):/
@@ -29,7 +32,7 @@ Prism.languages.dvctable = {
     }
   },
   'bg-yellow': {
-    pattern: getTableBgColorRegex('(yellow|metric)'),
+    pattern: getTableCellBgColorRegex('(yellow|metric)'),
     inside: {
       hide: {
         pattern: /(yellow|metric):/
@@ -38,7 +41,7 @@ Prism.languages.dvctable = {
     }
   },
   'bg-blue': {
-    pattern: getTableBgColorRegex('(blue|param)'),
+    pattern: getTableCellBgColorRegex('(blue|param)'),
     inside: {
       hide: {
         pattern: /(blue|param):/
@@ -47,4 +50,40 @@ Prism.languages.dvctable = {
     }
   },
   ...boldAndItalicConfig
+}
+
+Prism.languages.dvctablehorizontals = {
+  rows: {
+    pattern: /((?<=^|\n)\s[^─][\s\S]*?(:?\n|$))+/,
+    inside: {
+      'bg-white': {
+        pattern: getTableTextBgColorRegex('(white|neutral)'),
+        inside: {
+          hide: {
+            pattern: /(white|neutral):/
+          },
+          ...boldAndItalicConfig
+        }
+      },
+      'bg-yellow': {
+        pattern: getTableTextBgColorRegex('(yellow|metric)'),
+        inside: {
+          hide: {
+            pattern: /(yellow|metric):/
+          },
+          ...boldAndItalicConfig
+        }
+      },
+      'bg-blue': {
+        pattern: getTableTextBgColorRegex('(blue|param)'),
+        inside: {
+          hide: {
+            pattern: /(blue|param):/
+          },
+          ...boldAndItalicConfig
+        }
+      },
+      ...boldAndItalicConfig
+    }
+  }
 }
