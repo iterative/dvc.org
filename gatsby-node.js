@@ -8,6 +8,7 @@ const { setPageContext } = require('./src/gatsby/common')
 
 const models = require('./src/gatsby/models.js')
 const callOnModels = require('./src/gatsby/utils/models')
+const { BLOG } = require('./src/consts')
 
 exports.createSchemaCustomization = api =>
   callOnModels(models, 'createSchemaCustomization', api)
@@ -65,7 +66,6 @@ const mkDirIfItDoesNotExist = async folderPath => {
 
 exports.onPostBuild = async ({ graphql }) => {
   try {
-    // const start = Date.now()
     const {
       data: {
         allBlogPost: { nodes }
@@ -93,15 +93,13 @@ exports.onPostBuild = async ({ graphql }) => {
         )
         await mkDirIfItDoesNotExist(dirPath)
         return sharp(path.join(__dirname, 'static', 'uploads', imagePath))
-          .resize({ width: 850 })
+          .resize({ width: BLOG.mageMaxWidthHero })
           .toFile(path.join(__dirname, 'public', 'blog', imagePath))
           .catch(err => {
             console.error(err)
           })
       })
     )
-    // const end = Date.now()
-    // console.log(`Execution time: ${end - start} ms`)
   } catch (err) {
     console.error(err)
   }
