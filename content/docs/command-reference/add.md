@@ -145,7 +145,8 @@ not.
   [pattern](https://docs.python.org/3/library/glob.html) specified in `targets`.
   Shell style wildcards supported: `*`, `?`, `[seq]`, `[!seq]`, and `**`
 
-- `--external` - allow `targets` that are outside of the DVC repository. See
+- `--external` - allow tracking `targets` outside of the DVC repository
+  in-place. See
   [Managing External Data](/doc/user-guide/managing-external-data).
 
   > ⚠️ Note that this is an advanced feature for very specific situations and
@@ -156,14 +157,16 @@ not.
 - `-o <path>`, `--out <path>` - specify a `path` to the desired location in the
   workspace to place the `targets` (instead of using the current working
   directory). Directories specified in the path will be created by this command.
+  Note that this enables
+  [targeting external paths](#example-transfer-to-the-cache).
 
-  > Note that this can be combined with `--to-remote` to avoid storing the data
-  > locally, in which case the give `path` is only used in `dvc.yaml`.
+  > This can be combined with `--to-remote` to avoid storing the data locally,
+  > in which case the given `path` is only recorded in `dvc.yaml` for now.
 
-- `--to-remote` - add an external target, but don't move it into the workspace,
-  nor cache it. [Transfer it](#example-transfer-to-remote-storage) it directly
-  to remote storage (the default one, unless `-r` is specified) instead. Use
-  `dvc pull` to get the data locally.
+- `--to-remote` - add an external target, but neither move it into the workspace
+  nor cache it yet. [Transfer it](#example-transfer-to-remote-storage) it
+  directly to remote storage (the default one, unless `-r` is specified)
+  instead. Use `dvc pull` to get the data locally.
 
 - `-r <name>`, `--remote <name>` - name of the
   [remote storage](/doc/command-reference/remote) to transfer external target to
