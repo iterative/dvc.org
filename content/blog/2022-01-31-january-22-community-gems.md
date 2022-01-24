@@ -7,7 +7,7 @@ description: >
 descriptionLong: >
   A roundup of technical Q&A's from the DVC and CML communities. This month: DVC
   Studio data, DVC for non-ML projects, getting started with CML, and more.
-picture: 2021-12-21/dec-community-gems.png
+picture: 2022-01-31/jan-community-gems.png
 author: milecia_mcgregor
 commentsUrl: https://discuss.dvc.org/t/january-22-community-gems/1020
 tags:
@@ -70,8 +70,6 @@ package didn't change. Here's an example of a stage that does this.
 stages:
   package_version:
     cmd: pip freeze | grep "package_name==" > package_name_version.txt
-    deps:
-      - /path/to/file/version.txt
     outs:
       - package_name_version.txt
   train:
