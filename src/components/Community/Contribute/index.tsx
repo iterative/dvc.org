@@ -2,7 +2,7 @@ import React from 'react'
 
 import { ICommunitySectionTheme } from '../'
 import LayoutWidthContainer from 'gatsby-theme-iterative-docs/src/components/LayoutWidthContainer'
-import Link from '../../Link'
+import Link from 'gatsby-theme-iterative-docs/src/components/Link'
 import CommunityBlock from '../Block'
 import CommunitySection from '../Section'
 import { logEvent } from 'gatsby-theme-iterative-docs/src/utils/front/plausible'

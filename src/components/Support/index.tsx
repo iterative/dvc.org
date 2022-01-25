@@ -6,7 +6,7 @@ import LayoutWidthContainer from 'gatsby-theme-iterative-docs/src/components/Lay
 import ShowOnly from 'gatsby-theme-iterative-docs/src/components/ShowOnly'
 import HeroSection from '../HeroSection'
 import PromoSection from '../PromoSection'
-import Link from '../Link'
+import Link from 'gatsby-theme-iterative-docs/src/components/Link'
 import Popover from './Popover'
 
 import * as styles from './styles.module.css'

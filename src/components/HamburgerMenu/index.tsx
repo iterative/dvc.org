@@ -2,7 +2,7 @@ import cn from 'classnames'
 import React, { useEffect, useState, useCallback, MouseEvent } from 'react'
 
 import HamburgerIcon from 'gatsby-theme-iterative-docs/src/components/HamburgerIcon'
-import Link from '../Link'
+import Link from 'gatsby-theme-iterative-docs/src/components/Link'
 import { logEvent } from 'gatsby-theme-iterative-docs/src/utils/front/plausible'
 
 import { getFirstPage } from 'gatsby-theme-iterative-docs/src/utils/shared/sidebar'

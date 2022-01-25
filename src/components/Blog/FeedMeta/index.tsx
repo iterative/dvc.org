@@ -1,7 +1,7 @@
 import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image'
 import React from 'react'
 
-import Link from '../../Link'
+import Link from 'gatsby-theme-iterative-docs/src/components/Link'
 import { pluralizeComments } from 'gatsby-theme-iterative-docs/src/utils/front/i18n'
 
 import * as styles from './styles.module.css'

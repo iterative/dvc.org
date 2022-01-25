@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import { useRafState, useWindowSize } from 'react-use'
 import { graphql } from 'gatsby'
-import Link from '../../../Link'
+import Link from 'gatsby-theme-iterative-docs/src/components/Link'
 import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image'
 import cn from 'classnames'
 import { ISocialIcon } from 'gatsby-theme-iterative-docs/src/components/SocialIcon'

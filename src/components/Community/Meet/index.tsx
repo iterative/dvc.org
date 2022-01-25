@@ -5,7 +5,7 @@ import { ICommunitySectionTheme } from '../'
 import LayoutWidthContainer from 'gatsby-theme-iterative-docs/src/components/LayoutWidthContainer'
 import Block from '../Block'
 import Section from '../Section'
-import Link from '../../Link'
+import Link from 'gatsby-theme-iterative-docs/src/components/Link'
 import { pluralizeComments } from 'gatsby-theme-iterative-docs/src/utils/front/i18n'
 import { logEvent } from 'gatsby-theme-iterative-docs/src/utils/front/plausible'
 import {

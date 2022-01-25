@@ -11,7 +11,7 @@ import tagToSlug from 'gatsby-theme-iterative-docs/src/utils/shared/tagToSlug'
 
 import Markdown from './Markdown'
 import FeedMeta from '../FeedMeta'
-import Link from '../../Link'
+import Link from 'gatsby-theme-iterative-docs/src/components/Link'
 import PseudoButton from '../../PseudoButton'
 import HeroPic from './HeroPic'
 import Share from './Share'

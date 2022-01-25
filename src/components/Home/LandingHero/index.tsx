@@ -2,7 +2,7 @@ import React, { useEffect, useCallback, useState } from 'react'
 import cn from 'classnames'
 
 import ShowOnly from 'gatsby-theme-iterative-docs/src/components/ShowOnly'
-import Link from '../../Link'
+import Link from 'gatsby-theme-iterative-docs/src/components/Link'
 import DownloadButton from '../../DownloadButton'
 import TwoRowsButton from '../../TwoRowsButton'
 import GithubLine from './GithubLine'
