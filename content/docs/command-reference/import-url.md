@@ -356,9 +356,8 @@ Running stage 'prepare' with command:
 
 ## Example: Transfer to remote storage
 
-When you have a large dataset in an external location, you may want to import it
-to your <abbr>project</abbr> without downloading it (yet), for example if
-there's not enough space in your current environment.
+When importing a large dataset, you may want to avoid downloading it to the
+local environment (yet), for example if there's not enough storage space).
 
 The `--to-remote` option lets you bootstrap the import by creating its `.dvc`
 file, while storing a data copy [remotely](/doc/command-reference/remote). This

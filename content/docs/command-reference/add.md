@@ -383,9 +383,10 @@ outs:
 
 ## Example: Transfer to remote storage
 
-When you have a large dataset in an external location, you may want to track it
-in your <abbr>project</abbr> without downloading it (yet), for example if
-there's not enough space in your current environment.
+When you want to add a large dataset that is outside of your
+<abbr>project</abbr> (e.g. online), you would normally need to download or copy
+it into the <abbr>workspace</abbr> first. But you may not have enough local
+storage space.
 
 The `--to-remote` option lets you bootstrap the data locally by creating a
 `.dvc` file, while storing a copy [remotely](/doc/command-reference/remote).
