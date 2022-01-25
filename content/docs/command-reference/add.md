@@ -157,16 +157,17 @@ not.
 - `-o <path>`, `--out <path>` - specify a `path` to the desired location in the
   workspace to place the `targets` (instead of using the current working
   directory). Directories specified in the path will be created by this command.
-  Note that this enables
-  [targeting external paths](#example-transfer-to-an-external-cache).
+  Note that this enables targeting data outside the project (see an
+  [example](#example-transfer-to-an-external-cache)).
 
   > This can be combined with `--to-remote` to avoid storing the data locally,
   > in which case the given `path` is only recorded in `dvc.yaml` for now.
 
-- `--to-remote` - add an external target, but neither move it into the workspace
-  nor cache it yet. [Transfer it](#example-transfer-to-remote-storage) directly
-  to remote storage (the default one, unless `-r` is specified) instead. Use
-  `dvc pull` to get the data locally.
+- `--to-remote` - add a target that's outside the project, but neither move it
+  into the workspace nor cache it yet.
+  [Transfer it](#example-transfer-to-remote-storage) directly to remote storage
+  (the default one, unless `-r` is specified) instead. Use `dvc pull` to get the
+  data locally.
 
 - `-r <name>`, `--remote <name>` - name of the
   [remote storage](/doc/command-reference/remote) to transfer external target to
@@ -349,13 +350,12 @@ it into the <abbr>workspace</abbr> first. But you may not have enough local
 storage space.
 
 You can however set up an [external cache] that can handle the data. To avoid
-ever having a local copy, target the outside data with `dvc add` while
-specifying an `--out` path inside of your project. This way the data will be
-transferred to the <abbr>cache</abbr> directly, and then [linked] into your
+ever making a local copy, target the outside data with `dvc add` while
+specifying an `--out` (`-o`) path inside of your project. This way the data will
+be transferred to the <abbr>cache</abbr> directly, and then [linked] into your
 workspace.
 
-Let's add a `data.xml` file via HTTP, putting it in `./data.xml` (inside our
-project):
+Let's add a `data.xml` file via HTTP, putting it in `./data.xml`:
 
 ```dvc
 $ dvc add https://data.dvc.org/get-started/data.xml -o data.xml
@@ -388,13 +388,13 @@ When you want to add a large dataset that is outside of your
 it into the <abbr>workspace</abbr> first. But you may not have enough local
 storage space.
 
-The `--to-remote` option lets you bootstrap the data locally by creating a
-`.dvc` file, while storing a copy [remotely](/doc/command-reference/remote).
-This way it can be [pulled](/doc/command-reference/plots) later, for example on
-a system that can handle it.
+Using the `--to-remote` flag lets you create a `.dvc` file for the target data
+without downloading it locally. DVC transfers it directly to [remote storage]
+instead. This way it can be [pulled](/doc/command-reference/plots) later, for
+example on a system that can handle it.
 
-Let's add a `data.xml` file via HTTP in this way. The dataset is transferred
-straight to remote storage where it can be managed by DVC from now on.
+Let's add a `data.xml` file via HTTP in this way. Note that the `--out` (`-o`)
+option is also needed since the target data is outside the project:
 
 ```dvc
 $ dvc add https://data.dvc.org/get-started/data.xml -o data.xml \
@@ -415,3 +415,5 @@ A       data.xml
 > For a similar operation, but keeping a connection to the data source, please
 > see this
 > [`import-url` example](/doc/command-reference/import-url#example-transfer-to-remote-storage).
+
+[remote storage]: /doc/command-reference/remote

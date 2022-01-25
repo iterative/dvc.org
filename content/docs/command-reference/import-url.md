@@ -135,10 +135,10 @@ $ dvc run -n download_data \
   finish the operation(s)); or if the target data already exist locally and you
   want to "DVCfy" this state of the project (see also `dvc commit`).
 
-- `--to-remote` - import an external target, but neither move it into the
-  workspace, nor cache it. [Transfer it](#example-transfer-to-remote-storage)
-  directly to remote storage (the default one, unless `-r` is specified)
-  instead. Use `dvc pull` to get the data locally.
+- `--to-remote` - import a target, but neither move it into the workspace, nor
+  cache it. [Transfer it](#example-transfer-to-remote-storage) directly to
+  remote storage (the default one, unless `-r` is specified) instead. Use
+  `dvc pull` to get the data locally.
 
 - `-r <name>`, `--remote <name>` - name of the
   [remote storage](/doc/command-reference/remote) (can only be used with
@@ -359,13 +359,12 @@ Running stage 'prepare' with command:
 When importing a large dataset, you may want to avoid downloading it to the
 local environment (yet), for example if there's not enough storage space).
 
-The `--to-remote` option lets you bootstrap the import by creating its `.dvc`
-file, while storing a data copy [remotely](/doc/command-reference/remote). This
-way it can be [pulled](/doc/command-reference/plots) later, for example on a
-system tht can handle it.
+Using the `--to-remote` flag lets you create an import `.dvc` file for the
+target data without downloading it locally. DVC transfers it directly to [remote
+storage] instead. This way it can be [pulled](/doc/command-reference/plots)
+later, for example on a system that can handle it.
 
-Let's import a `data.xml` file via HTTP in this way. The dataset is transferred
-straight to remote storage where it can be managed by DVC from now on.
+Let's add a `data.xml` file via HTTP in this way:
 
 ```dvc
 $ dvc import-url https://data.dvc.org/get-started/data.xml data.xml \
@@ -385,3 +384,5 @@ A       data.xml
 
 Note that you can also use `dvc update --to-remote` to bring the import up to
 date in remote storage, without downloading anything.
+
+[remote storage]: /doc/command-reference/remote
