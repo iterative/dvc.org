@@ -1,6 +1,6 @@
 /* eslint-env jest */
 
-describe('SidebarMenu/helper', () => {
+describe('normalizeSidebar', () => {
   beforeEach(() => {
     jest.resetModules()
   })
