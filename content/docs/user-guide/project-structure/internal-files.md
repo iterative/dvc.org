@@ -44,14 +44,13 @@ operation.
 - `.dvc/tmp/md5s`: This directory is used for optimization. It contains a SQLite
   state database that stores hash values for files tracked in a DVC project. It
   also saves the corresponding timestamps and inodes to avoid unnecessary file
-  hash computations. <sup>[note 2](#sqlite-default)</sup>
+  hash computations.
 
   > This parent location may be overridden with `dvc config state.dir`.
 
 - `.dvc/tmp/links`: This directory is used to cleanup your workspace when
   calling `dvc checkout`. It contains a SQLite state database that stores a list
   of file links created by DVC (from cache to <abbr>workspace</abbr>).
-  <sup>[note 2](#sqlite-default)</sup>
 
   > This parent location may be overridden with `dvc config state.dir`.
 
