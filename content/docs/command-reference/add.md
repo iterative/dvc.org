@@ -343,16 +343,16 @@ Only the hash values of the `dir/` directory (with `.dir` file extension) and
 
 ## Example: Transfer to the cache
 
-When you have a large dataset in an external location, you may want to add it to
-your <abbr>project</abbr>. Normally you would have to download a copy into the
-workspace first, but you may not have enough local storage space.
+When you want to add a large dataset that is outside of your
+<abbr>project</abbr> (e.g. online), you would normally need to download or copy
+it into the <abbr>workspace</abbr> first. But you may not have enough local
+storage space. You can however set up an [external cache] that can handle the
+data...
 
-The `--out` option lets you specify a path inside your <abbr>workspace</abbr> to
-[link] the target data, after having <abbr>cached</abbr> it. This means that you
-can target paths that are currently external, since they will end up being local
-to the project. This is useful if you have set up an [external cache] that can
-handle the data, since your local environment can only contain a link to that
-location.
+To skip making a local copy, target the outside data with `dvc add`, but specify
+an output path inside of your project using the `--out` option. This way the
+data will be transferred to the <abbr>cache</abbr> first, and then [linked] into
+your workspace.
 
 Let's add a `data.xml` file via HTTP, putting it in `./data.xml` (inside our
 project):
@@ -376,7 +376,7 @@ outs:
     path: data.xml
 ```
 
-[link]:
+[linked]:
   /doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache
 [external cache]:
   /doc/user-guide/managing-external-data#setting-up-an-external-cache
