@@ -158,7 +158,7 @@ not.
   workspace to place the `targets` (instead of using the current working
   directory). Directories specified in the path will be created by this command.
   Note that this enables
-  [targeting external paths](#example-transfer-to-the-cache).
+  [targeting external paths](#example-transfer-to-an-external-cache).
 
   > This can be combined with `--to-remote` to avoid storing the data locally,
   > in which case the given `path` is only recorded in `dvc.yaml` for now.
@@ -341,18 +341,18 @@ $ tree .dvc/cache
 Only the hash values of the `dir/` directory (with `.dir` file extension) and
 `file2` have been cached.
 
-## Example: Transfer to the cache
+## Example: Transfer to an external cache
 
 When you want to add a large dataset that is outside of your
 <abbr>project</abbr> (e.g. online), you would normally need to download or copy
 it into the <abbr>workspace</abbr> first. But you may not have enough local
-storage space. You can however set up an [external cache] that can handle the
-data...
+storage space.
 
-To skip making a local copy, target the outside data with `dvc add`, but specify
-an output path inside of your project using the `--out` option. This way the
-data will be transferred to the <abbr>cache</abbr> first, and then [linked] into
-your workspace.
+You can however set up an [external cache] that can handle the data. To avoid
+ever having a local copy, target the outside data with `dvc add` while
+specifying an `--out` path inside of your project. This way the data will be
+transferred to the <abbr>cache</abbr> directly, and then [linked] into your
+workspace.
 
 Let's add a `data.xml` file via HTTP, putting it in `./data.xml` (inside our
 project):
