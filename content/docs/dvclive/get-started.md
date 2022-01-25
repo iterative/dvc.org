@@ -82,9 +82,9 @@ $ cat dvclive.json
 > If you don't update the step number, the `step` entry won't be present in the
 > summary.
 
-### Linear plots
+### History
 
-In addition, for each `{metric_name}`, DVCLive produces a linear plot under
+In addition, for each `{metric_name}`, DVCLive stores the metric's history under
 `dvclive/{metric_name}.tsv`:
 
 ```dvc
@@ -95,7 +95,7 @@ timestamp	step	{metric_name}
 1614129198848	2	0.8907166719436646
 ```
 
-> If you don't update the step number, the Metrics Logs won't be generated.
+> If you don't update the step number, the metrics history won't be generated.
 
 ## What next?
 

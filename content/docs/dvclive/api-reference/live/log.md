@@ -24,7 +24,7 @@ If `summary` is True, `live.log(name, val)` will update the
 ### Step updates
 
 The first `step` update (with `Live.next_step()` or `Live.set_step()`) will
-create a new [linear plot](/doc/dvclive/get-started#linear-plots) in
+create a new [metric history](/doc/dvclive/get-started#history) in
 `{path}/{name}.tsv`:
 
 ```
@@ -35,7 +35,7 @@ timestamp step  loss
 Each subsequent call to `live.log(name, val)` will add a new row to
 `{path}/{name}.tsv`.
 
-💡 The linear plot `{path}/{name}.tsv` is usable by `dvc plots`.
+💡 The metric history `{path}/{name}.tsv` is usable by `dvc plots`.
 
 If `name` contains slashes (e.g. `train/loss`), the required subdirectories will
 be created and the file will be saved inside the last one (e.g.

@@ -31,8 +31,8 @@ When `dvclive` is used alongside `DVC`, each `Live.set_step()` call will have
 additional effects.
 
 By default, on each `Live.set_step()` call, `DVC` will prepare an
-[HTML report](/doc/dvclive/dvclive-with-dvc#html-report) with all
-[linear plots](/doc/dvclive/get-started#linear-plots).
+[HTML report](/doc/dvclive/dvclive-with-dvc#html-report) with the
+[metrics history](/doc/dvclive/get-started#lhistory).
 
 In addition, when
 [checkpoints](/doc/user-guide/experiment-management/checkpoints) are enabled in
@@ -43,7 +43,7 @@ the <abbr>pipeline</abbr>, `DVC` will
 ## Example
 
 Given the [Usage](#usage) code snippet above, the
-[linear plot](/doc/dvclive/get-started#linear-plots) generated for `metric_1`
+[metric history](/doc/dvclive/get-started#history) generated for `metric_1`
 would be:
 
 ```dvc
