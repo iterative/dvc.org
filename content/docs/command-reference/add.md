@@ -390,7 +390,7 @@ there's not enough space in your current environment.
 The `--to-remote` option lets you bootstrap the data locally by creating a
 `.dvc` file, while storing a copy [remotely](/doc/command-reference/remote).
 This way it can be [pulled](/doc/command-reference/plots) later, for example on
-a system tht can handle it.
+a system that can handle it.
 
 Let's add a `data.xml` file via HTTP in this way. The dataset is transferred
 straight to remote storage where it can be managed by DVC from now on.
