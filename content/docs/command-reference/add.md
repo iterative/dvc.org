@@ -345,14 +345,14 @@ Only the hash values of the `dir/` directory (with `.dir` file extension) and
 
 When you have a large dataset in an external location, you may want to add it to
 your <abbr>project</abbr>. Normally you would have to download a copy into the
-workspace first for this.
+workspace first, but you may not have enough local storage space.
 
 The `--out` option lets you specify a path inside your <abbr>workspace</abbr> to
-[link] a data target after having <abbr>cached</abbr> it though. This means that
-you can target paths that are currently external, since they will end up being
-local to the project. This is useful for example if the local environment
-doesn't have enough space, but you have set up an [external cache] that can
-handle it.
+[link] the target data, after having <abbr>cached</abbr> it. This means that you
+can target paths that are currently external, since they will end up being local
+to the project. This is useful if you have set up an [external cache] that can
+handle the data, since your local environment can only contain a link to that
+location.
 
 Let's add a `data.xml` file via HTTP, putting it in `./data.xml` (inside our
 project):
