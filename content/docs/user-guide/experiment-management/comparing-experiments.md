@@ -96,14 +96,7 @@ $ dvc exp show
 ```
 
 ```dvctable
- ───────────────────────────────────────────────────────────────────────────────────────────
-  neutral:**Experiment**              neutral:**Created**           metric:**loss**      metric:**acc**   param:**train.epochs**   param:**model.conv_units**
- ───────────────────────────────────────────────────────────────────────────────────────────
-  workspace               -              0.23657   0.9127   10             16
-  baseline-experiment     Sep 06, 2021   0.23657   0.9127   10             16
-  ├── 6d13f33 [cnn-64]    Sep 09, 2021   0.23385   0.9153   10             64
-  ├── 69503c6 [cnn-128]   Sep 09, 2021   0.23243    0.916   10             128
- ───────────────────────────────────────────────────────────────────────────────────────────
+$dvc-experiments-exp-show
 ```
 
 `dvc exp show` only tabulates experiments in the workspace and in `HEAD`. You
