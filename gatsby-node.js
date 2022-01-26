@@ -1,7 +1,7 @@
 require('dotenv').config()
 
 const path = require('path')
-const { mkdir, stat } = require('fs/promises')
+const mkdirp = require('mkdirp')
 const sharp = require('sharp')
 
 const { setPageContext } = require('./src/gatsby/common')
@@ -46,24 +46,6 @@ exports.onCreateWebpackConfig = ({ stage, actions, getConfig }) => {
   }
 }
 
-const checkIfDirExists = async folderPath => {
-  try {
-    await stat(folderPath)
-    return true
-  } catch (err) {
-    if (err.code === 'ENOENT') {
-      return false
-    }
-  }
-}
-
-const mkDirIfItDoesNotExist = async folderPath => {
-  const doesDirExist = await checkIfDirExists(folderPath)
-  if (!doesDirExist) {
-    await mkdir(folderPath, { recursive: true })
-  }
-}
-
 exports.onPostBuild = async ({ graphql }) => {
   try {
     const {
@@ -91,7 +73,7 @@ exports.onPostBuild = async ({ graphql }) => {
         const dirPath = path.dirname(
           path.join(__dirname, 'public', 'blog', imagePath)
         )
-        await mkDirIfItDoesNotExist(dirPath)
+        await mkdirp(dirPath, { recursive: true })
         return sharp(path.join(__dirname, 'static', 'uploads', imagePath))
           .resize({ width: BLOG.mageMaxWidthHero })
           .toFile(path.join(__dirname, 'public', 'blog', imagePath))
