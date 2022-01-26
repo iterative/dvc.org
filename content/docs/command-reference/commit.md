@@ -33,7 +33,7 @@ these step(s) during the process of tracking each file or directory:
 - Store the file contents in the cache.
 
 > Skipping these steps is typically done to avoid caching unfinished data, for
-> example when exploring different data or code.
+> example when exploring different datasets.
 
 Some scenarios for `dvc commit` include:
 
