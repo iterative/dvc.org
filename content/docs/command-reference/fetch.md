@@ -12,7 +12,7 @@ usage: dvc fetch [-h] [-q | -v] [-j <number>] [-r <name>] [-a] [-T]
 
 positional arguments:
   targets       Limit command scope to these tracked files/directories,
-                stages, or .dvc files.
+                .dvc files, or stage names.
 ```
 
 ## Description
