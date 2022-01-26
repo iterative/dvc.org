@@ -67,6 +67,7 @@ const plugins = [
       plugins: [
         'gatsby-remark-embedder',
         'gatsby-remark-dvc-linker',
+        'gatsby-remark-dvctable-filler',
         {
           resolve: 'gatsby-remark-args-linker',
           options: {
