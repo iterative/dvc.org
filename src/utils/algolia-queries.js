@@ -1,40 +1,39 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const escapeStringRegexp = require('escape-string-regexp')
-// eslint-disable-next-line @typescript-eslint/no-var-requires
 require('dotenv').config()
 
-const pagePath = `content/blog`
 const indexName = process.env.GATSBY_ALGOLIA_INDEX_NAME || 'dev_blogs'
 
 const pageQuery = `{
-  pages: allMarkdownRemark(
-    filter: {
-      fileAbsolutePath: { regex: "/${escapeStringRegexp(pagePath)}/" },
-    }
-  ) {
+  pages: allBlogPost {
     edges {
       node {
         id
-        frontmatter {
-          title
-          description
+        slug
+        title
+        description
+        date
+        ... on Node {
+          parent {
+            ... on MarkdownRemark {
+              excerpt(pruneLength: 1000)
+            }
+          }
         }
-        childBlogPost {
-          slug
-        }
-        excerpt(pruneLength: 1000)
       }
     }
   }
 }`
 
 function pageToAlgoliaRecord({
-  node: { id, frontmatter, childBlogPost, ...rest }
+  node: {
+    id,
+    parent: { excerpt },
+    ...rest
+  }
 }) {
   return {
     objectID: id,
-    ...frontmatter,
-    ...childBlogPost,
+    excerpt,
     ...rest
   }
 }
