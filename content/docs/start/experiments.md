@@ -39,7 +39,7 @@ the names of these elements to initialize a project with:
 $ dvc exp init python src/train.py
 ```
 
-Here, `python src/train.py` describes how you run experiments. It could be any
+Here, `python src/train.py` specifies how you run experiments. It could be any
 other command.
 
 If your project uses different names for them, you can set directories for
