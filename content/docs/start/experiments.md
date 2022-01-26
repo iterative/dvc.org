@@ -21,7 +21,7 @@ the [`example-dvc-experiments`][ede] project.
 
 <details>
 
-### ⚙️ Initializing a project into DVC experiments
+### ⚙️ Initializing a project with DVC experiments
 
 If you already have a DVC project, that's great. You can start to use `dvc exp`
 commands right away to run experiments in your project. (See the [user's guide]
