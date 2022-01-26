@@ -644,7 +644,7 @@
           },
           {
             "slug": "sklearn",
-            "label": "Scikit-Learn"
+            "label": "Scikit-learn"
           },
           {
             "slug": "tensorflow",
