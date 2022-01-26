@@ -75,7 +75,7 @@ exports.onPostBuild = async ({ graphql }) => {
         )
         await mkdirp(dirPath, { recursive: true })
         return sharp(path.join(__dirname, 'static', 'uploads', imagePath))
-          .resize({ width: BLOG.mageMaxWidthHero })
+          .resize({ width: BLOG.imageMaxWidthHero })
           .toFile(path.join(__dirname, 'public', 'blog', imagePath))
           .catch(err => {
             console.error(err)
