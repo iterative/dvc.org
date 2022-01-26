@@ -88,12 +88,14 @@ all the current metrics (without comparisons).
 
 ## Examples
 
-Start by creating a metrics file and commit it (see the `-M` option of `dvc run`
-for more details):
+Start by creating a metrics file and commit it (see the `-M` option of
+`dvc stage add` for more details):
 
 ```dvc
-$ dvc run -n eval -M metrics.json \
-          'echo {"AUC": 0.9643, "TP": 527} > metrics.json'
+$ dvc stage add -n eval -M metrics.json \
+                'echo {"AUC": 0.9643, "TP": 527} > metrics.json'
+
+$ dvc repro
 
 $ cat metrics.json
 {"AUC": 0.9643, "TP": 527}
