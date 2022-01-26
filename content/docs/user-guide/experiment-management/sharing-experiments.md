@@ -89,8 +89,7 @@ $ dvc exp pull origin cnn-32
 ```
 
 This pulls all the necessary files from both remotes. Again, you need to have
-both of these configured (see this
-[earlier section](#preparation)).
+both of these configured (see this [earlier section](#preparation)).
 
 If an experiment being pulled already exists in the local project, DVC won't
 overwrite it unless you supply `--force`.
