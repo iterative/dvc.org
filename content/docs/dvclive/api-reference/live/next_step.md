@@ -1,5 +1,7 @@
 # Live.next_step()
 
+Signals that the current step has ended and increases `step` value by 1 (one).
+
 ```py
 def next_step()
 ```
