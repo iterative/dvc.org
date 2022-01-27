@@ -50,7 +50,7 @@ other metadata.
   `path` directory and start from that point. _Default_: `False`.
 
   ⚠️ If you are not using steps, don't set to `True` since DVCLive will preserve
-  existing files from previous run's and assume that `step` has been enabled.
+  previous run's files and assume that `step` has been enabled.
 
 - `summary` - If `True`, upon each `Live.log()` call, DVCLive will generate a
   summary (usable by `dvc metrics`). The summary will be located at
