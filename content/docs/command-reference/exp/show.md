@@ -77,8 +77,8 @@ will be generated using the same data from the table.
 - `--rev <commit>` - show experiments derived from the specified `<commit>`
   as baseline. Defaults to `HEAD` if none of `--rev`, `-a`, `-T`, `-A` is used.
 
-- `-n <num>`, `--num <num>` - show experiments from the `<rev>` commit and `num`
-  commits before it. (`-1` for the whole history of the `<rev>`)
+- `-n <num>`, `--num <num>` - show experiments from the `--rev` baseline and
+  from `num` commits before it. Give `-1` to include all the parent commits.
 
 - `--no-pager` - do not enter the pager screen. Writes the entire table to
   standard output. Useful to redirect the output to a file, or use your own
