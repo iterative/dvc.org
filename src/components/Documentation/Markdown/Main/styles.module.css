@@ -234,6 +234,11 @@
         color: #000;
         background-color: #d7feff;
       }
+
+      .token.bg-violet {
+        color: #000;
+        background-color: #d7afff;
+      }
     }
 
     pre[class*="language-dvctable"] {
