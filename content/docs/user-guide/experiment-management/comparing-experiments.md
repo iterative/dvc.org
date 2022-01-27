@@ -89,21 +89,22 @@ refs/tags/baseline-experiment:
 
 Experimentation is about generating many possibilities before selecting a few of
 them. You can get a table of experiments with `dvc exp show`, which displays all
-the parameters and metrics in a nicely formatted table.
+the <abbr>dependencies</abbr> (violet), metrics (yellow) and parameters (blue)
+in a nicely formatted table.
 
 ```dvc
 $ dvc exp show
 ```
 
 ```dvctable
- ───────────────────────────────────────────────────────────────────────────────────────────
-  neutral:**Experiment**              neutral:**Created**           metric:**loss**      metric:**acc**   param:**train.epochs**   param:**model.conv_units**
- ───────────────────────────────────────────────────────────────────────────────────────────
-  workspace               -              0.23657   0.9127   10             16
-  baseline-experiment     Sep 06, 2021   0.23657   0.9127   10             16
-  ├── 6d13f33 [cnn-64]    Sep 09, 2021   0.23385   0.9153   10             64
-  ├── 69503c6 [cnn-128]   Sep 09, 2021   0.23243    0.916   10             128
- ───────────────────────────────────────────────────────────────────────────────────────────
+ ────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  neutral:**Experiment**              neutral:**Created**            metric:**loss**      metric:**acc**   param:**train.epochs**   param:**model.conv_units**   dep:**src**       dep:**data**
+ ────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  workspace               -               0.03332   0.9888   10             16                 695e061   6875529
+  baseline-experiment     Jan 14, 2022    0.03332   0.9888   10             16                 695e061   6875529
+  ├── 38d6c53 [cnn-64]    Jan 19, 2022   0.038246    0.988   10             64                 c77a505   6875529
+  └── bc0faf5 [cnn-128]   Jan 19, 2022   0.038325    0.989   10             128                bc75d6a   6875529
+ ────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 ```
 
 `dvc exp show` only tabulates experiments in the workspace and in `HEAD`. You
@@ -111,9 +112,9 @@ can use `--all` flag to show all the experiments in the project instead.
 
 ## Customize the table of experiments
 
-The table output may become cluttered if you have a large number of parameters
-and metrics. `dvc exp show` provides several options to select the parameters
-and metrics to be shown in the table.
+The table output may become cluttered if you have a large number of
+dependencies, metrics and parameters. `dvc exp show` provides several options to
+select the columns to be shown in the table.
 
 The `--include-params` and `--include-metrics` options take a list of
 comma-separated parameter or metrics names (defined in `dvc.yaml`).
@@ -196,9 +197,9 @@ You can also generate an interactive
 [parallel coordinates plot](https://en.wikipedia.org/wiki/Parallel_coordinates)
 with `dvc exp show --pcp`.
 
-This plot is useful to explore the relationships between the metrics and params
-used in experiments. You can reorder the columns to make some patterns more
-easily visible.
+This plot is useful to explore the relationships between the dependencies,
+metrics and params used in experiments. You can reorder the columns to make some
+patterns more easily visible.
 
 The `--pcp` flag can be combined with other options of the command. For example,
 use `--sort-by` to sort the experiments and determine the color of the lines
