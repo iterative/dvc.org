@@ -219,8 +219,6 @@ $ dvc stage add -n filter -d text.txt -o numbers.txt \
 
 $ dvc stage add -n count -d numbers.txt -d process.py -M count.txt \
            "python process.py numbers.txt > count.txt"
-
-$ dvc repro
 ```
 
 Where `process.py` is a script that, for simplicity, just prints the number of
@@ -235,9 +233,24 @@ with open(sys.argv[1], 'r') as f:
 print(num_lines)
 ```
 
-The result of executing `dvc repro` should look like this:
+The result of executing `dvc repro` should look like this (`cat` shows the
+contents of a file and `tree` shows the contents of the working directory):
 
 ```dvc
+$ dvc repro
+Running stage 'filter':
+> cat text.txt | egrep '[0-9]+' > numbers.txt
+Generating lock file 'dvc.lock'
+Updating lock file 'dvc.lock'
+
+Running stage 'count':
+> python process.py numbers.txt > count.txt
+Updating lock file 'dvc.lock'
+Use `dvc push` to send your updates to remote storage.
+
+$ cat count.txt
+2
+
 $ tree
 .
 ├── count.txt      <---- result: "2"
