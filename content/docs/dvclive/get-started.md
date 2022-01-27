@@ -86,8 +86,10 @@ dvclive.json
 ```
 
 The contents of the `dvclive` folder and `dvclive.json` would vary depending on
-the type of data you have logged. See `Live.log()`, `Live.log_image()` and
-`Live.log_plot()` for more details.
+the type of data you have logged and whether you have updated the step value or
+not.
+
+See `Live.log()`, `Live.log_image()` and `Live.log_plot()` for more details.
 
 ## What next?
 
