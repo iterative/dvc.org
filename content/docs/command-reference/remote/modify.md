@@ -79,8 +79,10 @@ The following config options are available for all remote types:
 
 - `jobs` - change the default number of processes for
   [remote storage](/doc/command-reference/remote) synchronization operations
-  (see the `--jobs` option of `dvc push`, `dvc pull`, `dvc fetch`, `dvc status`,
-  and `dvc gc`). Accepts positive integers. The default is typically `4`.
+  (see the `--jobs` option of `dvc push`, `dvc pull`, `dvc fetch`, `dvc get`,
+  `dvc add`, `dvc import`, `dvc update`, `dvc import-url`, `dvc get-url`,
+  `dvc status` and `dvc gc`). Accepts positive integers. The default is
+  typically `4`.
 
   ```dvc
   $ dvc remote modify myremote jobs 8
