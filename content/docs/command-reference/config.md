@@ -167,25 +167,21 @@ See `dvc remote add` and `dvc remote modify` for more information.
   > directory into paths relative to the config file location.
 
 - `cache.type` - link type that DVC should use to link data files from cache to
-  the workspace. Possible values: `reflink`, `symlink`, `hardlink`, `copy` or a
-  combination of those, separated by commas e.g: `reflink,hardlink,copy`.
+  the workspace. Possible values: `reflink`, `symlink`, `hardlink`, `copy` or an
+  ordered combination of those, separated by commas e.g:
+  `reflink,hardlink,copy`. Default: `reflink,copy`
 
-  By default, DVC will try `reflink,copy` link types in order to choose the most
-  effective of those two. DVC avoids `symlink` and `hardlink` types by default
-  to protect user from accidental cache and repository corruption.
-
-  ⚠️ If you set `cache.type` to `hardlink` or `symlink` and manually modify
-  tracked data files in the workspace, **you will corrupt the cache**. In an
-  attempt to prevent that, DVC will automatically protect those file links (make
-  them read-only). Use `dvc unprotect` to be able to modify them safely.
+  If you set `cache.type` to `hardlink` or `symlink`, manually modifying tracked
+  data files in the workspace would corrupt the cache. To prevent this, DVC
+  automatically protects those kinds of links (making them read-only). Use
+  `dvc unprotect` to be able to modify them safely.
 
   There are pros and cons to different link types. Refer to
   [File link types](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
   for a full explanation of each one.
 
-  To apply changes to this config option in the workspace, by restoring all file
-  links/copies from cache, please use `dvc checkout --relink`. See that
-  command's [options](/doc/command-reference/checkout#options) for more details.
+  To apply changes to this config option in the workspace, restore all file
+  links/copies from cache with `dvc checkout --relink`.
 
 - `cache.slow_link_warning` - used to turn off the warnings about having a slow
   cache link type. These warnings are thrown by `dvc pull` and `dvc checkout`
