@@ -85,7 +85,7 @@ dvc.lock  training_metrics       train.py
 dvc.yaml  training_metrics.json
 ```
 
-The [metrics history](/doc/dvclive/get-started#history)) generated under
+The [metrics history](/doc/dvclive/get-started#history) generated under
 `training_metrics` can be visualized with `dvc plots`.
 
 In addition, the [metrics summary](/doc/dvclive/get-started#summary)
