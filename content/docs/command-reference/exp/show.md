@@ -74,8 +74,8 @@ will be generated using the same data from the table.
 - `-A`, `--all-commits` - include experiments derived from all Git commits, as
   well as from the last one. This prints all experiments in the project.
 
-- `--rev <commit>` - "Show experiments derived from the specified revision.
-  Defaults to HEAD if none of `--rev`,`-a`,`-A`,`-T` is specified."
+- `--rev <commit>` - show experiments derived from the specified `<commit>`
+  as baseline. Defaults to `HEAD` if none of `--rev`, `-a`, `-T`, `-A` is used.
 
 - `-n <num>`, `--num <num>` - show experiments from the `<rev>` commit and `num`
   commits before it. (`-1` for the whole history of the `<rev>`)
