@@ -15,8 +15,8 @@ does not change directories in your terminal).
 - Copy data files or dataset directories for modeling into the repository, and
   track them with DVC using the `dvc add` command.
 - Process the data with your own source code, using `dvc.yaml` and/or the
-  `dvc run` command, specifying further <abbr>outputs</abbr> that should also be
-  tracked by DVC after the code is executed.
+  `dvc stage add` command to specify further <abbr>outputs</abbr> that should
+  also be tracked by DVC, and executing the code using `dvc repro`.
 - Sharing a <abbr>DVC repository</abbr> with the codified data
   [pipeline](/doc/command-reference/dag) will not include the project's
   <abbr>cache</abbr>. Use [remote storage](/doc/command-reference/remote) and
