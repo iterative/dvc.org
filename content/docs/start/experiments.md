@@ -42,7 +42,7 @@ $ . .venv/bin/activate
 $ python -m pip install -r requirements.txt
 ```
 
-#### Get the data set
+#### Get the dataset
 
 The repository we cloned doesn't contain the dataset. Instead of storing the
 data in the Git repository, we use DVC to retrieve from a shared data store. In
