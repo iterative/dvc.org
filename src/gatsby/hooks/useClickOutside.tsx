@@ -23,6 +23,6 @@ const useClickOutside = <T extends HTMLElement = HTMLElement>(
     return () => {
       for (const event of events) document.removeEventListener(event, onClick)
     }
-  })
+  }, [ref, onClickOutside])
 }
 export default useClickOutside

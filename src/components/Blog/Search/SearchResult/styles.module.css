@@ -21,7 +21,7 @@
 .searchResultContent {
   padding-right: 4px;
   max-height: 650px;
-  overflow: scroll;
+  overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 }
 
