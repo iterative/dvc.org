@@ -57,7 +57,7 @@ description_, as detailed below:
 
 - _always changed_ means that this is a `.dvc` file with no dependencies (see
   `dvc add`) or that the stage in `dvc.yaml` has the `always_changed: true`
-  value set (see `--always-changed` option in `dvc run`).
+  value set (see `--always-changed` option in `dvc stage add`).
 
 - _changed deps_ or _changed outs_ means that there are changes in dependencies
   or outputs tracked by the stage or `.dvc` file. Depending on the use case,
