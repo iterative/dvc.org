@@ -1,5 +1,7 @@
 # Live()
 
+Initializes a DVCLive logger.
+
 ```py
 class Live:
 
@@ -21,7 +23,8 @@ live = Live()
 
 ## Description
 
-Initializes a DVCLive logger.
+A `Live()` instance is required in order to log machine learning metrics and
+other metadata.
 
 ⚠️ `Live()` will remove all existing DVCLive related files under `path` unless
 `resume=True`.

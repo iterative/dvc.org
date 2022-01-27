@@ -1,5 +1,7 @@
 # Live.log()
 
+Logs the given scalar `val` associating it with the given `name`.
+
 ```py
  def log(name: str, val: float):
 ```

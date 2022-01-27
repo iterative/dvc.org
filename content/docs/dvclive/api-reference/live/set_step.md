@@ -20,7 +20,9 @@ for step in [0, 10, 20]:
 ## Description
 
 DVCLive uses the `step` value to track the progress of each metric logged with
-`Live.log()`. You can use `Live.set_step()` to set `step` to any value.
+`Live.log()`.
+
+You can use `Live.set_step()` to set `step` to any value.
 
 Each metric logged in between `Live.set_step()` (or `Live.next_step()`) calls
 will be associated to the provided `step` value.
