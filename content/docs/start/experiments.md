@@ -89,13 +89,13 @@ $ dvc exp show
 ```
 
 ```dvctable
- ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-  Experiment                Created           loss      acc   train.epochs   model.conv_units   data      src
- ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-  workspace                 -              0.03247   0.9887   10             16                 6875529   c5f2f29
-  baseline-experiment       Jan 14, 2022   0.03332   0.9888   10             16                 6875529   695e061
-  └── 999710f [exp-ff24d]   10:54 PM       0.03247   0.9887   10             16                 6875529   c5f2f29
- ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+ ────────────────────────────────────────────────────────────────────────────────────────────────────────
+  neutral:**Experiment**                neutral:**Created**           metric:**loss**      metric:**acc**   param:**train.epochs**    param:**model.conv_units**    dep:**data**
+ ────────────────────────────────────────────────────────────────────────────────────────────────────────
+  workspace                 -              0.03247   0.9887   10             16                 6875529
+  baseline-experiment       Jan 14, 2022   0.03332   0.9888   10             16                 6875529
+  └── 999710f [exp-ff24d]   10:54 PM       0.03247   0.9887   10             16                 6875529
+ ────────────────────────────────────────────────────────────────────────────────────────────────────────
 ```
 
 The `workspace` row in the table shows the results of the most recent experiment
@@ -184,43 +184,44 @@ $ dvc exp show
 ```
 
 ```dvctable
- ─────────────────────────────────────────────────────────────────────────────────────────────
-  white:**Experiment**                white:**Created**           yellow:**loss**      yellow:**acc**   blue:**train.epochs**   blue:**model.conv_units**
- ─────────────────────────────────────────────────────────────────────────────────────────────
-  workspace                 -              0.23508   0.9151   10             24
-  7317bc6                   Jul 18, 2021         -        -   10             16
-  ├── e2647ef [exp-ee8a4]   05:14 PM       0.23146   0.9145   10             64
-  ├── 15c9451 [exp-a9be6]   05:14 PM       0.25231   0.9102   10             32
-  ├── 9c32227 [exp-17dd9]   04:46 PM       0.23687   0.9167   10             256
-  ├── 8a9cb15 [exp-29d93]   04:46 PM       0.24459   0.9134   10             128
-  ├── dfc536f [exp-a1bd9]   03:35 PM       0.23508   0.9151   10             24
-  └── 1a1d858 [exp-6dccf]   03:21 PM       0.23282   0.9152   10             16
- ─────────────────────────────────────────────────────────────────────────────────────────────
+ ────────────────────────────────────────────────────────────────────────────────────────────────────────
+  neutral:**Experiment**                neutral:**Created**            metric:**loss**      metric:**acc**   param:**train.epochs**    param:**model.conv_units**    dep:**data**
+ ────────────────────────────────────────────────────────────────────────────────────────────────────────
+  workspace                 -              0.031865   0.9897   10             24                 6875529
+  baseline-experiment       Jan 14, 2022    0.03332   0.9888   10             16                 6875529
+  ├── 43a3b4f [exp-7f82e]   Jan 27, 2022   0.042424   0.9874   10             256                6875529
+  ├── 6d15fac [exp-75369]   Jan 27, 2022   0.037164    0.989   10             128                6875529
+  ├── 47896c1 [exp-76693]   Jan 27, 2022    0.03845   0.9876   10             64                 6875529
+  ├── da84ac7 [exp-4a081]   Jan 27, 2022   0.035497    0.988   10             32                 6875529
+  ├── 5846c68 [exp-953fa]   Jan 27, 2022   0.031865   0.9897   10             24                 6875529
+  └── 999710f [exp-ff24d]   Jan 27, 2022    0.03247   0.9887   10             16                 6875529
+ ────────────────────────────────────────────────────────────────────────────────────────────────────────
 ```
 
 By default, it shows all the dependencies, metrics and parameters with the
 timestamp. If you have a large number of dependencies, metrics, parameters or
 experiments, this may lead to a cluttered view. You can limit the table to
 specific dependencies, metrics, or parameters, or hide the timestamp column
-(`Created`) using the `--drop` option of the command.
+(`Created`) using the [`--drop`](/doc/command-reference/exp/show#--drop) option
+of the command.
 
 ```dvc
 $ dvc exp show --drop 'Created|train|loss'
 ```
 
 ```dvctable
- ─────────────────────────────────────────────────────
-  white:**Experiment**                   yellow:**acc**   blue:**model.conv_units**
- ─────────────────────────────────────────────────────
-  workspace                 0.9151   24
-  7317bc6                        -   16
-  ├── e2647ef [exp-ee8a4]   0.9145   64
-  ├── 15c9451 [exp-a9be6]   0.9102   32
-  ├── 9c32227 [exp-17dd9]   0.9167   256
-  ├── 8a9cb15 [exp-29d93]   0.9134   128
-  ├── dfc536f [exp-a1bd9]   0.9151   24
-  └── 1a1d858 [exp-6dccf]   0.9152   16
- ─────────────────────────────────────────────────────
+ ───────────────────────────────────────────────────────────────
+  neutral:**Experiment**                   metric:**acc**   param:**model.conv_units**    dep:**data**
+ ───────────────────────────────────────────────────────────────
+  workspace                 0.9897   24                 6875529
+  baseline-experiment       0.9888   16                 6875529
+  ├── 43a3b4f [exp-7f82e]   0.9874   256                6875529
+  ├── 6d15fac [exp-75369]    0.989   128                6875529
+  ├── 47896c1 [exp-76693]   0.9876   64                 6875529
+  ├── da84ac7 [exp-4a081]    0.988   32                 6875529
+  ├── 5846c68 [exp-953fa]   0.9897   24                 6875529
+  └── 999710f [exp-ff24d]   0.9887   16                 6875529
+ ───────────────────────────────────────────────────────────────
 ```
 
 After selecting an experiment from the table, you can create a Git branch that
