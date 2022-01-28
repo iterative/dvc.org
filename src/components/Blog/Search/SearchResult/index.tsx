@@ -12,15 +12,20 @@ import {
 
 import * as styles from './styles.module.css'
 
-const HitCount = connectStateResults(({ searchResults }) => {
+const HitCount = connectStateResults(({ searchState, searchResults }) => {
   const hitCount = searchResults && searchResults.nbHits
 
   return hitCount > 0 ? (
-    <div className={styles.hitCount}>
-      {hitCount} result{hitCount !== 1 ? `s` : ``}
+    <div className={styles.result}>
+      <h3>Blog Posts</h3>
+      <div className={styles.hitCount}>
+        {hitCount} result{hitCount !== 1 ? `s` : ``}
+      </div>
     </div>
   ) : (
-    <span>No Results!!!</span>
+    <div className={styles.noResult}>
+      No results found for query &quot;{searchState.query}&quot;
+    </div>
   )
 })
 
@@ -38,7 +43,6 @@ const PageHit = ({ hit }: { hit: { slug: string } }) => (
 const HitsInIndex = ({ index }: { index: { name: string } }) => (
   <Index indexName={index.name}>
     <div className={styles.searchResultHeader}>
-      <h3>Blog Posts</h3>
       <HitCount />
     </div>
     <div className={styles.hits}>
