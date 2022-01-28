@@ -18,9 +18,9 @@ positional arguments:
 ## Description
 
 This command is usually needed after `git checkout`, `git clone`, or any other
-operation that changes the current <abbr>DVC files</abbr>. It restores the
-corresponding versions of the DVC-tracked data files and directories from the
-<abbr>cache</abbr> to the workspace.
+operation that changes the current `dvc.lock` or `.dvc` files in the
+<abbr>project</abbr>. It restores the corresponding versions of all DVC-tracked
+data files and directories from the <abbr>cache</abbr> to the workspace.
 
 The `targets` given to this command (if any) limit what to checkout. It accepts
 paths to tracked files or directories (including paths inside tracked
@@ -75,15 +75,16 @@ the [pipeline](/doc/command-reference/dag) must be reproduced (using
 - `--summary` - display a short summary of the changes done by this command in
   the workspace, instead of a full list of changes.
 
-- `-R`, `--recursive` - determines the files to checkout by searching each
-  target directory and its subdirectories for `.dvc` files to inspect. If there
-  are no directories among the `targets`, this option is ignored.
+- `-d`, `--with-deps` - only meaningful when specifying `targets`. This
+  determines files to update by resolving all dependencies of the target stages
+  or `.dvc` files: DVC searches backward from the targets in the corresponding
+  pipelines. This will not checkout files referenced in later stages than the
+  `targets`.
 
-- `-d`, `--with-deps` - determines files to update by tracking dependencies to
-  the target stages (if no stage `targets` are provided, this option is
-  ignored). By traversing all stage dependencies, DVC searches backward from the
-  target stages in the corresponding pipelines. This means DVC will not checkout
-  files referenced in later stages than the `targets`.
+- `-R`, `--recursive` - determines the files to checkout by searching each
+  target directory and its subdirectories for `dvc.lock` and `.dvc` files to
+  inspect. If there are no directories among the `targets`, this option has no
+  effect.
 
 - `-f`, `--force` - does not prompt when removing workspace files. Changing the
   current set of DVC files with `git checkout` can result in the need for DVC to

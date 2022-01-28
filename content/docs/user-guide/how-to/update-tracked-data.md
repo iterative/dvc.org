@@ -18,9 +18,6 @@ which DVC handles linking data files between the <abbr>cache</abbr> and the
 [Large Dataset Optimization](/doc/user-guide/large-dataset-optimization) for
 details).
 
-> For an example of the cache corruption problem see
-> [issue #599](https://github.com/iterative/dvc/issues/599) in our GitHub repo.
-
 If you use `dvc.yaml` files and `dvc repro`, there is no need to manage stage
 <abbr>outputs</abbr> manually. DVC removes them for you before regenerating
 them.

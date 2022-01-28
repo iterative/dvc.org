@@ -32,8 +32,8 @@ final model, as well as accuracy [metrics](/doc/command-reference/metrics).
 
 In DVC, pipeline stages and commands, their data I/O, interdependencies, and
 results (intermediate or final) are specified in `dvc.yaml`, which can be
-written manually or built using the helper command `dvc run`. This allows DVC to
-restore one or more pipelines later (see `dvc repro`).
+written manually or built using the helper command `dvc stage add`. This allows
+DVC to restore one or more pipelines later (see `dvc repro`).
 
 > DVC builds a dependency graph
 > ([DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph)) to do this.

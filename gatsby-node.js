@@ -1,4 +1,5 @@
 require('dotenv').config()
+global.__basedir = __dirname
 
 const { setPageContext } = require('./src/gatsby/common')
 

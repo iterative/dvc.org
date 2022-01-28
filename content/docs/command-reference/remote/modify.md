@@ -79,18 +79,18 @@ The following config options are available for all remote types:
 
 - `jobs` - change the default number of processes for
   [remote storage](/doc/command-reference/remote) synchronization operations
-  (see the `--jobs` option of `dvc push`, `dvc pull`, `dvc fetch`, `dvc status`,
-  and `dvc gc`). Accepts positive integers. The default is typically `4`.
+  (see the `--jobs` option of dvc push`, `dvc pull`, `dvc get`, `dvc
+  import`, `dvc update`, `dvc add --to-remote`, `dvc gc
+  -c`, etc.). Accepts positive integers. The default is typically `4`.
 
   ```dvc
   $ dvc remote modify myremote jobs 8
   ```
 
 - `verify` - upon downloading <abbr>cache</abbr> files (`dvc pull`, `dvc fetch`)
-  DVC will recalculate the file hashes, to make sure that these haven't been
-  modified or corrupted. This may slow down the aforementioned commands. The
-  calculated hash is compared to the value saved in the corresponding <abbr>DVC
-  file</abbr>.
+  DVC will recalculate the file hashes, to check that their contents have not
+  changed. This may slow down the aforementioned commands. The calculated hash
+  is compared to the value saved in the corresponding <abbr>DVC file</abbr>.
 
   > Note that this option is enabled on **Google Drive** remotes by default.
 

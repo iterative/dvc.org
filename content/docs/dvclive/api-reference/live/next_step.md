@@ -21,7 +21,9 @@ for step in range(3):
 ## Description
 
 DVCLive uses the `step` value to track the progress of each metric logged with
-`Live.log()`. You can use `Live.next_step()` to increase the `step` by 1 (one).
+`Live.log()`.
+
+You can use `Live.next_step()` to increase the `step` by 1 (one).
 
 Each metric logged in between `Live.next_step()` (or `Live.set_step()`) calls
 will be associated to the updated `step` value.
@@ -32,8 +34,8 @@ When `dvclive` is used alongside `DVC`, each `Live.next_step()` call will have
 additional effects.
 
 By default, on each `Live.next_step()` call, `DVC` will prepare an
-[HTML report](/doc/dvclive/dvclive-with-dvc#html-report) with all the _metrics
-logs_ logged in `path`.
+[HTML report](/doc/dvclive/dvclive-with-dvc#html-report) with the [metrics
+history(/doc/dvclive/get-started#history).
 
 In addition, when
 [checkpoints](/doc/user-guide/experiment-management/checkpoints) are enabled in
