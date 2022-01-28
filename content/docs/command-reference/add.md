@@ -170,6 +170,10 @@ not.
   [remote storage](/doc/command-reference/remote) to transfer external target to
   (can only be used with `--to-remote`).
 
+- `-j <number>`, `--jobs <number>` - parallelism level for DVC to transfer data
+  when using `--to-remote`. The default value is `4 \* cpu_count()`. For SSH
+  remotes, the default is `4`. Using more jobs may speed up the operation.
+
 - `--desc <text>` - user description of the data (optional). This doesn't affect
   any DVC operations.
 
