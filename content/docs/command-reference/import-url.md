@@ -100,7 +100,7 @@ DVC supports several types of external locations (protocols):
   necessary to track if the specified URL changed.
 
 Another way to understand the `dvc import-url` command is as a shortcut for
-generating a pipeline [stage](/doc/command-reference/run) with and external
+generating a pipeline [stage](/doc/command-reference/run) with an external
 dependency.
 
 > This is discussed in the
