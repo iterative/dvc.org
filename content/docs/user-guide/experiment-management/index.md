@@ -79,7 +79,7 @@ until your experiments are made [persistent].
 
 Every time you [reproduce](/doc/command-reference/repro) a pipeline with DVC, it
 logs the unique signature of each stage run (in `.dvc/cache/runs` by default).
-If it never happened before, the stage command(s) are executed normally. Every
+If it never happened before, its command(s) are executed normally. Every
 subsequent time a [stage](/doc/command-reference/run) runs under the same
 conditions, the previous results can be restored instantly, without wasting time
 or computing resources.

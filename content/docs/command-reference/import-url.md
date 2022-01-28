@@ -100,9 +100,12 @@ DVC supports several types of external locations (protocols):
   necessary to track if the specified URL changed.
 
 Another way to understand the `dvc import-url` command is as a shortcut for
-generating a pipeline stage with and external dependency. This is discussed in
-the [External Dependencies](/doc/user-guide/external-dependencies)
-documentation, where an alternative is demonstrated for each of these schemes.
+generating a pipeline [stage](/doc/command-reference/run) with and external
+dependency.
+
+> This is discussed in the
+> [External Dependencies](/doc/user-guide/external-dependencies) documentation,
+> where an alternative is demonstrated for each of these schemes.
 
 Instead of:
 
@@ -121,8 +124,8 @@ $ dvc stage add -n download_data \
 $ dvc repro
 ```
 
-`dvc import-url` generates an _import `.dvc` file_ and `dvc stage add` a regular
-stage (in `dvc.yaml`).
+`dvc import-url` generates an _import `.dvc` file_ while `dvc stage add`
+produces a regular stage in `dvc.yaml`.
 
 ## Options
 
