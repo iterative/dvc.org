@@ -156,19 +156,15 @@ not.
   > above).
 
 - `-o <path>`, `--out <path>` - specify a `path` to the desired location in the
-  workspace to place the `targets` (instead of using the current working
-  directory). Directories specified in the path will be created by this command.
-  Note that this enables targeting data outside the project (see an
+  workspace to place the `targets` (moving them from their current location).
+  This enables targeting data outside the project (see an
   [example](#example-transfer-to-an-external-cache)).
-
-  > This can be combined with `--to-remote` to avoid storing the data locally,
-  > in which case the given `path` is only recorded in `dvc.yaml` for now.
 
 - `--to-remote` - add a target that's outside the project, but neither move it
   into the workspace nor cache it yet.
   [Transfer it](#example-transfer-to-remote-storage) directly to remote storage
-  (the default one, unless `-r` is specified) instead. Use `dvc pull` to get the
-  data locally.
+  instead (to the default one unless one is specified with `-r`). Implies
+  `--out .`. Use `dvc pull` to get the data locally.
 
 - `-r <name>`, `--remote <name>` - name of the
   [remote storage](/doc/command-reference/remote) to transfer external target to
@@ -398,8 +394,8 @@ without downloading it locally. DVC transfers it directly to [remote storage]
 instead. This way it can be [pulled](/doc/command-reference/plots) later, for
 example on a system that can handle it.
 
-Let's add a `data.xml` file via HTTP in this way. Note that the `--out` (`-o`)
-option is also needed since the target data is outside the project:
+Let's add a `data.xml` file via HTTP in this way. Note that this implies
+`--out .` (moves the data into the workspace):
 
 ```dvc
 $ dvc add https://data.dvc.org/get-started/data.xml -o data.xml \
@@ -408,13 +404,12 @@ $ dvc add https://data.dvc.org/get-started/data.xml -o data.xml \
 
 Even when nothing is downloaded locally, the operation still creates a `.dvc`
 file in the <abbr>workspace</abbr>. So whenever anyone wants to actually
-download the data, they can use `dvc pull` as usual:
+download the data, they can use `dvc pull`:
 
 ```dvc
 $ dvc pull data.xml.dvc
-
 A       data.xml
-1 file added and 1 file fetched
+1 file added
 ```
 
 > For a similar operation, but keeping a connection to the data source, please
