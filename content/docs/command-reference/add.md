@@ -163,7 +163,7 @@ not.
 - `--to-remote` - add a target that's outside the project, but neither move it
   into the workspace nor cache it yet.
   [Transfer it](#example-transfer-to-remote-storage) directly to remote storage
-  instead (to the default one unless one is specified with `-r`). Implies
+  instead (the default one unless one is specified with `-r`). Implies
   `--out .`. Use `dvc pull` to get the data locally.
 
 - `-r <name>`, `--remote <name>` - name of the
@@ -384,38 +384,17 @@ outs:
 
 ## Example: Transfer to remote storage
 
-When you want to add a large dataset that is outside of your
-<abbr>project</abbr> (e.g. online), you would normally need to download or copy
-it into the <abbr>workspace</abbr> first. But you may not have enough local
-storage space.
-
-Using the `--to-remote` flag lets you create a `.dvc` file for the operation
-without downloading data locally. DVC transfers it directly to [remote storage]
-instead. This way it can be [pulled](/doc/command-reference/plots) later, for
-example on a system that can handle it.
-
-Let's add a `data.xml` file via HTTP in this way. Note that this implies
-`--out .` (moves the data into the workspace):
+Use `--to-remote` to create a `.dvc` file for the operation without downloading
+data, transferring it directly to [remote storage] instead:
 
 ```dvc
 $ dvc add https://data.dvc.org/get-started/data.xml --to-remote
-...
-$ ls
-data.xml.dvc
 ```
 
-Even when nothing is downloaded locally, the operation still creates a `.dvc`
-file in the <abbr>workspace</abbr>. So whenever anyone wants to actually
-download the data, they can use `dvc pull`:
+See this [`import-url` example][iutr] for more details.
 
-```dvc
-$ dvc pull data.xml.dvc
-A       data.xml
-1 file added
-```
-
-> For a similar operation, but keeping a connection to the data source, please
-> see this
-> [`import-url` example](/doc/command-reference/import-url#example-transfer-to-remote-storage).
+> The only difference is that `dvc import-url` keeps a connection to the data
+> source so it can be updated later (with `dvc update`).
 
 [remote storage]: /doc/command-reference/remote
+[iutr]: /doc/command-reference/import-url#example-transfer-to-remote-storage

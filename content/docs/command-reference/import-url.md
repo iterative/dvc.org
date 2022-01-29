@@ -139,8 +139,8 @@ stage (in `dvc.yaml`).
 
 - `--to-remote` - import a target, but neither move it into the workspace, nor
   cache it. [Transfer it](#example-transfer-to-remote-storage) directly to
-  remote storage (the default one, unless `-r` is specified) instead. Use
-  `dvc pull` to get the data locally.
+  remote storage (the default one unless one is specified with `-r`) instead.
+  Use `dvc pull` to get the data locally.
 
 - `-r <name>`, `--remote <name>` - name of the
   [remote storage](/doc/command-reference/remote) (can only be used with
@@ -361,12 +361,12 @@ Running stage 'prepare' with command:
 ## Example: Transfer to remote storage
 
 When importing a large dataset, you may want to avoid downloading it to the
-local environment (yet), for example if there's not enough storage space).
+local environment (yet), for example if there's not enough storage space.
 
 Using the `--to-remote` flag lets you create a `.dvc` file for the operation
-without downloading data locally. DVC transfers it directly to [remote storage]
-instead. This way it can be [pulled](/doc/command-reference/plots) later, for
-example on a system that can handle it.
+without downloading data. DVC transfers it directly to [remote storage] instead.
+This way it can be [pulled](/doc/command-reference/plots) later, for example on
+a system that can handle it.
 
 Let's add a `data.xml` file via HTTP in this way:
 
@@ -388,7 +388,7 @@ A       data.xml
 1 file added
 ```
 
-Note that you can also use `dvc update --to-remote` to bring the import up to
-date in remote storage, without downloading anything.
+Use `dvc update --to-remote` to bring the import up to date in remote storage,
+without downloading anything.
 
 [remote storage]: /doc/command-reference/remote
