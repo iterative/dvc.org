@@ -378,9 +378,8 @@ $ ls
 data.xml.dvc
 ```
 
-Even when nothing is downloaded locally, the operation still creates a `.dvc`
-file in the <abbr>workspace</abbr>. So whenever anyone wants to actually
-download the data, they can use `dvc pull`:
+Since a `.dvc` file is left in the <abbr>workspace</abbr>, whenever anyone wants
+to actually download the data they can use `dvc pull`:
 
 ```dvc
 $ dvc pull data.xml.dvc
