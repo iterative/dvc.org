@@ -389,8 +389,8 @@ When you want to add a large dataset that is outside of your
 it into the <abbr>workspace</abbr> first. But you may not have enough local
 storage space.
 
-Using the `--to-remote` flag lets you create a `.dvc` file for the target data
-without downloading it locally. DVC transfers it directly to [remote storage]
+Using the `--to-remote` flag lets you create a `.dvc` file for the operation
+without downloading data locally. DVC transfers it directly to [remote storage]
 instead. This way it can be [pulled](/doc/command-reference/plots) later, for
 example on a system that can handle it.
 

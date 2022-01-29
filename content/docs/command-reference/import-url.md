@@ -363,10 +363,10 @@ Running stage 'prepare' with command:
 When importing a large dataset, you may want to avoid downloading it to the
 local environment (yet), for example if there's not enough storage space).
 
-Using the `--to-remote` flag lets you create an import `.dvc` file for the
-target data without downloading it locally. DVC transfers it directly to [remote
-storage] instead. This way it can be [pulled](/doc/command-reference/plots)
-later, for example on a system that can handle it.
+Using the `--to-remote` flag lets you create a `.dvc` file for the operation
+without downloading data locally. DVC transfers it directly to [remote storage]
+instead. This way it can be [pulled](/doc/command-reference/plots) later, for
+example on a system that can handle it.
 
 Let's add a `data.xml` file via HTTP in this way:
 
@@ -380,13 +380,12 @@ data.xml.dvc
 
 Even when nothing is downloaded locally, the operation still creates a `.dvc`
 file in the <abbr>workspace</abbr>. So whenever anyone wants to actually
-download the data, they can use `dvc pull` as usual:
+download the data, they can use `dvc pull`:
 
 ```dvc
 $ dvc pull data.xml.dvc
-
 A       data.xml
-1 file added and 1 file fetched
+1 file added
 ```
 
 Note that you can also use `dvc update --to-remote` to bring the import up to
