@@ -134,8 +134,8 @@ plots:
 
 ## Example: Template change
 
-_dvc stage add --plots file.csv ..._ command assign the default template that
-needs to be changed in many cases. A simple command changes the template:
+Something like `dvc stage add --plots file.csv ...` assigns the default
+template, which needs to be changed in many cases. This command can do so:
 
 ```dvc
 $ dvc plots modify classes.csv --template confusion
