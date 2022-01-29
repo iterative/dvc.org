@@ -398,8 +398,10 @@ Let's add a `data.xml` file via HTTP in this way. Note that this implies
 `--out .` (moves the data into the workspace):
 
 ```dvc
-$ dvc add https://data.dvc.org/get-started/data.xml -o data.xml \
-          --to-remote
+$ dvc add https://data.dvc.org/get-started/data.xml --to-remote
+...
+$ ls
+data.xml.dvc
 ```
 
 Even when nothing is downloaded locally, the operation still creates a `.dvc`
