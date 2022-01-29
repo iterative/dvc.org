@@ -373,6 +373,9 @@ Let's add a `data.xml` file via HTTP in this way:
 ```dvc
 $ dvc import-url https://data.dvc.org/get-started/data.xml data.xml \
                  --to-remote
+...
+$ ls
+data.xml.dvc
 ```
 
 Even when nothing is downloaded locally, the operation still creates a `.dvc`
