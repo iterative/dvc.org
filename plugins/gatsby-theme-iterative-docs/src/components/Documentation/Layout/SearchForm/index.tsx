@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Promise from 'promise-polyfill'
-import { loadResource } from '../../../../utils/front/resources'
+import { loadResource } from 'gatsby-theme-iterative-docs/src/utils/front/resources'
 
 import * as styles from './styles.module.css'
 

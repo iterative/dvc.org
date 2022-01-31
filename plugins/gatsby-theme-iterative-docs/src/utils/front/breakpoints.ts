@@ -1,5 +1,5 @@
 import includes from 'lodash/includes'
-import { customMedia } from '../../../config/postcss/media'
+import { customMedia } from '../../config/custom-media'
 
 type AvailableCustomMedia = keyof typeof customMedia
 

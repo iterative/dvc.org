@@ -21,7 +21,7 @@
 */
 
 const { titleCase } = require('title-case')
-const sidebar = require('../../../content/docs/sidebar.json')
+const sidebar = require('../../../sidebar')
 
 const PATH_ROOT = '/doc'
 const FILE_ROOT = '/docs/'
