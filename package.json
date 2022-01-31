@@ -59,6 +59,7 @@
     "gatsby-plugin-parent-resolvers": "^1.0.1",
     "github-markdown-css": "^5.0.0",
     "graphql": "^16.0.1",
+    "gray-matter": "^4.0.3",
     "iso-url": "^1.2.1",
     "isomorphic-fetch": "^3.0.0",
     "lodash": "^4.17.21",
@@ -169,7 +170,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn format-staged && yarn lint-staged"
+      "pre-commit": "bash scripts/pre-commit.sh"
     }
   },
   "lint-staged": {
