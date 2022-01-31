@@ -2,10 +2,10 @@ import React, { useRef, useEffect, useCallback, useState } from 'react'
 import cn from 'classnames'
 
 import TwoRowsButton from '../TwoRowsButton'
-import Link from '../Link'
+import Link from 'gatsby-theme-iterative-docs/src/components/Link'
 
-import isClient from '../../utils/front/isClient'
-import { logEvent } from '../../utils/front/plausible'
+import isClient from 'gatsby-theme-iterative-docs/src/utils/front/isClient'
+import { logEvent } from 'gatsby-theme-iterative-docs/src/utils/front/plausible'
 
 import * as styles from './styles.module.css'
 

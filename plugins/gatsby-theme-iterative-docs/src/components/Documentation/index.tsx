@@ -5,14 +5,12 @@ import Markdown from './Markdown'
 import RightPanel from './RightPanel'
 
 import { getItemByPath } from '../../utils/shared/sidebar'
+import { getGithubLink } from '../../getGithubLink'
 
 export interface IHeading {
   slug: string
   text: string
 }
-
-export const getGithubLink = (source: string): string =>
-  `https://github.com/iterative/dvc.org/blob/master/content${source}`
 
 interface IDocumentationProps {
   path: string
