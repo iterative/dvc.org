@@ -49,10 +49,10 @@ Your terminal will enter a
 which you can typically exit by typing `Q`. Use `--no-pager` to print the table
 to standard output.
 
-By default, the printed experiments table will include columns for all
-dependencies, metrics and params from the entire project. The `--only-changed`,
-`--drop`, `--keep`, and other [options](#options) can determine which columns
-should be displayed.
+By default, the printed experiments table will include columns for all metrics,
+params and dependencies from the entire project. The `--only-changed`, `--drop`,
+`--keep`, and other [options](#options) can determine which columns should be
+displayed.
 
 Experiments in the table are first grouped (by parent commit). They are then
 sorted inside each group, chronologically by default. The `--sort-by` and
@@ -86,7 +86,7 @@ will be generated using the same data from the table.
 
 - `--param-deps` - include only parameters that are stage dependencies.
 
-- `--only-changed` - show only dependencies, metrics and params with values that
+- `--only-changed` - show only metrics, params and dependencies with values that
   vary across experiments.
 
 - `--drop <regex>` - remove the matching columns. This option has higher
@@ -142,7 +142,7 @@ will be generated using the same data from the table.
 
 Let's say we have run 3 experiments in our project. The basic usage shows the
 workspace (Git working tree) and experiments derived from `HEAD` (`master`
-branch in this case), and all of their dependencies, metrics and params (scroll
+branch in this case), and all of their metrics, params and dependencies (scroll
 right to see all):
 
 ```dvc

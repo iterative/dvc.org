@@ -89,7 +89,7 @@ refs/tags/baseline-experiment:
 
 Experimentation is about generating many possibilities before selecting a few of
 them. You can get a table of experiments with `dvc exp show`, which displays all
-the <abbr>dependencies</abbr> (violet), metrics (yellow) and parameters (blue)
+the metrics (yellow), parameters (blue) and <abbr>dependencies</abbr> (violet)
 in a nicely formatted table.
 
 ```dvc
@@ -112,9 +112,9 @@ can use `--all` flag to show all the experiments in the project instead.
 
 ## Customize the table of experiments
 
-The table output may become cluttered if you have a large number of
-dependencies, metrics and parameters. `dvc exp show` provides several options to
-select the columns to be shown in the table.
+The table output may become cluttered if you have a large number of metrics,
+parameters and dependencies. `dvc exp show` provides several options to select
+the columns to be shown in the table.
 
 The `--include-params` and `--include-metrics` options take a list of
 comma-separated parameter or metrics names (defined in `dvc.yaml`).
@@ -197,8 +197,8 @@ You can also generate an interactive
 [parallel coordinates plot](https://en.wikipedia.org/wiki/Parallel_coordinates)
 with `dvc exp show --pcp`.
 
-This plot is useful to explore the relationships between the dependencies,
-metrics and params used in experiments. You can reorder the columns to make some
+This plot is useful to explore the relationships between the metrics, params and
+dependencies used in experiments. You can reorder the columns to make some
 patterns more easily visible.
 
 The `--pcp` flag can be combined with other options of the command. For example,

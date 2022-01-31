@@ -198,12 +198,11 @@ $ dvc exp show
  ────────────────────────────────────────────────────────────────────────────────────────────────────────
 ```
 
-By default, it shows all the dependencies, metrics and parameters with the
-timestamp. If you have a large number of dependencies, metrics, parameters or
+By default, it shows all the metrics, parameters and dependencies with the
+timestamp. If you have a large number of metrics, parameters, dependencies or
 experiments, this may lead to a cluttered view. You can limit the table to
-specific dependencies, metrics, or parameters, or hide the timestamp column
-(`Created`) using the [`--drop`](/doc/command-reference/exp/show#--drop) option
-of the command.
+specific columns, including the timestamp (`Created`), using the
+[`--drop`](/doc/command-reference/exp/show#--drop) option of the command.
 
 ```dvc
 $ dvc exp show --drop 'Created|train|loss'
