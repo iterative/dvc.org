@@ -17,7 +17,9 @@ interface ISEOProps {
   description?: string
   keywords?: string
   imageAlt?: string
-  image?: IGatsbyImageData
+  image?: IGatsbyImageData | string
+  imageHeight?: number
+  imageWidth?: number
   meta?: MetaProps[]
   pageInfo?: IPaginatorPageInfo
   children?: React.ReactNode
@@ -30,6 +32,8 @@ const SEO: React.FC<ISEOProps> = ({
   keywords,
   image,
   imageAlt = '',
+  imageHeight,
+  imageWidth,
   meta = [],
   pageInfo,
   children
@@ -48,7 +52,9 @@ const SEO: React.FC<ISEOProps> = ({
       description,
       keywords,
       image,
-      imageAlt
+      imageAlt,
+      imageHeight,
+      imageWidth
     )
   }, [
     siteMeta,
@@ -57,7 +63,9 @@ const SEO: React.FC<ISEOProps> = ({
     description,
     keywords,
     image,
-    imageAlt
+    imageAlt,
+    imageWidth,
+    imageHeight
   ])
 
   return (

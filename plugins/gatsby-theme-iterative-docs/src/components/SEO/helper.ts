@@ -1,4 +1,4 @@
-import { getSrc, getImage, IGatsbyImageData } from 'gatsby-plugin-image'
+import { getSrc, IGatsbyImageData } from 'gatsby-plugin-image'
 
 export type MetaProps = JSX.IntrinsicElements['meta']
 
@@ -35,13 +35,14 @@ export const getMetaDescription = (description: string): MetaProps[] => {
 export const getMetaImage = (
   imageUrl: string,
   imageAlt?: string,
-  imageData?: IGatsbyImageData
+  imageHeight?: number,
+  imageWidth?: number
 ): MetaProps[] => {
   return [
     { property: 'og:image', content: imageUrl },
     { name: 'og:image:alt', content: imageAlt },
-    { property: 'og:image:width', content: String(imageData?.width) },
-    { property: 'og:image:height', content: String(imageData?.height) },
+    { property: 'og:image:width', content: String(imageWidth) },
+    { property: 'og:image:height', content: String(imageHeight) },
     { name: 'twitter:image', content: imageUrl },
     { name: 'twitter:image:alt', content: imageAlt }
   ]
@@ -53,8 +54,10 @@ export const buildMetadata = (
   defaultMetaTitle?: boolean,
   description?: string,
   keywords?: string,
-  image?: IGatsbyImageData,
-  imageAlt?: string
+  image?: IGatsbyImageData | string,
+  imageAlt?: string,
+  imageHeight?: number,
+  imageWidth?: number
 ) => {
   const prebuildMeta: MetaProps[] = []
   if (title && !defaultMetaTitle) {
@@ -70,9 +73,11 @@ export const buildMetadata = (
     })
   }
   if (image) {
-    const imageUrl = siteUrl + getSrc(image)
-    const imageData = getImage(image)
-    prebuildMeta.push(...getMetaImage(imageUrl, imageAlt, imageData))
+    const isStr = typeof image === 'string'
+    const imageUrl = siteUrl + (isStr ? image : getSrc(image))
+    prebuildMeta.push(
+      ...getMetaImage(imageUrl, imageAlt, imageHeight, imageWidth)
+    )
   }
   return prebuildMeta
 }

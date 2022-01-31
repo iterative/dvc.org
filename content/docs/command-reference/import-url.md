@@ -100,9 +100,12 @@ DVC supports several types of external locations (protocols):
   necessary to track if the specified URL changed.
 
 Another way to understand the `dvc import-url` command is as a shortcut for
-generating a pipeline stage with and external dependency. This is discussed in
-the [External Dependencies](/doc/user-guide/external-dependencies)
-documentation, where an alternative is demonstrated for each of these schemes.
+generating a pipeline [stage](/doc/command-reference/run) with an external
+dependency.
+
+> This is discussed in the
+> [External Dependencies](/doc/user-guide/external-dependencies) documentation,
+> where an alternative is demonstrated for each of these schemes.
 
 Instead of:
 
@@ -110,17 +113,19 @@ Instead of:
 $ dvc import-url https://data.dvc.org/get-started/data.xml data.xml
 ```
 
-It is possible to use `dvc run`, for example (HTTP URL):
+It is possible to use `dvc stage add`, for example (HTTP URL):
 
 ```dvc
-$ dvc run -n download_data \
-          -d https://data.dvc.org/get-started/data.xml \
-          -o data.xml \
-          wget https://data.dvc.org/get-started/data.xml -O data.xml
+$ dvc stage add -n download_data \
+                -d https://data.dvc.org/get-started/data.xml \
+                -o data.xml \
+                wget https://data.dvc.org/get-started/data.xml -O data.xml
+
+$ dvc repro
 ```
 
-`dvc import-url` generates an _import `.dvc` file_ and `dvc run` a regular stage
-(in `dvc.yaml`).
+`dvc import-url` generates an _import `.dvc` file_ while `dvc stage add`
+produces a regular stage in `dvc.yaml`.
 
 ## Options
 
@@ -297,10 +302,12 @@ $ pip install -r src/requirements.txt
 </details>
 
 ```dvc
-$ dvc run -n prepare \
-          -d src/prepare.py -d data/data.xml \
-          -o data/prepared \
-          python src/prepare.py data/data.xml
+$ dvc stage add -n prepare \
+                -d src/prepare.py -d data/data.xml \
+                -o data/prepared \
+                python src/prepare.py data/data.xml
+
+$ dvc repro
 Running command:
 	python src/prepare.py data/data.xml
 ...
