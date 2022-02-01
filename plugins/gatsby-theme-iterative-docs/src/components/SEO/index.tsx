@@ -3,8 +3,13 @@ import Helmet from 'react-helmet'
 import { IGatsbyImageData } from 'gatsby-plugin-image'
 
 import getSiteMeta from '../../queries/siteMeta'
-import { IPaginatorPageInfo } from '../Paginator'
 import { buildMetadata, MetaProps } from './helper'
+
+export interface IPaginatorPageInfo {
+  currentPage: number
+  nextPage?: string
+  previousPage?: string
+}
 
 interface ISEOProps {
   title?: string

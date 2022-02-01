@@ -37,7 +37,12 @@ const plugins = [
   'gatsby-plugin-react-helmet',
   'gatsby-plugin-sitemap',
   'gatsby-plugin-twitter',
-  'gatsby-theme-iterative-docs',
+  {
+    resolve: 'gatsby-theme-iterative-docs',
+    options: {
+      remark: false
+    }
+  },
   {
     resolve: 'gatsby-source-filesystem',
     options: {
