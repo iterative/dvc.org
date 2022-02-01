@@ -156,12 +156,12 @@ not.
   > above).
 
 - `-o <path>`, `--out <path>` - specify a `path` to the desired location in the
-  workspace to place the `targets` (moving them from their current location).
+  workspace to place the `targets` (copying them from their current location).
   This enables targeting data outside the project (see an
   [example](#example-transfer-to-an-external-cache)).
 
-- `--to-remote` - add a target that's outside the project, but neither move it
-  into the workspace nor cache it yet.
+- `--to-remote` - add a target that's outside the project, but neither cache it
+  nor place it in the workspace nor cache it yet.
   [Transfer it](#example-transfer-to-remote-storage) directly to remote storage
   instead (the default one unless one is specified with `-r`). Implies
   `--out .`. Use `dvc pull` to get the data locally.
