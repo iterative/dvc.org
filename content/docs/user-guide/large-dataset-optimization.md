@@ -72,10 +72,10 @@ efficiency:
 
 2. **`hardlink`**: Hard links are the most efficient way to link your data to
    cache if both your repo and your cache directory are located on the same
-   partition or storage device. The number of hardlinks to one file can be 
-   limited by the file system (NTFS: 1024, EXT4: 65,000). DVC will fall back 
-   to the next available linking strategy when the number of links exceeds 
-   this limit which can happen for repos with very many identical files.
+   partition or storage device. The number of hardlinks to one file can be
+   limited by the file system (NTFS: 1024, EXT4: 65,000). DVC will fall back to
+   the next available linking strategy when the number of links exceeds this
+   limit which can happen for repos with very many identical files.
 
    > Note that hard-linked data files can't be edited in place, so DVC avoids
    > these by default. It's however possible to unlink or delete them, and then
