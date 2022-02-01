@@ -318,11 +318,11 @@ $ tree
 .
 ├── README.md
 ├── data
-│   ├── data.xml
-│   ├── data.xml.dvc
-│   └── prepared
-│       ├── test.tsv
-│       └── train.tsv
+│   ├── data.xml
+│   ├── data.xml.dvc
+│   └── prepared
+│       ├── test.tsv
+│       └── train.tsv
 ├── dvc.lock
 ├── dvc.yaml
 ├── params.yaml
@@ -363,15 +363,15 @@ Running stage 'prepare' with command:
 
 ## Example: Transfer to remote storage
 
-When importing a large dataset, you may want to avoid downloading it to the
-local environment (yet), for example if there's not enough storage space.
+Sometimes there's not enough space in the local environment to import a large
+dataset, but you still want to track it in the <abbr>project</abbr> so it can be
+[pulled](/doc/command-reference/plots) later.
 
-Using the `--to-remote` flag lets you create a `.dvc` file for the operation
-without downloading data. DVC transfers it directly to [remote storage] instead.
-This way it can be [pulled](/doc/command-reference/plots) later, for example on
-a system that can handle it.
+As long as you have setup [remote storage] that can handle the data, this can be
+achieved with the `--to-remote` flag. It creates an import `.dvc` file without
+downloading anything, transferring a target directly to a DVC remote instead.
 
-Let's add a `data.xml` file via HTTP in this way:
+Let's import a `data.xml` file via HTTP straight to remote:
 
 ```dvc
 $ dvc import-url https://data.dvc.org/get-started/data.xml data.xml \
@@ -381,8 +381,8 @@ $ ls
 data.xml.dvc
 ```
 
-Since a `.dvc` file is left in the <abbr>workspace</abbr>, whenever anyone wants
-to actually download the data they can use `dvc pull`:
+Since a `.dvc` file is created in the <abbr>workspace</abbr>, whenever anyone
+wants to actually download the data they can use `dvc pull`:
 
 ```dvc
 $ dvc pull data.xml.dvc

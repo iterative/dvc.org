@@ -384,17 +384,35 @@ outs:
 
 ## Example: Transfer to remote storage
 
-Use `--to-remote` to create a `.dvc` file for the operation without downloading
-data, transferring it directly to [remote storage] instead:
+Sometimes there's not enough space in the local environment to import a large
+dataset, but you still want to track it in the <abbr>project</abbr> so it can be
+[pulled](/doc/command-reference/plots) later.
+
+As long as you have setup [remote storage] that can handle the data, this can be
+achieved with the `--to-remote` flag. It creates a `.dvc` file without
+downloading anything, transferring a target directly to a DVC remote instead:
+
+Let's add a `data.xml` file via HTTP straight to remote:
 
 ```dvc
 $ dvc add https://data.dvc.org/get-started/data.xml --to-remote
+...
+$ ls
+data.xml.dvc
 ```
 
-See this [`import-url` example][iutr] for more details.
+Since a `.dvc` file is created in the <abbr>workspace</abbr>, whenever anyone
+wants to actually download the data they can use `dvc pull`:
 
-> The only difference is that `dvc import-url` keeps a connection to the data
-> source so it can be updated later (with `dvc update`).
+```dvc
+$ dvc pull data.xml.dvc
+A       data.xml
+1 file added
+```
+
+> Note that you can also do this [with `dvc import-url`][iutr]. This has the
+> added benefit of keeping a connection to the data source so it can be updated
+> later (with `dvc update`).
 
 [remote storage]: /doc/command-reference/remote
 [iutr]: /doc/command-reference/import-url#example-transfer-to-remote-storage
