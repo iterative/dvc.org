@@ -226,12 +226,23 @@ $ dvc exp show --drop 'Created|train|loss'
 
 ### ℹ️ More information about metrics
 
-Metrics are what you use to evaluate your models. DVC allows any scalar values
-to be used as metrics. It's able to track the metrics we defined in the code
-with the Keras integration introduced recently. You can also specify a custom
-metrics file using `--metrics` option of `dvc exp init`, and write the metrics
-in the code manually. Please see `dvc metrics` for this kind of explicitly
-defined metrics.
+Metrics are what you use to evaluate your models. DVC associates metrics to
+experiments to compare them. DVC allows any scalar values to be used as metrics.
+You can specify metrics JSON or YAML 1.2 formatted file using
+`dvc exp init --metrics`, and write the metrics file in the code.
+
+An alternative to manual metrics generation is to use [DVCLive](/doc/dvclive) to
+generate these files. Please refer to the documentation for details.
+
+`dvc exp show` and `dvc metrics` are used to tabulate the experiments and Git
+commits with their associated metrics. In the above tables, `loss` and `acc`
+values are metrics found in [`metrics.json`] file.
+
+Metrics files are interpreted specially also in
+[DVC Studio](https://studio.iterative.ai).
+
+[`metrics.json`]:
+  https://github.com/iterative/example-dvc-experiments/blob/main/metrics.json
 
 </details>
 
