@@ -32,8 +32,8 @@ project with DVC experiments using `dvc exp init`.
 
 A typical machine learning project has data, a set of scripts that train a
 model, a bunch of hyperparameters that tune training and models, and outputs
-metrics and plots to evaluate the models. DVC makes certain assumptions about
-the names of these elements to initialize a project with:
+metrics and plots to evaluate the models. `dvc exp init` has sane defaults about
+the names of these elements to initialize a project:
 
 ```dvc
 $ dvc exp init python src/train.py
