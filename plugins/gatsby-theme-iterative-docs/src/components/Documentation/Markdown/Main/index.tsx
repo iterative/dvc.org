@@ -5,6 +5,7 @@ import { navigate } from '@reach/router'
 import Link from '../../../Link'
 import Tutorials from '../../TutorialsLinks'
 import { getPathWithSource } from '../../../../utils/shared/sidebar'
+import setUpCustomYtEmbeds from '../../../..//utils/front/setUpCustomYtEmbeds'
 
 import 'github-markdown-css/github-markdown-light.css'
 import * as sharedStyles from '../../styles.module.css'
@@ -64,6 +65,8 @@ const Main: React.FC<IMainProps> = ({
   }, [])
 
   useEffect(() => {
+    setUpCustomYtEmbeds()
+
     document.addEventListener('touchstart', onTouchStart, false)
     document.addEventListener('touchend', onTouchEnd, false)
 

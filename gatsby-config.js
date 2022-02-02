@@ -7,6 +7,7 @@ require('./config/prismjs/dvc')
 require('./config/prismjs/usage')
 require('./config/prismjs/dvctable')
 
+const customYoutubeTransformer = require('./config/gatsby-remark-embedder/custom-yt-embedder')
 const apiMiddleware = require('./src/server/middleware/api')
 const redirectsMiddleware = require('./src/server/middleware/redirects')
 const makeFeedHtml = require('./plugins/utils/makeFeedHtml')
@@ -70,7 +71,12 @@ const plugins = [
     resolve: 'gatsby-transformer-remark',
     options: {
       plugins: [
-        'gatsby-remark-embedder',
+        {
+          resolve: 'gatsby-remark-embedder',
+          options: {
+            customTransformers: [customYoutubeTransformer]
+          }
+        },
         'gatsby-remark-dvc-linker',
         {
           resolve: 'gatsby-remark-args-linker',
