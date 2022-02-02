@@ -177,9 +177,9 @@ $ dvc exp show --no-timestamp --include-params=model.conv_units --exclude-metric
 ```
 
 By default `dvc exp show` sorts the experiments by their timestamp. You can sort
-the columns by params or metrics by the option `--sort-by` and `--sort-order`.
-`--sort-by` takes a metric or parameter name, and `--sort-order` takes either
-`asc` or `desc`.
+the columns by parameters or metrics by the option `--sort-by` and
+`--sort-order`. `--sort-by` takes a metric or parameter name, and `--sort-order`
+takes either `asc` or `desc`.
 
 ```dvc
 $ dvc exp show --sort-by auc --sort-order desc
@@ -202,8 +202,8 @@ You can also generate an interactive
 [parallel coordinates plot](https://en.wikipedia.org/wiki/Parallel_coordinates)
 with `dvc exp show --pcp`.
 
-This plot is useful to explore the relationships between the metrics, params and
-dependencies used in experiments. You can reorder the columns to make some
+This plot is useful to explore the relationships between the metrics, parameters
+and dependencies used in experiments. You can reorder the columns to make some
 patterns more easily visible.
 
 The `--pcp` flag can be combined with other options of the command. For example,
@@ -483,8 +483,8 @@ $ dvc exp diff exp-25a26 cnn-64 --json
 
 The output is a JSON dictionary with two keys, `metrics` and `params`, which
 have dictionaries as values. `metrics` and `params` dictionaries has keys for
-each of the metrics or params file, and for each file metrics and parameters are
-listed as keys.
+each of the metrics or parameters file, and for each file metrics and parameters
+are listed as keys.
 
 As an example, we can get only a specific metric with [jq]:
 
