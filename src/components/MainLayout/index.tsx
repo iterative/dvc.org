@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 import { IPageProps } from '../Page'
 import LayoutHeader from '../LayoutHeader'
 import LayoutFooter from '../LayoutFooter'
-import { handleFirstTab } from '../../utils/front/accessibility'
+import { handleFirstTab } from 'gatsby-theme-iterative-docs/src/utils/front/accessibility'
 
 import * as styles from './styles.module.css'
 

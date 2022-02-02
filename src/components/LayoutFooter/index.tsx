@@ -1,16 +1,18 @@
 import React from 'react'
 import cn from 'classnames'
 
-import LayoutWidthContainer from '../LayoutWidthContainer'
-import Link from '../Link'
-import SocialIcon, { ISocialIcon } from '../SocialIcon'
-import ShowOnly from '../ShowOnly'
-import { getFirstPage } from '../../utils/shared/sidebar'
+import LayoutWidthContainer from 'gatsby-theme-iterative-docs/src/components/LayoutWidthContainer'
+import Link from 'gatsby-theme-iterative-docs/src/components/Link'
+import SocialIcon, {
+  ISocialIcon
+} from 'gatsby-theme-iterative-docs/src/components/SocialIcon'
+import ShowOnly from 'gatsby-theme-iterative-docs/src/components/ShowOnly'
+import { getFirstPage } from 'gatsby-theme-iterative-docs/src/utils/shared/sidebar'
 
 import { ReactComponent as LogoSVG } from '../../../static/img/dvc_icon-color--square_vector.svg'
-import { ReactComponent as GithubSVG } from '../SocialIcon/github.svg'
-import { ReactComponent as TwitterSVG } from '../SocialIcon/twitter.svg'
-import { ReactComponent as DiscordSVG } from '../SocialIcon/discord.svg'
+import { ReactComponent as GithubSVG } from 'gatsby-theme-iterative-docs/src/components/SocialIcon/github.svg'
+import { ReactComponent as TwitterSVG } from 'gatsby-theme-iterative-docs/src/components/SocialIcon/twitter.svg'
+import { ReactComponent as DiscordSVG } from 'gatsby-theme-iterative-docs/src/components/SocialIcon/discord.svg'
 import { ReactComponent as CmlSVG } from '../../../static/img/cml_icon-color--square_vector.svg'
 import { ReactComponent as StudioSVG } from '../../../static/img/studio_icon-color--square_vector.svg'
 import { ReactComponent as IterativeSVG } from '../../../static/img/iterative_icon-color--square_vector.svg'

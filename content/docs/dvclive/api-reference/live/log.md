@@ -1,7 +1,9 @@
 # Live.log()
 
+Logs the given scalar `val` associating it with the given `name`.
+
 ```py
-def log(name: str, val: float):
+ def log(name: str, val: float):
 ```
 
 #### Usage:
@@ -35,27 +37,28 @@ $ cat dvclive.json
 ### Step updates
 
 The first `step` update (with `Live.next_step()` or `Live.set_step()`) will
-create a linear plot in `{path}/{name}.tsv`:
+create a [metric history](/doc/dvclive/get-started#history) in
+`{path}/{name}.tsv`:
 
 ```
 timestamp step  loss
 1623671484747 0 0.9
 ```
 
-💡 The linear plot `{path}/{name}.tsv` is usable by `dvc plots`.
-
 Each subsequent call to `live.log(name, val)` will add a new row to
-`{path}/{name}.tsv` and update the `name` enrtry in `{path}.json`.
+`{path}/{name}.tsv`.
 
-> If `name` contains slashes (e.g. `train/loss`), the required subdirectories
-> will be created and the file will be saved inside the last one (e.g.
-> `{path}/train/loss.tsv`).
+💡 The metric history `{path}/{name}.tsv` is usable by `dvc plots`.
+
+If `name` contains slashes (e.g. `train/loss`), the required subdirectories will
+be created and the file will be saved inside the last one (e.g.
+`{path}/train/loss.tsv`).
 
 ## Parameters
 
-- `name` - Name of the scalar being logged.
+- `name` - Name of the metric being logged.
 
-- `val` - The value of the scalar being logged.
+- `val` - The value to be logged.
 
 ## Exceptions
 

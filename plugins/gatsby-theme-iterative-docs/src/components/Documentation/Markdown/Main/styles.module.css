@@ -1,0 +1,376 @@
+:global {
+  ul {
+    list-style-type: disc;
+  }
+
+  ol {
+    list-style-type: decimal;
+  }
+
+  em {
+    font-style: italic;
+  }
+
+  #markdown-root {
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    animation-duration: 1s;
+    animation-fill-mode: both;
+
+    :local {
+      animation-name: fadeIn;
+    }
+  }
+
+  .markdown-body {
+    font-family: inherit;
+    font-size: 18px;
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-weight: 500;
+    }
+
+    img + em,
+    :global(.gatsby-resp-image-wrapper) + em {
+      color: #6a737d;
+      font-size: 0.9em;
+      display: block;
+      margin-top: -6px;
+      text-align: center;
+    }
+
+    :global(.gatsby-resp-image-wrapper) + em {
+      margin-top: 0;
+    }
+
+    a[target="_blank"] {
+      white-space: nowrap;
+
+      &::after {
+        position: relative;
+        top: 1px;
+        right: 0;
+        width: 12px;
+        height: 12px;
+        margin-left: 1px;
+        content: url("/img/external-link.svg");
+      }
+    }
+
+    a.token.arg {
+      color: var(--color-light-blue);
+      outline-color: var(--color-light-blue-hover);
+    }
+
+    :global(a.gatsby-resp-image-link)::after {
+      content: unset;
+    }
+
+    li .anchor svg {
+      visibility: hidden;
+    }
+
+    li:hover .anchor svg {
+      visibility: visible;
+    }
+
+    li .anchor:focus svg {
+      visibility: visible;
+    }
+
+    li .anchor {
+      line-height: unset;
+    }
+
+    .anchor {
+      margin-left: -24px;
+    }
+
+    li {
+      margin: 16px 0;
+    }
+
+    pre[class*="language-"] {
+      background: #40354d;
+      color: #ccc;
+
+      .token.line {
+        color: #ddd;
+      }
+
+      .token.comment,
+      .token.block-comment {
+        font-weight: normal;
+        color: #a0a0a0;
+      }
+
+      .token.input {
+        user-select: none;
+      }
+
+      .token.prolog,
+      .token.doctype,
+      .token.cdata {
+        color: #999;
+      }
+
+      .token.url,
+      .token.constant,
+      .token.operator,
+      .token.punctuation {
+        color: #a0a0a0;
+      }
+
+      .token.property,
+      .token.tag,
+      .token.boolean,
+      .token.function-name,
+      .token.symbol,
+      .token.deleted {
+        color: #4badd2;
+      }
+
+      .token.function {
+        color: #ae41bb;
+      }
+
+      .token.number,
+      .token.attr-name,
+      .token.string,
+      .token.char,
+      .token.builtin,
+      .token.inserted {
+        color: #219161;
+      }
+
+      .token.entity,
+      .token.variable {
+        color: #a67f59;
+      }
+
+      .token.class-name {
+        color: #0086b3;
+      }
+
+      .token.dvc {
+        color: #56b1d0;
+        font-weight: bold;
+      }
+
+      .token.usage,
+      .token.git {
+        color: #e9836e;
+      }
+
+      .token.command,
+      .token.selector,
+      .token.atrule,
+      .token.attr-value,
+      .token.keyword {
+        color: #e4b872;
+      }
+
+      .token.regex,
+      .token.important {
+        color: #b68;
+      }
+
+      .token.parameter {
+        color: #a0a0a0;
+      }
+
+      .token.function-variable {
+        color: #7ece42;
+      }
+
+      .token.important {
+        font-weight: normal;
+      }
+
+      .token.bold {
+        font-weight: bold;
+      }
+
+      .token.italic {
+        font-style: italic;
+      }
+
+      .token.entity {
+        cursor: help;
+      }
+
+      .token.namespace {
+        opacity: 0.7;
+      }
+
+      .token.hide {
+        display: none;
+      }
+
+      .token.bg-white {
+        color: #000;
+        background-color: #eee;
+      }
+
+      .token.bg-yellow {
+        color: #000;
+        background-color: #fffed7;
+      }
+
+      .token.bg-blue {
+        color: #000;
+        background-color: #d7feff;
+      }
+
+      .token.bg-violet {
+        color: #000;
+        background-color: #d7afff;
+      }
+    }
+
+    pre[class*="language-dvctable"] {
+      code {
+        display: inline-block;
+        line-height: 20px;
+      }
+
+      .token.rows {
+        background-image: linear-gradient(
+          transparent 50%,
+          rgb(256 256 256 / 10%) 50%
+        );
+        background-size: 100% 40px;
+        display: block;
+        background-origin: content-box;
+        background-attachment: local;
+      }
+    }
+  }
+
+  details p {
+    font-size: 17px;
+    color: var(--color-gray-dark);
+    margin-left: 20px;
+    margin-right: 10px;
+  }
+
+  details pre {
+    font-size: 14px;
+    color: var(--color-gray-dark);
+    margin-left: 20px;
+    margin-right: 10px;
+  }
+}
+
+.content {
+  min-width: 200px;
+  margin: 30px;
+  flex: 1;
+  background-color: #fff;
+
+  @media (--xs-scr) {
+    margin: 15px 0;
+  }
+}
+
+.tutorialsWrapper {
+  position: relative;
+  z-index: 1;
+  float: right;
+  margin: 5px 0 0 10px;
+
+  @media (--md-scr) {
+    margin: 0 0 15px;
+  }
+
+  @media only screen and (min-width: 1200px) {
+    display: none;
+  }
+}
+
+.githubLink {
+  display: none;
+  float: right;
+  margin: 5px 0 10px 10px;
+  z-index: 1;
+  position: relative;
+
+  @media (--md-scr) {
+    float: none;
+    margin: 0 0 15px;
+  }
+
+  @media only screen and (max-width: 1200px) {
+    display: inline-flex;
+  }
+}
+
+.githubIcon {
+  background-image: url("/img/github_icon.svg");
+}
+
+.navButtons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 40px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.navButton {
+  text-decoration: none;
+  background: white;
+  padding: 10px 15px;
+  text-transform: uppercase;
+  color: #333;
+  border-bottom: 3px solid #13adc7;
+  display: inline-flex;
+  align-items: center;
+  transition: 0.2s border-color ease-out;
+
+  &:hover {
+    border-bottom: 3px solid #11849b;
+  }
+
+  &[disabled] {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+}
+
+.navButtonIcon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  line-height: 1;
+  background-image: url("/img/arrow.svg");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: all 0.3s;
+
+  &.next {
+    margin-left: 7px;
+  }
+
+  &.prev {
+    margin-right: 7px;
+    mask-position: center;
+    transform: rotate(180deg);
+    margin-top: 2px;
+  }
+}

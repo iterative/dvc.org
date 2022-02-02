@@ -86,11 +86,12 @@ dvc.lock  training_metrics       train.py
 dvc.yaml  training_metrics.json
 ```
 
-The `.tsv` files generated under `training_metrics` can be visualized with
-`dvc plots`.
+The [metrics history](/doc/dvclive/get-started#history) generated under
+`training_metrics` can be visualized with `dvc plots`.
 
-In addition, `training_metrics.json` can be used by `dvc metrics` and visualized
-with `dvc exp show`/`dvc exp diff`.
+In addition, the [metrics summary](/doc/dvclive/get-started#summary)
+`training_metrics.json` can be used by `dvc metrics` and visualized with
+`dvc exp show`/`dvc exp diff`.
 
 ### DVC Studio
 

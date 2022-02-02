@@ -47,7 +47,7 @@ $ dvc update --rev master
 
 - `-R`, `--recursive` - determines the files to update by searching each target
   directory and its subdirectories for import stage `.dvc` files to inspect. If
-  there are no directories among the targets, this option is ignored.
+  there are no directories among the targets, this option has no effect.
 
 - `--to-remote` - update a `.dvc` file created with `dvc import-url` and
   [transfer](/doc/command-reference/import-url#example-import-straight-to-the-remote)

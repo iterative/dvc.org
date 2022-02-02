@@ -1,8 +1,8 @@
 import React from 'react'
 import Helmet from 'react-helmet'
 
-import { MetaProps } from '../../SEO'
-import getSiteMeta from '../../../queries/siteMeta'
+import { MetaProps } from 'gatsby-theme-iterative-docs/src/components/SEO'
+import getSiteMeta from 'gatsby-theme-iterative-docs/src/queries/siteMeta'
 
 interface IDefaultSEOProps {
   pathname: string
