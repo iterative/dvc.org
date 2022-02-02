@@ -168,7 +168,7 @@ If you've run `dvc push`, you can delete the cache (`.dvc/cache`) and
 
 ```dvc
 $ rm -rf .dvc/cache
-$ rm -Force data/data.xml
+$ rm -f data/data.xml
 ```
 
 </tab>
