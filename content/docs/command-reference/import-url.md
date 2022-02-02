@@ -140,10 +140,10 @@ produces a regular stage in `dvc.yaml`.
   finish the operation(s)); or if the target data already exist locally and you
   want to "DVCfy" this state of the project (see also `dvc commit`).
 
-- `--to-remote` - import an external target, but don't move it into the
-  workspace, nor cache it. [Transfer](#example-transfer-to-remote-storage) it
-  directly to remote storage (the default one, unless `-r` is specified)
-  instead. Use `dvc pull` to get the data locally.
+- `--to-remote` - import a target, but neither move it into the workspace, nor
+  cache it. [Transfer it](#example-transfer-to-remote-storage) directly to
+  remote storage (the default one unless one is specified with `-r`) instead.
+  Use `dvc pull` to get the data locally.
 
 - `-r <name>`, `--remote <name>` - name of the
   [remote storage](/doc/command-reference/remote) (can only be used with
@@ -318,11 +318,11 @@ $ tree
 .
 ├── README.md
 ├── data
-│   ├── data.xml
-│   ├── data.xml.dvc
-│   └── prepared
-│       ├── test.tsv
-│       └── train.tsv
+│   ├── data.xml
+│   ├── data.xml.dvc
+│   └── prepared
+│       ├── test.tsv
+│       └── train.tsv
 ├── dvc.lock
 ├── dvc.yaml
 ├── params.yaml
@@ -363,36 +363,34 @@ Running stage 'prepare' with command:
 
 ## Example: Transfer to remote storage
 
-When you have a large dataset in an external location, you may want to import it
-to your project without downloading it to the local file system (for using it
-later/elsewhere). The `--to-remote` option let you skip the download, while
-storing the imported data [remotely](/doc/command-reference/remote).
+Sometimes there's not enough space in the local environment to import a large
+dataset, but you still want to track it in the <abbr>project</abbr> so it can be
+[pulled](/doc/command-reference/plots) later.
 
-Let's create an import `.dvc` file without downloading the target data,
-transferring it directly to remote storage instead:
+As long as you have setup [remote storage] that can handle the data, this can be
+achieved with the `--to-remote` flag. It creates an import `.dvc` file without
+downloading anything, transferring a target directly to a DVC remote instead.
+
+Let's import a `data.xml` file via HTTP straight to remote:
 
 ```dvc
 $ dvc import-url https://data.dvc.org/get-started/data.xml data.xml \
                  --to-remote
-```
-
-The only change in our local <abbr>workspace</abbr> is a newly created import
-`.dvc` file:
-
-```dvc
+...
 $ ls
 data.xml.dvc
 ```
 
-Whenever anyone wants to actually download the imported data (for example from a
-system that can handle it), they can use `dvc pull` as usual:
+Since a `.dvc` file is created in the <abbr>workspace</abbr>, whenever anyone
+wants to actually download the data they can use `dvc pull`:
 
 ```dvc
 $ dvc pull data.xml.dvc
-
 A       data.xml
-1 file added and 1 file fetched
+1 file added
 ```
 
-Note that you can also use `dvc update --to-remote` to bring the import up to
-date in remote storage, without downloading anything.
+Use `dvc update --to-remote` to bring the import up to date in remote storage,
+without downloading anything.
+
+[remote storage]: /doc/command-reference/remote
