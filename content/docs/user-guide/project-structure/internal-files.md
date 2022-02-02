@@ -67,7 +67,10 @@ operation.
   parallel
 
 - `.dvc/tmp/exps`: This directory will contain workspace copies used for
-  temporary or parallel <abbr>experiments</abbr> (see `dvc exp run`).
+  temporary or [queued experiments].
+
+[queued experiments]:
+  /doc/user-guide/experiment-management/running-experiments#the-experiments-queue
 
 ## Structure of the cache directory
 

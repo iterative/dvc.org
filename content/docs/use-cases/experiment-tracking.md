@@ -19,7 +19,7 @@ pipeline is [codified with DVC].
 Other tools tend to focus on experiment navigation by saving metrics and
 artifacts that result from your pipelines, along with fragile links to code
 revisions. DVC's approach guarantees reproducibility by working on top of Git
-instead, and not as a parallel system.
+instead, and not as a separate system.
 
 [experiment management]: /doc/user-guide/experiment-management
 [codified with dvc]: /doc/user-guide/project-structure/pipelines-files
