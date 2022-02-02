@@ -5,13 +5,13 @@ import { useWindowScroll, useWindowSize } from 'react-use'
 
 import { IBlogPostData } from '../../../templates/blog-post'
 
-import { useCommentsCount } from '../../../utils/front/api'
-import { pluralizeComments } from '../../../utils/front/i18n'
-import tagToSlug from '../../../utils/shared/tagToSlug'
+import { useCommentsCount } from 'gatsby-theme-iterative-docs/src/utils/front/api'
+import { pluralizeComments } from 'gatsby-theme-iterative-docs/src/utils/front/i18n'
+import tagToSlug from 'gatsby-theme-iterative-docs/src/utils/shared/tagToSlug'
 
 import Markdown from './Markdown'
 import FeedMeta from '../FeedMeta'
-import Link from '../../Link'
+import Link from 'gatsby-theme-iterative-docs/src/components/Link'
 import PseudoButton from '../../PseudoButton'
 import HeroPic from './HeroPic'
 import Share from './Share'
@@ -83,8 +83,10 @@ const Post: React.FC<IBlogPostData> = ({
               />
             </div>
           </div>
-
-          <HeroPic picture={picture} pictureComment={pictureComment} />
+          <HeroPic
+            picture={picture?.gatsbyImageData}
+            pictureComment={pictureComment}
+          />
 
           <div className={styles.content}>
             <Markdown html={html} />

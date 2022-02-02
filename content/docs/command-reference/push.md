@@ -76,15 +76,14 @@ in the cache (compared to the default remote.) It can be used to see what files
   the workspace. This uploads tracked data for the entire commit history of the
   project.
 
-- `-d`, `--with-deps` - determines files to upload by tracking dependencies to
-  the `targets`. If none are provided, this option is ignored. By traversing all
-  stage dependencies, DVC searches backward from the target stages in the
-  corresponding pipelines. This means DVC will not push files referenced in
-  later stages than the `targets`.
+- `-d`, `--with-deps` - only meaningful when specifying `targets`. This
+  determines files to push by resolving all dependencies of the targets: DVC
+  searches backward from the targets in the corresponding pipelines. This will
+  not push files referenced in later stages than the `targets`.
 
 - `-R`, `--recursive` - determines the files to push by searching each target
   directory and its subdirectories for `dvc.yaml` and `.dvc` files to inspect.
-  If there are no directories among the `targets`, this option is ignored.
+  If there are no directories among the `targets`, this option has no effect.
 
 - `-r <name>`, `--remote <name>` - name of the
   [remote storage](/doc/command-reference/remote) to push to (see

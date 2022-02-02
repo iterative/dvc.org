@@ -92,15 +92,14 @@ used to see what files `dvc pull` would download.
   the workspace. This downloads tracked data for the entire commit history of
   the project.
 
-- `-d`, `--with-deps` - determines files to download by tracking dependencies to
-  the `targets`. If none are provided, this option is ignored. By traversing all
-  stage dependencies, DVC searches backward from the target stages in the
-  corresponding pipelines. This means DVC will not pull files referenced in
-  later stages than the `targets`.
+- `-d`, `--with-deps` - only meaningful when specifying `targets`. This
+  determines files to pull by resolving all dependencies of the targets: DVC
+  searches backward from the targets in the corresponding pipelines. This will
+  not pull files referenced in later stages than the `targets`.
 
 - `-R`, `--recursive` - determines the files to pull by searching each target
   directory and its subdirectories for `dvc.yaml` and `.dvc` files to inspect.
-  If there are no directories among the `targets`, this option is ignored.
+  If there are no directories among the `targets`, this option has no effect.
 
 - `-f`, `--force` - does not prompt when removing workspace files, which occurs
   when these files no longer match the current stages or `.dvc` files. This

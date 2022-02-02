@@ -1,14 +1,14 @@
 import React, { useRef, useState } from 'react'
 import cn from 'classnames'
 
-import Link from '../../../Link'
+import Link from 'gatsby-theme-iterative-docs/src/components/Link'
 import { OtherToolsPopup, CommunityPopup } from '../Popup'
 
 import { ReactComponent as ArrowUpSVG } from '../../../../../static/img/arrow-up-icon.svg'
 import { ReactComponent as ArrowDownSVG } from '../../../../../static/img/arrow-down-icon.svg'
 
-import { logEvent } from '../../../../utils/front/plausible'
-import { getFirstPage } from '../../../../utils/shared/sidebar'
+import { logEvent } from 'gatsby-theme-iterative-docs/src/utils/front/plausible'
+import { getFirstPage } from 'gatsby-theme-iterative-docs/src/utils/shared/sidebar'
 
 const docsPage = getFirstPage()
 

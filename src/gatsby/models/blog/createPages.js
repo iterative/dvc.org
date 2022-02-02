@@ -1,5 +1,5 @@
 const path = require('path')
-const tagToSlug = require('../../../utils/shared/tagToSlug')
+const tagToSlug = require('../../../../plugins/gatsby-theme-iterative-docs/src/utils/shared/tagToSlug')
 const { BLOG } = require('../../../consts')
 // Since blog pages and their indexes require a ton of image resizes, it's
 // useful to have an option to only generate a minimal set of these pages when

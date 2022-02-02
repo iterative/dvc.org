@@ -110,6 +110,11 @@ $ dvc exp show
 `dvc exp show` only tabulates experiments in the workspace and in `HEAD`. You
 can use `--all` flag to show all the experiments in the project instead.
 
+Note that [queued experiments] will be marked with an asterisk `*`.
+
+[queued experiments]:
+  /doc/user-guide/experiment-management/running-experiments#the-experiments-queue
+
 ## Customize the table of experiments
 
 The table output may become cluttered if you have a large number of metrics,

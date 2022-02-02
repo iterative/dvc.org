@@ -1,7 +1,9 @@
 /* eslint-env node */
 
 const { createLinkNode } = require('./helpers')
-const { getItemByPath } = require('../../src/utils/shared/sidebar')
+const {
+  getItemByPath
+} = require('../../plugins/gatsby-theme-iterative-docs/src/utils/shared/sidebar')
 
 const LIVE_API_REGEXP = /Live.([a-z-._]*\(\)$)?/
 const METHOD_REGEXP = /^[a-z-._]*\(\)$/
