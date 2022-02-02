@@ -37,7 +37,12 @@ const plugins = [
   'gatsby-plugin-react-helmet',
   'gatsby-plugin-sitemap',
   'gatsby-plugin-twitter',
-  'gatsby-theme-iterative-docs',
+  {
+    resolve: 'gatsby-theme-iterative-docs',
+    options: {
+      remark: false
+    }
+  },
   {
     resolve: 'gatsby-source-filesystem',
     options: {
@@ -115,7 +120,8 @@ const plugins = [
           options: {
             maxWidth: BLOG.imageMaxWidth,
             withWebp: true,
-            quality: 90
+            quality: 90,
+            loading: 'auto'
           }
         },
         'gatsby-remark-responsive-iframe',
@@ -299,7 +305,9 @@ module.exports = {
     description,
     author: 'Iterative',
     keywords,
-    siteUrl: 'https://dvc.org',
+    siteUrl: process.env.HEROKU_APP_NAME
+      ? `https://${process.env.HEROKU_APP_NAME}.herokuapp.com/`
+      : 'https://dvc.org',
     title
   },
   developMiddleware: app => {

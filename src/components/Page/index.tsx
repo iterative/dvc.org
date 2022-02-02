@@ -2,7 +2,7 @@ import React from 'react'
 
 import MainLayout from '../MainLayout'
 import DefaultSEO from './DefaultSEO'
-import DocumentationLayout from '../Documentation/Layout'
+import DocumentationLayout from '../DocumentationLayout'
 import AlertLandingLayout from '../AlertLandingLayout'
 import Layout from '../Blog/Layout'
 

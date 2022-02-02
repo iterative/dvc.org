@@ -128,8 +128,9 @@ not.
 
 - `-R`, `--recursive` - determines the files to add by searching each target
   directory and its subdirectories for data files. If there are no directories
-  among the `targets`, this option is ignored. For each file found, a new `.dvc`
-  file is created using the process described in this command's description.
+  among the `targets`, this option has no effect. For each file found, a new
+  `.dvc` file is created using the process outlined in this command's
+  description.
 
 - `--no-commit` - do not store `targets` in the cache (the `.dvc` file is still
   created). Use `dvc commit` to finish the operation (similar to `git commit`
@@ -168,6 +169,10 @@ not.
 - `-r <name>`, `--remote <name>` - name of the
   [remote storage](/doc/command-reference/remote) to transfer external target to
   (can only be used with `--to-remote`).
+
+- `-j <number>`, `--jobs <number>` - parallelism level for DVC to transfer data
+  when using `--to-remote`. The default value is `4 \* cpu_count()`. For SSH
+  remotes, the default is `4`. Using more jobs may speed up the operation.
 
 - `--desc <text>` - user description of the data (optional). This doesn't affect
   any DVC operations.

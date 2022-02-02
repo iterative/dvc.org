@@ -33,9 +33,9 @@ Symbolic links, and Reflinks in more recent systems. While reflinks bring all
 the benefits and none of the worries, they're not commonly supported in most
 platforms yet. Hard/soft links optimize **speed** and **space** in the file
 system, but may break your workflow since updating hard/sym-linked files tracked
-by DVC in the <abbr>workspace</abbr> causes <abbr>cache</abbr> corruption. To
-protect against that, DVC makes hardlinks and symlinks links read-only, which
-requires the user to use `dvc unprotect` before modifying them.
+by DVC in the <abbr>workspace</abbr> would cause <abbr>cache</abbr> corruption.
+To protect against this, DVC protects hardlinks and symlinks by making them
+read-only, requiring using `dvc unprotect` to be able to modify them safely.
 
 Finally, a 4th "linking" alternative is to actually copy files from/to the
 cache, which is safe but inefficient – especially for large files (several GBs
@@ -62,9 +62,9 @@ efficiency:
 
 1. **`reflink`**: Copy-on-write\* links or "reflinks" are the best possible link
    type, when available. They're is as efficient as hard/symlinks, but don't
-   carry a risk of cache corruption since the file system takes care of copying
-   the file if you try to edit it in place, thus keeping the linked cache file
-   intact.
+   carry any risk of cache corruption since the file system takes care of
+   copying the file if you try to edit it in place, thus keeping the linked
+   cache file intact.
 
    > Unfortunately reflinks are currently supported on a limited number of file
    > systems only (Linux: Btrfs, XFS, OCFS2; macOS: APFS), but in the future
@@ -72,20 +72,23 @@ efficiency:
 
 2. **`hardlink`**: Hard links are the most efficient way to link your data to
    cache if both your repo and your cache directory are located on the same
-   partition or storage device.
+   partition or storage device. The number of hardlinks to one file can be
+   limited by the file system (NTFS: 1024, EXT4: 65,000). DVC will fall back to
+   the next available linking strategy when the number of links exceeds this
+   limit which can happen for repos with very many identical files.
 
-   > Please note that hardlinked data files should never be edited in place, but
-   > instead deleted and then replaced with a new file, otherwise it might cause
-   > cache corruption – and automatic deletion of cached files by DVC.
+   > Note that hard-linked data files can't be edited in place, so DVC avoids
+   > these by default. It's however possible to unlink or delete them, and then
+   > [replace them] with a new file.
 
 3. **`symlink`**: Symbolic (a.k.a. "soft") links are the most efficient way to
    link your data to cache if your repo and your cache directory are located on
    different file systems/drives (i.e. repo is located on SSD for performance,
    but cache dir is located on HDD for bigger storage).
 
-   > Please note that symlinked data files should never be edited in place, but
-   > instead deleted and then replaced with a new file, otherwise it might cause
-   > cache corruption – and automatic deletion of cached files by DVC.
+   > Note that symlinked data files can't be edited in place, so DVC avoids
+   > these by default. It's however possible to unlink or delete them, and then
+   > [replace them] with a new file.
 
 4. **`copy`**: An inefficient "linking" strategy, yet supported on all file
    systems. Using `copy` means there will be no file links, but that the tracked
@@ -93,10 +96,7 @@ efficiency:
    <abbr>workspace</abbr>. Suitable for scenarios with relatively small data
    files, where copying them is not a storage performance concern.
 
-> DVC avoids `symlink` and `hardlink` types by default to protect user from
-> accidental cache corruption. Refer to the
-> [Update a Tracked File](/doc/user-guide/how-to/update-tracked-files) guide to
-> learn more.
+[replace them]: /doc/user-guide/how-to/update-tracked-files
 
 ## Configuring DVC cache file link type
 

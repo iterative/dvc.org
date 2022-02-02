@@ -101,6 +101,30 @@
       "city": "Virtual",
       "date": "2021-12-09",
       "pictureUrl": "/img/community/events/office-hours-meetup.png"
+    },
+    {
+      "url": "https://www.meetup.com/DVC-Community-Virtual-Meetups/events/282663146/",
+      "title": "DVC Office Hours - New Feature Demo",
+      "description": "At this meetup we have a demo of a new DVC feature.  We're looking forward to seeing you!",
+      "city": "Virtual",
+      "date": "2022-01-20",
+      "pictureUrl": "/img/community/events/office-hours-meetup.png"
+    },
+    {
+      "url": "https://www.conf42.com/python2022",
+      "title": "Conf42: Python",
+      "description": "Milecia McGregor will present Using Reproducible Experiments to Create Better Models with DVC",
+      "city": "Virtual",
+      "date": "2022-01-27",
+      "pictureUrl": "/img/community/events/conf42_python.jpg"
+    },
+    {
+      "url": "https://2022.pythonwebconf.com/",
+      "title": "Python Web Conf",
+      "description": "Milecia McGregor will present Using Reproducible Experiments to Create Better Models with DVC",
+      "city": "Virtual",
+      "date": "2022-03-21",
+      "pictureUrl": "/img/community/events/python_web_conf.jpg"
     }
   ],
   "stats": {

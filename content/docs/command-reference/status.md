@@ -57,7 +57,7 @@ description_, as detailed below:
 
 - _always changed_ means that this is a `.dvc` file with no dependencies (see
   `dvc add`) or that the stage in `dvc.yaml` has the `always_changed: true`
-  value set (see `--always-changed` option in `dvc run`).
+  value set (see `--always-changed` option in `dvc stage add`).
 
 - _changed deps_ or _changed outs_ means that there are changes in dependencies
   or outputs tracked by the stage or `.dvc` file. Depending on the use case,
@@ -126,17 +126,15 @@ that.
   well as the workspace. This compares the cache content for the entire commit
   history of the project.
 
+- `-d`, `--with-deps` - only meaningful when specifying `targets`. This
+  determines files to check by resolving all dependencies of the targets: DVC
+  searches backward from the targets in the corresponding pipelines. This will
+  not show changes occurring in later stages than the `targets`.
+
 - `-R`, `--recursive` - determines the files to check status for by searching
   each target directory and its subdirectories for stages (in `dvc.yaml`) and
   `.dvc` files to inspect. If there are no directories among the targets, this
-  option is ignored.
-
-- `-d`, `--with-deps` - determines files to check by tracking dependencies to
-  the `targets`. If none are provided, this option is ignored. By traversing all
-  stage dependencies, DVC searches backward from the target stages in the
-  corresponding pipelines. This means DVC will not show changes occurring in
-  later stages than the `targets`. Applies whether or not `--cloud` is
-  specified.
+  option has no effect.
 
 - `-r <name>`, `--remote <name>` - name of the
   [remote storage](/doc/command-reference/remote) to compare against (see

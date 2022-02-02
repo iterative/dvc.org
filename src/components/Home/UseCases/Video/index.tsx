@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react'
 
 import TwoRowsButton from '../../../TwoRowsButton'
-import { logEvent } from '../../../../utils/front/plausible'
+import { logEvent } from 'gatsby-theme-iterative-docs/src/utils/front/plausible'
 
 import * as styles from './styles.module.css'
 
