@@ -43,7 +43,7 @@ Here, `python src/train.py` specifies how you run experiments. It could be any
 other command.
 
 If your project uses different names for them, you can set directories for
-source code (default: `src`), data (`data/`), models (`models/`), plots
+source code (default: `src/`), data (`data/`), models (`models/`), plots
 (`plots/`), and files for hyperparameters (`params.yaml`), metrics
 (`metrics.json`) with the options supplied to `dvc exp init`.
 
