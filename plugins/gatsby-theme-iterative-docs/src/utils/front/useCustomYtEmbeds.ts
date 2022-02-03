@@ -8,7 +8,7 @@ const setUpCustomYtEmbeds = () => {
     const tooltip = embed.querySelector('.yt-embed-wrapper__tooltip')
 
     overlay?.addEventListener('click', event => {
-      if (event.target === tooltip || tooltip?.contains(event.target)) {
+      if (event.target === tooltip || tooltip?.contains(event.target as Node)) {
         return
       }
       if (iframe && iframe.src) {
