@@ -201,8 +201,8 @@ $ dvc exp show
 By default, it shows all the metrics, parameters and dependencies with the
 timestamp. If you have a large number of metrics, parameters, dependencies or
 experiments, this may lead to a cluttered view. You can limit the table to
-specific columns using the
-[`--drop`](/doc/command-reference/exp/show#--drop) option of the command.
+specific columns using the [`--drop`](/doc/command-reference/exp/show#--drop)
+option of the command.
 
 ```dvc
 $ dvc exp show --drop 'Created|train|loss'

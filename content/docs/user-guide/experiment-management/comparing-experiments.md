@@ -177,9 +177,9 @@ $ dvc exp show --no-timestamp --include-params=model.conv_units --exclude-metric
 ```
 
 By default `dvc exp show` sorts the experiments by their timestamp. You can sort
-the metrics or parameters columns by the option `--sort-by` and
-`--sort-order`. `--sort-by` takes a metric or parameter name, and `--sort-order`
-takes either `asc` or `desc`.
+the metrics or parameters columns by the option `--sort-by` and `--sort-order`.
+`--sort-by` takes a metric or parameter name, and `--sort-order` takes either
+`asc` or `desc`.
 
 ```dvc
 $ dvc exp show --sort-by auc --sort-order desc
@@ -483,8 +483,8 @@ $ dvc exp diff exp-25a26 cnn-64 --json
 
 The output is a JSON dictionary with two keys, `metrics` and `params`, which
 have dictionaries as values. `metrics` and `params` dictionaries have keys for
-each of the metrics or parameters files, and for each file metrics and parameters
-are listed as keys.
+each of the metrics or parameters files, and for each file metrics and
+parameters are listed as keys.
 
 As an example, we can get only a specific metric with [jq]:
 
