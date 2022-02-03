@@ -1,5 +1,7 @@
 # Live.log_image()
 
+Saves the given image `val` to the output file `name`.
+
 ```py
 def log_image(name: str, val):
 ```
@@ -21,8 +23,6 @@ live.log_image("pil.png", img_pil)
 ```
 
 ## Description
-
-Saves the given image `val` to the output file `name`.
 
 Supported values for `val` are:
 
