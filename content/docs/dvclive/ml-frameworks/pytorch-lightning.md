@@ -25,7 +25,7 @@ to your
  trainer.fit(model)
 ```
 
-This will generate the metrics logs and summaries as described in the
+This will generate the outputs as described in the
 [Get Started](/docs/dvclive/get-started#outputs).
 
 > 💡Without requiring additional modifications to your training code, you can

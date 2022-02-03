@@ -1,5 +1,7 @@
 # Live.next_step()
 
+Signals that the current step has ended and increases step value by 1 (one).
+
 ```py
 def next_step()
 ```
@@ -18,8 +20,8 @@ for step in range(3):
 
 ## Description
 
-DVCLive uses the `step` value to track the progress of each metric logged with
-`Live.log()`.
+DVCLive uses `step` to track the progress of the data logged with `Live.log()`
+and/or `Live.log_image()`.
 
 You can use `Live.next_step()` to increase the `step` by 1 (one).
 

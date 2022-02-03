@@ -1,5 +1,7 @@
 # Live.get_step()
 
+Returns the current `step` value.
+
 ```py
 def get_step() -> int:
 ```
@@ -18,8 +20,8 @@ while live.get_step() < 3:
 
 ## Description
 
-DVCLive uses `step` to track the progress of each metric logged with
-`Live.log()`.
+DVCLive uses `step` to track the progress of the data logged with `Live.log()`
+and/or `Live.log_image()`.
 
 The current `step` value can be retrieved with `Live.get_step()`.
 

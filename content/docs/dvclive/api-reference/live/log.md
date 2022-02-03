@@ -37,8 +37,7 @@ $ cat dvclive.json
 ### Step updates
 
 The first `step` update (with `Live.next_step()` or `Live.set_step()`) will
-create a [metric history](/doc/dvclive/get-started#history) in
-`{path}/{name}.tsv`:
+create a **metric history** in `{path}/scalars/{name}.tsv`:
 
 ```
 timestamp step  loss
@@ -46,17 +45,17 @@ timestamp step  loss
 ```
 
 Each subsequent call to `live.log(name, val)` will add a new row to
-`{path}/{name}.tsv`.
+`{path}/scalars/{name}.tsv`.
 
-💡 The metric history `{path}/{name}.tsv` is usable by `dvc plots`.
+💡 The metric history `{path}/scalars/{name}.tsv` is usable by `dvc plots`.
 
 If `name` contains slashes (e.g. `train/loss`), the required subdirectories will
 be created and the file will be saved inside the last one (e.g.
-`{path}/train/loss.tsv`).
+`{path}/scalars/train/loss.tsv`).
 
 ## Parameters
 
-- `name` - Name of the metric being logged.
+- `name` - Name of the scalar being logged.
 
 - `val` - The value to be logged.
 

@@ -22,17 +22,14 @@ live.log_plot("confusion_matrix", y_true, y_pred)
 
 Generates a
 [scikit learn plot](https://scikit-learn.org/stable/visualizations.html) and
-saves the result in `{path}/{name}.json`.
+saves the result in `{path}/plots/{name}.json`.
 
-💡 The generated `{path}/{name}.json` can be visualized with `dvc plots`.
+💡 The generated `{path}/plots/{name}.json` can be visualized with `dvc plots`.
 
 ### Step updates
 
-The first `step` update (with `Live.next_step()` or `Live.set_step()`) will move
-the saved file from `{path}/{name}` to `{path}/{step}/{name}`.
-
-Each subsequent call to `live.log_plot(name, val)` will save the image under the
-folder `{path}/{step}/{name}` corresponding to the current `step`.
+⚠️ `Live.log_plot()` can't be currently used in scripts where the step is being
+updated ( with `Live.next_step() or `Live.set_step()`).
 
 ## Supported plots
 
@@ -46,7 +43,7 @@ plot.
 
 Calls
 [sklearn.calibration.calibration_curve](https://scikit-learn.org/stable/modules/generated/sklearn.calibration.calibration_curve.html)
-and stores the outputs as `dvc plots` in `{path}/calibratrion.json`
+and stores the outputs as `dvc plots` in `{path}/plots/calibratrion.json`
 
 ```py
 y_true = [0, 0, 1, 1]
@@ -61,8 +58,8 @@ live.log_plot("calibration", y_true, y_score)
 Generates a [confusion matrix](https://en.wikipedia.org/wiki/Confusion_matrix)
 plot.
 
-Stores the abels and predictions in `{path}/confusion_matrix.json`, with the
-format expected by the confusion matrix
+Stores the abels and predictions in `{path}/plots/confusion_matrix.json`, with
+the format expected by the confusion matrix
 [template](/doc/command-reference/plots#plot-templates-data-series-only) of
 `dvc plots`.
 
@@ -82,7 +79,7 @@ plot.
 
 Calls
 [sklearn.metrics.det_curve](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.det_curve.html)
-and stores the outputs as `dvc plots` in `{path}/det.json`.
+and stores the outputs as `dvc plots` in `{path}/plots/det.json`.
 
 ```py
 y_true = [1, 1, 2, 2]
@@ -100,7 +97,7 @@ plot.
 
 Calls
 [sklearn.metrics.precision_recall_curve](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_recall_curve.html)
-and stores the outputs as `dvc plots` in `{path}/precision_recall.json`.
+and stores the outputs as `dvc plots` in `{path}/plots/precision_recall.json`.
 
 ```py
 y_true = [1, 1, 2, 2]
@@ -118,7 +115,7 @@ plot.
 
 Calls
 [sklearn.metrics.roc_curve](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_curve.html#sklearn.metrics.roc_curve)
-and stores the outputs as `dvc plots` in `{path}/roc.json`
+and stores the outputs as `dvc plots` in `{path}/plots/roc.json`
 
 ```py
 y_true = [1, 1, 2, 2]
@@ -145,5 +142,5 @@ live.log_plot("roc", y_true, y_score)
 - `dvclive.error.InvalidPlotTypeError` - thrown if the provided `name` does not
   correspond to any of the supported plots.
 
-- `dvclive.error.DataAlreadyLoggedError` - thrown if the provided `name` has
-  already been logged whithin the same `step`.
+- `RuntimeError` - thrown if `Live.log_plot()` is used alongside
+  `Live.next_step()` or `Live.set_step()`.

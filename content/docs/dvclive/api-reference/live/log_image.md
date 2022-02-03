@@ -13,11 +13,11 @@ live = Live()
 
 import numpy as np
 img_numpy = np.ones((500, 500), np.uint8) * 255
-live.log("numpy.png", img_numpy)
+live.log_image("numpy.png", img_numpy)
 
 from PIL import Image
 img_pil = Image.new("RGB", (500, 500), (250, 250, 250))
-live.log("pil.png", img_pil)
+live.log_image("pil.png", img_pil)
 ```
 
 ## Description
@@ -29,17 +29,17 @@ Supported values for `val` are:
 - A valid numpy array (convertable to image via `PIL.Image.fromarray`)
 - A `PIL.Image` instance.
 
-The image will be saved in `{path}/{name}`.
+The image will be saved in `{path}/images/{name}`.
 
 💡 Images can be also visualized with `dvc plots`.
 
 ### Step updates
 
 The first `step` update (with `Live.next_step()` or `Live.set_step()`) will move
-the saved file from `{path}/{name}` to `{path}/{step}/{name}`.
+the saved file from `{path}/images/{name}` to `{path}/images/{step}/{name}`.
 
-Each subsequent call to `live.log_imageg(name, val)` will save the image under
-the folder `{path}/{step}/{name}` corresponding to the current `step`.
+Each subsequent call to `live.log_image(name, val)` will save the image under
+the folder `{path}/images/{step}/{name}` corresponding to the current `step`.
 
 ## Parameters
 

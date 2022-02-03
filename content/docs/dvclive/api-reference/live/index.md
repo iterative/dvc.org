@@ -1,5 +1,7 @@
 # Live()
 
+Initializes a DVCLive logger.
+
 ```py
 class Live:
 
