@@ -88,9 +88,15 @@ After you run your training code, you should see the following content in the
 project:
 
 ```dvc
-$ ls
-dvclive        train.py
-dvclive.json
+$ tree
+├── dvclive
+│   ├── images
+│   │   └── img.png
+│   ├── plots
+│   │   └── roc.json
+│   └── scalars
+│       └── acc.tsv
+└── dvclive.json
 ```
 
 The contents of the `dvclive` folder and `dvclive.json` would vary depending on

@@ -29,7 +29,15 @@ Supported values for `val` are:
 - A valid numpy array (convertable to image via `PIL.Image.fromarray`)
 - A `PIL.Image` instance.
 
-The image will be saved in `{path}/images/{name}`.
+The images will be saved in `{path}/images/{name}`:
+
+```dvc
+$ tree
+└── dvclive
+    └── images
+        ├── numpy.png
+        └── pil.png
+```
 
 💡 Images can be visualized with `dvc plots`.
 
@@ -40,6 +48,18 @@ the saved file from `{path}/images/{name}` to `{path}/images/{step}/{name}`.
 
 Each subsequent call to `live.log_image(name, val)` will save the image under
 the folder `{path}/images/{step}/{name}` corresponding to the current `step`.
+
+```dvc
+$ tree
+└── dvclive
+    └── images
+        ├── 0
+        │   ├── numpy.png
+        │   └── pil.png
+        └── 1
+            ├── numpy.png
+            └── pil.png
+```
 
 ## Parameters
 
