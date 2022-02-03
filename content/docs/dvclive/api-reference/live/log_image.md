@@ -31,7 +31,7 @@ Supported values for `val` are:
 
 The image will be saved in `{path}/images/{name}`.
 
-💡 Images can be also visualized with `dvc plots`.
+💡 Images can be visualized with `dvc plots`.
 
 ### Step updates
 

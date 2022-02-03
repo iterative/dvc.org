@@ -34,7 +34,7 @@ other metadata.
 - `dir` - Location of the directory to store
   [outputs](/doc/dvclive/get-started#outputs).
 - `summary_path` - Location of the
-  [summary](/doc/dvclive/get-started#metrics-summary).
+  [summary](/doc/dvclive/api-reference/live/#parameters).
 - `html_path` - Location of the
   [html report](/doc/dvclive/dvclive-with-dvc#html-report).
 

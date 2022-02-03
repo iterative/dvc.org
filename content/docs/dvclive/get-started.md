@@ -21,7 +21,7 @@ See [`Live()`](/doc/dvclive/api-reference/live) for details.
 ### Log data
 
 <toggle>
-<tab title="Sacalars">
+<tab title="Scalars">
 
 ```python
 live.log("acc", 0.9)

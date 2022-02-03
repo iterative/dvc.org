@@ -48,7 +48,7 @@ compatible with `dvc plots`.
 
 ```py
 y_true = [0, 0, 1, 1]
-y_score = [0.1, 0.4, 0.35, 0.8]]
+y_score = [0.1, 0.4, 0.35, 0.8]
 live.log_plot("calibration", y_true, y_score)
 ```
 
