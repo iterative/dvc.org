@@ -29,7 +29,7 @@ saves the result in `{path}/plots/{name}.json`.
 ### Step updates
 
 ⚠️ `Live.log_plot()` can't be currently used in scripts where the step is being
-updated ( with `Live.next_step() or `Live.set_step()`).
+updated ( with `Live.next_step()` or `Live.set_step()`).
 
 ## Supported plots
 
@@ -43,7 +43,8 @@ plot.
 
 Calls
 [sklearn.calibration.calibration_curve](https://scikit-learn.org/stable/modules/generated/sklearn.calibration.calibration_curve.html)
-and stores the outputs as `dvc plots` in `{path}/plots/calibratrion.json`
+and stores the outputs at `{path}/plots/calibratrion.json` in a format
+compatible with `dvc plots`.
 
 ```py
 y_true = [0, 0, 1, 1]
@@ -79,7 +80,8 @@ plot.
 
 Calls
 [sklearn.metrics.det_curve](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.det_curve.html)
-and stores the outputs as `dvc plots` in `{path}/plots/det.json`.
+and stores the outputs at `{path}/plots/det.json` in a format compatible with
+`dvc plots`.
 
 ```py
 y_true = [1, 1, 2, 2]
@@ -97,7 +99,8 @@ plot.
 
 Calls
 [sklearn.metrics.precision_recall_curve](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_recall_curve.html)
-and stores the outputs as `dvc plots` in `{path}/plots/precision_recall.json`.
+and stores the outputs at `{path}/plots/precision_recall.json` in a format
+compatible with `dvc plots`.
 
 ```py
 y_true = [1, 1, 2, 2]
@@ -115,7 +118,8 @@ plot.
 
 Calls
 [sklearn.metrics.roc_curve](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_curve.html#sklearn.metrics.roc_curve)
-and stores the outputs as `dvc plots` in `{path}/plots/roc.json`
+and stores the outputs at `{path}/plots/roc.json` in a format compatible with
+`dvc plots`.
 
 ```py
 y_true = [1, 1, 2, 2]

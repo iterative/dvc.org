@@ -34,8 +34,8 @@ When `dvclive` is used alongside `DVC`, each `Live.next_step()` call will have
 additional effects.
 
 By default, on each `Live.next_step()` call, `DVC` will prepare an
-[HTML report](/doc/dvclive/dvclive-with-dvc#html-report) with the [metrics
-history(/doc/dvclive/get-started#history).
+[HTML report](/doc/dvclive/dvclive-with-dvc#html-report) with the
+[metrics history](/doc/dvclive/get-started#history).
 
 In addition, when
 [checkpoints](/doc/user-guide/experiment-management/checkpoints) are enabled in
