@@ -2,6 +2,7 @@
 
 const { navigate } = require('@reach/router')
 const { structure, findChildWithSource } = require('./sidebar')
+const redirects = require('../../../redirects')
 
 const buildSidebarRedirects = (list, redirects = []) => {
   list.forEach(item => {
@@ -37,10 +38,9 @@ const getRedirects = (() => {
 
   return () => {
     if (!allRedirects) {
-      allRedirects = [
-        ...require('../../../redirects-list.json'),
-        ...buildSidebarRedirects(structure)
-      ].map(processRedirectString)
+      allRedirects = [...redirects, ...buildSidebarRedirects(structure)].map(
+        processRedirectString
+      )
     }
 
     return allRedirects

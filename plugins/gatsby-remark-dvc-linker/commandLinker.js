@@ -1,7 +1,9 @@
 /* eslint-env node */
 
 const { createLinkNode } = require('./helpers')
-const { getItemByPath } = require('../../src/utils/shared/sidebar')
+const {
+  getItemByPath
+} = require('../../plugins/gatsby-theme-iterative-docs/src/utils/shared/sidebar')
 
 const DVC_REGEXP = /dvc\s+[a-z][a-z-.]*/
 const COMMAND_REGEXP = /^[a-z][a-z-]*$/

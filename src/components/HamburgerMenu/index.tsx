@@ -1,14 +1,14 @@
 import cn from 'classnames'
 import React, { useEffect, useState, useCallback, MouseEvent } from 'react'
 
-import HamburgerIcon from '../HamburgerIcon'
-import Link from '../Link'
-import { logEvent } from '../../utils/front/plausible'
+import HamburgerIcon from 'gatsby-theme-iterative-docs/src/components/HamburgerIcon'
+import Link from 'gatsby-theme-iterative-docs/src/components/Link'
+import { logEvent } from 'gatsby-theme-iterative-docs/src/utils/front/plausible'
 
-import { getFirstPage } from '../../utils/shared/sidebar'
+import { getFirstPage } from 'gatsby-theme-iterative-docs/src/utils/shared/sidebar'
 import { ReactComponent as LogoSVG } from '../../../static/img/logo-white.svg'
-import { ReactComponent as TwitterIcon } from '../SocialIcon/twitter.svg'
-import { ReactComponent as GithubIcon } from '../SocialIcon/github.svg'
+import { ReactComponent as TwitterIcon } from 'gatsby-theme-iterative-docs/src/components/SocialIcon/twitter.svg'
+import { ReactComponent as GithubIcon } from 'gatsby-theme-iterative-docs/src/components/SocialIcon/github.svg'
 
 import * as styles from './styles.module.css'
 

@@ -45,7 +45,7 @@ options have special uses for these.
 
 > 📖 See the [Running Experiments] guide for more details on all these features.
 
-[Review] run experiments with `dvc exp show`. Successful ones can be [made
+[Review] your experiments with `dvc exp show`. Successful ones can be [made
 persistent] by restoring them via `dvc exp branch` or `dvc exp apply` and
 committing them to the Git repo. Unnecessary ones can be [cleared] with
 `dvc exp gc`.

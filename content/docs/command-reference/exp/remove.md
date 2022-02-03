@@ -26,7 +26,8 @@ With `--queue`, the list of experiments awaiting execution is cleared instead.
 - `--queue` - remove all experiments that haven't been run yet (defined via
   `dvc exp run --queue`).
 
-- `-A`, `--all` - remove all experiments (includes `--queue`).
+- `-A`, `--all` - remove all experiments that have been run. Use `--queue` to
+  remove queued ones.
 
 - `-g`, `--git-remote` - Name or URL of the Git remote to remove the experiment
   from
