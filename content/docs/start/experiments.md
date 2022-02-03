@@ -6,7 +6,7 @@ title: 'Get Started: Experiments'
 
 In machine learning projects, the number of <abbr>experiments</abbr> grows
 rapidly. DVC can track these experiments, list and compare their most relevant
-dependencies, metrics and parameters, navigate among them, and commit only the
+metrics, parameters, and dependencies, navigate among them, and commit only the
 ones that we need to Git.
 
 > ⚠️This video is out-of-date and will be updated soon! Where there are
@@ -201,7 +201,7 @@ $ dvc exp show
 By default, it shows all the metrics, parameters and dependencies with the
 timestamp. If you have a large number of metrics, parameters, dependencies or
 experiments, this may lead to a cluttered view. You can limit the table to
-specific columns, including the timestamp (`Created`), using the
+specific columns using the
 [`--drop`](/doc/command-reference/exp/show#--drop) option of the command.
 
 ```dvc
