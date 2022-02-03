@@ -3,8 +3,12 @@ const setUpCustomYtEmbeds = () => {
   ytEmbeds.forEach(embed => {
     const iframe = embed.querySelector('iframe')
     const overlay = embed.querySelector('.yt-embed-wrapper__overlay')
+    const tooltip = embed.querySelector('.yt-embed-wrapper__tooltip')
 
-    overlay?.addEventListener('click', () => {
+    overlay?.addEventListener('click', event => {
+      if (event.target === tooltip || tooltip?.contains(event.target)) {
+        return
+      }
       if (iframe && iframe.src) {
         iframe.src = iframe?.src + `&autoplay=1`
       }

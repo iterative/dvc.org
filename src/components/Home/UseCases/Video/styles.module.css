@@ -58,11 +58,21 @@
   }
 
   .tooltip {
-    margin: 16px 0;
+    margin: 16px 16px 0;
     opacity: 0;
     color: #fff;
     transition: opacity ease-in-out 0.2s;
     text-shadow: 0 1px 0 rgb(33 45 69 / 25%);
+
+    @media (--xs-scr) {
+      margin: 8px 16px 0;
+      font-size: 14px;
+    }
+
+    @media (--xxs-scr) {
+      margin: 2px 16px 0;
+      font-size: 14px;
+    }
 
     a {
       color: #fff;
