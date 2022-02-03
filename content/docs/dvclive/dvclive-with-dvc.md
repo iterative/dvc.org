@@ -81,9 +81,15 @@ $ dvc repro train
 After that's finished, you should see the following content in the project:
 
 ```dvc
-$ ls
-dvc.lock  training_metrics       train.py
-dvc.yaml  training_metrics.json
+$ tree
+├── dvc.lock
+├── dvc.yaml
+├── training_metrics
+│   └── scalars
+│       ├── acc.tsv
+│       └── loss.tsv
+├── training_metrics.json
+└── train.py
 ```
 
 The [metrics summary](/doc/dvclive/api-reference/live/log#description)

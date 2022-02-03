@@ -47,6 +47,15 @@ timestamp step  loss
 Each subsequent call to `live.log(name, val)` will add a new row to
 `{path}/scalars/{name}.tsv`.
 
+```dvc
+$ tree
+├── dvclive
+│   └── scalars
+│       ├── acc.tsv
+│       └── loss.tsv
+└── dvclive.json
+```
+
 💡 The metric history `{path}/scalars/{name}.tsv` is usable by `dvc plots`.
 
 If `name` contains slashes (e.g. `train/loss`), the required subdirectories will
