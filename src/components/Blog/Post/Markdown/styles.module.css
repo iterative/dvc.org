@@ -603,6 +603,10 @@
         text-shadow: 0 1px 0 rgb(33 45 69 / 25%);
         transition: opacity 0.2s ease-in-out;
 
+        &:hover {
+          cursor: auto;
+        }
+
         a {
           color: #fff;
 
