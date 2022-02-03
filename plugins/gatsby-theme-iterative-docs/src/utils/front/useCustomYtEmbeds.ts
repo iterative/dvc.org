@@ -1,3 +1,5 @@
+import { useEffect } from 'react'
+
 const setUpCustomYtEmbeds = () => {
   const ytEmbeds = document.querySelectorAll('.yt-embed-wrapper')
   ytEmbeds.forEach(embed => {
@@ -17,4 +19,10 @@ const setUpCustomYtEmbeds = () => {
   })
 }
 
-export default setUpCustomYtEmbeds
+const useCustomYtEmbeds = () => {
+  useEffect(() => {
+    setUpCustomYtEmbeds()
+  }, [])
+}
+
+export default useCustomYtEmbeds
