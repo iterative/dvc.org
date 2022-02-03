@@ -29,7 +29,7 @@ const getYouTubeIFrameSrc = urlString => {
     url.host === 'youtu.be' ? url.pathname.slice(1) : url.searchParams.get('v')
 
   const embedUrl = new URL(
-    `https://www.youtube-nocookie.com/embed/${id}?rel=0&amp;controls=0&amp;showinfo=0;`
+    `https://www.youtube-nocookie.com/embed/${id}?rel=0&amp;&amp;showinfo=0;`
   )
 
   url.searchParams.forEach((value, name) => {
