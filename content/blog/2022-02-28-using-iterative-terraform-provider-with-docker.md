@@ -34,8 +34,7 @@ that should answer this question for you. As a side note, using Docker to encaps
  minimum you will need an Ubuntu distribution AMI (which is a configurable default for the `iterative_task`). However, we will 
  use Docker for the machine learning specific setup: drivers, GPU-specific libraries for accelerated math, and Python libraries. 
  This separation will not only give you more control over the versions of the frameworks that you choose to use (or not use), 
- but also over the cloud provider you provision the resources with. Your Docker image is not cloud provider specific while a 
- Deep Learning AMI is a part of the AWS ecosystem.  
+ but also over the cloud provider you provision the resources with. Your Docker image is cloud provider agnostic.
 
 If you have a DevOps team, they can build a Docker image suited for your needs, so you'll only need to use it in your 
 `iterative_task` script. We'll show you how to do this in the first part of this tutorial.  But if you need (or want) to build 
@@ -51,8 +50,9 @@ the script part of the `main.tf`.
 
 Let's say we have a DevOps team that has carefully prepared a Docker image suitable for data science and machine learning. To 
 illustrate this, we can use a publicly available CML Docker image (`docker://iterativeai/cml`) provided by Iterative. This image 
-comes loaded with Python, CUDA, git, node and other essentials for full-stack data science. There are several versions of this 
-image, but for this example we'll take `docker://iterativeai/cml:0-dvc2-base1-gpu`, which includes Ubuntu 20.04, Python 3.8 
+comes loaded with Python, CUDA, git, node and other essentials for full-stack data science. There are
+[several versions of this image](https://cml.dev/doc/self-hosted-runners#docker-images),
+but for this example we'll take `docker://iterativeai/cml:0-dvc2-base1-gpu`, which includes Ubuntu 20.04, Python 3.8 
 (CUDA 11.0.3, CuDNN 8).
 
 Here's what the script is going to look like: 
@@ -88,8 +88,8 @@ Finally, we can use Iterative's image to run our own container with this line:
 ```
 Let's unpack this line. 
 * `docker run`: this command will essentially create a container from the specified image, and then let us use it. 
-* `–rm flag` will make Docker automatically clean up the container and remove the file system when the container exits, 
-* `–gpus all` will allow us to use GPUs of the host machine from the container
+* `--rm` flag will make Docker automatically clean up the container and remove the file system when the container exits, 
+* `--gpus all` will allow us to use GPUs of the host machine from the container
 * `-v "$PWD:/tpi"`: the Docker container we'll be running is only aware of what is included inside of it, and it doesn't have our 
 training script nor the data which we synced to the host machine. How do we pass the data and the training code into the Docker 
 container? We can do it by mounting a volume. The `-v` flag lets you configure a volume, and has the following structure:
