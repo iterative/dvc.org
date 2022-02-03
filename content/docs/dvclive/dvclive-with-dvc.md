@@ -65,7 +65,7 @@ command options for the DVC integration:
 - `--live-no-cache <path>` - specify a DVCLive log directory `path` but don't
   track it with DVC. Useful if you prefer to track it with Git.
 - `--live-no-summary` - deactivates
-  [summary](/doc/dvclive/get-started#metrics-summary) generation.
+  [summary](/doc/dvclive/api-reference/live/log#description) generation.
 - `--live-no-html` - deactivates [HTML report](#html-report) generation.
 
 > Note that DVC will not track summary files or the HTML report.
