@@ -6,7 +6,6 @@ on:
       - edited
       - synchronize
   schedule:
-    # https://crontab.guru/every-hour
     - cron: 0 6 * * *
 
 jobs:
