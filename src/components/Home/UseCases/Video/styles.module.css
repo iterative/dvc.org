@@ -75,6 +75,8 @@
     }
 
     a {
+      @mixin focus;
+
       color: #fff;
     }
   }

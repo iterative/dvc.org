@@ -608,7 +608,18 @@
         }
 
         a {
+          @mixin focus;
+
           color: #fff;
+          text-decoration: underline;
+
+          &:hover {
+            opacity: 1;
+          }
+
+          &:focus {
+            position: static;
+          }
 
           &::after {
             display: none;

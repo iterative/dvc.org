@@ -316,7 +316,10 @@
       }
 
       a {
+        @mixin focus;
+
         color: #fff;
+        text-decoration: underline;
 
         &::after {
           display: none;
