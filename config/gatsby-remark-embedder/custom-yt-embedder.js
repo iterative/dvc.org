@@ -2,9 +2,10 @@ const shouldTransform = url => {
   const { host, pathname, searchParams } = new URL(url)
 
   return (
-    ['youtu.be', 'youtube.com', 'www.youtube.com'].includes(host) &&
-    pathname.includes('/watch') &&
-    Boolean(searchParams.get('v'))
+    host === 'youtu.be' ||
+    (['youtube.com', 'www.youtube.com'].includes(host) &&
+      pathname.includes('/watch') &&
+      Boolean(searchParams.get('v')))
   )
 }
 
