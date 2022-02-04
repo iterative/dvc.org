@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react'
+import React, { useState, useCallback, useEffect } from 'react'
 
 import TwoRowsButton from '../../../TwoRowsButton'
 import { logEvent } from 'gatsby-theme-iterative-docs/src/utils/front/plausible'
@@ -9,10 +9,18 @@ import * as styles from './styles.module.css'
 
 const Video: React.FC<{ id: string }> = ({ id }) => {
   const [isWatching, setWatching] = useState(false)
+  const [hasUserGivenConsent, setHasUserGivenConsent] = useState(false)
+
+  useEffect(() => {
+    const givenConsent = Boolean(localStorage.getItem('yt-embed-consent'))
+
+    setHasUserGivenConsent(givenConsent)
+  }, [])
 
   const watchVideo = useCallback(() => {
     logEvent('Button', { Item: 'video' })
     setWatching(true)
+    localStorage.setItem('yt-embed-consent', 'true')
   }, [])
 
   return (
@@ -35,16 +43,18 @@ const Video: React.FC<{ id: string }> = ({ id }) => {
                 }
                 onClick={watchVideo}
               />
-              <div className={styles.tooltip}>
-                By clicking play, you agree to YouTube&apos;s{' '}
-                <Link href="https://policies.google.com/u/3/privacy?hl=en">
-                  Privacy Policy
-                </Link>{' '}
-                and{' '}
-                <Link href="https://www.youtube.com/static?template=terms">
-                  Terms of Service
-                </Link>
-              </div>
+              {!hasUserGivenConsent && (
+                <div className={styles.tooltip}>
+                  By clicking play, you agree to YouTube&apos;s{' '}
+                  <Link href="https://policies.google.com/u/3/privacy?hl=en">
+                    Privacy Policy
+                  </Link>{' '}
+                  and{' '}
+                  <Link href="https://www.youtube.com/static?template=terms">
+                    Terms of Service
+                  </Link>
+                </div>
+              )}
             </div>
           </div>
         )}

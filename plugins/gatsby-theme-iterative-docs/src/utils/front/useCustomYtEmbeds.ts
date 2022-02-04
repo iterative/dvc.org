@@ -1,10 +1,16 @@
 import { useEffect } from 'react'
 
-const setUpCustomYtEmbeds = () => {
-  const ytEmbeds = document.querySelectorAll('.yt-embed-wrapper')
+const hideAllEmbedOverlays = (embeds: NodeListOf<Element>) => {
+  embeds.forEach(embed => {
+    const overlay = embed.querySelector('.yt-embed-wrapper__overlay')
+    overlay?.classList.add('hidden')
+  })
+}
+
+const setUpEmbedClickListeners = (embeds: NodeListOf<Element>) => {
   const removeClickListeners: Array<() => void> = []
 
-  ytEmbeds.forEach(embed => {
+  embeds.forEach(embed => {
     const iframe = embed.querySelector('iframe')
     const overlay = embed.querySelector('.yt-embed-wrapper__overlay')
     const tooltip = embed.querySelector('.yt-embed-wrapper__tooltip')
@@ -13,18 +19,17 @@ const setUpCustomYtEmbeds = () => {
       if (event.target === tooltip || tooltip?.contains(event.target as Node)) {
         return
       }
+
       if (iframe && iframe.src) {
         iframe.src = iframe?.src + `&autoplay=1`
       }
-      overlay?.classList.add('hidden')
+      hideAllEmbedOverlays(embeds)
+      localStorage.setItem('yt-embed-consent', 'true')
     }
-
     const removeListener = () => {
       overlay?.removeEventListener('click', handleOverlayClick as EventListener)
     }
-
     overlay?.addEventListener('click', handleOverlayClick as EventListener)
-
     removeClickListeners.push(removeListener)
   })
 
@@ -35,10 +40,20 @@ const setUpCustomYtEmbeds = () => {
 
 const useCustomYtEmbeds = () => {
   useEffect(() => {
-    const removeEventListeners = setUpCustomYtEmbeds()
+    const hasUserGivenConsent = Boolean(
+      localStorage.getItem('yt-embed-consent')
+    )
+    const embeds = document.querySelectorAll('.yt-embed-wrapper')
+
+    if (hasUserGivenConsent) {
+      hideAllEmbedOverlays(embeds)
+      return
+    }
+
+    const cleanUpEventListeners = setUpEmbedClickListeners(embeds)
 
     return () => {
-      removeEventListeners()
+      cleanUpEventListeners()
     }
   }, [])
 }
