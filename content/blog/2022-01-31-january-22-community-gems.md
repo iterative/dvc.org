@@ -7,7 +7,7 @@ description: >
 descriptionLong: >
   A roundup of technical Q&A's from the DVC and CML communities. This month: DVC
   Studio data, DVC for non-ML projects, getting started with CML, and more.
-picture: 2022-01-31/jan-community-gems.png
+picture: 2022-01-31/jan-community-gems-0.png
 author: milecia_mcgregor
 commentsUrl: https://discuss.dvc.org/t/january-22-community-gems/1020
 tags:
