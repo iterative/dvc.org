@@ -2,10 +2,9 @@ const shouldTransform = url => {
   const { host, pathname, searchParams } = new URL(url)
 
   return (
-    host === 'youtu.be' ||
-    (['youtube.com', 'www.youtube.com'].includes(host) &&
-      pathname.includes('/watch') &&
-      Boolean(searchParams.get('v')))
+    ['youtu.be', 'youtube.com', 'www.youtube.com'].includes(host) &&
+    pathname.includes('/watch') &&
+    Boolean(searchParams.get('v'))
   )
 }
 
@@ -15,10 +14,10 @@ const getTimeValueInSeconds = timeValue => {
   }
 
   const {
-    2: hours = '0',
-    4: minutes = '0',
-    6: seconds = '0'
-  } = timeValue.match(/((\d*)h)?((\d*)m)?((\d*)s)?/)
+    1: hours = '0',
+    2: minutes = '0',
+    3: seconds = '0'
+  } = timeValue.match(/(?:(\d*)h)?(?:(\d*)m)?(?:(\d*)s)?/)
 
   return String((Number(hours) * 60 + Number(minutes)) * 60 + Number(seconds))
 }
