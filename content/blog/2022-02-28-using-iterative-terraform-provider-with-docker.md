@@ -69,7 +69,6 @@ Here's what the script is going to look like:
    curl -s -L https://nvidia.github.io/nvidia-docker/ubuntu20.04/nvidia-docker.list | sudo tee /etc/apt/sources.list.d/nvidia-docker.list
    sudo apt update -qq && sudo apt install -yqq nvidia-docker2
    sudo systemctl restart docker
-   rm get-docker.sh
   
    nvidia-smi
    docker run --rm --gpus all -v "$PWD:/tpi" iterativeai/cml:0-dvc2-base1-gpu \
