@@ -5,6 +5,7 @@ import { navigate } from '@reach/router'
 import Link from '../../../Link'
 import Tutorials from '../../TutorialsLinks'
 import { getPathWithSource } from '../../../../utils/shared/sidebar'
+import useCustomYtEmbeds from '../../../../utils/front/useCustomYtEmbeds'
 
 import 'github-markdown-css/github-markdown-light.css'
 import * as sharedStyles from '../../styles.module.css'
@@ -43,6 +44,7 @@ const Main: React.FC<IMainProps> = ({
   const touchstartXRef = useRef(0)
   const touchendXRef = useRef(0)
   const isCodeBlockRef = useRef(false)
+  useCustomYtEmbeds()
   const handleSwipeGesture = useCallback(() => {
     if (isCodeBlockRef.current) return
 
