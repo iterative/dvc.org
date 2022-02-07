@@ -60,8 +60,7 @@ Here's what the script is going to look like:
 ```hcl
    script = <<-END
    #!/bin/bash
-   sudo apt-get update
-   sudo apt-get install -y software-properties-common build-essential ubuntu-drivers-common
+   sudo apt update -qq && sudo apt install -yqq software-properties-common build-essential ubuntu-drivers-common
    sudo ubuntu-drivers autoinstall
    sudo curl -fsSL https://get.docker.com -o get-docker.sh && sudo sh get-docker.sh &&
    sudo usermod -aG docker ubuntu
