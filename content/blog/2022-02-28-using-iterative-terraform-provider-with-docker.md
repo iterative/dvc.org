@@ -62,7 +62,7 @@ Here's what the script is going to look like:
    #!/bin/bash
    sudo apt update -qq && sudo apt install -yqq software-properties-common build-essential ubuntu-drivers-common
    sudo ubuntu-drivers autoinstall
-   sudo curl -fsSL https://get.docker.com -o get-docker.sh && sudo sh get-docker.sh &&
+   sudo curl -fsSL https://get.docker.com | sudo sh -
    sudo usermod -aG docker ubuntu
    sudo setfacl --modify user:ubuntu:rw /var/run/docker.sock
    curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add -
