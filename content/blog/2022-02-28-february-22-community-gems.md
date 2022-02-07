@@ -7,9 +7,9 @@ description: >
 descriptionLong: >
   A roundup of technical Q&A's from the DVC and CML community. This month:
   comparing experiments, working with data, working with pipelines, and more.
-picture: 2021-12-21/dec-community-gems.png
+picture: 2022-01-31/jan-community-gems.png
 author: milecia_mcgregor
-commentsUrl: https://discuss.dvc.org/t/february-21-community-gems/1001
+commentsUrl: https://discuss.dvc.org/t/february-22-community-gems/100132
 tags:
   - Data Versioning
   - DVC Remotes
@@ -18,7 +18,7 @@ tags:
   - Community
 ---
 
-### [Is there a proper way of deleting DVC tracked files from the cloud storage?](https://discord.com/channels/485586884165107732/563406153334128681/927618225989111880)
+### [Is there a proper way of deleting DVC tracked files from cloud storage?](https://discord.com/channels/485586884165107732/563406153334128681/927618225989111880)
 
 Thanks for the question @fireballpoint1!
 
@@ -62,13 +62,13 @@ Good question @LucZ[Mad]!
 
 If you bring those experiments into your regular Git workflow like, using
 `dvc exp branch` to create a branch for any experiment you want to share, you
-could use https://studio.iterative.ai/ to visualize them.
+could use [DVC Studio](https://studio.iterative.ai/) to visualize them.
 
 We're working on support for viewing any pushed experiments in Studio right now
 so if there's anything you want to see, make sure to comment on and follow
 [this issue](https://github.com/iterative/studio-support/issues/45).
 
-### [Is it possible to change the CML runner shutdown to stopping the instance after the idle timeout instead of terminating the instance using self hosted runners on AWS?](https://discord.com/channels/485586884165107732/728693131557732403/933674203796873226)
+### [Is it possible to change the CML runner shutdown to stopping the instance after the idle timeout instead of terminating the instance using self-hosted runners on AWS?](https://discord.com/channels/485586884165107732/728693131557732403/933674203796873226)
 
 This is another fantastic question from @jotsif!
 
@@ -77,7 +77,7 @@ the cache to try and speed up your experimentation time, you could
 [check this out](https://aws.amazon.com/premiumsupport/knowledge-center/s3-transfer-data-bucket-instance/)
 if you're using S3 for your remote storage.
 
-Just be cautious since an instance that is in the off state might still be
+Just be cautious since an instance that is in the "off" state might still be
 considered in use for billing purposes. It's best to let the CML runner
 terminate your instance and run `dvc pull` to restore the data.
 
@@ -98,7 +98,7 @@ installation.
 If you are trying to decide which plan to select, please email us at
 `info@iterative.ai` and we'll help you figure it out based on your needs.
 
-### [How do you `dvc commit` or get the `dvc status` of each case of a `foreach` stage?](https://discord.com/channels/485586884165107732/563406153334128681/938649682492686366)
+### [How do you `dvc commit` or get the `dvc status` of each case in a `foreach` stage?](https://discord.com/channels/485586884165107732/563406153334128681/938649682492686366)
 
 It should be enough to do `dvc commit <stagename>@<foreach name>`.
 
