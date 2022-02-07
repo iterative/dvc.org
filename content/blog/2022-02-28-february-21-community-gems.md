@@ -68,15 +68,107 @@ We're working on support for viewing any pushed experiments in Studio right now
 so if there's anything you want to see, make sure to comment on and follow
 [this issue](https://github.com/iterative/studio-support/issues/45).
 
-### []()
+### [Is it possible to change the CML runner shutdown to stopping the instance after the idle timeout instead of terminating the instance using self hosted runners on AWS?](https://discord.com/channels/485586884165107732/728693131557732403/933674203796873226)
 
-### []()
+This is another fantastic question from @jotsif!
 
-### []()
+Unfortunately no, the instance will be destroyed. If you're trying to preserve
+the cache to try and speed up your experimentation time, you could
+[check this out](https://aws.amazon.com/premiumsupport/knowledge-center/s3-transfer-data-bucket-instance/)
+if you're using S3 for your remote storage.
 
-### []()
+Just be cautious since an instance that is in the off state might still be
+considered in use for billing purposes. It's best to let the CML runner
+terminate your instance and run `dvc pull` to restore the data.
 
-### []()
+### [Where can I find more details on how the DVC Studio free version differs from the enterprise version?](https://discord.com/channels/485586884165107732/841856466897469441/933324508570472497)
+
+Thanks for asking @Abdi!
+
+You can find more info about the different
+[DVC Studio tiers here](https://studio.iterative.ai/#pricing).
+
+The Free version has all the features most individual users need, like
+connecting to ML repositories, creating views, submiting experiments, and
+generating plots. The Teams version allows you to create large teams for better
+collaboration and sharing of views and settings with everyone. The Enterprise
+version is more for needs around compliance, dedicated support, and on-premise
+installation.
+
+If you are trying to decide which plan to select, please email us at
+`info@iterative.ai` and we'll help you figure it out based on your needs.
+
+### [How do you `dvc commit` or get the `dvc status` of each case of a `foreach` stage?](https://discord.com/channels/485586884165107732/563406153334128681/938649682492686366)
+
+It should be enough to do `dvc commit <stagename>@<foreach name>`.
+
+For example, assuming you have a `params.yaml` that looks like this:
+
+```yaml
+languages:
+  - en
+  - it
+  - de
+  - fr
+```
+
+and a `dvc.yaml` that looks like this:
+
+```yaml
+stages:
+  train-model:
+  foreach: ${languages}
+  do:
+    cmd: echo "training '${item}' model"
+```
+
+then run:
+
+```dvc
+$ dvc commit train-model@en # commits the 'en' stage
+```
+
+### [I was wondering whether it was possible to reuse the same `dvc.yaml` file in multiple pipeline folders such that the exact same stages are run with different `params.yaml` files?](https://discord.com/channels/485586884165107732/485596304961962003/939099847288578079)
+
+@louisv, thanks for this question!
+
+It seems like you're looking for the parametrization functionality. You can
+learn more about how it works
+[in this doc](https://dvc.org/doc/user-guide/project-structure/pipelines-files#templating),
+but here's a an example of what that might look like in the `dvc.yaml`.
+
+```yaml
+stages:
+  cleanups:
+    foreach: # List of simple values
+      - raw1
+      - labels1
+      - raw2
+    do:
+      cmd: clean.py "${item}"
+      outs:
+        - ${item}.cln
+```
+
+### [Is it possible to change the x-label in DVC Studio?](https://discord.com/channels/485586884165107732/841856466897469441/938857004187943003)
+
+A great question about Studio from @PythonF!
+
+You can set custom properties for your plot in your `dvc.yaml` like this:
+
+```yaml
+plots:
+  - plots_no_cache.csv:
+      cache: false
+      x: r
+```
+
+You can also use `dvc plots modify` to change the x-label or y-label for your
+plots using commands similar to the following.
+
+```dvc
+$ dvc plots modify plots_no_cache.csv -x r -y q
+```
 
 ---
 
