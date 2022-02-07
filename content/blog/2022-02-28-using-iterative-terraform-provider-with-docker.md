@@ -124,7 +124,7 @@ RUN apt-get update && apt-get install -y wget python3-pip
 COPY ./requirements.txt /tmp/requirements.txt
 RUN pip3 install -r /tmp/requirements.txt
  
-WORKDIR /app
+WORKDIR /tpi
 ```
 
 Unlike Terraform, where you had a declarative description of the desired infrastructure in the main.tf, `Dockerfile` is a script, 
