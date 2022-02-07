@@ -67,7 +67,7 @@ Here's what the script is going to look like:
    sudo setfacl --modify user:ubuntu:rw /var/run/docker.sock
    curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add -
    curl -s -L https://nvidia.github.io/nvidia-docker/ubuntu20.04/nvidia-docker.list | sudo tee /etc/apt/sources.list.d/nvidia-docker.list
-   sudo apt update && sudo apt install -y nvidia-docker2
+   sudo apt update -qq && sudo apt install -yqq nvidia-docker2
    sudo systemctl restart docker
    rm get-docker.sh
   
