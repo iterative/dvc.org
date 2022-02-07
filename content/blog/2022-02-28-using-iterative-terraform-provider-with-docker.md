@@ -71,8 +71,8 @@ Here's what the script is going to look like:
    sudo systemctl restart docker
   
    nvidia-smi
-   docker run --rm --gpus all -v "$PWD:/tpi" iterativeai/cml:0-dvc2-base1-gpu \
-       /bin/bash -c "cd /tpi; pip install -r requirements.txt; python src/train.py"
+   docker run --rm --gpus all -v "$PWD:/tpi" -w /tpi iterativeai/cml:0-dvc2-base1-gpu \
+       /bin/bash -c "pip install -r requirements.txt; python src/train.py"
    END
 ```
 
