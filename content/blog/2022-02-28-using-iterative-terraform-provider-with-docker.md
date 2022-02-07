@@ -81,8 +81,9 @@ to install Docker itself, and sort out users, groups and permissions. Next, we'l
 to run GPU-accelerated Docker containers. Yes, GPUs will make you work for them before you can enjoy the accelerated training!
 
 Finally, we can use Iterative's image to run our own container with this line: 
-```   docker run --rm --gpus all -v "$PWD:/tpi" iterativeai/cml:0-dvc2-base1-gpu \
-       /bin/bash -c "cd /tpi; pip install -r requirements.txt; python src/train.py"
+```
+docker run --rm --gpus all -v "$PWD:/tpi" -w /tpi iterativeai/cml:0-dvc2-base1-gpu \
+  /bin/bash -c "pip install -r requirements.txt; python src/train.py"
 ```
 Let's unpack this line. 
 * `docker run`: this command will essentially create a container from the specified image, and then let us use it. 
