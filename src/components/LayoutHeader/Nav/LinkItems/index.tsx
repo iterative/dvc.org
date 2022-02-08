@@ -54,6 +54,11 @@ export const navLinkItemsData: Array<INavLinkData | INavLinkPopupData> = [
     text: 'Blog'
   },
   {
+    href: 'https://learn.iterative.ai/',
+    eventType: 'course',
+    text: 'Course'
+  },
+  {
     text: 'Community',
     Popup: CommunityPopup,
     href: '/community',
@@ -63,11 +68,6 @@ export const navLinkItemsData: Array<INavLinkData | INavLinkPopupData> = [
     href: '/support',
     eventType: 'support',
     text: 'Support'
-  },
-  {
-    href: 'https://learn.iterative.ai/',
-    eventType: 'learn',
-    text: 'Learn'
   },
   {
     text: 'Other Tools',

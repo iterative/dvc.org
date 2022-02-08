@@ -22,7 +22,7 @@
   }
 
   &:nth-child(1),
-  &:nth-child(6) {
+  &:nth-child(4) {
     display: none;
 
     @media (--xl-scr) {
@@ -33,13 +33,13 @@
   @media (--md-scr) {
     margin-left: 0;
 
-    &:nth-child(5) {
+    &:nth-child(6) {
       display: none;
     }
   }
 
   @media (--sm-scr) {
-    &:nth-child(4) {
+    &:nth-child(5) {
       display: none;
     }
   }

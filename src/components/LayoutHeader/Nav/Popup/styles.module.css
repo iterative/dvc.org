@@ -119,8 +119,8 @@
 
     &:nth-child(2),
     &:nth-child(3),
-    &:nth-child(4),
-    &:nth-child(5) {
+    &:nth-child(5),
+    &:nth-child(6) {
       display: none;
     }
 
@@ -128,13 +128,13 @@
       font-size: 17px;
       line-height: 20px;
 
-      &:nth-child(5) {
+      &:nth-child(6) {
         display: initial;
       }
     }
 
     @media (--sm-scr) {
-      &:nth-child(4) {
+      &:nth-child(5) {
         display: initial;
       }
     }
