@@ -1,33 +1,43 @@
-import React, { useRef, useState } from 'react'
+import React from 'react'
 import cn from 'classnames'
 
 import Link from 'gatsby-theme-iterative-docs/src/components/Link'
-import { OtherToolsPopup, CommunityPopup } from '../Popup'
+import {
+  OtherToolsPopup,
+  CommunityPopup,
+  OtherPopup,
+  IPopupProps
+} from '../Popup'
 
 import { ReactComponent as ArrowUpSVG } from '../../../../../static/img/arrow-up-icon.svg'
 import { ReactComponent as ArrowDownSVG } from '../../../../../static/img/arrow-down-icon.svg'
 
 import { logEvent } from 'gatsby-theme-iterative-docs/src/utils/front/plausible'
 import { getFirstPage } from 'gatsby-theme-iterative-docs/src/utils/shared/sidebar'
+import usePopup, { IUsePopupReturn } from '../../../../gatsby/hooks/usePopup'
 
 const docsPage = getFirstPage()
 
 import * as styles from './styles.module.css'
 
-type PopupName = 'CommunityPopup' | 'OtherToolsPopup'
+type PopupName = 'communityPopup' | 'otherToolsPopup' | 'otherPopup'
 
 interface INavLinkData {
   href: string
   eventType: string
   text: string
+  className?: string
 }
 
 interface INavLinkPopupData {
   text: string
-  popup: PopupName
+  popupName: PopupName
+  Popup: React.FC<IPopupProps>
+  className?: string
+  href?: string
 }
 
-const navLinkItemsData: Array<INavLinkData | INavLinkPopupData> = [
+export const navLinkItemsData: Array<INavLinkData | INavLinkPopupData> = [
   {
     href: '/features',
     eventType: 'features',
@@ -45,7 +55,9 @@ const navLinkItemsData: Array<INavLinkData | INavLinkPopupData> = [
   },
   {
     text: 'Community',
-    popup: 'CommunityPopup'
+    Popup: props => <CommunityPopup {...props} />,
+    href: '/community',
+    popupName: 'communityPopup'
   },
   {
     href: '/support',
@@ -53,150 +65,81 @@ const navLinkItemsData: Array<INavLinkData | INavLinkPopupData> = [
     text: 'Support'
   },
   {
+    href: 'https://learn.iterative.ai/',
+    eventType: 'learn',
+    text: 'Learn'
+  },
+  {
     text: 'Other Tools',
-    popup: 'OtherToolsPopup'
+    popupName: 'otherToolsPopup',
+    Popup: props => <OtherToolsPopup {...props} />
+  },
+  {
+    text: '...',
+    popupName: 'otherPopup',
+    Popup: props => <OtherPopup {...props} />,
+    className: styles.other
   }
 ]
 
 const isPopup = (
   item: INavLinkData | INavLinkPopupData
-): item is INavLinkPopupData => (item as INavLinkPopupData).popup !== undefined
+): item is INavLinkPopupData =>
+  (item as INavLinkPopupData).popupName !== undefined
 
-const LinkItems: React.FC = ({}) => {
-  const [isCommunityPopupOpen, setIsCommunityPopupOpen] = useState(false)
-  const [isOtherToolsPopupOpen, setIsOtherToolsPopupOpen] = useState(false)
-  const communityPopupContainerEl = useRef<HTMLLIElement>(null)
-  const otherToolsPopupContainerEl = useRef<HTMLLIElement>(null)
-  let pageCloseEventListener: () => void = () => null
-  let keyupCloseEventListener: () => void = () => null
-
-  const closeAllPopups = (): void => {
-    setIsCommunityPopupOpen(false)
-    setIsOtherToolsPopupOpen(false)
-
-    pageCloseEventListener()
-    keyupCloseEventListener()
-  }
-
-  const handlePageClick = (event: MouseEvent): void => {
-    if (
-      !communityPopupContainerEl.current ||
-      !otherToolsPopupContainerEl.current
-    ) {
-      return
-    }
-    if (
-      !communityPopupContainerEl.current.contains(event.target as Node) &&
-      !otherToolsPopupContainerEl.current.contains(event.target as Node)
-    ) {
-      closeAllPopups()
-    }
-  }
-
-  const handlePageKeyup = (event: KeyboardEvent): void => {
-    if (event.key === 'Escape') {
-      closeAllPopups()
-    }
-  }
-
-  const setupPopupEventListeners = (): void => {
-    document.addEventListener('click', handlePageClick)
-    document.addEventListener('keyup', handlePageKeyup)
-
-    pageCloseEventListener = (): void =>
-      document.removeEventListener('click', handlePageClick)
-    keyupCloseEventListener = (): void =>
-      document.removeEventListener('keyup', handlePageKeyup)
-  }
-
-  const openCommunityPopup = (): void => {
-    setupPopupEventListeners()
-    setIsCommunityPopupOpen(true)
-  }
-
-  const openOtherToolsPopup = (): void => {
-    setupPopupEventListeners()
-    setIsOtherToolsPopupOpen(true)
-  }
-
-  const toggleCommunityPopup = (): void => {
-    setIsOtherToolsPopupOpen(false)
-    if (isCommunityPopupOpen) {
-      closeAllPopups()
-    } else {
-      openCommunityPopup()
-    }
-  }
-
-  const toggleOtherToolsPopup = (): void => {
-    setIsCommunityPopupOpen(false)
-    if (isOtherToolsPopupOpen) {
-      closeAllPopups()
-    } else {
-      openOtherToolsPopup()
-    }
+const LinkItems: React.FC = () => {
+  const communityPopup = usePopup()
+  const otherToolsPopup = usePopup()
+  const otherPopup = usePopup()
+  const popups: { [key: string]: IUsePopupReturn } = {
+    otherToolsPopup,
+    communityPopup,
+    otherPopup
   }
 
   return (
     <ul className={styles.linksList}>
-      {navLinkItemsData.map((item, i) => (
-        <li
-          key={i}
-          className={styles.linkItem}
-          ref={
-            isPopup(item)
-              ? item.popup === 'OtherToolsPopup'
-                ? otherToolsPopupContainerEl
-                : communityPopupContainerEl
-              : undefined
-          }
-        >
-          {isPopup(item) ? (
-            <>
-              <button
-                onClick={
-                  item.popup === 'OtherToolsPopup'
-                    ? toggleOtherToolsPopup
-                    : toggleCommunityPopup
-                }
-                className={cn(
-                  styles.link,
-                  (item.popup === 'OtherToolsPopup'
-                    ? isOtherToolsPopupOpen
-                    : isCommunityPopupOpen) && styles.open
-                )}
-              >
-                {item.text}
-                <ArrowDownSVG
-                  className={cn(styles.linkIcon, styles.arrowDownIcon)}
-                />
-                <ArrowUpSVG
-                  className={cn(styles.linkIcon, styles.arrowUpIcon)}
-                />
-              </button>
-              {item.popup === 'OtherToolsPopup' ? (
-                <OtherToolsPopup
-                  closePopup={closeAllPopups}
-                  isVisible={isOtherToolsPopupOpen}
-                />
-              ) : (
-                <CommunityPopup
-                  closePopup={closeAllPopups}
-                  isVisible={isCommunityPopupOpen}
-                />
-              )}
-            </>
-          ) : (
-            <Link
-              onClick={(): void => logEvent('Nav', { Item: item.eventType })}
-              href={item.href}
-              className={styles.link}
-            >
-              {item.text}
-            </Link>
-          )}
-        </li>
-      ))}
+      {navLinkItemsData.map((item, i) => {
+        const popup = isPopup(item) ? popups[item.popupName] : undefined
+        return (
+          <li key={i} className={styles.linkItem} ref={popup?.containerEl}>
+            {isPopup(item) && popup ? (
+              <>
+                <button
+                  onClick={popup?.toggle}
+                  className={cn(
+                    styles.link,
+                    popup?.isOpen && styles.open,
+                    item.className
+                  )}
+                >
+                  {item.text}
+                  <ArrowDownSVG
+                    className={cn(styles.linkIcon, styles.arrowDownIcon)}
+                  />
+                  <ArrowUpSVG
+                    className={cn(styles.linkIcon, styles.arrowUpIcon)}
+                  />
+                </button>
+                <item.Popup isVisible={popup.isOpen} closePopup={popup.close} />
+              </>
+            ) : (
+              !isPopup(item) &&
+              item.eventType && (
+                <Link
+                  onClick={(): void =>
+                    logEvent('Nav', { Item: item.eventType })
+                  }
+                  href={item.href}
+                  className={cn(styles.link, item.className)}
+                >
+                  {item.text}
+                </Link>
+              )
+            )}
+          </li>
+        )
+      })}
     </ul>
   )
 }

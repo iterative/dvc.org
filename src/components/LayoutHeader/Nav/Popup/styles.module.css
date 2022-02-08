@@ -107,3 +107,36 @@
     }
   }
 }
+
+.otherPopup {
+  padding: 10px;
+
+  .link {
+    padding: 10px;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+
+    &:nth-child(2),
+    &:nth-child(3),
+    &:nth-child(4),
+    &:nth-child(5) {
+      display: none;
+    }
+
+    @media (--md-scr) {
+      font-size: 17px;
+      line-height: 20px;
+
+      &:nth-child(5) {
+        display: initial;
+      }
+    }
+
+    @media (--sm-scr) {
+      &:nth-child(4) {
+        display: initial;
+      }
+    }
+  }
+}
