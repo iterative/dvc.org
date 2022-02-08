@@ -68,6 +68,16 @@ y_score = [0.1, 0.4, 0.35, 0.8]
 live.log_plot("calibration", y_true, y_score)
 ```
 
+Example usage with `dvc plots`:
+
+```dvc
+$ dvc plots show 'dvclive/plots/calibration.json' \
+-x prob_pred -y prob_true \
+--x-label 'Mean Predicted Probability' \
+--y-label 'Fracion of Positives' \
+--title 'Calibration Curve'
+```
+
 ![](/img/dvclive-calibration.png)
 
 </tab>
@@ -86,6 +96,14 @@ the format expected by the confusion matrix
 y_true = [1, 1, 2, 2]
 y_pred = [2, 1, 1, 2]
 live.log_plot("confusion_matrix", y_true, y_pred)
+```
+
+Example usage with `dvc plots`:
+
+```dvc
+$ dvc plots show 'dvclive/plots/confusion_matrix.json' \
+-x actual -y predicted \
+--template confusion
 ```
 
 ![](/img/dvclive-confusion_matrix.png)
@@ -109,6 +127,14 @@ y_score = [0.1, 0.4, 0.35, 0.8]
 live.log_plot("det", y_true, y_score)
 ```
 
+Example usage with `dvc plots`:
+
+```dvc
+$ dvc plots show 'dvclive/plots/det.json' \
+-x fpr -y fnr \
+--title 'DET Curve'
+```
+
 ![](/img/dvclive-det.png)
 
 </tab>
@@ -130,6 +156,14 @@ y_score = [0.1, 0.4, 0.35, 0.8]
 live.log_plot("precision_recall", y_true, y_score)
 ```
 
+Example usage with `dvc plots`:
+
+```dvc
+$ dvc plots show 'dvclive/plots/precision_recall.json' \
+-x recall -y precision \
+--title 'Precision Recall Curve'
+```
+
 ![](/img/dvclive-precision_recall.png)
 
 </tab>
@@ -149,6 +183,14 @@ and stores the data at `{path}/plots/roc.json` in a format compatible with
 y_true = [1, 1, 2, 2]
 y_score = [0.1, 0.4, 0.35, 0.8]
 live.log_plot("roc", y_true, y_score)
+```
+
+Example usage with `dvc plots`:
+
+```dvc
+$ dvc plots show 'dvclive/plots/roc.json' \
+-x fpr -y tpr \
+--title 'ROC Curve'
 ```
 
 ![](/img/dvclive-roc.png)
