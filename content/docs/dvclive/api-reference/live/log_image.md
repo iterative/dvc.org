@@ -26,7 +26,8 @@ live.log_image("pil.png", img_pil)
 
 Supported values for `val` are:
 
-- A valid numpy array (convertible to image via `PIL.Image.fromarray`)
+- A valid numpy array (convertible to image via
+  [PIL.Image.fromarray](https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.fromarray))
 - A `PIL.Image` instance.
 
 The images will be saved in `{path}/images/{name}`:
