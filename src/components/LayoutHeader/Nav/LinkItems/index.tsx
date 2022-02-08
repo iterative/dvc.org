@@ -55,7 +55,7 @@ export const navLinkItemsData: Array<INavLinkData | INavLinkPopupData> = [
   },
   {
     text: 'Community',
-    Popup: props => <CommunityPopup {...props} />,
+    Popup: CommunityPopup,
     href: '/community',
     popupName: 'communityPopup'
   },
@@ -72,12 +72,12 @@ export const navLinkItemsData: Array<INavLinkData | INavLinkPopupData> = [
   {
     text: 'Other Tools',
     popupName: 'otherToolsPopup',
-    Popup: props => <OtherToolsPopup {...props} />
+    Popup: OtherToolsPopup
   },
   {
     text: '...',
     popupName: 'otherPopup',
-    Popup: props => <OtherPopup {...props} />,
+    Popup: OtherPopup,
     className: styles.other
   }
 ]
