@@ -74,7 +74,7 @@ Example usage with `dvc plots`:
 $ dvc plots show 'dvclive/plots/calibration.json' \
 -x prob_pred -y prob_true \
 --x-label 'Mean Predicted Probability' \
---y-label 'Fracion of Positives' \
+--y-label 'Fraction of Positives' \
 --title 'Calibration Curve'
 ```
 
