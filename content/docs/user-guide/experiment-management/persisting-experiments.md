@@ -100,7 +100,7 @@ files, etc.) can be stored in Git.
 It's up to you to decide how to organize completed experiments. Here are the
 main alternatives:
 
-<toggle>
+<toggle height="400px">
 <tab title="Git tags and branches">
 
 Use the repo's "time dimension" to distribute your experiments. This makes the
