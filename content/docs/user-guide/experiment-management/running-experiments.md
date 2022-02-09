@@ -56,69 +56,6 @@ files_ (`params.yaml` by default) and defined in `dvc.yaml`. When a tracked
 param value has changed, `dvc exp run` invalidates any stages that depend on it,
 and reproduces them.
 
-> 📖 See [reproduction `targets`](/doc/command-reference/repro#options) for all
-> the details.
-
-### Running stages independently
-
-In some cases you may need to run a stage without invoking its dependents. The
-`--single-item` (`-s`) flag allows to run the command of a single stage.
-
-> Example: for a pipeline composed of `prepare`, `train`, and `evaluate` stages
-> and you only want to run the `train` stage to check its outputs, you can do so
-> by:
->
-> ```dvc
-> $ dvc exp run --single-stage train
-> ```
-
-### Running all pipelines
-
-<abbr>DVC projects</abbr> support more than a single pipeline in one or more
-`dvc.yaml` files. In this case, you can run all pipelines with a single command:
-
-```dvc
-$ dvc exp run --all-pipelines
-```
-
-> Note that the order in which pipelines are executed is not guaranteed; Only
-> the internal order of stage execution is.
-
-(ℹ️) When your `dvc.yaml` files are organized inside recursive subfolders, you
-can run their pipeline(s) using `dvc run --recursive`.
-
-> 📖 Learn more about final experiment [organization patterns].
-
-[organization patterns]:
-  /doc/user-guide/experiment-management/persisting-experiments#organization-patterns
-
-### Running stages interactively
-
-When you want to have more granular control over which stages are run, you can
-use the `--interactive` option. This flag allows you to confirm each stage
-before running.
-
-```dvc
-$ dvc exp run --interactive
-Going to reproduce stage: 'train'... continue? [y/n]
-```
-
-> Note that `dvc exp run` is an experimentation-specific alternative to
-> `dvc repro`.
-
-## (Hyper)parameters
-
-<abbr>Parameters</abbr> are the values that modify the underlying code's
-behavior, producing different experiment results. Machine learning
-experimentation, for example, involves searching hyperparameters that improve
-the resulting model metrics.
-
-In DVC projects, parameters should be read by the code from _parameter files_
-(`params.yaml` by default). DVC parses these files to track individual param
-values. When a tracked param is changed, `dvc exp run` invalidates any stages
-that depend on it, and reruns the experiment.
-
-> Parameters can be defined in `dvc.yaml` directly or through `dvc stage add`.  
 > 📖 See `dvc params` for more details.
 
 You could manually edit a params file and run an experiment on that basis. Since
