@@ -15,7 +15,9 @@ visualization to your workflow:
 - DVC, with its [DVCLive] integration can produce plots automatically during
   training.
 
-In this sectin, we'll add visualization to [`example-dvc-experiments`][ede]
+[experiments]: /doc/start/experiments
+
+In this section, we'll add visualization to [`example-dvc-experiments`][ede]
 project. If you would like to try these yourself, please refer to the project
 [README] about how to install.
 
@@ -33,6 +35,9 @@ actual,predicted
 We added a [straightforward loop] to the project to generate this file from the
 predictions.
 
+[straightforward loop]:
+  https://github.com/iterative/example-dvc-experiments/blob/main/src/train.py#L213
+
 After running the experiment, with `dvc exp run`, DVC will produce
 `plots/confusion.csv` file that can immediately be shown in the browser:
 
@@ -49,6 +54,9 @@ classifier:
 Now, let's produce another plot to see misclassified examples from each class.
 This procedure is a bit more complex than creating a CSV file but you can see
 the code in [Github][misclassified-example-code]
+
+[misclassified-example-code]:
+  https://github.com/iterative/example-dvc-experiments/blob/main/src/train.py#L58
 
 We can see the misclassification examples in the browser:
 
