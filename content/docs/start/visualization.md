@@ -1,21 +1,23 @@
 # Visualization with DVC Plots
 
-In parallel with versioning parameters and metrics by associating them with
-experiments, DVC allows to generate plots from multivariate outputs. There are
-several options to generate and keep track of the plots:
+As we discussed in [experiments] section, DVC versions the experiments by
+associating parameters and metrics to them. On top of that, DVC can generate
+plots and tracks plot images you generated from the code. As in other aspects of
+the experiments, DVC is flexible and provides more than one option to fit
+visualization to your workflow:
 
-- DVC, with its DVCLive integration can produce plots automatically during
-  training.
-
-- DVC can generate HTML files that includes interactive Vega-Lite plots, from
+- DVC can generate HTML files that includes interactive [Vega-Lite] plots, from
   the data series in JSON, YAML, CSV, or TSV.
 
 - DVC can keep track of image files produced as plot outputs from the
   training/evaluation scripts.
 
-We'll add visualization to [`example-dvc-experiments`][ede] project. If you
-would like to try these yourself, please refer to the project [README] about how
-to install.
+- DVC, with its [DVCLive] integration can produce plots automatically during
+  training.
+
+In this sectin, we'll add visualization to [`example-dvc-experiments`][ede]
+project. If you would like to try these yourself, please refer to the project
+[README] about how to install.
 
 One of the important plots that shows the classification performance is the
 confusion matrix. DVC uses Vega-Lite to plot the text files. In order to produce
@@ -28,21 +30,11 @@ actual,predicted
 ...
 ```
 
-We add the following loop at the end of the training function:
-
-```python
-    y_prob = m.predict(x_valid)
-    y_pred = y_prob.argmax(axis=-1)
-    os.makedirs("plots")
-    with open("plots/confusion.csv", "w") as f:
-        f.write("actual,predicted\n")
-        sx = y_valid.shape[0]
-        for i in range(sx):
-            f.write(f"{y_valid.argmax()},{y_pred[i]}\n")
-```
+We added a [straightforward loop] to the project to generate this file from the
+predictions.
 
 After running the experiment, with `dvc exp run`, DVC will produce
-`plots/confusion.csv` file that can be shown in the web browser:
+`plots/confusion.csv` file that can immediately be shown in the browser:
 
 ```dvc
 $ dvc plots show plots/confusion.csv --template confusion -x actual -y predicted
@@ -55,8 +47,8 @@ classifier:
 ![confusion matrix](/img/start_visualization_confusion1.png)
 
 Now, let's produce another plot to see misclassified examples from each class.
-This procedure is a bit more complex than creating a CSV file, and skipped here,
-but you can see the code in [Github][misclassified-example-code]
+This procedure is a bit more complex than creating a CSV file but you can see
+the code in [Github][misclassified-example-code]
 
 We can see the misclassification examples in the browser:
 
