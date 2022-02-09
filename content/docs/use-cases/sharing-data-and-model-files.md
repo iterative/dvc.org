@@ -60,7 +60,7 @@ $ git push
 
 ## Upload data and code
 
-After adding data to the <abbr>project</abbr> with `dvc run` or other commands,
+After adding data to the <abbr>project</abbr> with `dvc add` or other commands,
 it'll be stored in your local <abbr>cache</abbr>. Upload it to remote storage
 with the `dvc push` command:
 
