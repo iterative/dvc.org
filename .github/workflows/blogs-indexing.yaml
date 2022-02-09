@@ -20,7 +20,7 @@ jobs:
           echo ALGOLIA_ADMIN_KEY=${{ secrets.ALGOLIA_ADMIN_KEY }} >> .env
           echo GATSBY_ALGOLIA_INDEX_NAME=${{ secrets.GATSBY_ALGOLIA_INDEX_NAME }} >> .env
 
-      - name: Install dependencies and run build
-        run: |
-          yarn install --immutable --immutable-cache --check-cache
-          yarn build
+      - name: Install dependencies
+        run: yarn install --immutable --immutable-cache --check-cache
+      - name: Build and index blogs on postBuild
+        run: yarn build
