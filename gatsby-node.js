@@ -1,11 +1,11 @@
 require('dotenv').config()
 const path = require('path')
-global.__basedir = __dirname
-
+const mkdirp = require('mkdirp')
+const sharp = require('sharp')
 const { setPageContext } = require('./src/gatsby/common')
-
 const models = require('./src/gatsby/models.js')
 const callOnModels = require('./src/gatsby/utils/models')
+const { BLOG } = require('./src/consts')
 
 exports.createSchemaCustomization = api =>
   callOnModels(models, 'createSchemaCustomization', api)
@@ -51,4 +51,44 @@ exports.onCreateWebpackConfig = ({ stage, actions, getConfig }) => {
       }
     }
   })
+}
+
+exports.onPostBuild = async ({ graphql }) => {
+  try {
+    const {
+      data: {
+        allBlogPost: { nodes }
+      }
+    } = await graphql(`
+      query GetBlogMainImages {
+        allBlogPost {
+          nodes {
+            picture {
+              fields {
+                sourcePath
+              }
+            }
+            date
+          }
+        }
+      }
+    `)
+    await Promise.all(
+      nodes.map(async node => {
+        const imagePath = node.picture.fields.sourcePath
+        const dirPath = path.dirname(
+          path.join(__dirname, 'public', 'blog', imagePath)
+        )
+        await mkdirp(dirPath, { recursive: true })
+        return sharp(path.join(__dirname, 'static', 'uploads', imagePath))
+          .resize({ width: BLOG.mageMaxWidthHero })
+          .toFile(path.join(__dirname, 'public', 'blog', imagePath))
+          .catch(err => {
+            console.error(err)
+          })
+      })
+    )
+  } catch (err) {
+    console.error(err)
+  }
 }
