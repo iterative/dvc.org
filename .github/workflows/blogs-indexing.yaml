@@ -1,0 +1,26 @@
+name: Indexing blogs
+on:
+  push:
+    branches: ['search-blogs-ci-indexing']
+jobs:
+  build-and-indexing blogs:
+    name: Build and indexing blogs
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install Node.js and use yarn
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14.x'
+          yarn: true
+      - name: create env file
+        run: |
+          touch .env
+          echo GATSBY_ALGOLIA_APP_ID=${{ secrets.GATSBY_ALGOLIA_APP_ID }} >> .env
+          echo ALGOLIA_ADMIN_KEY=${{ secrets.ALGOLIA_ADMIN_KEY }} >> .env
+          echo GATSBY_ALGOLIA_INDEX_NAME=${{ secrets.GATSBY_ALGOLIA_INDEX_NAME }} >> .env
+
+      - name: Install dependencies and run build
+        run: |
+          yarn install --immutable --immutable-cache --check-cache
+          yarn build
