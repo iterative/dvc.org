@@ -3,7 +3,7 @@ on:
   push:
     branches: ['search-blogs-ci-indexing']
 jobs:
-  build-and-indexing blogs:
+  build-and-indexing-blogs:
     name: Build and indexing blogs
     runs-on: ubuntu-latest
     steps:
