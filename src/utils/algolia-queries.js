@@ -12,6 +12,7 @@ const pageQuery = `{
         title
         description
         date
+        gitDateTime
         ... on Node {
           parent {
             ... on MarkdownRemark {
@@ -27,6 +28,7 @@ const pageQuery = `{
 function pageToAlgoliaRecord({
   node: {
     id,
+    gitDateTime,
     parent: { excerpt },
     ...rest
   }
@@ -34,6 +36,7 @@ function pageToAlgoliaRecord({
   return {
     objectID: id,
     excerpt,
+    modified: gitDateTime,
     ...rest
   }
 }
@@ -42,6 +45,7 @@ const queries = [
   {
     query: pageQuery,
     transformer: ({ data }) => data.pages.edges.map(pageToAlgoliaRecord),
+    matchFields: ['slug', 'modified'],
     indexName,
     settings: { attributesToSnippet: [`excerpt:20`] }
   }

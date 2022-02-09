@@ -156,7 +156,9 @@ const plugins = [
         process.env.ALGOLIA_ADMIN_KEY
           ? false
           : true,
-      queries: require('./src/utils/algolia-queries.js')
+      queries: require('./src/utils/algolia-queries.js'),
+      enablePartialUpdates: true,
+      matchFields: ['slug', 'modified']
     }
   },
   {
