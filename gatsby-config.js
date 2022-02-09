@@ -150,9 +150,12 @@ const plugins = [
     options: {
       appId: process.env.GATSBY_ALGOLIA_APP_ID,
       apiKey: process.env.ALGOLIA_ADMIN_KEY,
-      skipIndexing: !(
-        process.env.GATSBY_ALGOLIA_APP_ID && process.env.ALGOLIA_ADMIN_KEY
-      ),
+      skipIndexing:
+        process.env.CI &&
+        process.env.GATSBY_ALGOLIA_APP_ID &&
+        process.env.ALGOLIA_ADMIN_KEY
+          ? false
+          : true,
       queries: require('./src/utils/algolia-queries.js')
     }
   },

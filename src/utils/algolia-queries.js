@@ -1,7 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 require('dotenv').config()
 
-const indexName = process.env.GATSBY_ALGOLIA_INDEX_NAME || 'dev_blogs'
+const indexName = process.env.GATSBY_ALGOLIA_INDEX_NAME || 'dvc_blogs'
 
 const pageQuery = `{
   pages: allBlogPost {
