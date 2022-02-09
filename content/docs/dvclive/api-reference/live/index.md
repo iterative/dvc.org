@@ -31,10 +31,10 @@ other metadata.
 
 ## Attributes
 
-- `dir` - Location of the [metrics history](/doc/dvclive/get-started#history)
-  directory.
+- `dir` - Location of the directory to store
+  [outputs](/doc/dvclive/get-started#outputs).
 - `summary_path` - Location of the
-  [summary](/doc/dvclive/get-started#metrics-summary).
+  [summary](/doc/dvclive/api-reference/live/#parameters).
 - `html_path` - Location of the
   [html report](/doc/dvclive/dvclive-with-dvc#html-report).
 
@@ -68,6 +68,8 @@ other metadata.
 ## Methods
 
 - `Live.log()`
+- `Live.log_image()`
+- `Live.log_plot()`
 - `Live.get_step()`
 - `Live.next_step()`
 - `Live.set_step()`

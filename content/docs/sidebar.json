@@ -667,6 +667,14 @@
                 "label": "log()"
               },
               {
+                "slug": "log_image",
+                "label": "log_image()"
+              },
+              {
+                "slug": "log_plot",
+                "label": "log_plot()"
+              },
+              {
                 "slug": "get_step",
                 "label": "get_step()"
               },
