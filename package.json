@@ -9,6 +9,7 @@
     "clean": "gatsby clean",
     "author": "LIMIT_BLOG_PAGES=1 SKIP_DOCS=true gatsby develop",
     "build": "gatsby build",
+    "build:incremental": "GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true gatsby build",
     "start": "node ./src/server/index.js",
     "heroku-postbuild": "./scripts/heroku-deploy.sh",
     "test": "jest",

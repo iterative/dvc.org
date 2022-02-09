@@ -21,8 +21,18 @@ jobs:
       - name: Yarn cache directory
         id: yarn-cache-dir
         run: echo "::set-output name=dir::$(yarn cache dir)"
+      - name: Gatsby Cache Folder
+        uses: actions/cache@v2
+        with:
+          key: gatsby-cache-folder
+          path: .cache
+      - name: Gatsby Public Folder
+        uses: actions/cache@v2
+        with:
+          key: gatsby-public-folder
+          path: public
       - name: Yarn cache
-        uses: actions/cache@v1
+        uses: actions/cache@v2
         with:
           path: ${{ steps.yarn-cache-dir.outputs.dir }}
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
@@ -31,4 +41,4 @@ jobs:
       - name: Install dependencies
         run: yarn install --immutable --immutable-cache --check-cache
       - name: Build and index blogs on postBuild
-        run: yarn build
+        run: yarn run build:incremental
