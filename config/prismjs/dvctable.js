@@ -49,6 +49,15 @@ Prism.languages.dvctable = {
           ...boldAndItalicConfig
         }
       },
+      'bg-violet': {
+        pattern: getTableTextBgColorRegex('(violet|dep)'),
+        inside: {
+          hide: {
+            pattern: /(violet|dep):/
+          },
+          ...boldAndItalicConfig
+        }
+      },
       ...boldAndItalicConfig
     }
   }

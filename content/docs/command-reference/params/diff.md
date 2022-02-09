@@ -26,7 +26,7 @@ repository history. The differences shown by this command include the old and
 new param values, along with the param name.
 
 > Parameter dependencies are defined in the `params` field of `dvc.yaml` (e.g.
-> with the the `-p` (`--params`) option of `dvc run`).
+> with the the `-p` (`--params`) option of `dvc stage add`).
 
 Without arguments, `dvc params diff` compares parameters currently present in
 the <abbr>workspace</abbr> (uncommitted changes) with the latest committed
@@ -95,10 +95,10 @@ Define a pipeline [stage](/doc/command-reference/run) with parameter
 dependencies:
 
 ```dvc
-$ dvc run -n train \
-          -d train.py -d users.csv -o model.pkl \
-          -p lr,train \
-          python train.py
+$ dvc stage add -n train \
+                -d train.py -d users.csv -o model.pkl \
+                -p lr,train \
+                python train.py
 ```
 
 Let's now print parameter values that we are tracking in this

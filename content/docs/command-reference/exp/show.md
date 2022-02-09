@@ -21,24 +21,27 @@ usage: dvc exp show [-h] [-q | -v] [-a] [-T] [-A] [-n <num>]
 
 Displays experiments and
 [checkpoints](/doc/command-reference/exp/run#checkpoints) in a detailed table
-which includes their parent and name (or hash), as well as project metrics and
-parameters. Only the experiments derived from the Git `HEAD` are shown by
-default but all experiments can be included with the `--all-commits` option.
-Example:
+which includes their parent and name (or hash), as well as colored columns for
+(left to right): metrics (yellow), parameters (blue) and
+<abbr>dependencies</abbr> (violet).
+
+Only the experiments derived from the Git `HEAD` are shown by default but all
+experiments can be included with the `--all-commits` option. Example:
 
 ```dvc
 $ dvc exp show
 ```
 
 ```dvctable
- ───────────────────────────────────────────────────────────────────
-  neutral:**Experiment**      metric:**avg_prec**   metric:**roc_auc**   param:**train.n_est**  param:**train.min_split**
- ───────────────────────────────────────────────────────────────────
-  workspace        0.56191   0.93345   50           2
-  master           0.55259   0.91536   50           2
-  ├── exp-bfe64    0.57833   0.95555   50           8
-  └── exp-ad5b1    0.56191   0.93345   50           2
- ───────────────────────────────────────────────────────────────────
+ ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  neutral:**Experiment**                  neutral:**Created**        metric:**avg_prec**   metric:**roc_auc**   param:**featurize.max_features**   dep:**model.pkl**   dep:**data/features**
+ ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  workspace                   -               0.60405    0.9608   3000                     484fab5     52c1fdd
+  random-forest-experiments   May 29, 2021    0.60405    0.9608   3000                     484fab5     52c1fdd
+  ├── a2efdc9 [exp-68ac9]     10:21 PM        0.55669   0.93516   1000                     e2b5a9a     1b2d542
+  ├── e7bd029 [exp-25e9a]     10:21 PM        0.58589     0.945   2000                     7aae464     2ac217b
+  └── 56f3be3 [exp-8f5c4]     10:21 PM        0.51799   0.92333   500                      cfbfed4     64ed644
+ ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 ```
 
 Your terminal will enter a
@@ -46,9 +49,10 @@ Your terminal will enter a
 which you can typically exit by typing `Q`. Use `--no-pager` to print the table
 to standard output.
 
-By default, the printed experiments table will include columns for all metrics
-and params from the entire project. The `--only-changed`, `--drop`, `--keep`,
-and other [options](#options) can determine which ones should be displayed.
+By default, the printed experiments table will include columns for all metrics,
+parameters and dependencies from the entire project. The `--only-changed`,
+`--drop`, `--keep`, and other [options](#options) can determine which columns
+should be displayed.
 
 Experiments in the table are first grouped (by parent commit). They are then
 sorted inside each group, chronologically by default. The `--sort-by` and
@@ -82,8 +86,8 @@ will be generated using the same data from the table.
 
 - `--param-deps` - include only parameters that are stage dependencies.
 
-- `--only-changed` - show only parameters and metrics with values that vary
-  across experiments.
+- `--only-changed` - show only metrics, parameters and dependencies with values
+  that vary across experiments.
 
 - `--drop <regex>` - remove the matching columns. This option has higher
   priority than `--only-changed`. If both options are combined, `--drop` will
@@ -138,23 +142,23 @@ will be generated using the same data from the table.
 
 Let's say we have run 3 experiments in our project. The basic usage shows the
 workspace (Git working tree) and experiments derived from `HEAD` (`master`
-branch in this case), and all of their metrics and params (scroll right to see
-all):
+branch in this case), and all of their metrics, parameters and dependencies
+(scroll right to see all):
 
 ```dvc
 $ dvc exp show
 ```
 
 ```dvctable
- ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-  neutral:**Experiment**                neutral:**Created**        metric:**avg_prec**   metric:**roc_auc**   param:**prepare.split**   param:**prepare.seed**   param:**featurize.max_features**   param:**featurize.ngrams**   param:**train.seed**   param:**train.n_est**   param:**train.min_split**
- ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-  workspace                 -               0.60405    0.9608   0.2             20170428       3000                     2                  20170428     100           64
-  master                    May 29, 2021    0.60405    0.9608   0.2             20170428       3000                     2                  20170428     100           64
-  ├── d384680 [exp-bc055]   08:03 PM        0.51799   0.92333   0.2             20170428       500                      2                  20170428     100           64
-  ├── 6b338f8 [exp-3315b]   08:03 PM        0.58589     0.945   0.2             20170428       2000                     2                  20170428     100           64
-  └── d7fdde2 [exp-1b262]   08:03 PM        0.56447   0.94713   0.2             20170428       1500                     2                  20170428     100           64
- ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+ ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  neutral:**Experiment**                  neutral:**Created**        metric:**avg_prec**   metric:**roc_auc**   param:**prepare.split**   param:**prepare.seed**   param:**featurize.max_features**   param:**featurize.ngrams**   param:**train.seed**   param:**train.n_est**   param:**train.min_split**   dep:**data/prepared**   dep:**src/train.py**   dep:**src/evaluate.py**   dep:**src/prepare.py**   dep:**data/features**   dep:**data/data.xml**   dep:**model.pkl**   dep:**src/featurization.py**
+ ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  workspace                   -               0.60405    0.9608   0.2             20170428       3000                     2                  20170428     100           64                20b786b         9ab9549        fb7b520           51549a1          52c1fdd         a304afb         484fab5     61c5927
+  random-forest-experiments   May 29, 2021    0.60405    0.9608   0.2             20170428       3000                     2                  20170428     100           64                20b786b         9ab9549        fb7b520           51549a1          52c1fdd         a304afb         484fab5     61c5927
+  ├── e7bd029 [exp-25e9a]     10:21 PM        0.58589     0.945   0.2             20170428       2000                     2                  20170428     100           64                20b786b         9ab9549        fb7b520           51549a1          2ac217b         a304afb         7aae464     61c5927
+  ├── a2efdc9 [exp-68ac9]     10:21 PM        0.55669   0.93516   0.2             20170428       1000                     2                  20170428     100           64                20b786b         9ab9549        fb7b520           51549a1          1b2d542         a304afb         e2b5a9a     61c5927
+  └── 56f3be3 [exp-8f5c4]     10:21 PM        0.51799   0.92333   0.2             20170428       500                      2                  20170428     100           64                20b786b         9ab9549        fb7b520           51549a1          64ed644         a304afb         cfbfed4     61c5927
+ ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 ```
 
 > You can exit this screen with `Q`, typically.
@@ -167,15 +171,15 @@ $ dvc exp show --only-changed
 ```
 
 ```dvctable
- ──────────────────────────────────────────────────────────────────────────────────────
-  neutral:**Experiment**                neutral:**Created**        metric:**avg_prec**   metric:**roc_auc**   param:**featurize.max_features**
- ──────────────────────────────────────────────────────────────────────────────────────
-  workspace                 -               0.60405    0.9608   3000
-  master                    May 29, 2021    0.60405    0.9608   3000
-  ├── d7fdde2 [exp-1b262]   08:03 PM        0.56447   0.94713   1500
-  ├── 6b338f8 [exp-3315b]   08:03 PM        0.58589     0.945   2000
-  └── d384680 [exp-bc055]   08:03 PM        0.51799   0.92333   500
- ──────────────────────────────────────────────────────────────────────────────────────
+ ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  neutral:**Experiment**                  neutral:**Created**        metric:**avg_prec**   metric:**roc_auc**   param:**featurize.max_features**   dep:**model.pkl**   dep:**data/features**
+ ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  workspace                   -               0.60405    0.9608   3000                     484fab5     52c1fdd
+  random-forest-experiments   May 29, 2021    0.60405    0.9608   3000                     484fab5     52c1fdd
+  ├── a2efdc9 [exp-68ac9]     10:21 PM        0.55669   0.93516   1000                     e2b5a9a     1b2d542
+  ├── e7bd029 [exp-25e9a]     10:21 PM        0.58589     0.945   2000                     7aae464     2ac217b
+  └── 56f3be3 [exp-8f5c4]     10:21 PM        0.51799   0.92333   500                      cfbfed4     64ed644
+ ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 ```
 
 You can also use `--drop` to filter specific columns:
@@ -185,15 +189,15 @@ $ dvc exp show --drop prepare
 ```
 
 ```dvctable
- ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-  neutral:**Experiment**                neutral:**Created**        metric:**avg_prec**   metric:**roc_auc**   param:**featurize.max_features**   param:**featurize.ngrams**   param:**train.seed**   param:**train.n_est**   param:**train.min_split**
- ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-  workspace                 -               0.60405    0.9608   3000                     2                  20170428     100           64
-  master                    May 29, 2021    0.60405    0.9608   3000                     2                  20170428     100           64
-  ├── 6b338f8 [exp-3315b]   08:03 PM        0.58589     0.945   2000                     2                  20170428     100           64
-  ├── d384680 [exp-bc055]   08:03 PM        0.51799   0.92333   500                      2                  20170428     100           64
-  └── d7fdde2 [exp-1b262]   08:03 PM        0.56447   0.94713   1500                     2                  20170428     100           64
- ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+ ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  neutral:**Experiment**                  neutral:**Created**        metric:**avg_prec**   metric:**roc_auc**   param:**featurize.max_features**   param:**featurize.ngrams**   param:**train.seed**   param:**train.n_est**   param:**train.min_split**   dep:**data/prepared**   dep:**model.pkl**   dep:**data/data.xml**   dep:**src/prepare.py**   dep:**data/features**   dep:**src/evaluate.py**   dep:**src/featurization.py**   dep:**src/train.py**
+ ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  workspace                   -               0.60405    0.9608   3000                     2                  20170428     100           64                20b786b         484fab5     a304afb         51549a1          52c1fdd         fb7b520           61c5927                9ab9549
+  random-forest-experiments   May 29, 2021    0.60405    0.9608   3000                     2                  20170428     100           64                20b786b         484fab5     a304afb         51549a1          52c1fdd         fb7b520           61c5927                9ab9549
+  ├── e7bd029 [exp-25e9a]     10:21 PM        0.58589     0.945   2000                     2                  20170428     100           64                20b786b         7aae464     a304afb         51549a1          2ac217b         fb7b520           61c5927                9ab9549
+  ├── a2efdc9 [exp-68ac9]     10:21 PM        0.55669   0.93516   1000                     2                  20170428     100           64                20b786b         e2b5a9a     a304afb         51549a1          1b2d542         fb7b520           61c5927                9ab9549
+  └── 56f3be3 [exp-8f5c4]     10:21 PM        0.51799   0.92333   500                      2                  20170428     100           64                20b786b         cfbfed4     a304afb         51549a1          64ed644         fb7b520           61c5927                9ab9549
+ ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 ```
 
 You can use [regex][regex] to match columns. For example, to remove multiple
@@ -204,15 +208,15 @@ $ dvc exp show --drop 'avg_prec|train.min_split'
 ```
 
 ```dvctable
- ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-  neutral:**Experiment**                neutral:**Created**        metric:**roc_auc**   param:**prepare.split**   param:**prepare.seed**   param:**featurize.max_features**   param:**featurize.ngrams**   param:**train.seed**   param:**train.n_est**
- ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-  workspace                 -               0.9608   0.2             20170428       3000                     2                  20170428     100
-  master                    May 29, 2021    0.9608   0.2             20170428       3000                     2                  20170428     100
-  ├── d384680 [exp-bc055]   Dec 17, 2021   0.92333   0.2             20170428       500                      2                  20170428     100
-  ├── d7fdde2 [exp-1b262]   Dec 17, 2021   0.94713   0.2             20170428       1500                     2                  20170428     100
-  └── 6b338f8 [exp-3315b]   Dec 17, 2021     0.945   0.2             20170428       2000                     2                  20170428     100
- ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+ ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  neutral:**Experiment**                     neutral:**Created**        metric:**roc_auc**   param:**prepare.split**   param:**prepare.seed**   param:**featurize.max_features**   param:**featurize.ngrams**   param:**train.seed**   param:**train.n_est**   dep:**src/prepare.py**   dep:**data/prepared**   dep:**data/features**   dep:**data/data.xml**   dep:**src/evaluate.py**   dep:**src/featurization.py**   dep:**src/train.py**   dep:**model.pkl**
+ ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  workspace                      -               0.9608   0.2             20170428       3000                     2                  20170428     100           51549a1          20b786b         52c1fdd         a304afb         fb7b520           61c5927                9ab9549        484fab5
+  11-random-forest-experiments   May 29, 2021    0.9608   0.2             20170428       3000                     2                  20170428     100           51549a1          20b786b         52c1fdd         a304afb         fb7b520           61c5927                9ab9549        484fab5
+  ├── a2efdc9 [exp-68ac9]        10:21 PM       0.93516   0.2             20170428       1000                     2                  20170428     100           51549a1          20b786b         1b2d542         a304afb         fb7b520           61c5927                9ab9549        e2b5a9a
+  ├── e7bd029 [exp-25e9a]        10:21 PM         0.945   0.2             20170428       2000                     2                  20170428     100           51549a1          20b786b         2ac217b         a304afb         fb7b520           61c5927                9ab9549        7aae464
+  └── 56f3be3 [exp-8f5c4]        10:21 PM       0.92333   0.2             20170428       500                      2                  20170428     100           51549a1          20b786b         64ed644         a304afb         fb7b520           61c5927                9ab9549        cfbfed4
+ ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 ```
 
 If combined `--only-changed` has the least priority, `--drop` comes next, and
@@ -223,15 +227,15 @@ $ dvc exp show --only-changed --drop Created --keep 'train.(?!seed)'
 ```
 
 ```dvctable
- ───────────────────────────────────────────────────────────────────────────────────────────────────────
-  neutral:**Experiment**                metric:**avg_prec**   metric:**roc_auc**   param:**featurize.max_features**   param:**train.n_est**   param:**train.min_split**
- ───────────────────────────────────────────────────────────────────────────────────────────────────────
-  workspace                  0.60405    0.9608   3000                     100           64
-  master                     0.60405    0.9608   3000                     100           64
-  ├── d384680 [exp-bc055]    0.51799   0.92333   500                      100           64
-  ├── 6b338f8 [exp-3315b]    0.58589     0.945   2000                     100           64
-  └── d7fdde2 [exp-1b262]    0.56447   0.94713   1500                     100           64
- ───────────────────────────────────────────────────────────────────────────────────────────────────────
+ ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  neutral:**Experiment**                  metric:**avg_prec**   metric:**roc_auc**   param:**featurize.max_features**   param:**train.n_est**   param:**train.min_split**   dep:**model.pkl**   dep:**data/features**
+ ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  workspace                    0.60405    0.9608   3000                     100           64                484fab5     52c1fdd
+  random-forest-experiments    0.60405    0.9608   3000                     100           64                484fab5     52c1fdd
+  ├── e7bd029 [exp-25e9a]      0.58589     0.945   2000                     100           64                7aae464     2ac217b
+  ├── a2efdc9 [exp-68ac9]      0.55669   0.93516   1000                     100           64                e2b5a9a     1b2d542
+  └── 56f3be3 [exp-8f5c4]      0.51799   0.92333   500                      100           64                cfbfed4     64ed644
+ ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 ```
 
 Sort experiments by the `roc_auc` metric, in descending order:
@@ -241,15 +245,15 @@ $ dvc exp show --only-changed --sort-by=roc_auc --sort-order desc
 ```
 
 ```dvctable
- ──────────────────────────────────────────────────────────────────────────────────────
-  neutral:**Experiment**                neutral:**Created**        metric:**avg_prec**   metric:**roc_auc**   param:**featurize.max_features**
- ──────────────────────────────────────────────────────────────────────────────────────
-  workspace                 -               0.60405    0.9608   3000
-  master                    May 29, 2021    0.60405    0.9608   3000
-  ├── d7fdde2 [exp-1b262]   08:03 PM        0.56447   0.94713   1500
-  ├── 6b338f8 [exp-3315b]   08:03 PM        0.58589     0.945   2000
-  └── d384680 [exp-bc055]   08:03 PM        0.51799   0.92333   500
- ──────────────────────────────────────────────────────────────────────────────────────
+ ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  neutral:**Experiment**                     neutral:**Created**        metric:**avg_prec**   metric:**roc_auc**   param:**featurize.max_features**   dep:**model.pkl**   dep:**data/features**
+ ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  workspace                      -               0.60405    0.9608   3000                     484fab5     52c1fdd
+  11-random-forest-experiments   May 29, 2021    0.60405    0.9608   3000                     484fab5     52c1fdd
+  ├── e7bd029 [exp-25e9a]        10:21 PM        0.58589     0.945   2000                     7aae464     2ac217b
+  ├── a2efdc9 [exp-68ac9]        10:21 PM        0.55669   0.93516   1000                     e2b5a9a     1b2d542
+  └── 56f3be3 [exp-8f5c4]        10:21 PM        0.51799   0.92333   500                      cfbfed4     64ed644
+ ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 ```
 
 To see all experiments throughout the Git history:
@@ -259,27 +263,27 @@ $ dvc exp show --all-commits --only-changed --sort-by=roc_auc
 ```
 
 ```dvctable
- ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-  neutral:**Experiment**                neutral:**Created**        metric:**avg_prec**   metric:**roc_auc**   param:**featurize.max_features**   param:**featurize.ngrams**   param:**train.n_est**   param:**train.min_split**
- ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-  workspace                 -               0.60405    0.9608   3000                     2                  100           64
-  try-large-dataset         Jun 01, 2021    0.67038   0.96693   3000                     2                  100           64
-  master                    May 29, 2021    0.60405    0.9608   3000                     2                  100           64
-  ├── d384680 [exp-bc055]   08:03 PM        0.51799   0.92333   500                      2                  100           64
-  ├── 6b338f8 [exp-3315b]   08:03 PM        0.58589     0.945   2000                     2                  100           64
-  └── d7fdde2 [exp-1b262]   08:03 PM        0.56447   0.94713   1500                     2                  100           64
-  cc51022                   May 28, 2021    0.55259   0.91536   1500                     2                  50            2
-  7ab3585                   May 27, 2021    0.52048    0.9032   1500                     2                  50            2
-  53b2d9d                   May 25, 2021    0.52048    0.9032   500                      1                  50            2
-  872cd6c                   May 24, 2021          -         -   500                      1                  50            2
-  8188b34                   May 23, 2021          -         -   500                      1                  50            2
-  9244ec3                   May 22, 2021          -         -   500                      1                  50            2
-  08a3b89                   May 21, 2021          -         -   -                        -                  -             -
-  16ba2cd                   May 20, 2021          -         -   -                        -                  -             -
-  f0c0269                   May 18, 2021          -         -   -                        -                  -             -
-  3e07290                   May 17, 2021          -         -   -                        -                  -             -
-  90b2aea                   May 16, 2021          -         -   -                        -                  -             -
- ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+ ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  neutral:**Experiment**                     neutral:**Created**        metric:**avg_prec**   metric:**roc_auc**   param:**prepare.split**   param:**prepare.seed**   param:**featurize.max_features**   param:**featurize.ngrams**   param:**train.seed**   param:**train.n_est**   param:**train.min_split**   dep:**src/train.py**   dep:**model.pkl**   dep:**data/data.xml**   dep:**src/evaluate.py**   dep:**data/features**   dep:**src/prepare.py**   dep:**data/prepared**   dep:**src/featurization.py**
+ ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  workspace                      -               0.60405    0.9608   0.2             20170428       3000                     2                  20170428     100           64                9ab9549        484fab5     a304afb         fb7b520           52c1fdd         51549a1          20b786b         61c5927
+  bee447d                        Jun 01, 2021    0.67038   0.96693   0.2             20170428       3000                     2                  20170428     100           64                9ab9549        fe89bd4     c1fa36d         fb7b520           7c68668         51549a1          030d866         61c5927
+  11-random-forest-experiments   May 29, 2021    0.60405    0.9608   0.2             20170428       3000                     2                  20170428     100           64                9ab9549        484fab5     a304afb         fb7b520           52c1fdd         51549a1          20b786b         61c5927
+  ├── 56f3be3 [exp-8f5c4]        10:21 PM        0.51799   0.92333   0.2             20170428       500                      2                  20170428     100           64                9ab9549        cfbfed4     a304afb         fb7b520           64ed644         51549a1          20b786b         61c5927
+  ├── a2efdc9 [exp-68ac9]        10:21 PM        0.55669   0.93516   0.2             20170428       1000                     2                  20170428     100           64                9ab9549        e2b5a9a     a304afb         fb7b520           1b2d542         51549a1          20b786b         61c5927
+  └── e7bd029 [exp-25e9a]        10:21 PM        0.58589     0.945   0.2             20170428       2000                     2                  20170428     100           64                9ab9549        7aae464     a304afb         fb7b520           2ac217b         51549a1          20b786b         61c5927
+  bigrams-experiment             May 28, 2021    0.55259   0.91536   0.2             20170428       1500                     2                  20170428     50            2                 9ab9549        17b3d1e     a304afb         fb7b520           f237c73         51549a1          20b786b         61c5927
+  9-bigrams-model                May 27, 2021    0.52048    0.9032   0.2             20170428       1500                     2                  20170428     50            2                 9ab9549        c4c0670     a304afb         fb7b520           2b5e0fd         51549a1          20b786b         61c5927
+  8-evaluation                   May 25, 2021    0.52048    0.9032   0.2             20170428       500                      1                  20170428     50            2                 9ab9549        c4c0670     a304afb         fb7b520           2b5e0fd         51549a1          20b786b         61c5927
+  7-ml-pipeline                  May 24, 2021          -         -   0.2             20170428       500                      1                  20170428     50            2                 9ab9549        -           a304afb         -                 2b5e0fd         51549a1          20b786b         61c5927
+  6-prepare-stage                May 23, 2021          -         -   0.2             20170428       500                      1                  20170428     50            2                 -              -           a304afb         -                 -               51549a1          -               -
+  5-source-code                  May 22, 2021          -         -   0.2             20170428       500                      1                  20170428     50            2                 -              -           -               -                 -               -                -               -
+  4-import-data                  May 21, 2021          -         -   -               -              -                        -                  -            -             -                 -              -           -               -                 -               -                -               -
+  3-config-remote                May 20, 2021          -         -   -               -              -                        -                  -            -             -                 -              -           -               -                 -               -                -               -
+  2-track-data                   May 18, 2021          -         -   -               -              -                        -                  -            -             -                 -              -           -               -                 -               -                -               -
+  1-dvc-init                     May 17, 2021          -         -   -               -              -                        -                  -            -             -                 -              -           -               -                 -               -                -               -
+  0-git-init                     May 16, 2021          -         -   -               -              -                        -                  -            -             -                 -              -           -               -                 -               -                -               -
+ ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 ```
 
 Note that in this example, Git commits remain in chronological order. The
@@ -309,7 +313,7 @@ Combine with other flags for further filtering:
 
 ```dvc
 $ dvc exp show --all-branches --pcp --sort-by roc_auc
-               --exclude-metrics avg_prec
+               --drop avg_prec
 ```
 
 ![](/img/ref_pcp_filter.png) _Excluded avg_prec column_

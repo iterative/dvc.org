@@ -6,8 +6,8 @@ title: 'Get Started: Experiments'
 
 In machine learning projects, the number of <abbr>experiments</abbr> grows
 rapidly. DVC can track these experiments, list and compare their most relevant
-parameters and metrics, navigate among them, and commit only the ones that we
-need to Git.
+metrics, parameters, and dependencies, navigate among them, and commit only the
+ones that we need to Git.
 
 > ⚠️This video is out-of-date and will be updated soon! Where there are
 > discrepancies between docs and video, please follow the docs.
@@ -21,39 +21,34 @@ the [`example-dvc-experiments`][ede] project.
 
 <details>
 
-### ⚙️ Installing the example project
+## ⚙️ Initializing a project with DVC experiments
 
-These commands are run in the [`example-dvc-experiments`][ede] project. You can
-run the commands in this document after cloning the repository, installing the
-requirements, and pulling the data.
+If you already have a DVC project, that's great. You can start to use `dvc exp`
+commands right away to run experiments in your project. (See the [User Guide]
+for detailed information.) Here, we briefly discuss how to structure an ML
+project with DVC experiments using `dvc exp init`.
 
-#### Clone the project and create virtual environment
+[user guide]: /doc/user-guide/experiment-management/experiments-overview
 
-Please clone the project and create a virtual environment.
-
-> We strongly recommend to create a virtual environment to keep the libraries we
-> use isolated from the rest of your system. This prevents version conflicts.
-
-```dvc
-$ git clone https://github.com/iterative/example-dvc-experiments -b get-started
-$ cd example-dvc-experiments
-$ virtualenv .venv
-$ . .venv/bin/activate
-$ python -m pip install -r requirements.txt
-```
-
-#### Get the data set
-
-The repository we cloned doesn't contain the dataset. Instead of storing the
-data in the Git repository, we use DVC to retrieve from a shared data store. In
-this case, we use `dvc pull` to update the missing data files.
+A typical machine learning project has data, a set of scripts that train a
+model, a bunch of hyperparameters that tune training and models, and outputs
+metrics and plots to evaluate the models. `dvc exp init` has sane defaults about
+the names of these elements to initialize a project:
 
 ```dvc
-$ dvc pull
+$ dvc exp init python src/train.py
 ```
 
-The repository already contains the necessary configuration to run the
-experiments.
+Here, `python src/train.py` specifies how you run experiments. It could be any
+other command.
+
+If your project uses different names for them, you can set directories for
+source code (default: `src/`), data (`data/`), models (`models/`), plots
+(`plots/`), and files for hyperparameters (`params.yaml`), metrics
+(`metrics.json`) with the options supplied to `dvc exp init`.
+
+You can also set these options in a dialog format with
+`dvc exp init --interactive`.
 
 </details>
 
@@ -68,18 +63,12 @@ Experiment results have been applied to your workspace.
 ...
 ```
 
-It runs the specified command (`python train.py`) in `dvc.yaml`. That command
-writes the metrics values to `metrics.json`.
+It runs the command we specified (`python train.py`), and creates models, plots
+and metrics in respective directories.
 
 This experiment is then associated with the values found in the parameters file
 (`params.yaml`), and other dependencies (`data/images/`) with these produced
 metrics.
-
-The purpose of the `dvc exp` family of commands is to let you run, capture, and
-compare the machine learning experiments at once as you iterate on your project.
-The artifacts like models and metrics produced by each experiment are tracked by
-DVC, and the associated parameters and metrics can be committed to Git as text
-files.
 
 You can review the experiment results with `dvc exp show` and see these metrics
 and results in a nicely formatted table:
@@ -89,13 +78,13 @@ $ dvc exp show
 ```
 
 ```dvctable
- ─────────────────────────────────────────────────────────────────────────────────────────────
-  white:**Experiment**                white:**Created**           yellow:**loss**      yellow:**acc**   blue:**train.epochs**   blue:**model.conv_units**
- ─────────────────────────────────────────────────────────────────────────────────────────────
-  workspace                 -              0.23282   0.9152   10             16
-  7317bc6                   Jul 18, 2021         -        -   10             16
-  └── 1a1d858 [exp-6dccf]   03:21 PM       0.23282   0.9152   10             16
- ─────────────────────────────────────────────────────────────────────────────────────────────
+ ────────────────────────────────────────────────────────────────────────────────────────────────────────
+  neutral:**Experiment**                neutral:**Created**           metric:**loss**      metric:**acc**   param:**train.epochs**    param:**model.conv_units**    dep:**data**
+ ────────────────────────────────────────────────────────────────────────────────────────────────────────
+  workspace                 -              0.03247   0.9887   10             16                 6875529
+  baseline-experiment       Jan 14, 2022   0.03332   0.9888   10             16                 6875529
+  └── 999710f [exp-ff24d]   10:54 PM       0.03247   0.9887   10             16                 6875529
+ ────────────────────────────────────────────────────────────────────────────────────────────────────────
 ```
 
 The `workspace` row in the table shows the results of the most recent experiment
@@ -184,42 +173,43 @@ $ dvc exp show
 ```
 
 ```dvctable
- ─────────────────────────────────────────────────────────────────────────────────────────────
-  white:**Experiment**                white:**Created**           yellow:**loss**      yellow:**acc**   blue:**train.epochs**   blue:**model.conv_units**
- ─────────────────────────────────────────────────────────────────────────────────────────────
-  workspace                 -              0.23508   0.9151   10             24
-  7317bc6                   Jul 18, 2021         -        -   10             16
-  ├── e2647ef [exp-ee8a4]   05:14 PM       0.23146   0.9145   10             64
-  ├── 15c9451 [exp-a9be6]   05:14 PM       0.25231   0.9102   10             32
-  ├── 9c32227 [exp-17dd9]   04:46 PM       0.23687   0.9167   10             256
-  ├── 8a9cb15 [exp-29d93]   04:46 PM       0.24459   0.9134   10             128
-  ├── dfc536f [exp-a1bd9]   03:35 PM       0.23508   0.9151   10             24
-  └── 1a1d858 [exp-6dccf]   03:21 PM       0.23282   0.9152   10             16
- ─────────────────────────────────────────────────────────────────────────────────────────────
+ ────────────────────────────────────────────────────────────────────────────────────────────────────────
+  neutral:**Experiment**                neutral:**Created**            metric:**loss**      metric:**acc**   param:**train.epochs**    param:**model.conv_units**    dep:**data**
+ ────────────────────────────────────────────────────────────────────────────────────────────────────────
+  workspace                 -              0.031865   0.9897   10             24                 6875529
+  baseline-experiment       Jan 14, 2022    0.03332   0.9888   10             16                 6875529
+  ├── 43a3b4f [exp-7f82e]   Jan 27, 2022   0.042424   0.9874   10             256                6875529
+  ├── 6d15fac [exp-75369]   Jan 27, 2022   0.037164    0.989   10             128                6875529
+  ├── 47896c1 [exp-76693]   Jan 27, 2022    0.03845   0.9876   10             64                 6875529
+  ├── da84ac7 [exp-4a081]   Jan 27, 2022   0.035497    0.988   10             32                 6875529
+  ├── 5846c68 [exp-953fa]   Jan 27, 2022   0.031865   0.9897   10             24                 6875529
+  └── 999710f [exp-ff24d]   Jan 27, 2022    0.03247   0.9887   10             16                 6875529
+ ────────────────────────────────────────────────────────────────────────────────────────────────────────
 ```
 
-By default, it shows all the parameters and the metrics with the timestamp. If
-you have a large number of parameters, metrics or experiments, this may lead to
-a cluttered view. You can limit the table to specific metrics, or parameters, or
-hide the timestamp column (`Created`) using the `--drop` option of the command.
+By default, it shows all the metrics, parameters and dependencies with the
+timestamp. If you have a large number of metrics, parameters, dependencies or
+experiments, this may lead to a cluttered view. You can limit the table to
+specific columns using the [`--drop`](/doc/command-reference/exp/show#--drop)
+option of the command.
 
 ```dvc
 $ dvc exp show --drop 'Created|train|loss'
 ```
 
 ```dvctable
- ─────────────────────────────────────────────────────
-  white:**Experiment**                   yellow:**acc**   blue:**model.conv_units**
- ─────────────────────────────────────────────────────
-  workspace                 0.9151   24
-  7317bc6                        -   16
-  ├── e2647ef [exp-ee8a4]   0.9145   64
-  ├── 15c9451 [exp-a9be6]   0.9102   32
-  ├── 9c32227 [exp-17dd9]   0.9167   256
-  ├── 8a9cb15 [exp-29d93]   0.9134   128
-  ├── dfc536f [exp-a1bd9]   0.9151   24
-  └── 1a1d858 [exp-6dccf]   0.9152   16
- ─────────────────────────────────────────────────────
+ ───────────────────────────────────────────────────────────────
+  neutral:**Experiment**                   metric:**acc**   param:**model.conv_units**    dep:**data**
+ ───────────────────────────────────────────────────────────────
+  workspace                 0.9897   24                 6875529
+  baseline-experiment       0.9888   16                 6875529
+  ├── 43a3b4f [exp-7f82e]   0.9874   256                6875529
+  ├── 6d15fac [exp-75369]    0.989   128                6875529
+  ├── 47896c1 [exp-76693]   0.9876   64                 6875529
+  ├── da84ac7 [exp-4a081]    0.988   32                 6875529
+  ├── 5846c68 [exp-953fa]   0.9897   24                 6875529
+  └── 999710f [exp-ff24d]   0.9887   16                 6875529
+ ───────────────────────────────────────────────────────────────
 ```
 
 After selecting an experiment from the table, you can create a Git branch that

@@ -1,5 +1,5 @@
 import React from 'react'
-import SEO from '../../SEO'
+import SEO from 'gatsby-theme-iterative-docs/src/components/SEO'
 import MainLayout, { LayoutComponent } from '../../MainLayout'
 
 import * as styles from './styles.module.css'
