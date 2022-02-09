@@ -1,6 +1,6 @@
 # dvclive.set_step()
 
-Signals that the current step has ended and sets `step` to the given value.
+Signals that the current step has ended and sets step to the given value.
 
 ```py
 def set_step(step: int):
@@ -21,8 +21,8 @@ for step in [0, 10, 20]:
 
 ## Description
 
-DVCLive uses the `step` value to track the progress of each metric logged with
-`Live.log()`.
+DVCLive uses `step` to track the progress of the data logged with `Live.log()`
+and/or `Live.log_image()`.
 
 You can use `Live.set_step()` to set `step` to any value.
 
@@ -47,8 +47,8 @@ the <abbr>pipeline</abbr>, `DVC` will
 ## Example
 
 Given the [Usage](#usage) code snippet above, the
-[metric history](/doc/dvclive/get-started#history) generated for `metric_1`
-would be:
+[metrics history](/doc/dvclive/api-reference/live/log#step-updates) generated
+for `metric_1` would be:
 
 ```dvc
 $ cat dvclive/metric_1.tsv
