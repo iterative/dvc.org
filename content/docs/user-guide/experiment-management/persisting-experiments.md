@@ -100,8 +100,7 @@ files, etc.) can be stored in Git.
 It's up to you to decide how to organize completed experiments. Here are the
 main alternatives:
 
-<toggle height="400px">
-<tab title="Git tags and branches">
+### Git tags and branches
 
 Use the repo's "time dimension" to distribute your experiments. This makes the
 most sense for experiments that build on each other. Git-based experiment
@@ -110,8 +109,7 @@ GitHub]. Example:
 
 ![](/img/exp-branches.png)
 
-</tab>
-<tab title="Directories">
+### Directories
 
 The project's "space dimension" can be structured with directories (folders) to
 organize experiments. Useful when you want to see all your experiments at the
@@ -133,8 +131,7 @@ can run their pipeline(s) using `dvc run --recursive`.
 
 > 📖 See also [Running all pipelines]
 
-</tab>
-<tab title="Hybrid">
+### Hybrid
 
 Combining an intuitive directory structure with a good repo branching strategy
 tends to be the best option for complex projects. Completely independent
@@ -167,16 +164,12 @@ different branches. Example:
 
 </cards>
 
-</tab>
-<tab title="Labels (ad hoc)">
+### Labels (ad hoc)
 
 In general, you can record experiments in a separate system and structure them
 using custom labeling. This is typical in dedicated experiment tracking tools. A
 possible problem with this approach is that it's easy to lose the connection
 between your project history and the experiments logged.
-
-</tab>
-</toggle>
 
 [like github]:
   https://docs.github.com/en/github/visualizing-repository-data-with-graphs/viewing-a-repositorys-network
