@@ -174,9 +174,9 @@ $ rm -f data/data.xml
 </tab>
 <tab title="Windows">
 
-```
-> rmdir .dvc\cache
-> del data\data.xml
+```dvc
+$ rmdir .dvc\cache
+$ del data\data.xml
 ```
 
 </tab>
