@@ -24,12 +24,11 @@ Provides a way to execute and track <abbr>experiments</abbr> in your
 directories, etc.
 
 `dvc exp run` has the same general behavior as `dvc repro` when it comes to
-`targets` and stage execution (restores the dependency graph, etc.). One
-important difference is that changed dependencies are committed to the <abbr>DVC
-cache</abbr> when the experiment begins execution, to guarantee its
-reproducibility later on.
+`targets` and stage execution (restores the dependency graph, etc.).
 
-> See the command [options](#options) for more on the differences.
+> This includes committing any changed data <abbr>dependencies</abbr> to the
+> <abbr>DVC cache</abbr> when preparing the experiment, which can take some
+> time. See the [Options](#options) section for the differences.
 
 Use the `--set-param` (`-S`) option as a shortcut to change
 <abbr>parameter</abbr> values [on-the-fly] before running the experiment.
