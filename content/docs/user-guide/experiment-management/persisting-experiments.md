@@ -97,10 +97,12 @@ files, etc.) can be stored in Git.
 
 ## Organization patterns
 
-It's up to you to decide how to organize completed experiments. Here are the
-main alternatives:
+While internally all experiments are special branches off a baseline (see
+[Overview](/doc/user-guide/experiment-management/experiments-overview)), it's up
+to you to decide how to organize them once completed. Here are the main
+alternatives:
 
-### Git tags and branches
+### Git commits, tags, and branches
 
 Use the repo's "time dimension" to distribute your experiments. This makes the
 most sense for experiments that build on each other. Git-based experiment
