@@ -11,8 +11,8 @@ details.
 ## Pipelines files
 
 DVC relies on `dvc.yaml` files that contain the commands to run the
-experiment(s). These files codify _pipelines_ that specify the
-<abbr>stages</abbr> of experiment workflows (code, <abbr>dependencies</abbr>,
+experiment(s). These files codify _pipelines_ that specify one or more
+<abbr>stages</abbr> of the experiment workflow (code, <abbr>dependencies</abbr>,
 <abbr>outputs</abbr>, etc.).
 
 > 📖 See [Get Started: Data Pipelines](/doc/start/data-pipelines) for an intro
@@ -20,8 +20,8 @@ experiment(s). These files codify _pipelines_ that specify the
 
 ### Running the pipeline(s)
 
-You can run the pipeline using `dvc exp run`. It uses `./dvc.yaml` (in the
-current directory) by default:
+You can run the experimental pipeline using `dvc exp run`. It uses `./dvc.yaml`
+(in the current directory) by default.
 
 ```dvc
 $ dvc exp run
@@ -29,10 +29,14 @@ $ dvc exp run
 Reproduced experiment(s): exp-44136
 ```
 
-DVC keeps track of the [dependency graph] among stages. It only runs the ones
-with changed dependencies or outputs missing from the <abbr>cache</abbr>. You
-can limit this to certain [reproduction targets] or even single stages
-(`--single-item` flag).
+> ⚠️ Note that any changed dependencies are committed to the <abbr>DVC
+> cache</abbr> when the experiment begins execution to guarantee the
+> reproducibility of any recorded experiment. See `dvc gc` to learn how to clean
+> up unnecessary data.
+
+DVC observes the [dependency graph] between stages, so it only runs the ones
+with changed dependencies or outputs missing from the cache. You can limit this
+to certain [reproduction targets] or even single stages (`--single-item` flag).
 
 <abbr>DVC projects</abbr> actually supports more than one pipeline, in one or
 more `dvc.yaml` files. The `--all-pipelines` option lets you run them all at
