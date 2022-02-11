@@ -1,35 +1,31 @@
 # Sharing Data and Model Files
 
-Like Git, DVC allows for a distributed environment and collaboration. We make it
-easy to consistently get all your data files and directories into any machine,
-along with matching source code. All you need to do is to setup
-[remote storage](/doc/command-reference/remote) for your <abbr>DVC
-project</abbr>, and push the data there, so others can reach it. Currently DVC
-supports Amazon S3, Microsoft Azure Blob Storage, Google Drive, Google Cloud
-Storage, SSH, HDFS, and other remote locations. The list is constantly growing.
-(For a complete list and configuration instructions, refer to `dvc remote add`.)
+DVC allows for a distributed environment and collaboration, making it easy to
+consistently relocate data files and directories into any machine, along with
+matching source code using Git. The key is to setup your own
+[remote storage](/doc/command-reference/remote), and push the data there so
+others (or yourself) can pull it later. DVC supports Amazon S3, Microsoft Azure
+Blob Storage, Google Drive, Google Cloud Storage, SSH, HDFS, and other
+providers. The list is constantly growing!
 
-![](/img/model-sharing-digram.png) _Data is stored in storage you control,
-separate from code._
+![](/img/model-sharing-digram.png) _Data lives in storage you control, separate
+from code._
 
-As an example, let's take a look at how you could setup an S3
-[remote storage](/doc/command-reference/remote) for a <abbr>DVC project</abbr>,
-and push/pull to/from it.
+## Example: Share with an S3 remote
 
-## Create an S3 bucket
+If you don't already have an S3 bucket available in your S3 account, follow
+instructions in [Create a Bucket]. As an advanced alternative, you may use the
+[`aws s3 mb`] command instead. Let's say the bucket name is `mybucket`.
 
-If you don't already have one available in your S3 account, follow instructions
-in
-[Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html).
-As an advanced alternative, you may use the
-[`aws s3 mb`](https://docs.aws.amazon.com/cli/latest/reference/s3/mb.html)
-command instead.
+[create a bucket]:
+  https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html
+[`aws s3 mb`]: https://docs.aws.amazon.com/cli/latest/reference/s3/mb.html
 
-## Setup DVC remote
+### Setup DVC remote
 
-To actually configure an S3 remote in the <abbr>project</abbr>, supply the URL
-to the bucket where the data should be stored to the `dvc remote add` command.
-For example:
+To actually configure an S3 remote in the <abbr>DVC project</abbr>, supply the
+URL to the bucket where the data should be stored to the `dvc remote add`
+command:
 
 ```dvc
 $ dvc remote add -d myremote s3://mybucket/path
@@ -49,7 +45,8 @@ url = s3://mybucket/path
 remote = myremote
 ```
 
-`dvc remote modify` provides a wide variety of options to configure S3 buckets.
+`dvc remote modify` provides a wide variety of options to configure S3 buckets,
+including setting up access credentials if needed.
 
 Let's commit your changes and push your code:
 
@@ -58,7 +55,7 @@ $ git add .dvc/config
 $ git push
 ```
 
-## Upload data and code
+### Upload data and code
 
 After adding data to the <abbr>project</abbr> with `dvc add` or other commands,
 it'll be stored in your local <abbr>cache</abbr>. Upload it to remote storage
@@ -68,26 +65,24 @@ with the `dvc push` command:
 $ dvc push
 ```
 
-Code and [DVC project files](/doc/user-guide/project-structure/pipelines-files)
-can be safely committed and pushed with Git.
+Code and [DVC project files] can be safely committed and pushed with Git as
+usual.
 
-## Download code
+[dvc project files](/doc/user-guide/project-structure/pipelines-files)
 
-Please use regular Git commands to download code and DVC files from your Git
-servers. For example:
+### Download code and data
+
+You can use regular Git commands to download code and DVC files from your Git
+servers:
 
 ```dvc
 $ git clone https://github.com/example/project.git
 $ cd myproject
-```
 
-or
+# or if you already have an older version of the repo
 
-```dvc
 $ git pull
 ```
-
-## Download data
 
 To download data files for your <abbr>project</abbr>, run:
 

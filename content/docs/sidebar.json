@@ -83,10 +83,7 @@
           }
         ]
       },
-      {
-        "label": "Sharing Data and Model Files",
-        "slug": "sharing-data-and-model-files"
-      },
+      "sharing-data-and-model-files",
       {
         "label": "CI/CD for Machine Learning",
         "slug": "ci-cd-for-machine-learning"
