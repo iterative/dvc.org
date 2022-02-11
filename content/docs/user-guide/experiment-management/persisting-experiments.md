@@ -139,8 +139,7 @@ experiments live in separate directories, while their progress can be found in
 different branches. Example:
 
 <cards>
-
-  <card href="/doc/start">
+  <card>
     v0.1.0
 
     ```
@@ -150,8 +149,7 @@ different branches. Example:
     ```
 
   </card>
-
-  <card href="/doc/user-guide">
+  <card>
     v0.2.0
 
     ```
@@ -161,7 +159,6 @@ different branches. Example:
     ```
 
   </card>
-
 </cards>
 
 ### Labels (ad hoc)
