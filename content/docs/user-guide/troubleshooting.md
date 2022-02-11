@@ -108,19 +108,19 @@ experiments.
 [ssh git url]:
   https://git-scm.com/book/en/v2/Git-on-the-Server-The-Protocols#_the_protocols
 
-## Failed to open pickled cache {#pickle}
+## Could not open pickled 'index/md5/links' cache {#pickle}
 
-You may encounter this error when using DVC with multiple Python versions within
-a single local repository, such as when you use multiple virtual environments to
-test behavior across a range of Python versions. In certain cases it is possible
-that DVC may generate internal (temporary) files that are incompatibile with
-older Python versions (i.e. DVC run in Python 3.8 may generate files which is
-incompatible with DVC in Python 3.7).
+You may encounter this error when using DVC on different Python versions with
+the same <abbr>DVC project</abbr> directory, for example having created the
+project on Python 3.8. in one environment and later attempting to update it from a
+Python 3.7 env. This is due to temporary [internal directories] that can be
+incompatible with older Python versions once created.
 
-In the event that this occurs, it is safe to remove the relevant temporary
-file(s), and retry the DVC command. Specifically, the following directories (and
-their file contents) can be safely removed in this situation:
+In these rare situations, it is safe to remove the corresponding tmp
+directory and retry the DVC command. Specifically, one of:
 
+- `.dvc/tmp/index`
 - `.dvc/tmp/md5s`
 - `.dvc/tmp/links`
-- `.dvc/tmp/index`
+
+[internal files]: https://dvc.org/doc/user-guide/project-structure/internal-files
