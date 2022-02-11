@@ -123,5 +123,5 @@ and retry the DVC command. Specifically, one of:
 - `.dvc/tmp/md5s`
 - `.dvc/tmp/links`
 
-[internal files]:
+[internal directories]:
   https://dvc.org/doc/user-guide/project-structure/internal-files
