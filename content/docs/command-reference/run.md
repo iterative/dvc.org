@@ -278,7 +278,7 @@ $ dvc run -n second_stage './another_script.sh $MYENVVAR'
   tracked by DVC. Useful if you prefer to track it with Git.
 
 - `--live-no-summary` - deactivates DVCLive
-  [summary](/doc/dvclive/user-guide/quickstart#metrics-summary) generation.
+  [summary](doc/dvclive/api-reference/live/log#description) generation.
 
 - `--live-no-html` - deactivates DVCLive
   [HTML report](/doc/dvclive/user-guide/dvclive-with-dvc#html-report)
