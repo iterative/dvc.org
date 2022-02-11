@@ -112,15 +112,16 @@ experiments.
 
 You may encounter this error when using DVC on different Python versions with
 the same <abbr>DVC project</abbr> directory, for example having created the
-project on Python 3.8. in one environment and later attempting to update it from a
-Python 3.7 env. This is due to temporary [internal directories] that can be
+project on Python 3.8. in one environment and later attempting to update it from
+a Python 3.7 env. This is due to temporary [internal directories] that can be
 incompatible with older Python versions once created.
 
-In these rare situations, it is safe to remove the corresponding tmp
-directory and retry the DVC command. Specifically, one of:
+In these rare situations, it is safe to remove the corresponding tmp directory
+and retry the DVC command. Specifically, one of:
 
 - `.dvc/tmp/index`
 - `.dvc/tmp/md5s`
 - `.dvc/tmp/links`
 
-[internal files]: https://dvc.org/doc/user-guide/project-structure/internal-files
+[internal files]:
+  https://dvc.org/doc/user-guide/project-structure/internal-files
