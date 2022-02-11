@@ -12,17 +12,13 @@ jobs:
       - uses: actions/checkout@v2
       - name: Install Node.js and use yarn
         uses: actions/setup-node@v2
+        env:
+          GATSBY_ALGOLIA_APP_ID: ${{ secrets.GATSBY_ALGOLIA_APP_ID }}
+          ALGOLIA_ADMIN_KEY: ${{ secrets.ALGOLIA_ADMIN_KEY }}
+          GATSBY_ALGOLIA_INDEX_NAME: ${{ secrets.GATSBY_ALGOLIA_INDEX_NAME }}
         with:
           node-version: '14.x'
-      - name: create env file
-        run: |
-          touch .env
-          echo GATSBY_ALGOLIA_APP_ID=${{ secrets.GATSBY_ALGOLIA_APP_ID }} >> .env
-          echo ALGOLIA_ADMIN_KEY=${{ secrets.ALGOLIA_ADMIN_KEY }} >> .env
-          echo GATSBY_ALGOLIA_INDEX_NAME=${{ secrets.GATSBY_ALGOLIA_INDEX_NAME }} >> .env
-      - name: Yarn cache directory
-        id: yarn-cache-dir
-        run: echo "::set-output name=dir::$(yarn cache dir)"
+          cache: 'yarn'
       - name: Gatsby Cache Folder
         uses: actions/cache@v2
         with:
@@ -33,14 +29,7 @@ jobs:
         with:
           key: gatsby-public-folder
           path: public
-      - name: Yarn cache
-        uses: actions/cache@v2
-        with:
-          path: ${{ steps.yarn-cache-dir.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
       - name: Install dependencies
         run: yarn install --immutable --immutable-cache --check-cache
       - name: Build and index blogs on postBuild
-        run: yarn run build:incremental
+        run: yarn run build
