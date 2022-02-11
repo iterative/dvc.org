@@ -11,7 +11,7 @@ on:
 jobs:
   merge_schedule:
     runs-on: ubuntu-latest
-    if: ${{ github.repository == 'iterative/dvc.org' }}
+    if: ${{ github.repository !== 'iterative/dvc.org' }}
     steps:
       - uses: gr2m/merge-schedule-action@v1
         with:
