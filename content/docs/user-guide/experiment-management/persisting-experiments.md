@@ -109,7 +109,10 @@ most sense for experiments that build on each other. Git-based experiment
 structures are especially helpful along with Git history exploration tools [like
 GitHub]. Example:
 
-![](/img/exp-branches.png)
+![](/img/exp-branches.png) _From our [example-dvc-checkpoints] repo_
+
+[example-dvc-checkpoints]:
+  https://github.com/iterative/example-dvc-checkpoints/network
 
 ### Directories
 
