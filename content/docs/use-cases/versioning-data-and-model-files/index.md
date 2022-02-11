@@ -12,12 +12,10 @@ past data inputs and processes to understand their results, for knowledge
 sharing, or for debugging.
 
 **Data Version Control** (DVC) lets you capture the versions of your data and
-models in
-[Git commits](https://git-scm.com/book/en/v2/Git-Basics-Recording-Changes-to-the-Repository),
-while storing them on-premises or in cloud storage. It also provides a mechanism
-to switch between these different data contents. The result is a single history
-for data, code, and ML models that you can traverse — a proper journal of your
-work!
+models in Git commits, while [storing them separately] on-premises or in cloud
+storage. It also provides a mechanism to switch between these different data
+contents. The result is a single history for data, code, and ML models that you
+can traverse — a proper journal of your work!
 
 ![](/img/project-versions.png) _DVC matches the right versions of data, code,
 and models for you 💘._
@@ -29,6 +27,8 @@ files. Now you can use DVC to create [snapshots](/doc/command-reference/add) of
 the data, [restore](/doc/command-reference/checkout) previous versions,
 [reproduce](/doc/command-reference/repro) experiments, record evolving
 [metrics](/doc/command-reference/metrics), and more!
+
+[storing them separately]: /doc/use-cases/sharing-data-and-model-files
 
 👩‍💻 **Intrigued?** Try our
 [versioning tutorial](/doc/use-cases/versioning-data-and-model-files/tutorial)
