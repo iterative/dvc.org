@@ -23,9 +23,13 @@ Provides a way to execute and track <abbr>experiments</abbr> in your
 <abbr>project</abbr> without polluting it with unnecessary commits, branches,
 directories, etc.
 
-> `dvc exp run` has the same behavior as `dvc repro` when it comes to `targets`
-> and stage execution (restores the dependency graph, etc.). See the command
-> [options](#options) for more on the differences.
+`dvc exp run` has the same general behavior as `dvc repro` when it comes to
+`targets` and stage execution (restores the dependency graph, etc.). One
+important difference is that changed dependencies are committed to the <abbr>DVC
+cache</abbr> when the experiment begins execution, to guarantee its
+reproducibility later on.
+
+> See the command [options](#options) for more on the differences.
 
 Use the `--set-param` (`-S`) option as a shortcut to change
 <abbr>parameter</abbr> values [on-the-fly] before running the experiment.

@@ -29,14 +29,14 @@ $ dvc exp run
 Reproduced experiment(s): exp-44136
 ```
 
-> ⚠️ Note that any changed dependencies are committed to the <abbr>DVC
-> cache</abbr> when the experiment begins execution to guarantee the
-> reproducibility of any recorded experiment. See `dvc gc` to learn how to clean
-> up unnecessary data.
+> ⚠️ Note that any changed dependencies are committed to the DVC cache when the
+> experiment begins execution, to guarantee its reproducibility later on. See
+> `dvc gc` to learn how to clean up unnecessary data.
 
 DVC observes the [dependency graph] between stages, so it only runs the ones
-with changed dependencies or outputs missing from the cache. You can limit this
-to certain [reproduction targets] or even single stages (`--single-item` flag).
+with changed dependencies or outputs missing from the <abbr>cache</abbr>. You
+can limit this to certain [reproduction targets] or even single stages
+(`--single-item` flag).
 
 <abbr>DVC projects</abbr> actually supports more than one pipeline, in one or
 more `dvc.yaml` files. The `--all-pipelines` option lets you run them all at
