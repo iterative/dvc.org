@@ -109,10 +109,9 @@ $ git commit -m "Configure remote storage"
 
 DVC remotes let you store a copy of the data tracked by DVC outside of the local
 cache (usually a cloud storage service). For simplicity, let's set up a _local
-remote_:
+remote_ in `/tmp/dvcstore` (create the dir first if needed):
 
 ```dvc
-$ mkdir -p /tmp/dvcstore
 $ dvc remote add -d myremote /tmp/dvcstore
 $ git commit .dvc/config -m "Configure local remote"
 ```
@@ -140,12 +139,10 @@ set up earlier. You can check that the data has been stored in the DVC remote
 with:
 
 ```dvc
-$ ls -R /tmp/dvcstore
-/tmp/dvcstore/:
-a3
-
-/tmp/dvcstore/a3:
-04afb96060aad90176268345e10355
+$ tree /tmp/dvcstore
+/tmp/dvcstore
+└── a3
+    └── 04afb96060aad90176268345e10355
 ```
 
 </details>
@@ -175,8 +172,8 @@ $ rm -f data/data.xml
 <tab title="Windows">
 
 ```powershell
-> rmdir .dvc\cache
-> del data\data.xml
+rmdir .dvc\cache
+del data\data.xml
 ```
 
 </tab>
@@ -204,10 +201,24 @@ latest version:
 Let's say we obtained more data from some external source. We can pretend this
 is the case by doubling the dataset:
 
+<toggle>
+<tab title="Mac/Linux">
+
 ```dvc
 $ cp data/data.xml /tmp/data.xml
 $ cat /tmp/data.xml >> data/data.xml
 ```
+
+</tab>
+<tab title="Windows">
+
+```powershell
+copy data\data.xml ...\tmp\data.xml
+type .../tmp/data.xml >> data\data.xml
+```
+
+</tab>
+</toggle>
 
 </details>
 
