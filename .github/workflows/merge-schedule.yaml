@@ -12,7 +12,7 @@ jobs:
   merge_schedule:
     runs-on: ubuntu-latest
     if:
-      { { github.event.pull_request.head.repo.full_name == github.repository } }
+      ${{ github.event.pull_request.head.repo.full_name == github.repository }}
     steps:
       - uses: gr2m/merge-schedule-action@v1
         with:
