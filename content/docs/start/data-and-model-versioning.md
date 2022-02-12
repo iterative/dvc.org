@@ -172,8 +172,8 @@ $ rm -f data/data.xml
 <tab title="Windows">
 
 ```powershell
-rmdir .dvc\cache
-del data\data.xml
+$ rmdir .dvc\cache
+$ del data\data.xml
 ```
 
 </tab>
@@ -213,8 +213,8 @@ $ cat /tmp/data.xml >> data/data.xml
 <tab title="Windows">
 
 ```powershell
-copy data\data.xml ...\tmp\data.xml
-type .../tmp/data.xml >> data\data.xml
+$ copy data\data.xml ...\tmp\data.xml
+$ type .../tmp/data.xml >> data\data.xml
 ```
 
 </tab>
