@@ -57,9 +57,9 @@ classifier:
 
 ![confusion matrix](/img/start_visualization_confusion1.png)
 
-Now, let's produce another plot to see misclassified examples from each class.
-This procedure is a bit more complex than creating a CSV file but you can see
-the code in [Github][misclassified-example-code]
+Let's produce another plot to see misclassified examples from each class. This
+procedure is a bit more complex than creating a CSV file but you can see the
+code in [Github][misclassified-example-code]
 
 [misclassified-example-code]:
   https://github.com/iterative/example-dvc-experiments/blob/main/src/train.py#L58
