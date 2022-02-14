@@ -16,6 +16,7 @@ DVC provides more than one option to fit visualization to your workflow:
   training.
 
 [experiments]: /doc/start/experiments
+[vega-lite]: https://vega.github.io/vega-lite/
 
 In this section, we'll add visualization to [`example-dvc-experiments`][ede]
 project. If you would like to try these yourself, please refer to the project
