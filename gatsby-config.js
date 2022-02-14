@@ -148,7 +148,7 @@ const plugins = [
   {
     resolve: `gatsby-plugin-algolia`,
     options: {
-      appId: process.env.GATSBY_ALGOLIA_APP_ID,
+      appId: process.env.GATSBY_ALGOLIA_APP_ID || 'B87HVF62EF',
       apiKey: process.env.ALGOLIA_ADMIN_KEY,
       skipIndexing:
         process.env.CI && process.env.ALGOLIA_ADMIN_KEY ? false : true,
