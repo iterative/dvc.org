@@ -261,8 +261,7 @@ data science experiments.
   [summary](/doc/dvclive/api-reference/live/log#description) generation.
 
 - `--live-no-html` - deactivates DVCLive
-  [HTML report](/doc/dvclive/dvclive-with-dvc#html-report)
-  generation.
+  [HTML report](/doc/dvclive/dvclive-with-dvc#html-report) generation.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
