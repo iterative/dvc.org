@@ -281,7 +281,7 @@ $ dvc run -n second_stage './another_script.sh $MYENVVAR'
   [summary](/doc/dvclive/api-reference/live/log#description) generation.
 
 - `--live-no-html` - deactivates DVCLive
-  [HTML report](/doc/dvclive/user-guide/dvclive-with-dvc#html-report)
+  [HTML report](/doc/dvclive/dvclive-with-dvc#html-report)
   generation.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
