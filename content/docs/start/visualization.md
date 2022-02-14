@@ -44,7 +44,7 @@ predictions.
 [straightforward loop]:
   https://github.com/iterative/example-dvc-experiments/blob/main/src/train.py#L213
 
-After running the experiment, with `dvc exp run`, DVC will produce
+After running the experiment with `dvc exp run`, DVC will produce
 `plots/confusion.csv` file that can immediately be shown in the browser:
 
 ```dvc
