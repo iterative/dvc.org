@@ -1,5 +1,6 @@
 name: Indexing blogs
 on:
+  workflow_dispatch:
   push:
     branches: ['search-blogs-ci-indexing']
     paths:
