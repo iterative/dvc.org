@@ -74,13 +74,13 @@ DVC automatically shows the image in an HTML page.
 
 ![confusion image](/img/start_visualization_confusion2.png)
 
-A major requirement for deep learning projects is to see in which epoch training
-loss and validation loss differs. DVC helps in that regard with its integrations
-to major deep learning libraries via DVCLive.
+An important issue for deep learning projects is to observe in which epoch
+training loss and validation loss differs. DVC helps in that regard with its
+integrations to deep learning libraries via DVCLive.
 
-The example project uses Keras to train a classifier, and fortunately we have a
-DVCLive callback that visualizes the training and validation loss for each
-epoch. We first import the callback from DVCLive.
+The example project uses Keras to train a classifier, and we have a DVCLive
+callback that visualizes the training and validation loss for each epoch. We
+first import the callback from DVCLive.
 
 ```python
 from dvclive.keras import DvcLiveCallback
