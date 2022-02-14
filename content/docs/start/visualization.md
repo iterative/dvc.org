@@ -1,10 +1,10 @@
 # Visualization with DVC Plots
 
 As we discussed in [experiments] section, DVC versions the experiments by
-associating parameters and metrics to them. On top of that, DVC can generate
-plots and tracks plot images you generated from the code. As in other aspects of
-the experiments, DVC is flexible and provides more than one option to fit
-visualization to your workflow:
+associating parameters and metrics to them. DVC can also generate plots and
+tracks plot images you generated from the code.
+
+DVC provides more than one option to fit visualization to your workflow:
 
 - DVC can generate HTML files that includes interactive [Vega-Lite] plots, from
   the data series in JSON, YAML, CSV, or TSV.
