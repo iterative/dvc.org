@@ -23,6 +23,10 @@ In this section, we'll add visualization to [`example-dvc-experiments`][ede]
 project. If you would like to try these yourself, please refer to the project
 [README] about how to install.
 
+[ede]: https://github.com/iterative/example-dvc-experiments
+[readme]:
+  https://github.com/iterative/example-dvc-experiments/blob/main/README.md
+
 One of the important plots that shows the classification performance is the
 confusion matrix. DVC uses Vega-Lite to plot the text files. In order to produce
 a confusion matrix, Vega expects a CSV file in the form:
