@@ -227,9 +227,9 @@ $ dvc exp show --drop 'Created|train|loss'
 ### ℹ️ More information about metrics
 
 Metrics are what you use to evaluate your models. DVC associates metrics to
-experiments to compare them. DVC allows any scalar values to be used as metrics.
-You can specify metrics JSON or YAML 1.2 formatted file using
-`dvc exp init --metrics`, and write the metrics file in the code.
+experiments for later comparison. Any scalar value can be used as a metric. You
+can specify text files to contain metrics using `dvc exp init --metrics`, and
+write them in the experimentation code.
 
 An alternative to manual metrics generation is to use [DVCLive](/doc/dvclive) to
 generate these files. Please refer to the documentation for details.
