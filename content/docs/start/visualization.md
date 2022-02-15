@@ -1,24 +1,5 @@
 # Visualization with DVC Plots
 
-As we discussed in [experiments] section, DVC versions the experiments by
-associating parameters and metrics to them. DVC can also generate plots and
-tracks plot images you generated from the code.
-
-DVC provides more than one option to fit visualization to your workflow:
-
-- DVC can generate HTML files that includes interactive [Vega-Lite] plots, from
-  the data series in JSON, YAML, CSV, or TSV.
-
-- DVC can keep track of image files produced as plot outputs from the
-  training/evaluation scripts.
-
-- DVC, with its [DVCLive] integration can produce plots automatically during
-  training.
-
-[experiments]: /doc/start/experiments
-[vega-lite]: https://vega.github.io/vega-lite/
-[dvclive]: https://dvc.org/doc/dvclive
-
 In this section, we'll add visualization to [`example-dvc-experiments`][ede]
 project. If you would like to try these yourself, please refer to the project
 [README] about how to install.
@@ -105,3 +86,19 @@ DVCLive has other capabilities, like saving the model every epoch or modifying
 these default values. Please refer to [DVClive documentation] for details.
 
 [dvclive documentation]: /doc/dvclive/dvclive-with-dvc
+
+In summary, DVC provides more than one option to fit visualization to your
+workflow:
+
+- DVC can generate HTML files that includes interactive [Vega-Lite] plots, from
+  the data series in JSON, YAML, CSV, or TSV.
+
+- DVC can keep track of image files produced as plot outputs from the
+  training/evaluation scripts.
+
+- DVC, with its [DVCLive] integration can produce plots automatically during
+  training.
+
+[experiments]: /doc/start/experiments
+[vega-lite]: https://vega.github.io/vega-lite/
+[dvclive]: https://dvc.org/doc/dvclive
