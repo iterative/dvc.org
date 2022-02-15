@@ -2,9 +2,8 @@
 title: Moving Local Experiments to the Cloud with Terraform Provider Iterative
 date: 2022-01-15
 description: >
-  In this tutorial you'll learn how you can move a locally run machine learning
-  experiment to a remote machine on AWS with the help of Iterative's Terraform
-  Provider.
+  Tutorial for easily moving a local ML experiment to a remote cloud machine
+  with the help of Iterative's Terraform Provider.
 descriptionLong: >
   In this tutorial you'll learn how you can move a locally run machine learning
   experiment to a remote machine on AWS with the help of Iterative's Terraform
