@@ -1,20 +1,20 @@
 ---
-title: Moving Local Experiments to the Cloud with Iterative Terraform Provider
+title: Moving Local Experiments to the Cloud with Terraform Provider Iterative
 date: 2022-01-15
 description: >
   In this tutorial you'll learn how you can move a locally run machine learning
-  experiment to a remote machine on AWS with the help of Iterative Terraform
+  experiment to a remote machine on AWS with the help of Iterative's Terraform
   Provider.
 descriptionLong: >
   In this tutorial you'll learn how you can move a locally run machine learning
-  experiment to a remote machine on AWS with the help of Iterative Terraform
+  experiment to a remote machine on AWS with the help of Iterative's Terraform
   Provider.
 picture: 2022-01-15/massimiliano-latella-6ufBhNungOk-unsplash.jpg
 author: maria_khalusova
 #  todo: commentsUrl:
 tags:
   - MLOps
-  - Iterative Terraform Provider
+  - TPI
   - AWS
 ---
 
@@ -66,7 +66,7 @@ provide you with one. Make sure to
 [store your authentication credentials](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html)
 (`AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`) in your system's environment
 variables. Once you do, we can start the move with the help of Terraform and the
-Iterative Terraform Provider.
+Iterative Provider.
 
 ## What is Terraform?
 
@@ -81,7 +81,7 @@ Behind the scenes, Terraform will figure out what needs to be done. If you've
 cloned the repo, you'll find the `main.tf`file in the root of the project --
 that's where we will be configuring Terraform.
 
-## Iterative Terraform Provider
+## Terraform Provider Iterative
 
 Terraform can orchestrate a plethora of various resources for you, but for the
 majority of projects you only need a few. That's why instead of shipping all the
@@ -95,7 +95,7 @@ pipelines from AWS, Microsoft Azure, Google Cloud Platform, and more. The
 Iterative Provider has a couple of advantages for machine learning pipelines.
 Namely,
 
-- The configuration for various cloud compute providers with Iterative Provider
+- The configuration for various cloud compute providers with the Iterative Provider
   will be nearly identical, so you can easily migrate from one cloud provider to
   another, if you want to.
 - It is designed not only to provision infrastructure but to execute your
@@ -113,7 +113,6 @@ terraform {
       iterative = { source = "iterative/iterative", version = ">= 0.9.9" }
       }
 }
-
 provider "iterative" {}
 ```
 
