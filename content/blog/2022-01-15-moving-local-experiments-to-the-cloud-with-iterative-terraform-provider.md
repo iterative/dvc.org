@@ -109,17 +109,22 @@ adding the following in our `main.tf`:
 
 ```hcl
 terraform {
-    required_providers {
-      iterative = { source = "iterative/iterative", version = ">= 0.9.9" }
-      }
+  required_providers {
+    iterative = { source = "iterative/iterative", version = ">= 0.9.9" }
+  }
 }
 provider "iterative" {}
 ```
 
 Once you describe what providers you'll be using in your `main.tf`, run the
-`terraform init` command. If you have cloned the example repo, you should run
-this command before doing anything else. This will initialize your working
-directory and download the required provider.
+
+```
+terraform init
+```
+
+command. If you have cloned the example repo, you should run this command before
+doing anything else. This will initialize your working directory and download
+the required provider.
 
 ## Configuring `iterative_task`
 
@@ -164,8 +169,7 @@ resource "iterative_task" "tpi-examples-basic" {
 
 Every Terraform resource needs a name, and mine is called `tpi-examples-basic`
 here. This name is only used within the configuration file and it can be
-whatever you want. Inside of the resource block, we specify the
-[resource arguments](https://registry.terraform.io/providers/iterative/iterative/latest/docs/resources/task#argument-reference):
+whatever you want. Inside of the resource block, we specify some arguments:
 
 - _name_ (**required**): this is a name that will be used to set up the cloud
   resources, and it does not have to be the same as the `iterative_task` name.
@@ -190,11 +194,15 @@ whatever you want. Inside of the resource block, we specify the
   i.e. this is where we define a script that should be run on a provisioned
   machine.
 
-Take a look at the script. In the simplest scenario, all we need to do on a new
-machine to run the training script is to set up the Python environment with
-required libraries. If you simply want to train your model on a machine with
-more memory, this may be enough. However, if you want your training code to
-leverage GPUs, the script will look a bit different.
+See the
+[resource arguments documentation](https://registry.terraform.io/providers/iterative/iterative/latest/docs/resources/task#argument-reference)
+for a full list.
+
+In the simplest scenario, all we need to do on a new machine to run the training
+`script` is to set up the Python environment with required libraries. If you
+simply want to train your model on a machine with more memory, this may be
+enough. However, if you want your training code to leverage GPUs, the script
+will look a bit different.
 
 ## Training with GPU
 
@@ -230,7 +238,7 @@ resource "iterative_task" "tpi-examples-gpu" {
 ```
 
 The Deep Learning image that you choose may require larger disk size than the
-provided default, so you may need to increase it. The image I picked expectes
+provided default, so you may need to increase it. The image I picked expects a
 volume of at least 130 GB, and I can configure this in the `disk_size` argument.
 
 You may also notice that my script got a bit shorter. This is because I no
@@ -240,14 +248,24 @@ requirements met.
 ## Ready… Set… Apply!
 
 Whether you want to go with the basic example, or the GPU-enabled training, you
-can run `terraform plan` to review what steps Terraform is going to take to make
-your desired infrastructure materialize. Don't worry, nothing is actually done
-at this point, but it's a good way to check for potential issues in the
-configuration.
+can run
 
-If there are no issues, run `terraform apply` to execute the actions proposed in
-the Terraform plan. You'll need to type `yes` to confirm that you indeed would
-like the plan to be executed.
+```
+terraform plan
+```
+
+to review what steps Terraform is going to take to make your desired
+infrastructure materialize. Don't worry, nothing is actually done at this point,
+but it's a good way to check for potential issues in the configuration.
+
+If there are no issues, run
+
+```
+terraform apply
+```
+
+to execute the actions proposed in the Terraform plan. You'll need to type `yes`
+to confirm that you indeed would like the plan to be executed.
 
 At this point you can get a cup of your favourite beverage, and let the
 Iterative Provider work its magic together with Terraform. They will allocate a
@@ -255,11 +273,20 @@ remote machine for you, set up the environment and run your `train.py`. Once the
 script finishes, the machine will be terminated.
 
 You can monitor what's going on by running
-`terraform refresh && terraform show`. Once you see that the task has
-successfully finished, go ahead and run `terraform destroy` to destroy all
-remote objects managed by your configuration and sync back your shared files. If
-you write metrics to a file (e.g. `metrics.json`), then you'll get the new
-metrics synced back to your local machine.
+
+```
+terraform refresh && terraform show
+```
+
+Once you see that the task has successfully finished, go ahead and run
+
+```
+terraform destroy
+```
+
+to destroy all remote objects managed by your configuration and sync back your
+shared files. If you write metrics to a file (e.g. `metrics.json`), then you'll
+get the new metrics synced back to your local machine.
 
 Now if you want to try another experiment, you can change your code, run
 `terraform apply` again, and when the training is finished, commit your code
