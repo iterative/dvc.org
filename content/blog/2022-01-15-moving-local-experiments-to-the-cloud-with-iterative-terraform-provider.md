@@ -95,9 +95,9 @@ pipelines from AWS, Microsoft Azure, Google Cloud Platform, and more. The
 Iterative Provider has a couple of advantages for machine learning pipelines.
 Namely,
 
-- The configuration for various cloud compute providers with the Iterative Provider
-  will be nearly identical, so you can easily migrate from one cloud provider to
-  another, if you want to.
+- The configuration for various cloud compute providers with the Iterative
+  Provider will be nearly identical, so you can easily migrate from one cloud
+  provider to another, if you want to.
 - It is designed not only to provision infrastructure but to execute your
   scripts on it too, all via a single configuration.
 - It helps to sync data between your local machine and a remote one.
@@ -204,11 +204,11 @@ can use an existing Docker image or build your own, or, in the case of AWS, you
 can take advantage of an
 [existing pre-configured Deep Learning AMI](https://docs.aws.amazon.com/dlami/latest/devguide/options.html).
 In this tutorial, we'll use an AMI, as it is the quickest way to start using
-GPUs on an AWS EC2 machine.
-An AMI can be selected using the `image` argument using the format
-`{user}@{owner}:{architecture}:{name}`. See the official
+GPUs on an AWS EC2 machine. An AMI can be selected using the `image` argument
+using the format `{user}@{owner}:{architecture}:{name}`. See the official
 [AMI documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html)
 to learn more.
+
 ```hcl
 ...
 resource "iterative_task" "tpi-examples-gpu" {
@@ -228,7 +228,6 @@ resource "iterative_task" "tpi-examples-gpu" {
   END
 }
 ```
-
 
 The Deep Learning image that you choose may require larger disk size than the
 provided default, so you may need to increase it. The image I picked expectes
