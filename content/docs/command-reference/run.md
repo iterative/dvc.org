@@ -256,12 +256,9 @@ $ dvc run -n second_stage './another_script.sh $MYENVVAR'
   caching unnecessary data when exploring different data or stages. You can use
   `dvc commit` to finish the operation.
 
-- `--always-changed` - always consider this stage as changed (uses the
-  `always_changed` field in `dvc.yaml`). As a result `dvc status` will report it
-  as `always changed` and `dvc repro` will always execute it.
-
-  > Note that regular `.dvc` files (without dependencies) are automatically
-  > considered "always changed", so this option has no effect in those cases.
+- `--always-changed` - always consider this stage as changed (sets the
+  `always_changed` field in `dvc.yaml`). As a result DVC will always execute it
+  when reproducing the pipeline.
 
 - `--external` - allow writing outputs outside of the DVC repository. See
   [Managing External Data](/doc/user-guide/managing-external-data).
