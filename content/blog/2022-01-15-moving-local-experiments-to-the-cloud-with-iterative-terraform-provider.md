@@ -139,27 +139,26 @@ here:
 
 ```hcl
 terraform {
-    required_providers {
-      iterative = { source = "iterative/iterative", version = ">= 0.9.9" }
-      }
+  required_providers {
+    iterative = { source = "iterative/iterative", version = ">= 0.9.9" }
+  }
 }
-
 provider "iterative" {}
 
 resource "iterative_task" "tpi-examples-basic" {
-    name      = "tpi-examples-basic"
-    cloud     = "aws"
-    region    = "us-east-2"
-    machine   = "l+k80"
+  name      = "tpi-examples-basic"
+  cloud     = "aws"
+  region    = "us-east-2"
+  machine   = "l+k80"
 
-    workdir { input = "." }
-    script = <<-END
+  workdir { input = "." }
+  script = <<-END
     #!/bin/bash
     sudo apt update
     sudo apt install -y python3-pip
     pip3 install -r requirements.txt
     python3 src/train.py
-    END
+  END
 }
 ```
 
@@ -206,30 +205,30 @@ can take advantage of an
 [existing pre-configured Deep Learning AMI](https://docs.aws.amazon.com/dlami/latest/devguide/options.html).
 In this tutorial, we'll use an AMI, as it is the quickest way to start using
 GPUs on an AWS EC2 machine.
-
+An AMI can be selected using the `image` argument using the format
+`{user}@{owner}:{architecture}:{name}`. See the official
+[AMI documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html)
+to learn more.
 ```hcl
 ...
 resource "iterative_task" "tpi-examples-gpu" {
-    name      = "ami-gpu-example"
-    cloud     = "aws"
-    region    = "us-east-2"
-    machine   = "l+k80"
-    disk_size = "130"
-    image     = "ubuntu@898082745236:x86_64:Deep Learning AMI (Ubuntu 18.04) Version 54.0"
+  name      = "ami-gpu-example"
+  cloud     = "aws"
+  region    = "us-east-2"
+  machine   = "l+k80"
+  disk_size = "130"
+  # see https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html for images
+  image     = "ubuntu@898082745236:x86_64:Deep Learning AMI (Ubuntu 18.04) Version 54.0"
 
-    workdir { input = "." }
-    script = <<-END
+  workdir { input = "." }
+  script = <<-END
     #!/bin/bash
     pip3 install -r requirements.txt
     python3 src/train.py
-    END
+  END
 }
 ```
 
-To use a Deep Learning AMI, you need to configure it via the `image` argument
-that has the following structure: `{user}@{owner}:{architecture}:{name}`. You
-can learn more about AMIs in the official
-[AWS documentation](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html).
 
 The Deep Learning image that you choose may require larger disk size than the
 provided default, so you may need to increase it. The image I picked expectes
