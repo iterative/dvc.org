@@ -360,10 +360,12 @@ These are the fields that are accepted in each stage:
 | `metrics`        | List of [metrics files](/doc/command-reference/metrics), and optionally, whether or not this metrics file is <abbr>cached</abbr> (`true` by default). See the `--metrics-no-cache` (`-M`) option of `dvc run`.                                                                            |
 | `plots`          | List of [plot metrics](/doc/command-reference/plots), and optionally, their default configuration (subfields matching the options of `dvc plots modify`), and whether or not this plots file is <abbr>cached</abbr> ( `true` by default). See the `--plots-no-cache` option of `dvc run`. |
 | `frozen`         | Whether or not this stage is frozen from reproduction                                                                                                                                                                                                                                     |
-| `always_changed` | Whether or not this stage is considered as changed by commands such as `dvc status` and `dvc repro`. `false` by default                                                                                                                                                                   |
+| `always_changed` | Causes this stage to be always considered as [changed] by commands such as `dvc status` and `dvc repro`. `false` by default                                                                                                                                                               |
 | `meta`           | (Optional) arbitrary metadata can be added manually with this field. Any YAML content is supported. `meta` contents are ignored by DVC, but they can be meaningful for user processes that read or write `.dvc` files directly.                                                           |
 | `desc`           | (Optional) user description for this stage. This doesn't affect any DVC operations.                                                                                                                                                                                                       |
 | `live`           | (Optional) [Dvclive](/doc/dvclive/dvclive-with-dvc) configuration field                                                                                                                                                                                                                   |
+
+[changed]: /doc/command-reference/status#local-workspace-status
 
 `dvc.yaml` files also support `# comments`.
 
