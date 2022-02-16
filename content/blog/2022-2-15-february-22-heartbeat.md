@@ -19,7 +19,7 @@ descriptionLong: |
 
     😎 GitHub Goodness and Integrations,
 
-    💻 Online Course is live,
+    💻 Online Cours is live,
 
     🚀 Info on our growing team, and more!
 picture: 2022-02-17/heartbeat-february.png
@@ -61,7 +61,7 @@ The year is already flying by! Check out what's new this month!
 
 ## FuzzyLabs Open Source MLOps is Awesome
 
-So let me guess, still overwhelmed with MLOps tools choices? This past month
+So let me guess, still overwhelmed with MLOps tool choices? This past month
 [**Matt Squire**](https://www.linkedin.com/in/matt-squire-a19896125/) of
 [Fuzzy Labs.ai](http://Labs.ai) reviewed their
 [Awesome Open Source MLOps repo,](github.com/fuzzylavs/awesome-open-mlops)
@@ -97,9 +97,9 @@ can be inplemented into an NLP project. They assume knowledge of DVC,
 Transformers, ONNX and Weights & Biases, so be ready to take your skills to the
 next level automating parts of the process with CML.
 
-They begin with the all important setups of AWS IAM user with EC2 & S3 Develope
+They begin with the all-important setups of AWS IAM user with EC2 & S3 Developer
 access, the S3 bucket to store the dataset, and requesting an EC2 spot instance.
-They then coninue into detailed description of all the stages of the project,
+They then coninue into a detailed description of all the stages of the project,
 outlining the use of all the tools including DVC Studio. You can find
 [the repo for the project here.](https://github.com/nabarunbaruaAIML/CML_with_DVC_on_Transformer_NLP)
 Looking forward to the next installment from Nabarun and Arjun on a Dockerized
@@ -114,7 +114,7 @@ the same order.
 
 In case you missed it in our
 [Twitter feed](https://twitter.com/ivanovitchm/status/1482742970461863939?s=20&t=QrfDTRHcZOKWIe5n5mb7ZQ),
-A group of scientists
+a group of scientists
 [published an article](https://link.springer.com/article/10.1007/s11192-021-04260-y)
 in [Scientometrics Journal](https://link.springer.com/journal/11192) entitled,
 _Discovering temporal scientometric knowledge in COVID-19 scholarly production_.
@@ -181,13 +181,13 @@ may want to check out [our new course!](https://learn.iterative.ai) 😉
 
 ## Engineering Best Practices for Machine Learning
 
-Diving deeper into these roles, the team was a buzz recently, reviewing this
-slide deck on
-[Engineering Best Practices for Machine Learning](https://se.ewi.tudelft.nl/remla/slides/07_ASerban_mleng_practices.pdf)
-by [**Alex Serban**](https://www.linkedin.com/in/serbanac/). In it Alex
-discusses the challenges of creating software from machine learning projects,
-the differences between these projects and traditional software development, and
-the need for developing robust and ethical practices. He and his colleagues,
+Diving deeper into these roles, the team was a buzz recently, reviewing
+[this slide deck](https://se.ewi.tudelft.nl/remla/slides/07_ASerban_mleng_practices.pdf)
+on _Engineering Best Practices for Machine Learning_ by
+[**Alex Serban**](https://www.linkedin.com/in/serbanac/). In it Alex discusses
+the challenges of creating software from machine learning projects, the
+differences between these projects and traditional software development, and the
+need for developing robust and ethical practices. He and his colleagues,
 [**Koen van der Blom**](https://liacs.leidenuniv.nl/~blomkvander/),
 [**Holger Hoos**](https://ada.liacs.nl/members/), and
 [**Joost Visser**](https://jstvssr.github.io/) created a survey to determine
@@ -211,7 +211,7 @@ Are you in need of ethically sourced audio or video data for your ML project?
 simultanesously freeing ML teams of the project management lift associated with
 the collection of these datasets.  
 You can learn more about Twine's efforts in ethical data collection through
-these articles
+these articles,
 [The Importance of Ethically Sourced Data,](https://www.twine.net/blog/the-importance-of-ethically-sourced-data/)
 [Bias in Data Collection, ](https://www.twine.net/blog/bias-in-data-collection/)
 [Collecting Diversity Data: How to Ensure an Inclusive Workforce,](https://www.twine.net/blog/diversity-data-inclusive-workforce/)
@@ -228,7 +228,7 @@ description="100 Ethically sourced audio and video datasets from Twine."
 link="https://twine.net/"
 image="/uploads/images/2022-02-17/twine.png"/>
 
-## Battery.Dev Hackathon 2022
+## BatteryDEV Hackathon 2022
 
 Are you intersted in battery technology and in participating in a Hackthon using
 battery data? The
@@ -237,7 +237,7 @@ is climbing quickly as the world is looking to solve some of the world's
 emissions issues with electronic vehicles. Additionally the demand for electric
 vehicles
 [is outpacing](https://www.mckinsey.com/business-functions/operations/our-insights/unlocking-growth-in-battery-cell-manufacturing-for-electric-vehicles)
-the manufacturer's ability to supply the needed batteries. Datasets in the space
+the manufacturers' ability to supply the needed batteries. Datasets in the space
 are kept proprietary as companies work independently to develop patents.
 BatteryDEV 2022 aims to accelerate battery innovation through open source
 competitions. This year they are expecting 300 participants for the event from
@@ -333,7 +333,7 @@ But as it turns out, 'J' is
 [**Gabriella Caraballo**](https://github.com/erudin) joins Iterative as a
 Backend Engineer. She is originally from Venezuela, but is currently living in
 Canada! Programming was a hobby that became a professional path for Gabriella.
-She loves everything related to security, privacy and Open Source. In her free
+She loves everything related to security, privacy and open source. In her free
 time, Gabriella enjoys cooking and eating, playing video/board games,
 crocheting, photography, and music. Now that she's in Canada, she has added
 skiing to her hobbies! ⛷
