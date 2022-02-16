@@ -19,7 +19,7 @@ descriptionLong: |
 
     😎 GitHub Goodness and Integrations,
 
-    💻 Online Cours is live,
+    💻 Online Course is live,
 
     🚀 Info on our growing team, and more!
 picture: 2022-02-17/heartbeat-february.png
@@ -48,7 +48,7 @@ his
 [GitHub profile image](https://app.orbit.love/dvc-community/members/danielbarnes)
 and the fact that he used to be a competitive paraglider. His record being 9.5
 hours in the air! 😳 Many thanks to Daniel for his contributions to the
-Community that keep us all flying high! 🪂
+Community that keeps us all flying high! 🪂
 
 <summary>✨Image Inspo✨</summary>
 </details>
@@ -93,13 +93,13 @@ As the title would suggest,
 [this jam packed article](https://medium.com/@arjunkumbakkara/continuous-machine-learning-on-huggingface-transformer-with-dvc-including-weights-biases-1bc4520d210)
 from [**Nabarun Barua**](https://github.com/nabarunbaruaAIML), and
 [**Arjun Kumbakkara**](https://github.com/arjunKumbakkara) focuses in on how CML
-can be inplemented into an NLP project. They assume knowledge of DVC,
+can be implemented into an NLP project. They assume knowledge of DVC,
 Transformers, ONNX and Weights & Biases, so be ready to take your skills to the
 next level automating parts of the process with CML.
 
 They begin with the all-important setups of AWS IAM user with EC2 & S3 Developer
 access, the S3 bucket to store the dataset, and requesting an EC2 spot instance.
-They then coninue into a detailed description of all the stages of the project,
+They then continue into a detailed description of all the stages of the project,
 outlining the use of all the tools including DVC Studio. You can find
 [the repo for the project here.](https://github.com/nabarunbaruaAIML/CML_with_DVC_on_Transformer_NLP)
 Looking forward to the next installment from Nabarun and Arjun on a Dockerized
@@ -208,7 +208,7 @@ _29 Machine Learning Engineering practices ranked by adoption
 
 Are you in need of ethically sourced audio or video data for your ML project?
 [Twine](https://www.twine.net/ai) has created a way to accomplish this, while
-simultanesously freeing ML teams of the project management lift associated with
+simultaneously freeing ML teams of the project management lift associated with
 the collection of these datasets.  
 You can learn more about Twine's efforts in ethical data collection through
 these articles,
@@ -230,8 +230,8 @@ image="/uploads/images/2022-02-17/twine.png"/>
 
 ## BatteryDEV Hackathon 2022
 
-Are you intersted in battery technology and in participating in a Hackthon using
-battery data? The
+Are you interested in battery technology and in participating in a Hackathon
+using battery data? The
 [growth of battery technology](https://www.tfir.io/how-experiment-versioning-is-going-to-solve-big-problems-of-ai-ml-world/)
 is climbing quickly as the world is looking to solve some of the world's
 emissions issues with electronic vehicles. Additionally the demand for electric
