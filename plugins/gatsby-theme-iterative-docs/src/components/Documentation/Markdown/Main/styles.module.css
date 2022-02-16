@@ -277,7 +277,8 @@
   .yt-embed-wrapper {
     position: relative;
     display: flex;
-    margin-block: 0 16px;
+    margin-top: 0;
+    margin-bottom: 16px;
 
     &:hover &__tooltip {
       opacity: 1;
