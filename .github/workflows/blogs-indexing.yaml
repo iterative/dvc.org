@@ -20,16 +20,13 @@ jobs:
         with:
           node-version: '14.x'
           cache: 'yarn'
-      - name: Gatsby Cache Folder
+      - name: Gatsby Cache and Public Folder
         uses: actions/cache@v2
         with:
-          key: gatsby-cache-folder
-          path: .cache
-      - name: Gatsby Public Folder
-        uses: actions/cache@v2
-        with:
-          key: gatsby-public-folder
-          path: public
+          key: gatsby-cache-and-public-folder
+          path: |
+            .cache
+            public
       - name: Install dependencies
         run: yarn install --immutable --immutable-cache --check-cache
       - name: Build and index blogs on postBuild
