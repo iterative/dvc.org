@@ -2,7 +2,7 @@ name: Indexing blogs
 on:
   workflow_dispatch:
   push:
-    branches: ['search-blogs-ci-indexing']
+    branches: ['master']
     paths:
       - 'content/blog/**'
 jobs:
