@@ -1,7 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 require('dotenv').config()
 
-const indexName = process.env.GATSBY_ALGOLIA_INDEX_NAME || 'dev_blogs'
+const indexName = process.env.GATSBY_ALGOLIA_INDEX_NAME || 'dvc_blogs'
 
 const pageQuery = `{
   pages: allBlogPost {
@@ -12,6 +12,7 @@ const pageQuery = `{
         title
         description
         date
+        gitDateTime
         ... on Node {
           parent {
             ... on MarkdownRemark {
@@ -27,6 +28,7 @@ const pageQuery = `{
 function pageToAlgoliaRecord({
   node: {
     id,
+    gitDateTime,
     parent: { excerpt },
     ...rest
   }
@@ -34,6 +36,7 @@ function pageToAlgoliaRecord({
   return {
     objectID: id,
     excerpt,
+    modified: gitDateTime,
     ...rest
   }
 }
@@ -42,6 +45,7 @@ const queries = [
   {
     query: pageQuery,
     transformer: ({ data }) => data.pages.edges.map(pageToAlgoliaRecord),
+    matchFields: ['slug', 'modified'],
     indexName,
     settings: { attributesToSnippet: [`excerpt:20`] }
   }

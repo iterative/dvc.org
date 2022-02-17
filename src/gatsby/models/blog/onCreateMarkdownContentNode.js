@@ -1,9 +1,12 @@
+require('dotenv').config()
+const util = require('util')
+const exec = util.promisify(require('child_process').exec)
 const { markdownToHtml } = require('../../common.js')
 
 async function createMarkdownBlogNode(api, { parentNode, createChildNode }) {
   if (parentNode.relativeDirectory.split('/')[0] !== 'blog') return
   const { node, createNodeId, createContentDigest } = api
-  const { frontmatter, rawMarkdownBody } = node
+  const { frontmatter, rawMarkdownBody, fileAbsolutePath } = node
   const {
     date,
     tags,
@@ -16,7 +19,13 @@ async function createMarkdownBlogNode(api, { parentNode, createChildNode }) {
     pictureComment
   } = frontmatter
   const { name, relativePath } = parentNode
-
+  let gitDateTime
+  if (process.env.CI) {
+    const { stdout } = await exec(
+      `git log -1 --pretty=format:%aI ${fileAbsolutePath}`
+    )
+    gitDateTime = stdout
+  }
   const slug = /[-\d]*(.*)/.exec(name)[1]
 
   const pagePath = '/blog/' + slug
@@ -32,7 +41,8 @@ async function createMarkdownBlogNode(api, { parentNode, createChildNode }) {
     commentsUrl,
     picture,
     pictureComment: markdownToHtml(pictureComment),
-    sourcePath: relativePath
+    sourcePath: relativePath,
+    gitDateTime
   }
   const postNode = {
     ...fieldData,
