@@ -5,8 +5,8 @@ description: >
   Tutorial for easily moving a local ML experiment to a remote cloud machine
   with the help of Terraform Provider Iterative.
 descriptionLong: >
-  In this tutorial you'll learn how you can move a locally run machine learning
-  experiment to a remote machine on AWS with the help of Terraform Provider
+  In this tutorial, learn how to move a local machine learning experiment to a
+  remote cloud machine on AWS with the help of Terraform Provider
   Iterative.
 picture: 2022-04-26/massimiliano-latella-6ufBhNungOk-unsplash.jpg
 author: maria_khalusova
@@ -17,88 +17,88 @@ tags:
   - AWS
 ---
 
-There's a number of good reasons one might want to train a machine learning
-model locally. It's quick and easy to set up a new project on a local machine,
-you don't have to worry about how much money you'll spend while using this
-compute resource, your dataset may be a small sample, or you may want to start
-with simple models. On top of that, a local machine is just deeply familiar, as
-opposed to the multitude of available cloud services which can be intimidating
-unless you have a decent background in DevOps.
+There's a number of good reasons why one might want to train a machine learning
+model locally. It's quick and easy to set up a new project on a local machine.
+This is also sufficient for simple experiments (with reduced data subsets or
+small models) without paying to rent heavy cloud compute resources. A local
+machine is also deeply familiar -- as opposed to the multitude of available
+cloud services, which can be intimidating even with a decent background in
+DevOps.
 
-Once you set up everything locally, and iterate through your code and
-experiments enough times, you may come to a point where you have a need for a
-more powerful compute resource to train a larger model, use more data, or both.
-In other words, you may need to switch from training a model locally to training
-it in a cloud environment. If you find yourself in this situation, I hope this
-tutorial will help you by showing how to provision cloud infrastructure with
-Terraform and run your existing training script on it.
+Once you locally set up and iterate over your data & code enough, you may reach
+a point where more powerful compute resources are needed to train a larger model
+and/or use bigger datasets. In other words, you might have to switch from
+experimenting locally to a cloud environment. If you find yourself in this
+situation, this tutorial will help you easily provision cloud infrastructure
+with Terraform and run your existing training script on it.
 
 ## Getting Started
 
-For this tutorial I have picked
-[The BeeImage Dataset](https://www.kaggle.com/jenny18/honey-bee-annotated-images)
+This tutorial uses the
+[BeeImage Dataset](https://www.kaggle.com/jenny18/honey-bee-annotated-images)
 which contains over 5,100 bee images annotated with location, date, time,
-subspecies, health condition, caste, and pollen. I've downloaded the images,
-created a project and trained a CNN model locally to classify different
-subspecies. If you want to follow along, you can use your own data and training
-code, or clone
-[the example repo from GitHub](https://github.com/iterative/blog-tpi-bees).
+subspecies, health condition, caste, and pollen. Let's assume we've downloaded
+the images, created a project, and trained a CNN model locally to classify
+different subspecies. If you want to follow along, you can use your own data and
+training code, or clone [the example repository][tpi-bees].
 
-Let's pretend that the model I trained is good enough so that I would like to
-continue iterating on it in the cloud. Run more epochs? Change some
-hyperparameters? Add more layers? The first question that we should ask
-ourselves when we plan _The Big Move_ is "what exactly are we going to need to
+[tpi-bees]: https://github.com/iterative/blog-tpi-bees
+
+Let's say that we would like to continue iterating on our model in the cloud.
+Run more epochs overnight? Change some hyperparameters? Add more layers? The
+first question when planning _The Big Move_ is "what dependencies are needed to
 train this model in a cloud environment?"
 
 Some of the important puzzle pieces you already have locally. These are:
 
 - Your training code. It is likely that you have a
   [whole pipeline](https://dvc.org/doc/start/data-pipelines) with multiple
-  stages but for the sake of simplicity, mine is just a `train.py` script.
-- Data
+  stages but for the sake of simplicity, this tutorial uses a single `train.py`
+  script.
+- Data.
 - Python environment with all required libraries.
 
-In addition to that you will need an account with your cloud provider of choice.
-In this tutorial I'll be provisioning infrastructure on Amazon Web Services
-(AWS). You can create an AWS account yourself, or ask your DevOps team to
-provide you with one. Make sure to
-[store your authentication credentials](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html)
-(`AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`) in your system's environment
-variables. Once you do, we can start the move with the help of Terraform and the
-Iterative Provider.
+You will also need an account with your cloud provider of choice. In this
+tutorial we'll be provisioning infrastructure on Amazon Web Services (AWS). You
+can create an AWS account yourself, or ask your DevOps team to provide you with
+one.
+
+☞ Make sure to insert
+[authentication credentials](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html)
+into your system's environment variables (`AWS_ACCESS_KEY_ID` and
+`AWS_SECRET_ACCESS_KEY`).
+
+We can now start the move with the help of Terraform and the Iterative Provider.
 
 ## What is Terraform?
 
 [Terraform](https://www.terraform.io) is an open-source infrastructure-as-code
-tool that you'll need to
-[download and install](https://www.terraform.io/downloads) for this
-tutorial. With Terraform, you can create a configuration file in which you
-declaratively describe what infrastructure you'd like to have. This means that
-you do not need to write the instructions on what exact steps need to be taken.
-Instead, you describe what your infrastructure should ultimately look like.
-Behind the scenes, Terraform will figure out what needs to be done. If you've
-cloned the repo, you'll find the `main.tf` file in the root of the project --
-that's where we will be configuring Terraform.
+tool that you should
+[download and install](https://www.terraform.io/downloads).] Terraform
+requires you to create a configuration file containing a declarative description
+of the infrastructure you need. There's no need to read lots of cloud
+documentation nor write lots of commands. Instead, you describe what your
+infrastructure should ultimately look like. Behind the scenes, Terraform will
+figure out what needs to be done. If you've cloned the [repository][tpi-bees],
+the `main.tf` configuration file is in the project's root.
 
 ## Terraform Provider Iterative
 
 Terraform can orchestrate a plethora of various resources for you, but for the
-majority of projects you only need a few. That's why instead of shipping all the
-integrations in one bundle, you install a barebones Terraform distribution and
-then plug in support for whatever resources you need with so-called
-[_providers_](https://www.terraform.io/docs/extend/how-terraform-works.html).
-For this tutorial we will only need
-[TPI](https://github.com/iterative/terraform-provider-iterative).
-It enables full lifecycle management of computing resources for machine learning
-pipelines from AWS, Microsoft Azure, Google Cloud Platform, and more. The
-Iterative Provider has a couple of advantages for machine learning pipelines.
-Namely,
+majority of projects you only need a few. Instead of shipping plugins
+(providers) for all these resources in one bundle, Terraform downloads
+[_providers_](https://www.terraform.io/docs/extend/how-terraform-works.html)
+whenever required. For this tutorial we will only need the
+[TPI](https://registry.terraform.io/providers/iterative/iterative/latest).
+It enables full lifecycle management of computing resources from AWS, Microsoft
+Azure, Google Cloud Platform, and more.
 
-- The configuration for various cloud compute providers is nearly identical,
-  so you can easily migrate from one cloud
-  provider to another, if you want to.
-- It is designed to provision infrastructure as well as execute your
-  scripts on it too, all via a single command.
+The Iterative Provider has a several super neat features:
+
+- The configuration for different cloud compute providers is nearly identical,
+  so you can easily migrate from one cloud provider to another.
+- It provisions infrastructure and also executes your scripts on it -- all via a
+  single configuration file.
 - It helps to sync data between your local machine and a remote one.
 - Once your training is complete, the remote resources will be terminated,
   avoiding unused machines quietly ramping up costs.
@@ -121,9 +121,9 @@ Once you describe what providers you'll be using in your `main.tf`, run the
 terraform init
 ```
 
-command. If you have cloned the example repo, you should run this command before
-doing anything else. This will initialize your working directory and download
-the required provider.
+command. If you have cloned the example repository, you should run this command
+before doing anything else. This will initialize your working directory and
+download the required provider.
 
 ## Configuring `iterative_task`
 
@@ -149,7 +149,7 @@ terraform {
 }
 provider "iterative" {}
 
-resource "iterative_task" "tpi-examples-basic" {
+resource "iterative_task" "example" {
   cloud     = "aws"
   region    = "us-west"
   machine   = "l+k80"
@@ -182,7 +182,7 @@ whatever you want. Inside of the resource block, we specify some arguments:
 - _region_: you can choose the region where the compute resources should be
   allocated.
 - _machine_: if you know the exact kind of machine that you'd like to use, you
-  can specify it here. Alternatively, the Terraform Provider Iterative offers some common
+  can specify it here. Alternatively, Terraform Provider Iterative offers some common
   machine types which are roughly the same for all supported clouds. For
   example,
   [l+k80](https://registry.terraform.io/providers/iterative/iterative/latest/docs/resources/task#l+k80)
