@@ -88,9 +88,9 @@ DVC will determine the [type of remote](#supported-storage-types) based on the
 
 The following are the types of remote storage (protocols) supported:
 
-<details>
+<toggle>
 
-### Click for Amazon S3
+<tab title="Amazon S3">
 
 > 💡 Before adding an S3 remote, be sure to
 > [Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html).
@@ -109,13 +109,13 @@ Make sure you have the following permissions enabled: `s3:ListBucket`,
 methods that are performed by DVC (`list_objects_v2` or `list_objects`,
 `head_object`, `upload_file`, `download_file`, `delete_object`, `copy`).
 
-> See `dvc remote modify` for a full list of S3 parameters.
+> See
+> [`dvc remote modify`](/doc/command-reference/remote/modify?tab=Amazon-S3#available-parameters-per-storage-type)
+> for a full list of S3 parameters.
 
-</details>
+</tab>
 
-<details>
-
-### Click for S3-compatible storage
+<tab title="S3-compatible storage">
 
 For object storage that supports an S3-compatible API (e.g.
 [Minio](https://min.io/),
@@ -134,16 +134,15 @@ $ dvc remote modify myremote endpointurl \
 By default, DVC authenticates using your AWS CLI
 [configuration](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html)
 (if set). This uses the default AWS credentials file. To use a custom
-authentication method, use the parameters described in `dvc remote modify`.
+authentication method, use the parameters described in
+[`dvc remote modify`](/doc/command-reference/remote/modify?tab=S3-compatible-storage#available-parameters-per-storage-type).
 
 Any other S3 parameter can also be set for S3-compatible storage. Whether
 they're effective depends on each storage platform.
 
-</details>
+</tab>
 
-<details>
-
-### Click for Microsoft Azure Blob Storage
+<tab title="Microsoft Azure Blob Storage">
 
 ```dvc
 $ dvc remote add -d myremote azure://mycontainer/path
@@ -158,14 +157,13 @@ a Microsoft application.
   https://docs.microsoft.com/en-us/python/api/azure-identity/azure.identity.defaultazurecredential
 
 To use a custom authentication method, use the parameters described in
-`dvc remote modify`. See some
+[`dvc remote modify`](/doc/command-reference/remote/modify?tab=Microsoft-Azure-Blob-Storage#available-parameters-per-storage-type).
+See some
 [examples](/doc/command-reference/remote/modify#example-some-azure-authentication-methods).
 
-</details>
+</tab>
 
-<details>
-
-### Click for Google Drive
+<tab title="Google Drive">
 
 To start using a GDrive remote, first add it with a
 [valid URL format](/doc/user-guide/setup-google-drive-remote#url-format). Then
@@ -183,7 +181,9 @@ Go to the following link in your browser:
 Enter verification code: # <- enter resulting code
 ```
 
-See `dvc remote modify` for a list of other GDrive parameters, or
+See
+[`dvc remote modify`](/doc/command-reference/remote/modify?tab=Google-Drive#available-parameters-per-storage-type)
+for a list of other GDrive parameters, or
 [Set up a Google Drive DVC Remote](/doc/user-guide/setup-google-drive-remote)
 for a full guide on using Google Drive as DVC remote storage.
 
@@ -195,11 +195,9 @@ modified.
 
 > Please note our [Privacy Policy (Google APIs)](/doc/user-guide/privacy).
 
-</details>
+</tab>
 
-<details>
-
-### Click for Google Cloud Storage
+<tab title="Google Cloud Storage">
 
 > 💡 Before adding a GC Storage remote, be sure to
 > [Create a storage bucket](https://cloud.google.com/storage/docs/creating-buckets).
@@ -211,17 +209,16 @@ $ dvc remote add -d myremote gs://mybucket/path
 By default, DVC expects your GCP CLI is already
 [configured](https://cloud.google.com/sdk/docs/authorizing). DVC will be using
 default GCP key file to access Google Cloud Storage. To override some of these
-parameters, use the parameters described in `dvc remote modify`.
+parameters, use the parameters described in
+[`dvc remote modify`](/doc/command-reference/remote/modify?tab=Google-Cloud-Storage#available-parameters-per-storage-type).
 
 > Make sure to run `gcloud auth application-default login` unless you use
 > `GOOGLE_APPLICATION_CREDENTIALS` and/or service account, or other ways to
 > authenticate. See details [here](https://stackoverflow.com/a/53307505/298182).
 
-</details>
+</tab>
 
-<details>
-
-### Click for Aliyun OSS
+<tab title="Aliyun OSS">
 
 First you need to set up OSS storage on Aliyun Cloud. Then, use an S3 style URL
 for OSS storage, and configure the
@@ -233,8 +230,8 @@ $ dvc remote modify myremote oss_endpoint endpoint
 ```
 
 To set key id, key secret and endpoint (or any other OSS parameter), use
-`dvc remote modify` as show below. Use the `--local` option to avoid committing
-your secrets to Git:
+[`dvc remote modify`](/doc/command-reference/remote/modify?tab=Aliyun-OSS#available-parameters-per-storage-type)
+as show below. Use the `--local` option to avoid committing your secrets to Git:
 
 ```dvc
 $ dvc remote modify --local myremote oss_key_id 'mykey'
@@ -259,17 +256,17 @@ $ export OSS_ACCESS_KEY_SECRET='mysecret'
 > Uses default key id and key secret when they are not given, which gives read
 > access to public read bucket and public bucket.
 
-</details>
+</tab>
 
-<details>
-
-### Click for SSH
+<tab title="SSH">
 
 ```dvc
 $ dvc remote add -d myremote ssh://user@example.com/path
 ```
 
-> See `dvc remote modify` for a full list of SSH parameters.
+> See
+> [`dvc remote modify`](/doc/command-reference/remote/modify?tab=SSH#available-parameters-per-storage-type)
+> for a full list of SSH parameters.
 
 ⚠️ DVC requires both SSH and SFTP access to work with remote SSH locations.
 Please check that you are able to connect both ways with tools like `ssh` and
@@ -277,11 +274,9 @@ Please check that you are able to connect both ways with tools like `ssh` and
 
 > Note that the server's SFTP root might differ from its physical root (`/`).
 
-</details>
+</tab>
 
-<details>
-
-### Click for HDFS
+<tab title="HDFS">
 
 ⚠️ Using HDFS with a Hadoop cluster might require additional setup. Our
 assumption is that the client is set up to use it. Specifically, [`libhdfs`]
@@ -297,13 +292,13 @@ API. Read more about it by expanding the WebHDFS section below.
 $ dvc remote add -d myremote hdfs://user@example.com/path
 ```
 
-> See `dvc remote modify` for a full list of HDFS parameters.
+> See
+> [`dvc remote modify`](/doc/command-reference/remote/modify?tab=HDFS#available-parameters-per-storage-type)
+> for a full list of HDFS parameters.
 
-</details>
+</tab>
 
-<details>
-
-### Click for WebHDFS
+<tab title="WebHDFS">
 
 ⚠️ Using WebHDFS requires to enable REST API access in the cluster: set the
 config property `dfs.webhdfs.enabled` to `true` in `hdfs-site.xml`.
@@ -325,25 +320,25 @@ active kerberos session.
 > `token` contains sensitive user info. Therefore, it's safer to add it with the
 > `--local` option, so it's written to a Git-ignored config file.
 
-> See `dvc remote modify` for a full list of WebHDFS parameters.
+> See
+> [`dvc remote modify`](/doc/command-reference/remote/modify?tab=WebHDFS#available-parameters-per-storage-type)
+> for a full list of WebHDFS parameters.
 
-</details>
+</tab>
 
-<details>
-
-### Click for HTTP
+<tab title="HTTP">
 
 ```dvc
 $ dvc remote add -d myremote https://example.com/path
 ```
 
-> See `dvc remote modify` for a full list of HTTP parameters.
+> See
+> [`dvc remote modify`](/doc/command-reference/remote/modify?tab=HTTP#available-parameters-per-storage-type)
+> for a full list of HTTP parameters.
 
-</details>
+</tab>
 
-<details>
-
-### Click for WebDAV
+<tab title="WebDAV">
 
 ```dvc
 $ dvc remote add -d myremote \
@@ -358,13 +353,13 @@ $ dvc remote add -d myremote \
       webdavs://example.com/owncloud/remote.php/dav/files/myuser
 ```
 
-> See `dvc remote modify` for a full list of WebDAV parameters.
+> See
+> [`dvc remote modify`](/doc/command-reference/remote/modify?tab=WebDAV#available-parameters-per-storage-type)
+> for a full list of WebDAV parameters.
 
-</details>
+</tab>
 
-<details>
-
-### Click for local remote
+<tab title="local remote">
 
 A "local remote" is a directory in the machine's file system. Not to be confused
 with the `--local` option of `dvc remote` (and other config) commands!
@@ -402,7 +397,7 @@ $ cat .dvc/config
 > Note that `../dvcstore` has been resolved relative to the `.dvc/` dir,
 > resulting in `../../dvcstore`.
 
-</details>
+</tab>
 
 ## Example: Customize an S3 remote
 

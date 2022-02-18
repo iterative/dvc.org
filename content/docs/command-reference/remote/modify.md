@@ -103,9 +103,9 @@ The following config options are available for all remote types:
 The following are the types of remote storage (protocols) and their config
 options:
 
-<details>
+<toggle>
 
-### Click for Amazon S3
+<tab title="Amazon S3">
 
 - `url` - remote location, in the `s3://<bucket>/<key>` format:
 
@@ -329,11 +329,9 @@ $ dvc push
 For more on the supported env vars, please see the
 [boto3 docs](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/configuration.html#using-environment-variables)
 
-</details>
+</tab>
 
-<details>
-
-### Click for S3-compatible storage
+<tab title="S3-compatible storage">
 
 - `endpointurl` - URL to connect to the S3-compatible storage server or service
   (e.g. [Minio](https://min.io/),
@@ -348,11 +346,9 @@ For more on the supported env vars, please see the
 Any other S3 parameter (see previous section) can also be set for S3-compatible
 storage. Whether they're effective depends on each storage platform.
 
-</details>
+</tab>
 
-<details>
-
-### Click for Microsoft Azure Blob Storage
+<tab title="Microsoft Azure Blob Storage">
 
 > If any values given to the parameters below contain sensitive user info, add
 > them with the `--local` option, so they're written to a Git-ignored config
@@ -531,11 +527,9 @@ can propagate from an Azure configuration file (typically managed with
 `container_name`. The default directory where it will be searched for is
 `~/.azure` but this can be customized with the `AZURE_CONFIG_DIR` env var.
 
-</details>
+</tab>
 
-<details>
-
-### Click for Google Drive
+<tab title="Google Drive">
 
 > If any values given to the parameters below contain sensitive user info, add
 > them with the `--local` option, so they're written to a Git-ignored config
@@ -632,11 +626,9 @@ more information.
 [delegated]:
   https://developers.google.com/admin-sdk/directory/v1/guides/delegation
 
-</details>
+</tab>
 
-<details>
-
-### Click for Google Cloud Storage
+<tab title="Google Cloud Storage">
 
 > If any values given to the parameters below contain sensitive user info, add
 > them with the `--local` option, so they're written to a Git-ignored config
@@ -679,11 +671,9 @@ set:
 $ export GOOGLE_APPLICATION_CREDENTIALS='.../project-XXX.json'
 ```
 
-</details>
+</tab>
 
-<details>
-
-### Click for Aliyun OSS
+<tab title="Aliyun OSS">
 
 > If any values given to the parameters below contain sensitive user info, add
 > them with the `--local` option, so they're written to a Git-ignored config
@@ -725,11 +715,9 @@ $ export OSS_ACCESS_KEY_SECRET='mysecret'
 $ export OSS_ENDPOINT='endpoint'
 ```
 
-</details>
+</tab>
 
-<details>
-
-### Click for SSH
+<tab title="SSH">
 
 > If any values given to the parameters below contain sensitive user info, add
 > them with the `--local` option, so they're written to a Git-ignored config
@@ -818,11 +806,9 @@ $ export OSS_ENDPOINT='endpoint'
   $ dvc remote modify myremote allow_agent false
   ```
 
-</details>
+</tab>
 
-<details>
-
-### Click for HDFS
+<tab title="HDFS">
 
 💡 Using a HDFS cluster as remote storage is also supported via the WebHDFS API.
 Read more about by expanding the WebHDFS section in
@@ -852,11 +838,9 @@ Read more about by expanding the WebHDFS section in
                               kerb_ticket /path/to/ticket/cache
   ```
 
-</details>
+</tab>
 
-<details>
-
-### Click for WebHDFS
+<tab title="WebHDFS">
 
 💡 WebHDFS serves as an alternative for using the same remote storage supported
 by HDFS. Read more about by expanding the WebHDFS section in
@@ -941,11 +925,9 @@ by HDFS. Read more about by expanding the WebHDFS section in
   [webhdfs api]:
     https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#Delegation_Token_Operations
 
-</details>
+</tab>
 
-<details>
-
-### Click for HTTP
+<tab title="HTTP">
 
 > If any values given to the parameters below contain sensitive user info, add
 > them with the `--local` option, so they're written to a Git-ignored config
@@ -1033,11 +1015,9 @@ by HDFS. Read more about by expanding the WebHDFS section in
   $ dvc remote modify myremote ssl_verify path/to/ca_bundle.pem
   ```
 
-</details>
+</tab>
 
-<details>
-
-### Click for WebDAV
+<tab title="WebDAV">
 
 > If any values given to the parameters below contain sensitive user info, add
 > them with the `--local` option, so they're written to a Git-ignored config
@@ -1119,7 +1099,9 @@ by HDFS. Read more about by expanding the WebHDFS section in
   $ dvc remote modify myremote timeout 120
   ```
 
-</details>
+</tab>
+
+</toggle>
 
 ## Example: Customize an S3 remote
 
