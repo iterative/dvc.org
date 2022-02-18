@@ -153,7 +153,8 @@ const plugins = [
       skipIndexing:
         process.env.CI && process.env.ALGOLIA_ADMIN_KEY ? false : true,
       queries: require('./src/utils/algolia-queries.js'),
-      enablePartialUpdates: true,
+      enablePartialUpdates:
+        process.env.ALGOLIA_FULL_UPDATE === true ? false : true,
       matchFields: ['slug', 'modified']
     }
   },
