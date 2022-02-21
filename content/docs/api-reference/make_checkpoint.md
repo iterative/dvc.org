@@ -1,10 +1,13 @@
 # dvc.api.make_checkpoint()
 
-Make an [in-code checkpoint](/doc/user-guide/experiment-management/checkpoints).
+Make an in-code [checkpoint].
 
 ```py
 def make_checkpoint()
 ```
+
+[checkpoint]:
+  /doc/user-guide/experiment-management/running-experiments#checkpoint-experiments
 
 #### Usage:
 
@@ -126,16 +129,19 @@ $ ls .dvc/cache
 
 ```dvc
 $ dvc exp show
-┏━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┓
-┃ Experiment    ┃ Created      ┃
-┡━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━┩
-│ workspace     │ -            │
-│ master        │ Feb 10, 2021 │
-│ │ ╓ exp-8a3bd │ 02:07 PM     │
-│ │ ╟ 75ff5e0   │ 01:54 PM     │
-│ │ ╟ 6f5009b   │ 01:54 PM     │
-│ ├─╨ d832784   │ 01:54 PM     │
-└───────────────┴──────────────┘
+```
+
+```dvctable
+ ──────────────────────────────
+  neutral:**Experiment**      neutral:**Created**
+ ──────────────────────────────
+  workspace       -
+  master          Feb 10, 2021
+  │ ╓ exp-8a3bd   02:07 PM
+  │ ╟ 75ff5e0     01:54 PM
+  │ ╟ 6f5009b     01:54 PM
+  ├─╨ d832784     01:54 PM
+ ──────────────────────────────
 # Press q to exit this screen.
 ```
 

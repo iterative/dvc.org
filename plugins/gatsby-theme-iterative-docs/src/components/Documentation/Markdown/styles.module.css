@@ -1,0 +1,173 @@
+:global {
+  .Collapsible {
+    margin-bottom: 10px;
+    background-color: rgb(36 173 197 / 20%);
+    border-radius: 15px;
+    padding: 10px;
+  }
+
+  .Collapsible__trigger {
+    font-family: var(--font-brandon);
+    font-weight: 500;
+    display: block;
+    position: relative;
+    opacity: 0.9;
+    cursor: pointer;
+
+    &::after {
+      position: absolute;
+      display: inline-block;
+      background-size: 20px 20px;
+      right: 0;
+      width: 20px;
+      height: 20px;
+      background-image: url("/img/click.png");
+      content: "";
+      font-family: monospace;
+      transition: transform 200ms;
+    }
+
+    &.is-open::after {
+      opacity: 0.5;
+    }
+  }
+
+  .Collapsible__contentInner {
+    background-color: rgb(36 173 197 / 0%);
+    border-radius: 15px;
+    padding: 10px;
+  }
+}
+
+.cards {
+  display: flex;
+  flex-flow: column nowrap;
+  margin: 1rem -0.5rem;
+
+  @media screen and (min-width: 1024px) {
+    margin: 2rem -0.5rem;
+    flex-flow: row wrap;
+
+    .cardWrapper {
+      flex: 1 0 50%;
+      min-height: 7rem;
+    }
+
+    .card {
+      height: 100%;
+    }
+  }
+}
+
+.cardWrapper {
+  margin: 0.5rem 0;
+  display: flex;
+}
+
+.card {
+  flex: 1 0;
+  border: 1px solid #d6d6d6;
+  margin: 0 0.5rem;
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-flow: row nowrap;
+  align-items: center;
+  box-sizing: border-box;
+
+  p {
+    margin: 0;
+  }
+
+  .cardIcon {
+    box-sizing: border-box;
+    display: block;
+    padding: 0;
+    padding-right: 0.75rem;
+    flex: 0 0 75px;
+
+    * {
+      margin: 0;
+      padding: 0;
+      display: block;
+    }
+  }
+
+  .cardHeading {
+    margin: 0;
+    margin-bottom: 0.25em;
+    font-weight: bold;
+    color: var(--color-gray-dark);
+  }
+
+  .cardContent {
+    flex: 1;
+  }
+}
+
+a.card {
+  color: inherit;
+  text-decoration: inherit;
+  transition: background-color 0.3s ease-in-out;
+  background-color: #fff;
+
+  &:hover {
+    text-decoration: inherit;
+    background-color: var(--color-light-blue);
+  }
+}
+
+.toggle {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 0 16px;
+
+  input {
+    height: 0;
+    opacity: 0;
+    position: absolute;
+    width: 0;
+    overflow: hidden;
+  }
+
+  input:checked + label {
+    color: var(--color-azure);
+    border-color: var(--color-azure);
+  }
+
+  input:checked + label + .tab {
+    height: initial;
+    opacity: initial;
+    position: static;
+    width: 100%;
+    overflow: visible;
+  }
+
+  .tabHeading {
+    padding: 12px 16px 10px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid transparent;
+    font-weight: bold;
+    font-size: 16px;
+    font-family: var(--font-brandon);
+    order: -1;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.tab {
+  margin: 0;
+  padding: 10px 10px 10px 20px;
+  background-color: rgb(27 31 35 / 5%);
+  height: 0;
+  opacity: 0;
+  position: absolute;
+  overflow: hidden;
+  width: 0;
+}

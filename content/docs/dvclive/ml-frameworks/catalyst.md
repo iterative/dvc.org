@@ -1,22 +1,16 @@
 # Catalyst
 
-DVCLive allows you to easily add experiment tracking capabilities to your
-Catalyst projects.
-
-## About Catalyst
-
-[Catalyst](https://catalyst-team.com/) is a PyTorch framework for Deep Learning
-Research and Development. It focuses on reproducibility, rapid experimentation,
-and codebase reuse.
+DVCLive allows you to add experiment tracking capabilities to your
+[Catalyst](https://catalyst-team.com/) projects.
 
 ## Usage
 
-To start using DVCLive you just need to add a few lines to your training code in
-**any** Catalyst project.
+To start using DVCLive, add a few lines to your training code in **any**
+[Catalyst](https://catalyst-team.com/) project.
 
-You just need to add the
+Include the
 [`DvcLiveCallback`](https://github.com/iterative/dvclive/blob/master/dvclive/catalyst.py)
-to the callbacks list passed to your
+int the callbacks list passed to your
 [`Runner`](https://catalyst-team.github.io/catalyst/core/runner.html):
 
 ```git
@@ -34,7 +28,7 @@ runner.train(
 +    callbacks=[DvcLiveCallback()])
 ```
 
-This will generate the metrics logs and summaries as described in the
+This will generate the outputs as described in the
 [Get Started](/docs/dvclive/get-started#outputs).
 
 > 💡Without requiring additional modifications to your training code, you can

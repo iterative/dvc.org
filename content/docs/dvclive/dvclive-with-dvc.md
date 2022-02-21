@@ -3,14 +3,15 @@
 Even though DVCLive does not require DVC, they can integrate in several useful
 ways:
 
-- The [_outputs_](#outputs) DVCLive produces can be fed as
-  `dvc plots`/`dvc metrics`, making it easier to add metrics logging to DVC
-  <abbr>stages</abbr>. Those same outputs can be visualized in
-  [_DVC Studio_](#dvc-studio)
+- The [outputs](#outputs) DVCLive produces are recognized by `dvc exp`,
+  `dvc metrics` and `dvc plots`. Those same outputs can be visualized in
+  [DVC Studio](#dvc-studio).
+
 - You can monitor model performance in realtime with the
-  [_HTML report_](#html-report) that DVCLive generates when used alongside DVC.
-- DVCLive is also capable of generating [_checkpoint_](#checkpoints) signal
-  files used by DVC <abbr>experiments<abbr>.
+  [HTML report](#html-report) that DVCLive generates when used alongside DVC.
+
+- DVCLive is also capable of generating [checkpoint](#checkpoints) signal files
+  used by DVC <abbr>experiments<abbr>.
 
 ## Setup
 
@@ -64,10 +65,10 @@ command options for the DVC integration:
 - `--live-no-cache <path>` - specify a DVCLive log directory `path` but don't
   track it with DVC. Useful if you prefer to track it with Git.
 - `--live-no-summary` - deactivates
-  [summary](/doc/dvclive/get-started#metrics-summary) generation.
+  [summary](/doc/dvclive/api-reference/live/log#description) generation.
 - `--live-no-html` - deactivates [HTML report](#html-report) generation.
 
-> Note that summary files are never tracked by DVC
+> Note that DVC will not track summary files or the HTML report.
 
 Run the training with `dvc repro` or `dvc exp run`:
 
@@ -80,16 +81,24 @@ $ dvc repro train
 After that's finished, you should see the following content in the project:
 
 ```dvc
-$ ls
-dvc.lock  training_metrics       train.py
-dvc.yaml  training_metrics.json
+$ tree
+├── dvc.lock
+├── dvc.yaml
+├── training_metrics
+│   └── scalars
+│       ├── acc.tsv
+│       └── loss.tsv
+├── training_metrics.json
+└── train.py
 ```
 
-The `.tsv` files generated under `training_metrics` can be visualized with
-`dvc plots`.
+The [metrics summary](/doc/dvclive/api-reference/live/log#description)
+`training_metrics.json` can be used by `dvc metrics` and visualized with
+`dvc exp show`/`dvc exp diff`.
 
-In addition, `training_metrics.json` can be used by `dvc metrics` and visualized
-with `dvc exp show`/`dvc exp diff`.
+In addition, the
+[metrics history](/doc/dvclive/api-reference/live/log#step-updates) generated
+under `training_metrics/scalars` can be visualized with `dvc plots`.
 
 ### DVC Studio
 
@@ -102,22 +111,24 @@ experiments using DVCLive in DVC Studio.
 
 ### HTML report
 
-In addition to the
-[outputs described in the Quickstart](/doc/dvclive/get-started#outputs), DVC
-generates an _HTML report_.
+When `html: true`, DVC generates an _HTML report_.
 
 If you open `training_metrics_dvc_plots/index.html` in a browser, you'll see a
-plot for metrics automatically updated during the model training!
+plot for the logged data automatically updated during the model training!
 
 ![](/img/dvclive-html.gif)
+
+> If you don't update the step number, the HTML report won't be generated.
 
 ### Checkpoints
 
 When used alongside DVC, DVCLive can create _checkpoint_ signal files used by
 DVC <abbr>experiments<abbr>.
 
-This will save the metrics, plots, models, etc. associated to each
+This will save all the outputs (metrics, plots, models, etc.) associated to each
 [`step`](/doc/dvclive/api-reference/get_step).
 
 You can learn more about how to use them in the
 [Checkpoints User Guide](/docs/user-guide/experiment-management/checkpoints).
+
+> If you don't update the step number, checkpoints won't be created.

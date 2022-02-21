@@ -70,8 +70,7 @@ arguments.
 $ dvc exp push origin exp-abc123
 ```
 
-Once pushed, you can easily [list remote experiments] (with `dvc exp list`). To
-pus
+Once pushed, you can easily [list remote experiments] (with `dvc exp list`).
 
 > See also [How to Share Many Experiments][share many].
 
@@ -90,8 +89,7 @@ $ dvc exp pull origin cnn-32
 ```
 
 This pulls all the necessary files from both remotes. Again, you need to have
-both of these configured (see this
-[earlier section](#prepare-remotes-to-share-experiments)).
+both of these configured (see this [earlier section](#preparation)).
 
 If an experiment being pulled already exists in the local project, DVC won't
 overwrite it unless you supply `--force`.

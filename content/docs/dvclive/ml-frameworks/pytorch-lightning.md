@@ -1,19 +1,14 @@
 # PyTorch Lightning
 
-DVCLive allows you to easily add experiment tracking capabilities to your
-PyTorch Lightning projects.
-
-## About PyTorch Lightning
-
-[PyTorch Lightning](https://www.pytorchlightning.ai/) is an open-source
-framework for training PyTorch networks.
+DVCLive allows you to add experiment tracking capabilities to your
+[PyTorch Lightning](https://www.pytorchlightning.ai/) projects.
 
 ## Usage
 
-To start using DVCLive you just need to add a few lines to your training code in
-**any** PyTorch Lightning project.
+To start using DVCLive, add a few lines to your training code in **any**
+[PyTorch Lightning](https://www.pytorchlightning.ai/) project.
 
-You just need to pass the
+Pass the
 [`DvcLiveLogger`](https://github.com/iterative/dvclive/blob/master/dvclive/lightning.py)
 to your
 [`Trainer`](https://pytorch-lightning.readthedocs.io/en/latest/common/trainer.html):
@@ -30,7 +25,7 @@ to your
  trainer.fit(model)
 ```
 
-This will generate the metrics logs and summaries as described in the
+This will generate the outputs as described in the
 [Get Started](/docs/dvclive/get-started#outputs).
 
 > 💡Without requiring additional modifications to your training code, you can

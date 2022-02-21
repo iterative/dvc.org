@@ -26,7 +26,8 @@ With `--queue`, the list of experiments awaiting execution is cleared instead.
 - `--queue` - remove all experiments that haven't been run yet (defined via
   `dvc exp run --queue`).
 
-- `-A`, `--all` - remove all experiments (includes `--queue`).
+- `-A`, `--all` - remove all experiments that have been run. Use `--queue` to
+  remove queued ones.
 
 - `-g`, `--git-remote` - Name or URL of the Git remote to remove the experiment
   from
@@ -87,13 +88,13 @@ $ dvc exp show --include-params=train.min_split --no-pager
 ```
 
 ```dvctable
-┏━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
-┃ neutral:**Experiment**            ┃ neutral:**Created**      ┃ neutral:**State**  ┃ metric:**avg_prec** ┃ metric:**roc_auc** ┃ metric:**train.min_split** ┃
-┡━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━━━┩
-│ workspace             │ -            │ -      │  0.57553 │ 0.94652 │ 2               │
-│ master                │ Aug 02, 2021 │ -      │  0.53252 │  0.9107 │ 2               │
-│ └── 5751540 [split32] │ 04:57 PM     │ Queued │        - │       - │ 32              │
-└───────────────────────┴──────────────┴────────┴──────────┴─────────┴─────────────────┘
+ ──────────────────────────────────────────────────────────────────────────────────────
+  neutral:**Experiment**              neutral:**Created**        neutral:**State**    metric:**avg_prec**   metric:**roc_auc**   metric:**train.min_split**
+ ──────────────────────────────────────────────────────────────────────────────────────
+  workspace               -              -         0.57553   0.94652   2
+  master                  Aug 02, 2021   -         0.53252    0.9107   2
+  └── 5751540 [split32]   04:57 PM       Queued          -         -   32
+ ──────────────────────────────────────────────────────────────────────────────────────
 ```
 
 We can also remove experiments from a remote Git repository:

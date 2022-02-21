@@ -163,10 +163,24 @@ run it after `git clone` and `git pull`.
 If you've run `dvc push`, you can delete the cache (`.dvc/cache`) and
 `data/data.xml` to experiment with `dvc pull`:
 
+<toggle>
+<tab title="Mac/Linux">
+
 ```dvc
 $ rm -rf .dvc/cache
 $ rm -f data/data.xml
 ```
+
+</tab>
+<tab title="Windows">
+
+```dvc
+$ rmdir .dvc\cache
+$ del data\data.xml
+```
+
+</tab>
+</toggle>
 
 </details>
 

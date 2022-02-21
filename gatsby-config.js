@@ -7,10 +7,12 @@ require('./config/prismjs/dvc')
 require('./config/prismjs/usage')
 require('./config/prismjs/dvctable')
 
+const customYoutubeTransformer = require('./config/gatsby-remark-embedder/custom-yt-embedder')
 const apiMiddleware = require('./src/server/middleware/api')
 const redirectsMiddleware = require('./src/server/middleware/redirects')
 const makeFeedHtml = require('./plugins/utils/makeFeedHtml')
 const { BLOG } = require('./src/consts')
+const { linkIcon } = require('./static/icons')
 
 const title = 'Data Version Control · DVC'
 const description =
@@ -36,7 +38,12 @@ const plugins = [
   'gatsby-plugin-react-helmet',
   'gatsby-plugin-sitemap',
   'gatsby-plugin-twitter',
-  'gatsby-theme-iterative-docs',
+  {
+    resolve: 'gatsby-theme-iterative-docs',
+    options: {
+      remark: false
+    }
+  },
   {
     resolve: 'gatsby-source-filesystem',
     options: {
@@ -64,8 +71,21 @@ const plugins = [
     resolve: 'gatsby-transformer-remark',
     options: {
       plugins: [
-        'gatsby-remark-embedder',
+        {
+          resolve: 'gatsby-remark-embedder',
+          options: {
+            customTransformers: [customYoutubeTransformer]
+          }
+        },
         'gatsby-remark-dvc-linker',
+        {
+          resolve: 'gatsby-remark-args-linker',
+          options: {
+            icon: linkIcon,
+            // Pathname can also be array of paths. eg: ['docs/command-reference;', 'docs/api']
+            pathname: 'docs/command-reference'
+          }
+        },
         {
           resolve: 'gatsby-remark-prismjs',
           options: {
@@ -97,7 +117,8 @@ const plugins = [
           resolve: 'gatsby-remark-autolink-headers',
           options: {
             enableCustomId: true,
-            isIconAfterHeader: true
+            isIconAfterHeader: true,
+            icon: linkIcon
           }
         },
         {
@@ -105,7 +126,8 @@ const plugins = [
           options: {
             maxWidth: BLOG.imageMaxWidth,
             withWebp: true,
-            quality: 90
+            quality: 90,
+            loading: 'auto'
           }
         },
         'gatsby-remark-responsive-iframe',
@@ -289,7 +311,9 @@ module.exports = {
     description,
     author: 'Iterative',
     keywords,
-    siteUrl: 'https://dvc.org',
+    siteUrl: process.env.HEROKU_APP_NAME
+      ? `https://${process.env.HEROKU_APP_NAME}.herokuapp.com/`
+      : 'https://dvc.org',
     title
   },
   developMiddleware: app => {
