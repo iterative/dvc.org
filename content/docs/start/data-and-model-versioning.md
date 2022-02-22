@@ -19,8 +19,6 @@ or watch our video to learn about versioning data with DVC!
 
 https://youtu.be/kLKBcPonMYw
 
-To start tracking a file or directory, use `dvc add`:
-
 <details>
 
 ### ⚙️ Expand to get an example dataset.
@@ -43,22 +41,23 @@ data source.
 
 </details>
 
+To start tracking a file or directory, use `dvc add`. For example:
+
 ```dvc
 $ dvc add data/data.xml
 ```
 
-DVC stores information about the added file (or a directory) in a special `.dvc`
-file named `data/data.xml.dvc` — a small text file with a human-readable
-[format](/doc/user-guide/project-structure/dvc-files). This metadata file is a
-placeholder for the original data, and can be easily versioned like source code
-with Git:
+DVC stores information about the added file in a special `.dvc` file named
+`data/data.xml.dvc` -- a small text file with a human-readable [format]. This
+metadata file is a placeholder for the original data, and can be easily
+versioned like source code with Git:
 
 ```dvc
 $ git add data/data.xml.dvc data/.gitignore
 $ git commit -m "Add raw data"
 ```
 
-The original data, meanwhile, is listed in `.gitignore`.
+The data, meanwhile, is listed in `.gitignore`.
 
 <details>
 
@@ -85,6 +84,12 @@ outs:
 ```
 
 </details>
+
+> Note that there are [other mechanisms] to track data files/dirs besides `.dvc`
+> files.
+
+[format]: /doc/user-guide/project-structure/dvc-files
+[other mechanisms]: https://dvc.org/doc/start/data-pipelines#pipeline-stages
 
 ## Storing and sharing
 
