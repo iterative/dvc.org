@@ -59,9 +59,9 @@ detailed bellow.
 - _changed checksum_ means that the `.dvc` file hash has changed (e.g. someone
   manually edited it).
 
-- _always changed_ means that this is a `.dvc` file with no dependencies (see
-  `dvc add`) or that this stage (in `dvc.yaml`) has the `always_changed` field
-  set to `true` (see also `dvc stage add --always-changed`).
+- _always changed_ means that this stage (in `dvc.yaml`) has no dependencies or
+  the `always_changed` field set to `true` (see
+  `dvc stage add --always-changed`).
 
 - _changed deps_ or _changed outs_ means that there are changes in dependencies
   or outputs tracked by the stage or `.dvc` file. Depending on the use case,
