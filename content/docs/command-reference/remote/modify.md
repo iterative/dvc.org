@@ -81,7 +81,7 @@ The following config options are available for all remote types:
   [remote storage](/doc/command-reference/remote) synchronization operations
   (see the `--jobs` option of dvc push`, `dvc pull`, `dvc get`, `dvc
   import`, `dvc update`, `dvc add --to-remote`, `dvc gc
-  -c`, etc.). Accepts positive integers. The default is `4 \* cpu_count()`.
+  -c`, etc.). Accepts positive integers. The default is `4 * cpu_count()`.
 
   ```dvc
   $ dvc remote modify myremote jobs 8
