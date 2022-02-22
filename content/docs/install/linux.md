@@ -71,9 +71,6 @@ In this case it installs the `boto3` library along with DVC.
 $ snap install --classic dvc
 ```
 
-Add `--beta` for the latest tagged release candidate, or `--edge` for the latest
-`master` version.
-
 > 💡 When connected to the internet, `snap` will automatically look for updates
 > every 6 hours.
 
