@@ -64,9 +64,9 @@ $ tree
 
 ## Parameters
 
-- `name` - Name of the output file.
+- `name` - name of the image file that this command will output
 
-- `val` - The image to be saved.
+- `val` - image to be saved
 
 ## Exceptions
 
