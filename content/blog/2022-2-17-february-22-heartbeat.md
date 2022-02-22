@@ -63,8 +63,8 @@ The year is already flying by! Check out what's new this month!
 
 So let me guess, still overwhelmed with MLOps tool choices? This past month
 [**Matt Squire**](https://www.linkedin.com/in/matt-squire-a19896125/) of
-[Fuzzy Labs.ai](http://Labs.ai) reviewed their
-[Awesome Open Source MLOps repo,](github.com/fuzzylavs/awesome-open-mlops)
+[Fuzzy Labs.ai](http://FuzzyLabs.ai) reviewed their
+[Awesome Open Source MLOps repo,](github.com/fuzzylabs/awesome-open-mlops)
 [in this blog](https://fuzzylabs.ai/blog/open-source-mlops-is-awesome/) and
 [this video](https://youtu.be/HIAPoKEDXrg). Matt breaks down the tool space into
 categories of SaaS platforms, fully open source tools, and partly open source
