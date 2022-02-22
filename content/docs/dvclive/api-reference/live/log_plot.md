@@ -201,7 +201,7 @@ $ dvc plots show 'dvclive/plots/roc.json' \
 
 ## Parameters
 
-- `name` - a supported plot
+- `name` - a [supported plot type](#supported-plots)
 
 - `labels` - array of ground truth labels
 
