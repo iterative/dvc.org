@@ -146,11 +146,12 @@ _Discovering temporal scientometric knowledge in COVID-19 scholarly production
 
 - If you're a [**Guild.Ai**](https://guild.ai/) user, you'll be happy to know
   that Guild now supports DVC! Find out more in
-  [this article](https://my.guild.ai/t/using-guild-ai-with-dvc/803) and the
+  [this article](https://my.guild.ai/t/using-guild-ai-with-dvc/803) 
+  by [**Garret Smith**](https://www.linkedin.com/in/gar1t/)and the
   [corresponding repo](https://github.com/guildai/guildai/tree/dvc/examples/dvc)
   for an example.
 
-- [Luca Moschella](https://github.com/lucmos) created
+- [**Luca Moschella**](https://github.com/lucmos) created
   [this **NN template**](https://github.com/grok-ai/nn-template) for your neural
   network projects where you want to combine PyTorch Lightning, Hydra, DVC,
   Weights and Biases and Streamlit.
@@ -172,7 +173,7 @@ from Community members, I always have the same advice: try to figure out what
 part of DS/AI is most interesting to you and then work to building your skills
 toward that. In this article on the
 [10 Most Important Jobs for ML Products in 2022](https://medium.datadriveninvestor.com/the-10-most-important-jobs-for-ml-products-in-2022-7bf844d62423),
-[**Ágoston Török**]() does a great job of defining the different roles in the
+[**Ágoston Török**](https://www.linkedin.com/in/agoston-torok/) does a great job of defining the different roles in the
 space, how they interrelate, and how they show up in AI companies in the product
 development process. See his breakdown of the roles above, with rows defining
 the stage, and columns, the aspects the roles focus on. If you find you are
@@ -241,7 +242,7 @@ the manufacturers' ability to supply the needed batteries. Datasets in the space
 are kept proprietary as companies work independently to develop patents.
 BatteryDEV 2022 aims to accelerate battery innovation through open source
 competitions. This year they are expecting 300 participants for the event from
-March 20-26. Community member [Raymond Gasper]() is one of the organizers of
+March 20-26. Community member [Raymond Gasper](https://www.linkedin.com/in/raymond-james-gasper/) is one of the organizers of
 [Battery.dev](https://battery.dev), and is creating a DVC template for
 participants to use during the Hackathon. You can
 [register for the event here!](https://www.battery.dev/registration-form)
