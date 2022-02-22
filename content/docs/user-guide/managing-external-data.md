@@ -1,12 +1,12 @@
 # Managing External Data
 
 > ⚠️ This is an advanced feature for very specific situations and not
-> recommended except if there's absolutely no other alternative. In most cases
+> recommended except if there's absolutely no other alternative. In most cases,
 > alternatives like the [to-cache] or [to-remote] strategies of `dvc add` and
 > `dvc import-url` are more convenient. **Note** that external outputs are not
 > pushed or pulled from/to [remote storage].
 
-[to-cache]: /doc/command-reference/add#example-transfer-to-the-cache
+[to-cache]: /doc/command-reference/add#example-transfer-to-an-external-cache
 [to-remote]: /doc/command-reference/add#example-transfer-to-remote-storage
 [remote storage]: /doc/command-reference/remote
 

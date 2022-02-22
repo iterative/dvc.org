@@ -9,7 +9,7 @@ To start using DVCLive you just need to add a few lines to your training code in
 **any** [TensorFlow](https://www.tensorflow.org/) project.
 
 > 💡 If you prefer the Keras API, check the
-> [DVCLive - Keras](/docs/dvclive/user-guide/ml-frameworks/keras) page.
+> [DVCLive - Keras](/docs/dvclive/ml-frameworks/keras) page.
 
 You need to add `Live.log()` calls to each place where you would like to log
 metrics and one single `Live.next_step()` call to indicate that the epoch has
@@ -45,7 +45,7 @@ for epoch in range(epochs):
 +    live.next_step()
 ```
 
-This will generate the metrics logs and summaries as described in the
+This will generate the outputs as described in the
 [Get Started](/docs/dvclive/get-started#outputs).
 
 > 💡Without requiring additional modifications to your training code, you can

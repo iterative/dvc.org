@@ -1,9 +1,12 @@
 import { useEffect } from 'react'
 import { useLocation } from '@reach/router'
 
-import { handleFrontRedirect } from '../../utils/shared/redirects'
-import { scrollIntoLayout, getScrollNode } from '../../utils/front/scroll'
-import safeQuerySelector from '../../utils/front/safeQuerySelector'
+import { handleFrontRedirect } from 'gatsby-theme-iterative-docs/src/utils/shared/redirects'
+import {
+  scrollIntoLayout,
+  getScrollNode
+} from 'gatsby-theme-iterative-docs/src/utils/front/scroll'
+import safeQuerySelector from 'gatsby-theme-iterative-docs/src/utils/front/safeQuerySelector'
 
 import * as styles from './styles.module.css'
 

@@ -1,7 +1,24 @@
 require('dotenv').config()
 const util = require('util')
 const exec = util.promisify(require('child_process').exec)
+const mkdirp = require('mkdirp')
+const path = require('path')
+const sharp = require('sharp')
+
+const { isProduction } = require('../../../server/utils.js')
 const { markdownToHtml } = require('../../common.js')
+const { BLOG } = require('../../../consts')
+
+async function addPictureMetaTagPath(picture) {
+  const dirPath = path.dirname(path.join(__basedir, 'public', 'blog', picture))
+  await mkdirp(dirPath, { recursive: true })
+  return sharp(path.join(__basedir, 'static', 'uploads', picture))
+    .resize({ width: BLOG.imageMaxWidthHero })
+    .toFile(path.join(__basedir, 'public', 'blog', picture))
+    .catch(err => {
+      console.error(err)
+    })
+}
 
 async function createMarkdownBlogNode(api, { parentNode, createChildNode }) {
   if (parentNode.relativeDirectory.split('/')[0] !== 'blog') return
@@ -54,6 +71,14 @@ async function createMarkdownBlogNode(api, { parentNode, createChildNode }) {
       contentDigest: createContentDigest(fieldData)
     }
   }
+
+  if (isProduction) {
+    await mkdirp(path.join(__basedir, 'public', 'blog', 'images'), {
+      recursive: true
+    })
+    await addPictureMetaTagPath(path.join('images', picture))
+  }
+
   return createChildNode(postNode)
 }
 

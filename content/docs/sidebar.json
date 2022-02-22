@@ -84,10 +84,6 @@
         ]
       },
       {
-        "label": "Sharing Data and Model Files",
-        "slug": "sharing-data-and-model-files"
-      },
-      {
         "label": "CI/CD for Machine Learning",
         "slug": "ci-cd-for-machine-learning"
       },
@@ -665,6 +661,14 @@
               {
                 "slug": "log",
                 "label": "log()"
+              },
+              {
+                "slug": "log_image",
+                "label": "log_image()"
+              },
+              {
+                "slug": "log_plot",
+                "label": "log_plot()"
               },
               {
                 "slug": "get_step",
