@@ -146,8 +146,8 @@ _Discovering temporal scientometric knowledge in COVID-19 scholarly production
 
 - If you're a [**Guild.Ai**](https://guild.ai/) user, you'll be happy to know
   that Guild now supports DVC! Find out more in
-  [this article](https://my.guild.ai/t/using-guild-ai-with-dvc/803) 
-  by [**Garret Smith**](https://www.linkedin.com/in/gar1t/)and the
+  [this article](https://my.guild.ai/t/using-guild-ai-with-dvc/803) by
+  [**Garret Smith**](https://www.linkedin.com/in/gar1t/)and the
   [corresponding repo](https://github.com/guildai/guildai/tree/dvc/examples/dvc)
   for an example.
 
@@ -173,12 +173,13 @@ from Community members, I always have the same advice: try to figure out what
 part of DS/AI is most interesting to you and then work to building your skills
 toward that. In this article on the
 [10 Most Important Jobs for ML Products in 2022](https://medium.datadriveninvestor.com/the-10-most-important-jobs-for-ml-products-in-2022-7bf844d62423),
-[**Ágoston Török**](https://www.linkedin.com/in/agoston-torok/) does a great job of defining the different roles in the
-space, how they interrelate, and how they show up in AI companies in the product
-development process. See his breakdown of the roles above, with rows defining
-the stage, and columns, the aspects the roles focus on. If you find you are
-drawn to the space where the DS prototypes become the software product, then you
-may want to check out [our new course!](https://learn.iterative.ai) 😉
+[**Ágoston Török**](https://www.linkedin.com/in/agoston-torok/) does a great job
+of defining the different roles in the space, how they interrelate, and how they
+show up in AI companies in the product development process. See his breakdown of
+the roles above, with rows defining the stage, and columns, the aspects the
+roles focus on. If you find you are drawn to the space where the DS prototypes
+become the software product, then you may want to check out
+[our new course!](https://learn.iterative.ai) 😉
 
 ## Engineering Best Practices for Machine Learning
 
@@ -223,7 +224,7 @@ Twine also provides
 for anyone working on these types of projects. Check it out! 👇🏽
 
 <external-link 
-href="https://www.twine.net/blog/100-audio-and-video-datasets/)"
+href="https://www.twine.net/blog/100-audio-and-video-datasets/"
 title="Twine Ethically Sourced Datasets"
 description="100 Ethically sourced audio and video datasets from Twine."
 link="https://twine.net/"
@@ -242,13 +243,14 @@ the manufacturers' ability to supply the needed batteries. Datasets in the space
 are kept proprietary as companies work independently to develop patents.
 BatteryDEV 2022 aims to accelerate battery innovation through open source
 competitions. This year they are expecting 300 participants for the event from
-March 20-26. Community member [Raymond Gasper](https://www.linkedin.com/in/raymond-james-gasper/) is one of the organizers of
-[Battery.dev](https://battery.dev), and is creating a DVC template for
-participants to use during the Hackathon. You can
+March 20-26. Community member
+[Raymond Gasper](https://www.linkedin.com/in/raymond-james-gasper/) is one of
+the organizers of [Battery.dev](https://battery.dev), and is creating a DVC
+template for participants to use during the Hackathon. You can
 [register for the event here!](https://www.battery.dev/registration-form)
 
 <external-link 
-href="https://battery.dev)"
+href="https://battery.dev"
 title="BatteryDEV 2022 Hackathon"
 description="A global innovation challenge for battery, data and machine learning enthusiasts."
 link="https://battery.dev/"
