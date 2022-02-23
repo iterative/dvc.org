@@ -4,6 +4,7 @@ import useOnEscape from './useOnEscape'
 
 export interface IUsePopupReturn {
   toggle: () => void
+  open: () => void
   close: () => void
   containerEl: RefObject<HTMLLIElement>
   isOpen: boolean
@@ -32,7 +33,7 @@ const usePopup = (): IUsePopupReturn => {
     }
   }
 
-  return { toggle, containerEl, isOpen, close }
+  return { toggle, containerEl, isOpen, open, close }
 }
 
 export default usePopup

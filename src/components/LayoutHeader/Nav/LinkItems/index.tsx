@@ -75,7 +75,7 @@ export const navLinkItemsData: Array<INavLinkData | INavLinkPopupData> = [
     Popup: OtherToolsPopup
   },
   {
-    text: '...',
+    text: '···',
     popupName: 'otherPopup',
     Popup: OtherPopup,
     className: styles.other
@@ -102,7 +102,13 @@ const LinkItems: React.FC = () => {
       {navLinkItemsData.map((item, i) => {
         const popup = isPopup(item) ? popups[item.popupName] : undefined
         return (
-          <li key={i} className={styles.linkItem} ref={popup?.containerEl}>
+          <li
+            key={i}
+            className={styles.linkItem}
+            ref={popup?.containerEl}
+            onMouseEnter={popup?.open}
+            onMouseLeave={popup?.close}
+          >
             {isPopup(item) && popup ? (
               <>
                 <button
@@ -113,7 +119,7 @@ const LinkItems: React.FC = () => {
                     item.className
                   )}
                 >
-                  {item.text}
+                  <span>{item.text}</span>
                   <ArrowDownSVG
                     className={cn(styles.linkIcon, styles.arrowDownIcon)}
                   />
