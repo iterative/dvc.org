@@ -72,14 +72,15 @@ so if there's anything you want to see, make sure to comment on and follow
 
 This is another fantastic question from @jotsif!
 
-Unfortunately no, the instance will be destroyed. If you're trying to preserve
-the cache to try and speed up your experimentation time, you could
-[check this out](https://aws.amazon.com/premiumsupport/knowledge-center/s3-transfer-data-bucket-instance/)
-if you're using S3 for your remote storage.
+No, we deliberately terminate the instance to avoid unexpected costs. Stopped
+but unterminated instances
+[can still cost the same as running ones](https://aws.amazon.com/premiumsupport/knowledge-center/ec2-billing-terminated/).
+It's best to let the CML runner terminate and create new instances, running `dvc
+pull` to restore your data each time.
 
-Just be cautious since an instance that is in the "off" state might still be
-considered in use for billing purposes. It's best to let the CML runner
-terminate your instance and run `dvc pull` to restore the data.
+However, if you're trying to preserve data (e.g. cache dependencies to speed up
+experimentation time) on an AWS EC2 instance, you could
+[connect persistent AWS S3 remote storage](https://aws.amazon.com/premiumsupport/knowledge-center/s3-transfer-data-bucket-instance/).
 
 ### [Where can I find more details on how the DVC Studio free version differs from the enterprise version?](https://discord.com/channels/485586884165107732/841856466897469441/933324508570472497)
 
