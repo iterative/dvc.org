@@ -75,8 +75,8 @@ This is another fantastic question from @jotsif!
 No, we deliberately terminate the instance to avoid unexpected costs. Stopped
 but unterminated instances
 [can still cost the same as running ones](https://aws.amazon.com/premiumsupport/knowledge-center/ec2-billing-terminated/).
-It's best to let the CML runner terminate and create new instances, running `dvc
-pull` to restore your data each time.
+It's best to let the CML runner terminate and create new instances, running
+`dvc pull` to restore your data each time.
 
 However, if you're trying to preserve data (e.g. cache dependencies to speed up
 experimentation time) on an AWS EC2 instance, you could
