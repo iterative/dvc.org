@@ -6,7 +6,7 @@ import * as styles from './styles.module.css'
 import config from '../../../config'
 import SearchBox from './SearchBox'
 import SearchResult from './SearchResult'
-import useClickOutside from '../../../gatsby/hooks/useClickOutside'
+import useOnClickOutside from '../../../gatsby/hooks/useOnClickOutside'
 
 export default function Search({ indices }: { indices: Array<any> }) {
   const rootRef = useRef<HTMLDivElement>(null)
@@ -17,7 +17,7 @@ export default function Search({ indices }: { indices: Array<any> }) {
     []
   )
 
-  useClickOutside(rootRef, () => setFocus(false))
+  useOnClickOutside(rootRef, () => setFocus(false))
 
   return (
     <div className={styles.searchContainer} ref={rootRef}>

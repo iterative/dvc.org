@@ -1,4 +1,6 @@
 import { useState, useRef, RefObject } from 'react'
+import useOnClickOutside from './useOnClickOutside'
+import useOnEscape from './useOnEscape'
 
 export interface IUsePopupReturn {
   toggle: () => void
@@ -10,37 +12,16 @@ export interface IUsePopupReturn {
 const usePopup = (): IUsePopupReturn => {
   const [isOpen, setIsOpen] = useState(false)
   const containerEl = useRef<HTMLLIElement>(null)
-  let pageCloseEventListener: () => void = () => null
-  let keyupCloseEventListener: () => void = () => null
 
   const close = (): void => {
     setIsOpen(false)
-
-    pageCloseEventListener()
-    keyupCloseEventListener()
   }
 
-  const handlePageKeyup = (event: KeyboardEvent): void => {
-    if (event.key === 'Escape') {
-      close()
-    }
-  }
-
-  const handlePageClick = (event: MouseEvent) => {
-    if (!containerEl?.current?.contains(event.target as Node)) {
-      close()
-    }
-  }
+  useOnClickOutside(containerEl, close)
+  useOnEscape(close)
 
   const open = (): void => {
     setIsOpen(true)
-    document.addEventListener('click', handlePageClick)
-    document.addEventListener('keyup', handlePageKeyup)
-
-    pageCloseEventListener = (): void =>
-      document.removeEventListener('click', handlePageClick)
-    keyupCloseEventListener = (): void =>
-      document.removeEventListener('keyup', handlePageKeyup)
   }
 
   const toggle = (): void => {
