@@ -19,6 +19,7 @@ import usePopup, { IUsePopupReturn } from '../../../../gatsby/hooks/usePopup'
 const docsPage = getFirstPage()
 
 import * as styles from './styles.module.css'
+import { ReactComponent as EllipsisIcon } from '../../../../../static/img/ellipsis.svg'
 
 type PopupName = 'communityPopup' | 'otherToolsPopup' | 'otherPopup'
 
@@ -30,7 +31,7 @@ interface INavLinkData {
 }
 
 interface INavLinkPopupData {
-  text: string
+  text: string | typeof EllipsisIcon
   popupName: PopupName
   Popup: React.FC<IPopupProps>
   className?: string
@@ -75,7 +76,7 @@ export const navLinkItemsData: Array<INavLinkData | INavLinkPopupData> = [
     Popup: OtherToolsPopup
   },
   {
-    text: '···',
+    text: EllipsisIcon,
     popupName: 'otherPopup',
     Popup: OtherPopup,
     className: styles.other
@@ -119,7 +120,7 @@ const LinkItems: React.FC = () => {
                     item.className
                   )}
                 >
-                  <span>{item.text}</span>
+                  {typeof item.text === 'string' ? item.text : <item.text />}
                   <ArrowDownSVG
                     className={cn(styles.linkIcon, styles.arrowDownIcon)}
                   />
