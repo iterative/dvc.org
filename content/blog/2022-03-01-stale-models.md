@@ -1,6 +1,6 @@
 ---
 title: Preventing Stale Models in Production
-date: 2022-01-27
+date: 2022-03-01
 description: >
   We're going to look at how you can prevent stale models from remaining in
   production when the data starts to differ from the training data.
@@ -9,7 +9,7 @@ descriptionLong: >
   the data on production starts to differ from the data the model was trained
   on. That's why we're going to look at how you can prevent stale models from
   remaining in production.
-picture: 2022-01-20/stale-models.png
+picture: 2022-03-01/stale-models.png
 pictureComment: Preventing Stale Models in Production
 author: milecia_mcgregor
 commentsUrl: https://discuss.dvc.org/t/stale-models/1002
@@ -62,12 +62,10 @@ model was trained, this is called data drift. There are a number of tools that
 help monitor for data drift like [evidently.ai](https://docs.evidentlyai.com/)
 or [Aporia](https://docs.aporia.com/).
 
-Our project uses Evidently.ai and you can see all of the model and data drift
-reports when you run the notebook for this project. Here's what they look like.
+Since we're working with Evidently.ai, you can see target drift report when you
+run the notebook for this project. Here's what it looks like.
 
-![image of the report showing the target drift]()
-
-![image of the report showing the data drift]()
+![image of the report showing the target drift](https://thumb.tildacdn.com/tild6336-3231-4736-b136-646539326135/-/format/webp/4_week3_pred_actual.png)
 
 So we see at the end of Week 3 the model is in pretty bad shape. This is where
 we can bring in DVC to help us get this stale model off of production faster.
@@ -95,7 +93,12 @@ $ dvc exp show
 Now you should see a table similar to this:
 
 ```dvctable
-put table with single experiment here
+┏━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
+┃ neutral:**Experiment** ┃ metric:**avg_prec** ┃ metric:**roc_auc** ┃ param:**train.seed** ┃ param:**train.n_est** ┃ param:**train.min_split** ┃
+┡━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━┩
+│ workspace  │   0.6506 │ 0.39817 │ 20210428   │ 200         │ 64              │
+│ main       │   0.6506 │ 0.39817 │ 20210428   │ 200         │ 64              │
+└────────────┴──────────┴─────────┴────────────┴─────────────┴─────────────────┘
 ```
 
 Of course you'll likely run many more experiments to find a better model. Let's
@@ -104,11 +107,19 @@ using for a number of experiments. These experiments could produce a table that
 looks similar to this:
 
 ```dvctable
-put table with many experiments here
+┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
+┃ neutral:**Experiment**              ┃ metric:**avg_prec** ┃ metric:**roc_auc** ┃ param:**train.seed** ┃ param:**train.n_est** ┃ param:**train.min_split** ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━┩
+│ workspace               │  0.60791 │ 0.45758 │ 20210428   │ 375         │ 64              │
+│ main                    │   0.6506 │ 0.39817 │ 20210428   │ 200         │ 64              │
+│ ├── cdc01e8 [exp-4f5ab] │  0.60791 │ 0.45758 │ 20210428   │ 375         │ 64              │
+│ ├── 0da4b70 [exp-e2b18] │  0.56084 │  0.5438 │ 20210428   │ 50          │ 64              │
+│ └── f5b25f2 [exp-9524a] │  0.62528 │ 0.49971 │ 20210428   │ 600         │ 64              │
+└─────────────────────────┴──────────┴─────────┴────────────┴─────────────┴─────────────────┘
 ```
 
-Since we have all of these experiments, this is a good time to share the results
-with your coworkers.
+Since we have all of these experiments, this is probably a good time to share
+the results with your coworkers and get some feedback.
 
 ## Viewing experiment results in DVC Studio
 
@@ -117,7 +128,7 @@ connect to your GitHub/GitLab account and you'll be able to choose the repo for
 this project. Once you're connected, you should be able to see all of the
 experiments you've pushed to your Git history.
 
-![example of plots and results in DVC Studio]()
+![example of plots and results in DVC Studio](2022-03-01/stale_models_in_studio.png)
 
 You can give others on your team access to this and they'll be able to run new
 experiments and see the results right in the browser. This is a great tool to
@@ -128,9 +139,9 @@ deploy.
 
 The output of our training stage is the file for the `model.pt`. Now all we need
 to do is get this to our production environment. That could be a web API that
-returns results in real-time or you do some kind of batch prediction. Regardless
-of how you deploy to production, you now have a model that's been updated to
-account for the previous data drift.
+returns results in real-time or you could do some kind of batch prediction.
+Regardless of how you deploy to production, you now have a model that's been
+updated to account for the previous data drift.
 
 ## Conclusion
 
