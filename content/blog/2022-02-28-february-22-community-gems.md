@@ -89,9 +89,9 @@ Thanks for asking @Abdi!
 You can find more info about the different
 [DVC Studio tiers here](https://studio.iterative.ai/#pricing).
 
-The _Free_ tier has all the features most individual users need, like
-connecting to ML repositories, creating views, submitting experiments, and
-generating plots. The _Teams_ tier allows you to create large teams for better
+The _Free_ tier has all the features most individual users need, like connecting
+to ML repositories, creating views, submitting experiments, and generating
+plots. The _Teams_ tier allows you to create large teams for better
 collaboration and sharing of views and settings with everyone. The _Enterprise_
 tier is more for needs around compliance, dedicated support, and on-premise
 installation.
