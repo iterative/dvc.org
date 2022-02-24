@@ -8,7 +8,7 @@ details.
 > experimentation, you may want to check the basics in
 > [Get Started: Experiments](/doc/start/experiments/) first.
 
-## Pipelines files
+## Pipeline files
 
 DVC relies on `dvc.yaml` files that contain the commands to run the
 experiment(s). These files codify _pipelines_ that specify one or more
@@ -20,7 +20,7 @@ experiment(s). These files codify _pipelines_ that specify one or more
 
 ### Running the pipeline(s)
 
-You can run the experimental pipeline using `dvc exp run`. It uses `./dvc.yaml`
+You can run the experiment pipeline using `dvc exp run`. It uses `./dvc.yaml`
 (in the current directory) by default.
 
 ```dvc
@@ -38,12 +38,11 @@ with changed dependencies or outputs missing from the <abbr>cache</abbr>. You
 can limit this to certain [reproduction targets] or even single stages
 (`--single-item` flag).
 
-<abbr>DVC projects</abbr> actually supports more than one pipeline, in one or
+<abbr>DVC projects</abbr> actually support more than one pipeline, in one or
 more `dvc.yaml` files. The `--all-pipelines` option lets you run them all at
 once.
 
-> 📖 `dvc exp run` is an experiment-specific alternative to `dvc repro` where
-> you can learn more about these and other pipeline-related options.
+> 📖 `dvc exp run` is an experiment-specific alternative to `dvc repro`.
 
 [reproduction targets]: /doc/command-reference/repro#options
 [dependency graph]: /doc/command-reference/dag#directed-acyclic-graph
@@ -62,7 +61,7 @@ and reproduces them.
 
 > 📖 See `dvc params` for more details.
 
-You could manually edit a params file and run an experiment on that basis. Since
+You could manually edit a params file and run an experiment using those as inputs. Since
 this is a common sequence, the built-in option `dvc exp run --set-param` (`-S`)
 is provided as a shortcut. It takes an existing param name and value, and
 updates the file on-the-fly before execution.
@@ -181,7 +180,7 @@ programming language) following the same steps as `make_checkpoint()`.
 > 📖 See [Checkpoints](/doc/user-guide/experiment-management/checkpoints) to
 > learn more about this feature.
 
-Running checkpoint experiments is no different than with regular ones, e.g.:
+Running checkpoint experiments is no different than running regular ones, e.g.:
 
 ```dvc
 $ dvc exp run -S param=value
@@ -192,11 +191,11 @@ gets interrupted (e.g. with `Ctrl+C`, or by an error). Without interruption, a
 "wrap-up" checkpoint will be added (if needed), so that changes to pipeline
 outputs don't remain in the workspace.
 
-Subsequent uses of `dvc exp run` will continue from the latest checkpoint (using
+Subsequent uses of `dvc exp run` will resume from the latest checkpoint (using
 the latest cached versions of all outputs). To resume from a previous checkpoint
-(list them with `dvc exp show`), you must first `dvc exp apply` it before the
-`dvc exp run`. For `--queue` or `--temp` runs, use `--rev` to specify the
-checkpoint to continue from.
+(list them with `dvc exp show`), you must first `dvc exp apply` it before running
+it with `dvc exp run`. For `--queue` or `--temp` runs, use `--rev` to specify the
+checkpoint to resume from.
 
 Alternatively, use `--reset` to start over (discards previous checkpoints and
 their outputs). This is useful for re-training ML models, for example.
