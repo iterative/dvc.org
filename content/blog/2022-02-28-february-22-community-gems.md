@@ -41,7 +41,7 @@ remote storage with the `--remote` option like this:
 $ dvc gc --workspace --cloud --remote name_of_remote
 ```
 
-### [I'm using DVC experiments for deep learning projects, but I'm running into a problem where the Git index gets corrupted when cache files are above 4 GB. What is the best workaround for this?](https://discord.com/channels/485586884165107732/563406153334128681/928939232033140736)
+### [Using DVC experiments but the Git index gets corrupted with large (4GB) files. What is the best workaround?](https://discord.com/channels/485586884165107732/563406153334128681/928939232033140736)
 
 Great question from @charles.melby-thompson!
 
