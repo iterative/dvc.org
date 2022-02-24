@@ -9,7 +9,7 @@ descriptionLong: >
   the data on production starts to differ from the data the model was trained
   on. That's why we're going to look at how you can prevent stale models from
   remaining in production.
-picture: 2022-03-01/stale-models.png
+picture: 2022-03-01/stale-model-cover.png
 pictureComment: Preventing Stale Models in Production
 author: milecia_mcgregor
 commentsUrl: https://discuss.dvc.org/t/stale-models/1002
