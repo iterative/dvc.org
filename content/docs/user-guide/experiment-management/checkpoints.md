@@ -32,7 +32,7 @@ similar to a branch.
 
 </details>
 
-Like with regular experiments, checkpoints can become persistent by
+Like with regular experiments, checkpoints can be persisted by
 [committing them to Git](#committing-checkpoints-to-git).
 
 This guide covers how to implement checkpoints in an ML project using DVC. We're
