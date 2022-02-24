@@ -45,16 +45,17 @@ $ dvc gc --workspace --cloud --remote name_of_remote
 
 Great question from @charles.melby-thompson!
 
-This is a known
-[issue with experiments](https://github.com/iterative/dvc/issues/6181) and we
-highly encourage you to comment on and follow this ticket to let us know what
-you need. The reason this happens is because DVC will automatically track `-O`
-outputs with Git internally since it assumes that any outputs that are not
-explicitly part of your `.gitignore` file is part of the experiment state that
-needs to be tracked.
+Experiment files may be tracked by Git or DVC. For large files, we generally
+recommend tracking them with DVC, in which case file size shouldn't be an issue.
 
-You should be able to explicitly add the `-O` output file(s) to your
-`.gitignore` as a workaround in the meantime.
+By default, experiments will track all other files with Git. However, Git will
+fail with too much data. If there are files you don't want to track at all (such
+as large temporary/intermediate files), you can add them to your .gitignore
+file.
+
+Check out
+[this open issue with experiments](https://github.com/iterative/dvc/issues/6181)
+for more details and to provide feedback.
 
 ### [Is there an easy way to visualize DVC experiment results without using the command line?](https://discord.com/channels/485586884165107732/485596304961962003/930150143259459644)
 
