@@ -60,7 +60,7 @@ You should be able to explicitly add the `-O` output file(s) to your
 
 Good question @LucZ[Mad]!
 
-If you bring those experiments into your regular Git workflow like, using
+If you bring those experiments into your regular Git workflow, e.g. using
 `dvc exp branch` to create a branch for any experiment you want to share, you
 could use [DVC Studio](https://studio.iterative.ai/) to visualize them.
 
@@ -68,7 +68,7 @@ We're working on support for viewing any pushed experiments in Studio right now
 so if there's anything you want to see, make sure to comment on and follow
 [this issue](https://github.com/iterative/studio-support/issues/45).
 
-### [Is it possible to change the CML runner shutdown to stopping the instance after the idle timeout instead of terminating the instance using self-hosted runners on AWS?](https://discord.com/channels/485586884165107732/728693131557732403/933674203796873226)
+### [Can CML self-hosted runners stop the instance after the idle timeout instead of terminating?](https://discord.com/channels/485586884165107732/728693131557732403/933674203796873226)
 
 This is another fantastic question from @jotsif!
 
@@ -82,18 +82,18 @@ However, if you're trying to preserve data (e.g. cache dependencies to speed up
 experimentation time) on an AWS EC2 instance, you could
 [connect persistent AWS S3 remote storage](https://aws.amazon.com/premiumsupport/knowledge-center/s3-transfer-data-bucket-instance/).
 
-### [Where can I find more details on how the DVC Studio free version differs from the enterprise version?](https://discord.com/channels/485586884165107732/841856466897469441/933324508570472497)
+### [What's the difference between DVC Studio free and enterprise versions?](https://discord.com/channels/485586884165107732/841856466897469441/933324508570472497)
 
 Thanks for asking @Abdi!
 
 You can find more info about the different
 [DVC Studio tiers here](https://studio.iterative.ai/#pricing).
 
-The Free version has all the features most individual users need, like
-connecting to ML repositories, creating views, submiting experiments, and
-generating plots. The Teams version allows you to create large teams for better
-collaboration and sharing of views and settings with everyone. The Enterprise
-version is more for needs around compliance, dedicated support, and on-premise
+The _Free_ tier has all the features most individual users need, like connecting
+to ML repositories, creating views, submitting experiments, and generating
+plots. The _Teams_ tier allows you to create large teams for better
+collaboration and sharing of views and settings with everyone. The _Enterprise_
+tier is more for needs around compliance, dedicated support, and on-premise
 installation.
 
 If you are trying to decide which plan to select, please email us at
@@ -129,7 +129,7 @@ then run:
 $ dvc commit train-model@en # commits the 'en' stage
 ```
 
-### [I was wondering whether it was possible to reuse the same `dvc.yaml` file in multiple pipeline folders such that the exact same stages are run with different `params.yaml` files?](https://discord.com/channels/485586884165107732/485596304961962003/939099847288578079)
+### [How can I use one `dvc.yaml` file with multiple pipeline folders with different `params.yaml` files?](https://discord.com/channels/485586884165107732/485596304961962003/939099847288578079)
 
 @louisv, thanks for this question!
 
