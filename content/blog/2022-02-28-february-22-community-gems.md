@@ -41,7 +41,7 @@ remote storage with the `--remote` option like this:
 $ dvc gc --workspace --cloud --remote name_of_remote
 ```
 
-### [Using DVC experiments but the Git index gets corrupted with large (4GB) files. What is the best workaround?](https://discord.com/channels/485586884165107732/563406153334128681/928939232033140736)
+### [I'm using DVC experiments, but the Git index gets corrupted with large (4GB) files. What is the best workaround?](https://discord.com/channels/485586884165107732/563406153334128681/928939232033140736)
 
 Great question from @charles.melby-thompson!
 
@@ -98,36 +98,6 @@ installation.
 
 If you are trying to decide which plan to select, please email us at
 `info@iterative.ai` and we'll help you figure it out based on your needs.
-
-### [How do you `dvc commit` or get the `dvc status` of each case in a `foreach` stage?](https://discord.com/channels/485586884165107732/563406153334128681/938649682492686366)
-
-It should be enough to do `dvc commit <stagename>@<foreach name>`.
-
-For example, assuming you have a `params.yaml` that looks like this:
-
-```yaml
-languages:
-  - en
-  - it
-  - de
-  - fr
-```
-
-and a `dvc.yaml` that looks like this:
-
-```yaml
-stages:
-  train-model:
-  foreach: ${languages}
-  do:
-    cmd: echo "training '${item}' model"
-```
-
-then run:
-
-```dvc
-$ dvc commit train-model@en # commits the 'en' stage
-```
 
 ### [How can I use one `dvc.yaml` file with multiple pipeline folders with different `params.yaml` files?](https://discord.com/channels/485586884165107732/485596304961962003/939099847288578079)
 
