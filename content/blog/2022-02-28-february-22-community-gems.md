@@ -60,7 +60,7 @@ You should be able to explicitly add the `-O` output file(s) to your
 
 Good question @LucZ[Mad]!
 
-If you bring those experiments into your regular Git workflow like, using
+If you bring those experiments into your regular Git workflow, e.g. using
 `dvc exp branch` to create a branch for any experiment you want to share, you
 could use [DVC Studio](https://studio.iterative.ai/) to visualize them.
 
