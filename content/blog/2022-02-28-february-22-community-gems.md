@@ -35,7 +35,7 @@ $ dvc gc --workspace --cloud
 This option only keeps the files and directories referenced in the workspace and
 it removes everything else, including data in the cloud. By default, this
 command will use the default remote you have set. You can specify a different
-remote storage with the `--remote` option like this.
+remote storage with the `--remote` option like this:
 
 ```dvc
 $ dvc gc --workspace --cloud --remote name_of_remote
