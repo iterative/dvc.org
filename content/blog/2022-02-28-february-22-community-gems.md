@@ -68,7 +68,7 @@ We're working on support for viewing any pushed experiments in Studio right now
 so if there's anything you want to see, make sure to comment on and follow
 [this issue](https://github.com/iterative/studio-support/issues/45).
 
-### [Is it possible to change the CML runner shutdown to stopping the instance after the idle timeout instead of terminating the instance using self-hosted runners on AWS?](https://discord.com/channels/485586884165107732/728693131557732403/933674203796873226)
+### [Can CML self-hosted runners stop the instance after the idle timeout instead of terminating?](https://discord.com/channels/485586884165107732/728693131557732403/933674203796873226)
 
 This is another fantastic question from @jotsif!
 
