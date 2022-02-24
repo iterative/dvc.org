@@ -26,7 +26,7 @@ You can find the best way to delete files from your cloud storage in
 [our docs](https://dvc.org/doc/command-reference/gc#removing-data-in-remote-storage).
 Make sure you're super careful when deleting data from the cloud because it's an
 irreversible action. Here's an example of a deletion command that will clear out
-your workspace and the cloud storage.
+your workspace and the cloud storage:
 
 ```dvc
 $ dvc gc --workspace --cloud
