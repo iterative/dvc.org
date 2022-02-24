@@ -18,7 +18,7 @@ tags:
   - Community
 ---
 
-### [How to delete DVC-tracked files from cloud storage?](https://discord.com/channels/485586884165107732/563406153334128681/927618225989111880)
+### [How can I delete DVC-tracked files from cloud storage?](https://discord.com/channels/485586884165107732/563406153334128681/927618225989111880)
 
 Thanks for the question @fireballpoint1!
 
