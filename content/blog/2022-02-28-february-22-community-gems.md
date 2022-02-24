@@ -82,7 +82,7 @@ However, if you're trying to preserve data (e.g. cache dependencies to speed up
 experimentation time) on an AWS EC2 instance, you could
 [connect persistent AWS S3 remote storage](https://aws.amazon.com/premiumsupport/knowledge-center/s3-transfer-data-bucket-instance/).
 
-### [Where can I find more details on how the DVC Studio free version differs from the enterprise version?](https://discord.com/channels/485586884165107732/841856466897469441/933324508570472497)
+### [What's the difference between DVC Studio free and enterprise versions?](https://discord.com/channels/485586884165107732/841856466897469441/933324508570472497)
 
 Thanks for asking @Abdi!
 
