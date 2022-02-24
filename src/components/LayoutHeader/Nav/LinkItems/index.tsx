@@ -33,6 +33,7 @@ interface INavLinkData {
 interface INavLinkPopupData {
   text: string | typeof EllipsisIcon
   popupName: PopupName
+  ariaLabel?: string
   Popup: React.FC<IPopupProps>
   className?: string
   href?: string
@@ -77,6 +78,7 @@ export const navLinkItemsData: Array<INavLinkData | INavLinkPopupData> = [
   },
   {
     text: EllipsisIcon,
+    ariaLabel: 'Show options',
     popupName: 'otherPopup',
     Popup: OtherPopup,
     className: styles.other
@@ -113,6 +115,7 @@ const LinkItems: React.FC = () => {
             {isPopup(item) && popup ? (
               <>
                 <button
+                  aria-label={item.ariaLabel}
                   onClick={popup?.toggle}
                   className={cn(
                     styles.link,
