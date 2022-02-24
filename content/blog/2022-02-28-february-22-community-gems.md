@@ -129,7 +129,7 @@ then run:
 $ dvc commit train-model@en # commits the 'en' stage
 ```
 
-### [I was wondering whether it was possible to reuse the same `dvc.yaml` file in multiple pipeline folders such that the exact same stages are run with different `params.yaml` files?](https://discord.com/channels/485586884165107732/485596304961962003/939099847288578079)
+### [How to use one `dvc.yaml` file with multiple pipeline folders with different `params.yaml` files?](https://discord.com/channels/485586884165107732/485596304961962003/939099847288578079)
 
 @louisv, thanks for this question!
 
