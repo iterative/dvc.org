@@ -7,9 +7,9 @@ description: >
 descriptionLong: >
   A roundup of technical Q&A's from the DVC and CML community. This month:
   comparing experiments, working with data, working with pipelines, and more.
-picture: 2022-01-31/jan-community-gems.png
+picture: 2022-02-28/feb-comm-gems.png
 author: milecia_mcgregor
-commentsUrl: https://discuss.dvc.org/t/february-22-community-gems/100132
+commentsUrl: https://discuss.dvc.org/t/february-22-community-gems/1078
 tags:
   - Data Versioning
   - DVC Remotes
@@ -146,8 +146,10 @@ $ dvc plots modify plots_no_cache.csv -x r -y q
 
 https://media.giphy.com/media/h5Ct5uxV5RfwY/giphy.gif
 
-At our March Office Hours Meetup we will be ...! [RSVP for the Meetup here]() to
-stay up to date with specifics as we get closer to the event!
+At our March Office Hours Meetup we will be about how you can create, run, and
+benchmark DVC pipelines with ZnTrack!
+[RSVP for the Meetup here](https://www.meetup.com/Machine-Learning-Engineer-Community-Virtual-Meetups/events/283998696/)
+to stay up to date with specifics as we get closer to the event!
 
 [Join us in Discord](https://discord.com/invite/dvwXA2N) to get all your DVC and
 CML questions answered!
