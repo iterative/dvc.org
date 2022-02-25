@@ -26,16 +26,16 @@ You can find the best way to delete files from your cloud storage in
 [our docs](https://dvc.org/doc/command-reference/gc#removing-data-in-remote-storage).
 Make sure you're super careful when deleting data from the cloud because it's an
 irreversible action. Here's an example of a deletion command that will clear out
-your workspace and the cloud storage:
+everything in your cloud storage _except_ what is referenced in your workspace.:
 
 ```dvc
 $ dvc gc --workspace --cloud
 ```
 
 This option only keeps the files and directories referenced in the workspace and
-it removes everything else, including data in the cloud. By default, this
-command will use the default remote you have set. You can specify a different
-remote storage with the `--remote` option like this:
+it removes everything else, including data in the cloud and cache. By default,
+this command will use the default remote you have set. You can specify a
+different remote storage with the `--remote` option like this:
 
 ```dvc
 $ dvc gc --workspace --cloud --remote name_of_remote
