@@ -98,7 +98,7 @@ tier is more for needs around compliance, dedicated support, and on-premise
 installation.
 
 If you are trying to decide which plan to select, please email us at
-`info@iterative.ai` and we'll help you figure it out based on your needs.
+`support@iterative.ai` and we'll help you figure it out based on your needs.
 
 ### [How can I use one `dvc.yaml` file with multiple pipeline folders with different `params.yaml` files?](https://discord.com/channels/485586884165107732/485596304961962003/939099847288578079)
 
