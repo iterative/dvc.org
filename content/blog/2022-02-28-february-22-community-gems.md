@@ -147,7 +147,7 @@ $ dvc plots modify plots_no_cache.csv -x r -y q
 https://media.giphy.com/media/h5Ct5uxV5RfwY/giphy.gif
 
 At our March Office Hours Meetup we will be about how you can create, run, and
-benchmark DVC pipelines with ZnTrack!
+benchmark DVC pipelines with [ZnTrack](https://github.com/zincware/ZnTrack)!
 [RSVP for the Meetup here](https://www.meetup.com/Machine-Learning-Engineer-Community-Virtual-Meetups/events/283998696/)
 to stay up to date with specifics as we get closer to the event!
 
