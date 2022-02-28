@@ -64,11 +64,11 @@ The data, meanwhile, is listed in `.gitignore`.
 ### 💡 Expand to see what happens under the hood.
 
 `dvc add` moved the data to the project's <abbr>cache</abbr>, and
-<abbr>linked</abbr> it back to the <abbr>workspace</abbr>.
+<abbr>linked</abbr> it back to the <abbr>workspace</abbr>. The `.dvc/cache`
+should look like this:
 
-```dvc
-$ tree .dvc/cache
-../.dvc/cache
+```
+.dvc/cache
 └── a3
     └── 04afb96060aad90176268345e10355
 ```
@@ -114,12 +114,26 @@ $ git commit -m "Configure remote storage"
 
 DVC remotes let you store a copy of the data tracked by DVC outside of the local
 cache (usually a cloud storage service). For simplicity, let's set up a _local
-remote_ in `/tmp/dvcstore` (create the dir first if needed):
+remote_ in a temporary `dvcstore/` directory (create the dir first if needed):
+
+<toggle>
+<tab title="Mac/Linux">
 
 ```dvc
 $ dvc remote add -d myremote /tmp/dvcstore
 $ git commit .dvc/config -m "Configure local remote"
 ```
+
+</tab>
+<tab title="Windows Cmd">
+
+```dvc
+$ dvc remote add -d myremote %TEMP%\dvcstore
+$ git commit .dvc\config -m "Configure local remote"
+```
+
+</tab>
+</toggle>
 
 > While the term "local remote" may seem contradictory, it doesn't have to be.
 > The "local" part refers to the type of location: another directory in the file
@@ -140,12 +154,10 @@ files.
 ### 💡 Expand to see what happens under the hood.
 
 `dvc push` copied the data <abbr>cached</abbr> locally to the remote storage we
-set up earlier. You can check that the data has been stored in the DVC remote
-with:
+set up earlier. The remote storage directory should look like this:
 
-```dvc
-$ tree /tmp/dvcstore
-/tmp/dvcstore
+```
+.../dvcstore
 └── a3
     └── 04afb96060aad90176268345e10355
 ```
@@ -174,11 +186,11 @@ $ rm -f data/data.xml
 ```
 
 </tab>
-<tab title="Windows">
+<tab title="Windows Cmd">
 
-```powershell
-rmdir .dvc\cache
-del data\data.xml
+```dvc
+$ rmdir .dvc\cache
+$ del data\data.xml
 ```
 
 </tab>
@@ -215,11 +227,11 @@ $ cat /tmp/data.xml >> data/data.xml
 ```
 
 </tab>
-<tab title="Windows">
+<tab title="Windows Cmd">
 
-```powershell
-copy data\data.xml ...\tmp\data.xml
-type .../tmp/data.xml >> data\data.xml
+```dvc
+$ copy data\data.xml %TEMP%\data.xml
+$ type %TEMP%/data.xml >> data\data.xml
 ```
 
 </tab>
