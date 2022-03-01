@@ -54,8 +54,7 @@ This will generate the outputs as described in the
 from dvclive.lightning import DvcLiveLogger
 
 dvclive_logger = DvcLiveLogger(
-    path='my_logs_path',
-    summary=False
+    path='my_logs_path'
 )
 trainer = Trainer(
     logger=dvclive_logger,

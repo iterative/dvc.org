@@ -53,7 +53,6 @@ xgboost.train(
     callbacks=[
       DvcLiveCallback(
         "eval_data",
-        path="custom_path",
-        summary=False)],
+        path="custom_path")],
     evals=[(dval, "eval_data")])
 ```

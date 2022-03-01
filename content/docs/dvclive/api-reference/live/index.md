@@ -9,7 +9,6 @@ class Live:
         self,
         path: Optional[str] = None,
         resume: bool = False,
-        summary: bool = True,
     ):
 ```
 
@@ -51,13 +50,6 @@ other metadata.
 
   ⚠️ If you are not using steps, don't set to `True` since DVCLive will preserve
   previous run's files and assume that `step` has been enabled.
-
-- `summary` - If `True`, upon each `Live.log()` call, DVCLive will generate a
-  summary (usable by `dvc metrics`). The summary will be located at
-  `{path}.json`. _Default_: `True`.
-
-  ⚠️ If you are not using steps, don't set to `False` since `Live.log()` won't
-  be generating any output.
 
 ## Exceptions
 
