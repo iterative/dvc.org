@@ -125,7 +125,7 @@ $ git commit .dvc/config -m "Configure local remote"
 ```
 
 </tab>
-<tab title="Windows Cmd">
+<tab title="Windows (Cmd)">
 
 ```dvc
 $ dvc remote add -d myremote %TEMP%\dvcstore
@@ -227,7 +227,7 @@ $ cat /tmp/data.xml >> data/data.xml
 ```
 
 </tab>
-<tab title="Windows Cmd">
+<tab title="Windows (Cmd)">
 
 ```dvc
 $ copy data\data.xml %TEMP%\data.xml
