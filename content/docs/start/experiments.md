@@ -9,7 +9,7 @@ rapidly. DVC can track these experiments, list and compare their most relevant
 metrics, parameters, and dependencies, navigate among them, and commit only the
 ones that we need to Git.
 
-> ⚠️This video is out-of-date and will be updated soon! Where there are
+> ⚠️ This video is outdated and will be updated soon! Where there are
 > discrepancies between docs and video, please follow the docs.
 
 https://youtu.be/FHQq_zZz5ms
@@ -63,12 +63,32 @@ Experiment results have been applied to your workspace.
 ...
 ```
 
-It runs the command we specified (`python train.py`), and creates models, plots
-and metrics in respective directories.
+This runs the command specified in `dvc.yaml` (`python train.py`), and creates
+models, plots, and metrics in the respective directories. The experiment is then
+associated with the values found in the parameters file (`params.yaml`) and
+other dependencies, as well as the metrics produced.
 
-This experiment is then associated with the values found in the parameters file
-(`params.yaml`), and other dependencies (`data/images/`) with these produced
-metrics.
+<details>
+
+### ℹ️ More information about (Hyper)parameters
+
+It's pretty common for data science projects to include configuration files that
+define adjustable parameters to train a model, adjust model architecture, do
+pre-processing, etc. DVC provides a mechanism for experiments to depend on the
+specific variables from a file.
+
+By default, DVC assumes that a parameters file named `params.yaml` is available
+in your project. DVC parses this file and creates dependencies to the variables
+found in it: `model.conv_units` and `train.epochs`. Example:
+
+```yaml
+train:
+  epochs: 10
+model:
+  conv_units: 16
+```
+
+</details>
 
 You can review the experiment results with `dvc exp show` and see these metrics
 and results in a nicely formatted table:
@@ -95,9 +115,9 @@ from the commit ID `7317bc6`.
 
 Now let's do some more experimentation.
 
-DVC allows to update the parameters defined in the pipeline without modifying
-the files manually. We use this feature to set the convolutional units in
-`train.py`.
+Option `dvc exp run --set-param` allows to update experimental parameters
+without modifying the files manually. We use this feature to set the
+convolutional units in `train.py`.
 
 ```dvc
 $ dvc exp run --set-param model.conv_units=24
@@ -106,32 +126,6 @@ Reproduced experiment(s): exp-7b56f
 Experiment results have been applied to your workspace.
 ...
 ```
-
-<details>
-
-### ℹ️ More information about (Hyper)parameters
-
-It's pretty common for data science projects to include configuration files that
-define adjustable parameters to train a model, adjust model architecture, do
-pre-processing, etc. DVC provides a mechanism for experiments to depend on the
-specific variables from a file.
-
-By default, DVC assumes that a parameters file named `params.yaml` is available
-in your project. DVC parses this file and creates dependencies to the variables
-found in it: `model.conv_units` and `train.epochs`. Example:
-
-```yaml
-train:
-  epochs: 10
-model:
-  conv_units: 16
-```
-
-When you use `dvc exp run --set-param`, DVC updates the parameters in
-`params.yaml` with the values you set in the command line before running the
-experiment.
-
-</details>
 
 <details>
 
