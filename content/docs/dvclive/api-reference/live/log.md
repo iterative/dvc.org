@@ -37,7 +37,7 @@ $ cat dvclive.json
 ### Step updates
 
 The first `step` update (with `Live.next_step()` or `Live.set_step()`) will
-create a **metric history** in `{path}/scalars/{name}.tsv`:
+create a _metrics history_ file in `{path}/scalars/{name}.tsv`:
 
 ```
 timestamp step  loss
@@ -56,7 +56,7 @@ $ tree
 └── dvclive.json
 ```
 
-💡 The metric history `{path}/scalars/{name}.tsv` is usable by `dvc plots`.
+💡 The metrics history (`{path}/scalars/{name}.tsv`) is usable by `dvc plots`.
 
 If `name` contains slashes (e.g. `train/loss`), the required subdirectories will
 be created and the file will be saved inside the last one (e.g.
