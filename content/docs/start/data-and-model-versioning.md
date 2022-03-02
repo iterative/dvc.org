@@ -202,9 +202,7 @@ $ del data\data.xml
 $ dvc pull
 ```
 
-> 📖 See also
-> [Sharing Data and Model Files](/doc/use-cases/sharing-data-and-model-files)
-> for more on basic collaboration workflows.
+> 📖 See `dvc remote` for more information on remote storage.
 
 ## Making changes
 
