@@ -201,15 +201,15 @@ $ dvc plots show 'dvclive/plots/roc.json' \
 
 ## Parameters
 
-- `name` - One of the supported plots.
+- `name` - a [supported plot type](#supported-plots)
 
-- `labels` - Array of ground truth labels.
+- `labels` - array of ground truth labels
 
-- `predictions` - Array of predicted labels (for `confusion_matrix`) or
-  predicted probabilities (for the rest of the supported plots)
+- `predictions` - array of predicted labels (for `confusion_matrix`) or
+  predicted probabilities (for other plots)
 
-- `**kwargs` - Additional arguments to be passed to the internal scikit-learn
-  function being called.
+- `**kwargs` - additional arguments to be passed to the internal scikit-learn
+  function being called
 
 ## Exceptions
 

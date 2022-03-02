@@ -158,6 +158,19 @@ const plugins = [
     }
   },
   {
+    resolve: `gatsby-plugin-algolia`,
+    options: {
+      appId: process.env.GATSBY_ALGOLIA_APP_ID || 'B87HVF62EF',
+      apiKey: process.env.ALGOLIA_ADMIN_KEY,
+      skipIndexing:
+        process.env.CI && process.env.ALGOLIA_ADMIN_KEY ? false : true,
+      queries: require('./src/utils/algolia-queries.js'),
+      enablePartialUpdates:
+        process.env.ALGOLIA_FULL_UPDATE === true ? false : true,
+      matchFields: ['slug', 'modified']
+    }
+  },
+  {
     resolve: 'gatsby-plugin-manifest',
     options: {
       /* eslint-disable @typescript-eslint/naming-convention */
