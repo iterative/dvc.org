@@ -186,7 +186,7 @@ $ rm -f data/data.xml
 ```
 
 </tab>
-<tab title="Windows Cmd">
+<tab title="Windows (Cmd)">
 
 ```dvc
 $ rmdir .dvc\cache
@@ -231,7 +231,7 @@ $ cat /tmp/data.xml >> data/data.xml
 
 ```dvc
 $ copy data\data.xml %TEMP%\data.xml
-$ type %TEMP%/data.xml >> data\data.xml
+$ type %TEMP%\data.xml >> data\data.xml
 ```
 
 </tab>
