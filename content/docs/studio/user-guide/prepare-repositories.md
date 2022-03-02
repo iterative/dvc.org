@@ -14,16 +14,19 @@ repositories in two ways:
    assets reside in the cloud or other remote storage locations. You will simply
    track their version info in Git.
 
-   DVC also enables you to
-   [share your data and model files](/doc/use-cases/sharing-data-and-model-files),
-   [create data registries](/doc/use-cases/data-registries),
-   [create data pipelines](/doc/start/data-pipelines), connect them with
-   [CML](https://cml.dev) for
-   [CI/CD in machine learning](/doc/use-cases/ci-cd-for-machine-learning), and
-   so on. Find more about the features and benefits of DVC [here](/doc/start).
+   DVC also enables you to [store and share your data and model files], [create
+   data registries], [create data pipelines], connect them with
+   [CML](https://cml.dev) for [CI/CD in machine learning], and so on. Find more
+   about the features and benefits of DVC [here](/doc/start).
 
    Refer to the [DVC documentation](https://dvc.org/doc) to initialize a DVC
    repository.
+
+   [store and share your data and model files]:
+     /doc/start/data-and-model-versioning#storing-and-sharing
+   [create data registries]: /doc/use-cases/data-registries
+   [create data pipelines]: /doc/start/data-pipelines
+   [ci/cd in machine learning]: /doc/use-cases/ci-cd-for-machine-learning
 
 2. **Specify custom files with your metrics and parameters**: If you are working
    with a non-DVC repository, you can still create views for it provided that

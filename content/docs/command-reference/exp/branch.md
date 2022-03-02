@@ -24,7 +24,7 @@ time that the experiment was run). Note that DVC **does not** switch into the
 new `branch` automatically.
 
 `dvc exp branch` is useful to make an experiment persistent without modifying
-the workspace, so they can be continued, [stored and shared] in a normal Git +
+the workspace so they can be continued, [stored and shared] in a normal Git +
 DVC workflow.
 
 To switch into the new branch, use `git checkout branch` and `dvc checkout`. Or
@@ -35,7 +35,7 @@ version.
   https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging
 [regular commit]: /doc/user-guide/experiment-management/persisting-experiments
 [checkpoint experiments]: /doc/command-reference/exp/run#checkpoints
-[stored and shared]: /doc/use-cases/sharing-data-and-model-files
+[stored and shared]: /doc/start/data-and-model-versioning#storing-and-sharing
 
 ## Options
 

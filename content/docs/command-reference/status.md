@@ -94,9 +94,7 @@ detailed bellow.
   remote storage.
 
 For _new_ and _deleted_ data, the cache is different from remote storage.
-Bringing the two into sync requires `dvc pull` or `dvc push`. For the typical
-process to update the workspace, see
-[Sharing Data And Model Files](/doc/use-cases/sharing-data-and-model-files).
+Bringing the two into sync requires `dvc pull` or `dvc push`.
 
 For _missing_ data, there's nothing to retrieve from storage. This can happen
 for example in fresh <abbr>DVC repository</abbr> clones if the data wasn't
