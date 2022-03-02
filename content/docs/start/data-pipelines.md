@@ -75,6 +75,10 @@ A `dvc.yaml` file is generated. It includes information about the command we ran
 (`python src/prepare.py data/data.xml`), its <abbr>dependencies</abbr>, and
 <abbr>outputs</abbr>.
 
+DVC uses this metafiles to track the data used and produced by the stage, so
+there's no need to use `dvc add` on `data/prepared`
+[manually](/doc/start/data-and-model-versioning).
+
 <details>
 
 ### 💡 Expand to see what happens under the hood.
@@ -102,7 +106,8 @@ prepare:
   needs to be [reproduced](#reproduce).
 
 - `-o data/prepared` specifies an output directory for this script, which writes
-  two files in it. This is how the <abbr>workspace</abbr> should look like now:
+  two files in it. This is how the <abbr>workspace</abbr> should look like after
+  the run:
 
   ```git
    .
@@ -138,13 +143,15 @@ stages:
       - data/prepared
 ```
 
+Note that upon successful execution, a complementary `dvc.lock` metafile is
+written to track the related data.
+
 </details>
 
-There's no need to use `dvc add` for DVC to track stage outputs (`data/prepared`
-in this case); `dvc run` already took care of this. You only need to run
-`dvc push` if you want to save them to
-[remote storage](/doc/start/data-and-model-versioning#storing-and-sharing),
-(usually along with `git commit` to version `dvc.yaml` itself).
+You can use `dvc push` if you wish to save all the data [to remote storage]
+(usually along with `git commit` to version DVC metafiles).
+
+[to remote storage]: /doc/start/data-and-model-versioning#storing-and-sharing
 
 ## Dependency graphs (DAGs)
 
