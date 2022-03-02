@@ -159,7 +159,7 @@ We can run this command as many times as we like, editing `params.yaml` any way
 we like, and so long as we use `--no-commit`, the data does not get saved to the
 cache. Let's verify that's the case:
 
-First verification:
+First verification (via `dvc status`):
 
 ```dvc
 $ dvc status
