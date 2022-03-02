@@ -20,11 +20,10 @@ positional arguments:
 
 The `dvc push` and `dvc pull` commands are the means for uploading and
 downloading data to and from remote storage (S3, SSH, GCS, etc.). These commands
-are similar to `git push` and `git pull`, respectively.
-[Data sharing](/doc/use-cases/sharing-data-and-model-files) across environments,
-and preserving data versions (input datasets, intermediate results, models,
-[metrics](/doc/command-reference/metrics), etc.) remotely are the most common
-use cases for these commands.
+are similar to `git push` and `git pull`, respectively. [Data sharing] across
+environments, and preserving data versions (input datasets, intermediate
+results, models, [metrics](/doc/command-reference/metrics), etc.) remotely are
+the most common use cases for these commands.
 
 `dvc push` uploads data from the <abbr>cache</abbr> to
 [remote storage](/doc/command-reference/remote).
@@ -32,6 +31,8 @@ use cases for these commands.
 > Note that pushing data does not affect code, `dvc.yaml`, or `.dvc` files.
 > Those should be uploaded with `git push`. `dvc import` data is also ignored by
 > this command.
+
+[data sharing]: /doc/start/data-and-model-versioning#storing-and-sharing
 
 The `dvc remote` used is determined in order, based on
 
