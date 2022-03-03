@@ -66,13 +66,13 @@ const Details: React.FC<Record<string, never>> = ({ children }) => {
    */
   return (
     <div id={id} className="collapsableDiv">
-      <a
+      <Link
         href={`#${id}`}
         aria-label={triggerChildren.toString()}
         className="anchor after"
       >
         <SVG src={linkIcon} />
-      </a>
+      </Link>
       <Collapsible
         open={isOpen}
         trigger={triggerChildren as unknown as ReactElement}
