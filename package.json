@@ -79,6 +79,7 @@
     "react-focus-lock": "^2.6.0",
     "react-ga": "^3.3.0",
     "react-helmet": "^6.1.0",
+    "react-inlinesvg": "^2.3.0",
     "react-instantsearch-dom": "^6.20.0",
     "react-popover": "^0.5.10",
     "react-slick": "^0.28.1",

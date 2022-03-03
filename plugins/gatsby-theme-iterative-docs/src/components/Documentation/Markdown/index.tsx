@@ -18,8 +18,13 @@ import Tooltip from './Tooltip'
 
 import * as styles from './styles.module.css'
 import { TogglesContext, TogglesProvider } from './ToggleProvider'
+import { linkIcon } from '../../../../../../static/icons'
+import SVG from 'react-inlinesvg'
+import { globalHistory as history } from '@reach/router'
 
 const Details: React.FC<Record<string, never>> = ({ children }) => {
+  const [isOpen, setIsOpen] = useState(false)
+  const { location } = history
   const filteredChildren: ReactNode[] = (
     children as Array<{ props: { children: ReactNode } } | string>
   ).filter(child => child !== '\n')
@@ -38,18 +43,44 @@ const Details: React.FC<Record<string, never>> = ({ children }) => {
     0,
     firstChild.props.children.length - 1
   ) as ReactNode[]
+  const id = triggerChildren
+    .toString()
+    .replace(/[^a-zA-Z ]/g, '')
+    .toLowerCase()
+    .trim()
+    .replaceAll(' ', '_')
+
+  useEffect(() => {
+    if (location.hash === `#${id}`) {
+      setIsOpen(true)
+    }
+
+    return () => {
+      setIsOpen(false)
+    }
+  }, [location.hash])
 
   /*
      Collapsible's trigger type wants ReactElement, so we force a TS cast from
      ReactNode here.
    */
   return (
-    <Collapsible
-      trigger={triggerChildren as unknown as ReactElement}
-      transitionTime={200}
-    >
-      {filteredChildren.slice(1)}
-    </Collapsible>
+    <div id={id} className="collapsableDiv">
+      <a
+        href={`#${id}`}
+        aria-label={triggerChildren.toString()}
+        className="anchor after"
+      >
+        <SVG src={linkIcon} />
+      </a>
+      <Collapsible
+        open={isOpen}
+        trigger={triggerChildren as unknown as ReactElement}
+        transitionTime={200}
+      >
+        {filteredChildren.slice(1)}
+      </Collapsible>
+    </div>
   )
 }
 
