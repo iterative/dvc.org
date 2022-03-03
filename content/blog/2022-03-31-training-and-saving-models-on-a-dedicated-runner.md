@@ -24,7 +24,7 @@ When you first develop a machine learning model, you will probably do so on your
 local machine. You can easily change algorithms, parameters, and input data
 right in your text editor, notebook, or terminal. But what happens when you
 already have a model deployed and want to run multiple experiments? Or if you
-want to deploy a new version on a daily basis?
+want to deploy a new version daily?
 
 [Continuous Machine Learning (CML)](https://cml.dev/) helps you with this. It is
 an open-source library for implementing continuous integration and delivery
@@ -33,13 +33,12 @@ a model and keep track of various versions.
 
 > Imagine we work for the fraud detection team of a webshop and we want to build
 > a model to detect fraudulent orders. One week fraudsters might be trying to
-> order gaming consoles, while the next they might go all in on diapers. In that
-> case we would probably want to retrain our model on a regular basis to catch
+> order gaming consoles, while the next they might go all-in on diapers. In that
+> case, we would probably want to retrain our model regularly to catch
 > this [drift](https://en.wikipedia.org/wiki/Concept_drift). And we would also
 > want to use the most up-to-date version of our model in production.
 
-In this guide we will show how you can use CML to (re)train your model on a
-daily basis and save its results. Although we could train the model directly in
+In this guide, we will show how you can use CML to (re)train your model daily and save its results. Although we could train the model directly in
 our CI/CD pipeline, the runners used for this generally don’t have a lot of
 processing power. Therefore it makes more sense to provision a dedicated runner
 that is tailored to our computing needs.
@@ -62,7 +61,7 @@ https://github.com/RCdeWit/CML_train_and_export
 
 > 💡 We will be using [Github](https://github.com/) for our CI/CD and
 > [AWS](https://github.com/) for our computing resources. With slight
-> modifications you should also be able to use
+> modifications, you should also be able to use
 > [Gitlab](https://about.gitlab.com/) and
 > [Google Cloud](https://cloud.google.com/) or
 > [Microsoft Azure](https://azure.microsoft.com/en-us/).
@@ -94,14 +93,14 @@ Guess how I managed to figure that last one out... 😅
 
 # Training a model and saving it
 
-Now that we’re good to go, we will adapt `train.py`from the
+Now that we’re good to go, we will adapt `train.py` from the
 [CML getting started guide](https://cml.dev/doc/start/github). Here we create a
 simple `RandomForestClassifier()` based on some generated data. We then use the
 model to make some predictions and plot those predictions in a confusion matrix.
 
 While running the script the model is kept in memory, meaning it is discarded as
-soon as the script finishes. In order to save the model for later we need to
-dump it as a binary file. We do so with `joblib.dump()`, and later on we can
+soon as the script finishes. In order to save the model for later, we need to
+dump it as a binary file. We do so with `joblib.dump()`, and later we can
 read the model using `joblib.read()`.
 
 > 💡 You can also use `pickle.dump()` if you prefer.
@@ -178,7 +177,7 @@ In this guide we will explore two options to export the model from the runner:
 2. Push the model to a DVC remote and reference that file in your git
    repository.
 
-In both cases the other files (`confusion_matrix.png` etc.) will be pushed
+In both cases, the other files (`confusion_matrix.png` etc.) will be pushed
 directly to the git repository. All of this is done in a dedicated `experiment`
 branch and a merge request is automatically created.
 
@@ -267,7 +266,7 @@ The first time you are using DVC for a project you need to run `dvc init` in the
 project directory. Then, in order to start using DVC, you need to set up a
 remote. This is where your model files will end up, while DVC keeps track of
 their respective versions. DVC supports a plethora of remotes, including Amazon
-S3, Microsoft Azure Blob Storage, and Google Cloud Storage. For this guide we
+S3, Microsoft Azure Blob Storage, and Google Cloud Storage. For this guide, we
 will be using Google Drive as our remote.
 
 You can follow
@@ -278,7 +277,7 @@ and to
 [use a service account](https://dvc.org/doc/user-guide/setup-google-drive-remote#using-service-accounts).
 
 Once you have set up the storage remote and added the `GDRIVE_CREDENTIALS_DATA`
-as a Github secret, you can use the workflow below. In this scenario we train
+as a Github secret, you can use the workflow below. In this scenario, we train
 the model in the same way as above, but we push it to the DVC remote. A
 reference to the location of this file is added to the Github repository
 (`model/random_forest.joblib.dvc`). The model itself is added to `.gitignore`
@@ -362,7 +361,7 @@ we can automate the stuff needed to keep your models running, leaving you with
 more time to do actual data science. Additionally, CML takes care of your
 versioning for you and makes sure you can track your models over time.
 
-In this guide we explored how to set up CML with a dedicated runner on AWS. We
+In this guide, we explored how to set up CML with a dedicated runner on AWS. We
 exported the model from the runner in two ways: by pushing it directly to a
 Github repository and by pushing it to a DVC remote.
 
