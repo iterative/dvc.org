@@ -85,11 +85,7 @@ outs:
 
 </details>
 
-> Note that there are [other mechanisms] to track data files/dirs besides `.dvc`
-> files.
-
 [format]: /doc/user-guide/project-structure/dvc-files
-[other mechanisms]: https://dvc.org/doc/start/data-pipelines#pipeline-stages
 
 ## Storing and sharing
 
