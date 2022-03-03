@@ -20,11 +20,11 @@ import * as styles from './styles.module.css'
 import { TogglesContext, TogglesProvider } from './ToggleProvider'
 import { linkIcon } from '../../../../../../static/icons'
 import SVG from 'react-inlinesvg'
-import { globalHistory as history } from '@reach/router'
+import { useLocation } from '@reach/router'
 
 const Details: React.FC<Record<string, never>> = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false)
-  const { location } = history
+  const location = useLocation()
   const filteredChildren: ReactNode[] = (
     children as Array<{ props: { children: ReactNode } } | string>
   ).filter(child => child !== '\n')
@@ -226,6 +226,9 @@ const Toggle: React.FC<{
     </div>
   )
 }
+const Tab: React.FC = ({ children }) => {
+  return <React.Fragment>{children}</React.Fragment>
+}
 
 // Rehype's typedefs don't allow for custom components, even though they work
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -239,7 +242,7 @@ const renderAst = new (rehypeReact as any)({
     cards: Cards,
     details: Details,
     toggle: Toggle,
-    tab: React.Fragment
+    tab: Tab
   }
 }).Compiler
 
