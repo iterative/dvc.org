@@ -34,14 +34,15 @@ a model and keep track of various versions.
 > Imagine we work for the fraud detection team of a webshop and we want to build
 > a model to detect fraudulent orders. One week fraudsters might be trying to
 > order gaming consoles, while the next they might go all-in on diapers. In that
-> case, we would probably want to retrain our model regularly to catch
-> this [drift](https://en.wikipedia.org/wiki/Concept_drift). And we would also
-> want to use the most up-to-date version of our model in production.
+> case, we would probably want to retrain our model regularly to catch this
+> [drift](https://en.wikipedia.org/wiki/Concept_drift). And we would also want
+> to use the most up-to-date version of our model in production.
 
-In this guide, we will show how you can use CML to (re)train your model daily and save its results. Although we could train the model directly in
-our CI/CD pipeline, the runners used for this generally don’t have a lot of
-processing power. Therefore it makes more sense to provision a dedicated runner
-that is tailored to our computing needs.
+In this guide, we will show how you can use CML to (re)train your model daily
+and save its results. Although we could train the model directly in our CI/CD
+pipeline, the runners used for this generally don’t have a lot of processing
+power. Therefore it makes more sense to provision a dedicated runner that is
+tailored to our computing needs.
 
 At the end of this guide we will have set up the following:
 
@@ -100,8 +101,8 @@ model to make some predictions and plot those predictions in a confusion matrix.
 
 While running the script the model is kept in memory, meaning it is discarded as
 soon as the script finishes. In order to save the model for later, we need to
-dump it as a binary file. We do so with `joblib.dump()`, and later we can
-read the model using `joblib.read()`.
+dump it as a binary file. We do so with `joblib.dump()`, and later we can read
+the model using `joblib.read()`.
 
 > 💡 You can also use `pickle.dump()` if you prefer.
 
