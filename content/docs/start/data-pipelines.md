@@ -75,7 +75,7 @@ A `dvc.yaml` file is generated. It includes information about the command we ran
 (`python src/prepare.py data/data.xml`), its <abbr>dependencies</abbr>, and
 <abbr>outputs</abbr>.
 
-DVC uses this metafiles to track the data used and produced by the stage, so
+DVC uses these metafiles to track the data used and produced by the stage, so
 there's no need to use `dvc add` on `data/prepared`
 [manually](/doc/start/data-and-model-versioning).
 
