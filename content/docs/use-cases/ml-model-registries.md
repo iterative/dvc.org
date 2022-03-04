@@ -6,6 +6,9 @@ with simple [data registries], which mainly provide efficient and persistent
 storage for reusable data sources for multiple projects from a central
 repository.
 
+![](/img/ml_model_registry_placement.jpg) _Placement of a model registry in the
+DS workflow_
+
 Being more specialized, model registries require extended capabilities such as:
 
 - Advanced versioning strategies to organize many model revisions
