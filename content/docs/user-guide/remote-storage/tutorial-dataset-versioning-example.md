@@ -24,7 +24,7 @@ bucket, `curl` can be used to download the
 $ mkdir mnist3d; cd mnist3d
 $ git init
 $ dvc init
-$ dvc remote add s3cache s3://mikemayobucket/mnist3d_cache/
+$ dvc remote add s3cache s3://path/to/your/remote/
 $ mkdir datasets
 $ curl https://zenodo.org/record/5208230/files/adrenalmnist3d.npz --output datasets/adrenalmnist3d.npz
 $ curl https://zenodo.org/record/5208230/files/fracturemnist3d.npz --output datasets/fracturemnist3d.npz

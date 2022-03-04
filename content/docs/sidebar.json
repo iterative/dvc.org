@@ -159,11 +159,11 @@
         "source": false,
         "children": [
           "remote-storage",
-          "setup-google-drive-remote",
           "tutorial-remote-storage-optimization-example",
           "tutorial-dataset-versioning-example"
         ]
       },
+      "setup-google-drive-remote",
       "large-dataset-optimization",
       "external-dependencies",
       {
