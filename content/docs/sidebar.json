@@ -154,7 +154,16 @@
           "share-many-experiments"
         ]
       },
-      "setup-google-drive-remote",
+      {
+        "slug": "remote-storage",
+        "source": false,
+        "children": [
+          "remote-storage",
+          "setup-google-drive-remote",
+          "tutorial-remote-storage-optimization-example",
+          "tutorial-dataset-versioning-example"
+        ]
+      },
       "large-dataset-optimization",
       "external-dependencies",
       {
