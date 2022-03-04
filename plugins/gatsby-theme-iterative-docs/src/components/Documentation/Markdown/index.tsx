@@ -48,7 +48,7 @@ const Details: React.FC<Record<string, never>> = ({ children }) => {
     .replace(/[^a-zA-Z ]/g, '')
     .toLowerCase()
     .trim()
-    .replaceAll(' ', '_')
+    .replaceAll(' ', '-')
 
   useEffect(() => {
     if (location.hash === `#${id}`) {
