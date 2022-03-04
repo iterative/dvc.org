@@ -63,6 +63,6 @@ lightgbm.train(
     valid_sets=[validation_data],
     num_round=5,
     callbacks=[DvcLiveCallback(
-      path="custom_path",
-      summary=False)])
+      model_file="lgbm_model.txt",
+      path="custom_path")])
 ```

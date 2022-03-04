@@ -19,9 +19,8 @@ live.log("acc", 0.9)
 
 ## Description
 
-If [`summary`](/doc/dvclive/api-reference/live/#parameters) is enabled, on each
-`live.log(name, val)` call DVCLive will add a `name` entry in `{path.json}` with
-the corresponding `val`:
+On each `live.log(name, val)` call DVCLive will create or update the `name`
+entry in `{path.json}` with the corresponding `val`:
 
 ```dvc
 $ cat dvclive.json

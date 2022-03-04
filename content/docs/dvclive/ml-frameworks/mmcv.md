@@ -59,8 +59,9 @@ log_config = dict(
         dict(type='TextLoggerHook'),
         dict(
             type='DvcliveLoggerHook',
-            path="custom_path",
-            summary=False)
+            model_file="my_model.pth",
+            path="custom_path"
+        )
     ]
 )
 ```
