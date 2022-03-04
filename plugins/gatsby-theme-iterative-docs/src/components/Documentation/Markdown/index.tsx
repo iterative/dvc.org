@@ -19,7 +19,6 @@ import Tooltip from './Tooltip'
 import * as styles from './styles.module.css'
 import { TogglesContext, TogglesProvider } from './ToggleProvider'
 import { linkIcon } from '../../../../../../static/icons'
-import SVG from 'react-inlinesvg'
 import { useLocation } from '@reach/router'
 
 const Details: React.FC<Record<string, never>> = ({ children }) => {
@@ -71,7 +70,7 @@ const Details: React.FC<Record<string, never>> = ({ children }) => {
         aria-label={triggerChildren.toString()}
         className="anchor after"
       >
-        <SVG src={linkIcon} />
+        <span dangerouslySetInnerHTML={{ __html: linkIcon }}></span>
       </Link>
       <Collapsible
         open={isOpen}
