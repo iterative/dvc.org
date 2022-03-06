@@ -193,9 +193,9 @@ outputs don't remain in the workspace.
 
 Subsequent uses of `dvc exp run` will resume from the latest checkpoint (using
 the latest cached versions of all outputs). To resume from a previous checkpoint
-(list them with `dvc exp show`), you must first `dvc exp apply` it before
-running it with `dvc exp run`. For `--queue` or `--temp` runs, use `--rev` to
-specify the checkpoint to resume from.
+(list them with `dvc exp show`), you must first `dvc exp apply` it before using
+`dvc exp run`. For `--queue` or `--temp` runs, use `--rev` to specify the
+checkpoint to resume from.
 
 Alternatively, use `--reset` to start over (discards previous checkpoints and
 their outputs). This is useful for re-training ML models, for example.
