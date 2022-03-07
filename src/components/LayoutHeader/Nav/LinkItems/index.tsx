@@ -1,5 +1,6 @@
 import React from 'react'
 import cn from 'classnames'
+import { isMobile } from 'react-device-detect'
 
 import Link from 'gatsby-theme-iterative-docs/src/components/Link'
 import {
@@ -109,8 +110,8 @@ const LinkItems: React.FC = () => {
             key={i}
             className={styles.linkItem}
             ref={popup?.containerEl}
-            onMouseEnter={popup?.open}
-            onMouseLeave={popup?.close}
+            onMouseEnter={isMobile ? undefined : popup?.open}
+            onMouseLeave={isMobile ? undefined : popup?.close}
           >
             {isPopup(item) && popup ? (
               <>
