@@ -195,7 +195,7 @@ connect to your GitHub/GitLab account and you'll be able to choose the repo for
 this project. Once you're connected, you should be able to see all of the
 experiments you've pushed to your Git history.
 
-![example of plots and results in DVC Studio](2022-03-09/stale_models_in_studio.png)
+![example of plots and results in DVC Studio](/uploads/images/2022-03-09/stale_models_in_studio.png)
 
 You can give others on your team access to this and they'll be able to run new
 experiments and see the results right in the browser. This is a great tool to
