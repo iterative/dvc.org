@@ -65,7 +65,8 @@ committing them to the Git repo. Unnecessary ones can be [cleared] with
 ## Options
 
 > In addition to the following, `dvc exp run` accepts all the options in
-> `dvc repro`, with the exception that `--glob`, `--no-commit` and `--no-run-cache` have no effect.
+> `dvc repro`, with the exception that `--glob`, `--no-commit` and
+> `--no-run-cache` have no effect.
 
 - `-S [<filename>:]<param_name>=<param_value>`,
   `--set-param [<filename>:]<param_name>=<param_value>` - set the value of
