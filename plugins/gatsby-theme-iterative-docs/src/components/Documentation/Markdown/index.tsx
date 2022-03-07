@@ -21,9 +21,13 @@ import { TogglesContext, TogglesProvider } from './ToggleProvider'
 import { linkIcon } from '../../../../../../static/icons'
 import { useLocation } from '@reach/router'
 
+import GithubSlugger from 'github-slugger'
+const slugger = new GithubSlugger()
+
 const Details: React.FC<Record<string, never>> = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false)
   const location = useLocation()
+
   const filteredChildren: ReactNode[] = (
     children as Array<{ props: { children: ReactNode } } | string>
   ).filter(child => child !== '\n')
@@ -42,12 +46,12 @@ const Details: React.FC<Record<string, never>> = ({ children }) => {
     0,
     firstChild.props.children.length - 1
   ) as ReactNode[]
-  const id = triggerChildren
-    .toString()
-    .replace(/[^a-zA-Z ]/g, '')
-    .toLowerCase()
-    .trim()
-    .replaceAll(' ', '-')
+
+  let slug = slugger.slug(triggerChildren.toString())
+  if (slug[0] === '️') {
+    slug = slug.slice(1)
+  }
+  const id = slug.startsWith('-') ? slug.slice(1) : slug
 
   useEffect(() => {
     if (location.hash === `#${id}`) {
