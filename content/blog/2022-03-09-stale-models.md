@@ -101,7 +101,7 @@ $ dvc exp show --no-timestamp
 
 ```dvctable
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
-┃ neutral:**Experiment** ┃ metric:**avg_prec** ┃ metric:**roc_auc** ┃ param:**train.seed** ┃ param:**train.n_est** ┃ param:**train.min_split** ┃
+┃ neutral:**Experiment**              ┃ metric:**avg_prec** ┃ metric:**roc_auc** ┃ param:**train.seed** ┃ param:**train.n_est** ┃ param:**train.min_split** ┃
 ┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━┩
 │ workspace               │ 0.036667 │ 0.27808 │ 20210428   │ 375         │ 64              │
 │ main                    │ 0.036667 │ 0.27808 │ 20210428   │ 375         │ 64              │
@@ -117,7 +117,7 @@ this:
 
 ```dvctable
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
-┃ neutral:**Experiment** ┃ metric:**avg_prec** ┃ metric:**roc_auc** ┃ param:**train.seed** ┃ param:**train.n_est** ┃ param:**train.min_split** ┃
+┃ neutral:**Experiment**              ┃ metric:**avg_prec** ┃ metric:**roc_auc** ┃ param:**train.seed** ┃ param:**train.n_est** ┃ param:**train.min_split** ┃
 ┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━┩
 │ workspace               │  0.02414 │ 0.30173 │ 20210428   │ 383         │ 64              │
 │ main                    │ 0.036667 │ 0.27808 │ 20210428   │ 375         │ 64              │
@@ -170,7 +170,7 @@ table to look at. Now you should see a table similar to this:
 
 ```dvctable
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
-┃ neutral:**Experiment** ┃ metric:**avg_prec** ┃ metric:**roc_auc** ┃ param:**train.seed** ┃ param:**train.n_est** ┃ param:**train.min_split** ┃
+┃ neutral:**Experiment**              ┃ metric:**avg_prec** ┃ metric:**roc_auc** ┃ param:**train.seed** ┃ param:**train.n_est** ┃ param:**train.min_split** ┃
 ┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━┩
 │ workspace               │    0.644 │  0.4919 │ 20210428   │ 390         │ 64              │
 │ main                    │    0.644 │  0.4919 │ 20210428   │ 390         │ 64              │
