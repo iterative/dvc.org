@@ -33,9 +33,9 @@ With `--queue`, the list of experiments awaiting execution is cleared instead.
 - `--rev <commit>` - remove experiments derived from the specified `<commit>` as
   baseline.
 
-- `-n <num>`, `--num <num>` - show experiments from the previous `num` commits
-  (before the `--rev` baseline). For example `-n -2` includes experiments from
-  `HEAD` and its 2 first ancestors.
+- `-n <num>`, `--num <num>` - show experiments from the `--rev` baseline and
+  from `num` commits before it (first parents). Give a negative value to include
+  all first-parent commits (similar to `git log -n`).
 
 - `-g`, `--git-remote` - Name or URL of the Git remote to remove the experiment
   from
