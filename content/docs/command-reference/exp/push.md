@@ -46,9 +46,9 @@ This command will also try to [push](/doc/command-reference/push) all
 - `--rev <commit>` - push experiments derived from the specified `<commit>` as
   baseline.
 
-- `-n <num>`, `--num <num>` - show experiments from the previous `num` commits
-  (before the `--rev` baseline). For example `-n -2` includes experiments from
-  `HEAD` and its 2 first ancestors.
+- `-n <num>`, `--num <num>` - show experiments from the `--rev` baseline and
+  from `num` commits before it (first parents). Give a negative value to include
+  all first-parent commits (similar to `git log -n`).
 
 - `-f`, `--force` - rewrite the `experiment` commit if it already exists in the
   Git remote. Equivalent to `git push --force` (rewrites history)
