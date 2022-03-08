@@ -109,7 +109,7 @@ $ dvc exp show --no-timestamp
 └─────────────────────────┴──────────┴─────────┴────────────┴─────────────┴─────────────────┘
 ```
 
-This model doesn't have the best metrics, so we ca run more experiments to see
+This model doesn't have the best metrics, so we can run more experiments to see
 if tuning hyperparameters will help before we deploy this model to production.
 Let's start by changing the value of the `train.n_est` hyperparameter. We'll run
 several experiments with different values and it will produce a table similar to
@@ -151,9 +151,11 @@ almost another year, then we start noticing data drift again.
 ## Running more training experiments with new data
 
 That means it's time to update our dataset with the latest data from production
-and that will include all of the data on bike sharing in 2012.
+and that will include all of the data on bike sharing in 2012. DVC will note the
+changes in the data and create a new version record for the updated data
+automatically.
 
-Now we'll run a new experiment in the project with the following command:
+Next we'll run a new experiment in the project with the following command:
 
 ```dvc
 $ dvc exp run
