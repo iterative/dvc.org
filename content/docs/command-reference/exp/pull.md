@@ -50,8 +50,8 @@ all <abbr>cached</abbr> data associated with the experiment to DVC
   baseline.
 
 - `-n <num>`, `--num <num>` - show experiments from the last `num` commits
-  (first parents) starting from the `--rev` baseline. Give a negative value to include
-  all first-parent commits (similar to `git log -n`).
+  (first parents) starting from the `--rev` baseline. Give a negative value to
+  include all first-parent commits (similar to `git log -n`).
 
 - `-f`, `--force` - rewrite the `experiment` commit if it already exists in the
   local repo. Equivalent to `git push --force` (rewrites history)
