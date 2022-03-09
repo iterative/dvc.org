@@ -26,7 +26,7 @@ right in your text editor, notebook, or terminal. But what happens when you
 already have a model deployed and want to run multiple experiments? Or if you
 want to deploy a new version daily?
 
-[Continuous Machine Learning (CML)](https://cml.dev/) helps you with this. It is
+[CML (Continuous Machine Learning)](https://cml.dev/) helps you with this. It is
 an open-source library for implementing continuous integration and delivery
 (CI/CD) in machine learning projects. This way we can define a pipeline to train
 a model and keep track of various versions.
@@ -53,8 +53,8 @@ At the end of this guide we will have set up the following:
 - Automatic saving of trained models in your Github repository and/or a DVC
   remote, along with a report of their performance.
 
-All files needed for this guide can be found in this repository:
-https://github.com/RCdeWit/CML_train_and_export
+All files needed for this guide can be found in
+[this repository](https://github.com/RCdeWit/CML_train_and_export).
 
 > 💡 This guide can be followed on its own, but also as an extension to this
 > earlier guide:
