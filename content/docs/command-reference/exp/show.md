@@ -78,8 +78,8 @@ will be generated using the same data from the table.
   baseline. Defaults to `HEAD` if none of `--rev`, `-a`, `-T`, `-A` is used.
 
 - `-n <num>`, `--num <num>` - show experiments from the last `num` commits
-  (first parents) starting from the `--rev` baseline. Give a negative value to include
-  all first-parent commits (similar to `git log -n`).
+  (first parents) starting from the `--rev` baseline. Give a negative value to
+  include all first-parent commits (similar to `git log -n`).
 
 - `--no-pager` - do not enter the pager screen. Writes the entire table to
   standard output. Useful to redirect the output to a file, or use your own
