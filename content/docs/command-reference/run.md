@@ -10,7 +10,7 @@ usage: dvc run [-h] [-q | -v] [-n <name>] [--no-exec] [--no-run-cache]
                [--no-commit] [-d <path>] [-o <filename>] [-O <filename>]
                [-p [<filename>:]<params_list>] [-m <path>] [-M <path>]
                [--plots <path>] [--plots-no-cache <path>] [--live <path>]
-               [--live-no-cache <path>] [--live-no-summary] [--live-no-html]
+               [--live-no-cache <path>] [--live-no-html]
                [-w <path>] [-f] [--outs-persist <filename>]
                [--outs-persist-no-cache <filename>] [-c <filename>]
                [--always-changed] [--external] [--desc <text>]
@@ -272,9 +272,6 @@ $ dvc run -n second_stage './another_script.sh $MYENVVAR'
 
 - `--live-no-cache <path>` - the same as `--live` except that the `path` is not
   tracked by DVC. Useful if you prefer to track it with Git.
-
-- `--live-no-summary` - deactivates DVCLive
-  [summary](/doc/dvclive/api-reference/live/log#description) generation.
 
 - `--live-no-html` - deactivates DVCLive
   [HTML report](/doc/dvclive/dvclive-with-dvc#html-report) generation.

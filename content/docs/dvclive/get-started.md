@@ -99,7 +99,7 @@ $ tree
 └── dvclive.json
 ```
 
-The contents of the `dvclive` folder and `dvclive.json` would vary depending on
+The contents of the `dvclive` folder and `dvclive.json` will vary depending on
 the type of data you have logged and whether you have updated the step value or
 not.
 
