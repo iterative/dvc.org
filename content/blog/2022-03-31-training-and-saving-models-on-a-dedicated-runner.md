@@ -229,16 +229,17 @@ jobs:
         env:
           REPO_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
         run: |
+          cml ci
           pip install -r requirements.txt
           python train.py
 
-          # Create CML report
-          cat model/metrics.txt >> model/report.md
-          cml publish model/confusion_matrix.png --md >> model/report.md
-          cml send-comment model/report.md
-
           # Create pull request
-          cml pr "."
+          cml pr .
+
+          # Create CML report
+          cat model/metrics.txt > report.md
+          cml publish model/confusion_matrix.png --md >> report.md
+          cml send-comment --pr --update report.md
 ```
 
 ## 2. Push the model to a DVC remote and reference that file in your git repository
