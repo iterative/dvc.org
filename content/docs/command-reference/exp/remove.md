@@ -34,8 +34,8 @@ With `--queue`, the list of experiments awaiting execution is cleared instead.
   baseline.
 
 - `-n <num>`, `--num <num>` - show experiments from the last `num` commits
-  (first parents) starting from the `--rev` baseline. Give a negative value to include
-  all first-parent commits (similar to `git log -n`).
+  (first parents) starting from the `--rev` baseline. Give a negative value to
+  include all first-parent commits (similar to `git log -n`).
 
 - `-g`, `--git-remote` - Name or URL of the Git remote to remove the experiment
   from
