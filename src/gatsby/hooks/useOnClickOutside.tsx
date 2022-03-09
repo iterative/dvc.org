@@ -2,9 +2,10 @@ import { RefObject, useEffect } from 'react'
 
 const events = [`mousedown`, `touchstart`]
 
-const useClickOutside = <T extends HTMLElement = HTMLElement>(
+const useOnClickOutside = <T extends HTMLElement = HTMLElement>(
   ref: RefObject<T>,
-  onClickOutside: (event: Event) => void
+  onClickOutside: (event: Event) => void,
+  cleanup = true
 ) => {
   const isOutside = (element: Node | null) =>
     !ref.current || !ref.current.contains(element)
@@ -12,6 +13,9 @@ const useClickOutside = <T extends HTMLElement = HTMLElement>(
   const onClick = (event: Event) => {
     if (isOutside(event.target as Node)) {
       onClickOutside(event)
+      if (cleanup) {
+        for (const event of events) document.removeEventListener(event, onClick)
+      }
     }
   }
 
@@ -25,4 +29,4 @@ const useClickOutside = <T extends HTMLElement = HTMLElement>(
     }
   }, [ref, onClickOutside])
 }
-export default useClickOutside
+export default useOnClickOutside
