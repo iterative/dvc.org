@@ -38,8 +38,8 @@ options below).
   baseline (HEAD by default).
 
 - `-n <num>`, `--num <num>` - show experiments from the last `num` commits
-  (first parents) starting from the `--rev` baseline. Give a negative value to include
-  all first-parent commits (similar to `git log -n`).
+  (first parents) starting from the `--rev` baseline. Give a negative value to
+  include all first-parent commits (similar to `git log -n`).
 
 - `-A, --all-commits` - list all experiments in the repository (overrides
   `--rev` and `--num`).
