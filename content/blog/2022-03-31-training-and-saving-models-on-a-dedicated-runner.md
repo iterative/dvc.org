@@ -373,7 +373,5 @@ a guide of its own, however, so look out for that in the future! 😉
 
 # To fix/known issues:
 
-- Runners don’t always seem to shut down automatically. Do so manually through
-  the [AWS console](https://console.aws.amazon.com/ec2/).
 - When merging the PR that was automatically created, a new CI/CD run is
   triggered.
