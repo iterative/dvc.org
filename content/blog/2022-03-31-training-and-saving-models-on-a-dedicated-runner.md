@@ -324,16 +324,11 @@ jobs:
           REPO_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           GDRIVE_CREDENTIALS_DATA: ${{ secrets.GDRIVE_CREDENTIALS_DATA }}
         run: |
+          cml ci
           pip install -r requirements.txt
           python train.py
 
-          # Create CML report
-          cat model/metrics.txt >> model/report.md
-          cml publish model/confusion_matrix.png --md >> model/report.md
-          cml send-comment model/report.md
-
           # Connect to your DVC remote storage and push the model to there
-
           dvc add model/random_forest.joblib # This automatically adds the model to your .gitignore
 
           # GDRIVE_CREDENTIALS_DATA is not read automatically when using a service account
@@ -351,7 +346,12 @@ jobs:
           rm creds.json
 
           # Create pull request for the remaining files
-          cml pr "."
+          cml pr .
+
+          # Create CML report
+          cat model/metrics.txt > model/report.md
+          cml publish model/confusion_matrix.png --md >> model/report.md
+          cml send-comment --pr --update report.md
 ```
 
 # Conclusions
