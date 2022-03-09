@@ -214,8 +214,7 @@ jobs:
           cml runner \
               --cloud=aws \
               --cloud-region=eu-west \
-              --cloud-type=m \
-              --cloud-gpu=nogpu \
+              --cloud-type=t2.micro \
               --single
   train-model:
     needs: deploy-runner
@@ -310,8 +309,7 @@ jobs:
           cml runner \
               --cloud=aws \
               --cloud-region=eu-west \
-              --cloud-type=m \
-              --cloud-gpu=nogpu \
+              --cloud-type=t2.micro \
               --single
   train-model:
     needs: deploy-runner
