@@ -5,17 +5,17 @@ Helper command to create or update <abbr>stages</abbr> in `dvc.yaml`.
 ## Synopsis
 
 ```usage
-usage: dvc stage add [-h] [-q | -v] -n <name> [-d <path>]
-                     [-o <filename>] [-O <filename>]
-                     [-p [<filename>:]<params_list>] [-m <path>]
-                     [-M <path>] [--plots <path>]
-                     [--plots-no-cache <path>] [--live <path>]
-                     [--live-no-cache <path>] [--live-no-html]
-                     [-w <path>] [-f] [--outs-persist <filename>]
-                     [--outs-persist-no-cache <filename>]
-                     [-c <filename>] [--always-changed] [--external]
-                     [--desc <text>]
-                     command
+usage: dvc stage add [-h] [-q | -v] -n <name> [-f]
+                 [-d <path>] [-p [<filename>:]<params_list>]
+                 [-o <filename>] [-O <filename>] [-c <filename>]
+                 [--outs-persist <filename>]
+                 [--outs-persist-no-cache <filename>]
+                 [-m <path>] [-M <path>]
+                 [--plots <path>] [--plots-no-cache <path>]
+                 [--live <path>] [--live-no-cache <path>]
+                 [--live-no-html] [-w <path>]
+                 [--always-changed] [--external] [--desc <text>]
+                 command
 
 positional arguments:
   command               Command to execute
