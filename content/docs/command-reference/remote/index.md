@@ -50,8 +50,8 @@ more details.
 
 ### Managing remote storage
 
-> For the typical process to share the <abbr>project</abbr> via remote, see
-> [Sharing Data And Model Files](/doc/use-cases/sharing-data-and-model-files).
+> For an intro on DVC remote usage see
+> [Storing and sharing data](/doc/start/data-and-model-versioning#storing-and-sharing).
 
 The [add](/doc/command-reference/remote/add),
 [default](/doc/command-reference/remote/default),

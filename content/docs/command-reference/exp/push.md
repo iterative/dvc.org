@@ -54,10 +54,9 @@ This command will also try to [push](/doc/command-reference/push) all
   the `dvc remote`.
 
 - `-j <number>`, `--jobs <number>` - parallelism level for DVC to upload data to
-  remote storage. The default value is `4 * cpu_count()`. For SSH remotes, the
-  default is `4`. Note that the default value can be set using the `jobs` config
-  option with `dvc remote modify`. Using more jobs may improve the overall
-  transfer speed.
+  remote storage. The default value is `4 * cpu_count()`. Note that the default
+  value can be set using the `jobs` config option with `dvc remote modify`.
+  Using more jobs may improve the overall transfer speed.
 
 - `-h`, `--help` - shows the help message and exit.
 

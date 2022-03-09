@@ -20,11 +20,10 @@ positional arguments:
 
 The `dvc push` and `dvc pull` commands are the means for uploading and
 downloading data to and from remote storage (S3, SSH, GCS, etc.). These commands
-are similar to `git push` and `git pull`, respectively.
-[Data sharing](/doc/use-cases/sharing-data-and-model-files) across environments,
-and preserving data versions (input datasets, intermediate results, models,
-[metrics](/doc/command-reference/metrics), etc.) remotely are the most common
-use cases for these commands.
+are similar to `git push` and `git pull`, respectively. [Data sharing] across
+environments, and preserving data versions (input datasets, intermediate
+results, models, [metrics](/doc/command-reference/metrics), etc.) remotely are
+the most common use cases for these commands.
 
 `dvc push` uploads data from the <abbr>cache</abbr> to
 [remote storage](/doc/command-reference/remote).
@@ -32,6 +31,8 @@ use cases for these commands.
 > Note that pushing data does not affect code, `dvc.yaml`, or `.dvc` files.
 > Those should be uploaded with `git push`. `dvc import` data is also ignored by
 > this command.
+
+[data sharing]: /doc/start/data-and-model-versioning#storing-and-sharing
 
 The `dvc remote` used is determined in order, based on
 
@@ -94,9 +95,9 @@ in the cache (compared to the default remote.) It can be used to see what files
   the `dvc remote`.
 
 - `-j <number>`, `--jobs <number>` - parallelism level for DVC to upload data to
-  remote storage. The default value is `4 * cpu_count()`. For SSH remotes, the
-  default is `4`. Note that the default value can be set using the `jobs` config
-  option with `dvc remote modify`. Using more jobs may speed up the operation.
+  remote storage. The default value is `4 * cpu_count()`. Note that the default
+  value can be set using the `jobs` config option with `dvc remote modify`.
+  Using more jobs may speed up the operation.
 
 - `--glob` - allows pushing files and directories that match the
   [pattern](https://docs.python.org/3/library/glob.html) specified in `targets`.

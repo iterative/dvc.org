@@ -4,7 +4,10 @@ import { IPaginatorPageInfo } from '../../Paginator'
 import PageContent from '../../PageContent'
 import Feed, { IBlogFeedPostList } from '../Feed'
 import SubscribeSection from '../../SubscribeSection'
+import config from '../../../config'
+import Search from '../Search'
 
+const searchIndices = [{ name: config.algolia.indexName, title: `Blogs` }]
 interface IBlogHomeProps {
   posts: IBlogFeedPostList
   pageInfo: IPaginatorPageInfo
@@ -13,6 +16,7 @@ interface IBlogHomeProps {
 const Home: React.FC<IBlogHomeProps> = ({ posts, pageInfo }) => {
   return (
     <>
+      <Search indices={searchIndices} />
       <PageContent>
         <Feed
           feedPostList={posts}
