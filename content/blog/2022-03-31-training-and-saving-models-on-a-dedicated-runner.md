@@ -195,10 +195,11 @@ in `model/random_forest.joblib` this file is included in the merge request.
 
 ```yaml
 name: CML
-on: # Here we use two triggers; on push and daily at 08:00
-  push:
-  schedule:
-    - cron: '0 8 * * *'
+on: # Here we use three triggers; on push, on manual trigger, and daily at 08:00
+  # push:
+  workflow_dispatch:
+  # schedule:
+  #   - cron: '0 8 * * *'
 jobs:
   deploy-runner:
     runs-on: ubuntu-latest
@@ -289,10 +290,11 @@ in Github. Afterwards a merge request is created.
 
 ```yaml
 name: CML-with-DVC
-on: # Here we use two triggers; on push and daily at 08:00
-  push:
-  schedule:
-    - cron: '0 8 * * *'
+on: # Here we use three triggers; on push, on manual trigger, and daily at 08:00
+  # push:
+  workflow_dispatch:
+  # schedule:
+  #   - cron: '0 8 * * *'
 jobs:
   deploy-runner:
     runs-on: ubuntu-latest
