@@ -61,7 +61,7 @@ trainer = Trainer(
     compute_metrics=compute_metrics,
 )
 trainer.add_callback(
-    DvcLiveCallback(model_file='my_model_path'))
+    DvcLiveCallback(model_file="my_model_path"))
 trainer.train()
 ```
 
@@ -79,6 +79,6 @@ trainer = Trainer(
     compute_metrics=compute_metrics,
 )
 trainer.add_callback(
-    DvcLiveCallback(path='custom_path', summary=False))
+    DvcLiveCallback(model_file="my_model_path", path="custom_path"))
 trainer.train()
 ```

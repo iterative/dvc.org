@@ -56,7 +56,7 @@ runner.train(
     optimizer=optimizer,
     loaders=loaders,
     num_epochs=2,
-    callbacks=[DvcLiveCallback("model.pth")])
+    callbacks=[DvcLiveCallback(model_file="model.pth")])
 ```
 
 - Using `**kwargs` to customize [`Live`](/docs/dvclive/api-reference/live).
@@ -71,5 +71,5 @@ runner.train(
     loaders=loaders,
     num_epochs=2,
     callbacks=[
-      DvcLiveCallback(path="custom_path", summary=False)])
+      DvcLiveCallback(model_file="model.pth", path="custom_path")])
 ```

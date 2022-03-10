@@ -86,10 +86,9 @@ The `dvc remote` used is determined in order, based on
   the remote repository. See the same option in `dvc push`.
 
 - `-j <number>`, `--jobs <number>` - parallelism level for DVC to download data
-  from remote storage. The default value is `4 * cpu_count()`. For SSH remotes,
-  the default is `4`. Note that the default value can be set using the `jobs`
-  config option with `dvc remote modify`. Using more jobs may speed up the
-  operation.
+  from remote storage. The default value is `4 * cpu_count()`. Note that the
+  default value can be set using the `jobs` config option with
+  `dvc remote modify`. Using more jobs may speed up the operation.
 
 - `-a`, `--all-branches` - fetch cache for all Git branches, as well as for the
   workspace. This means DVC may download files needed to reproduce different
