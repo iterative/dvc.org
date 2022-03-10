@@ -607,8 +607,10 @@ more information.
   $ dvc remote modify myremote gdrive_use_service_account true
   ```
 
-- `gdrive_service_account_json_file_path` - path to the Google Project's
-  service account `.json` [key file](https://cloud.google.com/docs/authentication/getting-started#creating_a_service_account) (credentials).
+- `gdrive_service_account_json_file_path` - path to the Google Project's service
+  account `.json`
+  [key file](https://cloud.google.com/docs/authentication/getting-started#creating_a_service_account)
+  (credentials).
 
   ```dvc
   $ dvc remote modify --local myremote \
