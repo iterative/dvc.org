@@ -18,8 +18,6 @@ tags:
   - Pipelines
 ---
 
-# Training and saving models with CML on a dedicated runner
-
 When you first develop a machine learning model, you will probably do so on your
 local machine. You can easily change algorithms, parameters, and input data
 right in your text editor, notebook, or terminal. But what happens when you
