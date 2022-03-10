@@ -608,7 +608,7 @@ more information.
   ```
 
 - `gdrive_service_account_json_file_path` - path to the Google Project's
-  [service account `.json` key file (credentials)](https://cloud.google.com/docs/authentication/getting-started#creating_a_service_account).
+  service account `.json` [key file](https://cloud.google.com/docs/authentication/getting-started#creating_a_service_account) (credentials).
 
   ```dvc
   $ dvc remote modify --local myremote \
