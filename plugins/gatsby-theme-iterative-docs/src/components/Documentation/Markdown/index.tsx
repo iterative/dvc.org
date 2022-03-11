@@ -22,9 +22,11 @@ import { linkIcon } from '../../../../../../static/icons'
 import { useLocation } from '@reach/router'
 
 import GithubSlugger from 'github-slugger'
-const slugger = new GithubSlugger()
 
-const Details: React.FC<Record<string, never>> = ({ children }) => {
+const Details: React.FC<{ slugger: GithubSlugger }> = ({
+  slugger,
+  children
+}) => {
   const [isOpen, setIsOpen] = useState(false)
   const location = useLocation()
 
@@ -47,7 +49,7 @@ const Details: React.FC<Record<string, never>> = ({ children }) => {
     firstChild.props.children.length - 1
   ) as ReactNode[]
 
-  let slug = slugger.slug(triggerChildren.toString())
+  let slug = slugger.slug(triggerChildren.toString(), true)
   if (slug[0] === '️') {
     slug = slug.slice(1)
   }
@@ -235,20 +237,21 @@ const Tab: React.FC = ({ children }) => {
 
 // Rehype's typedefs don't allow for custom components, even though they work
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const renderAst = new (rehypeReact as any)({
-  createElement: React.createElement,
-  Fragment: React.Fragment,
-  components: {
-    a: Link,
-    abbr: Abbr,
-    card: Card,
-    cards: Cards,
-    details: Details,
-    toggle: Toggle,
-    tab: Tab
-  }
-}).Compiler
-
+const renderAst = (slugger: GithubSlugger) => {
+  return new (rehypeReact as any)({
+    createElement: React.createElement,
+    Fragment: React.Fragment,
+    components: {
+      a: Link,
+      abbr: Abbr,
+      card: Card,
+      cards: Cards,
+      details: (props: any) => <Details slugger={slugger} {...props} />,
+      toggle: Toggle,
+      tab: Tab
+    }
+  }).Compiler
+}
 interface IMarkdownProps {
   htmlAst: Node
   githubLink: string
@@ -264,9 +267,10 @@ const Markdown: React.FC<IMarkdownProps> = ({
   tutorials,
   githubLink
 }) => {
+  const slugger = new GithubSlugger()
   return (
     <Main prev={prev} next={next} tutorials={tutorials} githubLink={githubLink}>
-      <TogglesProvider>{renderAst(htmlAst)}</TogglesProvider>
+      <TogglesProvider>{renderAst(slugger)(htmlAst)}</TogglesProvider>
     </Main>
   )
 }
