@@ -4,7 +4,8 @@ import React, {
   useRef,
   ReactNode,
   ReactElement,
-  useContext
+  useContext,
+  useMemo
 } from 'react'
 import cn from 'classnames'
 import { nanoid } from 'nanoid'
@@ -21,10 +22,13 @@ import { TogglesContext, TogglesProvider } from './ToggleProvider'
 import { linkIcon } from '../../../../../../static/icons'
 import { useLocation } from '@reach/router'
 
-import GithubSlugger from 'github-slugger'
-const slugger = new GithubSlugger()
+import Slugger from '../../../utils/front/Slugger'
 
-const Details: React.FC<Record<string, never>> = ({ children }) => {
+const Details: React.FC<{
+  slugger: Slugger
+  code: string
+  position: string
+}> = ({ slugger, children, code, position }) => {
   const [isOpen, setIsOpen] = useState(false)
   const location = useLocation()
 
@@ -46,13 +50,12 @@ const Details: React.FC<Record<string, never>> = ({ children }) => {
     0,
     firstChild.props.children.length - 1
   ) as ReactNode[]
-
-  let slug = slugger.slug(triggerChildren.toString())
-  if (slug[0] === '️') {
-    slug = slug.slice(1)
-  }
-  const id = slug.startsWith('-') ? slug.slice(1) : slug
-
+  const titleString = triggerChildren.toString()
+  const slug = useMemo(
+    () => slugger.slug(titleString, code, position),
+    [titleString]
+  )
+  const id = slug
   useEffect(() => {
     if (location.hash === `#${id}`) {
       setIsOpen(true)
@@ -235,19 +238,21 @@ const Tab: React.FC = ({ children }) => {
 
 // Rehype's typedefs don't allow for custom components, even though they work
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const renderAst = new (rehypeReact as any)({
-  createElement: React.createElement,
-  Fragment: React.Fragment,
-  components: {
-    a: Link,
-    abbr: Abbr,
-    card: Card,
-    cards: Cards,
-    details: Details,
-    toggle: Toggle,
-    tab: Tab
-  }
-}).Compiler
+const renderAst = (slugger: Slugger) => {
+  return new (rehypeReact as any)({
+    createElement: React.createElement,
+    Fragment: React.Fragment,
+    components: {
+      a: Link,
+      abbr: Abbr,
+      card: Card,
+      cards: Cards,
+      details: (props: any) => <Details slugger={slugger} {...props} />,
+      toggle: Toggle,
+      tab: Tab
+    }
+  }).Compiler
+}
 
 interface IMarkdownProps {
   htmlAst: Node
@@ -264,9 +269,10 @@ const Markdown: React.FC<IMarkdownProps> = ({
   tutorials,
   githubLink
 }) => {
+  const slugger = new Slugger({ lowercase: false })
   return (
     <Main prev={prev} next={next} tutorials={tutorials} githubLink={githubLink}>
-      <TogglesProvider>{renderAst(htmlAst)}</TogglesProvider>
+      <TogglesProvider>{renderAst(slugger)(htmlAst)}</TogglesProvider>
     </Main>
   )
 }

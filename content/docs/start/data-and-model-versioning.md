@@ -145,7 +145,7 @@ $ dvc push
 Usually, we also want to `git commit` and `git push` the corresponding `.dvc`
 files.
 
-<details>
+<details code="storing and sharing" position="start">
 
 ### 💡 Expand to see what happens under the hood.
 
