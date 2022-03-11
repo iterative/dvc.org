@@ -33,7 +33,7 @@ similar to a branch.
 </details>
 
 Like with regular experiments, checkpoints can be
-[committing to Git](#committing-checkpoints-to-git).
+[committed to Git](#committing-checkpoints-to-git).
 
 This guide covers how to implement checkpoints in an ML project using DVC. We're
 going to train a model to identify handwritten digits based on the MNIST
