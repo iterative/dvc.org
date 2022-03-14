@@ -74,8 +74,6 @@ is not available (e.g. on Windows), the output is simply printed out.
 > It's also possible to
 > [enable `less` on Windows](/doc/user-guide/running-dvc-on-windows#enabling-paging-with-less).
 
-> Note that this also applies to `dvc dag`.
-
 ### Providing a custom pager
 
 It's possible to override the default pager via the `DVC_PAGER` environment
@@ -91,13 +89,6 @@ example in Bash, we could add the following line to `~/.bashrc`:
 
 ```dvc
 $ export DVC_PAGER=more
-```
-
-If you'd like to print to stdout always without paging, you can set this
-variable to `cat`:
-
-```dvc
-$ export DVC_PAGER=cat
 ```
 
 ## Options
