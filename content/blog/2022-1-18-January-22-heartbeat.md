@@ -333,10 +333,6 @@ on January 27th! She will be presenting her talk on Using Reproducible
 Experiments To Create Better Machine Learning Models. If you haven't caught this
 talk yet, now's the time!
 
-## Tweet Love ❤️
-
-https://twitter.com/EngNadeau/status/1480962796695310340?s=20
-
 ---
 
 _Have something great to say about our tools? We'd love to hear it! Head to
