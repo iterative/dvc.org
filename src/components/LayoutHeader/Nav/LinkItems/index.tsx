@@ -20,6 +20,7 @@ const docsPage = getFirstPage()
 
 import * as styles from './styles.module.css'
 import { ReactComponent as EllipsisIcon } from '../../../../../static/img/ellipsis.svg'
+import onSelectKey from '../../../../utils/onSelectKey'
 
 type PopupName = 'communityPopup' | 'otherToolsPopup' | 'otherPopup'
 
@@ -117,6 +118,7 @@ const LinkItems: React.FC = () => {
                 <button
                   aria-label={item.ariaLabel}
                   onPointerUp={popup?.toggle}
+                  onKeyUp={onSelectKey(popup?.toggle)}
                   className={cn(
                     styles.link,
                     popup?.isOpen && styles.open,
