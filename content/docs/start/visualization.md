@@ -25,7 +25,7 @@ actual,predicted
   https://github.com/iterative/example-dvc-experiments/blob/main/src/train.py#L213
 
 After running the experiment with `dvc exp run`, DVC will produce
-`plots/confusion.csv` file that can immediately be shown in the browser:
+`plots/confusion.csv` file which is immediately shown in the browser:
 
 ```dvc
 $ dvc plots show plots/confusion.csv --template confusion -x actual -y predicted
