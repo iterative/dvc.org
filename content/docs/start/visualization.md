@@ -1,6 +1,6 @@
-# Visualization with DVC Plots
+# Visualization with Plots
 
-In this section, we'll add visualization to [`example-dvc-experiments`][ede]
+In this section, we'll add visualization to the [`example-dvc-experiments`][ede]
 project. If you would like to try these yourself, please refer to the project
 [README] about how to install.
 
@@ -8,9 +8,8 @@ project. If you would like to try these yourself, please refer to the project
 [readme]:
   https://github.com/iterative/example-dvc-experiments/blob/main/README.md
 
-One of the important plots that shows the classification performance is the
-confusion matrix. DVC uses Vega-Lite to plot the text files. In order to produce
-a confusion matrix, Vega expects a CSV file in the form:
+A useful plot to show the classification performance is the confusion matrix. In
+order to produce it, DVC expects a CSV **plot file** in the form:
 
 ```csv
 actual,predicted
@@ -19,10 +18,10 @@ actual,predicted
 ...
 ```
 
-We added a [straightforward loop] to the project to generate this file from the
-predictions.
+> We added a [loop] comparing the results to generate this file from the
+> predictions.
 
-[straightforward loop]:
+[loop]:
   https://github.com/iterative/example-dvc-experiments/blob/main/src/train.py#L213
 
 After running the experiment with `dvc exp run`, DVC will produce
