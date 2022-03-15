@@ -65,4 +65,4 @@ trainer.fit(model)
 > 📖 By default, PyTorch Lightning creates a directory to store checkpoints
 > using the logger's name (`DvcLiveLogger`). You can change the checkpoint path
 > or disable checkpointing at all as described in the
-> [PyTorch Lightning documentation](https://pytorch-lightning.readthedocs.io/en/latest/common/weights_loading.html#automatic-saving)
+> [PyTorch Lightning documentation](https://pytorch-lightning.readthedocs.io/en/latest/common/checkpointing.html)
