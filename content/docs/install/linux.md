@@ -16,13 +16,9 @@ $ pip install dvc
 ```
 
 Depending on the type of the [remote storage](/doc/command-reference/remote) you
-plan to use, you might need to install optional dependencies: `[s3]`, `[azure]`,
-`[gdrive]`, `[gs]`, `[oss]`, `[ssh]`. Use `[all]` to include them all.
-
-> Please restart your terminal or re-source the shell configuration file
-> (`.bashrc`, `.zshrc`, etc.) if you get `Command 'dvc' not found` after
-> installation. If restarting the terminal isn't desirable (e.g. containers),
-> it's also possible to manually edit the `PATH` env variable.
+plan to use, you might need to install optional dependencies: `[s3]`,
+`[gdrive]`, `[gs]`, `[azure]`, `[ssh]`, `[hdfs]`, `[webdav]`, `[oss]`. Use
+`[all]` to include them all.
 
 <details>
 
@@ -35,6 +31,11 @@ $ pip install "dvc[s3]"
 In this case it installs the `boto3` library along with DVC.
 
 </details>
+
+> Please restart your terminal or re-source the shell configuration file
+> (`.bashrc`, `.zshrc`, etc.) if you get `Command 'dvc' not found` after
+> installation. If restarting the terminal isn't desirable (e.g. containers),
+> it's also possible to manually edit the `PATH` env variable.
 
 ## Install with conda
 
