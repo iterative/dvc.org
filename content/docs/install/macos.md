@@ -30,7 +30,8 @@ from the [release page](https://github.com/iterative/dvc/releases/) on GitHub.
 > [virtual environment](https://python.readthedocs.io/en/stable/library/venv.html)
 > or using
 > [pipx](https://packaging.python.org/guides/installing-stand-alone-command-line-tools/)
-> (on Python 3.7+) to encapsulate your local environment.
+> (on Python 3.7+) to encapsulate your local environment.  
+> Note that `pip` version 19+ is required.
 
 ```dvc
 $ pip install dvc
