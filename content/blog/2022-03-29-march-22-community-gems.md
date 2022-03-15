@@ -1,15 +1,15 @@
 ---
 title: March '22 Community Gems
-date: 2022-03-31
+date: 2022-03-29
 description: >
   A roundup of technical Q&A's from the DVC and CML community. This month:
   comparing experiments, working with data, working with pipelines, and more.
 descriptionLong: >
   A roundup of technical Q&A's from the DVC and CML community. This month:
   comparing experiments, working with data, working with pipelines, and more.
-picture: 2022-02-28/feb-comm-gems.png
+picture: 2022-03-29/mar-comm-gems.png
 author: milecia_mcgregor
-commentsUrl: https://discuss.dvc.org/t/february-22-community-gems/1078
+commentsUrl: https://discuss.dvc.org/t/march-22-community-gems/1119
 tags:
   - Data Versioning
   - DVC Remotes
@@ -49,7 +49,7 @@ without pulling the repo. Here's an example of the command you can run:
 $ dvc list https://github.com/iterative/dataset-registry/ fashion-mnist/raw
 ```
 
-### [if we have multiple datasets, is it recommended to have 1 remote per dataset or to have 1 remote and let DVC handle the paths?](https://discord.com/channels/485586884165107732/485596304961962003/943213340195434546)
+### [If we have multiple datasets, is it recommended to have 1 remote per dataset or to have 1 remote and let DVC handle the paths?](https://discord.com/channels/485586884165107732/485596304961962003/943213340195434546)
 
 This is a really interesting question from @BrownZ!
 
@@ -60,22 +60,39 @@ In general, we would suggest a single remote and setting up a
 [data registry](https://dvc.org/doc/use-cases/data-registries) to handle the
 different datasets through DVC.
 
-### []()
+### [Is there a mailing list for subscribing to CML releases?](https://discord.com/channels/485586884165107732/728693131557732403/939215540591927337)
 
-### []()
+It's awesome community members like @pria want to keep up with our releases!
 
-### []()
+You can follow all of our releases via GitHub notifications. You can browse
+release notes at <https://github.com/iterative/cml/releases>. You can also
+subscribe to release updates by clicking the `Watch` button in the top-right,
+navigating to `Custom`, and checking the `Releases` option.
 
-### []()
+![the checkbox you need to check in GitHub to follow CML releases](2022-03-29/cml_release_follow.png)
+
+### [Does `cml-send-comment` work for azure devops repositories?](https://discord.com/channels/485586884165107732/728693131557732403/947986936994353293)
+
+Thanks for the question @1cybersheep1!
+
+Currently, the supported Source Code Management tools are GitHub, GitLab, and
+Bitbucket. Other SCMs may be a part of the roadmap later on.
+
+### [If my model is training on a self-hosted, local runner, and I already have a shared DVC cache set up on the same machine, is there a good way for my GitHub workflow to access that cache instead of having to redownload it all from cloud storage?](https://discord.com/channels/485586884165107732/728693131557732403/951240652035883008)
+
+Excellent question from @luke_imm!
+
+In GitHub, you can mount volumes to your container, but you have to declare them
+within the
+[workflow YAML](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#example-running-a-job-within-a-container)
 
 ---
 
-https://media.giphy.com/media/h5Ct5uxV5RfwY/giphy.gif
+https://media.giphy.com/media/3o6Mbnll2gudglC3HG/giphy.gif
 
-At our March Office Hours Meetup we will be about how you can create, run, and
-benchmark DVC pipelines with [ZnTrack](https://github.com/zincware/ZnTrack)!
-[RSVP for the Meetup here](https://www.meetup.com/Machine-Learning-Engineer-Community-Virtual-Meetups/events/283998696/)
-to stay up to date with specifics as we get closer to the event!
+At our April Office Hours Meetup we will be about ...!
+[RSVP for the Meetup here]() to stay up to date with specifics as we get closer
+to the event!
 
 [Join us in Discord](https://discord.com/invite/dvwXA2N) to get all your DVC and
 CML questions answered!
