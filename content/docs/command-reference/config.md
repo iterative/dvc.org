@@ -112,7 +112,7 @@ within:
 - [`index`](#index) - see [Internal directories and files][internals] to learn
   more about remote index files.
 
-[internals]: (/doc/user-guide/project-structure/internal-files)
+[internals]: /doc/user-guide/project-structure/internal-files
 
 ### core
 
