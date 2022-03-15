@@ -26,12 +26,15 @@ from the [release page](https://github.com/iterative/dvc/releases/) on GitHub.
 
 ## Install with pip
 
-> We **strongly** recommend creating a
+> 💡We **strongly** recommend creating a
 > [virtual environment](https://python.readthedocs.io/en/stable/library/venv.html)
 > or using
 > [pipx](https://packaging.python.org/guides/installing-stand-alone-command-line-tools/)
-> (on Python 3.7+) to encapsulate your local environment.  
-> Note that `pip` version 19+ is required.
+> to encapsulate your local environment.
+
+> ℹ️ Note that `pip` version 19+ is required.
+
+> ⚠️ Note that Python 3.7+ is needed to get the latest version of DVC.
 
 ```dvc
 $ pip install dvc
