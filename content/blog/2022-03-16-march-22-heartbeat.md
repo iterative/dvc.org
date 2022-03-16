@@ -3,23 +3,23 @@ title: March '22 Heartbeat
 date: 2022-03-16
 description: >
   Monthly updates are here! You will find great tutorials and workflows from  
-  the Community, Online course is now open, decision making strategies
-  for  MLOps tools, and more! Happy February!
+  the Community, Online course updates, MLOps maturity models, new docs and
+  more! Happy Spring!
 
 descriptionLong: |
   This month you will find:
+
+    🧘🏻‍♀️ MLOps is a mess, but that's ok,
     
     🥰 Tutorials and workflows from the Community,
 
     🗣 Upcoming Events,
 
-    📰 DVC helps in COVID research,
+    🔺 MLOps Maturity Models
 
-    🧐 More MLOps tool decision strategies,
+    💻 Online Course(s) updates,
 
-    😎 GitHub Goodness and Integrations,
-
-    💻 Online Course is live,
+    📖 New doc,
 
     🚀 Info on our growing team, and more!
 picture: 2022-03-16/heartbeat-march.png
@@ -60,7 +60,7 @@ _Gartner Hype cycle for MLOps
 
 ## Kevin Lu: Learn how to use Data Version Control to remove the third wheel from your relationship
 
-![Learn how to use Data Version Control to remove the third wheel from your relationship](/uploads/images/2022-03-16/kevin.png 'Learn how to use Data Version Control to remove the third wheel from your relationships :wrap-left ==300')
+![Learn how to use Data Version Control to remove the third wheel from your relationship](/uploads/images/2022-03-16/kevin.png 'Learn how to use Data Version Control to remove the third wheel from your relationships :wrap-right ==300')
 In
 [this hilarious post,](https://medium.com/@kevinylu/learn-how-to-use-data-version-control-to-remove-the-third-wheel-from-your-relationship-ce4c2afa649c)
 [**Kevin Lu**](https://medium.com/@kevinylu) teaches us how to use DVC to enable
@@ -121,8 +121,8 @@ _Comparing Google's and Microsoft's maturity models
 
 ## Jagreet Kaur: Implementing DevOps for Machine Learning - A Quick Guide
 
-![Tensorflow, PyTorch, DVC, Docker, CI/CD](/uploads/images/2022-03-16/jagreet-kaur.png 'Continuous Development Life Cycle Guide from Xenostack :wrap-right ==300')
-[**Jagreet Kaur**](https://www.linkedin.com/in/jagreetkaur/) Of
+![Tensorflow, PyTorch, DVC, Docker, CI/CD](/uploads/images/2022-03-16/jagreet-kaur.png 'Continuous Development Life Cycle Guide from Xenostack :wrap-left ==300')
+[**Jagreet Kaur**](https://www.linkedin.com/in/jagreetkaur/) of
 [Xenonstack](https://xenostack.com) authors
 [a guide](https://www.xenonstack.com/blog/devops-for-machine-learning) on
 applying DevOps to machine learning and generally what the continuous
@@ -157,10 +157,10 @@ If you’ve been in our Discord server, been to one of our Meetups, or interacte
 with us on Twitter, you’ve surely come across DVC Community All-Star
 [**Mert Bozkir**](https://github.com/mertbozkir). Mert has written
 [a great piece](https://medium.com/@mertbozkir/community-driven-learning-2481103aa190)
-Entitled _Community Driven Learning_ and how it is the best way to learn. He
-outlines his reasoning for this including the support, encouragement, and
-motivation you can get from the Community to be persistent in your learning
-efforts. He also includes eight communities that are great for learning with
+Entitled _Community Driven Learning_ and describes how it is the best way to
+learn. He outlines his reasoning for this including the support, encouragement,
+and motivation you can get from the Community to be persistent in your learning
+efforts. He also includes eight communities that are great for learning, with
 invites included. Be sure to check it out!
 
 ![Community Driven Learning](/uploads/images/2022-03-16/community.jpeg '=800')
@@ -169,40 +169,42 @@ _Community Driven Learning
 
 And speaking of learning…
 
-#Company News
+# Company News
 
 https://media.giphy.com/media/HV0tHmPREaD0sIixmg/giphy.gif
 
-### Online Course(s) Updates
+## Online Course(s) Updates
 
-We now have over 250 students taking the course and 10 students that have
-completed the course! Thank you to all who have given us feedback. We are
-actively working on making adjustments to the course and improving the next one.
+- We now have over **250** students taking the course and 10 students that have
+  completed the course! 🎉 Thank you to all who have given us feedback. We are
+  actively working on making adjustments to the course and improving the next
+  one.
 
-We have a new look! The website for our online course, Iterative Tools for Data
-Scientists and Analysts has been updated to be more streamlined to more clearly
-identify what our students need in the course!
+- We have a new look! The website for our online course, Iterative Tools for
+  Data Scientists and Analysts has been updated to be more streamlined to more
+  clearly identify what our students need in the course!
 
-We have already begun working on the second course which will be more advanced
-(remember those maturity models outlined in the article from DZone above?) and
-will cover scenarios with CML. We are also working on creating an ebook for each
-video that will provide relevant information, diagrams, and links with the video
-content instead of being batched at the end of the module. The ebook format will
-also let you take your own notes as you study!
+- We have already begun working on the second course which will be more advanced
+  (remember those maturity models outlined in the article from DZone above?) and
+  will cover scenarios with CML. We are also working on creating an ebook for
+  each video that will provide relevant information, diagrams, and links with
+  the video content instead of being batched at the end of the module. The ebook
+  format will also let you take your own notes as you study!
 
 ## New Hires
 
+https://giphy.com/clips/flying-jetpack-jet-pack-AFInqMxZCWfEiedpBs
+
 [**Mike Moynihan**](https://www.linkedin.com/in/michael-moynihan/) joins us from
-Brookly, NY as an Account Executive. He previously worked at Code Climate where
-he worked as the Manager of Business Development and an Account Executive.
-Mike's really into biking and will be participating in the 5-Boro Bike Tour in
-NYC this year. He's also a baker and has been baking bread and other baked goods
-consistently for about 3 years now. Finally, when not working or biking or
-baking, you may find him playing one of the video or board games in his 500
-strong collection.
+Brookly, NY as an Account Executive. He previously worked at Code Climate as the
+Manager of Business Development and an Account Executive. Mike's really into
+biking and will be participating in the 5-Boro Bike Tour in NYC this year. He's
+also a baker and has been baking bread and other baked goods consistently for
+about 3 years now. Finally, when not working or biking or baking, you may find
+him playing one of the video or board games in his 500-strong collection.
 
 [**Rob De Wit**](https://www.linkedin.com/in/rcdewit/) joins our team from
-Utrecht, the Netherlands as a developer advocate. Rob's first focus will be on
+Utrecht, the Netherlands as a Developer Advocate. Rob's first focus will be on
 developing those new ebooks for our new online courses mentioned above. He has a
 background in Information Sciences and previously worked at bol.com and
 Devoteam. When not working, Rob likes photo and video editing, board games,
@@ -228,7 +230,7 @@ description="RSVP for DVC Office Hours - ZnTrack - Create, Visualize, Run and Be
 link="https://meetup.com"
 image="/uploads/images/2022-03-16/office-hours-meetup.png"/>
 
-## Conferences
+## Conferences/Hackathons
 
 - We will be sponsoring [ODSC East](https://odsc.com/boston/) and
   [MLOPs World](https://mlopsworld.com/) this year, so if you are attending,
@@ -240,10 +242,20 @@ image="/uploads/images/2022-03-16/office-hours-meetup.png"/>
   workshop "Making MLOps Uncool Again" at
   [MLOps World New York](https://mlopsworld.com/newyork/) on March 29th and at
   [PyCon Berlin](https://2022.pycon.de/) April 11th.
+- Community member [Gift Ojeabulu](https://twitter.com/GiftOjeabulu_) will be
+  giving a talk on "MLops Exploration with Git and DVC for Machine Learning
+  Project" at [Open Source Festival 2022](https://festival.oscafrica.org/) March
+  24-26
+- [BatteryDev Hackathon](https://www.battery.dev/) will take place next week and
+  [Milecia McGregor](https://twitter.com/FlippedCoding)will hold an Office Hours
+  for those needing help with DVC on March 21st
+- [Antoine Toubhans](https://twitter.com/AntoineToubhans) will be presenting his
+  DVC integration with Streamlit at [PyCon Berlin](https://2022.pycon.de/) as
+  well
 
-## New Docs
+## 📖 New Docs
 
-### New CML Doc
+### CML CI
 
 CML has a new command line reference that lets you prepare the Git repository
 for CML operations. For more info on `cml ci`,
@@ -251,7 +263,7 @@ for CML operations. For more info on `cml ci`,
 
 ## Open Positions
 
-Even with these amazing new additions to the team, we're still hiring!
+Even with our amazing new additions to the team, we're still hiring!
 [Use this link](https://iterative.notion.site/Iterative-ai-is-Hiring-852cb978129645e1906e2c9a878a4d22)
 to find details of all the positions and share with anyone you think may be
 interested! 🚀
@@ -269,7 +281,7 @@ with Streamlit, you can
 [see it on our YouTube channel](https://www.youtube.com/watch?v=F318uN01v7M&t=2s)
 or catch the presentation at this year's [PyCon Berlin.](https://2022.pycon.de/)
 
-https://twitter.com/Iterativeai/status/1501666664714149895
+https://twitter.com/AntoineToubhans/status/1497254983963660292
 
 How do you get some DVC swag you ask? Write us some great content, contribute to
 our tools, give a presentation at one of our Meetups! We'd love to have you!
