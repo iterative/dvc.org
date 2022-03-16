@@ -167,11 +167,11 @@ invites included. Be sure to check it out!
 _Community Driven Learning
 ([Source link: Unsplash by john_cameron](https://unsplash.com/@john_cameron))_
 
-And speaking of learning…
+## And speaking of learning…
 
 # Company News
 
-https://media.giphy.com/media/HV0tHmPREaD0sIixmg/giphy.gif
+https://giphy.com/clips/flying-jetpack-jet-pack-AFInqMxZCWfEiedpBs
 
 ## Online Course(s) Updates
 
@@ -235,23 +235,23 @@ image="/uploads/images/2022-03-16/office-hours-meetup.png"/>
 - We will be sponsoring [ODSC East](https://odsc.com/boston/) and
   [MLOPs World](https://mlopsworld.com/) this year, so if you are attending,
   we'd love to meet you IRL! Stop by our booth!
-- [Milecia McGregor](https://twitter.com/FlippedCoding) will be speaking at
+- [**Milecia McGregor**](https://twitter.com/FlippedCoding) will be speaking at
   [PythonWeb Conference](https://2022.pythonwebconf.com/) March 22nd on "Using
   Reproducible Experiments to Creat Better Machine Learning Models"
-- [David de la Iglesia Castro](https://github.com/daavoo) will be presenting his
-  workshop "Making MLOps Uncool Again" at
+- [**David de la Iglesia Castro**](https://github.com/daavoo) will be presenting
+  his workshop "Making MLOps Uncool Again" at
   [MLOps World New York](https://mlopsworld.com/newyork/) on March 29th and at
   [PyCon Berlin](https://2022.pycon.de/) April 11th.
-- Community member [Gift Ojeabulu](https://twitter.com/GiftOjeabulu_) will be
-  giving a talk on "MLops Exploration with Git and DVC for Machine Learning
+- Community member [**Gift Ojeabulu**](https://twitter.com/GiftOjeabulu_) will
+  be giving a talk on "MLops Exploration with Git and DVC for Machine Learning
   Project" at [Open Source Festival 2022](https://festival.oscafrica.org/) March
   24-26
 - [BatteryDev Hackathon](https://www.battery.dev/) will take place next week and
-  [Milecia McGregor](https://twitter.com/FlippedCoding)will hold an Office Hours
-  for those needing help with DVC on March 21st
-- [Antoine Toubhans](https://twitter.com/AntoineToubhans) will be presenting his
-  DVC integration with Streamlit at [PyCon Berlin](https://2022.pycon.de/) as
-  well
+  [**Milecia McGregor**](https://twitter.com/FlippedCoding)will hold an Office
+  Hours for those needing help with DVC on March 21st
+- [**Antoine Toubhans**](https://twitter.com/AntoineToubhans) will be presenting
+  his DVC integration with Streamlit at [PyCon Berlin](https://2022.pycon.de/)
+  as well
 
 ## 📖 New Docs
 
