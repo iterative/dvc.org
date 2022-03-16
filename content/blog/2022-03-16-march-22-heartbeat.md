@@ -123,7 +123,7 @@ _Comparing Google's and Microsoft's maturity models
 
 ![Tensorflow, PyTorch, DVC, Docker, CI/CD](/uploads/images/2022-03-16/jagreet-kaur.png 'Continuous Development Life Cycle Guide from Xenostack :wrap-left ==300')
 [**Jagreet Kaur**](https://www.linkedin.com/in/jagreetkaur/) of
-[Xenonstack](https://xenostack.com) authors
+[Xenonstack](https://www.xenonstack.com/) authors
 [a guide](https://www.xenonstack.com/blog/devops-for-machine-learning) on
 applying DevOps to machine learning and generally what the continuous
 development life cycle is as it relates to machine learning projects. Jagreet
@@ -138,10 +138,10 @@ resources from Xenonstack are provided for further review.
 ![Why MLOps Tools should be Open Source](/uploads/images/2022-03-16/yuqi-li.jpeg 'Why MLOps Tools should be Open Source :wrap-right ==300')
 [**Yuqi Li**](https://www.linkedin.com/in/yuqiliofficial/)
 [in this opinion piece,](https://towardsdatascience.com/why-mlops-tools-should-be-open-source-5ad696463f54)
-In [Towards Data Science.](https://towardsdatascience.com) overviews the meaning
-and components of MLOps and identifies a number of good open-source tools in the
-space which of course includes DVC. He also outlines a number of reasons why
-MLOps should be open source. Among the reasons making the cut:
+In [Towards Data Science.](https://towardsdatascience.com/) overviews the
+meaning and components of MLOps and identifies a number of good open-source
+tools in the space which of course includes DVC. He also outlines a number of
+reasons why MLOps should be open source. Among the reasons making the cut:
 
 1. Cost-Effectiveness
 2. Ownership
