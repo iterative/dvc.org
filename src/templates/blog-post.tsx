@@ -16,6 +16,7 @@ export interface IBlogPostHeroPic {
 export interface IBlogPostData {
   id: string
   html: string
+  htmlAst: Node
   timeToRead: string
   slug: string
   title: string
@@ -98,6 +99,7 @@ export const pageQuery = graphql`
       id
       slug
       html
+      htmlAst
       timeToRead
       title
       date(formatString: "MMMM DD, YYYY")
