@@ -5,7 +5,7 @@
 
 ## Install with pip
 
-> 💡We **strongly** recommend creating a
+> 💡 We **strongly** recommend creating a
 > [virtual environment](https://python.readthedocs.io/en/stable/library/venv.html)
 > or using
 > [pipx](https://packaging.python.org/guides/installing-stand-alone-command-line-tools/)
