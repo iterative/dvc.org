@@ -135,7 +135,7 @@ resources from Xenonstack are provided for further review.
 
 ### Yuqi Li: Why MLOps should be Open Source
 
-![Why MLOps Tools should be Open Source](/uploads/images/2022-03-16/yuqi-li.png 'Why MLOps Tools should be Open Source :wrap-right ==300')
+![Why MLOps Tools should be Open Source](/uploads/images/2022-03-16/yuqi-li.jpeg 'Why MLOps Tools should be Open Source :wrap-right ==300')
 [**Yuqi Li**](https://www.linkedin.com/in/yuqiliofficial/)
 [in this opinion piece,](https://towardsdatascience.com/why-mlops-tools-should-be-open-source-5ad696463f54)
 In [Towards Data Science.](https://towardsdatascience.com) overviews the meaning
