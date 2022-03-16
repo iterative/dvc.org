@@ -32,8 +32,6 @@ from the [release page](https://github.com/iterative/dvc/releases/) on GitHub.
 > [pipx](https://packaging.python.org/guides/installing-stand-alone-command-line-tools/)
 > to encapsulate your local environment.
 
-> ℹ️ Note that `pip` version 19+ is required.
-
 > ⚠️ Note that Python 3.7+ is needed to get the latest version of DVC.
 
 ```dvc

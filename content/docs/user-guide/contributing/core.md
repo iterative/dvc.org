@@ -42,10 +42,11 @@ Get the latest development version. Fork and clone the repo:
 $ git clone git@github.com:<your-username>/dvc.git
 ```
 
-Make sure that you have Python 3 installed. Version 3.7 or higher is required to
-run style checkers on pre-commit. On macOS, we recommend using `brew` to install
-Python. For Windows, we recommend an official
+Make sure that you have Python 3.7 or higher installed. On macOS, we recommend
+using `brew` to install Python. For Windows, we recommend an official
 [python.org release](https://www.python.org/downloads/windows/).
+
+> ℹ️ Note that `pip` version 20.3+ is required.
 
 Install DVC in editable mode with `pip install -e ".[all,tests]"`. But before we
 do that, we **strongly** recommend creating a
