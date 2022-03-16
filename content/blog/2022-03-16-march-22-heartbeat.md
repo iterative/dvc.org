@@ -46,8 +46,8 @@ worth it_ piece entitled
 In it he discusses the allure of seeking a machine learning career, only run
 smack into the giant wall of learning that encompasses the space, not the least
 of which is the multitude of tools to pick through once you get there. The state
-of machine learning is reviewed and some history of DevOps for perspective on MLOps
-is added.  
+of machine learning is reviewed and some history of DevOps for perspective on
+MLOps is added.  
 You will find advice for newcomers and some final, thorough, thoughts and
 predictions especially as they relate to “ML at a reasonable scale” companies.  
 Definitely worth your review!
@@ -196,8 +196,8 @@ https://media.giphy.com/media/3ohuAxV0DfcLTxVh6w/giphy.gif
 https://media.giphy.com/media/lQ0LC603dA96Gs2Hfx/giphy.gif
 
 [**Mike Moynihan**](https://www.linkedin.com/in/michael-moynihan/) joins us from
-Brooklyn, NY as an Account Executive. He previously worked at Code Climate as the
-Manager of Business Development and an Account Executive. Mike's really into
+Brooklyn, NY as an Account Executive. He previously worked at Code Climate as
+the Manager of Business Development and an Account Executive. Mike's really into
 biking and will be participating in the 5-Boro Bike Tour in NYC this year. He's
 also a baker and has been baking bread and other baked goods consistently for
 about 3 years now. Finally, when not working or biking or baking, you may find
