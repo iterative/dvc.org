@@ -1,8 +1,9 @@
 # Account Management
 
-To manage your user account, click on your avatar on the top right corner of DVC
-Studio. In the menu that comes up, click on `Profile`. Your user profile page
-will open. This page has multiple sections that are described below.
+To manage your user account, click on your avatar on the top right corner of
+Iterative Studio. In the menu that comes up, click on `Profile`. Your user
+profile page will open. This page has multiple sections that are described
+below.
 
 ## Account
 
@@ -16,11 +17,11 @@ In this section, you can,
 - Connect to additional Git providers. For instance, if you are currently
   connected only to GitHub, you can connect to GitLab and/or Bitbucket from
   here. When you connect to the additional Git providers, you may be prompted to
-  Grant access to your account to DVC Studio. Please grant the required access
-  to enable DVC Studio to connect to your Git repositories.
+  Grant access to your account to Iterative Studio. Please grant the required
+  access to enable Iterative Studio to connect to your Git repositories.
 - Disconnect from your GitHub, GitLab or Bitbucket accounts.
-- Configure your GitHub account. That is, install the DVC Studio GitHub app on
-  additional organizations or repositories, or even remove the app from
+- Configure your GitHub account. That is, install the Iterative Studio GitHub
+  app on additional organizations or repositories, or even remove the app from
   organizations or repositories where you no longer need it.
 
 ## Cloud credentials
