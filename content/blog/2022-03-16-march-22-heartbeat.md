@@ -46,8 +46,8 @@ worth it_ piece entitled
 In it he discusses the allure of seeking a machine learning career, only run
 smack into the giant wall of learning that encompasses the space, not the least
 of which is the multitude of tools to pick through once you get there. The state
-of machine learning is reviewed and some history of DevOps for perspective on MLOps
-is added.  
+of machine learning is reviewed and some history of DevOps for perspective on
+MLOps is added.  
 You will find advice for newcomers and some final, thorough, thoughts and
 predictions especially as they relate to “ML at a reasonable scale” companies.  
 Definitely worth your review!
@@ -196,8 +196,8 @@ https://media.giphy.com/media/3ohuAxV0DfcLTxVh6w/giphy.gif
 https://media.giphy.com/media/lQ0LC603dA96Gs2Hfx/giphy.gif
 
 [**Mike Moynihan**](https://www.linkedin.com/in/michael-moynihan/) joins us from
-Brooklyn, NY as an Account Executive. He previously worked at Code Climate as the
-Manager of Business Development and an Account Executive. Mike's really into
+Brooklyn, NY as an Account Executive. He previously worked at Code Climate as
+the Manager of Business Development and an Account Executive. Mike's really into
 biking and will be participating in the 5-Boro Bike Tour in NYC this year. He's
 also a baker and has been baking bread and other baked goods consistently for
 about 3 years now. Finally, when not working or biking or baking, you may find
@@ -238,7 +238,7 @@ image="/uploads/images/2022-03-16/office-hours-meetup.png"/>
   we'd love to meet you IRL! Stop by our booth!
 - [**Milecia McGregor**](https://twitter.com/FlippedCoding) will be speaking at
   [PythonWeb Conference](https://2022.pythonwebconf.com/) March 22nd on "Using
-  Reproducible Experiments to Creat Better Machine Learning Models"
+  Reproducible Experiments to Creat Better Machine Learning Models."
 - [**David de la Iglesia Castro**](https://github.com/daavoo) will be presenting
   his workshop "Making MLOps Uncool Again" at
   [MLOps World New York](https://mlopsworld.com/newyork/) on March 29th and at
@@ -246,13 +246,13 @@ image="/uploads/images/2022-03-16/office-hours-meetup.png"/>
 - Community member [**Gift Ojeabulu**](https://twitter.com/GiftOjeabulu_) will
   be giving a talk on "MLops Exploration with Git and DVC for Machine Learning
   Project" at [Open Source Festival 2022](https://festival.oscafrica.org/) March
-  24-26
+  24-26.
 - [BatteryDev Hackathon](https://www.battery.dev/) will take place next week and
   [**Milecia McGregor**](https://twitter.com/FlippedCoding) will hold an Office
   Hours for those needing help with DVC on March 21st
 - [**Antoine Toubhans**](https://twitter.com/AntoineToubhans) will be presenting
   his DVC integration with Streamlit at [PyCon Berlin](https://2022.pycon.de/)
-  as well
+  as well.
 
 ## 📖 New Docs
 
