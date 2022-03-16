@@ -98,11 +98,11 @@ whether you're using Jupyter notebooks or Scala, CSV data frames or HDFS.
 
 ---
 
-To complete your stack, we also offer [DVC Studio], an advanced web interface to
-collaborate on DVC projects online, including full experiment management
-support. You can also integrate with CI/CD using [CML], and run your experiments
-there straight from Studio!
+To complete your stack, we also offer [Iterative Studio], an advanced web
+interface to collaborate on DVC projects online, including full experiment
+management support. You can also integrate with CI/CD using [CML], and run your
+experiments there straight from Studio!
 
 [shared]: /doc/user-guide/experiment-management/sharing-experiments
-[dvc studio]: /doc/studio
+[iterative studio]: /doc/studio
 [cml]: https://cml.dev/

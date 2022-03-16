@@ -223,7 +223,7 @@ commits with their associated metrics. In the above tables, `loss` and `acc`
 values are metrics found in [`metrics.json`] file.
 
 Metrics files are interpreted specially also in
-[DVC Studio](https://studio.iterative.ai).
+[Iterative Studio](https://studio.iterative.ai).
 
 [`metrics.json`]:
   https://github.com/iterative/example-dvc-experiments/blob/main/metrics.json

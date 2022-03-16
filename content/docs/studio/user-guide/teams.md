@@ -50,9 +50,9 @@ create and edit the team's views. And admins have full access to the team's
 views and settings. They can add (invite) and remove collaborators as well as
 change team settings such as cloud credentials (data remotes).
 
-DVC Studio does not have the concept of an `Owner` role. The user who creates
-the team has the `Admin` role. The privileges of such an admin is the same as
-that of any other collaborator who has been assigned the `Admin` role.
+Iterative Studio does not have the concept of an `Owner` role. The user who
+creates the team has the `Admin` role. The privileges of such an admin is the
+same as that of any other collaborator who has been assigned the `Admin` role.
 
 > An additional role `Visitor` exists for anonymous users who can open a public
 > view.
