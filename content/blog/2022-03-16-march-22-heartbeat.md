@@ -15,7 +15,7 @@ descriptionLong: |
 
     🗣 Upcoming Events,
 
-    🔺 MLOps Maturity Models
+    🔺 MLOps Maturity Models,
 
     💻 Online Course(s) updates,
 
@@ -46,7 +46,7 @@ worth it_ piece entitled
 In it he discusses the allure of seeking a machine learning career, only run
 smack into the giant wall of learning that encompasses the space, not the least
 of which is the multitude of tools to pick through once you get there. The state
-of machine learning is reviewed, some history of DevOps for perspective on MLOps
+of machine learning is reviewed and some history of DevOps for perspective on MLOps
 is added.  
 You will find advice for newcomers and some final, thorough, thoughts and
 predictions especially as they relate to “ML at a reasonable scale” companies.  
@@ -93,7 +93,7 @@ series on using DVC, CML and Rasa together.
 [In this second post](https://medium.com/mantisnlp/mlops-for-conversational-ai-with-rasa-dvc-and-cml-part-ii-3a70fe2f357d)
 he goes through some Rasa basics and gets the DVC pipeline setup, with its train
 and test stages, params, dependencies, outs and metrics. He also covers syncing
-with DVC, making changes, the `dvc repro` command, the ./dvc lock file, and
+with DVC, making changes, the `dvc repro` command, the `.dvc-lock` file, and
 pushing to remote storage. We're looking forward to the next installment when we
 will see how CML can be used to automatically train the model.
 
@@ -107,7 +107,7 @@ metrics diff in Rasa project
 the MLOps keyword in
 [his piece](https://dzone.com/articles/mlops-for-enterprise-ai) in
 [DZone.](https://dzone.com) Sibanjan gives an overview of MLOps and how it
-supports the AIML ecosystem to deliver return on investment for ML projects. He
+supports the AI/ML ecosystem to deliver return on investment for ML projects. He
 reviews the components of MLOps, including automated ML model building
 pipelines, model serving, model version control, model/data monitoring, and
 security and governance. He also discusses the MLOps maturity models of Google
@@ -138,7 +138,7 @@ resources from Xenonstack are provided for further review.
 ![Why MLOps Tools should be Open Source](/uploads/images/2022-03-16/yuqi-li.jpeg 'Why MLOps Tools should be Open Source :wrap-right ==300')
 [**Yuqi Li**](https://www.linkedin.com/in/yuqiliofficial/)
 [in this opinion piece,](https://towardsdatascience.com/why-mlops-tools-should-be-open-source-5ad696463f54)
-In [Towards Data Science.](https://towardsdatascience.com/) overviews the
+in [Towards Data Science.](https://towardsdatascience.com/) overviews the
 meaning and components of MLOps and identifies a number of good open-source
 tools in the space which of course includes DVC. He also outlines a number of
 reasons why MLOps should be open source. Among the reasons making the cut:
@@ -171,7 +171,7 @@ _Community Driven Learning
 
 # Company News
 
-https://giphy.com/clips/flying-jetpack-jet-pack-AFInqMxZCWfEiedpBs
+https://media.giphy.com/media/3ohuAxV0DfcLTxVh6w/giphy.gif
 
 ## Online Course(s) Updates
 
@@ -193,10 +193,10 @@ https://giphy.com/clips/flying-jetpack-jet-pack-AFInqMxZCWfEiedpBs
 
 ## New Hires
 
-https://giphy.com/clips/flying-jetpack-jet-pack-AFInqMxZCWfEiedpBs
+https://media.giphy.com/media/lQ0LC603dA96Gs2Hfx/giphy.gif
 
 [**Mike Moynihan**](https://www.linkedin.com/in/michael-moynihan/) joins us from
-Brookly, NY as an Account Executive. He previously worked at Code Climate as the
+Brooklyn, NY as an Account Executive. He previously worked at Code Climate as the
 Manager of Business Development and an Account Executive. Mike's really into
 biking and will be participating in the 5-Boro Bike Tour in NYC this year. He's
 also a baker and has been baking bread and other baked goods consistently for
@@ -221,7 +221,8 @@ Be sure to join us at the
 where [**Fabian Zills**,](https://github.com/PythonFZ/) PhD student at
 [University of Stuttgart,](https://www.uni-stuttgart.de/en/) will present his
 ZnTrack ("zinc track") project which creates, runs and benchmarks DVC pipelines
-in Python and Jupyter Notebooks.
+in Python and Jupyter Notebooks.  
+[Find the repo here!](https://github.com/zincware/ZnTrack)
 
 <external-link
 href="https://www.meetup.com/Machine-Learning-Engineer-Community-Virtual-Meetups/events/283998696/"
@@ -233,7 +234,7 @@ image="/uploads/images/2022-03-16/office-hours-meetup.png"/>
 ## Conferences/Hackathons
 
 - We will be sponsoring [ODSC East](https://odsc.com/boston/) and
-  [MLOPs World](https://mlopsworld.com/) this year, so if you are attending,
+  [MLOps World](https://mlopsworld.com/) this year, so if you are attending,
   we'd love to meet you IRL! Stop by our booth!
 - [**Milecia McGregor**](https://twitter.com/FlippedCoding) will be speaking at
   [PythonWeb Conference](https://2022.pythonwebconf.com/) March 22nd on "Using
@@ -247,7 +248,7 @@ image="/uploads/images/2022-03-16/office-hours-meetup.png"/>
   Project" at [Open Source Festival 2022](https://festival.oscafrica.org/) March
   24-26
 - [BatteryDev Hackathon](https://www.battery.dev/) will take place next week and
-  [**Milecia McGregor**](https://twitter.com/FlippedCoding)will hold an Office
+  [**Milecia McGregor**](https://twitter.com/FlippedCoding) will hold an Office
   Hours for those needing help with DVC on March 21st
 - [**Antoine Toubhans**](https://twitter.com/AntoineToubhans) will be presenting
   his DVC integration with Streamlit at [PyCon Berlin](https://2022.pycon.de/)
