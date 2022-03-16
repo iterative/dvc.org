@@ -1,7 +1,7 @@
 # Troubleshooting
 
 Here we provide help for some of the problems that you may encounter when using
-DVC Studio.
+Iterative Studio.
 
 - [Error: No data found to visualize](#error-no-data-found-to-visualize)
 - [Error: No DVC repo was found at the root](#error-no-dvc-repo-was-found-at-the-root)
@@ -28,7 +28,7 @@ Otherwise, you will get this message when you try to create a view:
 `We could not find data to visualize in this repo`.
 
 For more details, refer to the section on
-[how to prepare your Git repositories for use with DVC Studio](/doc/studio/user-guide/prepare-repositories).
+[how to prepare your Git repositories for use with Iterative Studio](/doc/studio/user-guide/prepare-repositories).
 Instructions on how to specify custom files can be found
 [here](/doc/studio/user-guide/views/view-settings#configuring-view-settings).
 
@@ -61,8 +61,8 @@ have selected the incorrect sub-directory.
 This could be a typical situation when your DVC repository is part of a
 [monorepo](https://en.wikipedia.org/wiki/Monorepo). Suppose your Git repository
 contains sub-directories A and B. If A contains the DVC repository which you
-want to connect from DVC Studio, but you specify B when creating the view, then
-you will get the above error.
+want to connect from Iterative Studio, but you specify B when creating the view,
+then you will get the above error.
 
 To solve this, you can either:
 
@@ -105,16 +105,16 @@ to a DVC repository. Instructions on how to specify custom files can be found
 
 There are two possible reasons for this:
 
-1. **The required columns were not imported:** DVC Studio will import up to 200
-   columns (metrics, hyperparameters and files) from your Git repository. If
-   your repository has more than 200 columns, you should
+1. **The required columns were not imported:** Iterative Studio will import up
+   to 200 columns (metrics, hyperparameters and files) from your Git repository.
+   If your repository has more than 200 columns, you should
    [select the columns that are mandatory to import](/doc/studio/user-guide/views/view-settings#mandatory-columns).
-   DVC Studio will also import the unselected columns, but only up to a maximum
-   of 200 columns.
+   Iterative Studio will also import the unselected columns, but only up to a
+   maximum of 200 columns.
 
-   **What if there are more than 200 mandatory columns?** Currently DVC Studio
-   cannot import over 200 columns. If you have a large repository (with more
-   than 200 mandatory columns), one solution is to split the
+   **What if there are more than 200 mandatory columns?** Currently Iterative
+   Studio cannot import over 200 columns. If you have a large repository (with
+   more than 200 mandatory columns), one solution is to split the
    metrics/<wbr>hyperparameters/<wbr>files that you want to display over
    multiple subdirectories in your git repository. For each subdirectory, you
    can create a new view that is limited to that subdirectory.
@@ -124,7 +124,7 @@ There are two possible reasons for this:
 
    If this solution does not work for your use case, please create a support
    ticket in the
-   [DVC Studio support GitHub repository](https://github.com/iterative/studio-support).
+   [Iterative Studio support GitHub repository](https://github.com/iterative/studio-support).
 
 2. **The required columns are hidden:** In the view, you can hide the columns
    that you do not want to display. If any column that you want is not visible,
@@ -140,8 +140,8 @@ There are two possible reasons for this:
 This is not an error. Columns that you select as mandatory in view settings are
 guaranteed to be imported. However, columns that are not selected can still be
 imported and included in the view - if you have selected less than 200 columns,
-DVC Studio will also import DVC Studio will also import some of the unselected
-columns, up to a total of 200 columns.
+Iterative Studio will also import some of the unselected columns, up to a total
+of 200 columns.
 
 If you would like to explicitly hide columns, you can simply hide them in the
 view. Once you show/hide columns, you can save the changes. Check out the
@@ -150,11 +150,11 @@ show/hide columns, remember to save the changes.
 
 ## View does not contain some of my commits or branches
 
-This is likely not an error. DVC Studio identifies commits that do not change
-metrics, files or hyperparameters and will auto-hide such commits. You can also
-manually hide commits and branches. So, it is possible that the commits or
-branches you do not see in your view were manually hidden by you or someone else
-in your team.
+This is likely not an error. Iterative Studio identifies commits that do not
+change metrics, files or hyperparameters and will auto-hide such commits. You
+can also manually hide commits and branches. So, it is possible that the commits
+or branches you do not see in your view were manually hidden by you or someone
+else in your team.
 
 You can unhide commits/branches to display them in your view. For details, refer
 to
