@@ -25,6 +25,11 @@ This is a really good question from @v2.03.99!
 When you use `dvc exp run`, DVC automatically tracks each experiment run. Using
 `dvc repro` leaves it to the user to track each experiment.
 
+You can learn how `dvc exp run` uses custom Git refs to track experiments in
+this [blog post](https://dvc.org/blog/experiment-refs) and you can see a quick
+technical overview in
+[the docs here](https://dvc.org/doc/user-guide/experiment-management/experiments-overview).
+
 ### [What is a good way to debug DVC stages in VSCode?](https://discord.com/channels/485586884165107732/485596304961962003/939269709780643861)
 
 A great question here from @quarkquark!
@@ -36,7 +41,9 @@ You can debug in VSCode by following the steps below:
 - In a terminal in VSCode,
   `python -m debugpy --listen someport --wait-for-client -m dvc mycommand`
 
-This should help you debug the stages in your pipeline in the IDE.
+This should help you debug the stages in your pipeline in the IDE and you can
+find
+[more details here](https://github.com/iterative/dvc/wiki/Debugging-DVC-interactively).
 
 ### [Is there a way to list what files (and ideally additional info like location, MD5, etc) are within a directory tracked by DVC?](https://discord.com/channels/485586884165107732/485596304961962003/940318136568258650)
 
