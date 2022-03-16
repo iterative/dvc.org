@@ -175,10 +175,10 @@ https://media.giphy.com/media/HV0tHmPREaD0sIixmg/giphy.gif
 
 ## Online Course(s) Updates
 
-- We now have over **250** students taking the course and 10 students that have
-  completed the course! 🎉 Thank you to all who have given us feedback. We are
-  actively working on making adjustments to the course and improving the next
-  one.
+- We now have over **250** students taking the course and **10** students that
+  have completed the course! 🎉 Thank you to all who have given us feedback. We
+  are actively working on making adjustments to the course and improving the
+  next one.
 
 - We have a new look! The website for our online course, Iterative Tools for
   Data Scientists and Analysts has been updated to be more streamlined to more
