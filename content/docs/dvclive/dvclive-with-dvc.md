@@ -124,7 +124,7 @@ When used alongside DVC, DVCLive can create _checkpoint_ signal files used by
 DVC <abbr>experiments<abbr>.
 
 This will save all the outputs (metrics, plots, models, etc.) associated to each
-[`step`](/doc/dvclive/api-reference/get_step).
+[`step`](/doc/dvclive/api-reference/live/get_step).
 
 You can learn more about how to use them in the
 [Checkpoints User Guide](/docs/user-guide/experiment-management/checkpoints).
