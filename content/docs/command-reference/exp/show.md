@@ -44,10 +44,9 @@ $ dvc exp show
  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 ```
 
-Your terminal will enter a
-[paginated screen](/doc/command-reference/dag#paginating-the-output) by default,
-which you can typically exit by typing `Q`. Use `--no-pager` to print the table
-to standard output.
+Your terminal will enter a [paginated screen](#paginating-the-output) by
+default, which you can typically exit by typing `q`. Use `--no-pager` to print
+the table to standard output.
 
 By default, the printed experiments table will include columns for all metrics,
 parameters and dependencies from the entire project. The `--only-changed`,
@@ -64,6 +63,33 @@ When the `--pcp` option is passed, an interactive
 will be generated using the same data from the table.
 
 ![](/img/pcp_interaction.gif) _Parallel Coordinates Plot_
+
+### Paginating the output
+
+This command's output is automatically piped to
+[less](<https://en.wikipedia.org/wiki/Less_(Unix)>) if available in the terminal
+(the exact command used is `less --chop-long-lines --clear-screen`). If `less`
+is not available (e.g. on Windows), the output is simply printed out.
+
+> It's also possible to
+> [enable `less` on Windows](/doc/user-guide/running-dvc-on-windows#enabling-paging-with-less).
+
+### Providing a custom pager
+
+It's possible to override the default pager via the `DVC_PAGER` environment
+variable. For example, the following command will replace the default pager with
+[`more`](<https://en.wikipedia.org/wiki/More_(command)>), for a single run:
+
+```dvc
+$ DVC_PAGER=more dvc exp show
+```
+
+For a persistent change, define `DVC_PAGER` in the shell configuration. For
+example in Bash, we could add the following line to `~/.bashrc`:
+
+```dvc
+$ export DVC_PAGER=more
+```
 
 ## Options
 
