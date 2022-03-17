@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import safeLocalStorage from './safeLocalStorage'
 
 const hideAllEmbedOverlays = (embeds: NodeListOf<Element>) => {
   embeds.forEach(embed => {
@@ -24,7 +25,7 @@ const setUpEmbedClickListeners = (embeds: NodeListOf<Element>) => {
         iframe.src = iframe?.src + `&autoplay=1`
       }
       hideAllEmbedOverlays(embeds)
-      localStorage.setItem('yt-embed-consent', 'true')
+      safeLocalStorage.setItem('yt-embed-consent', 'true')
     }
     const removeListener = () => {
       overlay?.removeEventListener('click', handleOverlayClick as EventListener)
@@ -41,7 +42,7 @@ const setUpEmbedClickListeners = (embeds: NodeListOf<Element>) => {
 const useCustomYtEmbeds = () => {
   useEffect(() => {
     const hasUserGivenConsent = Boolean(
-      localStorage.getItem('yt-embed-consent')
+      safeLocalStorage.getItem('yt-embed-consent')
     )
     const embeds = document.querySelectorAll('.yt-embed-wrapper')
 
