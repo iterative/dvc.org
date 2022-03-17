@@ -2,12 +2,15 @@
 title: March '22 Heartbeat
 date: 2022-03-17
 description: >
-  Monthly updates are here! You will find great tutorials and workflows from  
-  the Community, Online course updates, MLOps maturity models, new docs and
-  more! Happy Spring!
+  Monthly updates are here! You will find a special note in regards to the war
+  in Ukraine, the usual great tutorials and workflows from the
+  Community,  online course updates, MLOps maturity models, new docs and more!
+  Welcome to Spring!
 
 descriptionLong: |
   This month you will find:
+
+    🇺🇦 A special note on the war in Ukraine,
 
     🧘🏻‍♀️ MLOps is a mess, but that's ok,
     
@@ -34,9 +37,7 @@ tags:
   - Git
 ---
 
-<details>
-
-Dear Community,
+# On the war in Ukraine 🇺🇦
 
 While the war in Ukraine has impacted the world, it has also greatly impacted
 our company as we have team members living in Ukraine and Russia, and many with
@@ -44,9 +45,10 @@ family ties to both. Our hearts are with our Iterative family in Ukraine and we
 are committed to doing everything we can to support the safety of our Ukrainian,
 as well as the transition of our Russian colleagues during this crisis.
 
-We as a company have donated to the humanitarian efforts to help the people of
-Ukraine and are matching our team members' donations as well. We are proud of
-the perseverance, care, and support coming from our team at this time.
+We as a company are against this war. We have donated to the humanitarian
+efforts to help the people of Ukraine and are matching our team members'
+donations as well. We are proud of the perseverance, care, and support coming
+from our team at this time.
 
 If you are able, we ask that you consider these resources as ways to help. Our
 hope is that the world will find a quick and peaceful end to this war and
@@ -85,8 +87,7 @@ Ukraine will be restored, even stronger than before. 🇺🇦
 - [I Can Help (hosting)](https://icanhelp.host/)
 - [Airbnb - host a refugee](https://www.airbnb.org/help-ukraine)
 
-<summary>🇺🇦 A word on the war in Ukraine </summary>
-</details>
+---
 
 # AI/ML News
 
