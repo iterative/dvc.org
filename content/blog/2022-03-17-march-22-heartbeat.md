@@ -39,15 +39,16 @@ tags:
 Dear Community,
 
 While the war in Ukraine has impacted the world, it has also greatly impacted
-our company as we have team members living in Ukraine and Russia and many with
+our company as we have team members living in Ukraine and Russia, and many with
 family ties to both. Our hearts are with our Iterative family in Ukraine and we
 are committed to doing everything we can to support the safety of our Ukrainian,
-and transition of our Russian colleagues during this crisis. We as a company
-have donated to the humanitarian efforts to help the people of Ukraine and are
-matching our team members donations as well. We are proud of the perseverance,
-care, and support coming from our team at this time.
+as well as the transition of our Russian colleagues during this crisis.
 
-If you are able, we ask that you consider these ressources as ways to help. Our
+We as a company have donated to the humanitarian efforts to help the people of
+Ukraine and are matching our team members' donations as well. We are proud of
+the perseverance, care, and support coming from our team at this time.
+
+If you are able, we ask that you consider these resources as ways to help. Our
 hope is that the world will find a quick and peaceful end to this war and
 Ukraine will be restored, even stronger than before. 🇺🇦
 
