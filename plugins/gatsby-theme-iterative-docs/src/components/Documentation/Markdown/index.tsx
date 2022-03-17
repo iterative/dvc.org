@@ -49,7 +49,7 @@ const Details: React.FC<{ slugger: GithubSlugger }> = ({
     firstChild.props.children.length - 1
   ) as ReactNode[]
 
-  let slug = slugger.slug(triggerChildren.toString(), true)
+  let slug = slugger.slug(triggerChildren.toString())
   if (slug[0] === '️') {
     slug = slug.slice(1)
   }
