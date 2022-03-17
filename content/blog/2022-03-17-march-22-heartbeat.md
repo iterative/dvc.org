@@ -1,6 +1,6 @@
 ---
 title: March '22 Heartbeat
-date: 2022-03-16
+date: 2022-03-17
 description: >
   Monthly updates are here! You will find great tutorials and workflows from  
   the Community, Online course updates, MLOps maturity models, new docs and
@@ -22,7 +22,7 @@ descriptionLong: |
     📖 New doc,
 
     🚀 Info on our growing team, and more!
-picture: 2022-03-16/heartbeat-march.png
+picture: 2022-03-17/heartbeat-march.png
 author: jeny_defigueiredo
 commentsUrl: https://discuss.dvc.org/t/march-22-heartbeat/1117
 tags:
@@ -33,6 +33,59 @@ tags:
   - Twine.net
   - Git
 ---
+
+<details>
+
+Dear Community,
+
+While the war in Ukraine has impacted the world, it has also greatly impacted
+our company as we have team members living in Ukraine and Russia and many with
+family ties to both. Our hearts are with our Iterative family in Ukraine and we
+are committed to doing everything we can to support the safety of our Ukrainian,
+and transition of our Russian colleagues during this crisis. We as a company
+have donated to the humanitarian efforts to help the people of Ukraine and are
+matching our team members donations as well. We are proud of the perseverance,
+care, and support coming from our team at this time.
+
+If you are able, we ask that you consider these ressources as ways to help. Our
+hope is that the world will find a quick and peaceful end to this war and
+Ukraine will be restored, even stronger than before. 🇺🇦
+
+## 🪙 Donations
+
+- [A list of charities with direct connections to Ukrainian people endorsed](https://www.reddit.com/r/ukraine/comments/s6g5un/want_to_support_ukraine_heres_a_list_of_charities/)
+  by the [Kyiv Independent](https://kyivindependent.com/). Everything on this
+  list except for the "Charities that help the war effort” section is for
+  humanitarian efforts only.
+- [Humanitarian Assistance to Ukrainians by National Bank of Ukraine](https://bank.gov.ua/en/news/all/natsionalniy-bank-vidkriv-rahunok-dlya-gumanitarnoyi-dopomogi-ukrayintsyam-postrajdalim-vid-rosiyskoyi-agresiyi)
+- [UNICEF USA](https://www.unicefusa.org/?form=ukraine-emergency-match) (2x
+  additional match)
+- [UNICEF](https://www.unicef.org.uk/donate/donate-now-to-protect-children-in-ukraine/)
+  UK
+- [UNHCR](https://donate.unrefugees.org.uk/general/~my-donation?_cv=1)
+- [RedCross Ukraine](https://donate.redcrossredcrescent.org/ua/donate/~my-donation?_cv=1)
+  (there are some concerns about this org - see
+  [one](https://twitter.com/ptico/status/1502192685364531204),
+  [two](https://twitter.com/KyivIndependent/status/1501136976447168512))
+- [RedCross UK](https://donate.redcross.org.uk/appeal/ukraine-crisis-appeal)
+- [International Medical Corps](https://give.internationalmedicalcorps.org/page/99837/donate/1)
+- [WFP](https://www.wfp.org/support-us/stories/ukraine-appeal)
+- [UKRAINECHARITY](https://www.ukrainecharity.org/war-crisis-692518.html)
+- [NOVA UKRAINE](https://novaukraine.org/)
+- [GOFUNDME / Support Ukrainian Refugees Arriving In Poland](https://www.gofundme.com/f/support-ukrainian-refugees-arriving-in-poland)
+- [Doctors Without Borders](https://www.doctorswithoutborders.org/what-we-do/countries/ukraine)
+- [Save the Children](https://support.savethechildren.org/site/Donation2?df_id=5751&mfc_pref=T&5751.donation=form1)
+- [ICRC](https://www.icrc.org/en/donate/ukraine)
+- [Project Hope](https://secure.projecthope.org/site/SPageNavigator/2022_02_Ukraine_Response_Web_UNR.html&s_subsrc=oth)
+- [Flexport](https://www.flexport.org/donate-now)
+
+## ❤️‍🩹 Other ways to help
+
+- [I Can Help (hosting)](https://icanhelp.host/)
+- [Airbnb - host a refugee](https://www.airbnb.org/help-ukraine)
+
+<summary>🇺🇦 A word on the war in Ukraine </summary>
+</details>
 
 # AI/ML News
 
@@ -52,7 +105,7 @@ You will find advice for newcomers and some final, thorough, thoughts and
 predictions especially as they relate to “ML at a reasonable scale” companies.  
 Definitely worth your review!
 
-![Gartner Hype cycle for MLOps](/uploads/images/2022-03-16/hype-cycle-mihail-eric.png '=800')
+![Gartner Hype cycle for MLOps](/uploads/images/2022-03-17/hype-cycle-mihail-eric.png '=800')
 _Gartner Hype cycle for MLOps
 ([Source link](https://www.mihaileric.com/posts/mlops-is-a-mess/))_
 
@@ -60,7 +113,7 @@ _Gartner Hype cycle for MLOps
 
 ## Kevin Lu: Learn how to use Data Version Control to remove the third wheel from your relationship
 
-![Learn how to use Data Version Control to remove the third wheel from your relationship](/uploads/images/2022-03-16/kevin.png 'Learn how to use Data Version Control to remove the third wheel from your relationships :wrap-right ==300')
+![Learn how to use Data Version Control to remove the third wheel from your relationship](/uploads/images/2022-03-17/kevin.png 'Learn how to use Data Version Control to remove the third wheel from your relationships :wrap-right ==300')
 In
 [this hilarious post,](https://medium.com/@kevinylu/learn-how-to-use-data-version-control-to-remove-the-third-wheel-from-your-relationship-ce4c2afa649c)
 [**Kevin Lu**](https://medium.com/@kevinylu) teaches us how to use DVC to enable
@@ -81,7 +134,7 @@ He uses DVC as a model registry with Google Cloud storage and GitHub actions to
 automate the Cloud Functions deployment. See all the steps he outlines in his
 piece to get real value out of your machine learning projects.
 
-![Data Pipeline](/uploads/images/2022-03-16/panyapiang.jpeg '=800') _Data
+![Data Pipeline](/uploads/images/2022-03-17/panyapiang.jpeg '=800') _Data
 Pipeline
 ([Source link: Author](https://towardsdatascience.com/putting-machine-learning-model-into-production-with-google-cloud-platform-and-dvc-f6a22cdcf4a5))_
 
@@ -97,7 +150,7 @@ with DVC, making changes, the `dvc repro` command, the `.dvc-lock` file, and
 pushing to remote storage. We're looking forward to the next installment when we
 will see how CML can be used to automatically train the model.
 
-![Rasa DVC metrics diff](/uploads/images/2022-03-16/upson.png '=800') _DVC
+![Rasa DVC metrics diff](/uploads/images/2022-03-17/upson.png '=800') _DVC
 metrics diff in Rasa project
 ([Source link](https://medium.com/mantisnlp/mlops-for-conversational-ai-with-rasa-dvc-and-cml-part-ii-3a70fe2f357d))_
 
@@ -115,13 +168,13 @@ and Microsoft (see below). I found this part especially interesting as it
 mirrors what we see in our Community and how they develop using our tools as
 well. Finally, he outlines some tools that help in the process, including DVC.
 
-![Comparing Google's and Microsoft's maturity models](/uploads/images/2022-03-16/das.jpeg '=800')
+![Comparing Google's and Microsoft's maturity models](/uploads/images/2022-03-17/das.jpeg '=800')
 _Comparing Google's and Microsoft's maturity models
 ([Source link](https://dzone.com/articles/mlops-for-enterprise-ai))_
 
 ## Jagreet Kaur: Implementing DevOps for Machine Learning - A Quick Guide
 
-![Tensorflow, PyTorch, DVC, Docker, CI/CD](/uploads/images/2022-03-16/jagreet-kaur.png 'Continuous Development Life Cycle Guide from Xenostack :wrap-left ==300')
+![Tensorflow, PyTorch, DVC, Docker, CI/CD](/uploads/images/2022-03-17/jagreet-kaur.png 'Continuous Development Life Cycle Guide from Xenostack :wrap-left ==300')
 [**Jagreet Kaur**](https://www.linkedin.com/in/jagreetkaur/) of
 [Xenonstack](https://www.xenonstack.com/) authors
 [a guide](https://www.xenonstack.com/blog/devops-for-machine-learning) on
@@ -135,7 +188,7 @@ resources from Xenonstack are provided for further review.
 
 ### Yuqi Li: Why MLOps should be Open Source
 
-![Why MLOps Tools should be Open Source](/uploads/images/2022-03-16/yuqi-li.jpeg 'Why MLOps Tools should be Open Source :wrap-right ==300')
+![Why MLOps Tools should be Open Source](/uploads/images/2022-03-17/yuqi-li.jpeg 'Why MLOps Tools should be Open Source :wrap-right ==300')
 [**Yuqi Li**](https://www.linkedin.com/in/yuqiliofficial/)
 [in this opinion piece,](https://towardsdatascience.com/why-mlops-tools-should-be-open-source-5ad696463f54)
 in [Towards Data Science.](https://towardsdatascience.com/) overviews the
@@ -163,7 +216,7 @@ and motivation you can get from the Community to be persistent in your learning
 efforts. He also includes eight communities that are great for learning, with
 invites included. Be sure to check it out!
 
-![Community Driven Learning](/uploads/images/2022-03-16/community.jpeg '=800')
+![Community Driven Learning](/uploads/images/2022-03-17/community.jpeg '=800')
 _Community Driven Learning
 ([Source link: Unsplash by john_cameron](https://unsplash.com/@john_cameron))_
 
@@ -229,7 +282,7 @@ href="https://www.meetup.com/Machine-Learning-Engineer-Community-Virtual-Meetups
 title="March Office Hours - ZnTrack"
 description="RSVP for DVC Office Hours - ZnTrack - Create, Visualize, Run and Benchmark DVC Pipelines in Python & Jupyter Notebooks "
 link="https://meetup.com"
-image="/uploads/images/2022-03-16/office-hours-meetup.png"/>
+image="/uploads/images/2022-03-17/office-hours-meetup.png"/>
 
 ## Conferences/Hackathons
 
