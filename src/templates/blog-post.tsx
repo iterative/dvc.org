@@ -15,7 +15,6 @@ export interface IBlogPostHeroPic {
 
 export interface IBlogPostData {
   id: string
-  html: string
   htmlAst: Node
   timeToRead: string
   slug: string
@@ -98,7 +97,6 @@ export const pageQuery = graphql`
     blogPost(id: { eq: $id }) {
       id
       slug
-      html
       htmlAst
       timeToRead
       title
