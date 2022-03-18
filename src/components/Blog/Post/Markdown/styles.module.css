@@ -631,3 +631,50 @@
     }
   }
 }
+
+.admonition {
+  padding: 10px;
+  border-left-width: 3px;
+  border-left-style: solid;
+  margin-bottom: 10px;
+
+  &.warn {
+    border-color: var(--color-orange);
+    background-color: rgb(227 112 70 / 20%);
+
+    .title::before {
+      content: "⚠️";
+    }
+  }
+
+  &.tip {
+    border-color: var(--color-azure);
+    background-color: rgb(19 173 199 / 20%);
+
+    .title::before {
+      content: "💡";
+    }
+  }
+
+  &.info {
+    border-color: var(--color-purple);
+    background-color: rgb(148 93 214 / 20%);
+
+    .title::before {
+      content: "ℹ️";
+    }
+  }
+
+  .title {
+    font-weight: 500;
+    margin: 0;
+  }
+
+  .title::before {
+    margin-right: 5px;
+  }
+
+  .content {
+    padding: 10px 0 0;
+  }
+}
