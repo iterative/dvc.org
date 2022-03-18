@@ -54,7 +54,7 @@ An _import `.dvc` file_ is created in the same location e.g. `data.txt.dvc` –
 similar to using `dvc add` after downloading the data. This makes it possible to
 update the import later, if the data source has changed (see `dvc update`).
 
-> Note that data imported from external locaitons can be
+> Note that data imported from external locations can be
 > [pushed](/doc/command-reference/push) and
 > [pulled](/doc/command-reference/pull) to/from
 > [remote storage](/doc/command-reference/remote) normally (unlike for
