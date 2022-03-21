@@ -16,3 +16,6 @@ jobs:
         uses: lycheeverse/lychee-action@v1.3.2
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          with:
+          args: --verbose --no-progress './**/*.md' './**/*.html'
+          format: json
