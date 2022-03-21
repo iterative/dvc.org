@@ -16,5 +16,5 @@ jobs:
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
           with:
-          args: --verbose --no-progress './**/*.md' './**/*.html' --format json
-          format: detailed
+          args: --verbose --no-progress --format json './**/*.md' './**/*.html'
+          format: json
