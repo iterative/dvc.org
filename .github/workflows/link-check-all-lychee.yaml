@@ -3,7 +3,6 @@ name: Check all Links with Lychee
 on:
   workflow_dispatch:
   push:
-  pull_request:
 
 jobs:
   linkChecker:
@@ -18,4 +17,4 @@ jobs:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
           with:
           args: --verbose --no-progress './**/*.md' './**/*.html'
-          format: json
+          format: detailed
