@@ -37,11 +37,11 @@ tags:
   - Git
 ---
 
-<admon title="Unique Warning Title" type="warn">
+<admonition title="Unique Warning Title" type="warn">
 
 text text text text text
 
-</admon>
+</admonition>
 
 <admon type="tip">
 

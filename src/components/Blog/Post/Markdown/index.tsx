@@ -32,7 +32,8 @@ const renderAst = new (rehypeReact as any)({
   createElement: React.createElement,
   Fragment: React.Fragment,
   components: {
-    admon: Admonition
+    admon: Admonition,
+    admonition: Admonition
   }
 }).Compiler
 
