@@ -37,11 +37,14 @@ file:///Users/.../example-dvc-experiments/plots/confusion.json.html
 ![confusion matrix](/img/start_visualization_confusion1.png)
 
 Let's produce another plot to see misclassified examples from each class. This
-procedure is a bit more complex than creating a CSV file but you can see the
-code in [Github][misclassified-example-code]
+procedure generates the misclassification examples from the validation data and
+arranges them into a _confusion table_ that shows the correct label, and
+misclassification sample. The code to generate an image from a set of training
+images is omitted here but you can find the code in
+[Github][misclassified-example-code]
 
 [misclassified-example-code]:
-  https://github.com/iterative/example-dvc-experiments/blob/main/src/train.py#L58
+  https://github.com/iterative/example-dvc-experiments/blob/48b1e5078c957f71674c00f416290eaa3b20b559/src/util.py#L49
 
 We can see the misclassification examples in the browser:
 
