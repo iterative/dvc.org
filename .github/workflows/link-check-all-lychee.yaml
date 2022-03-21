@@ -2,8 +2,8 @@ name: Check all Links with Lychee
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '0 20 * * *'
+  push:
+  pull_request:
 
 jobs:
   linkChecker:
