@@ -634,9 +634,9 @@
 
 .admonition {
   padding: 10px;
-  border-left-width: 3px;
   border-left-style: solid;
   margin-bottom: 10px;
+  border-radius: 15px;
 
   &.warn {
     border-color: var(--color-orange);
