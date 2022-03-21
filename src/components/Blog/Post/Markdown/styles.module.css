@@ -636,7 +636,8 @@
   padding: 10px;
   border-left-style: solid;
   margin-bottom: 10px;
-  border-radius: 15px;
+  border-radius: 10px;
+  border-left-width: 10px;
 
   &.warn {
     border-color: var(--color-orange);
