@@ -9,11 +9,6 @@ advantage of the existing engineering toolset that you're already familiar with
 
 more text more text more text
 
-```
-code block
-
-```
-
 </admon>
 
 <cards>
