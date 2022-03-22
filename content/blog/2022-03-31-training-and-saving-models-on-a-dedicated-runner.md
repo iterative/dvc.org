@@ -29,11 +29,11 @@ an open-source library for implementing continuous integration and delivery
 (CI/CD) in machine learning projects. This way we can define a pipeline to train
 a model and keep track of various versions.
 
-> Imagine we work for the fraud detection team of a webshop and we want to build
+> Imagine we work for the fraud detection team of a web shop and we want to build
 > a model to detect fraudulent orders. One week fraudsters might be trying to
 > order gaming consoles, while the next they might go all-in on diapers. In that
 > case, we would probably want to retrain our model regularly to catch this
-> [drift](https://en.wikipedia.org/wiki/Concept_drift). And we would also want
+> [drift](https://en.wikipedia.org/wiki/Concept_drift) and we would also want
 > to use the most up-to-date version of our model in production.
 
 In this guide, we will show how you can use CML to (re)train your model daily
@@ -44,11 +44,11 @@ tailored to our computing needs.
 
 At the end of this guide we will have set up the following:
 
-- A workflow on Github actions to train a model every time we change data, model
+- A workflow on GitHub actions to train a model every time we change data, model
   code, or parameters;
 - Model training on an Amazon Web Services (AWS) instance that has been
   provisioned specifically for the training job;
-- Automatic saving of trained models in your Github repository and/or a DVC
+- Automatic saving of trained models in your GitHub repository and/or a DVC
   remote, along with a report of their performance.
 
 All files needed for this guide can be found in
@@ -58,10 +58,10 @@ All files needed for this guide can be found in
 > earlier guide:
 > [https://cml.dev/doc/self-hosted-runners](https://cml.dev/doc/self-hosted-runners)
 
-> 💡 We will be using [Github](https://github.com/) for our CI/CD and
+> 💡 We will be using [GitHub](https://github.com/) for our CI/CD and
 > [AWS](https://github.com/) for our computing resources. With slight
 > modifications, you should also be able to use
-> [Gitlab](https://about.gitlab.com/) and
+> [GitLab](https://about.gitlab.com/) and
 > [Google Cloud](https://cloud.google.com/) or
 > [Microsoft Azure](https://azure.microsoft.com/en-us/).
 
