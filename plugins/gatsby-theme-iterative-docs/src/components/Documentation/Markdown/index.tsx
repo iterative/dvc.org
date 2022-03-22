@@ -19,8 +19,18 @@ import Admonition from './Admonition'
 
 import * as styles from './styles.module.css'
 import { TogglesContext, TogglesProvider } from './ToggleProvider'
+import { linkIcon } from '../../../../../../static/icons'
+import { useLocation } from '@reach/router'
 
-const Details: React.FC<Record<string, never>> = ({ children }) => {
+import GithubSlugger from 'github-slugger'
+
+const Details: React.FC<{ slugger: GithubSlugger }> = ({
+  slugger,
+  children
+}) => {
+  const [isOpen, setIsOpen] = useState(false)
+  const location = useLocation()
+
   const filteredChildren: ReactNode[] = (
     children as Array<{ props: { children: ReactNode } } | string>
   ).filter(child => child !== '\n')
@@ -40,17 +50,43 @@ const Details: React.FC<Record<string, never>> = ({ children }) => {
     firstChild.props.children.length - 1
   ) as ReactNode[]
 
+  let slug = slugger.slug(triggerChildren.toString())
+  if (slug[0] === '️') {
+    slug = slug.slice(1)
+  }
+  const id = slug.startsWith('-') ? slug.slice(1) : slug
+
+  useEffect(() => {
+    if (location.hash === `#${id}`) {
+      setIsOpen(true)
+    }
+
+    return () => {
+      setIsOpen(false)
+    }
+  }, [location.hash])
+
   /*
      Collapsible's trigger type wants ReactElement, so we force a TS cast from
      ReactNode here.
    */
   return (
-    <Collapsible
-      trigger={triggerChildren as unknown as ReactElement}
-      transitionTime={200}
-    >
-      {filteredChildren.slice(1)}
-    </Collapsible>
+    <div id={id} className="collapsableDiv">
+      <Link
+        href={`#${id}`}
+        aria-label={triggerChildren.toString()}
+        className="anchor after"
+      >
+        <span dangerouslySetInnerHTML={{ __html: linkIcon }}></span>
+      </Link>
+      <Collapsible
+        open={isOpen}
+        trigger={triggerChildren as unknown as ReactElement}
+        transitionTime={200}
+      >
+        {filteredChildren.slice(1)}
+      </Collapsible>
+    </div>
   )
 }
 
@@ -196,25 +232,29 @@ const Toggle: React.FC<{
     </div>
   )
 }
+const Tab: React.FC = ({ children }) => {
+  return <React.Fragment>{children}</React.Fragment>
+}
 
 // Rehype's typedefs don't allow for custom components, even though they work
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const renderAst = new (rehypeReact as any)({
-  createElement: React.createElement,
-  Fragment: React.Fragment,
-  components: {
-    a: Link,
-    abbr: Abbr,
-    card: Card,
-    cards: Cards,
-    details: Details,
-    toggle: Toggle,
-    tab: React.Fragment,
-    admon: Admonition,
-    admonition: Admonition
-  }
-}).Compiler
-
+const renderAst = (slugger: GithubSlugger) => {
+  return new (rehypeReact as any)({
+    createElement: React.createElement,
+    Fragment: React.Fragment,
+    components: {
+      a: Link,
+      abbr: Abbr,
+      card: Card,
+      cards: Cards,
+      details: (props: any) => <Details slugger={slugger} {...props} />,
+      toggle: Toggle,
+      tab: Tab,
+      admon: Admonition,
+      admonition: Admonition
+    }
+  }).Compiler
+}
 interface IMarkdownProps {
   htmlAst: Node
   githubLink: string
@@ -230,9 +270,10 @@ const Markdown: React.FC<IMarkdownProps> = ({
   tutorials,
   githubLink
 }) => {
+  const slugger = new GithubSlugger()
   return (
     <Main prev={prev} next={next} tutorials={tutorials} githubLink={githubLink}>
-      <TogglesProvider>{renderAst(htmlAst)}</TogglesProvider>
+      <TogglesProvider>{renderAst(slugger)(htmlAst)}</TogglesProvider>
     </Main>
   )
 }
