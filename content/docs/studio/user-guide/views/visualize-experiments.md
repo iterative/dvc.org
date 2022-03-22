@@ -15,12 +15,12 @@ add plots to your repositories.
 
 ### Types of plots
 
-DVC Studio can work with two types of plots files in your repository:
+Iterative Studio can work with two types of plots files in your repository:
 
 1. Data series files, which can be JSON, YAML, CSV or TSV. Data from these files
    will populate your AUC curves, loss functions and other metric plots.
 2. Image files in JPEG, GIF, or PNG format. These images will be displayed
-   directly in DVC Studio.
+   directly in Iterative Studio.
 
 You can define multiple plots in a single repository. Below is an example
 snippet from a `dvc.yaml` file showing the `evaluate` stage of the DVC pipeline.

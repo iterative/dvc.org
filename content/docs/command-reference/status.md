@@ -22,9 +22,9 @@ positional arguments:
 Searches for changes in the existing tracked data and pipelines. In local mode,
 it shows which files or directories have changed in the <abbr>workspace</abbr>
 (thus could be [added](/doc/command-reference/add) or
-[reproduced](/doc/command-reference/reproduce) again). In remote mode, it
-reports the differences between <abbr>cache</abbr> vs. [remote storage]
-(`dvc push` or `dvc pull` could be used to synchronize these).
+[reproduced](/doc/command-reference/repro) again). In remote mode, it reports
+the differences between <abbr>cache</abbr> vs. [remote storage] (`dvc push` or
+`dvc pull` could be used to synchronize these).
 
 | Mode   | Option            | Description                                                                                                                 |
 | ------ | ----------------- | --------------------------------------------------------------------------------------------------------------------------- |
