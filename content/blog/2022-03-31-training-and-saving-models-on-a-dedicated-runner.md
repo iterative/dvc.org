@@ -48,7 +48,7 @@ At the end of this guide we will have set up the following:
   code, or parameters;
 - Model training on an Amazon Web Services (AWS) instance that has been
   provisioned specifically for the training job;
-- Automatic saving of trained models in your Github repository and/or a DVC
+- Automatic saving of trained models in your GitHub repository and/or a DVC
   remote, along with a report of their performance.
 
 All files needed for this guide can be found in
