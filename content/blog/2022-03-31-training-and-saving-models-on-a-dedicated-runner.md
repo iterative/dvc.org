@@ -61,7 +61,7 @@ All files needed for this guide can be found in
 > 💡 We will be using [GitHub](https://github.com/) for our CI/CD and
 > [AWS](https://github.com/) for our computing resources. With slight
 > modifications, you should also be able to use
-> [Gitlab](https://about.gitlab.com/) and
+> [GitLab](https://about.gitlab.com/) and
 > [Google Cloud](https://cloud.google.com/) or
 > [Microsoft Azure](https://azure.microsoft.com/en-us/).
 
