@@ -44,7 +44,7 @@ tailored to our computing needs.
 
 At the end of this guide we will have set up the following:
 
-- A workflow on Github actions to train a model every time we change data, model
+- A workflow on GitHub actions to train a model every time we change data, model
   code, or parameters;
 - Model training on an Amazon Web Services (AWS) instance that has been
   provisioned specifically for the training job;
