@@ -20,27 +20,19 @@ tags:
 
 When you first develop a machine learning model, you will probably do so on your
 local machine. You can easily change algorithms, parameters, and input data
-right in your text editor, notebook, or terminal. But what happens when you
-already have a model deployed and want to run multiple experiments? Or if you
-want to deploy a new version daily?
+right in your text editor, notebook, or terminal. Imagine you have a
+long-running model for which you want to detect possible
+[drift](https://en.wikipedia.org/wiki/Concept_drift), however. In that case it
+would be beneficial to automatically retrain your model on a regular basis.
 
-[CML (Continuous Machine Learning)](https://cml.dev/) helps you with this. It is
-an open-source library for implementing continuous integration and delivery
-(CI/CD) in machine learning projects. This way we can define a pipeline to train
-a model and keep track of various versions.
-
-> Imagine we work for the fraud detection team of a web shop and we want to build
-> a model to detect fraudulent orders. One week fraudsters might be trying to
-> order gaming consoles, while the next they might go all-in on diapers. In that
-> case, we would probably want to retrain our model regularly to catch this
-> [drift](https://en.wikipedia.org/wiki/Concept_drift) and we would also want
-> to use the most up-to-date version of our model in production.
-
-In this guide, we will show how you can use CML to (re)train your model daily
-and save its results. Although we could train the model directly in our CI/CD
-pipeline, the runners used for this generally don’t have a lot of processing
-power. Therefore it makes more sense to provision a dedicated runner that is
-tailored to our computing needs.
+In this guide, we will show how you can use
+[CML (Continuous Machine Learning)](https://cml.dev/) to do just that. CML is an
+open-source library for implementing continuous integration and delivery (CI/CD)
+in machine learning projects. This way we can define a pipeline to train a model
+and keep track of various versions. Although we could do so directly in our
+CI/CD pipeline, the runners used for this generally don’t have a lot of
+processing power. Therefore it makes more sense to provision a dedicated runner
+that is tailored to our computing needs.
 
 At the end of this guide we will have set up the following:
 
@@ -52,7 +44,7 @@ At the end of this guide we will have set up the following:
   remote, along with a report of their performance.
 
 All files needed for this guide can be found in
-[this repository](https://github.com/RCdeWit/CML_train_and_export).
+[this repository](https://github.com/iterative/example_model_export_cml).
 
 > 💡 This guide can be followed on its own, but also as an extension to this
 > earlier guide:
@@ -72,19 +64,19 @@ Before we begin, make sure you have the following things set up:
 1. You have
    [created an AWS account](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account/)
    (free tier suffices);
-2. You have created a `PERSONAL_ACCESS_TOKEN` on Github
+2. You have created a `PERSONAL_ACCESS_TOKEN` on GitHub
    ([guide](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token));
 3. You have created an `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` on AWS
    ([guide](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html));
 4. You have added the `PERSONAL_ACCES_TOKEN`, `AWS_ACCESS_KEY_ID`, and
-   `AWS_SECRET_ACCESS_KEY` as Github secrets
+   `AWS_SECRET_ACCESS_KEY` as GitHub secrets
    ([guide](https://docs.github.com/en/actions/security-guides/encrypted-secrets)).
 
 It also helps to clone the following repository:
 https://github.com/RCdeWit/CML_train_and_export
 
 <!-- <aside>
-⚠️ Make sure to use Github secrets rather than copy paste these variables directly in your source. If you don’t, others can act on your behalf on AWS. Github will simply block your access token.
+⚠️ Make sure to use GitHub secrets rather than copy paste these variables directly in your source. If you don’t, others can act on your behalf on AWS. GitHub will simply block your access token.
 
 Guess how I managed to figure that last one out... 😅
 
@@ -156,7 +148,7 @@ joblib.dump(clf, "model/random_forest.joblib")
 
 Now that we have a script to train our model and save it as a file, let’s set up
 our CI/CD to provision a runner and run the script. We define our workflow in
-`cml.yaml` and save it in the `.github/workflows` directory. This way Github
+`cml.yaml` and save it in the `.github/workflows` directory. This way GitHub
 will automatically go through the workflow whenever it is triggered. In this
 case the triggers are on push and on a daily schedule.
 
@@ -183,7 +175,7 @@ branch and a merge request is automatically created.
 ## 1. Push the model directly to a git repository
 
 If the model is small we might want to commit it to our repository
-automatically. The following Github workflow deploys a runner on AWS, generates
+automatically. The following GitHub workflow deploys a runner on AWS, generates
 some data, trains and saves a model (see `train.py`), pushes the results to a
 new experiment branch, and creates a merge request for those results.
 
@@ -248,7 +240,7 @@ contained in a large file, we would prefer to save that file elsewhere. This is
 where [DVC](https://dvc.org/) comes in.
 
 Using DVC we can store the model on an external server (a _remote_) and only put
-a reference to that file in Github. This way we can keep the contents of our git
+a reference to that file in GitHub. This way we can keep the contents of our git
 repository light-weight, while still applying proper versioning to our larger
 files (e.g. model and datasets).
 
@@ -277,14 +269,14 @@ and to
 [use a service account](https://dvc.org/doc/user-guide/setup-google-drive-remote#using-service-accounts).
 
 Once you have set up the storage remote and added the `GDRIVE_CREDENTIALS_DATA`
-as a Github secret, you can use the workflow below. In this scenario, we train
+as a GitHub secret, you can use the workflow below. In this scenario, we train
 the model in the same way as above, but we push it to the DVC remote. A
-reference to the location of this file is added to the Github repository
+reference to the location of this file is added to the GitHub repository
 (`model/random_forest.joblib.dvc`). The model itself is added to `.gitignore`
 and not pushed to the repository.
 
 The other files created in `train.py` are still pushed to an experiment branch
-in Github. Afterwards a merge request is created.
+in GitHub. Afterwards a merge request is created.
 
 ```yaml
 name: CML-with-DVC
@@ -363,7 +355,7 @@ versioning for you and makes sure you can track your models over time.
 
 In this guide, we explored how to set up CML with a dedicated runner on AWS. We
 exported the model from the runner in two ways: by pushing it directly to a
-Github repository and by pushing it to a DVC remote.
+GitHub repository and by pushing it to a DVC remote.
 
 From here on out we could extend our CI/CD with a `deploy` step to bring the
 latest version of our model into production. This step might be conditional on
