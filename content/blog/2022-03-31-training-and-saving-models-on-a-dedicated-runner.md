@@ -29,7 +29,7 @@ an open-source library for implementing continuous integration and delivery
 (CI/CD) in machine learning projects. This way we can define a pipeline to train
 a model and keep track of various versions.
 
-> Imagine we work for the fraud detection team of a webshop and we want to build
+> Imagine we work for the fraud detection team of a web shop and we want to build
 > a model to detect fraudulent orders. One week fraudsters might be trying to
 > order gaming consoles, while the next they might go all-in on diapers. In that
 > case, we would probably want to retrain our model regularly to catch this
