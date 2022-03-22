@@ -11,7 +11,16 @@ interface IMarkdownProps {
 const Admonition: React.FC<{
   title?: string
   type?: 'info' | 'tip' | 'warn'
-}> = ({ title, type = 'info', children }) => {
+  icon?: 'tip' | 'info' | 'warn' | 'fire' | 'exclamation' | 'beetle'
+}> = ({ title, type = 'info', children, icon = type }) => {
+  const icons = {
+    tip: '💡',
+    info: 'ℹ️',
+    warn: '⚠️',
+    fire: '🔥',
+    exclamation: '❗',
+    beetle: '🐞'
+  }
   const genericTitles = {
     info: 'Info',
     tip: 'Tip',
@@ -19,7 +28,10 @@ const Admonition: React.FC<{
   }
 
   return (
-    <div className={cn(styles.admonition, styles[type])}>
+    <div
+      className={cn(styles.admonition, styles[type])}
+      style={{ '--icon': `"${icons[icon]}"` } as React.CSSProperties}
+    >
       <p className={styles.title}>{title || genericTitles[type]}</p>
       <div className={styles.content}>{children}</div>
     </div>

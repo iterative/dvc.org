@@ -37,7 +37,7 @@ tags:
   - Git
 ---
 
-<admonition title="Unique Warning Title" type="warn">
+<admonition title="Unique Title" type="warn" icon="exclamation">
 
 text text text text text
 
