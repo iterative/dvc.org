@@ -58,7 +58,7 @@ All files needed for this guide can be found in
 > earlier guide:
 > [https://cml.dev/doc/self-hosted-runners](https://cml.dev/doc/self-hosted-runners)
 
-> 💡 We will be using [Github](https://github.com/) for our CI/CD and
+> 💡 We will be using [GitHub](https://github.com/) for our CI/CD and
 > [AWS](https://github.com/) for our computing resources. With slight
 > modifications, you should also be able to use
 > [Gitlab](https://about.gitlab.com/) and
