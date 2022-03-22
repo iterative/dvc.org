@@ -33,7 +33,6 @@ const Video: React.FC<{ id: string }> = ({ id }) => {
                 mode="azure"
                 title="Watch video"
                 description="How it works"
-                className={styles.button}
                 icon={
                   <img
                     className={styles.buttonIcon}

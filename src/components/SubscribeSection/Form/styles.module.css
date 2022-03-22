@@ -11,7 +11,7 @@
 }
 
 .input {
-  font-family: var(--font-brandon);
+  font-family: var(--font-base);
   display: flex;
   flex: 1;
   padding: 16px;
@@ -30,7 +30,7 @@
 }
 
 .button {
-  font-family: var(--font-brandon);
+  font-family: var(--font-base);
   width: 115px;
   border: none;
   border-radius: 0 8px 8px 0;

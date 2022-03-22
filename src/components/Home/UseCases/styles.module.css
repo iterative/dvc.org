@@ -39,7 +39,7 @@
   @mixin h2-desktop;
 
   min-height: 50px;
-  font-family: var(--font-brandon);
+  font-family: var(--font-base);
   line-height: 45px;
   text-align: center;
   color: var(--color-gray-hover);
@@ -77,7 +77,7 @@
 }
 
 .caseTitle {
-  font-family: var(--font-brandon);
+  font-family: var(--font-base);
   font-size: 16px;
   font-weight: 500;
   color: var(--color-gray-hover);

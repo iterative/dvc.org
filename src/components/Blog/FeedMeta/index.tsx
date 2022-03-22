@@ -1,4 +1,8 @@
-import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image'
+import {
+  GatsbyImage,
+  IGatsbyImageData,
+  getImageData
+} from 'gatsby-plugin-image'
 import React from 'react'
 
 import Link from 'gatsby-theme-iterative-docs/src/components/Link'
@@ -32,11 +36,13 @@ const FeedMeta: React.FC<IBlogFeedMetaProps> = ({
 }) => {
   return (
     <div className={styles.wrapper}>
-      <GatsbyImage
-        alt=""
-        image={avatar.gatsbyImageData}
-        className={styles.avatar}
-      />
+      {avatar && (
+        <GatsbyImage
+          alt=""
+          image={avatar.gatsbyImageData}
+          className={styles.avatar}
+        />
+      )}
       <ul className={styles.list}>
         <li className={styles.segment}>{name}</li>
         {links && (

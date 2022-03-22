@@ -1,29 +1,16 @@
 import React, { useEffect } from 'react'
 
-import { IPageProps } from '../Page'
+import { LayoutComponent } from 'gatsby-theme-iterative-docs/src/components/MainLayout'
 import LayoutHeader from '../LayoutHeader'
 import LayoutFooter from '../LayoutFooter'
 import { handleFirstTab } from 'gatsby-theme-iterative-docs/src/utils/front/accessibility'
 
 import * as styles from './styles.module.css'
 
-export enum LayoutModifiers {
-  Wide,
-  Collapsed,
-  HideAlert
-}
-
-export interface ILayoutModifiable {
-  modifiers?: Array<LayoutModifiers>
-}
-
-interface IMainLayoutProps {
-  className?: string
-}
-
-export type LayoutComponent = React.FC<
-  IMainLayoutProps & IPageProps & ILayoutModifiable
->
+export {
+  LayoutComponent,
+  LayoutModifiers
+} from 'gatsby-theme-iterative-docs/src/components/MainLayout'
 
 const MainLayout: LayoutComponent = ({
   className,

@@ -9,7 +9,7 @@
   max-width: 550px;
   min-height: 44px;
   margin: 0 auto;
-  font-family: var(--font-brandon);
+  font-family: var(--font-base);
   line-height: 45px;
   text-align: center;
   color: var(--color-gray-hover);
@@ -79,7 +79,7 @@
 
 .columnCaption {
   margin-bottom: 12px;
-  font-family: var(--font-brandon);
+  font-family: var(--font-base);
   font-size: 20px;
   font-weight: 500;
 
@@ -111,7 +111,7 @@
 }
 
 .learnMoreContainer {
-  font-family: var(--font-brandon);
+  font-family: var(--font-base);
   line-height: 28px;
   font-size: 20px;
   font-weight: 500;

@@ -61,7 +61,7 @@
 }
 
 .caption {
-  font-family: var(--font-brandon);
+  font-family: var(--font-base);
   font-size: 16px;
   line-height: 23px;
   font-weight: 500;

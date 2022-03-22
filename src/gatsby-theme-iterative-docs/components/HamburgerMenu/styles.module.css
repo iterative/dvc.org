@@ -135,7 +135,7 @@
 .sectionHeading {
   display: block;
   padding: 15px 0;
-  font-family: var(--font-brandon);
+  font-family: var(--font-base);
   font-weight: 400;
   font-size: 13px;
   line-height: 20px;
@@ -213,7 +213,7 @@ a.sectionHeading {
   height: 38px;
   border-radius: 4px;
   background-color: #fff;
-  font-family: var(--font-brandon);
+  font-family: var(--font-base);
   font-size: 16px;
   line-height: 38px;
   text-align: center;

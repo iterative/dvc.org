@@ -1,7 +1,7 @@
 .container {
   border: none;
   background: none;
-  font-family: var(--font-brandon);
+  font-family: var(--font-base);
   text-align: left;
   appearance: none;
 

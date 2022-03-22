@@ -39,7 +39,7 @@
   width: 100%;
   background-color: transparent;
   border: none;
-  font-family: var(--font-brandon);
+  font-family: var(--font-base);
 }
 
 .title {
@@ -53,7 +53,7 @@
     cursor: pointer;
 
     &::after {
-      content: "";
+      content: '';
       position: relative;
       display: inline-block;
       width: 0;

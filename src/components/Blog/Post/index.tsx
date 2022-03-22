@@ -13,7 +13,7 @@ import useCustomYtEmbeds from 'gatsby-theme-iterative-docs/src/utils/front/useCu
 import Markdown from './Markdown'
 import FeedMeta from '../FeedMeta'
 import Link from 'gatsby-theme-iterative-docs/src/components/Link'
-import PseudoButton from '../../PseudoButton'
+import PseudoButton from 'gatsby-theme-iterative-docs/src/components/PseudoButton'
 import HeroPic from './HeroPic'
 import Share from './Share'
 import PageContent from '../../PageContent'

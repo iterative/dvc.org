@@ -50,7 +50,7 @@
   @mixin hover;
   @mixin focus;
 
-  font-family: var(--font-brandon);
+  font-family: var(--font-base);
   font-weight: 400;
   font-size: 20px;
   line-height: 24px;

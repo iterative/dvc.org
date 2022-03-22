@@ -54,10 +54,10 @@ async function createMarkdownBlogNode(api, { parentNode, createChildNode }) {
     title,
     author,
     description,
-    descriptionLong: markdownToHtml(descriptionLong),
+    descriptionLong: await markdownToHtml(descriptionLong),
     commentsUrl,
     picture,
-    pictureComment: markdownToHtml(pictureComment),
+    pictureComment: await markdownToHtml(pictureComment),
     sourcePath: relativePath,
     gitDateTime
   }

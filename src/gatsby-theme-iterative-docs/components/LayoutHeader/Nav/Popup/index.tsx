@@ -5,7 +5,7 @@ import Link from 'gatsby-theme-iterative-docs/src/components/Link'
 import { logEvent } from 'gatsby-theme-iterative-docs/src/utils/front/plausible'
 import { navLinkItemsData } from '../LinkItems'
 
-import { ReactComponent as ExternalLinkIcon } from '../../../../../static/img/external-link-icon.svg'
+import { ReactComponent as ExternalLinkIcon } from '../../../../../../static/img/external-link-icon.svg'
 
 import * as styles from './styles.module.css'
 

@@ -1,12 +1,12 @@
 import React from 'react'
 
-import PseudoButton from '../../PseudoButton'
 import SocialIcons from './SocialIcons'
 import LinkItems from './LinkItems'
 
 import { logEvent } from 'gatsby-theme-iterative-docs/src/utils/front/plausible'
 
 import * as styles from './styles.module.css'
+import PseudoButton from 'gatsby-theme-iterative-docs/src/components/PseudoButton'
 
 const Nav: React.FC = () => (
   <div className={styles.wrapper}>

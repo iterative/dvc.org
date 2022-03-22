@@ -9,14 +9,14 @@ import SocialIcon, {
 import ShowOnly from 'gatsby-theme-iterative-docs/src/components/ShowOnly'
 import { getFirstPage } from 'gatsby-theme-iterative-docs/src/utils/shared/sidebar'
 
-import { ReactComponent as LogoSVG } from '../../../static/img/dvc_icon-color--square_vector.svg'
+import { ReactComponent as LogoSVG } from '../../../../static/img/dvc_icon-color--square_vector.svg'
 import { ReactComponent as GithubSVG } from 'gatsby-theme-iterative-docs/src/components/SocialIcon/github.svg'
 import { ReactComponent as TwitterSVG } from 'gatsby-theme-iterative-docs/src/components/SocialIcon/twitter.svg'
 import { ReactComponent as DiscordSVG } from 'gatsby-theme-iterative-docs/src/components/SocialIcon/discord.svg'
-import { ReactComponent as CmlSVG } from '../../../static/img/cml_icon-color--square_vector.svg'
-import { ReactComponent as StudioSVG } from '../../../static/img/studio_icon-color--square_vector.svg'
-import { ReactComponent as IterativeSVG } from '../../../static/img/iterative_icon-color--square_vector.svg'
-import { ReactComponent as MlemSVG } from '../../../static/img/mlem-icon.svg'
+import { ReactComponent as CmlSVG } from '../../../../static/img/cml_icon-color--square_vector.svg'
+import { ReactComponent as StudioSVG } from '../../../../static/img/studio_icon-color--square_vector.svg'
+import { ReactComponent as IterativeSVG } from '../../../../static/img/iterative_icon-color--square_vector.svg'
+import { ReactComponent as MlemSVG } from '../../../../static/img/mlem-icon.svg'
 
 import * as styles from './styles.module.css'
 

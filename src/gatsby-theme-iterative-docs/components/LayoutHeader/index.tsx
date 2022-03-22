@@ -2,7 +2,10 @@ import cn from 'classnames'
 import React from 'react'
 import includes from 'lodash/includes'
 
-import { LayoutModifiers, ILayoutModifiable } from '../MainLayout'
+import {
+  LayoutModifiers,
+  ILayoutModifiable
+} from 'gatsby-theme-iterative-docs/src/components/MainLayout'
 import LayoutWidthContainer from 'gatsby-theme-iterative-docs/src/components/LayoutWidthContainer'
 import Link from 'gatsby-theme-iterative-docs/src/components/Link'
 import Nav from './Nav'
@@ -13,7 +16,7 @@ import {
 } from '../HamburgerMenu'
 
 import { useHeaderIsScrolled } from 'gatsby-theme-iterative-docs/src/utils/front/scroll'
-import { ReactComponent as LogoSVG } from '../../../static/img/dvc_icon-color--square_vector.svg'
+import { ReactComponent as LogoSVG } from '../../../../static/img/dvc_icon-color--square_vector.svg'
 import * as styles from './styles.module.css'
 
 import LayoutAlert from './alert'

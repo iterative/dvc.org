@@ -9,18 +9,17 @@ import {
   IPopupProps
 } from '../Popup'
 
-import { ReactComponent as ArrowUpSVG } from '../../../../../static/img/arrow-up-icon.svg'
-import { ReactComponent as ArrowDownSVG } from '../../../../../static/img/arrow-down-icon.svg'
+import { ReactComponent as ArrowUpSVG } from '../../../../../../static/img/arrow-up-icon.svg'
+import { ReactComponent as ArrowDownSVG } from '../../../../../../static/img/arrow-down-icon.svg'
 
 import { logEvent } from 'gatsby-theme-iterative-docs/src/utils/front/plausible'
 import { getFirstPage } from 'gatsby-theme-iterative-docs/src/utils/shared/sidebar'
-import usePopup, { IUsePopupReturn } from '../../../../gatsby/hooks/usePopup'
+import usePopup, { IUsePopupReturn } from '../../../../../gatsby/hooks/usePopup'
 
 const docsPage = getFirstPage()
 
 import * as styles from './styles.module.css'
-import { ReactComponent as EllipsisIcon } from '../../../../../static/img/ellipsis.svg'
-import onSelectKey from '../../../../utils/onSelectKey'
+import { ReactComponent as EllipsisIcon } from '../../../../../../static/img/ellipsis.svg'
 
 type PopupName = 'communityPopup' | 'otherToolsPopup' | 'otherPopup'
 
@@ -118,7 +117,6 @@ const LinkItems: React.FC = () => {
                 <button
                   aria-label={item.ariaLabel}
                   onPointerUp={popup?.toggle}
-                  onKeyUp={onSelectKey(popup?.toggle)}
                   className={cn(
                     styles.link,
                     popup?.isOpen && styles.open,
