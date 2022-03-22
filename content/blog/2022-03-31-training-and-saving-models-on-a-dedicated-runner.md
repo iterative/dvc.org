@@ -35,7 +35,7 @@ In this guide, we will show how you can use
 open-source library for implementing continuous integration and delivery (CI/CD)
 in machine learning projects. This way we can define a pipeline to train a model
 and keep track of various versions. Although we could do so directly in our
-CI/CD pipeline, the runners used for this generally don’t have a lot of
+CI/CD pipeline (e.g. GitHub Workflows), the runners used for this generally don’t have a lot of
 processing power. Therefore it makes more sense to provision a dedicated runner
 that is tailored to our computing needs.
 
@@ -43,7 +43,7 @@ At the end of this guide we will have set up the following:
 
 - A workflow on GitHub actions to train a model every time we change data, model
   code, or parameters;
-- Model training on an Amazon Web Services (AWS) instance that has been
+- Model training on an Amazon Web Services (AWS) EC2 instance that has been
   provisioned specifically for the training job;
 - Automatic saving of trained models in your GitHub repository and/or a DVC
   remote, along with a report of their performance.
@@ -77,15 +77,7 @@ Before we begin, make sure you have the following things set up:
    `AWS_SECRET_ACCESS_KEY` as GitHub secrets
    ([guide](https://docs.github.com/en/actions/security-guides/encrypted-secrets)).
 
-It also helps to clone the following repository:
-https://github.com/RCdeWit/CML_train_and_export
-
-<!-- <aside>
-⚠️ Make sure to use GitHub secrets rather than copy paste these variables directly in your source. If you don’t, others can act on your behalf on AWS. GitHub will simply block your access token.
-
-Guess how I managed to figure that last one out... 😅
-
-</aside> -->
+It also helps to clone [the template repository for this tutorial](https://github.com/iterative/example_model_export_cml).
 
 # Training a model and saving it
 
@@ -159,25 +151,24 @@ case the triggers are on push and on a daily schedule.
 
 > 💡 The name of the workflow doesn’t matter, as long as it’s a `.yaml` and
 > located in the `.github/workflows` directory. You can have multiple workflows
-> in there as well.
-> ([Documentation](https://docs.github.com/en/actions/learn-github-actions/workflow-syntax-for-github-actions))
+> in there as well. You can learn more in the [documentation](https://docs.github.com/en/actions/learn-github-actions/workflow-syntax-for-github-actions) here.
 
 The workflow we defined first provisions a runner on AWS and then uses that
 runner to train the model. Once we have the outputs saved, we want to export
 them out of the runner. That way we can simply discard the runner once we are
 done training.
 
-In this guide we will explore two options to export the model from the runner:
+We will explore two options to export the model from the runner:
 
-1. Push the model directly to a git repository;
-2. Push the model to a DVC remote and reference that file in your git
+1. Push the model directly to a Git repository;
+2. Push the model to a DVC remote and reference that file in your Git
    repository.
 
 In both cases, the other files (`confusion_matrix.png` etc.) will be pushed
-directly to the git repository. All of this is done in a dedicated `experiment`
+directly to the Git repository. All of this is done in a dedicated `experiment`
 branch and a merge request is automatically created.
 
-## 1. Push the model directly to a git repository
+## 1. Push the model directly to a Git repository
 
 If the model is small we might want to commit it to our repository
 automatically. The following GitHub workflow deploys a runner on AWS, generates
@@ -237,15 +228,15 @@ jobs:
           cml send-comment --pr --update report.md
 ```
 
-## 2. Push the model to a DVC remote and reference that file in your git repository
+## 2. Push the model to a DVC remote and reference that file in your Git repository
 
 While the approach above works fine when the resulting model is small, we
-ideally do not want to store large files in git. Therefore, if the model is
+ideally do not want to store large files in Git. Therefore, if the model is
 contained in a large file, we would prefer to save that file elsewhere. This is
 where [DVC](https://dvc.org/) comes in.
 
 Using DVC we can store the model on an external server (a _remote_) and only put
-a reference to that file in GitHub. This way we can keep the contents of our git
+a reference to that file in GitHub. This way we can keep the contents of our Git
 repository light-weight, while still applying proper versioning to our larger
 files (e.g. model and datasets).
 
