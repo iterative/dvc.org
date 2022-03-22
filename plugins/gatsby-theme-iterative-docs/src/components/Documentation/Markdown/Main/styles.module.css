@@ -79,20 +79,27 @@
       content: unset;
     }
 
-    li .anchor svg {
+    li,
+    .collapsableDiv .anchor svg {
       visibility: hidden;
     }
 
-    li:hover .anchor svg {
+    li,
+    .collapsableDiv:hover .anchor svg {
       visibility: visible;
     }
 
-    li .anchor:focus svg {
+    li,
+    .collapsableDiv .anchor:focus svg {
       visibility: visible;
     }
 
     li .anchor {
       line-height: unset;
+    }
+
+    .collapsableDiv .anchor {
+      line-height: 2.5;
     }
 
     .anchor {
