@@ -33,7 +33,7 @@ a model and keep track of various versions.
 > a model to detect fraudulent orders. One week fraudsters might be trying to
 > order gaming consoles, while the next they might go all-in on diapers. In that
 > case, we would probably want to retrain our model regularly to catch this
-> [drift](https://en.wikipedia.org/wiki/Concept_drift). And we would also want
+> [drift](https://en.wikipedia.org/wiki/Concept_drift) and we would also want
 > to use the most up-to-date version of our model in production.
 
 In this guide, we will show how you can use CML to (re)train your model daily
