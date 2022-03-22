@@ -15,6 +15,7 @@ import Collapsible from 'react-collapsible'
 import Main from './Main'
 import Link from '../../Link'
 import Tooltip from './Tooltip'
+import Admonition from './Admonition'
 
 import * as styles from './styles.module.css'
 import { TogglesContext, TogglesProvider } from './ToggleProvider'
@@ -208,7 +209,9 @@ const renderAst = new (rehypeReact as any)({
     cards: Cards,
     details: Details,
     toggle: Toggle,
-    tab: React.Fragment
+    tab: React.Fragment,
+    admon: Admonition,
+    admonition: Admonition
   }
 }).Compiler
 
