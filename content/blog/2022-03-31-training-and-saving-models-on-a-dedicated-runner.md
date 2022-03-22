@@ -1,11 +1,9 @@
 ---
 title: Training and saving models with CML on a dedicated runner
 date: 2022-03-31
-description: Hello World
+description: In this guide we will show how you can use CML to automatically retrain a model and save its outputs using a provisioned AWS EC2 runner.
 descriptionLong: |
-  Some long
-  multiline
-  text (supports _basic_ [Markdown](link))
+  We can use CML to automatically retrain models whenever data, model code, or parameters change. In this guide we show how to create a pipeline that provisions an AWS EC2 instance to retrain a model and saves the output on a regular basis. This way we can prevent drift by ensuring that our model always uses the latest input data.
 picture: 2015-05-01/post-image.jpeg
 pictureComment: Some _Comment_ (supports _basic_ [Markdown](link))
 author: rob_dewit
@@ -16,6 +14,7 @@ tags:
   - DVC Remotes
   - Git
   - Pipelines
+  - AWS
 ---
 
 When you first develop a machine learning model, you will probably do so on your
