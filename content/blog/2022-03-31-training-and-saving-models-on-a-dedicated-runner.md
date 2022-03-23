@@ -39,7 +39,8 @@ CI/CD pipeline (e.g. GitHub Workflows), the runners used for this generally
 don’t have a lot of processing power. Therefore it makes more sense to provision
 a dedicated runner that is tailored to our computing needs.
 
-At the end of this guide we will have set up a CML workflow that does the following on a daily basis:
+At the end of this guide we will have set up a CML workflow that does the
+following on a daily basis:
 
 1. Provision an Amazon Web Services (AWS) EC2 instance
 1. Train the model
@@ -66,10 +67,12 @@ Before we begin, make sure you have the following things set up:
 1. You have
    [created an AWS account](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account/)
    (free tier suffices);
-2. You have [created a `PERSONAL_ACCESS_TOKEN` on GitHub]((https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token))
-3. You have [created an `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` on AWS](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html)
-4. You have [added the `PERSONAL_ACCES_TOKEN`, `AWS_ACCESS_KEY_ID`, and
-   `AWS_SECRET_ACCESS_KEY` as GitHub secrets]((https://docs.github.com/en/actions/security-guides/encrypted-secrets))
+2. You have
+   [created a `PERSONAL_ACCESS_TOKEN` on GitHub](<(https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)>)
+3. You have
+   [created an `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` on AWS](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html)
+4. You have
+   [added the `PERSONAL_ACCES_TOKEN`, `AWS_ACCESS_KEY_ID`, and `AWS_SECRET_ACCESS_KEY` as GitHub secrets](<(https://docs.github.com/en/actions/security-guides/encrypted-secrets)>)
 
 It also helps to clone
 [the template repository for this tutorial](https://github.com/iterative/example_model_export_cml).
@@ -259,7 +262,9 @@ You can follow
 to set up Google Drive as your remote. Make sure to
 [set up a GCP project](https://dvc.org/doc/user-guide/setup-google-drive-remote#using-a-custom-google-cloud-project-recommended)
 and to
-[use a service account](https://dvc.org/doc/user-guide/setup-google-drive-remote#using-service-accounts). If you don't use a service account, your runner will get stuck on a log-in screen.
+[use a service account](https://dvc.org/doc/user-guide/setup-google-drive-remote#using-service-accounts).
+If you don't use a service account, your runner will get stuck on a log-in
+screen.
 
 Once you have set up the storage remote and added the `GDRIVE_CREDENTIALS_DATA`
 as a GitHub secret, you can use the workflow below. In this scenario, we train
@@ -346,7 +351,9 @@ we can automate the stuff needed to keep your models running, leaving you with
 more time to do actual data science. Additionally, CML takes care of your
 versioning for you and makes sure you can track your models over time.
 
-In this guide, we explored how to set up CML for a daily training job using a dedicated runner. We exported the model from the runner in two ways: by pushing it directly to a GitHub repository and by pushing it to a DVC remote.
+In this guide, we explored how to set up CML for a daily training job using a
+dedicated runner. We exported the model from the runner in two ways: by pushing
+it directly to a GitHub repository and by pushing it to a DVC remote.
 
 From here on out we could extend our CI/CD with a `deploy` step to bring the
 latest version of our model into production. This step might be conditional on
