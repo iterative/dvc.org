@@ -28,13 +28,14 @@ const Admonition: React.FC<{
     tip: 'Tip',
     warn: 'Warning'
   }
+  const setType = genericTitles[type] ? type : 'info'
 
   return (
     <div
-      className={cn(styles.admonition, styles[type])}
-      style={{ '--icon': `"${icons[icon]}"` } as React.CSSProperties}
+      className={cn(styles.admonition, styles[setType])}
+      style={{ '--icon': `"${icons[icon] || ''}"` } as React.CSSProperties}
     >
-      <p className={styles.title}>{title || genericTitles[type]}</p>
+      <p className={styles.title}>{title || genericTitles[setType]}</p>
       <div className={styles.content}>{children}</div>
     </div>
   )
