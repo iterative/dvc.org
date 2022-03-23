@@ -1,6 +1,6 @@
 ---
 title: Preventing Stale Models in Production
-date: 2022-03-09
+date: 2022-03-31
 description: >
   We're going to look at how you can prevent stale models from remaining in
   production when the data starts to differ from the training data.
@@ -9,7 +9,7 @@ descriptionLong: >
   the data on production starts to differ from the data the model was trained
   on. That's why we're going to look at how you can prevent stale models from
   remaining in production.
-picture: 2022-03-09/stale-model-cover.png
+picture: 2022-03-31/stale-model-cover.png
 pictureComment: Preventing Stale Models in Production
 author: milecia_mcgregor
 commentsUrl: https://discuss.dvc.org/t/stale-models/1002
@@ -103,37 +103,36 @@ $ dvc exp show --no-timestamp
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
 ┃ neutral:**Experiment**              ┃ metric:**avg_prec** ┃ metric:**roc_auc** ┃ param:**train.seed** ┃ param:**train.n_est** ┃ param:**train.min_split** ┃
 ┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━┩
-│ workspace               │ 0.036667 │ 0.27808 │ 20210428   │ 375         │ 64              │
-│ main                    │ 0.036667 │ 0.27808 │ 20210428   │ 375         │ 64              │
-│ └── a7bf4c2 [exp-64d86] │ 0.036667 │ 0.27808 │ 20210428   │ 375         │ 64              │
+│ workspace               │  0.70164 │ 0.51384 │ 20210428   │ 450         │ 64              │
+│ main                    │  0.60791 │ 0.45758 │ 20210428   │ 375         │ 64              │
+│ └── 801fdff [exp-a80c0] │  0.70164 │ 0.51384 │ 20210428   │ 450         │ 64              │
 └─────────────────────────┴──────────┴─────────┴────────────┴─────────────┴─────────────────┘
 ```
 
 This model doesn't have the best metrics, so we can run more experiments to see
 if tuning hyperparameters will help before we deploy this model to production.
-Let's start by changing the value of the `train.n_est` hyperparameter. We'll run
-several experiments with different values and it will produce a table similar to
-this:
+Let's change the values of the `train.n_est` and `train.n_est` hyperparameters.
+We'll run several experiments with different values and it will produce a table
+similar to this:
 
 ```dvctable
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
 ┃ neutral:**Experiment**              ┃ metric:**avg_prec** ┃ metric:**roc_auc** ┃ param:**train.seed** ┃ param:**train.n_est** ┃ param:**train.min_split** ┃
 ┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━┩
-│ workspace               │  0.02414 │ 0.30173 │ 20210428   │ 383         │ 64              │
-│ main                    │ 0.036667 │ 0.27808 │ 20210428   │ 375         │ 64              │
-│ ├── e956e10 [exp-44136] │  0.02414 │ 0.30173 │ 20210428   │ 383         │ 64              │
-│ ├── 2d6b678 [exp-e5c23] │  0.02414 │ 0.30173 │ 20210428   │ 383         │ 64              │
-│ ├── a666ccb [exp-c85c3] │ 0.024785 │ 0.31598 │ 20210428   │ 390         │ 64              │
-│ ├── f6803ec [exp-8ed24] │  0.09243 │ 0.22833 │ 20210428   │ 450         │ 64              │
-│ ├── 764f164 [exp-124d4] │ 0.037312 │ 0.28734 │ 20210428   │ 400         │ 64              │
-│ ├── 72e1ed4 [exp-94671] │  0.10855 │ 0.23134 │ 20210428   │ 250         │ 64              │
-│ ├── 0e969ef [exp-a37ee] │  0.10315 │ 0.24219 │ 20210428   │ 300         │ 64              │
-│ └── a7bf4c2 [exp-64d86] │ 0.036667 │ 0.27808 │ 20210428   │ 375         │ 64              │
+│ workspace               │  0.43501 │ 0.79082 │ 20210428   │ 475         │ 28              │
+│ main                    │  0.60791 │ 0.45758 │ 20210428   │ 375         │ 64              │
+│ ├── 78d29aa [exp-f06bb] │  0.43501 │ 0.79082 │ 20210428   │ 475         │ 28              │
+│ ├── 8fb41cf [exp-1323d] │  0.42796 │ 0.80841 │ 20210428   │ 425         │ 28              │
+│ ├── 434a82f [exp-63459] │  0.36044 │ 0.87037 │ 20210428   │ 350         │ 28              │
+│ ├── 549586e [exp-ceb6d] │  0.61998 │  0.4306 │ 20210428   │ 350         │ 64              │
+│ ├── fbf8760 [exp-affe2] │  0.68824 │ 0.50067 │ 20210428   │ 425         │ 64              │
+│ ├── 732ab92 [exp-f8e8d] │  0.65138 │ 0.49431 │ 20210428   │ 500         │ 64              │
+│ └── 801fdff [exp-a80c0] │  0.70164 │ 0.51384 │ 20210428   │ 450         │ 64              │
 └─────────────────────────┴──────────┴─────────┴────────────┴─────────────┴─────────────────┘
 ```
 
 We've run a few experiments with a different hyperparameter value each time and
-it looks like `exp-c85c3` is the best one out of them based on both average
+it looks like `exp-63459` is the best one out of them based on both average
 precision and the ROC-AUC value. So we'll apply this experiment to our workspace
 and choose this model as the one that will go to production. To apply the
 experiment, we'll run the following command:
@@ -174,16 +173,20 @@ table to look at. Now you should see a table similar to this:
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
 ┃ neutral:**Experiment**              ┃ metric:**avg_prec** ┃ metric:**roc_auc** ┃ param:**train.seed** ┃ param:**train.n_est** ┃ param:**train.min_split** ┃
 ┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━┩
-│ workspace               │    0.644 │  0.4919 │ 20210428   │ 390         │ 64              │
-│ main                    │    0.644 │  0.4919 │ 20210428   │ 390         │ 64              │
-│ └── 806cc15 [exp-c3a02] │    0.644 │  0.4919 │ 20210428   │ 390         │ 64              │
+│ workspace               │  0.42526 │ 0.82722 │ 20210428   │ 400         │ 28              │
+│ main                    │  0.69744 │ 0.63056 │ 20210428   │ 475         │ 32              │
+│ ├── e76a89d [exp-7d207] │  0.42526 │ 0.82722 │ 20210428   │ 400         │ 28              │
+│ ├── 2a6d647 [exp-7526d] │  0.74411 │ 0.65808 │ 20210428   │ 400         │ 32              │
+│ ├── 467fd3d [exp-dfabd] │  0.71431 │  0.6267 │ 20210428   │ 450         │ 32              │
+│ ├── 2a2171c [exp-45493] │  0.58291 │ 0.49201 │ 20210428   │ 350         │ 48              │
+│ └── 683dc49 [exp-2649a] │  0.58421 │  0.5783 │ 20210428   │ 475         │ 48              │
 └─────────────────────────┴──────────┴─────────┴────────────┴─────────────┴─────────────────┘
 ```
 
 Having the updated dataset made a huge difference in the metrics and it looks
-like this model is significantly better. Now that we have all of the experiments
-with both the old and new datasets, this is a good time to share the results
-with your coworkers and get some feedback.
+like this model has a different set of hyperparameters that perform well. Now
+that we have all of the experiments with both the old and new datasets, this is
+a good time to share the results with your coworkers and get some feedback.
 
 ## Viewing experiment results in DVC Studio
 
@@ -192,12 +195,12 @@ experiments as we need to and it will track which datasets we're working with,
 the code changes that we make, and it'll let us look at all of the results from
 each experiment in Studio.
 
-If you go to [DVC Studio](https://studio.iterative.ai/), you'll be prompted to
-connect to your GitHub/GitLab account and you'll be able to choose the repo for
-this project. Once you're connected, you should be able to see all of the
-experiments you've pushed to your Git history.
+If you go to [Iterative Studio](https://studio.iterative.ai/), you'll be
+prompted to connect to your GitHub/GitLab account and you'll be able to choose
+the repo for this project. Once you're connected, you should be able to see all
+of the experiments you've pushed to your Git history.
 
-![example of plots and results in DVC Studio](/uploads/images/2022-03-09/stale_models_in_studio.png)
+![example of plots and results in DVC Studio](/uploads/images/2022-03-31/stale_models_in_studio.png)
 
 You can give others on your team access to this and they'll be able to run new
 experiments and see the results right in the browser. This is a great tool to
