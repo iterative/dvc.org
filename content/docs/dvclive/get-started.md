@@ -3,8 +3,12 @@
 DVCLive is a Python library for logging machine learning metrics and other
 metadata in simple file formats, which is fully compatible with DVC.
 
-> If you use one of the supported [ML Frameworks](/doc/dvclive/ml-frameworks),
-> you can jump directly to it's corresponding page.
+<admon type="tip">
+
+If you use one of the supported [ML Frameworks](/doc/dvclive/ml-frameworks), you
+can jump directly to it's corresponding page.
+
+</admon>
 
 ## Workflow
 
