@@ -1,5 +1,6 @@
 import React from 'react'
 import rehypeReact from 'rehype-react'
+import Admonition from 'gatsby-theme-iterative-docs/src/components/Documentation/Markdown/Admonition'
 
 import * as styles from './styles.module.css'
 
@@ -11,7 +12,11 @@ interface IMarkdownProps {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const renderAst = new (rehypeReact as any)({
   createElement: React.createElement,
-  Fragment: React.Fragment
+  Fragment: React.Fragment,
+  components: {
+    admon: Admonition,
+    admonition: Admonition
+  }
 }).Compiler
 
 const Markdown: React.FC<IMarkdownProps> = ({ htmlAst }) => {
