@@ -35,25 +35,22 @@ In this guide, we will show how you can use
 open-source library for implementing continuous integration and delivery (CI/CD)
 in machine learning projects. This way we can define a pipeline to train a model
 and keep track of various versions. Although we could do so directly in our
-CI/CD pipeline (e.g. GitHub Workflows), the runners used for this generally don’t have a lot of
-processing power. Therefore it makes more sense to provision a dedicated runner
-that is tailored to our computing needs.
+CI/CD pipeline (e.g. GitHub Workflows), the runners used for this generally
+don’t have a lot of processing power. Therefore it makes more sense to provision
+a dedicated runner that is tailored to our computing needs.
 
-At the end of this guide we will have set up the following:
+At the end of this guide we will have set up a CML workflow that does the following on a daily basis:
 
-- A workflow on GitHub actions to train a model every time we change data, model
-  code, or parameters;
-- Model training on an Amazon Web Services (AWS) EC2 instance that has been
-  provisioned specifically for the training job;
-- Automatic saving of trained models in your GitHub repository and/or a DVC
-  remote, along with a report of their performance.
+1. Provision an Amazon Web Services (AWS) EC2 instance
+1. Train the model
+1. Save the model and its metrics to a GitHub repository and/or DVC remote
+1. Terminate the AWS EC2 instance
 
 All files needed for this guide can be found in
 [this repository](https://github.com/iterative/example_model_export_cml).
 
 > 💡 This guide can be followed on its own, but also as an extension to this
-> earlier guide:
-> [https://cml.dev/doc/self-hosted-runners](https://cml.dev/doc/self-hosted-runners)
+> [example in the docs](https://cml.dev/doc/self-hosted-runners).
 
 > 💡 We will be using [GitHub](https://github.com/) for our CI/CD and
 > [AWS](https://github.com/) for our computing resources. With slight
@@ -69,15 +66,13 @@ Before we begin, make sure you have the following things set up:
 1. You have
    [created an AWS account](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account/)
    (free tier suffices);
-2. You have created a `PERSONAL_ACCESS_TOKEN` on GitHub
-   ([guide](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token));
-3. You have created an `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` on AWS
-   ([guide](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html));
-4. You have added the `PERSONAL_ACCES_TOKEN`, `AWS_ACCESS_KEY_ID`, and
-   `AWS_SECRET_ACCESS_KEY` as GitHub secrets
-   ([guide](https://docs.github.com/en/actions/security-guides/encrypted-secrets)).
+2. You have [created a `PERSONAL_ACCESS_TOKEN` on GitHub]((https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token))
+3. You have [created an `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` on AWS](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html)
+4. You have [added the `PERSONAL_ACCES_TOKEN`, `AWS_ACCESS_KEY_ID`, and
+   `AWS_SECRET_ACCESS_KEY` as GitHub secrets]((https://docs.github.com/en/actions/security-guides/encrypted-secrets))
 
-It also helps to clone [the template repository for this tutorial](https://github.com/iterative/example_model_export_cml).
+It also helps to clone
+[the template repository for this tutorial](https://github.com/iterative/example_model_export_cml).
 
 # Training a model and saving it
 
@@ -147,16 +142,18 @@ Now that we have a script to train our model and save it as a file, let’s set 
 our CI/CD to provision a runner and run the script. We define our workflow in
 `cml.yaml` and save it in the `.github/workflows` directory. This way GitHub
 will automatically go through the workflow whenever it is triggered. In this
-case the triggers are on push and on a daily schedule.
+case the triggers are a manual run and the daily schedule.
 
 > 💡 The name of the workflow doesn’t matter, as long as it’s a `.yaml` and
 > located in the `.github/workflows` directory. You can have multiple workflows
-> in there as well. You can learn more in the [documentation](https://docs.github.com/en/actions/learn-github-actions/workflow-syntax-for-github-actions) here.
+> in there as well. You can learn more in the
+> [documentation](https://docs.github.com/en/actions/learn-github-actions/workflow-syntax-for-github-actions)
+> here.
 
 The workflow we defined first provisions a runner on AWS and then uses that
 runner to train the model. Once we have the outputs saved, we want to export
 them out of the runner. That way we can simply discard the runner once we are
-done training.
+done training. You will be happy for that once your AWS bill arrives.
 
 We will explore two options to export the model from the runner:
 
@@ -164,7 +161,7 @@ We will explore two options to export the model from the runner:
 2. Push the model to a DVC remote and reference that file in your Git
    repository.
 
-In both cases, the other files (`confusion_matrix.png` etc.) will be pushed
+In both cases, the other files (`confusion_matrix.png` et cetera) will be pushed
 directly to the Git repository. All of this is done in a dedicated `experiment`
 branch and a merge request is automatically created.
 
@@ -175,7 +172,7 @@ automatically. The following GitHub workflow deploys a runner on AWS, generates
 some data, trains and saves a model (see `train.py`), pushes the results to a
 new experiment branch, and creates a merge request for those results.
 
-Using `cml pr "."` is the command that takes all of our files, pushes them to a
+Using `cml pr .` is the command that takes all of our files, pushes them to a
 new branch, and creates a merge request. Because we saved the model as a binary
 in `model/random_forest.joblib` this file is included in the merge request.
 
@@ -248,7 +245,7 @@ details.
 > each training. We could, for example, use our runner to import our training
 > data from a table in our database and write both the data and the model to the
 > DVC remote. This is beyond the scope of this guide, but
-> [how to do so can be found here.](https://github.com/iterative/cml_dvc_case)
+> [here you can find a tutorial for this](https://github.com/iterative/cml_dvc_case).
 
 The first time you are using DVC for a project you need to run `dvc init` in the
 project directory. Then, in order to start using DVC, you need to set up a
@@ -262,7 +259,7 @@ You can follow
 to set up Google Drive as your remote. Make sure to
 [set up a GCP project](https://dvc.org/doc/user-guide/setup-google-drive-remote#using-a-custom-google-cloud-project-recommended)
 and to
-[use a service account](https://dvc.org/doc/user-guide/setup-google-drive-remote#using-service-accounts).
+[use a service account](https://dvc.org/doc/user-guide/setup-google-drive-remote#using-service-accounts). If you don't use a service account, your runner will get stuck on a log-in screen.
 
 Once you have set up the storage remote and added the `GDRIVE_CREDENTIALS_DATA`
 as a GitHub secret, you can use the workflow below. In this scenario, we train
@@ -349,17 +346,10 @@ we can automate the stuff needed to keep your models running, leaving you with
 more time to do actual data science. Additionally, CML takes care of your
 versioning for you and makes sure you can track your models over time.
 
-In this guide, we explored how to set up CML with a dedicated runner on AWS. We
-exported the model from the runner in two ways: by pushing it directly to a
-GitHub repository and by pushing it to a DVC remote.
+In this guide, we explored how to set up CML for a daily training job using a dedicated runner. We exported the model from the runner in two ways: by pushing it directly to a GitHub repository and by pushing it to a DVC remote.
 
 From here on out we could extend our CI/CD with a `deploy` step to bring the
 latest version of our model into production. This step might be conditional on
 the performance of the model; we could decide to only start using it in
 production if it performs better than previous iterations. All of this warrants
 a guide of its own, however, so look out for that in the future! 😉
-
-# To fix/known issues:
-
-- When merging the PR that was automatically created, a new CI/CD run is
-  triggered.
