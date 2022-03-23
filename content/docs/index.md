@@ -5,12 +5,6 @@ Data Version Control, or DVC, is a data and ML
 advantage of the existing engineering toolset that you're already familiar with
 (Git, CI/CD, etc.).
 
-<admon type="info" icon="lady_beetle">
-
-more text more text more text
-
-</admon>
-
 <cards>
 
   <card href="/doc/start" heading="Get Started">

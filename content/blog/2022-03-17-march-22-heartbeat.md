@@ -37,24 +37,6 @@ tags:
   - Git
 ---
 
-<admonition title="Unique Title" type="warn" icon="exclamation">
-
-text text text text text
-
-</admonition>
-
-<admon type="tip">
-
-text text text
-
-</admon>
-
-<admon title="Unique Info Title" type="info">
-
-text text text text text
-
-</admon>
-
 # On the war in Ukraine 🇺🇦
 
 While the war in Ukraine has impacted the world, it has also greatly impacted
