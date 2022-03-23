@@ -120,7 +120,7 @@ plot for the logged data automatically updated during the model training!
  
 If you don't update the step number, the HTML report won't be generated.
 
-</info>
+</admon>
 
 ### Checkpoints
 
