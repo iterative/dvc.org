@@ -15,6 +15,7 @@ import Collapsible from 'react-collapsible'
 import Main from './Main'
 import Link from '../../Link'
 import Tooltip from './Tooltip'
+import Admonition from './Admonition'
 
 import * as styles from './styles.module.css'
 import { TogglesContext, TogglesProvider } from './ToggleProvider'
@@ -248,7 +249,9 @@ const renderAst = (slugger: GithubSlugger) => {
       cards: Cards,
       details: (props: any) => <Details slugger={slugger} {...props} />,
       toggle: Toggle,
-      tab: Tab
+      tab: Tab,
+      admon: Admonition,
+      admonition: Admonition
     }
   }).Compiler
 }
