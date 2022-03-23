@@ -44,8 +44,10 @@ following on a daily basis:
 
 1. Provision an Amazon Web Services (AWS) EC2 instance
 1. Train the model
-1. Save the model and its metrics to a GitHub repository and/or DVC remote
+1. Save the model and its metrics to a GitHub repository
 1. Terminate the AWS EC2 instance
+
+In a follow-up post we will expand upon this by using DVC to designate a remote storage for our resulting models. But let's focus on CML first!
 
 All files needed for this guide can be found in
 [this repository](https://github.com/iterative/example_model_export_cml).
@@ -79,7 +81,7 @@ It also helps to clone
 
 # Training a model and saving it
 
-Now that we’re good to go, we will adapt `train.py` from the
+To kick off, we will adapt `train.py` from the
 [CML getting started guide](https://cml.dev/doc/start/github). Here we create a
 simple `RandomForestClassifier()` based on some generated data. We then use the
 model to make some predictions and plot those predictions in a confusion matrix.
@@ -157,21 +159,9 @@ The workflow we defined first provisions a runner on AWS and then uses that
 runner to train the model. Once we have the outputs saved, we want to export
 them out of the runner. That way we can simply discard the runner once we are
 done training. You will be happy for that once your AWS bill arrives.
-
-We will explore two options to export the model from the runner:
-
-1. Push the model directly to a Git repository;
-2. Push the model to a DVC remote and reference that file in your Git
-   repository.
-
-In both cases, the other files (`confusion_matrix.png` et cetera) will be pushed
-directly to the Git repository. All of this is done in a dedicated `experiment`
-branch and a merge request is automatically created.
-
 ## 1. Push the model directly to a Git repository
 
-If the model is small we might want to commit it to our repository
-automatically. The following GitHub workflow deploys a runner on AWS, generates
+We can export the model from our runner to our repository. The following GitHub workflow deploys a runner on AWS, generates
 some data, trains and saves a model (see `train.py`), pushes the results to a
 new experiment branch, and creates a merge request for those results.
 
@@ -227,7 +217,9 @@ jobs:
           cml send-comment --pr --update report.md
 ```
 
-## 2. Push the model to a DVC remote and reference that file in your Git repository
+Et voila! We are now running a daily model training on an AWS EC2 instance and saving the resulting model to our GitHub repository. There is still some room for improvement, though. This approach works well when our resulting model is small, but we wouldn't want to store large models in our Git repository. In a follow-up post we will describe how we can use DVC, another Iterative product, for storage when we're dealing with larger files.
+
+<!-- ## 2. Push the model to a DVC remote and reference that file in your Git repository
 
 While the approach above works fine when the resulting model is small, we
 ideally do not want to store large files in Git. Therefore, if the model is
@@ -340,7 +332,7 @@ jobs:
           cat model/metrics.txt > model/report.md
           cml publish model/confusion_matrix.png --md >> model/report.md
           cml send-comment --pr --update report.md
-```
+``` -->
 
 # Conclusions
 
@@ -350,10 +342,11 @@ more time to do actual data science. Additionally, CML takes care of your
 versioning for you and makes sure you can track your models over time.
 
 In this guide, we explored how to set up CML for a daily training job using a
-dedicated runner. We exported the model from the runner in two ways: by pushing
-it directly to a GitHub repository and by pushing it to a DVC remote.
+dedicated runner. We automatically provisioned this runner on AWS, exported the resulting files to our Git repository, and terminated the runner to prevent racking up our AWS bill.
 
-From here on out we could extend our CI/CD with a `deploy` step to bring the
+In a follow-up post we will explore how to use DVC when the resulting model is too large to store directly in our Git repository.
+
+Another great extension of our CI/CD would be a `deploy` step to bring the
 latest version of our model into production. This step might be conditional on
 the performance of the model; we could decide to only start using it in
 production if it performs better than previous iterations. All of this warrants
