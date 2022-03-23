@@ -47,7 +47,8 @@ following on a daily basis:
 1. Save the model and its metrics to a GitHub repository
 1. Terminate the AWS EC2 instance
 
-In a follow-up post we will expand upon this by using DVC to designate a remote storage for our resulting models. But let's focus on CML first!
+In a follow-up post we will expand upon this by using DVC to designate a remote
+storage for our resulting models. But let's focus on CML first!
 
 All files needed for this guide can be found in
 [this repository](https://github.com/iterative/example_model_export_cml).
@@ -159,11 +160,13 @@ The workflow we defined first provisions a runner on AWS and then uses that
 runner to train the model. Once we have the outputs saved, we want to export
 them out of the runner. That way we can simply discard the runner once we are
 done training. You will be happy for that once your AWS bill arrives.
+
 ## 1. Push the model directly to a Git repository
 
-We can export the model from our runner to our repository. The following GitHub workflow deploys a runner on AWS, generates
-some data, trains and saves a model (see `train.py`), pushes the results to a
-new experiment branch, and creates a merge request for those results.
+We can export the model from our runner to our repository. The following GitHub
+workflow deploys a runner on AWS, generates some data, trains and saves a model
+(see `train.py`), pushes the results to a new experiment branch, and creates a
+merge request for those results.
 
 Using `cml pr .` is the command that takes all of our files, pushes them to a
 new branch, and creates a merge request. Because we saved the model as a binary
@@ -217,7 +220,12 @@ jobs:
           cml send-comment --pr --update report.md
 ```
 
-Et voila! We are now running a daily model training on an AWS EC2 instance and saving the resulting model to our GitHub repository. There is still some room for improvement, though. This approach works well when our resulting model is small, but we wouldn't want to store large models in our Git repository. In a follow-up post we will describe how we can use DVC, another Iterative product, for storage when we're dealing with larger files.
+Et voila! We are now running a daily model training on an AWS EC2 instance and
+saving the resulting model to our GitHub repository. There is still some room
+for improvement, though. This approach works well when our resulting model is
+small, but we wouldn't want to store large models in our Git repository. In a
+follow-up post we will describe how we can use DVC, another Iterative product,
+for storage when we're dealing with larger files.
 
 <!-- ## 2. Push the model to a DVC remote and reference that file in your Git repository
 
@@ -342,9 +350,12 @@ more time to do actual data science. Additionally, CML takes care of your
 versioning for you and makes sure you can track your models over time.
 
 In this guide, we explored how to set up CML for a daily training job using a
-dedicated runner. We automatically provisioned this runner on AWS, exported the resulting files to our Git repository, and terminated the runner to prevent racking up our AWS bill.
+dedicated runner. We automatically provisioned this runner on AWS, exported the
+resulting files to our Git repository, and terminated the runner to prevent
+racking up our AWS bill.
 
-In a follow-up post we will explore how to use DVC when the resulting model is too large to store directly in our Git repository.
+In a follow-up post we will explore how to use DVC when the resulting model is
+too large to store directly in our Git repository.
 
 Another great extension of our CI/CD would be a `deploy` step to bring the
 latest version of our model into production. This step might be conditional on
