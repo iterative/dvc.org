@@ -1,13 +1,14 @@
 # Run Experiments
 
 You can change your hyperparameters or select a different dataset and re-run
-your model training using DVC Studio.
+your model training using Iterative Studio.
 
-## How DVC Studio runs ML experiments
+## How Iterative Studio runs ML experiments
 
-DVC Studio uses your regular CI/CD setup (e.g. GitHub Actions) to run the
-experiments. This means that to enable experimentation from DVC Studio, you need
-to integrate your Git repository with a CI/CD setup (e.g. GitHub Actions).
+Iterative Studio uses your regular CI/CD setup (e.g. GitHub Actions) to run the
+experiments. This means that to enable experimentation from Iterative Studio,
+you need to integrate your Git repository with a CI/CD setup (e.g. GitHub
+Actions).
 
 Then, on each Git commit, the CI/CD setup will get invoked. If this setup
 includes a model training process, it will be triggered, which means that your
@@ -22,34 +23,34 @@ executes.
 > Due to access restrictions, you cannot run experiments on the demo view
 > (`example-get-started`) that is provided to you by default. Once you create
 > views for your ML project repositories, you can follow the instructions given
-> below to run experiments directly from DVC Studio.
+> below to run experiments directly from Iterative Studio.
 
 ## Submit a new experiment
 
-Watch this video for an overview of how you can run experiments from DVC Studio,
-or read below for details.
+Watch this video for an overview of how you can run experiments from Iterative
+Studio, or read below for details.
 
 https://www.youtube.com/watch?v=nXJXR-zBvHQ
 
-To run experiments from DVC Studio, first you need to determine the Git commit
-(experiment) on which you want to iterate. Select the commit that you want to
-use and click the `Run` button. A form will let you specify all the changes that
-you want to make to your experiment. On this form, there are 2 types of inputs
-that you can change:
+To run experiments from Iterative Studio, first you need to determine the Git
+commit (experiment) on which you want to iterate. Select the commit that you
+want to use and click the `Run` button. A form will let you specify all the
+changes that you want to make to your experiment. On this form, there are 2
+types of inputs that you can change:
 
 1. **Input data files**: You can change datasets that are used for model
    training. The list of files that you can change will depend on your ML
    project. For instance, in the `example-get-started` project, you can change
-   the `data.xml` file. DVC Studio identifies and all the files used in your
+   the `data.xml` file. Iterative Studio identifies all the files used in your
    project, which means that if you select the
    `Show all input parameters (including hidden)` option, then you can also
    change the hidden files such as the `model.pkl` model file and the
    `scores.json` metrics file. You can also choose not to change any input data
    files if you only wish to change the values of one or more hyperparameters.
-2. **Hyperparameters**: DVC Studio lists all the hyperparameters of your project
-   and you can change their values as per the new experiment that you want to
-   run. For instance, in the `example-get-started` project, you can change
-   `max_features` (the maximum number of features that the model uses),
+2. **Hyperparameters**: Iterative Studio lists all the hyperparameters of your
+   project and you can change their values as per the new experiment that you
+   want to run. For instance, in the `example-get-started` project, you can
+   change `max_features` (the maximum number of features that the model uses),
    `ngrams`, etc. You can also choose not to change any hyperparameters if you
    only wish to change one or more input data files.
 

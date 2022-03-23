@@ -1,9 +1,9 @@
 # Prepare Your Repositories
 
-DVC Studio creates views by identifying datasets, metrics and hyperparameters
-defined in your Git repositories. These values are stored in your Git
-repositories as JSON or YAML files. You can add these values to your Git
-repositories in two ways:
+Iterative Studio creates views by identifying datasets, metrics and
+hyperparameters defined in your Git repositories. These values are stored in
+your Git repositories as JSON or YAML files. You can add these values to your
+Git repositories in two ways:
 
 1. **Set up DVC repositories**: You can use [DVC](https://dvc.org/) and Git to
    version your code, data and models all within your Git repositories. Data

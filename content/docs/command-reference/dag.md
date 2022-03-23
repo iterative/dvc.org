@@ -15,8 +15,8 @@ positional arguments:
 
 ## Description
 
-Displays the stages of a pipeline up to the `target` stage. If omitted, it will
-show the full project DAG.
+Displays the stages of a pipeline up to the `target` stage. If the `target` is
+omitted, it will show the full project DAG.
 
 ### Directed acyclic graph
 
