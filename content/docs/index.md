@@ -5,6 +5,26 @@ Data Version Control, or DVC, is a data and ML
 advantage of the existing engineering toolset that you're already familiar with
 (Git, CI/CD, etc.).
 
+<admon>
+
+I don't need a title since I'm just a block of text.
+
+</admon>
+
+<admon title type="warn">
+
+- I need
+- a title
+- since I'm a list
+
+</admon>
+
+<admon title="Custom Title" type="tip">
+
+I need a custom title for some reason
+
+</admon>
+
 <cards>
 
   <card href="/doc/start" heading="Get Started">
