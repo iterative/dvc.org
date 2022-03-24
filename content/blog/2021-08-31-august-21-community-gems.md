@@ -112,7 +112,7 @@ The main difference now is that we restart workflows with unfinished jobs.
 
 Thanks for such a good question @andee96!
 
-### [Q: Can I change an endpoint that is being? Or does `cml-publish` always save the artifacts on this endpoint?](https://discord.com/channels/485586884165107732/728693131557732403/864444303169421322)
+### [Q: Can I change an endpoint that is being? Or does `cml publish` always save the artifacts on this endpoint?](https://discord.com/channels/485586884165107732/728693131557732403/864444303169421322)
 
 Good question @Nwp8nice!
 
