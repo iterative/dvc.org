@@ -276,7 +276,7 @@ jobs:
           cml publish plot.png --md >> report.md
 
           # send the report to GitHub for display  
-          cml-send-comment report.md
+          cml send-comment report.md
 ```
 
 You can see the entire

@@ -166,8 +166,8 @@ To install CML as an `npm` package on your runner, we recommend:
 npm i -g @dvcorg/cml
 ```
 
-Once this is done, you should be able to execute functions like `cml-publish`
-and `cml-send-comment` on your runner.
+Once this is done, you should be able to execute functions like `cml publish`
+and `cml send-comment` on your runner.
 
 For more tips about using CML without Docker,
 [see our docs](https://github.com/iterative/cml#install-cml-as-a-package).
