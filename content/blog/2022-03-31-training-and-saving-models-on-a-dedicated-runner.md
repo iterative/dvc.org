@@ -46,7 +46,11 @@ following on a daily basis:
 1. Save the model and its metrics to a GitHub repository
 1. Terminate the AWS EC2 instance
 
+<<<<<<< HEAD
 In a follow-up post we will expand upon this by using [DVC](https://dvc.org/) to designate a remote
+=======
+In a follow-up post we will expand upon this by using DVC to designate a remote
+>>>>>>> ed5b33ccdb4e1c859be2c98f0171de4a146eebdd
 storage for our resulting models. But let's focus on CML first!
 
 All files needed for this guide can be found in
@@ -149,6 +153,7 @@ our CI/CD to provision a runner and run the script. We define our workflow in
 will automatically go through the workflow whenever it is triggered. In this
 case the triggers are a manual run and the daily schedule.
 
+<<<<<<< HEAD
 <admon type="info">
 The name of the workflow doesn’t matter, as long as it’s a <code>.yaml</code> and
 located in the <code>.github/workflows</code> directory. You can have multiple workflows
@@ -156,6 +161,29 @@ in there as well. You can learn more in the
 <a href="https://docs.github.com/en/actions/learn-github-actions/workflow-syntax-for-github-actions">documentation</a>
 here.
 </admon>
+=======
+> 💡 The name of the workflow doesn’t matter, as long as it’s a `.yaml` and
+> located in the `.github/workflows` directory. You can have multiple workflows
+> in there as well. You can learn more in the
+> [documentation](https://docs.github.com/en/actions/learn-github-actions/workflow-syntax-for-github-actions)
+> here.
+
+The workflow we defined first provisions a runner on AWS and then uses that
+runner to train the model. Once we have the outputs saved, we want to export
+them out of the runner. That way we can simply discard the runner once we are
+done training. You will be happy for that once your AWS bill arrives.
+
+## 1. Push the model directly to a Git repository
+
+We can export the model from our runner to our repository. The following GitHub
+workflow deploys a runner on AWS, generates some data, trains and saves a model
+(see `train.py`), pushes the results to a new experiment branch, and creates a
+merge request for those results.
+
+Using `cml pr .` is the command that takes all of our files, pushes them to a
+new branch, and creates a merge request. Because we saved the model as a binary
+in `model/random_forest.joblib` this file is included in the merge request.
+>>>>>>> ed5b33ccdb4e1c859be2c98f0171de4a146eebdd
 
 ```yaml
 name: CML
@@ -235,12 +263,19 @@ train-model:
 ```
 
 Et voila! We are now running a daily model training on an AWS EC2 instance and
+<<<<<<< HEAD
 saving the resulting model to our GitHub repository.
 
 There is still some room
 for improvement, though. This approach works well when our resulting model is
 small, but we wouldn't want to store large models in our Git repository. In a
 follow-up post we will describe how we can use [DVC](https://dvc.org/), another Iterative product,
+=======
+saving the resulting model to our GitHub repository. There is still some room
+for improvement, though. This approach works well when our resulting model is
+small, but we wouldn't want to store large models in our Git repository. In a
+follow-up post we will describe how we can use DVC, another Iterative product,
+>>>>>>> ed5b33ccdb4e1c859be2c98f0171de4a146eebdd
 for storage when we're dealing with larger files.
 
 <!-- ## 2. Push the model to a DVC remote and reference that file in your Git repository
