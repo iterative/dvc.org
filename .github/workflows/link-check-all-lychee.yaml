@@ -16,6 +16,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
         with:
-          args: --verbose --no-progress './**/*.md' './**/*.html'
+          args:
+            --verbose --no-progress -b https://dvc.org/ -a 429 './**/*.md'
+            './**/*.html'
           format: json
           output: /tmp/output.json
