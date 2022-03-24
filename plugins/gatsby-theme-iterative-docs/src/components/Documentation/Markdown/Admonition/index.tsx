@@ -32,16 +32,21 @@ const Admonition: React.FC<{
 }> = ({ title, type = defaultType, children, icon = type }) => {
   const setType = genericTitles[type] ? type : defaultType
   const iconContent = icons[icon] || ''
+  const needsTitle = typeof title === 'string'
 
   return (
     <div
       className={cn(styles.admonition, styles[setType])}
       style={{ '--icon': `"${iconContent}"` } as React.CSSProperties}
     >
-      <p className={cn(styles.title, !iconContent && styles.noIcon)}>
-        {title || genericTitles[setType]}
-      </p>
-      <div className={styles.content}>{children}</div>
+      {needsTitle && (
+        <p className={cn(styles.title, !iconContent && styles.noIcon)}>
+          {title || genericTitles[setType]}
+        </p>
+      )}
+      <div className={cn(styles.content, needsTitle && styles.noIcon)}>
+        {children}
+      </div>
     </div>
   )
 }
