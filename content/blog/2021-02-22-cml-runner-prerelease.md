@@ -105,8 +105,8 @@ train-model:
 
         echo "## Report from your EC2 Instance" > report.md
         cat metrics.txt >> report.md
-        cml-publish "confusion_matrix.png" --md >> report.md
-        cml-send-comment report.md
+        cml publish "plot.png" --md >> report.md
+        cml send-comment report.md
 ```
 
 You'll get a pull request that looks something like this:

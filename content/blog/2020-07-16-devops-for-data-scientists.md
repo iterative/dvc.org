@@ -265,8 +265,7 @@ jobs:
         env:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
         run: |
-
-          # train.py outputs metrics.txt and confusion_matrix.png  
+          # train.py outputs metrics.txt and plot.png
           pip3 install -r requirements.txt          
           python train.py                    
 
@@ -274,7 +273,7 @@ jobs:
           cat metrics.txt >> report.md      
 
           # add our confusion matrix to report.md
-          cml-publish confusion_matrix.png --md >> report.md 
+          cml publish plot.png --md >> report.md
 
           # send the report to GitHub for display  
           cml-send-comment report.md
