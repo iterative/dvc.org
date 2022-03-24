@@ -3,7 +3,8 @@ title: Training and saving models with CML on a dedicated AWS EC2 runner
 date: 2022-03-31
 description:
   In this guide we will show how you can use CML to automatically retrain a
-  model and save its outputs to your Github repository using a provisioned AWS EC2 runner.
+  model and save its outputs to your Github repository using a provisioned AWS
+  EC2 runner.
 descriptionLong: |
   We can use CML to automatically retrain models whenever data, model code,
   or parameters change. In this guide we show how to create a pipeline that
