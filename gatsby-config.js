@@ -184,6 +184,7 @@ if (process.env.ANALYZE) {
 }
 
 module.exports = {
+  trailingSlash: 'never',
   plugins,
   siteMetadata: {
     description,
