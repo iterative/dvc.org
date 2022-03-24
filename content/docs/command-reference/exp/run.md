@@ -126,9 +126,7 @@ committing them to the Git repo. Unnecessary ones can be [cleared] with
 > This is based on our [Get Started](/doc/start/experiments), where you can find
 > the actual source code.
 
-<details>
-
-### Expand to prepare the example ML project
+<details title="Expand to prepare the example ML project">
 
 Clone the DVC repo and download the data it <abbr>depends</abbr> on:
 

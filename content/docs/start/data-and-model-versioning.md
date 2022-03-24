@@ -19,9 +19,7 @@ or watch our video to learn about versioning data with DVC!
 
 https://youtu.be/kLKBcPonMYw
 
-<details>
-
-### ⚙️ Expand to get an example dataset.
+<details title="⚙️ Expand to get an example dataset.">
 
 Having initialized a project in the previous section, we can get the data file
 (which we'll be using later) like this:
@@ -59,9 +57,7 @@ $ git commit -m "Add raw data"
 
 The data, meanwhile, is listed in `.gitignore`.
 
-<details>
-
-### 💡 Expand to see what happens under the hood.
+<details title="💡 Expand to see what happens under the hood.">
 
 `dvc add` moved the data to the project's <abbr>cache</abbr>, and
 <abbr>linked</abbr> it back to the <abbr>workspace</abbr>. The `.dvc/cache`
@@ -104,9 +100,7 @@ $ git commit -m "Configure remote storage"
 > Drive, Azure Blob Storage, and HDFS. See `dvc remote add` for more details and
 > examples.
 
-<details>
-
-### ⚙️ Expand to set up remote storage.
+<details title="⚙️ Expand to set up remote storage.">
 
 DVC remotes let you store a copy of the data tracked by DVC outside of the local
 cache (usually a cloud storage service). For simplicity, let's set up a _local
@@ -145,9 +139,7 @@ $ dvc push
 Usually, we also want to `git commit` and `git push` the corresponding `.dvc`
 files.
 
-<details>
-
-### 💡 Expand to see what happens under the hood.
+<details title="💡 Expand to see what happens under the hood.">
 
 `dvc push` copied the data <abbr>cached</abbr> locally to the remote storage we
 set up earlier. The remote storage directory should look like this:
@@ -166,9 +158,7 @@ Having DVC-tracked data and models stored remotely, it can be downloaded when
 needed in other copies of this <abbr>project</abbr> with `dvc pull`. Usually, we
 run it after `git clone` and `git pull`.
 
-<details>
-
-### ⚙️ Expand to delete locally cached data.
+<details title="⚙️ Expand to delete locally cached data.">
 
 If you've run `dvc push`, you can delete the cache (`.dvc/cache`) and
 `data/data.xml` to experiment with `dvc pull`:
@@ -205,9 +195,7 @@ $ dvc pull
 When you make a change to a file or directory, run `dvc add` again to track the
 latest version:
 
-<details>
-
-### ⚙️ Expand to make some changes.
+<details title="⚙️ Expand to make some changes.">
 
 Let's say we obtained more data from some external source. We can pretend this
 is the case by doubling the dataset:
@@ -254,9 +242,7 @@ $ git checkout <...>
 $ dvc checkout
 ```
 
-<details>
-
-### ⚙️ Expand to get the previous version of the dataset.
+<details title="⚙️ Expand to get the previous version of the dataset.">
 
 Let's go back to the original version of the data:
 

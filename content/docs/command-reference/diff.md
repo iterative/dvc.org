@@ -82,9 +82,7 @@ for example when `dvc init` was used with the `--no-scm` option.
 
 For these examples we can use the [Get Started](/doc/start) project.
 
-<details>
-
-### Click and expand to set up the project to run examples
+<details title="Click and expand to set up the project to run examples">
 
 Start by cloning our example repo if you don't already have it:
 
@@ -119,9 +117,7 @@ $ dvc diff
 
 ## Example: Comparing workspace with arbitrary commits
 
-<details>
-
-### Click and expand to set up the example
+<details title="Click and expand to set up the example">
 
 Let's checkout the
 [2-track-data](https://github.com/iterative/example-get-started/releases/tag/2-track-data)
@@ -149,9 +145,7 @@ files summary: 1 added, 0 deleted, 0 modified
 
 ## Example: Comparing tags or branches
 
-<details>
-
-### Click and expand to set up the example
+<details title="Click and expand to set up the example">
 
 Our example repository has the `baseline-experiment` and `bigrams-experiment`
 [tags](https://github.com/iterative/example-get-started/tags) tags, that
@@ -223,9 +217,7 @@ It outputs:
 
 ## Example: Renamed files
 
-<details>
-
-### Click and expand to set up the example
+<details title="Click and expand to set up the example">
 
 Having followed the previous examples' setup, move into the
 `example-get-started/` directory. Then make sure that you have the latest code

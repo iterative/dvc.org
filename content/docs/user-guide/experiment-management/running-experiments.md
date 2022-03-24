@@ -112,9 +112,7 @@ $ dvc exp run --queue -S units=256
 Queued experiment '4109ead' for future execution.
 ```
 
-<details>
-
-### How are experiments queued?
+<details title="How are experiments queued?">
 
 Queued experiments are created similar to
 [Git stash](https://www.git-scm.com/docs/git-stash). The last experiment queued
@@ -138,9 +136,7 @@ Their execution happens outside your <abbr>workspace</abbr> in temporary
 directories for isolation, so each experiment is derived from the workspace at
 the time it was queued.
 
-<details>
-
-### How are experiments isolated?
+<details title="How are experiments isolated?">
 
 DVC creates a copy of the experiment's original workspace in `.dvc/tmp/exps/`
 and runs it there. All workspaces share the single project <abbr>cache</abbr>,

@@ -79,9 +79,7 @@ $ wget https://example.com/path/to/data.csv
 
 ## Examples
 
-<details>
-
-### Click for Amazon S3 example
+<details title="Click for Amazon S3 example">
 
 This command will copy an S3 object into the current working directory with the
 same file name:
@@ -106,9 +104,7 @@ configuration, you can use the parameters described in `dvc remote modify`.
 
 </details>
 
-<details>
-
-### Click for Google Cloud Storage example
+<details title="Click for Google Cloud Storage example">
 
 ```dvc
 $ dvc get-url gs://bucket/path file
@@ -118,9 +114,7 @@ The above command downloads the `/path` file (or directory) into `./file`.
 
 </details>
 
-<details>
-
-### Click for SSH example
+<details title="Click for SSH example">
 
 ```dvc
 $ dvc get-url ssh://user@example.com/path/to/data
@@ -131,9 +125,7 @@ directory).
 
 </details>
 
-<details>
-
-### Click for HDFS example
+<details title="Click for HDFS example">
 
 ```dvc
 $ dvc get-url hdfs://user@example.com/path/to/file
@@ -141,9 +133,7 @@ $ dvc get-url hdfs://user@example.com/path/to/file
 
 </details>
 
-<details>
-
-### Click for HTTP example
+<details title="Click for HTTP example">
 
 > Both HTTP and HTTPS protocols are supported.
 
@@ -153,9 +143,7 @@ $ dvc get-url https://example.com/path/to/file
 
 </details>
 
-<details>
-
-### Click for WebHDFS example
+<details title="Click for WebHDFS example">
 
 ```dvc
 $ dvc get-url webhdfs://user@example.com/path/to/file
@@ -163,9 +151,7 @@ $ dvc get-url webhdfs://user@example.com/path/to/file
 
 </details>
 
-<details>
-
-### Click and expand for a local example
+<details title="Click and expand for a local example">
 
 ```dvc
 $ dvc get-url /local/path/to/data

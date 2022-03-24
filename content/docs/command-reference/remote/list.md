@@ -40,9 +40,7 @@ local config files (in that order).
 
 For simplicity, let's add a default local remote:
 
-<details>
-
-### What is a "local remote" ?
+<details title='What is a "local remote" ?'>
 
 While the term may seem contradictory, it doesn't have to be. The "local" part
 refers to the type of location where the storage is: another directory in the

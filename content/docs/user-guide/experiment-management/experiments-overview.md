@@ -11,9 +11,7 @@ with temporary commits and branches.
 
 [run]: /doc/user-guide/experiment-management/running-experiments
 
-<details>
-
-### ⚙️ How does DVC track experiments?
+<details title="⚙️ How does DVC track experiments?">
 
 Experiments are custom [Git references](/blog/experiment-refs) (found in
 `.git/refs/exps`) with one or more commits based on `HEAD`. These commits are

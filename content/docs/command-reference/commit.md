@@ -98,9 +98,7 @@ pipeline stages, such as the <abbr>DVC project</abbr> created for the
 [Get Started](/doc/start). Then we can see what happens with `git commit` and
 `dvc commit` in different situations.
 
-<details>
-
-### Click and expand to set up the project
+<details title="Click and expand to set up the project">
 
 Start by cloning our example repo if you don't already have it:
 

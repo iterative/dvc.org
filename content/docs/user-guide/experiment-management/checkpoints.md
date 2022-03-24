@@ -19,9 +19,7 @@ them using the `--rev` and `--reset` options of `dvc exp run` (see also the
 [execution]:
   /doc/user-guide/experiment-management/running-experiments#checkpoint-experiments
 
-<details>
-
-### ⚙️ How are checkpoints captured?
+<details title="⚙️ How are checkpoints captured?">
 
 Instead of a single reference like [regular experiments], checkpoint experiments
 have multiple commits under the custom Git reference (in `.git/refs/exps`),
@@ -41,9 +39,7 @@ dataset.
 
 https://youtu.be/PcDo-hCvYpw
 
-<details>
-
-### ⚙️ Setting up the project
+<details title="⚙️ Setting up the project">
 
 You can follow along with the steps here or you can clone the repo directly from
 GitHub and play with it. To clone the repo, run the following commands.

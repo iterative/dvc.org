@@ -136,9 +136,7 @@ pipeline stages, such as the <abbr>DVC project</abbr> created in our
 [Get Started](/doc/start) section. Then we can see what happens with
 `dvc install` in different situations.
 
-<details>
-
-### Click and expand to set up the project
+<details title="Click and expand to set up the project">
 
 Start by cloning our example repo if you don't already have it:
 

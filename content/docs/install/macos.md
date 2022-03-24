@@ -40,9 +40,7 @@ Depending on the type of the [remote storage](/doc/command-reference/remote) you
 plan to use, you might need to install optional dependencies: `[s3]`, `[azure]`,
 `[gdrive]`, `[gs]`, `[oss]`, `[ssh]`. Use `[all]` to include them all.
 
-<details>
-
-### Example: with support for Amazon S3 storage
+<details title="Example: with support for Amazon S3 storage">
 
 ```dvc
 $ pip install "dvc[s3]"
@@ -66,9 +64,7 @@ Depending on the type of the [remote storage](/doc/command-reference/remote) you
 plan to use, you might need to install optional dependencies: `dvc-s3`,
 `dvc-azure`, `dvc-gdrive`, `dvc-gs`, `dvc-oss`, `dvc-ssh`.
 
-<details>
-
-### Example: with support for Amazon S3 storage
+<details title="Example: with support for Amazon S3 storage">
 
 ```dvc
 $ conda install -c conda-forge mamba # installs much faster than conda

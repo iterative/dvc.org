@@ -168,9 +168,7 @@ produces a regular stage in `dvc.yaml`.
 To illustrate these examples we will be using the <abbr>project</abbr> explained
 in the [Get Started](/doc/start).
 
-<details>
-
-### Click and expand to set up example
+<details title="Click and expand to set up example">
 
 Start by cloning our example repo if you don't already have it. Then move into
 the repo and checkout the
@@ -285,9 +283,7 @@ $ unzip code.zip
 $ rm -f code.zip
 ```
 
-<details>
-
-### Click and expand to set up the environment
+<details title="Click and expand to set up the environment">
 
 Let's install the requirements. But before we do that, we **strongly** recommend
 creating a

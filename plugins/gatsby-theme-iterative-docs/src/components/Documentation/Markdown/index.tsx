@@ -24,37 +24,56 @@ import { useLocation } from '@reach/router'
 
 import GithubSlugger from 'github-slugger'
 
-const Details: React.FC<{ slugger: GithubSlugger }> = ({
+const Details: React.FC<{ slugger: GithubSlugger; title: string }> = ({
+  title,
   slugger,
   children
 }) => {
   const [isOpen, setIsOpen] = useState(false)
   const location = useLocation()
+  let trigger
 
-  const filteredChildren: ReactNode[] = (
-    children as Array<{ props: { children: ReactNode } } | string>
-  ).filter(child => child !== '\n')
-  const firstChild = filteredChildren[0] as JSX.Element
+  if (!title) {
+    const filteredChildren: ReactNode[] = (
+      children as Array<{ props: { children: ReactNode } } | string>
+    ).filter(child => child !== '\n')
+    const firstChild = filteredChildren[0] as JSX.Element
 
-  if (!/^h.$/.test(firstChild.type)) {
-    throw new Error('The first child of a details element must be a heading!')
+    if (!/^h.$/.test(firstChild.type)) {
+      throw new Error(
+        'Either provide title as props to details element or the first child of a details element must be a heading!'
+      )
+    }
+
+    /*
+       To work around auto-linked headings, the last child of the heading node
+       must be removed. The only way around this is the change the autolinker,
+       which we currently have as an external package.
+     */
+    const triggerChildren: ReactNode[] = firstChild.props.children.slice(
+      0,
+      firstChild.props.children.length - 1
+    ) as ReactNode[]
+
+    title = (triggerChildren as any[]).reduce((acc, cur) => {
+      return (acc +=
+        typeof cur === 'string'
+          ? cur
+          : typeof cur === 'object'
+          ? cur?.props?.children?.toString()
+          : '')
+    }, '')
+
+    trigger = triggerChildren
+    children = filteredChildren.slice(1)
+  } else {
+    title = title.trim()
+    trigger = title
   }
 
-  /*
-     To work around auto-linked headings, the last child of the heading node
-     must be removed. The only way around this is the change the autolinker,
-     which we currently have as an external package.
-   */
-  const triggerChildren: ReactNode[] = firstChild.props.children.slice(
-    0,
-    firstChild.props.children.length - 1
-  ) as ReactNode[]
-
-  let slug = slugger.slug(triggerChildren.toString())
-  if (slug[0] === '️') {
-    slug = slug.slice(1)
-  }
-  const id = slug.startsWith('-') ? slug.slice(1) : slug
+  let slug = slugger.slug(title)
+  slug = slug.startsWith('-') ? slug.slice(1) : slug
+  const id = slug.endsWith('-') ? slug.slice(0, -1) : slug
 
   useEffect(() => {
     if (location.hash === `#${id}`) {
@@ -66,25 +85,17 @@ const Details: React.FC<{ slugger: GithubSlugger }> = ({
     }
   }, [location.hash])
 
-  /*
-     Collapsible's trigger type wants ReactElement, so we force a TS cast from
-     ReactNode here.
-   */
   return (
     <div id={id} className="collapsableDiv">
-      <Link
-        href={`#${id}`}
-        aria-label={triggerChildren.toString()}
-        className="anchor after"
-      >
+      <Link href={`#${id}`} aria-label={title} className="anchor after">
         <span dangerouslySetInnerHTML={{ __html: linkIcon }}></span>
       </Link>
       <Collapsible
         open={isOpen}
-        trigger={triggerChildren as unknown as ReactElement}
+        trigger={trigger as unknown as ReactElement}
         transitionTime={200}
       >
-        {filteredChildren.slice(1)}
+        {children}
       </Collapsible>
     </div>
   )

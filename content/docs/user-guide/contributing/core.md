@@ -173,9 +173,7 @@ If one of your colleagues has already gone through this guide, you could just
 ask for their `remotes_env` file and Google Cloud credentials, and skip any env
 manipulations below.
 
-<details>
-
-### Click for Amazon S3 instructions
+<details title="Click for Amazon S3 instructions">
 
 Install
 [aws cli](https://docs.aws.amazon.com/en_us/cli/latest/userguide/cli-chap-install.html)
@@ -192,9 +190,7 @@ $ export DVC_TEST_AWS_REPO_BUCKET="...TEST-S3-BUCKET..."
 
 </details>
 
-<details>
-
-### Click for Microsoft Azure Blob Storage instructions
+<details title="Click for Microsoft Azure Blob Storage instructions">
 
 Install [Node.js](https://nodejs.org/en/download/) and then install and run
 Azurite:
@@ -214,9 +210,7 @@ $ export AZURE_STORAGE_CONNECTION_STRING="DefaultEndpointsProtocol=http;AccountN
 
 </details>
 
-<details>
-
-### Click for Google Drive instructions
+<details title="Click for Google Drive instructions">
 
 > 💡 Please remember that Google Drive access tokens are personal credentials
 > and should not be shared with anyone, otherwise risking unauthorized usage of
@@ -235,9 +229,7 @@ $ export GDRIVE_USER_CREDENTIALS_DATA='mysecret'
 
 </details>
 
-<details>
-
-### Click for Google Cloud Storage instructions
+<details title="Click for Google Cloud Storage instructions">
 
 Go through the [quick start](https://cloud.google.com/sdk/docs/quickstarts) for
 your OS. After that, you should have the `gcloud` command line tool available,
@@ -275,9 +267,7 @@ may use different names.
 
 </details>
 
-<details>
-
-### Click for HDFS instructions
+<details title="Click for HDFS instructions">
 
 Tests currently only work on Linux. First you need to set up passwordless SSH
 auth to localhost:

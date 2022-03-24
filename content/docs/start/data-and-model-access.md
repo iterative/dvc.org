@@ -73,9 +73,7 @@ This is similar to `dvc get` + `dvc add`, but the resulting `.dvc` files
 includes metadata to track changes in the source repository. This allows you to
 bring in changes from the data source later using `dvc update`.
 
-<details>
-
-#### 💡 Expand to see what happens under the hood.
+<details title="💡 Expand to see what happens under the hood.">
 
 > Note that the
 > [dataset registry](https://github.com/iterative/dataset-registry) repository

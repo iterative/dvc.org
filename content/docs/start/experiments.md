@@ -19,9 +19,7 @@ the [`example-dvc-experiments`][ede] project.
 
 [ede]: https://github.com/iterative/example-dvc-experiments
 
-<details>
-
-## ⚙️ Initializing a project with DVC experiments
+<details title="⚙️ Initializing a project with DVC experiments">
 
 If you already have a DVC project, that's great. You can start to use `dvc exp`
 commands right away to run experiments in your project. (See the [User Guide]
@@ -68,9 +66,7 @@ models, plots, and metrics in the respective directories. The experiment is then
 associated with the values found in the parameters file (`params.yaml`) and
 other dependencies, as well as the metrics produced.
 
-<details>
-
-### ℹ️ More information about (Hyper)parameters
+<details title="ℹ️ More information about (Hyper)parameters">
 
 It's pretty common for data science projects to include configuration files that
 define adjustable parameters to train a model, adjust model architecture, do
@@ -127,9 +123,7 @@ Experiment results have been applied to your workspace.
 ...
 ```
 
-<details>
-
-### ⚙️ Run multiple experiments in parallel
+<details title="⚙️ Run multiple experiments in parallel">
 
 Instead of running the experiments one-by-one, we can define them to run in a
 batch. This is especially handy when you have long running experiments.
@@ -206,9 +200,7 @@ $ dvc exp show --drop 'Created|train|loss'
  ───────────────────────────────────────────────────────────────
 ```
 
-<details>
-
-### ℹ️ More information about metrics
+<details title="ℹ️ More information about metrics">
 
 Metrics are what you use to evaluate your models. DVC associates metrics to
 experiments for later comparison. Any scalar value can be used as a metric. You

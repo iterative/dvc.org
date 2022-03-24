@@ -36,9 +36,7 @@ Stages whose dependencies are outputs from other stages form
 [pipelines](/doc/command-reference/dag). `dvc repro` can be used to rebuild
 their dependency graph, and execute them.
 
-<details>
-
-### 💡 Avoiding unexpected behavior
+<details title="💡 Avoiding unexpected behavior">
 
 We don't want to tell anyone how to write their code or what programs to use!
 However, please be aware that in order to prevent unexpected results when DVC

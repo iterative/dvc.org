@@ -63,9 +63,7 @@ $ source .env/bin/activate
 $ pip install -r requirements.txt
 ```
 
-<details>
-
-### Expand to learn about DVC internals
+<details title="Expand to learn about DVC internals">
 
 The repository you cloned is already DVC-initialized. It already contains a
 `.dvc/` directory with the `config` and `.gitignore` files. These and other
@@ -160,9 +158,7 @@ $ git commit -m "First model, trained with 1000 images"
 $ git tag -a "v1.0" -m "model v1.0, 1000 images"
 ```
 
-<details>
-
-### Expand to learn more about how DVC works
+<details title="Expand to learn more about how DVC works">
 
 As we mentioned briefly, DVC does not commit the `data/` directory and
 `model.h5` file with Git. Instead, `dvc add` stores them in the

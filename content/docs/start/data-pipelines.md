@@ -28,9 +28,7 @@ with Git) which form the steps of a _pipeline_. Stages also connect code to its
 corresponding data _input_ and _output_. Let's transform a Python script into a
 [stage](/doc/command-reference/run):
 
-<details>
-
-### ⚙️ Expand to download example code.
+<details title="⚙️ Expand to download example code.">
 
 Get the sample code like this:
 
@@ -79,9 +77,7 @@ DVC uses these metafiles to track the data used and produced by the stage, so
 there's no need to use `dvc add` on `data/prepared`
 [manually](/doc/start/data-and-model-versioning).
 
-<details>
-
-### 💡 Expand to see what happens under the hood.
+<details title="💡 Expand to see what happens under the hood.">
 
 The command options used above mean the following:
 
@@ -173,9 +169,7 @@ $ dvc run -n featurize \
 
 The `dvc.yaml` file is updated automatically and should include two stages now.
 
-<details>
-
-### 💡 Expand to see what happens under the hood.
+<details title="💡 Expand to see what happens under the hood.">
 
 The changes to the `dvc.yaml` should look like this:
 
@@ -205,9 +199,7 @@ The changes to the `dvc.yaml` should look like this:
 
 </details>
 
-<details>
-
-### ⚙️ Expand to add more stages.
+<details title="⚙️ Expand to add more stages.">
 
 Let's add the training itself. Nothing new this time; just the same `dvc run`
 command with the same set of options:
@@ -236,9 +228,7 @@ reproduce a pipeline:
 $ dvc repro
 ```
 
-<details>
-
-### ⚙️ Expand to have some fun with it.
+<details title="⚙️ Expand to have some fun with it.">
 
 Let's try to play a little bit with it. First, let's try to change one of the
 parameters for the training stage:
@@ -272,9 +262,7 @@ it also doesn't rerun `train`! The previous run with the same set of inputs
 
 </details>
 
-<details>
-
-### 💡 Expand to see what happens under the hood.
+<details title="💡 Expand to see what happens under the hood.">
 
 `dvc repro` relies on the <abbr>DAG</abbr> definition from `dvc.yaml`, and uses
 `dvc.lock` to determine what exactly needs to be run.

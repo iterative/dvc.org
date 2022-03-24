@@ -29,9 +29,7 @@ $ dvc run -n evaluate \
                  data/features scores.json prc.json roc.json
 ```
 
-<details>
-
-### 💡 Expand to see what happens under the hood.
+<details title="💡 Expand to see what happens under the hood.">
 
 The `-M` option here specifies a metrics file, while `--plots-no-cache`
 specifies a plots file (produced by this stage) which will not be
@@ -164,9 +162,7 @@ featurize:
     - data/features
 ```
 
-<details>
-
-### ⚙️ Expand to recall how it was generated.
+<details title="⚙️ Expand to recall how it was generated.">
 
 The `featurize` stage
 [was created](/doc/start/data-pipelines#dependency-graphs-dags) with this

@@ -24,9 +24,7 @@ plan to use, you might need to install optional dependencies: `[s3]`, `[azure]`,
 > installation. If restarting the terminal isn't desirable (e.g. containers),
 > it's also possible to manually edit the `PATH` env variable.
 
-<details>
-
-### Example: with support for Amazon S3 storage
+<details title="Example: with support for Amazon S3 storage">
 
 ```dvc
 $ pip install "dvc[s3]"
@@ -50,9 +48,7 @@ Depending on the type of the [remote storage](/doc/command-reference/remote) you
 plan to use, you might need to install optional dependencies: `dvc-s3`,
 `dvc-azure`, `dvc-gdrive`, `dvc-gs`, `dvc-oss`, `dvc-ssh`.
 
-<details>
-
-### Example: with support for Amazon S3 storage
+<details title="Example: with support for Amazon S3 storage">
 
 ```dvc
 $ conda install -c conda-forge mamba
@@ -76,9 +72,7 @@ $ snap install --classic dvc
 
 ## Install from repository
 
-<details>
-
-### On Debian/Ubuntu
+<details title="On Debian/Ubuntu">
 
 ```dvc
 $ sudo wget \
@@ -91,9 +85,7 @@ $ sudo apt install dvc
 
 </details>
 
-<details>
-
-### On Fedora/CentOS
+<details title="On Fedora/CentOS">
 
 ```dvc
 $ sudo wget \
@@ -112,9 +104,7 @@ Get the binary package from the big "Download" button on the [home page](/), or
 from the [release page](https://github.com/iterative/dvc/releases/) on GitHub.
 Then install it with the following command.
 
-<details>
-
-### On Debian/Ubuntu
+<details title="On Debian/Ubuntu">
 
 ```dvc
 $ sudo apt install ./dvc_0.62.1_amd64.deb
@@ -122,9 +112,7 @@ $ sudo apt install ./dvc_0.62.1_amd64.deb
 
 </details>
 
-<details>
-
-### On Fedora/CentOS
+<details title="On Fedora/CentOS">
 
 ```dvc
 $ sudo yum install dvc-0.62.1-1.x86_64.rpm

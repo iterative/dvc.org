@@ -97,9 +97,7 @@ We'll use tabular metrics file `train.json` for this example:
 }
 ```
 
-<details>
-
-### Expand for YAML format
+<details title="Expand to prepare the example ML project">
 
 Here's a corresponding `train.yaml` metrics file:
 
@@ -154,9 +152,7 @@ epoch,accuracy,loss,val_accuracy,val_loss
 7,0.9954,0.01396906608727198,0.9802,0.07247738889862157
 ```
 
-<details>
-
-### Expand for TSV format
+<details title="Expand for TSV format">
 
 Here's a corresponding `train.tsv` metrics file:
 

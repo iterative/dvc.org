@@ -117,7 +117,7 @@ pipeline stages, such as the <abbr>DVC project</abbr> created for the
 [Get Started](/doc/start). Then we can see what `dvc fetch` does in different
 scenarios.
 
-<details>
+<details title="Click and expand to set up the example">
 
 ### Click and expand to set up the project
 
