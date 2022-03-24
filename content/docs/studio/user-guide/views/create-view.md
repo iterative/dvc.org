@@ -2,14 +2,14 @@
 
 To create a new view, follow these steps.
 
-1. Sign in to your [DVC Studio](https://studio.iterative.ai/) dashboard using
-   GitHub, GitLab or Bitbucket.
+1. Sign in to your [Iterative Studio](https://studio.iterative.ai/) dashboard
+   using GitHub, GitLab or Bitbucket.
 
 2. Click on `Add a View`. All the organizations that you have access to will be
    listed.
 
-> To create views from your GitHub repositories, you must install the DVC Studio
-> GitHub app. Refer to the section on
+> To create views from your GitHub repositories, you must install the Iterative
+> Studio GitHub app. Refer to the section on
 > [GitHub app installation](/doc/studio/user-guide/install-github-app) for more
 > details.
 

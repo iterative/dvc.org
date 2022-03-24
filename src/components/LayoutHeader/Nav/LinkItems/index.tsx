@@ -19,6 +19,8 @@ import usePopup, { IUsePopupReturn } from '../../../../gatsby/hooks/usePopup'
 const docsPage = getFirstPage()
 
 import * as styles from './styles.module.css'
+import { ReactComponent as EllipsisIcon } from '../../../../../static/img/ellipsis.svg'
+import onSelectKey from '../../../../utils/onSelectKey'
 
 type PopupName = 'communityPopup' | 'otherToolsPopup' | 'otherPopup'
 
@@ -30,8 +32,9 @@ interface INavLinkData {
 }
 
 interface INavLinkPopupData {
-  text: string
+  text: string | typeof EllipsisIcon
   popupName: PopupName
+  ariaLabel?: string
   Popup: React.FC<IPopupProps>
   className?: string
   href?: string
@@ -75,7 +78,8 @@ export const navLinkItemsData: Array<INavLinkData | INavLinkPopupData> = [
     Popup: OtherToolsPopup
   },
   {
-    text: '...',
+    text: EllipsisIcon,
+    ariaLabel: 'Show options',
     popupName: 'otherPopup',
     Popup: OtherPopup,
     className: styles.other
@@ -102,18 +106,26 @@ const LinkItems: React.FC = () => {
       {navLinkItemsData.map((item, i) => {
         const popup = isPopup(item) ? popups[item.popupName] : undefined
         return (
-          <li key={i} className={styles.linkItem} ref={popup?.containerEl}>
+          <li
+            key={i}
+            className={styles.linkItem}
+            ref={popup?.containerEl}
+            onMouseEnter={popup?.open}
+            onMouseLeave={popup?.close}
+          >
             {isPopup(item) && popup ? (
               <>
                 <button
-                  onClick={popup?.toggle}
+                  aria-label={item.ariaLabel}
+                  onPointerUp={popup?.toggle}
+                  onKeyUp={onSelectKey(popup?.toggle)}
                   className={cn(
                     styles.link,
                     popup?.isOpen && styles.open,
                     item.className
                   )}
                 >
-                  {item.text}
+                  {typeof item.text === 'string' ? item.text : <item.text />}
                   <ArrowDownSVG
                     className={cn(styles.linkIcon, styles.arrowDownIcon)}
                   />

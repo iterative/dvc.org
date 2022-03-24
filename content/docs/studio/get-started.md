@@ -1,31 +1,33 @@
-# Get Started with DVC Studio
+# Get Started with Iterative Studio
 
-The following video provides you a quick overview of how to use DVC Studio.
+The following video provides you a quick overview of how to use Iterative
+Studio.
 
 https://www.youtube.com/watch?v=hKf4twg832g
 
-1. Sign in to your [DVC Studio](https://studio.iterative.ai/) dashboard using
-   GitHub, GitLab or Bitbucket.
+1. Sign in to your [Iterative Studio](https://studio.iterative.ai/) dashboard
+   using GitHub, GitLab or Bitbucket.
 
-   The DVC Studio views dashboard opens.
+   The Iterative Studio views dashboard opens.
 
-2. If this is the first time you are signing in to DVC Studio, you will see that
-   there already exists a `Demo` view that connects to an example DVC project.
-   Use this view to explore the features that DVC Studio has to offer.
+2. If this is the first time you are signing in to Iterative Studio, you will
+   see that there already exists a `Demo` view that connects to an example DVC
+   project. Use this view to explore the features that Iterative Studio has to
+   offer.
 
 ![](https://static.iterative.ai/img/studio/login_home.png) _When you first
 login, an example view is already created for you to explore, and you can add
 more views._
 
-3. Each view on this dashboard displays the metrics that DVC Studio identified
-   in your Git repository. In the figure above, you can see that `avg_prec` and
-   `roc_auc` metrics are displayed.
+3. Each view on this dashboard displays the metrics that Iterative Studio
+   identified in your Git repository. In the figure above, you can see that
+   `avg_prec` and `roc_auc` metrics are displayed.
 
 4. To create a new view, click on `Add a View`. All the organizations that you
    have access to will be listed.
 
-> To create views from your GitHub repositories, you must install the DVC Studio
-> GitHub app. Refer to the section on
+> To create views from your GitHub repositories, you must install the Iterative
+> Studio GitHub app. Refer to the section on
 > [GitHub app installation](/doc/studio/user-guide/install-github-app) for more
 > details.
 
@@ -63,7 +65,7 @@ You should now see that a view has been added in your dashboard.
 9. After creating a view, you can use it to
    [explore the ML experiments](/doc/studio/user-guide/explore-experiments) as
    well as
-   [submit new experiments from DVC Studio](/doc/studio/user-guide/run-experiments).
+   [submit new experiments from Iterative Studio](/doc/studio/user-guide/run-experiments).
 
 10. You can also make the view public by
     [sharing it on the web](/doc/studio/user-guide/views/share-view).

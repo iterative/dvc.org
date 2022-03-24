@@ -107,7 +107,7 @@ in the YAML structure itself. These sources can be
 [parameters files](/doc/command-reference/params), or `vars` defined in
 `dvc.yaml` instead.
 
-> Note that this parameterization feature is only supported via manual edition
+> Note that this parameterization feature is only supported via manual editing
 > of `dvc.yaml` and incompatible with `dvc run`.
 
 Let's say we have `params.yaml` (default params file) with the following
@@ -161,8 +161,8 @@ stages:
 To load additional params files, list them in the top `vars`, in the desired
 order, e.g.:
 
-> Params file paths will be evaluated based on [`wdir`](#stage-entries), if one
-> given.
+> Params file paths will be evaluated based on [`wdir`](#stage-entries), if
+> specified.
 
 ```yaml
 vars:
@@ -171,8 +171,7 @@ vars:
   - config/myapp.yaml
 ```
 
-(ℹ️) Note that the default `params.yaml` file is always loaded first, if
-present.
+ℹ️ Note that the default `params.yaml` file is always loaded first, if present.
 
 It's also possible to specify what to include from additional params files, with
 a `:` colon:
