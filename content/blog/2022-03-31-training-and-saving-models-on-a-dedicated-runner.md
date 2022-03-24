@@ -7,7 +7,7 @@ description:
 descriptionLong: |
   We can use CML to automatically retrain models whenever data, model code,
   or parameters change. In this guide we show how to create a pipeline that
-  provisions an AWS EC2 instance to retrain a model and saves the output on
+  provisions an AWS EC2 instance to retrain a model and save the output on
   a regular basis. This way we can prevent drift by ensuring that our model
   always uses the latest input data.
 picture: 2015-05-01/post-image.jpeg
@@ -16,10 +16,9 @@ author: rob_dewit
 # commentsUrl: https://discuss.dvc.org/t/february-22-community-gems/1078
 tags:
   - CML
-  - DVC
-  - DVC Remotes
   - Git
   - Pipelines
+  - Dedicated runners
   - AWS
 ---
 
@@ -47,21 +46,19 @@ following on a daily basis:
 1. Save the model and its metrics to a GitHub repository
 1. Terminate the AWS EC2 instance
 
-In a follow-up post we will expand upon this by using DVC to designate a remote
+In a follow-up post we will expand upon this by using [DVC](https://dvc.org/) to designate a remote
 storage for our resulting models. But let's focus on CML first!
 
 All files needed for this guide can be found in
 [this repository](https://github.com/iterative/example_model_export_cml).
 
-> 💡 This guide can be followed on its own, but also as an extension to this
-> [example in the docs](https://cml.dev/doc/self-hosted-runners).
+<admon type="info">
+This guide can be followed on its own, but also as an extension to this <a href="https://cml.dev/doc/self-hosted-runners">example in the docs</a>.
+</admon>
 
-> 💡 We will be using [GitHub](https://github.com/) for our CI/CD and
-> [AWS](https://github.com/) for our computing resources. With slight
-> modifications, you should also be able to use
-> [GitLab](https://about.gitlab.com/) and
-> [Google Cloud](https://cloud.google.com/) or
-> [Microsoft Azure](https://azure.microsoft.com/en-us/).
+<admon type="tip">
+We wil be using GitHub for our CI/CD and AWS for our computing resources. With slight modifications, you should be able to use Gitlab and Google Cloud or Microsoft Azure respectively.
+</admon>
 
 # Prerequisites
 
@@ -69,7 +66,7 @@ Before we begin, make sure you have the following things set up:
 
 1. You have
    [created an AWS account](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account/)
-   (free tier suffices);
+   (free tier suffices)
 2. You have
    [created a `PERSONAL_ACCESS_TOKEN` on GitHub](<(https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)>)
 3. You have
@@ -89,18 +86,20 @@ model to make some predictions and plot those predictions in a confusion matrix.
 
 While running the script the model is kept in memory, meaning it is discarded as
 soon as the script finishes. In order to save the model for later, we need to
-dump it as a binary file. We do so with `joblib.dump()`, and later we can read
-the model using `joblib.read()`.
+dump it as a binary file. We do so with `joblib.dump()`. Later we can read
+the model using `joblib.read()` when we need to.
 
-> 💡 You can also use `pickle.dump()` if you prefer.
+<admon type="tip">
+You can also use <code>pickle.dump()</code> if you prefer.
+</admon>
 
 The outputs of `train.py` are:
 
-- `metrics.txt`: a file containing metrics on model performance;
-- `confusion_matrix.png`: a summary of the prediction results of our model;
-- `random_forest.joblib`: the binary output of the trained model.
+- `metrics.txt`: a file containing metrics on model performance (in this case accuracy)
+- `confusion_matrix.png`: a plot showing the classification results of our model
+- `random_forest.joblib`: the binary output of the trained model
 
-All of these files are saved to the `model` directory on the AWS runner.
+All of these files are saved to the `model` directory.
 
 ```python
 from sklearn.ensemble import RandomForestClassifier
@@ -150,27 +149,13 @@ our CI/CD to provision a runner and run the script. We define our workflow in
 will automatically go through the workflow whenever it is triggered. In this
 case the triggers are a manual run and the daily schedule.
 
-> 💡 The name of the workflow doesn’t matter, as long as it’s a `.yaml` and
-> located in the `.github/workflows` directory. You can have multiple workflows
-> in there as well. You can learn more in the
-> [documentation](https://docs.github.com/en/actions/learn-github-actions/workflow-syntax-for-github-actions)
-> here.
-
-The workflow we defined first provisions a runner on AWS and then uses that
-runner to train the model. Once we have the outputs saved, we want to export
-them out of the runner. That way we can simply discard the runner once we are
-done training. You will be happy for that once your AWS bill arrives.
-
-# Export the model to our Git repository
-
-We can export the model from our runner to our repository. The following GitHub
-workflow deploys a runner on AWS, generates some data, trains and saves a model
-(see `train.py`), pushes the results to a new experiment branch, and creates a
-merge request for those results.
-
-Using `cml pr .` is the command that takes all of our files, pushes them to a
-new branch, and creates a merge request. Because we saved the model as a binary
-in `model/random_forest.joblib` this file is included in the merge request.
+<admon type="info">
+The name of the workflow doesn’t matter, as long as it’s a <code>.yaml</code> and
+located in the <code>.github/workflows</code> directory. You can have multiple workflows
+in there as well. You can learn more in the
+<a href="https://docs.github.com/en/actions/learn-github-actions/workflow-syntax-for-github-actions">documentation</a>
+here.
+</admon>
 
 ```yaml
 name: CML
@@ -210,9 +195,38 @@ jobs:
           cml ci
           pip install -r requirements.txt
           python train.py
+```
+<admon type="warn">
+In this example we are using a <code>t2.micro</code> AWS EC2 instance. At the time of writing this is included in the AWS free tier. Make sure that you qualify for this free usage to prevent unexpected spending. When you specify a bulkier <code>cloud-type</code>, your expenses will rise.
+</admon>
+
+The workflow we defined first provisions a runner on AWS and then uses that
+runner to train the model. After completing the training job, CML automatically terminates the runner to prevent you from incurring further costs. Once the runner is terminated, however, the model is lost along with it. Let's see how we can save our model in the next step!
+
+# Export the model to our Git repository
+CML allows us to export the model from our runner to our Git repository. Let's extend the training stage of our workflow by pushing `random_forest.joblib` to a new experiment branch and creating a merge request. 
+
+`cml pr` is the command that specifies which files should be included in the merge request. The commands after that are used to generate a report in the merge request that displays the confusion matrix and calculated metrics.
+
+```yaml
+train-model:
+    needs: deploy-runner
+    runs-on: [self-hosted]
+    timeout-minutes: 120 # 2h
+    container:
+      image: docker://iterativeai/cml:0-dvc2-base1
+    steps:
+      - uses: actions/checkout@v2
+      - name: Train model
+        env:
+          REPO_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+        run: |
+          cml ci
+          pip install -r requirements.txt
+          python train.py
 
           # Create pull request
-          cml pr .
+          cml pr model/random_forest.joblib
 
           # Create CML report
           cat model/metrics.txt > report.md
@@ -221,10 +235,12 @@ jobs:
 ```
 
 Et voila! We are now running a daily model training on an AWS EC2 instance and
-saving the resulting model to our GitHub repository. There is still some room
+saving the resulting model to our GitHub repository.
+
+There is still some room
 for improvement, though. This approach works well when our resulting model is
 small, but we wouldn't want to store large models in our Git repository. In a
-follow-up post we will describe how we can use DVC, another Iterative product,
+follow-up post we will describe how we can use [DVC](https://dvc.org/), another Iterative product,
 for storage when we're dealing with larger files.
 
 <!-- ## 2. Push the model to a DVC remote and reference that file in your Git repository
@@ -344,10 +360,12 @@ jobs:
 
 # Conclusions
 
-Using CML we can apply CI/CD principles to the (re)training of models. This way
+<!-- Using CML we can apply CI/CD principles to the (re)training of models. This way
 we can automate the stuff needed to keep your models running, leaving you with
 more time to do actual data science. Additionally, CML takes care of your
-versioning for you and makes sure you can track your models over time.
+versioning for you and makes sure you can track your models over time. -->
+
+There are many cases in which it's a good idea to retrain models periodically. For example, you could be using the latest data available to you in order to prevent model drift. CML allows you to automate this process.
 
 In this guide, we explored how to set up CML for a daily training job using a
 dedicated runner. We automatically provisioned this runner on AWS, exported the
