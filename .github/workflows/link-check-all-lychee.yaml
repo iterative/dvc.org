@@ -29,6 +29,4 @@ jobs:
           output: out.json
 
       - name: Read Output File
-        run: |
-          cat ./out.json
-          cat ./lychee/out.json
+        run: cat ./out.json
