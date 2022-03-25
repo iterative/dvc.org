@@ -12,7 +12,7 @@ jobs:
 
       - name: Get Edited Files
         uses: jitterbit/get-changed-files@v1
-        width:
+        with:
           format: space-delimited
 
       - name: Link Checker
