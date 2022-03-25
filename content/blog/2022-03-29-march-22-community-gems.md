@@ -18,7 +18,7 @@ tags:
   - Community
 ---
 
-### [What is the difference between using `dvc exp` run and `dvc repro`?](https://discord.com/channels/485586884165107732/485596304961962003/939070512322195456)
+### [What is the difference between using `dvc exp run` and `dvc repro`?](https://discord.com/channels/485586884165107732/485596304961962003/939070512322195456)
 
 This is a really good question from @v2.03.99!
 
@@ -96,10 +96,6 @@ within the
 ---
 
 https://media.giphy.com/media/3o6Mbnll2gudglC3HG/giphy.gif
-
-At our April Office Hours Meetup we will be about ...!
-[RSVP for the Meetup here]() to stay up to date with specifics as we get closer
-to the event!
 
 [Join us in Discord](https://discord.com/invite/dvwXA2N) to get all your DVC and
 CML questions answered!
