@@ -16,9 +16,6 @@ jobs:
         with:
           format: space-delimited
 
-      - name: Echo Changed Files
-        run: echo "${{ steps.edited_files.outputs.all }}"
-
       - name: Link Checker
         id: lychee
         uses: lycheeverse/lychee-action@v1.3.2
@@ -26,7 +23,7 @@ jobs:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
         with:
           args:
-            --verbose --no-progress -b https://dvc.org/ './**/*.md'
-            './**/*.html'
+            --verbose --no-progress -b https://dvc.org/ "${{
+            steps.edited_files.outputs.all }}"
           format: json
           output: /tmp/output.json
