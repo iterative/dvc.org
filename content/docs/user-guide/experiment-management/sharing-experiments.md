@@ -36,7 +36,8 @@ remotes in the case of experiments.
 
 [dvc experiments]: /doc/user-guide/experiment-management/experiments-overview
 [created]: /doc/user-guide/experiment-management/running-experiments
-[sharing regular project versions]: /doc/use-cases/sharing-data-and-model-files
+[sharing regular project versions]:
+  /doc/start/data-and-model-versioning#storing-and-sharing
 [git remotes]: https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes
 
 ## Preparation

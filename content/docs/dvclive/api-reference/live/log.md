@@ -19,9 +19,8 @@ live.log("acc", 0.9)
 
 ## Description
 
-If [`summary`](/doc/dvclive/api-reference/live/#parameters) is enabled, on each
-`live.log(name, val)` call DVCLive will add a `name` entry in `{path.json}` with
-the corresponding `val`:
+On each `live.log(name, val)` call DVCLive will create or update the `name`
+entry in `{path.json}` with the corresponding `val`:
 
 ```dvc
 $ cat dvclive.json
@@ -37,7 +36,7 @@ $ cat dvclive.json
 ### Step updates
 
 The first `step` update (with `Live.next_step()` or `Live.set_step()`) will
-create a **metric history** in `{path}/scalars/{name}.tsv`:
+create a _metrics history_ file in `{path}/scalars/{name}.tsv`:
 
 ```
 timestamp step  loss
@@ -56,7 +55,7 @@ $ tree
 └── dvclive.json
 ```
 
-💡 The metric history `{path}/scalars/{name}.tsv` is usable by `dvc plots`.
+💡 The metrics history (`{path}/scalars/{name}.tsv`) is usable by `dvc plots`.
 
 If `name` contains slashes (e.g. `train/loss`), the required subdirectories will
 be created and the file will be saved inside the last one (e.g.

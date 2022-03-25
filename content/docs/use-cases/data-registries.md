@@ -25,9 +25,9 @@ Advantages of data registries:
   bucket) tracked by the DVC registry improves data security. There are less
   chances someone can delete or rewrite an ML model, for example.
 - **Storage optimization**: centralize data
-  [shared](/doc/use-cases/sharing-data-and-model-files) by multiple projects in
-  a single location (distributed copies are possible too). This simplifies data
-  management and optimizes space requirements.
+  [shared](/doc/start/data-and-model-versioning#storing-and-sharing) by multiple
+  projects in a single location (distributed copies are possible too). This
+  simplifies data management and optimizes space requirements.
 - **Data as code**: leverage Git workflows such as commits, branching, pull
   requests, reviews, and even
   [CI/CD for your data and models lifecycle](/doc/use-cases/ci-cd-for-machine-learning).

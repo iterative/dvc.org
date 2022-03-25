@@ -9,8 +9,8 @@ usage: dvc stage add [-h] [-q | -v] -n <name> [-d <path>] [-o <filename>]
                      [-O <filename>] [-p [<filename>:]<params_list>]
                      [-m <path>] [-M <path>] [--plots <path>]
                      [--plots-no-cache <path>] [--live <path>]
-                     [--live-no-cache <path>] [--live-no-summary]
-                     [--live-no-html] [-w <path>] [-f]
+                     [--live-no-cache <path>] [--live-no-html]
+                     [-w <path>] [-f]
                      [--outs-persist <filename>]
                      [--outs-persist-no-cache <filename>] [-c <filename>]
                      [--always-changed] [--external] [--desc <text>]
@@ -236,12 +236,9 @@ data science experiments.
 - `-f`, `--force` - overwrite an existing stage in `dvc.yaml` file without
   asking for confirmation.
 
-- `--always-changed` - always consider this stage as changed (uses the
-  `always_changed` field in `dvc.yaml`). As a result `dvc status` will report it
-  as `always changed` and `dvc repro` will always execute it.
-
-  > Note that regular `.dvc` files (without dependencies) are automatically
-  > considered "always changed", so this option has no effect in those cases.
+- `--always-changed` - always consider this stage as changed (sets the
+  `always_changed` field in `dvc.yaml`). As a result DVC will always execute it
+  when reproducing the pipeline.
 
 - `--external` - allow writing outputs outside of the DVC repository. See
   [Managing External Data](/doc/user-guide/managing-external-data).
@@ -255,9 +252,6 @@ data science experiments.
 
 - `--live-no-cache <path>` - the same as `--live` except that the `path` is not
   tracked by DVC. Useful if you prefer to track it with Git.
-
-- `--live-no-summary` - deactivates DVCLive
-  [summary](/doc/dvclive/api-reference/live/log#description) generation.
 
 - `--live-no-html` - deactivates DVCLive
   [HTML report](/doc/dvclive/dvclive-with-dvc#html-report) generation.

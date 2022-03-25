@@ -50,7 +50,7 @@ from dvclive.fastai import DvcLiveCallback
 learn = tabular_learner(data_loader, metrics=accuracy)
 learn.fit_one_cycle(
   n_epoch=2,
-  cbs=[DvcLiveCallback(model_file='model.pth')])
+  cbs=[DvcLiveCallback(model_file="model.pth")])
 ```
 
 - Using `**kwargs` to customize [`Live`](/docs/dvclive/api-reference/live).
@@ -61,5 +61,5 @@ from dvclive.fastai import DvcLiveCallback
 learn = tabular_learner(data_loader, metrics=accuracy)
 learn.fit_one_cycle(
   n_epoch=2,
-  cbs=[DvcLiveCallback(path='custom_path', summary=False)])
+  cbs=[DvcLiveCallback(model_file="model.pth", path="custom_path")])
 ```

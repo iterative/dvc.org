@@ -71,6 +71,6 @@ model.fit(
     epochs=num_epochs,
     validation_data=validation_dataset,
     callbacks=[DvcLiveCallback(
-        path="custom_path",
-        summary=False)])
+        model_file="my_model_weights.h5",
+        path="custom_path")])
 ```

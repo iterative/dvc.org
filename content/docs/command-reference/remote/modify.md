@@ -81,7 +81,7 @@ The following config options are available for all remote types:
   [remote storage](/doc/command-reference/remote) synchronization operations
   (see the `--jobs` option of dvc push`, `dvc pull`, `dvc get`, `dvc
   import`, `dvc update`, `dvc add --to-remote`, `dvc gc
-  -c`, etc.). Accepts positive integers. The default is typically `4`.
+  -c`, etc.). Accepts positive integers. The default is `4 \* cpu_count()`.
 
   ```dvc
   $ dvc remote modify myremote jobs 8
@@ -608,7 +608,9 @@ more information.
   ```
 
 - `gdrive_service_account_json_file_path` - path to the Google Project's service
-  account `.json` key file (credentials).
+  account `.json`
+  [key file](https://cloud.google.com/docs/authentication/getting-started#creating_a_service_account)
+  (credentials).
 
   ```dvc
   $ dvc remote modify --local myremote \
@@ -663,7 +665,7 @@ a specific user. Please refer to
 more information.
 
 - `credentialpath` - path to the file that contains the
-  [service account key](/doc/user-guide/setup-google-drive-remote#using-service-accounts).
+  [service account key](https://cloud.google.com/docs/authentication/getting-started#creating_a_service_account).
   Make sure that the service account has read/write access (as needed) to the
   file structure in the remote `url`.
 

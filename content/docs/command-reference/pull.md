@@ -20,11 +20,10 @@ positional arguments:
 
 The `dvc push` and `dvc pull` commands are the means for uploading and
 downloading data to and from remote storage (S3, SSH, GCS, etc.). These commands
-are similar to `git push` and `git pull`, respectively.
-[Data sharing](/doc/use-cases/sharing-data-and-model-files) across environments
-and preserving data versions (input datasets, intermediate results, models,
-[metrics](/doc/command-reference/metrics), etc.) remotely are the most common
-use cases for these commands.
+are similar to `git push` and `git pull`, respectively. [Data sharing] across
+environments and preserving data versions (input datasets, intermediate results,
+models, [metrics](/doc/command-reference/metrics), etc.) remotely are the most
+common use cases for these commands.
 
 `dvc pull` downloads tracked data from
 [remote storage](/doc/command-reference/remote) to the <abbr>cache</abbr>, and
@@ -33,6 +32,8 @@ to `dvc config cache.type`).
 
 > Note that pulling data does not affect code, `dvc.yaml`, or `.dvc` files.
 > Those should be downloaded with `git pull`.
+
+[data sharing]: /doc/start/data-and-model-versioning#storing-and-sharing
 
 It has the same effect as running `dvc fetch` and `dvc checkout`:
 
@@ -117,10 +118,9 @@ used to see what files `dvc pull` would download.
   workspace) and update `dvc.lock`.
 
 - `-j <number>`, `--jobs <number>` - parallelism level for DVC to download data
-  from remote storage. The default value is `4 * cpu_count()`. For SSH remotes,
-  the default is `4`. Note that the default value can be set using the `jobs`
-  config option with `dvc remote modify`. Using more jobs may speed up the
-  operation.
+  from remote storage. The default value is `4 * cpu_count()`. Note that the
+  default value can be set using the `jobs` config option with
+  `dvc remote modify`. Using more jobs may speed up the operation.
 
 - `--glob` - allows pulling files and directories that match the
   [pattern](https://docs.python.org/3/library/glob.html) specified in `targets`.

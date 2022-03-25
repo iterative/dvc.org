@@ -58,10 +58,9 @@ all <abbr>cached</abbr> data associated with the experiment to DVC
   `dvc exp run <stage_name>` is necessary to checkout these files.
 
 - `-j <number>`, `--jobs <number>` - parallelism level for DVC to upload data to
-  remote storage. The default value is `4 * cpu_count()`. For SSH remotes, the
-  default is `4`. Note that the default value can be set using the `jobs` config
-  option with `dvc remote modify`. Using more jobs may improve the overall
-  transfer speed.
+  remote storage. The default value is `4 * cpu_count()`. Note that the default
+  value can be set using the `jobs` config option with `dvc remote modify`.
+  Using more jobs may improve the overall transfer speed.
 
 - `-h`, `--help` - shows the help message and exit.
 

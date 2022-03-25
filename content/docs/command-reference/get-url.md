@@ -67,8 +67,8 @@ $ wget https://example.com/path/to/data.csv
 ## Options
 
 - `-j <number>`, `--jobs <number>` - parallelism level for DVC to download data
-  from the source. The default value is `4 * cpu_count()`. For SSH remotes, the
-  default is `4`. Using more jobs may speed up the operation.
+  from the source. The default value is `4 * cpu_count()`. Using more jobs may
+  speed up the operation.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 

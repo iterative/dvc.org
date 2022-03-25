@@ -63,8 +63,8 @@ The year is already flying by! Check out what's new this month!
 
 So let me guess, still overwhelmed with MLOps tool choices? This past month
 [**Matt Squire**](https://www.linkedin.com/in/matt-squire-a19896125/) of
-[Fuzzy Labs.ai](http://Labs.ai) reviewed their
-[Awesome Open Source MLOps repo,](github.com/fuzzylavs/awesome-open-mlops)
+[Fuzzy Labs.ai](http://FuzzyLabs.ai) reviewed their
+[Awesome Open Source MLOps repo,](github.com/fuzzylabs/awesome-open-mlops)
 [in this blog](https://fuzzylabs.ai/blog/open-source-mlops-is-awesome/) and
 [this video](https://youtu.be/HIAPoKEDXrg). Matt breaks down the tool space into
 categories of SaaS platforms, fully open source tools, and partly open source
@@ -146,11 +146,12 @@ _Discovering temporal scientometric knowledge in COVID-19 scholarly production
 
 - If you're a [**Guild.Ai**](https://guild.ai/) user, you'll be happy to know
   that Guild now supports DVC! Find out more in
-  [this article](https://my.guild.ai/t/using-guild-ai-with-dvc/803) and the
+  [this article](https://my.guild.ai/t/using-guild-ai-with-dvc/803) by
+  [**Garret Smith**](https://www.linkedin.com/in/gar1t/)and the
   [corresponding repo](https://github.com/guildai/guildai/tree/dvc/examples/dvc)
   for an example.
 
-- [Luca Moschella](https://github.com/lucmos) created
+- [**Luca Moschella**](https://github.com/lucmos) created
   [this **NN template**](https://github.com/grok-ai/nn-template) for your neural
   network projects where you want to combine PyTorch Lightning, Hydra, DVC,
   Weights and Biases and Streamlit.
@@ -172,12 +173,13 @@ from Community members, I always have the same advice: try to figure out what
 part of DS/AI is most interesting to you and then work to building your skills
 toward that. In this article on the
 [10 Most Important Jobs for ML Products in 2022](https://medium.datadriveninvestor.com/the-10-most-important-jobs-for-ml-products-in-2022-7bf844d62423),
-[**Ágoston Török**]() does a great job of defining the different roles in the
-space, how they interrelate, and how they show up in AI companies in the product
-development process. See his breakdown of the roles above, with rows defining
-the stage, and columns, the aspects the roles focus on. If you find you are
-drawn to the space where the DS prototypes become the software product, then you
-may want to check out [our new course!](https://learn.iterative.ai) 😉
+[**Ágoston Török**](https://www.linkedin.com/in/agoston-torok/) does a great job
+of defining the different roles in the space, how they interrelate, and how they
+show up in AI companies in the product development process. See his breakdown of
+the roles above, with rows defining the stage, and columns, the aspects the
+roles focus on. If you find you are drawn to the space where the DS prototypes
+become the software product, then you may want to check out
+[our new course!](https://learn.iterative.ai) 😉
 
 ## Engineering Best Practices for Machine Learning
 
@@ -222,7 +224,7 @@ Twine also provides
 for anyone working on these types of projects. Check it out! 👇🏽
 
 <external-link 
-href="https://www.twine.net/blog/100-audio-and-video-datasets/)"
+href="https://www.twine.net/blog/100-audio-and-video-datasets/"
 title="Twine Ethically Sourced Datasets"
 description="100 Ethically sourced audio and video datasets from Twine."
 link="https://twine.net/"
@@ -241,13 +243,14 @@ the manufacturers' ability to supply the needed batteries. Datasets in the space
 are kept proprietary as companies work independently to develop patents.
 BatteryDEV 2022 aims to accelerate battery innovation through open source
 competitions. This year they are expecting 300 participants for the event from
-March 20-26. Community member [Raymond Gasper]() is one of the organizers of
-[Battery.dev](https://battery.dev), and is creating a DVC template for
-participants to use during the Hackathon. You can
+March 20-26. Community member
+[Raymond Gasper](https://www.linkedin.com/in/raymond-james-gasper/) is one of
+the organizers of [Battery.dev](https://battery.dev), and is creating a DVC
+template for participants to use during the Hackathon. You can
 [register for the event here!](https://www.battery.dev/registration-form)
 
 <external-link 
-href="https://battery.dev)"
+href="https://battery.dev"
 title="BatteryDEV 2022 Hackathon"
 description="A global innovation challenge for battery, data and machine learning enthusiasts."
 link="https://battery.dev/"
