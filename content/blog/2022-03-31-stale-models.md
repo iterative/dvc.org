@@ -45,7 +45,7 @@ Studio.
 So we'll start by cloning
 [this repo for the project](https://github.com/iterative/stale-model-example).
 This project is based on the one created by
-[Evidently.ai](https://github.com/evidentlyai/evidently/blob/main/examples/data_stories/bicycle_demand_monitoring.ipynb)
+[evidently.ai](https://github.com/evidentlyai/evidently/blob/main/examples/data_stories/bicycle_demand_monitoring.ipynb)
 with some modifications to work with DVC and different datasets.
 
 The reason we're adding DVC and Studio to this project is to automate the way
