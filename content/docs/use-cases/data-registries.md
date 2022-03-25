@@ -166,7 +166,7 @@ Datasets evolve, and DVC is prepared to handle it. Just change the data in the
 registry, and apply the updates by running `dvc add` again:
 
 ```dvc
-$ cp 1000/more/images/* music/songs/
+$ cp 1000/more/songs/* music/songs/
 $ dvc add music/songs/
 ```
 
