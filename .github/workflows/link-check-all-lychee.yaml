@@ -21,7 +21,6 @@ jobs:
         uses: lycheeverse/lychee-action@v1.3.2
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-          LYCHEE_TMP: /lychee-output.json
         with:
           args:
             --verbose --no-progress -b https://dvc.org/ ${{
