@@ -2,3 +2,11 @@
   font-weight: 400 !important;
   background-color: #fff;
 }
+
+.skipLink {
+  &:focus {
+    z-index: 999;
+    font-size: 1.125rem;
+    top: 8px;
+  }
+}

@@ -1,7 +1,0 @@
-.skipLink {
-  &:focus {
-    z-index: 999;
-    font-size: 1.125rem;
-    top: 8px;
-  }
-}

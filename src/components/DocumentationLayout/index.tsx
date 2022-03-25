@@ -1,10 +1,8 @@
 import React from 'react'
-import { SkipNavContent, SkipNavLink } from '@reach/skip-nav'
-import '@reach/skip-nav/styles.css'
+import { SkipNavContent } from '@reach/skip-nav'
 
 import MainLayout, { LayoutComponent, LayoutModifiers } from '../MainLayout'
 import ThemeDocumentationLayout from 'gatsby-theme-iterative-docs/src/components/Documentation/Layout'
-import * as styles from './styles.module.css'
 
 const Layout: LayoutComponent = ({ children, ...restProps }) => {
   const {
@@ -13,7 +11,6 @@ const Layout: LayoutComponent = ({ children, ...restProps }) => {
 
   return (
     <>
-      <SkipNavLink contentId="main-content" className={styles.skipLink} />
       <MainLayout
         {...restProps}
         modifiers={[LayoutModifiers.Wide, LayoutModifiers.Collapsed]}

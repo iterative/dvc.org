@@ -1,4 +1,6 @@
 import React, { useEffect } from 'react'
+import { SkipNavContent, SkipNavLink } from '@reach/skip-nav'
+import '@reach/skip-nav/styles.css'
 
 import { IPageProps } from '../Page'
 import LayoutHeader from '../LayoutHeader'
@@ -28,7 +30,8 @@ export type LayoutComponent = React.FC<
 const MainLayout: LayoutComponent = ({
   className,
   children,
-  modifiers = []
+  modifiers = [],
+  pageContext
 }) => {
   useEffect(() => {
     if (className) {
@@ -51,11 +54,13 @@ const MainLayout: LayoutComponent = ({
 
   return (
     <>
+      <SkipNavLink contentId="main-content" className={styles.skipLink} />
       <LayoutHeader modifiers={modifiers} />
       <div
         id="layoutContent"
         //  className={styles.pageContent}
       >
+        {!pageContext.isDocs && <SkipNavContent id="main-content" />}
         {children}
       </div>
       <LayoutFooter />
