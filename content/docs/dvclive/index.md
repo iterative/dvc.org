@@ -5,6 +5,8 @@ machine learning metrics and other metadata in simple file formats, which is
 fully compatible with DVC. You can
 [install it](https://github.com/iterative/dvclive#installation) with `pip`.
 
+https://github.com/broken-link-link
+
 <cards>
 
   <card href="/doc/dvclive/get-started" heading="Get Started">
