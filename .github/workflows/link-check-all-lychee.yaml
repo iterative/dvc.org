@@ -23,7 +23,7 @@ jobs:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
         with:
           args:
-            --verbose --no-progress -b https://dvc.org/ "${{
-            steps.edited_files.outputs.all }}"
+            --verbose --no-progress -b https://dvc.org/ ${{
+            steps.edited_files.outputs.all }}
           format: json
           output: /tmp/output.json
