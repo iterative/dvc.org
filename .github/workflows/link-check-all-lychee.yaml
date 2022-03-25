@@ -12,8 +12,12 @@ jobs:
 
       - name: Get Edited Files
         uses: jitterbit/get-changed-files@v1
+        id: edited_files
         with:
           format: space-delimited
+
+      - name: Echo Changed Files
+        run: echo "${{ steps.edited_files.outputs.all }}"
 
       - name: Link Checker
         id: lychee
