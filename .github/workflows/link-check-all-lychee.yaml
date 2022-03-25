@@ -26,3 +26,6 @@ jobs:
             --verbose --no-progress -b https://dvc.org/ ${{
             steps.edited_files.outputs.all }}
           format: json
+
+      - name: Read Output File
+        run: cat ./lychee/out.md
