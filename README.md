@@ -27,6 +27,8 @@ for more details on how to write and submit a new blog post.
 
 https://github.com/broken-link-link
 
+https://github.com/broken-link-link
+
 # Getting help
 
 If you have any questions, please join the [community](https://dvc.org/chat) and

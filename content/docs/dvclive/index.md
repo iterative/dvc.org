@@ -7,8 +7,6 @@ fully compatible with DVC. You can
 
 https://github.com/broken-link-link
 
-https://github.com/broken-link-link
-
 <cards>
 
   <card href="/doc/dvclive/get-started" heading="Get Started">
