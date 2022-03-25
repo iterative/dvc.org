@@ -26,4 +26,7 @@ jobs:
             --verbose --no-progress -b https://dvc.org/ ${{
             steps.edited_files.outputs.all }}
           format: json
-          output: /tmp/output.json
+          output: /lychee-output.json
+
+      - name: See Lychee Results
+        run: cat /lychee-output.json
