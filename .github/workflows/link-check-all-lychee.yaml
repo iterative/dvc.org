@@ -30,6 +30,5 @@ jobs:
 
       - name: Read Output File
         run: |
-          cat ./lychee/out.md 
-          cat ./lychee/out.json 
           cat ./out.json
+          cat ./lychee/out.json
