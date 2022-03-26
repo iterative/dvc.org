@@ -35,7 +35,21 @@ const plugins = [
     resolve: 'gatsby-source-filesystem',
     options: {
       name: 'images',
-      path: path.join(__dirname, 'static', 'uploads')
+      path: path.join(__dirname, 'static', 'img')
+    }
+  },
+  {
+    resolve: 'gatsby-source-filesystem',
+    options: {
+      name: 'images',
+      path: path.join(__dirname, 'static', 'uploads', 'images')
+    }
+  },
+  {
+    resolve: 'gatsby-source-filesystem',
+    options: {
+      name: 'avatars',
+      path: path.join(__dirname, 'static', 'uploads', 'avatars')
     }
   },
   'community-page',
