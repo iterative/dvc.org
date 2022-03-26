@@ -9,17 +9,19 @@ import {
   IPopupProps
 } from '../Popup'
 
-import { ReactComponent as ArrowUpSVG } from '../../../../../../static/img/arrow-up-icon.svg'
-import { ReactComponent as ArrowDownSVG } from '../../../../../../static/img/arrow-down-icon.svg'
+import { ReactComponent as ArrowUpSVG } from '../../../../../../../static/img/arrow-up-icon.svg'
+import { ReactComponent as ArrowDownSVG } from '../../../../../../../static/img/arrow-down-icon.svg'
 
 import { logEvent } from '@dvcorg/gatsby-theme-iterative/src/utils/front/plausible'
 import { getFirstPage } from '@dvcorg/gatsby-theme-iterative/src/utils/shared/sidebar'
-import usePopup, { IUsePopupReturn } from '../../../../../gatsby/hooks/usePopup'
+import usePopup, {
+  IUsePopupReturn
+} from '../../../../../../gatsby/hooks/usePopup'
 
 const docsPage = getFirstPage()
 
 import * as styles from './styles.module.css'
-import { ReactComponent as EllipsisIcon } from '../../../../../../static/img/ellipsis.svg'
+import { ReactComponent as EllipsisIcon } from '../../../../../../../static/img/ellipsis.svg'
 
 type PopupName = 'communityPopup' | 'otherToolsPopup' | 'otherPopup'
 

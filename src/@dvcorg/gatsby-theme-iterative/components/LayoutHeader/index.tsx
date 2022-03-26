@@ -16,7 +16,7 @@ import {
 } from '../HamburgerMenu'
 
 import { useHeaderIsScrolled } from '@dvcorg/gatsby-theme-iterative/src/utils/front/scroll'
-import { ReactComponent as LogoSVG } from '../../../../static/img/dvc_icon-color--square_vector.svg'
+import { ReactComponent as LogoSVG } from '../../../../../static/img/dvc_icon-color--square_vector.svg'
 import * as styles from './styles.module.css'
 
 import LayoutAlert from './alert'

@@ -4,7 +4,7 @@ import BaseInnerSidebar, {
 } from '@dvcorg/gatsby-theme-iterative/src/components/Documentation/Layout/SidebarMenu/InnerSidebar'
 import * as styles from '@dvcorg/gatsby-theme-iterative/src/components/Documentation/Layout/SidebarMenu/styles.module.css'
 import ShowOnly from '@dvcorg/gatsby-theme-iterative/src/components/ShowOnly'
-import DownloadButton from '../../../../../../components/DownloadButton'
+import DownloadButton from '../../../../../../../components/DownloadButton'
 
 const InnerSidebar: React.FC<IInnerSidebarProps> = ({
   activePaths,

@@ -1,7 +1,7 @@
 import MainLayout from '@dvcorg/gatsby-theme-iterative/src/components/MainLayout'
 import DocumentationLayout from '@dvcorg/gatsby-theme-iterative/src/components/DocumentationLayout'
 import AlertLandingLayout from '@dvcorg/gatsby-theme-iterative/src/components/AlertLandingLayout'
-import BlogLayout from '../../../components/Blog/Layout'
+import BlogLayout from '../../../../components/Blog/Layout'
 
 const getLayoutComponent = (props: {
   pageContext: {

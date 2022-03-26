@@ -37,6 +37,7 @@
     "node": ">=14.x <=16.x"
   },
   "dependencies": {
+    "@dvcorg/gatsby-theme-iterative": "^0.0.2",
     "@hapi/wreck": "^17.0.0",
     "@octokit/graphql": "^4.8.0",
     "@reach/portal": "^0.16.2",
@@ -57,7 +58,6 @@
     "gatsby-plugin-image": "^2.10.1",
     "gatsby-plugin-parent-resolvers": "^1.0.1",
     "github-markdown-css": "^5.1.0",
-    "graphql": "^16.3.0",
     "iso-url": "^1.2.1",
     "isomorphic-fetch": "^3.0.0",
     "lodash": "^4.17.21",

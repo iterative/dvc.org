@@ -6,7 +6,7 @@ import Link from '@dvcorg/gatsby-theme-iterative/src/components/Link'
 import { logEvent } from '@dvcorg/gatsby-theme-iterative/src/utils/front/plausible'
 
 import { getFirstPage } from '@dvcorg/gatsby-theme-iterative/src/utils/shared/sidebar'
-import { ReactComponent as LogoSVG } from '../../../../static/img/logo-white.svg'
+import { ReactComponent as LogoSVG } from '../../../../../static/img/logo-white.svg'
 import { ReactComponent as TwitterIcon } from '@dvcorg/gatsby-theme-iterative/src/components/SocialIcon/twitter.svg'
 import { ReactComponent as GithubIcon } from '@dvcorg/gatsby-theme-iterative/src/components/SocialIcon/github.svg'
 
