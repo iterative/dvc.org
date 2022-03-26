@@ -1,8 +1,8 @@
 import React from 'react'
 import cn from 'classnames'
 
-import Link from 'gatsby-theme-iterative-docs/src/components/Link'
-import { logEvent } from 'gatsby-theme-iterative-docs/src/utils/front/plausible'
+import Link from 'gatsby-theme-iterative/src/components/Link'
+import { logEvent } from 'gatsby-theme-iterative/src/utils/front/plausible'
 import { navLinkItemsData } from '../LinkItems'
 
 import { ReactComponent as ExternalLinkIcon } from '../../../../../../static/img/external-link-icon.svg'

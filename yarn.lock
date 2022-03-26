@@ -9143,7 +9143,7 @@ gatsby-telemetry@^3.10.1:
     lodash "^4.17.21"
     node-fetch "^2.6.7"
 
-gatsby-theme-iterative-docs@../gatsby-theme-iterative-docs-workspace/packages/gatsby-theme-iterative-docs:
+gatsby-theme-iterative@../gatsby-theme-iterative-workspace/packages/gatsby-theme-iterative:
   version "0.0.1"
   dependencies:
     "@reach/portal" "^0.16.2"

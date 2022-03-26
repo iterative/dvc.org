@@ -56,7 +56,6 @@
     "gatsby-plugin-algolia": "^0.26.0",
     "gatsby-plugin-image": "^2.10.1",
     "gatsby-plugin-parent-resolvers": "^1.0.1",
-    "gatsby-theme-iterative-docs": "../gatsby-theme-iterative-docs-workspace/packages/gatsby-theme-iterative-docs",
     "github-markdown-css": "^5.1.0",
     "graphql": "^16.3.0",
     "iso-url": "^1.2.1",

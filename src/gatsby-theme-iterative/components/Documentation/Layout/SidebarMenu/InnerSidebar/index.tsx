@@ -1,9 +1,9 @@
 import React from 'react'
 import BaseInnerSidebar, {
   IInnerSidebarProps
-} from 'gatsby-theme-iterative-docs/src/components/Documentation/Layout/SidebarMenu/InnerSidebar'
-import * as styles from 'gatsby-theme-iterative-docs/src/components/Documentation/Layout/SidebarMenu/styles.module.css'
-import ShowOnly from 'gatsby-theme-iterative-docs/src/components/ShowOnly'
+} from 'gatsby-theme-iterative/src/components/Documentation/Layout/SidebarMenu/InnerSidebar'
+import * as styles from 'gatsby-theme-iterative/src/components/Documentation/Layout/SidebarMenu/styles.module.css'
+import ShowOnly from 'gatsby-theme-iterative/src/components/ShowOnly'
 import DownloadButton from '../../../../../../components/DownloadButton'
 
 const InnerSidebar: React.FC<IInnerSidebarProps> = ({

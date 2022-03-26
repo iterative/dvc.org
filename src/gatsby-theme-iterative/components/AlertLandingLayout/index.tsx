@@ -3,7 +3,7 @@ import MainLayout from '../MainLayout'
 import {
   LayoutComponent,
   LayoutModifiers
-} from 'gatsby-theme-iterative-docs/src/components/MainLayout'
+} from 'gatsby-theme-iterative/src/components/MainLayout'
 
 const alertComponentModifiers: LayoutModifiers[] = [
   LayoutModifiers.Collapsed,

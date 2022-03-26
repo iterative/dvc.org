@@ -1,10 +1,10 @@
 import React, { useState, useCallback, useEffect } from 'react'
 
 import TwoRowsButton from '../../../TwoRowsButton'
-import { logEvent } from 'gatsby-theme-iterative-docs/src/utils/front/plausible'
-import safeLocalStorage from 'gatsby-theme-iterative-docs/src/utils/front/safeLocalStorage'
+import { logEvent } from 'gatsby-theme-iterative/src/utils/front/plausible'
+import safeLocalStorage from 'gatsby-theme-iterative/src/utils/front/safeLocalStorage'
 
-import Link from 'gatsby-theme-iterative-docs/src/components/Link'
+import Link from 'gatsby-theme-iterative/src/components/Link'
 
 import * as styles from './styles.module.css'
 

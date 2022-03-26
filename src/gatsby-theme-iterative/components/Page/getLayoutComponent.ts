@@ -1,6 +1,6 @@
-import MainLayout from 'gatsby-theme-iterative-docs/src/components/MainLayout'
-import DocumentationLayout from 'gatsby-theme-iterative-docs/src/components/DocumentationLayout'
-import AlertLandingLayout from 'gatsby-theme-iterative-docs/src/components/AlertLandingLayout'
+import MainLayout from 'gatsby-theme-iterative/src/components/MainLayout'
+import DocumentationLayout from 'gatsby-theme-iterative/src/components/DocumentationLayout'
+import AlertLandingLayout from 'gatsby-theme-iterative/src/components/AlertLandingLayout'
 import BlogLayout from '../../../components/Blog/Layout'
 
 const getLayoutComponent = (props: {

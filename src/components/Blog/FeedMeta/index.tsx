@@ -5,13 +5,13 @@ import {
 } from 'gatsby-plugin-image'
 import React from 'react'
 
-import Link from 'gatsby-theme-iterative-docs/src/components/Link'
-import { pluralizeComments } from 'gatsby-theme-iterative-docs/src/utils/front/i18n'
+import Link from 'gatsby-theme-iterative/src/components/Link'
+import { pluralizeComments } from 'gatsby-theme-iterative/src/utils/front/i18n'
 
 import * as styles from './styles.module.css'
 import SocialIcon, {
   ISocialIcon
-} from 'gatsby-theme-iterative-docs/src/components/SocialIcon'
+} from 'gatsby-theme-iterative/src/components/SocialIcon'
 
 interface IBlogFeedMetaProps {
   avatar: {

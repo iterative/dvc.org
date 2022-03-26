@@ -3,7 +3,7 @@
 require('dotenv').config()
 const path = require('path')
 
-const makeFeedHtml = require('gatsby-theme-iterative-docs/plugins/utils/makeFeedHtml')
+const makeFeedHtml = require('gatsby-theme-iterative/plugins/utils/makeFeedHtml')
 
 const apiMiddleware = require('./src/server/middleware/api')
 const redirectsMiddleware = require('./src/server/middleware/redirects')
@@ -23,11 +23,11 @@ const keywords = [
 const plugins = [
   'gatsby-plugin-twitter',
   {
-    resolve: 'gatsby-theme-iterative-docs',
+    resolve: 'gatsby-theme-iterative',
     options: {
       remark: false,
       cssBase: require.resolve(
-        './src/gatsby-theme-iterative-docs/components/Page/base.css'
+        './src/gatsby-theme-iterative/components/Page/base.css'
       )
     }
   },

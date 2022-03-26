@@ -2,7 +2,7 @@ import React from 'react'
 
 import SocialIcon, {
   ISocialIconProps
-} from 'gatsby-theme-iterative-docs/src/components/SocialIcon'
+} from 'gatsby-theme-iterative/src/components/SocialIcon'
 
 import * as styles from './styles.module.css'
 
