@@ -1,16 +1,16 @@
 import React, { useEffect } from 'react'
 
-import { LayoutComponent } from 'gatsby-theme-iterative/src/components/MainLayout'
+import { LayoutComponent } from '@dvcorg/gatsby-theme-iterative/src/components/MainLayout'
 import LayoutHeader from '../LayoutHeader'
 import LayoutFooter from '../LayoutFooter'
-import { handleFirstTab } from 'gatsby-theme-iterative/src/utils/front/accessibility'
+import { handleFirstTab } from '@dvcorg/gatsby-theme-iterative/src/utils/front/accessibility'
 
 import * as styles from './styles.module.css'
 
 export {
   LayoutComponent,
   LayoutModifiers
-} from 'gatsby-theme-iterative/src/components/MainLayout'
+} from '@dvcorg/gatsby-theme-iterative/src/components/MainLayout'
 
 const MainLayout: LayoutComponent = ({
   className,

@@ -1,10 +1,10 @@
 import React, { useEffect, useRef } from 'react'
 import { useRafState, useWindowSize } from 'react-use'
 import { graphql } from 'gatsby'
-import Link from 'gatsby-theme-iterative/src/components/Link'
+import Link from '@dvcorg/gatsby-theme-iterative/src/components/Link'
 import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image'
 import cn from 'classnames'
-import { ISocialIcon } from 'gatsby-theme-iterative/src/components/SocialIcon'
+import { ISocialIcon } from '@dvcorg/gatsby-theme-iterative/src/components/SocialIcon'
 
 import FeedMeta from '../../FeedMeta'
 

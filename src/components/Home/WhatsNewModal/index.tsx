@@ -5,7 +5,7 @@ import { GatsbyImage } from 'gatsby-plugin-image'
 import cn from 'classnames'
 import FocusLock from 'react-focus-lock'
 
-import Link from 'gatsby-theme-iterative/src/components/Link'
+import Link from '@dvcorg/gatsby-theme-iterative/src/components/Link'
 
 import { ReactComponent as CloseSvg } from '../../../../static/img/close-icon.svg'
 

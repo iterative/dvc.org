@@ -1,7 +1,7 @@
 import React from 'react'
-import SEO from 'gatsby-theme-iterative/src/components/SEO'
-import { LayoutComponent } from 'gatsby-theme-iterative/src/components/MainLayout'
-import MainLayout from '../../../gatsby-theme-iterative/components/MainLayout'
+import SEO from '@dvcorg/gatsby-theme-iterative/src/components/SEO'
+import { LayoutComponent } from '@dvcorg/gatsby-theme-iterative/src/components/MainLayout'
+import MainLayout from '../../../@dvcorg/gatsby-theme-iterative/components/MainLayout'
 
 import * as styles from './styles.module.css'
 
