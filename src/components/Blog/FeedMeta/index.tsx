@@ -15,7 +15,9 @@ import SocialIcon, {
 
 interface IBlogFeedMetaProps {
   avatar: {
-    gatsbyImageData: IGatsbyImageData
+    childImageSharp: {
+      gatsbyImageData: IGatsbyImageData
+    }
   }
   commentsUrl?: string
   commentsCount?: number
@@ -39,7 +41,7 @@ const FeedMeta: React.FC<IBlogFeedMetaProps> = ({
       {avatar && (
         <GatsbyImage
           alt=""
-          image={avatar.gatsbyImageData}
+          image={avatar.childImageSharp.gatsbyImageData}
           className={styles.avatar}
         />
       )}

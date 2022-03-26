@@ -9,7 +9,9 @@ import { ISocialIcon } from 'gatsby-theme-iterative-docs/src/components/SocialIc
 import { isProduction } from '../server/utils'
 
 export interface IBlogPostHeroPic {
-  picture?: IGatsbyImageData
+  picture?: {
+    childImageSharp: IGatsbyImageData
+  }
   pictureComment?: string
 }
 
@@ -25,14 +27,18 @@ export interface IBlogPostData {
   commentsUrl?: string
   tags?: string[]
   picture?: {
-    gatsbyImageData: IGatsbyImageData
-    fields: { sourcePath: string }
+    childImageSharp: {
+      gatsbyImageData: IGatsbyImageData
+      fields: { sourcePath: string }
+    }
   }
   pictureComment?: string
   author: {
     name: string
     avatar: {
-      gatsbyImageData: IGatsbyImageData
+      childImageSharp: {
+        gatsbyImageData: IGatsbyImageData
+      }
     }
     links: Array<ISocialIcon>
   }
@@ -64,8 +70,8 @@ const BlogPostPage: React.FC<IBlogPostPageProps> = ({ data }) => {
             ? `/blog/${picture.fields.sourcePath}`
             : picture.gatsbyImageData)
         }
-        imageHeight={picture?.gatsbyImageData.height}
-        imageWidth={picture?.gatsbyImageData.width}
+        imageHeight={picture?.childImageSharp.gatsbyImageData.height}
+        imageWidth={picture?.childImageSharp.gatsbyImageData.width}
         meta={[
           {
             name: 'twitter:card',
@@ -112,19 +118,23 @@ export const pageQuery = graphql`
           site
         }
         avatar {
-          gatsbyImageData(
-            width: 40
-            height: 40
-            transformOptions: { cropFocus: CENTER }
-            layout: FIXED
-          )
+          childImageSharp {
+            gatsbyImageData(
+              width: 40
+              height: 40
+              transformOptions: { cropFocus: CENTER }
+              layout: FIXED
+            )
+          }
         }
       }
       picture {
-        fields {
-          sourcePath
+        childImageSharp {
+          fields {
+            sourcePath
+          }
+          gatsbyImageData(width: 850, quality: 90)
         }
-        gatsbyImageData(width: 850, quality: 90)
       }
       pictureComment
     }

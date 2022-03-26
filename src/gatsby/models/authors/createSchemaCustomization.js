@@ -1,5 +1,4 @@
 const markdownParentFields = require('../markdown-content/fields.js')
-const { resolveAuthorAvatar } = require('../../utils/resolvers')
 
 async function createAuthorSchemaCustomization(api) {
   const {
@@ -30,8 +29,17 @@ async function createAuthorSchemaCustomization(api) {
         links: '[AuthorLink]',
         slug: 'String',
         avatar: {
-          type: 'ImageSharp',
-          resolve: resolveAuthorAvatar
+          type: 'File',
+          resolve: (source, args, context) =>
+            context.nodeModel.findOne({
+              type: 'File',
+              query: {
+                filter: {
+                  sourceInstanceName: { eq: 'avatars' },
+                  relativePath: { eq: source.avatar }
+                }
+              }
+            })
         },
         posts: {
           type: 'AuthorPosts',

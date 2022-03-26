@@ -96,7 +96,7 @@ const WhatsNewModal: React.FC = () => {
                   className={styles.image}
                   alt=""
                   objectFit="contain"
-                  image={latestPost.picture.gatsbyImageData}
+                  image={latestPost.picture.childImageSharp.gatsbyImageData}
                 />
               </Link>
             )}
@@ -119,7 +119,9 @@ const query = graphql`
       nodes {
         title
         picture {
-          gatsbyImageData(width: 420)
+          childImageSharp {
+            gatsbyImageData(width: 420)
+          }
         }
         description
         slug

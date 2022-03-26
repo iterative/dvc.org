@@ -86,7 +86,7 @@ const Post: React.FC<IBlogPostData> = ({
             </div>
           </div>
           <HeroPic
-            picture={picture?.gatsbyImageData}
+            picture={picture?.childImageSharp.gatsbyImageData}
             pictureComment={pictureComment}
           />
 

@@ -21,12 +21,16 @@ export interface IBlogPostData {
   description: string
   descriptionLong: string
   picture?: {
-    big: IGatsbyImageData
+    childImageSharp: {
+      big: IGatsbyImageData
+    }
   }
   author: {
     name: string
     avatar: {
-      gatsbyImageData: IGatsbyImageData
+      childImageSharp: {
+        gatsbyImageData: IGatsbyImageData
+      }
     }
     links: Array<ISocialIcon>
   }
@@ -54,7 +58,7 @@ const Item: React.FC<IBlogFeedItemProps> = ({
     }
   }, [width])
 
-  const image = picture?.big
+  const image = picture?.childImageSharp.big
 
   return (
     <div
@@ -103,11 +107,13 @@ export const query = graphql`
     description
     descriptionLong
     picture {
-      big: gatsbyImageData(
-        width: 650
-        height: 450
-        transformOptions: { cropFocus: CENTER }
-      )
+      childImageSharp {
+        big: gatsbyImageData(
+          width: 650
+          height: 450
+          transformOptions: { cropFocus: CENTER }
+        )
+      }
     }
     author {
       name
@@ -116,12 +122,14 @@ export const query = graphql`
         site
       }
       avatar {
-        gatsbyImageData(
-          width: 40
-          height: 40
-          transformOptions: { cropFocus: CENTER }
-          layout: FIXED
-        )
+        childImageSharp {
+          gatsbyImageData(
+            width: 40
+            height: 40
+            transformOptions: { cropFocus: CENTER }
+            layout: FIXED
+          )
+        }
       }
     }
   }
