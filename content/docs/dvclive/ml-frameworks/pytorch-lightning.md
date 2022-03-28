@@ -28,9 +28,13 @@ to your
 This will generate the outputs as described in the
 [Get Started](/docs/dvclive/get-started#outputs).
 
-> 💡Without requiring additional modifications to your training code, you can
-> use DVCLive alongside DVC. See
-> [DVCLive with DVC](/doc/dvclive/dvclive-with-dvc) for more info.
+<admon type="tip">
+
+Without requiring additional modifications to your training code, you can use
+DVCLive alongside DVC. See [DVCLive with DVC](/doc/dvclive/dvclive-with-dvc) for
+more info.
+
+</admon>
 
 ## Parameters
 
@@ -62,7 +66,11 @@ trainer = Trainer(
 trainer.fit(model)
 ```
 
-> 📖 By default, PyTorch Lightning creates a directory to store checkpoints
-> using the logger's name (`DvcLiveLogger`). You can change the checkpoint path
-> or disable checkpointing at all as described in the
-> [PyTorch Lightning documentation](https://pytorch-lightning.readthedocs.io/en/latest/common/checkpointing.html)
+<admon type="info">
+
+By default, PyTorch Lightning creates a directory to store checkpoints using the
+logger's name (`DvcLiveLogger`). You can change the checkpoint path or disable
+checkpointing at all as described in the
+[PyTorch Lightning documentation](https://pytorch-lightning.readthedocs.io/en/latest/common/checkpointing.html)
+
+</admon>
