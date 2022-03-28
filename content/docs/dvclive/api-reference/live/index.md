@@ -25,8 +25,12 @@ live = Live()
 A `Live()` instance is required in order to log machine learning metrics and
 other metadata.
 
-⚠️ `Live()` will remove all existing DVCLive related files under `path` unless
+<admon type="warn">
+
+`Live()` will remove all existing DVCLive related files under `path` unless
 `resume=True`.
+
+</admon>
 
 ## Attributes
 
@@ -48,8 +52,12 @@ other metadata.
 - `resume` - If `True`, DVCLive will try to read the previous `step` from the
   `path` directory and start from that point. _Default_: `False`.
 
-  ⚠️ If you are not using steps, don't set to `True` since DVCLive will preserve
-  previous run's files and assume that `step` has been enabled.
+  <admon type="info">
+
+  If you are not using steps, don't set `resume=True` since DVCLive will
+  preserve previous run's files and assume that `step` has been enabled.
+
+  </admon>
 
 ## Exceptions
 
