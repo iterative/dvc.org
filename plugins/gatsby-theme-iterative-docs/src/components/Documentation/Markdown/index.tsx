@@ -60,8 +60,8 @@ const Details: React.FC<{ slugger: GithubSlugger }> = ({
   }, '')
 
   let slug = slugger.slug(title)
-  if (slug[0] === '️') {
-    slug = slug.slice(1)
+  if (slug.includes('️')) {
+    slug = slug.replaceAll('️', '')
   }
   slug = slug.startsWith('-') ? slug.slice(1) : slug
   const id = slug.endsWith('-') ? slug.slice(0, -1) : slug
