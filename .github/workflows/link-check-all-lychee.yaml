@@ -10,12 +10,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Get Edited Files
-        uses: jitterbit/get-changed-files@v1
-        id: edited_files
-        with:
-          format: space-delimited
-
       - name: Link Checker
         id: lychee
         uses: lycheeverse/lychee-action@v1.3.2
@@ -23,10 +17,7 @@ jobs:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
         with:
           args:
-            --verbose --no-progress -b https://dvc.org/ ${{
-            steps.edited_files.outputs.all }}
-          format: json
-          output: out.json
-
-      - name: Read Output File
-        run: cat ./out.json
+            --verbose --no-progress -b https://dvc.org/
+            {.github,content,src}/**/*!(.test).{css,js,jsx,md,tsx,ts,json}
+          format: detailed
+          output: out.txt
