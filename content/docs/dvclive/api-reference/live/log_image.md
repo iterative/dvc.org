@@ -40,7 +40,11 @@ $ tree
         └── pil.png
 ```
 
-💡 Images can be visualized with `dvc plots`.
+<admon type="tip">
+
+The logged images can be visualized with `dvc plots`.
+
+</admon>
 
 ### Step updates
 
