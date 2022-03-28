@@ -19,5 +19,5 @@ jobs:
           args:
             --verbose --no-progress -b https://dvc.org/
             {.github,content,src}/**/*.{css,js,jsx,md,tsx,ts,json}
-          format: detailed
-          output: out.txt
+          format: json
+          output: out.json
