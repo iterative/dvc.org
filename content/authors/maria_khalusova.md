@@ -1,6 +1,6 @@
 ---
 name: Maria Khalusova
-avatar: maria_khalusova.jpg
+avatar: maria_khalusova.jpeg
 links:
   - https://twitter.com/mariaKhalusova
 ---
