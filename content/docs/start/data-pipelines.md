@@ -71,9 +71,9 @@ $ dvc stage add -n prepare \
                 python src/prepare.py data/data.xml
 ```
 
-A `dvc.yaml` file is generated. It includes information about the command we ran
-(`python src/prepare.py data/data.xml`), its <abbr>dependencies</abbr>, and
-<abbr>outputs</abbr>.
+A `dvc.yaml` file is generated. It includes information about the command we
+want to run (`python src/prepare.py data/data.xml`), its
+<abbr>dependencies</abbr>, and <abbr>outputs</abbr>.
 
 DVC uses these metafiles to track the data used and produced by the stage, so
 there's no need to use `dvc add` on `data/prepared`
