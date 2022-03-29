@@ -176,7 +176,7 @@ manipulations below.
 
 <details>
 
-### Click for Amazon S3 instructions
+### Amazon S3
 
 Install
 [aws cli](https://docs.aws.amazon.com/en_us/cli/latest/userguide/cli-chap-install.html)
@@ -195,7 +195,7 @@ $ export DVC_TEST_AWS_REPO_BUCKET="...TEST-S3-BUCKET..."
 
 <details>
 
-### Click for Microsoft Azure Blob Storage instructions
+### Microsoft Azure Blob Storage
 
 Install [Node.js](https://nodejs.org/en/download/) and then install and run
 Azurite:
@@ -217,7 +217,7 @@ $ export AZURE_STORAGE_CONNECTION_STRING="DefaultEndpointsProtocol=http;AccountN
 
 <details>
 
-### Click for Google Drive instructions
+### Google Drive
 
 > 💡 Please remember that Google Drive access tokens are personal credentials
 > and should not be shared with anyone, otherwise risking unauthorized usage of
@@ -238,7 +238,7 @@ $ export GDRIVE_USER_CREDENTIALS_DATA='mysecret'
 
 <details>
 
-### Click for Google Cloud Storage instructions
+### Google Cloud Storage
 
 Go through the [quick start](https://cloud.google.com/sdk/docs/quickstarts) for
 your OS. After that, you should have the `gcloud` command line tool available,
@@ -278,7 +278,7 @@ may use different names.
 
 <details>
 
-### Click for HDFS instructions
+### HDFS
 
 Tests currently only work on Linux. First you need to set up passwordless SSH
 auth to localhost:

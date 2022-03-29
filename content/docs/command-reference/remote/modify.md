@@ -105,7 +105,7 @@ options:
 
 <details>
 
-### Click for Amazon S3
+### Amazon S3
 
 - `url` - remote location, in the `s3://<bucket>/<key>` format:
 
@@ -333,7 +333,7 @@ For more on the supported env vars, please see the
 
 <details>
 
-### Click for S3-compatible storage
+### S3-compatible storage
 
 - `endpointurl` - URL to connect to the S3-compatible storage server or service
   (e.g. [Minio](https://min.io/),
@@ -352,7 +352,7 @@ storage. Whether they're effective depends on each storage platform.
 
 <details>
 
-### Click for Microsoft Azure Blob Storage
+### Microsoft Azure Blob Storage
 
 > If any values given to the parameters below contain sensitive user info, add
 > them with the `--local` option, so they're written to a Git-ignored config
@@ -535,7 +535,7 @@ can propagate from an Azure configuration file (typically managed with
 
 <details>
 
-### Click for Google Drive
+### Google Drive
 
 > If any values given to the parameters below contain sensitive user info, add
 > them with the `--local` option, so they're written to a Git-ignored config
@@ -638,7 +638,7 @@ more information.
 
 <details>
 
-### Click for Google Cloud Storage
+### Google Cloud Storage
 
 > If any values given to the parameters below contain sensitive user info, add
 > them with the `--local` option, so they're written to a Git-ignored config
@@ -685,7 +685,7 @@ $ export GOOGLE_APPLICATION_CREDENTIALS='.../project-XXX.json'
 
 <details>
 
-### Click for Aliyun OSS
+### Aliyun OSS
 
 > If any values given to the parameters below contain sensitive user info, add
 > them with the `--local` option, so they're written to a Git-ignored config
@@ -731,7 +731,7 @@ $ export OSS_ENDPOINT='endpoint'
 
 <details>
 
-### Click for SSH
+### SSH
 
 > If any values given to the parameters below contain sensitive user info, add
 > them with the `--local` option, so they're written to a Git-ignored config
@@ -824,7 +824,7 @@ $ export OSS_ENDPOINT='endpoint'
 
 <details>
 
-### Click for HDFS
+### HDFS
 
 💡 Using a HDFS cluster as remote storage is also supported via the WebHDFS API.
 Read more about by expanding the WebHDFS section in
@@ -858,7 +858,7 @@ Read more about by expanding the WebHDFS section in
 
 <details>
 
-### Click for WebHDFS
+### WebHDFS
 
 💡 WebHDFS serves as an alternative for using the same remote storage supported
 by HDFS. Read more about by expanding the WebHDFS section in
@@ -947,7 +947,7 @@ by HDFS. Read more about by expanding the WebHDFS section in
 
 <details>
 
-### Click for HTTP
+### HTTP
 
 > If any values given to the parameters below contain sensitive user info, add
 > them with the `--local` option, so they're written to a Git-ignored config
@@ -1039,7 +1039,7 @@ by HDFS. Read more about by expanding the WebHDFS section in
 
 <details>
 
-### Click for WebDAV
+### WebDAV
 
 > If any values given to the parameters below contain sensitive user info, add
 > them with the `--local` option, so they're written to a Git-ignored config
