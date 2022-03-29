@@ -2,12 +2,12 @@
 title: Machine Learning Workloads with Iterative Provider for Terraform
 date: 2022-04-18
 description: >
-  Today we introduce resource orchestration for your machine learning projects  in
-  conjunction with Terraform.
+  Today we introduce resource orchestration for your machine learning
+  projects  in conjunction with Terraform.
 descriptionLong: >
   Now you can bring multi-cloud provisioning to your machine learning projects,
-  optimizing resources; costs, and workflows while aligning your Data Science  and
-  DevOps teams.
+  optimizing resources; costs, and workflows while aligning your Data
+  Science  and DevOps teams.
 picture: 2022-04-18/terraform-provider-iterative.png
 pictureComment: Machine Learning Workloads with Iterative Provider for Terraform
 author: maria_khalusova
