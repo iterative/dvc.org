@@ -246,7 +246,7 @@ train-model:
         cml send-comment --pr --update report.md
 ```
 
-Et voila! We are now running a daily model training on an AWS EC2 instance and
+Et voilà! We are now running a daily model training on an AWS EC2 instance and
 saving the resulting model to our GitHub repository.
 
 There is still some room for improvement, though. This approach works well when
