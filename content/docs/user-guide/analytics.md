@@ -25,9 +25,9 @@ User and event data have a 14 month retention period.
 
 DVC's analytics record the following information per event:
 
-- The DVC version e.g. `0.82.0`
+- The DVC version e.g. `2.9.5`
 - Whether DVC was installed from a binary release
-- Operating system information, e.g. Ubuntu Linux 14.04
+- Operating system information, e.g. Ubuntu Linux 22.04
 - Whether the project uses Git
 - Command type e.g. `CmdDataPull`
 - Command return code e.g. `1`
@@ -46,6 +46,7 @@ any execution. They will fail immediately and silently if you have no network
 connection.
 
 DVC's analytics are sent through DVC's proxy to Google Analytics over HTTPS.
+Google Analytics uses IP addresses of these requests for aggregate analytics.
 
 ## Opting out
 
