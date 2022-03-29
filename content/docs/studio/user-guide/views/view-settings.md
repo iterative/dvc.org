@@ -17,7 +17,7 @@ Alternatively, you could create views from:
 - Custom files in your repository or remote/cloud storage
 
 In each of these scenarios, you will need to configure additional settings for
-DVC Studio to be able to access the data required for visualization.
+Iterative Studio to be able to access the data required for visualization.
 
 Additionally, you can also configure view settings to
 [change the name](#view-name) of your view and to
@@ -27,8 +27,8 @@ Additionally, you can also configure view settings to
 
 In the section on
 [preparing your repositories](/doc/studio/user-guide/prepare-repositories), you
-saw that you can use DVC Studio with DVC as well as non-DVC repositories. If you
-are connecting to a non-DVC repository, then you will need to
+saw that you can use Iterative Studio with DVC as well as non-DVC repositories.
+If you are connecting to a non-DVC repository, then you will need to
 [specify the custom files](#custom-metrics-and-parameters) that contain the
 metrics and hyperparameters that you want to visualize.
 
@@ -46,8 +46,8 @@ with your view.
 The metrics and parameters that you want to include in the view may also be
 present in a [data remote](/doc/command-reference/remote#description) (cloud
 storage or another location outside the Git repo). If you want to include such
-data in your views, then you will have to grant DVC Studio access to the data
-remote.
+data in your views, then you will have to grant Iterative Studio access to the
+data remote.
 
 ## Configuring view settings
 
@@ -97,10 +97,10 @@ permissions on the cloud / remote storage. In the DVC documentation on
 [supported storage types](/doc/command-reference/remote/add#supported-storage-types),
 expand the section for the storage type you want to add. There, you will find
 the details of the permissions that you need to grant to the account
-(credentials) that you are configuring on DVC Studio.
+(credentials) that you are configuring on Iterative Studio.
 
-Note that DVC Studio uses the credentials only to read plots/metrics files if
-they are not saved into Git. It does not access any other data in your remote
+Note that Iterative Studio uses the credentials only to read plots/metrics files
+if they are not saved into Git. It does not access any other data in your remote
 storage. And you do not need to provide the credentials if any DVC data remote
 in not used in your Git repository.
 
@@ -108,11 +108,11 @@ in not used in your Git repository.
 
 ##### (Tracking scope)
 
-If your repository exceeds 200 columns, DVC Studio will import a subset. The
-columns that are not imported will not be available to display in your view. In
-the settings for "Mandatory columns", You can select which columns are mandatory
-to import. DVC Studio will also import unselected columns up to a maximum
-of 200.
+If your repository exceeds 200 columns, Iterative Studio will import a subset.
+The columns that are not imported will not be available to display in your view.
+In the settings for "Mandatory columns", You can select which columns are
+mandatory to import. Iterative Studio will also import unselected columns up to
+a maximum of 200.
 
 ![](https://static.iterative.ai/img/studio/view_settings_mandatory_columns.png)
 

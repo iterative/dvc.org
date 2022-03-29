@@ -65,7 +65,8 @@ committing them to the Git repo. Unnecessary ones can be [cleared] with
 ## Options
 
 > In addition to the following, `dvc exp run` accepts all the options in
-> `dvc repro`, with the exception that `--no-commit` has no effect.
+> `dvc repro`, with the exception of `--glob`, `--no-commit`, and
+> `--no-run-cache`.
 
 - `-S [<filename>:]<param_name>=<param_value>`,
   `--set-param [<filename>:]<param_name>=<param_value>` - set the value of
@@ -100,7 +101,7 @@ committing them to the Git repo. Unnecessary ones can be [cleared] with
   > stages may sometimes be executed several times depending on the state of the
   > [run-cache] at that time.
 
-- `-r <commit>`, `--rev <commit>` - continue an experiment from a specific
+- `-r <commit>`, `--rev <commit>` - resume an experiment from a specific
   checkpoint name or hash (`commit`) in `--queue` or `--temp` runs.
 
 - `--reset` - deletes `checkpoint: true` outputs before running this experiment

@@ -22,7 +22,7 @@ import SubscribeSection from '../../SubscribeSection'
 import * as styles from './styles.module.css'
 
 const Post: React.FC<IBlogPostData> = ({
-  html,
+  htmlAst,
   timeToRead,
   title,
   date,
@@ -38,7 +38,6 @@ const Post: React.FC<IBlogPostData> = ({
   const wrapperRef = useRef<HTMLDivElement>(null)
   const { width, height } = useWindowSize()
   const { y } = useWindowScroll()
-
   useCustomYtEmbeds()
 
   const isFixed = useMemo(() => {
@@ -92,7 +91,7 @@ const Post: React.FC<IBlogPostData> = ({
           />
 
           <div className={styles.content}>
-            <Markdown html={html} />
+            <Markdown htmlAst={htmlAst} />
           </div>
           {tags && (
             <div className={styles.tags}>

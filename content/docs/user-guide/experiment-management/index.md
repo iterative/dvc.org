@@ -18,7 +18,7 @@ _New in DVC 2.0 (see `dvc version`)_
 
 DVC experiment management features build on top of base DVC features to form a
 comprehensive framework to organize, execute, manage, and share ML experiments.
-They support support these main approaches:
+They support these main approaches:
 
 - Compare parameters and metrics of existing project versions (for example
   different Git branches) against each other or against new, uncommitted results

@@ -121,7 +121,7 @@ stages:
 
 cml:
   stage: cml_run
-  image: dvcorg/cml-py3:latest
+  image: iterativeai/cml:0-dvc2-base1
   script:
     - dvc pull data --run-cache
 
@@ -134,17 +134,17 @@ cml:
 
     # Visualize loss function diff
     - dvc plots diff --target loss.csv --show-vega master > vega.json
-    - vl2png vega.json | cml-publish --md >> report.md
+    - vl2png vega.json | cml publish --md >> report.md
     - dvc push data --run-cache
-    - cml-send-comment report.md
+    - cml send-comment report.md
 ```
 
 ![Hyperparameter change with a result image in GitHub Pull request report](/uploads/images/2020-07-07/cml-report-params.png)
 
 In this example all the CML functions are defined in the **docker images** that
-is used in the workflow - `dvcorg/cml-py3`. Users can specify any docker image.
-The only restriction is that the CML library need to be installed to enable all
-the CML commands for the reporting and graphs:
+is used in the workflow - `iterativeai/cml:0-dvc2-base1`. Users can specify any
+docker image. The only restriction is that the CML library need to be installed
+to enable all the CML commands for the reporting and graphs:
 
 ```bash
 npm i @dvcorg/cml

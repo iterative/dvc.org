@@ -1,10 +1,10 @@
 # Explore ML Experiments
 
 When you create a view by connecting to a Git repository, the view is added to
-your DVC Studio dashboard. You can dive deep into the views shown in your DVC
-Studio dashboard to explore all the ML experiments, visualize and compare them,
-and run new experiments. For this, open the view by clicking the view name (in
-this case, `example-get-started`).
+your Iterative Studio dashboard. You can dive deep into the views shown in your
+Iterative Studio dashboard to explore all the ML experiments, visualize and
+compare them, and run new experiments. For this, open the view by clicking the
+view name (in this case, `example-get-started`).
 
 A table will be generated as shown below. This includes metrics, hyperparameters
 and information about the datasets. All these values are flattened and neatly
@@ -73,11 +73,11 @@ may have happened.
 #### Hide commits:
 
 The following functionality are available for you to hide irrelevant commits
-from your views in DVC Studio.
+from your views in Iterative Studio.
 
-- **DVC Studio auto-hides irrelevant commits:** DVC Studio identifies commits
-  where metrics, files and hyperparameters did not change and hides them
-  automatically.
+- **Iterative Studio auto-hides irrelevant commits:** Iterative Studio
+  identifies commits where metrics, files and hyperparameters did not change and
+  hides them automatically.
 - **Hide commits and branches manually:** You can selectively hide commits and
   branches. This can be useful useful if there are commits that do not add much
   value in your view. To hide a commit or branch, click on the 3-dot menu next
@@ -100,7 +100,7 @@ Toggle between absolute values and difference from the first row.
 #### Save changes:
 
 Save your filters or column display preferences so that these preferences remain
-intact even after you log out of DVC Studio and log back in later.
+intact even after you log out of Iterative Studio and log back in later.
 
 ### Visualize, compare and run experiments.
 
