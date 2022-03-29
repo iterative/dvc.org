@@ -7,16 +7,16 @@ command.
 
 ```usage
 usage: dvc run [-h] [-q | -v] [-n <name>] [-f]
-               [--no-exec] [--no-run-cache] [--no-commit]
                [-d <path>] [-p [<filename>:]<params_list>]
                [-o <filename>] [-O <filename>] [-c <filename>]
-               [--outs-persist <filename>]
+               [--external] [--outs-persist <filename>]
                [--outs-persist-no-cache <filename>]
                [-m <path>] [-M <path>]
                [--plots <path>] [--plots-no-cache <path>]
-               [--live <path>] [--live-no-cache <path>]
-               [--live-no-html] [-w <path>]
-               [--always-changed] [--external] [--desc <text>]
+               [--no-exec] [--no-commit] [--no-run-cache]
+               [--always-changed] [--live <path>]
+               [--live-no-cache <path>] [--live-no-html]
+               [-w <path>] [--desc <text>]
                command
 
 positional arguments:
