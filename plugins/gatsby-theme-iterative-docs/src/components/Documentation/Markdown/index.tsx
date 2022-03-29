@@ -60,11 +60,8 @@ const Details: React.FC<{ slugger: GithubSlugger }> = ({
   }, '')
 
   let slug = slugger.slug(title)
-  if (slug.includes('️')) {
-    slug = slug.replaceAll('️', '')
-  }
-  slug = slug.startsWith('-') ? slug.slice(1) : slug
-  const id = slug.endsWith('-') ? slug.slice(0, -1) : slug
+  slug = slug.replaceAll('️', '').replaceAll('ℹ', '')
+  const id = slug.replace(/(^\-+|\-+$)/g, '')
 
   useEffect(() => {
     if (location.hash === `#${id}`) {
