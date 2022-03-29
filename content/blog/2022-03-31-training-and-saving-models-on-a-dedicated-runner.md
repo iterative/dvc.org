@@ -204,7 +204,7 @@ jobs:
 In this example we are using a <code>t2.micro</code> AWS EC2 instance. At the time of writing this is included in the AWS free tier. Make sure that you qualify for this free usage to prevent unexpected spending. When you specify a bulkier <code>cloud-type</code>, your expenses will rise.
 </admon>
 
-The workflow we defined first provisions a runner on AWS and then uses that
+The workflow we defined first [provisions a runner](https://cml.dev/doc/ref/runner) on AWS, and then uses that
 runner to train the model. After completing the training job, CML automatically
 terminates the runner to prevent you from incurring further costs. Once the
 runner is terminated, however, the model is lost along with it. Let's see how we
