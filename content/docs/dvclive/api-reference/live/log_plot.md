@@ -27,7 +27,11 @@ live.log_plot("confusion_matrix", y_true, y_pred)
 Uses `name` to determine which plot should be generated. See
 [supported plots](#supported-plots).
 
-💡 The generated `{path}/plots/{name}.json` can be visualized with `dvc plots`.
+<admon type="tip">
+
+The generated `{path}/plots/{name}.json` can be visualized with `dvc plots`.
+
+</admon>
 
 ### Step updates
 

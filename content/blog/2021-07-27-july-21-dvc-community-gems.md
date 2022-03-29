@@ -18,7 +18,7 @@ tags:
   - DVC
 ---
 
-### [Q: I'm trying to use the `--reuse` option of `cml-runner`. If I launch 2 CML experiments in parallel, will CML use the same runner or spin up another one if the existing one is in use?](https://discord.com/channels/485586884165107732/728693131557732403/850340190434492445)
+### [Q: I'm trying to use the `--reuse` option of `cml runner`. If I launch 2 CML experiments in parallel, will CML use the same runner or spin up another one if the existing one is in use?](https://discord.com/channels/485586884165107732/728693131557732403/850340190434492445)
 
 If you don't reuse the runner and you have set up a deploy job, that deploy job
 will launch two cloud runners. With `--reuse` it will check if the runner with
@@ -43,12 +43,12 @@ A great question from @Corentin in the Discord community!
 
 ### [Q: How can I run self-hosted runners on an on-premise machine indefinitely?](https://discord.com/channels/485586884165107732/728693131557732403/851923384613994496)
 
-You can achieve this by passing the `--idle-timeout=0` option to `cml-runner` in
+You can achieve this by passing the `--idle-timeout=0` option to `cml runner` in
 order to disable the timeout.
 
 Thanks @achbogga!
 
-### [Q: How can I change the default VPC to a different one with `cml-cloudrunner` for AWS?](https://discord.com/channels/485586884165107732/728693131557732403/857940793616498738)
+### [Q: How can I change the default VPC to a different one with `cml-runner` for AWS?](https://discord.com/channels/485586884165107732/728693131557732403/857940793616498738)
 
 Great gem from @krish98409!
 

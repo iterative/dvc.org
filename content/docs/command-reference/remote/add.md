@@ -88,7 +88,7 @@ DVC will determine the [type of remote](#supported-storage-types) based on the
 
 The following are the types of remote storage (protocols) supported:
 
-<details title="Click for Amazon S3">
+<details title="Amazon S3">
 
 > 💡 Before adding an S3 remote, be sure to
 > [Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html).
@@ -111,7 +111,7 @@ methods that are performed by DVC (`list_objects_v2` or `list_objects`,
 
 </details>
 
-<details title="Click for S3-compatible storage">
+<details title="S3-compatible storage">
 
 For object storage that supports an S3-compatible API (e.g.
 [Minio](https://min.io/),
@@ -137,7 +137,7 @@ they're effective depends on each storage platform.
 
 </details>
 
-<details title="Click for Microsoft Azure Blob Storage">
+<details title="Microsoft Azure Blob Storage">
 
 ```dvc
 $ dvc remote add -d myremote azure://mycontainer/path
@@ -157,7 +157,7 @@ To use a custom authentication method, use the parameters described in
 
 </details>
 
-<details title="Click for Google Drive">
+<details title="Google Drive">
 
 To start using a GDrive remote, first add it with a
 [valid URL format](/doc/user-guide/setup-google-drive-remote#url-format). Then
@@ -189,7 +189,7 @@ modified.
 
 </details>
 
-<details title="Click for Google Cloud Storage">
+<details title="Google Cloud Storage">
 
 > 💡 Before adding a GC Storage remote, be sure to
 > [Create a storage bucket](https://cloud.google.com/storage/docs/creating-buckets).
@@ -209,7 +209,7 @@ parameters, use the parameters described in `dvc remote modify`.
 
 </details>
 
-<details title="Click for Aliyun OSS">
+<details title="Aliyun OSS">
 
 First you need to set up OSS storage on Aliyun Cloud. Then, use an S3 style URL
 for OSS storage, and configure the
@@ -249,7 +249,7 @@ $ export OSS_ACCESS_KEY_SECRET='mysecret'
 
 </details>
 
-<details title="Click for SSH">
+<details title="SSH">
 
 ```dvc
 $ dvc remote add -d myremote ssh://user@example.com/path
@@ -265,7 +265,7 @@ Please check that you are able to connect both ways with tools like `ssh` and
 
 </details>
 
-<details title="Click for HDFS">
+<details title="HDFS">
 
 ⚠️ Using HDFS with a Hadoop cluster might require additional setup. Our
 assumption is that the client is set up to use it. Specifically, [`libhdfs`]
@@ -285,7 +285,7 @@ $ dvc remote add -d myremote hdfs://user@example.com/path
 
 </details>
 
-<details title="Click for WebHDFS">
+<details title="WebHDFS">
 
 ⚠️ Using WebHDFS requires to enable REST API access in the cluster: set the
 config property `dfs.webhdfs.enabled` to `true` in `hdfs-site.xml`.
@@ -311,7 +311,7 @@ active kerberos session.
 
 </details>
 
-<details title="Click for HTTP">
+<details title="HTTP">
 
 ```dvc
 $ dvc remote add -d myremote https://example.com/path
@@ -321,7 +321,7 @@ $ dvc remote add -d myremote https://example.com/path
 
 </details>
 
-<details title="Click for WebDAV">
+<details title="WebDAV">
 
 ```dvc
 $ dvc remote add -d myremote \
@@ -340,7 +340,7 @@ $ dvc remote add -d myremote \
 
 </details>
 
-<details title="Click for local remote">
+<details title="Local file system paths">
 
 A "local remote" is a directory in the machine's file system. Not to be confused
 with the `--local` option of `dvc remote` (and other config) commands!

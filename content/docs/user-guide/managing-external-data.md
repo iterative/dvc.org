@@ -92,7 +92,7 @@ types:
 > setup, use the special `remote://` URL format in step 2. For example:  
 > `dvc add --external remote://myxcache/existing-data`.
 
-<details title="Click for Amazon S3">
+<details title="Amazon S3">
 
 ```dvc
 $ dvc remote add s3cache s3://mybucket/cache
@@ -108,7 +108,7 @@ $ dvc run -d data.txt \
 
 </details>
 
-<details title="Click for SSH">
+<details title="SSH">
 
 ```dvc
 $ dvc remote add sshcache ssh://user@example.com/cache
@@ -130,7 +130,7 @@ Please check that you are able to connect both ways with tools like `ssh` and
 
 </details>
 
-<details title="Click for HDFS">
+<details title="HDFS">
 
 ```dvc
 $ dvc remote add hdfscache hdfs://user@example.com/cache
@@ -151,7 +151,7 @@ it. So systems like Hadoop, Hive, and HBase are supported!
 
 </details>
 
-<details title="Click for WebHDFS">
+<details title="WebHDFS">
 
 ```dvc
 $ dvc remote add webhdfscache webhdfs://user@example.com/cache
@@ -168,7 +168,7 @@ $ dvc run -d data.txt \
 
 </details>
 
-<details title="Click for local file system paths">
+<details title="Local file system paths">
 
 The default <abbr>cache</abbr> is in `.dvc/cache`, so there is no need to set a
 custom cache location for local paths outside of your project.

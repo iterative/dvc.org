@@ -103,7 +103,7 @@ The following config options are available for all remote types:
 The following are the types of remote storage (protocols) and their config
 options:
 
-<details title="Click for Amazon S3">
+<details title="Amazon S3">
 
 - `url` - remote location, in the `s3://<bucket>/<key>` format:
 
@@ -329,7 +329,7 @@ For more on the supported env vars, please see the
 
 </details>
 
-<details title="Click for S3-compatible storage">
+<details title="S3-compatible storage">
 
 - `endpointurl` - URL to connect to the S3-compatible storage server or service
   (e.g. [Minio](https://min.io/),
@@ -346,7 +346,7 @@ storage. Whether they're effective depends on each storage platform.
 
 </details>
 
-<details title="Click for Microsoft Azure Blob Storage">
+<details title="Microsoft Azure Blob Storage">
 
 > If any values given to the parameters below contain sensitive user info, add
 > them with the `--local` option, so they're written to a Git-ignored config
@@ -525,7 +525,7 @@ can propagate from an Azure configuration file (typically managed with
 
 </details>
 
-<details title="Click for Google Drive">
+<details title="Google Drive">
 
 > If any values given to the parameters below contain sensitive user info, add
 > them with the `--local` option, so they're written to a Git-ignored config
@@ -626,7 +626,7 @@ more information.
 
 </details>
 
-<details title="Click for Google Cloud Storage">
+<details title="Google Cloud Storage">
 
 > If any values given to the parameters below contain sensitive user info, add
 > them with the `--local` option, so they're written to a Git-ignored config
@@ -671,7 +671,7 @@ $ export GOOGLE_APPLICATION_CREDENTIALS='.../project-XXX.json'
 
 </details>
 
-<details title="Click for Aliyun OSS">
+<details title="Aliyun OSS">
 
 > If any values given to the parameters below contain sensitive user info, add
 > them with the `--local` option, so they're written to a Git-ignored config
@@ -715,7 +715,7 @@ $ export OSS_ENDPOINT='endpoint'
 
 </details>
 
-<details title="Click for SSH">
+<details title="SSH">
 
 > If any values given to the parameters below contain sensitive user info, add
 > them with the `--local` option, so they're written to a Git-ignored config
@@ -806,7 +806,7 @@ $ export OSS_ENDPOINT='endpoint'
 
 </details>
 
-<details title="Click for HDFS">
+<details title="HDFS">
 
 💡 Using a HDFS cluster as remote storage is also supported via the WebHDFS API.
 Read more about by expanding the WebHDFS section in
@@ -838,7 +838,7 @@ Read more about by expanding the WebHDFS section in
 
 </details>
 
-<details title="Click for WebHDFS">
+<details title="WebHDFS">
 
 💡 WebHDFS serves as an alternative for using the same remote storage supported
 by HDFS. Read more about by expanding the WebHDFS section in
@@ -925,7 +925,7 @@ by HDFS. Read more about by expanding the WebHDFS section in
 
 </details>
 
-<details title="Click for HTTP">
+<details title="HTTP">
 
 > If any values given to the parameters below contain sensitive user info, add
 > them with the `--local` option, so they're written to a Git-ignored config
@@ -1015,7 +1015,7 @@ by HDFS. Read more about by expanding the WebHDFS section in
 
 </details>
 
-<details title="Click for WebDAV">
+<details title="WebDAV">
 
 > If any values given to the parameters below contain sensitive user info, add
 > them with the `--local` option, so they're written to a Git-ignored config

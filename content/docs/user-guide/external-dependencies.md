@@ -40,7 +40,7 @@ downloads a file from an external location, on all the supported location types.
 > See the [Remote alias example](#example-using-dvc-remote-aliases) for info. on
 > using remote locations that require manual authentication setup.
 
-<details title="Click for Amazon S3">
+<details title="Amazon S3">
 
 ```dvc
 $ dvc run -n download_file \
@@ -51,7 +51,7 @@ $ dvc run -n download_file \
 
 </details>
 
-<details title="Click for Microsoft Azure Blob Storage">
+<details title="Microsoft Azure Blob Storage">
 
 ```dvc
 $ dvc run -n download_file \
@@ -66,7 +66,7 @@ $ dvc run -n download_file \
 
 </details>
 
-<details title="Click for Google Cloud Storage">
+<details title="Google Cloud Storage">
 
 ```dvc
 $ dvc run -n download_file \
@@ -77,7 +77,7 @@ $ dvc run -n download_file \
 
 </details>
 
-<details title="Click for SSH">
+<details title="SSH">
 
 ```dvc
 $ dvc run -n download_file \
@@ -94,7 +94,7 @@ Please check that you are able to connect both ways with tools like `ssh` and
 
 </details>
 
-<details title="Click for HDFS">
+<details title="HDFS">
 
 ```dvc
 $ dvc run -n download_file \
@@ -106,7 +106,7 @@ $ dvc run -n download_file \
 
 </details>
 
-<details title="Click for HTTP">
+<details title="HTTP">
 
 > Including HTTPs
 
@@ -119,7 +119,7 @@ $ dvc run -n download_file \
 
 </details>
 
-<details title="Click for local file system paths">
+<details title="Local file system paths">
 
 ```dvc
 $ dvc run -n download_file \

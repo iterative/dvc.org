@@ -42,10 +42,11 @@ Get the latest development version. Fork and clone the repo:
 $ git clone git@github.com:<your-username>/dvc.git
 ```
 
-Make sure that you have Python 3 installed. Version 3.7 or higher is required to
-run style checkers on pre-commit. On macOS, we recommend using `brew` to install
-Python. For Windows, we recommend an official
+Make sure that you have Python 3.7 or higher installed. On macOS, we recommend
+using `brew` to install Python. For Windows, we recommend an official
 [python.org release](https://www.python.org/downloads/windows/).
+
+> ℹ️ Note that `pip` version 20.3+ is required.
 
 Install DVC in editable mode with `pip install -e ".[all,tests]"`. But before we
 do that, we **strongly** recommend creating a
@@ -173,7 +174,7 @@ If one of your colleagues has already gone through this guide, you could just
 ask for their `remotes_env` file and Google Cloud credentials, and skip any env
 manipulations below.
 
-<details title="Click for Amazon S3 instructions">
+<details title="Amazon S3">
 
 Install
 [aws cli](https://docs.aws.amazon.com/en_us/cli/latest/userguide/cli-chap-install.html)
@@ -190,7 +191,7 @@ $ export DVC_TEST_AWS_REPO_BUCKET="...TEST-S3-BUCKET..."
 
 </details>
 
-<details title="Click for Microsoft Azure Blob Storage instructions">
+<details title="Microsoft Azure Blob Storage">
 
 Install [Node.js](https://nodejs.org/en/download/) and then install and run
 Azurite:
@@ -210,7 +211,7 @@ $ export AZURE_STORAGE_CONNECTION_STRING="DefaultEndpointsProtocol=http;AccountN
 
 </details>
 
-<details title="Click for Google Drive instructions">
+<details title="Google Drive">
 
 > 💡 Please remember that Google Drive access tokens are personal credentials
 > and should not be shared with anyone, otherwise risking unauthorized usage of
@@ -229,7 +230,7 @@ $ export GDRIVE_USER_CREDENTIALS_DATA='mysecret'
 
 </details>
 
-<details title="Click for Google Cloud Storage instructions">
+<details title="Google Cloud Storage">
 
 Go through the [quick start](https://cloud.google.com/sdk/docs/quickstarts) for
 your OS. After that, you should have the `gcloud` command line tool available,
@@ -267,7 +268,7 @@ may use different names.
 
 </details>
 
-<details title="Click for HDFS instructions">
+<details title="HDFS">
 
 Tests currently only work on Linux. First you need to set up passwordless SSH
 auth to localhost:

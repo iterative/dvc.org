@@ -134,9 +134,9 @@ cml:
 
     # Visualize loss function diff
     - dvc plots diff --target loss.csv --show-vega master > vega.json
-    - vl2png vega.json | cml-publish --md >> report.md
+    - vl2png vega.json | cml publish --md >> report.md
     - dvc push data --run-cache
-    - cml-send-comment report.md
+    - cml send-comment report.md
 ```
 
 ![Hyperparameter change with a result image in GitHub Pull request report](/uploads/images/2020-07-07/cml-report-params.png)
