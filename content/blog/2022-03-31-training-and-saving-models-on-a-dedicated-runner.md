@@ -217,8 +217,8 @@ extend the training stage of our workflow by pushing `random_forest.joblib` to a
 new experiment branch and creating a merge request.
 
 [`cml pr`](https://cml.dev/doc/ref/pr) is the command that specifies which files should be included in the
-merge request. The commands after that are used to generate a report in the
-merge request that displays the confusion matrix and calculated metrics.
+pull request. The commands after that are used to generate a report in the
+pull request that displays the confusion matrix and calculated metrics.
 
 ```yaml
 train-model:
