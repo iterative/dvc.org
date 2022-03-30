@@ -8,10 +8,9 @@ correct order.
 
 ```usage
 usage: dvc repro [-h] [-q | -v] [-f] [-i]
-                 [-s] [-p] [-P] [-R]
-                 [--downstream] [--force-downstream]
-                 [--dry] [--no-commit] [--no-run-cache]
-                 [--pull] [-m] [--glob]
+                 [-s] [-p] [-P] [-R] [-m]
+                 [--downstream] [--force-downstream] [--glob]
+                 [--dry] [--no-commit] [--no-run-cache] [--pull]
                  [targets [<target> ...]]
 
 positional arguments:
