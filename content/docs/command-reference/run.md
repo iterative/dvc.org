@@ -13,10 +13,10 @@ usage: dvc run [-h] [-q | -v] [-n <name>] [-f]
                [--outs-persist-no-cache <filename>]
                [-m <path>] [-M <path>]
                [--plots <path>] [--plots-no-cache <path>]
+               [--live <path>] [--live-no-cache <path>]
+               [--live-no-html] [-w <path>]
+               [--always-changed] [--desc <text>]
                [--no-exec] [--no-commit] [--no-run-cache]
-               [--always-changed] [--live <path>]
-               [--live-no-cache <path>] [--live-no-html]
-               [-w <path>] [--desc <text>]
                command
 
 positional arguments:
