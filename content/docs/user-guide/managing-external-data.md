@@ -94,7 +94,7 @@ types:
 
 <details>
 
-### Click for Amazon S3
+### Amazon S3
 
 ```dvc
 $ dvc remote add s3cache s3://mybucket/cache
@@ -112,7 +112,7 @@ $ dvc run -d data.txt \
 
 <details>
 
-### Click for SSH
+### SSH
 
 ```dvc
 $ dvc remote add sshcache ssh://user@example.com/cache
@@ -136,7 +136,7 @@ Please check that you are able to connect both ways with tools like `ssh` and
 
 <details>
 
-### Click for HDFS
+### HDFS
 
 ```dvc
 $ dvc remote add hdfscache hdfs://user@example.com/cache
@@ -159,7 +159,7 @@ it. So systems like Hadoop, Hive, and HBase are supported!
 
 <details>
 
-### Click for WebHDFS
+### WebHDFS
 
 ```dvc
 $ dvc remote add webhdfscache webhdfs://user@example.com/cache
@@ -178,7 +178,7 @@ $ dvc run -d data.txt \
 
 <details>
 
-### Click for local file system paths
+### local file system paths
 
 The default <abbr>cache</abbr> is in `.dvc/cache`, so there is no need to set a
 custom cache location for local paths outside of your project.
