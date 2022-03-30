@@ -2,19 +2,18 @@
 title: March '22 Community Gems
 date: 2022-03-30
 description: >
-  A roundup of technical Q&A's from the DVC and CML community. This month:
-  comparing experiments, working with data, working with pipelines, and more.
+  A roundup of technical Q&A's from the DVC and CML community. This month: CML
+  updates, working with multiple datasets, using DVC stages, and more.
 descriptionLong: >
-  A roundup of technical Q&A's from the DVC and CML community. This month:
-  comparing experiments, working with data, working with pipelines, and more.
+  A roundup of technical Q&A's from the DVC and CML community. This month: CML
+  updates, working with multiple datasets, using DVC stages, and more.
 picture: 2022-03-30/mar-comm-gems.png
 author: milecia_mcgregor
 commentsUrl: https://discuss.dvc.org/t/march-22-community-gems/1119
 tags:
-  - Data Versioning
-  - DVC Remotes
-  - DVC API
+  - CML
   - DVC Stages
+  - DVC Remotes
   - Community
 ---
 
