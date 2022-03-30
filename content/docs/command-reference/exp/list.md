@@ -5,8 +5,8 @@ List experiments in a <abbr>DVC repository</abbr> (remote or local).
 ## Synopsis
 
 ```usage
-usage: dvc exp list [-h] [-q | -v] [--rev <rev>]
-                    [--all] [--names-only]
+usage: dvc exp list [-h] [-q | -v] [-A] [--rev <commit>]
+                    [-n <num>] [--names-only]
                     [git_remote]
 
 positional arguments:
@@ -34,10 +34,15 @@ options below).
 
 ## Options
 
-- `--rev <commit>` - list experiments derived from the specified Git commit
-  (instead of `HEAD`).
+- `--rev <commit>` - list experiments derived from the specified `<commit>` as
+  baseline (HEAD by default).
 
-- `--all` - list all experiments in the repository (overrides `--rev`).
+- `-n <num>`, `--num <num>` - show experiments from the last `num` commits
+  (first parents) starting from the `--rev` baseline. Give a negative value to
+  include all first-parent commits (similar to `git log -n`).
+
+- `-A, --all-commits` - list all experiments in the repository (overrides
+  `--rev` and `--num`).
 
 - `--names-only` - print only the names of the experiments without their parent
   Git commit.
