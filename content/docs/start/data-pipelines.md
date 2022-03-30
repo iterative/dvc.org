@@ -306,7 +306,7 @@ stages:
 
 </details>
 
-DVC pipelines (`dvc.yaml` file, `dvc stage run`, and `dvc repro` commands) solve
+DVC pipelines (`dvc.yaml` file, `dvc stage add`, and `dvc repro` commands) solve
 a few important problems:
 
 - _Automation_: run a sequence of steps in a "smart" way which makes iterating
