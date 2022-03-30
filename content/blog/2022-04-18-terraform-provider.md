@@ -49,7 +49,7 @@ you can use to configure:
   metrics, a model, plots)
 
 Here’s a “hello world” example of a `main.tf` Terraform configuration file using
-the `iterative_task`:
+the `iterative_task` resource:
 
 ```hcl
 terraform {
