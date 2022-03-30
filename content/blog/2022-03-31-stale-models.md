@@ -12,7 +12,7 @@ descriptionLong: >
 picture: 2022-03-31/stale-model-cover.png
 pictureComment: Preventing Stale Models in Production
 author: milecia_mcgregor
-commentsUrl: https://discuss.dvc.org/t/stale-models/1002
+commentsUrl: https://discuss.dvc.org/t/preventing-stale-models-in-production/1137
 tags:
   - MLOps
   - DVC
