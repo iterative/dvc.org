@@ -74,9 +74,9 @@ we can bring in DVC to help us get this stale model off of production faster.
 
 We'll start by taking a year's worth of data and creating a new model. This
 might give us a more accurate model to push to production than using weekly
-data. So we'll take all of the data from 2011 and make our training and testing
-datasets. Then we'll check this data into DVC so it can version it with the
-following commands:
+data. So we'll take all of the data from 2011 (because that's the dataset we
+have to work with) and make our training and testing datasets. Then we'll check
+this data into DVC so it can version it with the following commands:
 
 ```dvc
 $ dvc add data/train.pkl data/test.pkl
@@ -85,7 +85,8 @@ $ git add data/.gitignore data/train.pkl.dvc data/test.pkl.dvc
 
 We add the `.dvc` files to Git to ensure that we are only checking in the
 metadata for the datasets and not the entire dataset files. Now we can run the
-entire MLOps pipeline with this command:
+entire MLOps pipeline with
+[this command](https://dvc.org/doc/command-reference/exp/run):
 
 ```dvc
 $ dvc exp run
@@ -112,8 +113,9 @@ $ dvc exp show --no-timestamp
 This model doesn't have the best metrics, so we can run more experiments to see
 if tuning hyperparameters will help before we deploy this model to production.
 Let's change the values of the `train.n_est` and `train.n_est` hyperparameters.
-We'll run several experiments with different values and it will produce a table
-similar to this:
+We'll
+[run several experiments](https://dvc.org/doc/user-guide/experiment-management)
+with different values and it will produce a table similar to this:
 
 ```dvctable
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
@@ -150,9 +152,9 @@ almost another year, then we start noticing data drift again.
 ## Running more training experiments with new data
 
 That means it's time to update our dataset with the latest data from production
-and that will include all of the data on bike sharing in 2012. DVC will note the
-changes in the data and create a new version record for the updated data
-automatically.
+and that will include all of the data on bike sharing in 2012 (because this is
+the newer data we have to train with). DVC will note the changes in the data and
+create a new version record for the updated data automatically.
 
 Next we'll run a new experiment in the project with the following command:
 
