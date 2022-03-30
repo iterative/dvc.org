@@ -322,7 +322,7 @@ sorting only applies to experiment groups (sharing a parent commit).
 
 ## Example: Parallel coordinates plot (PCP)
 
-To generate an interactive parallel coordiantes plot based on the experiments
+To generate an interactive parallel coordinates plot based on the experiments
 and their parameters:
 
 ```dvc
