@@ -11,11 +11,7 @@ const icons = {
   lady_beetle: '🐞',
   bug: '🐛'
 }
-const genericTitles = {
-  info: 'Info',
-  tip: 'Tip',
-  warn: 'Warning'
-}
+const typeOptions = ['info', 'tip', 'warn']
 const defaultType = 'info'
 
 const Admonition: React.FC<{
@@ -30,21 +26,20 @@ const Admonition: React.FC<{
     | 'lady_beetle'
     | 'bug'
 }> = ({ title, type = defaultType, children, icon = type }) => {
-  const setType = genericTitles[type] ? type : defaultType
+  const setType = typeOptions.includes(type) ? type : defaultType
   const iconContent = icons[icon] || ''
-  const needsTitle = typeof title === 'string'
 
   return (
     <div
       className={cn(styles.admonition, styles[setType])}
       style={{ '--icon': `"${iconContent}"` } as React.CSSProperties}
     >
-      {needsTitle && (
+      {title && (
         <p className={cn(styles.title, !iconContent && styles.noIcon)}>
-          {title || genericTitles[setType]}
+          {title}
         </p>
       )}
-      <div className={cn(styles.content, needsTitle && styles.noIcon)}>
+      <div className={cn(styles.content, title && styles.noIcon)}>
         {children}
       </div>
     </div>
