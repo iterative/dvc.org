@@ -53,26 +53,33 @@ the `iterative_task`:
 
 ```hcl
 terraform {
-     required_providers {
-         iterative = {source = "iterative/iterative", version = ">= 0.9.9" }
-     }
- }
- provider "iterative" {}
+  required_providers {
+    iterative = {
+      source = "iterative/iterative"
+    }
+  }
+}
 
- resource "iterative_task" "hello_world" {
-     name      = "ml_project_1"
-     cloud     = "aws"
-     region    = "us-east-2"
-     machine   = "l+k80"
-     directory = "."
-     script = <<-END
-       #!/bin/bash
-       sudo apt update
-       sudo apt install -y python3-pip
-       pip3 install -r requirements.txt
-       python3 src/train.py
-     END
- }
+provider "iterative" {}
+
+resource "iterative_task" "example" {
+  cloud   = "aws"
+  region  = "us-east-2"
+  machine = "l+k80"
+  
+  script = <<-END
+    #!/bin/bash
+    sudo apt update
+    sudo apt install -y python3-pip
+    pip3 install -r requirements.txt
+    python3 src/train.py
+  END
+  
+  storage {
+    workdir = "."
+    output  = "results"
+  }
+}
 ```
 
 Once the training is complete, the Iterative Provider terminates the resource,
