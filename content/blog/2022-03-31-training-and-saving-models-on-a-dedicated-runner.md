@@ -197,6 +197,7 @@ jobs:
         run: |
           cml ci
           pip install -r requirements.txt
+          python get_data.py
           python train.py
 ```
 
@@ -235,6 +236,7 @@ train-model:
       run: |
         cml ci
         pip install -r requirements.txt
+        python get_data.py
         python train.py
 
         # Create pull request
