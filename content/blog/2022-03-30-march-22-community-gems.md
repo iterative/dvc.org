@@ -1,13 +1,13 @@
 ---
 title: March '22 Community Gems
-date: 2022-03-29
+date: 2022-03-30
 description: >
   A roundup of technical Q&A's from the DVC and CML community. This month:
   comparing experiments, working with data, working with pipelines, and more.
 descriptionLong: >
   A roundup of technical Q&A's from the DVC and CML community. This month:
   comparing experiments, working with data, working with pipelines, and more.
-picture: 2022-03-29/mar-comm-gems.png
+picture: 2022-03-30/mar-comm-gems.png
 author: milecia_mcgregor
 commentsUrl: https://discuss.dvc.org/t/march-22-community-gems/1119
 tags:
@@ -76,7 +76,7 @@ release notes at <https://github.com/iterative/cml/releases>. You can also
 subscribe to release updates by clicking the `Watch` button in the top-right,
 navigating to `Custom`, and checking the `Releases` option.
 
-![the checkbox you need to check in GitHub to follow CML releases](2022-03-29/cml_release_follow.png)
+![the checkbox you need to check in GitHub to follow CML releases](/uploads/images/2022-03-30/cml-release-follow.png)
 
 ### [Does `cml-send-comment` work for azure devops repositories?](https://discord.com/channels/485586884165107732/728693131557732403/947986936994353293)
 
