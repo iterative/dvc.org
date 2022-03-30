@@ -183,9 +183,8 @@ Git. It contains data and model files, and will be managed by DVC.
 
 ```dvc
 $ cat .dvc/.gitignore
-/state
-/lock
-...
+/config.local
+/tmp
 /cache
 ```
 
