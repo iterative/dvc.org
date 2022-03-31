@@ -66,7 +66,7 @@ resource "iterative_task" "example" {
   cloud   = "aws"
   region  = "us-east-2"
   machine = "l+k80"
-  
+
   script = <<-END
     #!/bin/bash
     sudo apt update
@@ -74,7 +74,7 @@ resource "iterative_task" "example" {
     pip3 install -r requirements.txt
     python3 src/train.py
   END
-  
+
   storage {
     workdir = "."
     output  = "results"
