@@ -8,6 +8,8 @@ import LayoutFooter from '../LayoutFooter'
 import { handleFirstTab } from 'gatsby-theme-iterative-docs/src/utils/front/accessibility'
 
 import * as styles from './styles.module.css'
+import { logEvent } from 'gatsby-theme-iterative-docs/src/utils/front/plausible'
+import { useLocation } from '@reach/router'
 
 export enum LayoutModifiers {
   Wide,
@@ -33,6 +35,7 @@ const MainLayout: LayoutComponent = ({
   modifiers = [],
   pageContext
 }) => {
+  const location = useLocation()
   useEffect(() => {
     if (className) {
       document.body.classList.add(className)
@@ -54,7 +57,13 @@ const MainLayout: LayoutComponent = ({
 
   return (
     <>
-      <SkipNavLink contentId="main-content" className={styles.skipLink} />
+      <SkipNavLink
+        contentId="main-content"
+        className={styles.skipLink}
+        onClick={() => {
+          logEvent('Skip To Content', { path: location.pathname })
+        }}
+      />
       <LayoutHeader modifiers={modifiers} />
       <div
         id="layoutContent"
