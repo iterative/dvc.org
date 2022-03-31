@@ -109,6 +109,22 @@ not.
 
 See `Live.log()`, `Live.log_image()` and `Live.log_plot()` for more details.
 
+### HTML report
+
+By default, DVCLive generates an HTML report in `dvclive/report.html`.
+
+This report will contain all the logged data and will be automatically updated
+during training on each `step` update!
+
+![](/img/dvclive-html.gif)
+
+<admon type="info">
+
+If you don't update the step number, the HTML report won't be generated unless
+you call `Live.make_report()` directly.
+
+</admon>
+
 ## What next?
 
 Learn how to use DVCLive alongside other tools:

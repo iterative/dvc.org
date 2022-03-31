@@ -7,9 +7,6 @@ ways:
   `dvc metrics` and `dvc plots`. Those same outputs can be visualized in
   [Iterative Studio](#iterative-studio).
 
-- You can monitor model performance in realtime with the
-  [HTML report](#html-report) that DVCLive generates when used alongside DVC.
-
 - DVCLive is also capable of generating [checkpoint](#checkpoints) signal files
   used by DVC <abbr>experiments<abbr>.
 
@@ -22,7 +19,7 @@ We will refer to a training script (`train.py`) already using `dvclive`:
 
 from dvclive import Live
 
-live = Live()
+live = Live("training_metrics")
 
 for epoch in range(NUM_EPOCHS):
     train_model(...)
@@ -38,12 +35,23 @@ Let's use `dvc stage add` to create a stage to wrap this code (don't forget to
 `dvc init` first):
 
 ```dvc
-$ dvc stage add -n train --live training_metrics
-                -d train.py python train.py
+$ dvc stage add \
+--name train \
+--deps train.py \
+--metrics-no-cache training_metrics.json \
+--plots training_metrics/scalars \
+python train.py
 ```
 
-`dvc.yaml` will contain a new `train` stage with the DVCLive configuration (in
-the `live` field):
+<admon type="exclamation">
+
+Note that the paths indicated in the `metrics` and `plots` options match the
+`path` passed to `Live()` in the Python code.
+
+</admon>
+
+`dvc.yaml` will contain a new `train` stage using the DVCLive outputs as
+`dvc metrics` and `dvc plots`:
 
 ```yaml
 stages:
@@ -51,22 +59,12 @@ stages:
     cmd: python train.py
     deps:
       - train.py
-    live:
-      training_metrics:
-        summary: true
-        html: true
+    metrics:
+      - training_metrics.json:
+          cache: false
+    plots:
+      - training_metrics/scalars
 ```
-
-The value passed to `--live` (`training_metrics`) became the directory `path`
-for DVCLive to write logs in, and DVC will now
-[track](/doc/use-cases/versioning-data-and-model-files) it. Other supported
-command options for the DVC integration:
-
-- `--live-no-cache <path>` - specify a DVCLive log directory `path` but don't
-  track it with DVC. Useful if you prefer to track it with Git.
-- `--live-no-html` - deactivates [HTML report](#html-report) generation.
-
-> Note that DVC will not track summary files or the HTML report.
 
 Run the training with `dvc repro` or `dvc exp run`:
 
@@ -83,6 +81,7 @@ $ tree
 ├── dvc.lock
 ├── dvc.yaml
 ├── training_metrics
+│   ├── report.html
 │   └── scalars
 │       ├── acc.tsv
 │       └── loss.tsv
@@ -94,9 +93,21 @@ The [metrics summary](/doc/dvclive/api-reference/live/log#description)
 `training_metrics.json` can be used by `dvc metrics` and visualized with
 `dvc exp show`/`dvc exp diff`.
 
-In addition, the
-[metrics history](/doc/dvclive/api-reference/live/log#step-updates) generated
-under `training_metrics/scalars` can be visualized with `dvc plots`.
+The [metrics history](/doc/dvclive/api-reference/live/log#step-updates)
+`training_metrics/scalars` can be visualized with `dvc plots`.
+
+The [HTML report](/doc/dvclive/api-reference/live/make_report##description)
+`training_metrics/report.html` will contain all the logged data and will be
+automatically updated during training on each `step` update!
+
+![](/img/dvclive-html.gif)
+
+<admon type="info">
+
+If you don't update the step number, the HTML report won't be generated unless
+you call `Live.make_report()` directly.
+
+</admon>
 
 ### Iterative Studio
 
@@ -106,21 +117,6 @@ by DVCLive, allowing to
 experiments using DVCLive in Iterative Studio.
 
 ![](/img/dvclive-studio-plots.png)
-
-### HTML report
-
-When `html: true`, DVC generates an _HTML report_.
-
-If you open `training_metrics_dvc_plots/index.html` in a browser, you'll see a
-plot for the logged data automatically updated during the model training!
-
-![](/img/dvclive-html.gif)
-
-<admon type="info">
- 
-If you don't update the step number, the HTML report won't be generated.
-
-</admon>
 
 ### Checkpoints
 
