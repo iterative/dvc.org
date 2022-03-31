@@ -48,8 +48,8 @@ metrics.json  AUC       0.763981  0.801807   0.037826
 ```
 
 `dvc metrics` subcommands can be used on any
-[valid metrics files](#supported-file-formats). By default they use the metrics
-files specified in `dvc.yaml` (if there are any), for example `summary.json`
+[valid metrics files](#supported-file-formats). By default they use the ones
+specified in `dvc.yaml` (if any), for example `summary.json`
 below:
 
 ```yaml
