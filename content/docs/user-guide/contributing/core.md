@@ -56,13 +56,13 @@ do that, we **strongly** recommend creating a
 $ cd dvc
 $ python3 -m venv .env
 $ source .env/bin/activate
-$ pip install -e ".[all,tests]"
+$ python3 -m pip install -e ".[all,tests]"
 ```
 
 Install coding style pre-commit hooks with:
 
 ```dvc
-$ pip install pre-commit
+$ python3 -m pip install pre-commit
 $ pre-commit install
 ```
 
