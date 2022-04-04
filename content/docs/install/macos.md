@@ -43,7 +43,7 @@ plan to use, you might need to install optional dependencies: `[s3]`,
 `[gdrive]`, `[gs]`, `[azure]`, `[ssh]`, `[hdfs]`, `[webdav]`, `[oss]`. Use
 `[all]` to include them all.
 
-<details>
+<details id="example-pip-with-support-for-amazon-s3-storage">
 
 ### Example: with support for Amazon S3 storage
 
@@ -69,7 +69,7 @@ Depending on the type of the [remote storage](/doc/command-reference/remote) you
 plan to use, you might need to install optional dependencies: `dvc-s3`,
 `dvc-azure`, `dvc-gdrive`, `dvc-gs`, `dvc-oss`, `dvc-ssh`.
 
-<details>
+<details id="example-conda-with-support-for-amazon-s3-storage">
 
 ### Example: with support for Amazon S3 storage
 
