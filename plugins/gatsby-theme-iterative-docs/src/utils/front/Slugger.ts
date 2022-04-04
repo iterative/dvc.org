@@ -22,19 +22,13 @@ class Slugger {
     this.slugs.push(slug)
     return slug
   }
-  slugify = (str: string) => {
+  slugify(str: string) {
     return str
       .replace(/[^\w\s-]/g, '')
       .trim()
       .replace(/[-\s]+/g, this.separator)
       .replace(this.separator + this.separator, this.separator)
       .replace(/(^\-+|\-+$)/g, '')
-  }
-  add(slug: string) {
-    if (this.slugs.includes(slug)) {
-      throw new Error(`Duplicate slug: ${slug} for title:${slug}`)
-    }
-    this.slugs.push(slug)
   }
   reset() {
     this.slugs = []
