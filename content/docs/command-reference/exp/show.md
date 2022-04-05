@@ -77,19 +77,19 @@ is not available (e.g. on Windows), the output is simply printed out.
 ### Providing a custom pager
 
 It's possible to override the default pager via the `DVC_PAGER` environment
-variable. For example, the following command will replace the default pager with
-[`more`](<https://en.wikipedia.org/wiki/More_(command)>), for a single run:
+variable. Set it to a program found in `PATH` or give a full path to it. For
+example on Linux shell:
 
 ```dvc
-$ DVC_PAGER=more dvc exp show
+$ DVC_PAGER=more dvc exp show  # Use more as pager once.
+...
+
+$ export DVC_PAGER=more  # Set more as pager for all commands.
+$ dvc exp show ...
 ```
 
-For a persistent change, define `DVC_PAGER` in the shell configuration. For
-example in Bash, we could add the following line to `~/.bashrc`:
-
-```dvc
-$ export DVC_PAGER=more
-```
+> For a persistent change, set `DVC_PAGER` in the shell configuration, for
+> example in `~/.bashrc` for Bash.
 
 ## Options
 
