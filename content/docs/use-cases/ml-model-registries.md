@@ -1,25 +1,25 @@
 # Machine Learning Model Registries
 
 An **ML model registry** (or _model catalog_) works as a central repository
-between data science projects and their applications. The registry contains
-metadata so that the models or other data artifacts in it can be browsed and
-discovered, shared, audited, tested, and deployed from here. DVC makes it
-natural to construct model registries given it's built-in mechanisms and
-features.
+between data science projects and their applications. ML models and other data
+artifacts can be browsed, shared, audited, tested, and deployed from here. DVC
+repositories support all of this while integrating seamlessly with existing
+development workflows.
 
 ![](/img/ml_model_registry_placement.jpg) _Model registry placement contrasts
 with general [data registries] for reusable data sources or training sets._
 
 [data registries]: /doc/use-cases/data-registries
 
-Model registries provide special capabilities such as:
+Model registries provide data science teams with key capabilities:
 
-- Advanced versioning to help organize different models and their updates
-- Metadata about the model provenance and state (inactive, shadow, current)
-- Information on how to use and evaluate models on production
-- Support for model integration via existing deployment tools and services
-- Full lineage connecting models to the dataset(s), code, and configuration used
-  for training, and any other artifacts and metrics produced
+- Store, organize, and track the versions of different models;
+- Preserve full data provenance and lineage trails to ensure that modeling is
+  reproducible;
+- Share and control access to early-stage [experiments] and mature models alike;
+- Provide an API to integrate models via common deployment tools;
+
+[experiments]: https://dvc.org/doc/user-guide/experiment-management
 
 The fastest way to build a model registry is to [import] them from one or more
 DVC projects. It's also easy to bring in production-ready models from other
