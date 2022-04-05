@@ -60,17 +60,10 @@ const Details: React.FC<{ slugger: Slugger; id: string }> = ({
         ? cur?.props?.children?.toString()
         : '')
   }, '')
-  try {
-    id = id
-      ? useMemo(() => slugger.slug(id), [id])
-      : useMemo(() => slugger.slug(title), [title])
-  } catch (error) {
-    throw new Error(
-      `Duplicate ${id ? `id: "${id}"` : `title: "${title}"`} \n in page: ${
-        location.pathname
-      }`
-    )
-  }
+  id = useMemo(() => {
+    return id ? slugger.slug(id) : slugger.slug(title)
+  }, [id, title])
+
   useEffect(() => {
     if (location.hash === `#${id}`) {
       setIsOpen(true)
