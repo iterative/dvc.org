@@ -17,7 +17,7 @@ jobs:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
         with:
           args:
-            --verbose --no-progress --retry-wait-time 10 -b https://dvc.org/
+            --retry-wait-time 10 --verbose --no-progress -b https://dvc.org/
             {.github,content,src}/**/*.{css,js,jsx,md,tsx,ts,json}
           format: json
           output: out.json
