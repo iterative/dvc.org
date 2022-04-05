@@ -7,7 +7,7 @@ Run or resume a
 
 ```usage
 usage: dvc exp run [-h] [-q | -v] [-f]
-                   [repro_options ...]
+                   { repro options ... }
                    [-S [<filename>:]<params_list>]
                    [--queue] [--run-all] [-j <number>] [--temp]
                    [-r <experiment_rev>] [--reset]
@@ -64,9 +64,8 @@ committing them to the Git repo. Unnecessary ones can be [cleared] with
 
 ## Options
 
-> In addition to the following, `dvc exp run` accepts all the options in
-> `dvc repro`, with the exception of `--glob`, `--no-commit`, and
-> `--no-run-cache`.
+> In addition to the following, `dvc exp run` accepts the options in `dvc repro`
+> except for `--glob`, `--no-commit`, and `--no-run-cache`.
 
 - `-S [<filename>:]<param_name>=<param_value>`,
   `--set-param [<filename>:]<param_name>=<param_value>` - set the value of
