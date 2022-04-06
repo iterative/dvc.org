@@ -7,7 +7,8 @@ The topics here range from the basic (how to connect to your Git repositories)
 to more advanced things you can do such as running experiments. We also include
 guides for getting your Git repositories ready for using with Iterative Studio,
 with or without DVC. This includes guides on how to prepare your repositories,
-how to install and authorize the Iterative Studio GitHub app, etc.
+how to install and authorize the Iterative Studio GitHub app, how to connect to
+repositories on self-hosted GitLab servers, etc.
 
 Please choose from the navigation sidebar to the left, or click the `Next`
 button below ↘

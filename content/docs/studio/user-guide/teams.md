@@ -95,24 +95,36 @@ same as that of any other collaborator who has been assigned the `Admin` role.
 
 ## Manage your team and its views
 
-Once you have created the team, the team's page opens up.
+Once you have created the team, the team's workspace opens up.
 
 ![](https://static.iterative.ai/img/studio/team_page.png)
 
-On this page, you can perform three types of tasks:
+In this workspace, there are 2 pages:
 
-- **Add a view.** Click on the `View` menu item to add views to the team's page.
-  The process for adding a view is the same as that for adding personal views
-  ([instructions](/doc/studio/user-guide/views/create-view)). However, the views
-  that you create within the team will be accessible to all members
-  (collaborators) of the team.
+- **Views.** This is the views dashboard for the team. All the views on this
+  dashboard are accessible to all members (collaborators) of the team.
 
-- **Edit collaborators.** You can click on the `Team` menu item to edit the
-  collaborators in the team.
+  To add a view to this dashboard, click on the `Add a view`. The process for
+  adding a view is the same as that for adding personal views
+  ([instructions](/doc/studio/user-guide/views/create-view)).
 
-- **Change settings.** Finally, you can click on the `Settings` menu item to
-  change the team name, add credentials for the data remotes, and delete the
-  team. Note that these settings are applicable to the team and are thus
-  different from [view settings](/doc/studio/user-guide/views/view-settings).
+- **Settings.** In the team settings page, you can change the team name, add
+  credentials for the data remotes, and delete the team. Note that these
+  settings are applicable to the team and are thus different from
+  [view settings](/doc/studio/user-guide/views/view-settings).
 
-  ![](https://static.iterative.ai/img/studio/team_settings.png)
+  Additionally, you can also:
+
+  - **Manage connections to self-hosted GitLab servers.** If your team’s Git
+    repositories are on a self-hosted GitLab server, you can go to the
+    `GitLab connections` section of the team settings page to set up a
+    connection to this server. Once you set up the connection, all your team
+    members can connect to the Git repositories on this server. For more
+    details, refer [here](/doc/studio/user-guide/connect-custom-gitlab-server).
+
+  - **Edit collaborators.** To manage the collaborators (team members) of your
+    team, go to the `Collaborators` section of the team settings page. Here you
+    can invite new team members as well as remove or change the [roles](#roles)
+    of existing team members.
+
+  ![](https://static.iterative.ai/img/studio/team_settings_v3.png)
