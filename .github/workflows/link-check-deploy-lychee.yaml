@@ -13,6 +13,12 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: |
+          echo "$GITHUB_CONTEXT"
+
       - name: Get Edited Files
         uses: jitterbit/get-changed-files@v1
         id: edited_files
