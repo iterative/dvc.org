@@ -27,8 +27,8 @@ time. You usually have to figure out where the data drift started so you can
 determine what input data has changed. Then you need to retrain the model with
 this new dataset.
 
-Retraining could involve a number of experiments across multiple datasets, and it
-would be helpful to be able to keep track of all of them. In this tutorial,
+Retraining could involve a number of experiments across multiple datasets, and
+it would be helpful to be able to keep track of all of them. In this tutorial,
 we'll walk through how using DVC can help you keep track of those experiments
 and how this will speed up the time it takes to get new models out to
 production, preventing stale ones from lingering too long.
@@ -74,9 +74,9 @@ we can bring in DVC to help us get this stale model off of production faster.
 
 We'll start by taking a year's worth of data and creating a new model. This
 might give us a more accurate model to push to production than using weekly
-data. So we'll take all the data from 2011 (because that's the dataset we
-have to work with) and make our training and testing datasets. Then we'll check
-this data into DVC, so it can version it with the following commands:
+data. So we'll take all the data from 2011 (because that's the dataset we have
+to work with) and make our training and testing datasets. Then we'll check this
+data into DVC, so it can version it with the following commands:
 
 ```dvc
 $ dvc add data/train.pkl data/test.pkl
@@ -152,8 +152,8 @@ almost another year, then we start noticing data drift again.
 ## Running more training experiments with new data
 
 That means it's time to update our dataset with the latest data from production
-and that will include all the data on bike sharing in 2012 (because this is
-the newer data we have to train with). DVC will note the changes in the data and
+and that will include all the data on bike sharing in 2012 (because this is the
+newer data we have to train with). DVC will note the changes in the data and
 create a new version record for the updated data automatically.
 
 Next we'll run a new experiment in the project with the following command:
