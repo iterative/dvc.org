@@ -257,8 +257,8 @@ saving the resulting model to our GitHub repository.
 There is still some room for improvement, though. This approach works well when
 our resulting model is small, but we wouldn't want to store large models in our
 Git repository. In a follow-up post we will describe how we can use
-[DVC](https://dvc.org/), another Iterative open-source tool, for storage when we're
-dealing with larger files.
+[DVC](https://dvc.org/), another Iterative open-source tool, for storage when
+we're dealing with larger files.
 
 # Conclusions
 
