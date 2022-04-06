@@ -1,4 +1,4 @@
-name: Check all Links with Lychee
+name: Check PR Links with Lychee
 
 on:
   workflow_dispatch:
