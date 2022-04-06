@@ -3,6 +3,7 @@ name: Check all Links with Lychee
 on:
   - deployment
   - deployment_status
+  - pull_request
 
 jobs:
   linkChecker:
