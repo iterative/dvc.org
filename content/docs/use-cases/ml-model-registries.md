@@ -39,13 +39,16 @@ model files stored remotely are reused in this collection without copying them,
 so building the registry is fast. Links to the original projects are preserved,
 so you can always retrieve full lineage and provenance info.
 
-DVC-managed storage makes it easy to share your ML models for collaboration or
-production. DVC's [CLI] lets you pull and push them. The Python [API] lets you
-integrate them in your code directly.
+Distributed DVC repos and managed storage are already great for sharing data and
+models. And with a model registry, getting them to production is also
+straightforward: Use the DVC CLI to [import] them for deployment, integrate them
+directly into code with the Python [API], or even automate their (re)training
+and delivery with [CI/CD for ML][cml-dvc].
 
 [data pipelines]: doc/start/data-pipelines
 [versioning]: /doc/use-cases/versioning-data-and-model-files
 [remote storage]: /doc/command-reference/remote
 [share]: /doc/start/data-and-model-access
-[cli]: /doc/command-reference
+[import]: /doc/command-reference/import
 [api]: /doc/api-reference
+[cml-dvc]: https://cml.dev/doc/cml-with-dvc
