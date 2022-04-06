@@ -4,7 +4,8 @@ on:
   deployment:
   deployment_status:
   pull_request:
-    - synchronize
+    types:
+      - synchronize
 
 jobs:
   linkChecker:
