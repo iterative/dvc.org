@@ -89,8 +89,8 @@ model to make some predictions and plot those predictions in a confusion matrix.
 
 While running the script the model is kept in memory, meaning it is discarded as
 soon as the script finishes. In order to save the model for later, we need to
-dump it as a binary file. We do so with `joblib.dump()`. Later we can read the
-model using `joblib.read()` when we need to.
+dump it as a binary file. We do so with [`joblib.dump()`](https://joblib.readthedocs.io/en/latest/generated/joblib.dump.html). Later we can read the
+model using [`joblib.load()`](https://joblib.readthedocs.io/en/latest/generated/joblib.load.html) when we need to.
 
 <admon type="tip">
 You can also use <code>pickle.dump()</code> if you prefer.
@@ -257,8 +257,8 @@ saving the resulting model to our GitHub repository.
 There is still some room for improvement, though. This approach works well when
 our resulting model is small, but we wouldn't want to store large models in our
 Git repository. In a follow-up post we will describe how we can use
-[DVC](https://dvc.org/), another Iterative open-source tool, for storage when we're
-dealing with larger files.
+[DVC](https://dvc.org/), another Iterative open-source tool, for storage when
+we're dealing with larger files.
 
 # Conclusions
 
