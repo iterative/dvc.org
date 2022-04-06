@@ -89,8 +89,11 @@ model to make some predictions and plot those predictions in a confusion matrix.
 
 While running the script the model is kept in memory, meaning it is discarded as
 soon as the script finishes. In order to save the model for later, we need to
-dump it as a binary file. We do so with [`joblib.dump()`](https://joblib.readthedocs.io/en/latest/generated/joblib.dump.html). Later we can read the
-model using [`joblib.load()`](https://joblib.readthedocs.io/en/latest/generated/joblib.load.html) when we need to.
+dump it as a binary file. We do so with
+[`joblib.dump()`](https://joblib.readthedocs.io/en/latest/generated/joblib.dump.html).
+Later we can read the model using
+[`joblib.load()`](https://joblib.readthedocs.io/en/latest/generated/joblib.load.html)
+when we need to.
 
 <admon type="tip">
 You can also use <code>pickle.dump()</code> if you prefer.
