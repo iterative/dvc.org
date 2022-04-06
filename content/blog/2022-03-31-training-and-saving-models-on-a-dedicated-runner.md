@@ -71,11 +71,11 @@ Before we begin, make sure you have the following things set up:
    [created an AWS account](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account/)
    (free tier suffices)
 2. You have
-   [created a `PERSONAL_ACCESS_TOKEN` on GitHub](<(https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)>)
+   [created a `PERSONAL_ACCESS_TOKEN` on GitHub](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)
 3. You have
    [created an `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` on AWS](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html)
 4. You have
-   [added the `PERSONAL_ACCES_TOKEN`, `AWS_ACCESS_KEY_ID`, and `AWS_SECRET_ACCESS_KEY` as GitHub secrets](<(https://docs.github.com/en/actions/security-guides/encrypted-secrets)>)
+   [added the `PERSONAL_ACCES_TOKEN`, `AWS_ACCESS_KEY_ID`, and `AWS_SECRET_ACCESS_KEY` as GitHub secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets)
 
 It also helps to clone
 [the template repository for this tutorial](https://github.com/iterative/example_model_export_cml).
