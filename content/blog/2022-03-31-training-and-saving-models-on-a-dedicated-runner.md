@@ -1,5 +1,6 @@
 ---
-title: Training and saving models with CML on a dedicated AWS EC2 runner
+title:
+  Training and saving models with CML on a dedicated AWS EC2 runner (part 1)
 date: 2022-03-31
 description:
   In this guide we will show how you can use CML to automatically retrain a
@@ -59,7 +60,7 @@ This guide can be followed on its own, but also as an extension to this <a href=
 </admon>
 
 <admon type="tip">
-We wil be using GitHub for our CI/CD and AWS for our computing resources. With slight modifications, you should be able to use Gitlab and Google Cloud or Microsoft Azure respectively.
+We wil be using GitHub for our CI/CD and AWS for our computing resources. With slight modifications, however, you can use Gitlab and Google Cloud or Microsoft Azure respectively.
 </admon>
 
 # Prerequisites
