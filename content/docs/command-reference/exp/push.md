@@ -12,7 +12,7 @@ usage: dvc exp push [-h] [-q | -v] [-A] [--rev <commit>] [-n <num>] [-f]
 
 positional arguments:
   git_remote          Git remote name or Git URL
-  experiment          Experiments to push
+  experiment          Experiment to push
 ```
 
 ## Description
