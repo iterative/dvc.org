@@ -205,7 +205,8 @@ jobs:
 In this example we are using a <code>t2.micro</code> AWS EC2 instance. At the time of writing this is included in the AWS free tier. Make sure that you qualify for this free usage to prevent unexpected spending. When you specify a bulkier <code>cloud-type</code>, your expenses will rise.
 </admon>
 
-The workflow we defined first [provisions a runner](https://cml.dev/doc/ref/runner) on AWS, and then uses that
+The workflow we defined first
+[provisions a runner](https://cml.dev/doc/ref/runner) on AWS, and then uses that
 runner to train the model. After completing the training job, CML automatically
 terminates the runner to prevent you from incurring further costs. Once the
 runner is terminated, however, the model is lost along with it. Let's see how we
@@ -217,9 +218,10 @@ CML allows us to export the model from our runner to our Git repository. Let's
 extend the training stage of our workflow by pushing `random_forest.joblib` to a
 new experiment branch and creating a merge request.
 
-[`cml pr`](https://cml.dev/doc/ref/pr) is the command that specifies which files should be included in the
-pull request. The commands after that are used to generate a report in the
-pull request that displays the confusion matrix and calculated metrics.
+[`cml pr`](https://cml.dev/doc/ref/pr) is the command that specifies which files
+should be included in the pull request. The commands after that are used to
+generate a report in the pull request that displays the confusion matrix and
+calculated metrics.
 
 ```yaml
 train-model:
