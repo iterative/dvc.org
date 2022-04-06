@@ -1,0 +1,33 @@
+name: Check all Links with Lychee
+
+on:
+  - deployment
+  - deployment_status
+
+jobs:
+  linkChecker:
+    runs-on: ubuntu-latest
+    if:
+      github.event.deployment.ref != 'master' &&
+      github.event.deployment_status.state == 'success'
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Get Edited Files
+        uses: jitterbit/get-changed-files@v1
+        id: edited_files
+        with:
+          format: space-delimited
+
+      - name: Link Checker
+        id: lychee
+        uses: lycheeverse/lychee-action@v1.4.1
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        with:
+          args:
+            --retry-wait-time 20 --verbose --no-progress -b ${{
+            github.event.deployment.payload.web_url }} ${{
+            steps.edited_files.outputs.all }}
+          format: json
+          output: out.json
