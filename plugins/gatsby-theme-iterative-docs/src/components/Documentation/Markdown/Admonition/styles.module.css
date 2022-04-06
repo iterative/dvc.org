@@ -34,11 +34,16 @@
     margin-right: 0;
   }
 
-  .content {
-    padding: 10px 0 0;
+  .content > *:first-child::before {
+    content: var(--icon);
+    margin-right: 5px;
   }
 
-  .content *:last-child {
+  .content.noIcon > *:first-child::before {
+    display: none;
+  }
+
+  .content > *:last-child {
     margin-bottom: 0;
   }
 }

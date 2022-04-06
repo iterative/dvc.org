@@ -116,7 +116,11 @@ plot for the logged data automatically updated during the model training!
 
 ![](/img/dvclive-html.gif)
 
-> If you don't update the step number, the HTML report won't be generated.
+<admon type="info">
+ 
+If you don't update the step number, the HTML report won't be generated.
+
+</admon>
 
 ### Checkpoints
 
@@ -129,4 +133,8 @@ This will save all the outputs (metrics, plots, models, etc.) associated to each
 You can learn more about how to use them in the
 [Checkpoints User Guide](/docs/user-guide/experiment-management/checkpoints).
 
-> If you don't update the step number, checkpoints won't be created.
+<admon type="info">
+
+If you don't update the step number, checkpoints won't be created.
+
+</admon>

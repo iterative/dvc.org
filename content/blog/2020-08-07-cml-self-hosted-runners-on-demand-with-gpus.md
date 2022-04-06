@@ -125,30 +125,25 @@ train:
   tags:
     - cml
     - gpu
-
   script:
     - echo 'Hi from CML!' >> report.md
-    - cml-send-comment report.md
+    - cml send-comment report.md
 ```
 
 GitHub
 
 ```yaml
 name: train-my-model
-
 on: [push]
-
 jobs:
   train:
     runs-on: [self-hosted, cml, gpu]
-
     steps:
       - uses: actions/checkout@v2
-
       - name: cml_run
         run: |
           echo 'Hi from CML!' >> report.md
-          cml-send-comment report.md
+          cml send-comment report.md
 ```
 
 Congrats! At this point you have done all the steps to have your GPUs up and

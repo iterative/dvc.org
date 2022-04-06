@@ -96,9 +96,9 @@ for multiple projects and users respectively.
 
 ## CML Questions
 
-### [Q: What's the file size limit for publishing files with `cml-publish`?](https://discordapp.com/channels/485586884165107732/728693131557732403/751001285100306502)
+### [Q: What's the file size limit for publishing files with `cml publish`?](https://discordapp.com/channels/485586884165107732/728693131557732403/751001285100306502)
 
-`cml-publish` is a service for hosting files that are embedded in CML reports,
+`cml publish` is a service for hosting files that are embedded in CML reports,
 like images, audio files, and GIFS. By default, we have a limit of 2 MB per
 upload.
 
@@ -110,18 +110,18 @@ we recently implemented a CML flag (`--gitlab-uploads`) to streamline the
 process:
 
 ```dvc
-$ cml-publish movie.mov --md --gitlab-uploads > report.md
+$ cml publish movie.mov --md --gitlab-uploads > report.md
 ```
 
 Note that we don't currently have an analagous solution for GitHub, because
 GitHub artifacts expire after 90 days (whereas they're permanent in GitLab).
 
-### [Q: I'm getting a mysterious error message, `Failed guessing mime type of file`, when I try to use `cml-publish`. What's going on?](https://discordapp.com/channels/485586884165107732/728693131557732403/763840404675756042)
+### [Q: I'm getting a mysterious error message, `Failed guessing mime type of file`, when I try to use `cml publish`. What's going on?](https://discordapp.com/channels/485586884165107732/728693131557732403/763840404675756042)
 
-This error message usually means that the target of `cml-publish`- for example,
+This error message usually means that the target of `cml publish`- for example,
 
 ```dvc
-$ cml-publish <target file>
+$ cml publish <target file>
 ```
 
 is not found. Check for typos in the target filename and ensure that the file

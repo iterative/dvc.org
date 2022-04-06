@@ -50,11 +50,18 @@ const Details: React.FC<{ slugger: GithubSlugger }> = ({
     firstChild.props.children.length - 1
   ) as ReactNode[]
 
-  let slug = slugger.slug(triggerChildren.toString())
-  if (slug[0] === '️') {
-    slug = slug.slice(1)
-  }
-  const id = slug.startsWith('-') ? slug.slice(1) : slug
+  const title = (triggerChildren as any[]).reduce((acc, cur) => {
+    return (acc +=
+      typeof cur === 'string'
+        ? cur
+        : typeof cur === 'object'
+        ? cur?.props?.children?.toString()
+        : '')
+  }, '')
+
+  let slug = slugger.slug(title)
+  slug = slug.replaceAll('️', '').replaceAll('ℹ', '')
+  const id = slug.replace(/(^\-+|\-+$)/g, '')
 
   useEffect(() => {
     if (location.hash === `#${id}`) {

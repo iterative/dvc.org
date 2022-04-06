@@ -42,7 +42,7 @@ downloads a file from an external location, on all the supported location types.
 
 <details>
 
-### Click for Amazon S3
+### Amazon S3
 
 ```dvc
 $ dvc run -n download_file \
@@ -55,7 +55,7 @@ $ dvc run -n download_file \
 
 <details>
 
-### Click for Microsoft Azure Blob Storage
+### Microsoft Azure Blob Storage
 
 ```dvc
 $ dvc run -n download_file \
@@ -72,7 +72,7 @@ $ dvc run -n download_file \
 
 <details>
 
-### Click for Google Cloud Storage
+### Google Cloud Storage
 
 ```dvc
 $ dvc run -n download_file \
@@ -85,7 +85,7 @@ $ dvc run -n download_file \
 
 <details>
 
-### Click for SSH
+### SSH
 
 ```dvc
 $ dvc run -n download_file \
@@ -104,7 +104,7 @@ Please check that you are able to connect both ways with tools like `ssh` and
 
 <details>
 
-### Click for HDFS
+### HDFS
 
 ```dvc
 $ dvc run -n download_file \
@@ -118,7 +118,7 @@ $ dvc run -n download_file \
 
 <details>
 
-### Click for HTTP
+### HTTP
 
 > Including HTTPs
 
@@ -133,7 +133,7 @@ $ dvc run -n download_file \
 
 <details>
 
-### Click for local file system paths
+### local file system paths
 
 ```dvc
 $ dvc run -n download_file \
