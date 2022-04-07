@@ -16,7 +16,7 @@ jobs:
 
       - name: Get Changed Files
         run: |
-          git branch
+          git branch --show-current
 
       - name: Link Checker
         id: lychee
