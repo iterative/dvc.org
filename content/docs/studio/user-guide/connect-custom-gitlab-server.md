@@ -12,11 +12,11 @@ To connect to your self-hosted GitLab server, you will need the following:
   is, it could be a publicly accessible URL. Or, if Studio is deployed
   on-premises in a private network, then it could also be a URL in the same
   private network.
-- A personal access token with the following roles:
-  api,read_user,read_repository If you do not have a personal access token yet,
-  you can create one at
+- A personal access token with the following roles: `api`, `read_user`,
+  `read_repository`. If you do not have a personal access token yet, you can
+  create one at
 
-`\<your GitLab server URL\>/-/profile/personal_access_tokens?name=Iterative+Studio+Access+token&scopes=api,read_user,read_repository`
+  `\<your GitLab server URL>/-/profile/personal_access_tokens?name=Iterative+Studio+Access+token&scopes=api,read_user,read_repository`
 
 Once you have obtained the URL and Personal Access Token for your GitLab server,
 do the following:
@@ -30,7 +30,7 @@ do the following:
 
 Once the connection is successful, all the repositories in this GitLab server
 will become available when you try to create a view in your team workspace. If
-you have any trouble setting you the connection to your GitLab server, please
+you have any trouble setting up the connection to your GitLab server, please
 [contact us](https://dvc.org/doc/studio/troubleshooting#support).
 
 > Connecting to a self-hosted GitLab server is different from connecting to your

@@ -9,8 +9,11 @@ https://www.youtube.com/watch?v=hKf4twg832g
    using your GitHub.com, GitLab.com or Bitbucket.org account, or your email
    address.
 
-   The Iterative Studio views dashboard opens. If you signed up using your email
-   address, you will have to first verify your email address.
+   - If you sign up using your email address, you will will an email with a link
+     to verify your email address. You will need to verify your email address
+     before you can use Studio.
+
+   - Upon successful sign-in, the Iterative Studio views dashboard opens.
 
 2. If this is the first time you are signing in to Iterative Studio, you will
    see that there already exists a `Demo` view that connects to an example DVC

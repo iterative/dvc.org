@@ -16,14 +16,24 @@ You can edit your name.
 ## Account
 
 Here, you can see your username, password and email addresses. If you signed up
-with a GitHub.com, GitLab.com or Bitbucket.org, the username and email address
-are fetched from your connected Git account.
+with a GitHub.com, GitLab.com or Bitbucket.org account, the username and email
+address are fetched from your connected Git account.
 
 You can update your username and password.
 
-You can also add multiple email addresses. For each new email address that you
-add, you will receive an email with a link to verify the email address. One of
-your email addresses must be designated as primary.
+**Managing email addresses:**
+
+You can add multiple email addresses to a single Studio account. For each new
+email address that you add, you will receive an email with a link to verify the
+email address.
+
+One of your email addresses must be designated as primary. This is the address
+to which Studio will send all your account notification emails.
+
+You can change your primary email address by clicking on the `Primary` button
+next to the email address which you want to designate as primary.
+
+You can delete your non-primary email addresses.
 
 ## Git integrations
 
@@ -31,7 +41,7 @@ In this section, you can,
 
 - Connect to the following Git providers: GitHub.com, GitLab.com, Bitbucket.org.
 
-  When you connect to a Git providers, you may be prompted to Grant access to
+  When you connect to a Git provider, you may be prompted to Grant access to
   your account to Iterative Studio. Please grant the required access to enable
   Iterative Studio to connect to your Git repositories.
 
@@ -46,7 +56,7 @@ In this section, you can,
   [here](/doc/studio/user-guide/connect-custom-gitlab-server).
 
 - Disconnect from your GitHub.com, GitLab.com or Bitbucket.org accounts.
-- Configure your GitHub.com account connection. That is, install the Iterative
+- Configure your GitHub account connection. That is, install the Iterative
   Studio GitHub app on additional organizations or repositories, or even remove
   the app from organizations or repositories where you no longer need it.
 

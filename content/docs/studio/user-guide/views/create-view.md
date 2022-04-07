@@ -6,6 +6,12 @@ To create a new view, follow these steps.
    using your GitHub.com, GitLab.com or Bitbucket.org account, or your email
    address.
 
+   - If you sign up using your email address, you will will an email with a link
+     to verify your email address. You will need to verify your email address
+     before you can use Studio.
+
+   - Upon successful sign-in, the Iterative Studio views dashboard opens.
+
 2. Click on `Add a View`. All the organizations that you have access to will be
    listed.
 
@@ -21,7 +27,7 @@ To create a new view, follow these steps.
 > To create views from repositories on your self-hosted GitLab server, you must
 > first add a connection to this server and create a team. Refer to the section
 > on
-> [self-hosted GitLab server support](/doc/studio/user-guide/install-github-app)
+> [self-hosted GitLab server support](/doc/studio/user-guide/connect-custom-gitlab-server)
 > for more details.
 
 3. Open the organization whose repository you want to connect to. You can also
