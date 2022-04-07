@@ -1,11 +1,9 @@
 name: Check PR Links with Lychee
 
 on:
+  push:
   deployment:
   deployment_status:
-  pull_request:
-    types:
-      - synchronize
 
 jobs:
   linkChecker:
@@ -16,17 +14,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Dump GitHub context
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
+      - name: Get Changed Files
         run: |
-          echo "$GITHUB_CONTEXT"
-
-      - name: Get Edited Files
-        uses: jitterbit/get-changed-files@v1
-        id: edited_files
-        with:
-          format: space-delimited
+          git branch
 
       - name: Link Checker
         id: lychee
