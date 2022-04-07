@@ -94,8 +94,8 @@
       "experiment-tracking",
       "data-registries",
       {
-        "label": "ML Model Registries",
-        "slug": "ml-model-registries"
+        "label": "Model Registry",
+        "slug": "model-registry"
       }
     ]
   },
