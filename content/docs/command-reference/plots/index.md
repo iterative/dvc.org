@@ -212,11 +212,10 @@ file:///Users/usr/src/dvc_plots/index.html
 
 ![](/img/plots_show.svg)
 
-Difference in this metric between the current project version and the previous
-commit:
+Difference in this metric between the current project version and the previous commit:
 
 ```dvc
-$ dvc plots diff -d logs.csv HEAD^
+$ dvc plots diff --targets logs.csv -- HEAD^
 file:///Users/usr/src/dvc_plots/index.html
 ```
 
