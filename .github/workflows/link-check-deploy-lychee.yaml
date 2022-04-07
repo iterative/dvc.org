@@ -16,7 +16,7 @@ jobs:
 
       - name: Get Changed Files
         run: |
-          TEST=$(git diff --name-only `git merge-base master HEAD`)
+          TEST=`git diff --name-only $(git merge-base master HEAD)`
           echo $TEST
           SPACED="${TEST//$'\n'/ }"
           echo $SPACED
