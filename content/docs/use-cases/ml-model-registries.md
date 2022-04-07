@@ -10,8 +10,6 @@ further improve your model catalogs with more features and better usability.
 ![](/img/ml_model_registry_placement.jpg) _Model registry placement contrasts
 with general [data registries] for reusable data sources or training sets._
 
-<!-- TODO: Look up package registry diagrams for inspiration -->
-
 [data registries]: /doc/use-cases/data-registries
 
 DVC model registries provide your team with key collaborative capabilities:
