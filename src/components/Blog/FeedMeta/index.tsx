@@ -1,8 +1,4 @@
-import {
-  GatsbyImage,
-  IGatsbyImageData,
-  getImageData
-} from 'gatsby-plugin-image'
+import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image'
 import React from 'react'
 
 import Link from '@dvcorg/gatsby-theme-iterative/src/components/Link'

@@ -40,7 +40,8 @@ export default function posts(): Array<IResultBlogPostData> {
     return {
       commentsUrl,
       date,
-      pictureUrl: getSrc(picture.childImageSharp as IGatsbyImageDataParent),
+      pictureUrl:
+        picture && getSrc(picture.childImageSharp as IGatsbyImageDataParent),
       title,
       url: slug
     }

@@ -10,7 +10,9 @@ import { isProduction } from '../server/utils'
 
 export interface IBlogPostHeroPic {
   picture?: {
-    childImageSharp: IGatsbyImageData
+    childImageSharp: {
+      gatsbyImageData: IGatsbyImageData
+    }
   }
   pictureComment?: string
 }

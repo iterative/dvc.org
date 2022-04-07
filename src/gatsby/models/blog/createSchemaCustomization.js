@@ -1,8 +1,5 @@
 const markdownParentFields = require('../markdown-content/fields.js')
-const {
-  resolvePostAuthor,
-  resolvePostPicture
-} = require('../../utils/resolvers')
+const { resolvePostAuthor } = require('../../utils/resolvers')
 
 async function createSchemaCustomization(api) {
   const {
