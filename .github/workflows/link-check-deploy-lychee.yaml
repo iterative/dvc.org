@@ -8,9 +8,9 @@ on:
 jobs:
   linkChecker:
     runs-on: ubuntu-latest
-    if:
-      github.event.deployment.ref != 'master' &&
-      github.event.deployment_status.state == 'success'
+    # if:
+    #   github.event.deployment.ref != 'master' &&
+    #   github.event.deployment_status.state == 'success'
     steps:
       - uses: actions/checkout@v3
 
