@@ -29,6 +29,7 @@ const redirectsMiddleware = require('./middleware/redirects')
 const serveMiddleware = require('./middleware/serve')
 
 app.use(compression())
+app.use(express.json())
 app.use(redirectsMiddleware)
 app.use('/api', apiMiddleware)
 app.use(serveMiddleware)
