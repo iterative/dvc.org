@@ -216,7 +216,7 @@ Difference in this metric between the current project version and the previous
 commit:
 
 ```dvc
-$ dvc plots diff -d logs.csv HEAD^
+$ dvc plots diff --target logs.csv -- HEAD^
 file:///Users/usr/src/dvc_plots/index.html
 ```
 
