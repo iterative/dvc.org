@@ -78,7 +78,13 @@ Storage.
 Make sure to have followed part 1 of this guide and gotten CML up and running.
 Additionally, set up the following things beforehand:
 
-- Install DVC
+- [Install DVC](https://dvc.org/doc/install)
+- [Set up a GCP project](https://dvc.org/doc/user-guide/setup-google-drive-remote#using-a-custom-google-cloud-project-recommended)
+- [Create a GCP service account](https://dvc.org/doc/user-guide/setup-google-drive-remote#using-service-accounts)
+- [Add `GDRIVE_CREDENTIALS_DATA` as a GitHub secret](https://docs.github.com/en/actions/security-guides/encrypted-secrets)
+- [Create a Google Drive folder to save your model to](https://support.google.com/drive/answer/2375091?hl=en&co=GENIE.Platform%3DDesktop)
+- Grant the service account edit permissions to the Drive folder by sharing it with the service account's email address
+
 
 # Setting up our DVC remote
 
@@ -93,14 +99,10 @@ This is where our model files will end up, while DVC keeps track of their
 respective versions. For this guide, we will be using Google Drive as our
 remote.
 
-You can follow
-[this guide](https://dvc.org/doc/user-guide/setup-google-drive-remote#setup-a-google-drive-dvc-remote)
-to set up Google Drive as your remote. Make sure to
-[set up a GCP project](https://dvc.org/doc/user-guide/setup-google-drive-remote#using-a-custom-google-cloud-project-recommended)
-and to
-[use a service account](https://dvc.org/doc/user-guide/setup-google-drive-remote#using-service-accounts).
-If you don't use a service account, your runner will get stuck on a log-in
-screen (which you cannot access because).
+[This guide](https://dvc.org/doc/user-guide/setup-google-drive-remote#setup-a-google-drive-dvc-remote)
+explains how to set up a remote on Google Drive. If you would rather use another remote, you can [find instructions here](https://dvc.org/doc/command-reference/remote/add#supported-storage-types).
+
+While DVC doesn't require a service account to work, we do need one in the set-up we're aiming for. That's because without a service account we will need to authorize ourselves through a log-in page every time. Our self-hosted runner would get stuck on this page because we cannot authorize ourselves there.
 
 # Export the model to a DVC remote
 
