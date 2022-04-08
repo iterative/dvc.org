@@ -39,26 +39,37 @@ files and simply
 the size of files you can store in your repository. A beefy XGBoost model can
 easily exceed 100MB and a neural network can go up into the gigabytes.
 
-That means we wouldn't be able to save these models to our repository. Luckily
-we can look towards another one of Iterative's open-source tools:
+That means we cannot save these models directly to our repository. Luckily we
+can look towards another one of Iterative's open-source tools:
 [DVC](https://dvc.org). DVC includes a lot of features for managing machine
 learning projects, such as ML pipelines and experiment tracking. In this guide
 we will zoom in on just one of those features: data versioning.
 
-We can use DVC to save our model to a remote storage, such as M3, HDFS, an SFTP
-server, or even Google Drive. Much like Git tracks changes to your code, DVC
-tracks changes to your data. It puts a reference to a specific version of your
-data in the Git commit. That way your code is linked to a specific version of
-your model, without containing the actual model.
+We can use DVC to save our model to a remote storage location, such as M3, HDFS,
+an SFTP server, or even Google Drive. Much like Git tracks changes to your code,
+DVC tracks changes to your data. It puts a reference to a specific version of
+your data in the Git commit. That way your code is linked to a specific version
+of your model, without containing the actual model.
 
 In this part 2, we will show you how to save the model we trained in part 1 to a
-DVC remote storage.
+DVC remote. At the end of this guide our CML workflow will be doing the folowing on a daily basis:
+
+1. Provision an Amazon Web Services (AWS) EC2 instance
+1. Train the model
+1. Save the model to a DVC remote storage on Google Drive
+1. Save the model metrics to a GitHub repository
+1. Create a merge request with the new outputs
+1. Terminate the AWS EC2 instance
 
 All files needed for this guide can be found in
 [this repository](https://github.com/iterative/example_model_export_cml).
 
 <admon type="tip">
-We will be using Google Drive as our remote storage. With slight modifications, however, you can also use other remotes such as M3, GCP Cloud Storage, and Azure Storage.
+
+We will be using Google Drive as our remote storage. With slight modifications,
+however, you can also use other remotes such as M3, GCP Cloud Storage, and Azure
+Storage.
+
 </admon>
 
 # Prerequisites
@@ -66,37 +77,20 @@ We will be using Google Drive as our remote storage. With slight modifications, 
 Make sure to have followed part 1 of this guide and gotten CML up and running.
 Additionally, set up the following things beforehand:
 
+- Install DVC
+
 # Setting up our DVC remote
 
-# Export the model to a DVC remote
+When first using DVC in a project you need to initialize DVC by running
+`dvc init`. This will create the structure DVC uses to keep track of versioning,
+and ensures Git will not be tracking the files in the DVC repository. Instead,
+Git will henceforth include a list of references to those files. Make sure to
+commit the initialization to Git.
 
-<!--
-While the approach above works fine when the resulting model is small, we
-ideally do not want to store large files in Git. Therefore, if the model is
-contained in a large file, we would prefer to save that file elsewhere. This is
-where [DVC](https://dvc.org/) comes in.
-
-Using DVC we can store the model on an external server (a _remote_) and only put
-a reference to that file in GitHub. This way we can keep the contents of our Git
-repository light-weight, while still applying proper versioning to our larger
-files (e.g. model and datasets).
-
-You can take a look at [the DVC documentation](https://dvc.org/doc) for more
-details.
-
-> 💡 In a situation where we retrain our model daily based on the most recent
-> data, it would make sense to also use DVC to keep track of the data used in
-> each training. We could, for example, use our runner to import our training
-> data from a table in our database and write both the data and the model to the
-> DVC remote. This is beyond the scope of this guide, but
-> [here you can find a tutorial for this](https://github.com/iterative/cml_dvc_case).
-
-The first time you are using DVC for a project you need to run `dvc init` in the
-project directory. Then, in order to start using DVC, you need to set up a
-remote. This is where your model files will end up, while DVC keeps track of
-their respective versions. DVC supports a plethora of remotes, including Amazon
-S3, Microsoft Azure Blob Storage, and Google Cloud Storage. For this guide, we
-will be using Google Drive as our remote.
+Then, in order to start using DVC for versioning, we need to set up a remote.
+This is where our model files will end up, while DVC keeps track of their
+respective versions. For this guide, we will be using Google Drive as our
+remote.
 
 You can follow
 [this guide](https://dvc.org/doc/user-guide/setup-google-drive-remote#setup-a-google-drive-dvc-remote)
@@ -105,11 +99,13 @@ to set up Google Drive as your remote. Make sure to
 and to
 [use a service account](https://dvc.org/doc/user-guide/setup-google-drive-remote#using-service-accounts).
 If you don't use a service account, your runner will get stuck on a log-in
-screen.
+screen (which you cannot access because).
 
-Once you have set up the storage remote and added the `GDRIVE_CREDENTIALS_DATA`
-as a GitHub secret, you can use the workflow below. In this scenario, we train
-the model in the same way as above, but we push it to the DVC remote. A
+# Export the model to a DVC remote
+
+Now that we have set up the remote and added the `GDRIVE_CREDENTIALS_DATA` as a
+GitHub secret, we can use the workflow below. In this scenario, we train the
+model in the same way as in part 1, but we push it to the DVC remote. A
 reference to the location of this file is added to the GitHub repository
 (`model/random_forest.joblib.dvc`). The model itself is added to `.gitignore`
 and not pushed to the repository.
@@ -184,19 +180,38 @@ jobs:
           cml send-comment --pr --update report.md
 ```
 
+And that's it! We have broadly the same set-up as outlined in part 1 of this
+guide, but we no longer use our GitHub repository for storing our model.
+Instead, the model is now saved to Google Drive, which allows for much larger
+models.
+
+<admon type="tip">
+
+In a situation where we retrain our model daily based on the most recent data,
+it would make sense to also use DVC to keep track of the data used in each
+training. We could, for example, use our runner to import our training data from
+a table in our database and write both the data and the model to the DVC remote.
+This is beyond the scope of this guide, but
+[here you can find a tutorial for this](https://github.com/iterative/cml_dvc_case).
+
+</admon>
+
 # Conclusions
 
-Using CML we can apply CI/CD principles to the (re)training of models. This way
-we can automate the stuff needed to keep your models running, leaving you with
-more time to do actual data science. Additionally, CML takes care of your
-versioning for you and makes sure you can track your models over time.
+As we saw in part 1 of this guide, we can use CML to automate a periodical
+retraining of our models on a self-hosted runner. We were able to save the model
+to our GitHub repository, but that approach has its limitations with regards to
+model size.
 
-In this guide, we explored how to set up CML for a daily training job using a
-dedicated runner. We exported the model from the runner in two ways: by pushing
-it directly to a GitHub repository and by pushing it to a DVC remote.
+In this part 2 we worked around those limitations by saving our model to a DVC
+remote instead. We set up Google Drive as our remote and adapted our CML
+workflow to save our models there. All in all, we can now automatically
+(re)train models using a self-hosted runner, track different model versions in
+Git, and save models to a remote storage such as Google Drive for future
+reference.
 
-From here on out we could extend our CI/CD with a `deploy` step to bring the
-latest version of our model into production. This step might be conditional on
-the performance of the model; we could decide to only start using it in
-production if it performs better than previous iterations. All of this warrants
-a guide of its own, however, so look out for that in the future! 😉 -->
+A great extension of our CI/CD would be a `deploy` step to bring the latest
+version of our model into production. This step might be conditional on the
+performance of the model; we could decide to only start using it in production
+if it performs better than previous iterations. All of this warrants a guide of
+its own, however, so look out for that in the future! 😉
