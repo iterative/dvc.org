@@ -84,7 +84,7 @@ Before we begin, make sure you have the following things set up:
    [created an AWS account](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account/)
    (free tier suffices)
 2. You have
-   [created a `PERSONAL_ACCESS_TOKEN` on GitHub](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)
+   [created a `PERSONAL_ACCESS_TOKEN` on GitHub](https://cml.dev/doc/self-hosted-runners?tab=GitHub#personal-access-token) with the `repo` scope
 3. You have
    [created an `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` on AWS](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html#cli-configure-quickstart-creds)
 4. You have
