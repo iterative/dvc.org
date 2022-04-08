@@ -58,15 +58,15 @@ All files needed for this guide can be found in
 [this repository](https://github.com/iterative/example_model_export_cml).
 
 <admon type="info">
-<p>
-This guide can be followed on its own, but also as an extension to this <a href="https://cml.dev/doc/self-hosted-runners">example in the docs</a>.
-</p>
+
+This guide can be followed on its own, but also as an extension to this [example in the docs](https://cml.dev/doc/self-hosted-runners).
+
 </admon>
 
 <admon type="tip">
-<p>
+
 We wil be using GitHub for our CI/CD and AWS for our computing resources. With slight modifications, however, you can use Gitlab and Google Cloud or Microsoft Azure respectively.
-</p>
+
 </admon>
 
 # Prerequisites
@@ -102,9 +102,9 @@ Later we can read the model using
 when we need to.
 
 <admon type="tip">
-<p>
-You can also use <code>pickle.dump()</code> if you prefer.
-</p>
+
+You can also use `pickle.dump()` if you prefer.
+
 </admon>
 
 The outputs of `train.py` are:
@@ -165,13 +165,12 @@ will automatically go through the workflow whenever it is triggered. In this
 case the triggers are a manual run and the daily schedule.
 
 <admon type="info">
-<p>
-The name of the workflow doesn’t matter, as long as it’s a <code>.yaml</code> and
-located in the <code>.github/workflows</code> directory. You can have multiple workflows
+
+The name of the workflow doesn’t matter, as long as it’s a `.yaml` and
+located in the `.github/workflows` directory. You can have multiple workflows
 in there as well. You can learn more in the
-<a href="https://docs.github.com/en/actions/learn-github-actions/workflow-syntax-for-github-actions">documentation</a>
-here.
-</p>
+[documentation](https://docs.github.com/en/actions/learn-github-actions/workflow-syntax-for-github-actions) here.
+
 </admon>
 
 ```yaml
@@ -216,8 +215,9 @@ jobs:
 ```
 
 <admon type="warn">
-<p>
-In this example we are using a <code>t2.micro</code> AWS EC2 instance. At the time of writing this is included in the AWS free tier. Make sure that you qualify for this free usage to prevent unexpected spending. When you specify a bulkier <code>cloud-type</code>, your expenses will rise.</p>
+
+In this example we are using a `t2.micro` AWS EC2 instance. At the time of writing this is included in the AWS free tier. Make sure that you qualify for this free usage to prevent unexpected spending. When you specify a bulkier <code>cloud-type</code>, your expenses will rise.
+
 </admon>
 
 The workflow we defined first
@@ -269,7 +269,7 @@ Et voilà! We are now running a daily model training on an AWS EC2 instance and
 saving the resulting model to our GitHub repository.
 
 There is still some room for improvement, though. This approach works well when
-our resulting model is small, but we wouldn't want to store large models in our
+our resulting model is small (less than 100MB), but we wouldn't want to store large models in our
 Git repository. In a follow-up post we will describe how we can use
 [DVC](https://dvc.org/), another Iterative open-source tool, for storage when
 we're dealing with larger files.
@@ -281,8 +281,8 @@ For example, you could be using the latest data available to you in order to
 prevent model drift. CML allows you to automate this process.
 
 In this guide, we explored how to set up CML for a daily training job using a
-self-hosted runner. We automatically provisioned this runner on AWS, exported the
-resulting files to our Git repository, and terminated the runner to prevent
+self-hosted runner. We automatically provisioned this runner on AWS, exported
+the resulting files to our Git repository, and terminated the runner to prevent
 racking up our AWS bill.
 
 In a follow-up post we will explore how to use DVC when the resulting model is
