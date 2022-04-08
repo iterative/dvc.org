@@ -59,7 +59,7 @@ $ git commit -m "Add raw data"
 
 The data, meanwhile, is listed in `.gitignore`.
 
-<details id="expand-dvc-add">
+<details id="add-expand-to-see-what-happens-under-the-hood">
 
 ### 💡 Expand to see what happens under the hood.
 
@@ -145,7 +145,7 @@ $ dvc push
 Usually, we also want to `git commit` and `git push` the corresponding `.dvc`
 files.
 
-<details id="expand-dvc-push">
+<details id="push-expand-to-see-what-happens-under-the-hood">
 
 ### 💡 Expand to see what happens under the hood.
 

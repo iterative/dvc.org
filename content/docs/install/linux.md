@@ -79,7 +79,7 @@ $ snap install --classic dvc
 
 ## Install from repository
 
-<details id="from-repo-on-debian-or-ubuntu">
+<details id="from-repo-on-debian-ubuntu">
 
 ### On Debian/Ubuntu
 
@@ -94,7 +94,7 @@ $ sudo apt install dvc
 
 </details>
 
-<details id="from-repo-on-fedora-or-centos">
+<details id="from-repo-on-fedora-centos">
 
 ### On Fedora/CentOS
 
@@ -115,7 +115,7 @@ Get the binary package from the big "Download" button on the [home page](/), or
 from the [release page](https://github.com/iterative/dvc/releases/) on GitHub.
 Then install it with the following command.
 
-<details id="from-pkg-on-debian-or-ubuntu">
+<details id="from-pkg-on-debian-ubuntu">
 
 ### On Debian/Ubuntu
 
@@ -125,7 +125,7 @@ $ sudo apt install ./dvc_0.62.1_amd64.deb
 
 </details>
 
-<details id="from-pkg-on-fedora-or-centos">
+<details id="from-pkg-on-fedora-centos">
 
 ### On Fedora/CentOS
 
