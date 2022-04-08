@@ -43,7 +43,9 @@ to define [stage](/doc/command-reference/run) dependencies more granularly:
 changes to other parts of the params file will not affect the stage. Parameter
 dependencies also prevent situations where several stages share a regular
 dependency (e.g. a config file), and any change in it invalidates all of them
-(see `dvc status`), causing unnecessary re-executions upon `dvc repro`.
+(see `dvc status`), causing unnecessary re-executions upon `dvc repro`. However,
+you can track all the parameters in a file by setting _parameter value_ to be
+`null`.
 
 The default **parameters file** name is `params.yaml`, but any other YAML 1.2,
 JSON, TOML, or [Python](#examples-python-parameters-file) files can be used
