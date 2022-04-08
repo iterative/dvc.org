@@ -9,11 +9,12 @@ https://www.youtube.com/watch?v=hKf4twg832g
    using your GitHub.com, GitLab.com or Bitbucket.org account, or your email
    address.
 
-   - If you sign up using your email address, you will will an email with a link
-     to verify your email address. You will need to verify your email address
-     before you can use Studio.
+   <admon type="info">
 
-   - Upon successful sign-in, the Iterative Studio views dashboard opens.
+   When you sign up with your email address, Studio will send you a verification
+   email before you can login.
+
+   </admon>
 
 2. If this is the first time you are signing in to Iterative Studio, you will
    see that there already exists a `Demo` view that connects to an example DVC
@@ -31,20 +32,22 @@ more views._
 4. To create a new view, click on `Add a View`. All the organizations that you
    have access to will be listed.
 
-> If you do not see your desired organizations or Git repositories, make sure
-> that
-> [the connection to your Git server has been set up](/doc/studio/user-guide/account-management#git-integrations).
+<admon type="info">
 
-> To create views from your GitHub repositories, you must install the Iterative
-> Studio GitHub app. Refer to the section on
-> [GitHub app installation](/doc/studio/user-guide/install-github-app) for more
-> details.
+If you do not see your desired organizations or Git repositories, make sure that
+[the connection to your Git server has been set up](/doc/studio/user-guide/account-management#git-integrations).
 
-> To create views from repositories on your self-hosted GitLab server, you must
-> first add a connection to this server and create a team. Refer to the section
-> on
-> [self-hosted GitLab server support](/doc/studio/user-guide/install-github-app)
-> for more details.
+To create views from your GitHub repositories, you must install the Iterative
+Studio GitHub app. Refer to the section on
+[GitHub app installation](/doc/studio/user-guide/install-github-app) for more
+details.
+
+To create views from repositories on your self-hosted GitLab server, you must
+first add a connection to this server and create a team. Refer to the section on
+[self-hosted GitLab server support](/doc/studio/user-guide/install-github-app)
+for more details.
+
+</admon>
 
 5. Open the organization whose repository you want to connect to. You can also
    use the search bar to directly look for a repository.

@@ -9,7 +9,7 @@ below.
 
 Here, you can see your name and profile picture. If you signed up with a
 GitHub.com, GitLab.com or Bitbucket.org account, these details are fetched from
-your connected Git account.
+your connected Git cloud account.
 
 You can edit your name.
 
@@ -17,15 +17,14 @@ You can edit your name.
 
 Here, you can see your username, password and email addresses. If you signed up
 with a GitHub.com, GitLab.com or Bitbucket.org account, the username and email
-address are fetched from your connected Git account.
+address are fetched from your connected Git cloud account.
 
 You can update your username and password.
 
 **Managing email addresses:**
 
-You can add multiple email addresses to a single Studio account. For each new
-email address that you add, you will receive an email with a link to verify the
-email address.
+You can add multiple email addresses to a single Studio account. You can login
+to the account with any of your verified email addresses.
 
 One of your email addresses must be designated as primary. This is the address
 to which Studio will send all your account notification emails.
@@ -39,9 +38,9 @@ You can delete your non-primary email addresses.
 
 In this section, you can,
 
-- Connect to the following Git providers: GitHub.com, GitLab.com, Bitbucket.org.
+- Connect to GitHub.com, GitLab.com or Bitbucket.org.
 
-  When you connect to a Git provider, you may be prompted to Grant access to
+  When you connect to a Git provider, you may be prompted to grant access to
   your account to Iterative Studio. Please grant the required access to enable
   Iterative Studio to connect to your Git repositories.
 
