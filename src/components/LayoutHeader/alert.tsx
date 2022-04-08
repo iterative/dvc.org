@@ -16,7 +16,7 @@ const LayoutAlert: React.FC<{ collapsed: boolean }> | false = ({
       href="https://studio.iterative.ai"
       tabIndex={collapsed ? -1 : undefined}
     >
-      DVC Studio
+      Iterative Studio
     </Link>
     , the online UI for DVC, is live!{' '}
   </div>
