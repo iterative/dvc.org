@@ -59,13 +59,16 @@ All files needed for this guide can be found in
 
 <admon type="info">
 
-This guide can be followed on its own, but also as an extension to this [example in the docs](https://cml.dev/doc/self-hosted-runners).
+This guide can be followed on its own, but also as an extension to this
+[example in the docs](https://cml.dev/doc/self-hosted-runners).
 
 </admon>
 
 <admon type="tip">
 
-We wil be using GitHub for our CI/CD and AWS for our computing resources. With slight modifications, however, you can use Gitlab and Google Cloud or Microsoft Azure respectively.
+We wil be using GitHub for our CI/CD and AWS for our computing resources. With
+slight modifications, however, you can use Gitlab and Google Cloud or Microsoft
+Azure respectively.
 
 </admon>
 
@@ -166,10 +169,11 @@ case the triggers are a manual run and the daily schedule.
 
 <admon type="info">
 
-The name of the workflow doesn’t matter, as long as it’s a `.yaml` and
-located in the `.github/workflows` directory. You can have multiple workflows
-in there as well. You can learn more in the
-[documentation](https://docs.github.com/en/actions/learn-github-actions/workflow-syntax-for-github-actions) here.
+The name of the workflow doesn’t matter, as long as it’s a `.yaml` and located
+in the `.github/workflows` directory. You can have multiple workflows in there
+as well. You can learn more in the
+[documentation](https://docs.github.com/en/actions/learn-github-actions/workflow-syntax-for-github-actions)
+here.
 
 </admon>
 
@@ -216,7 +220,10 @@ jobs:
 
 <admon type="warn">
 
-In this example we are using a `t2.micro` AWS EC2 instance. At the time of writing this is included in the AWS free tier. Make sure that you qualify for this free usage to prevent unexpected spending. When you specify a bulkier <code>cloud-type</code>, your expenses will rise.
+In this example we are using a `t2.micro` AWS EC2 instance. At the time of
+writing this is included in the AWS free tier. Make sure that you qualify for
+this free usage to prevent unexpected spending. When you specify a bulkier
+<code>cloud-type</code>, your expenses will rise.
 
 </admon>
 
@@ -269,10 +276,10 @@ Et voilà! We are now running a daily model training on an AWS EC2 instance and
 saving the resulting model to our GitHub repository.
 
 There is still some room for improvement, though. This approach works well when
-our resulting model is small (less than 100MB), but we wouldn't want to store large models in our
-Git repository. In a follow-up post we will describe how we can use
-[DVC](https://dvc.org/), another Iterative open-source tool, for storage when
-we're dealing with larger files.
+our resulting model is small (less than 100MB), but we wouldn't want to store
+large models in our Git repository. In a follow-up post we will describe how we
+can use [DVC](https://dvc.org/), another Iterative open-source tool, for storage
+when we're dealing with larger files.
 
 # Conclusions
 
