@@ -1,6 +1,6 @@
 ---
 title:
-  Training and saving models with CML on a dedicated AWS EC2 runner (part 1)
+  Training and saving models with CML on a self-hosted AWS EC2 runner (part 1)
 date: 2022-03-31
 description:
   In this guide we will show how you can use CML to automatically retrain a
