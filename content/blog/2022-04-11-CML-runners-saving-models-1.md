@@ -67,8 +67,12 @@ This guide can be followed on its own, but also as an extension to this
 <admon type="tip">
 
 We wil be using GitHub for our CI/CD and AWS for our computing resources. With
-slight modifications, however, you can use Gitlab and Google Cloud or Microsoft
-Azure respectively.
+slight modifications, however, you can use
+[GitLab CI/CD](https://cml.dev/doc/self-hosted-runners?tab=GitLab#allocating-cloud-compute-resources-with-cml),
+[Google Cloud](https://cml.dev/doc/self-hosted-runners?tab=GCP#cloud-compute-resource-credentials)
+or
+[Microsoft
+Azure](https://cml.dev/doc/self-hosted-runners?tab=Azure#cloud-compute-resource-credentials).
 
 </admon>
 
