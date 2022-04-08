@@ -1,9 +1,9 @@
 # Machine Learning Model Registries
 
-A **model registry** works as a central catalog for data artifacts produced in
+A **model registry** is a central catalog for data artifacts produced in
 multiple data science projects. Models can be discovered, audited, shared,
-tested, and deployed from here. DVC supports all of these needs, while
-integrating with existing development workflows. Other tools from
+tested, and deployed from here. DVC enables these features on the Git ecosystem,
+reducing friction between development and operations. Other tools from
 [Iterative](https://iterative.ai/) provide with more advanced features and
 better usability.
 
@@ -31,22 +31,22 @@ one or mode <abbr>DVC projects</abbr>. This enables managing them with standard
 Git [versioning] workflows. Large files can be pushed to [remote storage], an
 efficient and scalable access point for your models.
 
-To achieve the other goals, the final outputs of these model development
+To achieve the remaining goals, the final outputs of these model development
 projects can be **packaged** and published in a global DVC repository. Existing
 model files stored remotely are reused in this collection without copying them,
 so building the registry is fast. Links to the original projects are preserved,
 so you can always retrieve full lineage and provenance info.
 
-Distributed DVC repos and managed storage are already great for sharing data and
-models. And with a model registry, getting them to production is also
-straightforward: Use the DVC CLI to [import] them for deployment, integrate them
-directly into code with the Python [API], or even automate their (re)training
-and delivery with [CI/CD for ML][cml-dvc].
+Distributed DVC repos and managed storage are already great for [sharing] data
+and models. And getting your ML models from the registry to production is also
+properly tooled: deploy manually with the `dvc` [CLI], integrate with code using
+DVC's Python [API], or even automate their training and delivery with [CI/CD for
+ML][cml-dvc].
 
 [data pipelines]: doc/start/data-pipelines
 [versioning]: /doc/use-cases/versioning-data-and-model-files
 [remote storage]: /doc/command-reference/remote
-[share]: /doc/start/data-and-model-access
-[import]: /doc/command-reference/import
+[sharing]: /doc/start/data-and-model-access
+[cli]: /doc/command-reference
 [api]: /doc/api-reference
 [cml-dvc]: https://cml.dev/doc/cml-with-dvc
