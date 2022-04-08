@@ -82,7 +82,7 @@ Before we begin, make sure you have the following things set up:
 2. You have
    [created a `PERSONAL_ACCESS_TOKEN` on GitHub](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)
 3. You have
-   [created an `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` on AWS](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html)
+   [created an `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` on AWS](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html#cli-configure-quickstart-creds)
 4. You have
    [added the `PERSONAL_ACCES_TOKEN`, `AWS_ACCESS_KEY_ID`, and `AWS_SECRET_ACCESS_KEY` as GitHub secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets)
 
