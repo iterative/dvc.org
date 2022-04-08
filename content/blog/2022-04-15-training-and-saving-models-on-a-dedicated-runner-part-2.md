@@ -52,7 +52,8 @@ your data in the Git commit. That way your code is linked to a specific version
 of your model, without containing the actual model.
 
 In this part 2, we will show you how to save the model we trained in part 1 to a
-DVC remote. At the end of this guide our CML workflow will be doing the folowing on a daily basis:
+DVC remote. At the end of this guide our CML workflow will be doing the folowing
+on a daily basis:
 
 1. Provision an Amazon Web Services (AWS) EC2 instance
 1. Train the model
