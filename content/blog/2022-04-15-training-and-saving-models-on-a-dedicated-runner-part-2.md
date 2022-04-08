@@ -1,18 +1,18 @@
 ---
 title:
   Training and saving models with CML on a dedicated AWS EC2 runner (part 2)
-date: 2022-03-31
+date: 2022-04-15
 description:
   In part 1 of this guide we showed how you can use CML to automatically retrain
   a model and save its outputs to your Github repository using a provisioned AWS
   EC2 runner. We will now expand upon this guide by using DVC to save our model
-  to a remote storage.
+  to a remote storage on Google Drive.
 descriptionLong: |
   We can use CML to automatically retrain models whenever data, model code,
   or parameters change. In this guide we show how to create a pipeline that
   provisions an AWS EC2 instance to retrain a model and save the output on
   a regular basis. This way we can prevent drift by ensuring that our model
-  always uses the latest input data.
+  always uses the latest input data. In part 2 we expand upon the guide in part 1 by using a DVC remote to store our model. This allows for much larger models.
 picture: 2015-05-01/post-image.jpeg
 # pictureComment: Some _Comment_ (supports _basic_ [Markdown](link))
 author: rob_dewit
@@ -22,8 +22,10 @@ tags:
   - DVC
   - Git
   - Pipelines
-  - Dedicated runners
+  - Self-hosted runners
+  - Cloud training
   - AWS
+  - Google Drive
 ---
 
 In part 1 of this guide we showed how you can use CML to provision an AWS EC2
@@ -83,8 +85,8 @@ Additionally, set up the following things beforehand:
 - [Create a GCP service account](https://dvc.org/doc/user-guide/setup-google-drive-remote#using-service-accounts)
 - [Add `GDRIVE_CREDENTIALS_DATA` as a GitHub secret](https://docs.github.com/en/actions/security-guides/encrypted-secrets)
 - [Create a Google Drive folder to save your model to](https://support.google.com/drive/answer/2375091?hl=en&co=GENIE.Platform%3DDesktop)
-- Grant the service account edit permissions to the Drive folder by sharing it with the service account's email address
-
+- Grant the service account edit permissions to the Drive folder by sharing it
+  with the service account's email address
 
 # Setting up our DVC remote
 
@@ -100,9 +102,14 @@ respective versions. For this guide, we will be using Google Drive as our
 remote.
 
 [This guide](https://dvc.org/doc/user-guide/setup-google-drive-remote#setup-a-google-drive-dvc-remote)
-explains how to set up a remote on Google Drive. If you would rather use another remote, you can [find instructions here](https://dvc.org/doc/command-reference/remote/add#supported-storage-types).
+explains how to set up a remote on Google Drive. If you would rather use another
+remote, you can
+[find instructions here](https://dvc.org/doc/command-reference/remote/add#supported-storage-types).
 
-While DVC doesn't require a service account to work, we do need one in the set-up we're aiming for. That's because without a service account we will need to authorize ourselves through a log-in page every time. Our self-hosted runner would get stuck on this page because we cannot authorize ourselves there.
+While DVC doesn't require a service account to work, we do need one in the
+set-up we're aiming for. That's because without a service account we will need
+to authorize ourselves through a log-in page every time. Our self-hosted runner
+would get stuck on this page because we cannot authorize ourselves there.
 
 # Export the model to a DVC remote
 
