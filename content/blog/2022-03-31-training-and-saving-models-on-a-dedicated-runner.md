@@ -20,9 +20,9 @@ tags:
   - CML
   - Git
   - Pipelines
-  - self-hosted runners
+  - Self-hosted runners
   - CI/CD
-  - cloud training
+  - Cloud training
   - AWS
 ---
 
