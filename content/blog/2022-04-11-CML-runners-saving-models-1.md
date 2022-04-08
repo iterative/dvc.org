@@ -1,7 +1,7 @@
 ---
 title:
   Training and saving models with CML on a self-hosted AWS EC2 runner (part 1)
-date: 2022-03-31
+date: 2022-04-11
 description:
   In this guide we will show how you can use CML to automatically retrain a
   model and save its outputs to your Github repository using a provisioned AWS
@@ -12,7 +12,7 @@ descriptionLong: |
   provisions an AWS EC2 instance to retrain a model and save the output on
   a regular basis. This way we can prevent drift by ensuring that our model
   always uses the latest input data.
-picture: 2015-05-01/post-image.jpeg
+picture: 2022-04-11/saving-models-cover.jpeg
 # pictureComment: Some _Comment_ (supports _basic_ [Markdown](link))
 author: rob_dewit
 # commentsUrl: https://discuss.dvc.org/t/february-22-community-gems/1078
@@ -58,11 +58,15 @@ All files needed for this guide can be found in
 [this repository](https://github.com/iterative/example_model_export_cml).
 
 <admon type="info">
+<p>
 This guide can be followed on its own, but also as an extension to this <a href="https://cml.dev/doc/self-hosted-runners">example in the docs</a>.
+</p>
 </admon>
 
 <admon type="tip">
+<p>
 We wil be using GitHub for our CI/CD and AWS for our computing resources. With slight modifications, however, you can use Gitlab and Google Cloud or Microsoft Azure respectively.
+</p>
 </admon>
 
 # Prerequisites
@@ -98,7 +102,9 @@ Later we can read the model using
 when we need to.
 
 <admon type="tip">
+<p>
 You can also use <code>pickle.dump()</code> if you prefer.
+</p>
 </admon>
 
 The outputs of `train.py` are:
@@ -159,11 +165,13 @@ will automatically go through the workflow whenever it is triggered. In this
 case the triggers are a manual run and the daily schedule.
 
 <admon type="info">
+<p>
 The name of the workflow doesn’t matter, as long as it’s a <code>.yaml</code> and
 located in the <code>.github/workflows</code> directory. You can have multiple workflows
 in there as well. You can learn more in the
 <a href="https://docs.github.com/en/actions/learn-github-actions/workflow-syntax-for-github-actions">documentation</a>
 here.
+</p>
 </admon>
 
 ```yaml
@@ -208,7 +216,8 @@ jobs:
 ```
 
 <admon type="warn">
-In this example we are using a <code>t2.micro</code> AWS EC2 instance. At the time of writing this is included in the AWS free tier. Make sure that you qualify for this free usage to prevent unexpected spending. When you specify a bulkier <code>cloud-type</code>, your expenses will rise.
+<p>
+In this example we are using a <code>t2.micro</code> AWS EC2 instance. At the time of writing this is included in the AWS free tier. Make sure that you qualify for this free usage to prevent unexpected spending. When you specify a bulkier <code>cloud-type</code>, your expenses will rise.</p>
 </admon>
 
 The workflow we defined first
@@ -272,7 +281,7 @@ For example, you could be using the latest data available to you in order to
 prevent model drift. CML allows you to automate this process.
 
 In this guide, we explored how to set up CML for a daily training job using a
-dedicated runner. We automatically provisioned this runner on AWS, exported the
+self-hosted runner. We automatically provisioned this runner on AWS, exported the
 resulting files to our Git repository, and terminated the runner to prevent
 racking up our AWS bill.
 
