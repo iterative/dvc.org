@@ -68,8 +68,11 @@ This guide can be followed on its own, but also as an extension to this
 <admon type="tip">
 
 We wil be using GitHub for our CI/CD and AWS for our computing resources. With
-slight modifications, however, you can use Gitlab and Google Cloud or Microsoft
-Azure respectively.
+slight modifications, however, you can use
+[GitLab CI/CD](https://cml.dev/doc/self-hosted-runners?tab=GitLab#allocating-cloud-compute-resources-with-cml),
+[Google Cloud](https://cml.dev/doc/self-hosted-runners?tab=GCP#cloud-compute-resource-credentials)
+or
+[Microsoft Azure](https://cml.dev/doc/self-hosted-runners?tab=Azure#cloud-compute-resource-credentials).
 
 </admon>
 
@@ -81,9 +84,10 @@ Before we begin, make sure you have the following things set up:
    [created an AWS account](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account/)
    (free tier suffices)
 2. You have
-   [created a `PERSONAL_ACCESS_TOKEN` on GitHub](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)
+   [created a `PERSONAL_ACCESS_TOKEN` on GitHub](https://cml.dev/doc/self-hosted-runners?tab=GitHub#personal-access-token)
+   with the `repo` scope
 3. You have
-   [created an `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` on AWS](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html)
+   [created an `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` on AWS](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html#cli-configure-quickstart-creds)
 4. You have
    [added the `PERSONAL_ACCES_TOKEN`, `AWS_ACCESS_KEY_ID`, and `AWS_SECRET_ACCESS_KEY` as GitHub secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets)
 
@@ -188,8 +192,8 @@ jobs:
   deploy-runner:
     runs-on: ubuntu-latest
     steps:
-      - uses: iterative/setup-cml@v1
       - uses: actions/checkout@v2
+      - uses: iterative/setup-cml@v1
       - name: Deploy runner on EC2
         env:
           REPO_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
@@ -200,13 +204,14 @@ jobs:
               --cloud=aws \
               --cloud-region=eu-west \
               --cloud-type=t2.micro \
+              --labels=cml-runner \
               --single
   train-model:
     needs: deploy-runner
-    runs-on: [self-hosted]
+    runs-on: [self-hosted, cml-runner]
     timeout-minutes: 120 # 2h
     container:
-      image: docker://iterativeai/cml:0-dvc2-base1
+      image: iterativeai/cml:0-dvc2-base1
     steps:
       - uses: actions/checkout@v2
       - name: Train model
