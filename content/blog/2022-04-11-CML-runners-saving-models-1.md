@@ -207,7 +207,7 @@ jobs:
               --single
   train-model:
     needs: deploy-runner
-    runs-on: [self-hosted]
+    runs-on: [self-hosted, cml-runner]
     timeout-minutes: 120 # 2h
     container:
       image: docker://iterativeai/cml:0-dvc2-base1
