@@ -210,10 +210,12 @@ jobs:
     needs: deploy-runner
     runs-on: [self-hosted, cml-runner]
     timeout-minutes: 120 # 2h
-    container:
-      image: iterativeai/cml:0-dvc2-base1
     steps:
       - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+      - uses: iterative/setup-cml@v1
       - name: Train model
         env:
           REPO_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
