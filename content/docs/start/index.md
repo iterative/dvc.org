@@ -65,7 +65,7 @@ of them suitable to your interests, and come back here to explore another one.
 - project dependency management tool, and how you can leverage it to reduce
 - unnecessary retraining times.
 
-- [**Experiments**](/doc/start/experiments) enable exploration, iteration, and
+- [**Experiments**](/doc/start/experiments/) enable exploration, iteration, and
   comparison across many ML experiments. Track your experiments with automatic
   versioning and checkpoint logging. Compare differences in parameters, metrics,
   code, and data. Apply, drop, roll back, resume, or share any experiment.
