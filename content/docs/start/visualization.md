@@ -69,9 +69,7 @@ callback that visualizes the training and validation loss for each epoch. We
 first import the callback from DVCLive.
 
 ```python
-
 from dvclive.keras import DvcLiveCallback
-
 ```
 
 Then we add this callback to `fit` callbacks.
