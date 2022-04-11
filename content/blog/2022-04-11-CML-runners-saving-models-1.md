@@ -203,6 +203,7 @@ jobs:
               --cloud=aws \
               --cloud-region=eu-west \
               --cloud-type=t2.micro \
+              --labels=cml-runner \
               --single
   train-model:
     needs: deploy-runner
