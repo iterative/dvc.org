@@ -191,8 +191,8 @@ jobs:
   deploy-runner:
     runs-on: ubuntu-latest
     steps:
-      - uses: iterative/setup-cml@v1
       - uses: actions/checkout@v2
+      - uses: iterative/setup-cml@v1
       - name: Deploy runner on EC2
         env:
           REPO_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
