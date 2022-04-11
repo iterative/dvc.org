@@ -15,7 +15,7 @@ descriptionLong: |
 picture: 2022-04-11/saving-models-cover.jpeg
 # pictureComment: Some _Comment_ (supports _basic_ [Markdown](link))
 author: rob_dewit
-# commentsUrl: https://discuss.dvc.org/t/february-22-community-gems/1078
+commentsUrl: https://discuss.dvc.org/t/training-and-saving-models-with-cml-on-a-self-hosted-aws-ec2-runner/1155
 tags:
   - CML
   - Git
