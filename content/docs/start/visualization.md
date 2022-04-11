@@ -24,7 +24,7 @@ actual,predicted
 > predictions.
 
 [loop]:
-  https://github.com/iterative/example-dvc-experiments/blob/main/src/train.py#L213
+  https://github.com/iterative/example-dvc-experiments/blob/main/src/train.py#L123
 
 After running the experiment with `dvc exp run`, DVC will produce
 `plots/confusion.csv` file presenting the classifier performance and open it in
