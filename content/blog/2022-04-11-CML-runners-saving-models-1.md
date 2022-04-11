@@ -210,7 +210,7 @@ jobs:
     runs-on: [self-hosted, cml-runner]
     timeout-minutes: 120 # 2h
     container:
-      image: docker://iterativeai/cml:0-dvc2-base1
+      image: iterativeai/cml:0-dvc2-base1
     steps:
       - uses: actions/checkout@v2
       - name: Train model
