@@ -18,10 +18,9 @@ usage: dvc exp init [-h] [-q | -v] [--run] [--interactive] [-f]
 
 ## Description
 
-`dvc exp init` helps you get started with DVC Experiments quickly. It reduces
-boilerplate DVC procedures by creating a `dvc.yaml` file that assumes standard
-locations of your input data, <abbr>parameters</abbr>, source code, models,
-<abbr>metrics</abbr> and [plots](/doc/command-reference/plots). These locations
+`dvc exp init` helps you get started with DVC Experiments quickly.
+It creates an experiment pipeline in a dvc.yaml file, which assumes standard locations for the inputs (source code, data, and parameters) and outputs (model, metrics, and plots) of your model training command.
+These locations
 can be customized through the [options](#options) below or via
 [configuration](/doc/command-reference/config#exp).
 
