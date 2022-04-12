@@ -99,7 +99,7 @@
         ]
       },
       {
-        "slug": "data-pipelines",
+        "slug": "pipelines",
         "tutorials": {
           "katacoda": "https://katacoda.com/dvc/courses/get-started/stages"
         }
