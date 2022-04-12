@@ -35,7 +35,8 @@
     },
     "children": [
       {
-        "slug": "data-and-model-versioning",
+        "slug": "data",
+        "label": "Data Management",
         "tutorials": {
           "katacoda": "https://katacoda.com/dvc/courses/get-started/versioning"
         },
