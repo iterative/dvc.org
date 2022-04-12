@@ -38,13 +38,64 @@
         "slug": "data-and-model-versioning",
         "tutorials": {
           "katacoda": "https://katacoda.com/dvc/courses/get-started/versioning"
-        }
-      },
-      {
-        "slug": "data-and-model-access",
-        "tutorials": {
-          "katacoda": "https://katacoda.com/dvc/courses/get-started/accessing"
-        }
+        },
+        "children": [
+          {
+            "label": "Adding Files",
+            "slug": "add-file",
+            "source": "add-file.md"
+          },
+          {
+            "label": "Upload and Share",
+            "slug": "share",
+            "source": "share.md"
+          },
+          {
+            "label": "Retrieving",
+            "slug": "retrieving",
+            "source": "retrieving.md"
+          },
+          {
+            "label": "Making Changes",
+            "slug": "making-changes",
+            "source": "making-changes.md"
+          },
+          {
+            "label": "Switch Between Versions",
+            "slug": "switch-between-versions",
+            "source": "switch-between-versions.md"
+          },
+          {
+            "label": "Large Dataset Versioning",
+            "slug": "large-dataset-versioning",
+            "source": "large-dataset-versioning.md"
+          },
+          {
+            "label": "Accessing Data in other Repos",
+            "slug": "access",
+            "source": "access.md"
+          },
+          {
+            "label": "Listing files in other Repos",
+            "slug": "list-files-in-remote-repo",
+            "source": "list-files-in-remote-repo.md"
+          },
+          {
+            "label": "Download files from other Repos",
+            "slug": "download-files-from-repos",
+            "source": "download-files-from-repos.md"
+          },
+          {
+            "label": "Track arbitrary URLs in your project",
+            "slug": "import-files-to-project",
+            "source": "import-files-to-project.md"
+          },
+          {
+            "label": "Use files in your Python project without downloading",
+            "slug": "python-api",
+            "source": "python-api.md"
+          }
+        ]
       },
       {
         "slug": "data-pipelines",
