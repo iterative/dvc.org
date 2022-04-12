@@ -8,9 +8,8 @@ self-hosted GitLab servers.
 
 To connect to your self-hosted GitLab server, you will need the following:
 
-- A URL for your GitLab server. This URL should either be publicly accessible,
-  or, if Studio is deployed on-premises in a private network, then it could also
-  be a URL in the same private network so that Studio can access it.
+- A URL for your GitLab server. The URL should either be publicly accessible, or
+  in the same private network as Studio if Studio is deployed on-premises.
 - A personal access token with the following roles: `api`, `read_user`,
   `read_repository`. If you do not have a personal access token yet, you can
   create one at

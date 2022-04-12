@@ -32,22 +32,24 @@ more views._
 4. To create a new view, click on `Add a View`. All the organizations that you
    have access to will be listed.
 
-<admon type="info">
+    <admon type="info">
 
-If you do not see your desired organizations or Git repositories, make sure that
-[the connection to your Git server has been set up](/doc/studio/user-guide/account-management#git-integrations).
+   If you do not see your desired organizations or Git repositories, make sure
+   that
+   [the connection to your Git server has been set up](/doc/studio/user-guide/account-management#git-integrations).
 
-To create views from your GitHub repositories, you must install the Iterative
-Studio GitHub app. Refer to the section on
-[GitHub app installation](/doc/studio/user-guide/install-github-app) for more
-details.
+   To create views from your GitHub repositories, you must install the Iterative
+   Studio GitHub app. Refer to the section on
+   [GitHub app installation](/doc/studio/user-guide/install-github-app) for more
+   details.
 
-To create views from repositories on your self-hosted GitLab server, you must
-first add a connection to this server and create a team. Refer to the section on
-[self-hosted GitLab server support](/doc/studio/user-guide/install-github-app)
-for more details.
+   To create views from repositories on your self-hosted GitLab server, you must
+   first add a connection to this server and create a team. Refer to the section
+   on
+   [self-hosted GitLab server support](/doc/studio/user-guide/install-github-app)
+   for more details.
 
-</admon>
+    </admon>
 
 5. Open the organization whose repository you want to connect to. You can also
    use the search bar to directly look for a repository.

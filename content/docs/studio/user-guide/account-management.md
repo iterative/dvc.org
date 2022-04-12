@@ -9,7 +9,7 @@ below.
 
 Here, you can see your name and profile picture. If you signed up with a
 GitHub.com, GitLab.com or Bitbucket.org account, these details are fetched from
-your connected Git cloud account.
+your connected Git hosting account.
 
 You can edit your name.
 
@@ -17,7 +17,7 @@ You can edit your name.
 
 Here, you can see your username, password and email addresses. If you signed up
 with a GitHub.com, GitLab.com or Bitbucket.org account, the username and email
-address are fetched from your connected Git cloud account.
+address are fetched from your connected Git hosting account.
 
 You can update your username and password.
 
