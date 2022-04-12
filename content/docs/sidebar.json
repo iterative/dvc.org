@@ -102,7 +102,34 @@
         "slug": "pipelines",
         "tutorials": {
           "katacoda": "https://katacoda.com/dvc/courses/get-started/stages"
-        }
+        },
+        "children": [
+          {
+            "label": "Add stages",
+            "slug": "add-stages",
+            "source": "add-stages.md"
+          },
+          {
+            "label": "Run stages",
+            "slug": "run-stages",
+            "source": "run-stages.md"
+          },
+          {
+            "label": "Defining pipeline graph",
+            "slug": "dag",
+            "source": "dag.md"
+          },
+          {
+            "label": "Change (hyper)parameters to run the pipeline (again)",
+            "slug": "change-params",
+            "source": "change-params.md"
+          },
+          {
+            "label": "Visualize the pipeline graph",
+            "slug": "visualize",
+            "source": "visualize.md"
+          }
+        ]
       },
       {
         "slug": "experiments",
