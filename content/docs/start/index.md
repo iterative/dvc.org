@@ -6,6 +6,8 @@ manage experiments.'
 
 # Get Started
 
+Welcome to DVC!
+
 Assuming DVC is already [installed](/doc/install), let's initialize it by
 running `dvc init` inside a Git project:
 
