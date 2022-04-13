@@ -109,4 +109,4 @@ workflow:
 
 [experiments]: /doc/start/experiments
 [vega-lite]: https://vega.github.io/vega-lite/
-[dvclive]: https://dvc.org/doc/dvclive
+[dvclive]: https://dvc.org/doc/dvclive/dvclive-with-dvc
