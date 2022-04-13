@@ -1,8 +1,4 @@
----
-title: 'Get Started: Visualization with Plots'
----
-
-# Get Started: Visualization with Plots
+# Visualization with Plots
 
 In this section, we'll add visualization to the [`example-dvc-experiments`][ede]
 project. If you would like to try these yourself, please refer to the project
