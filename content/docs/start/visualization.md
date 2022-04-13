@@ -106,6 +106,6 @@ workflow:
 
 - [DVCLive] integrations can produce plots automatically during training.
 
-[experiments]: /doc/start/experiments
-[vega-lite]: https://vega.github.io/vega-lite/
+[plot outputs]:
+  /doc/user-guide/project-structure/pipelines-files#metrics-and-plots-outputs
 [dvclive]: https://dvc.org/doc/dvclive/dvclive-with-dvc
