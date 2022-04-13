@@ -92,7 +92,7 @@ browser:
 DVCLive has other capabilities, like saving the model every epoch or modifying
 these default values.
 
-In summary, DVC provides more than one option to fit visualization to your
+In summary, DVC provides more than one option to use visualization in your
 workflow:
 
 - DVC can generate HTML files that includes interactive plots from data series
