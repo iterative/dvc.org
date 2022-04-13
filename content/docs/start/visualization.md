@@ -55,8 +55,6 @@ project.][misclassified-example-code]
 [misclassified-example-code]:
   https://github.com/iterative/example-dvc-experiments/blob/48b1e5078c957f71674c00f416290eaa3b20b559/src/util.py#L49
 
-DVC automatically shows the image in an HTML page with the command:
-
 ```dvc
 $ dvc plots show plots/confusion.png
 ```
