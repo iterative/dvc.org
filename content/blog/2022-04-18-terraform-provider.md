@@ -16,7 +16,7 @@ tags:
   - MLOps
   - Terraform
   - Git
-  - Resource orchestation
+  - Resource orchestration
   - Spot Instance management
 ---
 
