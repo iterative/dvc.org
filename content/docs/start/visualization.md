@@ -61,7 +61,7 @@ $ dvc plots show plots/confusion.png
 
 ![confusion image](/img/start_visualization_confusion2.png)
 
-### Autogenerating plots with integrations
+## Autogenerating plots from deep learning code
 
 An important issue for deep learning projects is to observe in which epoch
 training loss and validation loss differs. DVC helps in that regard with its
