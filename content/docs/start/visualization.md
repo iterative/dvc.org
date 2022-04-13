@@ -64,8 +64,8 @@ $ dvc plots show plots/confusion.png
 ## Autogenerating plots from deep learning code
 
 An important issue for deep learning projects is to observe in which epoch
-training loss and validation loss differs. DVC helps in that regard with its
-integrations to deep learning libraries via DVCLive.
+do training and validation loss differ. DVC helps in that regard with its
+Python integrations to deep learning libraries via [DVCLive].
 
 The example project uses Keras to train a classifier, and we have a DVCLive
 callback that visualizes the training and validation loss for each epoch. We
