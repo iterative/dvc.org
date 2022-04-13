@@ -5,9 +5,8 @@ title: 'Get Started: Visualization with Plots'
 # Get Started: Visualization with Plots
 
 In this section, we'll add visualization to the [`example-dvc-experiments`][ede]
-project (explored [previously](/doc/start/experiments)). If you would like to try
-these yourself, please refer to the project.
-[README] about how to install.
+project (explored [previously](/doc/start/experiments)). If you would like to
+try these yourself, please refer to the project. [README] about how to install.
 
 [ede]: https://github.com/iterative/example-dvc-experiments
 [readme]:
@@ -15,8 +14,8 @@ these yourself, please refer to the project.
 
 ### Creating plots from tabular data
 
-A useful plot to show the classification performance is the confusion matrix. In
-order to produce it, DVC expects a CSV **plot file** in the form:
+A useful plot to show the classification performance is the [confusion matrix].
+In order to produce it, DVC expects a CSV **plot file** in the form:
 
 ```csv
 actual,predicted
@@ -30,6 +29,7 @@ actual,predicted
 
 [loop]:
   https://github.com/iterative/example-dvc-experiments/blob/main/src/train.py#L123
+[confusion matrix]: https://en.wikipedia.org/wiki/Confusion_matrix
 
 After running the experiment with `dvc exp run`, DVC will produce
 `plots/confusion.csv` file presenting the classifier performance and open it in
