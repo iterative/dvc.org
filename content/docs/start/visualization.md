@@ -31,9 +31,8 @@ actual,predicted
   https://github.com/iterative/example-dvc-experiments/blob/main/src/train.py#L123
 [confusion matrix]: https://en.wikipedia.org/wiki/Confusion_matrix
 
-Running the experiment with `dvc exp run` will produce
-`plots/confusion.csv`. Use `dvc plots show` to present it as an HTML
-file, and open it in the browser:
+Running the experiment with `dvc exp run` will produce `plots/confusion.csv`.
+Use `dvc plots show` to present it as an HTML file, and open it in the browser:
 
 ```dvc
 $ dvc plots show plots/confusion.csv --template confusion \
@@ -63,9 +62,9 @@ $ dvc plots show plots/confusion.png
 
 ## Autogenerating plots from deep learning code
 
-An important issue for deep learning projects is to observe in which epoch
-do training and validation loss differ. DVC helps in that regard with its
-Python integrations to deep learning libraries via [DVCLive].
+An important issue for deep learning projects is to observe in which epoch do
+training and validation loss differ. DVC helps in that regard with its Python
+integrations to deep learning libraries via [DVCLive].
 
 The example project uses Keras to train a classifier, and we have a DVCLive
 callback that visualizes the training and validation loss for each epoch. We
@@ -75,7 +74,7 @@ first import the callback from DVCLive.
 from dvclive.keras import DvcLiveCallback
 ```
 
-Then we add this callback to `fit` callbacks.
+Then we add this callback to the `fit()` call.
 
 ```python
 model.fit(
@@ -85,8 +84,8 @@ model.fit(
 ```
 
 With these two changes, we can see the plots showing the defined metrics in our
-model. You can see the report in `training_metrics/index.html`
-with your browser:
+model. You can see the report in `training_metrics/index.html` with your
+browser:
 
 ![dvclive](/img/start_visualization_dvclive.png)
 
@@ -96,8 +95,8 @@ these default values.
 In summary, DVC provides more than one option to fit visualization to your
 workflow:
 
-- DVC can generate HTML files that includes interactive plots from
-  data series in JSON, YAML, CSV, or TSV format.
+- DVC can generate HTML files that includes interactive plots from data series
+  in JSON, YAML, CSV, or TSV format.
 
 - DVC can keep track of image files produced as [plot outputs] from the
   training/evaluation scripts.
