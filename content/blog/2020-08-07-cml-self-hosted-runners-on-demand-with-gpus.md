@@ -94,7 +94,7 @@ $ docker run --name myrunner -d --gpus all \
     -e RUNNER_LABELS=cml,gpu \
     -e RUNNER_REPO=$my_repo_url \
     -e repo_token=$my_repo_token \
-    iterativeai/cml:0-dvc2-base1-gpu
+    iterativeai/cml:0-dvc2-base1-gpu runner
 ```
 
 where:
