@@ -136,7 +136,60 @@
         "label": "Experiments",
         "tutorials": {
           "katacoda": "https://katacoda.com/dvc/courses/get-started/experiments"
-        }
+        },
+        "children": [
+          {
+            "label": "Running Experiments",
+            "slug": "run-experiment",
+            "source": "run-experiment.md"
+          },
+          {
+            "label": "See Experiment Results",
+            "slug": "see-experiment-results",
+            "source": "see-experiment-results.md"
+          },
+          {
+            "label": "Hyperparameters and Reproduction",
+            "slug": "parameters",
+            "source": "parameters.md"
+          },
+          {
+            "label": "Comparing Experiments",
+            "slug": "comparing-experiments",
+            "source": "comparing-experiments.md"
+          },
+          {
+            "label": "Parallel Experiments",
+            "slug": "parallel-experiments",
+            "source": "parallel-experiments.md"
+          },
+          { "label": "Metrics", "slug": "metrics", "source": "metrics.md" },
+          {
+            "label": "Committing Experiments",
+            "slug": "committing-experiments",
+            "source": "committing-experiments.md"
+          },
+          {
+            "label": "Creating Plots from Outputs",
+            "slug": "creating-plots-from-outputs",
+            "source": "creating-plots-from-outputs.md"
+          },
+          {
+            "label": "Generate plots from Integrations",
+            "slug": "generate-plots-from-integrations",
+            "source": "generate-plots-from-integrations.md"
+          },
+          {
+            "label": "Tracking Plot Images",
+            "slug": "tracking-plot-images",
+            "source": "tracking-plot-images.md"
+          },
+          {
+            "label": "More information",
+            "slug": "link-to-guide",
+            "source": "link-to-guide.md"
+          }
+        ]
       }
     ]
   },
