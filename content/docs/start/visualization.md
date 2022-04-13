@@ -85,8 +85,8 @@ model.fit(
 ```
 
 With these two changes, we can see the plots showing the defined metrics in our
-model. You can see the HTML report with your browser in
-`training_metrics/index.html` file.
+model. You can see the report in `training_metrics/index.html`
+with your browser:
 
 ![dvclive](/img/start_visualization_dvclive.png)
 
