@@ -52,14 +52,14 @@ You can also set these options in a dialog format with
 
 </details>
 
-- run-experiment.md
-- see-experiment-results.md
-- parameters.md
-- comparing-experiments.md
-- parallel-experiments.md
-- metrics.md
-- committing-experiments.md
-- creating-plots-from-outputs.md
-- generate-plots-from-integrations.md
-- tracking-plot-images.md
-- link-to-guide.md
+- [**Running Experiments**](run-experiment):
+- [**See Experiment Results**](see-experiment-results):
+- [**Hyperparameters and Reproduction**](parameters):
+- [**Comparing Experiments**](comparing-experiments):
+- [**Parallel Experiments**](parallel-experiments):
+- [**Metrics**](metrics):
+- [**Committing Experiments**](committing-experiments):
+- [**Creating Plots from Outputs**](creating-plots-from-outputs):
+- [**Generate plots from Integrations**](generate-plots-from-integrations):
+- [**Tracking Plot Images**](tracking-plot-images):
+- [**More information**](link-to-guide):
