@@ -206,6 +206,12 @@ This is beyond the scope of this guide, but
 
 </admon>
 
+<admon type="tip">
+
+While we have achieved our goal of using DVC for our model storage, there are some other DVC features we could benefit from as well. We could define a reproducible pipeline to replace our manual `get_data.py` and `train.py` tasks. [Here you can find](https://dvc.org/doc/start/data-pipelines) more information on how to achieve this.
+
+</admon>
+
 # Conclusions
 
 As we saw in part 1 of this guide, we can use CML to automate a periodical
