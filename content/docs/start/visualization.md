@@ -98,8 +98,8 @@ these default values. Please refer to [DVClive documentation] for details.
 In summary, DVC provides more than one option to fit visualization to your
 workflow:
 
-- DVC can generate HTML files that includes interactive [Vega-Lite] plots, from
-  the data series in JSON, YAML, CSV, or TSV.
+- DVC can generate HTML files that includes interactive plots from
+  data series in JSON, YAML, CSV, or TSV format.
 
 - DVC can keep track of image files produced as plot outputs from the
   training/evaluation scripts.
