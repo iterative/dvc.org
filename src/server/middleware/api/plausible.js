@@ -1,7 +1,7 @@
 const { isProduction } = require('../../utils')
 
 require('isomorphic-fetch')
-const ScriptName = '/js/script.js'
+const ScriptName = '/pl/script.js'
 const Endpoint = '/pl/event'
 
 const ScriptWithoutExtension = ScriptName.replace('.js', '')
@@ -13,7 +13,8 @@ async function handlePlausibleRequest(req, res) {
 
     if (baseUri.endsWith(ScriptWithoutExtension)) {
       const response = await fetch(
-        'https://plausible.io/js/plausible.' + extensions.join('.')
+        'https://plausible.io/js/plausible.outbound-links.' +
+          extensions.join('.')
       )
       res.set({
         'content-type': response.headers.get('content-type')
