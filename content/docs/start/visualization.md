@@ -101,7 +101,7 @@ workflow:
 - DVC can generate HTML files that includes interactive plots from
   data series in JSON, YAML, CSV, or TSV format.
 
-- DVC can keep track of image files produced as plot outputs from the
+- DVC can keep track of image files produced as [plot outputs] from the
   training/evaluation scripts.
 
 - [DVCLive] integrations can produce plots automatically during training.
