@@ -167,13 +167,14 @@ jobs:
         run: |
           cml ci
           pip install -r requirements.txt
-          
+
           python get_data.py
           python train.py
 
-          # Connect to your DVC remote storage and push the model to there
-          dvc add model/random_forest.joblib # This automatically adds the model to your .gitignore
+          # This automatically adds the model to your .gitignore
+          dvc add model/random_forest.joblib
 
+          # Connect to your DVC remote storage and push the model to there
           dvc remote add -d -f myremote gdrive://${{ secrets.GOOGLE_DRIVE_URI }}
           dvc remote modify myremote gdrive_use_service_account true
 
@@ -186,7 +187,6 @@ jobs:
           cat model/metrics.txt > report.md
           cml publish model/confusion_matrix.png --md >> report.md
           cml send-comment --pr --update report.md
-
 ```
 
 And that's it! We have broadly the same set-up as outlined in part 1 of this
