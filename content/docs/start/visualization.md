@@ -15,7 +15,7 @@ try these yourself, please refer to the project. [README] about how to install.
 ### Creating plots from tabular data
 
 A useful plot to show the classification performance is the [confusion matrix].
-In order to produce it, DVC expects a CSV **plot file** in the form:
+In order to produce it, DVC expects a CSV **plots file** in the form:
 
 ```csv
 actual,predicted
