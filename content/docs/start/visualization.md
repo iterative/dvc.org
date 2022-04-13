@@ -13,7 +13,7 @@ these yourself, please refer to the project.
 [readme]:
   https://github.com/iterative/example-dvc-experiments/blob/main/README.md
 
-### Creating plots from text with DVC
+### Creating plots from tabular data
 
 A useful plot to show the classification performance is the confusion matrix. In
 order to produce it, DVC expects a CSV **plot file** in the form:
