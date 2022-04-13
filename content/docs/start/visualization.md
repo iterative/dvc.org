@@ -31,9 +31,9 @@ actual,predicted
   https://github.com/iterative/example-dvc-experiments/blob/main/src/train.py#L123
 [confusion matrix]: https://en.wikipedia.org/wiki/Confusion_matrix
 
-After running the experiment with `dvc exp run`, DVC will produce
-`plots/confusion.csv` file presenting the classifier performance and open it in
-the browser:
+Running the experiment with `dvc exp run` will produce
+`plots/confusion.csv`. Use `dvc plots show` to present it as an HTML
+file, and open it in the browser:
 
 ```dvc
 $ dvc plots show plots/confusion.csv --template confusion \
