@@ -104,8 +104,7 @@ workflow:
 - DVC can keep track of image files produced as plot outputs from the
   training/evaluation scripts.
 
-- DVC, with its [DVCLive] integration can produce plots automatically during
-  training.
+- [DVCLive] integrations can produce plots automatically during training.
 
 [experiments]: /doc/start/experiments
 [vega-lite]: https://vega.github.io/vega-lite/
