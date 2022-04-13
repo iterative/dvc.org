@@ -124,7 +124,7 @@ The other files created in `train.py` are still pushed to an experiment branch
 in GitHub. Afterwards a merge request is created.
 
 ```yaml
-name: CML-with-DVC
+name: CML with DVC
 on: # Here we use two triggers: manually and daily at 08:00
   workflow_dispatch:
   schedule:
@@ -133,9 +133,8 @@ jobs:
   deploy-runner:
     runs-on: ubuntu-latest
     steps:
-      - uses: iterative/setup-dvc@v1
-      - uses: iterative/setup-cml@v1
       - uses: actions/checkout@v2
+      - uses: iterative/setup-cml@v1
       - name: Deploy runner on EC2
         env:
           REPO_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
@@ -146,15 +145,21 @@ jobs:
               --cloud=aws \
               --cloud-region=eu-west \
               --cloud-type=t2.micro \
+              --labels=cml-runner \
               --single
   train-model:
     needs: deploy-runner
-    runs-on: [self-hosted]
+    runs-on: [self-hosted, cml-runner]
     timeout-minutes: 120 # 2h
-    container:
-      image: docker://iterativeai/cml:0-dvc2-base1
     steps:
       - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+      - uses: iterative/setup-cml@v1
       - name: Train model
         env:
           REPO_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
@@ -162,32 +167,26 @@ jobs:
         run: |
           cml ci
           pip install -r requirements.txt
+          
+          python get_data.py
           python train.py
 
           # Connect to your DVC remote storage and push the model to there
           dvc add model/random_forest.joblib # This automatically adds the model to your .gitignore
 
-          # GDRIVE_CREDENTIALS_DATA is not read automatically when using a service account
-          # Manually write it to creds.json and read that file
-          echo -E '${{ secrets.GDRIVE_CREDENTIALS_DATA }}' > creds.json
-
           dvc remote add -d -f myremote gdrive://${{ secrets.GOOGLE_DRIVE_URI }}
           dvc remote modify myremote gdrive_use_service_account true
-          dvc remote modify myremote --local gdrive_service_account_json_file_path creds.json
 
           dvc push
-
-          # Either do this or add the file to your .gitignore
-          # Just make sure not to push it to your repository
-          rm creds.json
 
           # Create pull request for the remaining files
           cml pr .
 
           # Create CML report
-          cat model/metrics.txt > model/report.md
-          cml publish model/confusion_matrix.png --md >> model/report.md
+          cat model/metrics.txt > report.md
+          cml publish model/confusion_matrix.png --md >> report.md
           cml send-comment --pr --update report.md
+
 ```
 
 And that's it! We have broadly the same set-up as outlined in part 1 of this
@@ -208,7 +207,11 @@ This is beyond the scope of this guide, but
 
 <admon type="tip">
 
-While we have achieved our goal of using DVC for our model storage, there are some other DVC features we could benefit from as well. We could define a reproducible pipeline to replace our manual `get_data.py` and `train.py` tasks. [Here you can find](https://dvc.org/doc/start/data-pipelines) more information on how to achieve this.
+While we have achieved our goal of using DVC for our model storage, there are
+some other DVC features we could benefit from as well. We could define a
+reproducible pipeline to replace our manual `get_data.py` and `train.py` tasks.
+[Here you can find](https://dvc.org/doc/start/data-pipelines) more information
+on how to achieve this.
 
 </admon>
 
