@@ -43,8 +43,8 @@
         "children": [
           {
             "label": "Adding Files",
-            "slug": "add-file",
-            "source": "add-file.md"
+            "slug": "add-files",
+            "source": "add-files.md"
           },
           {
             "label": "Upload and Share",
