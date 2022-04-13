@@ -91,9 +91,7 @@ with your browser:
 ![dvclive](/img/start_visualization_dvclive.png)
 
 DVCLive has other capabilities, like saving the model every epoch or modifying
-these default values. Please refer to [DVClive documentation] for details.
-
-[dvclive documentation]: /doc/dvclive/dvclive-with-dvc
+these default values.
 
 In summary, DVC provides more than one option to fit visualization to your
 workflow:
