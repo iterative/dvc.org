@@ -6,6 +6,8 @@ manage experiments.'
 
 # Get Started
 
+Welcome to DVC!
+
 Assuming DVC is already [installed](/doc/install), let's initialize it by
 running `dvc init` inside a Git project:
 
@@ -50,29 +52,22 @@ $ git commit -m "Initialize DVC"
 
 Now you're ready to DVC!
 
-DVC's features can be grouped into functional components. We'll explore them one
-by one in the next few pages:
+We grouped DVC's features into three interlinked trails. You can start from any
+of them suitable to your interests, and come back here to explore another one.
 
-- [**Data and model versioning**](/doc/start/data-and-model-versioning) (try
-  this next) is the base layer of DVC for large files, datasets, and machine
-  learning models. Use a regular Git workflow, but without storing large files
-  in the repo (think "Git for data"). Data is stored separately, which allows
-  for efficient sharing.
+- [**Data Management Trail**](/doc/start/data/) If you're looking for a solution
+  to version your large file, datasets, and machine learning models on top of
+  Git, follow this trail. It will introduce you to add files to DVC, store and
+  share them using cloud providers, how to add project-external data from URLs.
 
-- [**Data and model access**](/doc/start/data-and-model-access) shows how to use
-  data artifacts from outside of the project and how to import data artifacts
-  from another DVC project. This can help to download a specific version of an
-  ML model to a deployment server or import a model to another project.
+- [**Pipelines Trail**](/doc/start/pipelines/) If you're building ML models
+- with complex set of dependencies, and would like to track these dependencies
+- persistently, and reproduce your solutions whenever required, you can explore
+- this this trail. This trail will introduce how DVC pipelines can be used as a
+- project dependency management tool, and how you can leverage it to reduce
+- unnecessary retraining times.
 
-- [**Data pipelines**](/doc/start/data-pipelines) describe how models and other
-  data artifacts are built, and provide an efficient way to reproduce them.
-  Think "Makefiles for data and ML projects" done right.
-
-- [**Metrics, parameters, and plots**](/doc/start/metrics-parameters-plots) can
-  be attached to pipelines. These let you capture, navigate, and evaluate ML
-  projects without leaving Git. Think "Git for machine learning".
-
-- [**Experiments**](/doc/start/experiments) enable exploration, iteration, and
+- [**Experiments**](/doc/start/experiments/) enable exploration, iteration, and
   comparison across many ML experiments. Track your experiments with automatic
   versioning and checkpoint logging. Compare differences in parameters, metrics,
   code, and data. Apply, drop, roll back, resume, or share any experiment.
