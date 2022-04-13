@@ -13,7 +13,7 @@ descriptionLong: |
   provisions an AWS EC2 instance to retrain a model and save the output on
   a regular basis. This way we can prevent drift by ensuring that our model
   always uses the latest input data. In part 2 we expand upon the guide in part 1 by using a DVC remote to store our model. This allows for much larger models.
-picture: 2015-05-01/post-image.jpeg
+picture: 2022-04-15/saving-models-2-cover.jpeg
 # pictureComment: Some _Comment_ (supports _basic_ [Markdown](link))
 author: rob_dewit
 # commentsUrl: https://discuss.dvc.org/t/february-22-community-gems/1078
