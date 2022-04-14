@@ -157,7 +157,7 @@ resource "iterative_task" "tpi-examples-basic" {
 
   storage {
         workdir = "."
-        output = "results"
+        output = "shared"
   }
 
   script = <<-END
@@ -233,7 +233,7 @@ resource "iterative_task" "tpi-examples-gpu" {
 
   storage {
         workdir = "."
-        output = "results"
+        output = "shared"
   }
 
   script = <<-END
