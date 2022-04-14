@@ -12,7 +12,7 @@ try these yourself, please refer to the project. [README] about how to install.
 [readme]:
   https://github.com/iterative/example-dvc-experiments/blob/main/README.md
 
-### Creating plots from tabular data
+## Creating plots from tabular data
 
 A useful plot to show the classification performance is the [confusion matrix].
 In order to produce it, DVC expects a CSV **plots file** in the form:
@@ -37,7 +37,7 @@ Use `dvc plots show` to present it as an HTML file, and open it in the browser:
 ```dvc
 $ dvc plots show plots/confusion.csv --template confusion \
                                      -x actual -y predicted
-file:///Users/.../example-dvc-experiments/plots/confusion.json.html
+file:///.../example-dvc-experiments/plots/confusion.json.html
 ```
 
 ![confusion matrix](/img/start_visualization_confusion1.png)
@@ -105,4 +105,4 @@ workflow:
 
 [plot outputs]:
   /doc/user-guide/project-structure/pipelines-files#metrics-and-plots-outputs
-[dvclive]: https://dvc.org/doc/dvclive/dvclive-with-dvc
+[dvclive]: /doc/dvclive/dvclive-with-dvc
