@@ -174,7 +174,7 @@ you know you will need to in the near future, you're in luck!
 [**Zoumana Keita**](https://twitter.com/zoumana_keita_) shows you how to do just
 that
 [in this post](https://towardsdatascience.com/large-data-versioning-with-dvc-and-azure-blob-storage-a-complete-guide-b97344827c81)
-in [Toward's Data Science.](https://towarddatascience.com) He recently was
+in [Towards Data Science.](https://towardsdatascience.com) He recently was
 struggling with the same problem and team member,
 [David de la Iglesia Castro](https://twitter.com/daviddelachurch) came to the
 rescue on our [Discord Server.](https://discord.com/invite/dvwXA2N) Zoumana was
@@ -191,7 +191,7 @@ Blob Storage. Many thanks for this tutorial! 🙏🏼
 href="https://towardsdatascience.com/large-data-versioning-with-dvc-and-azure-blob-storage-a-complete-guide-b97344827c81"
 title="MLOps — Data And Model Versioning With DVC And Azure Blob Storage"
 description="Zoumana Keita's detailed tutorial on how to set up Azure Blob Storage with DVC"
-link="https://towarddatascience.com"
+link="https://towardsdatascience.com"
 image="/uploads/images/2022-04-14/zoumana-keita.png"/>
 
 ### Ahmed Abdullah: Perfect Way of Versioning Models & Training Data
