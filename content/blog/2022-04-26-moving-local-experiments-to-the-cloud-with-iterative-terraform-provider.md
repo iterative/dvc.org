@@ -155,7 +155,11 @@ resource "iterative_task" "tpi-examples-basic" {
   region    = "us-east-2"
   machine   = "l+k80"
 
-  workdir { input = "." }
+  storage {
+        workdir = "."
+        output = "results"
+  }
+
   script = <<-END
     #!/bin/bash
     sudo apt update
@@ -227,7 +231,11 @@ resource "iterative_task" "tpi-examples-gpu" {
   # see https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html for images
   image     = "ubuntu@898082745236:x86_64:Deep Learning AMI (Ubuntu 18.04) Version 54.0"
 
-  workdir { input = "." }
+  storage {
+        workdir = "."
+        output = "results"
+  }
+
   script = <<-END
     #!/bin/bash
     pip3 install -r requirements.txt
