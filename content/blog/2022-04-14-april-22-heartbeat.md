@@ -10,17 +10,17 @@ description: >
 descriptionLong: |
   This month you will find:
 
-    🧱 AI Infrastructure is becoming modular,
+    🧱 AI infrastructure is becoming modular,
 
     🔎 Distribution drift with Chip Huyen
     
     🥰 Tutorials and workflows from the Community,
 
-    🗣 IRL Events,
+    🗣 IRL events,
 
-    💻 Online Course(s) updates,
+    💻 Online course(s) updates,
 
-    🚀 Quebec becoming an Iterative Hub, and more!
+    🚀 Quebec becoming an Iterative hub, and more!
 picture: 2022-04-14/april-heartbeat-cover.png
 author: jeny_defigueiredo
 commentsUrl: https://discuss.dvc.org/t/april-22-hearbeat/1158
@@ -213,8 +213,8 @@ image="/uploads/images/2022-04-14/ahmed-abdullah.png"/>
 
 ## Conference News
 
-In real life, post-COVID (?) conferences are going on and we are excited to be
-able to see the Community in person again!
+In-person conferences are going on and we are excited to be able to see the
+Community in person again!
 
 - [**Gift Ojeabulu**](https://twitter.com/GiftOjeabulu_) presented at
   [Open Source Festival 2022](https://festival.oscafrica.org/) in Lagos, Nigeria
