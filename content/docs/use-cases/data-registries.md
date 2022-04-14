@@ -10,11 +10,10 @@ data science**.
 ![](/img/data-registry.png) _Data management middleware_
 
 We can build a <abbr>DVC project</abbr> dedicated to versioning _datasets_ (or
-data features, ML models, etc.). The
-repository contains the necessary metadata, as well as the entire change
-history. The data itself is stored in one or more [DVC remotes][remote storage].
-This is what we call a **data registry** -- data management _middleware_ between
-ML projects and cloud storage. Advantages:
+data features, ML models, etc.). The repository contains the necessary metadata,
+as well as the entire change history. The data itself is stored in one or more
+[DVC remotes][remote storage]. This is what we call a **data registry** -- data
+management _middleware_ between ML projects and cloud storage. Advantages:
 
 - **Reusability**: Reproduce and organize _feature stores_ with a simple CLI
   (`dvc get` and `dvc import` commands, similar to software package management
