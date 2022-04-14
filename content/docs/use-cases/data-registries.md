@@ -10,11 +10,11 @@ data science**.
 ![](/img/data-registry.png) _Data management middleware_
 
 We can build a <abbr>DVC project</abbr> dedicated to versioning _datasets_ (or
-data features, ML models, etc.). The repository would have all the metadata and
-change history for the data it tracks. We could see who changed what and when,
-and use pull requests to update data like we do with code. This is what we call
-a **data registry** — data management _middleware_ between ML projects and cloud
-storage.
+data features, [ML models](/doc/use-cases/model-registry), etc.). The repository
+would have all the metadata and change history for the data it tracks. We could
+see who changed what and when, and use pull requests to update data like we do
+with code. This is what we call a **data registry** — data management
+_middleware_ between ML projects and cloud storage.
 
 Advantages of data registries:
 
