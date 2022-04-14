@@ -76,7 +76,7 @@ Benefits of our approach include:
   Git workflows open the door to advanced
   [CI/CD](/doc/use-cases/ci-cd-for-machine-learning) tools (like
   [CML](https://cml.dev)), specialized patterns such as
-  [data registries](/doc/use-cases/data-registries), and other best practices.
+  [data registries](/doc/use-cases/data-registry), and other best practices.
 
 In summary, data science and ML are iterative processes where the lifecycles of
 data, models, and code happen at different paces. DVC helps you manage, and

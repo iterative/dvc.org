@@ -114,9 +114,9 @@ $ dvc get https://github.com/iterative/example-get-started model.pkl
 ## Example: List all files and directories in a data registry
 
 Let's imagine a DVC repo used as a
-[data registry](/doc/use-cases/data-registries#using-registries), structured
-with different datasets in separate directories. We can do this recursively,
-using `-R` option:
+[data registry](/doc/use-cases/data-registry#using-registries), structured with
+different datasets in separate directories. We can do this recursively, using
+`-R` option:
 
 ```dvc
 $ dvc list -R https://github.com/iterative/dataset-registry

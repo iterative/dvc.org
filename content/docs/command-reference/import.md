@@ -247,8 +247,8 @@ outs:
     cache: true
 ```
 
-See a full explanation in our [Data Registries](/doc/use-cases/data-registries)
-use case.
+See a full explanation in our [Data Registry](/doc/use-cases/data-registry) use
+case.
 
 ## Example: Importing from any Git repository
 
