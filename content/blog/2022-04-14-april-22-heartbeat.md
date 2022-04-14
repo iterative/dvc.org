@@ -112,7 +112,7 @@ correct your model with [Evidently AI](https://evidentlyai.com/) and DVC, see
 
 ![Preventing Stale Models in Production](/uploads/images/2022-04-14/stale-model-cover.png '=800')
 _Preventing Stale Models in Production
-([Source link:](https://dvc.org/blog/stale-models))_
+([Source link](https://dvc.org/blog/stale-models))_
 
 ### MLOps is the Solution for Machine Learning and AI Projects
 
@@ -127,7 +127,7 @@ providing lots to ponder!
 
 ![Machine Learning Operations](/uploads/images/2022-04-14/Machine-Learning-Operations.jpeg '=800')
 _Machine Learning Operations
-([Source link:](https://xpresso.ai/resources/blogs/mlops-is-the-solution-for-machine-learning-and-ai-projects/?utm_source=rss&utm_medium=rss&utm_campaign=mlops-is-the-solution-for-machine-learning-and-ai-projects))_
+([Source link](https://xpresso.ai/resources/blogs/mlops-is-the-solution-for-machine-learning-and-ai-projects/?utm_source=rss&utm_medium=rss&utm_campaign=mlops-is-the-solution-for-machine-learning-and-ai-projects))_
 
 ## Community News
 
