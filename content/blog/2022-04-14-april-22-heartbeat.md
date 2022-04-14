@@ -224,7 +224,7 @@ able to see the Community in person again!
 - [**Antoine Toubhans**](https://twitter.com/AntoineToubhans) presented
   _Flexible ML Experiment Tracking System for Python Coders with DVC and
   Streamlit_ at PyCon Berlin
-  [[more info](https://2022.pycon.de/program/WADNGC/)]
+  [[repo, slides](https://github.com/sicara/pycon-2022-dvc-streamlit)]
 - [**David de la Castro Iglesia**](https://twitter.com/daviddelachurch)
   presented _Making MLOps Uncool Again_ at PyCon Berlin
   [[repo](https://github.com/daavoo/workshop-uncool-mlops)]
