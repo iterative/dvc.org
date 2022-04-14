@@ -41,7 +41,7 @@ async function handlePlausibleRequest(req, res) {
       res.set({
         'content-type': response.headers.get('content-type')
       })
-      return response.body.pipe(res)
+      return res.status(response.status).send(await response.text())
     }
     res.status(404).end()
   } catch (error) {
