@@ -14630,10 +14630,10 @@ repeat-string@^1.0.0, repeat-string@^1.5.4, repeat-string@^1.6.1:
   resolved "https://registry.npmjs.org/repeat-string/-/repeat-string-1.6.1.tgz"
   integrity sha1-jcrkcOHIirwtYA//Sndihtp15jc=
 
-repo-link-check@^0.8.0:
-  version "0.8.0"
-  resolved "https://registry.npmjs.org/repo-link-check/-/repo-link-check-0.8.0.tgz"
-  integrity sha512-v9i/go/athEugxbFocyVIgRZeKodGlTYrw1gywKQBNCSuMcmSBONh2/BCFQAe8DMa68+c2tvKixyw9LOhn7vKQ==
+repo-link-check@^0.11.0:
+  version "0.11.0"
+  resolved "https://registry.yarnpkg.com/repo-link-check/-/repo-link-check-0.11.0.tgz#07c62b99df21f83dc5bacca55dfc5677dc920fe1"
+  integrity sha512-CffKg4SKFd53TuxuOBjavjsCoYlX6/E0TuELKgljhZ+8lZs9Lm7Lnv+f9sxte0RuaEvY1WKjLYy6yLL/2pQV+A==
   dependencies:
     bottleneck "^2.19.5"
     commander "^6.1.0"
