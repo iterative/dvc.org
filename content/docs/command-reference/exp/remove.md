@@ -5,7 +5,8 @@ Delete specific experiments from the <abbr>project</abbr>.
 ## Synopsis
 
 ```usage
-usage: dvc exp remove [-h] [-q | -v] [--queue | -A | -g <git_remote>]
+usage: dvc exp remove [-h] [-q | -v] [-A] [--rev <commit>] [-n <num>]
+                      [--queue | -g <git_remote>]
                       [<name> [<name> ...]]
 
 positional arguments:
@@ -28,6 +29,13 @@ With `--queue`, the list of experiments awaiting execution is cleared instead.
 
 - `-A`, `--all` - remove all experiments that have been run. Use `--queue` to
   remove queued ones.
+
+- `--rev <commit>` - remove experiments derived from the specified `<commit>` as
+  baseline.
+
+- `-n <num>`, `--num <num>` - show experiments from the last `num` commits
+  (first parents) starting from the `--rev` baseline. Give a negative value to
+  include all first-parent commits (similar to `git log -n`).
 
 - `-g`, `--git-remote` - Name or URL of the Git remote to remove the experiment
   from
