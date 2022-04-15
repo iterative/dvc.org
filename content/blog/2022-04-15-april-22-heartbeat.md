@@ -1,6 +1,6 @@
 ---
 title: April '22 Heartbeat
-date: 2022-04-14
+date: 2022-04-15
 description: >
   Monthly updates are here! You will find the future of AI Infrastruture is
   modular, articles on distribution drift and how to solve it, the usual great
@@ -21,7 +21,7 @@ descriptionLong: |
     💻 Online course(s) updates,
 
     🚀 Quebec becoming an Iterative hub, and more!
-picture: 2022-04-14/april-heartbeat-cover.png
+picture: 2022-04-15/april-heartbeat-cover.png
 author: jeny_defigueiredo
 commentsUrl: https://discuss.dvc.org/t/april-22-hearbeat/1158
 tags:
@@ -29,6 +29,7 @@ tags:
   - DVC
   - CML
   - Git
+  - Modular Infrastructure
   - Chip Huyen
   - Distribution drift
   - AI Environments
@@ -49,7 +50,7 @@ world!
 <summary>✨Image Inspo✨</summary>
 </details>
 
-Welcome to April! We have lots of ingest from the AI World and the Community so
+Welcome to April! We have lots to ingest from the AI World and the Community so
 let's get started with all the building blocks for success!
 
 ## AI News
@@ -73,7 +74,7 @@ flexible approach as they fine-tune their advancing and ever-growing processes.
 > today’s more robust ML teams with the ability to flexibly run highly-custom
 > and performant ML workloads.
 
-![Clayton Christensen's Modularity Theory](/uploads/images/2022-04-14/clayton-christensen.png '=800')
+![Clayton Christensen's Modularity Theory](/uploads/images/2022-04-15/clayton-christensen.png '=800')
 _Clayton Christensen's Modularity Theory
 ([Source link](https://medium.com/sapphire-ventures-perspectives/the-future-of-ai-infrastructure-is-becoming-modular-why-best-of-breed-mlops-solutions-are-taking-fd85c6ca8bcf))_
 
@@ -104,7 +105,7 @@ the term _observability_ over _monitoring_ is discussed because it is a stronger
 concept for determining what went wrong with the internal states of a system by
 observing the external outputs.
 
-![Drift Detection Algorithms](/uploads/images/2022-04-14/chip-huyen.png '=800')
+![Drift Detection Algorithms](/uploads/images/2022-04-15/chip-huyen.png '=800')
 _Drift detection algorithms by open-source package alibi-detect
 ([Source link](https://huyenchip.com/2022/02/07/data-distribution-shifts-and-monitoring.html#monitoring-toolbox))_
 
@@ -113,7 +114,7 @@ correct your model with [Evidently AI](https://evidentlyai.com/) and DVC, see
 [**Milecia McGregor's**](https://twitter.com/FlippedCoding) latest post on
 [Preventing Stale Models in Production!](https://dvc.org/blog/stale-models)
 
-![Preventing Stale Models in Production](/uploads/images/2022-04-14/stale-model-cover.png '=800')
+![Preventing Stale Models in Production](/uploads/images/2022-04-15/stale-model-cover.png '=800')
 _Preventing Stale Models in Production
 ([Source link](https://dvc.org/blog/stale-models))_
 
@@ -128,7 +129,7 @@ considerably more processes that keep and maintain a model in production over
 time. You can see all of these things highlighted in their image below,
 providing lots to ponder!
 
-![Machine Learning Operations](/uploads/images/2022-04-14/Machine-Learning-Operations.jpeg '=800')
+![Machine Learning Operations](/uploads/images/2022-04-15/Machine-Learning-Operations.jpeg '=800')
 _Machine Learning Operations
 ([Source link](https://xpresso.ai/resources/blogs/mlops-is-the-solution-for-machine-learning-and-ai-projects/?utm_source=rss&utm_medium=rss&utm_campaign=mlops-is-the-solution-for-machine-learning-and-ai-projects))_
 
@@ -136,7 +137,7 @@ _Machine Learning Operations
 
 ### Kaushik Shakkari: The three environments for AI Professionals — Research, Development, and Production
 
-![The three environments for AI Professionals - Research, Development, and Production](/uploads/images/2022-04-14/kaushik-shakkari.png 'The three environments for AI Professional - Research, Development, and Production :wrap-left ==300')
+![The three environments for AI Professionals - Research, Development, and Production](/uploads/images/2022-04-15/kaushik-shakkari.png 'The three environments for AI Professional - Research, Development, and Production :wrap-left ==300')
 If your head is spinning with all the ample facets of the MLOps world as
 outlined in xpresso.ai's diagram above and where you fit, or in the AI world in
 general, [**Kaushik Shakkari**](https://www.linkedin.com/in/kaushik-shakkari/)
@@ -150,7 +151,7 @@ determine a pathway for their career.
 
 ### Yashaswi Nayak: Continuous Machine Learning - An Introduction to CML (Iterative.ai)
 
-![Continuous Machine Learning - An Introduction to CML](/uploads/images/2022-04-14/yashaswi-nayak.png 'Continuous Machine Learning - An Introduction to CML :wrap-right ==300')
+![Continuous Machine Learning - An Introduction to CML](/uploads/images/2022-04-15/yashaswi-nayak.png 'Continuous Machine Learning - An Introduction to CML :wrap-right ==300')
 [**Yahaswi Nayak**](https://twitter.com/YashaswiNayak) writes
 [a wonderful guide](https://towardsdatascience.com/continuous-machine-learning-e1ffb847b8da)
 for data scientists and engineers, filled with great story-telling and fun
@@ -166,7 +167,7 @@ workflow. Finally, he lists a number of use cases for readers to try out with
 CML. We'd love to see some Community members write about some of these use cases
 that they've put into action!
 
-![Continuous Machine Learning](/uploads/images/2022-04-14/cml-workflow.jpeg '=800')
+![Continuous Machine Learning](/uploads/images/2022-04-15/cml-workflow.jpeg '=800')
 _CML workflow
 ([Source link](https://towardsdatascience.com/continuous-machine-learning-e1ffb847b8da))_
 
@@ -195,7 +196,7 @@ href="https://towardsdatascience.com/large-data-versioning-with-dvc-and-azure-bl
 title="MLOps — Data And Model Versioning With DVC And Azure Blob Storage"
 description="Zoumana Keita's detailed tutorial on how to set up Azure Blob Storage with DVC"
 link="https://towardsdatascience.com"
-image="/uploads/images/2022-04-14/zoumana-keita.png"/>
+image="/uploads/images/2022-04-15/zoumana-keita.png"/>
 
 ### Ahmed Abdullah: Perfect Way of Versioning Models & Training Data
 
@@ -212,7 +213,7 @@ href="https://medium.com/red-buffer/perfect-way-of-versioning-models-training-da
 title="Perfect Way of Versioning Models & Training Data"
 description="Ahmed Abdullah's detailed tutorial on using DVC for versioning data, models with a Google Drive"
 link="https://medium.com"
-image="/uploads/images/2022-04-14/ahmed-abdullah.png"/>
+image="/uploads/images/2022-04-15/ahmed-abdullah.png"/>
 
 ## Conference News
 
