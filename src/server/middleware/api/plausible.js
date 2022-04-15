@@ -30,23 +30,22 @@ async function handlePlausibleScript(req, res) {
 async function handlePlausibleRequest(req, res) {
   try {
     const pathname = req.path
+    let { body } = req
+    if (typeof body === 'object') {
+      body = JSON.stringify(body)
+    }
     if (pathname.endsWith(Endpoint)) {
       const response = await fetch('https://plausible.io/api/event', {
         method: req.method,
-        body: JSON.stringify(req.body),
+        body,
         headers: {
           'content-type': 'application/json'
         }
       })
-      if (response.ok) {
-        res.set({
-          'content-type': response.headers.get('content-type')
-        })
-        return res.status(response.status).send(await response.text())
-      } else {
-        if (!isProduction) console.error(error)
-        return res.status(500).end()
-      }
+      res.set({
+        'content-type': response.headers.get('content-type')
+      })
+      return res.status(response.status).send(await response.text())
     }
     res.status(404).end()
   } catch (error) {
