@@ -1,0 +1,124 @@
+---
+title: April '22 Community Gems
+date: 2022-04-26
+description: >
+  A roundup of technical Q&A's from the DVC and CML community. This month: CML
+  updates, working with multiple datasets, using DVC stages, and more.
+descriptionLong: >
+  A roundup of technical Q&A's from the DVC and CML community. This month: CML
+  updates, working with multiple datasets, using DVC stages, and more.
+picture: 2022-04-326/apr-comm-gems.png
+author: milecia_mcgregor
+commentsUrl:
+tags:
+  - CML
+  - DVC Stages
+  - DVC Remotes
+  - Community
+---
+
+### [When I run `dvc repro` on a stage, does it automatically push any outputs to my remote?](https://discord.com/channels/485586884165107732/563406153334128681/953616587523498025)
+
+Great question from @tina_rey!
+
+The `dvc repro` command doesn't automatically push any outputs or data to your
+remote. The outputs are stored in the cache until you run `dvc push`, which then
+pushes them from your cache to your remote.
+
+### [Is `dvc dag` based on `deps` and `outs`, so that a stage that depends on the output of another stage will always be executed after the former has finished?](https://discord.com/channels/485586884165107732/563406153334128681/956113493155799070)
+
+This is a good question from @johnysku!
+
+That is correct! If the pipelines are independent or the stages are independent,
+they may run in any order. Without explicit dependency linkage, stages could be
+executed in an unexpected order.
+
+One way around this is by outputing some kind of placeholder file when all a
+stage is finished and make that the dependency that triggers the next stage.
+
+<!-- TODO: add stage examples and dvc dag outputs -->
+
+### [If I want to use the `foreach` utility in `dvc repro`, is there a way I can use glob patterns to create the list DVC needs to iterate over?](https://discord.com/channels/485586884165107732/563406153334128681/956241424150577233)
+
+Another interesting question from @copah!
+
+If you have `mystage` which uses `foreach`, you can do `dvc repro` to `mystage`
+to iterate over every `mystage` stage.
+
+<!-- TODO: add stage examples for the foreach -->
+
+### [How does DVC handle files that have been deleted from remote storage?](https://discord.com/channels/485586884165107732/563406153334128681/956254582676258866)
+
+Really good question from @Meme Philosopher!
+
+DVC will fail when you try to pull files that have been deleted from the remote
+and notify you that those files are missing in remote storage.
+
+### [Can I separate CML running from GitHub actions VM to work with GCP or AWS so training and testing are in these cloud environments?](https://discord.com/channels/485586884165107732/728693131557732403/954316332457947169)
+
+Thanks for the question @Atsu!
+
+This is supported out-of-the-box! Here's how it works:
+
+1. GitHub action launches "self-hosted" GCP or AWS using
+   `cml runner --reuse --labels=cml`
+2. GitHub action runs the rest of the workflow on the "self-hosted" runner using
+   `runs-on: [self-hosted, cml]` and `timeout-minutes: 4320`
+3. If GitHub action is about to timeout, CML will restart the workflow.
+
+You can follow along with
+[this doc](https://cml.dev/doc/self-hosted-runners?tab=GitHub#allocating-cloud-compute-resources-with-cml)
+to get started.
+
+The key is requesting GitHub's maximum `timeout-minutes: 4320`. This signals to
+CML to restart the workflow just before timeout. You'll also have to write your
+code to cache results so that the restarted workflow will use previous results
+(e.g. use
+https://dvc.org/doc/user-guide/experiment-management/checkpoints#caching-checkpoints
+and https://github.com/iterative/dvc/issues/6823)
+
+### [When running an experiment from the web interface with DVC, is there any way to get the new metrics to show on the commit created by Iterative Studio for the experiment?](https://discord.com/channels/485586884165107732/841856466897469441/957931058639306772)
+
+Awesome question about Studio from @Benjamin-Etheredge!
+
+In order to show the experiment results in Studio, you would have to commit and
+push the results as part of your CI (continuous integration) action. Here's an
+[example GitHub action script](https://github.com/iterative/demo-fashion-mnist/blob/main/.github/workflows/cml.yaml)
+that does this.
+
+We do understand that it is not ideal that there are 2 commits, one with your
+changes and one with the results. We have been thinking about how this can be
+improved and it would be great to hear if you have
+[any thoughts/ideas](https://github.com/iterative/studio-support/)!
+
+### [Is there a way to get DVC to import from a private repository?](https://discord.com/channels/485586884165107732/485596304961962003/964204106824695868)
+
+Good question from @qubvel!
+
+You can use SSH to handle this and run the following command:
+
+```dvc
+$ dvc import git@gitlab.com:<reposiotry location> <data_path>
+```
+
+### [If I use a local remote and a shared cache, will the data be symlinked from the remote to the cache?](https://discord.com/channels/485586884165107732/485596304961962003/963768504987815987)
+
+Very interesting question from @cajoek!
+
+The data will _not_ be symlinked from the remote to the cache.
+
+Sometimes we can treat cache as something temporary so a lot of data that will
+never be used can get there from failed experiments, etc. In this case having a
+local remote to keep track of important data for important versions of your
+project would be good.
+
+That way, later when your cache is too big and the project takes up too much
+space, you can remove `.dvc/cache` and download latest important version from
+remote.
+
+---
+
+https://media.giphy.com/media/f8QPB1rgHbwhcD2Jd6/giphy.gif
+
+[Join us in Discord](https://discord.com/invite/dvwXA2N) to get all your DVC and
+CML questions answered!
