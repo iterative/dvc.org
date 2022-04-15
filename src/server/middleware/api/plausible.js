@@ -38,10 +38,15 @@ async function handlePlausibleRequest(req, res) {
           'content-type': 'application/json'
         }
       })
-      res.set({
-        'content-type': response.headers.get('content-type')
-      })
-      return res.status(response.status).send(await response.text())
+      if (response.ok) {
+        res.set({
+          'content-type': response.headers.get('content-type')
+        })
+        return res.status(response.status).send(await response.text())
+      } else {
+        if (!isProduction) console.error(error)
+        return res.status(500).end()
+      }
     }
     res.status(404).end()
   } catch (error) {
