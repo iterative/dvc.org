@@ -49,6 +49,9 @@ world!
 <summary>✨Image Inspo✨</summary>
 </details>
 
+Welcome to April! We have lots of ingest from the AI World and the Community so
+let's get started with all the building blocks for success!
+
 ## AI News
 
 https://media.giphy.com/media/l0JMrPWRQkTeg3jjO/giphy.gif
@@ -300,7 +303,7 @@ of an adrenaline junky with "hobbies" like skydiving, paragliding, and
 motorcycles. Welcome, Daniel!
 
 [**Maxim Aginsky**](https://www.linkedin.com/in/maximaginsky/) joins the team as
-a Senior Product Manager from Montreal, Canada, marking our 4th employee from
+a Senior Product Designer from Montreal, Canada, marking our 4th employee from
 the Province of Quebec! Maxim has worn many hats over the years working on
 Product Development and most recently was the Director of Design for a Montreal
 Fintech company. You can [explore his portfolio here.](https://arrowww.space/)
