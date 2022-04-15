@@ -74,7 +74,7 @@ that cause subtle bugs.
 By adding stages to the pipeline, we define a [graph] where the nodes are stages
 and the edges are dependency relationships. The final topology of the graph
 should be a [Directed Acyclic Graph]. We know why it's directed, stage A depends
-to stage B is different from stage B depends to stage A. But why it should be
+on stage B is different from stage B depends on stage A. But why it should be
 _acyclic_?
 
 The pipeline graph shouldn't contain any cycles in the form
