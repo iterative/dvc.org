@@ -117,7 +117,11 @@ const DefaultSEO: React.FC<IDefaultSEOProps> = ({ pathname }) => {
         }
       ]}
     >
-      <script defer data-domain="dvc.org" src="/api/pl/script.js"></script>
+      <script
+        defer
+        data-domain="dvc.org"
+        src="/api/pl/script.outbound-links.js"
+      ></script>
     </Helmet>
   )
 }
