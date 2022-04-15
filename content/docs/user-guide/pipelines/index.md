@@ -71,13 +71,47 @@ that cause subtle bugs.
 
 ## Directed-Acyclic Graph (DAG)
 
-- Why?
-- How?
+By adding stages to the pipeline, we define a [graph] where the nodes are stages
+and the edges are dependency relationships. The final topology of the graph
+should be a [Directed Acyclic Graph]. We know why it's directed, stage A depends
+to stage B is different from stage B depends to stage A. But why it should be
+_acyclic_?
+
+The pipeline graph shouldn't contain any cycles in the form
+`A depends on B depends on C depends on A`. Otherwise, invalidating one of the
+stages causes pipeline to run indefinitely. If we invalidate `B` in this
+example, it will cause `A` to be run, and as `C` depends on `A`, it will be
+invalidated and run too. Finally, as `B` depends on `C`, it will need be
+invalidated again. It never ends, it's an infinite loop.
+
+Because of this, DVC checks the stage dependencies for an existence of a cycle
+in the graph, and ensures that the graph is a [DAG].
+
+If you want to visualize the graph yourself, you can use `dvc dag` command. It
+outputs a text representation of the stages by default.
+
+```dvc
+$ dvc dag
+```
+
+TODO: output of `dvc dag example`
+
+It can also output the graph in DOT format, that you can supply to `dot` to get
+an image.
+
+```dvc
+$ dvc dag --dot | dot -Tpng pipeline.png
+```
+
+TODO: output of `dvc dag --dot`
+
+ASK: Tell `dvc dag --output` here or skip it?
 
 <admon type="warning">
 DVC assumes the command you specify in a stage changes the outputs you specify.
 Otherwise, the stage may never be validated and the pipeline will always run.
 </admon>
+
 ## Dependencies
 
 - Why?
