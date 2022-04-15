@@ -2,10 +2,10 @@
 
 A **model registry** is a central catalog for data artifacts produced in
 multiple data science projects. Models can be discovered, audited, shared,
-tested, and deployed from here. DVC enables these features on the Git ecosystem,
-reducing friction between development and operations. Other tools from
-[Iterative](https://iterative.ai/) provide more advanced features and better
-usability.
+tested, and deployed from here. DVC works on top of Git to enable these
+capabilities on your existing ecosystem. And other tools from
+[Iterative](https://iterative.ai/) can provide further advanced features and
+better usability as well.
 
 ![](/img/ml_model_registry_placement.jpg) _A common placement for model
 registries is between development and applications. See also [Data Registries]._
