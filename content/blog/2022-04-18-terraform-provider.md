@@ -1,5 +1,5 @@
 ---
-title: Machine Learning Workloads with Iterative Provider for Terraform
+title: Machine Learning in the cloud with Terraform Provider Iterative
 date: 2022-04-18
 description: >
   Today we introduce resource orchestration for your machine learning
@@ -27,8 +27,8 @@ machines, setting up environments and synchronizing data. For teams that want to
 leverage spot instances, the setup becomes even more complex - they need to make
 sure the training progress is not lost during spot instance recovery. This is
 time-consuming, and requires expertise in both DevOps and Machine Learning. On
-top of that, the costs of training in a cloud environment can be high due to not
-only the need for specific hardware, but also individual responsibility to shut
+top of that, the costs of training in a cloud environment can be high due to
+the need for specific hardware and the individual responsibility to shut
 down instances when training is complete.
 
 To address the specific needs of machine learning teams, we have built the
@@ -53,13 +53,8 @@ the `iterative_task` resource:
 
 ```hcl
 terraform {
-  required_providers {
-    iterative = {
-      source = "iterative/iterative"
-    }
-  }
+  required_providers { iterative = { source = "iterative/iterative" } }
 }
-
 provider "iterative" {}
 
 resource "iterative_task" "example" {
@@ -67,18 +62,17 @@ resource "iterative_task" "example" {
   region  = "us-east-2"
   machine = "l+k80"
 
-  script = <<-END
-    #!/bin/bash
-    sudo apt update
-    sudo apt install -y python3-pip
-    pip3 install -r requirements.txt
-    python3 src/train.py
-  END
-
   storage {
     workdir = "."
     output  = "results"
   }
+  script = <<-END
+    #!/bin/bash
+    sudo apt-get update -q
+    sudo apt-get install -yq python3-pip
+    pip3 install -r requirements.txt
+    python3 src/train.py
+  END
 }
 ```
 
