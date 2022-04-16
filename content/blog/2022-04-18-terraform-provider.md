@@ -27,9 +27,9 @@ machines, setting up environments and synchronizing data. For teams that want to
 leverage spot instances, the setup becomes even more complex - they need to make
 sure the training progress is not lost during spot instance recovery. This is
 time-consuming, and requires expertise in both DevOps and Machine Learning. On
-top of that, the costs of training in a cloud environment can be high due to
-the need for specific hardware and the individual responsibility to shut
-down instances when training is complete.
+top of that, the costs of training in a cloud environment can be high due to the
+need for specific hardware and the individual responsibility to shut down
+instances when training is complete.
 
 To address the specific needs of machine learning teams, we have built the
 Iterative Provider (TPI). TPI is an open-source tool extending the functionality
