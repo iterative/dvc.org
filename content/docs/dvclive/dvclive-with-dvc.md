@@ -14,6 +14,13 @@ ways:
 
 We will refer to a training script (`train.py`) already using `dvclive`:
 
+<admon type="tip">
+
+If you use one of the supported [ML Frameworks](/doc/dvclive/ml-frameworks), you
+can jump to its corresponding page to find an example usage.
+
+</admon>
+
 ```python
 # train.py
 
@@ -46,7 +53,7 @@ python train.py
 <admon type="exclamation">
 
 Note that the paths indicated in the `metrics` and `plots` options match the
-`path` passed to `Live()` in the Python code.
+`path` passed to `Live()` in the Python code (`"training_metrics"`).
 
 </admon>
 

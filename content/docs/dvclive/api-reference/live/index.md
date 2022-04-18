@@ -40,10 +40,10 @@ other metadata.
   [outputs](/doc/dvclive/get-started#outputs).
 
 - `summary_path` - `{dir}.json`. Location of the
-  [summary](/doc/dvclive/api-reference/log##description).
+  [summary](/doc/dvclive/api-reference/live/log#description).
 
 - `html_path` - `{dir}/report.html`. Location of the
-  [html report](/doc/dvclive/api-reference/make_report##description).
+  [html report](/doc/dvclive/api-reference/live/make_report#description).
 
 ## Parameters
 
