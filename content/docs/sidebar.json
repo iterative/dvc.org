@@ -583,7 +583,8 @@
           },
           "teams",
           "account-management",
-          "install-github-app"
+          "install-github-app",
+          "connect-custom-gitlab-server"
         ]
       },
       "troubleshooting"
