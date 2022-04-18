@@ -3,15 +3,50 @@
 To create a new view, follow these steps.
 
 1. Sign in to your [Iterative Studio](https://studio.iterative.ai/) dashboard
-   using GitHub, GitLab or Bitbucket.
+   using your GitHub.com, GitLab.com or Bitbucket.org account, or your email
+   address.
+
+   <admon type="info">
+
+   When you sign up with your email address, Studio will send you a verification
+   email before you can login.
+
+   </admon>
 
 2. Click on `Add a View`. All the organizations that you have access to will be
    listed.
+
+> If you do not see your desired organizations or Git repositories, make sure
+> that
+> [the connection to your Git server has been set up](/doc/studio/user-guide/account-management#git-integrations).
 
 > To create views from your GitHub repositories, you must install the Iterative
 > Studio GitHub app. Refer to the section on
 > [GitHub app installation](/doc/studio/user-guide/install-github-app) for more
 > details.
+
+> To create views from repositories on your self-hosted GitLab server, you must
+> first add a connection to this server and create a team. Refer to the section
+> on
+> [self-hosted GitLab server support](/doc/studio/user-guide/connect-custom-gitlab-server)
+> for more details.
+
+<admon type="info">
+
+If you do not see your desired organizations or Git repositories, make sure that
+[the connection to your Git server has been set up](/doc/studio/user-guide/account-management#git-integrations).
+
+To create views from your GitHub repositories, you must install the Iterative
+Studio GitHub app. Refer to the section on
+[GitHub app installation](/doc/studio/user-guide/install-github-app) for more
+details.
+
+To create views from repositories on your self-hosted GitLab server, you must
+first add a connection to this server and create a team. Refer to the section on
+[self-hosted GitLab server support](/doc/studio/user-guide/install-github-app)
+for more details.
+
+</admon>
 
 3. Open the organization whose repository you want to connect to. You can also
    use the search bar to directly look for a repository.
