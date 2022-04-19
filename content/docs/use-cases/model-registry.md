@@ -1,11 +1,11 @@
 # Machine Learning Model Registries
 
 A **model registry** is a central catalog for data artifacts produced in
-multiple data science projects. Models can be discovered, audited, shared,
-tested, and deployed from here. DVC works on top of Git to enable these
-capabilities on your existing ecosystem. And other tools from
-[Iterative](https://iterative.ai/) can provide further advanced features and
-better usability as well.
+multiple data science projects. Different models can be discovered, audited,
+shared, tested, and deployed from here. DVC works on top of Git to enable these
+capabilities on your existing ecosystem! And other tools from
+[Iterative](https://iterative.ai/) provide further advanced features and better
+usability.
 
 ![](/img/ml_model_registry_placement.jpg) _A common placement for model
 registries is between development and applications. See also [Data Registries]._
@@ -17,8 +17,8 @@ DVC model registries give your team key collaborative capabilities:
 - Store, organize, and track the [versions] of different models effectively.
 - Full data provenance and lineage trails guarantee that your modeling is
   reproducible.
-- Share and control access to early-stage [experiments] and production-ready
-  models alike.
+- Share and control access to any data artifact, whether these are early-stage
+  [experiments] or production-ready models.
 - Save performance [metrics and plots] to quickly evaluate and compare models.
 - A platform to export, integrate, deploy, or roll-back published models
 
