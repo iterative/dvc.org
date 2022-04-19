@@ -37,11 +37,10 @@ model files stored remotely are reused without copying them, so building the
 registry is fast. A connection to the original projects is preserved, so you can
 always retrieve full lineage and provenance information.
 
-Distributed DVC repos and managed storage are already great for [sharing] data
-and models. And getting your models from the registry to production is also
-properly tooled: deploy manually with the `dvc` [CLI], integrate with code using
-DVC's Python [API], or even automate their training and delivery with [CI/CD for
-ML][cml-dvc].
+DVC repos are already great for [sharing] data and models. Now you also have
+proper tools to get models from the registry to production: deploy manually with
+the `dvc` [CLI], integrate with code using DVC's Python [API], or even automate
+their training and delivery with [CI/CD for ML][cml-dvc].
 
 [modeling process]: doc/start/data-pipelines
 [versions]: /doc/use-cases/versioning-data-and-model-files
