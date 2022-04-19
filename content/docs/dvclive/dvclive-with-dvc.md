@@ -46,7 +46,7 @@ $ dvc stage add \
 --name train \
 --deps train.py \
 --metrics-no-cache training_metrics.json \
---plots training_metrics/scalars \
+--plots-no-cache training_metrics/scalars \
 python train.py
 ```
 
@@ -70,7 +70,8 @@ stages:
       - training_metrics.json:
           cache: false
     plots:
-      - training_metrics/scalars
+      - training_metrics/scalars:
+          cache: false
 ```
 
 Run the training with `dvc repro` or `dvc exp run`:
