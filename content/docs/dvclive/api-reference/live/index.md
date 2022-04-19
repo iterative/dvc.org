@@ -64,10 +64,10 @@ other metadata.
   </admon>
 
 - `report` - If `html`, DVCLive will call `Live.make_report()` on each step
-  update . _Default_: `html`.
+  update. _Default_: `html`.
 
 - `auto_open` - If `True`, on the first `Live.make_report()` call, DVCLive will
-  automatically open `html_path` in a browser. _Default_: `True`.
+  automatically open `html_path` in a browser. _Default_: `False`.
 
 ## Methods
 
