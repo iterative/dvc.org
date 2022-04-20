@@ -55,10 +55,10 @@ project.][misclassified-example-code]
   https://github.com/iterative/example-dvc-experiments/blob/48b1e5078c957f71674c00f416290eaa3b20b559/src/util.py#L49
 
 ```dvc
-$ dvc plots show plots/confusion.png
+$ dvc plots show plots/misclassified.png
 ```
 
-![confusion image](/img/start_visualization_confusion2.png)
+![confusion image](/img/start_visualization_misclassification.png)
 
 ## Autogenerating plots from deep learning code
 
