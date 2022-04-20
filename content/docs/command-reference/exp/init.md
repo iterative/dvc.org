@@ -11,7 +11,7 @@ Quickly setup any project to use [DVC Experiments].
 usage: dvc exp init [-h] [-q | -v] [--run] [--interactive] [-f]
                     [--explicit] [--name NAME] [--code CODE]
                     [--data DATA] [--models MODELS] [--params PARAMS]
-                    [--metrics METRICS] [--plots PLOTS]
+                    [--metrics METRICS] [--plots PLOTS] [--live LIVE]
                     [--type {default,dl}]
                     [command]
 ```
@@ -127,6 +127,10 @@ $ dvc exp init './another_script.sh $MYENVVAR'
 - `--plots` - set the path to the file or directory where the plots produced by
   your experiment can be found (if any). Overrides other configuration and
   default value (`plots/`).
+
+- `--live` - use the given path to set up `metrics` and `plots` as in
+  [DVCLive with DVC](/doc/dvclive/dvclive-with-dvc). Overrides other
+  configuration and default value (`dvclive/`).
 
 - `--explicit` - do not assume default locations of project dependencies and
   outputs. You'll have to provide specific locations via other options or
