@@ -6,7 +6,8 @@ connected [stages](/doc/command-reference/run).
 ## Synopsis
 
 ```usage
-usage: dvc dag [-h] [-q | -v] [--dot] [--full] [target]
+usage: dvc dag [-h] [-q | -v] [--dot] [--mermaid] [--md]
+               [--full] [target]
 
 positional arguments:
   target          Stage or output to show pipeline for (optional)
@@ -76,6 +77,16 @@ $ dvc exp show ...
   [DOT](<https://en.wikipedia.org/wiki/DOT_(graph_description_language)>)
   format. It can be passed to third party visualization utilities.
 
+- `--mermaid` - show DAG in [Mermaid](https://mermaid-js.github.io) format. It
+  can be passed to third party visualization utilities.
+
+- `--md` - show DAG in [Mermaid](https://mermaid-js.github.io) format, wrapped
+  inside a
+  [Markdown code block](https://www.markdownguide.org/extended-syntax/#fenced-code-blocks).
+
+  This can be used to combine `dvc dag` with
+  [`cml send-comment`](https://cml.dev/doc/ref/send-comment)
+
 - `-o`, `--outs` - show a DAG of chained dependencies and outputs instead of the
   stages themselves. The graph may be significantly different.
 
@@ -143,4 +154,37 @@ $ dvc dag --outs
       +-------------+            +----------+
       | scores.json |            | prc.json |
       +-------------+            +----------+
+```
+
+## Example: Mermaid Format
+
+The `--mermaid` flag will generate a
+[flowchart in Mermaid format](https://mermaid-js.github.io/mermaid/#/flowchart):
+
+```dvc
+$ dvc dag --mermaid
+flowchart TD
+        node1[data/data.xml.dvc]
+        node2[evaluate]
+        node3[featurize]
+        node4[prepare]
+        node5[train]
+        node1-->node4
+        node3-->node2
+        node3-->node5
+        node4-->node3
+        node5-->node2
+```
+
+When the `--md` flag is passed, the mermaid output will be wrapped inside a
+[Markdown code block](https://www.markdownguide.org/extended-syntax/#fenced-code-blocks).
+
+The `--md` output can be embeded in
+[GitHub](https://github.blog/2022-02-14-include-diagrams-markdown-files-mermaid/)
+and [GitLab](https://docs.gitlab.com/ee/user/markdown.html#mermaid), so it can
+be combined with [`cml send-comment`](https://cml.dev/doc/ref/send-comment):
+
+```dvc
+dvc dag --md >> dag.md
+cml send-comment dag.md
 ```
