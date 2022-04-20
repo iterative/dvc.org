@@ -58,7 +58,7 @@ project.][misclassified-example-code]
 $ dvc plots show plots/misclassified.png
 ```
 
-![confusion image](/img/start_visualization_misclassification.png)
+![misclassification image](/img/start_visualization_misclassification.png)
 
 ## Autogenerating plots from deep learning code
 
