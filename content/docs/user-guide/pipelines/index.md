@@ -114,6 +114,52 @@ Otherwise, the stage may never be validated and the pipeline will always run.
 
 ## Dependencies
 
+A stage has three different types of ingredients, command, dependencies, and
+outputs. Commands are a required part of `dvc stage add`, and the other two are
+optional. Although optional, most of the features that characterize pipelines
+are brought forward by dependency definitions.
+
+DVC has more than one type of dependency: The basic one, that we call only
+`dependency` is either a file or a directory. A stage that depends on a file or
+directory is invalidated when this file or directory _contents_ changes.
+
+<admon type="note">
+DVC doesn't only check the timestamp of files, it actually calculates the hash
+of their contents to invalidate the dependent stages. This is one of the
+distinctive features over other build tools like  `make`. 
+</admon>
+
+The second type of dependencies is _hyperparameters._ The hyperparameters are
+values in YAML, JSON or Python files that affect stage commands in some way. For
+example, if you have a `train.py` script to build deep learning model, it can
+read certain parameters from such a file to change training attributes. DVC can
+keep track of these dependencies as separate dependencies. If you have multiple
+parameters in `params.yaml` file that changes behavior of multiple stages, when
+you change a certain parameter, only the dependent stages are invalidated and
+rerun. This is much more granular than making the whole of `params.yaml` as a
+file dependency.
+
+Another kind of dependency is _URL dependencies._ Instead of files that reside
+in local disk, you can `dvc import-url` a dependency from the web. DVC will
+check whether the contents of this URL changed, and invalidate the dependent
+stage if so.
+
+File and directory stages are defined using `--deps / -d` option of
+`dvc stage add`:
+
+```dvc
+$ dvc stage add -n train
+                --deps src/train.py \
+                --deps data/ \
+                python3 src/train.py
+```
+
+This means that when one of `deps/train.py` or `data/` changes, the command
+associated with the stage has to be run.
+
+Note that we also added the source file as a dependency, so that when we update
+the code that trains the model, the stage will be run again.
+
 - Why?
 - How?
 
