@@ -35,36 +35,49 @@
     },
     "children": [
       {
-        "slug": "data-and-model-versioning",
-        "tutorials": {
-          "katacoda": "https://katacoda.com/dvc/courses/get-started/versioning"
-        }
-      },
-      {
-        "slug": "data-and-model-access",
-        "tutorials": {
-          "katacoda": "https://katacoda.com/dvc/courses/get-started/accessing"
-        }
-      },
-      {
-        "slug": "data-pipelines",
-        "tutorials": {
-          "katacoda": "https://katacoda.com/dvc/courses/get-started/stages"
-        }
-      },
-      {
-        "label": "Metrics, Parameters, and Plots",
-        "slug": "metrics-parameters-plots",
-        "tutorials": {
-          "katacoda": "https://katacoda.com/dvc/courses/get-started/params-metrics-plots"
-        }
+        "slug": "data",
+        "label": "Data Management",
+        "source": "data/index.md",
+        "children": [
+          {
+            "label": "Accessing Data",
+            "slug": "data-and-model-access",
+            "tutorials": {
+              "katacoda": "https://katacoda.com/dvc/courses/get-started/accessing"
+            }
+          },
+          {
+            "label": "Pipelines",
+            "slug": "data-pipelines",
+            "tutorials": {
+              "katacoda": "https://katacoda.com/dvc/courses/get-started/stages"
+            }
+          },
+          {
+            "label": "Metrics, Parameters, and Plots",
+            "slug": "metrics-parameters-plots",
+            "tutorials": {
+              "katacoda": "https://katacoda.com/dvc/courses/get-started/params-metrics-plots"
+            }
+          }
+        ]
       },
       {
         "slug": "experiments",
-        "label": "Experiments",
+        "label": "Experiment Versioning",
+        "source": "experiments/index.md",
         "tutorials": {
           "katacoda": "https://katacoda.com/dvc/courses/get-started/experiments"
-        }
+        },
+        "children": [
+          {
+            "label": "Visualization",
+            "slug": "visualization",
+            "tutorials": {
+              "katacoda": "https://katacoda.com/dvc/courses/get-started/params-metrics-plots"
+            }
+          }
+        ]
       }
     ]
   },
