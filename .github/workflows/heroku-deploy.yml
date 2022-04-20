@@ -1,0 +1,16 @@
+name: Heroku Review Application
+on:
+  pull_request:
+    types: [opened, reopened, synchronize, labeled, closed]
+  pull_request_target:
+    types: [opened, reopened, synchronize, labeled, closed]
+
+jobs:
+  heroku-review-application:
+    name: Heroku Review Application
+    runs-on: ubuntu-latest
+    steps:
+      - name: Heroku Review Application
+        uses: mheap/github-action-pr-heroku-review-app@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
