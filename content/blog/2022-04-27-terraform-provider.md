@@ -58,9 +58,13 @@ terraform {
 provider "iterative" {}
 
 resource "iterative_task" "example" {
-  cloud   = "aws"
-  region  = "us-east-2"
-  machine = "l+k80"
+  cloud       = "aws"     # or any of: gcp, az, k8s
+  machine     = "m"       # medium. Or any of: l, xl, m+k80, xl+v100, ...
+  image       = "ubuntu"  # or "nvidia", ...
+  region      = "us-east"
+  disk_size   = 30        # GB
+  spot        = 0         # auto-price. Or -1 to disable, or >0 for hourly USD limit
+  timeout     = 60*60     # max 1h before forced termination
 
   storage {
     workdir = "."
