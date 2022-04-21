@@ -3,51 +3,67 @@
 A **model registry** is a central catalog for data artifacts produced in
 multiple data science projects. Different models can be discovered, audited,
 shared, tested, and deployed from here. DVC works on top of Git to enable these
-capabilities on your existing ecosystem! And other tools from
-[Iterative](https://iterative.ai/) provide further advanced features and better
-usability.
+capabilities on your existing ecosystem. And other tools from
+[Iterative](https://iterative.ai/) provide even better features and usability.
 
 ![](/img/ml_model_registry_placement.jpg) _A common placement for model
 registries is between development and applications. See also [Data Registries]._
 
 [data registries]: /doc/use-cases/data-registries
 
-DVC model registries gives your team key collaborative capabilities:
+Model catalogs give your team key collaborative capabilities:
 
 - Store, organize, and track the [versions] of different models effectively.
 - Full data provenance and lineage trails guarantee that your modeling is
   reproducible.
-- Share and control access to any data artifact, whether these are early-stage
-  [experiments] or production-ready models.
+- Share and control access to any data artifact, from early-stage [experiment]
+  results to production-ready models.
 - Save performance [metrics and plots] to quickly evaluate and compare models.
 - An interface to access specific model versions from other systems (e.g. for
-  continuous integration or deployment)
+  CI/CD)
 
-[experiments]: /doc/user-guide/experiment-management
+[versions]: /doc/use-cases/versioning-data-and-model-files
+[experiment]: /doc/user-guide/experiment-management
 [metrics and plots]: /doc/start/metrics-parameters-plots
 
 Many of these benefits are built into DVC: Your [modeling process] and
 performance metadata become **codified** in Git-based <abbr>DVC projects</abbr>.
 This makes it possible to manage them with standard GitOps workflows along with
-code. Large files can be pushed to [remote storage], an efficient and scalable
-access point for your models.
+code. Large model files are stored separately and can be pushed to [remote
+storage], an efficient and scalable access point.
 
-To achieve the remaining goals, the final outputs of these model development
-projects can be **packaged** together with their metadata, and published in a
-global DVC repository. Existing model files stored remotely are reused without
-copying them, so building the registry is fast. A connection to the original
-projects is preserved, so you can always retrieve full lineage and provenance
-information.
+The relevant outputs of these model development projects can then be
+**packaged** together with their metadata, and published in a [global Git
+repository]. With DVC, existing model files stored remotely are reused, so
+building the registry is fast. A connection to the original projects is
+preserved, so you can always get the full lineage and provenance information.
 
-DVC repos are already great for [sharing] data and models. Now you also have
-proper tools to get models from the registry to production: deploy manually with
-the `dvc` [CLI], integrate with code using DVC's Python [API], or even automate
-their training and delivery with [CI/CD for ML][cml-dvc].
+DVC repos are already great for [sharing] data and models. They can also help
+you get models from the registry to production: deploying manually with the
+`dvc` [CLI] or integrating in code using DVC's Python [API]. You can even
+automate their training and delivery [via CML]. In fact any downstream system
+can sync with you models lifecycle using _GTO_.
 
 [modeling process]: doc/start/data-pipelines
-[versions]: /doc/use-cases/versioning-data-and-model-files
 [remote storage]: /doc/command-reference/remote
+[global git repository]: #model-registries-based-on-annotated-git-tags
 [sharing]: /doc/start/data-and-model-access
 [cli]: /doc/command-reference
 [api]: /doc/api-reference
-[cml-dvc]: https://cml.dev/doc/cml-with-dvc
+[via cml]: https://cml.dev/doc/cml-with-dvc
+
+## Model Registries based on annotated Git tags
+
+[GTO] (Git Tag Ops) is a free, open-source tool that let's you turn any Git
+repository into an artifact registry. Tag artifact versions and annotate them
+with meaningful metadata. Manage model states throughout their lifecycle:
+promoting for production, rolling back, and reviewing their history. And any
+Git-based system can [sync with these events].
+
+GTO integrates nicely into DVC repos by using [metafiles] as annotations for
+your artifacts.
+
+[gto]: https://github.com/iterative/gto
+[sync with these events]:
+  https://github.com/iterative/gto#getting-right-versions-in-downstream-systems
+[metafiles]: doc/user-guide/project-structure
