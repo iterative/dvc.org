@@ -95,7 +95,7 @@ together with the rest of your project for easier control.
 ## One Provider to Rule Them All
 
 Whether you prefer Amazon Web Services (AWS), Microsoft Azure, Google Cloud
-Platform (GCP), or Kubernetes, the Iterative Provider has you covered. You can
+Platform (GCP), or Kubernetes (K8s), the Iterative Provider has you covered. You can
 configure compute resources from these with a single provider, using
 [common machine types](https://registry.terraform.io/providers/iterative/iterative/latest/docs/resources/task#machine-type).
 These are going to be roughly similar between different cloud vendors. Not only
