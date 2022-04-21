@@ -1,14 +1,14 @@
 ---
 title: Machine Learning Workloads with Iterative Provider for Terraform
-date: 2022-04-18
+date: 2022-04-27
 description: >
-  Today we introduce resource orchestration for your machine learning
-  projects  in conjunction with Terraform.
+  Today we introduce painless resource orchestration for your machine learning
+  projects in conjunction with HashiCorp Terraform.
 descriptionLong: >
-  Now you can bring multi-cloud provisioning to your machine learning projects,
-  optimizing resources; costs, and workflows while aligning your Data
-  Science  and DevOps teams.
-picture: 2022-04-18/terraform-provider-iterative.png
+  Catapult your machine learning projects into any coud and reduce cost with
+  spot instance auto-recovery, while aligning your Data Science  and DevOps
+  teams with a simple config file.
+picture: 2022-04-27/terraform-provider-iterative.png
 pictureComment: Machine Learning Workloads with Iterative Provider for Terraform
 author: maria_khalusova
 commentsUrl: https://discuss.dvc.org/t/collaborative-experiments/1002
@@ -121,4 +121,4 @@ familiar to DevOps teams, but extend it to suit ML needs.
 If you’d like to try the Iterative Provider in your project, check out the
 documentation on the provider’s page in the Terraform registry, and if you have
 any questions or suggestions, we welcome them in our
-[GitHub repo.](https://github.com/iterative/terraform-provider-iterative)
+[GitHub repository.](https://github.com/iterative/terraform-provider-iterative)
