@@ -11,7 +11,7 @@ descriptionLong: >
 picture: 2022-04-27/terraform-provider-iterative.png
 pictureComment: Machine Learning Workloads with Iterative Provider for Terraform
 author: maria_khalusova
-commentsUrl: https://discuss.dvc.org/t/collaborative-experiments/1002
+commentsUrl: https://discuss.dvc.org/t/terraform-iterative-provider-release-blog-post/1171
 tags:
   - MLOps
   - Terraform
@@ -95,8 +95,8 @@ together with the rest of your project for easier control.
 ## One Provider to Rule Them All
 
 Whether you prefer Amazon Web Services (AWS), Microsoft Azure, Google Cloud
-Platform (GCP), or Kubernetes (K8s), the Iterative Provider has you covered. You can
-configure compute resources from these with a single provider, using
+Platform (GCP), or Kubernetes (K8s), the Iterative Provider has you covered. You
+can configure compute resources from these with a single provider, using
 [common machine types](https://registry.terraform.io/providers/iterative/iterative/latest/docs/resources/task#machine-type).
 These are going to be roughly similar between different cloud vendors. Not only
 does this significantly simplify infrastructure configuration, it also makes it
