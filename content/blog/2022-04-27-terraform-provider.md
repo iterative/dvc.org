@@ -53,13 +53,8 @@ the `iterative_task` resource:
 
 ```hcl
 terraform {
-  required_providers {
-    iterative = {
-      source = "iterative/iterative"
-    }
-  }
+  required_providers { iterative = { source = "iterative/iterative" } }
 }
-
 provider "iterative" {}
 
 resource "iterative_task" "example" {
@@ -67,18 +62,17 @@ resource "iterative_task" "example" {
   region  = "us-east-2"
   machine = "l+k80"
 
-  script = <<-END
-    #!/bin/bash
-    sudo apt update
-    sudo apt install -y python3-pip
-    pip3 install -r requirements.txt
-    python3 src/train.py
-  END
-
   storage {
     workdir = "."
     output  = "results"
   }
+  script = <<-END
+    #!/bin/bash
+    sudo apt update
+    sudo apt install -y python3-pip
+    pip3 install --user -r requirements.txt
+    python3 train.py
+  END
 }
 ```
 
