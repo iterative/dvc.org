@@ -1,4 +1,4 @@
-# Machine Learning Model Registries
+# Machine Learning Model Registry
 
 A **model registry** is a central catalog for data artifacts produced in
 multiple data science projects. Different models can be discovered, audited,
@@ -12,7 +12,7 @@ registries is between development and applications. See also [Data Registries]._
 
 [data registries]: /doc/use-cases/data-registries
 
-DVC model registries give your team key collaborative capabilities:
+DVC model registries gives your team key collaborative capabilities:
 
 - Store, organize, and track the [versions] of different models effectively.
 - Full data provenance and lineage trails guarantee that your modeling is
@@ -20,22 +20,24 @@ DVC model registries give your team key collaborative capabilities:
 - Share and control access to any data artifact, whether these are early-stage
   [experiments] or production-ready models.
 - Save performance [metrics and plots] to quickly evaluate and compare models.
-- A platform to export, integrate, deploy, or roll-back published models
+- An interface to access specific model versions from other systems (e.g. for
+  continuous integration or deployment)
 
 [experiments]: /doc/user-guide/experiment-management
 [metrics and plots]: /doc/start/metrics-parameters-plots
 
 Many of these benefits are built into DVC: Your [modeling process] and
 performance metadata become **codified** in Git-based <abbr>DVC projects</abbr>.
-This makes it possible to manage them with standard GitOps workflows. Large
-files can be pushed to [remote storage], an efficient and scalable access point
-for your models.
+This makes it possible to manage them with standard GitOps workflows along with
+code. Large files can be pushed to [remote storage], an efficient and scalable
+access point for your models.
 
 To achieve the remaining goals, the final outputs of these model development
-projects can be **packaged** and published in a global DVC repository. Existing
-model files stored remotely are reused without copying them, so building the
-registry is fast. A connection to the original projects is preserved, so you can
-always retrieve full lineage and provenance information.
+projects can be **packaged** together with their metadata, and published in a
+global DVC repository. Existing model files stored remotely are reused without
+copying them, so building the registry is fast. A connection to the original
+projects is preserved, so you can always retrieve full lineage and provenance
+information.
 
 DVC repos are already great for [sharing] data and models. Now you also have
 proper tools to get models from the registry to production: deploy manually with
