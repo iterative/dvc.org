@@ -16,3 +16,13 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           HEROKU_API_TOKEN: ${{ secrets.HEROKU_API_TOKEN }}
           HEROKU_PIPELINE_ID: ${{ secrets.HEROKU_PIPELINE_ID }}
+      - name: Run review-app test
+        id: review_app_test  # `id` value is used to refer the outputs from the corresponding action 
+        uses: teamniteo/reviewapps-deploy-status@v1.4.0
+        env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Check review_app_url
+        run: |
+          echo "Outputs :"
+          echo "- App name: ${{ steps.review_app_test.outputs.review_app_name }}"
+          echo "- App url: ${{ steps.review_app_test.outputs.review_app_url }}"
