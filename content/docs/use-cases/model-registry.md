@@ -13,11 +13,11 @@ registries is between development and applications. See also [Data Registries]._
 
 Model catalogs give your team key collaborative capabilities:
 
-- Store, organize, and track the [versions] of different models effectively.
+- Collect, organize, and track the [versions] of different models effectively.
 - Full data provenance and lineage trails guarantee that your modeling is
   reproducible.
-- Share and control access to any data artifact, from early-stage [experiment]
-  results to production-ready models.
+- Store and present your model artifacts, from early-stage [experiment] results
+  to production-ready models.
 - Save performance [metrics and plots] to quickly evaluate and compare models.
 - An interface to access specific model versions from other systems (e.g. for
   CI/CD)
