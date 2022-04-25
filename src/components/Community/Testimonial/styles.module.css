@@ -1,0 +1,28 @@
+.iframeContainer {
+  height: 700px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin: 40px 50px 0;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  @media (--md-scr) {
+    margin: 40px 25px 0;
+  }
+
+  @media (--sm-scr) {
+    margin: 40px 50px 0;
+  }
+
+  @media (--xs-scr) {
+    margin: 20px 50px 0;
+  }
+
+  iframe {
+    margin-top: -32px;
+  }
+}

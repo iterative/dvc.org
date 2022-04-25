@@ -22,9 +22,9 @@ takes a config option `name` (a config section and a key, separated by a dot)
 and its `value` (any valid alpha-numeric string generally).
 
 When reading config options (no `value` is given or `--list` is used), the
-values are read from the system, global, project, and local config files (in
-that order). The `--system`, `--global`, `--project`, and `--local` options can
-be used to read from that configuration only.
+values are read from a combined set of values from the system, global, project,
+and local config files (in that order). The `--system`, `--global`, `--project`,
+and `--local` options can be used to read from that configuration only.
 
 When writing (a `value` is given or `--unset` is used), the new value is written
 to the project-level config file by default (`.dvc/config`). Options `--system`,
@@ -96,12 +96,25 @@ multiple projects or users, respectively.
 
 ## Configuration sections
 
-The following config sections are written by this command to the project config
-file (in `.dvc/config` by default), and they support the options below:
+The following config sections are written by this command to the appropriate
+config file (`.dvc/config` by default), supporting different config options
+within:
+
+- [`core`](#core) - main section with the general config options
+- [`remote`](#remote) - sections in the config file that describe particular
+  remotes
+- [`cache`](#cache) - options that affect the project's <abbr>cache</abbr>
+- [`exp`](#exp) - options to change the default repo paths assumed by
+  `dvc exp init`
+- [`plots`](#plots) - contains an option to set custom HTML templates.
+- [`state`](#state) - see [Internal directories and files][internals] to learn
+  more about the state database.
+- [`index`](#index) - see [Internal directories and files][internals] to learn
+  more about remote index files.
+
+[internals]: /doc/user-guide/project-structure/internal-files
 
 ### core
-
-This is the main section with the general config options:
 
 - `core.remote` - name of the remote storage to use by default.
 
@@ -138,15 +151,11 @@ This is the main section with the general config options:
 
 ### remote
 
-These are sections in the config file that describe particular remotes. They
-contain a `url` value, and can also specify `user`, `port`, `keyfile`,
-`timeout`, `ask_password`, and other cloud-specific key/value pairs for each
-remote. See `dvc remote` for more information.
+All `remote` sections contain a `url` value and can also specify `user`, `port`,
+`keyfile`, `timeout`, `ask_password`, and other cloud-specific key/value pairs.
+See `dvc remote add` and `dvc remote modify` for more information.
 
 ### cache
-
-This section contains the following options, which affect the project's
-<abbr>cache</abbr>:
 
 - `cache.dir` - set/unset cache directory location. A correct value is either an
   absolute path, or a path **relative to the config file location**. The default
@@ -158,25 +167,21 @@ This section contains the following options, which affect the project's
   > directory into paths relative to the config file location.
 
 - `cache.type` - link type that DVC should use to link data files from cache to
-  the workspace. Possible values: `reflink`, `symlink`, `hardlink`, `copy` or a
-  combination of those, separated by commas e.g: `reflink,hardlink,copy`.
+  the workspace. Possible values: `reflink`, `symlink`, `hardlink`, `copy` or an
+  ordered combination of those, separated by commas e.g:
+  `reflink,hardlink,copy`. Default: `reflink,copy`
 
-  By default, DVC will try `reflink,copy` link types in order to choose the most
-  effective of those two. DVC avoids `symlink` and `hardlink` types by default
-  to protect user from accidental cache and repository corruption.
-
-  ⚠️ If you set `cache.type` to `hardlink` or `symlink` and manually modify
-  tracked data files in the workspace, **you will corrupt the cache**. In an
-  attempt to prevent that, DVC will automatically protect those file links (make
-  them read-only). Use `dvc unprotect` to be able to modify them safely.
+  If you set `cache.type` to `hardlink` or `symlink`, manually modifying tracked
+  data files in the workspace would corrupt the cache. To prevent this, DVC
+  automatically protects those kinds of links (making them read-only). Use
+  `dvc unprotect` to be able to modify them safely.
 
   There are pros and cons to different link types. Refer to
   [File link types](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
   for a full explanation of each one.
 
-  To apply changes to this config option in the workspace, by restoring all file
-  links/copies from cache, please use `dvc checkout --relink`. See that
-  command's [options](/doc/command-reference/checkout#options) for more details.
+  To apply changes to this config option in the workspace, restore all file
+  links/copies from cache with `dvc checkout --relink`.
 
 - `cache.slow_link_warning` - used to turn off the warnings about having a slow
   cache link type. These warnings are thrown by `dvc pull` and `dvc checkout`
@@ -223,33 +228,32 @@ connection settings, and configuring a remote is the way that can be done.
 
 ### exp
 
-This section overrides default configured workspace paths in `dvc exp init`,
-that helps to avoid repeating these paths if all of your projects share a
-similar structure.
+Sets the default paths assumed by `dvc exp init`. This can help avoid overriding
+them repeatedly with that command's options, for example if all of your
+experiments or projects use a similar structure.
 
-The section contains following options, which are only used as a default and can
-be overidden explicitly through CLI arguments or through responses in prompts
-(in `--interactive` mode).
+- `exp.code` - path to your source file or directory <abbr>dependency</abbr>.
 
-- `exp.code` - path to your source file or directory.
+- `exp.params` - path to your <abbr>parameters</abbr> file.
 
-- `exp.data` - path to your data file or directory to track.
+- `exp.data` - path to your data file or directory dependency.
 
-- `exp.models` - path to your models file or directory.
+- `exp.models` - path to your model/artifact(s) file or directory
+  <abbr>output</abbr>.
 
-- `exp.metrics` - path to your metrics file.
+- `exp.metrics` - path to your metrics file output.
 
-- `exp.params` - path to your parameters file.
+- `exp.plots` - path to your plots file or directory output.
 
-- `exp.plots` - path to your plots file or directory.
+- `exp.live` - path to your [DVCLive](/doc/dvclive) output logs.
 
-- `exp.live` - path to your dvclive outputs.
+### plots
+
+- `plots.html_template` - sets a
+  [custom HTML template](/doc/command-reference/plots#html-templates) for
+  `dvc plots`. Accepts a path relative to the `.dvc/` folder.
 
 ### state
-
-> 📖 See
-> [Internal directories and files](/doc/user-guide/project-structure/internal-files)
-> to learn more about the state databases.
 
 - `state.row_limit` - maximum number of entries in state databases. This affects
   the physical size of the state files, as well as the performance of certain
@@ -267,10 +271,6 @@ be overidden explicitly through CLI arguments or through responses in prompts
 
 ### index
 
-> 📖 See
-> [Internal directories and files](/doc/user-guide/project-structure/internal-files)
-> to learn more about remote index files.
-
 - `index.dir` - specify a custom location for the directory where remote index
   files will be stored, by default in `.dvc/tmp/index`. This may be necessary
   when using DVC on NFS or other mounted volumes.
@@ -280,6 +280,9 @@ be overidden explicitly through CLI arguments or through responses in prompts
 - `plots.html_template` - sets a
   [custom HTML template](/doc/command-reference/plots#html-templates) for
   `dvc plots`. Accepts a path relative to the `.dvc/` folder.
+
+- `plots.auto_open` - if `true`, DVC will automatically open the HTML file
+  generated by `dvc plots` commands in a browser. `false` by default
 
 ## Example: Add an S3 remote, and set it as default
 

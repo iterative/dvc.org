@@ -67,8 +67,8 @@ $ wget https://example.com/path/to/data.csv
 ## Options
 
 - `-j <number>`, `--jobs <number>` - parallelism level for DVC to download data
-  from the source. The default value is `4 * cpu_count()`. For SSH remotes, the
-  default is `4`. Using more jobs may speed up the operation.
+  from the source. The default value is `4 * cpu_count()`. Using more jobs may
+  speed up the operation.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -81,7 +81,7 @@ $ wget https://example.com/path/to/data.csv
 
 <details>
 
-### Click for Amazon S3 example
+### Amazon S3
 
 This command will copy an S3 object into the current working directory with the
 same file name:
@@ -108,7 +108,7 @@ configuration, you can use the parameters described in `dvc remote modify`.
 
 <details>
 
-### Click for Google Cloud Storage example
+### Google Cloud Storage
 
 ```dvc
 $ dvc get-url gs://bucket/path file
@@ -120,7 +120,7 @@ The above command downloads the `/path` file (or directory) into `./file`.
 
 <details>
 
-### Click for SSH example
+### SSH
 
 ```dvc
 $ dvc get-url ssh://user@example.com/path/to/data
@@ -133,7 +133,7 @@ directory).
 
 <details>
 
-### Click for HDFS example
+### HDFS
 
 ```dvc
 $ dvc get-url hdfs://user@example.com/path/to/file
@@ -143,7 +143,7 @@ $ dvc get-url hdfs://user@example.com/path/to/file
 
 <details>
 
-### Click for HTTP example
+### HTTP
 
 > Both HTTP and HTTPS protocols are supported.
 
@@ -155,7 +155,7 @@ $ dvc get-url https://example.com/path/to/file
 
 <details>
 
-### Click for WebHDFS example
+### WebHDFS
 
 ```dvc
 $ dvc get-url webhdfs://user@example.com/path/to/file
@@ -165,7 +165,7 @@ $ dvc get-url webhdfs://user@example.com/path/to/file
 
 <details>
 
-### Click and expand for a local example
+### local
 
 ```dvc
 $ dvc get-url /local/path/to/data

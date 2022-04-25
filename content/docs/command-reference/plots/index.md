@@ -207,7 +207,7 @@ Let's plot the last column (default behavior):
 
 ```dvc
 $ dvc plots show logs.csv
-file:///Users/usr/src/plots/logs.csv.html
+file:///Users/usr/src/dvc_plots/index.html
 ```
 
 ![](/img/plots_show.svg)
@@ -216,8 +216,8 @@ Difference in this metric between the current project version and the previous
 commit:
 
 ```dvc
-$ dvc plots diff -d logs.csv HEAD^
-file:///Users/usr/src/plots/logs.csv.html
+$ dvc plots diff HEAD^ --targets logs.csv
+file:///Users/usr/src/dvc_plots/index.html
 ```
 
 ![](/img/plots_diff.svg)
@@ -226,7 +226,7 @@ Visualize a specific field:
 
 ```dvc
 $ dvc plots show -y loss logs.csv
-file:///Users/usr/src/plots/logs.html
+file:///Users/usr/src/dvc_plots/index.html
 ```
 
 ![](/img/plots_show_field.svg)
@@ -238,7 +238,7 @@ plot with 1000 data points:
 
 ```dvc
 $ dvc plots show data.csv
-file:///Users/usr/src/plots/plots.html
+file:///Users/usr/src/dvc_plots/index.html
 ```
 
 ![](/img/plots_show_no_smooth.svg)
@@ -247,7 +247,7 @@ We can use the `-t` option and `smooth` template to make it less noisy:
 
 ```dvc
 $ dvc plots show -t smooth data.csv
-file:///Users/usr/src/plots/plots.html
+file:///Users/usr/src/dvc_plots/index.html
 ```
 
 ![](/img/plots_show_smooth.svg)
@@ -274,7 +274,7 @@ Let's visualize it:
 
 ```dvc
 $ dvc plots show classes.csv --template confusion -x actual -y predicted
-file:///Users/usr/src/plots/classes.csv.html
+file:///Users/usr/src/dvc_plots/index.html
 ```
 
 ![](/img/plots_show_confusion.svg)

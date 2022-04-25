@@ -27,8 +27,8 @@ plots are generated with `dvc plot show` or `dvc plot diff`. This command sets
 (or unsets) default display properties for a specific metrics file.
 
 The path to the metrics file `target` is required. It must be listed in a
-`dvc.yaml` file (see the `--plots` option of `dvc run`). `dvc plots modify` adds
-the display properties to `dvc.yaml`.
+`dvc.yaml` file (see the `--plots` option of `dvc stage add`).
+`dvc plots modify` adds the display properties to `dvc.yaml`.
 
 Property names are passed as [options](#options) to this command (prefixed with
 `--`). These are based on the [Vega-Lite](https://vega.github.io/vega-lite/)
@@ -134,8 +134,8 @@ plots:
 
 ## Example: Template change
 
-_dvc run --plots file.csv ..._ command assign the default template that needs to
-be changed in many cases. A simple command changes the template:
+Something like `dvc stage add --plots file.csv ...` assigns the default
+template, which needs to be changed in many cases. This command can do so:
 
 ```dvc
 $ dvc plots modify classes.csv --template confusion

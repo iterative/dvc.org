@@ -19,8 +19,7 @@ positional arguments:
 Stores the current contents of files and directories tracked by DVC in the
 <abbr>cache</abbr>, and updates `dvc.lock` or `.dvc` files if/as needed. This
 forces DVC to accept any changed contents of tracked data currently in the
-<abbr>workspace</abbr>. We explore the scenarios in which this can be useful
-next.
+<abbr>workspace</abbr>.
 
 💡 For convenience, a pre-commit Git hook is available to remind you to
 `dvc commit` when needed. See `dvc install` for more info.
@@ -34,14 +33,13 @@ these step(s) during the process of tracking each file or directory:
 - Store the file contents in the cache.
 
 > Skipping these steps is typically done to avoid caching unfinished data, for
-> example when exploring different data or
-> [stages](/doc/command-reference/run)).
+> example when exploring different datasets.
 
-More specifically, scenarios for `dvc commit` include:
+Some scenarios for `dvc commit` include:
 
-- As an alternative to `dvc add` for data that's already tracked. For example,
-  you can "`dvc add`" all the changed files or directories already tracked by
-  DVC without having to name each `target`.
+- As an alternative to `dvc add` for data that's already tracked: `dvc commit`
+  adds all the changes to files or directories already tracked by DVC without
+  having to name each target.
 
 - Often we edit source code, configuration, or other files that are specified as
   <abbr>dependencies</abbr> in `dvc.yaml` (`deps` field) in a way that doesn't
@@ -51,11 +49,10 @@ More specifically, scenarios for `dvc commit` include:
   (`dvc repro`). You can use `dvc commit` instead to force accepting these new
   versions without having to execute stage commands.
 
-- Sometimes after executing a stage, we realize that not all of its dependencies
-  or outputs are defined in `dvc.yaml`. It is possible to
-  [add the missing deps/outs](/docs/user-guide/how-to/add-deps-or-outs-to-a-stage)
-  without having to re-execute stages, and `dvc commit` is needed to finalize
-  the operation (see link).
+- Sometimes after executing a <abbr>stage</abbr>, we realize that not all of its
+  dependencies or outputs are defined in `dvc.yaml`. It is possible to [add the
+  missing deps/outs] without having to re-execute stages, and `dvc commit` is
+  needed to finalize the operation (see link).
 
 - It's also possible to execute stage commands by hand (without `dvc repro`), or
   to manually modify their output files or directories. Use `dvc commit` to
@@ -68,17 +65,20 @@ Note that it's best to try avoiding these scenarios, where the
 <abbr>cache</abbr>, `dvc.lock`, and `.dvc` files are force-updated. DVC can't
 guarantee reproducibility in those cases.
 
+[add the missing deps/outs]: /docs/user-guide/how-to/add-deps-or-outs-to-a-stage
+
 ## Options
 
-- `-d`, `--with-deps` - determines files to commit by tracking dependencies to
-  the target stages or `.dvc` files. If no `targets` are provided, this option
-  is ignored. By traversing all stage dependencies, DVC searches backward from
-  the target stages in the corresponding pipelines. This means DVC will not
-  commit files referenced in later stages than the `targets`.
+- `-d`, `--with-deps` - only meaningful when specifying `targets`. This
+  determines files to commit by resolving all dependencies of the target stages
+  or `.dvc` files: DVC searches backward from the targets in the corresponding
+  pipelines. This will not commit files referenced in later stages than the
+  `targets`.
 
 - `-R`, `--recursive` - determines the files to commit by searching each target
-  directory and its subdirectories for stages or `.dvc` files to inspect. If
-  there are no directories among the `targets`, this option is ignored.
+  directory and its subdirectories for stages (in `dvc.yaml`) or `.dvc` files to
+  inspect. If there are no directories among the `targets`, this option has no
+  effect.
 
 - `-f`, `--force` - commit data even if hash values for dependencies or outputs
   did not change.
@@ -131,11 +131,9 @@ $ dvc pull -aT
 
 Sometimes we want to iterate through multiple changes to configuration, code, or
 data, trying different ways to improve the output of a stage. To avoid filling
-the <abbr>cache</abbr> with undesired intermediate results, we can run a single
-stage with `dvc run --no-commit`, or reproduce an entire pipeline using
-`dvc repro --no-commit`. This prevents data from being pushed to cache. When
-development of the stage is finished, `dvc commit` can be used to store data
-files in the cache.
+the <abbr>cache</abbr> with undesired intermediate results, you can use the
+`--no-commit` option of `dvc repro`. Once your progress is good enough,
+`dvc commit` can be used to store data files in the cache.
 
 In the `featurize` stage, `src/featurization.py` is executed. A useful change to
 make is adjusting the parameters for that script. The parameters are defined in
@@ -161,7 +159,7 @@ We can run this command as many times as we like, editing `params.yaml` any way
 we like, and so long as we use `--no-commit`, the data does not get saved to the
 cache. Let's verify that's the case:
 
-First verification:
+First verification (via `dvc status`):
 
 ```dvc
 $ dvc status

@@ -1,7 +1,7 @@
 import React from 'react'
 
 import NotFound from '../components/NotFound'
-import SEO from '../components/SEO'
+import SEO from 'gatsby-theme-iterative-docs/src/components/SEO'
 
 const NotFoundPage: React.FC = () => (
   <>

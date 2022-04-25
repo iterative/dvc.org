@@ -1,14 +1,14 @@
 import cn from 'classnames'
 import React, { useEffect, useState, useCallback, MouseEvent } from 'react'
 
-import HamburgerIcon from '../HamburgerIcon'
-import Link from '../Link'
-import { logEvent } from '../../utils/front/ga'
+import HamburgerIcon from 'gatsby-theme-iterative-docs/src/components/HamburgerIcon'
+import Link from 'gatsby-theme-iterative-docs/src/components/Link'
+import { logEvent } from 'gatsby-theme-iterative-docs/src/utils/front/plausible'
 
-import { getFirstPage } from '../../utils/shared/sidebar'
+import { getFirstPage } from 'gatsby-theme-iterative-docs/src/utils/shared/sidebar'
 import { ReactComponent as LogoSVG } from '../../../static/img/logo-white.svg'
-import { ReactComponent as TwitterIcon } from '../SocialIcon/twitter.svg'
-import { ReactComponent as GithubIcon } from '../SocialIcon/github.svg'
+import { ReactComponent as TwitterIcon } from 'gatsby-theme-iterative-docs/src/components/SocialIcon/twitter.svg'
+import { ReactComponent as GithubIcon } from 'gatsby-theme-iterative-docs/src/components/SocialIcon/github.svg'
 
 import * as styles from './styles.module.css'
 
@@ -33,7 +33,7 @@ export const useHamburgerMenu: () => HamburgerHelpers = () => {
     item => (): void => {
       handleClose()
       if (item) {
-        logEvent('hamburger', item)
+        logEvent('Hamburger Menu', { Item: item })
       }
     },
     []
@@ -62,7 +62,7 @@ export const HamburgerMenu: React.FC<
     <div className={cn(styles.wrapper, opened && styles.opened)}>
       <div className={styles.logoRow}>
         <Link
-          onClick={handleItemClick()}
+          onClick={() => handleItemClick()}
           href="/"
           className={styles.logo}
           aria-label="Home"
@@ -82,7 +82,7 @@ export const HamburgerMenu: React.FC<
           <Link
             href="/features"
             className={styles.sectionHeading}
-            onClick={handleItemClick('features')}
+            onClick={() => handleItemClick('features')}
           >
             Features
           </Link>
@@ -91,7 +91,7 @@ export const HamburgerMenu: React.FC<
           <Link
             href={docsPage}
             className={styles.sectionHeading}
-            onClick={handleItemClick('doc')}
+            onClick={() => handleItemClick('doc')}
           >
             Doc
           </Link>
@@ -100,16 +100,25 @@ export const HamburgerMenu: React.FC<
           <Link
             href="/blog"
             className={styles.sectionHeading}
-            onClick={handleItemClick('blog')}
+            onClick={() => handleItemClick('blog')}
           >
             Blog
           </Link>
         </li>
         <li className={styles.section}>
           <Link
+            href="https://learn.iterative.ai/"
+            className={styles.sectionHeading}
+            onClick={() => handleItemClick('course')}
+          >
+            Course
+          </Link>
+        </li>
+        <li className={styles.section}>
+          <Link
             href="/community"
             className={styles.sectionHeading}
-            onClick={handleItemClick('community')}
+            onClick={() => handleItemClick('community')}
           >
             Community
           </Link>
@@ -118,7 +127,7 @@ export const HamburgerMenu: React.FC<
               <Link
                 href="/community#meet"
                 className={styles.subSectionLink}
-                onClick={handleItemClick('community')}
+                onClick={() => handleItemClick('community')}
               >
                 <img
                   className={styles.subSectionLinkImage}
@@ -132,7 +141,7 @@ export const HamburgerMenu: React.FC<
               <Link
                 href="/community#contribute"
                 className={styles.subSectionLink}
-                onClick={handleItemClick('community')}
+                onClick={() => handleItemClick('community')}
               >
                 <img
                   className={styles.subSectionLinkImage}
@@ -146,7 +155,7 @@ export const HamburgerMenu: React.FC<
               <Link
                 href="/community#learn"
                 className={styles.subSectionLink}
-                onClick={handleItemClick('community')}
+                onClick={() => handleItemClick('community')}
               >
                 <img
                   className={styles.subSectionLinkImage}
@@ -160,7 +169,7 @@ export const HamburgerMenu: React.FC<
               <Link
                 href="/community#events"
                 className={styles.subSectionLink}
-                onClick={handleItemClick('community')}
+                onClick={() => handleItemClick('community')}
               >
                 <img
                   className={styles.subSectionLinkImage}
@@ -170,13 +179,27 @@ export const HamburgerMenu: React.FC<
                 <span className={styles.subSectionLinkTitle}>Events</span>
               </Link>
             </li>
+            <li className={styles.subSection}>
+              <Link
+                href="/community#testimonial"
+                className={styles.subSectionLink}
+                onClick={() => handleItemClick('community')}
+              >
+                <img
+                  className={styles.subSectionLinkImage}
+                  src="/img/community/icon-community.svg"
+                  alt=""
+                />
+                <span className={styles.subSectionLinkTitle}>Testimonials</span>
+              </Link>
+            </li>
           </ul>
         </li>
         <li className={styles.section}>
           <Link
             href="/support"
             className={styles.sectionHeading}
-            onClick={handleItemClick('support')}
+            onClick={() => handleItemClick('support')}
           >
             Support
           </Link>
@@ -186,7 +209,7 @@ export const HamburgerMenu: React.FC<
                 className={styles.subSectionLink}
                 href="mailto:support@dvc.org"
                 target="_blank"
-                onClick={handleItemClick('mail')}
+                onClick={() => handleItemClick('mail')}
               >
                 <img
                   className={styles.subSectionLinkImage}
@@ -200,7 +223,7 @@ export const HamburgerMenu: React.FC<
               <Link
                 className={styles.subSectionLink}
                 href="https://github.com/iterative/dvc"
-                onClick={handleItemClick('github')}
+                onClick={() => handleItemClick('github')}
                 target="_blank"
               >
                 <GithubIcon className={styles.subSectionLinkImage} />
@@ -211,7 +234,7 @@ export const HamburgerMenu: React.FC<
               <Link
                 className={styles.subSectionLink}
                 href="/chat"
-                onClick={handleItemClick('chat')}
+                onClick={() => handleItemClick('chat')}
                 target="_blank"
               >
                 <img
@@ -226,7 +249,7 @@ export const HamburgerMenu: React.FC<
               <Link
                 className={styles.subSectionLink}
                 href="https://twitter.com/DVCorg"
-                onClick={handleItemClick('twitter')}
+                onClick={() => handleItemClick('twitter')}
                 target="_blank"
               >
                 <TwitterIcon className={styles.subSectionLinkImage} />
@@ -287,7 +310,7 @@ export const HamburgerMenu: React.FC<
       <Link
         href="/doc/start"
         className={styles.linkButton}
-        onClick={handleItemClick('get-started')}
+        onClick={() => handleItemClick('get-started')}
       >
         Get started
       </Link>

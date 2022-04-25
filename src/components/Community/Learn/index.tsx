@@ -3,26 +3,29 @@ import cn from 'classnames'
 import format from 'date-fns/format'
 
 import { ICommunitySectionTheme } from '../'
-import LayoutWidthContainer from '../../LayoutWidthContainer'
-import Link from '../../Link'
+import LayoutWidthContainer from 'gatsby-theme-iterative-docs/src/components/LayoutWidthContainer'
+import Link from 'gatsby-theme-iterative-docs/src/components/Link'
 import Block from '../Block'
 import Section from '../Section'
 
-import { logEvent } from '../../../utils/front/ga'
-import { getFirstPage } from '../../../utils/shared/sidebar'
-import { useCommentsCount } from '../../../utils/front/api'
+import { logEvent } from 'gatsby-theme-iterative-docs/src/utils/front/plausible'
+import { getFirstPage } from 'gatsby-theme-iterative-docs/src/utils/shared/sidebar'
+import { useCommentsCount } from 'gatsby-theme-iterative-docs/src/utils/front/api'
 import { useCommunityData } from '../../../utils/front/community'
 import getPosts from '../../../queries/posts'
-import { pluralizeComments } from '../../../utils/front/i18n'
+import { pluralizeComments } from 'gatsby-theme-iterative-docs/src/utils/front/i18n'
 
 import * as sharedStyles from '../styles.module.css'
 import * as styles from './styles.module.css'
 
 const docsPage = getFirstPage()
 
-const logPostAll = (): void => logEvent('community', 'blog', 'all')
-const logDocumentationAll = (): void =>
-  logEvent('community', 'documentation', 'all')
+const log = (section: string, value: string) =>
+  logEvent('Community', { Section: 'learn', [`Learn ${section}`]: value })
+const logBlog = (eventType: string) => log('Blog', eventType)
+const logDoc = (eventType: string): void => log('Doc', eventType)
+const logUserContent = (eventType: string): void =>
+  log('User Content', eventType)
 
 interface ICommunityBlogPost {
   color: string
@@ -45,10 +48,7 @@ const BlogPost: React.FC<ICommunityBlogPost> = ({
     return null
   }
 
-  const logPost = useCallback(
-    () => logEvent('community', 'blog', title),
-    [title]
-  )
+  const logPost = useCallback(() => logBlog(title), [title])
 
   const { error, ready, result } = useCommentsCount(commentsUrl)
 
@@ -108,10 +108,7 @@ const UserContent: React.FC<ICommunityUserContentProps> = ({
   color,
   pictureUrl
 }) => {
-  const logUserContent = useCallback(
-    () => logEvent('community', 'user-content', title),
-    [title]
-  )
+  const logContent = useCallback(() => logUserContent(title), [title])
 
   return (
     <div className={cn(sharedStyles.line, sharedStyles.image)} key={url}>
@@ -120,7 +117,7 @@ const UserContent: React.FC<ICommunityUserContentProps> = ({
           className={sharedStyles.link}
           href={url}
           target="_blank"
-          onClick={logUserContent}
+          onClick={logContent}
         >
           <img className={styles.image} src={pictureUrl} alt="" />
         </Link>
@@ -131,7 +128,7 @@ const UserContent: React.FC<ICommunityUserContentProps> = ({
           style={{ color }}
           href={url}
           target="_blank"
-          onClick={logUserContent}
+          onClick={logContent}
         >
           {title}
         </Link>
@@ -159,10 +156,7 @@ const Documentation: React.FC<ICommunityDocumentationProps> = ({
   description,
   color
 }) => {
-  const logDocumentation = useCallback(
-    () => logEvent('community', 'documentation', title),
-    [title]
-  )
+  const logDocumentation = useCallback(() => logDoc(title), [title])
 
   return (
     <div className={sharedStyles.line} key={url}>
@@ -209,7 +203,7 @@ const Learn: React.FC<{ theme: ICommunitySectionTheme }> = ({ theme }) => {
                 <Link
                   className={sharedStyles.headerLink}
                   href={docsPage}
-                  onClick={logDocumentationAll}
+                  onClick={() => logDoc('all')}
                 >
                   Documentation
                 </Link>
@@ -219,7 +213,7 @@ const Learn: React.FC<{ theme: ICommunitySectionTheme }> = ({ theme }) => {
                   className={sharedStyles.button}
                   style={theme}
                   href={docsPage}
-                  onClick={logDocumentationAll}
+                  onClick={() => logDoc('all')}
                 >
                   See all docs
                 </Link>
@@ -240,7 +234,7 @@ const Learn: React.FC<{ theme: ICommunitySectionTheme }> = ({ theme }) => {
                 <Link
                   className={sharedStyles.headerLink}
                   href="/blog"
-                  onClick={logPostAll}
+                  onClick={() => logBlog('all')}
                 >
                   DVC Blog
                 </Link>
@@ -251,7 +245,7 @@ const Learn: React.FC<{ theme: ICommunitySectionTheme }> = ({ theme }) => {
                     className={sharedStyles.button}
                     style={theme}
                     href="/blog"
-                    onClick={logPostAll}
+                    onClick={() => logBlog('all')}
                   >
                     See all Posts
                   </Link>

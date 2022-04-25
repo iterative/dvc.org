@@ -36,9 +36,8 @@ please see `dvc plots`.
 
 ## Options
 
-- `-o <path>, --out <path>` - name of the generated file. By default, this file
-  name is equal to the input file name with a `.html` file extension (or `.json`
-  when using `--show-vega`).
+- `-o <path>, --out <path>` - specify a directory to write the HTML file
+  containing the plots (`dvc_plots/` by default).
 
 - `-t <name_or_path>, --template <name_or_path>` -
   [plot template](/doc/command-reference/plots#plot-templates) to be injected
@@ -64,7 +63,8 @@ please see `dvc plots`.
 - `--show-vega` - produce a [Vega-Lite](https://vega.github.io/vega-lite/) spec
   file instead of HTML. See `dvc plots` for more info.
 
-- `--open` - opens the generated plot in the browser automatically.
+- `--open` - open the HTML generated in a browser automatically. You can enable
+  `dvc config plots.auto_open` to make this the default behavior.
 
 - `--no-header` - lets DVC know that CSV or TSV `targets` do not have a header.
   A 0-based numeric index can be used to identify each column instead of names.
@@ -122,7 +122,7 @@ file (`train`):
 
 ```dvc
 $ dvc plots show train.json
-file:///Users/usr/src/plots/train.json.html
+file:///Users/usr/src/dvc_plots/index.html
 ```
 
 ![](/img/plots_show_json.svg)
@@ -133,7 +133,7 @@ Use the `-y` option to change the field to plot:
 
 ```dvc
 $ dvc plots show -y accuracy train.json
-file:///Users/usr/src/plots/logs.json.html
+file:///Users/usr/src/dvc_plots/index.html
 ```
 
 ![](/img/plots_show_json_field.svg)
@@ -178,7 +178,7 @@ By default, this command plots the last column of the table (see `-y` option):
 
 ```dvc
 $ dvc plots show logs.csv
-file:///Users/usr/src/plots/logs.csv.html
+file:///Users/usr/src/dvc_plots/index.html
 ```
 
 ![](/img/plots_show.svg)
@@ -187,7 +187,7 @@ Use the `-y` option to change the column to plot:
 
 ```dvc
 $ dvc plots show logs.csv -y loss
-file:///Users/usr/src/plots/logs.csv.html
+file:///Users/usr/src/dvc_plots/index.html
 ```
 
 ![](/img/plots_show_field.svg)
@@ -199,7 +199,7 @@ column can be specified with `-y` by it's numeric position (starting with `0`):
 
 ```dvc
 $ dvc plots show --no-header logs.csv -y 2
-file:///Users/usr/src/plots/logs.csv.html
+file:///Users/usr/src/dvc_plots/index.html
 ```
 
 ## Example: Vega-Lite specification file
@@ -209,12 +209,11 @@ In many automation scenarios (like
 output the [Vega-Lite](https://vega.github.io/vega-lite/) spec file instead of
 rendering an HTML plot. For example, to generating another image format like PNG
 or JPEG, or to include it differently into a web/mobile app. The `--show-vega`
-option prevents wrapping this plot spec in HTML. Note that the resulting file is
-JSON:
+option prevents wrapping this plot spec in HTML, printing the resulting JSON to
+standard output instead:
 
 ```dvc
 $ dvc plots show --show-vega logs.csv -y accuracy
-file:///Users/usr/src/plots/logs.csv.json
 ```
 
 ```json

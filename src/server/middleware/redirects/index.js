@@ -1,4 +1,6 @@
-const { getRedirect } = require('../../../utils/shared/redirects')
+const {
+  getRedirect
+} = require('../../../../plugins/gatsby-theme-iterative-docs/src/utils/shared/redirects')
 const { parse } = require('url')
 const { stringify } = require('querystring')
 const { isProduction } = require('../../utils')

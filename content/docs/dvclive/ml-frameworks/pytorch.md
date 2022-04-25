@@ -1,26 +1,18 @@
 # PyTorch
 
-DVCLive allows you to easily add experiment tracking capabilities to your
-Pytorch projects.
-
-## About PyTorch
-
-[PyTorch](https://pytorch.org/) is a Python package that provides two high-level
-features:
-
-- Tensor computation (like NumPy) with strong GPU acceleration
-- Deep neural networks built on a tape-based autograd system
+DVCLive allows you to add experiment tracking capabilities to your
+[PyTorch](https://pytorch.org/) projects.
 
 ## Usage
 
 To start using DVCLive you just need to add few modifications to your training
-code in **any** PyTorch project.
+code in **any** [PyTorch](https://pytorch.org/) project.
 
 You need to add `Live.log()` calls to each place where you would like to log
 metrics and one single `Live.next_step()` call to indicate that the epoch has
 ended.
 
-To ilustrate with some code, extracted from the
+let's consider the following example, extracted from the
 [official PyTorch ImageNet example](https://github.com/pytorch/examples/blob/master/imagenet/main.py):
 
 ```git
@@ -53,9 +45,13 @@ for epoch in range(args.start_epoch, args.epochs):
 +    live.next_step()
 ```
 
-This will generate the metrics logs and summaries as described in the
+This will generate the outputs as described in the
 [Get Started](/docs/dvclive/get-started#outputs).
 
-> 💡Without requiring additional modifications to your training code, you can
-> use DVCLive alongside DVC. See
-> [DVCLive with DVC](/doc/dvclive/dvclive-with-dvc) for more info.
+<admon type="tip">
+
+Without requiring additional modifications to your training code, you can use
+DVCLive alongside DVC. See [DVCLive with DVC](/doc/dvclive/dvclive-with-dvc) for
+more info.
+
+</admon>

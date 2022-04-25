@@ -92,17 +92,36 @@ using:
 $ dvc checkout --relink
 ```
 
-## HTTP Git authentication is not supported {#git-auth}
+## DVC can only authenticate with Git remotes using SSH URLs {#git-auth}
 
 [Experiment sharing](/doc/user-guide/experiment-management/sharing-experiments)
-commands accept a `git_remote` argument. In order to access the Git remote, you
-may need to authenticate for _write_ (`dvc exp push`) or _read_ (`dvc exp list`,
+commands accept a `git_remote` argument. You may need to authenticate to use the
+Git remote, for _write_ (`dvc exp push`) or _read_ (`dvc exp list`,
 `dvc exp pull`) permissions.
 
 DVC does not currently support authentication with [Git credentials]. This means
 that unless the Git server allows unauthenticated HTTP write/read, you should
-use an [SSH Git URL] when listing, pulling or pushing experiments.
+use an [SSH Git URL] for Git remotes used for listing, pulling or pushing
+experiments.
 
 [git credentials]: https://git-scm.com/docs/gitcredentials
 [ssh git url]:
   https://git-scm.com/book/en/v2/Git-on-the-Server-The-Protocols#_the_protocols
+
+## Could not open pickled 'index/md5/links' cache {#pickle}
+
+You may encounter this error when using DVC on different Python versions with
+the same <abbr>DVC project</abbr> directory, for example having created the
+project on Python 3.8. in one environment and later attempting to update it from
+a Python 3.7 env. This is due to temporary [internal directories] that can be
+incompatible with older Python versions once created.
+
+In these rare situations, it is safe to remove the corresponding tmp directory
+and retry the DVC command. Specifically, one of:
+
+- `.dvc/tmp/index`
+- `.dvc/tmp/md5s`
+- `.dvc/tmp/links`
+
+[internal directories]:
+  https://dvc.org/doc/user-guide/project-structure/internal-files

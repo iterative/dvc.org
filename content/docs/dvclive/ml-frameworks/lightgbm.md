@@ -1,17 +1,12 @@
 # LightGBM
 
-DVCLive allows you to easily add experiment tracking capabilities to your
-LightGBM projects.
-
-## About LightGBM
-
-[LightGBM](https://lightgbm.readthedocs.io/en/latest/) is a gradient boosting
-framework that uses tree based learning algorithms.
+DVCLive allows you to add experiment tracking capabilities to your
+[LightGBM](https://lightgbm.readthedocs.io/en/latest/) projects.
 
 ## Usage
 
 To start using DVCLive you just need to add a few lines to your training code in
-**any** LightGBM project.
+**any** [LightGBM](https://lightgbm.readthedocs.io/en/latest/) project.
 
 You just need to add the
 [`DvcLiveCallback`](https://github.com/iterative/dvclive/blob/master/dvclive/lgbm.py)
@@ -31,12 +26,16 @@ lightgbm.train(
 +   callbacks=[DvcLiveCallback()])
 ```
 
-This will generate the metrics logs and summaries as described in the
+This will generate the outputs as described in the
 [Get Started](/docs/dvclive/get-started#outputs).
 
-> 💡Without requiring additional modifications to your training code, you can
-> use DVCLive alongside DVC. See
-> [DVCLive with DVC](/doc/dvclive/dvclive-with-dvc) for more info.
+<admon type="tip">
+
+Without requiring additional modifications to your training code, you can use
+DVCLive alongside DVC. See [DVCLive with DVC](/doc/dvclive/dvclive-with-dvc) for
+more info.
+
+</admon>
 
 ## Parameters
 
@@ -68,6 +67,6 @@ lightgbm.train(
     valid_sets=[validation_data],
     num_round=5,
     callbacks=[DvcLiveCallback(
-      path="custom_path",
-      summary=False)])
+      model_file="lgbm_model.txt",
+      path="custom_path")])
 ```

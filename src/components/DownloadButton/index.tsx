@@ -2,17 +2,17 @@ import React, { useRef, useEffect, useCallback, useState } from 'react'
 import cn from 'classnames'
 
 import TwoRowsButton from '../TwoRowsButton'
-import Link from '../Link'
+import Link from 'gatsby-theme-iterative-docs/src/components/Link'
 
-import isClient from '../../utils/front/isClient'
-import { logEvent } from '../../utils/front/ga'
+import isClient from 'gatsby-theme-iterative-docs/src/utils/front/isClient'
+import { logEvent } from 'gatsby-theme-iterative-docs/src/utils/front/plausible'
 
 import * as styles from './styles.module.css'
 
-const VERSION = `2.9.2`
+const VERSION = `2.10.1`
 
 enum OS {
-  UNKNOWN = '...',
+  UNKNOWN = 'unknown',
   OSX = 'osx',
   WINDOWS = 'win',
   LINUX = 'linux',
@@ -129,7 +129,7 @@ const DownloadButton: React.FC<IDownloadButtonProps> = ({ openTop }) => {
       setOpened(prev => {
         if (!isClicked) {
           setClicked(true)
-          logEvent('button', 'download')
+          logEvent('Download Button')
         }
 
         return !prev
@@ -138,7 +138,7 @@ const DownloadButton: React.FC<IDownloadButtonProps> = ({ openTop }) => {
   )
   const download = (os: OS): void => {
     setOpened(false)
-    logEvent('download', os)
+    logEvent('Download Button', { OS: os })
   }
 
   useEffect(() => {

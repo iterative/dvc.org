@@ -44,18 +44,17 @@ operation.
 - `.dvc/tmp/md5s`: This directory is used for optimization. It contains a SQLite
   state database that stores hash values for files tracked in a DVC project. It
   also saves the corresponding timestamps and inodes to avoid unnecessary file
-  hash computations. <sup>[note 2](#sqlite-default)</sup>
+  hash computations.
 
   > This parent location may be overridden with `dvc config state.dir`.
 
-- `.dvc/tmp/links`: This directory is used to cleanup your workspace when
+- `.dvc/tmp/links`: This directory is used to clean up your workspace when
   calling `dvc checkout`. It contains a SQLite state database that stores a list
   of file links created by DVC (from cache to <abbr>workspace</abbr>).
-  <sup>[note 2](#sqlite-default)</sup>
 
   > This parent location may be overridden with `dvc config state.dir`.
 
-- `.dvc/tmp/updater`: This file is used store the latest available version of
+- `.dvc/tmp/updater`: This file is used to store the latest available version of
   DVC. It's used to remind the user to upgrade when the installed version is
   behind.
 
@@ -68,7 +67,10 @@ operation.
   parallel
 
 - `.dvc/tmp/exps`: This directory will contain workspace copies used for
-  temporary or parallel <abbr>experiments</abbr> (see `dvc exp run`).
+  temporary or [queued experiments].
+
+[queued experiments]:
+  /doc/user-guide/experiment-management/running-experiments#the-experiments-queue
 
 ## Structure of the cache directory
 
@@ -123,7 +125,7 @@ The resulting cache dir looks like this:
 ```
 
 The files in the directory are cached normally. The directory itself gets a
-similar entry, which with the `.dir` extension. It contains the mapping of files
+similar entry, with the `.dir` extension. It contains the mapping of files
 inside (as a JSON array), identified by their hash values:
 
 ```dvc
@@ -134,7 +136,7 @@ $ cat .dvc/cache/6f/db5336fce0dbfd669f83065f107551.dir
 
 That's how DVC knows that the other two cached files belong in the directory.
 
-### Run-cache
+## Run-cache
 
 `dvc exp run` and `dvc repro` by default populate and reutilize a log of stages
 that have been run in the project. It is found in the `runs/` directory inside

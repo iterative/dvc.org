@@ -2,7 +2,9 @@
 
 Although DVC uses minimal resources to keep track of the experiments, they may
 clutter tables and the workspace. DVC allows to remove specific experiments from
-the workspace or delete all not-yet-persisted experiments at once.
+the workspace or delete the ones that are not [final] yet.
+
+[final]: /doc/user-guide/experiment-management/persisting-experiments
 
 ## Removing specific experiments
 
@@ -28,10 +30,13 @@ these to keep rather than which of these to remove. You can use `dvc exp gc` to
 select a set of experiments to keep and the rest of them are _garbage
 collected._
 
-This command takes a _scope_ argument. The scope can be `workspace`,
-`all-branches`, `all-tags`, `all-commits`. In garbage collection, the scope
-determines the experiments to _keep_, i.e., experiments out of the scope of the
-given flag are removed.
+This command takes a `scope` argument. It accepts "workspace", "all-branches",
+"all-tags", or "all-commits". This determines the experiments to _keep_, i.e.
+experiments not in scope are removed.
+
+> ⚠️ Note that experiment remains in the <abbr>cache</abbr> until you use
+> regular `dvc gc` separately to clean it up (if it's not needed by committed
+> versions).
 
 ### Keeping experiments in the workspace
 
@@ -77,19 +82,19 @@ $ dvc exp show --all-branches
 ```
 
 ```dvctable
-┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━━━━━┓
-┃ neutral:**Experiment**              ┃ neutral:**Created**      ┃    metric:**acc** ┃ param:**model.conv_units** ┃
-┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━━━━━┩
-│ workspace               │ -            │      - │ 64               │
-│ cnn-48                  │ 09:11 AM     │ 0.9131 │ 48               │
-│ main                    │ Jul 21, 2021 │ 0.9189 │ 16               │
-│ ├── dac711b [cnn-32]    │ 09:16 AM     │ 0.9152 │ 32               │
-│ ├── 7cd3ae7 [cnn-48]    │ 09:11 AM     │ 0.9131 │ 48               │
-│ ├── ab585b5 [cnn-24]    │ 09:06 AM     │ 0.9135 │ 24               │
-│ ├── 7d51b55 [exp-44136] │ 09:01 AM     │ 0.9151 │ 16               │
-│ └── 7feaa1c [exp-78ede] │ Aug 02, 2021 │ 0.9151 │ 16               │
-│ 8583124                 │ Jul 20, 2021 │ 0.9132 │ 17               │
-└─────────────────────────┴──────────────┴────────┴──────────────────┘
+ ────────────────────────────────────────────────────────────────────
+  neutral:**Experiment**                neutral:**Created**           metric:**acc**   param:**model.conv_units**
+ ────────────────────────────────────────────────────────────────────
+  workspace                 -                   -   64
+  cnn-48                    09:11 AM       0.9131   48
+  main                      Jul 21, 2021   0.9189   16
+  ├── dac711b [cnn-32]      09:16 AM       0.9152   32
+  ├── 7cd3ae7 [cnn-48]      09:11 AM       0.9131   48
+  ├── ab585b5 [cnn-24]      09:06 AM       0.9135   24
+  ├── 7d51b55 [exp-44136]   09:01 AM       0.9151   16
+  └── 7feaa1c [exp-78ede]   Aug 02, 2021   0.9151   16
+  8583124                   Jul 20, 2021   0.9132   17
+ ────────────────────────────────────────────────────────────────────
 ```
 
 Supplying `--all-branches` keeps only the experiments in branch tips. Any
@@ -105,14 +110,14 @@ Removed 6 experiments. To remove unused cache files use 'dvc gc'.
 The resulting `dvc exp show` table is as the following:
 
 ```dvctable
-┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━━━━━┓
-┃ neutral:**Experiment**              ┃ neutral:**Created**      ┃    metric:**acc** ┃ metric:**model.conv_units** ┃
-┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━━━━━┩
-│ workspace               │ -            │      - │ 64               │
-│ cnn-48                  │ 09:11 AM     │ 0.9131 │ 48               │
-│ main                    │ Jul 21, 2021 │ 0.9189 │ 16               │
-│ 8583124                 │ Jul 20, 2021 │ 0.9132 │ 17               │
-└─────────────────────────┴──────────────┴────────┴──────────────────┘
+ ────────────────────────────────────────────────────────────────────
+  neutral:**Experiment**                neutral:**Created**           metric:**acc**   metric:**model.conv_units**
+ ────────────────────────────────────────────────────────────────────
+  workspace                 -                   -   64
+  cnn-48                    09:11 AM       0.9131   48
+  main                      Jul 21, 2021   0.9189   16
+  8583124                   Jul 20, 2021   0.9132   17
+ ────────────────────────────────────────────────────────────────────
 ```
 
 ### Keeping experiments in all tags
@@ -126,18 +131,18 @@ $ dvc exp show --all-tags
 ```
 
 ```dvctable
-┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━━━━━━┓
-┃ neutral:**Experiment**              ┃    metric:**acc** ┃ metric:**model.conv_units**  ┃
-┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━━━━━━┩
-│ workspace               │ 0.9067 │ 16                │
-│ ├── 2fc4f81 [exp-a1b3c4]│ 0.9037 │ 48                │
-│ └── 21beb69 [exp-d4e3ff]│ 0.9367 │ 128               │
-│ my-experiments          │ 0.9067 │ 16                │
-│ ├── 2fc4f81 [cnn-32]    │ 0.9067 │ 32                │
-│ ├── 5bc84a3 [cnn-64]    │ 0.9158 │ 64                │
-│ ├── 206cba6 [cnn-96]    │ 0.9260 │ 96                │
-│ └── 21beb69 [cnn-128]   │ 0.9379 │ 128               │
-└─────────────────────────┴────────┴───────────────────┘
+ ─────────────────────────────────────────────────────
+  neutral:**Experiment**                   metric:**acc**   metric:**model.conv_units**
+ ─────────────────────────────────────────────────────
+  workspace                 0.9067   16
+  ├── 2fc4f81 [exp-a1b3c4]  0.9037   48
+  └── 21beb69 [exp-d4e3ff]  0.9367   128
+  my-experiments            0.9067   16
+  ├── 2fc4f81 [cnn-32]      0.9067   32
+  ├── 5bc84a3 [cnn-64]      0.9158   64
+  ├── 206cba6 [cnn-96]      0.9260   96
+  └── 21beb69 [cnn-128]     0.9379   128
+ ─────────────────────────────────────────────────────
 ```
 
 ```dvc
@@ -146,16 +151,16 @@ $ dvc exp show --all-tags
 ```
 
 ```dvctable
-┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━━━━━━┓
-┃ neutral:**Experiment**              ┃    metric:**acc** ┃ metric:**model.conv_units**  ┃
-┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━━━━━━┩
-│ workspace               │ 0.9067 │ 16                │
-│ my-experiments          │ 0.9067 │ 16                │
-│ ├── 2fc4f81 [cnn-32]    │ 0.9067 │ 32                │
-│ ├── 5bc84a3 [cnn-64]    │ 0.9158 │ 64                │
-│ ├── 206cba6 [cnn-96]    │ 0.9260 │ 96                │
-│ └── 21beb69 [cnn-128]   │ 0.9379 │ 128               │
-└─────────────────────────┴────────┴───────────────────┘
+ ─────────────────────────────────────────────────────
+  neutral:**Experiment**                   metric:**acc**   metric:**model.conv_units**
+ ─────────────────────────────────────────────────────
+  workspace                 0.9067   16
+  my-experiments            0.9067   16
+  ├── 2fc4f81 [cnn-32]      0.9067   32
+  ├── 5bc84a3 [cnn-64]      0.9158   64
+  ├── 206cba6 [cnn-96]      0.9260   96
+  └── 21beb69 [cnn-128]     0.9379   128
+ ─────────────────────────────────────────────────────
 ```
 
 ### Keeping experiments in all commits
@@ -221,14 +226,14 @@ $ dvc exp show
 ```
 
 ```dvctable
-┏━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━┓
-┃ neutral:**Experiment**   ┃ neutral:**Created**      ┃ metric:**param** ┃
-┡━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━┩
-│ workspace    │ -            │ -     │
-│ 04abbb7      │ Jul 21, 2021 │ -     │
-│ ├── *68808d5 │ 12:05 PM     │ 20    │
-│ └── *7b83744 │ 12:05 PM     │ 10    │
-└──────────────┴──────────────┴───────┘
+ ─────────────────────────────────────
+  neutral:**Experiment**     neutral:**Created**        metric:**param**
+ ─────────────────────────────────────
+  workspace      -              -
+  04abbb7        Jul 21, 2021   -
+  ├── *68808d5   12:05 PM       20
+  └── *7b83744   12:05 PM       10
+ ─────────────────────────────────────
 ```
 
 You can delete these queued experiments with `dvc exp remove --queue`.
@@ -239,10 +244,10 @@ $ dvc exp show
 ```
 
 ```dvctable
-┏━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━┓
-┃ neutral:**Experiment**   ┃ neutral:**Created**      ┃ metric:**param** ┃
-┡━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━┩
-│ workspace    │ -            │ -     │
-│ 04abbb7      │ Jul 21, 2021 │ -     │
-└──────────────┴──────────────┴───────┘
+ ─────────────────────────────────────
+  neutral:**Experiment**     neutral:**Created**        metric:**param**
+ ─────────────────────────────────────
+  workspace      -              -
+  04abbb7        Jul 21, 2021   -
+ ─────────────────────────────────────
 ```

@@ -1,24 +1,16 @@
 # Fast.ai
 
-DVCLive allows you to easily add experiment tracking capabilities to your Fastai
-projects.
-
-## About Fast.ai
-
-[Fast.ai](https://docs.fast.ai/) is a deep learning library which provides
-practitioners with high-level components that can quickly and easily provide
-state-of-the-art results in standard deep learning domains, and provides
-researchers with low-level components that can be mixed and matched to build new
-approaches.
+DVCLive allows you to add experiment tracking capabilities to your
+[Fast.ai](https://docs.fast.ai/) projects.
 
 ## Usage
 
-To start using DVCLive you just need to add a few lines to your training code in
-**any** Fast.ai project.
+To start using DVCLive, add a few lines to your training code in **any**
+[Fast.ai](https://docs.fast.ai/) project.
 
-You just need to add the
+Include the
 [`DvcLiveCallback`](https://github.com/iterative/dvclive/blob/master/dvclive/fastai.py)
-to the callbacks list passed to your
+int the callbacks list passed to your
 [`Learner`](https://docs.fast.ai/learner.html#Learner):
 
 ```git
@@ -33,12 +25,16 @@ learn.fit_one_cycle(
 +  cbs=[DvcLiveCallback()])
 ```
 
-This will generate the metrics logs and summaries as described in the
+This will generate the outputs as described in the
 [Get Started](/docs/dvclive/get-started#outputs).
 
-> 💡Without requiring additional modifications to your training code, you can
-> use DVCLive alongside DVC. See
-> [DVCLive with DVC](/doc/dvclive/dvclive-with-dvc) for more info.
+<admon type="tip">
+
+Without requiring additional modifications to your training code, you can use
+DVCLive alongside DVC. See [DVCLive with DVC](/doc/dvclive/dvclive-with-dvc) for
+more info.
+
+</admon>
 
 ## Parameters
 
@@ -58,7 +54,7 @@ from dvclive.fastai import DvcLiveCallback
 learn = tabular_learner(data_loader, metrics=accuracy)
 learn.fit_one_cycle(
   n_epoch=2,
-  cbs=[DvcLiveCallback(model_file='model.pth')])
+  cbs=[DvcLiveCallback(model_file="model.pth")])
 ```
 
 - Using `**kwargs` to customize [`Live`](/docs/dvclive/api-reference/live).
@@ -69,5 +65,5 @@ from dvclive.fastai import DvcLiveCallback
 learn = tabular_learner(data_loader, metrics=accuracy)
 learn.fit_one_cycle(
   n_epoch=2,
-  cbs=[DvcLiveCallback(path='custom_path', summary=False)])
+  cbs=[DvcLiveCallback(model_file="model.pth", path="custom_path")])
 ```

@@ -64,7 +64,7 @@ Benefits of our approach include:
 
 - **Collaboration**: Easily distribute your project development and share its
   data [internally](/doc/user-guide/how-to/share-a-dvc-cache) and
-  [remotely](/doc/use-cases/sharing-data-and-model-files), or
+  [remotely](/doc/command-reference/remote), or
   [reuse](/doc/start/data-and-model-access) it in other places.
 
 - **Data compliance**: Review data modification attempts as Git

@@ -126,9 +126,9 @@ include:
   automation like running a data pipeline using `cron`.
 
 In this mode, DVC features related to versioning are not available. For example
-automatic creation and updating of `.gitignore` files on `dvc add` or `dvc run`,
-as well as `dvc diff` and `dvc metrics diff`, which require Git revisions to
-compare.
+automatic creation and updating of `.gitignore` files on `dvc add` or
+`dvc stage add`, as well as `dvc diff` and `dvc metrics diff`, which require Git
+revisions to compare.
 
 DVC sets the `core.no_scm` config option value to `true` in the DVC
 [config](/doc/command-reference/config) when initialized this way. This means
@@ -183,9 +183,8 @@ Git. It contains data and model files, and will be managed by DVC.
 
 ```dvc
 $ cat .dvc/.gitignore
-/state
-/lock
-...
+/config.local
+/tmp
 /cache
 ```
 

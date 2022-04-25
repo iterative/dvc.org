@@ -15,25 +15,27 @@ positional arguments:
 
 ## Description
 
-Makes a named Git
-[`branch`](https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging)
-containing the target `experiment` (making it
-[persistent](/doc/user-guide/experiment-management#persistent-experiments)). For
-[checkpoint experiments](/doc/command-reference/exp/run#checkpoints), the new
-branch will contain multiple commits (the checkpoints).
+Makes a given Git [`branch`] containing the target `experiment`. This makes the
+experiment into a [regular commit], or several in the case of [checkpoint
+experiments] (one per checkpoint).
 
 The new `branch` will be based on the experiment's parent commit (`HEAD` at the
 time that the experiment was run). Note that DVC **does not** switch into the
 new `branch` automatically.
 
 `dvc exp branch` is useful to make an experiment persistent without modifying
-the workspace, so they can be continued,
-[stored, and shared](https://dvc.org/doc/use-cases/sharing-data-and-model-files)
-in a normal Git + DVC workflow.
+the workspace so they can be continued, [stored and shared] in a normal Git +
+DVC workflow.
 
 To switch into the new branch, use `git checkout branch` and `dvc checkout`. Or
 use `git merge branch` and `dvc repro` to combine it with your current project
 version.
+
+[`branch`]:
+  https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging
+[regular commit]: /doc/user-guide/experiment-management/persisting-experiments
+[checkpoint experiments]: /doc/command-reference/exp/run#checkpoints
+[stored and shared]: /doc/start/data-and-model-versioning#storing-and-sharing
 
 ## Options
 
@@ -54,15 +56,18 @@ Let's say we have run 3 experiments in our project:
 
 ```dvc
 $ dvc exp show --include-params=featurize
-┏━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━┓
-┃ Experiment            ┃ Created      ┃     auc ┃ featurize.max_features ┃ featurize.ngrams ┃
-┡━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━┩
-│ workspace             │ -            │ 0.61314 │ 1500                   │ 2                │
-│ 10-bigrams-experiment │ Jun 20, 2020 │ 0.61314 │ 1500                   │ 2                │
-│ ├── exp-e6c97         │ Oct 21, 2020 │ 0.61314 │ 1500                   │ 2                │
-│ ├── exp-1dad0         │ Oct 09, 2020 │ 0.57756 │ 2000                   │ 2                │
-│ └── exp-1df77         │ Oct 09, 2020 │ 0.51676 │ 500                    │ 2                │
-└───────────────────────┴──────────────┴─────────┴────────────────────────┴──────────────────┘
+```
+
+```dvctable
+ ────────────────────────────────────────────────────────────────────────────────────────────
+  neutral:**Experiment**              neutral:**Created**           metric: **auc**   param:**featurize.max_features**   param:**featurize.ngrams**
+ ────────────────────────────────────────────────────────────────────────────────────────────
+  workspace               -              0.61314   1500                     2
+  10-bigrams-experiment   Jun 20, 2020   0.61314   1500                     2
+  ├── exp-e6c97           Oct 21, 2020   0.61314   1500                     2
+  ├── exp-1dad0           Oct 09, 2020   0.57756   2000                     2
+  └── exp-1df77           Oct 09, 2020   0.51676   500                      2
+ ────────────────────────────────────────────────────────────────────────────────────────────
 ```
 
 We may want to branch-off `exp-1dad0` for a separate experimentation process

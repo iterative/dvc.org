@@ -2,15 +2,9 @@
 
 _New in DVC 2.0_
 
-To track successive steps in a longer experiment, you can register checkpoints
-from your code at runtime. This is especially helpful in machine learning, for
-example to track the progress in deep learning techniques such as evolving
-neural networks.
-
-_Checkpoint experiments_ track a series of variations (the checkpoints) and
-their execution can be stopped and resumed as needed. You interact with them
-using the `--rev` and `--reset` options of `dvc exp run` (see also the
-`checkpoint` field in `dvc.yaml` `outs`). They can help you
+To track successive steps in a longer machine learning experiment, you can
+register checkpoints from your code at runtime, for example to track the
+progress with deep learning techniques. They can help you
 
 - implement the best practice in deep learning to save your model weights as
   checkpoints.
@@ -18,11 +12,28 @@ using the `--rev` and `--reset` options of `dvc exp run` (see also the
 - see when metrics start diverging and revert to the optimal checkpoint.
 - automate the process of tracking every training epoch.
 
-> Experiments and checkpoints are [implemented](/blog/experiment-refs) with
-> hidden Git experiment commits branches.
+Checkpoint [execution] can be stopped and resumed as needed. You interact with
+them using the `--rev` and `--reset` options of `dvc exp run` (see also the
+`checkpoint` field in `dvc.yaml` `outs`).
 
-Like with regular experiments, checkpoints can become persistent by
-[committing them to Git](#committing-checkpoints-to-git).
+[execution]:
+  /doc/user-guide/experiment-management/running-experiments#checkpoint-experiments
+
+<details>
+
+### ⚙️ How are checkpoints captured?
+
+Instead of a single reference like [regular experiments], checkpoint experiments
+have multiple commits under the custom Git reference (in `.git/refs/exps`),
+similar to a branch.
+
+[regular experiments]:
+  /doc/user-guide/experiment-management/experiments-overview
+
+</details>
+
+Like with regular experiments, checkpoints can be
+[committed to Git](#committing-checkpoints-to-git).
 
 This guide covers how to implement checkpoints in an ML project using DVC. We're
 going to train a model to identify handwritten digits based on the MNIST
@@ -62,38 +73,36 @@ running:
 $ pip install -r requirements.txt
 ```
 
-This will download all of the packages you need to run the example. Now you have
-everything you need to get started with experiments and checkpoints.
+This will download all of the packages you need to run the example.
+
+To initialize this project as a <abbr>DVC repository</abbr>, use `dvc init`. Now
+you have everything you need to get started with experiments and checkpoints.
 
 </details>
 
 ## Setting up a DVC pipeline
 
-DVC versions data and it also can version the ML model weights file as
-checkpoints during the training process. To enable this, you will need to set up
-a DVC pipeline to train your model.
+DVC can version data as well as the ML model weights file in checkpoints during
+the training process. To enable this, you will need to set up a
+[DVC pipeline](/doc/start/data-pipelines) to train your model.
 
-Adding a DVC pipeline only takes a few commands. At the root of the project,
-run:
-
-```dvc
-$ dvc init
-```
-
-This sets up the files you need for your DVC pipeline to work.
-
-Now we need to add a stage for training our model within a DVC pipeline. We'll
-do that with `dvc stage add`, which we'll explain more later. For now, run the
-following command:
+Now we need to add a training stage to `dvc.yaml` including `checkpoint: true`
+in its <abbr>output</abbr>. This tells DVC which <abbr>cached</abbr> output(s)
+to use to resume the experiment later (a circular dependency). We'll do this
+with `dvc stage add`.
 
 ```dvc
-$ dvc stage add --name train --deps data/MNIST --deps train.py \
-              --checkpoints model.pt --plots-no-cache predictions.json \
-              --params seed,lr,weight_decay --live dvclive python train.py
+$ dvc stage add --name train \
+                --deps data/MNIST --deps train.py \
+                --params seed,lr,weight_decay \
+                --checkpoints model.pt \
+                --plots-no-cache predictions.json \
+                --live dvclive \
+                python train.py
 ```
 
-The `--live dvclive` option enables our special logger [DVCLive](/doc/dvclive),
-which helps you register checkpoints from your code.
+💡 The `--live dvclive` option enables our special logger
+[DVCLive](/doc/dvclive), which helps you register checkpoints from code.
 
 The checkpoints need to be enabled in DVC at the pipeline level. The
 `-c / --checkpoint` option of the `dvc stage add` command defines the checkpoint
@@ -131,6 +140,9 @@ stages:
         summary: true
         html: true
 ```
+
+⚠️ Note that enabling checkpoints in a `dvc.yaml` file makes it incompatible
+with `dvc repro`.
 
 Before we go any further, this is a great point to add these changes to your Git
 history. You can do that with the following commands:
@@ -275,20 +287,20 @@ running:
 $ dvc exp show
 ```
 
-```
-┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━┳━━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━┓
-┃ Experiment              ┃ Created  ┃ step ┃ loss    ┃ acc    ┃ seed   ┃ lr     ┃ weight_decay ┃
-┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━╇━━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━┩
-│ workspace               │ -        │ 6    │ 0.33246 │ 0.9044 │ 473987 │ 0.0001 │ 0            │
-│ main                    │ 01:19 PM │ -    │ -       │ -      │ 473987 │ 0.0001 │ 0            │
-│ │ ╓ d90179a [exp-02ba1] │ 01:24 PM │ 6    │ 0.33246 │ 0.9044 │ 473987 │ 0.0001 │ 0            │
-│ │ ╟ 5eb4025             │ 01:24 PM │ 5    │ 0.36601 │ 0.8943 │ 473987 │ 0.0001 │ 0            │
-│ │ ╟ d665a31             │ 01:24 PM │ 4    │ 0.41666 │ 0.8777 │ 473987 │ 0.0001 │ 0            │
-│ │ ╟ 0911c09             │ 01:24 PM │ 3    │ 0.50835 │ 0.8538 │ 473987 │ 0.0001 │ 0            │
-│ │ ╟ d630b92             │ 01:23 PM │ 2    │ 0.72421 │ 0.8284 │ 473987 │ 0.0001 │ 0            │
-│ │ ╟ 963b396             │ 01:23 PM │ 1    │ 1.2537  │ 0.7738 │ 473987 │ 0.0001 │ 0            │
-│ ├─╨ d99d81c             │ 01:23 PM │ 0    │ 1.9428  │ 0.5715 │ 473987 │ 0.0001 │ 0            │
-└─────────────────────────┴──────────┴──────┴─────────┴────────┴────────┴────────┴──────────────┘
+```dvctable
+ ───────────────────────────────────────────────────────────────────────────────────────────────
+  neutral:**Experiment**                neutral:**Created**    neutral:**step**   metric:**loss**      metric:**acc**      param:**seed**     param:**lr**       param:**weight_decay**
+ ───────────────────────────────────────────────────────────────────────────────────────────────
+  workspace                 -          6      0.33246   0.9044   473987   0.0001   0
+  main                      01:19 PM   -      -         -        473987   0.0001   0
+  │ ╓ d90179a [exp-02ba1]   01:24 PM   6      0.33246   0.9044   473987   0.0001   0
+  │ ╟ 5eb4025               01:24 PM   5      0.36601   0.8943   473987   0.0001   0
+  │ ╟ d665a31               01:24 PM   4      0.41666   0.8777   473987   0.0001   0
+  │ ╟ 0911c09               01:24 PM   3      0.50835   0.8538   473987   0.0001   0
+  │ ╟ d630b92               01:23 PM   2      0.72421   0.8284   473987   0.0001   0
+  │ ╟ 963b396               01:23 PM   1      1.2537    0.7738   473987   0.0001   0
+  ├─╨ d99d81c               01:23 PM   0      1.9428    0.5715   473987   0.0001   0
+ ───────────────────────────────────────────────────────────────────────────────────────────────
 ```
 
 ## Starting from an existing checkpoint
@@ -324,27 +336,27 @@ $ dvc exp show
 
 You should seem something similar to this in your terminal.
 
-```
-┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━┳━━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━┓
-┃ Experiment              ┃ Created  ┃ step ┃ loss    ┃ acc    ┃ seed   ┃ lr     ┃ weight_decay ┃
-┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━╇━━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━┩
-│ workspace               │ -        │ 8    │ 0.83515 │ 0.8185 │ 473987 │ 1e-05  │ 0            │
-│ main                    │ 01:19 PM │ -    │ -       │ -      │ 473987 │ 0.0001 │ 0            │
-│ │ ╓ 726d32f [exp-3b52b] │ 01:38 PM │ 8    │ 0.83515 │ 0.8185 │ 473987 │ 1e-05  │ 0            │
-│ │ ╟ 3f8efc5             │ 01:38 PM │ 7    │ 0.88414 │ 0.814  │ 473987 │ 1e-05  │ 0            │
-│ │ ╟ 23f04c2             │ 01:37 PM │ 6    │ 0.9369  │ 0.8105 │ 473987 │ 1e-05  │ 0            │
-│ │ ╟ d810ed0             │ 01:37 PM │ 5    │ 0.99302 │ 0.804  │ 473987 │ 1e-05  │ 0            │
-│ │ ╟ 3e46262             │ 01:37 PM │ 4    │ 1.0528  │ 0.799  │ 473987 │ 1e-05  │ 0            │
-│ │ ╟ bf580a5             │ 01:37 PM │ 3    │ 1.1164  │ 0.7929 │ 473987 │ 1e-05  │ 0            │
-│ │ ╟ ea2d11b (963b396)   │ 01:37 PM │ 2    │ 1.1833  │ 0.7847 │ 473987 │ 1e-05  │ 0            │
-│ │ ╓ d90179a [exp-02ba1] │ 01:24 PM │ 6    │ 0.33246 │ 0.9044 │ 473987 │ 0.0001 │ 0            │
-│ │ ╟ 5eb4025             │ 01:24 PM │ 5    │ 0.36601 │ 0.8943 │ 473987 │ 0.0001 │ 0            │
-│ │ ╟ d665a31             │ 01:24 PM │ 4    │ 0.41666 │ 0.8777 │ 473987 │ 0.0001 │ 0            │
-│ │ ╟ 0911c09             │ 01:24 PM │ 3    │ 0.50835 │ 0.8538 │ 473987 │ 0.0001 │ 0            │
-│ │ ╟ d630b92             │ 01:23 PM │ 2    │ 0.72421 │ 0.8284 │ 473987 │ 0.0001 │ 0            │
-│ │ ╟ 963b396             │ 01:23 PM │ 1    │ 1.2537  │ 0.7738 │ 473987 │ 0.0001 │ 0            │
-│ ├─╨ d99d81c             │ 01:23 PM │ 0    │ 1.9428  │ 0.5715 │ 473987 │ 0.0001 │ 0            │
-└─────────────────────────┴──────────┴──────┴─────────┴────────┴────────┴────────┴──────────────┘
+```dvctable
+ ───────────────────────────────────────────────────────────────────────────────────────────────
+  neutral:**Experiment**                neutral:**Created**    neutral:**step**   metric:**loss**      metric:**acc**      param:**seed**     param:**lr**       param:**weight_decay**
+ ───────────────────────────────────────────────────────────────────────────────────────────────
+  workspace                 -          8      0.83515   0.8185   473987   1e-05    0
+  main                      01:19 PM   -      -         -        473987   0.0001   0
+  │ ╓ 726d32f [exp-3b52b]   01:38 PM   8      0.83515   0.8185   473987   1e-05    0
+  │ ╟ 3f8efc5               01:38 PM   7      0.88414   0.814    473987   1e-05    0
+  │ ╟ 23f04c2               01:37 PM   6      0.9369    0.8105   473987   1e-05    0
+  │ ╟ d810ed0               01:37 PM   5      0.99302   0.804    473987   1e-05    0
+  │ ╟ 3e46262               01:37 PM   4      1.0528    0.799    473987   1e-05    0
+  │ ╟ bf580a5               01:37 PM   3      1.1164    0.7929   473987   1e-05    0
+  │ ╟ ea2d11b (963b396)     01:37 PM   2      1.1833    0.7847   473987   1e-05    0
+  │ ╓ d90179a [exp-02ba1]   01:24 PM   6      0.33246   0.9044   473987   0.0001   0
+  │ ╟ 5eb4025               01:24 PM   5      0.36601   0.8943   473987   0.0001   0
+  │ ╟ d665a31               01:24 PM   4      0.41666   0.8777   473987   0.0001   0
+  │ ╟ 0911c09               01:24 PM   3      0.50835   0.8538   473987   0.0001   0
+  │ ╟ d630b92               01:23 PM   2      0.72421   0.8284   473987   0.0001   0
+  │ ╟ 963b396               01:23 PM   1      1.2537    0.7738   473987   0.0001   0
+  ├─╨ d99d81c               01:23 PM   0      1.9428    0.5715   473987   0.0001   0
+ ───────────────────────────────────────────────────────────────────────────────────────────────
 ```
 
 The existing checkpoint is referenced at the beginning of the new experiment.
@@ -403,34 +415,34 @@ $ dvc exp run --reset
 This resets all of the existing checkpoints and re-runs the code to generate a
 new set of checkpoints under a new experiment branch.
 
-```
-┏━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━┳━━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━━━━━┓
-┃ Experiment              ┃ Created  ┃ step ┃ loss    ┃ acc    ┃ seed   ┃ lr     ┃ weight_decay ┃
-┡━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━╇━━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━━━━━┩
-│ workspace               │ -        │ 6    │ 2.0912  │ 0.5607 │ 473987 │ 1e-05  │ 0            │
-│ main                    │ 01:19 PM │ -    │ -       │ -      │ 473987 │ 0.0001 │ 0            │
-│ │ ╓ b21235e [exp-6c6fa] │ 01:56 PM │ 6    │ 2.0912  │ 0.5607 │ 473987 │ 1e-05  │ 0            │
-│ │ ╟ 53e5d64             │ 01:56 PM │ 5    │ 2.1385  │ 0.5012 │ 473987 │ 1e-05  │ 0            │
-│ │ ╟ 7e0e0fe             │ 01:56 PM │ 4    │ 2.1809  │ 0.4154 │ 473987 │ 1e-05  │ 0            │
-│ │ ╟ f7eafc5             │ 01:55 PM │ 3    │ 2.2177  │ 0.2518 │ 473987 │ 1e-05  │ 0            │
-│ │ ╟ dcfa3ff             │ 01:55 PM │ 2    │ 2.2486  │ 0.1264 │ 473987 │ 1e-05  │ 0            │
-│ │ ╟ bfd54b4             │ 01:55 PM │ 1    │ 2.2736  │ 0.1015 │ 473987 │ 1e-05  │ 0            │
-│ ├─╨ 189bbcb             │ 01:55 PM │ 0    │ 2.2936  │ 0.0892 │ 473987 │ 1e-05  │ 0            │
-│ │ ╓ 726d32f [exp-3b52b] │ 01:38 PM │ 8    │ 0.83515 │ 0.8185 │ 473987 │ 1e-05  │ 0            │
-│ │ ╟ 3f8efc5             │ 01:38 PM │ 7    │ 0.88414 │ 0.814  │ 473987 │ 1e-05  │ 0            │
-│ │ ╟ 23f04c2             │ 01:37 PM │ 6    │ 0.9369  │ 0.8105 │ 473987 │ 1e-05  │ 0            │
-│ │ ╟ d810ed0             │ 01:37 PM │ 5    │ 0.99302 │ 0.804  │ 473987 │ 1e-05  │ 0            │
-│ │ ╟ 3e46262             │ 01:37 PM │ 4    │ 1.0528  │ 0.799  │ 473987 │ 1e-05  │ 0            │
-│ │ ╟ bf580a5             │ 01:37 PM │ 3    │ 1.1164  │ 0.7929 │ 473987 │ 1e-05  │ 0            │
-│ │ ╟ ea2d11b (963b396)   │ 01:37 PM │ 2    │ 1.1833  │ 0.7847 │ 473987 │ 1e-05  │ 0            │
-│ │ ╓ d90179a [exp-02ba1] │ 01:24 PM │ 6    │ 0.33246 │ 0.9044 │ 473987 │ 0.0001 │ 0            │
-│ │ ╟ 5eb4025             │ 01:24 PM │ 5    │ 0.36601 │ 0.8943 │ 473987 │ 0.0001 │ 0            │
-│ │ ╟ d665a31             │ 01:24 PM │ 4    │ 0.41666 │ 0.8777 │ 473987 │ 0.0001 │ 0            │
-│ │ ╟ 0911c09             │ 01:24 PM │ 3    │ 0.50835 │ 0.8538 │ 473987 │ 0.0001 │ 0            │
-│ │ ╟ d630b92             │ 01:23 PM │ 2    │ 0.72421 │ 0.8284 │ 473987 │ 0.0001 │ 0            │
-│ │ ╟ 963b396             │ 01:23 PM │ 1    │ 1.2537  │ 0.7738 │ 473987 │ 0.0001 │ 0            │
-│ ├─╨ d99d81c             │ 01:23 PM │ 0    │ 1.9428  │ 0.5715 │ 473987 │ 0.0001 │ 0            │
-└─────────────────────────┴──────────┴──────┴─────────┴────────┴────────┴────────┴──────────────┘
+```dvctable
+ ───────────────────────────────────────────────────────────────────────────────────────────────
+  neutral:**Experiment**                neutral:**Created**    neutral:**step**   metric:**loss**      metric:**acc**      param:**seed**     param:**lr**       param:**weight_decay**
+ ───────────────────────────────────────────────────────────────────────────────────────────────
+  workspace                 -          6      2.0912    0.5607   473987   1e-05    0
+  main                      01:19 PM   -      -         -        473987   0.0001   0
+  │ ╓ b21235e [exp-6c6fa]   01:56 PM   6      2.0912    0.5607   473987   1e-05    0
+  │ ╟ 53e5d64               01:56 PM   5      2.1385    0.5012   473987   1e-05    0
+  │ ╟ 7e0e0fe               01:56 PM   4      2.1809    0.4154   473987   1e-05    0
+  │ ╟ f7eafc5               01:55 PM   3      2.2177    0.2518   473987   1e-05    0
+  │ ╟ dcfa3ff               01:55 PM   2      2.2486    0.1264   473987   1e-05    0
+  │ ╟ bfd54b4               01:55 PM   1      2.2736    0.1015   473987   1e-05    0
+  ├─╨ 189bbcb               01:55 PM   0      2.2936    0.0892   473987   1e-05    0
+  │ ╓ 726d32f [exp-3b52b]   01:38 PM   8      0.83515   0.8185   473987   1e-05    0
+  │ ╟ 3f8efc5               01:38 PM   7      0.88414   0.814    473987   1e-05    0
+  │ ╟ 23f04c2               01:37 PM   6      0.9369    0.8105   473987   1e-05    0
+  │ ╟ d810ed0               01:37 PM   5      0.99302   0.804    473987   1e-05    0
+  │ ╟ 3e46262               01:37 PM   4      1.0528    0.799    473987   1e-05    0
+  │ ╟ bf580a5               01:37 PM   3      1.1164    0.7929   473987   1e-05    0
+  │ ╟ ea2d11b (963b396)     01:37 PM   2      1.1833    0.7847   473987   1e-05    0
+  │ ╓ d90179a [exp-02ba1]   01:24 PM   6      0.33246   0.9044   473987   0.0001   0
+  │ ╟ 5eb4025               01:24 PM   5      0.36601   0.8943   473987   0.0001   0
+  │ ╟ d665a31               01:24 PM   4      0.41666   0.8777   473987   0.0001   0
+  │ ╟ 0911c09               01:24 PM   3      0.50835   0.8538   473987   0.0001   0
+  │ ╟ d630b92               01:23 PM   2      0.72421   0.8284   473987   0.0001   0
+  │ ╟ 963b396               01:23 PM   1      1.2537    0.7738   473987   0.0001   0
+  ├─╨ d99d81c               01:23 PM   0      1.9428    0.5715   473987   0.0001   0
+ ───────────────────────────────────────────────────────────────────────────────────────────────
 ```
 
 ## Committing checkpoints to Git

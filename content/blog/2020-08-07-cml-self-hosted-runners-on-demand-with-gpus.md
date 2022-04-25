@@ -75,7 +75,7 @@ $ curl -s -L https://nvidia.GitHub.io/nvidia-docker/gpgkey | sudo apt-key add - 
 You can test that your gpus are up and running with the following command:
 
 ```dvc
-$ docker run --gpus all dvcorg/cml-py3 nvidia-smi
+$ docker run --gpus all iterativeai/cml:0-dvc2-base1-gpu nvidia-smi
 ```
 
 We should see something like this:
@@ -83,15 +83,10 @@ We should see something like this:
 
 ### 2) Start your self-hosted runner
 
-With CML docker images launching your own self-hosted runner is very easy. They
-comes in two flavours, depending if you need python 2 or 3:
-
-- dvcorg/cml:latest
-- dvcorg/cml-py3:latest
-
-These images have CML and DVC preinstalled (among other perks), plus CUDA
-drivers. That's all. You can clone these images and add your own dependencies to
-better mimic your own production environment.
+With CML docker images launching your own self-hosted runner is very easy. These
+images have CML and DVC preinstalled (among other perks), plus CUDA drivers.
+That's all. You can clone these images and add your own dependencies to better
+mimic your own production environment.
 
 ```dvc
 $ docker run --name myrunner -d --gpus all \
@@ -99,7 +94,7 @@ $ docker run --name myrunner -d --gpus all \
     -e RUNNER_LABELS=cml,gpu \
     -e RUNNER_REPO=$my_repo_url \
     -e repo_token=$my_repo_token \
-    dvcorg/cml-py3
+    iterativeai/cml:0-dvc2-base1-gpu runner
 ```
 
 where:
@@ -130,30 +125,25 @@ train:
   tags:
     - cml
     - gpu
-
   script:
     - echo 'Hi from CML!' >> report.md
-    - cml-send-comment report.md
+    - cml send-comment report.md
 ```
 
 GitHub
 
 ```yaml
 name: train-my-model
-
 on: [push]
-
 jobs:
   train:
     runs-on: [self-hosted, cml, gpu]
-
     steps:
       - uses: actions/checkout@v2
-
       - name: cml_run
         run: |
           echo 'Hi from CML!' >> report.md
-          cml-send-comment report.md
+          cml send-comment report.md
 ```
 
 Congrats! At this point you have done all the steps to have your GPUs up and

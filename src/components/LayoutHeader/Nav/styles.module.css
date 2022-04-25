@@ -4,6 +4,10 @@
   flex-direction: row;
   align-items: center;
 
+  ul {
+    list-style-type: none;
+  }
+
   @media (--xs-scr) {
     display: none;
   }

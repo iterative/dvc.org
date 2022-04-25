@@ -38,9 +38,13 @@ working directory with its original file name e.g. `data.txt` (or to a location
 provided with `--out`). An _import `.dvc` file_ is created in the same location
 e.g. `data.txt.dvc` – similar to using `dvc add` after downloading the data.
 
-(ℹ️) DVC won't push data imported from other DVC repos to
+<admon type="info">
+
+DVC won't push data imported from other DVC repos to
 [remote storage](/doc/command-reference/remote). `dvc pull` will download from
 the original source.
+
+</admon>
 
 The `url` argument specifies the address of the DVC or Git repository containing
 the data source. Both HTTP and SSH protocols are supported (e.g.
@@ -59,7 +63,7 @@ targets must be found in a `dvc.yaml` or `.dvc` file of the repo.
 a Git server). In such a `.dvc` file, the `deps` field specifies the `url` and
 data `path`, and the `outs` field contains the corresponding local path in the
 <abbr>workspace</abbr>. It records enough metadata about the imported data to
-enable DVC efficiently determining whether the local copy is out of date.
+enable DVC to efficiently determine whether the local copy is out of date.
 
 To actually [version the data](/doc/start/data-and-model-versioning), `git add`
 (and `git commit`) the import `.dvc` file.
@@ -80,10 +84,9 @@ To actually [version the data](/doc/start/data-and-model-versioning), `git add`
 
 ## Options
 
-- `-o <path>`, `--out <path>` - specify a path to the desired location in the
+- `-o <path>`, `--out <path>` - specify a `path` to the desired location in the
   workspace to place the downloaded file or directory (instead of using the
-  current working directory). Directories specified in the path must already
-  exist, otherwise this command will fail.
+  current working directory).
 
 - `--file <filename>` - specify a path and/or file name for the `.dvc` file
   created by this command (e.g. `--file stages/stage.dvc`). This overrides the
@@ -107,10 +110,9 @@ To actually [version the data](/doc/start/data-and-model-versioning), `git add`
   want to "DVCfy" this state of the project (see also `dvc commit`).
 
 - `-j <number>`, `--jobs <number>` - parallelism level for DVC to download data
-  from the remote. The default value is `4 * cpu_count()`. For SSH remotes, the
-  default is `4`. Using more jobs may speed up the operation. Note that the
-  default value can be set in the source repo using the `jobs` config option of
-  `dvc remote modify`.
+  from the remote. The default value is `4 * cpu_count()`. Using more jobs may
+  speed up the operation. Note that the default value can be set in the source
+  repo using the `jobs` config option of `dvc remote modify`.
 
 - `--desc <text>` - user description of the data (optional). This doesn't affect
   any DVC operations.
@@ -178,7 +180,7 @@ under `repo`:
 
 ```yaml
 deps:
-  - path: data/data.xml
+  - path: use-cases/cats-dogs
     repo:
       url: git@github.com:iterative/dataset-registry.git
       rev: cats-dogs-v1
@@ -193,7 +195,7 @@ will not have an effect on the import `.dvc` file. You may force-update it to a
 different commit with `dvc update --rev`:
 
 ```dvc
-$ dvc update --rev cats-dogs-v2
+$ dvc update --rev cats-dogs-v2 cats-dogs.dvc
 ```
 
 > In the above example, the value for `rev` in the new `.dvc` file will be
@@ -341,7 +343,7 @@ This will result in the following directory structure, which contains a chained
 import and a regular one:
 
 ```
-/repo/d
+/repo/c
 ├── training
 │   ├── data.csv
 │   └── labels

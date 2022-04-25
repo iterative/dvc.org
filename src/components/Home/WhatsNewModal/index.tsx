@@ -1,16 +1,22 @@
 /* eslint-disable jsx-a11y/no-noninteractive-tabindex */
 import React, { useEffect, useState } from 'react'
-import { StaticImage } from 'gatsby-plugin-image'
+import { graphql, useStaticQuery } from 'gatsby'
+import { GatsbyImage } from 'gatsby-plugin-image'
 import cn from 'classnames'
 import FocusLock from 'react-focus-lock'
 
-import Link from '../../Link'
+import Link from 'gatsby-theme-iterative-docs/src/components/Link'
 
 import { ReactComponent as CloseSvg } from '../../../../static/img/close-icon.svg'
 
 import * as styles from './styles.module.css'
 
 const WhatsNewModal: React.FC = () => {
+  const {
+    allBlogPost: {
+      nodes: [latestPost]
+    }
+  } = useStaticQuery(query)
   const [isModalOpen, setIsModalOpen] = useState(false)
   let pageCloseEventListener: () => void = () => null
   let keyupCloseEventListener: () => void = () => null
@@ -81,25 +87,22 @@ const WhatsNewModal: React.FC = () => {
             {isModalOpen && <CloseSvg width={20} height={20} />}
           </button>
           <div className={styles.modal}>
-            <Link
-              className={styles.title}
-              href="/blog/ml-experiment-versioning"
-            >
-              <h2>ML Experiment Versioning</h2>
+            <Link className={styles.title} href={latestPost.slug}>
+              <h2>{latestPost.title}</h2>
             </Link>
-            <Link href="/blog/ml-experiment-versioning">
-              <StaticImage
-                alt="a description of blog image"
-                src="../../../../static/uploads/images/2021-12-07/experiment-versioning-cover.png"
-                className={styles.image}
-                width={420}
-                objectFit="contain"
-              />
-            </Link>
+            {latestPost.picture && (
+              <Link href={latestPost.slug}>
+                <GatsbyImage
+                  className={styles.image}
+                  alt=""
+                  objectFit="contain"
+                  image={latestPost.picture.gatsbyImageData}
+                />
+              </Link>
+            )}
             <p className={styles.text}>
-              Versioning machine learning experiments combines the benefits of
-              version control and experiment tracking.{' '}
-              <Link href="/blog/ml-experiment-versioning">Read more.</Link>
+              {latestPost.description}{' '}
+              <Link href={latestPost.slug}>Read more.</Link>
             </p>
           </div>
         </div>
@@ -109,3 +112,18 @@ const WhatsNewModal: React.FC = () => {
 }
 
 export default WhatsNewModal
+
+const query = graphql`
+  query latestBlogPost {
+    allBlogPost(limit: 1, sort: { fields: [date], order: DESC }) {
+      nodes {
+        title
+        picture {
+          gatsbyImageData(width: 420)
+        }
+        description
+        slug
+      }
+    }
+  }
+`

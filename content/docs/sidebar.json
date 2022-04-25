@@ -84,10 +84,6 @@
         ]
       },
       {
-        "label": "Sharing Data and Model Files",
-        "slug": "sharing-data-and-model-files"
-      },
-      {
         "label": "CI/CD for Machine Learning",
         "slug": "ci-cd-for-machine-learning"
       },
@@ -95,6 +91,7 @@
         "label": "Fast and Secure Data Caching Hub",
         "slug": "fast-data-caching-hub"
       },
+      "experiment-tracking",
       "data-registries"
     ]
   },
@@ -132,7 +129,20 @@
         ]
       },
       {
-        "label": "How To",
+        "label": "Experiment Management",
+        "slug": "experiment-management",
+        "source": "experiment-management/index.md",
+        "children": [
+          "experiments-overview",
+          "running-experiments",
+          "comparing-experiments",
+          "sharing-experiments",
+          "persisting-experiments",
+          "cleaning-experiments",
+          "checkpoints"
+        ]
+      },
+      {
         "slug": "how-to",
         "source": false,
         "children": [
@@ -140,20 +150,8 @@
           "update-tracked-data",
           "add-deps-or-outs-to-a-stage",
           "merge-conflicts",
-          "share-a-dvc-cache"
-        ]
-      },
-      {
-        "label": "Experiment Management",
-        "slug": "experiment-management",
-        "source": "experiment-management/index.md",
-        "children": [
-          "running-experiments",
-          "comparing-experiments",
-          "sharing-experiments",
-          "persisting-experiments",
-          "cleaning-experiments",
-          "checkpoints"
+          "share-a-dvc-cache",
+          "share-many-experiments"
         ]
       },
       "setup-google-drive-remote",
@@ -163,25 +161,7 @@
         "label": "Managing External Data",
         "slug": "managing-external-data"
       },
-      {
-        "label": "Contributing",
-        "slug": "contributing",
-        "source": false,
-        "children": [
-          {
-            "label": "DVC Core Project",
-            "slug": "core"
-          },
-          {
-            "label": "Docs and Website",
-            "slug": "docs"
-          },
-          {
-            "label": "Writing Blog Posts",
-            "slug": "blog"
-          }
-        ]
-      },
+
       "running-dvc-on-windows",
       "troubleshooting",
       "related-technologies",
@@ -253,6 +233,10 @@
         "source": "exp/index.md",
         "children": [
           {
+            "label": "exp init",
+            "slug": "init"
+          },
+          {
             "label": "exp run",
             "slug": "run"
           },
@@ -261,12 +245,12 @@
             "slug": "show"
           },
           {
-            "label": "exp init",
-            "slug": "init"
-          },
-          {
             "label": "exp diff",
             "slug": "diff"
+          },
+          {
+            "label": "exp list",
+            "slug": "list"
           },
           {
             "label": "exp apply",
@@ -291,10 +275,6 @@
           {
             "label": "exp pull",
             "slug": "pull"
-          },
-          {
-            "label": "exp list",
-            "slug": "list"
           }
         ]
       },
@@ -506,6 +486,25 @@
     ]
   },
   {
+    "label": "Contributing",
+    "slug": "contributing",
+    "source": false,
+    "children": [
+      {
+        "label": "DVC Core Project",
+        "slug": "core"
+      },
+      {
+        "label": "Docs and Website",
+        "slug": "docs"
+      },
+      {
+        "label": "Writing Blog Posts",
+        "slug": "blog"
+      }
+    ]
+  },
+  {
     "label": "Changelog",
     "url": "https://github.com/iterative/dvc/releases",
     "type": "external"
@@ -560,7 +559,7 @@
             "slug": "prepare-repositories"
           },
           {
-            "label": "Views",
+            "label": "Views and Experiments",
             "slug": "views",
             "source": false,
             "children": [
@@ -570,21 +569,22 @@
                 "label": "Configure View",
                 "slug": "view-settings"
               },
+              {
+                "label": "Explore ML Experiments",
+                "slug": "explore-experiments"
+              },
+              {
+                "label": "Visualize and Compare",
+                "slug": "visualize-experiments"
+              },
+              "run-experiments",
               "share-view"
             ]
           },
-          {
-            "label": "Explore ML Experiments",
-            "slug": "explore-experiments"
-          },
-          {
-            "label": "Visualize and Compare",
-            "slug": "visualize-experiments"
-          },
-          "run-experiments",
           "teams",
           "account-management",
-          "install-github-app"
+          "install-github-app",
+          "connect-custom-gitlab-server"
         ]
       },
       "troubleshooting"
@@ -663,6 +663,14 @@
               {
                 "slug": "log",
                 "label": "log()"
+              },
+              {
+                "slug": "log_image",
+                "label": "log_image()"
+              },
+              {
+                "slug": "log_plot",
+                "label": "log_plot()"
               },
               {
                 "slug": "get_step",

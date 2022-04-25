@@ -1,7 +1,9 @@
 import cn from 'classnames'
 import React from 'react'
 
-import Link, { ILinkProps } from '../Link'
+import Link, {
+  ILinkProps
+} from 'gatsby-theme-iterative-docs/src/components/Link'
 
 import * as styles from './styles.module.css'
 

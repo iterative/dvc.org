@@ -19,45 +19,49 @@ positional arguments:
 
 ## Description
 
-Searches for changes in the existing tracked data and pipelines, either showing
-which files or directories have changed in the <abbr>workspace</abbr> and should
-be added or reproduced again (with `dvc add` or `dvc repro`); or differences
-between <abbr>cache</abbr> vs. [remote storage](/doc/command-reference/remote)
-(implying `dvc push` or `dvc pull` should be run to synchronize them). The
-_remote_ mode is triggered by using the `--cloud` or `--remote` options:
+Searches for changes in the existing tracked data and pipelines. In local mode,
+it shows which files or directories have changed in the <abbr>workspace</abbr>
+(thus could be [added](/doc/command-reference/add) or
+[reproduced](/doc/command-reference/repro) again). In remote mode, it reports
+the differences between <abbr>cache</abbr> vs. [remote storage] (`dvc push` or
+`dvc pull` could be used to synchronize these).
 
-| Mode   | Option     | Description                                                                                                                 |
-| ------ | ---------- | --------------------------------------------------------------------------------------------------------------------------- |
-| local  | _none_     | Comparisons are made between data files in the workspace and corresponding files in the cache directory (e.g. `.dvc/cache`) |
-| remote | `--remote` | Comparisons are made between the cache, and the given remote. Remote storage is defined using the `dvc remote` command.     |
-| remote | `--cloud`  | Comparisons are made between the cache, and the default remote (typically defined with `dvc remote --default`).             |
+| Mode   | Option            | Description                                                                                                                 |
+| ------ | ----------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| local  | _none_            | Comparisons are made between data files in the workspace and corresponding files in the cache directory (e.g. `.dvc/cache`) |
+| remote | `--remote` (`-r`) | Comparisons are made between the cache, and a given DVC remote.                                                             |
+| remote | `--cloud` (`-c`)  | Comparisons are made between the cache, and the [default remote].                                                           |
 
 Without arguments, this command checks all `dvc.yaml` and `.dvc` files to
-rebuild and validate pipeline(s). It then compares their <abbr>outputs</abbr>
-against the actual data files or directories in the workspace. Any `targets`
-given to this command limit what to show changes for. It accepts paths to
-tracked files or directories (including paths inside tracked directories),
-`.dvc` files, and stage names (found in `dvc.yaml`).
+rebuild and validate pipeline(s). It then compares <abbr>outputs</abbr> defined
+in these files against the actual data in the workspace.
+
+Any `targets` given to this command limit what to show changes for. It accepts
+paths to tracked files or directories (including paths inside tracked
+directories), `.dvc` files, and stage names (found in `dvc.yaml`).
 
 The `--all-branches`, `--all-tags`, and `--all-commits` options enable comparing
 DVC-tracked files referenced in multiple Git commits at once.
 
 If no differences are detected, `dvc status` prints
-`Data and pipelines are up to date.` or
+`Data and pipelines are up to date`, or
 `Cache and remote 'myremote' are in sync` (if using the `-c` or `-r` options are
 used). If differences are detected, the changes in <abbr>dependencies</abbr>
-and/or <abbr>outputs</abbr> for each stage that differs are listed. For each
-item listed, either the file name or hash is shown, along with a _state
-description_, as detailed below:
+and/or <abbr>outputs</abbr> for each stage are listed. For each item listed,
+either the file name or hash is shown, along with a state description, as
+detailed bellow.
+
+[remote storage]: /doc/command-reference/remote
+[default remote]: /doc/command-reference/remote/default
 
 ### Local workspace status
 
 - _changed checksum_ means that the `.dvc` file hash has changed (e.g. someone
   manually edited it).
 
-- _always changed_ means that this is a `.dvc` file with no dependencies (see
-  `dvc add`) or that the stage in `dvc.yaml` has the `always_changed: true`
-  value set (see `--always-changed` option in `dvc run`).
+- _always changed_ means that this stage (in `dvc.yaml`) has neither
+  dependencies nor outputs, or that the `always_changed` field set to `true`
+  (see `dvc stage add --always-changed`).
 
 - _changed deps_ or _changed outs_ means that there are changes in dependencies
   or outputs tracked by the stage or `.dvc` file. Depending on the use case,
@@ -90,9 +94,7 @@ description_, as detailed below:
   remote storage.
 
 For _new_ and _deleted_ data, the cache is different from remote storage.
-Bringing the two into sync requires `dvc pull` or `dvc push`. For the typical
-process to update the workspace, see
-[Sharing Data And Model Files](/doc/use-cases/sharing-data-and-model-files).
+Bringing the two into sync requires `dvc pull` or `dvc push`.
 
 For _missing_ data, there's nothing to retrieve from storage. This can happen
 for example in fresh <abbr>DVC repository</abbr> clones if the data wasn't
@@ -126,31 +128,27 @@ that.
   well as the workspace. This compares the cache content for the entire commit
   history of the project.
 
+- `-d`, `--with-deps` - only meaningful when specifying `targets`. This
+  determines files to check by resolving all dependencies of the targets: DVC
+  searches backward from the targets in the corresponding pipelines. This will
+  not show changes occurring in later stages than the `targets`.
+
 - `-R`, `--recursive` - determines the files to check status for by searching
   each target directory and its subdirectories for stages (in `dvc.yaml`) and
   `.dvc` files to inspect. If there are no directories among the targets, this
-  option is ignored.
+  option has no effect.
 
-- `-d`, `--with-deps` - determines files to check by tracking dependencies to
-  the `targets`. If none are provided, this option is ignored. By traversing all
-  stage dependencies, DVC searches backward from the target stages in the
-  corresponding pipelines. This means DVC will not show changes occurring in
-  later stages than the `targets`. Applies whether or not `--cloud` is
-  specified.
-
-- `-r <name>`, `--remote <name>` - name of the
-  [remote storage](/doc/command-reference/remote) to compare against (see
-  `dvc remote list`). Implies `--cloud`.
+- `-r <name>`, `--remote <name>` - name of the [remote storage] to compare
+  against (see `dvc remote list`). Implies `--cloud`.
 
 - `--json` - prints the command's output in easily parsable JSON format, instead
   of a human-readable table.
 
 - `-j <number>`, `--jobs <number>` - parallelism level for DVC to access data
   from remote storage. This only applies when the `--cloud` option is used, or a
-  `--remote` is given. The default value is `4 * cpu_count()`. For SSH remotes,
-  the default is `4`. Note that the default value can be set using the `jobs`
-  config option with `dvc remote modify`. Using more jobs may speed up the
-  operation.
+  `--remote` is given. The default value is `4 * cpu_count()`. Note that the
+  default value can be set using the `jobs` config option with
+  `dvc remote modify`. Using more jobs may speed up the operation.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -272,8 +270,8 @@ $ dvc import different/repo/location data.csv
 ```
 
 The resulting `data.csv.dvc` file is called an <abbr>import stage</abbr>. If the
-original file or directory changes later, `dvc status` will show
-`update available` as output:
+original file or directory changes later, `dvc status` will show "update
+available" as output:
 
 ```dvc
 $ dvc status

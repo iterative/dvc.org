@@ -1,7 +1,7 @@
 # update
 
 Update files or directories imported from external <abbr>DVC
-repositories</abbr>, and the corresponding import stage `.dvc` files.
+repositories</abbr>, and the corresponding import `.dvc` files.
 
 ## Synopsis
 
@@ -10,7 +10,7 @@ usage: dvc update [-h] [-q | -v] [--rev <commit>] [-R] [--to-remote]
                   [-r <name>] [-j <number>] targets [targets ...]
 
 positional arguments:
-  targets      Import stage .dvc files to update. Using -R, directories
+  targets      Import .dvc files to update. Using -R, directories
                to search for .dvc files can also be given.
 ```
 
@@ -46,22 +46,22 @@ $ dvc update --rev master
   > revision.
 
 - `-R`, `--recursive` - determines the files to update by searching each target
-  directory and its subdirectories for import stage `.dvc` files to inspect. If
-  there are no directories among the targets, this option is ignored.
+  directory and its subdirectories for import `.dvc` files to inspect. If there
+  are no directories among the targets, this option has no effect.
 
-- `--to-remote` - update a `.dvc` file created with `dvc import-url` and
-  [transfer](/doc/command-reference/import-url#example-import-straight-to-the-remote)
-  the new data directly to remote storage (the default one unless `-r` is used).
-  No changes are done in the <abbr>workspace</abbr>. Use `dvc pull` to get the
-  data locally. This option can't be used with DVC or Git repository imports.
+- `--to-remote` - update a `.dvc` file created with `dvc import-url` without
+  downloading the latest data.
+  [Transfer it](/doc/command-reference/import-url#example-transfer-to-remote-storage)
+  directly to remote storage instead (the default one unless one is specified
+  with `-r`). Use `dvc pull` to get the data locally.
 
 - `-r <name>`, `--remote <name>` - name of the
   [remote storage](/doc/command-reference/remote) (can only be used with
   `--to-remote`).
 
 - `-j <number>`, `--jobs <number>` - parallelism level for DVC to download data
-  from the source. The default value is `4 * cpu_count()`. For SSH remotes, the
-  default is `4`. Using more jobs may speed up the operation.
+  from the source. The default value is `4 * cpu_count()`. Using more jobs may
+  speed up the operation.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 

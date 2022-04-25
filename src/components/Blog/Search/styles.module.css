@@ -1,0 +1,18 @@
+.searchContainer {
+  margin: 0 auto;
+  max-width: 1005px;
+
+  @media (--md-scr) {
+    max-width: 650px;
+  }
+
+  @media (--sm-scr) {
+    padding: 0 15px;
+  }
+
+  .search {
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+}

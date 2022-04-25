@@ -1,7 +1,7 @@
 import cn from 'classnames'
 import React from 'react'
 
-import Link from '../Link'
+import Link from 'gatsby-theme-iterative-docs/src/components/Link'
 
 import * as styles from './styles.module.css'
 
@@ -12,8 +12,13 @@ const LayoutAlert: React.FC<{ collapsed: boolean }> | false = ({
     <span role="img" aria-label="rocket">
       🚀
     </span>{' '}
-    <Link href="https://studio.iterative.ai">DVC Studio</Link>, the online UI
-    for DVC, is live!{' '}
+    <Link
+      href="https://studio.iterative.ai"
+      tabIndex={collapsed ? -1 : undefined}
+    >
+      Iterative Studio
+    </Link>
+    , the online UI for DVC, is live!{' '}
   </div>
 )
 

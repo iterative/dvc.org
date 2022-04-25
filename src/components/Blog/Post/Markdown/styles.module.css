@@ -333,6 +333,11 @@
       color: #ccc;
     }
 
+    code[class*="language-dvctable"] {
+      display: inline-block;
+      line-height: 24px;
+    }
+
     :global {
       .gatsby-highlight-code-line {
         display: block;
@@ -359,6 +364,17 @@
       }
 
       .language-dvctable {
+        .token.rows {
+          background-image: linear-gradient(
+            transparent 50%,
+            rgb(256 256 256 / 10%) 50%
+          );
+          background-size: 100% 48px;
+          display: block;
+          background-origin: content-box;
+          background-attachment: local;
+        }
+
         .token.hide {
           display: none;
         }
@@ -546,6 +562,72 @@
   :global {
     .gist td {
       border-bottom: none;
+    }
+  }
+
+  :global {
+    .yt-embed-wrapper {
+      position: relative;
+      display: flex;
+      margin-top: 0;
+      margin-bottom: 16px;
+
+      &:hover &__tooltip {
+        opacity: 1;
+      }
+
+      &__overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: flex-end;
+
+        &:hover {
+          cursor: pointer;
+        }
+
+        &.hidden {
+          display: none;
+        }
+      }
+
+      &__tooltip {
+        padding: 10px;
+        box-sizing: border-box;
+        color: #fff;
+        opacity: 0;
+        width: 100%;
+        font-size: 16px;
+        background-color: rgb(23 23 23 / 59%);
+        text-shadow: 0 1px 0 rgb(33 45 69 / 25%);
+        transition: opacity 0.2s ease-in-out;
+
+        &:hover {
+          cursor: auto;
+        }
+
+        a {
+          @mixin focus;
+
+          color: #fff;
+          text-decoration: underline;
+
+          &:hover {
+            opacity: 1;
+          }
+
+          &:focus {
+            position: static;
+          }
+
+          &::after {
+            display: none;
+          }
+        }
+      }
     }
   }
 }

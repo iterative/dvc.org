@@ -1,12 +1,18 @@
 # Get Started
 
-DVCLive is a simple Python library whose interface consists of three main steps.
+DVCLive is a Python library for logging machine learning metrics and other
+metadata in simple file formats, which is fully compatible with DVC.
 
-## Steps
+<admon type="tip">
 
-To get it up and running you just need to follow these steps:
+If you use one of the supported [ML Frameworks](/doc/dvclive/ml-frameworks), you
+can jump directly to its corresponding page.
 
-### 1. Initialize DVCLive
+</admon>
+
+## Workflow
+
+### Initialize DVCLive
 
 ```python
 from dvclive import Live
@@ -16,25 +22,52 @@ live = Live()
 
 See [`Live()`](/doc/dvclive/api-reference/live) for details.
 
-### 2. Log metrics
+### Log data
+
+<toggle>
+<tab title="Scalars">
 
 ```python
-live.log(metric_name, value)
+live.log("acc", 0.9)
 ```
 
-See `Live.log()` for details.
+See `Live.log()`.
 
-### 3. Increase the step number
+</tab>
+<tab title="Images">
+
+```python
+img = np.ones((500, 500, 3), np.uint8)
+live.log_image("image.png", img)
+```
+
+See `Live.log_image()`.
+
+</tab>
+<tab title="Plots">
+
+```python
+y_true = [0, 0, 1, 1]
+y_pred = [0.2, 0.5, 0.3, 0.8]
+live.log_plot("roc", y_true, y_score)
+```
+
+See `Live.log_plot()`.
+
+</tab>
+</toggle>
+
+### (Optionally) Update the step number
 
 ```python
 live.next_step()
 ```
 
-See `Live.next_step()` for details.
+See `Live.next_step()` and `Live.set_step()` for details.
 
 ## Putting all together
 
-Using the above steps, you can easily include DVCLive in your training code:
+Joining the above snippets, you can include DVCLive in your training code:
 
 ```python
 # train.py
@@ -59,41 +92,26 @@ After you run your training code, you should see the following content in the
 project:
 
 ```dvc
-$ ls
-dvclive        train.py
-dvclive.json
+$ tree
+├── dvclive
+│   ├── images
+│   │   └── img.png
+│   ├── plots
+│   │   └── roc.json
+│   └── scalars
+│       └── acc.tsv
+└── dvclive.json
 ```
 
-### Metrics Logs
+The contents of the `dvclive` folder and `dvclive.json` will vary depending on
+the type of data you have logged and whether you have updated the step value or
+not.
 
-For each `{metric_name}`, DVCLive produces metrics _logs_ under
-`dvclive/{metric_name}.tsv`:
-
-```dvc
-$ cat dvclive/{metric_name}.tsv
-timestamp	step	{metric_name}
-1614129197192	0	0.7612833380699158
-1614129198031	1	0.8736833333969116
-1614129198848	2	0.8907166719436646
-```
-
-### Metrics Summary
-
-In addition, when [`summary`](/doc/dvclive/api-reference/live/#parameters) is
-enabled (True by default), DVCLive generates a metrics _summary_ with the latest
-metrics:
-
-```dvc
-$ cat dvclive.json
-{
-  "step": 2,
-  "{metric_name}": 0.8907166719436646
-}
-```
+See `Live.log()`, `Live.log_image()` and `Live.log_plot()` for more details.
 
 ## What next?
 
-There are other ways to use DVCLive:
+Learn how to use DVCLive alongside other tools:
 
 - [DVCLive with DVC](/docs/dvclive/dvclive-with-dvc)
-- [DVCLive with _ML Frameworks_](/docs/dvclive/ml-frameworks)
+- [DVCLive with ML Frameworks](/docs/dvclive/ml-frameworks)

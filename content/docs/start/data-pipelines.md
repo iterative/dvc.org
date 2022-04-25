@@ -23,10 +23,10 @@ https://youtu.be/71IGzyH95UY
 
 ## Pipeline stages
 
-Use `dvc run` to create _stages_. These represent processes (source code tracked
-with Git) which form the steps of a _pipeline_. Stages also connect code to its
-corresponding data _input_ and _output_. Let's transform a Python script into a
-[stage](/doc/command-reference/run):
+Use `dvc stage add` to create _stages_. These represent processes (source code
+tracked with Git) which form the steps of a _pipeline_. Stages also connect code
+to its corresponding data _input_ and _output_. Let's transform a Python script
+into a [stage](/doc/command-reference/stage):
 
 <details>
 
@@ -64,18 +64,22 @@ Please also add or commit the source code directory with Git at this point.
 </details>
 
 ```dvc
-$ dvc run -n prepare \
-          -p prepare.seed,prepare.split \
-          -d src/prepare.py -d data/data.xml \
-          -o data/prepared \
-          python src/prepare.py data/data.xml
+$ dvc stage add -n prepare \
+                -p prepare.seed,prepare.split \
+                -d src/prepare.py -d data/data.xml \
+                -o data/prepared \
+                python src/prepare.py data/data.xml
 ```
 
-A `dvc.yaml` file is generated. It includes information about the command we ran
-(`python src/prepare.py data/data.xml`), its <abbr>dependencies</abbr>, and
-<abbr>outputs</abbr>.
+A `dvc.yaml` file is generated. It includes information about the command we
+want to run (`python src/prepare.py data/data.xml`), its
+<abbr>dependencies</abbr>, and <abbr>outputs</abbr>.
 
-<details>
+DVC uses these metafiles to track the data used and produced by the stage, so
+there's no need to use `dvc add` on `data/prepared`
+[manually](/doc/start/data-and-model-versioning).
+
+<details id="stage-expand-to-see-what-happens-under-the-hood">
 
 ### 💡 Expand to see what happens under the hood.
 
@@ -102,7 +106,8 @@ prepare:
   needs to be [reproduced](#reproduce).
 
 - `-o data/prepared` specifies an output directory for this script, which writes
-  two files in it. This is how the <abbr>workspace</abbr> should look like now:
+  two files in it. This is how the <abbr>workspace</abbr> should look like after
+  the run:
 
   ```git
    .
@@ -140,33 +145,34 @@ stages:
 
 </details>
 
-There's no need to use `dvc add` for DVC to track stage outputs (`data/prepared`
-in this case); `dvc run` already took care of this. You only need to run
-`dvc push` if you want to save them to
-[remote storage](/doc/start/data-and-model-versioning#storing-and-sharing),
-(usually along with `git commit` to version `dvc.yaml` itself).
+Once you added a stage, you can run the pipeline with `dvc repro`. Next, you can
+use `dvc push` if you wish to save all the data [to remote storage] (usually
+along with `git commit` to version DVC metafiles).
+
+[to remote storage]: /doc/start/data-and-model-versioning#storing-and-sharing
 
 ## Dependency graphs (DAGs)
 
-By using `dvc run` multiple times, and specifying <abbr>outputs</abbr> of a
-stage as <abbr>dependencies</abbr> of another one, we can describe a sequence of
-commands which gets to a desired result. This is what we call a _data pipeline_
-or [_dependency graph_](https://en.wikipedia.org/wiki/Directed_acyclic_graph).
+By using `dvc stage add` multiple times, and specifying <abbr>outputs</abbr> of
+a stage as <abbr>dependencies</abbr> of another one, we can describe a sequence
+of commands which gets to a desired result. This is what we call a _data
+pipeline_ or
+[_dependency graph_](https://en.wikipedia.org/wiki/Directed_acyclic_graph).
 
 Let's create a second stage chained to the outputs of `prepare`, to perform
 feature extraction:
 
 ```dvc
-$ dvc run -n featurize \
-          -p featurize.max_features,featurize.ngrams \
-          -d src/featurization.py -d data/prepared \
-          -o data/features \
-          python src/featurization.py data/prepared data/features
+$ dvc stage add -n featurize \
+                -p featurize.max_features,featurize.ngrams \
+                -d src/featurization.py -d data/prepared \
+                -o data/features \
+                python src/featurization.py data/prepared data/features
 ```
 
 The `dvc.yaml` file is updated automatically and should include two stages now.
 
-<details>
+<details id="pipeline-expand-to-see-what-happens-under-the-hood">
 
 ### 💡 Expand to see what happens under the hood.
 
@@ -206,11 +212,11 @@ Let's add the training itself. Nothing new this time; just the same `dvc run`
 command with the same set of options:
 
 ```dvc
-$ dvc run -n train \
-          -p train.seed,train.n_est,train.min_split \
-          -d src/train.py -d data/features \
-          -o model.pkl \
-          python src/train.py data/features model.pkl
+$ dvc stage add -n train \
+                -p train.seed,train.n_est,train.min_split \
+                -d src/train.py -d data/features \
+                -o model.pkl \
+                python src/train.py data/features model.pkl
 ```
 
 Please check the `dvc.yaml` again, it should have one more stage now.
@@ -265,7 +271,7 @@ it also doesn't rerun `train`! The previous run with the same set of inputs
 
 </details>
 
-<details>
+<details id="repro-expand-to-see-what-happens-under-the-hood">
 
 ### 💡 Expand to see what happens under the hood.
 
@@ -300,8 +306,8 @@ stages:
 
 </details>
 
-DVC pipelines (`dvc.yaml` file, `dvc run`, and `dvc repro` commands) solve a few
-important problems:
+DVC pipelines (`dvc.yaml` file, `dvc stage add`, and `dvc repro` commands) solve
+a few important problems:
 
 - _Automation_: run a sequence of steps in a "smart" way which makes iterating
   on your project faster. DVC automatically determines which parts of a project

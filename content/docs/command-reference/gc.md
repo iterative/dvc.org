@@ -1,7 +1,6 @@
 # gc
 
-Remove unused files and directories from <abbr>cache</abbr> or
-[remote storage](/doc/command-reference/remote).
+Remove unused files and directories from <abbr>cache</abbr> or [remote storage].
 
 ## Synopsis
 
@@ -14,8 +13,8 @@ usage: dvc gc [-h] [-q | -v] [-w] [-a] [-T] [--all-commits]
 ## Description
 
 This command can delete (garbage collect) data files or directories that exist
-in the cache but are no longer needed. With `--cloud`, it also removes data in
-[remote storage](/doc/command-reference/remote).
+in the <abbr>cache</abbr> but are no longer needed. With `--cloud`, it also
+[removes data in remote storage](#removing-data-in-remote-storage).
 
 To avoid accidentally deleting data, `dvc gc` doesn't do anything unless one or
 a combination of scope options are provided (`--workspace`, `--all-branches`,
@@ -26,27 +25,27 @@ details.
 The data kept is determined by reading the <abbr>DVC files</abbr> in the set of
 commits of the given scope.
 
-> Note that `dvc gc` tries to fetch any missing
-> [`.dir` files](/doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory)
-> from [remote storage](/doc/command-reference/remote) to the local
-> <abbr>cache</abbr>, in order to determine which files should exist inside
-> cached directories. These files may be missing if the cache directory was
-> previously garbage collected, or in a newly cloned copy of the repo, etc.
+> Note that `dvc gc` tries to fetch missing [`.dir` files] from remote storage
+> to local cache in order to determine which files should exist inside cached
+> directories. These files may be missing if the cache was previously garbage
+> collected, in a newly cloned copy of the repo, etc.
 
-Unless the `--cloud` option is used, `dvc gc` does not remove data files from
-any remote. This means that any files collected from the local cache can be
-restored using `dvc fetch`, as long as they have previously been uploaded with
+Unless the `--cloud` option is used, any files collected from the cache can be
+restored using `dvc fetch`, as long as they have been previously uploaded with
 `dvc push`.
+
+[`.dir` files]:
+  /doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory
 
 ### Removing data in remote storage
 
-If the `--cloud` option is provided, this command deletes unused data from the
+If the `--cloud` (`-c`) flag is used, this command deletes unused data from the
 [default remote storage](/doc/command-reference/remote/default) **in addition**
 to deleting it from the local DVC cache. To specify a DVC remote to delete from,
-use `--remote` as well.
+use the `--remote` (`-r`) option.
 
-> ⚠️ This is dangerous -- cloud/remote data deletion is irreversible unless
-> there is another DVC remote or a manual backup.
+> ⚠️ Danger: cloud deletion is irreversible unless there is another DVC remote
+> or a manual backup with the same data.
 
 ## Options
 
@@ -74,14 +73,14 @@ use `--remote` as well.
   that is never referenced from the workspace or from any Git commit can still
   be stored in the project's cache).
 
-  > \* Not including [DVC experiments](
+  > \* Not including [DVC experiments]
 
 [dvc experiments]: /doc/user-guide/experiment-management#experiments
 
 - `--all-experiments` keep cached objects referenced in all [DVC experiments],
   as well as in the workspace (implying `-w`). This preserves the project's
   [experimental](/doc/user-guide/experiment-management) data (including
-  checkpoints).
+  checkpoints). See also `dvc exp gc`.
 
 - `-p <paths>`, `--projects <paths>` - if a single remote or a single
   [cache is shared](/doc/user-guide/how-to/share-a-dvc-cache) among different
@@ -98,10 +97,9 @@ use `--remote` as well.
 
 - `-j <number>`, `--jobs <number>` - parallelism level for DVC to access data
   from remote storage. This only applies when the `--cloud` option is used, or a
-  `--remote` is given. The default value is `4 * cpu_count()`. For SSH remotes,
-  the default is `4`. Note that the default value can be set using the `jobs`
-  config option with `dvc remote modify`. Using more jobs may speed up the
-  operation.
+  `--remote` is given. The default value is `4 * cpu_count()`. Note that the
+  default value can be set using the `jobs` config option with
+  `dvc remote modify`. Using more jobs may speed up the operation.
 
   > For now only some phases of garbage collection are parallel.
 

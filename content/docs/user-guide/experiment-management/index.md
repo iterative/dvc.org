@@ -1,113 +1,90 @@
 # Experiment Management
 
+Data science and machine learning are iterative processes that require a large
+number of attempts to reach a certain level of a metric. Experimentation is part
+of the development of data features, hyperspace exploration, deep learning
+optimization, etc.
+
+Some of DVC's base features already help you codify and analyze experiments.
+[Parameters](/doc/command-reference/params) are simple values in a formatted
+text file which you can tweak and use in your code. On the other end,
+[metrics](/doc/command-reference/metrics) (and
+[plots](/doc/command-reference/plots)) let you define, visualize, and compare
+quantitative measures of your results.
+
+## Experimentation in DVC
+
 _New in DVC 2.0 (see `dvc version`)_
 
-Data science and ML are iterative processes that require a large number of
-attempts to reach a certain level of a metric. Experimentation is part of the
-development of data features, hyperspace exploration, deep learning
-optimization, etc. DVC helps you codify and manage all of your
-<abbr>experiments</abbr>, supporting these main approaches:
+DVC experiment management features build on top of base DVC features to form a
+comprehensive framework to organize, execute, manage, and share ML experiments.
+They support these main approaches:
 
-1. Create [experiments](#experiments) that derive from your latest project
-   version without having to track them manually. DVC does that automatically,
-   letting you list and compare them. The best ones can be made persistent, and
-   the rest archived.
-2. Place in-code [checkpoints](#checkpoints-in-source-code) that mark a series
-   of variations, forming a deep experiment. DVC helps you capture them at
-   runtime, and manage them in batches.
-3. Make experiments or checkpoints [persistent](#persistent-experiments) by
-   committing them to your <abbr>repository</abbr>. Or create these versions
-   from scratch like typical project changes.
+- Compare parameters and metrics of existing project versions (for example
+  different Git branches) against each other or against new, uncommitted results
+  in your workspace. One tool to do so is `dvc exp diff`.
 
-   At this point you may also want to consider the different
-   [ways to organize](#organization-patterns) experiments in your project (as
-   Git branches, as folders, etc.).
+- [Run and capture] multiple experiments (derived from any project version as
+  baseline) without polluting your Git history. DVC tracks them for you, letting
+  you compare and share them. 📖 More info in the [Experiments
+  Overview][experiments].
 
-DVC also provides specialized features to codify and analyze experiments.
-[Parameters](/doc/command-reference/params) are simple values you can tweak in a
-human-readable text file, which cause different behaviors in your code and
-models. On the other end, [metrics](/doc/command-reference/metrics) (and
-[plots](/doc/command-reference/plots)) let you define, visualize, and compare
-meaningful measures for the experimental results.
+- Generate [checkpoints] at runtime to keep track of the internal progress of
+  deeper experiments. DVC captures [live metrics](/doc/dvclive), which you can
+  manage in batches.
+
+[run and capture]: /doc/user-guide/experiment-management/running-experiments
+[experiments]: /doc/user-guide/experiment-management/experiments-overview
+[checkpoints]: /doc/user-guide/experiment-management/checkpoints
 
 > 👨‍💻 See [Get Started: Experiments](/doc/start/experiments) for a hands-on
 > introduction to DVC experiments.
 
-## Experiments
-
-`dvc exp` commands let you automatically track a variation to an established
-[data pipeline](/doc/command-reference/dag). You can create multiple isolated
-experiments this way, as well as review, compare, and restore them later, or
-roll back to the baseline. The basic workflow goes like this:
-
-- Modify stage <abbr>parameters</abbr> or other dependencies (e.g. input data,
-  source code) of committed stages.
-- Use `dvc exp run` (instead of `repro`) to execute the pipeline. The results
-  are reflected in your <abbr>workspace</abbr>, and tracked automatically.
-- Use [metrics](/doc/command-reference/metrics) to identify the best
-  experiment(s).
-- Visualize, compare experiments with `dvc exp show` or `dvc exp diff`. Repeat
-  🔄
-- Use `dvc exp apply` to roll back to the best one.
-- Make the selected experiment persistent by committing its results to Git. This
-  cleans the slate so you can repeat the process.
-
-## Checkpoints in source code
-
-To track successive steps in a longer experiment, you can register checkpoints
-from your code at runtime. This allows you, for example, to track the progress
-in deep learning techniques such as evolving neural networks.
-
-This kind of experiments track a series of variations (the checkpoints) and its
-execution can be stopped and resumed as needed. You interact with them using
-`dvc exp run` and its `--rev`, `--reset` options (see also the `checkpoint`
-field in `dvc.yaml` `outs`).
-
-> 📖 To learn more, see the dedicated
-> [Checkpoints](/doc/user-guide/experiment-management/checkpoints) guide.
-
-## Persistent experiments
-
-When your experiments are good enough to save or share, you may want to store
-them persistently as Git commits in your <abbr>repository</abbr>.
-
-Whether the results were produced with `dvc repro` directly, or after a
-`dvc exp` workflow (refer to previous sections), the `dvc.yaml` and `dvc.lock`
-pair in the <abbr>workspace</abbr> will codify the experiment as a new project
-version. The right <abbr>outputs</abbr> (including
-[metrics](/doc/command-reference/metrics)) should also be present, or available
-via `dvc checkout`.
-
 ### Organization patterns
 
-DVC takes care of arranging `dvc exp` experiments and the data
-<abbr>cache</abbr> under the hood. But when it comes to full-blown persistent
-experiments, it's up to you to decide how to organize them in your project.
-These are the main alternatives:
+It's up to you to decide how to organize completed experiments. These are the
+main alternatives:
 
 - **Git tags and branches** - use the repo's "time dimension" to distribute your
   experiments. This makes the most sense for experiments that build on each
-  other. Helpful if the Git [revisions](https://git-scm.com/docs/revisions) can
-  be easily visualized, for example with tools
+  other. Git-based experiment structures are especially helpful along with Git
+  history exploration tools
   [like GitHub](https://docs.github.com/en/github/visualizing-repository-data-with-graphs/viewing-a-repositorys-network).
+
 - **Directories** - the project's "space dimension" can be structured with
   directories (folders) to organize experiments. Useful when you want to see all
   your experiments at the same time (without switching versions) by just
   exploring the file system.
+
 - **Hybrid** - combining an intuitive directory structure with a good repo
   branching strategy tends to be the best option for complex projects.
-  Completely independent experiments live in separate directories, while their
-  progress can be found in different branches.
+  Completely independent experiments live in separate directories (and can be
+  generated with [`foreach` stages], for example), while their progress can be
+  found in different branches.
 
-## Automatic log of stage runs (run-cache)
+- **Labels** - in general, you can record experiments in a separate system and
+  structure them using custom labeling. This is typical in dedicated experiment
+  tracking tools. A possible problem with this approach is that it's easy to
+  lose the connection between your project history and the experiments logged.
 
-Every time you `dvc repro` pipelines or `dvc exp run` experiments, DVC logs the
-unique signature of each stage run (to `.dvc/cache/runs` by default). If it
-never happened before, the stage command(s) are executed normally. Every
+DVC takes care of arranging `dvc exp` experiments and the data
+<abbr>cache</abbr> under the hood so there's no need to decide on the above
+until your experiments are made [persistent].
+
+[`foreach` stages]:
+  /doc/user-guide/project-structure/pipelines-files#foreach-stages
+[persistent]: /doc/user-guide/experiment-management/persisting-experiments
+
+## Run Cache: Automatic Log of Stage Runs
+
+Every time you [reproduce](/doc/command-reference/repro) a pipeline with DVC, it
+logs the unique signature of each stage run (in `.dvc/cache/runs` by default).
+If it never happened before, its command(s) are executed normally. Every
 subsequent time a [stage](/doc/command-reference/run) runs under the same
 conditions, the previous results can be restored instantly, without wasting time
 or computing resources.
 
 ✅ This built-in feature is called <abbr>run-cache</abbr> and it can
-dramatically improve performance. It's enabled out-of-the-box (but can be
-disabled with the `--no-run-cache` command option).
+dramatically improve performance. It's enabled out-of-the-box (can be disabled),
+which means DVC is already saving all of your tests and experiments behind the
+scene. But there's no easy way to explore it.

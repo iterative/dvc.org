@@ -70,22 +70,25 @@ Let's say we have the following project, and have just
 
 ```dvc
 $ dvc exp show --all-commits --include-params=featurize
-┏━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━┓
-┃ Experiment            ┃ Created      ┃     auc ┃ featurize.max_features ┃ featurize.ngrams ┃
-┡━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━┩
-│ workspace             │ -            │ 0.57756 │ 2000                   │ 2                │
-│ master                │ 05:39 PM     │ 0.57756 │ 2000                   │ 2                │
-│ 10-bigrams-experiment │ Jun 20, 2020 │ 0.61314 │ 1500                   │ 2                │
-│ ├── exp-e6c97         │ Oct 21, 2020 │ 0.61314 │ 1500                   │ 2                │
-│ ├── exp-1dad0         │ Oct 09, 2020 │ 0.57756 │ 2000                   │ 2                │
-│ └── exp-1df77         │ Oct 09, 2020 │ 0.51676 │ 500                    │ 2                │
-│ 9-bigrams-model       │ Jun 20, 2020 │ 0.54175 │ 1500                   │ 2                │
-│ └── exp-069d9         │ Sep 24, 2020 │ 0.51076 │ 2500                   │ 2                │
-│ 8-evaluation          │ Jun 20, 2020 │ 0.54175 │ 500                    │ 1                │
-│ 7-ml-pipeline         │ Jun 20, 2020 │       - │ 500                    │ 1                │
+```
+
+```dvctable
+ ────────────────────────────────────────────────────────────────────────────────────────────
+  neutral:**Experiment**              neutral:**Created**            metric:**auc**   param:**featurize.max_features**   param:**featurize.ngrams**
+ ────────────────────────────────────────────────────────────────────────────────────────────
+  workspace               -              0.57756   2000                     2
+  master                  05:39 PM       0.57756   2000                     2
+  10-bigrams-experiment   Jun 20, 2020   0.61314   1500                     2
+  ├── exp-e6c97           Oct 21, 2020   0.61314   1500                     2
+  ├── exp-1dad0           Oct 09, 2020   0.57756   2000                     2
+  └── exp-1df77           Oct 09, 2020   0.51676   500                      2
+  9-bigrams-model         Jun 20, 2020   0.54175   1500                     2
+  └── exp-069d9           Sep 24, 2020   0.51076   2500                     2
+  8-evaluation            Jun 20, 2020   0.54175   500                      1
+  7-ml-pipeline           Jun 20, 2020         -   500                      1
   ...
-│ 0-git-init            │ Jun 20, 2020 │       - │ 1500                   │ 2                │
-└───────────────────────┴──────────────┴─────────┴────────────────────────┴──────────────────┘
+  0-git-init              Jun 20, 2020         -   1500                     2
+ ────────────────────────────────────────────────────────────────────────────────────────────
 ```
 
 If we consider all the other experiments unnecessary, we can delete them like
@@ -102,16 +105,19 @@ We can confirm that all the previous experiments are gone:
 
 ```dvc
 $ dvc exp show --all-commits --include-params=featurize
-┏━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━┓
-┃ Experiment            ┃ Created      ┃     auc ┃ featurize.max_features ┃ featurize.ngrams ┃
-┡━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━┩
-│ workspace             │ -            │ 0.57756 │ 2000                   │ 2                │
-│ master                │ 05:39 PM     │ 0.57756 │ 2000                   │ 2                │
-│ 10-bigrams-experiment │ Jun 20, 2020 │ 0.61314 │ 1500                   │ 2                │
-│ 9-bigrams-model       │ Jun 20, 2020 │ 0.54175 │ 1500                   │ 2                │
+```
+
+```dvctable
+ ────────────────────────────────────────────────────────────────────────────────────────────
+  neutral:**Experiment**              neutral:**Created**            metric:**auc**   param:**featurize.max_features**   param:**featurize.ngrams**
+ ────────────────────────────────────────────────────────────────────────────────────────────
+  workspace               -              0.57756   2000                     2
+  master                  05:39 PM       0.57756   2000                     2
+  10-bigrams-experiment   Jun 20, 2020   0.61314   1500                     2
+  9-bigrams-model         Jun 20, 2020   0.54175   1500                     2
   ...
-│ 0-git-init            │ Jun 20, 2020 │       - │ 2000                   │ 2                │
-└───────────────────────┴──────────────┴─────────┴────────────────────────┴──────────────────┘
+  0-git-init              Jun 20, 2020         -   2000                     2
+ ────────────────────────────────────────────────────────────────────────────────────────────
 ```
 
 To remove any <abbr>cached</abbr> data associated to the deleted experiments and

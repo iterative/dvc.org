@@ -79,18 +79,18 @@ The following config options are available for all remote types:
 
 - `jobs` - change the default number of processes for
   [remote storage](/doc/command-reference/remote) synchronization operations
-  (see the `--jobs` option of `dvc push`, `dvc pull`, `dvc fetch`, `dvc status`,
-  and `dvc gc`). Accepts positive integers. The default is typically `4`.
+  (see the `--jobs` option of dvc push`, `dvc pull`, `dvc get`, `dvc
+  import`, `dvc update`, `dvc add --to-remote`, `dvc gc
+  -c`, etc.). Accepts positive integers. The default is `4 \* cpu_count()`.
 
   ```dvc
   $ dvc remote modify myremote jobs 8
   ```
 
 - `verify` - upon downloading <abbr>cache</abbr> files (`dvc pull`, `dvc fetch`)
-  DVC will recalculate the file hashes, to make sure that these haven't been
-  modified or corrupted. This may slow down the aforementioned commands. The
-  calculated hash is compared to the value saved in the corresponding <abbr>DVC
-  file</abbr>.
+  DVC will recalculate the file hashes, to check that their contents have not
+  changed. This may slow down the aforementioned commands. The calculated hash
+  is compared to the value saved in the corresponding <abbr>DVC file</abbr>.
 
   > Note that this option is enabled on **Google Drive** remotes by default.
 
@@ -105,7 +105,7 @@ options:
 
 <details>
 
-### Click for Amazon S3
+### Amazon S3
 
 - `url` - remote location, in the `s3://<bucket>/<key>` format:
 
@@ -333,7 +333,7 @@ For more on the supported env vars, please see the
 
 <details>
 
-### Click for S3-compatible storage
+### S3-compatible storage
 
 - `endpointurl` - URL to connect to the S3-compatible storage server or service
   (e.g. [Minio](https://min.io/),
@@ -352,7 +352,7 @@ storage. Whether they're effective depends on each storage platform.
 
 <details>
 
-### Click for Microsoft Azure Blob Storage
+### Microsoft Azure Blob Storage
 
 > If any values given to the parameters below contain sensitive user info, add
 > them with the `--local` option, so they're written to a Git-ignored config
@@ -535,7 +535,7 @@ can propagate from an Azure configuration file (typically managed with
 
 <details>
 
-### Click for Google Drive
+### Google Drive
 
 > If any values given to the parameters below contain sensitive user info, add
 > them with the `--local` option, so they're written to a Git-ignored config
@@ -608,7 +608,9 @@ more information.
   ```
 
 - `gdrive_service_account_json_file_path` - path to the Google Project's service
-  account `.json` key file (credentials).
+  account `.json`
+  [key file](https://cloud.google.com/docs/authentication/getting-started#creating_a_service_account)
+  (credentials).
 
   ```dvc
   $ dvc remote modify --local myremote \
@@ -636,7 +638,7 @@ more information.
 
 <details>
 
-### Click for Google Cloud Storage
+### Google Cloud Storage
 
 > If any values given to the parameters below contain sensitive user info, add
 > them with the `--local` option, so they're written to a Git-ignored config
@@ -663,7 +665,7 @@ a specific user. Please refer to
 more information.
 
 - `credentialpath` - path to the file that contains the
-  [service account key](/doc/user-guide/setup-google-drive-remote#using-service-accounts).
+  [service account key](https://cloud.google.com/docs/authentication/getting-started#creating_a_service_account).
   Make sure that the service account has read/write access (as needed) to the
   file structure in the remote `url`.
 
@@ -683,7 +685,7 @@ $ export GOOGLE_APPLICATION_CREDENTIALS='.../project-XXX.json'
 
 <details>
 
-### Click for Aliyun OSS
+### Aliyun OSS
 
 > If any values given to the parameters below contain sensitive user info, add
 > them with the `--local` option, so they're written to a Git-ignored config
@@ -729,7 +731,7 @@ $ export OSS_ENDPOINT='endpoint'
 
 <details>
 
-### Click for SSH
+### SSH
 
 > If any values given to the parameters below contain sensitive user info, add
 > them with the `--local` option, so they're written to a Git-ignored config
@@ -822,7 +824,7 @@ $ export OSS_ENDPOINT='endpoint'
 
 <details>
 
-### Click for HDFS
+### HDFS
 
 💡 Using a HDFS cluster as remote storage is also supported via the WebHDFS API.
 Read more about by expanding the WebHDFS section in
@@ -856,7 +858,7 @@ Read more about by expanding the WebHDFS section in
 
 <details>
 
-### Click for WebHDFS
+### WebHDFS
 
 💡 WebHDFS serves as an alternative for using the same remote storage supported
 by HDFS. Read more about by expanding the WebHDFS section in
@@ -945,7 +947,7 @@ by HDFS. Read more about by expanding the WebHDFS section in
 
 <details>
 
-### Click for HTTP
+### HTTP
 
 > If any values given to the parameters below contain sensitive user info, add
 > them with the `--local` option, so they're written to a Git-ignored config
@@ -1037,7 +1039,7 @@ by HDFS. Read more about by expanding the WebHDFS section in
 
 <details>
 
-### Click for WebDAV
+### WebDAV
 
 > If any values given to the parameters below contain sensitive user info, add
 > them with the `--local` option, so they're written to a Git-ignored config

@@ -1,8 +1,9 @@
 import React from 'react'
 import cn from 'classnames'
 
-import Link from '../../../Link'
-import { logEvent } from '../../../../utils/front/ga'
+import Link from 'gatsby-theme-iterative-docs/src/components/Link'
+import { logEvent } from 'gatsby-theme-iterative-docs/src/utils/front/plausible'
+import { navLinkItemsData } from '../LinkItems'
 
 import { ReactComponent as ExternalLinkIcon } from '../../../../../static/img/external-link-icon.svg'
 
@@ -23,6 +24,7 @@ interface ICommunityLinkData {
 
 const communityPopupData: Array<ICommunityLinkData> = [
   { text: 'Meet the Community', href: '/community' },
+  { text: 'Testimonials', href: '/community#testimonial' },
   { text: 'Contribute', href: '/community#contribute' },
   { text: 'Learn', href: '/community#learn' },
   { text: 'Events', href: '/community#events' }
@@ -56,41 +58,67 @@ const otherToolsPopupData: Array<IOtherToolsLinkData> = [
   }
 ]
 
-export const Popup: React.FC<{
+export interface IPopupProps {
+  isVisible: boolean
+  closePopup: () => void
+}
+
+export const BasePopup: React.FC<{
   className?: string
-  isVisible?: boolean
+  isVisible: boolean
 }> = ({ children, isVisible, className }) => (
   <div className={cn(styles.popup, isVisible && styles.visible, className)}>
     {children}
   </div>
 )
 
-export const CommunityPopup: React.FC<{
-  isVisible: boolean
-  closePopup: () => void
-}> = ({ isVisible, closePopup }) => (
-  <Popup className={styles.communityPopup} isVisible={isVisible}>
+export const CommunityPopup: React.FC<IPopupProps> = ({
+  isVisible,
+  closePopup
+}) => (
+  <BasePopup className={styles.communityPopup} isVisible={isVisible}>
     {communityPopupData.map(({ text, href }, i) => (
       <Link
         className={styles.link}
         href={href}
         key={i}
         onClick={(): void => {
-          logEvent('menu', 'community')
+          logEvent('Nav', { Item: 'community' })
           closePopup()
         }}
       >
         {text}
       </Link>
     ))}
-  </Popup>
+  </BasePopup>
 )
 
-export const OtherToolsPopup: React.FC<{
-  isVisible: boolean
-  closePopup: () => void
-}> = ({ isVisible, closePopup }) => (
-  <Popup className={styles.otherToolsPopup} isVisible={isVisible}>
+export const OtherPopup: React.FC<IPopupProps> = ({
+  isVisible,
+  closePopup
+}) => (
+  <BasePopup className={styles.otherPopup} isVisible={isVisible}>
+    {navLinkItemsData.map(
+      ({ text, href }, i) =>
+        href && (
+          <Link
+            className={styles.link}
+            href={href}
+            key={i}
+            onClick={closePopup}
+          >
+            {text}
+          </Link>
+        )
+    )}
+  </BasePopup>
+)
+
+export const OtherToolsPopup: React.FC<IPopupProps> = ({
+  isVisible,
+  closePopup
+}) => (
+  <BasePopup className={styles.otherToolsPopup} isVisible={isVisible}>
     {otherToolsPopupData.map(
       ({ title, iconClass, description, href, target }, i) => (
         <Link
@@ -111,5 +139,5 @@ export const OtherToolsPopup: React.FC<{
         </Link>
       )
     )}
-  </Popup>
+  </BasePopup>
 )

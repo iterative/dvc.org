@@ -1,7 +1,7 @@
 import React, { useLayoutEffect, useState } from 'react'
 import Helmet from 'react-helmet'
 
-import Link from '../Link'
+import Link from 'gatsby-theme-iterative-docs/src/components/Link'
 import cn from 'classnames'
 
 import {

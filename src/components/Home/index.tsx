@@ -4,12 +4,12 @@ import WhatsNewModal from './WhatsNewModal'
 import HeroSection from '../HeroSection'
 import SubscribeSection from '../SubscribeSection'
 import PromoSection from '../PromoSection'
-import Link from '../Link'
+import Link from 'gatsby-theme-iterative-docs/src/components/Link'
 import LearnMore from './LearnMore'
 import LandingHero from './LandingHero'
 import Diagram from './Diagram'
 import UseCases from './UseCases'
-import { logEvent } from '../../utils/front/ga'
+import { logEvent } from 'gatsby-theme-iterative-docs/src/utils/front/plausible'
 
 import * as styles from './styles.module.css'
 
@@ -17,10 +17,13 @@ const Home: React.FC = () => {
   const diagramSectionRef = useRef<HTMLElement>(null)
   const useCasesSectionRef = useRef<HTMLElement>(null)
   const goToDocGetStarted = useCallback(
-    () => logEvent('promo', 'get-started'),
+    () => logEvent('Promo', { Item: 'get-started' }),
     []
   )
-  const goToFeatures = useCallback(() => logEvent('promo', 'features'), [])
+  const goToFeatures = useCallback(
+    () => logEvent('Promo', { Item: 'features' }),
+    []
+  )
 
   return (
     <>

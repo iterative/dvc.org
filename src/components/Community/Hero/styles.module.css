@@ -1,5 +1,5 @@
 .container {
-  padding: 40px 0 20px;
+  padding: 40px 0 0;
 }
 
 .link {
@@ -8,6 +8,11 @@
   &:hover {
     opacity: 0.7;
   }
+}
+
+.pictureContainer {
+  display: flex;
+  align-items: center;
 }
 
 .picture {

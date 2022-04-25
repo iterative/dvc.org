@@ -1,5 +1,4 @@
-import { GatsbyImage, getImage } from 'gatsby-plugin-image'
-import { IGatsbyImageDataParent } from 'gatsby-plugin-image/dist/src/components/hooks'
+import { GatsbyImage } from 'gatsby-plugin-image'
 import React from 'react'
 
 import { IBlogPostHeroPic } from '../../../../templates/blog-post'
@@ -7,12 +6,11 @@ import { IBlogPostHeroPic } from '../../../../templates/blog-post'
 import * as styles from './styles.module.css'
 
 const HeroPic: React.FC<IBlogPostHeroPic> = ({ pictureComment, picture }) => {
-  const image = getImage(picture as IGatsbyImageDataParent)
   return (
     <div className={styles.pictureWrapper}>
-      {image && (
+      {picture && (
         <div className={styles.picture}>
-          <GatsbyImage image={image} alt="Hero Picture" />
+          <GatsbyImage image={picture} alt="Hero Picture" />
         </div>
       )}
       {pictureComment && (

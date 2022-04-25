@@ -15,19 +15,31 @@
     margin: 0;
   }
 
+  @media (--xl-scr) {
+    &:last-child {
+      display: none;
+    }
+  }
+
+  &:nth-child(1),
+  &:nth-child(4) {
+    display: none;
+
+    @media (--xl-scr) {
+      display: initial;
+    }
+  }
+
   @media (--md-scr) {
     margin-left: 0;
 
-    &:first-child {
+    &:nth-child(6) {
       display: none;
     }
   }
 
   @media (--sm-scr) {
-    margin-left: 4px;
-
-    &:nth-child(5),
-    &:nth-child(4) {
+    &:nth-child(5) {
       display: none;
     }
   }
@@ -44,7 +56,7 @@
   line-height: 24px;
   text-decoration: none;
   color: #353940;
-  padding: 10px;
+  padding: 20px 10px;
   display: flex;
   align-items: flex-end;
   border: none;
@@ -63,6 +75,17 @@
 
     .arrowUpIcon {
       display: inline-block;
+    }
+  }
+
+  &.other {
+    font-weight: 600;
+    letter-spacing: 2px;
+    font-size: 20px;
+
+    .arrowUpIcon,
+    .arrowDownIcon {
+      display: none;
     }
   }
 

@@ -1,0 +1,118 @@
+.menu {
+  position: sticky;
+  top: calc(var(--layout-header-height) + 60px);
+  height: calc(100vh - var(--layout-header-height) - 60px);
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+
+  &.isScrollHidden {
+    .ps__rail-y {
+      opacity: 0;
+      overflow: hidden;
+    }
+  }
+
+  @media (--xs-scr) {
+    position: relative;
+    top: 0;
+    height: calc(100% - 60px);
+    padding-left: 20px;
+  }
+
+  :global(.ReactCollapse--collapse) {
+    transition: height 500ms;
+    padding-left: 10px;
+  }
+}
+
+.sections {
+  min-width: 280px;
+  margin-bottom: 25px;
+  margin-top: 10px;
+
+  @media (--xs-scr) {
+    min-width: auto;
+  }
+}
+
+.sectionLinks {
+  @media (--sm-scr) {
+    position: relative;
+  }
+}
+
+.sectionLink {
+  display: block;
+  position: relative;
+  min-height: 26px;
+  margin: 0;
+  padding: 0 0 5px 15px;
+  font-size: 18px;
+  line-height: 26px;
+  font-weight: 400;
+  text-decoration: none;
+  color: var(--color-gray-light);
+
+  &:hover {
+    color: #3c3937;
+
+    @media (--xs-scr) {
+      color: var(--color-gray-light);
+    }
+  }
+
+  &.active {
+    color: var(--color-gray-hover);
+
+    .sidebarDefaultBullet {
+      animation: rotateIcon 0.5s forwards;
+    }
+  }
+}
+
+@keyframes rotateIcon {
+  100% {
+    transform: rotate(90deg);
+  }
+}
+
+.footer {
+  margin-top: 30px;
+  padding-bottom: 30px;
+}
+
+.specialIcon {
+  color: var(--color-gray-light);
+  position: absolute;
+  width: 0.65rem;
+  height: 0.65rem;
+  top: 0.5rem;
+  left: -0.08rem;
+}
+
+.sidebarDefaultBullet {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 9px;
+  display: block;
+  border: none;
+  height: 8px;
+  width: 8px;
+  background: url("/img/triangle_dark.svg") no-repeat center center;
+  transition: 0.5s transform;
+
+  &:focus {
+    outline-color: var(--color-gray-light);
+    outline-offset: 0;
+  }
+
+  &:hover {
+    transform: scale(1.5);
+  }
+
+  &.sidebarLeafBullet {
+    background: url("/img/default_bullet_dark.svg") no-repeat center center;
+    transform: unset;
+  }
+}

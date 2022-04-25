@@ -1,22 +1,16 @@
 # Keras
 
-DVCLive allows you to easily add experiment tracking capabilities to your Keras
-projects.
-
-## About Keras
-
-[Keras](https://keras.io/) is a central part of the tightly-connected TensorFlow
-2.0 ecosystem, covering every step of the machine learning workflow, from data
-management to hyperparameter training to deployment solutions.
+DVCLive allows you to add experiment tracking capabilities to your
+[Keras](https://keras.io/) projects.
 
 ## Usage
 
 To start using DVCLive you just need to add a few lines to your training code in
-**any** Keras project.
+**any** [Keras](https://keras.io/) project.
 
-You just need to add the
+Include the
 [`DvcLiveCallback`](https://github.com/iterative/dvclive/blob/master/dvclive/keras.py)
-to the callbacks list passed to your
+int the callbacks list passed to your
 [`Model`](https://keras.io/api/models/model/):
 
 ```git
@@ -32,12 +26,16 @@ model.fit(
 +    callbacks=[DvcLiveCallback()])
 ```
 
-This will generate the metrics logs and summaries as described in the
+This will generate the outputs as described in the
 [Get Started](/docs/dvclive/get-started#outputs).
 
-> 💡Without requiring additional modifications to your training code, you can
-> use DVCLive alongside DVC. See
-> [DVCLive with DVC](/doc/dvclive/dvclive-with-dvc) for more info.
+<admon type="tip">
+
+Without requiring additional modifications to your training code, you can use
+DVCLive alongside DVC. See [DVCLive with DVC](/doc/dvclive/dvclive-with-dvc) for
+more info.
+
+</admon>
 
 ## Parameters
 
@@ -77,6 +75,6 @@ model.fit(
     epochs=num_epochs,
     validation_data=validation_dataset,
     callbacks=[DvcLiveCallback(
-        path="custom_path",
-        summary=False)])
+        model_file="my_model_weights.h5",
+        path="custom_path")])
 ```

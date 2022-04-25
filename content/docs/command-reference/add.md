@@ -94,7 +94,7 @@ Examples: `dvc push`, `dvc pull`, `dvc get`, `dvc import`, etc.
 
 As a rarely needed alternative, the `--recursive` option causes every file in
 the hierarchy to be added individually. A corresponding `.dvc` file will be
-generated for each file in he same location. This may be helpful to save time
+generated for each file in the same location. This may be helpful to save time
 adding several data files grouped in a structural directory, but it's
 undesirable for data directories with a large number of files.
 
@@ -128,8 +128,9 @@ not.
 
 - `-R`, `--recursive` - determines the files to add by searching each target
   directory and its subdirectories for data files. If there are no directories
-  among the `targets`, this option is ignored. For each file found, a new `.dvc`
-  file is created using the process described in this command's description.
+  among the `targets`, this option has no effect. For each file found, a new
+  `.dvc` file is created using the process outlined in this command's
+  description.
 
 - `--no-commit` - do not store `targets` in the cache (the `.dvc` file is still
   created). Use `dvc commit` to finish the operation (similar to `git commit`
@@ -145,7 +146,8 @@ not.
   [pattern](https://docs.python.org/3/library/glob.html) specified in `targets`.
   Shell style wildcards supported: `*`, `?`, `[seq]`, `[!seq]`, and `**`
 
-- `--external` - allow `targets` that are outside of the DVC repository. See
+- `--external` - allow tracking `targets` outside of the DVC repository
+  in-place. See
   [Managing External Data](/doc/user-guide/managing-external-data).
 
   > ⚠️ Note that this is an advanced feature for very specific situations and
@@ -153,19 +155,24 @@ not.
   > Additionally, this typically requires an external cache setup (see link
   > above).
 
-- `-o <path>`, `--out <path>` - destination `path` to make a local target copy,
-  or to [transfer](#example-transfer-to-cache) an external target into the cache
-  (and link to workspace). Note that this can be combined with `--to-remote` to
-  avoid storing the data locally, while still adding it to the project.
+- `-o <path>`, `--out <path>` - specify a `path` to the desired location in the
+  workspace to place the `targets` (copying them from their current location).
+  This enables targeting data outside the project (see an
+  [example](#example-transfer-to-an-external-cache)).
 
-- `--to-remote` - import an external target, but don't move it into the
-  workspace, nor cache it. [Transfer it](#example-transfer-to-remote-storage) it
-  directly to remote storage (the default one, unless `-r` is specified)
-  instead. Use `dvc pull` to get the data locally.
+- `--to-remote` - add a target that's outside the project, but neither cache it
+  nor place it in the workspace nor cache it yet.
+  [Transfer it](#example-transfer-to-remote-storage) directly to remote storage
+  instead (the default one unless one is specified with `-r`). Implies
+  `--out .`. Use `dvc pull` to get the data locally.
 
 - `-r <name>`, `--remote <name>` - name of the
   [remote storage](/doc/command-reference/remote) to transfer external target to
   (can only be used with `--to-remote`).
+
+- `-j <number>`, `--jobs <number>` - parallelism level for DVC to transfer data
+  when using `--to-remote`. The default value is `4 \* cpu_count()`. For SSH
+  remotes, the default is `4`. Using more jobs may speed up the operation.
 
 - `--desc <text>` - user description of the data (optional). This doesn't affect
   any DVC operations.
@@ -336,22 +343,20 @@ $ tree .dvc/cache
 Only the hash values of the `dir/` directory (with `.dir` file extension) and
 `file2` have been cached.
 
-## Example: Transfer to the cache
+## Example: Transfer to an external cache
 
-When you have a large dataset in an external location, you may want to add it to
-the <abbr>project</abbr> without having to copy it into the
-<abbr>workspace</abbr>. Maybe your local disk doesn't have enough space, but you
-have set up an
-[external cache](/doc/user-guide/managing-external-data#setting-up-an-external-cache)
-that could handle it.
+When you want to add a large dataset that is outside of your
+<abbr>project</abbr> (e.g. online), you would normally need to download or copy
+it into the <abbr>workspace</abbr> first. But you may not have enough local
+storage space.
 
-The `--out` option lets you add external paths in a way that they are
-<abbr>cached</abbr> first, and then
-[linked](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
-to a given path inside the workspace.
+You can however set up an [external cache] that can handle the data. To avoid
+ever making a local copy, target the outside data with `dvc add` while
+specifying an `--out` (`-o`) path inside of your project. This way the data will
+be transferred to the <abbr>cache</abbr> directly, and then [linked] into your
+workspace.
 
-Let's add a `data.xml` file via HTTP for example, putting it a local path in our
-project:
+Let's add a `data.xml` file via HTTP, putting it in `./data.xml`:
 
 ```dvc
 $ dvc add https://data.dvc.org/get-started/data.xml -o data.xml
@@ -372,46 +377,42 @@ outs:
     path: data.xml
 ```
 
+[linked]:
+  /doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache
+[external cache]:
+  /doc/user-guide/managing-external-data#setting-up-an-external-cache
+
 ## Example: Transfer to remote storage
 
-When you have a large dataset in an external location, you may want to track it
-as if it was in your project, but without downloading it locally (for now). The
-`--to-remote` option lets you do so, while storing a copy
-[remotely](/doc/command-reference/remote) so it can be
+Sometimes there's not enough space in the local environment to import a large
+dataset, but you still want to track it in the <abbr>project</abbr> so it can be
 [pulled](/doc/command-reference/plots) later.
 
-Let's set up a sample remote and add the `data.xml` to our remote storage from
-the given remote location:
+As long as you have setup [remote storage] that can handle the data, this can be
+achieved with the `--to-remote` flag. It creates a `.dvc` file without
+downloading anything, transferring a target directly to a DVC remote instead:
+
+Let's add a `data.xml` file via HTTP straight to remote:
 
 ```dvc
-$ mkdir /tmp/dvcstore
-$ dvc remote add myremote /tmp/dvcstore
-
-$ dvc add https://data.dvc.org/get-started/data.xml -o data.xml \
-                 --to-remote -r myremote
+$ dvc add https://data.dvc.org/get-started/data.xml --to-remote
 ...
-```
-
-The only difference that dataset is transferred straight to remote, so DVC won't
-control the remote location you gave but rather continue managing your remote
-storage where the data is now on. The operation will still be resulted with an
-`.dvc` file:
-
-```dvc
 $ ls
 data.xml.dvc
 ```
 
-Whenever anyone wants to actually download the added data (for example from a
-system that can handle it), they can use `dvc pull` as usual:
+Since a `.dvc` file is created in the <abbr>workspace</abbr>, whenever anyone
+wants to actually download the data they can use `dvc pull`:
 
 ```dvc
- $ dvc pull data.xml.dvc -r tmp_remote
-
+$ dvc pull data.xml.dvc
 A       data.xml
-1 file added and 1 file fetched
+1 file added
 ```
 
-> For a similar operation that actually keeps a connection to the data source,
-> please see an
-> [`import-url` example](/doc/command-reference/import-url#example-transfer-to-remote-storage).
+> Note that you can also do this [with `dvc import-url`][iutr]. This has the
+> added benefit of keeping a connection to the data source so it can be updated
+> later (with `dvc update`).
+
+[remote storage]: /doc/command-reference/remote
+[iutr]: /doc/command-reference/import-url#example-transfer-to-remote-storage

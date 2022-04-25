@@ -258,15 +258,14 @@ on: [push]
 jobs:
   run:
     runs-on: [ubuntu-latest]
-    container: docker://dvcorg/cml-py3:latest
+    container: iterativeai/cml:0-dvc2-base1
     steps:
       - uses: actions/checkout@v2
       - name: training
         env:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
         run: |
-
-          # train.py outputs metrics.txt and confusion_matrix.png  
+          # train.py outputs metrics.txt and plot.png
           pip3 install -r requirements.txt          
           python train.py                    
 
@@ -274,10 +273,10 @@ jobs:
           cat metrics.txt >> report.md      
 
           # add our confusion matrix to report.md
-          cml-publish confusion_matrix.png --md >> report.md 
+          cml publish plot.png --md >> report.md
 
           # send the report to GitHub for display  
-          cml-send-comment report.md
+          cml send-comment report.md
 ```
 
 You can see the entire

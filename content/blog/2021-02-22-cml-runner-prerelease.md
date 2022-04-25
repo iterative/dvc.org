@@ -34,7 +34,7 @@ Here's what's in today's pre-release:
 
 After the initial CML release, we found ways to significantly simplify the
 process of allocating resources in CI/CD. We developed a brand new CML command
-`cml-runner` that hides much of the complexity of configuring and provisioning
+`cml runner` that hides much of the complexity of configuring and provisioning
 an instance, keeping your workflows free of `bash` scripting clutter (until the
 official release, docs are
 [in development here](https://github.com/iterative/cml/blob/c2b96c461011f01ab2476e1542fb89d7229d150d/README.md)).
@@ -62,7 +62,7 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: |
-          cml-runner \
+          cml runner \
           --cloud aws \
           --cloud-region us-west \
           --cloud-type=t2.micro \
@@ -84,7 +84,7 @@ jobs:
 If you use CML functions in the `train-model` step, you can go even further and
 get a closed loop—sending model training results from the EC2 instance to your
 pull request or merge request! For example, if we expand the `train-model` step
-to incorporate functions like `cml-publish` and `cml-send-comment`:
+to incorporate functions like `cml publish` and `cml send-comment`:
 
 ```yaml
 train-model:
@@ -105,8 +105,8 @@ train-model:
 
         echo "## Report from your EC2 Instance" > report.md
         cat metrics.txt >> report.md
-        cml-publish "confusion_matrix.png" --md >> report.md
-        cml-send-comment report.md
+        cml publish "plot.png" --md >> report.md
+        cml send-comment report.md
 ```
 
 You'll get a pull request that looks something like this:
@@ -118,7 +118,7 @@ All the code to replicate this example is up on a
 
 ### Our favorite details
 
-The new `cml-runner` function lets you turn on instances, including GPU,
+The new `cml runner` function lets you turn on instances, including GPU,
 high-memory and spot instances, and kick off a new workflow using the hardware
 and environment of your choice—and of course, it'll turn _off_ those instances
 after a configurable timeout! In the first CML release, this took
@@ -132,13 +132,13 @@ instance. In the above example, we use our
 choose, we highly recommend containerizing your environment for ultimate
 reproducibility and security with CML.
 
-You can also use the new `cml-runner` function to set up a
+You can also use the new `cml runner` function to set up a
 [local self-hosted runner](https://docs.github.com/en/actions/hosting-your-own-runners/about-self-hosted-runners).
 On your local machine or on-premise GPU cluster, you'll install CML as a package
 and then run:
 
 ```bash
-$ cml-runner \
+$ cml runner \
     --repo $your_project_repository_url \
     --token=$personal_access_token \
     --labels tf \
@@ -155,7 +155,7 @@ Action helps you setup CML, giving you one more way to mix and match the CML
 suite of functions with your preferred environment.
 
 The new Action is designed to be a straightforward, all-in-one install that
-gives you immediate use of functions like `cml-publish` and `cml-runner`. You'll
+gives you immediate use of functions like `cml publish` and `cml runner`. You'll
 add this step to your workflow:
 
 ```yaml

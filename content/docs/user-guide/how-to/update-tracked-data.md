@@ -10,6 +10,8 @@ Updating tracked files or directories may mean either
 [modifying](#modifying-content) some of the data contents, or completely
 [replacing](#replacing-files) them (under the same file name).
 
+> See also `dvc move`.
+
 When the `cache.type` config option is set to `symlink` or `hardlink` (not the
 default, see `dvc config cache` for more info.), updating tracked files has to
 be carried out with caution, to avoid data corruption. This is due to the way in
@@ -17,9 +19,6 @@ which DVC handles linking data files between the <abbr>cache</abbr> and the
 <abbr>workspace</abbr> (refer to
 [Large Dataset Optimization](/doc/user-guide/large-dataset-optimization) for
 details).
-
-> For an example of the cache corruption problem see
-> [issue #599](https://github.com/iterative/dvc/issues/599) in our GitHub repo.
 
 If you use `dvc.yaml` files and `dvc repro`, there is no need to manage stage
 <abbr>outputs</abbr> manually. DVC removes them for you before regenerating

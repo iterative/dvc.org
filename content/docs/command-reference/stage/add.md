@@ -5,17 +5,17 @@ Helper command to create or update <abbr>stages</abbr> in `dvc.yaml`.
 ## Synopsis
 
 ```usage
-usage: dvc stage add [-h] [-q | -v] -n <name> [-d <path>] [-o <filename>]
-                     [-O <filename>] [-p [<filename>:]<params_list>]
-                     [-m <path>] [-M <path>] [--plots <path>]
-                     [--plots-no-cache <path>] [--live <path>]
-                     [--live-no-cache <path>] [--live-no-summary]
-                     [--live-no-html] [-w <path>] [-f]
-                     [--outs-persist <filename>]
-                     [--outs-persist-no-cache <filename>] [-c <filename>]
-                     [--always-changed] [--external] [--desc <text>]
-
-                     command
+usage: dvc stage add [-h] [-q | -v] -n <name> [-f]
+                 [-d <path>] [-p [<filename>:]<params_list>]
+                 [-o <filename>] [-O <filename>] [-c <filename>]
+                 [--external] [--outs-persist <filename>]
+                 [--outs-persist-no-cache <filename>]
+                 [-m <path>] [-M <path>]
+                 [--plots <path>] [--plots-no-cache <path>]
+                 [--live <path>] [--live-no-cache <path>]
+                 [--live-no-html] [-w <path>]
+                 [--always-changed] [--desc <text>]
+                 command
 
 positional arguments:
   command               Command to execute
@@ -236,12 +236,9 @@ data science experiments.
 - `-f`, `--force` - overwrite an existing stage in `dvc.yaml` file without
   asking for confirmation.
 
-- `--always-changed` - always consider this stage as changed (uses the
-  `always_changed` field in `dvc.yaml`). As a result `dvc status` will report it
-  as `always changed` and `dvc repro` will always execute it.
-
-  > Note that regular `.dvc` files (without dependencies) are automatically
-  > considered "always changed", so this option has no effect in those cases.
+- `--always-changed` - always consider this stage as changed (sets the
+  `always_changed` field in `dvc.yaml`). As a result DVC will always execute it
+  when reproducing the pipeline.
 
 - `--external` - allow writing outputs outside of the DVC repository. See
   [Managing External Data](/doc/user-guide/managing-external-data).
@@ -250,19 +247,14 @@ data science experiments.
   affect any DVC operations.
 
 - `--live <path>` - specify the directory `path` for
-  [DVCLive](/doc/dvclive/user-guide/dvclive-with-dvc) to write logs in. `path`
-  will be tracked (<abbr>cached</abbr>) by DVC. Saved in the `live` field of
-  `dvc.yaml`.
+  [DVCLive](/doc/dvclive/dvclive-with-dvc) to write logs in. `path` will be
+  tracked (<abbr>cached</abbr>) by DVC. Saved in the `live` field of `dvc.yaml`.
 
 - `--live-no-cache <path>` - the same as `--live` except that the `path` is not
   tracked by DVC. Useful if you prefer to track it with Git.
 
-- `--live-no-summary` - deactivates DVCLive
-  [summary](/doc/dvclive/user-guide/quickstart#metrics-summary) generation.
-
 - `--live-no-html` - deactivates DVCLive
-  [HTML report](/doc/dvclive/user-guide/dvclive-with-dvc#html-report)
-  generation.
+  [HTML report](/doc/dvclive/dvclive-with-dvc#html-report) generation.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 

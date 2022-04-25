@@ -5,4 +5,4 @@ links:
   - https://twitter.com/mariaKhalusova
 ---
 
-Senior Developer Advocate at [Iterative](https://iterative.ai/)
+Senior Developer Advocate at [Iterative](https://iterative.ai)

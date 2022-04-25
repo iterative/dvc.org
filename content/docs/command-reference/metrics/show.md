@@ -26,6 +26,10 @@ across all Git branches or tags, respectively. With the `-R` option, some of the
 target can even be directories, so that DVC recursively shows all metrics files
 inside.
 
+> Note that targets don't necessarily have to be defined in `dvc.yaml`. For that
+> reason, this command doesn't require an existing DVC project or Git repo to
+> run in.
+
 An alternative way to display metrics is the `dvc metrics diff` command, which
 compares them with a previous version.
 
@@ -50,8 +54,8 @@ compares them with a previous version.
 - `--md` - prints the command's output in Markdown table format.
 
 - `-R`, `--recursive` - determines the metrics files to show by searching each
-  target directory and its subdirectories for `dvc.yaml` files to inspect. If
-  there are no directories among the `targets`, this option is ignored.
+  target directory and its subdirectories for valid metrics files. If there are
+  no directories among the `targets`, this option has no effect.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 

@@ -77,7 +77,7 @@ enable symlinks to avoid having copies from the external cache to the
 > See `dvc config cache` and
 > [File link types](/doc/user-guide/large-dataset-optimization) for more info.
 
-⚠️ Note that enabling soft/hard links causes DVC to protect the linked data,
+⚠️ Note that enabling soft/hard links causes DVC to protect the linked data
 because editing them in-place would corrupt the cache. See `dvc unprotect`.
 
 If you're using Git, commit the changes to your project's config file (usually

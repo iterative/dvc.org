@@ -65,7 +65,7 @@ for example when `dvc init` was used with the `--no-scm` option.
   Useful for debug purposes.
 
 - `--hide-missing` - do not list data missing from both workspace and cache
-  (`not in cache`). Only list files and directories which have been explicitly
+  (_[not in cache]_). Only list files and directories which have been explicitly
   added, modified, or deleted. This option does nothing when comparing two Git
   commits.
 
@@ -75,6 +75,8 @@ for example when `dvc init` was used with the `--no-scm` option.
   problems arise, otherwise 1.
 
 - `-v`, `--verbose` - displays detailed tracing information.
+
+[not in cache]: /doc/command-reference/status#local-workspace-status
 
 ## Examples
 
@@ -117,7 +119,7 @@ $ dvc diff
 
 ## Example: Comparing workspace with arbitrary commits
 
-<details>
+<details id="example-arbitrary-commits-set-up">
 
 ### Click and expand to set up the example
 
@@ -147,7 +149,7 @@ files summary: 1 added, 0 deleted, 0 modified
 
 ## Example: Comparing tags or branches
 
-<details>
+<details id="example-tags-branches-set-up">
 
 ### Click and expand to set up the example
 
@@ -221,7 +223,7 @@ It outputs:
 
 ## Example: Renamed files
 
-<details>
+<details id="example-renamed-files-set-up">
 
 ### Click and expand to set up the example
 

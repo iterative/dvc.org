@@ -101,9 +101,11 @@ repos:
         stages:
           - post-checkout
     repo: https://github.com/iterative/dvc
-    # use a specific version (e.g. 1.8.1) instead of master if you don't want
-    # to use the upstream version
-    rev: master
+    rev: main
+    # rev should be set to a specific revision (e.g. 2.9.5) since pre-commit
+    # does not allow using mutable references.
+    # If using `main`, see pre-commit guide:
+    #    https://pre-commit.com/#using-the-latest-version-for-a-repository
 ```
 
 Note that by default, the pre-commit tool only installs `pre-commit` hooks. To

@@ -6,8 +6,8 @@ data from a `dvc remote`.
 ## Synopsis
 
 ```usage
-usage: dvc exp pull [-h] [-q | -v] [-f] [--no-cache]
-                    [-r <name>] [-j <number>] [--run-cache]
+usage: dvc exp pull [-h] [-q | -v] [-A] [--rev <commit>] [-n <num>] [-f]
+                    [--no-cache] [-r <name>] [-j <number>] [--run-cache]
                     git_remote experiment
 
 positional arguments:
@@ -17,8 +17,10 @@ positional arguments:
 
 ## Description
 
-The `dvc exp push` and `dvc exp pull` commands are the means for sharing
-experiments across <abbr>repository</abbr> copies via Git (and DVC) remotes.
+The `dvc exp push` and `dvc exp pull` commands are the means for [sharing
+experiments] across <abbr>repository</abbr> copies via Git and DVC remotes.
+
+[sharing experiments]: /doc/user-guide/experiment-management/sharing-experiments
 
 > Plain `git push` and `git fetch` don't work with experiments because these are
 > saved under custom Git references. See **How does DVC track experiments?** in
@@ -35,13 +37,21 @@ your local experiments.
 By default, this command will also try to [pull](/doc/command-reference/pull)
 all <abbr>cached</abbr> data associated with the experiment to DVC
 [remote storage](/doc/command-reference/remote), unless `--no-cache` is used.
-The default remote is used (see `dvc remote default`) unless a specific one is
-given with `--remote`.
 
 > 💡 Note that `git push <git_remote> --delete <experiment>` can be used to
 > delete a pushed experiment.
 
 ## Options
+
+- `-A`, `--all-commits` - pull all experiments in the repository (overrides
+  `--rev` and `--num`).
+
+- `--rev <commit>` - pull experiments derived from the specified `<commit>` as
+  baseline.
+
+- `-n <num>`, `--num <num>` - show experiments from the last `num` commits
+  (first parents) starting from the `--rev` baseline. Give a negative value to
+  include all first-parent commits (similar to `git log -n`).
 
 - `-f`, `--force` - rewrite the `experiment` commit if it already exists in the
   local repo. Equivalent to `git push --force` (rewrites history)
@@ -58,10 +68,9 @@ given with `--remote`.
   `dvc exp run <stage_name>` is necessary to checkout these files.
 
 - `-j <number>`, `--jobs <number>` - parallelism level for DVC to upload data to
-  remote storage. The default value is `4 * cpu_count()`. For SSH remotes, the
-  default is `4`. Note that the default value can be set using the `jobs` config
-  option with `dvc remote modify`. Using more jobs may improve the overall
-  transfer speed.
+  remote storage. The default value is `4 * cpu_count()`. Note that the default
+  value can be set using the `jobs` config option with `dvc remote modify`.
+  Using more jobs may improve the overall transfer speed.
 
 - `-h`, `--help` - shows the help message and exit.
 

@@ -5,7 +5,8 @@ Delete specific experiments from the <abbr>project</abbr>.
 ## Synopsis
 
 ```usage
-usage: dvc exp remove [-h] [-q | -v] [--queue | -A | -g <git_remote>]
+usage: dvc exp remove [-h] [-q | -v] [-A] [--rev <commit>] [-n <num>]
+                      [--queue | -g <git_remote>]
                       [<name> [<name> ...]]
 
 positional arguments:
@@ -26,7 +27,15 @@ With `--queue`, the list of experiments awaiting execution is cleared instead.
 - `--queue` - remove all experiments that haven't been run yet (defined via
   `dvc exp run --queue`).
 
-- `-A`, `--all` - remove all experiments (includes `--queue`).
+- `-A`, `--all` - remove all experiments that have been run. Use `--queue` to
+  remove queued ones.
+
+- `--rev <commit>` - remove experiments derived from the specified `<commit>` as
+  baseline.
+
+- `-n <num>`, `--num <num>` - show experiments from the last `num` commits
+  (first parents) starting from the `--rev` baseline. Give a negative value to
+  include all first-parent commits (similar to `git log -n`).
 
 - `-g`, `--git-remote` - Name or URL of the Git remote to remove the experiment
   from
@@ -87,13 +96,13 @@ $ dvc exp show --include-params=train.min_split --no-pager
 ```
 
 ```dvctable
-┏━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
-┃ neutral:**Experiment**            ┃ neutral:**Created**      ┃ neutral:**State**  ┃ metric:**avg_prec** ┃ metric:**roc_auc** ┃ metric:**train.min_split** ┃
-┡━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━━━┩
-│ workspace             │ -            │ -      │  0.57553 │ 0.94652 │ 2               │
-│ master                │ Aug 02, 2021 │ -      │  0.53252 │  0.9107 │ 2               │
-│ └── 5751540 [split32] │ 04:57 PM     │ Queued │        - │       - │ 32              │
-└───────────────────────┴──────────────┴────────┴──────────┴─────────┴─────────────────┘
+ ──────────────────────────────────────────────────────────────────────────────────────
+  neutral:**Experiment**              neutral:**Created**        neutral:**State**    metric:**avg_prec**   metric:**roc_auc**   metric:**train.min_split**
+ ──────────────────────────────────────────────────────────────────────────────────────
+  workspace               -              -         0.57553   0.94652   2
+  master                  Aug 02, 2021   -         0.53252    0.9107   2
+  └── 5751540 [split32]   04:57 PM       Queued          -         -   32
+ ──────────────────────────────────────────────────────────────────────────────────────
 ```
 
 We can also remove experiments from a remote Git repository:
@@ -109,7 +118,7 @@ master:
         exp-9fcef
         exp-e6c97
 
-$ dvc exp remote -g myremote exp-9fcef exp-e6c97
+$ dvc exp remove -g myremote exp-9fcef exp-e6c97
 $ dvc exp list myremote
 master:
         exp-1dad0

@@ -1,7 +1,7 @@
 import React from 'react'
 
 import Community from '../components/Community'
-import SEO from '../components/SEO'
+import SEO from 'gatsby-theme-iterative-docs/src/components/SEO'
 
 const CommunityPage: React.FC = () => (
   <>

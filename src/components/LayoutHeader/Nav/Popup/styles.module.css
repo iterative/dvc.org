@@ -4,7 +4,7 @@
   opacity: 0;
   position: absolute;
   left: 10px;
-  top: calc(100% + 4px);
+  top: calc(100% - 4px);
   visibility: hidden;
   z-index: 2;
   background-color: #fff;
@@ -104,6 +104,39 @@
       color: rgb(15 22 36 / 50%);
       font-size: 16px;
       line-height: 20px;
+    }
+  }
+}
+
+.otherPopup {
+  padding: 10px;
+
+  .link {
+    padding: 10px;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+
+    &:nth-child(2),
+    &:nth-child(3),
+    &:nth-child(5),
+    &:nth-child(6) {
+      display: none;
+    }
+
+    @media (--md-scr) {
+      font-size: 17px;
+      line-height: 20px;
+
+      &:nth-child(6) {
+        display: initial;
+      }
+    }
+
+    @media (--sm-scr) {
+      &:nth-child(5) {
+        display: initial;
+      }
     }
   }
 }

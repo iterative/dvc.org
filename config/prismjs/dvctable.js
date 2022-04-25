@@ -1,8 +1,8 @@
 /* eslint-env node */
 const Prism = require('prismjs')
 
-const getTableBgColorRegex = color =>
-  new RegExp(String.raw`(?<=[│┃])\s+\*{0,2}${color}:(?:(?![│┃]).)+(?=[│┃])`)
+const getTableTextBgColorRegex = color => new RegExp(String.raw`${color}:\S+`)
+
 const boldAndItalicConfig = {
   bold: {
     pattern: /\*\*(?:(?!\*\*).)+\*\*/,
@@ -19,32 +19,46 @@ const boldAndItalicConfig = {
 }
 
 Prism.languages.dvctable = {
-  'bg-white': {
-    pattern: getTableBgColorRegex('(white|neutral)'),
+  rows: {
+    pattern: /((?<=^|\n)[^─]{2}[\s\S]*?(:?\n|$))+/,
     inside: {
-      hide: {
-        pattern: /(white|neutral):/
+      'bg-white': {
+        pattern: getTableTextBgColorRegex('(white|neutral)'),
+        inside: {
+          hide: {
+            pattern: /(white|neutral):/
+          },
+          ...boldAndItalicConfig
+        }
+      },
+      'bg-yellow': {
+        pattern: getTableTextBgColorRegex('(yellow|metric)'),
+        inside: {
+          hide: {
+            pattern: /(yellow|metric):/
+          },
+          ...boldAndItalicConfig
+        }
+      },
+      'bg-blue': {
+        pattern: getTableTextBgColorRegex('(blue|param)'),
+        inside: {
+          hide: {
+            pattern: /(blue|param):/
+          },
+          ...boldAndItalicConfig
+        }
+      },
+      'bg-violet': {
+        pattern: getTableTextBgColorRegex('(violet|dep)'),
+        inside: {
+          hide: {
+            pattern: /(violet|dep):/
+          },
+          ...boldAndItalicConfig
+        }
       },
       ...boldAndItalicConfig
     }
-  },
-  'bg-yellow': {
-    pattern: getTableBgColorRegex('(yellow|metric)'),
-    inside: {
-      hide: {
-        pattern: /(yellow|metric):/
-      },
-      ...boldAndItalicConfig
-    }
-  },
-  'bg-blue': {
-    pattern: getTableBgColorRegex('(blue|param)'),
-    inside: {
-      hide: {
-        pattern: /(blue|param):/
-      },
-      ...boldAndItalicConfig
-    }
-  },
-  ...boldAndItalicConfig
+  }
 }

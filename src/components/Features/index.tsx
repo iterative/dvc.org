@@ -1,9 +1,9 @@
 import React from 'react'
 
 import PageContent from '../PageContent'
-import LayoutWidthContainer from '../LayoutWidthContainer'
+import LayoutWidthContainer from 'gatsby-theme-iterative-docs/src/components/LayoutWidthContainer'
 import HeroSection from '../HeroSection'
-import Link from '../Link'
+import Link from 'gatsby-theme-iterative-docs/src/components/Link'
 import PromoSection from '../PromoSection'
 
 import * as styles from './styles.module.css'

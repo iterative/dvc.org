@@ -78,6 +78,6 @@ by one in the next few pages:
   code, and data. Apply, drop, roll back, resume, or share any experiment.
 
 **New!** Once you set up your DVC repository, you can also interact with it
-using DVC Studio, the online UI for DVC.
+using Iterative Studio, the online UI for DVC.
 [Here's a demo](https://studio.iterative.ai/team/Iterative/views/example-get-started-zde16i6c4g)
 of how that looks like!

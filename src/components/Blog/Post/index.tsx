@@ -5,13 +5,14 @@ import { useWindowScroll, useWindowSize } from 'react-use'
 
 import { IBlogPostData } from '../../../templates/blog-post'
 
-import { useCommentsCount } from '../../../utils/front/api'
-import { pluralizeComments } from '../../../utils/front/i18n'
-import tagToSlug from '../../../utils/shared/tagToSlug'
+import { useCommentsCount } from 'gatsby-theme-iterative-docs/src/utils/front/api'
+import { pluralizeComments } from 'gatsby-theme-iterative-docs/src/utils/front/i18n'
+import tagToSlug from 'gatsby-theme-iterative-docs/src/utils/shared/tagToSlug'
+import useCustomYtEmbeds from 'gatsby-theme-iterative-docs/src/utils/front/useCustomYtEmbeds'
 
 import Markdown from './Markdown'
 import FeedMeta from '../FeedMeta'
-import Link from '../../Link'
+import Link from 'gatsby-theme-iterative-docs/src/components/Link'
 import PseudoButton from '../../PseudoButton'
 import HeroPic from './HeroPic'
 import Share from './Share'
@@ -21,7 +22,7 @@ import SubscribeSection from '../../SubscribeSection'
 import * as styles from './styles.module.css'
 
 const Post: React.FC<IBlogPostData> = ({
-  html,
+  htmlAst,
   timeToRead,
   title,
   date,
@@ -37,6 +38,7 @@ const Post: React.FC<IBlogPostData> = ({
   const wrapperRef = useRef<HTMLDivElement>(null)
   const { width, height } = useWindowSize()
   const { y } = useWindowScroll()
+  useCustomYtEmbeds()
 
   const isFixed = useMemo(() => {
     if (!wrapperRef.current) {
@@ -83,11 +85,13 @@ const Post: React.FC<IBlogPostData> = ({
               />
             </div>
           </div>
-
-          <HeroPic picture={picture} pictureComment={pictureComment} />
+          <HeroPic
+            picture={picture?.gatsbyImageData}
+            pictureComment={pictureComment}
+          />
 
           <div className={styles.content}>
-            <Markdown html={html} />
+            <Markdown htmlAst={htmlAst} />
           </div>
           {tags && (
             <div className={styles.tags}>

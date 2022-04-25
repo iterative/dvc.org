@@ -2,26 +2,28 @@ import React, { useCallback } from 'react'
 import formatDistanceToNow from 'date-fns/formatDistanceToNow'
 
 import { ICommunitySectionTheme } from '../'
-import LayoutWidthContainer from '../../LayoutWidthContainer'
+import LayoutWidthContainer from 'gatsby-theme-iterative-docs/src/components/LayoutWidthContainer'
 import Block from '../Block'
 import Section from '../Section'
-import Link from '../../Link'
-import { pluralizeComments } from '../../../utils/front/i18n'
-import { logEvent } from '../../../utils/front/ga'
+import Link from 'gatsby-theme-iterative-docs/src/components/Link'
+import { pluralizeComments } from 'gatsby-theme-iterative-docs/src/utils/front/i18n'
+import { logEvent } from 'gatsby-theme-iterative-docs/src/utils/front/plausible'
 import {
   useIssues,
   useTopics,
   IGithubIssue,
   IDiscussTopic
-} from '../../../utils/front/api'
+} from 'gatsby-theme-iterative-docs/src/utils/front/api'
 
 import { useCommunityData } from '../../../utils/front/community'
 import * as sharedStyles from '../styles.module.css'
 import * as styles from './styles.module.css'
 
-const logIssueAll = (): void => logEvent('community', 'issue', 'all')
-const logTopicAll = (): void => logEvent('community', 'topic', 'all')
-const logDiscord = (): void => logEvent('community', 'discord')
+const log = (section: string, eventType: string): void =>
+  logEvent('Community', { Section: 'Meet', [`Meet ${section}`]: eventType })
+const logIssue = (eventType: string): void => log('Issue', eventType)
+const logTopic = (eventType: string): void => log('Topic', eventType)
+const logDiscordAll = (): void => log('Discord', 'all')
 
 const Topic: React.FC<{ color: string } & IDiscussTopic> = ({
   url,
@@ -30,10 +32,7 @@ const Topic: React.FC<{ color: string } & IDiscussTopic> = ({
   comments,
   color
 }) => {
-  const logTopic = useCallback(
-    () => logEvent('community', 'forum', title),
-    [title]
-  )
+  const logTopicTitle = useCallback(() => logTopic(title), [title])
 
   return (
     <div className={sharedStyles.line}>
@@ -42,7 +41,7 @@ const Topic: React.FC<{ color: string } & IDiscussTopic> = ({
         style={{ color }}
         href={url}
         target="_blank"
-        onClick={logTopic}
+        onClick={logTopicTitle}
       >
         {title}
       </Link>
@@ -51,7 +50,7 @@ const Topic: React.FC<{ color: string } & IDiscussTopic> = ({
           className={sharedStyles.commentsLink}
           href={url}
           target="_blank"
-          onClick={logTopic}
+          onClick={logTopicTitle}
         >
           {pluralizeComments(comments)}
         </Link>
@@ -68,10 +67,7 @@ const Issue: React.FC<{ color: string } & IGithubIssue> = ({
   comments,
   color
 }) => {
-  const logIssue = useCallback(
-    () => logEvent('community', 'issue', title),
-    [title]
-  )
+  const logIssueTitle = useCallback(() => logIssue(title), [title])
 
   return (
     <div className={sharedStyles.line}>
@@ -80,7 +76,7 @@ const Issue: React.FC<{ color: string } & IGithubIssue> = ({
         style={{ color }}
         href={url}
         target="_blank"
-        onClick={logIssue}
+        onClick={logIssueTitle}
       >
         {title}
       </Link>
@@ -91,7 +87,7 @@ const Issue: React.FC<{ color: string } & IGithubIssue> = ({
           className={sharedStyles.commentsLink}
           href={url}
           target="_blank"
-          onClick={logIssue}
+          onClick={logIssueTitle}
         >
           {pluralizeComments(comments)}
         </Link>
@@ -127,7 +123,7 @@ const Meet: React.FC<{ theme: ICommunitySectionTheme }> = ({ theme }) => {
                   className={sharedStyles.headerLink}
                   href="/chat"
                   target="_blank"
-                  onClick={logDiscord}
+                  onClick={logDiscordAll}
                 >
                   Join the Dev Chat
                 </Link>
@@ -138,7 +134,7 @@ const Meet: React.FC<{ theme: ICommunitySectionTheme }> = ({ theme }) => {
                   style={theme}
                   href="/chat"
                   target="_blank"
-                  onClick={logDiscord}
+                  onClick={logDiscordAll}
                 >
                   Open Chat
                 </Link>
@@ -169,7 +165,7 @@ const Meet: React.FC<{ theme: ICommunitySectionTheme }> = ({ theme }) => {
                   className={sharedStyles.headerLink}
                   href="https://discuss.dvc.org"
                   target="_blank"
-                  onClick={logTopicAll}
+                  onClick={() => logTopic('all')}
                 >
                   Ask a Question
                 </Link>
@@ -181,7 +177,7 @@ const Meet: React.FC<{ theme: ICommunitySectionTheme }> = ({ theme }) => {
                     style={theme}
                     href="https://discuss.dvc.org"
                     target="_blank"
-                    onClick={logTopicAll}
+                    onClick={() => logTopic('all')}
                   >
                     Read All Topics
                   </Link>
@@ -210,7 +206,7 @@ const Meet: React.FC<{ theme: ICommunitySectionTheme }> = ({ theme }) => {
                   className={sharedStyles.headerLink}
                   href="https://github.com/iterative/dvc/issues"
                   target="_blank"
-                  onClick={logIssueAll}
+                  onClick={() => logIssue('all')}
                 >
                   Post an Issue
                 </Link>
@@ -222,7 +218,7 @@ const Meet: React.FC<{ theme: ICommunitySectionTheme }> = ({ theme }) => {
                     style={theme}
                     href="https://github.com/iterative/dvc/issues"
                     target="_blank"
-                    onClick={logIssueAll}
+                    onClick={() => logIssue('all')}
                   >
                     Read All Issues
                   </Link>

@@ -61,8 +61,8 @@ all the current metrics (without comparisons).
   ```
 
 - `-R`, `--recursive` - determines the metrics files to use by searching each
-  target directory and its subdirectories for DVC-tracked files to inspect. If
-  there are no directories among the `targets`, this option is ignored.
+  target directory and its subdirectories for valid metrics files. If there are
+  no directories among the `--targets`, this option has no effect.
 
 - `--all` - list all metrics, including those without changes.
 
@@ -88,12 +88,14 @@ all the current metrics (without comparisons).
 
 ## Examples
 
-Start by creating a metrics file and commit it (see the `-M` option of `dvc run`
-for more details):
+Start by creating a metrics file and commit it (see the `-M` option of
+`dvc stage add` for more details):
 
 ```dvc
-$ dvc run -n eval -M metrics.json \
-          'echo {"AUC": 0.9643, "TP": 527} > metrics.json'
+$ dvc stage add -n eval -M metrics.json \
+                'echo {"AUC": 0.9643, "TP": 527} > metrics.json'
+
+$ dvc repro
 
 $ cat metrics.json
 {"AUC": 0.9643, "TP": 527}

@@ -1,18 +1,12 @@
 # XGBoost
 
-DVCLive allows you to easily add experiment tracking capabilities to your
-XGBoost projects.
-
-## About XGBoost
-
-[XGBoost](https://xgboost.ai/) is an optimized distributed gradient boosting
-library designed to be highly efficient, flexible and portable. It implements
-machine learning algorithms under the Gradient Boosting framework.
+DVCLive allows you to add experiment tracking capabilities to your
+[XGBoost](https://xgboost.ai/) projects.
 
 ## Usage
 
 To start using DVCLive you just need to add a few lines to your training code in
-**any** XGBoost project.
+**any** [XGBoost](https://xgboost.ai/) project.
 
 You just need to add the
 [`DvcLiveCallback`](https://github.com/iterative/dvclive/blob/master/dvclive/xgb.py)
@@ -32,12 +26,16 @@ xgboost.train(
 +   evals=[(dval, "eval_data")])
 ```
 
-This will generate the metrics logs and summaries as described in the
+This will generate the outputs as described in the
 [Get Started](/docs/dvclive/get-started#outputs).
 
-> 💡Without requiring additional modifications to your training code, you can
-> use DVCLive alongside DVC. See
-> [DVCLive with DVC](/doc/dvclive/dvclive-with-dvc) for more info.
+<admon type="tip">
+
+Without requiring additional modifications to your training code, you can use
+DVCLive alongside DVC. See [DVCLive with DVC](/doc/dvclive/dvclive-with-dvc) for
+more info.
+
+</admon>
 
 ## Parameters
 
@@ -59,7 +57,6 @@ xgboost.train(
     callbacks=[
       DvcLiveCallback(
         "eval_data",
-        path="custom_path",
-        summary=False)],
+        path="custom_path")],
     evals=[(dval, "eval_data")])
 ```

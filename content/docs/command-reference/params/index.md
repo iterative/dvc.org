@@ -22,7 +22,7 @@ dependencies: _parameters_. They usually have simple names like `epochs`,
 `learning-rate`, `batch_size`, etc.
 
 To start tracking parameters, list them under the `params` field of `dvc.yaml`
-stages (manually or with the the `-p`/`--params` option of `dvc run`). For
+stages (manually or with the the `-p`/`--params` option of `dvc stage add`). For
 example:
 
 ```yaml
@@ -97,14 +97,14 @@ process:
   bow: 15000
 ```
 
-Using `dvc run`, define a [stage](/doc/command-reference/run) that depends on
-params `lr`, `layers`, and `epochs` from the params file above. Full paths
+Using `dvc stage add`, define a [stage](/doc/command-reference/run) that depends
+on params `lr`, `layers`, and `epochs` from the params file above. Full paths
 should be used to specify `layers` and `epochs` from the `train` group:
 
 ```dvc
-$ dvc run -n train -d train.py -d users.csv -o model.pkl \
-          -p lr,train.epochs,train.layers \
-          python train.py
+$ dvc stage add -n train -d train.py -d users.csv -o model.pkl \
+                -p lr,train.epochs,train.layers \
+                python train.py
 ```
 
 > Note that we could use the same parameter addressing with JSON, TOML, or
@@ -147,9 +147,9 @@ Alternatively, the entire group of parameters `train` can be referenced, instead
 of specifying each of the params separately:
 
 ```dvc
-$ dvc run -n train -d train.py -d users.csv -o model.pkl \
-          -p lr,train \
-          python train.py
+$ dvc stage add -n train -d train.py -d users.csv -o model.pkl \
+                -p lr,train \
+                python train.py
 ```
 
 ```yaml
@@ -161,12 +161,12 @@ params:
 
 In the examples above, the default parameters file name `params.yaml` was used.
 Note that this file name can be redefined using a prefix in the `-p` argument of
-`dvc run`. In our case:
+`dvc stage add`. In our case:
 
 ```dvc
-$ dvc run -n train -d train.py -d logs/ -o users.csv -f \
-          -p parse_params.yaml:threshold,classes_num \
-          python train.py
+$ dvc stage add -n train -d train.py -d logs/ -o users.csv -f \
+                -p parse_params.yaml:threshold,classes_num \
+                python train.py
 ```
 
 ## Examples: Print all parameters
@@ -234,9 +234,9 @@ The following [stage](/doc/command-reference/run) depends on params `BOOL`,
 `INT`, as well as `TrainConfig`'s `EPOCHS` and `layers`:
 
 ```dvc
-$ dvc run -n train -d train.py -d users.csv -o model.pkl \
-          -p params.py:BOOL,INT,TrainConfig.EPOCHS,TrainConfig.layers \
-          python train.py
+$ dvc stage add -n train -d train.py -d users.csv -o model.pkl \
+                -p params.py:BOOL,INT,TrainConfig.EPOCHS,TrainConfig.layers \
+                python train.py
 ```
 
 Resulting `dvc.yaml` and `dvc.lock` files (notice the `params` lists):
@@ -283,7 +283,7 @@ can be referenced
 supported), instead of the parameters in it:
 
 ```dvc
-$ dvc run -n train -d train.py -d users.csv -o model.pkl \
-          -p params.py:BOOL,INT,TestConfig \
-          python train.py
+$ dvc stage add -n train -d train.py -d users.csv -o model.pkl \
+                -p params.py:BOOL,INT,TestConfig \
+                python train.py
 ```

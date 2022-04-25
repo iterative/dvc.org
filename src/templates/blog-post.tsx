@@ -2,20 +2,20 @@ import { graphql } from 'gatsby'
 import { IGatsbyImageData } from 'gatsby-plugin-image'
 import React from 'react'
 
-import SEO from '../components/SEO'
+import SEO from 'gatsby-theme-iterative-docs/src/components/SEO'
 import Post from '../components/Blog/Post'
 
-import { ISocialIcon } from '../components/SocialIcon'
-import { IGatsbyImageDataParent } from 'gatsby-plugin-image/dist/src/components/hooks'
+import { ISocialIcon } from 'gatsby-theme-iterative-docs/src/components/SocialIcon'
+import { isProduction } from '../server/utils'
 
 export interface IBlogPostHeroPic {
-  picture?: IGatsbyImageDataParent
+  picture?: IGatsbyImageData
   pictureComment?: string
 }
 
 export interface IBlogPostData {
   id: string
-  html: string
+  htmlAst: Node
   timeToRead: string
   slug: string
   title: string
@@ -24,7 +24,10 @@ export interface IBlogPostData {
   descriptionLong?: string
   commentsUrl?: string
   tags?: string[]
-  picture?: IGatsbyImageDataParent
+  picture?: {
+    gatsbyImageData: IGatsbyImageData
+    fields: { sourcePath: string }
+  }
   pictureComment?: string
   author: {
     name: string
@@ -55,7 +58,14 @@ const BlogPostPage: React.FC<IBlogPostPageProps> = ({ data }) => {
       <SEO
         title={title}
         description={description}
-        image={picture}
+        image={
+          picture &&
+          (isProduction
+            ? `/blog/${picture.fields.sourcePath}`
+            : picture.gatsbyImageData)
+        }
+        imageHeight={picture?.gatsbyImageData.height}
+        imageWidth={picture?.gatsbyImageData.width}
         meta={[
           {
             name: 'twitter:card',
@@ -87,7 +97,7 @@ export const pageQuery = graphql`
     blogPost(id: { eq: $id }) {
       id
       slug
-      html
+      htmlAst
       timeToRead
       title
       date(formatString: "MMMM DD, YYYY")
@@ -111,6 +121,9 @@ export const pageQuery = graphql`
         }
       }
       picture {
+        fields {
+          sourcePath
+        }
         gatsbyImageData(width: 850, quality: 90)
       }
       pictureComment

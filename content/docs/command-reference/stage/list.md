@@ -45,9 +45,9 @@ important characteristics (dependencies, outputs, or metrics).
 - `--names-only` - only lists stage names. Useful for scripting purposes (DVC
   uses it for shell tab completion).
 
-- `-R`, `--recursive` - looks for `dvc.yaml` files to list from in any
-  directories given as `targets`, and in their subdirectories. If there are no
-  directories among the targets, this option has no effect.
+- `-R`, `--recursive` - determines the files to list by searching each target
+  directory and its subdirectories for `dvc.yaml` files to inspect. If there are
+  no directories among the `targets`, this option has no effect.
 
 - `--all` - lists all stages from all `dvc.yaml` files in the repo (regardless
   of any given `targets`).

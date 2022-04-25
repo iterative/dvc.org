@@ -1,8 +1,8 @@
 # DVCLive Documentation
 
-[DVCLive](https://github.com/iterative/dvclive) is an open-source Python library
-for monitoring the progress of metrics during training of machine learning
-models. You can simply
+[DVCLive](https://github.com/iterative/dvclive) is a Python library for logging
+machine learning metrics and other metadata in simple file formats, which is
+fully compatible with DVC. You can
 [install it](https://github.com/iterative/dvclive#installation) with `pip`.
 
 <cards>

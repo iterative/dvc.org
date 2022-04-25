@@ -1,7 +1,7 @@
 import React, { useCallback, useRef } from 'react'
 import { nanoid } from 'nanoid'
 
-import { logEvent } from '../../../utils/front/ga'
+import { logEvent } from 'gatsby-theme-iterative-docs/src/utils/front/plausible'
 
 import * as styles from './styles.module.css'
 
@@ -15,7 +15,7 @@ const Form: React.FC = () => {
         return e.preventDefault()
       }
 
-      logEvent('subscribe-form', 'subscribe')
+      logEvent('Subscribe Form')
     },
     [hiddenInputRef?.current]
   )
