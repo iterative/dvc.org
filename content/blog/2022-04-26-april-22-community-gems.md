@@ -2,10 +2,10 @@
 title: April '22 Community Gems
 date: 2022-04-26
 description: >
-  A roundup of technical Q&A's from the DVC and CML community. This month: CML
+  A roundup of technical Q&As from the DVC and CML community. This month: CML
   updates, working with multiple datasets, using DVC stages, and more.
 descriptionLong: >
-  A roundup of technical Q&A's from the DVC and CML community. This month: CML
+  A roundup of technical Q&As from the DVC and CML community. This month: CML
   updates, working with multiple datasets, using DVC stages, and more.
 picture: 2022-04-326/apr-comm-gems.png
 author: milecia_mcgregor
