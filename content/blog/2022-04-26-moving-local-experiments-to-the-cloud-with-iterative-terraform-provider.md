@@ -154,6 +154,7 @@ resource "iterative_task" "tpi-examples-basic" {
   cloud     = "aws"
   region    = "us-east-2"
   machine   = "l+k80"
+  spot      = 0
 
   storage {
         workdir = "."
@@ -189,11 +190,12 @@ whatever you want. Inside of the resource block, we specify some arguments:
   [l+k80](https://registry.terraform.io/providers/iterative/iterative/latest/docs/resources/task#l+k80)
   stands for a "Large, with (at least) 12 CPU cores, 112 GB of RAM and 2 GPU
   devices".
-- _workdir_: Specify a directory on your local machine relative to your project
+- _spot_: spot instance price. Here I set it to `0` to use TPI's automatic price, which should keep costs down. Alternatively you can specify a positive number to set a maximum bidding price in USD.
+- _workdir_: specify a directory on your local machine relative to your project
   folder which you would like to sync with the remote machine. This way you can
   share your whole project or parts of it with a remote machine. In my example,
   I am sharing the whole project.
-- _script_ (**required)**: This is where the Iterative Provider's magic happens,
+- _script_ (**required)**: this is where the Iterative Provider's magic happens,
   i.e. this is where we define a script that should be run on a provisioned
   machine.
 
@@ -227,6 +229,7 @@ resource "iterative_task" "tpi-examples-gpu" {
   cloud     = "aws"
   region    = "us-east-2"
   machine   = "l+k80"
+  spot      = 0
   disk_size = "130"
   # see https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html for images
   image     = "ubuntu@898082745236:x86_64:Deep Learning AMI (Ubuntu 18.04) Version 54.0"
