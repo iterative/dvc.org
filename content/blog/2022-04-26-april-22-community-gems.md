@@ -60,23 +60,26 @@ Thanks for the question @Atsu!
 
 This is supported out-of-the-box! Here's how it works:
 
-1. Within Github Actions, CML launches a [self-hosted runner](https://cml.dev/doc/self-hosted-runners) on GCP or AWS using
-   `cml runner --labels=cml --cloud=gcp`/`--cloud=aws`
+1. Within Github Actions, CML launches a
+   [self-hosted runner](https://cml.dev/doc/self-hosted-runners) on GCP or AWS
+   using `cml runner --labels=cml --cloud=gcp`/`--cloud=aws`
 2. GitHub Actions runs the rest of the workflow on the self-hosted runner using
-   `runs-on: [self-hosted, cml]` and the maximum allowable `timeout-minutes: 4320`
-3. If GitHub Actions is about to timeout, CML will restart the workflow,
-   so make sure your code regularly caches and restores data if it's expected to
-   take >3 days to run.
+   `runs-on: [self-hosted, cml]` and the maximum allowable
+   `timeout-minutes: 4320`
+3. If GitHub Actions is about to timeout, CML will restart the workflow, so make
+   sure your code regularly caches and restores data if it's expected to take >3
+   days to run.
 
 You can follow along with
 [this doc](https://cml.dev/doc/self-hosted-runners?tab=GitHub#allocating-cloud-compute-resources-with-cml)
 to get started.
 
-The key is requesting GitHub's [maximum `timeout-minutes: 4320`](https://docs.github.com/en/actions/hosting-your-own-runners/about-self-hosted-runners#usage-limits).
-This signals to
-CML to [restart the workflow](https://cml.dev/doc/ref/runner#faqs-and-known-issues) just before the timeout. You'll also have to write your
-code to cache results so that the restarted workflow will use previous results
-(e.g. use
+The key is requesting GitHub's
+[maximum `timeout-minutes: 4320`](https://docs.github.com/en/actions/hosting-your-own-runners/about-self-hosted-runners#usage-limits).
+This signals to CML to
+[restart the workflow](https://cml.dev/doc/ref/runner#faqs-and-known-issues)
+just before the timeout. You'll also have to write your code to cache results so
+that the restarted workflow will use previous results (e.g. use
 https://dvc.org/doc/user-guide/experiment-management/checkpoints#caching-checkpoints
 and https://github.com/iterative/dvc/issues/6823)
 
