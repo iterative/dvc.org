@@ -9,7 +9,7 @@ descriptionLong: >
   spot instance auto-recovery, while aligning your Data Science  and DevOps
   teams with a simple config file.
 picture: 2022-04-27/terraform-provider-iterative.png
-pictureComment: Machine Learning Workloads with Iterative Provider for Terraform
+pictureComment: Machine Learning Workloads with Terraform Provider Iterative
 author: maria_khalusova
 commentsUrl: https://discuss.dvc.org/t/terraform-iterative-provider-release-blog-post/1171
 tags:
@@ -31,8 +31,8 @@ top of that, the costs of training in a cloud environment can be high due to not
 only the need for specific hardware, but also individual responsibility to shut
 down instances when training is complete.
 
-To address the specific needs of machine learning teams, we have built the
-Iterative Provider (TPI). TPI is an open-source tool extending the functionality
+To address the specific needs of machine learning teams, we have built Terraform
+Provider Iterative (TPI). TPI is an open-source tool extending the functionality
 of Terraform, the world's most widely used multi-cloud provisioning product. The
 Iterative Provider enables full lifecycle management of computing resources and
 is designed specifically for machine learning pipelines.
