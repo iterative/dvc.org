@@ -72,7 +72,8 @@ You can follow along with
 [this doc](https://cml.dev/doc/self-hosted-runners?tab=GitHub#allocating-cloud-compute-resources-with-cml)
 to get started.
 
-The key is requesting GitHub's maximum `timeout-minutes: 4320`. This signals to
+The key is requesting GitHub's [maximum `timeout-minutes: 4320`](https://docs.github.com/en/actions/hosting-your-own-runners/about-self-hosted-runners#usage-limits).
+This signals to
 CML to restart the workflow just before timeout. You'll also have to write your
 code to cache results so that the restarted workflow will use previous results
 (e.g. use
