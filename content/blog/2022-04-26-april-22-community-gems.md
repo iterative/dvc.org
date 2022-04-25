@@ -60,11 +60,13 @@ Thanks for the question @Atsu!
 
 This is supported out-of-the-box! Here's how it works:
 
-1. GitHub action launches "self-hosted" GCP or AWS using
-   `cml runner --reuse --labels=cml`
-2. GitHub action runs the rest of the workflow on the "self-hosted" runner using
-   `runs-on: [self-hosted, cml]` and `timeout-minutes: 4320`
-3. If GitHub action is about to timeout, CML will restart the workflow.
+1. Within Github Actions, CML launches a [self-hosted runner](https://cml.dev/doc/self-hosted-runners) on GCP or AWS using
+   `cml runner --labels=cml --cloud=gcp`/`--cloud=aws`
+2. GitHub Actions runs the rest of the workflow on the self-hosted runner using
+   `runs-on: [self-hosted, cml]` and the maximum allowable `timeout-minutes: 4320`
+3. If GitHub Actions is about to timeout, CML will restart the workflow,
+   so make sure your code regularly caches and restores data if it's expected to
+   take >3 days to run.
 
 You can follow along with
 [this doc](https://cml.dev/doc/self-hosted-runners?tab=GitHub#allocating-cloud-compute-resources-with-cml)
