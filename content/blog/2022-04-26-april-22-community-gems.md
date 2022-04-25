@@ -9,7 +9,7 @@ descriptionLong: >
   updates, working with multiple datasets, using DVC stages, and more.
 picture: 2022-04-326/apr-comm-gems.png
 author: milecia_mcgregor
-commentsUrl:
+commentsUrl: https://discuss.dvc.org/t/april-22-community-gems/1175
 tags:
   - CML
   - DVC Stages
