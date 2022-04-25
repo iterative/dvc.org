@@ -190,9 +190,11 @@ whatever you want. Inside of the resource block, we specify some arguments:
   [l+k80](https://registry.terraform.io/providers/iterative/iterative/latest/docs/resources/task#l+k80)
   stands for a "Large, with (at least) 12 CPU cores, 112 GB of RAM and 2 GPU
   devices".
-- _spot_: set the [spot instance price](https://aws.amazon.com/ec2/spot/pricing/). Here I set it to `0` to use TPI's automatic
-  price, which should keep costs down. Alternatively you can specify a positive
-  number to set a maximum bidding price in USD or `-1` to use on-demand pricing.
+- _spot_: set the
+  [spot instance price](https://aws.amazon.com/ec2/spot/pricing/). Here I set it
+  to `0` to use TPI's automatic price, which should keep costs down.
+  Alternatively you can specify a positive number to set a maximum bidding price
+  in USD or `-1` to use on-demand pricing.
 - _workdir_: specify a directory on your local machine relative to your project
   folder which you would like to sync with the remote machine. This way you can
   share your whole project or parts of it with a remote machine. In my example,
@@ -207,7 +209,11 @@ for a full list.
 
 <admon type="warn">
 
-Be aware of [the costs associated with AWS EC2 instances](https://aws.amazon.com/ec2/pricing/). The machine used in the example above is not included in the free tier and will incur charges. Using TPI's spot pricing will keep costs to a minimum, but not eliminate them entirely.
+Be aware of
+[the costs associated with AWS EC2 instances](https://aws.amazon.com/ec2/pricing/).
+The machine used in the example above is not included in the free tier and will
+incur charges. Using TPI's spot pricing will keep costs to a minimum, but not
+eliminate them entirely.
 
 </admon>
 
