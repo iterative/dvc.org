@@ -74,7 +74,7 @@ to get started.
 
 The key is requesting GitHub's [maximum `timeout-minutes: 4320`](https://docs.github.com/en/actions/hosting-your-own-runners/about-self-hosted-runners#usage-limits).
 This signals to
-CML to restart the workflow just before timeout. You'll also have to write your
+CML to [restart the workflow](https://cml.dev/doc/ref/runner#faqs-and-known-issues) just before the timeout. You'll also have to write your
 code to cache results so that the restarted workflow will use previous results
 (e.g. use
 https://dvc.org/doc/user-guide/experiment-management/checkpoints#caching-checkpoints
