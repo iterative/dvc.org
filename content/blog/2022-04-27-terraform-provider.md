@@ -1,5 +1,5 @@
 ---
-title: Machine Learning Workloads with Iterative Provider for Terraform
+title: Machine Learning Workloads with Terraform Provider Iterative
 date: 2022-04-27
 description: >
   Today we introduce painless resource orchestration for your machine learning
