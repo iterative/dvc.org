@@ -41,14 +41,14 @@
         "children": [
           {
             "label": "Accessing Data",
-            "slug": "data-and-model-access",
+            "slug": "access",
             "tutorials": {
               "katacoda": "https://katacoda.com/dvc/courses/get-started/accessing"
             }
           },
           {
             "label": "Pipelines",
-            "slug": "data-pipelines",
+            "slug": "pipelines",
             "tutorials": {
               "katacoda": "https://katacoda.com/dvc/courses/get-started/stages"
             }
