@@ -38,7 +38,7 @@ In this guide, we will show how you can use
 open-source library for implementing continuous integration and delivery (CI/CD)
 in machine learning projects. This way we can define a pipeline to train a model
 and keep track of various versions. Although we could do so directly in our
-CI/CD pipeline (e.g. GitHub Workflows), the runners used for this generally
+CI/CD pipeline (e.g. GitHub Actions Workflows), the runners used for this generally
 don’t have a lot of processing power. Therefore it makes more sense to provision
 a dedicated runner that is tailored to our computing needs.
 
