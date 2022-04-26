@@ -284,7 +284,7 @@ train-model:
         # Create CML report
         cat model/metrics.txt > report.md
         cml publish model/confusion_matrix.png --md >> report.md
-        cml send-comment --pr --update report.md
+        cml send-comment --update report.md
 ```
 
 Et voilà! We are now running a daily model training on an AWS EC2 instance and
