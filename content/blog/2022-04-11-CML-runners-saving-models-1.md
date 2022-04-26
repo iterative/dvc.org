@@ -38,9 +38,9 @@ In this guide, we will show how you can use
 open-source library for implementing continuous integration and delivery (CI/CD)
 in machine learning projects. This way we can define a pipeline to train a model
 and keep track of various versions. Although we could do so directly in our
-CI/CD pipeline (e.g. GitHub Actions Workflows), the runners used for this generally
-don’t have a lot of processing power. Therefore it makes more sense to provision
-a dedicated runner that is tailored to our computing needs.
+CI/CD pipeline (e.g. GitHub Actions Workflows), the runners used for this
+generally don’t have a lot of processing power. Therefore it makes more sense to
+provision a dedicated runner that is tailored to our computing needs.
 
 At the end of this guide we will have set up a CML workflow that does the
 following on a daily basis:
@@ -170,8 +170,8 @@ joblib.dump(clf, "model/random_forest.joblib")
 Now that we have a script to train our model and save it as a file, let’s set up
 our CI/CD to provision a runner and run the script. We define our workflow in
 `cml.yaml` and save it in the `.github/workflows` directory. This way GitHub
-will automatically run the workflow whenever it is triggered. In this
-case the triggers are on (manual) request as well as daily (automatic) schedule.
+will automatically run the workflow whenever it is triggered. In this case the
+triggers are on (manual) request as well as daily (automatic) schedule.
 
 <admon type="info">
 
@@ -232,7 +232,8 @@ jobs:
 
 <admon type="warn">
 
-In this example we are using a `t2.micro` [AWS EC2 instance](https://aws.amazon.com/ec2/instance-types/). At the time of
+In this example we are using a `t2.micro`
+[AWS EC2 instance](https://aws.amazon.com/ec2/instance-types/). At the time of
 writing this is included in the AWS free tier. Make sure that you qualify for
 this free usage to prevent unexpected spending. When you specify a bulkier
 <code>cloud-type</code>, your expenses will rise.
