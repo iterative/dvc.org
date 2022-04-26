@@ -231,7 +231,7 @@ jobs:
 
 <admon type="warn">
 
-In this example we are using a `t2.micro` AWS EC2 instance. At the time of
+In this example we are using a `t2.micro` [AWS EC2 instance](https://aws.amazon.com/ec2/instance-types/). At the time of
 writing this is included in the AWS free tier. Make sure that you qualify for
 this free usage to prevent unexpected spending. When you specify a bulkier
 <code>cloud-type</code>, your expenses will rise.
