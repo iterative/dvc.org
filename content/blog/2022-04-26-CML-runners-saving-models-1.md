@@ -1,7 +1,7 @@
 ---
 title:
   Training and saving models with CML on a self-hosted AWS EC2 runner (part 1)
-date: 2022-04-11
+date: 2022-04-26
 description:
   In this guide we will show how you can use CML to automatically retrain a
   model and save its outputs to your Github repository using a provisioned AWS
@@ -12,7 +12,7 @@ descriptionLong: |
   provisions an AWS EC2 instance to retrain a model and save the output on
   a regular basis. This way we can prevent drift by ensuring that our model
   always uses the latest input data.
-picture: 2022-04-11/saving-models-cover.jpeg
+picture: 2022-04-26/saving-models-cover.jpeg
 # pictureComment: Some _Comment_ (supports _basic_ [Markdown](link))
 author: rob_dewit
 commentsUrl: https://discuss.dvc.org/t/training-and-saving-models-with-cml-on-a-self-hosted-aws-ec2-runner/1155
