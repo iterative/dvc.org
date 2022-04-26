@@ -125,13 +125,14 @@ The outputs of `train.py` are:
 All of these files are saved to the `model` directory.
 
 ```python
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import plot_confusion_matrix
-import matplotlib.pyplot as plt
 import json
 import os
+
 import joblib
+import matplotlib.pyplot as plt
 import numpy as np
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import plot_confusion_matrix
 
 # Read in data
 X_train = np.genfromtxt("data/train_features.csv")
@@ -142,23 +143,23 @@ y_test = np.genfromtxt("data/test_labels.csv")
 # Fit a model
 depth = 5
 clf = RandomForestClassifier(max_depth=depth)
-clf.fit(X_train,y_train)
+clf.fit(X_train, y_train)
 
 # Calculate accuracy
 acc = clf.score(X_test, y_test)
 print(acc)
 
 # Create model folder if it does not yet exist
-if not os.path.exists('model'):
-    os.makedirs('model')
+if not os.path.exists("model"):
+    os.makedirs("model")
 
 # Write metrics to file
-with open("model/metrics.txt", 'w+') as outfile:
-        outfile.write("Accuracy: " + str(acc) + "\n")
+with open("model/metrics.txt", "w+") as outfile:
+    outfile.write("Accuracy: " + str(acc) + "\n")
 
 # Plot confusion matrix
-disp = plot_confusion_matrix(clf, X_test, y_test, normalize='true',cmap=plt.cm.Blues)
-plt.savefig('model/confusion_matrix.png')
+disp = plot_confusion_matrix(clf, X_test, y_test, normalize="true", cmap=plt.cm.Blues)
+plt.savefig("model/confusion_matrix.png")
 
 # Save the model
 joblib.dump(clf, "model/random_forest.joblib")
