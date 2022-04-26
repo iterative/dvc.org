@@ -291,7 +291,7 @@ train-model:
 
         # Create pull request
         cml pr model/random_forest.joblib
-        
+
         # Create CML report
         cat model/metrics.txt > report.md
         cml publish model/confusion_matrix.png --md >> report.md
