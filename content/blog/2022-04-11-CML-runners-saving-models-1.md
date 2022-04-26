@@ -48,7 +48,7 @@ following on a daily basis:
 1. Provision an Amazon Web Services (AWS) EC2 instance
 1. Train the model
 1. Save the model and its metrics to a GitHub repository
-1. Create a merge request with the new outputs
+1. Create a pull request with the new outputs
 1. Terminate the AWS EC2 instance
 
 In a follow-up post we will expand upon this by using [DVC](https://dvc.org/) to
