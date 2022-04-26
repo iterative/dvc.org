@@ -215,6 +215,9 @@ jobs:
       - uses: actions/setup-python@v2
         with:
           python-version: '3.x'
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16'
       - uses: iterative/setup-cml@v1
       - name: Train model
         env:
