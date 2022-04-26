@@ -249,7 +249,7 @@ can save our model in the next step!
 
 CML allows us to export the model from our runner to our Git repository. Let's
 extend the training stage of our workflow by pushing `random_forest.joblib` to a
-new experiment branch and creating a merge request.
+new experiment branch and creating a pull request.
 
 [`cml pr`](https://cml.dev/doc/ref/pr) is the command that specifies which files
 should be included in the pull request. The commands after that are used to
