@@ -170,7 +170,7 @@ Now that we have a script to train our model and save it as a file, let’s set 
 our CI/CD to provision a runner and run the script. We define our workflow in
 `cml.yaml` and save it in the `.github/workflows` directory. This way GitHub
 will automatically run the workflow whenever it is triggered. In this
-case the triggers are a manual run and the daily schedule.
+case the triggers are on (manual) request as well as daily (automatic) schedule.
 
 <admon type="info">
 
