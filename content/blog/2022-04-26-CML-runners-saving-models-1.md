@@ -228,6 +228,14 @@ jobs:
           pip install -r requirements.txt
           python get_data.py
           python train.py
+
+          # Create pull request
+          cml pr model/random_forest.joblib
+
+          # Create CML report
+          cat model/metrics.txt > report.md
+          cml publish model/confusion_matrix.png --md >> report.md
+          cml send-comment --update report.md
 ```
 
 <admon type="warn">
@@ -268,6 +276,9 @@ train-model:
     - uses: actions/setup-python@v2
       with:
         python-version: '3.x'
+    - uses: actions/setup-node@v3
+      with:
+        node-version: '16'
     - uses: iterative/setup-cml@v1
     - name: Train model
       env:
@@ -280,7 +291,7 @@ train-model:
 
         # Create pull request
         cml pr model/random_forest.joblib
-
+        
         # Create CML report
         cat model/metrics.txt > report.md
         cml publish model/confusion_matrix.png --md >> report.md
