@@ -7,7 +7,7 @@ description: >
 descriptionLong: >
   A roundup of technical Q&As from the DVC and CML community. This month: CML
   updates, working with multiple datasets, using DVC stages, and more.
-picture: 2022-04-326/apr-comm-gems.png
+picture: 2022-04-27/apr-comm-gems.jpeg
 author: milecia_mcgregor
 commentsUrl: https://discuss.dvc.org/t/april-22-community-gems/1175
 tags:
