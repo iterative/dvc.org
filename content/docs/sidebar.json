@@ -64,7 +64,7 @@
       },
       {
         "slug": "experiments",
-        "label": "Experiment Versioning",
+        "label": "Experiments",
         "source": "experiments/index.md",
         "tutorials": {
           "katacoda": "https://katacoda.com/dvc/courses/get-started/experiments"
