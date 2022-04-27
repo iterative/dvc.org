@@ -6,8 +6,8 @@ description: >
   projects in conjunction with HashiCorp Terraform.
 descriptionLong: >
   Catapult your machine learning projects into any coud and reduce cost with
-  spot instance auto-recovery, while aligning your Data Science and DevOps
-  teams with a simple config file.
+  spot instance auto-recovery, while aligning your Data Science and DevOps teams
+  with a simple config file.
 picture: 2022-04-27/terraform-provider-iterative.png
 pictureComment: Machine Learning Workloads with Terraform Provider Iterative
 author: maria_khalusova
@@ -24,19 +24,19 @@ The requirements for Machine Learning (ML) infrastructure are becoming
 increasingly complex. Training large models often requires specialized hardware
 (GPUs, TPUs) which involves moving the whole training process onto cloud
 machines, setting up environments and synchronizing data. For teams that want to
-leverage spot instances, the setup becomes even more complex -- they need to make
-sure the training progress is not lost during spot instance recovery. This is
-time-consuming, and requires expertise in both DevOps and Machine Learning.
+leverage spot instances, the setup becomes even more complex -- they need to
+make sure the training progress is not lost during spot instance recovery. This
+is time-consuming, and requires expertise in both DevOps and Machine Learning.
 Additionally, training in a cloud environment can incur high costs due to the
 need for expensive hardware, as well as users forgetting to shutdown instances
 when training is complete.
 
 To address the specific needs of machine learning teams, we have built
 [Terraform Provider Iterative (TPI)](https://github.com/iterative/terraform-provider-iterative).
-TPI is an open-source tool extending the functionality
-of Terraform, the world's most widely used multi-cloud provisioning product. The
-Iterative Provider enables full lifecycle management of computing resources and
-is designed specifically for machine learning pipelines.
+TPI is an open-source tool extending the functionality of Terraform, the world's
+most widely used multi-cloud provisioning product. The Iterative Provider
+enables full lifecycle management of computing resources and is designed
+specifically for machine learning pipelines.
 
 ## Tailored to Machine Learning Workflows
 
@@ -100,8 +100,8 @@ Platform (GCP), or Kubernetes (K8s), the Iterative Provider has you covered. You
 can configure compute resources from these with a unified API, using
 [common machine types](https://registry.terraform.io/providers/iterative/iterative/latest/docs/resources/task#machine-type)
 that are the same across all cloud vendors. This significantly simplifies
-infrastructure configuration and makes it easy to migrate from one cloud to another
-by changing just one line of code.
+infrastructure configuration and makes it easy to migrate from one cloud to
+another by changing just one line of code.
 
 ## Costs Optimization
 
