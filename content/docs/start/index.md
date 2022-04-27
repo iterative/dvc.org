@@ -50,8 +50,8 @@ $ git commit -m "Initialize DVC"
 
 Now you're ready to DVC!
 
-DVC's features can be grouped into functional components. You can explore them in
-two independent trails:
+DVC's features can be grouped into functional components. You can explore them
+in two independent trails:
 
 ### Data Management Trail
 
