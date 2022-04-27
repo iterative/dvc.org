@@ -65,6 +65,13 @@
         "tutorials": {
           "katacoda": "https://katacoda.com/dvc/courses/get-started/experiments"
         }
+      },
+      {
+        "label": "Visualization with Plots",
+        "slug": "visualization",
+        "tutorials": {
+          "katacoda": "https://katacoda.com/dvc/courses/get-started/visualization"
+        }
       }
     ]
   },
