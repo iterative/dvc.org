@@ -1,10 +1,9 @@
 const { isProduction } = require('../../utils')
+const {
+  PLAUSIBLE: { SCRIPT_WITHOUT_EXTENSION, EVENT_ENDPOINT }
+} = require('../../../consts')
 const NodeCache = require('node-cache')
 require('isomorphic-fetch')
-
-const ScriptName = '/pl/script.js'
-const Endpoint = '/event'
-const ScriptWithoutExtension = ScriptName.replace('.js', '')
 
 const cache = new NodeCache({ stdTTL: 60 })
 
@@ -13,7 +12,7 @@ async function handlePlausibleScript(req, res) {
     const pathname = req.path
     const [baseUri, ...extensions] = pathname.split('.')
 
-    if (baseUri.endsWith(ScriptWithoutExtension)) {
+    if (baseUri.endsWith(SCRIPT_WITHOUT_EXTENSION)) {
       const url = 'https://plausible.io/js/plausible.' + extensions.join('.')
 
       const cachedContent = cache.get(url)
@@ -54,7 +53,7 @@ async function handlePlausibleRequest(req, res) {
     if (typeof body === 'object') {
       body = JSON.stringify(body)
     }
-    if (pathname.endsWith(Endpoint)) {
+    if (pathname.endsWith(EVENT_ENDPOINT)) {
       const response = await fetch('https://plausible.io/api/event', {
         method: req.method,
         body,

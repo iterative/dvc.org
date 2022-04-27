@@ -3,6 +3,7 @@ import Helmet from 'react-helmet'
 
 import { MetaProps } from 'gatsby-theme-iterative-docs/src/components/SEO'
 import getSiteMeta from 'gatsby-theme-iterative-docs/src/queries/siteMeta'
+import { PLAUSIBLE } from '../../../consts'
 
 interface IDefaultSEOProps {
   pathname: string
@@ -120,7 +121,7 @@ const DefaultSEO: React.FC<IDefaultSEOProps> = ({ pathname }) => {
       <script
         defer
         data-domain="dvc.org"
-        src="/api/pl/script.outbound-links.js"
+        src={PLAUSIBLE.SCRIPT_SOURCE}
       ></script>
     </Helmet>
   )
