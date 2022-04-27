@@ -58,7 +58,7 @@ project.][misclassified-example-code]
 $ dvc plots show plots/misclassified.png
 ```
 
-![misclassification image](/img/start_visualization_misclassification.png)
+![Misclassification table](/img/start_visualization_misclassification.png)
 
 ## Autogenerating plots from deep learning code
 
@@ -74,7 +74,9 @@ first import the callback from DVCLive.
 from dvclive.keras import DvcLiveCallback
 ```
 
-Then we add this callback to the `fit()` call.
+Then we add this callback to the
+[`fit` method](https://keras.io/api/models/model_training_apis/#fit-method)
+call.
 
 ```python
 model.fit(
