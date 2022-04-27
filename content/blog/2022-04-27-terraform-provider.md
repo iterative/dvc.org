@@ -6,7 +6,7 @@ description: >
   projects in conjunction with HashiCorp Terraform.
 descriptionLong: >
   Catapult your machine learning projects into any coud and reduce cost with
-  spot instance auto-recovery, while aligning your Data Science  and DevOps
+  spot instance auto-recovery, while aligning your Data Science and DevOps
   teams with a simple config file.
 picture: 2022-04-27/terraform-provider-iterative.png
 pictureComment: Machine Learning Workloads with Terraform Provider Iterative
@@ -24,15 +24,16 @@ The requirements for Machine Learning (ML) infrastructure are becoming
 increasingly complex. Training large models often requires specialized hardware
 (GPUs, TPUs) which involves moving the whole training process onto cloud
 machines, setting up environments and synchronizing data. For teams that want to
-leverage spot instances, the setup becomes even more complex - they need to make
+leverage spot instances, the setup becomes even more complex -- they need to make
 sure the training progress is not lost during spot instance recovery. This is
-time-consuming, and requires expertise in both DevOps and Machine Learning. On
-top of that, the costs of training in a cloud environment can be high due to not
-only the need for specific hardware, but also individual responsibility to shut
-down instances when training is complete.
+time-consuming, and requires expertise in both DevOps and Machine Learning.
+Additionally, training in a cloud environment can incur high costs due to the
+need for expensive hardware, as well as users forgetting to shutdown instances
+when training is complete.
 
-To address the specific needs of machine learning teams, we have built Terraform
-Provider Iterative (TPI). TPI is an open-source tool extending the functionality
+To address the specific needs of machine learning teams, we have built
+[Terraform Provider Iterative (TPI)](https://github.com/iterative/terraform-provider-iterative).
+TPI is an open-source tool extending the functionality
 of Terraform, the world's most widely used multi-cloud provisioning product. The
 Iterative Provider enables full lifecycle management of computing resources and
 is designed specifically for machine learning pipelines.
@@ -88,7 +89,7 @@ so users don't have to worry about spiraling costs from unused machines.
 Once you configure infrastructure and a script that executes your training
 pipeline in a Terraform configuration file, you can bring that pipeline anywhere
 you want. You can use such a config for ad-hoc training at any stage of your
-prototyping process or use it as a job in your preferred CI/CD tool. It will
+prototyping process or use it as a job in your preferred CI/CD tool. You can
 also store your infrastructure configuration files in a version control system
 together with the rest of your project for easier control.
 
@@ -96,11 +97,11 @@ together with the rest of your project for easier control.
 
 Whether you prefer Amazon Web Services (AWS), Microsoft Azure, Google Cloud
 Platform (GCP), or Kubernetes (K8s), the Iterative Provider has you covered. You
-can configure compute resources from these with a single provider, using
-[common machine types](https://registry.terraform.io/providers/iterative/iterative/latest/docs/resources/task#machine-type).
-These are going to be roughly similar between different cloud vendors. Not only
-does this significantly simplify infrastructure configuration, it also makes it
-easy to migrate from one cloud to another with only minor adjustments.
+can configure compute resources from these with a unified API, using
+[common machine types](https://registry.terraform.io/providers/iterative/iterative/latest/docs/resources/task#machine-type)
+that are the same across all cloud vendors. This significantly simplifies
+infrastructure configuration and makes it easy to migrate from one cloud to another
+by changing just one line of code.
 
 ## Costs Optimization
 
@@ -108,7 +109,8 @@ The Iterative Provider helps with cloud compute cost optimization in two major
 ways. First, upon completion of your script, the instance is automatically
 terminated. This helps to avoid accumulating costs due to abandoned resources.
 Second, you can leverage the cost-saving power of spot instances to train your
-models without losing any progress!
+models without losing any progress! TPI recovers the working directory and
+respawns interrupted/preempted instances for you.
 
 ## DevOps-Friendly
 
