@@ -44,14 +44,18 @@ If the `--cloud` (`-c`) flag is used, this command deletes unused data from the
 to deleting it from the local DVC cache. To specify a DVC remote to delete from,
 use the `--remote` (`-r`) option.
 
-> ⚠️ Danger: cloud deletion is irreversible unless there is another DVC remote
-> or a manual backup with the same data.
+<admon type="warn">
+
+Cloud deletion is irreversible unless there is another DVC remote or a manual
+backup with the same data.
+
+</admon>
 
 ### Cleaning shared cache or shared remote
 
 If a single remote or a single [cache is shared] among different projects and
 those projects have overlapped DVC-tracked files, removing files via `gc` in one
-project may brake some links in another project.
+project may break some links in another project.
 
 To keep overlapping files `dvc gc` has a flag `--projects` (`-p`) that takes
 multiple path to DVC projects. DVC _keeps_ data referenced in those projects.
