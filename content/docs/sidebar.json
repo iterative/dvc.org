@@ -40,14 +40,14 @@
         "source": "data/index.md",
         "children": [
           {
-            "label": "Accessing Data",
+            "label": "Data and Model Access",
             "slug": "access",
             "tutorials": {
               "katacoda": "https://katacoda.com/dvc/courses/get-started/accessing"
             }
           },
           {
-            "label": "Pipelines",
+            "label": "Data Pipelines",
             "slug": "pipelines",
             "tutorials": {
               "katacoda": "https://katacoda.com/dvc/courses/get-started/stages"
