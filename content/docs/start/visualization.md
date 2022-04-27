@@ -74,7 +74,9 @@ first import the callback from DVCLive.
 from dvclive.keras import DvcLiveCallback
 ```
 
-Then we add this callback to the `fit()` call.
+Then we add this callback to the
+[`fit` method](https://keras.io/api/models/model_training_apis/#fit-method)
+call.
 
 ```python
 model.fit(
