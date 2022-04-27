@@ -16,8 +16,9 @@ tags:
   - MLOps
   - Terraform
   - Git
-  - Resource orchestation
-  - Spot Instance management
+  - Cloud orchestration
+  - Spot instance management
+  - Release
 ---
 
 The requirements for Machine Learning (ML) infrastructure are becoming
