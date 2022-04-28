@@ -1,6 +1,6 @@
 # Machine Learning Model Registry
 
-A **model registry** is a repository to catalog ML models and their versions.
+A **model registry** is a construct to catalog ML models and their versions.
 Models from your data science projects can be discovered, audited, shared,
 tested, and deployed from here.  
 DVC works on top of Git to enable these capabilities on your existing software
@@ -34,21 +34,22 @@ projects</abbr>. This makes it possible to manage them with standard GitOps
 workflows along with code. Large model files are stored separately and
 efficiently, and can be pushed to [remote storage] -- a scalable access point.
 
-DVC repos are also great for [sharing] data artifacts. You can get the models
+DVC repos are also great for [sharing] any data artifact. You can get the models
 described by DVC into production in a few ways: by deploying with the `dvc`
 [CLI], or integrating into Python code using the [API]. You can even automate
 their training and delivery [via CML].
 
-To build the registry, the models from your ML projects (whether using DVC or
-not) can be **packaged** together with their metadata using Git-native
-mechanics. One option is to annotate the repo using tags with [GTO]. This
-approach is compatible with systems like Github Actions or Gitlab CI/CD, which
-can then [sync with your models lifecycle].
+To build a Git-native registry, the ML models in your repos can be annotated
+using tags. [GTO] (Git Tag Ops) is a tool to do just that! The annotations carry
+meaningful metadata, such as a model file path (or [DVC metafile]), development
+stage, deployment environment, etc. This helps you manage your models lifecycle:
+promoting versions, rolling back, and reviewing their history.
 
-With _GTO_ (Git Tag Ops) you tag artifact versions and annotate them with
-meaningful metadata, such as a model file path (or a [DVC metafile]). Manage
-model stages by promoting for production, rolling back, and reviewing their
-history.
+This approach is like **packaging** the models with their related information,
+plus dependencies with DVC. They can be consolidated virtually using a smart
+tool like [Studio], or by moving or [importing] the assets into a central repo.
+This is compatible with systems like Github Actions or Gitlab CI/CD, which can
+automatically [sync] with your model management events.
 
 [modeling process]: doc/start/data-pipelines
 [remote storage]: /doc/command-reference/remote
@@ -57,6 +58,8 @@ history.
 [api]: /doc/api-reference
 [via cml]: https://cml.dev/doc/cml-with-dvc
 [gto]: https://github.com/iterative/gto
-[sync with your models lifecycle]:
+[studio]: https://studio.iterative.ai/
+[importing]: /doc/use-cases/data-registries#building-registries
+[sync]:
   https://github.com/iterative/gto#getting-right-versions-in-downstream-systems
 [dvc metafile]: doc/user-guide/project-structure
