@@ -79,27 +79,37 @@
       content: unset;
     }
 
-    li,
     .collapsableDiv .anchor svg {
       visibility: hidden;
     }
 
-    li,
+    .collapsableDiv .anchor:focus svg {
+      visibility: visible;
+    }
+
     .collapsableDiv:hover .anchor svg {
       visibility: visible;
     }
 
-    li,
-    .collapsableDiv .anchor:focus svg {
+    .collapsableDiv .anchor {
+      line-height: 2.5;
+    }
+
+    li .anchor svg {
+      visibility: hidden;
+    }
+
+    li .anchor:focus svg {
+      visibility: visible;
+    }
+
+    li:hover .anchor svg {
       visibility: visible;
     }
 
     li .anchor {
       line-height: unset;
-    }
-
-    .collapsableDiv .anchor {
-      line-height: 2.5;
+      margin-left: -17px;
     }
 
     .anchor {
