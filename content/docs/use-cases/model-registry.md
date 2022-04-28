@@ -12,7 +12,7 @@ registries is between development and applications. See also [Data Registries]._
 
 [data registries]: /doc/use-cases/data-registries
 
-Model registries give your team key collaborative capabilities:
+Model registries give your team key capabilities:
 
 - Store and present your models to others, from early-stage [experiment] results
   to production-ready models.
@@ -21,9 +21,7 @@ Model registries give your team key collaborative capabilities:
 - Save performance [metrics and plots] or other metadata to evaluate or compare
   models.
 - An interface to access specific model versions from other systems (e.g. in
-  CI/CD)
-- Centralize ML models from multiple projects into a global repository, if
-  needed.
+  CI/CD or production environments)
 
 [experiment]: /doc/user-guide/experiment-management
 [versions]: /doc/use-cases/versioning-data-and-model-files
