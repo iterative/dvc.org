@@ -37,7 +37,7 @@
       {
         "slug": "data-management",
         "label": "Data Management",
-        "source": "data/index.md",
+        "source": "data-management/index.md",
         "children": [
           {
             "label": "Data and Model Access",
