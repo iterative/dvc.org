@@ -199,8 +199,8 @@ authentication is needed.
    key in CI/CD systems, production setup, read-only file systems, etc. The
    content of this variable should be a string with JSON that has the same
    format as in the keys file described above. If both this variable and
-   `gdrive_service_account_json_file_path` are provide, DVC reads the
-   environment variable first.
+   `gdrive_service_account_json_file_path` are provide, `GDRIVE_CREDENTIALS_DATA`
+   takes priority and `gdrive_service_account_json_file_path` is ignored.
 
 3. Share the Google Drive folders that you want to use with the service account.
    Navigate to your Google Drive folder's sharing options and add the service
@@ -247,7 +247,7 @@ Alternatively, a `GDRIVE_CREDENTIALS_DATA` can be set to pass user credentials
 in CI/CD systems, production setup, read-only file systems, etc. The content of
 this variable should be a string with JSON that has the same format as in the
 credentials files described above, and usually you get it going through the same
-authentication process. DVC reads this variable first, before the credentials
-file.
+authentication process. If `GDRIVE_CREDENTIALS_DATA` is set, the
+`gdrive_user_credentials_file` value (if provided) is ignored.
 
 > Please note our [Privacy Policy (Google APIs)](/doc/user-guide/privacy).
