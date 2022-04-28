@@ -109,6 +109,7 @@
 
     li .anchor {
       line-height: unset;
+      margin-left: -17px;
     }
 
     .anchor {
