@@ -199,8 +199,9 @@ authentication is needed.
    key in CI/CD systems, production setup, read-only file systems, etc. The
    content of this variable should be a string with JSON that has the same
    format as in the keys file described above. If both this variable and
-   `gdrive_service_account_json_file_path` are provide, `GDRIVE_CREDENTIALS_DATA`
-   takes priority and `gdrive_service_account_json_file_path` is ignored.
+   `gdrive_service_account_json_file_path` are provide,
+   `GDRIVE_CREDENTIALS_DATA` takes priority and
+   `gdrive_service_account_json_file_path` is ignored.
 
 3. Share the Google Drive folders that you want to use with the service account.
    Navigate to your Google Drive folder's sharing options and add the service
