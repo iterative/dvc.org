@@ -194,6 +194,12 @@ authentication is needed.
    $ dvc remote modify myremote --local \
                  gdrive_service_account_json_file_path path/to/file.json
    ```
+   
+   Alternatively, a `GDRIVE_CREDENTIALS_DATA` can be set to pass service account
+   key in CI/CD systems, production setup, read-only file systems, etc. The content of
+   this variable should be a string with JSON that has the same format as in the
+   keys file described above. If both this variable and `gdrive_service_account_json_file_path`
+   are provide, DVC reads the environment variable first.
 
 3. Share the Google Drive folders that you want to use with the service account.
    Navigate to your Google Drive folder's sharing options and add the service
