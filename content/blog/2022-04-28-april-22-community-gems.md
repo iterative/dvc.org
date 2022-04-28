@@ -1,13 +1,13 @@
 ---
 title: April '22 Community Gems
-date: 2022-04-26
+date: 2022-04-28
 description: >
   A roundup of technical Q&As from the DVC and CML community. This month: CML
   updates, working with multiple datasets, using DVC stages, and more.
 descriptionLong: >
   A roundup of technical Q&As from the DVC and CML community. This month: CML
   updates, working with multiple datasets, using DVC stages, and more.
-picture: 2022-04-27/apr-comm-gems.jpeg
+picture: 2022-04-28/apr-comm-gems.jpeg
 author: milecia_mcgregor
 commentsUrl: https://discuss.dvc.org/t/april-22-community-gems/1175
 tags:
@@ -118,6 +118,11 @@ remote.
 ---
 
 https://media.giphy.com/media/f8QPB1rgHbwhcD2Jd6/giphy.gif
+
+At our May Office Hours Meetup we will have Matt Squire of Fuzzy Labs join us
+sharing his view on open source MLOps tools!
+[RSVP for the Meetup here](https://www.meetup.com/Machine-Learning-Engineer-Community-Virtual-Meetups/events/285550813)
+to stay up to date with specifics as we get closer to the event!
 
 [Join us in Discord](https://discord.com/invite/dvwXA2N) to get all your DVC and
 CML questions answered!
