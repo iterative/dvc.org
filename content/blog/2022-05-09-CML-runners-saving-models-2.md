@@ -82,6 +82,7 @@ Additionally, set up the following things beforehand:
 
 - [Install DVC](https://dvc.org/doc/install)
 - [Set up a GCP project](https://dvc.org/doc/user-guide/setup-google-drive-remote#using-a-custom-google-cloud-project-recommended)
+- [Enable the Google Drive API for your GCP project](https://console.cloud.google.com/apis/library/drive.googleapis.com)
 - [Create a GCP service account](https://dvc.org/doc/user-guide/setup-google-drive-remote#using-service-accounts)
 and download the private key to a safe location
 <!-- - [Add `GDRIVE_CREDENTIALS_DATA` as a GitHub secret](https://docs.github.com/en/actions/security-guides/encrypted-secrets) with the  -->
