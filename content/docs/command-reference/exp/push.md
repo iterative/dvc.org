@@ -6,8 +6,8 @@ to a `dvc remote`.
 ## Synopsis
 
 ```usage
-usage: dvc exp push [-h] [-q | -v] [-f] [--no-cache]
-                    [-r <name>] [-j <number>] [--run-cache]
+usage: dvc exp push [-h] [-q | -v] [-A] [--rev <commit>] [-n <num>] [-f]
+                    [--no-cache] [-r <name>] [-j <number>] [--run-cache]
                     git_remote experiment
 
 positional arguments:
@@ -39,6 +39,16 @@ This command will also try to [push](/doc/command-reference/push) all
 [remote storage](/doc/command-reference/remote), unless `--no-cache` is used.
 
 ## Options
+
+- `-A`, `--all-commits` - push all experiments in the repository (overrides
+  `--rev` and `--num`).
+
+- `--rev <commit>` - push experiments derived from the specified `<commit>` as
+  baseline.
+
+- `-n <num>`, `--num <num>` - show experiments from the last `num` commits
+  (first parents) starting from the `--rev` baseline. Give a negative value to
+  include all first-parent commits (similar to `git log -n`).
 
 - `-f`, `--force` - rewrite the `experiment` commit if it already exists in the
   Git remote. Equivalent to `git push --force` (rewrites history)

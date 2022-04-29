@@ -18,8 +18,15 @@ const BLOG = {
   postsPerRow: 3
 }
 
+const PLAUSIBLE = {
+  SCRIPT_SOURCE: '/api/pl/script.outbound-links.js',
+  SCRIPT_WITHOUT_EXTENSION: '/pl/script',
+  EVENT_ENDPOINT: '/event'
+}
+
 module.exports = {
   FORUM_URL,
   BLOG,
+  PLAUSIBLE,
   PAGE_DOC
 }
