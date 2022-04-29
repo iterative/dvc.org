@@ -183,7 +183,7 @@ whatever you want. Inside of the resource block, we specify some arguments:
 - _region_: you can choose the region where the compute resources should be
   allocated.
 - _machine_: if you know the exact kind of machine that you'd like to use, you
-  can specify it here. Alternatively, the Iterative Provider offers some common
+  can specify it here. Alternatively, the Terraform Provider Iterative offers some common
   machine types which are roughly the same for all supported clouds. For
   example,
   [l+k80](https://registry.terraform.io/providers/iterative/iterative/latest/docs/resources/task#l+k80)
