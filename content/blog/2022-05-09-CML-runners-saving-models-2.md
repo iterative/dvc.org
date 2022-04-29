@@ -96,8 +96,7 @@ commit the initialization to Git.
 
 Then, in order to start using DVC for versioning, we need to set up a remote.
 This is where our model files will end up, while DVC keeps track of their
-respective versions. Here we will be using Google Drive as our
-remote.
+respective versions. Here we will be using Google Drive as our remote.
 
 [The DVC user guide](https://dvc.org/doc/user-guide/setup-google-drive-remote#setup-a-google-drive-dvc-remote)
 explains how to set up a remote on Google Drive. If you would rather use another
@@ -121,9 +120,9 @@ characters at the end of our Google Drive URL).
 # Export the model to a DVC remote
 
 Now that we have set up the remote and made sure GitHub Actions has all the
-details needed to access the remote, we can use the workflow below. In this scenario,
-we train the model in the same way as in part 1, but we push it to the DVC
-remote. A reference to the location of this file is added to the GitHub
+details needed to access the remote, we can use the workflow below. In this
+scenario, we train the model in the same way as in part 1, but we push it to the
+DVC remote. A reference to the location of this file is added to the GitHub
 repository (`model/random_forest.joblib.dvc`). The model itself is added to
 `.gitignore` and not pushed to the repository.
 
