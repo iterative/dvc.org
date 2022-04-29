@@ -193,7 +193,7 @@ whatever you want. Inside of the resource block, we specify some arguments:
   [spot instance price](https://aws.amazon.com/ec2/spot/pricing/). Here I set it
   to `0` to use TPI's automatic price, which should keep costs down.
   Alternatively you can specify a positive number to set a maximum bidding price
-  in USD or `-1` to use on-demand pricing.
+  in USD per hour, or `-1` to use on-demand pricing.
 - _workdir_: specify a directory on your local machine relative to your project
   folder which you would like to sync with the remote machine. This way you can
   share your whole project or parts of it with a remote machine. In my example,
