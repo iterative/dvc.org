@@ -14,19 +14,22 @@ registries is between development and applications. See also [Data Registries]._
 
 Model registries give your team key capabilities:
 
-- Store and present your models to others, from early-stage [experiment] results
-  to production-ready models.
-- Collect, organize, and track the [versions] of different models effectively;
-  with full data provenance and lineage trails based on [reproducible modeling].
-- Save performance [metrics and plots] or other metadata to evaluate or compare
-  models.
-- An interface to access specific model versions from other systems (e.g. in
-  CI/CD or production environments)
+- Collect and present your models to others, from early-stage [experiments] to
+  production-ready, including [metrics, plots], or other metadata to help use
+  and evaluate them.
+- Organize and track model [versions] effectively; with full data provenance and
+  lineage information based on [reproducible modeling].
+- An interface to access specific models from other systems (e.g. in CI/CD or
+  production).
+- (Re)place different models on certain environments stages (dev, shadow, prod,
+  etc.) without having to touch the applications that use them.
+- Control who can manage models for added security, and audit the trail of
+  updates.
 
-[experiment]: /doc/user-guide/experiment-management
+[experiments]: /doc/user-guide/experiment-management
+[metrics, plots]: /doc/start/metrics-parameters-plots
 [versions]: /doc/use-cases/versioning-data-and-model-files
 [reproducible modeling]: /doc/start/data-pipelines
-[metrics and plots]: /doc/start/metrics-parameters-plots
 
 Many of these benefits are built into DVC: Your [modeling process] and
 performance information become **codified** in Git-based <abbr>DVC
