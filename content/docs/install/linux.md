@@ -22,7 +22,7 @@ plan to use, you might need to install optional dependencies: `[s3]`,
 `[gdrive]`, `[gs]`, `[azure]`, `[ssh]`, `[hdfs]`, `[webdav]`, `[oss]`. Use
 `[all]` to include them all.
 
-<details>
+<details id="example-pip-with-support-for-amazon-s3-storage">
 
 ### Example: with support for Amazon S3 storage
 
@@ -53,7 +53,7 @@ Depending on the type of the [remote storage](/doc/command-reference/remote) you
 plan to use, you might need to install optional dependencies: `dvc-s3`,
 `dvc-azure`, `dvc-gdrive`, `dvc-gs`, `dvc-oss`, `dvc-ssh`.
 
-<details>
+<details id="example-conda-with-support-for-amazon-s3-storage">
 
 ### Example: with support for Amazon S3 storage
 
@@ -79,7 +79,7 @@ $ snap install --classic dvc
 
 ## Install from repository
 
-<details>
+<details id="from-repo-on-debian-ubuntu">
 
 ### On Debian/Ubuntu
 
@@ -94,7 +94,7 @@ $ sudo apt install dvc
 
 </details>
 
-<details>
+<details id="from-repo-on-fedora-centos">
 
 ### On Fedora/CentOS
 
@@ -115,7 +115,7 @@ Get the binary package from the big "Download" button on the [home page](/), or
 from the [release page](https://github.com/iterative/dvc/releases/) on GitHub.
 Then install it with the following command.
 
-<details>
+<details id="from-pkg-on-debian-ubuntu">
 
 ### On Debian/Ubuntu
 
@@ -125,7 +125,7 @@ $ sudo apt install ./dvc_0.62.1_amd64.deb
 
 </details>
 
-<details>
+<details id="from-pkg-on-fedora-centos">
 
 ### On Fedora/CentOS
 

@@ -119,7 +119,7 @@ $ dvc diff
 
 ## Example: Comparing workspace with arbitrary commits
 
-<details>
+<details id="example-arbitrary-commits-set-up">
 
 ### Click and expand to set up the example
 
@@ -149,7 +149,7 @@ files summary: 1 added, 0 deleted, 0 modified
 
 ## Example: Comparing tags or branches
 
-<details>
+<details id="example-tags-branches-set-up">
 
 ### Click and expand to set up the example
 
@@ -223,7 +223,7 @@ It outputs:
 
 ## Example: Renamed files
 
-<details>
+<details id="example-renamed-files-set-up">
 
 ### Click and expand to set up the example
 
