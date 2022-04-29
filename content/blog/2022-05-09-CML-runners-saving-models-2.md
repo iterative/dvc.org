@@ -9,8 +9,7 @@ descriptionLong: |
   We can use CML to automatically retrain models whenever data, model code,
   or parameters change. In this guide we show how to create a pipeline that
   provisions an AWS EC2 instance to retrain a model and save the output on
-  a regular basis. This way we can prevent drift by ensuring that our model
-  always uses the latest input data. In this part 2 we cover how you can export a model to a DVC remote on Google Drive.
+  a regular basis. In this part 2 we cover how to export the model to a DVC remote on Google Drive.
 picture: 2022-05-09/saving-models-2-cover.jpeg
 # pictureComment: Some _Comment_ (supports _basic_ [Markdown](link))
 author: rob_dewit
@@ -83,15 +82,13 @@ Additionally, set up the following things beforehand:
 - [Install DVC](https://dvc.org/doc/install)
 - [Set up a GCP project](https://dvc.org/doc/user-guide/setup-google-drive-remote#using-a-custom-google-cloud-project-recommended)
 - [Enable the Google Drive API for your GCP project](https://console.cloud.google.com/apis/library/drive.googleapis.com)
-- [Create a GCP service account](https://dvc.org/doc/user-guide/setup-google-drive-remote#using-service-accounts)
-and download the private key to a safe location
-<!-- - [Add `GDRIVE_CREDENTIALS_DATA` as a GitHub secret](https://docs.github.com/en/actions/security-guides/encrypted-secrets) with the  -->
+- [Create a GCP service account and download the private key to a safe location](https://dvc.org/doc/user-guide/setup-google-drive-remote#using-service-accounts)
 - [Create a Google Drive directory to save your model to](https://support.google.com/drive/answer/2375091?hl=en&co=GENIE.Platform%3DDesktop)
 - [Grant the service account editor permissions to the Drive directory by sharing it with the service account's email address](https://support.google.com/drive/answer/7166529?hl=en&co=GENIE.Platform%3DDesktop)
 
 # Setting up our DVC remote
 
-When first using DVC in a project you need to initialize DVC by running
+When first using DVC in a project, you need to initialize DVC by running
 `dvc init`. This will create the structure DVC uses to keep track of versioning,
 and ensures Git will not be tracking the files in the DVC repository. Instead,
 Git will henceforth include a list of references to those files. Make sure to
@@ -99,10 +96,10 @@ commit the initialization to Git.
 
 Then, in order to start using DVC for versioning, we need to set up a remote.
 This is where our model files will end up, while DVC keeps track of their
-respective versions. For this guide, we will be using Google Drive as our
+respective versions. Here we will be using Google Drive as our
 remote.
 
-[This guide](https://dvc.org/doc/user-guide/setup-google-drive-remote#setup-a-google-drive-dvc-remote)
+[The DVC user guide](https://dvc.org/doc/user-guide/setup-google-drive-remote#setup-a-google-drive-dvc-remote)
 explains how to set up a remote on Google Drive. If you would rather use another
 remote, you can
 [find instructions here](https://dvc.org/doc/command-reference/remote/add#supported-storage-types).
@@ -124,7 +121,7 @@ characters at the end of our Google Drive URL).
 # Export the model to a DVC remote
 
 Now that we have set up the remote and made sure GitHub Actions has all the
-details to access the remote, we can use the workflow below. In this scenario,
+details needed to access the remote, we can use the workflow below. In this scenario,
 we train the model in the same way as in part 1, but we push it to the DVC
 remote. A reference to the location of this file is added to the GitHub
 repository (`model/random_forest.joblib.dvc`). The model itself is added to
