@@ -70,11 +70,11 @@ stages:
     deps:
       - raw.txt
     params:
-      - threshold
+      - threshold  # track specific parameter (from params.yaml)
       - passes
-      - custom_params.yaml: # track only specified parameters
+      - custom_params.yaml:  # track only specified parameters
           - epochs
-      - config.json: # track all parameters
+      - config.json:  # track all parameters
     outs:
       - clean.txt
 ```
