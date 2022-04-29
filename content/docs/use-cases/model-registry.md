@@ -1,8 +1,8 @@
 # Machine Learning Model Registry
 
-A **model registry** is a construct to catalog ML models and their versions.
-Models from your data science projects can be discovered, audited, shared,
-tested, and deployed from here.  
+A **model registry** is a tool to catalog ML models and their versions. Models
+from your data science projects can be discovered, audited, shared, tested, and
+deployed from here.  
 DVC works on top of Git to enable these capabilities on your existing software
 engineering stack. Other tools from [Iterative](https://iterative.ai/) provide
 complementary features and more usability.
