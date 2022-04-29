@@ -19,8 +19,8 @@ usage: dvc exp init [-h] [-q | -v] [--run] [--interactive] [-f]
 ## Description
 
 `dvc exp init` helps you get started with DVC Experiments quickly. It prepares
-an experiment in `dvc.yaml`, which assumes standard locations for the
-inputs (source code, data, and <abbr>parameters</abbr>) and outputs (model,
+an experiment in `dvc.yaml`, which assumes standard locations for the inputs
+(source code, data, and <abbr>parameters</abbr>) and outputs (model,
 <abbr>metrics</abbr>, and <abbr>plots</abbr>) of your model training command.
 
 The locations can be customized through the [command options](#options) or via
