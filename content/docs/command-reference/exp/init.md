@@ -160,7 +160,12 @@ Enter experiment outputs.
 Path to a model file/directory [models, n to omit]: models/predict.h5
 Path to a metrics file [metrics.json, n to omit]:
 Path to a plots file/directory [plots, n to omit]: n
-...
+
+Creating dependencies: src/train.py and params.yaml
+Creating train stage in dvc.yaml
+
+Ensure your experiment command creates metrics.json and models/predict.h5.
+You can now run your experiment using "dvc exp run".
 ```
 
 In this example the code, data, and model locations were specified above to
@@ -177,8 +182,6 @@ train:
   deps:
     - data/features
     - src/train.py
-  params:
-    - epochs
   outs:
     - models/predict.h5
   metrics:
