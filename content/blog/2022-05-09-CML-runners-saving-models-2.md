@@ -3,7 +3,8 @@ title:
   Training and saving models with CML on a dedicated AWS EC2 runner (part 2)
 date: 2022-05-09
 description:
-  Use CML to automatically retrain a model on a provisioned AWS EC2 instance and export the model to a DVC remote storage on Google Drive.
+  Use CML to automatically retrain a model on a provisioned AWS EC2 instance and
+  export the model to a DVC remote storage on Google Drive.
 descriptionLong: |
   We can use CML to automatically retrain models whenever data, model code,
   or parameters change. In this guide we show how to create a pipeline that
@@ -25,10 +26,10 @@ tags:
   - Google Drive
 ---
 
-In [part 1 of this guide](https://dvc.org/blog/CML-runners-saving-models-1) we showed how you can use CML to provision an AWS EC2
-instance to train your model before saving the model to our Git repository. In
-doing so, we allowed ourselves to terminate the training instance without losing
-our model altogether.
+In [part 1 of this guide](https://dvc.org/blog/CML-runners-saving-models-1) we
+showed how you can use CML to provision an AWS EC2 instance to train your model
+before saving the model to our Git repository. In doing so, we allowed ourselves
+to terminate the training instance without losing our model altogether.
 
 This worked perfectly fine for the simple model we trained, but this approach is
 not optimal when dealing with larger models. GitHub starts warning you at 50MB
@@ -68,7 +69,9 @@ All files needed for this guide can be found in
 
 We will be using Google Drive as our remote storage. With slight modifications,
 however, you can also use other remotes such as M3, GCP Cloud Storage, and Azure
-Storage. Please [refer to the DVC Docs](https://dvc.org/doc/command-reference/remote/add#supported-storage-types) for more details.
+Storage. Please
+[refer to the DVC Docs](https://dvc.org/doc/command-reference/remote/add#supported-storage-types)
+for more details.
 
 </admon>
 
@@ -77,13 +80,14 @@ Storage. Please [refer to the DVC Docs](https://dvc.org/doc/command-reference/re
 Make sure to have followed part 1 of this guide and gotten CML up and running.
 Additionally, set up the following things beforehand:
 
-<!-- - [Install DVC](https://dvc.org/doc/install) -->
+- [Install DVC](https://dvc.org/doc/install)
 - [Set up a GCP project](https://dvc.org/doc/user-guide/setup-google-drive-remote#using-a-custom-google-cloud-project-recommended)
 - [Create a GCP service account](https://dvc.org/doc/user-guide/setup-google-drive-remote#using-service-accounts)
-- [Add `GDRIVE_CREDENTIALS_DATA` as a GitHub secret](https://docs.github.com/en/actions/security-guides/encrypted-secrets)
-- [Create a Google Drive folder to save your model to](https://support.google.com/drive/answer/2375091?hl=en&co=GENIE.Platform%3DDesktop)
-- Grant the service account edit permissions to the Drive folder by sharing it
-  with the service account's email address
+and download the private key to a safe location
+<!-- - [Add `GDRIVE_CREDENTIALS_DATA` as a GitHub secret](https://docs.github.com/en/actions/security-guides/encrypted-secrets) with the  -->
+- [Create a Google Drive directory to save your model to](https://support.google.com/drive/answer/2375091?hl=en&co=GENIE.Platform%3DDesktop)
+- Grant the service account editor permissions to the Drive directory by sharing
+  it with the service account's email address
 
 # Setting up our DVC remote
 
@@ -108,14 +112,22 @@ set-up we're aiming for. That's because without a service account we will need
 to authorize ourselves through a log-in page every time. Our self-hosted runner
 would get stuck on this page because we cannot authorize ourselves there.
 
+In order to let DVC access the Google Drive folder we created from our runner,
+we need to add two more GitHub Actions secrets: `GDRIVE_CREDENTIALS_DATA` and
+`GOOGLE_DRIVE_URI`. The first one should contain the private key we downloaded
+when setting up our service account (i.e. the `.json` file). The second one
+should be the [Drive URI](https://cloud.google.com/bigquery/external-data-drive)
+to the directory we created in Google Drive (i.e. the sequence of random
+characters at the end of our Google Drive URL).
+
 # Export the model to a DVC remote
 
-Now that we have set up the remote and added the `GDRIVE_CREDENTIALS_DATA` as a
-GitHub secret, we can use the workflow below. In this scenario, we train the
-model in the same way as in part 1, but we push it to the DVC remote. A
-reference to the location of this file is added to the GitHub repository
-(`model/random_forest.joblib.dvc`). The model itself is added to `.gitignore`
-and not pushed to the repository.
+Now that we have set up the remote and made sure GitHub Actions has all the
+details to access the remote, we can use the workflow below. In this scenario,
+we train the model in the same way as in part 1, but we push it to the DVC
+remote. A reference to the location of this file is added to the GitHub
+repository (`model/random_forest.joblib.dvc`). The model itself is added to
+`.gitignore` and not pushed to the repository.
 
 The other files created in `train.py` are still pushed to an experiment branch
 in GitHub. Afterwards a merge request is created.
