@@ -193,7 +193,7 @@ jobs:
           # Create CML report
           cat model/metrics.txt > report.md
           cml publish model/confusion_matrix.png --md >> report.md
-          cml send-comment --update report.md
+          cml send-comment --commit-sha=HEAD --pr --update report.md
 ```
 
 And that's it! We have broadly the same set-up as outlined in part 1 of this
