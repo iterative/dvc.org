@@ -87,8 +87,8 @@ Additionally, set up the following things beforehand:
 and download the private key to a safe location
 <!-- - [Add `GDRIVE_CREDENTIALS_DATA` as a GitHub secret](https://docs.github.com/en/actions/security-guides/encrypted-secrets) with the  -->
 - [Create a Google Drive directory to save your model to](https://support.google.com/drive/answer/2375091?hl=en&co=GENIE.Platform%3DDesktop)
-- Grant the service account editor permissions to the Drive directory by sharing
-  it with the service account's email address
+- [Grant the service account editor permissions to the Drive directory by sharing
+  it with the service account's email address](https://support.google.com/drive/answer/7166529?hl=en&co=GENIE.Platform%3DDesktop)
 
 # Setting up our DVC remote
 
@@ -106,7 +106,7 @@ remote.
 [This guide](https://dvc.org/doc/user-guide/setup-google-drive-remote#setup-a-google-drive-dvc-remote)
 explains how to set up a remote on Google Drive. If you would rather use another
 remote, you can
-[find instructions here](https://dvc.org/doc/command-reference/remote/add#supported-storage-types).
+[find instructions here](https://dvc.org/doc/command-reference/remote/add#supported-storage-types). In that case make sure to also update the DVC dependency in `requirements.txt`.
 
 While DVC doesn't require a service account to work, we do need one in the
 set-up we're aiming for. That's because without a service account we will need
@@ -208,7 +208,7 @@ it would make sense to also use DVC to keep track of the data used in each
 training. We could, for example, use our runner to import our training data from
 a table in our database and write both the data and the model to the DVC remote.
 This is beyond the scope of this guide, but
-[here you can find a tutorial for this](https://github.com/iterative/cml_dvc_case).
+[here you can find a repository that covers this](https://github.com/iterative/cml_dvc_case).
 
 </admon>
 
