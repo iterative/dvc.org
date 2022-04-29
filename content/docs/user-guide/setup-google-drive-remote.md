@@ -178,11 +178,13 @@ authentication is needed.
 1. To
    [create a service account](https://cloud.google.com/docs/authentication/getting-started#creating_a_service_account),
    navigate to **IAM & Admin** in the left sidebar, and select **Service
-   Accounts**. Click **+ CREATE SERVICE ACCOUNT**, on the next screen, enter
-   **Service account name** e.g. "My DVC project", and click **Create**. Select
-   **Continue** at the next **Service account permissions** page, click at **+
-   CREATE KEY**, select **JSON** and **Create**. Download the generated `.json`
-   key file to a safe location.
+   Accounts**. Click **+ CREATE SERVICE ACCOUNT**, enter a **Service account
+   name** e.g. "My DVC project", and optionally provide a custom **Service
+   account ID** and description. Then click **CREATE AND CONTINUE**. You can skip the two optional sections. Click **DONE**
+   and you will be returned to the overview page. Select your service account
+   and go to the **Keys** tab. Under **Add key** select **Create new key**,
+   choose **JSON**, and click **CREATE**. Download the generated `.json` key
+   file to a safe location.
 
    ⚠️ Be careful about sharing the key file with others.
 
