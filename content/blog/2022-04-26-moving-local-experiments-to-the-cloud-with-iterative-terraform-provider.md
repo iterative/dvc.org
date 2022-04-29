@@ -157,10 +157,9 @@ resource "iterative_task" "tpi-examples-basic" {
   spot      = 0
 
   storage {
-        workdir = "."
-        output = "shared"
+     workdir = "."
+     output  = "shared"
   }
-
   script = <<-END
     #!/bin/bash
     sudo apt update
