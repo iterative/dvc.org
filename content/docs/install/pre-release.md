@@ -10,9 +10,6 @@ releases, you can install it from our code repository GitHub.
 > (on Python 3.7+) to encapsulate your local environment.
 
 ```dvc
-# Should be installed before DVC. See details below.
-$ pip install gitpython
-
 # Basic version.
 $ pip install git+https://github.com/iterative/dvc
 

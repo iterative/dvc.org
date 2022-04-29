@@ -50,8 +50,10 @@ $ git commit -m "Initialize DVC"
 
 Now you're ready to DVC!
 
-DVC's features can be grouped into functional components. We'll explore them one
-by one in the next few pages:
+DVC's features can be grouped into functional components. You can explore them
+in two independent trails:
+
+### Data Management Trail
 
 - [**Data and model versioning**](/doc/start/data-and-model-versioning) (try
   this next) is the base layer of DVC for large files, datasets, and machine
@@ -72,10 +74,16 @@ by one in the next few pages:
   be attached to pipelines. These let you capture, navigate, and evaluate ML
   projects without leaving Git. Think "Git for machine learning".
 
+### Experiments Trail
+
 - [**Experiments**](/doc/start/experiments) enable exploration, iteration, and
   comparison across many ML experiments. Track your experiments with automatic
   versioning and checkpoint logging. Compare differences in parameters, metrics,
   code, and data. Apply, drop, roll back, resume, or share any experiment.
+
+- [**Visualization**](/doc/start/experiments/visualization) compare experiment
+  results visually, track your plots and generate them with library
+  integrations.
 
 **New!** Once you set up your DVC repository, you can also interact with it
 using Iterative Studio, the online UI for DVC.

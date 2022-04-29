@@ -38,9 +38,13 @@ working directory with its original file name e.g. `data.txt` (or to a location
 provided with `--out`). An _import `.dvc` file_ is created in the same location
 e.g. `data.txt.dvc` – similar to using `dvc add` after downloading the data.
 
-(ℹ️) DVC won't push data imported from other DVC repos to
+<admon type="info">
+
+DVC won't push data imported from other DVC repos to
 [remote storage](/doc/command-reference/remote). `dvc pull` will download from
 the original source.
+
+</admon>
 
 The `url` argument specifies the address of the DVC or Git repository containing
 the data source. Both HTTP and SSH protocols are supported (e.g.
@@ -59,7 +63,7 @@ targets must be found in a `dvc.yaml` or `.dvc` file of the repo.
 a Git server). In such a `.dvc` file, the `deps` field specifies the `url` and
 data `path`, and the `outs` field contains the corresponding local path in the
 <abbr>workspace</abbr>. It records enough metadata about the imported data to
-enable DVC efficiently determining whether the local copy is out of date.
+enable DVC to efficiently determine whether the local copy is out of date.
 
 To actually [version the data](/doc/start/data-and-model-versioning), `git add`
 (and `git commit`) the import `.dvc` file.
@@ -339,7 +343,7 @@ This will result in the following directory structure, which contains a chained
 import and a regular one:
 
 ```
-/repo/d
+/repo/c
 ├── training
 │   ├── data.csv
 │   └── labels
