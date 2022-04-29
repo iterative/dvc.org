@@ -228,14 +228,6 @@ jobs:
           pip install -r requirements.txt
           python get_data.py
           python train.py
-
-          # Create pull request
-          cml pr model/random_forest.joblib
-
-          # Create CML report
-          cat model/metrics.txt > report.md
-          cml publish model/confusion_matrix.png --md >> report.md
-          cml send-comment --update report.md
 ```
 
 <admon type="warn">
@@ -295,7 +287,7 @@ train-model:
         # Create CML report
         cat model/metrics.txt > report.md
         cml publish model/confusion_matrix.png --md >> report.md
-        cml send-comment --update report.md
+        cml send-comment --commit-sha=HEAD --pr --update report.md
 ```
 
 Et voilà! We are now running a daily model training on an AWS EC2 instance and
