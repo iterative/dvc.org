@@ -51,13 +51,17 @@ If it writes files or dirs, they can be defined as <abbr>outputs</abbr>
 ### Parameter dependencies
 
 [Parameters](/doc/command-reference/params) are a special type of stage
-dependency. They consist of a list of values, in which each value can be:
+dependency. They consist of a list of params to track in one of these formats:
 
-1. a string which can be found in `params.yaml` file,
-2. a dictionary, with key being the file path and value being the list of
-   parameters to find in a given file to track or set to empty/`null` which will
-   track all the parameters in the file. The given file path must be a valid
-   YAML, JSON, TOML, or Python parameters file.
+1. A param key/value pair that can be found in `params.yaml` (default
+   params file);
+2. A dictionary named by the file path to a custom params file, and with a
+   list of param key/value pairs to find in it;
+3. An empty set (give no value or use `null`) named by the file path to a
+   params file: to track all the params in it dynamically. 
+  
+> Note that file paths used must be to valid YAML, JSON, TOML, or Python
+> parameters file.
 
 ```yaml
 stages:
