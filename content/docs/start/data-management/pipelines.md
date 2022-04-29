@@ -79,7 +79,7 @@ DVC uses these metafiles to track the data used and produced by the stage, so
 there's no need to use `dvc add` on `data/prepared`
 [manually](/doc/start/data-and-model-versioning).
 
-<details>
+<details id="stage-expand-to-see-what-happens-under-the-hood">
 
 ### 💡 Expand to see what happens under the hood.
 
@@ -172,7 +172,7 @@ $ dvc stage add -n featurize \
 
 The `dvc.yaml` file is updated automatically and should include two stages now.
 
-<details>
+<details id="pipeline-expand-to-see-what-happens-under-the-hood">
 
 ### 💡 Expand to see what happens under the hood.
 
@@ -271,7 +271,7 @@ it also doesn't rerun `train`! The previous run with the same set of inputs
 
 </details>
 
-<details>
+<details id="repro-expand-to-see-what-happens-under-the-hood">
 
 ### 💡 Expand to see what happens under the hood.
 

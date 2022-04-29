@@ -7,7 +7,7 @@ Run or resume a
 
 ```usage
 usage: dvc exp run [-h] [-q | -v] [-f]
-                   { repro options ... }
+                   { repro options ... } [-n <name>]
                    [-S [<filename>:]<params_list>]
                    [--queue] [--run-all] [-j <number>] [--temp]
                    [-r <experiment_rev>] [--reset]

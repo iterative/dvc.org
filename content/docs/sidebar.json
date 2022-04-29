@@ -35,36 +35,49 @@
     },
     "children": [
       {
-        "slug": "data-and-model-versioning",
-        "tutorials": {
-          "katacoda": "https://katacoda.com/dvc/courses/get-started/versioning"
-        }
-      },
-      {
-        "slug": "data-and-model-access",
-        "tutorials": {
-          "katacoda": "https://katacoda.com/dvc/courses/get-started/accessing"
-        }
-      },
-      {
-        "slug": "data-pipelines",
-        "tutorials": {
-          "katacoda": "https://katacoda.com/dvc/courses/get-started/stages"
-        }
-      },
-      {
-        "label": "Metrics, Parameters, and Plots",
-        "slug": "metrics-parameters-plots",
-        "tutorials": {
-          "katacoda": "https://katacoda.com/dvc/courses/get-started/params-metrics-plots"
-        }
+        "slug": "data-management",
+        "label": "Data Management",
+        "source": "data-management/index.md",
+        "children": [
+          {
+            "label": "Data and Model Access",
+            "slug": "access",
+            "tutorials": {
+              "katacoda": "https://katacoda.com/dvc/courses/get-started/accessing"
+            }
+          },
+          {
+            "label": "Data Pipelines",
+            "slug": "pipelines",
+            "tutorials": {
+              "katacoda": "https://katacoda.com/dvc/courses/get-started/stages"
+            }
+          },
+          {
+            "label": "Metrics, Parameters, and Plots",
+            "slug": "metrics-parameters-plots",
+            "tutorials": {
+              "katacoda": "https://katacoda.com/dvc/courses/get-started/params-metrics-plots"
+            }
+          }
+        ]
       },
       {
         "slug": "experiments",
         "label": "Experiments",
+        "source": "experiments/index.md",
         "tutorials": {
           "katacoda": "https://katacoda.com/dvc/courses/get-started/experiments"
-        }
+        },
+        "children": [
+          {
+            "label": "Visualization",
+            "slug": "visualization",
+            "tutorials": {
+              "katacoda": "https://katacoda.com/dvc/courses/get-started/params-metrics-plots"
+            }
+          }
+        ]
       }
     ]
   },
@@ -161,25 +174,7 @@
         "label": "Managing External Data",
         "slug": "managing-external-data"
       },
-      {
-        "label": "Contributing",
-        "slug": "contributing",
-        "source": false,
-        "children": [
-          {
-            "label": "DVC Core Project",
-            "slug": "core"
-          },
-          {
-            "label": "Docs and Website",
-            "slug": "docs"
-          },
-          {
-            "label": "Writing Blog Posts",
-            "slug": "blog"
-          }
-        ]
-      },
+
       "running-dvc-on-windows",
       "troubleshooting",
       "related-technologies",
@@ -504,6 +499,25 @@
     ]
   },
   {
+    "label": "Contributing",
+    "slug": "contributing",
+    "source": false,
+    "children": [
+      {
+        "label": "DVC Core Project",
+        "slug": "core"
+      },
+      {
+        "label": "Docs and Website",
+        "slug": "docs"
+      },
+      {
+        "label": "Writing Blog Posts",
+        "slug": "blog"
+      }
+    ]
+  },
+  {
     "label": "Changelog",
     "url": "https://github.com/iterative/dvc/releases",
     "type": "external"
@@ -582,7 +596,8 @@
           },
           "teams",
           "account-management",
-          "install-github-app"
+          "install-github-app",
+          "connect-custom-gitlab-server"
         ]
       },
       "troubleshooting"
