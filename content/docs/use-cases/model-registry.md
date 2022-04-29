@@ -45,8 +45,8 @@ their training and delivery [via CML].
 To build a Git-native registry, the ML models in your repos can be annotated
 using tags. [GTO] (Git Tag Ops) is a tool to do just that! The annotations carry
 meaningful metadata, such as a model file path (or [DVC metafile]), development
-stage, deployment environment, etc. This helps you manage your models lifecycle:
-promoting versions, rolling back, and reviewing their history.
+state, deployment env, etc. This helps manage your models lifecycle: promoting
+versions, rolling back, and reviewing their history.
 
 This approach is like **packaging** the models with their related information,
 plus dependencies with DVC. They can be consolidated virtually using a smart
