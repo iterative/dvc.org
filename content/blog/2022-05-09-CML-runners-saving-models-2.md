@@ -3,7 +3,8 @@ title:
   Training and saving models with CML on a dedicated AWS EC2 runner (part 2)
 date: 2022-05-09
 description:
-  Use CML to automatically retrain a model on a provisioned AWS EC2 instance and export the model to a DVC remote storage on Google Drive.
+  Use CML to automatically retrain a model on a provisioned AWS EC2 instance and
+  export the model to a DVC remote storage on Google Drive.
 descriptionLong: |
   We can use CML to automatically retrain models whenever data, model code,
   or parameters change. In this guide we show how to create a pipeline that
@@ -25,10 +26,10 @@ tags:
   - Google Drive
 ---
 
-In [part 1 of this guide](https://dvc.org/blog/CML-runners-saving-models-1) we showed how you can use CML to provision an AWS EC2
-instance to train your model before saving the model to our Git repository. In
-doing so, we allowed ourselves to terminate the training instance without losing
-our model altogether.
+In [part 1 of this guide](https://dvc.org/blog/CML-runners-saving-models-1) we
+showed how you can use CML to provision an AWS EC2 instance to train your model
+before saving the model to our Git repository. In doing so, we allowed ourselves
+to terminate the training instance without losing our model altogether.
 
 This worked perfectly fine for the simple model we trained, but this approach is
 not optimal when dealing with larger models. GitHub starts warning you at 50MB
@@ -68,7 +69,9 @@ All files needed for this guide can be found in
 
 We will be using Google Drive as our remote storage. With slight modifications,
 however, you can also use other remotes such as M3, GCP Cloud Storage, and Azure
-Storage. Please [refer to the DVC Docs](https://dvc.org/doc/command-reference/remote/add#supported-storage-types) for more details.
+Storage. Please
+[refer to the DVC Docs](https://dvc.org/doc/command-reference/remote/add#supported-storage-types)
+for more details.
 
 </admon>
 
@@ -78,6 +81,7 @@ Make sure to have followed part 1 of this guide and gotten CML up and running.
 Additionally, set up the following things beforehand:
 
 <!-- - [Install DVC](https://dvc.org/doc/install) -->
+
 - [Set up a GCP project](https://dvc.org/doc/user-guide/setup-google-drive-remote#using-a-custom-google-cloud-project-recommended)
 - [Create a GCP service account](https://dvc.org/doc/user-guide/setup-google-drive-remote#using-service-accounts)
 - [Add `GDRIVE_CREDENTIALS_DATA` as a GitHub secret](https://docs.github.com/en/actions/security-guides/encrypted-secrets)
