@@ -187,8 +187,8 @@ whatever you want. Inside of the resource block, we specify some arguments:
   machine types which are roughly the same for all supported clouds. For
   example,
   [l+k80](https://registry.terraform.io/providers/iterative/iterative/latest/docs/resources/task#l+k80)
-  stands for a "Large, with (at least) 12 CPU cores, 112 GB of RAM and 2 GPU
-  devices".
+  stands for a "Large, with (at least) 12 CPU cores, 112 GB of RAM and 2 NVIDIA
+  Tesla K80 GPU devices".
 - _spot_: set the
   [spot instance price](https://aws.amazon.com/ec2/spot/pricing/). Here I set it
   to `0` to use TPI's automatic price, which should keep costs down.
