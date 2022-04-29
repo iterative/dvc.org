@@ -6,8 +6,8 @@ description: >
   with the help of Terraform Provider Iterative.
 descriptionLong: >
   In this tutorial you'll learn how you can move a locally run machine learning
-  experiment to a remote machine on AWS with the help of Iterative's Terraform
-  Provider.
+  experiment to a remote machine on AWS with the help of Terraform Provider
+  Iterative.
 picture: 2022-04-26/massimiliano-latella-6ufBhNungOk-unsplash.jpg
 author: maria_khalusova
 #  todo: commentsUrl:
