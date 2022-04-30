@@ -41,6 +41,6 @@ When `dvclive` is used alongside `DVC`, each `Live.next_step()` call will have
 additional effects.
 
 When [checkpoints](/doc/user-guide/experiment-management/checkpoints) are
-enabled in the <abbr>pipeline</abbr>, `DVC` will
+enabled in the <abbr>pipeline</abbr>, DVC will
 [create a new checkpoint](/doc/dvclive/dvclive-with-dvc#checkpoints) on each
 `Live.next_step()` call.
