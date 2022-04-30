@@ -111,10 +111,8 @@ See `Live.log()`, `Live.log_image()` and `Live.log_plot()` for more details.
 
 ### HTML report
 
-By default, DVCLive generates an HTML report in `dvclive/report.html`.
-
-This report will contain all the logged data and will be automatically updated
-during training on each `step` update!
+If and when `step` is updated, DVCLive generates or updates an HTML report in
+`dvclive/report.html` which will contain all the logged data.
 
 ![](/img/dvclive-html.gif)
 
