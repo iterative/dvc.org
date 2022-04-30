@@ -60,8 +60,12 @@ dependency. They consist of a list of params to track in one of these formats:
 3. An empty set (give no value or use `null`) named by the file path to a params
    file: to track all the params in it dynamically.
 
-> Note that file paths used must be to valid YAML, JSON, TOML, or Python
-> parameters file.
+<admon type="info">
+
+Note that file paths used must be to valid YAML, JSON, TOML, or Python
+parameters file.
+
+</admon>
 
 ```yaml
 stages:
@@ -70,11 +74,11 @@ stages:
     deps:
       - raw.txt
     params:
-      - threshold  # track specific parameter (from params.yaml)
+      - threshold # track specific param (from params.yaml)
       - passes
-      - custom_params.yaml:  # track only specified parameters
+      - myparams.yaml: # track specific params from custom file
           - epochs
-      - config.json:  # track all parameters
+      - config.json: # track all parameters in this file
     outs:
       - clean.txt
 ```

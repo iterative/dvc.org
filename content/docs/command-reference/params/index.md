@@ -30,10 +30,11 @@ stages:
   learn:
     cmd: ./deep.py
     params:
-      - epochs
+      - epochs # track specific parameter (from params.yaml)
       - tuning.learning-rate
-      - myparams.toml:
+      - myparams.toml: # track specific params from custom file
           - batch_size
+      - config.json: # track all parameters in this file
 ```
 
 In contrast to a regular <abbr>dependency</abbr>, a parameter dependency is not
@@ -43,15 +44,13 @@ to define [stage](/doc/command-reference/run) dependencies more granularly:
 changes to other parts of the params file will not affect the stage. Parameter
 dependencies also prevent situations where several stages share a regular
 dependency (e.g. a config file), and any change in it invalidates all of them
-(see `dvc status`), causing unnecessary re-executions upon `dvc repro`. However,
-you can track all the parameters in a file by setting _parameter value_ to be
-`null`.
+(see `dvc status`), causing unnecessary re-executions upon `dvc repro`.
 
 The default **parameters file** name is `params.yaml`, but any other YAML 1.2,
 JSON, TOML, or [Python](#examples-python-parameters-file) files can be used
-additionally (listed under `params:` with a sub-list of param values, as shown
-in the sample above) . These files are typically written manually (or they can
-be generated) and they can be versioned directly with Git.
+additionally (listed under `params:` as shown in the sample above). These files
+are typically written manually (or they can be generated) and they can be
+versioned directly with Git.
 
 **Parameter values** should be organized in tree-like hierarchies (dictionaries)
 inside params files (see [Examples](#examples)). DVC will interpret param names
