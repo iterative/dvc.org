@@ -155,7 +155,7 @@ $ dvc dag --outs
       +-------------+            +----------+
 ```
 
-## Example: Mermaid Format
+## Example: Mermaid flowchart
 
 The `--mermaid` flag will generate a
 [flowchart in Mermaid format](https://mermaid-js.github.io/mermaid/#/flowchart):
@@ -175,15 +175,20 @@ flowchart TD
         node5-->node2
 ```
 
-When the `--md` flag is passed, the mermaid output will be wrapped inside a
-[Markdown code block](https://www.markdownguide.org/extended-syntax/#fenced-code-blocks).
+When the `--md` flag is passed, the mermaid output will be wrapped inside a Markdown
+[fenced code block](https://www.markdownguide.org/extended-syntax/#fenced-code-blocks).
+Note that this output is automatically rendered as a diagram
+[in GitHub](https://github.blog/2022-02-14-include-diagrams-markdown-files-mermaid/)
+and [in GitLab](https://docs.gitlab.com/ee/user/markdown.html#mermaid).
 
-The `--md` output can be embeded in
-[GitHub](https://github.blog/2022-02-14-include-diagrams-markdown-files-mermaid/)
-and [GitLab](https://docs.gitlab.com/ee/user/markdown.html#mermaid), so it can
-be combined with [`cml send-comment`](https://cml.dev/doc/ref/send-comment):
+<admon type="tip">
+
+You can combine `dvc dag --md` with the
+[`cml send-comment`](https://cml.dev/doc/ref/send-comment) of CML:
 
 ```dvc
 dvc dag --md >> dag.md
 cml send-comment dag.md
 ```
+
+</admon>
