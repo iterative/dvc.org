@@ -80,9 +80,8 @@ $ dvc exp show ...
 - `--mermaid` - show DAG in [Mermaid](https://mermaid-js.github.io) format. It
   can be passed to third party visualization utilities.
 
-- `--md` - show DAG in [Mermaid](https://mermaid-js.github.io) format, wrapped
-  inside a
-  [Markdown code block](https://www.markdownguide.org/extended-syntax/#fenced-code-blocks).
+- `--md` - show DAG in `--mermaid` format, wrapped inside a Markdown
+  [fenced code block](https://www.markdownguide.org/extended-syntax/#fenced-code-blocks).
 
   This can be used to combine `dvc dag` with
   [`cml send-comment`](https://cml.dev/doc/ref/send-comment)
