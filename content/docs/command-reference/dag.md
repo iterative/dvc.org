@@ -175,7 +175,8 @@ flowchart TD
         node5-->node2
 ```
 
-When the `--md` flag is passed, the mermaid output will be wrapped inside a Markdown
+When the `--md` flag is passed, the mermaid output will be wrapped inside a
+Markdown
 [fenced code block](https://www.markdownguide.org/extended-syntax/#fenced-code-blocks).
 Note that this output is automatically rendered as a diagram
 [in GitHub](https://github.blog/2022-02-14-include-diagrams-markdown-files-mermaid/)
