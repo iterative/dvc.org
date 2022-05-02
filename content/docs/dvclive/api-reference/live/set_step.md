@@ -31,8 +31,8 @@ will be associated to the provided `step` value.
 
 <admon type="info">
 
-If `report="html"` was passed to `Live()`, each `Live.next_step()` will also
-call `Live.make_report()`.
+Each `Live.set_step()` will call `Live.make_report()` internally by default
+(unless `report` is passed to `Live()` with a value other than `"html"`).
 
 </admon>
 
