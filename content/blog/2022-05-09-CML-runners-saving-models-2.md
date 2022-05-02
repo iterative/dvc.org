@@ -41,8 +41,9 @@ easily exceed 100MB and a neural network can go up into the gigabytes.
 That means we cannot save these models directly to our repository. Luckily we
 can look towards another one of Iterative's open-source tools:
 [DVC](https://dvc.org). DVC includes a lot of features for managing machine
-learning projects, such as ML pipelines and experiment tracking. In this guide
-we will zoom in on just one of those features: data versioning.
+learning projects, such as ML pipelines, experiment tracking, and data
+versioning. In this guide we will zoom in on just one of those features: remote
+storage.
 
 We can use DVC to save our model to a remote storage location, such as M3, HDFS,
 an SFTP server, or even Google Drive. Much like Git tracks changes to your code,
@@ -76,7 +77,10 @@ for more details.
 
 # Prerequisites
 
-Make sure to have followed part 1 of this guide and gotten CML up and running.
+Make sure to have followed
+[part 1 of this guide](https://dvc.org/blog/CML-runners-saving-models-1) of and
+gotten CML up and running. The necessary files for all of this can be found in
+[this repository](https://github.com/iterative/example_model_export_cml).
 Additionally, set up the following things beforehand:
 
 - [Install DVC](https://dvc.org/doc/install)
@@ -96,8 +100,7 @@ commit the initialization to Git.
 
 Then, in order to start using DVC for versioning, we need to set up a remote.
 This is where our model files will end up, while DVC keeps track of their
-respective versions. Here we will be using Google Drive as our
-remote.
+respective versions. Here we will be using Google Drive as our remote.
 
 [The DVC user guide](https://dvc.org/doc/user-guide/setup-google-drive-remote#setup-a-google-drive-dvc-remote)
 explains how to set up a remote on Google Drive. If you would rather use another
@@ -121,9 +124,9 @@ characters at the end of our Google Drive URL).
 # Export the model to a DVC remote
 
 Now that we have set up the remote and made sure GitHub Actions has all the
-details needed to access the remote, we can use the workflow below. In this scenario,
-we train the model in the same way as in part 1, but we push it to the DVC
-remote. A reference to the location of this file is added to the GitHub
+details needed to access the remote, we can use the workflow below. In this
+scenario, we train the model in the same way as in part 1, but we push it to the
+DVC remote. A reference to the location of this file is added to the GitHub
 repository (`model/random_forest.joblib.dvc`). The model itself is added to
 `.gitignore` and not pushed to the repository.
 
