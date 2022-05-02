@@ -97,15 +97,15 @@ $ tree
 └── train.py
 ```
 
-The [metrics summary](/doc/dvclive/api-reference/live/log#description)
-in `training_metrics.json` can be used by `dvc metrics` and visualized with
+The [metrics summary](/doc/dvclive/api-reference/live/log#description) in
+`training_metrics.json` can be used by `dvc metrics` and visualized with
 `dvc exp show`/`dvc exp diff`.
 
 The [metrics history](/doc/dvclive/api-reference/live/log#step-updates)
 `training_metrics/scalars` can be visualized with `dvc plots`.
 
-The [HTML report](/doc/dvclive/api-reference/live/make_report#description)
-in `training_metrics/report.html` will contain all the logged data and will be
+The [HTML report](/doc/dvclive/api-reference/live/make_report#description) in
+`training_metrics/report.html` will contain all the logged data and will be
 automatically updated during training on each `step` update!
 
 ![](/img/dvclive-html.gif)
