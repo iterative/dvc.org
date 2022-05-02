@@ -6,12 +6,8 @@ To create a new view, follow these steps.
    using your GitHub.com, GitLab.com or Bitbucket.org account, or your email
    address.
 
-   <admon type="info">
-
    When you sign up with your email address, Studio will send you a verification
    email before you can login.
-
-   </admon>
 
 2. Click on `Add a View`. All the organizations that you have access to will be
    listed.
