@@ -1,6 +1,6 @@
 # DVCLive with DVC
 
-Even though DVCLive does not require DVC, they can integrate in several useful
+Even though DVCLive does not require DVC, they can integrate in a couple useful
 ways:
 
 - The [outputs](#outputs) DVCLive produces are recognized by `dvc exp`,
