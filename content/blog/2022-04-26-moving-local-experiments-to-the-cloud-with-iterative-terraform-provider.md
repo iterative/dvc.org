@@ -254,7 +254,7 @@ but it's a good way to check for potential issues in the configuration. You'll
 need to type `yes` to confirm that you indeed would like the plan to be
 executed.
 
-At this point you can get a cup of your favourite beverage, and let TPI work its
+At this point you can get a cup of your preferred beverage, and let TPI work its
 magic together with Terraform. They will allocate a remote machine for you, set
 up the environment and run your `train.py`. Once the script finishes, the
 machine will be terminated.
