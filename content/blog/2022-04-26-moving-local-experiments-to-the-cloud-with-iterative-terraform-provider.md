@@ -91,7 +91,7 @@ majority of projects you only need a few. Instead of shipping plugins
 whenever required. For this tutorial we will only need the
 [TPI](https://registry.terraform.io/providers/iterative/iterative/latest). It
 enables full lifecycle management of computing resources from AWS, Microsoft
-Azure, Google Cloud Platform, and more.
+Azure, Google Cloud Platform, and Kubernetes.
 
 TPI has a several super neat features:
 
