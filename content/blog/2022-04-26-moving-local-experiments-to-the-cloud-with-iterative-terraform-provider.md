@@ -71,13 +71,13 @@ Iterative Provider.
 
 [Terraform](https://www.terraform.io) is an open-source infrastructure-as-code
 tool that you'll need to
-[download and install](https://www.terraform.io/downloads.html) for this
+[download and install](https://www.terraform.io/downloads) for this
 tutorial. With Terraform, you can create a configuration file in which you
 declaratively describe what infrastructure you'd like to have. This means that
 you do not need to write the instructions on what exact steps need to be taken.
 Instead, you describe what your infrastructure should ultimately look like.
 Behind the scenes, Terraform will figure out what needs to be done. If you've
-cloned the repo, you'll find the `main.tf`file in the root of the project --
+cloned the repo, you'll find the `main.tf` file in the root of the project --
 that's where we will be configuring Terraform.
 
 ## Terraform Provider Iterative
@@ -88,17 +88,17 @@ integrations in one bundle, you install a barebones Terraform distribution and
 then plug in support for whatever resources you need with so-called
 [_providers_](https://www.terraform.io/docs/extend/how-terraform-works.html).
 For this tutorial we will only need
-[Iterative Provider](https://registry.terraform.io/providers/iterative/iterative/latest).
+[TPI](https://github.com/iterative/terraform-provider-iterative).
 It enables full lifecycle management of computing resources for machine learning
 pipelines from AWS, Microsoft Azure, Google Cloud Platform, and more. The
 Iterative Provider has a couple of advantages for machine learning pipelines.
 Namely,
 
-- The configuration for various cloud compute providers with the Iterative
-  Provider will be nearly identical, so you can easily migrate from one cloud
+- The configuration for various cloud compute providers is nearly identical,
+  so you can easily migrate from one cloud
   provider to another, if you want to.
-- It is designed not only to provision infrastructure but to execute your
-  scripts on it too, all via a single configuration.
+- It is designed to provision infrastructure as well as execute your
+  scripts on it too, all via a single command.
 - It helps to sync data between your local machine and a remote one.
 - Once your training is complete, the remote resources will be terminated,
   avoiding unused machines quietly ramping up costs.
@@ -150,9 +150,8 @@ terraform {
 provider "iterative" {}
 
 resource "iterative_task" "tpi-examples-basic" {
-  name      = "tpi-examples-basic"
   cloud     = "aws"
-  region    = "us-east-2"
+  region    = "us-west"
   machine   = "l+k80"
   spot      = 0
 
