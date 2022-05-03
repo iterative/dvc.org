@@ -38,6 +38,7 @@ app.use(
   createProxyMiddleware({
     target: 'https://plausible.io',
     changeOrigin: true,
+    xfwd: true,
     pathRewrite: {
       '^/pl': ''
     }
