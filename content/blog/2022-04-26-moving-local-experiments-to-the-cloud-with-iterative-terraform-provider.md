@@ -113,15 +113,20 @@ terraform {
 provider "iterative" {}
 ```
 
-Once you describe what providers you'll be using in your `main.tf`, run the
+Once you describe what providers you'll be using in your `main.tf`, run
 
-```bash
-terraform init
+```dvc
+$ terraform init
 ```
 
-command. If you have cloned the example repository, you should run this command
-before doing anything else. This will initialize your working directory and
-download the required provider.
+If you have cloned the example repository, you should run this command before
+doing anything else. This will initialize your working directory and download
+the required provider. It's probably also a good idea to set the logging level
+to see helpful info on progress:
+
+```dvc
+$ export TF_LOG_PROVIDER=INFO
+```
 
 ## Configuring `iterative_task`
 
@@ -239,8 +244,8 @@ resource "iterative_task" "example-gpu" {
 Whether you want to go with the basic example, or the GPU-enabled training, you
 can run:
 
-```bash
-terraform apply
+```dvc
+$ terraform apply
 ```
 
 to review what steps Terraform is going to take to make your desired
@@ -256,15 +261,15 @@ machine will be terminated.
 
 You can monitor what's going on by running:
 
-```bash
-terraform refresh
-terraform show
+```dvc
+$ terraform refresh
+$ terraform show
 ```
 
 Once you see that the task has successfully finished, run
 
-```bash
-terraform destroy
+```dvc
+$ terraform destroy
 ```
 
 to sync back your shared files and tear down all remote objects managed by your
