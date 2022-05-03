@@ -122,6 +122,7 @@ const DefaultSEO: React.FC<IDefaultSEOProps> = ({ pathname }) => {
         defer
         data-domain="dvc.org"
         src={PLAUSIBLE.SCRIPT_SOURCE}
+        data-api={PLAUSIBLE.EVENT_ENDPOINT}
       ></script>
     </Helmet>
   )

@@ -19,9 +19,8 @@ const BLOG = {
 }
 
 const PLAUSIBLE = {
-  SCRIPT_SOURCE: '/api/pl/script.outbound-links.js',
-  SCRIPT_WITHOUT_EXTENSION: '/pl/script',
-  EVENT_ENDPOINT: '/event'
+  SCRIPT_SOURCE: '/pl/js/script.outbound-links.js',
+  EVENT_ENDPOINT: '/pl/api/event'
 }
 
 module.exports = {
