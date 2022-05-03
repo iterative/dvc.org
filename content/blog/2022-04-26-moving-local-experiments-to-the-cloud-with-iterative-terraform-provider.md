@@ -1,13 +1,13 @@
 ---
-title: Moving Local Experiments to the Cloud with Terraform Provider Iterative (TPI)
+title:
+  Moving Local Experiments to the Cloud with Terraform Provider Iterative (TPI)
 date: 2022-04-26
 description: >
   Tutorial for easily moving a local ML experiment to a remote cloud machine
   with the help of Terraform Provider Iterative.
 descriptionLong: >
   In this tutorial, learn how to move a local machine learning experiment to a
-  remote cloud machine on AWS with the help of Terraform Provider
-  Iterative.
+  remote cloud machine on AWS with the help of Terraform Provider Iterative.
 picture: 2022-04-26/massimiliano-latella-6ufBhNungOk-unsplash.jpg
 author: maria_khalusova
 #  todo: commentsUrl:
@@ -74,13 +74,13 @@ We can now start the move with the help of Terraform and the Iterative Provider.
 
 [Terraform](https://www.terraform.io) is an open-source infrastructure-as-code
 tool that you should
-[download and install](https://www.terraform.io/downloads).] Terraform
-requires you to create a configuration file containing a declarative description
-of the infrastructure you need. There's no need to read lots of cloud
-documentation nor write lots of commands. Instead, you describe what your
-infrastructure should ultimately look like. Behind the scenes, Terraform will
-figure out what needs to be done. If you've cloned the [repository][tpi-bees],
-the `main.tf` configuration file is in the project's root.
+[download and install](https://www.terraform.io/downloads).] Terraform requires
+you to create a configuration file containing a declarative description of the
+infrastructure you need. There's no need to read lots of cloud documentation nor
+write lots of commands. Instead, you describe what your infrastructure should
+ultimately look like. Behind the scenes, Terraform will figure out what needs to
+be done. If you've cloned the [repository][tpi-bees], the `main.tf`
+configuration file is in the project's root.
 
 ## Terraform Provider Iterative
 
@@ -89,8 +89,8 @@ majority of projects you only need a few. Instead of shipping plugins
 (providers) for all these resources in one bundle, Terraform downloads
 [_providers_](https://www.terraform.io/docs/extend/how-terraform-works.html)
 whenever required. For this tutorial we will only need the
-[TPI](https://registry.terraform.io/providers/iterative/iterative/latest).
-It enables full lifecycle management of computing resources from AWS, Microsoft
+[TPI](https://registry.terraform.io/providers/iterative/iterative/latest). It
+enables full lifecycle management of computing resources from AWS, Microsoft
 Azure, Google Cloud Platform, and more.
 
 The Iterative Provider has a several super neat features:
@@ -182,8 +182,8 @@ whatever you want. Inside of the resource block, we specify some arguments:
 - _region_: you can choose the region where the compute resources should be
   allocated.
 - _machine_: if you know the exact kind of machine that you'd like to use, you
-  can specify it here. Alternatively, Terraform Provider Iterative offers some common
-  machine types which are roughly the same for all supported clouds. For
+  can specify it here. Alternatively, Terraform Provider Iterative offers some
+  common machine types which are roughly the same for all supported clouds. For
   example,
   [l+k80](https://registry.terraform.io/providers/iterative/iterative/latest/docs/resources/task#l+k80)
   stands for a "Large, with (at least) 12 CPU cores, 112 GB of RAM and 2 NVIDIA
