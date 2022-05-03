@@ -164,7 +164,7 @@ resource "iterative_task" "example-basic" {
     sudo apt-get update -q
     sudo apt-get install -yq python3-pip
     pip3 install -r requirements.txt
-    python3 src/train.py
+    python3 train.py
   END
 }
 ```
@@ -230,7 +230,7 @@ provider "iterative" {}
 
 resource "iterative_task" "example-gpu" {
   cloud   = "aws"    # or any of: gcp, az, k8s
-  machine = "m"      # medium. Or any of: l, xl, m+k80, xl+v100, ...
+  machine = "m+t4"   # 4 CPUs and an NVIDIA Tesla T4 GPU
   spot    = 0        # auto-price. Default -1 to disable, or >0 for hourly USD limit
   timeout = 24*60*60 # 24h
   image   = "nvidia" # has CUDA GPU drivers
