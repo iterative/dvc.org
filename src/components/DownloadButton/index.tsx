@@ -9,7 +9,7 @@ import { logEvent } from 'gatsby-theme-iterative-docs/src/utils/front/plausible'
 
 import * as styles from './styles.module.css'
 
-const VERSION = `2.10.1`
+const VERSION = `2.10.2`
 
 enum OS {
   UNKNOWN = 'unknown',
