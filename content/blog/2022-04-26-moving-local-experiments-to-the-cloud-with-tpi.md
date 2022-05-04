@@ -65,10 +65,14 @@ tutorial we'll be provisioning infrastructure on Amazon Web Services (AWS). You
 can create an AWS account yourself, or ask your DevOps team to provide you with
 one.
 
+<admon type="info">
+
 Make sure to insert
 [authentication credentials](https://registry.terraform.io/providers/iterative/iterative/latest/docs/guides/authentication#amazon-web-services)
 into your system's environment variables (`AWS_ACCESS_KEY_ID` and
 `AWS_SECRET_ACCESS_KEY`).
+
+</admon>
 
 We can now start the move with the help of [Terraform Provider Iterative
 (TPI)][tpi].
@@ -77,9 +81,13 @@ We can now start the move with the help of [Terraform Provider Iterative
 
 ## What is Terraform?
 
+<admon type="info">
+
 [Terraform](https://www.terraform.io) is an open-source infrastructure-as-code
 tool that you should [download and install](https://www.terraform.io/downloads)
 for this tutorial.
+
+</admon>
 
 Terraform requires us to create a configuration file containing a declarative
 description of the infrastructure we need. There's no need to read lots of cloud
@@ -128,9 +136,15 @@ Once we describe what providers we need, run
 $ terraform init
 ```
 
+<admon type="info">
+
 If you have cloned the example repository, you should run this command before
 doing anything else. This will initialize your working directory and download
 the required provider(s).
+
+</admon>
+
+<admon type="tip">
 
 It's probably also a good idea to set the logging level to see helpful info on
 progress:
@@ -138,6 +152,8 @@ progress:
 ```dvc
 $ export TF_LOG_PROVIDER=INFO
 ```
+
+</admon>
 
 ## Configuring `iterative_task`
 
@@ -209,9 +225,13 @@ of the resource block, we specify some arguments:
 - _script_ (**required**): this is where TPI's magic happens, i.e. what commands
   to run in `workdir` on the provisioned cloud instance.
 
+<admon type="tip">
+
 See the
 [resource arguments documentation](https://registry.terraform.io/providers/iterative/iterative/latest/docs/resources/task#argument-reference)
 for a full list.
+
+</admon>
 
 <admon type="warn">
 
