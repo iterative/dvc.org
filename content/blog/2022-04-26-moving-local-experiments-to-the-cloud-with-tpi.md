@@ -18,13 +18,12 @@ tags:
   - AWS
 ---
 
-There's a number of good reasons why one might want to train a machine learning
-model locally. It's quick and easy to set up a new project on a local machine.
-This is also sufficient for simple experiments (with reduced data subsets or
-small models) without paying to rent heavy cloud compute resources. A local
-machine is also deeply familiar -- as opposed to the multitude of available
-cloud services, which can be intimidating even with a decent background in
-DevOps.
+There are many reasons you might train a machine learning model locally. Mainly,
+it's quick & easy to set up a new project on a local machine. This is sufficient
+for simple experiments (with reduced data subsets or small models) without
+paying to rent heavy cloud compute resources. A local machine is also deeply
+familiar -- as opposed to the multitude of available cloud services, which can
+be intimidating even with a decent background in DevOps.
 
 Once you locally set up and iterate over your data & code enough, you may reach
 a point where more powerful compute resources are needed to train a larger model
@@ -39,18 +38,20 @@ This tutorial uses the
 [BeeImage Dataset](https://www.kaggle.com/jenny18/honey-bee-annotated-images)
 which contains over 5,100 bee images annotated with location, date, time,
 subspecies, health condition, caste, and pollen. Let's assume we've downloaded
-the images, created a project, and trained a CNN model locally to classify
-different subspecies. If you want to follow along, you can use your own data and
-training code, or clone [the example repository][tpi-bees].
+the images, created a project, and trained a
+[convolutional neural network](https://en.wikipedia.org/wiki/Convolutional_neural_network)
+model locally to classify different subspecies. If you want to follow along, you
+can use your own data and training code, or clone [the example
+repository][tpi-bees].
 
 [tpi-bees]: https://github.com/iterative/blog-tpi-bees
 
-Let's say that we would like to continue iterating on our model in the cloud.
-Run more epochs overnight? Change some hyperparameters? Add more layers? The
-first question when planning _The Big Move_ is "what dependencies are needed to
-train this model in a cloud environment?"
+How do we continue iterating on our model in the cloud? Can we run more epochs
+overnight? Change some hyperparameters? Add more layers? The first question when
+planning _The Big Move_ is "what dependencies are needed to train this model in
+a cloud environment?"
 
-Some of the important puzzle pieces you already have locally. These are:
+Some of the important puzzle pieces you already have locally:
 
 - Your training code. It is likely that you have a
   [whole pipeline](https://dvc.org/doc/start/data-pipelines) with multiple
@@ -64,23 +65,29 @@ tutorial we'll be provisioning infrastructure on Amazon Web Services (AWS). You
 can create an AWS account yourself, or ask your DevOps team to provide you with
 one.
 
-☞ Make sure to insert
-[authentication credentials](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-quickstart.html)
+Make sure to insert
+[authentication credentials](https://registry.terraform.io/providers/iterative/iterative/latest/docs/guides/authentication#amazon-web-services)
 into your system's environment variables (`AWS_ACCESS_KEY_ID` and
 `AWS_SECRET_ACCESS_KEY`).
 
-We can now start the move with the help of Terraform Provider Iterative (TPI).
+We can now start the move with the help of [Terraform Provider Iterative
+(TPI)][tpi].
+
+[tpi]: https://github.com/iterative/terraform-provider-iterative
 
 ## What is Terraform?
 
 [Terraform](https://www.terraform.io) is an open-source infrastructure-as-code
-tool that you should [download and install](https://www.terraform.io/downloads).
-Terraform requires you to create a configuration file containing a declarative
-description of the infrastructure you need. There's no need to read lots of
-cloud documentation nor write lots of commands. Instead, you describe what your
+tool that you should [download and install](https://www.terraform.io/downloads)
+for this tutorial.
+
+Terraform requires us to create a configuration file containing a declarative
+description of the infrastructure we need. There's no need to read lots of cloud
+documentation nor write lots of commands. Instead, you describe what your
 infrastructure should ultimately look like. Behind the scenes, Terraform will
 figure out what needs to be done. If you've cloned the [repository][tpi-bees],
-the `main.tf` configuration file is in the project's root.
+the `main.tf` configuration file is in the project's root. We'll explain its
+contents below.
 
 ## Terraform Provider Iterative (TPI)
 
@@ -88,23 +95,25 @@ Terraform can orchestrate a plethora of various resources for you, but for the
 majority of projects you only need a few. Instead of shipping plugins
 (providers) for all these resources in one bundle, Terraform downloads
 [_providers_](https://www.terraform.io/docs/extend/how-terraform-works.html)
-whenever required. For this tutorial we will only need the
-[TPI](https://registry.terraform.io/providers/iterative/iterative/latest). It
-enables full lifecycle management of computing resources from AWS, Microsoft
-Azure, Google Cloud Platform, and Kubernetes.
+whenever required.
 
-TPI has a several super neat features:
+For this tutorial we will only need [TPI][tpi]. It enables full lifecycle
+management of computing resources from AWS, Microsoft Azure, Google Cloud
+Platform, and Kubernetes. TPI provisions infrastructure, sync data, and also
+executes your scripts -- all via a single configuration file. It has a several
+super neat features:
 
 - The configuration for different cloud compute providers is nearly identical,
   so you can easily migrate from one cloud provider to another.
-- It provisions infrastructure and also executes your scripts on it -- all via a
-  single configuration file.
-- It helps to sync data between your local machine and a remote one.
+- It syncs data to and from the remote cloud and your local machine.
+- It allows you to use low-cost spot instances, and even automatically respawns
+  interrupted instances, restoring working directories/data and resuming running
+  tasks in the cloud even if you are offline.
 - Once your training is complete, the remote resources will be terminated,
   avoiding unused machines quietly ramping up costs.
 
-To start using the TPI we need to let Terraform know about it by adding the
-following in our `main.tf`:
+To start using TPI we need to let Terraform know about it by writing this in our
+`main.tf`:
 
 ```hcl
 terraform {
@@ -113,7 +122,7 @@ terraform {
 provider "iterative" {}
 ```
 
-Once you describe what providers you'll be using in your `main.tf`, run
+Once we describe what providers we need, run
 
 ```dvc
 $ terraform init
@@ -121,8 +130,10 @@ $ terraform init
 
 If you have cloned the example repository, you should run this command before
 doing anything else. This will initialize your working directory and download
-the required provider. It's probably also a good idea to set the logging level
-to see helpful info on progress:
+the required provider(s).
+
+It's probably also a good idea to set the logging level to see helpful info on
+progress:
 
 ```dvc
 $ export TF_LOG_PROVIDER=INFO
@@ -134,9 +145,9 @@ TPI offers a single resource called `iterative_task` that we'll need to
 configure. This resource will:
 
 1. Create cloud resources (storage, machines) for the task.
-2. If specified, upload a directory to the cloud storage.
-3. Run the given script until completion or timeout in the cloud.
-4. Download results.
+2. If specified, upload a local working directory to the cloud storage.
+3. Run the given script in the cloud until completion, error, or timeout.
+4. If specified, download output results.
 5. Automatically terminate compute resources upon task completion.
 
 This is exactly what we need to run a model training process! Let's see the
@@ -187,16 +198,16 @@ of the resource block, we specify some arguments:
   `0` for automatic pricing, which should keep costs down. Alternatively you can
   specify a positive number to set a maximum bidding price in USD per hour, or
   `-1` to use on-demand pricing.
-- _timeout_: maxiumum time to run before the instance is force-terminated. This
+- _timeout_: maximum time to run before the instance is force-terminated. This
   prevents forgotten long-running instances draining your budget.
 - _image_: the container to use (in our case, Ubuntu LTS 20.04).
 - _workdir_: a directory on your local machine relative to your project folder
   which you would like to upload with the remote machine. This way you can share
   your whole project or parts of it with a remote machine.
-- _output_: a directory **relative to workdir** to download after the task in
+- _output_: a directory **relative to `workdir`** to download after the task in
   complete.
-- _script_ (**required)**: this is where the TPI's magic happens, i.e. this is
-  where we define a script that should be run on a provisioned machine.
+- _script_ (**required**): this is where TPI's magic happens, i.e. what commands
+  to run in `workdir` on the provisioned cloud instance.
 
 See the
 [resource arguments documentation](https://registry.terraform.io/providers/iterative/iterative/latest/docs/resources/task#argument-reference)
@@ -204,19 +215,19 @@ for a full list.
 
 <admon type="warn">
 
-Be aware of
-[the costs associated with AWS EC2 instances](https://aws.amazon.com/ec2/pricing/).
-The machine used in the example above is not included in the free tier and will
-incur charges. Using TPI's spot pricing will keep costs to a minimum, but not
-eliminate them entirely.
+Keep in mind the
+[the running costs of AWS EC2 instances](https://aws.amazon.com/ec2/pricing/).
+The `machine` used in the example above is not included in the free tier and
+will incur charges. Using TPI's `spot` pricing will keep costs to a minimum
+(roughly $0.15/hour for `m+t4` on AWS), but not eliminate them entirely.
 
 </admon>
 
 In the simplest scenario, all we need to do on a new machine to run the training
 `script` is to set up the Python environment with required libraries. If you
 simply want to train your model on a machine with more memory, this may be
-enough. However, if you want your training code to leverage GPUs, the script
-will look a bit different.
+enough. However, if you want your training code to leverage GPUs, we can make a
+few small tweaks:
 
 ## Training with GPU
 
@@ -262,45 +273,44 @@ can run:
 $ terraform apply
 ```
 
-to review what steps Terraform is going to take to make your desired
-infrastructure materialize. Don't worry, nothing is actually done at this point,
-but it's a good way to check for potential issues in the configuration. You'll
-need to type `yes` to confirm that you indeed would like the plan to be
-executed.
+to review what steps Terraform is going to take to provision your desired
+infrastructure. Don't worry, nothing is actually done at this point, but it's a
+good way to check for potential issues in the configuration. You'll need to type
+`yes` to confirm.
 
-At this point you can get a cup of your preferred beverage, and let TPI work its
-magic together with Terraform. They will allocate a remote machine for you, set
-up the environment and run your `train.py`. Once the script finishes, the
-machine will be terminated.
+At this point you can go offline, get a cup of your preferred beverage, and let
+TPI work its magic together with Terraform. They will allocate a remote machine
+for you, upload you data and script, and run your code. Once the script
+finishes, the machine will be terminated.
 
-You can monitor what's going on by running:
+You can monitor what's going on at any point by running:
 
 ```dvc
 $ terraform refresh
 $ terraform show
 ```
 
-Once you see that the task has successfully finished, run
+This will print the logs and script's output. Once you see that the task has
+successfully finished, run:
 
 ```dvc
 $ terraform destroy
 ```
 
 to sync back your shared files and tear down all remote objects managed by your
-configuration. If you write metrics to a file (e.g. `metrics.json`), then you'll
-get the new metrics synced back to your local machine.
+configuration. If you output results (e.g. `results-gpu/metrics.json`), they'll
+be synced back to your local machine.
 
 Now if you want to try another experiment, you can change your code, run
 `terraform apply` again, and when the training is finished, commit your code
-together with the updated `metrics.json`. This can help you move from
-prototyping locally to leveraging more powerful cloud machines without the
-hassle of full MLOps setup. At the same time, once you're ready to start working
-on your
+together with the updated results. This can help you move from prototyping
+locally to leveraging more powerful cloud machines without the hassle of full
+MLOps setup. At the same time, once you're ready to start working on your
 [production pipelines and CI/CD](https://dvc.org/doc/use-cases/ci-cd-for-machine-learning),
-this should also make the transition smoother.
+this `main.tf` codification should also make the transition smoother.
 
-In this tutorial we have covered the simplest example with no GPU, and one with
-GPUs. In many cases, productionizing your workflows would require creating your
-own Docker image that you could use both for prototyping and for CI/CD
-workflows. If you'd like to learn how to create your own Docker images and use
-them with the TPI, let us know and we'll write another tutorial about that!
+In this tutorial we covered the simplest example with no GPU, and one with GPUs.
+In many cases, deploying your pipelines would be easier with your own Docker
+image (both for prototyping and for production) and CI/CD workflows. If you'd
+like to learn how to create your own Docker images and use them with TPI, let us
+know and we'll write another tutorial about that!
