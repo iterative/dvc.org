@@ -12,7 +12,7 @@ description: >
 descriptionLong: |
   _This is the second part of a three-part series of posts._
 
-  In [part 1](https://dvc.org/blog/e2e-cv-pt1) of this series of posts, we introduced a solution to a common problem faced by companies 
+  In [part 1](https://dvc.org/blog/end-to-end-computer-vision-api-part-1-data-versioning-and-ml-pipelines) of this series of posts, we introduced a solution to a common problem faced by companies 
   in the manufacturing industry: detecting defects from images of products moving along a production line. 
   The solution we proposed was a Deep Learning-based image segmentation model wrapped in a web API. 
   We talked about effective management and versioning of large datasets and the creation of reproducible ML pipelines.
@@ -35,9 +35,10 @@ tags:
 
 ### Introduction
 
-[Earlier](https://dvc.org/blog/e2e-cv-pt1), we built a pipeline that produces a
-trained Computer Vision model. Now we need a way to efficiently tune its
-configuration and the hyperparameters of the model. We want the ability to:
+[Earlier](https://dvc.org/blog/end-to-end-computer-vision-api-part-1-data-versioning-and-ml-pipelines),
+we built a pipeline that produces a trained Computer Vision model. Now we need a
+way to efficiently tune its configuration and the hyperparameters of the model.
+We want the ability to:
 
 - Run many experiments and easily compare their results to pick the
   best-performing ones.
