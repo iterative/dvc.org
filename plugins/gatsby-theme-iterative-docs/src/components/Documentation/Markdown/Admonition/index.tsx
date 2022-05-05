@@ -2,14 +2,15 @@ import React from 'react'
 import cn from 'classnames'
 import * as styles from './styles.module.css'
 
-const icons = {
+const icons: { [key: string]: string } = {
   tip: '💡',
   info: 'ℹ️',
   warn: '⚠️',
   fire: '🔥',
   exclamation: '❗',
   lady_beetle: '🐞',
-  bug: '🐛'
+  bug: '🐛',
+  none: ''
 }
 const typeOptions = ['info', 'tip', 'warn']
 const defaultType = 'info'
@@ -25,10 +26,10 @@ const Admonition: React.FC<{
     | 'exclamation'
     | 'lady_beetle'
     | 'bug'
-}> = ({ title, type = defaultType, children, icon = type }) => {
+    | 'none'
+}> = ({ title, type = defaultType, children, icon = '' }) => {
   const setType = typeOptions.includes(type) ? type : defaultType
-  const iconContent = icons[icon] || ''
-
+  const iconContent = icon in icons ? icons[icon] : icons[setType]
   return (
     <div
       className={cn(styles.admonition, styles[setType])}
