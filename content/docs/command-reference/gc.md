@@ -57,10 +57,10 @@ If a single remote or a single [cache is shared] among different projects and
 those projects have overlapped DVC-tracked files, removing files via `gc` in one
 project may break some links in another project.
 
-To keep overlapping files `dvc gc` has a flag `--projects` (`-p`) that takes
-multiple path to DVC projects. DVC _keeps_ data referenced in those projects.
-Make sure that all the commits (including branches) that are referencing any
-files to be preserved have been pulled before running this command.
+To prevent this, use the `--projects` (`-p`) option. It takes one or more
+paths to the DVC projects whose data should be preserved.
+Make sure that all the commits and branches that reference
+files you want to keep have been pulled in those other projects first.
 
 For example, if we have 4 projects with some overlapping files and we'd
 like to remove all the data that's only needed for one of them (e.g. when we no longer need that projects),
