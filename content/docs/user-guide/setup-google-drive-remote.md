@@ -167,9 +167,9 @@ $ dvc remote modify myremote gdrive_client_secret 'client-secret'
 
 <admon type="info">
 
-This covers simple authentication, which gives DVC access to GDrive
-on behalf of a user account. This is ideal to use to run DVC locally, for example.
-If some automation is needed (e.g. CI/CD) we recommend
+This covers simple authentication, which gives DVC access to GDrive on behalf of
+a user account. This is ideal to use to run DVC locally, for example. If some
+automation is needed (e.g. CI/CD) we recommend
 [using a service account](#using-service-accounts) instead.
 
 </admon>
