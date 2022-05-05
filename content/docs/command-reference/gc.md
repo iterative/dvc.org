@@ -53,20 +53,20 @@ backup with the same data.
 
 ### Cleaning shared cache (or remote)
 
-If a [cache is shared] among different projects that
-track some of the same files, using `dvc gc` in one
-project will break those overlapping data links in the other projects.
+If a [cache is shared] among different projects that track some of the same
+files, using `dvc gc` in one project will break those overlapping data links in
+the other projects.
 
-To prevent this, use the `--projects` (`-p`) option. It takes one or more
-paths to the DVC projects whose data should be preserved.
-Make sure that all the commits and branches that reference
-files you want to keep have been pulled in those other projects first.
+To prevent this, use the `--projects` (`-p`) option. It takes one or more paths
+to the DVC projects whose data should be preserved. Make sure that all the
+commits and branches that reference files you want to keep have been pulled in
+those other projects first.
 
-For example, if we have 4 projects with some overlapping files and we'd
-like to remove all the data that's only needed for one of them (e.g. when we no longer need that projects),
-we would first clone all the other projects and fetch all their branches,
-then pass their paths to the `dvc gc -p` command from
-the project we want to clear.
+For example, if we have 4 projects with some overlapping files and we'd like to
+remove all the data that's only needed for one of them (e.g. when we no longer
+need that projects), we would first clone all the other projects and fetch all
+their branches, then pass their paths to the `dvc gc -p` command from the
+project we want to clear.
 
 ## Options
 
