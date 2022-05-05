@@ -2,7 +2,7 @@
 title:
   'End-to-End Computer Vision API, Part 3: Remote Experiments & CI/CD For
   Machine Learning'
-date: 2022-05-05
+date: 2022-05-06
 description: >
   This is the third and last part of this series of posts on how to build an
   end-to-end Computer Vision solution according to the best available MLOps
@@ -64,7 +64,7 @@ the project's lifecycle we are in:
 
 1. [Workflow for experimentation and hyperparameter tuning](https://github.com/iterative/magnetic-tiles-defect/blob/main/.github/workflows/1-experiment.yaml)
 
-   ![Workflow for experimentation and hyperparameter tuning](/uploads/images/2022-05-05/workflow_exp.png '=800')
+   ![Workflow for experimentation and hyperparameter tuning](/uploads/images/2022-05-06/workflow_exp.png '=800')
 
    In this stage, we'll be working on an experimentation git branch:
    experimenting with data preprocessing, changing model architecture, tuning
@@ -148,14 +148,14 @@ the project's lifecycle we are in:
       show (from left to right) input images, ground truth masks and prediction
       masks.
 
-      ![PR and CML report](/uploads/images/2022-05-05/pr_cml_report.png '=800')
+      ![PR and CML report](/uploads/images/2022-05-06/pr_cml_report.png '=800')
 
    At this point, we can assess the results in Iterative Studio and GitHub and
    decide whether we want to accept the PR or keep experimenting.
 
 2. [Workflow for deploying to the development environment](https://github.com/iterative/magnetic-tiles-defect/blob/main/.github/workflows/2-develop.yaml)
 
-   ![Workflow for deploying to the development environment](/uploads/images/2022-05-05/workflow_dev.png '=800')
+   ![Workflow for deploying to the development environment](/uploads/images/2022-05-06/workflow_dev.png '=800')
 
    Once we are happy with our model's performance on the experiment branch, we
    can merge it into the development branch. This would trigger a different
@@ -189,7 +189,7 @@ the project's lifecycle we are in:
 
       Now we can test our API and assess the end-to-end performance of the
       overall solution. If we pick a random test image `exp3_num_258558.jpg`,
-      ![test image `exp3_num_258558.jpg`](/uploads/images/2022-05-05/exp3_num_258558.jpg '=300')
+      ![test image `exp3_num_258558.jpg`](/uploads/images/2022-05-06/exp3_num_258558.jpg '=300')
 
       we can send it to the endpoint using the `curl` command like this:
 
@@ -236,11 +236,11 @@ the project's lifecycle we are in:
       ```
 
       Below you can see what this mask looks like.
-      ![Output mask `exp3_num_258558_mask.png`](/uploads/images/2022-05-05/exp3_num_258558_mask.png '=300')
+      ![Output mask `exp3_num_258558_mask.png`](/uploads/images/2022-05-06/exp3_num_258558_mask.png '=300')
 
 3. [Workflow for deploying to the production environment](https://github.com/iterative/magnetic-tiles-defect/blob/main/.github/workflows/3-deploy.yaml)
 
-   ![Workflow for deploying to the production environment](/uploads/images/2022-05-05/workflow_prod.png '=800')
+   ![Workflow for deploying to the production environment](/uploads/images/2022-05-06/workflow_prod.png '=800')
 
    Before we merge the dev branch into the main branch, we would need to
    thoroughly test and monitor the application in the development environment. A
