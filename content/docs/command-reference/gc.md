@@ -58,14 +58,14 @@ files, using `dvc gc` in one project will break those overlapping data links in
 the other projects.
 
 To prevent this, use the `--projects` (`-p`) option. It takes one or more paths
-to the DVC projects whose data should be preserved. Make sure that all the
+to the DVC project(s) whose data should be preserved. Make sure that all the
 commits and branches that reference files you want to keep have been pulled in
 those other projects first.
 
-For example, if we have 4 projects with some overlapping files and we'd like to
-remove all the data that's only needed for one of them (e.g. when we no longer
-need that projects), we would first clone all the other projects and fetch all
-their branches, then pass their paths to the `dvc gc -p` command from the
+For example, if we have several projects with some overlapping files and we'd
+like to collect all the data that's only used in one of them (e.g. if we no
+longer need that projects), we would first clone all the other projects, fetch
+all their branches, and pass their paths to the `dvc gc -p` command from the
 project we want to clear.
 
 ## Options
@@ -131,6 +131,9 @@ project we want to clear.
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
+[cache is shared]: /doc/user-guide/how-to/share-a-dvc-cache
+[dvc experiments]: /doc/user-guide/experiment-management#experiments
+
 ## Examples
 
 Basic example of cleaning up the <abbr>cache</abbr>:
@@ -164,6 +167,3 @@ Let's check the size now:
 $ du -sh .dvc/cache/
 3.1G    .dvc/cache/
 ```
-
-[cache is shared]: /doc/user-guide/how-to/share-a-dvc-cache
-[dvc experiments]: /doc/user-guide/experiment-management#experiments
