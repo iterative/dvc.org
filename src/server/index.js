@@ -17,6 +17,8 @@
 
 const express = require('express')
 const compression = require('compression')
+const { createProxyMiddleware } = require('http-proxy-middleware')
+
 const { s3Url } = require('./config')
 const { isProduction } = require('./utils')
 require('dotenv').config()
@@ -31,6 +33,17 @@ const serveMiddleware = require('./middleware/serve')
 app.use(compression())
 app.use(redirectsMiddleware)
 app.use('/api', apiMiddleware)
+app.use(
+  '/pl',
+  createProxyMiddleware({
+    target: 'https://plausible.io',
+    changeOrigin: true,
+    xfwd: true,
+    pathRewrite: {
+      '^/pl': ''
+    }
+  })
+)
 app.use(serveMiddleware)
 
 app.listen(port, () => {
