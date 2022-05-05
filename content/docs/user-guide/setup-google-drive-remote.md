@@ -165,11 +165,14 @@ $ dvc remote modify myremote gdrive_client_secret 'client-secret'
 
 ## Authorization
 
-There are two ways to give DVC access to a GDrive directory or a disk. The one
-descibed in this section gives DVC a way to access GDrive on behalf of a user
-account. It's the simplest way to use, and it's fine to use to run DVC locally.
-If some automation is needed (e.g. CI/CD) we recommend to
-[use a service account](#using-service-accounts) instead.
+<admon type="info">
+
+This covers simple authentication, which gives DVC access to GDrive
+on behalf of a user account. This is ideal to use to run DVC locally, for example.
+If some automation is needed (e.g. CI/CD) we recommend
+[using a service account](#using-service-accounts) instead.
+
+</admon>
 
 On the first usage of a GDrive [remote](/doc/command-reference/remote), for
 example when trying to `dvc push` tracked data for the first time, DVC will
