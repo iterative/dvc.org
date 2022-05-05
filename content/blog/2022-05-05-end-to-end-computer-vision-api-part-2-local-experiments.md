@@ -1,6 +1,6 @@
 ---
 title: 'End-to-End Computer Vision API, Part 2: Local Experiments'
-date: 2022-05-04
+date: 2022-05-05
 description: >
   In part 1, we talked about effective management and versioning of large
   datasets and the creation of reproducible ML pipelines.
@@ -21,7 +21,7 @@ descriptionLong: |
   comparison of experiments based on their performance metrics; and
   persistence of the most promising ones
 
-picture: 2022-05-04/e2e-cv-pt2-cover.png
+picture: 2022-05-05/e2e-cv-pt2-cover.png
 author: alex_kim
 commentsUrl: https://discuss.dvc.org/t/end-to-end-computer-vision/1178
 tags:
@@ -172,13 +172,13 @@ our remote repository, like trying different learning rates and batch sizes.
 Note that earlier, we discarded all local experiments whose performance we
 weren't satisfied with.
 
-![Studio view](/uploads/images/2022-05-04/studio_view.png '=800')
+![Studio view](/uploads/images/2022-05-05/studio_view.png '=800')
 
 Below we can see the evolution of the key metrics and the value of the loss
 function throughout training (enabled by the earlier integration of
 [DVCLive](https://dvc.org/doc/dvclive)) for a set of selected commits.
 
-![DVCLive metrics displayed in Studio](/uploads/images/2022-05-04/dvc_live_studio.png '=800')
+![DVCLive metrics displayed in Studio](/uploads/images/2022-05-05/dvc_live_studio.png '=800')
 
 Now, for example, if we see that the loss function hasn't reached a plateau
 after a certain number of epochs, we'll try increasing this number. Or, even
