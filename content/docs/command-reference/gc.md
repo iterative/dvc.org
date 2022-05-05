@@ -62,11 +62,11 @@ multiple path to DVC projects. DVC _keeps_ data referenced in those projects.
 Make sure that all the commits (including branches) that are referencing any
 files to be preserved have been pulled before running this command.
 
-For example, if we have `N` projects that have some overlapping files and we'd
-like to remove all data in one of those (let's say we don't need one of the
-projects anymore), we would need first to clone all the remaining `N-1` projects
-(including branches) and pass their path to the `dvc gc -p` command while
-running it from the project we'd like to delete the data from.
+For example, if we have 4 projects with some overlapping files and we'd
+like to remove all the data that's only needed for one of them (e.g. when we no longer need that projects),
+we would first clone all the other projects and fetch all their branches,
+then pass their paths to the `dvc gc -p` command from
+the project we want to clear.
 
 ## Options
 
