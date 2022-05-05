@@ -48,11 +48,13 @@ We want the ability to:
 
 ### Experiment Management
 
-Our DVC pipeline relies on the parameters defined in the
-[`params.yaml`](https://github.com/iterative/magnetic-tiles-defect/blob/main/params.yaml)
-file. By loading its contents in each stage, we can avoid hard-coded parameters.
-It also allows rerunning the whole or parts of our pipeline under a different
-set of parameters. The DVC pipeline YAML file
+Our DVC pipeline relies on the parameters defined in
+the[`params.yaml`](https://github.com/iterative/magnetic-tiles-defect/blob/main/params.yaml)
+file in this case (see other possible file types
+[here](https://dvc.org/doc/command-reference/params#description)). By loading
+its contents in each stage, we can avoid hard-coded parameters. It also allows
+rerunning the whole or parts of our pipeline under a different set of
+parameters. The DVC pipeline YAML file
 [`dvc.yaml`](https://github.com/iterative/magnetic-tiles-defect/blob/main/dvc.yaml)
 supports a
 [templating format](https://dvc.org/doc/user-guide/project-structure/pipelines-files#templating)
