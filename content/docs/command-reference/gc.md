@@ -51,11 +51,11 @@ backup with the same data.
 
 </admon>
 
-### Cleaning shared cache or shared remote
+### Cleaning shared cache (or remote)
 
-If a single remote or a single [cache is shared] among different projects and
-those projects have overlapped DVC-tracked files, removing files via `gc` in one
-project may break some links in another project.
+If a [cache is shared] among different projects that
+track some of the same files, using `dvc gc` in one
+project will break those overlapping data links in the other projects.
 
 To prevent this, use the `--projects` (`-p`) option. It takes one or more
 paths to the DVC projects whose data should be preserved.
