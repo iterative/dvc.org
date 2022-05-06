@@ -68,7 +68,6 @@ in turn will:
 a) provision an EC2 virtual machine with a GPU in AWS:
 
 ```yaml
----
 - name: Deploy runner on AWS EC2
   env:
     REPO_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
@@ -83,7 +82,6 @@ a) provision an EC2 virtual machine with a GPU in AWS:
 b) deploy our experiment branch to a Docker container on this machine:
 
 ```yaml
----
 train-model:
   needs: deploy-runner
   runs-on: [self-hosted, cml-runner]
@@ -101,7 +99,6 @@ train-model:
 c) rerun the entire DVC pipeline and push metrics back to GitHub:
 
 ```yaml
----
 - name: dvc-repro-cml
   env:
     REPO_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
@@ -117,7 +114,6 @@ d) open a pull request and post a report to it that contains a table with
 metrics and model outputs on a few test images:
 
 ```bash
-...
 # Open a pull request
 cml pr dvc.lock metrics.json training_metrics.json training_metrics_dvc_plots/**
 # Create CML report
@@ -128,7 +124,6 @@ for file in $(ls data/test_preds/ | sort -R | tail -20); do
   cml publish data/test_preds/$file --md >> report.md
 done
 cml send-comment --pr --update report.md
-...
 ```
 
 The report structure is fully customizable. Below is an example of what the PR
@@ -157,7 +152,6 @@ b) deploy the web REST API application (that incorporates the new model) to a
 development endpoint on Heroku:
 
 ```yaml
----
 deploy-dev-api:
   needs: train-and-push
   runs-on: ubuntu-latest
@@ -176,11 +170,13 @@ deploy-dev-api:
         usedocker: true
 ```
 
-The development endpoint is now accessible at\
+The development endpoint is now accessible at:
 
 [https://demo-api-mag-tiles-dev.herokuapp.com/analyze](https://demo-api-mag-tiles-dev.herokuapp.com/analyze)
-(note `-dev`), and we can use it to assess the end-to-end performance of the
-overall solution. If we pick a random test image `exp3_num_258558.jpg`,
+(note `-dev`),
+
+and we can use it to assess the end-to-end performance of the overall solution.
+If we pick a random test image `exp3_num_258558.jpg`,
 ![Test image `exp3_num_258558.jpg`](/uploads/images/2022-05-06/exp3_num_258558.jpg '=300')
 _Test image `exp3_num_258558.jpg`_
 
@@ -203,7 +199,6 @@ otherwise):
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
 1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-...
 ```
 
 Alternatively, we can do a similar thing with a Python script that also saves
@@ -246,7 +241,8 @@ If there are no issues and we are confident in the quality of the new model, we
 can merge the development branch into the main branch of our repository. Again,
 this triggers the third CI/CD workflow that deploys the code from the main
 branch to the production API. This looks identical to the deployment into the
-development environment, except now the deployment endpoint will be:\
+development environment, except now the deployment endpoint will be:
+
 [https://demo-api-mag-tiles-prod.herokuapp.com/analyze](https://demo-api-mag-tiles-prod.herokuapp.com/analyze)
 (note `-prod`) .
 
