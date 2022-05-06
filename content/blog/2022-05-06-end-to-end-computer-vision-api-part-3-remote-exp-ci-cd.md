@@ -68,7 +68,6 @@ in turn will:
 a) provision an EC2 virtual machine with a GPU in AWS:
 
 ```yaml
-
 ---
 - name: Deploy runner on AWS EC2
   env:
@@ -84,7 +83,6 @@ a) provision an EC2 virtual machine with a GPU in AWS:
 b) deploy our experiment branch to a Docker container on this machine:
 
 ```yaml
-
 ---
 train-model:
   needs: deploy-runner
@@ -103,7 +101,6 @@ train-model:
 c) rerun the entire DVC pipeline and push metrics back to GitHub:
 
 ```yaml
-
 ---
 - name: dvc-repro-cml
   env:
@@ -160,7 +157,6 @@ b) deploy the web REST API application (that incorporates the new model) to a
 development endpoint on Heroku:
 
 ```yaml
-
 ---
 deploy-dev-api:
   needs: train-and-push
