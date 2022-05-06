@@ -240,9 +240,8 @@ If there are no issues and we are confident in the quality of the new model, we
 can merge the development branch into the main branch of our repository. Again,
 this triggers the third CI/CD workflow that deploys the code from the main
 branch to the production API. This looks identical to the deployment into the
-development environment, except now the deployment endpoint will be:
-
-[https://demo-api-mag-tiles-prod.herokuapp.com/analyze](https://demo-api-mag-tiles-prod.herokuapp.com/analyze)
+development environment, except now the deployment endpoint will be
+<https://demo-api-mag-tiles-prod.herokuapp.com/analyze>
 (note `-prod`) .
 
 ## Summary
