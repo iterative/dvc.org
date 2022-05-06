@@ -16,6 +16,12 @@ tags:
   - MLOps
   - TPI
   - AWS
+  - Terraform
+  - Git
+  - Python
+  - Tutorial
+  - Cloud orchestration
+  - Spot instance management
 ---
 
 There are many reasons you might train a machine learning model locally. Mainly,
