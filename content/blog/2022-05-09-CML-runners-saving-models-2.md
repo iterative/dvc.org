@@ -68,8 +68,8 @@ All files needed for this guide can be found in
 <admon type="tip">
 
 We will be using Google Drive as our remote storage. With slight modifications,
-however, you can also use other remotes such as AWS S3, GCP Cloud Storage, and Azure
-Storage. Please
+however, you can also use other remotes such as AWS S3, GCP Cloud Storage, and
+Azure Storage. Please
 [refer to the DVC Docs](https://dvc.org/doc/command-reference/remote/add#supported-storage-types)
 for more details.
 
@@ -79,8 +79,8 @@ for more details.
 
 Make sure to have followed
 [part 1 of this guide](https://dvc.org/blog/CML-runners-saving-models-1) and
-have gotten CML up and running. The necessary files for all of this can be found in
-[this repository](https://github.com/iterative/example_model_export_cml).
+have gotten CML up and running. The necessary files for all of this can be found
+in [this repository](https://github.com/iterative/example_model_export_cml).
 Additionally, set up the following things beforehand:
 
 - [Install DVC](https://dvc.org/doc/install)
