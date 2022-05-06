@@ -9,7 +9,7 @@ description: >
   by tweaking configurations and hyperparameters;  comparison of experiments
   based on their performance metrics; and persistence of the most promising ones
 
-descriptionLong: >
+descriptionLong: |
   _This is the second part of a three-part series of posts._
 
 
@@ -20,11 +20,12 @@ descriptionLong: >
   products moving along a production line.  The solution we proposed was a Deep
   Learning-based image segmentation model wrapped in a web API.  We talked about
   effective management and versioning of large datasets and the creation of
-  reproducible ML pipelines. Here we'll learn about experiment
-  management:  generation of many experiments by tweaking configurations and
-  hyperparameters;  comparison of experiments based on their performance
-  metrics; and persistence of the most promising ones
+  reproducible ML pipelines. 
 
+  Here we'll learn about experiment management: generation of many experiments
+  by tweaking configurations and hyperparameters;  comparison of experiments
+  based on their performance metrics; and persistence of the most promising
+  ones.
 picture: 2022-05-05/e2e-cv-pt2-cover.png
 author: alex_kim
 commentsUrl: https://discuss.dvc.org/t/end-to-end-computer-vision/1178
