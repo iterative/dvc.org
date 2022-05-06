@@ -9,17 +9,21 @@ description: >
   by tweaking configurations and hyperparameters;  comparison of experiments
   based on their performance metrics; and persistence of the most promising ones
 
-descriptionLong: |
+descriptionLong: >
   _This is the second part of a three-part series of posts._
 
-  In [part 1](https://dvc.org/blog/end-to-end-computer-vision-api-part-1-data-versioning-and-ml-pipelines) of this series of posts, we introduced a solution to a common problem faced by companies 
-  in the manufacturing industry: detecting defects from images of products moving along a production line. 
-  The solution we proposed was a Deep Learning-based image segmentation model wrapped in a web API. 
-  We talked about effective management and versioning of large datasets and the creation of reproducible ML pipelines.
-  Here we'll learn about experiment management: 
-  generation of many experiments by tweaking configurations and hyperparameters; 
-  comparison of experiments based on their performance metrics; and
-  persistence of the most promising ones
+
+  In [part
+  1](https://dvc.org/blog/end-to-end-computer-vision-api-part-1-data-versioning-and-ml-pipelines)
+  of this series of posts, we introduced a solution to a common problem faced by
+  companies  in the manufacturing industry: detecting defects from images of
+  products moving along a production line.  The solution we proposed was a Deep
+  Learning-based image segmentation model wrapped in a web API.  We talked about
+  effective management and versioning of large datasets and the creation of
+  reproducible ML pipelines. Here we'll learn about experiment
+  management:  generation of many experiments by tweaking configurations and
+  hyperparameters;  comparison of experiments based on their performance
+  metrics; and persistence of the most promising ones
 
 picture: 2022-05-05/e2e-cv-pt2-cover.png
 author: alex_kim
@@ -75,7 +79,7 @@ reason for us to rerun the often time-consuming data preprocessing and model
 training stages if we want to incorporate these updates. DVC pipelines can skip
 the execution of these stages without our explicit instructions:
 
-```bash
+```dvc
 $ dvc exp run
 Running stage 'check_packages':
 > pipenv run pip freeze > requirements.txt
@@ -99,7 +103,7 @@ database/online service to store experiment metadata. If wanted to run a few
 experiments with different scales of learning rate values (e.g. `0.1`, `0.01`
 and `0.001`), we'd do that as follows:
 
-```bash
+```dvc
 $ dvc exp run --set-param train.learning_rate=0.1
 ...
 $ dvc exp run --set-param train.learning_rate=0.01
@@ -116,10 +120,13 @@ These local experiments are powered by Git references, and you can learn about
 them in [this post](https://dvc.org/blog/experiment-refs). We can display all
 experiments with the `dvc exp show` command:
 
-```bash
+```dvc
 $ dvc exp show --only-changed --sort-by=dice_mean
- ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-  Experiment                Created        train.loss   valid.loss   foreground.acc   jaccard.coeff   dice.multi   dice_mean   acc_mean   train.learning_rate   train.batch_size   models
+```
+
+```dvctable
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  neutral:**Experiment**                neutral:**Created**       metric:**train.loss**   metric:**valid.loss**   metric:**foreground.acc**   metric:**jaccard.coeff**   metric:**dice.multi**   metric:**dice_mean**   metric:**acc_mean**   param:**train.learning_rate**   param:**train.batch_size**   neutral:**models**
  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
   workspace                 -                 0.10356     0.069076          0.90321         0.75906      0.92371     0.70612    0.97689   0.01                  16                 5854528
   exp                       Apr 09, 2022      0.13305     0.087599          0.77803         0.66494      0.89084     0.70534    0.97891   0.01                  8                  6c513ae
@@ -134,7 +141,7 @@ can
 [persist](https://dvc.org/doc/user-guide/experiment-management/persisting-experiments)
 them by creating a branch out of an experiment:
 
-```bash
+```dvc
 $ dvc exp branch exp-04bcd my-branch
 Git branch 'my-branch' has been created from experiment 'exp-04bcd'.
 To switch to the new branch run:

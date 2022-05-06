@@ -13,13 +13,15 @@ descriptionLong: |
 
   _This is the first part of a three-part series of posts._
 
-  Lately, training a well-performing Computer Vision (CV) model in Jupyter Notebooks became fairly straightforward. 
-  You can use pre-trained Deep Learning models and high-level libraries like `fastai`, `keras`, `pytorch-lightning` etc., that abstract away much of the complexity.
-  However, it's still hard to incorporate these models into a
-  maintainable production application in a way that brings value to the
-  customers and business. 
+  Lately, training a well-performing Computer Vision (CV) model in Jupyter
+  Notebooks became fairly straightforward. You can use pre-trained Deep Learning
+  models and high-level libraries like `fastai`, `keras`, `pytorch-lightning`
+  etc., that abstract away much of the complexity. However, it's still hard to
+  incorporate these models into a maintainable production application in a way
+  that brings value to the customers and business. 
 
-  Below we'll present the tools that naturally integrate with your git repository and makes this part of the process significantly easier.
+  Below we'll present the tools that naturally integrate with your git
+  repository and makes this part of the process significantly easier.
 picture: 2022-05-03/e2e-cv-pt1-cover.png
 author: alex_kim
 commentsUrl: https://discuss.dvc.org/t/end-to-end-computer-vision/1178
@@ -236,7 +238,7 @@ pipeline will be rerun if anything about our python environment changes.
 We can see the whole dependency graph (directed acyclic graph, to be exact)
 using the [`dvc dag`](https://dvc.org/doc/command-reference/dag) command:
 
-```bash
+```dvc
 $ dvc dag
                                +----------------+
                                | check_packages |
@@ -269,7 +271,7 @@ $ dvc dag
 
 The entire pipeline can be easily reproduced with the `dvc exp run` command:
 
-```bash
+```dvc
 $ dvc exp run
 Running stage 'check_packages':
 > python src/stages/check_pkgs.py --config=params.yaml
