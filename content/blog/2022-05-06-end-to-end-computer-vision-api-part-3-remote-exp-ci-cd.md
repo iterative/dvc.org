@@ -170,9 +170,8 @@ deploy-dev-api:
         usedocker: true
 ```
 
-The development endpoint is now accessible at:
-
-[https://demo-api-mag-tiles-dev.herokuapp.com/analyze](https://demo-api-mag-tiles-dev.herokuapp.com/analyze)
+The development endpoint is now accessible at
+<https://demo-api-mag-tiles-dev.herokuapp.com/analyze>
 (note `-dev`),
 
 and we can use it to assess the end-to-end performance of the overall solution.
