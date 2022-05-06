@@ -4,10 +4,9 @@ title:
   Machine Learning'
 date: 2022-05-06
 description: >
-  In this final part, we will focus on leveraging cloud infrastructure with CML; 
-  enabling automatic reporting 
-  (graphs, images, reports and tables with performance metrics) for PRs; and
-  the eventual deployment process.
+  In this final part, we will focus on leveraging cloud infrastructure with CML;
+   enabling automatic reporting  (graphs, images, reports and tables with
+  performance metrics) for PRs; and the eventual deployment process.
 descriptionLong: |
 
   In [Part 1](https://dvc.org/blog/end-to-end-computer-vision-api-part-1-data-versioning-and-ml-pipelines), 
@@ -37,7 +36,7 @@ tags:
 
 ### Leveraging Cloud Resources with CI/CD and CML
 
-If you use the [CML library](https://cml.dev/) in combination with CI/CD tools 
+If you use the [CML library](https://cml.dev/) in combination with CI/CD tools
 like GitHub Actions or GitLab CI/CD, you can quickly and easily:
 
 1. provision a powerful virtual machine (VM) in the cloud as training Computer
@@ -51,7 +50,6 @@ like GitHub Actions or GitLab CI/CD, you can quickly and easily:
 ![Continuous Integration and Deployment for Machine Learning](https://dvc.org/static/300c88b3b1b5f65753629d661cc916e5/2e49e/cicd4ml.png)
 _Continuous Integration and Deployment for Machine Learning_
 
-
 We've configured three
 [workflow files](https://github.com/iterative/magnetic-tiles-defect/tree/main/.github/workflows)
 for GitHub Actions, each of which corresponds to a particular stage depending on
@@ -60,88 +58,88 @@ the project's lifecycle we are in:
 #### 1. [Workflow for experimentation and hyperparameter tuning](https://github.com/iterative/magnetic-tiles-defect/blob/main/.github/workflows/1-experiment.yaml)
 
 ![Workflow for experimentation and hyperparameter tuning](/uploads/images/2022-05-06/workflow_exp.png '=400')
-_Workflow for experimentation and hyperparameter tuning_
-In this stage, we'll create an experiment branch so that can experiment
-with data preprocessing, change model architecture, tune hyperparameters,
-etc. Once we think our experiment is ready to be run, we'll push our changes to
-a remote repository (in this case, GitHub). This push will trigger a CI/CD job
-in GitHub Actions, which in turn will:
+_Workflow for experimentation and hyperparameter tuning_ In this stage, we'll
+create an experiment branch so that can experiment with data preprocessing,
+change model architecture, tune hyperparameters, etc. Once we think our
+experiment is ready to be run, we'll push our changes to a remote repository (in
+this case, GitHub). This push will trigger a CI/CD job in GitHub Actions, which
+in turn will:
 
 a) provision an EC2 virtual machine with a GPU in AWS:
 
-  ```yaml
-  ...
-      - name: Deploy runner on AWS EC2
-        env:
-          REPO_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-        run: |
-          cml runner \
-              --cloud=aws \
-              --cloud-region=us-east-1 \
-              --cloud-type=g4dn.xlarge \
-              --labels=cml-runner
-  ...
-  ```
+```yaml
+
+---
+- name: Deploy runner on AWS EC2
+  env:
+    REPO_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+  run: |
+    cml runner \
+        --cloud=aws \
+        --cloud-region=us-east-1 \
+        --cloud-type=g4dn.xlarge \
+        --labels=cml-runner
+```
 
 b) deploy our experiment branch to a Docker container on this machine:
 
-  ```yaml
-  ...
-  train-model:
-    needs: deploy-runner
-    runs-on: [self-hosted, cml-runner]
-    container:
-      image: iterativeai/cml:0-dvc2-base1
-      options: --gpus all
-    environment: cloud
-    permissions:
-      contents: read
-      id-token: write
-    steps:
-      - uses: actions/checkout@v2
-  ...
-  ```
+```yaml
+
+---
+train-model:
+  needs: deploy-runner
+  runs-on: [self-hosted, cml-runner]
+  container:
+    image: iterativeai/cml:0-dvc2-base1
+    options: --gpus all
+  environment: cloud
+  permissions:
+    contents: read
+    id-token: write
+  steps:
+    - uses: actions/checkout@v2
+```
 
 c) rerun the entire DVC pipeline and push metrics back to GitHub:
 
-  ```yaml
-  ...
-      - name: dvc-repro-cml
-        env:
-          REPO_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-        run: |
-          # Install dependencies
-          pipenv install --skip-lock
-          pipenv run dvc pull
-          pipenv run dvc exp run
-          pipenv run dvc push
-  ...
-  ```
+```yaml
 
-d) open a pull request and post a report to it that contains a table with metrics
-  and model outputs on a few test images:
+---
+- name: dvc-repro-cml
+  env:
+    REPO_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+  run: |
+    # Install dependencies
+    pipenv install --skip-lock
+    pipenv run dvc pull
+    pipenv run dvc exp run
+    pipenv run dvc push
+```
 
-  ```bash
-  ...
-  # Open a pull request
-  cml pr dvc.lock metrics.json training_metrics.json training_metrics_dvc_plots/**
-  # Create CML report
-  echo "## Metrics" > report.md
-  pipenv run dvc metrics show --md >> report.md
-  echo "## A few random test images" >> report.md
-  for file in $(ls data/test_preds/ | sort -R | tail -20); do
-    cml publish data/test_preds/$file --md >> report.md
-  done
-  cml send-comment --pr --update report.md
-  ...
-  ```
+d) open a pull request and post a report to it that contains a table with
+metrics and model outputs on a few test images:
 
-  The report structure is fully customizable. Below is an example of what the PR
-  and the CML report would look like in this case. The test images show (from
-  left to right) input images, ground truth masks and prediction masks.
+```bash
+...
+# Open a pull request
+cml pr dvc.lock metrics.json training_metrics.json training_metrics_dvc_plots/**
+# Create CML report
+echo "## Metrics" > report.md
+pipenv run dvc metrics show --md >> report.md
+echo "## A few random test images" >> report.md
+for file in $(ls data/test_preds/ | sort -R | tail -20); do
+  cml publish data/test_preds/$file --md >> report.md
+done
+cml send-comment --pr --update report.md
+...
+```
 
-  ![PR and CML report](/uploads/images/2022-05-06/pr_cml_report.png '=800')
-  _PR and CML report_
+The report structure is fully customizable. Below is an example of what the PR
+and the CML report would look like in this case. The test images show (from left
+to right) input images, ground truth masks and prediction masks.
+
+![PR and CML report](/uploads/images/2022-05-06/pr_cml_report.png '=800') _PR
+and CML report_
 
 At this point, we can assess the results in Iterative Studio and GitHub and
 decide whether we want to accept the PR or keep experimenting.
@@ -149,97 +147,99 @@ decide whether we want to accept the PR or keep experimenting.
 #### 2. [Workflow for deploying to the development environment](https://github.com/iterative/magnetic-tiles-defect/blob/main/.github/workflows/2-develop.yaml)
 
 ![Workflow for deploying to the development environment](/uploads/images/2022-05-06/workflow_dev.png '=400')
-_Workflow for deploying to the development environment_
-Once we are happy with our model's performance on the experiment branch, we can
-merge it into the development branch. This would trigger a different CI/CD job
-that will:
+_Workflow for deploying to the development environment_ Once we are happy with
+our model's performance on the experiment branch, we can merge it into the
+development branch. This would trigger a different CI/CD job that will:
 
 a) retrain the model if the `dev` branch contains changes not present in the
-  `exp` branch. DVC will skip this stage if that's not the case. This step looks almost identical to step (1.c) above
-  (rerunning the pipeline & reporting metrics on GitHub) in the above workflow.
+`exp` branch. DVC will skip this stage if that's not the case. This step looks
+almost identical to step (1.c) above (rerunning the pipeline & reporting metrics
+on GitHub) in the above workflow.
 
 b) deploy the web REST API application (that incorporates the new model) to a
-  development endpoint on Heroku:
+development endpoint on Heroku:
 
-  ```yaml
-  ...
-  deploy-dev-api:
-    needs: train-and-push
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/download-artifact@master
-        with:
-          name: model_pickle
-          path: models
-      - uses: akhileshns/heroku-deploy@v3.12.12
-        with:
-          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: demo-api-mag-tiles-dev
-          heroku_email: 'alexkim@iterative.ai'
-          team: iterative-sandbox
-          usedocker: true
-  ```
+```yaml
 
-  The development endpoint is now accessible at\
-  [https://demo-api-mag-tiles-dev.herokuapp.com/analyze](https://demo-api-mag-tiles-dev.herokuapp.com/analyze)
-  (note `-dev`), and we can use it to assess the end-to-end performance of the
-  overall solution. If we pick a random test image `exp3_num_258558.jpg`,
-  ![Test image `exp3_num_258558.jpg`](/uploads/images/2022-05-06/exp3_num_258558.jpg '=300')
-  _Test image `exp3_num_258558.jpg`_
+---
+deploy-dev-api:
+  needs: train-and-push
+  runs-on: ubuntu-latest
+  steps:
+    - uses: actions/checkout@v2
+    - uses: actions/download-artifact@master
+      with:
+        name: model_pickle
+        path: models
+    - uses: akhileshns/heroku-deploy@v3.12.12
+      with:
+        heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+        heroku_app_name: demo-api-mag-tiles-dev
+        heroku_email: 'alexkim@iterative.ai'
+        team: iterative-sandbox
+        usedocker: true
+```
 
-  we can send it to the endpoint using the `curl` command like this:
+The development endpoint is now accessible at\
 
-  ```dvc
-  $ curl -F 'image=@data/MAGNETIC_TILE_SURFACE_DEFECTS/test_images/exp3_num_258558.jpg' \
-  -v https://demo-api-mag-tiles-dev.herokuapp.com/analyze
-  ```
+[https://demo-api-mag-tiles-dev.herokuapp.com/analyze](https://demo-api-mag-tiles-dev.herokuapp.com/analyze)
+(note `-dev`), and we can use it to assess the end-to-end performance of the
+overall solution. If we pick a random test image `exp3_num_258558.jpg`,
+![Test image `exp3_num_258558.jpg`](/uploads/images/2022-05-06/exp3_num_258558.jpg '=300')
+_Test image `exp3_num_258558.jpg`_
 
-  This will return some http-header info and the body of the response containing
-  the defect segmentation mask (`0` for pixel locations without defects and `1`
-  otherwise):
+we can send it to the endpoint using the `curl` command like this:
 
-  ```dvc
-  *   Trying 18.208.60.216:443...
-  * Connected to demo-api-mag-tiles-dev.herokuapp.com (18.208.60.216) port 443 (#0)
-  ...
-  {"pred":[[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-  0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-  0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
-  1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-  ...
-  ```
+```dvc
+$ curl -F 'image=@data/MAGNETIC_TILE_SURFACE_DEFECTS/test_images/exp3_num_258558.jpg' \
+-v https://demo-api-mag-tiles-dev.herokuapp.com/analyze
+```
 
-  Alternatively, we can do a similar thing with a Python script that also saves
-  the output mask into a `exp3_num_258558_mask.png` image:
+This will return some http-header info and the body of the response containing
+the defect segmentation mask (`0` for pixel locations without defects and `1`
+otherwise):
 
-  ```python
-  import json
-  from pathlib import Path
+```dvc
+*   Trying 18.208.60.216:443...
+* Connected to demo-api-mag-tiles-dev.herokuapp.com (18.208.60.216) port 443 (#0)
+...
+{"pred":[[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+...
+```
 
-  import matplotlib.cm as cm
-  import matplotlib.pyplot as plt
-  import numpy as np
-  import requests
+Alternatively, we can do a similar thing with a Python script that also saves
+the output mask into a `exp3_num_258558_mask.png` image:
 
-  url = 'https://demo-api-mag-tiles-dev.herokuapp.com/analyze'
-  file_path = Path(
-      'data/MAGNETIC_TILE_SURFACE_DEFECTS/test_images/exp3_num_258558.jpg')
-  files = {'image': (str(file_path), open(file_path, 'rb'), "image/jpeg")}
-  response = requests.post(url, files=files)
-  data = json.loads(response.content)
-  pred = np.array(data['pred'])
-  plt.imsave(f'{file_path.stem}_mask.png', pred, cmap=cm.gray)
-  ```
+```python
+import json
+from pathlib import Path
 
-  Below you can see what this mask looks like.
-  ![Output mask `exp3_num_258558_mask.png`](/uploads/images/2022-05-06/exp3_num_258558_mask.png '=300')
-  _Output mask `exp3_num_258558_mask.png`_
+import matplotlib.cm as cm
+import matplotlib.pyplot as plt
+import numpy as np
+import requests
 
-  Before we merge the dev branch into the main branch, we would need to
-  thoroughly test and monitor the application in the development environment. A
-  good test could be duplicating real image requests to the dev endpoint for
-  some period of time and assess the quality of the returned segmentation masks.
+url = 'https://demo-api-mag-tiles-dev.herokuapp.com/analyze'
+file_path = Path(
+    'data/MAGNETIC_TILE_SURFACE_DEFECTS/test_images/exp3_num_258558.jpg')
+files = {'image': (str(file_path), open(file_path, 'rb'), "image/jpeg")}
+response = requests.post(url, files=files)
+data = json.loads(response.content)
+pred = np.array(data['pred'])
+plt.imsave(f'{file_path.stem}_mask.png', pred, cmap=cm.gray)
+```
+
+Below you can see what this mask looks like.
+![Output mask `exp3_num_258558_mask.png`](/uploads/images/2022-05-06/exp3_num_258558_mask.png '=300')
+_Output mask `exp3_num_258558_mask.png`_
+
+Before we merge the dev branch into the main branch, we would need to thoroughly
+test and monitor the application in the development environment. A good test
+could be duplicating real image requests to the dev endpoint for some period of
+time and assess the quality of the returned segmentation masks.
 
 #### 3. [Workflow for deploying to the production environment](https://github.com/iterative/magnetic-tiles-defect/blob/main/.github/workflows/3-deploy.yaml)
 
@@ -256,19 +256,18 @@ development environment, except now the deployment endpoint will be:\
 
 ## Summary
 
-In this series of posts 
-(see [part 1](https://dvc.org/blog/end-to-end-computer-vision-api-part-1-data-versioning-and-ml-pipelines)
-and 
-[part 2](https://dvc.org/blog/end-to-end-computer-vision-api-part-2-local-experiments)), 
-we described how we addressed the problem of
-building a Computer Vision Web API for defect detection. We’ve chosen this
-approach because it addresses the common challenges that are shared across many
-CV projects: how to version datasets that consist of a large number of small- to
-medium-sized files; how to avoid triggering long-running stages of an ML
-pipeline when it’s not needed for reproducibility; how to run model training
-jobs on the cloud infrastructure without having to provision and manage
-everything yourself; and, finally, how to track progress in key metrics when you
-run many ML experiments.
+In this series of posts (see
+[part 1](https://dvc.org/blog/end-to-end-computer-vision-api-part-1-data-versioning-and-ml-pipelines)
+and
+[part 2](https://dvc.org/blog/end-to-end-computer-vision-api-part-2-local-experiments)),
+we described how we addressed the problem of building a Computer Vision Web API
+for defect detection. We’ve chosen this approach because it addresses the common
+challenges that are shared across many CV projects: how to version datasets that
+consist of a large number of small- to medium-sized files; how to avoid
+triggering long-running stages of an ML pipeline when it’s not needed for
+reproducibility; how to run model training jobs on the cloud infrastructure
+without having to provision and manage everything yourself; and, finally, how to
+track progress in key metrics when you run many ML experiments.
 
 We've talked about the following:
 
@@ -288,10 +287,12 @@ We've talked about the following:
 - Remote experiments, CI/CD, and production deployment (this post)
 
 ## What to Try Next
-Missed the previous parts of this post? See 
+
+Missed the previous parts of this post? See
 [Part 1: Data Versioning and ML Pipelines](https://dvc.org/blog/end-to-end-computer-vision-api-part-1-data-versioning-and-ml-pipelines)
-and 
+and
 [Part 2: Local Experiments](https://dvc.org/blog/end-to-end-computer-vision-api-part-2-local-experiments).
+
 - Reproduce this solution by setting your own configs, tokens, and access keys
   to GitHub, AWS, and Heroku
 - Add a check to merge PRs automatically if the metrics have improved
