@@ -171,8 +171,8 @@ deploy-dev-api:
 ```
 
 The development endpoint is now accessible at
-<https://demo-api-mag-tiles-dev.herokuapp.com/analyze>
-(note `-dev`),
+
+<https://demo-api-mag-tiles-dev.herokuapp.com/analyze> (note `-dev`),
 
 and we can use it to assess the end-to-end performance of the overall solution.
 If we pick a random test image `exp3_num_258558.jpg`,
@@ -241,8 +241,8 @@ can merge the development branch into the main branch of our repository. Again,
 this triggers the third CI/CD workflow that deploys the code from the main
 branch to the production API. This looks identical to the deployment into the
 development environment, except now the deployment endpoint will be
-<https://demo-api-mag-tiles-prod.herokuapp.com/analyze>
-(note `-prod`) .
+
+<https://demo-api-mag-tiles-prod.herokuapp.com/analyze> (note `-prod`) .
 
 ## Summary
 
