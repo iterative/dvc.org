@@ -242,7 +242,7 @@ this triggers the third CI/CD workflow that deploys the code from the main
 branch to the production API. This looks identical to the deployment into the
 development environment, except now the deployment endpoint will be
 
-<https://demo-api-mag-tiles-prod.herokuapp.com/analyze> (note `-prod`) .
+<https://demo-api-mag-tiles-prod.herokuapp.com/analyze> (note `-prod`).
 
 ## Summary
 
