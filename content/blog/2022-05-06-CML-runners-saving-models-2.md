@@ -6,10 +6,11 @@ description:
   Use CML to automatically retrain a model on a provisioned AWS EC2 instance and
   export the model to a DVC remote storage on Google Drive.
 descriptionLong: >
-  We can use CML to automatically retrain models whenever data, model code,
-  or parameters change. In this guide we show how to create a pipeline that
-  provisions an AWS EC2 instance to retrain a model and save the output on
-  a regular basis. In this part 2 we cover how to export the model to a DVC remote on Google Drive.
+  We can use CML to automatically retrain models whenever data, model code, or
+  parameters change. In this guide we show how to create a pipeline that
+  provisions an AWS EC2 instance to retrain a model and save the output on a
+  regular basis. In this part 2 we cover how to export the model to a DVC remote
+  on Google Drive.
 picture: 2022-05-06/saving-models-2-cover.jpeg
 author: rob_dewit
 commentsUrl: https://discuss.dvc.org/t/training-and-saving-models-with-cml-on-a-self-hosted-aws-ec2-runner/1155
@@ -31,10 +32,9 @@ to terminate the training instance without losing our model altogether.
 
 This worked perfectly fine for the simple model we trained, but this approach is
 not optimal when dealing with larger models. GitHub starts warning you at 50MB
-files and simply [won't upload anything over
-100MB](https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-large-files-on-github).
-[GitLab similarly
-limits](https://docs.gitlab.com/ee/user/gitlab_com/index.html#account-and-limit-settings)
+files and simply
+[won't upload anything over 100MB](https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-large-files-on-github).
+[GitLab similarly limits](https://docs.gitlab.com/ee/user/gitlab_com/index.html#account-and-limit-settings)
 the size of files you can store in your repository. A beefy XGBoost model can
 easily exceed 100MB and a neural network can go up into the gigabytes.
 
@@ -62,57 +62,50 @@ on a daily basis:
 1. Create a merge request with the new outputs
 1. Terminate the AWS EC2 instance
 
-All files needed for this guide can be found in [this
-repository](https://github.com/iterative/example_model_export_cml).
+All files needed for this guide can be found in
+[this repository](https://github.com/iterative/example_model_export_cml).
 
 <admon type="tip">
 
 We will be using Google Drive as our remote storage. With slight modifications,
 however, you can also use other remotes such as AWS S3, GCP Cloud Storage, and
-Azure Storage. Please [refer to the DVC
-Docs](https://dvc.org/doc/command-reference/remote/add#supported-storage-types)
+Azure Storage. Please
+[refer to the DVC Docs](https://dvc.org/doc/command-reference/remote/add#supported-storage-types)
 for more details.
 
 </admon>
 
 # Prerequisites
 
-Make sure to have followed [part 1 of this
-guide](https://dvc.org/blog/CML-runners-saving-models-1) and have gotten CML up
-and running. The necessary files for all of this can be found in [this
-repository](https://github.com/iterative/example_model_export_cml).
+Make sure to have followed
+[part 1 of this guide](https://dvc.org/blog/CML-runners-saving-models-1) and
+have gotten CML up and running. The necessary files for all of this can be found
+in [this repository](https://github.com/iterative/example_model_export_cml).
 Additionally, set up the following things beforehand:
 
 - [Install DVC](https://dvc.org/doc/install)
-- [Set up a GCP
-  project](https://dvc.org/doc/user-guide/setup-google-drive-remote#using-a-custom-google-cloud-project-recommended)
-- [Enable the Google Drive API for your GCP
-  project](https://console.cloud.google.com/apis/library/drive.googleapis.com)
-- [Create a GCP service account and download the private key to a safe
-  location](https://dvc.org/doc/user-guide/setup-google-drive-remote#using-service-accounts)
-- [Create a Google Drive directory to save your model
-  to](https://support.google.com/drive/answer/2375091?hl=en&co=GENIE.Platform%3DDesktop)
-- [Grant the service account editor permissions to the Drive directory by
-  sharing it with the service account's email
-  address](https://support.google.com/drive/answer/7166529?hl=en&co=GENIE.Platform%3DDesktop)
+- [Set up a GCP project](https://dvc.org/doc/user-guide/setup-google-drive-remote#using-a-custom-google-cloud-project-recommended)
+- [Enable the Google Drive API for your GCP project](https://console.cloud.google.com/apis/library/drive.googleapis.com)
+- [Create a GCP service account and download the private key to a safe location](https://dvc.org/doc/user-guide/setup-google-drive-remote#using-service-accounts)
+- [Create a Google Drive directory to save your model to](https://support.google.com/drive/answer/2375091?hl=en&co=GENIE.Platform%3DDesktop)
+- [Grant the service account editor permissions to the Drive directory by sharing it with the service account's email address](https://support.google.com/drive/answer/7166529?hl=en&co=GENIE.Platform%3DDesktop)
 
 # Setting up our DVC remote
 
-When first using DVC in a project, you need to initialize DVC by running `dvc
-init`. This will create the structure DVC uses to keep track of versioning, and
-ensures Git will not be tracking the files in the DVC repository. Instead, Git
-will henceforth include a list of references to those files. Make sure to commit
-the initialization to Git.
+When first using DVC in a project, you need to initialize DVC by running
+`dvc init`. This will create the structure DVC uses to keep track of versioning,
+and ensures Git will not be tracking the files in the DVC repository. Instead,
+Git will henceforth include a list of references to those files. Make sure to
+commit the initialization to Git.
 
 Then, in order to start using DVC for versioning, we need to set up a remote.
 This is where our model files will end up, while DVC keeps track of their
 respective versions. Here we will be using Google Drive as our remote.
 
-[The DVC user
-guide](https://dvc.org/doc/user-guide/setup-google-drive-remote#setup-a-google-drive-dvc-remote)
+[The DVC user guide](https://dvc.org/doc/user-guide/setup-google-drive-remote#setup-a-google-drive-dvc-remote)
 explains how to set up a remote on Google Drive. If you would rather use another
-remote, you can [find instructions
-here](https://dvc.org/doc/command-reference/remote/add#supported-storage-types).
+remote, you can
+[find instructions here](https://dvc.org/doc/command-reference/remote/add#supported-storage-types).
 In that case make sure to also update the DVC dependency in `requirements.txt`.
 
 While DVC doesn't require a service account to work, we do need one in the
@@ -214,8 +207,8 @@ In a situation where we retrain our model daily based on the most recent data,
 it would make sense to also use DVC to keep track of the data used in each
 training. We could, for example, use our runner to import our training data from
 a table in our database and write both the data and the model to the DVC remote.
-This is beyond the scope of this guide, but [here you can find a repository that
-covers this](https://github.com/iterative/cml_dvc_case).
+This is beyond the scope of this guide, but
+[here you can find a repository that covers this](https://github.com/iterative/cml_dvc_case).
 
 </admon>
 
@@ -231,11 +224,11 @@ on how to achieve this.
 
 # Conclusions
 
-As we saw in [part 1 of this
-guide](https://dvc.org/blog/CML-runners-saving-models-1), we can use CML to
-automate a periodical retraining of our models on a self-hosted runner. We were
-able to save the model to our GitHub repository, but that approach has its
-limitations with regards to model size.
+As we saw in
+[part 1 of this guide](https://dvc.org/blog/CML-runners-saving-models-1), we can
+use CML to automate a periodical retraining of our models on a self-hosted
+runner. We were able to save the model to our GitHub repository, but that
+approach has its limitations with regards to model size.
 
 In this part 2 we worked around those limitations by saving our model to a DVC
 remote instead. We set up Google Drive as our remote and adapted our CML
