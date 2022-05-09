@@ -244,18 +244,20 @@ development environment, except now the deployment endpoint will be
 
 ## Summary
 
-In this series of posts (see [Part 1] and [Part 2]),
-we described how we addressed the problem of building a Computer Vision Web API
-for defect detection. We’ve chosen this approach because it addresses the common
-challenges that are shared across many CV projects: how to version datasets that
-consist of a large number of small- to medium-sized files; how to avoid
-triggering long-running stages of an ML pipeline when it’s not needed for
-reproducibility; how to run model training jobs on the cloud infrastructure
-without having to provision and manage everything yourself; and, finally, how to
-track progress in key metrics when you run many ML experiments.
+In this series of posts (see [Part 1] and [Part 2]), we described how we
+addressed the problem of building a Computer Vision Web API for defect
+detection. We’ve chosen this approach because it addresses the common challenges
+that are shared across many CV projects: how to version datasets that consist of
+a large number of small- to medium-sized files; how to avoid triggering
+long-running stages of an ML pipeline when it’s not needed for reproducibility;
+how to run model training jobs on the cloud infrastructure without having to
+provision and manage everything yourself; and, finally, how to track progress in
+key metrics when you run many ML experiments.
 
-[Part 1]: https://dvc.org/blog/end-to-end-computer-vision-api-part-1-data-versioning-and-ml-pipelines
-[Part 2]: https://dvc.org/blog/end-to-end-computer-vision-api-part-2-local-experiments
+[part 1]:
+  https://dvc.org/blog/end-to-end-computer-vision-api-part-1-data-versioning-and-ml-pipelines
+[part 2]:
+  https://dvc.org/blog/end-to-end-computer-vision-api-part-2-local-experiments
 
 We've talked about the following:
 
@@ -276,9 +278,8 @@ We've talked about the following:
 
 ## What to Try Next
 
-Missed the previous parts of this post? See
-[Part 1: Data Versioning and ML Pipelines][Part 1] and
-[Part 2: Local Experiments][Part 2].
+Missed the previous parts of this post? See [Part 1: Data Versioning and ML
+Pipelines][part 1] and [Part 2: Local Experiments][part 2].
 
 - Reproduce this solution by setting your own configs, tokens, and access keys
   for GitHub, AWS, and Heroku
