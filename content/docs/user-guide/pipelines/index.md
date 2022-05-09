@@ -66,7 +66,7 @@ editing `dvc.yaml`.
 
 </admon>
 
-<admon type="warning">
+<admon type="warn">
 
 DVC works with YAML 1.2 and any version before this may have some minor quirks
 that cause subtle bugs.
