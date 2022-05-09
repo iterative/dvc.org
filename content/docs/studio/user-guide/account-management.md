@@ -55,7 +55,7 @@ In this section, you can,
   [set up the GitLab server connection](/doc/studio/user-guide/connect-custom-gitlab-server)
   in the team settings.
 
-- Disconnect from your GitHub, GitLab or Bitbucket accounts.
+- Disconnect from your GitHub, GitLab, or Bitbucket accounts.
 - Configure your GitHub account connection. That is, install the Iterative
   Studio GitHub app on additional organizations or repositories, or even remove
   the app from organizations or repositories where you no longer need it.
