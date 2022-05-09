@@ -8,12 +8,12 @@ description: >
   enabling automatic reporting  (graphs, images, reports and tables with
   performance metrics) for PRs; and the eventual deployment process.
 descriptionLong: |
-  In [Part 1](https://dvc.org/blog/end-to-end-computer-vision-api-part-1-data-versioning-and-ml-pipelines), 
+  In [Part 1](/blog/end-to-end-computer-vision-api-part-1-data-versioning-and-ml-pipelines),
   we talked about exploratory work in Jupyter Notebooks; versioning
   data in remote storage with DVC; and refactoring the code from Jupyter
   Notebooks into DVC pipeline stages.
 
-  [Part 2](https://dvc.org/blog/end-to-end-computer-vision-api-part-2-local-experiments) talked about the process of managing experiments with DVC pipelines,
+  [Part 2](/blog/end-to-end-computer-vision-api-part-2-local-experiments) talked about the process of managing experiments with DVC pipelines,
   DVCLive and Iterative Studio.
 
   In this final part, we will focus on leveraging cloud infrastructure with CML; 
@@ -45,7 +45,7 @@ like GitHub Actions or GitLab CI/CD, you can quickly and easily:
 4. automatically shut down the VM without having to worry about excessive cloud
    bills
 
-![Continuous Integration and Deployment for Machine Learning](https://dvc.org/static/300c88b3b1b5f65753629d661cc916e5/2e49e/cicd4ml.png)
+![Continuous Integration and Deployment for Machine Learning](/img/cicd4ml.png '=460')
 _Continuous Integration and Deployment for Machine Learning_
 
 We've configured three
@@ -244,7 +244,7 @@ development environment, except now the deployment endpoint will be
 
 ## Summary
 
-In this series of posts (see [Part 1] and [Part 2]), we described how we
+In this series of posts (see [Part 1][part 1] and [Part 2][part 2]), we described how we
 addressed the problem of building a Computer Vision Web API for defect
 detection. We’ve chosen this approach because it addresses the common challenges
 that are shared across many CV projects: how to version datasets that consist of
@@ -254,26 +254,24 @@ how to run model training jobs on the cloud infrastructure without having to
 provision and manage everything yourself; and, finally, how to track progress in
 key metrics when you run many ML experiments.
 
-[part 1]:
-  https://dvc.org/blog/end-to-end-computer-vision-api-part-1-data-versioning-and-ml-pipelines
-[part 2]:
-  https://dvc.org/blog/end-to-end-computer-vision-api-part-2-local-experiments
+[part 1]: /blog/end-to-end-computer-vision-api-part-1-data-versioning-and-ml-pipelines
+[part 2]: /blog/end-to-end-computer-vision-api-part-2-local-experiments
 
 We've talked about the following:
 
 - Common difficulties when building Computer Vision Web API for defect detection
-  ([link](https://dvc.org/blog/end-to-end-computer-vision-api-part-1-data-versioning-and-ml-pipelines#introduction))
+  ([link](/blog/end-to-end-computer-vision-api-part-1-data-versioning-and-ml-pipelines#introduction))
 - Pros and cons of exploratory work in Jupyter Notebooks
-  ([link](https://dvc.org/blog/end-to-end-computer-vision-api-part-1-data-versioning-and-ml-pipelines#proof-of-concept-in-jupyter-notebooks))
+  ([link](/blog/end-to-end-computer-vision-api-part-1-data-versioning-and-ml-pipelines#proof-of-concept-in-jupyter-notebooks))
 - Versioning data in remote storage with DVC
-  ([link](https://dvc.org/blog/end-to-end-computer-vision-api-part-1-data-versioning-and-ml-pipelines#data-versioning))
+  ([link](/blog/end-to-end-computer-vision-api-part-1-data-versioning-and-ml-pipelines#data-versioning))
 - Moving and refactoring the code from Jupyter Notebooks into DVC pipeline
   stages
-  ([link](https://dvc.org/blog/end-to-end-computer-vision-api-part-1-data-versioning-and-ml-pipelines#refactoring-jupyter-code-into-an-ml-pipeline))
+  ([link](/blog/end-to-end-computer-vision-api-part-1-data-versioning-and-ml-pipelines#refactoring-jupyter-code-into-an-ml-pipeline))
 - Experiment management and versioning
-  ([link](https://dvc.org/blog/end-to-end-computer-vision-api-part-2-local-experiments#experiment-management))
+  ([link](/blog/end-to-end-computer-vision-api-part-2-local-experiments#experiment-management))
 - Visualization of experiments and collaboration in Iterative Studio
-  ([link](https://dvc.org/blog/end-to-end-computer-vision-api-part-2-local-experiments#collaboration-and-reporting-with-iterative-studio))
+  ([link](/blog/end-to-end-computer-vision-api-part-2-local-experiments#collaboration-and-reporting-with-iterative-studio))
 - Remote experiments, CI/CD, and production deployment (this post)
 
 ## What to Try Next
