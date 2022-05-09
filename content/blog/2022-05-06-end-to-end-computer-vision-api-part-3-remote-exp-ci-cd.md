@@ -2,7 +2,7 @@
 title:
   'End-to-End Computer Vision API, Part 3: Remote Experiments & CI/CD For
   Machine Learning'
-date: 2022-05-06
+date: 2022-05-09
 description: >
   In this final part, we will focus on leveraging cloud infrastructure with CML;
    enabling automatic reporting  (graphs, images, reports and tables with
@@ -22,7 +22,7 @@ descriptionLong: |
   (graphs, images, reports and tables with performance metrics) for PRs; and
   the eventual deployment process.
 
-picture: 2022-05-06/e2e-cv-pt3-cover.png
+picture: 2022-05-09/e2e-cv-pt3-cover.png
 author: alex_kim
 commentsUrl: https://discuss.dvc.org/t/end-to-end-computer-vision/1178
 tags:
@@ -57,7 +57,7 @@ the project's lifecycle we are in:
 
 #### 1. [Workflow for experimentation and hyperparameter tuning](https://github.com/iterative/magnetic-tiles-defect/blob/main/.github/workflows/1-experiment.yaml)
 
-![Workflow for experimentation and hyperparameter tuning](/uploads/images/2022-05-06/workflow_exp.png '=400')
+![Workflow for experimentation and hyperparameter tuning](/uploads/images/2022-05-09/workflow_exp.png '=400')
 _Workflow for experimentation and hyperparameter tuning_ In this stage, we'll
 create an experiment branch so that can experiment with data preprocessing,
 change model architecture, tune hyperparameters, etc. Once we think our
@@ -130,7 +130,7 @@ The report structure is fully customizable. Below is an example of what the PR
 and the CML report would look like in this case. The test images show (from left
 to right) input images, ground truth masks and prediction masks.
 
-![PR and CML report](/uploads/images/2022-05-06/pr_cml_report.png '=800') _PR
+![PR and CML report](/uploads/images/2022-05-09/pr_cml_report.png '=800') _PR
 and CML report_
 
 At this point, we can assess the results in Iterative Studio and GitHub and
@@ -138,7 +138,7 @@ decide whether we want to accept the PR or keep experimenting.
 
 #### 2. [Workflow for deploying to the development environment](https://github.com/iterative/magnetic-tiles-defect/blob/main/.github/workflows/2-develop.yaml)
 
-![Workflow for deploying to the development environment](/uploads/images/2022-05-06/workflow_dev.png '=400')
+![Workflow for deploying to the development environment](/uploads/images/2022-05-09/workflow_dev.png '=400')
 _Workflow for deploying to the development environment_ Once we are happy with
 our model's performance on the experiment branch, we can merge it into the
 development branch. This would trigger a different CI/CD job that will:
@@ -176,7 +176,7 @@ The development endpoint is now accessible at
 
 and we can use it to assess the end-to-end performance of the overall solution.
 If we pick a random test image `exp3_num_258558.jpg`,
-![Test image `exp3_num_258558.jpg`](/uploads/images/2022-05-06/exp3_num_258558.jpg '=300')
+![Test image `exp3_num_258558.jpg`](/uploads/images/2022-05-09/exp3_num_258558.jpg '=300')
 _Test image `exp3_num_258558.jpg`_
 
 we can send it to the endpoint using the `curl` command like this:
@@ -223,7 +223,7 @@ plt.imsave(f'{file_path.stem}_mask.png', pred, cmap=cm.gray)
 ```
 
 Below you can see what this mask looks like.
-![Output mask `exp3_num_258558_mask.png`](/uploads/images/2022-05-06/exp3_num_258558_mask.png '=300')
+![Output mask `exp3_num_258558_mask.png`](/uploads/images/2022-05-09/exp3_num_258558_mask.png '=300')
 _Output mask `exp3_num_258558_mask.png`_
 
 Before we merge the dev branch into the main branch, we would need to thoroughly
@@ -233,7 +233,7 @@ time and assess the quality of the returned segmentation masks.
 
 #### 3. [Workflow for deploying to the production environment](https://github.com/iterative/magnetic-tiles-defect/blob/main/.github/workflows/3-deploy.yaml)
 
-![Workflow for deploying to the production environment](/uploads/images/2022-05-06/workflow_prod.png '=400')
+![Workflow for deploying to the production environment](/uploads/images/2022-05-09/workflow_prod.png '=400')
 _Workflow for deploying to the production environment_
 
 If there are no issues and we are confident in the quality of the new model, we
