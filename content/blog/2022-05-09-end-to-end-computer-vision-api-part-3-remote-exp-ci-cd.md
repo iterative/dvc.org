@@ -15,7 +15,7 @@ descriptionLong: |
   - _Part 2: [Local 
   Experiments](/blog/end-to-end-computer-vision-api-part-2-local-experiments)_
   - _Part 3: Remote Experiments & CI/CD For Machine Learning (this post)_
- 
+
   In [part 
   1](/blog/end-to-end-computer-vision-api-part-1-data-versioning-and-ml-pipelines),
   we talked about exploratory work in Jupyter Notebooks; versioning data in
