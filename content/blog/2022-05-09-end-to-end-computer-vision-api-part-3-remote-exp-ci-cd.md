@@ -8,6 +8,14 @@ description: >
   enabling automatic reporting  (graphs, images, reports and tables with
   performance metrics) for PRs; and the eventual deployment process.
 descriptionLong: |
+
+  _This is the second part of a three-part series of posts:_
+  - _Part 1: [Data Versioning and ML 
+  Pipelines](/blog/end-to-end-computer-vision-api-part-1-data-versioning-and-ml-pipelines)_
+  - _Part 2: [Local 
+  Experiments](/blog/end-to-end-computer-vision-api-part-2-local-experiments)_
+  - _Part 3: Remote Experiments & CI/CD For Machine Learning (this post)_
+
   In [part 
   1](/blog/end-to-end-computer-vision-api-part-1-data-versioning-and-ml-pipelines),
   we talked about exploratory work in Jupyter Notebooks; versioning data in
@@ -21,6 +29,7 @@ descriptionLong: |
   In this final part, we will focus on leveraging cloud infrastructure with
   CML; enabling automatic reporting (graphs, images, reports and tables with
   performance metrics) for PRs; and the eventual deployment process.
+
 picture: 2022-05-09/e2e-cv-pt3-cover.png
 author: alex_kim
 commentsUrl: https://discuss.dvc.org/t/end-to-end-computer-vision/1178
