@@ -262,17 +262,17 @@ methods that are performed by DVC (`list_objects_v2` or `list_objects`,
   $ dvc remote modify --local myremote sse_kms_key_id 'key-alias'
   ```
 
-- `sse_customer_key` - user specified key to encrypt data uploaded when using
-  SSE-C. The value should be base64 encoded version of 256 bit key.
+- `sse_customer_key` - key to encrypt data uploaded when using
+  [SSE-C](https://docs.aws.amazon.com/AmazonS3/latest/userguide/ServerSideEncryptionCustomerKeys.html).
+  The value should be a base64-encoded 256 bit key.
 
   ```dvc
-  $ dvc remote modify --local myremote sse_customer_key 'base64-encoded-256-bit-key'
+  $ dvc remote modify --local myremote sse_customer_key 'mysecret'
   ```
 
-- `sse_customer_algorithm` - server side encryption algorithm to use while using
-  user specified keys. Again, this parameter will be passed directly to AWS S3
-  functions , so DVC supports any value that S3 supports. By default, i.e. if no
-  value is specified and `sse_customer_key` is specified, then `AES256` is used.
+- `sse_customer_algorithm` - server-side encryption algorithm to use with
+ `sse_customer_key`. This parameter will be passed directly to AWS S3, so
+  DVC supports any value that S3 supports. `AES256` by default.
 
   ```dvc
   $ dvc remote modify myremote sse_customer_algorithm 'AES256'
