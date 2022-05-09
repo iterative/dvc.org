@@ -8,18 +8,19 @@ description: >
   enabling automatic reporting  (graphs, images, reports and tables with
   performance metrics) for PRs; and the eventual deployment process.
 descriptionLong: |
-  In [Part 1](/blog/end-to-end-computer-vision-api-part-1-data-versioning-and-ml-pipelines),
-  we talked about exploratory work in Jupyter Notebooks; versioning
-  data in remote storage with DVC; and refactoring the code from Jupyter
-  Notebooks into DVC pipeline stages.
+  In [part 
+  1](/blog/end-to-end-computer-vision-api-part-1-data-versioning-and-ml-pipelines),
+  we talked about exploratory work in Jupyter Notebooks; versioning data in
+  remote storage with DVC; and refactoring the code from Jupyter Notebooks
+  into DVC pipeline stages.
 
-  [Part 2](/blog/end-to-end-computer-vision-api-part-2-local-experiments) talked about the process of managing experiments with DVC pipelines,
-  DVCLive and Iterative Studio.
+  [Part 2](/blog/end-to-end-computer-vision-api-part-2-local-experiments) 
+  talked about the process of managing experiments with DVC pipelines, DVCLive
+  and Iterative Studio.
 
-  In this final part, we will focus on leveraging cloud infrastructure with CML; 
-  enabling automatic reporting 
-  (graphs, images, reports and tables with performance metrics) for PRs; and
-  the eventual deployment process.
+  In this final part, we will focus on leveraging cloud infrastructure with
+  CML; enabling automatic reporting (graphs, images, reports and tables with
+  performance metrics) for PRs; and the eventual deployment process.
 picture: 2022-05-09/e2e-cv-pt3-cover.png
 author: alex_kim
 commentsUrl: https://discuss.dvc.org/t/end-to-end-computer-vision/1178
