@@ -60,13 +60,17 @@ are creating the pipeline for the first time, adding the stages by
 with the YAML file might be easier.
 
 <admon type="tip">
+
 Some advanced configuration for the stages may only be available through
 editing `dvc.yaml`.
+
 </admon>
 
 <admon type="warning">
+
 DVC works with YAML 1.2 and any version before this may have some minor quirks
 that cause subtle bugs.
+
 </admon>
 
 ## Directed-Acyclic Graph (DAG)
