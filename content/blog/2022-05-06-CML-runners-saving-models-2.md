@@ -5,13 +5,13 @@ date: 2022-05-06
 description:
   Use CML to automatically retrain a model on a provisioned AWS EC2 instance and
   export the model to a DVC remote storage on Google Drive.
-descriptionLong: |
-  We can use CML to automatically retrain models whenever data, model code,
-  or parameters change. In this guide we show how to create a pipeline that
-  provisions an AWS EC2 instance to retrain a model and save the output on
-  a regular basis. In this part 2 we cover how to export the model to a DVC remote on Google Drive.
+descriptionLong: >
+  We can use CML to automatically retrain models whenever data, model code, or
+  parameters change. In this guide we show how to create a pipeline that
+  provisions an AWS EC2 instance to retrain a model and save the output on a
+  regular basis. In this part 2 we cover how to export the model to a DVC remote
+  on Google Drive.
 picture: 2022-05-06/saving-models-2-cover.jpeg
-# pictureComment: Some _Comment_ (supports _basic_ [Markdown](link))
 author: rob_dewit
 commentsUrl: https://discuss.dvc.org/t/training-and-saving-models-with-cml-on-a-self-hosted-aws-ec2-runner/1155
 tags:
@@ -224,10 +224,10 @@ on how to achieve this.
 
 # Conclusions
 
-As we saw in part 1 of this guide, we can use CML to automate a periodical
-retraining of our models on a self-hosted runner. We were able to save the model
-to our GitHub repository, but that approach has its limitations with regards to
-model size.
+As we saw in [part 1 of this guide](/blog/CML-runners-saving-models-1), we can
+use CML to automate a periodical retraining of our models on a self-hosted
+runner. We were able to save the model to our GitHub repository, but that
+approach has its limitations with regards to model size.
 
 In this part 2 we worked around those limitations by saving our model to a DVC
 remote instead. We set up Google Drive as our remote and adapted our CML
