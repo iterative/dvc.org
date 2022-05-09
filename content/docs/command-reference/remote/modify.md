@@ -271,8 +271,8 @@ methods that are performed by DVC (`list_objects_v2` or `list_objects`,
   ```
 
 - `sse_customer_algorithm` - server-side encryption algorithm to use with
- `sse_customer_key`. This parameter will be passed directly to AWS S3, so
-  DVC supports any value that S3 supports. `AES256` by default.
+  `sse_customer_key`. This parameter will be passed directly to AWS S3, so DVC
+  supports any value that S3 supports. `AES256` by default.
 
   ```dvc
   $ dvc remote modify myremote sse_customer_algorithm 'AES256'
