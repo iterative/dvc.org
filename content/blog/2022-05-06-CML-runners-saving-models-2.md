@@ -224,8 +224,7 @@ on how to achieve this.
 
 # Conclusions
 
-As we saw in
-[part 1 of this guide](/blog/CML-runners-saving-models-1), we can
+As we saw in [part 1 of this guide](/blog/CML-runners-saving-models-1), we can
 use CML to automate a periodical retraining of our models on a self-hosted
 runner. We were able to save the model to our GitHub repository, but that
 approach has its limitations with regards to model size.
