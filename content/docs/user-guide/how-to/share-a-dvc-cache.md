@@ -77,8 +77,12 @@ enable symlinks to avoid having copies from the external cache to the
 > See `dvc config cache` and
 > [File link types](/doc/user-guide/large-dataset-optimization) for more info.
 
-⚠️ Note that enabling soft/hard links causes DVC to protect the linked data
-because editing them in-place would corrupt the cache. See `dvc unprotect`.
+<admon type="warn">
+
+Note that enabling soft/hard links causes DVC to protect the linked data because
+editing them in-place would corrupt the cache. See `dvc unprotect`.
+
+</admon>
 
 If you're using Git, commit the changes to your project's config file (usually
 `.dvc/config`):
@@ -87,3 +91,12 @@ If you're using Git, commit the changes to your project's config file (usually
 $ git add .dvc/config
 $ git commit -m "config external/shared DVC cache"
 ```
+
+<admon type="warn">
+
+Using `dvc gc` with a shared cache may delete data needed in another project!
+See more info. about
+[cleaning a shared cache](/doc/command-reference/gc#cleaning-shared-cache-or-shared-remote)
+safely.
+
+</admon>
