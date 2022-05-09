@@ -244,17 +244,18 @@ development environment, except now the deployment endpoint will be
 
 ## Summary
 
-In this series of posts (see [Part 1][part 1] and [Part 2][part 2]), we described how we
-addressed the problem of building a Computer Vision Web API for defect
-detection. We’ve chosen this approach because it addresses the common challenges
-that are shared across many CV projects: how to version datasets that consist of
-a large number of small- to medium-sized files; how to avoid triggering
-long-running stages of an ML pipeline when it’s not needed for reproducibility;
-how to run model training jobs on the cloud infrastructure without having to
-provision and manage everything yourself; and, finally, how to track progress in
-key metrics when you run many ML experiments.
+In this series of posts (see [Part 1][part 1] and [Part 2][part 2]), we
+described how we addressed the problem of building a Computer Vision Web API for
+defect detection. We’ve chosen this approach because it addresses the common
+challenges that are shared across many CV projects: how to version datasets that
+consist of a large number of small- to medium-sized files; how to avoid
+triggering long-running stages of an ML pipeline when it’s not needed for
+reproducibility; how to run model training jobs on the cloud infrastructure
+without having to provision and manage everything yourself; and, finally, how to
+track progress in key metrics when you run many ML experiments.
 
-[part 1]: /blog/end-to-end-computer-vision-api-part-1-data-versioning-and-ml-pipelines
+[part 1]:
+  /blog/end-to-end-computer-vision-api-part-1-data-versioning-and-ml-pipelines
 [part 2]: /blog/end-to-end-computer-vision-api-part-2-local-experiments
 
 We've talked about the following:
