@@ -163,6 +163,59 @@ $ dvc remote modify myremote gdrive_client_secret 'client-secret'
 > Please keep this in mind when sharing them, or you may
 > [exceed the limits](https://developers.google.com/drive/api/v2/handle-errors?hl=ro#resolve_a_403_error_usage_limit_exceeded).
 
+## Authorization
+
+<admon type="info">
+
+This covers simple authentication, which gives DVC access to GDrive on behalf of
+a user account. This is ideal to use to run DVC locally, for example. If some
+automation is needed (e.g. CI/CD) we recommend
+[using a service account](#using-service-accounts) instead.
+
+</admon>
+
+On the first usage of a GDrive [remote](/doc/command-reference/remote), for
+example when trying to `dvc push` tracked data for the first time, DVC will
+prompt you to visit a special Google authentication web page. There you'll need
+to sign into a Google account with the needed access to the GDrive
+[URL](#url-format) in question. The
+[auth process](https://developers.google.com/drive/api/v2/about-auth) will ask
+you to grant DVC the necessary permissions, and produce a verification code
+needed for DVC to complete the connection. On success, the necessary credentials
+will be saved in a Git-ignored file, located in
+`.dvc/tmp/gdrive-user-credentials.json` and they will be used automatically next
+time you run DVC.
+
+⚠️ In order to prevent unauthorized access to your Google Drive, **do not share
+these credentials with others**. Each team member should go through this process
+individually.
+
+If you use multiple GDrive remotes, by default they will be sharing the same
+`.dvc/tmp/gdrive-user-credentials.json` file. It can be overridden with the
+`gdrive_user_credentials_file` parameter:
+
+```dvc
+$ dvc remote modify myremote --local \
+      gdrive_user_credentials_file .dvc/tmp/myremote-credentials.json
+```
+
+⚠️ In order to prevent unauthorized access to your Google Drive, **never
+commit** this file with Git. Instead, add it into `.gitignore` and never share
+it with other people.
+
+If you wish to change the user you have authenticated with, or for
+troubleshooting misc. token errors, simply remove the user credentials JSON file
+and authorize again.
+
+Alternatively, a `GDRIVE_CREDENTIALS_DATA` can be set to pass user credentials
+in CI/CD systems, production setup, read-only file systems, etc. The content of
+this variable should be a string with JSON that has the same format as in the
+credentials files described above, and usually you get it going through the same
+authentication process. If `GDRIVE_CREDENTIALS_DATA` is set, the
+`gdrive_user_credentials_file` value (if provided) is ignored.
+
+> Please note our [Privacy Policy (Google APIs)](/doc/user-guide/privacy).
+
 ## Using service accounts
 
 A [service account](https://cloud.google.com/iam/docs/service-accounts) is a
@@ -210,47 +263,3 @@ authentication is needed.
    account as an editor (read/write) or viewer (read-only):
 
 ![](/img/gdrive-share-with-service-account.png)
-
-## Authorization
-
-On the first usage of a GDrive [remote](/doc/command-reference/remote), for
-example when trying to `dvc push` tracked data for the first time, DVC will
-prompt you to visit a special Google authentication web page. There you'll need
-to sign into a Google account with the needed access to the GDrive
-[URL](#url-format) in question. The
-[auth process](https://developers.google.com/drive/api/v2/about-auth) will ask
-you to grant DVC the necessary permissions, and produce a verification code
-needed for DVC to complete the connection. On success, the necessary credentials
-will be saved in a Git-ignored file, located in
-`.dvc/tmp/gdrive-user-credentials.json` and they will be used automatically next
-time you run DVC.
-
-⚠️ In order to prevent unauthorized access to your Google Drive, **do not share
-these credentials with others**. Each team member should go through this process
-individually.
-
-If you use multiple GDrive remotes, by default they will be sharing the same
-`.dvc/tmp/gdrive-user-credentials.json` file. It can be overridden with the
-`gdrive_user_credentials_file` parameter:
-
-```dvc
-$ dvc remote modify myremote --local \
-      gdrive_user_credentials_file .dvc/tmp/myremote-credentials.json
-```
-
-⚠️ In order to prevent unauthorized access to your Google Drive, **never
-commit** this file with Git. Instead, add it into `.gitignore` and never share
-it with other people.
-
-If you wish to change the user you have authenticated with, or for
-troubleshooting misc. token errors, simply remove the user credentials JSON file
-and authorize again.
-
-Alternatively, a `GDRIVE_CREDENTIALS_DATA` can be set to pass user credentials
-in CI/CD systems, production setup, read-only file systems, etc. The content of
-this variable should be a string with JSON that has the same format as in the
-credentials files described above, and usually you get it going through the same
-authentication process. If `GDRIVE_CREDENTIALS_DATA` is set, the
-`gdrive_user_credentials_file` value (if provided) is ignored.
-
-> Please note our [Privacy Policy (Google APIs)](/doc/user-guide/privacy).
