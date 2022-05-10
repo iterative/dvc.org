@@ -42,9 +42,9 @@ on your pull requests in GitHub.
 Great question @Derek!
 
 Here are some explanations around how `dvc pull` and `dvc checkout` work.
+They're comparable to `git pull` and `git checkout`.
 
-- `dvc pull` fetches data from your remote cache and adds it to your local
-  cache
+- `dvc pull` fetches data from your remote cache and adds it to your local cache
 - `dvc checkout` syncs data from your local cache to your workspace
 
 ### [Is there a way to add all of the `outs` of a `foreach` job to the `deps` of a downstream stage?](https://discord.com/channels/485586884165107732/563406153334128681/967709548393672734)
@@ -93,11 +93,10 @@ sure that you have your remotes set up!
 
 This is a good integration question from @Bernardo Galvao!
 
-It depends on what you want to do. For example, if you want to fetch historical
-features from the offline store to generate training data, a typical pattern
-would be to write the script to do so and set up a DVC pipeline stage to track
-that script and version the output file. This is similar to how a lot of people
-use DVC alongside SQL databases.
+If you want to fetch historical features from the offline store to generate
+training data, a typical pattern would be to write the script to do so and set
+up a DVC pipeline stage to track that script and version the output file. This
+is similar to how a lot of people use DVC alongside SQL databases.
 
 ### [How can I run a DVC pipeline in a Docker container?](https://discord.com/channels/485586884165107732/563406153334128681/969640280263389184)
 
@@ -158,7 +157,7 @@ jobs:
           cml runner \
             --single \
             --labels=cml-gcp \
-            --token=${{ secrets.DACBD_PAT }} \
+            --token=${{ secrets.GCP_SECRET }} \
             --cloud=gcp \
             --cloud-region=us-west \
             --cloud-type=e2-highcpu-2
