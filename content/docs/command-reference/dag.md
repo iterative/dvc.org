@@ -6,7 +6,7 @@ connected [stages](/doc/command-reference/run).
 ## Synopsis
 
 ```usage
-usage: dvc dag [-h] [-q | -v] [--full]
+usage: dvc dag [-h] [-q | -v] [-o] [--full]
                [--md] [--mermaid] [--dot]
                [target]
 
@@ -71,15 +71,18 @@ $ dvc exp show ...
 
 ## Options
 
+- `-h`, `--help` - prints the usage/help message, and exit.
+
+- `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if no
+  problems arise, otherwise 1.
+
+- `-v`, `--verbose` - displays detailed tracing information.
+
+- `-o`, `--outs` - show a DAG of chained dependencies and outputs instead of the
+  stages themselves. The graph may be significantly different.
+
 - `--full` - show full DAG that the `target` stage belongs to, instead of
   showing only its ancestors.
-
-- `--dot` - show DAG in
-  [DOT](<https://en.wikipedia.org/wiki/DOT_(graph_description_language)>)
-  format. It can be passed to third party visualization utilities.
-
-- `--mermaid` - show DAG in [Mermaid](https://mermaid-js.github.io) format. It
-  can be passed to third party visualization utilities.
 
 - `--md` - show DAG in `--mermaid` format, wrapped inside a Markdown
   [fenced code block](https://www.markdownguide.org/extended-syntax/#fenced-code-blocks).
@@ -87,15 +90,12 @@ $ dvc exp show ...
   This can be used to combine `dvc dag` with
   [`cml send-comment`](https://cml.dev/doc/ref/send-comment)
 
-- `-o`, `--outs` - show a DAG of chained dependencies and outputs instead of the
-  stages themselves. The graph may be significantly different.
+- `--mermaid` - show DAG in [Mermaid](https://mermaid-js.github.io) format. It
+  can be passed to third party visualization utilities.
 
-- `-h`, `--help` - prints the usage/help message, and exit.
-
-- `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if no
-  problems arise, otherwise 1.
-
-- `-v`, `--verbose` - displays detailed tracing information.
+- `--dot` - show DAG in
+  [DOT](<https://en.wikipedia.org/wiki/DOT_(graph_description_language)>)
+  format. It can be passed to third party visualization utilities.
 
 ## Example: Visualize a DVC Pipeline
 
