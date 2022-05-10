@@ -82,7 +82,7 @@ silently.
 them, from the array's objects. For example, `val_loss` is one of the field
 names in the `train` array below:
 
-```
+```json
 {
   "train": [
     {"val_accuracy": 0.9665, "val_loss": 0.10757},
