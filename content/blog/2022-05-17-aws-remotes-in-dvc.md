@@ -91,24 +91,25 @@ data stored in AWS to the DVC repo.
 
 Now we can add a default to the project with the following command:
 
-`$ dvc remote add -d bikes s3://updatedbikedata/train/`
+`$ dvc remote add -d bikes s3://updatedbikedata`
 
 This creates a default remote called `bikes` that connects to the
-`updatedbikedata` bucket we made earlier and it references a folder inside this
-bucket called `train` which is where the training data for the model will be
-stored.
+`updatedbikedata` bucket we made earlier which is where the training data for
+the model will be stored.
 
 ### Add AWS credentials
 
 In order for DVC to be able to push and pull data from the remote, you need to
 have valid AWS credentials.
 
-If you are using the AWS CLI already, it’s likely that your credentials are
-available through the profiles. You can check that out
+By default, DVC authenticates using your AWS CLI configuration, if it has been
+set. You can check that out
 [here in the AWS docs](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html).
 
-If you run into issues with the credentials, you can manually add them with the
-following commands:
+If you want to
+[use a different authentication method](https://dvc.org/doc/command-reference/remote/modify#amazon-s3)
+or if you run into issues with the credentials, you can manually add them with
+the following commands:
 
 `$ dvc remote modify --local bikes access_key_id 'mykey'`
 
@@ -127,10 +128,18 @@ command:
 
 `$ dvc push`
 
+If you're curious about how DVC stores data in the remote, you can learn more in
+[the docs here](https://dvc.org/doc/command-reference/push#example-what-happens-in-the-cache).
+Here's what it might look like in your AWS bucket.
+
+![data in AWS bucket](/uploads/images/2022-05-17/aws_bucket.png)
+
 Then if you move to a different machine or someone else needs to use that data,
 it can be accessed by connecting to the remote and running:
 
 `$ dvc pull`
+
+---
 
 That’s it! Now you can connect any DVC project to an AWS S3 bucket. If you run
 into any issues, makes sure to check that your credentials are valid, check if
