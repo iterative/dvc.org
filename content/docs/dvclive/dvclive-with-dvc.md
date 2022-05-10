@@ -50,7 +50,7 @@ $ dvc stage add \
 python train.py
 ```
 
-<admon type="exclamation">
+<admon type="warn">
 
 Note that the paths indicated in the `metrics` and `plots` options match the
 `path` passed to `Live()` in the Python code (`"training_metrics"`).
