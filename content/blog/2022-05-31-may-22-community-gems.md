@@ -43,7 +43,7 @@ Great question @Derek!
 
 Here are some explanations around how `dvc pull` and `dvc checkout` work.
 
-- `dvc pull` fetches data from your remote cache and adding it to your local
+- `dvc pull` fetches data from your remote cache and adds it to your local
   cache
 - `dvc checkout` syncs data from your local cache to your workspace
 
