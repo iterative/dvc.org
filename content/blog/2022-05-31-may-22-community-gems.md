@@ -30,7 +30,7 @@ both of the plots to show on a single graph. You'll need to run the following
 command:
 
 ```dvc
-$ dvc plots diff HEAD main --targets {your file name} --show-vega
+$ dvc plots diff HEAD main --targets prediction.json main.prediction.json --json
 ```
 
 We are working on expanding `dvc plots` to allow you to compare data from two
