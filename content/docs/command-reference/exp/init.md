@@ -130,7 +130,7 @@ $ dvc exp init './another_script.sh $MYENVVAR'
 
 - `--live` - set the path to the directory where the metrics and plots
   [produced by DVCLive](https://dvc.org/doc/dvclive/dvclive-with-dvc#outputs)
-  will be found. Overrides other configuration and default value (`dvclive/`).
+  will be found.
 
 - `--explicit` - do not assume default locations of project dependencies and
   outputs. You'll have to provide specific locations via other options or
