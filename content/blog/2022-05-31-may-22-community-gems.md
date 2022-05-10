@@ -138,7 +138,7 @@ with `dvc init`.
 There is also the `dvc destroy` command that will remove all DVC file and
 internals from your repository.
 
-### [Is there an exmaple of using CML with GCP that can be used as reference?](https://discord.com/channels/485586884165107732/728693131557732403/963512513452970086)
+### [Is there an example of using CML with GCP that can be used as a reference?](https://discord.com/channels/485586884165107732/728693131557732403/963512513452970086)
 
 Excellent question from @sabygo!
 
