@@ -6,8 +6,9 @@ connected [stages](/doc/command-reference/run).
 ## Synopsis
 
 ```usage
-usage: dvc dag [-h] [-q | -v] [--dot] [--mermaid] [--md]
-               [--full] [target]
+usage: dvc dag [-h] [-q | -v] [--full]
+               [--md] [--mermaid] [--dot]
+               [target]
 
 positional arguments:
   target          Stage or output to show pipeline for (optional)
