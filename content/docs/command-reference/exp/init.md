@@ -1,6 +1,6 @@
 # exp init
 
-Quickly setup any project to use [DVC Experiments].
+Quickly create or prepare any project to use [DVC Experiments].
 
 > Requires a <abbr>DVC repository</abbr>, created with `git init` and
 > `dvc init`.
@@ -18,15 +18,15 @@ usage: dvc exp init [-h] [-q | -v] [--run] [--interactive] [-f]
 
 ## Description
 
-`dvc exp init` helps you get started with DVC Experiments quickly. It reduces
-repetitive DVC procedures by creating a `dvc.yaml` file that assumes standard
-locations of your input data, <abbr>parameters</abbr>, source code, models,
-<abbr>metrics</abbr> and [plots](/doc/command-reference/plots) (generating the
-boilerplate structure if needed). These locations can be customized through the
-[options](#options) below or via
-[configuration](/doc/command-reference/config#exp).
+This command helps you get started with DVC Experiments quickly. It reduces
+repetitive DVC procedures by creating a necessary `dvc.yaml` file that assumes
+standard locations of your inputs (data, <abbr>parameters</abbr>, and source
+code) and outputs (models, <abbr>metrics</abbr> and
+[plots](/doc/command-reference/plots)).
 
-Repository structure assumed by default:
+These locations can be customized through the [command options](#options) or via
+[configuration](/doc/command-reference/config#exp). Default project structure
+assumed:
 
 ```
 ├── data/
@@ -37,16 +37,28 @@ Repository structure assumed by default:
 └── src/
 ```
 
-You must always provide a command that runs your experiment(s). It can be given
-either directly [as an argument](#the-command-argument), or by using the
-`--interactive` (`-i`) mode which will prompt you for it. This command will be
-wrapped as a <abbr>stage</abbr> that `dvc exp run` can execute.
+You must always provide the terminal command that runs your experiment(s). It
+can be given either directly [as an argument](#the-command-argument), or by
+using the `--interactive` (`-i`) mode, which will prompt you for it. The command
+will be wrapped as a <abbr>stage</abbr> that `dvc exp run` can execute.
 
-Different types of stages are supported, such as `dl` (deep learning) which uses
+<admon type="tip">
+
+A special deep learning `--type` of stage is supported (`dl`), which uses
 [DVCLive](/doc/dvclive) to monitor [checkpoints] during training of ML models.
 
-> `dvc exp init` is intended as a quick way to start running [DVC Experiments].
-> See the `dvc.yaml` specification for complex data pipelines.
+</admon>
+
+`dvc exp init` also generates parts of the boilerplate repo structure: only
+input files and directories by default, or all locations determined in
+interactive mode.
+
+<admon type="info">
+
+`dvc exp init` is intended as a quick way to start running [DVC Experiments].
+See the `dvc.yaml` specification for more complex data pipelines.
+
+</admon>
 
 [stage definition]:
   /doc/user-guide/project-structure/pipelines-files#stage-entries
@@ -182,6 +194,8 @@ train:
   deps:
     - data/features
     - src/train.py
+  params:
+    - params.yaml:
   outs:
     - models/predict.h5
   metrics:
