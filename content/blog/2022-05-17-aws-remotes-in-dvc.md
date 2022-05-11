@@ -77,7 +77,9 @@ let’s add DVC to our demo repo and set up the remote.
 First, add DVC as a requirement to your project with the following installation
 command:
 
-`$ pip install 'dvc[s3]'`
+```dvc
+$ pip install 'dvc[s3]'
+```
 
 Then you can initialize DVC in your own project with the following command:
 
