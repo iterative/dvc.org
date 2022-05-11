@@ -23,14 +23,44 @@ Hackernoon](https://hackernoon.com/using-jupytertensorboard-in-any-cloud-with-on
 
 # Introduction and problem statement
 
-- Jupyter Notebooks are the industry standard
-- Don't want to be limited by local specs
-- - Solution: cloud computing
-- - Troubles: difficult to host
+Jupyter Notebook is one of —if not the— most-used tools in data science. It
+provides an intituitive and feature-packed developer experience, and for many
+people is an indispensable tool when working on machine learning projects.
 
-There are of course SaaS-solutions that provide notebooks hosted in clouds, such
-as Google Colab and Amazon SageMaker. While they certainly aren't without merit,
-they come with a few downsides:
+The most straightforward use is on a local machine. We switch to a virtual
+environment, type in `jupyter notebook` in our terminal, and head over to
+https://localhost:8888. We're good to go and ready to start prototyping!
+
+This usage has one major downside, however: we're limited by the specs of our
+local machine. While my laptop won't struggle too much training a classifier for
+the IRIS dataset, it might become a limiting factor when working on an
+alternative to GPT-3. And probably a little while before a project of that
+scope.
+
+The obvious solution to bypassing the limitations of our local machine is to
+move our notebooks to the cloud. When running a notebook on AWS or Azure, we can
+provision as beefy an instance as needed for our project. The downside to
+cloud-hosted notebooks, however, is that they're more difficult to get up and
+running. And any time spent setting up our development environment, is time we
+can't spend on our actual ML project.
+
+"Now wait a minute", you might say, "hasn't this problem long been solved by
+SaaS-solutions like Google Colab and Amazon SageMaker Studio?"
+
+To which I'd reply: "To an extent: yes. But while they certainly have their
+merits, these solutions often have their own limitations which can become
+problematic."
+
+Here are three of the limitations imposed by SaaS-solutions such as Colab and
+SageMaker:
+
+- **Cost:** they are expensive to use. You're not only paying for the hardware,
+  but also for using the platform.
+- **Walled garden:** they tend to be baked into the ecosystem of the vendor.
+  It's difficult and sometimes impossible to use infrastructure components from
+  different vendors in conjunction with each other. 
+- **Hardware limitations:** they may still put a limit on the hardware available
+  to you. Colab, for example, is capped at 25GB of RAM.
 
 - Expensive
 - Closed-off
@@ -48,8 +78,8 @@ cloud expert.
 - Modular:
 - Developer-first experience
 
-
 ## Downsides to Google Colab
+
 https://analyticsindiamag.com/explained-5-drawback-of-google-colab/#:~:text=Limited%20Space%20%26%20Time%3A%20The%20Google,the%20complex%20functions%20to%20execute.
 https://towardsdatascience.com/why-i-moved-from-google-colab-and-amazon-sagemaker-to-saturn-cloud-675f0a51ece1
 
@@ -63,6 +93,7 @@ https://towardsdatascience.com/why-i-moved-from-google-colab-and-amazon-sagemake
 - No real-time collaboration
 
 ## Downsides to Amazon SageMaker
+
 https://towardsdatascience.com/why-i-moved-from-google-colab-and-amazon-sagemaker-to-saturn-cloud-675f0a51ece1
 
 - All data stored on S3 (problem with large datasets, e.g. images or videos)
@@ -76,4 +107,3 @@ https://towardsdatascience.com/why-i-moved-from-google-colab-and-amazon-sagemake
 - Pricing
 
 # Example
-
