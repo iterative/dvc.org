@@ -165,7 +165,10 @@ processes and the DVC tool takes care of this.
 We are very interested in your opinion and feedback. Please post your comments
 here or contact us on Twitter — [FullStackML](https://twitter.com/FullStackML).
 
-text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text
+text text text text text text text text text text text text text text text text
+text text text text text text text text text text text text text text text text
+text text text text text text text text text text text text text text text text
+text text text text text text text text text text text text text text text text
 
 If you found this tool useful, **please “star” the
 [DVC Github repository](https://github.com/iterative/dvc)**.
