@@ -4,8 +4,8 @@ date: 2022-05-17
 description: >
   We're going to set up an AWS S3 remote in a DVC project.
 descriptionLong: >
-  It can be tricky setting up a remote to handle data versioning in DVC so we're
-  going to go through a tutorial for doing this with AWS.
+  Setting up a remote to make data versioning easier with DVC is a common need
+  so we're going to go through a tutorial for doing this with AWS.
 picture: 2022-05-17/aws-in-dvc.png
 pictureComment: Using AWS Remotes in DVC
 author: milecia_mcgregor
@@ -21,16 +21,19 @@ tags:
 When you’re working on a data science project that has huge datasets, it’s
 common to store them in cloud storage. You’ll also be working with different
 versions of the same datasets to train a model, so it’s crucial to have a tool
-that enables you to do this quickly and easily. That’s why we’re going to do a
-quick walkthrough of how to set up a remote in an AWS S3 bucket and handle data
-versioning with [DVC](https://dvc.org/doc).
+that enables you to switch between datasets quickly and easily. That’s why we’re
+going to do a quick walkthrough of how to set up a remote in an AWS S3 bucket
+and handle data versioning with [DVC](https://dvc.org/doc).
 
 We’ll start by creating a new S3 bucket in our AWS account, then we’ll show how
-you can add DVC to your project, and finally, we’ll make updates to the dataset
-with DVC commands. We’ll be working with
+you can add DVC to your project. We’ll be working with
 [this repo](https://github.com/iterative/stale-model-example) if you want an
-example to play with. By the time you finish, you should be able to create this
-setup for any ML project using an AWS remote.
+example to play with.
+
+<admon type="info">
+By the time you finish, you should be able to create this
+setup for any machine learning project using an AWS remote.
+</admon>
 
 ## Set up an AWS S3 bucket
 
@@ -128,16 +131,22 @@ command:
 
 `$ dvc push`
 
-If you're curious about how DVC stores data in the remote, you can learn more in
+If you're curious about how DVC works with data from your local cache in the
+remote, you can learn more in
 [the docs here](https://dvc.org/doc/command-reference/push#example-what-happens-in-the-cache).
-Here's what it might look like in your AWS bucket.
+You can also learn more about the
+[structure of the cache directory here](https://dvc.org/doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory).
+Here's what the data might look like in your AWS bucket.
 
 ![data in AWS bucket](/uploads/images/2022-05-17/aws_bucket.png)
 
 Then if you move to a different machine or someone else needs to use that data,
-it can be accessed by connecting to the remote and running:
+it can be accessed by cloning the project repo, connecting to the remote, and
+running:
 
 `$ dvc pull`
+
+This will get any data from your remote and download it to your local machine.
 
 ---
 
