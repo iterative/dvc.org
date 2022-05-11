@@ -5,7 +5,7 @@ description: >
   Today we introduce painless resource orchestration for your machine learning
   projects in conjunction with HashiCorp Terraform.
 descriptionLong: >
-  Catapult your machine learning projects into any coud and reduce cost with
+  Catapult your machine learning projects into any cloud and reduce cost with
   spot instance auto-recovery, while aligning your Data Science and DevOps teams
   with a simple config file.
 picture: 2022-04-27/terraform-provider-iterative.png
