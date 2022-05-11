@@ -25,7 +25,7 @@ HTML report and save it in `{dir}/report.html`.
 
 <admon type="info">
 
-This function gets called internally on each `step` update by default
-(unless `report` is passed to `Live()` with a value other than `"html"`).
+This function gets called internally on each `step` update by default (unless
+`report` is passed to `Live()` with a value other than `"html"`).
 
 </admon>
