@@ -23,7 +23,7 @@ common to store them in cloud storage. You’ll also be working with different
 versions of the same datasets to train a model, so it’s crucial to have a tool
 that enables you to do this quickly and easily. That’s why we’re going to do a
 quick walkthrough of how to set up a remote in an AWS S3 bucket and handle data
-versioning with [DVC](https://dvc.org/doc).
+versioning with [DVC](/doc).
 
 We’ll start by creating a new S3 bucket in our AWS account, then we’ll show how
 you can add DVC to your project, and finally, we’ll make updates to the dataset
