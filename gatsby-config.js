@@ -31,7 +31,8 @@ const plugins = [
     resolve: `gatsby-plugin-netlify-cms`,
     options: {
       modulePath: `${__dirname}/src/cms/cms.js`,
-      manualInit: true
+      manualInit: true,
+      htmlTitle: `DVC Admin`
     }
   },
   {
