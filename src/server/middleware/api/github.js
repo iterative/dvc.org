@@ -19,6 +19,7 @@ const renderBody = (status, content) => `
   window.opener.postMessage("authorizing:github", "*");
 </script>
 `
+const randomString = () => crypto.randomBytes(4).toString(`hex`)
 
 const cache = new NodeCache({ stdTTL: 900 })
 
@@ -130,7 +131,7 @@ async function auth(req, res) {
   try {
     const client = new AuthorizationCode(config.oauth2)
     const url = client.authorizeURL({
-      redirect_uri: `https://${host}/api/callback`,
+      redirect_uri: `https://${host}/api/github/callback`,
       scope: `repo,user`,
       state: randomString()
     })
@@ -149,7 +150,7 @@ async function callback(req, res) {
 
     const accessToken = await client.getToken({
       code,
-      redirect_uri: `https://${host}/api/callback`
+      redirect_uri: `https://${host}/api/github/callback`
     })
     const { token } = client.createToken(accessToken)
 
