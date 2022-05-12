@@ -1,7 +1,7 @@
 ---
 title:
   Moving Local Experiments to the Cloud with Terraform Provider Iterative (TPI)
-date: 2022-04-26
+date: 2022-05-12
 description: >
   Tutorial for easily moving a local ML experiment to a remote cloud machine
   with the help of Terraform Provider Iterative (TPI).
@@ -9,7 +9,7 @@ descriptionLong: >
   In this tutorial, learn how to move a local machine learning experiment to a
   remote cloud machine on AWS with the help of Terraform Provider Iterative
   (TPI).
-picture: 2022-04-26/massimiliano-latella-6ufBhNungOk-unsplash.jpg
+picture: 2022-05-12/massimiliano-latella-6ufBhNungOk-unsplash.jpg
 author: maria_khalusova
 #  todo: commentsUrl:
 tags:
