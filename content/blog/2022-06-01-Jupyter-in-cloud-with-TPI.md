@@ -16,12 +16,10 @@ tags:
 
 <admon type="info">
 
-This blog post is based on
-[@casperdcl's guide published over on Hackernoon](https://hackernoon.com/using-jupytertensorboard-in-any-cloud-with-one-command).
+This blog post is based on [@casperdcl's guide published over on
+Hackernoon](https://hackernoon.com/using-jupytertensorboard-in-any-cloud-with-one-command).
 
 </admon>
-
-# Introduction and problem statement
 
 Jupyter Notebook is one of —if not the— most-used tools in data science. It
 provides an intituitive and feature-packed developer experience, and for many
@@ -63,16 +61,32 @@ SageMaker:
   to you. Colab, for example, is capped at 25GB of RAM.
 
 Iterative provides an alternative to these services in the form of [TPI
-(Terraform Provider Iterative)](https://github.com/iterative/terraform-provider-iterative). This Terraform plugin gives us the ability to
-easily launch Jupyter workspaces on any cloud provider, without needing to be a
-cloud expert.
+(Terraform Provider
+Iterative)](https://github.com/iterative/terraform-provider-iterative). This
+Terraform plugin gives us the ability to easily launch Jupyter workspaces on any
+cloud provider, without needing to be a cloud expert.
 
 Here are four benefits to TPI that might peak your interest:
 
 - **Free and open:** TPI is completely open source and free to use
-- **Lower cloud costs:** TPI automatically cleans up instances that are not being used. It also allows you to use spot instances, reducing your per-hour costs
-- **Modular:** TPI can be used with a variety of cloud vendors, meaning you can use it regardless of what the rest of your stack looks like
-- **Developer-first experience:** {{is this really a benefit for target audience i.e. data scientists?}}
+- **Lower cloud costs:** TPI automatically cleans up instances that are not
+  being used. It also allows you to use spot instances, reducing your per-hour
+  costs
+- **Modular:** TPI can be used with a variety of cloud vendors, meaning you can
+  use it regardless of what the rest of your stack looks like
+- **Developer-first experience:** {{is this really a benefit for target audience
+  i.e. data scientists?}}
+
+In the guide below we will explore how to launch a Jupyter server using TPI,
+allowing you to run notebooks on cloud instances. While we will be using AWS in
+our example, you can use Azure or GCP with minor modifications.
+
+# Prerequisites
+
+Before ...
+# Guide
+
+Lorem ipsum
 
 <!-- ## Downsides to Google Colab
 
