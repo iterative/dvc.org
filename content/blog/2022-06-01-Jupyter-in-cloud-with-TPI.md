@@ -6,7 +6,7 @@ descriptionLong: >
   Lorem ipsum dolor sit amet
 picture: 2022-06-01/tpi-jupyter-cover.jpeg
 author: rob_dewit
-# commentsUrl: https://discuss.dvc.org/t/training-and-saving-models-with-cml-on-a-self-hosted-aws-ec2-runner/1155
+# commentsUrl: TODO
 tags:
   - TPI
   - Jupyter Notebook
@@ -62,23 +62,19 @@ SageMaker:
 - **Hardware limitations:** they may still put a limit on the hardware available
   to you. Colab, for example, is capped at 25GB of RAM.
 
-- Expensive
-- Closed-off
-- - Can't combine Colab with S3 data or vice versa
-- - Can't install custom packages (Colab, SageMaker does support this)
-- Limitations to hardware
-
-Iterative provides an alternative to these services in the form of TPI
-(Terraform Provider Iterative). This Terraform plugin gives us the ability to
+Iterative provides an alternative to these services in the form of [TPI
+(Terraform Provider Iterative)](https://github.com/iterative/terraform-provider-iterative). This Terraform plugin gives us the ability to
 easily launch Jupyter workspaces on any cloud provider, without needing to be a
 cloud expert.
 
-- Free and open
-- Cheaper cloud costs: no waste
-- Modular:
-- Developer-first experience
+Here are four benefits to TPI that might peak your interest:
 
-## Downsides to Google Colab
+- **Free and open:** TPI is completely open source and free to use
+- **Lower cloud costs:** TPI automatically cleans up instances that are not being used. It also allows you to use spot instances, reducing your per-hour costs
+- **Modular:** TPI can be used with a variety of cloud vendors, meaning you can use it regardless of what the rest of your stack looks like
+- **Developer-first experience:** {{is this really a benefit for target audience i.e. data scientists?}}
+
+<!-- ## Downsides to Google Colab
 
 https://analyticsindiamag.com/explained-5-drawback-of-google-colab/#:~:text=Limited%20Space%20%26%20Time%3A%20The%20Google,the%20complex%20functions%20to%20execute.
 https://towardsdatascience.com/why-i-moved-from-google-colab-and-amazon-sagemaker-to-saturn-cloud-675f0a51ece1
@@ -97,13 +93,4 @@ https://towardsdatascience.com/why-i-moved-from-google-colab-and-amazon-sagemake
 https://towardsdatascience.com/why-i-moved-from-google-colab-and-amazon-sagemaker-to-saturn-cloud-675f0a51ece1
 
 - All data stored on S3 (problem with large datasets, e.g. images or videos)
-- Download data for every training instance (100Gb takes 20 minutes)
-
-# Solution: TPI
-
-## Benefits
-
-- Ease of use
-- Pricing
-
-# Example
+- Download data for every training instance (100Gb takes 20 minutes) -->
