@@ -2,14 +2,16 @@
 
 A **model registry** is a tool to catalog ML models and their versions. Models
 from your data science projects can be discovered, audited, shared, tested, and
-deployed from here.  
-DVC works on top of Git to enable these capabilities on your existing software
-engineering stack. Other tools from [Iterative](https://iterative.ai/) provide
-complementary features and more usability.
+deployed from here. [Iterative](https://iterative.ai/) tools like
+[DVC](https://dvc.org/doc), [GTO], and [MLEM] enable these capabilities on top
+of Git, so you can stick to an existing software engineering stack. No more
+division between ML and App operations!
 
 ![](/img/ml_model_registry_placement.jpg) _A common placement for model
 registries is between development and applications. See also [Data Registries]._
 
+[gto]: https://github.com/iterative/gto
+[mlem]: https://mlem.ai/
 [data registries]: /doc/use-cases/data-registries
 
 Model registries give your team key capabilities:
@@ -60,7 +62,6 @@ automatically [sync] with your model management events.
 [cli]: /doc/command-reference
 [api]: /doc/api-reference
 [via cml]: https://cml.dev/doc/cml-with-dvc
-[gto]: https://github.com/iterative/gto
 [studio]: https://studio.iterative.ai/
 [importing]: /doc/use-cases/data-registries#building-registries
 [sync]:

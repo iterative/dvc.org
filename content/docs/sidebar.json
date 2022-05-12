@@ -105,11 +105,8 @@
         "slug": "fast-data-caching-hub"
       },
       "experiment-tracking",
-      "data-registries",
-      {
-        "label": "Model Registry",
-        "slug": "model-registry"
-      }
+      "model-registry",
+      "data-registries"
     ]
   },
   {
