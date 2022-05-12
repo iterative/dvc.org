@@ -9,7 +9,7 @@ descriptionLong: >
   In this tutorial, learn how to move a local machine learning experiment to a
   remote cloud machine on AWS with the help of Terraform Provider Iterative
   (TPI).
-picture: 2022-05-12/massimiliano-latella-6ufBhNungOk-unsplash.jpg
+picture: 2022-05-12/header-bees.png
 author: maria_khalusova
 #  todo: commentsUrl:
 tags:
