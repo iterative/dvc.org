@@ -157,7 +157,8 @@ $ dvc sync data/
 
 Currently, AWS S3 and GCP storage are supported by DVC.
 
-text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text
+text text text text text text text text text text text text text text text text
+text text text text text text text text text text text text text text
 
 ## Conclusion
 
