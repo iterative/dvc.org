@@ -686,6 +686,10 @@
                 "label": "log_plot()"
               },
               {
+                "slug": "make_report",
+                "label": "make_report()"
+              },
+              {
                 "slug": "get_step",
                 "label": "get_step()"
               },
