@@ -50,12 +50,13 @@ that uses common ML libraries. It automagically codifies all the context needed
 to produce them, and is able to push them to any cloud storage (by itself or via
 DVC), list and transfer them among locations, or even serve them directly!
 
-Each of these complementary methods brings your ML process to GitOps practices,
-especially to manage and deploy models with mature software delivery methods.
-This means for example Github Actions or Gitlab CI/CD, which can now
-automatically sync with the state of the artifacts in your model registry.
+This ecosystem of tools brings your ML process into [GitOps]. This means you can
+manage and deliver ML models with software engineering methods such as Github
+Actions or Gitlab CI/CD, which can now sync with the state of the artifacts in
+your registry.
 
 [modeling process]: doc/start/data-pipelines
 [remote storage]: /doc/command-reference/remote
 [sharing]: /doc/start/data-and-model-access
 [via cml]: https://cml.dev/doc/cml-with-dvc
+[gitops]: https://www.gitops.tech/
