@@ -5,28 +5,27 @@ from your data science projects can be discovered, audited, shared, tested, and
 deployed from here. [Iterative](https://iterative.ai/) tools like
 [DVC](https://dvc.org/doc), [GTO], and [MLEM] enable these capabilities on top
 of Git, so you can stick to an existing software engineering stack. No more
-division between ML and App operations!
+divide between ML engineering and operations!
 
 ![](/img/ml_model_registry_placement.jpg) _A common placement for model
-registries is between development and applications. See also [Data Registries]._
+registries unifies ML development and application. See also [Data Registries]._
 
 [gto]: https://github.com/iterative/gto
 [mlem]: https://mlem.ai/
 [data registries]: /doc/use-cases/data-registries
 
-Model registries give your team key capabilities:
+Model registries can give your team key capabilities:
 
-- Collect and present your models to others, from early-stage [experiments] to
-  production-ready, including [metrics, plots], or other metadata to help use
-  and evaluate them.
+- Collect and present your models, from early-stage [experiments] to
+  production-ready, including their [metrics, plots], or other metadata to help
+  use and evaluate them.
 - Organize and track model [versions] effectively; with full data provenance and
   lineage information based on [reproducible modeling].
-- An interface to access specific models from other systems (e.g. in CI/CD or
-  production).
-- (Re)place different models on certain environments stages (dev, shadow, prod,
+- A single interface to access specific models, both for collaboration (from
+  other teammate machines) and to productionize them (e.g. via CI/CD).
+- Designate certain models for different environments stages (dev, shadow, prod,
   etc.) without having to touch the applications that use them.
-- Control who can manage models for added security, and audit the trail of
-  updates.
+- For security, control who can manage models, and audit their usage trails.
 
 [experiments]: /doc/user-guide/experiment-management
 [metrics, plots]: /doc/start/metrics-parameters-plots
@@ -44,11 +43,11 @@ described by DVC into production in a few ways: by deploying with the `dvc`
 [CLI], or integrating into Python code using the [API]. You can even automate
 their training and delivery [via CML].
 
-To build a Git-native registry, the ML models in your repos can be annotated
-using tags. [GTO] (Git Tag Ops) is a tool to do just that! The annotations carry
-meaningful metadata, such as a model file path (or [DVC metafile]), development
-state, deployment env, etc. This helps manage your models lifecycle: promoting
-versions, rolling back, and reviewing their history.
+Another route to build a Git-native registry is to annotate ML models in your
+repos using tags. [GTO] (Git Tag Ops) is a tool to do just that! The annotations
+carry meaningful metadata, such as a model file path (or [DVC metafile]),
+development state, deployment env, etc. This helps manage your models lifecycle:
+promoting versions, rolling back, and reviewing their history.
 
 This approach is like **packaging** the models with their related information,
 plus dependencies with DVC. They can be consolidated virtually using a smart
