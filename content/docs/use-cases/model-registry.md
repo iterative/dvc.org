@@ -45,12 +45,10 @@ annotations carry meaningful metadata, such as a model file path, deployment
 env, etc. and get codified in the repo. GTO also helps manage your models
 lifecycle: promoting versions, rolling back, and reviewing history.
 
-To finish closing the gap between model training and software development, you
-can fully **package** models by introducing [MLEM] in any Python ML code that
-uses common libraries like `sklearn` or `xgboost`. MLEM automagically codifies
-all the context needed to produce data and models in the Git repo. It's also
-able to push them to any cloud storage (by itself or via DVC), as well as to
-list and transfer models between locations, or even serve them directly!
+And to fully **package** models, you can introduce [MLEM] in any Python code
+that uses common ML libraries. It automagically codifies all the context needed
+to produce them, and is able to push them to any cloud storage (by itself or via
+DVC), list and transfer them among locations, or even serve them directly!
 
 Each of these complementary methods brings your ML process to GitOps practices,
 especially to manage and deploy models with mature software delivery methods.
