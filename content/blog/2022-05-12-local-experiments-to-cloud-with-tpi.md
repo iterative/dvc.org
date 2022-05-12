@@ -11,7 +11,7 @@ descriptionLong: >
   (TPI).
 picture: 2022-05-12/header-bees.png
 author: maria_khalusova
-#  todo: commentsUrl:
+commentsUrl: https://discuss.dvc.org/t/moving-local-experiments-to-the-cloud-with-terraform-provider-iterative-tpi/1190
 tags:
   - MLOps
   - TPI
