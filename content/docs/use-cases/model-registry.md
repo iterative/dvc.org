@@ -34,26 +34,32 @@ Model registries can give your team key capabilities:
 
 Many of these benefits are built into DVC: Your [modeling process] and
 performance information become **codified** in Git-based <abbr>DVC
-projects</abbr>. This makes it possible to manage them with standard GitOps
+projects</abbr>. This makes it possible to manage them with standard Git
 workflows along with code. Large model files are stored separately and
 efficiently, and can be pushed to [remote storage] -- a scalable access point.
 
 DVC repos are also great for [sharing] any data artifact. You can get the models
-described by DVC into production in a few ways: by deploying with the `dvc`
-[CLI], or integrating into Python code using the [API]. You can even automate
-their training and delivery [via CML].
+described by DVC into production in a few ways: [import] them into a central
+repo, deploy using the `dvc` [CLI], or integrate into Python code with the
+[API]. You can even automate their training and delivery [via CML].
 
-Another route to build a Git-native registry is to annotate ML models in your
-repos using tags. [GTO] (Git Tag Ops) is a tool to do just that! The annotations
-carry meaningful metadata, such as a model file path (or [DVC metafile]),
-development state, deployment env, etc. This helps manage your models lifecycle:
-promoting versions, rolling back, and reviewing their history.
+An additional route to build a Git-native registry is to **annotate** ML models
+in your repos using tags. [GTO] (Git Tag Ops) is a tool to do just that! The
+annotations carry meaningful metadata, such as a model file path, deployment
+env, etc. and get codified in the repo. GTO also helps manage your models
+lifecycle: promoting versions, rolling back, and reviewing history.
 
-This approach is like **packaging** the models with their related information,
-plus dependencies with DVC. They can be consolidated virtually using a smart
-tool like [Studio], or by moving or [importing] the assets into a central repo.
-This is compatible with systems like Github Actions or Gitlab CI/CD, which can
-automatically [sync] with your model management events.
+To finish closing the gap between model training and software development, you
+can fully **package** models by introducing [MLEM] in any Python ML code that
+uses common libraries like `sklearn` or `xgboost`. MLEM automagically codifies
+all the context needed to produce data and models in the Git repo. It's also
+able to push them to any cloud storage (by itself or via DVC), as well as to
+list and transfer models between locations, or even serve them directly!
+
+Each of these complementary methods brings your ML process to GitOps practices,
+especially to manage and deploy models with mature software delivery methods.
+This means for example Github Actions or Gitlab CI/CD, which can now
+automatically sync with the state of the artifacts in your model registry.
 
 [modeling process]: doc/start/data-pipelines
 [remote storage]: /doc/command-reference/remote
@@ -61,8 +67,4 @@ automatically [sync] with your model management events.
 [cli]: /doc/command-reference
 [api]: /doc/api-reference
 [via cml]: https://cml.dev/doc/cml-with-dvc
-[studio]: https://studio.iterative.ai/
-[importing]: /doc/use-cases/data-registries#building-registries
-[sync]:
-  https://github.com/iterative/gto#getting-right-versions-in-downstream-systems
-[dvc metafile]: doc/user-guide/project-structure
+[import]: /doc/use-cases/data-registries#building-registries
