@@ -1,8 +1,9 @@
 const { graphql } = require('@octokit/graphql')
 const NodeCache = require('node-cache')
 const { AuthorizationCode } = require('simple-oauth2')
-const config = require('../../../config')
+const crypto = require('crypto')
 
+const config = require('../../../config')
 const { isProduction } = require('../../utils')
 
 const renderBody = (status, content) => `
@@ -20,7 +21,7 @@ const renderBody = (status, content) => `
 </script>
 `
 const randomString = () => crypto.randomBytes(4).toString(`hex`)
-
+const client = new AuthorizationCode(config.oauth2)
 const cache = new NodeCache({ stdTTL: 900 })
 
 async function getFreshGithubData() {
@@ -129,25 +130,22 @@ async function stars(req, res) {
 async function auth(req, res) {
   const { host } = req.headers
   try {
-    const client = new AuthorizationCode(config.oauth2)
     const url = client.authorizeURL({
       redirect_uri: `https://${host}/api/github/callback`,
       scope: `repo,user`,
       state: randomString()
     })
-
-    res.writeHead(301, { Location: url })
-    res.end()
+    res.redirect(url)
   } catch (error) {
+    console.error(error)
     res.status(500).send(error)
   }
 }
 
 async function callback(req, res) {
+  const { host } = req.headers
   const code = req.query.code
   try {
-    const client = new AuthorizationCode(config.oauth2)
-
     const accessToken = await client.getToken({
       code,
       redirect_uri: `https://${host}/api/github/callback`
