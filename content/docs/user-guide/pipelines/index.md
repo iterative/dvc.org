@@ -61,8 +61,8 @@ with the YAML file might be easier.
 
 <admon type="tip">
 
-Some advanced configuration for the stages may only be available through
-editing `dvc.yaml`.
+Some advanced configuration for the stages may only be available through editing
+`dvc.yaml`.
 
 </admon>
 
