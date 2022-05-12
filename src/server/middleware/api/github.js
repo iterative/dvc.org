@@ -1,7 +1,24 @@
 const { graphql } = require('@octokit/graphql')
 const NodeCache = require('node-cache')
+const { AuthorizationCode } = require('simple-oauth2')
+const config = require('../../../config')
 
 const { isProduction } = require('../../utils')
+
+const renderBody = (status, content) => `
+<script>
+  const receiveMessage = (message) => {
+    window.opener.postMessage(
+      'authorization:github:${status}:${JSON.stringify(content)}',
+      message.origin
+    );
+    window.removeEventListener("message", receiveMessage, false);
+  }
+  window.addEventListener("message", receiveMessage, false);
+  
+  window.opener.postMessage("authorizing:github", "*");
+</script>
+`
 
 const cache = new NodeCache({ stdTTL: 900 })
 
@@ -108,7 +125,48 @@ async function stars(req, res) {
   }
 }
 
+async function auth(req, res) {
+  const { host } = req.headers
+  try {
+    const client = new AuthorizationCode(config.oauth2)
+    const url = client.authorizeURL({
+      redirect_uri: `https://${host}/api/callback`,
+      scope: `repo,user`,
+      state: randomString()
+    })
+
+    res.writeHead(301, { Location: url })
+    res.end()
+  } catch (error) {
+    res.status(500).send(error)
+  }
+}
+
+async function callback(req, res) {
+  const code = req.query.code
+  try {
+    const client = new AuthorizationCode(config.oauth2)
+
+    const accessToken = await client.getToken({
+      code,
+      redirect_uri: `https://${host}/api/callback`
+    })
+    const { token } = client.createToken(accessToken)
+
+    res.status(200).send(
+      renderBody('success', {
+        token: token.access_token,
+        provider: 'github'
+      })
+    )
+  } catch (e) {
+    res.status(200).send(renderBody('error', e))
+  }
+}
+
 module.exports = {
   stars,
-  issues
+  issues,
+  auth,
+  callback
 }

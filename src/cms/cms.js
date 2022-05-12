@@ -7,7 +7,8 @@ CMS.init({
       name: config.cms.name,
       repo: config.cms.repo,
       branch: config.cms.branch,
-      base_url: config.cms.base_url
+      base_url: config.cms.base_url,
+      auth_endpoint: config.cms.auth_endpoint
     },
     load_config_file: false,
     media_folder: 'static/uploads/images',
