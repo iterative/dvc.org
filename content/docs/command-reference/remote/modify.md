@@ -246,7 +246,7 @@ methods that are performed by DVC (`list_objects_v2` or `list_objects`,
   $ dvc remote modify myremote listobjects true
   ```
 
-- `sse` - server-side encryption algorithm to use (e.g. `AES256`, `aws:kms`). By
+- `sse` - server-side encryption algorithm to use: `AES256` or `aws:kms`. By
   default, no encryption is used.
 
   ```dvc
