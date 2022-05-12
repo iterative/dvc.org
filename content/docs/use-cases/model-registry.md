@@ -51,8 +51,8 @@ to produce them, and is able to push them to any cloud storage (by itself or via
 DVC), list and transfer them among locations, or even serve them directly!
 
 This ecosystem of tools brings your ML process into [GitOps]. This means you can
-manage and deliver ML models with software engineering methods such as Github
-Actions or Gitlab CI/CD, which can now sync with the state of the artifacts in
+manage and deliver ML models with software engineering methods such as
+continuous integration, which can now sync with the state of the artifacts in
 your registry.
 
 [modeling process]: doc/start/data-pipelines
