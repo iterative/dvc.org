@@ -36,12 +36,8 @@ Many of these benefits are built into DVC: Your [modeling process] and
 performance information become **codified** in Git-based <abbr>DVC
 projects</abbr>. This makes it possible to manage them with standard Git
 workflows along with code. Large model files are stored separately and
-efficiently, and can be pushed to [remote storage] -- a scalable access point.
-
-DVC repos are also great for [sharing] any data artifact. You can get the models
-described by DVC into production in a few ways: [import] them into a central
-repo, deploy using the `dvc` [CLI], or integrate into Python code with the
-[API]. You can even automate their training and delivery [via CML].
+efficiently, and can be pushed to [remote storage] -- a scalable access point
+for [sharing].
 
 An additional route to build a Git-native registry is to **annotate** ML models
 in your repos using tags. [GTO] (Git Tag Ops) is a tool to do just that! The
@@ -64,7 +60,4 @@ automatically sync with the state of the artifacts in your model registry.
 [modeling process]: doc/start/data-pipelines
 [remote storage]: /doc/command-reference/remote
 [sharing]: /doc/start/data-and-model-access
-[cli]: /doc/command-reference
-[api]: /doc/api-reference
 [via cml]: https://cml.dev/doc/cml-with-dvc
-[import]: /doc/use-cases/data-registries#building-registries
