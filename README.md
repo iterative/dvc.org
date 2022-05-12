@@ -10,9 +10,8 @@ Contributions are welcome!
 
 # Contributing Docs
 
-Please see our
-[Contributing guide](https://dvc.org/doc/user-guide/contributing/docs) for more
-details. Thanks to all our contributors!
+Please see our [Contributing guide](https://dvc.org/doc/user-guide/contributing/docs) for more
+details.  Thanks to all our contributors!
 
 [![Contributors](https://contrib.rocks/image?repo=iterative/dvc.org)](https://github.com/iterative/dvc.org/graphs/contributors)
 
