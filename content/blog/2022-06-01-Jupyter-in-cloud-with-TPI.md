@@ -16,8 +16,8 @@ tags:
 
 <admon type="info">
 
-This blog post is based on [@casperdcl's guide published over on
-Hackernoon](https://hackernoon.com/using-jupytertensorboard-in-any-cloud-with-one-command).
+This blog post is based on
+[@casperdcl's guide published over on Hackernoon](https://hackernoon.com/using-jupytertensorboard-in-any-cloud-with-one-command).
 
 </admon>
 
@@ -58,7 +58,7 @@ SageMaker:
   but also for using the platform.
 - **Walled garden:** they tend to be baked into the ecosystem of the vendor.
   It's difficult and sometimes impossible to use infrastructure components from
-  different vendors in conjunction with each other. 
+  different vendors in conjunction with each other.
 - **Hardware limitations:** they may still put a limit on the hardware available
   to you. Colab, for example, is capped at 25GB of RAM.
 
