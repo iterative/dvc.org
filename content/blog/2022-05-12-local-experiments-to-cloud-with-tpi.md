@@ -17,7 +17,6 @@ tags:
   - TPI
   - AWS
   - Terraform
-  - HashiCorp
   - Git
   - Python
   - Tutorial
