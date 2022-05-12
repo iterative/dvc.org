@@ -17,6 +17,7 @@ tags:
   - TPI
   - AWS
   - Terraform
+  - HashiCorp
   - Git
   - Python
   - Tutorial
@@ -40,14 +41,14 @@ with Terraform and run your existing training script on it.
 
 ## Getting Started
 
-This tutorial uses the
-[BeeImage Dataset](https://www.kaggle.com/jenny18/honey-bee-annotated-images)
-which contains over 5,100 bee images annotated with location, date, time,
-subspecies, health condition, caste, and pollen. Let's assume we've downloaded
-the images, created a project, and trained a
-[convolutional neural network](https://en.wikipedia.org/wiki/Convolutional_neural_network)
-model locally to classify different subspecies. If you want to follow along, you
-can use your own data and training code, or clone [the example
+This tutorial uses the [BeeImage
+Dataset](https://www.kaggle.com/jenny18/honey-bee-annotated-images) which
+contains over 5,100 bee images annotated with location, date, time, subspecies,
+health condition, caste, and pollen. Let's assume we've downloaded the images,
+created a project, and trained a [convolutional neural
+network](https://en.wikipedia.org/wiki/Convolutional_neural_network) model
+locally to classify different subspecies. If you want to follow along, you can
+use your own data and training code, or clone [the example
 repository][tpi-bees].
 
 [tpi-bees]: https://github.com/iterative/blog-tpi-bees
@@ -59,22 +60,21 @@ a cloud environment?"
 
 Some of the important puzzle pieces you already have locally:
 
-- Your training code. It is likely that you have a
-  [whole pipeline](https://dvc.org/doc/start/data-pipelines) with multiple
-  stages but for the sake of simplicity, this tutorial uses a single `train.py`
-  script.
+- Your training code. It is likely that you have a [whole
+  pipeline](https://dvc.org/doc/start/data-pipelines) with multiple stages but
+  for the sake of simplicity, this tutorial uses a single `train.py` script.
 - Data.
 - Python environment with all required libraries.
 
 You will also need an account with your cloud provider of choice. In this
-tutorial we'll be provisioning infrastructure on Amazon Web Services (AWS). You
-can create an AWS account yourself, or ask your DevOps team to provide you with
-one.
+tutorial we'll be provisioning infrastructure on [Amazon Web Services
+(AWS)](https://aws.amazon.com/). You can create an AWS account yourself, or ask
+your DevOps team to provide you with one.
 
 <admon type="info">
 
-Make sure to insert
-[authentication credentials](https://registry.terraform.io/providers/iterative/iterative/latest/docs/guides/authentication#amazon-web-services)
+Make sure to insert [authentication
+credentials](https://registry.terraform.io/providers/iterative/iterative/latest/docs/guides/authentication#amazon-web-services)
 into your system's environment variables (`AWS_ACCESS_KEY_ID` and
 `AWS_SECRET_ACCESS_KEY`).
 
@@ -210,16 +210,16 @@ of the resource block, we specify some arguments:
 - _cloud_ (**required**): cloud provider to run the task on. This can be `aws`,
   `gcp`, `az`, or `k8s`.
 - _machine_: if you know the exact kind of machine that you'd like to use, you
-  can specify it here. Alternatively,
-  [TPI offers some common machine types](https://registry.terraform.io/providers/iterative/iterative/latest/docs/resources/task#machine-type)
+  can specify it here. Alternatively, [TPI offers some common machine
+  types](https://registry.terraform.io/providers/iterative/iterative/latest/docs/resources/task#machine-type)
   which are roughly the same for all supported clouds. For example, `m+t4` means
   "Medium, with (at least) 4 CPU cores, 16 GB RAM, and 1 NVIDIA Tesla T4 GPU
   device".
-- _spot_: set the
-  [spot instance price](https://aws.amazon.com/ec2/spot/pricing/). Here we use
-  `0` for automatic pricing, which should keep costs down. Alternatively you can
-  specify a positive number to set a maximum bidding price in USD per hour, or
-  `-1` to use on-demand pricing.
+- _spot_: set the [spot instance
+  price](https://aws.amazon.com/ec2/spot/pricing/). Here we use `0` for
+  automatic pricing, which should keep costs down. Alternatively you can specify
+  a positive number to set a maximum bidding price in USD per hour, or `-1` to
+  use on-demand pricing.
 - _timeout_: maximum time to run before the instance is force-terminated. This
   prevents forgotten long-running instances draining your budget.
 - _image_: the container to use (in our case, Ubuntu LTS 20.04).
@@ -233,19 +233,19 @@ of the resource block, we specify some arguments:
 
 <admon type="tip">
 
-See the
-[resource arguments documentation](https://registry.terraform.io/providers/iterative/iterative/latest/docs/resources/task#argument-reference)
+See the [resource arguments
+documentation](https://registry.terraform.io/providers/iterative/iterative/latest/docs/resources/task#argument-reference)
 for a full list.
 
 </admon>
 
 <admon type="warn">
 
-Keep in mind the
-[the running costs of AWS EC2 instances](https://aws.amazon.com/ec2/pricing/).
-The `machine` used in the example above is not included in the free tier and
-will incur charges. Using TPI's `spot` pricing will keep costs to a minimum
-(roughly $0.15/hour for `m+t4` on AWS), but not eliminate them entirely.
+Keep in mind the [the running costs of AWS EC2
+instances](https://aws.amazon.com/ec2/pricing/). The `machine` used in the
+example above is not included in the free tier and will incur charges. Using
+TPI's `spot` pricing will keep costs to a minimum (roughly $0.15/hour for `m+t4`
+on AWS), but not eliminate them entirely.
 
 </admon>
 
@@ -330,10 +330,11 @@ be synced back to your local machine.
 Now if you want to try another experiment, you can change your code, run
 `terraform apply` again, and when the training is finished, commit your code
 together with the updated results. This can help you move from prototyping
-locally to leveraging more powerful cloud machines without the hassle of full
+locally to leveraging more powerful cloud instances without the hassle of full
 MLOps setup. At the same time, once you're ready to start working on your
-[production pipelines and CI/CD](https://dvc.org/doc/use-cases/ci-cd-for-machine-learning),
-this `main.tf` codification should also make the transition smoother.
+[production pipelines and
+CI/CD](https://dvc.org/doc/use-cases/ci-cd-for-machine-learning), this `main.tf`
+codification should also make the transition smoother.
 
 In this tutorial we covered the simplest example with no GPU, and one with GPUs.
 In many cases, deploying your pipelines would be easier with your own Docker
