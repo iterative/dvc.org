@@ -24,9 +24,9 @@ You can update your username and password.
 **Managing email addresses:**
 
 You can add multiple email addresses to a single Studio account. You can login
-to the account with any of your verified email addresses
-as long as you have set up a password for your account. This is true even if
-you signed up using your GitHub, GitLab, or Bitbucket.
+to the account with any of your verified email addresses as long as you have set
+up a password for your account. This is true even if you signed up using your
+GitHub, GitLab, or Bitbucket.
 
 One of your email addresses must be designated as primary. This is the address
 to which Studio will send all your account notification emails.
