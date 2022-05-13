@@ -34,8 +34,8 @@ you have any trouble setting up the connection to your GitLab server, please
 <admon type ="info">
 
 Connecting to a self-hosted GitLab server is different from connecting to your
-account on GitLab SaaS ([gitlab.com](http://gitlab.com/)). To connect to
-`gitlab.com` go to the `Git integrations` section in your
+account on GitLab SaaS ([gitlab.com](http://gitlab.com/)). To connect to GitLab
+SaaS go to the `Git integrations` section in your
 [personal profile settings](https://studio.iterative.ai/user/_/profile). If you
 signed up to use Iterative Studio using your GitLab account, you may already
 have the connection.
