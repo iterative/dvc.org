@@ -38,7 +38,7 @@ account on GitLab SaaS ([gitlab.com](http://gitlab.com/)). To connect to
 `gitlab.com` go to the `Git integrations` section in your
 [personal profile settings](https://studio.iterative.ai/user/_/profile). If you
 signed up to use Iterative Studio using your GitLab account, you may already
-have a connection to `gitlab.com`.
+have the connection.
 
 </admon>
 
