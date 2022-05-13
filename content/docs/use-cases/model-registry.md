@@ -39,15 +39,15 @@ workflows along with code. Large model files are stored separately and
 efficiently, and can be pushed to [remote storage] -- a scalable access point
 for [sharing].
 
-An additional route to build a Git-native registry is to tag and **annotate** ML
-models in your repos, and [GTO] (Git Tag Ops) helps you do so. The annotations
-carry meaningful metadata, such as a model file path, deployment env, etc. and
-get codified in the repo. GTO also helps manage your models lifecycle: promoting
-versions, rolling back, and reviewing history.
+To make a Git-native registry (on top of DVC or not), one option is to use [GTO]
+(Git Tag Ops). It tags ML model releases and promotions, and links them to
+artifacts in the repo using versioned annotations. This creates abstractions for
+your **annotated** models, which lets you manage their lifecycle more freely and
+directly from Git.
 
-And to fully **package** models, you can introduce [MLEM] in any Python code
-that uses common ML libraries. It automagically captures all the context needed
-to produce them, and is able to push them to any cloud storage (by itself or via
+And to **package** the models, you can introduce [MLEM] in any Python code that
+uses common ML libraries. It automagically captures all the context needed to
+produce them, and is able to push them to any cloud storage (by itself or via
 DVC), list and transfer them among locations, or even serve them directly!
 
 This ecosystem of tools brings your ML process into [GitOps]. This means you can
