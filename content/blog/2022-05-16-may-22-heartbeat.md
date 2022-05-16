@@ -3,8 +3,8 @@ title: May '22 Heartbeat
 date: 2022-05-16
 description: >
   Monthly updates are here! You will find a link to Chip Huyen's new book, great
-  guides and frameworks on the iterative nature of AI, tons of Company news,
-  Dmitry on TFIR, beyond ml use cases and more! Welcome to May!
+  guides and frameworks on the iterative nature of AI, tons of company news,
+  Dmitry on TFIR, beyond machine learning use cases and more! Welcome to May!
 
 descriptionLong: |
   This month you will find:
@@ -282,8 +282,10 @@ I’m starting to wonder if all Data Science/AI teams need a role with the sole
 responsibility of the job to keep up to date with all the new tooling and
 changes/updates to existing tooling in the MLOps space and what might best work
 for the team. What should this position be called? The best answer wins a DVC
-t-shirt. See this Twitter thread to answer. (Hint: Funny answers will likely win
-😉). Deadline: May 31st. Pass it around...
+t-shirt. See
+[this Twitter thread](https://twitter.com/DVCorg/status/1526286089551433728?s=20&t=nV3FQAso441MtvrckYAOJA)
+to answer. (Hint: Funny answers will likely win 😉). Deadline: May 31st. Pass it
+around...
 
 ## Andrey Cheptsov: Notebooks and MLOps. Choose One.
 
