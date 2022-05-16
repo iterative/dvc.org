@@ -41,7 +41,7 @@ Great question @Derek!
 Here are some explanations around how `dvc pull` and `dvc checkout` work.
 They're comparable to `git pull` and `git checkout`.
 
-- `dvc pull` fetches data from your remote cache and adds it to your local cache
+- `dvc pull` fetches data from your remote cache to your local cache and syncs it to your workspace
 - `dvc checkout` syncs data from your local cache to your workspace
 
 ### [Is there a way to add all of the `outs` of a `foreach` job to the `deps` of a downstream stage?](https://discord.com/channels/485586884165107732/563406153334128681/967709548393672734)
