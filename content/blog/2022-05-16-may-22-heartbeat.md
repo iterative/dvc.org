@@ -61,7 +61,7 @@ She suggests using DVC for your larger, more complex datasets and also about the
 need for reproducibility in experimentation with which DVC can help you
 [(see Technical Product Manager, Dave Berenbaum’s post on experiment versioning.)](https://dvc.org/blog/ml-experiment-versioning)
 
-In addition, she discusses issues with quality assurance in Deployment and the
+In addition, she discusses issues with quality assurance in deployment and the
 maintenance of the system.
 
 ![Jenny Abromov iterative-lifecycle framework](/uploads/images/2022-05-16/jenny-abramov.png '=800')
@@ -165,14 +165,14 @@ better!
 We attended our first post-pandemic, in-person conference in Boston last month.
 It was awesome to be together as a team, see
 [**Dmitry Petrov**](https://twitter.com/FullStackML),
-[**Milicia Mc Gregor**](https://twitter.com/FlippedCoding), and
+[**Milicia McGregor**](https://twitter.com/FlippedCoding), and
 [**Alex Kim**](https://www.linkedin.com/in/alex000kim/) in action, and talk to
 attendees and other vendors at the conference. We are looking forward to
 [MLOps World](https://mlopsworld.com/) next month!
 
 ![Iterative Team at ODSC East](/uploads/images/2022-05-16/odsc.jpeg '=800')
 _Iterative team (left to right) - Mike Moynihan, me, Dave Berenbaum, Daniel
-Barnes, (DeeVee), Rob De Wit, Milicia Mc Gregor, Dmitry Petrov, Jervis Hui, Alex
+Barnes, (DeeVee), Rob De Wit, Milicia McGregor, Dmitry Petrov, Jervis Hui, Alex
 Kim, Chaz Black_
 
 ## ✍🏼 Tons of new content on the blog
@@ -246,8 +246,8 @@ dogs, two tortoises, and a budgie! 🦜
 [**Pavel Chekmaryov**](https://www.linkedin.com/in/ufijuice/) joins us in People
 Operations, managing the hiring pipeline from Frankfurt, Germany, but soon to be
 Canada! He has spent the last eight years in startups, most recently at OccurAI,
-reinventing recruitment in the deeptech/ML field. We look forward to him helping
-to grow our amazing team!
+reinventing recruitment in the deep-tech/ML field. We look forward to him
+helping to grow our amazing team!
 
 ## Open Positions
 
@@ -256,13 +256,13 @@ Even with our amazing new additions to the team, we're still hiring!
 to find details of all the positions and share with anyone you think may be
 interested! 🚀
 
-![Iterative.ai is Hiring](/uploads/images/2022-01-18/hiring.jpeg '=800')
+![Iterative.ai is Hiring](/uploads/images/2022-05-16/hiring.jpeg '=800')
 _Iterative is Hiring
 ([Source link](https://iterative.notion.site/Iterative-ai-is-Hiring-852cb978129645e1906e2c9a878a4d22))_
 
 # Community News
 
-## Yet another tool comparison, Imagine that!
+## Yet another tool comparison, imagine that!
 
 https://media.giphy.com/media/lWa7aAo62YZLwtk3nj/giphy.gif
 
@@ -291,7 +291,7 @@ around...
 
 [**Andrey Cheptsov**](https://www.linkedin.com/in/andrey-cheptsov/) writes
 [a piece](https://mlopsfluff.dstack.ai/p/notebooks-and-mlops-choose-one?s=r)
-pointing out how Jupyter Notebooks, while rightfully loved in Data Science work,
+pointing out how Jupyter Notebooks, while rightfully loved in data science work,
 fail pretty miserably in a production environment and the reliance on them can
 cause bad habits. He notes that he's found:
 
@@ -325,7 +325,7 @@ The benefits of the approach are:
 >    even if you’re building on a new VM every time.
 > 2. Changing only the deployment script won’t build any artifacts at all.
 > 3. You have an artifact repository that just works.
-> 4. Your git history contains the hashes of all built artifacts.
+> 4. Your Git history contains the hashes of all built artifacts.
 > 5. You can look up any artifact using its hash.
 
 We have opened up a #beyond-ml channel in our
