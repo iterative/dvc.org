@@ -10,7 +10,7 @@ const config = {
   },
   cms: {
     name: process.env.GATSBY_CMS_NAME || 'github',
-    repo: process.env.GATSBY_CMS_NAME || 'iterative/dvc.org',
+    repo: process.env.GATSBY_CMS_REPO || 'iterative/dvc.org',
     branch: process.env.GATSBY_CMS_BRANCH || 'master',
     base_url: process.env.GATSBY_CMS_BASE_URL || 'https://dvc.org',
     auth_endpoint: process.env.GATSBY_CMS_AUTH_ENDPOINT || '/api/github/auth'
