@@ -16,8 +16,8 @@ tags:
 
 <admon type="info">
 
-This blog post is based on [@casperdcl's guide published over on
-Hackernoon](https://hackernoon.com/using-jupytertensorboard-in-any-cloud-with-one-command).
+This blog post is based on
+[@casperdcl's guide published over on Hackernoon](https://hackernoon.com/using-jupytertensorboard-in-any-cloud-with-one-command).
 
 </admon>
 
@@ -60,12 +60,11 @@ SageMaker:
 - **Hardware limitations:** they may still put a limit on the hardware available
   to you. Colab, for example, is capped at 25GB of RAM.
 
-Iterative provides an alternative to these services in the form of [TPI
-(Terraform Provider
-Iterative)](https://github.com/iterative/terraform-provider-iterative). This
-[Terraform](https://www.terraform.io/) plugin gives us the ability to easily
-launch Jupyter workspaces on any cloud provider, without needing to be a cloud
-expert.
+Iterative provides an alternative to these services in the form of
+[TPI (Terraform Provider Iterative)](https://github.com/iterative/terraform-provider-iterative).
+This [Terraform](https://www.terraform.io/) plugin gives us the ability to
+easily launch Jupyter workspaces on any cloud provider, without needing to be a
+cloud expert.
 
 Here are four benefits to TPI that might peak your interest:
 
@@ -88,8 +87,7 @@ Before you get started, make sure to take care of the following:
 
 1. [Download the Terraform CLI tool](https://www.terraform.io/downloads)
 1. [Set-up an AWS Account](https://aws.amazon.com/)
-1. [Configure your AWS authentication
-   credentials](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html)
+1. [Configure your AWS authentication credentials](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html)
 1. [Get a free ngrok account for port forwarding](https://ngrok.com/)
 1. [Clone the example repository](https://github.com/iterative/blog-tpi-jupyter)
 
@@ -97,9 +95,9 @@ Before you get started, make sure to take care of the following:
 
 The result of this guide will be a Jupyter server running on provisioned AWS
 hardware. While TPI helps you do this as cheaply as possible, there are still
-costs involved. Make sure you [understand AWS
-pricing](https://aws.amazon.com/ec2/pricing/) to avoid unwelcome charges to your
-credit card.
+costs involved. Make sure you
+[understand AWS pricing](https://aws.amazon.com/ec2/pricing/) to avoid unwelcome
+charges to your credit card.
 
 </admon>
 
@@ -129,9 +127,9 @@ urls = [
 
 <admon type="info">
 
-It may take a little while for TPI to provision the instance. If `terraform
-refresh` returns `urls = []` as its output, just wait a few minutes and run it
-again.
+It may take a little while for TPI to provision the instance. If
+`terraform refresh` returns `urls = []` as its output, just wait a few minutes
+and run it again.
 
 </admon>
 
@@ -143,7 +141,39 @@ idle instances racking up our credit card bill.
 
 "Alright, easy enough, but what is actually happening?"
 
+The major point of interest in the repository is
+[`main.tf`](https://github.com/iterative/blog-tpi-jupyter/blob/aws/main.tf).
+This file contains the specifications Terraform needs to provision our instance.
+Let's take a look at what each part of this configuration does:
 
+```python
+terraform {
+  required_providers { iterative = { source = "iterative/iterative" } }
+}
+provider "iterative" {}
+```
+
+This first part of the configuration simply tells Terraform that we will be
+using TPI. We can consider it analogous to a package import in Python.
+
+```bash
+resource "iterative_task" "jupyter_server" {
+  spot      = 0             # auto-priced low-cost spot instance
+  timeout   = 24*60*60      # force shutdown after 24h
+  disk_size = 125           # GB
+  machine   = "m+t4"        # m/l/xl (CPU), +k80/t4/v100 (GPU)
+  image     = "nvidia"      # or "ubuntu"
+
+  # cloud-specific config
+  cloud     = "aws"         # see `git checkout generic` branch for: gcp, az, k8s
+
+  # blank means extract from local env vars
+  environment = { NGROK_TOKEN = "", TF_CPP_MIN_LOG_LEVEL = "1", QUIET = "1", GITHUB_USER = "username" }
+  storage {
+    workdir = "shared"
+    output  = "."
+  }
+```
 
 # Next steps: rethink this approach
 
@@ -154,16 +184,15 @@ constraints of our local machine for prototyping machine learning projects!
 "So where do we take this limitless work of wonder from here on out?"
 
 This is the point at which I'm afraid I'll have to rain on our parade a little
-bit. In all honesty I would disadvise from running Jupyter Notebooks in this
-manner.
+bit. In all honesty I would generally disadvise from running Jupyter Notebooks
+in this manner.
 
 Jupyter Notebooks are a great tool for quick and easy prototyping. They do,
 however, have a few downsides. For one, they are difficult to version properly.
 As a result of this, it can be difficult to collaborate on one project without
 model versions running out-of-sync. Moreover, _runs_ of the project are not
-sufficiently reproducible: they require too many manual actions. [As Andrey
-Cheptsov puts
-it](https://mlopsfluff.dstack.ai/p/notebooks-and-mlops-choose-one?s=r):
+sufficiently reproducible: they require too many manual actions.
+[As Andrey Cheptsov puts it](https://mlopsfluff.dstack.ai/p/notebooks-and-mlops-choose-one?s=r):
 "Notebooks and MLOps; choose one."
 
 Again, for prototyping notebooks are great. But prototyping is something that is
@@ -178,17 +207,17 @@ multiple runs and compare results against each other.
 
 "How do I go about this?", you ask?
 
-We've got you covered! The [Iterative Tools for Data Scientists &
-Analysts](https://learn.iterative.ai/course/data-scientist-path) course covers
-this transformation extensively and is completely free to follow. It's easier to
-accomplish than it may seem at first!
+We've got you covered! The
+[Iterative Tools for Data Scientists & Analysts](https://learn.iterative.ai/course/data-scientist-path)
+course covers this transformation extensively and is completely free to follow.
+It's easier to accomplish than it may seem at first!
 
 Of course this whole exercise wasn't for naught. We still explored how to use
 TPI to great effect, and there are many use cases where that's helpful. For
 example when we would want to execute an automated pipeline on a provisioned
-instance. Take a look at [this
-post](https://dvc.org/blog/local-experiments-to-cloud-with-tpi) for details on
-how to do so!
+instance. Take a look at
+[this post](https://dvc.org/blog/local-experiments-to-cloud-with-tpi) for
+details on how to do so!
 
 <!-- ## Downsides to Google Colab
 
