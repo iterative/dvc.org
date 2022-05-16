@@ -24,18 +24,15 @@ tags:
 
 Thanks for the awesome question @dominic!
 
-If you are working with multiple files like `prediction.json` and
-`main.prediction.json`, you can still use the `dvc plots diff` command to get
-both of the plots to show on a single graph. You'll need to run the following
-command:
+You can use the `dvc plots diff --show-vega` command to export the plot to
+vega-lite on a single graph. You'll need to run the following command:
 
 ```dvc
-$ dvc plots diff HEAD main --targets prediction.json main.prediction.json --json
+$ dvc plots diff HEAD main --targets prediction.json --show-vega > vega.json
 ```
 
-We are working on expanding `dvc plots` to allow you to compare data from two
-files. You can also include this plot in a comment with CML so that it appears
-on your pull requests in GitHub.
+You can also include this plot in a comment with CML so that it appears on your
+pull requests in GitHub.
 
 ### [What is the difference between `dvc pull` and `dvc checkout`?](https://discord.com/channels/485586884165107732/563406153334128681/966739538888241192)
 
@@ -44,7 +41,8 @@ Great question @Derek!
 Here are some explanations around how `dvc pull` and `dvc checkout` work.
 They're comparable to `git pull` and `git checkout`.
 
-- `dvc pull` fetches data from your remote cache and adds it to your local cache
+- `dvc pull` fetches data from your remote cache to your local cache and syncs
+  it to your workspace
 - `dvc checkout` syncs data from your local cache to your workspace
 
 ### [Is there a way to add all of the `outs` of a `foreach` job to the `deps` of a downstream stage?](https://discord.com/channels/485586884165107732/563406153334128681/967709548393672734)
