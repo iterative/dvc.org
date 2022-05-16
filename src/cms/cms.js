@@ -29,7 +29,7 @@ CMS.init({
           { label: 'Description', name: 'description' },
           { label: 'Description Long', name: 'descriptionLong' },
           { label: 'Picture', name: 'picture', widget: 'image' },
-          { label: 'Picture Comment', name: 'pictureComment' },
+          { label: 'Picture Comment', name: 'pictureComment', required: false },
           { label: 'Author', name: 'author' },
           { label: 'Tags', name: 'tags', widget: 'list' },
           { label: 'Comments Url', name: 'commentsUrl' },
