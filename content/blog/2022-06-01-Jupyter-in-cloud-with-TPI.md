@@ -16,8 +16,8 @@ tags:
 
 <admon type="info">
 
-This blog post is based on [@casperdcl's guide published over on
-Hackernoon](https://hackernoon.com/using-jupytertensorboard-in-any-cloud-with-one-command).
+This blog post is based on
+[@casperdcl's guide published over on Hackernoon](https://hackernoon.com/using-jupytertensorboard-in-any-cloud-with-one-command).
 
 </admon>
 
@@ -60,12 +60,11 @@ SageMaker:
 - **Hardware limitations:** they may still put a limit on the hardware available
   to you. Colab, for example, is capped at 25GB of RAM.
 
-Iterative provides an alternative to these services in the form of [TPI
-(Terraform Provider
-Iterative)](https://github.com/iterative/terraform-provider-iterative). This
-[Terraform](https://www.terraform.io/) plugin gives us the ability to easily
-launch Jupyter workspaces on any cloud provider, without needing to be a cloud
-expert.
+Iterative provides an alternative to these services in the form of
+[TPI (Terraform Provider Iterative)](https://github.com/iterative/terraform-provider-iterative).
+This [Terraform](https://www.terraform.io/) plugin gives us the ability to
+easily launch Jupyter workspaces on any cloud provider, without needing to be a
+cloud expert.
 
 Here are four benefits to TPI that might peak your interest:
 
@@ -88,12 +87,18 @@ Before you get started, make sure to take care of the following:
 
 1. [Download the Terraform CLI tool](https://www.terraform.io/downloads)
 1. [Set-up an AWS Account](https://aws.amazon.com/)
-1. [Configure your AWS authentication
-   credentials](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html)
+1. [Configure your AWS authentication credentials](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html)
+1. [Get a free ngrok account for port forwarding](https://ngrok.com/)
+1. [Clone the example repository](https://github.com/iterative/blog-tpi-jupyter)
+
+<admon type="warn">
+
+The result of this guide will be a Jupyter server running on provisioned AWS hardware. While TPI helps you do this as cheaply as possible, there are still costs involved. Make sure you [understand AWS pricing](https://aws.amazon.com/ec2/pricing/) to avoid unwelcome charges to your credit card.
+
+</admon>
 
 # Guide
 
-Lorem ipsum
 
 <!-- ## Downsides to Google Colab
 
