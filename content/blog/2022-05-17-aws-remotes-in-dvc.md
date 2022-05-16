@@ -86,7 +86,9 @@ $ pip install 'dvc[s3]'
 
 Then you can initialize DVC in your own project with the following command:
 
-`$ dvc init`
+```dvc
+$ dvc init
+```
 
 This will add all of the DVC internals needed to start versioning your data and
 tracking experiments. Now we need to set up the remote to connect our project
@@ -96,7 +98,9 @@ data stored in AWS to the DVC repo.
 
 Now we can add a default to the project with the following command:
 
-`$ dvc remote add -d bikes s3://updatedbikedata`
+```dvc
+$ dvc remote add -d bikes s3://updatedbikedata
+```
 
 This creates a default remote called `bikes` that connects to the
 `updatedbikedata` bucket we made earlier which is where the training data for
@@ -116,39 +120,47 @@ If you want to
 or if you run into issues with the credentials, you can manually add them with
 the following commands:
 
-`$ dvc remote modify --local bikes access_key_id 'mykey'`
+```dvc
+$ dvc remote modify --local bikes access_key_id 'mykey'
+```
 
-`$ dvc remote modify --local bikes secret_access_key 'mysecret'`
+```dvc
+$ dvc remote modify --local bikes secret_access_key 'mysecret'
+```
 
 ### Push and pull data with DVC
 
 Now you can push data from your local machine to the AWS remote! First, add the
 data you want DVC to track with the following command:
 
-`$ dvc add data`
+```dvc
+$ dvc add data
+```
 
 This will allow DVC to track the entire `data` directory so it will note when
 any changes are made. Then you can push that data to your AWS remote with this
 command:
 
-`$ dvc push`
+```dvc
+$ dvc push
+```
 
-If you're curious about how DVC works with data from your local cache in the
-remote, you can learn more in
-[the docs here](https://dvc.org/doc/command-reference/push#example-what-happens-in-the-cache).
-You can also learn more about the
-[structure of the cache directory here](https://dvc.org/doc/user-guide/project-structure/internal-files#structure-of-the-cache-directory).
 Here's what the data might look like in your AWS bucket.
 
 ![data in AWS bucket](/uploads/images/2022-05-17/aws_bucket.png)
 
 Then if you move to a different machine or someone else needs to use that data,
-it can be accessed by cloning the project repo, connecting to the remote, and
-running:
+it can be accessed by cloning or forking the project repo and running:
 
-`$ dvc pull`
+```dvc
+$ dvc pull
+```
 
 This will get any data from your remote and download it to your local machine.
+
+<admon type="info">
+Authentication has to be setup locally on any machine you need to pull or push data from.
+</admon>
 
 ---
 
