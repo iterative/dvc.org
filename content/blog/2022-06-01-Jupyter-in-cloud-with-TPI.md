@@ -16,8 +16,8 @@ tags:
 
 <admon type="info">
 
-This blog post is based on
-[@casperdcl's guide published over on Hackernoon](https://hackernoon.com/using-jupytertensorboard-in-any-cloud-with-one-command).
+This blog post is based on [@casperdcl's guide published over on
+Hackernoon](https://hackernoon.com/using-jupytertensorboard-in-any-cloud-with-one-command).
 
 </admon>
 
@@ -60,11 +60,12 @@ SageMaker:
 - **Hardware limitations:** they may still put a limit on the hardware available
   to you. Colab, for example, is capped at 25GB of RAM.
 
-Iterative provides an alternative to these services in the form of
-[TPI (Terraform Provider Iterative)](https://github.com/iterative/terraform-provider-iterative).
-This [Terraform](https://www.terraform.io/) plugin gives us the ability to
-easily launch Jupyter workspaces on any cloud provider, without needing to be a
-cloud expert.
+Iterative provides an alternative to these services in the form of [TPI
+(Terraform Provider
+Iterative)](https://github.com/iterative/terraform-provider-iterative). This
+[Terraform](https://www.terraform.io/) plugin gives us the ability to easily
+launch Jupyter workspaces on any cloud provider, without needing to be a cloud
+expert.
 
 Here are four benefits to TPI that might peak your interest:
 
@@ -87,18 +88,107 @@ Before you get started, make sure to take care of the following:
 
 1. [Download the Terraform CLI tool](https://www.terraform.io/downloads)
 1. [Set-up an AWS Account](https://aws.amazon.com/)
-1. [Configure your AWS authentication credentials](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html)
+1. [Configure your AWS authentication
+   credentials](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html)
 1. [Get a free ngrok account for port forwarding](https://ngrok.com/)
 1. [Clone the example repository](https://github.com/iterative/blog-tpi-jupyter)
 
 <admon type="warn">
 
-The result of this guide will be a Jupyter server running on provisioned AWS hardware. While TPI helps you do this as cheaply as possible, there are still costs involved. Make sure you [understand AWS pricing](https://aws.amazon.com/ec2/pricing/) to avoid unwelcome charges to your credit card.
+The result of this guide will be a Jupyter server running on provisioned AWS
+hardware. While TPI helps you do this as cheaply as possible, there are still
+costs involved. Make sure you [understand AWS
+pricing](https://aws.amazon.com/ec2/pricing/) to avoid unwelcome charges to your
+credit card.
 
 </admon>
 
 # Guide
 
+Once we have cloned the repository and navigated to it in our terminal, we only
+need to run two commands. First, we use `terraform init` to initialize our
+configuration files. After that, we simply run `terraform apply` to launch our
+Jupyter server. That's all there as to it. TPI works its magic and within a few
+minuts we will have our Jupyter environment ready.
+
+"But wait, how do we access it?"
+
+That's where ngrok comes in, which will generate URLs we can navigate to in
+order to access our environment. Run `terraform refresh` to get these URLs once
+TPI has finished provisioning the instance:
+
+```yaml
+Outputs:
+
+urls = [
+  "Jupyter Lab: https://8c62-54-173-120-3.ngrok.io/lab?token=...",
+  "Jupyter Notebook: https://8c62-54-173-120-3.ngrok.io/tree?token=...",
+  "TensorBoard: https://6d52-54-173-120-3.ngrok.io",
+]
+```
+
+<admon type="info">
+
+It may take a little while for TPI to provision the instance. If `terraform
+refresh` returns `urls = []` as its output, just wait a few minutes and run it
+again.
+
+</admon>
+
+Once we have accomplished everything we want to do in our notebook, we can
+terminate the instance with `terraform destroy`. This ensures that we won't have
+idle instances racking up our credit card bill.
+
+# Under the hood
+
+"Alright, easy enough, but what is actually happening?"
+
+
+
+# Next steps: rethink this approach
+
+Great! After going through this guide we know how to use TPI to launch Jupyter
+servers with just a few commands. This means we are no longer limited by the
+constraints of our local machine for prototyping machine learning projects!
+
+"So where do we take this limitless work of wonder from here on out?"
+
+This is the point at which I'm afraid I'll have to rain on our parade a little
+bit. In all honesty I would disadvise from running Jupyter Notebooks in this
+manner.
+
+Jupyter Notebooks are a great tool for quick and easy prototyping. They do,
+however, have a few downsides. For one, they are difficult to version properly.
+As a result of this, it can be difficult to collaborate on one project without
+model versions running out-of-sync. Moreover, _runs_ of the project are not
+sufficiently reproducible: they require too many manual actions. [As Andrey
+Cheptsov puts
+it](https://mlopsfluff.dstack.ai/p/notebooks-and-mlops-choose-one?s=r):
+"Notebooks and MLOps; choose one."
+
+Again, for prototyping notebooks are great. But prototyping is something that is
+typically done on our local machine. Once we get to a point where our needs
+exceed the capacity of our laptop, the project is likely to be of such a scope
+that we would benefit from an automated, well-versioned, reproducible pipeline.
+
+That's why I recommend the following: rather than take the effort (however small
+thanks to TPI) to set up a Jupyter server, take the effort to transform the
+Notebook into an automated pipeline. This will make it much easier to do
+multiple runs and compare results against each other.
+
+"How do I go about this?", you ask?
+
+We've got you covered! The [Iterative Tools for Data Scientists &
+Analysts](https://learn.iterative.ai/course/data-scientist-path) course covers
+this transformation extensively and is completely free to follow. It's easier to
+accomplish than it may seem at first!
+
+Of course this whole exercise wasn't for naught. We still explored how to use
+TPI to great effect, and there are many use cases where that's helpful. For
+example when we would want to execute an automated pipeline on a provisioned
+instance. Take a look at [this
+post](https://dvc.org/blog/local-experiments-to-cloud-with-tpi) for details on
+how to do so!
 
 <!-- ## Downsides to Google Colab
 
