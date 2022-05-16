@@ -61,7 +61,7 @@ She suggests using DVC for your larger, more complex datasets and also about the
 need for reproducibility in experimentation with which DVC can help you
 [(see Technical Product Manager, Dave Berenbaum’s post on experiment versioning.)](https://dvc.org/blog/ml-experiment-versioning)
 
-In addition she discusses issues with quality assurance in Deployment and the
+In addition, she discusses issues with quality assurance in Deployment and the
 maintenance of the system.
 
 ![Jenny Abromov iterative-lifecycle framework](/uploads/images/2022-05-16/jenny-abramov.png '=800')
@@ -75,8 +75,8 @@ _Jenny Abramov's iterative-lifecycle framework
 [**Isabel Bär,**](https://www.linkedin.com/in/isabel-b%C3%A4r-a89705213/)
 [**Alexander Kniesz,**](https://www.linkedin.com/in/alexander-kniesz-656256197/)
 and [**Michael Plöd**](https://www.linkedin.com/in/michael-ploed/) of
-[**INNOQ**](https://www.innoq.com/en/) (a software development, strategy and
-techonology consultancy) created
+[**INNOQ**](https://www.innoq.com/en/) (a software development, strategy, and
+technology consultancy) created
 [this](https://ml-ops.org/content/mlops-principles) very thorough resource on
 MLOps, going through all the principles and "iterative-incremental" steps of the
 process (there's an iterative pattern here 😉). The authors cover Automation,
@@ -103,9 +103,9 @@ https://media.giphy.com/media/NxdrJ6a4IQKyW5gGjL/giphy.gif
 
 [**Laszlo Sragner**](https://www.linkedin.com/in/laszlosragner/?trk=public_post-embed_share-update_actor-text&originalSubdomain=uk)
 a frequent contributor to the MLOps Community in general, often driving
-discusssions and helping others in the
+discussions and helping others in the
 [MLOps Community Slack channel,](https://mlops-community.slack.com/join/shared_invite/zt-178s99cyv-Q~whRpqbhgMTBrOcbjnDIQ#/shared-invite/email)
-posed and interesting point about code quality on LinkedIn. Join the discussion
+posed an interesting point about code quality on LinkedIn. Join the discussion
 and weigh in at this post:
 
 <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:6931541880090324992" height="800" width="504" frameborder="0" allowfullscreen="" title="Embedded post"></iframe>
@@ -202,7 +202,7 @@ Our team has been on fire creating content for you. 🔥 Don't miss the followin
 We have a [new doc page](https://dvc.org/doc/start/visualization) showcasing the
 new visualizations added to the
 [example-dvc-experiments repo](https://github.com/iterative/example-dvc-experiments).  
-Whether you need to create plots from tabular data, user-genrated plots, or
+Whether you need to create plots from tabular data, user-generated plots, or
 autogenerating plots from deep learning code, we've got you covered.
 
 ![DVC Visualization Doc](/uploads/images/2022-05-16/dvc-visualization-doc.png '=800')
@@ -215,7 +215,7 @@ _DVC Visualization Doc
 [**Swapnil Bhartiya**](https://twitter.com/SwapBhartiya) of
 [TFIR](https://www.tfir.io/) to have a chat about TPI. Learn how to save your
 team valuable resources in your machine learning projects with Terraform
-Provider Iterative (TPI).You can watch the recording below.
+Provider Iterative (TPI). You can watch the recording below.
 
 https://www.youtube.com/watch?v=x-xiKzlQFjY
 
@@ -241,7 +241,7 @@ image="/uploads/images/2022-05-16/release-party-meetup.png"/>
 closer to covering all the continents on
 [our remote team map](https://iterative.ai/about)! From Brazil, Wolmir joins us
 as an Engineer for the 🤫 team (you'll find out June 14th). Wolmir has four
-dogs, two tortoises and a budgie! 🦜
+dogs, two tortoises, and a budgie! 🦜
 
 [**Pavel Chekmaryov**](https://www.linkedin.com/in/ufijuice/) joins us in People
 Operations, managing the hiring pipeline from Frankfurt, Germany, but soon to be
@@ -267,11 +267,11 @@ _Iterative is Hiring
 https://media.giphy.com/media/lWa7aAo62YZLwtk3nj/giphy.gif
 
 So each month I tell you about yet another post to help you attempt to make
-sense of the vast MLOps tool space. Well this month is no different. I mean you
+sense of the vast MLOps tool space. Well, this month is no different. I mean you
 could be new here, right? 🤷🏽‍♀️ [DoltHub](https://dolthub.com) tries to bring some
 clarity
 [with this piece](https://www.dolthub.com/blog/2022-04-27-data-version-control/)
-comparing different data versioning tools and the intricacies of each. You do
+by comparing different data versioning tools and the intricacies of each. You do
 your research. You know we're partial.
 
 ![Data Version Control tools](/uploads/images/2022-05-16/data-version-control.png '=800')
@@ -281,7 +281,7 @@ _Data Version control tools
 I’m starting to wonder if all Data Science/AI teams need a role with the sole
 responsibility of the job to keep up to date with all the new tooling and
 changes/updates to existing tooling in the MLOps space and what might best work
-for the team. What should this position be called? Best answer wins a DVC
+for the team. What should this position be called? The best answer wins a DVC
 t-shirt. See this Twitter thread to answer. (Hint: Funny answers will likely win
 😉). Deadline: May 31st. Pass it around...
 
@@ -299,7 +299,7 @@ cause bad habits. He notes that he's found:
 > Git. - Andrey Cheptsov
 
 He advocates for training your models using Python scripts, Git, and CI/CD to
-automatically shift your foucs to creating reusable, testable code, and to use
+automatically shift your foucus to creating reusable, testable code, and to use
 tools like [Gradio](https://gradio.app/) and [Streamlit](https://streamlit.io/)
 to provide the interactivity of Jupyter notebooks. Sounds like a promising idea.
 💡
@@ -336,16 +336,16 @@ for our tools!
   [MLOps World](https://mlopsworld.com/) from June 7-10 in Toronto! We look
   forward to seeing Community members there!
 - 📣 PyLadies Berlin is hosting **Doreen**, a data scientist working at
-  [Opinary](https://opinary.com/), who will be presenting "Reporducible Machine
+  [Opinary](https://opinary.com/), who will be presenting "Reproducible Machine
   Learning with DVC and Poetry" on May 17th.
   [Join the event here.](https://www.meetup.com/PyLadies-Berlin/events/285313817/)
 - 📣 [**Nicolás Eiras**](https://www.linkedin.com/in/nicolas-eiris/) will be
-  presenting "Data Vesioning: Towards Reproducibility in Machine Learning" at
-  [Embeded Vision Summit](https://embeddedvisionsummit.com/2022/session/data-versioning-towards-reproducibility-in-machine-learning/)
+  presenting "Data Versioning: Towards Reproducibility in Machine Learning" at
+  [Embedded Vision Summit](https://embeddedvisionsummit.com/2022/session/data-versioning-towards-reproducibility-in-machine-learning/)
   on May 18th in Santa Clara, California.
 - 📣 [Montreal PyData](https://www.meetup.com/PyData-MTL/) will host a
-  [Meetup](https://www.meetup.com/PyData-MTL/events/285894672/) June 16th with
-  two presentations, "Introduction to Trustworthy Machine Learning for the
+  [Meetup](https://www.meetup.com/PyData-MTL/events/285894672/) on June 16th
+  with two presentations, "Introduction to Trustworthy Machine Learning for the
   Enterprise" by [**Mohamed Leila**](https://www.linkedin.com/in/mohamedleila/),
   ServiceNow and "ML in production in the video game industry: Ubisoft's use
   case" by
@@ -361,7 +361,7 @@ for our tools!
   [Kaggle competition](https://www.the-odd-dataguy.com/2022/04/28/dvc_kaggle/)
   created by
   [**Jean-Michel Daignan**](https://www.linkedin.com/in/jeanmicheldaignan/)
-  based on a previous comptetition from Petfinder.my with some really cute pet
+  based on a previous competition from Petfinder.my with some really cute pet
   images.
 
 ![DVC Kaggle Competition](/uploads/images/2022-05-16/img_pawpularity.png '=800')
@@ -370,14 +370,14 @@ _DVC Kaggle Competition based on Pawfinder.my
 
 ## Tweet Love ❤️
 
-We love when our Community does conference talks on our tools! 🥰
+We love it when our Community does conference talks on our tools! 🥰
 
 https://twitter.com/tryolabs/status/1525103969885888512?s=20&t=0h7bHyIeOl49soQpnf6aDA
 
-This Heartbeat was brought to you by the song "Tarkus" from Emerson, Lake and
+This Heartbeat was brought to you by the song "Tarkus" from Emerson, Lake, and
 Palmer which can be found on our
 [MLOps Playlist,](https://open.spotify.com/playlist/3eahsf3T9iEJkfWECC7VEp?si=cbcf1f9d3e424d62)
-and the letters **T, P and I.** 😉 See you next month!
+and the letters **T, P, and I.** 😉 See you next month!
 
 ---
 
