@@ -24,9 +24,8 @@ tags:
 
 Thanks for the awesome question @dominic!
 
-If you are working with multiple files like `prediction.json` and
-`main.prediction.json`, you can still use the `dvc plots diff` command to get
-both of the plots to show on a single graph. You'll need to run the following
+You can use the `dvc plots diff --show-vega` command to export
+the plot to vega-lite on a single graph. You'll need to run the following
 command:
 
 ```dvc
