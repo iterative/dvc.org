@@ -20,7 +20,7 @@ tags:
   - Community
 ---
 
-### [Is it possible to export a plot generated using `dvc plots diff HEAD main` with multiple files to vega-lite?](https://discord.com/channels/485586884165107732/563406153334128681/965911829538832435)
+### [Is it possible to export a plot generated using `dvc plots diff HEAD main` to vega-lite for use in CML](https://discord.com/channels/485586884165107732/563406153334128681/965911829538832435)
 
 Thanks for the awesome question @dominic!
 
