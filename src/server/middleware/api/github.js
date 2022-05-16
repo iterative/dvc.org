@@ -151,10 +151,11 @@ async function callback(req, res) {
       redirect_uri: `https://${host}/api/github/callback`
     })
     const { token } = client.createToken(accessToken)
+    const authToken = token.token.access_token
 
     res.status(200).send(
       renderBody('success', {
-        token: token.access_token,
+        token: authToken,
         provider: 'github'
       })
     )
