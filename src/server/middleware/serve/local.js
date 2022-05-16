@@ -4,7 +4,6 @@ module.exports = (req, res) => {
   serveHandler(req, res, {
     public: 'public',
     cleanUrls: true,
-    trailingSlash: false,
     directoryListing: false,
     headers: [
       {
