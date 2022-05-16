@@ -24,9 +24,8 @@ tags:
 
 Thanks for the awesome question @dominic!
 
-You can use the `dvc plots diff --show-vega` command to export
-the plot to vega-lite on a single graph. You'll need to run the following
-command:
+You can use the `dvc plots diff --show-vega` command to export the plot to
+vega-lite on a single graph. You'll need to run the following command:
 
 ```dvc
 $ dvc plots diff HEAD main --targets prediction.json main.prediction.json --json
