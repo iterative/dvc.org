@@ -28,7 +28,7 @@ You can use the `dvc plots diff --show-vega` command to export the plot to
 vega-lite on a single graph. You'll need to run the following command:
 
 ```dvc
-$ dvc plots diff HEAD main --targets prediction.json main.prediction.json --json
+$ dvc plots diff HEAD main --targets prediction.json --show-vega > vega.json
 ```
 
 We are working on expanding `dvc plots` to allow you to compare data from two
