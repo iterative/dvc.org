@@ -27,7 +27,11 @@ CMS.init({
           { label: 'Title', name: 'title', widget: 'string' },
           { label: 'Date', name: 'date', widget: 'datetime' },
           { label: 'Description', name: 'description' },
-          { label: 'Description Long', name: 'descriptionLong' },
+          {
+            label: 'Description Long',
+            name: 'descriptionLong',
+            widget: 'markdown'
+          },
           { label: 'Picture', name: 'picture', widget: 'image' },
           { label: 'Picture Comment', name: 'pictureComment', required: false },
           { label: 'Author', name: 'author' },
