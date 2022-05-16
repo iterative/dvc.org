@@ -1,13 +1,14 @@
 ---
-title: "End-to-End Computer Vision API, Part 3: Remote Experiments & CI/CD For
-  Machine Learning"
+title:
+  'End-to-End Computer Vision API, Part 3: Remote Experiments & CI/CD For
+  Machine Learning'
 date: 2022-05-09
 description: >
   In this final part, we will focus on leveraging cloud infrastructure with CML;
   enabling automatic reporting  (graphs, images, reports and tables with
   performance metrics) for PRs; and the eventual deployment process.
 descriptionLong: >
-  
+
   _This is the second part of a three-part series of posts:_
 
   - _Part 1: [Data Versioning and ML 
@@ -55,6 +56,7 @@ tags:
   - Experiment Tracking
 commentsUrl: https://discuss.dvc.org/t/end-to-end-computer-vision/1178
 ---
+
 ### Leveraging Cloud Resources with CI/CD and CML
 
 If you use the [CML library](https://cml.dev/) in combination with CI/CD tools
@@ -68,8 +70,8 @@ like GitHub Actions or GitLab CI/CD, you can quickly and easily:
 4. automatically shut down the VM without having to worry about excessive cloud
    bills
 
-![Continuous Integration and Deployment for Machine Learning](/img/cicd4ml.png "=460")
-*Continuous Integration and Deployment for Machine Learning*
+![Continuous Integration and Deployment for Machine Learning](/img/cicd4ml.png '=460')
+_Continuous Integration and Deployment for Machine Learning_
 
 We've configured three
 [workflow files](https://github.com/iterative/magnetic-tiles-defect/tree/main/.github/workflows)
@@ -78,8 +80,8 @@ the project's lifecycle we are in:
 
 #### 1. [Workflow for experimentation and hyperparameter tuning](https://github.com/iterative/magnetic-tiles-defect/blob/main/.github/workflows/1-experiment.yaml)
 
-![Workflow for experimentation and hyperparameter tuning](/uploads/images/2022-05-09/workflow_exp.png "=400")
-*Workflow for experimentation and hyperparameter tuning* In this stage, we'll
+![Workflow for experimentation and hyperparameter tuning](/uploads/images/2022-05-09/workflow_exp.png '=400')
+_Workflow for experimentation and hyperparameter tuning_ In this stage, we'll
 create an experiment branch so that can experiment with data preprocessing,
 change model architecture, tune hyperparameters, etc. Once we think our
 experiment is ready to be run, we'll push our changes to a remote repository (in
@@ -151,16 +153,16 @@ The report structure is fully customizable. Below is an example of what the PR
 and the CML report would look like in this case. The test images show (from left
 to right) input images, ground truth masks and prediction masks.
 
-![PR and CML report](/uploads/images/2022-05-09/pr_cml_report.png "=800") *PR
-and CML report*
+![PR and CML report](/uploads/images/2022-05-09/pr_cml_report.png '=800') _PR
+and CML report_
 
 At this point, we can assess the results in Iterative Studio and GitHub and
 decide whether we want to accept the PR or keep experimenting.
 
 #### 2. [Workflow for deploying to the development environment](https://github.com/iterative/magnetic-tiles-defect/blob/main/.github/workflows/2-develop.yaml)
 
-![Workflow for deploying to the development environment](/uploads/images/2022-05-09/workflow_dev.png "=400")
-*Workflow for deploying to the development environment* Once we are happy with
+![Workflow for deploying to the development environment](/uploads/images/2022-05-09/workflow_dev.png '=400')
+_Workflow for deploying to the development environment_ Once we are happy with
 our model's performance on the experiment branch, we can merge it into the
 development branch. This would trigger a different CI/CD job that will:
 
@@ -197,8 +199,8 @@ The development endpoint is now accessible at
 
 and we can use it to assess the end-to-end performance of the overall solution.
 If we pick a random test image `exp3_num_258558.jpg`,
-![Test image \`exp3_num_258558.jpg\`](/uploads/images/2022-05-09/exp3_num_258558.jpg "=300")
-*Test image `exp3_num_258558.jpg`*
+![Test image `exp3_num_258558.jpg`](/uploads/images/2022-05-09/exp3_num_258558.jpg '=300')
+_Test image `exp3_num_258558.jpg`_
 
 we can send it to the endpoint using the `curl` command like this:
 
@@ -244,8 +246,8 @@ plt.imsave(f'{file_path.stem}_mask.png', pred, cmap=cm.gray)
 ```
 
 Below you can see what this mask looks like.
-![Output mask \`exp3_num_258558_mask.png\`](/uploads/images/2022-05-09/exp3_num_258558_mask.png "=300")
-*Output mask `exp3_num_258558_mask.png`*
+![Output mask `exp3_num_258558_mask.png`](/uploads/images/2022-05-09/exp3_num_258558_mask.png '=300')
+_Output mask `exp3_num_258558_mask.png`_
 
 Before we merge the dev branch into the main branch, we would need to thoroughly
 test and monitor the application in the development environment. A good test
@@ -254,8 +256,8 @@ time and assess the quality of the returned segmentation masks.
 
 #### 3. [Workflow for deploying to the production environment](https://github.com/iterative/magnetic-tiles-defect/blob/main/.github/workflows/3-deploy.yaml)
 
-![Workflow for deploying to the production environment](/uploads/images/2022-05-09/workflow_prod.png "=400")
-*Workflow for deploying to the production environment*
+![Workflow for deploying to the production environment](/uploads/images/2022-05-09/workflow_prod.png '=400')
+_Workflow for deploying to the production environment_
 
 If there are no issues and we are confident in the quality of the new model, we
 can merge the development branch into the main branch of our repository. Again,
@@ -267,7 +269,9 @@ development environment, except now the deployment endpoint will be
 
 ## Summary
 
-In this series of posts (see [Part 1](/blog/end-to-end-computer-vision-api-part-1-data-versioning-and-ml-pipelines) and [Part 2](/blog/end-to-end-computer-vision-api-part-2-local-experiments)), we
+In this series of posts (see
+[Part 1](/blog/end-to-end-computer-vision-api-part-1-data-versioning-and-ml-pipelines)
+and [Part 2](/blog/end-to-end-computer-vision-api-part-2-local-experiments)), we
 described how we addressed the problem of building a Computer Vision Web API for
 defect detection. We’ve chosen this approach because it addresses the common
 challenges that are shared across many CV projects: how to version datasets that
@@ -279,31 +283,33 @@ track progress in key metrics when you run many ML experiments.
 
 We've talked about the following:
 
-* Common difficulties when building Computer Vision Web API for defect detection
+- Common difficulties when building Computer Vision Web API for defect detection
   ([link](/blog/end-to-end-computer-vision-api-part-1-data-versioning-and-ml-pipelines#introduction))
-* Pros and cons of exploratory work in Jupyter Notebooks
+- Pros and cons of exploratory work in Jupyter Notebooks
   ([link](/blog/end-to-end-computer-vision-api-part-1-data-versioning-and-ml-pipelines#proof-of-concept-in-jupyter-notebooks))
-* Versioning data in remote storage with DVC
+- Versioning data in remote storage with DVC
   ([link](/blog/end-to-end-computer-vision-api-part-1-data-versioning-and-ml-pipelines#data-versioning))
-* Moving and refactoring the code from Jupyter Notebooks into DVC pipeline
+- Moving and refactoring the code from Jupyter Notebooks into DVC pipeline
   stages
   ([link](/blog/end-to-end-computer-vision-api-part-1-data-versioning-and-ml-pipelines#refactoring-jupyter-code-into-an-ml-pipeline))
-* Experiment management and versioning
+- Experiment management and versioning
   ([link](/blog/end-to-end-computer-vision-api-part-2-local-experiments#experiment-management))
-* Visualization of experiments and collaboration in Iterative Studio
+- Visualization of experiments and collaboration in Iterative Studio
   ([link](/blog/end-to-end-computer-vision-api-part-2-local-experiments#collaboration-and-reporting-with-iterative-studio))
-* Remote experiments, CI/CD, and production deployment (this post)
+- Remote experiments, CI/CD, and production deployment (this post)
 
 ## What to Try Next
 
-Missed the previous parts of this post? See [Part 1: Data Versioning and ML
-Pipelines](/blog/end-to-end-computer-vision-api-part-1-data-versioning-and-ml-pipelines) and [Part 2: Local Experiments](/blog/end-to-end-computer-vision-api-part-2-local-experiments).
+Missed the previous parts of this post? See
+[Part 1: Data Versioning and ML Pipelines](/blog/end-to-end-computer-vision-api-part-1-data-versioning-and-ml-pipelines)
+and
+[Part 2: Local Experiments](/blog/end-to-end-computer-vision-api-part-2-local-experiments).
 
-* Reproduce this solution by setting your own configs, tokens, and access keys
+- Reproduce this solution by setting your own configs, tokens, and access keys
   for GitHub, AWS, and Heroku
-* Add a check to merge PRs automatically if the metrics have improved
-* Add a few simple unit tests and insert them into CML workflow files so they
+- Add a check to merge PRs automatically if the metrics have improved
+- Add a few simple unit tests and insert them into CML workflow files so they
   run before reproducing the pipeline
-* Apply this approach to a different Computer Vision problem using a different
+- Apply this approach to a different Computer Vision problem using a different
   dataset or different problem type (image classification, object detection,
   etc.)
