@@ -31,8 +31,7 @@ vega-lite on a single graph. You'll need to run the following command:
 $ dvc plots diff HEAD main --targets prediction.json --show-vega > vega.json
 ```
 
-We are working on expanding `dvc plots` to allow you to compare data from two
-files. You can also include this plot in a comment with CML so that it appears
+You can also include this plot in a comment with CML so that it appears
 on your pull requests in GitHub.
 
 ### [What is the difference between `dvc pull` and `dvc checkout`?](https://discord.com/channels/485586884165107732/563406153334128681/966739538888241192)
