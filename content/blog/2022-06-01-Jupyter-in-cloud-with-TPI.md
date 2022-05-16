@@ -87,8 +87,10 @@ Before you get started, make sure to take care of the following:
 
 1. [Download the Terraform CLI tool](https://www.terraform.io/downloads)
 1. [Set-up an AWS Account](https://aws.amazon.com/)
-1. [Configure your AWS authentication credentials](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html)
+1. [Install AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
+1. [Configure your AWS authentication credentials with `aws configure`](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html)
 1. [Get a free ngrok account for port forwarding](https://ngrok.com/)
+1. [Set your ngrok access token as an environment variable with `export NGROK_TOKEN="..."`](https://www.twilio.com/blog/2017/01/how-to-set-environment-variables.html)
 1. [Clone the example repository](https://github.com/iterative/blog-tpi-jupyter)
 
 <admon type="warn">
