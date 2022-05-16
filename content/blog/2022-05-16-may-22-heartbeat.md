@@ -199,8 +199,8 @@ Our team has been on fire creating content for you. 🔥 Don't miss the followin
 
 ## ✨ Shiny New Docs
 
-We have a [new doc page](https://dvc.org/doc/start/visualization) showcasing the
-new visualizations added to the
+We have a [new doc page](https://dvc.org/doc/start/experiments/visualization)
+showcasing the new visualizations added to the
 [example-dvc-experiments repo](https://github.com/iterative/example-dvc-experiments).  
 Whether you need to create plots from tabular data, user-generated plots, or
 autogenerating plots from deep learning code, we've got you covered.
