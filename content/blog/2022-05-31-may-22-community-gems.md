@@ -20,7 +20,7 @@ tags:
   - Community
 ---
 
-### [Is it possible to export a plot generated using `dvc plots diff HEAD main` to vega-lite for use in CML](https://discord.com/channels/485586884165107732/563406153334128681/965911829538832435)
+### [Is it possible to export a plot generated using `dvc plots diff HEAD main` to vega-lite for use in CML?](https://discord.com/channels/485586884165107732/563406153334128681/965911829538832435)
 
 Thanks for the awesome question @dominic!
 
@@ -85,9 +85,13 @@ There are a couple of ways you can do this. One approach is to use
 `dvc add --to-remote`.
 
 The other approach is to use the
-[`import-url`](https://dvc.org/doc/command-reference/import-url#example-transfer-to-remote-storage)
-functionality. You can see an example of how to do this in the docs. Just make
-sure that you have your remotes set up!
+[`import-url --to-remote`](https://dvc.org/doc/command-reference/import-url#example-transfer-to-remote-storage)
+functionality. The main difference between these approaches is that
+`dvc import-url` has the added benefit of keeping a connection to the data
+source so it can be updated later with `dvc update`.
+
+You can see an example of how to do this in the docs. Just make sure that you
+have your remotes set up!
 
 ### [If I'm using Feast feature store, is it possible to version datasets with DVC?](https://discord.com/channels/485586884165107732/563406153334128681/968899175561449532)
 
@@ -127,15 +131,8 @@ You could also use the `dvc repro` command or any of the other DVC commands.
 
 Nice question from @strickvl!
 
-There are a couple of ways to do this.
-
-You can remove all the `.dvc` files and the `.dvc` folder in the root directory
-manually, but keep in mind that **any data versioned with DVC will be deleted**,
-since it's stored in `.dvc/cache`. After that you can re-initialize the repo
-with `dvc init`.
-
-There is also the `dvc destroy` command that will remove all DVC file and
-internals from your repository.
+The best approach for resetting a repo is to run the `dvc destroy` command that
+will remove all DVC file and internals from your repository.
 
 ### [Is there an example of using CML with GCP that can be used as a reference?](https://discord.com/channels/485586884165107732/728693131557732403/963512513452970086)
 
