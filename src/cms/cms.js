@@ -1,4 +1,7 @@
 import CMS from 'netlify-cms-app'
+import React from 'react'
+
+import BlogPreview from './BlogPreview'
 import config from '../config'
 
 CMS.init({
@@ -49,3 +52,15 @@ CMS.init({
     ]
   }
 })
+
+const BlogPreviewTemplate = ({ entry, widgetFor }) => {
+  const data = entry.getIn(['data']).toJS()
+  const html = widgetFor('body')
+  const descriptionLong = widgetFor('descriptionLong')
+  data.descriptionLong = descriptionLong
+  data.html = html
+
+  return <BlogPreview data={data} />
+}
+
+CMS.registerPreviewTemplate('blog', BlogPreviewTemplate)
