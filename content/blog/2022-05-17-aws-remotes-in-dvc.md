@@ -161,7 +161,9 @@ $ dvc pull
 This will get any data from your remote and download it to your local machine.
 
 <admon type="info">
+
 Authentication has to be setup locally on any machine you need to pull or push data from.
+
 </admon>
 
 ---
