@@ -1,5 +1,5 @@
 ---
-title: Using AWS Remotes in DVC
+title: Syncing Data to AWS S3
 date: 2022-05-17
 description: >
   We're going to set up an AWS S3 remote in a DVC project.
@@ -9,7 +9,7 @@ descriptionLong: >
 picture: 2022-05-17/aws-in-dvc.png
 pictureComment: Using AWS Remotes in DVC
 author: milecia_mcgregor
-commentsUrl: https://discuss.dvc.org/t/preventing-stale-models-in-production/1137
+commentsUrl: https://discuss.dvc.org/t/syncing-data-to-aws-s3/1192
 tags:
   - MLOps
   - DVC
@@ -32,8 +32,8 @@ example to play with.
 
 <admon type="info">
 
-By the time you finish, you should be able to create this
-setup for any machine learning project using an AWS remote.
+By the time you finish, you should be able to create this setup for any machine
+learning project using an AWS remote.
 
 </admon>
 
@@ -114,7 +114,17 @@ In order for DVC to be able to push and pull data from the remote, you need to
 have valid AWS credentials.
 
 By default, DVC authenticates using your AWS CLI configuration, if it has been
-set. You can check that out
+set. You can do that with the `aws configure` command like in this example:
+
+```dvc
+$ aws configure
+AWS Access Key ID [None]: AKIAIOSFODNN7EXAMPLE
+AWS Secret Access Key [None]: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+Default region name [None]:
+Default output format [None]:
+```
+
+You can check out more details on this command
 [here in the AWS docs](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html).
 
 If you want to
@@ -159,7 +169,8 @@ This will get any data from your remote and download it to your local machine.
 
 <admon type="info">
 
-Authentication has to be setup locally on any machine you need to pull or push data from.
+Authentication has to be setup locally on any machine you need to pull or push
+data from.
 
 </admon>
 
