@@ -128,11 +128,9 @@ $ dvc exp init './another_script.sh $MYENVVAR'
   your experiment can be found (if any). Overrides other configuration and
   default value (`plots/`).
 
-- `--live` - configure the `path` directory for [DVCLive](/doc/dvclive). This is
-  where experiment logs will be written. Overrides other configuration and
-  default value (`dvclive/`).
-
-  > This only has an effect when used with `--type=dl`.
+- `--live` - set the path to the directory where the metrics and plots
+  [produced by DVCLive](https://dvc.org/doc/dvclive/dvclive-with-dvc#outputs)
+  will be found.
 
 - `--explicit` - do not assume default locations of project dependencies and
   outputs. You'll have to provide specific locations via other options or

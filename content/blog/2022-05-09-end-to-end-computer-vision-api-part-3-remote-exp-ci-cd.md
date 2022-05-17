@@ -9,7 +9,7 @@ description: >
   performance metrics) for PRs; and the eventual deployment process.
 descriptionLong: |
 
-  _This is the second part of a three-part series of posts:_
+  _This is the last part of a three-part series of posts:_
   - _Part 1: [Data Versioning and ML 
   Pipelines](/blog/end-to-end-computer-vision-api-part-1-data-versioning-and-ml-pipelines)_
   - _Part 2: [Local 
