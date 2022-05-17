@@ -32,8 +32,8 @@ example to play with.
 
 <admon type="info">
 
-By the time you finish, you should be able to create this
-setup for any machine learning project using an AWS remote.
+By the time you finish, you should be able to create this setup for any machine
+learning project using an AWS remote.
 
 </admon>
 
@@ -159,7 +159,8 @@ This will get any data from your remote and download it to your local machine.
 
 <admon type="info">
 
-Authentication has to be setup locally on any machine you need to pull or push data from.
+Authentication has to be setup locally on any machine you need to pull or push
+data from.
 
 </admon>
 
