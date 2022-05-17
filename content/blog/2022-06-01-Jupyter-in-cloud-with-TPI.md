@@ -1,9 +1,10 @@
 ---
 title: Jupyter Notebooks in any cloud with TPI
 date: 2022-06-01
-description: Lorem ipsum dolor sit amet
+description: >
+  Use TPI to quickly and cheaply provision a cloud-hosted Jupyter server to run your notebooks on.
 descriptionLong: >
-  Lorem ipsum dolor sit amet
+  TPI is a tool that can be used to quickly and cheaply provision cloud instances. In this guide we will explore how we can use TPI to launch Jupyter Server on an Amazon Web Services instance at the lowest possible cost. With minor modifications you can also launch instances on Google Cloud, Microsoft Azure, or Kubernetes.
 picture: 2022-06-01/tpi-jupyter-cover.jpeg
 author: rob_dewit
 # commentsUrl: TODO
@@ -311,6 +312,14 @@ This is the point at which I'm afraid I'll have to rain on our parade a little
 bit. In all honesty I would generally disadvise from running Jupyter Notebooks
 in this manner.
 
+<admon type="tip">
+
+The following section is quite opionated! In the end, you are the person who's
+best able to decide whether Jupyter Notebooks in a cloud instance make sense in
+your context. No hard feelings if you completely ignore me from here on out!
+
+</admon>
+
 Jupyter Notebooks are a great tool for quick and easy prototyping. They do,
 however, have a few downsides. For one, they are difficult to version properly.
 As a result of this, it can be difficult to collaborate on one project without
@@ -320,10 +329,11 @@ Cheptsov puts
 it](https://mlopsfluff.dstack.ai/p/notebooks-and-mlops-choose-one?s=r):
 "Notebooks and MLOps; choose one."
 
-Again, for prototyping notebooks are great. But prototyping is something that is
-typically done on our local machine. Once we get to a point where our needs
-exceed the capacity of our laptop, the project is likely to be of such a scope
-that we would benefit from an automated, well-versioned, reproducible pipeline.
+These downsides don't matter too much while only prototyping. But prototyping is
+something that is typically done on our local machine. Once we get to a point
+where our needs exceed the capacity of our laptop, the project is likely to be
+of such a scope that we would benefit from an automated, well-versioned,
+reproducible pipeline.
 
 That's why I recommend the following: rather than take the effort (however small
 thanks to TPI) to set up a Jupyter server, take the effort to transform the
@@ -336,14 +346,16 @@ pipeline, we can use TPI to move it to the cloud!
 We've got you covered! The [Iterative Tools for Data Scientists &
 Analysts](https://learn.iterative.ai/course/data-scientist-path) course covers
 this transformation extensively and is completely free to follow. It's easier to
-accomplish than it may seem at first!
+accomplish than it may seem at first.
 
 Of course this whole exercise wasn't for naught. We still explored how to use
-TPI to great effect, and there are many use cases where that's helpful. For
-example when we would want to execute an automated pipeline on a provisioned
-instance. Take a look at [this
-post](https://dvc.org/blog/local-experiments-to-cloud-with-tpi) for details on
-how to do so!
+TPI to great effect, and there are many use cases in which it will be helpful as
+a tool. [This one](https://dvc.org/blog/local-experiments-to-cloud-with-tpi),
+for example, where we use TPI to move local machine learning experiments to the
+cloud. You can follow that guide to get an idea of how to move pipelines to the
+cloud!
+
+Do you vehemently disagree with me about running Jupyter on a cloud instance? Am I just not understanding how it's the perfect solution? Let me know in the comments! 😄
 
 <!-- ## Downsides to Google Colab
 
