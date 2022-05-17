@@ -32,6 +32,7 @@ CMS.init({
             label: 'Date',
             name: 'date',
             widget: 'datetime',
+            default: '',
             date_format: 'YYYY-MM-DD',
             time_format: false
           },
