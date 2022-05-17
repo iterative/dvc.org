@@ -25,7 +25,13 @@ CMS.init({
         slug: '{{year}}-{{month}}-{{day}}-{{slug}}',
         fields: [
           { label: 'Title', name: 'title', widget: 'string' },
-          { label: 'Date', name: 'date', widget: 'datetime' },
+          {
+            label: 'Date',
+            name: 'date',
+            widget: 'datetime',
+            date_format: 'YYYY-MM-DD',
+            time_format: false
+          },
           { label: 'Description', name: 'description' },
           {
             label: 'Description Long',
