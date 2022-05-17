@@ -31,8 +31,10 @@ you can add DVC to your project. We’ll be working with
 example to play with.
 
 <admon type="info">
+
 By the time you finish, you should be able to create this
 setup for any machine learning project using an AWS remote.
+
 </admon>
 
 ## Set up an AWS S3 bucket
