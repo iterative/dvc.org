@@ -34,6 +34,7 @@ CMS.init({
             widget: 'datetime',
             default: '',
             date_format: 'YYYY-MM-DD',
+            format: 'YYYY-MM-DD',
             time_format: false
           },
           { label: 'Description', name: 'description' },
