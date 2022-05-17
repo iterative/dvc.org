@@ -2,9 +2,14 @@
 title: Jupyter Notebooks in any cloud with TPI
 date: 2022-06-01
 description: >
-  Use TPI to quickly and cheaply provision a cloud-hosted Jupyter server to run your notebooks on.
+  Use TPI to quickly and cheaply provision a cloud-hosted Jupyter server to run
+  your notebooks on.
 descriptionLong: >
-  TPI is a tool that can be used to quickly and cheaply provision cloud instances. In this guide we will explore how we can use TPI to launch Jupyter Server on an Amazon Web Services instance at the lowest possible cost. With minor modifications you can also launch instances on Google Cloud, Microsoft Azure, or Kubernetes.
+  TPI is a tool that can be used to quickly and cheaply provision cloud
+  instances. In this guide we will explore how we can use TPI to launch Jupyter
+  Server on an Amazon Web Services instance at the lowest possible cost. With
+  minor modifications you can also launch instances on Google Cloud, Microsoft
+  Azure, or Kubernetes.
 picture: 2022-06-01/tpi-jupyter-cover.jpeg
 author: rob_dewit
 # commentsUrl: TODO
@@ -17,8 +22,8 @@ tags:
 
 <admon type="info">
 
-This blog post is based on [@casperdcl's guide published over on
-Hackernoon](https://hackernoon.com/using-jupytertensorboard-in-any-cloud-with-one-command).
+This blog post is based on
+[@casperdcl's guide published over on Hackernoon](https://hackernoon.com/using-jupytertensorboard-in-any-cloud-with-one-command).
 
 </admon>
 
@@ -61,12 +66,11 @@ SageMaker:
 - **Hardware limitations:** they may still put a limit on the hardware available
   to you. Colab, for example, is capped at 25GB of RAM.
 
-Iterative provides an alternative to these services in the form of [TPI
-(Terraform Provider
-Iterative)](https://github.com/iterative/terraform-provider-iterative). This
-[Terraform](https://www.terraform.io/) plugin gives us the ability to easily
-launch Jupyter workspaces on any cloud provider, without needing to be a cloud
-expert.
+Iterative provides an alternative to these services in the form of
+[TPI (Terraform Provider Iterative)](https://github.com/iterative/terraform-provider-iterative).
+This [Terraform](https://www.terraform.io/) plugin gives us the ability to
+easily launch Jupyter workspaces on any cloud provider, without needing to be a
+cloud expert.
 
 Here are four benefits to TPI that might peak your interest:
 
@@ -89,22 +93,19 @@ Before you get started, make sure to take care of the following:
 
 1. [Download the Terraform CLI tool](https://www.terraform.io/downloads)
 1. [Set-up an AWS Account](https://aws.amazon.com/)
-1. [Install AWS
-   CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
-1. [Configure your AWS authentication credentials with `aws
-   configure`](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html)
+1. [Install AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
+1. [Configure your AWS authentication credentials with `aws configure`](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html)
 1. [Get a free ngrok account for port forwarding](https://ngrok.com/)
-1. [Set your ngrok access token as an environment variable with `export
-   NGROK_TOKEN="..."`](https://www.twilio.com/blog/2017/01/how-to-set-environment-variables.html)
+1. [Set your ngrok access token as an environment variable with `export NGROK_TOKEN="..."`](https://www.twilio.com/blog/2017/01/how-to-set-environment-variables.html)
 1. [Clone the example repository](https://github.com/iterative/blog-tpi-jupyter)
 
 <admon type="warn">
 
 The result of this guide will be a Jupyter server running on provisioned AWS
 hardware. While TPI helps you do this as cheaply as possible, there are still
-costs involved. Make sure you [understand AWS
-pricing](https://aws.amazon.com/ec2/pricing/) to avoid unwelcome charges to your
-credit card.
+costs involved. Make sure you
+[understand AWS pricing](https://aws.amazon.com/ec2/pricing/) to avoid unwelcome
+charges to your credit card.
 
 </admon>
 
@@ -134,9 +135,9 @@ urls = [
 
 <admon type="info">
 
-It may take a little while for TPI to provision the instance. If `terraform
-refresh` returns `urls = []` as its output, just wait a few minutes and run it
-again.
+It may take a little while for TPI to provision the instance. If
+`terraform refresh` returns `urls = []` as its output, just wait a few minutes
+and run it again.
 
 </admon>
 
@@ -187,8 +188,8 @@ resource "iterative_task" "jupyter_server" {
 The second part of the configuration is perhaps the most interesting. Here we
 provide the specifications for the instance Terraform should provision for us.
 In this case we would like a medium CPU and an NVIDIA T4 GPU, along with a 125GB
-disk. Because machine types vary between cloud vendors, [TPI does some
-translation](https://registry.terraform.io/providers/iterative/iterative/latest/docs/resources/task#machine-type)
+disk. Because machine types vary between cloud vendors,
+[TPI does some translation](https://registry.terraform.io/providers/iterative/iterative/latest/docs/resources/task#machine-type)
 from generic types (e.g. `s`/`m`/`l`/`xl`) to specific cloud machine types. This
 allows us to generalize these configurations and quickly switch from AWS to
 Azure, for example.
@@ -201,10 +202,10 @@ our cloud costs by a factor of 3.5!
 
 <admon type="tip">
 
-We could also set an upper limit to the price we are willing to pay (e.g. `spot
-= 0.12`), and TPI would hold off on provisioning until instances are available
-at that price. Disabling spot pricing (`spot = -1`) would let TPI provision
-instances at on-demand prices.
+We could also set an upper limit to the price we are willing to pay (e.g.
+`spot = 0.12`), and TPI would hold off on provisioning until instances are
+available at that price. Disabling spot pricing (`spot = -1`) would let TPI
+provision instances at on-demand prices.
 
 </admon>
 
@@ -280,8 +281,8 @@ This script also launches
 alongside Jupyter. It's not the main focus of this blog post, but it might be
 useful!
 
-If you don't want Tensorboard running, simply remove or comment out [line 78 of
-`main.tf`](https://github.com/iterative/blog-tpi-jupyter/blob/aws/main.tf#L78).
+If you don't want Tensorboard running, simply remove or comment out
+[line 78 of `main.tf`](https://github.com/iterative/blog-tpi-jupyter/blob/aws/main.tf#L78).
 
 </admon>
 
@@ -324,9 +325,8 @@ Jupyter Notebooks are a great tool for quick and easy prototyping. They do,
 however, have a few downsides. For one, they are difficult to version properly.
 As a result of this, it can be difficult to collaborate on one project without
 model versions running out-of-sync. Moreover, _runs_ of the project are not
-sufficiently reproducible: they require too many manual actions. [As Andrey
-Cheptsov puts
-it](https://mlopsfluff.dstack.ai/p/notebooks-and-mlops-choose-one?s=r):
+sufficiently reproducible: they require too many manual actions.
+[As Andrey Cheptsov puts it](https://mlopsfluff.dstack.ai/p/notebooks-and-mlops-choose-one?s=r):
 "Notebooks and MLOps; choose one."
 
 These downsides don't matter too much while only prototyping. But prototyping is
@@ -343,10 +343,10 @@ pipeline, we can use TPI to move it to the cloud!
 
 "How do I go about this?", you ask?
 
-We've got you covered! The [Iterative Tools for Data Scientists &
-Analysts](https://learn.iterative.ai/course/data-scientist-path) course covers
-this transformation extensively and is completely free to follow. It's easier to
-accomplish than it may seem at first.
+We've got you covered! The
+[Iterative Tools for Data Scientists & Analysts](https://learn.iterative.ai/course/data-scientist-path)
+course covers this transformation extensively and is completely free to follow.
+It's easier to accomplish than it may seem at first.
 
 Of course this whole exercise wasn't for naught. We still explored how to use
 TPI to great effect, and there are many use cases in which it will be helpful as
@@ -355,7 +355,9 @@ for example, where we use TPI to move local machine learning experiments to the
 cloud. You can follow that guide to get an idea of how to move pipelines to the
 cloud!
 
-Do you vehemently disagree with me about running Jupyter on a cloud instance? Am I just not understanding how it's the perfect solution? Let me know in the comments! 😄
+Do you vehemently disagree with me about running Jupyter on a cloud instance? Am
+I just not understanding how it's the perfect solution? Let me know in the
+comments! 😄
 
 <!-- ## Downsides to Google Colab
 
