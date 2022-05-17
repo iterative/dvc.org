@@ -124,9 +124,6 @@ the following commands:
 
 ```dvc
 $ dvc remote modify --local bikes access_key_id 'mykey'
-```
-
-```dvc
 $ dvc remote modify --local bikes secret_access_key 'mysecret'
 ```
 
