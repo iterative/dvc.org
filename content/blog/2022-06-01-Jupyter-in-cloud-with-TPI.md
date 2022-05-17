@@ -177,6 +177,119 @@ resource "iterative_task" "jupyter_server" {
   }
 ```
 
+The second part of the configuration is perhaps the most interesting. Here we
+provide the specifications for the instance Terraform should provision for us.
+In this case we would like a medium CPU and an NVIDIA T4 GPU, along with a 125GB
+disk. Because machine types vary between cloud vendors,
+[TPI does some translation](https://registry.terraform.io/providers/iterative/iterative/latest/docs/resources/task#machine-type)
+from generic types (e.g. `s`/`m`/`l`/`xl`) to specific cloud machine types. This
+allows us to generalize these configurations and quickly switch from AWS to
+Azure, for example.
+
+Of particular interest here is the `spot = 0`, which tells TPI to provision spot
+instances instead of on-demand pricing. At the time of writing, the on-demand
+hourly rate for this instance is $0.526. Spot instances, on the other hand, are
+only $0.15 per hour. With little to no effort, TPI allows us to reduce our cloud
+costs by a factor of 3.5!
+
+<admon type="tip">
+
+We could also set an upper limit to the price we are willing to pay (e.g.
+`spot = 0.12`), and TPI would hold off on provisioning until instances are
+available at that price. Disabling spot pricing (`spot = -1`) would let TPI
+provision instances at on-demand prices.
+
+</admon>
+
+After specifying the details for the hardware, we configure a few environment
+variables for the instance. We also set the local working directory for the
+script and the results directory to download from (relative to the working
+directory). In this case, both are the `shared` directory.
+
+```bash
+script = <<-END
+    #!/bin/bash
+    set -euo pipefail
+    if test "$GITHUB_USER" != username; then
+      # SSH debugging
+      trap 'echo script error: waiting for debugging over SSH. Run \"terraform destroy\" to stop waiting; sleep inf' ERR
+      mkdir -p "$HOME/.ssh"
+      curl -fsSL "https://github.com/$GITHUB_USER.keys" >> "$HOME/.ssh/authorized_keys"
+    fi
+    export CUDACXX=/usr/local/cuda/bin/nvcc
+    export DEBIAN_FRONTEND=noninteractive
+    sed -ri 's#^(APT::Periodic::Unattended-Upgrade).*#\1 "0";#' /etc/apt/apt.conf.d/20auto-upgrades
+    dpkg-reconfigure unattended-upgrades
+    # install dependencies
+    pip3 install $${QUIET:+-q} jupyterlab notebook matplotlib ipywidgets tensorflow==2.8.0 tensorboard tensorflow_datasets
+    (curl -fsSL https://deb.nodesource.com/setup_16.x | bash -) >/dev/null
+    apt-get install -y $${QUIET:+-qq} nodejs
+
+    # start tunnel
+    export JUPYTER_TOKEN="$(uuidgen)"
+    pushd "$(mktemp -d --suffix dependencies)"
+    npm i ngrok
+    npx ngrok authtoken "$NGROK_TOKEN"
+    (node <<TUNNEL
+    const fs = require('fs');
+    const ngrok = require('ngrok');
+    (async function() {
+      const jupyter = await ngrok.connect(8888);
+      const tensorboard = await ngrok.connect(6006);
+      const br = '\n*=*=*=*=*=*=*=*=*=*=*=*=*\n';
+      fs.writeFileSync("log.md", \`\$${br}URL: Jupyter Lab: \$${jupyter}/lab?token=$${JUPYTER_TOKEN}\$${br}URL: Jupyter Notebook: \$${jupyter}/tree?token=$${JUPYTER_TOKEN}\$${br}URL: TensorBoard: \$${tensorboard}\$${br}\`);
+    })();
+    TUNNEL
+    ) &
+    while test ! -f log.md; do sleep 1; done
+    cat log.md
+    popd # dependencies
+
+    # start tensorboard in background
+    env -u JUPYTER_TOKEN -u AWS_ACCESS_KEY_ID -u AWS_SECRET_ACCESS_KEY -u REPO_TOKEN tensorboard --logdir . --host 0.0.0.0 --port 6006 &
+
+    # start Jupyter server in foreground
+    env -u AWS_ACCESS_KEY_ID -u AWS_SECRET_ACCESS_KEY -u REPO_TOKEN jupyter lab --allow-root --ip=0.0.0.0 --no-browser --port=8888 --port-retries=0
+  END
+}
+```
+
+The second-to-last part of `main.tf` contains the script that will run once the
+instance has been provisioned. These are CLI commands as you would run them in
+your local terminal. We won't discuss every individual line, but in broad
+strokes the script does the following:
+
+1. Run a few configuration commands
+1. Install the dependencies we will be needing
+1. Start an ngrok tunnel so that we can easily access the server through our
+   browser
+1. Launch the Jupyter server
+
+<admon type="info">
+
+This script also launches
+[Tensorboard](https://www.tensorflow.org/tensorboard/get_started) to run
+alongside Jupyter. Not the main focus of this blog post, but it might be useful!
+If you don't want Tensorboard running, simply remove or comment out
+[line 78 of `main.tf`](https://github.com/iterative/blog-tpi-jupyter/blob/aws/main.tf#L78).
+
+</admon>
+
+As you can see, the possibilities for the scripts we can run through TPI are
+extensive. We could add commands clone a Git repository, for example. Or we
+could pull data in from a [DVC](https://dvc.org/) remote. This flexibility
+allows us to tailor the instance TPI provisions precisely to our needs.
+
+```bash
+output "urls" {
+  value = flatten(regexall("URL: (.+)", try(join("\n", iterative_task.jupyter_server.logs), "")))
+}
+```
+
+Lastly, we specify the outputs for our script. This is the value that Terraform
+returns after provisioning our instance. In this case, we are returning the URLs
+through which we can access the Jupyter server.
+
 # Next steps: rethink this approach
 
 Great! After going through this guide we know how to use TPI to launch Jupyter
