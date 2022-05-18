@@ -56,9 +56,9 @@
 
 .rssLink {
   @mixin h3-desktop;
+
   color: #fff;
   display: block;
-
   margin: 15px auto;
   text-align: center;
 
