@@ -262,11 +262,11 @@ methods that are performed by DVC (`list_objects_v2` or `list_objects`,
   $ dvc remote modify --local myremote sse_kms_key_id 'key-alias'
   ```
 
-- `sse_customer_key` - key to encrypt data uploaded when using
-  customer-provided encryption keys
+- `sse_customer_key` - key to encrypt data uploaded when using customer-provided
+  encryption keys
   ([SSE-C](https://docs.aws.amazon.com/AmazonS3/latest/userguide/ServerSideEncryptionCustomerKeys.html)).
-  instead of `sse`. The value should be a base64-encoded 256 bit key.
-  Requires also setting the `sse_customer_algorithm` param (below).
+  instead of `sse`. The value should be a base64-encoded 256 bit key. Requires
+  also setting the `sse_customer_algorithm` param (below).
 
   ```dvc
   $ dvc remote modify --local myremote sse_customer_key 'mysecret'
