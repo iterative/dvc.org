@@ -9,6 +9,19 @@ https://www.youtube.com/watch?v=hKf4twg832g
    using your GitHub.com, GitLab.com or Bitbucket.org account, or your email
    address.
 
+<admon type="info">
+
+When you sign up, you're on the **Free plan** by default. To sign up for the
+**Team plan**, you should first [create a team](/doc/studio/user-guide/teams).
+Then go to the [team's settings page](/doc/studio/user-guide/teams#settings) and
+in the `Plan and billing` section, click on `Change plan`. To sign up for the
+**Enterprise plan**,
+[contact us](https://calendly.com/gtm-2/studio-introduction). To compare the
+different plans, check out our
+[pricing details](https://studio.iterative.ai/#pricing).
+
+</admon>
+
 2. If this is the first time you are signing in to Iterative Studio, you will
    see that there already exists a `Demo` view that connects to an example DVC
    project. Use this view to explore the features that Iterative Studio has to

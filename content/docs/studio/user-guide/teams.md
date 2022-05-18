@@ -1,6 +1,6 @@
 # Teams
 
-You can define teams with one or more team members. The team members are also
+You can create teams with one or more team members. The team members are also
 called collaborators, and you can assign different roles to them. The views that
 you create in your team's page will be accessible to all members of the team.
 
@@ -11,6 +11,7 @@ In this section, you will learn about:
 - [The privileges (access permissions) of different roles](#roles)
 - [How to manage the team and its views](#manage-your-team-and-its-views)
 - [How to manage connections to self-hosted GitLab servers](#manage-connections-to-self-hosted-gitlab-servers)
+- [Why and how to change your team plan and team size](#change-your-team-plan-and-team-size)
 
 ## Create a team
 
@@ -103,7 +104,7 @@ Once you have created the team, the team's workspace opens up.
 In this workspace, there are 2 pages - [Views](#views) and
 [Settings](#settings).
 
-### Views
+## Views
 
 This is the views dashboard for the team. All the views on this dashboard are
 accessible to all members (collaborators) of the team.
@@ -112,7 +113,7 @@ To add a view to this dashboard, click on `Add a view`. The process for adding a
 view is the same as that for adding personal views
 ([instructions](/doc/studio/user-guide/views/create-view)).
 
-### Settings
+## Settings
 
 In the team settings page, you can change the team name, add credentials for the
 data remotes, and delete the team. Note that these settings are applicable to
@@ -120,10 +121,11 @@ the team and are thus different from
 [view settings](/doc/studio/user-guide/views/view-settings).
 
 Additionally, you can also
-[manage connections to self-hosted GitLab servers](#manage-connections-to-self-hosted-gitlab-servers)
-and [edit collaborators](#edit-collaborators).
+[manage connections to self-hosted GitLab servers](#manage-connections-to-self-hosted-gitlab-servers),
+[edit collaborators](#edit-collaborators) and
+[change your team plan](#change-your-team-plan).
 
-#### **Manage connections to self-hosted GitLab servers**
+### Manage connections to self-hosted GitLab servers
 
 If your team’s Git repositories are on a self-hosted GitLab server, you can go
 to the `GitLab connections` section of the team settings page to set up a
@@ -131,11 +133,37 @@ connection to this server. Once you set up the connection, all your team members
 can connect to the Git repositories on this server. For more details, refer to
 [Custom GitLab Server Connection](/doc/studio/user-guide/connect-custom-gitlab-server).
 
-#### **Edit collaborators**
+### Edit collaborators
 
 To manage the collaborators (team members) of your team, go to the
 `Collaborators` section of the team settings page. Here you can invite new team
 members as well as remove or change the [roles](#roles) of existing team
 members.
 
-![](https://static.iterative.ai/img/studio/team_settings_v3.png)
+The number of collaborators in your team depends on your team plan. By default,
+all teams are on the Free plan, and can have 2 collaborators. To add more
+collaborators, [upgrade to the Team or Enterprise plan](#change-your-team-plan).
+
+All collaborators and pending invites get counted in the subscription. Suppose
+you have subscribed for a 10 member team. If you have 5 members who have
+accepted your team invite and 3 pending invites, then you will have 2 remaining
+seats. This means that you can invite 2 more collaborators. At this point, if
+you remove any one team member or pending invite, that seat becomes available
+and so you will have 3 remaining seats.
+
+### Change your team plan and team size
+
+Your team can be in the **Free**, **Team** or **Enterprise** plan. All newly
+created teams are on the Free plan. This plan is designed for teams just
+starting out with collaboration: you can invite one other team member and import
+as many repositories as you want. For more advanced collaboration functionality,
+you can upgrade to the Team or Enterprise plans. A detailed comparison of the
+different plans can be found in the Studio
+[pricing page](https://studio.iterative.ai/#pricing).
+
+- **To upgrade** from the Free plan to the Team or Enterprise plan or to
+  downgrade your team plan, refer to the section on
+  [changing your team plan](/doc/studio/user-guide/change-team-plan-and-size#change-team-plan).
+
+- **To change the number of seats** in your Team plan, refer to the section on
+  [changing your team size](/doc/studio/user-guide/change-team-plan-and-size#change-team-size).
