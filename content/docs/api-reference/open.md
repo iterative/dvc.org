@@ -11,7 +11,7 @@ def open(path: str,
          encoding: str = None)
 ```
 
-#### Usage:
+## Usage
 
 ```py
 import dvc.api
