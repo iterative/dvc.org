@@ -2,9 +2,10 @@
   box-sizing: border-box;
   position: relative;
   display: flex;
+  flex-flow: column nowrap;
   align-items: center;
+  justify-content: center;
   min-height: 300px;
-  padding: 20px 15px 30px;
   background-color: #13adc7;
 
   @media (--xs-scr) {
@@ -14,6 +15,7 @@
 
 .container {
   margin: 0 auto;
+  padding: 20px 15px 30px;
   width: 100%;
   max-width: 1000px;
 }
@@ -38,7 +40,7 @@
     left: 28px;
   }
 
-  &.rigthbottom {
+  &.rightbottom {
     bottom: -60px;
     right: 28px;
   }
@@ -50,6 +52,19 @@
   color: #fff;
   margin: 0 auto;
   text-align: center;
+}
+
+.rssLink {
+  @mixin h3-desktop;
+  color: #fff;
+  display: block;
+
+  margin: 15px auto;
+  text-align: center;
+
+  a {
+    color: inherit;
+  }
 }
 
 .subscribeContainer {
