@@ -55,12 +55,12 @@
 }
 
 .rssLink {
-  @mixin h3-desktop;
-
   color: #fff;
   display: block;
-  margin: 15px auto;
+  margin: 15px auto 0;
   text-align: center;
+  font-weight: bold;
+  font-size: 1.1em;
 
   a {
     color: inherit;

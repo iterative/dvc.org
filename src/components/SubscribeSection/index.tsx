@@ -18,9 +18,8 @@ const SubscribeSection: React.FC = () => (
         <SubscribeForm />
       </div>
       <div className={styles.rssLink}>
-        <a href="/blog/rss.xml">
-          Keep updated on blog posts with our RSS Feed!
-        </a>
+        Keep updated on blog posts with{' '}
+        <a href="/blog/rss.xml">our RSS Feed!</a>
       </div>
     </div>
     <img
