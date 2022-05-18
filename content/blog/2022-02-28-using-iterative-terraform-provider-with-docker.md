@@ -12,9 +12,15 @@ author: maria_khalusova
 #  todo: commentsUrl:
 tags:
   - MLOps
-  - Iterative Terraform Provider
+  - TPI
   - AWS
   - Docker
+  - Terraform
+  - Git
+  - Python
+  - Tutorial
+  - Cloud orchestration
+  - Spot instance management
 ---
 
 Recently we have
