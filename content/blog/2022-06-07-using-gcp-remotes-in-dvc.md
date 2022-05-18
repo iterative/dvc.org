@@ -108,15 +108,25 @@ In order for DVC to be able to push and pull data from the remote, you need to
 have valid AWS credentials.
 
 If you are using the GCP CLI already, you should be able to run
-`gcloud auth application-default login`. You can also authenticate with
-`GOOGLE_APPLICATION_CREDENTIALS` which we have from the service account earlier.
+`gcloud auth application-default login`. You can also authenticate with the
+service account we created earlier in a couple of ways with that credentials
+file we downloaded.
+
+You can set the `GOOGLE_APPLICATION_CREDENTIALS` environment variable to point
+to the credentials file, like this:
+
+```dvc
+$ export GOOGLE_APPLICATION_CREDENTIALS='../tonal-history-154018-e62a79baf90f.json'
+```
+
+Or you can add the credentials file location with the following command:
+
+```dvc
+$ dvc remote modify bikes credentialpath '../tonal-history-154018-e62a79baf90f.json'
+```
+
 You can check out more about authentication
 [here in the GCP docs](https://cloud.google.com/sdk/docs/authorizing).
-
-If you run into issues with the credentials, you can manually add them with the
-following commands:
-
-`$ dvc remote modify bikes credentialpath '../tonal-history-154018-e62a79baf90f.json'`
 
 ### Push and pull data with DVC
 
@@ -131,8 +141,14 @@ command:
 
 `$ dvc push`
 
+Here's what that data will look like when it has been successfully uploaded to
+GCP.
+
+![data in GCP](/uploads/images/2022-06-07/data_in_gcp.png)
+
 Then if you move to a different machine or someone else needs to use that data,
-it can be accessed by connecting to the remote and running:
+it can be accessed by cloning or forking the project repo, connecting to the
+remote and running:
 
 `$ dvc pull`
 
