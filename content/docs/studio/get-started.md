@@ -9,13 +9,6 @@ https://www.youtube.com/watch?v=hKf4twg832g
    using your GitHub.com, GitLab.com or Bitbucket.org account, or your email
    address.
 
-   <admon type="info">
-
-   When you sign up with your email address, Studio will send you a verification
-   email before you can login.
-
-   </admon>
-
 2. If this is the first time you are signing in to Iterative Studio, you will
    see that there already exists a `Demo` view that connects to an example DVC
    project. Use this view to explore the features that Iterative Studio has to

@@ -296,7 +296,8 @@ jobs:
             -x actual \
             -y predicted \
             --show-vega master > vega.json
-          vl2png vega.json -s 1.5 | cml publish --md >> report.md
+          vl2png vega.json -s 1.5 > plot.png
+          cml publish --md plot.png >> report.md
 
           # Publish regularization function diff
           echo "### Effects of regularization" >> report.md
@@ -304,7 +305,8 @@ jobs:
             --target estimators.csv \
             -x Regularization \
             --show-vega master > vega.json
-          vl2png vega.json -s 1.5 | cml publish --md >> report.md
+          vl2png vega.json -s 1.5 > plot.png
+          cml publish --md plot.png >> report.md
 
           cml send-comment report.md
 ```

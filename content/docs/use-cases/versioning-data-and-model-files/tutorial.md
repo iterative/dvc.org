@@ -91,8 +91,8 @@ $ rm -f data.zip
 > repository</abbr> (and [stored remotely](/doc/command-reference/remote)). It's
 > like `wget`, but for DVC or Git repos. In this case we use our
 > [dataset registry](https://github.com/iterative/dataset-registry) repo as the
-> data source (refer to [Data Registries](/doc/use-cases/data-registries) for
-> more info.)
+> data source (refer to [Data Registry](/doc/use-cases/data-registry) for more
+> info.)
 
 This command downloads and extracts our raw dataset, consisting of 1000 labeled
 images for training and 800 labeled images for validation. In total, it's a 43

@@ -9,6 +9,7 @@ class Live:
         self,
         path: Optional[str] = None,
         resume: bool = False,
+        report: Optional[str] = "html",
     ):
 ```
 
@@ -36,10 +37,12 @@ other metadata.
 
 - `dir` - Location of the directory to store
   [outputs](/doc/dvclive/get-started#outputs).
-- `summary_path` - Location of the
-  [summary](/doc/dvclive/api-reference/live/#parameters).
-- `html_path` - Location of the
-  [html report](/doc/dvclive/dvclive-with-dvc#html-report).
+
+- `summary_path` - `{dir}.json`. Location of the
+  [summary](/doc/dvclive/api-reference/live/log#description).
+
+- `html_path` - `{dir}/report.html`. Location of the
+  [html report](/doc/dvclive/api-reference/live/make_report#description).
 
 ## Parameters
 
@@ -59,17 +62,18 @@ other metadata.
 
   </admon>
 
-## Exceptions
+- `report` - If `html`, DVCLive will call `Live.make_report()` on each step
+  update. _Default_: `html`.
 
-- `dvclive.error.ConfigMismatchError` - thrown if the provided `path` does not
-  match with the one set in DVC (see
-  [DVCLive with DVC](/docs/dvclive/dvclive-with-dvc))
+- `auto_open` - If `True`, on the first `Live.make_report()` call, DVCLive will
+  automatically open `html_path` in a browser. _Default_: `False`.
 
 ## Methods
 
 - `Live.log()`
 - `Live.log_image()`
 - `Live.log_plot()`
+- `Live.make_report()`
 - `Live.get_step()`
 - `Live.next_step()`
 - `Live.set_step()`

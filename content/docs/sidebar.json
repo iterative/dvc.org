@@ -106,7 +106,7 @@
       },
       "experiment-tracking",
       "model-registry",
-      "data-registries"
+      "data-registry"
     ]
   },
   {
@@ -685,6 +685,10 @@
               {
                 "slug": "log_plot",
                 "label": "log_plot()"
+              },
+              {
+                "slug": "make_report",
+                "label": "make_report()"
               },
               {
                 "slug": "get_step",

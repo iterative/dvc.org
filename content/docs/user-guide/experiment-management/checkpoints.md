@@ -97,12 +97,10 @@ $ dvc stage add --name train \
                 --params seed,lr,weight_decay \
                 --checkpoints model.pt \
                 --plots-no-cache predictions.json \
-                --live dvclive \
+                --plots-no-cache dvclive/scalars \
+                --metrics-no-cache dvclive.json
                 python train.py
 ```
-
-💡 The `--live dvclive` option enables our special logger
-[DVCLive](/doc/dvclive), which helps you register checkpoints from code.
 
 The checkpoints need to be enabled in DVC at the pipeline level. The
 `-c / --checkpoint` option of the `dvc stage add` command defines the checkpoint
@@ -132,13 +130,14 @@ stages:
     outs:
       - model.pt:
           checkpoint: true
+    metrics:
+      - dvclive.json:
+          cache: false
     plots:
+      - dvclive/scalars:
+          cache: false
       - predictions.json:
           cache: false
-    live:
-      dvclive:
-        summary: true
-        html: true
 ```
 
 ⚠️ Note that enabling checkpoints in a `dvc.yaml` file makes it incompatible
