@@ -44,8 +44,29 @@ If the `--cloud` (`-c`) flag is used, this command deletes unused data from the
 to deleting it from the local DVC cache. To specify a DVC remote to delete from,
 use the `--remote` (`-r`) option.
 
-> ⚠️ Danger: cloud deletion is irreversible unless there is another DVC remote
-> or a manual backup with the same data.
+<admon type="warn">
+
+Cloud deletion is irreversible unless there is another DVC remote or a manual
+backup with the same data.
+
+</admon>
+
+### Cleaning shared cache (or remote)
+
+If a [cache is shared] among different projects that track some of the same
+files, using `dvc gc` in one project will break those overlapping data links in
+the other projects.
+
+To prevent this, use the `--projects` (`-p`) option. It takes one or more paths
+to the DVC project(s) whose data should be preserved. Make sure that all the
+commits and branches that reference files you want to keep have been pulled in
+those other projects first.
+
+For example, if we have several projects with some overlapping files and we'd
+like to collect all the data that's only used in one of them (e.g. if we no
+longer need that projects), we would first clone all the other projects, fetch
+all their branches, and pass their paths to the `dvc gc -p` command from the
+project we want to clear.
 
 ## Options
 
@@ -75,17 +96,15 @@ use the `--remote` (`-r`) option.
 
   > \* Not including [DVC experiments]
 
-[dvc experiments]: /doc/user-guide/experiment-management#experiments
-
 - `--all-experiments` keep cached objects referenced in all [DVC experiments],
   as well as in the workspace (implying `-w`). This preserves the project's
   [experimental](/doc/user-guide/experiment-management) data (including
   checkpoints). See also `dvc exp gc`.
 
-- `-p <paths>`, `--projects <paths>` - if a single remote or a single
-  [cache is shared](/doc/user-guide/how-to/share-a-dvc-cache) among different
-  projects, this option can be used to specify a list of them (each project is a
-  path) to keep data that is currently referenced from them.
+- `-p <paths>`, `--projects <paths>` - if a single remote or a single [cache is
+  shared] among different projects, this option can be used to specify a list of
+  them (each project is a path) to keep data that is currently referenced from
+  them.
 
 - `-c`, `--cloud` - remove files in remote storage in addition to local cache.
   **This option is dangerous.** The default remote is used unless a specific one
@@ -111,6 +130,9 @@ use the `--remote` (`-r`) option.
   problems arise, otherwise 1.
 
 - `-v`, `--verbose` - displays detailed tracing information.
+
+[cache is shared]: /doc/user-guide/how-to/share-a-dvc-cache
+[dvc experiments]: /doc/user-guide/experiment-management#experiments
 
 ## Examples
 

@@ -3441,6 +3441,13 @@
   dependencies:
     "@types/node" "*"
 
+"@types/http-proxy@^1.17.8":
+  version "1.17.8"
+  resolved "https://registry.yarnpkg.com/@types/http-proxy/-/http-proxy-1.17.8.tgz#968c66903e7e42b483608030ee85800f22d03f55"
+  integrity sha512-5kPLG5BKpWYkw/LVOGWpiq3nEVqxiN32rTgI53Sk12/xHFQ2rG3ehI9IO+O3W2QoKeyB92dJkoka8SUm6BX1pA==
+  dependencies:
+    "@types/node" "*"
+
 "@types/isomorphic-fetch@^0.0.35":
   version "0.0.35"
   resolved "https://registry.npmjs.org/@types/isomorphic-fetch/-/isomorphic-fetch-0.0.35.tgz"
@@ -5244,20 +5251,10 @@ caniuse-api@^3.0.0:
     lodash.memoize "^4.1.2"
     lodash.uniq "^4.5.0"
 
-caniuse-lite@^1.0.0, caniuse-lite@^1.0.30001125, caniuse-lite@^1.0.30001265:
-  version "1.0.30001269"
-  resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001269.tgz"
-  integrity sha512-UOy8okEVs48MyHYgV+RdW1Oiudl1H6KolybD6ZquD0VcrPSgj25omXO1S7rDydjpqaISCwA8Pyx+jUQKZwWO5w==
-
-caniuse-lite@^1.0.30001272:
-  version "1.0.30001283"
-  resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001283.tgz"
-  integrity sha512-9RoKo841j1GQFSJz/nCXOj0sD7tHBtlowjYlrqIUS812x9/emfBLBt6IyMz1zIaYc/eRL8Cs6HPUVi2Hzq4sIg==
-
-caniuse-lite@^1.0.30001280:
-  version "1.0.30001280"
-  resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001280.tgz"
-  integrity sha512-kFXwYvHe5rix25uwueBxC569o53J6TpnGu0BEEn+6Lhl2vsnAumRFWEBhDft1fwyo6m1r4i+RqA4+163FpeFcA==
+caniuse-lite@^1.0.0, caniuse-lite@^1.0.30001125, caniuse-lite@^1.0.30001265, caniuse-lite@^1.0.30001272, caniuse-lite@^1.0.30001280:
+  version "1.0.30001332"
+  resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001332.tgz"
+  integrity sha512-10T30NYOEQtN6C11YGg411yebhvpnC6Z102+B95eAsN0oB6KUs01ivE8u+G6FMIRtIrVlYXhL+LUwQ3/hXwDWw==
 
 capture-exit@^2.0.0:
   version "2.0.0"
@@ -9469,6 +9466,17 @@ http-proxy-agent@^4.0.1:
     agent-base "6"
     debug "4"
 
+http-proxy-middleware@^2.0.6:
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/http-proxy-middleware/-/http-proxy-middleware-2.0.6.tgz#e1a4dd6979572c7ab5a4e4b55095d1f32a74963f"
+  integrity sha512-ya/UeJ6HVBYxrgYotAZo1KvPWlgB48kUJLDePFeneHsVujFaW5WNj2NgWCAE//B1Dl02BIfYlpNgBy8Kf8Rjmw==
+  dependencies:
+    "@types/http-proxy" "^1.17.8"
+    http-proxy "^1.18.1"
+    is-glob "^4.0.1"
+    is-plain-obj "^3.0.0"
+    micromatch "^4.0.2"
+
 http-proxy@^1.18.1:
   version "1.18.1"
   resolved "https://registry.npmjs.org/http-proxy/-/http-proxy-1.18.1.tgz"
@@ -10045,6 +10053,11 @@ is-plain-obj@^2.0.0:
   version "2.1.0"
   resolved "https://registry.npmjs.org/is-plain-obj/-/is-plain-obj-2.1.0.tgz"
   integrity sha512-YWnfyRwxL/+SsrWYfOpUtz5b3YD+nyfkHvjbcanzk8zgyO4ASD67uVMRt8k5bM4lLMDnXfriRhOpemw+NfT1eA==
+
+is-plain-obj@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/is-plain-obj/-/is-plain-obj-3.0.0.tgz#af6f2ea14ac5a646183a5bbdb5baabbc156ad9d7"
+  integrity sha512-gwsOE28k+23GP1B6vFl1oVh/WOzmawBrKwo5Ev6wMKzPkaXaCDIQKzLnvsA42DRlbVTWorkgTKIviAKCWkfUwA==
 
 is-plain-object@^2.0.3, is-plain-object@^2.0.4:
   version "2.0.4"
@@ -14630,10 +14643,10 @@ repeat-string@^1.0.0, repeat-string@^1.5.4, repeat-string@^1.6.1:
   resolved "https://registry.npmjs.org/repeat-string/-/repeat-string-1.6.1.tgz"
   integrity sha1-jcrkcOHIirwtYA//Sndihtp15jc=
 
-repo-link-check@^0.8.0:
-  version "0.8.0"
-  resolved "https://registry.npmjs.org/repo-link-check/-/repo-link-check-0.8.0.tgz"
-  integrity sha512-v9i/go/athEugxbFocyVIgRZeKodGlTYrw1gywKQBNCSuMcmSBONh2/BCFQAe8DMa68+c2tvKixyw9LOhn7vKQ==
+repo-link-check@^0.11.0:
+  version "0.11.0"
+  resolved "https://registry.yarnpkg.com/repo-link-check/-/repo-link-check-0.11.0.tgz#07c62b99df21f83dc5bacca55dfc5677dc920fe1"
+  integrity sha512-CffKg4SKFd53TuxuOBjavjsCoYlX6/E0TuELKgljhZ+8lZs9Lm7Lnv+f9sxte0RuaEvY1WKjLYy6yLL/2pQV+A==
   dependencies:
     bottleneck "^2.19.5"
     commander "^6.1.0"
