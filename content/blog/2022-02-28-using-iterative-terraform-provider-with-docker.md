@@ -23,41 +23,38 @@ tags:
   - Spot instance management
 ---
 
-Recently we have
-[published a tutorial](2022-01-15-moving-local-experiments-to-the-cloud-with-iterative-terraform-provider.md)
-that demonstrated how you can move a machine learning experiment from a local
-computer to a more powerful cloud machine with some help from the
-[Iterative Terraform Provider](https://registry.terraform.io/providers/iterative/iterative/latest).
-We've talked about [Terraform](https://www.terraform.io), Iterative Terraform
-Provider and how you can configure the `iterative_task` resource to provision
-infrastructure, sync data and run your training script.
+We recently [published a tutorial][bees-part-1] on using [Terraform Provider
+Iterative (TPI)][tpi] to move a machine learning experiment from your local
+computer to a more powerful cloud machine. We've covered how you can use
+[Terraform](https://www.terraform.io) & TPI to provision infrastructure, sync
+data, and run training scripts. To simplify the setup, we used a pre-configured
+[Ubuntu/NVIDIA image](https://registry.terraform.io/providers/iterative/iterative/latest/docs/resources/task#machine-image).
+However, instead of using a pre-configured image, we can use custom
+[Docker](https://www.docker.com) images. These are often
+[recommended in machine learning](https://aws.amazon.com/blogs/opensource/why-use-docker-containers-for-machine-learning-development/)
+as well as in traditional software development.
 
-To make it easy to get started, we used a pre-configured
-[Deep Learning AMI from AWS](https://aws.amazon.com/machine-learning/amis/) to
-simplify the environment setup. In most cases, however, instead of using a
-pre-configured Deep Learning AMI, you will ship your environment to a remote
-machine using [Docker](https://www.docker.com) which has become an essential
-tool not only in traditional software development, but also in machine learning.
-If you're not sure why it would be a good idea to use Docker for machine
-learning development, check out
-[this article from AWS](https://aws.amazon.com/blogs/opensource/why-use-docker-containers-for-machine-learning-development/)
-that should answer this question for you. As a side note, using Docker to
-encapsulate your environment doesn't mean you won't be using AMIs at all. In
-fact, AMI (Amazon Machine Image) is actually a required component of setting up
-an EC2, and at the minimum you will need an Ubuntu distribution AMI (which is a
-configurable default for the `iterative_task`). However, we will use Docker for
-the machine learning specific setup: drivers, GPU-specific libraries for
-accelerated math, and Python libraries. This separation will not only give you
-more control over the versions of the frameworks that you choose to use (or not
-use), but also over the cloud provider you provision the resources with. Your
-Docker image is cloud provider agnostic.
+[bees-part-1]: /blog/local-experiments-to-the-cloud-with-tpi
+[tpi]: https://github.com/iterative/terraform-provider-iterative
 
-If you have a DevOps team, they can build a Docker image suited for your needs,
-so you'll only need to use it in your `iterative_task` script. We'll show you
-how to do this in the first part of this tutorial. But if you need (or want) to
-build your own Docker image, we've got you too! The second part of this tutorial
-will illustrate some basics required for building and using your own Docker
-image. Without further ado, let's get into it!
+<admon type="info">
+
+Using Docker to manage dependencies (e.g. Python packages) does not remove all
+other setup requirements. You'll still need docker itself installed, as well as
+GPU runtime drivers if applicable. Happily, TPI sets these up by default.
+
+</admon>
+
+Separation of dependencies into Docker images will give you more control over
+the software versions, and also makes it trivial to switch between cloud
+providers -- currently Amazon Web Services (AWS), Microsoft Azure, Google Cloud
+Platform, and Kubernetes. Your Docker image is cloud provider-agnostic. There
+are thousands of [pre-defined Docker images online](https://hub.docker.com/)
+too.
+
+In the first part of this tutorial, we'll use an existing Docker image. The
+second part of this tutorial will then cover some basics for building and using
+your own Docker images.
 
 ## Setting up environment for utilizing GPUs with Docker
 
