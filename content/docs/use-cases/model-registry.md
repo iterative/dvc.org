@@ -4,8 +4,8 @@ A **model registry** is a tool to catalog ML models and their versions. Models
 from your data science projects can be discovered, audited, shared, tested, and
 deployed from here. [Iterative](https://iterative.ai/) tools like
 [DVC](https://dvc.org/doc), [GTO], and [MLEM] enable these capabilities on top
-of Git, so you can stick to an existing software engineering stack. No more
-divide between ML engineering and operations!
+of Git, so you can stick to existing software engineering stacks. No more divide
+between ML Engineering and Ops!
 
 ![](/img/ml_model_registry_placement.jpg) _A common placement for model
 registries unifies ML development and application. See also [Data Registries]._
