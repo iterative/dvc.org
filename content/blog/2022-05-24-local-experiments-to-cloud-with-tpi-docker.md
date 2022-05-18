@@ -58,84 +58,60 @@ In the first part of this tutorial, we'll use an existing Docker image. The
 second part of this tutorial will then cover some basics for building and using
 your own Docker images.
 
-## Setting up environment for utilizing GPUs with Docker
+## Run GPU-enabled Docker containers
 
-If you haven't read the
-[previous tutorial](2022-01-15-moving-local-experiments-to-the-cloud-with-iterative-terraform-provider.md)
-yet and are not familiar with Terraform, I would encourage you to check it out
-and learn some basics, i.e. how to let Terraform know that you'll be using the
-Iterative Provider, how to initialize the working directory with
-`terraform init`, how to use other essential Terraform commands (`plan`,
-`apply`, `refresh`, `show`, `destroy`). All these will apply here, we'll only
-modify the script part of the `main.tf`.
+<admon type="warn">
 
-Let's say we have a DevOps team that has carefully prepared a Docker image
-suitable for data science and machine learning. To illustrate this, we can use a
-publicly available CML Docker image (`docker://iterativeai/cml`) provided by
-Iterative. This image comes loaded with Python, CUDA, git, node and other
-essentials for full-stack data science. There are
-[several versions of this image](https://cml.dev/doc/self-hosted-runners#docker-images),
-but for this example we'll take `docker://iterativeai/cml:0-dvc2-base1-gpu`,
-which includes Ubuntu 20.04, Python 3.8 (CUDA 11.0.3, CuDNN 8).
+If you haven't read the [previous tutorial][bees-part-1], you should check out
+the basics there first. This includes how to let Terraform know about TPI, and
+essential commands (`init`, `apply`, `refresh`, `show`, and `destroy`).
 
-Here's what the script is going to look like:
+</admon>
+
+The only modification from the [previous tutorial][bees-part-1] is the script
+part of the `main.tf` config file.
+
+Let's say we've found a carefully prepared a Docker image suitable for data
+science and machine learning -- in this case,
+[`iterativeai/cml:0-dvc2-base1-gpu`](https://cml.dev/doc/self-hosted-runners#docker-images).
+This image comes loaded with Ubuntu 20.04, Python 3.8, NodeJS, CUDA 11.0.3,
+CuDNN 8, Git, [CML](https://cml.dev), [DVC](https://dvc.org), and other
+essentials for full-stack data science.
+
+Our `script` block is now:
 
 ```hcl
-   script = <<-END
-   #!/bin/bash
-   sudo apt update -qq && sudo apt install -yqq software-properties-common build-essential ubuntu-drivers-common
-   sudo ubuntu-drivers autoinstall
-   sudo curl -fsSL https://get.docker.com | sudo sh -
-   sudo usermod -aG docker ubuntu
-   sudo setfacl --modify user:ubuntu:rw /var/run/docker.sock
-   curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add -
-   curl -s -L https://nvidia.github.io/nvidia-docker/ubuntu20.04/nvidia-docker.list | sudo tee /etc/apt/sources.list.d/nvidia-docker.list
-   sudo apt update -qq && sudo apt install -yqq nvidia-docker2
-   sudo systemctl restart docker
-
-   nvidia-smi
-   docker run --rm --gpus all -v "$PWD:/tpi" -w /tpi iterativeai/cml:0-dvc2-base1-gpu \
-       /bin/bash -c "pip install -r requirements.txt; python src/train.py"
-   END
+script = <<-END
+  #!/bin/bash
+  docker run --gpus all -v "$PWD:/tpi" -w /tpi -e TF_CPP_MIN_LOG_LEVEL \
+    iterativeai/cml:0-dvc2-base1-gpu /bin/bash -c "
+  pip install -r requirements.txt tensorflow==2.8.0
+  python train.py --output results-gpu/metrics.json
+  "
+END
 ```
 
-As you can see, we still need to make sure to install the required drivers
-first. Then in order to use a Docker image, we'll need to install Docker itself,
-and sort out users, groups and permissions. Next, we'll install the
-`nvidia-docker` that will enable us to run GPU-accelerated Docker containers.
-Yes, GPUs will make you work for them before you can enjoy the accelerated
-training!
+Yes, it's quite long for a one-liner. Let's looks at the components:
 
-Finally, we can use Iterative's image to run our own container with this line:
+- `docker run`: Download the specified image, create a container from the image,
+  and run it.
+- `--gpus all`: Expose GPUs to the container.
+- `-v "$PWD:/tpi"`: Expose our current working directory (`$PWD`) within the
+  container (as path `/tpi`).
+- `-w /tpi`: Set the working directory of the container (to be `/tpi`).
+- `-e TF_CPP_MIN_LOG_LEVEL`: Expose the environment variable
+  `TF_CPP_MIN_LOG_LEVEL` to the container (in this case to control TensorFlow's
+  verbosity).
+- `iterativeai/cml:0-dvc2-base1-gpu`: The image we want to download & run a
+  container from.
+- `/bin/bash -c "pip install -r requirements.txt ... python train.py ..."`:
+  Commands to run within the container's working directory. In this case,
+  install the dependencies and run the training script.
 
-```
-docker run --rm --gpus all -v "$PWD:/tpi" -w /tpi iterativeai/cml:0-dvc2-base1-gpu \
-  /bin/bash -c "pip install -r requirements.txt; python src/train.py"
-```
-
-Let's unpack this line.
-
-- `docker run`: this command will essentially create a container from the
-  specified image, and then let us use it.
-- `--rm` flag will make Docker automatically clean up the container and remove
-  the file system when the container exits,
-- `--gpus all` will allow us to use GPUs of the host machine from the container
-- `-v "$PWD:/tpi"`: the Docker container we'll be running is only aware of what
-  is included inside of it, and it doesn't have our training script nor the data
-  which we synced to the host machine. How do we pass the data and the training
-  code into the Docker container? We can do it by mounting a volume. The `-v`
-  flag lets you configure a volume, and has the following structure:
-  `-v "[path on the host machine to files to be shared with Docker container]:[the path where the directory is mounted in the container]"`
-- `iterativeai/cml:0-dvc2-base1-gpu`: full name of the Docker image including
-  the tag
-- `/bin/bash -c "cd /tpi; pip install -r requirements.txt; python src/train.py"`:
-  bash commands to run inside of the container. We'll need to navigate to the
-  mounted volume, install the dependencies and launch the training script.
-
-Now if we've initialized the working directory, we can call `terraform apply` to
-provision infrastructure, sync data and code to it, set up the environment, and
-run the training process. If you’d like to tinker with this example you can
-[find it on GitHub](https://github.com/iterative/blog-tpi-bees/blob/docker-examples/main.tf).
+We can now call `terraform init` and `terraform apply` to provision
+infrastructure, sync data and code to it, set up the environment, and run the
+training process. If you'd like to tinker with this example you can
+[find it on GitHub](https://github.com/iterative/blog-tpi-bees/tree/docker).
 
 ## Building your own Docker image
 
