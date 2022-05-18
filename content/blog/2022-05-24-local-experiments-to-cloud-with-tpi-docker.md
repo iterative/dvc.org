@@ -1,12 +1,14 @@
 ---
-title: Using Iterative Terraform Provider with Docker
+title:
+  Moving Local Experiments to the Cloud with Terraform Provider Iterative (TPI)
+  and Docker
 date: 2022-02-28
 description: >
-  In this tutorial you'll learn how you can move use an existing Docker image
-  with  Iterative Terraform Provider, as well as build your own Docker image.
+  Tutorial for easily running experiments in the cloud with the help of
+  Terraform Provider Iterative (TPI) and Docker.
 descriptionLong: >
-  In this tutorial you'll learn how you can move use an existing Docker image
-  with  Iterative Terraform Provider, as well as build your own Docker image.
+  In this tutorial, learn how to build a Docker image and use it to run
+  experiments in the cloud with Terraform Provider Iterative (TPI).
 picture: 2022-02-28/unsplash-containers.jpg
 author: maria_khalusova
 #  todo: commentsUrl:
