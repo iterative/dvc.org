@@ -123,7 +123,7 @@ Additionally, you can also
 [manage connections to self-hosted GitLab servers](#manage-connections-to-self-hosted-gitlab-servers)
 and [edit collaborators](#edit-collaborators).
 
-#### **Manage connections to self-hosted GitLab servers**
+#### Manage connections to self-hosted GitLab servers
 
 If your team’s Git repositories are on a self-hosted GitLab server, you can go
 to the `GitLab connections` section of the team settings page to set up a
@@ -131,7 +131,7 @@ connection to this server. Once you set up the connection, all your team members
 can connect to the Git repositories on this server. For more details, refer to
 [Custom GitLab Server Connection](/doc/studio/user-guide/connect-custom-gitlab-server).
 
-#### **Edit collaborators**
+#### Edit collaborators
 
 To manage the collaborators (team members) of your team, go to the
 `Collaborators` section of the team settings page. Here you can invite new team
