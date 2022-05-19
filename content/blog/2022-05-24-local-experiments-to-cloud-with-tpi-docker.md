@@ -9,7 +9,7 @@ description: >
 descriptionLong: >
   In this tutorial, learn how to use Docker images to run experiments in the
   cloud with Terraform Provider Iterative (TPI).
-picture: 2022-02-28/unsplash-containers.jpg
+picture: 2022-05-19/tpi-docker-header.png
 author: casper_dcl
 #  todo: commentsUrl:
 tags:
