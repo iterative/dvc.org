@@ -257,7 +257,7 @@ $ mlem apply dog-bark-translator ./short-dog-phrase.wav
 
 Check out [MLEM on GitHub](https://github.com/iterative/mlem) today and let us
 know what you think! MLEM is a core building block for a Git-based model
-registry – for more information, visit our model registry page.
+registry – for more information, visit our [model registry page](https://iterative.ai/model-registry).
 
 Resources:
 
