@@ -39,9 +39,10 @@ calculated, refer to
 [billing and payment](/doc/studio/user-guide/billing-and-payment).
 
 To make the payment and upgrade the plan, click on `Confirm`. You will be
-redirected to our payment processor, Stripe, for making the payment. Once your
-payment is successful, you will be redirected back to the team settings page in
-Studio. Here, you will see that your team is not in the Team plan.
+redirected to our payment processor, [Stripe](https://stripe.com/), for making
+the payment. Once your payment is successful, you will be redirected back to the
+team settings page in Studio. Here, you will see that your team is now in the
+Team plan.
 
 <admon>
 
@@ -65,9 +66,9 @@ You can downgrade to the Free plan or upgrade to the Enterprise plan.
   does not have more than 2 collaborators or pending invites. Then, click on the
   `Downgrade` button.
 
-When you downgrade, you will receive a refund based on the number of days
-remaining in the billing period. FOr any discrepancies in the refunded amount,
-please [contact us](mailto:support@iterative.ai).
+  When you downgrade, you will receive a refund based on the number of days
+  remaining in the billing period. If there are any discrepancies in the
+  refunded amount, please [contact us](mailto:support@iterative.ai).
 
 - **To upgrade to the Enterprise plan**, click on the `Contact Us` button.
 

@@ -1,5 +1,19 @@
 # Share a View
 
+You can [share a view within a team](#share-a-view-within-a-team). You can also
+[make a view public](#make-a-view-public) to share it on the web.
+
+## Share a view within a team
+
+Each team that you [create in Studio](/doc/studio/user-guide/teams) will have
+its own views dashboard. All the views that you create in the team's dashboard
+will be accessible to all members (collaborators) of the team.
+
+To add more than 2 collaborators in your team, you can
+[upgrade it to the **Team** or **Enterprise** plan](/doc/studio/user-guide/change-team-plan-and-size).
+
+## Make a view public
+
 To share a view on the web (i.e., to make the view public), click on the button
 labelled `Private` next to the name of the view. In the menu that pops up, turn
 on `Share to Web`.

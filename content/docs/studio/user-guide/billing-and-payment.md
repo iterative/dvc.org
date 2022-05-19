@@ -37,7 +37,7 @@ between you and Iterative.
 
 For Team plans, invoice amount is calculated based on the number of seats in the
 team. All invoice amounts are calculated for one billing period at a time. A
-billing period is one month long. THe price per seat can be found in the Studio
+billing period is one month long. The price per seat can be found in the Studio
 [pricing page](https://studio.iterative.ai/pricing).
 
 Below is an example calculation:
@@ -63,16 +63,19 @@ credit that you can apply on your next payment.
 
 ## Downgrading a plan
 
-To downgrade the Team plan, you can reduce the number of seats in your plan. To
-cancel the Team plan and move to the Free plan, reduce the number of seats in
+At any point during your subscription, you can reduce the number of seats in
+your plan.
+
+To cancel the Team plan and move to the Free plan, reduce the number of seats in
 the team to 1 or 2 and click on Downgrade. When you reduce the number of seats
 in the team, a credit balance will be computed based on the number of days
 remaining in the billing period. This credit balance can be used in future
 payments.
 
-When you downgrade from Team to Free plan, you will receive a refund based on
-the number of days remaining in the billing period. In case of any discrepancies
-in the refunded amount, please [contact us](mailto:support@iterative.ai).
+When you downgrade from the Team plan to the Free plan, you will receive a
+refund based on the number of days remaining in the billing period. In case of
+any discrepancies in the refunded amount, please
+[contact us](mailto:support@iterative.ai).
 
 To upgrade to or downgrade from an Enterprise plan, please contact us.
 
@@ -86,20 +89,21 @@ period.
 
 Seven (7) days before the end of your billing period (month), you will receive
 an email notification indicating that the end date is approaching. You should
-maintain a valid payment method so that we can process payment and auto-renew
-your subscription at the end of the billing period.
+maintain a valid payment method so that we can process your payment and
+auto-renew your subscription at the end of the billing period.
 
-At the end of your billing period, you will enter a grace period of 5 days,
-during which you must ensure payment. During the grace period, you will continue
-to be able to use Studio in full capacity. After the grace period expires, you
-and all your team members will lose access to your team's views. You will
-continue to have access to your team's Settings page. The access to the team's
-views will be restored once you clear the pending payment.
+At the end of your billing period, if we were unable to renew your payment, you
+will enter a grace period of 5 days, during which you must ensure payment.
+During the grace period, you will continue to be able to use Studio in full
+capacity. After the grace period expires, you and all your team members will
+lose access to your team's views. You will continue to have access to your
+team's Settings page. The access to the team's views will be restored once you
+clear the pending payment.
 
-Your account email will be notified after each failed payment. Payments may be
-retried up to 4 times within the next billing period. After this, if the payment
-does not succeed, you will lose access to your team's views. To make the payment
-and restore access, please contact us.
+Your account's primary email address will be notified after each failed payment.
+Payments may be retried up to 4 times within the next billing period. After
+this, if the payment does not succeed, you will lose access to your team's
+views. To make the payment and restore access, please contact us.
 
 ## Payment processor and accepted payment methods
 
@@ -116,9 +120,9 @@ changes.
 
 ## Accessing your payment history and invoices
 
-On your team settings page, you will find a link to your dashboard on
-Stripe.com. On this dashboard, you can get a copy of your invoice as well as
-payment history.
+On your team settings page, you will find a link to your dashboard on Stripe. On
+this dashboard, you can get a copy of your invoice as well as your payment
+history.
 
 ## Frequently asked questions
 

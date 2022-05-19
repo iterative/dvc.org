@@ -5,6 +5,19 @@ Iterative Studio. In the menu that comes up, click on `Profile`. Your user
 profile page will open. This page has multiple sections that are described
 below.
 
+<admon>
+
+Account management does not include the management of your team plan (Free, Team
+or Enterprise). The team plan is defined for each of your teams separately. To
+manage the team plan, go to the desired team's
+[settings page](/doc/studio/user-guide/teams#settings) and scroll to the
+`Plan and billing` section.
+
+Managing your team plan includes changing the plan as well as increasing or
+decreasing the number of seats in the team.
+
+</admon>
+
 ## Profile
 
 Here, you can see your name and profile picture. If you signed up with a

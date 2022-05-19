@@ -95,3 +95,8 @@ You should now see that a view has been added in your dashboard.
 
 10. You can also make the view public by
     [sharing it on the web](/doc/studio/user-guide/views/share-view).
+
+11. You can [create a team](/doc/studio/user-guide/teams) and invite
+    collaborators. Each team will have its own views dashboard. To create teams
+    with more than 2 team members,
+    [sign up for the **Team** plan or **Enterprise** plan](/doc/studio/user-guide/change-team-plan-and-size).
