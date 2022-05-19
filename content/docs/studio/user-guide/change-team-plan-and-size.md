@@ -12,7 +12,7 @@ for teams just starting out with collaboration: you can invite one other team
 member and import as many repositories as you want. For more advanced
 collaboration functionality, you can upgrade to the Team or Enterprise plans. A
 detailed comparison of the different plans can be found in the Studio
-[pricing page](https://studio.iterative.ai/#pricing).
+[pricing page](https://studio.iterative.ai/pricing).
 
 To change the plan for your team, go to the `Plan and billing` section within
 Team settings. Then, within the `Current plan` card, click on `Change plan`.

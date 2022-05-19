@@ -20,7 +20,7 @@ and payment for these plans.
 ## Difference between Free, Team and Enterprise plans
 
 A detailed comparison of the different plans can be found in the Studio
-[pricing page](https://studio.iterative.ai/#pricing).
+[pricing page](https://studio.iterative.ai/pricing).
 
 ## How to sign up for the Team or Enterprise plan
 
@@ -38,7 +38,7 @@ between you and Iterative.
 For Team plans, invoice amount is calculated based on the number of seats in the
 team. All invoice amounts are calculated for one billing period at a time. A
 billing period is one month long. THe price per seat can be found in the Studio
-[pricing page](https://studio.iterative.ai/#pricing).
+[pricing page](https://studio.iterative.ai/pricing).
 
 Below is an example calculation:
 

@@ -18,7 +18,7 @@ in the `Plan and billing` section, click on `Change plan`. To sign up for the
 **Enterprise plan**,
 [contact us](https://calendly.com/gtm-2/studio-introduction). To compare the
 different plans, check out our
-[pricing details](https://studio.iterative.ai/#pricing).
+[pricing details](https://studio.iterative.ai/pricing).
 
 </admon>
 
