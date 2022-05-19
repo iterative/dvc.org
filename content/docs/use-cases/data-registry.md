@@ -34,6 +34,12 @@ cloud storage. Advantages:
 
 [remote storage]: /doc/command-reference/remote
 
+<admon type="info">
+
+See also [Model Registry](/doc/use-cases/model-registry).
+
+</admon>
+
 ## Building registries
 
 Adding datasets to a registry can be as simple as placing the data file or
