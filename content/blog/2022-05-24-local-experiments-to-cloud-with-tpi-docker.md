@@ -42,13 +42,13 @@ as well as in traditional software development.
 <admon type="info">
 
 Using Docker to manage dependencies (e.g. Python packages) does not remove all
-other setup requirements. You'll still need docker itself installed, as well as
-GPU runtime drivers if applicable. Happily, TPI sets these up by default.
+other setup requirements. You'll still need Docker itself installed, as well as
+GPU runtime drivers if applicable. Happily, TPI sets up all of this by default.
 
 </admon>
 
 Separation of dependencies into Docker images will give you more control over
-the software versions, and also makes it trivial to switch between cloud
+the software versions, and also makes it painless to switch between cloud
 providers -- currently Amazon Web Services (AWS), Microsoft Azure, Google Cloud
 Platform, and Kubernetes. Your Docker image is cloud provider-agnostic. There
 are thousands of [pre-defined Docker images online](https://hub.docker.com/)
@@ -108,9 +108,10 @@ Yes, it's quite long for a one-liner. Let's looks at the components:
   Commands to run within the container's working directory. In this case,
   install the dependencies and run the training script.
 
-We can now call `terraform init` and `terraform apply` to provision
-infrastructure, sync data and code to it, set up the environment, and run the
-training process. If you'd like to tinker with this example you can
+We can now call `terraform init`, `export TF_LOG_PROVIDER=INFO`, and
+`terraform apply` to provision infrastructure, upload our data and code, set up
+the cloud environment, and run the training process. If you'd like to tinker
+with this example you can
 [find it on GitHub](https://github.com/iterative/blog-tpi-bees/tree/docker).
 
 <admon type="tip">
@@ -126,7 +127,7 @@ Now you know the basics of using convenient Docker images together with
 <admon type="tip">
 
 If you have a lot of custom dependencies that rarely change (e.g. a large
-`requirements.txt` that is rarely updated), it's a good idea to put build it
-into your own custom Docker image. Let us know if you'd like a tutorial on this!
+`requirements.txt` that is rarely updated), it's a good idea to build it into
+your own custom Docker image. Let us know if you'd like a tutorial on this!
 
 </admon>
