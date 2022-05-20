@@ -156,9 +156,9 @@ Run `git add mlem-model.dvc` and then `git commit`.
 ```
 
 Committing both model metainformation (`mlem-model.mlem`) and pointer to the
-model binary (`mlem-model.dvc` or `dvc.lock` if you train it in DVC pipeline)
-allows you to enable GitFlow and other Software Engineering best practices like
-GitOps.
+model binary (`mlem-model.dvc` or `dvc.lock` if you train it in DVC pipeline) to
+Git allows you to enable GitFlow and other Software Engineering best practices
+like GitOps.
 
 # Running your models anywhere
 
@@ -314,11 +314,11 @@ what you think! MLEM is a core building block for a Git-based model registry –
 for more information, visit our
 [model registry page](https://iterative.ai/model-registry).
 
+Thank you for reading this! Machine Learning should be mlemming 🐶
+
 Resources:
 
 - [Documentation](https://mlem.ai/doc)
 - [MLEM website](https://mlem.ai)
 - [MLEM on GitHub](https://github.com/iterative/mlem)
 - [Building an ML model registry](https://iterative.ai/model-registry/)
-
-Thank you for reading this! Machine Learning should be mlemming 🐶
