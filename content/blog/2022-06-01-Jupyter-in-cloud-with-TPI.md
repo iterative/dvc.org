@@ -6,9 +6,10 @@ description: >
   your notebooks on.
 descriptionLong: >
   We can use TPI to quickly and cheaply provision cloud instances. This guide
-  will explore how to use TPI to launch a Jupyter server on an Amazon Web Services
-  EC2 instance at the lowest possible cost. With minor modifications, you can also
-  launch instances on Google Cloud Platform, Microsoft Azure, or Kubernetes.
+  will explore how to use TPI to launch a Jupyter server on an Amazon Web
+  Services EC2 instance at the lowest possible cost. With minor modifications,
+  you can also launch instances on Google Cloud Platform, Microsoft Azure, or
+  Kubernetes.
 picture: 2022-06-01/tpi-jupyter-cover.jpeg
 author: rob_dewit
 # commentsUrl: TODO
@@ -142,8 +143,7 @@ Once we have accomplished everything we want to do in our notebook, we can
 terminate the instance with `terraform destroy`. This ensures that we won't have
 idle instances racking up our credit card bill. Terraform will download the
 files stored there (updated notebooks, save model files, etc.) to the shared
-directory on our local
-machine when terminating the instance.
+directory on our local machine when terminating the instance.
 
 # Under the hood
 
@@ -195,8 +195,8 @@ Azure, for example.
 Of particular interest here is the `spot = 0`, which tells TPI to provision spot
 instances instead of on-demand ones. At the time of writing, the on-demand
 hourly rate for this type of instance is $0.526. On the other hand, spot
-instances are only $0.15/hour. With little to no effort, TPI allows us to
-reduce our cloud costs by 70%!
+instances are only $0.15/hour. With little to no effort, TPI allows us to reduce
+our cloud costs by 70%!
 
 <admon type="tip">
 
@@ -260,10 +260,10 @@ script = <<-END
 END
 ```
 
-This part of our `main.tf` is the script to run once the
-instance has been provisioned. These are CLI commands as you would run them in
-your local terminal. We won't discuss every individual line, but in broad
-strokes, the script does the following:
+This part of our `main.tf` is the script to run once the instance has been
+provisioned. These are CLI commands as you would run them in your local
+terminal. We won't discuss every individual line, but in broad strokes, the
+script does the following:
 
 1. Run a few configuration commands
 1. Install the dependencies we will be needing
@@ -278,8 +278,9 @@ This script also launches
 alongside Jupyter. It's not the main focus of this blog post, but it might be
 helpful!
 
-If you don't want TensorBoard running or want to run some other web service instead,
-simply remove or modify [the relevant line in `main.tf`](https://github.com/iterative/blog-tpi-jupyter/blob/e5fcc8aff74b40e1398ec0904efd73a2c480ff88/main.tf#L78).
+If you don't want TensorBoard running or want to run some other web service
+instead, simply remove or modify
+[the relevant line in `main.tf`](https://github.com/iterative/blog-tpi-jupyter/blob/e5fcc8aff74b40e1398ec0904efd73a2c480ff88/main.tf#L78).
 
 </admon>
 
@@ -294,11 +295,11 @@ output "urls" {
 }
 ```
 
-Lastly, purely for convenience, we specify the outputs of our task. Instead
-of reading through all the script's output on the terminal, we extract the
-ngrok tunnel URLs and inject them into an output value. Terraform will print
-these outputs whenever we `refresh`. In this case, we get URLs to access the
-Jupyter server.
+Lastly, purely for convenience, we specify the outputs of our task. Instead of
+reading through all the script's output on the terminal, we extract the ngrok
+tunnel URLs and inject them into an output value. Terraform will print these
+outputs whenever we `refresh`. In this case, we get URLs to access the Jupyter
+server.
 
 # Next steps: rethink this approach
 
