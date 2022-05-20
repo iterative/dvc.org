@@ -158,7 +158,7 @@ created teams are on the Free plan. This plan is designed for teams just
 starting out with collaboration: you can invite one other team member and import
 as many repositories as you want. For more advanced collaboration functionality,
 you can upgrade to the Team or Enterprise plans. A detailed comparison of the
-different plans can be found in the Studio
+different plans can be found in the Iterative Studio
 [pricing page](https://studio.iterative.ai/pricing).
 
 - **To upgrade** from the Free plan to the Team or Enterprise plan or to

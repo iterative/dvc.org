@@ -19,8 +19,8 @@ and payment for these plans.
 
 ## Difference between Free, Team and Enterprise plans
 
-A detailed comparison of the different plans can be found in the Studio
-[pricing page](https://studio.iterative.ai/pricing).
+A detailed comparison of the different plans can be found in the Iterative
+Studio [pricing page](https://studio.iterative.ai/pricing).
 
 ## How to sign up for the Team or Enterprise plan
 
@@ -37,8 +37,8 @@ between you and Iterative.
 
 For Team plans, invoice amount is calculated based on the number of seats in the
 team. All invoice amounts are calculated for one billing period at a time. A
-billing period is one month long. The price per seat can be found in the Studio
-[pricing page](https://studio.iterative.ai/pricing).
+billing period is one month long. The price per seat can be found in the
+Iterative Studio [pricing page](https://studio.iterative.ai/pricing).
 
 Below is an example calculation:
 
@@ -94,9 +94,9 @@ auto-renew your subscription at the end of the billing period.
 
 At the end of your billing period, if we were unable to renew your payment, you
 will enter a grace period of 5 days, during which you must ensure payment.
-During the grace period, you will continue to be able to use Studio in full
-capacity. After the grace period expires, you and all your team members will
-lose access to your team's views. You will continue to have access to your
+During the grace period, you will continue to be able to use Iterative Studio in
+full capacity. After the grace period expires, you and all your team members
+will lose access to your team's views. You will continue to have access to your
 team's Settings page. The access to the team's views will be restored once you
 clear the pending payment.
 
@@ -128,5 +128,5 @@ history.
 
 You can find answers to some frequently asked questions, including questions
 related to price calculations and payment methods, in the
-[Studio FAQ page](https://studio.iterative.ai/faq). If you have any other
-questions, please [reach out to us](/doc/studio/troubleshooting#support).
+[Iterative Studio FAQ page](https://studio.iterative.ai/faq). If you have any
+other questions, please [reach out to us](/doc/studio/troubleshooting#support).

@@ -5,9 +5,9 @@ You can [share a view within a team](#share-a-view-within-a-team). You can also
 
 ## Share a view within a team
 
-Each team that you [create in Studio](/doc/studio/user-guide/teams) will have
-its own views dashboard. All the views that you create in the team's dashboard
-will be accessible to all members (collaborators) of the team.
+Each team that you [create in Iterative Studio](/doc/studio/user-guide/teams)
+will have its own views dashboard. All the views that you create in the team's
+dashboard will be accessible to all members (collaborators) of the team.
 
 To add more than 2 collaborators in your team, you can
 [upgrade it to the **Team** or **Enterprise** plan](/doc/studio/user-guide/change-team-plan-and-size).

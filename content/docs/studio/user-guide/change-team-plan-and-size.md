@@ -11,7 +11,7 @@ When you create a team, it is on the Free plan by default. This plan is designed
 for teams just starting out with collaboration: you can invite one other team
 member and import as many repositories as you want. For more advanced
 collaboration functionality, you can upgrade to the Team or Enterprise plans. A
-detailed comparison of the different plans can be found in the Studio
+detailed comparison of the different plans can be found in the Iterative Studio
 [pricing page](https://studio.iterative.ai/pricing).
 
 To change the plan for your team, go to the `Plan and billing` section within
@@ -20,7 +20,7 @@ Team settings. Then, within the `Current plan` card, click on `Change plan`.
 ![](https://static.iterative.ai/img/studio/team_settings_plan_and_billing.png)
 
 A plan comparison page will open. This page provides detailed comparison of the
-different plans in Studio. Your current plan will be marked with a
+different plans in Iterative Studio. Your current plan will be marked with a
 `Current plan` label.
 
 ![](https://static.iterative.ai/img/studio/team_settings_plans_and_features.png)
@@ -41,8 +41,8 @@ calculated, refer to
 To make the payment and upgrade the plan, click on `Confirm`. You will be
 redirected to our payment processor, [Stripe](https://stripe.com/), for making
 the payment. Once your payment is successful, you will be redirected back to the
-team settings page in Studio. Here, you will see that your team is now in the
-Team plan.
+team settings page in Iterative Studio. Here, you will see that your team is now
+in the Team plan.
 
 <admon>
 

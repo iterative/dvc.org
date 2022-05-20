@@ -36,13 +36,13 @@ You can update your username and password.
 
 **Managing email addresses:**
 
-You can add multiple email addresses to a single Studio account. You can login
-to the account with any of your verified email addresses as long as you have set
-up a password for your account. This is true even if you signed up using your
-GitHub, GitLab, or Bitbucket.
+You can add multiple email addresses to a single Iterative Studio account. You
+can login to the account with any of your verified email addresses as long as
+you have set up a password for your account. This is true even if you signed up
+using your GitHub, GitLab, or Bitbucket.
 
 One of your email addresses must be designated as primary. This is the address
-to which Studio will send all your account notification emails.
+to which Iterative Studio will send all your account notification emails.
 
 You can change your primary email address by clicking on the `Primary` button
 next to the email address which you want to designate as primary.
@@ -58,8 +58,8 @@ In this section, you can,
   When you connect to a Git hosting provider, you will be prompted to grant
   Iterative Studio access to your account.
 
-  If you signed up to use Studio with an email address, you will not have any
-  Git connections by default. You can set them up in this section.
+  If you signed up to use Iterative Studio with an email address, you will not
+  have any Git connections by default. You can set them up in this section.
 
   Note that **connections to self-hosted GitLab servers** are not managed in
   this section. If you want to connect to a self-hosted GitLab server, you
