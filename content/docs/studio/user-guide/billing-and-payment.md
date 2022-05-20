@@ -77,12 +77,14 @@ refund based on the number of days remaining in the billing period. In case of
 any discrepancies in the refunded amount, please
 [contact us](mailto:support@iterative.ai).
 
-To upgrade to or downgrade from an Enterprise plan, please contact us.
+To upgrade to or downgrade from an Enterprise plan, please
+[contact us](mailto:support@iterative.ai).
 
 ## Billing period, auto-renewal of team plan, and grace period for non-payment
 
-The billing period for each team plan subscription is one month (30 days) long,
-and starts on the date of the subscription.
+The billing period for each team plan subscription starts on the date of the
+subscription, and is one month long. For example, if your subscription date is
+the 15th of May, your next billing period will start on the 15th of June.
 
 All Team plan subscriptions are renewed automatically at the end of the billing
 period.
@@ -103,7 +105,9 @@ clear the pending payment.
 Your account's primary email address will be notified after each failed payment.
 Payments may be retried up to 4 times within the next billing period. After
 this, if the payment does not succeed, you will lose access to your team's
-views. To make the payment and restore access, please contact us.
+views. To restore the access, go to the `Plan and billing` section of your
+team's settings page. Then, click on `Add payment method` to submit a valid
+payment method so that the payment succeeds.
 
 ## Payment processor and accepted payment methods
 
