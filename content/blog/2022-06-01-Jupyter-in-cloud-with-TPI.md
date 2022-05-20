@@ -6,9 +6,9 @@ description: >
   your notebooks on.
 descriptionLong: >
   We can use TPI to quickly and cheaply provision cloud instances. This guide
-  will explore how to use TPI to launch Jupyter Server on an Amazon Web Services
-  instance at the lowest possible cost. With minor modifications, you can also
-  launch instances on Google Cloud, Microsoft Azure, or Kubernetes.
+  will explore how to use TPI to launch a Jupyter server on an Amazon Web Services
+  EC2 instance at the lowest possible cost. With minor modifications, you can also
+  launch instances on Google Cloud Platform, Microsoft Azure, or Kubernetes.
 picture: 2022-06-01/tpi-jupyter-cover.jpeg
 author: rob_dewit
 # commentsUrl: TODO
@@ -26,7 +26,7 @@ I based this blog post on
 
 </admon>
 
-Jupyter Notebook is one of —if not the— most-used tools in data science. It
+Jupyter Notebook is one of -- if not the -- most-used tools in data science. It
 provides an intuitive and feature-packed developer experience and, for many
 people, is an indispensable tool when working on machine learning projects.
 
@@ -141,7 +141,8 @@ and rerun it.
 Once we have accomplished everything we want to do in our notebook, we can
 terminate the instance with `terraform destroy`. This ensures that we won't have
 idle instances racking up our credit card bill. Terraform will download the
-files stored there (such as notebooks) to the shared directory on our local
+files stored there (updated notebooks, save model files, etc.) to the shared
+directory on our local
 machine when terminating the instance.
 
 # Under the hood
@@ -194,73 +195,72 @@ Azure, for example.
 Of particular interest here is the `spot = 0`, which tells TPI to provision spot
 instances instead of on-demand ones. At the time of writing, the on-demand
 hourly rate for this type of instance is $0.526. On the other hand, spot
-instances are only $0.15 per hour. With little to no effort, TPI allows us to
-reduce our cloud costs by a factor of 3.5!
+instances are only $0.15/hour. With little to no effort, TPI allows us to
+reduce our cloud costs by 70%!
 
 <admon type="tip">
 
-We could also set an upper limit to the price we are willing to pay (e.g.,
+We could also set an upper limit to the $/hr price we are willing to pay (e.g.,
 `spot = 0.12`), and TPI would hold off on provisioning until instances are
-available at that price. Disabling spot pricing (`spot = -1`) would let TPI
-provision instances at on-demand prices.
+available at that price. Disabling spot pricing (`spot = -1`) would make TPI
+provision on-demand instances.
 
 </admon>
 
 After specifying the details for the hardware, we configure a few environment
 variables for the instance. We also set the local working directory for the
-script and the directory to to download files from upon terminating the instance
-(relative to the working directory). In this case, both are the `shared`
+script and the directory to download files from (relative to the working
+directory) upon terminating the instance. In this case, both are the `shared`
 directory.
 
 ```bash
 script = <<-END
-    #!/bin/bash
-    set -euo pipefail
-    if test "$GITHUB_USER" != username; then
-      # SSH debugging
-      trap 'echo script error: waiting for debugging over SSH. Run \"terraform destroy\" to stop waiting; sleep inf' ERR
-      mkdir -p "$HOME/.ssh"
-      curl -fsSL "https://github.com/$GITHUB_USER.keys" >> "$HOME/.ssh/authorized_keys"
-    fi
-    export CUDACXX=/usr/local/cuda/bin/nvcc
-    export DEBIAN_FRONTEND=noninteractive
-    sed -ri 's#^(APT::Periodic::Unattended-Upgrade).*#\1 "0";#' /etc/apt/apt.conf.d/20auto-upgrades
-    dpkg-reconfigure unattended-upgrades
-    # install dependencies
-    pip3 install $${QUIET:+-q} jupyterlab notebook matplotlib ipywidgets tensorflow==2.8.0 tensorboard tensorflow_datasets
-    (curl -fsSL https://deb.nodesource.com/setup_16.x | bash -) >/dev/null
-    apt-get install -y $${QUIET:+-qq} nodejs
+#!/bin/bash
+  set -euo pipefail
+  if test "$GITHUB_USER" != username; then
+    # SSH debugging
+    trap 'echo script error: waiting for debugging over SSH. Run \"terraform destroy\" to stop waiting; sleep inf' ERR
+    mkdir -p "$HOME/.ssh"
+    curl -fsSL "https://github.com/$GITHUB_USER.keys" >> "$HOME/.ssh/authorized_keys"
+  fi
+  export CUDACXX=/usr/local/cuda/bin/nvcc
+  export DEBIAN_FRONTEND=noninteractive
+  sed -ri 's#^(APT::Periodic::Unattended-Upgrade).*#\1 "0";#' /etc/apt/apt.conf.d/20auto-upgrades
+  dpkg-reconfigure unattended-upgrades
+  # install dependencies
+  pip3 install $${QUIET:+-q} jupyterlab notebook matplotlib ipywidgets tensorflow==2.8.0 tensorboard tensorflow_datasets
+  (curl -fsSL https://deb.nodesource.com/setup_16.x | bash -) >/dev/null
+  apt-get install -y $${QUIET:+-qq} nodejs
 
-    # start tunnel
-    export JUPYTER_TOKEN="$(uuidgen)"
-    pushd "$(mktemp -d --suffix dependencies)"
-    npm i ngrok
-    npx ngrok authtoken "$NGROK_TOKEN"
-    (node <<TUNNEL
-    const fs = require('fs');
-    const ngrok = require('ngrok');
-    (async function() {
-      const jupyter = await ngrok.connect(8888);
-      const tensorboard = await ngrok.connect(6006);
-      const br = '\n*=*=*=*=*=*=*=*=*=*=*=*=*\n';
-      fs.writeFileSync("log.md", \`\$${br}URL: Jupyter Lab: \$${jupyter}/lab?token=$${JUPYTER_TOKEN}\$${br}URL: Jupyter Notebook: \$${jupyter}/tree?token=$${JUPYTER_TOKEN}\$${br}URL: TensorBoard: \$${tensorboard}\$${br}\`);
-    })();
-    TUNNEL
-    ) &
-    while test ! -f log.md; do sleep 1; done
-    cat log.md
-    popd # dependencies
+  # start tunnel
+  export JUPYTER_TOKEN="$(uuidgen)"
+  pushd "$(mktemp -d --suffix dependencies)"
+  npm i ngrok
+  npx ngrok authtoken "$NGROK_TOKEN"
+  (node <<TUNNEL
+  const fs = require('fs');
+  const ngrok = require('ngrok');
+  (async function() {
+    const jupyter = await ngrok.connect(8888);
+    const tensorboard = await ngrok.connect(6006);
+    const br = '\n*=*=*=*=*=*=*=*=*=*=*=*=*\n';
+    fs.writeFileSync("log.md", \`\$${br}URL: Jupyter Lab: \$${jupyter}/lab?token=$${JUPYTER_TOKEN}\$${br}URL: Jupyter Notebook: \$${jupyter}/tree?token=$${JUPYTER_TOKEN}\$${br}URL: TensorBoard: \$${tensorboard}\$${br}\`);
+  })();
+  TUNNEL
+  ) &
+  while test ! -f log.md; do sleep 1; done
+  cat log.md
+  popd # dependencies
 
-    # start tensorboard in background
-    env -u JUPYTER_TOKEN -u AWS_ACCESS_KEY_ID -u AWS_SECRET_ACCESS_KEY -u REPO_TOKEN tensorboard --logdir . --host 0.0.0.0 --port 6006 &
+  # start tensorboard in background
+  env -u JUPYTER_TOKEN -u AWS_ACCESS_KEY_ID -u AWS_SECRET_ACCESS_KEY -u REPO_TOKEN tensorboard --logdir . --host 0.0.0.0 --port 6006 &
 
-    # start Jupyter server in foreground
-    env -u AWS_ACCESS_KEY_ID -u AWS_SECRET_ACCESS_KEY -u REPO_TOKEN jupyter lab --allow-root --ip=0.0.0.0 --no-browser --port=8888 --port-retries=0
-  END
-}
+  # start Jupyter server in foreground
+  env -u AWS_ACCESS_KEY_ID -u AWS_SECRET_ACCESS_KEY -u REPO_TOKEN jupyter lab --allow-root --ip=0.0.0.0 --no-browser --port=8888 --port-retries=0
+END
 ```
 
-The second-to-last part of `main.tf` contains the script that will run once the
+This part of our `main.tf` is the script to run once the
 instance has been provisioned. These are CLI commands as you would run them in
 your local terminal. We won't discuss every individual line, but in broad
 strokes, the script does the following:
@@ -274,12 +274,12 @@ strokes, the script does the following:
 <admon type="info">
 
 This script also launches
-[Tensorboard](https://www.tensorflow.org/tensorboard/get_started) to run
+[TensorBoard](https://www.tensorflow.org/tensorboard/get_started) to run
 alongside Jupyter. It's not the main focus of this blog post, but it might be
 helpful!
 
-If you don't want Tensorboard running, simply remove or comment out
-[line 78 of `main.tf`](https://github.com/iterative/blog-tpi-jupyter/blob/aws/main.tf#L78).
+If you don't want TensorBoard running or want to run some other web service instead,
+simply remove or modify [the relevant line in `main.tf`](https://github.com/iterative/blog-tpi-jupyter/blob/e5fcc8aff74b40e1398ec0904efd73a2c480ff88/main.tf#L78).
 
 </admon>
 
@@ -294,9 +294,11 @@ output "urls" {
 }
 ```
 
-Lastly, we specify the outputs for our script. This is the value Terraform
-returns to be shown in our terminal after provisioning our instance. In this
-case, we are returning the URLs through which we can access the Jupyter server.
+Lastly, purely for convenience, we specify the outputs of our task. Instead
+of reading through all the script's output on the terminal, we extract the
+ngrok tunnel URLs and inject them into an output value. Terraform will print
+these outputs whenever we `refresh`. In this case, we get URLs to access the
+Jupyter server.
 
 # Next steps: rethink this approach
 
