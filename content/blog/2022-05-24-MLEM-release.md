@@ -17,6 +17,7 @@ author: aguschin
 # commentsUrl: TODO
 tags:
   - Machine Learning
+  - Serving
   - Deployment
   - Model Registry
   - MLOps
@@ -36,13 +37,21 @@ model operations and deployment with software development teams – information
 and automation is all based on familiar DevOps tools – so that deploying any
 model into production is that much faster.
 
+Capturing model-specific information requires the understanding of the
+Programming language and ML frameworks they're created with. That's why MLEM is
+a Python-specific tool. To provide developer-first experience, MLEM exposes
+carefully designed CLI to help you manage DevOps parts of the workflow from CLI
+and Python API to handle model productionization programmatically.
+
 With MLEM, ML teams get:
 
-- Human-readable information about a model for search and documentation
-- One-step automated deployment across any cloud
-- Fast model registry setup based on Git
+- **Model metadata codification**: Human-readable information about a model for
+  search and documentation.
+- **Single tool to run models anywhere**: One-step automated model
+  productionization.
+- **Git-native model registry**: Fast model registry setup based on Git.
 
-# Human-readable models
+# Model metadata codification
 
 It's easy to start using MLEM, since it integrates nicely in your existing
 training workflows by adding a couple of lines:
@@ -64,12 +73,17 @@ $ ls models
 mlem-model mlem-model.mlem
 ```
 
-MLEM automatically detects everything you need to run the model: ML framework
-you use, as well as model dependencies (i.e. Python requirements), methods and
-input/output data schema. MLEM saves this information in a simple human-readable
-YAML file:
+MLEM automatically detects everything you need to run the model: ML framework,
+model dependencies (i.e. Python requirements), methods, and input/output data
+schema (note, that we didn't specify those above at `save`!).
+
+This enables easy codification of arbitrary complex models, such as a python
+function in which you average a couple of frameworks or a custom Python class
+that uses different libraries to generate the features and make a prediction.
+MLEM saves this information in a simple human-readable YAML file:
 
 ```yaml
+# mlem-model.mlem
 artifacts:
   data:
     hash: b7f7e869f2b9270c516b546f09f49cf7
@@ -115,14 +129,46 @@ requirements:
     version: 1.22.3
 ```
 
+To make ML model development Git-native, MLEM can work with DVC to manage
+versions of a model stored remotely in the cloud. If you train your model with
+DVC pipelines, DVC will handle this for you when you run a pipeline:
+
+```yaml
+# dvc.yaml
+stages:
+  train:
+    cmd: python train.py
+    deps:
+      - train.py
+    outs:
+      - mlem-model
+      - mlem-model.mlem:
+          cache: false
+```
+
+And if you don't use DVC pipelines, you can just track your model binary with
+DVC:
+
+```shell
+$ dvc add mlem-model
+Now tracking `mlem-model` with DVC.
+Run `git add mlem-model.dvc` and then `git commit`.
+```
+
+Committing both model metainformation (`mlem-model.mlem`) and pointer to the
+model binary (`mlem-model.dvc` or `dvc.lock` if you train it in DVC pipeline)
+allows you to enable GitFlow and other Software Engineering best practices like
+GitOps.
+
 # Running your models anywhere
 
 The main goal of MLEM is to provide you a single tool that enables any kind of
-model usage scenarios. Three main groups of those are:
+model productionization scenarios. For MLEM, there are three main groups of
+those scenarios:
 
-- using the model with the MLEM's help,
-- exporting a model to a format that can be used by other tools,
-- and deploying a model to a production environment.
+- **Use** a model direcly with MLEM.
+- **Export** a model to a format that can be used by other tools.
+- **Deploy** a model to a production environment or cloud provider.
 
 The first one allows you to import your model into a Python runtime, run predict
 against some dataset directly in the command line, or serve the model with MLEM
@@ -155,7 +201,7 @@ INFO:     Uvicorn running on http://0.0.0.0:8080 (Press CTRL+C to quit)
 ```
 
 The second one allows you to package your models as a Python package, build a
-Docker Image, or export it as some other format (e.g. `.onnx` which is coming
+Docker Image, or export it as some special format (like `.onnx` which is coming
 soon).
 
 ```shell
@@ -174,7 +220,7 @@ build
 ```
 
 The last one allows you to deploy models to deployment providers, such as Heroku
-(AWS Sagemaker and Kubernetes are coming).
+(with AWS Sagemaker and Kubernetes coming soon).
 
 ```shell
 $ mlem deploy create myservice -m mlem-model -t staging -c app_name=mlem-quick-start
@@ -198,7 +244,15 @@ $ mlem deploy create myservice -m mlem-model -t staging -c app_name=mlem-quick-s
 ✅  Service mlem-quick-start is up. You can check it out at https://mlem-quick-start.herokuapp.com/
 ```
 
-# Fast model registry setup based on Git
+Since MLEM is both CLI-first and API-first tool, you can productionize your
+models just as easy with Python API:
+
+```python
+$ python
+>>> from mlem.api import serve, pack, deploy
+```
+
+# Git-native model registry
 
 [versions]: /doc/use-cases/versioning-data-and-model-files
 [mp]: /doc/start/metrics-parameters-plots
@@ -255,9 +309,9 @@ $ mlem apply dog-bark-translator ./short-dog-phrase.wav
 
 # What next?
 
-Check out [MLEM on GitHub](https://github.com/iterative/mlem) today and let us
-know what you think! MLEM is a core building block for a Git-based model
-registry – for more information, visit our
+**Star** [MLEM on GitHub](https://github.com/iterative/mlem) and let us know
+what you think! MLEM is a core building block for a Git-based model registry –
+for more information, visit our
 [model registry page](https://iterative.ai/model-registry).
 
 Resources:
@@ -265,14 +319,6 @@ Resources:
 - [Documentation](https://mlem.ai/doc)
 - [MLEM website](https://mlem.ai)
 - [MLEM on GitHub](https://github.com/iterative/mlem)
-- Building an ML model registry
+- [Building an ML model registry](https://iterative.ai/model-registry/)
 
-<!-- <admon type="warn">
-
-This guide will result in a Jupyter server running on provisioned AWS hardware.
-While TPI helps you do this as cheaply as possible, there are still costs
-involved. Make sure you
-[understand AWS pricing](https://aws.amazon.com/ec2/pricing/) to avoid unwelcome
-charges to your credit card.
-
-</admon> -->
+Thank you for reading this! Machine Learning should be mlemming 🐶
