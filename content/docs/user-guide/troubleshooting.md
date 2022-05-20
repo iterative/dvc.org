@@ -125,3 +125,39 @@ and retry the DVC command. Specifically, one of:
 
 [internal directories]:
   https://dvc.org/doc/user-guide/project-structure/internal-files
+
+## DVC experiments may fail in shallow Git repositories {#git-shallow}
+
+DVC experiments rely on Git features which may not work properly in shallow Git
+repositories. This error commonly occurs in certain CI environments which use
+shallow git clones by default. When this error is encountered, try unshallowing
+the Git repository and then retry the DVC command.
+
+Local Git repositories can be unshallowed by using:
+
+```
+$ git fetch --unshallow
+```
+
+When using [CML](https://cml.dev/doc), repositories can be unshallowed by using:
+
+```
+$ cml ci --unshallow
+```
+
+In GitHub Actions, repositories can be unshallowed by setting `fetch-depth` in
+the `actions/checkout` action.
+
+```
+- uses: actions/checkout@v3
+  with:
+    fetch-depth: 0
+```
+
+In GitLab CI/CD, repositories can be unshallowed by setting the `GIT_DEPTH`
+environment variable:
+
+```
+variables:
+  GIT_DEPTH: "0"
+```
