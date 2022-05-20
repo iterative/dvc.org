@@ -154,7 +154,7 @@ The major point of interest in the repository is
 This file contains the specifications Terraform needs to provision our instance.
 Let's take a look at what each part of this configuration does:
 
-```
+```hcl
 terraform {
   required_providers { iterative = { source = "iterative/iterative" } }
 }
@@ -164,7 +164,7 @@ provider "iterative" {}
 This first part of the configuration simply tells Terraform that we will be
 using TPI. We can consider it analogous to a package import in Python.
 
-```
+```hcl
 resource "iterative_task" "jupyter_server" {
   spot      = 0             # auto-priced low-cost spot instance
   timeout   = 24*60*60      # force shutdown after 24h
