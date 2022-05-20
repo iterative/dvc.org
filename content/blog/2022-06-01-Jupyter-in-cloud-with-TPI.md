@@ -166,14 +166,14 @@ using TPI. We can consider it analogous to a package import in Python.
 
 ```hcl
 resource "iterative_task" "jupyter_server" {
-  spot      = 0             # auto-priced low-cost spot instance
-  timeout   = 24*60*60      # force shutdown after 24h
-  disk_size = 125           # GB
-  machine   = "m+t4"        # m/l/xl (CPU), +k80/t4/v100 (GPU)
-  image     = "nvidia"      # or "ubuntu"
+  spot      = 0        # auto-priced low-cost spot instance
+  timeout   = 24*60*60 # force shutdown after 24h
+  disk_size = 125      # GB
+  machine   = "m+t4"   # m/l/xl (CPU), +k80/t4/v100 (GPU)
+  image     = "nvidia" # or "ubuntu"
 
   # cloud-specific config
-  cloud     = "aws"         # see `git checkout generic` branch for: gcp, az, k8s
+  cloud     = "aws"    # see `git checkout generic` branch for: gcp, az, k8s
 
   # blank means extract from local env vars
   environment = { NGROK_TOKEN = "", TF_CPP_MIN_LOG_LEVEL = "1", QUIET = "1", GITHUB_USER = "username" }
@@ -214,50 +214,48 @@ directory) upon terminating the instance. In this case, both are the `shared`
 directory.
 
 ```bash
-script = <<-END
 #!/bin/bash
-  set -euo pipefail
-  if test "$GITHUB_USER" != username; then
-    # SSH debugging
-    trap 'echo script error: waiting for debugging over SSH. Run \"terraform destroy\" to stop waiting; sleep inf' ERR
-    mkdir -p "$HOME/.ssh"
-    curl -fsSL "https://github.com/$GITHUB_USER.keys" >> "$HOME/.ssh/authorized_keys"
-  fi
-  export CUDACXX=/usr/local/cuda/bin/nvcc
-  export DEBIAN_FRONTEND=noninteractive
-  sed -ri 's#^(APT::Periodic::Unattended-Upgrade).*#\1 "0";#' /etc/apt/apt.conf.d/20auto-upgrades
-  dpkg-reconfigure unattended-upgrades
-  # install dependencies
-  pip3 install $${QUIET:+-q} jupyterlab notebook matplotlib ipywidgets tensorflow==2.8.0 tensorboard tensorflow_datasets
-  (curl -fsSL https://deb.nodesource.com/setup_16.x | bash -) >/dev/null
-  apt-get install -y $${QUIET:+-qq} nodejs
+set -euo pipefail
+if test "$GITHUB_USER" != username; then
+  # SSH debugging
+  trap 'echo script error: waiting for debugging over SSH. Run \"terraform destroy\" to stop waiting; sleep inf' ERR
+  mkdir -p "$HOME/.ssh"
+  curl -fsSL "https://github.com/$GITHUB_USER.keys" >> "$HOME/.ssh/authorized_keys"
+fi
+export CUDACXX=/usr/local/cuda/bin/nvcc
+export DEBIAN_FRONTEND=noninteractive
+sed -ri 's#^(APT::Periodic::Unattended-Upgrade).*#\1 "0";#' /etc/apt/apt.conf.d/20auto-upgrades
+dpkg-reconfigure unattended-upgrades
+# install dependencies
+pip3 install $${QUIET:+-q} jupyterlab notebook matplotlib ipywidgets tensorflow==2.8.0 tensorboard tensorflow_datasets
+(curl -fsSL https://deb.nodesource.com/setup_16.x | bash -) >/dev/null
+apt-get install -y $${QUIET:+-qq} nodejs
 
-  # start tunnel
-  export JUPYTER_TOKEN="$(uuidgen)"
-  pushd "$(mktemp -d --suffix dependencies)"
-  npm i ngrok
-  npx ngrok authtoken "$NGROK_TOKEN"
-  (node <<TUNNEL
-  const fs = require('fs');
-  const ngrok = require('ngrok');
-  (async function() {
-    const jupyter = await ngrok.connect(8888);
-    const tensorboard = await ngrok.connect(6006);
-    const br = '\n*=*=*=*=*=*=*=*=*=*=*=*=*\n';
-    fs.writeFileSync("log.md", \`\$${br}URL: Jupyter Lab: \$${jupyter}/lab?token=$${JUPYTER_TOKEN}\$${br}URL: Jupyter Notebook: \$${jupyter}/tree?token=$${JUPYTER_TOKEN}\$${br}URL: TensorBoard: \$${tensorboard}\$${br}\`);
-  })();
-  TUNNEL
-  ) &
-  while test ! -f log.md; do sleep 1; done
-  cat log.md
-  popd # dependencies
+# start tunnel
+export JUPYTER_TOKEN="$(uuidgen)"
+pushd "$(mktemp -d --suffix dependencies)"
+npm i ngrok
+npx ngrok authtoken "$NGROK_TOKEN"
+(node <<TUNNEL
+const fs = require('fs');
+const ngrok = require('ngrok');
+(async function() {
+  const jupyter = await ngrok.connect(8888);
+  const tensorboard = await ngrok.connect(6006);
+  const br = '\n*=*=*=*=*=*=*=*=*=*=*=*=*\n';
+  fs.writeFileSync("log.md", \`\$${br}URL: Jupyter Lab: \$${jupyter}/lab?token=$${JUPYTER_TOKEN}\$${br}URL: Jupyter Notebook: \$${jupyter}/tree?token=$${JUPYTER_TOKEN}\$${br}URL: TensorBoard: \$${tensorboard}\$${br}\`);
+})();
+TUNNEL
+) &
+while test ! -f log.md; do sleep 1; done
+cat log.md
+popd # dependencies
 
-  # start tensorboard in background
-  env -u JUPYTER_TOKEN -u AWS_ACCESS_KEY_ID -u AWS_SECRET_ACCESS_KEY -u REPO_TOKEN tensorboard --logdir . --host 0.0.0.0 --port 6006 &
+# start tensorboard in background
+env -u JUPYTER_TOKEN -u AWS_ACCESS_KEY_ID -u AWS_SECRET_ACCESS_KEY -u REPO_TOKEN tensorboard --logdir . --host 0.0.0.0 --port 6006 &
 
-  # start Jupyter server in foreground
-  env -u AWS_ACCESS_KEY_ID -u AWS_SECRET_ACCESS_KEY -u REPO_TOKEN jupyter lab --allow-root --ip=0.0.0.0 --no-browser --port=8888 --port-retries=0
-END
+# start Jupyter server in foreground
+env -u AWS_ACCESS_KEY_ID -u AWS_SECRET_ACCESS_KEY -u REPO_TOKEN jupyter lab --allow-root --ip=0.0.0.0 --no-browser --port=8888 --port-retries=0
 ```
 
 This part of our `main.tf` is the script to run once the instance has been
@@ -289,7 +287,7 @@ extensive. We could add commands to clone a Git repository, for example. Or we
 could pull data in from a [DVC](https://dvc.org/) remote. This flexibility
 allows us to tailor the instance TPI provisions precisely to our needs.
 
-```bash
+```hcl
 output "urls" {
   value = flatten(regexall("URL: (.+)", try(join("\n", iterative_task.jupyter_server.logs), "")))
 }
