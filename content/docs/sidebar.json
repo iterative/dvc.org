@@ -105,6 +105,7 @@
         "slug": "fast-data-caching-hub"
       },
       "experiment-tracking",
+      "model-registry",
       "data-registry"
     ]
   },
