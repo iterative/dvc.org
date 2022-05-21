@@ -23,13 +23,15 @@ tags:
   - MLOps
 ---
 
-With MLEM, ML teams get:
+With MLEM ML teams get a single tool to **run your models anywhere** that
+strikes to cover all model productionization scenarios you have.
 
-- **Model metadata codification**: Human-readable information about a model for
-  search and documentation.
-- **Single tool to run models anywhere**: One-step automated model
-  productionization.
-- **Git-native model registry**: Fast model registry setup based on Git.
+MLEM enables this via **model metadata codification**: human-readable
+information about a model, which itself could be used for many things, including
+search and documentation.
+
+Finally, using Git to keep that metainformation creates a **Git-native model
+registry**.
 
 We built MLEM to address issues that MLOps teams have around managing model
 information as they move them from training and development to production and,
