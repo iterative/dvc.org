@@ -23,6 +23,14 @@ tags:
   - MLOps
 ---
 
+With MLEM, ML teams get:
+
+- **Model metadata codification**: Human-readable information about a model for
+  search and documentation.
+- **Single tool to run models anywhere**: One-step automated model
+  productionization.
+- **Git-native model registry**: Fast model registry setup based on Git.
+
 We built MLEM to address issues that MLOps teams have around managing model
 information as they move them from training and development to production and,
 ultimately, retirement. MLEM is meant to help teams automate the collection of
@@ -37,21 +45,13 @@ model operations and deployment with software development teams – information
 and automation is all based on familiar DevOps tools – so that deploying any
 model into production is that much faster.
 
+# Model metadata codification
+
 Capturing model-specific information requires the understanding of the
 Programming language and ML frameworks they're created with. That's why MLEM is
 a Python-specific tool. To provide developer-first experience, MLEM exposes
 carefully designed CLI to help you manage DevOps parts of the workflow from CLI
 and Python API to handle model productionization programmatically.
-
-With MLEM, ML teams get:
-
-- **Model metadata codification**: Human-readable information about a model for
-  search and documentation.
-- **Single tool to run models anywhere**: One-step automated model
-  productionization.
-- **Git-native model registry**: Fast model registry setup based on Git.
-
-# Model metadata codification
 
 It's easy to start using MLEM, since it integrates nicely in your existing
 training workflows by adding a couple of lines:
@@ -77,7 +77,7 @@ MLEM automatically detects everything you need to run the model: ML framework,
 model dependencies (i.e. Python requirements), methods, and input/output data
 schema (note, that we didn't specify those above at `save`!).
 
-This enables easy codification of arbitrary complex models, such as a python
+This enables easy codification of arbitrary complex models, such as a Python
 function in which you average a couple of frameworks or a custom Python class
 that uses different libraries to generate the features and make a prediction.
 MLEM saves this information in a simple human-readable YAML file:
@@ -130,7 +130,12 @@ requirements:
 ```
 
 To make ML model development Git-native, MLEM can work with DVC to manage
-versions of a model stored remotely in the cloud. If you train your model with
+versions of a model stored remotely in the cloud. Committing both model
+metainformation (`mlem-model.mlem`) and pointer to the model binary
+(`mlem-model.dvc` or `dvc.lock` if you train it in DVC pipeline) to Git allows
+you to enable GitFlow and other Software Engineering best practices like GitOps.
+
+<!-- If you train your model with
 DVC pipelines, DVC will handle this for you when you run a pipeline:
 
 ```yaml
@@ -153,12 +158,7 @@ DVC:
 $ dvc add mlem-model
 Now tracking `mlem-model` with DVC.
 Run `git add mlem-model.dvc` and then `git commit`.
-```
-
-Committing both model metainformation (`mlem-model.mlem`) and pointer to the
-model binary (`mlem-model.dvc` or `dvc.lock` if you train it in DVC pipeline) to
-Git allows you to enable GitFlow and other Software Engineering best practices
-like GitOps.
+``` -->
 
 # Running your models anywhere
 
@@ -307,14 +307,17 @@ $ mlem apply dog-bark-translator ./short-dog-phrase.wav
 🐶🚀🎉
 ```
 
-# What next?
-
-**Star** [MLEM on GitHub](https://github.com/iterative/mlem) and let us know
-what you think! MLEM is a core building block for a Git-based model registry –
-for more information, visit our
+For more information, visit our
 [model registry page](https://iterative.ai/model-registry).
 
-Thank you for reading this! Machine Learning should be mlemming 🐶
+# What next?
+
+⭐ **Star [MLEM on GitHub](https://github.com/iterative/mlem)** and let us know
+what you think!
+
+![Umbrella dog](/uploads/images/2022-05-24/mlem-repo-umbrella-dog.gif 'Machine Learning should be mlemming!')
+
+Machine Learning should be mlemming! 🚀
 
 Resources:
 
