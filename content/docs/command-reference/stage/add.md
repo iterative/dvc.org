@@ -409,15 +409,20 @@ $ dvc stage add -n train \
 `train_model.py` will include some code to open and parse the parameters:
 
 ```py
-import yaml
+from ruamel.yaml import YAML
 
 with open("params.yaml", 'r') as fd:
-    params = yaml.safe_load(fd)
+    yaml = YAML()
+    params = yaml.load(fd)
 
 seed = params['seed']
 lr = params['train']['lr']
 epochs = params['train']['epochs']
 ```
+
+> Note that the popular PyYAML library does not support YAML 1.2. The
+> ruamel.yaml library should be used instead to avoid subtle differences in
+> number handling.
 
 DVC will keep an eye on these param values (same as with the regular dependency
 files) and know that the stage should be reproduced if/when they change. See
