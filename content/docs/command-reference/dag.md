@@ -71,13 +71,6 @@ $ dvc exp show ...
 
 ## Options
 
-- `-h`, `--help` - prints the usage/help message, and exit.
-
-- `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if no
-  problems arise, otherwise 1.
-
-- `-v`, `--verbose` - displays detailed tracing information.
-
 - `-o`, `--outs` - show a DAG of chained dependencies and outputs instead of the
   stages themselves. The graph may be significantly different.
 
@@ -96,6 +89,13 @@ $ dvc exp show ...
 - `--dot` - show DAG in
   [DOT](<https://en.wikipedia.org/wiki/DOT_(graph_description_language)>)
   format. It can be passed to third party visualization utilities.
+
+- `-h`, `--help` - prints the usage/help message, and exit.
+
+- `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if no
+  problems arise, otherwise 1.
+
+- `-v`, `--verbose` - displays detailed tracing information.
 
 ## Example: Visualize a DVC Pipeline
 
