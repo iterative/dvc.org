@@ -26,12 +26,15 @@ tags:
 With MLEM ML teams get a single tool to **run your models anywhere** that
 strikes to cover all model productionization scenarios you have.
 
-MLEM enables this via **model metadata codification**: human-readable
-information about a model, which itself could be used for many things, including
-search and documentation.
+MLEM enables this via **model metadata codification**: saving all information
+that is required to use a model later. Beside packaging a model for deployment
+it can be used for many things, including search and documentation. To make it
+even more convenient, MLEM uses human-readable YAML files for that.
 
-Finally, using Git to keep that metainformation creates a **Git-native model
-registry**.
+Finally, using Git to keep that metainformation allows you to create a
+**Git-native model registry**, allowing you to handle model lifecycle management
+in Git, getting all benefits of CI/CD. Which makes your ML team one step closer
+to GitOps.
 
 We built MLEM to address issues that MLOps teams have around managing model
 information as they move them from training and development to production and,
