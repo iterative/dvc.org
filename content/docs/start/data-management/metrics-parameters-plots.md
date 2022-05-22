@@ -272,8 +272,8 @@ evaluation.json  avg_prec  0.89668   0.9202       0.02353
 evaluation.json  roc_auc   0.92729   0.94096      0.01368
 ```
 
-And finally, we can compare all plots with a single command (we show only
-some of them for simplicity):
+And finally, we can compare all plots with a single command (we show only some
+of them for simplicity):
 
 ```dvc
 $ dvc plots diff
@@ -283,7 +283,6 @@ file:///Users/dvc/example-get-started/plots.html
 ![](/img/plots_prc_get_started_diff.svg)
 ![](/img/plots_roc_get_started_diff.svg)
 ![](/img/plots_importance_get_started_diff.png)
-
 
 > See `dvc plots diff` for more info on its options.
 
