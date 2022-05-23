@@ -90,9 +90,9 @@ source `repo` and `path` (under `deps`):
 +- path: get-started/data.xml
 +  repo:
 +    url: https://github.com/iterative/dataset-registry
-+    rev_lock: f31f5c4cdae787b4bdeb97a717687d44667d9e62
++    rev_lock: 96fdd8f12c14fa58a1b7354f15c7adb50e4e8542
  outs:
- - md5: a304afb96060aad90176268345e10355
+ - md5: 22a1a2931c8370d3aeedd7183606fd7f
    path: data.xml
 ```
 
