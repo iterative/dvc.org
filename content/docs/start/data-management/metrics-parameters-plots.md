@@ -50,7 +50,7 @@ evaluate:
     - evaluation.json:
         cache: false
   plots:
-    - evaluation/importance.png
+    - evaluation/plots/importance.png
     - evaluation/plots/confusion_matrix.json:
         cache: false
     - evaluation/plots/precision_recall.json:
