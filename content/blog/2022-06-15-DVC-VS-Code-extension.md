@@ -53,13 +53,13 @@ VS Code...
 # Features
 
 Our first course of action was to include all DVC features related to data
-management and experiments in the extension. Here are the features that are
-currently available:
+management and experiments in the extension. Here are the main features that are
+available if you install the extension right now:
 
 ## Command palette
 
-Our extension makes extensive use of the Command Palette, reducing the need to
-learn commands by heart.
+The DVC extension makes extensive use of the Command Palette, reducing the need
+to learn commands by heart:
 
 ![Use the command palette to quickly find DVC
 features](/uploads/images/2022-06-15/command-palette.gif)
@@ -67,7 +67,7 @@ features](/uploads/images/2022-06-15/command-palette.gif)
 ## Source control management
 
 Manage changes to your datasets and models right from the source control panel,
-just like you would track changes to your code. Use `checkout`, `commit`, `add`,
+just like you would with changes to your code. Use `checkout`, `commit`, `add`,
 `push`, and `pull` straight from the interface:
 
 ![Get a quick overview of changes to your data in the source control
@@ -75,16 +75,26 @@ panel](/uploads/images/2022-06-15/source-control.png)
 
 ## Tracked resources
 
-Resources tracked by DVC can be viewed and managed through the tracked explorer view. Manage the tracked data and `push` and `pull` changes to and from your remote:
+Resources tracked by DVC can be viewed and managed through the tracked explorer
+view. See at glance which datasets and models have been changed, and use `push`
+and `pull` to synchronize with your remote:
 
-![Tracked resources in the explorer view](/uploads/images/2022-06-15/tracked-resources.png)
+![Tracked resources in the explorer
+view](/uploads/images/2022-06-15/tracked-resources.png)
 
 ## DVC View: experiment tables and plots
 
-An entirely new view to navigate through your experiments. Create filters and sorts, compare metrics, and view plots for easier analysis:
+An entirely new view to navigate through your experiments. Create filters and
+sorts, compare metrics, and view plots for easier analysis:
 
-![Experiment tables to compare different experiments](/uploads/images/2022-06-15/dvc-view-experiments-table.png)
+![Experiment tables to compare different
+experiments](/uploads/images/2022-06-15/dvc-view-experiments-table.png)
 
-![Plots to visualize your experiments](/uploads/images/2022-06-15/dvc-view-plots.png)
+![Plots to visualize your
+experiments](/uploads/images/2022-06-15/dvc-view-plots.png)
 
 # What next?
+
+# Thank you!
+
+A big thanks to those who have have tested 
