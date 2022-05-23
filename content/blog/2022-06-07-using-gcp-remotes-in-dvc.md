@@ -105,7 +105,7 @@ model will be stored.
 ### Add GCP credentials
 
 In order for DVC to be able to push and pull data from the remote, you need to
-have valid AWS credentials.
+have valid GCP credentials.
 
 If you are using the GCP CLI already, you should be able to run
 `gcloud auth application-default login`. You can also authenticate with the
