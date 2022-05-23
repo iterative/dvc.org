@@ -26,7 +26,7 @@ $ dvc run -n evaluate \
           --plots-no-cache evaluation/plots/precision_recall.json \
           --plots-no-cache evaluation/plots/roc.json \
           --plots-no-cache evaluation/plots/confusion_matrix.json \
-          --plots evaluation/plots/importance.png \
+          --plots evaluation/importance.png \
           python src/evaluate.py model.pkl data/features
 ```
 
@@ -50,7 +50,7 @@ evaluate:
     - evaluation.json:
         cache: false
   plots:
-    - evaluation/plots/importance.png
+    - evaluation/importance.png
     - evaluation/plots/confusion_matrix.json:
         cache: false
     - evaluation/plots/precision_recall.json:
