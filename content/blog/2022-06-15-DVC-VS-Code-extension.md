@@ -75,10 +75,16 @@ panel](/uploads/images/2022-06-15/source-control.png)
 
 ## Tracked resources
 
-## DVC View Container
+Resources tracked by DVC can be viewed and managed through the tracked explorer view. Manage the tracked data and `push` and `pull` changes to and from your remote:
 
-## Experiments Table
+![Tracked resources in the explorer view](/uploads/images/2022-06-15/tracked-resources.png)
 
-## Plots
+## DVC View: experiment tables and plots
+
+An entirely new view to navigate through your experiments. Create filters and sorts, compare metrics, and view plots for easier analysis:
+
+![Experiment tables to compare different experiments](/uploads/images/2022-06-15/dvc-view-experiments-table.png)
+
+![Plots to visualize your experiments](/uploads/images/2022-06-15/dvc-view-plots.png)
 
 # What next?
