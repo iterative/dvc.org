@@ -6,7 +6,7 @@ Logs the given scalar `val` associating it with the given `name`.
  def log(name: str, val: float):
 ```
 
-### Usage
+## Usage
 
 ```py
 from dvclive import Live

@@ -6,7 +6,7 @@ Saves the given image `val` to the output file `name`.
 def log_image(name: str, val):
 ```
 
-### Usage
+## Usage
 
 ```py
 from dvclive import Live
