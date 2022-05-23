@@ -1,6 +1,5 @@
 ---
-title:
-  Introducing the DVC extension for Visual Studio Code
+title: Introducing the DVC extension for Visual Studio Code
 date: 2022-06-14
 description: >
   Lorem ipsum dolor sit amet
@@ -8,7 +7,7 @@ descriptionLong: >
   Lorem ipsum dolor sit amet
 picture: 2022-06-15/header.png
 author: rob_dewit
-# commentsUrl: 
+# commentsUrl:
 tags:
   - VS Code
   - DVC
@@ -33,8 +32,8 @@ visualizations, a CLI tool can only take things so far.
 That's why we wanted to expand upon the basis of DVC by:
 
 - Making DVC more accessible by hiding the complexity of the CLI
-- Enhancing existing visualizations and providing extra ones
-- Moving the data science workflows into the build context
+- Enhancing existing visualizations and providing new ones
+- Moving the entire data science workflow into your IDE
 
 # Why Visual Studio Code
 
@@ -44,26 +43,36 @@ data science projects. VS Code is the IDE of choice for many of us at Iterative,
 and we really like it. Here's a few reasons why:
 
 VS Code...
-- is open-source and lightweight
+
+- is open source and lightweight
 - is becoming an industry standard for Python and data science
-- has great support for Git workflows already
+- has great support for Git workflows
 - supports Jupyter Notebooks
 - comes with remote development and execution built in
 
 # Features
+
 Our first course of action was to include all DVC features related to data
 management and experiments in the extension. Here are the features that are
 currently available:
 
 ## Command palette
-Fewer commands; follow along with guided instructions and buttons
+
+Our extension makes extensive use of the Command Palette, reducing the need to
+learn commands by heart.
+
+![Use the command palette to quickly find DVC features](/uploads/images/2022-06-15/command-palette.gif)
 
 ## Source control management
+
 Sync data with DVC remote, just how you sync code with Git
 
 ## Tracked resources
+
 ## DVC View Container
+
 ## Experiments Table
+
 ## Plots
 
 # What next?
