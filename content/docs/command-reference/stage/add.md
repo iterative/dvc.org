@@ -193,13 +193,13 @@ data science experiments.
   output as a [checkpoint](/doc/command-reference/exp/run#checkpoints). This
   makes the stage incompatible with `dvc repro`.
 
-- `-p [<path>:]<params_list>`, `--params [<path>:]<params_list>` - specify a set
-  of [parameter dependencies](/doc/command-reference/params) the stage depends
-  on, from a parameters file. This is done by sending a comma separated list as
-  argument, e.g. `-p learning_rate,epochs`. The default parameters file name is
-  `params.yaml`, but this can be redefined with a prefix in the argument sent to
-  this option, e.g. `-p parse_params.yaml:threshold`. See `dvc params` to learn
-  more about parameters.
+- `-p [<path>:]<params_list>`, `--params [<path>:]<params_list>` - specify one
+  or more [parameter dependencies](/doc/command-reference/params) from a
+  parameters file `path` (`./params.yaml` by default). This is done by sending a
+  comma separated list (`params_list`) as argument, e.g.
+  `-p learning_rate,epochs`. A custom params file can be defined with a prefix,
+  e.g. `-p params.json:threshold`. Or use the prefix alone with `:` to use all
+  the parameters found in that file, e.g. `-p myparams.toml:`.
 
 - `-m <path>`, `--metrics <path>` - specify a metrics file produced by this
   stage. This option behaves like `-o` but registers the file in a `metrics`
