@@ -3,6 +3,7 @@ import React from 'react'
 
 import BlogPreview from './BlogPreview'
 import config from '../config'
+import Image from './Image'
 
 CMS.init({
   config: {
@@ -66,3 +67,4 @@ const BlogPreviewTemplate = ({ entry, widgetFor }) => {
 }
 
 CMS.registerPreviewTemplate('blog', BlogPreviewTemplate)
+CMS.registerEditorComponent(Image)
