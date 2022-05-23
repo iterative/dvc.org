@@ -61,11 +61,17 @@ currently available:
 Our extension makes extensive use of the Command Palette, reducing the need to
 learn commands by heart.
 
-![Use the command palette to quickly find DVC features](/uploads/images/2022-06-15/command-palette.gif)
+![Use the command palette to quickly find DVC
+features](/uploads/images/2022-06-15/command-palette.gif)
 
 ## Source control management
 
-Sync data with DVC remote, just how you sync code with Git
+Manage changes to your datasets and models right from the source control panel,
+just like you would track changes to your code. Use `checkout`, `commit`, `add`,
+`push`, and `pull` straight from the interface:
+
+![Get a quick overview of changes to your data in the source control
+panel](/uploads/images/2022-06-15/source-control.png)
 
 ## Tracked resources
 
