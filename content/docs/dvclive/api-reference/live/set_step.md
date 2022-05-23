@@ -6,7 +6,7 @@ Signals that the current step has ended and sets step to the given value.
 def set_step(step: int):
 ```
 
-#### Usage:
+### Usage
 
 ```py
 from dvclive import Live

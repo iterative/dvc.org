@@ -8,7 +8,7 @@ saves the data in `{path}/plots/{name}.json`.
 def log_plot(self, name: str, labels, predictions, **kwargs):
 ```
 
-#### Usage:
+### Usage
 
 ```py
 from dvclive import Live

@@ -13,7 +13,7 @@ class Live:
     ):
 ```
 
-#### Usage:
+### Usage
 
 ```py
 from dvclive import Live

@@ -6,7 +6,7 @@ Returns the current `step` value.
 def get_step() -> int:
 ```
 
-#### Usage:
+### Usage
 
 ```py
 from dvclive import Live
