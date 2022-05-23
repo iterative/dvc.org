@@ -1,7 +1,7 @@
 # Billing and Payment
 
-Studio is free for individuals and small teams (up to 2 members). The Free plan
-is designed for teams just starting out with collaboration: you can invite one
+Studio is free for individuals and teams with up to 2 members. The Free plan is
+designed for teams just starting out with collaboration: you can invite one
 other team member and import as many repositories as you want. For more advanced
 collaboration functionality, you can sign up for the Team or Enterprise plans.
 These are paid plans, and in this section you will learn how to manage billing
@@ -25,15 +25,12 @@ Studio [pricing page](https://studio.iterative.ai/pricing).
 ## How to sign up for the Team or Enterprise plan
 
 When you sign up, you're on the Free plan by default. Plans are managed at the
-team level, which means that you can
+team level. You can
 [change the plan](/doc/studio/change-team-plan-or-size#change-team-plan) in a
 team's settings page. Each team is on its own plan and needs to be managed
 separately.
 
 ## How total price is calculated
-
-For Enterprise plans, all invoice amounts are calculated based on the agreement
-between you and Iterative.
 
 For Team plans, invoice amount is calculated based on the number of seats in the
 team. All invoice amounts are calculated for one billing period at a time. A
@@ -44,6 +41,14 @@ Below is an example calculation:
 
 Suppose you have a team with 5 seats. At a monthly rate of $40 per seat, the
 total payable amount for the team = $40 \* 5 = $200 per month.
+
+Increasing or decreasing the number of seats during a billing period will result
+in pro-rated amount calculation. See the
+[next section](#how-increasing-or-decreasing-the-number-of-seats-affects-total-cost)
+for an example.
+
+For Enterprise plans, all invoice amounts are calculated based on the agreement
+between you and Iterative.
 
 ## How increasing or decreasing the number of seats affects total cost
 
@@ -73,9 +78,8 @@ remaining in the billing period. This credit balance can be used in future
 payments.
 
 When you downgrade from the Team plan to the Free plan, you will receive a
-refund based on the number of days remaining in the billing period. In case of
-any discrepancies in the refunded amount, please
-[contact us](mailto:support@iterative.ai).
+refund based on the number of days remaining in the billing period. For any
+inquiries about refunds, please [contact us](mailto:support@iterative.ai).
 
 To upgrade to or downgrade from an Enterprise plan, please
 [contact us](mailto:support@iterative.ai).
