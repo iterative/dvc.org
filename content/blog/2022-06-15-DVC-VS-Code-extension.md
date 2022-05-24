@@ -26,8 +26,7 @@ teams can use DVC: our extension for Visual Studio Code.
 With the VS Code extension, you can control your datasets, run experiments, view
 metrics and plots, and much more. All from your IDE.
 
-[Install the DVC extension from the marketplace to get
-started.](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc)
+[Install the DVC extension from the marketplace to get started.](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc)
 
 # Why an extension?
 
@@ -113,6 +112,7 @@ out, we plan on bringing even more features to the extension, including:
 - Parallel coordinate plots
 
 Give us feedback on what you'd like to see next!
+
 # Thank you!
 
 A big thank you to those who have helped make this project possible:
@@ -122,3 +122,9 @@ A big thank you to those who have helped make this project possible:
 - Sid for his review and help in getting the word out there
 - The VS Code developer community
 - Everyone who has beta-tested the extension and provided their feedback!
+
+# Resources
+- [DVC extension on the VS Code marketplace](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc)
+- [GitHub repository](https://github.com/iterative/vscode-dvc)
+- [DVC docs](https://dvc.org/)
+- [Iterative community on Discord](https://dvc.org/chat)
