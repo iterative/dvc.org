@@ -72,7 +72,7 @@ async function createMarkdownBlogNode(api, { parentNode, createChildNode }) {
     }
   }
 
-  if (isProduction) {
+  if (isProduction && path) {
     await mkdirp(path.join(__basedir, 'public', 'blog', 'images'), {
       recursive: true
     })
