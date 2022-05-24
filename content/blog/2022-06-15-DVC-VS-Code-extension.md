@@ -103,8 +103,22 @@ experiments](/uploads/images/2022-06-15/dvc-view-plots.png)
 
 # What's next?
 
+We're excited that version 1.0 is live and available to the public! From here on
+out, we plan on bringing even more features to the extension, including:
 
+- Pipeline (DAG) support
+- [TPI](https://github.com/iterative/terraform-provider-iterative) integration
+  for remote execution of experiments
+- `dvc.yaml` syntax features including autocomplete and snippets
+- Parallel coordinate plots
 
+Give us feedback on what you'd like to see next!
 # Thank you!
 
-A big thanks to those who have have tested
+A big thank you to those who have helped make this project possible:
+
+- [Henning](https://github.com/hediet) for helping us get started
+- [Paige](https://twitter.com/DynamicWebPaige) for her support and warm tweets
+- Sid for his review and help in getting the word out there
+- The VS Code developer community
+- Everyone who has beta-tested the extension and provided their feedback!
