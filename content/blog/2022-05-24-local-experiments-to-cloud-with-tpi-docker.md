@@ -11,7 +11,7 @@ descriptionLong: >
   cloud with Terraform Provider Iterative (TPI).
 picture: 2022-05-19/tpi-docker-header.png
 author: casper_dcl
-#  todo: commentsUrl:
+commentsUrl: https://discuss.dvc.org/t/moving-local-experiments-to-the-cloud-with-terraform-provider-iterative-tpi/1190
 tags:
   - MLOps
   - TPI
@@ -36,7 +36,7 @@ However, instead of using a pre-configured image, we can use custom
 [recommended in machine learning](https://aws.amazon.com/blogs/opensource/why-use-docker-containers-for-machine-learning-development/)
 as well as in traditional software development.
 
-[bees-part-1]: /blog/local-experiments-to-the-cloud-with-tpi
+[bees-part-1]: /blog/local-experiments-to-cloud-with-tpi
 [tpi]: https://github.com/iterative/terraform-provider-iterative
 
 <admon type="info">
