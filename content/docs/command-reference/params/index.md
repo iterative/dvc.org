@@ -58,6 +58,10 @@ as the tree path to find those values. Supported types are: string, integer,
 float, and arrays (groups of params). Note that DVC does not ascribe any
 specific meaning to these values.
 
+> YAML 1.2 stores very large and very small numbers in scientific notation, but
+> the popular PyYAML library uses an older version of the format. To avoid
+> introducing subtle bugs, the ruamel.yaml library should be used instead.
+
 DVC saves parameter names and values to `dvc.lock` in order to track them over
 time. They will be compared to the latest params files to determine if the stage
 is outdated upon `dvc repro` (or `dvc status`).
@@ -115,15 +119,20 @@ The `train.py` script will have some code to parse and load the needed
 parameters. For example:
 
 ```py
-import yaml
+from ruamel.yaml import YAML
 
 with open("params.yaml", 'r') as fd:
-    params = yaml.safe_load(fd)
+    yaml = YAML()
+    params = yaml.load(fd)
 
 lr = params['lr']
 epochs = params['train']['epochs']
 layers = params['train']['layers']
 ```
+
+> Note that the popular PyYAML library does not support YAML 1.2. The
+> ruamel.yaml library should be used instead to avoid subtle differences in
+> number handling.
 
 You can find that each parameter was defined in `dvc.yaml`, as well as saved to
 `dvc.lock` along with the values. These are compared to the params files when
