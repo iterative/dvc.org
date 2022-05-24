@@ -6,7 +6,7 @@ List experiments in a <abbr>DVC repository</abbr> (remote or local).
 
 ```usage
 usage: dvc exp list [-h] [-q | -v] [-A] [--rev <commit>]
-                    [-n <num>] [--names-only]
+                    [-n <num>] [--name-only]
                     [git_remote]
 
 positional arguments:
@@ -44,7 +44,7 @@ options below).
 - `-A, --all-commits` - list all experiments in the repository (overrides
   `--rev` and `--num`).
 
-- `--names-only` - print only the names of the experiments without their parent
+- `--name-only` - print only the names of the experiments without their parent
   Git commit.
 
 - `-h`, `--help` - shows the help message and exit.

@@ -10,7 +10,7 @@ def get_url(path: str,
             remote: str = None) -> str
 ```
 
-#### Usage:
+## Usage
 
 ```py
 import dvc.api

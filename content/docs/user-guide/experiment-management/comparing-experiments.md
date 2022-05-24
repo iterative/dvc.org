@@ -51,11 +51,11 @@ This command lists remote experiments based on that repo's `HEAD`. You can use
 
 `dvc exp list` may be printing too much information when it comes to feed its
 output to other commands. You can get only the names of the experiments via the
-`--names-only` flag. For example, to get all the experiment names from a remote
+`--name-only` flag. For example, to get all the experiment names from a remote
 (`origin`):
 
 ```dvc
-$ for experiment in $(dvc exp list origin --names-only --all) ; do
+$ for experiment in $(dvc exp list origin --name-only --all) ; do
   dvc exp pull "${experiment}"
 done
 ```
