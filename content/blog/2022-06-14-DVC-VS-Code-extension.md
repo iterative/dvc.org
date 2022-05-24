@@ -1,11 +1,11 @@
 ---
 title: Introducing the DVC extension for Visual Studio Code
-date: 2022-06-15
+date: 2022-06-14
 description: >
   Streamline your data science workflow with the DVC extension for VS Code. Data management and experiments all from the comfort of your IDE!
 descriptionLong: >
   VS Code has become the IDE of choice for many data scientists. Today we are releasing the DVC extension, which will streamline your data science workflow even further. Manage your data, run experiments, compare metrics, and visualize plots, all from the comfort of your IDE.
-picture: 2022-06-15/header.png
+# picture: 2022-06-14/header.png
 author: rob_dewit
 # commentsUrl:
 tags:
@@ -70,7 +70,7 @@ The DVC extension makes extensive use of the Command Palette, reducing the need
 to learn commands by heart:
 
 ![Use the command palette to quickly find DVC
-features](/uploads/images/2022-06-15/command-palette.gif)
+features](/uploads/images/2022-06-14/command-palette.gif)
 
 ## Source control management
 
@@ -79,7 +79,7 @@ just like you would with changes to your code. Use `checkout`, `commit`, `add`,
 `push`, and `pull` straight from the interface:
 
 ![Get a quick overview of changes to your data in the source control
-panel](/uploads/images/2022-06-15/source-control.png)
+panel](/uploads/images/2022-06-14/source-control.png)
 
 ## Tracked resources
 
@@ -88,7 +88,7 @@ view. See at glance which datasets and models have been changed, and use `push`
 and `pull` to synchronize with your remote:
 
 ![Tracked resources in the explorer
-view](/uploads/images/2022-06-15/tracked-resources.png)
+view](/uploads/images/2022-06-14/tracked-resources.png)
 
 ## DVC View: experiment tables and plots
 
@@ -96,10 +96,10 @@ An entirely new view to navigate through your experiments. Create filters and
 sorts, compare metrics, and view plots for easier analysis:
 
 ![Experiment tables to compare different
-experiments](/uploads/images/2022-06-15/dvc-view-experiments-table.png)
+experiments](/uploads/images/2022-06-14/dvc-view-experiments-table.png)
 
 ![Plots to visualize your
-experiments](/uploads/images/2022-06-15/dvc-view-plots.png)
+experiments](/uploads/images/2022-06-14/dvc-view-plots.png)
 
 # What's next?
 
