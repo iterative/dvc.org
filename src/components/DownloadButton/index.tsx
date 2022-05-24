@@ -9,7 +9,7 @@ import { logEvent } from '@dvcorg/gatsby-theme-iterative/src/utils/front/plausib
 
 import * as styles from './styles.module.css'
 
-const VERSION = `2.9.5`
+const VERSION = `2.10.2`
 
 enum OS {
   UNKNOWN = 'unknown',

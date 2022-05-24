@@ -2,20 +2,22 @@
   box-sizing: border-box;
   position: relative;
   display: flex;
+  flex-flow: column nowrap;
   align-items: center;
-  min-height: 300px;
-  padding: 20px 15px 30px;
+  justify-content: center;
   background-color: #13adc7;
-
-  @media (--xs-scr) {
-    min-height: auto;
-  }
 }
 
 .container {
   margin: 0 auto;
+  padding: 85px 15px 65px;
   width: 100%;
   max-width: 1000px;
+  box-sizing: border-box;
+
+  @media (--xs-scr) {
+    padding: 20px 15px;
+  }
 }
 
 .glyph {
@@ -38,7 +40,7 @@
     left: 28px;
   }
 
-  &.rigthbottom {
+  &.rightbottom {
     bottom: -60px;
     right: 28px;
   }
@@ -50,6 +52,19 @@
   color: #fff;
   margin: 0 auto;
   text-align: center;
+}
+
+.rssLink {
+  color: #fff;
+  display: block;
+  margin: 15px auto 0;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.1em;
+
+  a {
+    color: inherit;
+  }
 }
 
 .subscribeContainer {

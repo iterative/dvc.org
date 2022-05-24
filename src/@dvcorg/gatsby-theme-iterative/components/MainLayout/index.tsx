@@ -43,7 +43,7 @@ const MainLayout: LayoutComponent = ({
   }, [])
 
   return (
-    <>
+    <div className={styles.wrapper}>
       <SkipNavLink
         contentId="main-content"
         className={styles.skipLink}
@@ -60,7 +60,7 @@ const MainLayout: LayoutComponent = ({
         {children}
       </div>
       <LayoutFooter />
-    </>
+    </div>
   )
 }
 
