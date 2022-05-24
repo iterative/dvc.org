@@ -8,7 +8,7 @@ to a `dvc remote`.
 ```usage
 usage: dvc exp push [-h] [-q | -v] [-A] [--rev <commit>] [-n <num>] [-f]
                     [--no-cache] [-r <name>] [-j <number>] [--run-cache]
-                    git_remote experiment
+                    git_remote [experiment ...]
 
 positional arguments:
   git_remote          Git remote name or Git URL
