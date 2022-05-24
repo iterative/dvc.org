@@ -1,9 +1,8 @@
 ---
-title: Package and deploy your models with MLEM
+title: Productionize your models with MLEM in a Git-native way
 date: 2022-05-24
 description: >
-  Introducing MLEM -- Machine Learning Engineering Management for Model
-  Deployment and Management.
+  Introducing MLEM - one tool to run your models anywhere.
 descriptionLong: >
   We’re excited to announce the launch of our latest open source offering,
   [MLEM](https://mlem.ai)! MLEM is a tool that automatically extracts meta
@@ -210,9 +209,9 @@ Docker Image, or export it as some special format (like `.onnx` which is coming
 soon).
 
 ```shell
-$ mlem pack mlem-model pip -c package_name=mlem-translate -c target=build/
+$ mlem build mlem-model pip -c package_name=mlem-translate -c target=build/
 ⏳️ Loading model from ml-model.mlem
-💼 Written `ml-package` package data to `build`
+💼 Written `ml-package` package data to `build/`
 $ tree build/
 build
 ├── MANIFEST.in
@@ -228,7 +227,7 @@ The last one allows you to deploy models to deployment providers, such as Heroku
 (with AWS Sagemaker and Kubernetes coming soon).
 
 ```shell
-$ mlem deploy create myservice -m mlem-model -t staging -c app_name=mlem-quick-start
+$ mlem deployment run myservice -m mlem-model -t staging -c app_name=mlem-quick-start
 ⏳️ Loading deployment from my-service.mlem
 🔗 Loading link to staging.mlem
 🔗 Loading link to mlem-model.mlem
@@ -254,7 +253,7 @@ models just as easy with Python API:
 
 ```python
 $ python
->>> from mlem.api import serve, pack, deploy
+>>> from mlem.api import serve, build, deploy
 ```
 
 # Git-native model registry
@@ -292,11 +291,10 @@ standard Git workflows (along with code). Large model files are stored
 separately and efficiently, and can be pushed to [remote storage] -- a scalable
 access point for [sharing].
 
-To make a Git-native registry (on top of DVC or not), one option is to use [GTO]
-(Git Tag Ops). It tags ML model releases and promotions, and links them to
-artifacts in the repo using versioned annotations. This creates abstractions for
-your models, which lets you **manage their lifecycle** freely and directly from
-Git.
+To make a Git-native registry, one option is to use [GTO] (Git Tag Ops). It tags
+ML model releases and promotions, and links them to artifacts in the repo using
+versioned annotations. This creates abstractions for your models, which lets you
+**manage their lifecycle** freely and directly from Git.
 
 ```shell
 $ gto show
