@@ -9,7 +9,7 @@ descriptionLong: >
   releasing the DVC extension, which will streamline your data science workflow
   even further. Manage your data, run experiments, compare metrics, and
   visualize plots, all from the comfort of your IDE.
-picture: 2022-06-14/header.png
+# picture: 2022-06-14/header.png
 author: rob_dewit
 # commentsUrl:
 tags:
