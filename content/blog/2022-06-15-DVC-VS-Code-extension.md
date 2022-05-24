@@ -23,17 +23,25 @@ tools.
 Today we are proud to launch a new product that extends the ways in which ML
 teams can use DVC: our extension for Visual Studio Code.
 
-DVC was built as an extension to Git workflows. This approach has made it a
+With the VS Code extension, you can control your datasets, run experiments, view
+metrics and plots, and much more. All from your IDE.
+
+[Install the DVC extension from the marketplace to get
+started.](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc)
+
+# Why an extension?
+
+DVC was built to expand upon the Git workflow. This approach has made it a
 powerful tool that can easily be picked up by users familiar with Git. However,
 for those less familiar with CLI tools, it can be more difficult to get
 accustomed to using DVC. Moreover, while DVC provides many useful
 visualizations, a CLI tool can only take things so far.
 
-That's why we wanted to expand upon the basis of DVC by:
+With this extension we want to achieve the following:
 
-- Making DVC more accessible by hiding the complexity of the CLI
-- Enhancing existing visualizations and providing new ones
-- Moving the entire data science workflow into your IDE
+- Make DVC more accessible by hiding the complexity of the CLI
+- Enhance existing visualizations and providing new ones
+- Move the entire data science workflow into your IDE
 
 # Why Visual Studio Code
 
@@ -54,7 +62,7 @@ VS Code...
 
 Our first course of action was to include all DVC features related to data
 management and experiments in the extension. Here are the main features that are
-available if you install the extension right now:
+available when you install the extension right now:
 
 ## Command palette
 
@@ -93,8 +101,10 @@ experiments](/uploads/images/2022-06-15/dvc-view-experiments-table.png)
 ![Plots to visualize your
 experiments](/uploads/images/2022-06-15/dvc-view-plots.png)
 
-# What next?
+# What's next?
+
+
 
 # Thank you!
 
-A big thanks to those who have have tested 
+A big thanks to those who have have tested
