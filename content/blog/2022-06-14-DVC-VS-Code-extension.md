@@ -2,9 +2,13 @@
 title: Introducing the DVC extension for Visual Studio Code
 date: 2022-06-14
 description: >
-  Streamline your data science workflow with the DVC extension for VS Code. Data management and experiments all from the comfort of your IDE!
+  Streamline your data science workflow with the DVC extension for VS Code. Data
+  management and experiments all from the comfort of your IDE!
 descriptionLong: >
-  VS Code has become the IDE of choice for many data scientists. Today we are releasing the DVC extension, which will streamline your data science workflow even further. Manage your data, run experiments, compare metrics, and visualize plots, all from the comfort of your IDE.
+  VS Code has become the IDE of choice for many data scientists. Today we are
+  releasing the DVC extension, which will streamline your data science workflow
+  even further. Manage your data, run experiments, compare metrics, and
+  visualize plots, all from the comfort of your IDE.
 # picture: 2022-06-14/header.png
 author: rob_dewit
 # commentsUrl:
@@ -26,8 +30,7 @@ teams can use DVC: our extension for Visual Studio Code.
 With the VS Code extension, you can control your datasets, run experiments, view
 metrics and plots, and much more. All from your IDE.
 
-[Install the DVC extension from the marketplace to get
-started.](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc)
+[Install the DVC extension from the marketplace to get started.](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc)
 
 # Why an extension?
 
@@ -126,8 +129,7 @@ A big thank you to those who have helped make this project possible:
 
 # Resources
 
-- [DVC extension on the VS Code
-  marketplace](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc)
+- [DVC extension on the VS Code marketplace](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc)
 - [GitHub repository](https://github.com/iterative/vscode-dvc)
 - [DVC docs](https://dvc.org/)
 - [Iterative community on Discord](https://dvc.org/chat)
