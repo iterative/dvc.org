@@ -47,12 +47,15 @@ GPU runtime drivers if applicable. Happily, TPI sets up all of this by default.
 
 </admon>
 
-Separation of dependencies into Docker images will give you more control over
-the software versions, and also makes it painless to switch between cloud
-providers -- currently Amazon Web Services (AWS), Microsoft Azure, Google Cloud
-Platform, and Kubernetes. Your Docker image is cloud provider-agnostic. There
-are thousands of [pre-defined Docker images online](https://hub.docker.com/)
-too.
+When confronted with cloud infrastructure and dependencies, people often think
+"oh no, not again" (much
+[like the petunias](https://www.youtube.com/watch?v=THSY7-CxKnQ) in the cover
+image). To solve this, separating dependencies into Docker images gives more
+control over software versions, and also makes it painless to switch between
+cloud providers -- currently Amazon Web Services (AWS), Microsoft Azure, Google
+Cloud Platform, and Kubernetes. Your Docker image is cloud provider-agnostic.
+There are thousands of
+[pre-defined Docker images online](https://hub.docker.com/) too.
 
 In this tutorial, we'll use an existing Docker image that comes with most of our
 requirements already installed. We'll then add add a few more dependencies on
