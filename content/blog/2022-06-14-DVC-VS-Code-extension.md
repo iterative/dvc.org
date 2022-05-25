@@ -19,12 +19,12 @@ tags:
   - Release
 ---
 
-Since its beta release in 2017 DVC has grown to be an essential tool for many
+Since its beta release in 2017, DVC has become an essential tool for many
 data science teams. Its data versioning capabilities, reproducible pipelines,
 and experiment tracking features are at the core of our ecosystem of open MLOps
 tools.
 
-Today we are proud to launch a new product that extends the ways in which ML
+Today we are proud to launch a new product that extends how ML
 teams can use DVC: our extension for Visual Studio Code.
 
 With the VS Code extension, you can control your datasets, run experiments, view
@@ -34,32 +34,30 @@ metrics and plots, and much more. All from your IDE.
 
 # Why an extension?
 
-DVC was built to expand upon the Git workflow. This approach has made it a
-powerful tool that can easily be picked up by users familiar with Git. However,
-for those less familiar with CLI tools, it can be more difficult to get
-accustomed to using DVC. Moreover, while DVC provides many useful
+We built DVC to expand upon the Git workflow. This approach has made it a
+powerful tool that can easily be picked up by users familiar with Git. However, it can be more difficult for those less familiar with CLI tools to get accustomed to using DVC. Moreover, while DVC provides many useful
 visualizations, a CLI tool can only take things so far.
 
-With this extension we want to achieve the following:
+With this extension, we want to achieve the following:
 
 - Make DVC more accessible by hiding the complexity of the CLI
-- Enhance existing visualizations and providing new ones
+- Enhance existing visualizations and provide new ones
 - Move the entire data science workflow into your IDE
 
 # Why Visual Studio Code
 
 One of [our core beliefs at Iterative](https://iterative.ai/why-iterative/) is
-that our products should couply tightly with existing tools and processes for
+that our products should couple tightly with existing tools and processes for
 data science projects. VS Code is the IDE of choice for many of us at Iterative,
-and we really like it. Here's a few reasons why:
+and we really like it. Here are a few reasons why:
 
 VS Code...
 
 - is open source and lightweight
 - is becoming an industry standard for Python and data science
-- has great support for Git workflows
+- has excellent support for Git workflows
 - supports Jupyter Notebooks
-- comes with remote development and execution built in
+- comes with remote development and execution built-in
 
 # Features
 
@@ -87,7 +85,7 @@ panel](/uploads/images/2022-06-14/source-control.png)
 ## Tracked resources
 
 Resources tracked by DVC can be viewed and managed through the tracked explorer
-view. See at glance which datasets and models have been changed, and use `push`
+view. See at a glance which datasets and models have been changed, and use `push`
 and `pull` to synchronize with your remote:
 
 ![Tracked resources in the explorer
@@ -112,7 +110,7 @@ out, we plan on bringing even more features to the extension, including:
 - Pipeline (DAG) support
 - [TPI](https://github.com/iterative/terraform-provider-iterative) integration
   for remote execution of experiments
-- `dvc.yaml` syntax features including autocomplete and snippets
+- `dvc.yaml` syntax features, including autocomplete and snippets
 - Parallel coordinate plots
 
 Give us feedback on what you'd like to see next!
@@ -121,9 +119,9 @@ Give us feedback on what you'd like to see next!
 
 A big thank you to those who have helped make this project possible:
 
-- [Henning](https://github.com/hediet) for helping us get started
-- [Paige](https://twitter.com/DynamicWebPaige) for her support and warm tweets
-- Sid for his review and help in getting the word out there
+- [Henning](https://github.com/hediet), for helping us get started
+- [Paige](https://twitter.com/DynamicWebPaige), for her support and warm tweets
+- Sid, for his review and help in getting the word out there
 - The VS Code developer community
 - Everyone who has beta-tested the extension and provided their feedback!
 
