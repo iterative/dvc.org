@@ -139,7 +139,8 @@ cases, change their configuration to avoid shallow cloning. Common examples:
 <toggle>
 <tab title="CML">
 
-When using [CML](https://cml.dev/doc), repositories can be unshallowed by using:
+[CML](https://cml.dev/doc) has a convenient `--unshallow` option for it's
+[`ci`](https://cml.dev/doc/ref/ci) command:
 
 ```cli
 $ cml ci --unshallow
