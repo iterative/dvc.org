@@ -126,38 +126,51 @@ and retry the DVC command. Specifically, one of:
 [internal directories]:
   https://dvc.org/doc/user-guide/project-structure/internal-files
 
-## DVC experiments may fail in shallow Git repositories {#git-shallow}
+## DVC Experiments may fail in Git shallow clones {#git-shallow}
 
-DVC experiments rely on Git features which may not work properly in shallow Git
-repositories. This error commonly occurs in certain CI environments which use
-shallow git clones by default. When this error is encountered, try unshallowing
-the Git repository and then retry the DVC command.
+`dvc exp` commands use internal Git operations which may not work properly in
+[shallow clones](https://git-scm.com/docs/git-clone#Documentation/git-clone.txt---depthltdepthgt).
+Local Git repositories can be unshallowed with `git fetch --unshallow`.
 
-Local Git repositories can be unshallowed by using:
+Typically, however, this occurs in transient remote environments such as
+Continuous Integration jobs, which use shallow clones by default. In those cases,
+change their configuration to avoid shallow cloning. Common examples:
 
-```
-$ git fetch --unshallow
-```
+<toggle>
+<tab title="CML">
 
 When using [CML](https://cml.dev/doc), repositories can be unshallowed by using:
 
-```
+```cli
 $ cml ci --unshallow
 ```
 
-In GitHub Actions, repositories can be unshallowed by setting `fetch-depth` in
-the `actions/checkout` action.
+</tab>
+<tab title="GitHub Actions">
 
-```
+Set `fetch-depth` to `0` in the `actions/checkout` action:
+
+```yaml
 - uses: actions/checkout@v3
   with:
     fetch-depth: 0
 ```
 
-In GitLab CI/CD, repositories can be unshallowed by setting the `GIT_DEPTH`
-environment variable:
+> More info.
+> [here](https://github.com/actions/checkout#fetch-all-history-for-all-tags-and-branches).
 
-```
+</tab>
+<tab title="GitLab CI/CD">
+
+Set the `GIT_DEPTH` env var to `0`:
+
+```yaml
 variables:
   GIT_DEPTH: "0"
 ```
+
+> More info.
+> [here](https://docs.gitlab.com/ee/ci/large_repositories/#shallow-cloning).
+
+</tab>
+</toggle>
