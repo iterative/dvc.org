@@ -596,7 +596,9 @@
             ]
           },
           "teams",
+          "change-team-plan-and-size",
           "account-management",
+          "billing-and-payment",
           "install-github-app",
           "connect-custom-gitlab-server"
         ]
