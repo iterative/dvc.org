@@ -2409,10 +2409,10 @@
   resolved "https://registry.npmjs.org/@csstools/convert-colors/-/convert-colors-1.4.0.tgz"
   integrity sha512-5a6wqoJV/xEdbRNKVo6I4hO3VjyDq//8q2f9I6PBAvMesJHFauXDorcNCsr9RzvsZnaWi5NYCcfyqP1QeFHFbw==
 
-"@dvcorg/gatsby-theme-iterative@^0.1.3":
-  version "0.1.3"
-  resolved "https://registry.yarnpkg.com/@dvcorg/gatsby-theme-iterative/-/gatsby-theme-iterative-0.1.3.tgz#f41765719fd1260c72a904211f52421d4bbd18b6"
-  integrity sha512-XGznjm+1HSmyV21l2XqxUQ3SFAe2qbuIjauXPSEGwLGY1DBjTMJG50cpZ/iIm9x+3W0+IvnUy6UMV6lQylWU9w==
+"@dvcorg/gatsby-theme-iterative@^0.1.4":
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/@dvcorg/gatsby-theme-iterative/-/gatsby-theme-iterative-0.1.4.tgz#5ac4aa464ebc8f193193e57b47523c17be88e7dc"
+  integrity sha512-KcWekFG7AIz8CKyikJn84ADqR5C5q4YIUZ5apMKEASgjcccwzaE79LDyCyJOvTGWsk2XgJAmMH/tA6dRWys++w==
   dependencies:
     "@reach/portal" "^0.17.0"
     "@reach/router" "^1.3.4"
@@ -10804,6 +10804,28 @@ hast-util-select@^5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/hast-util-select/-/hast-util-select-5.0.1.tgz#ed3788ad1a8d2d7f16a6bf8153ce9378edbe9d6d"
   integrity sha512-cxnImmR/tN/ipvbwGrKtEErmy83K1xWx8Bu7nImiwTOJ7X/fW1X6L1241ux+MYUXDwx8GxrE4LVmXRlEnbQsQA==
+  dependencies:
+    "@types/hast" "^2.0.0"
+    "@types/unist" "^2.0.0"
+    bcp-47-match "^2.0.0"
+    comma-separated-tokens "^2.0.0"
+    css-selector-parser "^1.0.0"
+    direction "^2.0.0"
+    hast-util-has-property "^2.0.0"
+    hast-util-is-element "^2.0.0"
+    hast-util-to-string "^2.0.0"
+    hast-util-whitespace "^2.0.0"
+    not "^0.1.0"
+    nth-check "^2.0.0"
+    property-information "^6.0.0"
+    space-separated-tokens "^2.0.0"
+    unist-util-visit "^4.0.0"
+    zwitch "^2.0.0"
+
+hast-util-select@^5.0.2:
+  version "5.0.2"
+  resolved "https://registry.yarnpkg.com/hast-util-select/-/hast-util-select-5.0.2.tgz#8c603ebacf0f47e154c5fa2e5b7efc520813866b"
+  integrity sha512-QGN5o7N8gq1BhUX96ApLE8izOXlf+IPkOVGXcp9Dskdd3w0OqZrn6faPAmS0/oVogwJOd0lWFSYmBK75e+030g==
   dependencies:
     "@types/hast" "^2.0.0"
     "@types/unist" "^2.0.0"

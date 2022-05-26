@@ -8,6 +8,14 @@ const makeFeedHtml = require('@dvcorg/gatsby-theme-iterative/plugins/utils/makeF
 const apiMiddleware = require('./src/server/middleware/api')
 const redirectsMiddleware = require('./src/server/middleware/redirects')
 
+const autoprefixer = require('autoprefixer')
+const customMedia = require('postcss-custom-media')
+const customProperties = require('postcss-custom-properties')
+const mixins = require('postcss-mixins')
+const colorMod = require('postcss-color-mod-function')
+
+const mixinsConfig = require('@dvcorg/gatsby-theme-iterative/config/postcss/mixins')
+
 const title = 'Data Version Control · DVC'
 const description =
   'Open-source version control system for Data Science and Machine Learning ' +
@@ -28,7 +36,26 @@ const plugins = [
       remark: false,
       cssBase: require.resolve(
         './src/@dvcorg/gatsby-theme-iterative/components/Page/base.css'
-      )
+      ),
+      postCssPlugins: [
+        require('postcss-nested'),
+        customMedia({
+          importFrom: './src/styles/media.css'
+        }),
+        mixins(mixinsConfig),
+        customProperties({
+          importFrom: [
+            './src/@dvcorg/gatsby-theme-iterative/components/Page/base.css'
+          ],
+          disableDeprecationNotice: true
+        }),
+        colorMod({
+          importFrom: [
+            './src/@dvcorg/gatsby-theme-iterative/components/Page/base.css'
+          ]
+        }),
+        autoprefixer
+      ]
     }
   },
   {
