@@ -164,8 +164,7 @@
           "update-tracked-data",
           "add-deps-or-outs-to-a-stage",
           "merge-conflicts",
-          "share-a-dvc-cache",
-          "share-many-experiments"
+          "share-a-dvc-cache"
         ]
       },
       "setup-google-drive-remote",

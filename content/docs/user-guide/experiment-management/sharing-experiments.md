@@ -73,11 +73,8 @@ $ dvc exp push origin exp-abc123
 
 Once pushed, you can easily [list remote experiments] (with `dvc exp list`).
 
-> See also [How to Share Many Experiments][share many].
-
 [list remote experiments]:
   /doc/user-guide/experiment-management/comparing-experiments#list-experiments-saved-remotely
-[share many]: /doc/user-guide/how-to/share-many-experiments
 
 ## Downloading experiments
 
@@ -94,3 +91,13 @@ both of these configured (see this [earlier section](#preparation)).
 
 If an experiment being pulled already exists in the local project, DVC won't
 overwrite it unless you supply `--force`.
+
+## Sharing many experiments
+
+Use the flags in `dvc exp push` and `dvc exp pull` to share many experiments at
+once. For example, to upload all experiments based on the latest commit of the
+current branch (Git `HEAD`), use `--rev HEAD`:
+
+```
+$ dvc exp push --rev HEAD origin
+```

@@ -18,12 +18,27 @@ main:
     cnn-64
     cnn-128
 $ dvc exp remove cnn-32 cnn-64
-$ dvc exp list
-main:
-    cnn-128
+Removed experiments: cnn-32,cnn-64
 ```
 
 ## Removing multiple experiments
+
+You may wish to remove multiple experiments at once. For example, if you are
+finished experimenting on the current commit and want to discard all experiments
+based on that commit, use `--rev HEAD`.
+
+```
+$ dvc exp list
+refs/tags/baseline-experiment:
+        cnn-128
+        cnn-32
+        cnn-64
+        cnn-96
+$ dvc exp remove --rev HEAD
+Removed experiments: cnn-128,cnn-32,cnn-64,cnn-96
+```
+
+## Cleaning up experiments
 
 After you've completed a set of experiments, it may be easier to decide which of
 these to keep rather than which of these to remove. You can use `dvc exp gc` to
@@ -63,6 +78,9 @@ branches in this example.
 
 ```dvc
 $ dvc exp gc --workspace
+WARNING: This will remove all experiments except those derived from the workspace of the current repo. Run queued experiments will be removed.
+Are you sure you want to proceed? [y/n]: y
+Removed 5 experiments. To remove unused cache files use 'dvc gc'.
 $ dvc exp list --all
 main:
    exp-abc000
@@ -147,6 +165,9 @@ $ dvc exp show --all-tags
 
 ```dvc
 $ dvc exp gc --all-tags
+WARNING: This will remove all experiments except those derived from the workspace of the current repo. Run queued experiments will be removed.
+Are you sure you want to proceed? [y/n]: y
+Removed 2 experiments. To remove unused cache files use 'dvc gc'.
 $ dvc exp show --all-tags
 ```
 
@@ -171,8 +192,8 @@ workspace that are not committed to the history.
 
 ### Deleting Experiment-Related Objects in DVC Cache
 
-Note that `dvc exp gc` and `dvc exp remove` doesn't delete any objects in the
-DVC <abbr>cache</abbr>. In order to remove the cache objects, e.g. model files,
+Note that `dvc exp gc` and `dvc exp remove` don't delete any objects in the DVC
+<abbr>cache</abbr>. In order to remove the cache objects, e.g. model files,
 intermediate artifacts, etc. related with the experiments, you can use `dvc gc`
 command.
 
@@ -183,32 +204,13 @@ well.
 
 ## Removing experiments from remotes
 
-As you push the experiments with `dvc exp push`, remotes may be become cluttered
-with experiment references.
+As you push the experiments with `dvc exp push`, Git remotes may be become
+cluttered with experiment references. To remove experiments from a Git remote,
+use `dvc exp remove -g`.
 
-DVC doesn't provide a shortcut for cleaning up the experiments in remotes but
-you can use Git plumbing commands to remove experiment references from remotes.
-
-First get the list of experiments with their hash values.
-
-```dvc
-$ git ls-remote origin 'refs/exps/*'
-98b237f8d8da0964c9fa60c6b27f1dd4a214dabf        refs/exps/17/2b1b9c885f10a73c76bd457a04878bee0e6d6f/exp-7424d
-794854926931e84ebc90e829dbc09b3085391659        refs/exps/19/0e697aa566482ebdb8bdb65401382e76b1bce5/exp-ec039
 ```
-
-Then we can use `git push -d` as any other Git reference:
-
-```dvc
-$ git push -d origin refs/exps/17/2b1b9c885f10a73c76bd457a04878bee0e6d6f/exp-7424d
-```
-
-If you want to delete **all** experiments in a remote, you can use a loop:
-
-```dvc
-$ git ls-remote origin 'refs/exps/*' | cut -f 2 | while read exppath ; do
-   git push -d origin "${exppath}"
-done
+dvc exp remove -g origin exp-ab780
+Removed experiments: exp-bb09c
 ```
 
 ## Removing queued experiments
