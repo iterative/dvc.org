@@ -1,5 +1,6 @@
 ---
-title: Introducing the DVC extension for Visual Studio Code
+title: >
+  Turn Visual Studio Code into an ML experimentation platform with the DVC extension
 date: 2022-06-14
 description: >
   Streamline your data science workflow with the DVC extension for VS Code. Data
@@ -27,8 +28,9 @@ tools.
 Today we are proud to launch a new product that extends how ML teams can use
 DVC: our extension for Visual Studio Code.
 
-With the VS Code extension, you can control your datasets, run experiments, view
-metrics and plots, and much more. All from your IDE.
+With this extension you get a full VS Code-native experimentation platform for
+your machine learning projects. You can control datasets, run experiments, view
+metrics, create plots, and much more. All in one place in your IDE.
 
 [Install the DVC extension from the marketplace to get
 started.](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc)
@@ -47,20 +49,24 @@ With this extension, we want to achieve the following:
 - Enhance existing visualizations and provide new ones
 - Move the entire data science workflow into your IDE
 
+If DVC is our toolbox as data scientists, this extension turns VS Code into our
+workshop.
+
 # Why Visual Studio Code
 
 One of [our core beliefs at Iterative](https://iterative.ai/why-iterative/) is
 that our products should couple tightly with existing tools and processes for
-data science projects. VS Code is the IDE of choice for many of us at Iterative,
-and we really like it. Here are a few reasons why:
+data science projects. [VS Code is the IDE of choice for
+many](https://insights.stackoverflow.com/survey/2021#section-most-popular-technologies-integrated-development-environment),
+including many of us at Iterative. Here are a few reasons why we really like it:
 
 VS Code...
 
 - is open source and lightweight
-- is becoming an industry standard for Python and data science
 - has excellent support for Git workflows
 - supports Jupyter Notebooks
 - comes with remote development and execution built-in
+- has a rich ecosystem of extensions
 
 # Features
 
