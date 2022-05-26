@@ -19,13 +19,13 @@ tags:
   - Release
 ---
 
-Since its beta release in 2017, DVC has become an essential tool for many
-data science teams. Its data versioning capabilities, reproducible pipelines,
-and experiment tracking features are at the core of our ecosystem of open MLOps
+Since its beta release in 2017, DVC has become an essential tool for many data
+science teams. Its data versioning capabilities, reproducible pipelines, and
+experiment tracking features are at the core of our ecosystem of open MLOps
 tools.
 
-Today we are proud to launch a new product that extends how ML
-teams can use DVC: our extension for Visual Studio Code.
+Today we are proud to launch a new product that extends how ML teams can use
+DVC: our extension for Visual Studio Code.
 
 With the VS Code extension, you can control your datasets, run experiments, view
 metrics and plots, and much more. All from your IDE.
@@ -35,7 +35,9 @@ metrics and plots, and much more. All from your IDE.
 # Why an extension?
 
 We built DVC to expand upon the Git workflow. This approach has made it a
-powerful tool that can easily be picked up by users familiar with Git. However, it can be more difficult for those less familiar with CLI tools to get accustomed to using DVC. Moreover, while DVC provides many useful
+powerful tool that can easily be picked up by users familiar with Git. However,
+it can be more difficult for those less familiar with CLI tools to get
+accustomed to using DVC. Moreover, while DVC provides many useful
 visualizations, a CLI tool can only take things so far.
 
 With this extension, we want to achieve the following:
@@ -85,8 +87,8 @@ panel](/uploads/images/2022-06-14/source-control.png)
 ## Tracked resources
 
 Resources tracked by DVC can be viewed and managed through the tracked explorer
-view. See at a glance which datasets and models have been changed, and use `push`
-and `pull` to synchronize with your remote:
+view. See at a glance which datasets and models have been changed, and use
+`push` and `pull` to synchronize with your remote:
 
 ![Tracked resources in the explorer
 view](/uploads/images/2022-06-14/tracked-resources.png)
