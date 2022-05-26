@@ -1,6 +1,7 @@
 ---
 title: >
-  Turn Visual Studio Code into an ML experimentation platform with the DVC extension
+  Turn Visual Studio Code into an ML experimentation platform with the DVC
+  extension
 date: 2022-06-14
 description: >
   Streamline your data science workflow with the DVC extension for VS Code. Data
@@ -32,8 +33,7 @@ With this extension you get a full VS Code-native experimentation platform for
 your machine learning projects. You can control datasets, run experiments, view
 metrics, create plots, and much more. All in one place in your IDE.
 
-[Install the DVC extension from the marketplace to get
-started.](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc)
+[Install the DVC extension from the marketplace to get started.](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc)
 
 # Why an extension?
 
@@ -56,8 +56,8 @@ workshop.
 
 One of [our core beliefs at Iterative](https://iterative.ai/why-iterative/) is
 that our products should couple tightly with existing tools and processes for
-data science projects. [VS Code is the IDE of choice for
-many](https://insights.stackoverflow.com/survey/2021#section-most-popular-technologies-integrated-development-environment),
+data science projects.
+[VS Code is the IDE of choice for many](https://insights.stackoverflow.com/survey/2021#section-most-popular-technologies-integrated-development-environment),
 including many of us at Iterative. Here are a few reasons why we really like it:
 
 VS Code...
@@ -136,8 +136,7 @@ A big thank you to those who have helped make this project possible:
 
 # Resources
 
-- [DVC extension on the VS Code
-  marketplace](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc)
+- [DVC extension on the VS Code marketplace](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc)
 - [GitHub repository](https://github.com/iterative/vscode-dvc)
 - [DVC docs](https://dvc.org/)
 - [Iterative community on Discord](https://dvc.org/chat)
