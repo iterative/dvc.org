@@ -1,6 +1,6 @@
 ---
 title: May '22 Community Gems
-date: 2022-05-31
+date: 2022-05-26
 description: >
   A roundup of technical Q&A's from the DVC and CML communities. This month:
   working with CML and GCP, DVC data and remotes, DVC pipelines and setups, and
@@ -9,7 +9,7 @@ descriptionLong: >
   A roundup of technical Q&A's from the DVC and CML communities. This month:
   working with CML and GCP, DVC data and remotes, DVC pipelines and setups, and
   more.
-picture: 2022-05-31/may-community-gems.png
+picture: 2022-05-26/may-community-gems.png
 author: milecia_mcgregor
 commentsUrl: https://discuss.dvc.org/t/may-22-community-gems/1184
 tags:
@@ -176,8 +176,10 @@ Yes! You can use `cml runner --cloud-spot` to request a preemptive instance.
 
 https://media.giphy.com/media/bg1MQ6IUVoVOM/giphy.gif
 
-At our June Office Hours Meetup we will ...! [RSVP for the Meetup here]() to
-stay up to date with specifics as we get closer to the event!
+At our June Office Hours Meetup we will be the launch party for our new MLOps
+tool! Make sure you join us to find out what it is!
+[RSVP for the Meetup here](https://www.meetup.com/Machine-Learning-Engineer-Community-Virtual-Meetups/events/285789441/)
+to stay up to date with specifics as we get closer to the event!
 
 [Join us in Discord](https://discord.com/invite/dvwXA2N) to get all your DVC and
 CML questions answered!
