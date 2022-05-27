@@ -165,7 +165,7 @@ $ dvc exp show --all-tags
 
 ```dvc
 $ dvc exp gc --all-tags
-WARNING: This will remove all experiments except those derived from the workspace of the current repo. Run queued experiments will be removed.
+WARNING: This will remove all experiments except those derived from any tags of the current repo. Run queued experiments will be removed.
 Are you sure you want to proceed? [y/n]: y
 Removed 2 experiments. To remove unused cache files use 'dvc gc'.
 $ dvc exp show --all-tags
