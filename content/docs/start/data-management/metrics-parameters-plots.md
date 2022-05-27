@@ -22,11 +22,12 @@ attributes. Let's add a final evaluation stage to our
 ```dvc
 $ dvc run -n evaluate \
           -d src/evaluate.py -d model.pkl -d data/features \
-          -M scores.json \
-          --plots-no-cache prc.json \
-          --plots-no-cache roc.json \
-          python src/evaluate.py model.pkl \
-                 data/features scores.json prc.json roc.json
+          -M evaluation.json \
+          --plots-no-cache evaluation/plots/precision_recall.json \
+          --plots-no-cache evaluation/plots/roc.json \
+          --plots-no-cache evaluation/plots/confusion_matrix.json \
+          --plots evaluation/importance.png \
+          python src/evaluate.py model.pkl data/features
 ```
 
 <details>
@@ -40,29 +41,33 @@ file:
 
 ```yaml
 evaluate:
-  cmd: python src/evaluate.py model.pkl data/features ...
+  cmd: python src/evaluate.py model.pkl data/features
   deps:
     - data/features
     - model.pkl
     - src/evaluate.py
   metrics:
-    - scores.json:
+    - evaluation.json:
         cache: false
   plots:
-    - prc.json:
+    - evaluation/importance.png
+    - evaluation/plots/confusion_matrix.json:
         cache: false
-    - roc.json:
+    - evaluation/plots/precision_recall.json:
+        cache: false
+    - evaluation/plots/roc.json:
         cache: false
 ```
 
 The biggest difference to previous stages in our pipeline is in two new
 sections: `metrics` and `plots`. These are used to mark certain files containing
 ML "telemetry". Metrics files contain scalar values (e.g. `AUC`) and plots files
-contain matrices and data series (e.g. `ROC curves` or model loss plots) meant
+contain matrices, data series (e.g. `ROC curves` or model loss plots), or images
 to be visualized and compared.
 
-> With `cache: false`, DVC skips caching the output, as we want `scores.json`,
-> `prc.json`, and `roc.json` to be versioned by Git.
+> With `cache: false`, DVC skips caching the output, as we want
+> `evaluation.json`, `precision_recall.json`, `confusion_matrix.json`, and
+> `roc.json` to be versioned by Git.
 
 </details>
 
@@ -71,7 +76,7 @@ writes the model's
 [ROC-AUC](https://scikit-learn.org/stable/modules/model_evaluation.html#receiver-operating-characteristic-roc)
 and
 [average precision](https://scikit-learn.org/stable/modules/model_evaluation.html#precision-recall-and-f-measures)
-to `scores.json`, which in turn is marked as a `metrics` file with `-M`. Its
+to `evaluation.json`, which in turn is marked as a `metrics` file with `-M`. Its
 contents are:
 
 ```json
@@ -81,7 +86,7 @@ contents are:
 `evaluate.py` also writes `precision`, `recall`, and `thresholds` arrays
 (obtained using
 [`precision_recall_curve`](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.precision_recall_curve.html))
-into the plots file `prc.json`:
+into the plots file `precision_recall.json`:
 
 ```json
 {
@@ -95,7 +100,10 @@ into the plots file `prc.json`:
 
 Similarly, it writes arrays for the
 [roc_curve](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_curve.html)
-into `roc.json` for an additional plot.
+into `roc.json`,
+[confusion matrix](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.confusion_matrix.html)
+into `confusion_matrix.json`, and an image `importance.png` with a feature
+importance bar chart for additional plots.
 
 > DVC doesn't force you to use any specific file names, nor does it enforce a
 > format or structure of a metrics or plots file. It's completely
@@ -105,29 +113,36 @@ You can view tracked metrics and plots with DVC. Let's start with the metrics:
 
 ```dvc
 $ dvc metrics show
-Path         avg_prec    roc_auc
-scores.json  0.52048     0.9032
+Path             avg_prec    roc_auc
+evaluation.json  0.89668     0.92729
 ```
 
 To view plots, first specify which arrays to use as the plot axes. We only need
 to do this once, and DVC will save our plot configurations.
 
 ```dvc
-$ dvc plots modify prc.json -x recall -y precision
+$ dvc plots modify evaluation/plots/precision_recall.json \
+                   -x recall -y precision
 Modifying stage 'evaluate' in 'dvc.yaml'
-$ dvc plots modify roc.json -x fpr -y tpr
+$ dvc plots modify evaluation/plots/roc.json -x fpr -y tpr
 Modifying stage 'evaluate' in 'dvc.yaml'
+$ dvc plots modify evaluation/plots/confusion_matrix.json \
+                   -x actual -y predicted -t confusion
+Modifying stage 'evaluate' in 'dvc.yaml'
+
 ```
 
 Now let's view the plots:
 
 ```dvc
 $ dvc plots show
-file:///Users/dvc/example-get-started/plots.html
+file:///Users/dvc/example-get-started/dvc_plots/index.html
 ```
 
 ![](/img/plots_prc_get_started_show.svg)
 ![](/img/plots_roc_get_started_show.svg)
+![](/img/plots_importance_get_started_show.png '=300 :wrap-left')
+![](/img/plots_cm_get_started_show.svg)
 
 Let's save this iteration, so we can compare it later:
 
@@ -196,7 +211,7 @@ prepare:
   seed: 20170428
 
 featurize:
-  max_features: 500
+  max_features: 100
   ngrams: 1
 
 train:
@@ -212,9 +227,9 @@ We are definitely not happy with the AUC value we got so far! Let's edit the
 
 ```git
  featurize:
--  max_features: 500
+-  max_features: 100
 -  ngrams: 1
-+  max_features: 1500
++  max_features: 200
 +  ngrams: 2
 ```
 
@@ -241,7 +256,7 @@ current "bigrams" run with the last committed "baseline" iteration:
 ```dvc
 $ dvc params diff
 Path         Param                   HEAD  workspace
-params.yaml  featurize.max_features  500   1500
+params.yaml  featurize.max_features  100   200
 params.yaml  featurize.ngrams        1     2
 ```
 
@@ -252,13 +267,13 @@ commit.
 
 ```dvc
 $ dvc metrics diff
-Path         Metric    HEAD     workspace  Change
-scores.json  avg_prec  0.52048  0.55259    0.03211
-scores.json  roc_auc   0.9032   0.91536    0.01216
+Path             Metric    HEAD      workspace    Change
+evaluation.json  avg_prec  0.89668   0.9202       0.02353
+evaluation.json  roc_auc   0.92729   0.94096      0.01368
 ```
 
-And finally, we can compare both `precision recall` and `roc` curves with a
-single command!
+And finally, we can compare all plots with a single command (we show only some
+of them for simplicity):
 
 ```dvc
 $ dvc plots diff
@@ -267,6 +282,7 @@ file:///Users/dvc/example-get-started/plots.html
 
 ![](/img/plots_prc_get_started_diff.svg)
 ![](/img/plots_roc_get_started_diff.svg)
+![](/img/plots_importance_get_started_diff.png)
 
 > See `dvc plots diff` for more info on its options.
 

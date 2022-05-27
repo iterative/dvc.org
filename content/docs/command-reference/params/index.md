@@ -30,10 +30,11 @@ stages:
   learn:
     cmd: ./deep.py
     params:
-      - epochs
+      - epochs # track specific parameter (from params.yaml)
       - tuning.learning-rate
-      - myparams.toml:
+      - myparams.toml: # track specific params from custom file
           - batch_size
+      - config.json: # track all parameters in this file
 ```
 
 In contrast to a regular <abbr>dependency</abbr>, a parameter dependency is not
@@ -47,15 +48,19 @@ dependency (e.g. a config file), and any change in it invalidates all of them
 
 The default **parameters file** name is `params.yaml`, but any other YAML 1.2,
 JSON, TOML, or [Python](#examples-python-parameters-file) files can be used
-additionally (listed under `params:` with a sub-list of param values, as shown
-in the sample above) . These files are typically written manually (or they can
-be generated) and they can be versioned directly with Git.
+additionally (listed under `params:` as shown in the sample above). These files
+are typically written manually (or they can be generated) and they can be
+versioned directly with Git.
 
 **Parameter values** should be organized in tree-like hierarchies (dictionaries)
 inside params files (see [Examples](#examples)). DVC will interpret param names
 as the tree path to find those values. Supported types are: string, integer,
 float, and arrays (groups of params). Note that DVC does not ascribe any
 specific meaning to these values.
+
+> YAML 1.2 stores very large and very small numbers in scientific notation, but
+> the popular PyYAML library uses an older version of the format. To avoid
+> introducing subtle bugs, the ruamel.yaml library should be used instead.
 
 DVC saves parameter names and values to `dvc.lock` in order to track them over
 time. They will be compared to the latest params files to determine if the stage
@@ -114,15 +119,20 @@ The `train.py` script will have some code to parse and load the needed
 parameters. For example:
 
 ```py
-import yaml
+from ruamel.yaml import YAML
 
 with open("params.yaml", 'r') as fd:
-    params = yaml.safe_load(fd)
+    yaml = YAML()
+    params = yaml.load(fd)
 
 lr = params['lr']
 epochs = params['train']['epochs']
 layers = params['train']['layers']
 ```
+
+> Note that the popular PyYAML library does not support YAML 1.2. The
+> ruamel.yaml library should be used instead to avoid subtle differences in
+> number handling.
 
 You can find that each parameter was defined in `dvc.yaml`, as well as saved to
 `dvc.lock` along with the values. These are compared to the params files when

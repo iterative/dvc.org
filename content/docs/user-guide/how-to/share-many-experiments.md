@@ -7,7 +7,7 @@ experiments.
 Here's a simple shell loop to push or pull all experiments (Linux):
 
 ```dvc
-$ dvc exp list --all --names-only | while read -r expname ; do \
+$ dvc exp list --all --name-only | while read -r expname ; do \
     dvc exp pull origin ${expname} \
 done
 ```

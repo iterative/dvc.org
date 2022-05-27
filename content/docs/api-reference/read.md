@@ -11,7 +11,7 @@ def read(path: str,
          encoding: str = None)
 ```
 
-#### Usage:
+## Usage
 
 ```py
 import dvc.api
