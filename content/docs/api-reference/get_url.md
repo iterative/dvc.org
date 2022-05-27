@@ -63,8 +63,9 @@ an appropriate library, such as [`boto3`] or [`paramiko`].
   walking up from the current working directory tree).
 
 - `rev` - Git commit (any [revision](https://git-scm.com/docs/revisions) such as
-  a branch or tag name, or a commit hash). If `repo` is not a Git repo, this
-  option is ignored. _Default_: `HEAD`.
+  a branch or tag name, a commit hash or an
+  [experiment](/doc/command-reference/exp) name). If `repo` is not a Git repo,
+  this option is ignored. _Default_: `HEAD`.
 
 - `remote` - name of the [DVC remote](/doc/command-reference/remote) to use to
   form the returned URL string. _Default_: The
