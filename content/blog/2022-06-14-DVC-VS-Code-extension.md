@@ -11,7 +11,7 @@ descriptionLong: >
   releasing the DVC extension, which will streamline your data science workflow
   even further. Manage your data, run experiments, compare metrics, and
   visualize plots, all from the comfort of your IDE.
-# picture: 2022-06-14/header.png
+picture: 2022-06-14/header.png
 author: rob_dewit
 # commentsUrl:
 tags:
@@ -33,8 +33,7 @@ With this extension you get a full VS Code-native experimentation platform for
 your machine learning projects. You can control datasets, run experiments, view
 metrics, create plots, and much more. All in one place in your IDE.
 
-[Install the DVC extension from the marketplace to get
-started.](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc)
+[Install the DVC extension from the marketplace to get started.](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc)
 
 # Why an extension?
 
@@ -57,8 +56,8 @@ workshop.
 
 One of [our core beliefs at Iterative](https://iterative.ai/why-iterative/) is
 that our products should couple tightly with existing tools and processes for
-data science projects. [VS Code is the IDE of choice for
-many](https://insights.stackoverflow.com/survey/2021#section-most-popular-technologies-integrated-development-environment),
+data science projects.
+[VS Code is the IDE of choice for many](https://insights.stackoverflow.com/survey/2021#section-most-popular-technologies-integrated-development-environment),
 including many of us at Iterative. Here are a few reasons why we really like it:
 
 VS Code...
@@ -74,6 +73,7 @@ VS Code...
 Our first course of action was to include all DVC features related to data
 management and experiments in the extension. Here are the main features that are
 available when you install the extension right now:
+
 ## DVC View: experiments, metrics, and plots
 
 An entirely new view to manage your experiments. Run new experiments, analyze
@@ -102,7 +102,6 @@ just like you would with changes to your code. Use `checkout`, `commit`, `add`,
 
 ![Get a quick overview of changes to your data in the source control
 panel](/uploads/images/2022-06-14/source-control.png)
-
 
 <!--
 TODO: seems to overlap with Source control management; can we safely remove this?
@@ -141,8 +140,7 @@ A big thank you to those who have helped make this project possible:
 
 # Resources
 
-- [DVC extension on the VS Code
-  marketplace](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc)
+- [DVC extension on the VS Code marketplace](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc)
 - [GitHub repository](https://github.com/iterative/vscode-dvc)
 - [DVC docs](https://dvc.org/)
 - [Iterative community on Discord](https://dvc.org/chat)
