@@ -33,7 +33,8 @@ With this extension you get a full VS Code-native experimentation platform for
 your machine learning projects. You can control datasets, run experiments, view
 metrics, create plots, and much more. All in one place in your IDE.
 
-[Install the DVC extension from the marketplace to get started.](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc)
+[Install the DVC extension from the marketplace to get
+started.](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc)
 
 # Why an extension?
 
@@ -45,19 +46,19 @@ visualizations, a CLI tool can only take things so far.
 
 With this extension, we want to achieve the following:
 
-- Make DVC more accessible by hiding the complexity of the CLI
-- Enhance existing visualizations and provide new ones
 - Move the entire data science workflow into your IDE
+- Enhance existing visualizations and provide new ones
+- Make DVC more accessible by hiding the complexity of the CLI
 
-If DVC is our toolbox as data scientists, this extension turns VS Code into our
+As data scientists, DVC is our toolbox. This extension turns VS Code into our
 workshop.
 
 # Why Visual Studio Code
 
 One of [our core beliefs at Iterative](https://iterative.ai/why-iterative/) is
 that our products should couple tightly with existing tools and processes for
-data science projects.
-[VS Code is the IDE of choice for many](https://insights.stackoverflow.com/survey/2021#section-most-popular-technologies-integrated-development-environment),
+data science projects. [VS Code is the IDE of choice for
+many](https://insights.stackoverflow.com/survey/2021#section-most-popular-technologies-integrated-development-environment),
 including many of us at Iterative. Here are a few reasons why we really like it:
 
 VS Code...
@@ -73,6 +74,17 @@ VS Code...
 Our first course of action was to include all DVC features related to data
 management and experiments in the extension. Here are the main features that are
 available when you install the extension right now:
+## DVC View: experiments, metrics, and plots
+
+An entirely new view to manage your experiments. Run new experiments, analyze
+their outcomes through plots and metrics, and compare them to find the best
+model.
+
+![Experiment tables to compare different
+experiments](/uploads/images/2022-06-14/dvc-view-experiments-table.png)
+
+![Plots to visualize your
+experiments](/uploads/images/2022-06-14/dvc-view-plots.png)
 
 ## Command palette
 
@@ -91,6 +103,10 @@ just like you would with changes to your code. Use `checkout`, `commit`, `add`,
 ![Get a quick overview of changes to your data in the source control
 panel](/uploads/images/2022-06-14/source-control.png)
 
+
+<!--
+TODO: seems to overlap with Source control management; can we safely remove this?
+
 ## Tracked resources
 
 Resources tracked by DVC can be viewed and managed through the tracked explorer
@@ -98,18 +114,7 @@ view. See at a glance which datasets and models have been changed, and use
 `push` and `pull` to synchronize with your remote:
 
 ![Tracked resources in the explorer
-view](/uploads/images/2022-06-14/tracked-resources.png)
-
-## DVC View: experiment tables and plots
-
-An entirely new view to navigate through your experiments. Create filters and
-sorts, compare metrics, and view plots for easier analysis:
-
-![Experiment tables to compare different
-experiments](/uploads/images/2022-06-14/dvc-view-experiments-table.png)
-
-![Plots to visualize your
-experiments](/uploads/images/2022-06-14/dvc-view-plots.png)
+view](/uploads/images/2022-06-14/tracked-resources.png) -->
 
 # What's next?
 
@@ -136,7 +141,8 @@ A big thank you to those who have helped make this project possible:
 
 # Resources
 
-- [DVC extension on the VS Code marketplace](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc)
+- [DVC extension on the VS Code
+  marketplace](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc)
 - [GitHub repository](https://github.com/iterative/vscode-dvc)
 - [DVC docs](https://dvc.org/)
 - [Iterative community on Discord](https://dvc.org/chat)
