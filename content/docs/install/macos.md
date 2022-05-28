@@ -1,9 +1,9 @@
-# Installation on macOS
+# Install on macOS
 
 > To use DVC [as a Python library](/doc/api-reference), please
 > [install with pip](#install-with-pip) or [with conda](#install-with-conda).
 
-## Install with brew
+## With Homebrew
 
 Recommended. Requires [Homebrew](https://brew.sh/).
 
@@ -11,7 +11,7 @@ Recommended. Requires [Homebrew](https://brew.sh/).
 $ brew install dvc
 ```
 
-## Install from package
+## From package
 
 Get the PKG (binary) from the big "Download" button on the [home page](/), or
 from the [release page](https://github.com/iterative/dvc/releases/) on GitHub.
@@ -24,7 +24,7 @@ from the [release page](https://github.com/iterative/dvc/releases/) on GitHub.
 > You may try [these instructions](https://stackoverflow.com/a/42120328/761963)
 > to uninstall the macOS package.
 
-## Install with pip
+## With Pip
 
 > 💡 We **strongly** recommend creating a
 > [virtual environment](https://python.readthedocs.io/en/stable/library/venv.html)
@@ -55,7 +55,7 @@ In this case it installs the `boto3` library along with DVC.
 
 </details>
 
-## Install with conda
+## With Conda
 
 > Requires [Miniconda](https://docs.conda.io/en/latest/miniconda.html) or
 > [Anaconda Distribution](https://docs.anaconda.com/anaconda/).

@@ -1,4 +1,4 @@
-# Shell Tab Completion
+# Shell Completion
 
 Enjoy working with DVC faster and with fewer typos!
 

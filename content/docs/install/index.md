@@ -1,4 +1,4 @@
-# Installation
+# Install DVC
 
 > Please double check that you don't already have DVC (for example running
 > `which dvc`) before trying to install it.

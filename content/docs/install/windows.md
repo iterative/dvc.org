@@ -1,4 +1,4 @@
-# Installation on Windows
+# Install on Windows
 
 > 💡 Please review
 > [Running DVC on Windows](/doc/user-guide/running-dvc-on-windows) for important
@@ -7,9 +7,9 @@
 > To use DVC [as a Python library](/doc/api-reference), please
 > [install with pip](#install-with-pip) or [with conda](#install-with-conda).
 
-## Install with choco
+## With Chocolatey
 
-The easiest way to install from command line for most cases is to install
+The easiest way to install from command line for most cases is to get
 [Chocolatey](https://chocolatey.org/) on your machine, and use the `choco`
 command:
 
@@ -17,7 +17,7 @@ command:
 $ choco install dvc
 ```
 
-## Install with conda
+## With Conda
 
 > Requires [Miniconda](https://docs.conda.io/en/latest/miniconda.html) or
 > [Anaconda Distribution](https://docs.anaconda.com/anaconda/).
@@ -48,7 +48,7 @@ In this case it installs the `boto3` library along with DVC.
 
 </details>
 
-## Install with pip
+## With Pip
 
 From Command Prompt or other
 [recommended consoles](/doc/user-guide/running-dvc-on-windows):

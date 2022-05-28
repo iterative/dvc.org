@@ -1,4 +1,4 @@
-# IDE Plugins and Syntax Highlighting
+# Plugins for IDEs (Syntax Highlighting)
 
 When files or directories are added to the project, or stages to a pipeline,
 <abbr>DVC files</abbr> are created or updated. These use a simple YAML format.

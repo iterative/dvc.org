@@ -1,9 +1,9 @@
-# Installation on Linux
+# Install on Linux
 
 > To use DVC [as a Python library](/doc/api-reference), please
 > [install with pip](#install-with-pip) or [with conda](#install-with-conda).
 
-## Install with pip
+## With Pip
 
 > 💡 We **strongly** recommend creating a
 > [virtual environment](https://python.readthedocs.io/en/stable/library/venv.html)
@@ -39,7 +39,7 @@ In this case it installs the `boto3` library along with DVC.
 > installation. If restarting the terminal isn't desirable (e.g. containers),
 > it's also possible to manually edit the `PATH` env variable.
 
-## Install with conda
+## With Conda
 
 > Requires [Miniconda](https://docs.conda.io/en/latest/miniconda.html) or
 > [Anaconda Distribution](https://docs.anaconda.com/anaconda/).
@@ -66,7 +66,7 @@ In this case it installs the `boto3` library along with DVC.
 
 </details>
 
-## Install with snap
+## With Snapcraft
 
 > Requires [snapd](https://snapcraft.io/docs/installing-snapd).
 
@@ -77,7 +77,7 @@ $ snap install --classic dvc
 > 💡 When connected to the internet, `snap` will automatically look for updates
 > every 6 hours.
 
-## Install from repository
+## From repository
 
 <details id="from-repo-on-debian-ubuntu">
 
@@ -109,7 +109,7 @@ $ sudo yum install dvc
 
 </details>
 
-## Install from package
+## From package
 
 Get the binary package from the big "Download" button on the [home page](/), or
 from the [release page](https://github.com/iterative/dvc/releases/) on GitHub.

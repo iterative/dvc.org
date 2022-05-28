@@ -6,21 +6,20 @@
   },
   {
     "slug": "install",
-    "source": "install/index.md",
     "children": [
       {
-        "label": "macOS",
-        "slug": "macos"
+        "slug": "macos",
+        "label": "macOS"
       },
       "windows",
       "linux",
       {
-        "label": "Pre-release Version",
-        "slug": "pre-release"
+        "slug": "pre-release",
+        "label": "Pre-release Version"
       },
       {
-        "label": "Shell Completion",
-        "slug": "completion"
+        "slug": "completion",
+        "label": "Shell Completion"
       },
       "plugins"
     ]
