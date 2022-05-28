@@ -50,6 +50,8 @@
   "^/doc/use-cases/data-and-model-files-versioning/?$                                     /doc/use-cases/versioning-data-and-model-files",
   "^/doc/use-cases/shared-development-server$                                             /doc/use-cases/fast-data-storage-layer#example-shared-development-server",
   "^/doc/use-cases/data-registries$                                                       /doc/use-cases/data-registry",
+  "^/doc/use-cases/experiment-tracking$                                                   /doc/use-cases/ml-experiment-tracking",
+  "^/doc/use-cases/model-registry$                                                        /doc/use-cases/ml-model-registry 302",
 
   "^/doc/user-guide/updating-tracked-files$                                               /doc/user-guide/how-to/update-tracked-data",
   "^/doc/user-guide/how-to/update-tracked-files$                                          /doc/user-guide/how-to/update-tracked-data",

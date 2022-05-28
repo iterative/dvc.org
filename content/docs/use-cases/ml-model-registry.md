@@ -52,10 +52,10 @@ distribute them. It can store model files on the cloud (by itself or with DVC),
 list and transfer them within locations, wrap them as a local REST server, or
 even containerize and deploy them to cloud providers!
 
-This ecosystem of tools from [Iterative](https://iterative.ai/) brings your ML
-process into [GitOps]. This means you can manage and deliver ML models with
-software engineering methods such as continuous integration (CI/CD), which can
-sync with the state of the artifacts in your registry.
+This ecosystem of tools [from Iterative](https://iterative.ai/model-registry)
+brings your ML process into [GitOps]. This means you can manage and deliver ML
+models with software engineering methods such as continuous integration (CI/CD),
+which can sync with the state of the artifacts in your registry.
 
 [modeling process]: /doc/start/data-pipelines
 [remote storage]: /doc/command-reference/remote

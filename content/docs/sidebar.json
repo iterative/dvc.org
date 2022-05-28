@@ -79,9 +79,7 @@
     "source": "use-cases/index.md",
     "children": [
       {
-        "label": "Versioning Data and Models",
-        "slug": "versioning-data-and-model-files",
-        "source": "versioning-data-and-model-files/index.md",
+        "slug": "versioning-data-and-models",
         "children": [
           {
             "label": "Tutorial 👩‍💻",
@@ -90,16 +88,22 @@
         ]
       },
       {
-        "label": "CI/CD for Machine Learning",
-        "slug": "ci-cd-for-machine-learning"
+        "slug": "fast-data-caching-hub",
+        "label": "Fast and Secure Data Caching Hub"
+      },
+      "data-registry",
+      {
+        "slug": "ci-cd-for-machine-learning",
+        "label": "CI/CD for Machine Learning"
       },
       {
-        "label": "Fast and Secure Data Caching Hub",
-        "slug": "fast-data-caching-hub"
+        "slug": "ml-experiment-tracking",
+        "label": "ML Experiment Tracking"
       },
-      "experiment-tracking",
-      "model-registry",
-      "data-registry"
+      {
+        "slug": "ml-model-registry",
+        "label": "ML Model Registry"
+      }
     ]
   },
   {
