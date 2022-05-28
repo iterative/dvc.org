@@ -27,33 +27,30 @@
   {
     "slug": "start",
     "label": "Get Started",
-    "source": "start/index.md",
     "tutorials": {
       "katacoda": "https://katacoda.com/dvc/courses/get-started"
     },
     "children": [
       {
         "slug": "data-management",
-        "label": "Data Management",
-        "source": "data-management/index.md",
         "children": [
           {
-            "label": "Data and Model Access",
             "slug": "access",
+            "label": "Data and Model Access",
             "tutorials": {
               "katacoda": "https://katacoda.com/dvc/courses/get-started/accessing"
             }
           },
           {
-            "label": "Data Pipelines",
             "slug": "pipelines",
+            "label": "Data Pipelines",
             "tutorials": {
               "katacoda": "https://katacoda.com/dvc/courses/get-started/stages"
             }
           },
           {
-            "label": "Metrics, Parameters, and Plots",
             "slug": "metrics-parameters-plots",
+            "label": "Metrics, Parameters, and Plots",
             "tutorials": {
               "katacoda": "https://katacoda.com/dvc/courses/get-started/params-metrics-plots"
             }
@@ -62,8 +59,6 @@
       },
       {
         "slug": "experiments",
-        "label": "Experiments",
-        "source": "experiments/index.md",
         "tutorials": {
           "katacoda": "https://katacoda.com/dvc/courses/get-started/experiments"
         },

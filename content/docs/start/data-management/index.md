@@ -1,11 +1,11 @@
 ---
-title: 'Get Started: Data and Model Versioning'
+title: 'Get Started: Data Management'
 description: 'Get started with data and model versioning in DVC. Learn how to use a
 regular Git workflow for datasets and ML models, without storing large files in
 Git.'
 ---
 
-# Get Started: Data Versioning
+# Get Started: Data Management
 
 How cool would it be to make Git handle arbitrarily large files and directories
 with the same performance it has with small code files? Imagine doing a

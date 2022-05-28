@@ -1,7 +1,3 @@
----
-title: 'Get Started: Data and Model Access'
----
-
 # Get Started: Data and Model Access
 
 We've learned how to _track_ data and models with DVC, and how to commit their

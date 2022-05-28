@@ -1,7 +1,3 @@
----
-title: 'Get Started: Experiments'
----
-
 # Get Started: Experiments
 
 In machine learning projects, the number of <abbr>experiments</abbr> grows
