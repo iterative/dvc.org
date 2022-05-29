@@ -564,39 +564,28 @@
     ]
   },
   {
-    "label": "DVCLive",
     "slug": "dvclive",
-    "source": "dvclive/index.md",
+    "label": "DVCLive",
     "children": [
       {
-        "label": "Get Started",
-        "slug": "get-started"
+        "slug": "get-started",
+        "label": "Get Started"
       },
       {
-        "label": "DVCLive with DVC",
-        "slug": "dvclive-with-dvc"
+        "slug": "dvclive-with-dvc",
+        "label": "DVCLive with DVC"
       },
       {
-        "label": "ML Frameworks",
         "slug": "ml-frameworks",
-        "source": "dvclive/ml-frameworks/index.md",
+        "label": "ML Frameworks",
         "children": [
-          {
-            "slug": "catalyst",
-            "label": "Catalyst"
-          },
+          "catalyst",
           {
             "slug": "fastai",
             "label": "Fast.ai"
           },
-          {
-            "slug": "huggingface",
-            "label": "Hugging Face"
-          },
-          {
-            "slug": "keras",
-            "label": "Keras"
-          },
+          "hugging-face",
+          "keras",
           {
             "slug": "lightgbm",
             "label": "LightGBM"
@@ -624,14 +613,12 @@
         ]
       },
       {
-        "label": "API Reference",
         "slug": "api-reference",
-        "source": "api-reference/index.md",
+        "label": "API Reference",
         "children": [
           {
             "slug": "live",
             "label": "Live()",
-            "source": "api-reference/live/index.md",
             "children": [
               {
                 "slug": "log",
