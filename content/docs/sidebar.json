@@ -483,21 +483,20 @@
     ]
   },
   {
-    "label": "Contributing",
     "slug": "contributing",
     "source": false,
     "children": [
       {
-        "label": "DVC Core Project",
-        "slug": "core"
+        "slug": "core",
+        "label": "DVC Core Project"
       },
       {
-        "label": "Docs and Website",
-        "slug": "docs"
+        "slug": "docs",
+        "label": "Documentation"
       },
       {
-        "label": "Writing Blog Posts",
-        "slug": "blog"
+        "slug": "blog",
+        "label": "Writing Blog Posts"
       }
     ]
   },
