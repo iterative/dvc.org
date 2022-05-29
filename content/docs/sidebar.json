@@ -184,294 +184,285 @@
   },
   {
     "slug": "command-reference",
-    "source": "command-reference/index.md",
     "children": [
       {
-        "label": "add",
-        "slug": "add"
+        "slug": "add",
+        "label": "add"
       },
       {
-        "label": "cache",
         "slug": "cache",
-        "source": "cache/index.md",
+        "label": "cache",
         "children": [
           {
-            "label": "cache dir",
-            "slug": "dir"
+            "slug": "dir",
+            "label": "cache dir"
           }
         ]
       },
       {
-        "label": "check-ignore",
-        "slug": "check-ignore"
+        "slug": "check-ignore",
+        "label": "check-ignore"
       },
       {
-        "label": "checkout",
-        "slug": "checkout"
+        "slug": "checkout",
+        "label": "checkout"
       },
       {
-        "label": "commit",
-        "slug": "commit"
+        "slug": "commit",
+        "label": "commit"
       },
       {
-        "label": "config",
-        "slug": "config"
+        "slug": "config",
+        "label": "config"
       },
       {
-        "label": "dag",
-        "slug": "dag"
+        "slug": "dag",
+        "label": "dag"
       },
       {
-        "label": "destroy",
-        "slug": "destroy"
+        "slug": "destroy",
+        "label": "destroy"
       },
       {
-        "label": "diff",
-        "slug": "diff"
+        "slug": "diff",
+        "label": "diff"
       },
       {
-        "label": "doctor",
-        "slug": "doctor"
+        "slug": "doctor",
+        "label": "doctor"
       },
       {
-        "label": "exp",
         "slug": "exp",
-        "source": "exp/index.md",
+        "label": "exp",
         "children": [
           {
-            "label": "exp init",
-            "slug": "init"
+            "slug": "init",
+            "label": "exp init"
           },
           {
-            "label": "exp run",
-            "slug": "run"
+            "slug": "run",
+            "label": "exp run"
           },
           {
-            "label": "exp show",
-            "slug": "show"
+            "slug": "show",
+            "label": "exp show"
           },
           {
-            "label": "exp diff",
-            "slug": "diff"
+            "slug": "diff",
+            "label": "exp diff"
           },
           {
-            "label": "exp list",
-            "slug": "list"
+            "slug": "list",
+            "label": "exp list"
           },
           {
-            "label": "exp apply",
-            "slug": "apply"
+            "slug": "apply",
+            "label": "exp apply"
           },
           {
-            "label": "exp branch",
-            "slug": "branch"
+            "slug": "branch",
+            "label": "exp branch"
           },
           {
-            "label": "exp remove",
-            "slug": "remove"
+            "slug": "remove",
+            "label": "exp remove"
           },
           {
-            "label": "exp gc",
-            "slug": "gc"
+            "slug": "gc",
+            "label": "exp gc"
           },
           {
-            "label": "exp push",
-            "slug": "push"
+            "slug": "push",
+            "label": "exp push"
           },
           {
-            "label": "exp pull",
-            "slug": "pull"
+            "slug": "pull",
+            "label": "exp pull"
           }
         ]
       },
       {
-        "label": "fetch",
         "slug": "fetch",
+        "label": "fetch",
         "tutorials": {
           "katacoda": "https://katacoda.com/dvc/courses/examples/fetch"
         }
       },
       {
-        "label": "freeze",
-        "slug": "freeze"
+        "slug": "freeze",
+        "label": "freeze"
       },
       {
-        "label": "gc",
-        "slug": "gc"
+        "slug": "gc",
+        "label": "gc"
       },
       {
-        "label": "get-url",
-        "slug": "get-url"
+        "slug": "get-url",
+        "label": "get-url"
       },
       {
-        "label": "get",
-        "slug": "get"
+        "slug": "get",
+        "label": "get"
       },
       {
-        "label": "import-url",
-        "slug": "import-url"
+        "slug": "import-url",
+        "label": "import-url"
       },
       {
-        "label": "import",
-        "slug": "import"
+        "slug": "import",
+        "label": "import"
       },
       {
-        "label": "init",
-        "slug": "init"
+        "slug": "init",
+        "label": "init"
       },
       {
-        "label": "install",
-        "slug": "install"
+        "slug": "install",
+        "label": "install"
       },
       {
-        "label": "list",
-        "slug": "list"
+        "slug": "list",
+        "label": "list"
       },
       {
-        "label": "metrics",
         "slug": "metrics",
-        "source": "metrics/index.md",
+        "label": "metrics",
         "children": [
           {
-            "label": "metrics show",
-            "slug": "show"
+            "slug": "show",
+            "label": "metrics show"
           },
           {
-            "label": "metrics diff",
-            "slug": "diff"
+            "slug": "diff",
+            "label": "metrics diff"
           }
         ]
       },
       {
-        "label": "move",
-        "slug": "move"
+        "slug": "move",
+        "label": "move"
       },
       {
-        "label": "params",
         "slug": "params",
-        "source": "params/index.md",
+        "label": "params",
         "children": [
           {
-            "label": "params diff",
-            "slug": "diff"
+            "slug": "diff",
+            "label": "params diff"
           }
         ]
       },
       {
-        "label": "plots",
         "slug": "plots",
-        "source": "plots/index.md",
+        "label": "plots",
         "children": [
           {
-            "label": "plots show",
-            "slug": "show"
+            "slug": "show",
+            "label": "plots show"
           },
           {
-            "label": "plots diff",
-            "slug": "diff"
+            "slug": "diff",
+            "label": "plots diff"
           },
           {
-            "label": "plots modify",
-            "slug": "modify"
+            "slug": "modify",
+            "label": "plots modify"
           }
         ]
       },
       {
-        "label": "pull",
-        "slug": "pull"
+        "slug": "pull",
+        "label": "pull"
       },
       {
-        "label": "push",
-        "slug": "push"
+        "slug": "push",
+        "label": "push"
       },
       {
-        "label": "remote",
         "slug": "remote",
-        "source": "remote/index.md",
+        "label": "remote",
         "children": [
           {
-            "label": "remote add",
-            "slug": "add"
+            "slug": "add",
+            "label": "remote add"
           },
           {
-            "label": "remote modify",
-            "slug": "modify"
+            "slug": "modify",
+            "label": "remote modify"
           },
           {
-            "label": "remote default",
-            "slug": "default"
+            "slug": "default",
+            "label": "remote default"
           },
           {
-            "label": "remote list",
-            "slug": "list"
+            "slug": "list",
+            "label": "remote list"
           },
           {
-            "label": "remote remove",
-            "slug": "remove"
+            "slug": "remove",
+            "label": "remote remove"
           },
           {
-            "label": "remote rename",
-            "slug": "rename"
+            "slug": "rename",
+            "label": "remote rename"
           }
         ]
       },
       {
-        "label": "remove",
-        "slug": "remove"
+        "slug": "remove",
+        "label": "remove"
       },
       {
-        "label": "repro",
-        "slug": "repro"
+        "slug": "repro",
+        "label": "repro"
       },
       {
-        "label": "root",
-        "slug": "root"
+        "slug": "root",
+        "label": "root"
       },
       {
-        "label": "run",
-        "slug": "run"
+        "slug": "run",
+        "label": "run"
       },
       {
-        "label": "stage",
         "slug": "stage",
-        "source": "stage/index.md",
+        "label": "stage",
         "children": [
           {
-            "label": "stage add",
-            "slug": "add"
+            "slug": "add",
+            "label": "stage add"
           },
           {
-            "label": "stage list",
-            "slug": "list"
+            "slug": "list",
+            "label": "stage list"
           }
         ]
       },
       {
-        "label": "status",
-        "slug": "status"
+        "slug": "status",
+        "label": "status"
       },
       {
-        "label": "unfreeze",
-        "slug": "unfreeze"
+        "slug": "unfreeze",
+        "label": "unfreeze"
       },
       {
-        "label": "unprotect",
-        "slug": "unprotect"
+        "slug": "unprotect",
+        "label": "unprotect"
       },
       {
-        "label": "update",
-        "slug": "update"
+        "slug": "update",
+        "label": "update"
       },
       {
-        "label": "version",
-        "slug": "version"
+        "slug": "version",
+        "label": "version"
       }
     ]
   },
   {
     "slug": "api-reference",
     "label": "Python API Reference",
-    "source": "api-reference/index.md",
     "children": [
       {
         "slug": "get_url",
