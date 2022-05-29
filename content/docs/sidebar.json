@@ -513,46 +513,43 @@
     "type": "external"
   },
   {
-    "label": "Studio",
     "slug": "studio",
-    "source": "studio/index.md",
     "icon": "studio",
     "children": [
       {
-        "label": "How It Works",
-        "slug": "overview"
+        "slug": "overview",
+        "label": "How It Works"
       },
       "get-started",
       {
-        "label": "User Guide",
         "slug": "user-guide",
-        "source": "user-guide/index.md",
+        "label": "User Guide",
         "children": [
           {
-            "label": "Prepare Your Repositories",
-            "slug": "prepare-repositories"
+            "slug": "prepare-repositories",
+            "label": "Prepare Your Repositories"
           },
           {
-            "label": "Views and Experiments",
             "slug": "views",
+            "label": "Views and Experiments",
             "source": false,
             "children": [
               "what-is-a-view",
-              "create-view",
+              "create-a-view",
               {
-                "label": "Configure View",
-                "slug": "view-settings"
+                "slug": "view-settings",
+                "label": "Configure a View"
               },
               {
-                "label": "Explore ML Experiments",
-                "slug": "explore-experiments"
+                "slug": "explore-experiments",
+                "label": "Explore ML Experiments"
               },
               {
-                "label": "Visualize and Compare",
-                "slug": "visualize-experiments"
+                "slug": "visualize-experiments",
+                "label": "Visualize and Compare"
               },
               "run-experiments",
-              "share-view"
+              "share-a-view"
             ]
           },
           "teams",
