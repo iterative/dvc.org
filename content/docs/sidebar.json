@@ -108,45 +108,45 @@
   },
   {
     "slug": "user-guide",
-    "source": "user-guide/index.md",
+    "source": false,
     "children": [
       {
-        "label": "What is DVC?",
-        "slug": "what-is-dvc"
+        "slug": "what-is-dvc",
+        "label": "What is DVC?"
       },
       {
         "slug": "project-structure",
-        "source": "project-structure/index.md",
         "children": [
           {
-            "label": "Pipelines Files (dvc.yaml)",
-            "slug": "pipelines-files"
+            "slug": "pipelines-files",
+            "label": "Pipelines Files (dvc.yaml)"
           },
           {
-            "label": ".dvc Files",
-            "slug": "dvc-files"
+            "slug": "dvc-files",
+            "label": ".dvc Files"
           },
           {
-            "label": ".dvcignore Files",
             "slug": "dvcignore-files",
+            "label": ".dvcignore Files",
             "tutorials": {
               "katacoda": "https://katacoda.com/dvc/courses/examples/dvcignore"
             }
           },
           {
-            "label": "Internal Files",
-            "slug": "internal-files"
+            "slug": "internal-files",
+            "label": "Internal Directories and Files"
           }
         ]
       },
       {
-        "label": "Experiment Management",
         "slug": "experiment-management",
-        "source": "experiment-management/index.md",
         "children": [
           "experiments-overview",
           "running-experiments",
-          "comparing-experiments",
+          {
+            "slug": "comparing-experiments",
+            "label": "Reviewing and Comparing"
+          },
           "sharing-experiments",
           "persisting-experiments",
           "cleaning-experiments",
@@ -159,8 +159,8 @@
         "children": [
           "stop-tracking-data",
           "update-tracked-data",
-          "add-deps-or-outs-to-a-stage",
-          "merge-conflicts",
+          "add-stage-deps-or-outs",
+          "merge-git-conflicts",
           "share-a-dvc-cache",
           "share-many-experiments"
         ]
@@ -168,20 +168,15 @@
       "setup-google-drive-remote",
       "large-dataset-optimization",
       "external-dependencies",
-      {
-        "label": "Managing External Data",
-        "slug": "managing-external-data"
-      },
-
+      "managing-external-data",
       "running-dvc-on-windows",
       "troubleshooting",
       "related-technologies",
       {
-        "label": "Anonymized Usage Analytics",
-        "slug": "analytics"
+        "slug": "analytics",
+        "label": "Anonymized Usage Analytics"
       },
       {
-        "label": "Glossary",
         "slug": "glossary",
         "source": "basic-concepts"
       }

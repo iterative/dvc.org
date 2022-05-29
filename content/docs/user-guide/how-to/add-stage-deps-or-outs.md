@@ -1,10 +1,10 @@
 ---
-title: 'How to Add Dependencies or Outputs to a Stage'
+title: 'How to Add Stage Dependencies or Outputs'
 description: "It's possible to add files or directories to existing stages,
 with or without executing them."
 ---
 
-# How to Add Dependencies or Outputs
+# How to Add Stage Dependencies or Outputs
 
 To add <abbr>dependencies</abbr> or <abbr>outputs</abbr> to a
 [stage](/doc/command-reference/run), edit the `dvc.yaml` file (by hand or using

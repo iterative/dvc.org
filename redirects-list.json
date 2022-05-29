@@ -56,6 +56,8 @@
   "^/doc/user-guide/updating-tracked-files$                                               /doc/user-guide/how-to/update-tracked-data",
   "^/doc/user-guide/how-to/update-tracked-files$                                          /doc/user-guide/how-to/update-tracked-data",
   "^/doc/user-guide/merge-conflicts$                                                      /doc/user-guide/how-to/merge-conflicts",
+  "^/doc/user-guide/how-to/add-deps-or-outs-to-a-stage$                                   /doc/user-guide/how-to/add-stage-deps-or-outs",
+  "^/doc/user-guide/how-to/merge-conflicts$                                               /doc/user-guide/how-to/merge-git-conflicts",
   "^/doc/user-guide/dvc-file-format$                                                      /doc/user-guide/project-structure",
   "^/doc/user-guide/dvc-files$                                                            /doc/user-guide/project-structure",
   "^/doc/user-guide/dvc-files/dvc-yaml$                                                   /doc/user-guide/project-structure",

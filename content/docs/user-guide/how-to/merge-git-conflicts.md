@@ -1,10 +1,10 @@
 ---
-title: 'How to Merge Conflicts'
+title: 'How to Merge Git Conflicts in DVC Metafiles'
 description: 'Git merge conflicts can happen in DVC files when combining changes
 from multiple team members.'
 ---
 
-# How to Merge Conflicts in DVC Files
+# How to Merge Git Conflicts in DVC Metafiles
 
 Sometimes multiple team members work on the the same DVC-tracked data. When the
 time comes to combine their changes, merge conflicts can occur in Git-tracked

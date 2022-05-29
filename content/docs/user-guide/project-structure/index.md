@@ -1,4 +1,4 @@
-# Project Structure
+# DVC Project Structure
 
 Using `dvc init` in your <abbr>workspace</abbr> will start a <abbr>DVC
 project</abbr>, including the internal `.dvc/` directory. From there on, you

@@ -1,4 +1,4 @@
-# Comparison with Related Technologies
+# Related Technologies (Comparisons)
 
 DVC combines a number of existing ideas into a single tool, with the goal of
 bringing best practices from software engineering into the data science field

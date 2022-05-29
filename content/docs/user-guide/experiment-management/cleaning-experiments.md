@@ -1,4 +1,4 @@
-# Cleaning Up Experiments
+# Cleaning Experiments
 
 Although DVC uses minimal resources to keep track of the experiments, they may
 clutter tables and the workspace. DVC allows to remove specific experiments from
