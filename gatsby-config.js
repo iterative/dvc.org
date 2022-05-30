@@ -34,6 +34,7 @@ const plugins = [
     resolve: '@dvcorg/gatsby-theme-iterative',
     options: {
       remark: false,
+      simpleLinkerTerms: require('./content/linked-terms'),
       cssBase: require.resolve(
         './src/@dvcorg/gatsby-theme-iterative/components/Page/base.css'
       ),
