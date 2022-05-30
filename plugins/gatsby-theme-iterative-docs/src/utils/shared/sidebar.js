@@ -37,8 +37,6 @@ function uppercaseSlugKeywords(slug) {
   return newSlug
 }
 
-console.log(uppercaseSlugKeywords('ml-mlem-dvc-test-ldb-api-cml'))
-
 function slugTitleCase(slug) {
   return titleCase(uppercaseSlugKeywords(slug).replace(/-/g, ' '))
 }
