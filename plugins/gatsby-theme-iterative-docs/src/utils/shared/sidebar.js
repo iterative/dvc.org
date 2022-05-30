@@ -30,9 +30,9 @@ const FILE_EXTENSION = '.md'
 
 function uppercaseSlugKeywords(slug) {
   let newSlug = slug
-  uppercaseKeywords.forEach(word => {
-    const regex = new RegExp(String.raw`${word}`, 'g')
-    newSlug = newSlug.replace(regex, word.toUpperCase())
+  const regex = new RegExp(String.raw`${uppercaseKeywords.join('|')}`, 'g')
+  newSlug = newSlug.replace(regex, match => {
+    return match.toUpperCase()
   })
   return newSlug
 }
