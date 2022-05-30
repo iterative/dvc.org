@@ -23,11 +23,7 @@
 const { titleCase } = require('title-case')
 const sidebar = require('../../../sidebar')
 
-const UPPERCASE_KEYWORDS = ['dvc', 'cml', 'api', 'mlem', 'ml', 'ldb']
-const UPPERCASE_KEYWORDS_REGEX = new RegExp(
-  String.raw`${UPPERCASE_KEYWORDS.join('|')}`,
-  'g'
-)
+const UPPERCASE_KEYWORDS_REGEX = /dvc|cml|api|mlem|ml|ldb/g
 const PATH_ROOT = '/doc'
 const FILE_ROOT = '/docs/'
 const FILE_EXTENSION = '.md'
