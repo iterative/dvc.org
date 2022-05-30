@@ -29,11 +29,9 @@ const FILE_ROOT = '/docs/'
 const FILE_EXTENSION = '.md'
 
 function uppercaseSlugKeywords(slug) {
-  let newSlug = slug
-  newSlug = newSlug.replace(UPPERCASE_KEYWORDS_REGEX, match => {
+  return slug.replace(UPPERCASE_KEYWORDS_REGEX, match => {
     return match.toUpperCase()
   })
-  return newSlug
 }
 
 function slugTitleCase(slug) {
