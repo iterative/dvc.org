@@ -119,16 +119,12 @@ view](/uploads/images/2022-06-14/tracked-resources.png) -->
 # What's next?
 
 We're excited that version 1.0 is live and available to the public! From here on
-out, we plan on bringing even more features to the extension, including:
+out, we plan on making the extension even better with new features such as
+pipeline (DAG) support, TPI integration for remote execution, autocomplete for
+`dvc.yaml`, and parallel coordinate plots.
 
-- Pipeline (DAG) support
-- [TPI](https://github.com/iterative/terraform-provider-iterative) integration
-  for remote execution of experiments
-- `dvc.yaml` syntax features, including autocomplete and snippets
-- Parallel coordinate plots
-
-Of course, we'd also love to hear which features you'd most be looking forward
-to. Make sure to give us feedback on what you'd like to see next! 
+Of course, we'd love to hear what you are most looking forward to. Make sure to
+give us feedback on what you'd like to see next!
 
 # Thank you!
 
