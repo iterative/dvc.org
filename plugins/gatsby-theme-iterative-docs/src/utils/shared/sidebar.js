@@ -23,15 +23,18 @@
 const { titleCase } = require('title-case')
 const sidebar = require('../../../sidebar')
 
-const uppercaseKeywords = ['dvc', 'cml', 'api', 'mlem', 'ml', 'ldb']
+const UPPERCASE_KEYWORDS = ['dvc', 'cml', 'api', 'mlem', 'ml', 'ldb']
+const UPPERCASE_KEYWORDS_REGEX = new RegExp(
+  String.raw`${UPPERCASE_KEYWORDS.join('|')}`,
+  'g'
+)
 const PATH_ROOT = '/doc'
 const FILE_ROOT = '/docs/'
 const FILE_EXTENSION = '.md'
 
 function uppercaseSlugKeywords(slug) {
   let newSlug = slug
-  const regex = new RegExp(String.raw`${uppercaseKeywords.join('|')}`, 'g')
-  newSlug = newSlug.replace(regex, match => {
+  newSlug = newSlug.replace(UPPERCASE_KEYWORDS_REGEX, match => {
     return match.toUpperCase()
   })
   return newSlug
