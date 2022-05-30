@@ -23,7 +23,7 @@
 const { titleCase } = require('title-case')
 const sidebar = require('../../../sidebar')
 
-const uppercaseKeywords = ['dvc', 'cml', 'api', 'ml']
+const uppercaseKeywords = ['dvc', 'cml', 'api', 'mlem', 'ml', 'ldb']
 const PATH_ROOT = '/doc'
 const FILE_ROOT = '/docs/'
 const FILE_EXTENSION = '.md'
@@ -36,6 +36,8 @@ function uppercaseSlugKeywords(slug) {
   })
   return newSlug
 }
+
+console.log(uppercaseSlugKeywords('ml-mlem-dvc-test-ldb-api-cml'))
 
 function slugTitleCase(slug) {
   return titleCase(uppercaseSlugKeywords(slug).replace(/-/g, ' '))
