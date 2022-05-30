@@ -71,15 +71,17 @@ VS Code...
 
 # Features
 
-Our first course of action was to include all DVC features related to data
-management and experiments in the extension. Here are the main features that are
-available when you install the extension right now:
+Our first priority was to include all DVC features related to data management
+and experiments. Here are the main features that are available when you install
+the extension right now:
 
 ## DVC View: experiments, metrics, and plots
 
-An entirely new view to manage your experiments. Run new experiments, analyze
-their outcomes through plots and metrics, and compare them to find the best
-model.
+The main feature of our extension is the DVC view, which provides a one-stop
+shop for everything related to your machine learning experiments. You can run
+new experiments from here and compare both metrics and plots for different
+models. Never has it been easier to analyze the results of your experiments and
+find the best model.
 
 ![Experiment tables to compare different
 experiments](/uploads/images/2022-06-14/dvc-view-experiments-table.png)
@@ -87,22 +89,25 @@ experiments](/uploads/images/2022-06-14/dvc-view-experiments-table.png)
 ![Plots to visualize your
 experiments](/uploads/images/2022-06-14/dvc-view-plots.png)
 
-## Command palette
-
-The DVC extension makes extensive use of the Command Palette, reducing the need
-to learn commands by heart:
-
-![Use the command palette to quickly find DVC
-features](/uploads/images/2022-06-14/command-palette.gif)
-
 ## Source control management
 
-Manage changes to your datasets and models right from the source control panel,
-just like you would with changes to your code. Use `checkout`, `commit`, `add`,
-`push`, and `pull` straight from the interface:
+On top of Git version contol for your code, the source control view now lets you
+manage datasets and models tracked by DVC. Quickly see which artifacts have been
+changed, and synchronize versions with your remote repository.  Use `checkout`,
+`commit`, `add`, `push`, and `pull` straight from the interface:
 
 ![Get a quick overview of changes to your data in the source control
 panel](/uploads/images/2022-06-14/source-control.png)
+
+## Command palette
+
+The DVC extension makes extensive use of the Command Palette, reducing the need
+to learn syntax by heart. Want to run a new experiment or pull data from your
+remote repository? Give the word in the Command Palette and the DVC extension
+will guide you along all required details.
+
+![Use the command palette to quickly find DVC
+features](/uploads/images/2022-06-14/command-palette.gif)
 
 <!--
 TODO: seems to overlap with Source control management; can we safely remove this?
