@@ -23,12 +23,22 @@
 const { titleCase } = require('title-case')
 const sidebar = require('../../../sidebar')
 
+const uppercaseKeywords = ['dvc', 'cml', 'api', 'ml']
 const PATH_ROOT = '/doc'
 const FILE_ROOT = '/docs/'
 const FILE_EXTENSION = '.md'
 
-function dvcTitleCase(slug) {
-  return titleCase(slug.replace(/dvc/g, 'DVC').replace(/-/g, ' '))
+function uppercaseSlugKeywords(slug) {
+  let newSlug = slug
+  uppercaseKeywords.forEach(word => {
+    const regex = new RegExp(String.raw`${word}`, 'g')
+    newSlug = newSlug.replace(regex, word.toUpperCase())
+  })
+  return newSlug
+}
+
+function slugTitleCase(slug) {
+  return titleCase(uppercaseSlugKeywords(slug).replace(/-/g, ' '))
 }
 
 function validateRawItem({ slug, source, children, type, url }) {
@@ -113,7 +123,7 @@ function normalizeItem({ rawItem, parentPath, resultRef, prevRef }) {
       return {
         path: relativePath ? `${PATH_ROOT}/${relativePath}` : PATH_ROOT,
         source: source === false ? false : sourcePath,
-        label: label ? label : dvcTitleCase(slug),
+        label: label ? label : slugTitleCase(slug),
         tutorials: tutorials || {},
         prev,
         next: undefined,
