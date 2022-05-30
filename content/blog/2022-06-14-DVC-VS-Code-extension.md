@@ -4,11 +4,13 @@ title: >
   extension
 date: 2022-06-14
 description: >
-  Streamline your data science workflow with the DVC extension for VS Code. Full experiment management and data versioning from the comfort of your IDE.
+  Streamline your data science workflow with the DVC extension for VS Code. Full
+  experiment management and data versioning from the comfort of your IDE.
 descriptionLong: >
   VS Code has become the IDE of choice for many data scientists. Today we are
-  releasing the DVC extension, which brings a full ML experimentation platform to VS Code. Manage your data, run experiments, compare metrics, and
-  visualize plots, all from the comfort of your IDE.
+  releasing the DVC extension, which brings a full ML experimentation platform
+  to VS Code. Manage your data, run experiments, compare metrics, and visualize
+  plots, all from the comfort of your IDE.
 picture: 2022-06-14/header.png
 author: rob_dewit
 # commentsUrl:
@@ -125,19 +127,24 @@ out, we plan on bringing even more features to the extension, including:
 - `dvc.yaml` syntax features, including autocomplete and snippets
 - Parallel coordinate plots
 
-Give us feedback on what you'd like to see next!
+Of course, we'd also love to hear which features you'd most be looking forward
+to. Make sure to give us feedback on what you'd like to see next! 
 
 # Thank you!
 
-A big thank you to those who have helped make this project possible:
+We would like to sincerely thank everyone who has helped make this project
+possible:
 
-- [Henning](https://github.com/hediet), for helping us get started
-- [Paige](https://twitter.com/DynamicWebPaige), for her support and warm tweets
+- [Henning Dieterichs](https://github.com/hediet), for helping us get started
+- [Paige Bailey](https://twitter.com/DynamicWebPaige), for her support and warm
+  tweets
 - Sid, for his review and help in getting the word out there
 - The VS Code developer community
 - Everyone who has beta-tested the extension and provided their feedback!
 
 # Resources
+
+Want to read more about the extension? Check out the following pages:
 
 - [DVC extension on the VS Code
   marketplace](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc)
