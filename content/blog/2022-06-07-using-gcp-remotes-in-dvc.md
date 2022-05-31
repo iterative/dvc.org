@@ -6,7 +6,7 @@ description: >
 descriptionLong: >
   Setting up a remote to make data versioning easier with DVC is a common need
   so we're going to go through a tutorial for doing this with GCP.
-picture: 2022-06-07/gcp-in-dvc.png
+picture: 2022-06-07/dvc-gcp.png
 pictureComment: Using GCP Remotes in DVC
 author: milecia_mcgregor
 commentsUrl: https://discuss.dvc.org/t/preventing-stale-models-in-production/1137
@@ -30,7 +30,7 @@ how you can add DVC to your project, and finally, we’ll make updates to the
 dataset with DVC commands. We’ll be working with
 [this repo](https://github.com/iterative/stale-model-example) if you want an
 example to play with. By the time you finish, you should be able to create this
-setup for any ML project using an GCP remote.
+setup for any machine learning project using an GCP remote.
 
 ## Set up a GCP storage bucket
 
@@ -39,11 +39,19 @@ Make sure that you already have a
 to create a new account. Once you’re logged into your account, you should see a
 screen like this with some of the services GCP offers.
 
-![gcp_project.png](/uploads/images/2022-06-07/gcp_project.png)
+![GCP initial page](/uploads/images/2022-06-07/gcp_initial_page.png)
 
-From here, you need to go to `Cloud Storage` to create a bucket to store the
-data. When you get to the Cloud Storage page, you should see something similar
-to this and you’ll click the `Create Bucket` button.
+From here, you'll need to create a new project. Search for "create a project"
+and click the "IAM & Admin" option. You'll enter the name of the project, which
+is `Bicycle Project`, and choose the organization and location and click the
+`Create` button. This will take you to your project dashboard and show you all
+of the stats and settings you have available.
+
+![create a new GCP project](/uploads/images/2022-06-07/gcp_new_project.png)
+
+Then you need to go to `Cloud Storage` in the left sidebar to create a bucket to
+store the data. When you get to the Cloud Storage page, you should see something
+similar to this and you’ll click the `Create Bucket` button.
 
 ![create_gcp_bucket.png](/uploads/images/2022-06-07/create_gcp_bucket.png)
 
@@ -62,10 +70,22 @@ page and you’ll see the bucket you just created.
 
 Since you have the bucket created, we need to get the credentials to connect the
 GCP remote to the project. Go to the `IAM & Admin` service and go to
-`Service Accounts` in the left sidebar. You’ll see your project and you’ll be
-able to click on `Actions` and go to where you `Manage keys` for your project.
+`Service Accounts` in the left sidebar.
 
-![gcp_service_account.png](/uploads/images/2022-06-07/gcp_service_account.png)
+![no service accounts](/uploads/images/2022-06-07/gcp_empty_service_account.png)
+
+Click the `Create Service Account` button to create a new service account that
+you'll use to connect to the DVC project in a bit. Now you can add the name and
+ID for this service account and keep all the default settings. We've chosen
+`bicycle-service-account` for the name and `bicycle-account` for the ID. Click
+`Done` and you'll be redirected to the `Service accounts` page.
+
+![service account with name and ID](/uploads/images/2022-06-07/gcp_create_service_account.png)
+
+You’ll see your service account and you’ll be able to click on `Actions` and go
+to where you `Manage keys` for this service account.
+
+![manage keys on service account](/uploads/images/2022-06-07/gcp_service_account.png)
 
 Once you’ve been redirected, click the `Add Key` button and this will bring up
 the credentials you need to authenticate your GCP account with your project. Go
@@ -122,7 +142,7 @@ $ export GOOGLE_APPLICATION_CREDENTIALS='../tonal-history-154018-e62a79baf90f.js
 Or you can add the credentials file location with the following command:
 
 ```dvc
-$ dvc remote modify bikes credentialpath '../tonal-history-154018-e62a79baf90f.json'
+$ dvc remote modify --local bikes credentialpath '../tonal-history-154018-e62a79baf90f.json'
 ```
 
 You can check out more about authentication
