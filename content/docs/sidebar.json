@@ -516,13 +516,13 @@
     "icon": "studio",
     "children": [
       {
-        "slug": "overview",
+        "slug": "how-it-works",
         "label": "How It Works"
       },
       "get-started",
       {
         "slug": "user-guide",
-        "label": "User Guide",
+        "source": false,
         "children": [
           {
             "slug": "prepare-repositories",
