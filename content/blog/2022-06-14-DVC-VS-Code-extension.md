@@ -93,7 +93,7 @@ experiments](/uploads/images/2022-06-14/dvc-view-plots.png)
 
 On top of Git version contol for your code, the source control view now lets you
 manage datasets and models tracked by DVC. Quickly see which artifacts have been
-changed, and synchronize versions with your remote repository.  Use `checkout`,
+changed, and synchronize versions with your remote repository. Use `checkout`,
 `commit`, `add`, `push`, and `pull` straight from the interface:
 
 ![Get a quick overview of changes to your data in the source control
@@ -139,7 +139,8 @@ possible:
 - [Henning Dieterichs](https://github.com/hediet), for helping us get started
 - [Paige Bailey](https://twitter.com/DynamicWebPaige), for her support and warm
   tweets
-- Sid, for his review and help in getting the word out there
+- [Sid Unnithan](https://www.linkedin.com/in/siddhanthunnithan/), for his review
+  and help in getting the word out there
 - The VS Code developer community
 - Everyone who has beta-tested the extension and provided their feedback!
 
