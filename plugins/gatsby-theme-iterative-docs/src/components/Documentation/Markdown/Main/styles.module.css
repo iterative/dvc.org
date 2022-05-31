@@ -43,6 +43,10 @@
       font-weight: 500;
     }
 
+    h4 {
+      font-weight: 600;
+    }
+
     img + em,
     :global(.gatsby-resp-image-wrapper) + em {
       color: #6a737d;

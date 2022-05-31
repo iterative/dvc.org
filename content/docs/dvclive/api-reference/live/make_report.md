@@ -6,7 +6,7 @@ Generates an HTML Report from the logged data.
 def make_report()
 ```
 
-#### Usage:
+## Usage
 
 ```py
 from dvclive import Live
