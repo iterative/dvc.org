@@ -58,10 +58,6 @@ as the tree path to find those values. Supported types are: string, integer,
 float, and arrays (groups of params). Note that DVC does not ascribe any
 specific meaning to these values.
 
-> YAML 1.2 stores very large and very small numbers in scientific notation, but
-> the popular PyYAML library uses an older version of the format. To avoid
-> introducing subtle bugs, the ruamel.yaml library should be used instead.
-
 DVC saves parameter names and values to `dvc.lock` in order to track them over
 time. They will be compared to the latest params files to determine if the stage
 is outdated upon `dvc repro` (or `dvc status`).
