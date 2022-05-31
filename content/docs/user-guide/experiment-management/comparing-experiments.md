@@ -56,8 +56,9 @@ experiments in a remote:
 
 ```dvc
 $ for name in $(dvc exp list origin --name-only -A); do
-    dvc get --rev ${name} git@github.com:iterative/example-dvc-experiments.git \
-        models/model.h5 -o exps/${name}.h5
+    dvc get --rev ${name} \
+            git@github.com:iterative/example-dvc-experiments.git \
+            models/model.h5 -o exps/${name}.h5
 done
 ```
 
