@@ -11,7 +11,13 @@ description: >
 
 descriptionLong: |
 
-  _This is the first part of a three-part series of posts._
+  _This is the first part of a three-part series of posts:_
+  - _Part 1: Data Versioning and ML Pipelines (this post)_
+  - _Part 2: [Local 
+  Experiments](/blog/end-to-end-computer-vision-api-part-2-local-experiments)_
+  - _Part 3: [Remote Experiments & CI/CD For 
+  Machine Learning](/blog/end-to-end-computer-vision-api-part-3-remote-exp-ci-cd)_
+
 
   Lately, training a well-performing Computer Vision (CV) model in Jupyter
   Notebooks became fairly straightforward. You can use pre-trained Deep Learning

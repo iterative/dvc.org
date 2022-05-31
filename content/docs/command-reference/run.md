@@ -13,9 +13,7 @@ usage: dvc run [-h] [-q | -v] [-n <name>] [-f]
                [--outs-persist-no-cache <filename>]
                [-m <path>] [-M <path>]
                [--plots <path>] [--plots-no-cache <path>]
-               [--live <path>] [--live-no-cache <path>]
-               [--live-no-html] [-w <path>]
-               [--always-changed] [--desc <text>]
+               [-w <path>] [--always-changed] [--desc <text>]
                [--no-exec] [--no-commit] [--no-run-cache]
                command
 
@@ -197,16 +195,16 @@ $ dvc run -n second_stage './another_script.sh $MYENVVAR'
   outputs are not tracked by DVC (same as with `-O` above).
 
 - `-c <path>`, `--checkpoints <path>` - the same as `-o` but also marks the
-  output as a [checkpoint](/doc/command-reference/exp/run#checkpoints). Implies
-  `--no-exec`. This makes the stage incompatible with `dvc repro`.
+  output as a [checkpoint](/doc/command-reference/exp/run#checkpoints). This
+  makes the stage incompatible with `dvc repro`. Implies `--no-exec`.
 
-- `-p [<path>:]<params_list>`, `--params [<path>:]<params_list>` - specify a set
-  of [parameter dependencies](/doc/command-reference/params) the stage depends
-  on, from a parameters file. This is done by sending a comma separated list as
-  argument, e.g. `-p learning_rate,epochs`. The default parameters file name is
-  `params.yaml`, but this can be redefined with a prefix in the argument sent to
-  this option, e.g. `-p parse_params.yaml:threshold`. See `dvc params` to learn
-  more about parameters.
+- `-p [<path>:]<params_list>`, `--params [<path>:]<params_list>` - specify one
+  or more [parameter dependencies](/doc/command-reference/params) from a
+  parameters file `path` (`./params.yaml` by default). This is done by sending a
+  comma separated list (`params_list`) as argument, e.g.
+  `-p learning_rate,epochs`. A custom params file can be defined with a prefix,
+  e.g. `-p params.json:threshold`. Or use the prefix alone with `:` to use all
+  the parameters found in that file, e.g. `-p myparams.toml:`.
 
 - `-m <path>`, `--metrics <path>` - specify a metrics file produced by this
   stage. This option behaves like `-o` but registers the file in a `metrics`
@@ -268,16 +266,6 @@ $ dvc run -n second_stage './another_script.sh $MYENVVAR'
 
 - `--desc <text>` - user description of the stage (optional). This doesn't  
   affect any DVC operations.
-
-- `--live <path>` - specify the directory `path` for
-  [DVCLive](/doc/dvclive/dvclive-with-dvc) to write logs in. `path` will be
-  tracked (<abbr>cached</abbr>) by DVC. Saved in the `live` field of `dvc.yaml`.
-
-- `--live-no-cache <path>` - the same as `--live` except that the `path` is not
-  tracked by DVC. Useful if you prefer to track it with Git.
-
-- `--live-no-html` - deactivates DVCLive
-  [HTML report](/doc/dvclive/dvclive-with-dvc#html-report) generation.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -439,15 +427,20 @@ $ dvc run -n train \
 `train_model.py` will include some code to open and parse the parameters:
 
 ```py
-import yaml
+from ruamel.yaml import YAML
 
 with open("params.yaml", 'r') as fd:
-    params = yaml.safe_load(fd)
+    yaml = YAML()
+    params = yaml.load(fd)
 
 seed = params['seed']
 lr = params['train']['lr']
 epochs = params['train']['epochs']
 ```
+
+> Note that the popular PyYAML library does not support YAML 1.2. The
+> ruamel.yaml library should be used instead to avoid subtle differences in
+> number handling.
 
 DVC will keep an eye on these param values (same as with the regular dependency
 files) and know that the stage should be reproduced if/when they change. See

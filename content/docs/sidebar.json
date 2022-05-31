@@ -105,7 +105,8 @@
         "slug": "fast-data-caching-hub"
       },
       "experiment-tracking",
-      "data-registries"
+      "model-registry",
+      "data-registry"
     ]
   },
   {
@@ -595,7 +596,9 @@
             ]
           },
           "teams",
+          "change-team-plan-and-size",
           "account-management",
+          "billing-and-payment",
           "install-github-app",
           "connect-custom-gitlab-server"
         ]
@@ -617,7 +620,6 @@
         "slug": "dvclive-with-dvc"
       },
       {
-        "label": "ML Frameworks",
         "slug": "ml-frameworks",
         "source": "dvclive/ml-frameworks/index.md",
         "children": [
@@ -664,7 +666,6 @@
         ]
       },
       {
-        "label": "API Reference",
         "slug": "api-reference",
         "source": "api-reference/index.md",
         "children": [
@@ -684,6 +685,10 @@
               {
                 "slug": "log_plot",
                 "label": "log_plot()"
+              },
+              {
+                "slug": "make_report",
+                "label": "make_report()"
               },
               {
                 "slug": "get_step",

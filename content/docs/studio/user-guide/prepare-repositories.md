@@ -24,7 +24,7 @@ Git repositories in two ways:
 
    [store and share your data and model files]:
      /doc/start/data-and-model-versioning#storing-and-sharing
-   [create data registries]: /doc/use-cases/data-registries
+   [create data registries]: /doc/use-cases/data-registry
    [create data pipelines]: /doc/start/data-pipelines
    [ci/cd in machine learning]: /doc/use-cases/ci-cd-for-machine-learning
 

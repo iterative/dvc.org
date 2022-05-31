@@ -51,8 +51,21 @@ If it writes files or dirs, they can be defined as <abbr>outputs</abbr>
 ### Parameter dependencies
 
 [Parameters](/doc/command-reference/params) are a special type of stage
-dependency. They consist of a name/value pair to find in a YAML, JSON, TOML, or
-Python parameters file (`params.yaml` by default). Example:
+dependency. They consist of a list of params to track in one of these formats:
+
+1. A param key/value pair that can be found in `params.yaml` (default params
+   file);
+2. A dictionary named by the file path to a custom params file, and with a list
+   of param key/value pairs to find in it;
+3. An empty set (give no value or use `null`) named by the file path to a params
+   file: to track all the params in it dynamically.
+
+<admon type="info">
+
+Note that file paths used must be to valid YAML, JSON, TOML, or Python
+parameters file.
+
+</admon>
 
 ```yaml
 stages:
@@ -61,8 +74,11 @@ stages:
     deps:
       - raw.txt
     params:
-      - threshold
+      - threshold # track specific param (from params.yaml)
       - passes
+      - myparams.yaml: # track specific params from custom file
+          - epochs
+      - config.json: # track all parameters in this file
     outs:
       - clean.txt
 ```
@@ -362,7 +378,6 @@ These are the fields that are accepted in each stage:
 | `always_changed` | Causes this stage to be always considered as [changed] by commands such as `dvc status` and `dvc repro`. `false` by default                                                                                                                                                               |
 | `meta`           | (Optional) arbitrary metadata can be added manually with this field. Any YAML content is supported. `meta` contents are ignored by DVC, but they can be meaningful for user processes that read or write `.dvc` files directly.                                                           |
 | `desc`           | (Optional) user description for this stage. This doesn't affect any DVC operations.                                                                                                                                                                                                       |
-| `live`           | (Optional) [Dvclive](/doc/dvclive/dvclive-with-dvc) configuration field                                                                                                                                                                                                                   |
 
 [changed]: /doc/command-reference/status#local-workspace-status
 

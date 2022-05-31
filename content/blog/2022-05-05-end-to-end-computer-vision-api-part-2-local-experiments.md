@@ -10,7 +10,13 @@ description: >
   based on their performance metrics; and persistence of the most promising ones
 
 descriptionLong: |
-  _This is the second part of a three-part series of posts._
+
+  _This is the second part of a three-part series of posts:_
+  - _Part 1: [Data Versioning and ML 
+  Pipelines](/blog/end-to-end-computer-vision-api-part-1-data-versioning-and-ml-pipelines)_
+  - _Part 2: Local Experiments (this post)_
+  - _Part 3: [Remote Experiments & CI/CD For 
+  Machine Learning](/blog/end-to-end-computer-vision-api-part-3-remote-exp-ci-cd)_
 
 
   In [part
