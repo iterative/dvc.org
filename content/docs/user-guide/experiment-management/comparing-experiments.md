@@ -17,7 +17,7 @@ refs/tags/baseline-experiment:
 ```
 
 If you want to list all the experiments in the repo regardless of their parent
-commit, use the `--all-commits`/`-A` flag.
+commit, use the `--all-commits` (`-A`) flag.
 
 ```dvc
 $ dvc exp list -A
@@ -42,7 +42,7 @@ refs/tags/baseline-experiment:
 ```
 
 This command lists remote experiments based on that repo's `HEAD`. You can use
-`--all-commits`/`-A` to list all experiments, or add any other supported option
+`--all-commits` (`-A`) to list all experiments, or add any other supported option
 to the remote `dvc exp list` command.
 
 [shared]: /doc/user-guide/experiment-management/sharing-experiments
@@ -109,7 +109,7 @@ $ dvc exp show
 ```
 
 `dvc exp show` only tabulates experiments in the workspace and in `HEAD`. You
-can use `--all-commits`/`-A` flag to show all the experiments in the project
+can use `--all-commits` (`-A`) flag to show all the experiments in the project
 instead.
 
 Note that [queued experiments] will be marked with an asterisk `*`.
