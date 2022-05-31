@@ -21,13 +21,13 @@ $ dvc exp remove cnn-32 cnn-64
 Removed experiments: cnn-32,cnn-64
 ```
 
-## Removing multiple experiments
+## Removing multiple experiments (based on parent commit)
 
 You may wish to remove multiple experiments at once. For example, if you are
-finished experimenting on the current commit and want to discard all experiments
-based on that commit, use `--rev HEAD`.
+finished experimenting on the current Git commit and want to discard all
+experiments derived from it, use `dvc exp remove --rev` with `HEAD`.
 
-```
+```dvc
 $ dvc exp list
 refs/tags/baseline-experiment:
         cnn-128
