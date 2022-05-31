@@ -42,7 +42,7 @@ learning project using an AWS remote.
 Make sure that you already have an [AWS account](https://aws.amazon.com/) and
 log in. Search for `S3` and it should be the first service that appears.
 
-![S3 service in AWS](/uploads/images/2022-05-17/finding_s3.png)
+![S3 service in AWS](/uploads/images/2022-05-31/finding_s3.png)
 
 Once you’re on the S3 page, click the `Create Bucket` button and it will take
 you to a page that looks like this. The bucket in this example is called
@@ -50,12 +50,12 @@ you to a page that looks like this. The bucket in this example is called
 leave the default settings in place or you can update them to fit the
 functionality you need.
 
-![create an S3 bucket in AWS](/uploads/images/2022-05-17/create_bucket.png)
+![create an S3 bucket in AWS](/uploads/images/2022-05-31/create_bucket.png)
 
 Once you’ve created the bucket, you should be redirected to the S3 dashboard and
 see the success message and your new bucket.
 
-![newly created S3 bucket in AWS](/uploads/images/2022-05-17/created_bucket.png)
+![newly created S3 bucket in AWS](/uploads/images/2022-05-31/created_bucket.png)
 
 ### Get your credentials
 
@@ -66,13 +66,13 @@ credentials and select the `Access keys` section. Then click the
 `Create New Access Key` button. This will generate a new set of keys for you so
 make sure you download this file to get your secret access key.
 
-![make AWS access credentials](/uploads/images/2022-05-17/make_credentials.png)
+![make AWS access credentials](/uploads/images/2022-05-31/make_credentials.png)
 
 Once you’ve downloaded the credentials, you should see the access key ID in the
 table. Note that you won’t be able to access your secret key again at this
 point. You would need to make a new set of credentials if you don’t have it.
 
-![successfully created AWS access credentials](/uploads/images/2022-05-17/credentials.png)
+![successfully created AWS access credentials](/uploads/images/2022-05-31/credentials.png)
 
 That’s it for setting up your bucket and getting the credentials you need! Now
 let’s add DVC to our demo repo and set up the remote.
@@ -156,7 +156,7 @@ $ dvc push
 
 Here's what the data might look like in your AWS bucket.
 
-![data in AWS bucket](/uploads/images/2022-05-17/aws_bucket.png)
+![data in AWS bucket](/uploads/images/2022-05-31/aws_bucket.png)
 
 Then if you move to a different machine or someone else needs to use that data,
 it can be accessed by cloning or forking the project repo and running:
