@@ -130,9 +130,12 @@ epochs = params['train']['epochs']
 layers = params['train']['layers']
 ```
 
-> Note that the popular PyYAML library does not support YAML 1.2. The
-> ruamel.yaml library should be used instead to avoid subtle differences in
-> number handling.
+<admon>
+
+We use [ruamel.yaml](https://pypi.org/project/ruamel.yaml/) which supports YAML
+1.2 (unlike the more popular PyYAML).
+
+</admon>
 
 You can find that each parameter was defined in `dvc.yaml`, as well as saved to
 `dvc.lock` along with the values. These are compared to the params files when
