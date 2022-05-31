@@ -44,6 +44,12 @@ it can be more difficult for those less familiar with CLI tools to get
 accustomed to using DVC. Moreover, while DVC provides many useful
 visualizations, a CLI tool can only take things so far.
 
+Therefore we wanted to incorporate DVC's functionality in a graphical interface.
+[VS Code is the IDE of choice for
+many](https://insights.stackoverflow.com/survey/2021#section-most-popular-technologies-integrated-development-environment),
+including most of us here at Iterative. It seemed like the natural choice
+for a platform to make DVC more versatile, accessible, and useful.
+
 With this extension, we want to achieve the following:
 
 - Move the entire data science workflow into your IDE
@@ -53,12 +59,12 @@ With this extension, we want to achieve the following:
 As data scientists, DVC is our toolbox. This extension turns VS Code into our
 workshop.
 
-# Why Visual Studio Code
+<!-- # Why Visual Studio Code
 
 One of [our core beliefs at Iterative](https://iterative.ai/why-iterative/) is
 that our products should couple tightly with existing tools and processes for
-data science projects. [VS Code is the IDE of choice for
-many](https://insights.stackoverflow.com/survey/2021#section-most-popular-technologies-integrated-development-environment),
+data science projects.
+[VS Code is the IDE of choice for many](https://insights.stackoverflow.com/survey/2021#section-most-popular-technologies-integrated-development-environment),
 including many of us at Iterative. Here are a few reasons why we really like it:
 
 VS Code...
@@ -67,7 +73,7 @@ VS Code...
 - has excellent support for Git workflows
 - supports Jupyter Notebooks
 - comes with remote development and execution built-in
-- has a rich ecosystem of extensions
+- has a rich ecosystem of extensions -->
 
 # Features
 
