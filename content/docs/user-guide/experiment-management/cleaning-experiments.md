@@ -192,8 +192,8 @@ workspace that are not committed to the history.
 
 ### Deleting Experiment-Related Objects in DVC Cache
 
-Note that `dvc exp gc` and `dvc exp remove` do not delete any objects in the
-DVC <abbr>cache</abbr>. In order to remove the cache objects, e.g. model files,
+Note that `dvc exp gc` and `dvc exp remove` do not delete any objects in the DVC
+<abbr>cache</abbr>. In order to remove the cache objects, e.g. model files,
 intermediate artifacts, etc. related with the experiments, you can use `dvc gc`
 command.
 
