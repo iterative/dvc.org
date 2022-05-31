@@ -78,9 +78,6 @@ branches in this example.
 
 ```dvc
 $ dvc exp gc --workspace
-WARNING: This will remove all experiments except those derived from the workspace of the current repo. Run queued experiments will be removed.
-Are you sure you want to proceed? [y/n]: y
-Removed 5 experiments. To remove unused cache files use 'dvc gc'.
 $ dvc exp list --all
 main:
    exp-abc000
