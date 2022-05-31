@@ -1,6 +1,6 @@
 # exp push
 
-Upload an [experiment](/doc/command-reference/exp) to a Git remote, and its data
+Upload [experiments](/doc/command-reference/exp) to a Git remote, and their data
 to a `dvc remote`.
 
 ## Synopsis
@@ -8,7 +8,7 @@ to a `dvc remote`.
 ```usage
 usage: dvc exp push [-h] [-q | -v] [-A] [--rev <commit>] [-n <num>] [-f]
                     [--no-cache] [-r <name>] [-j <number>] [--run-cache]
-                    git_remote experiment
+                    git_remote [experiment ...]
 
 positional arguments:
   git_remote          Git remote name or Git URL
@@ -27,15 +27,15 @@ experiments] across <abbr>repository</abbr> copies via Git and DVC remotes.
 > `dvc exp run` to learn more about DVC experiment storage.
 
 A working `git_remote` name (e.g. `origin`) or Git URL is required, as well as
-an `experiment` name or hash (see `dvc exp run`) to push.
+one or more `experiment` names or hashes (see `dvc exp run`) to push.
 
-The first action of `dvc exp push` is to upload the `experiment` to the Git
-remote so it can be pulled later from other repo clones (equivalent to
+The first action of `dvc exp push` is to upload the `experiments` to the Git
+remote so they can be pulled later from other repo clones (equivalent to
 `git push <git_remote> refs/exps/<experiment>`). Use `dvc exp list <git_remote>`
 to see experiments in the remote.
 
 This command will also try to [push](/doc/command-reference/push) all
-<abbr>cached</abbr> data associated with the experiment to DVC
+<abbr>cached</abbr> data associated with the experiments to DVC
 [remote storage](/doc/command-reference/remote), unless `--no-cache` is used.
 
 ## Options

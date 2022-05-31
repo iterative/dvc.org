@@ -133,7 +133,7 @@ There are two possible reasons for this:
    make sure you have not hidden it. The following video shows how you can
    show/hide columns. Once you show/hide columns, remember to save the changes.
 
-   ###### Show/hide columns
+   #### Show/hide columns
 
    ![Showing and hiding columns](https://static.iterative.ai/img/studio/show_hide_columns.gif)
 

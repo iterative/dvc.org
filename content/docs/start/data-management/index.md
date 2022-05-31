@@ -69,17 +69,17 @@ should look like this:
 
 ```
 .dvc/cache
-└── a3
-    └── 04afb96060aad90176268345e10355
+└── 22
+    └── a1a2931c8370d3aeedd7183606fd7f
 ```
 
-The hash value of the `data.xml` file we just added (`a304afb...`) determines
+The hash value of the `data.xml` file we just added (`22a1a29...`) determines
 the cache path shown above. And if you check `data/data.xml.dvc`, you will find
 it there too:
 
 ```yaml
 outs:
-  - md5: a304afb96060aad90176268345e10355
+  - md5: 22a1a2931c8370d3aeedd7183606fd7f
     path: data.xml
 ```
 
@@ -154,8 +154,8 @@ set up earlier. The remote storage directory should look like this:
 
 ```
 .../dvcstore
-└── a3
-    └── 04afb96060aad90176268345e10355
+└── 22
+    └── a1a2931c8370d3aeedd7183606fd7f
 ```
 
 </details>
