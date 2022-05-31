@@ -192,8 +192,8 @@ workspace that are not committed to the history.
 
 ### Deleting Experiment-Related Objects in DVC Cache
 
-Note that `dvc exp gc` and `dvc exp remove` don't delete any objects in the DVC
-<abbr>cache</abbr>. In order to remove the cache objects, e.g. model files,
+Note that `dvc exp gc` and `dvc exp remove` do not delete any objects in the
+DVC <abbr>cache</abbr>. In order to remove the cache objects, e.g. model files,
 intermediate artifacts, etc. related with the experiments, you can use `dvc gc`
 command.
 
@@ -208,8 +208,8 @@ As you push the experiments with `dvc exp push`, Git remotes may be become
 cluttered with experiment references. To remove experiments from a Git remote,
 use `dvc exp remove -g`.
 
-```
-dvc exp remove -g origin exp-ab780
+```dvc
+$ dvc exp remove -g origin exp-ab780
 Removed experiments: exp-bb09c
 ```
 
