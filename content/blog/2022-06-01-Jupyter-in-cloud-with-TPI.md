@@ -112,7 +112,7 @@ charges to your credit card.
 Once we have cloned the repository and navigated to it in our terminal, we only
 need to run two commands. First, we use `terraform init` to initialize our
 configuration files. After that, we simply run `terraform apply` to launch our
-Jupyter server. That's all there as to it. TPI works its magic, and within a few
+Jupyter server. That's all there is to it. TPI works its magic, and within a few
 minutes, we will have our Jupyter environment ready.
 
 "But wait, how do we access it?"
