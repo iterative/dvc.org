@@ -4,9 +4,9 @@ Studio is free for individuals and teams with up to 2 members. The Free plan is
 designed for teams that are starting out: you can invite one other team member
 and import as many repositories as you want.
 
-For more advanced collaboration, you can sign up for the Team or Enterprise
-plans. These are paid plans, and in this page you will learn how to manage
-billing and payment for them.
+For more advanced collaboration, you can switch to the Team or Enterprise plans.
+These are paid plans, and in this page you will learn how to manage billing and
+payment for them.
 
 - [Difference between Free, Team, and Enterprise plans](#difference-between-free-team-and-enterprise-plans)
 - [How to sign up for the Team or Enterprise plan](#how-to-sign-up-for-the-team-or-enterprise-plan)

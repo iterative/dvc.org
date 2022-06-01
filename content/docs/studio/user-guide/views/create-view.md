@@ -1,6 +1,6 @@
 # Create a View
 
-In this section, you will learn how to:
+In this page, you will learn how to:
 
 - [Connect to a Git repository and create a view](#connect-to-a-git-repository-and-create-a-view)
 - [Create multiple views from a single Git repository)](#create-multiple-views-from-a-single-git-repository)

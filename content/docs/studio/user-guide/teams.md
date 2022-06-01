@@ -4,7 +4,7 @@ You can create teams with one or more team members. The team members are also
 called collaborators, and you can assign different roles to them. The views that
 you create in your team's page will be accessible to all members of the team.
 
-In this section, you will learn about:
+In this page, you will learn about:
 
 - [How to create a team](#create-a-team)
 - [How to invite collaborators (team members)](#invite-collaborators)
@@ -154,16 +154,16 @@ and so you will have 3 remaining seats.
 ### Change your team plan and team size
 
 Your team can be in the **Free**, **Team** or **Enterprise** plan. All newly
-created teams are on the Free plan. This plan is designed for teams just
-starting out with collaboration: you can invite one other team member and import
-as many repositories as you want. For more advanced collaboration functionality,
-you can upgrade to the Team or Enterprise plans. A detailed comparison of the
-different plans can be found in the Iterative Studio
+created teams are on the Free plan. This plan is designed for teams that are
+starting out: you can invite one other team member and import as many
+repositories as you want. For more advanced collaboration, you can switch to the
+Team or Enterprise plans. A detailed comparison of the different plans can be
+found in the Iterative Studio
 [pricing page](https://studio.iterative.ai/pricing).
 
 - **To upgrade** from the Free plan to the Team or Enterprise plan or to
-  downgrade your team plan, refer to the section on
-  [changing your team plan](/doc/studio/user-guide/change-team-plan-and-size#change-team-plan).
+  downgrade your team plan, refer to
+  [Change your plan](/doc/studio/user-guide/change-team-plan-and-size#change-your-team-plan).
 
-- **To change the number of seats** in your Team plan, refer to the section on
-  [changing your team size](/doc/studio/user-guide/change-team-plan-and-size#change-team-size).
+- **To change the number of seats** in your Team plan, refer to
+  [Change your team size](/doc/studio/user-guide/change-team-plan-and-size#change-your-team-size).

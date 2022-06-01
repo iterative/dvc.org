@@ -1,18 +1,19 @@
-# Change Team Plan and Team Size
+# Change Team Plan and Size
 
-In this section, you learn how to:
+When you sign up, you're on the **Free plan** by default. This plan is plan is
+designed for teams that are starting out: you can invite one other team member
+and import as many repositories as you want.
 
-- [Change team plan](#change-team-plan)
-- [Change team size](#change-team-size)
+For more advanced collaboration, you can switch to the Team or Enterprise plans.
+A detailed comparison of the different plans can be found in the Iterative
+Studio [pricing page](https://studio.iterative.ai/pricing).
 
-## Change Team Plan
+In this page, you learn how to:
 
-When you create a team, it is on the Free plan by default. This plan is designed
-for teams just starting out with collaboration: you can invite one other team
-member and import as many repositories as you want. For more advanced
-collaboration functionality, you can upgrade to the Team or Enterprise plans. A
-detailed comparison of the different plans can be found in the Iterative Studio
-[pricing page](https://studio.iterative.ai/pricing).
+- [Change your team plan](#change-your-team-plan)
+- [Change your team size](#change-your-team-size)
+
+## Change your team plan
 
 To change the plan for your team, go to the `Plan and billing` section within
 Team settings. Then, within the `Current plan` card, click on `Change plan`.
@@ -76,7 +77,7 @@ You can downgrade to the Free plan or upgrade to the Enterprise plan.
 
 For any changes to the plan, please contact your focal point at Iterative.
 
-## Change Team Size
+## Change your team size
 
 You can also change the size of your team within the Team or Enterprise plan at
 any point during your subscription.
@@ -84,7 +85,7 @@ any point during your subscription.
 ### If you are currently on the Free plan
 
 To change the number of seats in your team,
-[upgrade to the Team or Enterprise plan](#change-team-plan).
+[upgrade to the Team or Enterprise plan](#change-your-team-plan).
 
 ### If you are currently on the Team plan
 
