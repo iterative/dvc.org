@@ -189,4 +189,5 @@ If you get this error and none of the above applies, please
 
 If your questions are not answered by
 [Billing and Payment ](/doc/studio/user-guide/billing-and-payment) or by the
-[FAQ](https://studio.iterative.ai/faq), please [contact us](#support).
+Iterative Studio [FAQ page](https://studio.iterative.ai/faq), please
+[contact us](#support).

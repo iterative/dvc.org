@@ -11,11 +11,11 @@ https://www.youtube.com/watch?v=hKf4twg832g
 
    <admon>
 
-   When you sign up, you're on the **Free plan** by default. To sign up for the
-   **Team plan**, [create a team] first. Then go to the [team's settings] and in
-   the `Plan and billing` section, click on `Change plan`. To sign up for the
-   **Enterprise plan**, [contact us]. See [pricing details] to compare the
-   different plans.
+   When you sign up, you're on the **Free plan** by default. To switch to the
+   **Team plan**, [create a team] first, then go to the [team's settings] and
+   click on `Change plan` in the `Plan and billing` section. switch to the
+   **Enterprise plan**, please [contact us].  
+   See [pricing details] to compare the different plans.
 
    [create a team]: /doc/studio/user-guide/teams
    [team's settings]: /doc/studio/user-guide/teams#settings
