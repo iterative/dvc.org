@@ -11,7 +11,7 @@ billing and payment for them.
 - [Difference between Free, Team, and Enterprise plans](#difference-between-free-team-and-enterprise-plans)
 - [How to sign up for the Team or Enterprise plan](#how-to-sign-up-for-the-team-or-enterprise-plan)
 - [How total price is calculated](#how-total-price-is-calculated)
-- [How increasing or decreasing the number of seats affects total price](#how-increasing-or-decreasing-the-number-of-seats-affects-total-price)
+- [How increasing or decreasing the number of seats affects price](#how-increasing-or-decreasing-the-number-of-seats-affects-price)
 - [Downgrading a plan](#downgrading-a-plan)
 - [Billing period, auto-renewal of team plan, and grace period for non-payment](#billing-period-auto-renewal-of-team-plan-and-grace-period-for-non-payment)
 - [Payment processor and accepted payment methods](#payment-processor-and-accepted-payment-methods)
@@ -36,8 +36,8 @@ plan**, please [contact us].
 
 For Team plans, invoice amount is calculated based on the number of seats in the
 team. All invoice amounts are calculated for one billing period at a time. A
-billing period is one month long (30 days). The price per seat can be found in
-the Iterative Studio [pricing page](https://studio.iterative.ai/pricing).
+billing period is one month long. The price per seat can be found in the
+Iterative Studio [pricing page](https://studio.iterative.ai/pricing).
 
 For example, suppose you have a team with 5 seats. At a monthly rate of $40 per
 seat, the total payable amount for the team would be $40 x 5 = $200 per month.
@@ -48,7 +48,7 @@ in pro-rated amount calculation (see the next section for an example).
 For Enterprise plans, all invoice amounts are calculated based on the agreement
 between you and Iterative.
 
-## How increasing or decreasing the number of seats affects total price
+## How increasing or decreasing the number of seats affects price
 
 If you add members to available seats or remove members without reducing the
 number of seats in your team, there will be no price impact.
@@ -79,10 +79,10 @@ about refunds, please [contact us].
 
 To upgrade to or downgrade from an Enterprise plan, please [contact us].
 
-## Billing period, auto-renewal of team plan, and grace period for non-payment
+## Billing period, auto-renewal of Team plan, and grace period for non-payment
 
 The billing period for each team plan subscription starts on the date of the
-subscription, and is one month long. For example, if your subscription date is
+subscription and is one month long. For example, if your subscription date is
 the 15th of May, your next billing period will start on the 15th of June.
 
 All Team plan subscriptions are renewed automatically at the end of the billing
