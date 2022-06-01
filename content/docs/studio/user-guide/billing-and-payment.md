@@ -17,7 +17,7 @@ billing and payment for them.
 - [Grace period for non-payment](#grace-period-for-non-payment)
 - [Payment processor and accepted payment methods](#payment-processor-and-accepted-payment-methods)
 - [Accessing your payment history and invoices](#accessing-your-payment-history-and-invoices)
-- [Frequently asked questions](#frequently-asked-questions)
+- [Other questions](#other-questions)
 
 ## Difference between Free, Team, and Enterprise plans
 
@@ -113,26 +113,22 @@ balance.
 
 ## Payment processor and accepted payment methods
 
-For payments for the Team plan, we use [Stripe](https://stripe.com/) to process
-your payment. We do not handle your payment information, including credit card
-details, directly. We are PCI compliant and your payment information is handled
-securely by Stripe.
+We rely on [Stripe](https://stripe.com/) to process (Team plan) payments. We do
+not handle your payment information (including credit card details) directly. We
+are PCI compliant and your payment information is handled securely by Stripe.
 
-For the Team plan, we accept the following cards: Visa, Mastercard, American
-Express, Discover, Diners Club and JCB. You can change your payment method and
-billing address for the Team plan at any time by going to the `Plan and billing`
-section of your team's Settings. You will be redirected to Stripe to make these
-changes.
+We accept the following cards: Visa, Mastercard, American Express, Discover,
+Diners Club and JCB. You can change your payment method and billing address for
+the Team plan at any time by going to the `Plan and billing` section of your
+team's Settings. You will be redirected to Stripe to make these changes.
 
 ## Accessing your payment history and invoices
 
-On your team settings page, you will find a link to your dashboard on Stripe. On
-this dashboard, you can get a copy of your invoice as well as your payment
-history.
+You can find a link to your dashboard on Stripe on your team's settings page.
+Here you see your payment history and get a copy of your invoices.
 
-## Frequently asked questions
+## Other questions
 
-You can find answers to some frequently asked questions, including questions
-related to price calculations and payment methods, in the Iterative Studio
+You can find answers to other frequently asked questions in the Iterative Studio
 [FAQ page](https://studio.iterative.ai/faq). If you have any other questions,
 please [contact us].
