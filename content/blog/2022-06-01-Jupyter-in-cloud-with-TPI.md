@@ -195,12 +195,12 @@ Azure, for example.
 Of particular interest here is the `spot = 0`, which tells TPI to provision spot
 instances instead of on-demand ones. At the time of writing, the on-demand
 hourly rate for this type of instance is $0.526. On the other hand, spot
-instances are only $0.15/hour. With little to no effort, TPI allows us to reduce
+instances are only $0.15 per hour. With little to no effort, TPI allows us to reduce
 our cloud costs by 70%!
 
 <admon type="tip">
 
-We could also set an upper limit to the $/hr price we are willing to pay (e.g.,
+We could also set an upper limit to the hourly price we are willing to pay (e.g.,
 `spot = 0.12`), and TPI would hold off on provisioning until instances are
 available at that price. Disabling spot pricing (`spot = -1`) would make TPI
 provision on-demand instances.
