@@ -51,7 +51,7 @@ function* pagesGenerator({ itemCount, hasHeroItem = false, basePath }) {
 }
 
 const getPageLimit = LIMIT_BLOG_PAGES => {
-  if (LIMIT_BLOG_PAGES === undefined) return 9999
+  if (LIMIT_BLOG_PAGES === undefined) return 1
   const numberLimit = Number(LIMIT_BLOG_PAGES)
   if (numberLimit === NaN)
     throw new Error('LIMIT_BLOG_PAGES must be a number of pages!')
